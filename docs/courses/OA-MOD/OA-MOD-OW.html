@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A faithful weight on the GNS commutant · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-OW.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 13 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="a-faithful-weight-on-the-gns-commutant">A faithful weight on the GNS commutant</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>For a normal semifinite weight, each dominated normal functional produces a bounded positive operator in the GNS commutant. We now turn the norm of that functional into a weight on the commutant. The construction produces a faithful weight even when the original weight is not faithful. Its essential issue is uniqueness: a comparison operator remembers values on the finite domain, so that domain must be large enough to determine the normal functional.</p>
+<p>All proofs below are relative to the exact earlier course results listed in OW-01. No faithful state, separable representation, countable exhaustion, modular conjugation, or unbounded spectral theorem is assumed. Semifiniteness is a stated hypothesis for the norm formula (OW5); OW-11 explains why deleting it makes that formula ambiguous. OW-14 separately proves a corrected construction for an arbitrary normal input, using the finite-domain projection and a different defining value.</p>
+<h2 id="setting-domains-and-existing-inputs"><span id="oa-mod-ow-01"></span><span id="OA-MOD-OW-01"></span>Setting, domains, and existing inputs</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be an arbitrary von Neumann algebra and let <span class="math" data-tex="\(\varphi:M_+\to[0,\infty]\)">\(\varphi:M_+\to[0,\infty]\)</span> be a <strong>normal semifinite</strong> weight, not necessarily faithful. We use the density convention for semifiniteness:</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_\varphi=\{x\in M:\varphi(x^*x)&lt;\infty\},\qquad
+\mathfrak m_\varphi=\operatorname{span}\{y^*x:x,y\in\mathfrak n_\varphi\},
+\]">\[
+\mathfrak n_\varphi=\{x\in M:\varphi(x^*x)&lt;\infty\},\qquad
+\mathfrak m_\varphi=\operatorname{span}\{y^*x:x,y\in\mathfrak n_\varphi\},
+\]</span>
+<p>and <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span> is ultraweakly dense in <span class="math" data-tex="\(M\)">\(M\)</span>. Inner products are linear in the first variable. Write</p>
+<span class="math math-display" data-tex="\[
+(H,\pi,\Lambda)=(H_\varphi,\pi_\varphi,\Lambda_\varphi),
+\qquad N=\pi(M)&#x27;\subseteq B(H).
+\]">\[
+(H,\pi,\Lambda)=(H_\varphi,\pi_\varphi,\Lambda_\varphi),
+\qquad N=\pi(M)&#x27;\subseteq B(H).
+\]</span>
+<p>The map <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> has domain exactly <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span>. It need not be injective. Every bounded operator on <span class="math" data-tex="\(H\)">\(H\)</span> has domain all of <span class="math" data-tex="\(H\)">\(H\)</span>; membership in <span class="math" data-tex="\(N\)">\(N\)</span> means commutation with every <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span>, <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>.</p>
+<p>The free comparison is Brent Nelson, <a href="https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf"><em>Tomita–Takesaki Theory</em>, pages 30–32, Theorem 3.18 and Definition 3.19</a>. OW13 explains the hypothesis correction required by its displayed norm formula. The proof here uses these exact preceding programme results:</p>
+<ul>
+<li><strong><a href="OA-MOD-WG.html#oa-mod-wg-003">WG003</a>, <a href="OA-MOD-WG.html#oa-mod-wg-004">WG004</a>, <a href="OA-MOD-WG.html#oa-mod-wg-005">WG005</a>, <a href="OA-MOD-WG.html#oa-mod-wg-006">WG006</a> and <a href="OA-MOD-WG.html#oa-mod-wg-007">WG007</a>:</strong> finite domains and their positive cone, the GNS construction, and normality of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> when <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is normal. In particular <span class="math" data-tex="\(\mathfrak m_\varphi^+=\{a\in M_+:\varphi(a)&lt;\infty\}\)">\(\mathfrak m_\varphi^+=\{a\in M_+:\varphi(a)&lt;\infty\}\)</span>.</li>
+<li><strong><a href="OA-MOD-WG.html#oa-mod-wg-008">WG008</a>:</strong> an increasing net of positive contractions <span class="math" data-tex="\(e_\alpha\in\mathfrak m_\varphi^+\)">\(e_\alpha\in\mathfrak m_\varphi^+\)</span>, with <span class="math" data-tex="\(e_\alpha\uparrow1\)">\(e_\alpha\uparrow1\)</span>. Its convergence is strong and ultraweak. It is not replaced by a sequence or by an asserted increasing net of finite-weight projections.</li>
+<li><strong><a href="OA-MOD-DW.html#oa-mod-dw-02">DW02</a>, <a href="OA-MOD-DW.html#oa-mod-dw-03">DW03</a> and <a href="OA-MOD-DW.html#oa-mod-dw-04">DW04</a>:</strong> bounded factorization inside a von Neumann algebra, the commutant/form correspondence, and the comparison operator with its exact range closure and polar intertwining.</li>
+<li><strong><a href="OA-MOD-NW.html#oa-mod-nw-11">NW11</a>:</strong> for any normal weight, recovery as the pointwise supremum of dominated positive normal functionals; and, for any weight, equivalence of normality with preservation of arbitrary summable positive families. These are weight theorems, not an application of a bounded-map continuity theorem to an infinite-valued function.</li>
+<li><strong><a href="OA-MOD-BK.html#oa-mod-bk-03">BK03</a>, <a href="OA-MOD-BK.html#oa-mod-bk-04">BK04</a>, <a href="OA-MOD-BK.html#oa-mod-bk-05">BK05</a>, <a href="OA-MOD-BK.html#oa-mod-bk-06">BK06</a> and <a href="OA-MOD-BK.html#oa-mod-bk-07">BK07</a>:</strong> bounded strong-to-ultraweak convergence, bounded monotone nets, inverse order, support cutoffs, and rectangular polar decomposition. Square roots and positive-operator norm estimates are proved in <a href="OA-MOD-BK.html#oa-mod-bk-01">BK01</a>.</li>
+<li><strong><a href="OA-MOD-CP.html#oa-mod-cp-06">CP06</a> and <a href="OA-MOD-CP.html#oa-mod-cp-07">CP07</a>:</strong> the predual is a Banach space, its positive cone is norm closed, and a positive normal functional has norm equal to its value at the identity. WG007 proves that the GNS representation preserves bounded increasing positive suprema and is ultraweakly continuous. Vector functionals are ultraweakly continuous by BK03, so composing one with this representation gives a normal functional.</li>
+</ul>
+<p>The predual norm fact used below can also be read directly from positivity: the bounded-functional Cauchy–Schwarz inequality gives
+<span class="math" data-tex="\(|\omega(a)|^2\leq\omega(a^*a)\omega(1)\leq\|a\|^2\omega(1)^2\)">\(|\omega(a)|^2\leq\omega(a^*a)\omega(1)\leq\|a\|^2\omega(1)^2\)</span>, while evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> gives the reverse norm inequality. Consequently norms add on positive functionals.</p>
+<h2 id="what-a-comparison-operator-remembers"><span id="oa-mod-ow-02"></span><span id="OA-MOD-OW-02"></span>What a comparison operator remembers</h2>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_\varphi
+=\{\omega\in M_*^+:\omega\leq c\varphi
+\text{ on }M_+\text{ for some finite }c\geq0\},
+\qquad
+\Phi_\varphi=\{\omega\in M_*^+:\omega\leq\varphi\}.
+\]">\[
+\mathcal E_\varphi
+=\{\omega\in M_*^+:\omega\leq c\varphi
+\text{ on }M_+\text{ for some finite }c\geq0\},
+\qquad
+\Phi_\varphi=\{\omega\in M_*^+:\omega\leq\varphi\}.
+\]</span>
+<p>The extended-value convention is <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>; hence comparison with <span class="math" data-tex="\(c=0\)">\(c=0\)</span> requires <span class="math" data-tex="\(\omega=0\)">\(\omega=0\)</span>. Equivalently <span class="math" data-tex="\(\mathcal E_\varphi\)">\(\mathcal E_\varphi\)</span> is the union of the positive scalar multiples of <span class="math" data-tex="\(\Phi_\varphi\)">\(\Phi_\varphi\)</span>, together with zero. It is an additive cone.</p>
+<p>By DW-03, every <span class="math" data-tex="\(\omega\in\mathcal E_\varphi\)">\(\omega\in\mathcal E_\varphi\)</span> determines a unique
+<span class="math" data-tex="\(h_\omega\in N_+\)">\(h_\omega\in N_+\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\omega(y^*x)=\langle h_\omega\Lambda(x),\Lambda(y)\rangle
+\qquad(x,y\in\mathfrak n_\varphi).
+\tag{OW1}
+\]">\[
+\omega(y^*x)=\langle h_\omega\Lambda(x),\Lambda(y)\rangle
+\qquad(x,y\in\mathfrak n_\varphi).
+\tag{OW1}
+\]</span>
+<p>This is initially a correspondence with the restriction of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> to <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>. The next argument proves the stronger uniqueness needed here.</p>
+<p><strong>Proposition.</strong> The map <span class="math" data-tex="\(\omega\mapsto h_\omega\)">\(\omega\mapsto h_\omega\)</span> is additive, positively homogeneous, injective, and reflects order on <span class="math" data-tex="\(\mathcal E_\varphi\)">\(\mathcal E_\varphi\)</span>. Furthermore</p>
+<span class="math math-display" data-tex="\[
+\omega\leq c\varphi\quad\Longleftrightarrow\quad h_\omega\leq cI_H
+\qquad(c\geq0),
+\tag{OW2}
+\]">\[
+\omega\leq c\varphi\quad\Longleftrightarrow\quad h_\omega\leq cI_H
+\qquad(c\geq0),
+\tag{OW2}
+\]</span>
+<p>so the least possible comparison constant is <span class="math" data-tex="\(\|h_\omega\|\)">\(\|h_\omega\|\)</span>.</p>
+<p><strong>Proof.</strong> Additivity and homogeneity follow from (OW1) and density of <span class="math" data-tex="\(\Lambda(\mathfrak n_\varphi)\)">\(\Lambda(\mathfrak n_\varphi)\)</span>. Suppose <span class="math" data-tex="\(h_\omega\leq h_\rho\)">\(h_\omega\leq h_\rho\)</span>. For every <span class="math" data-tex="\(a\in\mathfrak m_\varphi^+\)">\(a\in\mathfrak m_\varphi^+\)</span>, substitute <span class="math" data-tex="\(x=y=a^{1/2}\)">\(x=y=a^{1/2}\)</span> into (OW1) to obtain <span class="math" data-tex="\(\omega(a)\leq\rho(a)\)">\(\omega(a)\leq\rho(a)\)</span>.</p>
+<p>To extend this inequality, let <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span> be arbitrary. The cutoffs of WG-008 satisfy</p>
+<span class="math math-display" data-tex="\[
+0\leq e_\alpha a e_\alpha\leq\|a\|e_\alpha^2
+\leq\|a\|e_\alpha.
+\]">\[
+0\leq e_\alpha a e_\alpha\leq\|a\|e_\alpha^2
+\leq\|a\|e_\alpha.
+\]</span>
+<p>Thus <span class="math" data-tex="\(e_\alpha a e_\alpha\in\mathfrak m_\varphi^+\)">\(e_\alpha a e_\alpha\in\mathfrak m_\varphi^+\)</span>. This norm-bounded net converges strongly and ultraweakly to <span class="math" data-tex="\(a\)">\(a\)</span>, although it need not be increasing. Normality of the bounded functionals gives</p>
+<span class="math math-display" data-tex="\[
+\omega(a)=\lim_\alpha\omega(e_\alpha a e_\alpha)
+\leq\lim_\alpha\rho(e_\alpha a e_\alpha)=\rho(a).
+\]">\[
+\omega(a)=\lim_\alpha\omega(e_\alpha a e_\alpha)
+\leq\lim_\alpha\rho(e_\alpha a e_\alpha)=\rho(a).
+\]</span>
+<p>Hence the map reflects order. The forward order implication follows directly from quadratic forms in (OW1). Applying order reflection in both directions proves injectivity.</p>
+<p>The forward implication of (OW2) is the operator bound in DW-03. Conversely, <span class="math" data-tex="\(h_\omega\leq cI_H\)">\(h_\omega\leq cI_H\)</span> gives <span class="math" data-tex="\(\omega(a)\leq c\varphi(a)\)">\(\omega(a)\leq c\varphi(a)\)</span> whenever <span class="math" data-tex="\(\varphi(a)&lt;\infty\)">\(\varphi(a)&lt;\infty\)</span>, by taking <span class="math" data-tex="\(x=a^{1/2}\)">\(x=a^{1/2}\)</span>. For <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, the remaining infinite-weight values impose no restriction. For <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, one has <span class="math" data-tex="\(h_\omega=0=h_0\)">\(h_\omega=0=h_0\)</span>, so injectivity gives <span class="math" data-tex="\(\omega=0\)">\(\omega=0\)</span>; the required global inequality then holds with the stated convention. This proves (OW2), including the zero constant. The norm of a positive operator is its least scalar upper bound. ∎</p>
+<p>There are two different norms in this construction. The operator norm <span class="math" data-tex="\(\|h_\omega\|\)">\(\|h_\omega\|\)</span> measures how strongly <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is dominated by <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. The functional norm <span class="math" data-tex="\(\|\omega\|=\omega(1)\)">\(\|\omega\|=\omega(1)\)</span> will be the value of the opposite weight at <span class="math" data-tex="\(h_\omega\)">\(h_\omega\)</span>. They are generally unequal.</p>
+<h2 id="the-vector-implementing-a-finite-observation">The vector implementing a finite observation</h2>
+<p>Let <span class="math" data-tex="\((H_\omega,\pi_\omega,\Omega_\omega)\)">\((H_\omega,\pi_\omega,\Omega_\omega)\)</span> be the bounded-functional GNS construction for <span class="math" data-tex="\(\omega\in\mathcal E_\varphi\)">\(\omega\in\mathcal E_\varphi\)</span>. The vector has norm <span class="math" data-tex="\(\|\Omega_\omega\|^2=\omega(1)\)">\(\|\Omega_\omega\|^2=\omega(1)\)</span>, including <span class="math" data-tex="\(H_0=\{0\}\)">\(H_0=\{0\}\)</span>. DW-04 supplies the bounded map</p>
+<span class="math math-display" data-tex="\[
+C_\omega:H\to H_\omega,
+\qquad C_\omega\Lambda(x)=\pi_\omega(x)\Omega_\omega,
+\quad x\in\mathfrak n_\varphi,
+\]">\[
+C_\omega:H\to H_\omega,
+\qquad C_\omega\Lambda(x)=\pi_\omega(x)\Omega_\omega,
+\quad x\in\mathfrak n_\varphi,
+\]</span>
+<p>with <span class="math" data-tex="\(C_\omega^*C_\omega=h_\omega\)">\(C_\omega^*C_\omega=h_\omega\)</span> and
+<span class="math" data-tex="\(C_\omega\pi(a)=\pi_\omega(a)C_\omega\)">\(C_\omega\pi(a)=\pi_\omega(a)C_\omega\)</span> for <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>.</p>
+<p><strong>Proposition.</strong> The range of <span class="math" data-tex="\(C_\omega\)">\(C_\omega\)</span> is dense in <span class="math" data-tex="\(H_\omega\)">\(H_\omega\)</span>. If</p>
+<span class="math math-display" data-tex="\[
+C_\omega=U_\omega h_\omega^{1/2},\qquad
+\eta_\omega=U_\omega^*\Omega_\omega,
+\]">\[
+C_\omega=U_\omega h_\omega^{1/2},\qquad
+\eta_\omega=U_\omega^*\Omega_\omega,
+\]</span>
+<p>then</p>
+<span class="math math-display" data-tex="\[
+\|\eta_\omega\|^2=\|\omega\|,\qquad
+h_\omega^{1/2}\Lambda(x)=\pi(x)\eta_\omega
+\quad(x\in\mathfrak n_\varphi).
+\tag{OW3}
+\]">\[
+\|\eta_\omega\|^2=\|\omega\|,\qquad
+h_\omega^{1/2}\Lambda(x)=\pi(x)\eta_\omega
+\quad(x\in\mathfrak n_\varphi).
+\tag{OW3}
+\]</span>
+<p>The vector <span class="math" data-tex="\(\eta_\omega\)">\(\eta_\omega\)</span> is the unique vector satisfying the second identity. It also implements the whole functional:</p>
+<span class="math math-display" data-tex="\[
+\omega(a)=\langle\pi(a)\eta_\omega,\eta_\omega\rangle
+\qquad(a\in M).
+\tag{OW4}
+\]">\[
+\omega(a)=\langle\pi(a)\eta_\omega,\eta_\omega\rangle
+\qquad(a\in M).
+\tag{OW4}
+\]</span>
+<p><strong>Proof.</strong> Every cutoff <span class="math" data-tex="\(e_\alpha\)">\(e_\alpha\)</span> belongs to <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span>. Since <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is normal,</p>
+<span class="math math-display" data-tex="\[
+\|\pi_\omega(e_\alpha)\Omega_\omega-\Omega_\omega\|^2
+=\omega((1-e_\alpha)^2)
+\leq\omega(1-e_\alpha)\longrightarrow0.
+\]">\[
+\|\pi_\omega(e_\alpha)\Omega_\omega-\Omega_\omega\|^2
+=\omega((1-e_\alpha)^2)
+\leq\omega(1-e_\alpha)\longrightarrow0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\Omega_\omega\)">\(\Omega_\omega\)</span> belongs to the closure of the range of <span class="math" data-tex="\(C_\omega\)">\(C_\omega\)</span>. That closed subspace is invariant under <span class="math" data-tex="\(\pi_\omega(M)\)">\(\pi_\omega(M)\)</span> by the intertwining identity. Since <span class="math" data-tex="\(\Omega_\omega\)">\(\Omega_\omega\)</span> is cyclic, the subspace is all of <span class="math" data-tex="\(H_\omega\)">\(H_\omega\)</span>.</p>
+<p>Consequently the polar partial isometry satisfies <span class="math" data-tex="\(U_\omega U_\omega^*=I_{H_\omega}\)">\(U_\omega U_\omega^*=I_{H_\omega}\)</span>; it is not asserted that <span class="math" data-tex="\(U_\omega^*U_\omega=I_H\)">\(U_\omega^*U_\omega=I_H\)</span>. The latter is <span class="math" data-tex="\(s(h_\omega)\)">\(s(h_\omega)\)</span>. Polar intertwining from DW-04 gives</p>
+<span class="math math-display" data-tex="\[
+U_\omega^*\pi_\omega(a)=\pi(a)U_\omega^*.
+\]">\[
+U_\omega^*\pi_\omega(a)=\pi(a)U_\omega^*.
+\]</span>
+<p>It follows that</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\pi(x)\eta_\omega
+&amp;=U_\omega^*\pi_\omega(x)\Omega_\omega
+=U_\omega^*C_\omega\Lambda(x)\\
+&amp;=s(h_\omega)h_\omega^{1/2}\Lambda(x)
+=h_\omega^{1/2}\Lambda(x).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\pi(x)\eta_\omega
+&amp;=U_\omega^*\pi_\omega(x)\Omega_\omega
+=U_\omega^*C_\omega\Lambda(x)\\
+&amp;=s(h_\omega)h_\omega^{1/2}\Lambda(x)
+=h_\omega^{1/2}\Lambda(x).
+\end{aligned}
+\]</span>
+<p>Also
+<span class="math" data-tex="\(\|\eta_\omega\|^2
+=\langle U_\omega U_\omega^*\Omega_\omega,\Omega_\omega\rangle
+=\|\Omega_\omega\|^2\)">\(\|\eta_\omega\|^2
+=\langle U_\omega U_\omega^*\Omega_\omega,\Omega_\omega\rangle
+=\|\Omega_\omega\|^2\)</span>.
+The same coisometry and intertwining identities give (OW4):</p>
+<span class="math math-display" data-tex="\[
+\langle\pi(a)U_\omega^*\Omega_\omega,U_\omega^*\Omega_\omega\rangle
+=\langle\pi_\omega(a)\Omega_\omega,\Omega_\omega\rangle.
+\]">\[
+\langle\pi(a)U_\omega^*\Omega_\omega,U_\omega^*\Omega_\omega\rangle
+=\langle\pi_\omega(a)\Omega_\omega,\Omega_\omega\rangle.
+\]</span>
+<p>For uniqueness, if <span class="math" data-tex="\(\pi(x)\eta=\pi(x)\zeta\)">\(\pi(x)\eta=\pi(x)\zeta\)</span> for all <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>, apply it to <span class="math" data-tex="\(e_\alpha\)">\(e_\alpha\)</span>. Since <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is normal, <span class="math" data-tex="\(\pi(e_\alpha)\uparrow I_H\)">\(\pi(e_\alpha)\uparrow I_H\)</span> strongly. Passing to this strong limit gives <span class="math" data-tex="\(\eta=\zeta\)">\(\eta=\zeta\)</span>. ∎</p>
+<p>The density of <span class="math" data-tex="\(C_\omega\)">\(C_\omega\)</span>'s range is where semifiniteness repairs a potential loss of norm. Without that density, the polar factor only gives <span class="math" data-tex="\(\|U_\omega^*\Omega_\omega\|\leq\|\Omega_\omega\|\)">\(\|U_\omega^*\Omega_\omega\|\leq\|\Omega_\omega\|\)</span>, which is insufficient to define a weight by <span class="math" data-tex="\(\|\omega\|\)">\(\|\omega\|\)</span>.</p>
+<h2 id="a-hereditary-cone-in-the-commutant">A hereditary cone in the commutant</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+P_\varphi=\{h_\omega:\omega\in\mathcal E_\varphi\}\subseteq N_+.
+\]">\[
+P_\varphi=\{h_\omega:\omega\in\mathcal E_\varphi\}\subseteq N_+.
+\]</span>
+<p><strong>Proposition.</strong> This is an additive hereditary cone: if <span class="math" data-tex="\(0\leq h\leq k\)">\(0\leq h\leq k\)</span> and <span class="math" data-tex="\(k\in P_\varphi\)">\(k\in P_\varphi\)</span>, then <span class="math" data-tex="\(h\in P_\varphi\)">\(h\in P_\varphi\)</span>. The assignment</p>
+<span class="math math-display" data-tex="\[
+f(h_\omega)=\|\omega\|
+\]">\[
+f(h_\omega)=\|\omega\|
+\]</span>
+<p>is well-defined, additive, positively homogeneous, and increasing on <span class="math" data-tex="\(P_\varphi\)">\(P_\varphi\)</span>.</p>
+<p><strong>Proof.</strong> Injectivity in OW-02 makes <span class="math" data-tex="\(f\)">\(f\)</span> well-defined. Additivity and positive homogeneity of the correspondence, together with <span class="math" data-tex="\(\|\omega\|=\omega(1)\)">\(\|\omega\|=\omega(1)\)</span>, prove the analogous properties of <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(0\leq h\leq h_\omega\)">\(0\leq h\leq h_\omega\)</span>. Apply the bounded factorization DW-02 inside the von Neumann algebra <span class="math" data-tex="\(N\)">\(N\)</span> to obtain a contraction <span class="math" data-tex="\(s\in N\)">\(s\in N\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+h^{1/2}=s h_\omega^{1/2}.
+\]">\[
+h^{1/2}=s h_\omega^{1/2}.
+\]</span>
+<p>Define the positive functional</p>
+<span class="math math-display" data-tex="\[
+\rho(a)=\langle\pi(a)s\eta_\omega,s\eta_\omega\rangle
+\qquad(a\in M).
+\]">\[
+\rho(a)=\langle\pi(a)s\eta_\omega,s\eta_\omega\rangle
+\qquad(a\in M).
+\]</span>
+<p>It is bounded, and normality of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> makes it normal. For <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>, commutation with <span class="math" data-tex="\(s\)">\(s\)</span> and (OW3) give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\rho(x^*x)
+&amp;=\|\pi(x)s\eta_\omega\|^2
+=\|s h_\omega^{1/2}\Lambda(x)\|^2\\
+&amp;=\|h^{1/2}\Lambda(x)\|^2
+\leq\|h\|\varphi(x^*x).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\rho(x^*x)
+&amp;=\|\pi(x)s\eta_\omega\|^2
+=\|s h_\omega^{1/2}\Lambda(x)\|^2\\
+&amp;=\|h^{1/2}\Lambda(x)\|^2
+\leq\|h\|\varphi(x^*x).
+\end{aligned}
+\]</span>
+<p>Testing finite-weight <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> with <span class="math" data-tex="\(x=a^{1/2}\)">\(x=a^{1/2}\)</span>, and taking any strictly positive constant at least <span class="math" data-tex="\(\|h\|\)">\(\|h\|\)</span> for the remaining infinite values, proves <span class="math" data-tex="\(\rho\in\mathcal E_\varphi\)">\(\rho\in\mathcal E_\varphi\)</span>. Polarizing the equality of quadratic forms proves <span class="math" data-tex="\(h_\rho=h\)">\(h_\rho=h\)</span>. Thus <span class="math" data-tex="\(P_\varphi\)">\(P_\varphi\)</span> is hereditary.</p>
+<p>Finally OW-02 reflects order, so <span class="math" data-tex="\(h_\rho\leq h_\omega\)">\(h_\rho\leq h_\omega\)</span> implies <span class="math" data-tex="\(\rho\leq\omega\)">\(\rho\leq\omega\)</span>, and evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> gives <span class="math" data-tex="\(f(h_\rho)\leq f(h_\omega)\)">\(f(h_\rho)\leq f(h_\omega)\)</span>. Alternatively the construction gives <span class="math" data-tex="\(\|\rho\|=\|s\eta_\omega\|^2\leq\|\omega\|\)">\(\|\rho\|=\|s\eta_\omega\|^2\leq\|\omega\|\)</span>. ∎</p>
+<p>This proof constructs the functional for a smaller commutant operator. An assertion that positive operators have square roots would not by itself prove that the finite cone is hereditary.</p>
+<h2 id="defining-the-opposite-weight-and-its-finite-domains">Defining the opposite weight and its finite domains</h2>
+<p>For <span class="math" data-tex="\(h\in N_+\)">\(h\in N_+\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\varphi^{\mathrm{opp}}(h)=
+\begin{cases}
+\|\omega\|,&amp;h=h_\omega\in P_\varphi,\\
+\infty,&amp;h\notin P_\varphi.
+\end{cases}
+\tag{OW5}
+\]">\[
+\varphi^{\mathrm{opp}}(h)=
+\begin{cases}
+\|\omega\|,&amp;h=h_\omega\in P_\varphi,\\
+\infty,&amp;h\notin P_\varphi.
+\end{cases}
+\tag{OW5}
+\]</span>
+<p><strong>Proposition.</strong> Formula (OW5) defines a weight on <span class="math" data-tex="\(N\)">\(N\)</span>. Its positive finite domain is exactly <span class="math" data-tex="\(P_\varphi\)">\(P_\varphi\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_{\mathrm{opp}}=
+\{v\in N:v^*v=h_\omega\text{ for some }\omega\in\mathcal E_\varphi\},
+\]">\[
+\mathfrak n_{\mathrm{opp}}=
+\{v\in N:v^*v=h_\omega\text{ for some }\omega\in\mathcal E_\varphi\},
+\]</span>
+<span class="math math-display" data-tex="\[
+\mathfrak m_{\mathrm{opp}}
+=\operatorname{span}_{\mathbb C}P_\varphi
+=\operatorname{span}_{\mathbb C}
+\{w^*v:v,w\in\mathfrak n_{\mathrm{opp}}\},
+\qquad
+\mathfrak m_{\mathrm{opp}}\cap N_+=P_\varphi.
+\tag{OW6}
+\]">\[
+\mathfrak m_{\mathrm{opp}}
+=\operatorname{span}_{\mathbb C}P_\varphi
+=\operatorname{span}_{\mathbb C}
+\{w^*v:v,w\in\mathfrak n_{\mathrm{opp}}\},
+\qquad
+\mathfrak m_{\mathrm{opp}}\cap N_+=P_\varphi.
+\tag{OW6}
+\]</span>
+<p>No norm-closedness is asserted for either finite domain.</p>
+<p><strong>Proof.</strong> On the finite cone, the weight axioms hold by OW-04. If <span class="math" data-tex="\(h+k\)">\(h+k\)</span> were finite, heredity would make both <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> finite. Thus if either summand has value infinity, so does the sum. This proves additivity with extended values. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, membership of <span class="math" data-tex="\(th\)">\(th\)</span> in the cone is equivalent to membership of <span class="math" data-tex="\(h\)">\(h\)</span>, and the finite values scale by <span class="math" data-tex="\(t\)">\(t\)</span>. For <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, both sides are zero using <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. Finally <span class="math" data-tex="\(h_0=0\)">\(h_0=0\)</span>, so the value at zero is zero. This proves the weight axioms and its stated positive finite cone. Apply WG-003 to this weight on <span class="math" data-tex="\(N\)">\(N\)</span> to get (OW6). ∎</p>
+<p>The formula is intrinsic to the specified GNS triple. Under its canonical unitary equivalence with another GNS triple, both <span class="math" data-tex="\(h_\omega\)">\(h_\omega\)</span> and their finite cone are conjugated by that unitary, so the weights correspond; a proof is included among the exercises.</p>
+<h2 id="normality-with-arbitrary-summable-families">Normality with arbitrary summable families</h2>
+<p><strong>Theorem.</strong> The weight <span class="math" data-tex="\(\varphi^{\mathrm{opp}}\)">\(\varphi^{\mathrm{opp}}\)</span> is normal. More precisely, if <span class="math" data-tex="\((h_i)_{i\in I}\subseteq N_+\)">\((h_i)_{i\in I}\subseteq N_+\)</span> has bounded finite partial sums and</p>
+<span class="math math-display" data-tex="\[
+h=\sum_{i\in I}h_i
+\]">\[
+h=\sum_{i\in I}h_i
+\]</span>
+<p>is their strong supremum, then</p>
+<span class="math math-display" data-tex="\[
+\varphi^{\mathrm{opp}}(h)
+=\sum_{i\in I}\varphi^{\mathrm{opp}}(h_i).
+\tag{OW7}
+\]">\[
+\varphi^{\mathrm{opp}}(h)
+=\sum_{i\in I}\varphi^{\mathrm{opp}}(h_i).
+\tag{OW7}
+\]</span>
+<p>Both sums use finite subsets of the possibly uncountable index set <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><strong>Proof.</strong> First suppose the scalar sum on the right is finite, say <span class="math" data-tex="\(L&lt;\infty\)">\(L&lt;\infty\)</span>. Every <span class="math" data-tex="\(h_i=h_{\omega_i}\)">\(h_i=h_{\omega_i}\)</span> for a unique <span class="math" data-tex="\(\omega_i\in\mathcal E_\varphi\)">\(\omega_i\in\mathcal E_\varphi\)</span>, and <span class="math" data-tex="\(\sum_i\|\omega_i\|=L\)">\(\sum_i\|\omega_i\|=L\)</span>. The finite partial sums of these functionals form a norm Cauchy net in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. Indeed, given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose a finite set <span class="math" data-tex="\(F_0\)">\(F_0\)</span> whose scalar subsum exceeds <span class="math" data-tex="\(L-\varepsilon\)">\(L-\varepsilon\)</span>; every finite subsum over indices outside <span class="math" data-tex="\(F_0\)">\(F_0\)</span> is at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The norm of a difference of two functional partial sums containing <span class="math" data-tex="\(F_0\)">\(F_0\)</span> is at most the scalar sum over their symmetric difference, hence at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. To spell out the use of completeness, choose increasing finite sets <span class="math" data-tex="\(F_n\)">\(F_n\)</span> whose scalar subsums exceed <span class="math" data-tex="\(L-2^{-n}\)">\(L-2^{-n}\)</span>. Their functional partial sums are a Cauchy sequence, hence have a limit <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span> by CP06–07. For every finite <span class="math" data-tex="\(F\supseteq F_n\)">\(F\supseteq F_n\)</span>, the difference between the sums over <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(F_n\)">\(F_n\)</span> has norm at most <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>. The sequence limit has the same bound from the sum over <span class="math" data-tex="\(F_n\)">\(F_n\)</span>, by taking the limit of that estimate. Thus every such <span class="math" data-tex="\(F\)">\(F\)</span> is within <span class="math" data-tex="\(2^{1-n}\)">\(2^{1-n}\)</span> of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. This proves convergence of the whole net, without asserting that the sets <span class="math" data-tex="\(F_n\)">\(F_n\)</span> are cofinal. Positivity survives the norm limit by evaluation on each positive element. We have a limit <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\|\omega\|=\omega(1)=\sum_i\omega_i(1)=L.
+\]">\[
+\|\omega\|=\omega(1)=\sum_i\omega_i(1)=L.
+\]</span>
+<p>For <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>, evaluate the norm-convergent functional sums and the strongly convergent operator sums to get</p>
+<span class="math math-display" data-tex="\[
+\omega(x^*x)
+=\sum_i\langle h_i\Lambda(x),\Lambda(x)\rangle
+=\langle h\Lambda(x),\Lambda(x)\rangle
+\leq\|h\|\varphi(x^*x).
+\]">\[
+\omega(x^*x)
+=\sum_i\langle h_i\Lambda(x),\Lambda(x)\rangle
+=\langle h\Lambda(x),\Lambda(x)\rangle
+\leq\|h\|\varphi(x^*x).
+\]</span>
+<p>The finite-positive-domain test used in OW-04 shows <span class="math" data-tex="\(\omega\in\mathcal E_\varphi\)">\(\omega\in\mathcal E_\varphi\)</span>; a constant <span class="math" data-tex="\(1+\|h\|\)">\(1+\|h\|\)</span> suffices globally and avoids an implicit multiplication of infinity by zero. Equation (OW1) then gives <span class="math" data-tex="\(h_\omega=h\)">\(h_\omega=h\)</span>. Therefore <span class="math" data-tex="\(\varphi^{\mathrm{opp}}(h)=L\)">\(\varphi^{\mathrm{opp}}(h)=L\)</span>, proving (OW7) whenever the right side is finite.</p>
+<p>Next suppose <span class="math" data-tex="\(\varphi^{\mathrm{opp}}(h)&lt;\infty\)">\(\varphi^{\mathrm{opp}}(h)&lt;\infty\)</span>. Heredity puts each finite partial sum <span class="math" data-tex="\(h_F=\sum_{i\in F}h_i\)">\(h_F=\sum_{i\in F}h_i\)</span> in <span class="math" data-tex="\(P_\varphi\)">\(P_\varphi\)</span>. Finite additivity and monotonicity give</p>
+<span class="math math-display" data-tex="\[
+\sum_{i\in F}\varphi^{\mathrm{opp}}(h_i)
+=\varphi^{\mathrm{opp}}(h_F)
+\leq\varphi^{\mathrm{opp}}(h).
+\]">\[
+\sum_{i\in F}\varphi^{\mathrm{opp}}(h_i)
+=\varphi^{\mathrm{opp}}(h_F)
+\leq\varphi^{\mathrm{opp}}(h).
+\]</span>
+<p>Taking the supremum over finite <span class="math" data-tex="\(F\)">\(F\)</span> shows that the right side of (OW7) is finite. The preceding case gives equality. Thus either side being finite forces equality. If neither is finite, both are infinity. This proves (OW7) in all cases, including an empty family.</p>
+<p>By NW-11, complete additivity for these positive operator families implies normality on the arbitrary von Neumann algebra <span class="math" data-tex="\(N\)">\(N\)</span>. In particular, for every bounded increasing net <span class="math" data-tex="\(k_\alpha\uparrow k\)">\(k_\alpha\uparrow k\)</span> in <span class="math" data-tex="\(N_+\)">\(N_+\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\varphi^{\mathrm{opp}}(k)=\sup_\alpha\varphi^{\mathrm{opp}}(k_\alpha).
+\]">\[
+\varphi^{\mathrm{opp}}(k)=\sup_\alpha\varphi^{\mathrm{opp}}(k_\alpha).
+\]</span>
+<p>No sequence is substituted for that net. ∎</p>
+<p>The predual sum in this proof converges in norm, whereas the commutant sum converges strongly. Keeping those topologies separate permits us to pass both limits through their respective pairings.</p>
+<h2 id="faithfulness-and-a-net-proving-semifiniteness">Faithfulness and a net proving semifiniteness</h2>
+<p><strong>Theorem.</strong> The weight <span class="math" data-tex="\(\varphi^{\mathrm{opp}}\)">\(\varphi^{\mathrm{opp}}\)</span> is faithful and semifinite. Therefore (OW5) is a faithful normal semifinite weight on <span class="math" data-tex="\(\pi_\varphi(M)&#x27;\)">\(\pi_\varphi(M)&#x27;\)</span>, even when <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is not faithful.</p>
+<p><strong>Proof of faithfulness.</strong> If <span class="math" data-tex="\(\varphi^{\mathrm{opp}}(h)=0\)">\(\varphi^{\mathrm{opp}}(h)=0\)</span>, then <span class="math" data-tex="\(h=h_\omega\)">\(h=h_\omega\)</span> with <span class="math" data-tex="\(\|\omega\|=0\)">\(\|\omega\|=0\)</span>. Thus <span class="math" data-tex="\(\omega=0\)">\(\omega=0\)</span> and <span class="math" data-tex="\(h=h_0=0\)">\(h=h_0=0\)</span>.</p>
+<p><strong>Proof of semifiniteness.</strong> By (OW2), <span class="math" data-tex="\(\omega\in\Phi_\varphi\)">\(\omega\in\Phi_\varphi\)</span> is equivalent to <span class="math" data-tex="\(0\leq h_\omega\leq I_H\)">\(0\leq h_\omega\leq I_H\)</span>. NW-11 applied to <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> gives, for every <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\Lambda(x)\|^2
+=\varphi(x^*x)
+=\sup_{\omega\in\Phi_\varphi}\omega(x^*x)
+=\sup_{\omega\in\Phi_\varphi}
+\|h_\omega^{1/2}\Lambda(x)\|^2.
+\tag{OW8}
+\]">\[
+\|\Lambda(x)\|^2
+=\varphi(x^*x)
+=\sup_{\omega\in\Phi_\varphi}\omega(x^*x)
+=\sup_{\omega\in\Phi_\varphi}
+\|h_\omega^{1/2}\Lambda(x)\|^2.
+\tag{OW8}
+\]</span>
+<p>Set <span class="math" data-tex="\(q(\xi)=\sup_{\omega\in\Phi_\varphi}\|h_\omega^{1/2}\xi\|\)">\(q(\xi)=\sup_{\omega\in\Phi_\varphi}\|h_\omega^{1/2}\xi\|\)</span>. Since these square roots are contractions,</p>
+<span class="math math-display" data-tex="\[
+|q(\xi)-q(\zeta)|\leq\|\xi-\zeta\|.
+\]">\[
+|q(\xi)-q(\zeta)|\leq\|\xi-\zeta\|.
+\]</span>
+<p>Density of GNS vectors and (OW8) imply <span class="math" data-tex="\(q(\xi)=\|\xi\|\)">\(q(\xi)=\|\xi\|\)</span> for every <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>. Consequently the only vector annihilated by all <span class="math" data-tex="\(h_\omega\)">\(h_\omega\)</span>, <span class="math" data-tex="\(\omega\in\Phi_\varphi\)">\(\omega\in\Phi_\varphi\)</span>, is zero. The closed linear span of their support ranges is all of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Here is an explicit increasing finite-weight net. Direct the cone <span class="math" data-tex="\(P_\varphi\)">\(P_\varphi\)</span> by operator order; it is directed because <span class="math" data-tex="\(a+b\)">\(a+b\)</span> is a common upper bound for <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. For every index <span class="math" data-tex="\(a\in P_\varphi\)">\(a\in P_\varphi\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+f_a=a(I_H+a)^{-1}.
+\]">\[
+f_a=a(I_H+a)^{-1}.
+\]</span>
+<p>Functional calculus gives <span class="math" data-tex="\(0\leq f_a\leq I_H\)">\(0\leq f_a\leq I_H\)</span> and <span class="math" data-tex="\(f_a\leq a\)">\(f_a\leq a\)</span>, so heredity puts <span class="math" data-tex="\(f_a\)">\(f_a\)</span> in <span class="math" data-tex="\(P_\varphi\)">\(P_\varphi\)</span>. Inverse order from BK-05 gives <span class="math" data-tex="\(a\leq b\Rightarrow f_a\leq f_b\)">\(a\leq b\Rightarrow f_a\leq f_b\)</span>. Let <span class="math" data-tex="\(f\leq I_H\)">\(f\leq I_H\)</span> be the strong supremum of this net.</p>
+<p>For fixed <span class="math" data-tex="\(a\in P_\varphi\)">\(a\in P_\varphi\)</span>, all <span class="math" data-tex="\(ta\)">\(ta\)</span>, <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, are indices, and BK-06 gives</p>
+<span class="math math-display" data-tex="\[
+ta(I_H+ta)^{-1}\uparrow s(a)\quad(t\to\infty).
+\]">\[
+ta(I_H+ta)^{-1}\uparrow s(a)\quad(t\to\infty).
+\]</span>
+<p>Thus <span class="math" data-tex="\(f\geq s(a)\)">\(f\geq s(a)\)</span>. A positive contraction dominating a projection acts as the identity on its range, by BK-06. Hence <span class="math" data-tex="\(f\)">\(f\)</span> is the identity on every support range of every <span class="math" data-tex="\(h_\omega\)">\(h_\omega\)</span>, <span class="math" data-tex="\(\omega\in\Phi_\varphi\)">\(\omega\in\Phi_\varphi\)</span>. These ranges span a dense subspace, so <span class="math" data-tex="\(f=I_H\)">\(f=I_H\)</span>.</p>
+<p>We have exhibited finite-weight positive contractions <span class="math" data-tex="\(f_a\uparrow I_H\)">\(f_a\uparrow I_H\)</span>. WG-008, applied to the weight <span class="math" data-tex="\(\varphi^{\mathrm{opp}}\)">\(\varphi^{\mathrm{opp}}\)</span>, proves that <span class="math" data-tex="\(\mathfrak m_{\mathrm{opp}}\)">\(\mathfrak m_{\mathrm{opp}}\)</span> is ultraweakly dense in <span class="math" data-tex="\(N\)">\(N\)</span>. This is precisely semifiniteness. ∎</p>
+<p>If <span class="math" data-tex="\(H=\{0\}\)">\(H=\{0\}\)</span>, then <span class="math" data-tex="\(N=\{0\}\)">\(N=\{0\}\)</span>, the opposite weight is zero, and faithfulness and semifiniteness hold vacuously. In this situation injectivity of OW-02 forces <span class="math" data-tex="\(\mathcal E_\varphi=\{0\}\)">\(\mathcal E_\varphi=\{0\}\)</span>, so no norm ambiguity occurs. The nonsemifinite counterexample in OW-11 has a different finite-domain hypothesis despite having the same zero Hilbert space.</p>
+<h2 id="recognizing-finite-positive-operators-without-choosing-a-functional">Recognizing finite positive operators without choosing a functional</h2>
+<p><strong>Proposition.</strong> For <span class="math" data-tex="\(h\in N_+\)">\(h\in N_+\)</span>, the following are equivalent:</p>
+<ol>
+<li>
+<p><span class="math" data-tex="\(\varphi^{\mathrm{opp}}(h)&lt;\infty\)">\(\varphi^{\mathrm{opp}}(h)&lt;\infty\)</span>.</p>
+</li>
+<li>
+<p>There exists <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+h^{1/2}\Lambda(x)=\pi(x)\eta
+\quad\text{for every }x\in\mathfrak n_\varphi.
+\tag{OW9}
+\]">\[
+h^{1/2}\Lambda(x)=\pi(x)\eta
+\quad\text{for every }x\in\mathfrak n_\varphi.
+\tag{OW9}
+\]</span>
+</li>
+</ol>
+<p>When these conditions hold, <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is unique and</p>
+<span class="math math-display" data-tex="\[
+\varphi^{\mathrm{opp}}(h)=\|\eta\|^2,
+\qquad
+\omega_h(a)=\langle\pi(a)\eta,\eta\rangle
+\]">\[
+\varphi^{\mathrm{opp}}(h)=\|\eta\|^2,
+\qquad
+\omega_h(a)=\langle\pi(a)\eta,\eta\rangle
+\]</span>
+<p>is the unique functional in <span class="math" data-tex="\(\mathcal E_\varphi\)">\(\mathcal E_\varphi\)</span> with <span class="math" data-tex="\(h_{\omega_h}=h\)">\(h_{\omega_h}=h\)</span>.</p>
+<p><strong>Proof.</strong> Finiteness gives <span class="math" data-tex="\(h=h_\omega\)">\(h=h_\omega\)</span>, and OW-03 supplies <span class="math" data-tex="\(\eta_\omega\)">\(\eta_\omega\)</span>, its norm, and uniqueness. Conversely, suppose (OW9) holds and define the displayed vector functional <span class="math" data-tex="\(\omega_h\)">\(\omega_h\)</span>. It is normal because <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is normal. For <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\omega_h(x^*x)=\|h^{1/2}\Lambda(x)\|^2
+\leq\|h\|\varphi(x^*x).
+\]">\[
+\omega_h(x^*x)=\|h^{1/2}\Lambda(x)\|^2
+\leq\|h\|\varphi(x^*x).
+\]</span>
+<p>The same finite-positive-domain argument as before gives <span class="math" data-tex="\(\omega_h\in\mathcal E_\varphi\)">\(\omega_h\in\mathcal E_\varphi\)</span>; polarization gives <span class="math" data-tex="\(h_{\omega_h}=h\)">\(h_{\omega_h}=h\)</span>. Its norm is <span class="math" data-tex="\(\|\eta\|^2\)">\(\|\eta\|^2\)</span>, since <span class="math" data-tex="\(\pi(1)=I_H\)">\(\pi(1)=I_H\)</span>. Uniqueness of the functional follows from OW-02, and uniqueness of the vector follows by applying <span class="math" data-tex="\(\pi(e_\alpha)\uparrow I_H\)">\(\pi(e_\alpha)\uparrow I_H\)</span> to the difference of two vectors satisfying (OW9). ∎</p>
+<p>This criterion records a boundedness condition on the module equation with its exact domain. It is not an assertion that right multiplication by an arbitrary element of <span class="math" data-tex="\(M\)">\(M\)</span> is bounded in GNS norm.</p>
+<h2 id="an-arbitrary-coordinate-example-with-a-nonfaithful-input"><span id="oa-mod-ow-09"></span><span id="OA-MOD-OW-09"></span>An arbitrary-coordinate example with a nonfaithful input</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be any set, let <span class="math" data-tex="\(0\leq w_i&lt;\infty\)">\(0\leq w_i&lt;\infty\)</span>, and put <span class="math" data-tex="\(S=\{i:w_i&gt;0\}\)">\(S=\{i:w_i&gt;0\}\)</span>. On <span class="math" data-tex="\(M=\ell^\infty(I)\)">\(M=\ell^\infty(I)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sum_{i\in I}w_i a_i\qquad(a\geq0).
+\]">\[
+\varphi(a)=\sum_{i\in I}w_i a_i\qquad(a\geq0).
+\]</span>
+<p>Sums mean suprema over finite subsets. The finite-subset arguments in <a href="OA-MOD-WG.html#oa-mod-wg-011">WG011</a> show normality and semifiniteness; coordinates of zero weight do not affect either proof. The weight is faithful exactly when <span class="math" data-tex="\(S=I\)">\(S=I\)</span>.</p>
+<p>Its GNS space is <span class="math" data-tex="\(\ell^2(S,w)\)">\(\ell^2(S,w)\)</span>, with <span class="math" data-tex="\(\Lambda(x)=x|_S\)">\(\Lambda(x)=x|_S\)</span> on the domain where <span class="math" data-tex="\(\sum_i w_i|x_i|^2&lt;\infty\)">\(\sum_i w_i|x_i|^2&lt;\infty\)</span>. The representation acts by coordinate multiplication. Its commutant is again <span class="math" data-tex="\(\ell^\infty(S)\)">\(\ell^\infty(S)\)</span>: an operator commuting with every coordinate projection preserves each one-dimensional coordinate space, and is therefore a bounded diagonal operator. This argument also applies when <span class="math" data-tex="\(S\)">\(S\)</span> is uncountable.</p>
+<p>Here are the completion and density details. The map <span class="math" data-tex="\(x_i\mapsto \sqrt{w_i}x_i\)">\(x_i\mapsto \sqrt{w_i}x_i\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span> identifies the GNS norm with the ordinary square-sum norm. This square-sum space is complete: for a Cauchy sequence <span class="math" data-tex="\(z^{(n)}\)">\(z^{(n)}\)</span>, every coordinate converges to some <span class="math" data-tex="\(z_i\)">\(z_i\)</span>. If <span class="math" data-tex="\(\|z^{(n)}-z^{(m)}\|\leq\varepsilon\)">\(\|z^{(n)}-z^{(m)}\|\leq\varepsilon\)</span> for <span class="math" data-tex="\(n,m\geq N\)">\(n,m\geq N\)</span>, passing to the coordinate limit in any finite subsum gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{i\in F}|z_i^{(n)}-z_i|^2\leq\varepsilon^2,\\
+F\subseteq S\text{ finite},\qquad n\geq N.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{i\in F}|z_i^{(n)}-z_i|^2\leq\varepsilon^2,\\
+F\subseteq S\text{ finite},\qquad n\geq N.
+\end{gathered}
+\]</span>
+<p>The scalar inequality <span class="math" data-tex="\(|z_i|^2\leq2|z_i-z_i^{(N)}|^2+2|z_i^{(N)}|^2\)">\(|z_i|^2\leq2|z_i-z_i^{(N)}|^2+2|z_i^{(N)}|^2\)</span>, followed by finite-subsum suprema, proves that <span class="math" data-tex="\(z\)">\(z\)</span> has finite square sum. Taking the same suprema in the displayed estimate proves norm convergence to <span class="math" data-tex="\(z\)">\(z\)</span>. A finite subsum within <span class="math" data-tex="\(\varepsilon^2\)">\(\varepsilon^2\)</span> of the total leaves a tail of norm at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, so finite-support vectors are dense. Every such vector is the restriction of a bounded finite-support element of <span class="math" data-tex="\(M\)">\(M\)</span> in the GNS domain. This proves the asserted completion, including <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>.</p>
+<p>For the commutant assertion, use the normalized coordinate vectors as an orthonormal family. A commuting operator acts on each by a scalar of modulus at most its norm. Its action on their dense finite span is therefore the corresponding bounded diagonal action, which determines it on the whole completion. Conversely every bounded diagonal action commutes with all coordinate multipliers.</p>
+<p>Every positive normal functional on <span class="math" data-tex="\(\ell^\infty(I)\)">\(\ell^\infty(I)\)</span> has the form</p>
+<span class="math math-display" data-tex="\[
+\omega_v(a)=\sum_i v_i a_i,
+\qquad v_i\geq0,\quad\sum_i v_i&lt;\infty.
+\]">\[
+\omega_v(a)=\sum_i v_i a_i,
+\qquad v_i\geq0,\quad\sum_i v_i&lt;\infty.
+\]</span>
+<p>Indeed its coordinate masses have sum <span class="math" data-tex="\(\omega_v(1)\)">\(\omega_v(1)\)</span> by normality of the increasing finite coordinate projections; applying the same argument to finite truncations of <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> gives the formula. Conversely such a summable family defines a normal functional by interchanging finite-subset and increasing-net suprema.</p>
+<p>Domination <span class="math" data-tex="\(\omega_v\leq c\varphi\)">\(\omega_v\leq c\varphi\)</span> is equivalent to <span class="math" data-tex="\(v_i\leq c w_i\)">\(v_i\leq c w_i\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, by testing individual coordinates and then summing. In particular <span class="math" data-tex="\(v_i=0\)">\(v_i=0\)</span> outside <span class="math" data-tex="\(S\)">\(S\)</span>. Formula (OW1) shows that <span class="math" data-tex="\(h_{\omega_v}\)">\(h_{\omega_v}\)</span> is multiplication by <span class="math" data-tex="\(v_i/w_i\)">\(v_i/w_i\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>. Therefore, for <span class="math" data-tex="\(h=(h_i)\in\ell^\infty(S)_+\)">\(h=(h_i)\in\ell^\infty(S)_+\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\varphi^{\mathrm{opp}}(h)=\sum_{i\in S}w_i h_i.
+\tag{OW10}
+\]">\[
+\varphi^{\mathrm{opp}}(h)=\sum_{i\in S}w_i h_i.
+\tag{OW10}
+\]</span>
+<p>For a finite sum value, choose <span class="math" data-tex="\(v_i=w_i h_i\)">\(v_i=w_i h_i\)</span>; it is summable and dominated with constant <span class="math" data-tex="\(\|h\|\)">\(\|h\|\)</span>, and gives the required comparison operator. For an infinite sum value no normal functional of finite norm can have those coordinate masses, so (OW5) gives infinity. This proves (OW10) directly in both cases.</p>
+<p>The resulting weight is faithful on <span class="math" data-tex="\(\ell^\infty(S)\)">\(\ell^\infty(S)\)</span>. The zero-weight coordinates have disappeared through the GNS quotient, rather than being made positive by an unstated faithfulness assumption. If <span class="math" data-tex="\(S\)">\(S\)</span> is uncountable, this example cannot be replaced by a faithful normal state on that commutant: a summable family of nonnegative coordinate masses has at most countable support, since for each positive integer <span class="math" data-tex="\(n\)">\(n\)</span> only finitely many masses can be at least <span class="math" data-tex="\(1/n\)">\(1/n\)</span>.</p>
+<h2 id="matrix-calculation-operator-size-and-weight-size"><span id="oa-mod-ow-10"></span><span id="OA-MOD-OW-10"></span>Matrix calculation: operator size and weight size</h2>
+<p>Let <span class="math" data-tex="\(M=M_d(\mathbb C)\)">\(M=M_d(\mathbb C)\)</span> and <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span> be an invertible positive matrix. Set <span class="math" data-tex="\(\varphi(a)=\operatorname{Tr}(Da)\)">\(\varphi(a)=\operatorname{Tr}(Da)\)</span>. Realize its GNS space as the Hilbert space of <span class="math" data-tex="\(d\times d\)">\(d\times d\)</span> matrices with</p>
+<span class="math math-display" data-tex="\[
+\langle z,w\rangle=\operatorname{Tr}(w^*z),\qquad
+\Lambda(x)=xD^{1/2},\qquad \pi(a)z=az.
+\]">\[
+\langle z,w\rangle=\operatorname{Tr}(w^*z),\qquad
+\Lambda(x)=xD^{1/2},\qquad \pi(a)z=az.
+\]</span>
+<p>Right multiplication <span class="math" data-tex="\(R_b(z)=zb\)">\(R_b(z)=zb\)</span> gives the whole commutant: an operator <span class="math" data-tex="\(T\)">\(T\)</span> commuting with every left multiplication satisfies <span class="math" data-tex="\(T(z)=zT(1)\)">\(T(z)=zT(1)\)</span>. The map <span class="math" data-tex="\(b\mapsto R_b\)">\(b\mapsto R_b\)</span> reverses products, since <span class="math" data-tex="\(R_bR_c=R_{cb}\)">\(R_bR_c=R_{cb}\)</span>, and preserves involution and positivity.</p>
+<p>All matrix facts used in this calculation follow from finite sums. Cyclicity of trace follows from</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Tr}(AB)&amp;=\sum_{j,k}A_{jk}B_{kj}\\
+&amp;=\sum_{k,j}B_{kj}A_{jk}\\
+&amp;=\operatorname{Tr}(BA).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Tr}(AB)&amp;=\sum_{j,k}A_{jk}B_{kj}\\
+&amp;=\sum_{k,j}B_{kj}A_{jk}\\
+&amp;=\operatorname{Tr}(BA).
+\end{aligned}
+\]</span>
+<p>Also <span class="math" data-tex="\(\operatorname{Tr}(z^*z)=\sum_{j,k}|z_{jk}|^2\)">\(\operatorname{Tr}(z^*z)=\sum_{j,k}|z_{jk}|^2\)</span>, so the stated inner product is positive definite. Completeness follows by taking the entrywise limits of a Cauchy sequence, then taking the finite sum of the squared entry errors. For <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span>, cyclicity gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(Ca)
+=\sum_j\langle a C^{1/2}v_j,C^{1/2}v_j\rangle,
+\]">\[
+\operatorname{Tr}(Ca)
+=\sum_j\langle a C^{1/2}v_j,C^{1/2}v_j\rangle,
+\]</span>
+<p>where <span class="math" data-tex="\(v_j\)">\(v_j\)</span> are the standard basis vectors. Hence it is a positive normal functional, as a finite sum of vector functionals. In particular this applies to <span class="math" data-tex="\(D\)">\(D\)</span>, and the displayed GNS identification is a surjective isometry since <span class="math" data-tex="\(D^{1/2}\)">\(D^{1/2}\)</span> is invertible.</p>
+<p>Conversely, if <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is positive, set <span class="math" data-tex="\(C_{jk}=\omega(E_{kj})\)">\(C_{jk}=\omega(E_{kj})\)</span>. Expansion in the matrix units gives <span class="math" data-tex="\(\omega(a)=\operatorname{Tr}(Ca)\)">\(\omega(a)=\operatorname{Tr}(Ca)\)</span>, and testing <span class="math" data-tex="\(a=vv^*\)">\(a=vv^*\)</span> gives <span class="math" data-tex="\(v^*Cv\geq0\)">\(v^*Cv\geq0\)</span> for every column <span class="math" data-tex="\(v\)">\(v\)</span>. Polarization then makes <span class="math" data-tex="\(C\)">\(C\)</span> self-adjoint and positive. For positive matrices <span class="math" data-tex="\(C,D\)">\(C,D\)</span>, domination of the associated functionals by a constant <span class="math" data-tex="\(c\)">\(c\)</span> is equivalent to <span class="math" data-tex="\(C\leq cD\)">\(C\leq cD\)</span>: rank-one tests prove necessity; the positive square-root formula above proves sufficiency. When <span class="math" data-tex="\(D\)">\(D\)</span> is invertible, congruence by <span class="math" data-tex="\(D^{-1/2}\)">\(D^{-1/2}\)</span> supplies a finite such constant for every <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span>.</p>
+<p>Cyclicity also gives <span class="math" data-tex="\(R_b^*=R_{b^*}\)">\(R_b^*=R_{b^*}\)</span>. For <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle R_bz,z\rangle&amp;=\operatorname{Tr}(z^*zb)\\
+&amp;=\|zb^{1/2}\|_{\mathrm{HS}}^2\geq0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle R_bz,z\rangle&amp;=\operatorname{Tr}(z^*zb)\\
+&amp;=\|zb^{1/2}\|_{\mathrm{HS}}^2\geq0.
+\end{aligned}
+\]</span>
+<p>Conversely, positivity of <span class="math" data-tex="\(R_b\)">\(R_b\)</span> tested on <span class="math" data-tex="\(z=uv^*\)">\(z=uv^*\)</span>, with <span class="math" data-tex="\(u\)">\(u\)</span> a unit column, gives <span class="math" data-tex="\(v^*bv\geq0\)">\(v^*bv\geq0\)</span> for every <span class="math" data-tex="\(v\)">\(v\)</span>, hence <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span>. The operator norm is <span class="math" data-tex="\(\|R_b\|=\|b\|\)">\(\|R_b\|=\|b\|\)</span>: the upper bound follows by applying <span class="math" data-tex="\(\|b^*v\|\leq\|b\|\|v\|\)">\(\|b^*v\|\leq\|b\|\|v\|\)</span> to each row <span class="math" data-tex="\(v^*\)">\(v^*\)</span> of <span class="math" data-tex="\(z\)">\(z\)</span> and summing squares. For the lower bound, matrices with a single unit row give the supremum <span class="math" data-tex="\(\|b^*\|=\|b\|\)">\(\|b^*\|=\|b\|\)</span>, the adjoint-norm identity proved in BK01. These arguments also prove that the positive square root of <span class="math" data-tex="\(R_b\)">\(R_b\)</span> is <span class="math" data-tex="\(R_{b^{1/2}}\)">\(R_{b^{1/2}}\)</span>.</p>
+<p>For <span class="math" data-tex="\(\omega_C(a)=\operatorname{Tr}(Ca)\)">\(\omega_C(a)=\operatorname{Tr}(Ca)\)</span>, <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+b=D^{-1/2}CD^{-1/2}.
+\]">\[
+b=D^{-1/2}CD^{-1/2}.
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+\langle R_b\Lambda(x),\Lambda(y)\rangle
+=\operatorname{Tr}(D^{1/2}bD^{1/2}y^*x)
+=\omega_C(y^*x).
+\]">\[
+\langle R_b\Lambda(x),\Lambda(y)\rangle
+=\operatorname{Tr}(D^{1/2}bD^{1/2}y^*x)
+=\omega_C(y^*x).
+\]</span>
+<p>Thus <span class="math" data-tex="\(h_{\omega_C}=R_b\)">\(h_{\omega_C}=R_b\)</span>, and every positive element of the commutant arises this way. Its opposite-weight value and implementing vector are</p>
+<span class="math math-display" data-tex="\[
+\varphi^{\mathrm{opp}}(R_b)=\operatorname{Tr}(Db),
+\qquad \eta_b=D^{1/2}b^{1/2}.
+\]">\[
+\varphi^{\mathrm{opp}}(R_b)=\operatorname{Tr}(Db),
+\qquad \eta_b=D^{1/2}b^{1/2}.
+\]</span>
+<p>Indeed <span class="math" data-tex="\(R_b^{1/2}\Lambda(x)=xD^{1/2}b^{1/2}=\pi(x)\eta_b\)">\(R_b^{1/2}\Lambda(x)=xD^{1/2}b^{1/2}=\pi(x)\eta_b\)</span>, and <span class="math" data-tex="\(\|\eta_b\|^2=\operatorname{Tr}(Db)\)">\(\|\eta_b\|^2=\operatorname{Tr}(Db)\)</span>. The matrices <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> need not commute.</p>
+<p>For example, take</p>
+<span class="math math-display" data-tex="\[
+D=\begin{pmatrix}2&amp;0\\0&amp;5\end{pmatrix},\qquad
+b=\begin{pmatrix}1&amp;1/2\\1/2&amp;1\end{pmatrix}.
+\]">\[
+D=\begin{pmatrix}2&amp;0\\0&amp;5\end{pmatrix},\qquad
+b=\begin{pmatrix}1&amp;1/2\\1/2&amp;1\end{pmatrix}.
+\]</span>
+<p>The best domination constant is <span class="math" data-tex="\(\|h_{\omega_C}\|=\|b\|=3/2\)">\(\|h_{\omega_C}\|=\|b\|=3/2\)</span>, whereas <span class="math" data-tex="\(\varphi^{\mathrm{opp}}(h_{\omega_C})=\operatorname{Tr}(Db)=7\)">\(\varphi^{\mathrm{opp}}(h_{\omega_C})=\operatorname{Tr}(Db)=7\)</span>. This separates the operator bound from the functional norm used in the new weight. To check the numerical values directly, the orthogonal vectors <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> and <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span> form a basis and are eigenvectors of <span class="math" data-tex="\(b\)">\(b\)</span> with eigenvalues <span class="math" data-tex="\(3/2\)">\(3/2\)</span> and <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Expanding any vector in this basis proves the operator norm is <span class="math" data-tex="\(3/2\)">\(3/2\)</span>; summing the two diagonal entries of <span class="math" data-tex="\(Db\)">\(Db\)</span> gives <span class="math" data-tex="\(2+5=7\)">\(2+5=7\)</span>.</p>
+<h2 id="why-unrestricted-normal-weights-do-not-support-formula-ow5">Why unrestricted normal weights do not support formula (OW5)</h2>
+<p>Take the nonzero algebra <span class="math" data-tex="\(M=\mathbb C\)">\(M=\mathbb C\)</span> and define</p>
+<span class="math math-display" data-tex="\[
+\varphi_\infty(0)=0,\qquad
+\varphi_\infty(t)=\infty\quad(t&gt;0).
+\]">\[
+\varphi_\infty(0)=0,\qquad
+\varphi_\infty(t)=\infty\quad(t&gt;0).
+\]</span>
+<p>It is normal and faithful: an increasing positive net with a positive supremum has a positive term, and only zero has weight zero. Its finite domain is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, so it is not semifinite and its GNS Hilbert space is zero.</p>
+<p>For every <span class="math" data-tex="\(c\geq0\)">\(c\geq0\)</span>, the normal positive functional <span class="math" data-tex="\(\omega_c(z)=cz\)">\(\omega_c(z)=cz\)</span> belongs to <span class="math" data-tex="\(\mathcal E_{\varphi_\infty}\)">\(\mathcal E_{\varphi_\infty}\)</span>; for example it is dominated by <span class="math" data-tex="\(\varphi_\infty\)">\(\varphi_\infty\)</span>. Its comparison operator is always the unique zero operator on the zero Hilbert space. Nevertheless</p>
+<span class="math math-display" data-tex="\[
+\|\omega_c\|=c.
+\]">\[
+\|\omega_c\|=c.
+\]</span>
+<p>Hence assigning <span class="math" data-tex="\(\varphi^{\mathrm{opp}}(h_{\omega_c})=\|\omega_c\|\)">\(\varphi^{\mathrm{opp}}(h_{\omega_c})=\|\omega_c\|\)</span> would assign every nonnegative value to the same input zero. It is not a function.</p>
+<p>This diagnoses a missing hypothesis in the unrestricted formula, not a failure of the bounded comparison theorem DW-03: that theorem compares operators with forms on the finite domain, which are all zero here. Nor does it invalidate NW-11: all the functionals <span class="math" data-tex="\(\omega_c\)">\(\omega_c\)</span> together recover the infinite values as a pointwise supremum. It is the additional claim that the finite-domain comparison operator determines the full normal functional that fails.</p>
+<p>The theorem through OW-08 assumes normality and semifiniteness before making that claim. An arbitrary-normal-weight construction requires a changed functional class or a specified support reduction. OW-14 supplies such a repair explicitly; it does not make the unrestricted norm formula valid.</p>
+<h2 id="exercises-and-solutions">Exercises and solutions</h2>
+<p><strong>Problem 1: positive rescaling.</strong> Let <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> and <span class="math" data-tex="\(\psi=r\varphi\)">\(\psi=r\varphi\)</span>. Identify the GNS spaces by the unitary <span class="math" data-tex="\(V:H_\psi\to H_\varphi\)">\(V:H_\psi\to H_\varphi\)</span> defined on GNS vectors by
+<span class="math" data-tex="\(V\Lambda_\psi(x)=\sqrt r\,\Lambda_\varphi(x)\)">\(V\Lambda_\psi(x)=\sqrt r\,\Lambda_\varphi(x)\)</span>. Determine the relation between the two opposite weights under this identification.</p>
+<p><strong>Solution.</strong> Both finite domains agree, and the displayed norm identity proves that <span class="math" data-tex="\(V\)">\(V\)</span> is an isometry with dense range, hence a unitary. It intertwines the representations, so it identifies the commutants. The dominated-functional cones agree because a finite comparison constant can be divided or multiplied by <span class="math" data-tex="\(r\)">\(r\)</span>. From the pairing definition,</p>
+<span class="math math-display" data-tex="\[
+Vh^{\psi}_\omega V^*=r^{-1}h^{\varphi}_\omega.
+\]">\[
+Vh^{\psi}_\omega V^*=r^{-1}h^{\varphi}_\omega.
+\]</span>
+<p>For an operator <span class="math" data-tex="\(h\)">\(h\)</span> in the identified commutant, finiteness for <span class="math" data-tex="\(\psi^{\mathrm{opp}}\)">\(\psi^{\mathrm{opp}}\)</span> is therefore equivalent to finiteness of <span class="math" data-tex="\(rh\)">\(rh\)</span> for <span class="math" data-tex="\(\varphi^{\mathrm{opp}}\)">\(\varphi^{\mathrm{opp}}\)</span>, and their values agree there. Homogeneity of the weight gives</p>
+<span class="math math-display" data-tex="\[
+\psi^{\mathrm{opp}}(V^*hV)=r\,\varphi^{\mathrm{opp}}(h)
+\quad(h\geq0),
+\]">\[
+\psi^{\mathrm{opp}}(V^*hV)=r\,\varphi^{\mathrm{opp}}(h)
+\quad(h\geq0),
+\]</span>
+<p>including infinite values. Rescaling the original weight rescales its opposite by the same scalar; it does not take the reciprocal of the weight.</p>
+<p><strong>Problem 2: GNS independence.</strong> Suppose <span class="math" data-tex="\((\widetilde H,\widetilde\pi,\widetilde\Lambda)\)">\((\widetilde H,\widetilde\pi,\widetilde\Lambda)\)</span> is another GNS semicyclic triple for the same weight, and let <span class="math" data-tex="\(W\Lambda(x)=\widetilde\Lambda(x)\)">\(W\Lambda(x)=\widetilde\Lambda(x)\)</span> be the canonical unitary. Prove that the opposite weights are conjugate by <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p><strong>Solution.</strong> The uniqueness theorem in WG-006 gives <span class="math" data-tex="\(W\pi(a)W^*=\widetilde\pi(a)\)">\(W\pi(a)W^*=\widetilde\pi(a)\)</span>, so conjugation identifies the commutants. For every dominated functional, its pairing on the dense GNS vectors is represented by both <span class="math" data-tex="\(Wh_\omega W^*\)">\(Wh_\omega W^*\)</span> and <span class="math" data-tex="\(\widetilde h_\omega\)">\(\widetilde h_\omega\)</span>. Uniqueness of the bounded representing operator gives their equality. Thus conjugation sends the finite cone bijectively to the new finite cone and preserves its value <span class="math" data-tex="\(\|\omega\|\)">\(\|\omega\|\)</span>. It also sends the complement of the finite cone to its complement. Hence
+<span class="math" data-tex="\(\widetilde\varphi^{\mathrm{opp}}(WhW^*)=\varphi^{\mathrm{opp}}(h)\)">\(\widetilde\varphi^{\mathrm{opp}}(WhW^*)=\varphi^{\mathrm{opp}}(h)\)</span> for every <span class="math" data-tex="\(h\geq0\)">\(h\geq0\)</span>.</p>
+<p><strong>Problem 3: finite norm does not mean finite weight.</strong> In the coordinate model with <span class="math" data-tex="\(I=\mathbb N\)">\(I=\mathbb N\)</span> and <span class="math" data-tex="\(w_i=1\)">\(w_i=1\)</span>, compute the opposite-weight value of the identity and of the projections <span class="math" data-tex="\(p_F\)">\(p_F\)</span> onto finite subsets. Explain why this is consistent with normality and semifiniteness.</p>
+<p><strong>Solution.</strong> Formula (OW10) gives <span class="math" data-tex="\(\varphi^{\mathrm{opp}}(I)=\infty\)">\(\varphi^{\mathrm{opp}}(I)=\infty\)</span> and <span class="math" data-tex="\(\varphi^{\mathrm{opp}}(p_F)=|F|\)">\(\varphi^{\mathrm{opp}}(p_F)=|F|\)</span>, although <span class="math" data-tex="\(\|I\|=\|p_F\|=1\)">\(\|I\|=\|p_F\|=1\)</span> for nonempty <span class="math" data-tex="\(F\)">\(F\)</span>. The projections <span class="math" data-tex="\(p_F\uparrow I\)">\(p_F\uparrow I\)</span> strongly, and their values increase without bound, which is exactly normality at this infinite value. They are finite-weight positive contractions tending to the identity, which proves semifiniteness. Boundedness as an operator is unrelated to finiteness of this weight.</p>
+<p><strong>Problem 4: a nonfaithful state gives a faithful opposite.</strong> On <span class="math" data-tex="\(M_d(\mathbb C)\)">\(M_d(\mathbb C)\)</span>, let <span class="math" data-tex="\(\varphi(a)=\langle av,v\rangle\)">\(\varphi(a)=\langle av,v\rangle\)</span> for a unit vector <span class="math" data-tex="\(v\)">\(v\)</span>, with <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>. Compute the opposite weight.</p>
+<p><strong>Solution.</strong> The GNS space is <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>, <span class="math" data-tex="\(\Lambda(x)=xv\)">\(\Lambda(x)=xv\)</span>, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is the usual action. The commutant is <span class="math" data-tex="\(\mathbb CI\)">\(\mathbb CI\)</span>. A normal positive functional <span class="math" data-tex="\(\omega_C(a)=\operatorname{Tr}(Ca)\)">\(\omega_C(a)=\operatorname{Tr}(Ca)\)</span> is dominated by a multiple of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> exactly when <span class="math" data-tex="\(0\leq C\leq c\,vv^*\)">\(0\leq C\leq c\,vv^*\)</span> for some <span class="math" data-tex="\(c\)">\(c\)</span>; positivity forces <span class="math" data-tex="\(C=t vv^*\)">\(C=t vv^*\)</span>, <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. Indeed its quadratic form vanishes on <span class="math" data-tex="\(v^\perp\)">\(v^\perp\)</span>, so its positive square root annihilates that subspace and its range is contained in <span class="math" data-tex="\(\mathbb Cv\)">\(\mathbb Cv\)</span>. Hence <span class="math" data-tex="\(\omega_C=t\varphi\)">\(\omega_C=t\varphi\)</span>, <span class="math" data-tex="\(h_{\omega_C}=tI\)">\(h_{\omega_C}=tI\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\varphi^{\mathrm{opp}}(tI)=t.
+\]">\[
+\varphi^{\mathrm{opp}}(tI)=t.
+\]</span>
+<p>This is faithful on the scalar commutant. The input state is not faithful on the full matrix algebra, because it vanishes on any projection onto a nonzero subspace of <span class="math" data-tex="\(v^\perp\)">\(v^\perp\)</span>.</p>
+<p><strong>Problem 5: distinguish a zero input from an infinite input.</strong> On a nonzero von Neumann algebra let <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span> be the zero weight. Compare its construction with OW-11.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span>, both finite domains are all of <span class="math" data-tex="\(M\)">\(M\)</span>; the weight is normal and semifinite, but not faithful. Its GNS space and commutant are zero. A positive functional dominated by any finite multiple of <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span> must be zero. Thus <span class="math" data-tex="\(\mathcal E_{\varphi_0}=\{0\}\)">\(\mathcal E_{\varphi_0}=\{0\}\)</span>, formula (OW5) assigns the unique value zero at the unique positive operator, and the opposite weight is well-defined. For <span class="math" data-tex="\(\varphi_\infty\)">\(\varphi_\infty\)</span>, the finite domain is zero, every positive normal functional is dominated, and the same zero comparison operator carries incompatible functional norms. The Hilbert space alone does not distinguish those situations; the finite-domain hypothesis does.</p>
+<h2 id="free-comparison-and-scope-of-the-construction">Free comparison and scope of the construction</h2>
+<p>Nelson’s free notes, pages 30–32, give the comparison operator, polar implementing vector and opposite-weight construction. Theorem 3.18 uses the unrestricted normal-weight setup of page 30, but its displayed functional-norm prescription needs the semifiniteness hypothesis used in OW02–03. OW11 gives a counterexample to the unrestricted prescription; OW14 supplies the corrected arbitrary-normal construction. Thus the free source’s statement is checked against the proof, rather than imported as an assertion.</p>
+<p>In <a href="https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf"><em>Tomita–Takesaki Theory</em>, Theorem 3.18 and Definition 3.19</a>, the heredity argument corresponds to OW04 and the complete-additivity argument to OW06. OW03 explicitly proves that the polar factor is a coisometry, the step needed for equality of the vector and functional norms. OW07 supplies an increasing finite-weight net directly, filling the directedness step left unresolved on page 32. OW09–12 give fully calculated examples and solutions. No modular commutant theorem is used to construct the new weight.</p>
+<p>The unit exports the faithful normal semifinite weight (OW5), its exact positive finite cone and algebraic domains, its implementing-vector criterion, and invariance under the canonical GNS unitary. The following final item proves the separate arbitrary-normal repair. The unit does not identify these weights by a modular conjugation, prove a double-opposite theorem, construct a spatial derivative, or prove Connes cocycle formulas. Those remain distinct course obligations. The distinction between the two finite-domain hypotheses is part of the theorem, not a choice of notation.</p>
+<h2 id="a-corrected-construction-for-an-arbitrary-normal-input"><span id="oa-mod-ow-14"></span><span id="OA-MOD-OW-14"></span>A corrected construction for an arbitrary normal input</h2>
+<p>This item changes the standing hypothesis: <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is now <strong>any normal weight</strong>, with no semifiniteness or faithfulness assumption. Let <span class="math" data-tex="\(e\)">\(e\)</span> be its finite-domain projection from <a href="OA-MOD-WS.html#oa-mod-ws-02">WS02</a>. The exact additional input is</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_\varphi\subseteq Me,
+\qquad\overline{\mathfrak m_\varphi}^{\,\mathrm{uw}}=eMe,
+\qquad u_\alpha\uparrow e,
+\]">\[
+\mathfrak n_\varphi\subseteq Me,
+\qquad\overline{\mathfrak m_\varphi}^{\,\mathrm{uw}}=eMe,
+\qquad u_\alpha\uparrow e,
+\]</span>
+<p>where <span class="math" data-tex="\(u_\alpha\)">\(u_\alpha\)</span> is an increasing net of positive contractions of finite <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-weight. Every finite positive element is supported in <span class="math" data-tex="\(e\)">\(e\)</span>; the restriction to <span class="math" data-tex="\(eMe\)">\(eMe\)</span> is normal and semifinite by <a href="OA-MOD-WS.html#oa-mod-ws-03">WS03</a>. Neither <span class="math" data-tex="\(e\)">\(e\)</span> nor <span class="math" data-tex="\(\pi_\varphi(e)\)">\(\pi_\varphi(e)\)</span> is assumed central or equal to an identity.</p>
+<p>Keep <span class="math" data-tex="\(H,\pi,\Lambda,N,\mathcal E_\varphi\)">\(H,\pi,\Lambda,N,\mathcal E_\varphi\)</span>, and the bounded comparison operator <span class="math" data-tex="\(h_\omega\)">\(h_\omega\)</span> as before; its existence uses DW-03 and remains valid without semifiniteness. For a functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+\omega_e(a)=\omega(eae),\qquad
+\mathcal E_\varphi^e
+=\{\rho\in\mathcal E_\varphi:\rho=\rho_e\}.
+\]">\[
+\omega_e(a)=\omega(eae),\qquad
+\mathcal E_\varphi^e
+=\{\rho\in\mathcal E_\varphi:\rho=\rho_e\}.
+\]</span>
+<p><strong>Theorem.</strong> The rule</p>
+<span class="math math-display" data-tex="\[
+\widehat\varphi^{\mathrm{opp}}(h)=
+\begin{cases}
+\omega(e),&amp;h=h_\omega\text{ for some }\omega\in\mathcal E_\varphi,\\
+\infty,&amp;h\text{ is not of this form}
+\end{cases}
+\qquad(h\in N_+)
+\tag{OW11}
+\]">\[
+\widehat\varphi^{\mathrm{opp}}(h)=
+\begin{cases}
+\omega(e),&amp;h=h_\omega\text{ for some }\omega\in\mathcal E_\varphi,\\
+\infty,&amp;h\text{ is not of this form}
+\end{cases}
+\qquad(h\in N_+)
+\tag{OW11}
+\]</span>
+<p>is well-defined and is a faithful normal semifinite weight. Its finite cone is still <span class="math" data-tex="\(\{h_\omega:\omega\in\mathcal E_\varphi\}\)">\(\{h_\omega:\omega\in\mathcal E_\varphi\}\)</span>, but the finite value is <span class="math" data-tex="\(\omega(e)\)">\(\omega(e)\)</span>, not generally <span class="math" data-tex="\(\|\omega\|\)">\(\|\omega\|\)</span>. Equivalently, each finite operator has a unique representing functional <span class="math" data-tex="\(\rho\in\mathcal E_\varphi^e\)">\(\rho\in\mathcal E_\varphi^e\)</span>, and its value is <span class="math" data-tex="\(\|\rho\|\)">\(\|\rho\|\)</span>. When <span class="math" data-tex="\(e=1\)">\(e=1\)</span>, this recovers (OW5).</p>
+<p><strong>Proof: removing the invisible part of a functional.</strong> If <span class="math" data-tex="\(\omega\in\mathcal E_\varphi\)">\(\omega\in\mathcal E_\varphi\)</span>, then <span class="math" data-tex="\(\omega_e\)">\(\omega_e\)</span> is normal and positive. On every finite positive <span class="math" data-tex="\(a\)">\(a\)</span>, one has <span class="math" data-tex="\(a=eae\)">\(a=eae\)</span>, so <span class="math" data-tex="\(\omega_e(a)=\omega(a)\leq c\varphi(a)\)">\(\omega_e(a)=\omega(a)\leq c\varphi(a)\)</span>. For the other positive elements, either their weight is infinite and a strictly positive comparison constant suffices, or they are already in the finite case. Thus <span class="math" data-tex="\(\omega_e\in\mathcal E_\varphi^e\)">\(\omega_e\in\mathcal E_\varphi^e\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+\|\omega_e\|=\omega_e(1)=\omega(e),\qquad
+h_{\omega_e}=h_\omega,
+\tag{OW12}
+\]">\[
+\|\omega_e\|=\omega_e(1)=\omega(e),\qquad
+h_{\omega_e}=h_\omega,
+\tag{OW12}
+\]</span>
+<p>because every <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span>, <span class="math" data-tex="\(x,y\in\mathfrak n_\varphi\subseteq Me\)">\(x,y\in\mathfrak n_\varphi\subseteq Me\)</span>, lies in <span class="math" data-tex="\(eMe\)">\(eMe\)</span>.</p>
+<p>For <span class="math" data-tex="\(\rho,\tau\in\mathcal E_\varphi^e\)">\(\rho,\tau\in\mathcal E_\varphi^e\)</span>, the inequality <span class="math" data-tex="\(h_\rho\leq h_\tau\)">\(h_\rho\leq h_\tau\)</span> implies <span class="math" data-tex="\(\rho(a)\leq\tau(a)\)">\(\rho(a)\leq\tau(a)\)</span> on the finite positive cone. For any positive <span class="math" data-tex="\(b\in eMe\)">\(b\in eMe\)</span>, the elements <span class="math" data-tex="\(u_\alpha b u_\alpha\)">\(u_\alpha b u_\alpha\)</span> are finite, since they are at most <span class="math" data-tex="\(\|b\|u_\alpha\)">\(\|b\|u_\alpha\)</span>, and converge ultraweakly to <span class="math" data-tex="\(b\)">\(b\)</span>. Normality gives the inequality on all of <span class="math" data-tex="\((eMe)_+\)">\((eMe)_+\)</span>. For arbitrary <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span>, apply this to <span class="math" data-tex="\(eae\)">\(eae\)</span> and use supportedness. Hence the map <span class="math" data-tex="\(\rho\mapsto h_\rho\)">\(\rho\mapsto h_\rho\)</span> reflects order on <span class="math" data-tex="\(\mathcal E_\varphi^e\)">\(\mathcal E_\varphi^e\)</span>, and in particular is injective there. Equations (OW12) now prove that the value in (OW11) is independent of the original choice of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. They also show that this finite value is additive, positively homogeneous, and increasing on the finite cone, once heredity is established below.</p>
+<p><strong>Proof: a vector in the correct subspace.</strong> Fix <span class="math" data-tex="\(\rho\in\mathcal E_\varphi^e\)">\(\rho\in\mathcal E_\varphi^e\)</span> and form the comparison map <span class="math" data-tex="\(C_\rho:H\to H_\rho\)">\(C_\rho:H\to H_\rho\)</span> from DW-04. Its range closure contains <span class="math" data-tex="\(\Omega_\rho\)">\(\Omega_\rho\)</span>. Indeed <span class="math" data-tex="\(\rho(1-e)=0\)">\(\rho(1-e)=0\)</span> gives <span class="math" data-tex="\(\pi_\rho(e)\Omega_\rho=\Omega_\rho\)">\(\pi_\rho(e)\Omega_\rho=\Omega_\rho\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\|\pi_\rho(u_\alpha)\Omega_\rho-\Omega_\rho\|^2
+=\rho((e-u_\alpha)^2)
+\leq\rho(e-u_\alpha)\longrightarrow0.
+\]">\[
+\|\pi_\rho(u_\alpha)\Omega_\rho-\Omega_\rho\|^2
+=\rho((e-u_\alpha)^2)
+\leq\rho(e-u_\alpha)\longrightarrow0.
+\]</span>
+<p>The range closure is invariant under <span class="math" data-tex="\(\pi_\rho(M)\)">\(\pi_\rho(M)\)</span>, so cyclicity gives <span class="math" data-tex="\(\overline{\operatorname{ran}C_\rho}=H_\rho\)">\(\overline{\operatorname{ran}C_\rho}=H_\rho\)</span>. If <span class="math" data-tex="\(C_\rho=U_\rho h_\rho^{1/2}\)">\(C_\rho=U_\rho h_\rho^{1/2}\)</span>, its polar factor is therefore a coisometry. The vector <span class="math" data-tex="\(\eta_\rho=U_\rho^*\Omega_\rho\)">\(\eta_\rho=U_\rho^*\Omega_\rho\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\|\eta_\rho\|^2=\|\rho\|,\qquad
+\pi(e)\eta_\rho=\eta_\rho,\qquad
+h_\rho^{1/2}\Lambda(x)=\pi(x)\eta_\rho
+\quad(x\in\mathfrak n_\varphi).
+\tag{OW13}
+\]">\[
+\|\eta_\rho\|^2=\|\rho\|,\qquad
+\pi(e)\eta_\rho=\eta_\rho,\qquad
+h_\rho^{1/2}\Lambda(x)=\pi(x)\eta_\rho
+\quad(x\in\mathfrak n_\varphi).
+\tag{OW13}
+\]</span>
+<p>The first and third equalities follow from the coisometry and polar intertwining calculations of OW-03. For the second, intertwining gives
+<span class="math" data-tex="\(\pi(e)U_\rho^*\Omega_\rho
+=U_\rho^*\pi_\rho(e)\Omega_\rho=U_\rho^*\Omega_\rho\)">\(\pi(e)U_\rho^*\Omega_\rho
+=U_\rho^*\pi_\rho(e)\Omega_\rho=U_\rho^*\Omega_\rho\)</span>.
+The same calculation as (OW4) shows that <span class="math" data-tex="\(\eta_\rho\)">\(\eta_\rho\)</span> implements <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>This vector is unique <strong>in <span class="math" data-tex="\(\pi(e)H\)">\(\pi(e)H\)</span></strong> with its displayed module identity: if two such vectors differ by <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, then <span class="math" data-tex="\(\pi(u_\alpha)\zeta=0\)">\(\pi(u_\alpha)\zeta=0\)</span>; normality of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> gives <span class="math" data-tex="\(\pi(u_\alpha)\uparrow\pi(e)\)">\(\pi(u_\alpha)\uparrow\pi(e)\)</span> strongly and hence <span class="math" data-tex="\(\zeta=\pi(e)\zeta=0\)">\(\zeta=\pi(e)\zeta=0\)</span>. Uniqueness on all of <span class="math" data-tex="\(H\)">\(H\)</span> would be wrong in general, since <span class="math" data-tex="\(\pi(x)\)">\(\pi(x)\)</span> for <span class="math" data-tex="\(x=xe\)">\(x=xe\)</span> annihilates <span class="math" data-tex="\((1-\pi(e))H\)">\((1-\pi(e))H\)</span>.</p>
+<p><strong>Proof: heredity and the weight axioms.</strong> If <span class="math" data-tex="\(0\leq h\leq h_\rho\)">\(0\leq h\leq h_\rho\)</span>, take <span class="math" data-tex="\(s\in N\)">\(s\in N\)</span>, <span class="math" data-tex="\(\|s\|\leq1\)">\(\|s\|\leq1\)</span>, with <span class="math" data-tex="\(h^{1/2}=s h_\rho^{1/2}\)">\(h^{1/2}=s h_\rho^{1/2}\)</span>. Define
+<span class="math" data-tex="\(\tau(a)=\langle\pi(a)s\eta_\rho,s\eta_\rho\rangle\)">\(\tau(a)=\langle\pi(a)s\eta_\rho,s\eta_\rho\rangle\)</span>.
+It is normal. Since <span class="math" data-tex="\(s\)">\(s\)</span> commutes with <span class="math" data-tex="\(\pi(e)\)">\(\pi(e)\)</span>, its implementing vector belongs to <span class="math" data-tex="\(\pi(e)H\)">\(\pi(e)H\)</span>, so <span class="math" data-tex="\(\tau(a)=\tau(eae)\)">\(\tau(a)=\tau(eae)\)</span>. Equation (OW13) gives</p>
+<span class="math math-display" data-tex="\[
+\tau(x^*x)=\|s h_\rho^{1/2}\Lambda(x)\|^2
+=\langle h\Lambda(x),\Lambda(x)\rangle
+\leq\|h\|\varphi(x^*x).
+\]">\[
+\tau(x^*x)=\|s h_\rho^{1/2}\Lambda(x)\|^2
+=\langle h\Lambda(x),\Lambda(x)\rangle
+\leq\|h\|\varphi(x^*x).
+\]</span>
+<p>Testing finite positive elements with their square roots and using a strictly positive domination constant for infinite values gives <span class="math" data-tex="\(\tau\in\mathcal E_\varphi^e\)">\(\tau\in\mathcal E_\varphi^e\)</span>. Polarization gives <span class="math" data-tex="\(h_\tau=h\)">\(h_\tau=h\)</span>. The finite cone is therefore hereditary. Its finite value is <span class="math" data-tex="\(\|\tau\|\)">\(\|\tau\|\)</span>, and order reflection proves monotonicity. Addition of supported functionals and additivity of their norms prove finite additivity. If a positive sum is finite, heredity makes both summands finite; this proves additivity when one value is infinite as well. Positive scalar multiplication preserves the cone, and the value at zero is zero. With <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>, these facts prove all weight axioms for (OW11).</p>
+<p><strong>Proof: normality.</strong> Let <span class="math" data-tex="\((h_i)_{i\in I}\subseteq N_+\)">\((h_i)_{i\in I}\subseteq N_+\)</span> have bounded finite partial sums and strong sum <span class="math" data-tex="\(h\)">\(h\)</span>. If <span class="math" data-tex="\(L=\sum_i\widehat\varphi^{\mathrm{opp}}(h_i)&lt;\infty\)">\(L=\sum_i\widehat\varphi^{\mathrm{opp}}(h_i)&lt;\infty\)</span>, write <span class="math" data-tex="\(h_i=h_{\rho_i}\)">\(h_i=h_{\rho_i}\)</span> with the unique <span class="math" data-tex="\(\rho_i\in\mathcal E_\varphi^e\)">\(\rho_i\in\mathcal E_\varphi^e\)</span>. The functional partial sums are norm Cauchy: outside a finite set whose scalar subsum is within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>, every finite sum of their norms is at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Let <span class="math" data-tex="\(\rho\in M_*^+\)">\(\rho\in M_*^+\)</span> be the limit. It remains supported in <span class="math" data-tex="\(e\)">\(e\)</span>, because for each <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> the equality of each partial sum's evaluations on <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(eae\)">\(eae\)</span> passes to the norm limit. Its norm is <span class="math" data-tex="\(L\)">\(L\)</span>. For <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\rho(x^*x)=\lim_F\sum_{i\in F}\rho_i(x^*x)
+=\langle h\Lambda(x),\Lambda(x)\rangle
+\leq\|h\|\varphi(x^*x).
+\]">\[
+\rho(x^*x)=\lim_F\sum_{i\in F}\rho_i(x^*x)
+=\langle h\Lambda(x),\Lambda(x)\rangle
+\leq\|h\|\varphi(x^*x).
+\]</span>
+<p>As before this yields global domination by <span class="math" data-tex="\((1+\|h\|)\varphi\)">\((1+\|h\|)\varphi\)</span>, so <span class="math" data-tex="\(\rho\in\mathcal E_\varphi^e\)">\(\rho\in\mathcal E_\varphi^e\)</span> and <span class="math" data-tex="\(h_\rho=h\)">\(h_\rho=h\)</span>. Thus <span class="math" data-tex="\(\widehat\varphi^{\mathrm{opp}}(h)=L\)">\(\widehat\varphi^{\mathrm{opp}}(h)=L\)</span>.</p>
+<p>If instead the value at <span class="math" data-tex="\(h\)">\(h\)</span> is known to be finite, heredity and monotonicity bound each scalar finite subsum by that value. Hence <span class="math" data-tex="\(L&lt;\infty\)">\(L&lt;\infty\)</span>, and the preceding argument again gives equality. If neither side is finite they both equal infinity. Complete additivity follows for all such families, and NW-11 proves normality.</p>
+<p><strong>Proof: faithfulness and semifiniteness.</strong> A finite value zero corresponds to a supported functional of norm zero, hence to the zero operator, proving faithfulness. For semifiniteness, let
+<span class="math" data-tex="\(\Phi_\varphi^e=\{\rho\in\mathcal E_\varphi^e:\rho\leq\varphi\}\)">\(\Phi_\varphi^e=\{\rho\in\mathcal E_\varphi^e:\rho\leq\varphi\}\)</span>.
+For each <span class="math" data-tex="\(\omega\in\Phi_\varphi\)">\(\omega\in\Phi_\varphi\)</span>, compression gives <span class="math" data-tex="\(\omega_e\in\Phi_\varphi^e\)">\(\omega_e\in\Phi_\varphi^e\)</span> with the same values on the finite positive cone. Thus NW-11 gives</p>
+<span class="math math-display" data-tex="\[
+\|\Lambda(x)\|^2
+=\sup_{\rho\in\Phi_\varphi^e}\rho(x^*x)
+=\sup_{\rho\in\Phi_\varphi^e}
+\|h_\rho^{1/2}\Lambda(x)\|^2
+\quad(x\in\mathfrak n_\varphi).
+\]">\[
+\|\Lambda(x)\|^2
+=\sup_{\rho\in\Phi_\varphi^e}\rho(x^*x)
+=\sup_{\rho\in\Phi_\varphi^e}
+\|h_\rho^{1/2}\Lambda(x)\|^2
+\quad(x\in\mathfrak n_\varphi).
+\]</span>
+<p>Each <span class="math" data-tex="\(h_\rho\leq I_H\)">\(h_\rho\leq I_H\)</span>. The supremum of the norms of these contractions is a Lipschitz function of the vector, so density extends this identity to every vector of <span class="math" data-tex="\(H\)">\(H\)</span>. Their common kernel is consequently zero, and their support ranges span <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Index the entire finite cone by its directed operator order and use the positive contractions <span class="math" data-tex="\(f_a=a(I_H+a)^{-1}\)">\(f_a=a(I_H+a)^{-1}\)</span>. Heredity makes them finite; inverse order makes the net increasing. Its strong supremum <span class="math" data-tex="\(f\leq I_H\)">\(f\leq I_H\)</span> dominates <span class="math" data-tex="\(s(a)\)">\(s(a)\)</span> for every finite <span class="math" data-tex="\(a\)">\(a\)</span>, because <span class="math" data-tex="\(ta(I_H+ta)^{-1}\uparrow s(a)\)">\(ta(I_H+ta)^{-1}\uparrow s(a)\)</span>. Therefore <span class="math" data-tex="\(f\)">\(f\)</span> acts as the identity on the dense span of the preceding support ranges, and <span class="math" data-tex="\(f=I_H\)">\(f=I_H\)</span>. WG-008 proves semifiniteness. The zero Hilbert space is included: all these identities are identities of zero operators, and the unique weight on the zero algebra is faithful, normal, and semifinite. ∎</p>
+<p>For a supported representative <span class="math" data-tex="\(\rho\in\mathcal E_\varphi^e\)">\(\rho\in\mathcal E_\varphi^e\)</span>, the attained least domination constant is still <span class="math" data-tex="\(\|h_\rho\|\)">\(\|h_\rho\|\)</span>. For an unrestricted <span class="math" data-tex="\(\omega\in\mathcal E_\varphi\)">\(\omega\in\mathcal E_\varphi\)</span>, the finite-domain test proves <span class="math" data-tex="\(\omega\leq c\varphi\)">\(\omega\leq c\varphi\)</span> if and only if <span class="math" data-tex="\(h_\omega\leq cI_H\)">\(h_\omega\leq cI_H\)</span> for <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>; the zero-constant assertion must not be inferred. In OW-11, every <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> dominates a fixed nonzero <span class="math" data-tex="\(\omega\)">\(\omega\)</span> by <span class="math" data-tex="\(c\varphi_\infty\)">\(c\varphi_\infty\)</span>, but <span class="math" data-tex="\(c=0\)">\(c=0\)</span> does not. Thus its comparison constants have infimum zero without a minimum. For supported representatives, injectivity supplies the missing zero case.</p>
+<p><strong>Example with a proper noncentral finite-domain projection.</strong> In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, let <span class="math" data-tex="\(e=E_{11}\)">\(e=E_{11}\)</span> and define <span class="math" data-tex="\(\varphi(te)=t\)">\(\varphi(te)=t\)</span> for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, with value infinity on positive matrices not supported in <span class="math" data-tex="\(e\)">\(e\)</span>. The positive-cone and normality argument of <a href="OA-MOD-WS.html#oa-mod-ws-08">WS08, Problem 3</a>, with two matrix coordinates, applies. Its GNS space is <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, with <span class="math" data-tex="\(\Lambda(x)=x e_1\)">\(\Lambda(x)=x e_1\)</span> on <span class="math" data-tex="\(\mathfrak n_\varphi=Me\)">\(\mathfrak n_\varphi=Me\)</span>, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> the usual matrix action. Hence <span class="math" data-tex="\(N=\mathbb CI\)">\(N=\mathbb CI\)</span>, but <span class="math" data-tex="\(\pi(e)=e\neq I\)">\(\pi(e)=e\neq I\)</span>.</p>
+<p>Every normal positive functional <span class="math" data-tex="\(\omega_C(a)=\operatorname{Tr}(Ca)\)">\(\omega_C(a)=\operatorname{Tr}(Ca)\)</span>, <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span>, is dominated by some finite positive multiple of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>: on finite elements it is enough to bound <span class="math" data-tex="\(C_{11}\)">\(C_{11}\)</span>, and elsewhere the weight is infinite. The comparison operator is <span class="math" data-tex="\(h_{\omega_C}=C_{11}I\)">\(h_{\omega_C}=C_{11}I\)</span>. Formula (OW11) gives</p>
+<span class="math math-display" data-tex="\[
+\widehat\varphi^{\mathrm{opp}}(tI)=t,
+\]">\[
+\widehat\varphi^{\mathrm{opp}}(tI)=t,
+\]</span>
+<p>whereas the erroneous unrestricted norm rule would assign <span class="math" data-tex="\(\operatorname{Tr}(C)\)">\(\operatorname{Tr}(C)\)</span> to <span class="math" data-tex="\(C_{11}I\)">\(C_{11}I\)</span>. The unique supported representative is <span class="math" data-tex="\(a\mapsto C_{11}a_{11}\)">\(a\mapsto C_{11}a_{11}\)</span>. Its implementing vector is <span class="math" data-tex="\(\sqrt{C_{11}}e_1\in\pi(e)H\)">\(\sqrt{C_{11}}e_1\in\pi(e)H\)</span>; adding any vector in <span class="math" data-tex="\(\mathbb Ce_2\)">\(\mathbb Ce_2\)</span> leaves the module identity on <span class="math" data-tex="\(Me\)">\(Me\)</span> unchanged. This explicitly verifies the restricted uniqueness condition in the theorem.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-GV.html">← The vector retained by a comparison map</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-SK.html">Spectral calculus with its domains retained →</a></span></nav>
+<p class="small source-link"><a href="src/opposite-weights.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

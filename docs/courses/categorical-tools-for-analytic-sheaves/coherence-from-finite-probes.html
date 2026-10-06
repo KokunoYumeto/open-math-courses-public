@@ -1,0 +1,330 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coherence from finite probes</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="coherence-from-finite-probes">Coherence from finite probes</h1>
+<p><em>Written with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Self-checked by the AI that wrote it. Original text: CC0.</em></p>
+<p>Finite generators describe an object by a small amount of data. Finite relations ask a different question: when a finite object maps to it, can the kernel still be described by finite data? These two requirements behave differently in exact sequences. Relations pass through an extension under very weak assumptions. Producing finite generators for that extension needs an additional condition.</p>
+<p>We study both requirements using a chosen family of objects in an abelian category. The family need not consist of projective objects. A pullback transports finite relations, and a condition on extensions with a chosen quotient then makes the coherent objects an exact abelian subcategory. Finite free modules recover the familiar module notion of coherence.</p>
+<p>Use <a href="full-subcategories-and-exact-closure.html">Full subcategories and exact closure</a>, Theorem 2.2, for the construction of an abelian subcategory from ambient kernels and cokernels. The kernel, cokernel and image factorizations used below are those of <a href="trace-coreflections-and-balanced-nonabelian-categories.html">Trace coreflections and balanced nonabelian categories</a>. Basic references are [Stacks, Coherent rings], [Stacks, Abelian categories] and [Schapira, Homological Algebra], listed below. Categories are locally small in a fixed universe. All constructions in this lesson use finite diagrams.</p>
+<h2 id="1-generators-and-relations-measure-different-things">1. Generators and relations measure different things</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be an abelian category and <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> a full additive subcategory. We may replace <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> by its replete closure: transport through an isomorphism does not change any of the following properties. Thus membership in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> means membership up to isomorphism. Its zero object and finite biproducts agree with those of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, by Proposition 1.1 of the prerequisite.</p>
+<p>An object <span class="math" data-tex="\(X\)">\(X\)</span> is <em><span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>-finite</em> if there is an epimorphism</p>
+<span class="math math-display" data-tex="\[
+S\twoheadrightarrow X,
+\qquad S\in\mathcal J.
+\tag{1.1}
+\]">\[
+S\twoheadrightarrow X,
+\qquad S\in\mathcal J.
+\tag{1.1}
+\]</span>
+<p>It is <em><span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>-pseudo-coherent</em> if every morphism <span class="math" data-tex="\(S\to X\)">\(S\to X\)</span> with <span class="math" data-tex="\(S\in\mathcal J\)">\(S\in\mathcal J\)</span> has <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>-finite kernel. It is <em><span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>-coherent</em> if it has both properties. Write <span class="math" data-tex="\(\operatorname{Coh}_{\mathcal J}(\mathcal A)\)">\(\operatorname{Coh}_{\mathcal J}(\mathcal A)\)</span> for the full subcategory of coherent objects. When the family is fixed, we shorten the three terms to finite, pseudo-coherent and coherent.</p>
+<p>The word finite is relative to <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. It does not mean finite length, finite cardinality or finite dimension unless that interpretation follows from the chosen family.</p>
+<p><strong>Example 1.1.</strong> Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be the category of finite-dimensional <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span>-modules killed by some power of <span class="math" data-tex="\(t\)">\(t\)</span>, for a field <span class="math" data-tex="\(k\)">\(k\)</span>. This is an abelian category: kernels and cokernels remain finite-dimensional and nilpotent. In an extension of objects killed by <span class="math" data-tex="\(t^a\)">\(t^a\)</span> and <span class="math" data-tex="\(t^b\)">\(t^b\)</span>, the middle object is killed by <span class="math" data-tex="\(t^{a+b}\)">\(t^{a+b}\)</span>. Let <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> consist of the objects killed by <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>Every object of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is pseudo-coherent. Indeed, a kernel inside a finite-dimensional object killed by <span class="math" data-tex="\(t\)">\(t\)</span> is again such an object and covers itself. The finite objects, however, are exactly the objects killed by <span class="math" data-tex="\(t\)">\(t\)</span>: that condition survives quotients, and the identity gives the converse. The exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to k
+\to k[t]/(t^2)
+\to k\to0
+\tag{1.2}
+\]">\[
+0\to k
+\to k[t]/(t^2)
+\to k\to0
+\tag{1.2}
+\]</span>
+<p>has coherent ends and a middle object that is not finite. Here the first map takes <span class="math" data-tex="\(1\)">\(1\)</span> to the class of <span class="math" data-tex="\(t\)">\(t\)</span>, and the last is reduction modulo <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>Thus extension closure of pseudo-coherent objects and extension closure of coherent objects are distinct assertions. The first holds for every full additive <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>; the second will follow from the condition in Section 4.</p>
+<h2 id="2-pullbacks-transport-finite-relations">2. Pullbacks transport finite relations</h2>
+<p>We first isolate the abelian fact that carries a finite cover onto a kernel. This is also the epimorphism part of [Stacks, Lemma 12.5.13].</p>
+<p><strong>Lemma 2.1.</strong> Pulling back an epimorphism <span class="math" data-tex="\(e:B \twoheadrightarrow D\)">\(e:B \twoheadrightarrow D\)</span> along any <span class="math" data-tex="\(u:A\to D\)">\(u:A\to D\)</span> gives an epimorphism <span class="math" data-tex="\(p:P \twoheadrightarrow A\)">\(p:P \twoheadrightarrow A\)</span>. Moreover, the other projection <span class="math" data-tex="\(r:P\to B\)">\(r:P\to B\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\ker p\simeq\ker e,
+\qquad \ker r\simeq\ker u.
+\tag{2.1}
+\]">\[
+\ker p\simeq\ker e,
+\qquad \ker r\simeq\ker u.
+\tag{2.1}
+\]</span>
+<p>The isomorphisms respect the maps into the relevant objects.</p>
+<p><strong>Proof.</strong> Realize <span class="math" data-tex="\(P\)">\(P\)</span> as the kernel of</p>
+<span class="math math-display" data-tex="\[
+d=(u,-e):A\oplus B\to D.
+\tag{2.2}
+\]">\[
+d=(u,-e):A\oplus B\to D.
+\tag{2.2}
+\]</span>
+<p>Its projections satisfy <span class="math" data-tex="\(up=er\)">\(up=er\)</span>, and the kernel universal property gives the pullback universal property. The map <span class="math" data-tex="\(d\)">\(d\)</span> is epic, since its restriction to <span class="math" data-tex="\(B\)">\(B\)</span> is the epimorphism <span class="math" data-tex="\(-e\)">\(-e\)</span>.</p>
+<p>Let <span class="math" data-tex="\(h:A\to T\)">\(h:A\to T\)</span> satisfy <span class="math" data-tex="\(hp=0\)">\(hp=0\)</span>. The map <span class="math" data-tex="\(h\pi_A:A\oplus B\to T\)">\(h\pi_A:A\oplus B\to T\)</span> vanishes on <span class="math" data-tex="\(P\)">\(P\)</span>. Every epimorphism in an abelian category is the cokernel of its kernel, so there is <span class="math" data-tex="\(z:D\to T\)">\(z:D\to T\)</span> with</p>
+<span class="math math-display" data-tex="\[
+h\pi_A=zd.
+\tag{2.3}
+\]">\[
+h\pi_A=zd.
+\tag{2.3}
+\]</span>
+<p>Restriction to <span class="math" data-tex="\(B\)">\(B\)</span> gives <span class="math" data-tex="\(ze=0\)">\(ze=0\)</span>. Epicity of <span class="math" data-tex="\(e\)">\(e\)</span> gives <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, and restriction to <span class="math" data-tex="\(A\)">\(A\)</span> then gives <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. Applying this to a difference of two maps proves that <span class="math" data-tex="\(p\)">\(p\)</span> is epic.</p>
+<p>For an arbitrary object <span class="math" data-tex="\(W\)">\(W\)</span>, maps <span class="math" data-tex="\(W\to P\)">\(W\to P\)</span> killed by <span class="math" data-tex="\(p\)">\(p\)</span> correspond exactly to maps <span class="math" data-tex="\(b:W\to B\)">\(b:W\to B\)</span> with <span class="math" data-tex="\(eb=0\)">\(eb=0\)</span>: their two coordinates are <span class="math" data-tex="\((0,b)\)">\((0,b)\)</span>. This identifies the kernel of <span class="math" data-tex="\(p\)">\(p\)</span> with the kernel of <span class="math" data-tex="\(e\)">\(e\)</span>. Maps killed by <span class="math" data-tex="\(r\)">\(r\)</span> have coordinates <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span> with <span class="math" data-tex="\(ua=0\)">\(ua=0\)</span>, giving the second identification. These descriptions also identify the structure maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.2.</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> is finite and <span class="math" data-tex="\(Y\)">\(Y\)</span> is pseudo-coherent, then the kernel of any morphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> is finite. Surjectivity of <span class="math" data-tex="\(f\)">\(f\)</span> is unnecessary.</p>
+<p><strong>Proof.</strong> Choose an epimorphism <span class="math" data-tex="\(s:S \twoheadrightarrow X\)">\(s:S \twoheadrightarrow X\)</span> with <span class="math" data-tex="\(S\in\mathcal J\)">\(S\in\mathcal J\)</span>, and put <span class="math" data-tex="\(K=\ker f\)">\(K=\ker f\)</span>. The pullback of <span class="math" data-tex="\(s\)">\(s\)</span> along <span class="math" data-tex="\(K\hookrightarrow X\)">\(K\hookrightarrow X\)</span> is naturally <span class="math" data-tex="\(\ker(fs)\)">\(\ker(fs)\)</span>. To see the identification, a map to <span class="math" data-tex="\(S\)">\(S\)</span> factors through this pullback precisely when its composite with <span class="math" data-tex="\(fs\)">\(fs\)</span> is zero. Lemma 2.1 makes the induced map</p>
+<span class="math math-display" data-tex="\[
+\ker(fs)\twoheadrightarrow K
+\tag{2.4}
+\]">\[
+\ker(fs)\twoheadrightarrow K
+\tag{2.4}
+\]</span>
+<p>epic. Pseudo-coherence of <span class="math" data-tex="\(Y\)">\(Y\)</span> makes <span class="math" data-tex="\(\ker(fs)\)">\(\ker(fs)\)</span> finite. Composing a cover of that kernel from an object of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> with (2.4) gives a cover of <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Two elementary closure facts will be used repeatedly. A quotient of a finite object is finite, since epimorphisms compose. A finite sum of finite objects is finite: take the biproduct of their covers. The resulting map is epic because a map killed by it has zero restriction to each summand. The zero object is finite and pseudo-coherent; the kernel of <span class="math" data-tex="\(S\to0\)">\(S\to0\)</span> is <span class="math" data-tex="\(S\)">\(S\)</span>, which covers itself.</p>
+<h2 id="3-relations-survive-subobjects-and-extensions">3. Relations survive subobjects and extensions</h2>
+<p><strong>Theorem 3.1.</strong> Pseudo-coherent objects are closed under all ambient subobjects and under extensions. They are therefore closed under finite biproducts. Coherent objects are closed under kernels of morphisms between coherent objects.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(i:U\hookrightarrow X\)">\(i:U\hookrightarrow X\)</span> be monic with <span class="math" data-tex="\(X\)">\(X\)</span> pseudo-coherent. For every <span class="math" data-tex="\(a:S\to U\)">\(a:S\to U\)</span>, with <span class="math" data-tex="\(S\in\mathcal J\)">\(S\in\mathcal J\)</span>, monicity gives</p>
+<span class="math math-display" data-tex="\[
+\ker a\simeq\ker(ia).
+\tag{3.1}
+\]">\[
+\ker a\simeq\ker(ia).
+\tag{3.1}
+\]</span>
+<p>The right side is finite, so <span class="math" data-tex="\(U\)">\(U\)</span> is pseudo-coherent. This conclusion does not assert that <span class="math" data-tex="\(U\)">\(U\)</span> is finite.</p>
+<p>Now consider a short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to A\xrightarrow{i}B
+\xrightarrow{v}D\to0
+\tag{3.2}
+\]">\[
+0\to A\xrightarrow{i}B
+\xrightarrow{v}D\to0
+\tag{3.2}
+\]</span>
+<p>with <span class="math" data-tex="\(A,D\)">\(A,D\)</span> pseudo-coherent. Fix any <span class="math" data-tex="\(a:S\to B\)">\(a:S\to B\)</span> from a probe <span class="math" data-tex="\(S\in\mathcal J\)">\(S\in\mathcal J\)</span>, and let <span class="math" data-tex="\(j:K\hookrightarrow S\)">\(j:K\hookrightarrow S\)</span> be <span class="math" data-tex="\(\ker(va)\)">\(\ker(va)\)</span>. Pseudo-coherence of <span class="math" data-tex="\(D\)">\(D\)</span> makes <span class="math" data-tex="\(K\)">\(K\)</span> finite. Since <span class="math" data-tex="\(vaj=0\)">\(vaj=0\)</span>, the kernel property of <span class="math" data-tex="\(i\)">\(i\)</span> gives a unique map <span class="math" data-tex="\(b:K\to A\)">\(b:K\to A\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+ib=aj.
+\tag{3.3}
+\]">\[
+ib=aj.
+\tag{3.3}
+\]</span>
+<p>Its kernel, followed by <span class="math" data-tex="\(j\)">\(j\)</span>, is the kernel of <span class="math" data-tex="\(a\)">\(a\)</span>. Indeed, a map <span class="math" data-tex="\(w:W\to S\)">\(w:W\to S\)</span> killed by <span class="math" data-tex="\(a\)">\(a\)</span> is killed by <span class="math" data-tex="\(va\)">\(va\)</span>, hence factors uniquely through <span class="math" data-tex="\(j\)">\(j\)</span>; its resulting map to <span class="math" data-tex="\(K\)">\(K\)</span> is killed by <span class="math" data-tex="\(b\)">\(b\)</span> because <span class="math" data-tex="\(i\)">\(i\)</span> is monic. The reverse implication follows from (3.3). Proposition 2.2 applies to <span class="math" data-tex="\(b\)">\(b\)</span>, since <span class="math" data-tex="\(K\)">\(K\)</span> is finite and <span class="math" data-tex="\(A\)">\(A\)</span> is pseudo-coherent. Thus <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span> is finite. This holds for every probe map, so <span class="math" data-tex="\(B\)">\(B\)</span> is pseudo-coherent.</p>
+<p>A biproduct is a split extension of its summands, giving finite-biproduct closure of pseudo-coherent objects. Since finite objects also have that closure, coherent objects do too.</p>
+<p>Finally, if <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> has coherent ends, Proposition 2.2 makes <span class="math" data-tex="\(\ker f\)">\(\ker f\)</span> finite. It is pseudo-coherent as a subobject of <span class="math" data-tex="\(X\)">\(X\)</span>. It is therefore coherent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof of extension closure used finite relations for <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span>, even when those objects themselves admit no finite cover. This explains why Example 1.1 does not contradict the theorem.</p>
+<h2 id="4-a-cover-condition-gives-an-exact-abelian-category">4. A cover condition gives an exact abelian category</h2>
+<p>Impose the following condition on the chosen family:</p>
+<p><strong>Condition (E).</strong> In every short exact sequence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to K\to E\to S\to0,\\
+S\in\mathcal J.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+0\to K\to E\to S\to0,\\
+S\in\mathcal J.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>if <span class="math" data-tex="\(K\)">\(K\)</span> is coherent, then <span class="math" data-tex="\(E\)">\(E\)</span> is finite.</p>
+<p>This asks for a finite cover of <span class="math" data-tex="\(E\)">\(E\)</span>. It asks for neither a splitting of (4.1) nor projectivity of <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> Under condition (E), coherent objects are closed under extensions and under cokernels of maps between coherent objects. The category <span class="math" data-tex="\(\operatorname{Coh}_{\mathcal J}(\mathcal A)\)">\(\operatorname{Coh}_{\mathcal J}(\mathcal A)\)</span> is abelian and its inclusion in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is exact.</p>
+<p><strong>Proof.</strong> In (3.2), suppose <span class="math" data-tex="\(A,D\)">\(A,D\)</span> coherent and choose a cover <span class="math" data-tex="\(s:S \twoheadrightarrow D\)">\(s:S \twoheadrightarrow D\)</span>, with <span class="math" data-tex="\(S\in\mathcal J\)">\(S\in\mathcal J\)</span>. Form <span class="math" data-tex="\(P=B\times_D S\)">\(P=B\times_D S\)</span>. Both its projections are epic, by Lemma 2.1 applied first to <span class="math" data-tex="\(v\)">\(v\)</span> and then to <span class="math" data-tex="\(s\)">\(s\)</span>. Its projection onto <span class="math" data-tex="\(S\)">\(S\)</span> has kernel <span class="math" data-tex="\(A\)">\(A\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+0\to A\to P
+\to S\to0
+\tag{4.2}
+\]">\[
+0\to A\to P
+\to S\to0
+\tag{4.2}
+\]</span>
+<p>is exact. Condition (E) makes <span class="math" data-tex="\(P\)">\(P\)</span> finite. Its epimorphism onto <span class="math" data-tex="\(B\)">\(B\)</span> makes <span class="math" data-tex="\(B\)">\(B\)</span> finite. Theorem 3.1 already makes <span class="math" data-tex="\(B\)">\(B\)</span> pseudo-coherent, hence coherent.</p>
+<p>For cokernels, first take a short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to A\to B
+\xrightarrow{q}C\to0
+\tag{4.3}
+\]">\[
+0\to A\to B
+\xrightarrow{q}C\to0
+\tag{4.3}
+\]</span>
+<p>with <span class="math" data-tex="\(A,B\)">\(A,B\)</span> coherent. The quotient <span class="math" data-tex="\(C\)">\(C\)</span> is finite. For an arbitrary map <span class="math" data-tex="\(a:S\to C\)">\(a:S\to C\)</span>, with <span class="math" data-tex="\(S\in\mathcal J\)">\(S\in\mathcal J\)</span>, let <span class="math" data-tex="\(P=B\times_C S\)">\(P=B\times_C S\)</span>. Its projection onto <span class="math" data-tex="\(S\)">\(S\)</span> is epic and has kernel <span class="math" data-tex="\(A\)">\(A\)</span>, so (E) makes <span class="math" data-tex="\(P\)">\(P\)</span> finite. Its other projection <span class="math" data-tex="\(r:P\to B\)">\(r:P\to B\)</span> has kernel naturally isomorphic to <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span>, by Lemma 2.1. Proposition 2.2, applied to <span class="math" data-tex="\(r\)">\(r\)</span> and the pseudo-coherent object <span class="math" data-tex="\(B\)">\(B\)</span>, shows that <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span> is finite. Thus <span class="math" data-tex="\(C\)">\(C\)</span> is pseudo-coherent and hence coherent.</p>
+<p>For an arbitrary morphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> between coherent objects, its image <span class="math" data-tex="\(I\)">\(I\)</span> is finite as a quotient of <span class="math" data-tex="\(X\)">\(X\)</span> and pseudo-coherent as a subobject of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Hence <span class="math" data-tex="\(I\)">\(I\)</span> is coherent. Apply the preceding argument to</p>
+<span class="math math-display" data-tex="\[
+0\to I\to Y
+\to\operatorname{coker}f
+\to0.
+\tag{4.4}
+\]">\[
+0\to I\to Y
+\to\operatorname{coker}f
+\to0.
+\tag{4.4}
+\]</span>
+<p>It proves cokernel closure. Theorem 3.1 proves kernel closure and finite-biproduct closure, and the zero object is coherent. The full subcategory is therefore additive and closed under ambient kernels and cokernels. Theorem 2.2 of <a href="full-subcategories-and-exact-closure.html">Full subcategories and exact closure</a> now gives precisely its abelian structure and the exactness of its inclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The conclusion concerns kernels and cokernels of maps whose two ends are coherent. It does not require every subobject or every quotient of a coherent object to be coherent. Those stronger statements would require additional assumptions on <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>.</p>
+<h2 id="5-finite-free-probes-recover-coherent-modules">5. Finite free probes recover coherent modules</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be any unital ring, possibly noncommutative. Work with left <span class="math" data-tex="\(R\)">\(R\)</span>-modules, and let <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> consist of finite-rank free left modules. A finite cover is then exactly a finite generating set. The extra condition (E) holds: if a short exact sequence has quotient <span class="math" data-tex="\(R^n\)">\(R^n\)</span>, lift its finite basis to split the sequence. A cover <span class="math" data-tex="\(R^m\twoheadrightarrow K\)">\(R^m\twoheadrightarrow K\)</span> of its coherent kernel gives a cover</p>
+<span class="math math-display" data-tex="\[
+R^{m+n}\twoheadrightarrow K\oplus R^n
+\simeq E.
+\tag{5.1}
+\]">\[
+R^{m+n}\twoheadrightarrow K\oplus R^n
+\simeq E.
+\tag{5.1}
+\]</span>
+<p>Consequently the coherent left modules form an abelian subcategory with exact inclusion, over every such ring.</p>
+<p>To compare this definition with finite presentation, call <span class="math" data-tex="\(N\)">\(N\)</span> <em>finitely presented</em> if it has an exact presentation</p>
+<span class="math math-display" data-tex="\[
+R^a\to R^b
+\to N\to0
+\tag{5.2}
+\]">\[
+R^a\to R^b
+\to N\to0
+\tag{5.2}
+\]</span>
+<p>with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> finite.</p>
+<p><strong>Lemma 5.1.</strong> If <span class="math" data-tex="\(N\)">\(N\)</span> is finitely presented, the kernel of every epimorphism <span class="math" data-tex="\(\pi:R^n\twoheadrightarrow N\)">\(\pi:R^n\twoheadrightarrow N\)</span>, with <span class="math" data-tex="\(n\)">\(n\)</span> finite, is finitely generated.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\rho:R^b\twoheadrightarrow N\)">\(\rho:R^b\twoheadrightarrow N\)</span> be the map in (5.2), with finitely generated kernel <span class="math" data-tex="\(L\)">\(L\)</span>. Lift finite bases to choose maps</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha:R^b\to R^n,\\
+\beta:R^n\to R^b.
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+\alpha:R^b\to R^n,\\
+\beta:R^n\to R^b.
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>with <span class="math" data-tex="\(\pi\alpha=\rho\)">\(\pi\alpha=\rho\)</span> and <span class="math" data-tex="\(\rho\beta=\pi\)">\(\rho\beta=\pi\)</span>. Set <span class="math" data-tex="\(K=\ker\pi\)">\(K=\ker\pi\)</span>. If <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span>, then <span class="math" data-tex="\(\beta z\in L\)">\(\beta z\in L\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+z=\alpha\beta z+(1-\alpha\beta)z.
+\tag{5.4}
+\]">\[
+z=\alpha\beta z+(1-\alpha\beta)z.
+\tag{5.4}
+\]</span>
+<p>Both <span class="math" data-tex="\(\alpha(L)\)">\(\alpha(L)\)</span> and the image of <span class="math" data-tex="\(1-\alpha\beta\)">\(1-\alpha\beta\)</span> lie in <span class="math" data-tex="\(K\)">\(K\)</span>; for the latter use <span class="math" data-tex="\(\pi(1-\alpha\beta)=0\)">\(\pi(1-\alpha\beta)=0\)</span>. Equation (5.4) shows that these two submodules generate <span class="math" data-tex="\(K\)">\(K\)</span>. Images of finite generators of <span class="math" data-tex="\(L\)">\(L\)</span>, together with the images of the <span class="math" data-tex="\(n\)">\(n\)</span> basis vectors under <span class="math" data-tex="\(1-\alpha\beta\)">\(1-\alpha\beta\)</span>, are a finite generating set. The maps are left linear throughout; commutativity of <span class="math" data-tex="\(R\)">\(R\)</span> was not used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.2.</strong> A left <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span> is coherent for finite free probes if and only if it is finitely generated and every finitely generated submodule of <span class="math" data-tex="\(M\)">\(M\)</span> is finitely presented.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(M\)">\(M\)</span> coherent. Given a finitely generated submodule <span class="math" data-tex="\(N\subset M\)">\(N\subset M\)</span>, choose an epimorphism <span class="math" data-tex="\(R^n\twoheadrightarrow N\)">\(R^n\twoheadrightarrow N\)</span>. Its kernel agrees with the kernel of the composite into <span class="math" data-tex="\(M\)">\(M\)</span>, so is finitely generated. Choose a finite free cover of that kernel. This supplies (5.2) for <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Conversely, suppose the stated submodule condition and finite generation hold. For any <span class="math" data-tex="\(f:R^n\to M\)">\(f:R^n\to M\)</span>, its image <span class="math" data-tex="\(N\)">\(N\)</span> is finitely generated and therefore finitely presented. Lemma 5.1 applied to the epimorphism <span class="math" data-tex="\(R^n\twoheadrightarrow N\)">\(R^n\twoheadrightarrow N\)</span> makes <span class="math" data-tex="\(\ker f\)">\(\ker f\)</span> finitely generated. This proves pseudo-coherence, while finite generation supplies finiteness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For commutative rings, Proposition 5.2 matches [Stacks, Definition 10.90.1]. The proofs above also establish the same statement for left modules over noncommutative rings. A ring is <em>left coherent</em> when its regular left module is coherent. In particular, every coherent module is finitely presented, since it is a finitely generated submodule of itself. The converse for arbitrary finitely presented modules depends on the ring and is a separate assertion.</p>
+<h2 id="6-exercises-with-full-solutions">6. Exercises with full solutions</h2>
+<p><strong>Exercise 6.1 (first steps).</strong> Fix a prime <span class="math" data-tex="\(p\)">\(p\)</span>. In the category of all abelian groups, take <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> to be the finite-dimensional <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>-vector groups. Classify the pseudo-coherent and coherent objects. Does (E) hold?</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(S\in\mathcal J\)">\(S\in\mathcal J\)</span>, the kernel of any homomorphism <span class="math" data-tex="\(S\to X\)">\(S\to X\)</span> is a finite-dimensional <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>-subspace of <span class="math" data-tex="\(S\)">\(S\)</span>. It belongs to <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, hence is finite by its identity cover. Thus every abelian group <span class="math" data-tex="\(X\)">\(X\)</span> is pseudo-coherent, including infinite groups and groups with elements of infinite order.</p>
+<p>A quotient of <span class="math" data-tex="\(S\)">\(S\)</span> is finite and killed by <span class="math" data-tex="\(p\)">\(p\)</span>. Conversely, any finite group killed by <span class="math" data-tex="\(p\)">\(p\)</span> is a finite-dimensional <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>-vector group and covers itself. These are exactly the finite objects and, since all objects are pseudo-coherent, exactly the coherent objects.</p>
+<p>The sequence</p>
+<span class="math math-display" data-tex="\[
+0\to\mathbb Z/p
+\xrightarrow{\,p\,}\mathbb Z/p^2
+\to\mathbb Z/p
+\to0
+\tag{6.1}
+\]">\[
+0\to\mathbb Z/p
+\xrightarrow{\,p\,}\mathbb Z/p^2
+\to\mathbb Z/p
+\to0
+\tag{6.1}
+\]</span>
+<p>has coherent kernel and quotient in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Its middle group is not killed by <span class="math" data-tex="\(p\)">\(p\)</span>, so is not finite relative to this family. Condition (E) fails. Here the labelled map sends the class of <span class="math" data-tex="\(a\)">\(a\)</span> to the class of <span class="math" data-tex="\(pa\)">\(pa\)</span>, and the last map is reduction modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Exercise 6.2 (comparison).</strong> Over any unital ring <span class="math" data-tex="\(R\)">\(R\)</span>, replace finite free probes by finitely generated projective left modules. Show that the notions of finite, pseudo-coherent and coherent module do not change, and verify (E) for this larger family.</p>
+<p><strong>Solution.</strong> A finitely generated projective module <span class="math" data-tex="\(P\)">\(P\)</span> is a direct summand of a finite free module: choose a finite free epimorphism onto <span class="math" data-tex="\(P\)">\(P\)</span>, split it by projectivity, and write</p>
+<span class="math math-display" data-tex="\[
+R^n\simeq P\oplus P&#x27;.
+\tag{6.2}
+\]">\[
+R^n\simeq P\oplus P&#x27;.
+\tag{6.2}
+\]</span>
+<p>Both summands are finitely generated, since they are quotient images of <span class="math" data-tex="\(R^n\)">\(R^n\)</span>. A quotient of a finitely generated projective module is finitely generated, and every finitely generated module has a finite free cover. Thus the two finite notions agree.</p>
+<p>Free modules are projective, so testing all finitely generated projectives implies the finite-free pseudo-coherence test. Conversely, let <span class="math" data-tex="\(M\)">\(M\)</span> pass that test and let <span class="math" data-tex="\(f:P\to M\)">\(f:P\to M\)</span>. Extend <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(P\oplus P&#x27;\)">\(P\oplus P&#x27;\)</span> by zero on <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>. Its kernel is</p>
+<span class="math math-display" data-tex="\[
+\ker(f\oplus0)\simeq\ker f\oplus P&#x27;.
+\tag{6.3}
+\]">\[
+\ker(f\oplus0)\simeq\ker f\oplus P&#x27;.
+\tag{6.3}
+\]</span>
+<p>It is finitely generated by the finite-free test. Its projection onto <span class="math" data-tex="\(\ker f\)">\(\ker f\)</span> is epic, so <span class="math" data-tex="\(\ker f\)">\(\ker f\)</span> is finitely generated. This is the required test for projective probes. Coherence therefore agrees as well.</p>
+<p>In (4.1), a projective quotient <span class="math" data-tex="\(S\)">\(S\)</span> splits the sequence, giving <span class="math" data-tex="\(E\simeq K\oplus S\)">\(E\simeq K\oplus S\)</span>. Choose a finite free cover <span class="math" data-tex="\(R^m\twoheadrightarrow K\)">\(R^m\twoheadrightarrow K\)</span>. The map <span class="math" data-tex="\(R^m\oplus S\twoheadrightarrow K\oplus S\)">\(R^m\oplus S\twoheadrightarrow K\oplus S\)</span> is epic and its domain is finitely generated projective. It verifies (E).</p>
+<p><strong>Exercise 6.3 (calculation).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be any field and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R=k[u,v]/(u^2,uv,v^2),\\
+\mathfrak m=(u,v).
+\end{gathered}
+\tag{6.4}
+\]">\[
+\begin{gathered}
+R=k[u,v]/(u^2,uv,v^2),\\
+\mathfrak m=(u,v).
+\end{gathered}
+\tag{6.4}
+\]</span>
+<p>Use finite free probes. Compute the kernel and cokernel of <span class="math" data-tex="\(f:R^2\to R\)">\(f:R^2\to R\)</span>, <span class="math" data-tex="\(f(a,b)=au+bv\)">\(f(a,b)=au+bv\)</span>. Show that every <span class="math" data-tex="\(R\)">\(R\)</span>-module is pseudo-coherent and identify the coherent ones. Finally compute <span class="math" data-tex="\(P=R\times_k R\)">\(P=R\times_k R\)</span>, where both maps to <span class="math" data-tex="\(k\)">\(k\)</span> are reduction modulo <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, and give generators and the kernels of its projections.</p>
+<p><strong>Solution.</strong> The classes of <span class="math" data-tex="\(1,u,v\)">\(1,u,v\)</span> are a <span class="math" data-tex="\(k\)">\(k\)</span>-basis of <span class="math" data-tex="\(R\)">\(R\)</span>, and <span class="math" data-tex="\(\mathfrak m^2=0\)">\(\mathfrak m^2=0\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a=a_0+a_1u+a_2v,\\
+b=b_0+b_1u+b_2v.
+\end{gathered}
+\tag{6.5}
+\]">\[
+\begin{gathered}
+a=a_0+a_1u+a_2v,\\
+b=b_0+b_1u+b_2v.
+\end{gathered}
+\tag{6.5}
+\]</span>
+<p>Then <span class="math" data-tex="\(f(a,b)=a_0u+b_0v\)">\(f(a,b)=a_0u+b_0v\)</span>. Linear independence of <span class="math" data-tex="\(u,v\)">\(u,v\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\ker f=\mathfrak m\oplus\mathfrak m,
+\qquad\operatorname{coker}f\simeq k.
+\tag{6.6}
+\]">\[
+\ker f=\mathfrak m\oplus\mathfrak m,
+\qquad\operatorname{coker}f\simeq k.
+\tag{6.6}
+\]</span>
+<p>The kernel has <span class="math" data-tex="\(k\)">\(k\)</span>-dimension four and is generated over <span class="math" data-tex="\(R\)">\(R\)</span> by <span class="math" data-tex="\((u,0),(v,0),(0,u),(0,v)\)">\((u,0),(v,0),(0,u),(0,v)\)</span>. The image is exactly <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>.</p>
+<p>For any map <span class="math" data-tex="\(R^n\to M\)">\(R^n\to M\)</span>, its kernel is a <span class="math" data-tex="\(k\)">\(k\)</span>-subspace of the finite-dimensional vector space <span class="math" data-tex="\(R^n\)">\(R^n\)</span>. A finite <span class="math" data-tex="\(k\)">\(k\)</span>-basis of the kernel also generates it over <span class="math" data-tex="\(R\)">\(R\)</span>, because <span class="math" data-tex="\(k\)">\(k\)</span> acts through its subring of scalars. Hence every module is pseudo-coherent. A finitely generated module is finite-dimensional over <span class="math" data-tex="\(k\)">\(k\)</span>, since it is a quotient of some <span class="math" data-tex="\(R^n\)">\(R^n\)</span>; a finite-dimensional module is finitely generated, using a <span class="math" data-tex="\(k\)">\(k\)</span>-basis. The coherent modules are precisely those of finite <span class="math" data-tex="\(k\)">\(k\)</span>-dimension.</p>
+<p>The pullback consists of pairs <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> with <span class="math" data-tex="\(b-a\in\mathfrak m\)">\(b-a\in\mathfrak m\)</span>. The map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R\oplus\mathfrak m\to P,\\
+(a,c)\longmapsto(a,a+c).
+\end{gathered}
+\tag{6.7}
+\]">\[
+\begin{gathered}
+R\oplus\mathfrak m\to P,\\
+(a,c)\longmapsto(a,a+c).
+\end{gathered}
+\tag{6.7}
+\]</span>
+<p>is an <span class="math" data-tex="\(R\)">\(R\)</span>-linear isomorphism, with inverse <span class="math" data-tex="\((a,b)\mapsto(a,b-a)\)">\((a,b)\mapsto(a,b-a)\)</span>. Therefore <span class="math" data-tex="\(P\)">\(P\)</span> is generated by <span class="math" data-tex="\((1,1),(0,u),(0,v)\)">\((1,1),(0,u),(0,v)\)</span>, and has <span class="math" data-tex="\(k\)">\(k\)</span>-dimension five. The first projection has kernel <span class="math" data-tex="\(0\oplus\mathfrak m\)">\(0\oplus\mathfrak m\)</span>, and the second has kernel <span class="math" data-tex="\(\mathfrak m\oplus0\)">\(\mathfrak m\oplus0\)</span>, as submodules of <span class="math" data-tex="\(P\)">\(P\)</span>. Both projections are surjective: the diagonal pair <span class="math" data-tex="\((a,a)\)">\((a,a)\)</span> maps to <span class="math" data-tex="\(a\)">\(a\)</span> under either one.</p>
+<p><strong>Exercise 6.4 (synthesis).</strong> In all abelian groups, take <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> to consist of all finite abelian groups. Classify the pseudo-coherent and coherent objects, verify (E), and show that (E) does not force every object of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> to be projective.</p>
+<p><strong>Solution.</strong> Every kernel of a map from a finite group is finite and belongs to <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Hence every abelian group is pseudo-coherent. A quotient of a finite group is finite, and a finite group covers itself. Thus coherent objects are exactly finite abelian groups.</p>
+<p>In (4.1), both <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> are finite. Each fibre of <span class="math" data-tex="\(E\twoheadrightarrow S\)">\(E\twoheadrightarrow S\)</span> is a coset of <span class="math" data-tex="\(K\)">\(K\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+|E|=|K|\,|S|&lt;\infty.
+\tag{6.8}
+\]">\[
+|E|=|K|\,|S|&lt;\infty.
+\tag{6.8}
+\]</span>
+<p>It follows that <span class="math" data-tex="\(E\in\mathcal J\)">\(E\in\mathcal J\)</span> and its identity supplies the cover required by (E). Theorem 4.1 therefore gives the exact abelian inclusion of finite abelian groups into all abelian groups.</p>
+<p>For any prime <span class="math" data-tex="\(p\)">\(p\)</span>, the object <span class="math" data-tex="\(\mathbb Z/p\)">\(\mathbb Z/p\)</span> of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is not projective in the ambient category. If reduction <span class="math" data-tex="\(\mathbb Z/p^2\twoheadrightarrow\mathbb Z/p\)">\(\mathbb Z/p^2\twoheadrightarrow\mathbb Z/p\)</span> had a section, the section would take <span class="math" data-tex="\(1\)">\(1\)</span> to a class congruent to <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span>. That class is not killed by <span class="math" data-tex="\(p\)">\(p\)</span>, whereas every image of a homomorphism from <span class="math" data-tex="\(\mathbb Z/p\)">\(\mathbb Z/p\)</span> must be killed by <span class="math" data-tex="\(p\)">\(p\)</span>. This contradiction proves the assertion. Condition (E) ensures finite covers of the relevant extensions while allowing such nonsplit extensions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Stacks, Coherent rings]</strong> The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/05CU">Section 10.90</a>, especially Definition 10.90.1 and <a href="https://stacks.math.columbia.edu/tag/05CW">Lemma 10.90.3</a>. These give the commutative module comparison. <a href="https://stacks.math.columbia.edu/tag/0519">Lemma 10.5.3</a> records finite-generation and finite-presentation behaviour in short exact sequences.</li>
+<li><strong>[Stacks, Abelian categories]</strong> The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/08N4">Lemma 12.5.13</a>, for epimorphisms and pullbacks.</li>
+<li><strong>[Schapira, Homological Algebra]</strong> Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Sections 5.1 and 5.4, for abelian categories and generators.</li>
+</ul>
+</main></body></html>

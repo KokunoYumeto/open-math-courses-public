@@ -1,0 +1,410 @@
+# The norm index bound and Hasse's norm theorem
+
+*Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).*
+
+The preceding lesson proved that a cyclic extension of degree \(n\) has idèle-class norm index at least \(n\). We now prove the reverse bound. Kummer theory supplies a subgroup of precisely the required index; restriction and norm reduce arbitrary Galois groups to prime cyclic extensions. In function-field characteristic \(p\), an adelic argument supplies the case that roots of unity cannot reach.
+
+The equality of the two bounds gives Hasse's norm theorem and the local-global principle for conics. After the ray-prime theorem is proved in lesson 22, its section 6A develops the full Hasse–Minkowski theorem from these conic results.
+
+We use [Hilbert's Theorem 90 and Kummer theory](hilberts-theorem-90-and-kummer-theory.md), [Idèles in extensions and their cohomology](ideles-in-extensions-and-their-cohomology.md), and [The Herbrand quotient of the idèle class group](the-herbrand-quotient-of-the-idele-class-group.md). Write \(J_F\) for the idèles, \(C_F=J_F/F^\times\), \(J_F^S\) for unrestricted components in \(S\) and unit components elsewhere, and \(E_S=F^\times\cap J_F^S\).
+
+
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-15) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+
+## 1. The bound and the class field axiom
+
+**Theorem 15.1.** If \(L/K\) is a finite Galois extension of global fields, then
+\[
+[C_K:N_{L/K}C_L]\leq [L:K].
+\tag{1}
+\]
+If the extension is cyclic of degree \(n\), then
+\[
+\bigl|\widehat H^0(\operatorname{Gal}(L/K),C_L)\bigr|=n,
+\qquad
+\widehat H^{-1}(\operatorname{Gal}(L/K),C_L)=0.
+\tag{2}
+\]
+Thus idèle classes satisfy the cyclic class field axiom.
+
+We first note that the quotient in (1) is finite, without using global reciprocity. The idèle norm image is open, by the local norm theorem and surjectivity on units outside finitely many places. Its image in \(C_K\) is open. Also
+\[
+|N_{L/K}x|_K=|x|_L.
+\tag{3}
+\]
+For number fields the right side takes every positive real value. For function fields it takes a nonzero subgroup of the discrete group of possible contents, so has finite index there. The compactness of \(C_K^1\), proved in the preceding lesson, now makes the remaining discrete quotient finite. Moreover this quotient is killed by \([L:K]\), because the norm of an embedded \(K\)-idèle is its \([L:K]\)th power.
+
+After proving (1), (2) follows immediately from the preceding lesson:
+\[
+[C_K:NC_L]
+=n\,\bigl|\widehat H^{-1}(G,C_L)\bigr|.
+\tag{4}
+\]
+The argument below proves (1) algebraically whenever the prime cyclic degrees differ from the characteristic. Sections 5–7 prove the remaining function-field case.
+
+## 2. Local power indices
+
+Let \(n=\ell^m\), with \(\ell\ne\operatorname{char}K\), and suppose \(\mu_n\subset K\). For every place \(v\),
+\[
+|K_v^\times/K_v^{\times n}|=\frac{n^2}{|n|_v}.
+\tag{5}
+\]
+At a finite place where \(n\) is a unit, deep principal units are uniquely \(n\)-divisible: solve \((1+z)^n=1+t\) by successive residue corrections, since the linear coefficient is a unit. Reduction identifies the unit quotient with the residue-field power quotient, of order \(n\); the \(n\) distinct roots of unity remain distinct in the residue field. Valuations supply the second factor \(n\).
+
+At a finite place dividing \(n\), put \(s_v=v(n)\). For \(k>s_v\), the map
+\[
+U^k\xrightarrow{(\cdot)^n}U^{k+s_v}
+\tag{6}
+\]
+is bijective. Indeed, on \(z\in\pi^k\mathcal O_v\), the equation
+\[
+z=\frac{t-\sum_{j\geq2}\binom nj z^j}{n}
+\]
+is a contraction when \(t\in\pi^{k+s_v}\mathcal O_v\): the nonlinear part has Lipschitz valuation at least \(k-s_v>0\). The same estimate proves injectivity. No nontrivial \(n\)th root of unity lies in \(U^k\). The map \(U/U^k\to U^n/U^{k+s_v}\) therefore has kernel \(\mu_n\), of order \(n\). Counting its image gives
+\[
+[U:U^n]=nq_v^{s_v}.
+\]
+Together with valuations this proves (5). In \(\mathbf C\) the quotient is trivial and \(|n|_v=n^2\). A real place permits \(n>1\) only when \(n=2\); its quotient has order \(2=4/|2|_v\).
+
+Choose a finite, nonempty \(S\) containing the archimedean places, the places dividing \(n\), and any specified ramified places, enlarged so that \(J_K=K^\times J_K^S\). Such an \(S\) exists by the preceding lesson. Put \(s=|S|\). The product formula applied to \(n\) gives
+\[
+\left|\prod_{v\in S}K_v^\times/K_v^{\times n}\right|=n^{2s}.
+\tag{7}
+\]
+The \(S\)-unit theorem gives
+\[
+E_S/E_S^n\simeq(\mathbf Z/n)^s.
+\tag{8}
+\]
+Here the rank is \(s-1\), and the finite cyclic torsion contains \(\mu_n\). Also \(E_S/E_S^n\to K^\times/K^{\times n}\) is injective: an \(n\)th root of an \(S\)-unit has zero valuations outside \(S\).
+
+## 3. The Kummer subgroup
+
+**Proposition 15.2.** Suppose \(\mu_n\subset K\), \(n=\ell^m\) is prime to the characteristic, and
+\[
+\operatorname{Gal}(L/K)\simeq(\mathbf Z/n)^r.
+\]
+With \(S\) as above, including every ramified place, there is a set \(T\) of \(s-r\) further finite places, all splitting completely in \(L\), such that
+\[
+\Delta=\{u\in E_S:u^{1/n}\in L\}
+=\ker\left(E_S\longrightarrow
+\prod_{v\in T}K_v^\times/K_v^{\times n}\right).
+\tag{9}
+\]
+For
+\[
+I(S,T)=
+\prod_{v\in S}K_v^{\times n}
+\times\prod_{v\in T}K_v^\times
+\times\prod_{v\notin S\cup T}U_v,
+\qquad C(S,T)=\operatorname{im}(I(S,T)\to C_K),
+\tag{10}
+\]
+one has
+\[
+[C_K:C(S,T)]=n^r=[L:K],
+\qquad C(S,T)\subseteq N_{L/K}C_L.
+\tag{11}
+\]
+
+**Proof.** Every Kummer radical class for \(L/K\) has an \(S\)-unit representative. If \(a^{1/n}\in L\), then at an unramified place outside \(S\), valuation in the unramified local extension shows \(n\mid v(a)\). Form an idèle having valuation \(v(a)/n\) outside \(S\), with components \(1\) in \(S\). Write it as \(b j\), with \(b\in K^\times\) and \(j\in J_K^S\). Then \(a/b^n\in E_S\).
+
+Let \(N=K(E_S^{1/n})\). By (8) and the perfect Kummer pairing proved in lesson 3,
+\[
+\operatorname{Gal}(N/K)\simeq(\mathbf Z/n)^s,\qquad L\subseteq N.
+\]
+The restriction onto \(\operatorname{Gal}(L/K)\), a free \(\mathbf Z/n\)-module, splits by lifting a basis. Its kernel \(H\) is free of rank \(s-r\). For completeness, over \(\mathbf Z/\ell^m\), a surjective matrix onto a free module has a unit pivot; elementary row and column operations remove one pivot at a time, leaving a free kernel. Choose a basis \(\sigma_1,\ldots,\sigma_{s-r}\) of \(H\).
+
+Set \(F_i=N^{\langle\sigma_i\rangle}\). The cyclic prime-power extension \(N/F_i\) has infinitely many unramified inert primes, by the stronger splitting consequence proved in lesson 14. Choose one above a place \(v_i\) of \(K\), avoiding \(S\) and previously chosen places. Its decomposition group in the abelian extension \(N/K\) is cyclic of order at most \(n\), and contains \(\langle\sigma_i\rangle\), which already has order \(n\). Hence it equals \(\langle\sigma_i\rangle\). In particular \(v_i\) splits in \(L\).
+
+For \(u\in E_S\), its \(n\)th root is in \(K_{v_i}\) precisely when its Kummer character kills \(\sigma_i\). Thus \(T=\{v_i\}\) gives (9). Each \(v_i\) is outside the divisors of \(n\), and \(u\) is a unit there. The kernel index is \(n^{s-r}\), which equals the order of \(\prod_{v\in T}U_v/U_v^n\). Therefore
+\[
+E_S\longrightarrow\prod_{v\in T}U_v/U_v^n
+\quad\text{is surjective}.
+\tag{12}
+\]
+The case \(s=r\) simply has \(T=\varnothing\).
+
+The crucial principal intersection is
+\[
+K^\times\cap I(S,T)=E_{S\cup T}^{\,n}.
+\tag{13}
+\]
+One inclusion is clear. For the other, take \(y\) in the left side and put \(M=K(y^{1/n})\), a cyclic extension of degree dividing \(n\). Given any idèle class, represent it by \(x\in J_K^S\). Its components in \(T\) are units. By (12), choose \(a\in E_S\) so that \(x/a\) is an \(n\)th power at every place in \(T\). At places in \(S\), the extension \(M\) splits, because \(y\) is already an \(n\)th power. Outside \(S\cup T\), \(y\) is a unit and \(n\) is invertible, so \(M\) is unramified and the unit \(x/a\) is a local norm. At \(T\), its being an \(n\)th power makes it a local norm as well: every local degree divides \(n\). Choose unit norm preimages outside finitely many places to obtain an idèle norm. Thus \(NC_M=C_K\). The cyclic lower bound from lesson 14 forces \([M:K]=1\). Consequently \(y=b^n\), and its valuations show \(b\in E_{S\cup T}\), proving (13).
+
+Now \(J_K=K^\times J_K^{S\cup T}\), and
+\[
+[J_K^{S\cup T}:I(S,T)]=n^{2s},\qquad
+[E_{S\cup T}:E_{S\cup T}^{\,n}]=n^{s+|T|}=n^{2s-r}.
+\]
+Dividing these indices using (13) proves the first assertion of (11).
+
+Finally, every component in (10) is a local norm from \(L\). At \(S\), the local abelian Galois group has exponent dividing \(n\); local reciprocity identifies it with the local norm quotient, so that quotient kills \(n\)th powers. This uses the exponent, not the potentially larger local degree. At \(T\), the extension splits. Elsewhere it is unramified and unit norms are surjective. Unit preimages at almost all places give an idèle norm, proving the second assertion. \(\square\)
+
+## 4. Descent and arbitrary Galois groups
+
+First let \(L/K\) be cyclic of prime degree \(\ell\ne\operatorname{char}K\). Put \(K'=K(\mu_\ell)\), \(L'=LK'\), and \(d=[K':K]\). Then \(d\mid\ell-1\), \(L\cap K'=K\), and \(L'/K'\) is cyclic of degree \(\ell\). Proposition 15.2 gives index at most \(\ell\) over \(K'\).
+
+Restriction of idèles and norm back induce maps
+\[
+C_K/NC_L\longrightarrow C_{K'}/NC_{L'}
+\longrightarrow C_K/NC_L
+\tag{14}
+\]
+whose composite is \(x\mapsto x^d\). These maps are well-defined by base change for field norms and transitivity; the same identities hold componentwise for idèles and principal elements. The first quotient is killed by \(\ell\), so the first map is injective. Its order is therefore at most \(\ell\).
+
+In any tower \(K\subset M\subset L\),
+\[
+[C_K:N_{L/K}C_L]\leq
+[C_K:N_{M/K}C_M]\,[C_M:N_{L/M}C_L].
+\tag{15}
+\]
+Indeed the kernel of the map between the first two quotients is the image, under \(N_{M/K}\), of \(C_M/N_{L/M}C_L\). Prime towers prove (1) for cyclic extensions and for Galois groups of prime-power order, provided the relevant prime cyclic case is known.
+
+Here is the reduction for every finite Galois group \(G\); a composition series with cyclic factors would not suffice. Write \(|G|=p^a m\), \(p\nmid m\). There is a subgroup \(P\) of order \(p^a\). An elementary proof is to let \(G\) act on its subsets of size \(p^a\). The number \(\binom{p^a m}{p^a}\) is congruent to \(m\) modulo \(p\), by taking the coefficient of \(X^{p^a}\) in \((1+X)^{p^a m}\). Some orbit has size prime to \(p\). Its stabilizer has order divisible by \(p^a\), and acts freely on that subset, so its order also divides \(p^a\). This is the required \(P\).
+
+A nontrivial \(p\)-group has nontrivial center by its conjugacy-class equation. Taking a central element of order \(p\) and inducting on the quotient supplies a tower of prime cyclic extensions. Thus (15) bounds the norm quotient for \(L/M\), where \(M=L^P\), by \(|P|\).
+
+Restriction to \(M\) and norm back have composite \(x\mapsto x^{[M:K]}\). Restriction is well-defined on the norm quotients: on \(J_L\), group the product \(\prod_{g\in G}g(y)\) into the cosets \(Pr\) to obtain a \(P\)-norm. Because \([M:K]\) is prime to \(p\), restriction injects the \(p\)-primary part of \(C_K/NC_L\) into \(C_M/N_{L/M}C_L\). Hence that primary part has order at most \(p^a\). Multiplying over the primes dividing \(|G|\) proves (1).
+
+This completes the algebraic argument for number fields and for prime cyclic degrees different from the function-field characteristic. We next supply that missing characteristic case without assuming global class field theory.
+
+## 5. Additive duality for function fields
+
+Let \(F\) have full constant field \(k=\mathbf F_q\) of characteristic \(p\). The preceding lesson gave a separating parameter, a finite separable extension \(F/E\) with \(E=k(t)\), and discreteness and compact quotient for \(F\subset\mathbb A_F\).
+
+On \(\mathbb A_E\), define
+\[
+\Psi_E(x)=
+\exp\left(\frac{2\pi i}{p}
+\operatorname{Tr}_{k/\mathbf F_p}
+\sum_v\operatorname{res}_v(x_v\,dt)\right).
+\tag{16}
+\]
+At a finite place the residue includes the residue-field trace to \(k\). Only finitely many terms are nonzero. Partial fractions prove the residue theorem for rational differentials on \(k(t)\): each finite principal part contributes the negative of its contribution at infinity, and a polynomial contributes zero. Thus \(\Psi_E\) is trivial on \(E\).
+
+We need the stronger assertion
+\[
+E^\perp=E
+\quad\text{under }(x,y)\longmapsto\Psi_E(xy).
+\tag{17}
+\]
+Subtract from \(y\in E^\perp\) a rational function to put its remainder in the compact representative set
+\[
+\prod_{P\text{ finite}}\mathcal O_P\times t^{-1}k[[t^{-1}]]
+\]
+constructed in lesson 14. Write its infinity component as \(\sum_{j\geq1}c_jt^{-j}\). Testing against \(a t^{j-1}\), \(a\in k\), gives \(\operatorname{Tr}_{k/\mathbf F_p}(a c_j)=0\), so all \(c_j\) vanish. Now test against arbitrary proper fractions \(a(t)/P^r\). Other places give zero, and these fractions represent every principal part at \(P\). The local residue pairing between principal parts and \(\mathcal O_P\) is nondegenerate: expand in the parameter \(P\), and use nondegeneracy of the finite-field trace for the first nonzero coefficient. The derivative \(P'(t)\) is a unit at \(P\), so replacing \(dP\) by \(dt\) does not change this assertion. Each finite component therefore vanishes. This proves (17).
+
+The pairing also gives every continuous additive character of \(\mathbb A_E\). Locally, a character is a linear map to the \(p\)th roots of unity, killed by some parameter-power ideal. Coefficient expansion and the finite-field trace identify it uniquely with a Laurent series through the residue pairing. Globally, continuity kills all unit components outside a finite set, so the representing Laurent series form an adèle. Conversely an adèle gives a continuous character. This establishes self-duality, not just nondegeneracy.
+
+Put \(\Psi_F(x)=\Psi_E(\operatorname{Tr}_{F/E}x)\). Choose trace-dual \(E\)-bases of \(F\). Under the topological isomorphism \(\mathbb A_F\simeq\mathbb A_E^{[F:E]}\) proved in lesson 14, the pairing \(\Psi_F(xy)\) is the coordinatewise pairing between those dual bases. Thus \(\mathbb A_F\) is self-dual and
+\[
+F^\perp=F.
+\tag{18}
+\]
+This argument avoids assuming a geometric residue or duality theorem for \(F\).
+
+For each \(w\), let \(N_w\) be the largest integer such that the local character is trivial on \(\pi_w^{-N_w}\mathcal O_w\). It is nontrivial at each place by the nondegenerate local trace. Outside finitely many places the extension of \(E\) is unramified, its integral trace pairing is perfect, and the base character has conductor \(N_w=0\). Hence
+\[
+\kappa=\sum_w N_w w
+\tag{19}
+\]
+is a finite divisor. The local annihilator calculation from the rank-one Fourier theory in lesson 12 gives, for every divisor \(D=\sum d_w w\),
+\[
+B(D)=\prod_w\pi_w^{-d_w}\mathcal O_w,\qquad
+B(D)^\perp=B(\kappa-D).
+\tag{20}
+\]
+
+## 6. Riemann–Roch and finite-order Hecke functions
+
+Define \(H^0(D)=F\cap B(D)\), and \(l(D)=\dim_k H^0(D)\). It is finite: a discrete subgroup meets a compact set in finitely many points. The quotient
+\(\mathbb A_F/(F+B(D))\) is finite because \(\mathbb A_F/F\) is compact and the image of \(B(D)\) is open. By (18)–(20), its characters are exactly \(H^0(\kappa-D)\). A finite abelian group has as many characters as elements, so that quotient has order \(q^{l(\kappa-D)}\).
+
+Let \(c\) be the Haar volume of \(\mathbb A_F/F\). The image of \(B(D)\) has volume \(\operatorname{vol}(B(D))/q^{l(D)}\). Counting its cosets gives
+\[
+\frac{\operatorname{vol}(B(D))}{c}
+=q^{l(D)-l(\kappa-D)}.
+\tag{21}
+\]
+The ratio of the left sides for \(D\) and \(0\) is \(q^{\deg D}\). Functions integral everywhere are the constants: they form a finite \(k\)-algebra inside \(F\), hence a finite field contained in the full constant field \(k\). Thus \(l(0)=1\). Put \(g=l(\kappa)\). Equation (21) yields
+\[
+l(D)-l(\kappa-D)=\deg D+1-g.
+\tag{22}
+\]
+Applying it to \(\kappa\) gives \(\deg\kappa=2g-2\). A negative-degree divisor has no nonzero section, by the product formula. Consequently
+\[
+\deg D>2g-2\quad\Longrightarrow\quad l(D)=\deg D+1-g.
+\tag{23}
+\]
+This is the needed Riemann–Roch theorem, proved from the additive quotient and its exact duality.
+
+Now let \(\chi\) be a finite-order character of \(C_F\), with conductor divisor \(\mathfrak f\). Let \(U(\mathfrak f)\) be deep principal units at its support and full units elsewhere. The ray group
+\[
+\Gamma_{\mathfrak f}=C_F/\operatorname{im}U(\mathfrak f)
+\]
+is discrete, and its degree-zero subgroup is finite by compactness of \(C_F^1\). Denote its order by \(h_{\mathfrak f}\), and write the degree image as \(\delta\mathbf Z\). No assertion \(\delta=1\) is needed here. Weak approximation makes any idèle principal times an idèle congruent to \(1\) at \(\mathfrak f\); taking its other valuations shows that every ray class is represented by a divisor prime to \(\mathfrak f\).
+
+For \(\mathfrak f>0\), fix such a representative \(A\) of large degree \(d\). The functions producing effective divisors in its ray class are
+\[
+a\in H^0(A),\qquad a\equiv1\pmod{\mathfrak f}.
+\]
+Evaluation onto \(\mathcal O/\mathfrak f\) is surjective: its kernel is \(H^0(A-\mathfrak f)\), and (23) makes the dimension difference \(\deg\mathfrak f\), the dimension of the target. The indicated fiber therefore has
+\[
+q^{d-\deg\mathfrak f+1-g}
+\tag{24}
+\]
+elements. Different functions in this fiber give different divisors, since the only constant congruent to \(1\) is \(1\). If \(\mathfrak f=0\), divide the nonzero sections by \(k^\times\); the count instead is
+\[
+\frac{q^{d+1-g}-1}{q-1}.
+\tag{25}
+\]
+These counts depend only on the degree, not on the ray class.
+
+The Euler product
+\[
+L(\chi,T)=\prod_{w\notin\operatorname{supp}\mathfrak f}
+(1-\chi(w)T^{\deg w})^{-1}
+\tag{26}
+\]
+is the generating function for these effective divisors with their character weights. If \(\chi\) is nontrivial on the finite degree-zero subgroup of \(\Gamma_{\mathfrak f}\), character summation on each fixed-degree coset makes all sufficiently large coefficients zero. Hence \(L(\chi,T)\) is a polynomial.
+
+Otherwise \(\chi\) is a degree character, say \(\chi(D)=\lambda^{\deg D}\), with \(|\lambda|=1\). It is unramified, so its minimal conductor is zero. Formula (25) shows that
+\[
+\zeta_F(T)
+=\text{a polynomial}+
+\sum_{\substack{d\geq d_0\\d\in\delta\mathbf Z}}
+h_0\frac{q^{d+1-g}-1}{q-1}T^d.
+\tag{27}
+\]
+Thus its only possible denominator factors are \(1-T^\delta\) and \(1-q^\delta T^\delta\). At \(T=q^{-1}\) it has a simple pole with positive nonzero leading coefficient. A nontrivial degree character has \(\lambda^\delta\ne1\), so
+\(L(\chi,T)=\zeta_F(\lambda T)\) is holomorphic there. These divisor counts also justify absolute convergence of the Euler products for \(|T|<q^{-1}\).
+
+Replacing \(T\) by \(q^{-s}\), we have proved: \(\zeta_F(s)\) has a simple pole at \(s=1\), and every nontrivial finite-order Hecke \(L\)-function is holomorphic at \(1\). For number fields these exact analytic inputs are the proved Theorems 10.1 and 10.2 and Corollary 10.4 in [Hecke L-functions and the Dedekind zeta function](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ADL-10). The function-field proof above uses neither reciprocity nor the norm index bound.
+
+## 7. Weber's argument
+
+Let \(L/K\) be Galois of degree \(n\), and set \(A=C_K/NC_L\), a finite group by section 1. Its characters are finite-order Hecke characters, unramified outside a finite set \(S\). For \(v\notin S\), let \(a_v\in A\) be the class of an idèle uniformizer. Character orthogonality and the Euler logarithms give, for real \(s>1\),
+\[
+\log\prod_{\chi\in A^\vee}L_S(s,\chi)
+=|A|\sum_{\substack{v\notin S\\a_v=1}}(Nv)^{-s}+O(1).
+\tag{28}
+\]
+Indeed the terms of first degree have character sum \(|A|\) or \(0\); all higher powers have bounded total near \(1\), since \(\sum_v(Nv)^{-2s}\) converges there. The logarithm defined by the Euler products is real, and their product is positive.
+
+The principal factor has a simple pole. Each nonprincipal factor is holomorphic at \(1\), by section 6 for function fields or the cited internal analytic theorem for number fields. If its zero order there is \(m_\chi\geq0\), taking real logarithms of absolute values in (28) gives
+\[
+|A|\sum_{a_v=1}(Nv)^{-s}
+=\left(1-\sum_{\chi\ne1}m_\chi\right)
+\log\frac1{s-1}+O(1).
+\tag{29}
+\]
+We have not assumed nonvanishing.
+
+For the primes splitting completely in \(L\), the Euler logarithm of \(\zeta_L\) gives
+\[
+n\sum_{v\text{ split completely}}(Nv)^{-s}
+=\log\frac1{s-1}+O(1).
+\tag{30}
+\]
+At a nonsplit unramified prime every residue degree is at least \(2\), so its contribution is bounded by a constant times \((Nv)^{-2s}\); ramified primes are finite. Every completely split prime has \(a_v=1\), since its uniformizer is an idèle norm. Comparing (29) and (30) proves
+\[
+\frac{|A|}{n}\leq1-\sum_{\chi\ne1}m_\chi\leq1.
+\]
+This proves (1) for all global fields, including characteristic-\(p\) extensions of degree divisible by \(p\), and completes Theorem 15.1.
+
+## 8. Hasse's norm theorem and conics
+
+**Theorem 15.3 (Hasse's norm theorem).** For a finite cyclic extension \(L/K\) of global fields, an element \(a\in K^\times\) is a field norm if and only if it is a norm from \(L\otimes_K K_v\) at every place \(v\).
+
+**Proof.** Apply the cyclic Tate hexagon to
+\[
+1\longrightarrow L^\times\longrightarrow J_L
+\longrightarrow C_L\longrightarrow1.
+\]
+Its relevant exact segment is
+\[
+\widehat H^{-1}(G,C_L)\longrightarrow
+K^\times/NL^\times\longrightarrow J_K/NJ_L.
+\tag{31}
+\]
+The first group is zero by (2). Thus the last map is injective. An element in all local norm images gives an idèle norm: outside finitely many ramified places it is a unit and has a unit norm preimage. Its image in the last group is zero, so its field-norm class is zero. The reverse implication follows by completion. \(\square\)
+
+Cyclicity is essential; the theorem need not hold for general noncyclic abelian extensions.
+
+This cyclic result is also the input for the planned lesson *The principal genus theorem* in the Noether course, where the more general cohomological comparison is developed.
+
+**Corollary 15.4.** A smooth conic over a global field has a rational point if and only if it has a point over every completion. In characteristic different from \(2\), this applies to
+\[
+aX^2+bY^2=Z^2,\qquad a,b\in K^\times,
+\tag{32}
+\]
+has a \(K\)-point if and only if it has a point over every \(K_v\).
+
+**Proof.** If \(b\) is a square, \(X=0\) gives a point. Otherwise put \(L=K(\sqrt b)\). A point in (32) must have \(X\ne0\), and the equation becomes
+\[
+a=N_{L/K}\left(Z/X+(Y/X)\sqrt b\right).
+\]
+Over a completion where \(b\) becomes a square the split norm is surjective; the conic has a point automatically. At other completions the same equivalence holds. Theorem 15.3 proves the assertion. \(\square\)
+
+This treats every smooth conic in characteristic different from \(2\): diagonalize its nondegenerate ternary form and scale the last coefficient to obtain (32). Diagonal ternary equations in characteristic \(2\) are not smooth conics. The corresponding smooth equation
+\[
+X^2+XY+bY^2=aZ^2
+\tag{33}
+\]
+also has the local-global principle in characteristic \(2\): if \(T^2+T+b\) splits there is an immediate point; otherwise the left side is the norm of \(X+Y\theta\) from the cyclic Artin–Schreier quadratic field. A point then has \(Z\ne0\), and Theorem 15.3 applies. Every smooth characteristic-\(2\) conic either already has a rational point or has this form. Its polar form has rank \(2\); choose a paired basis and a radical vector to write its equation as
+\(A X^2+XY+B Y^2+C Z^2=0\).
+Smoothness forces \(C\ne0\), since a zero of the quadratic form on its polar radical would be a singular point. If \(A=0\), there is a rational point. Otherwise divide by \(A\) and replace \(Y\) by \(A Y'\), obtaining (33) with \(b=AB\) and \(a=C/A\). This completes the characteristic-\(2\) case as well.
+
+For example, in \(\mathbf Q(i)\) every odd prime \(p\equiv3\pmod4\) must have even valuation in a norm. At \(2\), the norm subgroup is
+\[
+2^{\mathbf Z}(1+4\mathbf Z_2),
+\]
+as computed in the preceding idèle lesson. Thus \(3\) fails at both \(3\) and \(2\), and \(7\) fails at both \(7\) and \(2\). The number \(5=1^2+2^2\) is a norm globally.
+
+## 9. From conics to quadratic forms
+
+The norm theorem proves the local-to-global principle for conics here. The full Hasse–Minkowski theorem for nondegenerate quadratic forms over number fields is proved in [The Chebotarev density theorem, section 6A](the-chebotarev-density-theorem.md#6a-general-quadratic-forms), after reciprocity, existence and the ray-prime theorem. That argument retains all dimensions and uses the conic theorem above for its ternary base case.
+
+## 10. Exercises and complete solutions
+
+### Exercise 1 — Gaussian norms (easy)
+
+Decide whether \(3,5,7\) are norms from \(\mathbf Q(i)\), identifying local obstructions.
+
+**Solution.** At an inert odd prime, norm valuations are even. The valuations of \(3\) at \(3\), and \(7\) at \(7\), are odd, so both fail. Their odd \(2\)-adic units are \(3\pmod4\), so they also fail at \(2\). The element \(1+2i\) has norm \(5\); equivalently all its local tests pass and Hasse's norm theorem applies. Positive sign at the real place is satisfied by all three.
+
+### Exercise 2 — The cohomological injection (medium)
+
+Derive Hasse's norm theorem directly from \(\widehat H^{-1}(G,C_L)=0\).
+
+**Solution.** Invariants in \(L^\times\) and \(J_L\) are \(K^\times\) and \(J_K\). The Tate hexagon for their exact sequence with \(C_L\) gives (31). Vanishing makes the field-norm quotient inject into the idèle-norm quotient. Local norm preimages can be chosen to be units almost everywhere, so a locally norm element dies in the latter quotient; injectivity kills its field-norm class. This explains both the local-to-idèle step and the exact cohomological step.
+
+### Exercise 3 — The Kummer index (medium)
+
+In Proposition 15.2, prove the exact index of \(C(S,T)\), including the principal intersection.
+
+**Solution.** The kernel of \(E_S\to\prod_T U_v/U_v^n\) is the radical \(\Delta\), so its index is \(n^{s-r}\); this equals the target order and proves surjectivity. For \(y\in K^\times\cap I(S,T)\), the cyclic field \(K(y^{1/n})\) splits at \(S\), is unramified outside \(S\cup T\), and has every idèle class as a norm after multiplying a representative by the \(S\)-unit supplied by that surjectivity at \(T\). The lower norm bound forces this field to be \(K\), and the root is an \(S\cup T\)-unit. Hence the principal intersection is exactly \(E_{S\cup T}^n\). The unrestricted \(S\)-local power quotients have product order \(n^{2s}\) by (5) and the product formula; principal \(S\cup T\)-units remove a subgroup of order \(n^{s+|T|}=n^{2s-r}\). The resulting index is \(n^r\). Merely counting local factors without proving the principal intersection would not establish it.
+
+### Exercise 4 — The analytic norm bound (hard)
+
+Assume the simple pole of the global zeta functions at \(1\) and holomorphy there of every nonprincipal finite-order Hecke function. Prove (1) without assuming their nonvanishing.
+
+**Solution.** The finite norm quotient \(A\) has \(|A|\) characters. Orthogonality in its Euler products gives (28). If the nonprincipal functions have total zero order \(m\), their product with the principal one has logarithm \((1-m)\log(1/(s-1))+O(1)\). Thus the primes with trivial uniformizer class have logarithmic density \((1-m)/|A|\). Independently the Euler product of \(\zeta_L\) gives density \(1/n\) for completely split primes: exactly those have \(n\) terms of norm \(Nv\), and all other unramified terms have degree at least \(2\). Complete splitting implies trivial norm-quotient class. Therefore
+\[
+\frac1n\leq\frac{1-m}{|A|}\leq\frac1{|A|},
+\]
+proving \(|A|\leq n\). This also forces \(m=0\) for these characters. Finite omitted Euler factors are nonzero at \(1\), so they change neither zero orders nor the argument.
+
+## Editable edition
+
+The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.
+
+## References
+
+The Kummer norm-index bound includes Sylow descent. The function-field proof treats prime-to-characteristic radicals and characteristic-p additive duality separately. The cyclic Hasse norm theorem and the quadratic-form deduction retain their exact analytic and approximation prerequisites.
+
+- [J. S. Milne, Class Field Theory, version 4.03](https://www.jmilne.org/math/CourseNotes/CFT.pdf).
+- [Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition](https://kskedlaya.org/cft/sec_abstractcft1.html).
+
+The [proof guide](../FREE_PROOFS.md) gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.

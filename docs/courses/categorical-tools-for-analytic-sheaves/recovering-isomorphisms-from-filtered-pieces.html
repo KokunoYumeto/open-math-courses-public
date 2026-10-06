@@ -1,0 +1,455 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recovering isomorphisms from filtered pieces</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="recovering-isomorphisms-from-filtered-pieces">Recovering isomorphisms from filtered pieces</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, October 2026. Self-checked by the writing AI; no independent review. Public domain (CC0).</em></p>
+<p>A functor may remember enough to recognize an invertible map while forgetting some nonzero maps. A subobject and its quotient provide a concrete mechanism: their direct sum records both ends of an exact sequence, although it discards the extension joining them. We will use this mechanism to distinguish faithfulness, detection of isomorphisms and detection of zero objects.</p>
+<p>The finite exact comparison is <a href="composition-factors-and-uniform-chain-bounds.html#1-a-finite-filtration-detects-a-strict-inclusion">Composition factors and uniform chain bounds, Lemma 1.1</a>. The abelian conventions are those of <a href="trace-coreflections-and-balanced-nonabelian-categories.html">Trace coreflections and balanced nonabelian categories</a>. The exact-functor interfaces are <a href="https://stacks.math.columbia.edu/tag/010N">Stacks, Lemma 12.7.2</a>, <a href="https://stacks.math.columbia.edu/tag/08WK">Remark 35.4.4</a> and <a href="https://stacks.math.columbia.edu/tag/06XK">Lemma 12.10.7</a>. We retain these results where exactness is used.</p>
+<p>All categories below are locally small in a fixed universe. They need not have generators or infinite limits or colimits. A ring has an identity, and its modules are unital left modules unless specified otherwise. Modules are arbitrary; no finite generation is implicit.</p>
+<h2 id="1-a-subobject-and-its-quotient-detect-invertibility">1. A subobject and its quotient detect invertibility</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be abelian. Suppose <span class="math" data-tex="\(T:\mathcal A\to\mathcal A\)">\(T:\mathcal A\to\mathcal A\)</span> is additive and has a natural transformation</p>
+<span class="math math-display" data-tex="\[
+i:T\longrightarrow\operatorname{Id}_{\mathcal A}
+\tag{1.1}
+\]">\[
+i:T\longrightarrow\operatorname{Id}_{\mathcal A}
+\tag{1.1}
+\]</span>
+<p>whose components are monomorphisms. Choose <span class="math" data-tex="\(QX=\operatorname{coker}(i_X)\)">\(QX=\operatorname{coker}(i_X)\)</span>, with quotient map <span class="math" data-tex="\(p_X:X\to QX\)">\(p_X:X\to QX\)</span>. For a map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, naturality of <span class="math" data-tex="\(i\)">\(i\)</span> makes <span class="math" data-tex="\(p_Yf\)">\(p_Yf\)</span> vanish on <span class="math" data-tex="\(i_X\)">\(i_X\)</span>. The cokernel property determines a unique map <span class="math" data-tex="\(Qf\)">\(Qf\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+fi_X=i_Y(Tf),\\
+(Qf)p_X=p_Yf.
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+fi_X=i_Y(Tf),\\
+(Qf)p_X=p_Yf.
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>Uniqueness gives <span class="math" data-tex="\(Q(1_X)=1_{QX}\)">\(Q(1_X)=1_{QX}\)</span> and <span class="math" data-tex="\(Q(gf)=(Qg)(Qf)\)">\(Q(gf)=(Qg)(Qf)\)</span>: compose the respective candidate maps with the epimorphism <span class="math" data-tex="\(p_X\)">\(p_X\)</span>. It also gives additivity, since</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q(f+g)p_X&amp;=p_Y(f+g)\\
+&amp;=((Qf)+(Qg))p_X.
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+Q(f+g)p_X&amp;=p_Y(f+g)\\
+&amp;=((Qf)+(Qg))p_X.
+\end{aligned}
+\tag{1.3}
+\]</span>
+<p>Thus <span class="math" data-tex="\(Q\)">\(Q\)</span> is an additive functor, and the sequences</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow TX\xrightarrow{i_X}X
+\xrightarrow{p_X}QX\longrightarrow0
+\tag{1.4}
+\]">\[
+0\longrightarrow TX\xrightarrow{i_X}X
+\xrightarrow{p_X}QX\longrightarrow0
+\tag{1.4}
+\]</span>
+<p>form a natural family of short exact sequences. Define the <strong>piece functor</strong></p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G:\mathcal A\longrightarrow\mathcal A,\\
+GX=TX\oplus QX,\\
+Gf=(Tf)\oplus(Qf).
+\end{gathered}
+\tag{1.5}
+\]">\[
+\begin{gathered}
+G:\mathcal A\longrightarrow\mathcal A,\\
+GX=TX\oplus QX,\\
+Gf=(Tf)\oplus(Qf).
+\end{gathered}
+\tag{1.5}
+\]</span>
+<p>The identity and composition laws hold on each summand. Both summand functors are additive, so <span class="math" data-tex="\(G\)">\(G\)</span> is additive.</p>
+<p><strong>Theorem 1.1.</strong> If <span class="math" data-tex="\(Gf\)">\(Gf\)</span> is invertible, then <span class="math" data-tex="\(f\)">\(f\)</span> is invertible.</p>
+<p><strong>Proof.</strong> A block diagonal map is invertible only if each diagonal block is invertible. Here is the argument in an arbitrary additive category, where the inverse need not initially be assumed diagonal. Let <span class="math" data-tex="\(h:TY\oplus QY\to TX\oplus QX\)">\(h:TY\oplus QY\to TX\oplus QX\)</span> be an inverse of <span class="math" data-tex="\(Gf\)">\(Gf\)</span>. Write <span class="math" data-tex="\(r:TY\to TX\)">\(r:TY\to TX\)</span> and <span class="math" data-tex="\(u:QY\to QX\)">\(u:QY\to QX\)</span> for its two diagonal components. Composing the inverse identities with the appropriate summand inclusions and projections gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r(Tf)&amp;=1_{TX}, &amp;(Tf)r&amp;=1_{TY},\\
+u(Qf)&amp;=1_{QX}, &amp;(Qf)u&amp;=1_{QY}.
+\end{aligned}
+\tag{1.6}
+\]">\[
+\begin{aligned}
+r(Tf)&amp;=1_{TX}, &amp;(Tf)r&amp;=1_{TY},\\
+u(Qf)&amp;=1_{QX}, &amp;(Qf)u&amp;=1_{QY}.
+\end{aligned}
+\tag{1.6}
+\]</span>
+<p>The off-diagonal components contribute nothing to these diagonal equations because <span class="math" data-tex="\(Gf\)">\(Gf\)</span> is diagonal. Hence <span class="math" data-tex="\(Tf\)">\(Tf\)</span> and <span class="math" data-tex="\(Qf\)">\(Qf\)</span> are isomorphisms.</p>
+<p>The two rows (1.4) for <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>, with vertical maps <span class="math" data-tex="\(Tf,f,Qf\)">\(Tf,f,Qf\)</span>, commute by (1.2). Their first and last vertical maps are isomorphisms. The retained finite exact comparison, <a href="composition-factors-and-uniform-chain-bounds.html#1-a-finite-filtration-detects-a-strict-inclusion">Lemma 1.1</a>, makes the middle map <span class="math" data-tex="\(f\)">\(f\)</span> an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses exactness of the rows (1.4). It makes no claim that applying <span class="math" data-tex="\(G\)">\(G\)</span> to another exact sequence gives an exact sequence. The distinction is essential in the polynomial example below.</p>
+<h2 id="2-three-tests-for-what-a-functor-remembers">2. Three tests for what a functor remembers</h2>
+<p>Let <span class="math" data-tex="\(F:\mathcal A\to\mathcal B\)">\(F:\mathcal A\to\mathcal B\)</span> be additive between abelian categories.</p>
+<ul>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> is <strong>faithful</strong> if its map on every Hom group is injective.</li>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> is <strong>conservative</strong> if <span class="math" data-tex="\(Ff\)">\(Ff\)</span> invertible implies <span class="math" data-tex="\(f\)">\(f\)</span> invertible.</li>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> <strong>detects zero objects</strong> if <span class="math" data-tex="\(FX\simeq0\)">\(FX\simeq0\)</span> implies <span class="math" data-tex="\(X\simeq0\)">\(X\simeq0\)</span>.</li>
+</ul>
+<p>An additive functor sends a zero object to a zero object. Indeed,</p>
+<span class="math math-display" data-tex="\[
+1_{F0}=F(1_0)=F(0_{0,0})=0_{F0,F0}.
+\tag{2.1}
+\]">\[
+1_{F0}=F(1_0)=F(0_{0,0})=0_{F0,F0}.
+\tag{2.1}
+\]</span>
+<p>An object with zero identity is a zero object: every map to or from it is zero after composing with its identity.</p>
+<p><strong>Proposition 2.1.</strong> For every such <span class="math" data-tex="\(F\)">\(F\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\text{faithful}\\
+\Longrightarrow\text{conservative}\\
+\Longrightarrow\text{detects zero objects}.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\text{faithful}\\
+\Longrightarrow\text{conservative}\\
+\Longrightarrow\text{detects zero objects}.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(F\)">\(F\)</span> is faithful and <span class="math" data-tex="\(Ff:FX\to FY\)">\(Ff:FX\to FY\)</span> is invertible. If <span class="math" data-tex="\(a,b:Z\to X\)">\(a,b:Z\to X\)</span> satisfy <span class="math" data-tex="\(fa=fb\)">\(fa=fb\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+(Ff)(Fa)=(Ff)(Fb).
+\]">\[
+(Ff)(Fa)=(Ff)(Fb).
+\]</span>
+<p>Cancel <span class="math" data-tex="\(Ff\)">\(Ff\)</span> and use faithfulness to obtain <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. Thus <span class="math" data-tex="\(f\)">\(f\)</span> is monic. If <span class="math" data-tex="\(c,d:Y\to Z\)">\(c,d:Y\to Z\)</span> satisfy <span class="math" data-tex="\(cf=df\)">\(cf=df\)</span>, cancel <span class="math" data-tex="\(Ff\)">\(Ff\)</span> on the other side to obtain <span class="math" data-tex="\(Fc=Fd\)">\(Fc=Fd\)</span>, and then <span class="math" data-tex="\(c=d\)">\(c=d\)</span>. Thus <span class="math" data-tex="\(f\)">\(f\)</span> is epic. A monic and epic arrow in an abelian category is an isomorphism.</p>
+<p>Now suppose <span class="math" data-tex="\(F\)">\(F\)</span> is conservative and <span class="math" data-tex="\(FX\simeq0\)">\(FX\simeq0\)</span>. The arrow <span class="math" data-tex="\(0\to X\)">\(0\to X\)</span> is sent to an arrow between zero objects, which is invertible. Conservativity makes <span class="math" data-tex="\(0\to X\)">\(0\to X\)</span> invertible; hence <span class="math" data-tex="\(X\simeq0\)">\(X\simeq0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Neither implication uses exactness. The first uses balance of the source category. The second uses preservation of the zero object.</p>
+<p><strong>Retained exact criterion.</strong> If <span class="math" data-tex="\(F\)">\(F\)</span> is exact, all three conditions in (2.2) are equivalent. The reverse implication is the zero-kernel specialization of <a href="https://stacks.math.columbia.edu/tag/06XK">Stacks, Lemma 12.10.7</a>. Its stronger statement concerns an exact functor induced from a Serre quotient: it is faithful precisely when the chosen Serre subcategory is the entire object kernel. For the zero Serre subcategory, the quotient is <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> itself; it localizes only isomorphisms, using the quotient interface retained in <a href="serre-quotients-and-local-saturation.html#1-the-exact-quotient-interface">Serre quotients and local saturation, Section 1</a>.</p>
+<p>The criterion's mechanism is preservation of images. If <span class="math" data-tex="\(Ff=0\)">\(Ff=0\)</span>, exactness identifies <span class="math" data-tex="\(F(\operatorname{im}f)\)">\(F(\operatorname{im}f)\)</span> with <span class="math" data-tex="\(\operatorname{im}(Ff)=0\)">\(\operatorname{im}(Ff)=0\)</span>. Zero detection makes <span class="math" data-tex="\(\operatorname{im}f=0\)">\(\operatorname{im}f=0\)</span>, so <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. Applying this to <span class="math" data-tex="\(f-g\)">\(f-g\)</span>, with additivity, gives faithfulness.</p>
+<p>The related reflection statement in <a href="https://stacks.math.columbia.edu/tag/08WK">Stacks, Remark 35.4.4</a> detects monomorphisms and epimorphisms separately through preserved kernels and cokernels. Thus an exact zero detector recognizes each of these two properties, as well as their conjunction. Exactness and its short-exact characterization are the interface of <a href="https://stacks.math.columbia.edu/tag/010N">Stacks, Lemma 12.7.2</a>.</p>
+<p>For a family of representable probes, <a href="generators-and-small-quotient-families.html">Generators and small quotient families, Theorems 2.1 and 2.2</a> gives stronger equivalences. Representable probes preserve the relevant equalizers. That extra property cannot be assumed for an arbitrary additive conservative functor.</p>
+<h2 id="3-a-conservative-functor-that-erases-nonzero-arrows">3. A conservative functor that erases nonzero arrows</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a ring and let <span class="math" data-tex="\(t\)">\(t\)</span> lie in its center. For every left <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_tM=tM,\qquad Q_tM=M/tM,\\
+G_tM=tM\oplus(M/tM).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+T_tM=tM,\qquad Q_tM=M/tM,\\
+G_tM=tM\oplus(M/tM).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>Centrality ensures that <span class="math" data-tex="\(tM\)">\(tM\)</span> is a submodule: <span class="math" data-tex="\(a(tm)=t(am)\)">\(a(tm)=t(am)\)</span> for <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span>. An <span class="math" data-tex="\(R\)">\(R\)</span>-linear map <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span> sends <span class="math" data-tex="\(tm\)">\(tm\)</span> to <span class="math" data-tex="\(tf(m)\)">\(tf(m)\)</span>, so it restricts to <span class="math" data-tex="\(tM\to tN\)">\(tM\to tN\)</span> and induces <span class="math" data-tex="\(M/tM\to N/tN\)">\(M/tM\to N/tN\)</span>. Restrictions and induced quotient maps preserve identities, composition and addition. The inclusion <span class="math" data-tex="\(tM\to M\)">\(tM\to M\)</span> is natural, and its cokernel is <span class="math" data-tex="\(M/tM\)">\(M/tM\)</span>. Theorem 1.1 therefore proves:</p>
+<p><strong>Corollary 3.1.</strong> The additive functor <span class="math" data-tex="\(G_t\)">\(G_t\)</span> is conservative on all left <span class="math" data-tex="\(R\)">\(R\)</span>-modules.</p>
+<p>This applies in particular to <span class="math" data-tex="\(A=k[x]\)">\(A=k[x]\)</span>, <span class="math" data-tex="\(t=x\)">\(t=x\)</span>, for any field <span class="math" data-tex="\(k\)">\(k\)</span>. Take</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M=A/(x^2),\\
+v:M\longrightarrow M,\\
+v(m)=xm.
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+M=A/(x^2),\\
+v:M\longrightarrow M,\\
+v(m)=xm.
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>The classes <span class="math" data-tex="\(1,x\)">\(1,x\)</span> form a <span class="math" data-tex="\(k\)">\(k\)</span>-basis of <span class="math" data-tex="\(M\)">\(M\)</span>, so <span class="math" data-tex="\(v(1)=x\ne0\)">\(v(1)=x\ne0\)</span>. But <span class="math" data-tex="\(v\)">\(v\)</span> vanishes on <span class="math" data-tex="\(xM\)">\(xM\)</span>, since <span class="math" data-tex="\(x^2M=0\)">\(x^2M=0\)</span>, and it induces zero on <span class="math" data-tex="\(M/xM\)">\(M/xM\)</span>, since its image lies in <span class="math" data-tex="\(xM\)">\(xM\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+v\ne0,\qquad G_x(v)=0.
+\tag{3.3}
+\]">\[
+v\ne0,\qquad G_x(v)=0.
+\tag{3.3}
+\]</span>
+<p>Thus a conservative additive functor between abelian categories need not be faithful, even on finite-dimensional modules. Its conservativity, however, holds on the entire module category.</p>
+<p>The same module shows exactly where exactness fails. Write <span class="math" data-tex="\(k=A/(x)\)">\(k=A/(x)\)</span>, with its indicated <span class="math" data-tex="\(A\)">\(A\)</span>-action. There is a short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow k\xrightarrow{j}M
+\xrightarrow{q}k\longrightarrow0,
+\tag{3.4}
+\]">\[
+0\longrightarrow k\xrightarrow{j}M
+\xrightarrow{q}k\longrightarrow0,
+\tag{3.4}
+\]</span>
+<p>where <span class="math" data-tex="\(j(1)=x\)">\(j(1)=x\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> is reduction modulo <span class="math" data-tex="\(x\)">\(x\)</span>. The first map is injective, the second surjective, and its kernel is the span of <span class="math" data-tex="\(x\)">\(x\)</span>, exactly the image of <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>Identify <span class="math" data-tex="\(G_x(k)=0\oplus k\simeq k\)">\(G_x(k)=0\oplus k\simeq k\)</span> and identify both <span class="math" data-tex="\(xM\)">\(xM\)</span> and <span class="math" data-tex="\(M/xM\)">\(M/xM\)</span> with <span class="math" data-tex="\(k\)">\(k\)</span>. The induced maps become</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_x(j):k\longrightarrow k\oplus k,\\
+a\longmapsto(0,0),\\
+G_x(q):k\oplus k\longrightarrow k,\\
+(b,c)\longmapsto c.
+\end{gathered}
+\tag{3.5}
+\]">\[
+\begin{gathered}
+G_x(j):k\longrightarrow k\oplus k,\\
+a\longmapsto(0,0),\\
+G_x(q):k\oplus k\longrightarrow k,\\
+(b,c)\longmapsto c.
+\end{gathered}
+\tag{3.5}
+\]</span>
+<p>For the first map, the subobject component has zero domain, and the quotient component sends <span class="math" data-tex="\(j(k)\subseteq xM\)">\(j(k)\subseteq xM\)</span> to zero. For the second map, <span class="math" data-tex="\(q(xM)=0\)">\(q(xM)=0\)</span>, while reduction induces the identity on <span class="math" data-tex="\(M/xM\simeq k\)">\(M/xM\simeq k\)</span>.</p>
+<p>The map <span class="math" data-tex="\(G_x(j)\)">\(G_x(j)\)</span> is not monic. Moreover, the kernel of <span class="math" data-tex="\(G_x(q)\)">\(G_x(q)\)</span> is the nonzero first copy of <span class="math" data-tex="\(k\)">\(k\)</span>, while the image of <span class="math" data-tex="\(G_x(j)\)">\(G_x(j)\)</span> is zero. By the retained short-exact tests, <span class="math" data-tex="\(G_x\)">\(G_x\)</span> is neither left exact nor right exact. Surjectivity of the last map alone does not give right exactness.</p>
+<p>The weaker zero-object test also has a strict limitation. In the previously established example over <span class="math" data-tex="\(B=k[x,y]\)">\(B=k[x,y]\)</span>, the ideal <span class="math" data-tex="\(\mathfrak a=(x,y)\)">\(\mathfrak a=(x,y)\)</span> gives the additive functor</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H=\operatorname{Hom}_B(\mathfrak a,-),\\
+H:\operatorname{Mod}(B)\longrightarrow\operatorname{Mod}(B).
+\end{gathered}
+\tag{3.6}
+\]">\[
+\begin{gathered}
+H=\operatorname{Hom}_B(\mathfrak a,-),\\
+H:\operatorname{Mod}(B)\longrightarrow\operatorname{Mod}(B).
+\end{gathered}
+\tag{3.6}
+\]</span>
+<p>The <span class="math" data-tex="\(B\)">\(B\)</span>-action on each Hom group is multiplication in its target. <a href="trace-coreflections-and-balanced-nonabelian-categories.html#4-a-balanced-category-with-a-nonstrict-quotient">Trace coreflections and balanced nonabelian categories, Section 4</a> proves on all modules that <span class="math" data-tex="\(H\)">\(H\)</span> detects zero objects. It also proves that the inclusion <span class="math" data-tex="\(\mathfrak a\hookrightarrow B\)">\(\mathfrak a\hookrightarrow B\)</span> is sent to an isomorphism although it is not an isomorphism. In Exercise 3 we compute the precise failure of right exactness explaining why the exact criterion does not apply.</p>
+<h2 id="4-exercises-with-complete-solutions">4. Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — Exactness and fullness (5 points).</strong> Let <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> be the category of all <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S:\mathcal V\times\mathcal V\longrightarrow\mathcal V,\\
+S(V,W)=V\oplus W,\\
+S(a,b)=a\oplus b.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+S:\mathcal V\times\mathcal V\longrightarrow\mathcal V,\\
+S(V,W)=V\oplus W,\\
+S(a,b)=a\oplus b.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>Show that <span class="math" data-tex="\(S\)">\(S\)</span> is exact, faithful and conservative, but not full. Compare it with the exact projection <span class="math" data-tex="\(P(V,W)=V\)">\(P(V,W)=V\)</span>: give explicit failures of faithfulness, conservativity and zero detection for <span class="math" data-tex="\(P\)">\(P\)</span>. Include pairs with a zero component.</p>
+<p><strong>Solution.</strong> Kernels and cokernels in the product category are taken componentwise. A sequence there is short exact precisely when both component sequences are short exact. Their finite direct sum is short exact: a pair lies in the kernel of a direct sum map exactly when each component lies in the corresponding kernel, and the image is the direct sum of the two component images. Surjectivity also holds componentwise. Thus <span class="math" data-tex="\(S\)">\(S\)</span> is exact.</p>
+<p>Given <span class="math" data-tex="\(a\oplus b\)">\(a\oplus b\)</span>, compose it with the first inclusion and first projection to recover <span class="math" data-tex="\(a\)">\(a\)</span>; use the second pair to recover <span class="math" data-tex="\(b\)">\(b\)</span>. Hence <span class="math" data-tex="\(S(a,b)=S(a&#x27;,b&#x27;)\)">\(S(a,b)=S(a&#x27;,b&#x27;)\)</span> implies <span class="math" data-tex="\(a=a&#x27;\)">\(a=a&#x27;\)</span> and <span class="math" data-tex="\(b=b&#x27;\)">\(b=b&#x27;\)</span>. This proves faithfulness, including when one component is zero.</p>
+<p>For conservativity, the diagonal inverse calculation (1.6) shows that an invertible <span class="math" data-tex="\(a\oplus b\)">\(a\oplus b\)</span> has invertible <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>. Then <span class="math" data-tex="\((a^{-1},b^{-1})\)">\((a^{-1},b^{-1})\)</span> is the inverse in the product category. A map <span class="math" data-tex="\(0\to0\)">\(0\to0\)</span> is the identity of the zero object and is invertible, so a zero component introduces no exception.</p>
+<p>The Hom set from <span class="math" data-tex="\((0,k)\)">\((0,k)\)</span> to <span class="math" data-tex="\((k,0)\)">\((k,0)\)</span> contains only the zero map: its components are <span class="math" data-tex="\(0\to k\)">\(0\to k\)</span> and <span class="math" data-tex="\(k\to0\)">\(k\to0\)</span>. Yet their images under <span class="math" data-tex="\(S\)">\(S\)</span> are both isomorphic to <span class="math" data-tex="\(k\)">\(k\)</span>, with a nonzero map from the source second summand to the target first summand. For example, under these identifications the identity of <span class="math" data-tex="\(k\)">\(k\)</span> is such a map. It cannot be <span class="math" data-tex="\(S(a,b)\)">\(S(a,b)\)</span>, so <span class="math" data-tex="\(S\)">\(S\)</span> is not full.</p>
+<p>The projection <span class="math" data-tex="\(P\)">\(P\)</span> is exact because it selects one of the two component short exact sequences. The nonzero object <span class="math" data-tex="\((0,k)\)">\((0,k)\)</span> is sent to zero, so <span class="math" data-tex="\(P\)">\(P\)</span> does not detect zero objects. Its identity and zero endomorphism are distinct but have the same image, the unique endomorphism of <span class="math" data-tex="\(0\)">\(0\)</span>; hence <span class="math" data-tex="\(P\)">\(P\)</span> is not faithful. Finally the arrow</p>
+<span class="math math-display" data-tex="\[
+(0,0)\longrightarrow(0,k)
+\tag{4.2}
+\]">\[
+(0,0)\longrightarrow(0,k)
+\tag{4.2}
+\]</span>
+<p>is not invertible in the product category, whereas <span class="math" data-tex="\(P\)">\(P\)</span> sends it to the invertible arrow <span class="math" data-tex="\(0\to0\)">\(0\to0\)</span>. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is not conservative. Exactness alone guarantees none of the three detection properties. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 2 — How much of an endomorphism survives? (8 points).</strong> Let <span class="math" data-tex="\(A=k[x]\)">\(A=k[x]\)</span>, <span class="math" data-tex="\(M_n=A/(x^n)\)">\(M_n=A/(x^n)\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Compute <span class="math" data-tex="\(G_x(M_n)\)">\(G_x(M_n)\)</span> and the induced map on endomorphism rings. Find its kernel and determine precisely when an endomorphism and its image under <span class="math" data-tex="\(G_x\)">\(G_x\)</span> are invertible. Give an explicit inverse when it exists, over a field of any characteristic.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, the map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_{n-1}\longrightarrow xM_n,\\
+\overline b\longmapsto\overline{xb}
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+M_{n-1}\longrightarrow xM_n,\\
+\overline b\longmapsto\overline{xb}
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>is well-defined and surjective. Its kernel is zero: <span class="math" data-tex="\(xb\in(x^n)\)">\(xb\in(x^n)\)</span> in <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span> if and only if <span class="math" data-tex="\(b\in(x^{n-1})\)">\(b\in(x^{n-1})\)</span>. It is therefore an <span class="math" data-tex="\(A\)">\(A\)</span>-linear isomorphism. Also <span class="math" data-tex="\(M_n/xM_n\simeq k\)">\(M_n/xM_n\simeq k\)</span>. Consequently, with the first line applying for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_x(M_n)\simeq M_{n-1}\oplus k,\\
+G_x(M_1)\simeq0\oplus k.
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+G_x(M_n)\simeq M_{n-1}\oplus k,\\
+G_x(M_1)\simeq0\oplus k.
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>Every endomorphism of <span class="math" data-tex="\(M_n\)">\(M_n\)</span> is determined by the image of <span class="math" data-tex="\(1\)">\(1\)</span>. Any element <span class="math" data-tex="\(\overline a\in M_n\)">\(\overline a\in M_n\)</span> may be that image, because it is annihilated by <span class="math" data-tex="\(x^n\)">\(x^n\)</span>. The corresponding endomorphism is multiplication by <span class="math" data-tex="\(\overline a\)">\(\overline a\)</span>. Composition multiplies the classes, so</p>
+<span class="math math-display" data-tex="\[
+\operatorname{End}_A(M_n)\simeq A/(x^n)
+\tag{4.5}
+\]">\[
+\operatorname{End}_A(M_n)\simeq A/(x^n)
+\tag{4.5}
+\]</span>
+<p>as rings.</p>
+<p>Write <span class="math" data-tex="\(a_0=a(0)\)">\(a_0=a(0)\)</span>. Under (4.4), for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, let <span class="math" data-tex="\(\widetilde a=a\bmod x^{n-1}\)">\(\widetilde a=a\bmod x^{n-1}\)</span>, and let <span class="math" data-tex="\(\mu_b\)">\(\mu_b\)</span> denote multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> on the indicated summand. Then <span class="math" data-tex="\(G_x\)">\(G_x\)</span> sends multiplication by <span class="math" data-tex="\(\overline a\)">\(\overline a\)</span> to the diagonal endomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+\mu_{\widetilde a}&amp;0\\
+0&amp;\mu_{a_0}
+\end{pmatrix}.
+\tag{4.6}
+\]">\[
+\begin{pmatrix}
+\mu_{\widetilde a}&amp;0\\
+0&amp;\mu_{a_0}
+\end{pmatrix}.
+\tag{4.6}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(a(xb)=x(ab)\)">\(a(xb)=x(ab)\)</span>, giving the first block under (4.3), while the quotient by <span class="math" data-tex="\(x\)">\(x\)</span> retains only the constant coefficient. The target endomorphism ring can contain off-diagonal maps; (4.6) describes the image of the given functor.</p>
+<p>For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, both blocks vanish exactly when <span class="math" data-tex="\(a\)">\(a\)</span> is divisible by <span class="math" data-tex="\(x^{n-1}\)">\(x^{n-1}\)</span>: this already forces its constant coefficient to vanish. Hence the kernel of the induced ring homomorphism is</p>
+<span class="math math-display" data-tex="\[
+(x^{n-1})/(x^n)=k\,\overline{x}^{\,n-1}.
+\tag{4.7}
+\]">\[
+(x^{n-1})/(x^n)=k\,\overline{x}^{\,n-1}.
+\tag{4.7}
+\]</span>
+<p>This is one-dimensional over <span class="math" data-tex="\(k\)">\(k\)</span> and contains a nonzero endomorphism. When <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the source endomorphism ring is <span class="math" data-tex="\(k\)">\(k\)</span>, and the functor retains precisely multiplication by that scalar on <span class="math" data-tex="\(k\)">\(k\)</span>; its kernel is zero.</p>
+<p>If <span class="math" data-tex="\(a_0\ne0\)">\(a_0\ne0\)</span>, put <span class="math" data-tex="\(z=a_0^{-1}a-1\)">\(z=a_0^{-1}a-1\)</span> in <span class="math" data-tex="\(A/(x^n)\)">\(A/(x^n)\)</span>. Then <span class="math" data-tex="\(z\in(x)\)">\(z\in(x)\)</span> and <span class="math" data-tex="\(z^n=0\)">\(z^n=0\)</span>. An inverse of <span class="math" data-tex="\(\overline a=a_0(1+z)\)">\(\overline a=a_0(1+z)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+a_0^{-1}\sum_{j=0}^{n-1}(-z)^j.
+\tag{4.8}
+\]">\[
+a_0^{-1}\sum_{j=0}^{n-1}(-z)^j.
+\tag{4.8}
+\]</span>
+<p>Multiplying on either side uses the finite geometric identity</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(1+z)\sum_{j=0}^{n-1}(-z)^j\\
+=1+(-1)^{n-1}z^n\\
+=1.
+\end{gathered}
+\tag{4.9}
+\]">\[
+\begin{gathered}
+(1+z)\sum_{j=0}^{n-1}(-z)^j\\
+=1+(-1)^{n-1}z^n\\
+=1.
+\end{gathered}
+\tag{4.9}
+\]</span>
+<p>The identity holds in every characteristic. If <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>, then <span class="math" data-tex="\(\overline a\)">\(\overline a\)</span> is nilpotent; it cannot be a unit in the nonzero ring <span class="math" data-tex="\(A/(x^n)\)">\(A/(x^n)\)</span>, since taking the <span class="math" data-tex="\(n\)">\(n\)</span>-th power of an inverse identity would give <span class="math" data-tex="\(1=0\)">\(1=0\)</span>.</p>
+<p>Thus multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(M_n\)">\(M_n\)</span> is invertible precisely when <span class="math" data-tex="\(a_0\ne0\)">\(a_0\ne0\)</span>. Its image under <span class="math" data-tex="\(G_x\)">\(G_x\)</span> is invertible under the same condition: necessity follows from its scalar block on the nonzero summand <span class="math" data-tex="\(k\)">\(k\)</span>, and sufficiency follows either from (4.8) on the first block or from functoriality applied to the original inverse. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> this is exactly the usual nonzero-scalar criterion. The nonzero maps in (4.7) are forgotten, although invertibility is still detected. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 3 — The missing right-exactness hypothesis (7 points).</strong> Let <span class="math" data-tex="\(B=k[x,y]\)">\(B=k[x,y]\)</span>, <span class="math" data-tex="\(\mathfrak a=(x,y)\)">\(\mathfrak a=(x,y)\)</span>, <span class="math" data-tex="\(k=B/\mathfrak a\)">\(k=B/\mathfrak a\)</span>, and <span class="math" data-tex="\(H\)">\(H\)</span> be (3.6). Use the full computations retained in <a href="ideal-generated-modules-and-nonstrict-quotients.html">Ideal-generated modules and nonstrict quotients, Sections 1 and 2</a> to compute <span class="math" data-tex="\(H\)">\(H\)</span> on</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathfrak a\xrightarrow{\iota}B
+\xrightarrow{\pi}k\longrightarrow0.
+\tag{4.10}
+\]">\[
+0\longrightarrow\mathfrak a\xrightarrow{\iota}B
+\xrightarrow{\pi}k\longrightarrow0.
+\tag{4.10}
+\]</span>
+<p>Determine the maps, not just the dimensions of the terms. Explain why this zero-object detector is not right exact.</p>
+<p><strong>Solution.</strong> The retained presentation of <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> has generators <span class="math" data-tex="\(x,y\)">\(x,y\)</span> and the relation <span class="math" data-tex="\(-yx+xy=0\)">\(-yx+xy=0\)</span>. Its full Hom computation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{End}_B(\mathfrak a)\simeq B,\\
+\operatorname{Hom}_B(\mathfrak a,B)\simeq B,\\
+\operatorname{Hom}_B(\mathfrak a,k)\simeq k^2.
+\end{gathered}
+\tag{4.11}
+\]">\[
+\begin{gathered}
+\operatorname{End}_B(\mathfrak a)\simeq B,\\
+\operatorname{Hom}_B(\mathfrak a,B)\simeq B,\\
+\operatorname{Hom}_B(\mathfrak a,k)\simeq k^2.
+\end{gathered}
+\tag{4.11}
+\]</span>
+<p>In the first two identifications, <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> is the map <span class="math" data-tex="\(u\mapsto bu\)">\(u\mapsto bu\)</span>, with target <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> or <span class="math" data-tex="\(B\)">\(B\)</span>, respectively. In the third, a map is specified by the two arbitrary values on <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> in <span class="math" data-tex="\(k\)">\(k\)</span>; the presentation relation imposes no condition, since both <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> act by zero on <span class="math" data-tex="\(k\)">\(k\)</span>. These are precisely the prior identifications, with the action on Hom taken in the target.</p>
+<p>The map <span class="math" data-tex="\(H(\iota)\)">\(H(\iota)\)</span> postcomposes with inclusion. It takes multiplication by <span class="math" data-tex="\(b\)">\(b\)</span>, valued in <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span>, to the same multiplication by <span class="math" data-tex="\(b\)">\(b\)</span>, valued in <span class="math" data-tex="\(B\)">\(B\)</span>. Under (4.11), it is the identity <span class="math" data-tex="\(B\to B\)">\(B\to B\)</span>.</p>
+<p>Every map represented by <span class="math" data-tex="\(b\)">\(b\)</span> in <span class="math" data-tex="\(\operatorname{Hom}_B(\mathfrak a,B)\)">\(\operatorname{Hom}_B(\mathfrak a,B)\)</span> has image in <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span>, since <span class="math" data-tex="\(b\mathfrak a\subseteq\mathfrak a\)">\(b\mathfrak a\subseteq\mathfrak a\)</span>. Postcomposition with <span class="math" data-tex="\(\pi\)">\(\pi\)</span> therefore gives zero. Thus <span class="math" data-tex="\(H(\pi)\)">\(H(\pi)\)</span> is the zero map <span class="math" data-tex="\(B\to k^2\)">\(B\to k^2\)</span>, and the resulting sequence is</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow B\xrightarrow{1_B}B
+\xrightarrow{0}k^2.
+\tag{4.12}
+\]">\[
+0\longrightarrow B\xrightarrow{1_B}B
+\xrightarrow{0}k^2.
+\tag{4.12}
+\]</span>
+<p>The middle kernel and image agree, as left exactness of a representable Hom functor predicts. But the final map is not surjective, because <span class="math" data-tex="\(k^2\ne0\)">\(k^2\ne0\)</span>. For example, the map <span class="math" data-tex="\(\mathfrak a\to k\)">\(\mathfrak a\to k\)</span> taking <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span> has no extension <span class="math" data-tex="\(B\to k\)">\(B\to k\)</span>: any such extension sends <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span> times the image of <span class="math" data-tex="\(1\)">\(1\)</span>, which is zero in <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>The full earlier trace example proves zero detection for all <span class="math" data-tex="\(B\)">\(B\)</span>-modules, and also proves that <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is not invertible. Equation (4.12) shows directly how <span class="math" data-tex="\(H\)">\(H\)</span> sends this nonisomorphism to an isomorphism and why the exact zero-detector criterion cannot apply. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 4 — Detecting isomorphisms does not detect splitting (8 points).</strong> Let <span class="math" data-tex="\(U:\operatorname{Mod}(k[x])\to\mathcal V\)">\(U:\operatorname{Mod}(k[x])\to\mathcal V\)</span> forget the <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>-action. Prove that <span class="math" data-tex="\(U\)">\(U\)</span> is exact, faithful and conservative. Show that (3.4) splits after applying <span class="math" data-tex="\(U\)">\(U\)</span>, but does not split as a sequence of <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>-modules. Express this failure in terms of Yoneda extension classes.</p>
+<p><strong>Solution.</strong> Kernels and images of module maps are their underlying vector-space kernels and images, with inherited action. The underlying vector space of a module quotient is the corresponding vector-space quotient. Hence an exact sequence of modules remains exact after applying <span class="math" data-tex="\(U\)">\(U\)</span>; in particular <span class="math" data-tex="\(U\)">\(U\)</span> is exact by the short-exact criterion.</p>
+<p>If two module maps have the same underlying linear map, they have the same value at every element and are equal. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is faithful. Suppose a module map <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span> has an invertible underlying linear map. Its inverse is module-linear: if <span class="math" data-tex="\(n=f(m)\)">\(n=f(m)\)</span> and <span class="math" data-tex="\(a\in k[x]\)">\(a\in k[x]\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f^{-1}(an)&amp;=f^{-1}(f(am))\\
+&amp;=am\\
+&amp;=af^{-1}(n).
+\end{aligned}
+\tag{4.13}
+\]">\[
+\begin{aligned}
+f^{-1}(an)&amp;=f^{-1}(f(am))\\
+&amp;=am\\
+&amp;=af^{-1}(n).
+\end{aligned}
+\tag{4.13}
+\]</span>
+<p>Thus <span class="math" data-tex="\(U\)">\(U\)</span> is also conservative.</p>
+<p>Let <span class="math" data-tex="\(M=k[x]/(x^2)\)">\(M=k[x]/(x^2)\)</span> as in (3.4). The vector-space map</p>
+<span class="math math-display" data-tex="\[
+s:k\longrightarrow U(M),\qquad s(c)=c\,\overline1
+\tag{4.14}
+\]">\[
+s:k\longrightarrow U(M),\qquad s(c)=c\,\overline1
+\tag{4.14}
+\]</span>
+<p>satisfies <span class="math" data-tex="\(U(q)s=1_k\)">\(U(q)s=1_k\)</span>. Indeed <span class="math" data-tex="\(U(M)\)">\(U(M)\)</span> has basis <span class="math" data-tex="\(\overline1,\overline x\)">\(\overline1,\overline x\)</span>, the image of <span class="math" data-tex="\(U(j)\)">\(U(j)\)</span> is <span class="math" data-tex="\(k\overline x\)">\(k\overline x\)</span>, and (4.14) chooses its complementary line. This gives a split sequence of vector spaces.</p>
+<p>If an <span class="math" data-tex="\(A=k[x]\)">\(A=k[x]\)</span>-linear section <span class="math" data-tex="\(r:k\to M\)">\(r:k\to M\)</span> existed, its value at <span class="math" data-tex="\(1\)">\(1\)</span> would have to be</p>
+<span class="math math-display" data-tex="\[
+r(1)=\overline1+c\overline x
+\tag{4.15}
+\]">\[
+r(1)=\overline1+c\overline x
+\tag{4.15}
+\]</span>
+<p>for some <span class="math" data-tex="\(c\in k\)">\(c\in k\)</span>, since <span class="math" data-tex="\(qr=1_k\)">\(qr=1_k\)</span>. But <span class="math" data-tex="\(x\cdot1=0\)">\(x\cdot1=0\)</span> in <span class="math" data-tex="\(k=A/(x)\)">\(k=A/(x)\)</span>, whereas</p>
+<span class="math math-display" data-tex="\[
+xr(1)=\overline x+c\overline{x^2}
+=\overline x\ne0
+\tag{4.16}
+\]">\[
+xr(1)=\overline x+c\overline{x^2}
+=\overline x\ne0
+\tag{4.16}
+\]</span>
+<p>in <span class="math" data-tex="\(M\)">\(M\)</span>. This contradicts <span class="math" data-tex="\(A\)">\(A\)</span>-linearity. Hence (3.4) is nonsplit over <span class="math" data-tex="\(A\)">\(A\)</span>, over every field.</p>
+<p>A Yoneda extension class is the equivalence class of a short exact sequence with fixed endpoints; equivalence is an isomorphism of sequences that is the identity on those endpoints. The zero class is the class of the split sequence. For modules, existence of a section gives the explicit isomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k\oplus k\longrightarrow M,\\
+(a,b)\longmapsto j(a)+r(b).
+\end{gathered}
+\tag{4.17}
+\]">\[
+\begin{gathered}
+k\oplus k\longrightarrow M,\\
+(a,b)\longmapsto j(a)+r(b).
+\end{gathered}
+\tag{4.17}
+\]</span>
+<p>Its inverse first takes <span class="math" data-tex="\(q(m)\)">\(q(m)\)</span>, then writes <span class="math" data-tex="\(m-r(q(m))\)">\(m-r(q(m))\)</span> uniquely as <span class="math" data-tex="\(j(a)\)">\(j(a)\)</span>. Conversely an equivalence with the split sequence supplies a section from its second summand. Thus the absence of an <span class="math" data-tex="\(A\)">\(A\)</span>-linear section proves that (3.4) represents a nonzero Yoneda class, while (4.14) proves that its underlying vector-space class is zero.</p>
+<p>Applying an exact functor to a short exact sequence and to an equivalence of such sequences is well-defined on Yoneda classes; a split sequence remains split because its section is sent to a section. We have exhibited two distinct module extension classes, the class of (3.4) and the split class, with the same image under <span class="math" data-tex="\(U\)">\(U\)</span>. An exact faithful functor can therefore fail to distinguish extension classes. Its injectivity on ordinary Hom groups does not imply injectivity on this set of extensions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project Authors, <em>The Stacks Project</em>, Homological Algebra, <a href="https://stacks.math.columbia.edu/tag/010N">Lemma 12.7.2: Additive functors and exact sequences</a>.</li>
+<li>The Stacks Project Authors, <em>The Stacks Project</em>, Homological Algebra, <a href="https://stacks.math.columbia.edu/tag/06XK">Lemma 12.10.7: Faithfulness of the induced Serre-quotient functor</a>.</li>
+<li>The Stacks Project Authors, <em>The Stacks Project</em>, Descent, <a href="https://stacks.math.columbia.edu/tag/08WK">Remark 35.4.4: Exact functors reflecting injections and surjections</a>.</li>
+<li><a href="composition-factors-and-uniform-chain-bounds.html">Composition factors and uniform chain bounds</a>, Lemma 1.1, for the finite short-exact comparison.</li>
+<li><a href="serre-quotients-and-local-saturation.html">Serre quotients and local saturation</a>, Section 1, for the exact quotient interface.</li>
+<li><a href="generators-and-small-quotient-families.html">Generators and small quotient families</a>, Theorems 2.1 and 2.2, for the stronger representable-probe tests.</li>
+<li><a href="ideal-generated-modules-and-nonstrict-quotients.html">Ideal-generated modules and nonstrict quotients</a>, Sections 1 and 2, for the polynomial-ideal Hom computations.</li>
+<li><a href="trace-coreflections-and-balanced-nonabelian-categories.html">Trace coreflections and balanced nonabelian categories</a>, Section 4, for the zero-object detector on all modules.</li>
+</ul>
+</main></body></html>

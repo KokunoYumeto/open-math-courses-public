@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The reciprocity law and the class field correspondence · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/the-reciprocity-law-and-the-class-field-correspondence.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (2)</summary><ul><li><a href="cohomology-of-cyclic-groups-and-the-herbrand-quotient.html">Cohomology of cyclic groups and the Herbrand quotient</a></li><li><a href="frobenius-lifts-and-abstract-reciprocity.html">Frobenius lifts and abstract reciprocity</a></li></ul></details>
+<article class="lesson">
+<h1 id="the-reciprocity-law-and-the-class-field-correspondence">The reciprocity law and the class field correspondence</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p>The preceding lesson constructed a homomorphism from Galois automorphisms to classes modulo norms. The class field axiom will make it an isomorphism. Its inverse, the norm residue symbol, expresses an automorphism in terms of an arithmetic element of the ground field. The resulting correspondence classifies finite abelian extensions by their norm subgroups.</p>
+<p>The cyclic axiom does not restrict the conclusion to solvable extensions. We will prove the cyclic case by a valuation argument, handle abelian extensions by cyclic quotients, and then use Sylow subgroups to obtain the theorem for every finite Galois group. This order keeps the group-theoretic reduction explicit.</p>
+<p>We retain the additive module notation, the degree map, the henselian valuation with image <span class="math" data-tex="\(V\subset\widehat{\mathbf Z}\)">\(V\subset\widehat{\mathbf Z}\)</span>, and normalized valuations from <a href="frobenius-lifts-and-abstract-reciprocity.html">Frobenius lifts and abstract reciprocity</a>. Thus <span class="math" data-tex="\(V\)">\(V\)</span> contains <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, and <span class="math" data-tex="\(V/nV\simeq\mathbf Z/n\mathbf Z\)">\(V/nV\simeq\mathbf Z/n\mathbf Z\)</span>. For multiplicative modules, sums below mean products. Cyclic Tate groups and their exact hexagon were proved in <a href="cohomology-of-cyclic-groups-and-the-herbrand-quotient.html">Cohomology of cyclic groups and the Herbrand quotient</a>.</p>
+<h2 id="1-the-class-field-axiom-implies-the-unit-axiom">1. The class field axiom implies the unit axiom</h2>
+<p>The <strong>class field axiom</strong> is the following condition for every finite cyclic extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, with <span class="math" data-tex="\(T=\operatorname{Gal}(L/K)\)">\(T=\operatorname{Gal}(L/K)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+|\widehat H^0(T,A_L)|=[L:K],\qquad
+\widehat H^{-1}(T,A_L)=0.
+\tag{1}
+\]">\[
+|\widehat H^0(T,A_L)|=[L:K],\qquad
+\widehat H^{-1}(T,A_L)=0.
+\tag{1}
+\]</span>
+<p>The first assertion says that <span class="math" data-tex="\(A_K/N_{L/K}A_L\)">\(A_K/N_{L/K}A_L\)</span> has exactly the extension degree many elements. The second says that every norm-zero element is a difference <span class="math" data-tex="\((\sigma-1)a\)">\((\sigma-1)a\)</span>, for a generator <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>. Knowing only the quotient of these two orders would not give either assertion separately.</p>
+<p>For an unramified cyclic extension of degree <span class="math" data-tex="\(n\)">\(n\)</span>, (1) implies both parts of the unit axiom used in the preceding lesson. Indeed, valuation induces a surjection</p>
+<span class="math math-display" data-tex="\[
+A_K/N_{L/K}A_L\longrightarrow V/nV.
+\]">\[
+A_K/N_{L/K}A_L\longrightarrow V/nV.
+\]</span>
+<p>Both groups have order <span class="math" data-tex="\(n\)">\(n\)</span>, so it is an isomorphism. If <span class="math" data-tex="\(u\in U_K\)">\(u\in U_K\)</span>, it follows that <span class="math" data-tex="\(u=N_{L/K}a\)">\(u=N_{L/K}a\)</span> for some <span class="math" data-tex="\(a\in A_L\)">\(a\in A_L\)</span>. The equation <span class="math" data-tex="\(0=v_K(u)=n v_L(a)\)">\(0=v_K(u)=n v_L(a)\)</span> implies <span class="math" data-tex="\(a\in U_L\)">\(a\in U_L\)</span>, since <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span> is torsion free. Thus unit norms are surjective.</p>
+<p>If <span class="math" data-tex="\(u\in U_L\)">\(u\in U_L\)</span> has norm zero, (1) gives <span class="math" data-tex="\(u=(\sigma-1)a\)">\(u=(\sigma-1)a\)</span>, <span class="math" data-tex="\(a\in A_L\)">\(a\in A_L\)</span>. Choose <span class="math" data-tex="\(b\in A_K\)">\(b\in A_K\)</span> with <span class="math" data-tex="\(v_K(b)=v_L(a)\)">\(v_K(b)=v_L(a)\)</span>. This is possible because <span class="math" data-tex="\(v_K\)">\(v_K\)</span> is onto <span class="math" data-tex="\(V\)">\(V\)</span>, and unramified inclusion preserves normalized valuation. Then <span class="math" data-tex="\(a-b\in U_L\)">\(a-b\in U_L\)</span> and <span class="math" data-tex="\((\sigma-1)(a-b)=u\)">\((\sigma-1)(a-b)=u\)</span>. Hence the norm-zero units are precisely the differences of units. This proof works for the full allowed value group <span class="math" data-tex="\(V\)">\(V\)</span>; it does not require expressing <span class="math" data-tex="\(a\)">\(a\)</span> as an integer multiple of a prime plus a unit.</p>
+<p>Consequently the complete construction and functoriality of the preceding lesson apply. Write</p>
+<span class="math math-display" data-tex="\[
+Q_{L/K}=A_K/N_{L/K}A_L,\qquad
+r_{L/K}:\operatorname{Gal}(L/K)^{\mathrm{ab}}\longrightarrow Q_{L/K}.
+\tag{2}
+\]">\[
+Q_{L/K}=A_K/N_{L/K}A_L,\qquad
+r_{L/K}:\operatorname{Gal}(L/K)^{\mathrm{ab}}\longrightarrow Q_{L/K}.
+\tag{2}
+\]</span>
+<h2 id="2-two-elementary-reduction-tools">2. Two elementary reduction tools</h2>
+<p>Suppose <span class="math" data-tex="\(M/K\)">\(M/K\)</span> is a Galois intermediate extension in a finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. Norm transitivity gives an exact sequence</p>
+<span class="math math-display" data-tex="\[
+A_M/N_{L/M}A_L
+\xrightarrow{N_{M/K}} Q_{L/K}
+\longrightarrow Q_{M/K}\longrightarrow0.
+\tag{3}
+\]">\[
+A_M/N_{L/M}A_L
+\xrightarrow{N_{M/K}} Q_{L/K}
+\longrightarrow Q_{M/K}\longrightarrow0.
+\tag{3}
+\]</span>
+<p>The last map is the quotient map. Its kernel is <span class="math" data-tex="\(N_{M/K}A_M/N_{L/K}A_L\)">\(N_{M/K}A_M/N_{L/K}A_L\)</span>, exactly the image of the first map; the first map need not be injective. The corresponding Galois sequence is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(L/M)\longrightarrow
+\operatorname{Gal}(L/K)\longrightarrow
+\operatorname{Gal}(M/K)\longrightarrow1.
+\tag{4}
+\]">\[
+\operatorname{Gal}(L/M)\longrightarrow
+\operatorname{Gal}(L/K)\longrightarrow
+\operatorname{Gal}(M/K)\longrightarrow1.
+\tag{4}
+\]</span>
+<p>Norm functoriality from Proposition 4.4 makes reciprocity commute with these two sequences, viewing each Galois group through its map to the abelianization when needed. In particular, if <span class="math" data-tex="\(r_{M/K}\)">\(r_{M/K}\)</span> and <span class="math" data-tex="\(r_{L/M}\)">\(r_{L/M}\)</span> are surjective, so is <span class="math" data-tex="\(r_{L/K}\)">\(r_{L/K}\)</span>: lift a quotient class using the former, subtract its reciprocity value, and lift the remainder in the kernel of (3) using the latter.</p>
+<p>We also need that cyclic quotients detect elements of a finite abelian group <span class="math" data-tex="\(B\)">\(B\)</span>. Here is a direct proof. Given <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, define a character <span class="math" data-tex="\(\langle b\rangle\to\mathbf Q/\mathbf Z\)">\(\langle b\rangle\to\mathbf Q/\mathbf Z\)</span> taking <span class="math" data-tex="\(b\)">\(b\)</span> to an element of its exact order. Extend a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> from a subgroup <span class="math" data-tex="\(D\)">\(D\)</span> to <span class="math" data-tex="\(D+\langle x\rangle\)">\(D+\langle x\rangle\)</span> as follows. Let <span class="math" data-tex="\(m\)">\(m\)</span> be the least positive integer with <span class="math" data-tex="\(mx\in D\)">\(mx\in D\)</span>, and choose <span class="math" data-tex="\(c\in\mathbf Q/\mathbf Z\)">\(c\in\mathbf Q/\mathbf Z\)</span> with <span class="math" data-tex="\(mc=\chi(mx)\)">\(mc=\chi(mx)\)</span>. Define the extension by <span class="math" data-tex="\(\chi(d+jx)=\chi(d)+jc\)">\(\chi(d+jx)=\chi(d)+jc\)</span>. Any relation between two such expressions has <span class="math" data-tex="\(j-j&#x27;\)">\(j-j&#x27;\)</span> divisible by <span class="math" data-tex="\(m\)">\(m\)</span>, which proves well-definedness. Repeating this finite process extends the character to <span class="math" data-tex="\(B\)">\(B\)</span>. Its image is a finite subgroup of <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span>, hence cyclic: a common denominator embeds it in a cyclic group. Thus some cyclic quotient of <span class="math" data-tex="\(B\)">\(B\)</span> detects <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<h2 id="3-the-cyclic-reciprocity-theorem">3. The cyclic reciprocity theorem</h2>
+<p>First suppose <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is cyclic of degree <span class="math" data-tex="\(n\)">\(n\)</span>, and totally ramified. We prove injectivity of <span class="math" data-tex="\(r_{L/K}\)">\(r_{L/K}\)</span> directly.</p>
+<p>Put <span class="math" data-tex="\(\Gamma=\operatorname{Gal}(\widetilde L/K)\)">\(\Gamma=\operatorname{Gal}(\widetilde L/K)\)</span>. Since <span class="math" data-tex="\(L\cap\widetilde K=K\)">\(L\cap\widetilde K=K\)</span>, restriction gives</p>
+<span class="math math-display" data-tex="\[
+\Gamma\simeq\operatorname{Gal}(L/K)\times
+\operatorname{Gal}(\widetilde K/K).
+\]">\[
+\Gamma\simeq\operatorname{Gal}(L/K)\times
+\operatorname{Gal}(\widetilde K/K).
+\]</span>
+<p>Choose a generator <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of the first factor, acting trivially on <span class="math" data-tex="\(\widetilde K\)">\(\widetilde K\)</span>, and let <span class="math" data-tex="\(\phi\)">\(\phi\)</span> be the arithmetic Frobenius of the second, acting trivially on <span class="math" data-tex="\(L\)">\(L\)</span>. They commute. The positive lift <span class="math" data-tex="\(s=\sigma\phi\)">\(s=\sigma\phi\)</span> has degree 1. Its fixed field <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is a totally ramified cyclic extension of <span class="math" data-tex="\(K\)">\(K\)</span> of degree <span class="math" data-tex="\(n\)">\(n\)</span>, by the degree and index calculation in section 2 of the preceding lesson. Take prime elements <span class="math" data-tex="\(\pi_\Sigma,\pi_L\)">\(\pi_\Sigma,\pi_L\)</span>.</p>
+<p>Let <span class="math" data-tex="\(M=L\Sigma\subset\widetilde L\)">\(M=L\Sigma\subset\widetilde L\)</span>. It is finite Galois over <span class="math" data-tex="\(K\)">\(K\)</span>, because <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is abelian, and is unramified over both <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>. If <span class="math" data-tex="\(M_0=M\cap\widetilde K\)">\(M_0=M\cap\widetilde K\)</span>, then <span class="math" data-tex="\(M/M_0\)">\(M/M_0\)</span> is cyclic of degree <span class="math" data-tex="\(n\)">\(n\)</span>, generated by the restriction of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. This follows because the inertia subgroup <span class="math" data-tex="\(\langle\sigma\rangle\)">\(\langle\sigma\rangle\)</span> has trivial intersection with the stabilizer of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>. Its restrictions identify it with both <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span> and <span class="math" data-tex="\(\operatorname{Gal}(\Sigma/K)\)">\(\operatorname{Gal}(\Sigma/K)\)</span>. Therefore its norm operator <span class="math" data-tex="\(N=1+\sigma+\cdots+\sigma^{n-1}\)">\(N=1+\sigma+\cdots+\sigma^{n-1}\)</span> restricts to <span class="math" data-tex="\(N_{L/K}\)">\(N_{L/K}\)</span> on <span class="math" data-tex="\(A_L\)">\(A_L\)</span> and to <span class="math" data-tex="\(N_{\Sigma/K}\)">\(N_{\Sigma/K}\)</span> on <span class="math" data-tex="\(A_\Sigma\)">\(A_\Sigma\)</span>.</p>
+<p>Use the normalized valuation <span class="math" data-tex="\(w=v_M\)">\(w=v_M\)</span>. Both chosen primes have <span class="math" data-tex="\(w=1\)">\(w=1\)</span>. Suppose</p>
+<span class="math math-display" data-tex="\[
+r_{L/K}(\sigma^j)=0,\qquad 0\leq j&lt;n.
+\]">\[
+r_{L/K}(\sigma^j)=0,\qquad 0\leq j&lt;n.
+\]</span>
+<p>The reciprocity homomorphism and its defining prime norm give <span class="math" data-tex="\(jN\pi_\Sigma\in N_{L/K}A_L\)">\(jN\pi_\Sigma\in N_{L/K}A_L\)</span>. Set <span class="math" data-tex="\(u=j(\pi_\Sigma-\pi_L)\in U_M\)">\(u=j(\pi_\Sigma-\pi_L)\in U_M\)</span>. Then <span class="math" data-tex="\(Nu\in N_{L/K}A_L\)">\(Nu\in N_{L/K}A_L\)</span>. Choose <span class="math" data-tex="\(v\in A_L\)">\(v\in A_L\)</span> with <span class="math" data-tex="\(Nv=Nu\)">\(Nv=Nu\)</span>. Its valuation is zero because <span class="math" data-tex="\(v_K(Nv)=v_L(v)\)">\(v_K(Nv)=v_L(v)\)</span> in this totally ramified extension; thus <span class="math" data-tex="\(v\in U_L\)">\(v\in U_L\)</span>.</p>
+<p>Now <span class="math" data-tex="\(N(v-u)=0\)">\(N(v-u)=0\)</span>. Apply the norm-zero half of (1) to the cyclic extension <span class="math" data-tex="\(M/M_0\)">\(M/M_0\)</span>. There is <span class="math" data-tex="\(a\in A_M\)">\(a\in A_M\)</span> with</p>
+<span class="math math-display" data-tex="\[
+v-u=(\sigma-1)a,\qquad
+j\pi_L+v=j\pi_\Sigma+(\sigma-1)a.
+\tag{5}
+\]">\[
+v-u=(\sigma-1)a,\qquad
+j\pi_L+v=j\pi_\Sigma+(\sigma-1)a.
+\tag{5}
+\]</span>
+<p>On the left of (5), <span class="math" data-tex="\(s\)">\(s\)</span> acts as <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, since that side is in <span class="math" data-tex="\(A_L\)">\(A_L\)</span>. On the right, <span class="math" data-tex="\(s\pi_\Sigma=\pi_\Sigma\)">\(s\pi_\Sigma=\pi_\Sigma\)</span>. Applying <span class="math" data-tex="\(s-1\)">\(s-1\)</span>, and using commutation of <span class="math" data-tex="\(s,\sigma\)">\(s,\sigma\)</span>, shows that</p>
+<span class="math math-display" data-tex="\[
+x=j\pi_L+v-(s-1)a
+\]">\[
+x=j\pi_L+v-(s-1)a
+\]</span>
+<p>is fixed by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, hence belongs to <span class="math" data-tex="\(A_{M_0}\)">\(A_{M_0}\)</span>. The action preserves <span class="math" data-tex="\(w\)">\(w\)</span>, so <span class="math" data-tex="\(w((s-1)a)=0\)">\(w((s-1)a)=0\)</span> and <span class="math" data-tex="\(w(x)=j\)">\(w(x)=j\)</span>. But <span class="math" data-tex="\(M/M_0\)">\(M/M_0\)</span> has ramification index <span class="math" data-tex="\(n\)">\(n\)</span>. The valuation-inclusion formula (9) of the preceding lesson yields</p>
+<span class="math math-display" data-tex="\[
+j=n v_{M_0}(x)\in nV\subset n\widehat{\mathbf Z}.
+\]">\[
+j=n v_{M_0}(x)\in nV\subset n\widehat{\mathbf Z}.
+\]</span>
+<p>An ordinary integer in <span class="math" data-tex="\(n\widehat{\mathbf Z}\)">\(n\widehat{\mathbf Z}\)</span> is divisible by <span class="math" data-tex="\(n\)">\(n\)</span>, by reduction modulo <span class="math" data-tex="\(n\)">\(n\)</span>. Since <span class="math" data-tex="\(0\leq j&lt;n\)">\(0\leq j&lt;n\)</span>, we get <span class="math" data-tex="\(j=0\)">\(j=0\)</span>. This proves injectivity. The source and target both have order <span class="math" data-tex="\(n\)">\(n\)</span>, the latter by (1), so reciprocity is an isomorphism.</p>
+<p>For a general cyclic <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, let <span class="math" data-tex="\(M=L\cap\widetilde K\)">\(M=L\cap\widetilde K\)</span>. Then <span class="math" data-tex="\(M/K\)">\(M/K\)</span> is unramified and <span class="math" data-tex="\(L/M\)">\(L/M\)</span> is totally ramified cyclic. Their reciprocity maps are isomorphisms, the first by Proposition 4.3 and the second by the argument just given. In (3), the three groups have orders <span class="math" data-tex="\([L:M]\)">\([L:M]\)</span>, <span class="math" data-tex="\([L:K]\)">\([L:K]\)</span>, and <span class="math" data-tex="\([M:K]\)">\([M:K]\)</span>, by (1). The kernel at the middle has order <span class="math" data-tex="\([L:M]\)">\([L:M]\)</span>; hence its surjective norm map from the first group is injective as well. The matching exact Galois sequence (4) now proves that <span class="math" data-tex="\(r_{L/K}\)">\(r_{L/K}\)</span> is injective and surjective: lift a quotient element, and use the isomorphism on the two kernels to correct the lift. This proves cyclic reciprocity in full.</p>
+<h2 id="4-from-cyclic-groups-to-every-finite-galois-group">4. From cyclic groups to every finite Galois group</h2>
+<h3 id="theorem-5-1-the-general-reciprocity-law">Theorem 5.1. The general reciprocity law</h3>
+<p>For every finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+r_{L/K}:\operatorname{Gal}(L/K)^{\mathrm{ab}}
+\xrightarrow{\sim} A_K/N_{L/K}A_L.
+\tag{6}
+\]">\[
+r_{L/K}:\operatorname{Gal}(L/K)^{\mathrm{ab}}
+\xrightarrow{\sim} A_K/N_{L/K}A_L.
+\tag{6}
+\]</span>
+<p><strong>Proof for abelian groups.</strong> Let <span class="math" data-tex="\(T=\operatorname{Gal}(L/K)\)">\(T=\operatorname{Gal}(L/K)\)</span> be abelian. If an element of <span class="math" data-tex="\(T\)">\(T\)</span> has zero reciprocity class, its restriction has zero reciprocity class in every cyclic quotient extension. Cyclic reciprocity is injective, and the character argument in section 2 says these restrictions detect every nonidentity element. Thus <span class="math" data-tex="\(r_{L/K}\)">\(r_{L/K}\)</span> is injective.</p>
+<p>Surjectivity follows by induction on <span class="math" data-tex="\(|T|\)">\(|T|\)</span>. The cyclic case is proved. If <span class="math" data-tex="\(T\)">\(T\)</span> is not cyclic, choose a nontrivial cyclic quotient and its fixed field <span class="math" data-tex="\(M\)">\(M\)</span>; then both <span class="math" data-tex="\(M/K\)">\(M/K\)</span> and <span class="math" data-tex="\(L/M\)">\(L/M\)</span> have smaller degree, and the latter is abelian. Apply induction and the lifting argument in (3)–(4). This proves the abelian case.</p>
+<p><strong>Injectivity for arbitrary groups.</strong> Put <span class="math" data-tex="\(T=\operatorname{Gal}(L/K)\)">\(T=\operatorname{Gal}(L/K)\)</span>, and let <span class="math" data-tex="\(B\)">\(B\)</span> be the fixed field of the commutator subgroup <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>. Restriction identifies <span class="math" data-tex="\(T^{\mathrm{ab}}\)">\(T^{\mathrm{ab}}\)</span> with <span class="math" data-tex="\(\operatorname{Gal}(B/K)\)">\(\operatorname{Gal}(B/K)\)</span>. The composite</p>
+<span class="math math-display" data-tex="\[
+T^{\mathrm{ab}}\xrightarrow{r_{L/K}}Q_{L/K}
+\longrightarrow Q_{B/K}
+\]">\[
+T^{\mathrm{ab}}\xrightarrow{r_{L/K}}Q_{L/K}
+\longrightarrow Q_{B/K}
+\]</span>
+<p>is the already proved abelian reciprocity isomorphism. Hence <span class="math" data-tex="\(r_{L/K}\)">\(r_{L/K}\)</span> is injective. Equivalently, the kernel of the map on <span class="math" data-tex="\(T\)">\(T\)</span> is exactly <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>: it contains <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> because the target is abelian, and its projection to <span class="math" data-tex="\(T/T&#x27;\)">\(T/T&#x27;\)</span> is injective.</p>
+<p><strong>Surjectivity for solvable groups.</strong> Here a finite group is solvable if its iterated commutator subgroups eventually become trivial. Induct on its order. If <span class="math" data-tex="\(T&#x27;=1\)">\(T&#x27;=1\)</span>, the abelian case applies. Otherwise <span class="math" data-tex="\(1&lt;T&#x27;&lt;T\)">\(1&lt;T&#x27;&lt;T\)</span>; with <span class="math" data-tex="\(B\)">\(B\)</span> as above, <span class="math" data-tex="\(B/K\)">\(B/K\)</span> is abelian and <span class="math" data-tex="\(L/B\)">\(L/B\)</span> has smaller solvable Galois group. Their maps are surjective, so (3)–(4) prove surjectivity for <span class="math" data-tex="\(L/K\)">\(L/K\)</span>.</p>
+<p><strong>The Sylow step.</strong> First recall why finite <span class="math" data-tex="\(p\)">\(p\)</span>-groups are solvable. Conjugacy classes outside the center have size divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, so the class equation makes the center of a nontrivial <span class="math" data-tex="\(p\)">\(p\)</span>-group nontrivial. Quotient by this center and induct on the order. A group with an abelian normal subgroup and solvable quotient is solvable: enough commutator iterations enter the normal subgroup and one more makes them trivial. This proves the assertion about <span class="math" data-tex="\(p\)">\(p\)</span>-groups.</p>
+<p>We need only the existence part of Sylow's theorem, which can also be proved here. Write <span class="math" data-tex="\(|T|=p^b u\)">\(|T|=p^b u\)</span>, with <span class="math" data-tex="\(p\nmid u\)">\(p\nmid u\)</span>, and let <span class="math" data-tex="\(T\)">\(T\)</span> act by left multiplication on the subsets of its underlying set having <span class="math" data-tex="\(p^b\)">\(p^b\)</span> elements. Their number is <span class="math" data-tex="\(\binom{p^b u}{p^b}\equiv u\pmod p\)">\(\binom{p^b u}{p^b}\equiv u\pmod p\)</span>: in <span class="math" data-tex="\(\mathbf F_p[X]\)">\(\mathbf F_p[X]\)</span>, the identity <span class="math" data-tex="\((1+X)^{p^b u}=(1+X^{p^b})^u\)">\((1+X)^{p^b u}=(1+X^{p^b})^u\)</span> proves this by comparing coefficients. Thus some orbit has cardinality prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Its stabilizer <span class="math" data-tex="\(P\)">\(P\)</span> has <span class="math" data-tex="\(p\)">\(p\)</span>-part of order <span class="math" data-tex="\(p^b\)">\(p^b\)</span>, by the orbit–stabilizer formula. On the selected subset, <span class="math" data-tex="\(P\)">\(P\)</span> acts freely, since a nonidentity left multiplication fixes no group element. Hence <span class="math" data-tex="\(|P|\)">\(|P|\)</span> divides the subset's cardinality <span class="math" data-tex="\(p^b\)">\(p^b\)</span>. These two facts imply <span class="math" data-tex="\(|P|=p^b\)">\(|P|=p^b\)</span>, which is the required Sylow subgroup.</p>
+<p>Now <span class="math" data-tex="\(Q=Q_{L/K}\)">\(Q=Q_{L/K}\)</span> is annihilated by <span class="math" data-tex="\(m=|T|\)">\(m=|T|\)</span>. Indeed, inclusion sends <span class="math" data-tex="\(a\in A_K\)">\(a\in A_K\)</span> to <span class="math" data-tex="\(A_L\)">\(A_L\)</span>, and <span class="math" data-tex="\(N_{L/K}a=ma\)">\(N_{L/K}a=ma\)</span>. A group annihilated by <span class="math" data-tex="\(m=\prod_p p^{b_p}\)">\(m=\prod_p p^{b_p}\)</span> decomposes as <span class="math" data-tex="\(Q=\bigoplus_p Q_p\)">\(Q=\bigoplus_p Q_p\)</span>, where <span class="math" data-tex="\(p^{b_p}Q_p=0\)">\(p^{b_p}Q_p=0\)</span>. To verify this even before knowing <span class="math" data-tex="\(Q\)">\(Q\)</span> finite, choose integers <span class="math" data-tex="\(c_p\)">\(c_p\)</span> which are 1 modulo <span class="math" data-tex="\(p^{b_p}\)">\(p^{b_p}\)</span> and 0 modulo the other prime powers, by the Chinese remainder theorem. Multiplication by <span class="math" data-tex="\(c_p\)">\(c_p\)</span> gives pairwise orthogonal projections whose sum is the identity on <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(p\mid m\)">\(p\mid m\)</span>, choose a Sylow <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup <span class="math" data-tex="\(P\subset T\)">\(P\subset T\)</span>, and let <span class="math" data-tex="\(F=L^P\)">\(F=L^P\)</span>. The extension <span class="math" data-tex="\(F/K\)">\(F/K\)</span> need not be Galois. The extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span> has Galois group <span class="math" data-tex="\(P\)">\(P\)</span>, so its reciprocity isomorphism is proved by the solvable case. Norm functoriality says that the image of</p>
+<span class="math math-display" data-tex="\[
+N_{F/K}:A_F/N_{L/F}A_L\longrightarrow Q
+\]">\[
+N_{F/K}:A_F/N_{L/F}A_L\longrightarrow Q
+\]</span>
+<p>is contained in the image of <span class="math" data-tex="\(r_{L/K}\)">\(r_{L/K}\)</span>. Inclusion also defines a map <span class="math" data-tex="\(i:Q\to A_F/N_{L/F}A_L\)">\(i:Q\to A_F/N_{L/F}A_L\)</span>: every norm from <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is a norm from <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, by the right-coset decomposition in Proposition 4.4. On these quotients,</p>
+<span class="math math-display" data-tex="\[
+N_{F/K}i=[F:K].
+\tag{7}
+\]">\[
+N_{F/K}i=[F:K].
+\tag{7}
+\]</span>
+<p>The integer <span class="math" data-tex="\([F:K]\)">\([F:K]\)</span> is prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Multiplication by it is an automorphism of <span class="math" data-tex="\(Q_p\)">\(Q_p\)</span>, since an inverse modulo <span class="math" data-tex="\(p^{b_p}\)">\(p^{b_p}\)</span> acts as its inverse there. Equation (7) therefore puts all of <span class="math" data-tex="\(Q_p\)">\(Q_p\)</span> in the image of <span class="math" data-tex="\(N_{F/K}\)">\(N_{F/K}\)</span>, hence in the image of reciprocity. Do this for every <span class="math" data-tex="\(p\mid m\)">\(p\mid m\)</span>; the primary decomposition proves surjectivity onto all of <span class="math" data-tex="\(Q\)">\(Q\)</span>. No solvability assumption on <span class="math" data-tex="\(T\)">\(T\)</span> was used. Together with injectivity, this proves (6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument also proves finiteness of <span class="math" data-tex="\(Q\)">\(Q\)</span> in the general case. Finiteness was not silently assumed when taking its primary parts.</p>
+<h2 id="5-the-norm-residue-symbol">5. The norm residue symbol</h2>
+<p>Define the <strong>norm residue symbol</strong> by taking the inverse of (6):</p>
+<span class="math math-display" data-tex="\[
+(\ ,L/K):A_K\longrightarrow\operatorname{Gal}(L/K)^{\mathrm{ab}},
+\qquad \ker(\ ,L/K)=N_{L/K}A_L.
+\tag{8}
+\]">\[
+(\ ,L/K):A_K\longrightarrow\operatorname{Gal}(L/K)^{\mathrm{ab}},
+\qquad \ker(\ ,L/K)=N_{L/K}A_L.
+\tag{8}
+\]</span>
+<p>In additive notation the symbol is a homomorphism; in multiplicative arithmetic notation it sends a product of elements to a product of automorphisms.</p>
+<h3 id="proposition-5-2-functoriality-of-the-symbol">Proposition 5.2. Functoriality of the symbol</h3>
+<p>For finite Galois <span class="math" data-tex="\(L/K,L&#x27;/K&#x27;\)">\(L/K,L&#x27;/K&#x27;\)</span> with <span class="math" data-tex="\(K\subset K&#x27;\)">\(K\subset K&#x27;\)</span>, <span class="math" data-tex="\(L\subset L&#x27;\)">\(L\subset L&#x27;\)</span>, and <span class="math" data-tex="\(a&#x27;\in A_{K&#x27;}\)">\(a&#x27;\in A_{K&#x27;}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(N_{K&#x27;/K}a&#x27;,L/K)
+=\operatorname{res}_{L&#x27;/L}(a&#x27;,L&#x27;/K&#x27;).
+\tag{9}
+\]">\[
+(N_{K&#x27;/K}a&#x27;,L/K)
+=\operatorname{res}_{L&#x27;/L}(a&#x27;,L&#x27;/K&#x27;).
+\tag{9}
+\]</span>
+<p>Conjugation by <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+(ga,gL/gK)=g(a,L/K)g^{-1}.
+\tag{10}
+\]">\[
+(ga,gL/gK)=g(a,L/K)g^{-1}.
+\tag{10}
+\]</span>
+<p>For <span class="math" data-tex="\(K&#x27;\subset L\)">\(K&#x27;\subset L\)</span> and <span class="math" data-tex="\(a\in A_K\subset A_{K&#x27;}\)">\(a\in A_K\subset A_{K&#x27;}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(a,L/K&#x27;)=\operatorname{Ver}_{\operatorname{Gal}(L/K&#x27;)}^{\operatorname{Gal}(L/K)}(a,L/K).
+\tag{11}
+\]">\[
+(a,L/K&#x27;)=\operatorname{Ver}_{\operatorname{Gal}(L/K&#x27;)}^{\operatorname{Gal}(L/K)}(a,L/K).
+\tag{11}
+\]</span>
+<p><strong>Proof.</strong> Each identity is the corresponding equality of Proposition 4.4, composed with the inverse reciprocity isomorphisms. The quotient norm, conjugation and inclusion were proved well defined there. Thus these equalities hold for every representative in the stated modules, not merely for a chosen prime element. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an unramified extension of degree <span class="math" data-tex="\(n\)">\(n\)</span>, Proposition 4.3 gives the useful expression</p>
+<span class="math math-display" data-tex="\[
+(a,L/K)=\varphi_{L/K}^{\,v_K(a)\bmod n}.
+\tag{12}
+\]">\[
+(a,L/K)=\varphi_{L/K}^{\,v_K(a)\bmod n}.
+\tag{12}
+\]</span>
+<p>The exponent is the image in <span class="math" data-tex="\(V/nV\simeq\mathbf Z/n\mathbf Z\)">\(V/nV\simeq\mathbf Z/n\mathbf Z\)</span>. It need not come from an integer-valued valuation before reduction.</p>
+<h2 id="6-norm-limitation">6. Norm limitation</h2>
+<h3 id="theorem-5-4-only-the-maximal-abelian-subextension-is-seen-by-norms">Theorem 5.4. Only the maximal abelian subextension is seen by norms</h3>
+<p>For any finite separable <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, let <span class="math" data-tex="\(B=L\cap K^{\mathrm{ab}}\)">\(B=L\cap K^{\mathrm{ab}}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+N_{L/K}A_L=N_{B/K}A_B.
+\tag{13}
+\]">\[
+N_{L/K}A_L=N_{B/K}A_B.
+\tag{13}
+\]</span>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is Galois. The left side is contained in the right by norm transitivity. Theorem 5.1 gives the same finite index <span class="math" data-tex="\(|\operatorname{Gal}(L/K)^{\mathrm{ab}}|=[B:K]\)">\(|\operatorname{Gal}(L/K)^{\mathrm{ab}}|=[B:K]\)</span> for both subgroups, proving equality.</p>
+<p>For a general finite separable extension, choose its finite Galois closure <span class="math" data-tex="\(E/K\)">\(E/K\)</span>. Put <span class="math" data-tex="\(G=\operatorname{Gal}(E/K)\)">\(G=\operatorname{Gal}(E/K)\)</span>, <span class="math" data-tex="\(H=\operatorname{Gal}(E/L)\)">\(H=\operatorname{Gal}(E/L)\)</span>, and let <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span> be the commutator subgroup. The group <span class="math" data-tex="\(G&#x27;H\)">\(G&#x27;H\)</span> is normal: it is the inverse image of the subgroup <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span> of the abelian quotient <span class="math" data-tex="\(G/G&#x27;\)">\(G/G&#x27;\)</span>. Its fixed field lies in <span class="math" data-tex="\(L\)">\(L\)</span> and is abelian over <span class="math" data-tex="\(K\)">\(K\)</span>. Conversely, any abelian intermediate field inside <span class="math" data-tex="\(L\)">\(L\)</span> has a fixing subgroup containing both <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span>, hence containing <span class="math" data-tex="\(G&#x27;H\)">\(G&#x27;H\)</span>. Thus <span class="math" data-tex="\(B=E^{G&#x27;H}\)">\(B=E^{G&#x27;H}\)</span>.</p>
+<p>Use the already proved isomorphism
+<span class="math math-display" data-tex="\[
+r_{E/K}:G/G&#x27;\xrightarrow{\sim}
+A_K/N_{E/K}A_E.
+\]">\[
+r_{E/K}:G/G&#x27;\xrightarrow{\sim}
+A_K/N_{E/K}A_E.
+\]</span>
+The Galois extension <span class="math" data-tex="\(E/L\)">\(E/L\)</span> has group <span class="math" data-tex="\(H\)">\(H\)</span>, even though <span class="math" data-tex="\(L/K\)">\(L/K\)</span> need not be Galois. Surjectivity of <span class="math" data-tex="\(r_{E/L}\)">\(r_{E/L}\)</span>, and norm functoriality from Proposition 4.4, show that
+<span class="math math-display" data-tex="\[
+\frac{N_{L/K}A_L}{N_{E/K}A_E}
+=r_{E/K}(\overline H).
+\]">\[
+\frac{N_{L/K}A_L}{N_{E/K}A_E}
+=r_{E/K}(\overline H).
+\]</span>
+Indeed every element of <span class="math" data-tex="\(A_L/N_{E/L}A_E\)">\(A_L/N_{E/L}A_E\)</span> is the reciprocity image of an element of <span class="math" data-tex="\(H\)">\(H\)</span>, and its norm to <span class="math" data-tex="\(K\)">\(K\)</span> is the reciprocity image of that same element in <span class="math" data-tex="\(G/G&#x27;\)">\(G/G&#x27;\)</span>. This proves both inclusions in the displayed equality.</p>
+<p>Apply the identical argument to the Galois extension <span class="math" data-tex="\(E/B\)">\(E/B\)</span>, whose group is <span class="math" data-tex="\(G&#x27;H\)">\(G&#x27;H\)</span>. Its image in <span class="math" data-tex="\(G/G&#x27;\)">\(G/G&#x27;\)</span> is exactly <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span>, so
+<span class="math math-display" data-tex="\[
+\frac{N_{B/K}A_B}{N_{E/K}A_E}
+=r_{E/K}(\overline H)
+=\frac{N_{L/K}A_L}{N_{E/K}A_E}.
+\]">\[
+\frac{N_{B/K}A_B}{N_{E/K}A_E}
+=r_{E/K}(\overline H)
+=\frac{N_{L/K}A_L}{N_{E/K}A_E}.
+\]</span>
+Both norm subgroups contain <span class="math" data-tex="\(N_{E/K}A_E\)">\(N_{E/K}A_E\)</span>, by norm transitivity. Equality of their images in this quotient is therefore equality of the subgroups themselves. No reciprocity map for a nonnormal extension was presumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a nonabelian Galois extension, its full degree can therefore exceed the norm index. More generally the norm index of a finite separable extension is <span class="math" data-tex="\([B:K]\)">\([B:K]\)</span>, which need not equal <span class="math" data-tex="\([L:K]\)">\([L:K]\)</span>. For example, if a nonnormal cubic extension has Galois closure with group <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, its subgroup <span class="math" data-tex="\(H\)">\(H\)</span> has order two and <span class="math" data-tex="\(G&#x27;H=S_3\)">\(G&#x27;H=S_3\)</span>; thus <span class="math" data-tex="\(B=K\)">\(B=K\)</span> and its norm subgroup is all of <span class="math" data-tex="\(A_K\)">\(A_K\)</span>. The quadratic subfield of the Galois closure has a different norm subgroup. Passing to a Galois closure alone does not preserve the norm subgroup.</p>
+<h2 id="7-the-class-field-correspondence">7. The class field correspondence</h2>
+<p>For finite abelian <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, abbreviate <span class="math" data-tex="\(N_L=N_{L/K}A_L\)">\(N_L=N_{L/K}A_L\)</span>. Equip <span class="math" data-tex="\(A_K\)">\(A_K\)</span> with the <strong>norm topology</strong>, whose basic neighborhoods of zero are the norm subgroups of finite Galois extensions. This is a group topology: the norm subgroup from a compositum is contained in each of the two given norm subgroups by norm transitivity, so the basic neighborhoods are directed under intersection. Translates supply neighborhoods of other elements. By norm limitation the same basis is obtained using only finite abelian extensions. A subgroup is open precisely when it contains one of these basic subgroups.</p>
+<h3 id="theorem-5-3-the-correspondence">Theorem 5.3. The correspondence</h3>
+<p>The assignment <span class="math" data-tex="\(L\mapsto N_L\)">\(L\mapsto N_L\)</span> is a bijection between finite abelian extensions of <span class="math" data-tex="\(K\)">\(K\)</span> in the fixed separable closure and open subgroups of <span class="math" data-tex="\(A_K\)">\(A_K\)</span> in its norm topology. Moreover,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_1\subset L_2&amp;\quad\Longleftrightarrow\quad N_{L_1}\supset N_{L_2},\\
+N_{L_1L_2}&amp;=N_{L_1}\cap N_{L_2},\\
+N_{L_1\cap L_2}&amp;=N_{L_1}+N_{L_2}.
+\end{aligned}
+\tag{14}
+\]">\[
+\begin{aligned}
+L_1\subset L_2&amp;\quad\Longleftrightarrow\quad N_{L_1}\supset N_{L_2},\\
+N_{L_1L_2}&amp;=N_{L_1}\cap N_{L_2},\\
+N_{L_1\cap L_2}&amp;=N_{L_1}+N_{L_2}.
+\end{aligned}
+\tag{14}
+\]</span>
+<p>In multiplicative notation the last sum is the product <span class="math" data-tex="\(N_{L_1}N_{L_2}\)">\(N_{L_1}N_{L_2}\)</span>. If <span class="math" data-tex="\(N_L\subset H\subset A_K\)">\(N_L\subset H\subset A_K\)</span>, there is a unique intermediate field <span class="math" data-tex="\(M\subset L\)">\(M\subset L\)</span> with <span class="math" data-tex="\(H=N_M\)">\(H=N_M\)</span>.</p>
+<p><strong>Proof.</strong> Norm transitivity gives <span class="math" data-tex="\(N_{L_1L_2}\subset N_{L_1}\cap N_{L_2}\)">\(N_{L_1L_2}\subset N_{L_1}\cap N_{L_2}\)</span>. Conversely, an element of both subgroups has symbol in <span class="math" data-tex="\(\operatorname{Gal}(L_1L_2/K)\)">\(\operatorname{Gal}(L_1L_2/K)\)</span> restricting trivially to both fields, by (9). Those restrictions determine the automorphism on the compositum, so the symbol is trivial and the element belongs to <span class="math" data-tex="\(N_{L_1L_2}\)">\(N_{L_1L_2}\)</span>. This proves the intersection formula.</p>
+<p>Containment <span class="math" data-tex="\(L_1\subset L_2\)">\(L_1\subset L_2\)</span> implies the reverse norm containment by transitivity. If <span class="math" data-tex="\(N_{L_1}\supset N_{L_2}\)">\(N_{L_1}\supset N_{L_2}\)</span>, the intersection formula says <span class="math" data-tex="\(N_{L_1L_2}=N_{L_2}\)">\(N_{L_1L_2}=N_{L_2}\)</span>. Theorem 5.1 gives <span class="math" data-tex="\([L_1L_2:K]=[L_2:K]\)">\([L_1L_2:K]=[L_2:K]\)</span>, hence <span class="math" data-tex="\(L_1\subset L_2\)">\(L_1\subset L_2\)</span>. This proves order reversal and injectivity.</p>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> contain <span class="math" data-tex="\(N_L\)">\(N_L\)</span> for an abelian <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. Under the isomorphism <span class="math" data-tex="\(A_K/N_L\simeq T=\operatorname{Gal}(L/K)\)">\(A_K/N_L\simeq T=\operatorname{Gal}(L/K)\)</span>, its image is a subgroup <span class="math" data-tex="\(D\subset T\)">\(D\subset T\)</span>. Let <span class="math" data-tex="\(M=L^D\)">\(M=L^D\)</span>. Restriction in (9) identifies the symbol for <span class="math" data-tex="\(M/K\)">\(M/K\)</span> with the quotient map <span class="math" data-tex="\(T\to T/D\)">\(T\to T/D\)</span>. Since <span class="math" data-tex="\(H\)">\(H\)</span> contains its original kernel <span class="math" data-tex="\(N_L\)">\(N_L\)</span>, it is the full preimage of <span class="math" data-tex="\(D\)">\(D\)</span>, hence exactly the kernel <span class="math" data-tex="\(N_M\)">\(N_M\)</span>. Uniqueness follows from order reversal. Every open subgroup contains a norm subgroup, and norm limitation permits choosing that subgroup from an abelian extension. Thus the correspondence is surjective onto the open subgroups.</p>
+<p>Finally let <span class="math" data-tex="\(H=N_{L_1}+N_{L_2}\)">\(H=N_{L_1}+N_{L_2}\)</span>, which contains a norm subgroup and is open. Write <span class="math" data-tex="\(H=N_M\)">\(H=N_M\)</span> by the result just proved. Since <span class="math" data-tex="\(H\supset N_{L_i}\)">\(H\supset N_{L_i}\)</span>, order reversal gives <span class="math" data-tex="\(M\subset L_1\cap L_2\)">\(M\subset L_1\cap L_2\)</span>, hence <span class="math" data-tex="\(N_M\supset N_{L_1\cap L_2}\)">\(N_M\supset N_{L_1\cap L_2}\)</span>. The opposite containment follows because <span class="math" data-tex="\(L_1\cap L_2\subset L_i\)">\(L_1\cap L_2\subset L_i\)</span> implies <span class="math" data-tex="\(N_{L_1\cap L_2}\supset N_{L_i}\)">\(N_{L_1\cap L_2}\supset N_{L_i}\)</span>. These two containments give the sum formula in (14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This abstract theorem does not say that every finite-index subgroup for an unrelated preexisting topology is a norm subgroup. The norm topology is the topology just defined. Later existence theorems identify its open subgroups in the usual arithmetic topologies.</p>
+<h2 id="8-the-universal-symbol-and-an-example">8. The universal symbol and an example</h2>
+<p>As finite abelian <span class="math" data-tex="\(L/K\)">\(L/K\)</span> vary, the symbols are compatible under restriction by (9). The profinite correspondence in the first lesson identifies their inverse-limit Galois group with <span class="math" data-tex="\(\operatorname{Gal}(K^{\mathrm{ab}}/K)\)">\(\operatorname{Gal}(K^{\mathrm{ab}}/K)\)</span>. Therefore they define the <strong>universal norm residue symbol</strong></p>
+<span class="math math-display" data-tex="\[
+(\ ,K^{\mathrm{ab}}/K):A_K\longrightarrow
+\operatorname{Gal}(K^{\mathrm{ab}}/K).
+\tag{15}
+\]">\[
+(\ ,K^{\mathrm{ab}}/K):A_K\longrightarrow
+\operatorname{Gal}(K^{\mathrm{ab}}/K).
+\tag{15}
+\]</span>
+<p>Its kernel is <span class="math" data-tex="\(\bigcap_L N_L\)">\(\bigcap_L N_L\)</span>, the subgroup of universal norms. Its image is dense: for any finite set of quotient conditions, take their finite compositum and use the surjectivity of its finite symbol. Surjectivity onto the whole inverse limit requires an additional argument in an arithmetic application; it does not follow just from the finite quotient surjections. Formula (12) gives on the unramified tower</p>
+<span class="math math-display" data-tex="\[
+(a,\widetilde K/K)=\varphi_K^{v_K(a)},
+\qquad d_K(a,\widetilde K/K)=v_K(a),
+\tag{16}
+\]">\[
+(a,\widetilde K/K)=\varphi_K^{v_K(a)},
+\qquad d_K(a,\widetilde K/K)=v_K(a),
+\tag{16}
+\]</span>
+<p>where the exponent is profinite. Equality follows by reducing it modulo every positive integer.</p>
+<p>For the finite-field degree formation, <span class="math" data-tex="\(A_K=\mathbf Z\)">\(A_K=\mathbf Z\)</span>, all actions are trivial, and a degree-<span class="math" data-tex="\(n\)">\(n\)</span> extension has norm <span class="math" data-tex="\(n\mathbf Z\)">\(n\mathbf Z\)</span>. The cyclic Tate groups are <span class="math" data-tex="\(\mathbf Z/n\mathbf Z\)">\(\mathbf Z/n\mathbf Z\)</span> and zero, so (1) holds. The correspondence sends <span class="math" data-tex="\(\mathbf F_{q^{mn}}/\mathbf F_{q^m}\)">\(\mathbf F_{q^{mn}}/\mathbf F_{q^m}\)</span> to <span class="math" data-tex="\(n\mathbf Z\)">\(n\mathbf Z\)</span>. Compositum and intersection have relative degrees <span class="math" data-tex="\(\operatorname{lcm}(n_1,n_2)\)">\(\operatorname{lcm}(n_1,n_2)\)</span> and <span class="math" data-tex="\(\gcd(n_1,n_2)\)">\(\gcd(n_1,n_2)\)</span>, matching intersection and sum of these subgroups. Its universal symbol is the dense inclusion <span class="math" data-tex="\(\mathbf Z\to\widehat{\mathbf Z}\)">\(\mathbf Z\to\widehat{\mathbf Z}\)</span>; it is not surjective. This is a concrete reason to keep density and surjectivity distinct in (15).</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Deduce <span class="math" data-tex="\(N_{L_1L_2}=N_{L_1}\cap N_{L_2}\)">\(N_{L_1L_2}=N_{L_1}\cap N_{L_2}\)</span> for two finite abelian extensions directly from Theorem 5.1 and restriction of symbols.</li>
+<li><strong>Medium.</strong> Prove norm limitation for a finite Galois extension, and explain why its norm index is the order of the abelianization rather than its full degree.</li>
+<li><strong>Medium.</strong> If <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is finite abelian and <span class="math" data-tex="\(N_L\subset H\subset A_K\)">\(N_L\subset H\subset A_K\)</span>, construct the unique <span class="math" data-tex="\(M\subset L\)">\(M\subset L\)</span> with <span class="math" data-tex="\(H=N_M\)">\(H=N_M\)</span>.</li>
+<li><strong>Hard.</strong> Carry out the Sylow step for <span class="math" data-tex="\(T=\operatorname{Gal}(L/K)\simeq S_3\)">\(T=\operatorname{Gal}(L/K)\simeq S_3\)</span>. Treat separately the subgroups of orders 2 and 3; identify the resulting norm quotient and the maximal abelian subfield.</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<ol>
+<li>Transitivity gives the inclusion from the compositum's norm subgroup into each factor. If <span class="math" data-tex="\(a\)">\(a\)</span> is in both factors, its symbol in the compositum has identity restriction to both <span class="math" data-tex="\(L_1,L_2\)">\(L_1,L_2\)</span>. An automorphism fixing both fixes the field they generate, so that symbol is identity. The kernel assertion of Theorem 5.1 places <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(N_{L_1L_2}\)">\(N_{L_1L_2}\)</span>, proving equality.</li>
+<li>Let <span class="math" data-tex="\(B\)">\(B\)</span> be the fixed field of <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>. Norm transitivity gives <span class="math" data-tex="\(N_L\subset N_B\)">\(N_L\subset N_B\)</span>. Theorem 5.1 computes <span class="math" data-tex="\([A_K:N_L]=|T/T&#x27;|=[B:K]=[A_K:N_B]\)">\([A_K:N_L]=|T/T&#x27;|=[B:K]=[A_K:N_B]\)</span>. These finite indices force the contained subgroups to be equal. Thus when <span class="math" data-tex="\(T\)">\(T\)</span> is nonabelian the quotient records exactly its maximal abelian quotient, and its index can be strictly smaller than <span class="math" data-tex="\(|T|\)">\(|T|\)</span>.</li>
+<li>Map <span class="math" data-tex="\(H\)">\(H\)</span> into <span class="math" data-tex="\(T\)">\(T\)</span> by the surjective symbol for <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, and call its image <span class="math" data-tex="\(D\)">\(D\)</span>. Set <span class="math" data-tex="\(M=L^D\)">\(M=L^D\)</span>. Restriction identifies the symbol for <span class="math" data-tex="\(M/K\)">\(M/K\)</span> with the quotient by <span class="math" data-tex="\(D\)">\(D\)</span>. Because <span class="math" data-tex="\(H\supset N_L\)">\(H\supset N_L\)</span>, it equals the full preimage of <span class="math" data-tex="\(D\)">\(D\)</span>, hence the kernel <span class="math" data-tex="\(N_M\)">\(N_M\)</span>. If <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> also has that norm subgroup, the order-reversing part of Theorem 5.3 gives <span class="math" data-tex="\(M\subset M&#x27;\)">\(M\subset M&#x27;\)</span> and <span class="math" data-tex="\(M&#x27;\subset M\)">\(M&#x27;\subset M\)</span>, so <span class="math" data-tex="\(M=M&#x27;\)">\(M=M&#x27;\)</span>.</li>
+<li>The quotient <span class="math" data-tex="\(Q=A_K/N_{L/K}A_L\)">\(Q=A_K/N_{L/K}A_L\)</span> is killed by 6 and decomposes as <span class="math" data-tex="\(Q_2\oplus Q_3\)">\(Q_2\oplus Q_3\)</span>. For <span class="math" data-tex="\(P_2=\langle(12)\rangle\)">\(P_2=\langle(12)\rangle\)</span>, the fixed field <span class="math" data-tex="\(F_2\)">\(F_2\)</span> has degree 3 over <span class="math" data-tex="\(K\)">\(K\)</span> and need not be Galois. Cyclic reciprocity gives <span class="math" data-tex="\(A_{F_2}/N_{L/F_2}A_L\simeq C_2\)">\(A_{F_2}/N_{L/F_2}A_L\simeq C_2\)</span>. Inclusion followed by norm acts on <span class="math" data-tex="\(Q\)">\(Q\)</span> as multiplication by 3, which is an automorphism on <span class="math" data-tex="\(Q_2\)">\(Q_2\)</span>; thus <span class="math" data-tex="\(Q_2\)">\(Q_2\)</span> lies in this norm's image and hence in the image of the transposition under <span class="math" data-tex="\(r_{L/K}\)">\(r_{L/K}\)</span>. For <span class="math" data-tex="\(P_3=A_3\)">\(P_3=A_3\)</span>, the fixed field <span class="math" data-tex="\(F_3\)">\(F_3\)</span> has degree 2 over <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(L/F_3\)">\(L/F_3\)</span> is cyclic of degree 3. Its norm map onto <span class="math" data-tex="\(Q\)">\(Q\)</span>, composed with inclusion, is multiplication by 2, an automorphism on <span class="math" data-tex="\(Q_3\)">\(Q_3\)</span>. However its image under reciprocity is zero: the 3-cycles lie in the commutator subgroup of <span class="math" data-tex="\(S_3\)">\(S_3\)</span>. Indeed, sign gives an abelian quotient <span class="math" data-tex="\(C_2\)">\(C_2\)</span>, while the commutator of two distinct transpositions is a 3-cycle, proving <span class="math" data-tex="\(S_3&#x27;=A_3\)">\(S_3&#x27;=A_3\)</span>. Thus <span class="math" data-tex="\(Q_3=0\)">\(Q_3=0\)</span>. Restriction to the quadratic field <span class="math" data-tex="\(F_3=L^{A_3}\)">\(F_3=L^{A_3}\)</span> identifies <span class="math" data-tex="\(T^{\mathrm{ab}}\)">\(T^{\mathrm{ab}}\)</span> with <span class="math" data-tex="\(C_2\)">\(C_2\)</span>, and cyclic reciprocity there makes the transposition's class nonzero in <span class="math" data-tex="\(Q\)">\(Q\)</span>. Consequently <span class="math" data-tex="\(Q\simeq C_2\)">\(Q\simeq C_2\)</span> and <span class="math" data-tex="\(N_{L/K}A_L=N_{F_3/K}A_{F_3}\)">\(N_{L/K}A_L=N_{F_3/K}A_{F_3}\)</span>. This also shows explicitly why neither the degree-6 field nor its non-Galois cubic fixed field may be substituted for the maximal abelian subfield in norm limitation.</li>
+</ol>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>Sections 1–4 prove the cyclic, abelian, solvable and Sylow steps without assuming a finite norm quotient prematurely. Theorem 5.4 proves norm limitation for every finite separable extension, using its maximal abelian subextension. Sections 7–8 prove the norm-group correspondence, its topology and the universal symbol.</p>
+<ul>
+<li><a href="https://kskedlaya.org/cft/sec_abstractcft1.html">Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="frobenius-lifts-and-abstract-reciprocity.html">← Frobenius lifts and abstract reciprocity</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="local-reciprocity-and-norm-groups.html">Local reciprocity and norm groups →</a></span></nav>
+<p class="small source-link"><a href="files/the-reciprocity-law-and-the-class-field-correspondence.md">Markdown source of this lesson</a> · <a download href="files/the-reciprocity-law-and-the-class-field-correspondence.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

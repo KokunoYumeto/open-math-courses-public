@@ -1,0 +1,1402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trace densities and noncommutative integration · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-TI.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 76 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="trace-densities-and-noncommutative-integration">Trace densities and noncommutative integration</h1>
+
+<p>The same trace measures both the part of an operator that a cutoff discards and the size of a density that defines a normal functional. We first connect these two measurements. This gives a concrete complete space of integrable operators, rather than an abstract completion whose elements have not yet been identified. Complex interpolation then produces the other finite-exponent spaces. Their full duality theorem requires a separate construction: compatible densities on finite projections must be assembled into a closed operator, with its adjoint and its spectral tails checked before any global integral is written.</p>
+<p>The mathematical antecedents are Takesaki, <em>Theory of Operator Algebras II</em>, Chapter IX, §2, estimate (18), Lemma 2.12, Theorem 2.13 and the following trace-GNS identification. Mathematical comparisons also include Fumio Hiai, <a href="https://arxiv.org/abs/2004.02383v1"><em>Concise lectures on selected topics of von Neumann algebras</em>, arXiv:2004.02383v1, §5</a>, and Ricardo Correa da Silva, <a href="https://arxiv.org/abs/1803.02390v1"><em>Lecture Notes on Noncommutative Lp-Spaces</em>, arXiv:1803.02390v1, §2.1</a>. These references are mathematical antecedents and comparisons; their prose is not imported. The projection estimates and the measure algebra used here were established in <strong>OA-MOD-MT</strong>. The organization through cutoff sizes, a closed predual range and two local operator domains is independent of the source presentation.</p>
+<h2 id="finite-pieces-without-a-countability-assumption"><span id="oa-mod-ti-01"></span><span id="OA-MOD-TI-01"></span>Finite pieces without a countability assumption</h2>
+<p>Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> be a von Neumann algebra on an arbitrary complex Hilbert space, and let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be a faithful normal semifinite trace. All Hilbert inner products are linear in their first variable. We allow the zero algebra. No faithful normal state, separability, sigma-finiteness or finite value of <span class="math" data-tex="\(\tau(1)\)">\(\tau(1)\)</span> is assumed.</p>
+<p>Write <span class="math" data-tex="\(S=S(M,\tau)\)">\(S=S(M,\tau)\)</span> for the complete measurable algebra from MT-08–12. Its elements are actual closed densely defined affiliated operators. A sum or product in <span class="math" data-tex="\(S\)">\(S\)</span> means the closure of the ordinary sum or product on the domains stated in MT-09. Its adjoint is the Hilbert space adjoint. Spectral functions and polar decompositions have their operator meanings. For <span class="math" data-tex="\(h\in S_+\)">\(h\in S_+\)</span>, the notation <span class="math" data-tex="\(\tau(h)\)">\(\tau(h)\)</span> initially means the positive spectral integral of MT-13; no complex integral has yet been assigned to an arbitrary measurable operator.</p>
+<p>Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the projections of finite trace. MT-02 gives</p>
+<span class="math math-display" data-tex="\[
+\tau(e\vee f)\leq\tau(e)+\tau(f),\qquad e,f\in\mathcal E.
+\tag{TI.1}
+\]">\[
+\tau(e\vee f)\leq\tau(e)+\tau(f),\qquad e,f\in\mathcal E.
+\tag{TI.1}
+\]</span>
+<p>For every projection <span class="math" data-tex="\(P\in M\)">\(P\in M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+P=\sup\{e\in\mathcal E:e\leq P\},\qquad
+\tau(P)=\sup_{e\in\mathcal E,\ e\leq P}\tau(e).
+\tag{TI.2}
+\]">\[
+P=\sup\{e\in\mathcal E:e\leq P\},\qquad
+\tau(P)=\sup_{e\in\mathcal E,\ e\leq P}\tau(e).
+\tag{TI.2}
+\]</span>
+<p>Here and below suprema of projections refer to their ranges, equivalently their strong increasing limits when the family is directed.</p>
+<p><strong>Proof.</strong> The finite subprojections of <span class="math" data-tex="\(P\)">\(P\)</span> are directed by (TI.1). Let their supremum be <span class="math" data-tex="\(Q\)">\(Q\)</span>, and suppose <span class="math" data-tex="\(R=P-Q\ne0\)">\(R=P-Q\ne0\)</span>. The bounded finite trace ideal <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span> is ultraweakly dense by semifiniteness. Thus some <span class="math" data-tex="\(x\in\mathfrak m_\tau\)">\(x\in\mathfrak m_\tau\)</span> has <span class="math" data-tex="\(Rx\ne0\)">\(Rx\ne0\)</span>: otherwise ultraweak continuity of fixed multiplication would give <span class="math" data-tex="\(R1=0\)">\(R1=0\)</span>. The nonzero bounded positive element <span class="math" data-tex="\(a=Rxx^*R\)">\(a=Rxx^*R\)</span> belongs to <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span>, by its two-sided ideal property in MT-13. For some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, the projection <span class="math" data-tex="\(r=1_{[\delta,\infty)}(a)\)">\(r=1_{[\delta,\infty)}(a)\)</span> is nonzero. It satisfies <span class="math" data-tex="\(r\leq R\)">\(r\leq R\)</span> and <span class="math" data-tex="\(\delta\tau(r)\leq\tau(a)&lt;\infty\)">\(\delta\tau(r)\leq\tau(a)&lt;\infty\)</span>, contradicting the definition of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Hence <span class="math" data-tex="\(Q=P\)">\(Q=P\)</span>, and normality gives the trace formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, <span class="math" data-tex="\(e\uparrow1\)">\(e\uparrow1\)</span> strongly along <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. This directed set is not replaced by a sequence. The algebra may have no sequence of finite projections with supremum one.</p>
+<p>Let <span class="math" data-tex="\(\mathfrak m_0\)">\(\mathfrak m_0\)</span> consist of the bounded operators whose right support has finite trace. The polar partial isometry identifies their right and left supports, so either support can be used. This is a two-sided star ideal: multiplying on the left cannot enlarge the right support, multiplying on the right cannot enlarge the left support, and the support of a sum is bounded by the join of the corresponding supports. Every <span class="math" data-tex="\(x\in\mathfrak m_0\)">\(x\in\mathfrak m_0\)</span> lies in a finite corner <span class="math" data-tex="\(eMe\)">\(eMe\)</span>, by taking the join of its two supports. Moreover,</p>
+<span class="math math-display" data-tex="\[
+\mathfrak m_0\subseteq\mathfrak m_\tau,
+\qquad \tau(|x|^r)\leq\|x\|^r\tau(e)&lt;\infty
+\quad(0&lt;r&lt;\infty, x=exe).
+\tag{TI.3}
+\]">\[
+\mathfrak m_0\subseteq\mathfrak m_\tau,
+\qquad \tau(|x|^r)\leq\|x\|^r\tau(e)&lt;\infty
+\quad(0&lt;r&lt;\infty, x=exe).
+\tag{TI.3}
+\]</span>
+<p>The corner used for a calculation may depend on all its finitely many factors.</p>
+<h2 id="a-scalar-size-function-with-exact-operator-cutoffs"><span id="oa-mod-ti-02"></span><span id="OA-MOD-TI-02"></span>A scalar size function with exact operator cutoffs</h2>
+<p>For <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span>, <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>, and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+d_x(a)=\tau(1_{(a,\infty)}(|x|)),\qquad
+\mu_t(x)=\inf\{\|xe\|: e\in\operatorname{Proj}(M),\ eH\subseteq D(x),\
+\tau(1-e)\leq t\}.
+\tag{TI.4}
+\]">\[
+d_x(a)=\tau(1_{(a,\infty)}(|x|)),\qquad
+\mu_t(x)=\inf\{\|xe\|: e\in\operatorname{Proj}(M),\ eH\subseteq D(x),\
+\tau(1-e)\leq t\}.
+\tag{TI.4}
+\]</span>
+<p>The product in this infimum is literally bounded and everywhere defined: the closed graph theorem applies to the closed composition of <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(e\)">\(e\)</span>, since its domain is all of <span class="math" data-tex="\(H\)">\(H\)</span>. The infimum is finite by the spectral-tail criterion MT-11.</p>
+<p>We claim the exact formula</p>
+<span class="math math-display" data-tex="\[
+\mu_t(x)=\inf\{a\geq0:d_x(a)\leq t\},\qquad
+\mu_t(x)\leq a\ \Longleftrightarrow\ d_x(a)\leq t.
+\tag{TI.5}
+\]">\[
+\mu_t(x)=\inf\{a\geq0:d_x(a)\leq t\},\qquad
+\mu_t(x)\leq a\ \Longleftrightarrow\ d_x(a)\leq t.
+\tag{TI.5}
+\]</span>
+<p>To prove it, suppose <span class="math" data-tex="\(eH\subseteq D(x)\)">\(eH\subseteq D(x)\)</span> and <span class="math" data-tex="\(\|xe\|\leq a\)">\(\|xe\|\leq a\)</span>. The projection <span class="math" data-tex="\(q=1_{(a,\infty)}(|x|)\)">\(q=1_{(a,\infty)}(|x|)\)</span> has zero intersection with <span class="math" data-tex="\(e\)">\(e\)</span>. Indeed, a nonzero vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in the intersection would satisfy</p>
+<span class="math math-display" data-tex="\[
+\|x\xi\|^2=\int_{(a,\infty)}\lambda^2\,
+d\langle E_{|x|}(\lambda)\xi,\xi\rangle
+&gt;a^2\|\xi\|^2.
+\]">\[
+\|x\xi\|^2=\int_{(a,\infty)}\lambda^2\,
+d\langle E_{|x|}(\lambda)\xi,\xi\rangle
+&gt;a^2\|\xi\|^2.
+\]</span>
+<p>This is impossible, including when <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Projection comparison MT-02 gives <span class="math" data-tex="\(q\precsim1-e\)">\(q\precsim1-e\)</span>, hence <span class="math" data-tex="\(d_x(a)\leq\tau(1-e)\)">\(d_x(a)\leq\tau(1-e)\)</span>. Conversely, <span class="math" data-tex="\(1_{[0,a]}(|x|)\)">\(1_{[0,a]}(|x|)\)</span> is an admissible cutoff of norm at most <span class="math" data-tex="\(a\)">\(a\)</span> and defect <span class="math" data-tex="\(d_x(a)\)">\(d_x(a)\)</span>. These implications prove the infimum formula. Normality gives <span class="math" data-tex="\(d_x(a_n)\uparrow d_x(a)\)">\(d_x(a_n)\uparrow d_x(a)\)</span> when <span class="math" data-tex="\(a_n\downarrow a\)">\(a_n\downarrow a\)</span>. If the infimum is <span class="math" data-tex="\(m\)">\(m\)</span>, the upper-set property gives <span class="math" data-tex="\(d_x(m+1/n)\leq t\)">\(d_x(m+1/n)\leq t\)</span>; the preceding increasing limit gives <span class="math" data-tex="\(d_x(m)\leq t\)">\(d_x(m)\leq t\)</span>. Thus the infimum is attained by the spectral cutoff at <span class="math" data-tex="\(m\)">\(m\)</span>, and the second formula follows. This proof fixes the endpoints even at spectral atoms.</p>
+<p>In particular, <span class="math" data-tex="\(t\mapsto\mu_t(x)\)">\(t\mapsto\mu_t(x)\)</span> is a finite nonnegative decreasing measurable function on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Measurable polar decomposition transports every nonzero spectral projection of <span class="math" data-tex="\(|x|\)">\(|x|\)</span> to the corresponding projection of <span class="math" data-tex="\(|x^*|\)">\(|x^*|\)</span>. Equality of the traces of equivalent projections therefore gives</p>
+<span class="math math-display" data-tex="\[
+\mu_t(x^*)=\mu_t(x),\qquad \mu_t(cx)=|c|\mu_t(x)
+\quad(c\in\mathbb C).
+\tag{TI.6}
+\]">\[
+\mu_t(x^*)=\mu_t(x),\qquad \mu_t(cx)=|c|\mu_t(x)
+\quad(c\in\mathbb C).
+\tag{TI.6}
+\]</span>
+<p>The assertion for <span class="math" data-tex="\(c=0\)">\(c=0\)</span> is immediate.</p>
+<p>For every real <span class="math" data-tex="\(0&lt;p&lt;\infty\)">\(0&lt;p&lt;\infty\)</span>, put <span class="math" data-tex="\(I_p(x)=\tau(|x|^p)\)">\(I_p(x)=\tau(|x|^p)\)</span>, allowing infinity. The power is measurable because its high spectral tails are those of <span class="math" data-tex="\(|x|\)">\(|x|\)</span> after the change of threshold. We have</p>
+<span class="math math-display" data-tex="\[
+I_p(x)=\int_0^\infty p a^{p-1}d_x(a)\,da
+=\int_0^\infty\mu_t(x)^p\,dt.
+\tag{TI.7}
+\]">\[
+I_p(x)=\int_0^\infty p a^{p-1}d_x(a)\,da
+=\int_0^\infty\mu_t(x)^p\,dt.
+\tag{TI.7}
+\]</span>
+<p>Here is a layer-cake argument valid without a sigma-finiteness assumption on the spectral measure. For a nonnegative simple function with finitely many disjoint level sets, the equality between its integral and the integral of the measures of its strict superlevel sets follows by finite addition of rectangles. Approximate any nonnegative function increasingly by such simple functions. Both integrals increase to the desired limits, so scalar monotone convergence proves the same identity for every measure. Apply this to <span class="math" data-tex="\(\lambda^p\)">\(\lambda^p\)</span> and <span class="math" data-tex="\(B\mapsto\tau(E_{|x|}(B))\)">\(B\mapsto\tau(E_{|x|}(B))\)</span> to obtain the first formula, substituting <span class="math" data-tex="\(s=a^p\)">\(s=a^p\)</span>. Formula (TI.5) identifies</p>
+<span class="math math-display" data-tex="\[
+\{t&gt;0:\mu_t(x)&gt;a\}=\{t&gt;0:t&lt;d_x(a)\}.
+\]">\[
+\{t&gt;0:\mu_t(x)&gt;a\}=\{t&gt;0:t&lt;d_x(a)\}.
+\]</span>
+<p>Its Lebesgue measure is <span class="math" data-tex="\(d_x(a)\)">\(d_x(a)\)</span>, even if infinite. The same layer-cake argument applied to <span class="math" data-tex="\(\mu_t(x)^p\)">\(\mu_t(x)^p\)</span> proves the second formula. Infinite mass at spectral value zero contributes zero throughout.</p>
+<p>For <span class="math" data-tex="\(s,t&gt;0\)">\(s,t&gt;0\)</span>, the cutoff sizes obey</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mu_{s+t}(x+y)&amp;\leq\mu_s(x)+\mu_t(y),\\
+\mu_{s+t}(xy)&amp;\leq\mu_s(x)\mu_t(y),\\
+\mu_t(axb)&amp;\leq\|a\|\|b\|\mu_t(x)\quad(a,b\in M).
+\end{aligned}
+\tag{TI.8}
+\]">\[
+\begin{aligned}
+\mu_{s+t}(x+y)&amp;\leq\mu_s(x)+\mu_t(y),\\
+\mu_{s+t}(xy)&amp;\leq\mu_s(x)\mu_t(y),\\
+\mu_t(axb)&amp;\leq\|a\|\|b\|\mu_t(x)\quad(a,b\in M).
+\end{aligned}
+\tag{TI.8}
+\]</span>
+<p>For the first inequality choose spectral cutoffs <span class="math" data-tex="\(p,q\)">\(p,q\)</span> attaining <span class="math" data-tex="\(\mu_s(x),\mu_t(y)\)">\(\mu_s(x),\mu_t(y)\)</span>. Their intersection has defect at most <span class="math" data-tex="\(s+t\)">\(s+t\)</span>; its range belongs to both actual domains, and the closed sum agrees there with the ordinary sum. This proves the norm estimate. For the product set <span class="math" data-tex="\(c=yq\in M\)">\(c=yq\in M\)</span>, let <span class="math" data-tex="\(k\)">\(k\)</span> be the kernel projection of <span class="math" data-tex="\((1-p)c\)">\((1-p)c\)</span>, and put <span class="math" data-tex="\(r=q\wedge k\)">\(r=q\wedge k\)</span>. The left support of <span class="math" data-tex="\((1-p)c\)">\((1-p)c\)</span> is at most <span class="math" data-tex="\(1-p\)">\(1-p\)</span>. Equivalence with its right support gives <span class="math" data-tex="\(\tau(1-k)\leq s\)">\(\tau(1-k)\leq s\)</span>, hence <span class="math" data-tex="\(\tau(1-r)\leq s+t\)">\(\tau(1-r)\leq s+t\)</span>. For <span class="math" data-tex="\(\xi\in rH\)">\(\xi\in rH\)</span>, one has <span class="math" data-tex="\(\xi\in D(y)\)">\(\xi\in D(y)\)</span> and <span class="math" data-tex="\(y\xi=c\xi\in pH\subseteq D(x)\)">\(y\xi=c\xi\in pH\subseteq D(x)\)</span>. Thus <span class="math" data-tex="\(rH\)">\(rH\)</span> lies in the ordinary product domain and</p>
+<span class="math math-display" data-tex="\[
+\|(xy)r\|=\|(xp)cr\|\leq\mu_s(x)\mu_t(y).
+\]">\[
+\|(xy)r\|=\|(xp)cr\|\leq\mu_s(x)\mu_t(y).
+\]</span>
+<p>This proves the second inequality without any commuting-cutoff assumption. Left multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> uses the same cutoff as <span class="math" data-tex="\(x\)">\(x\)</span>; right multiplication follows by adjoints and (TI.6). Iterating proves the third inequality. After integration, it gives <span class="math" data-tex="\(I_p(axb)\leq\|a\|^p\|b\|^pI_p(x)\)">\(I_p(axb)\leq\|a\|^p\|b\|^pI_p(x)\)</span>; zero bounded factors are treated directly.</p>
+<h2 id="fatou-estimates-and-concrete-approximation"><span id="oa-mod-ti-03"></span><span id="OA-MOD-TI-03"></span>Fatou estimates and concrete approximation</h2>
+<p>The cutoffs in TI-02 describe exactly the measure topology already constructed in MT. To verify this explicitly, let <span class="math" data-tex="\(\widetilde U(r,d)\)">\(\widetilde U(r,d)\)</span> consist of <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span> for which some projection <span class="math" data-tex="\(e\)">\(e\)</span> satisfies <span class="math" data-tex="\(eH\subseteq D(x)\)">\(eH\subseteq D(x)\)</span>, <span class="math" data-tex="\(\|xe\|&lt;r\)">\(\|xe\|&lt;r\)</span>, and <span class="math" data-tex="\(\tau(1-e)&lt;d\)">\(\tau(1-e)&lt;d\)</span>. Write <span class="math" data-tex="\(U(r,d)\)">\(U(r,d)\)</span> for the original bounded neighborhood in MT-03.</p>
+<p>If <span class="math" data-tex="\(x\in\widetilde U(r,d)\)">\(x\in\widetilde U(r,d)\)</span>, put <span class="math" data-tex="\(y=x(1-e)\)">\(y=x(1-e)\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span>. Then <span class="math" data-tex="\(ye=0\)">\(ye=0\)</span>, so its positive absolute value vanishes on <span class="math" data-tex="\(eH\)">\(eH\)</span>. The bounded regularizations <span class="math" data-tex="\(y_n=y(1+n^{-1}|y|)^{-1}\)">\(y_n=y(1+n^{-1}|y|)^{-1}\)</span> also vanish on <span class="math" data-tex="\(eH\)">\(eH\)</span>, and converge to <span class="math" data-tex="\(y\)">\(y\)</span> in measure by MT-13. Therefore <span class="math" data-tex="\(xe+y_n\in U(r,d)\)">\(xe+y_n\in U(r,d)\)</span> and converge to <span class="math" data-tex="\(x\)">\(x\)</span>; this proves <span class="math" data-tex="\(\widetilde U(r,d)\subseteq\overline{U(r,d)}\)">\(\widetilde U(r,d)\subseteq\overline{U(r,d)}\)</span>.</p>
+<p>Conversely, if <span class="math" data-tex="\(x\in\overline{U(r/2,d/2)}\)">\(x\in\overline{U(r/2,d/2)}\)</span>, the countable base of the completed topology permits choosing <span class="math" data-tex="\(a_n\in U(r/2,d/2)\)">\(a_n\in U(r/2,d/2)\)</span> tending to <span class="math" data-tex="\(x\)">\(x\)</span> sufficiently fast that</p>
+<span class="math math-display" data-tex="\[
+a_{n+1}-a_n\in U(\varepsilon_n,\delta_n),\qquad
+\sum_n\varepsilon_n&lt;r/2,\quad \sum_n\delta_n&lt;d/2.
+\]">\[
+a_{n+1}-a_n\in U(\varepsilon_n,\delta_n),\qquad
+\sum_n\varepsilon_n&lt;r/2,\quad \sum_n\delta_n&lt;d/2.
+\]</span>
+<p>This uses only the Cauchy criterion: prescribe these summable positive bounds, choose successively smaller neighborhoods of <span class="math" data-tex="\(x\)">\(x\)</span> whose pairwise differences lie in each required original neighborhood, and choose the approximants there. Intersect a witness for <span class="math" data-tex="\(a_1\)">\(a_1\)</span> with all witnesses for the displayed differences. The resulting projection <span class="math" data-tex="\(e\)">\(e\)</span> has <span class="math" data-tex="\(\tau(1-e)&lt;d\)">\(\tau(1-e)&lt;d\)</span>, and the telescoping sequence <span class="math" data-tex="\(a_ne\)">\(a_ne\)</span> converges in norm to <span class="math" data-tex="\(b\in M\)">\(b\in M\)</span> with <span class="math" data-tex="\(\|b\|&lt;r\)">\(\|b\|&lt;r\)</span>. Continuity in the measure algebra gives <span class="math" data-tex="\(a_ne\to xe\)">\(a_ne\to xe\)</span>, while norm convergence also implies measure convergence. Hausdorffness gives <span class="math" data-tex="\(xe=b\)">\(xe=b\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span>. The restriction statement of MT-08 then gives the actual domain inclusion <span class="math" data-tex="\(eH\subseteq D(x)\)">\(eH\subseteq D(x)\)</span> and literal bounded equality <span class="math" data-tex="\(xe=b\)">\(xe=b\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\overline{U(r/2,d/2)}\subseteq\widetilde U(r,d)
+\subseteq\overline{U(r,d)}.
+\]">\[
+\overline{U(r/2,d/2)}\subseteq\widetilde U(r,d)
+\subseteq\overline{U(r,d)}.
+\]</span>
+<p>Closures of sufficiently small original neighborhoods form a base of neighborhoods in a uniform completion, by the addition estimate used to construct it. These inclusions prove the claimed equality of topologies. Together with attained cutoffs in (TI.5), they prove, for arbitrary nets,</p>
+<span class="math math-display" data-tex="\[
+x_i\to0\text{ in measure}\quad\Longleftrightarrow\quad
+\mu_t(x_i)\to0\text{ for every }t&gt;0.
+\tag{TI.9a}
+\]">\[
+x_i\to0\text{ in measure}\quad\Longleftrightarrow\quad
+\mu_t(x_i)\to0\text{ for every }t&gt;0.
+\tag{TI.9a}
+\]</span>
+<p>In the reverse direction use <span class="math" data-tex="\(t=d/2\)">\(t=d/2\)</span>, leaving strict slack in the discarded trace. No sequence of indices is selected from the net.</p>
+<p>We next prove spectral Fatou lower semicontinuity for every <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>:</p>
+<span class="math math-display" data-tex="\[
+x_i\to x\text{ in measure}\quad\Longrightarrow\quad
+I_p(x)\leq\liminf_i I_p(x_i).
+\tag{TI.9b}
+\]">\[
+x_i\to x\text{ in measure}\quad\Longrightarrow\quad
+I_p(x)\leq\liminf_i I_p(x_i).
+\tag{TI.9b}
+\]</span>
+<p>For fixed <span class="math" data-tex="\(t,\varepsilon&gt;0\)">\(t,\varepsilon&gt;0\)</span>, (TI.9a) supplies one tail on which <span class="math" data-tex="\(\mu_t(x-x_i)\leq\varepsilon\)">\(\mu_t(x-x_i)\leq\varepsilon\)</span>. For all indices on this tail, (TI.8) holds simultaneously for all <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+I_p(x_i)\geq\int_t^\infty
+(\mu_u(x)-\varepsilon)_+^p\,du.
+\]">\[
+I_p(x_i)\geq\int_t^\infty
+(\mu_u(x)-\varepsilon)_+^p\,du.
+\]</span>
+<p>The right side is independent of <span class="math" data-tex="\(i\)">\(i\)</span>. It is therefore a lower bound for the directed liminf <span class="math" data-tex="\(\sup_{i_0}\inf_{i\geq i_0}I_p(x_i)\)">\(\sup_{i_0}\inf_{i\geq i_0}I_p(x_i)\)</span>. Let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> and then <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span> through scalar sequences. Monotone convergence and (TI.7) prove (TI.9b). This is not an application of a scalar Fatou lemma to an arbitrary net of functions; the uniformity of the chosen tail in the integration variable is essential.</p>
+<p>Before asserting a norm triangle inequality, the sets <span class="math" data-tex="\(\{x:I_p(x)&lt;\infty\}\)">\(\{x:I_p(x)&lt;\infty\}\)</span> are already vector spaces and bounded bimodules. Indeed, (TI.8), the substitution <span class="math" data-tex="\(u=2t\)">\(u=2t\)</span>, and the scalar inequality <span class="math" data-tex="\((a+b)^p\leq\max(1,2^{p-1})(a^p+b^p)\)">\((a+b)^p\leq\max(1,2^{p-1})(a^p+b^p)\)</span> give</p>
+<span class="math math-display" data-tex="\[
+I_p(x+y)\leq2^{\max(1,p)}(I_p(x)+I_p(y)).
+\tag{TI.9c}
+\]">\[
+I_p(x+y)\leq2^{\max(1,p)}(I_p(x)+I_p(y)).
+\tag{TI.9c}
+\]</span>
+<p>For <span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span> the scalar inequality is convexity at the midpoint; for <span class="math" data-tex="\(p\leq1\)">\(p\leq1\)</span>, divide by <span class="math" data-tex="\((a+b)^p\)">\((a+b)^p\)</span> and use <span class="math" data-tex="\(r^p\geq r\)">\(r^p\geq r\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Spectral calculus gives homogeneity and, for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the Markov estimate</p>
+<span class="math math-display" data-tex="\[
+a^p d_x(a)\leq I_p(x),\qquad
+\mu_t(x)\leq t^{-1/p}I_p(x)^{1/p}
+\quad(I_p(x)&lt;\infty).
+\tag{TI.9d}
+\]">\[
+a^p d_x(a)\leq I_p(x),\qquad
+\mu_t(x)\leq t^{-1/p}I_p(x)^{1/p}
+\quad(I_p(x)&lt;\infty).
+\tag{TI.9d}
+\]</span>
+<p>If <span class="math" data-tex="\(I_p(x)=0\)">\(I_p(x)=0\)</span>, faithfulness makes all strictly positive spectral tails zero, hence <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Otherwise (TI.5) gives the second estimate from the first. Thus convergence of the gauges to zero implies convergence in measure.</p>
+<p>Finally, if <span class="math" data-tex="\(x=vh\)">\(x=vh\)</span> and <span class="math" data-tex="\(I_p(x)&lt;\infty\)">\(I_p(x)&lt;\infty\)</span>, let <span class="math" data-tex="\(e_n=1_{[1/n,n]}(h)\)">\(e_n=1_{[1/n,n]}(h)\)</span>, <span class="math" data-tex="\(x_n=xe_n\)">\(x_n=xe_n\)</span>. The bound <span class="math" data-tex="\(\tau(e_n)\leq n^pI_p(x)\)">\(\tau(e_n)\leq n^pI_p(x)\)</span> makes <span class="math" data-tex="\(x_n\)">\(x_n\)</span> a bounded finite-support operator. The closed spectral identity <span class="math" data-tex="\(|x-x_n|=h(1-e_n)\)">\(|x-x_n|=h(1-e_n)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+I_p(x-x_n)=\int\lambda^p1_{[0,\infty)\setminus[1/n,n]}(\lambda)
+\,d(\tau\circ E_h)(\lambda)\longrightarrow0.
+\tag{TI.9e}
+\]">\[
+I_p(x-x_n)=\int\lambda^p1_{[0,\infty)\setminus[1/n,n]}(\lambda)
+\,d(\tau\circ E_h)(\lambda)\longrightarrow0.
+\tag{TI.9e}
+\]</span>
+<p>The majorant has finite integral, so this is ordinary scalar dominated convergence. Equivalently subtract the increasing integrals on the annuli from their finite limit. These projections exhaust only the support of this particular <span class="math" data-tex="\(h\)">\(h\)</span>. They do not give a countable finite-trace exhaustion of the identity.</p>
+<h2 id="bounded-densities-already-carry-their-exact-norm">Bounded densities already carry their exact norm</h2>
+<p>For <span class="math" data-tex="\(x\in\mathfrak m_\tau\)">\(x\in\mathfrak m_\tau\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+J_0(x)(a)=\tau(xa),\qquad a\in M.
+\tag{TI.10}
+\]">\[
+J_0(x)(a)=\tau(xa),\qquad a\in M.
+\tag{TI.10}
+\]</span>
+<p>Every trace in this formula is defined on the bounded finite trace ideal. We have</p>
+<span class="math math-display" data-tex="\[
+J_0(x)\in M_*,\qquad
+\|J_0(x)\|=\tau(|x|),\qquad
+|\tau(xa)|\leq\|a\|\tau(|x|).
+\tag{TI.11}
+\]">\[
+J_0(x)\in M_*,\qquad
+\|J_0(x)\|=\tau(|x|),\qquad
+|\tau(xa)|\leq\|a\|\tau(|x|).
+\tag{TI.11}
+\]</span>
+<p><strong>Proof of the bound and norm.</strong> The two nonnegative trace factors in MT.25 obey</p>
+<span class="math math-display" data-tex="\[
+\tau(|x^*|\,|a|)\leq\|a\|\tau(|x^*|),\qquad
+\tau(|x|\,|a^*|)\leq\|a\|\tau(|x|).
+\]">\[
+\tau(|x^*|\,|a|)\leq\|a\|\tau(|x^*|),\qquad
+\tau(|x|\,|a^*|)\leq\|a\|\tau(|x|).
+\]</span>
+<p>For example the first written trace equals the trace of the positive sandwich <span class="math" data-tex="\(|x^*|^{1/2}|a||x^*|^{1/2}\)">\(|x^*|^{1/2}|a||x^*|^{1/2}\)</span>, bounded above by <span class="math" data-tex="\(\|a\||x^*|\)">\(\|a\||x^*|\)</span>. If <span class="math" data-tex="\(x=v|x|\)">\(x=v|x|\)</span>, bounded traciality gives <span class="math" data-tex="\(\tau(|x^*|)=\tau(v|x|v^*)=\tau(|x|)\)">\(\tau(|x^*|)=\tau(v|x|v^*)=\tau(|x|)\)</span>, with zero on the complement of the final support. MT.25 therefore proves the last inequality in (TI.11). Conversely, the contraction <span class="math" data-tex="\(v^*\)">\(v^*\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+J_0(x)(v^*)=\tau(v|x|v^*)=\tau(|x|).
+\]">\[
+J_0(x)(v^*)=\tau(v|x|v^*)=\tau(|x|).
+\]</span>
+<p>For <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, both sides of the norm equality are zero.</p>
+<p><strong>Proof of normality.</strong> If <span class="math" data-tex="\(h\in\mathfrak m_\tau^+\)">\(h\in\mathfrak m_\tau^+\)</span>, cyclicity gives</p>
+<span class="math math-display" data-tex="\[
+J_0(h)(a)=\tau(h^{1/2}a h^{1/2})\quad(a\in M).
+\]">\[
+J_0(h)(a)=\tau(h^{1/2}a h^{1/2})\quad(a\in M).
+\]</span>
+<p>This is a positive functional. For a bounded increasing net <span class="math" data-tex="\(a_i\uparrow a\)">\(a_i\uparrow a\)</span> in <span class="math" data-tex="\(M_+\)">\(M_+\)</span>, its sandwiches increase to <span class="math" data-tex="\(h^{1/2}a h^{1/2}\)">\(h^{1/2}a h^{1/2}\)</span>, so normality of the trace gives <span class="math" data-tex="\(J_0(h)(a_i)\uparrow J_0(h)(a)\)">\(J_0(h)(a_i)\uparrow J_0(h)(a)\)</span>. The bounded order-normal-to-predual implication of NW-11, specialized through the final argument of CP-12, therefore places it in <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span>. Alternatively this functional is the vector functional of the normal trace-GNS representation at <span class="math" data-tex="\(\Lambda_\tau(h^{1/2})\)">\(\Lambda_\tau(h^{1/2})\)</span>.</p>
+<p>To pass from positive densities to all <span class="math" data-tex="\(x\)">\(x\)</span>, take its self-adjoint real and imaginary parts. They belong to the star ideal <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span>. If <span class="math" data-tex="\(b=b^*\)">\(b=b^*\)</span> belongs to that ideal, its bounded polar decomposition puts <span class="math" data-tex="\(|b|\)">\(|b|\)</span> in the ideal, and then <span class="math" data-tex="\(b_\pm=(|b|\pm b)/2\)">\(b_\pm=(|b|\pm b)/2\)</span> are finite positive elements. Thus <span class="math" data-tex="\(x\)">\(x\)</span> is a complex linear combination of four finite positive densities. This proves normality of <span class="math" data-tex="\(J_0(x)\)">\(J_0(x)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently <span class="math" data-tex="\(\|x\|_1=\tau(|x|)\)">\(\|x\|_1=\tau(|x|)\)</span> is a norm on <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span>: linearity of <span class="math" data-tex="\(J_0\)">\(J_0\)</span> gives the triangle inequality, and faithfulness makes its kernel zero. This is a norm statement on the bounded ideal, before a completion is used.</p>
+<h2 id="a-complete-space-of-actual-integrable-operators">A complete space of actual integrable operators</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+L^1(M,\tau)=\{x\in S:\tau(|x|)&lt;\infty\},
+\qquad \|x\|_1=\tau(|x|).
+\tag{TI.12}
+\]">\[
+L^1(M,\tau)=\{x\in S:\tau(|x|)&lt;\infty\},
+\qquad \|x\|_1=\tau(|x|).
+\tag{TI.12}
+\]</span>
+<p>This set is a complex vector space and a two-sided <span class="math" data-tex="\(M\)">\(M\)</span>-module. Its gauge is a complete norm, involution is isometric, and</p>
+<span class="math math-display" data-tex="\[
+\|axb\|_1\leq\|a\|\,\|x\|_1\,\|b\|
+\quad(a,b\in M, x\in L^1).
+\tag{TI.13}
+\]">\[
+\|axb\|_1\leq\|a\|\,\|x\|_1\,\|b\|
+\quad(a,b\in M, x\in L^1).
+\tag{TI.13}
+\]</span>
+<p>The ideal <span class="math" data-tex="\(\mathfrak m_0\)">\(\mathfrak m_0\)</span>, and hence <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span>, is dense in this norm.</p>
+<p><strong>Proof.</strong> We use the cutoff inequalities and spectral Fatou theorem in TI-02–03. If <span class="math" data-tex="\(x=v h\in L^1\)">\(x=v h\in L^1\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+p_n=1_{[1/n,n]}(h),\qquad x_n=xp_n.
+\tag{TI.14}
+\]">\[
+p_n=1_{[1/n,n]}(h),\qquad x_n=xp_n.
+\tag{TI.14}
+\]</span>
+<p>Then <span class="math" data-tex="\(\tau(p_n)\leq n\tau(h)\)">\(\tau(p_n)\leq n\tau(h)\)</span>, <span class="math" data-tex="\(x_n\in\mathfrak m_0\)">\(x_n\in\mathfrak m_0\)</span>, and the closed spectral product gives</p>
+<span class="math math-display" data-tex="\[
+|x-x_n|=h(1-p_n),\qquad
+\|x-x_n\|_1=\int t\,1_{[0,\infty)\setminus[1/n,n]}(t)\,
+d(\tau\circ E_h)(t)\longrightarrow0.
+\tag{TI.15}
+\]">\[
+|x-x_n|=h(1-p_n),\qquad
+\|x-x_n\|_1=\int t\,1_{[0,\infty)\setminus[1/n,n]}(t)\,
+d(\tau\circ E_h)(t)\longrightarrow0.
+\tag{TI.15}
+\]</span>
+<p>The conclusion follows by scalar dominated convergence against the finite integral of <span class="math" data-tex="\(t\)">\(t\)</span>; the possible infinite mass at zero contributes zero. Also <span class="math" data-tex="\(x_n\to x\)">\(x_n\to x\)</span> in measure, by the bounded high spectral cutoffs of MT-11: on <span class="math" data-tex="\(1_{[0,R]}(h)H\)">\(1_{[0,R]}(h)H\)</span>, the removed low part has norm at most <span class="math" data-tex="\(1/n\)">\(1/n\)</span> once <span class="math" data-tex="\(n\geq R\)">\(n\geq R\)</span>.</p>
+<p>For <span class="math" data-tex="\(x,y\in L^1\)">\(x,y\in L^1\)</span>, apply the bounded triangle inequality to their approximants and apply spectral Fatou to <span class="math" data-tex="\(x_n+y_n\to x+y\)">\(x_n+y_n\to x+y\)</span> in measure. It gives</p>
+<span class="math math-display" data-tex="\[
+\tau(|x+y|)\leq\liminf_n\tau(|x_n+y_n|)
+\leq\|x\|_1+\|y\|_1.
+\]">\[
+\tau(|x+y|)\leq\liminf_n\tau(|x_n+y_n|)
+\leq\|x\|_1+\|y\|_1.
+\]</span>
+<p>Scalar homogeneity follows from the spectral integral; faithfulness proves definiteness. Thus the displayed measurable set is a normed vector space. The cutoff module inequalities in TI-02 give (TI.13) directly after integration. The equality of the nonzero spectral distribution functions of <span class="math" data-tex="\(|x|\)">\(|x|\)</span> and <span class="math" data-tex="\(|x^*|\)">\(|x^*|\)</span> gives the star isometry.</p>
+<p>If <span class="math" data-tex="\((z_n)\)">\((z_n)\)</span> is Cauchy in this norm, the spectral Markov estimate</p>
+<span class="math math-display" data-tex="\[
+\tau(1_{(r,\infty)}(|z_n-z_m|))
+\leq r^{-1}\|z_n-z_m\|_1
+\]">\[
+\tau(1_{(r,\infty)}(|z_n-z_m|))
+\leq r^{-1}\|z_n-z_m\|_1
+\]</span>
+<p>makes it Cauchy in measure. Completeness of <span class="math" data-tex="\(S\)">\(S\)</span> supplies a measurable limit <span class="math" data-tex="\(z\)">\(z\)</span>. For fixed <span class="math" data-tex="\(n\)">\(n\)</span>, Fatou gives</p>
+<span class="math math-display" data-tex="\[
+\|z_n-z\|_1\leq\liminf_m\|z_n-z_m\|_1.
+\tag{TI.16}
+\]">\[
+\|z_n-z\|_1\leq\liminf_m\|z_n-z_m\|_1.
+\tag{TI.16}
+\]</span>
+<p>The right side tends to zero as <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>. It is finite for each sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, so <span class="math" data-tex="\(z=z_n+(z-z_n)\in L^1\)">\(z=z_n+(z-z_n)\in L^1\)</span>. This proves completeness of the actual measurable set. Density was proved by (TI.14)–(TI.15). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The abstract completion of <span class="math" data-tex="\((\mathfrak m_\tau,\|\cdot\|_1)\)">\((\mathfrak m_\tau,\|\cdot\|_1)\)</span> therefore identifies isometrically with (TI.12). More explicitly, send a norm-Cauchy sequence to its measure limit. Inequality (TI.16) proves that its norm limit is that operator and that a sequence whose measure limit is zero has norm limit zero. This proves injectivity of the completion map; spectral approximation proves that its image is all of (TI.12).</p>
+<p>The bounded resolvent regularizations from MT-13 also approximate in this norm. For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, put <span class="math" data-tex="\(x_\varepsilon=v h(1+\varepsilon h)^{-1}\)">\(x_\varepsilon=v h(1+\varepsilon h)^{-1}\)</span>. Their bounded positive absolute values have finite trace, so <span class="math" data-tex="\(x_\varepsilon\in\mathfrak m_\tau\)">\(x_\varepsilon\in\mathfrak m_\tau\)</span>. The polar support is unchanged on the positive spectrum, and</p>
+<span class="math math-display" data-tex="\[
+|x-x_\varepsilon|=h-h(1+\varepsilon h)^{-1},\qquad
+\|x-x_\varepsilon\|_1\longrightarrow0,
+\qquad \|x_\varepsilon\|_1\longrightarrow\|x\|_1.
+\tag{TI.17}
+\]">\[
+|x-x_\varepsilon|=h-h(1+\varepsilon h)^{-1},\qquad
+\|x-x_\varepsilon\|_1\longrightarrow0,
+\qquad \|x_\varepsilon\|_1\longrightarrow\|x\|_1.
+\tag{TI.17}
+\]</span>
+<p>These are scalar spectral monotone/dominated convergence statements with finite majorant <span class="math" data-tex="\(h\)">\(h\)</span>. They do not identify a completion by themselves; that identification was already proved above.</p>
+<h2 id="the-trace-pairing-fills-the-whole-predual"><span id="OA-MOD-TI-06"></span><span id="oa-mod-ti-06"></span>The trace pairing fills the whole predual</h2>
+<p>The finite trace extends uniquely to a continuous complex-linear functional on <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, still denoted by <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+|\tau(x)|\leq\|x\|_1,\qquad
+\tau(ax)=\tau(xa),\qquad
+\tau(x^*)=\overline{\tau(x)}
+\quad(x\in L^1, a\in M).
+\tag{TI.18}
+\]">\[
+|\tau(x)|\leq\|x\|_1,\qquad
+\tau(ax)=\tau(xa),\qquad
+\tau(x^*)=\overline{\tau(x)}
+\quad(x\in L^1, a\in M).
+\tag{TI.18}
+\]</span>
+<p>For positive integrable <span class="math" data-tex="\(x\)">\(x\)</span> this functional equals the positive spectral integral. The map</p>
+<span class="math math-display" data-tex="\[
+J:L^1\longrightarrow M_*,\qquad
+J(x)(a)=\tau(xa),
+\tag{TI.19}
+\]">\[
+J:L^1\longrightarrow M_*,\qquad
+J(x)(a)=\tau(xa),
+\tag{TI.19}
+\]</span>
+<p>is an onto complex-linear isometry and identifies the two positive cones.</p>
+<p><strong>Extension and injection.</strong> Equation (TI.11) with <span class="math" data-tex="\(a=1\)">\(a=1\)</span> gives the continuous scalar extension from the dense bounded ideal. Approximate <span class="math" data-tex="\(x\)">\(x\)</span> by (TI.14); the bounded module estimate, star isometry and bounded cyclicity pass to the norm limit and prove (TI.18). For <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>, its positive spectral approximants have traces increasing to the original positive integral, so the two meanings of <span class="math" data-tex="\(\tau(x)\)">\(\tau(x)\)</span> agree. Similarly, <span class="math" data-tex="\(J_0(x_n)\)">\(J_0(x_n)\)</span> converges in predual norm, since <span class="math" data-tex="\(J_0\)">\(J_0\)</span> is an isometry on the bounded ideal. Norm closure of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> in <span class="math" data-tex="\(M^*\)">\(M^*\)</span>, proved in CP-06–07, puts the limit in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. Equations (TI.13) and (TI.18) identify that limit with (TI.19), and the norm equality passes to the limit. Hence <span class="math" data-tex="\(J\)">\(J\)</span> is an isometry with a closed range, since <span class="math" data-tex="\(L^1\)">\(L^1\)</span> is complete.</p>
+<p><strong>Surjection.</strong> Suppose this closed range were proper in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. The complex Hahn–Banach theorem, in the exact normed-space form used in CP-01, would give a nonzero element of <span class="math" data-tex="\((M_*)^*\)">\((M_*)^*\)</span> annihilating it: define a nonzero functional on the span of one nonzero coset in <span class="math" data-tex="\(M_*/J(L^1)\)">\(M_*/J(L^1)\)</span>, extend there by Hahn–Banach, and pull back through the quotient. CP-06 identifies <span class="math" data-tex="\((M_*)^*\)">\((M_*)^*\)</span> isometrically with <span class="math" data-tex="\(M\)">\(M\)</span>. Thus some nonzero <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> would satisfy <span class="math" data-tex="\(\tau(xa)=0\)">\(\tau(xa)=0\)</span> for every <span class="math" data-tex="\(x\in L^1\)">\(x\in L^1\)</span>. In particular, for <span class="math" data-tex="\(e\in\mathcal E\)">\(e\in\mathcal E\)</span>, the bounded finite-support operator <span class="math" data-tex="\(x=ea^*\)">\(x=ea^*\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+0=\tau(ea^*a)=\tau(aea^*)=\tau((ae)(ae)^*).
+\]">\[
+0=\tau(ea^*a)=\tau(aea^*)=\tau((ae)(ae)^*).
+\]</span>
+<p>Faithfulness gives <span class="math" data-tex="\(ae=0\)">\(ae=0\)</span>. Since <span class="math" data-tex="\(e\uparrow1\)">\(e\uparrow1\)</span> strongly by TI-01, this implies <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, a contradiction. Therefore (TI.19) is onto. This proof treats complex functionals directly, without first assuming a density theorem for faithful weights or a polar-decomposition theorem for normal functionals.</p>
+<p><strong>Positive cones.</strong> If <span class="math" data-tex="\(h\in L^1_+\)">\(h\in L^1_+\)</span>, the positive bounded approximants in (TI.14) show that <span class="math" data-tex="\(J(h)\)">\(J(h)\)</span> is positive. Conversely, suppose <span class="math" data-tex="\(J(x)\)">\(J(x)\)</span> is positive. Equation (TI.18) and injectivity imply <span class="math" data-tex="\(x=x^*\)">\(x=x^*\)</span>. The spectral bands <span class="math" data-tex="\(e_n=1_{[-n,-1/n]}(x)\)">\(e_n=1_{[-n,-1/n]}(x)\)</span> have finite trace, since <span class="math" data-tex="\(x\in L^1\)">\(x\in L^1\)</span>. Positivity and spectral calculus give</p>
+<span class="math math-display" data-tex="\[
+0\leq J(x)(e_n)=\tau(xe_n)\leq-\frac1n\tau(e_n).
+\]">\[
+0\leq J(x)(e_n)=\tau(xe_n)\leq-\frac1n\tau(e_n).
+\]</span>
+<p>Thus every <span class="math" data-tex="\(e_n\)">\(e_n\)</span> is zero, by faithfulness, and the negative spectral projection of <span class="math" data-tex="\(x\)">\(x\)</span> is zero. Hence <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>. Uniqueness follows from injectivity. In particular, every <span class="math" data-tex="\(\varphi\in M_*^+\)">\(\varphi\in M_*^+\)</span>, faithful or not, has a unique measurable positive density <span class="math" data-tex="\(h\)">\(h\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\tau(ha)\quad(a\in M),\qquad
+\tau(h)=\varphi(1)=\|\varphi\|.
+\tag{TI.20}
+\]">\[
+\varphi(a)=\tau(ha)\quad(a\in M),\qquad
+\tau(h)=\varphi(1)=\|\varphi\|.
+\tag{TI.20}
+\]</span>
+<p>The zero functional has density zero. No nonsingularity condition was imposed on <span class="math" data-tex="\(h\)">\(h\)</span>. If <span class="math" data-tex="\(x=v|x|\)">\(x=v|x|\)</span> is its measurable polar decomposition, cyclicity gives the useful precise factorization <span class="math" data-tex="\(J(x)(a)=J(|x|)(av)\)">\(J(x)(a)=J(|x|)(av)\)</span>; the positive density vanishes outside the initial support of <span class="math" data-tex="\(v\)">\(v\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="infinite-positive-integrals-remain-additive">Infinite positive integrals remain additive</h2>
+<p>For all <span class="math" data-tex="\(a,b\in S_+\)">\(a,b\in S_+\)</span>, <span class="math" data-tex="\(\lambda\geq0\)">\(\lambda\geq0\)</span>, and <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\tau(a+b)=\tau(a)+\tau(b),\qquad
+\tau(\lambda a)=\lambda\tau(a),\qquad
+\tau(x^*x)=\tau(xx^*).
+\tag{TI.21}
+\]">\[
+\tau(a+b)=\tau(a)+\tau(b),\qquad
+\tau(\lambda a)=\lambda\tau(a),\qquad
+\tau(x^*x)=\tau(xx^*).
+\tag{TI.21}
+\]</span>
+<p>The convention in the middle formula is <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. The sum is the positive self-adjoint measurable sum from MT-12. These statements allow infinite values.</p>
+<p><strong>Positive order first.</strong> Suppose <span class="math" data-tex="\(a,b\in S_+\)">\(a,b\in S_+\)</span> and <span class="math" data-tex="\(b-a\in S_+\)">\(b-a\in S_+\)</span>. For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, <span class="math" data-tex="\(R&gt;r\)">\(R&gt;r\)</span>, set <span class="math" data-tex="\(P_R=1_{(r,R]}(a)\)">\(P_R=1_{(r,R]}(a)\)</span> and <span class="math" data-tex="\(Q=1_{[0,r]}(b)\)">\(Q=1_{[0,r]}(b)\)</span>. A vector in <span class="math" data-tex="\((P_R\wedge Q)H\)">\((P_R\wedge Q)H\)</span> lies in both operator domains. On their common domain, the measurable difference agrees with the ordinary difference. Its positivity would give</p>
+<span class="math math-display" data-tex="\[
+r\|\xi\|^2&lt;\langle a\xi,\xi\rangle
+\leq\langle b\xi,\xi\rangle\leq r\|\xi\|^2
+\]">\[
+r\|\xi\|^2&lt;\langle a\xi,\xi\rangle
+\leq\langle b\xi,\xi\rangle\leq r\|\xi\|^2
+\]</span>
+<p>for every nonzero such vector. Thus <span class="math" data-tex="\(P_R\wedge Q=0\)">\(P_R\wedge Q=0\)</span>, and the projection comparison MT-02 gives <span class="math" data-tex="\(\tau(P_R)\leq\tau(1-Q)\)">\(\tau(P_R)\leq\tau(1-Q)\)</span>. Increasing <span class="math" data-tex="\(R\)">\(R\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+\tau(1_{(r,\infty)}(a))\leq
+\tau(1_{(r,\infty)}(b)).
+\]">\[
+\tau(1_{(r,\infty)}(a))\leq
+\tau(1_{(r,\infty)}(b)).
+\]</span>
+<p>Integrating these distributions, as in TI-02, proves <span class="math" data-tex="\(\tau(a)\leq\tau(b)\)">\(\tau(a)\leq\tau(b)\)</span>. This argument uses bounded spectral bands where both actual domains are available; it does not assert an unproved resolvent-order rule for unbounded operators.</p>
+<p>Since <span class="math" data-tex="\(0\leq a,b\leq a+b\)">\(0\leq a,b\leq a+b\)</span> in this measurable order, finiteness of <span class="math" data-tex="\(\tau(a+b)\)">\(\tau(a+b)\)</span> forces both summands to be integrable. If both have finite trace, TI-05–06 give additivity in the linear space <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. If either has infinite trace, order forces the sum's trace to be infinite. This proves the first equality in all cases without subtracting infinite numbers. Scalar spectral calculus proves homogeneity, including zero.</p>
+<p>Finally write <span class="math" data-tex="\(x=v h\)">\(x=v h\)</span>. The positive operators <span class="math" data-tex="\(x^*x=h^2\)">\(x^*x=h^2\)</span> and <span class="math" data-tex="\(xx^*=v h^2v^*\)">\(xx^*=v h^2v^*\)</span> have their nonzero spectral projections transported by <span class="math" data-tex="\(v\)">\(v\)</span>. The bounded trace gives equal trace to each pair of such projections. Integration against their equal distributions proves the last equality. Equivalently, bounded spectral truncations and bounded cyclicity give equality before taking the increasing positive integral limits. Zero-support projections contribute zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="sharp-trace-estimates-from-finite-corners">Sharp trace estimates from finite corners</h2>
+<p>The scalar size function has already supplied the bounded module estimates. We now prove the sharp trace inequality without assuming a triangle inequality for the other exponents. For <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>, abbreviate the existing homogeneous gauge by <span class="math" data-tex="\(N_p(x)=I_p(x)^{1/p}\)">\(N_p(x)=I_p(x)^{1/p}\)</span>, and put <span class="math" data-tex="\(N_\infty(a)=\|a\|\)">\(N_\infty(a)=\|a\|\)</span> for <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>. Every finite collection of elements of <span class="math" data-tex="\(\mathfrak m_0\)">\(\mathfrak m_0\)</span> lies in one corner <span class="math" data-tex="\(eMe\)">\(eMe\)</span> with <span class="math" data-tex="\(\tau(e)&lt;\infty\)">\(\tau(e)&lt;\infty\)</span>: take the join of their finitely many left and right supports, using TI-01. Such corners will be used only for finite calculations.</p>
+<p><strong>A scalar strip estimate.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be an entire scalar function bounded on the closed strip <span class="math" data-tex="\(0\leq\operatorname{Re}z\leq1\)">\(0\leq\operatorname{Re}z\leq1\)</span>, and suppose</p>
+<span class="math math-display" data-tex="\[
+|F(it)|\leq M_0,\qquad |F(1+it)|\leq M_1
+\quad(t\in\mathbb R).
+\]">\[
+|F(it)|\leq M_0,\qquad |F(1+it)|\leq M_1
+\quad(t\in\mathbb R).
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+|F(\theta)|\leq M_0^{1-\theta}M_1^\theta
+\quad(0&lt;\theta&lt;1).
+\tag{TI.22}
+\]">\[
+|F(\theta)|\leq M_0^{1-\theta}M_1^\theta
+\quad(0&lt;\theta&lt;1).
+\tag{TI.22}
+\]</span>
+<p>Here is the complete scalar argument needed for our analytic families. First suppose <span class="math" data-tex="\(M_0,M_1&gt;0\)">\(M_0,M_1&gt;0\)</span>. For <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, form the entire function</p>
+<span class="math math-display" data-tex="\[
+G_\delta(z)=F(z)\exp\bigl(\delta(z^2-z)
+-(1-z)\log M_0-z\log M_1\bigr).
+\]">\[
+G_\delta(z)=F(z)\exp\bigl(\delta(z^2-z)
+-(1-z)\log M_0-z\log M_1\bigr).
+\]</span>
+<p>On either vertical boundary, its modulus is at most <span class="math" data-tex="\(\exp(-\delta t^2)\leq1\)">\(\exp(-\delta t^2)\leq1\)</span>. If <span class="math" data-tex="\(C\)">\(C\)</span> bounds <span class="math" data-tex="\(|F|\)">\(|F|\)</span> on the strip, then, for <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|G_\delta(s\pm iR)|
+\leq C\max(M_0^{-1},M_1^{-1})e^{-\delta R^2},
+\]">\[
+|G_\delta(s\pm iR)|
+\leq C\max(M_0^{-1},M_1^{-1})e^{-\delta R^2},
+\]</span>
+<p>because <span class="math" data-tex="\(s^2-s\leq0\)">\(s^2-s\leq0\)</span>. Thus, for all sufficiently large <span class="math" data-tex="\(R\)">\(R\)</span>, the four edges of the rectangle have modulus at most one. The maximum-modulus principle gives the same bound throughout the rectangle.</p>
+<p>The precise maximum-modulus fact just used follows directly from local power series. A nonconstant analytic function attaining a positive local modulus maximum at <span class="math" data-tex="\(z_0\)">\(z_0\)</span> has an expansion</p>
+<span class="math math-display" data-tex="\[
+a_0+a_m(z-z_0)^m+O(|z-z_0|^{m+1}),
+\]">\[
+a_0+a_m(z-z_0)^m+O(|z-z_0|^{m+1}),
+\]</span>
+<p>where <span class="math" data-tex="\(a_0\ne0\)">\(a_0\ne0\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> is the first nonzero higher coefficient. Choose the direction of <span class="math" data-tex="\(z-z_0\)">\(z-z_0\)</span> so that <span class="math" data-tex="\(a_m(z-z_0)^m\)">\(a_m(z-z_0)^m\)</span> has the same argument as <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. For sufficiently small positive radius, the modulus then exceeds <span class="math" data-tex="\(|a_0|\)">\(|a_0|\)</span>, a contradiction. A zero local maximum forces the function to vanish nearby. If all higher coefficients vanish, the function is locally constant; overlapping disks propagate this constant throughout the connected rectangle. Continuity on the compact rectangle therefore places its maximum on the boundary unless it is constant, which gives the same conclusion. The functions used here are entire power-series functions, so no analytic continuation across a strip boundary is being assumed.</p>
+<p>At <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, the resulting inequality reads</p>
+<span class="math math-display" data-tex="\[
+|F(\theta)|\leq M_0^{1-\theta}M_1^\theta
+e^{\delta\theta(1-\theta)}.
+\]">\[
+|F(\theta)|\leq M_0^{1-\theta}M_1^\theta
+e^{\delta\theta(1-\theta)}.
+\]</span>
+<p>Let <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. If either boundary bound is zero, apply the proved inequality with the positive bounds <span class="math" data-tex="\(M_j+\eta\)">\(M_j+\eta\)</span> and let <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>. This proves (TI.22), including those cases.</p>
+<p><strong>Powers, supports and logarithms.</strong> Fix a nonzero finite-trace projection <span class="math" data-tex="\(e\)">\(e\)</span>. The restriction of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to <span class="math" data-tex="\(eMe\)">\(eMe\)</span> is a bounded positive trace with norm <span class="math" data-tex="\(\tau(e)\)">\(\tau(e)\)</span>; in particular,</p>
+<span class="math math-display" data-tex="\[
+|\tau(c)|\leq\tau(e)\|c\|\quad(c\in eMe).
+\tag{TI.23a}
+\]">\[
+|\tau(c)|\leq\tau(e)\|c\|\quad(c\in eMe).
+\tag{TI.23a}
+\]</span>
+<p>This also follows from TI-04 and <span class="math" data-tex="\(|c|\leq\|c\|e\)">\(|c|\leq\|c\|e\)</span>. If <span class="math" data-tex="\(A\)">\(A\)</span> is positive and invertible in <span class="math" data-tex="\(eMe\)">\(eMe\)</span>, then <span class="math" data-tex="\(\log A\)">\(\log A\)</span> is bounded and self-adjoint on <span class="math" data-tex="\(eH\)">\(eH\)</span>. Define <span class="math" data-tex="\(A^z=\exp(z\log A)\)">\(A^z=\exp(z\log A)\)</span> in this corner. The exponential series converges in operator norm uniformly on compact subsets of the complex plane. Consequently <span class="math" data-tex="\(A^z\)">\(A^z\)</span> is entire as an operator-valued function, and functional calculus gives</p>
+<span class="math math-display" data-tex="\[
+A^{z+w}=A^zA^w,\qquad A^{it}\text{ is unitary on }eH,
+\qquad \|A^{s+it}\|=\|A^s\|.
+\tag{TI.23b}
+\]">\[
+A^{z+w}=A^zA^w,\qquad A^{it}\text{ is unitary on }eH,
+\qquad \|A^{s+it}\|=\|A^s\|.
+\tag{TI.23b}
+\]</span>
+<p>Every finite product of these powers and fixed corner contractions is norm bounded on a closed vertical strip when the real powers range over compact intervals. Applying the bounded functional <span class="math" data-tex="\(\tau\)">\(\tau\)</span> produces an entire scalar function bounded on the strip. Each value lies in <span class="math" data-tex="\(eMe\)">\(eMe\)</span>, hence in the bounded finite trace domain.</p>
+<p>Supported powers have an equally precise meaning. If <span class="math" data-tex="\(c\geq0\)">\(c\geq0\)</span> has support <span class="math" data-tex="\(f\leq e\)">\(f\leq e\)</span> and is bounded below by a positive constant on <span class="math" data-tex="\(fH\)">\(fH\)</span>, define <span class="math" data-tex="\(c^z\)">\(c^z\)</span> by <span class="math" data-tex="\(\exp(z\log(c|_{fH}))\)">\(\exp(z\log(c|_{fH}))\)</span> on <span class="math" data-tex="\(fH\)">\(fH\)</span>, and by zero on <span class="math" data-tex="\((e-f)H\)">\((e-f)H\)</span>. This is an entire <span class="math" data-tex="\(eMe\)">\(eMe\)</span>-valued function. Its imaginary powers are partial unitaries with both supports <span class="math" data-tex="\(f\)">\(f\)</span>, of norm at most one, and <span class="math" data-tex="\(c^0=f\)">\(c^0=f\)</span>. The logarithm is used only in <span class="math" data-tex="\(fMf\)">\(fMf\)</span>. Powers belonging to distinct support projections can be multiplied as bounded operators; those projections need not commute.</p>
+<p>To remove a lower spectral bound, we will use a common-corner regularization. For <span class="math" data-tex="\(a=u|a|\in eMe\)">\(a=u|a|\in eMe\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, replace <span class="math" data-tex="\(|a|\)">\(|a|\)</span> by <span class="math" data-tex="\(|a|+\varepsilon e\)">\(|a|+\varepsilon e\)</span>, retaining the original polar contraction <span class="math" data-tex="\(u\)">\(u\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+u(|a|+\varepsilon e)\longrightarrow a\text{ in norm},\qquad
+\tau((|a|+\varepsilon e)^p)\longrightarrow\tau(|a|^p)
+\quad(0&lt;p&lt;\infty).
+\tag{TI.23c}
+\]">\[
+u(|a|+\varepsilon e)\longrightarrow a\text{ in norm},\qquad
+\tau((|a|+\varepsilon e)^p)\longrightarrow\tau(|a|^p)
+\quad(0&lt;p&lt;\infty).
+\tag{TI.23c}
+\]</span>
+<p>The first error is at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. For the second assertion, <span class="math" data-tex="\((t+\varepsilon)^p\to t^p\)">\((t+\varepsilon)^p\to t^p\)</span> uniformly on the compact interval <span class="math" data-tex="\([0,\|a\|+1]\)">\([0,\|a\|+1]\)</span>; functional calculus and (TI.23a) give trace convergence. Thus no logarithm at zero is taken, no imaginary power is silently extended as the identity outside its support, and the extra corner mass introduced by regularization has finite trace and disappears in the limit.</p>
+<p><strong>Conjugate trace Hölder on finite supports.</strong> For <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>, <span class="math" data-tex="\(q=p/(p-1)\)">\(q=p/(p-1)\)</span>, and <span class="math" data-tex="\(a,b\in\mathfrak m_0\)">\(a,b\in\mathfrak m_0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\tau(ab)|\leq N_p(a)N_q(b).
+\tag{TI.24a}
+\]">\[
+|\tau(ab)|\leq N_p(a)N_q(b).
+\tag{TI.24a}
+\]</span>
+<p>At <span class="math" data-tex="\(p=1,q=\infty\)">\(p=1,q=\infty\)</span>, this is the existing <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-bounded-operator estimate, and the reverse endpoint follows by bounded cyclicity. At these endpoints the bounded partner may be any element of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>For the finite exponents, choose one finite corner containing <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>. The zero corner is immediate. Write <span class="math" data-tex="\(a=u|a|\)">\(a=u|a|\)</span>, <span class="math" data-tex="\(b=v|b|\)">\(b=v|b|\)</span>, with <span class="math" data-tex="\(u,v\)">\(u,v\)</span> contractions in the corner. For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+A=\frac{|a|+\varepsilon e}
+{\tau((|a|+\varepsilon e)^p)^{1/p}},\qquad
+B=\frac{|b|+\varepsilon e}
+{\tau((|b|+\varepsilon e)^q)^{1/q}}.
+\]">\[
+A=\frac{|a|+\varepsilon e}
+{\tau((|a|+\varepsilon e)^p)^{1/p}},\qquad
+B=\frac{|b|+\varepsilon e}
+{\tau((|b|+\varepsilon e)^q)^{1/q}}.
+\]</span>
+<p>The denominators are positive by faithfulness and <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span>. Both operators are positive and invertible in the corner, with <span class="math" data-tex="\(\tau(A^p)=\tau(B^q)=1\)">\(\tau(A^p)=\tau(B^q)=1\)</span>. Apply (TI.22), at <span class="math" data-tex="\(\theta=1/p\)">\(\theta=1/p\)</span>, to</p>
+<span class="math math-display" data-tex="\[
+F(z)=\tau\bigl(uA^{pz}vB^{q(1-z)}\bigr).
+\tag{TI.24b}
+\]">\[
+F(z)=\tau\bigl(uA^{pz}vB^{q(1-z)}\bigr).
+\tag{TI.24b}
+\]</span>
+<p>The preceding power argument verifies entire analyticity and boundedness on the whole closed strip. At <span class="math" data-tex="\(z=it\)">\(z=it\)</span>, bounded cyclicity writes the trace as</p>
+<span class="math math-display" data-tex="\[
+\tau\bigl(B^qB^{-iqt}uA^{ipt}v\bigr).
+\]">\[
+\tau\bigl(B^qB^{-iqt}uA^{ipt}v\bigr).
+\]</span>
+<p>The factor after <span class="math" data-tex="\(B^q\)">\(B^q\)</span> is a contraction, so the bounded trace estimate gives <span class="math" data-tex="\(|F(it)|\leq\tau(B^q)=1\)">\(|F(it)|\leq\tau(B^q)=1\)</span>. On the other boundary, rotate <span class="math" data-tex="\(u\)">\(u\)</span> to the end to obtain</p>
+<span class="math math-display" data-tex="\[
+|F(1+it)|
+=\bigl|\tau(A^pA^{ipt}vB^{-iqt}u)\bigr|\leq1.
+\]">\[
+|F(1+it)|
+=\bigl|\tau(A^pA^{ipt}vB^{-iqt}u)\bigr|\leq1.
+\]</span>
+<p>Hence <span class="math" data-tex="\(|\tau(uAvB)|\leq1\)">\(|\tau(uAvB)|\leq1\)</span>. Multiply by the normalizing constants and let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Equations (TI.23a) and (TI.23c), and norm continuity of bounded multiplication, prove (TI.24a), also if one factor is zero. No triangle inequality for <span class="math" data-tex="\(N_p\)">\(N_p\)</span>, or dual-space identification, entered this proof.</p>
+<p><strong>Exact finite-support norming.</strong> For nonzero <span class="math" data-tex="\(a=uh\in\mathfrak m_0\)">\(a=uh\in\mathfrak m_0\)</span>, let <span class="math" data-tex="\(n=N_p(a)&gt;0\)">\(n=N_p(a)&gt;0\)</span> and, when <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+b=\frac{h^{p-1}u^*}{n^{p-1}}.
+\tag{TI.25a}
+\]">\[
+b=\frac{h^{p-1}u^*}{n^{p-1}}.
+\tag{TI.25a}
+\]</span>
+<p>This operator is bounded with finite support. The polar partial isometry transports the nonzero spectral projections of <span class="math" data-tex="\(h\)">\(h\)</span> to those of <span class="math" data-tex="\(uhu^*\)">\(uhu^*\)</span>, so, for the conjugate exponent <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+N_q(b)^q=\frac{\tau(h^{(p-1)q})}{n^{(p-1)q}}=1,
+\qquad
+\tau(ab)=\frac{\tau(uh^pu^*)}{n^{p-1}}=n.
+\tag{TI.25b}
+\]">\[
+N_q(b)^q=\frac{\tau(h^{(p-1)q})}{n^{(p-1)q}}=1,
+\qquad
+\tau(ab)=\frac{\tau(uh^pu^*)}{n^{p-1}}=n.
+\tag{TI.25b}
+\]</span>
+<p>All products lie in one bounded finite corner. Together with (TI.24a), this proves</p>
+<span class="math math-display" data-tex="\[
+N_p(a)=\sup\{|\tau(ab)|:
+b\in\mathfrak m_0,\ N_q(b)\leq1\}.
+\tag{TI.25c}
+\]">\[
+N_p(a)=\sup\{|\tau(ab)|:
+b\in\mathfrak m_0,\ N_q(b)\leq1\}.
+\tag{TI.25c}
+\]</span>
+<p>For <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, the supremum is zero. At <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, use the finite-support test <span class="math" data-tex="\(u^*\)">\(u^*\)</span>, of operator norm one when <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>; the formula holds with <span class="math" data-tex="\(q=\infty\)">\(q=\infty\)</span>.</p>
+<p>Apply (TI.25c) to <span class="math" data-tex="\(a+b\)">\(a+b\)</span>, and use linearity of the trace and (TI.24a) separately on the two terms. It follows that</p>
+<span class="math math-display" data-tex="\[
+N_p(a+b)\leq N_p(a)+N_p(b)
+\quad(a,b\in\mathfrak m_0,\ 1\leq p&lt;\infty).
+\tag{TI.26}
+\]">\[
+N_p(a+b)\leq N_p(a)+N_p(b)
+\quad(a,b\in\mathfrak m_0,\ 1\leq p&lt;\infty).
+\tag{TI.26}
+\]</span>
+<p>The operator norm has its usual triangle inequality at <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>. The testing gauges for the conjugate exponents did not need triangle inequalities of their own, so this proves the finite-support inequalities without circularity.</p>
+<h2 id="complete-norms-on-actual-measurable-operators"><span id="OA-MOD-TI-09"></span><span id="oa-mod-ti-09"></span>Complete norms on actual measurable operators</h2>
+<p>For every real <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+L^p(M,\tau)=\{x\in S(M,\tau):\tau(|x|^p)&lt;\infty\},\qquad
+\|x\|_p=\tau(|x|^p)^{1/p}.
+\tag{TI.27}
+\]">\[
+L^p(M,\tau)=\{x\in S(M,\tau):\tau(|x|^p)&lt;\infty\},\qquad
+\|x\|_p=\tau(|x|^p)^{1/p}.
+\tag{TI.27}
+\]</span>
+<p>The notation will be justified as a norm in the proof below. Put <span class="math" data-tex="\(L^\infty(M,\tau)=M\)">\(L^\infty(M,\tau)=M\)</span>, with its original operator norm. The finite-exponent spaces consist of the actual closed affiliated measurable operators of MT. Their products, sums, adjoints and domains retain those concrete meanings.</p>
+<p>The earlier cutoff arguments prove homogeneity, definiteness, invariance under adjoint, and the two bounded module estimates before using any triangle inequality. More explicitly, faithfulness and</p>
+<span class="math math-display" data-tex="\[
+a^p\tau(1_{(a,\infty)}(|x|))\leq\tau(|x|^p)
+\quad(a&gt;0)
+\]">\[
+a^p\tau(1_{(a,\infty)}(|x|))\leq\tau(|x|^p)
+\quad(a&gt;0)
+\]</span>
+<p>show that zero gauge forces every positive spectral tail to vanish, hence <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Equal nonzero spectral distributions of <span class="math" data-tex="\(|x|\)">\(|x|\)</span> and <span class="math" data-tex="\(|x^*|\)">\(|x^*|\)</span> give the adjoint isometry. Integrating the bounded module estimate in (TI.8) gives</p>
+<span class="math math-display" data-tex="\[
+\|axb\|_p\leq\|a\|\,\|x\|_p\,\|b\|
+\quad(a,b\in M).
+\]">\[
+\|axb\|_p\leq\|a\|\,\|x\|_p\,\|b\|
+\quad(a,b\in M).
+\]</span>
+<p>The same estimate proves membership of each product in the displayed finite domain.</p>
+<p><strong>Approximation and the sharp triangle inequality.</strong> For <span class="math" data-tex="\(x=uh\in L^p\)">\(x=uh\in L^p\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+e_n=1_{[1/n,n]}(h),\qquad x_n=xe_n\in\mathfrak m_0.
+\tag{TI.28a}
+\]">\[
+e_n=1_{[1/n,n]}(h),\qquad x_n=xe_n\in\mathfrak m_0.
+\tag{TI.28a}
+\]</span>
+<p>TI-03 already proves</p>
+<span class="math math-display" data-tex="\[
+x_n\longrightarrow x\text{ in measure},\qquad
+N_p(x-x_n)\longrightarrow0,\qquad
+N_p(x_n)\leq N_p(x),\qquad
+N_p(x_n)\longrightarrow N_p(x).
+\tag{TI.28b}
+\]">\[
+x_n\longrightarrow x\text{ in measure},\qquad
+N_p(x-x_n)\longrightarrow0,\qquad
+N_p(x_n)\leq N_p(x),\qquad
+N_p(x_n)\longrightarrow N_p(x).
+\tag{TI.28b}
+\]</span>
+<p>For the last assertion, integrate <span class="math" data-tex="\(h^p\)">\(h^p\)</span> on the increasing annuli and apply scalar monotone convergence. Their union is the support of this particular <span class="math" data-tex="\(h\)">\(h\)</span>, which need not be the identity. The approximants are bounded with finite trace support because <span class="math" data-tex="\(\tau(e_n)\leq n^p\tau(h^p)\)">\(\tau(e_n)\leq n^p\tau(h^p)\)</span>. The precise closed spectral identity <span class="math" data-tex="\(|x-x_n|=h(1-e_n)\)">\(|x-x_n|=h(1-e_n)\)</span> supplies the second limit. No sequence exhausting the whole algebra by finite projections is used.</p>
+<p>For <span class="math" data-tex="\(x,y\in L^p\)">\(x,y\in L^p\)</span>, choose their own spectral approximants. Continuity of addition in the measure algebra gives <span class="math" data-tex="\(x_n+y_n\to x+y\)">\(x_n+y_n\to x+y\)</span> in measure. Spectral Fatou from TI-03 and the finite-support inequality (TI.26) give</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+N_p(x+y)^p
+&amp;\leq\liminf_n N_p(x_n+y_n)^p\\
+&amp;\leq\bigl(N_p(x)+N_p(y)\bigr)^p.
+\end{split}
+\tag{TI.29}
+\]">\[
+\begin{split}
+N_p(x+y)^p
+&amp;\leq\liminf_n N_p(x_n+y_n)^p\\
+&amp;\leq\bigl(N_p(x)+N_p(y)\bigr)^p.
+\end{split}
+\tag{TI.29}
+\]</span>
+<p>Thus the sum has finite gauge, and the gauge satisfies the sharp triangle inequality. Together with homogeneity and definiteness, this proves that (TI.27) is a norm on a complex vector space. From now on we write <span class="math" data-tex="\(\|\cdot\|_p\)">\(\|\cdot\|_p\)</span> in place of <span class="math" data-tex="\(N_p\)">\(N_p\)</span>.</p>
+<p><strong>Completeness with the concrete limit identified.</strong> A <span class="math" data-tex="\(p\)">\(p\)</span>-norm Cauchy net <span class="math" data-tex="\((x_i)\)">\((x_i)\)</span> is measure-Cauchy by the spectral Markov estimate (TI.9d). Completeness of the measure algebra gives an actual <span class="math" data-tex="\(x\in S(M,\tau)\)">\(x\in S(M,\tau)\)</span> with <span class="math" data-tex="\(x_i\to x\)">\(x_i\to x\)</span> in measure. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(i_0\)">\(i_0\)</span> so that <span class="math" data-tex="\(\|x_i-x_j\|_p\leq\varepsilon\)">\(\|x_i-x_j\|_p\leq\varepsilon\)</span> for <span class="math" data-tex="\(i,j\geq i_0\)">\(i,j\geq i_0\)</span>. For fixed <span class="math" data-tex="\(i\geq i_0\)">\(i\geq i_0\)</span>, the net <span class="math" data-tex="\(x_i-x_j\)">\(x_i-x_j\)</span> tends in measure to <span class="math" data-tex="\(x_i-x\)">\(x_i-x\)</span>. The already proved Fatou theorem for nets yields</p>
+<span class="math math-display" data-tex="\[
+\|x_i-x\|_p^p
+\leq\liminf_j\|x_i-x_j\|_p^p\leq\varepsilon^p.
+\tag{TI.30}
+\]">\[
+\|x_i-x\|_p^p
+\leq\liminf_j\|x_i-x_j\|_p^p\leq\varepsilon^p.
+\tag{TI.30}
+\]</span>
+<p>The liminf is taken over the original directed set; its tail <span class="math" data-tex="\(j\geq i_0\)">\(j\geq i_0\)</span> is cofinal. In particular, <span class="math" data-tex="\(x_i-x\in L^p\)">\(x_i-x\in L^p\)</span>. Since <span class="math" data-tex="\(L^p\)">\(L^p\)</span> is now a vector space, <span class="math" data-tex="\(x=x_i-(x_i-x)\in L^p\)">\(x=x_i-(x_i-x)\in L^p\)</span>. The same inequality proves <span class="math" data-tex="\(\|x_i-x\|_p\to0\)">\(\|x_i-x\|_p\to0\)</span>. Thus <span class="math" data-tex="\(L^p\)">\(L^p\)</span> is Banach, and its norm limit is the concrete closed measurable operator with the domain supplied by the measure completion.</p>
+<p>The bounded trace ideal lies in each finite-exponent space: for nonzero <span class="math" data-tex="\(a\in\mathfrak m_\tau\)">\(a\in\mathfrak m_\tau\)</span>, scalar functional calculus gives <span class="math" data-tex="\(\tau(|a|^p)\leq\|a\|^{p-1}\tau(|a|)&lt;\infty\)">\(\tau(|a|^p)\leq\|a\|^{p-1}\tau(|a|)&lt;\infty\)</span>; the zero element is immediate. This also identifies the abstract completion of the bounded ideal. A <span class="math" data-tex="\(p\)">\(p\)</span>-norm Cauchy sequence in <span class="math" data-tex="\(\mathfrak m_0\)">\(\mathfrak m_0\)</span> or <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span> maps to its measure limit. Equation (TI.30) shows that the map preserves its norm limit and is injective: if the measure limit is zero, its <span class="math" data-tex="\(p\)">\(p\)</span>-norm tends to zero. Conversely, (TI.28a)–(TI.28b) approximates every concrete element of <span class="math" data-tex="\(L^p\)">\(L^p\)</span> by <span class="math" data-tex="\(\mathfrak m_0\)">\(\mathfrak m_0\)</span>, so the map is onto. Both <span class="math" data-tex="\(\mathfrak m_0\)">\(\mathfrak m_0\)</span> and <span class="math" data-tex="\(M\cap L^p\)">\(M\cap L^p\)</span> are therefore dense, and the abstract completion and the concrete measurable space agree isometrically. At <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, completeness is the original completeness of <span class="math" data-tex="\(M\)">\(M\)</span> in operator norm; no assertion of finite-support norm density is made for that endpoint.</p>
+<h2 id="products-norming-tests-and-exact-factorization"><span id="OA-MOD-TI-10"></span><span id="oa-mod-ti-10"></span>Products, norming tests and exact factorization</h2>
+<p>The next estimate handles every product exponent at least one. Its proof begins again in finite corners, where a second strip argument combines the two-factor trace inequality with the bounded module estimate. We then use Fatou to establish integrability before taking complex traces of unbounded products.</p>
+<p><strong>Three finite factors.</strong> Suppose <span class="math" data-tex="\(P,Q,T\)">\(P,Q,T\)</span> are finite exponents with</p>
+<span class="math math-display" data-tex="\[
+\frac1P+\frac1Q+\frac1T=1.
+\]">\[
+\frac1P+\frac1Q+\frac1T=1.
+\]</span>
+<p>Each is greater than one. For <span class="math" data-tex="\(a,b,c\in\mathfrak m_0\)">\(a,b,c\in\mathfrak m_0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\tau(abc)|\leq\|a\|_P\|b\|_Q\|c\|_T.
+\tag{TI.31a}
+\]">\[
+|\tau(abc)|\leq\|a\|_P\|b\|_Q\|c\|_T.
+\tag{TI.31a}
+\]</span>
+<p>Choose one finite corner. The zero corner is immediate. Regularize the three positive absolute values as in (TI.23c), and divide each by its corresponding finite-exponent norm. This gives positive invertible <span class="math" data-tex="\(A,B,C\)">\(A,B,C\)</span> with <span class="math" data-tex="\(\tau(A^P)=\tau(B^Q)=\tau(C^T)=1\)">\(\tau(A^P)=\tau(B^Q)=\tau(C^T)=1\)</span>. Retain the original polar contractions <span class="math" data-tex="\(u,v,w\)">\(u,v,w\)</span>. Set <span class="math" data-tex="\(\theta=1/P\)">\(\theta=1/P\)</span>, <span class="math" data-tex="\(\beta=1/(1-\theta)\)">\(\beta=1/(1-\theta)\)</span>, and consider</p>
+<span class="math math-display" data-tex="\[
+F(z)=\tau\bigl(uA^{z/\theta}
+vB^{\beta(1-z)}
+wC^{\beta(1-z)}\bigr).
+\tag{TI.31b}
+\]">\[
+F(z)=\tau\bigl(uA^{z/\theta}
+vB^{\beta(1-z)}
+wC^{\beta(1-z)}\bigr).
+\tag{TI.31b}
+\]</span>
+<p>The power argument of TI-08 proves that this function is entire and bounded on the closed strip. On its left boundary, write it as <span class="math" data-tex="\(\tau(X_tY_t)\)">\(\tau(X_tY_t)\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+X_t=uA^{it/\theta}vB^{\beta-i\beta t},\qquad
+Y_t=wC^{\beta-i\beta t}.
+\]">\[
+X_t=uA^{it/\theta}vB^{\beta-i\beta t},\qquad
+Y_t=wC^{\beta-i\beta t}.
+\]</span>
+<p>The exponents <span class="math" data-tex="\(Q_0=Q(1-\theta)\)">\(Q_0=Q(1-\theta)\)</span> and <span class="math" data-tex="\(T_0=T(1-\theta)\)">\(T_0=T(1-\theta)\)</span> are conjugate and greater than one. By the bounded module estimate,</p>
+<span class="math math-display" data-tex="\[
+\|X_t\|_{Q_0}
+\leq\tau(B^{\beta Q_0})^{1/Q_0}=1,
+\qquad
+\|Y_t\|_{T_0}
+\leq\tau(C^{\beta T_0})^{1/T_0}=1.
+\tag{TI.31c}
+\]">\[
+\|X_t\|_{Q_0}
+\leq\tau(B^{\beta Q_0})^{1/Q_0}=1,
+\qquad
+\|Y_t\|_{T_0}
+\leq\tau(C^{\beta T_0})^{1/T_0}=1.
+\tag{TI.31c}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(\beta Q_0=Q\)">\(\beta Q_0=Q\)</span> and <span class="math" data-tex="\(\beta T_0=T\)">\(\beta T_0=T\)</span>; imaginary powers are unitaries and do not change these absolute values. The two-factor trace inequality (TI.24a) gives <span class="math" data-tex="\(|F(it)|\leq1\)">\(|F(it)|\leq1\)</span>. On the right boundary, rotate <span class="math" data-tex="\(u\)">\(u\)</span> to the end and separate the factor <span class="math" data-tex="\(A^P\)">\(A^P\)</span>. Every remaining factor is a contraction or an imaginary-power unitary, so the bounded trace estimate gives <span class="math" data-tex="\(|F(1+it)|\leq\tau(A^P)=1\)">\(|F(1+it)|\leq\tau(A^P)=1\)</span>. At <span class="math" data-tex="\(z=\theta\)">\(z=\theta\)</span>, all three real powers are one. Apply (TI.22), multiply back the three normalizing constants, and remove the regularizations using (TI.23c), continuity of multiplication, and the bounded trace estimate (TI.23a). This proves (TI.31a), including zero factors.</p>
+<p><strong>The finite-support product norm.</strong> Let</p>
+<span class="math math-display" data-tex="\[
+1\leq p,q,r\leq\infty,\qquad
+\frac1r=\frac1p+\frac1q,\qquad\frac1\infty=0.
+\tag{TI.32a}
+\]">\[
+1\leq p,q,r\leq\infty,\qquad
+\frac1r=\frac1p+\frac1q,\qquad\frac1\infty=0.
+\tag{TI.32a}
+\]</span>
+<p>For <span class="math" data-tex="\(a,b\in\mathfrak m_0\)">\(a,b\in\mathfrak m_0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|ab\|_r\leq\|a\|_p\|b\|_q.
+\tag{TI.32b}
+\]">\[
+\|ab\|_r\leq\|a\|_p\|b\|_q.
+\tag{TI.32b}
+\]</span>
+<p>If a factor exponent is infinite, the bounded module estimate proves this, including the case <span class="math" data-tex="\(r=\infty\)">\(r=\infty\)</span>. Otherwise <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are finite and greater than one. For <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, write <span class="math" data-tex="\(ab=w|ab|\)">\(ab=w|ab|\)</span>. If the product is nonzero, bounded cyclicity, (TI.24a), and the module bound give</p>
+<span class="math math-display" data-tex="\[
+\|ab\|_1=\tau(abw^*)
+\leq\|a\|_p\|bw^*\|_q\leq\|a\|_p\|b\|_q.
+\]">\[
+\|ab\|_1=\tau(abw^*)
+\leq\|a\|_p\|bw^*\|_q\leq\|a\|_p\|b\|_q.
+\]</span>
+<p>The zero product is immediate. If <span class="math" data-tex="\(1&lt;r&lt;\infty\)">\(1&lt;r&lt;\infty\)</span> and <span class="math" data-tex="\(ab\ne0\)">\(ab\ne0\)</span>, choose its finite-support norming element <span class="math" data-tex="\(c\)">\(c\)</span> from (TI.25a), with exponent <span class="math" data-tex="\(r\)">\(r\)</span> and conjugate <span class="math" data-tex="\(r&#x27;\)">\(r&#x27;\)</span>. Then <span class="math" data-tex="\(\|c\|_{r&#x27;}=1\)">\(\|c\|_{r&#x27;}=1\)</span> and <span class="math" data-tex="\(\tau(abc)=\|ab\|_r\)">\(\tau(abc)=\|ab\|_r\)</span>. Apply (TI.31a) with exponents <span class="math" data-tex="\(p,q,r&#x27;\)">\(p,q,r&#x27;\)</span>, whose reciprocal sum is one. This proves (TI.32b) in all cases.</p>
+<p><strong>Measurable product integrability.</strong> Let <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span>, <span class="math" data-tex="\(y\in L^q\)">\(y\in L^q\)</span>, with finite <span class="math" data-tex="\(p,q\)">\(p,q\)</span> satisfying (TI.32a). Take their own spectral approximants <span class="math" data-tex="\(x_n,y_n\)">\(x_n,y_n\)</span> from (TI.28a)–(TI.28b). Multiplication is continuous in the measure algebra, so <span class="math" data-tex="\(x_ny_n\to xy\)">\(x_ny_n\to xy\)</span> in measure, where <span class="math" data-tex="\(xy\)">\(xy\)</span> is the actual closed product of MT. Spectral Fatou and (TI.32b) give</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\tau(|xy|^r)
+&amp;\leq\liminf_n\|x_ny_n\|_r^r\\
+&amp;\leq\|x\|_p^r\|y\|_q^r.
+\end{split}
+\]">\[
+\begin{split}
+\tau(|xy|^r)
+&amp;\leq\liminf_n\|x_ny_n\|_r^r\\
+&amp;\leq\|x\|_p^r\|y\|_q^r.
+\end{split}
+\]</span>
+<p>This proves membership in <span class="math" data-tex="\(L^r\)">\(L^r\)</span>, before a complex trace of the product is considered. For an infinite factor exponent, use the bounded module estimate directly. Thus the full result is</p>
+<span class="math math-display" data-tex="\[
+\boxed{\quad xy\in L^r,\qquad
+\|xy\|_r\leq\|x\|_p\|y\|_q
+\quad\text{under (TI.32a).}\quad}
+\tag{TI.33}
+\]">\[
+\boxed{\quad xy\in L^r,\qquad
+\|xy\|_r\leq\|x\|_p\|y\|_q
+\quad\text{under (TI.32a).}\quad}
+\tag{TI.33}
+\]</span>
+<p>All norms here are finite by their membership hypotheses. If a norm is zero, faithfulness gives a zero factor; no division by zero or multiplication of zero by an infinite norm is required.</p>
+<p>In particular, for conjugate exponents <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, continuity of the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> trace gives</p>
+<span class="math math-display" data-tex="\[
+|\tau(xy)|\leq\|x\|_p\|y\|_q
+\quad(x\in L^p,\ y\in L^q).
+\tag{TI.34}
+\]">\[
+|\tau(xy)|\leq\|x\|_p\|y\|_q
+\quad(x\in L^p,\ y\in L^q).
+\tag{TI.34}
+\]</span>
+<p>This now includes every suitable pair in the entire bounded trace ideal <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span>. Indeed, for <span class="math" data-tex="\(a\in\mathfrak m_\tau\)">\(a\in\mathfrak m_\tau\)</span>, one has <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, <span class="math" data-tex="\(\tau(|a|)&lt;\infty\)">\(\tau(|a|)&lt;\infty\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\tau(|a|^p)\leq\|a\|^{p-1}\tau(|a|)&lt;\infty
+\quad(1\leq p&lt;\infty).
+\]">\[
+\tau(|a|^p)\leq\|a\|^{p-1}\tau(|a|)&lt;\infty
+\quad(1\leq p&lt;\infty).
+\]</span>
+<p>The limit argument has removed both the lower spectral bound and the finite-total-support condition. It does not mistake <span class="math" data-tex="\(\mathfrak m_0\)">\(\mathfrak m_0\)</span> for the whole ideal <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span>.</p>
+<p><strong>Norming on the full spaces.</strong> For <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>, let <span class="math" data-tex="\(q\)">\(q\)</span> be conjugate, with <span class="math" data-tex="\(q=\infty\)">\(q=\infty\)</span> at <span class="math" data-tex="\(p=1\)">\(p=1\)</span>. Every <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\|x\|_p=\sup\{|\tau(xb)|:
+b\in\mathfrak m_0,\ \|b\|_q\leq1\}.
+\tag{TI.35a}
+\]">\[
+\|x\|_p=\sup\{|\tau(xb)|:
+b\in\mathfrak m_0,\ \|b\|_q\leq1\}.
+\tag{TI.35a}
+\]</span>
+<p>Equation (TI.34) proves the upper bound. For the other direction, write <span class="math" data-tex="\(x=uh\)">\(x=uh\)</span>, and use <span class="math" data-tex="\(e_n=1_{[1/n,n]}(h)\)">\(e_n=1_{[1/n,n]}(h)\)</span>. If <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>, let <span class="math" data-tex="\(I_n=\tau(h^pe_n)\)">\(I_n=\tau(h^pe_n)\)</span>. Whenever <span class="math" data-tex="\(I_n&gt;0\)">\(I_n&gt;0\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+b_n=I_n^{-1/q}h^{p-1}e_nu^*.
+\tag{TI.35b}
+\]">\[
+b_n=I_n^{-1/q}h^{p-1}e_nu^*.
+\tag{TI.35b}
+\]</span>
+<p>It is bounded with finite support, and the support calculation in (TI.25b) gives <span class="math" data-tex="\(\|b_n\|_q=1\)">\(\|b_n\|_q=1\)</span>. Moreover,</p>
+<span class="math math-display" data-tex="\[
+xb_n=I_n^{-1/q}uh^pe_nu^*,\qquad
+\tau(xb_n)=I_n^{1/p}.
+\tag{TI.35c}
+\]">\[
+xb_n=I_n^{-1/q}uh^pe_nu^*,\qquad
+\tau(xb_n)=I_n^{1/p}.
+\tag{TI.35c}
+\]</span>
+<p>The operator on the right is literally bounded with finite trace support, because of the annular cutoff. Spectral calculus and the measurable algebra laws identify it with the indicated product. Indices with <span class="math" data-tex="\(I_n=0\)">\(I_n=0\)</span> may be omitted. Monotone convergence gives <span class="math" data-tex="\(I_n\uparrow\|x\|_p^p\)">\(I_n\uparrow\|x\|_p^p\)</span>. At <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, use <span class="math" data-tex="\(b_n=e_nu^*\)">\(b_n=e_nu^*\)</span>, of operator norm at most one; then <span class="math" data-tex="\(\tau(xb_n)=\tau(he_n)\uparrow\|x\|_1\)">\(\tau(xb_n)=\tau(he_n)\uparrow\|x\|_1\)</span>. For <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, the zero test suffices. This proves (TI.35a), in particular the full norming supremum on <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span>.</p>
+<p>The same spectral tests can establish membership when only an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> density is known. Suppose <span class="math" data-tex="\(x=uh\in L^1\)">\(x=uh\in L^1\)</span>, <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>, <span class="math" data-tex="\(q=p/(p-1)\)">\(q=p/(p-1)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+|\tau(xb)|\leq C\|b\|_q
+\quad\text{for every }b\in\mathfrak m_0.
+\tag{TI.35d}
+\]">\[
+|\tau(xb)|\leq C\|b\|_q
+\quad\text{for every }b\in\mathfrak m_0.
+\tag{TI.35d}
+\]</span>
+<p>Then <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span> and <span class="math" data-tex="\(\|x\|_p\leq C\)">\(\|x\|_p\leq C\)</span>. To see this without already assuming the conclusion, note that <span class="math" data-tex="\(\tau(h)&lt;\infty\)">\(\tau(h)&lt;\infty\)</span> makes every annulus <span class="math" data-tex="\(e_n\)">\(e_n\)</span> finite, while boundedness of <span class="math" data-tex="\(h\)">\(h\)</span> on it makes <span class="math" data-tex="\(I_n=\tau(h^pe_n)\)">\(I_n=\tau(h^pe_n)\)</span> finite. Thus (TI.35b) and (TI.35c) are available before knowing that <span class="math" data-tex="\(\tau(h^p)\)">\(\tau(h^p)\)</span> is finite. The assumption gives <span class="math" data-tex="\(I_n^{1/p}\leq C\)">\(I_n^{1/p}\leq C\)</span>, and monotone convergence yields <span class="math" data-tex="\(\tau(h^p)\leq C^p\)">\(\tau(h^p)\leq C^p\)</span>. All complex traces in (TI.35d) already exist because <span class="math" data-tex="\(x\in L^1\)">\(x\in L^1\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> is bounded. This is a membership argument for actual measurable <span class="math" data-tex="\(L^1\)">\(L^1\)</span> densities; it does not apply a norming theorem prematurely to an arbitrary affiliated operator.</p>
+<p><strong>Recovery by all finite projections.</strong> Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the directed set of all finite-trace projections. For every <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span>, <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span>,</p>
+<span class="math math-display" data-tex="\[
+ex\longrightarrow x\text{ in }p\text{-norm},\qquad
+xe\longrightarrow x\text{ in }p\text{-norm}
+\quad(e\in\mathcal E),
+\tag{TI.36a}
+\]">\[
+ex\longrightarrow x\text{ in }p\text{-norm},\qquad
+xe\longrightarrow x\text{ in }p\text{-norm}
+\quad(e\in\mathcal E),
+\tag{TI.36a}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\|x\|_p=\sup_{e\in\mathcal E}\|ex\|_p
+=\sup_{e\in\mathcal E}\|xe\|_p.
+\tag{TI.36b}
+\]">\[
+\|x\|_p=\sup_{e\in\mathcal E}\|ex\|_p
+=\sup_{e\in\mathcal E}\|xe\|_p.
+\tag{TI.36b}
+\]</span>
+<p>Indeed, fix an approximant <span class="math" data-tex="\(x_n\)">\(x_n\)</span> from (TI.28a)–(TI.28b), and let <span class="math" data-tex="\(l_n\)">\(l_n\)</span> be its finite left support. For every finite <span class="math" data-tex="\(e\geq l_n\)">\(e\geq l_n\)</span>, one has <span class="math" data-tex="\(ex_n=x_n\)">\(ex_n=x_n\)</span>. The proved triangle and module inequalities therefore give</p>
+<span class="math math-display" data-tex="\[
+\|x-ex\|_p
+\leq\|x-x_n\|_p+\|e(x_n-x)\|_p
+\leq2\|x-x_n\|_p.
+\]">\[
+\|x-ex\|_p
+\leq\|x-x_n\|_p+\|e(x_n-x)\|_p
+\leq2\|x-x_n\|_p.
+\]</span>
+<p>The last expression tends to zero as <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>. For each <span class="math" data-tex="\(n\)">\(n\)</span>, the condition <span class="math" data-tex="\(e\geq l_n\)">\(e\geq l_n\)</span> describes a tail of the full directed set <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, proving left convergence. The right-support argument proves right convergence. The reverse triangle inequality then gives convergence of their norms, while the module bound makes each at most <span class="math" data-tex="\(\|x\|_p\)">\(\|x\|_p\)</span>. This proves (TI.36b), including its assertion for every <span class="math" data-tex="\(a\in\mathfrak m_\tau\)">\(a\in\mathfrak m_\tau\)</span>. The proof uses finite-support density after Minkowski has been established; it is not an assumption used to prove that inequality.</p>
+<p>At the bounded endpoint one also has</p>
+<span class="math math-display" data-tex="\[
+\|x\|=\sup\{|\tau(xb)|:
+b\in\mathfrak m_0,\ \|b\|_1\leq1\}
+\quad(x\in M).
+\tag{TI.37}
+\]">\[
+\|x\|=\sup\{|\tau(xb)|:
+b\in\mathfrak m_0,\ \|b\|_1\leq1\}
+\quad(x\in M).
+\tag{TI.37}
+\]</span>
+<p>The upper bound is already known. For nonzero <span class="math" data-tex="\(x=uh\)">\(x=uh\)</span>, choose <span class="math" data-tex="\(0&lt;c&lt;\|h\|\)">\(0&lt;c&lt;\|h\|\)</span>. The nonzero projection <span class="math" data-tex="\(P=1_{(c,\infty)}(h)\)">\(P=1_{(c,\infty)}(h)\)</span> has a nonzero finite subprojection <span class="math" data-tex="\(f\)">\(f\)</span> by TI-01. Faithfulness gives <span class="math" data-tex="\(0&lt;\tau(f)&lt;\infty\)">\(0&lt;\tau(f)&lt;\infty\)</span>. Put <span class="math" data-tex="\(b=fu^*/\tau(f)\)">\(b=fu^*/\tau(f)\)</span>. Since <span class="math" data-tex="\(u\)">\(u\)</span> is isometric on <span class="math" data-tex="\(fH\)">\(fH\)</span>, its two polar supports give <span class="math" data-tex="\(\|b\|_1=1\)">\(\|b\|_1=1\)</span>. Bounded cyclicity and the positive compression inequality <span class="math" data-tex="\(fhf\geq cf\)">\(fhf\geq cf\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\tau(xb)=\frac{\tau(hf)}{\tau(f)}
+=\frac{\tau(fhf)}{\tau(f)}\geq c.
+\]">\[
+\tau(xb)=\frac{\tau(hf)}{\tau(f)}
+=\frac{\tau(fhf)}{\tau(f)}\geq c.
+\]</span>
+<p>The projection <span class="math" data-tex="\(f\)">\(f\)</span> need not commute with <span class="math" data-tex="\(h\)">\(h\)</span>. Every product is in the bounded finite-support ideal. Let <span class="math" data-tex="\(c\uparrow\|h\|\)">\(c\uparrow\|h\|\)</span>; the zero operator is immediate. Formula (TI.37) is a norming statement and does not identify the full Banach dual of <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(L^1\)">\(L^1\)</span>.</p>
+<p><strong>Cyclicity and convergence of products.</strong> If <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are finite conjugate exponents, their spectral approximants satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\|xy-x_ny_n\|_1
+&amp;\leq\|(x-x_n)y\|_1+\|x_n(y-y_n)\|_1\\
+&amp;\leq\|x-x_n\|_p\|y\|_q
++\|x_n\|_p\|y-y_n\|_q\longrightarrow0.
+\end{split}
+\tag{TI.38a}
+\]">\[
+\begin{split}
+\|xy-x_ny_n\|_1
+&amp;\leq\|(x-x_n)y\|_1+\|x_n(y-y_n)\|_1\\
+&amp;\leq\|x-x_n\|_p\|y\|_q
++\|x_n\|_p\|y-y_n\|_q\longrightarrow0.
+\end{split}
+\tag{TI.38a}
+\]</span>
+<p>The decomposition uses the distributive law of the measurable algebra, and the estimates now use the established product theorem. Reversing the two factors gives <span class="math" data-tex="\(y_nx_n\to yx\)">\(y_nx_n\to yx\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. For each <span class="math" data-tex="\(n\)">\(n\)</span>, the approximants lie in one finite corner and satisfy <span class="math" data-tex="\(\tau(x_ny_n)=\tau(y_nx_n)\)">\(\tau(x_ny_n)=\tau(y_nx_n)\)</span>. Continuity of the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> trace yields</p>
+<span class="math math-display" data-tex="\[
+\tau(xy)=\tau(yx).
+\tag{TI.38b}
+\]">\[
+\tau(xy)=\tau(yx).
+\tag{TI.38b}
+\]</span>
+<p>The conjugate endpoints <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> were proved in TI-06. More generally, for finite <span class="math" data-tex="\(p,q,r\)">\(p,q,r\)</span> satisfying (TI.32a), the same calculation in <span class="math" data-tex="\(r\)">\(r\)</span>-norm shows that <span class="math" data-tex="\(x_ny_n\to xy\)">\(x_ny_n\to xy\)</span> in <span class="math" data-tex="\(L^r\)">\(L^r\)</span>. Membership was established earlier by Fatou, so this convergence estimate is not used to assume integrability in its own proof.</p>
+<p><strong>Exact single-product factorization.</strong> Under (TI.32a),</p>
+<span class="math math-display" data-tex="\[
+L^pL^q=L^r,
+\tag{TI.39a}
+\]">\[
+L^pL^q=L^r,
+\tag{TI.39a}
+\]</span>
+<p>where the left side is already the set of single products, without taking a span or closure. The inclusion follows from (TI.33). For finite <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, take <span class="math" data-tex="\(z=wh\in L^r\)">\(z=wh\in L^r\)</span> and set</p>
+<span class="math math-display" data-tex="\[
+x=wh^{r/p},\qquad y=h^{r/q}.
+\tag{TI.39b}
+\]">\[
+x=wh^{r/p},\qquad y=h^{r/q}.
+\tag{TI.39b}
+\]</span>
+<p>These powers are measurable by their transformed spectral tails. Write <span class="math" data-tex="\(\alpha=r/p\)">\(\alpha=r/p\)</span>, <span class="math" data-tex="\(\beta=r/q\)">\(\beta=r/q\)</span>. They are positive, at most one, and satisfy <span class="math" data-tex="\(\alpha+\beta=1\)">\(\alpha+\beta=1\)</span>. The ordinary product <span class="math" data-tex="\(h^\alpha h^\beta\)">\(h^\alpha h^\beta\)</span> has precisely domain <span class="math" data-tex="\(D(h)\)">\(D(h)\)</span>: its domain conditions are finiteness of the scalar spectral integrals of <span class="math" data-tex="\(\lambda^{2\beta}\)">\(\lambda^{2\beta}\)</span> and <span class="math" data-tex="\(\lambda^2\)">\(\lambda^2\)</span>, and the first follows from the second since <span class="math" data-tex="\(\lambda^{2\beta}\leq1+\lambda^2\)">\(\lambda^{2\beta}\leq1+\lambda^2\)</span>. On that domain the product equals <span class="math" data-tex="\(h\)">\(h\)</span>. The polar factor <span class="math" data-tex="\(w\)">\(w\)</span> is isometric on the support of <span class="math" data-tex="\(h\)">\(h\)</span>, so <span class="math" data-tex="\(wh^\alpha\)">\(wh^\alpha\)</span> is closed on <span class="math" data-tex="\(D(h^\alpha)\)">\(D(h^\alpha)\)</span>. For instance, convergence of <span class="math" data-tex="\(wh^\alpha\xi_n\)">\(wh^\alpha\xi_n\)</span> implies convergence of <span class="math" data-tex="\(h^\alpha\xi_n\)">\(h^\alpha\xi_n\)</span> after applying <span class="math" data-tex="\(w^*\)">\(w^*\)</span>, and closedness of <span class="math" data-tex="\(h^\alpha\)">\(h^\alpha\)</span> proves the assertion. Therefore the ordinary product <span class="math" data-tex="\((wh^\alpha)h^\beta\)">\((wh^\alpha)h^\beta\)</span> equals <span class="math" data-tex="\(wh\)">\(wh\)</span> on exactly <span class="math" data-tex="\(D(h)\)">\(D(h)\)</span>. Its measurable product is the original closed operator <span class="math" data-tex="\(z\)">\(z\)</span>, with its actual domain.</p>
+<p>Polar support transport gives</p>
+<span class="math math-display" data-tex="\[
+\|x\|_p^p=\tau(h^r),\qquad
+\|y\|_q^q=\tau(h^r),\qquad
+\|x\|_p\|y\|_q=\|z\|_r.
+\tag{TI.39c}
+\]">\[
+\|x\|_p^p=\tau(h^r),\qquad
+\|y\|_q^q=\tau(h^r),\qquad
+\|x\|_p\|y\|_q=\|z\|_r.
+\tag{TI.39c}
+\]</span>
+<p>For <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, take both factors zero. If <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span> and <span class="math" data-tex="\(q=r&lt;\infty\)">\(q=r&lt;\infty\)</span>, use <span class="math" data-tex="\(x=w\)">\(x=w\)</span>, <span class="math" data-tex="\(y=h\)">\(y=h\)</span>; for nonzero <span class="math" data-tex="\(z\)">\(z\)</span>, the first factor has norm one. If <span class="math" data-tex="\(q=\infty\)">\(q=\infty\)</span> and <span class="math" data-tex="\(p=r&lt;\infty\)">\(p=r&lt;\infty\)</span>, use <span class="math" data-tex="\(x=z\)">\(x=z\)</span>, <span class="math" data-tex="\(y=s(h)\)">\(y=s(h)\)</span>, its right support. If <span class="math" data-tex="\(r=\infty\)">\(r=\infty\)</span>, both factor exponents are infinite and the bounded factorization is <span class="math" data-tex="\(z=z1\)">\(z=z1\)</span>. The zero algebra is included by taking zero factors. In particular, every <span class="math" data-tex="\(L^1\)">\(L^1\)</span> density has the exact conjugate-power factorization.</p>
+<p>The norming formulas proved here show exact norms and separating trace pairings. Surjectivity onto the Banach dual for the interior exponents still requires a construction of a density from an arbitrary bounded functional; it does not follow from a norming supremum alone.</p>
+<h2 id="bounded-strong-convergence-acts-on-each-integrable-vector"><span id="oa-mod-ti-11"></span><span id="OA-MOD-TI-11"></span>Bounded strong convergence acts on each integrable vector</h2>
+<p>Fix <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>. If <span class="math" data-tex="\((a_i)\)">\((a_i)\)</span> is a bounded net in <span class="math" data-tex="\(M\)">\(M\)</span> tending strongly-star to zero, then for every fixed <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|a_ix\|_p\longrightarrow0,\qquad \|xa_i\|_p\longrightarrow0.
+\tag{TI.40}
+\]">\[
+\|a_ix\|_p\longrightarrow0,\qquad \|xa_i\|_p\longrightarrow0.
+\tag{TI.40}
+\]</span>
+<p>This concerns each fixed <span class="math" data-tex="\(x\)">\(x\)</span>; it does not assert convergence of the multiplication operators in their operator norm on <span class="math" data-tex="\(L^p\)">\(L^p\)</span>.</p>
+<p>First take <span class="math" data-tex="\(x=exe\in\mathfrak m_0\)">\(x=exe\in\mathfrak m_0\)</span>. The positive operators <span class="math" data-tex="\(x^*a_i^*a_ix\)">\(x^*a_i^*a_ix\)</span> lie in <span class="math" data-tex="\(eMe\)">\(eMe\)</span>, are uniformly bounded, and tend strongly to zero. Their <span class="math" data-tex="\(p/2\)">\(p/2\)</span>-th powers also tend strongly to zero. To justify this when the exponent is not an integer, uniformly approximate the continuous scalar function <span class="math" data-tex="\(t^{p/2}\)">\(t^{p/2}\)</span> on the common compact spectral interval by polynomials with zero constant term; boundedness makes the approximation uniform in <span class="math" data-tex="\(i\)">\(i\)</span>, while each polynomial tends strongly to zero. The finite trace on <span class="math" data-tex="\(eMe\)">\(eMe\)</span> is a bounded normal functional. On bounded sets strong convergence implies sigma-strong convergence by CP-08, and every predual functional is continuous for that topology by CP-09, so</p>
+<span class="math math-display" data-tex="\[
+\|a_ix\|_p^p=\tau((x^*a_i^*a_ix)^{p/2})\longrightarrow0.
+\]">\[
+\|a_ix\|_p^p=\tau((x^*a_i^*a_ix)^{p/2})\longrightarrow0.
+\]</span>
+<p>Apply the same reasoning to <span class="math" data-tex="\(x a_i a_i^* x^*\)">\(x a_i a_i^* x^*\)</span> and use the polar trace identity to obtain <span class="math" data-tex="\(\|xa_i\|_p\to0\)">\(\|xa_i\|_p\to0\)</span>. For general <span class="math" data-tex="\(x\)">\(x\)</span>, approximate by <span class="math" data-tex="\(x_0\in\mathfrak m_0\)">\(x_0\in\mathfrak m_0\)</span> in <span class="math" data-tex="\(p\)">\(p\)</span>-norm. If <span class="math" data-tex="\(K=\sup_i\|a_i\|\)">\(K=\sup_i\|a_i\|\)</span>, the module bound gives</p>
+<span class="math math-display" data-tex="\[
+\|a_i x\|_p\leq K\|x-x_0\|_p+\|a_ix_0\|_p,
+\]">\[
+\|a_i x\|_p\leq K\|x-x_0\|_p+\|a_ix_0\|_p,
+\]</span>
+<p>and the analogous right estimate. Choose <span class="math" data-tex="\(x_0\)">\(x_0\)</span> first and then the directed tail. This proves (TI.40) for arbitrary nets. In particular the directed finite projections <span class="math" data-tex="\(e\uparrow1\)">\(e\uparrow1\)</span> give <span class="math" data-tex="\(ex,xe\to x\)">\(ex,xe\to x\)</span> in <span class="math" data-tex="\(p\)">\(p\)</span>-norm.</p>
+<p>For a bounded complex-linear functional <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(L^p\)">\(L^p\)</span> define</p>
+<span class="math math-display" data-tex="\[
+(aFb)(x)=F(bxa),\qquad F^\sharp(x)=\overline{F(x^*)}.
+\tag{TI.41}
+\]">\[
+(aFb)(x)=F(bxa),\qquad F^\sharp(x)=\overline{F(x^*)}.
+\tag{TI.41}
+\]</span>
+<p>These are bounded complex-linear functionals. The module and involution estimates give <span class="math" data-tex="\(\|aFb\|\leq\|a\|\|F\|\|b\|\)">\(\|aFb\|\leq\|a\|\|F\|\|b\|\)</span> and <span class="math" data-tex="\(\|F^\sharp\|=\|F\|\)">\(\|F^\sharp\|=\|F\|\)</span>. Once a density <span class="math" data-tex="\(h\in L^q\)">\(h\in L^q\)</span> represents <span class="math" data-tex="\(F\)">\(F\)</span>, the identities in TI-10 show that <span class="math" data-tex="\(aFb\)">\(aFb\)</span> has density <span class="math" data-tex="\(ahb\)">\(ahb\)</span>, while <span class="math" data-tex="\(F^\sharp\)">\(F^\sharp\)</span> has density <span class="math" data-tex="\(h^*\)">\(h^*\)</span>. For the first identity, <span class="math" data-tex="\(\tau(hbxa)=\tau(ahbx)\)">\(\tau(hbxa)=\tau(ahbx)\)</span>; for the second, take the conjugate of <span class="math" data-tex="\(\tau(hx^*)\)">\(\tau(hx^*)\)</span>, then use cyclicity. Thus the functional actions agree with the already defined measurable algebra operations, with their closure conventions intact.</p>
+<h2 id="every-localized-dual-functional-has-a-normal-density">Every localized dual functional has a normal density</h2>
+<p>Let <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>, <span class="math" data-tex="\(q=p/(p-1)\)">\(q=p/(p-1)\)</span>, and <span class="math" data-tex="\(F\in(L^p)^*\)">\(F\in(L^p)^*\)</span>, with <span class="math" data-tex="\(C=\|F\|\)">\(C=\|F\|\)</span>. Our objective is to construct <span class="math" data-tex="\(h\in L^q\)">\(h\in L^q\)</span> such that <span class="math" data-tex="\(F(x)=\tau(hx)\)">\(F(x)=\tau(hx)\)</span> and <span class="math" data-tex="\(\|h\|_q=C\)">\(\|h\|_q=C\)</span>. The inequality in TI-10 already makes each proposed density a bounded functional; it does not prove that every functional is of that form.</p>
+<p>For <span class="math" data-tex="\(e\in\mathcal E\)">\(e\in\mathcal E\)</span> put</p>
+<span class="math math-display" data-tex="\[
+F_e(a)=F(ea)\quad(a\in M),\qquad
+s_e(a)=\tau(eaa^*e)^{1/2}.
+\tag{TI.42}
+\]">\[
+F_e(a)=F(ea)\quad(a\in M),\qquad
+s_e(a)=\tau(eaa^*e)^{1/2}.
+\tag{TI.42}
+\]</span>
+<p>These are well defined, since <span class="math" data-tex="\(ea\in\mathfrak m_0\)">\(ea\in\mathfrak m_0\)</span> and <span class="math" data-tex="\(\|ea\|_p\leq\|a\|\tau(e)^{1/p}\)">\(\|ea\|_p\leq\|a\|\tau(e)^{1/p}\)</span>. The positive functional <span class="math" data-tex="\(\omega_e(a)=\tau(eae)\)">\(\omega_e(a)=\tau(eae)\)</span> is normal by TI-04. Thus <span class="math" data-tex="\(s_e\)">\(s_e\)</span> is a sigma-strong-star seminorm, in the sense of CP-08. It also has a concrete Hilbert-space realization: if <span class="math" data-tex="\(H_\tau\)">\(H_\tau\)</span> is the trace GNS space of WG-004–006, then</p>
+<span class="math math-display" data-tex="\[
+Q_e(a)=\overline{\Lambda_\tau(a^*e)}\in\overline{H_\tau},
+\qquad \|Q_e(a)\|=s_e(a).
+\]">\[
+Q_e(a)=\overline{\Lambda_\tau(a^*e)}\in\overline{H_\tau},
+\qquad \|Q_e(a)\|=s_e(a).
+\]</span>
+<p>The conjugate Hilbert space makes <span class="math" data-tex="\(Q_e\)">\(Q_e\)</span> complex-linear. Its argument is in the GNS domain because <span class="math" data-tex="\(\tau(eaa^*e)\leq\|a\|^2\tau(e)\)">\(\tau(eaa^*e)\leq\|a\|^2\tau(e)\)</span>.</p>
+<p>We prove actual normality of <span class="math" data-tex="\(F_e\)">\(F_e\)</span>, rather than infer it solely from continuity on bounded strong-star sets. Polar spectral calculus gives</p>
+<span class="math math-display" data-tex="\[
+\|ea\|_p^p=\tau((eaa^*e)^{p/2}).
+\]">\[
+\|ea\|_p^p=\tau((eaa^*e)^{p/2}).
+\]</span>
+<p>For <span class="math" data-tex="\(1&lt;p&lt;2\)">\(1&lt;p&lt;2\)</span>, scalar Hölder with exponents <span class="math" data-tex="\(2/p\)">\(2/p\)</span> and <span class="math" data-tex="\(2/(2-p)\)">\(2/(2-p)\)</span>, applied to the functions <span class="math" data-tex="\(\lambda^{p/2}\)">\(\lambda^{p/2}\)</span> and one for the finite spectral measure in <span class="math" data-tex="\(eMe\)">\(eMe\)</span>, gives the following bound. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span> the underlying norm identity is <span class="math" data-tex="\(\|ea\|_2=s_e(a)\)">\(\|ea\|_2=s_e(a)\)</span>; the same functional bound follows. The scalar Hölder step follows by normalizing both integrals and integrating Young’s inequality <span class="math" data-tex="\(uv\leq u^A/A+v^B/B\)">\(uv\leq u^A/A+v^B/B\)</span>, <span class="math" data-tex="\(A^{-1}+B^{-1}=1\)">\(A^{-1}+B^{-1}=1\)</span>. To see this inequality, maximize <span class="math" data-tex="\(uv-u^A/A\)">\(uv-u^A/A\)</span> over <span class="math" data-tex="\(u\geq0\)">\(u\geq0\)</span>; its maximum is <span class="math" data-tex="\(v^B/B\)">\(v^B/B\)</span>. Zero integrals give a zero factor and need no division. We obtain</p>
+<span class="math math-display" data-tex="\[
+|F_e(a)|\leq C\tau(e)^{1/p-1/2}s_e(a).
+\tag{TI.43}
+\]">\[
+|F_e(a)|\leq C\tau(e)^{1/p-1/2}s_e(a).
+\tag{TI.43}
+\]</span>
+<p>The case <span class="math" data-tex="\(e=0\)">\(e=0\)</span> is immediate. CP-09 identifies the continuous dual of the sigma-strong-star topology with <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, so <span class="math" data-tex="\(F_e\)">\(F_e\)</span> is normal in this case.</p>
+<p>For <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>, the scalar bound on the same positive spectral operator yields</p>
+<span class="math math-display" data-tex="\[
+|F_e(a)|\leq C\|a\|^{1-2/p}s_e(a)^{2/p}
+\leq\varepsilon\|a\|+K_\varepsilon s_e(a)
+\quad(\varepsilon&gt;0)
+\tag{TI.44}
+\]">\[
+|F_e(a)|\leq C\|a\|^{1-2/p}s_e(a)^{2/p}
+\leq\varepsilon\|a\|+K_\varepsilon s_e(a)
+\quad(\varepsilon&gt;0)
+\tag{TI.44}
+\]</span>
+<p>for some finite <span class="math" data-tex="\(K_\varepsilon\)">\(K_\varepsilon\)</span>. Explicitly, when <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>, let <span class="math" data-tex="\(\theta=2/p\)">\(\theta=2/p\)</span>, <span class="math" data-tex="\(\eta=(\varepsilon/C)^{1/\theta}\)">\(\eta=(\varepsilon/C)^{1/\theta}\)</span>. If <span class="math" data-tex="\(s_e(a)\leq\eta\|a\|\)">\(s_e(a)\leq\eta\|a\|\)</span>, the first term is bounded by <span class="math" data-tex="\(\varepsilon\|a\|\)">\(\varepsilon\|a\|\)</span>. In the other case it is bounded by <span class="math" data-tex="\(C\eta^{-(1-\theta)}s_e(a)\)">\(C\eta^{-(1-\theta)}s_e(a)\)</span>. Adding the two bounds proves (TI.44). If <span class="math" data-tex="\(C=0\)">\(C=0\)</span>, normality is immediate.</p>
+<p>Apply complex Hahn–Banach from CP-01 to the functional <span class="math" data-tex="\((a,Q_e(a))\mapsto F_e(a)\)">\((a,Q_e(a))\mapsto F_e(a)\)</span> on the graph subspace of <span class="math" data-tex="\(M\oplus\overline{H_\tau}\)">\(M\oplus\overline{H_\tau}\)</span>, endowed with norm <span class="math" data-tex="\(\varepsilon\|b\|+K_\varepsilon\|\xi\|\)">\(\varepsilon\|b\|+K_\varepsilon\|\xi\|\)</span>. For <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>, the chosen <span class="math" data-tex="\(K_\varepsilon\)">\(K_\varepsilon\)</span> is positive, so this is a norm. Inequality (TI.44) allows an extension of norm at most one. Restricting it to the two summands and then to the graph gives</p>
+<span class="math math-display" data-tex="\[
+F_e=u_\varepsilon+v_\varepsilon,
+\qquad \|u_\varepsilon\|\leq\varepsilon,
+\qquad |v_\varepsilon(a)|\leq K_\varepsilon s_e(a).
+\]">\[
+F_e=u_\varepsilon+v_\varepsilon,
+\qquad \|u_\varepsilon\|\leq\varepsilon,
+\qquad |v_\varepsilon(a)|\leq K_\varepsilon s_e(a).
+\]</span>
+<p>The last functional belongs to <span class="math" data-tex="\(M_*\)">\(M_*\)</span> by CP-09. Norm closure of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> in <span class="math" data-tex="\(M^*\)">\(M^*\)</span>, proved in CP-07, now gives <span class="math" data-tex="\(F_e\in M_*\)">\(F_e\in M_*\)</span>. This supplies the step for all <span class="math" data-tex="\(p\)">\(p\)</span>, without invoking a bounded-ball normality converse or a reflexivity theorem.</p>
+<p>The onto map TI-06 supplies a unique <span class="math" data-tex="\(h_e\in L^1\)">\(h_e\in L^1\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\tau(h_ea)=F(ea)\quad(a\in M).
+\tag{TI.45}
+\]">\[
+\tau(h_ea)=F(ea)\quad(a\in M).
+\tag{TI.45}
+\]</span>
+<p>Testing against arbitrary bounded <span class="math" data-tex="\(a\)">\(a\)</span> and using injectivity of that map proves the following equalities in <span class="math" data-tex="\(S\)">\(S\)</span>:</p>
+<span class="math math-display" data-tex="\[
+h_e=h_e e,\qquad h_g e=h_e\quad(e\leq g).
+\tag{TI.46}
+\]">\[
+h_e=h_e e,\qquad h_g e=h_e\quad(e\leq g).
+\tag{TI.46}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(\tau(h_e(1-e)a)=F(e(1-e)a)=0\)">\(\tau(h_e(1-e)a)=F(e(1-e)a)=0\)</span>, while <span class="math" data-tex="\(\tau(h_g e a)=F(gea)=F(ea)\)">\(\tau(h_g e a)=F(gea)=F(ea)\)</span>.</p>
+<p>We also have the uniform local bound</p>
+<span class="math math-display" data-tex="\[
+h_e\in L^q,\qquad \|h_e\|_q\leq C.
+\tag{TI.47}
+\]">\[
+h_e\in L^q,\qquad \|h_e\|_q\leq C.
+\tag{TI.47}
+\]</span>
+<p>To prove it before constructing any global operator, write <span class="math" data-tex="\(h_e=vk\)">\(h_e=vk\)</span>, <span class="math" data-tex="\(k=|h_e|\)">\(k=|h_e|\)</span>. Its right support and therefore the support of <span class="math" data-tex="\(k\)">\(k\)</span> are at most <span class="math" data-tex="\(e\)">\(e\)</span>, by (TI.46). Put</p>
+<span class="math math-display" data-tex="\[
+P_n=1_{[1/n,n]}(k),\quad x_n=k^{q-1}P_nv^*,\quad
+A_n=\tau(k^qP_n).
+\]">\[
+P_n=1_{[1/n,n]}(k),\quad x_n=k^{q-1}P_nv^*,\quad
+A_n=\tau(k^qP_n).
+\]</span>
+<p>Here <span class="math" data-tex="\(P_n\leq e\)">\(P_n\leq e\)</span>, so <span class="math" data-tex="\(A_n&lt;\infty\)">\(A_n&lt;\infty\)</span> and <span class="math" data-tex="\(x_n\in\mathfrak m_0\)">\(x_n\in\mathfrak m_0\)</span>. The closed spectral products actually appearing in the next calculation are bounded: <span class="math" data-tex="\(h_ex_n=vk^qP_nv^*\)">\(h_ex_n=vk^qP_nv^*\)</span>. Also <span class="math" data-tex="\(ex_n=x_n\)">\(ex_n=x_n\)</span> and <span class="math" data-tex="\((q-1)p=q\)">\((q-1)p=q\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+A_n=\tau(h_ex_n)=F(x_n),\qquad
+\|x_n\|_p=A_n^{1/p},\qquad A_n\leq C A_n^{1/p}.
+\]">\[
+A_n=\tau(h_ex_n)=F(x_n),\qquad
+\|x_n\|_p=A_n^{1/p},\qquad A_n\leq C A_n^{1/p}.
+\]</span>
+<p>If <span class="math" data-tex="\(A_n&gt;0\)">\(A_n&gt;0\)</span>, divide to get <span class="math" data-tex="\(A_n^{1/q}\leq C\)">\(A_n^{1/q}\leq C\)</span>; if <span class="math" data-tex="\(A_n=0\)">\(A_n=0\)</span>, this is immediate. Monotone convergence on the increasing spectral annuli gives <span class="math" data-tex="\(\tau(k^q)\leq C^q\)">\(\tau(k^q)\leq C^q\)</span>. The norming test has only been applied to the already measurable local <span class="math" data-tex="\(L^1\)">\(L^1\)</span> density; no global density has been assumed.</p>
+<h2 id="two-dense-domains-give-one-closed-affiliated-operator">Two dense domains give one closed affiliated operator</h2>
+<p>Right multiplication of a closed operator <span class="math" data-tex="\(S\)">\(S\)</span> by a bounded projection <span class="math" data-tex="\(e\)">\(e\)</span> is a closed ordinary composition, with domain <span class="math" data-tex="\(\{\xi:e\xi\in D(S)\}\)">\(\{\xi:e\xi\in D(S)\}\)</span>: its graph is the inverse image of the graph of <span class="math" data-tex="\(S\)">\(S\)</span> under <span class="math" data-tex="\((\xi,\eta)\mapsto(e\xi,\eta)\)">\((\xi,\eta)\mapsto(e\xi,\eta)\)</span>. If <span class="math" data-tex="\(S\)">\(S\)</span> is measurable, MT-09 says this composition is densely defined and that its closure is the measurable product <span class="math" data-tex="\(Se\)">\(Se\)</span>. Its closedness therefore makes the ordinary and measurable products identical, including their domains.</p>
+<p>Apply this to (TI.46). We obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(h_e)&amp;=(D(h_e)\cap eH)\oplus(1-e)H,\\
+D(h_e)&amp;=\{\xi:e\xi\in D(h_g)\},\qquad
+h_e\xi=h_g e\xi\quad(e\leq g,\ \xi\in D(h_e)).
+\end{aligned}
+\tag{TI.48}
+\]">\[
+\begin{aligned}
+D(h_e)&amp;=(D(h_e)\cap eH)\oplus(1-e)H,\\
+D(h_e)&amp;=\{\xi:e\xi\in D(h_g)\},\qquad
+h_e\xi=h_g e\xi\quad(e\leq g,\ \xi\in D(h_e)).
+\end{aligned}
+\tag{TI.48}
+\]</span>
+<p>In particular <span class="math" data-tex="\(D(h_e)\cap eH\)">\(D(h_e)\cap eH\)</span> is dense in <span class="math" data-tex="\(eH\)">\(eH\)</span>, and these subspaces are nested as <span class="math" data-tex="\(e\)">\(e\)</span> increases. Define</p>
+<span class="math math-display" data-tex="\[
+D_A=\bigcup_{e\in\mathcal E}(D(h_e)\cap eH),\qquad
+A\xi=h_e\xi\quad(\xi\in D(h_e)\cap eH).
+\tag{TI.49}
+\]">\[
+D_A=\bigcup_{e\in\mathcal E}(D(h_e)\cap eH),\qquad
+A\xi=h_e\xi\quad(\xi\in D(h_e)\cap eH).
+\tag{TI.49}
+\]</span>
+<p>Finite joins and (TI.48) make this a well-defined linear operator on a linear domain. That domain is dense because its intersection with each <span class="math" data-tex="\(eH\)">\(eH\)</span> is dense there and <span class="math" data-tex="\(e\uparrow1\)">\(e\uparrow1\)</span> strongly. Each commutant unitary preserves every local domain and commutes with the local operator, so it preserves <span class="math" data-tex="\(D_A\)">\(D_A\)</span> and commutes with <span class="math" data-tex="\(A\)">\(A\)</span>. This alone does not establish closability.</p>
+<p>Construct the same local densities for <span class="math" data-tex="\(F^\sharp\)">\(F^\sharp\)</span> from (TI.41), calling them <span class="math" data-tex="\(k_f\)">\(k_f\)</span>, <span class="math" data-tex="\(f\in\mathcal E\)">\(f\in\mathcal E\)</span>. They satisfy</p>
+<span class="math math-display" data-tex="\[
+\tau(k_fa)=\overline{F(a^*f)},\qquad
+k_f=k_ff,\qquad \|k_f\|_q\leq C.
+\tag{TI.50}
+\]">\[
+\tau(k_fa)=\overline{F(a^*f)},\qquad
+k_f=k_ff,\qquad \|k_f\|_q\leq C.
+\tag{TI.50}
+\]</span>
+<p>They define a second linear operator <span class="math" data-tex="\(B\)">\(B\)</span> on the separately dense domain <span class="math" data-tex="\(D_B=\bigcup_f(D(k_f)\cap fH)\)">\(D_B=\bigcup_f(D(k_f)\cap fH)\)</span>. Taking adjoints inside the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> pairing gives <span class="math" data-tex="\(\tau(k_f^*b)=F(bf)\)">\(\tau(k_f^*b)=F(bf)\)</span>. Thus for every bounded <span class="math" data-tex="\(a\)">\(a\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\tau(fh_ea)=F(eaf)=\tau(k_f^*ea).
+\]">\[
+\tau(fh_ea)=F(eaf)=\tau(k_f^*ea).
+\]</span>
+<p>Injectivity of TI-06 gives the measurable identity</p>
+<span class="math math-display" data-tex="\[
+f h_e=k_f^*e.
+\tag{TI.51}
+\]">\[
+f h_e=k_f^*e.
+\tag{TI.51}
+\]</span>
+<p>The left side is the closure of its ordinary composition; the right side is already the closed ordinary composition described above. Consequently <span class="math" data-tex="\(\xi\in D(h_e)\cap eH\)">\(\xi\in D(h_e)\cap eH\)</span> implies <span class="math" data-tex="\(\xi\in D(k_f^*)\)">\(\xi\in D(k_f^*)\)</span> and <span class="math" data-tex="\(k_f^*\xi=fh_e\xi\)">\(k_f^*\xi=fh_e\xi\)</span>. For <span class="math" data-tex="\(\eta\in D(k_f)\cap fH\)">\(\eta\in D(k_f)\cap fH\)</span>, the actual Hilbert adjoint identity gives</p>
+<span class="math math-display" data-tex="\[
+\langle A\xi,\eta\rangle
+=\langle fh_e\xi,\eta\rangle
+=\langle k_f^*\xi,\eta\rangle
+=\langle\xi,k_f\eta\rangle
+=\langle\xi,B\eta\rangle.
+\tag{TI.52}
+\]">\[
+\langle A\xi,\eta\rangle
+=\langle fh_e\xi,\eta\rangle
+=\langle k_f^*\xi,\eta\rangle
+=\langle\xi,k_f\eta\rangle
+=\langle\xi,B\eta\rangle.
+\tag{TI.52}
+\]</span>
+<p>It follows that <span class="math" data-tex="\(A\subseteq B^*\)">\(A\subseteq B^*\)</span> and <span class="math" data-tex="\(B\subseteq A^*\)">\(B\subseteq A^*\)</span>. Since <span class="math" data-tex="\(D_B\)">\(D_B\)</span> is dense, <span class="math" data-tex="\(A\)">\(A\)</span> is closable. Let <span class="math" data-tex="\(T=\overline A\)">\(T=\overline A\)</span>. It is closed and densely defined. Invariance of the graph under each diagonal commutant unitary and its inverse passes to its closure, so <span class="math" data-tex="\(T\)">\(T\)</span> is affiliated with <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>For <span class="math" data-tex="\(e\in\mathcal E\)">\(e\in\mathcal E\)</span>, the ordinary composition <span class="math" data-tex="\(Te\)">\(Te\)</span> is closed and affiliated. It extends <span class="math" data-tex="\(h_e\)">\(h_e\)</span>: for <span class="math" data-tex="\(\xi\in D(h_e)\)">\(\xi\in D(h_e)\)</span>, decompose <span class="math" data-tex="\(\xi\)">\(\xi\)</span> as in (TI.48), apply <span class="math" data-tex="\(A\)">\(A\)</span> to its <span class="math" data-tex="\(e\)">\(e\)</span>-component, and use zero on its complementary component. In particular <span class="math" data-tex="\(Te\)">\(Te\)</span> is densely defined. MT-08 states that a measurable operator has no proper closed affiliated extension, whether or not the extension has yet been proved measurable. Applying it to <span class="math" data-tex="\(h_e\)">\(h_e\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+Te=h_e\quad(e\in\mathcal E)
+\tag{TI.53}
+\]">\[
+Te=h_e\quad(e\in\mathcal E)
+\tag{TI.53}
+\]</span>
+<p>as actual closed operators. This does not appeal to maximality of an arbitrary affiliated operator. It appeals to maximality of the already measurable <span class="math" data-tex="\(h_e\)">\(h_e\)</span>. Similarly, <span class="math" data-tex="\(B\subseteq T^*\)">\(B\subseteq T^*\)</span> makes <span class="math" data-tex="\(T^*f\)">\(T^*f\)</span> a closed affiliated extension of <span class="math" data-tex="\(k_f\)">\(k_f\)</span>, and gives <span class="math" data-tex="\(T^*f=k_f\)">\(T^*f=k_f\)</span>. Thus both local operator domains and the adjoint are recovered after closure.</p>
+<h2 id="spectral-tests-establish-global-duality"><span id="oa-mod-ti-14"></span><span id="OA-MOD-TI-14"></span>Spectral tests establish global duality</h2>
+<p>The ordinary polar decomposition <span class="math" data-tex="\(T=u|T|\)">\(T=u|T|\)</span> is available for every closed densely defined operator by RD-02. It does not require measurability. Fix <span class="math" data-tex="\(0&lt;a\leq b&lt;\infty\)">\(0&lt;a\leq b&lt;\infty\)</span> and let <span class="math" data-tex="\(P=1_{[a,b]}(|T|)\)">\(P=1_{[a,b]}(|T|)\)</span>. If <span class="math" data-tex="\(r\in\mathcal E\)">\(r\in\mathcal E\)</span> and <span class="math" data-tex="\(r\leq P\)">\(r\leq P\)</span>, then <span class="math" data-tex="\(rH\subseteq D(T)\)">\(rH\subseteq D(T)\)</span> and <span class="math" data-tex="\(Tr\)">\(Tr\)</span> is bounded. Equation (TI.53) identifies it with <span class="math" data-tex="\(h_r\)">\(h_r\)</span>, hence <span class="math" data-tex="\(\|Tr\|_q\leq C\)">\(\|Tr\|_q\leq C\)</span>. On the finite corner <span class="math" data-tex="\(rMr\)">\(rMr\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(Tr)^*(Tr)=r|T|^2r\geq a^2r.
+\]">\[
+(Tr)^*(Tr)=r|T|^2r\geq a^2r.
+\]</span>
+<p>The compression is meaningful because <span class="math" data-tex="\(rH\)">\(rH\)</span> lies in the domain of <span class="math" data-tex="\(|T|^2\)">\(|T|^2\)</span>, by the bounded spectral band. Thus <span class="math" data-tex="\(|Tr|\)">\(|Tr|\)</span> has spectrum in <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> on <span class="math" data-tex="\(rH\)">\(rH\)</span>, and scalar functional calculus in this single operator gives</p>
+<span class="math math-display" data-tex="\[
+a^q\tau(r)\leq\tau(|Tr|^q)\leq C^q.
+\]">\[
+a^q\tau(r)\leq\tau(|Tr|^q)\leq C^q.
+\]</span>
+<p>No operator-monotonicity assertion about a noncommuting pair raised to a power is used. TI-01 applied inside <span class="math" data-tex="\(P\)">\(P\)</span> now gives <span class="math" data-tex="\(\tau(P)\leq(C/a)^q\)">\(\tau(P)\leq(C/a)^q\)</span>. Increase <span class="math" data-tex="\(b\)">\(b\)</span> and use normality to conclude</p>
+<span class="math math-display" data-tex="\[
+\tau(1_{[a,\infty)}(|T|))\leq(C/a)^q\quad(a&gt;0).
+\tag{TI.54}
+\]">\[
+\tau(1_{[a,\infty)}(|T|))\leq(C/a)^q\quad(a&gt;0).
+\tag{TI.54}
+\]</span>
+<p>The high spectral tails tend to zero. MT-11 therefore proves that <span class="math" data-tex="\(T\)">\(T\)</span> is measurable. This step precedes every global expression <span class="math" data-tex="\(\tau(Tx)\)">\(\tau(Tx)\)</span> or <span class="math" data-tex="\(\tau(|T|^q)\)">\(\tau(|T|^q)\)</span> in the argument.</p>
+<p>Now <span class="math" data-tex="\(P_n=1_{[1/n,n]}(|T|)\)">\(P_n=1_{[1/n,n]}(|T|)\)</span> has finite trace, and (TI.53) gives <span class="math" data-tex="\(TP_n=h_{P_n}\)">\(TP_n=h_{P_n}\)</span>. Its spectral absolute value gives</p>
+<span class="math math-display" data-tex="\[
+\tau(|T|^qP_n)=\|TP_n\|_q^q\leq C^q.
+\]">\[
+\tau(|T|^qP_n)=\|TP_n\|_q^q\leq C^q.
+\]</span>
+<p>Monotone convergence shows that <span class="math" data-tex="\(T\in L^q\)">\(T\in L^q\)</span> and <span class="math" data-tex="\(\|T\|_q\leq C\)">\(\|T\|_q\leq C\)</span>. These annuli exhaust the support of <span class="math" data-tex="\(|T|\)">\(|T|\)</span>; its kernel can have arbitrarily large trace.</p>
+<p>For <span class="math" data-tex="\(x\in\mathfrak m_0\)">\(x\in\mathfrak m_0\)</span>, choose a finite projection <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(ex=x\)">\(ex=x\)</span>. Associativity in the measurable algebra, (TI.45), and (TI.53) give</p>
+<span class="math math-display" data-tex="\[
+F(x)=F(ex)=\tau(h_ex)=\tau(Tex)=\tau(Tx).
+\tag{TI.55}
+\]">\[
+F(x)=F(ex)=\tau(h_ex)=\tau(Tex)=\tau(Tx).
+\tag{TI.55}
+\]</span>
+<p>All expressions are now legitimate: <span class="math" data-tex="\(h_e\in L^1\)">\(h_e\in L^1\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> is bounded; also <span class="math" data-tex="\(T\in L^q\)">\(T\in L^q\)</span> and <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span>, so TI-10 makes their product integrable. Density of <span class="math" data-tex="\(\mathfrak m_0\)">\(\mathfrak m_0\)</span> and Hölder extend (TI.55) to every <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span>. Consequently <span class="math" data-tex="\(C=\|F\|\leq\|T\|_q\)">\(C=\|F\|\leq\|T\|_q\)</span>; the reverse bound above proves equality.</p>
+<p>If <span class="math" data-tex="\(d\in L^q\)">\(d\in L^q\)</span> pairs to zero with all <span class="math" data-tex="\(L^p\)">\(L^p\)</span>, write <span class="math" data-tex="\(d=v|d|\)">\(d=v|d|\)</span> and test with <span class="math" data-tex="\(|d|^{q-1}1_{[1/n,n]}(|d|)v^*\in\mathfrak m_0\)">\(|d|^{q-1}1_{[1/n,n]}(|d|)v^*\in\mathfrak m_0\)</span>. Their pairings are <span class="math" data-tex="\(\tau(|d|^q1_{[1/n,n]}(|d|))\)">\(\tau(|d|^q1_{[1/n,n]}(|d|))\)</span>. All vanish, so monotone convergence and faithfulness give <span class="math" data-tex="\(d=0\)">\(d=0\)</span>. We have proved the onto complex-linear isometry</p>
+<span class="math math-display" data-tex="\[
+L^q\xrightarrow{\ \cong\ }(L^p)^*,\qquad
+h\longmapsto[x\mapsto\tau(hx)]
+\quad(1&lt;p&lt;\infty).
+\tag{TI.56}
+\]">\[
+L^q\xrightarrow{\ \cong\ }(L^p)^*,\qquad
+h\longmapsto[x\mapsto\tau(hx)]
+\quad(1&lt;p&lt;\infty).
+\tag{TI.56}
+\]</span>
+<p>Interchanging <span class="math" data-tex="\(p,q\)">\(p,q\)</span> gives the other dual identification. The pairing is bilinear, with no implicit conjugation of the representing density. Its involution and bounded bimodule actions are precisely (TI.41). For example, after both local constructions have become measurable, cyclicity shows that the operator <span class="math" data-tex="\(ahb\)">\(ahb\)</span> pairs with <span class="math" data-tex="\(x\)">\(x\)</span> as <span class="math" data-tex="\(F(bxa)\)">\(F(bxa)\)</span>; uniqueness identifies it with the density obtained by the construction for <span class="math" data-tex="\(aFb\)">\(aFb\)</span>. Thus there is no separate, inconsistent dual-side product. At <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, TI-06 and CP-06 give <span class="math" data-tex="\((L^1)^*=M\)">\((L^1)^*=M\)</span> through the same pairing. No assertion that the full Banach dual of <span class="math" data-tex="\(M=L^\infty\)">\(M=L^\infty\)</span> is <span class="math" data-tex="\(L^1\)">\(L^1\)</span> is made; <span class="math" data-tex="\(L^1\)">\(L^1\)</span> is its predual.</p>
+<h2 id="the-hilbert-space-behind-the-trace"><span id="OA-MOD-TI-15"></span><span id="oa-mod-ti-15"></span>The Hilbert space behind the trace</h2>
+<p>The space <span class="math" data-tex="\(L^2(M,\tau)\)">\(L^2(M,\tau)\)</span> is a Hilbert space with inner product</p>
+<span class="math math-display" data-tex="\[
+\langle x,y\rangle_2=\tau(y^*x).
+\tag{TI.57}
+\]">\[
+\langle x,y\rangle_2=\tau(y^*x).
+\tag{TI.57}
+\]</span>
+<p>Indeed, TI-10 puts <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Linearity and the adjoint identity for the integral prove sesquilinearity and conjugate symmetry. Positivity and definiteness follow from <span class="math" data-tex="\(\tau(x^*x)=\|x\|_2^2\)">\(\tau(x^*x)=\|x\|_2^2\)</span>, and the associated norm is the complete norm already proved in TI-09. Thus no further completion of this concrete operator space is necessary.</p>
+<p>Let <span class="math" data-tex="\((H_\tau,\pi_\tau,\Lambda_\tau)\)">\((H_\tau,\pi_\tau,\Lambda_\tau)\)</span> be the trace GNS triple from WG-006. Faithfulness gives a zero null ideal. For <span class="math" data-tex="\(a,b\in\mathfrak n_\tau\)">\(a,b\in\mathfrak n_\tau\)</span>, the bounded finite trace integral and its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> extension agree, so</p>
+<span class="math math-display" data-tex="\[
+\langle\Lambda_\tau(a),\Lambda_\tau(b)\rangle
+=\tau(b^*a)=\langle a,b\rangle_2.
+\]">\[
+\langle\Lambda_\tau(a),\Lambda_\tau(b)\rangle
+=\tau(b^*a)=\langle a,b\rangle_2.
+\]</span>
+<p>The isometry <span class="math" data-tex="\(U\Lambda_\tau(a)=a\)">\(U\Lambda_\tau(a)=a\)</span> has dense range in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, since <span class="math" data-tex="\(\mathfrak m_0\subseteq\mathfrak n_\tau\)">\(\mathfrak m_0\subseteq\mathfrak n_\tau\)</span> and TI-09 proves its <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-density. It therefore extends to a unique onto unitary</p>
+<span class="math math-display" data-tex="\[
+U:H_\tau\longrightarrow L^2(M,\tau),\qquad
+U\pi_\tau(c)U^*x=cx.
+\tag{TI.58}
+\]">\[
+U:H_\tau\longrightarrow L^2(M,\tau),\qquad
+U\pi_\tau(c)U^*x=cx.
+\tag{TI.58}
+\]</span>
+<p>The action identity holds first on <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span> by the GNS module law, then everywhere by the bounded module estimate. The target is the measurable-operator Hilbert space, rather than an unspecified Hilbert space isomorphic to it.</p>
+<p>For clarity, left multiplication <span class="math" data-tex="\(L_cx=cx\)">\(L_cx=cx\)</span> is a faithful normal representation on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. It is a unital star representation by associativity and (TI.57): <span class="math" data-tex="\(\langle cx,y\rangle_2=\langle x,c^*y\rangle_2\)">\(\langle cx,y\rangle_2=\langle x,c^*y\rangle_2\)</span>. If <span class="math" data-tex="\(L_c=0\)">\(L_c=0\)</span>, then <span class="math" data-tex="\(ce=0\)">\(ce=0\)</span> for each finite projection <span class="math" data-tex="\(e\)">\(e\)</span>, and <span class="math" data-tex="\(e\uparrow1\)">\(e\uparrow1\)</span> strongly gives <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. For a bounded increasing positive net <span class="math" data-tex="\(c_i\uparrow c\)">\(c_i\uparrow c\)</span>, TI-11 gives <span class="math" data-tex="\(L_{c_i}x\to L_cx\)">\(L_{c_i}x\to L_cx\)</span> for every <span class="math" data-tex="\(x\in L^2\)">\(x\in L^2\)</span>. The positive representation therefore preserves these suprema, which is normality in the bounded-map criterion NP-06.</p>
+<p>Right multiplication <span class="math" data-tex="\(R_cx=xc\)">\(R_cx=xc\)</span> is also bounded. Cyclicity gives <span class="math" data-tex="\(R_c^*=R_{c^*}\)">\(R_c^*=R_{c^*}\)</span>, and the measurable algebra gives <span class="math" data-tex="\(L_aR_b=R_bL_a\)">\(L_aR_b=R_bL_a\)</span>. The conjugate-linear map</p>
+<span class="math math-display" data-tex="\[
+J_\tau x=x^*
+\]">\[
+J_\tau x=x^*
+\]</span>
+<p>is an isometric involution, hence antiunitary, and <span class="math" data-tex="\(J_\tau L_cJ_\tau=R_{c^*}\)">\(J_\tau L_cJ_\tau=R_{c^*}\)</span>. These identities include every <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector. If <span class="math" data-tex="\(\tau(1)=\infty\)">\(\tau(1)=\infty\)</span>, the identity operator is not such a vector; no cyclic vector <span class="math" data-tex="\(\Lambda_\tau(1)\)">\(\Lambda_\tau(1)\)</span> has been inserted into the argument.</p>
+<h2 id="three-models-of-densities-and-integrability">Three models of densities and integrability</h2>
+<p><strong>An uncountable counting trace.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be any set and <span class="math" data-tex="\(M=\ell^\infty(I)\)">\(M=\ell^\infty(I)\)</span> act diagonally on <span class="math" data-tex="\(\ell^2(I)\)">\(\ell^2(I)\)</span>, with <span class="math" data-tex="\(\tau(f)=\sum_{i\in I}f(i)\)">\(\tau(f)=\sum_{i\in I}f(i)\)</span> for <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>. The sum means the supremum of finite partial sums. Faithfulness and normality follow coordinatewise, and finite-coordinate cutoffs prove semifiniteness. Each nonzero projection has trace at least one, so a high spectral tail of trace less than one is zero. Hence every measurable diagonal operator is bounded. For <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L^p(M,\tau)=\left\{x:I\to\mathbb C:\sum_i|x(i)|^p&lt;\infty\right\},\qquad
+\|x\|_p^p=\sum_i|x(i)|^p.
+\]">\[
+L^p(M,\tau)=\left\{x:I\to\mathbb C:\sum_i|x(i)|^p&lt;\infty\right\},\qquad
+\|x\|_p^p=\sum_i|x(i)|^p.
+\]</span>
+<p>Each displayed function is bounded and has at most countable support: for every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, the set where <span class="math" data-tex="\(|x(i)|\geq1/n\)">\(|x(i)|\geq1/n\)</span> is finite, and their union contains every nonzero coordinate. Thus an individual integrable density can have countable support even though <span class="math" data-tex="\(I\)">\(I\)</span> is uncountable. TI-06 identifies every normal functional with the absolutely summable coefficients of an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> density, agreeing with the concrete coordinate-predual calculation in NP-07. When <span class="math" data-tex="\(I\)">\(I\)</span> is uncountable, no such positive functional is faithful, since its support misses some coordinate. The trace and the results of the unit remain valid.</p>
+<p><strong>An integrable density with a finite upper exponent.</strong> Let <span class="math" data-tex="\(M=\prod_{n\geq1}M_2(\mathbb C)\)">\(M=\prod_{n\geq1}M_2(\mathbb C)\)</span>, with the faithful finite trace</p>
+<span class="math math-display" data-tex="\[
+\tau((b_n))=\sum_{n\geq1}2^{-3n}\operatorname{Tr}(b_n)
+\quad((b_n)\geq0).
+\]">\[
+\tau((b_n))=\sum_{n\geq1}2^{-3n}\operatorname{Tr}(b_n)
+\quad((b_n)\geq0).
+\]</span>
+<p>Normality is monotone convergence of nonnegative series; faithfulness is coordinatewise. Since <span class="math" data-tex="\(\tau(1)&lt;\infty\)">\(\tau(1)&lt;\infty\)</span>, semifiniteness is immediate. On the Hilbert direct sum of the defining two-dimensional representations, let <span class="math" data-tex="\(x\)">\(x\)</span> have blocks</p>
+<span class="math math-display" data-tex="\[
+x_n=2^n\begin{pmatrix}1&amp;1\\0&amp;0\end{pmatrix},\qquad
+D(x)=\{\xi:\sum_n\|x_n\xi_n\|^2&lt;\infty\}.
+\]">\[
+x_n=2^n\begin{pmatrix}1&amp;1\\0&amp;0\end{pmatrix},\qquad
+D(x)=\{\xi:\sum_n\|x_n\xi_n\|^2&lt;\infty\}.
+\]</span>
+<p>It is a closed densely defined affiliated operator: finite-block vectors are a dense domain, coordinate convergence proves closedness, and blockwise spectral calculus gives affiliation. The single nonzero singular value in block <span class="math" data-tex="\(n\)">\(n\)</span> is <span class="math" data-tex="\(\sqrt2\,2^n\)">\(\sqrt2\,2^n\)</span>. Its high spectral tail has trace <span class="math" data-tex="\(\sum_{\sqrt2\,2^n&gt;R}2^{-3n}\to0\)">\(\sum_{\sqrt2\,2^n&gt;R}2^{-3n}\to0\)</span>, proving measurability. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|x\|_p^p=2^{p/2}\sum_{n\geq1}2^{(p-3)n}&lt;\infty
+\quad\Longleftrightarrow\quad p&lt;3.
+\]">\[
+\|x\|_p^p=2^{p/2}\sum_{n\geq1}2^{(p-3)n}&lt;\infty
+\quad\Longleftrightarrow\quad p&lt;3.
+\]</span>
+<p>In particular <span class="math" data-tex="\(x\)">\(x\)</span> is an unbounded <span class="math" data-tex="\(L^1\)">\(L^1\)</span> density defining a normal complex functional, and is an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector, but it lies in no <span class="math" data-tex="\(L^p\)">\(L^p\)</span> with <span class="math" data-tex="\(p\geq3\)">\(p\geq3\)</span>. Its initial support in each block is the line through <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, while its final support is the line through <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>. Their traces agree although the projections do not commute. The polar supports used in the proofs are not redundant even in this elementary model.</p>
+<p><strong>Finite lower and upper exponent thresholds at once.</strong> Let <span class="math" data-tex="\(M=L^\infty(0,\infty)\)">\(M=L^\infty(0,\infty)\)</span> with Lebesgue trace, acting by multiplication on <span class="math" data-tex="\(L^2(0,\infty)\)">\(L^2(0,\infty)\)</span>. Consider the positive multiplication operator given by</p>
+<span class="math math-display" data-tex="\[
+f(t)=\begin{cases}t^{-1/4},&amp;0&lt;t&lt;1,\\t^{-1/2},&amp;t\geq1.\end{cases}
+\]">\[
+f(t)=\begin{cases}t^{-1/4},&amp;0&lt;t&lt;1,\\t^{-1/2},&amp;t\geq1.\end{cases}
+\]</span>
+<p>Its maximal multiplication domain is dense and its operator is closed. For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, its distribution is</p>
+<span class="math math-display" data-tex="\[
+d_f(a)=\begin{cases}a^{-2},&amp;0&lt;a&lt;1,\\a^{-4},&amp;a\geq1.\end{cases}
+\]">\[
+d_f(a)=\begin{cases}a^{-2},&amp;0&lt;a&lt;1,\\a^{-4},&amp;a\geq1.\end{cases}
+\]</span>
+<p>The high tails tend to zero, so it is measurable. Formula (TI.5) gives <span class="math" data-tex="\(\mu_s(f)=s^{-1/4}\)">\(\mu_s(f)=s^{-1/4}\)</span> for <span class="math" data-tex="\(0&lt;s\leq1\)">\(0&lt;s\leq1\)</span>, and <span class="math" data-tex="\(s^{-1/2}\)">\(s^{-1/2}\)</span> for <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+f\in L^p\quad\Longleftrightarrow\quad2&lt;p&lt;4,
+\qquad
+\|f\|_p^p=\frac1{1-p/4}+\frac1{p/2-1}
+\quad(2&lt;p&lt;4).
+\]">\[
+f\in L^p\quad\Longleftrightarrow\quad2&lt;p&lt;4,
+\qquad
+\|f\|_p^p=\frac1{1-p/4}+\frac1{p/2-1}
+\quad(2&lt;p&lt;4).
+\]</span>
+<p>The divergence at the two endpoints has different causes: the singularity near zero controls the upper exponent, while decay over a region of infinite measure controls the lower exponent. Thus the <span class="math" data-tex="\(L^p\)">\(L^p\)</span> spaces need not be nested when the total trace is infinite.</p>
+<h2 id="problems-with-complete-solutions">Problems with complete solutions</h2>
+<p><strong>Problem 1: recover the support of a normal positive functional.</strong> Let <span class="math" data-tex="\(h\in L^1_+\)">\(h\in L^1_+\)</span>, and let <span class="math" data-tex="\(\varphi(a)=\tau(ha)\)">\(\varphi(a)=\tau(ha)\)</span>. Prove that the least projection <span class="math" data-tex="\(p\)">\(p\)</span> for which <span class="math" data-tex="\(\varphi(1-p)=0\)">\(\varphi(1-p)=0\)</span> is <span class="math" data-tex="\(s(h)\)">\(s(h)\)</span>. Also show that the finite-projection compressions <span class="math" data-tex="\(ehe\)">\(ehe\)</span> approach <span class="math" data-tex="\(h\)">\(h\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, so their normal functionals approach <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> in norm.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(k=h^{1/2}\in L^2\)">\(k=h^{1/2}\in L^2\)</span>, using <span class="math" data-tex="\(\|k\|_2^2=\tau(h)\)">\(\|k\|_2^2=\tau(h)\)</span>. For a projection <span class="math" data-tex="\(p\)">\(p\)</span>, bounded cyclicity followed by the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> pairing gives</p>
+<span class="math math-display" data-tex="\[
+\varphi(1-p)=\tau((1-p)h(1-p))
+=\|k(1-p)\|_2^2.
+\]">\[
+\varphi(1-p)=\tau((1-p)h(1-p))
+=\|k(1-p)\|_2^2.
+\]</span>
+<p>The first equality follows from <span class="math" data-tex="\(\tau(h(1-p))=\tau((1-p)h)\)">\(\tau(h(1-p))=\tau((1-p)h)\)</span>, then applying bounded cyclicity to <span class="math" data-tex="\((1-p)h\in L^1\)">\((1-p)h\in L^1\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> to see its <span class="math" data-tex="\(p\)">\(p\)</span>-part has zero trace. The second uses the closed product <span class="math" data-tex="\((k(1-p))^*k(1-p)=(1-p)h(1-p)\)">\((k(1-p))^*k(1-p)=(1-p)h(1-p)\)</span>. Therefore <span class="math" data-tex="\(\varphi(1-p)=0\)">\(\varphi(1-p)=0\)</span> if and only if <span class="math" data-tex="\(k(1-p)=0\)">\(k(1-p)=0\)</span>. In the measurable algebra this zero product is the ordinary right-projection composition, so <span class="math" data-tex="\((1-p)H\subseteq\ker k\)">\((1-p)H\subseteq\ker k\)</span>. This is equivalent to <span class="math" data-tex="\(s(h)=s(k)\leq p\)">\(s(h)=s(k)\leq p\)</span>, proving the claim, including <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. Finally TI-11 gives <span class="math" data-tex="\(eh,h e\to h\)">\(eh,h e\to h\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\|h-ehe\|_1\leq\|h-eh\|_1+\|e(h-he)\|_1
+\leq\|h-eh\|_1+\|h-he\|_1\longrightarrow0.
+\]">\[
+\|h-ehe\|_1\leq\|h-eh\|_1+\|e(h-he)\|_1
+\leq\|h-eh\|_1+\|h-he\|_1\longrightarrow0.
+\]</span>
+<p>TI-06 converts this to precisely the norm convergence of the corresponding functionals. The net of all finite projections need not be countable.</p>
+<p><strong>Problem 2: why fixed-vector continuity is the right statement.</strong> In <span class="math" data-tex="\(M=B(\ell^2(\mathbb N))\)">\(M=B(\ell^2(\mathbb N))\)</span> with canonical trace, let <span class="math" data-tex="\(a_n\)">\(a_n\)</span> project onto the span of the basis vectors with index greater than <span class="math" data-tex="\(n\)">\(n\)</span>. Prove that <span class="math" data-tex="\(a_n\to0\)">\(a_n\to0\)</span> strongly-star, that <span class="math" data-tex="\(a_nx,xa_n\to0\)">\(a_nx,xa_n\to0\)</span> in <span class="math" data-tex="\(L^p\)">\(L^p\)</span>-norm for each fixed <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span>, <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>, and that both multiplication operators on <span class="math" data-tex="\(L^p\)">\(L^p\)</span> nevertheless have norm one.</p>
+<p><strong>Solution.</strong> For every <span class="math" data-tex="\(\xi\in\ell^2\)">\(\xi\in\ell^2\)</span>, <span class="math" data-tex="\(\|a_n\xi\|^2=\sum_{j&gt;n}|\xi_j|^2\to0\)">\(\|a_n\xi\|^2=\sum_{j&gt;n}|\xi_j|^2\to0\)</span>. The projections are self-adjoint, so the convergence is strong-star. The fixed-vector assertions follow from TI-11. For the operator norms, bounded module estimates give an upper bound of one. Let <span class="math" data-tex="\(e_{n+1}\)">\(e_{n+1}\)</span> be the rank-one projection onto the next basis vector. Its <span class="math" data-tex="\(p\)">\(p\)</span>-norm is one, and <span class="math" data-tex="\(a_ne_{n+1}=e_{n+1}a_n=e_{n+1}\)">\(a_ne_{n+1}=e_{n+1}a_n=e_{n+1}\)</span>, giving the lower bound one. The norming vector changes with <span class="math" data-tex="\(n\)">\(n\)</span>; it does not contradict fixed-vector convergence. At the bounded endpoint, the fixed vector <span class="math" data-tex="\(x=1\in M\)">\(x=1\in M\)</span> gives <span class="math" data-tex="\(\|a_n1\|=1\)">\(\|a_n1\|=1\)</span>, so that endpoint cannot be added to TI-11.</p>
+<p><strong>Problem 3: endpoint atoms in the cutoff formula.</strong> On <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> take <span class="math" data-tex="\(\tau=\tfrac12\operatorname{Tr}\)">\(\tau=\tfrac12\operatorname{Tr}\)</span> and <span class="math" data-tex="\(a=\operatorname{diag}(3,1)\)">\(a=\operatorname{diag}(3,1)\)</span>. Compute <span class="math" data-tex="\(d_a\)">\(d_a\)</span>, <span class="math" data-tex="\(\mu_t(a)\)">\(\mu_t(a)\)</span>, and <span class="math" data-tex="\(\|a\|_p\)">\(\|a\|_p\)</span>, and exhibit a unit <span class="math" data-tex="\(L^q\)">\(L^q\)</span> norming density for each <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>.</p>
+<p><strong>Solution.</strong> The strict distribution is one for <span class="math" data-tex="\(0\leq s&lt;1\)">\(0\leq s&lt;1\)</span>, one half for <span class="math" data-tex="\(1\leq s&lt;3\)">\(1\leq s&lt;3\)</span>, and zero for <span class="math" data-tex="\(s\geq3\)">\(s\geq3\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\mu_t(a)=\begin{cases}3,&amp;0&lt;t&lt;1/2,\\1,&amp;1/2\leq t&lt;1,\\0,&amp;t\geq1,\end{cases}
+\qquad \|a\|_p=\left(\frac{3^p+1}{2}\right)^{1/p}.
+\]">\[
+\mu_t(a)=\begin{cases}3,&amp;0&lt;t&lt;1/2,\\1,&amp;1/2\leq t&lt;1,\\0,&amp;t\geq1,\end{cases}
+\qquad \|a\|_p=\left(\frac{3^p+1}{2}\right)^{1/p}.
+\]</span>
+<p>At <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span> a defect of exactly one half is allowed, so the cutoff can discard the larger eigenvalue. For <span class="math" data-tex="\(q=p/(p-1)\)">\(q=p/(p-1)\)</span>, put <span class="math" data-tex="\(b=a^{p-1}/\|a\|_p^{p-1}\)">\(b=a^{p-1}/\|a\|_p^{p-1}\)</span>. Since <span class="math" data-tex="\((p-1)q=p\)">\((p-1)q=p\)</span>, <span class="math" data-tex="\(\|b\|_q=1\)">\(\|b\|_q=1\)</span>, and direct trace calculation gives <span class="math" data-tex="\(\tau(ab)=\|a\|_p\)">\(\tau(ab)=\|a\|_p\)</span>. This checks both the endpoint conventions in TI-02 and the exact constant in Hölder.</p>
+<p><strong>Problem 4: compatible finite pieces can fail to be measurable.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(e_N\)">\(e_N\)</span> project onto the first <span class="math" data-tex="\(N\)">\(N\)</span> basis vectors, and let <span class="math" data-tex="\(h_N\)">\(h_N\)</span> have diagonal entries <span class="math" data-tex="\(1,2,\ldots,N,0,0,\ldots\)">\(1,2,\ldots,N,0,0,\ldots\)</span>. Show that these pieces glue to a closed affiliated operator, but cannot arise from the uniformly bounded dual construction of TI-12–14 for any finite <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>Solution.</strong> The identity <span class="math" data-tex="\(h_Me_N=h_N\)">\(h_Me_N=h_N\)</span> holds for <span class="math" data-tex="\(M\geq N\)">\(M\geq N\)</span>. On finite-coordinate vectors the common operator is multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>; its closure is</p>
+<span class="math math-display" data-tex="\[
+D(T)=\{\xi:\sum_n n^2|\xi_n|^2&lt;\infty\},\qquad
+(T\xi)_n=n\xi_n.
+\]">\[
+D(T)=\{\xi:\sum_n n^2|\xi_n|^2&lt;\infty\},\qquad
+(T\xi)_n=n\xi_n.
+\]</span>
+<p>Coordinate convergence proves closedness, and finite-coordinate truncation converges in its graph norm, identifying this precise closure. It is affiliated with <span class="math" data-tex="\(B(\ell^2)\)">\(B(\ell^2)\)</span>, whose commutant consists of scalars. However every high spectral tail has infinite canonical trace, so MT-11 says it is not measurable. Moreover <span class="math" data-tex="\(\|h_N\|_q^q=\sum_{n=1}^N n^q\to\infty\)">\(\|h_N\|_q^q=\sum_{n=1}^N n^q\to\infty\)</span>. If a bounded functional on <span class="math" data-tex="\(L^p\)">\(L^p\)</span> produced these local densities, its value on the rank-one projection onto coordinate <span class="math" data-tex="\(n\)">\(n\)</span>, of <span class="math" data-tex="\(p\)">\(p\)</span>-norm one, would be <span class="math" data-tex="\(n\)">\(n\)</span>; this contradicts boundedness. Compatibility and finite traces of retained projections do not replace the uniform local norm bound.</p>
+<p><strong>Problem 5: a pointwise Fatou argument for nets can fail.</strong> Order the finite subsets <span class="math" data-tex="\(F\subseteq[0,1]\)">\(F\subseteq[0,1]\)</span> by inclusion, and put <span class="math" data-tex="\(f_F=1_F\)">\(f_F=1_F\)</span>. Explain why pointwise convergence and the ordinary sequence version of Fatou cannot replace the argument in TI-03.</p>
+<p><strong>Solution.</strong> For each <span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span>, every index beyond <span class="math" data-tex="\(\{t\}\)">\(\{t\}\)</span> has <span class="math" data-tex="\(f_F(t)=1\)">\(f_F(t)=1\)</span>, so the net converges pointwise to one. Every <span class="math" data-tex="\(f_F\)">\(f_F\)</span> has Lebesgue integral zero. Thus the putative net inequality <span class="math" data-tex="\(\int\liminf_F f_F\leq\liminf_F\int f_F\)">\(\int\liminf_F f_F\leq\liminf_F\int f_F\)</span> would read <span class="math" data-tex="\(1\leq0\)">\(1\leq0\)</span>, which is false. In the space of functions modulo almost-everywhere equality, every <span class="math" data-tex="\(f_F\)">\(f_F\)</span> is zero, so the net converges in measure to zero, not to one. There is no contradiction with TI-03: its one directed tail controls all cutoff integration variables simultaneously and proves lower semicontinuity for the actual measure limit. There is no single null set outside which all the representatives in this uncountable net vanish.</p>
+<h2 id="interfaces-for-the-next-constructions">Interfaces for the next constructions</h2>
+<p>The trace now has a positive extended integral on all positive measurable operators and a finite linear integral on precisely <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. That space equals the full predual. Every finite real exponent at least one gives a complete concrete <span class="math" data-tex="\(L^p\)">\(L^p\)</span> space; conjugate exponents have an exact bilinear duality and every integrable operator has a polar-power factorization. The Hilbert member is canonically the trace GNS representation, with both bounded module actions visible.</p>
+<p>Two further proof directions use these results. Comparing positive <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vectors through their spectral projections requires a joint scalar measure for the commuting left and right spectral actions; its projection-distance estimate is a later obligation. Moving from scalar traces to general operator-valued weights requires an extended-positive target and new domain and normality arguments. The present integral is a scalar trace, so its cyclicity cannot be transferred to a nontracial weight by changing notation. Nontracial <span class="math" data-tex="\(L^p\)">\(L^p\)</span> constructions, those projection comparison estimates, and the remaining measurable-operator exercise and correspondence/fusion inventory remain outside the claims proved in this unit. The incidental source assertion about densities for arbitrary unbounded normal semifinite weights belongs to the general weight Radon–Nikodym theory. TI-06 proves the full bounded-functional predual theorem; it does not assert that every such unbounded weight has an integrable or even trace-measurable density.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-CW.html">← Corner weights tested on all positive energies</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-SL.html">Spectral layers in a semifinite trace algebra →</a></span></nav>
+<p class="small source-link"><a href="src/trace-integration.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

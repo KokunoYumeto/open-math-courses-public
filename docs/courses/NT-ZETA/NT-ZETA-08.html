@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nonvanishing on the line σ = 1 and the zero-free region · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-08.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 8 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="nonvanishing-on-the-line-one-and-a-zero-free-region">Nonvanishing on the line one and a zero-free region</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The Euler product excludes zeros to the right of the line <span class="math" data-tex="$\sigma=1$">$\sigma=1$</span>. To cross that line we need more than convergence: positivity connects the behaviour of zeta at three different heights. We first exclude zeros on the line, then quantify the argument to exclude a thin region on its left. Finally we control the logarithm, logarithmic derivative and reciprocal throughout a smaller region. Those estimates will permit contour shifts in prime-counting formulas.</p>
+<p>We use the Euler product, continuation, residue at one and Landau's theorem from <a href="NT-ZETA-01.html">Dirichlet series and the Euler product</a>, Theorems 2.2, 5.1 and 4.1; the gamma logarithmic derivative from <a href="NT-ZETA-03.html">The Gamma function and Stirling's formula</a>, Proposition 5.1; and the partial fractions and Borel–Carathéodory theorem from <a href="NT-ZETA-05.html">Entire functions of order one and the Hadamard product of xi</a>, Corollary 5.2 and Theorem 2.1. The growth framework is <a href="NT-ZETA-06.html">Growth in the critical strip</a>. The nontrivial zeros <span class="math" data-tex="$\rho=\beta+i\gamma$">$\rho=\beta+i\gamma$</span> are counted with multiplicity. Initially <span class="math" data-tex="$0\le\beta\le1$">$0\le\beta\le1$</span>; the present argument makes the inequalities strict. Put <span class="math" data-tex="$\tau=|t|+4$">$\tau=|t|+4$</span>, <span class="math" data-tex="$L=\log\tau$">$L=\log\tau$</span> and <span class="math" data-tex="$\ell=\log(|t|+2)$">$\ell=\log(|t|+2)$</span>. The freely readable comparisons are Koukoulopoulos’s preliminary version, Chapter 8, and Zagier’s author-hosted article listed below.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-positivity-at-three-heights">1. Positivity at three heights</h2>
+<p>The identity
+<span class="math math-display" data-tex="$$
+3+4\cos u+\cos(2u)=2(1+\cos u)^2\ge0
+\tag{1.1}
+$$">$$
+3+4\cos u+\cos(2u)=2(1+\cos u)^2\ge0
+\tag{1.1}
+$$</span>
+has a coefficient 4 at the middle height and a coefficient 3 at height zero. This imbalance will overcome the pole.</p>
+<p><strong>Theorem 1.1.</strong> For <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span> and real <span class="math" data-tex="$t$">$t$</span>,
+<span class="math math-display" data-tex="$$
+|\zeta(\sigma)^3\zeta(\sigma+it)^4\zeta(\sigma+2it)|\ge1.
+\tag{1.2}
+$$">$$
+|\zeta(\sigma)^3\zeta(\sigma+it)^4\zeta(\sigma+2it)|\ge1.
+\tag{1.2}
+$$</span>
+Consequently <span class="math" data-tex="$\zeta(1+it)\ne0$">$\zeta(1+it)\ne0$</span> for <span class="math" data-tex="$t\ne0$">$t\ne0$</span>. At <span class="math" data-tex="$t=0$">$t=0$</span>, zeta has its simple pole of residue one.</p>
+<p><strong>Proof.</strong> The absolutely convergent Euler logarithm is
+<span class="math math-display" data-tex="$$
+\log\zeta(s)=\sum_p\sum_{m\ge1}\frac{p^{-ms}}m.
+$$">$$
+\log\zeta(s)=\sum_p\sum_{m\ge1}\frac{p^{-ms}}m.
+$$</span>
+Add three times its real part at <span class="math" data-tex="$\sigma$">$\sigma$</span>, four times at <span class="math" data-tex="$\sigma+it$">$\sigma+it$</span>, and once at <span class="math" data-tex="$\sigma+2it$">$\sigma+2it$</span>. Every term is <span class="math" data-tex="$p^{-m\sigma}/m$">$p^{-m\sigma}/m$</span> times (1.1), with <span class="math" data-tex="$u=mt\log p$">$u=mt\log p$</span>. The sum is nonnegative; exponentiation gives (1.2).</p>
+<p>If <span class="math" data-tex="$1+it$">$1+it$</span> were a zero of order <span class="math" data-tex="$r\ge1$">$r\ge1$</span> with <span class="math" data-tex="$t\ne0$">$t\ne0$</span>, then <span class="math" data-tex="$\zeta(\sigma+it)=O((\sigma-1)^r)$">$\zeta(\sigma+it)=O((\sigma-1)^r)$</span>. The first factor in (1.2) is <span class="math" data-tex="$O((\sigma-1)^{-3})$">$O((\sigma-1)^{-3})$</span>, and the factor at <span class="math" data-tex="$2t$">$2t$</span> stays bounded because <span class="math" data-tex="$1+2it$">$1+2it$</span> is not the pole. Their product would tend to zero, since <span class="math" data-tex="$4r-3\ge1$">$4r-3\ge1$</span>. This contradicts (1.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Differentiating the Euler logarithm gives another form of the same positivity. With <span class="math" data-tex="$A(s)=-\zeta&#x27;(s)/\zeta(s)$">$A(s)=-\zeta&#x27;(s)/\zeta(s)$</span>,
+<span class="math math-display" data-tex="$$
+A(s)=\sum_{n\ge1}\frac{\Lambda(n)}{n^s},\qquad
+3A(\sigma)+4\Re A(\sigma+it)+\Re A(\sigma+2it)\ge0
+\quad(\sigma&gt;1).
+\tag{1.3}
+$$">$$
+A(s)=\sum_{n\ge1}\frac{\Lambda(n)}{n^s},\qquad
+3A(\sigma)+4\Re A(\sigma+it)+\Re A(\sigma+2it)\ge0
+\quad(\sigma&gt;1).
+\tag{1.3}
+$$</span>
+Indeed the coefficients <span class="math" data-tex="$\Lambda(n)n^{-\sigma}$">$\Lambda(n)n^{-\sigma}$</span> are nonnegative, so (1.1) applies term by term. We will use (1.3), rather than differentiating the inequality (1.2).</p>
+<h2 id="2-reading-nearby-zeros-from-partial-fractions">2. Reading nearby zeros from partial fractions</h2>
+<p>Write <span class="math" data-tex="$\psi_\Gamma=\Gamma&#x27;/\Gamma$">$\psi_\Gamma=\Gamma&#x27;/\Gamma$</span>, to distinguish it from Chebyshev's function. We need a small explicit estimate before using the gamma term.</p>
+<p><strong>Lemma 2.1.</strong> For <span class="math" data-tex="$1\le\sigma\le2$">$1\le\sigma\le2$</span>,
+<span class="math math-display" data-tex="$$
+\Re\psi_\Gamma(1+(\sigma+it)/2)\le2+\log(|t|+4).
+\tag{2.1}
+$$">$$
+\Re\psi_\Gamma(1+(\sigma+it)/2)\le2+\log(|t|+4).
+\tag{2.1}
+$$</span>
+For <span class="math" data-tex="$-1\le\sigma\le2$">$-1\le\sigma\le2$</span>, its modulus is <span class="math" data-tex="$O(\log(|t|+4))$">$O(\log(|t|+4))$</span>.</p>
+<p><strong>Proof.</strong> The gamma lesson proves the locally convergent series
+<span class="math math-display" data-tex="$$
+\psi_\Gamma(z)=-\gamma_E+\sum_{n=0}^\infty
+\left(\frac1{n+1}-\frac1{n+z}\right),\qquad \Re z&gt;0.
+\tag{2.2}
+$$">$$
+\psi_\Gamma(z)=-\gamma_E+\sum_{n=0}^\infty
+\left(\frac1{n+1}-\frac1{n+z}\right),\qquad \Re z&gt;0.
+\tag{2.2}
+$$</span>
+Here <span class="math" data-tex="$\gamma_E$">$\gamma_E$</span> is Euler's constant. Let <span class="math" data-tex="$R=\lceil|z|\rceil$">$R=\lceil|z|\rceil$</span>. If <span class="math" data-tex="$\Re z\ge1$">$\Re z\ge1$</span>, the real part of the first <span class="math" data-tex="$R$">$R$</span> summands is at most <span class="math" data-tex="$H_R\le1+\log R$">$H_R\le1+\log R$</span>. The remaining summands have total modulus at most
+<span class="math math-display" data-tex="$$
+|z-1|\sum_{n\ge R}\frac1{(n+1)^2}\le |z-1|/R\le1.
+$$">$$
+|z-1|\sum_{n\ge R}\frac1{(n+1)^2}\le |z-1|/R\le1.
+$$</span>
+We used <span class="math" data-tex="$\gamma_E\ge0$">$\gamma_E\ge0$</span> and <span class="math" data-tex="$|z-1|\le|z|$">$|z-1|\le|z|$</span>. For <span class="math" data-tex="$z=1+(\sigma+it)/2$">$z=1+(\sigma+it)/2$</span>, <span class="math" data-tex="$R\le|z|+1\le3+|t|/2\le\tau$">$R\le|z|+1\le3+|t|/2\le\tau$</span>, proving (2.1). If <span class="math" data-tex="$\Re z\ge1/2$">$\Re z\ge1/2$</span>, take moduli also in the first <span class="math" data-tex="$R$">$R$</span> terms and use <span class="math" data-tex="$|n+z|\ge n+1/2$">$|n+z|\ge n+1/2$</span>. This bounds that part by <span class="math" data-tex="$O(1+\log R)$">$O(1+\log R)$</span> and the tail by an absolute constant, proving the second assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The real part of the partial-fraction formula from the preceding lesson is absolutely convergent. Its constant cancels because <span class="math" data-tex="$B+\sum_\rho\Re(1/\rho)=0$">$B+\sum_\rho\Re(1/\rho)=0$</span>. Thus, away from zeros and poles,
+<span class="math math-display" data-tex="$$
+\Re A(s)=Q(s)-\sum_\rho\frac{\sigma-\beta}{(\sigma-\beta)^2+(t-\gamma)^2},\qquad
+Q(s)=\Re\frac1{s-1}-\frac12\log\pi+
+\frac12\Re\psi_\Gamma(1+s/2).
+\tag{2.3}
+$$">$$
+\Re A(s)=Q(s)-\sum_\rho\frac{\sigma-\beta}{(\sigma-\beta)^2+(t-\gamma)^2},\qquad
+Q(s)=\Re\frac1{s-1}-\frac12\log\pi+
+\frac12\Re\psi_\Gamma(1+s/2).
+\tag{2.3}
+$$</span>
+Absolute convergence follows from <span class="math" data-tex="$\sum_\rho|\rho|^{-2}&lt;\infty$">$\sum_\rho|\rho|^{-2}&lt;\infty$</span> and bounded real parts of the zeros, for fixed <span class="math" data-tex="$s$">$s$</span>. In particular every zero term is nonnegative when <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>.</p>
+<p><strong>Theorem 2.2 (local zero count and local expansion).</strong> For every real <span class="math" data-tex="$t$">$t$</span>,
+<span class="math math-display" data-tex="$$
+\#\{\rho:|\gamma-t|\le1\}\le10\log(|t|+4).
+\tag{2.4}
+$$">$$
+\#\{\rho:|\gamma-t|\le1\}\le10\log(|t|+4).
+\tag{2.4}
+$$</span>
+Uniformly for <span class="math" data-tex="$-1\le\sigma\le2$">$-1\le\sigma\le2$</span>, away from zeros and the pole,
+<span class="math math-display" data-tex="$$
+\frac{\zeta&#x27;}{\zeta}(s)=-\frac1{s-1}
++\sum_{|\gamma-t|\le1}\frac1{s-\rho}+O(\log(|t|+4)).
+\tag{2.5}
+$$">$$
+\frac{\zeta&#x27;}{\zeta}(s)=-\frac1{s-1}
++\sum_{|\gamma-t|\le1}\frac1{s-\rho}+O(\log(|t|+4)).
+\tag{2.5}
+$$</span>
+For <span class="math" data-tex="$1&lt;\sigma\le2$">$1&lt;\sigma\le2$</span>, <span class="math" data-tex="$|t|\ge2$">$|t|\ge2$</span>, this implies
+<span class="math math-display" data-tex="$$
+-\Re\frac{\zeta&#x27;}{\zeta}(s)
+\le-\sum_{|\gamma-t|\le1}\Re\frac1{s-\rho}+O(L).
+\tag{2.6}
+$$">$$
+-\Re\frac{\zeta&#x27;}{\zeta}(s)
+\le-\sum_{|\gamma-t|\le1}\Re\frac1{s-\rho}+O(L).
+\tag{2.6}
+$$</span></p>
+<p><strong>Proof.</strong> At <span class="math" data-tex="$s_0=2+it$">$s_0=2+it$</span>, absolute convergence gives
+<span class="math math-display" data-tex="$$
+|\zeta&#x27;/\zeta(s_0)|\le\sum_{n\ge2}\frac{\log n}{n^2}&lt;2.
+$$">$$
+|\zeta&#x27;/\zeta(s_0)|\le\sum_{n\ge2}\frac{\log n}{n^2}&lt;2.
+$$</span>
+For the last inequality, <span class="math" data-tex="$\log x/x^2$">$\log x/x^2$</span> decreases for <span class="math" data-tex="$x\ge2$">$x\ge2$</span>, so the sum is at most <span class="math" data-tex="$\log2/4+(1+\log2)/2&lt;2$">$\log2/4+(1+\log2)/2&lt;2$</span>. Equation (2.3) and Lemma 2.1 therefore give
+<span class="math math-display" data-tex="$$
+W(t):=\sum_\rho\frac{2-\beta}{(2-\beta)^2+(t-\gamma)^2}
+\le4+\tfrac12L\le4L.
+\tag{2.7}
+$$">$$
+W(t):=\sum_\rho\frac{2-\beta}{(2-\beta)^2+(t-\gamma)^2}
+\le4+\tfrac12L\le4L.
+\tag{2.7}
+$$</span>
+Each term with <span class="math" data-tex="$|t-\gamma|\le1$">$|t-\gamma|\le1$</span> is at least <span class="math" data-tex="$2/5$">$2/5$</span>, since <span class="math" data-tex="$1\le2-\beta\le2$">$1\le2-\beta\le2$</span>. This proves (2.4).</p>
+<p>Subtract the complex partial fractions at <span class="math" data-tex="$s_0$">$s_0$</span> from those at <span class="math" data-tex="$s$">$s$</span>. The constants and the <span class="math" data-tex="$1/\rho$">$1/\rho$</span> terms cancel. For <span class="math" data-tex="$|t-\gamma|&gt;1$">$|t-\gamma|&gt;1$</span>,
+<span class="math math-display" data-tex="$$
+\left|\frac1{s-\rho}-\frac1{s_0-\rho}\right|
+\le\frac3{|t-\gamma|^2}.
+$$">$$
+\left|\frac1{s-\rho}-\frac1{s_0-\rho}\right|
+\le\frac3{|t-\gamma|^2}.
+$$</span>
+Moreover the term in (2.7) is at least <span class="math" data-tex="$1/(5|t-\gamma|^2)$">$1/(5|t-\gamma|^2)$</span> in this range, so these differences sum to <span class="math" data-tex="$O(L)$">$O(L)$</span>. For nearby zeros, the fractions <span class="math" data-tex="$1/(s_0-\rho)$">$1/(s_0-\rho)$</span> have modulus at most one and total <span class="math" data-tex="$O(L)$">$O(L)$</span> by (2.4). The two gamma terms are <span class="math" data-tex="$O(L)$">$O(L)$</span> by Lemma 2.1, the logarithmic derivative at <span class="math" data-tex="$s_0$">$s_0$</span> is bounded, and <span class="math" data-tex="$1/(s_0-1)$">$1/(s_0-1)$</span> is bounded. The surviving pole and nearby fractions give (2.5). Taking real parts, dropping the bounded pole at <span class="math" data-tex="$|t|\ge2$">$|t|\ge2$</span>, proves (2.6). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This proof uses the already proved Hadamard product and a positive kernel at the safe line <span class="math" data-tex="$\sigma=2$">$\sigma=2$</span>. It does not require the precise asymptotic count of zeros by height.</p>
+<h2 id="3-a-quantitative-distance-from-the-line-one">3. A quantitative distance from the line one</h2>
+<p><strong>Lemma 3.1 (an explicit neighbourhood of the pole).</strong> The holomorphic function <span class="math" data-tex="$F(s)=(s-1)\zeta(s)$">$F(s)=(s-1)\zeta(s)$</span> is nonzero for <span class="math" data-tex="$|s-1|\le1/4$">$|s-1|\le1/4$</span>.</p>
+<p><strong>Proof.</strong> The continuation formula from the first lesson gives
+<span class="math math-display" data-tex="$$
+F(s)=s-s(s-1)\int_1^\infty\frac{\{x\}}{x^{s+1}}\,dx
+\quad(\sigma&gt;0).
+$$">$$
+F(s)=s-s(s-1)\int_1^\infty\frac{\{x\}}{x^{s+1}}\,dx
+\quad(\sigma&gt;0).
+$$</span>
+On the stated disk, <span class="math" data-tex="$\sigma\ge3/4$">$\sigma\ge3/4$</span> and <span class="math" data-tex="$|s|\le5/4$">$|s|\le5/4$</span>. Hence
+<span class="math math-display" data-tex="$$
+|F(s)-1|\le|s-1|\left(1+\frac{|s|}{\sigma}\right)
+\le\frac14\left(1+\frac53\right)=\frac23&lt;1.
+\tag{3.1}
+$$">$$
+|F(s)-1|\le|s-1|\left(1+\frac{|s|}{\sigma}\right)
+\le\frac14\left(1+\frac53\right)=\frac23&lt;1.
+\tag{3.1}
+$$</span>
+The formula extends through <span class="math" data-tex="$s=1$">$s=1$</span>, where <span class="math" data-tex="$F(1)=1$">$F(1)=1$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.2 (de la Vallée Poussin region, with a proof constant).</strong> Let
+<span class="math math-display" data-tex="$$
+C=\frac1{2000},\qquad c=\frac1{10000}.
+$$">$$
+C=\frac1{2000},\qquad c=\frac1{10000}.
+$$</span>
+Zeta has no zero in
+<span class="math math-display" data-tex="$$
+\sigma\ge1-\frac C{\log(|t|+2)}.
+\tag{3.2}
+$$">$$
+\sigma\ge1-\frac C{\log(|t|+2)}.
+\tag{3.2}
+$$</span>
+In particular it has no zero in the region with <span class="math" data-tex="$c$">$c$</span> in place of <span class="math" data-tex="$C$">$C$</span>. The point <span class="math" data-tex="$s=1$">$s=1$</span> is a pole, not a holomorphic value of zeta.</p>
+<p><strong>Proof.</strong> Consider a nontrivial zero <span class="math" data-tex="$\beta+it$">$\beta+it$</span> with <span class="math" data-tex="$|t|\ge1/8$">$|t|\ge1/8$</span>. For <span class="math" data-tex="$1&lt;\sigma\le2$">$1&lt;\sigma\le2$</span>, (2.1) and
+<span class="math math-display" data-tex="$$
+\Re\frac1{\sigma-1+it}\le\frac1{2|t|}
+$$">$$
+\Re\frac1{\sigma-1+it}\le\frac1{2|t|}
+$$</span>
+give <span class="math" data-tex="$Q(\sigma+it)\le5L$">$Q(\sigma+it)\le5L$</span>. At height <span class="math" data-tex="$2t$">$2t$</span> they give <span class="math" data-tex="$Q(\sigma+2it)\le8L$">$Q(\sigma+2it)\le8L$</span>, because <span class="math" data-tex="$\log(2|t|+4)\le(3/2)L$">$\log(2|t|+4)\le(3/2)L$</span>. On the real line the same estimates, or (2.2), give <span class="math" data-tex="$A(\sigma)\le1/(\sigma-1)+2$">$A(\sigma)\le1/(\sigma-1)+2$</span>. In (2.3), keep the term of the chosen zero at height <span class="math" data-tex="$t$">$t$</span> and drop every other nonnegative term. Insert these bounds into (1.3):
+<span class="math math-display" data-tex="$$
+0\le\frac3{\sigma-1}+40L-\frac4{\sigma-\beta}.
+\tag{3.3}
+$$">$$
+0\le\frac3{\sigma-1}+40L-\frac4{\sigma-\beta}.
+\tag{3.3}
+$$</span>
+The constant 40 exceeds <span class="math" data-tex="$28+6/\log4$">$28+6/\log4$</span>, so it covers all the displayed errors.</p>
+<p>Set <span class="math" data-tex="$\eta=\sigma-1=1/(160L)$">$\eta=\sigma-1=1/(160L)$</span> and <span class="math" data-tex="$d=1-\beta$">$d=1-\beta$</span>. Then (3.3) implies
+<span class="math math-display" data-tex="$$
+\eta+d\ge\frac{4\eta}{3+40/160}=\frac{16}{13}\eta,
+\qquad d\ge\frac3{2080L}.
+\tag{3.4}
+$$">$$
+\eta+d\ge\frac{4\eta}{3+40/160}=\frac{16}{13}\eta,
+\qquad d\ge\frac3{2080L}.
+\tag{3.4}
+$$</span>
+Since <span class="math" data-tex="$|t|+4\le(|t|+2)^2$">$|t|+4\le(|t|+2)^2$</span>, we have <span class="math" data-tex="$L\le2\ell$">$L\le2\ell$</span>, and thus <span class="math" data-tex="$d\ge3/(4160\ell)&gt;C/\ell$">$d\ge3/(4160\ell)&gt;C/\ell$</span>. This excludes every such zero from the closed region (3.2).</p>
+<p>If <span class="math" data-tex="$|t|&lt;1/8$">$|t|&lt;1/8$</span> and <span class="math" data-tex="$\sigma\le1$">$\sigma\le1$</span> is in (3.2), then <span class="math" data-tex="$1-\sigma\le C/\log2&lt;1/1000$">$1-\sigma\le C/\log2&lt;1/1000$</span>. Therefore <span class="math" data-tex="$|s-1|&lt;1/4$">$|s-1|&lt;1/4$</span> and Lemma 3.1 excludes a zero. The half-plane <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span> was already covered by the Euler product. Trivial zeros, at negative even integers, do not belong to (3.2). This completes the proof for every height. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The constants are deliberately modest. They are the actual output of the inequalities above, rather than an imported numerical zero-free theorem. Retaining the stronger constant <span class="math" data-tex="$C=5c$">$C=5c$</span> leaves enough room for the analytic estimates that follow.</p>
+<h2 id="4-the-logarithm-logarithmic-derivative-and-reciprocal">4. The logarithm, logarithmic derivative and reciprocal</h2>
+<p>The local formula initially gives a squared logarithm: there are <span class="math" data-tex="$O(\ell)$">$O(\ell)$</span> nearby zeros and each reciprocal distance is <span class="math" data-tex="$O(\ell)$">$O(\ell)$</span>. We can improve this because their real parts all have the same sign on a wider region. An upper bound on the real part of an analytic function controls its modulus on a smaller disk by Borel–Carathéodory.</p>
+<p><strong>Theorem 4.1.</strong> With <span class="math" data-tex="$c=1/10000$">$c=1/10000$</span>, uniformly for
+<span class="math math-display" data-tex="$$
+|t|\ge2,\qquad \sigma\ge1-\frac{c}{2\log(|t|+2)},
+\tag{4.1}
+$$">$$
+|t|\ge2,\qquad \sigma\ge1-\frac{c}{2\log(|t|+2)},
+\tag{4.1}
+$$</span>
+we have
+<span class="math math-display" data-tex="$$
+\frac{\zeta&#x27;}{\zeta}(s)\ll\ell,\qquad
+|\log\zeta(s)|\le\log\ell+O(1),\qquad
+\frac1{\zeta(s)}\ll\ell.
+\tag{4.2}
+$$">$$
+\frac{\zeta&#x27;}{\zeta}(s)\ll\ell,\qquad
+|\log\zeta(s)|\le\log\ell+O(1),\qquad
+\frac1{\zeta(s)}\ll\ell.
+\tag{4.2}
+$$</span>
+The branch of <span class="math" data-tex="$\log\zeta$">$\log\zeta$</span> agrees with the Euler logarithm to the right of one. It continues separately through the upper and lower zero-free regions; no logarithm is asserted across the pole.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="$t$">$t$</span>, put <span class="math" data-tex="$\delta=c/\ell$">$\delta=c/\ell$</span> and let <span class="math" data-tex="$z_0=1+\delta+it$">$z_0=1+\delta+it$</span>. Consider the closed disk <span class="math" data-tex="$|z-z_0|\le2\delta$">$|z-z_0|\le2\delta$</span>. Write <span class="math" data-tex="$z=u+iv$">$z=u+iv$</span>. On this disk <span class="math" data-tex="$u\ge1-\delta$">$u\ge1-\delta$</span>, <span class="math" data-tex="$|v-t|\le2\delta&lt;1$">$|v-t|\le2\delta&lt;1$</span>, and <span class="math" data-tex="$|v|&gt;1$">$|v|&gt;1$</span>. It lies strictly within the zero-free region of Theorem 3.2: indeed <span class="math" data-tex="$\log(|v|+2)\le2\ell$">$\log(|v|+2)\le2\ell$</span>, and its available width is at least <span class="math" data-tex="$C/(2\ell)=(5/2)\delta$">$C/(2\ell)=(5/2)\delta$</span>. Thus <span class="math" data-tex="$A=-\zeta&#x27;/\zeta$">$A=-\zeta&#x27;/\zeta$</span> is analytic on a neighbourhood of the disk, with no pole there.</p>
+<p>For every zero in the local sum at height <span class="math" data-tex="$v$">$v$</span>, <span class="math" data-tex="$|\gamma-v|\le1$">$|\gamma-v|\le1$</span> implies <span class="math" data-tex="$|\gamma|+2\le|t|+4$">$|\gamma|+2\le|t|+4$</span>. Hence
+<span class="math math-display" data-tex="$$
+1-\beta&gt;\frac C{\log(|\gamma|+2)}\ge\frac C{2\ell}=\frac52\delta,
+\qquad u-\beta&gt;\frac32\delta.
+\tag{4.3}
+$$">$$
+1-\beta&gt;\frac C{\log(|\gamma|+2)}\ge\frac C{2\ell}=\frac52\delta,
+\qquad u-\beta&gt;\frac32\delta.
+\tag{4.3}
+$$</span>
+All local fractions therefore have positive real part. Taking real parts of (2.5), we obtain
+<span class="math math-display" data-tex="$$
+\Re A(z)\le O(\ell)\quad(|z-z_0|\le2\delta).
+\tag{4.4}
+$$">$$
+\Re A(z)\le O(\ell)\quad(|z-z_0|\le2\delta).
+\tag{4.4}
+$$</span>
+The pole term is bounded since <span class="math" data-tex="$|v|&gt;1$">$|v|&gt;1$</span>, and the error has size <span class="math" data-tex="$O(\ell)$">$O(\ell)$</span>. At the centre, the positive Dirichlet series and the real-line estimate used in (3.3) give
+<span class="math math-display" data-tex="$$
+|A(z_0)|\le A(1+\delta)\le\delta^{-1}+2=O(\ell).
+\tag{4.5}
+$$">$$
+|A(z_0)|\le A(1+\delta)\le\delta^{-1}+2=O(\ell).
+\tag{4.5}
+$$</span>
+Apply the proved Borel–Carathéodory theorem to <span class="math" data-tex="$A(z)-A(z_0)$">$A(z)-A(z_0)$</span> with outer radius <span class="math" data-tex="$2\delta$">$2\delta$</span> and inner radius <span class="math" data-tex="$3\delta/2$">$3\delta/2$</span>. Its real-part bound is <span class="math" data-tex="$O(\ell)$">$O(\ell)$</span> by (4.4)–(4.5), so <span class="math" data-tex="$|A(z)|=O(\ell)$">$|A(z)|=O(\ell)$</span> on the inner disk. In particular this covers <span class="math" data-tex="$1-\delta/2\le\sigma\le1+\delta$">$1-\delta/2\le\sigma\le1+\delta$</span> at the original height <span class="math" data-tex="$t$">$t$</span>. For <span class="math" data-tex="$\sigma\ge1+\delta$">$\sigma\ge1+\delta$</span>, the same positive-series bound gives <span class="math" data-tex="$|A(\sigma+it)|\le\delta^{-1}+2$">$|A(\sigma+it)|\le\delta^{-1}+2$</span> up to <span class="math" data-tex="$\sigma=2$">$\sigma=2$</span>, and <span class="math" data-tex="$|A|\le2$">$|A|\le2$</span> beyond 2. This proves the first estimate.</p>
+<p>The domains <span class="math" data-tex="$\{\pm t&gt;1,\ \sigma&gt;1-c/\log(|t|+2)\}$">$\{\pm t&gt;1,\ \sigma&gt;1-c/\log(|t|+2)\}$</span> are simply connected: translating the boundary graph to zero gives a homeomorphism to the product of two open half-lines. Zeta is holomorphic and nonzero there. Its logarithm can consequently be continued from the Euler branch. At the reference point,
+<span class="math math-display" data-tex="$$
+|\log\zeta(1+\delta+it)|\le\log\zeta(1+\delta)
+\le\log(1+\delta^{-1})\le\log\ell+O(1).
+\tag{4.6}
+$$">$$
+|\log\zeta(1+\delta+it)|\le\log\zeta(1+\delta)
+\le\log(1+\delta^{-1})\le\log\ell+O(1).
+\tag{4.6}
+$$</span>
+The middle inequality follows by comparing the positive zeta series with its integral. For <span class="math" data-tex="$1-\delta/2\le\sigma\le1+\delta$">$1-\delta/2\le\sigma\le1+\delta$</span>, integrate the logarithmic derivative along the horizontal segment from <span class="math" data-tex="$1+\delta+it$">$1+\delta+it$</span>. The first estimate gives an error <span class="math" data-tex="$O(\delta\ell)=O(1)$">$O(\delta\ell)=O(1)$</span>. For larger <span class="math" data-tex="$\sigma$">$\sigma$</span>, the Euler logarithm directly gives the same bound. This proves the second estimate in (4.2). Finally
+<span class="math math-display" data-tex="$$
+|1/\zeta(s)|=e^{-\Re\log\zeta(s)}\le e^{|\log\zeta(s)|}\ll\ell.
+$$">$$
+|1/\zeta(s)|=e^{-\Re\log\zeta(s)}\le e^{|\log\zeta(s)|}\ll\ell.
+$$</span>
+This proves the reciprocal estimate. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For comparison, (2.4), (2.5) and (4.3) alone give only <span class="math" data-tex="$\zeta&#x27;/\zeta=O(\ell^2)$">$\zeta&#x27;/\zeta=O(\ell^2)$</span>. The positivity in (4.4) and the centred estimate (4.5) are the additional steps needed for <span class="math" data-tex="$O(\ell)$">$O(\ell)$</span>. Integrating an <span class="math" data-tex="$O(\ell^2)$">$O(\ell^2)$</span> estimate over a segment of length <span class="math" data-tex="$O(1/\ell)$">$O(1/\ell)$</span> would not yield the bounded error used in (4.6).</p>
+<h2 id="5-a-finite-example-and-the-geometry-of-the-region">5. A finite example and the geometry of the region</h2>
+<p><strong>Example 5.1.</strong> At <span class="math" data-tex="$\sigma=1.1$">$\sigma=1.1$</span>, <span class="math" data-tex="$t=14.13$">$t=14.13$</span>, direct high-precision evaluation gives
+<span class="math math-display" data-tex="$$
+|\zeta(1.1)^3\zeta(1.1+14.13i)^4\zeta(1.1+28.26i)|
+\simeq 44.38764083423.
+\tag{5.1}
+$$">$$
+|\zeta(1.1)^3\zeta(1.1+14.13i)^4\zeta(1.1+28.26i)|
+\simeq 44.38764083423.
+\tag{5.1}
+$$</span>
+The value is well above the lower bound one in (1.2), even though the height is close to the first nontrivial zero's height. The positive real part <span class="math" data-tex="$\sigma=1.1$">$\sigma=1.1$</span> matters: the numerical value is an illustration of the proved inequality, rather than evidence for a zero-free critical strip.</p>
+<figure><img src="figures/NT-ZETA-08/zero_free_region.png" alt="The positive three-height weight and the proved logarithmic zero-free widths" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1.</em> The left panel is the exact function in (1.1); its zeros have order four and occur at odd multiples of <span class="math" data-tex="$\pi$">$\pi$</span>. The right panel uses <span class="math" data-tex="$u=10^4(1-\sigma)$">$u=10^4(1-\sigma)$</span>, with <span class="math" data-tex="$|t|$">$|t|$</span> on a logarithmic axis. Zeros are excluded from the shaded area <span class="math" data-tex="$u\le5/\log(|t|+2)$">$u\le5/\log(|t|+2)$</span> by Theorem 3.2. The dashed curve is the boundary with <span class="math" data-tex="$c=1/10000$">$c=1/10000$</span>; the darker area reaches the half-width <span class="math" data-tex="$u\le1/(2\log(|t|+2))$">$u\le1/(2\log(|t|+2))$</span> where Theorem 4.1 gives all three bounds. Real parts greater than one correspond to <span class="math" data-tex="$u&lt;0$">$u&lt;0$</span> and continue the same zero-free areas to the left of the displayed plot. No zero locations are plotted or presumed.</p>
+<p>The logarithmic width is sufficient for the classical prime number theorem with an exponential error in <span class="math" data-tex="$\sqrt{\log x}$">$\sqrt{\log x}$</span>. The contour argument comes next. A different approach studies the sifted series obtained by removing Euler factors at small primes; [Koukoulopoulos preliminary version, Chapter 22] develops that sieve method. We mention it as a methodological reference, without importing a sieve theorem into the present proof. Wider zero-free regions will be developed later in <em>The Vinogradov–Korobov region</em>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li><strong>The positive weight.</strong> Prove (1.1), and explain why its coefficient at the middle height must exceed its constant coefficient for the nonvanishing argument.</li>
+<li><strong>A numerical proof constant.</strong> Starting with (3.3), take <span class="math" data-tex="$\sigma-1=1/(160L)$">$\sigma-1=1/(160L)$</span> and extract an admissible constant for (3.2), including heights <span class="math" data-tex="$|t|&lt;1/8$">$|t|&lt;1/8$</span>. Show also how to optimize the choice <span class="math" data-tex="$\sigma-1=a/L$">$\sigma-1=a/L$</span> in the large-height inequality.</li>
+<li><strong>Ingham's alternative proof.</strong> For real <span class="math" data-tex="$t\ne0$">$t\ne0$</span>, establish Ramanujan's identity
+<span class="math math-display" data-tex="$$
+\frac{\zeta(s)^2\zeta(s+it)\zeta(s-it)}{\zeta(2s)}
+=\sum_{n\ge1}\frac{\left|\sum_{d\mid n}d^{it}\right|^2}{n^s}
+\quad(\Re s&gt;1).
+\tag{6.1}
+$$">$$
+\frac{\zeta(s)^2\zeta(s+it)\zeta(s-it)}{\zeta(2s)}
+=\sum_{n\ge1}\frac{\left|\sum_{d\mid n}d^{it}\right|^2}{n^s}
+\quad(\Re s&gt;1).
+\tag{6.1}
+$$</span>
+Assuming <span class="math" data-tex="$\zeta(1+it)=0$">$\zeta(1+it)=0$</span>, use Landau's theorem from the first lesson to derive a contradiction as real <span class="math" data-tex="$s$">$s$</span> decreases to <span class="math" data-tex="$1/2$">$1/2$</span>. Check every possible pole in <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>.</li>
+<li><strong>Real signs and the pole.</strong> Prove <span class="math" data-tex="$\zeta(s)&lt;0$">$\zeta(s)&lt;0$</span> for real <span class="math" data-tex="$0&lt;s&lt;1$">$0&lt;s&lt;1$</span> and <span class="math" data-tex="$\zeta(s)&gt;0$">$\zeta(s)&gt;0$</span> for real <span class="math" data-tex="$s&gt;1$">$s&gt;1$</span>. Give a quantitative zero-free neighbourhood of one.</li>
+<li><strong>The reciprocal on the boundary line.</strong> Prove <span class="math" data-tex="$1/\zeta(1+it)\ll\log|t|$">$1/\zeta(1+it)\ll\log|t|$</span> for <span class="math" data-tex="$|t|\ge2$">$|t|\ge2$</span> by comparing to <span class="math" data-tex="$1+\delta+it$">$1+\delta+it$</span>. Explain exactly where a sharp logarithmic-derivative bound is needed.</li>
+</ol>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>Solution 1.</strong> Substitute <span class="math" data-tex="$\cos(2u)=2\cos^2u-1$">$\cos(2u)=2\cos^2u-1$</span>. The left side becomes <span class="math" data-tex="$2+4\cos u+2\cos^2u=2(1+\cos u)^2$">$2+4\cos u+2\cos^2u=2(1+\cos u)^2$</span>. If an inequality used coefficients <span class="math" data-tex="$a$">$a$</span> at height zero and <span class="math" data-tex="$b$">$b$</span> at the alleged zero of order <span class="math" data-tex="$r$">$r$</span>, its product would have size <span class="math" data-tex="$O((\sigma-1)^{br-a})$">$O((\sigma-1)^{br-a})$</span>, with the other factors bounded. To force a contradiction for a simple zero, one needs <span class="math" data-tex="$b&gt;a$">$b&gt;a$</span>. Here <span class="math" data-tex="$4&gt;3$">$4&gt;3$</span>.</p>
+<p><strong>Solution 2.</strong> Put <span class="math" data-tex="$d=1-\beta$">$d=1-\beta$</span> and <span class="math" data-tex="$\eta=1/(160L)$">$\eta=1/(160L)$</span>. Inequality (3.3) gives <span class="math" data-tex="$4/(\eta+d)\le(3+1/4)/\eta$">$4/(\eta+d)\le(3+1/4)/\eta$</span>, hence <span class="math" data-tex="$d\ge3\eta/13=3/(2080L)$">$d\ge3\eta/13=3/(2080L)$</span>. Since <span class="math" data-tex="$L\le2\ell$">$L\le2\ell$</span>, this exceeds <span class="math" data-tex="$1/(2000\ell)$">$1/(2000\ell)$</span>. For <span class="math" data-tex="$|t|&lt;1/8$">$|t|&lt;1/8$</span>, a point in the claimed region with <span class="math" data-tex="$\sigma\le1$">$\sigma\le1$</span> has <span class="math" data-tex="$|s-1|^2&lt;(1/1000)^2+(1/8)^2&lt;1/16$">$|s-1|^2&lt;(1/1000)^2+(1/8)^2&lt;1/16$</span>, so (3.1) excludes a zero. The Euler product covers <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>.</p>
+<p>For general <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>, the inequality gives
+<span class="math math-display" data-tex="$$
+d\ge\frac1L\left(\frac{4a}{3+40a}-a\right).
+$$">$$
+d\ge\frac1L\left(\frac{4a}{3+40a}-a\right).
+$$</span>
+The bracket is positive for <span class="math" data-tex="$0&lt;a&lt;1/40$">$0&lt;a&lt;1/40$</span>. Its derivative is <span class="math" data-tex="$12/(3+40a)^2-1$">$12/(3+40a)^2-1$</span>, so its maximum occurs at <span class="math" data-tex="$a=(2\sqrt3-3)/40$">$a=(2\sqrt3-3)/40$</span> and is <span class="math" data-tex="$(7-4\sqrt3)/40$">$(7-4\sqrt3)/40$</span>. This is a possible sharper large-height constant before converting <span class="math" data-tex="$L$">$L$</span> to <span class="math" data-tex="$\ell$">$\ell$</span> and checking the small heights. The stated <span class="math" data-tex="$C=1/2000$">$C=1/2000$</span> already includes both checks. The smaller <span class="math" data-tex="$c=C/5$">$c=C/5$</span> retains the extra margin needed in (4.3).</p>
+<p><strong>Solution 3.</strong> The coefficient in (6.1) is nonnegative and multiplicative. At a prime put <span class="math" data-tex="$w=p^{it}$">$w=p^{it}$</span>, <span class="math" data-tex="$z=p^{-s}$">$z=p^{-s}$</span>, so <span class="math" data-tex="$|w|=1$">$|w|=1$</span> and <span class="math" data-tex="$|z|&lt;1$">$|z|&lt;1$</span>. Summing over pairs of divisor exponents gives
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\sum_{r\ge0}\left|\sum_{j=0}^r w^j\right|^2z^r
+&amp;=\frac1{1-z}\sum_{j,k\ge0}w^{j-k}z^{\max(j,k)}\\
+&amp;=\frac1{(1-z)^2}
+\left(1+\frac{wz}{1-wz}+\frac{w^{-1}z}{1-w^{-1}z}\right)\\
+&amp;=\frac{1-z^2}{(1-z)^2(1-wz)(1-w^{-1}z)}.
+\end{aligned}
+\tag{7.1}
+$$">$$
+\begin{aligned}
+\sum_{r\ge0}\left|\sum_{j=0}^r w^j\right|^2z^r
+&amp;=\frac1{1-z}\sum_{j,k\ge0}w^{j-k}z^{\max(j,k)}\\
+&amp;=\frac1{(1-z)^2}
+\left(1+\frac{wz}{1-wz}+\frac{w^{-1}z}{1-w^{-1}z}\right)\\
+&amp;=\frac{1-z^2}{(1-z)^2(1-wz)(1-w^{-1}z)}.
+\end{aligned}
+\tag{7.1}
+$$</span>
+The pairs <span class="math" data-tex="$j=k$">$j=k$</span>, <span class="math" data-tex="$j&gt;k$">$j&gt;k$</span> and <span class="math" data-tex="$k&gt;j$">$k&gt;j$</span> give the three terms in the middle expression. All the geometric series converge absolutely. The coefficient at <span class="math" data-tex="$p^r$">$p^r$</span> is at most <span class="math" data-tex="$(r+1)^2\le\binom{r+3}{3}$">$(r+1)^2\le\binom{r+3}{3}$</span>. Multiplicativity therefore bounds the coefficients by the fourfold divisor function, whose Dirichlet series is <span class="math" data-tex="$\zeta(s)^4$">$\zeta(s)^4$</span> in <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span>. This justifies the absolute Euler product, and (7.1) proves (6.1).</p>
+<p>Now assume <span class="math" data-tex="$\zeta(1+it)=0$">$\zeta(1+it)=0$</span>. Conjugation also gives a zero at <span class="math" data-tex="$1-it$">$1-it$</span>. Let <span class="math" data-tex="$G(s)$">$G(s)$</span> denote the left side of (6.1). In <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>, its denominator is holomorphic and nonzero by the Euler product for <span class="math" data-tex="$\zeta(2s)$">$\zeta(2s)$</span>. The numerator's only possible poles are at <span class="math" data-tex="$s=1,1+it,1-it$">$s=1,1+it,1-it$</span>. At 1, the double pole of <span class="math" data-tex="$\zeta(s)^2$">$\zeta(s)^2$</span> is cancelled by the two zeros of the shifted factors. At <span class="math" data-tex="$1+it$">$1+it$</span>, the zero of <span class="math" data-tex="$\zeta(s)^2$">$\zeta(s)^2$</span> has order at least two and cancels the simple pole of <span class="math" data-tex="$\zeta(s-it)$">$\zeta(s-it)$</span>; the other shifted factor is holomorphic. The conjugate argument applies at <span class="math" data-tex="$1-it$">$1-it$</span>. Thus <span class="math" data-tex="$G$">$G$</span> is holomorphic on the whole half-plane <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>.</p>
+<p>The nonnegative series on the right of (6.1) converges for <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span>. If its finite convergence abscissa were greater than <span class="math" data-tex="$1/2$">$1/2$</span>, Landau's theorem would force a real singularity there, contrary to the just established holomorphy. Its abscissa is therefore at most <span class="math" data-tex="$1/2$">$1/2$</span> (the possibility <span class="math" data-tex="$-\infty$">$-\infty$</span> causes no difficulty). The series agrees with <span class="math" data-tex="$G$">$G$</span> for all real <span class="math" data-tex="$s&gt;1/2$">$s&gt;1/2$</span> by continuation and has value at least its <span class="math" data-tex="$n=1$">$n=1$</span> term, which is one. But as <span class="math" data-tex="$s\downarrow1/2$">$s\downarrow1/2$</span>, the numerator stays finite and the pole of <span class="math" data-tex="$\zeta(2s)$">$\zeta(2s)$</span> makes <span class="math" data-tex="$G(s)\to0$">$G(s)\to0$</span>. This contradiction proves nonvanishing independently of Theorem 1.1.</p>
+<p><strong>Solution 4.</strong> For real <span class="math" data-tex="$s&gt;0$">$s&gt;0$</span>, group consecutive terms of the convergent alternating series:
+<span class="math math-display" data-tex="$$
+\eta(s)=\sum_{k\ge1}\big((2k-1)^{-s}-(2k)^{-s}\big)&gt;0.
+$$">$$
+\eta(s)=\sum_{k\ge1}\big((2k-1)^{-s}-(2k)^{-s}\big)&gt;0.
+$$</span>
+Every grouped term is positive, and the first already has positive size. The first lesson proves <span class="math" data-tex="$\eta(s)=(1-2^{1-s})\zeta(s)$">$\eta(s)=(1-2^{1-s})\zeta(s)$</span> in <span class="math" data-tex="$\Re s&gt;0$">$\Re s&gt;0$</span> by continuation. The factor is negative for real <span class="math" data-tex="$0&lt;s&lt;1$">$0&lt;s&lt;1$</span>, so zeta is negative there. For <span class="math" data-tex="$s&gt;1$">$s&gt;1$</span>, its positive Dirichlet series makes it positive. Lemma 3.1 supplies the explicit disk <span class="math" data-tex="$|s-1|\le1/4$">$|s-1|\le1/4$</span>: the function <span class="math" data-tex="$(s-1)\zeta(s)$">$(s-1)\zeta(s)$</span> is nonzero throughout, and at the centre zeta has a pole. These statements exclude real zeros near one without any appeal to the zero-free theorem.</p>
+<p><strong>Solution 5.</strong> Fix <span class="math" data-tex="$|t|\ge2$">$|t|\ge2$</span> and put <span class="math" data-tex="$\delta=c/\log(|t|+2)$">$\delta=c/\log(|t|+2)$</span>. The reciprocal Euler series at <span class="math" data-tex="$1+\delta+it$">$1+\delta+it$</span> satisfies
+<span class="math math-display" data-tex="$$
+|1/\zeta(1+\delta+it)|\le\zeta(1+\delta)\le1+\delta^{-1}.
+$$">$$
+|1/\zeta(1+\delta+it)|\le\zeta(1+\delta)\le1+\delta^{-1}.
+$$</span>
+Along the horizontal segment to <span class="math" data-tex="$1+it$">$1+it$</span>, Theorem 4.1 gives
+<span class="math math-display" data-tex="$$
+\left|\log\zeta(1+it)-\log\zeta(1+\delta+it)\right|
+\le O(\delta\log(|t|+2))=O(1).
+$$">$$
+\left|\log\zeta(1+it)-\log\zeta(1+\delta+it)\right|
+\le O(\delta\log(|t|+2))=O(1).
+$$</span>
+Exponentiating the negative real part changes the reciprocal by at most a fixed multiplicative constant. Thus <span class="math" data-tex="$|1/\zeta(1+it)|\ll\log(|t|+2)\ll\log|t|$">$|1/\zeta(1+it)|\ll\log(|t|+2)\ll\log|t|$</span>. An <span class="math" data-tex="$O(\log^2|t|)$">$O(\log^2|t|)$</span> derivative bound would leave an <span class="math" data-tex="$O(\log|t|)$">$O(\log|t|)$</span> error in the logarithm and an uncontrolled power of <span class="math" data-tex="$|t|$">$|t|$</span> after exponentiation. The positive-real-part and Borel–Carathéodory argument is what supplies the required bounded error.</p>
+<h2 id="freely-readable-sources">Freely readable sources</h2>
+<ul>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, freely readable author preliminary version, 367 pages. Chapter 8, Lemmas 8.2, 8.5–8.6, Theorem 8.3 and Exercise 8.4; Chapter 22, Theorems 22.1 and 22.6 for the sifted-series comparison.</li>
+<li>D. Zagier, <a href="https://people.mpim-bonn.mpg.de/zagier/files/doi/10.2307/2975232/fulltext.pdf"><em>Newman’s Short Proof of the Prime Number Theorem</em></a> (1997), complete author-hosted article;. Step (IV) gives the three-height nonvanishing comparison.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-07.html">← Exponential sums and a subconvex bound</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-09.html">The prime number theorem →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-08.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

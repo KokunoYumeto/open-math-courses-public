@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Normal root distances and compatible complex scales</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="normal-root-distances-and-compatible-complex-scales">Normal root distances and compatible complex scales</h1>
+<p><em>Original proof and figure: GPT-6.1 Sol (OpenAI), Ultra, October 2026; CC0. This is a learner presentation of that module, with two additional solved examples. The review does not establish whole-course review or recursive prerequisite closure.</em></p>
+<p>A normalized polynomial window looks almost constant when its zeros lie far beyond the scale of the window. This lesson proves that statement with an exact distance convention, then separates the scalar scale restrictions from the extra comparison needed for imaginary-height escape. It supplies these consequences of the complex-frequency criterion; it does not assert another nonuniqueness theorem.</p>
+<p>There are two distances to keep distinct. The parameter <span class="math" data-tex="\(t\)">\(t\)</span> on a normal line is a complex scalar, so its modulus is a scalar distance. Multiplying by the length of the fixed normal gives Euclidean distance along that same line. Zeros elsewhere in the ambient space can be closer. There are also two scales to keep distinct: the physical window size <span class="math" data-tex="\(T_\nu\)">\(T_\nu\)</span> and the dimensionless zero distance <span class="math" data-tex="\(\rho_\nu=d_N/T_\nu\)">\(\rho_\nu=d_N/T_\nu\)</span>. Root escape means the second tends to infinity; it need not mean that the first tends to zero.</p>
+<h2 id="prerequisites-and-exact-proof-locators">Prerequisites and exact proof locators</h2>
+<table aria-label="Written proof providers and exact parts used" style="width:100%;border-collapse:collapse;margin:1em 0"><thead><tr><th scope="col" style="padding:.45em .55em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Written provider</th><th scope="col" style="padding:.45em .55em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Exact part used here</th></tr></thead><tbody><tr><td style="padding:.45em .55em;border:1px solid #d7dfe4;vertical-align:top;text-align:left"><a href="prerequisites/stable-prerequisite-bridges.html#full-factorization-leading-coefficient-and-multiplicities">Polynomial and contour interfaces for stable boundary models</a></td><td style="padding:.45em .55em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Sections 9.1–9.4 prove the complex root theorem and full factorization. The division and multiplicity identities (CR11)–(CR12), including the nonzero constant and empty product conventions, supply (ND5). The supporting reader retains its own attribution and licence.</td></tr><tr><td style="padding:.45em .55em;border:1px solid #d7dfe4;vertical-align:top;text-align:left"><a href="AN02-L104.html">Complex frequency windows and exact half-space support</a></td><td style="padding:.45em .55em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">(CT1)–(CT2) specify the nonzero centres, positive scales and two normalized windows. (CT5)–(CT6) define and bound the real directional strengths; (CT8)–(CT10) give the coefficient comparison and escape argument used in (ND8).</td></tr></tbody></table>
+<p>The finite interpolation and scalar arguments are proved below. This module uses the written bounded-strength comparison, so it does not receive the complex theorem's planned general characteristic-halfspace branch. That theorem's other declared algebraic and jet bases retain their stated scope.</p>
+<p>Mathematical antecedent: Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §13.6, printed p. 211 (PDF p. 217), the unnumbered normal-zero interpretation and scalar consequences accompanying (13.6.20), (13.6.23), (13.6.23)′ and (13.6.25). The proof here and the linked written providers give the mathematical arguments used by this lesson; this reference locates the antecedent rather than substituting for a proof.</p>
+<h2 id="the-exact-normal-distance">The exact normal distance</h2>
+<p>Fix a nonzero real vector N and a degree bound m&gt;=1. For a polynomial B of total degree at most m and a complex centre zeta with B(zeta) nonzero, consider its restriction to the complex normal line:</p>
+<span class="math math-display" data-tex="\[
+b(t)=B(\zeta+tN),\qquad
+d_N(B,\zeta)=\inf\{|t|:b(t)=0\},\qquad \inf\varnothing=+\infty .
+\tag{ND1}
+\]">\[
+b(t)=B(\zeta+tN),\qquad
+d_N(B,\zeta)=\inf\{|t|:b(t)=0\},\qquad \inf\varnothing=+\infty .
+\tag{ND1}
+\]</span>
+<p>This is the distance in the scalar normal parameter. The Euclidean distance to zeros on this same complex line is |N|d_N. It is not the distance to the entire multivariable zero set. A restriction can be a nonzero constant even when B has positive total degree; the empty-zero-set convention handles it.</p>
+<p>Let zeta_nu be centres where B(zeta_nu) is nonzero and let T_nu&gt;0. Set</p>
+<span class="math math-display" data-tex="\[
+p_\nu(z)=\frac{B(\zeta_\nu+T_\nu zN)}{B(\zeta_\nu)},\qquad
+\rho_\nu=\frac{d_N(B,\zeta_\nu)}{T_\nu}.
+\tag{ND2}
+\]">\[
+p_\nu(z)=\frac{B(\zeta_\nu+T_\nu zN)}{B(\zeta_\nu)},\qquad
+\rho_\nu=\frac{d_N(B,\zeta_\nu)}{T_\nu}.
+\tag{ND2}
+\]</span>
+<p><strong>Normal-window lemma.</strong> The following are equivalent: p_nu(z) tends to 1 for every complex z; every nonconstant coefficient of p_nu tends to 0; rho_nu tends to infinity. Thus the two normalized windows in (CT2) mean that T_nu is much smaller than the normal root distances of both P and Q, with constant restrictions allowed.</p>
+<p>To prove the first equivalence, choose m+1 distinct fixed complex nodes. Lagrange interpolation expresses p_nu as a linear combination of their values with fixed polynomial coefficients. Since the interpolating polynomial for the constant data 1 is 1, convergence at these nodes gives coefficient convergence. Conversely, a fixed finite coefficient sum gives convergence at every complex point and uniformly on every bounded disc.</p>
+<p>For the remaining equivalence, write p_nu(z)=1+sum from j=1 to m of a_nu,j z^j and put c_nu=sum |a_nu,j|. If c_nu tends to 0, then for every fixed R&gt;0,</p>
+<span class="math math-display" data-tex="\[
+\sup_{|z|\le R}|p_\nu(z)-1|
+\le c_\nu\max(1,R^m)\longrightarrow0.
+\tag{ND3}
+\]">\[
+\sup_{|z|\le R}|p_\nu(z)-1|
+\le c_\nu\max(1,R^m)\longrightarrow0.
+\tag{ND3}
+\]</span>
+<p>Eventually this is smaller than 1, so no zero lies in that disc. Every normalized zero therefore escapes every bounded disc, which is exactly rho_nu tending to infinity. More quantitatively, if 0&lt;c_nu&lt;1, any zero w has |w|&gt;1, and1=|p_nu(w)-1|&lt;=c_nu|w|^m. Consequently</p>
+<span class="math math-display" data-tex="\[
+\rho_\nu\ge c_\nu^{-1/m};\qquad c_\nu=0\ \Longrightarrow\ \rho_\nu=+\infty.
+\tag{ND4}
+\]">\[
+\rho_\nu\ge c_\nu^{-1/m};\qquad c_\nu=0\ \Longrightarrow\ \rho_\nu=+\infty.
+\tag{ND4}
+\]</span>
+<p>For the reverse implication, the elementary factorization theorem for a one-variable complex polynomial, with roots counted with multiplicity, gives</p>
+<span class="math math-display" data-tex="\[
+p_\nu(z)=\prod_{j=1}^{d_\nu}(1-z/w_{\nu,j}),\quad
+0\le d_\nu\le m,\quad |w_{\nu,j}|\ge\rho_\nu;
+\qquad
+|a_{\nu,k}|\le {m\choose k}\rho_\nu^{-k}.
+\tag{ND5}
+\]">\[
+p_\nu(z)=\prod_{j=1}^{d_\nu}(1-z/w_{\nu,j}),\quad
+0\le d_\nu\le m,\quad |w_{\nu,j}|\ge\rho_\nu;
+\qquad
+|a_{\nu,k}|\le {m\choose k}\rho_\nu^{-k}.
+\tag{ND5}
+\]</span>
+<p>For d_nu=0 the product is empty and equals 1. For positive degree the roots are nonzero because p_nu(0)=1. Each coefficient is an elementary symmetric sum of reciprocal roots; there are at most binomial(m,k) terms, each bounded by rho_nu to the power minus k. This proves coefficient convergence without a root-continuity theorem or a contour argument. It also proves the explicit bounds</p>
+<span class="math math-display" data-tex="\[
+\sup_{|z|\le R}|p_\nu(z)-1|
+\le(1+R/\rho_\nu)^m-1,
+\qquad
+\frac{T_\nu^k|\partial_N^kB(\zeta_\nu)|}{|B(\zeta_\nu)|}
+\le k!{m\choose k}\rho_\nu^{-k}\quad(1\le k\le m).
+\tag{ND6}
+\]">\[
+\sup_{|z|\le R}|p_\nu(z)-1|
+\le(1+R/\rho_\nu)^m-1,
+\qquad
+\frac{T_\nu^k|\partial_N^kB(\zeta_\nu)|}{|B(\zeta_\nu)|}
+\le k!{m\choose k}\rho_\nu^{-k}\quad(1\le k\le m).
+\tag{ND6}
+\]</span>
+<p>The second inequality follows by identifying the kth Taylor coefficient. Derivatives past the restriction's degree vanish. All roots and derivatives here concern the same fixed normal line. Smallness of only the first derivative is insufficient: 1-z^2/R^2 has derivative zero at the centre but roots at plus and minus R.</p>
+<h2 id="what-the-scalar-limits-do-and-do-not-imply">What the scalar limits do and do not imply</h2>
+<p>Write h_nu=1+|Im zeta_nu|. The two scalar limits in the full complex theorem are K_nu/T_nu tending to0 and h_nu/(T_nu K_nu) tending to0, with positive T_nu,K_nu. Multiplication gives</p>
+<span class="math math-display" data-tex="\[
+\frac{h_\nu}{T_\nu^2}
+=\frac{h_\nu}{T_\nu K_\nu}\frac{K_\nu}{T_\nu}\longrightarrow0,
+\qquad T_\nu\longrightarrow+\infty.
+\tag{ND7}
+\]">\[
+\frac{h_\nu}{T_\nu^2}
+=\frac{h_\nu}{T_\nu K_\nu}\frac{K_\nu}{T_\nu}\longrightarrow0,
+\qquad T_\nu\longrightarrow+\infty.
+\tag{ND7}
+\]</span>
+<p>The last conclusion uses h_nu&gt;=1. Conversely, if positive T_nu and h_nu&gt;=1 satisfy h_nu/T_nu^2 tending to0, the choice K_nu=sqrt(h_nu) satisfies both scalar limits. This proves exact scalar compatibility; it does not enforce the weighted polynomial difference or its derivative sign.</p>
+<p>For centres zeta_nu=xi_nu-i lambda_nu N with lambda_nu&gt;=0, h_nu=1+|N|lambda_nu is comparable to1+lambda_nu. If, in addition, N is noncharacteristic for P and the real directional-strength ratio of Q to P is bounded, the linked complex-frequency theorem proves (CT8)–(CT10): its shifted coefficient comparison, together with P(zeta_nu)/Q(zeta_nu) tending to0 and the constant windows, forces T_nu/(1+lambda_nu) tending to0. Combining this actual comparison proof with ND7 gives</p>
+<span class="math math-display" data-tex="\[
+\lambda_\nu\longrightarrow+\infty,
+\qquad
+\frac{\sqrt{1+\lambda_\nu}}{T_\nu}\longrightarrow0,
+\qquad
+\frac{T_\nu}{\lambda_\nu}\longrightarrow0.
+\tag{ND8}
+\]">\[
+\lambda_\nu\longrightarrow+\infty,
+\qquad
+\frac{\sqrt{1+\lambda_\nu}}{T_\nu}\longrightarrow0,
+\qquad
+\frac{T_\nu}{\lambda_\nu}\longrightarrow0.
+\tag{ND8}
+\]</span>
+<p>The middle inequality follows already from the unconditional ND7 and the fixed-N comparison of h_nu with 1+lambda_nu. Imaginary-height escape and the upper inequality require the stated bounded-strength comparison. The scalar limits alone do not force T_nu/lambda_nu to vanish. For example, lambda_nu=0, T_nu=nu^2 and K_nu=nu satisfy both scalar limits but have zero imaginary height. That example does not meet the full theorem's polynomial hypotheses in the bounded-strength branch.</p>
+<h3 id="why-the-additional-comparison-forces-escape">Why the additional comparison forces escape</h3>
+<p>Here is the actual implication behind the reference to (CT8)–(CT10). In this comparison subsection, use the exact complex-theorem convention <span class="math" data-tex="\(m=\deg P\ge\deg Q\)">\(m=\deg P\ge\deg Q\)</span>; the normal-window lemma above allowed <span class="math" data-tex="\(m\)">\(m\)</span> to be any fixed degree upper bound. For a polynomial <span class="math" data-tex="\(R\)">\(R\)</span> of degree at most this <span class="math" data-tex="\(m\)">\(m\)</span>, its real directional strength is <span class="math" data-tex="\(\mathcal S_N R(\eta)=(\sum_{j=0}^m|\partial_N^jR(\eta)|^2)^{1/2}\)">\(\mathcal S_N R(\eta)=(\sum_{j=0}^m|\partial_N^jR(\eta)|^2)^{1/2}\)</span>. Noncharacteristic means <span class="math" data-tex="\(P_m(N)\ne0\)">\(P_m(N)\ne0\)</span>, where <span class="math" data-tex="\(P_m\)">\(P_m\)</span> is the leading homogeneous part of <span class="math" data-tex="\(P\)">\(P\)</span>. Thus <span class="math" data-tex="\(\partial_N^mP=m!P_m(N)\ne0\)">\(\partial_N^mP=m!P_m(N)\ne0\)</span>, and <span class="math" data-tex="\(\mathcal S_NP\)">\(\mathcal S_NP\)</span> is positive on every real centre. The additional hypothesis is a finite constant <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(\mathcal S_NQ(\eta)\le C\mathcal S_NP(\eta)\)">\(\mathcal S_NQ(\eta)\le C\mathcal S_NP(\eta)\)</span> for every real <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, exactly (CT5)–(CT6).</p>
+<p>Put <span class="math" data-tex="\(U=1+\lambda\)">\(U=1+\lambda\)</span>, <span class="math" data-tex="\(\zeta=\xi-i\lambda N\)">\(\zeta=\xi-i\lambda N\)</span>, and let <span class="math" data-tex="\(\|f\|_{\rm c}\)">\(\|f\|_{\rm c}\)</span> be the sum of the moduli of the coefficients of a one-variable polynomial. Write <span class="math" data-tex="\(P(\xi+UzN)=\sum_{k=0}^m A_kz^k\)">\(P(\xi+UzN)=\sum_{k=0}^m A_kz^k\)</span>. At a real point <span class="math" data-tex="\(t=Us\)">\(t=Us\)</span> with <span class="math" data-tex="\(|s|\le1\)">\(|s|\le1\)</span>, differentiating the finite sum gives <span class="math" data-tex="\(\partial_N^jP(\xi+tN)=U^{-j}\sum_{k=j}^m k!A_ks^{k-j}/(k-j)!\)">\(\partial_N^jP(\xi+tN)=U^{-j}\sum_{k=j}^m k!A_ks^{k-j}/(k-j)!\)</span>. Since <span class="math" data-tex="\(U\ge1\)">\(U\ge1\)</span>, every derivative is bounded by a constant depending only on <span class="math" data-tex="\(m\)">\(m\)</span> times <span class="math" data-tex="\(\sum_k|A_k|\)">\(\sum_k|A_k|\)</span>. The strength bound therefore controls <span class="math" data-tex="\(|Q(\xi+UsN)|\)">\(|Q(\xi+UsN)|\)</span> at each of <span class="math" data-tex="\(m+1\)">\(m+1\)</span> fixed distinct real nodes in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Lagrange interpolation at these nodes controls the whole coefficient norm of <span class="math" data-tex="\(Q(\xi+UzN)\)">\(Q(\xi+UzN)\)</span> by that of <span class="math" data-tex="\(P(\xi+UzN)\)">\(P(\xi+UzN)\)</span>, with a constant independent of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p>Translation of the polynomial variable by <span class="math" data-tex="\(-i\lambda/U\)">\(-i\lambda/U\)</span>, and translation back, have bounded coefficient norms on this fixed degree space: expand each power with the binomial formula and use <span class="math" data-tex="\(\lambda/U\le1\)">\(\lambda/U\le1\)</span>. Consequently <span class="math" data-tex="\(\|Q(\zeta+UzN)\|_{\rm c}\le C_1\|P(\zeta+UzN)\|_{\rm c}\)">\(\|Q(\zeta+UzN)\|_{\rm c}\le C_1\|P(\zeta+UzN)\|_{\rm c}\)</span>, including <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>. This is (CT8).</p>
+<p>Suppose <span class="math" data-tex="\(T_\nu/U_\nu\)">\(T_\nu/U_\nu\)</span> does not tend to zero. Some subsequence has <span class="math" data-tex="\(T_\nu\ge a_0U_\nu\)">\(T_\nu\ge a_0U_\nu\)</span> for a fixed <span class="math" data-tex="\(a_0&gt;0\)">\(a_0&gt;0\)</span>. Passing from the normalized <span class="math" data-tex="\(T_\nu\)">\(T_\nu\)</span>-window of <span class="math" data-tex="\(P\)">\(P\)</span> to its <span class="math" data-tex="\(U_\nu\)">\(U_\nu\)</span>-window multiplies its coefficient of degree <span class="math" data-tex="\(j\)">\(j\)</span> by <span class="math" data-tex="\((U_\nu/T_\nu)^j\)">\((U_\nu/T_\nu)^j\)</span>. These factors are bounded; coefficient convergence to 1, proved in the normal-window lemma, therefore bounds the rescaled normalized coefficient norm. The comparison just proved gives <span class="math" data-tex="\(|Q(\zeta_\nu)|\le C_2|P(\zeta_\nu)|\)">\(|Q(\zeta_\nu)|\le C_2|P(\zeta_\nu)|\)</span> on that subsequence. Since both centre values are nonzero, this contradicts <span class="math" data-tex="\(P(\zeta_\nu)/Q(\zeta_\nu)\to0\)">\(P(\zeta_\nu)/Q(\zeta_\nu)\to0\)</span>. Hence <span class="math" data-tex="\(T_\nu/(1+\lambda_\nu)\to0\)">\(T_\nu/(1+\lambda_\nu)\to0\)</span>. By (ND7), <span class="math" data-tex="\(T_\nu\to\infty\)">\(T_\nu\to\infty\)</span>; therefore <span class="math" data-tex="\(1+\lambda_\nu\to\infty\)">\(1+\lambda_\nu\to\infty\)</span>, and then <span class="math" data-tex="\(\lambda_\nu\to\infty\)">\(\lambda_\nu\to\infty\)</span> and <span class="math" data-tex="\(T_\nu/\lambda_\nu\to0\)">\(T_\nu/\lambda_\nu\to0\)</span>. This proves precisely the conditional escape and upper-scale assertions. The lower square-root scale follows separately from (ND7).</p>
+<p>For power scales lambda_nu=nu^a, T_nu=nu^b and K_nu=nu^c with a&gt;0, the scalar limits and the bounded-strength upper inequality are precisely</p>
+<span class="math math-display" data-tex="\[
+\frac a2&lt;b&lt;a,\qquad a-b&lt;c&lt;b.
+\tag{ND9}
+\]">\[
+\frac a2&lt;b&lt;a,\qquad a-b&lt;c&lt;b.
+\tag{ND9}
+\]</span>
+<p>Indeed K/T=nu^(c-b) and h/(TK) has order nu^(a-b-c); both exponents must be negative, and T/lambda has exponent b-a. This is a strict open range. The choice a=6,b=4,c=3 gives ratios of orders nu^-1, nu^-1 and nu^-2 respectively. These scales do not by themselves construct a valid symbol family.</p>
+<h2 id="exact-figure">Exact figure</h2>
+<p><a href="assets/AN02-L108/normal-root-distance-546B4A2933CEFC60B5A1ABECB52B9BF43F8FC411771F611BF3DCD1FAE339CB29.png" title="Open full-size figure"><img src="assets/AN02-L108/normal-root-distance-546B4A2933CEFC60B5A1ABECB52B9BF43F8FC411771F611BF3DCD1FAE339CB29.png" alt="The same normal-root distance at three window scales" class="course-figure" width="2700" height="1050" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="normal-root-distance" data-asset-sha256="546B4A2933CEFC60B5A1ABECB52B9BF43F8FC411771F611BF3DCD1FAE339CB29"></a><br><a href="assets/AN02-L108/normal-root-distance-546B4A2933CEFC60B5A1ABECB52B9BF43F8FC411771F611BF3DCD1FAE339CB29.png">Open full-size figure</a></p>
+<p>The illustrated restriction is B(t)=1-t^2 with centre0, normal N=1 and roots t=plus or minus1. Its normal root distance is exactly1. The three panels use T=1/2,1/4,1/8, so the normalized zeros are plus or minus2,4,8; the shaded test disc is |z|&lt;=1. On that disc the exact maximum of |p_T(z)-1| is T^2, respectively1/4,1/16,1/64. The cross at0 marks the centre, not a zero. These finite drawings illustrate ND2–ND6; the limiting equivalence is proved above. <a href="figures/an02-l108-render-normal-root-distance.py">Reproducible source</a>.</p>
+<p>The fixed-centre drawing uses decreasing <span class="math" data-tex="\(T\)">\(T\)</span> to show the equivalence visually. In an admissible full-theorem sequence, (ND7) instead forces <span class="math" data-tex="\(T_\nu\to\infty\)">\(T_\nu\to\infty\)</span>; moving centres can make the normal root distance grow faster. Exercise 5 gives an elementary example of that distinction.</p>
+<p>The <a href="figures/an02-l108-normal-root-distance.svg">SVG figure</a> and <a href="figures/an02-l108-normal-root-geometry.json">exact geometry</a> accompany the PNG. To reproduce the named assets, save these files together with the original plotting source and the <a href="figures/an02-l108-reproduce-normal-root-distance.py">reproduction wrapper</a>, then run the wrapper with Python, NumPy and Matplotlib. The original plotting source writes the generic names <code>normal-root-distance.png</code>, <code>normal-root-distance.svg</code> and <code>geometry.json</code>; the wrapper checks their exact output bytes and assigns the linked names.</p>
+<p><a href="reproduce-AN02-L108.html">Reproduction guide and named source downloads</a>.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise1.</strong> A normalized quadratic has coefficients c1,c2 tending to0. Give a lower bound for its nearest zero using only |c1|+|c2|, and explain what to do if the restriction is constant.</p>
+<p><strong>Solution.</strong> Put c=|c1|+|c2|. For0&lt;c&lt;1, ND4 with m=2 gives rho&gt;=c^-1/2. If c=0, the polynomial is1 and its zero set is empty, so rho=infinity. This also covers a degree drop to a linear polynomial, since the uniform upper degree bound remains2.</p>
+<p><strong>Exercise2.</strong> Take B(t)=1-t^2, centre0 and T&gt;0. Compute its normalized polynomial, derivative at0, nearest normalized zero and exact unit-disc error. Does a zero first derivative alone imply a large zero-free window?</p>
+<p><strong>Solution.</strong> The normalized polynomial is1-T^2 z^2. Its first derivative at0 is0, its roots are plus and minus1/T, and its nearest zero has modulus1/T. On |z|&lt;=1 the maximum error is T^2, attained on the unit circle. The first derivative is zero for every T, including arbitrarily large T with roots arbitrarily near0, so it gives no such implication.</p>
+<p><strong>Exercise3.</strong> For lambda=nu^6,T=nu^4,K=nu^3 and fixed nonzero N, check all scalar scales, then determine whether the equality choice T=nu^3 permits any K satisfying the two limits.</p>
+<p><strong>Solution.</strong> The first ratio K/T is nu^-1. The second is(1+|N|nu^6)/nu^7=nu^-7+|N|nu^-1. The upper ratio T/lambda is nu^-2. Thus all three vanish. If T=nu^3, h/T^2 tends to |N|&gt;0. ND7 shows the two scalar limits cannot both hold for any positive K. This excludes the equality boundary without an assumption that K itself is a power.</p>
+<h2 id="two-further-solved-examples">Two further solved examples</h2>
+<p><strong>Exercise 4 (which zero set supplies the distance?).</strong> In <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, take <span class="math" data-tex="\(B(\zeta_1,\zeta_2)=1-\zeta_1+\zeta_2\)">\(B(\zeta_1,\zeta_2)=1-\zeta_1+\zeta_2\)</span>, centre <span class="math" data-tex="\(0\)">\(0\)</span>, and the nonunit real normal <span class="math" data-tex="\(N=(2,0)\)">\(N=(2,0)\)</span>. Find the scalar normal root distance, the Euclidean distance to zeros on that line, and the Euclidean distance to the entire zero set.</p>
+<p><strong>Solution.</strong> On the normal line, <span class="math" data-tex="\(B(tN)=1-2t\)">\(B(tN)=1-2t\)</span>. Its unique zero is <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span>, so <span class="math" data-tex="\(d_N=1/2\)">\(d_N=1/2\)</span> and <span class="math" data-tex="\(|N|d_N=2(1/2)=1\)">\(|N|d_N=2(1/2)=1\)</span>. Its zero in ambient coordinates is <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>. The whole zero set is <span class="math" data-tex="\(\zeta_1-\zeta_2=1\)">\(\zeta_1-\zeta_2=1\)</span>. For any point in it, the identity <span class="math" data-tex="\(|\zeta_1-\zeta_2|^2+|\zeta_1+\zeta_2|^2=2(|\zeta_1|^2+|\zeta_2|^2)\)">\(|\zeta_1-\zeta_2|^2+|\zeta_1+\zeta_2|^2=2(|\zeta_1|^2+|\zeta_2|^2)\)</span> shows that its squared Euclidean norm is at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Equality holds at <span class="math" data-tex="\((1/2,-1/2)\)">\((1/2,-1/2)\)</span>, so the distance to the whole zero set is <span class="math" data-tex="\(1/\sqrt2\)">\(1/\sqrt2\)</span>. This is smaller than the distance 1 along the chosen line, while the scalar parameter distance is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>.</p>
+<p><strong>Exercise 5 (a growing window with escaping normalized zeros).</strong> Take the fixed one-variable polynomial <span class="math" data-tex="\(B(t)=t^2\)">\(B(t)=t^2\)</span>, centres <span class="math" data-tex="\(\zeta_\nu=\nu^3\)">\(\zeta_\nu=\nu^3\)</span>, normal <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, and <span class="math" data-tex="\(T_\nu=\nu\)">\(T_\nu=\nu\)</span> for positive integers <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Compute the normalized polynomial and zero distance. Can the two scalar limits also hold? Does this give a full input to the complex-frequency theorem?</p>
+<p><strong>Solution.</strong> The centre value is <span class="math" data-tex="\(\nu^6\ne0\)">\(\nu^6\ne0\)</span>, and the normalized polynomial is <span class="math" data-tex="\(p_\nu(z)=(1+z/\nu^2)^2\)">\(p_\nu(z)=(1+z/\nu^2)^2\)</span>. Its two roots, counted with multiplicity, both equal <span class="math" data-tex="\(-\nu^2\)">\(-\nu^2\)</span>. The unscaled restriction <span class="math" data-tex="\((\nu^3+t)^2\)">\((\nu^3+t)^2\)</span> has its double zero at <span class="math" data-tex="\(t=-\nu^3\)">\(t=-\nu^3\)</span>, so <span class="math" data-tex="\(d_N=\nu^3\)">\(d_N=\nu^3\)</span> and <span class="math" data-tex="\(\rho_\nu=\nu^2\to\infty\)">\(\rho_\nu=\nu^2\to\infty\)</span>. On every fixed disc of radius <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(|p_\nu(z)-1|\le2R/\nu^2+R^2/\nu^4\to0\)">\(|p_\nu(z)-1|\le2R/\nu^2+R^2/\nu^4\to0\)</span>, even though <span class="math" data-tex="\(T_\nu\to\infty\)">\(T_\nu\to\infty\)</span>. Here <span class="math" data-tex="\(h_\nu=1\)">\(h_\nu=1\)</span>; choosing <span class="math" data-tex="\(K_\nu=1\)">\(K_\nu=1\)</span> makes both scalar ratios equal <span class="math" data-tex="\(1/\nu\)">\(1/\nu\)</span>. This is an example of normal-window convergence and scalar compatibility only. It specifies no second symbol <span class="math" data-tex="\(Q\)">\(Q\)</span>, no small nonzero <span class="math" data-tex="\(P/Q\)">\(P/Q\)</span> ratio, and no weighted difference with the required derivative sign, so it does not provide a full theorem input or imply imaginary-height escape.</p>
+<h2 id="scope-of-the-result">Scope of the result</h2>
+<p>The normal-window lemma (ND1)–(ND6) handles multiplicities, varying restriction degrees and nonzero constant restrictions with a uniform finite degree bound. It uses the linked written one-variable factorization proof and proves its interpolation step explicitly. The scalar equivalence (ND7) and the lower square-root scale in (ND8) are unconditional. Imaginary-height escape and the upper scale in (ND8) use exactly the noncharacteristic, bounded-strength comparison and small nonzero ratio proved above and located in (CT5)–(CT10). The strict power range (ND9) describes compatible scales; it does not construct a symbol family. The three original exercises and two further examples have complete solutions.</p>
+</main></body></html>

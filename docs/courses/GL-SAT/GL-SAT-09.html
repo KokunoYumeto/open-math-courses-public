@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tannakian categories · The affine Grassmannian and geometric Satake</title>
+<meta name="description" content="A lesson of the course The affine Grassmannian and geometric Satake. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-SAT/GL-SAT-09.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The affine Grassmannian and geometric Satake</a> <span aria-hidden="true">›</span> <span>Lesson 9</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> This lesson is a draft.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="tannakian-categories">Tannakian categories</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).</em></p>
+<p>A group can be recovered from the linear transformations that act compatibly on all its representations. The compatibility includes every subobject and every tensor product. We construct the coordinate Hopf algebra from those finite-dimensional constraints, prove the reconstruction over all parameter algebras, and then translate generation properties into properties of the group.</p>
+<p>A rigid symmetric monoidal category has an associative tensor product, a unit, a coherent symmetry, and evaluation and coevaluation maps satisfying the two duality triangles for every object. A neutral fibre functor is an exact faithful linear functor to finite-dimensional vector spaces that preserves the tensor product, unit and ordinary symmetry. No semisimplicity is included in this definition.</p>
+<p>The preceding <a href="GL-SAT-08.html">fusion lesson</a> constructs these tensor and symmetry hypotheses for the classical Satake heart with characteristic-zero coefficients. <a href="GL-SAT-07.html">Convolution and rigidity</a> proves its duality triangles. We first prove reconstruction for an arbitrary field and arbitrary category satisfying the neutral hypotheses; identifying the resulting Satake group requires additional geometry.</p>
+<h2 id="1-the-neutral-hypotheses-and-reconstruction-statement">1. The neutral hypotheses and reconstruction statement</h2>
+<p>Let <span class="math">\(k\)</span> be a field. Let <span class="math">\(\mathcal C\)</span> be an essentially small, <span class="math">\(k\)</span>-linear abelian category with a symmetric monoidal structure, unit <span class="math">\(\mathbf1\)</span>, and duals for every object. Assume <span class="math">\(\operatorname{End}(\mathbf1)=k\)</span>. Let
+<span class="math math-display">\[
+\omega:\mathcal C\longrightarrow\operatorname{Vect}^{\mathrm{fd}}_k
+\]</span>
+be faithful, exact, <span class="math">\(k\)</span>-linear, and strong symmetric monoidal. We construct a commutative Hopf algebra <span class="math">\(B\)</span>, prove that
+<span class="math math-display">\[
+\mathcal C\simeq\operatorname{Comod}^{\mathrm{fd}}_B
+   =\operatorname{Rep}^{\mathrm{fd}}_k(\operatorname{Spec}B),
+\tag{1}
+\]</span>
+and prove, for every commutative <span class="math">\(k\)</span>-algebra <span class="math">\(R\)</span>, including rings with nilpotents,
+<span class="math math-display">\[
+\operatorname{Hom}_{k\text{-alg}}(B,R)
+ =\operatorname{Aut}^{\otimes}(R\otimes_k\omega).
+\tag{2}
+\]</span>
+No semisimplicity, characteristic restriction, finite tensor generator, or previously reconstructed group is assumed.</p>
+<p>We first forget the tensor product. Exactness and faithfulness imply that <span class="math">\(\omega\)</span> reflects zero objects, monomorphisms, epimorphisms, and isomorphisms: apply it to the appropriate kernel and cokernel. For any <span class="math">\(X,Y\)</span>, it embeds <span class="math">\(\operatorname{Hom}(X,Y)\)</span> into <span class="math">\(\operatorname{Hom}_k(\omega X,\omega Y)\)</span>, so Hom spaces are finite dimensional. Every strict chain of subobjects of <span class="math">\(X\)</span> gives a strict chain of subspaces of <span class="math">\(\omega X\)</span>. In particular every object has finite length, and an intersection of any family of subobjects of one object equals an intersection of finitely many members. To see the last statement, choose a finite intersection whose image has least dimension; intersecting any additional member cannot reduce that dimension, hence does not change the subobject.</p>
+<p>For a finite vector space <span class="math">\(W\)</span>, the copower <span class="math">\(W\otimes_k X\)</span> exists. Choose a basis to form a finite sum of copies of <span class="math">\(X\)</span>; the universal property
+<span class="math">\(\operatorname{Hom}(W\otimes X,Y)=\operatorname{Hom}_k(W,\operatorname{Hom}(X,Y))\)</span>
+makes this construction independent of its basis. Exactness of finite sums and of <span class="math">\(\omega\)</span> identifies its image with <span class="math">\(W\otimes\omega X\)</span>.</p>
+<h2 id="2-the-finite-algebra-attached-to-one-object">2. The finite algebra attached to one object</h2>
+<p>Fix <span class="math">\(X\)</span>, put <span class="math">\(V=\omega X\)</span>, and set <span class="math">\(H_X=V^*\otimes X\)</span>. Its image is canonically <span class="math">\(\operatorname{End}_k(V)\)</span>. Define
+<span class="math math-display">\[
+A_X=\{a\in\operatorname{End}_k(V):
+ a^{\oplus n}(\omega Y)\subset\omega Y
+ \text{ for every }n\ge0\text{ and }Y\subset X^{\oplus n}\}.
+\tag{3}
+\]</span>
+It is a finite dimensional unital algebra: preserving subspaces is stable under sums, scalars, compositions, and the identity.</p>
+<p>These constraints are images of actual subobject conditions. For <span class="math">\(Y\subset X^{\oplus n}\)</span>, compose evaluation with the quotient to obtain
+<span class="math math-display">\[
+H_X\otimes_k\omega Y\longrightarrow X^{\oplus n}/Y.
+\]</span>
+Choosing a basis of <span class="math">\(\omega Y\)</span> turns it into one map from <span class="math">\(H_X\)</span> to a finite sum of this quotient. Its kernel has image precisely the endomorphisms preserving <span class="math">\(\omega Y\)</span>. Intersect these kernels. The finite-length observation makes the intersection an actual subobject <span class="math">\(P_X\subset H_X\)</span>, and exactness gives
+<span class="math math-display">\[
+\omega P_X=A_X.
+\tag{4}
+\]</span></p>
+<p>There is a useful intrinsic description: <span class="math">\(P_X\)</span> is the smallest subobject of <span class="math">\(H_X\)</span> whose image contains <span class="math">\(1_V\)</span>. Such a smallest subobject <span class="math">\(Q\)</span> exists by finite intersections; the intersections still contain <span class="math">\(1_V\)</span>. Since <span class="math">\(1_V\in A_X\)</span>, we have <span class="math">\(Q\subset P_X\)</span>. Conversely, regard <span class="math">\(Q\subset H_X\)</span> as a subobject of a finite copower of <span class="math">\(X\)</span>. Every <span class="math">\(a\in A_X\)</span> preserves <span class="math">\(\omega Q\)</span> under its diagonal action. In the identification <span class="math">\(\omega H_X=\operatorname{End}(V)\)</span>, that action is left composition. Consequently <span class="math">\(a=a1_V\in\omega Q\)</span>, so <span class="math">\(A_X\subset\omega Q\)</span>. A subspace containment between images of subobjects reflects to containment of subobjects: the composite to the quotient has zero image under the faithful functor. Thus <span class="math">\(P_X\subset Q\)</span>, proving the description.</p>
+<p>Right composition by <span class="math">\(a\in A_X\)</span> defines a morphism <span class="math">\(H_X\to H_X\)</span> by its action on the coefficient space <span class="math">\(V^*\)</span>. It preserves <span class="math">\(P_X\)</span>, because its image under <span class="math">\(\omega\)</span> maps <span class="math">\(A_X\)</span> to <span class="math">\(A_Xa\subset A_X\)</span>, and the quotient test just used detects this factorization. The multiplication and identity relations are checked by <span class="math">\(\omega\)</span>. Hence <span class="math">\(P_X\)</span> is a right <span class="math">\(A_X\)</span>-module object with image the right regular module.</p>
+<p>Let <span class="math">\(\mathcal C_X\)</span> be the full subcategory consisting of subquotients of finite sums of <span class="math">\(X\)</span>. It is closed under finite sums, kernels, and cokernels. Thus it is abelian with exact inclusion in <span class="math">\(\mathcal C\)</span>. We do not assert it is closed under every extension in <span class="math">\(\mathcal C\)</span>.</p>
+<p>Every <span class="math">\(\omega Z\)</span>, <span class="math">\(Z\in\mathcal C_X\)</span>, has a natural left <span class="math">\(A_X\)</span>-action. Present <span class="math">\(Z=Y/Y'\)</span> with <span class="math">\(Y'\subset Y\subset X^{\oplus n}\)</span>, and use (3) to induce the diagonal action on its quotient. This is independent of the presentation, and every morphism commutes with it. Here is a direct check that avoids assuming fullness: for <span class="math">\(f:Z\to Z'\)</span>, its graph is a subobject of <span class="math">\(Z\oplus Z'\)</span>. Pull it back to subobjects of finite sums of <span class="math">\(X\)</span>; all these subobjects are preserved by (3). The induced action therefore preserves the graph, which is exactly commutation with <span class="math">\(\omega f\)</span>. Apply the same graph argument to identity maps between two presentations.</p>
+<p>For a finite left <span class="math">\(A_X\)</span>-module <span class="math">\(M\)</span>, form the object
+<span class="math math-display">\[
+L_X(M)=P_X\otimes_{A_X}M
+\tag{5}
+\]</span>
+as the cokernel of the two action maps
+<span class="math">\(P_X\otimes_k A_X\otimes_k M\rightrightarrows P_X\otimes_k M\)</span>.
+It belongs to <span class="math">\(\mathcal C_X\)</span>, and exactness gives a natural isomorphism
+<span class="math math-display">\[
+\omega L_X(M)=A_X\otimes_{A_X}M=M.
+\tag{6}
+\]</span>
+Comparison (6) is also <span class="math">\(A_X\)</span>-linear: the left action on the first factor is <span class="math">\(b(a\otimes m)=ba\otimes m\)</span>, and multiplication sends this to <span class="math">\(bam\)</span>. Its inverse is <span class="math">\(m\mapsto1\otimes m\)</span>. Both maps are natural in every module homomorphism. In particular <span class="math">\(L_X\)</span> is exact: apply <span class="math">\(\omega\)</span> to the kernel and cokernel of the homology of the resulting finite sequence.</p>
+<p>Evaluation defines <span class="math">\(P_X\otimes_{A_X}V\to X\)</span>, and its image is the regular-module multiplication isomorphism. Thus it is an isomorphism. For a subobject <span class="math">\(Y\subset X^{\oplus n}\)</span>, evaluation restricted to <span class="math">\(P_X\otimes_k\omega Y\)</span> factors through <span class="math">\(Y\)</span>: its composite to <span class="math">\(X^{\oplus n}/Y\)</span> has zero image by (3). It is balanced, so gives
+<span class="math">\(L_X(\omega Y)\to Y\)</span>, an isomorphism by (6). For <span class="math">\(Y'\subset Y\)</span>, pass to the quotient, using exactness of <span class="math">\(L_X\)</span>. This gives an isomorphism
+<span class="math math-display">\[
+L_X(\omega Z)\longrightarrow Z
+\tag{7}
+\]</span>
+for every <span class="math">\(Z\in\mathcal C_X\)</span>. The graph argument proves naturality: two proposed composites have the same image, so faithfulness makes them equal. Equations (6)–(7) prove an equivalence
+<span class="math math-display">\[
+\mathcal C_X\simeq\operatorname{Mod}^{\mathrm{fd}}(A_X)
+\tag{8}
+\]</span>
+whose forgetful functor is <span class="math">\(\omega\)</span>. Fullness and essential surjectivity have both been proved, not assumed. Moreover <span class="math">\(L_X(A_X)=P_X\)</span>, and the equivalence gives <span class="math">\(\operatorname{Hom}_{\mathcal C_X}(P_X,Z)=\operatorname{Hom}_{A_X}(A_X,\omega Z)=\omega Z\)</span>. Thus <span class="math">\(P_X\)</span> is a projective generator of this finite subcategory: finite module generators give epimorphisms from finite sums of <span class="math">\(P_X\)</span>. This says nothing about its projectivity in the entire category. Its object endomorphism ring is <span class="math">\(A_X^{\mathrm{op}}\)</span>, whereas the natural-endomorphism algebra in (9) is <span class="math">\(A_X\)</span>.</p>
+<p>Natural endomorphisms of the forgetful functor on finite left <span class="math">\(A_X\)</span>-modules are precisely left multiplication by elements of <span class="math">\(A_X\)</span>. Indeed naturality on the regular module with its right-multiplication maps makes an endomorphism left multiplication by its value at 1. The maps <span class="math">\(A_X\to M\)</span>, <span class="math">\(a\mapsto am\)</span>, then force its value on every <span class="math">\(M\)</span>. Therefore
+<span class="math math-display">\[
+A_X=\operatorname{End}(\omega|_{\mathcal C_X}).
+\tag{9}
+\]</span></p>
+<h2 id="3-compatible-finite-coalgebras">3. Compatible finite coalgebras</h2>
+<p>The subcategories <span class="math">\(\mathcal C_X\)</span> are directed: <span class="math">\(\mathcal C_X\)</span> and <span class="math">\(\mathcal C_Y\)</span> lie in <span class="math">\(\mathcal C_{X\oplus Y}\)</span>. When <span class="math">\(\mathcal C_X\subset\mathcal C_{X'}\)</span>, restriction of (9) is an algebra homomorphism <span class="math">\(A_{X'}\to A_X\)</span>. It is surjective, as follows.</p>
+<p>Under (8) for <span class="math">\(X'\)</span>, write <span class="math">\(V=\omega X\)</span> and let <span class="math">\(D\)</span> be the image of <span class="math">\(A_{X'}\)</span> in <span class="math">\(\operatorname{End}(V)\)</span>. The module <span class="math">\(V\)</span> is faithful over <span class="math">\(D\)</span>. If <span class="math">\(v_1,\ldots,v_d\)</span> is a basis, the map
+<span class="math math-display">\[
+D\longrightarrow V^{\oplus d},\qquad a\longmapsto(av_i)_i
+\]</span>
+is injective and <span class="math">\(D\)</span>-linear. Every finite <span class="math">\(D\)</span>-module is a quotient of a finite sum of regular modules, so is a subquotient of a finite sum of <span class="math">\(V\)</span>. Conversely, every such subquotient is annihilated by the kernel <span class="math">\(A_{X'}\to D\)</span>. Hence <span class="math">\(\mathcal C_X\)</span> corresponds exactly to all finite <span class="math">\(D\)</span>-modules. Their natural-endomorphism algebra is <span class="math">\(D\)</span>, by the regular-module proof. Equation (9) identifies it with <span class="math">\(A_X\)</span>, proving surjectivity.</p>
+<p>Dualize the finite algebras to coalgebras <span class="math">\(B_X=A_X^*\)</span>. The transition maps are injective coalgebra maps. Put
+<span class="math math-display">\[
+B=\varinjlim_X B_X.
+\tag{10}
+\]</span>
+The left <span class="math">\(A_X\)</span>-module structure on <span class="math">\(\omega Z\)</span> is equivalent to a right <span class="math">\(B_X\)</span>-coaction: for dual bases <span class="math">\(a_i,b_i\)</span>, the formula is
+<span class="math">\(v\mapsto\sum_i a_i v\otimes b_i\)</span>.
+Associativity and unit are precisely the coassociativity and counit equations. Compatibility under restriction makes these into <span class="math">\(B\)</span>-coactions, defining a functor <span class="math">\(\mathcal C\to\operatorname{Comod}^{\mathrm{fd}}_B\)</span>.</p>
+<p>Every finite <span class="math">\(B\)</span>-comodule comes from one <span class="math">\(B_X\)</span>. Choose a vector-space basis and include its finitely many coaction coefficients in one stage; the counit and coassociativity equations already hold there because its inclusion into <span class="math">\(B\)</span> is injective. Equivalence (8) supplies its object. For two objects, include both in one <span class="math">\(\mathcal C_X\)</span>; a <span class="math">\(B\)</span>-comodule map is a <span class="math">\(B_X\)</span>-comodule map, since the stage inclusion is injective. Fullness of (8) supplies the morphism. This proves the coalgebra version of (1).</p>
+<h2 id="4-matrix-coefficients-and-the-tensor-product">4. Matrix coefficients and the tensor product</h2>
+<p>There is a presentation particularly suited to the tensor structure. Take the direct sum of <span class="math">\((\omega X)^*\otimes\omega X\)</span> over a small skeleton, and impose the relations
+<span class="math math-display">\[
+[\xi,\omega(f)v]_Y=[\xi\circ\omega(f),v]_X
+\quad(f:X\to Y).
+\tag{11}
+\]</span>
+Denote the resulting vector space by <span class="math">\(Q\)</span>. For <span class="math">\(\mathcal C_X\)</span> alone, the dual of this quotient is exactly the space of natural endomorphisms of its forgetful functor, by the pairing <span class="math">\(\xi(a_Xv)\)</span>. It is <span class="math">\(A_X\)</span> by (9). Since a vector space with finite dimensional dual is finite dimensional (extend a basis and choose coordinate functionals), this coefficient quotient is canonically <span class="math">\(A_X^*=B_X\)</span>. The canonical map is evaluation on natural endomorphisms. Matrix coefficients of <span class="math">\(X\)</span> span it: dualize the inclusion <span class="math">\(A_X\subset\operatorname{End}(\omega X)\)</span>.</p>
+<p>Every finite collection of objects and morphisms in (11) lies in one of the directed <span class="math">\(\mathcal C_X\)</span>. Thus the global presentation is their filtered colimit, and identifies <span class="math">\(Q\)</span> with <span class="math">\(B\)</span>. For a basis <span class="math">\(v_i\)</span> and its dual <span class="math">\(\xi_i\)</span>, write <span class="math">\(b_{ij}=[\xi_i,v_j]_X\)</span>. The coalgebra formulas are
+<span class="math math-display">\[
+\Delta(b_{ij})=\sum_h b_{ih}\otimes b_{hj},
+\qquad\epsilon(b_{ij})=\delta_{ij}.
+\tag{12}
+\]</span>
+They agree with the dual-algebra construction and show directly that (11) respects the coalgebra operations.</p>
+<p>Use the strong tensor isomorphisms of <span class="math">\(\omega\)</span> to define
+<span class="math math-display">\[
+[\xi,v]_X[\eta,w]_Y
+  =[\xi\otimes\eta,v\otimes w]_{X\otimes Y}.
+\tag{13}
+\]</span>
+Relation (11) is respected in each variable by <span class="math">\(f\otimes1\)</span> and <span class="math">\(1\otimes f\)</span>, so this is well defined. The coefficient of the unit is the multiplicative unit. Associativity follows from naturality for the associator and the strong monoidal compatibility of <span class="math">\(\omega\)</span>. The symmetry constraint and the ordinary vector-space interchange prove commutativity. Formula (12), applied to a tensor-product basis, proves that <span class="math">\(\Delta\)</span> and <span class="math">\(\epsilon\)</span> are algebra homomorphisms. Hence <span class="math">\(B\)</span> is a commutative bialgebra.</p>
+<p>Duality gives the antipode. Identify <span class="math">\(\omega(X^\vee)=(\omega X)^*\)</span>, and write <span class="math">\(\operatorname{ev}_v\)</span> for evaluation at <span class="math">\(v\)</span>. Set
+<span class="math math-display">\[
+S([\xi,v]_X)=[\operatorname{ev}_v,\xi]_{X^\vee}.
+\tag{14}
+\]</span>
+Naturality for the dual morphism makes this respect (11). The evaluation and coevaluation morphisms give, on a basis, respectively
+<span class="math math-display">\[
+\sum_h S(b_{ih})b_{hj}=\delta_{ij}1,
+\qquad
+\sum_h b_{ih}S(b_{hj})=\delta_{ij}1.
+\tag{15}
+\]</span>
+To verify the first equation directly, evaluate the tensor coefficient on the invariant pairing <span class="math">\(X^\vee\otimes X\to\mathbf1\)</span>; contraction of the middle dual basis is <span class="math">\(\xi_i(v_j)\)</span>. The second follows by applying the invariant coevaluation <span class="math">\(\mathbf1\to X\otimes X^\vee\)</span> and contracting the other pair. These are the two antipode identities, so <span class="math">\(B\)</span> is a Hopf algebra. Formula (13) makes the equivalence in (1) symmetric monoidal; formula (14) makes it preserve duals.</p>
+<h2 id="5-the-automorphism-functor-on-every-test-algebra">5. The automorphism functor on every test algebra</h2>
+<p>Let <span class="math">\(R\)</span> be any commutative <span class="math">\(k\)</span>-algebra. A linear map <span class="math">\(\varphi:B\to R\)</span> gives a natural <span class="math">\(R\)</span>-linear endomorphism <span class="math">\(a_X\)</span> of <span class="math">\(R\otimes\omega X\)</span> through
+<span class="math math-display">\[
+\xi(a_Xv)=\varphi([\xi,v]_X).
+\tag{16}
+\]</span>
+Conversely every such natural endomorphism defines a map from the coefficient direct sum, and naturality is exactly (11), so it descends uniquely to <span class="math">\(B\)</span>. This argument is over arbitrary <span class="math">\(R\)</span>, rather than a comparison of field-valued points.</p>
+<p>Tensor compatibility and the unit condition say exactly that <span class="math">\(\varphi\)</span> is a unital algebra homomorphism, by (13). For such a homomorphism the natural endomorphism is invertible: use the coefficients <span class="math">\(\varphi(S(b_{ij}))\)</span> for its inverse and apply (15). Hence (16) gives (2). Compatibility with base change in <span class="math">\(R\)</span> is immediate from the coefficient formulas. Therefore the affine group scheme <span class="math">\(G=\operatorname{Spec}B\)</span> represents the tensor automorphism functor, and (1) is the requested neutral reconstruction theorem. The bijection respects group multiplication: matrix multiplication has entries <span class="math">\(\sum_h\varphi(b_{ih})\psi(b_{hj})\)</span>, exactly convolution through <span class="math">\(\Delta\)</span>; the inverse is represented by <span class="math">\(S\)</span>. A finite comodule coefficient matrix defines a morphism <span class="math">\(G\to GL(V)\)</span>, since its antipode matrix is the inverse and comultiplication is the group-law equation. Conversely a group-scheme representation has coefficient functions satisfying these equations and hence defines a coaction. The same coefficient equations identify morphisms. This proves the representation/comodule equality used in (1), including the tensor structures.</p>
+<p>Reconstruction does not by itself make <span class="math">\(G\)</span> reductive, connected, smooth, or of finite type. Those properties require additional categorical arguments in geometric Satake. Reconstruction alone must not be used to supply them.</p>
+<h2 id="6-finite-coefficients-and-generators">6. Finite coefficients and generators</h2>
+<p>We need an elementary finiteness fact for arbitrary coalgebras. If <span class="math">\(A\)</span> is a coalgebra and <span class="math">\(a\in A\)</span>, write <span class="math">\(\Delta(a)=\sum_i a_i\otimes b_i\)</span> with the <span class="math">\(b_i\)</span> linearly independent. Coassociativity shows that <span class="math">\(W=\operatorname{span}(a_i)\)</span> satisfies <span class="math">\(\Delta(W)\subset W\otimes A\)</span>: project the first factor of the coassociativity identity to <span class="math">\(A/W\)</span>, and use independence in its third factor. Counitality puts <span class="math">\(a\)</span> in <span class="math">\(W\)</span>. Sums of these subspaces put every finite subset in a finite-dimensional regular right subcomodule.</p>
+<p>For a finite right comodule <span class="math">\(V\)</span>, choose a basis and write
+<span class="math math-display">\[
+\rho(v_j)=\sum_i v_i\otimes c_{ij},\qquad
+C(V)=\operatorname{span}_k\{c_{ij}\}.
+\tag{17}
+\]</span>
+The coefficient space is a finite subcoalgebra, since
+<span class="math">\(\Delta(c_{ij})=\sum_h c_{ih}\otimes c_{hj}\)</span> and <span class="math">\(\epsilon(c_{ij})=\delta_{ij}\)</span>.
+The coaction gives an injective comodule map
+<span class="math math-display">\[
+V\hookrightarrow V_{\mathrm{triv}}\otimes C(V)
+          \simeq C(V)^{\oplus\dim V}.
+\tag{18}
+\]</span>
+Injectivity follows by applying the counit. The maps <span class="math">\(v\mapsto(\xi\otimes1)\rho(v)\)</span>, for a basis of <span class="math">\(V^*\)</span>, together give a surjective comodule map
+<span class="math math-display">\[
+V^{\oplus\dim V}\twoheadrightarrow C(V).
+\tag{19}
+\]</span>
+Indeed their images span exactly the coefficients in (17).</p>
+<p>Adapted bases give the following identities and containment:
+<span class="math math-display">\[
+\begin{aligned}
+C(V\oplus W)&amp;=C(V)+C(W),\\
+C(V\otimes W)&amp;=\operatorname{span}_k(C(V)C(W)),\\
+C(V^\vee)&amp;=S(C(V)),\\
+C(U)&amp;\subset C(V)\quad\text{if }U\text{ is a subquotient of }V.
+\end{aligned}
+\tag{20}
+\]</span>
+For the last assertion, put a subobject first in a basis. Its matrix is a diagonal block of the original matrix; the quotient matrix is the other diagonal block. The tensor identity follows by multiplying entries, and the dual identity follows from the inverse matrix (15).</p>
+<p>Every element of a Hopf algebra <span class="math">\(A\)</span> belongs to some <span class="math">\(C(V)\)</span>. Apply the preceding coalgebra construction to its regular comodule, choose a basis <span class="math">\(v_i\)</span> of the resulting finite <span class="math">\(V\subset A\)</span>, and apply <span class="math">\(\epsilon\otimes1\)</span> to <span class="math">\(\Delta(v_j)=\sum_i v_i\otimes c_{ij}\)</span>. It gives <span class="math">\(v_j=\sum_i\epsilon(v_i)c_{ij}\)</span>. Thus
+<span class="math math-display">\[
+A=\bigcup_V C(V).
+\tag{21}
+\]</span>
+The union is directed by direct sums.</p>
+<p>Call <span class="math">\(X\)</span> a <strong>tensor generator</strong> if every object is a subquotient of a finite sum of tensor words in <span class="math">\(X,X^\vee\)</span>, including the empty word <span class="math">\(\mathbf1\)</span>.</p>
+<p><strong>Theorem 6.1.</strong> The reconstructed affine group <span class="math">\(G\)</span> is of finite type over <span class="math">\(k\)</span> if and only if <span class="math">\(\mathcal C\)</span> has a tensor generator. Such a generator gives a closed immersion <span class="math">\(G\hookrightarrow GL(\omega X)\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math">\(X\)</span> generates, (20)–(21) show that its coefficients and their antipodes generate the coordinate algebra <span class="math">\(B\)</span>. There are finitely many of them. The dual coefficients are entries of the inverse matrix, so they belong to the image of <span class="math">\(k[GL(\omega X)]\)</span>. This coordinate map is surjective, which proves the closed immersion and finite type.</p>
+<p>Conversely suppose <span class="math">\(B\)</span> is finitely generated as an algebra. Put a finite set of algebra generators in one finite regular subcomodule <span class="math">\(X\subset B\)</span>, using the coalgebra construction. The calculation proving (21) puts those generators in <span class="math">\(C(X)\)</span>. Thus <span class="math">\(B=k[C(X)]\)</span>. For any finite comodule <span class="math">\(M\)</span>, its finite coefficient space lies in the span of products of at most <span class="math">\(N\)</span> entries from <span class="math">\(C(X)\)</span>, for some finite <span class="math">\(N\)</span>. By (20), this is
+<span class="math math-display">\[
+C\left(\bigoplus_{r=0}^{N}X^{\otimes r}\right).
+\]</span>
+Embedding (18) puts <span class="math">\(M\)</span> in a finite sum of this coefficient comodule. Surjection (19) makes that coefficient comodule a quotient of a finite sum of the displayed tensor words. Taking the inverse image of <span class="math">\(M\)</span> under this surjection exhibits it as a subquotient of those words. This proves tensor generation in every characteristic. <span class="math">\(\square\)</span></p>
+<p>Call <span class="math">\(X\)</span> an <strong>additive generator</strong> if every object is a subquotient of <span class="math">\(X^{\oplus n}\)</span> for some finite <span class="math">\(n\)</span>.</p>
+<p><strong>Theorem 6.2.</strong> The affine group scheme <span class="math">\(G\)</span> is finite over <span class="math">\(k\)</span> if and only if <span class="math">\(\mathcal C\)</span> has an additive generator.</p>
+<p><strong>Proof.</strong> If <span class="math">\(X\)</span> is an additive generator, (20) puts every coefficient in the one finite space <span class="math">\(C(X)\)</span>; (21) therefore makes <span class="math">\(B=C(X)\)</span> finite dimensional. Conversely if <span class="math">\(B\)</span> is finite dimensional, its regular comodule is an object, and every finite comodule embeds in <span class="math">\(B^{\oplus\dim M}\)</span> by its coaction. Thus <span class="math">\(B\)</span> is an additive generator. Finite dimensionality of the coordinate algebra is exactly finiteness of the affine scheme over the field. This criterion concerns the scheme, including its nilpotents; it is not a count of rational points. <span class="math">\(\square\)</span></p>
+<h2 id="7-why-hopf-inclusions-are-faithfully-flat">7. Why Hopf inclusions are faithfully flat</h2>
+<p>An injective homomorphism of arbitrary rings need not be flat. The group structure supplies the missing argument for commutative Hopf algebras.</p>
+<p><strong>Lemma 7.1.</strong> An inclusion <span class="math">\(B\subset A\)</span> of commutative Hopf algebras over a field makes <span class="math">\(A\)</span> faithfully flat as a <span class="math">\(B\)</span>-module, without finite type or reducedness assumptions.</p>
+<p><strong>Proof in finite type.</strong> Write <span class="math">\(G=\operatorname{Spec}A\)</span>, <span class="math">\(H=\operatorname{Spec}B\)</span>, and <span class="math">\(K=\ker(G\to H)\)</span>. This is a closed finite-type subgroup, and is flat because its base is a field. We use two exact earlier programme results. <a href="../AG-GS/AG-GS-04.html#algebraic-groups-the-general-scheme-quotient">Quotients and torsors, Theorem 11.1b</a> proves that <span class="math">\(Q=G/K\)</span> is a finite-type scheme and that <span class="math">\(p:G\to Q\)</span> is an fppf <span class="math">\(K\)</span>-torsor. Its initial algebraic-space quotient is supplied by the proved <span class="unlinked">flat quotient theorem, Corollary 8.3</span>; Theorem 11.1b's subsequent affine-neighbourhood construction proves the scheme assertion. <a href="../AG-GS/AG-GS-03.html#5-9-locally-finite-type-monomorphisms">Group schemes over a field, Theorem 5.9</a> proves that a quasi-compact monomorphism between locally finite-type field groups is a closed immersion, retaining nilpotents in every characteristic.</p>
+<p>The induced <span class="math">\(j:Q\to H\)</span> is a monomorphism on every test scheme. To check this, lift two cosets fppf locally to <span class="math">\(g_1,g_2\in G\)</span>. Equality of their images in <span class="math">\(H\)</span> says that <span class="math">\(g_1^{-1}g_2\)</span> lies in <span class="math">\(K\)</span>, so their cosets agree. Equality descends. Both groups are finite type, so the monomorphism is quasi-compact. The stated theorem makes <span class="math">\(j\)</span> a closed immersion. Every equation of this closed subscheme pulls back to zero in <span class="math">\(A\)</span>, whereas <span class="math">\(B\to A\)</span> is injective. Its defining ideal is therefore zero. Thus <span class="math">\(Q=H\)</span>, and <span class="math">\(G\to H\)</span> is fppf. Equivalently <span class="math">\(A\)</span> is faithfully flat over <span class="math">\(B\)</span>.</p>
+<p><strong>Passage to arbitrary Hopf algebras.</strong> Every commutative Hopf algebra is a filtered union of finitely generated Hopf subalgebras. Given a finite list of elements, the proof of (21) puts them in a finite coefficient coalgebra. Adjoin its finitely many entries and their antipodes. The formulas for their comultiplication, counit and antipode make the generated algebra a Hopf subalgebra. Here <span class="math">\(S^2=1\)</span>: applying the representing functor to any commutative test algebra makes <span class="math">\(S\)</span> group inversion, whose square is the identity; taking the universal test algebra proves the algebra identity. Direct sums of finite coefficient comodules make these subalgebras directed.</p>
+<p>Consider all pairs of finitely generated Hopf subalgebras <span class="math">\(B_0\subset B\)</span>, <span class="math">\(A_0\subset A\)</span> with <span class="math">\(B_0\subset A_0\)</span>. They form a filtered system, and multiplication gives a <span class="math">\(B\)</span>-module isomorphism
+<span class="math math-display">\[
+\varinjlim_{(B_0,A_0)}B\otimes_{B_0}A_0\xrightarrow{\sim}A.
+\tag{22}
+\]</span>
+It is surjective because any element of <span class="math">\(A\)</span> occurs in one <span class="math">\(A_0\)</span>. For injectivity take a representative <span class="math">\(\sum_i b_i\otimes a_i\)</span> whose product sum is zero. Enlarge the pair so that all <span class="math">\(b_i\)</span> also belong to its first algebra. In this stage the representative equals <span class="math">\(1\otimes\sum_i b_i a_i=0\)</span>. No injectivity of the transition tensor maps is required.</p>
+<p>The finite-type proof makes <span class="math">\(A_0\)</span> flat over <span class="math">\(B_0\)</span>, so each module <span class="math">\(B\otimes_{B_0}A_0\)</span> is flat over <span class="math">\(B\)</span>. A filtered colimit of flat modules is flat: tensor commutes with that colimit, and an element and a relation making its image zero occur at a common stage. The stagewise preservation of a module injection then preserves it in the colimit. Thus (22) proves flatness of <span class="math">\(A/B\)</span>.</p>
+<p>If a proper ideal <span class="math">\(I\subset B\)</span> satisfied <span class="math">\(IA=A\)</span>, write <span class="math">\(1=\sum_i b_i a_i\)</span> with <span class="math">\(b_i\in I\)</span>, and include all terms in one such pair. The ideal <span class="math">\((b_i)\subset B_0\)</span> is proper, since its image lies in <span class="math">\(I\)</span>. Finite-type faithful flatness contradicts <span class="math">\(1\in(b_i)A_0\)</span>. Hence every proper ideal remains proper. For a nonzero <span class="math">\(B\)</span>-module choose a nonzero element; its cyclic submodule is <span class="math">\(B/I\)</span> for a proper ideal. Tensoring preserves its injection by flatness and keeps it nonzero by the ideal assertion. This is faithfulness, completing the proof. <span class="math">\(\square\)</span></p>
+<h2 id="8-morphisms-of-groups-from-their-representations">8. Morphisms of groups from their representations</h2>
+<p>Let <span class="math">\(f:G\to H\)</span> be a homomorphism of arbitrary affine group schemes over <span class="math">\(k\)</span>, and write <span class="math">\(u:B=k[H]\to A=k[G]\)</span>. Restriction of representations is the exact faithful tensor functor <span class="math">\(f^*\)</span>, obtained by composing a coaction with <span class="math">\(1\otimes u\)</span>.</p>
+<p><strong>Theorem 8.1.</strong> The following criteria hold over every field.</p>
+<ol>
+<li><span class="math">\(f\)</span> is faithfully flat if and only if <span class="math">\(f^*\)</span> is fully faithful and every <span class="math">\(G\)</span>-subobject of a restricted <span class="math">\(H\)</span>-representation is an <span class="math">\(H\)</span>-subobject.</li>
+<li><span class="math">\(f\)</span> is a closed immersion if and only if every finite-dimensional <span class="math">\(G\)</span>-representation is a subquotient of a restricted <span class="math">\(H\)</span>-representation.</li>
+</ol>
+<p>In the first statement a subobject includes its specified inclusion into the representation. If one instead says that it is merely isomorphic to a restricted object, full faithfulness must lift that inclusion.</p>
+<p><strong>Proof of the faithfully flat criterion.</strong> Faithful flatness makes <span class="math">\(u\)</span> injective. A linear map between two restricted comodules is a <span class="math">\(G\)</span>-map exactly when its two coaction composites agree after applying <span class="math">\(u\)</span>. The injection <span class="math">\(V\otimes B\hookrightarrow V\otimes A\)</span> detects that equality, so it is already an <span class="math">\(H\)</span>-map. This proves full faithfulness. If <span class="math">\(W\subset V\)</span> is <span class="math">\(G\)</span>-stable, the composite
+<span class="math math-display">\[
+W\longrightarrow V\otimes B\longrightarrow(V/W)\otimes B
+\]</span>
+becomes zero after applying <span class="math">\(u\)</span>; the same injection shows that it was zero. Thus <span class="math">\(W\)</span> is <span class="math">\(H\)</span>-stable.</p>
+<p>Conversely put <span class="math">\(I=\ker u\)</span>. It is a Hopf ideal, so <span class="math">\(\epsilon(I)=0\)</span> and
+<span class="math">\(\Delta(I)\subset I\otimes B+B\otimes I\)</span>.
+Suppose <span class="math">\(0\ne a\in I\)</span>, choose a finite regular <span class="math">\(B\)</span>-subcomodule <span class="math">\(V\subset B\)</span> containing it, and put <span class="math">\(W=V\cap I\)</span>. After composing the second coaction factor with <span class="math">\(u\)</span>, the Hopf-ideal identity makes <span class="math">\(W\)</span> a <span class="math">\(G\)</span>-subobject of the restricted <span class="math">\(V\)</span>. To see this precisely, <span class="math">\((1\otimes u)\Delta(W)\)</span> lies both in <span class="math">\(V\otimes A\)</span> and in <span class="math">\(I\otimes A\)</span>; their intersection is <span class="math">\(W\otimes A\)</span>, since tensoring over a field is exact. The subobject hypothesis makes <span class="math">\(W\)</span> a <span class="math">\(B\)</span>-subcomodule, so <span class="math">\(\Delta(W)\subset W\otimes B\)</span>. Applying <span class="math">\(\epsilon\otimes1\)</span> gives <span class="math">\(W=0\)</span>, because <span class="math">\(\epsilon(W)=0\)</span>. This contradicts <span class="math">\(a\in W\)</span>. Therefore <span class="math">\(u\)</span> is injective; Lemma 7.1 proves faithful flatness. With inclusions specified, the subobject hypothesis also implies fullness directly by applying it to graphs of <span class="math">\(G\)</span>-maps.</p>
+<p><strong>Proof of the closed-immersion criterion.</strong> If <span class="math">\(u\)</span> is surjective, lift a basis of <span class="math">\(C(M)\)</span> for a finite <span class="math">\(G\)</span>-comodule <span class="math">\(M\)</span> to <span class="math">\(B\)</span>. Put these lifts in a finite regular <span class="math">\(H\)</span>-subcomodule <span class="math">\(V\subset B\)</span>. Then <span class="math">\(u(V)\subset A\)</span> is a quotient of the restricted <span class="math">\(V\)</span> and contains <span class="math">\(C(M)\)</span>. Embedding (18) gives
+<span class="math math-display">\[
+M\hookrightarrow C(M)^{\oplus\dim M}
+ \subset u(V)^{\oplus\dim M}.
+\]</span>
+Taking its inverse image in <span class="math">\((f^*V)^{\oplus\dim M}\)</span> exhibits the required subquotient. Conversely the coefficients of every subquotient of a restricted representation lie in <span class="math">\(u(B)\)</span>, by (20). If this covers every <span class="math">\(G\)</span>-representation, (21) implies <span class="math">\(A=u(B)\)</span>. Thus the affine coordinate map is surjective, exactly the closed-immersion condition. <span class="math">\(\square\)</span></p>
+<p>For any neutral category, finite sets of objects and their duals generate tensor subcategories whose coefficient Hopf algebras are finitely generated subalgebras of <span class="math">\(B\)</span>. Section 6 proves that their union is <span class="math">\(B\)</span>, and Lemma 7.1 now proves that all the corresponding transition morphisms of affine groups are faithfully flat. Thus the reconstructed group is an inverse limit of algebraic groups. Finite type, connectedness and reductivity remain additional properties to establish in an application.</p>
+<h2 id="9-graded-vectors-finite-groups-and-the-symmetry-obstruction">9. Graded vectors, finite groups and the symmetry obstruction</h2>
+<h3 id="91-integer-gradings-reconstruct-the-multiplicative-group">9.1. Integer gradings reconstruct the multiplicative group</h3>
+<p>Let <span class="math">\(\mathcal C\)</span> be finite-dimensional <span class="math">\(\mathbb Z\)</span>-graded vector spaces, with degree-preserving maps, the usual tensor grading, and the ordinary symmetry. Let <span class="math">\(k(n)\)</span> denote the one-dimensional object in degree <span class="math">\(n\)</span>. Every object is a finite direct sum of these, and <span class="math">\(k(n)\otimes k(m)=k(n+m)\)</span>.</p>
+<p>For any test algebra <span class="math">\(R\)</span>, a natural endomorphism of the forgetful functor must act on the degree <span class="math">\(n\)</span> summand by one scalar <span class="math">\(a_n\in R\)</span>. Indeed degree projections force preservation of each summand, and all linear maps within that summand force a scalar; maps from <span class="math">\(k(n)\)</span> determine the same scalar for every object. The tensor and unit conditions give
+<span class="math math-display">\[
+a_{n+m}=a_n a_m,\qquad a_0=1.
+\]</span>
+Consequently <span class="math">\(a_1=u\in R^\times\)</span>, <span class="math">\(a_{-1}=u^{-1}\)</span>, and <span class="math">\(a_n=u^n\)</span>. Conversely these formulas give every tensor automorphism. The representing Hopf algebra is therefore
+<span class="math math-display">\[
+k[z,z^{-1}],\qquad
+\Delta(z)=z\otimes z,\quad\epsilon(z)=1,\quad S(z)=z^{-1}.
+\tag{23}
+\]</span>
+The coaction on a vector of degree <span class="math">\(n\)</span> is <span class="math">\(v\mapsto v\otimes z^n\)</span>.</p>
+<p>To verify the equivalence in the other direction, write any finite Laurent-polynomial coaction uniquely as <span class="math">\(\rho(v)=\sum_n p_n(v)\otimes z^n\)</span>, using only finitely many <span class="math">\(n\)</span> for a fixed finite vector-space basis. Coassociativity says <span class="math">\(p_n p_m=0\)</span> for <span class="math">\(n\ne m\)</span> and <span class="math">\(p_n^2=p_n\)</span>; the counit says <span class="math">\(\sum_n p_n=1\)</span>. Thus their images give a finite grading. Morphisms commute with all these projectors, and tensor degrees add by (23). This proves <span class="math">\(\mathcal C=\operatorname{Rep}(\mathbb G_m)\)</span>. The line <span class="math">\(k(1)\)</span> is a tensor generator, but no additive generator exists: a finite graded object has only finitely many degrees, whereas its subquotients and finite sums introduce no new degree.</p>
+<p>The same calculation for an abelian group <span class="math">\(L\)</span> gives the diagonalizable group <span class="math">\(D(L)=\operatorname{Spec}k[L]\)</span>, with <span class="math">\(\Delta(e^\ell)=e^\ell\otimes e^\ell\)</span>. It retains scheme structure in positive characteristic. For example <span class="math">\(L=\mathbb Z/p\mathbb Z\)</span> in characteristic <span class="math">\(p\)</span> gives <span class="math">\(\mu_p\)</span>, whose coordinate algebra <span class="math">\(k[z]/(z^p-1)\)</span> is nonreduced.</p>
+<h3 id="92-a-finite-constant-group">9.2. A finite constant group</h3>
+<p>Let <span class="math">\(\Gamma\)</span> be a finite abstract group and take its finite-dimensional <span class="math">\(k\)</span>-representations with the usual forgetful functor. They are finite left modules over the finite algebra <span class="math">\(k\Gamma\)</span>. The regular module is an additive generator, because a basis of any module gives a surjection from a finite sum of regular modules. The natural-endomorphism calculation of §2 gives <span class="math">\(A=k\Gamma\)</span>. Its dual coefficient coalgebra is <span class="math">\(B=(k\Gamma)^*\)</span>, the vector space <span class="math">\(k^\Gamma\)</span> of functions on <span class="math">\(\Gamma\)</span>.</p>
+<p>An element <span class="math">\(g\in\Gamma\)</span> acts on a tensor product by <span class="math">\(g\otimes g\)</span>. Dualizing this tensor rule makes multiplication in <span class="math">\(B\)</span> pointwise. Multiplication of group elements gives
+<span class="math math-display">\[
+\Delta(f)(g,h)=f(gh),\qquad
+\epsilon(f)=f(1),\qquad S(f)(g)=f(g^{-1}).
+\tag{24}
+\]</span>
+Thus <span class="math">\(\operatorname{Spec}B\)</span> is the constant group scheme consisting of one copy of <span class="math">\(\operatorname{Spec}k\)</span> for each <span class="math">\(g\in\Gamma\)</span>. On a disconnected test algebra its points are locally constant choices of <span class="math">\(g\)</span>, as the mutually orthogonal idempotents of <span class="math">\(k^\Gamma\)</span> specify. This is the full scheme reconstruction, not merely recovery of <span class="math">\(\Gamma\)</span> on field-valued points. Nothing in the calculation divides by <span class="math">\(|\Gamma|\)</span>; it remains valid when the characteristic divides the group order.</p>
+<h3 id="93-why-super-vector-spaces-require-a-different-symmetry">9.3. Why super vector spaces require a different symmetry</h3>
+<p>Suppose <span class="math">\(\operatorname{char}k\ne2\)</span>. Super vector spaces are <span class="math">\(\mathbb Z/2\mathbb Z\)</span>-graded spaces with the Koszul symmetry <span class="math">\(v\otimes w\mapsto(-1)^{|v||w|}w\otimes v\)</span>. Let <span class="math">\(E\)</span> be the one-dimensional odd line. It is invertible, <span class="math">\(E\otimes E\simeq\mathbf1\)</span>, and its self-symmetry is <span class="math">\(-1_{E\otimes E}\)</span>.</p>
+<p>If a symmetric fibre functor <span class="math">\(\omega\)</span> to ordinary vector spaces existed, <span class="math">\(\omega E\)</span> would be invertible there. Its dimension has square one, so it is a one-dimensional space. Ordinary interchange on its tensor square is the identity, whereas <span class="math">\(k\)</span>-linearity sends the self-symmetry of <span class="math">\(E\)</span> to minus the identity. Strong symmetric compatibility identifies these two maps, a contradiction in characteristic different from two. The usual forgetful functor is exact, faithful and tensor, but fails this symmetry condition.</p>
+<p>In characteristic two this obstruction disappears: the Koszul signs equal one. The same graded category is then <span class="math">\(\operatorname{Rep}(\mu_2)\)</span>, by §9.1 with <span class="math">\(L=\mathbb Z/2\mathbb Z\)</span>. The characteristic hypothesis is essential. This example explains why the sign-adjusted symmetry of <a href="GL-SAT-08.html#7-component-parity-and-the-sign-modification">Lesson 8, §7</a> matters when ordinary cohomology becomes the Satake fibre functor.</p>
+<h2 id="10-reductivity-and-the-boundary-of-neutral-reconstruction">10. Reductivity and the boundary of neutral reconstruction</h2>
+<h3 id="101-the-connected-characteristic-zero-dictionary">10.1. The connected characteristic-zero dictionary</h3>
+<p><strong>Theorem 10.1.</strong> Let <span class="math">\(G\)</span> be a connected affine group scheme over a characteristic-zero field. Its finite-dimensional representation category is semisimple if and only if <span class="math">\(G\)</span> is pro-reductive. Here this means that its canonical finite-type quotient groups are reductive, or equivalently that it is the inverse limit of those connected reductive algebraic groups with faithfully flat transition maps. For a finite-type connected group, the condition is simply reductivity.</p>
+<p><strong>Proof.</strong> First consider a connected finite-type affine group. The proved <a href="../AG-GS/AG-GS-02.html#4-why-characteristic-zero-forces-smoothness">Cartier theorem, AG-GS-02, Theorem 4.3</a> makes it smooth. The complete smooth connected classification in <a href="../AG-GS/AG-GS-01.html#5-20-which-smooth-connected-groups-are-linearly-reductive">AG-GS-01, Theorem 5.22</a> proves reductivity equivalent to exact invariants. Its characteristic-zero direction uses the proved Weyl complete-reducibility theorem and the central-isogeny structure of a reductive group. For the converse, the unipotent fixed-vector input can be supplied directly by <a href="../AG-RG/AG-RG-01.html#2-moving-tori-over-an-algebraically-closed-field">AG-RG-01, Lemma 2.A</a>: a unitriangular subgroup has a trivial-quotient flag on every representation, so every nonzero representation has a fixed vector. Normality then makes an irreducible representation trivial on the unipotent radical, and a faithful representation forces that radical to be trivial. This specifies the consumed fixed-vector proof without relying on an unproved general quotient construction.</p>
+<p>Exact invariants are equivalent here to splitting all finite-dimensional submodule inclusions. Given <span class="math">\(W\subset V\)</span>, the surjection <span class="math">\(\operatorname{Hom}_k(V,W)\to\operatorname{End}_k(W)\)</span> is a map of rational representations; lift its invariant identity to obtain an equivariant projection onto <span class="math">\(W\)</span>. Conversely if all finite representations split, an invariant vector in a quotient lifts to an invariant vector by choosing a finite stable subspace containing any lift and splitting its map onto its image. The finite-subcomodule construction of §6 supplies that subspace. This proves the finite-type semisimplicity criterion.</p>
+<p>For arbitrary connected affine <span class="math">\(G\)</span>, §7 writes <span class="math">\(k[G]=\bigcup_i B_i\)</span> as a filtered union of finitely generated Hopf subalgebras, and makes all the quotient and transition maps faithfully flat. The groups <span class="math">\(G_i=\operatorname{Spec}B_i\)</span> are connected, as surjective images of the connected scheme <span class="math">\(G\)</span>, and are smooth by Cartier's theorem. Every finite representation factors through one <span class="math">\(G_i\)</span>, by including its finitely many coefficients in <span class="math">\(B_i\)</span>. If <span class="math">\(\operatorname{Rep}(G)\)</span> is semisimple, a splitting of a pulled-back <span class="math">\(G_i\)</span>-representation is a <span class="math">\(G_i\)</span>-splitting by full faithfulness in Theorem 8.1. Hence every <span class="math">\(G_i\)</span> is reductive. Conversely if the <span class="math">\(G_i\)</span> are reductive, a subrepresentation of a representation factoring through <span class="math">\(G_i\)</span> is already <span class="math">\(G_i\)</span>-stable, by the same theorem. Its <span class="math">\(G_i\)</span>-equivariant complement is therefore a <span class="math">\(G\)</span>-complement. Induction on dimension proves semisimplicity. <span class="math">\(\square\)</span></p>
+<p>Connectedness and finite type in this statement have distinct roles. Semisimplicity of a category reconstructed without a tensor generator yields the pro-version, rather than an assertion that its group is a reductive algebraic group. This theorem also supplies no semisimplicity for the Satake heart; that is a separate geometric input.</p>
+<h3 id="102-what-this-lesson-does-not-prove">10.2. What this lesson does not prove</h3>
+<p>A fibre functor over a nonempty <span class="math">\(k\)</span>-scheme <span class="math">\(S\)</span> takes values in finite-rank vector bundles on <span class="math">\(S\)</span>. Write <span class="math">\(p_1,p_2:S\times_kS\to S\)</span>. The general theorem states that the arrow functor
+<span class="math math-display">\[
+\operatorname{Isom}^{\otimes}(p_1^*\omega,p_2^*\omega)
+\]</span>
+is an affine faithfully flat groupoid over <span class="math">\(S\times_kS\)</span>, and its representations recover <span class="math">\(\mathcal C\)</span>. Conversely such groupoids recover tensor categories with their <span class="math">\(S\)</span>-valued fibre functors. These are arrows between fibres; restriction to the diagonal gives <span class="math">\(\operatorname{Aut}^{\otimes}_S(\omega)\)</span>. This is stated, unused, in the freely posted <a href="https://publications.ias.edu/sites/default/files/60_categoriestanna.pdf">Deligne author text, definitions 1.9–1.11 and Théorème 1.12, pp. 114–116</a>.</p>
+<p>For an essentially small rigid abelian symmetric <span class="math">\(k\)</span>-linear category with <span class="math">\(\operatorname{End}(\mathbf1)=k\)</span> in characteristic zero, the intrinsic criterion equates Tannakianity, nonnegative integral categorical dimensions, and eventual vanishing of exterior powers of every object. Nonzero objects then have strictly positive dimension. It asserts existence of a fibre functor after field extension, not neutrality over <span class="math">\(k\)</span>. This is stated, unused, in the same free text, Théorème 7.1 and Lemme 7.3, pp. 165–166. Neither general theorem is used in §§1–9 or Theorem 10.1.</p>
+<p>For the neutral category of §1, the necessity of the dimension condition is elementary and is proved here. Define the categorical dimension by evaluation after symmetry and coevaluation:
+<span class="math math-display">\[
+\mathbf1\xrightarrow{\mathrm{coev}}X\otimes X^\vee
+ \xrightarrow{c}X^\vee\otimes X
+ \xrightarrow{\mathrm{ev}}\mathbf1.
+\]</span>
+Applying the faithful <span class="math">\(k\)</span>-linear symmetric fibre functor makes this scalar the ordinary trace of the identity, namely <span class="math">\(\dim_k\omega X\)</span>. It is a nonnegative integer, and is positive if <span class="math">\(X\ne0\)</span>. The sufficiency of this condition without an already given fibre functor is the unused intrinsic theorem just stated.</p>
+<h2 id="11-exercises-and-complete-solutions">11. Exercises and complete solutions</h2>
+<p><strong>Exercise 11.1 (easy).</strong> Prove that finite-dimensional integer-graded vector spaces with ordinary interchange are <span class="math">\(\operatorname{Rep}(\mathbb G_m)\)</span>. Determine the tensor automorphisms of the forgetful functor over an arbitrary algebra <span class="math">\(R\)</span>.</p>
+<p><strong>Solution.</strong> To a grading attach <span class="math">\(\rho(v_n)=v_n\otimes z^n\)</span>. Since <span class="math">\(\Delta(z^n)=z^n\otimes z^n\)</span> and <span class="math">\(\epsilon(z^n)=1\)</span>, this is a coaction. Conversely expand a finite coaction as <span class="math">\(\rho(v)=\sum_n p_n(v)\otimes z^n\)</span>. Equality of coefficients of <span class="math">\(z^m\otimes z^n\)</span> in coassociativity gives <span class="math">\(p_m p_n=\delta_{mn}p_n\)</span>, and the counit gives <span class="math">\(\sum p_n=1\)</span>. The mutually orthogonal idempotents therefore split the space into their images; only finitely many occur. A comodule map commutes with every <span class="math">\(p_n\)</span>, exactly the degree-preserving condition. Multiplication of monomials proves compatibility with tensor products and ordinary interchange. Over <span class="math">\(R\)</span>, naturality with degree projections and with every linear map within a grade makes an automorphism scalar <span class="math">\(a_n\)</span> on each grade. The unit gives <span class="math">\(a_0=1\)</span>, and the tensor rule gives <span class="math">\(a_{n+m}=a_n a_m\)</span>. Hence <span class="math">\(a_1\)</span> is a unit and <span class="math">\(a_n=a_1^n\)</span>. Every unit conversely gives such an automorphism. Thus the functor is <span class="math">\(R\mapsto R^\times\)</span>, including algebras with nilpotents.</p>
+<p><strong>Exercise 11.2 (easy).</strong> Reconstruct a finite abstract group <span class="math">\(\Gamma\)</span> from its representations and their forgetful functor. Compute the coordinate Hopf algebra in any characteristic.</p>
+<p><strong>Solution.</strong> The regular <span class="math">\(k\Gamma\)</span>-module is an additive generator. Naturality with right multiplication on it forces a natural endomorphism to be left multiplication by its value on1. Naturality with the maps <span class="math">\(k\Gamma\to M\)</span>, <span class="math">\(a\mapsto am\)</span>, then gives that action on every representation. The finite coefficient coalgebra is therefore <span class="math">\((k\Gamma)^*=k^\Gamma\)</span>. For <span class="math">\(g\in\Gamma\)</span>, the tensor action is <span class="math">\(g\otimes g\)</span>, so the dual product of functions is pointwise. Dualizing the multiplication <span class="math">\(g,h\mapsto gh\)</span> gives <span class="math">\(\Delta f(g,h)=f(gh)\)</span>. The trivial representation gives <span class="math">\(\epsilon(f)=f(1)\)</span>, and duality gives <span class="math">\(S(f)(g)=f(g^{-1})\)</span>. These formulas prove the Hopf identities and identify its spectrum with the constant group scheme. Over <span class="math">\(R\)</span>, an algebra map <span class="math">\(k^\Gamma\to R\)</span> chooses mutually orthogonal idempotents summing to 1, or a partition of <span class="math">\(\operatorname{Spec}R\)</span> labelled by the group elements. Multiplication follows (24). The proof uses no averaging, so also applies when <span class="math">\(\operatorname{char}k\)</span> divides <span class="math">\(|\Gamma|\)</span>.</p>
+<p><strong>Exercise 11.3 (medium).</strong> Show that super vector spaces with Koszul symmetry have no symmetric fibre functor to ordinary vector spaces when <span class="math">\(\operatorname{char}k\ne2\)</span>. Explain what changes in characteristic two.</p>
+<p><strong>Solution.</strong> The odd line <span class="math">\(E\)</span> satisfies <span class="math">\(E^{\otimes2}\simeq\mathbf1\)</span>. An assumed strong tensor functor therefore makes <span class="math">\(\omega E\)</span> an invertible finite vector space, hence a line: dimensions multiply and their square is1. The symmetry on <span class="math">\(E\otimes E\)</span> is <span class="math">\(-1\)</span>, and a <span class="math">\(k\)</span>-linear functor preserves that scalar. Ordinary interchange on the tensor square of a line is <span class="math">\(+1\)</span>. The square expressing preservation of symmetry forces <span class="math">\(-1=+1\)</span> on a nonzero space, a contradiction. In characteristic two the signs coincide. The projector calculation of Exercise 11.1 with exponents taken modulo two then identifies the category with comodules over <span class="math">\(k[z]/(z^2-1)\)</span>, whose spectrum is <span class="math">\(\mu_2\)</span>; this scheme is nonreduced in characteristic two. Thus there is a fibre functor in that case.</p>
+<p><strong>Exercise 11.4 (medium).</strong> Prove that a reconstructed affine group is of finite type if and only if the category has one tensor generator. Do not assume semisimplicity or characteristic zero.</p>
+<p><strong>Solution.</strong> For a generator <span class="math">\(X\)</span>, choose a basis of <span class="math">\(\omega X\)</span>. The finite matrix entries and their antipodes generate a Hopf subalgebra. Coefficients of tensor words are products of these entries; those of finite sums are sums, and those of subquotients lie in the ambient coefficient span by adapted bases. Generation of every object and (21) make this subalgebra the whole coordinate algebra. It is finitely generated, so the group is finite type. Conversely choose finite algebra generators and put them in a finite regular subcomodule <span class="math">\(X\)</span>, by the construction before (17). Counitality puts these generators in <span class="math">\(C(X)\)</span>. Given a finite comodule <span class="math">\(M\)</span>, bound the degrees of polynomial expressions for a basis of <span class="math">\(C(M)\)</span> in those generators by <span class="math">\(N\)</span>. Formula (20) puts its coefficients in <span class="math">\(C(Y)\)</span>, where <span class="math">\(Y=\bigoplus_{r=0}^N X^{\otimes r}\)</span>. The coaction injects <span class="math">\(M\)</span> into <span class="math">\(C(M)^{\oplus\dim M}\subset C(Y)^{\oplus\dim M}\)</span>. Map (19) supplies a surjection from a finite sum of copies of <span class="math">\(Y\)</span> to this last object. Its inverse image of <span class="math">\(M\)</span> is a subobject surjecting onto <span class="math">\(M\)</span>. Thus <span class="math">\(M\)</span> is a subquotient of finite tensor words, proving the converse. There is no symmetric-power division or decomposition into simple representations in this argument.</p>
+<p><strong>Exercise 11.5 (hard).</strong> Let <span class="math">\(f:G\to H\)</span> be a homomorphism of arbitrary affine group schemes over a field. Prove that it is faithfully flat exactly when restriction is fully faithful and every <span class="math">\(G\)</span>-subobject of a restricted representation is an <span class="math">\(H\)</span>-subobject.</p>
+<p><strong>Solution.</strong> Write <span class="math">\(u:B=k[H]\to A=k[G]\)</span>. If <span class="math">\(f\)</span> is faithfully flat, <span class="math">\(u\)</span> is injective. A restricted morphism satisfies the comodule identity in <span class="math">\(V\otimes A\)</span>; injection of <span class="math">\(V\otimes B\)</span> detects the same identity over <span class="math">\(B\)</span>. Thus restriction is full as well as faithful. For a <span class="math">\(G\)</span>-stable <span class="math">\(W\subset V\)</span>, the composite <span class="math">\(W\to(V/W)\otimes B\)</span> becomes zero in <span class="math">\((V/W)\otimes A\)</span>, hence is zero already. This proves <span class="math">\(H\)</span>-stability.</p>
+<p>Conversely let <span class="math">\(I=\ker u\)</span> and suppose it contains <span class="math">\(0\ne a\)</span>. Put <span class="math">\(a\)</span> in a finite regular <span class="math">\(B\)</span>-subcomodule <span class="math">\(V\)</span>, and set <span class="math">\(W=V\cap I\)</span>. The Hopf-ideal identity <span class="math">\(\Delta(I)\subset I\otimes B+B\otimes I\)</span> makes <span class="math">\(W\)</span> stable after restriction: the second summand is killed by <span class="math">\(u\)</span>, and the intersection of <span class="math">\(I\otimes A\)</span> with <span class="math">\(V\otimes A\)</span> is <span class="math">\(W\otimes A\)</span>. The assumed subobject property gives <span class="math">\(\Delta(W)\subset W\otimes B\)</span>. Since <span class="math">\(\epsilon(I)=0\)</span>, applying <span class="math">\(\epsilon\otimes1\)</span> forces <span class="math">\(W=0\)</span>, a contradiction. Hence <span class="math">\(u\)</span> is injective.</p>
+<p>Apply Lemma 7.1, proved here for arbitrary Hopf algebras, to conclude faithful flatness. Its infinite-type step is essential: it expresses <span class="math">\(A\)</span> as the filtered colimit of flat modules <span class="math">\(B\otimes_{B_0}A_0\)</span>, where the finite-type group quotient proves faithful flatness of <span class="math">\(A_0/B_0\)</span>. Proper ideals remain proper by including a hypothetical finite equation <span class="math">\(1=\sum b_i a_i\)</span> in such a pair. Thus the argument does not merely assert that ring injections are flat. If subobjects are specified only up to isomorphism to restricted objects, use full faithfulness to lift their inclusions before applying the argument.</p>
+<h2 id="12-freely-accessible-reading-and-proof-locators">12. Freely accessible reading and proof locators</h2>
+<p>P. Deligne and J. S. Milne, <a href="https://www.jmilne.org/math/xnotes/tc.pdf"><em>Tannakian Categories</em>, corrected author edition of 15 August 2012</a>, is freely readable on the author's site. Theorem 2.11 is the neutral reconstruction statement; Lemmas 2.12–2.13 and Proposition 2.14 concern its finite-category construction; Propositions 2.20–2.21 give the generation and group-morphism dictionary. Sections 1–8 above supply every proof used here, including the Hopf-flatness passage to arbitrary affine groups. The source is reading material and attribution, rather than a substitute for those proofs.</p>
+<p>The exact earlier programme inputs used in Lemma 7.1 are the flat quotient theorem of AG-RG-S07, Corollary 8.3; the arbitrary closed algebraic subgroup quotient of AG-GS-04, Theorem 11.1b; and the group monomorphism theorem of AG-GS-03, Theorem 5.9. Theorem 10.1 additionally uses the Cartier and smooth connected reductivity proofs specified there. Their roles and hypotheses are identified at the point of use. The general groupoid and intrinsic statements of §10.2 are not invoked as proof inputs.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/GL-SAT-09.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-SAT">Repository</a></nav>
+</footer>
+</body>
+</html>

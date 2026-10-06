@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Places of number fields in extensions and the product formula · Local fields</title>
+<meta name="description" content="A lesson of the course Local fields. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-05.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Local fields</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by GPT-6.1 Sol at Ultra. Independent full-lesson AI review of this version is not yet recorded.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<article class="lesson">
+<h1 id="places-of-number-fields-in-extensions-and-the-product-formula">Places of number fields in extensions and the product formula</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).</em></p>
+<p>A number field has several ways of approaching a limit. After extending the field, a single such way can separate into several places. A tensor product records all of them at once: its field factors are precisely the completions above the chosen place. This gives local formulas for degrees, norms and traces, and turns the rational product formula into the product formula for every number field.</p>
+<p>The prerequisites are <strong>Extensions of complete valued fields</strong> and <strong>Hilbert's ramification theory in Galois extensions</strong>. We also use the definitions and completion constructions from <strong>Absolute values, valuations and Ostrowski's theorem</strong> and <strong>Completions, the p-adic numbers and complete discretely valued fields</strong>. The earlier lessons on prime decomposition in <strong>Algebraic number theory</strong> provide the global ideal notation.</p>
+<h2 id="1-places-and-the-values-used-to-measure-them">1. Places and the values used to measure them</h2>
+<p>A <strong>place</strong> of a field is an equivalence class of nontrivial absolute values. Equivalent values differ by a positive power and give the same topology. If <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is an extension, the notation <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span> means that restricting the place <span class="math" data-tex="\(w\)">\(w\)</span> to <span class="math" data-tex="\(K\)">\(K\)</span> gives the place <span class="math" data-tex="\(v\)">\(v\)</span>. This is a statement about classes.</p>
+<p>For completion and topology, choose an ordinary absolute value representing <span class="math" data-tex="\(v\)">\(v\)</span>, and write <span class="math" data-tex="\(K_v\)">\(K_v\)</span> for the resulting complete field. An extension place can be represented with the same restriction to <span class="math" data-tex="\(K\)">\(K\)</span>. For a nonarchimedean place, taking a positive power preserves the ultrametric inequality. For an archimedean place, the classification of complete archimedean fields and the unique-extension theorem give the appropriate representative. Since the restriction on <span class="math" data-tex="\(K\)">\(K\)</span> is nontrivial, that representative is unique within its equivalence class.</p>
+<p>For a number field <span class="math" data-tex="\(F\)">\(F\)</span>, product formulas use a different convention. Write <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span> for its ring of integers. For a nonzero prime ideal <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, let <span class="math" data-tex="\(v_{\mathfrak p}:F^\times\to\mathbf Z\)">\(v_{\mathfrak p}:F^\times\to\mathbf Z\)</span> be the integer-normalized valuation, and let
+<span class="math math-display" data-tex="\[
+N\mathfrak p=\#(\mathcal O_F/\mathfrak p).
+\]">\[
+N\mathfrak p=\#(\mathcal O_F/\mathfrak p).
+\]</span>
+Define the <strong>normalized local size</strong> by
+<span class="math math-display" data-tex="\[
+|x|_{\mathfrak p}=(N\mathfrak p)^{-v_{\mathfrak p}(x)}.
+\]">\[
+|x|_{\mathfrak p}=(N\mathfrak p)^{-v_{\mathfrak p}(x)}.
+\]</span>
+At a real place defined by <span class="math" data-tex="\(\sigma:F\hookrightarrow\mathbf R\)">\(\sigma:F\hookrightarrow\mathbf R\)</span>, set <span class="math" data-tex="\(|x|_v=|\sigma(x)|\)">\(|x|_v=|\sigma(x)|\)</span>. At a complex place defined by the pair <span class="math" data-tex="\(\sigma,\overline{\sigma}:F\hookrightarrow\mathbf C\)">\(\sigma,\overline{\sigma}:F\hookrightarrow\mathbf C\)</span>, set
+<span class="math math-display" data-tex="\[
+|x|_v=|\sigma(x)|^2.
+\]">\[
+|x|_v=|\sigma(x)|^2.
+\]</span>
+All these sizes are multiplicative; put <span class="math" data-tex="\(|0|_v=0\)">\(|0|_v=0\)</span>. A complex size does not satisfy the ordinary triangle inequality: <span class="math" data-tex="\(|1+1|^2=4&gt;2\)">\(|1+1|^2=4&gt;2\)</span>. The topology at that place is the usual topology of <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, defined with the unsquared modulus. Raising a size to a positive power does not change which sequences converge.</p>
+<p>These conventions will remain separate. Sections 2–4 use ordinary absolute values for their topological arguments. Section 5 uses the normalized sizes just defined. In particular, <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span> does not assert that the normalized size at <span class="math" data-tex="\(w\)">\(w\)</span> restricts literally to the normalized size at <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<h2 id="2-the-canonical-decomposition-after-completion">2. The canonical decomposition after completion</h2>
+<p><strong>Theorem 2.1 (tensor product and places).</strong> Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be a finite separable extension, and let <span class="math" data-tex="\(v\)">\(v\)</span> be a place of <span class="math" data-tex="\(K\)">\(K\)</span>. There are finitely many places <span class="math" data-tex="\(w\)">\(w\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span> above <span class="math" data-tex="\(v\)">\(v\)</span>. The map
+<span class="math math-display" data-tex="\[
+\Phi:L\otimes_K K_v\longrightarrow\prod_{w\mid v}L_w,\qquad
+x\otimes a\longmapsto(a x_w)_{w\mid v},
+\]">\[
+\Phi:L\otimes_K K_v\longrightarrow\prod_{w\mid v}L_w,\qquad
+x\otimes a\longmapsto(a x_w)_{w\mid v},
+\]</span>
+where <span class="math" data-tex="\(x_w\)">\(x_w\)</span> is the image of <span class="math" data-tex="\(x\)">\(x\)</span> in its completion, is a canonical isomorphism of topological <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-algebras. The tensor product carries its finite-dimensional <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-vector-space topology; the right side carries the finite product topology.</p>
+<p><em>Proof.</em> Choose a primitive element <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, with monic minimal polynomial <span class="math" data-tex="\(f\in K[X]\)">\(f\in K[X]\)</span>. Separability persists over <span class="math" data-tex="\(K_v\)">\(K_v\)</span>: a Bézout identity between <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span> remains one over <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+f=f_1\cdots f_r
+\]">\[
+f=f_1\cdots f_r
+\]</span>
+over <span class="math" data-tex="\(K_v\)">\(K_v\)</span>, with the <span class="math" data-tex="\(f_i\)">\(f_i\)</span> distinct monic irreducible polynomials. Put
+<span class="math math-display" data-tex="\[
+E_i=K_v[X]/(f_i),\qquad \beta_i=X\bmod f_i.
+\]">\[
+E_i=K_v[X]/(f_i),\qquad \beta_i=X\bmod f_i.
+\]</span>
+Each <span class="math" data-tex="\(E_i\)">\(E_i\)</span> is a finite extension of the complete field <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. By Theorem 1.2 of <strong>Extensions of complete valued fields</strong>, it is complete for the unique absolute value extending the chosen one on <span class="math" data-tex="\(K_v\)">\(K_v\)</span>.</p>
+<p>Sending <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> defines a <span class="math" data-tex="\(K\)">\(K\)</span>-homomorphism <span class="math" data-tex="\(L\to E_i\)">\(L\to E_i\)</span>. It is injective because <span class="math" data-tex="\(L\)">\(L\)</span> is a field and the map sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. Its image is dense: every element of <span class="math" data-tex="\(E_i\)">\(E_i\)</span> is a polynomial in <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> of degree less than <span class="math" data-tex="\(\deg f_i\)">\(\deg f_i\)</span>, with coefficients in <span class="math" data-tex="\(K_v\)">\(K_v\)</span>, and those coefficients can be approximated by elements of <span class="math" data-tex="\(K\)">\(K\)</span>. Pulling back the absolute value gives a place <span class="math" data-tex="\(w_i\)">\(w_i\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>, and the completion's universal property identifies
+<span class="math math-display" data-tex="\[
+L_{w_i}=E_i
+\]">\[
+L_{w_i}=E_i
+\]</span>
+by an isomorphism fixing the image of <span class="math" data-tex="\(L\)">\(L\)</span> and the completed base field.</p>
+<p>The places <span class="math" data-tex="\(w_i\)">\(w_i\)</span> are distinct. Indeed, if two induced absolute values are equivalent, they are equal: both restrict to the same nontrivial value on <span class="math" data-tex="\(K\)">\(K\)</span>, so the power relating them must be <span class="math" data-tex="\(1\)">\(1\)</span>. The identity on <span class="math" data-tex="\(L\)">\(L\)</span> would then extend to a <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-isomorphism between <span class="math" data-tex="\(E_i\)">\(E_i\)</span> and <span class="math" data-tex="\(E_j\)">\(E_j\)</span>, carrying <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> to <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span>. Their minimal polynomials over <span class="math" data-tex="\(K_v\)">\(K_v\)</span> would coincide, forcing <span class="math" data-tex="\(f_i=f_j\)">\(f_i=f_j\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span>. Choose its representative restricting to the chosen absolute value on <span class="math" data-tex="\(K\)">\(K\)</span>. The map <span class="math" data-tex="\(K\to L_w\)">\(K\to L_w\)</span> extends to an isometric embedding <span class="math" data-tex="\(K_v\to L_w\)">\(K_v\to L_w\)</span>. Inside <span class="math" data-tex="\(L_w\)">\(L_w\)</span>, consider <span class="math" data-tex="\(K_v(\alpha)\)">\(K_v(\alpha)\)</span>. This is a finite extension of <span class="math" data-tex="\(K_v\)">\(K_v\)</span> and hence complete. Its absolute value is the restriction of the one on <span class="math" data-tex="\(L_w\)">\(L_w\)</span>, so it is a closed subspace of <span class="math" data-tex="\(L_w\)">\(L_w\)</span>. It contains <span class="math" data-tex="\(L=K(\alpha)\)">\(L=K(\alpha)\)</span>, which is dense in <span class="math" data-tex="\(L_w\)">\(L_w\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+L_w=K_v(\alpha).
+\]">\[
+L_w=K_v(\alpha).
+\]</span>
+The minimal polynomial of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> over <span class="math" data-tex="\(K_v\)">\(K_v\)</span> is one of the <span class="math" data-tex="\(f_i\)">\(f_i\)</span>. The resulting isomorphism <span class="math" data-tex="\(E_i\to L_w\)">\(E_i\to L_w\)</span> respects absolute values by uniqueness of extension and identifies <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(w_i\)">\(w_i\)</span>. This proves that the field factors enumerate all the places, without repetitions.</p>
+<p>There are natural algebra identifications
+<span class="math math-display" data-tex="\[
+L\otimes_K K_v
+\simeq K_v[X]/(f)
+\simeq\prod_{i=1}^r K_v[X]/(f_i).
+\]">\[
+L\otimes_K K_v
+\simeq K_v[X]/(f)
+\simeq\prod_{i=1}^r K_v[X]/(f_i).
+\]</span>
+The second is the Chinese remainder theorem. Its component maps evaluate <span class="math" data-tex="\(X\)">\(X\)</span> at <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span>, so, under the completion identifications, the composite is precisely <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. The formula for <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> also shows that it does not depend on the chosen primitive element.</p>
+<p>It remains to check the topology. Proposition 2.1 of <strong>Extensions of complete valued fields</strong> says that any norm on a finite-dimensional vector space over a complete valued field is equivalent to the maximum norm in any basis. On <span class="math" data-tex="\(\prod_i E_i\)">\(\prod_i E_i\)</span>, take the maximum of the component absolute values. This is a norm over <span class="math" data-tex="\(K_v\)">\(K_v\)</span> and induces exactly the product topology. The tensor product has a basis norm by definition. A linear isomorphism between these finite-dimensional normed spaces is continuous with continuous inverse: in bases it and its inverse are finite matrices, whose entries give bounds for the maximum norms. Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is a homeomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same factorization also describes the places as <span class="math" data-tex="\(K\)">\(K\)</span>-embeddings <span class="math" data-tex="\(L\hookrightarrow\overline{K_v}\)">\(L\hookrightarrow\overline{K_v}\)</span>, up to the action of <span class="math" data-tex="\(\operatorname{Aut}(\overline{K_v}/K_v)\)">\(\operatorname{Aut}(\overline{K_v}/K_v)\)</span>. An embedding chooses a root of <span class="math" data-tex="\(f\)">\(f\)</span>; two roots lie in the same orbit exactly when they have the same irreducible polynomial <span class="math" data-tex="\(f_i\)">\(f_i\)</span> over <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. Finite separability supplies the extension of such embeddings to automorphisms of an algebraic closure.</p>
+<p><strong>Corollary 2.2 (degrees, norms and traces).</strong> In the setting of Theorem 2.1,
+<span class="math math-display" data-tex="\[
+[L:K]=\sum_{w\mid v}[L_w:K_v].
+\]">\[
+[L:K]=\sum_{w\mid v}[L_w:K_v].
+\]</span>
+For <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span>, the images in <span class="math" data-tex="\(K_v\)">\(K_v\)</span> of its global norm and trace satisfy
+<span class="math math-display" data-tex="\[
+N_{L/K}(x)=\prod_{w\mid v}N_{L_w/K_v}(x_w),\qquad
+\operatorname{Tr}_{L/K}(x)=
+\sum_{w\mid v}\operatorname{Tr}_{L_w/K_v}(x_w).
+\]">\[
+N_{L/K}(x)=\prod_{w\mid v}N_{L_w/K_v}(x_w),\qquad
+\operatorname{Tr}_{L/K}(x)=
+\sum_{w\mid v}\operatorname{Tr}_{L_w/K_v}(x_w).
+\]</span></p>
+<p><em>Proof.</em> Take dimensions in Theorem 2.1. For the other identities, multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> is a <span class="math" data-tex="\(K\)">\(K\)</span>-linear endomorphism of <span class="math" data-tex="\(L\)">\(L\)</span>. Its determinant and trace are the norm and trace. Extending scalars to <span class="math" data-tex="\(K_v\)">\(K_v\)</span> leaves that matrix, determinant and trace unchanged, now viewed in <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. Under <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, the endomorphism acts componentwise by multiplication by <span class="math" data-tex="\(x_w\)">\(x_w\)</span>. Its matrix is block diagonal. The determinant is the product of the block determinants, and the trace is the sum of the block traces. This also covers <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-finite-places-and-prime-ideals">3. Finite places and prime ideals</h2>
+<p>Now let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be an extension of number fields. For nonzero prime ideals <span class="math" data-tex="\(\mathfrak P\subset\mathcal O_L\)">\(\mathfrak P\subset\mathcal O_L\)</span> and <span class="math" data-tex="\(\mathfrak p\subset\mathcal O_K\)">\(\mathfrak p\subset\mathcal O_K\)</span>, write <span class="math" data-tex="\(\mathfrak P\mid\mathfrak p\)">\(\mathfrak P\mid\mathfrak p\)</span> when <span class="math" data-tex="\(\mathfrak P\cap\mathcal O_K=\mathfrak p\)">\(\mathfrak P\cap\mathcal O_K=\mathfrak p\)</span>. The global ideal factorization defines <span class="math" data-tex="\(e(\mathfrak P\mid\mathfrak p)\)">\(e(\mathfrak P\mid\mathfrak p)\)</span>, and
+<span class="math math-display" data-tex="\[
+f(\mathfrak P\mid\mathfrak p)=
+[\mathcal O_L/\mathfrak P : \mathcal O_K/\mathfrak p].
+\]">\[
+f(\mathfrak P\mid\mathfrak p)=
+[\mathcal O_L/\mathfrak P : \mathcal O_K/\mathfrak p].
+\]</span></p>
+<p><strong>Proposition 3.1 (local and global ramification).</strong> The places of <span class="math" data-tex="\(L\)">\(L\)</span> above the finite place <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> are precisely those defined by <span class="math" data-tex="\(\mathfrak P\mid\mathfrak p\)">\(\mathfrak P\mid\mathfrak p\)</span>. Their completions satisfy
+<span class="math math-display" data-tex="\[
+[L_{\mathfrak P}:K_{\mathfrak p}]
+=e(\mathfrak P\mid\mathfrak p)f(\mathfrak P\mid\mathfrak p).
+\]">\[
+[L_{\mathfrak P}:K_{\mathfrak p}]
+=e(\mathfrak P\mid\mathfrak p)f(\mathfrak P\mid\mathfrak p).
+\]</span>
+The ramification index and residue degree on the right are also the index and residue degree of this extension of complete discretely valued fields.</p>
+<p><em>Proof.</em> The classification of number-field places identifies every finite place of <span class="math" data-tex="\(L\)">\(L\)</span> with a nonzero prime ideal <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>. An archimedean place cannot restrict to a finite one: its restriction to <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> is archimedean. The global prime-valuation identity is
+<span class="math math-display" data-tex="\[
+v_{\mathfrak P}(a)=
+e(\mathfrak P\mid\mathfrak p)v_{\mathfrak p}(a)
+\quad(a\in K^\times),\qquad
+\mathfrak p=\mathfrak P\cap\mathcal O_K.
+\]">\[
+v_{\mathfrak P}(a)=
+e(\mathfrak P\mid\mathfrak p)v_{\mathfrak p}(a)
+\quad(a\in K^\times),\qquad
+\mathfrak p=\mathfrak P\cap\mathcal O_K.
+\]</span>
+Here <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is nonzero, as follows from the integral extension of rings of integers. Thus the restriction has exactly the place <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Conversely this identity shows that every prime above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> gives an extension of that place. The number-field classification gives the asserted bijection.</p>
+<p>Completion of a discretely valued field preserves its value group and residue field, by Theorem 2.1 of <strong>Completions, the p-adic numbers and complete discretely valued fields</strong>. Before completion, the valuation rings are <span class="math" data-tex="\((\mathcal O_K)_{\mathfrak p}\)">\((\mathcal O_K)_{\mathfrak p}\)</span> and <span class="math" data-tex="\((\mathcal O_L)_{\mathfrak P}\)">\((\mathcal O_L)_{\mathfrak P}\)</span>, with residue fields <span class="math" data-tex="\(\mathcal O_K/\mathfrak p\)">\(\mathcal O_K/\mathfrak p\)</span> and <span class="math" data-tex="\(\mathcal O_L/\mathfrak P\)">\(\mathcal O_L/\mathfrak P\)</span>. Therefore the two completed value groups, measured using <span class="math" data-tex="\(v_{\mathfrak P}\)">\(v_{\mathfrak P}\)</span>, are <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> for <span class="math" data-tex="\(L_{\mathfrak P}\)">\(L_{\mathfrak P}\)</span> and <span class="math" data-tex="\(e(\mathfrak P\mid\mathfrak p)\mathbf Z\)">\(e(\mathfrak P\mid\mathfrak p)\mathbf Z\)</span> for the base. This proves the agreement of the indices, and the residue fields prove the agreement of the residue degrees. The identity <span class="math" data-tex="\([L_{\mathfrak P}:K_{\mathfrak p}]=ef\)">\([L_{\mathfrak P}:K_{\mathfrak p}]=ef\)</span> follows from Theorem 3.1 of <strong>Extensions of complete valued fields</strong>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, Corollary 2.2 recovers the familiar identity
+<span class="math math-display" data-tex="\[
+[L:K]=\sum_{\mathfrak P\mid\mathfrak p}
+e(\mathfrak P\mid\mathfrak p)f(\mathfrak P\mid\mathfrak p).
+\]">\[
+[L:K]=\sum_{\mathfrak P\mid\mathfrak p}
+e(\mathfrak P\mid\mathfrak p)f(\mathfrak P\mid\mathfrak p).
+\]</span>
+The proof uses completions and their digit bases; it needs no assumption that a chosen integral element generates the entire ring of integers.</p>
+<p><strong>Example 3.2 (three behaviors for a quadratic field).</strong> Put <span class="math" data-tex="\(F=\mathbf Q(\sqrt2)\)">\(F=\mathbf Q(\sqrt2)\)</span>. At <span class="math" data-tex="\(7\)">\(7\)</span>, the roots <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(4\)">\(4\)</span> of <span class="math" data-tex="\(X^2-2\)">\(X^2-2\)</span> modulo <span class="math" data-tex="\(7\)">\(7\)</span> are simple. Hensel's lemma lifts them to two roots in <span class="math" data-tex="\(\mathbf Q_7\)">\(\mathbf Q_7\)</span>, and
+<span class="math math-display" data-tex="\[
+F\otimes_{\mathbf Q}\mathbf Q_7\simeq
+\mathbf Q_7\times\mathbf Q_7.
+\]">\[
+F\otimes_{\mathbf Q}\mathbf Q_7\simeq
+\mathbf Q_7\times\mathbf Q_7.
+\]</span>
+There are two primes above <span class="math" data-tex="\(7\)">\(7\)</span>, both with <span class="math" data-tex="\(e=f=1\)">\(e=f=1\)</span>.</p>
+<p>Modulo <span class="math" data-tex="\(3\)">\(3\)</span>, <span class="math" data-tex="\(X^2-2\)">\(X^2-2\)</span> is irreducible. It remains irreducible over <span class="math" data-tex="\(\mathbf Q_3\)">\(\mathbf Q_3\)</span>: a root would be integral by its monic equation and would reduce to a root modulo <span class="math" data-tex="\(3\)">\(3\)</span>. In <span class="math" data-tex="\(E=\mathbf Q_3(\sqrt2)\)">\(E=\mathbf Q_3(\sqrt2)\)</span>, the reduction of <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> has degree <span class="math" data-tex="\(2\)">\(2\)</span> over <span class="math" data-tex="\(\mathbf F_3\)">\(\mathbf F_3\)</span>. Hence <span class="math" data-tex="\(f\ge2\)">\(f\ge2\)</span>, while <span class="math" data-tex="\([E : \mathbf Q_3]=2=ef\)">\([E : \mathbf Q_3]=2=ef\)</span>; thus <span class="math" data-tex="\(e=1,f=2\)">\(e=1,f=2\)</span>. There is one prime above <span class="math" data-tex="\(3\)">\(3\)</span>, with completion <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>At <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(X^2-2\)">\(X^2-2\)</span> is Eisenstein. There is one completion <span class="math" data-tex="\(\mathbf Q_2(\sqrt2)\)">\(\mathbf Q_2(\sqrt2)\)</span>, of degree <span class="math" data-tex="\(2\)">\(2\)</span>, with <span class="math" data-tex="\(e=2,f=1\)">\(e=2,f=1\)</span>, and <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> is a uniformizer. At infinity there are two real places, since
+<span class="math math-display" data-tex="\[
+F\otimes_{\mathbf Q}\mathbf R\simeq\mathbf R\times\mathbf R.
+\]">\[
+F\otimes_{\mathbf Q}\mathbf R\simeq\mathbf R\times\mathbf R.
+\]</span></p>
+<h2 id="4-global-automorphisms-seen-at-one-place">4. Global automorphisms seen at one place</h2>
+<p>Suppose <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is finite Galois, with group <span class="math" data-tex="\(G\)">\(G\)</span>. For a prime <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, its <strong>decomposition group</strong> is
+<span class="math math-display" data-tex="\[
+D_{\mathfrak P}=\{\sigma\in G\mid\sigma(\mathfrak P)=\mathfrak P\}.
+\]">\[
+D_{\mathfrak P}=\{\sigma\in G\mid\sigma(\mathfrak P)=\mathfrak P\}.
+\]</span>
+Its <strong>inertia group</strong> <span class="math" data-tex="\(I_{\mathfrak P}\)">\(I_{\mathfrak P}\)</span> is the kernel of the action of <span class="math" data-tex="\(D_{\mathfrak P}\)">\(D_{\mathfrak P}\)</span> on <span class="math" data-tex="\(\mathcal O_L/\mathfrak P\)">\(\mathcal O_L/\mathfrak P\)</span>.</p>
+<p><strong>Proposition 4.1 (decomposition and inertia after completion).</strong> The extension <span class="math" data-tex="\(L_{\mathfrak P}/K_{\mathfrak p}\)">\(L_{\mathfrak P}/K_{\mathfrak p}\)</span> is Galois. Every element of <span class="math" data-tex="\(D_{\mathfrak P}\)">\(D_{\mathfrak P}\)</span> extends uniquely to the completion, and extension gives an isomorphism
+<span class="math math-display" data-tex="\[
+D_{\mathfrak P}\xrightarrow{\sim}
+\operatorname{Gal}(L_{\mathfrak P}/K_{\mathfrak p}).
+\]">\[
+D_{\mathfrak P}\xrightarrow{\sim}
+\operatorname{Gal}(L_{\mathfrak P}/K_{\mathfrak p}).
+\]</span>
+Its inverse is restriction to <span class="math" data-tex="\(L\)">\(L\)</span>. This isomorphism identifies <span class="math" data-tex="\(I_{\mathfrak P}\)">\(I_{\mathfrak P}\)</span> with the inertia group of the local extension.</p>
+<p><em>Proof.</em> Choose <span class="math" data-tex="\(L=K(\alpha)\)">\(L=K(\alpha)\)</span>, with minimal polynomial <span class="math" data-tex="\(f\)">\(f\)</span>. By Theorem 2.1, <span class="math" data-tex="\(L_{\mathfrak P}=K_{\mathfrak p}(\alpha)\)">\(L_{\mathfrak P}=K_{\mathfrak p}(\alpha)\)</span> in the chosen completion. Since <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is Galois, <span class="math" data-tex="\(f\)">\(f\)</span> is separable and all its roots belong to <span class="math" data-tex="\(L\)">\(L\)</span>. The minimal polynomial of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> over <span class="math" data-tex="\(K_{\mathfrak p}\)">\(K_{\mathfrak p}\)</span> divides <span class="math" data-tex="\(f\)">\(f\)</span>, and all its roots therefore belong to <span class="math" data-tex="\(L_{\mathfrak P}\)">\(L_{\mathfrak P}\)</span>. Thus <span class="math" data-tex="\(L_{\mathfrak P}/K_{\mathfrak p}\)">\(L_{\mathfrak P}/K_{\mathfrak p}\)</span> is finite, separable and normal, hence Galois.</p>
+<p>For <span class="math" data-tex="\(\sigma\in D_{\mathfrak P}\)">\(\sigma\in D_{\mathfrak P}\)</span>, the identity
+<span class="math math-display" data-tex="\[
+v_{\mathfrak P}(\sigma x)=v_{\mathfrak P}(x)
+\]">\[
+v_{\mathfrak P}(\sigma x)=v_{\mathfrak P}(x)
+\]</span>
+follows from the global prime valuation. Thus <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is an isometry on <span class="math" data-tex="\(L\)">\(L\)</span>, extends uniquely to <span class="math" data-tex="\(L_{\mathfrak P}\)">\(L_{\mathfrak P}\)</span>, and fixes <span class="math" data-tex="\(K_{\mathfrak p}\)">\(K_{\mathfrak p}\)</span> because it fixes the dense subfield <span class="math" data-tex="\(K\)">\(K\)</span>. Extension respects composition. If its extension is the identity, then <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> was already the identity on <span class="math" data-tex="\(L\)">\(L\)</span>; the map is injective.</p>
+<p>For surjectivity, take <span class="math" data-tex="\(\tau\in\operatorname{Gal}(L_{\mathfrak P}/K_{\mathfrak p})\)">\(\tau\in\operatorname{Gal}(L_{\mathfrak P}/K_{\mathfrak p})\)</span>. The element <span class="math" data-tex="\(\tau(\alpha)\)">\(\tau(\alpha)\)</span> is a root of <span class="math" data-tex="\(f\)">\(f\)</span>, and all those roots are in the embedded copy of <span class="math" data-tex="\(L\)">\(L\)</span>. Normality of <span class="math" data-tex="\(L/K\)">\(L/K\)</span> gives a <span class="math" data-tex="\(K\)">\(K\)</span>-automorphism <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span> sending <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(\tau(\alpha)\)">\(\tau(\alpha)\)</span>. Therefore <span class="math" data-tex="\(\tau|_L=\sigma\)">\(\tau|_L=\sigma\)</span>. Uniqueness of the absolute value on the finite extension of the complete base makes <span class="math" data-tex="\(\tau\)">\(\tau\)</span> an isometry. Its restriction preserves the valuation ring and maximal ideal on <span class="math" data-tex="\(L\)">\(L\)</span>, so <span class="math" data-tex="\(\sigma(\mathfrak P)=\mathfrak P\)">\(\sigma(\mathfrak P)=\mathfrak P\)</span>. Extension of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> equals <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, by agreement on dense <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>Finally, completion identifies the global and local residue fields. The global action induced by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and the local action induced by its extension agree on <span class="math" data-tex="\(\mathcal O_L/\mathfrak P\)">\(\mathcal O_L/\mathfrak P\)</span>; every local residue class is already represented there. Their kernels therefore coincide, which is precisely the assertion about inertia. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The global ramification prerequisite gives transitivity of <span class="math" data-tex="\(G\)">\(G\)</span> on the primes above a fixed <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. In particular, <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> induces a <span class="math" data-tex="\(K_{\mathfrak p}\)">\(K_{\mathfrak p}\)</span>-isomorphism from <span class="math" data-tex="\(L_{\mathfrak P}\)">\(L_{\mathfrak P}\)</span> to <span class="math" data-tex="\(L_{\sigma\mathfrak P}\)">\(L_{\sigma\mathfrak P}\)</span>. The same statement holds for all places, including archimedean ones; a proof is given in Solution 3.</p>
+<p>Conjugation carries the groups accordingly:
+<span class="math math-display" data-tex="\[
+D_{\sigma\mathfrak P}=\sigma D_{\mathfrak P}\sigma^{-1},
+\qquad
+I_{\sigma\mathfrak P}=\sigma I_{\mathfrak P}\sigma^{-1}.
+\]">\[
+D_{\sigma\mathfrak P}=\sigma D_{\mathfrak P}\sigma^{-1},
+\qquad
+I_{\sigma\mathfrak P}=\sigma I_{\mathfrak P}\sigma^{-1}.
+\]</span>
+Thus a prime <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> determines an actual subgroup, whereas the base prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> determines its conjugacy class. For fixed <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, all local degrees, ramification indices and residue degrees agree. They can change when <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> changes.</p>
+<h2 id="5-norms-and-the-normalized-product-formula">5. Norms and the normalized product formula</h2>
+<p><strong>Lemma 5.1 (relative normalization).</strong> Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be an extension of number fields, and let <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span>. For the normalized sizes of Section 1, and for every <span class="math" data-tex="\(x\in L_w\)">\(x\in L_w\)</span>,
+<span class="math math-display" data-tex="\[
+|x|_w=|N_{L_w/K_v}(x)|_v.
+\]">\[
+|x|_w=|N_{L_w/K_v}(x)|_v.
+\]</span>
+In particular, for <span class="math" data-tex="\(a\in K_v\)">\(a\in K_v\)</span>,
+<span class="math math-display" data-tex="\[
+|a|_w=|a|_v^{[L_w:K_v]}.
+\]">\[
+|a|_w=|a|_v^{[L_w:K_v]}.
+\]</span></p>
+<p><em>Proof.</em> First suppose <span class="math" data-tex="\(v\)">\(v\)</span> is finite. Put <span class="math" data-tex="\(q=\#\kappa(K_v)\)">\(q=\#\kappa(K_v)\)</span>, <span class="math" data-tex="\(e=e(L_w/K_v)\)">\(e=e(L_w/K_v)\)</span>, <span class="math" data-tex="\(f=f(L_w/K_v)\)">\(f=f(L_w/K_v)\)</span>, and <span class="math" data-tex="\(n=[L_w:K_v]=ef\)">\(n=[L_w:K_v]=ef\)</span>. Use integer-normalized additive valuations <span class="math" data-tex="\(v_K,v_L\)">\(v_K,v_L\)</span>, so that <span class="math" data-tex="\(v_L|_{K_v}=e v_K\)">\(v_L|_{K_v}=e v_K\)</span> and <span class="math" data-tex="\(\#\kappa(L_w)=q^f\)">\(\#\kappa(L_w)=q^f\)</span>.</p>
+<p>The absolute value on <span class="math" data-tex="\(L_w\)">\(L_w\)</span> that restricts exactly to <span class="math" data-tex="\(q^{-v_K}\)">\(q^{-v_K}\)</span> is <span class="math" data-tex="\(q^{-v_L/e}\)">\(q^{-v_L/e}\)</span>. The norm formula for that exact extension yields
+<span class="math math-display" data-tex="\[
+q^{-v_K(Nx)}=(q^{-v_L(x)/e})^n
+=q^{-f v_L(x)}=(q^f)^{-v_L(x)}
+\]">\[
+q^{-v_K(Nx)}=(q^{-v_L(x)/e})^n
+=q^{-f v_L(x)}=(q^f)^{-v_L(x)}
+\]</span>
+for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, giving the first assertion. The second follows either from this computation or from <span class="math" data-tex="\(N(a)=a^n\)">\(N(a)=a^n\)</span>. Zero satisfies both identities as well.</p>
+<p>At archimedean places the possible extensions of completed fields are <span class="math" data-tex="\(\mathbf R/\mathbf R\)">\(\mathbf R/\mathbf R\)</span>, <span class="math" data-tex="\(\mathbf C/\mathbf R\)">\(\mathbf C/\mathbf R\)</span>, and <span class="math" data-tex="\(\mathbf C/\mathbf C\)">\(\mathbf C/\mathbf C\)</span>. The first and third have degree <span class="math" data-tex="\(1\)">\(1\)</span> and identity norm; both sides use the same real size or the same squared complex size. In the second,
+<span class="math math-display" data-tex="\[
+N_{\mathbf C/\mathbf R}(z)=z\overline z=|z|^2,
+\]">\[
+N_{\mathbf C/\mathbf R}(z)=z\overline z=|z|^2,
+\]</span>
+exactly the complex size. For real <span class="math" data-tex="\(a\)">\(a\)</span> this becomes <span class="math" data-tex="\(|a|^2\)">\(|a|^2\)</span>, as required by the degree <span class="math" data-tex="\(2\)">\(2\)</span>. These exhaust the cases. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (number-field product formula).</strong> For every number field <span class="math" data-tex="\(F\)">\(F\)</span> and every <span class="math" data-tex="\(x\in F^\times\)">\(x\in F^\times\)</span>, all but finitely many normalized local sizes equal <span class="math" data-tex="\(1\)">\(1\)</span>, and
+<span class="math math-display" data-tex="\[
+\prod_{v\text{ a place of }F}|x|_v=1.
+\]">\[
+\prod_{v\text{ a place of }F}|x|_v=1.
+\]</span></p>
+<p><em>Proof.</em> The nonzero fractional principal ideal <span class="math" data-tex="\(x\mathcal O_F\)">\(x\mathcal O_F\)</span> has a factorization involving finitely many prime ideals. Hence <span class="math" data-tex="\(v_{\mathfrak p}(x)=0\)">\(v_{\mathfrak p}(x)=0\)</span> except at finitely many finite places. There are only finitely many archimedean places. The product is therefore a finite product of factors different from <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Apply Corollary 2.2 to <span class="math" data-tex="\(F/\mathbf Q\)">\(F/\mathbf Q\)</span>. For each rational place <span class="math" data-tex="\(u\)">\(u\)</span>, including infinity, its norm identity and Lemma 5.1 give
+<span class="math math-display" data-tex="\[
+\prod_{v\mid u}|x|_v
+=\prod_{v\mid u}|N_{F_v/\mathbf Q_u}(x)|_u
+=|N_{F/\mathbf Q}(x)|_u.
+\]">\[
+\prod_{v\mid u}|x|_v
+=\prod_{v\mid u}|N_{F_v/\mathbf Q_u}(x)|_u
+=|N_{F/\mathbf Q}(x)|_u.
+\]</span>
+Every place of <span class="math" data-tex="\(F\)">\(F\)</span> lies over a rational place. Grouping the finite set of nonunit factors by <span class="math" data-tex="\(u\)">\(u\)</span> yields
+<span class="math math-display" data-tex="\[
+\prod_v|x|_v
+=\prod_u|N_{F/\mathbf Q}(x)|_u=1,
+\]">\[
+\prod_v|x|_v
+=\prod_u|N_{F/\mathbf Q}(x)|_u=1,
+\]</span>
+by the rational product formula proved in Proposition 7.1 of <strong>Absolute values, valuations and Ostrowski's theorem</strong>. The norm is nonzero because <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The square at a complex place has an algebraic reason: that completion contributes two real dimensions to the norm. Replacing it by an unsquared modulus generally destroys the formula with the stated finite-place normalizations.</p>
+<h2 id="6-a-cubic-field-at-finite-and-infinite-places">6. A cubic field at finite and infinite places</h2>
+<p>Let <span class="math" data-tex="\(\alpha=\sqrt[3]{2}\)">\(\alpha=\sqrt[3]{2}\)</span> be the real root and <span class="math" data-tex="\(F=\mathbf Q(\alpha)\)">\(F=\mathbf Q(\alpha)\)</span>. Its minimal polynomial is <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span>, irreducible by Eisenstein at <span class="math" data-tex="\(2\)">\(2\)</span>. Modulo <span class="math" data-tex="\(5\)">\(5\)</span>,
+<span class="math math-display" data-tex="\[
+X^3-2=(X-3)(X^2+3X+4).
+\]">\[
+X^3-2=(X-3)(X^2+3X+4).
+\]</span>
+The quadratic discriminant is <span class="math" data-tex="\(3\)">\(3\)</span> modulo <span class="math" data-tex="\(5\)">\(5\)</span>, a nonsquare. These distinct irreducible factors are coprime, so factor lifting gives a monic linear factor and a monic quadratic factor over <span class="math" data-tex="\(\mathbf Z_5\)">\(\mathbf Z_5\)</span>. The quadratic is irreducible over <span class="math" data-tex="\(\mathbf Q_5\)">\(\mathbf Q_5\)</span>. Indeed, any root would be integral by its monic equation and would contradict the irreducibility of its reduction. Thus
+<span class="math math-display" data-tex="\[
+F\otimes_{\mathbf Q}\mathbf Q_5\simeq\mathbf Q_5\times E,
+\qquad [E : \mathbf Q_5]=2.
+\]">\[
+F\otimes_{\mathbf Q}\mathbf Q_5\simeq\mathbf Q_5\times E,
+\qquad [E : \mathbf Q_5]=2.
+\]</span>
+The linear completion has <span class="math" data-tex="\(e=f=1\)">\(e=f=1\)</span>. The quadratic root reduces to an element of degree <span class="math" data-tex="\(2\)">\(2\)</span> over <span class="math" data-tex="\(\mathbf F_5\)">\(\mathbf F_5\)</span>; the degree formula forces <span class="math" data-tex="\(e=1,f=2\)">\(e=1,f=2\)</span>. This gives two places above <span class="math" data-tex="\(5\)">\(5\)</span>, of local degrees <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p>At infinity,
+<span class="math math-display" data-tex="\[
+X^3-2=(X-\alpha)(X^2+\alpha X+\alpha^2)
+\]">\[
+X^3-2=(X-\alpha)(X^2+\alpha X+\alpha^2)
+\]</span>
+over <span class="math" data-tex="\(\mathbf R\)">\(\mathbf R\)</span>. The quadratic discriminant is <span class="math" data-tex="\(-3\alpha^2&lt;0\)">\(-3\alpha^2&lt;0\)</span>, so
+<span class="math math-display" data-tex="\[
+F\otimes_{\mathbf Q}\mathbf R\simeq\mathbf R\times\mathbf C.
+\]">\[
+F\otimes_{\mathbf Q}\mathbf R\simeq\mathbf R\times\mathbf C.
+\]</span>
+There is one real place and one complex place. Their local degrees <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span> again add to <span class="math" data-tex="\(3\)">\(3\)</span>. The real root and the conjugate pair define two places, even though the field has three embeddings into <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li>
+<p>Evaluate every factor different from <span class="math" data-tex="\(1\)">\(1\)</span> in the product formula for <span class="math" data-tex="\(3/10\in\mathbf Q\)">\(3/10\in\mathbf Q\)</span>, and for <span class="math" data-tex="\(1+i\in\mathbf Q(i)\)">\(1+i\in\mathbf Q(i)\)</span>.</p>
+</li>
+<li>
+<p>For <span class="math" data-tex="\(F=\mathbf Q(\sqrt[3]{2})\)">\(F=\mathbf Q(\sqrt[3]{2})\)</span>, determine all places above <span class="math" data-tex="\(2,3,5,7\)">\(2,3,5,7\)</span>, including their local degrees, ramification indices and residue degrees. Express the corresponding ideal factorizations and compare them with prime decomposition in <strong>Algebraic number theory</strong>.</p>
+</li>
+<li>
+<p>Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be finite Galois and <span class="math" data-tex="\(v\)">\(v\)</span> a place of <span class="math" data-tex="\(K\)">\(K\)</span>. Prove that all <span class="math" data-tex="\(L_w\)">\(L_w\)</span>, for <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span>, are <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-isomorphic, also when <span class="math" data-tex="\(v\)">\(v\)</span> is archimedean.</p>
+</li>
+<li>
+<p>Reconstruct the canonical tensor-product isomorphism in Theorem 2.1. Show that its factors are exactly the completions, and prove continuity of both directions without assuming that an algebra isomorphism is automatically a homeomorphism.</p>
+</li>
+</ol>
+<h2 id="8-complete-solutions">8. Complete solutions</h2>
+<p><strong>Solution 1.</strong> For <span class="math" data-tex="\(3/10\)">\(3/10\)</span>, the integer valuations at <span class="math" data-tex="\(2,3,5\)">\(2,3,5\)</span> are <span class="math" data-tex="\(-1,1,-1\)">\(-1,1,-1\)</span>, respectively. Thus the factors are
+<span class="math math-display" data-tex="\[
+|3/10|_\infty=3/10,\qquad
+|3/10|_2=2,\qquad
+|3/10|_3=1/3,\qquad
+|3/10|_5=5.
+\]">\[
+|3/10|_\infty=3/10,\qquad
+|3/10|_2=2,\qquad
+|3/10|_3=1/3,\qquad
+|3/10|_5=5.
+\]</span>
+Every other finite factor is <span class="math" data-tex="\(1\)">\(1\)</span>, and their product is <span class="math" data-tex="\((3/10)\cdot2\cdot(1/3)\cdot5=1\)">\((3/10)\cdot2\cdot(1/3)\cdot5=1\)</span>.</p>
+<p>For <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span>, use <span class="math" data-tex="\(\mathcal O_F=\mathbf Z[i]\)">\(\mathcal O_F=\mathbf Z[i]\)</span>. The quotient by <span class="math" data-tex="\((1+i)\)">\((1+i)\)</span> is <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>: in the quotient <span class="math" data-tex="\(i=-1=1\)">\(i=-1=1\)</span>, and <span class="math" data-tex="\(2=0\)">\(2=0\)</span>. Hence <span class="math" data-tex="\((1+i)\)">\((1+i)\)</span> is a prime ideal of norm <span class="math" data-tex="\(2\)">\(2\)</span>. The principal ideal of the element <span class="math" data-tex="\(1+i\)">\(1+i\)</span> is that prime to exponent <span class="math" data-tex="\(1\)">\(1\)</span>, so its only nonunit finite size is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. There is one complex place, whose normalized size is
+<span class="math math-display" data-tex="\[
+|1+i|_v=|1+i|^2=2.
+\]">\[
+|1+i|_v=|1+i|^2=2.
+\]</span>
+The product is <span class="math" data-tex="\(2\cdot(1/2)=1\)">\(2\cdot(1/2)=1\)</span>. The ring-of-integers identification here is the standard quadratic-field result from <strong>Algebraic number theory</strong>.</p>
+<p><strong>Solution 2.</strong> Write <span class="math" data-tex="\(\alpha=\sqrt[3]{2}\)">\(\alpha=\sqrt[3]{2}\)</span>. We compute with completions, then apply Proposition 3.1; this avoids using reduction of a defining polynomial at a bad prime without checking an integral-basis hypothesis.</p>
+<p>At <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span> is Eisenstein. It is irreducible over <span class="math" data-tex="\(\mathbf Q_2\)">\(\mathbf Q_2\)</span> and gives one completion of degree <span class="math" data-tex="\(3\)">\(3\)</span>, with <span class="math" data-tex="\(e=3,f=1\)">\(e=3,f=1\)</span>. The element <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a uniformizer.</p>
+<p>At <span class="math" data-tex="\(3\)">\(3\)</span>, use <span class="math" data-tex="\(Y=\alpha+1\)">\(Y=\alpha+1\)</span>. Its equation is
+<span class="math math-display" data-tex="\[
+(Y-1)^3-2=Y^3-3Y^2+3Y-3.
+\]">\[
+(Y-1)^3-2=Y^3-3Y^2+3Y-3.
+\]</span>
+This is Eisenstein at <span class="math" data-tex="\(3\)">\(3\)</span>. Thus there is again one completion, of degree <span class="math" data-tex="\(3\)">\(3\)</span>, with <span class="math" data-tex="\(e=3,f=1\)">\(e=3,f=1\)</span>. Here <span class="math" data-tex="\(\alpha+1\)">\(\alpha+1\)</span> is a uniformizer; <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> itself is a unit.</p>
+<p>At <span class="math" data-tex="\(5\)">\(5\)</span>, Section 6 gives two completions of degrees <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, with pairs <span class="math" data-tex="\((e,f)=(1,1)\)">\((e,f)=(1,1)\)</span> and <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span>.</p>
+<p>At <span class="math" data-tex="\(7\)">\(7\)</span>, the possible cubes modulo <span class="math" data-tex="\(7\)">\(7\)</span> are <span class="math" data-tex="\(0,1,6\)">\(0,1,6\)</span>. The cubic <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span> therefore has no root over <span class="math" data-tex="\(\mathbf F_7\)">\(\mathbf F_7\)</span> and is irreducible there. It is irreducible over <span class="math" data-tex="\(\mathbf Q_7\)">\(\mathbf Q_7\)</span> as well: a reducible cubic over a field has a root, a root here would be integral, and its reduction would be a root modulo <span class="math" data-tex="\(7\)">\(7\)</span>. In the degree-<span class="math" data-tex="\(3\)">\(3\)</span> extension generated by its root, the residue of that root has degree <span class="math" data-tex="\(3\)">\(3\)</span>. The degree formula forces <span class="math" data-tex="\(e=1,f=3\)">\(e=1,f=3\)</span>. There is one place above <span class="math" data-tex="\(7\)">\(7\)</span>.</p>
+<p>With subscripts distinguishing the two primes above <span class="math" data-tex="\(5\)">\(5\)</span>, the global factorizations are consequently
+<span class="math math-display" data-tex="\[
+2\mathcal O_F=\mathfrak P_2^3,\qquad
+3\mathcal O_F=\mathfrak P_3^3,\qquad
+5\mathcal O_F=\mathfrak P_{5,1}\mathfrak P_{5,2},\qquad
+7\mathcal O_F=\mathfrak P_7.
+\]">\[
+2\mathcal O_F=\mathfrak P_2^3,\qquad
+3\mathcal O_F=\mathfrak P_3^3,\qquad
+5\mathcal O_F=\mathfrak P_{5,1}\mathfrak P_{5,2},\qquad
+7\mathcal O_F=\mathfrak P_7.
+\]</span>
+Their prime norms are <span class="math" data-tex="\(2,3,5,25,343\)">\(2,3,5,25,343\)</span>, respectively. For each rational prime, the sum of the local degrees is <span class="math" data-tex="\(3\)">\(3\)</span>. These are exactly the ramification exponents and residue degrees recorded by the global prime-decomposition theorem.</p>
+<p><strong>Solution 3.</strong> Fix an algebraic closure <span class="math" data-tex="\(\overline{K_v}\)">\(\overline{K_v}\)</span> with the unique extension of the chosen absolute value of <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. For each <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span>, embed the finite separable extension <span class="math" data-tex="\(L_w/K_v\)">\(L_w/K_v\)</span> into this closure. The composite gives an embedding <span class="math" data-tex="\(\rho_w:L\hookrightarrow\overline{K_v}\)">\(\rho_w:L\hookrightarrow\overline{K_v}\)</span> fixing <span class="math" data-tex="\(K\)">\(K\)</span>, and
+<span class="math math-display" data-tex="\[
+\rho_w(L_w)=K_v\,\rho_w(L).
+\]">\[
+\rho_w(L_w)=K_v\,\rho_w(L).
+\]</span>
+The identity follows from the completion construction in Theorem 2.1.</p>
+<p>Choose a primitive element of the Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, with minimal polynomial <span class="math" data-tex="\(f\)">\(f\)</span>. Its image under any <span class="math" data-tex="\(\rho_w\)">\(\rho_w\)</span> generates a copy of <span class="math" data-tex="\(L\)">\(L\)</span> containing every root of <span class="math" data-tex="\(f\)">\(f\)</span>. Since <span class="math" data-tex="\(L\)">\(L\)</span> is its splitting field over <span class="math" data-tex="\(K\)">\(K\)</span>, all the subfields <span class="math" data-tex="\(\rho_w(L)\)">\(\rho_w(L)\)</span> in <span class="math" data-tex="\(\overline{K_v}\)">\(\overline{K_v}\)</span> are the same splitting field of <span class="math" data-tex="\(f\)">\(f\)</span>. Thus for two places <span class="math" data-tex="\(w_1,w_2\)">\(w_1,w_2\)</span> there is a <span class="math" data-tex="\(\sigma\in G\)">\(\sigma\in G\)</span> such that
+<span class="math math-display" data-tex="\[
+\rho_{w_2}=\rho_{w_1}\circ\sigma.
+\]">\[
+\rho_{w_2}=\rho_{w_1}\circ\sigma.
+\]</span>
+The completed images <span class="math" data-tex="\(K_v\rho_{w_1}(L)\)">\(K_v\rho_{w_1}(L)\)</span> and <span class="math" data-tex="\(K_v\rho_{w_2}(L)\)">\(K_v\rho_{w_2}(L)\)</span> are equal. Both completion embeddings respect their absolute values, by unique extension from <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. The displayed identity gives
+<span class="math math-display" data-tex="\[
+|x|_{w_2}=|\sigma x|_{w_1}\quad(x\in L)
+\]">\[
+|x|_{w_2}=|\sigma x|_{w_1}\quad(x\in L)
+\]</span>
+for the representatives restricting exactly to the base value. Hence <span class="math" data-tex="\(x\mapsto\sigma x\)">\(x\mapsto\sigma x\)</span> is an isometry from <span class="math" data-tex="\(L\)">\(L\)</span> with the <span class="math" data-tex="\(w_2\)">\(w_2\)</span>-topology to <span class="math" data-tex="\(L\)">\(L\)</span> with the <span class="math" data-tex="\(w_1\)">\(w_1\)</span>-topology. It extends to a field isomorphism <span class="math" data-tex="\(L_{w_2}\to L_{w_1}\)">\(L_{w_2}\to L_{w_1}\)</span>. Its inverse is the extension of <span class="math" data-tex="\(\sigma^{-1}\)">\(\sigma^{-1}\)</span>, and both fix <span class="math" data-tex="\(K_v\)">\(K_v\)</span> by continuity and density of <span class="math" data-tex="\(K\)">\(K\)</span>. This works equally for finite and archimedean places.</p>
+<p>It also proves transitivity on places: with the left action defined by <span class="math" data-tex="\((\sigma w)(x)=w(\sigma^{-1}x)\)">\((\sigma w)(x)=w(\sigma^{-1}x)\)</span>, the equality of absolute values says <span class="math" data-tex="\(w_2=\sigma^{-1}w_1\)">\(w_2=\sigma^{-1}w_1\)</span>.</p>
+<p><strong>Solution 4.</strong> Take <span class="math" data-tex="\(L=K(\alpha)\)">\(L=K(\alpha)\)</span> and factor its minimal polynomial <span class="math" data-tex="\(f\)">\(f\)</span> into distinct irreducibles <span class="math" data-tex="\(f_i\)">\(f_i\)</span> over <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. Distinctness follows from separability and a Bézout identity for <span class="math" data-tex="\(f,f&#x27;\)">\(f,f&#x27;\)</span>. The Chinese remainder map
+<span class="math math-display" data-tex="\[
+K_v[X]/(f)\longrightarrow\prod_i E_i,\qquad
+[g]\longmapsto([g]\bmod f_i)_i,\qquad
+E_i=K_v[X]/(f_i),
+\]">\[
+K_v[X]/(f)\longrightarrow\prod_i E_i,\qquad
+[g]\longmapsto([g]\bmod f_i)_i,\qquad
+E_i=K_v[X]/(f_i),
+\]</span>
+is an algebra isomorphism. The left side identifies with <span class="math" data-tex="\(L\otimes_K K_v\)">\(L\otimes_K K_v\)</span>.</p>
+<p>Each <span class="math" data-tex="\(E_i\)">\(E_i\)</span> is complete by the finite-extension theorem, and <span class="math" data-tex="\(L\)">\(L\)</span> embeds in it by <span class="math" data-tex="\(\alpha\mapsto[X]\)">\(\alpha\mapsto[X]\)</span>. Approximating the coefficients of a polynomial in <span class="math" data-tex="\([X]\)">\([X]\)</span> by elements of <span class="math" data-tex="\(K\)">\(K\)</span> proves that this image is dense. Thus <span class="math" data-tex="\(E_i\)">\(E_i\)</span> is the completion at the pulled-back place. If two such places were equivalent, their values would be equal by nontriviality of the common restriction, and the identity of <span class="math" data-tex="\(L\)">\(L\)</span> would extend to a <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-isomorphism carrying one <span class="math" data-tex="\([X]\)">\([X]\)</span> to the other. This would force their minimal polynomials <span class="math" data-tex="\(f_i\)">\(f_i\)</span> to agree.</p>
+<p>For an arbitrary <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span>, <span class="math" data-tex="\(K_v\)">\(K_v\)</span> embeds in <span class="math" data-tex="\(L_w\)">\(L_w\)</span>, and the finite complete subfield <span class="math" data-tex="\(K_v(\alpha)\)">\(K_v(\alpha)\)</span> is closed there. It contains dense <span class="math" data-tex="\(L\)">\(L\)</span>, so it equals <span class="math" data-tex="\(L_w\)">\(L_w\)</span>. The minimal polynomial of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> over <span class="math" data-tex="\(K_v\)">\(K_v\)</span> must be one of the <span class="math" data-tex="\(f_i\)">\(f_i\)</span>. Hence there are neither extra factors nor missing places. The component map sends <span class="math" data-tex="\(x\otimes a\)">\(x\otimes a\)</span> to <span class="math" data-tex="\(a x_w\)">\(a x_w\)</span>, proving the stated canonical formula.</p>
+<p>For topology, choose a basis of <span class="math" data-tex="\(L\)">\(L\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>; it gives a basis of <span class="math" data-tex="\(L\otimes_K K_v\)">\(L\otimes_K K_v\)</span> and the coordinate maximum norm. Give each <span class="math" data-tex="\(E_i\)">\(E_i\)</span> its unique extending absolute value, and their product the maximum of these values. This is a <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-vector-space norm and induces the finite product topology. Finite-dimensional norm equivalence over the complete base identifies it, up to bounds in both directions, with a coordinate maximum norm. In coordinate bases the Chinese remainder map is an invertible finite matrix. If its entries are <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>, the ordinary triangle inequality gives
+<span class="math math-display" data-tex="\[
+\max_i\left|\sum_j a_{ij}x_j\right|
+\le \left(\max_i\sum_j|a_{ij}|\right)\max_j|x_j|.
+\]">\[
+\max_i\left|\sum_j a_{ij}x_j\right|
+\le \left(\max_i\sum_j|a_{ij}|\right)\max_j|x_j|.
+\]</span>
+The inverse matrix gives a corresponding bound for the inverse. Combining these bounds with norm equivalence proves continuity both ways. In the complex case the component norms in this argument use ordinary modulus, or its ordinary absolute-value representative, rather than squared normalized size.</p>
+<h2 id="9-what-this-lesson-does-not-prove">9. What this lesson does not prove</h2>
+<ul>
+<li>The construction and universal property of completions, and preservation of the value group and residue field for a discrete valuation, are Theorem 2.1 of <strong>Completions, the p-adic numbers and complete discretely valued fields</strong>.</li>
+<li>The unique absolute value on a finite extension of a complete valued field, its completeness and norm formula, finite-dimensional norm equivalence, and <span class="math" data-tex="\([E:K]=ef\)">\([E:K]=ef\)</span> for complete discretely valued fields are Theorem 1.2, Proposition 2.1 and Theorem 3.1 of <strong>Extensions of complete valued fields</strong>.</li>
+<li>The classification of number-field places and the rational product formula are Proposition 6.1 and Proposition 7.1 of <strong>Absolute values, valuations and Ostrowski's theorem</strong>. The archimedean completions are classified in Theorem 2.4 and Corollary 2.5 of <strong>Completions, the p-adic numbers and complete discretely valued fields</strong>.</li>
+<li>Hensel lifting of simple roots and coprime monic factors is Corollary 1.2 and Theorem 3.2 of <strong>Hensel's lemma, squares and roots of unity in p-adic fields</strong>. The Eisenstein degree and ramification assertions are Corollary 5.2 of <strong>Extensions of complete valued fields</strong>.</li>
+<li>Global fractional-ideal factorization, prime contraction, the definition of <span class="math" data-tex="\(e,f\)">\(e,f\)</span>, and the prime-valuation restriction identity are the ideal-theoretic results in <strong>Algebraic number theory</strong>. The freely available comparison is Milne, Chapter 3, Theorem 3.7, Lemma 3.33 and “Factorization in extensions.” Transitivity and global decomposition/inertia definitions are supplied by <strong>Hilbert's ramification theory in Galois extensions</strong>. Proposition 4.1 proves their identification with the local groups here.</li>
+<li>The primitive-element theorem, the splitting-field description of a finite Galois extension, extension of separable embeddings, and the Chinese remainder theorem are algebra prerequisites. Exact field-theoretic references are Milne, <em>Fields and Galois Theory</em>, Theorem 5.1 and Chapter 3, especially Corollary 3.12 and Theorem 3.17; the Chinese remainder theorem is Milne, <em>Algebraic Number Theory</em>, Theorem 1.14. The standard quadratic-field computation <span class="math" data-tex="\(\mathcal O_{\mathbf Q(i)}=\mathbf Z[i]\)">\(\mathcal O_{\mathbf Q(i)}=\mathbf Z[i]\)</span> is Milne, Chapter 2, Example 2.41.</li>
+</ul>
+<p>The tensor decomposition is the local algebra used in passing from a field extension to its adèles. The decomposition-group identification provides the local Galois group that appears in global Galois representations. The product formula supplies the normalization in the lessons on global fields and characteristic one.</p>
+<p>The exact written global providers are in <em>Number fields</em>: lesson 1, <strong>Algebraic integers and rings of integers</strong>, Proposition 1.2 for separable norm/trace and Theorem 1.4 for quadratic integer rings; lesson 3, <strong>Discrete valuation rings and Dedekind domains</strong>, Theorem 3.2 and Proposition 3.3 for fractional ideals and Chinese remainders; lesson 5, <strong>Decomposition of primes in extensions</strong>, Theorems 5.1–5.2 for finite integral closure, ramification and prime norms; and lesson 6, <strong>Hilbert's ramification theory in Galois extensions</strong>, Theorems 6.1–6.2 for transitivity and decomposition/inertia. The complete primitive-element proof for any finite separable field extension is <a href="NT-LOC-04.html"><strong>Extensions of complete valued fields</strong>, Proposition 0.1</a>. Stacks, Tag 030N remains a comparison source. These providers, together with the preceding local lessons, supply the proof dependencies; the classical references remain attribution.</p>
+<h2 id="references">References</h2>
+<p>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, version 3.08, Chapter 8: Propositions 8.1–8.4, Lemma 8.6, Proposition 8.7, Theorem 8.8 and Proposition 8.10.</p>
+<p>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/FT.pdf"><em>Fields and Galois Theory</em></a>, Chapter 3 and Theorem 5.1, for the algebraic prerequisites.</p>
+
+</article>
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-LOC-04.html">← Extensions of complete valued fields</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-LOC-06.html">Local fields: classification and Haar measure →</a></span></nav>
+<p class="small source-link"><a href="src/NT-LOC-05.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><span class="unlinked">GitHub repository</span><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

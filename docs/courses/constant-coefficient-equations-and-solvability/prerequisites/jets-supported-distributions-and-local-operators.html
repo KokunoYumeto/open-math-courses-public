@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Jets, supported distributions and local operators</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="jets-supported-distributions-and-local-operators">Jets, supported distributions and local operators</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>A distribution concentrated on a point can measure derivatives of a test there. A distribution concentrated on a plane can measure normal derivatives along that plane, with distributions as tangential coefficients. The total order limits both kinds of measurement: spending one derivative in the normal direction leaves one fewer tangential derivative available. We prove that precise order bound, then use it to characterize operators whose kernels lie on the diagonal.</p>
+<p>The prerequisites are <a href="referenced-prerequisite-statements.html#reference-5d1e388c74a3">Distributions as kernels of continuous operators</a>, <a href="tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a>, Taylor's formula, smooth cutoffs and convolution with a smooth compactly supported function. We use ordinary derivatives <span class="math" data-tex="\(\partial\)">\(\partial\)</span>, with the bilinear distribution convention; no powers of <span class="math" data-tex="\(i\)">\(i\)</span> are hidden in the coefficients. Basic references are [Dyatlov 2026], [Melrose 2016] and [Whitney 1934]. The special extension needed here is proved directly by smoothing at a scale set by the distance to the plane.</p>
+<h2 id="what-a-supported-distribution-can-detect">What a supported distribution can detect</h2>
+<p>The order of a distribution is at most <span class="math" data-tex="\(k\)">\(k\)</span> if, on each fixed compact test-support set, its pairing is bounded by a constant times the supremum of derivatives through order <span class="math" data-tex="\(k\)">\(k\)</span>. The constant may depend on the compact set. For a compactly supported distribution, one compact neighborhood of its support gives
+<span class="math math-display" data-tex="\[
+|u(f)|\le C\max_{|\gamma|\le k}\sup_M|\partial^\gamma f|
+\tag{1.1}
+\]">\[
+|u(f)|\le C\max_{|\gamma|\le k}\sup_M|\partial^\gamma f|
+\tag{1.1}
+\]</span>
+for all smooth <span class="math" data-tex="\(f\)">\(f\)</span>, after a cutoff equal to one near the support. The controlling set <span class="math" data-tex="\(M\)">\(M\)</span> is a neighborhood of the support; (1.1) is not an assertion that the supremum may be restricted to the support itself.</p>
+<p>An order-at-most-<span class="math" data-tex="\(k\)">\(k\)</span> distribution acts on compactly supported <span class="math" data-tex="\(C^k\)">\(C^k\)</span> functions. To define the pairing, approximate such a function by smooth ones, with one common compact support and uniform convergence of derivatives through order <span class="math" data-tex="\(k\)">\(k\)</span>. Convolution after a slightly larger cutoff supplies these approximations. The order bound makes their pairings Cauchy and makes the limit independent of the approximation. For a compact distribution the same construction acts on arbitrary <span class="math" data-tex="\(C^k\)">\(C^k\)</span> functions, by a cutoff near its support.</p>
+<p><strong>Theorem 1.1 (vanishing jets are invisible).</strong> Let <span class="math" data-tex="\(u\)">\(u\)</span> be a distribution of order at most <span class="math" data-tex="\(k\)">\(k\)</span>, and let <span class="math" data-tex="\(f\in C_c^k(U)\)">\(f\in C_c^k(U)\)</span>. If
+<span class="math math-display" data-tex="\[
+\partial^\gamma f(x)=0
+\quad(x\in\operatorname{supp}u,\ |\gamma|\le k),
+\tag{1.2}
+\]">\[
+\partial^\gamma f(x)=0
+\quad(x\in\operatorname{supp}u,\ |\gamma|\le k),
+\tag{1.2}
+\]</span>
+then <span class="math" data-tex="\(u(f)=0\)">\(u(f)=0\)</span>. If <span class="math" data-tex="\(u\)">\(u\)</span> is compactly supported, <span class="math" data-tex="\(f\)">\(f\)</span> need not have compact support.</p>
+<p><strong>Proof.</strong> First assume <span class="math" data-tex="\(u\)">\(u\)</span> has compact support <span class="math" data-tex="\(F\)">\(F\)</span> in Euclidean space. For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, write <span class="math" data-tex="\(F_a\)">\(F_a\)</span> for the open <span class="math" data-tex="\(a\)">\(a\)</span>-neighborhood of <span class="math" data-tex="\(F\)">\(F\)</span>. Take a nonnegative smooth mollifier <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of integral one supported in the unit ball, and put
+<span class="math math-display" data-tex="\[
+\chi_\varepsilon=\mathbf1_{F_{2\varepsilon}}*\rho_\varepsilon.
+\]">\[
+\chi_\varepsilon=\mathbf1_{F_{2\varepsilon}}*\rho_\varepsilon.
+\]</span>
+For small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, this is a compact smooth function supported in a fixed neighborhood of <span class="math" data-tex="\(F\)">\(F\)</span>. It equals one on <span class="math" data-tex="\(F_\varepsilon\)">\(F_\varepsilon\)</span>, is supported in <span class="math" data-tex="\(\overline{F_{3\varepsilon}}\)">\(\overline{F_{3\varepsilon}}\)</span>, and satisfies
+<span class="math math-display" data-tex="\[
+|\partial^\beta\chi_\varepsilon|\le C_\beta\varepsilon^{-|\beta|}.
+\tag{1.3}
+\]">\[
+|\partial^\beta\chi_\varepsilon|\le C_\beta\varepsilon^{-|\beta|}.
+\tag{1.3}
+\]</span>
+These estimates follow by differentiating the mollifier and taking its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm; the indicator is bounded by one.</p>
+<p>Taylor's formula at a nearest point of <span class="math" data-tex="\(F\)">\(F\)</span>, with (1.2), gives, uniformly near <span class="math" data-tex="\(F\)">\(F\)</span>,
+<span class="math math-display" data-tex="\[
+|\partial^\gamma f(x)|
+\le C\operatorname{dist}(x,F)^{k-|\gamma|}
+\omega(\operatorname{dist}(x,F)),
+\quad |\gamma|\le k,
+\tag{1.4}
+\]">\[
+|\partial^\gamma f(x)|
+\le C\operatorname{dist}(x,F)^{k-|\gamma|}
+\omega(\operatorname{dist}(x,F)),
+\quad |\gamma|\le k,
+\tag{1.4}
+\]</span>
+where <span class="math" data-tex="\(\omega(a)\to0\)">\(\omega(a)\to0\)</span> as <span class="math" data-tex="\(a\downarrow0\)">\(a\downarrow0\)</span>. One can take a constant multiple of a common modulus of continuity of the order-<span class="math" data-tex="\(k\)">\(k\)</span> derivatives on a fixed compact neighborhood. For <span class="math" data-tex="\(|\gamma|=k\)">\(|\gamma|=k\)</span>, (1.4) is the continuity estimate against a derivative which is zero on <span class="math" data-tex="\(F\)">\(F\)</span>. For lower orders it follows from the integral Taylor remainder along the segment to the nearest point.</p>
+<p>The functions <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(\chi_\varepsilon f\)">\(\chi_\varepsilon f\)</span> agree near <span class="math" data-tex="\(F\)">\(F\)</span>, so they have the same pairing with <span class="math" data-tex="\(u\)">\(u\)</span>. This also holds for <span class="math" data-tex="\(C^k\)">\(C^k\)</span> functions: approximate a function vanishing on a neighborhood of <span class="math" data-tex="\(F\)">\(F\)</span> by smooth functions still vanishing on a smaller neighborhood, and use the order estimate. The product rule, (1.3) and (1.4) give
+<span class="math math-display" data-tex="\[
+\max_{|\gamma|\le k}\|\partial^\gamma(\chi_\varepsilon f)\|_\infty
+\le C&#x27;\omega(3\varepsilon)
+\quad(0&lt;\varepsilon\le1).
+\]">\[
+\max_{|\gamma|\le k}\|\partial^\gamma(\chi_\varepsilon f)\|_\infty
+\le C&#x27;\omega(3\varepsilon)
+\quad(0&lt;\varepsilon\le1).
+\]</span>
+The possible powers <span class="math" data-tex="\(\varepsilon^{k-|\gamma|}\)">\(\varepsilon^{k-|\gamma|}\)</span> are at most one and do not obstruct convergence to zero. Estimate (1.1) proves <span class="math" data-tex="\(u(f)=0\)">\(u(f)=0\)</span>.</p>
+<p>For an arbitrary distribution and compactly supported <span class="math" data-tex="\(f\)">\(f\)</span>, multiply <span class="math" data-tex="\(u\)">\(u\)</span> by a cutoff equal to one near <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>. The resulting compact distribution has order at most <span class="math" data-tex="\(k\)">\(k\)</span> and support contained in <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>, so the case just proved applies. Its pairing with <span class="math" data-tex="\(f\)">\(f\)</span> equals that of <span class="math" data-tex="\(u\)">\(u\)</span>. For a compact <span class="math" data-tex="\(u\)">\(u\)</span> and a noncompact <span class="math" data-tex="\(f\)">\(f\)</span>, first cut off <span class="math" data-tex="\(f\)">\(f\)</span> near <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>. Its vanishing jets there are preserved. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem concerns jets that vanish. It does not provide a norm estimate using only the values of a jet on an arbitrary closed support. An extension problem enters when we prescribe a nonzero jet.</p>
+<h2 id="extending-one-normal-jet-without-losing-derivatives">Extending one normal jet without losing derivatives</h2>
+<p>Write <span class="math" data-tex="\((t,z)\in\mathbb R^d\times\mathbb R^n\)">\((t,z)\in\mathbb R^d\times\mathbb R^n\)</span>, with <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, and let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be a multi-index in the <span class="math" data-tex="\(t\)">\(t\)</span> variables. Put <span class="math" data-tex="\(a=|\alpha|\)">\(a=|\alpha|\)</span>, and fix an integer <span class="math" data-tex="\(k\ge a\)">\(k\ge a\)</span>. For a function on Euclidean space, <span class="math" data-tex="\(\|\cdot\|_{C^s}\)">\(\|\cdot\|_{C^s}\)</span> denotes the maximum of the suprema of all derivatives through order <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>Lemma 2.1 (a controlled normal-jet extension).</strong> Let <span class="math" data-tex="\(s=k-a\)">\(s=k-a\)</span>. For each <span class="math" data-tex="\(g\in C_c^s(\mathbb R^n)\)">\(g\in C_c^s(\mathbb R^n)\)</span>, there is a compactly supported <span class="math" data-tex="\(G\in C^k(\mathbb R^{d+n})\)">\(G\in C^k(\mathbb R^{d+n})\)</span>, linear in <span class="math" data-tex="\(g\)">\(g\)</span>, such that
+<span class="math math-display" data-tex="\[
+\partial_t^\beta G(0,z)=
+\begin{cases}g(z),&amp;\beta=\alpha,\\0,&amp;\beta\ne\alpha,\end{cases}
+\quad |\beta|\le k,
+\tag{2.1}
+\]">\[
+\partial_t^\beta G(0,z)=
+\begin{cases}g(z),&amp;\beta=\alpha,\\0,&amp;\beta\ne\alpha,\end{cases}
+\quad |\beta|\le k,
+\tag{2.1}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\|G\|_{C^k}\le C_{k,\alpha}\|g\|_{C^s}.
+\tag{2.2}
+\]">\[
+\|G\|_{C^k}\le C_{k,\alpha}\|g\|_{C^s}.
+\tag{2.2}
+\]</span>
+If <span class="math" data-tex="\(g\)">\(g\)</span> ranges over functions supported in one compact set, all these extensions have one common compact support. The assertion includes <span class="math" data-tex="\(s=0\)">\(s=0\)</span>.</p>
+<p><strong>Proof.</strong> We give the construction and its full regularity estimate.</p>
+<p>Choose a smooth compactly supported function <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> with
+<span class="math math-display" data-tex="\[
+\int\rho=1,\qquad \int w^\gamma\rho(w)\,dw=0
+\quad(1\le|\gamma|\le k).
+\tag{2.3}
+\]">\[
+\int\rho=1,\qquad \int w^\gamma\rho(w)\,dw=0
+\quad(1\le|\gamma|\le k).
+\tag{2.3}
+\]</span>
+Positivity is not required. Such a function is easy to construct with finitely many dilations. Start with any integral-one smooth bump <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span>. Choose distinct positive numbers <span class="math" data-tex="\(\lambda_0,\ldots,\lambda_k\)">\(\lambda_0,\ldots,\lambda_k\)</span>, and solve the Vandermonde system
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^k c_j\lambda_j^b=
+\begin{cases}1,&amp;b=0,\\0,&amp;1\le b\le k.\end{cases}
+\]">\[
+\sum_{j=0}^k c_j\lambda_j^b=
+\begin{cases}1,&amp;b=0,\\0,&amp;1\le b\le k.\end{cases}
+\]</span>
+Then <span class="math" data-tex="\(\rho(w)=\sum_jc_j\lambda_j^{-n}\rho_0(w/\lambda_j)\)">\(\rho(w)=\sum_jc_j\lambda_j^{-n}\rho_0(w/\lambda_j)\)</span> has (2.3), since a moment of total degree <span class="math" data-tex="\(b\)">\(b\)</span> scales by <span class="math" data-tex="\(\lambda_j^b\)">\(\lambda_j^b\)</span>.</p>
+<p>For <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, set <span class="math" data-tex="\(\rho_h(w)=h^{-n}\rho(w/h)\)">\(\rho_h(w)=h^{-n}\rho(w/h)\)</span>, and for <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span> define
+<span class="math math-display" data-tex="\[
+G_0(t,z)=\frac{t^\alpha}{\alpha!}(g*\rho_{|t|})(z).
+\tag{2.4}
+\]">\[
+G_0(t,z)=\frac{t^\alpha}{\alpha!}(g*\rho_{|t|})(z).
+\tag{2.4}
+\]</span>
+The scale <span class="math" data-tex="\(|t|\)">\(|t|\)</span> is smooth off the plane. The moment conditions make convolution reproduce every polynomial of degree at most <span class="math" data-tex="\(s\)">\(s\)</span>, independently of the scale. In particular, differentiating that convolution in <span class="math" data-tex="\(t\)">\(t\)</span> kills each such polynomial whenever at least one <span class="math" data-tex="\(t\)">\(t\)</span> derivative is taken.</p>
+<p>Let <span class="math" data-tex="\(b=|\beta|\)">\(b=|\beta|\)</span>, <span class="math" data-tex="\(c=|\gamma|\)">\(c=|\gamma|\)</span>, and <span class="math" data-tex="\(b+c\le k\)">\(b+c\le k\)</span>. Differentiating a scaled convolution kernel in <span class="math" data-tex="\(t\)">\(t\)</span> through total order <span class="math" data-tex="\(b\)">\(b\)</span>, and in <span class="math" data-tex="\(z\)">\(z\)</span> through total order <span class="math" data-tex="\(c\)">\(c\)</span>, costs at most a constant times <span class="math" data-tex="\(|t|^{-b-c}\)">\(|t|^{-b-c}\)</span> in its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm. Here each derivative of <span class="math" data-tex="\(|t|\)">\(|t|\)</span> has size bounded by a constant times the appropriate power of <span class="math" data-tex="\(|t|\)">\(|t|\)</span>; the chain rule gives the same scaling at every order. The differentiated kernels remain supported in <span class="math" data-tex="\(|w|\le R|t|\)">\(|w|\le R|t|\)</span>, with fixed <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>At a fixed <span class="math" data-tex="\(z\)">\(z\)</span>, subtract the Taylor polynomial of <span class="math" data-tex="\(g\)">\(g\)</span> through degree <span class="math" data-tex="\(s\)">\(s\)</span>. Its remainder on that ball is bounded by
+<span class="math math-display" data-tex="\[
+C|t|^s\omega_g(R|t|),
+\tag{2.5}
+\]">\[
+C|t|^s\omega_g(R|t|),
+\tag{2.5}
+\]</span>
+where <span class="math" data-tex="\(\omega_g(h)\to0\)">\(\omega_g(h)\to0\)</span>, uniformly in <span class="math" data-tex="\(z\)">\(z\)</span>. For <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, this is the modulus of continuity of <span class="math" data-tex="\(g\)">\(g\)</span>. For <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, it is a constant multiple of the modulus of continuity of the order-<span class="math" data-tex="\(s\)">\(s\)</span> derivatives, by the integral Taylor formula. The differentiated kernel estimate therefore gives
+<span class="math math-display" data-tex="\[
+\partial_t^\nu\partial_z^\gamma(g*\rho_{|t|})(z)=
+\begin{cases}\partial_z^\gamma g(z),&amp;\nu=0,\ c\le s,\\0,&amp;\text{otherwise},\end{cases}
++O\big(|t|^{s-|\nu|-c}\omega_g(R|t|)\big).
+\tag{2.6}
+\]">\[
+\partial_t^\nu\partial_z^\gamma(g*\rho_{|t|})(z)=
+\begin{cases}\partial_z^\gamma g(z),&amp;\nu=0,\ c\le s,\\0,&amp;\text{otherwise},\end{cases}
++O\big(|t|^{s-|\nu|-c}\omega_g(R|t|)\big).
+\tag{2.6}
+\]</span>
+The leading term is found by applying the differentiated convolution to the fixed Taylor polynomial, using polynomial reproduction. If <span class="math" data-tex="\(c&gt;s\)">\(c&gt;s\)</span>, that derivative of the polynomial is zero. If <span class="math" data-tex="\(\nu\ne0\)">\(\nu\ne0\)</span>, its convolution is scale-independent, so that term is zero. This justifies (2.6) even when the derivatives of <span class="math" data-tex="\(g\)">\(g\)</span> appearing in the remainder calculation do not exist beyond order <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>Apply the product rule to (2.4). When <span class="math" data-tex="\(\beta\le\alpha\)">\(\beta\le\alpha\)</span> coordinatewise and <span class="math" data-tex="\(c\le s\)">\(c\le s\)</span>, the leading term is
+<span class="math math-display" data-tex="\[
+\frac{t^{\alpha-\beta}}{(\alpha-\beta)!}\partial_z^\gamma g(z).
+\tag{2.7}
+\]">\[
+\frac{t^{\alpha-\beta}}{(\alpha-\beta)!}\partial_z^\gamma g(z).
+\tag{2.7}
+\]</span>
+Otherwise there is no leading term. Every remainder is bounded by
+<span class="math math-display" data-tex="\[
+C|t|^{k-b-c}\omega_g(R|t|),
+\tag{2.8}
+\]">\[
+C|t|^{k-b-c}\omega_g(R|t|),
+\tag{2.8}
+\]</span>
+because the degree <span class="math" data-tex="\(a\)">\(a\)</span> of the prefactor and <span class="math" data-tex="\(s=k-a\)">\(s=k-a\)</span> add to <span class="math" data-tex="\(k\)">\(k\)</span>. Thus all derivatives of <span class="math" data-tex="\(G_0\)">\(G_0\)</span> through order <span class="math" data-tex="\(k\)">\(k\)</span>, initially defined off the plane, extend continuously to it. Their traces are zero except for <span class="math" data-tex="\(\beta=\alpha\)">\(\beta=\alpha\)</span>, <span class="math" data-tex="\(c\le s\)">\(c\le s\)</span>, when the trace is <span class="math" data-tex="\(\partial_z^\gamma g\)">\(\partial_z^\gamma g\)</span>.</p>
+<p>These extensions really are the derivatives of a <span class="math" data-tex="\(C^k\)">\(C^k\)</span> function. One can verify this successively in derivative order. Along a normal coordinate segment leaving the plane, use the fundamental theorem of calculus off the plane and then the continuous limiting derivative at its endpoint. Along a tangential segment in the plane, the asserted nonzero traces are derivatives of <span class="math" data-tex="\(g\)">\(g\)</span>, whose required orders are at most <span class="math" data-tex="\(s\)">\(s\)</span>; all other traces are zero. This proves differentiability in each coordinate across the plane, with the prescribed continuous partial derivatives, at each order up to <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>On <span class="math" data-tex="\(0&lt;|t|\le1\)">\(0&lt;|t|\le1\)</span>, the same calculations with <span class="math" data-tex="\(\omega_g\)">\(\omega_g\)</span> bounded by <span class="math" data-tex="\(C\|g\|_{C^s}\)">\(C\|g\|_{C^s}\)</span> give a uniform <span class="math" data-tex="\(C^k\)">\(C^k\)</span> bound for <span class="math" data-tex="\(G_0\)">\(G_0\)</span>. Choose a compact smooth <span class="math" data-tex="\(\theta(t)\)">\(\theta(t)\)</span>, equal to one near zero and supported in <span class="math" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span>, and put <span class="math" data-tex="\(G=\theta G_0\)">\(G=\theta G_0\)</span>, with the continuous extension at the plane. The product rule proves (2.2), and multiplication by <span class="math" data-tex="\(\theta\)">\(\theta\)</span> preserves (2.1). If <span class="math" data-tex="\(g\)">\(g\)</span> is supported in <span class="math" data-tex="\(M\)">\(M\)</span>, the extension is supported in the compact product of <span class="math" data-tex="\(\operatorname{supp}\theta\)">\(\operatorname{supp}\theta\)</span> with <span class="math" data-tex="\(M+\overline{B(0,R)}\)">\(M+\overline{B(0,R)}\)</span>. This proves every assertion. If <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, there is no convolution: take <span class="math" data-tex="\(G(t)=\theta(t)t^\alpha g/\alpha!\)">\(G(t)=\theta(t)t^\alpha g/\alpha!\)</span>, with the same conclusions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The elementary extension <span class="math" data-tex="\(t^\alpha g(z)/\alpha!\)">\(t^\alpha g(z)/\alpha!\)</span> would require too many tangential derivatives away from the plane. The scale-dependent smoothing in (2.4) supplies those missing derivatives, while the vanishing moments preserve the prescribed jet.</p>
+<h2 id="the-exact-structure-on-a-plane">The exact structure on a plane</h2>
+<p><strong>Theorem 3.1 (normal jets of a supported distribution).</strong> Let <span class="math" data-tex="\(u\in\mathcal E&#x27;(\mathbb R^{d+n})\)">\(u\in\mathcal E&#x27;(\mathbb R^{d+n})\)</span> have order at most <span class="math" data-tex="\(k\)">\(k\)</span>, with
+<span class="math math-display" data-tex="\[
+\operatorname{supp}u\subset\{0\}\times\mathbb R^n.
+\]">\[
+\operatorname{supp}u\subset\{0\}\times\mathbb R^n.
+\]</span>
+There are unique compactly supported distributions <span class="math" data-tex="\(w_\alpha\)">\(w_\alpha\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, for <span class="math" data-tex="\(|\alpha|\le k\)">\(|\alpha|\le k\)</span>, such that
+<span class="math math-display" data-tex="\[
+u(f)=\sum_{|\alpha|\le k}w_\alpha\big(\partial_t^\alpha f(0,\cdot)\big)
+\tag{3.1}
+\]">\[
+u(f)=\sum_{|\alpha|\le k}w_\alpha\big(\partial_t^\alpha f(0,\cdot)\big)
+\tag{3.1}
+\]</span>
+for every smooth <span class="math" data-tex="\(f\)">\(f\)</span>. Each <span class="math" data-tex="\(w_\alpha\)">\(w_\alpha\)</span> has order at most <span class="math" data-tex="\(k-|\alpha|\)">\(k-|\alpha|\)</span>, and its support is contained in the tangential projection of <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>. Equivalently,
+<span class="math math-display" data-tex="\[
+u=\sum_{|\alpha|\le k}(-1)^{|\alpha|}
+(\partial_t^\alpha\delta_0)\otimes w_\alpha.
+\tag{3.2}
+\]">\[
+u=\sum_{|\alpha|\le k}(-1)^{|\alpha|}
+(\partial_t^\alpha\delta_0)\otimes w_\alpha.
+\tag{3.2}
+\]</span>
+Formula (3.1) also holds for all <span class="math" data-tex="\(C^k\)">\(C^k\)</span> functions, using the continuous extensions of the pairings.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(\theta(t)=1\)">\(\theta(t)=1\)</span> near zero with compact support, and define
+<span class="math math-display" data-tex="\[
+w_\alpha(g)=u\left(\theta(t)\frac{t^\alpha}{\alpha!}g(z)\right),
+\quad g\in\mathcal D(\mathbb R^n).
+\tag{3.3}
+\]">\[
+w_\alpha(g)=u\left(\theta(t)\frac{t^\alpha}{\alpha!}g(z)\right),
+\quad g\in\mathcal D(\mathbb R^n).
+\tag{3.3}
+\]</span>
+Initially this is a distribution of order at most <span class="math" data-tex="\(k\)">\(k\)</span>. Its support lies in the stated projection, because the test in (3.3) vanishes near <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span> when <span class="math" data-tex="\(g\)">\(g\)</span> does. It is independent of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with the specified value near zero.</p>
+<p>Taylor expansion in the normal variables shows that
+<span class="math math-display" data-tex="\[
+f(t,z)-\theta(t)\sum_{|\alpha|\le k}
+\frac{t^\alpha}{\alpha!}\partial_t^\alpha f(0,z)
+\]">\[
+f(t,z)-\theta(t)\sum_{|\alpha|\le k}
+\frac{t^\alpha}{\alpha!}\partial_t^\alpha f(0,z)
+\]</span>
+has every total derivative through order <span class="math" data-tex="\(k\)">\(k\)</span> equal to zero on the plane. Theorem 1.1 therefore makes its pairing with <span class="math" data-tex="\(u\)">\(u\)</span> zero, proving (3.1) on smooth functions. Testing a proposed representation on the functions in (3.3) isolates each coefficient, proving uniqueness. The signs in (3.2) are precisely the signs of distributional differentiation of the point mass.</p>
+<p>To obtain the sharper coefficient order, apply Lemma 2.1 to a smooth compactly supported <span class="math" data-tex="\(g\)">\(g\)</span>, using <span class="math" data-tex="\(s=k-|\alpha|\)">\(s=k-|\alpha|\)</span>. Let <span class="math" data-tex="\(G\)">\(G\)</span> be its <span class="math" data-tex="\(C^k\)">\(C^k\)</span> extension with only the normal jet <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> nonzero. The difference between <span class="math" data-tex="\(G\)">\(G\)</span> and the test in (3.3) has all total derivatives through order <span class="math" data-tex="\(k\)">\(k\)</span> zero on the plane. Theorem 1.1 applies to that <span class="math" data-tex="\(C^k\)">\(C^k\)</span> difference, so
+<span class="math math-display" data-tex="\[
+w_\alpha(g)=u(G).
+\]">\[
+w_\alpha(g)=u(G).
+\]</span>
+Estimate (1.1) and (2.2) give
+<span class="math math-display" data-tex="\[
+|w_\alpha(g)|\le C&#x27;\|g\|_{C^{k-|\alpha|}},
+\tag{3.4}
+\]">\[
+|w_\alpha(g)|\le C&#x27;\|g\|_{C^{k-|\alpha|}},
+\tag{3.4}
+\]</span>
+proving the claimed order. Finally, approximate an arbitrary <span class="math" data-tex="\(C^k\)">\(C^k\)</span> function on a neighborhood of the compact support by smooth functions in that norm. Its normal trace of order <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span> converges in <span class="math" data-tex="\(C^{k-|\alpha|}\)">\(C^{k-|\alpha|}\)</span> on tangential compact sets. The bounds just proved permit passage to the limit in (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the coefficients are scalars, and the theorem says that a distribution supported at one point is a finite sum of derivatives of a point mass, with degree bounded by its order. Translation moves the point from zero to any prescribed point. Conversely every such finite sum has that support containment and finite order. This is the point-supported structure theorem; the plane theorem gives its tangential version with the additional order information.</p>
+<p>Localizing an arbitrary distribution supported on a plane by compact cutoffs gives the same description locally. The number of normal derivatives can increase from one region to another. Coefficient uniqueness makes those local descriptions agree on overlaps.</p>
+<p><strong>Corollary 3.2 (coordinate multiplication singles out the point mass).</strong> Let <span class="math" data-tex="\(X\subset\mathbb R^d\)">\(X\subset\mathbb R^d\)</span> be open, <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, and suppose <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span> obeys <span class="math" data-tex="\(x_j u=0\)">\(x_j u=0\)</span> for every <span class="math" data-tex="\(j=1,\ldots,d\)">\(j=1,\ldots,d\)</span>. If <span class="math" data-tex="\(0\in X\)">\(0\in X\)</span>, then <span class="math" data-tex="\(u=c\delta_0\)">\(u=c\delta_0\)</span> for a unique scalar <span class="math" data-tex="\(c\)">\(c\)</span>. If <span class="math" data-tex="\(0\notin X\)">\(0\notin X\)</span>, then <span class="math" data-tex="\(u=0\)">\(u=0\)</span>; every scalar multiple of the restricted <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> is then zero, so no uniqueness of that scalar is asserted.</p>
+<p><strong>Proof.</strong> Near any nonzero point some coordinate <span class="math" data-tex="\(x_j\)">\(x_j\)</span> is nonzero. Multiplication there by its smooth reciprocal shows <span class="math" data-tex="\(u=(1/x_j)(x_j u)=0\)">\(u=(1/x_j)(x_j u)=0\)</span>. Consequently the support is contained in <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. If the origin is absent, empty support gives the zero distribution. If it is present, choose <span class="math" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span> equal to one near it. Multiplication by <span class="math" data-tex="\(\chi\)">\(\chi\)</span> does not change <span class="math" data-tex="\(u\)">\(u\)</span>. The pairing <span class="math" data-tex="\(\phi\mapsto u(\chi\phi)\)">\(\phi\mapsto u(\chi\phi)\)</span> extends it to a compact distribution on <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span> supported at zero: its continuity follows from the test estimate on the fixed support of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Apply the point-supported specialization of Theorem 3.1 to this extension and restrict back to <span class="math" data-tex="\(X\)">\(X\)</span>. It gives a finite sum <span class="math" data-tex="\(u=\sum_\alpha c_\alpha\partial^\alpha\delta_0\)">\(u=\sum_\alpha c_\alpha\partial^\alpha\delta_0\)</span> with unique coefficients. The product rule on test jets gives</p>
+<span class="math math-display" data-tex="\[
+x_j\partial^\alpha\delta_0
+=-\alpha_j\partial^{\alpha-e_j}\delta_0
+\quad(\alpha_j&gt;0),
+\qquad x_j\partial^\alpha\delta_0=0
+\quad(\alpha_j=0).
+\tag{3.5}
+\]">\[
+x_j\partial^\alpha\delta_0
+=-\alpha_j\partial^{\alpha-e_j}\delta_0
+\quad(\alpha_j&gt;0),
+\qquad x_j\partial^\alpha\delta_0=0
+\quad(\alpha_j=0).
+\tag{3.5}
+\]</span>
+<p>For fixed <span class="math" data-tex="\(j\)">\(j\)</span>, every resulting jet index <span class="math" data-tex="\(\beta\)">\(\beta\)</span> receives exactly the coefficient <span class="math" data-tex="\(-(\beta_j+1)c_{\beta+e_j}\)">\(-(\beta_j+1)c_{\beta+e_j}\)</span>. Their independence and the equation <span class="math" data-tex="\(x_ju=0\)">\(x_ju=0\)</span> make each such coefficient zero. Every positive-degree <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has <span class="math" data-tex="\(\alpha_j&gt;0\)">\(\alpha_j&gt;0\)</span> for at least one coordinate, so only <span class="math" data-tex="\(c_0\delta_0\)">\(c_0\delta_0\)</span> remains. A test equal to one near zero recovers <span class="math" data-tex="\(c_0\)">\(c_0\)</span> uniquely. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="kernels-on-the-diagonal">Kernels on the diagonal</h2>
+<p>Let <span class="math" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be open. A linear map <span class="math" data-tex="\(T:\mathcal D(X)\to\mathcal D&#x27;(X)\)">\(T:\mathcal D(X)\to\mathcal D&#x27;(X)\)</span> is support-preserving if
+<span class="math math-display" data-tex="\[
+\operatorname{supp}T\phi\subset\operatorname{supp}\phi
+\quad(\phi\in\mathcal D(X)).
+\tag{4.1}
+\]">\[
+\operatorname{supp}T\phi\subset\operatorname{supp}\phi
+\quad(\phi\in\mathcal D(X)).
+\tag{4.1}
+\]</span></p>
+<p><strong>Theorem 4.1 (continuous local operators with distributional coefficients).</strong> Suppose <span class="math" data-tex="\(T\)">\(T\)</span> is weakly continuous. The following conditions are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> is support-preserving.</li>
+<li>Its kernel is supported in the diagonal <span class="math" data-tex="\(\{(x,y):x=y\}\)">\(\{(x,y):x=y\}\)</span>.</li>
+<li>There are unique distributions <span class="math" data-tex="\(a_\alpha\in\mathcal D&#x27;(X)\)">\(a_\alpha\in\mathcal D&#x27;(X)\)</span>, locally finite as a family, such that
+<span class="math math-display" data-tex="\[
+T\phi=\sum_\alpha a_\alpha\,\partial^\alpha\phi.
+\tag{4.2}
+\]">\[
+T\phi=\sum_\alpha a_\alpha\,\partial^\alpha\phi.
+\tag{4.2}
+\]</span></li>
+</ol>
+<p>Here locally finite means that every point has a neighborhood on which all but finitely many <span class="math" data-tex="\(a_\alpha\)">\(a_\alpha\)</span> vanish. Consequently every compact set meets the supports of only finitely many nonzero terms. The order need not be bounded on all of <span class="math" data-tex="\(X\)">\(X\)</span>. Every locally finite expression (4.2) defines a weakly continuous support-preserving map.</p>
+<p><strong>Proof.</strong> If (4.1) holds, take disjoint open neighborhoods <span class="math" data-tex="\(A,B\subset X\)">\(A,B\subset X\)</span>. For <span class="math" data-tex="\(\psi\in\mathcal D(A)\)">\(\psi\in\mathcal D(A)\)</span>, <span class="math" data-tex="\(\phi\in\mathcal D(B)\)">\(\phi\in\mathcal D(B)\)</span>,
+<span class="math math-display" data-tex="\[
+K(\psi\otimes\phi)=\langle T\phi,\psi\rangle=0.
+\]">\[
+K(\psi\otimes\phi)=\langle T\phi,\psi\rangle=0.
+\]</span>
+Product tests detect distributions, so <span class="math" data-tex="\(K\)">\(K\)</span> vanishes on <span class="math" data-tex="\(A\times B\)">\(A\times B\)</span>. Such rectangles cover the complement of the diagonal, proving condition 2. Conversely, if the kernel is supported in the diagonal, its support relation from Proposition 6.5 of the kernel lesson sends <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span> into itself, proving condition 1.</p>
+<p>For condition 2 to imply condition 3, change variables by
+<span class="math math-display" data-tex="\[
+z=x,\qquad t=y-x.
+\]">\[
+z=x,\qquad t=y-x.
+\]</span>
+This invertible linear map has determinant of absolute value one. The kernel in these variables is supported on <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Near any fixed relatively compact output region, multiply it by a compact cutoff in <span class="math" data-tex="\(z\)">\(z\)</span> and a cutoff in <span class="math" data-tex="\(t\)">\(t\)</span> equal to one near zero. Choose the latter with sufficiently small support that <span class="math" data-tex="\(z+t\in X\)">\(z+t\in X\)</span> on the chosen coordinate region. Extend that compact localization by zero into the full Euclidean product. It has some finite order <span class="math" data-tex="\(k\)">\(k\)</span>, so Theorem 3.1 applies.
+For an original test <span class="math" data-tex="\(H(x,y)\)">\(H(x,y)\)</span>, write <span class="math" data-tex="\(\widetilde H(t,z)=H(z,z+t)\)">\(\widetilde H(t,z)=H(z,z+t)\)</span>. On a smaller output region where the localizing cutoff is one, the formula is
+<span class="math math-display" data-tex="\[
+K(H)=\sum_{|\alpha|\le k}
+w_\alpha\big(\partial_t^\alpha\widetilde H(0,\cdot)\big).
+\]">\[
+K(H)=\sum_{|\alpha|\le k}
+w_\alpha\big(\partial_t^\alpha\widetilde H(0,\cdot)\big).
+\]</span>
+Only the germ of the test near the diagonal contributes, so inserting a normal cutoff equal to one there does not affect this formula. On a product test <span class="math" data-tex="\(H(x,y)=\psi(x)\phi(y)\)">\(H(x,y)=\psi(x)\phi(y)\)</span>, with <span class="math" data-tex="\(\psi\)">\(\psi\)</span> supported in that smaller output region, it becomes
+<span class="math math-display" data-tex="\[
+K(\psi\otimes\phi)=\sum_{|\alpha|\le k}
+w_\alpha(\psi\,\partial^\alpha\phi).
+\]">\[
+K(\psi\otimes\phi)=\sum_{|\alpha|\le k}
+w_\alpha(\psi\,\partial^\alpha\phi).
+\]</span>
+Thus <span class="math" data-tex="\(a_\alpha=w_\alpha\)">\(a_\alpha=w_\alpha\)</span> gives (4.2) locally. Changing local cutoffs does not affect the distribution near the diagonal over a smaller output region. Uniqueness in Theorem 3.1 makes the coefficients agree on these smaller regions, including zero coefficients beyond the locally required order. They therefore glue to unique distributions <span class="math" data-tex="\(a_\alpha\)">\(a_\alpha\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>. Their orders and the number of terms are locally bounded, giving the stated local finiteness.</p>
+<p>Finally start with a locally finite expression. On each compact output test support, only finitely many terms contribute. Pairing a term with <span class="math" data-tex="\(\psi\)">\(\psi\)</span> gives <span class="math" data-tex="\(a_\alpha(\psi\partial^\alpha\phi)\)">\(a_\alpha(\psi\partial^\alpha\phi)\)</span>, a continuous scalar functional of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on every fixed input support space. The inductive-limit property gives weak continuity. Each term has support contained in <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span>, since multiplication of a distribution by a smooth function cannot create support where that function is locally zero. The locally finite sum has the same property. The kernel theorem then supplies its kernel, completing all implications. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a regularity refinement, provided continuity has been assumed as in this theorem.</p>
+<p><strong>Corollary 4.2 (smooth outputs give smooth coefficients).</strong> For a support-preserving weakly continuous <span class="math" data-tex="\(T\)">\(T\)</span>, all the coefficients in (4.2) are smooth if and only if <span class="math" data-tex="\(T\phi\)">\(T\phi\)</span> is smooth for every <span class="math" data-tex="\(\phi\in\mathcal D(X)\)">\(\phi\in\mathcal D(X)\)</span>. In that case <span class="math" data-tex="\(T\)">\(T\)</span> extends naturally to a differential operator on all distributions, by smooth multiplication and distributional differentiation.</p>
+<p><strong>Proof.</strong> Smooth coefficients plainly give smooth test outputs. For the converse, fix a relatively compact coordinate neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> where (4.2) has order at most <span class="math" data-tex="\(k\)">\(k\)</span>. Choose <span class="math" data-tex="\(\chi\in\mathcal D(X)\)">\(\chi\in\mathcal D(X)\)</span>, equal to one near <span class="math" data-tex="\(\overline W\)">\(\overline W\)</span>. The test <span class="math" data-tex="\(\chi\)">\(\chi\)</span> gives <span class="math" data-tex="\(a_0=T\chi\)">\(a_0=T\chi\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span>, so <span class="math" data-tex="\(a_0\)">\(a_0\)</span> is smooth there. For a multi-index <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, test with <span class="math" data-tex="\(\chi x^\beta/\beta!\)">\(\chi x^\beta/\beta!\)</span>. On <span class="math" data-tex="\(W\)">\(W\)</span>,
+<span class="math math-display" data-tex="\[
+T(\chi x^\beta/\beta!)
+=\sum_{\alpha\le\beta}a_\alpha
+\frac{x^{\beta-\alpha}}{(\beta-\alpha)!}.
+\]">\[
+T(\chi x^\beta/\beta!)
+=\sum_{\alpha\le\beta}a_\alpha
+\frac{x^{\beta-\alpha}}{(\beta-\alpha)!}.
+\]</span>
+The term <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span> is <span class="math" data-tex="\(a_\beta\)">\(a_\beta\)</span>. Induction on total degree expresses it as a smooth output minus smooth polynomial multiples of previously proved smooth coefficients. Thus every locally present coefficient is smooth. These local conclusions give global smoothness. The extension to distributions is defined by the locally finite expression, with its smooth coefficients, and agrees on test functions. Its transpose takes a compact test to a compact test by finitely many derivatives and smooth multiplications on its support; this also proves continuity of the extension for the strong distribution topology. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The hypothesis of weak continuity was used to obtain a distribution kernel. Removing that hypothesis for maps with smooth outputs is a further theorem of Peetre; it is not a consequence of the kernel theorem alone.</p>
+<h2 id="a-local-operator-need-not-have-a-global-order">A local operator need not have a global order</h2>
+<p>On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, choose nonzero smooth bumps <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, supported in <span class="math" data-tex="\((3j-1/4,3j+1/4)\)">\((3j-1/4,3j+1/4)\)</span>, for integers <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, and positive at <span class="math" data-tex="\(3j\)">\(3j\)</span>. Set
+<span class="math math-display" data-tex="\[
+T\phi=\sum_{j\ge1}b_j\partial^j\phi.
+\]">\[
+T\phi=\sum_{j\ge1}b_j\partial^j\phi.
+\]</span>
+The sum is locally finite, so it defines a continuous support-preserving map. Its coefficients are smooth, but it has no finite order valid everywhere. Indeed its unique coefficient of degree <span class="math" data-tex="\(j\)">\(j\)</span> is <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, which is nonzero for every <span class="math" data-tex="\(j\)">\(j\)</span>. A competing finite-order representation would contradict coefficient uniqueness. The associated kernel lies on the diagonal and its order grows with the location along that diagonal.</p>
+<p>A distributional coefficient can instead concentrate the output. For example,
+<span class="math math-display" data-tex="\[
+T\phi=\phi&#x27;(2)\delta_2
+\]">\[
+T\phi=\phi&#x27;(2)\delta_2
+\]</span>
+has coefficient <span class="math" data-tex="\(a_1=\delta_2\)">\(a_1=\delta_2\)</span> and all other coefficients zero. Its kernel pairs as <span class="math" data-tex="\(K(H)=\partial_yH(2,2)\)">\(K(H)=\partial_yH(2,2)\)</span>, or <span class="math" data-tex="\(K=-\delta_2\otimes\delta&#x27;_2\)">\(K=-\delta_2\otimes\delta&#x27;_2\)</span>. It is support-preserving, but a test with <span class="math" data-tex="\(\phi&#x27;(2)\ne0\)">\(\phi&#x27;(2)\ne0\)</span> has a singular output. Thus diagonal support alone does not make the coefficients smooth.</p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (basic: vanishing order and point masses).</strong> Let <span class="math" data-tex="\(u=3\delta_0-2\delta&#x27;_0+\delta&#x27;&#x27;_0\)">\(u=3\delta_0-2\delta&#x27;_0+\delta&#x27;&#x27;_0\)</span>. Express <span class="math" data-tex="\(u(f)\)">\(u(f)\)</span> in terms of the jet of <span class="math" data-tex="\(f\)">\(f\)</span> at zero. Find its exact order, and show directly that it kills every <span class="math" data-tex="\(C^2\)">\(C^2\)</span> function with its first three jet values zero.</p>
+<p><strong>Exercise 2 (intermediate: recovering tangential coefficients).</strong> On <span class="math" data-tex="\(\mathbb R_t\times\mathbb R_z\)">\(\mathbb R_t\times\mathbb R_z\)</span>, define
+<span class="math math-display" data-tex="\[
+u(f)=\int_0^1 f(0,z)\,dz
++\partial_t\partial_z f(0,1/2)
+-2\partial_t^2 f(0,1/3).
+\]">\[
+u(f)=\int_0^1 f(0,z)\,dz
++\partial_t\partial_z f(0,1/2)
+-2\partial_t^2 f(0,1/3).
+\]</span>
+Find the <span class="math" data-tex="\(w_\alpha\)">\(w_\alpha\)</span> in (3.1), their orders and their supports. Determine the exact order of <span class="math" data-tex="\(u\)">\(u\)</span>, and verify the coefficient-order bound.</p>
+<p><strong>Exercise 3 (intermediate: a moment-cancelling mollifier).</strong> Let <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> be an even smooth integral-one bump on the line, and let <span class="math" data-tex="\(\rho_{0,2}(x)=\rho_0(x/2)/2\)">\(\rho_{0,2}(x)=\rho_0(x/2)/2\)</span>. Show that <span class="math" data-tex="\(\rho=(4\rho_0-\rho_{0,2})/3\)">\(\rho=(4\rho_0-\rho_{0,2})/3\)</span> has vanishing first and second moments. Explain why using a nonnegative mollifier could not give all the required moment conditions for the normal-jet extension.</p>
+<p><strong>Exercise 4 (advanced: normal derivatives and coefficient order).</strong> Let <span class="math" data-tex="\(v\)">\(v\)</span> be a nonzero point-supported distribution of exact order <span class="math" data-tex="\(s\)">\(s\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, and take a transverse multi-index <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Prove that <span class="math" data-tex="\((\partial_t^\alpha\delta_0)\otimes v\)">\((\partial_t^\alpha\delta_0)\otimes v\)</span> has exact order <span class="math" data-tex="\(|\alpha|+s\)">\(|\alpha|+s\)</span>. Use suitable scaled tests, rather than inferring equality from the upper bound for a tensor product.</p>
+<p><strong>Exercise 5 (advanced: deciding locality from a kernel).</strong> Let <span class="math" data-tex="\(h\in C^\infty(\mathbb R)\)">\(h\in C^\infty(\mathbb R)\)</span> be nowhere zero. Compare
+<span class="math math-display" data-tex="\[
+T_1\phi(x)=h(x)\phi&#x27;(x),\qquad
+T_2\phi(x)=h(x)\phi&#x27;(x+1).
+\]">\[
+T_1\phi(x)=h(x)\phi&#x27;(x),\qquad
+T_2\phi(x)=h(x)\phi&#x27;(x+1).
+\]</span>
+Find their distributional kernels and their supports. Which operator is support-preserving? Find the bilinear transpose of each one and retain all coefficient derivatives and translation signs.</p>
+<p><strong>Exercise 6 (intermediate: annihilation at a translated point).</strong> Let <span class="math" data-tex="\(a\in X\subset\mathbb R^d\)">\(a\in X\subset\mathbb R^d\)</span>, and suppose <span class="math" data-tex="\((x_j-a_j)u=0\)">\((x_j-a_j)u=0\)</span> for all coordinates. Determine <span class="math" data-tex="\(u\)">\(u\)</span>. For <span class="math" data-tex="\(v=\partial_1\delta_a\)">\(v=\partial_1\delta_a\)</span>, compute <span class="math" data-tex="\((x_1-a_1)v\)">\((x_1-a_1)v\)</span> and the other coordinate products. Explain why support at <span class="math" data-tex="\(a\)">\(a\)</span> alone is weaker than simultaneous coordinate annihilation.</p>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> Distributional derivatives give
+<span class="math math-display" data-tex="\[
+u(f)=3f(0)+2f&#x27;(0)+f&#x27;&#x27;(0).
+\]">\[
+u(f)=3f(0)+2f&#x27;(0)+f&#x27;&#x27;(0).
+\]</span>
+It has order at most two and annihilates the stated vanishing jets. Choose <span class="math" data-tex="\(g\in\mathcal D(\mathbb R)\)">\(g\in\mathcal D(\mathbb R)\)</span> with <span class="math" data-tex="\(g&#x27;&#x27;(0)\ne0\)">\(g&#x27;&#x27;(0)\ne0\)</span>, and set <span class="math" data-tex="\(f_\varepsilon(x)=\varepsilon g(x/\varepsilon)\)">\(f_\varepsilon(x)=\varepsilon g(x/\varepsilon)\)</span>. Its supremum and first derivative are uniformly bounded, while the pairing contains <span class="math" data-tex="\(\varepsilon^{-1}g&#x27;&#x27;(0)\)">\(\varepsilon^{-1}g&#x27;&#x27;(0)\)</span>; the lower-order terms remain bounded. Thus an order-one estimate is impossible, and the exact order is two.</p>
+<p><strong>Solution 2.</strong> The coefficients are
+<span class="math math-display" data-tex="\[
+w_0=\mathbf1_{[0,1]}(z)\,dz,
+\qquad w_1=-\delta&#x27;_{1/2},
+\qquad w_2=-2\delta_{1/3}.
+\]">\[
+w_0=\mathbf1_{[0,1]}(z)\,dz,
+\qquad w_1=-\delta&#x27;_{1/2},
+\qquad w_2=-2\delta_{1/3}.
+\]</span>
+Their supports are <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, <span class="math" data-tex="\(\{1/2\}\)">\(\{1/2\}\)</span>, <span class="math" data-tex="\(\{1/3\}\)">\(\{1/3\}\)</span>, and their exact orders are zero, one and zero. The product derivatives in the displayed formula give total order at most two. Localizing near <span class="math" data-tex="\((0,1/3)\)">\((0,1/3)\)</span>, away from <span class="math" data-tex="\(z=1/2\)">\(z=1/2\)</span>, choose <span class="math" data-tex="\(f_\varepsilon(t,z)=\varepsilon g(t/\varepsilon)b(z)\)">\(f_\varepsilon(t,z)=\varepsilon g(t/\varepsilon)b(z)\)</span>, with <span class="math" data-tex="\(g&#x27;&#x27;(0)\ne0\)">\(g&#x27;&#x27;(0)\ne0\)</span>, <span class="math" data-tex="\(b(1/3)\ne0\)">\(b(1/3)\ne0\)</span>, and <span class="math" data-tex="\(b\)">\(b\)</span> supported near <span class="math" data-tex="\(1/3\)">\(1/3\)</span>. First derivatives remain uniformly bounded, while the normal-second-derivative term has size proportional to <span class="math" data-tex="\(\varepsilon^{-1}\)">\(\varepsilon^{-1}\)</span>; the integral term tends to zero. Hence the exact total order is two. The bounds <span class="math" data-tex="\(\operatorname{ord}w_j\le2-j\)">\(\operatorname{ord}w_j\le2-j\)</span> hold, with equality for <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span>.</p>
+<p><strong>Solution 3.</strong> Evenness gives zero first moments for both bumps. If the second moment of <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> is <span class="math" data-tex="\(M_2\)">\(M_2\)</span>, that of its dilation is <span class="math" data-tex="\(4M_2\)">\(4M_2\)</span>. Thus the integral of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is <span class="math" data-tex="\((4-1)/3=1\)">\((4-1)/3=1\)</span>, and its second moment is <span class="math" data-tex="\((4M_2-4M_2)/3=0\)">\((4M_2-4M_2)/3=0\)</span>. A nonnegative smooth integral-one function has strictly positive <span class="math" data-tex="\(\int x^2\rho(x)\,dx\)">\(\int x^2\rho(x)\,dx\)</span>: if that integral were zero, it would vanish away from zero, and smoothness would force its integral to be zero. Signed kernels are therefore necessary once second-moment cancellation is required.</p>
+<p><strong>Solution 4.</strong> The point-supported specialization of Theorem 3.1 gives <span class="math" data-tex="\(v=\sum_{|\beta|\le s}c_\beta\partial_z^\beta\delta_b\)">\(v=\sum_{|\beta|\le s}c_\beta\partial_z^\beta\delta_b\)</span>, with some coefficient of total degree <span class="math" data-tex="\(s\)">\(s\)</span> nonzero. If all such coefficients vanished, the order would be at most <span class="math" data-tex="\(s-1\)">\(s-1\)</span>. Choose compact smooth <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(\partial_t^\alpha g(0)\ne0\)">\(\partial_t^\alpha g(0)\ne0\)</span>. Choose compact smooth <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(z\)">\(z\)</span> whose order-<span class="math" data-tex="\(s\)">\(s\)</span> jet at zero makes <span class="math" data-tex="\(\sum_{|\beta|=s}c_\beta(-1)^{|\beta|}\partial^\beta q(0)\ne0\)">\(\sum_{|\beta|=s}c_\beta(-1)^{|\beta|}\partial^\beta q(0)\ne0\)</span>; a polynomial jet times a cutoff produces one. For <span class="math" data-tex="\(m=|\alpha|+s&gt;0\)">\(m=|\alpha|+s&gt;0\)</span>, take
+<span class="math math-display" data-tex="\[
+f_\varepsilon(t,z)=\varepsilon^{m-1}g(t/\varepsilon)q((z-b)/\varepsilon).
+\]">\[
+f_\varepsilon(t,z)=\varepsilon^{m-1}g(t/\varepsilon)q((z-b)/\varepsilon).
+\]</span>
+All derivatives through total order <span class="math" data-tex="\(m-1\)">\(m-1\)</span> are uniformly bounded, and the top-order pairing is a nonzero multiple of <span class="math" data-tex="\(\varepsilon^{-1}\)">\(\varepsilon^{-1}\)</span>. The terms from <span class="math" data-tex="\(|\beta|&lt;s\)">\(|\beta|&lt;s\)</span> remain bounded. Thus order at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span> is impossible. The tensor derivative estimate gives order at most <span class="math" data-tex="\(m\)">\(m\)</span>, so the exact order is <span class="math" data-tex="\(m\)">\(m\)</span>. If <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, the product is a nonzero multiple of the point mass at <span class="math" data-tex="\((0,b)\)">\((0,b)\)</span>, with exact order zero.</p>
+<p><strong>Solution 5.</strong> Let
+<span class="math math-display" data-tex="\[
+D_c(H)=\int h(x)H(x,x+c)\,dx.
+\]">\[
+D_c(H)=\int h(x)H(x,x+c)\,dx.
+\]</span>
+Then the kernels are <span class="math" data-tex="\(K_1=-\partial_yD_0\)">\(K_1=-\partial_yD_0\)</span>, <span class="math" data-tex="\(K_2=-\partial_yD_1\)">\(K_2=-\partial_yD_1\)</span>, because their pairings with <span class="math" data-tex="\(\psi(x)\phi(y)\)">\(\psi(x)\phi(y)\)</span> give the derivative of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on the corresponding graph. Their supports are exactly <span class="math" data-tex="\(y=x\)">\(y=x\)</span> and <span class="math" data-tex="\(y=x+1\)">\(y=x+1\)</span>. Containment follows from differentiation not increasing support. For equality, take a small graph neighborhood and a test <span class="math" data-tex="\(H(x,y)=a(x)(y-x-c)b(y-x-c)\)">\(H(x,y)=a(x)(y-x-c)b(y-x-c)\)</span>, with <span class="math" data-tex="\(b=1\)">\(b=1\)</span> near zero and <span class="math" data-tex="\(\int h(x)a(x)\,dx\ne0\)">\(\int h(x)a(x)\,dx\ne0\)</span>. Its pairing is nonzero and it can be supported in that neighborhood. Such an <span class="math" data-tex="\(a\)">\(a\)</span> exists because <span class="math" data-tex="\(h\)">\(h\)</span> is nowhere zero and continuous.</p>
+<p>The first operator is support-preserving by Theorem 4.1. The second is not: choose a test whose derivative is nonzero near an input point <span class="math" data-tex="\(y_0\)">\(y_0\)</span>, with support in an interval of length less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Its output is nonzero near <span class="math" data-tex="\(y_0-1\)">\(y_0-1\)</span>, outside that input support. Integration by parts gives
+<span class="math math-display" data-tex="\[
+T_1^t\psi(y)=-\partial_y(h(y)\psi(y)),
+\]">\[
+T_1^t\psi(y)=-\partial_y(h(y)\psi(y)),
+\]</span>
+and, after setting <span class="math" data-tex="\(y=x+1\)">\(y=x+1\)</span>,
+<span class="math math-display" data-tex="\[
+T_2^t\psi(y)=-\partial_y(h(y-1)\psi(y-1)).
+\]">\[
+T_2^t\psi(y)=-\partial_y(h(y-1)\psi(y-1)).
+\]</span>
+Expanding either derivative gives both the derivative of <span class="math" data-tex="\(h\)">\(h\)</span> and the derivative of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, each with the displayed minus sign. These are bilinear transposes; complex conjugation would belong to a separate sesquilinear adjoint convention.</p>
+<p><strong>Solution 6.</strong> Translate coordinates by <span class="math" data-tex="\(a\)">\(a\)</span> and apply Corollary 3.2; it gives <span class="math" data-tex="\(u=c\delta_a\)">\(u=c\delta_a\)</span>, with unique scalar since <span class="math" data-tex="\(a\in X\)">\(a\in X\)</span>. Formula (3.5) gives <span class="math" data-tex="\((x_1-a_1)\partial_1\delta_a=-\delta_a\)">\((x_1-a_1)\partial_1\delta_a=-\delta_a\)</span>, while every other coordinate product is zero. Thus <span class="math" data-tex="\(v\)">\(v\)</span> has support at the single point but fails one of the annihilation equations. More general positive-degree point jets also have point support and can fail these equations; the simultaneous vanishing is what removes all such derivatives.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, MIT, 2026. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Open notes</a>.</li>
+<li>[Melrose 2016] Richard Melrose, <em>18.155 Lecture 15: Schwartz's kernel theorem</em>, MIT, 2016. <a href="https://math.mit.edu/~rbm/18.155-F16/L15.pdf">Open lecture</a>.</li>
+<li>[Whitney 1934] Hassler Whitney, <em>Analytic extensions of differentiable functions defined in closed sets</em>, Transactions of the American Mathematical Society 36 (1934), 63–89. <a href="https://www.ams.org/journals/tran/1934-036-01/S0002-9947-1934-1501735-3/S0002-9947-1934-1501735-3.pdf">Full text</a>.</li>
+</ul>
+<footer><p>Original text: CC0.</p><p><a href="src/jets-supported-distributions-and-local-operators.md">Editable original Markdown</a>. Source commit 9fc48b587b87030c99db50f4d2bf237a4901627b.</p></footer></main></body></html>

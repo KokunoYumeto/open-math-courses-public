@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newvectors, conductors and the passage to classical newforms · Automorphic forms and representations of GL(2)</title>
+<meta name="description" content="A lesson of the course Automorphic forms and representations of GL(2). Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/automorphic-forms-and-representations-of-gl2/newvectors-conductors-and-the-passage-to-classical-newforms.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Automorphic forms and representations of GL(2)</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 14</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="newvectors-conductors-and-the-passage-to-classical-newforms">Newvectors, conductors and the passage to classical newforms</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).</em></p>
+<p>A representation can have many vectors at a given level, but its first nonzero level has exactly one line. Every higher-level fixed vector comes from translating this line. We prove this statement in the Kirillov model, compute the conductors of principal and special representations, and prove that a supercuspidal conductor is at least two. We then give the precise global argument that turns these local lines into classical newforms.</p>
+<p>The local proofs use <a href="whittaker-models-kirillov-models-and-the-local-classification.html">Lesson 7</a>, especially its Theorem 2.3, coefficient identity (2.9), classification Theorem 6.1 and function-space Proposition 6.2. Normalized induction and exact compact averaging are from <a href="normalized-induction-and-jacquet-modules.html">Lesson 6</a> and <a href="smooth-local-representations-and-the-hecke-module-dictionary.html">Lesson 5</a>. The global argument in Section 5 uses the proved restricted tensor theorem of Lesson 12, global Whittaker factorization of Lesson 14, and multiplicity-one results of Lesson 15, with exact locators below. Those later results use the local part of this lesson, rather than its classical conclusions, so the proof order is local newvectors, global Whittaker and multiplicity one, then the classical decomposition.</p>
+<p>Throughout the local argument, <span class="math" data-tex="\(F\)">\(F\)</span> is a nonarchimedean local field, <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> its integers, <span class="math" data-tex="\(\mathfrak p=\varpi\mathcal O\)">\(\mathfrak p=\varpi\mathcal O\)</span>, and <span class="math" data-tex="\(q=|\mathcal O/\mathfrak p|\)">\(q=|\mathcal O/\mathfrak p|\)</span>. Write
+<span class="math math-display" data-tex="\[
+G=\mathrm{GL}_2(F),\quad K=\mathrm{GL}_2(\mathcal O),\quad
+U=\mathcal O^\times,\quad |{\varpi}|=q^{-1},
+\]">\[
+G=\mathrm{GL}_2(F),\quad K=\mathrm{GL}_2(\mathcal O),\quad
+U=\mathcal O^\times,\quad |{\varpi}|=q^{-1},
+\]</span>
+<span class="math math-display" data-tex="\[
+d(t)=\begin{pmatrix}t&amp;0\\ 0&amp;1\end{pmatrix},\quad
+n(x)=\begin{pmatrix}1&amp;x\\ 0&amp;1\end{pmatrix},\quad
+\bar n(y)=\begin{pmatrix}1&amp;0\\ y&amp;1\end{pmatrix},\quad
+w_0=\begin{pmatrix}0&amp;1\\ -1&amp;0\end{pmatrix}.
+\]">\[
+d(t)=\begin{pmatrix}t&amp;0\\ 0&amp;1\end{pmatrix},\quad
+n(x)=\begin{pmatrix}1&amp;x\\ 0&amp;1\end{pmatrix},\quad
+\bar n(y)=\begin{pmatrix}1&amp;0\\ y&amp;1\end{pmatrix},\quad
+w_0=\begin{pmatrix}0&amp;1\\ -1&amp;0\end{pmatrix}.
+\]</span>
+Choose <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with conductor <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>: it is trivial on <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> and nontrivial on <span class="math" data-tex="\(\varpi^{-1}\mathcal O\)">\(\varpi^{-1}\mathcal O\)</span>. An arbitrary nontrivial character can be brought to this convention by rescaling its argument.</p>
+<p>Let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be smooth irreducible and infinite-dimensional, with central character <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. In its scalar Kirillov model,
+<span class="math math-display" data-tex="\[
+(\pi(d(a))\xi)(t)=\xi(ta),\qquad
+(\pi(n(x))\xi)(t)=\psi(tx)\xi(t),\qquad
+\pi(zI)\xi=\omega(z)\xi.
+\tag{0.1}
+\]">\[
+(\pi(d(a))\xi)(t)=\xi(ta),\qquad
+(\pi(n(x))\xi)(t)=\psi(tx)\xi(t),\qquad
+\pi(zI)\xi=\omega(z)\xi.
+\tag{0.1}
+\]</span>
+Put <span class="math" data-tex="\(W=\pi(w_0)\)">\(W=\pi(w_0)\)</span>. Then <span class="math" data-tex="\(W^2=\omega(-1)\)">\(W^2=\omega(-1)\)</span>. Every compact locally constant function on <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> belongs to this model.</p>
+<h2 id="1-what-the-level-group-asks-of-a-function">1. What the level group asks of a function</h2>
+<p>For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, define
+<span class="math math-display" data-tex="\[
+K_0(n)=\left\{\begin{pmatrix}a&amp;b\\ c&amp;d\end{pmatrix}\in K:
+c\in\mathfrak p^n\right\},\qquad
+K_1(n)=\{k\in K_0(n):d\equiv1\pmod{\mathfrak p^n}\}.
+\tag{1.1}
+\]">\[
+K_0(n)=\left\{\begin{pmatrix}a&amp;b\\ c&amp;d\end{pmatrix}\in K:
+c\in\mathfrak p^n\right\},\qquad
+K_1(n)=\{k\in K_0(n):d\equiv1\pmod{\mathfrak p^n}\}.
+\tag{1.1}
+\]</span>
+Set <span class="math" data-tex="\(K_0(0)=K_1(0)=K\)">\(K_0(0)=K_1(0)=K\)</span>, and <span class="math" data-tex="\(V_n=V^{K_1(n)}\)">\(V_n=V^{K_1(n)}\)</span>. For a smooth character <span class="math" data-tex="\(\mu:F^\times\to\mathbb C^\times\)">\(\mu:F^\times\to\mathbb C^\times\)</span>, its conductor exponent is
+<span class="math math-display" data-tex="\[
+a(\mu)=0\quad\text{if }\mu|_U=1;
+\]">\[
+a(\mu)=0\quad\text{if }\mu|_U=1;
+\]</span>
+otherwise <span class="math" data-tex="\(a(\mu)\)">\(a(\mu)\)</span> is the least <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> with <span class="math" data-tex="\(\mu|_{1+\mathfrak p^n}=1\)">\(\mu|_{1+\mathfrak p^n}=1\)</span>. The separate definition at zero matters: <span class="math" data-tex="\(1+\mathcal O\)">\(1+\mathcal O\)</span> is not a multiplicative unit subgroup.</p>
+<p>A nonzero <span class="math" data-tex="\(V_n\)">\(V_n\)</span> forces <span class="math" data-tex="\(a(\omega)\leq n\)">\(a(\omega)\leq n\)</span>, since its central scalars include <span class="math" data-tex="\(1+\mathfrak p^n\)">\(1+\mathfrak p^n\)</span>, or all of <span class="math" data-tex="\(U\)">\(U\)</span> at <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. When <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> and <span class="math" data-tex="\(n\geq a(\omega)\)">\(n\geq a(\omega)\)</span>,
+<span class="math math-display" data-tex="\[
+V_n=\{v:\pi(k)v=\omega(d_k)v\text{ for all }k\in K_0(n)\}.
+\tag{1.2}
+\]">\[
+V_n=\{v:\pi(k)v=\omega(d_k)v\text{ for all }k\in K_0(n)\}.
+\tag{1.2}
+\]</span>
+Indeed <span class="math" data-tex="\(d_k\in U\)">\(d_k\in U\)</span>, and <span class="math" data-tex="\(d_k^{-1}k\in K_1(n)\)">\(d_k^{-1}k\in K_1(n)\)</span>. Conversely <span class="math" data-tex="\(\omega(d_k)=1\)">\(\omega(d_k)=1\)</span> on <span class="math" data-tex="\(K_1(n)\)">\(K_1(n)\)</span>. Thus the relevant <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-space has a specified character; it is the ordinary fixed space only when <span class="math" data-tex="\(\omega|_U=1\)">\(\omega|_U=1\)</span>.</p>
+<p><strong>Lemma 1.1 — support and the lower root.</strong> For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, <span class="math" data-tex="\(n\geq a(\omega)\)">\(n\geq a(\omega)\)</span>, a Kirillov function represents a vector of <span class="math" data-tex="\(V_n\)">\(V_n\)</span> exactly when
+<span class="math math-display" data-tex="\[
+\operatorname{supp}\xi\subset\mathcal O\cap F^\times,\qquad
+\xi(tu)=\xi(t)\ (u\in U),\qquad
+\operatorname{supp}W\xi\subset\varpi^{-n}\mathcal O\cap F^\times.
+\tag{1.3}
+\]">\[
+\operatorname{supp}\xi\subset\mathcal O\cap F^\times,\qquad
+\xi(tu)=\xi(t)\ (u\in U),\qquad
+\operatorname{supp}W\xi\subset\varpi^{-n}\mathcal O\cap F^\times.
+\tag{1.3}
+\]</span>
+For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the same conditions describe <span class="math" data-tex="\(V_0\)">\(V_0\)</span> when <span class="math" data-tex="\(\omega|_U=1\)">\(\omega|_U=1\)</span>.</p>
+<p><strong>Proof.</strong> The first condition is invariance under <span class="math" data-tex="\(n(\mathcal O)\)">\(n(\mathcal O)\)</span>, by the annihilator of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> for <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The second is invariance under <span class="math" data-tex="\(d(U)\)">\(d(U)\)</span>. Since
+<span class="math" data-tex="\(\bar n(y)=w_0n(-y)w_0^{-1}\)">\(\bar n(y)=w_0n(-y)w_0^{-1}\)</span>, the third is invariance under <span class="math" data-tex="\(\bar n(\mathfrak p^n)\)">\(\bar n(\mathfrak p^n)\)</span>; <span class="math" data-tex="\(W^{-1}\)">\(W^{-1}\)</span> is a nonzero scalar times <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, every <span class="math" data-tex="\(k\in K_0(n)\)">\(k\in K_0(n)\)</span> has <span class="math" data-tex="\(d\in U\)">\(d\in U\)</span> and factors as
+<span class="math math-display" data-tex="\[
+k=n(b/d)\operatorname{diag}(\det(k)/d,d)\bar n(c/d).
+\tag{1.4}
+\]">\[
+k=n(b/d)\operatorname{diag}(\det(k)/d,d)\bar n(c/d).
+\tag{1.4}
+\]</span>
+The indicated upper and lower groups and unit diagonals therefore generate <span class="math" data-tex="\(K_0(n)\)">\(K_0(n)\)</span>. The diagonal action on a unit-invariant function is precisely <span class="math" data-tex="\(\omega(d)\)">\(\omega(d)\)</span>. This proves (1.2). At <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, upper and lower integral unipotents generate <span class="math" data-tex="\(\mathrm{SL}_2(\mathcal O)\)">\(\mathrm{SL}_2(\mathcal O)\)</span>, and adjoining <span class="math" data-tex="\(d(U)\)">\(d(U)\)</span> generates <span class="math" data-tex="\(K\)">\(K\)</span>. The central unit character is trivial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We will also need the conditions in (1.3) when the putative central conductor is too large. The elementary identity
+<span class="math math-display" data-tex="\[
+n(u)\bar n(v)=
+\bar n\!\left(\frac v{1+uv}\right)
+\operatorname{diag}(1+uv,(1+uv)^{-1})
+n\!\left(\frac u{1+uv}\right)
+\tag{1.5}
+\]">\[
+n(u)\bar n(v)=
+\bar n\!\left(\frac v{1+uv}\right)
+\operatorname{diag}(1+uv,(1+uv)^{-1})
+n\!\left(\frac u{1+uv}\right)
+\tag{1.5}
+\]</span>
+shows that a vector fixed by <span class="math" data-tex="\(n(\mathcal O)\)">\(n(\mathcal O)\)</span>, <span class="math" data-tex="\(\bar n(\mathfrak p^n)\)">\(\bar n(\mathfrak p^n)\)</span> and <span class="math" data-tex="\(d(U)\)">\(d(U)\)</span> must satisfy <span class="math" data-tex="\(\omega(s)=1\)">\(\omega(s)=1\)</span> for <span class="math" data-tex="\(s\in1+\mathfrak p^n\)">\(s\in1+\mathfrak p^n\)</span>, when <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Take <span class="math" data-tex="\(u=1,v=s-1\)">\(u=1,v=s-1\)</span>; the diagonal in (1.5) acts by <span class="math" data-tex="\(\omega(s^{-1})\)">\(\omega(s^{-1})\)</span>. At <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, take <span class="math" data-tex="\(u=s-1,v=1\)">\(u=s-1,v=1\)</span> for any <span class="math" data-tex="\(s\in U\)">\(s\in U\)</span>. Hence these conditions force the vector to be zero if <span class="math" data-tex="\(n&lt;a(\omega)\)">\(n&lt;a(\omega)\)</span>.</p>
+<p>One further boundary case will stop the level descent. If a vector is fixed by <span class="math" data-tex="\(n(\mathcal O)\)">\(n(\mathcal O)\)</span> and <span class="math" data-tex="\(\bar n(\varpi^{-1}\mathcal O)\)">\(\bar n(\varpi^{-1}\mathcal O)\)</span>, (1.5) with <span class="math" data-tex="\(u=1,v=\varpi^{-1}-1\)">\(u=1,v=\varpi^{-1}-1\)</span> makes it fixed by <span class="math" data-tex="\(\operatorname{diag}(\varpi^{-1},\varpi)\)">\(\operatorname{diag}(\varpi^{-1},\varpi)\)</span>. Its conjugations expand the two root subgroups to all of <span class="math" data-tex="\(F\)">\(F\)</span>. The vector is therefore fixed by <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span>. The space of such vectors is <span class="math" data-tex="\(G\)">\(G\)</span>-stable, since <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span> is normal. If nonzero, irreducibility makes the whole representation factor through the determinant; Lesson 5, Proposition 6.2, then makes it one-dimensional. Our infinite-dimensional representation has no such vector.</p>
+<h2 id="2-the-first-level-and-all-its-translates">2. The first level and all its translates</h2>
+<p><strong>Theorem 2.1 — the newvector dimension theorem.</strong> There is a least integer <span class="math" data-tex="\(c=c(\pi)\geq0\)">\(c=c(\pi)\geq0\)</span> such that <span class="math" data-tex="\(V_c\ne0\)">\(V_c\ne0\)</span>. For every <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+\dim V_n=\max(0,n-c+1).
+\tag{2.1}
+\]">\[
+\dim V_n=\max(0,n-c+1).
+\tag{2.1}
+\]</span>
+There is a unique vector <span class="math" data-tex="\(v_c\in V_c\)">\(v_c\in V_c\)</span> whose Kirillov function takes the value one on <span class="math" data-tex="\(U\)">\(U\)</span>. For <span class="math" data-tex="\(n\geq c\)">\(n\geq c\)</span>, a basis of <span class="math" data-tex="\(V_n\)">\(V_n\)</span> is
+<span class="math math-display" data-tex="\[
+v_c,\ \pi(d(\varpi^{-1}))v_c,\ \ldots,\
+\pi(d(\varpi^{-(n-c)}))v_c.
+\tag{2.2}
+\]">\[
+v_c,\ \pi(d(\varpi^{-1}))v_c,\ \ldots,\
+\pi(d(\varpi^{-(n-c)}))v_c.
+\tag{2.2}
+\]</span>
+We call <span class="math" data-tex="\(c\)">\(c\)</span> the conductor exponent and <span class="math" data-tex="\(v_c\)">\(v_c\)</span> the normalized newvector.</p>
+<p><strong>Proof of existence.</strong> The compact function <span class="math" data-tex="\(1_U\)">\(1_U\)</span> is in the model. It is fixed by <span class="math" data-tex="\(n(\mathcal O)\)">\(n(\mathcal O)\)</span> and <span class="math" data-tex="\(d(U)\)">\(d(U)\)</span>. Its smoothness makes it fixed by <span class="math" data-tex="\(\bar n(\mathfrak p^n)\)">\(\bar n(\mathfrak p^n)\)</span> for sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>. Increase <span class="math" data-tex="\(n\)">\(n\)</span> to be at least <span class="math" data-tex="\(a(\omega)\)">\(a(\omega)\)</span>. Lemma 1.1 puts this nonzero vector in <span class="math" data-tex="\(V_n\)">\(V_n\)</span>.</p>
+<p><strong>Proof of the dimension and basis.</strong> Restriction to <span class="math" data-tex="\(U\)">\(U\)</span> is a linear map
+<span class="math math-display" data-tex="\[
+r_n:V_n\longrightarrow\mathbb C,
+\]">\[
+r_n:V_n\longrightarrow\mathbb C,
+\]</span>
+because all functions in <span class="math" data-tex="\(V_n\)">\(V_n\)</span> are constant there. Its kernel has an exact description:
+<span class="math math-display" data-tex="\[
+\ker r_n=\pi(d(\varpi^{-1}))V_{n-1},
+\qquad V_{-1}:=0.
+\tag{2.3}
+\]">\[
+\ker r_n=\pi(d(\varpi^{-1}))V_{n-1},
+\qquad V_{-1}:=0.
+\tag{2.3}
+\]</span>
+To prove it, let <span class="math" data-tex="\(\xi\in\ker r_n\)">\(\xi\in\ker r_n\)</span>. Upper integral invariance and unit invariance make it vanish outside <span class="math" data-tex="\(\varpi\mathcal O\)">\(\varpi\mathcal O\)</span>. The shifted function
+<span class="math" data-tex="\(\xi&#x27;(t)=\xi(\varpi t)\)">\(\xi&#x27;(t)=\xi(\varpi t)\)</span> is supported in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, remains unit-invariant, and is fixed by <span class="math" data-tex="\(\bar n(\mathfrak p^{n-1})\)">\(\bar n(\mathfrak p^{n-1})\)</span>:
+<span class="math math-display" data-tex="\[
+d(\varpi)^{-1}\bar n(y)d(\varpi)=\bar n(\varpi y).
+\]">\[
+d(\varpi)^{-1}\bar n(y)d(\varpi)=\bar n(\varpi y).
+\]</span>
+Its upper integral invariance follows from its support; it need not follow from conjugating the original upper group.</p>
+<p>If <span class="math" data-tex="\(n-1\geq a(\omega)\)">\(n-1\geq a(\omega)\)</span>, Lemma 1.1 gives <span class="math" data-tex="\(\xi&#x27;\in V_{n-1}\)">\(\xi&#x27;\in V_{n-1}\)</span>, including its <span class="math" data-tex="\(n-1=0\)">\(n-1=0\)</span> case. If <span class="math" data-tex="\(0\leq n-1&lt;a(\omega)\)">\(0\leq n-1&lt;a(\omega)\)</span>, identity (1.5) forces <span class="math" data-tex="\(\xi&#x27;=0\)">\(\xi&#x27;=0\)</span>. If <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the preceding boundary argument again forces <span class="math" data-tex="\(\xi&#x27;=0\)">\(\xi&#x27;=0\)</span>. This proves one inclusion in (2.3). For the converse, shift a function of <span class="math" data-tex="\(V_{n-1}\)">\(V_{n-1}\)</span> by <span class="math" data-tex="\(\varpi^{-1}\)">\(\varpi^{-1}\)</span>. Its support enters <span class="math" data-tex="\(\varpi\mathcal O\)">\(\varpi\mathcal O\)</span>, and its lower level increases by one. Lemma 1.1 gives a vector of <span class="math" data-tex="\(V_n\)">\(V_n\)</span> which vanishes on <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>At the least nonzero level <span class="math" data-tex="\(c\)">\(c\)</span>, (2.3) makes <span class="math" data-tex="\(r_c\)">\(r_c\)</span> injective. Its target is one-dimensional, so <span class="math" data-tex="\(V_c\)">\(V_c\)</span> is a line and <span class="math" data-tex="\(r_c\)">\(r_c\)</span> is nonzero. Normalize its value to one. Repeated use of (2.3) gives
+<span class="math" data-tex="\(\dim V_n\leq n-c+1\)">\(\dim V_n\leq n-c+1\)</span>. The <span class="math" data-tex="\(j\)">\(j\)</span>-th vector of (2.2) is supported in <span class="math" data-tex="\(\varpi^j\mathcal O\)">\(\varpi^j\mathcal O\)</span> and takes value one at <span class="math" data-tex="\(\varpi^j\)">\(\varpi^j\)</span>. Evaluations at <span class="math" data-tex="\(1,\varpi,\ldots,\varpi^{n-c}\)">\(1,\varpi,\ldots,\varpi^{n-c}\)</span> give a triangular matrix with diagonal entries one. The vectors are independent, lie in <span class="math" data-tex="\(V_n\)">\(V_n\)</span>, and reach the upper bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses smoothness and the full Kirillov model, including its compact functions. It does not quote the newvector theorem. Admissibility already follows from the local theory, but the argument itself also computes these fixed-space dimensions.</p>
+<p>Deligne, §2.2, Théorème 2.2.6, provides a second proof in a different convention: his unipotent is lower triangular, his torus restriction uses <span class="math" data-tex="\(\operatorname{diag}(1,t)\)">\(\operatorname{diag}(1,t)\)</span>, and his level is on the upper-right entry. Conjugation by <span class="math" data-tex="\(w_0\)">\(w_0\)</span>, together with <span class="math" data-tex="\(\psi(x)\mapsto\psi(-x)\)">\(\psi(x)\mapsto\psi(-x)\)</span>, gives (1.1)–(1.2). In particular his diagonal-character condition must be transferred as well as his level condition.</p>
+<h2 id="3-principal-series-and-special-conductors">3. Principal series and special conductors</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+U_0=U,\qquad U_j=1+\mathfrak p^j\quad(j\geq1).
+\]">\[
+U_0=U,\qquad U_j=1+\mathfrak p^j\quad(j\geq1).
+\]</span>
+Let <span class="math" data-tex="\(I(\mu_1,\mu_2)\)">\(I(\mu_1,\mu_2)\)</span> denote normalized induction, with left <span class="math" data-tex="\(B\)">\(B\)</span>-transformation
+<span class="math" data-tex="\(|a/d|^{1/2}\mu_1(a)\mu_2(d)\)">\(|a/d|^{1/2}\mu_1(a)\mu_2(d)\)</span>. This notation includes the reducible exceptional parameters.</p>
+<p><strong>Lemma 3.1 — the compact induction count.</strong> For all <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+\dim I(\mu_1,\mu_2)^{K_1(n)}
+=\max(0,n-a(\mu_1)-a(\mu_2)+1).
+\tag{3.1}
+\]">\[
+\dim I(\mu_1,\mu_2)^{K_1(n)}
+=\max(0,n-a(\mu_1)-a(\mu_2)+1).
+\tag{3.1}
+\]</span></p>
+<p><strong>Proof.</strong> The Iwasawa decomposition <span class="math" data-tex="\(G=BK\)">\(G=BK\)</span> identifies the compact restriction with functions on <span class="math" data-tex="\(K\)">\(K\)</span> transforming under <span class="math" data-tex="\(B(\mathcal O)\)">\(B(\mathcal O)\)</span> by
+<span class="math" data-tex="\(\mu_1(a)\mu_2(d)\)">\(\mu_1(a)\mu_2(d)\)</span>; the modulus is one there. At <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>,
+<span class="math" data-tex="\(K/K_1(n)\)">\(K/K_1(n)\)</span> is the set of primitive rows modulo <span class="math" data-tex="\(\mathfrak p^n\)">\(\mathfrak p^n\)</span>, via <span class="math" data-tex="\(k\mapsto(0,1)k^{-1}\)">\(k\mapsto(0,1)k^{-1}\)</span>. A row is primitive if at least one entry is a unit. The right action of <span class="math" data-tex="\(B(\mathcal O)\)">\(B(\mathcal O)\)</span> has <span class="math" data-tex="\(n+1\)">\(n+1\)</span> orbits, indexed by the valuation <span class="math" data-tex="\(i\in\{0,\ldots,n\}\)">\(i\in\{0,\ldots,n\}\)</span> of the first entry, capped at <span class="math" data-tex="\(n\)">\(n\)</span>. A unit first entry permits eliminating the second; otherwise the second is a unit, and both unit factors can be normalized. Representatives for <span class="math" data-tex="\(i&lt;n\)">\(i&lt;n\)</span> are <span class="math" data-tex="\(r_i=\bar n(\varpi^i)\)">\(r_i=\bar n(\varpi^i)\)</span>; the last representative is <span class="math" data-tex="\(r_n=1\)">\(r_n=1\)</span>.</p>
+<p>For <span class="math" data-tex="\(i&lt;n\)">\(i&lt;n\)</span>, writing <span class="math" data-tex="\(x=\varpi^i\)">\(x=\varpi^i\)</span> gives
+<span class="math math-display" data-tex="\[
+r_i^{-1}\begin{pmatrix}a&amp;b\\0&amp;d\end{pmatrix}r_i
+=\begin{pmatrix}a+bx&amp;b\\x(d-a)-bx^2&amp;d-bx\end{pmatrix}.
+\tag{3.2}
+\]">\[
+r_i^{-1}\begin{pmatrix}a&amp;b\\0&amp;d\end{pmatrix}r_i
+=\begin{pmatrix}a+bx&amp;b\\x(d-a)-bx^2&amp;d-bx\end{pmatrix}.
+\tag{3.2}
+\]</span>
+It lies in <span class="math" data-tex="\(K_1(n)\)">\(K_1(n)\)</span> precisely when
+<span class="math math-display" data-tex="\[
+d-bx\equiv1\pmod{\mathfrak p^n},\qquad
+a\equiv1\pmod{\mathfrak p^{n-i}}.
+\]">\[
+d-bx\equiv1\pmod{\mathfrak p^n},\qquad
+a\equiv1\pmod{\mathfrak p^{n-i}}.
+\]</span>
+The allowed pairs of diagonal entries are exactly
+<span class="math" data-tex="\(a\in U_{n-i},d\in U_i\)">\(a\in U_{n-i},d\in U_i\)</span>. Every such pair is realized by taking <span class="math" data-tex="\(b=(d-1)/x\)">\(b=(d-1)/x\)</span>; the congruence for the lower-left entry then follows. For <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, <span class="math" data-tex="\(U_i=U\)">\(U_i=U\)</span>, as required. At the last representative the stabilizer has <span class="math" data-tex="\(a\in U,d\in U_n\)">\(a\in U,d\in U_n\)</span>, giving the same description with <span class="math" data-tex="\(i=n\)">\(i=n\)</span>.</p>
+<p>A transforming function on one orbit has one free value exactly when its character is trivial on this stabilizer; otherwise its value is zero. Thus the orbit contributes one precisely if
+<span class="math math-display" data-tex="\[
+a(\mu_2)\leq i\leq n-a(\mu_1).
+\tag{3.3}
+\]">\[
+a(\mu_2)\leq i\leq n-a(\mu_1).
+\tag{3.3}
+\]</span>
+Counting these integers proves (3.1). At <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, there is one orbit and its stabilizer is <span class="math" data-tex="\(B(\mathcal O)\)">\(B(\mathcal O)\)</span>; it contributes one exactly when both characters are unramified. This is again (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 — the conductor formulas.</strong> For an irreducible principal series and a special representation,
+<span class="math math-display" data-tex="\[
+c(I(\mu_1,\mu_2))=a(\mu_1)+a(\mu_2),\qquad
+c(\mathrm{St}_\chi)=
+\begin{cases}
+1&amp;a(\chi)=0,\\
+2a(\chi)&amp;a(\chi)&gt;0.
+\end{cases}
+\tag{3.4}
+\]">\[
+c(I(\mu_1,\mu_2))=a(\mu_1)+a(\mu_2),\qquad
+c(\mathrm{St}_\chi)=
+\begin{cases}
+1&amp;a(\chi)=0,\\
+2a(\chi)&amp;a(\chi)&gt;0.
+\end{cases}
+\tag{3.4}
+\]</span>
+Every supercuspidal satisfies <span class="math" data-tex="\(c(\pi)\geq2\)">\(c(\pi)\geq2\)</span>; this last assertion is proved in Theorem 4.3 below.</p>
+<p><strong>Proof of (3.4).</strong> The first formula follows directly from Lemma 3.1. For the second, use the exceptional induction sequences of Lessons 6–7:
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathrm{St}_\chi
+\longrightarrow I(\chi|\ |^{1/2},\chi|\ |^{-1/2})
+\longrightarrow D_\chi\longrightarrow0,
+\quad D_\chi(g)=\chi(\det g).
+\tag{3.5}
+\]">\[
+0\longrightarrow\mathrm{St}_\chi
+\longrightarrow I(\chi|\ |^{1/2},\chi|\ |^{-1/2})
+\longrightarrow D_\chi\longrightarrow0,
+\quad D_\chi(g)=\chi(\det g).
+\tag{3.5}
+\]</span>
+Taking compact fixed spaces is exact by averaging. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is unramified, <span class="math" data-tex="\(D_\chi^{K_1(n)}\)">\(D_\chi^{K_1(n)}\)</span> has dimension one at every <span class="math" data-tex="\(n\)">\(n\)</span>, whereas the induced fixed space has dimension <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. Hence the special fixed space has dimension <span class="math" data-tex="\(n\)">\(n\)</span>, with first level one. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is ramified, <span class="math" data-tex="\(D_\chi^{K_1(n)}=0\)">\(D_\chi^{K_1(n)}=0\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, because <span class="math" data-tex="\(d(U)\subset K_1(n)\)">\(d(U)\subset K_1(n)\)</span>. Both inducing characters have conductor <span class="math" data-tex="\(a(\chi)\)">\(a(\chi)\)</span>, so (3.1) gives the second formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For completeness, a finite-dimensional irreducible is <span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span>. Its <span class="math" data-tex="\(K_1(n)\)">\(K_1(n)\)</span>-fixed space is one-dimensional at all levels if <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is unramified, and zero at all levels if <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is ramified. The conductor defined by Theorem 2.1 is an invariant of the infinite-dimensional, hence generic, representations; its dimension formula is not asserted for <span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span>.</p>
+<h2 id="4-the-actual-newfunctions-and-the-supercuspidal-bound">4. The actual newfunctions and the supercuspidal bound</h2>
+<p><strong>Lemma 4.1 — the one-step operator.</strong> For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, the operator
+<span class="math math-display" data-tex="\[
+\mathcal U=E_{\mathcal O}\pi(d(\varpi))
+=\frac1q\sum_{b\in\mathcal O/\mathfrak p}\pi(n(b)d(\varpi))
+\tag{4.1}
+\]">\[
+\mathcal U=E_{\mathcal O}\pi(d(\varpi))
+=\frac1q\sum_{b\in\mathcal O/\mathfrak p}\pi(n(b)d(\varpi))
+\tag{4.1}
+\]</span>
+preserves <span class="math" data-tex="\(V_n\)">\(V_n\)</span>. It also preserves the <span class="math" data-tex="\(K_0(n)\)">\(K_0(n)\)</span>-space with character <span class="math" data-tex="\(k\mapsto\omega(a_k)\)">\(k\mapsto\omega(a_k)\)</span>. On any function fixed by <span class="math" data-tex="\(n(\mathcal O)\)">\(n(\mathcal O)\)</span>,
+<span class="math math-display" data-tex="\[
+(\mathcal U\xi)(t)=1_{\mathcal O}(t)\xi(\varpi t).
+\tag{4.2}
+\]">\[
+(\mathcal U\xi)(t)=1_{\mathcal O}(t)\xi(\varpi t).
+\tag{4.2}
+\]</span></p>
+<p><strong>Proof.</strong> The intersection <span class="math" data-tex="\(K_1(n)\cap d(\varpi)K_1(n)d(\varpi)^{-1}\)">\(K_1(n)\cap d(\varpi)K_1(n)d(\varpi)^{-1}\)</span> has upper-right entry in <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, of index <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(K_1(n)\)">\(K_1(n)\)</span>. Its coset representatives are <span class="math" data-tex="\(n(b)\)">\(n(b)\)</span>. This gives the double-coset operator (4.1), which preserves fixed vectors. The same intersection calculation holds for <span class="math" data-tex="\(K_0(n)\)">\(K_0(n)\)</span>; conjugation keeps its two diagonal entries. Consequently either diagonal character is compatible on the intersection, and the same coset sum preserves its character space.</p>
+<p>Averaging <span class="math" data-tex="\(\psi(tx)\)">\(\psi(tx)\)</span> over <span class="math" data-tex="\(x\in\mathcal O\)">\(x\in\mathcal O\)</span> gives <span class="math" data-tex="\(1_{\mathcal O}(t)\)">\(1_{\mathcal O}(t)\)</span>, proving (4.2). To replace the integral by the finite sum, <span class="math" data-tex="\(\pi(d(\varpi))v\)">\(\pi(d(\varpi))v\)</span> is fixed by <span class="math" data-tex="\(n(\mathfrak p)\)">\(n(\mathfrak p)\)</span>, since <span class="math" data-tex="\(d(\varpi)^{-1}n(x)d(\varpi)=n(x/\varpi)\)">\(d(\varpi)^{-1}n(x)d(\varpi)=n(x/\varpi)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(c\geq1\)">\(c\geq1\)</span>, <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> acts on the newvector line by a scalar <span class="math" data-tex="\(A\)">\(A\)</span>. Thus its normalized function has the form
+<span class="math math-display" data-tex="\[
+\xi_c(\varpi^m u)=
+\begin{cases}
+A^m&amp;m\geq0,\ u\in U,\\
+0&amp;m&lt;0.
+\end{cases}
+\tag{4.3}
+\]">\[
+\xi_c(\varpi^m u)=
+\begin{cases}
+A^m&amp;m\geq0,\ u\in U,\\
+0&amp;m&lt;0.
+\end{cases}
+\tag{4.3}
+\]</span>
+Here <span class="math" data-tex="\(A^0=1\)">\(A^0=1\)</span>, including when <span class="math" data-tex="\(A=0\)">\(A=0\)</span>. If the function is compact away from zero, (4.3) forces <span class="math" data-tex="\(A=0\)">\(A=0\)</span>.</p>
+<p>Lesson 7, Proposition 6.2, determines <span class="math" data-tex="\(A\)">\(A\)</span> from the germ. If precisely one principal-series character is unramified, then
+<span class="math" data-tex="\(A=q^{-1/2}\mu_{\rm unram}(\varpi)\)">\(A=q^{-1/2}\mu_{\rm unram}(\varpi)\)</span>. If both are ramified, unit invariance eliminates both germ characters, so <span class="math" data-tex="\(\xi_c=1_U\)">\(\xi_c=1_U\)</span>. In the repeated-parameter ramified case it also eliminates the valuation-times-character germ. For <span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span>, an unramified <span class="math" data-tex="\(\chi\)">\(\chi\)</span> gives <span class="math" data-tex="\(A=q^{-1}\chi(\varpi)\)">\(A=q^{-1}\chi(\varpi)\)</span>; a ramified <span class="math" data-tex="\(\chi\)">\(\chi\)</span> gives <span class="math" data-tex="\(\xi_c=1_U\)">\(\xi_c=1_U\)</span>. For supercuspidals the whole model is compact away from zero, so <span class="math" data-tex="\(\xi_c=1_U\)">\(\xi_c=1_U\)</span> whenever <span class="math" data-tex="\(c\geq1\)">\(c\geq1\)</span>.</p>
+<p>For either of the cases with a unit-invariant nonzero germ, the newfunction really has a nonzero germ. Indeed choose a unit-invariant function with that germ and support in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. Smoothness puts it in some <span class="math" data-tex="\(V_n\)">\(V_n\)</span>. If the newfunction were compact away from zero, every shift in its oldbasis (2.2) would be compact as well and could not span this function. Thus (4.3) has the nonzero-germ scalar asserted above.</p>
+<p><strong>Theorem 4.2 — the spherical newfunction.</strong> Suppose <span class="math" data-tex="\(\mu_1,\mu_2\)">\(\mu_1,\mu_2\)</span> are unramified and their normalized induction is irreducible. Write <span class="math" data-tex="\(\alpha=\mu_1(\varpi),\beta=\mu_2(\varpi)\)">\(\alpha=\mu_1(\varpi),\beta=\mu_2(\varpi)\)</span>. The normalized <span class="math" data-tex="\(K\)">\(K\)</span>-fixed vector has function
+<span class="math math-display" data-tex="\[
+\xi_0(\varpi^m u)=
+\begin{cases}
+q^{-m/2}\displaystyle\sum_{i+j=m}\alpha^i\beta^j&amp;m\geq0,\\
+0&amp;m&lt;0.
+\end{cases}
+\tag{4.4}
+\]">\[
+\xi_0(\varpi^m u)=
+\begin{cases}
+q^{-m/2}\displaystyle\sum_{i+j=m}\alpha^i\beta^j&amp;m\geq0,\\
+0&amp;m&lt;0.
+\end{cases}
+\tag{4.4}
+\]</span>
+In particular equal parameters give <span class="math" data-tex="\(q^{-m/2}(m+1)\alpha^m\)">\(q^{-m/2}(m+1)\alpha^m\)</span>.</p>
+<p><strong>Proof.</strong> The double coset <span class="math" data-tex="\(Kd(\varpi)K\)">\(Kd(\varpi)K\)</span> has <span class="math" data-tex="\(q+1\)">\(q+1\)</span> right cosets:
+<span class="math" data-tex="\(n(b)d(\varpi)\)">\(n(b)d(\varpi)\)</span>, <span class="math" data-tex="\(b\bmod\mathfrak p\)">\(b\bmod\mathfrak p\)</span>, and <span class="math" data-tex="\(\operatorname{diag}(1,\varpi)\)">\(\operatorname{diag}(1,\varpi)\)</span>. One way to check the count is that its stabilizer in <span class="math" data-tex="\(K\)">\(K\)</span>, modulo <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, fixes a line in the two-dimensional residue space; the lines are <span class="math" data-tex="\(\mathbb P^1(\mathbb F_q)\)">\(\mathbb P^1(\mathbb F_q)\)</span>. The displayed matrices give all the lines.</p>
+<p>The corresponding unnormalized operator <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> has eigenvalue
+<span class="math" data-tex="\(q^{1/2}(\alpha+\beta)\)">\(q^{1/2}(\alpha+\beta)\)</span>. Indeed evaluate the spherical induced section, normalized to one at <span class="math" data-tex="\(1\)">\(1\)</span>: each of the first <span class="math" data-tex="\(q\)">\(q\)</span> upper triangular representatives contributes <span class="math" data-tex="\(q^{-1/2}\alpha\)">\(q^{-1/2}\alpha\)</span>, and the last contributes <span class="math" data-tex="\(q^{1/2}\beta\)">\(q^{1/2}\beta\)</span>. On its Kirillov function, with <span class="math" data-tex="\(\xi_m=\xi_0(\varpi^m)\)">\(\xi_m=\xi_0(\varpi^m)\)</span> and <span class="math" data-tex="\(z=\omega(\varpi)=\alpha\beta\)">\(z=\omega(\varpi)=\alpha\beta\)</span>,
+<span class="math math-display" data-tex="\[
+q\xi_{m+1}+z\xi_{m-1}
+=q^{1/2}(\alpha+\beta)\xi_m\quad(m\geq0),
+\qquad \xi_{-1}=0,\quad\xi_0=1.
+\tag{4.5}
+\]">\[
+q\xi_{m+1}+z\xi_{m-1}
+=q^{1/2}(\alpha+\beta)\xi_m\quad(m\geq0),
+\qquad \xi_{-1}=0,\quad\xi_0=1.
+\tag{4.5}
+\]</span>
+The first term is the upper coset sum; the last coset acts as <span class="math" data-tex="\(z\xi(t/\varpi)\)">\(z\xi(t/\varpi)\)</span>. The polynomials
+<span class="math" data-tex="\(h_m=\sum_{i+j=m}\alpha^i\beta^j\)">\(h_m=\sum_{i+j=m}\alpha^i\beta^j\)</span> satisfy
+<span class="math" data-tex="\(h_m=(\alpha+\beta)h_{m-1}-\alpha\beta h_{m-2}\)">\(h_m=(\alpha+\beta)h_{m-1}-\alpha\beta h_{m-2}\)</span>,
+with <span class="math" data-tex="\(h_0=1,h_{-1}=0\)">\(h_0=1,h_{-1}=0\)</span>. Substitution in (4.5) proves (4.4) by induction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.3 — a supercuspidal cannot have conductor zero or one.</strong></p>
+<p><strong>Proof at zero.</strong> If a supercuspidal had <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, its normalized <span class="math" data-tex="\(K\)">\(K\)</span>-fixed function would be compact away from zero. The operator <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> preserves its one-dimensional fixed line and satisfies the left side of (4.5), with some scalar eigenvalue and <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>. Let <span class="math" data-tex="\(M\geq0\)">\(M\geq0\)</span> be the largest valuation at which its function is nonzero. At <span class="math" data-tex="\(m=M+1\)">\(m=M+1\)</span>, the recurrence reads <span class="math" data-tex="\(z\xi_M=0\)">\(z\xi_M=0\)</span>, a contradiction.</p>
+<p><strong>Proof at one.</strong> Put <span class="math" data-tex="\(\epsilon=\omega|_U,z=\omega(\varpi)\)">\(\epsilon=\omega|_U,z=\omega(\varpi)\)</span>. Suppose <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Define
+<span class="math math-display" data-tex="\[
+Y_1=\{v:\pi(k)v=\omega(a_k)v,\ k\in K_0(1)\},\qquad
+w_1=w_0d(\varpi).
+\]">\[
+Y_1=\{v:\pi(k)v=\omega(a_k)v,\ k\in K_0(1)\},\qquad
+w_1=w_0d(\varpi).
+\]</span>
+Conjugation by <span class="math" data-tex="\(w_1\)">\(w_1\)</span> normalizes <span class="math" data-tex="\(K_0(1)\)">\(K_0(1)\)</span> and exchanges its diagonal entries:
+<span class="math math-display" data-tex="\[
+w_1\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}w_1^{-1}
+=\begin{pmatrix}d&amp;-c/\varpi\\-\varpi b&amp;a\end{pmatrix}.
+\]">\[
+w_1\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}w_1^{-1}
+=\begin{pmatrix}d&amp;-c/\varpi\\-\varpi b&amp;a\end{pmatrix}.
+\]</span>
+Hence <span class="math" data-tex="\(\pi(w_1)\)">\(\pi(w_1)\)</span> identifies <span class="math" data-tex="\(V_1\)">\(V_1\)</span> and <span class="math" data-tex="\(Y_1\)">\(Y_1\)</span>, so both are lines. The former has function <span class="math" data-tex="\(1_U\)">\(1_U\)</span>. A function in <span class="math" data-tex="\(Y_1\)">\(Y_1\)</span> is supported in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, transforms under <span class="math" data-tex="\(d(u)\)">\(d(u)\)</span> by <span class="math" data-tex="\(\epsilon(u)\)">\(\epsilon(u)\)</span>, and satisfies the recurrence (4.2) with a scalar. Compact support forces that scalar to be zero and its value on <span class="math" data-tex="\(U\)">\(U\)</span> to be nonzero. Thus <span class="math" data-tex="\(Y_1\)">\(Y_1\)</span> has normalized function <span class="math" data-tex="\(\epsilon\,1_U\)">\(\epsilon\,1_U\)</span>.</p>
+<p>Since <span class="math" data-tex="\(w_1=\varpi I\,d(\varpi^{-1})w_0\)">\(w_1=\varpi I\,d(\varpi^{-1})w_0\)</span>, it follows that <span class="math" data-tex="\(W1_U\)">\(W1_U\)</span> is a nonzero multiple of <span class="math" data-tex="\(\epsilon(t/\varpi^{-1})\)">\(\epsilon(t/\varpi^{-1})\)</span> on the single shell <span class="math" data-tex="\(v_F(t)=-1\)">\(v_F(t)=-1\)</span>, and zero on every other shell. Likewise <span class="math" data-tex="\(W(\epsilon1_U)\)">\(W(\epsilon1_U)\)</span> has only that shell and is unit-invariant. In Lesson 7's coefficient notation this says
+<span class="math math-display" data-tex="\[
+C_r^{\epsilon^{-1}}=C_r^1=0\ (r\ne-1),\qquad
+z C_{-1}^1C_{-1}^{\epsilon^{-1}}=\epsilon(-1).
+\tag{4.6}
+\]">\[
+C_r^{\epsilon^{-1}}=C_r^1=0\ (r\ne-1),\qquad
+z C_{-1}^1C_{-1}^{\epsilon^{-1}}=\epsilon(-1).
+\tag{4.6}
+\]</span>
+The product follows by applying <span class="math" data-tex="\(W^2\)">\(W^2\)</span> to <span class="math" data-tex="\(1_U\)">\(1_U\)</span>.</p>
+<p>Now use the already proved identity (2.9) of Lesson 7 with
+<span class="math" data-tex="\(\ell=0,n=p=0,\alpha=1,\widetilde\alpha=\epsilon^{-1}\)">\(\ell=0,n=p=0,\alpha=1,\widetilde\alpha=\epsilon^{-1}\)</span>.
+Its left side is
+<span class="math math-display" data-tex="\[
+S_{0,0}^{1,\epsilon^{-1}}
+=\sum_\sigma
+\eta(\sigma^{-1},1)\eta(\sigma^{-1}\epsilon^{-1},1)C_0^\sigma=0.
+\]">\[
+S_{0,0}^{1,\epsilon^{-1}}
+=\sum_\sigma
+\eta(\sigma^{-1},1)\eta(\sigma^{-1}\epsilon^{-1},1)C_0^\sigma=0.
+\]</span>
+Indeed the first factor vanishes unless <span class="math" data-tex="\(\sigma=1\)">\(\sigma=1\)</span>; the second then vanishes unless <span class="math" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span>; and in that remaining case <span class="math" data-tex="\(C_0^1=0\)">\(C_0^1=0\)</span>. All terms indexed by <span class="math" data-tex="\(r\leq-2\)">\(r\leq-2\)</span> on the right vanish by (4.6). The right side is therefore
+<span class="math math-display" data-tex="\[
+\epsilon(-1)+\frac{z}{q^{-1}-1}
+ C_{-1}^1C_{-1}^{\epsilon^{-1}}
+=-\frac{\epsilon(-1)}{q-1}\ne0.
+\]">\[
+\epsilon(-1)+\frac{z}{q^{-1}-1}
+ C_{-1}^1C_{-1}^{\epsilon^{-1}}
+=-\frac{\epsilon(-1)}{q-1}\ne0.
+\]</span>
+This contradiction proves the assertion. It uses the finite Weyl coefficient calculation of the preceding lesson, with its signs and averaging normalization intact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Combining the results gives the following useful description.</p>
+<table>
+<thead>
+<tr>
+<th>Representation</th>
+<th style="text-align:right">Conductor</th>
+<th>Normalized function at <span class="math" data-tex="\(\varpi^m u\)">\(\varpi^m u\)</span>, <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unramified irreducible principal series</td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(q^{-m/2}\sum_{i+j=m}\alpha^i\beta^j\)">\(q^{-m/2}\sum_{i+j=m}\alpha^i\beta^j\)</span></td>
+</tr>
+<tr>
+<td>Principal series, one unramified character</td>
+<td style="text-align:right"><span class="math" data-tex="\(a(\mu_{\rm ram})\)">\(a(\mu_{\rm ram})\)</span></td>
+<td><span class="math" data-tex="\((q^{-1/2}\mu_{\rm unram}(\varpi))^m\)">\((q^{-1/2}\mu_{\rm unram}(\varpi))^m\)</span></td>
+</tr>
+<tr>
+<td>Principal series, both characters ramified</td>
+<td style="text-align:right"><span class="math" data-tex="\(a(\mu_1)+a(\mu_2)\)">\(a(\mu_1)+a(\mu_2)\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, <span class="math" data-tex="\(0\)">\(0\)</span> at <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span>, <span class="math" data-tex="\(\chi\)">\(\chi\)</span> unramified</td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\((q^{-1}\chi(\varpi))^m\)">\((q^{-1}\chi(\varpi))^m\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span>, <span class="math" data-tex="\(\chi\)">\(\chi\)</span> ramified</td>
+<td style="text-align:right"><span class="math" data-tex="\(2a(\chi)\)">\(2a(\chi)\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, <span class="math" data-tex="\(0\)">\(0\)</span> at <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span></td>
+</tr>
+<tr>
+<td>Supercuspidal</td>
+<td style="text-align:right"><span class="math" data-tex="\(c\geq2\)">\(c\geq2\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, <span class="math" data-tex="\(0\)">\(0\)</span> at <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Every entry is zero for <span class="math" data-tex="\(m&lt;0\)">\(m&lt;0\)</span>. For a supercuspidal the number <span class="math" data-tex="\(c\)">\(c\)</span> is determined by its Weyl action, rather than its compact function space alone. For example, the exact first level is the least <span class="math" data-tex="\(n\)">\(n\)</span> for which <span class="math" data-tex="\(W1_U\)">\(W1_U\)</span> is supported in <span class="math" data-tex="\(\varpi^{-n}\mathcal O\)">\(\varpi^{-n}\mathcal O\)</span>, once <span class="math" data-tex="\(n\geq a(\omega)\)">\(n\geq a(\omega)\)</span>.</p>
+<h2 id="5-how-the-local-lines-give-classical-newforms">5. How the local lines give classical newforms</h2>
+<p>Let <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, and write <span class="math" data-tex="\(\iota_d f(z)=f(dz)\)">\(\iota_d f(z)=f(dz)\)</span>. We use the classical–adelic correspondence of <a href="from-modular-forms-to-adelic-functions.html">Lesson 2</a>, including its inverse finite nebentypus convention and Petersson comparison, and the cuspidal decomposition of <a href="automorphic-forms-modules-and-hilbert-constituents.html">Lessons 3</a>–<a href="why-the-cuspidal-spectrum-is-discrete.html">4</a>.</p>
+<p>Here are the proved global inputs for this section.</p>
+<ol>
+<li>An irreducible cuspidal representation is the restricted tensor product of its local representations; at almost all finite primes its distinguished vector is spherical. This is proved in Lesson 12, Theorem 6.1; its equation (5.3) gives the fixed-space tensor basis.</li>
+<li>Each such representation occurs once in the cuspidal spectrum: <a href="multiplicity-one-strong-multiplicity-one-and-the-converse-theorem.html">Lesson 15</a>, Theorem 2.1. Its global Whittaker functional is nonzero and factors into the local ones: Lesson 14, Theorems 1.1 and 2.1. Two cuspidal representations with isomorphic local representations outside a finite set are isomorphic: Lesson 15, Theorem 3.1 and the complete argument in Solution 7.4.</li>
+</ol>
+<p>The local newvector theorem proved above supplies all fixed-space and conductor assertions used here. The global inputs use the local theorems above and do not assume the classical conclusions that follow.</p>
+<p><strong>Theorem 5.1 — classical decomposition.</strong> Each weight-<span class="math" data-tex="\(k\)">\(k\)</span> cuspidal representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has a unique normalized classical newform <span class="math" data-tex="\(f_\pi\)">\(f_\pi\)</span>, with <span class="math" data-tex="\(a_1(f_\pi)=1\)">\(a_1(f_\pi)=1\)</span>, at the level
+<span class="math math-display" data-tex="\[
+M_\pi=\prod_p p^{c(\pi_p)}.
+\tag{5.1}
+\]">\[
+M_\pi=\prod_p p^{c(\pi_p)}.
+\tag{5.1}
+\]</span>
+For every <span class="math" data-tex="\(N\)">\(N\)</span>,
+<span class="math math-display" data-tex="\[
+S_k(\Gamma_1(N))
+=\bigoplus_{M\mid N}\ \bigoplus_{\pi:\,M_\pi=M}\
+ \bigoplus_{d\mid N/M}\mathbb C\,\iota_d f_\pi .
+\tag{5.2}
+\]">\[
+S_k(\Gamma_1(N))
+=\bigoplus_{M\mid N}\ \bigoplus_{\pi:\,M_\pi=M}\
+ \bigoplus_{d\mid N/M}\mathbb C\,\iota_d f_\pi .
+\tag{5.2}
+\]</span>
+Only representations with the indicated holomorphic archimedean type occur. Blocks for distinct <span class="math" data-tex="\(\pi\)">\(\pi\)</span> are orthogonal. The new subspace, defined as the Petersson orthogonal complement of the span of all degeneracy images from proper divisor levels, is
+<span class="math math-display" data-tex="\[
+S_k^{\rm new}(\Gamma_1(N))
+=\bigoplus_{\pi:\,M_\pi=N}\mathbb C f_\pi.
+\tag{5.3}
+\]">\[
+S_k^{\rm new}(\Gamma_1(N))
+=\bigoplus_{\pi:\,M_\pi=N}\mathbb C f_\pi.
+\tag{5.3}
+\]</span>
+Its normalized forms are simultaneous eigenforms for the Hecke and diamond operators.</p>
+<p><strong>Proof.</strong> Decompose <span class="math" data-tex="\(S_k(\Gamma_1(N))\)">\(S_k(\Gamma_1(N))\)</span> into its finite nebentypus spaces and apply Lesson 2 to each. The finite group is
+<span class="math math-display" data-tex="\[
+K_1(N)=\prod_p K_1(v_p(N)).
+\]">\[
+K_1(N)=\prod_p K_1(v_p(N)).
+\]</span>
+The positive holomorphic weight-<span class="math" data-tex="\(k\)">\(k\)</span> line at infinity is one-dimensional by Lesson 3, Proposition 5.1. The fixed finite-level, compact-type and infinitesimal-character space is finite-dimensional by the arithmetic-finiteness theorem proved in <a href="why-the-cuspidal-spectrum-is-discrete.html">Lesson 4</a>, Section 4. The algebraic cuspidal comparison and discrete spectrum therefore give a finite direct sum of cuspidal constituent spaces.</p>
+<p>By inputs 1–2, the contribution of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is its holomorphic line tensored with
+<span class="math math-display" data-tex="\[
+\bigotimes_{p\mid N}\pi_p^{K_1(v_p(N))}
+\]">\[
+\bigotimes_{p\mid N}\pi_p^{K_1(v_p(N))}
+\]</span>
+and the spherical lines at the remaining primes, with no additional multiplicity space. It is zero unless <span class="math" data-tex="\(M_\pi\mid N\)">\(M_\pi\mid N\)</span>. If it is nonzero, Theorem 2.1 gives a tensor-product basis with <span class="math" data-tex="\(j_p=0,\ldots,v_p(N)-c(\pi_p)\)">\(j_p=0,\ldots,v_p(N)-c(\pi_p)\)</span>. The tensor of the local newvectors is a line at level <span class="math" data-tex="\(M_\pi\)">\(M_\pi\)</span>. Its first Whittaker value is nonzero, since every local newfunction equals one at <span class="math" data-tex="\(1\)">\(1\)</span> and the holomorphic archimedean functional is nonzero on its lowest line. Global Whittaker factorization therefore gives a classical form with nonzero first coefficient; scaling it gives <span class="math" data-tex="\(f_\pi\)">\(f_\pi\)</span>.</p>
+<p>Let <span class="math" data-tex="\(d=\prod p^{j_p}\)">\(d=\prod p^{j_p}\)</span>. The corresponding local oldvector is right translation by the finite idèle matrix with components <span class="math" data-tex="\(\operatorname{diag}(p^{-j_p},1)\)">\(\operatorname{diag}(p^{-j_p},1)\)</span>. Components away from the support of <span class="math" data-tex="\(d\)">\(d\)</span>, and the unit factors between <span class="math" data-tex="\(p^{-j_p}\)">\(p^{-j_p}\)</span> and <span class="math" data-tex="\(d^{-1}\)">\(d^{-1}\)</span>, act trivially on the newvectors. Left rational invariance by <span class="math" data-tex="\(\operatorname{diag}(d,1)\)">\(\operatorname{diag}(d,1)\)</span> moves this translation to the positive real matrix <span class="math" data-tex="\(\operatorname{diag}(d,1)\)">\(\operatorname{diag}(d,1)\)</span>. In the unitary lift of Lesson 2 this is
+<span class="math math-display" data-tex="\[
+d^{k/2}f_\pi(dz).
+\tag{5.4}
+\]">\[
+d^{k/2}f_\pi(dz).
+\tag{5.4}
+\]</span>
+The nonzero scalar does not change the classical basis. This proves (5.2), and also its linear independence, since the local shifted vectors are a basis.</p>
+<p>If <span class="math" data-tex="\(M_\pi&lt;N\)">\(M_\pi&lt;N\)</span>, every basis vector in its block already comes from the divisor level <span class="math" data-tex="\(M_\pi\)">\(M_\pi\)</span>; its whole block is old. If <span class="math" data-tex="\(M_\pi=N\)">\(M_\pi=N\)</span>, that block is a line and cannot occur at a proper divisor level, since at some prime its local fixed space would be zero. Distinct irreducible constituents are orthogonal in the unitary spectrum, and Lesson 2 transfers this to Petersson orthogonality. These facts prove (5.3). At the minimal level, every level-preserving Hecke or diamond operator preserves the one-dimensional constituent line, so its normalized vector is a simultaneous eigenform. The vanishing of local fixed spaces below <span class="math" data-tex="\(c(\pi_p)\)">\(c(\pi_p)\)</span> proves that its exact new level is (5.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a concrete normalization behind the phrase “first Whittaker value.” Choose the global character with <span class="math" data-tex="\(\psi_\infty(x)=e^{2\pi ix}\)">\(\psi_\infty(x)=e^{2\pi ix}\)</span>, its finite components of conductor <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>, and quotient additive volume one. Normalize the lowest real Whittaker function by
+<span class="math math-display" data-tex="\[
+W_\infty(d(y))=y^{k/2}e^{-2\pi y}\quad(y&gt;0).
+\]">\[
+W_\infty(d(y))=y^{k/2}e^{-2\pi y}\quad(y&gt;0).
+\]</span>
+For the normalized <span class="math" data-tex="\(f_\pi(z)=\sum_{n\geq1}a_n e^{2\pi inz}\)">\(f_\pi(z)=\sum_{n\geq1}a_n e^{2\pi inz}\)</span>, let <span class="math" data-tex="\(\xi_p\)">\(\xi_p\)</span> be the local newfunction of this lesson. Global factorization gives
+<span class="math math-display" data-tex="\[
+a_n=n^{k/2}\prod_p \xi_p(p^{v_p(n)})\qquad(n\geq1).
+\tag{5.5}
+\]">\[
+a_n=n^{k/2}\prod_p \xi_p(p^{v_p(n)})\qquad(n\geq1).
+\tag{5.5}
+\]</span>
+To check the power, evaluate the global Whittaker function at the rational adelic matrix <span class="math" data-tex="\(d(n)\)">\(d(n)\)</span>. Moving <span class="math" data-tex="\(d(n)\)">\(d(n)\)</span> to the left changes the integration variable <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(x/n\)">\(x/n\)</span>; its adelic Jacobian is one. The character becomes the <span class="math" data-tex="\(n\)">\(n\)</span>-th Fourier character. On a fundamental domain with finite coordinate in <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span>, the lift is <span class="math" data-tex="\(f_\pi(x+i)\)">\(f_\pi(x+i)\)</span>, so the integral is <span class="math" data-tex="\(a_n e^{-2\pi n}\)">\(a_n e^{-2\pi n}\)</span>. The factored value is
+<span class="math" data-tex="\(n^{k/2}e^{-2\pi n}\prod_p\xi_p(n)\)">\(n^{k/2}e^{-2\pi n}\prod_p\xi_p(n)\)</span>. Local unit invariance replaces <span class="math" data-tex="\(n\)">\(n\)</span> by <span class="math" data-tex="\(p^{v_p(n)}\)">\(p^{v_p(n)}\)</span> in each factor. This proves (5.5). It also proves <span class="math" data-tex="\(a_{mn}=a_ma_n\)">\(a_{mn}=a_ma_n\)</span> when <span class="math" data-tex="\((m,n)=1\)">\((m,n)=1\)</span>.</p>
+<p>At <span class="math" data-tex="\(p\nmid M_\pi\)">\(p\nmid M_\pi\)</span>, (4.4) gives
+<span class="math math-display" data-tex="\[
+a_p=p^{(k-1)/2}(\alpha_p+\beta_p),\qquad
+a_{p^2}=p^{k-1}(\alpha_p^2+\alpha_p\beta_p+\beta_p^2).
+\tag{5.6}
+\]">\[
+a_p=p^{(k-1)/2}(\alpha_p+\beta_p),\qquad
+a_{p^2}=p^{k-1}(\alpha_p^2+\alpha_p\beta_p+\beta_p^2).
+\tag{5.6}
+\]</span>
+The pair <span class="math" data-tex="\(a_p,a_{p^2}\)">\(a_p,a_{p^2}\)</span> therefore determines the unordered local parameters: its first value gives their sum and its second gives their product. This will avoid any unproved assertion that traces alone distinguish all the constituents.</p>
+<p><strong>Theorem 5.2 — the classical main lemma.</strong> If <span class="math" data-tex="\(f\in S_k(\Gamma_1(N))\)">\(f\in S_k(\Gamma_1(N))\)</span> and
+<span class="math math-display" data-tex="\[
+a_n(f)=0\quad\text{for every }n\text{ with }(n,N)=1,
+\]">\[
+a_n(f)=0\quad\text{for every }n\text{ with }(n,N)=1,
+\]</span>
+then
+<span class="math math-display" data-tex="\[
+f=\sum_{p\mid N}\iota_p f_p,\qquad
+f_p\in S_k(\Gamma_1(N/p)).
+\tag{5.7}
+\]">\[
+f=\sum_{p\mid N}\iota_p f_p,\qquad
+f_p\in S_k(\Gamma_1(N/p)).
+\tag{5.7}
+\]</span>
+For <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, the empty sum says <span class="math" data-tex="\(f=0\)">\(f=0\)</span>.</p>
+<p><strong>Proof.</strong> Expand <span class="math" data-tex="\(f\)">\(f\)</span> in the basis (5.2). Every term with <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span> has zero coefficient at <span class="math" data-tex="\(n\)">\(n\)</span> coprime to <span class="math" data-tex="\(N\)">\(N\)</span>, since <span class="math" data-tex="\(d\mid N\)">\(d\mid N\)</span>. Thus on those indices its coefficient sequence is
+<span class="math math-display" data-tex="\[
+\sum_{\pi} b_\pi a_n(f_\pi),
+\tag{5.8}
+\]">\[
+\sum_{\pi} b_\pi a_n(f_\pi),
+\tag{5.8}
+\]</span>
+where <span class="math" data-tex="\(b_\pi\)">\(b_\pi\)</span> is the coefficient of the unshifted newform.</p>
+<p>These finitely many sequences are independent on the indices coprime to <span class="math" data-tex="\(N\)">\(N\)</span>. Fix one constituent <span class="math" data-tex="\(i\)">\(i\)</span>. For each other constituent <span class="math" data-tex="\(j\)">\(j\)</span>, strong multiplicity one gives infinitely many primes where its unramified local parameters differ from those of <span class="math" data-tex="\(i\)">\(i\)</span>; otherwise they would agree outside a finite set. Choose distinct such primes <span class="math" data-tex="\(p_j\nmid N\)">\(p_j\nmid N\)</span>. By (5.6), there is <span class="math" data-tex="\(r_j\in\{1,2\}\)">\(r_j\in\{1,2\}\)</span> such that
+<span class="math math-display" data-tex="\[
+a_{p_j^{r_j}}(f_i)\ne a_{p_j^{r_j}}(f_j).
+\]">\[
+a_{p_j^{r_j}}(f_i)\ne a_{p_j^{r_j}}(f_j).
+\]</span>
+For a sequence <span class="math" data-tex="\(a=(a_n)\)">\(a=(a_n)\)</span>, define the linear functional
+<span class="math math-display" data-tex="\[
+L_i(a)=
+\sum_{A\subset\{j:j\ne i\}}
+ \left(\prod_{j\notin A} -a_{p_j^{r_j}}(f_j)\right)
+ a_{\prod_{j\in A}p_j^{r_j}}.
+\tag{5.9}
+\]">\[
+L_i(a)=
+\sum_{A\subset\{j:j\ne i\}}
+ \left(\prod_{j\notin A} -a_{p_j^{r_j}}(f_j)\right)
+ a_{\prod_{j\in A}p_j^{r_j}}.
+\tag{5.9}
+\]</span>
+The empty product in the index is <span class="math" data-tex="\(1\)">\(1\)</span>. All its indices are coprime to <span class="math" data-tex="\(N\)">\(N\)</span>. Coprime multiplicativity, proved in (5.5), says
+<span class="math math-display" data-tex="\[
+L_i(a(f_\pi))=
+\prod_{j\ne i}
+ \bigl(a_{p_j^{r_j}}(f_\pi)-a_{p_j^{r_j}}(f_j)\bigr).
+\]">\[
+L_i(a(f_\pi))=
+\prod_{j\ne i}
+ \bigl(a_{p_j^{r_j}}(f_\pi)-a_{p_j^{r_j}}(f_j)\bigr).
+\]</span>
+This vanishes for every <span class="math" data-tex="\(\pi\ne i\)">\(\pi\ne i\)</span>, and is nonzero for <span class="math" data-tex="\(\pi=i\)">\(\pi=i\)</span>. Applying <span class="math" data-tex="\(L_i\)">\(L_i\)</span> to the zero sequence (5.8) gives <span class="math" data-tex="\(b_i=0\)">\(b_i=0\)</span>. If there is only one constituent, the functional is just <span class="math" data-tex="\(a_1\)">\(a_1\)</span>. Thus every unshifted coefficient vanishes.</p>
+<p>It remains to organize the shifted terms. For each <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, choose one prime <span class="math" data-tex="\(p\mid d\)">\(p\mid d\)</span>. The term <span class="math" data-tex="\(f_\pi(dz)\)">\(f_\pi(dz)\)</span> is <span class="math" data-tex="\(\iota_p\)">\(\iota_p\)</span> applied to <span class="math" data-tex="\(f_\pi((d/p)z)\)">\(f_\pi((d/p)z)\)</span>. Since <span class="math" data-tex="\(d\mid N/M_\pi\)">\(d\mid N/M_\pi\)</span>, its inner form has level dividing <span class="math" data-tex="\(M_\pi d/p\)">\(M_\pi d/p\)</span>, a divisor of <span class="math" data-tex="\(N/p\)">\(N/p\)</span>. Collecting the finitely many terms for each chosen prime produces <span class="math" data-tex="\(f_p\)">\(f_p\)</span> and proves (5.7). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are the decomposition and main lemma assigned to the modular-forms course, Lesson 10. The argument here derives them from the local and adelic representation theory; the classical Fricke-operator computations remain with that course. Theorem 5.1 uses global multiplicity one, while the separation step (5.9) uses strong multiplicity one. Local uniqueness of a Whittaker functional by itself supplies neither global conclusion.</p>
+<p>Deligne's §2.2, Remarque 2.2.7.1, emphasizes the normalized function of the newvector; §§2.4–2.5 connect it with the classical newform and its coefficients. In our unitary induction convention the local function is not the raw sequence <span class="math" data-tex="\(a_{p^m}\)">\(a_{p^m}\)</span>: formula (5.5) inserts the factor <span class="math" data-tex="\(p^{mk/2}\)">\(p^{mk/2}\)</span>. Keeping that factor is what makes the spherical formula and the special coefficient agree.</p>
+<h2 id="6-two-levels-two-local-types">6. Two levels, two local types</h2>
+<p><strong>Example 6.1 — level <span class="math" data-tex="\(11\)">\(11\)</span>.</strong> Use the normalized weight-two trivial-character newform
+<span class="math math-display" data-tex="\[
+f_{11}(z)=\eta(z)^2\eta(11z)^2
+=q-2q^2-q^3+2q^4+q^5+\cdots+q^{11}+\cdots,
+\]">\[
+f_{11}(z)=\eta(z)^2\eta(11z)^2
+=q-2q^2-q^3+2q^4+q^5+\cdots+q^{11}+\cdots,
+\]</span>
+where in this example <span class="math" data-tex="\(q=e^{2\pi iz}\)">\(q=e^{2\pi iz}\)</span>. Its level, character, eta expression and <span class="math" data-tex="\(a_{11}=1\)">\(a_{11}=1\)</span> are recorded on the <a href="https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/11/2/a/a/">LMFDB page for <span class="math" data-tex="\(11.2.a.a\)">\(11.2.a.a\)</span></a>.</p>
+<p>Theorem 5.1 gives <span class="math" data-tex="\(c(\pi_{11})=1\)">\(c(\pi_{11})=1\)</span>. Trivial central character on the units rules out a principal series with just one ramified character; if its central character is trivial, the two unit characters are inverse and have equal conductors. An unramified principal has conductor zero, and a supercuspidal has conductor at least two. Thus
+<span class="math" data-tex="\(\pi_{11}=\mathrm{St}_\chi\)">\(\pi_{11}=\mathrm{St}_\chi\)</span> with <span class="math" data-tex="\(\chi\)">\(\chi\)</span> unramified. Equations (4.3) and (5.5) give
+<span class="math" data-tex="\(a_{11}=11(\chi(11)/11)=\chi(11)\)">\(a_{11}=11(\chi(11)/11)=\chi(11)\)</span>.
+It equals one, so <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is the trivial unramified character and <span class="math" data-tex="\(\pi_{11}=\mathrm{St}\)">\(\pi_{11}=\mathrm{St}\)</span>.</p>
+<p><strong>Example 6.2 — level <span class="math" data-tex="\(27\)">\(27\)</span>.</strong> Use the weight-two trivial-character newform <span class="math" data-tex="\(27.2.a.a\)">\(27.2.a.a\)</span>. The <a href="https://www.lmfdb.org/EllipticCurve/Q/27/a/1">LMFDB record for <span class="math" data-tex="\(27.a1\)">\(27.a1\)</span></a> identifies this associated modular form and records
+<span class="math math-display" data-tex="\[
+f_{27}=q-2q^4-q^7+5q^{13}+4q^{16}-7q^{19}+O(q^{20}).
+\]">\[
+f_{27}=q-2q^4-q^7+5q^{13}+4q^{16}-7q^{19}+O(q^{20}).
+\]</span>
+The recorded form is input data for this example; no elliptic-curve modularity argument is being assumed proved here.</p>
+<p>Its exact level gives <span class="math" data-tex="\(c(\pi_3)=3\)">\(c(\pi_3)=3\)</span>. With trivial central character a principal conductor is even, since the inducing unit characters are inverse. A special conductor is either one or <span class="math" data-tex="\(2a(\chi)\)">\(2a(\chi)\)</span>, also excluding three. The classification therefore makes <span class="math" data-tex="\(\pi_3\)">\(\pi_3\)</span> supercuspidal. Its normalized function is <span class="math" data-tex="\(1_{\mathbb Z_3^\times}\)">\(1_{\mathbb Z_3^\times}\)</span>, so (5.5) gives <span class="math" data-tex="\(a_3=0\)">\(a_3=0\)</span>, agreeing with the displayed expansion. The zero coefficient alone would not determine conductor three; the exact level is essential.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 7.1 — one ramified character.</strong> Let <span class="math" data-tex="\(\mu_1\)">\(\mu_1\)</span> be unramified and <span class="math" data-tex="\(a(\mu_2)=2\)">\(a(\mu_2)=2\)</span>. Compute the conductor of <span class="math" data-tex="\(I(\mu_1,\mu_2)\)">\(I(\mu_1,\mu_2)\)</span>, its fixed-space dimensions and its normalized newfunction.</p>
+<p><strong>Solution 7.1.</strong> The ratio <span class="math" data-tex="\(\mu_1/\mu_2\)">\(\mu_1/\mu_2\)</span> is ramified, so it cannot be either exceptional unramified ratio <span class="math" data-tex="\(|\ |^{\pm1}\)">\(|\ |^{\pm1}\)</span>. The induction is irreducible. Lemma 3.1 counts the cells
+<span class="math math-display" data-tex="\[
+2\leq i\leq n.
+\]">\[
+2\leq i\leq n.
+\]</span>
+There are none at <span class="math" data-tex="\(n=0,1\)">\(n=0,1\)</span>, one at <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, and <span class="math" data-tex="\(n-1\)">\(n-1\)</span> at <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>. Thus <span class="math" data-tex="\(c=2\)">\(c=2\)</span> and <span class="math" data-tex="\(\dim V_n=\max(0,n-1)\)">\(\dim V_n=\max(0,n-1)\)</span>. The only unit-invariant noncompact germ is <span class="math" data-tex="\(|t|^{1/2}\mu_1(t)\)">\(|t|^{1/2}\mu_1(t)\)</span>. The normalized recurrence (4.3), and the nonzero-germ argument following it, give
+<span class="math math-display" data-tex="\[
+\xi_2(\varpi^m u)=q^{-m/2}\mu_1(\varpi)^m
+\quad(m\geq0),\qquad \xi_2=0\quad(m&lt;0).
+\]">\[
+\xi_2(\varpi^m u)=q^{-m/2}\mu_1(\varpi)^m
+\quad(m\geq0),\qquad \xi_2=0\quad(m&lt;0).
+\]</span>
+The oldbasis at level <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> consists of its shifts by <span class="math" data-tex="\(\varpi^{-j}\)">\(\varpi^{-j}\)</span>, <span class="math" data-tex="\(0\leq j\leq n-2\)">\(0\leq j\leq n-2\)</span>. A ramified central character does not turn this into ordinary <span class="math" data-tex="\(K_0(n)\)">\(K_0(n)\)</span>-invariance: the character is <span class="math" data-tex="\(\omega(d)\)">\(\omega(d)\)</span> as in (1.2).</p>
+<p><strong>Exercise 7.2 — the Steinberg vector.</strong> Find the normalized newvector of the untwisted Steinberg representation in the Kirillov model.</p>
+<p><strong>Solution 7.2.</strong> The exact induction sequence gives <span class="math" data-tex="\(\dim\mathrm{St}^{K_1(n)}=n\)">\(\dim\mathrm{St}^{K_1(n)}=n\)</span>, so the first level is <span class="math" data-tex="\(1\)">\(1\)</span>. Its germ is <span class="math" data-tex="\(c|t|\)">\(c|t|\)</span> by Lesson 7, Proposition 6.2. A unit-invariant function with this germ and support in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> belongs to <span class="math" data-tex="\(V_n\)">\(V_n\)</span> for some <span class="math" data-tex="\(n\)">\(n\)</span> by smoothness and Lemma 1.1. Consequently the level-one newfunction cannot be compact: all the oldbasis shifts would then be compact and could not span that function. In (4.3) its nonzero germ forces <span class="math" data-tex="\(A=q^{-1}\)">\(A=q^{-1}\)</span>. Normalizing its value on <span class="math" data-tex="\(U\)">\(U\)</span> gives exactly
+<span class="math math-display" data-tex="\[
+\xi_{\rm St}(t)=|t|\,1_{\{|t|\leq1\}}\qquad(t\in F^\times).
+\]">\[
+\xi_{\rm St}(t)=|t|\,1_{\{|t|\leq1\}}\qquad(t\in F^\times).
+\]</span>
+This is an equality of functions, not only an asymptotic at zero. The recurrence fixes all shells of nonnegative valuation, and upper integral invariance kills the negative shells. Its Weyl transform meets the lower level-one support condition by Lemma 1.1, because it is the computed vector of <span class="math" data-tex="\(V_1\)">\(V_1\)</span>. No assertion that <span class="math" data-tex="\(1_U\)">\(1_U\)</span> itself is the Steinberg newvector has been made.</p>
+<p><strong>Exercise 7.3 — a zero bad-prime coefficient.</strong> Using the proved global inputs of Section 5, show that a normalized trivial-character newform whose level is divisible by <span class="math" data-tex="\(p^2\)">\(p^2\)</span> has <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span>.</p>
+<p><strong>Solution 7.3.</strong> At <span class="math" data-tex="\(p\)">\(p\)</span>, the conductor <span class="math" data-tex="\(c(\pi_p)=v_p(N)\)">\(c(\pi_p)=v_p(N)\)</span> is at least two. A principal series with trivial central character has inverse inducing unit characters, hence either both unramified or both ramified. The former has conductor zero and is excluded. In the latter case its unit-invariant newfunction is compact and equals <span class="math" data-tex="\(1_U\)">\(1_U\)</span>. A special representation at this conductor must be a ramified twist, since an unramified twist has conductor one; its newfunction is again <span class="math" data-tex="\(1_U\)">\(1_U\)</span>. The remaining possibility is supercuspidal, with the same normalized function. These exhaust the infinite-dimensional local classification. In all cases <span class="math" data-tex="\(\xi_p(p)=0\)">\(\xi_p(p)=0\)</span>, so the normalization (5.5) gives
+<span class="math math-display" data-tex="\[
+a_p=p^{k/2}\xi_p(p)=0.
+\]">\[
+a_p=p^{k/2}\xi_p(p)=0.
+\]</span>
+A principal series with one ramified inducing character can have a nonzero bad-prime coefficient, but its unit central character is then ramified. The trivial-character assumption excludes it.</p>
+<p><strong>Exercise 7.4 — principal-series dimensions directly.</strong> Prove the dimension formula for principal series without invoking Theorem 2.1. Identify a basis at each level.</p>
+<p><strong>Solution 7.4.</strong> At <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the spherical section exists precisely when both inducing characters are unramified. At <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, use the primitive-row identification and representatives <span class="math" data-tex="\(r_i\)">\(r_i\)</span> from Lemma 3.1. Equation (3.2) shows that the stabilizer on the <span class="math" data-tex="\(i\)">\(i\)</span>-th cell has diagonal characters on <span class="math" data-tex="\(U_{n-i}\times U_i\)">\(U_{n-i}\times U_i\)</span>. A function supported on that cell is determined by <span class="math" data-tex="\(f(r_i)\)">\(f(r_i)\)</span>. It is well-defined with <span class="math" data-tex="\(f(r_i)=1\)">\(f(r_i)=1\)</span> exactly when
+<span class="math math-display" data-tex="\[
+a(\mu_1)\leq n-i,\qquad a(\mu_2)\leq i.
+\]">\[
+a(\mu_1)\leq n-i,\qquad a(\mu_2)\leq i.
+\]</span>
+When this holds, define it on <span class="math" data-tex="\(B(\mathcal O)r_iK_1(n)\)">\(B(\mathcal O)r_iK_1(n)\)</span> by the inducing character and extend by zero to the other cells. The stabilizer calculation makes this definition independent of the chosen decomposition. The finitely many cells are open and closed, so it is a locally constant compact-picture section. These sections have disjoint supports and form a basis; all other cells force value zero. Their number is
+<span class="math" data-tex="\(\max(0,n-a(\mu_1)-a(\mu_2)+1)\)">\(\max(0,n-a(\mu_1)-a(\mu_2)+1)\)</span>.</p>
+<p>For irreducible induction this is precisely the requested formula with <span class="math" data-tex="\(c=a(\mu_1)+a(\mu_2)\)">\(c=a(\mu_1)+a(\mu_2)\)</span>. For exceptional induction it remains the dimension of the whole induced representation. Subtracting the determinant-character fixed space using exact compact averaging gives the special dimensions in (3.4), rather than incorrectly applying an irreducible formula to the reducible induction.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>H. Jacquet and R. P. Langlands, <a href="https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf"><em>Automorphic Forms on GL(2)</em></a>, LNM 114, 1970, §2: Kirillov action and the finite Weyl-coefficient identities underlying Theorem 4.3. The proofs in Lesson 7 fix the conventions used here.</li>
+<li>P. Deligne, <a href="https://publications.ias.edu/sites/default/files/Number21.pdf"><em>Formes modulaires et représentations de GL(2)</em></a>, in <em>Modular Functions of One Variable II</em>, LNM 349, 1973, §2.2, Théorème 2.2.6 and Remarque 2.2.7.1; §§2.3–2.5 for the newvector normalization and classical passage. His lower-unipotent convention is translated explicitly after Theorem 2.1.</li>
+<li><a href="https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/11/2/a/a/">LMFDB newform <span class="math" data-tex="\(11.2.a.a\)">\(11.2.a.a\)</span></a> and <a href="https://www.lmfdb.org/EllipticCurve/Q/27/a/1">LMFDB elliptic-curve record <span class="math" data-tex="\(27.a1\)">\(27.a1\)</span></a>, the latter's associated modular form <span class="math" data-tex="\(27.2.a.a\)">\(27.2.a.a\)</span> and displayed coefficient data. Accessed October 2026. Only the identified example data are inputs; the local type deductions are given in Section 6.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="whittaker-models-kirillov-models-and-the-local-classification.html">← Whittaker models, Kirillov models and the local classification</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="supercuspidal-representations-from-compact-induction.html">Supercuspidal representations from compact induction →</a></span></nav>
+<p class="small source-link"><a href="src/newvectors-conductors-and-the-passage-to-classical-newforms.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/automorphic-forms-and-representations-of-gl2">Repository</a></nav>
+</footer>
+</body>
+</html>

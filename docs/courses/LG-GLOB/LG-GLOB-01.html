@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reductive groups, root data and the L-group · Global Langlands conjectures and functoriality</title>
+<meta name="description" content="A lesson of the course Global Langlands conjectures and functoriality. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GLOB/LG-GLOB-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Global Langlands conjectures and functoriality</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong></p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="reductive-groups-root-data-and-the-l-group">Reductive groups, root data and the L-group</h1>
+<p><em>Draft lesson. Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).</em></p>
+<p>An unramified representation of a torus is described by complex numbers assigned to its one-parameter subgroups. For a reductive group, the same idea survives, but its roots impose symmetries on those numbers. The resulting parameter belongs to a second reductive group, the dual group. If the original group is not split, a Galois action must be included. The L-group records these two pieces together.</p>
+<p>We construct this object and calculate it for the classical groups. We assume familiarity with algebraic groups, characters and cocharacters of tori, and root systems. The structural proofs we use are in <a href="../AG-RG/AG-RG-01.html">Tori, maximal tori and their conjugacy</a>, <a href="../AG-RG/AG-RG-02.html">Regular elements and centralizers</a>, <a href="../AG-RG/AG-RG-03.html">Roots and reductive groups of rank one</a>, <a href="../AG-RG/AG-RG-04.html">Root data, Weyl chambers and the Bruhat decomposition</a>, and <a href="../AG-RG/AG-RG-05.html">Pinnings and the classification of split reductive groups</a>. <a href="../LG-GAL/representations-of-weil-groups.html">Representations of Weil groups</a>, Sections 1 and 5, supplies the local Weil groups; the global construction is proved in <a href="../NT-CFT/brauer-groups-of-local-and-global-fields.html">Brauer groups of local and global fields, Section 7</a>. Basic freely accessible references are [Milne], [Conrad], [Getz–Hahn] and [Langlands]. All groups called reductive here are connected. Orthogonal-group examples are in characteristic different from two.</p>
+<h2 id="1-why-the-dual-torus-has-the-opposite-lattice">1. Why the dual torus has the opposite lattice</h2>
+<p>Let <span class="math" data-tex="\(T\)">\(T\)</span> be a torus over a field <span class="math" data-tex="\(F\)">\(F\)</span>. Over a separable closure <span class="math" data-tex="\(F^s\)">\(F^s\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+X=X^*(T)=\operatorname{Hom}_{F^s}(T_{F^s},\mathbf G_m),
+\qquad
+Y=X_*(T)=\operatorname{Hom}_{F^s}(\mathbf G_m,T_{F^s}).
+\]">\[
+X=X^*(T)=\operatorname{Hom}_{F^s}(T_{F^s},\mathbf G_m),
+\qquad
+Y=X_*(T)=\operatorname{Hom}_{F^s}(\mathbf G_m,T_{F^s}).
+\]</span>
+<p>These are free abelian groups of the same finite rank. Composition gives a perfect pairing: <span class="math" data-tex="\(\chi\circ\lambda(z)=z^{\langle\chi,\lambda\rangle}\)">\(\chi\circ\lambda(z)=z^{\langle\chi,\lambda\rangle}\)</span>. Thus <span class="math" data-tex="\(Y=\operatorname{Hom}(X,\mathbf Z)\)">\(Y=\operatorname{Hom}(X,\mathbf Z)\)</span>. Their Galois actions preserve the pairing.</p>
+<p><strong>Proposition 1.1 (dual torus).</strong> The complex torus with character lattice <span class="math" data-tex="\(Y\)">\(Y\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\widehat T=\operatorname{Spec}\mathbf C[Y],\qquad
+\widehat T(\mathbf C)=\operatorname{Hom}(Y,\mathbf C^\times)
+\cong X\otimes_{\mathbf Z}\mathbf C^\times.
+\]">\[
+\widehat T=\operatorname{Spec}\mathbf C[Y],\qquad
+\widehat T(\mathbf C)=\operatorname{Hom}(Y,\mathbf C^\times)
+\cong X\otimes_{\mathbf Z}\mathbf C^\times.
+\]</span>
+<p>The last isomorphism is canonical. The induced action is <span class="math" data-tex="\((w\cdot t)(\lambda)=t(w^{-1}\lambda)\)">\((w\cdot t)(\lambda)=t(w^{-1}\lambda)\)</span>.</p>
+<p><em>Proof.</em> The group algebra <span class="math" data-tex="\(\mathbf C[Y]\)">\(\mathbf C[Y]\)</span> has basis <span class="math" data-tex="\(e^\lambda\)">\(e^\lambda\)</span>, multiplication <span class="math" data-tex="\(e^\lambda e^\mu=e^{\lambda+\mu}\)">\(e^\lambda e^\mu=e^{\lambda+\mu}\)</span>, and coproduct <span class="math" data-tex="\(e^\lambda\mapsto e^\lambda\otimes e^\lambda\)">\(e^\lambda\mapsto e^\lambda\otimes e^\lambda\)</span>. An algebra homomorphism to <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> sends every <span class="math" data-tex="\(e^\lambda\)">\(e^\lambda\)</span> to a nonzero number and is exactly a homomorphism <span class="math" data-tex="\(Y\to\mathbf C^\times\)">\(Y\to\mathbf C^\times\)</span>. A basis of <span class="math" data-tex="\(Y\)">\(Y\)</span> identifies the resulting algebraic group with a product of multiplicative groups. An algebraic character is a group-like element <span class="math" data-tex="\(f=\sum c_\lambda e^\lambda\)">\(f=\sum c_\lambda e^\lambda\)</span>: the equation <span class="math" data-tex="\(\Delta(f)=f\otimes f\)">\(\Delta(f)=f\otimes f\)</span> has no mixed terms on its left, so at most one coefficient is nonzero. Its counit is one, making that coefficient one. Thus all characters are exactly the <span class="math" data-tex="\(e^\lambda\)">\(e^\lambda\)</span>, and the character lattice is <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>Define the displayed tensor map by</p>
+<span class="math math-display" data-tex="\[
+\chi\otimes z\longmapsto\bigl[\lambda\longmapsto
+z^{\langle\chi,\lambda\rangle}\bigr].
+\]">\[
+\chi\otimes z\longmapsto\bigl[\lambda\longmapsto
+z^{\langle\chi,\lambda\rangle}\bigr].
+\]</span>
+<p>Bilinearity makes it well-defined. In dual bases it is the identity map on <span class="math" data-tex="\((\mathbf C^\times)^r\)">\((\mathbf C^\times)^r\)</span>, and hence an isomorphism. The formula for the action follows by precomposing a character of <span class="math" data-tex="\(Y\)">\(Y\)</span> with the inverse action on <span class="math" data-tex="\(Y\)">\(Y\)</span>; it is compatible with the tensor description because the pairing is invariant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The distinction between <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> matters even for a split torus. Both have abstract rank <span class="math" data-tex="\(r\)">\(r\)</span>, but there is no preferred identification between them. The expression <span class="math" data-tex="\(Y\otimes\mathbf C^\times\)">\(Y\otimes\mathbf C^\times\)</span> instead has character lattice <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>For a nonarchimedean field with uniformizer <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>, a split torus satisfies</p>
+<span class="math math-display" data-tex="\[
+T(F)/T(\mathcal O_F)\cong Y,\qquad
+\lambda\longmapsto\lambda(\varpi).
+\]">\[
+T(F)/T(\mathcal O_F)\cong Y,\qquad
+\lambda\longmapsto\lambda(\varpi).
+\]</span>
+<p>To see this, choose coordinates <span class="math" data-tex="\(T\cong\mathbf G_m^r\)">\(T\cong\mathbf G_m^r\)</span> and apply the valuation to each coordinate. An unramified complex character <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of <span class="math" data-tex="\(T(F)\)">\(T(F)\)</span> therefore gives the dual point <span class="math" data-tex="\(t_\xi(\lambda)=\xi(\lambda(\varpi))\)">\(t_\xi(\lambda)=\xi(\lambda(\varpi))\)</span>. Replacing <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> by a unit times <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> changes the representative by <span class="math" data-tex="\(T(\mathcal O_F)\)">\(T(\mathcal O_F)\)</span>, so the point is unchanged. This is the simplest Satake parameter.</p>
+<h2 id="2-roots-determine-the-dual-group-including-its-isogeny-type">2. Roots determine the dual group, including its isogeny type</h2>
+<p>A connected reductive group over <span class="math" data-tex="\(F\)">\(F\)</span> is a smooth affine group whose geometric fibres are connected and have trivial connected unipotent radical. Choose a maximal torus <span class="math" data-tex="\(T\)">\(T\)</span> in <span class="math" data-tex="\(G_{F^s}\)">\(G_{F^s}\)</span>. Its root datum is</p>
+<span class="math math-display" data-tex="\[
+\mathcal R(G,T)=(X,\Phi,Y,\Phi^\vee).
+\]">\[
+\mathcal R(G,T)=(X,\Phi,Y,\Phi^\vee).
+\]</span>
+<p>Here <span class="math" data-tex="\(\Phi\subset X\)">\(\Phi\subset X\)</span> is the set of nonzero torus weights on the Lie algebra, and each root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has a coroot <span class="math" data-tex="\(\alpha^\vee\in Y\)">\(\alpha^\vee\in Y\)</span>. In particular, <span class="math" data-tex="\(\langle\alpha,\alpha^\vee\rangle=2\)">\(\langle\alpha,\alpha^\vee\rangle=2\)</span>. The reflections are</p>
+<span class="math math-display" data-tex="\[
+s_\alpha(x)=x-\langle x,\alpha^\vee\rangle\alpha,
+\qquad
+s_\alpha(y)=y-\langle\alpha,y\rangle\alpha^\vee.
+\]">\[
+s_\alpha(x)=x-\langle x,\alpha^\vee\rangle\alpha,
+\qquad
+s_\alpha(y)=y-\langle\alpha,y\rangle\alpha^\vee.
+\]</span>
+<p>The same notation on the two lattices denotes mutually dual actions. <a href="../AG-RG/AG-RG-04.html">Root data, Weyl chambers and the Bruhat decomposition, Theorem 2.1</a> proves that these data satisfy the reduced root-datum axioms. Theorem 4.1 there identifies a Borel subgroup <span class="math" data-tex="\(B\supset T\)">\(B\supset T\)</span> with a positive system, hence with simple roots <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> and simple coroots <span class="math" data-tex="\(\Delta^\vee\)">\(\Delta^\vee\)</span>.</p>
+<p><strong>Definition 2.1.</strong> The dual root datum is</p>
+<span class="math math-display" data-tex="\[
+\mathcal R^\vee=(Y,\Phi^\vee,X,\Phi).
+\]">\[
+\mathcal R^\vee=(Y,\Phi^\vee,X,\Phi).
+\]</span>
+<p>The pairing and reflection axioms are symmetric in roots and coroots, so this is again a reduced root datum.</p>
+<p>The Langlands dual group <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> is a complex connected reductive group with this datum. Its existence and uniqueness follow from <a href="../AG-RG/AG-RG-05.html">Pinnings and the classification of split reductive groups, Theorems 10.1 and 5.1</a>. These are the root-data classification theorems of Chevalley and Demazure. They construct a group for every reduced datum and prove that isomorphisms of based data lift uniquely once pinnings are fixed. Applying them over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> defines <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>. A based dual datum specifies <span class="math" data-tex="\((\widehat G,\widehat B,\widehat T)\)">\((\widehat G,\widehat B,\widehat T)\)</span>; a pinning removes the remaining ambiguity in isomorphisms. For a free human treatment, see [Conrad 2014, Theorems 6.1.16(2) and 6.1.17].</p>
+<p>Dualizing twice returns the original datum. Merely dualizing a Dynkin diagram is insufficient: the lattices specify whether a semisimple group is simply connected, adjoint or intermediate. For example, the diagrams of <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> and <span class="math" data-tex="\(PGL_2\)">\(PGL_2\)</span> agree, but their dual groups do not.</p>
+<p>A group over <span class="math" data-tex="\(F\)">\(F\)</span> is <strong>split</strong> if it has a split maximal torus; it is <strong>quasi-split</strong> if it has an <span class="math" data-tex="\(F\)">\(F\)</span>-defined Borel subgroup. A split group is quasi-split because each positive system gives an <span class="math" data-tex="\(F\)">\(F\)</span>-defined Borel by the preceding theorem. Two groups are <strong>inner forms</strong> if an isomorphism over <span class="math" data-tex="\(F^s\)">\(F^s\)</span> makes their descent actions differ by inner automorphisms. Section 4 proves that they have the same action on the based root datum and hence the same L-group. Their local representation theories and the relevance conditions on parameters can differ. The L-group alone does not classify inner forms.</p>
+<p>For orientation, <span class="math" data-tex="\(GL_n\)">\(GL_n\)</span>, <span class="math" data-tex="\(SL_n\)">\(SL_n\)</span>, <span class="math" data-tex="\(PGL_n\)">\(PGL_n\)</span> and the split symplectic and special orthogonal groups are split; their displayed tori below exhibit this. Section 5 treats unitary groups and restriction of scalars. For a central simple algebra <span class="math" data-tex="\(A\)">\(A\)</span> of degree <span class="math" data-tex="\(n\)">\(n\)</span>, <a href="../AG-RG/AG-RG-06.html">Automorphisms, forms and parabolic subgroups, Lemma 6.1 and Theorem 6.2</a> proves that <span class="math" data-tex="\(A\)">\(A\)</span> becomes <span class="math" data-tex="\(\operatorname{Mat}_n\)">\(\operatorname{Mat}_n\)</span> over a finite separable extension and that its algebra descent maps are conjugations by matrices. Restricting those maps to units shows directly that <span class="math" data-tex="\(A^\times\)">\(A^\times\)</span> is an inner form of <span class="math" data-tex="\(GL_n\)">\(GL_n\)</span>.</p>
+<h3 id="root-subgroups-and-borel-pairs">Root subgroups and Borel pairs</h3>
+<p>We make explicit the structure used in the calculations and in the pinning comparison. Over an algebraically closed field, the root subgroup attached to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has a parameter <span class="math" data-tex="\(x_\alpha:\mathbf G_a\to U_\alpha\)">\(x_\alpha:\mathbf G_a\to U_\alpha\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+t x_\alpha(u)t^{-1}=x_\alpha(\alpha(t)u).
+\tag{2.1}
+\]">\[
+t x_\alpha(u)t^{-1}=x_\alpha(\alpha(t)u).
+\tag{2.1}
+\]</span>
+<p>Its tangent space is the one-dimensional root space. This statement, including existence of the parameter and its torus equivariance, is proved in <a href="../AG-RG/AG-RG-03.html">Roots and reductive groups of rank one, Theorem 4.1</a>. The coroot is the diagonal cocharacter of the associated rank-one <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span>-map, constructed there in Theorems 6.1 and 7.1.</p>
+<p><strong>Lemma 2.2 (generation and the stabilizer of a Borel pair).</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be split connected reductive over a field <span class="math" data-tex="\(k\)">\(k\)</span>, with split maximal torus <span class="math" data-tex="\(T\subset B\)">\(T\subset B\)</span>. The torus and the root subgroups generate <span class="math" data-tex="\(H(k)\)">\(H(k)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+N_H(B)(k)\cap N_H(T)(k)=T(k).
+\tag{2.2}
+\]">\[
+N_H(B)(k)\cap N_H(T)(k)=T(k).
+\tag{2.2}
+\]</span>
+<p>Every element of <span class="math" data-tex="\(Z(H)(k)\)">\(Z(H)(k)\)</span> lies in <span class="math" data-tex="\(T(k)\)">\(T(k)\)</span>.</p>
+<p><em>Proof.</em> The root coordinates of <a href="../AG-RG/AG-RG-04.html">Root data, Weyl chambers and the Bruhat decomposition, Section 5</a> express the unipotent radical of <span class="math" data-tex="\(B\)">\(B\)</span> as an ordered product of its positive root groups. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is generated by <span class="math" data-tex="\(T\)">\(T\)</span> and those groups. Theorem 6.2 of that lesson expresses every point as <span class="math" data-tex="\(b_1n_wb_2\)">\(b_1n_wb_2\)</span>. Each representative <span class="math" data-tex="\(n_w\)">\(n_w\)</span> is a product of the simple representatives</p>
+<span class="math math-display" data-tex="\[
+n_\alpha=x_\alpha(1)x_{-\alpha}(-1)x_\alpha(1),
+\]">\[
+n_\alpha=x_\alpha(1)x_{-\alpha}(-1)x_\alpha(1),
+\]</span>
+<p>by the rank-one formulas of the same lesson, Section 2. This proves generation.</p>
+<p>An element normalizing both <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> induces a Weyl element preserving the positive roots of <span class="math" data-tex="\(B\)">\(B\)</span>. Theorem 4.1 of that lesson proves that the Weyl group acts simply transitively on positive systems, so this Weyl element is the identity. The element therefore centralizes <span class="math" data-tex="\(T\)">\(T\)</span>. <a href="../AG-RG/AG-RG-02.html">Regular elements and centralizers, Theorem 2.2</a> proves the schematic identity <span class="math" data-tex="\(C_H(T)=T\)">\(C_H(T)=T\)</span>, giving (2.2) on <span class="math" data-tex="\(k\)">\(k\)</span>-points. The same centralizer theorem puts any central <span class="math" data-tex="\(k\)">\(k\)</span>-point in <span class="math" data-tex="\(T(k)\)">\(T(k)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Finally, Borel subgroups are conjugate by <a href="../AG-RG/AG-RG-01.html">Tori, maximal tori and their conjugacy, Lemma 2.1</a>. Its Section 2 proves that maximal tori of a connected solvable group are conjugate within that group. Applied to <span class="math" data-tex="\(B\)">\(B\)</span>, these two results make all Borel pairs conjugate. These are proofs already supplied by the preceding lessons; the free references [Milne, 19.11–19.22] and [Conrad, Corollary 1.2.4] give further treatments of the root and centralizer statements.</p>
+<h2 id="3-calculating-the-classical-dual-groups">3. Calculating the classical dual groups</h2>
+<p>Write <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span> for coordinate characters and <span class="math" data-tex="\(f_1,\ldots,f_n\)">\(f_1,\ldots,f_n\)</span> for their dual cocharacters. In the formulas involving <span class="math" data-tex="\(\mathbf Z^n\)">\(\mathbf Z^n\)</span>, the pairing is the ordinary dot product. The following calculations determine the full root data, not just the Lie algebras.</p>
+<p><strong>Theorem 3.1.</strong> For the split groups, the duals are</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Complex dual group</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(GL_n\)">\(GL_n\)</span></td>
+<td><span class="math" data-tex="\(GL_n(\mathbf C)\)">\(GL_n(\mathbf C)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(SL_n\)">\(SL_n\)</span></td>
+<td><span class="math" data-tex="\(PGL_n(\mathbf C)\)">\(PGL_n(\mathbf C)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(PGL_n\)">\(PGL_n\)</span></td>
+<td><span class="math" data-tex="\(SL_n(\mathbf C)\)">\(SL_n(\mathbf C)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(Sp_{2n}\)">\(Sp_{2n}\)</span></td>
+<td><span class="math" data-tex="\(SO_{2n+1}(\mathbf C)\)">\(SO_{2n+1}(\mathbf C)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(SO_{2n+1}\)">\(SO_{2n+1}\)</span></td>
+<td><span class="math" data-tex="\(Sp_{2n}(\mathbf C)\)">\(Sp_{2n}(\mathbf C)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(SO_{2n}\)">\(SO_{2n}\)</span>, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span></td>
+<td><span class="math" data-tex="\(SO_{2n}(\mathbf C)\)">\(SO_{2n}(\mathbf C)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><em>Proof.</em> For <span class="math" data-tex="\(GL_n\)">\(GL_n\)</span>, the diagonal torus has <span class="math" data-tex="\(X=Y=\mathbf Z^n\)">\(X=Y=\mathbf Z^n\)</span>. Conjugation on the matrix unit <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> has weight <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span>. Its coroot sends <span class="math" data-tex="\(z\)">\(z\)</span> to a diagonal matrix with entries <span class="math" data-tex="\(z,z^{-1}\)">\(z,z^{-1}\)</span> in positions <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, so it is <span class="math" data-tex="\(f_i-f_j\)">\(f_i-f_j\)</span>. Interchanging the two lattices gives the same datum.</p>
+<p>For <span class="math" data-tex="\(SL_n\)">\(SL_n\)</span>, restricting characters from the diagonal torus of <span class="math" data-tex="\(GL_n\)">\(GL_n\)</span> kills exactly the determinant. Thus</p>
+<span class="math math-display" data-tex="\[
+X=\mathbf Z^n/\mathbf Z(1,\ldots,1),\qquad
+Y=\{(a_i)\in\mathbf Z^n\mid\sum_i a_i=0\}.
+\]">\[
+X=\mathbf Z^n/\mathbf Z(1,\ldots,1),\qquad
+Y=\{(a_i)\in\mathbf Z^n\mid\sum_i a_i=0\}.
+\]</span>
+<p>Roots are the classes of <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span>; coroots are <span class="math" data-tex="\(f_i-f_j\)">\(f_i-f_j\)</span> in the sum-zero lattice. For <span class="math" data-tex="\(PGL_n\)">\(PGL_n\)</span>, a character of the diagonal torus must be trivial on scalar matrices. Its datum has</p>
+<span class="math math-display" data-tex="\[
+X=\{(a_i)\in\mathbf Z^n\mid\sum_i a_i=0\},\qquad
+Y=\mathbf Z^n/\mathbf Z(1,\ldots,1),
+\]">\[
+X=\{(a_i)\in\mathbf Z^n\mid\sum_i a_i=0\},\qquad
+Y=\mathbf Z^n/\mathbf Z(1,\ldots,1),
+\]</span>
+<p>with the same coordinate differences interpreted in these lattices. The two data are dual.</p>
+<p>For <span class="math" data-tex="\(Sp_{2n\!}\)">\(Sp_{2n\!}\)</span>, use the torus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{diag}(t_1,\ldots,t_n,t_1^{-1},\ldots,t_n^{-1}).
+\]">\[
+\operatorname{diag}(t_1,\ldots,t_n,t_1^{-1},\ldots,t_n^{-1}).
+\]</span>
+<p>Its character and cocharacter lattices are <span class="math" data-tex="\(\mathbf Z^n\)">\(\mathbf Z^n\)</span>. In block form the symplectic Lie algebra consists of matrices</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}A&amp;B\\ C&amp;-A^t\end{pmatrix},\qquad B=B^t,\quad C=C^t.
+\]">\[
+\begin{pmatrix}A&amp;B\\ C&amp;-A^t\end{pmatrix},\qquad B=B^t,\quad C=C^t.
+\]</span>
+<p>The off-diagonal entries of <span class="math" data-tex="\(A\)">\(A\)</span> have weights <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span>; the entries of <span class="math" data-tex="\(B,C\)">\(B,C\)</span> have weights <span class="math" data-tex="\(\pm(e_i+e_j)\)">\(\pm(e_i+e_j)\)</span>, including <span class="math" data-tex="\(\pm2e_i\)">\(\pm2e_i\)</span> on their diagonals. Therefore</p>
+<span class="math math-display" data-tex="\[
+\Phi=\{\pm e_i\pm e_j:i&lt;j\}\cup\{\pm2e_i\},
+\qquad
+\Phi^\vee=\{\pm f_i\pm f_j:i&lt;j\}\cup\{\pm f_i\}.
+\]">\[
+\Phi=\{\pm e_i\pm e_j:i&lt;j\}\cup\{\pm2e_i\},
+\qquad
+\Phi^\vee=\{\pm f_i\pm f_j:i&lt;j\}\cup\{\pm f_i\}.
+\]</span>
+<p>Here are the rank-one maps that determine the coroots. Choose paired basis vectors <span class="math" data-tex="\(v_i,w_i\)">\(v_i,w_i\)</span> with symplectic pairing <span class="math" data-tex="\((v_i,w_j)=\delta_{ij}\)">\((v_i,w_j)=\delta_{ij}\)</span>. For the root <span class="math" data-tex="\(2e_i\)">\(2e_i\)</span>, let <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> act on <span class="math" data-tex="\(\langle v_i,w_i\rangle\)">\(\langle v_i,w_i\rangle\)</span>, fixing its symplectic complement. Its diagonal acts with <span class="math" data-tex="\(t_i=z\)">\(t_i=z\)</span>, giving coroot <span class="math" data-tex="\(f_i\)">\(f_i\)</span>. For <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span>, act by <span class="math" data-tex="\(A\in SL_2\)">\(A\in SL_2\)</span> on <span class="math" data-tex="\(\langle v_i,v_j\rangle\)">\(\langle v_i,v_j\rangle\)</span> and by <span class="math" data-tex="\(A^{-t}\)">\(A^{-t}\)</span> on <span class="math" data-tex="\(\langle w_i,w_j\rangle\)">\(\langle w_i,w_j\rangle\)</span>. The diagonal gives <span class="math" data-tex="\(t_i=z,t_j=z^{-1}\)">\(t_i=z,t_j=z^{-1}\)</span>, so its coroot is <span class="math" data-tex="\(f_i-f_j\)">\(f_i-f_j\)</span>. Conjugate this map by the symplectic change <span class="math" data-tex="\(v_j\mapsto w_j,w_j\mapsto-v_j\)">\(v_j\mapsto w_j,w_j\mapsto-v_j\)</span> to obtain the root <span class="math" data-tex="\(e_i+e_j\)">\(e_i+e_j\)</span> and coroot <span class="math" data-tex="\(f_i+f_j\)">\(f_i+f_j\)</span>. Negative roots use the opposite parameters and negative coroots. Each map has the prescribed root tangent line, so the intrinsic rank-one characterization above identifies these diagonal maps with the coroots.</p>
+<p>In <span class="math" data-tex="\(SO_{2n+1}\)">\(SO_{2n+1}\)</span> the torus has eigenvalues <span class="math" data-tex="\(t_1,\ldots,t_n,1,t_1^{-1},\ldots,t_n^{-1}\)">\(t_1,\ldots,t_n,1,t_1^{-1},\ldots,t_n^{-1}\)</span> on the standard representation. If <span class="math" data-tex="\(q\)">\(q\)</span> denotes its nondegenerate symmetric pairing, the map</p>
+<span class="math math-display" data-tex="\[
+v\wedge w\longmapsto\bigl[u\longmapsto q(v,u)w-q(w,u)v\bigr]
+\]">\[
+v\wedge w\longmapsto\bigl[u\longmapsto q(v,u)w-q(w,u)v\bigr]
+\]</span>
+<p>identifies the exterior square with the orthogonal Lie algebra: it takes values in the skew operators for <span class="math" data-tex="\(q\)">\(q\)</span>, is injective in a paired basis, and both spaces have dimension <span class="math" data-tex="\(\binom{2n+1}{2}\)">\(\binom{2n+1}{2}\)</span>. Adding two distinct standard weights therefore gives the nonzero weights <span class="math" data-tex="\(\pm e_i\pm e_j\)">\(\pm e_i\pm e_j\)</span> and <span class="math" data-tex="\(\pm e_i\)">\(\pm e_i\)</span>. There is no weight <span class="math" data-tex="\(2e_i\)">\(2e_i\)</span>, since a basis vector wedges with itself to zero. The displayed torus is <span class="math" data-tex="\(\mathbf G_m^n\)">\(\mathbf G_m^n\)</span>, so <span class="math" data-tex="\(X=Y=\mathbf Z^n\)">\(X=Y=\mathbf Z^n\)</span>.</p>
+<p>For <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span>, the action by <span class="math" data-tex="\(A,A^{-t}\)">\(A,A^{-t}\)</span> on two paired isotropic planes again preserves <span class="math" data-tex="\(q\)">\(q\)</span>, has determinant one, and gives coroot <span class="math" data-tex="\(f_i-f_j\)">\(f_i-f_j\)</span>. Swapping <span class="math" data-tex="\(v_j,w_j\)">\(v_j,w_j\)</span> is an orthogonal change of basis; its conjugation preserves <span class="math" data-tex="\(SO_{2n+1}\)">\(SO_{2n+1}\)</span> and carries this map to the one with root <span class="math" data-tex="\(e_i+e_j\)">\(e_i+e_j\)</span> and coroot <span class="math" data-tex="\(f_i+f_j\)">\(f_i+f_j\)</span>. For the short root <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, use the <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span>-action on binary quadratic forms. It preserves their nondegenerate discriminant pairing and acts on the basis <span class="math" data-tex="\(u^2,uv,v^2\)">\(u^2,uv,v^2\)</span> with diagonal weights <span class="math" data-tex="\(z^2,1,z^{-2}\)">\(z^2,1,z^{-2}\)</span>. The discriminant model is isometric, after rescaling its paired basis over the algebraically closed field, to <span class="math" data-tex="\(\langle v_i,v_0,w_i\rangle\)">\(\langle v_i,v_0,w_i\rangle\)</span>. Extend this action by the identity on the complement. Its positive root tangent vector has torus weight <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, and its diagonal has <span class="math" data-tex="\(t_i=z^2\)">\(t_i=z^2\)</span>. Thus its coroot is <span class="math" data-tex="\(2f_i\)">\(2f_i\)</span>. These maps, and their opposites, give all coroots. The resulting datum is exactly the dual symplectic datum, in both directions.</p>
+<p>For <span class="math" data-tex="\(SO_{2n}\)">\(SO_{2n}\)</span>, the middle eigenvalue <span class="math" data-tex="\(1\)">\(1\)</span> is absent. The exterior-square calculation gives only <span class="math" data-tex="\(\pm e_i\pm e_j\)">\(\pm e_i\pm e_j\)</span>, and the coroots are <span class="math" data-tex="\(\pm f_i\pm f_j\)">\(\pm f_i\pm f_j\)</span>. Both lattices are <span class="math" data-tex="\(\mathbf Z^n\)">\(\mathbf Z^n\)</span>, so the datum is self-dual. The assertion includes <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, whose root system has two <span class="math" data-tex="\(A_1\)">\(A_1\)</span> factors. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(SO_2\cong\mathbf G_m\)">\(SO_2\cong\mathbf G_m\)</span> is instead the torus calculation of Proposition 1.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lattice calculation also describes the centres. It is useful to derive the relation once rather than memorize a table.</p>
+<p><strong>Proposition 3.2 (centre and algebraic fundamental group).</strong> Define</p>
+<span class="math math-display" data-tex="\[
+\pi_1(G)=Y/\mathbf Z\Phi^\vee.
+\]">\[
+\pi_1(G)=Y/\mathbf Z\Phi^\vee.
+\]</span>
+<p>For a split connected reductive group,</p>
+<span class="math math-display" data-tex="\[
+Z(\widehat G)(\mathbf C)
+=\operatorname{Hom}(\pi_1(G),\mathbf C^\times).
+\]">\[
+Z(\widehat G)(\mathbf C)
+=\operatorname{Hom}(\pi_1(G),\mathbf C^\times).
+\]</span>
+<p>For semisimple <span class="math" data-tex="\(G\)">\(G\)</span>, <span class="math" data-tex="\(\pi_1(G)\)">\(\pi_1(G)\)</span> is finite. The group called <span class="math" data-tex="\(\pi_1\)">\(\pi_1\)</span> here is the algebraic fundamental group defined by the root datum.</p>
+<p><em>Proof.</em> Lemma 2.2 puts every central element in <span class="math" data-tex="\(\widehat T\)">\(\widehat T\)</span>. Equation (2.1) says that <span class="math" data-tex="\(z\in\widehat T\)">\(z\in\widehat T\)</span> conjugates the root subgroup for <span class="math" data-tex="\(\beta\in\Phi^\vee\)">\(\beta\in\Phi^\vee\)</span> by multiplying its coordinate by <span class="math" data-tex="\(\beta(z)\)">\(\beta(z)\)</span>. It is central exactly when every such value is one, by the generation proved in that lemma. Consequently, on complex points,</p>
+<span class="math math-display" data-tex="\[
+Z(\widehat G)(\mathbf C)=\bigcap_{\beta\in\Phi^\vee}\ker(\beta)(\mathbf C)
+\subset\widehat T(\mathbf C).
+\]">\[
+Z(\widehat G)(\mathbf C)=\bigcap_{\beta\in\Phi^\vee}\ker(\beta)(\mathbf C)
+\subset\widehat T(\mathbf C).
+\]</span>
+<p>A point of <span class="math" data-tex="\(\widehat T\)">\(\widehat T\)</span> is a homomorphism <span class="math" data-tex="\(Y\to\mathbf C^\times\)">\(Y\to\mathbf C^\times\)</span>. Being trivial on all coroots is exactly factoring through <span class="math" data-tex="\(Y/\mathbf Z\Phi^\vee\)">\(Y/\mathbf Z\Phi^\vee\)</span>. This proves the formula. In the semisimple case coroots span <span class="math" data-tex="\(Y\otimes\mathbf Q\)">\(Y\otimes\mathbf Q\)</span>, so their lattice has finite index. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(SL_n\)">\(SL_n\)</span>, the coroots generate <span class="math" data-tex="\(Y\)">\(Y\)</span>, hence the dual has trivial centre. For <span class="math" data-tex="\(PGL_n\)">\(PGL_n\)</span>, imposing all coordinate differences on <span class="math" data-tex="\(\mathbf Z^n\)">\(\mathbf Z^n\)</span> identifies every basis vector with one generator; the additional relation <span class="math" data-tex="\((1,\ldots,1)=0\)">\((1,\ldots,1)=0\)</span> is <span class="math" data-tex="\(n\)">\(n\)</span> times that generator. The quotient is therefore <span class="math" data-tex="\(\mathbf Z/n\mathbf Z\)">\(\mathbf Z/n\mathbf Z\)</span>, giving <span class="math" data-tex="\(Z(SL_n)=\mu_n\)">\(Z(SL_n)=\mu_n\)</span>. For <span class="math" data-tex="\(Sp_{2n}\)">\(Sp_{2n}\)</span>, the coroots include all <span class="math" data-tex="\(f_i\)">\(f_i\)</span>, giving trivial dual centre. For <span class="math" data-tex="\(SO_{2n+1}\)">\(SO_{2n+1}\)</span>, the coroots generate the even-sum lattice. For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, the differences <span class="math" data-tex="\(f_i-f_j\)">\(f_i-f_j\)</span> reduce any vector to its coordinate sum times one basis vector, and <span class="math" data-tex="\((f_i+f_j)+(f_i-f_j)=2f_i\)">\((f_i+f_j)+(f_i-f_j)=2f_i\)</span> supplies every even sum; all the generators themselves have even sum. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the coroot lattice is directly <span class="math" data-tex="\(2\mathbf Zf_1\)">\(2\mathbf Zf_1\)</span>. Thus the dual centre is <span class="math" data-tex="\(\mu_2\)">\(\mu_2\)</span>. For <span class="math" data-tex="\(SO_{2n}\)">\(SO_{2n}\)</span>, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, the same even-sum calculation gives <span class="math" data-tex="\(\mu_2\)">\(\mu_2\)</span>, in agreement with <span class="math" data-tex="\(\{I,-I\}\subset SO_{2n}\)">\(\{I,-I\}\subset SO_{2n}\)</span>.</p>
+<h2 id="4-turning-the-galois-action-into-group-automorphisms">4. Turning the Galois action into group automorphisms</h2>
+<p>Galois need not preserve the chosen pair <span class="math" data-tex="\((B,T)\)">\((B,T)\)</span>. Write <span class="math" data-tex="\(G^{\mathrm{ad}}=G/Z(G)\)">\(G^{\mathrm{ad}}=G/Z(G)\)</span>; it acts on <span class="math" data-tex="\(G\)">\(G\)</span> by inner automorphisms, as proved in <a href="../AG-RG/AG-RG-06.html">Automorphisms, forms and parabolic subgroups, Theorem 3.1</a>. Write <span class="math" data-tex="\(\sigma_\gamma\)">\(\sigma_\gamma\)</span> for the semilinear descent action of <span class="math" data-tex="\(\gamma\in\operatorname{Gal}(F^s/F)\)">\(\gamma\in\operatorname{Gal}(F^s/F)\)</span>. Choose <span class="math" data-tex="\(g_\gamma\in G^{\mathrm{ad}}(F^s)\)">\(g_\gamma\in G^{\mathrm{ad}}(F^s)\)</span> so that</p>
+<span class="math math-display" data-tex="\[
+f_\gamma=\operatorname{Int}(g_\gamma)\sigma_\gamma
+\]">\[
+f_\gamma=\operatorname{Int}(g_\gamma)\sigma_\gamma
+\]</span>
+<p>preserves <span class="math" data-tex="\(B,T\)">\(B,T\)</span>, and take its induced action on <span class="math" data-tex="\((X,\Delta,Y,\Delta^\vee)\)">\((X,\Delta,Y,\Delta^\vee)\)</span>. The Borel-pair conjugacy proved above supplies these elements. Over a separably closed field the same argument applies: the Borel-pair transporters are nonempty and smooth, by the Borel and torus conjugacy constructions in <a href="../AG-RG/AG-RG-06.html">Automorphisms, forms and parabolic subgroups, Theorem 3.1</a>. A nonempty smooth scheme of finite type has a point over a finite separable extension, by an étale coordinate chart; over <span class="math" data-tex="\(F^s\)">\(F^s\)</span> that point is already rational.</p>
+<p>If <span class="math" data-tex="\(g&#x27;_\gamma\)">\(g&#x27;_\gamma\)</span> is another correction, <span class="math" data-tex="\(g&#x27;_\gamma g_\gamma^{-1}\)">\(g&#x27;_\gamma g_\gamma^{-1}\)</span> normalizes the images of both <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> in the adjoint group, hence lies in <span class="math" data-tex="\(T^{\mathrm{ad}}\)">\(T^{\mathrm{ad}}\)</span> by Lemma 2.2 applied there. Its conjugation acts trivially on <span class="math" data-tex="\(T\)">\(T\)</span>, and hence on both lattices. Thus the resulting <strong>based</strong>, or star, action is independent of the correction. Moreover</p>
+<span class="math math-display" data-tex="\[
+f_\gamma f_\delta
+=\operatorname{Int}\bigl(g_\gamma\sigma_\gamma(g_\delta)\bigr)\sigma_{\gamma\delta}.
+\]">\[
+f_\gamma f_\delta
+=\operatorname{Int}\bigl(g_\gamma\sigma_\gamma(g_\delta)\bigr)\sigma_{\gamma\delta}.
+\]</span>
+<p>This and <span class="math" data-tex="\(f_{\gamma\delta}\)">\(f_{\gamma\delta}\)</span> preserve the same pair, so their difference is again the action of <span class="math" data-tex="\(T^{\mathrm{ad}}\)">\(T^{\mathrm{ad}}\)</span>. Their lattice actions agree, proving the group law for the star action. Choose a finite separable extension over which the group is split, <span class="math" data-tex="\(B,T\)">\(B,T\)</span> are defined, and a basis of their characters is defined. Its Galois subgroup acts trivially on the based datum. Taking the Galois closure shows that the action factors through a finite quotient, even when the full automorphism group of the based datum is infinite.</p>
+<p>For an inner form with descent action <span class="math" data-tex="\(\sigma&#x27;_\gamma=\operatorname{Int}(z_\gamma)\sigma_\gamma\)">\(\sigma&#x27;_\gamma=\operatorname{Int}(z_\gamma)\sigma_\gamma\)</span>, where <span class="math" data-tex="\(z_\gamma\in G^{\mathrm{ad}}(F^s)\)">\(z_\gamma\in G^{\mathrm{ad}}(F^s)\)</span>, use <span class="math" data-tex="\(g&#x27;_\gamma=g_\gamma z_\gamma^{-1}\)">\(g&#x27;_\gamma=g_\gamma z_\gamma^{-1}\)</span>. The corrected semilinear automorphism is exactly <span class="math" data-tex="\(f_\gamma\)">\(f_\gamma\)</span>. Hence inner forms have the same star action. Using the adjoint group also makes this argument valid when an adjoint point has no lift to <span class="math" data-tex="\(G(F^s)\)">\(G(F^s)\)</span>.</p>
+<p>A pinning of a complex reductive group is a pair <span class="math" data-tex="\((\widehat B,\widehat T)\)">\((\widehat B,\widehat T)\)</span> together with a nonzero vector <span class="math" data-tex="\(X_\alpha\)">\(X_\alpha\)</span> in each simple root space. <a href="../AG-RG/AG-RG-05.html">Pinnings and the classification of split reductive groups, Theorem 5.1</a> lifts each based-datum automorphism uniquely to an algebraic automorphism preserving this pinning. Uniqueness makes the lift of a product equal the product of the lifts. Applying this to the dual star action gives</p>
+<span class="math math-display" data-tex="\[
+a:W_F\longrightarrow\operatorname{Aut}(\widehat G).
+\]">\[
+a:W_F\longrightarrow\operatorname{Aut}(\widehat G).
+\]</span>
+<p>The Weil group acts through its map to the Galois group. Define</p>
+<span class="math math-display" data-tex="\[
+{}^LG=\widehat G(\mathbf C)\rtimes_a W_F,\qquad
+(g,w)(h,u)=(ga(w)(h),wu).
+\]">\[
+{}^LG=\widehat G(\mathbf C)\rtimes_a W_F,\qquad
+(g,w)(h,u)=(ga(w)(h),wu).
+\]</span>
+<p>The topology is the product topology. One may also use <span class="math" data-tex="\(\widehat G\rtimes\operatorname{Gal}(F^s/F)\)">\(\widehat G\rtimes\operatorname{Gal}(F^s/F)\)</span>, or replace Galois by a finite quotient through which its action factors. The finite quotient retains the action on <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>; it does not retain all Weil-group information needed for archimedean parameters or reciprocity.</p>
+<p><strong>Proposition 4.1 (independence of the pinning).</strong> Two pinnings yield isomorphic L-groups, with the isomorphism commuting with projection to <span class="math" data-tex="\(W_F\)">\(W_F\)</span>.</p>
+<p><em>Proof.</em> First conjugate their Borel subgroups into agreement, then conjugate their maximal tori inside that Borel into agreement, using the preceding Borel-pair conjugacy proofs. Equation (2.1) and the one-dimensional root spaces show that the two sets of simple root vectors now differ by scalars <span class="math" data-tex="\(c_\alpha\in\mathbf C^\times\)">\(c_\alpha\in\mathbf C^\times\)</span>.</p>
+<p>There exists <span class="math" data-tex="\(t\in\widehat T\)">\(t\in\widehat T\)</span> with <span class="math" data-tex="\(\alpha(t)=c_\alpha\)">\(\alpha(t)=c_\alpha\)</span> for every simple root. Indeed, simple roots are independent over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. The map <span class="math" data-tex="\(\widehat T\to(\mathbf C^\times)^{|\Delta|}\)">\(\widehat T\to(\mathbf C^\times)^{|\Delta|}\)</span> has a character-lattice map which is injective; Smith normal form reduces its surjectivity on complex points to the surjectivity of <span class="math" data-tex="\(z\mapsto z^m\)">\(z\mapsto z^m\)</span> on <span class="math" data-tex="\(\mathbf C^\times\)">\(\mathbf C^\times\)</span>. Conjugation by <span class="math" data-tex="\(t\)">\(t\)</span> therefore makes the vectors agree. We have obtained an inner automorphism <span class="math" data-tex="\(c\)">\(c\)</span> taking the first entire pinning to the second.</p>
+<p>If <span class="math" data-tex="\(a(w)\)">\(a(w)\)</span> is the first pinned lift, then <span class="math" data-tex="\(c a(w)c^{-1}\)">\(c a(w)c^{-1}\)</span> preserves the second pinning and induces the same transported action on its based datum. The uniqueness in the pinned isomorphism theorem makes it the second lift <span class="math" data-tex="\(a&#x27;(w)\)">\(a&#x27;(w)\)</span>. The map</p>
+<span class="math math-display" data-tex="\[
+(g,w)\longmapsto(c(g),w)
+\]">\[
+(g,w)\longmapsto(c(g),w)
+\]</span>
+<p>is thus a homomorphism: <span class="math" data-tex="\(c(ga(w)(h))=c(g)a&#x27;(w)(c(h))\)">\(c(ga(w)(h))=c(g)a&#x27;(w)(c(h))\)</span>. Its inverse uses <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span>, and it is continuous and algebraic on the connected factor. It fixes the quotient <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For split groups the star action is trivial, so all entries of Theorem 3.1 give direct products with <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. For instance,</p>
+<span class="math math-display" data-tex="\[
+{}^LSL_2=PGL_2(\mathbf C)\times W_F,\qquad
+{}^LPGL_2=SL_2(\mathbf C)\times W_F.
+\]">\[
+{}^LSL_2=PGL_2(\mathbf C)\times W_F,\qquad
+{}^LPGL_2=SL_2(\mathbf C)\times W_F.
+\]</span>
+<h2 id="5-unitary-groups-and-restriction-of-scalars">5. Unitary groups and restriction of scalars</h2>
+<p>Let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be quadratic and separable, with conjugation <span class="math" data-tex="\(x\mapsto\bar x\)">\(x\mapsto\bar x\)</span>. Take the Hermitian form with matrix <span class="math" data-tex="\(H_n\)">\(H_n\)</span> having every antidiagonal entry equal to one. Its unitary group is</p>
+<span class="math math-display" data-tex="\[
+U(n)(R)=\{g\in GL_n(E\otimes_F R):\bar g^{\,t}H_ng=H_n\}.
+\]">\[
+U(n)(R)=\{g\in GL_n(E\otimes_F R):\bar g^{\,t}H_ng=H_n\}.
+\]</span>
+<p>After extending to <span class="math" data-tex="\(F^s\)">\(F^s\)</span>, the algebra <span class="math" data-tex="\(E\otimes_F F^s\)">\(E\otimes_F F^s\)</span> is <span class="math" data-tex="\(F^s\times F^s\)">\(F^s\times F^s\)</span> and conjugation exchanges the factors. A unitary element becomes a pair <span class="math" data-tex="\((g,h)\)">\((g,h)\)</span> with <span class="math" data-tex="\(h^tH_ng=H_n\)">\(h^tH_ng=H_n\)</span>, so <span class="math" data-tex="\(h=H_ng^{-t}H_n^{-1}\)">\(h=H_ng^{-t}H_n^{-1}\)</span>. Projection to <span class="math" data-tex="\(g\)">\(g\)</span> identifies the group with <span class="math" data-tex="\(GL_n\)">\(GL_n\)</span>. The nontrivial Galois element therefore acts by <span class="math" data-tex="\(g\mapsto H_ng^{-t}H_n^{-1}\)">\(g\mapsto H_ng^{-t}H_n^{-1}\)</span>. This action preserves the upper triangular Borel and diagonal torus: transpose inverse reverses triangularity, and antidiagonal conjugation reverses it back. Those subgroups descend to <span class="math" data-tex="\(F\)">\(F\)</span>, making this model quasi-split. On diagonal characters the action is <span class="math" data-tex="\(e_i\mapsto-e_{n+1-i}\)">\(e_i\mapsto-e_{n+1-i}\)</span>. Thus <span class="math" data-tex="\(\widehat{U(n)}=GL_n(\mathbf C)\)">\(\widehat{U(n)}=GL_n(\mathbf C)\)</span>, and its dual based action reverses the coordinates and changes their signs.</p>
+<p>Put <span class="math" data-tex="\(J_n\)">\(J_n\)</span> equal to the antidiagonal matrix with antidiagonal entries <span class="math" data-tex="\(1,-1,1,-1,\ldots\)">\(1,-1,1,-1,\ldots\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+\tau(g)=J_n(g^t)^{-1}J_n^{-1}.
+\]">\[
+\tau(g)=J_n(g^t)^{-1}J_n^{-1}.
+\]</span>
+<p>Inverse transpose is a homomorphism, since <span class="math" data-tex="\((gh)^{-t}=g^{-t}h^{-t}\)">\((gh)^{-t}=g^{-t}h^{-t}\)</span>. Also <span class="math" data-tex="\(J_n^t=(-1)^{n-1}J_n\)">\(J_n^t=(-1)^{n-1}J_n\)</span>, so <span class="math" data-tex="\(\tau^2=1\)">\(\tau^2=1\)</span>. On the diagonal torus,</p>
+<span class="math math-display" data-tex="\[
+\tau(\operatorname{diag}(z_1,\ldots,z_n))
+=\operatorname{diag}(z_n^{-1},\ldots,z_1^{-1}).
+\]">\[
+\tau(\operatorname{diag}(z_1,\ldots,z_n))
+=\operatorname{diag}(z_n^{-1},\ldots,z_1^{-1}).
+\]</span>
+<p>It preserves the upper triangular Borel. Its differential sends <span class="math" data-tex="\(E_{i,i+1}\)">\(E_{i,i+1}\)</span> to <span class="math" data-tex="\(E_{n-i,n+1-i}\)">\(E_{n-i,n+1-i}\)</span>: the minus sign from inverse transpose is cancelled by adjacent antidiagonal signs. Thus it preserves the standard pinning, with its simple root vectors permuted. This verifies the precise lift of the diagram action, rather than just its outer-automorphism class.</p>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+{}^LU(n)=GL_n(\mathbf C)\rtimes W_F,
+\]">\[
+{}^LU(n)=GL_n(\mathbf C)\rtimes W_F,
+\]</span>
+<p>where <span class="math" data-tex="\(W_E\)">\(W_E\)</span> acts trivially and the other coset acts by <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Restriction of this extension to <span class="math" data-tex="\(W_E\)">\(W_E\)</span> is <span class="math" data-tex="\(GL_n(\mathbf C)\times W_E\)">\(GL_n(\mathbf C)\times W_E\)</span>. For <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, <span class="math" data-tex="\(\tau\)">\(\tau\)</span> induces the nontrivial reversal of the <span class="math" data-tex="\(A_{n-1}\)">\(A_{n-1}\)</span> diagram; for <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, that diagram has one node, but <span class="math" data-tex="\(\tau\)">\(\tau\)</span> still inverts the centre and is not an inner automorphism of <span class="math" data-tex="\(GL_2\)">\(GL_2\)</span>.</p>
+<p><strong>Example 5.1 (two variables).</strong> With <span class="math" data-tex="\(J_2=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}\)">\(J_2=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}\)</span>, direct multiplication gives</p>
+<span class="math math-display" data-tex="\[
+\tau(g)=\frac{g}{\det g}.
+\]">\[
+\tau(g)=\frac{g}{\det g}.
+\]</span>
+<p>Indeed, if <span class="math" data-tex="\(g=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)">\(g=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span>, its inverse transpose is <span class="math" data-tex="\((\det g)^{-1}\begin{pmatrix}d&amp;-c\\-b&amp;a\end{pmatrix}\)">\((\det g)^{-1}\begin{pmatrix}d&amp;-c\\-b&amp;a\end{pmatrix}\)</span>, and conjugation by <span class="math" data-tex="\(J_2\)">\(J_2\)</span> returns <span class="math" data-tex="\((\det g)^{-1}g\)">\((\det g)^{-1}g\)</span>. Thus <span class="math" data-tex="\(\tau\)">\(\tau\)</span> fixes <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> pointwise but inverts scalar matrices. A nonsplit unitary group in two variables has this nontrivial L-group action even though its derived-group diagram looks split.</p>
+<p><strong>Proposition 5.2 (restriction of scalars).</strong> For a finite separable extension <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, let <span class="math" data-tex="\(\Sigma=\operatorname{Hom}_F(E,F^s)\)">\(\Sigma=\operatorname{Hom}_F(E,F^s)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\widehat{\operatorname{Res}_{E/F}GL_n}
+=\prod_{\sigma\in\Sigma}GL_n(\mathbf C),\qquad
+{}^L(\operatorname{Res}_{E/F}GL_n)
+=\left(\prod_{\sigma\in\Sigma}GL_n(\mathbf C)\right)\rtimes W_F,
+\]">\[
+\widehat{\operatorname{Res}_{E/F}GL_n}
+=\prod_{\sigma\in\Sigma}GL_n(\mathbf C),\qquad
+{}^L(\operatorname{Res}_{E/F}GL_n)
+=\left(\prod_{\sigma\in\Sigma}GL_n(\mathbf C)\right)\rtimes W_F,
+\]</span>
+<p>with Galois permuting the factors through its action on <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>.</p>
+<p><em>Proof.</em> The separable algebra <span class="math" data-tex="\(E\otimes_FF^s\)">\(E\otimes_FF^s\)</span> is the product of copies of <span class="math" data-tex="\(F^s\)">\(F^s\)</span> indexed by <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>. Accordingly, restriction of scalars becomes the product of those <span class="math" data-tex="\(GL_n\)">\(GL_n\)</span>'s. Its character lattice is the direct sum of their character lattices; roots and coroots stay in their own factors. Dualizing therefore gives the same product. Galois sends the factor indexed by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> to that indexed by <span class="math" data-tex="\(\gamma\sigma\)">\(\gamma\sigma\)</span>, and the product of the standard pinnings makes these permutations pinned automorphisms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a quadratic extension and <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, this is <span class="math" data-tex="\((\mathbf C^\times\times\mathbf C^\times)\rtimes W_F\)">\((\mathbf C^\times\times\mathbf C^\times)\rtimes W_F\)</span>, with the other coset exchanging the two coordinates. It differs from <span class="math" data-tex="\({}^LU(1)=\mathbf C^\times\rtimes W_F\)">\({}^LU(1)=\mathbf C^\times\rtimes W_F\)</span>, where that coset inverts the coordinate. Restriction of scalars and the norm-one torus are distinct constructions.</p>
+<h2 id="6-maps-and-parameters">6. Maps and parameters</h2>
+<p>An <strong>L-homomorphism</strong> <span class="math" data-tex="\({}^LH\to{}^LG\)">\({}^LH\to{}^LG\)</span> is a continuous homomorphism over <span class="math" data-tex="\(W_F\)">\(W_F\)</span> whose restriction <span class="math" data-tex="\(\widehat H\to\widehat G\)">\(\widehat H\to\widehat G\)</span> is algebraic. A parameter is considered up to conjugation by <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>, not by an arbitrary automorphism of the target.</p>
+<p>For a nonarchimedean local field, a parameter in the <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> convention is a homomorphism</p>
+<span class="math math-display" data-tex="\[
+W_F\times SL_2(\mathbf C)\longrightarrow{}^LG
+\]">\[
+W_F\times SL_2(\mathbf C)\longrightarrow{}^LG
+\]</span>
+<p>over <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. We use the <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> convention of <a href="../LG-LLC/LG-LLC-13.html">Beyond general linear groups: parameters and packets, Section 1</a>: its Weil restriction is continuous, its <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span>-restriction is algebraic, its dual inertia coordinates form a finite set, and its Weil images are semisimple in the finite-action target described below. We also require relevance for the chosen <span class="math" data-tex="\(F\)">\(F\)</span>-form. Explicitly, let <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> be any Galois-stable subset of the dual simple roots and <span class="math" data-tex="\(\widehat P_\Theta\)">\(\widehat P_\Theta\)</span> the corresponding standard parabolic. If the image is contained, after <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>-conjugation, in <span class="math" data-tex="\(\widehat P_\Theta\rtimes W_F\)">\(\widehat P_\Theta\rtimes W_F\)</span>, then <span class="math" data-tex="\(G\)">\(G\)</span> must have an <span class="math" data-tex="\(F\)">\(F\)</span>-parabolic of the corresponding geometric type, using the matching simple roots in its original datum. The parabolic types and their descent are proved in <a href="../AG-RG/AG-RG-06.html">Automorphisms, forms and parabolic subgroups, Theorems 1.1 and 2.1</a>. This condition is where an inner form can restrict the permitted parameters.</p>
+<p>Write <span class="math" data-tex="\(\phi(w,1)=(c(w),w)\)">\(\phi(w,1)=(c(w),w)\)</span> and let <span class="math" data-tex="\(a(w)\)">\(a(w)\)</span> denote the pinned action. The homomorphism law gives</p>
+<span class="math math-display" data-tex="\[
+c(wu)=c(w)a(w)(c(u)).
+\]">\[
+c(wu)=c(w)a(w)(c(u)).
+\]</span>
+<p>The finite-inertia condition concerns <span class="math" data-tex="\(c(I_F)\)">\(c(I_F)\)</span>; semisimplicity of Weil images is understood after mapping to <span class="math" data-tex="\(\widehat G\rtimes\Gamma\)">\(\widehat G\rtimes\Gamma\)</span>, where <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is a finite quotient through which the pinned action factors. The full Weil projection is retained. In particular, an inertia element <span class="math" data-tex="\(i\)">\(i\)</span> cannot have full image equal to the identity unless <span class="math" data-tex="\(i=1\)">\(i=1\)</span>.</p>
+<p>Suppose now that inertia acts trivially on <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>; this is the based-action condition used for an unramified group. An <strong>unramified parameter</strong> has <span class="math" data-tex="\(c(i)=1\)">\(c(i)=1\)</span>, equivalently <span class="math" data-tex="\(\phi(i,1)=(1,i)\)">\(\phi(i,1)=(1,i)\)</span>, for every <span class="math" data-tex="\(i\in I_F\)">\(i\in I_F\)</span>, and trivial algebraic <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> part. <a href="../LG-GAL/representations-of-weil-groups.html">Representations of Weil groups, Proposition 1.1</a> proves <span class="math" data-tex="\(W_F=I_F\rtimes\langle\Phi\rangle\)">\(W_F=I_F\rtimes\langle\Phi\rangle\)</span> for a Frobenius lift <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. Hence a parameter of this kind is determined by <span class="math" data-tex="\(\phi(\Phi,1)=(g,\Phi)\)">\(\phi(\Phi,1)=(g,\Phi)\)</span>: define its values on powers by the homomorphism law, and the inertia relation holds because inertia acts trivially. Admissibility imposes semisimplicity in the finite-action target, and relevance is still required for the chosen form. Conjugation by <span class="math" data-tex="\(h\in\widehat G\)">\(h\in\widehat G\)</span> sends <span class="math" data-tex="\(g\)">\(g\)</span> to <span class="math" data-tex="\(hg\,a(\Phi)(h^{-1})\)">\(hg\,a(\Phi)(h^{-1})\)</span>. For split groups this is ordinary semisimple conjugacy in <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>.</p>
+<p>The unramified-action hypothesis matters. If a ramified pinned action is allowed, homomorphisms with the canonical inertia section <span class="math" data-tex="\(\phi(i,1)=(1,i)\)">\(\phi(i,1)=(1,i)\)</span> require</p>
+<span class="math math-display" data-tex="\[
+g\in\widehat G^{I_F},\qquad
+g\sim hg\,a(\Phi)(h^{-1})\quad(h\in\widehat G^{I_F}).
+\]">\[
+g\in\widehat G^{I_F},\qquad
+g\sim hg\,a(\Phi)(h^{-1})\quad(h\in\widehat G^{I_F}).
+\]</span>
+<p>Indeed conjugating <span class="math" data-tex="\((1,i)\)">\((1,i)\)</span> by <span class="math" data-tex="\((g,\Phi)\)">\((g,\Phi)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\bigl(g\,a(\Phi i\Phi^{-1})(g^{-1}),\Phi i\Phi^{-1}\bigr).
+\]">\[
+\bigl(g\,a(\Phi i\Phi^{-1})(g^{-1}),\Phi i\Phi^{-1}\bigr).
+\]</span>
+<p>Equality with <span class="math" data-tex="\((1,\Phi i\Phi^{-1})\)">\((1,\Phi i\Phi^{-1})\)</span> forces the fixed-subgroup condition, because <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> normalizes inertia. Conversely that condition verifies the defining relation in <span class="math" data-tex="\(W_F=I_F\rtimes\langle\Phi\rangle\)">\(W_F=I_F\rtimes\langle\Phi\rangle\)</span>, so the prescribed inertia and Frobenius values extend to a homomorphism. Conjugation by <span class="math" data-tex="\(h\)">\(h\)</span> preserves the canonical inertia section exactly when <span class="math" data-tex="\(h\in\widehat G^{I_F}\)">\(h\in\widehat G^{I_F}\)</span>, proving the stated equivalence relation. For example, the dual of a ramified quadratic norm-one torus is <span class="math" data-tex="\(\mathbf C^\times\)">\(\mathbf C^\times\)</span> with inertia acting by inversion. Its fixed subgroup is <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>. A Frobenius lift with trivial pinned action and candidate <span class="math" data-tex="\(g=2\)">\(g=2\)</span> would give dual coordinate <span class="math" data-tex="\(2(1/2)^{-1}=4\)">\(2(1/2)^{-1}=4\)</span> in the displayed conjugation, contradicting the required coordinate one.</p>
+<p>At an archimedean place, use its archimedean Weil group. Over a number field, a single universally constructed global parameter group classifying all automorphic representations is conjectural. The formal expression “global L-parameter” must therefore specify its proposed domain. A compatible Galois representation and an automorphic representation are concrete objects; the existence of a universal global Langlands group is an additional conjecture. The functoriality and reciprocity lessons distinguish these assertions.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (basic).</strong> For the diagonal tori in <span class="math" data-tex="\(GL_2\)">\(GL_2\)</span> and <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span>, compute both lattices, the two roots, the two coroots and the dual groups. Explain why the root in <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> is twice a primitive character.</p>
+<p><strong>Exercise 7.2 (intermediate).</strong> Calculate the dual of <span class="math" data-tex="\(Sp_4\)">\(Sp_4\)</span>, including its centre, without identifying a group from its Lie algebra alone.</p>
+<p><strong>Exercise 7.3 (intermediate).</strong> For quadratic <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, describe the L-group of <span class="math" data-tex="\(\operatorname{Res}_{E/F}\mathbf G_m\)">\(\operatorname{Res}_{E/F}\mathbf G_m\)</span>. Embed the dual norm-one torus in its connected factor and check equivariance.</p>
+<p><strong>Exercise 7.4 (advanced).</strong> Write the pinned action for <span class="math" data-tex="\(U(3)\)">\(U(3)\)</span> explicitly. Verify its order, its effect on both simple root vectors and its restriction to <span class="math" data-tex="\(W_E\)">\(W_E\)</span>. Determine its action on the centre.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 7.1.</strong> For <span class="math" data-tex="\(GL_2\)">\(GL_2\)</span>, <span class="math" data-tex="\(X=\mathbf Ze_1\oplus\mathbf Ze_2\)">\(X=\mathbf Ze_1\oplus\mathbf Ze_2\)</span>, <span class="math" data-tex="\(Y=\mathbf Zf_1\oplus\mathbf Zf_2\)">\(Y=\mathbf Zf_1\oplus\mathbf Zf_2\)</span>, <span class="math" data-tex="\(\Phi=\{\pm(e_1-e_2)\}\)">\(\Phi=\{\pm(e_1-e_2)\}\)</span>, and <span class="math" data-tex="\(\Phi^\vee=\{\pm(f_1-f_2)\}\)">\(\Phi^\vee=\{\pm(f_1-f_2)\}\)</span>. Interchanging lattices preserves this datum, so the dual is <span class="math" data-tex="\(GL_2\)">\(GL_2\)</span>.</p>
+<p>The torus in <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> is <span class="math" data-tex="\(\operatorname{diag}(t,t^{-1})\)">\(\operatorname{diag}(t,t^{-1})\)</span>. Let <span class="math" data-tex="\(e(t)=t\)">\(e(t)=t\)</span> and let <span class="math" data-tex="\(f:z\mapsto\operatorname{diag}(z,z^{-1})\)">\(f:z\mapsto\operatorname{diag}(z,z^{-1})\)</span>. Then <span class="math" data-tex="\(X=\mathbf Ze\)">\(X=\mathbf Ze\)</span>, <span class="math" data-tex="\(Y=\mathbf Zf\)">\(Y=\mathbf Zf\)</span>, <span class="math" data-tex="\(\langle e,f\rangle=1\)">\(\langle e,f\rangle=1\)</span>, the roots are <span class="math" data-tex="\(\pm2e\)">\(\pm2e\)</span>, and the coroots are <span class="math" data-tex="\(\pm f\)">\(\pm f\)</span>. Conjugation on <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> multiplies it by <span class="math" data-tex="\(t^2\)">\(t^2\)</span>, proving the assertion about twice a primitive character. The dual datum has primitive roots and doubled coroots, the datum of <span class="math" data-tex="\(PGL_2\)">\(PGL_2\)</span>. This lattice distinction is why the simply connected group becomes adjoint.</p>
+<p><strong>Solution 7.2.</strong> The two lattices are <span class="math" data-tex="\(\mathbf Z^2\)">\(\mathbf Z^2\)</span>. The roots of <span class="math" data-tex="\(Sp_4\)">\(Sp_4\)</span> are <span class="math" data-tex="\(\pm e_1\pm e_2,\pm2e_1,\pm2e_2\)">\(\pm e_1\pm e_2,\pm2e_1,\pm2e_2\)</span>; their coroots are <span class="math" data-tex="\(\pm f_1\pm f_2,\pm f_1,\pm f_2\)">\(\pm f_1\pm f_2,\pm f_1,\pm f_2\)</span>. The dual datum is <span class="math" data-tex="\(B_2\)">\(B_2\)</span> with coordinate character lattice <span class="math" data-tex="\(\mathbf Z^2\)">\(\mathbf Z^2\)</span>, exactly the datum of <span class="math" data-tex="\(SO_5\)">\(SO_5\)</span>. Since <span class="math" data-tex="\(f_1,f_2\)">\(f_1,f_2\)</span> are themselves coroots of the original group, the original <span class="math" data-tex="\(\pi_1\)">\(\pi_1\)</span> is zero. Proposition 3.2 gives trivial centre for the dual. In particular the answer is <span class="math" data-tex="\(SO_5\)">\(SO_5\)</span>, not its simply connected cover <span class="math" data-tex="\(Spin_5\)">\(Spin_5\)</span>.</p>
+<p><strong>Solution 7.3.</strong> The character and cocharacter lattices of the restriction-of-scalars torus are permutation lattices on two embeddings. Their dual torus is <span class="math" data-tex="\((\mathbf C^\times)^2\)">\((\mathbf C^\times)^2\)</span>; <span class="math" data-tex="\(W_E\)">\(W_E\)</span> acts trivially and the other coset exchanges coordinates. The dual of the norm-one torus is <span class="math" data-tex="\(\mathbf C^\times\)">\(\mathbf C^\times\)</span> with inversion action. Its embedding is</p>
+<span class="math math-display" data-tex="\[
+z\longmapsto(z,z^{-1}).
+\]">\[
+z\longmapsto(z,z^{-1}).
+\]</span>
+<p>Swapping the two target coordinates sends this point to <span class="math" data-tex="\((z^{-1},z)\)">\((z^{-1},z)\)</span>, the image of <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>. Thus it is equivariant and extends to an L-homomorphism which is the identity on <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. The corresponding original-torus map is the quotient <span class="math" data-tex="\((x,y)\mapsto x/y\)">\((x,y)\mapsto x/y\)</span> after splitting, illustrating the reversal of arrows under duality.</p>
+<p><strong>Solution 7.4.</strong> Take</p>
+<span class="math math-display" data-tex="\[
+J_3=\begin{pmatrix}0&amp;0&amp;1\\0&amp;-1&amp;0\\1&amp;0&amp;0\end{pmatrix}.
+\]">\[
+J_3=\begin{pmatrix}0&amp;0&amp;1\\0&amp;-1&amp;0\\1&amp;0&amp;0\end{pmatrix}.
+\]</span>
+<p>Here <span class="math" data-tex="\(J_3^t=J_3=J_3^{-1}\)">\(J_3^t=J_3=J_3^{-1}\)</span>. Hence applying <span class="math" data-tex="\(g\mapsto J_3g^{-t}J_3^{-1}\)">\(g\mapsto J_3g^{-t}J_3^{-1}\)</span> twice returns <span class="math" data-tex="\(g\)">\(g\)</span>. The derivative <span class="math" data-tex="\(X\mapsto-J_3X^tJ_3^{-1}\)">\(X\mapsto-J_3X^tJ_3^{-1}\)</span> sends <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> to <span class="math" data-tex="\(E_{23}\)">\(E_{23}\)</span> and <span class="math" data-tex="\(E_{23}\)">\(E_{23}\)</span> to <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>. It preserves the upper triangular Borel and diagonal torus and exchanges the two pinned simple root vectors. The diagonal map is <span class="math" data-tex="\((z_1,z_2,z_3)\mapsto(z_3^{-1},z_2^{-1},z_1^{-1})\)">\((z_1,z_2,z_3)\mapsto(z_3^{-1},z_2^{-1},z_1^{-1})\)</span>. On scalar matrices it sends <span class="math" data-tex="\(zI\)">\(zI\)</span> to <span class="math" data-tex="\(z^{-1}I\)">\(z^{-1}I\)</span>. This is the pinned lift of the nontrivial quadratic Galois action, and it acts trivially for every <span class="math" data-tex="\(w\in W_E\)">\(w\in W_E\)</span>. Restricting the extension therefore gives <span class="math" data-tex="\(GL_3(\mathbf C)\times W_E\)">\(GL_3(\mathbf C)\times W_E\)</span>, as required.</p>
+<h2 id="prerequisite-proofs">Prerequisite proofs</h2>
+<p>The following are proved prerequisites, with the hypotheses we use here.</p>
+<ul>
+<li><strong>Classification and pinned isomorphisms.</strong> Every reduced root datum is realized by a split connected reductive group; for pinned split groups, a based-datum isomorphism lifts uniquely to a pinning-preserving group isomorphism. We apply this over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. The proofs are <a href="../AG-RG/AG-RG-05.html">Pinnings and the classification of split reductive groups, Theorems 10.1 and 5.1</a>, using the construction in Sections 6–10. See also [Conrad, Theorems 6.1.16(2) and 6.1.17] and [Milne, 19.52 and 19.58].</li>
+<li><strong>Conjugacy.</strong> For a smooth connected affine group over an algebraically closed field, Borel subgroups are conjugate; maximal tori in a connected solvable group are conjugate within it. These are proved in <a href="../AG-RG/AG-RG-01.html">Tori, maximal tori and their conjugacy, Section 2, Lemma 2.1 and Theorem 2.2</a>. For the separably closed case, the smooth transporters used in <a href="../AG-RG/AG-RG-06.html">Automorphisms, forms and parabolic subgroups, Theorem 3.1</a> supply rational conjugacies as explained in Section 4.</li>
+<li><strong>Roots, coroots and the big cell.</strong> In a split connected reductive group over a field, each root space is one-dimensional, its additive root parameter satisfies (2.1), and the rank-one <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span>-map has the prescribed coroot. These are proved in <a href="../AG-RG/AG-RG-03.html">Roots and reductive groups of rank one, Theorems 4.1, 6.1 and 7.1</a>. The reduced datum, positive systems, root-product coordinates and Bruhat decomposition are proved in <a href="../AG-RG/AG-RG-04.html">Root data, Weyl chambers and the Bruhat decomposition, Theorems 2.1, 4.1 and 6.2 and Section 5</a>. Lemma 2.2 proves the generation consequence we need.</li>
+<li><strong>Centralizer.</strong> If <span class="math" data-tex="\(H\)">\(H\)</span> is connected reductive over a field and <span class="math" data-tex="\(T\)">\(T\)</span> is a maximal torus, then <span class="math" data-tex="\(C_H(T)=T\)">\(C_H(T)=T\)</span> schematically, proved in <a href="../AG-RG/AG-RG-02.html">Regular elements and centralizers, Theorems 2.1–2.2</a>. We use its points consequence over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> and <span class="math" data-tex="\(F^s\)">\(F^s\)</span>. See also [Conrad, Corollary 1.2.4].</li>
+<li><strong>Weil groups and parabolic types.</strong> The local exact sequence, its Frobenius splitting, the subgroup <span class="math" data-tex="\(W_E=G_E\cap W_F\)">\(W_E=G_E\cap W_F\)</span> for a finite separable extension, and the archimedean groups are provided in <a href="../LG-GAL/representations-of-weil-groups.html">Representations of Weil groups, Propositions 1.1–1.2 and Section 5</a>. For a number field, the locally compact global Weil group, its continuous dense Galois map and its maps from the local Weil groups are constructed in <a href="../NT-CFT/brauer-groups-of-local-and-global-fields.html">Brauer groups of local and global fields, Theorem 24.6 and Section 7</a>, using relative fundamental-class extensions and their inverse limit. The parabolic types used to define relevance are proved in <a href="../AG-RG/AG-RG-06.html">Automorphisms, forms and parabolic subgroups, Theorems 1.1 and 2.1</a>. Section 6 adopts the parameter definition of <a href="../LG-LLC/LG-LLC-13.html">Beyond general linear groups: parameters and packets, Section 1</a>; it asserts no local or global correspondence. The original role of the dual group and its Galois extension is described in [Langlands, Sections 2–3].</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>[Milne] J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/RG.pdf"><em>Reductive Groups</em></a>, free author notes, version 2.00, 10 March 2018. Section 19, especially 19.11–19.22, 19.49–19.52 and 19.58, treats roots, pinnings and classification. The numbering here is that of these notes.</li>
+<li>[Conrad] B. Conrad, <a href="https://math.stanford.edu/~conrad/papers/luminysga3smf.pdf"><em>Reductive Group Schemes</em></a>, freely accessible author's text, 2014. Corollary 1.2.4 gives the maximal-torus centralizer; Theorems 6.1.16(2) and 6.1.17 give existence and pinned classification.</li>
+<li>[Getz–Hahn] J. R. Getz and H. Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em></a>, free author draft of 22 April 2022. Theorem 1.8.3 concerns classification and Section 7.3 constructs the dual group and Galois action; Proposition 7.3.2 identifies pinned automorphisms with based-datum automorphisms. All locators refer to this draft.</li>
+<li>[Langlands] R. P. Langlands, <a href="https://publications.ias.edu/sites/default/files/problems-in-the-theory-of-automorphic-forms-rpl_2.pdf">“Problems in the theory of automorphic forms”</a>, 1970, freely accessible author re-typeset edition compiled 27 January 2023. Sections 2–3 construct the dual group and its Galois extension.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-GLOB-02.html">The Satake isomorphism for unramified groups and unramified L-factors →</a></span></nav>
+<p class="small source-link"><a href="src/LG-GLOB-01.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GLOB">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>SH02-FSB — Formal stabilization over arbitrary neighborhood sets</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><span id="SH02-FSB"></span><h1 id="sh02-fsb-formal-stabilization-over-arbitrary-neighborhood-sets">SH02-FSB
+— Formal stabilization over arbitrary neighborhood sets</h1>
+<p>This reading proves the displayed formal and derived
+comparison statements used in local sheaf duality. Basic category and
+derived-functor foundations remain explicit prerequisites; this scoped
+source repair does not certify all surrounding SH-01 foundations.</p>
+<p>A neighborhood calculation often becomes constant only after
+transition maps have discarded temporary terms. The right notion of
+stabilization records those maps. This lesson first constructs that
+formal notion, then separates it from the derived inverse limit of an
+actual module diagram. The distinction allows the neighborhood set to be
+arbitrarily large and directed.</p>
+<span id="SH02-FSB-SETUP"></span><h2 id="sh02-fsb-setup-indices-categories-and-the-two-contracts">SH02-FSB-SETUP
+— Indices, categories, and the two contracts</h2>
+<p>All indexing sets are small, nonempty directed partially ordered
+sets. An inverse system in a locally small category
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒞</mi><annotation encoding="application/x-tex">\mathcal C</annotation></semantics></math>
+is a functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>:</mo><msup><mi>I</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mo>→</mo><mi mathvariant="script">𝒞</mi></mrow><annotation encoding="application/x-tex">A:I^{\mathrm{op}}\to\mathcal C</annotation></semantics></math>;
+write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>:</mo><msub><mi>A</mi><mi>j</mi></msub><mo>→</mo><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_{ji}:A_j\to A_i</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">j\geq i</annotation></semantics></math>.
+A direct system is a functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>→</mo><mi mathvariant="script">𝒞</mi></mrow><annotation encoding="application/x-tex">I\to\mathcal C</annotation></semantics></math>.
+We use a fixed universe for these sets and a larger universe when
+forming functor categories. The categories needed below are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Mod</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Mod}(k)</annotation></semantics></math>
+and the ordinary derived category
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k)</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is a unital commutative ring. The categorical and inverse-limit results
+in this lesson do not require finite global dimension.</p>
+<p>The formal calculus through SH02-FSB-FUNCTORS supports <span class="unlinked">SH02-CB-IMP-PRO-CALCULUS</span>.
+The derived module-diagram calculation in SH02-FSB-COFINALITY and
+SH02-FSB-PRISM supports <span class="unlinked">SH02-CB-IMP-DERIVED-COFINALITY</span>.
+Basic categories, complexes, projective or injective resolutions, and
+the derived functors they define remain prerequisite material. The
+proofs below identify the resolutions and comparison maps needed
+here.</p>
+<span id="SH02-FSB-HOM"></span><h2 id="sh02-fsb-hom-formal-maps-and-constant-objects">SH02-FSB-HOM —
+Formal maps and constant objects</h2>
+<p>For inverse systems
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>:</mo><msup><mi>I</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mo>→</mo><mi mathvariant="script">𝒞</mi></mrow><annotation encoding="application/x-tex">A:I^{\mathrm{op}}\to\mathcal C</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>:</mo><msup><mi>J</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mo>→</mo><mi mathvariant="script">𝒞</mi></mrow><annotation encoding="application/x-tex">B:J^{\mathrm{op}}\to\mathcal C</annotation></semantics></math>,
+define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mrow><mi>j</mi><mo>∈</mo><mi>J</mi></mrow></msub><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">→</mo></munder><mrow><mi>i</mi><mo>∈</mo><mi>I</mi></mrow></msub><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi mathvariant="script">𝒞</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><msub><mi>B</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}_{\operatorname{Pro}(\mathcal C)}(A,B)
+=\underset{\leftarrow}{\lim}_{j\in J}\underset{\rightarrow}{\lim}_{i\in I}
+\operatorname{Hom}_{\mathcal C}(A_i,B_j).
+</annotation></semantics></math></p>
+<p>The inner colimit uses precomposition by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><msup><mi>i</mi><mo>′</mo></msup><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">a_{i'i}</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mo>′</mo></msup><mo>≥</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">i'\geq i</annotation></semantics></math>.
+Consequently a component at target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+is represented by a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>→</mo><msub><mi>B</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A_i\to B_j</annotation></semantics></math>,
+and two representatives agree precisely when their composites from some
+common later
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><msup><mi>i</mi><mo>′</mo></msup></msub><annotation encoding="application/x-tex">A_{i'}</annotation></semantics></math>
+agree. A formal map is a family of such classes compatible with every
+target transition. A finite number of equalities can always be witnessed
+after one further source index, by directedness.</p>
+<p>Here is a construction that verifies composition rather than
+presuming it. Associate to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+the covariant functor</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>W</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">→</mo></munder><mi>i</mi></msub><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi mathvariant="script">𝒞</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><mi>W</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+L_A(W)=\underset{\rightarrow}{\lim}_i\operatorname{Hom}_{\mathcal C}(A_i,W).
+</annotation></semantics></math></p>
+<p>A formal map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">f:A\to B</annotation></semantics></math>
+defines a natural transformation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>B</mi></msub><mo>→</mo><msub><mi>L</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">L_B\to L_A</annotation></semantics></math>:
+represent an element of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>B</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>W</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L_B(W)</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>j</mi></msub><mo>→</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">B_j\to W</annotation></semantics></math>,
+choose a representative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>→</mo><msub><mi>B</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A_i\to B_j</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>j</mi></msub><annotation encoding="application/x-tex">f_j</annotation></semantics></math>,
+and compose. Refining either representative gives the same class, by the
+compatibility just stated. Conversely, evaluate a natural transformation
+at the class of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><msub><mi>B</mi><mi>j</mi></msub></msub><annotation encoding="application/x-tex">\mathrm{id}_{B_j}</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>B</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>B</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L_B(B_j)</annotation></semantics></math>.
+These operations are inverse. Composition and identities of natural
+transformations therefore make the displayed Hom sets into a category.
+This also proves associativity without selecting simultaneous
+representatives for infinitely many components.</p>
+<p>For direct systems, the dual construction gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>i</mi></msub><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">→</mo></munder><mi>j</mi></msub><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi mathvariant="script">𝒞</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><msub><mi>B</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="script">𝒞</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}_{\operatorname{Ind}(\mathcal C)}(A,B)
+=\underset{\leftarrow}{\lim}_i\underset{\rightarrow}{\lim}_j
+\operatorname{Hom}_{\mathcal C}(A_i,B_j),
+\qquad
+\operatorname{Ind}(\mathcal C)
+=\operatorname{Pro}(\mathcal C^{\mathrm{op}})^{\mathrm{op}}.
+</annotation></semantics></math></p>
+<p>The constant-system functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>:</mo><mi mathvariant="script">𝒞</mi><mo>→</mo><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">c:\mathcal C\to\operatorname{Pro}(\mathcal C)</annotation></semantics></math>
+is fully faithful: substituting two one-object systems in the formula
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mi>P</mi><mo>,</mo><mi>c</mi><mi>Q</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi mathvariant="script">𝒞</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>Q</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}(cP,cQ)=\operatorname{Hom}_{\mathcal C}(P,Q)</annotation></semantics></math>.
+The same is true for ind-objects. These are the conventions of <a href="https://stacks.math.columbia.edu/tag/05PW">Stacks, Tag 05PW</a>
+and <a href="https://stacks.math.columbia.edu/tag/05PX">Tag 05PX</a>;
+the construction above supplies the composition details used here.</p>
+<span id="SH02-FSB-REPRESENTED"></span><h2 id="sh02-fsb-represented-what-a-representative-actually-supplies">SH02-FSB-REPRESENTED
+— What a representative actually supplies</h2>
+<p>A pro-system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>∈</mo><mi mathvariant="script">𝒞</mi></mrow><annotation encoding="application/x-tex">Q\in\mathcal C</annotation></semantics></math>
+when there is a specified isomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>Q</mi><mo>≃</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">cQ\simeq A</annotation></semantics></math>.
+It is equivalent to give a compatible cone
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>:</mo><mi>Q</mi><mo>→</mo><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i:Q\to A_i</annotation></semantics></math>,
+an index
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>i</mi><mn>0</mn></msub><annotation encoding="application/x-tex">i_0</annotation></semantics></math>,
+and a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>:</mo><msub><mi>A</mi><msub><mi>i</mi><mn>0</mn></msub></msub><mo>→</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">q:A_{i_0}\to Q</annotation></semantics></math>
+such that</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><msub><mi>p</mi><msub><mi>i</mi><mn>0</mn></msub></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mi>Q</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>a</mi><mrow><mi>ℓ</mi><mi>j</mi></mrow></msub><mo>=</mo><msub><mi>p</mi><mi>j</mi></msub><mi>q</mi><msub><mi>a</mi><mrow><mi>ℓ</mi><msub><mi>i</mi><mn>0</mn></msub></mrow></msub><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for some </mtext><mspace width="0.333em"></mspace></mrow><mi>ℓ</mi><mo>≥</mo><mi>j</mi><mo>,</mo><msub><mi>i</mi><mn>0</mn></msub><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> for each </mtext><mspace width="0.333em"></mspace></mrow><mi>j</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+q p_{i_0}=\mathrm{id}_Q,
+\qquad
+a_{\ell j}=p_jq a_{\ell i_0}
+\quad\text{for some }\ell\geq j,i_0\text{ for each }j.
+</annotation></semantics></math></p>
+<p>Indeed, the cone is precisely a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>:</mo><mi>c</mi><mi>Q</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">p:cQ\to A</annotation></semantics></math>,
+and a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>c</mi><mi>Q</mi></mrow><annotation encoding="application/x-tex">A\to cQ</annotation></semantics></math>
+is represented by one such
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>.
+The first identity says
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mi>p</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mrow><mi>c</mi><mi>Q</mi></mrow></msub></mrow><annotation encoding="application/x-tex">qp=\mathrm{id}_{cQ}</annotation></semantics></math>;
+the eventual identities say
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>q</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">pq=\mathrm{id}_A</annotation></semantics></math>
+by the Hom formula. This proves both directions of the criterion. Taking
+opposites gives its ind version, with a cocone and eventual equalities
+after advancing the target index.</p>
+<p>For any
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>∈</mo><mi mathvariant="script">𝒞</mi></mrow><annotation encoding="application/x-tex">T\in\mathcal C</annotation></semantics></math>,
+applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mi>T</mi><mo>,</mo><mi>−</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}_{\operatorname{Pro}(\mathcal C)}(cT,-)</annotation></semantics></math>
+to this isomorphism gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi mathvariant="script">𝒞</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>T</mi><mo>,</mo><mi>Q</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>i</mi></msub><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi mathvariant="script">𝒞</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>T</mi><mo>,</mo><msub><mi>A</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}_{\mathcal C}(T,Q)
+\simeq\underset{\leftarrow}{\lim}_i\operatorname{Hom}_{\mathcal C}(T,A_i).
+</annotation></semantics></math></p>
+<p>Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+is also the ordinary categorical limit with the displayed cone. Dually
+an ind representative is the ordinary categorical colimit. The converse
+is false: merely being an ordinary limit does not produce the eventual
+inverse
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>.
+The corresponding representative characterizations are <a href="https://stacks.math.columbia.edu/tag/05PZ">Stacks, Tag 05PZ</a>
+and its <a href="https://stacks.math.columbia.edu/tag/05PY">ind version,
+Tag 05PY</a>.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒞</mi><annotation encoding="application/x-tex">\mathcal C</annotation></semantics></math>
+has a zero object, then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≃</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> in </mtext><mspace width="0.333em"></mspace></mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo><mspace width="1.0em"></mspace><mo>⟺</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for every </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> some </mtext><mspace width="0.333em"></mspace></mrow><mi>j</mi><mo>≥</mo><mi>i</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> has </mtext><mspace width="0.333em"></mspace></mrow><msub><mi>a</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A\simeq0\text{ in }\operatorname{Pro}(\mathcal C)
+\quad\Longleftrightarrow\quad
+\text{for every }i\text{ some }j\geq i\text{ has }a_{ji}=0.
+</annotation></semantics></math></p>
+<p>The identity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is zero exactly when its component at each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>
+becomes zero in the inner colimit. This is the displayed criterion. A
+zero identity makes the unique maps to and from the zero object inverse,
+proving the assertion. In the ind case the criterion is that every
+source term is killed by some later transition.</p>
+<span id="SH02-FSB-REINDEX"></span><h2 id="sh02-fsb-reindex-cofinal-changes-preserve-the-formal-object">SH02-FSB-REINDEX
+— Cofinal changes preserve the formal object</h2>
+<p>Call an order-preserving map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>:</mo><mi>J</mi><mo>→</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">\phi:J\to I</annotation></semantics></math>
+cofinal here when, for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">i\in I</annotation></semantics></math>,
+the upper comma set</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>i</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>j</mi><mo>∈</mo><mi>J</mi><mo>:</mo><mi>i</mi><mo>≤</mo><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">
+J_i=\{j\in J:i\leq\phi(j)\}
+</annotation></semantics></math></p>
+<p>is nonempty and directed. For maps between directed sets,
+nonemptiness already implies the directed condition:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mi>i</mi></msub><annotation encoding="application/x-tex">J_i</annotation></semantics></math>
+is upward closed in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>.
+We retain both words to identify the exact indexing condition used later
+in the derived proof.</p>
+<p>The transition maps give a canonical formal isomorphism between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+and its restriction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ϕ</mi><mo>*</mo></msup><mi>A</mi></mrow><annotation encoding="application/x-tex">\phi^*A</annotation></semantics></math>.
+To check it, for each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>∈</mo><msub><mi>J</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">j\in J_i</annotation></semantics></math>
+and use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>→</mo><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">A_{\phi(j)}\to A_i</annotation></semantics></math>.
+Different choices become equal at a common upper index. This defines
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ϕ</mi><mo>*</mo></msup><mi>A</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\phi^*A\to A</annotation></semantics></math>.
+In the other direction, the component at target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+is represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><msub><mi>A</mi><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub></msub><annotation encoding="application/x-tex">\mathrm{id}_{A_{\phi(j)}}</annotation></semantics></math>.
+Both composites equal the identity after a further transition, so they
+are inverse formal maps. Their definition also shows naturality in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+and compatibility with successive reindexings. This is the directed-set
+instance of the ordinary cofinality statement <a href="https://stacks.math.columbia.edu/tag/04E7">Stacks, Tag 04E7</a>,
+applied also to opposite categories. No derived inverse-limit assertion
+has yet been used.</p>
+<span id="SH02-FSB-STRICT"></span><h2 id="sh02-fsb-strict-finite-acyclic-diagrams-can-be-made-levelwise">SH02-FSB-STRICT
+— Finite acyclic diagrams can be made levelwise</h2>
+<p><strong>Proposition.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+be a finite category admitting a degree function on its objects that
+strictly increases along every nonidentity arrow. Suppose a diagram
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>→</mo><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D\to\operatorname{Pro}(\mathcal C)</annotation></semantics></math>
+is given, with each vertex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+represented by a specified directed system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mi>v</mi></msup><mo>:</mo><msubsup><mi>I</mi><mi>v</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msubsup><mo>→</mo><mi mathvariant="script">𝒞</mi></mrow><annotation encoding="application/x-tex">A^v:I_v^{\mathrm{op}}\to\mathcal C</annotation></semantics></math>.
+There is a directed set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>,
+cofinal maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>v</mi></msub><mo>:</mo><mi>R</mi><mo>→</mo><msub><mi>I</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">r_v:R\to I_v</annotation></semantics></math>,
+and a diagram
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>→</mo><msup><mi mathvariant="script">𝒞</mi><msup><mi>R</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup></msup></mrow><annotation encoding="application/x-tex">D\to\mathcal C^{R^{\mathrm{op}}}</annotation></semantics></math>
+whose formal image is the given diagram. In particular this applies to a
+single morphism, composable morphisms, parallel maps with a prescribed
+equality, and finite commutative squares.</p>
+<p><strong>Proof.</strong> A level consists of indices
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mi>v</mi></msub><mo>∈</mo><msub><mi>I</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">i_v\in I_v</annotation></semantics></math>
+and, for every arrow
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>:</mo><mi>v</mi><mo>→</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">\alpha:v\to w</annotation></semantics></math>,
+a map</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>α</mi></msub><mo>:</mo><msubsup><mi>A</mi><msub><mi>i</mi><mi>v</mi></msub><mi>v</mi></msubsup><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msubsup><mi>A</mi><msub><mi>i</mi><mi>w</mi></msub><mi>w</mi></msubsup></mrow><annotation encoding="application/x-tex">
+f_\alpha:A^v_{i_v}\longrightarrow A^w_{i_w}
+</annotation></semantics></math></p>
+<p>representing the prescribed formal component at target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>i</mi><mi>w</mi></msub><annotation encoding="application/x-tex">i_w</annotation></semantics></math>.
+Require identity and composition equations at that level. Levels exist
+with arbitrarily prescribed lower bounds on their indices. Choose the
+vertices in decreasing degree. When choosing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>i</mi><mi>v</mi></msub><annotation encoding="application/x-tex">i_v</annotation></semantics></math>,
+all targets of its nonidentity arrows have already been fixed. Each of
+the finitely many formal components has a representative, and
+directedness supplies a common source index above their indices and the
+prescribed bound. For each composable pair starting at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
+the proposed composite and the proposed map for the composite arrow
+represent the same formal component. A further source index makes that
+equality hold. There are finitely many such equations. This finishes the
+construction at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+without changing its already chosen targets.</p>
+<p>Order levels by coordinatewise increase, requiring in addition that
+every square made from an arrow
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>α</mi></msub><annotation encoding="application/x-tex">f_\alpha</annotation></semantics></math>
+and the original transition maps commute. This is a partial order. Any
+two levels have an upper level: repeat the decreasing-degree
+construction above, demanding indices above those of both old levels and
+demanding commutativity with both old arrow maps. Each new demand is
+equality between two representatives of the same formal component at a
+fixed old target. It is therefore achieved by a further source index.
+There are finitely many demands at each vertex. The same construction
+works while imposing an additional lower bound at any vertex.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+be this set of levels. It is small because the index sets and the
+relevant Hom sets are small, and it is directed by the preceding
+construction. Each projection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>v</mi></msub><annotation encoding="application/x-tex">r_v</annotation></semantics></math>
+is order preserving; its upper comma set above any prescribed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>i</mi><mi>v</mi></msub><annotation encoding="application/x-tex">i_v</annotation></semantics></math>
+is nonempty and directed by the same construction. Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>v</mi></msub><annotation encoding="application/x-tex">r_v</annotation></semantics></math>
+is cofinal. The transition squares built into the order make every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>α</mi></msub><annotation encoding="application/x-tex">f_\alpha</annotation></semantics></math>
+a natural transformation of the reindexed systems. The required
+equations already hold at every level. This proves the proposition.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>To impose equality between two given parallel formal maps, apply the
+construction to the diagram in which those arrows are identified; finite
+lists of compatible composition equations are handled the same way.
+Taking opposites proves the ind version. With
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒞</mi><mo>=</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal C=D(k)</annotation></semantics></math>,
+the level maps and equations lie in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k)</annotation></semantics></math>.
+This does <strong>not</strong> assert that arbitrary diagrams in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k)</annotation></semantics></math>
+lift to strictly commuting chain maps. In the application below,
+applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mi>q</mi></msup><annotation encoding="application/x-tex">H^q</annotation></semantics></math>
+gives actual module maps and actual equations, which is all that is
+needed.</p>
+<p>The acyclicity condition on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+matters. Let every term of an inverse sequence be a nonzero module
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+with zero transition maps between distinct indices. This system is
+formally zero. Its formal isomorphism to the constant zero system has
+inverse equations, but no cofinal reindexing can turn its terms into
+modules isomorphic to zero. Thus one cannot require arbitrary inverse
+equations to hold levelwise. The next argument uses their correct
+eventual form.</p>
+<span id="SH02-FSB-INVERSE"></span><h2 id="sh02-fsb-inverse-kernels-and-cokernels-of-a-pro-isomorphism">SH02-FSB-INVERSE
+— Kernels and cokernels of a pro-isomorphism</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">f:A\to B</annotation></semantics></math>
+be a strict morphism of inverse module systems on one directed set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>,
+and suppose its formal pro-morphism is invertible. For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+there are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">j\geq i</annotation></semantics></math>
+and a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><msub><mi>B</mi><mi>j</mi></msub><mo>→</mo><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">g:B_j\to A_i</annotation></semantics></math>
+satisfying</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><msub><mi>f</mi><mi>j</mi></msub><mo>=</mo><msub><mi>a</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>f</mi><mi>i</mi></msub><mi>g</mi><mo>=</mo><msub><mi>b</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+g f_j=a_{ji},\qquad f_i g=b_{ji}.
+</annotation></semantics></math></p>
+<p>To prove this, represent the component of the formal inverse at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mn>0</mn></msub><mo>:</mo><msub><mi>B</mi><mi>ℓ</mi></msub><mo>→</mo><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">g_0:B_\ell\to A_i</annotation></semantics></math>.
+The equation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>g</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">fg=\mathrm{id}_B</annotation></semantics></math>,
+at target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>i</mi></msub><annotation encoding="application/x-tex">B_i</annotation></semantics></math>,
+holds after restricting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>ℓ</mi></msub><annotation encoding="application/x-tex">B_\ell</annotation></semantics></math>
+to some later term. The equation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>f</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">gf=\mathrm{id}_A</annotation></semantics></math>,
+at target
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>,
+similarly holds after restricting the composite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>ℓ</mi></msub><mover><mo>→</mo><msub><mi>f</mi><mi>ℓ</mi></msub></mover><msub><mi>B</mi><mi>ℓ</mi></msub><mover><mo>→</mo><msub><mi>g</mi><mn>0</mn></msub></mover><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">A_\ell\xrightarrow{f_\ell}B_\ell\xrightarrow{g_0}A_i</annotation></semantics></math>.
+A common later index
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mi>i</mi><mo>,</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">j\geq i,\ell</annotation></semantics></math>
+makes both equalities hold, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>=</mo><msub><mi>g</mi><mn>0</mn></msub><msub><mi>b</mi><mrow><mi>j</mi><mi>ℓ</mi></mrow></msub></mrow><annotation encoding="application/x-tex">g=g_0b_{j\ell}</annotation></semantics></math>
+has the required properties.</p>
+<p>Now
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">a_{ji}</annotation></semantics></math>
+kills
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>f</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\ker(f_j)</annotation></semantics></math>,
+because it factors through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>j</mi></msub><annotation encoding="application/x-tex">f_j</annotation></semantics></math>.
+Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">b_{ji}</annotation></semantics></math>
+induces zero on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">coker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>f</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mrow><mi mathvariant="normal">coker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>f</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{coker}(f_j)\to\operatorname{coker}(f_i)</annotation></semantics></math>,
+because it factors through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>i</mi></msub><annotation encoding="application/x-tex">f_i</annotation></semantics></math>.
+The levelwise kernel and cokernel systems are therefore pro-zero. This
+proof uses kernels and cokernels in modules, not an assertion about
+kernels in a derived category.</p>
+<p>For clarity, levelwise kernels and cokernels of any strict
+module-system morphism also have the formal universal properties. For an
+arbitrary pro-system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>,
+the Hom formula gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo>,</mo><mo form="prefix" stretchy="false">{</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>f</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><mrow><mi mathvariant="normal">coker</mi><mo>⁡</mo></mrow><msub><mi>f</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mi>Z</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>B</mi><mo>,</mo><mi>Z</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>Z</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\operatorname{Hom}_{\mathrm{Pro}}(Z,\{\ker f_i\})
+&amp;=\ker\bigl(\operatorname{Hom}_{\mathrm{Pro}}(Z,A)
+\longrightarrow\operatorname{Hom}_{\mathrm{Pro}}(Z,B)\bigr),\\
+\operatorname{Hom}_{\mathrm{Pro}}(\{\operatorname{coker}f_i\},Z)
+&amp;=\ker\bigl(\operatorname{Hom}_{\mathrm{Pro}}(B,Z)
+\longrightarrow\operatorname{Hom}_{\mathrm{Pro}}(A,Z)\bigr).
+\end{aligned}
+</annotation></semantics></math></p>
+<p>To verify the first equality, apply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>Z</mi><mi>j</mi></msub><mo>,</mo><mi>−</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}(Z_j,-)</annotation></semantics></math>
+to each kernel and then take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>i</mi></msub><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">→</mo></munder><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\underset{\leftarrow}{\lim}_i\underset{\rightarrow}{\lim}_j</annotation></semantics></math>.
+A filtered colimit commutes with this kernel: a class mapping to zero is
+represented by a map whose composite becomes zero at some later index,
+and two resulting kernel representatives become equal after a further
+index. Ordinary limits preserve kernels because the compatibility and
+zero equations can be imposed together. For the second equality use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">coker</mi><mo>⁡</mo></mrow><msub><mi>f</mi><mi>i</mi></msub><mo>,</mo><msub><mi>Z</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>B</mi><mi>i</mi></msub><mo>,</mo><msub><mi>Z</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><msub><mi>Z</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}(\operatorname{coker}f_i,Z_j)=\ker(\operatorname{Hom}(B_i,Z_j)\to\operatorname{Hom}(A_i,Z_j))</annotation></semantics></math>
+and take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>j</mi></msub><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">→</mo></munder><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\underset{\leftarrow}{\lim}_j\underset{\rightarrow}{\lim}_i</annotation></semantics></math>.
+The same representative argument applies. These natural identities are
+exactly the kernel and cokernel universal properties; they do not
+presume an abelian-category theorem about all pro-objects.</p>
+<span id="SH02-FSB-FUNCTORS"></span><h2 id="sh02-fsb-functors-applying-a-functor-to-the-formal-system">SH02-FSB-FUNCTORS
+— Applying a functor to the formal system</h2>
+<p>Every covariant functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>:</mo><mi mathvariant="script">𝒞</mi><mo>→</mo><mi mathvariant="script">ℰ</mi></mrow><annotation encoding="application/x-tex">T:\mathcal C\to\mathcal E</annotation></semantics></math>
+induces functors on ind- and pro-categories by applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+to all terms and all representatives of morphisms. Eventual equality
+remains equality after applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>,
+and the description of composition in SH02-FSB-HOM shows functoriality.
+Natural transformations of functors extend termwise and preserve the
+same compositions. In particular, a specified formal isomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≃</mo><mi>c</mi><mi>Q</mi></mrow><annotation encoding="application/x-tex">A\simeq cQ</annotation></semantics></math>
+is sent to a specified formal isomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>A</mi><mo>≃</mo><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mi>T</mi><mi>Q</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">TA\simeq c(TQ)</annotation></semantics></math>.
+This is also <a href="https://stacks.math.columbia.edu/tag/05SH">Stacks,
+Tag 05SH</a>.</p>
+<p>A contravariant functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>:</mo><msup><mi mathvariant="script">𝒞</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mo>→</mo><mi mathvariant="script">ℰ</mi></mrow><annotation encoding="application/x-tex">T:\mathcal C^{\mathrm{op}}\to\mathcal E</annotation></semantics></math>
+instead gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">ℰ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">Ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒞</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">ℰ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Pro}(\mathcal C)^{\mathrm{op}}
+\longrightarrow\operatorname{Ind}(\mathcal E),
+\qquad
+\operatorname{Ind}(\mathcal C)^{\mathrm{op}}
+\longrightarrow\operatorname{Pro}(\mathcal E).
+</annotation></semantics></math></p>
+<p>Indeed, a representative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>→</mo><msub><mi>B</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A_i\to B_j</annotation></semantics></math>
+becomes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>B</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>T</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(B_j)\to T(A_i)</annotation></semantics></math>,
+and the Hom formulas have exactly these reversed source and target
+indices. After the dual-sections adjunction identifies the terms, this
+explains why
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\operatorname{Hom}_k(-,k)</annotation></semantics></math>
+converts a represented compact-support pro-system into a represented
+ordinary-section ind-system. That sheaf-theoretic identification is <a href="src/SH02/exceptional-operations.md#SH02-EX-DUAL-SECTIONS">SH02-EX-DUAL-SECTIONS</a>.
+The formal argument makes no claim that this functor commutes with an
+arbitrary ordinary or derived inverse limit.</p>
+<span id="SH02-FSB-COFINALITY"></span><h2 id="sh02-fsb-cofinality-a-resolution-for-the-derived-comparison">SH02-FSB-COFINALITY
+— A resolution for the derived comparison</h2>
+<p><strong>Theorem.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>:</mo><msup><mi>I</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mo>→</mo><mrow><mi mathvariant="normal">Mod</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A:I^{\mathrm{op}}\to\operatorname{Mod}(k)</annotation></semantics></math>
+be an inverse module system and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>:</mo><mi>J</mi><mo>→</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">\phi:J\to I</annotation></semantics></math>
+be order preserving. If every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>i</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>j</mi><mo>:</mo><mi>i</mi><mo>≤</mo><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">J_i=\{j:i\leq\phi(j)\}</annotation></semantics></math>
+is nonempty and directed, restriction induces a natural isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>ϕ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>I</mi></msub><mi>A</mi><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>J</mi></msub><msup><mi>ϕ</mi><mo>*</mo></msup><mi>A</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+r_\phi(A):R\underset{\leftarrow}{\lim}_I A
+\xrightarrow{\sim}R\underset{\leftarrow}{\lim}_J\phi^*A.
+</annotation></semantics></math></p>
+<p>This isomorphism is the derived restriction of compatible families.
+It respects composition of indexing maps.</p>
+<p><strong>Proof.</strong> Work in the abelian diagram category
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">𝒜</mi><mi>I</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">Fun</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>I</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mo>,</mo><mrow><mi mathvariant="normal">Mod</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal A_I=\operatorname{Fun}(I^{\mathrm{op}},\operatorname{Mod}(k))</annotation></semantics></math>,
+whose exact sequences are objectwise exact. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">i\in I</annotation></semantics></math>
+define the free representable diagram</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>k</mi><mo form="prefix" stretchy="false">[</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>I</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>i</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>k</mi></mtd><mtd columnalign="left" style="text-align: left"><mi>h</mi><mo>≤</mo><mi>i</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>h</mi><mo>≰</mo><mi>i</mi><mi>.</mi></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+P_i(h)=k[\operatorname{Hom}_I(h,i)]
+=\begin{cases}k&amp;h\leq i,\\0&amp;h\nleq i.\end{cases}
+</annotation></semantics></math></p>
+<p>Its transition maps between nonzero terms are identities. The map
+sending a natural transformation to its value on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>∈</mo><msub><mi>P</mi><mi>i</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>i</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1\in P_i(i)</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><msub><mi mathvariant="script">𝒜</mi><mi>I</mi></msub></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>i</mi></msub><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\operatorname{Hom}_{\mathcal A_I}(P_i,A)=A_i</annotation></semantics></math>.
+Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mi>i</mi></msub><annotation encoding="application/x-tex">P_i</annotation></semantics></math>
+is projective. Direct sums of these objects are projective, because
+products of surjections of modules are surjective. We use the usual
+axiom of choice here.</p>
+<p>For completeness this diagram category has enough injectives. The
+right adjoint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>i</mi></msub><annotation encoding="application/x-tex">E_i</annotation></semantics></math>
+to evaluation at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+sends a module
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+to the diagram with value
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>≤</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">i\leq h</annotation></semantics></math>,
+and zero otherwise. Embed each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>
+into an injective module
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>i</mi></msub><annotation encoding="application/x-tex">Q_i</annotation></semantics></math>.
+Adjunction gives a monomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><munder><mo>∏</mo><mi>i</mi></munder><msub><mi>E</mi><mi>i</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>Q</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>:</mo></mrow><annotation encoding="application/x-tex">
+A\longrightarrow\prod_i E_i(Q_i):
+</annotation></semantics></math></p>
+<p>at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+its
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">i=h</annotation></semantics></math>
+component is the chosen embedding of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>h</mi></msub><annotation encoding="application/x-tex">A_h</annotation></semantics></math>.
+Each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>i</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>Q</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E_i(Q_i)</annotation></semantics></math>
+is injective because evaluation is exact, and a product of injectives is
+injective because its Hom functor is a product of exact functors. This
+constructs the resolutions defining the right derived inverse limit.</p>
+<p>Consider the augmented chain complex in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>I</mi></msub><annotation encoding="application/x-tex">\mathcal A_I</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>P</mi><mi>n</mi><mi>I</mi></msubsup><mo>=</mo><msub><mo>⨁</mo><mrow><msub><mi>i</mi><mn>0</mn></msub><mo>≤</mo><mi>⋯</mi><mo>≤</mo><msub><mi>i</mi><mi>n</mi></msub></mrow></msub><msub><mi>P</mi><msub><mi>i</mi><mn>0</mn></msub></msub><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>P</mi><mn>0</mn><mi>I</mi></msubsup><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>c</mi><mi>k</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+P^I_n=\bigoplus_{i_0\leq\cdots\leq i_n}P_{i_0}
+\quad(n\geq0),
+\qquad P^I_0\longrightarrow c k.
+</annotation></semantics></math></p>
+<p>Repeated indices are allowed. The boundary is the alternating sum of
+vertex deletions. Deleting the first vertex uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><msub><mi>i</mi><mn>0</mn></msub></msub><mo>→</mo><msub><mi>P</mi><msub><mi>i</mi><mn>1</mn></msub></msub></mrow><annotation encoding="application/x-tex">P_{i_0}\to P_{i_1}</annotation></semantics></math>;
+the other faces keep the coefficient diagram. The augmentation sends
+each generator to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>.
+The face identities give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>∂</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\partial^2=0</annotation></semantics></math>.
+At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>,
+this is the free augmented chain complex of the poset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>i</mi><mo>:</mo><mi>h</mi><mo>≤</mo><mi>i</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{i:h\leq i\}</annotation></semantics></math>.
+Prepending its initial element
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+gives a contraction, including the augmentation degree. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>P</mi><mo>•</mo><mi>I</mi></msubsup><mo>→</mo><mi>c</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">P^I_\bullet\to c k</annotation></semantics></math>
+is a projective resolution.</p>
+<p>Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>I</mi></msub><mi>A</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><msub><mi mathvariant="script">𝒜</mi><mi>I</mi></msub></msub><mo form="prefix" stretchy="false">(</mo><mi>c</mi><mi>k</mi><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\underset{\leftarrow}{\lim}_I A=\operatorname{Hom}_{\mathcal A_I}(c k,A)</annotation></semantics></math>,
+this resolution computes the derived limit. Explicitly, for an injective
+resolution
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><msup><mi>Q</mi><mo>•</mo></msup></mrow><annotation encoding="application/x-tex">A\to Q^\bullet</annotation></semantics></math>,
+the first-quadrant bicomplex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>P</mi><mi>p</mi><mi>I</mi></msubsup><mo>,</mo><msup><mi>Q</mi><mi>q</mi></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}(P^I_p,Q^q)</annotation></semantics></math>
+computes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>P</mi><mo>•</mo><mi>I</mi></msubsup><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}(P^I_\bullet,A)</annotation></semantics></math>
+by projectivity and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>I</mi></msub><msup><mi>Q</mi><mo>•</mo></msup></mrow><annotation encoding="application/x-tex">\underset{\leftarrow}{\lim}_I Q^\bullet</annotation></semantics></math>
+by injectivity. There are finitely many terms in each total degree, so
+the two calculations identify the same derived object.</p>
+<p>The resulting cochain model is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msup><mi>C</mi><mi>n</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><munder><mo>∏</mo><mrow><msub><mi>i</mi><mn>0</mn></msub><mo>≤</mo><mi>⋯</mi><mo>≤</mo><msub><mi>i</mi><mi>n</mi></msub></mrow></munder><msub><mi>A</mi><msub><mi>i</mi><mn>0</mn></msub></msub><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="prefix" stretchy="false">(</mo><mi>d</mi><mi>c</mi><msub><mo form="postfix" stretchy="false">)</mo><mrow><msub><mi>i</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>i</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>a</mi><mrow><msub><mi>i</mi><mn>1</mn></msub><msub><mi>i</mi><mn>0</mn></msub></mrow></msub><msub><mi>c</mi><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>i</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></msub><mo>+</mo><munderover><mo>∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></munderover><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>r</mi></msup><msub><mi>c</mi><mrow><msub><mi>i</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mover><msub><mi>i</mi><mi>r</mi></msub><mo accent="true">̂</mo></mover><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>i</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+C^n(I,A)&amp;=\prod_{i_0\leq\cdots\leq i_n}A_{i_0},\\
+(dc)_{i_0,\ldots,i_{n+1}}
+&amp;=a_{i_1i_0}c_{i_1,\ldots,i_{n+1}}
++\sum_{r=1}^{n+1}(-1)^r
+c_{i_0,\ldots,\widehat{i_r},\ldots,i_{n+1}}.
+\end{aligned}
+</annotation></semantics></math></p>
+<p>In degree zero its cycles are the compatible families. This agrees
+with the product construction in <a href="https://stacks.math.columbia.edu/tag/08RZ">Stacks, Tag 08RZ</a>;
+the module Ext version in <a href="https://stacks.math.columbia.edu/tag/08S0">Tag 08S0</a> applies
+with the first coefficient diagram equal to the objectwise projective
+module
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+The construction here proves the required case and identifies its
+maps.</p>
+<p>Now form another augmented complex in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>I</mi></msub><annotation encoding="application/x-tex">\mathcal A_I</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>Q</mi><mi>n</mi><mi>ϕ</mi></msubsup><mo>=</mo><msub><mo>⨁</mo><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>≤</mo><mi>⋯</mi><mo>≤</mo><msub><mi>j</mi><mi>n</mi></msub></mrow></msub><msub><mi>P</mi><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+Q^\phi_n=\bigoplus_{j_0\leq\cdots\leq j_n}P_{\phi(j_0)}.
+</annotation></semantics></math></p>
+<p>At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+its augmented chain complex is the nerve complex of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mi>i</mi></msub><annotation encoding="application/x-tex">J_i</annotation></semantics></math>.
+To prove exactness, an augmented cycle involves only finitely many
+vertices. Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>∈</mo><msub><mi>J</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b\in J_i</annotation></semantics></math>
+above those vertices. On chains using vertices at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+appending
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+with sign
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(-1)^{n+1}</annotation></semantics></math>
+in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+and sending the augmentation generator to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[b]</annotation></semantics></math>,
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∂</mi><mi>h</mi><mo>+</mo><mi>h</mi><mi>∂</mi><mo>=</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mrow><annotation encoding="application/x-tex">\partial h+h\partial=\mathrm{id}</annotation></semantics></math>.
+Therefore every such cycle bounds. Nonemptiness gives surjectivity of
+the augmentation. This finite-support argument proves exactness even
+when there is no single upper bound for all vertices. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>Q</mi><mo>•</mo><mi>ϕ</mi></msubsup><mo>→</mo><mi>c</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">Q^\phi_\bullet\to c k</annotation></semantics></math>
+is another projective resolution.</p>
+<p>There is a specified augmented chain map</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>ϕ</mi></msub><mo>:</mo><msubsup><mi>Q</mi><mo>•</mo><mi>ϕ</mi></msubsup><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msubsup><mi>P</mi><mo>•</mo><mi>I</mi></msubsup><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">[</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>j</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">]</mo><mo data-source-command="longmapsto" stretchy="false">⟼</mo><mo form="prefix" stretchy="false">[</mo><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>…</mi><mo>,</mo><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">]</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+F_\phi:Q^\phi_\bullet\longrightarrow P^I_\bullet,
+\qquad
+[j_0,\ldots,j_n]\longmapsto
+[\phi(j_0),\ldots,\phi(j_n)],
+</annotation></semantics></math></p>
+<p>using the identity on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><annotation encoding="application/x-tex">P_{\phi(j_0)}</annotation></semantics></math>.
+Allowing repeated vertices makes the formula valid for any
+order-preserving
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>.
+It commutes with every face and induces the identity on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">c k</annotation></semantics></math>.</p>
+<p>An augmented map between projective resolutions that induces the
+identity is a chain homotopy equivalence. Here are the lifting details.
+Lift a map in degree zero through the other augmentation. Once degrees
+below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+have been constructed, the required
+degree-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+boundary lands in the cycles at degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math>;
+exactness and projectivity lift it through the next boundary. This
+constructs a reverse chain map. Two lifts of the same augmentation are
+homotopic: their difference in degree zero lifts through the degree-one
+boundary; at degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+subtract the already constructed homotopy term, observe that the
+remainder lands in cycles, and lift through degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+1</annotation></semantics></math>.
+Applying this to both composites produces the two homotopies.</p>
+<p>Applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><msub><mi mathvariant="script">𝒜</mi><mi>I</mi></msub></msub><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}_{\mathcal A_I}(-,A)</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>ϕ</mi></msub><annotation encoding="application/x-tex">F_\phi</annotation></semantics></math>
+therefore gives a cochain homotopy equivalence. Under the displayed
+cochain models it is precisely</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>r</mi><mi>ϕ</mi></msub><mi>c</mi><msub><mo form="postfix" stretchy="false">)</mo><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>j</mi><mi>n</mi></msub></mrow></msub><mo>=</mo><msub><mi>c</mi><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>…</mi><mo>,</mo><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(r_\phi c)_{j_0,\ldots,j_n}
+=c_{\phi(j_0),\ldots,\phi(j_n)}.
+</annotation></semantics></math></p>
+<p>This is natural in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+restricts compatible families in degree zero, and satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>ϕ</mi><mi>ψ</mi></mrow></msub><mo>=</mo><msub><mi>r</mi><mi>ψ</mi></msub><msub><mi>r</mi><mi>ϕ</mi></msub></mrow><annotation encoding="application/x-tex">r_{\phi\psi}=r_\psi r_\phi</annotation></semantics></math>
+on the complexes themselves. It is the claimed natural derived
+comparison.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The ordinary initiality theorem, <a href="https://stacks.math.columbia.edu/tag/002R">Stacks, Tag 002R</a>,
+concerns ordinary limits. The two projective resolutions above supply
+the additional derived assertion under the stated upper-comma
+condition.</p>
+<span id="SH02-FSB-PRISM"></span><h2 id="sh02-fsb-prism-the-comparison-for-a-natural-change-of-index">SH02-FSB-PRISM
+— The comparison for a natural change of index</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>,</mo><mi>v</mi><mo>:</mo><mi>J</mi><mo>→</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">u,v:J\to I</annotation></semantics></math>
+be order preserving and suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mi>v</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u(j)\leq v(j)</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>.
+Transitions define a map of diagrams</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>:</mo><msup><mi>v</mi><mo>*</mo></msup><mi>A</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msup><mi>u</mi><mo>*</mo></msup><mi>A</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>t</mi><mi>j</mi></msub><mo>=</mo><msub><mi>a</mi><mrow><mi>v</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+t:v^*A\longrightarrow u^*A,
+\qquad t_j=a_{v(j),u(j)}.
+</annotation></semantics></math></p>
+<p>Then, without any cofinality assumption on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>J</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.167em"></mspace><msub><mi>r</mi><mi>v</mi></msub><mo>=</mo><msub><mi>r</mi><mi>u</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\underset{\leftarrow}{\lim}_J(t)\,r_v=r_u.
+</annotation></semantics></math></p>
+<p>To prove the equality for the actual comparison maps, define, for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n\geq1</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>H</mi><mi>n</mi></msup><mi>c</mi><msub><mo form="postfix" stretchy="false">)</mo><mrow><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>j</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>r</mi></msup><msub><mi>c</mi><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mi>r</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>v</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mi>r</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>…</mi><mo>,</mo><mi>v</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>H</mi><mn>0</mn></msup><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(H^nc)_{j_0,\ldots,j_{n-1}}
+=\sum_{r=0}^{n-1}(-1)^r
+c_{u(j_0),\ldots,u(j_r),v(j_r),\ldots,v(j_{n-1})},
+\qquad H^0=0.
+</annotation></semantics></math></p>
+<p>Every index string is increasing, and every term lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><annotation encoding="application/x-tex">A_{u(j_0)}</annotation></semantics></math>.
+This defines a homotopy with</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>H</mi><mo>+</mo><mi>H</mi><mi>d</mi><mo>=</mo><mi>C</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>r</mi><mi>v</mi></msub><mo>−</mo><msub><mi>r</mi><mi>u</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+dH+Hd=C(t)r_v-r_u.
+</annotation></semantics></math></p>
+<p>The verification is the prism boundary calculation, which can be seen
+before applying Hom. A string
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msub><mi>j</mi><mn>0</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>j</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[j_0,\ldots,j_n]</annotation></semantics></math>
+with coefficient
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><annotation encoding="application/x-tex">P_{u(j_0)}</annotation></semantics></math>
+is sent to</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><mi>n</mi></munderover><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>r</mi></msup><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mi>r</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>v</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mi>r</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>…</mi><mo>,</mo><mi>v</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{r=0}^n(-1)^r
+[u(j_0),\ldots,u(j_r),v(j_r),\ldots,v(j_n)].
+</annotation></semantics></math></p>
+<p>A deletion strictly before or after the change from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+cancels with the term obtained by first deleting the corresponding
+source vertex. The two faces at adjacent change positions cancel each
+other. The only outer faces left are the
+all-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+string, with coefficient map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>→</mo><msub><mi>P</mi><mrow><mi>v</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>j</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">P_{u(j_0)}\to P_{v(j_0)}</annotation></semantics></math>,
+and minus the
+all-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+string. Applying Hom gives the displayed formula. In degree zero it
+reads</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>H</mi><mn>1</mn></msup><mi>d</mi><mi>c</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>j</mi></msub><mo>=</mo><msub><mi>a</mi><mrow><mi>v</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><msub><mi>c</mi><mrow><mi>v</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>−</mo><msub><mi>c</mi><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
+(H^1dc)_j=a_{v(j),u(j)}c_{v(j)}-c_{u(j)},
+</annotation></semantics></math></p>
+<p>which fixes the sign and the direction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
+This proves the identity in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k)</annotation></semantics></math>
+as well as its cochain realization.</p>
+<p>In particular, if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>:</mo><mi>J</mi><mo>→</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">s:J\to J</annotation></semantics></math>
+satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mo>≤</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">\mathrm{id}\leq s</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>:</mo><msup><mi>s</mi><mo>*</mo></msup><mi>B</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">z:s^*B\to B</annotation></semantics></math>
+is the transition map, then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>r</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">C(z)r_s</annotation></semantics></math>
+is homotopic to the identity. If every component of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+is zero, the homotopy shows</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>H</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>H</mi><mo form="postfix" stretchy="false">)</mo><mi>d</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mrow><mi>C</mi><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+d(-H)+(-H)d=\mathrm{id}_{C(J,B)}.
+</annotation></semantics></math></p>
+<p>Thus this particular derived-limit complex is contractible. This
+conclusion needs no separate cofinality assertion about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>.</p>
+<span id="SH02-FSB-NET"></span><h2 id="sh02-fsb-net-applying-the-bridge-to-a-pro-zero-net">SH02-FSB-NET
+— Applying the bridge to a pro-zero net</h2>
+<p><strong>Theorem.</strong> If an inverse module system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is pro-zero, then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mi>p</mi></msup><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>I</mi></msub><mi>A</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R^p\underset{\leftarrow}{\lim}_I A=0</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p\geq0</annotation></semantics></math>.
+A formal pro-isomorphism of inverse module systems consequently induces
+an isomorphism on all derived inverse limits.</p>
+<p><strong>Proof.</strong> Let</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>S</mi><mo>⊂</mo><mi>I</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> finite</mtext></mrow><mo>,</mo><mspace width="0.222em"></mspace><mi>n</mi><mo>∈</mo><mi mathvariant="double-struck">ℕ</mi><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mi>T</mi><mo>,</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mo>⟺</mo><mi>S</mi><mo>⊆</mo><mi>T</mi><mo>,</mo><mi>n</mi><mo>≤</mo><mi>m</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+J=\{(S,n):S\subset I\text{ finite},\ n\in\mathbb N\},
+\qquad
+(S,n)\leq(T,m)\Longleftrightarrow S\subseteq T, n\leq m,
+</annotation></semantics></math></p>
+<p>with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>∈</mo><mi mathvariant="double-struck">ℕ</mi></mrow><annotation encoding="application/x-tex">0\in\mathbb N</annotation></semantics></math>.
+This is directed. The point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(S,n)</annotation></semantics></math>
+has at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mo form="prefix" stretchy="false">|</mo><mi>S</mi><mo form="prefix" stretchy="false">|</mo></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2^{|S|}(n+1)</annotation></semantics></math>
+predecessors, and every strict predecessor has smaller
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>S</mi><mo form="prefix" stretchy="false">|</mo><mi>+</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">|S|+n</annotation></semantics></math>.
+Construct
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>:</mo><mi>J</mi><mo>→</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">\phi:J\to I</annotation></semantics></math>
+by induction on that nonnegative integer. At a point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p=(S,n)</annotation></semantics></math>,
+choose, for each strict predecessor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+an index
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>κ</mi><mi>q</mi></msub><mo>≥</mo><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>q</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\kappa_q\geq\phi(q)</annotation></semantics></math>
+that kills the map into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>q</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><annotation encoding="application/x-tex">A_{\phi(q)}</annotation></semantics></math>.
+Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\phi(p)</annotation></semantics></math>
+above the finite set consisting of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+and all these
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>κ</mi><mi>q</mi></msub><annotation encoding="application/x-tex">\kappa_q</annotation></semantics></math>.
+At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>⌀</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\varnothing,0)</annotation></semantics></math>
+choose any element of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>.
+Choices at the same rank do not depend on one another.</p>
+<p>The map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
+is order preserving, since the killing indices dominate the previous
+chosen indices. Moreover every transition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>p</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>→</mo><msub><mi>A</mi><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>q</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">A_{\phi(p)}\to A_{\phi(q)}</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>&lt;</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">q&lt;p</annotation></semantics></math>
+is zero. For any
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">i\in I</annotation></semantics></math>,
+the point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><mi>i</mi><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\{i\},0)</annotation></semantics></math>
+lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mi>i</mi></msub><annotation encoding="application/x-tex">J_i</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mi>i</mi></msub><annotation encoding="application/x-tex">J_i</annotation></semantics></math>
+is upward closed and directed. Therefore SH02-FSB-COFINALITY applies to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>.</p>
+<p>Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><msup><mi>ϕ</mi><mo>*</mo></msup><mi>A</mi></mrow><annotation encoding="application/x-tex">B=\phi^*A</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">s(S,n)=(S,n+1)</annotation></semantics></math>.
+Each point is a strict predecessor of its shift, so the transition map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>s</mi><mo>*</mo></msup><mi>B</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">s^*B\to B</annotation></semantics></math>
+is zero. SH02-FSB-PRISM contracts
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(J,B)</annotation></semantics></math>,
+and the cofinality isomorphism gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>I</mi></msub><mi>A</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R\underset{\leftarrow}{\lim}_I A=0</annotation></semantics></math>.
+No countable cofinal subset has been chosen.</p>
+<p>For a strict pro-isomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>,
+SH02-FSB-INVERSE makes its levelwise kernel and cokernel pro-zero. The
+two exact diagram sequences using
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">im</mi><mo>⁡</mo></mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">\operatorname{im}f</annotation></semantics></math>,
+together with the long exact sequences of right derived limits, prove
+that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\underset{\leftarrow}{\lim}(f)</annotation></semantics></math>
+is an isomorphism. A general formal morphism has a level representative
+after SH02-FSB-STRICT. Reindexing the source and target gives its
+derived map by composing this level map with the inverse cofinality
+comparisons. Two representations of the same formal map admit a common
+refinement on which their maps agree: apply the finite construction with
+that equality imposed. The formulas in SH02-FSB-COFINALITY and
+SH02-FSB-PRISM identify their induced maps. The same finite construction
+for two composable maps proves compatibility with composition. Thus the
+derived map depends only on the formal morphism, and the assertion for
+pro-isomorphisms follows.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>A constant module system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">cM</annotation></semantics></math>
+has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>I</mi></msub><mi>c</mi><mi>M</mi><mo>≃</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">R\underset{\leftarrow}{\lim}_I cM\simeq M</annotation></semantics></math>.
+Its cochain model is Hom from the augmented free nerve chains of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+Those chains resolve
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>:
+every finite augmented cycle can be coned to a common upper bound. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+and all chain modules are projective, the comparison-lifting argument in
+SH02-FSB-COFINALITY makes this resolution homotopy equivalent to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+in degree zero. Applying Hom proves the asserted cohomology in all
+degrees.</p>
+<p>This proves the complete arbitrary-directed step used in <span class="unlinked">SH02-CB-NET-ACYCLICITY</span>.
+The finite-predecessor construction there is valid; the resolution and
+prism above provide its missing explicit categorical support. Surjective
+transitions are a different condition. For arbitrary directed systems
+they need not force higher inverse limits to vanish, as shown by <a href="https://stacks.math.columbia.edu/tag/0ANX">Stacks, Tag
+0ANX</a>.</p>
+<span id="SH02-FSB-COSTALK"></span><h2 id="sh02-fsb-costalk-what-the-sheaf-argument-needs-from-this-bridge">SH02-FSB-COSTALK
+— What the sheaf argument needs from this bridge</h2>
+<p>We now specify how these facts enter <span class="unlinked">SH02-CB-COSTALK-CONTINUITY</span>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+be locally compact Hausdorff, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">x\in X</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^b(k_X)</annotation></semantics></math>.
+For this compatibility argument a common lower bound is enough. Compact
+neighborhoods
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+are ordered by shrinking. Their intersection is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{x\}</annotation></semantics></math>,
+and they form a directed set; neither assertion uses a countable
+basis.</p>
+<p>The sheaf foundations used here are <a href="src/SH02/open-prerequisites.md#SH02-IMP-COLIMITS">exact filtered
+colimits and stalks</a>, <a href="src/SH02/open-prerequisites.md#SH02-IMP-INJECTIVE">injective
+resolutions</a>, and the <a href="src/SH02/open-prerequisites.md#SH02-IMP-LOCALIZATION">closed-support
+construction</a>. Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>K</mi></msub><annotation encoding="application/x-tex">k_K</annotation></semantics></math>
+for the constant sheaf on the closed set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+extended to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+and use the restriction map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>K</mi></msub><mo>→</mo><msub><mi>k</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">k_K\to k_L</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>⊂</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">L\subset K</annotation></semantics></math>.
+These sheaves form a direct system with</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">→</mo></munder><mi>K</mi></msub><msub><mi>k</mi><mi>K</mi></msub><mo>=</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\underset{\rightarrow}{\lim}_K k_K=k_{\{x\}}.
+</annotation></semantics></math></p>
+<p>At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+its stalk is always
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>;
+a different point is excluded by some compact neighborhood. Exactness of
+filtered colimits makes this an exact derived-colimit calculation as
+well.</p>
+<p>Choose one bounded-below injective sheaf resolution
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>→</mo><msup><mi>I</mi><mo>•</mo></msup></mrow><annotation encoding="application/x-tex">F\to I^\bullet</annotation></semantics></math>.
+The complexes</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>A</mi><mi>K</mi><mo>•</mo></msubsup><mo>=</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><msub><mi>k</mi><mi>X</mi></msub></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>K</mi></msub><mo>,</mo><msup><mi>I</mi><mo>•</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><msup><mi>I</mi><mo>•</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
+A_K^\bullet=\operatorname{Hom}_{k_X}(k_K,I^\bullet)
+=\Gamma_K(X;I^\bullet)
+</annotation></semantics></math></p>
+<p>and their support-inclusion maps form an actual diagram of complexes
+with a common lower bound. They compute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma_K(X;F)</annotation></semantics></math>.
+The product bicomplex for this diagram is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>C</mi><mrow><mi>p</mi><mo>,</mo><mi>q</mi></mrow></msup><mo>=</mo><munder><mo>∏</mo><mrow><msub><mi>K</mi><mn>0</mn></msub><mo>≤</mo><mi>⋯</mi><mo>≤</mo><msub><mi>K</mi><mi>p</mi></msub></mrow></munder><msubsup><mi>A</mi><msub><mi>K</mi><mn>0</mn></msub><mi>q</mi></msubsup><mo>,</mo><mspace width="2.0em"></mspace><mi>D</mi><mo>=</mo><msub><mi>d</mi><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">x</mi></mrow></msub><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>p</mi></msup><msub><mi>d</mi><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">x</mi></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C^{p,q}=\prod_{K_0\leq\cdots\leq K_p}A_{K_0}^q,
+\qquad D=d_{\mathrm{index}}+(-1)^p d_{\mathrm{complex}}.
+</annotation></semantics></math></p>
+<p>It computes the derived inverse limit of the strict complex diagram
+by the resolution proof above. We can also identify it directly with the
+costalk. The direct-sum complex</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>p</mi></msub><mo>=</mo><msub><mo>⨁</mo><mrow><msub><mi>K</mi><mn>0</mn></msub><mo>≤</mo><mi>⋯</mi><mo>≤</mo><msub><mi>K</mi><mi>p</mi></msub></mrow></msub><msub><mi>k</mi><msub><mi>K</mi><mn>0</mn></msub></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow></msub></mrow><annotation encoding="application/x-tex">
+L_p=\bigoplus_{K_0\leq\cdots\leq K_p}k_{K_0}
+\longrightarrow k_{\{x\}}
+</annotation></semantics></math></p>
+<p>is an augmented resolution, with the first face given by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><msub><mi>K</mi><mn>0</mn></msub></msub><mo>→</mo><msub><mi>k</mi><msub><mi>K</mi><mn>1</mn></msub></msub></mrow><annotation encoding="application/x-tex">k_{K_0}\to k_{K_1}</annotation></semantics></math>
+and the other faces by deletion. Here is a stalkwise verification. Any
+positive-degree cycle has finite support; a common later index supplies
+the coning argument for the finite diagram. In degree zero, an element
+in the kernel of the augmentation is a finite sum whose images add to
+zero in the filtered colimit. After one later index the sum already
+vanishes; coning there expresses it as a boundary. The augmentation is
+onto on stalks. Thus the augmented sheaf complex is exact.</p>
+<p>Apply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><msub><mi>k</mi><mi>X</mi></msub></msub><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mo>,</mo><msup><mi>I</mi><mi>q</mi></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}_{k_X}(-,I^q)</annotation></semantics></math>
+in each degree. Injectivity makes every augmented row exact, and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><msub><mi>k</mi><mi>X</mi></msub></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>L</mi><mi>p</mi></msub><mo>,</mo><msup><mi>I</mi><mi>q</mi></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>C</mi><mrow><mi>p</mi><mo>,</mo><mi>q</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}_{k_X}(L_p,I^q)=C^{p,q}.
+</annotation></semantics></math></p>
+<p>After shifting the common lower bound to zero this is a
+first-quadrant bicomplex. Its augmentation consequently gives a
+canonical quasi-isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>K</mi></msub><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\Gamma_{\{x\}}(X;F)
+\xrightarrow{\sim}
+R\underset{\leftarrow}{\lim}_K R\Gamma_K(X;F).
+</annotation></semantics></math></p>
+<p>The map into its degree-zero components comes from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>K</mi></msub><mo>→</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow></msub></mrow><annotation encoding="application/x-tex">k_K\to k_{\{x\}}</annotation></semantics></math>,
+hence is the actual inclusion of supports. This identifies the
+comparison map, not merely the resulting cohomology groups.</p>
+<p>Exactness of products of modules identifies vertical cohomology in
+the same bicomplex. The first-quadrant spectral sequence is
+therefore</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mi>p</mi></msup><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>K</mi></msub><msubsup><mi>H</mi><mi>K</mi><mi>q</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>⟹</mo><msubsup><mi>H</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow><mrow><mi>p</mi><mo>+</mo><mi>q</mi></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R^p\underset{\leftarrow}{\lim}_K H^q_K(X;F)
+\Longrightarrow H^{p+q}_{\{x\}}(X;F).
+</annotation></semantics></math></p>
+<p>Its convergence uses the common lower bound, not a bound on the
+cardinality of the neighborhood set. If the formal support pro-system in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k)</annotation></semantics></math>
+is represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>,
+applying the functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mi>q</mi></msup><annotation encoding="application/x-tex">H^q</annotation></semantics></math>
+makes its module system pro-isomorphic to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>Q</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">cH^q(Q)</annotation></semantics></math>.
+SH02-FSB-NET and the constant-system calculation show that the spectral
+sequence has only the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p=0</annotation></semantics></math>
+column.</p>
+<p>There is a precise map to the representative even though a general
+object of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Pro}(D(k))</annotation></semantics></math>
+has not been given a derived-limit realization. The support inclusions
+give a formal cone</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mo form="prefix" stretchy="false">{</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+cR\Gamma_{\{x\}}(X;F)\longrightarrow\{R\Gamma_K(X;F)\}.
+</annotation></semantics></math></p>
+<p>Compose it with the specified representing isomorphism to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>Q</mi></mrow><annotation encoding="application/x-tex">cQ</annotation></semantics></math>.
+Full faithfulness of the constant embedding makes this an actual
+morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">R\Gamma_{\{x\}}(X;F)\to Q</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k)</annotation></semantics></math>.
+Its map on cohomology is the edge comparison just identified followed by
+the represented-system identification of the ordinary limit. It is an
+isomorphism in every degree, hence an isomorphism in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k)</annotation></semantics></math>.</p>
+<p>To connect this diagram with compactly supported sections on open
+neighborhoods, choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>V</mi><mo>⊂</mo><mi>K</mi><mo>⊂</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">x\in V\subset K\subset U</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>,</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">V,U</annotation></semantics></math>
+open and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+compact. Proper-support extension and support inclusion give</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\Gamma_c(V;F)\longrightarrow R\Gamma_K(X;F)
+\longrightarrow R\Gamma_c(U;F).
+</annotation></semantics></math></p>
+<p>Such a triple can be inserted inside every prescribed neighborhood,
+by local compactness and the Hausdorff separation property. The
+composites are the original extension maps. Refining two triples inside
+their intersection proves that the resulting formal maps are independent
+of the choices and inverse to each other. Thus the two pro-systems have
+the same representative, and the cone above is the compact-support
+compatibility map used in CB. These are the proper-support extension
+maps already specified by that course contract.</p>
+<p>For ordinary sections, the germ maps from the same injective
+resolution give a compatible cocone to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>x</mi></msub><annotation encoding="application/x-tex">F_x</annotation></semantics></math>.
+Exact filtered colimits identify
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">→</mo></munder><mi>U</mi></msub><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\underset{\rightarrow}{\lim}_U H^q(U;F)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>F</mi><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^q(F_x)</annotation></semantics></math>.
+A specified ind representative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+gives an actual map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>→</mo><msub><mi>F</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">P\to F_x</annotation></semantics></math>
+by composing this cocone with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>P</mi><mo>≃</mo><mo form="prefix" stretchy="false">{</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">cP\simeq\{R\Gamma(U;F)\}</annotation></semantics></math>.
+Applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mi>q</mi></msup><annotation encoding="application/x-tex">H^q</annotation></semantics></math>
+and SH02-FSB-REPRESENTED shows that this map is an isomorphism in every
+degree. This completes both compatibility statements with their original
+maps.</p>
+<span id="SH02-FSB-CHECKS"></span><h2 id="sh02-fsb-checks-two-tests-for-the-boundary-of-the-argument">SH02-FSB-CHECKS
+— Two tests for the boundary of the argument</h2>
+<p><strong>1. An ordinary zero limit.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>n</mi></msub><mo>=</mo><msub><mo>⨁</mo><mrow><mi>m</mi><mo>≥</mo><mi>n</mi></mrow></msub><mi>k</mi></mrow><annotation encoding="application/x-tex">A_n=\bigoplus_{m\geq n}k</annotation></semantics></math>
+with the inclusion transitions, and assume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ne0</annotation></semantics></math>.
+Its inverse limit is zero: a compatible element would lie in every tail
+of the direct sum. Nevertheless no transition map is zero, so
+SH02-FSB-REPRESENTED shows that the formal pro-object is nonzero. This
+explains why a calculation of the ordinary limit cannot replace formal
+stabilization.</p>
+<p><strong>2. Changing coefficients.</strong> Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≃</mo><mi>c</mi><mi>Q</mi></mrow><annotation encoding="application/x-tex">A\simeq cQ</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Pro}(D(k))</annotation></semantics></math>
+and fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">M\in D(k)</annotation></semantics></math>.
+Determine the formal system obtained by applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mo>,</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\operatorname{Hom}_k(-,M)</annotation></semantics></math>.
+The answer is an ind-system represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>Q</mi><mo>,</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\operatorname{Hom}_k(Q,M)</annotation></semantics></math>,
+by SH02-FSB-FUNCTORS. This conclusion needs no perfectness hypothesis.
+Perfectness is needed for a later replacement of this Hom by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Q</mi><mo>∨</mo></msup><msup><mo>⊗</mo><mi>L</mi></msup><mi>M</mi></mrow><annotation encoding="application/x-tex">Q^\vee\otimes^L M</annotation></semantics></math>,
+and that separate statement is proved in <span class="unlinked">SH02-CB-PERFECT</span>.
+No interchange with an ordinary inverse limit occurs in this
+calculation.</p>
+<span id="SH02-FSB-REFERENCES"></span><h2 id="sh02-fsb-references-scope-of-the-supporting-sources">SH02-FSB-REFERENCES
+— Scope of the supporting sources</h2>
+<p>The formal definitions and representative facts were compared with
+the native Stacks source at <a href="https://github.com/stacks/stacks-project/tree/a04446e57ec1fbc252a871afcec7752fb2807b14">revision
+a04446e57ec1</a>. Tags 05PW and 05PX specify the two Hom formulas; Tags
+05PY and 05PZ characterize essentially constant systems; Tag 05SH
+records functorial preservation. The proof above supplies composition
+through natural transformations and the actual eventual inverse,
+including both identities. These are stronger data than the mere
+existence of an ordinary limit.</p>
+<p>The ordinary cofinality statements in <a href="https://stacks.math.columbia.edu/tag/04E7">Tag 04E7</a> and <a href="https://stacks.math.columbia.edu/tag/002R">Tag 002R</a> have
+omitted proofs in that revision. SH02-FSB-REINDEX supplies the required
+directed-set comparison explicitly. Their ordinary-limit statements do
+not supply the derived comparison: SH02-FSB-COFINALITY constructs its
+projective resolution and comparison map, while SH02-FSB-PRISM gives the
+contraction needed for pro-zero systems without a countable-cofinality
+assumption.</p>
+<p><a href="https://stacks.math.columbia.edu/tag/08RZ">Tag 08RZ</a> uses
+product cochains on strings of composable arrows to compute category
+cohomology. <a href="https://stacks.math.columbia.edu/tag/08S0">Tag
+08S0</a> describes the related Ext cochains under pointwise projective
+or injective hypotheses. Our proof uses the explicitly defined free
+representable module diagrams, their augmentation and the contraction of
+the upper comma sets, then proves the sheaf compatibility maps in the
+compact-neighborhood application below.</p>
+<p>For a warning about arbitrary indexing, <a href="https://stacks.math.columbia.edu/tag/0ANX">Tag 0ANX</a> gives a
+surjective directed system with vanishing ordinary limit and nonzero
+first derived limit. The tail example in SH02-FSB-CHECKS has a different
+purpose: its transition maps are injective, and its elementary
+calculation separates an ordinary zero limit from a formally zero
+object. Neither example permits an unproved interchange of a derived
+functor with an inverse limit.</p>
+<p>The application here is the exact neighborhood-system contract in
+SH02-CB-IMP-PRO-CALCULUS and SH02-CB-IMP-DERIVED-COFINALITY, with the
+actual compact-support and ordinary-section maps proved above. The prose
+and expanded arguments are independently written under CC0. Linked
+Stacks sources retain their own GFDL terms. No source chapter is
+incorporated, and the finite strictification, arbitrary-directed
+comparison and sheaf applications are not attributed wholesale to the
+shorter cited Stacks statements.</p>
+</main></body></html>

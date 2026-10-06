@@ -1,0 +1,1530 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oldforms, newforms and the theory of Atkin, Lehner and Li · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-10.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="oldforms-newforms-and-the-theory-of-atkin-lehner-and-li">Oldforms, newforms and the theory of Atkin, Lehner and Li</h1>
+<p>The operators at primes dividing the level behave differently on oldforms and newforms. The pair <span class="math" data-tex="\(g(z),g(pz)\)">\(g(z),g(pz)\)</span> has a two-dimensional <span class="math" data-tex="\(U_p\)">\(U_p\)</span>-matrix even when <span class="math" data-tex="\(g\)">\(g\)</span> originally spans a single eigenline. The new subspace removes these repetitions by orthogonality. This lesson develops primitive-level uniqueness and the decomposition of every cusp form into degeneracies. Those general deductions remain conditional on the Fourier-support, level-lowering and arithmetic proof gaps stated where they enter. The local degeneracy and finite symbol calculations are retained in full. Appendix A proves the fixed-character Fourier-support statement for one prime, including conductor obstruction and vanishing for primes outside the level.</p>
+<p>Throughout, <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> is an integer. All spaces are complex vector spaces. We keep the unitary slash
+<span class="math math-display" data-tex="\[
+(f\|_k A)(z)=\det(A)^{k/2}(cz+d)^{-k}f(Az),
+\qquad A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix},\quad \det A&gt;0.
+\]">\[
+(f\|_k A)(z)=\det(A)^{k/2}(cz+d)^{-k}f(Az),
+\qquad A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix},\quad \det A&gt;0.
+\]</span>
+Diamonds use the lower-right entry of a matrix in <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>. The Petersson product is linear in its first argument and divided by the projective index; therefore regarding two forms at a common higher congruence level does not change their product. This common normalization is useful when comparing different levels.</p>
+<p>We use <a href="LG-MF-09.html">the preceding lesson</a>, Theorems 1.1, 2.3, 3.1 and 4.2, for character decomposition, Fourier formulas, commutativity and adjoints. The Petersson convergence argument is <a href="LG-MF-07.html">lesson 7</a>, Theorems 1.1 and 2.1. The general dimensions used below come from <a href="LG-MF-06.html">lesson 6</a>, Theorem 4.1; their compact-curve proof is lesson 06, Appendix A, with the elementary analytic foundation requirements stated there.</p>
+<h2 id="1-raising-the-level">1. Raising the level</h2>
+<p>For <span class="math" data-tex="\(Md\mid N\)">\(Md\mid N\)</span>, set
+<span class="math math-display" data-tex="\[
+V_d:S_k(\Gamma_1(M))\longrightarrow S_k(\Gamma_1(N)),
+\qquad (V_dg)(z)=g(dz).
+\]">\[
+V_d:S_k(\Gamma_1(M))\longrightarrow S_k(\Gamma_1(N)),
+\qquad (V_dg)(z)=g(dz).
+\]</span>
+We also write this degeneracy map as <span class="math" data-tex="\(\iota_d\)">\(\iota_d\)</span>. It has no extra factor of <span class="math" data-tex="\(d^{k/2}\)">\(d^{k/2}\)</span>.</p>
+<p><strong>Proposition 1.1.</strong> The map <span class="math" data-tex="\(V_d\)">\(V_d\)</span> is injective, preserves cusp forms and respects diamonds. It commutes with <span class="math" data-tex="\(T_p\)">\(T_p\)</span> whenever <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(B_d=\operatorname{diag}(d,1)\)">\(B_d=\operatorname{diag}(d,1)\)</span>. If
+<span class="math" data-tex="\(\gamma=\left(\begin{smallmatrix}a&amp;b\\c&amp;e\end{smallmatrix}\right)\in\Gamma_1(N)\)">\(\gamma=\left(\begin{smallmatrix}a&amp;b\\c&amp;e\end{smallmatrix}\right)\in\Gamma_1(N)\)</span>, then
+<span class="math math-display" data-tex="\[
+B_d\gamma B_d^{-1}
+=\begin{pmatrix}a&amp;db\\c/d&amp;e\end{pmatrix}\in\Gamma_1(M).
+\]">\[
+B_d\gamma B_d^{-1}
+=\begin{pmatrix}a&amp;db\\c/d&amp;e\end{pmatrix}\in\Gamma_1(M).
+\]</span>
+The lower-left entry is an integer divisible by <span class="math" data-tex="\(M\)">\(M\)</span>, and the two diagonal entries are <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(M\)">\(M\)</span>. Since <span class="math" data-tex="\(g\|B_d=d^{k/2}V_dg\)">\(g\|B_d=d^{k/2}V_dg\)</span>, the slash cocycle proves the transformation law. A rational matrix sends rational boundary points to rational boundary points. Factoring its action in a cusp coordinate as an integral scaling followed by an affine map with positive slope, as in the cusp calculation in the previous lesson, shows that a vanishing Fourier expansion remains vanishing. Thus <span class="math" data-tex="\(V_dg\)">\(V_dg\)</span> is cuspidal at every cusp of <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span>. Its Fourier coefficients at infinity determine <span class="math" data-tex="\(g\)">\(g\)</span>, so it is injective.</p>
+<p>For a unit <span class="math" data-tex="\(u\)">\(u\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>, choose a diamond representative
+<span class="math" data-tex="\(\sigma\in\Gamma_0(N)\)">\(\sigma\in\Gamma_0(N)\)</span> with lower-right entry congruent to <span class="math" data-tex="\(u\)">\(u\)</span>. The same conjugation is integral and belongs to <span class="math" data-tex="\(\Gamma_0(M)\)">\(\Gamma_0(M)\)</span>, with the same lower-right entry. Consequently
+<span class="math math-display" data-tex="\[
+[u]_N V_d=V_d[u]_M.
+\]">\[
+[u]_N V_d=V_d[u]_M.
+\]</span>
+The character at the higher level is the pullback of the character at the lower level.</p>
+<p>For the Hecke assertion decompose into character spaces and use the formula proved in the preceding lesson:
+<span class="math math-display" data-tex="\[
+T_pg=E_pg+\chi(p)p^{k-1}V_pg,
+\quad
+E_p\!\left(\sum a_nq^n\right)=\sum a_{pn}q^n.
+\]">\[
+T_pg=E_pg+\chi(p)p^{k-1}V_pg,
+\quad
+E_p\!\left(\sum a_nq^n\right)=\sum a_{pn}q^n.
+\]</span>
+Here <span class="math" data-tex="\(p\nmid d\)">\(p\nmid d\)</span>, so <span class="math" data-tex="\(E_pV_d=V_dE_p\)">\(E_pV_d=V_dE_p\)</span>, and <span class="math" data-tex="\(V_pV_d=V_dV_p\)">\(V_pV_d=V_dV_p\)</span>. Diamond compatibility identifies the two character values. The Fourier expansions of the two sides agree, hence the forms agree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define
+<span class="math math-display" data-tex="\[
+S_k^{\mathrm{old}}(N)=
+\sum_{\substack{M\mid N\\M&lt;N}}\ \sum_{d\mid N/M}
+V_d S_k(\Gamma_1(M)),\qquad
+S_k^{\mathrm{new}}(N)=S_k^{\mathrm{old}}(N)^\perp.
+\]">\[
+S_k^{\mathrm{old}}(N)=
+\sum_{\substack{M\mid N\\M&lt;N}}\ \sum_{d\mid N/M}
+V_d S_k(\Gamma_1(M)),\qquad
+S_k^{\mathrm{new}}(N)=S_k^{\mathrm{old}}(N)^\perp.
+\]</span>
+Finite dimensionality and positivity give an orthogonal decomposition
+<span class="math math-display" data-tex="\[
+S_k(\Gamma_1(N))
+=S_k^{\mathrm{old}}(N)\oplus S_k^{\mathrm{new}}(N).
+\]">\[
+S_k(\Gamma_1(N))
+=S_k^{\mathrm{old}}(N)\oplus S_k^{\mathrm{new}}(N).
+\]</span>
+This direct sum of the two subspaces does not yet assert independence of the individual degeneracy images.</p>
+<p>In a character component the old sources are precisely those lower levels through which that character factors. Indeed, finite diamond projection commutes with <span class="math" data-tex="\(V_d\)">\(V_d\)</span> by Proposition 1.1. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is nontrivial on the kernel of <span class="math" data-tex="\((\mathbb Z/N\mathbb Z)^*\to(\mathbb Z/M\mathbb Z)^*\)">\((\mathbb Z/N\mathbb Z)^*\to(\mathbb Z/M\mathbb Z)^*\)</span>, that projection of a level-<span class="math" data-tex="\(M\)">\(M\)</span> image is zero; otherwise it is the image of the corresponding character projection at <span class="math" data-tex="\(M\)">\(M\)</span>. Thus the intersection of our newspace with <span class="math" data-tex="\(S_k(N,\chi)\)">\(S_k(N,\chi)\)</span> is the usual fixed-character newspace. The index-normalized Petersson product also agrees with the fixed-character product computed on <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>, since its density is <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>-invariant.</p>
+<h2 id="2-stability-including-the-bad-operators">2. Stability, including the bad operators</h2>
+<p>Write <span class="math" data-tex="\(U_p=E_p\)">\(U_p=E_p\)</span> at a prime <span class="math" data-tex="\(p\mid N\)">\(p\mid N\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> The old space is stable under every <span class="math" data-tex="\(U_p\)">\(U_p\)</span>, every good Hecke operator and every diamond.</p>
+<p><strong>Proof.</strong> The good operators and diamonds follow from Proposition 1.1. Consider <span class="math" data-tex="\(V_dg\)">\(V_dg\)</span> from level <span class="math" data-tex="\(M&lt;N\)">\(M&lt;N\)</span>. If <span class="math" data-tex="\(p\mid d\)">\(p\mid d\)</span>, the coefficient formula gives
+<span class="math math-display" data-tex="\[
+U_pV_dg=V_{d/p}g.
+\]">\[
+U_pV_dg=V_{d/p}g.
+\]</span>
+If <span class="math" data-tex="\(p\nmid d\)">\(p\nmid d\)</span> but <span class="math" data-tex="\(p\mid M\)">\(p\mid M\)</span>, it gives
+<span class="math math-display" data-tex="\[
+U_pV_dg=V_dU_pg.
+\]">\[
+U_pV_dg=V_dU_pg.
+\]</span>
+Both expressions belong to the old space. In the remaining case <span class="math" data-tex="\(p\nmid Md\)">\(p\nmid Md\)</span>, the good operator at level <span class="math" data-tex="\(M\)">\(M\)</span> satisfies
+<span class="math math-display" data-tex="\[
+E_pg=T_pg-p^{k-1}V_p[p]_Mg.
+\]">\[
+E_pg=T_pg-p^{k-1}V_p[p]_Mg.
+\]</span>
+Thus
+<span class="math math-display" data-tex="\[
+U_pV_dg=V_dT_pg-p^{k-1}V_{pd}[p]_Mg.
+\]">\[
+U_pV_dg=V_dT_pg-p^{k-1}V_{pd}[p]_Mg.
+\]</span>
+The last raising map is allowed: since <span class="math" data-tex="\(p\mid N\)">\(p\mid N\)</span>, <span class="math" data-tex="\(Md\mid N\)">\(Md\mid N\)</span> and <span class="math" data-tex="\(p\nmid Md\)">\(p\nmid Md\)</span>, we have <span class="math" data-tex="\(Mpd\mid N\)">\(Mpd\mid N\)</span>. Its source level is still the proper divisor <span class="math" data-tex="\(M\)">\(M\)</span>. This treats all cases and proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Introduce the Fricke operator
+<span class="math math-display" data-tex="\[
+\mathcal W_Nf=f\|_k
+\begin{pmatrix}0&amp;-1\\N&amp;0\end{pmatrix},
+\qquad
+(\mathcal W_Nf)(z)=N^{-k/2}z^{-k}f(-1/(Nz)).
+\]">\[
+\mathcal W_Nf=f\|_k
+\begin{pmatrix}0&amp;-1\\N&amp;0\end{pmatrix},
+\qquad
+(\mathcal W_Nf)(z)=N^{-k/2}z^{-k}f(-1/(Nz)).
+\]</span></p>
+<p><strong>Lemma 2.2.</strong> The operator <span class="math" data-tex="\(\mathcal W_N\)">\(\mathcal W_N\)</span> is unitary and preserves the old and new subspaces. Moreover, for <span class="math" data-tex="\(p\mid N\)">\(p\mid N\)</span>,
+<span class="math math-display" data-tex="\[
+U_p^*=\mathcal W_N^{-1}U_p\mathcal W_N.
+\]">\[
+U_p^*=\mathcal W_N^{-1}U_p\mathcal W_N.
+\]</span></p>
+<p><strong>Proof.</strong> Conjugation by the displayed matrix sends
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}a&amp;b\\c&amp;e\end{pmatrix}
+\longmapsto
+\begin{pmatrix}e&amp;-c/N\\-Nb&amp;a\end{pmatrix}.
+\]">\[
+\begin{pmatrix}a&amp;b\\c&amp;e\end{pmatrix}
+\longmapsto
+\begin{pmatrix}e&amp;-c/N\\-Nb&amp;a\end{pmatrix}.
+\]</span>
+It normalizes both <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span> and <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>. The slash cocycle and the rational cusp calculation therefore show that it preserves cusp forms. The density identity
+<span class="math math-display" data-tex="\[
+(f\|A)(z)\overline{(g\|A)(z)}y^k
+=f(Az)\overline{g(Az)}\operatorname{Im}(Az)^k
+\]">\[
+(f\|A)(z)\overline{(g\|A)(z)}y^k
+=f(Az)\overline{g(Az)}\operatorname{Im}(Az)^k
+\]</span>
+and invariance of hyperbolic measure prove unitarity by changing variables on a fundamental domain.</p>
+<p>For an old generator, direct substitution gives the exact identity
+<span class="math math-display" data-tex="\[
+\mathcal W_NV_dg
+=(N/M)^{k/2}d^{-k}
+V_{N/(Md)}\mathcal W_Mg.
+\]">\[
+\mathcal W_NV_dg
+=(N/M)^{k/2}d^{-k}
+V_{N/(Md)}\mathcal W_Mg.
+\]</span>
+The index on the right divides <span class="math" data-tex="\(N/M\)">\(N/M\)</span>, so the right side is old. Also
+<span class="math math-display" data-tex="\[
+\mathcal W_N^2=(-1)^kI,
+\]">\[
+\mathcal W_N^2=(-1)^kI,
+\]</span>
+because the matrix square is <span class="math" data-tex="\(-NI\)">\(-NI\)</span>. Thus <span class="math" data-tex="\(\mathcal W_N^{-1}\)">\(\mathcal W_N^{-1}\)</span> preserves oldforms as well; unitarity then preserves their orthogonal complement.</p>
+<p>The adjoint double-coset calculation of the preceding lesson replaces the determinant-<span class="math" data-tex="\(p\)">\(p\)</span> matrix <span class="math" data-tex="\(\operatorname{diag}(1,p)\)">\(\operatorname{diag}(1,p)\)</span> by <span class="math" data-tex="\(\operatorname{diag}(p,1)\)">\(\operatorname{diag}(p,1)\)</span>, retaining the real factor <span class="math" data-tex="\(p^{k/2-1}\)">\(p^{k/2-1}\)</span>. Conjugation by the Fricke matrix exchanges these two matrices and normalizes the group. It therefore exchanges the corresponding coset sums and gives the asserted operator identity. This uses the two distinct intersection groups from the adjoint proof; it does not identify those groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.3 (stability).</strong> The old and new spaces are stable under good Hecke operators and diamonds. The new space is stable under every <span class="math" data-tex="\(U_p\)">\(U_p\)</span>, hence under every <span class="math" data-tex="\(T_n\)">\(T_n\)</span>.</p>
+<p><strong>Proof.</strong> A subspace <span class="math" data-tex="\(W^\perp\)">\(W^\perp\)</span> is <span class="math" data-tex="\(A\)">\(A\)</span>-stable if <span class="math" data-tex="\(W\)">\(W\)</span> is <span class="math" data-tex="\(A^*\)">\(A^*\)</span>-stable: for <span class="math" data-tex="\(x\in W^\perp,w\in W\)">\(x\in W^\perp,w\in W\)</span>,
+<span class="math math-display" data-tex="\[
+\langle Ax,w\rangle=\langle x,A^*w\rangle=0.
+\]">\[
+\langle Ax,w\rangle=\langle x,A^*w\rangle=0.
+\]</span>
+Diamonds are unitary, and the inverse diamond preserves oldforms. At good primes,
+<span class="math math-display" data-tex="\[
+T_p^*=[p]^{-1}T_p;
+\]">\[
+T_p^*=[p]^{-1}T_p;
+\]</span>
+both factors preserve the old space. At bad primes use Lemmas 2.1 and 2.2 to see that <span class="math" data-tex="\(U_p^*\)">\(U_p^*\)</span> preserves it. The displayed orthogonality argument proves every assertion about the new space. The prime-power recurrences and coprime products express all <span class="math" data-tex="\(T_n\)">\(T_n\)</span> using these prime operators and diamonds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-main-lemma-and-the-new-eigenbasis">3. The main lemma and the new eigenbasis</h2>
+<p>The following is an explicit input from newform theory.</p>
+<p><strong>Main lemma, with an auxiliary finite set of primes.</strong> Suppose <span class="math" data-tex="\(D\ge1\)">\(D\ge1\)</span> and <span class="math" data-tex="\(h\in S_k(\Gamma_1(N))\)">\(h\in S_k(\Gamma_1(N))\)</span> satisfies
+<span class="math math-display" data-tex="\[
+a_n(h)=0\qquad\text{whenever }(n,D)=1.
+\]">\[
+a_n(h)=0\qquad\text{whenever }(n,D)=1.
+\]</span>
+Then there are forms <span class="math" data-tex="\(h_p\in S_k(\Gamma_1(N/p))\)">\(h_p\in S_k(\Gamma_1(N/p))\)</span>, for <span class="math" data-tex="\(p\mid(N,D)\)">\(p\mid(N,D)\)</span>, such that
+<span class="math math-display" data-tex="\[
+h=\sum_{p\mid(N,D)}V_ph_p.
+\]">\[
+h=\sum_{p\mid(N,D)}V_ph_p.
+\]</span>
+The empty sum is zero. On a character component only those lower levels through which its character factors can contribute.</p>
+<p>For a fixed character, the freely accessible original paper of Li, Section 2, Theorem 2 and Corollary 1 contains this result. The freely accessible Diamond–Im survey states the unrestricted <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span> version in Proposition 6.2.1. <strong>Proof gap:</strong> the general Fourier-support lemma has not yet been proved locally or located in an earlier programme lesson. The deductions below retain their full scope, but depend on this unresolved lemma. Appendix A supplies the fixed-character one-prime support proof at every level. It does not yet prove the auxiliary-set statement. A joint Hecke/diamond eigenspace already has a fixed character, so the fixed-character version suffices for those deductions. We do not assume that an arbitrary Fourier support condition is preserved by diamond projection.</p>
+<p>Taking <span class="math" data-tex="\(D=N\)">\(D=N\)</span> gives the usual level-supported main lemma. Its auxiliary-<span class="math" data-tex="\(D\)">\(D\)</span> form is needed when eigenvalue comparisons omit extra primes.</p>
+<h3 id="3-1-existence">3.1. Existence</h3>
+<p><strong>Theorem 3.1 (existence).</strong> The new space has a basis of simultaneous eigenforms for every <span class="math" data-tex="\(T_n\)">\(T_n\)</span> and every diamond, each uniquely normalized by <span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span>.</p>
+<p><strong>Proof.</strong> The good Hecke operators and diamonds form a commuting normal family on the cusp space, by the previous lesson. Their adjoints preserve the new subspace, so their restrictions there remain normal. The finite-dimensional simultaneous spectral argument gives an orthogonal decomposition into joint eigenspaces <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Let <span class="math" data-tex="\(h\in E\)">\(h\in E\)</span> have <span class="math" data-tex="\(a_1(h)=0\)">\(a_1(h)=0\)</span>. For each <span class="math" data-tex="\(n\)">\(n\)</span> prime to <span class="math" data-tex="\(N\)">\(N\)</span>, the coefficient-of-<span class="math" data-tex="\(q\)">\(q\)</span> formula is
+<span class="math math-display" data-tex="\[
+a_1(T_nh)=a_n(h).
+\]">\[
+a_1(T_nh)=a_n(h).
+\]</span>
+The left side is the eigenvalue of <span class="math" data-tex="\(T_n\)">\(T_n\)</span> times <span class="math" data-tex="\(a_1(h)\)">\(a_1(h)\)</span>, hence zero. The main lemma with <span class="math" data-tex="\(D=N\)">\(D=N\)</span> puts <span class="math" data-tex="\(h\)">\(h\)</span> in the old space. Since it was new, positivity gives <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. Thus <span class="math" data-tex="\(a_1:E\to\mathbb C\)">\(a_1:E\to\mathbb C\)</span> is injective, so every nonzero <span class="math" data-tex="\(E\)">\(E\)</span> is one-dimensional and its generator has nonzero first coefficient.</p>
+<p>Every <span class="math" data-tex="\(U_p\)">\(U_p\)</span> preserves the new space and commutes with all the good operators and diamonds. It therefore preserves each line <span class="math" data-tex="\(E\)">\(E\)</span>. These lines are eigenlines for all <span class="math" data-tex="\(U_p\)">\(U_p\)</span>, and the recurrences give every <span class="math" data-tex="\(T_n\)">\(T_n\)</span>. Dividing each generator by its first coefficient yields the required basis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A <strong>newform</strong> is a normalized simultaneous eigenform in the new space. For it the coefficient-of-<span class="math" data-tex="\(q\)">\(q\)</span> identity gives
+<span class="math math-display" data-tex="\[
+T_nf=a_n(f)f
+\]">\[
+T_nf=a_n(f)f
+\]</span>
+at every index, including indices divisible by the level. This normalization concerns the new space; a good eigenvector in the full old space can have first coefficient zero.</p>
+<h3 id="3-2-the-prime-level-main-lemma">3.2. The prime-level main lemma</h3>
+<p><strong>Theorem 3.2.</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be prime and let
+<span class="math" data-tex="\(f\in S_k(\Gamma_0(p))\)">\(f\in S_k(\Gamma_0(p))\)</span> have <span class="math" data-tex="\(a_n(f)=0\)">\(a_n(f)=0\)</span> for all <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span>. Then
+<span class="math math-display" data-tex="\[
+f(z)=g(pz),\qquad g\in S_k(\operatorname{SL}_2(\mathbb Z)).
+\]">\[
+f(z)=g(pz),\qquad g\in S_k(\operatorname{SL}_2(\mathbb Z)).
+\]</span></p>
+<p><strong>Proof.</strong> Define <span class="math" data-tex="\(g(z)=f(z/p)\)">\(g(z)=f(z/p)\)</span>. Its Fourier expansion is
+<span class="math math-display" data-tex="\[
+g(z)=\sum_{m\ge1}a_{pm}(f)e^{2\pi imz},
+\]">\[
+g(z)=\sum_{m\ge1}a_{pm}(f)e^{2\pi imz},
+\]</span>
+so it is invariant under <span class="math" data-tex="\(T:z\mapsto z+1\)">\(T:z\mapsto z+1\)</span>. Conjugating the modularity of <span class="math" data-tex="\(f\)">\(f\)</span> by <span class="math" data-tex="\(A=\operatorname{diag}(1,p)\)">\(A=\operatorname{diag}(1,p)\)</span> shows that <span class="math" data-tex="\(g\)">\(g\)</span> is invariant under
+<span class="math math-display" data-tex="\[
+A^{-1}\Gamma_0(p)A=\Gamma^0(p)
+=\left\{\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\operatorname{SL}_2(\mathbb Z):p\mid b\right\}.
+\]">\[
+A^{-1}\Gamma_0(p)A=\Gamma^0(p)
+=\left\{\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\operatorname{SL}_2(\mathbb Z):p\mid b\right\}.
+\]</span>
+Indeed <span class="math" data-tex="\(f\|A=p^{-k/2}g\)">\(f\|A=p^{-k/2}g\)</span>, so the constant factor makes no difference. The group <span class="math" data-tex="\(\Gamma^0(p)\)">\(\Gamma^0(p)\)</span> contains
+<span class="math" data-tex="\(U=\left(\begin{smallmatrix}1&amp;0\\1&amp;1\end{smallmatrix}\right)\)">\(U=\left(\begin{smallmatrix}1&amp;0\\1&amp;1\end{smallmatrix}\right)\)</span>, and
+<span class="math math-display" data-tex="\[
+T^{-1}UT^{-1}=S.
+\]">\[
+T^{-1}UT^{-1}=S.
+\]</span>
+The matrices <span class="math" data-tex="\(S,T\)">\(S,T\)</span> generate the full modular group. Thus <span class="math" data-tex="\(g\)">\(g\)</span> has its weight-<span class="math" data-tex="\(k\)">\(k\)</span> transformation law. It is holomorphic on the upper half-plane and its displayed expansion vanishes at infinity. Every cusp of the full modular group is equivalent to infinity, so it is cuspidal. The defining identity gives <span class="math" data-tex="\(f(z)=g(pz)\)">\(f(z)=g(pz)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-multiplicity-across-levels">4. Multiplicity across levels</h2>
+<p>A comparison at almost all primes requires two separate points: recovering the character, and recovering the primitive level. The prime-square relation recovers the character from a full prime-to-level <span class="math" data-tex="\(T_n\)">\(T_n\)</span>-system, but it does not recover it from the prime values alone when some <span class="math" data-tex="\(a_p\)">\(a_p\)</span> vanish. We make the extra input for this distinction explicit.</p>
+<h3 id="4-1-recovering-the-character-from-prime-coefficients">4.1. Recovering the character from prime coefficients</h3>
+<p>We use these two arithmetic inputs in this subsection only.</p>
+<ul>
+<li><strong>Attached representation.</strong> A normalized cuspidal eigenform of weight <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, level <span class="math" data-tex="\(M\)">\(M\)</span> and character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has its coefficients in a number field <span class="math" data-tex="\(K\)">\(K\)</span>. For every finite place <span class="math" data-tex="\(\lambda\mid\ell\)">\(\lambda\mid\ell\)</span> of a sufficiently large such field, there is a continuous representation
+<span class="math math-display" data-tex="\[
+\rho_{f,\lambda}:\operatorname{Gal}(\overline{\mathbb Q}/\mathbb Q)
+\longrightarrow\operatorname{GL}_2(K_\lambda)
+\]">\[
+\rho_{f,\lambda}:\operatorname{Gal}(\overline{\mathbb Q}/\mathbb Q)
+\longrightarrow\operatorname{GL}_2(K_\lambda)
+\]</span>
+unramified outside <span class="math" data-tex="\(M\ell\)">\(M\ell\)</span>, with
+<span class="math math-display" data-tex="\[
+\operatorname{tr}\rho_{f,\lambda}(\operatorname{Frob}_p)=a_p(f),
+\qquad
+\det\rho_{f,\lambda}=\chi\,\varepsilon_\ell^{k-1}.
+\]">\[
+\operatorname{tr}\rho_{f,\lambda}(\operatorname{Frob}_p)=a_p(f),
+\qquad
+\det\rho_{f,\lambda}=\chi\,\varepsilon_\ell^{k-1}.
+\]</span>
+Here Frobenius is arithmetic and <span class="math" data-tex="\(\varepsilon_\ell\)">\(\varepsilon_\ell\)</span> is the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic cyclotomic character. This is the Shimura–Deligne construction, in the formulation of Diamond–Im, Section 12.5, equations (12.5.1)–(12.5.3) with the coefficient-field assertion in Corollary 12.4.5. Its construction is outside this lesson.</li>
+<li><strong>Chebotarev.</strong> For every finite Galois extension of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, each conjugacy class is the Frobenius class of infinitely many unramified primes. This is the consequence of the density theorem stated in Milne, <em>Algebraic Number Theory</em>, Theorem 8.31.</li>
+</ul>
+<p><strong>Lemma 4.1.</strong> If two normalized newforms of the same weight have <span class="math" data-tex="\(a_p(f)=a_p(g)\)">\(a_p(f)=a_p(g)\)</span> outside a finite set of primes, their characters agree as Dirichlet characters after pullback to a common modulus.</p>
+<p><strong>Proof.</strong> Choose a common coefficient field and a place <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> for the two representations. Let
+<span class="math math-display" data-tex="\[
+t(\sigma)=\operatorname{tr}\rho_f(\sigma)
+ -\operatorname{tr}\rho_g(\sigma).
+\]">\[
+t(\sigma)=\operatorname{tr}\rho_f(\sigma)
+ -\operatorname{tr}\rho_g(\sigma).
+\]</span>
+This is a continuous conjugacy-invariant function on the profinite Galois group. It vanishes at the Frobenius elements outside a finite set. It therefore vanishes everywhere: if <span class="math" data-tex="\(t(\sigma)\ne0\)">\(t(\sigma)\ne0\)</span>, continuity gives a neighborhood of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> on which it remains nonzero. A coset of an open normal subgroup lies inside that neighborhood. In the corresponding finite Galois quotient, Chebotarev supplies a prime outside the excluded finite set whose Frobenius lies in the conjugacy class of that coset. Conjugacy invariance gives a Frobenius element in the same nonvanishing neighborhood, a contradiction.</p>
+<p>For every two-by-two matrix over a field of characteristic zero,
+<span class="math math-display" data-tex="\[
+2\det A=(\operatorname{tr}A)^2-\operatorname{tr}(A^2).
+\]">\[
+2\det A=(\operatorname{tr}A)^2-\operatorname{tr}(A^2).
+\]</span>
+Apply this to <span class="math" data-tex="\(\rho_f(\sigma)\)">\(\rho_f(\sigma)\)</span> and <span class="math" data-tex="\(\rho_g(\sigma)\)">\(\rho_g(\sigma)\)</span>. Equality of the traces at both <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(\sigma^2\)">\(\sigma^2\)</span> gives equality of determinants. Cancelling the nonzero common cyclotomic character gives equality of the finite characters on the Galois group. The finite character attached to a Dirichlet character factors through
+<span class="math" data-tex="\(\operatorname{Gal}(\mathbb Q(\zeta_L)/\mathbb Q)=(\mathbb Z/L\mathbb Z)^*\)">\(\operatorname{Gal}(\mathbb Q(\zeta_L)/\mathbb Q)=(\mathbb Z/L\mathbb Z)^*\)</span>, so surjectivity onto that quotient gives equality of the pulled-back Dirichlet characters. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument uses neither a choice of roots of Hecke polynomials nor a claim that <span class="math" data-tex="\(a_p\ne0\)">\(a_p\ne0\)</span>. The arithmetic inputs can be omitted whenever the character is already fixed. The rest of the proof is classical.</p>
+<h3 id="4-2-two-level-lowering-operators">4.2. Two level-lowering operators</h3>
+<p>For this cross-level comparison, write <span class="math" data-tex="\(\chi\)">\(\chi\)</span> at its primitive conductor <span class="math" data-tex="\(C\)">\(C\)</span>; <span class="math" data-tex="\(S(L,\chi)\)">\(S(L,\chi)\)</span> means its pullback to the units modulo <span class="math" data-tex="\(L\)">\(L\)</span>. Values such as <span class="math" data-tex="\(\chi(q)\)">\(\chi(q)\)</span> in a lower-level good-prime formula are evaluated at that conductor. They must not be replaced by the zero extension of an induced character at a higher level divisible by <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p>Fix such a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and a prime <span class="math" data-tex="\(q\mid L\)">\(q\mid L\)</span> through which it can descend to level <span class="math" data-tex="\(L/q\)">\(L/q\)</span>. Write <span class="math" data-tex="\(S(L,\chi)=S_k(\Gamma_0(L),\chi)\)">\(S(L,\chi)=S_k(\Gamma_0(L),\chi)\)</span>. We need the following level-lowering fact, proved by the coset calculations in Li, Section 1, Lemmas 1 and 3, printed pages 287 and 289:
+<span class="math math-display" data-tex="\[
+q^2\mid L\quad\Longrightarrow\quad
+E_q:S(L,\chi)\longrightarrow S(L/q,\chi).
+\tag{4.1}
+\]">\[
+q^2\mid L\quad\Longrightarrow\quad
+E_q:S(L,\chi)\longrightarrow S(L/q,\chi).
+\tag{4.1}
+\]</span>
+If <span class="math" data-tex="\(q\Vert L\)">\(q\Vert L\)</span>, choose integers <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span> with
+<span class="math" data-tex="\(qx-(L/q)yz=1\)">\(qx-(L/q)yz=1\)</span>, and put
+<span class="math math-display" data-tex="\[
+A_q^L=\begin{pmatrix}qx&amp;y\\Lz&amp;q\end{pmatrix},
+\qquad W_q^L h=h\|_k A_q^L.
+\]">\[
+A_q^L=\begin{pmatrix}qx&amp;y\\Lz&amp;q\end{pmatrix},
+\qquad W_q^L h=h\|_k A_q^L.
+\]</span>
+In this case <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is unramified at <span class="math" data-tex="\(q\)">\(q\)</span>. This restricted choice is independent on the character space: for two such matrices the lower-right entry of <span class="math" data-tex="\(A_1A_2^{-1}\)">\(A_1A_2^{-1}\)</span> is <span class="math" data-tex="\(qx_2-(L/q)z_1y_2\)">\(qx_2-(L/q)z_1y_2\)</span>, which is <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(L/q\)">\(L/q\)</span>. Conjugation by either matrix also preserves the lower-right character modulo <span class="math" data-tex="\(L/q\)">\(L/q\)</span>, so it preserves <span class="math" data-tex="\(S(L,\chi)\)">\(S(L,\chi)\)</span>. The second lowering fact is
+<span class="math math-display" data-tex="\[
+E_q+q^{k/2-1}W_q^L:
+S(L,\chi)\longrightarrow S(L/q,\chi).
+\tag{4.2}
+\]">\[
+E_q+q^{k/2-1}W_q^L:
+S(L,\chi)\longrightarrow S(L/q,\chi).
+\tag{4.2}
+\]</span>
+Both assertions concern cusp forms, including their cusp conditions. We retain these elementary coset results as stated inputs along with the main lemma; they are not assumptions of multiplicity one.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+C_q^L=
+\begin{cases}
+E_q,&amp;q^2\mid L,\\[2pt]
+\displaystyle\frac{E_q+q^{k/2-1}W_q^L}{1+q^{-1}},&amp;q\Vert L.
+\end{cases}
+\tag{4.3}
+\]">\[
+C_q^L=
+\begin{cases}
+E_q,&amp;q^2\mid L,\\[2pt]
+\displaystyle\frac{E_q+q^{k/2-1}W_q^L}{1+q^{-1}},&amp;q\Vert L.
+\end{cases}
+\tag{4.3}
+\]</span>
+For <span class="math" data-tex="\(h\in S(L/q,\chi)\)">\(h\in S(L/q,\chi)\)</span>, these operators satisfy
+<span class="math math-display" data-tex="\[
+C_q^L V_qh=h.
+\tag{4.4}
+\]">\[
+C_q^L V_qh=h.
+\tag{4.4}
+\]</span>
+For the first case this is the coefficient identity <span class="math" data-tex="\(E_qV_q=I\)">\(E_qV_q=I\)</span>. For the second, multiplication of matrices gives
+<span class="math math-display" data-tex="\[
+\frac1q B_qA_q^L
+=\begin{pmatrix}qx&amp;y\\(L/q)z&amp;1\end{pmatrix}
+\in\Gamma_0(L/q),
+\qquad W_q^L V_qh=q^{-k/2}h.
+\]">\[
+\frac1q B_qA_q^L
+=\begin{pmatrix}qx&amp;y\\(L/q)z&amp;1\end{pmatrix}
+\in\Gamma_0(L/q),
+\qquad W_q^L V_qh=q^{-k/2}h.
+\]</span>
+The lower-right entry is one. Substitution in (4.3) proves (4.4).</p>
+<p>If <span class="math" data-tex="\(t\ne q\)">\(t\ne q\)</span> divides <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(h\in S(L/t,\chi)\)">\(h\in S(L/t,\chi)\)</span>, then
+<span class="math math-display" data-tex="\[
+C_q^L V_th=V_tC_q^{L/t}h.
+\tag{4.5}
+\]">\[
+C_q^L V_th=V_tC_q^{L/t}h.
+\tag{4.5}
+\]</span>
+For <span class="math" data-tex="\(E_q\)">\(E_q\)</span> this is the Fourier identity. In the second case conjugation gives
+<span class="math math-display" data-tex="\[
+B_tA_q^LB_t^{-1}
+=\begin{pmatrix}qx&amp;ty\\(L/t)z&amp;q\end{pmatrix},
+\]">\[
+B_tA_q^LB_t^{-1}
+=\begin{pmatrix}qx&amp;ty\\(L/t)z&amp;q\end{pmatrix},
+\]</span>
+a valid matrix at the lower level. The character factors through <span class="math" data-tex="\(L/(qt)\)">\(L/(qt)\)</span>: it factors through both <span class="math" data-tex="\(L/q\)">\(L/q\)</span> and <span class="math" data-tex="\(L/t\)">\(L/t\)</span>, hence through their greatest common divisor. Thus the same lowering formula applies there. These observations prove the compatibility, including its character condition.</p>
+<p><strong>Lemma 4.2 (removing one old contribution).</strong> If
+<span class="math math-display" data-tex="\[
+R=\sum_{t\in P}V_th_t,
+\qquad h_t\in S(L/t,\chi),
+\]">\[
+R=\sum_{t\in P}V_th_t,
+\qquad h_t\in S(L/t,\chi),
+\]</span>
+where <span class="math" data-tex="\(P\)">\(P\)</span> is a set of distinct primes and <span class="math" data-tex="\(q\in P\)">\(q\in P\)</span>, then
+<span class="math math-display" data-tex="\[
+(I-V_qC_q^L)R
+\in\sum_{t\in P\setminus\{q\}}V_tS(L/t,\chi).
+\]">\[
+(I-V_qC_q^L)R
+\in\sum_{t\in P\setminus\{q\}}V_tS(L/t,\chi).
+\]</span></p>
+<p><strong>Proof.</strong> The <span class="math" data-tex="\(q\)">\(q\)</span>-term disappears by (4.4). Every other term becomes
+<span class="math math-display" data-tex="\[
+V_t\bigl(h_t-V_qC_q^{L/t}h_t\bigr)
+\]">\[
+V_t\bigl(h_t-V_qC_q^{L/t}h_t\bigr)
+\]</span>
+by (4.5); the expression in parentheses has level <span class="math" data-tex="\(L/t\)">\(L/t\)</span>, by the lowering result. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On a newform of level <span class="math" data-tex="\(A\)">\(A\)</span>, the lowering operator at its highest <span class="math" data-tex="\(q\)">\(q\)</span>-exponent is zero whenever the character descends to <span class="math" data-tex="\(A/q\)">\(A/q\)</span>. In (4.1), <span class="math" data-tex="\(E_q\)">\(E_q\)</span> preserves the new space by Theorem 2.3 and lands in a lower-level subspace, so its image is zero. In (4.2), <span class="math" data-tex="\(W_q^A\)">\(W_q^A\)</span> also preserves the new space. To see this last assertion directly, express the oldspace using the pairs
+<span class="math" data-tex="\(S(A/p,\chi)+V_pS(A/p,\chi)\)">\(S(A/p,\chi)+V_pS(A/p,\chi)\)</span>. For <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>, the preceding conjugation preserves each pair. For <span class="math" data-tex="\(p=q\)">\(p=q\)</span>, the formulas
+<span class="math math-display" data-tex="\[
+W_q^Ah=\chi(q)q^{k/2}V_qh,
+\qquad W_q^AV_qh=q^{-k/2}h
+\]">\[
+W_q^Ah=\chi(q)q^{k/2}V_qh,
+\qquad W_q^AV_qh=q^{-k/2}h
+\]</span>
+exchange the pair. The operator normalizes <span class="math" data-tex="\(\Gamma_0(A)\)">\(\Gamma_0(A)\)</span>, is unitary, and its inverse also preserves the oldspace, so it preserves its orthogonal complement. Thus both terms in (4.2) are new, while their sum has lower level; the sum must vanish.</p>
+<h3 id="4-3-the-orthogonality-needed-to-compare-levels">4.3. The orthogonality needed to compare levels</h3>
+<p>For <span class="math" data-tex="\(A\mid B\)">\(A\mid B\)</span>, with the character factoring through <span class="math" data-tex="\(A\)">\(A\)</span>, the normalized trace
+<span class="math math-display" data-tex="\[
+\tau_A^B h=
+\frac1{[\Gamma_0(A):\Gamma_0(B)]}
+\sum_{\gamma\in\Gamma_0(B)\backslash\Gamma_0(A)}
+\chi(d_\gamma)^{-1}h\|\gamma
+\]">\[
+\tau_A^B h=
+\frac1{[\Gamma_0(A):\Gamma_0(B)]}
+\sum_{\gamma\in\Gamma_0(B)\backslash\Gamma_0(A)}
+\chi(d_\gamma)^{-1}h\|\gamma
+\]</span>
+is the orthogonal projection onto the level-<span class="math" data-tex="\(A\)">\(A\)</span> subspace. Indeed, finite unfolding on fundamental domains gives
+<span class="math" data-tex="\(\langle h,u\rangle=\langle\tau_A^Bh,u\rangle\)">\(\langle h,u\rangle=\langle\tau_A^Bh,u\rangle\)</span>
+for every <span class="math" data-tex="\(u\)">\(u\)</span> of level <span class="math" data-tex="\(A\)">\(A\)</span>, with our index-normalized product; the sum has the stated lower-level transformation law and equals <span class="math" data-tex="\(u\)">\(u\)</span> when applied to <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>A newform <span class="math" data-tex="\(f\)">\(f\)</span> of level <span class="math" data-tex="\(M\)">\(M\)</span> consequently satisfies
+<span class="math math-display" data-tex="\[
+\tau_{M/q}^Mf=0,
+\qquad \tau_{M/q}^M\mathcal W_Mf=0
+\tag{4.6}
+\]">\[
+\tau_{M/q}^Mf=0,
+\qquad \tau_{M/q}^M\mathcal W_Mf=0
+\tag{4.6}
+\]</span>
+whenever its character factors through <span class="math" data-tex="\(M/q\)">\(M/q\)</span>. The second equality follows because Fricke preserves the new space and changes the character to its conjugate.</p>
+<p>Here are two precise compatibilities of these traces. Raising a level without changing its <span class="math" data-tex="\(q\)">\(q\)</span>-exponent does not change the trace removing <span class="math" data-tex="\(q\)">\(q\)</span>. The intersection
+<span class="math" data-tex="\(\Gamma_0(M)\cap\Gamma_0(B/q)=\Gamma_0(B)\)">\(\Gamma_0(M)\cap\Gamma_0(B/q)=\Gamma_0(B)\)</span>, for <span class="math" data-tex="\(M\mid B\)">\(M\mid B\)</span> with equal <span class="math" data-tex="\(q\)">\(q\)</span>-exponents, makes the coset map injective; both indices are <span class="math" data-tex="\(q\)">\(q\)</span> when the exponent is at least two, and <span class="math" data-tex="\(q+1\)">\(q+1\)</span> when it is one. The same representatives therefore exhaust both sets. Secondly, if <span class="math" data-tex="\((d,q)=1\)">\((d,q)=1\)</span>, conjugating trace representatives by <span class="math" data-tex="\(B_d\)">\(B_d\)</span> gives
+<span class="math math-display" data-tex="\[
+\tau_{Md/q}^{Md}V_dh=V_d\tau_{M/q}^Mh.
+\tag{4.7}
+\]">\[
+\tau_{Md/q}^{Md}V_dh=V_d\tau_{M/q}^Mh.
+\tag{4.7}
+\]</span>
+The conjugated matrices have lower-left entry divisible by <span class="math" data-tex="\(M/q\)">\(M/q\)</span> and unchanged lower-right entry. Distinctness and exhaustion follow from the same index count; the Chinese remainder theorem supplies representatives satisfying the additional conditions at primes dividing <span class="math" data-tex="\(d\)">\(d\)</span>. Thus the character factors and normalization agree.</p>
+<p><strong>Lemma 4.3.</strong> Suppose <span class="math" data-tex="\(f\)">\(f\)</span> is new at level <span class="math" data-tex="\(M\)">\(M\)</span>, its character factors through <span class="math" data-tex="\(M/q\)">\(M/q\)</span>, and <span class="math" data-tex="\((d,q)=1\)">\((d,q)=1\)</span>. If <span class="math" data-tex="\(H\)">\(H\)</span> has level <span class="math" data-tex="\(B/q\)">\(B/q\)</span>, where
+<span class="math" data-tex="\(1\le v_q(B)\le v_q(M)\)">\(1\le v_q(B)\le v_q(M)\)</span>, then
+<span class="math math-display" data-tex="\[
+\langle V_df,H\rangle=0,
+\qquad\langle V_df,V_qH\rangle=0.
+\tag{4.8}
+\]">\[
+\langle V_df,H\rangle=0,
+\qquad\langle V_df,V_qH\rangle=0.
+\tag{4.8}
+\]</span>
+All products are taken at a common level.</p>
+<p><strong>Proof.</strong> Replace <span class="math" data-tex="\(B\)">\(B\)</span> by <span class="math" data-tex="\(B&#x27;=\operatorname{lcm}(Md,B)\)">\(B&#x27;=\operatorname{lcm}(Md,B)\)</span>. Its <span class="math" data-tex="\(q\)">\(q\)</span>-exponent is that of <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(H\)">\(H\)</span> still has level <span class="math" data-tex="\(B&#x27;/q\)">\(B&#x27;/q\)</span>. Equations (4.6)–(4.7) and the equal-exponent compatibility give
+<span class="math" data-tex="\(\tau_{B&#x27;/q}^{B&#x27;}V_df=0\)">\(\tau_{B&#x27;/q}^{B&#x27;}V_df=0\)</span>, proving the first orthogonality. The exact Fricke identity from Lemma 2.2 gives
+<span class="math math-display" data-tex="\[
+\mathcal W_{B&#x27;}V_df
+=c\,V_{B&#x27;/(Md)}\mathcal W_Mf,
+\qquad c\ne0.
+\]">\[
+\mathcal W_{B&#x27;}V_df
+=c\,V_{B&#x27;/(Md)}\mathcal W_Mf,
+\qquad c\ne0.
+\]</span>
+The new degeneracy index is prime to <span class="math" data-tex="\(q\)">\(q\)</span>. Its trace vanishes by the second equality in (4.6), again using (4.7). Also
+<span class="math math-display" data-tex="\[
+\mathcal W_{B&#x27;}V_qH
+=q^{-k/2}\mathcal W_{B&#x27;/q}H
+\]">\[
+\mathcal W_{B&#x27;}V_qH
+=q^{-k/2}\mathcal W_{B&#x27;/q}H
+\]</span>
+when <span class="math" data-tex="\(H\)">\(H\)</span> is regarded at level <span class="math" data-tex="\(B&#x27;/q\)">\(B&#x27;/q\)</span>. Fricke unitarity and the trace projection prove the second orthogonality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A useful consequence keeps track of the permitted shifts. If <span class="math" data-tex="\(f\)">\(f\)</span> is new at <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(g\)">\(g\)</span> has level <span class="math" data-tex="\(N\)">\(N\)</span>, and
+<span class="math math-display" data-tex="\[
+m=v_q(M)&gt;n=v_q(N),\quad
+r=v_q(d)\le s=v_q(e),\quad n+s-r\le m,
+\]">\[
+m=v_q(M)&gt;n=v_q(N),\quad
+r=v_q(d)\le s=v_q(e),\quad n+s-r\le m,
+\]</span>
+then
+<span class="math math-display" data-tex="\[
+\langle V_df,V_eg\rangle=0.
+\tag{4.9}
+\]">\[
+\langle V_df,V_eg\rangle=0.
+\tag{4.9}
+\]</span>
+Here the common character automatically descends from <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\(M/q\)">\(M/q\)</span>. Remove the common dilation <span class="math" data-tex="\(q^r\)">\(q^r\)</span> from both sides of the pairing; it changes the pairing by a positive factor and leaves the question of vanishing unchanged. If <span class="math" data-tex="\(s-r=0\)">\(s-r=0\)</span>, the second form has strictly smaller <span class="math" data-tex="\(q\)">\(q\)</span>-level and the first part of (4.8) applies after raising other prime factors. If <span class="math" data-tex="\(s-r&gt;0\)">\(s-r&gt;0\)</span>, write the second form as <span class="math" data-tex="\(V_qH\)">\(V_qH\)</span>; its receiving level has <span class="math" data-tex="\(q\)">\(q\)</span>-exponent <span class="math" data-tex="\(n+s-r\le m\)">\(n+s-r\le m\)</span>, so the second part applies. This proves (4.9). The inequalities are part of the statement; arbitrary old shifts are not asserted orthogonal.</p>
+<h3 id="4-4-same-character-uniqueness">4.4. Same-character uniqueness</h3>
+<p><strong>Theorem 4.4.</strong> Suppose <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> are normalized newforms of levels <span class="math" data-tex="\(M,N\)">\(M,N\)</span>, the same weight and the same character, with equal <span class="math" data-tex="\(a_p\)">\(a_p\)</span> outside a finite set. Then <span class="math" data-tex="\(f=g\)">\(f=g\)</span> and <span class="math" data-tex="\(M=N\)">\(M=N\)</span>.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(L=\operatorname{lcm}(M,N)\)">\(L=\operatorname{lcm}(M,N)\)</span>. Choose <span class="math" data-tex="\(D\)">\(D\)</span> divisible by <span class="math" data-tex="\(L\)">\(L\)</span> and by every exceptional prime. The Hecke recurrences with the common character and coprime multiplicativity show
+<span class="math" data-tex="\(a_n(f)=a_n(g)\)">\(a_n(f)=a_n(g)\)</span> whenever <span class="math" data-tex="\((n,D)=1\)">\((n,D)=1\)</span>. The main lemma gives
+<span class="math math-display" data-tex="\[
+f-g=\sum_{q\in P}V_qh_q,
+\qquad h_q\in S(L/q,\chi),
+\tag{4.10}
+\]">\[
+f-g=\sum_{q\in P}V_qh_q,
+\qquad h_q\in S(L/q,\chi),
+\tag{4.10}
+\]</span>
+where <span class="math" data-tex="\(P\)">\(P\)</span> consists of primes at which this descent of the character is permitted. Terms with <span class="math" data-tex="\(v_q(M)=v_q(N)\)">\(v_q(M)=v_q(N)\)</span> are orthogonal to both <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> by Lemma 4.3.</p>
+<p>Process the primes <span class="math" data-tex="\(q\in P\)">\(q\in P\)</span> for which those exponents differ, applying <span class="math" data-tex="\(I-V_qC_q^L\)">\(I-V_qC_q^L\)</span> to both sides of the current difference. Lemma 4.2 removes its <span class="math" data-tex="\(q\)">\(q\)</span>-term. All previously inserted degeneracies are prime to the current <span class="math" data-tex="\(q\)">\(q\)</span>, so (4.5) permits the operation to be read separately on <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p>Here is the complete effect at one such prime. Suppose the exponent of the source newform <span class="math" data-tex="\(f\)">\(f\)</span> is the larger one, namely <span class="math" data-tex="\(m=v_q(L)&gt;n=v_q(N)\)">\(m=v_q(L)&gt;n=v_q(N)\)</span>. The operator <span class="math" data-tex="\(C_q\)">\(C_q\)</span> kills <span class="math" data-tex="\(f\)">\(f\)</span>, so the <span class="math" data-tex="\(f\)">\(f\)</span>-side is unchanged at this prime. If <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, the <span class="math" data-tex="\(g\)">\(g\)</span>-side is multiplied by
+<span class="math math-display" data-tex="\[
+1-a_q(g)V_q\quad(n\ge1),
+\qquad
+1-a_q(g)V_q+\chi(q)q^{k-1}V_q^2\quad(n=0).
+\tag{4.11}
+\]">\[
+1-a_q(g)V_q\quad(n\ge1),
+\qquad
+1-a_q(g)V_q+\chi(q)q^{k-1}V_q^2\quad(n=0).
+\tag{4.11}
+\]</span>
+These follow from <span class="math" data-tex="\(E_qg=a_q(g)g\)">\(E_qg=a_q(g)g\)</span> in the first case and
+<span class="math" data-tex="\(E_qg=a_q(g)g-\chi(q)q^{k-1}V_qg\)">\(E_qg=a_q(g)g-\chi(q)q^{k-1}V_qg\)</span> in the second. The degree is at most <span class="math" data-tex="\(m-n\)">\(m-n\)</span>, so every resulting shift still has level dividing <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>If <span class="math" data-tex="\(m=1,n=0\)">\(m=1,n=0\)</span>, use (4.3). The matrix identity
+<span class="math math-display" data-tex="\[
+A_q^LB_q^{-1}
+=\begin{pmatrix}x&amp;y\\(L/q)z&amp;q\end{pmatrix}
+\in\Gamma_0(L/q)
+\]">\[
+A_q^LB_q^{-1}
+=\begin{pmatrix}x&amp;y\\(L/q)z&amp;q\end{pmatrix}
+\in\Gamma_0(L/q)
+\]</span>
+shows that <span class="math" data-tex="\(W_q^Lg=\chi(q)q^{k/2}V_qg\)">\(W_q^Lg=\chi(q)q^{k/2}V_qg\)</span>. The two <span class="math" data-tex="\(V_qg\)">\(V_qg\)</span>-terms cancel in the numerator of <span class="math" data-tex="\(C_q^Lg\)">\(C_q^Lg\)</span>, leaving
+<span class="math math-display" data-tex="\[
+C_q^Lg=\frac{a_q(g)}{1+q^{-1}}g.
+\]">\[
+C_q^Lg=\frac{a_q(g)}{1+q^{-1}}g.
+\]</span>
+Thus the <span class="math" data-tex="\(g\)">\(g\)</span>-side is multiplied by
+<span class="math math-display" data-tex="\[
+1-\frac{a_q(g)}{1+q^{-1}}V_q.
+\tag{4.12}
+\]">\[
+1-\frac{a_q(g)}{1+q^{-1}}V_q.
+\tag{4.12}
+\]</span>
+Its degree is again <span class="math" data-tex="\(m-n\)">\(m-n\)</span>. If the <span class="math" data-tex="\(g\)">\(g\)</span>-side has the larger source exponent, interchange the roles. These formulas cover every step of the procedure.</p>
+<p>Let <span class="math" data-tex="\(F,G\)">\(F,G\)</span> be the resulting forms. Their difference contains only the terms of (4.10) at primes with equal source exponents. Every shift introduced in <span class="math" data-tex="\(F,G\)">\(F,G\)</span> is prime to each such remaining prime. Lemma 4.3 makes <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span> orthogonal to every term of their difference. Hence
+<span class="math math-display" data-tex="\[
+\|F-G\|^2=0,
+\qquad F=G.
+\]">\[
+\|F-G\|^2=0,
+\qquad F=G.
+\]</span>
+Each factor in (4.11)–(4.12) has constant term one as a polynomial in degeneracies. Since every nontrivial degeneracy starts beyond <span class="math" data-tex="\(q^1\)">\(q^1\)</span>, both <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span> still have first Fourier coefficient one; neither is zero.</p>
+<p>If any processed prime has unequal source exponents, consider a cross product between any shift of <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(F\)">\(F\)</span> and any shift of <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(G\)">\(G\)</span>. At that prime, the side with the larger source exponent has acquired no shift. The other side has shift exponent at most the difference of the source exponents. These are exactly the inequalities in (4.9). Therefore every cross product is zero, giving <span class="math" data-tex="\(\langle F,G\rangle=0\)">\(\langle F,G\rangle=0\)</span>, contrary to <span class="math" data-tex="\(F=G\ne0\)">\(F=G\ne0\)</span>. Thus no such prime occurs in (4.10), and the first orthogonality argument already gives <span class="math" data-tex="\(f=g\)">\(f=g\)</span>.</p>
+<p>Finally a form modular at levels <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> with the same character is modular at <span class="math" data-tex="\(\gcd(M,N)\)">\(\gcd(M,N)\)</span>. Indeed <span class="math" data-tex="\(\Gamma_0(M)\)">\(\Gamma_0(M)\)</span> and <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> generate <span class="math" data-tex="\(\Gamma_0(\gcd(M,N))\)">\(\Gamma_0(\gcd(M,N))\)</span>: reduce modulo <span class="math" data-tex="\(L\)">\(L\)</span>, use the product over prime powers, and observe that at each prime one of the two local subgroups is already the larger subgroup at the smaller exponent. The reductions are surjective by the integral Chinese remainder lifting established for congruence groups. The character also factors through the greatest common divisor. The cusp condition follows by taking its finite covering from either original level. If this greatest common divisor were smaller than either primitive level, the nonzero form would be old and new there, impossible. Thus <span class="math" data-tex="\(M=N\)">\(M=N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Combining Lemma 4.1 and Theorem 4.4 proves the assertion with no prior equality of characters: <strong>a normalized newform is determined by its <span class="math" data-tex="\(a_p\)">\(a_p\)</span> at almost all primes, including its primitive level.</strong></p>
+<h3 id="4-5-the-direct-decomposition-and-the-full-eigenspaces">4.5. The direct decomposition and the full eigenspaces</h3>
+<p><strong>Theorem 4.5.</strong> For <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>,
+<span class="math math-display" data-tex="\[
+S_k(\Gamma_1(N))
+=\bigoplus_{M\mid N}
+ \bigoplus_{f\text{ normalized new at }M}
+ \bigoplus_{d\mid N/M}\mathbb C V_df.
+\tag{4.13}
+\]">\[
+S_k(\Gamma_1(N))
+=\bigoplus_{M\mid N}
+ \bigoplus_{f\text{ normalized new at }M}
+ \bigoplus_{d\mid N/M}\mathbb C V_df.
+\tag{4.13}
+\]</span>
+For a newform <span class="math" data-tex="\(f\)">\(f\)</span> of primitive level <span class="math" data-tex="\(M\)">\(M\)</span>, its prime-to-<span class="math" data-tex="\(N\)">\(N\)</span> Hecke eigenvalue system at level <span class="math" data-tex="\(N\)">\(N\)</span> occurs precisely in the indicated span, if <span class="math" data-tex="\(M\mid N\)">\(M\mid N\)</span>; otherwise it does not occur.</p>
+<p><strong>Proof.</strong> First prove spanning by induction on <span class="math" data-tex="\(N\)">\(N\)</span>. The old/new orthogonal split and Theorem 3.1 handle the new part. Every old generator comes from a proper divisor, where induction expresses its source as a sum of shifted lower-level newforms. Since <span class="math" data-tex="\(V_dV_e=V_{de}\)">\(V_dV_e=V_{de}\)</span>, its image has exactly the form in (4.13), with permitted indices. This proves spanning, starting with the absence of lower levels at <span class="math" data-tex="\(N=1\)">\(N=1\)</span>.</p>
+<p>For one fixed normalized <span class="math" data-tex="\(f\)">\(f\)</span>, the forms <span class="math" data-tex="\(V_df\)">\(V_df\)</span> are independent. In a nonzero relation choose the smallest positive <span class="math" data-tex="\(d\)">\(d\)</span> with nonzero coefficient. The coefficient of <span class="math" data-tex="\(q^d\)">\(q^d\)</span> contributed by <span class="math" data-tex="\(V_df\)">\(V_df\)</span> is that coefficient times <span class="math" data-tex="\(a_1(f)=1\)">\(a_1(f)=1\)</span>; every other remaining index is larger and contributes zero. This is a contradiction.</p>
+<p>At level <span class="math" data-tex="\(N\)">\(N\)</span>, the commuting normal good Hecke/diamond family gives a direct orthogonal sum of joint eigenspaces. Every <span class="math" data-tex="\(V_df\)">\(V_df\)</span> lies in the eigenspace associated to <span class="math" data-tex="\(f\)">\(f\)</span>, by Proposition 1.1. Distinct newforms have distinct such systems: equality would in particular give equal prime eigenvalues outside the finite set dividing <span class="math" data-tex="\(N\)">\(N\)</span>, and the preceding uniqueness theorem would identify both the form and its primitive level. Thus the independent spans for distinct <span class="math" data-tex="\(f\)">\(f\)</span> lie in distinct joint eigenspaces, proving directness.</p>
+<p>Finally, if an eigenform has only its prime-to-<span class="math" data-tex="\(N\)">\(N\)</span> Hecke system specified, diamonds do not create extra possibilities. For every <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>,
+<span class="math math-display" data-tex="\[
+[p]=p^{1-k}(T_p^2-T_{p^2})
+\]">\[
+[p]=p^{1-k}(T_p^2-T_{p^2})
+\]</span>
+acts by the scalar determined by that system. Every unit modulo <span class="math" data-tex="\(N\)">\(N\)</span> has a positive representative coprime to <span class="math" data-tex="\(N\)">\(N\)</span>, and factoring that representative expresses its diamond as a product of these prime diamonds. Thus the full good Hecke system fixes the diamond system as well. The spanning decomposition and directness now identify its entire eigenspace with the stated degeneracy span. If a primitive form of another level had that system at <span class="math" data-tex="\(N\)">\(N\)</span>, a nonzero summand in the decomposition would have the same almost-all prime values, forcing equality of primitive levels and hence divisibility by <span class="math" data-tex="\(N\)">\(N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At a prime where the primitive level has exponent <span class="math" data-tex="\(m\)">\(m\)</span> and the receiving level has exponent <span class="math" data-tex="\(r\ge m\)">\(r\ge m\)</span>, this decomposition gives <span class="math" data-tex="\(r-m+1\)">\(r-m+1\)</span> independent shifts <span class="math" data-tex="\(f(z),f(pz),\ldots,f(p^{r-m}z)\)">\(f(z),f(pz),\ldots,f(p^{r-m}z)\)</span>. The same dimension pattern occurs in Deligne, <em>Formes modulaires et représentations de GL(2)</em>, Theorem 2.2.6 and Definition 2.2.7, for local newvectors and conductors. The classical/local identification is discussed in his Section 2.4; its representation-theoretic foundations are outside the proof given here.</p>
+<h2 id="5-fricke-signs-and-the-bad-coefficients">5. Fricke signs and the bad coefficients</h2>
+<p><strong>Theorem 5.1.</strong> The operator <span class="math" data-tex="\(\mathcal W_N\)">\(\mathcal W_N\)</span> preserves <span class="math" data-tex="\(S_k(\Gamma_0(N))\)">\(S_k(\Gamma_0(N))\)</span>, has square <span class="math" data-tex="\((-1)^k\)">\((-1)^k\)</span>, and commutes there with <span class="math" data-tex="\(T_n\)">\(T_n\)</span> for <span class="math" data-tex="\((n,N)=1\)">\((n,N)=1\)</span>. On every trivial-character newform it acts by a sign.</p>
+<p><strong>Proof.</strong> Preservation, unitarity and the square were proved in Lemma 2.2. Consider a good prime <span class="math" data-tex="\(p\)">\(p\)</span>. Let <span class="math" data-tex="\(A_p=\operatorname{diag}(1,p)\)">\(A_p=\operatorname{diag}(1,p)\)</span>. Fricke conjugation replaces <span class="math" data-tex="\(A_p\)">\(A_p\)</span> by its adjugate <span class="math" data-tex="\(A_p^\vee=\operatorname{diag}(p,1)\)">\(A_p^\vee=\operatorname{diag}(p,1)\)</span>. These give the same <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> double coset. Indeed, choose <span class="math" data-tex="\(a,b\in\mathbb Z\)">\(a,b\in\mathbb Z\)</span> with <span class="math" data-tex="\(ap-bN=1\)">\(ap-bN=1\)</span> and set
+<span class="math math-display" data-tex="\[
+\sigma_p=\begin{pmatrix}a&amp;b\\N&amp;p\end{pmatrix}\in\Gamma_0(N).
+\]">\[
+\sigma_p=\begin{pmatrix}a&amp;b\\N&amp;p\end{pmatrix}\in\Gamma_0(N).
+\]</span>
+The good representative calculation in the preceding lesson shows
+<span class="math" data-tex="\(\sigma_p A_p^\vee\in\Gamma_0(N)A_p\Gamma_0(N)\)">\(\sigma_p A_p^\vee\in\Gamma_0(N)A_p\Gamma_0(N)\)</span>. Removing the left factor <span class="math" data-tex="\(\sigma_p\)">\(\sigma_p\)</span> proves the double-coset equality. A normalizer conjugates the whole coset sum, including its representatives; the real normalization <span class="math" data-tex="\(p^{k/2-1}\)">\(p^{k/2-1}\)</span> is unchanged. Hence <span class="math" data-tex="\(\mathcal W_NT_p=T_p\mathcal W_N\)">\(\mathcal W_NT_p=T_p\mathcal W_N\)</span>. Recurrences and coprime products prove the assertion for every good <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>The new space is Fricke-stable. The good joint eigenspace of a trivial-character newform is a single line by Theorem 3.1. Fricke commutation preserves that line, so <span class="math" data-tex="\(\mathcal W_Nf=\epsilon_Nf\)">\(\mathcal W_Nf=\epsilon_Nf\)</span>. A nonzero trivial-character space has even weight, since <span class="math" data-tex="\(-I\)">\(-I\)</span> belongs to <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>. Applying the square identity gives <span class="math" data-tex="\(\epsilon_N^2=1\)">\(\epsilon_N^2=1\)</span>, as required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a general character, conjugation changes the lower-right entry to the upper-left entry. Since their product is <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>, it gives
+<span class="math math-display" data-tex="\[
+\mathcal W_N:
+S_k(N,\chi)\longrightarrow S_k(N,\bar\chi).
+\]">\[
+\mathcal W_N:
+S_k(N,\chi)\longrightarrow S_k(N,\bar\chi).
+\]</span>
+Consequently the sign conclusion applies as stated to trivial character. A character-space calculation must account for this change before claiming a scalar Fricke action.</p>
+<p>For completeness, write <span class="math" data-tex="\(Kf(z)=\overline{f(-\bar z)}\)">\(Kf(z)=\overline{f(-\bar z)}\)</span>, so the Fourier coefficients of <span class="math" data-tex="\(Kf\)">\(Kf\)</span> are <span class="math" data-tex="\(\overline{a_n(f)}\)">\(\overline{a_n(f)}\)</span>. Reflection of a fundamental domain proves that <span class="math" data-tex="\(K\)">\(K\)</span> is antiunitary; it preserves old degeneracies and therefore takes newforms with character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> to newforms with character <span class="math" data-tex="\(\bar\chi\)">\(\bar\chi\)</span>. The reverse-double-coset calculation also gives
+<span class="math math-display" data-tex="\[
+\mathcal W_NT_p\mathcal W_N^{-1}=T_p^*
+\qquad(p\nmid N).
+\]">\[
+\mathcal W_NT_p\mathcal W_N^{-1}=T_p^*
+\qquad(p\nmid N).
+\]</span>
+If <span class="math" data-tex="\(T_pf=a_pf\)">\(T_pf=a_pf\)</span>, the adjoint formula on its character line gives
+<span class="math" data-tex="\(\overline{a_p}=\chi(p)^{-1}a_p\)">\(\overline{a_p}=\chi(p)^{-1}a_p\)</span>. Hence <span class="math" data-tex="\(\mathcal W_Nf\)">\(\mathcal W_Nf\)</span> and <span class="math" data-tex="\(Kf\)">\(Kf\)</span> have the same good eigenvalues in the newspace of character <span class="math" data-tex="\(\bar\chi\)">\(\bar\chi\)</span>. The one-dimensionality proved in Theorem 3.1 makes
+<span class="math math-display" data-tex="\[
+\mathcal W_Nf=\eta_f Kf,\qquad |\eta_f|=1.
+\]">\[
+\mathcal W_Nf=\eta_f Kf,\qquad |\eta_f|=1.
+\]</span>
+The absolute value follows from unitarity. For nontrivial character this is a pseudo-eigenvalue relation with conjugate coefficients; it is not a sign eigenvalue assertion for <span class="math" data-tex="\(f\)">\(f\)</span> itself.</p>
+<p><strong>Proposition 5.2 (partial involutions).</strong> For every exact divisor <span class="math" data-tex="\(Q\parallel N\)">\(Q\parallel N\)</span>, the operator
+<span class="math math-display" data-tex="\[
+\mathcal W_Qf=f\|_k
+\begin{pmatrix}Qa&amp;b\\Nc&amp;Qd\end{pmatrix},
+\qquad Qad-(N/Q)bc=1,
+\]">\[
+\mathcal W_Qf=f\|_k
+\begin{pmatrix}Qa&amp;b\\Nc&amp;Qd\end{pmatrix},
+\qquad Qad-(N/Q)bc=1,
+\]</span>
+is independent of the matrix choice on <span class="math" data-tex="\(S_k(\Gamma_0(N))\)">\(S_k(\Gamma_0(N))\)</span>. It is unitary, has square <span class="math" data-tex="\(I\)">\(I\)</span>, preserves the old and new spaces, and commutes with every good Hecke operator. Each trivial-character newform is its eigenvector with eigenvalue <span class="math" data-tex="\(w_Q=\pm1\)">\(w_Q=\pm1\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(R=N/Q\)">\(R=N/Q\)</span>. Existence follows from <span class="math" data-tex="\((Q,R)=1\)">\((Q,R)=1\)</span>: choose <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(Qa\equiv1\pmod R\)">\(Qa\equiv1\pmod R\)</span>, set <span class="math" data-tex="\(d=b=1\)">\(d=b=1\)</span>, and let <span class="math" data-tex="\(c=(Qa-1)/R\)">\(c=(Qa-1)/R\)</span>. The adjugate divided by <span class="math" data-tex="\(Q\)">\(Q\)</span> is
+<span class="math math-display" data-tex="\[
+A^{-1}=\begin{pmatrix}d&amp;-b/Q\\-Rc&amp;a\end{pmatrix}.
+\]">\[
+A^{-1}=\begin{pmatrix}d&amp;-b/Q\\-Rc&amp;a\end{pmatrix}.
+\]</span>
+For <span class="math" data-tex="\(\gamma=\left(\begin{smallmatrix}u&amp;v\\Nw&amp;t\end{smallmatrix}\right)\in\Gamma_0(N)\)">\(\gamma=\left(\begin{smallmatrix}u&amp;v\\Nw&amp;t\end{smallmatrix}\right)\in\Gamma_0(N)\)</span>, matrix multiplication makes every entry of <span class="math" data-tex="\(A\gamma A^{-1}\)">\(A\gamma A^{-1}\)</span> integral, and its lower-left entry is
+<span class="math math-display" data-tex="\[
+N\bigl(cd(u-t)+Qd^2w-Rc^2v\bigr).
+\]">\[
+N\bigl(cd(u-t)+Qd^2w-Rc^2v\bigr).
+\]</span>
+It has determinant one. The same calculation for the adjugate, which has the same prescribed shape, proves equality of the conjugated group with <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>. Rational cusp maps preserve cuspidality, and change of variables in the Petersson density proves unitarity.</p>
+<p>If <span class="math" data-tex="\(A_1,A_2\)">\(A_1,A_2\)</span> are two choices, then
+<span class="math math-display" data-tex="\[
+A_1A_2^{-1}=
+\begin{pmatrix}
+Qa_1d_2-Rb_1c_2&amp;-a_1b_2+b_1a_2\\
+N(c_1d_2-d_1c_2)&amp;-Rc_1b_2+Qd_1a_2
+\end{pmatrix}\in\Gamma_0(N).
+\]">\[
+A_1A_2^{-1}=
+\begin{pmatrix}
+Qa_1d_2-Rb_1c_2&amp;-a_1b_2+b_1a_2\\
+N(c_1d_2-d_1c_2)&amp;-Rc_1b_2+Qd_1a_2
+\end{pmatrix}\in\Gamma_0(N).
+\]</span>
+They therefore give the same slash on trivial-character forms. Furthermore
+<span class="math math-display" data-tex="\[
+Q^{-1}A^2=
+\begin{pmatrix}
+Qa^2+Rbc&amp;b(a+d)\\
+Nc(a+d)&amp;Rbc+Qd^2
+\end{pmatrix}\in\Gamma_0(N).
+\]">\[
+Q^{-1}A^2=
+\begin{pmatrix}
+Qa^2+Rbc&amp;b(a+d)\\
+Nc(a+d)&amp;Rbc+Qd^2
+\end{pmatrix}\in\Gamma_0(N).
+\]</span>
+A positive scalar matrix acts trivially under the unitary slash, so <span class="math" data-tex="\(\mathcal W_Q^2=I\)">\(\mathcal W_Q^2=I\)</span>.</p>
+<p>At a prime <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>, conjugating <span class="math" data-tex="\(\operatorname{diag}(1,p)\)">\(\operatorname{diag}(1,p)\)</span> by <span class="math" data-tex="\(A\)">\(A\)</span> gives the integral matrix
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+Qad-pRbc&amp;(p-1)ab\\
+N(1-p)cd&amp;pQad-Rbc
+\end{pmatrix}.
+\]">\[
+\begin{pmatrix}
+Qad-pRbc&amp;(p-1)ab\\
+N(1-p)cd&amp;pQad-Rbc
+\end{pmatrix}.
+\]</span>
+It has determinant <span class="math" data-tex="\(p\)">\(p\)</span>, lower-left entry divisible by <span class="math" data-tex="\(N\)">\(N\)</span>, and upper-left entry a unit modulo <span class="math" data-tex="\(N\)">\(N\)</span>: that entry is <span class="math" data-tex="\(p\)">\(p\)</span> modulo <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(R\)">\(R\)</span>. The good double-coset classification proved in the preceding lesson puts it in the same <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> determinant-<span class="math" data-tex="\(p\)">\(p\)</span> double coset. Since <span class="math" data-tex="\(A\)">\(A\)</span> normalizes the group, conjugation bijects all its left cosets. Thus it preserves the normalized Hecke sum and commutes with <span class="math" data-tex="\(T_p\)">\(T_p\)</span>. Recurrences and coprime products extend this to every good index.</p>
+<p>For oldspace stability, it suffices to use the generators
+<span class="math math-display" data-tex="\[
+S_k(\Gamma_0(N/p))+V_pS_k(\Gamma_0(N/p)),\qquad p\mid N.
+\]">\[
+S_k(\Gamma_0(N/p))+V_pS_k(\Gamma_0(N/p)),\qquad p\mid N.
+\]</span>
+They generate every old degeneracy: for a source <span class="math" data-tex="\(M&lt;N\)">\(M&lt;N\)</span>, choose <span class="math" data-tex="\(p\mid N/M\)">\(p\mid N/M\)</span>; if <span class="math" data-tex="\(p\nmid d\)">\(p\nmid d\)</span>, then <span class="math" data-tex="\(V_dg\)">\(V_dg\)</span> already has level <span class="math" data-tex="\(N/p\)">\(N/p\)</span>, and if <span class="math" data-tex="\(p\mid d\)">\(p\mid d\)</span>, write it as <span class="math" data-tex="\(V_p(V_{d/p}g)\)">\(V_p(V_{d/p}g)\)</span>.</p>
+<p>First take <span class="math" data-tex="\(Q=q^e\)">\(Q=q^e\)</span> a prime-power exact divisor. For <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>, the matrix <span class="math" data-tex="\(A\)">\(A\)</span> is also a valid partial matrix at <span class="math" data-tex="\(N/p\)">\(N/p\)</span>, after replacing <span class="math" data-tex="\(c\)">\(c\)</span> by <span class="math" data-tex="\(pc\)">\(pc\)</span>. The conjugate <span class="math" data-tex="\(B_pAB_p^{-1}\)">\(B_pAB_p^{-1}\)</span> is another valid partial matrix at <span class="math" data-tex="\(N/p\)">\(N/p\)</span>. Thus <span class="math" data-tex="\(\mathcal W_Q\)">\(\mathcal W_Q\)</span> preserves both displayed old generators from <span class="math" data-tex="\(N/p\)">\(N/p\)</span>.</p>
+<p>For <span class="math" data-tex="\(p=q\)">\(p=q\)</span>, put <span class="math" data-tex="\(M=N/q\)">\(M=N/q\)</span>. The two identities
+<span class="math math-display" data-tex="\[
+AB_q^{-1}=
+\begin{pmatrix}(Q/q)a&amp;b\\Mc&amp;Qd\end{pmatrix},
+\qquad
+q^{-1}B_qA=
+\begin{pmatrix}Qa&amp;b\\Mc&amp;(Q/q)d\end{pmatrix}
+\]">\[
+AB_q^{-1}=
+\begin{pmatrix}(Q/q)a&amp;b\\Mc&amp;Qd\end{pmatrix},
+\qquad
+q^{-1}B_qA=
+\begin{pmatrix}Qa&amp;b\\Mc&amp;(Q/q)d\end{pmatrix}
+\]</span>
+are partial matrices of determinant <span class="math" data-tex="\(Q/q\)">\(Q/q\)</span> at <span class="math" data-tex="\(M\)">\(M\)</span>. When <span class="math" data-tex="\(e=1\)">\(e=1\)</span>, they simply belong to <span class="math" data-tex="\(\Gamma_0(M)\)">\(\Gamma_0(M)\)</span>. On an unscaled lower-level form the first identity gives a multiple of <span class="math" data-tex="\(V_q\)">\(V_q\)</span> of a level-<span class="math" data-tex="\(M\)">\(M\)</span> form; on <span class="math" data-tex="\(V_qh\)">\(V_qh\)</span>, the second gives a multiple of a level-<span class="math" data-tex="\(M\)">\(M\)</span> form. Hence this old pair is preserved too. The inverse preserves it because the square is <span class="math" data-tex="\(I\)">\(I\)</span>, and unitarity preserves the newspace.</p>
+<p>Finally, for coprime exact divisors <span class="math" data-tex="\(Q_1,Q_2\)">\(Q_1,Q_2\)</span>, the product of their two matrices has determinant <span class="math" data-tex="\(Q_1Q_2\)">\(Q_1Q_2\)</span>, upper-left and lower-right entries divisible by <span class="math" data-tex="\(Q_1Q_2\)">\(Q_1Q_2\)</span>, and lower-left entry divisible by <span class="math" data-tex="\(N\)">\(N\)</span>. It is therefore an allowed matrix for <span class="math" data-tex="\(Q_1Q_2\)">\(Q_1Q_2\)</span>. Matrix independence gives
+<span class="math" data-tex="\(\mathcal W_{Q_1}\mathcal W_{Q_2}=\mathcal W_{Q_1Q_2}\)">\(\mathcal W_{Q_1}\mathcal W_{Q_2}=\mathcal W_{Q_1Q_2}\)</span>.
+Factoring <span class="math" data-tex="\(Q\)">\(Q\)</span> into its prime-power parts proves newspace stability in general. Good commutation preserves each new eigenline; the square then gives its eigenvalue <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These choice-independence and sign assertions are for trivial character. For a character ramified on the <span class="math" data-tex="\(Q\)">\(Q\)</span>-part, a partial matrix can change its character; even when that character is preserved, different matrix normalizations can contribute character scalars. We do not replace them by the trivial-character formula.</p>
+<p>We state the bad-prime coefficient input in precisely the trivial-character case needed here. If <span class="math" data-tex="\(f\)">\(f\)</span> is a normalized newform of level <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(p\mid N\)">\(p\mid N\)</span>, then
+<span class="math math-display" data-tex="\[
+p\parallel N:\qquad a_p(f)=-w_pp^{k/2-1},
+\]">\[
+p\parallel N:\qquad a_p(f)=-w_pp^{k/2-1},
+\]</span>
+where <span class="math" data-tex="\(w_p\)">\(w_p\)</span> is its <span class="math" data-tex="\(W_p\)">\(W_p\)</span>-sign, whereas
+<span class="math math-display" data-tex="\[
+p^2\mid N:\qquad a_p(f)=0.
+\]">\[
+p^2\mid N:\qquad a_p(f)=0.
+\]</span>
+With our slash convention the minus sign belongs in the first formula. The required mechanism is the vanishing of the level-lowering trace operator <span class="math" data-tex="\(U_p+p^{k/2-1}W_p\)">\(U_p+p^{k/2-1}W_p\)</span> on the newspace. <strong>Proof gap:</strong> that trace identity and the general bad-prime coefficient formulas remain to be proved locally or in an earlier programme lesson. The freely accessible original paper of Li, Section 2, Theorem 3, Case I gives the source statement with its character qualifications; we have not replaced those qualifications by a blanket assertion for all characters.</p>
+<p>For the level-11 weight-two form of the preceding lesson, <span class="math" data-tex="\(a_{11}=1\)">\(a_{11}=1\)</span>. Thus <span class="math" data-tex="\(w_{11}=-1\)">\(w_{11}=-1\)</span>. The Fricke sign and the functional-equation sign have different roles: the forthcoming Mellin calculation gives the root number <span class="math" data-tex="\(i^k\epsilon_N\)">\(i^k\epsilon_N\)</span>. In weight two this changes the sign; the level-11 form therefore has root number <span class="math" data-tex="\(+1\)">\(+1\)</span>.</p>
+<h2 id="6-examples">6. Examples</h2>
+<h3 id="6-1-an-oldspace-at-level-22">6.1. An oldspace at level 22</h3>
+<p>The genus formula gives
+<span class="math math-display" data-tex="\[
+\mu_0(22)=22(1+1/2)(1+1/11)=36,\qquad
+c_0(22)=4,\qquad e_2(22)=e_3(22)=0.
+\]">\[
+\mu_0(22)=22(1+1/2)(1+1/11)=36,\qquad
+c_0(22)=4,\qquad e_2(22)=e_3(22)=0.
+\]</span>
+Hence
+<span class="math math-display" data-tex="\[
+\dim S_2(\Gamma_0(22))
+=1+\frac{36}{12}-\frac42=2.
+\]">\[
+\dim S_2(\Gamma_0(22))
+=1+\frac{36}{12}-\frac42=2.
+\]</span>
+The preceding lesson proved, including all multiplier and cusp checks, that
+<span class="math math-display" data-tex="\[
+f(z)=\eta(z)^2\eta(11z)^2
+=q-2q^2-q^3+2q^4+q^5+2q^6-\cdots
+\]">\[
+f(z)=\eta(z)^2\eta(11z)^2
+=q-2q^2-q^3+2q^4+q^5+2q^6-\cdots
+\]</span>
+spans <span class="math" data-tex="\(S_2(\Gamma_0(11))\)">\(S_2(\Gamma_0(11))\)</span>. The forms <span class="math" data-tex="\(f(z)\)">\(f(z)\)</span> and <span class="math" data-tex="\(f(2z)\)">\(f(2z)\)</span> have different first nonzero powers, so they are independent. They belong to the level-22 old space. Its dimension is therefore at least two, which is the dimension of the whole cusp space:
+<span class="math math-display" data-tex="\[
+S_2(\Gamma_0(22))
+=\mathbb Cf\oplus\mathbb CV_2f,\qquad
+S_2^{\mathrm{new}}(\Gamma_0(22))=0.
+\]">\[
+S_2(\Gamma_0(22))
+=\mathbb Cf\oplus\mathbb CV_2f,\qquad
+S_2^{\mathrm{new}}(\Gamma_0(22))=0.
+\]</span>
+Since <span class="math" data-tex="\(a_2(f)=-2\)">\(a_2(f)=-2\)</span>, the level-raising calculation gives
+<span class="math math-display" data-tex="\[
+U_2f=-2f-2V_2f,\qquad U_2V_2f=f.
+\]">\[
+U_2f=-2f-2V_2f,\qquad U_2V_2f=f.
+\]</span>
+Our matrices act on column coordinate vectors, so
+<span class="math math-display" data-tex="\[
+[U_2]_{(f,V_2f)}=
+\begin{pmatrix}-2&amp;1\\-2&amp;0\end{pmatrix},
+\qquad
+\det(XI-U_2)=X^2+2X+2.
+\]">\[
+[U_2]_{(f,V_2f)}=
+\begin{pmatrix}-2&amp;1\\-2&amp;0\end{pmatrix},
+\qquad
+\det(XI-U_2)=X^2+2X+2.
+\]</span>
+Its two eigenvalues are <span class="math" data-tex="\(-1+i\)">\(-1+i\)</span> and <span class="math" data-tex="\(-1-i\)">\(-1-i\)</span>. Every good operator acts by the same scalar on the two old generators; this is exactly the repeated primitive eigenvalue system which the newform decomposition must describe.</p>
+<h3 id="6-2-the-finite-computational-model">6.2. The finite computational model</h3>
+<p>For the two prime-level computations, use the finite weight-two modular-symbol model defined below. Lemma 6.1 proves the complete presentation, boundary map, period injectivity and path Hecke action here. Its perfect pairing deduction still uses the earlier weight-two dimension identity <span class="math" data-tex="\(\dim S_2=g\)">\(\dim S_2=g\)</span>, whose proof is now written in lesson 06, Appendix A, relative to its explicitly retained elementary analytic foundations. This inherited gap affects the identification of every computed symbol eigenline with a cusp form; the finite quotient and matrix calculations themselves are fully specified. These computations require no later cohomology or modular-symbol lesson. We calculate the actual quotients, Hecke matrices and eigenvalues, then apply the conditional newform decomposition to the resulting coefficient systems.</p>
+<p>For prime <span class="math" data-tex="\(P\)">\(P\)</span>, let <span class="math" data-tex="\(e_{[c:d]}\)">\(e_{[c:d]}\)</span> be the symbol represented by an integral determinant-one matrix <span class="math" data-tex="\(g\)">\(g\)</span> with bottom row <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> modulo <span class="math" data-tex="\(P\)">\(P\)</span>, and oriented endpoints <span class="math" data-tex="\(\{g(0),g(\infty)\}\)">\(\{g(0),g(\infty)\}\)</span>. The labels form <span class="math" data-tex="\(\mathbb P^1(\mathbb F_P)\)">\(\mathbb P^1(\mathbb F_P)\)</span>. Use <span class="math" data-tex="\(e_r=e_{[r:1]}\)">\(e_r=e_{[r:1]}\)</span>, <span class="math" data-tex="\(0\le r&lt;P\)">\(0\le r&lt;P\)</span>, and <span class="math" data-tex="\(e_\infty=e_{[1:0]}\)">\(e_\infty=e_{[1:0]}\)</span>. The relations are
+<span class="math math-display" data-tex="\[
+e_{[c:d]}+e_{[d:-c]}=0,
+\]">\[
+e_{[c:d]}+e_{[d:-c]}=0,
+\]</span>
+<span class="math math-display" data-tex="\[
+e_{[c:d]}+e_{[d:-c-d]}+e_{[-c-d:c]}=0.
+\tag{6.1}
+\]">\[
+e_{[c:d]}+e_{[d:-c-d]}+e_{[-c-d:c]}=0.
+\tag{6.1}
+\]</span>
+We further quotient by
+<span class="math math-display" data-tex="\[
+e_{[c:d]}-e_{[-c:d]}=0.
+\tag{6.2}
+\]">\[
+e_{[c:d]}-e_{[-c:d]}=0.
+\tag{6.2}
+\]</span>
+Thus our reflection <span class="math" data-tex="\(J\)">\(J\)</span> sends <span class="math" data-tex="\([c:d]\)">\([c:d]\)</span> to <span class="math" data-tex="\([-c:d]\)">\([-c:d]\)</span>, with no minus prefixed to the symbol. Stein's star involution is <span class="math" data-tex="\(-J\)">\(-J\)</span> in weight two: our quotient is his minus sector. Lemma 6.1 proves the presentation, period injectivity and Hecke compatibility; its perfect cusp pairings are conditional on the dimension identity with its stated elementary foundation requirements stated there.</p>
+<p>The boundary is
+<span class="math math-display" data-tex="\[
+\partial e_r=
+\begin{cases}[\infty]-[0],&amp;r=0,\\0,&amp;r\ne0,\end{cases}
+\qquad
+\partial e_\infty=[0]-[\infty].
+\tag{6.3}
+\]">\[
+\partial e_r=
+\begin{cases}[\infty]-[0],&amp;r=0,\\0,&amp;r\ne0,\end{cases}
+\qquad
+\partial e_\infty=[0]-[\infty].
+\tag{6.3}
+\]</span>
+Indeed <span class="math" data-tex="\(g(\infty)\)">\(g(\infty)\)</span> has cusp class <span class="math" data-tex="\(\infty\)">\(\infty\)</span> precisely when <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, and <span class="math" data-tex="\(g(0)\)">\(g(0)\)</span> has that class precisely when <span class="math" data-tex="\(d=0\)">\(d=0\)</span>.</p>
+<p>Hecke action on an oriented path is
+<span class="math math-display" data-tex="\[
+T_m\{u,v\}
+=\sum_{\substack{ad=m\\(a,P)=1}}\;
+ \sum_{b=0}^{d-1}
+ \left\{\frac{au+b}{d},\frac{av+b}{d}\right\}.
+\tag{6.4}
+\]">\[
+T_m\{u,v\}
+=\sum_{\substack{ad=m\\(a,P)=1}}\;
+ \sum_{b=0}^{d-1}
+ \left\{\frac{au+b}{d},\frac{av+b}{d}\right\}.
+\tag{6.4}
+\]</span>
+Reduce each path by <span class="math" data-tex="\(\{u,v\}=\{\infty,v\}-\{\infty,u\}\)">\(\{u,v\}=\{\infty,v\}-\{\infty,u\}\)</span>. For a rational endpoint, its consecutive continued-fraction convergents have determinant <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. The path from infinity to that endpoint is the sum of their consecutive edges. Orient each edge using a determinant-one integral lift, read its bottom row modulo <span class="math" data-tex="\(P\)">\(P\)</span>, and use (6.1)–(6.2). This specifies every step using rational arithmetic and gives the following complete reductions.</p>
+<p><strong>Lemma 6.1 (local completeness and cusp pairing).</strong> Relations (6.1) present the entire relative modular-symbol space. The boundary-zero space has dimension <span class="math" data-tex="\(2g\)">\(2g\)</span>, where <span class="math" data-tex="\(g=g(X_0(P))\)">\(g=g(X_0(P))\)</span>. Integration of holomorphic and antiholomorphic cusp differentials is injective into its dual, and (6.4) is adjoint to the Hecke action under integration. Conditional on the earlier dimension identity with its stated elementary foundation requirements <span class="math" data-tex="\(\dim S_2=g\)">\(\dim S_2=g\)</span>, its two reflection sectors have dimension <span class="math" data-tex="\(g\)">\(g\)</span> and each gives a perfect pairing with <span class="math" data-tex="\(S_2(\Gamma_0(P))\)">\(S_2(\Gamma_0(P))\)</span>.</p>
+<p><strong>Proof.</strong> We first prove the group presentation needed for completeness. Put <span class="math" data-tex="\(G=\mathrm{PSL}_2(\mathbb Z)\)">\(G=\mathrm{PSL}_2(\mathbb Z)\)</span>, <span class="math" data-tex="\(R=ST^{-1}\)">\(R=ST^{-1}\)</span>, and <span class="math" data-tex="\(V=R^{-1}=TS\)">\(V=R^{-1}=TS\)</span>. The earlier generation by <span class="math" data-tex="\(S,T\)">\(S,T\)</span> implies generation by <span class="math" data-tex="\(S,R\)">\(S,R\)</span>, with <span class="math" data-tex="\(S^2=R^3=1\)">\(S^2=R^3=1\)</span>. There are no further relations. On the real axis take <span class="math" data-tex="\(X_-=(-\infty,0)\)">\(X_-=(-\infty,0)\)</span>, <span class="math" data-tex="\(X_+=(0,\infty)\)">\(X_+=(0,\infty)\)</span>. Then <span class="math" data-tex="\(S X_+=X_-\)">\(S X_+=X_-\)</span>, while <span class="math" data-tex="\(R X_-=(0,1)\)">\(R X_-=(0,1)\)</span> and <span class="math" data-tex="\(R^2 X_-=(1,\infty)\)">\(R^2 X_-=(1,\infty)\)</span>. A nonempty alternating word can be conjugated, by removing equal end factors, either to a nonidentity single factor or to a word starting with <span class="math" data-tex="\(S\)">\(S\)</span> and ending with <span class="math" data-tex="\(R\)">\(R\)</span> or <span class="math" data-tex="\(R^2\)">\(R^2\)</span>. In the latter case each complete pair sends <span class="math" data-tex="\(X_-\)">\(X_-\)</span> into <span class="math" data-tex="\(X_-\)">\(X_-\)</span>, and the outermost pair sends it into one of the proper intervals <span class="math" data-tex="\((-\infty,-1)\)">\((-\infty,-1)\)</span> or <span class="math" data-tex="\((-1,0)\)">\((-1,0)\)</span>. It cannot be the identity. Single factors are also nonidentity. This proves <span class="math" data-tex="\(G=C_2*C_3\)">\(G=C_2*C_3\)</span>.</p>
+<p>Write <span class="math" data-tex="\(B=\mathbb Q[G]\)">\(B=\mathbb Q[G]\)</span>. The graph with edges <span class="math" data-tex="\(G\)">\(G\)</span> and vertices <span class="math" data-tex="\(G/\langle S\rangle\)">\(G/\langle S\rangle\)</span> and <span class="math" data-tex="\(G/\langle V\rangle\)">\(G/\langle V\rangle\)</span>, an edge joining its two cosets, is a tree: alternating reduced words give connectivity, while a reduced closed path would give a nonempty reduced word equal to one. Thus
+<span class="math" data-tex="\(B(1-S)\cap B(1-V)=0\)">\(B(1-S)\cap B(1-V)=0\)</span>. Indeed a vector in the intersection has coefficient sum zero at every vertex of either kind; its finite edge support lies in a finite forest, and deleting leaves forces every coefficient to be zero. The kernels of right multiplication by <span class="math" data-tex="\(1-S\)">\(1-S\)</span> and <span class="math" data-tex="\(1-V\)">\(1-V\)</span> are the orbit norms <span class="math" data-tex="\(B(1+S)\)">\(B(1+S)\)</span> and <span class="math" data-tex="\(B(1+V+V^2)\)">\(B(1+V+V^2)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(D_0\)">\(D_0\)</span> be the degree-zero part of <span class="math" data-tex="\(\mathbb Q[\mathbb P^1(\mathbb Q)]\)">\(\mathbb Q[\mathbb P^1(\mathbb Q)]\)</span>. The stabilizer of infinity is <span class="math" data-tex="\(\langle T\rangle\)">\(\langle T\rangle\)</span>, so the kernel of <span class="math" data-tex="\(B\to\mathbb Q[\mathbb P^1(\mathbb Q)]\)">\(B\to\mathbb Q[\mathbb P^1(\mathbb Q)]\)</span> is <span class="math" data-tex="\(B(1-T)\)">\(B(1-T)\)</span>. The map <span class="math" data-tex="\(x\mapsto x(1-S)[\infty]\)">\(x\mapsto x(1-S)[\infty]\)</span> is onto <span class="math" data-tex="\(D_0\)">\(D_0\)</span>: the augmentation ideal is generated by <span class="math" data-tex="\(1-S,1-T\)">\(1-S,1-T\)</span>, since <span class="math" data-tex="\(1-ab=(1-a)+a(1-b)\)">\(1-ab=(1-a)+a(1-b)\)</span>, and the latter generator kills infinity. If <span class="math" data-tex="\(x\)">\(x\)</span> is in its kernel, write <span class="math" data-tex="\(x(1-S)=y(1-T)\)">\(x(1-S)=y(1-T)\)</span>. Using <span class="math" data-tex="\(1-T=(1-V)-T(1-S)\)">\(1-T=(1-V)-T(1-S)\)</span> gives
+<span class="math" data-tex="\((x+yT)(1-S)=y(1-V)\)">\((x+yT)(1-S)=y(1-V)\)</span>; both sides are zero by the tree argument. Hence <span class="math" data-tex="\(yV=y\)">\(yV=y\)</span>, so <span class="math" data-tex="\(yT=yS\)">\(yT=yS\)</span>, and <span class="math" data-tex="\((x-y)(1-S)=0\)">\((x-y)(1-S)=0\)</span>. Consequently the kernel is exactly
+<span class="math" data-tex="\(B(1+S)+B(1+V+V^2)\)">\(B(1+S)+B(1+V+V^2)\)</span>; conversely these norms reverse an edge or sum the three edges of a triangle, so do lie in the kernel. Replacing <span class="math" data-tex="\(V\)">\(V\)</span> by its inverse <span class="math" data-tex="\(R\)">\(R\)</span> leaves the norm unchanged.</p>
+<p>Taking <span class="math" data-tex="\(\Gamma_0(P)\)">\(\Gamma_0(P)\)</span>-coinvariants gives <span class="math" data-tex="\(\mathbb Q[\Gamma_0(P)\backslash G]\)">\(\mathbb Q[\Gamma_0(P)\backslash G]\)</span> modulo these two norms. The earlier bottom-row coset parametrization identifies its generators with <span class="math" data-tex="\(\mathbb P^1(\mathbb F_P)\)">\(\mathbb P^1(\mathbb F_P)\)</span>. Right multiplication by <span class="math" data-tex="\(S,R,R^2\)">\(S,R,R^2\)</span> gives precisely (6.1), proving completeness. The relative space is therefore <span class="math" data-tex="\(\mathcal M=(D_0)_{\Gamma_0(P)}\)">\(\mathcal M=(D_0)_{\Gamma_0(P)}\)</span>. Its boundary is the difference of the two cusp classes of an oriented path, hence (6.3).</p>
+<p>For any signature <span class="math" data-tex="\((g,c,e_2,e_3)\)">\((g,c,e_2,e_3)\)</span> and index <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, the dimensions of the two norm images in the permutation module are the numbers of <span class="math" data-tex="\(S\)">\(S\)</span>- and <span class="math" data-tex="\(V\)">\(V\)</span>-orbits, namely <span class="math" data-tex="\((\mu+e_2)/2\)">\((\mu+e_2)/2\)</span> and <span class="math" data-tex="\((\mu+2e_3)/3\)">\((\mu+2e_3)/3\)</span>. Their intersection consists of the constants, since <span class="math" data-tex="\(S,V\)">\(S,V\)</span> generate the transitive action. The earlier genus formula consequently gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\dim\mathcal M
+&amp;=\mu-\frac{\mu+e_2}{2}-\frac{\mu+2e_3}{3}+1\\
+&amp;=2g+c-1.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\dim\mathcal M
+&amp;=\mu-\frac{\mu+e_2}{2}-\frac{\mu+2e_3}{3}+1\\
+&amp;=2g+c-1.
+\end{aligned}
+\]</span>
+The boundary maps onto the degree-zero cusp-class space, of dimension <span class="math" data-tex="\(c-1\)">\(c-1\)</span>, by taking a path between representatives of any two cusps. Thus <span class="math" data-tex="\(\mathcal D=\ker\partial\)">\(\mathcal D=\ker\partial\)</span> has dimension <span class="math" data-tex="\(2g\)">\(2g\)</span>.</p>
+<p>For <span class="math" data-tex="\(f,h\in S_2(\Gamma_0(P))\)">\(f,h\in S_2(\Gamma_0(P))\)</span>, put
+<span class="math" data-tex="\(\omega=f(z)dz+\overline{h(z)}d\bar z\)">\(\omega=f(z)dz+\overline{h(z)}d\bar z\)</span>.
+Its integrals define a functional on <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>: the form is closed on the simply connected half-plane, invariant under the group, and its cusp integrals converge. The earlier weight-two differential dictionary shows that it extends smoothly to the compact curve. More explicitly, at a cusp of width <span class="math" data-tex="\(w\)">\(w\)</span>, <span class="math" data-tex="\(q_w=e^{2\pi iz/w}\)">\(q_w=e^{2\pi iz/w}\)</span> turns <span class="math" data-tex="\(\sum_{n\ge1}a_nq_w^n dz\)">\(\sum_{n\ge1}a_nq_w^n dz\)</span> into
+<span class="math" data-tex="\((w/(2\pi i))\sum_{n\ge1}a_nq_w^{n-1}dq_w\)">\((w/(2\pi i))\sum_{n\ge1}a_nq_w^{n-1}dq_w\)</span>, a holomorphic differential at zero.</p>
+<p>Suppose this functional vanishes on <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Fix a cusp <span class="math" data-tex="\(A\)">\(A\)</span>. Every <span class="math" data-tex="\(\{A,\gamma A\}\)">\(\{A,\gamma A\}\)</span> has zero boundary, so all the group periods vanish. The primitive <span class="math" data-tex="\(F(z)=\int_A^z\omega\)">\(F(z)=\int_A^z\omega\)</span> is well defined on the half-plane, and invariance gives <span class="math" data-tex="\(F(\gamma z)-F(z)=\int_A^{\gamma A}\omega=0\)">\(F(\gamma z)-F(z)=\int_A^{\gamma A}\omega=0\)</span>. The cusp expansion just displayed extends the primitive smoothly across every cusp. Thus it is a smooth function on the compact curve, with <span class="math" data-tex="\(dF=\omega\)">\(dF=\omega\)</span>. Integrating the exact differential <span class="math" data-tex="\(d(F\overline{f(z)dz})\)">\(d(F\overline{f(z)dz})\)</span> over that curve gives zero: subdivide the finite fundamental polygon into coordinate triangles, apply integration by parts on each triangle, and cancel its oppositely oriented edges. Hence
+<span class="math math-display" data-tex="\[
+0=\int_X\omega\wedge\overline{f(z)dz}
+=-2i\int_X|f(z)|^2dx\,dy,
+\]">\[
+0=\int_X\omega\wedge\overline{f(z)dz}
+=-2i\int_X|f(z)|^2dx\,dy,
+\]</span>
+so <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. Using <span class="math" data-tex="\(d(Fh(z)dz)\)">\(d(Fh(z)dz)\)</span> similarly gives <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. This proves injectivity of
+<span class="math" data-tex="\(S_2\oplus\overline{S_2}\to\mathcal D^*\otimes\mathbb C\)">\(S_2\oplus\overline{S_2}\to\mathcal D^*\otimes\mathbb C\)</span>.
+The earlier equality <span class="math" data-tex="\(\dim S_2=g\)">\(\dim S_2=g\)</span> and <span class="math" data-tex="\(\dim\mathcal D=2g\)">\(\dim\mathcal D=2g\)</span> would prove that it is an isomorphism. <strong>Inherited foundation requirement:</strong> lesson 06, Appendix A, proves <span class="math" data-tex="\(\dim S_2=g\)">\(\dim S_2=g\)</span> through arbitrary-bundle Riemann–Roch and the genus bridge, but its elementary analytic framework still needs exact programme proof verification. The perfect pairing and equal sector dimensions asserted here are conditional on that exact identity. The period injectivity just proved does not depend on it.</p>
+<p>Reflection <span class="math" data-tex="\(z\mapsto-\bar z\)">\(z\mapsto-\bar z\)</span> sends <span class="math" data-tex="\(e_{[c:d]}\)">\(e_{[c:d]}\)</span> to <span class="math" data-tex="\(e_{[-c:d]}\)">\(e_{[-c:d]}\)</span>. Substitution in the integral gives <span class="math" data-tex="\(\ell_f(Js)=-\ell_{\overline{f^\#}}(s)\)">\(\ell_f(Js)=-\ell_{\overline{f^\#}}(s)\)</span>, where <span class="math" data-tex="\(f^\#(z)=\overline{f(-\bar z)}\)">\(f^\#(z)=\overline{f(-\bar z)}\)</span>. Under the dimension identity specified above, it therefore exchanges the holomorphic and antiholomorphic summands in that conditional isomorphism. Both eigenspaces <span class="math" data-tex="\(\mathcal D^\pm\)">\(\mathcal D^\pm\)</span> have dimension <span class="math" data-tex="\(g\)">\(g\)</span>. Restriction of <span class="math" data-tex="\(\ell_f\)">\(\ell_f\)</span> to either is injective: if it vanishes on the plus sector, then <span class="math" data-tex="\(\ell_f=-\ell_f\circ J=\ell_{\overline{f^\#}}\)">\(\ell_f=-\ell_f\circ J=\ell_{\overline{f^\#}}\)</span> on <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, contradicting injectivity of the combined pairing unless <span class="math" data-tex="\(f=0\)">\(f=0\)</span>; the minus case changes the sign. Dimensions give the perfect pairings. Quotienting by (6.2) selects the plus sector, since averaging <span class="math" data-tex="\((1+J)/2\)">\((1+J)/2\)</span> identifies that quotient with the plus eigenspace and commutes with the boundary.</p>
+<p>Finally the weight-two coefficient formula from lesson 9 is the sum of <span class="math" data-tex="\((a/d)f((az+b)/d)\)">\((a/d)f((az+b)/d)\)</span> over the matrices in (6.4). Substitution in each path integral therefore gives
+<span class="math" data-tex="\(\ell_{T_mf}(s)=\ell_f(T_ms)\)">\(\ell_{T_mf}(s)=\ell_f(T_ms)\)</span>.
+The coset permutation proof from that lesson makes this action independent of a representative; it acts on cusp-class boundaries and hence preserves <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Reflection commutes with the sum by replacing <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(-b\)">\(-b\)</span> modulo <span class="math" data-tex="\(d\)">\(d\)</span>. This proves Hecke compatibility in both sectors and completes the local justification of the computational model. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 6.2 (a finite integral model for these computations).</strong> Either rational cusp-symbol sector has a finitely generated free abelian lattice spanning it and preserved by every Hecke operator. Its rank is <span class="math" data-tex="\(g\)">\(g\)</span> under the dimension identity specified in Lemma 6.1. Every eigenvalue computed in the symbol sector is an algebraic integer. A rational simultaneous eigenline consequently has integer eigenvalues.</p>
+<p><strong>Proof.</strong> Start with the relative rational space <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> before imposing a reflection relation, and let <span class="math" data-tex="\(\pi_\pm=(1\pm J)/2\)">\(\pi_\pm=(1\pm J)/2\)</span>. In the plus sector let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be the integer span of the finitely many vectors <span class="math" data-tex="\(\pi_+e_{[c:d]}\)">\(\pi_+e_{[c:d]}\)</span>. The map <span class="math" data-tex="\(\pi_+\)">\(\pi_+\)</span> identifies this space with the quotient by (6.2); its boundary is the one in (6.3), because <span class="math" data-tex="\(\partial J=\partial\)">\(\partial J=\partial\)</span>. In the minus sector instead take the integer span of <span class="math" data-tex="\(\pi_-e_{[c:d]}\)">\(\pi_-e_{[c:d]}\)</span> inside <span class="math" data-tex="\(\mathcal M^-\)">\(\mathcal M^-\)</span>. Its boundary is identically zero, since <span class="math" data-tex="\(\partial\pi_-=(\partial-\partial J)/2=0\)">\(\partial\pi_-=(\partial-\partial J)/2=0\)</span>. One must not apply (6.3) on the quotient by <span class="math" data-tex="\((1+J)\mathcal M\)">\((1+J)\mathcal M\)</span>: the relation would kill <span class="math" data-tex="\(2e_0\)">\(2e_0\)</span>, whose displayed boundary is nonzero. The projection construction gives the required minus lattice without that invalid boundary descent. These spans are torsion-free, since they sit in a rational vector space, and generate that vector space over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. They are finitely generated free abelian groups. For completeness, a finitely generated subgroup of a rational vector space has a common coordinate denominator in a chosen rational basis and hence lies in a copy of <span class="math" data-tex="\(\mathbb Z^r\)">\(\mathbb Z^r\)</span>. Every subgroup of <span class="math" data-tex="\(\mathbb Z^r\)">\(\mathbb Z^r\)</span> is free and finitely generated: induct on <span class="math" data-tex="\(r\)">\(r\)</span>, project to the first coordinate, choose one preimage of a generator of its image ideal, and add a basis of the kernel provided by induction.</p>
+<p>Put <span class="math" data-tex="\(\Lambda_0=\Lambda\cap\ker\partial\)">\(\Lambda_0=\Lambda\cap\ker\partial\)</span>. It is free and finitely generated by the same argument. Its rational span is the full cusp sector, since clearing denominators puts each rational vector in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and preserves its zero boundary. Thus its rank is the dimension of that rational sector, which is <span class="math" data-tex="\(g\)">\(g\)</span> under the identity specified in Lemma 6.1. Every Hecke image of a generator is an integer sum of rational-endpoint paths by (6.4). The continued-fraction procedure decomposes those paths into integer sums of unimodular edges; no division is introduced. Since they commute with <span class="math" data-tex="\(J\)">\(J\)</span>, projecting the integer edge sums still expresses every Hecke image as an integer sum of projected generators. Hence all Hecke operators preserve <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and boundary compatibility preserves <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span>. In an integer basis of <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> each has an integer matrix. Its monic characteristic polynomial proves algebraic integrality of its eigenvalues. On a rational simultaneous eigenline the eigenvalues are rational; a rational root of a monic integer polynomial is an integer, by clearing a fraction in lowest terms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="6-3-level-23-a-quadratic-orbit">6.3. Level 23: a quadratic orbit</h3>
+<p>The level has index <span class="math" data-tex="\(24\)">\(24\)</span>, two cusps, and no elliptic points: <span class="math" data-tex="\(23\equiv3\pmod4\)">\(23\equiv3\pmod4\)</span> and <span class="math" data-tex="\(23\equiv2\pmod3\)">\(23\equiv2\pmod3\)</span>. Thus its genus and cusp dimension are
+<span class="math math-display" data-tex="\[
+g=1+24/12-2/2=2,
+\qquad \dim S_2(\Gamma_0(23))=2.
+\]">\[
+g=1+24/12-2/2=2,
+\qquad \dim S_2(\Gamma_0(23))=2.
+\]</span>
+Since <span class="math" data-tex="\(S_2(\operatorname{SL}_2(\mathbb Z))=0\)">\(S_2(\operatorname{SL}_2(\mathbb Z))=0\)</span>, the space is entirely new.</p>
+<p>In the reflected relative symbol space use
+<span class="math math-display" data-tex="\[
+u=e_{20},\qquad v=e_{21},\qquad t=e_\infty.
+\]">\[
+u=e_{20},\qquad v=e_{21},\qquad t=e_\infty.
+\]</span>
+The following table gives every generator. An entry for <span class="math" data-tex="\(r\)">\(r\)</span> also applies to <span class="math" data-tex="\(23-r\)">\(23-r\)</span>, by (6.2).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(r\)">\(r\)</span></th>
+<th>Coordinates of <span class="math" data-tex="\(e_r\)">\(e_r\)</span> in <span class="math" data-tex="\((u,v,t)\)">\((u,v,t)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\((0,0,-1)\)">\((0,0,-1)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\((0,0,0)\)">\((0,0,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\((0,1,0)\)">\((0,1,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\((1,0,0)\)">\((1,0,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td><span class="math" data-tex="\((1,-1/2,0)\)">\((1,-1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td><span class="math" data-tex="\((0,1/2,0)\)">\((0,1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td><span class="math" data-tex="\((-1,1/2,0)\)">\((-1,1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td><span class="math" data-tex="\((-1,1,0)\)">\((-1,1,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(8\)">\(8\)</span></td>
+<td><span class="math" data-tex="\((-1,0,0)\)">\((-1,0,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(9\)">\(9\)</span></td>
+<td><span class="math" data-tex="\((0,-1/2,0)\)">\((0,-1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(10\)">\(10\)</span></td>
+<td><span class="math" data-tex="\((1,-1,0)\)">\((1,-1,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(11\)">\(11\)</span></td>
+<td><span class="math" data-tex="\((0,-1,0)\)">\((0,-1,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(\infty\)">\(\infty\)</span></td>
+<td><span class="math" data-tex="\((0,0,1)\)">\((0,0,1)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Rational elimination on the three families (6.1)–(6.2) has rank <span class="math" data-tex="\(21\)">\(21\)</span> on the <span class="math" data-tex="\(24\)">\(24\)</span> generators, with free generators <span class="math" data-tex="\(e_{20},e_{21},e_\infty\)">\(e_{20},e_{21},e_\infty\)</span>. Equivalently, the displayed reductions express every generator in these three, and their three coordinate functions satisfy all the relations and take the identity matrix on the free generators. This certifies the three-dimensional quotient. Equation (6.3) gives boundary row <span class="math" data-tex="\((0,0,-1)\)">\((0,0,-1)\)</span>, so the cusp space has basis <span class="math" data-tex="\(u,v\)">\(u,v\)</span>.</p>
+<p>For example, the three prime-two matrices in (6.4) send the endpoints of <span class="math" data-tex="\(u=\{0,1/20\}\)">\(u=\{0,1/20\}\)</span> to
+<span class="math math-display" data-tex="\[
+\{0,1/40\},\qquad
+\{1/2,21/40\},\qquad
+\{0,1/10\}.
+\]">\[
+\{0,1/40\},\qquad
+\{1/2,21/40\},\qquad
+\{0,1/10\}.
+\]</span>
+The same reduction for all three basis vectors gives the column-action matrix
+<span class="math math-display" data-tex="\[
+T_2^{\mathrm{relative}}=
+\begin{pmatrix}1&amp;2&amp;0\\-1/2&amp;-2&amp;1\\0&amp;0&amp;3\end{pmatrix},
+\qquad
+T_2^{\mathrm{cusp}}=
+\begin{pmatrix}1&amp;2\\-1/2&amp;-2\end{pmatrix}.
+\tag{6.5}
+\]">\[
+T_2^{\mathrm{relative}}=
+\begin{pmatrix}1&amp;2&amp;0\\-1/2&amp;-2&amp;1\\0&amp;0&amp;3\end{pmatrix},
+\qquad
+T_2^{\mathrm{cusp}}=
+\begin{pmatrix}1&amp;2\\-1/2&amp;-2\end{pmatrix}.
+\tag{6.5}
+\]</span>
+Its trace is <span class="math" data-tex="\(-1\)">\(-1\)</span>, its determinant is <span class="math" data-tex="\(-1\)">\(-1\)</span>, and its characteristic polynomial is
+<span class="math math-display" data-tex="\[
+X^2+X-1.
+\]">\[
+X^2+X-1.
+\]</span>
+The two distinct real roots make its two eigenlines simultaneous eigenlines for the entire commuting Hecke family.</p>
+<p>Put <span class="math" data-tex="\(a^2+a-1=0\)">\(a^2+a-1=0\)</span>, and identify the cyclic cusp basis <span class="math" data-tex="\((u,T_2u)\)">\((u,T_2u)\)</span> with <span class="math" data-tex="\((1,a)\)">\((1,a)\)</span>. Its change-of-basis matrix and prime-two matrix are
+<span class="math math-display" data-tex="\[
+B=\begin{pmatrix}1&amp;1\\0&amp;-1/2\end{pmatrix},
+\qquad
+B^{-1}T_2B=\begin{pmatrix}0&amp;1\\1&amp;-1\end{pmatrix}.
+\]">\[
+B=\begin{pmatrix}1&amp;1\\0&amp;-1/2\end{pmatrix},
+\qquad
+B^{-1}T_2B=\begin{pmatrix}0&amp;1\\1&amp;-1\end{pmatrix}.
+\]</span>
+Using (6.4) gives the following coefficient table. The middle entry records <span class="math" data-tex="\(B^{-1}T_nu\)">\(B^{-1}T_nu\)</span>, so it supplies the full algebra calculation of each coefficient.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th><span class="math" data-tex="\(B^{-1}T_nu\)">\(B^{-1}T_nu\)</span></th>
+<th><span class="math" data-tex="\(a_n\)">\(a_n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\((1,0)\)">\((1,0)\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\((0,1)\)">\((0,1)\)</span></td>
+<td><span class="math" data-tex="\(a\)">\(a\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\((-1,-2)\)">\((-1,-2)\)</span></td>
+<td><span class="math" data-tex="\(-1-2a\)">\(-1-2a\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td><span class="math" data-tex="\((-1,-1)\)">\((-1,-1)\)</span></td>
+<td><span class="math" data-tex="\(-1-a\)">\(-1-a\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td><span class="math" data-tex="\((0,2)\)">\((0,2)\)</span></td>
+<td><span class="math" data-tex="\(2a\)">\(2a\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td><span class="math" data-tex="\((-2,1)\)">\((-2,1)\)</span></td>
+<td><span class="math" data-tex="\(-2+a\)">\(-2+a\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td><span class="math" data-tex="\((2,2)\)">\((2,2)\)</span></td>
+<td><span class="math" data-tex="\(2+2a\)">\(2+2a\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(8\)">\(8\)</span></td>
+<td><span class="math" data-tex="\((-1,-2)\)">\((-1,-2)\)</span></td>
+<td><span class="math" data-tex="\(-1-2a\)">\(-1-2a\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(9\)">\(9\)</span></td>
+<td><span class="math" data-tex="\((2,0)\)">\((2,0)\)</span></td>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(10\)">\(10\)</span></td>
+<td><span class="math" data-tex="\((2,-2)\)">\((2,-2)\)</span></td>
+<td><span class="math" data-tex="\(2-2a\)">\(2-2a\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(11\)">\(11\)</span></td>
+<td><span class="math" data-tex="\((-4,-2)\)">\((-4,-2)\)</span></td>
+<td><span class="math" data-tex="\(-4-2a\)">\(-4-2a\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(12\)">\(12\)</span></td>
+<td><span class="math" data-tex="\((3,1)\)">\((3,1)\)</span></td>
+<td><span class="math" data-tex="\(3+a\)">\(3+a\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(23\)">\(23\)</span></td>
+<td><span class="math" data-tex="\((1,0)\)">\((1,0)\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For instance <span class="math" data-tex="\(a_4=a^2-2=-1-a\)">\(a_4=a^2-2=-1-a\)</span>, <span class="math" data-tex="\(a_6=a(-1-2a)=-2+a\)">\(a_6=a(-1-2a)=-2+a\)</span>, and <span class="math" data-tex="\(a_9=(-1-2a)^2-3=2\)">\(a_9=(-1-2a)^2-3=2\)</span>, independently checking the recurrence and product entries. Every rational Hecke matrix commuting with this irreducible quadratic matrix belongs to <span class="math" data-tex="\(\mathbb Q[T_2]\)">\(\mathbb Q[T_2]\)</span>: its action is determined by its value on the cyclic vector <span class="math" data-tex="\(u\)">\(u\)</span>. Hence all coefficients lie in <span class="math" data-tex="\(\mathbb Q(a)\)">\(\mathbb Q(a)\)</span>. The coefficient <span class="math" data-tex="\(a_2=a\)">\(a_2=a\)</span> shows that this field is exactly <span class="math" data-tex="\(\mathbb Q(\sqrt5)\)">\(\mathbb Q(\sqrt5)\)</span>. The two embeddings exchange the normalized eigenforms. Thus the two-dimensional newspace consists of one Galois orbit of size two.</p>
+<h3 id="6-4-level-37-two-rational-newforms">6.4. Level 37: two rational newforms</h3>
+<p>Here the index is <span class="math" data-tex="\(38\)">\(38\)</span>, the cusp count is two, and there are two elliptic points of each order: <span class="math" data-tex="\(37\equiv1\pmod4\)">\(37\equiv1\pmod4\)</span> and <span class="math" data-tex="\(37\equiv1\pmod3\)">\(37\equiv1\pmod3\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+g=1+38/12-2/4-2/3-2/2=2,
+\qquad \dim S_2(\Gamma_0(37))=2.
+\]">\[
+g=1+38/12-2/4-2/3-2/2=2,
+\qquad \dim S_2(\Gamma_0(37))=2.
+\]</span>
+It is again entirely new, since its only proper source level is one.</p>
+<p>Use <span class="math" data-tex="\(u=e_{32},v=e_{35},t=e_\infty\)">\(u=e_{32},v=e_{35},t=e_\infty\)</span>. The full reduction table is below; the entry for <span class="math" data-tex="\(r\)">\(r\)</span> also applies to <span class="math" data-tex="\(37-r\)">\(37-r\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(r\)">\(r\)</span></th>
+<th>Coordinates of <span class="math" data-tex="\(e_r\)">\(e_r\)</span> in <span class="math" data-tex="\((u,v,t)\)">\((u,v,t)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\((0,0,-1)\)">\((0,0,-1)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\((0,0,0)\)">\((0,0,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\((0,1,0)\)">\((0,1,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(3,4\)">\(3,4\)</span></td>
+<td><span class="math" data-tex="\((0,1/2,0)\)">\((0,1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td><span class="math" data-tex="\((1,0,0)\)">\((1,0,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td><span class="math" data-tex="\((0,0,0)\)">\((0,0,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td><span class="math" data-tex="\((1,0,0)\)">\((1,0,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(8\)">\(8\)</span></td>
+<td><span class="math" data-tex="\((1,-1/2,0)\)">\((1,-1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(9\)">\(9\)</span></td>
+<td><span class="math" data-tex="\((0,-1/2,0)\)">\((0,-1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(10,11\)">\(10,11\)</span></td>
+<td><span class="math" data-tex="\((0,0,0)\)">\((0,0,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(12\)">\(12\)</span></td>
+<td><span class="math" data-tex="\((0,-1/2,0)\)">\((0,-1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(13\)">\(13\)</span></td>
+<td><span class="math" data-tex="\((0,1/2,0)\)">\((0,1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(14\)">\(14\)</span></td>
+<td><span class="math" data-tex="\((-1,1/2,0)\)">\((-1,1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(15,16\)">\(15,16\)</span></td>
+<td><span class="math" data-tex="\((-1,0,0)\)">\((-1,0,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(17\)">\(17\)</span></td>
+<td><span class="math" data-tex="\((0,-1/2,0)\)">\((0,-1/2,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(18\)">\(18\)</span></td>
+<td><span class="math" data-tex="\((0,-1,0)\)">\((0,-1,0)\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(\infty\)">\(\infty\)</span></td>
+<td><span class="math" data-tex="\((0,0,1)\)">\((0,0,1)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The relation rank is <span class="math" data-tex="\(35\)">\(35\)</span> on <span class="math" data-tex="\(38\)">\(38\)</span> generators; the three listed free coordinates again certify the quotient. The boundary row is <span class="math" data-tex="\((0,0,-1)\)">\((0,0,-1)\)</span>, and the cusp basis is <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. The Hecke computation gives
+<span class="math math-display" data-tex="\[
+T_2^{\mathrm{relative}}=
+\begin{pmatrix}-2&amp;0&amp;0\\1&amp;0&amp;1\\0&amp;0&amp;3\end{pmatrix},
+\qquad
+T_2^{\mathrm{cusp}}=
+\begin{pmatrix}-2&amp;0\\1&amp;0\end{pmatrix}.
+\]">\[
+T_2^{\mathrm{relative}}=
+\begin{pmatrix}-2&amp;0&amp;0\\1&amp;0&amp;1\\0&amp;0&amp;3\end{pmatrix},
+\qquad
+T_2^{\mathrm{cusp}}=
+\begin{pmatrix}-2&amp;0\\1&amp;0\end{pmatrix}.
+\]</span>
+Its eigenvectors are <span class="math" data-tex="\((-2,1)\)">\((-2,1)\)</span>, with eigenvalue <span class="math" data-tex="\(-2\)">\(-2\)</span>, and <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, with eigenvalue zero. These rational one-dimensional spaces are preserved by every rational Hecke matrix, so both normalized forms have rational coefficients at every index.</p>
+<p>Applying (6.4) to those eigenvectors gives the complete displayed expansions:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f&amp;=q-2q^2-3q^3+2q^4-2q^5+6q^6-q^7
+ +6q^9+4q^{10}-5q^{11}-6q^{12}+O(q^{13}),\\
+g&amp;=q+q^3-2q^4-q^7-2q^9+3q^{11}-2q^{12}
+ +O(q^{13}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+f&amp;=q-2q^2-3q^3+2q^4-2q^5+6q^6-q^7
+ +6q^9+4q^{10}-5q^{11}-6q^{12}+O(q^{13}),\\
+g&amp;=q+q^3-2q^4-q^7-2q^9+3q^{11}-2q^{12}
+ +O(q^{13}).
+\end{aligned}
+\]</span>
+Both omitted <span class="math" data-tex="\(q^8\)">\(q^8\)</span>-coefficients are zero; in the second expansion the <span class="math" data-tex="\(q^2,q^5,q^6,q^{10}\)">\(q^2,q^5,q^6,q^{10}\)</span>-coefficients are zero as well. Here is the eigenvalue calculation for each index, including the bad prime:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th style="text-align:right">Eigenvalue on <span class="math" data-tex="\((-2,1)\)">\((-2,1)\)</span></th>
+<th style="text-align:right">Eigenvalue on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-3\)">\(-3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(8\)">\(8\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(9\)">\(9\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(10\)">\(10\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(11\)">\(11\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-5\)">\(-5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(12\)">\(12\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-6\)">\(-6\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(37\)">\(37\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The recurrence checks include <span class="math" data-tex="\(a_4=a_2^2-2\)">\(a_4=a_2^2-2\)</span>, <span class="math" data-tex="\(a_8=a_2a_4-2a_2\)">\(a_8=a_2a_4-2a_2\)</span>, <span class="math" data-tex="\(a_9=a_3^2-3\)">\(a_9=a_3^2-3\)</span>, and <span class="math" data-tex="\(a_{12}=a_3a_4\)">\(a_{12}=a_3a_4\)</span> on each line. The bad coefficient formula consequently gives Fricke signs <span class="math" data-tex="\(+1\)">\(+1\)</span> for <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> for <span class="math" data-tex="\(g\)">\(g\)</span>. They span the whole newspace and are different already at <span class="math" data-tex="\(a_2\)">\(a_2\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Starting from the full newform decomposition, prove
+<span class="math math-display" data-tex="\[
+\dim S_k^{\mathrm{new}}(\Gamma_0(N))
+=\sum_{M\mid N}\beta(N/M)\dim S_k(\Gamma_0(M)),
+\]">\[
+\dim S_k^{\mathrm{new}}(\Gamma_0(N))
+=\sum_{M\mid N}\beta(N/M)\dim S_k(\Gamma_0(M)),
+\]</span>
+where <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is multiplicative,
+<span class="math" data-tex="\(\beta(p)=-2,\ \beta(p^2)=1,\ \beta(p^r)=0\)">\(\beta(p)=-2,\ \beta(p^2)=1,\ \beta(p^r)=0\)</span> for <span class="math" data-tex="\(r\ge3\)">\(r\ge3\)</span>.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Prove <span class="math" data-tex="\(\mathcal W_NT_n=T_n\mathcal W_N\)">\(\mathcal W_NT_n=T_n\mathcal W_N\)</span> on <span class="math" data-tex="\(S_k(\Gamma_0(N))\)">\(S_k(\Gamma_0(N))\)</span> for <span class="math" data-tex="\((n,N)=1\)">\((n,N)=1\)</span>, keeping the unitary normalization.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Show that <span class="math" data-tex="\(S_2(\Gamma_0(22))\)">\(S_2(\Gamma_0(22))\)</span> has no newforms and compute its <span class="math" data-tex="\(U_2\)">\(U_2\)</span>-matrix in the ordered basis <span class="math" data-tex="\(f(z),f(2z)\)">\(f(z),f(2z)\)</span>, where <span class="math" data-tex="\(f=\eta(z)^2\eta(11z)^2\)">\(f=\eta(z)^2\eta(11z)^2\)</span>.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Prove the prime-level main lemma for <span class="math" data-tex="\(S_k(\Gamma_0(p))\)">\(S_k(\Gamma_0(p))\)</span> directly from the Fourier-support condition.</p>
+</li>
+</ol>
+<h2 id="8-full-solutions">8. Full solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>Put <span class="math" data-tex="\(D(N)=\dim S_k(\Gamma_0(N))\)">\(D(N)=\dim S_k(\Gamma_0(N))\)</span> and <span class="math" data-tex="\(A(N)=\dim S_k^{\mathrm{new}}(\Gamma_0(N))\)">\(A(N)=\dim S_k^{\mathrm{new}}(\Gamma_0(N))\)</span>. The full decomposition says that a primitive form at level <span class="math" data-tex="\(M\mid N\)">\(M\mid N\)</span> has one independent degeneracy image for each divisor of <span class="math" data-tex="\(N/M\)">\(N/M\)</span>. Thus
+<span class="math math-display" data-tex="\[
+D(N)=\sum_{M\mid N}\tau(N/M)A(M),
+\]">\[
+D(N)=\sum_{M\mid N}\tau(N/M)A(M),
+\]</span>
+where <span class="math" data-tex="\(\tau\)">\(\tau\)</span> counts positive divisors. We compute its convolution inverse explicitly.</p>
+<p>Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the Möbius function. Since <span class="math" data-tex="\(\tau=\mathbf1*\mathbf1\)">\(\tau=\mathbf1*\mathbf1\)</span> and <span class="math" data-tex="\(\mu*\mathbf1=\delta\)">\(\mu*\mathbf1=\delta\)</span>, the inverse is
+<span class="math" data-tex="\(\beta=\mu*\mu\)">\(\beta=\mu*\mu\)</span>. This proves multiplicativity. At a prime power its local generating series is
+<span class="math math-display" data-tex="\[
+\sum_{r\ge0}\tau(p^r)X^r
+=\sum_{r\ge0}(r+1)X^r=\frac1{(1-X)^2};
+\]">\[
+\sum_{r\ge0}\tau(p^r)X^r
+=\sum_{r\ge0}(r+1)X^r=\frac1{(1-X)^2};
+\]</span>
+its inverse is <span class="math" data-tex="\(1-2X+X^2\)">\(1-2X+X^2\)</span>. Therefore
+<span class="math" data-tex="\(\beta(1)=1,\beta(p)=-2,\beta(p^2)=1\)">\(\beta(1)=1,\beta(p)=-2,\beta(p^2)=1\)</span>, and every higher local value is zero.</p>
+<p>For completeness, convolving and regrouping the finite sums gives
+<span class="math math-display" data-tex="\[
+\sum_{M\mid N}\beta(N/M)D(M)
+=\sum_{L\mid N}A(L)
+ \sum_{L\mid M\mid N}\beta(N/M)\tau(M/L).
+\]">\[
+\sum_{M\mid N}\beta(N/M)D(M)
+=\sum_{L\mid N}A(L)
+ \sum_{L\mid M\mid N}\beta(N/M)\tau(M/L).
+\]</span>
+The inner sum is <span class="math" data-tex="\((\beta*\tau)(N/L)\)">\((\beta*\tau)(N/L)\)</span>, equal to one if <span class="math" data-tex="\(L=N\)">\(L=N\)</span> and zero otherwise. The expression is <span class="math" data-tex="\(A(N)\)">\(A(N)\)</span>, proving the formula.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>The matrix <span class="math" data-tex="\(w_N=\left(\begin{smallmatrix}0&amp;-1\\N&amp;0\end{smallmatrix}\right)\)">\(w_N=\left(\begin{smallmatrix}0&amp;-1\\N&amp;0\end{smallmatrix}\right)\)</span> normalizes <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>. At a good prime it satisfies
+<span class="math math-display" data-tex="\[
+w_N\operatorname{diag}(1,p)w_N^{-1}
+=\operatorname{diag}(p,1).
+\]">\[
+w_N\operatorname{diag}(1,p)w_N^{-1}
+=\operatorname{diag}(p,1).
+\]</span>
+Choose <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with <span class="math" data-tex="\(ap-bN=1\)">\(ap-bN=1\)</span>. The representative
+<span class="math" data-tex="\(\left(\begin{smallmatrix}a&amp;b\\N&amp;p\end{smallmatrix}\right)
+\operatorname{diag}(p,1)\)">\(\left(\begin{smallmatrix}a&amp;b\\N&amp;p\end{smallmatrix}\right)
+\operatorname{diag}(p,1)\)</span>
+belongs to the determinant-<span class="math" data-tex="\(p\)">\(p\)</span> double coset of <span class="math" data-tex="\(\operatorname{diag}(1,p)\)">\(\operatorname{diag}(1,p)\)</span>, so both diagonal matrices have the same <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> double coset. Conjugation by the normalizer therefore permutes its left cosets. It preserves their normalized slash sum, with the same factor <span class="math" data-tex="\(p^{k/2-1}\)">\(p^{k/2-1}\)</span>. This proves commutation with <span class="math" data-tex="\(T_p\)">\(T_p\)</span>.</p>
+<p>For trivial character the recurrence is
+<span class="math math-display" data-tex="\[
+T_{p^{r+1}}=T_pT_{p^r}-p^{k-1}T_{p^{r-1}}.
+\]">\[
+T_{p^{r+1}}=T_pT_{p^r}-p^{k-1}T_{p^{r-1}}.
+\]</span>
+Induction gives commutation with every <span class="math" data-tex="\(T_{p^r}\)">\(T_{p^r}\)</span>. If <span class="math" data-tex="\((m,n)=1\)">\((m,n)=1\)</span>, then <span class="math" data-tex="\(T_{mn}=T_mT_n\)">\(T_{mn}=T_mT_n\)</span>. Factoring a good <span class="math" data-tex="\(n\)">\(n\)</span> into prime powers completes the proof.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>At level 22, the index is 36 and the cusp count is 4. The factors <span class="math" data-tex="\(11\equiv3\pmod4\)">\(11\equiv3\pmod4\)</span> and <span class="math" data-tex="\(2\equiv2\pmod3\)">\(2\equiv2\pmod3\)</span> eliminate the elliptic points of orders two and three, respectively. The genus and weight-two dimension formula therefore give dimension 2. The level-11 form <span class="math" data-tex="\(f\)">\(f\)</span> is modular and cuspidal by the complete preceding-lesson proof. Raising the level gives <span class="math" data-tex="\(f(2z)\)">\(f(2z)\)</span> at level 22. Their first nonzero powers are <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(q^2\)">\(q^2\)</span>, so they are independent. They span the whole two-dimensional cusp space and belong to the oldspace. Its orthogonal complement is zero.</p>
+<p>The level-11 good formula reads
+<span class="math math-display" data-tex="\[
+T_2f=U_2f+2f(2z).
+\]">\[
+T_2f=U_2f+2f(2z).
+\]</span>
+Since <span class="math" data-tex="\(T_2f=a_2(f)f=-2f\)">\(T_2f=a_2(f)f=-2f\)</span>, this gives
+<span class="math" data-tex="\(U_2f=-2f-2f(2z)\)">\(U_2f=-2f-2f(2z)\)</span>. Averaging the Fourier expansion of <span class="math" data-tex="\(f(2z)\)">\(f(2z)\)</span> gives <span class="math" data-tex="\(U_2f(2z)=f(z)\)">\(U_2f(2z)=f(z)\)</span>. These are the two columns of
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}-2&amp;1\\-2&amp;0\end{pmatrix}.
+\]">\[
+\begin{pmatrix}-2&amp;1\\-2&amp;0\end{pmatrix}.
+\]</span>
+Taking its characteristic polynomial gives <span class="math" data-tex="\(X^2+2X+2\)">\(X^2+2X+2\)</span>, with roots <span class="math" data-tex="\(-1\pm i\)">\(-1\pm i\)</span>.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>The support condition lets us define
+<span class="math math-display" data-tex="\[
+g(z)=f(z/p)=\sum_{m\ge1}a_{pm}(f)q^m.
+\]">\[
+g(z)=f(z/p)=\sum_{m\ge1}a_{pm}(f)q^m.
+\]</span>
+This is holomorphic, has period one and vanishes at infinity. With <span class="math" data-tex="\(A=\operatorname{diag}(1,p)\)">\(A=\operatorname{diag}(1,p)\)</span>, the form <span class="math" data-tex="\(f\|A\)">\(f\|A\)</span> is the nonzero scalar multiple <span class="math" data-tex="\(p^{-k/2}g\)">\(p^{-k/2}g\)</span>. Hence <span class="math" data-tex="\(g\)">\(g\)</span> is invariant under <span class="math" data-tex="\(A^{-1}\Gamma_0(p)A=\Gamma^0(p)\)">\(A^{-1}\Gamma_0(p)A=\Gamma^0(p)\)</span>, which consists of integral determinant-one matrices whose upper-right entry is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>It follows that <span class="math" data-tex="\(g\)">\(g\)</span> is invariant under <span class="math" data-tex="\(U=\left(\begin{smallmatrix}1&amp;0\\1&amp;1\end{smallmatrix}\right)\)">\(U=\left(\begin{smallmatrix}1&amp;0\\1&amp;1\end{smallmatrix}\right)\)</span>. Periodicity makes it invariant under <span class="math" data-tex="\(T\)">\(T\)</span>, so the identity <span class="math" data-tex="\(S=T^{-1}UT^{-1}\)">\(S=T^{-1}UT^{-1}\)</span> makes it invariant under <span class="math" data-tex="\(S\)">\(S\)</span>. These generators give modularity under the full modular group. Since that group has one cusp orbit, the vanishing at infinity gives vanishing at every cusp. Thus <span class="math" data-tex="\(g\in S_k(\operatorname{SL}_2(\mathbb Z))\)">\(g\in S_k(\operatorname{SL}_2(\mathbb Z))\)</span>, and <span class="math" data-tex="\(f(z)=g(pz)\)">\(f(z)=g(pz)\)</span>, as required.</p>
+<h2 id="appendix-a-fourier-support-at-one-prime">Appendix A. Fourier support at one prime</h2>
+<h3 id="a-1-statement-and-conventions">A.1. Statement and conventions</h3>
+<p><strong>Theorem A.1.</strong> Let <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> be an integer, <span class="math" data-tex="\(p\)">\(p\)</span> a prime, and <span class="math" data-tex="\(f\in S_k(\Gamma_0(N),\chi_N)\)">\(f\in S_k(\Gamma_0(N),\chi_N)\)</span>. Suppose every nonzero Fourier coefficient has index divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. If <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>, then <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. If <span class="math" data-tex="\(p\mid N\)">\(p\mid N\)</span> but <span class="math" data-tex="\(\chi_N\)">\(\chi_N\)</span> does not factor modulo <span class="math" data-tex="\(N/p\)">\(N/p\)</span>, then again <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. In the remaining case
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f=V_pg,\qquad
+g\in S_k(\Gamma_0(N/p),\chi_{N/p}),\\
+V_pg(z)=g(pz),
+\end{gathered}
+\]">\[
+\begin{gathered}
+f=V_pg,\qquad
+g\in S_k(\Gamma_0(N/p),\chi_{N/p}),\\
+V_pg(z)=g(pz),
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\chi_{N/p}\)">\(\chi_{N/p}\)</span> is the descended character on the units modulo <span class="math" data-tex="\(N/p\)">\(N/p\)</span>.</p>
+<p>The writing material is Li's freely accessible original article, Section 1, Lemmas 1–5 and Section 2, Theorems 1–2, printed pp. 287–293. The group and Fourier arguments needed for this one-prime theorem are supplied here.</p>
+<p>Let <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> be an integer, <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, <span class="math" data-tex="\(p\)">\(p\)</span> prime and <span class="math" data-tex="\(f\in S_k(\Gamma_0(N),\chi_N)\)">\(f\in S_k(\Gamma_0(N),\chi_N)\)</span>, with <span class="math" data-tex="\(\chi_N(-1)=(-1)^k\)">\(\chi_N(-1)=(-1)^k\)</span>. Suppose <span class="math" data-tex="\(a_n(f)=0\)">\(a_n(f)=0\)</span> if <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span>. Put <span class="math" data-tex="\(g(z)=f(z/p)\)">\(g(z)=f(z/p)\)</span>, so <span class="math" data-tex="\(f=V_pg\)">\(f=V_pg\)</span> and <span class="math" data-tex="\(g(z+1)=g(z)\)">\(g(z+1)=g(z)\)</span>. For <span class="math" data-tex="\(A=\operatorname{diag}(1,p)\)">\(A=\operatorname{diag}(1,p)\)</span>, lesson 04's slash, with determinant power <span class="math" data-tex="\(k-1\)">\(k-1\)</span>, gives <span class="math" data-tex="\(g=p f|_k A\)">\(g=p f|_k A\)</span>. Equivalently, lesson 09's unitary double slash gives <span class="math" data-tex="\(g=p^{k/2}f\Vert_k A\)">\(g=p^{k/2}f\Vert_k A\)</span>. All group matrices below have determinant one, so their two slash actions agree.</p>
+<h3 id="a-2-the-conductor-obstruction">A.2. The conductor obstruction</h3>
+<p>Suppose <span class="math" data-tex="\(p\mid N\)">\(p\mid N\)</span>, and put <span class="math" data-tex="\(L=N/p\)">\(L=N/p\)</span>. For
+<span class="math math-display" data-tex="\[
+H=\Gamma_0(L)\cap\Gamma^0(p),
+\]">\[
+H=\Gamma_0(L)\cap\Gamma^0(p),
+\]</span>
+the matrix <span class="math" data-tex="\(A\gamma A^{-1}\)">\(A\gamma A^{-1}\)</span>, for <span class="math" data-tex="\(\gamma\in H\)">\(\gamma\in H\)</span>, is integral, has lower-left entry divisible by <span class="math" data-tex="\(N\)">\(N\)</span>, and has the same lower-right entry. Hence
+<span class="math" data-tex="\(g|_k\gamma=\chi_N(\gamma_{22})g\)">\(g|_k\gamma=\chi_N(\gamma_{22})g\)</span>. Here <span class="math" data-tex="\(\gamma_{22}\)">\(\gamma_{22}\)</span> is a unit modulo <span class="math" data-tex="\(N\)">\(N\)</span>: it is a unit modulo <span class="math" data-tex="\(L\)">\(L\)</span>, and the upper-right divisibility in <span class="math" data-tex="\(H\)">\(H\)</span> gives <span class="math" data-tex="\(\gamma_{11}\gamma_{22}\equiv1\pmod p\)">\(\gamma_{11}\gamma_{22}\equiv1\pmod p\)</span>.</p>
+<p>If <span class="math" data-tex="\(\chi_N\)">\(\chi_N\)</span> does not factor modulo <span class="math" data-tex="\(L\)">\(L\)</span>, there is a unit <span class="math" data-tex="\(e\pmod N\)">\(e\pmod N\)</span> with <span class="math" data-tex="\(e\equiv1\pmod L\)">\(e\equiv1\pmod L\)</span> and <span class="math" data-tex="\(\chi_N(e)\ne1\)">\(\chi_N(e)\ne1\)</span>. Reduction of units modulo <span class="math" data-tex="\(N\)">\(N\)</span> onto units modulo <span class="math" data-tex="\(L\)">\(L\)</span> is surjective: lift at each prime power of <span class="math" data-tex="\(L\)">\(L\)</span>, choose a nonzero residue at any prime occurring only in <span class="math" data-tex="\(N\)">\(N\)</span>, and use lesson 02's CRT proof. A character trivial on the reduction kernel would descend, by assigning to each target unit the character of any lift. The hypothesis therefore supplies <span class="math" data-tex="\(e\)">\(e\)</span> in that kernel. Write <span class="math" data-tex="\(e=1+u&#x27;L\)">\(e=1+u&#x27;L\)</span>; it is nonzero modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+T=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},
+\qquad
+\eta=\begin{pmatrix}1&amp;p\\L&amp;N+1\end{pmatrix}.
+\]">\[
+T=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},
+\qquad
+\eta=\begin{pmatrix}1&amp;p\\L&amp;N+1\end{pmatrix}.
+\]</span>
+The determinant of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is one. It lies in <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(\chi_N(N+1)=1\)">\(\chi_N(N+1)=1\)</span>, so <span class="math" data-tex="\(g|_k\eta=g\)">\(g|_k\eta=g\)</span>. Periodicity gives <span class="math" data-tex="\(g|_kT^v=g\)">\(g|_kT^v=g\)</span> for every integer <span class="math" data-tex="\(v\)">\(v\)</span>. Choose <span class="math" data-tex="\(u\equiv-u&#x27;e^{-1}\pmod p\)">\(u\equiv-u&#x27;e^{-1}\pmod p\)</span>. Multiplication gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T^u\eta T^{u&#x27;}=
+\begin{pmatrix}1+uL&amp;b\\L&amp;N+1+Lu&#x27;\end{pmatrix},\\
+b=p+u(N+1)+u&#x27;(1+uL).
+\end{gathered}
+\]">\[
+\begin{gathered}
+T^u\eta T^{u&#x27;}=
+\begin{pmatrix}1+uL&amp;b\\L&amp;N+1+Lu&#x27;\end{pmatrix},\\
+b=p+u(N+1)+u&#x27;(1+uL).
+\end{gathered}
+\]</span>
+Its upper-right entry is congruent modulo <span class="math" data-tex="\(p\)">\(p\)</span> to
+<span class="math" data-tex="\(u+u&#x27;(1+uL)=ue+u&#x27;\equiv0\pmod p\)">\(u+u&#x27;(1+uL)=ue+u&#x27;\equiv0\pmod p\)</span>. Thus it belongs to <span class="math" data-tex="\(H\)">\(H\)</span>; its lower-right entry is congruent to <span class="math" data-tex="\(e\pmod N\)">\(e\pmod N\)</span>. Its slash action on <span class="math" data-tex="\(g\)">\(g\)</span> is both <span class="math" data-tex="\(g\)">\(g\)</span>, from the three factors, and <span class="math" data-tex="\(\chi_N(e)g\)">\(\chi_N(e)g\)</span>, from the transformation law on <span class="math" data-tex="\(H\)">\(H\)</span>. Consequently <span class="math" data-tex="\(g=f=0\)">\(g=f=0\)</span>.</p>
+<h3 id="a-3-descent-when-the-character-factors">A.3. Descent when the character factors</h3>
+<p>Suppose <span class="math" data-tex="\(p\mid N\)">\(p\mid N\)</span> and <span class="math" data-tex="\(\chi_N\)">\(\chi_N\)</span> factors modulo <span class="math" data-tex="\(L=N/p\)">\(L=N/p\)</span>; let <span class="math" data-tex="\(\chi_L\)">\(\chi_L\)</span> be the descended character of the units modulo <span class="math" data-tex="\(L\)">\(L\)</span>, extended by zero only outside those units. If instead <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>, put <span class="math" data-tex="\(L=N\)">\(L=N\)</span> and <span class="math" data-tex="\(\chi_L=\chi_N\)">\(\chi_L=\chi_N\)</span>. The same conjugation proves
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g|_k\gamma=\chi_L(\gamma_{22})g,\\
+\gamma\in H=\Gamma_0(L)\cap\Gamma^0(p).
+\end{gathered}
+\]">\[
+\begin{gathered}
+g|_k\gamma=\chi_L(\gamma_{22})g,\\
+\gamma\in H=\Gamma_0(L)\cap\Gamma^0(p).
+\end{gathered}
+\]</span>
+On <span class="math" data-tex="\(H\)">\(H\)</span>, the lower-right entries are units modulo <span class="math" data-tex="\(N\)">\(N\)</span>, so <span class="math" data-tex="\(\chi_N\)">\(\chi_N\)</span> and <span class="math" data-tex="\(\chi_L\)">\(\chi_L\)</span> have the same values there. They are not identified on all integers: a unit modulo <span class="math" data-tex="\(L\)">\(L\)</span> can fail to be a unit modulo <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>The group generated by <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(\Gamma_0(L)\)">\(\Gamma_0(L)\)</span>. If <span class="math" data-tex="\(p\mid L\)">\(p\mid L\)</span>, reduction of a matrix <span class="math" data-tex="\(\gamma\in\Gamma_0(L)\)">\(\gamma\in\Gamma_0(L)\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> is upper triangular with nonzero upper-left entry. Choose <span class="math" data-tex="\(u\)">\(u\)</span> so that the upper-right entry of <span class="math" data-tex="\(\gamma T^{-u}\)">\(\gamma T^{-u}\)</span> vanishes modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Then <span class="math" data-tex="\(\gamma T^{-u}\in H\)">\(\gamma T^{-u}\in H\)</span>, proving the assertion.</p>
+<p>If <span class="math" data-tex="\(p\nmid L\)">\(p\nmid L\)</span>, reduction of <span class="math" data-tex="\(\Gamma_0(L)\)">\(\Gamma_0(L)\)</span> onto <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb F_p)\)">\(\mathrm{SL}_2(\mathbb F_p)\)</span> is surjective. Prescribe identity modulo <span class="math" data-tex="\(L\)">\(L\)</span> and any desired matrix modulo <span class="math" data-tex="\(p\)">\(p\)</span>, combine by CRT and lift the resulting determinant-one matrix modulo <span class="math" data-tex="\(Lp\)">\(Lp\)</span> by lesson 02's reduction-surjectivity proof. The lift is in <span class="math" data-tex="\(\Gamma(L)\subset\Gamma_0(L)\)">\(\Gamma(L)\subset\Gamma_0(L)\)</span>. The image of <span class="math" data-tex="\(H\)">\(H\)</span> is the lower-triangular subgroup; it and the upper unipotent <span class="math" data-tex="\(T\)">\(T\)</span> generate <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb F_p)\)">\(\mathrm{SL}_2(\mathbb F_p)\)</span>. Powers of <span class="math" data-tex="\(T\)">\(T\)</span> give all upper unipotents, while lower unipotents are in the lower-triangular subgroup. If the upper-left entry of a matrix is zero, first an upper row operation makes it nonzero; a lower row operation then kills its lower-left entry, and an upper row operation kills its upper-right entry, leaving a diagonal matrix. This proves image generation. The reduction kernel lies in <span class="math" data-tex="\(H\)">\(H\)</span>, so it also proves group generation.</p>
+<p>On <span class="math" data-tex="\(\Gamma_0(L)\)">\(\Gamma_0(L)\)</span>, lower-right entries multiply modulo <span class="math" data-tex="\(L\)">\(L\)</span>. Therefore <span class="math" data-tex="\(\gamma\mapsto\chi_L(\gamma_{22})\)">\(\gamma\mapsto\chi_L(\gamma_{22})\)</span> is a group character with value one on <span class="math" data-tex="\(T\)">\(T\)</span>. The transformation laws on <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> extend to their products. Thus <span class="math" data-tex="\(g\)">\(g\)</span> transforms at level <span class="math" data-tex="\(L\)">\(L\)</span> with character <span class="math" data-tex="\(\chi_L\)">\(\chi_L\)</span>.</p>
+<p>Cuspidality is preserved under the rational slash, as proved in lesson 09, Section 2, immediately after (2.3): after changing cusp scalings, the rational action is upper triangular at infinity and rescales the cusp parameter by a positive rational power and a nonzero constant. Hence <span class="math" data-tex="\(g=p f|_k A\)">\(g=p f|_k A\)</span> has a vanishing expansion at every cusp of a finite-index common congruence subgroup. At the smaller group a cusp parameter <span class="math" data-tex="\(q\)">\(q\)</span> becomes <span class="math" data-tex="\(q^{1/h}\)">\(q^{1/h}\)</span> for some positive integer <span class="math" data-tex="\(h\)">\(h\)</span> at that common subgroup. Any nonvanishing or pole at the smaller level would persist after substitution. Thus vanishing descends, and
+<span class="math math-display" data-tex="\[
+g\in S_k(\Gamma_0(L),\chi_L).
+\]">\[
+g\in S_k(\Gamma_0(L),\chi_L).
+\]</span></p>
+<h3 id="a-4-a-prime-outside-the-level-forces-zero">A.4. A prime outside the level forces zero</h3>
+<p>When <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>, A.3 gives <span class="math" data-tex="\(f,g\in S_k(\Gamma_0(N),\chi_N)\)">\(f,g\in S_k(\Gamma_0(N),\chi_N)\)</span> and <span class="math" data-tex="\(f=V_pg\)">\(f=V_pg\)</span>. The coefficient formula proved in lesson 09 yields, for <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+T_p V_p^j g
+=V_p^{j-1}g+\chi_N(p)p^{k-1}V_p^{j+1}g.
+\]">\[
+T_p V_p^j g
+=V_p^{j-1}g+\chi_N(p)p^{k-1}V_p^{j+1}g.
+\]</span>
+This is an identity of convergent Fourier expansions whenever the left-hand input has been shown to lie at level <span class="math" data-tex="\(N\)">\(N\)</span>. Since <span class="math" data-tex="\(\chi_N(p)\ne0\)">\(\chi_N(p)\ne0\)</span>, induction starting with <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(V_pg=f\)">\(V_pg=f\)</span> places every <span class="math" data-tex="\(V_p^jg\)">\(V_p^jg\)</span> in the same cusp space: apply <span class="math" data-tex="\(T_p\)">\(T_p\)</span>, which preserves that space, and solve the displayed equality for the next dilation.</p>
+<p>If <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span> has first nonzero coefficient at <span class="math" data-tex="\(n_0\)">\(n_0\)</span>, these dilations have first nonzero indices <span class="math" data-tex="\(p^j n_0\)">\(p^j n_0\)</span>. In any finite relation choose the least <span class="math" data-tex="\(j\)">\(j\)</span> with nonzero scalar. At <span class="math" data-tex="\(p^j n_0\)">\(p^j n_0\)</span> that term contributes a nonzero coefficient, while every larger dilation contributes zero. Thus the dilations are linearly independent. This contradicts finite dimensionality: lesson 06, Theorem 6.1, proves the character coefficient bound by its finite norm and the earlier valence formula, so the map to the first finitely many coefficients is injective. This argument uses that bound, not the Riemann–Roch dimension formula. Therefore <span class="math" data-tex="\(f=g=0\)">\(f=g=0\)</span>.</p>
+<h3 id="a-5-the-remaining-general-support-problem">A.5. The remaining general support problem</h3>
+<p>Theorem A.1 covers a fixed character and one prime. In the general main lemma of Section 3, nonzero indices may be divisible by different primes of the auxiliary integer <span class="math" data-tex="\(D\)">\(D\)</span>. Extracting one component must preserve the remaining support conditions and return it to the correct lower level. The Fourier annihilators <span class="math" data-tex="\(1-V_pU_p\)">\(1-V_pU_p\)</span> can raise levels. A prime dividing the level exactly once requires the weighted trace calculation. Moreover, arbitrary diamond projection has not been proved to preserve this support condition. Thus the auxiliary-set decomposition and unrestricted-character version remain required proofs; the general deductions in Sections 3–4 still depend on them.</p>
+<p>The earlier written inputs to this appendix are lesson 02's CRT and determinant-one reduction proofs; lesson 04, Proposition 1.1, for the slash cocycle; lesson 09, Section 2 immediately after (2.3), for rational-slash cusp preservation, with Lemma 2.2 and Theorem 2.3 for fixed-character prime-space preservation and the good-prime Fourier formula; and lesson 06, Theorem 6.1, for the coefficient bound and finite dimensionality. That last input follows from the finite norm and the earlier valence formula. This appendix uses no Riemann–Roch dimension formula. These exact earlier arguments retain their disclosed elementary foundation requirements.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<ul>
+<li>The unrestricted Fourier-support main lemma with auxiliary <span class="math" data-tex="\(D\)">\(D\)</span> on <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span>: Diamond–Im's freely accessible survey, Proposition 6.2.1. The fixed-character form used in our deductions is in Li's freely accessible original paper, Section 2, Theorem 2 and Corollary 1. Their availability does not supply a local or earlier programme proof: the general lemma remains a proof gap. The prime-level trivial-character case is proved in Theorem 3.2 above. Appendix A proves the fixed-character one-prime statement at arbitrary level; it does not yet supply the auxiliary-set decomposition.</li>
+<li>The two level-lowering coset formulas (4.1)–(4.2): Li, Section 1, Lemmas 1 and 3, printed pages 287 and 289. They remain proof gaps, alongside the Fourier-support input to the conditional multiplicity and decomposition deductions above. The stated bad-prime coefficient formulas are Li, Section 2, Theorem 3, Case I; their trace identity also remains a proof gap, and no formula from its ramified-character Case II is assumed.</li>
+<li>The number-field coefficients and attached Shimura–Deligne representations used only to compare initially different characters: Diamond–Im, Corollary 12.4.5 and Section 12.5, equations (12.5.1)–(12.5.3), printed pages 115 and 120. The geometric construction uses Shimura's weight-two theory and Deligne's higher-weight cohomology; it is not a consequence of the main lemma.</li>
+<li>Chebotarev's finite-extension theorem, used in Lemma 4.1: Milne, <em>Algebraic Number Theory</em>, Theorem 8.31. The passage from that statement to equality of continuous traces and then determinants is proved above.</li>
+<li>Completeness of the Manin presentation, period injectivity and Hecke path compatibility used in the two finite computations are proved locally in Lemma 6.1. The perfect pairing and dimension <span class="math" data-tex="\(g\)">\(g\)</span> of each cusp sector remain conditional on the earlier identity with its stated elementary foundation requirements <span class="math" data-tex="\(\dim S_2=g\)">\(\dim S_2=g\)</span>. Corollary 6.2 proves the finite integral lattice and algebraic integrality of the computed symbol eigenvalues; identifying all of them with form eigenvalues inherits the perfect-pairing gap. No later programme result is used for this computational model. Stein's freely available author text, Theorems 8.4, 8.21 and 8.23, remains a comparison reference.</li>
+<li>The local newvector theorem and classical/adelic dictionary mentioned after Theorem 4.5: Deligne, Sections 2.2–2.4, Theorem 2.2.6 and Definition 2.2.7. No local Langlands theorem or Maass-form assertion enters the proof here.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>W. Stein, <em>Modular Forms: A Computational Approach</em>, Sections 8.2, 8.4–8.5 and 9.1–9.3. <a href="https://wstein.org/books/modform/stein-modform.pdf">Freely accessible author-hosted PDF</a>, <a href="https://wstein.org/books/modform/README.html">author's free-distribution statement</a>.</li>
+<li>W.-C. W. Li, “Newforms and functional equations,” <em>Mathematische Annalen</em> 212 (1975), 285–315, Sections 1–2, especially Lemmas 1–3 and 6, Theorems 2–5 and Corollaries 1–2. <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0212/LOG_0047.pdf">Freely accessible original article in the Göttingen archive</a>.</li>
+<li>F. Diamond and J. Im, “Modular forms and modular curves,” 1995, Sections 6 and 12.4–12.5. <a href="https://wstein.org/msri06/stein/Diamond-Im-Modular_forms_and_modular_curves.pdf">Freely accessible article scan hosted by Stein</a>.</li>
+<li>P. Deligne, “Formes modulaires et représentations de GL(2),” Sections 2.2–2.4, Theorem 2.2.6 and Definition 2.2.7. <a href="https://publications.ias.edu/sites/default/files/Number21.pdf">Freely accessible author institutional manuscript</a>.</li>
+<li>J. S. Milne, <em>Algebraic Number Theory</em>, Chapter 8, Theorem 8.31. <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Author notes</a>.</li>
+</ul>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-09.html">← Hecke operators for Γ_0(N) and Γ_1(N)</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-11.html">The L-function of a cusp form →</a></span></nav>
+<p class="small source-link"><a href="src/oldforms-newforms-and-the-theory-of-atkin-lehner-and-li.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

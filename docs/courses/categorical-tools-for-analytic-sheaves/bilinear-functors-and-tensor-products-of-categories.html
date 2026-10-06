@@ -1,0 +1,411 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bilinear functors and tensor products of categories</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="bilinear-functors-and-tensor-products-of-categories">Bilinear functors and tensor products of categories</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, October 2026. Self-checked by GPT-6.1 Sol, the AI that wrote it; no independent review. Public domain (CC0).</em></p>
+<p>A bilinear functor combines two additive inputs. To make it into a functor of one input, we need a category whose maps include sums of formal pairs of maps. Tensor products of the two groups of maps supply those sums. Finite matrices then supply sums of objects. The result represents bilinear functors, with all their natural transformations.</p>
+<p>There is also a presheaf model. Its definition can allow every natural transformation of underlying sets. The additive structure of the input categories forces those transformations to be linear. The same mechanism shows that an ordinary extension of a bilinear functor is already linear, even if linearity was not specified separately.</p>
+<p>We use <a href="formal-linear-combinations-and-finite-sums.html">Formal linear combinations and finite sums</a>, Sections 1 and 4, for biproduct identities, finite matrix categories and extension of natural transformations. For scalar conventions see <a href="ring-actions-and-tensor-hom-in-abelian-categories.html">Ring actions and tensor–Hom in abelian categories</a>, Section 1. Our scalar ring <span class="math" data-tex="\(k\)">\(k\)</span> is commutative and unital, possibly the zero ring. Categories are locally small and <span class="math" data-tex="\(k\)">\(k\)</span>-linear; those called additive also have zero objects and finite biproducts. Object collections may live in a larger universe. Presheaves are formed in a sufficiently large universe; the explicit Hom formulas below establish local smallness in the original Hom universe.</p>
+<p>The module tensor interface is <a href="https://stacks.math.columbia.edu/tag/00CX">Stacks, Lemma 10.12.2</a>, with finite distributivity in <a href="https://stacks.math.columbia.edu/tag/00CY">Lemma 10.12.3</a>. The linear category convention agrees with <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Linear/Basic.html">Mathlib, Linear categories</a>. Neither abelianity nor an internal monoidal product on either input category is assumed.</p>
+<h2 id="1-bilinearity-means-separate-linearity">1. Bilinearity means separate linearity</h2>
+<p>Let <span class="math" data-tex="\(\mathsf C,\mathsf D,\mathsf A\)">\(\mathsf C,\mathsf D,\mathsf A\)</span> be <span class="math" data-tex="\(k\)">\(k\)</span>-linear additive categories. An ordinary functor</p>
+<span class="math math-display" data-tex="\[
+F:\mathsf C\times\mathsf D\longrightarrow\mathsf A
+\tag{1.1}
+\]">\[
+F:\mathsf C\times\mathsf D\longrightarrow\mathsf A
+\tag{1.1}
+\]</span>
+<p>is <em>bilinear</em> if fixing either object gives a <span class="math" data-tex="\(k\)">\(k\)</span>-linear functor in the other variable. Thus the map on pairs of arrows is bilinear:</p>
+<span class="math math-display" data-tex="\[
+(f,g)\longmapsto F(f,g).
+\tag{1.2}
+\]">\[
+(f,g)\longmapsto F(f,g).
+\tag{1.2}
+\]</span>
+<p>Indeed, write <span class="math" data-tex="\(F(f,g)=F(1,g)F(f,1)\)">\(F(f,g)=F(1,g)F(f,1)\)</span> and use bilinearity of composition. This also explains why separate linearity differs from linearity on the direct-product group of pairs: expanding <span class="math" data-tex="\(F(f+f&#x27;,g+g&#x27;)\)">\(F(f+f&#x27;,g+g&#x27;)\)</span> generally gives four terms.</p>
+<p>For <span class="math" data-tex="\(k\)">\(k\)</span>-modules <span class="math" data-tex="\(M,N\)">\(M,N\)</span>, the retained module universal property identifies linear maps from <span class="math" data-tex="\(M\otimes_kN\)">\(M\otimes_kN\)</span> with bilinear maps from <span class="math" data-tex="\(M\times N\)">\(M\times N\)</span>. Pure tensors generate the tensor module by finite sums. We will use this interface on groups of maps. For finite families, distributivity identifies the tensor of two direct sums with the direct sum of their pairwise tensors. Its forward map sends a pure tensor to its components; its inverse inserts each component into the two corresponding summands. The two composites are identities on pure tensors, hence everywhere.</p>
+<p>An additive <span class="math" data-tex="\(k\)">\(k\)</span>-linear functor preserves the specified finite biproducts. This follows from the biproduct identities: applying the functor preserves their sums, zero maps and identities. It also preserves zero, since it sends its zero identity to a zero identity.</p>
+<h2 id="2-tensor-the-maps-then-take-matrices">2. Tensor the maps, then take matrices</h2>
+<p>Define a <span class="math" data-tex="\(k\)">\(k\)</span>-linear category <span class="math" data-tex="\(\mathsf K(\mathsf C,\mathsf D)\)">\(\mathsf K(\mathsf C,\mathsf D)\)</span> with objects pairs <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf K}((X,Y),(X&#x27;,Y&#x27;))\\
+=\operatorname{Hom}_{\mathsf C}(X,X&#x27;)\\
+\otimes_k\operatorname{Hom}_{\mathsf D}(Y,Y&#x27;).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf K}((X,Y),(X&#x27;,Y&#x27;))\\
+=\operatorname{Hom}_{\mathsf C}(X,X&#x27;)\\
+\otimes_k\operatorname{Hom}_{\mathsf D}(Y,Y&#x27;).
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>Composition is the linear extension of</p>
+<span class="math math-display" data-tex="\[
+(f&#x27;\otimes g&#x27;)(f\otimes g)
+=(f&#x27;f)\otimes(g&#x27;g).
+\tag{2.2}
+\]">\[
+(f&#x27;\otimes g&#x27;)(f\otimes g)
+=(f&#x27;f)\otimes(g&#x27;g).
+\tag{2.2}
+\]</span>
+<p>This is well-defined. Composing in either input respects the module relations in its two factors; the two tensor universal properties therefore give a bilinear composition on the tensor modules. Associativity and identity laws hold on pure tensors by the input category laws, then on all maps by finite expansion. The identity of <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span> is <span class="math" data-tex="\(1_X\otimes1_Y\)">\(1_X\otimes1_Y\)</span>.</p>
+<p>There is an ordinary functor sending <span class="math" data-tex="\((f,g)\)">\((f,g)\)</span> to <span class="math" data-tex="\(f\otimes g\)">\(f\otimes g\)</span>. It need not be faithful: <span class="math" data-tex="\(f\otimes0=0\)">\(f\otimes0=0\)</span>. The category <span class="math" data-tex="\(\mathsf K\)">\(\mathsf K\)</span> already has some useful biproducts. For fixed <span class="math" data-tex="\(Y\)">\(Y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(X\oplus X&#x27;,Y)
+\simeq (X,Y)\oplus(X&#x27;,Y).
+\tag{2.3}
+\]">\[
+(X\oplus X&#x27;,Y)
+\simeq (X,Y)\oplus(X&#x27;,Y).
+\tag{2.3}
+\]</span>
+<p>The structure maps are the input inclusions and projections tensored with <span class="math" data-tex="\(1_Y\)">\(1_Y\)</span>. Their biproduct identities follow from the input identities and linearity in the first tensor factor. The analogous assertion holds with <span class="math" data-tex="\(X\)">\(X\)</span> fixed. The object <span class="math" data-tex="\((0,Y)\)">\((0,Y)\)</span>, and similarly <span class="math" data-tex="\((X,0)\)">\((X,0)\)</span>, has zero identity and is zero. Biproducing arbitrary pairs may require further objects.</p>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+\mathsf T(\mathsf C,\mathsf D)
+=\operatorname{Mat}(\mathsf K(\mathsf C,\mathsf D)).
+\tag{2.4}
+\]">\[
+\mathsf T(\mathsf C,\mathsf D)
+=\operatorname{Mat}(\mathsf K(\mathsf C,\mathsf D)).
+\tag{2.4}
+\]</span>
+<p>Its objects are finite lists of pairs, including the empty list. A map is a matrix of entries from (2.1), with target rows and source columns. Compose by matrix multiplication using (2.2); add and multiply by scalars entrywise. Finite expansion proves that composition is bilinear. The empty list is zero and concatenation is a biproduct, as in the matrix construction in <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Preadditive/Mat.html">Mathlib, Matrix categories</a>. Hence <span class="math" data-tex="\(\mathsf T\)">\(\mathsf T\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>-linear and additive.</p>
+<p>Write <span class="math" data-tex="\(\varphi:\mathsf C\times\mathsf D\to\mathsf T\)">\(\varphi:\mathsf C\times\mathsf D\to\mathsf T\)</span> for the pair functor followed by the singleton embedding. It is bilinear: for either fixed object its map formula is linear, and (2.3) and the zero-object calculation supply the corresponding object sums.</p>
+<h2 id="3-the-universal-property-includes-all-transformations">3. The universal property includes all transformations</h2>
+<p><strong>Theorem 3.1.</strong> Restriction along <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> gives an equivalence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Lin}_k(\mathsf T(\mathsf C,\mathsf D),\mathsf A)\\
+\simeq\operatorname{Bil}_k(\mathsf C,\mathsf D;\mathsf A).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+\operatorname{Lin}_k(\mathsf T(\mathsf C,\mathsf D),\mathsf A)\\
+\simeq\operatorname{Bil}_k(\mathsf C,\mathsf D;\mathsf A).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>On both sides the arrows are all natural transformations. The right side is the full subcategory of ordinary functors consisting of bilinear functors.</p>
+<p><strong>Proof.</strong> Given a bilinear <span class="math" data-tex="\(F\)">\(F\)</span>, (1.2) gives a unique linear map on each tensor Hom module, characterized by</p>
+<span class="math math-display" data-tex="\[
+\widehat F(f\otimes g)=F(f,g).
+\tag{3.2}
+\]">\[
+\widehat F(f\otimes g)=F(f,g).
+\tag{3.2}
+\]</span>
+<p>It has the same object values as <span class="math" data-tex="\(F\)">\(F\)</span>. Formula (2.2) and the functor law for <span class="math" data-tex="\(F\)">\(F\)</span> prove the composition law on pure tensors; bilinearity proves it on their finite sums. Identities are preserved too. Thus <span class="math" data-tex="\(\widehat F:\mathsf K\to\mathsf A\)">\(\widehat F:\mathsf K\to\mathsf A\)</span> is a linear functor.</p>
+<p>Choose finite biproducts in <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span>. Extend <span class="math" data-tex="\(\widehat F\)">\(\widehat F\)</span> to lists by taking these biproducts, and to matrices by applying (3.2) to their entries. Explicitly, if <span class="math" data-tex="\(a=(a_{ri})\)">\(a=(a_{ri})\)</span>, the output is</p>
+<span class="math math-display" data-tex="\[
+G(a)=\sum_{r,i}\iota_r\widehat F(a_{ri})\pi_i.
+\tag{3.3}
+\]">\[
+G(a)=\sum_{r,i}\iota_r\widehat F(a_{ri})\pi_i.
+\tag{3.3}
+\]</span>
+<p>Biproduct identities collapse the composite of two such sums to the required matrix product. They also give identity preservation, including the empty list. Formula (3.3) is linear in <span class="math" data-tex="\(a\)">\(a\)</span>. This constructs an extension with a specified comparison <span class="math" data-tex="\(G\varphi\simeq F\)">\(G\varphi\simeq F\)</span>.</p>
+<p>For a transformation <span class="math" data-tex="\(\alpha:F\to F&#x27;\)">\(\alpha:F\to F&#x27;\)</span>, keep its components on pairs. Its naturality equation holds for <span class="math" data-tex="\(f\otimes g\)">\(f\otimes g\)</span>, and hence for every linear combination of pure tensors. This gives a unique transformation on <span class="math" data-tex="\(\mathsf K\)">\(\mathsf K\)</span>.</p>
+<p>If <span class="math" data-tex="\(L,M:\mathsf T\to\mathsf A\)">\(L,M:\mathsf T\to\mathsf A\)</span> are linear and a transformation on their singleton restrictions is given, its extension on a list <span class="math" data-tex="\(P=(P_i)\)">\(P=(P_i)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\alpha_P=\sum_i M(i_i)\alpha_{P_i}L(p_i).
+\tag{3.4}
+\]">\[
+\alpha_P=\sum_i M(i_i)\alpha_{P_i}L(p_i).
+\tag{3.4}
+\]</span>
+<p>The empty component is the unique map between zero objects. For a matrix <span class="math" data-tex="\(a:P\to Q\)">\(a:P\to Q\)</span>, each entry of <span class="math" data-tex="\(\alpha_QL(a)=M(a)\alpha_P\)">\(\alpha_QL(a)=M(a)\alpha_P\)</span> is the given naturality equation for the corresponding map in <span class="math" data-tex="\(\mathsf K\)">\(\mathsf K\)</span>. Since the images of inclusions and projections are biproduct maps, equality of these entries proves naturality. Conversely, naturality for the singleton inclusions forces (3.4). Thus restriction is full and faithful, and the constructed extensions prove essential surjectivity. This proves (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, two extensions with specified comparisons to <span class="math" data-tex="\(F\)">\(F\)</span> have exactly one isomorphism respecting those comparisons: extend the isomorphism on their restrictions, then extend its inverse. Without the compatibility requirement an extension can have nontrivial automorphisms; the preceding finite-sum lesson gives an explicit example.</p>
+<h2 id="4-a-full-presheaf-category-of-underlying-sets">4. A full presheaf category of underlying sets</h2>
+<p>For a pair <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P_{X,Y}(U,V)\\
+=\operatorname{Hom}_{\mathsf C}(U,X)
+\otimes_k\operatorname{Hom}_{\mathsf D}(V,Y).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+P_{X,Y}(U,V)\\
+=\operatorname{Hom}_{\mathsf C}(U,X)
+\otimes_k\operatorname{Hom}_{\mathsf D}(V,Y).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>Restriction along <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> sends <span class="math" data-tex="\(f\otimes g\)">\(f\otimes g\)</span> to <span class="math" data-tex="\(fu\otimes gv\)">\(fu\otimes gv\)</span>. These are module-valued presheaves, linear separately in the two contravariant variables. We can forget their module structures and regard them as set-valued presheaves. Finite products of them are still separately linear after restoring the pointwise module structures.</p>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(A,B\)">\(A,B\)</span> be module-valued presheaves on <span class="math" data-tex="\(\mathsf C\times\mathsf D\)">\(\mathsf C\times\mathsf D\)</span>, separately linear in both variables. Every natural transformation of their underlying sets has linear components.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(V\)">\(V\)</span>. For an object <span class="math" data-tex="\(U\)">\(U\)</span>, the two input inclusions give identifications</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(U\oplus U,V)\simeq A(U,V)^2,\\
+B(U\oplus U,V)\simeq B(U,V)^2.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+A(U\oplus U,V)\simeq A(U,V)^2,\\
+B(U\oplus U,V)\simeq B(U,V)^2.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>Naturality for those inclusions says that the component at <span class="math" data-tex="\((U\oplus U,V)\)">\((U\oplus U,V)\)</span> acts on the two coordinates by the component <span class="math" data-tex="\(\theta_{U,V}\)">\(\theta_{U,V}\)</span>. Restriction along the diagonal <span class="math" data-tex="\(U\to U\oplus U\)">\(U\to U\oplus U\)</span> adds the two coordinates: this follows from linearity and the biproduct identities. Its naturality equation therefore gives</p>
+<span class="math math-display" data-tex="\[
+\theta_{U,V}(a+b)
+=\theta_{U,V}(a)+\theta_{U,V}(b).
+\tag{4.3}
+\]">\[
+\theta_{U,V}(a+b)
+=\theta_{U,V}(a)+\theta_{U,V}(b).
+\tag{4.3}
+\]</span>
+<p>The component at <span class="math" data-tex="\((0,V)\)">\((0,V)\)</span> is a map of singleton sets. Naturality along <span class="math" data-tex="\(U\to0\)">\(U\to0\)</span> shows that <span class="math" data-tex="\(\theta_{U,V}(0)=0\)">\(\theta_{U,V}(0)=0\)</span>. Restriction along <span class="math" data-tex="\(r1_U\)">\(r1_U\)</span> multiplies elements by <span class="math" data-tex="\(r\)">\(r\)</span>; naturality gives preservation of every scalar. Hence every component is linear. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2.</strong> For such an <span class="math" data-tex="\(A\)">\(A\)</span>, evaluation on <span class="math" data-tex="\(1_X\otimes1_Y\)">\(1_X\otimes1_Y\)</span> gives a linear isomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Nat}(P_{X,Y},A)\simeq A(X,Y).
+\tag{4.4}
+\]">\[
+\operatorname{Nat}(P_{X,Y},A)\simeq A(X,Y).
+\tag{4.4}
+\]</span>
+<p>Here natural transformations may initially be interpreted as transformations of sets.</p>
+<p><strong>Proof.</strong> Lemma 4.1 makes their components linear. For <span class="math" data-tex="\(a\in A(X,Y)\)">\(a\in A(X,Y)\)</span>, prescribe</p>
+<span class="math math-display" data-tex="\[
+\theta_{U,V}(f\otimes g)=A(f,g)(a).
+\tag{4.5}
+\]">\[
+\theta_{U,V}(f\otimes g)=A(f,g)(a).
+\tag{4.5}
+\]</span>
+<p>The right side is bilinear in <span class="math" data-tex="\(f,g\)">\(f,g\)</span>: factor the restriction into its two variables and use their separate linearity. The tensor universal property thus gives a linear component. The functor law for <span class="math" data-tex="\(A\)">\(A\)</span> proves restriction naturality on pure tensors, hence on every element. Evaluation on the identity tensor returns <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>Conversely, naturality with <span class="math" data-tex="\((f,g)\)">\((f,g)\)</span> forces (4.5) from the identity tensor, and linearity forces its value on every finite sum of pure tensors. The constructions are inverse and linear. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular the group of all transformations between two generators is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}(P_{X,Y},P_{X&#x27;,Y&#x27;})\\
+\simeq\operatorname{Hom}_{\mathsf C}(X,X&#x27;)\\
+\otimes_k\operatorname{Hom}_{\mathsf D}(Y,Y&#x27;).
+\end{gathered}
+\tag{4.6}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}(P_{X,Y},P_{X&#x27;,Y&#x27;})\\
+\simeq\operatorname{Hom}_{\mathsf C}(X,X&#x27;)\\
+\otimes_k\operatorname{Hom}_{\mathsf D}(Y,Y&#x27;).
+\end{gathered}
+\tag{4.6}
+\]</span>
+<p>Formula (4.5) verifies that composition corresponds to (2.2).</p>
+<p>Let <span class="math" data-tex="\(\mathsf C\otimes_k\mathsf D\)">\(\mathsf C\otimes_k\mathsf D\)</span> be the full subcategory of set-valued presheaves consisting of finite products of the <span class="math" data-tex="\(P_{X,Y}\)">\(P_{X,Y}\)</span> and their isomorphic copies. The empty product is the singleton presheaf, underlying the zero module presheaf.</p>
+<p><strong>Theorem 4.3.</strong> This full category is <span class="math" data-tex="\(k\)">\(k\)</span>-linear and additive, and</p>
+<span class="math math-display" data-tex="\[
+\mathsf C\otimes_k\mathsf D
+\simeq\mathsf T(\mathsf C,\mathsf D).
+\tag{4.7}
+\]">\[
+\mathsf C\otimes_k\mathsf D
+\simeq\mathsf T(\mathsf C,\mathsf D).
+\tag{4.7}
+\]</span>
+<p>The functor induced by <span class="math" data-tex="\((X,Y)\mapsto P_{X,Y}\)">\((X,Y)\mapsto P_{X,Y}\)</span> is bilinear. It has the universal property (3.1).</p>
+<p><strong>Proof.</strong> Lemma 4.1 makes every map between displayed finite products linear. Its pointwise addition and scalar multiplication therefore define the linear Hom structures in the full category of sets. Finite products of modules are also finite sums; concatenation and the usual injections and projections give biproducts.</p>
+<p>For an isomorphic copy, transport its module presheaf structure along an isomorphism from a displayed product. This structure is independent of that choice: two choices differ by a natural isomorphism between displayed products, which is linear by Lemma 4.1. Thus all maps in the replete category have the same linear interpretation, and all its biproducts and zero objects are retained.</p>
+<p>Send a list <span class="math" data-tex="\(((X_i,Y_i))\)">\(((X_i,Y_i))\)</span> to <span class="math" data-tex="\(\bigoplus_iP_{X_i,Y_i}\)">\(\bigoplus_iP_{X_i,Y_i}\)</span>. A map of finite biproducts is determined by its entries. Formula (4.6) identifies them with exactly the tensor entries in (2.1), and (4.5) identifies composition. The functor is fully faithful. It is essentially surjective by the definition of the presheaf category, proving (4.7). Transport (2.3) and Theorem 3.1 across this equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The finite matrix Hom formulas also show that these transformation sets are small in the original Hom universe. We have not required small object collections or small skeletons for <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> and <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span>. Only the ambient presheaf universe is enlarged.</p>
+<h2 id="5-an-ordinary-extension-is-already-linear">5. An ordinary extension is already linear</h2>
+<p><strong>Theorem 5.1.</strong> Suppose <span class="math" data-tex="\(G:\mathsf T(\mathsf C,\mathsf D)\to\mathsf A\)">\(G:\mathsf T(\mathsf C,\mathsf D)\to\mathsf A\)</span> is an ordinary functor and <span class="math" data-tex="\(G\varphi\)">\(G\varphi\)</span> is bilinear. Then <span class="math" data-tex="\(G\)">\(G\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>-linear. The same assertion holds in the presheaf model (4.7).</p>
+<p><strong>Proof.</strong> First consider its restriction to singleton pairs, that is, to <span class="math" data-tex="\(\mathsf K\)">\(\mathsf K\)</span>. Any zero map between two pairs is the image under <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> of a pair with a zero first arrow, so <span class="math" data-tex="\(G\)">\(G\)</span> sends it to zero. For each fixed <span class="math" data-tex="\(Y\)">\(Y\)</span>, the biproduct maps in (2.3) are pure tensors coming from the first-variable biproduct. Bilinearity of <span class="math" data-tex="\(G\varphi\)">\(G\varphi\)</span> says that their images are genuine biproduct maps in <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span>.</p>
+<p>Take any <span class="math" data-tex="\(a,b:(X,Y)\to(X&#x27;,Y&#x27;)\)">\(a,b:(X,Y)\to(X&#x27;,Y&#x27;)\)</span> in <span class="math" data-tex="\(\mathsf K\)">\(\mathsf K\)</span>. Use first-variable doubled biproducts at both ends. There is a block diagonal map between them with entries <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and off-diagonal entries zero. For example its first block is obtained by inserting and projecting the first-variable factors of each pure tensor occurring in <span class="math" data-tex="\(a\)">\(a\)</span>; the tensor module relations make this independent of its expression. Its composite with the source diagonal and target codiagonal is <span class="math" data-tex="\(a+b\)">\(a+b\)</span>, by the biproduct identities.</p>
+<p>The images of the doubled biproducts are biproducts. The image of the block diagonal map has entries <span class="math" data-tex="\(G(a),G(b)\)">\(G(a),G(b)\)</span> and zero, since <span class="math" data-tex="\(G\)">\(G\)</span> preserves composites and zero on pairs. The images of diagonal and codiagonal are the corresponding canonical maps, since their projection and inclusion equations are preserved. Consequently <span class="math" data-tex="\(G(a+b)=G(a)+G(b)\)">\(G(a+b)=G(a)+G(b)\)</span>.</p>
+<p>For a scalar <span class="math" data-tex="\(r\)">\(r\)</span>, the endomorphism <span class="math" data-tex="\(r1_{(X,Y)}\)">\(r1_{(X,Y)}\)</span> is the pure tensor <span class="math" data-tex="\((r1_X)\otimes1_Y\)">\((r1_X)\otimes1_Y\)</span>. Bilinearity on the restriction gives</p>
+<span class="math math-display" data-tex="\[
+G(r1_{(X,Y)})=r1_{G(X,Y)}.
+\tag{5.1}
+\]">\[
+G(r1_{(X,Y)})=r1_{G(X,Y)}.
+\tag{5.1}
+\]</span>
+<p>Writing <span class="math" data-tex="\(ra\)">\(ra\)</span> as composition with such an endomorphism proves scalar preservation on every map between pairs. Thus <span class="math" data-tex="\(G\)">\(G\)</span> is linear there.</p>
+<p>Now let <span class="math" data-tex="\(P=((X_i,Y_i))_{i=1}^n\)">\(P=((X_i,Y_i))_{i=1}^n\)</span> be any list. Put</p>
+<span class="math math-display" data-tex="\[
+E_P=\left(\bigoplus_iX_i,\bigoplus_iY_i\right).
+\tag{5.2}
+\]">\[
+E_P=\left(\bigoplus_iX_i,\bigoplus_iY_i\right).
+\tag{5.2}
+\]</span>
+<p>This is a single pair, with cross terms as well as matching terms. Define <span class="math" data-tex="\(j_P:P\to E_P\)">\(j_P:P\to E_P\)</span> by the row of entries <span class="math" data-tex="\(i_i^X\otimes i_i^Y\)">\(i_i^X\otimes i_i^Y\)</span>, and <span class="math" data-tex="\(r_P:E_P\to P\)">\(r_P:E_P\to P\)</span> by the column of entries <span class="math" data-tex="\(p_i^X\otimes p_i^Y\)">\(p_i^X\otimes p_i^Y\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+r_Pj_P=1_P.
+\tag{5.3}
+\]">\[
+r_Pj_P=1_P.
+\tag{5.3}
+\]</span>
+<p>Indeed its <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> entry is the tensor of the two Kronecker-delta identities. For the empty list, both sums in (5.2) are zero and the same equality holds. Hence every list is a retract of a pair.</p>
+<p>For maps <span class="math" data-tex="\(a,b:P\to Q\)">\(a,b:P\to Q\)</span>, their lifted maps <span class="math" data-tex="\(j_Qar_P,j_Qbr_P\)">\(j_Qar_P,j_Qbr_P\)</span> are maps between pairs. Their sum is <span class="math" data-tex="\(j_Q(a+b)r_P\)">\(j_Q(a+b)r_P\)</span>, by bilinearity in <span class="math" data-tex="\(\mathsf T\)">\(\mathsf T\)</span>. Linear preservation on pairs, followed by composition with <span class="math" data-tex="\(G(r_Q)\)">\(G(r_Q)\)</span> and <span class="math" data-tex="\(G(j_P)\)">\(G(j_P)\)</span>, gives preservation of addition on <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, using (5.3). The same argument gives preservation of scalars and zero. Thus <span class="math" data-tex="\(G\)">\(G\)</span> is linear on every Hom module. Transport along (4.7) proves the presheaf assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If an extension comes with a natural isomorphism <span class="math" data-tex="\(G\varphi\simeq F\)">\(G\varphi\simeq F\)</span>, bilinearity of <span class="math" data-tex="\(F\)">\(F\)</span> implies bilinearity of <span class="math" data-tex="\(G\varphi\)">\(G\varphi\)</span>: conjugating maps by the components of that isomorphism preserves their linear equations. Therefore the existence and compatible uniqueness in Theorem 3.1 also cover ordinary extensions, with no separate linearity requirement.</p>
+<h2 id="6-opposites-reverse-the-composition">6. Opposites reverse the composition</h2>
+<p><strong>Theorem 6.1.</strong> There is an equivalence of linear additive categories</p>
+<span class="math math-display" data-tex="\[
+\mathsf C^{\mathrm{op}}\otimes_k\mathsf D^{\mathrm{op}}
+\simeq(\mathsf C\otimes_k\mathsf D)^{\mathrm{op}}.
+\tag{6.1}
+\]">\[
+\mathsf C^{\mathrm{op}}\otimes_k\mathsf D^{\mathrm{op}}
+\simeq(\mathsf C\otimes_k\mathsf D)^{\mathrm{op}}.
+\tag{6.1}
+\]</span>
+<p><strong>Proof.</strong> On pairs, keep the objects and send</p>
+<span class="math math-display" data-tex="\[
+f^{\mathrm{op}}\otimes g^{\mathrm{op}}
+\longmapsto(f\otimes g)^{\mathrm{op}}.
+\tag{6.2}
+\]">\[
+f^{\mathrm{op}}\otimes g^{\mathrm{op}}
+\longmapsto(f\otimes g)^{\mathrm{op}}.
+\tag{6.2}
+\]</span>
+<p>The Hom modules on both sides agree, so this is a linear bijection with the same inverse formula. The input opposite categories compose <span class="math" data-tex="\(f,g\)">\(f,g\)</span> in the reversed order, exactly as the target opposite of (2.2) does. Identities are retained.</p>
+<p>For a matrix between lists, transpose its entries and apply (6.2). An entry from the <span class="math" data-tex="\(i\)">\(i\)</span>-th source to the <span class="math" data-tex="\(r\)">\(r\)</span>-th target becomes an entry from the <span class="math" data-tex="\(r\)">\(r\)</span>-th target to the <span class="math" data-tex="\(i\)">\(i\)</span>-th source in the underlying, non-opposite category. Transposition exchanges the two positions in each summand of matrix multiplication, and (6.2) reverses their internal composition. This verifies the functor law, including empty matrices. Applying the construction twice returns the original matrix and objects. Thus it gives an isomorphism between the matrix models; (4.7) gives the stated equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-four-exercises-with-complete-solutions">7. Four exercises with complete solutions</h2>
+<p><strong>Exercise 1 (warm-up: two vector-space inputs).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field and let both input categories consist of finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-spaces. Prove that their tensor category is equivalent to finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-spaces. Identify its Hom comparison using matrix units after choosing bases. Show that the pair functor is not faithful, even for a fixed nonzero one-dimensional object in each variable.</p>
+<p><strong>Solution.</strong> Send the pair <span class="math" data-tex="\((k^m,k^n)\)">\((k^m,k^n)\)</span> to <span class="math" data-tex="\(k^m\otimes_k k^n\)">\(k^m\otimes_k k^n\)</span>, with basis indexed by pairs <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>. On maps, send <span class="math" data-tex="\(f\otimes g\)">\(f\otimes g\)</span> to the usual tensor map. If <span class="math" data-tex="\(E_{ab}:k^m\to k^p\)">\(E_{ab}:k^m\to k^p\)</span> and <span class="math" data-tex="\(E_{cd}:k^n\to k^q\)">\(E_{cd}:k^n\to k^q\)</span> are matrix units, their tensor is sent to the matrix unit</p>
+<span class="math math-display" data-tex="\[
+E_{(a,c),(b,d)}:k^{mn}\to k^{pq}.
+\tag{7.1}
+\]">\[
+E_{(a,c),(b,d)}:k^{mn}\to k^{pq}.
+\tag{7.1}
+\]</span>
+<p>The tensor products of the two matrix-unit bases form a basis of the tensor Hom space. Formula (7.1) maps that basis bijectively to the output matrix-unit basis. It therefore proves full faithfulness on pairs. Formula (2.2) matches composition of these matrix units and their sums. Extending to lists by direct sums preserves full faithfulness because maps between finite sums are matrices of these entries.</p>
+<p>Every finite-dimensional space is isomorphic to <span class="math" data-tex="\(k^m\)">\(k^m\)</span>, the image of <span class="math" data-tex="\((k^m,k)\)">\((k^m,k)\)</span>; zero is covered by <span class="math" data-tex="\(m=0\)">\(m=0\)</span>. Thus the functor is essentially surjective and is an equivalence. Arbitrary chosen bases merely give the corresponding canonical object comparisons to the usual tensor spaces.</p>
+<p>On <span class="math" data-tex="\((k,k)\)">\((k,k)\)</span>, the distinct pairs of arrows <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> both map to zero. Since <span class="math" data-tex="\(1\ne0\)">\(1\ne0\)</span> over a field, this proves that the ordinary pair functor is not faithful. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 2 (intermediate: coprime inputs disappear).</strong> Fix integers <span class="math" data-tex="\(p,q\geq2\)">\(p,q\geq2\)</span>. Take the input categories of finite free right modules over <span class="math" data-tex="\(R=\mathbb Z/p\mathbb Z\)">\(R=\mathbb Z/p\mathbb Z\)</span> and <span class="math" data-tex="\(S=\mathbb Z/q\mathbb Z\)">\(S=\mathbb Z/q\mathbb Z\)</span>, as <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-linear categories. Prove that their tensor category is equivalent to finite free modules over <span class="math" data-tex="\(\mathbb Z/d\mathbb Z\)">\(\mathbb Z/d\mathbb Z\)</span>, where <span class="math" data-tex="\(d=\gcd(p,q)\)">\(d=\gcd(p,q)\)</span>. Explain the case <span class="math" data-tex="\(p=2,q=3\)">\(p=2,q=3\)</span>, including its object identities.</p>
+<p><strong>Solution.</strong> The element <span class="math" data-tex="\(1\otimes1\)">\(1\otimes1\)</span> generates <span class="math" data-tex="\(R\otimes_{\mathbb Z}S\)">\(R\otimes_{\mathbb Z}S\)</span>. Both <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> kill it, so Bezout's identity shows that <span class="math" data-tex="\(d\)">\(d\)</span> kills it. The bilinear map</p>
+<span class="math math-display" data-tex="\[
+(\bar a,\bar b)\longmapsto\overline{ab}
+\quad\text{in }\mathbb Z/d\mathbb Z
+\tag{7.2}
+\]">\[
+(\bar a,\bar b)\longmapsto\overline{ab}
+\quad\text{in }\mathbb Z/d\mathbb Z
+\tag{7.2}
+\]</span>
+<p>is well-defined because <span class="math" data-tex="\(d\)">\(d\)</span> divides both moduli. It gives an inverse to the map sending <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(d\)">\(d\)</span> to <span class="math" data-tex="\(1\otimes1\)">\(1\otimes1\)</span>: the composites fix this generator and every elementary tensor, respectively. They also preserve multiplication of pure tensors. Thus the tensor ring is <span class="math" data-tex="\(\mathbb Z/d\mathbb Z\)">\(\mathbb Z/d\mathbb Z\)</span>.</p>
+<p>A map <span class="math" data-tex="\(R^m\to R^u\)">\(R^m\to R^u\)</span> is a <span class="math" data-tex="\(u\)">\(u\)</span>-by-<span class="math" data-tex="\(m\)">\(m\)</span> matrix; similarly for <span class="math" data-tex="\(S^n\to S^v\)">\(S^n\to S^v\)</span>. Finite distributivity gives a bijection from their tensor Hom module to matrices with rows <span class="math" data-tex="\((a,c)\)">\((a,c)\)</span>, columns <span class="math" data-tex="\((b,e)\)">\((b,e)\)</span>, and coefficients in <span class="math" data-tex="\(R\otimes S\)">\(R\otimes S\)</span>. It sends an elementary matrix with entry <span class="math" data-tex="\(r\)">\(r\)</span>, tensored with one with entry <span class="math" data-tex="\(s\)">\(s\)</span>, to the corresponding single matrix entry <span class="math" data-tex="\(r\otimes s\)">\(r\otimes s\)</span>. Multiplication of those entries obeys (2.2), so the pair <span class="math" data-tex="\((R^m,S^n)\)">\((R^m,S^n)\)</span> is sent fully faithfully to the free tensor-ring module of rank <span class="math" data-tex="\(mn\)">\(mn\)</span>. Taking finite sums extends this to a fully faithful functor on lists. All free ranks occur among <span class="math" data-tex="\((R^m,S)\)">\((R^m,S)\)</span>, proving essential surjectivity.</p>
+<p>For <span class="math" data-tex="\(p=2,q=3\)">\(p=2,q=3\)</span>, <span class="math" data-tex="\(d=1\)">\(d=1\)</span> and the tensor ring is the zero ring. Every Hom module in the pair and matrix category is zero, so every object's identity is its zero endomorphism. Every object is therefore zero. The tensor category is equivalent to the category with one zero object, although each input category has nonzero objects. This uses the actual identity tensor; no faithfulness of the pair functor was assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 3 (hard: transpose needs an opposite coefficient ring).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field, <span class="math" data-tex="\(R=M_2(k)\)">\(R=M_2(k)\)</span>, and <span class="math" data-tex="\(S=k[t]/(t^2)\)">\(S=k[t]/(t^2)\)</span>. For their finite free right-module categories, identify the tensor category with finite free right modules over <span class="math" data-tex="\(A=R\otimes_kS\)">\(A=R\otimes_kS\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+a=E_{12}\otimes1,\qquad b=E_{21}\otimes t.
+\tag{7.3}
+\]">\[
+a=E_{12}\otimes1,\qquad b=E_{21}\otimes t.
+\tag{7.3}
+\]</span>
+<p>Compute <span class="math" data-tex="\(ab,ba\)">\(ab,ba\)</span>, then the two products of</p>
+<span class="math math-display" data-tex="\[
+U=\begin{pmatrix}a&amp;1\\0&amp;b\end{pmatrix},
+\qquad V=\begin{pmatrix}b&amp;0\\1&amp;a\end{pmatrix}.
+\tag{7.4}
+\]">\[
+U=\begin{pmatrix}a&amp;1\\0&amp;b\end{pmatrix},
+\qquad V=\begin{pmatrix}b&amp;0\\1&amp;a\end{pmatrix}.
+\tag{7.4}
+\]</span>
+<p>Use them to explain why simply transposing matrices over the same coefficient ring does not prove Theorem 6.1. Give the correct formula over <span class="math" data-tex="\(A^{\mathrm{op}}\)">\(A^{\mathrm{op}}\)</span>.</p>
+<p><strong>Solution.</strong> The finite matrix-entry argument in Exercise 2 works for these noncommutative algebras too: matrices act on right-module column vectors by left multiplication of their coefficients. Its Hom comparison is entrywise tensor distributivity, and composition multiplies coefficients in the given order. Every free rank occurs with the second input <span class="math" data-tex="\(S\)">\(S\)</span>, so it gives the asserted equivalence.</p>
+<p>Matrix-unit multiplication gives <span class="math" data-tex="\(ab=E_{11}\otimes t\)">\(ab=E_{11}\otimes t\)</span> and <span class="math" data-tex="\(ba=E_{22}\otimes t\)">\(ba=E_{22}\otimes t\)</span>. They differ: the coefficient <span class="math" data-tex="\(t\)">\(t\)</span> is nonzero in <span class="math" data-tex="\(S\)">\(S\)</span>, and its two indicated matrix positions differ. Direct multiplication yields</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+VU=\begin{pmatrix}ba&amp;b\\a&amp;1+ab\end{pmatrix},\\
+UV=\begin{pmatrix}1+ab&amp;a\\b&amp;ba\end{pmatrix}.
+\end{gathered}
+\tag{7.5}
+\]">\[
+\begin{gathered}
+VU=\begin{pmatrix}ba&amp;b\\a&amp;1+ab\end{pmatrix},\\
+UV=\begin{pmatrix}1+ab&amp;a\\b&amp;ba\end{pmatrix}.
+\end{gathered}
+\tag{7.5}
+\]</span>
+<p>If <span class="math" data-tex="\(U^T,V^T\)">\(U^T,V^T\)</span> are interpreted as matrices over <span class="math" data-tex="\(A\)">\(A\)</span>, the top-left entry of <span class="math" data-tex="\(U^TV^T\)">\(U^TV^T\)</span> is <span class="math" data-tex="\(ab\)">\(ab\)</span>, whereas that of <span class="math" data-tex="\((VU)^T\)">\((VU)^T\)</span> is <span class="math" data-tex="\(ba\)">\(ba\)</span>. They are unequal, so the usual commutative transpose identity fails.</p>
+<p>Define <span class="math" data-tex="\(U^\dagger\)">\(U^\dagger\)</span> to have entry <span class="math" data-tex="\((U_{ji})^{\mathrm{op}}\)">\((U_{ji})^{\mathrm{op}}\)</span> in position <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>, over the opposite ring. Since</p>
+<span class="math math-display" data-tex="\[
+x^{\mathrm{op}}y^{\mathrm{op}}=(yx)^{\mathrm{op}},
+\tag{7.6}
+\]">\[
+x^{\mathrm{op}}y^{\mathrm{op}}=(yx)^{\mathrm{op}},
+\tag{7.6}
+\]</span>
+<p>matrix multiplication gives <span class="math" data-tex="\((VU)^\dagger=U^\dagger V^\dagger\)">\((VU)^\dagger=U^\dagger V^\dagger\)</span>, entry by entry and with sums preserved. Further, the map <span class="math" data-tex="\(r^{\mathrm{op}}\otimes s^{\mathrm{op}}\mapsto(r\otimes s)^{\mathrm{op}}\)">\(r^{\mathrm{op}}\otimes s^{\mathrm{op}}\mapsto(r\otimes s)^{\mathrm{op}}\)</span> identifies <span class="math" data-tex="\(R^{\mathrm{op}}\otimes S^{\mathrm{op}}\)">\(R^{\mathrm{op}}\otimes S^{\mathrm{op}}\)</span> with <span class="math" data-tex="\(A^{\mathrm{op}}\)">\(A^{\mathrm{op}}\)</span>: its multiplicative law is (7.6) in each factor. This is precisely the simultaneous reversal and transpose used in Theorem 6.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 4 (advanced: tensor associativity and its pentagon).</strong> For three <span class="math" data-tex="\(k\)">\(k\)</span>-linear additive categories <span class="math" data-tex="\(\mathsf C,\mathsf D,\mathsf E\)">\(\mathsf C,\mathsf D,\mathsf E\)</span>, construct an equivalence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\mathsf C\otimes_k\mathsf D)\otimes_k\mathsf E\\
+\simeq\mathsf C\otimes_k(\mathsf D\otimes_k\mathsf E)
+\end{gathered}
+\tag{7.7}
+\]">\[
+\begin{gathered}
+(\mathsf C\otimes_k\mathsf D)\otimes_k\mathsf E\\
+\simeq\mathsf C\otimes_k(\mathsf D\otimes_k\mathsf E)
+\end{gathered}
+\tag{7.7}
+\]</span>
+<p>taking both generating triples to the same triple. Show that the induced four-factor comparisons satisfy the pentagon with their specified generating comparisons. Verify the assertion on arbitrary finite matrices, rather than just on objects.</p>
+<p><strong>Solution.</strong> We first derive the needed multilinear property from the complete binary tensor universal property, rather than using the omitted proof of the referenced multilinear lemma. Let <span class="math" data-tex="\(M,N,P,Z\)">\(M,N,P,Z\)</span> be <span class="math" data-tex="\(k\)">\(k\)</span>-modules and let <span class="math" data-tex="\(b:M\times N\times P\to Z\)">\(b:M\times N\times P\to Z\)</span> be linear in each variable. For each <span class="math" data-tex="\(p\)">\(p\)</span>, the binary property gives a unique linear map <span class="math" data-tex="\(b_p:M\otimes_kN\to Z\)">\(b_p:M\otimes_kN\to Z\)</span> with <span class="math" data-tex="\(b_p(m\otimes n)=b(m,n,p)\)">\(b_p(m\otimes n)=b(m,n,p)\)</span>. For <span class="math" data-tex="\(p,p&#x27;\in P\)">\(p,p&#x27;\in P\)</span> and <span class="math" data-tex="\(r\in k\)">\(r\in k\)</span>, the maps <span class="math" data-tex="\(b_{p+p&#x27;}\)">\(b_{p+p&#x27;}\)</span> and <span class="math" data-tex="\(b_p+b_{p&#x27;}\)">\(b_p+b_{p&#x27;}\)</span>, and the maps <span class="math" data-tex="\(b_{rp}\)">\(b_{rp}\)</span> and <span class="math" data-tex="\(rb_p\)">\(rb_p\)</span>, agree on every <span class="math" data-tex="\(m\otimes n\)">\(m\otimes n\)</span>. These pure tensors generate <span class="math" data-tex="\(M\otimes_kN\)">\(M\otimes_kN\)</span>, so those maps agree everywhere. Thus <span class="math" data-tex="\((w,p)\mapsto b_p(w)\)">\((w,p)\mapsto b_p(w)\)</span> is bilinear and gives a unique linear map</p>
+<span class="math math-display" data-tex="\[
+(M\otimes_kN)\otimes_kP\longrightarrow Z.
+\tag{7.9}
+\]">\[
+(M\otimes_kN)\otimes_kP\longrightarrow Z.
+\tag{7.9}
+\]</span>
+<p>Conversely, evaluating any map (7.9) on <span class="math" data-tex="\((m\otimes n)\otimes p\)">\((m\otimes n)\otimes p\)</span> gives a trilinear map. Every outer pure tensor <span class="math" data-tex="\(w\otimes p\)">\(w\otimes p\)</span> is a finite sum of such triple tensors, since <span class="math" data-tex="\(w\)">\(w\)</span> is a finite sum of inner pure tensors. Consequently those triple tensors generate the iterated tensor module, and the two constructions are inverse. Applying the same argument with <span class="math" data-tex="\(m\)">\(m\)</span> fixed first proves the identical trilinear universal property for <span class="math" data-tex="\(M\otimes_k(N\otimes_kP)\)">\(M\otimes_k(N\otimes_kP)\)</span>. Apply these two properties to the canonical pure-triple maps into the other parenthesization. They give linear comparisons</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(M\otimes_kN)\otimes_kP\\
+\longrightarrow M\otimes_k(N\otimes_kP),\\
+(m\otimes n)\otimes p\\
+\longmapsto m\otimes(n\otimes p)
+\end{gathered}
+\tag{7.10}
+\]">\[
+\begin{gathered}
+(M\otimes_kN)\otimes_kP\\
+\longrightarrow M\otimes_k(N\otimes_kP),\\
+(m\otimes n)\otimes p\\
+\longmapsto m\otimes(n\otimes p)
+\end{gathered}
+\tag{7.10}
+\]</span>
+<p>and the reverse formula. Both composites fix every generating triple, so they are identities. The same fixed-variable construction, repeated one variable at a time, proves that any parenthesized tensor of four modules represents maps linear in all four variables and is generated by its pure quadruples. No field, flatness or nonzero-ring assumption is used.</p>
+<p>Define a linear category <span class="math" data-tex="\(\mathsf K_3\)">\(\mathsf K_3\)</span> of triples, with Hom modules the tensor product of the three input Hom modules, and compose by composing each factor. The just-proved comparison identifies the two parenthesizations of each Hom module. Composition agrees on pure triples and hence on their finite sums. It therefore preserves the specified identity tensors too.</p>
+<p>Work in matrix models. A generating object of the left-hand side has form <span class="math" data-tex="\((P,Z)\)">\((P,Z)\)</span>, where <span class="math" data-tex="\(P=((X_i,Y_i))\)">\(P=((X_i,Y_i))\)</span> is a finite list. Distribute it to the list of triples <span class="math" data-tex="\(((X_i,Y_i,Z))_i\)">\(((X_i,Y_i,Z))_i\)</span>. For two such objects <span class="math" data-tex="\((P,Z),(Q,W)\)">\((P,Z),(Q,W)\)</span>, the Hom module is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\operatorname{Mat}(\mathsf K)}(P,Q)\\
+\otimes_k\operatorname{Hom}_{\mathsf E}(Z,W). 
+\end{gathered}
+\tag{7.8}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\operatorname{Mat}(\mathsf K)}(P,Q)\\
+\otimes_k\operatorname{Hom}_{\mathsf E}(Z,W). 
+\end{gathered}
+\tag{7.8}
+\]</span>
+<p>The first factor is a finite direct sum of its matrix-entry modules. Distributivity identifies (7.8) with a matrix of triple tensor entries. Explicitly, an elementary matrix with entry <span class="math" data-tex="\(f\otimes g\)">\(f\otimes g\)</span>, tensored with <span class="math" data-tex="\(h\)">\(h\)</span>, becomes the elementary matrix with triple entry <span class="math" data-tex="\(f\otimes g\otimes h\)">\(f\otimes g\otimes h\)</span>. These elements generate every Hom module. Multiplying two of them either gives zero from mismatched middle positions or gives the composite triple in the matching position. This is the same on both sides, so the comparison preserves composition and identities. It is a linear bijection on every Hom module.</p>
+<p>Now a general object of the left-hand matrix model is a list of the <span class="math" data-tex="\((P,Z)\)">\((P,Z)\)</span>. Apply this distribution to each term and concatenate. Its maps are block matrices; the just-verified entry comparisons identify each block bijectively and preserve block multiplication. Thus we obtain a fully faithful functor to <span class="math" data-tex="\(\operatorname{Mat}(\mathsf K_3)\)">\(\operatorname{Mat}(\mathsf K_3)\)</span>. Each triple is the image of a singleton <span class="math" data-tex="\(P\)">\(P\)</span>, and each finite list of triples is the image of a list of such generators. The functor is essentially surjective. Empty lists give zero objects and empty matrix blocks. The right-hand model gives the same fully faithful, essentially surjective functor by distributing in the other variable. Composing their equivalences proves (7.7).</p>
+<p>For four factors, use the category of quadruples and its matrix envelope as the common model. All associativity comparisons send every parenthesized pure tensor to the same tensor of four arrows. At the object level they distribute to the same quadruple lists, with the usual order-preserving reindexing of nested finite lists. At the map level the two routes around the pentagon agree on each elementary matrix carrying a pure quadruple, and hence on all matrices by linearity. The object reindexing maps are biproduct maps; composing them gives the same map since their restrictions to each summand agree. These equalities give a natural pentagon comparison, compatible with the specified generating triples and quadruples. Transport through the presheaf equivalences (4.7) retains this specified coherence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project. <a href="https://stacks.math.columbia.edu/tag/00CX">Module tensor universal property</a>, <a href="https://stacks.math.columbia.edu/tag/00CY">finite distributivity</a>, <a href="https://stacks.math.columbia.edu/tag/00CZ">multilinear tensor products</a>, and <a href="https://stacks.math.columbia.edu/tag/00D0">tensor associativity</a>. We use the module interfaces; the category constructions and presheaf arguments are given above.</li>
+<li>The Mathlib Community. <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Linear/Basic.html">Linear categories</a> and <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Preadditive/Mat.html">matrix categories</a>.</li>
+</ul>
+</main></body></html>

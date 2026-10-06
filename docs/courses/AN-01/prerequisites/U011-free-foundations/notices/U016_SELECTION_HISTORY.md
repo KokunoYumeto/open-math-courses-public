@@ -1,0 +1,7 @@
+# The gamma integral and its entire reciprocal — selection history
+
+This is a modified selection from **Causal kernels, initial data, and short-time geometry**, AN03-U021, in **Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft**. The original programme drafting task is the AN-03 course-writing task. Earlier modifications were made by that task and OpenAI Codex; the original publisher is the AN-03 local course project. Copyright © 2026 AN-03 course project contributors.
+
+GPT-6 Astra (OpenAI), Ultra reasoning effort, prepared this selection for the AN-01 local course project on 4 October 2026. Original lines 51–89, the entire scalar gamma proof with formulas W4a–W4e, are preserved verbatim after newline normalization. All other original mathematical sections are omitted. New preliminary arguments prove complex-power conventions, the local logarithm, power/log envelopes and dominated parameter differentiation. New closing explanations prove the compact-uniform product limit and its meromorphic interpretation. A new title, local proof links, source comparisons and this selection history identify the scope. The original notices accompany it.
+
+This independently written programme selection is dedicated under CC0 1.0 Universal, to the extent rights are held. See [CC0 dedication](https://creativecommons.org/publicdomain/zero/1.0/), [title page](TITLE_PAGE.md), [history](HISTORY.md) and [original rights](U016_ORIGINAL_RIGHTS.md).

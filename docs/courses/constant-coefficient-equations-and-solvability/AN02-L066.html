@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Supported smooth approximation</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="supported-smooth-approximation">Supported smooth approximation</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Local supported solutions can be corrected on overlapping regions only if homogeneous differences can be approximated on the smaller region. We prove the needed density theorem using the compact local fundamental solution already constructed. The geometry concerns the positive-time part of compact distributions under the transposed operator. Compact containment at the conclusion is essential: it provides a cutoff strictly inside the smaller region, including every limit point on the time boundary.</p>
+<p>Read <a href="AN02-L065.html">Local supported solutions with the exact symbol gain</a>, <a href="AN02-L042.html">Continuous functionals, test families and compact limits</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz Fourier inversion; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies finite coordinates, scalar calculus and compact cutoffs; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the norm, extension and integration estimates. <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and smooth parameters</a> and <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a> supply parameter pairings and compact convolution.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs use the linked prerequisite lessons and any stated planned theorem.</p>
+<h2 id="the-support-condition-and-the-topology">The support condition and the topology</h2>
+<p>Let <span class="math" data-tex="\(X_1\subset X_2\subset\mathbb R^n\)">\(X_1\subset X_2\subset\mathbb R^n\)</span> be bounded open sets, and let <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> satisfy the analytic-root hypothesis(<a href="AN02-L065.html">equation 1 in Local supported solutions with the exact symbol gain</a>). Write <span class="math" data-tex="\(H=\{t\ge0\}\)">\(H=\{t\ge0\}\)</span>, <span class="math" data-tex="\(H^\circ=\{t&gt;0\}\)">\(H^\circ=\{t&gt;0\}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal N_j\\
+=\{u\in C^\infty(X_j):
+       P(D)u\\
+=0,\ u\\
+=0\text{ on }X_j\cap\{t&lt;0\}\}.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+\mathcal N_j\\
+=\{u\in C^\infty(X_j):
+       P(D)u\\
+=0,\ u\\
+=0\text{ on }X_j\cap\{t&lt;0\}\}.
+\end{gathered}
+\tag{1}
+\]</span>
+The support condition on <span class="math" data-tex="\(u\)">\(u\)</span> is relative to <span class="math" data-tex="\(X_j\)">\(X_j\)</span>; no compact support of <span class="math" data-tex="\(u\)">\(u\)</span> is required. Give <span class="math" data-tex="\(\mathcal N_j\)">\(\mathcal N_j\)</span> its topology inherited from <span class="math" data-tex="\(C^\infty(X_j)\)">\(C^\infty(X_j)\)</span>, namely uniform convergence of every derivative on every compact subset. Restrictions from <span class="math" data-tex="\(\mathcal N_2\)">\(\mathcal N_2\)</span> lie in <span class="math" data-tex="\(\mathcal N_1\)">\(\mathcal N_1\)</span>.</p>
+<p>For any set <span class="math" data-tex="\(A\)">\(A\)</span>, write <span class="math" data-tex="\(A\Subset X_1\)">\(A\Subset X_1\)</span> if its closure is a compact subset of <span class="math" data-tex="\(X_1\)">\(X_1\)</span>. Assume the following statement about all global compactly supported distributions:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mu\in\mathcal E&#x27;(\mathbb R^n),\qquad
+                 \\
+H^\circ\cap\operatorname{supp}\mu
+                                      \subset\overline{X_2},\\
+H^\circ\cap\operatorname{supp}P(-D)\mu\Subset X_1
+       \quad\\
+\Longrightarrow\quad
+               \\
+H^\circ\cap\operatorname{supp}\mu\Subset X_1.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+\mu\in\mathcal E&#x27;(\mathbb R^n),\qquad
+                 \\
+H^\circ\cap\operatorname{supp}\mu
+                                      \subset\overline{X_2},\\
+H^\circ\cap\operatorname{supp}P(-D)\mu\Subset X_1
+       \quad\\
+\Longrightarrow\quad
+               \\
+H^\circ\cap\operatorname{supp}\mu\Subset X_1.
+\end{gathered}
+\tag{2}
+\]</span>
+The closed set <span class="math" data-tex="\(\overline{X_2}\)">\(\overline{X_2}\)</span> in the first line and the two compact-containment conditions in the second line are retained exactly. The positive-time portion need not be a closed set before its closure is taken.</p>
+<p><strong>Theorem.</strong> Under(2), the restrictions to <span class="math" data-tex="\(X_1\)">\(X_1\)</span> of <span class="math" data-tex="\(\mathcal N_2\)">\(\mathcal N_2\)</span> are dense in <span class="math" data-tex="\(\mathcal N_1\)">\(\mathcal N_1\)</span>. Consequently a smooth supported homogeneous solution on <span class="math" data-tex="\(X_1\)">\(X_1\)</span> can be approximated by such solutions on <span class="math" data-tex="\(X_2\)">\(X_2\)</span>, simultaneously in any finite collection of derivative or weighted cutoff seminorms on <span class="math" data-tex="\(X_1\)">\(X_1\)</span>.</p>
+<p>If <span class="math" data-tex="\(X_1=\varnothing\)">\(X_1=\varnothing\)</span>, its smooth space is the zero space and the assertion is immediate. We henceforth assume <span class="math" data-tex="\(X_1\ne\varnothing\)">\(X_1\ne\varnothing\)</span>, so <span class="math" data-tex="\(X_2\ne\varnothing\)">\(X_2\ne\varnothing\)</span>.</p>
+<h2 id="a-separating-functional-has-compact-distribution-support">A separating functional has compact distribution support</h2>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be a continuous complex-linear functional on <span class="math" data-tex="\(\mathcal N_1\)">\(\mathcal N_1\)</span> which annihilates all the indicated restrictions. Continuity bounds it by a finite list of smooth seminorms. Increasing their derivative order and taking the finite union of their compact sets gives a compact <span class="math" data-tex="\(K\subset X_1\)">\(K\subset X_1\)</span>, an integer <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(C\)">\(C\)</span> with
+<span class="math math-display" data-tex="\[
+ |L(u)|\le C\max_{|\alpha|\le m}\sup_K|\partial^\alpha u|.
+ \tag{3}
+\]">\[
+ |L(u)|\le C\max_{|\alpha|\le m}\sup_K|\partial^\alpha u|.
+ \tag{3}
+\]</span>
+Seminorm Hahn–Banach extends it to <span class="math" data-tex="\(L_1\)">\(L_1\)</span> on <span class="math" data-tex="\(C^\infty(X_1)\)">\(C^\infty(X_1)\)</span> with the same bound. Its restriction to global test functions is a distribution <span class="math" data-tex="\(\nu\)">\(\nu\)</span> with support in <span class="math" data-tex="\(K\)">\(K\)</span>: the fixed-stage bound proves distributional continuity, and a test vanishing near <span class="math" data-tex="\(K\)">\(K\)</span> has zero bound.</p>
+<p>To specify its action on every <span class="math" data-tex="\(u\in C^\infty(X_1)\)">\(u\in C^\infty(X_1)\)</span>, choose <span class="math" data-tex="\(\rho\in C_c^\infty(X_1)\)">\(\rho\in C_c^\infty(X_1)\)</span> equal to one near <span class="math" data-tex="\(K\)">\(K\)</span>. The bound kills <span class="math" data-tex="\(L_1((1-\rho)u)\)">\(L_1((1-\rho)u)\)</span>. Extend <span class="math" data-tex="\(\rho u\)">\(\rho u\)</span> smoothly by zero outside <span class="math" data-tex="\(X_1\)">\(X_1\)</span>; then
+<span class="math math-display" data-tex="\[
+               L_1(u)=\nu(\rho u)=:\nu(u).
+ \tag{4}
+\]">\[
+               L_1(u)=\nu(\rho u)=:\nu(u).
+ \tag{4}
+\]</span>
+This notation is independent of the chosen cutoff. It identifies precisely the smooth functional with an element of <span class="math" data-tex="\(\mathcal E&#x27;(X_1)\)">\(\mathcal E&#x27;(X_1)\)</span>; no dual representation theorem is left implicit. In particular <span class="math" data-tex="\(\nu\)">\(\nu\)</span> annihilates the restrictions of <span class="math" data-tex="\(\mathcal N_2\)">\(\mathcal N_2\)</span>.</p>
+<h2 id="a-local-fundamental-solution-on-all-relevant-differences">A local fundamental solution on all relevant differences</h2>
+<p>Choose a bounded open <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> containing the compact set
+<span class="math" data-tex="\(\overline{X_2}-\overline{X_2}\)">\(\overline{X_2}-\overline{X_2}\)</span>.
+The <a href="AN02-L065.html">Local supported solutions with the exact symbol gain</a> consequence supplies a compactly supported <span class="math" data-tex="\(E\)">\(E\)</span>, supported in <span class="math" data-tex="\(H\)">\(H\)</span>, with
+<span class="math math-display" data-tex="\[
+ P(D)E=\delta_0+r,\qquad r=0\text{ on }\Omega.
+ \tag{5}
+\]">\[
+ P(D)E=\delta_0+r,\qquad r=0\text{ on }\Omega.
+ \tag{5}
+\]</span>
+Both <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> are compact distributions. Put
+<span class="math math-display" data-tex="\[
+                 Y=\{y:\overline{X_2}-\{y\}\subset\Omega\}.
+ \tag{6}
+\]">\[
+                 Y=\{y:\overline{X_2}-\{y\}\subset\Omega\}.
+ \tag{6}
+\]</span>
+It is open: for any <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span>, the compact set <span class="math" data-tex="\(\overline{X_2}-y\)">\(\overline{X_2}-y\)</span> has positive distance from the closed complement of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>; sufficiently small changes in <span class="math" data-tex="\(y\)">\(y\)</span> preserve its inclusion. It contains <span class="math" data-tex="\(\overline{X_2}\)">\(\overline{X_2}\)</span> by the choice of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p>For <span class="math" data-tex="\(\phi\in C_c^\infty(H^\circ\cap(Y\setminus\overline{X_2}))\)">\(\phi\in C_c^\infty(H^\circ\cap(Y\setminus\overline{X_2}))\)</span>, the global smooth compact function <span class="math" data-tex="\(E*\phi\)">\(E*\phi\)</span> has support in <span class="math" data-tex="\(H\)">\(H\)</span>, because both factors have nonnegative time support. Also
+<span class="math math-display" data-tex="\[
+              P(D)(E*\phi)=\phi+r*\phi=0\text{ on }X_2.
+ \tag{7}
+\]">\[
+              P(D)(E*\phi)=\phi+r*\phi=0\text{ on }X_2.
+ \tag{7}
+\]</span>
+The first term vanishes there. For the second, if <span class="math" data-tex="\(x\in X_2\)">\(x\in X_2\)</span> and <span class="math" data-tex="\(y\in\operatorname{supp}\phi\subset Y\)">\(y\in\operatorname{supp}\phi\subset Y\)</span>, then <span class="math" data-tex="\(x-y\in\Omega\)">\(x-y\in\Omega\)</span>, where <span class="math" data-tex="\(r\)">\(r\)</span> vanishes. Equivalently no point of <span class="math" data-tex="\(X_2\)">\(X_2\)</span> is in <span class="math" data-tex="\(\operatorname{supp}r+\operatorname{supp}\phi\)">\(\operatorname{supp}r+\operatorname{supp}\phi\)</span>, by(6). The compact-factor convolution support theorem proves the claim, including distributions. Thus the restriction of <span class="math" data-tex="\(E*\phi\)">\(E*\phi\)</span> belongs to <span class="math" data-tex="\(\mathcal N_2\)">\(\mathcal N_2\)</span>.</p>
+<p>Set <span class="math" data-tex="\(\mu=\check E*\nu\)">\(\mu=\check E*\nu\)</span>, a compact distribution. The exact bilinear convolution identity is
+<span class="math math-display" data-tex="\[
+                    \mu(\phi)=\nu(E*\phi).
+ \tag{8}
+\]">\[
+                    \mu(\phi)=\nu(E*\phi).
+ \tag{8}
+\]</span>
+Indeed, compact tensor pairing writes its left side as
+<span class="math" data-tex="\(E_z\nu_a(\phi(a-z))\)">\(E_z\nu_a(\phi(a-z))\)</span>, which is the right side. There is reflection and no conjugation. The tensor/convolution definition permits the two compact distribution pairings in either order, as in the named compact-factor theorem. By annihilation and(7)–(8), <span class="math" data-tex="\(\mu\)">\(\mu\)</span> vanishes on <span class="math" data-tex="\(H^\circ\cap(Y\setminus\overline{X_2})\)">\(H^\circ\cap(Y\setminus\overline{X_2})\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(-D)\mu=\nu+\check r*\nu,\\
+\qquad
+                         P(-D)\mu=\nu\text{ on }Y.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+P(-D)\mu=\nu+\check r*\nu,\\
+\qquad
+                         P(-D)\mu=\nu\text{ on }Y.
+\end{gathered}
+\tag{9}
+\]</span>
+To see the second equality, a support point of <span class="math" data-tex="\(\check r*\nu\)">\(\check r*\nu\)</span> has the form <span class="math" data-tex="\(a-z\)">\(a-z\)</span>, <span class="math" data-tex="\(a\in\operatorname{supp}\nu\subset X_1\)">\(a\in\operatorname{supp}\nu\subset X_1\)</span>, <span class="math" data-tex="\(z\in\operatorname{supp}r\)">\(z\in\operatorname{supp}r\)</span>. If <span class="math" data-tex="\(y=a-z\)">\(y=a-z\)</span> were in <span class="math" data-tex="\(Y\)">\(Y\)</span>, then <span class="math" data-tex="\(z=a-y\in\overline{X_2}-y\subset\Omega\)">\(z=a-y\in\overline{X_2}-y\subset\Omega\)</span>, contradicting(5). Support addition gives the stated vanishing. The first equality is the reflection of(5), followed by compact convolution differentiation.</p>
+<h2 id="two-localizations-and-the-boundary">Two localizations and the boundary</h2>
+<p>Choose <span class="math" data-tex="\(\chi\in C_c^\infty(Y)\)">\(\chi\in C_c^\infty(Y)\)</span> equal to one near <span class="math" data-tex="\(\overline{X_2}\)">\(\overline{X_2}\)</span>, and put <span class="math" data-tex="\(\mu_1=\chi\mu\)">\(\mu_1=\chi\mu\)</span>. The just established positive-time vanishing gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H^\circ\cap\operatorname{supp}\mu_1\subset\overline{X_2},
+       \\
+\qquad
+          P(-D)\mu_1-\nu=0\text{ on }H^\circ.
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+H^\circ\cap\operatorname{supp}\mu_1\subset\overline{X_2},
+       \\
+\qquad
+          P(-D)\mu_1-\nu=0\text{ on }H^\circ.
+\end{gathered}
+\tag{10}
+\]</span>
+For the second assertion, the term <span class="math" data-tex="\(\chi P(-D)\mu\)">\(\chi P(-D)\mu\)</span> is <span class="math" data-tex="\(\chi\nu=\nu\)">\(\chi\nu=\nu\)</span>, since <span class="math" data-tex="\(\chi\)">\(\chi\)</span>'s support is inside <span class="math" data-tex="\(Y\)">\(Y\)</span> and it equals one near <span class="math" data-tex="\(\operatorname{supp}\nu\)">\(\operatorname{supp}\nu\)</span>. Every remaining product-rule term contains a positive-order derivative of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> multiplied by a derivative of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Such derivatives of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> are zero near <span class="math" data-tex="\(\overline{X_2}\)">\(\overline{X_2}\)</span>, while in the remaining positive-time part of <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and all its derivatives vanish. Outside <span class="math" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span>, those terms vanish as well. Thus all those terms vanish on <span class="math" data-tex="\(H^\circ\)">\(H^\circ\)</span>. This explicitly controls the commutator without an equation on the time boundary.</p>
+<p>The positive-time support of <span class="math" data-tex="\(P(-D)\mu_1\)">\(P(-D)\mu_1\)</span> lies in the fixed compact <span class="math" data-tex="\(\operatorname{supp}\nu\subset X_1\)">\(\operatorname{supp}\nu\subset X_1\)</span>. Apply(2) to <span class="math" data-tex="\(\mu_1\)">\(\mu_1\)</span>: the closure of <span class="math" data-tex="\(H^\circ\cap\operatorname{supp}\mu_1\)">\(H^\circ\cap\operatorname{supp}\mu_1\)</span> is a compact subset of <span class="math" data-tex="\(X_1\)">\(X_1\)</span>. We may therefore choose <span class="math" data-tex="\(\theta\in C_c^\infty(X_1)\)">\(\theta\in C_c^\infty(X_1)\)</span> equal to one near that closure and near <span class="math" data-tex="\(\operatorname{supp}\nu\)">\(\operatorname{supp}\nu\)</span>. Put <span class="math" data-tex="\(\mu_2=\theta\mu_1\)">\(\mu_2=\theta\mu_1\)</span>. It belongs to <span class="math" data-tex="\(\mathcal E&#x27;(X_1)\)">\(\mathcal E&#x27;(X_1)\)</span> and equals <span class="math" data-tex="\(\mu_1\)">\(\mu_1\)</span> on <span class="math" data-tex="\(H^\circ\)">\(H^\circ\)</span>: near its positive-time support the multiplier is one, and elsewhere that distribution is zero. Consequently
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\nu_2=P(-D)\mu_2\in\mathcal E&#x27;(X_1),\\
+\qquad
+                  \operatorname{supp}(\nu-\nu_2)\subset\{t\le0\}.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+\nu_2=P(-D)\mu_2\in\mathcal E&#x27;(X_1),\\
+\qquad
+                  \operatorname{supp}(\nu-\nu_2)\subset\{t\le0\}.
+\end{gathered}
+\tag{11}
+\]</span>
+For <span class="math" data-tex="\(u\in\mathcal N_1\)">\(u\in\mathcal N_1\)</span>, compact distributional transposition inside <span class="math" data-tex="\(X_1\)">\(X_1\)</span> gives <span class="math" data-tex="\(\nu_2(u)=\mu_2(P(D)u)=0\)">\(\nu_2(u)=\mu_2(P(D)u)=0\)</span>. The other compact distribution <span class="math" data-tex="\(\nu-\nu_2\)">\(\nu-\nu_2\)</span> is supported in nonpositive time. Multiply <span class="math" data-tex="\(u\)">\(u\)</span> by a compact cutoff inside <span class="math" data-tex="\(X_1\)">\(X_1\)</span> equal to one near this distribution's support, and extend by zero. The resulting smooth global test vanishes for <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, hence is flat at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. The actual <a href="AN02-L065.html">Local supported solutions with the exact symbol gain</a> flat-test proof gives <span class="math" data-tex="\((\nu-\nu_2)(u)=0\)">\((\nu-\nu_2)(u)=0\)</span>. Thus <span class="math" data-tex="\(\nu(u)=0\)">\(\nu(u)=0\)</span>, and(4) gives <span class="math" data-tex="\(L(u)=0\)">\(L(u)=0\)</span> for every <span class="math" data-tex="\(u\in\mathcal N_1\)">\(u\in\mathcal N_1\)</span>.</p>
+<p>If the restriction subspace were not dense, apply locally convex separation to its closure in <span class="math" data-tex="\(\mathcal N_1\)">\(\mathcal N_1\)</span> and a point outside. It would give a continuous <span class="math" data-tex="\(L\)">\(L\)</span> annihilating the subspace but not that point, contrary to what we proved. This completes the density theorem. The space <span class="math" data-tex="\(\mathcal N_1\)">\(\mathcal N_1\)</span> is Hausdorff with its inherited locally convex topology; completeness is not needed by the separation theorem.</p>
+<h2 id="the-weighted-seminorm-consequence">The weighted seminorm consequence</h2>
+<p>Fix <span class="math" data-tex="\(\psi\in C_c^\infty(X_1)\)">\(\psi\in C_c^\infty(X_1)\)</span>, a moderate weight <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(1\le p\le\infty\)">\(1\le p\le\infty\)</span>. Polynomial growth gives <span class="math" data-tex="\(k(\xi)\le C(1+|\xi|)^N\)">\(k(\xi)\le C(1+|\xi|)^N\)</span>. Choose an integer <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(2a&gt;N+n+1\)">\(2a&gt;N+n+1\)</span>. Repeated integration by parts using <span class="math" data-tex="\((1-\Delta)^a\)">\((1-\Delta)^a\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\widehat{\psi u}(\xi)|
+       \\
+\le C_\psi(1+|\xi|^2)^{-a}
+          \\
+\max_{|\alpha|\le2a}
+                       \sup_{\operatorname{supp}\psi}|\partial^\alpha u|,
+ \\\|\psi u\|_{p,k}\le C_{\psi,k,p}
+          \\
+\max_{|\alpha|\le2a}
+                       \sup_{\operatorname{supp}\psi}|\partial^\alpha u|.
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+|\widehat{\psi u}(\xi)|
+       \\
+\le C_\psi(1+|\xi|^2)^{-a}
+          \\
+\max_{|\alpha|\le2a}
+                       \sup_{\operatorname{supp}\psi}|\partial^\alpha u|,
+ \\\|\psi u\|_{p,k}\le C_{\psi,k,p}
+          \\
+\max_{|\alpha|\le2a}
+                       \sup_{\operatorname{supp}\psi}|\partial^\alpha u|.
+\end{gathered}
+\tag{12}
+\]</span>
+The <span class="math" data-tex="\(L^p\)">\(L^p\)</span> integral of the weighted decay is finite for every finite <span class="math" data-tex="\(p\)">\(p\)</span>; the supremum is finite for <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>. The product-rule derivatives of <span class="math" data-tex="\(\psi u\)">\(\psi u\)</span> have been absorbed in the fixed constant. A smooth approximation in the finite set of derivative seminorms implied by(12) is therefore an approximation in any prescribed finite list of weighted cutoff norms. This consequence includes the infinity norm for smooth solutions, and does not assert mollifier density for arbitrary <span class="math" data-tex="\(B_{\infty,k}\)">\(B_{\infty,k}\)</span> distributions.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (entry).</strong> In one time variable let <span class="math" data-tex="\(P(s)=s-i\)">\(P(s)=s-i\)</span>, <span class="math" data-tex="\(E(t)=iH(t)e^{-t}\)">\(E(t)=iH(t)e^{-t}\)</span>, and <span class="math" data-tex="\(\nu=\delta_a\)">\(\nu=\delta_a\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Compute <span class="math" data-tex="\(\mu=\check E*\nu\)">\(\mu=\check E*\nu\)</span> and verify the transpose identity. This example may use the global kernel; it is a sign check rather than the compact parametrix construction.</p>
+<p><strong>Solution.</strong> Since convolution with <span class="math" data-tex="\(\delta_a\)">\(\delta_a\)</span> translates by <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(\mu(t)=E(a-t)=iH(a-t)e^{t-a}\)">\(\mu(t)=E(a-t)=iH(a-t)e^{t-a}\)</span>. Its support is <span class="math" data-tex="\(t\le a\)">\(t\le a\)</span>. Distributional differentiation gives
+<span class="math" data-tex="\(\mu&#x27;=-i\delta_a+iH(a-t)e^{t-a}\)">\(\mu&#x27;=-i\delta_a+iH(a-t)e^{t-a}\)</span>.
+The transposed operator is <span class="math" data-tex="\(P(-D_t)=-D_t-i=i\partial_t-i\)">\(P(-D_t)=-D_t-i=i\partial_t-i\)</span>. Therefore <span class="math" data-tex="\(i\mu&#x27;-i\mu=\delta_a-H(a-t)e^{t-a}+H(a-t)e^{t-a}=\delta_a\)">\(i\mu&#x27;-i\mu=\delta_a-H(a-t)e^{t-a}+H(a-t)e^{t-a}=\delta_a\)</span>, as required. The pairing <span class="math math-display" data-tex="\[
+\begin{gathered}
+\mu(\phi)\\
+=\int iH(a-t)e^{t-a}\phi(t)\,dt\\
+=(E*\phi)(a)\\
+=\nu(E*\phi)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mu(\phi)\\
+=\int iH(a-t)e^{t-a}\phi(t)\,dt\\
+=(E*\phi)(a)\\
+=\nu(E*\phi)
+\end{gathered}
+\]</span> verifies(8) directly. No coefficient conjugation occurs. The kernel is not compact, but the compact factor <span class="math" data-tex="\(\nu\)">\(\nu\)</span> makes this illustrative convolution defined.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Let <span class="math" data-tex="\(A=\{1/j:j\ge1\}\)">\(A=\{1/j:j\ge1\}\)</span> and <span class="math" data-tex="\(X_1=(0,2)\)">\(X_1=(0,2)\)</span>. Explain why <span class="math" data-tex="\(A\subset X_1\)">\(A\subset X_1\)</span> does not supply a cutoff <span class="math" data-tex="\(\theta\in C_c^\infty(X_1)\)">\(\theta\in C_c^\infty(X_1)\)</span> equal to one near <span class="math" data-tex="\(A\)">\(A\)</span>. Relate this to the exact containment in(2).</p>
+<p><strong>Solution.</strong> The closure of <span class="math" data-tex="\(A\)">\(A\)</span> contains zero, which is outside <span class="math" data-tex="\(X_1\)">\(X_1\)</span>. A compact subset of <span class="math" data-tex="\((0,2)\)">\((0,2)\)</span> has positive distance from zero. Thus any compactly supported <span class="math" data-tex="\(\theta\)">\(\theta\)</span> in this interval is zero at <span class="math" data-tex="\(1/j\)">\(1/j\)</span> for all sufficiently large <span class="math" data-tex="\(j\)">\(j\)</span>, and cannot be one near all of <span class="math" data-tex="\(A\)">\(A\)</span>. The failure persists for the positive-time support of a compact distribution: <span class="math" data-tex="\(\sum_{j\ge1}2^{-j}\delta_{1/j}\)">\(\sum_{j\ge1}2^{-j}\delta_{1/j}\)</span> is a compact finite measure with that positive-time support and with zero as a support limit point. In(2) the conclusion is <span class="math" data-tex="\(H^\circ\cap\operatorname{supp}\mu\Subset X_1\)">\(H^\circ\cap\operatorname{supp}\mu\Subset X_1\)</span>; its closure is compact inside <span class="math" data-tex="\(X_1\)">\(X_1\)</span>, so the required cutoff exists. This example diagnoses the invalid cutoff inference after weakening the condition; it does not claim the density theorem itself fails for every weaker hypothesis.</p>
+<p><strong>Exercise 3 (advanced).</strong> For a compact <span class="math" data-tex="\(K\subset X_1\)">\(K\subset X_1\)</span>, a finite family of cutoffs <span class="math" data-tex="\(\psi_j\in C_c^\infty(X_1)\)">\(\psi_j\in C_c^\infty(X_1)\)</span>, weights <span class="math" data-tex="\(k_j\)">\(k_j\)</span>, and exponents <span class="math" data-tex="\(1\le p_j\le\infty\)">\(1\le p_j\le\infty\)</span>, show how the density theorem supplies one <span class="math" data-tex="\(h\in\mathcal N_2\)">\(h\in\mathcal N_2\)</span> with prescribed simultaneous derivative and weighted errors for a given <span class="math" data-tex="\(u\in\mathcal N_1\)">\(u\in\mathcal N_1\)</span>. Identify why this does not use general infinity-endpoint density.</p>
+<p><strong>Solution.</strong> For each weighted error select the derivative order <span class="math" data-tex="\(2a_j\)">\(2a_j\)</span> and constant <span class="math" data-tex="\(C_j\)">\(C_j\)</span> in(12). Combine <span class="math" data-tex="\(K\)">\(K\)</span> and all <span class="math" data-tex="\(\operatorname{supp}\psi_j\)">\(\operatorname{supp}\psi_j\)</span> into one compact subset of <span class="math" data-tex="\(X_1\)">\(X_1\)</span>, and take the largest of the desired derivative order and the <span class="math" data-tex="\(2a_j\)">\(2a_j\)</span>. The theorem approximates <span class="math" data-tex="\(u\)">\(u\)</span> by a restriction <span class="math" data-tex="\(h|_{X_1}\)">\(h|_{X_1}\)</span> within any positive tolerance in that single smooth seminorm. Choose the tolerance below the specified derivative error and below every weighted tolerance divided by <span class="math" data-tex="\(C_j\)">\(C_j\)</span>. Then(12) bounds every <span class="math" data-tex="\(\|\psi_j(u-h)\|_{p_j,k_j}\)">\(\|\psi_j(u-h)\|_{p_j,k_j}\)</span> by its tolerance, including <span class="math" data-tex="\(p_j=\infty\)">\(p_j=\infty\)</span>. Both approximated functions are smooth. No claim that arbitrary infinity-norm distributions can be approximated by smooth functions is involved.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

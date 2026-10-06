@@ -1,0 +1,394 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crossed products and factor systems</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="crossed-products-and-factor-systems">Crossed products and factor systems</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An automorphism of a maximal subfield can be realized by conjugation inside a central simple algebra. Choosing one conjugating unit for each automorphism produces multiplication constants. Associativity constrains those constants, and changing the units changes them by a coboundary. This lesson makes that construction explicit and proves that it describes every Brauer class split by a finite Galois extension.</p>
+<p>The prerequisite is <a href="../support/NOE-HYP--NOE-HYP-04.html">Central simple algebras and the Brauer group</a>. We use its Skolem–Noether theorem, centralizer theorem and finite splitting criterion. Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be finite Galois, let <span class="math" data-tex="\(G=\operatorname{Gal}(L/K)\)">\(G=\operatorname{Gal}(L/K)\)</span>, and put <span class="math" data-tex="\(n=[L:K]=|G|\)">\(n=[L:K]=|G|\)</span>. Multiplication in <span class="math" data-tex="\(G\)">\(G\)</span> means composition: <span class="math" data-tex="\((\sigma\tau)(x)=\sigma(\tau(x))\)">\((\sigma\tau)(x)=\sigma(\tau(x))\)</span>. Field automorphisms act on coefficients on the left. Every convention below uses this order.</p>
+<h2 id="1-factor-systems-and-the-algebra-they-define">1. Factor systems and the algebra they define</h2>
+<p>A <strong>normalized factor system</strong>, or multiplicative <strong>2-cocycle</strong>, is a function <span class="math" data-tex="\(a:G\times G\to L^\times\)">\(a:G\times G\to L^\times\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+a(1,\sigma)=a(\sigma,1)=1,
+\qquad
+a(\sigma,\tau)a(\sigma\tau,\rho)
+=\sigma(a(\tau,\rho))a(\sigma,\tau\rho).
+\tag{1}
+\]">\[
+a(1,\sigma)=a(\sigma,1)=1,
+\qquad
+a(\sigma,\tau)a(\sigma\tau,\rho)
+=\sigma(a(\tau,\rho))a(\sigma,\tau\rho).
+\tag{1}
+\]</span>
+<p>For a function <span class="math" data-tex="\(c:G\to L^\times\)">\(c:G\to L^\times\)</span>, <span class="math" data-tex="\(c_1=1\)">\(c_1=1\)</span>, its <strong>coboundary</strong> is</p>
+<span class="math math-display" data-tex="\[
+(\delta c)(\sigma,\tau)=c_\sigma\,\sigma(c_\tau)c_{\sigma\tau}^{-1}.
+\tag{2}
+\]">\[
+(\delta c)(\sigma,\tau)=c_\sigma\,\sigma(c_\tau)c_{\sigma\tau}^{-1}.
+\tag{2}
+\]</span>
+<p>Direct substitution shows that <span class="math" data-tex="\(\delta c\)">\(\delta c\)</span> satisfies (1). Cocycles form an abelian group under pointwise multiplication, and coboundaries form a subgroup. Their quotient is <span class="math" data-tex="\(H^2(G,L^\times)\)">\(H^2(G,L^\times)\)</span>. This defines the second cohomology group needed here without a resolution or a cochain complex.</p>
+<p>Define the <strong>crossed product</strong></p>
+<span class="math math-display" data-tex="\[
+A(a)=(L,G,a)=\bigoplus_{\sigma\in G}L u_\sigma
+\]">\[
+A(a)=(L,G,a)=\bigoplus_{\sigma\in G}L u_\sigma
+\]</span>
+<p>by <span class="math" data-tex="\(u_1=1\)">\(u_1=1\)</span> and</p>
+<span class="math math-display" data-tex="\[
+u_\sigma x=\sigma(x)u_\sigma,
+\qquad
+u_\sigma u_\tau=a(\sigma,\tau)u_{\sigma\tau}.
+\tag{3}
+\]">\[
+u_\sigma x=\sigma(x)u_\sigma,
+\qquad
+u_\sigma u_\tau=a(\sigma,\tau)u_{\sigma\tau}.
+\tag{3}
+\]</span>
+<p>More explicitly,</p>
+<span class="math math-display" data-tex="\[
+(x u_\sigma)(y u_\tau)
+=x\sigma(y)a(\sigma,\tau)u_{\sigma\tau}.
+\]">\[
+(x u_\sigma)(y u_\tau)
+=x\sigma(y)a(\sigma,\tau)u_{\sigma\tau}.
+\]</span>
+<p>The two associations of a triple product agree precisely because of (1). Normalization gives the identity. Each <span class="math" data-tex="\(u_\sigma\)">\(u_\sigma\)</span> is invertible, since its product with <span class="math" data-tex="\(u_{\sigma^{-1}}\)">\(u_{\sigma^{-1}}\)</span> is a nonzero scalar; in a finite-dimensional algebra a one-sided inverse is two-sided, as follows by applying injectivity and surjectivity to multiplication.</p>
+<p><strong>Theorem 1.1 (crossed-product structure).</strong> The algebra <span class="math" data-tex="\(A(a)\)">\(A(a)\)</span> is central simple over <span class="math" data-tex="\(K\)">\(K\)</span>, has dimension <span class="math" data-tex="\(n^2\)">\(n^2\)</span>, and contains <span class="math" data-tex="\(L\)">\(L\)</span> as a self-centralizing subfield. In particular it has degree <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(L\)">\(L\)</span> splits it.</p>
+<p><strong>Proof.</strong> Its dimension is <span class="math" data-tex="\(n\dim_K L=n^2\)">\(n\dim_K L=n^2\)</span>. If <span class="math" data-tex="\(z=\sum_\sigma x_\sigma u_\sigma\)">\(z=\sum_\sigma x_\sigma u_\sigma\)</span> commutes with every <span class="math" data-tex="\(y\in L\)">\(y\in L\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+x_\sigma(\sigma(y)-y)=0
+\]">\[
+x_\sigma(\sigma(y)-y)=0
+\]</span>
+<p>for all <span class="math" data-tex="\(\sigma,y\)">\(\sigma,y\)</span>. For <span class="math" data-tex="\(\sigma\ne1\)">\(\sigma\ne1\)</span>, choose <span class="math" data-tex="\(y\)">\(y\)</span> moved by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>; this forces <span class="math" data-tex="\(x_\sigma=0\)">\(x_\sigma=0\)</span>. Thus <span class="math" data-tex="\(C_{A(a)}(L)=L\)">\(C_{A(a)}(L)=L\)</span>. An element <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span> is central exactly when <span class="math" data-tex="\(\sigma(x)=x\)">\(\sigma(x)=x\)</span> for every <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, so the centre is <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be a nonzero two-sided ideal. Choose <span class="math" data-tex="\(0\ne z\in I\)">\(0\ne z\in I\)</span> with the smallest number of nonzero coefficients in the displayed basis. Multiplication by a suitable unit <span class="math" data-tex="\(u_\tau\)">\(u_\tau\)</span> and a nonzero scalar in <span class="math" data-tex="\(L\)">\(L\)</span> gives such an element whose identity coefficient is <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(y\in L\)">\(y\in L\)</span>, the commutator <span class="math" data-tex="\(zy-yz\)">\(zy-yz\)</span> has no identity coefficient. If it were nonzero, it would have smaller support, contradicting minimality. Therefore <span class="math" data-tex="\(z\)">\(z\)</span> commutes with <span class="math" data-tex="\(L\)">\(L\)</span>, so <span class="math" data-tex="\(z=1\)">\(z=1\)</span>. Thus <span class="math" data-tex="\(I=A(a)\)">\(I=A(a)\)</span>. The preceding lesson's finite splitting criterion applies to the self-centralizing field <span class="math" data-tex="\(L\)">\(L\)</span>, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Changing generators to <span class="math" data-tex="\(u&#x27;_\sigma=c_\sigma u_\sigma\)">\(u&#x27;_\sigma=c_\sigma u_\sigma\)</span> changes the factor system to</p>
+<span class="math math-display" data-tex="\[
+a&#x27;=a\,\delta c.
+\tag{4}
+\]">\[
+a&#x27;=a\,\delta c.
+\tag{4}
+\]</span>
+<p>Both the coefficient twist in (2) and the inverse on <span class="math" data-tex="\(c_{\sigma\tau}\)">\(c_{\sigma\tau}\)</span> are forced by multiplying the new generators in (3).</p>
+<h2 id="2-classification-including-the-split-class">2. Classification, including the split class</h2>
+<p><strong>Theorem 2.1 (classification with a specified subfield).</strong> Crossed products <span class="math" data-tex="\(A(a)\)">\(A(a)\)</span> and <span class="math" data-tex="\(A(b)\)">\(A(b)\)</span> are isomorphic by an isomorphism equal to the identity on <span class="math" data-tex="\(L\)">\(L\)</span> if and only if <span class="math" data-tex="\([a]=[b]\)">\([a]=[b]\)</span> in <span class="math" data-tex="\(H^2(G,L^\times)\)">\(H^2(G,L^\times)\)</span>. Every central simple <span class="math" data-tex="\(K\)">\(K\)</span>-algebra of degree <span class="math" data-tex="\(n\)">\(n\)</span> containing <span class="math" data-tex="\(L\)">\(L\)</span> is such a crossed product.</p>
+<p><strong>Proof.</strong> In <span class="math" data-tex="\(A(b)\)">\(A(b)\)</span>, the elements <span class="math" data-tex="\(v\)">\(v\)</span> satisfying <span class="math" data-tex="\(vx=\sigma(x)v\)">\(vx=\sigma(x)v\)</span> for all <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span> form exactly <span class="math" data-tex="\(L v_\sigma\)">\(L v_\sigma\)</span>. To check this, expand <span class="math" data-tex="\(v\)">\(v\)</span> in the crossed-product basis; the coefficient of <span class="math" data-tex="\(v_\tau\)">\(v_\tau\)</span>, <span class="math" data-tex="\(\tau\ne\sigma\)">\(\tau\ne\sigma\)</span>, must vanish after choosing an <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\tau(x)\ne\sigma(x)\)">\(\tau(x)\ne\sigma(x)\)</span>. Consequently an <span class="math" data-tex="\(L\)">\(L\)</span>-fixed isomorphism has the form <span class="math" data-tex="\(u_\sigma\mapsto c_\sigma v_\sigma\)">\(u_\sigma\mapsto c_\sigma v_\sigma\)</span>, with every <span class="math" data-tex="\(c_\sigma\ne0\)">\(c_\sigma\ne0\)</span>. Multiplication gives <span class="math" data-tex="\(a=b\delta c\)">\(a=b\delta c\)</span>. Conversely that formula makes the displayed assignment a multiplicative bijection.</p>
+<p>Now let <span class="math" data-tex="\(A\)">\(A\)</span> be central simple of degree <span class="math" data-tex="\(n\)">\(n\)</span>, containing <span class="math" data-tex="\(L\)">\(L\)</span>. Its centralizer of <span class="math" data-tex="\(L\)">\(L\)</span> has <span class="math" data-tex="\(K\)">\(K\)</span>-dimension <span class="math" data-tex="\(n^2/n=n\)">\(n^2/n=n\)</span> and contains <span class="math" data-tex="\(L\)">\(L\)</span>, so it is <span class="math" data-tex="\(L\)">\(L\)</span>. Skolem–Noether supplies a unit <span class="math" data-tex="\(u_\sigma\)">\(u_\sigma\)</span> with</p>
+<span class="math math-display" data-tex="\[
+u_\sigma x u_\sigma^{-1}=\sigma(x),
+\]">\[
+u_\sigma x u_\sigma^{-1}=\sigma(x),
+\]</span>
+<p>and we choose <span class="math" data-tex="\(u_1=1\)">\(u_1=1\)</span>. The units <span class="math" data-tex="\(u_\sigma u_\tau\)">\(u_\sigma u_\tau\)</span> and <span class="math" data-tex="\(u_{\sigma\tau}\)">\(u_{\sigma\tau}\)</span> induce the same automorphism of <span class="math" data-tex="\(L\)">\(L\)</span>. Their quotient lies in its centralizer, so <span class="math" data-tex="\(u_\sigma u_\tau=a(\sigma,\tau)u_{\sigma\tau}\)">\(u_\sigma u_\tau=a(\sigma,\tau)u_{\sigma\tau}\)</span> for a nonzero <span class="math" data-tex="\(a(\sigma,\tau)\in L\)">\(a(\sigma,\tau)\in L\)</span>. Associativity gives (1).</p>
+<p>The <span class="math" data-tex="\(u_\sigma\)">\(u_\sigma\)</span> are linearly independent over <span class="math" data-tex="\(L\)">\(L\)</span>. Otherwise choose a relation <span class="math" data-tex="\(\sum_\sigma x_\sigma u_\sigma=0\)">\(\sum_\sigma x_\sigma u_\sigma=0\)</span> with minimal nonempty support. It cannot have just one term. Fix an index <span class="math" data-tex="\(\tau\)">\(\tau\)</span> in the support, multiply the relation on the right by <span class="math" data-tex="\(y\in L\)">\(y\in L\)</span>, and subtract <span class="math" data-tex="\(\tau(y)\)">\(\tau(y)\)</span> times the original relation. The <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-term disappears, while some other term remains for a suitable <span class="math" data-tex="\(y\)">\(y\)</span>, because distinct automorphisms differ somewhere. This contradicts minimality. There are <span class="math" data-tex="\(n\)">\(n\)</span> independent units and <span class="math" data-tex="\(\dim_L A=n\)">\(\dim_L A=n\)</span>, so they form a basis. Thus the relations identify <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(A(a)\)">\(A(a)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same minimal-relation argument proves <strong>independence of distinct field automorphisms</strong> as functions <span class="math" data-tex="\(L\to L\)">\(L\to L\)</span>: in a supposed relation <span class="math" data-tex="\(\sum x_\sigma\sigma(z)=0\)">\(\sum x_\sigma\sigma(z)=0\)</span> holding for every <span class="math" data-tex="\(z\)">\(z\)</span>, compare its values on <span class="math" data-tex="\(yz\)">\(yz\)</span> with <span class="math" data-tex="\(\tau(y)\)">\(\tau(y)\)</span> times its values on <span class="math" data-tex="\(z\)">\(z\)</span>. We will use this fact again in Galois descent.</p>
+<p><strong>Theorem 2.2 (the split class).</strong> The crossed product <span class="math" data-tex="\(A(a)\)">\(A(a)\)</span> is split if and only if <span class="math" data-tex="\(a=\delta c\)">\(a=\delta c\)</span> for some <span class="math" data-tex="\(c:G\to L^\times\)">\(c:G\to L^\times\)</span>. For the trivial factor system,</p>
+<span class="math math-display" data-tex="\[
+A(1)\xrightarrow{\sim}\operatorname{End}_K(L),
+\qquad x u_\sigma\longmapsto(z\mapsto x\sigma(z)).
+\]">\[
+A(1)\xrightarrow{\sim}\operatorname{End}_K(L),
+\qquad x u_\sigma\longmapsto(z\mapsto x\sigma(z)).
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(a=\delta c\)">\(a=\delta c\)</span>, send <span class="math" data-tex="\(u_\sigma\)">\(u_\sigma\)</span> to <span class="math" data-tex="\(z\mapsto c_\sigma\sigma(z)\)">\(z\mapsto c_\sigma\sigma(z)\)</span> and let <span class="math" data-tex="\(L\)">\(L\)</span> act by multiplication. Equation (2) makes this a unital algebra homomorphism. It is injective by Theorem 1.1 and surjective by dimension <span class="math" data-tex="\(n^2\)">\(n^2\)</span>. Taking <span class="math" data-tex="\(c_\sigma=1\)">\(c_\sigma=1\)</span> gives the displayed map.</p>
+<p>Conversely, write a split <span class="math" data-tex="\(A(a)\)">\(A(a)\)</span> as <span class="math" data-tex="\(\operatorname{End}_K(V)\)">\(\operatorname{End}_K(V)\)</span>, <span class="math" data-tex="\(\dim_K V=n\)">\(\dim_K V=n\)</span>. Its embedded field <span class="math" data-tex="\(L\)">\(L\)</span> makes <span class="math" data-tex="\(V\)">\(V\)</span> a one-dimensional <span class="math" data-tex="\(L\)">\(L\)</span>-vector space. Choose a basis and identify <span class="math" data-tex="\(V=L\)">\(V=L\)</span>. The relation with <span class="math" data-tex="\(L\)">\(L\)</span> says that <span class="math" data-tex="\(u_\sigma\)">\(u_\sigma\)</span> acts as <span class="math" data-tex="\(z\mapsto c_\sigma\sigma(z)\)">\(z\mapsto c_\sigma\sigma(z)\)</span>, where <span class="math" data-tex="\(c_\sigma\ne0\)">\(c_\sigma\ne0\)</span>. Comparing products gives <span class="math" data-tex="\(c_\sigma\sigma(c_\tau)=a(\sigma,\tau)c_{\sigma\tau}\)">\(c_\sigma\sigma(c_\tau)=a(\sigma,\tau)c_{\sigma\tau}\)</span>, which is exactly <span class="math" data-tex="\(a=\delta c\)">\(a=\delta c\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-multiplication-in-the-relative-brauer-group">3. Multiplication in the relative Brauer group</h2>
+<p>The relative group <span class="math" data-tex="\(\operatorname{Br}(L/K)\)">\(\operatorname{Br}(L/K)\)</span> consists of Brauer classes over <span class="math" data-tex="\(K\)">\(K\)</span> which become split over <span class="math" data-tex="\(L\)">\(L\)</span>. To identify its group law, we must calculate a tensor product, not just classify single algebras.</p>
+<p><strong>Lemma 3.1 (tensor compatibility).</strong> For normalized factor systems <span class="math" data-tex="\(a,b\)">\(a,b\)</span>,</p>
+<span class="math math-display" data-tex="\[
+A(a)\otimes_K A(b)\sim A(ab).
+\]">\[
+A(a)\otimes_K A(b)\sim A(ab).
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(T=A(a)\otimes_K A(b)\)">\(T=A(a)\otimes_K A(b)\)</span>, and distinguish the bases <span class="math" data-tex="\(u_\sigma,v_\sigma\)">\(u_\sigma,v_\sigma\)</span> of its two factors. The subalgebra <span class="math" data-tex="\(L\otimes_K L\)">\(L\otimes_K L\)</span> decomposes as</p>
+<span class="math math-display" data-tex="\[
+L\otimes_K L\xrightarrow{\sim}\prod_{g\in G}L,
+\qquad x\otimes y\longmapsto(xg(y))_g.
+\tag{5}
+\]">\[
+L\otimes_K L\xrightarrow{\sim}\prod_{g\in G}L,
+\qquad x\otimes y\longmapsto(xg(y))_g.
+\tag{5}
+\]</span>
+<p>For completeness, choose a primitive element <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of the separable extension. Then <span class="math" data-tex="\(L\otimes_K L=L[T]/(f(T))\)">\(L\otimes_K L=L[T]/(f(T))\)</span>, where <span class="math" data-tex="\(f\)">\(f\)</span> is its minimal polynomial. Over <span class="math" data-tex="\(L\)">\(L\)</span>, the distinct roots <span class="math" data-tex="\(g(\theta)\)">\(g(\theta)\)</span> factor <span class="math" data-tex="\(f\)">\(f\)</span> into relatively prime linear factors. The Chinese remainder theorem gives (5).</p>
+<p>Let <span class="math" data-tex="\(e_g\)">\(e_g\)</span> be the idempotent with coordinate <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere, and put <span class="math" data-tex="\(e=e_1\)">\(e=e_1\)</span>. Conjugation by <span class="math" data-tex="\(u_\sigma\otimes v_\tau\)">\(u_\sigma\otimes v_\tau\)</span> sends <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(e_{\sigma\tau^{-1}}\)">\(e_{\sigma\tau^{-1}}\)</span>. Indeed, the <span class="math" data-tex="\(g\)">\(g\)</span>-coordinate of the conjugated coefficient is</p>
+<span class="math math-display" data-tex="\[
+\sigma(x)g(\tau(y))
+=\sigma\bigl(x(\sigma^{-1}g\tau)(y)\bigr),
+\]">\[
+\sigma(x)g(\tau(y))
+=\sigma\bigl(x(\sigma^{-1}g\tau)(y)\bigr),
+\]</span>
+<p>which is nonzero on the identity idempotent exactly when <span class="math" data-tex="\(g=\sigma\tau^{-1}\)">\(g=\sigma\tau^{-1}\)</span>. Consequently the corner <span class="math" data-tex="\(eTe\)">\(eTe\)</span> has only the diagonal basis terms</p>
+<span class="math math-display" data-tex="\[
+w_\sigma=e(u_\sigma\otimes v_\sigma)e.
+\]">\[
+w_\sigma=e(u_\sigma\otimes v_\sigma)e.
+\]</span>
+<p>The coefficient algebra <span class="math" data-tex="\((L\otimes_K L)e\)">\((L\otimes_K L)e\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>, with <span class="math" data-tex="\(x\otimes y\)">\(x\otimes y\)</span> acting as <span class="math" data-tex="\(xy\)">\(xy\)</span>. The diagonal units commute with <span class="math" data-tex="\(e\)">\(e\)</span>, twist this coefficient by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and satisfy</p>
+<span class="math math-display" data-tex="\[
+w_\sigma w_\tau=a(\sigma,\tau)b(\sigma,\tau)w_{\sigma\tau}.
+\]">\[
+w_\sigma w_\tau=a(\sigma,\tau)b(\sigma,\tau)w_{\sigma\tau}.
+\]</span>
+<p>They form an <span class="math" data-tex="\(L\)">\(L\)</span>-basis of the corner: all terms with <span class="math" data-tex="\(\sigma\ne\tau\)">\(\sigma\ne\tau\)</span> vanish between the two <span class="math" data-tex="\(e\)">\(e\)</span>'s, and the diagonal terms retain their distinct tensor-basis coordinates. Thus <span class="math" data-tex="\(eTe\simeq A(ab)\)">\(eTe\simeq A(ab)\)</span>.</p>
+<p>Finally, a nonzero idempotent corner of a simple Artinian algebra is similar to that algebra. If <span class="math" data-tex="\(T=M_r(D)\)">\(T=M_r(D)\)</span>, its idempotent is a projection on the right <span class="math" data-tex="\(D\)">\(D\)</span>-space <span class="math" data-tex="\(D^r\)">\(D^r\)</span>; a basis of its image and kernel conjugates it to <span class="math" data-tex="\(\operatorname{diag}(I_s,0)\)">\(\operatorname{diag}(I_s,0)\)</span>, <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>. Its corner is <span class="math" data-tex="\(M_s(D)\)">\(M_s(D)\)</span>, which has the same division representative. Applying this observation to <span class="math" data-tex="\(e\)">\(e\)</span> proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (relative Brauer group).</strong> There is a group isomorphism</p>
+<span class="math math-display" data-tex="\[
+H^2(G,L^\times)\xrightarrow{\sim}\operatorname{Br}(L/K),
+\qquad [a]\longmapsto[A(a)].
+\]">\[
+H^2(G,L^\times)\xrightarrow{\sim}\operatorname{Br}(L/K),
+\qquad [a]\longmapsto[A(a)].
+\]</span>
+<p><strong>Proof.</strong> Theorem 2.1 makes the map well defined, Theorem 1.1 places its image in the relative group, and Lemma 3.1 makes it a homomorphism. Theorem 2.2 identifies its kernel with the zero cohomology class. For surjectivity, let <span class="math" data-tex="\([A]\)">\([A]\)</span> be split by <span class="math" data-tex="\(L\)">\(L\)</span>. The finite splitting criterion in the preceding lesson constructs an algebra <span class="math" data-tex="\(A&#x27;\sim A\)">\(A&#x27;\sim A\)</span>, of degree <span class="math" data-tex="\(n\)">\(n\)</span>, containing <span class="math" data-tex="\(L\)">\(L\)</span>. Theorem 2.1 makes <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> a crossed product. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-cyclic-algebras-and-a-cubic-example">4. Cyclic algebras and a cubic example</h2>
+<p>Suppose <span class="math" data-tex="\(G=\langle\sigma\rangle\)">\(G=\langle\sigma\rangle\)</span> is cyclic of order <span class="math" data-tex="\(n\)">\(n\)</span>. For <span class="math" data-tex="\(t\in K^\times\)">\(t\in K^\times\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(L/K,\sigma,t)=L\oplus Lu\oplus\cdots\oplus Lu^{n-1},
+\qquad ux=\sigma(x)u,\quad u^n=t.
+\]">\[
+(L/K,\sigma,t)=L\oplus Lu\oplus\cdots\oplus Lu^{n-1},
+\qquad ux=\sigma(x)u,\quad u^n=t.
+\]</span>
+<p>This is the crossed product of the cocycle</p>
+<span class="math math-display" data-tex="\[
+a_t(\sigma^i,\sigma^j)=
+\begin{cases}1,&amp;i+j&lt;n,\\t,&amp;i+j\ge n,\end{cases}
+\qquad 0\le i,j&lt;n.
+\]">\[
+a_t(\sigma^i,\sigma^j)=
+\begin{cases}1,&amp;i+j&lt;n,\\t,&amp;i+j\ge n,\end{cases}
+\qquad 0\le i,j&lt;n.
+\]</span>
+<p>The cocycle relation counts the same total number of carries in adding three indices. The factor <span class="math" data-tex="\(t\)">\(t\)</span> is fixed by <span class="math" data-tex="\(G\)">\(G\)</span>, so its coefficient twist is harmless.</p>
+<p><strong>Theorem 4.1 (cyclic second cohomology).</strong> With the specified generator <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>,</p>
+<span class="math math-display" data-tex="\[
+K^\times/N_{L/K}(L^\times)\xrightarrow{\sim}H^2(G,L^\times),
+\qquad t\longmapsto[a_t].
+\]">\[
+K^\times/N_{L/K}(L^\times)\xrightarrow{\sim}H^2(G,L^\times),
+\qquad t\longmapsto[a_t].
+\]</span>
+<p><strong>Proof.</strong> In any crossed product, put <span class="math" data-tex="\(u=u_\sigma\)">\(u=u_\sigma\)</span>. The element <span class="math" data-tex="\(u^n\)">\(u^n\)</span> commutes with <span class="math" data-tex="\(L\)">\(L\)</span>, so belongs to <span class="math" data-tex="\(L^\times\)">\(L^\times\)</span>; it also commutes with <span class="math" data-tex="\(u\)">\(u\)</span>, so is fixed by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and hence belongs to <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>. The basis <span class="math" data-tex="\(1,u,\ldots,u^{n-1}\)">\(1,u,\ldots,u^{n-1}\)</span> differs from the original basis by nonzero coefficients. Thus every cocycle is cohomologous to some <span class="math" data-tex="\(a_t\)">\(a_t\)</span>.</p>
+<p>An <span class="math" data-tex="\(L\)">\(L\)</span>-fixed isomorphism between two cyclic algebras sends <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(cv\)">\(cv\)</span>, since this is the <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-twisted eigenspace. Then</p>
+<span class="math math-display" data-tex="\[
+(cv)^n=c\sigma(c)\cdots\sigma^{n-1}(c)\,v^n
+=N_{L/K}(c)t&#x27;.
+\]">\[
+(cv)^n=c\sigma(c)\cdots\sigma^{n-1}(c)\,v^n
+=N_{L/K}(c)t&#x27;.
+\]</span>
+<p>Therefore <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span> define the same class precisely when <span class="math" data-tex="\(t/t&#x27;\)">\(t/t&#x27;\)</span> is a norm. Pointwise multiplication gives <span class="math" data-tex="\(a_ta_{t&#x27;}=a_{tt&#x27;}\)">\(a_ta_{t&#x27;}=a_{tt&#x27;}\)</span>, so the bijection is a group isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a quadratic extension <span class="math" data-tex="\(L=K(\sqrt d)\)">\(L=K(\sqrt d)\)</span>, <span class="math" data-tex="\(\operatorname{char}K\ne2\)">\(\operatorname{char}K\ne2\)</span>, the relations with <span class="math" data-tex="\(i=\sqrt d\)">\(i=\sqrt d\)</span>, <span class="math" data-tex="\(j=u\)">\(j=u\)</span> are <span class="math" data-tex="\(i^2=d\)">\(i^2=d\)</span>, <span class="math" data-tex="\(j^2=t\)">\(j^2=t\)</span>, <span class="math" data-tex="\(ji=-ij\)">\(ji=-ij\)</span>. Thus the cyclic algebra is <span class="math" data-tex="\((d,t)_K\)">\((d,t)_K\)</span>. For <span class="math" data-tex="\(\mathbb C/\mathbb R\)">\(\mathbb C/\mathbb R\)</span>, norms are the positive real numbers, and the quotient <span class="math" data-tex="\(\mathbb R^\times/\mathbb R_{&gt;0}\)">\(\mathbb R^\times/\mathbb R_{&gt;0}\)</span> has two elements. Positive <span class="math" data-tex="\(t\)">\(t\)</span> gives <span class="math" data-tex="\(M_2(\mathbb R)\)">\(M_2(\mathbb R)\)</span>, while negative <span class="math" data-tex="\(t\)">\(t\)</span> gives <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span>.</p>
+<p>A degree-three example over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> can also be checked without local class field theory. Let <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> be a primitive seventh root of unity and <span class="math" data-tex="\(\theta=\zeta+\zeta^{-1}\)">\(\theta=\zeta+\zeta^{-1}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+f(\theta)=0,\qquad f(T)=T^3+T^2-2T-1.
+\]">\[
+f(\theta)=0,\qquad f(T)=T^3+T^2-2T-1.
+\]</span>
+<p>The polynomial has no rational root, so <span class="math" data-tex="\(L=\mathbb Q(\theta)\)">\(L=\mathbb Q(\theta)\)</span> has degree <span class="math" data-tex="\(3\)">\(3\)</span>. Its other roots are <span class="math" data-tex="\(\theta^2-2\)">\(\theta^2-2\)</span> and <span class="math" data-tex="\(1-\theta-\theta^2\)">\(1-\theta-\theta^2\)</span>, as follows by expressing <span class="math" data-tex="\(\zeta^2+\zeta^{-2}\)">\(\zeta^2+\zeta^{-2}\)</span> and <span class="math" data-tex="\(\zeta^4+\zeta^{-4}\)">\(\zeta^4+\zeta^{-4}\)</span>. All lie in <span class="math" data-tex="\(L\)">\(L\)</span>. Thus <span class="math" data-tex="\(L/\mathbb Q\)">\(L/\mathbb Q\)</span> is cyclic, with <span class="math" data-tex="\(\sigma(\theta)=\theta^2-2\)">\(\sigma(\theta)=\theta^2-2\)</span>, and <span class="math" data-tex="\(\sigma^2(\theta)=1-\theta-\theta^2\)">\(\sigma^2(\theta)=1-\theta-\theta^2\)</span>.</p>
+<p>Consider <span class="math" data-tex="\(A=(L/\mathbb Q,\sigma,2)\)">\(A=(L/\mathbb Q,\sigma,2)\)</span>. It has the explicit nine-element basis <span class="math" data-tex="\(\theta^i u^j\)">\(\theta^i u^j\)</span>, <span class="math" data-tex="\(0\le i,j&lt;3\)">\(0\le i,j&lt;3\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\theta^3=-\theta^2+2\theta+1,\qquad
+u\theta=(\theta^2-2)u,\qquad u^3=2.
+\]">\[
+\theta^3=-\theta^2+2\theta+1,\qquad
+u\theta=(\theta^2-2)u,\qquad u^3=2.
+\]</span>
+<p>The number <span class="math" data-tex="\(2\)">\(2\)</span> is not a norm from <span class="math" data-tex="\(L\)">\(L\)</span>. To prove this, let <span class="math" data-tex="\(R=\mathbb Z_{(2)}[\theta]\)">\(R=\mathbb Z_{(2)}[\theta]\)</span>, where <span class="math" data-tex="\(\mathbb Z_{(2)}\)">\(\mathbb Z_{(2)}\)</span> consists of rationals with odd denominator. It is free over <span class="math" data-tex="\(\mathbb Z_{(2)}\)">\(\mathbb Z_{(2)}\)</span> with basis <span class="math" data-tex="\(1,\theta,\theta^2\)">\(1,\theta,\theta^2\)</span>. Modulo <span class="math" data-tex="\(2\)">\(2\)</span>, the polynomial is <span class="math" data-tex="\(T^3+T^2+1\)">\(T^3+T^2+1\)</span>; it has no root in <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, so <span class="math" data-tex="\(R/2R\)">\(R/2R\)</span> is a field of eight elements. For <span class="math" data-tex="\(y\in R\setminus2R\)">\(y\in R\setminus2R\)</span>, multiplication by <span class="math" data-tex="\(y\)">\(y\)</span> is invertible modulo <span class="math" data-tex="\(2\)">\(2\)</span>. Its determinant, which is <span class="math" data-tex="\(N_{L/\mathbb Q}(y)\)">\(N_{L/\mathbb Q}(y)\)</span>, has 2-adic valuation zero.</p>
+<p>Every <span class="math" data-tex="\(x\in L^\times\)">\(x\in L^\times\)</span> can be written <span class="math" data-tex="\(x=2^r y\)">\(x=2^r y\)</span> with <span class="math" data-tex="\(r\in\mathbb Z\)">\(r\in\mathbb Z\)</span> and <span class="math" data-tex="\(y\in R\setminus2R\)">\(y\in R\setminus2R\)</span>: take the minimum of the three 2-adic valuations of its rational basis coefficients. Consequently</p>
+<span class="math math-display" data-tex="\[
+v_2(N_{L/\mathbb Q}(x))=3r.
+\]">\[
+v_2(N_{L/\mathbb Q}(x))=3r.
+\]</span>
+<p>It cannot equal <span class="math" data-tex="\(v_2(2)=1\)">\(v_2(2)=1\)</span>. Theorem 4.1 therefore makes <span class="math" data-tex="\(A\)">\(A\)</span> nonsplit. Its degree is <span class="math" data-tex="\(3\)">\(3\)</span>, so its division representative has degree <span class="math" data-tex="\(3\)">\(3\)</span>, and <span class="math" data-tex="\(A\)">\(A\)</span> itself is division. Replacing the parameter by <span class="math" data-tex="\(8=N_{L/\mathbb Q}(2)\)">\(8=N_{L/\mathbb Q}(2)\)</span> gives a split degree-three algebra. This computes both a nontrivial and a trivial class for the same splitting extension.</p>
+<h2 id="5-matrix-units-in-a-split-crossed-product">5. Matrix units in a split crossed product</h2>
+<p>Choose a <span class="math" data-tex="\(K\)">\(K\)</span>-basis <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>. The trace pairing <span class="math" data-tex="\(\operatorname{Tr}_{L/K}(xy)\)">\(\operatorname{Tr}_{L/K}(xy)\)</span> is nondegenerate. Here is a direct check: use a primitive-element basis <span class="math" data-tex="\(1,\theta,\ldots,\theta^{n-1}\)">\(1,\theta,\ldots,\theta^{n-1}\)</span>; the matrix of its embeddings is Vandermonde on the distinct <span class="math" data-tex="\(\sigma(\theta)\)">\(\sigma(\theta)\)</span>. The Gram matrix of the trace pairing is the transpose of that matrix times itself, so its determinant is the square of a nonzero Vandermonde determinant. This works in every characteristic, even when <span class="math" data-tex="\(\operatorname{Tr}(1)=n=0\)">\(\operatorname{Tr}(1)=n=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\beta_1,\ldots,\beta_n\)">\(\beta_1,\ldots,\beta_n\)</span> be the trace-dual basis, so <span class="math" data-tex="\(\operatorname{Tr}(\beta_j\alpha_i)=\delta_{ji}\)">\(\operatorname{Tr}(\beta_j\alpha_i)=\delta_{ji}\)</span>. In <span class="math" data-tex="\(A(1)\)">\(A(1)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+e_{ij}=\alpha_i\sum_{\sigma\in G}\sigma(\beta_j)u_\sigma.
+\tag{6}
+\]">\[
+e_{ij}=\alpha_i\sum_{\sigma\in G}\sigma(\beta_j)u_\sigma.
+\tag{6}
+\]</span>
+<p>Under Theorem 2.2 this acts on <span class="math" data-tex="\(L\)">\(L\)</span> by</p>
+<span class="math math-display" data-tex="\[
+x\longmapsto\alpha_i\operatorname{Tr}_{L/K}(\beta_jx).
+\]">\[
+x\longmapsto\alpha_i\operatorname{Tr}_{L/K}(\beta_jx).
+\]</span>
+<p>It sends <span class="math" data-tex="\(\alpha_h\)">\(\alpha_h\)</span> to <span class="math" data-tex="\(\delta_{jh}\alpha_i\)">\(\delta_{jh}\alpha_i\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+e_{ij}e_{h\ell}=\delta_{jh}e_{i\ell},\qquad
+\sum_i e_{ii}=1.
+\]">\[
+e_{ij}e_{h\ell}=\delta_{jh}e_{i\ell},\qquad
+\sum_i e_{ii}=1.
+\]</span>
+<p>These are actual matrix units, not just a dimension argument for splitting. For a coboundary <span class="math" data-tex="\(a=\delta c\)">\(a=\delta c\)</span>, the generators <span class="math" data-tex="\(c_\sigma^{-1}u_\sigma\)">\(c_\sigma^{-1}u_\sigma\)</span> have trivial factor system, and substituting them in (6) gives the matrix units in <span class="math" data-tex="\(A(a)\)">\(A(a)\)</span>. This realizes the complementary-basis construction in Noether's work on split crossed products.</p>
+<h2 id="6-projective-descent-inflation-and-period">6. Projective descent, inflation and period</h2>
+<p>A second description of Brauer classes uses projective semilinear actions on a splitting module. An explicit comparison prevents a sign convention from entering unnoticed.</p>
+<p><strong>Lemma 6.1 (projective-action comparison).</strong> Let <span class="math" data-tex="\(M/K\)">\(M/K\)</span> be finite Galois with group <span class="math" data-tex="\(H\)">\(H\)</span>. Let <span class="math" data-tex="\(V\ne0\)">\(V\ne0\)</span> be a finite-dimensional <span class="math" data-tex="\(M\)">\(M\)</span>-space, with invertible <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>-semilinear operators <span class="math" data-tex="\(T_\gamma\)">\(T_\gamma\)</span>, <span class="math" data-tex="\(T_1=1\)">\(T_1=1\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+T_\gamma T_\delta=c(\gamma,\delta)T_{\gamma\delta},
+\qquad c(\gamma,\delta)\in M^\times.
+\]">\[
+T_\gamma T_\delta=c(\gamma,\delta)T_{\gamma\delta},
+\qquad c(\gamma,\delta)\in M^\times.
+\]</span>
+<p>Then <span class="math" data-tex="\(c\)">\(c\)</span> is a normalized cocycle. The fixed algebra</p>
+<span class="math math-display" data-tex="\[
+B=\{F\in\operatorname{End}_M(V):T_\gamma F T_\gamma^{-1}=F\text{ for all }\gamma\}
+\]">\[
+B=\{F\in\operatorname{End}_M(V):T_\gamma F T_\gamma^{-1}=F\text{ for all }\gamma\}
+\]</span>
+<p>is central simple over <span class="math" data-tex="\(K\)">\(K\)</span>, with <span class="math" data-tex="\([B]=-[A(c)]\)">\([B]=-[A(c)]\)</span>.</p>
+<p><strong>Proof.</strong> Associating a triple product of the <span class="math" data-tex="\(T\)">\(T\)</span>'s gives (1), including the coefficient action <span class="math" data-tex="\(\gamma(c(\delta,\epsilon))\)">\(\gamma(c(\delta,\epsilon))\)</span> from semilinearity. The field <span class="math" data-tex="\(M\)">\(M\)</span>, acting by scalars, and the operators <span class="math" data-tex="\(T_\gamma\)">\(T_\gamma\)</span> make the underlying <span class="math" data-tex="\(K\)">\(K\)</span>-space of <span class="math" data-tex="\(V\)">\(V\)</span> a unital left <span class="math" data-tex="\(A(c)\)">\(A(c)\)</span>-module. The endomorphisms of this module are exactly the <span class="math" data-tex="\(M\)">\(M\)</span>-linear maps commuting with all the <span class="math" data-tex="\(T_\gamma\)">\(T_\gamma\)</span>, namely <span class="math" data-tex="\(B\)">\(B\)</span>. If <span class="math" data-tex="\(A(c)=M_r(D)\)">\(A(c)=M_r(D)\)</span>, the module is <span class="math" data-tex="\((D^r)^s\)">\((D^r)^s\)</span> for some <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>. Its endomorphism algebra is <span class="math" data-tex="\(M_s(D^{\mathrm{op}})\)">\(M_s(D^{\mathrm{op}})\)</span>, central simple with class <span class="math" data-tex="\(-[D]=-[A(c)]\)">\(-[D]=-[A(c)]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(A=A(a)\)">\(A=A(a)\)</span>, regard <span class="math" data-tex="\(A\)">\(A\)</span> as a right <span class="math" data-tex="\(L\)">\(L\)</span>-space and use the splitting model</p>
+<span class="math math-display" data-tex="\[
+A\otimes_K L\simeq\operatorname{End}_L(A),
+\qquad x\otimes\ell\longmapsto(z\mapsto xz\ell).
+\]">\[
+A\otimes_K L\simeq\operatorname{End}_L(A),
+\qquad x\otimes\ell\longmapsto(z\mapsto xz\ell).
+\]</span>
+<p>Set <span class="math" data-tex="\(T_\sigma(z)=z u_\sigma^{-1}\)">\(T_\sigma(z)=z u_\sigma^{-1}\)</span>. The identity <span class="math" data-tex="\(\ell u_\sigma^{-1}=u_\sigma^{-1}\sigma(\ell)\)">\(\ell u_\sigma^{-1}=u_\sigma^{-1}\sigma(\ell)\)</span> proves semilinearity, and</p>
+<span class="math math-display" data-tex="\[
+T_\sigma T_\tau(z)
+=z(u_\sigma u_\tau)^{-1}
+=z u_{\sigma\tau}^{-1}a(\sigma,\tau)^{-1}.
+\tag{7}
+\]">\[
+T_\sigma T_\tau(z)
+=z(u_\sigma u_\tau)^{-1}
+=z u_{\sigma\tau}^{-1}a(\sigma,\tau)^{-1}.
+\tag{7}
+\]</span>
+<p>Thus the projective multiplier on this splitting module is <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>. Conjugation by <span class="math" data-tex="\(T_\sigma\)">\(T_\sigma\)</span> fixes left multiplication by <span class="math" data-tex="\(A\)">\(A\)</span> and sends the right scalar <span class="math" data-tex="\(\ell\)">\(\ell\)</span> to <span class="math" data-tex="\(\sigma(\ell)\)">\(\sigma(\ell)\)</span>. Its fixed endomorphism algebra is precisely the left copy of <span class="math" data-tex="\(A\)">\(A\)</span>, as is also seen by taking a <span class="math" data-tex="\(K\)">\(K\)</span>-basis of <span class="math" data-tex="\(A\)">\(A\)</span> in the displayed tensor product and fixing its scalar coefficients.</p>
+<p>In a chosen <span class="math" data-tex="\(L\)">\(L\)</span>-basis, write <span class="math" data-tex="\(T_\sigma=P_\sigma\sigma\)">\(T_\sigma=P_\sigma\sigma\)</span>, where <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> acts entrywise. Equation (7) becomes</p>
+<span class="math math-display" data-tex="\[
+P_\sigma\sigma(P_\tau)P_{\sigma\tau}^{-1}
+=a(\sigma,\tau)^{-1}I_n.
+\tag{8}
+\]">\[
+P_\sigma\sigma(P_\tau)P_{\sigma\tau}^{-1}
+=a(\sigma,\tau)^{-1}I_n.
+\tag{8}
+\]</span>
+<p>The images <span class="math" data-tex="\(\overline P_\sigma\)">\(\overline P_\sigma\)</span> in <span class="math" data-tex="\(\operatorname{PGL}_n(L)\)">\(\operatorname{PGL}_n(L)\)</span> therefore satisfy the 1-cocycle relation. Formula (8) compares the usual matrix-lift connecting multiplier with our factor system: in this right-module splitting model it is the inverse. A geometric proof using forms of a matrix algebra must specify its model and connecting-map convention before identifying the two classes. This is the comparison needed with the separate planned lesson <em>Brauer groups and Tsen's theorem</em>.</p>
+<p><strong>Proposition 6.2 (inflation).</strong> If <span class="math" data-tex="\(M/K\)">\(M/K\)</span> is finite Galois and contains <span class="math" data-tex="\(L\)">\(L\)</span>, a cocycle <span class="math" data-tex="\(a\)">\(a\)</span> inflates to</p>
+<span class="math math-display" data-tex="\[
+\widetilde a(\gamma,\delta)
+=a(\gamma|_L,\delta|_L)\in M^\times.
+\]">\[
+\widetilde a(\gamma,\delta)
+=a(\gamma|_L,\delta|_L)\in M^\times.
+\]</span>
+<p>The crossed products represent the same class over <span class="math" data-tex="\(K\)">\(K\)</span>: <span class="math" data-tex="\([A(\widetilde a)]=[A(a)]\)">\([A(\widetilde a)]=[A(a)]\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(V=A(a)\otimes_L M\)">\(V=A(a)\otimes_L M\)</span>, using the right <span class="math" data-tex="\(L\)">\(L\)</span>-space just considered. For <span class="math" data-tex="\(\sigma=\gamma|_L\)">\(\sigma=\gamma|_L\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+T_\gamma(x\otimes z)=x u_\sigma^{-1}\otimes\gamma(z).
+\]">\[
+T_\gamma(x\otimes z)=x u_\sigma^{-1}\otimes\gamma(z).
+\]</span>
+<p>It respects the balanced tensor relation because</p>
+<span class="math math-display" data-tex="\[
+(x\ell)u_\sigma^{-1}\otimes\gamma(z)
+=xu_\sigma^{-1}\otimes\sigma(\ell)\gamma(z).
+\]">\[
+(x\ell)u_\sigma^{-1}\otimes\gamma(z)
+=xu_\sigma^{-1}\otimes\sigma(\ell)\gamma(z).
+\]</span>
+<p>These operators are invertible and <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>-semilinear, with multiplier <span class="math" data-tex="\(\widetilde a^{-1}\)">\(\widetilde a^{-1}\)</span> by (7). Moreover <span class="math" data-tex="\(\operatorname{End}_M(V)=A(a)\otimes_K M\)">\(\operatorname{End}_M(V)=A(a)\otimes_K M\)</span>, and their conjugation action fixes the first factor and acts on scalar coefficients by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The fixed algebra is <span class="math" data-tex="\(A(a)\)">\(A(a)\)</span>. Lemma 6.1 gives</p>
+<span class="math math-display" data-tex="\[
+[A(a)]=-[A(\widetilde a^{-1})]=[A(\widetilde a)],
+\]">\[
+[A(a)]=-[A(\widetilde a^{-1})]=[A(\widetilde a)],
+\]</span>
+<p>where the last equality uses the group law already proved in Theorem 3.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(K^{\mathrm{sep}}\)">\(K^{\mathrm{sep}}\)</span> be a separable closure and <span class="math" data-tex="\(G_K\)">\(G_K\)</span> its absolute Galois group, with the topology defined by its finite Galois quotients. Give <span class="math" data-tex="\((K^{\mathrm{sep}})^\times\)">\((K^{\mathrm{sep}})^\times\)</span> the discrete topology and define continuous <span class="math" data-tex="\(H^2\)">\(H^2\)</span> using continuous cocycles and coboundaries with the same formulas (1)–(2). Then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Br}(K)\simeq
+H^2_{\mathrm{cont}}(G_K,(K^{\mathrm{sep}})^\times).
+\tag{9}
+\]">\[
+\operatorname{Br}(K)\simeq
+H^2_{\mathrm{cont}}(G_K,(K^{\mathrm{sep}})^\times).
+\tag{9}
+\]</span>
+<p>Here is the passage from the finite theorem. A continuous cochain on a finite power of the compact profinite group has finite image. A finite clopen cover on which it is constant can be refined by cosets of one open normal subgroup in each coordinate. Shrink this subgroup further to fix every value. The cochain then factors through a finite Galois quotient and has values in that quotient's fixed field. The same argument applies to a cochain giving a coboundary. Thus continuous second cohomology is the direct limit of the finite groups <span class="math" data-tex="\(H^2(\operatorname{Gal}(M/K),M^\times)\)">\(H^2(\operatorname{Gal}(M/K),M^\times)\)</span>, with the inflation maps above. Every Brauer class has a finite Galois splitting field by the preceding lesson. The compatible finite isomorphisms in Theorem 3.2 consequently identify the two direct limits, proving (9).</p>
+<p>The <strong>period</strong> of a Brauer class is its order in the group; its <strong>index</strong> is the degree of its division representative.</p>
+<p><strong>Theorem 6.3 (period divides index).</strong> Every Brauer class has finite period, and its period divides its index.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(D\)">\(D\)</span> be its division representative, of degree <span class="math" data-tex="\(d\)">\(d\)</span>, and choose a finite Galois splitting field <span class="math" data-tex="\(M/K\)">\(M/K\)</span>, with group <span class="math" data-tex="\(H\)">\(H\)</span>. Transport the canonical coefficient action on <span class="math" data-tex="\(D\otimes_K M\)">\(D\otimes_K M\)</span> to <span class="math" data-tex="\(M_d(M)\)">\(M_d(M)\)</span>. For <span class="math" data-tex="\(\gamma\in H\)">\(\gamma\in H\)</span>, the transported automorphism is semilinear. Composing it with entrywise <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span> gives an <span class="math" data-tex="\(M\)">\(M\)</span>-linear automorphism, hence an inner one by Skolem–Noether. Thus the transported action has the form</p>
+<span class="math math-display" data-tex="\[
+X\longmapsto P_\gamma\gamma(X)P_\gamma^{-1}.
+\]">\[
+X\longmapsto P_\gamma\gamma(X)P_\gamma^{-1}.
+\]</span>
+<p>Choose <span class="math" data-tex="\(P_1=I_d\)">\(P_1=I_d\)</span>. The action law forces</p>
+<span class="math math-display" data-tex="\[
+c(\gamma,\delta)I_d
+=P_\gamma\gamma(P_\delta)P_{\gamma\delta}^{-1},
+\]">\[
+c(\gamma,\delta)I_d
+=P_\gamma\gamma(P_\delta)P_{\gamma\delta}^{-1},
+\]</span>
+<p>since a matrix inducing trivial conjugation is scalar. The semilinear operators <span class="math" data-tex="\(T_\gamma=P_\gamma\gamma\)">\(T_\gamma=P_\gamma\gamma\)</span> on <span class="math" data-tex="\(M^d\)">\(M^d\)</span> have this multiplier. Their fixed endomorphism algebra is <span class="math" data-tex="\(D\)">\(D\)</span>, because the transported action was the canonical coefficient action. Lemma 6.1 gives <span class="math" data-tex="\([D]=-[A(c)]\)">\([D]=-[A(c)]\)</span>. Taking determinants gives</p>
+<span class="math math-display" data-tex="\[
+c(\gamma,\delta)^d
+=\det(P_\gamma)\,\gamma(\det P_\delta)\,\det(P_{\gamma\delta})^{-1}.
+\]">\[
+c(\gamma,\delta)^d
+=\det(P_\gamma)\,\gamma(\det P_\delta)\,\det(P_{\gamma\delta})^{-1}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(c^d\)">\(c^d\)</span> is a coboundary. Theorem 3.2 yields <span class="math" data-tex="\(d[A(c)]=0\)">\(d[A(c)]=0\)</span>, hence <span class="math" data-tex="\(d[D]=0\)">\(d[D]=0\)</span>. The order of <span class="math" data-tex="\([D]\)">\([D]\)</span> therefore divides <span class="math" data-tex="\(d\)">\(d\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also a restriction–corestriction route to this conclusion. The group-cohomology transfer theorem states that for a subgroup <span class="math" data-tex="\(H\le G\)">\(H\le G\)</span> of finite index <span class="math" data-tex="\(s\)">\(s\)</span>, with coefficient <span class="math" data-tex="\(G\)">\(G\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, the composite <span class="math" data-tex="\(\operatorname{Cor}\operatorname{Res}\)">\(\operatorname{Cor}\operatorname{Res}\)</span> on <span class="math" data-tex="\(H^q(G,M)\)">\(H^q(G,M)\)</span> is multiplication by <span class="math" data-tex="\(s\)">\(s\)</span>, for every <span class="math" data-tex="\(q\ge0\)">\(q\ge0\)</span> [Milne CFT, chapter II, Proposition 1.30]. Choose a separable maximal subfield of <span class="math" data-tex="\(D\)">\(D\)</span>, of degree <span class="math" data-tex="\(d\)">\(d\)</span>, and a finite Galois closure which splits it. Restriction of the Brauer class to that subfield is zero; applying this identity gives <span class="math" data-tex="\(d[D]=0\)">\(d[D]=0\)</span>. We stated the transfer identity with its source; the determinant proof above supplies the divisibility result without importing the construction of corestriction.</p>
+<h2 id="7-the-arithmetic-boundary-maximal-orders">7. The arithmetic boundary: maximal orders</h2>
+<p>The complementary-basis calculation also enters Noether's arithmetic theory of orders. The following statement applies to split algebras of every matrix size.</p>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a Dedekind domain with fraction field <span class="math" data-tex="\(K\)">\(K\)</span>. A <strong>full lattice</strong> in <span class="math" data-tex="\(K^n\)">\(K^n\)</span> is a finitely generated <span class="math" data-tex="\(R\)">\(R\)</span>-submodule spanning <span class="math" data-tex="\(K^n\)">\(K^n\)</span>. An <strong>order</strong> in <span class="math" data-tex="\(M_n(K)\)">\(M_n(K)\)</span> is a unital <span class="math" data-tex="\(R\)">\(R\)</span>-subalgebra which is a full <span class="math" data-tex="\(R\)">\(R\)</span>-lattice in that algebra. It is maximal if no larger order contains it.</p>
+<p><strong>Proposition 7.1 (orders in a split algebra).</strong> Every maximal <span class="math" data-tex="\(R\)">\(R\)</span>-order in <span class="math" data-tex="\(M_n(K)\)">\(M_n(K)\)</span> has the form <span class="math" data-tex="\(\operatorname{End}_R(P)\)">\(\operatorname{End}_R(P)\)</span> for a full lattice <span class="math" data-tex="\(P\subset K^n\)">\(P\subset K^n\)</span>. Conversely, every such endomorphism ring is a maximal order.</p>
+<p><strong>Proof, using the Dedekind lattice facts stated below.</strong> If <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is an order, set <span class="math" data-tex="\(P=\Lambda R^n\)">\(P=\Lambda R^n\)</span>. Finite generation of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> makes <span class="math" data-tex="\(P\)">\(P\)</span> a full lattice, stable under <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Thus <span class="math" data-tex="\(\Lambda\subseteq\operatorname{End}_R(P)\)">\(\Lambda\subseteq\operatorname{End}_R(P)\)</span>; the latter is an order since <span class="math" data-tex="\(P\)">\(P\)</span> is finite projective and spans <span class="math" data-tex="\(K^n\)">\(K^n\)</span>. Maximality of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> forces equality.</p>
+<p>For the converse, localize at a nonzero maximal ideal <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. The lattice <span class="math" data-tex="\(P_\mathfrak p\)">\(P_\mathfrak p\)</span> is free of rank <span class="math" data-tex="\(n\)">\(n\)</span> over the discrete valuation ring <span class="math" data-tex="\(R_\mathfrak p\)">\(R_\mathfrak p\)</span>, so its endomorphism ring is <span class="math" data-tex="\(M_n(R_\mathfrak p)\)">\(M_n(R_\mathfrak p)\)</span> after choosing a basis. This order is maximal. In fact, let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be an order containing it, and let <span class="math" data-tex="\(X\in\Gamma\)">\(X\in\Gamma\)</span>. For each matrix entry <span class="math" data-tex="\(x_{ij}\)">\(x_{ij}\)</span>, multiplication by matrix units puts <span class="math" data-tex="\(x_{ij}E_{ii}\)">\(x_{ij}E_{ii}\)</span> in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Since <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is finite free over the discrete valuation ring, Cayley–Hamilton applied to left multiplication by this element gives a monic polynomial relation for it. Its <span class="math" data-tex="\(ii\)">\(ii\)</span>-entry gives that same monic relation for <span class="math" data-tex="\(x_{ij}\)">\(x_{ij}\)</span>. The discrete valuation ring is integrally closed, so every <span class="math" data-tex="\(x_{ij}\)">\(x_{ij}\)</span> lies in <span class="math" data-tex="\(R_\mathfrak p\)">\(R_\mathfrak p\)</span>. This proves the local maximality.</p>
+<p>Any global order containing <span class="math" data-tex="\(\operatorname{End}_R(P)\)">\(\operatorname{End}_R(P)\)</span> consequently has the same localization at every nonzero maximal ideal. Full lattices over a Dedekind domain are recovered by intersecting those localizations inside their ambient <span class="math" data-tex="\(K\)">\(K\)</span>-space. The two orders therefore agree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The imported Dedekind facts are that finite torsion-free modules are projective, their localizations at nonzero maximal ideals are free over discrete valuation rings, endomorphism rings commute with these localizations, and a full lattice is the intersection of its localizations. These are commutative ideal theory, additional prerequisites for this arithmetic section. The statement does not say that every lattice is globally free or that all maximal orders are globally conjugate. Noether treats these issues for number-field orders in [Noether, work 42, §§II–III]. The global theorem that division algebras over number fields admit cyclic maximal subfields requires further arithmetic input; the elementary cubic example in section 4 does not use it.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Show directly that <span class="math" data-tex="\(A(1)\)">\(A(1)\)</span> acts faithfully on <span class="math" data-tex="\(L\)">\(L\)</span>, and identify it with <span class="math" data-tex="\(\operatorname{End}_K(L)\)">\(\operatorname{End}_K(L)\)</span>. Construct its matrix units from a basis and its trace-dual basis.</p>
+<p><strong>Exercise 8.2 (medium).</strong> Prove that <span class="math" data-tex="\(A(a)\)">\(A(a)\)</span> is simple by taking an element of a nonzero ideal with minimal support in the crossed-product basis. Explain why the argument works when the characteristic divides <span class="math" data-tex="\(|G|\)">\(|G|\)</span>.</p>
+<p><strong>Exercise 8.3 (medium).</strong> For <span class="math" data-tex="\(L=K(\sqrt d)\)">\(L=K(\sqrt d)\)</span>, <span class="math" data-tex="\(\operatorname{char}K\ne2\)">\(\operatorname{char}K\ne2\)</span>, identify the cyclic crossed product with parameter <span class="math" data-tex="\(t\)">\(t\)</span> as the quaternion algebra <span class="math" data-tex="\((d,t)_K\)">\((d,t)_K\)</span>. Determine its split class by the norm criterion.</p>
+<p><strong>Exercise 8.4 (medium).</strong> Prove the cyclic classification <span class="math" data-tex="\(H^2(G,L^\times)\simeq K^\times/N_{L/K}(L^\times)\)">\(H^2(G,L^\times)\simeq K^\times/N_{L/K}(L^\times)\)</span>, including its group law. For the cubic field in section 4, explain why parameter <span class="math" data-tex="\(2\)">\(2\)</span> gives a division algebra and parameter <span class="math" data-tex="\(8\)">\(8\)</span> gives a matrix algebra.</p>
+<p><strong>Exercise 8.5 (hard).</strong> Prove <span class="math" data-tex="\(A(a)\otimes_K A(b)\sim A(ab)\)">\(A(a)\otimes_K A(b)\sim A(ab)\)</span> by the identity-coordinate idempotent in <span class="math" data-tex="\(L\otimes_K L\)">\(L\otimes_K L\)</span>. Compute which tensor-basis terms survive in the corner and justify why the corner has the same Brauer class as the full algebra.</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>Solution 8.1.</strong> Let <span class="math" data-tex="\(x u_\sigma\)">\(x u_\sigma\)</span> act as the map <span class="math" data-tex="\(z\mapsto x\sigma(z)\)">\(z\mapsto x\sigma(z)\)</span>. Its product with <span class="math" data-tex="\(y u_\tau\)">\(y u_\tau\)</span> acts as <span class="math" data-tex="\(z\mapsto x\sigma(y)(\sigma\tau)(z)\)">\(z\mapsto x\sigma(y)(\sigma\tau)(z)\)</span>, so this is an algebra representation. If <span class="math" data-tex="\(\sum_\sigma x_\sigma\sigma(z)=0\)">\(\sum_\sigma x_\sigma\sigma(z)=0\)</span> for all <span class="math" data-tex="\(z\)">\(z\)</span>, choose a nonzero such relation of minimal support. Comparing its value at <span class="math" data-tex="\(yz\)">\(yz\)</span> with <span class="math" data-tex="\(\tau(y)\)">\(\tau(y)\)</span> times its value at <span class="math" data-tex="\(z\)">\(z\)</span> removes its <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-term and retains a different term for a suitable <span class="math" data-tex="\(y\)">\(y\)</span>, contradicting minimality. Thus the representation is faithful. Both algebras have dimension <span class="math" data-tex="\(n^2\)">\(n^2\)</span>, giving surjectivity. For a basis <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> and trace-dual basis <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span>, the element <span class="math" data-tex="\(\alpha_i\sum_\sigma\sigma(\beta_j)u_\sigma\)">\(\alpha_i\sum_\sigma\sigma(\beta_j)u_\sigma\)</span> sends <span class="math" data-tex="\(\alpha_h\)">\(\alpha_h\)</span> to <span class="math" data-tex="\(\delta_{jh}\alpha_i\)">\(\delta_{jh}\alpha_i\)</span>. These are the matrix units, with product <span class="math" data-tex="\(e_{ij}e_{h\ell}=\delta_{jh}e_{i\ell}\)">\(e_{ij}e_{h\ell}=\delta_{jh}e_{i\ell}\)</span> and sum of diagonal units <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Solution 8.2.</strong> Take <span class="math" data-tex="\(0\ne z\)">\(0\ne z\)</span> in an ideal <span class="math" data-tex="\(I\)">\(I\)</span> with minimal support. Right multiplication by a basis unit moves a nonzero coefficient into the identity position. Left multiplication by a nonzero field scalar normalizes it to <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span>, the commutator <span class="math" data-tex="\(zx-xz\)">\(zx-xz\)</span> has zero identity coefficient, so minimality makes it zero. Its <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-coefficient is <span class="math" data-tex="\(z_\sigma(\sigma(x)-x)\)">\(z_\sigma(\sigma(x)-x)\)</span>; for <span class="math" data-tex="\(\sigma\ne1\)">\(\sigma\ne1\)</span>, some <span class="math" data-tex="\(x\)">\(x\)</span> has a nonzero difference. Hence all other coefficients vanish, and <span class="math" data-tex="\(z=1\)">\(z=1\)</span>. Thus <span class="math" data-tex="\(I=A(a)\)">\(I=A(a)\)</span>. No averaging or division by <span class="math" data-tex="\(|G|\)">\(|G|\)</span> occurs: only nonzero elements of the field and the basis units are inverted. The proof is valid in every characteristic.</p>
+<p><strong>Solution 8.3.</strong> Put <span class="math" data-tex="\(i=\sqrt d\)">\(i=\sqrt d\)</span> and <span class="math" data-tex="\(j=u\)">\(j=u\)</span>. The nontrivial automorphism sends <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(-i\)">\(-i\)</span>, so the relations are <span class="math" data-tex="\(i^2=d\)">\(i^2=d\)</span>, <span class="math" data-tex="\(j^2=t\)">\(j^2=t\)</span>, and <span class="math" data-tex="\(ji=-ij\)">\(ji=-ij\)</span>. The basis <span class="math" data-tex="\(1,i,j,ij\)">\(1,i,j,ij\)</span> gives an isomorphism with <span class="math" data-tex="\((d,t)_K\)">\((d,t)_K\)</span>. Replacing <span class="math" data-tex="\(j\)">\(j\)</span> by <span class="math" data-tex="\(cj\)">\(cj\)</span>, <span class="math" data-tex="\(c\in L^\times\)">\(c\in L^\times\)</span>, changes its square to <span class="math" data-tex="\(N(c)t\)">\(N(c)t\)</span>. Thus the class is trivial exactly when <span class="math" data-tex="\(t\)">\(t\)</span> is a norm. Equivalently, if <span class="math" data-tex="\(t=N(c)\)">\(t=N(c)\)</span>, represent <span class="math" data-tex="\(i\)">\(i\)</span> by multiplication on <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> by <span class="math" data-tex="\(z\mapsto c\overline z\)">\(z\mapsto c\overline z\)</span>; the resulting algebra is <span class="math" data-tex="\(\operatorname{End}_K(L)\)">\(\operatorname{End}_K(L)\)</span>. Conversely a split representation is one-dimensional over <span class="math" data-tex="\(L\)">\(L\)</span>, so <span class="math" data-tex="\(j\)">\(j\)</span> has this semilinear form and its square is a norm.</p>
+<p><strong>Solution 8.4.</strong> In an arbitrary cocycle algebra let <span class="math" data-tex="\(u=u_\sigma\)">\(u=u_\sigma\)</span>. Its powers are nonzero scalar multiples of the original <span class="math" data-tex="\(u_{\sigma^i}\)">\(u_{\sigma^i}\)</span>, so they give a basis. Since <span class="math" data-tex="\(u^n\)">\(u^n\)</span> centralizes <span class="math" data-tex="\(L\)">\(L\)</span> and commutes with <span class="math" data-tex="\(u\)">\(u\)</span>, it is a parameter <span class="math" data-tex="\(t\in K^\times\)">\(t\in K^\times\)</span>. An <span class="math" data-tex="\(L\)">\(L\)</span>-fixed isomorphism sends <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(cv\)">\(cv\)</span>, whose <span class="math" data-tex="\(n\)">\(n\)</span>-th power is <span class="math" data-tex="\(N(c)t&#x27;\)">\(N(c)t&#x27;\)</span>. Hence the classes of parameters are exactly <span class="math" data-tex="\(K^\times/N(L^\times)\)">\(K^\times/N(L^\times)\)</span>. The standard cocycle has a factor <span class="math" data-tex="\(t\)">\(t\)</span> precisely at a carry in adding two exponents, so multiplying cocycles multiplies parameters; this verifies the group law.</p>
+<p>For the cubic field, <span class="math" data-tex="\(\mathbb Z_{(2)}[\theta]/2\)">\(\mathbb Z_{(2)}[\theta]/2\)</span> is <span class="math" data-tex="\(\mathbb F_8\)">\(\mathbb F_8\)</span>, since <span class="math" data-tex="\(T^3+T^2+1\)">\(T^3+T^2+1\)</span> is irreducible over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>. If <span class="math" data-tex="\(x=2^r y\)">\(x=2^r y\)</span> has integral basis coefficients with at least one odd coefficient in <span class="math" data-tex="\(y\)">\(y\)</span>, multiplication by <span class="math" data-tex="\(y\)">\(y\)</span> is invertible modulo <span class="math" data-tex="\(2\)">\(2\)</span>. Its norm is therefore a 2-adic unit, and <span class="math" data-tex="\(v_2(N(x))=3r\)">\(v_2(N(x))=3r\)</span>. The parameter <span class="math" data-tex="\(2\)">\(2\)</span>, of valuation <span class="math" data-tex="\(1\)">\(1\)</span>, is not a norm. Its cyclic algebra is nonsplit and, because its degree is prime <span class="math" data-tex="\(3\)">\(3\)</span>, is division. The parameter <span class="math" data-tex="\(8\)">\(8\)</span> is <span class="math" data-tex="\(N(2)\)">\(N(2)\)</span>, so its algebra splits; in the split model its generator acts as <span class="math" data-tex="\(z\mapsto2\sigma(z)\)">\(z\mapsto2\sigma(z)\)</span>, whose cube is multiplication by <span class="math" data-tex="\(8\)">\(8\)</span>.</p>
+<p><strong>Solution 8.5.</strong> Use <span class="math" data-tex="\(L\otimes_K L=\prod_g L\)">\(L\otimes_K L=\prod_g L\)</span>, with coordinate maps <span class="math" data-tex="\(x\otimes y\mapsto xg(y)\)">\(x\otimes y\mapsto xg(y)\)</span>, and take <span class="math" data-tex="\(e=e_1\)">\(e=e_1\)</span>. Conjugation by <span class="math" data-tex="\(u_\sigma\otimes v_\tau\)">\(u_\sigma\otimes v_\tau\)</span> sends <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(e_{\sigma\tau^{-1}}\)">\(e_{\sigma\tau^{-1}}\)</span>: its <span class="math" data-tex="\(g\)">\(g\)</span>-coordinate is the <span class="math" data-tex="\(\sigma^{-1}g\tau\)">\(\sigma^{-1}g\tau\)</span>-coordinate before conjugation, acted on by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. The idempotents are orthogonal, so</p>
+<span class="math math-display" data-tex="\[
+e(u_\sigma\otimes v_\tau)e=0\quad\text{unless }\sigma=\tau.
+\]">\[
+e(u_\sigma\otimes v_\tau)e=0\quad\text{unless }\sigma=\tau.
+\]</span>
+<p>For <span class="math" data-tex="\(\sigma=\tau\)">\(\sigma=\tau\)</span>, the tensor unit commutes with <span class="math" data-tex="\(e\)">\(e\)</span>. The coefficient corner <span class="math" data-tex="\((L\otimes L)e\)">\((L\otimes L)e\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>, and the surviving units <span class="math" data-tex="\(w_\sigma=e(u_\sigma\otimes v_\sigma)e\)">\(w_\sigma=e(u_\sigma\otimes v_\sigma)e\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+w_\sigma x=\sigma(x)w_\sigma,
+\qquad w_\sigma w_\tau=(ab)(\sigma,\tau)w_{\sigma\tau}.
+\]">\[
+w_\sigma x=\sigma(x)w_\sigma,
+\qquad w_\sigma w_\tau=(ab)(\sigma,\tau)w_{\sigma\tau}.
+\]</span>
+<p>They are independent in their distinct tensor-basis coordinates and span the corner, making it <span class="math" data-tex="\(A(ab)\)">\(A(ab)\)</span>. If the full simple algebra is <span class="math" data-tex="\(M_r(D)\)">\(M_r(D)\)</span>, a basis adapted to the image and kernel of its nonzero idempotent makes the corner <span class="math" data-tex="\(M_s(D)\)">\(M_s(D)\)</span>, <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>. Thus its division representative, and hence its Brauer class, is unchanged. This proves the required similarity.</p>
+<h2 id="sources-and-further-reading">Sources and further reading</h2>
+<ul>
+<li><strong>[Noether]</strong> Emmy Noether, <em>Zerfallende verschränkte Produkte und ihre Maximalordnungen</em>, Actualités scientifiques et industrielles <strong>148</strong> (1934), 5–15, especially §I on matrix units and complementary bases and §§II–III on orders. This is work 42 in <em>Gesammelte Abhandlungen / Collected Papers</em>. The <a href="https://github.com/KokunoYumeto/emmy-noether-en">English collected edition</a> supplies a companion reading text. The arguments here use the left-coefficient convention (3).</li>
+<li><strong>[MIT]</strong> <em>Noncommutative Algebra</em>, MIT OpenCourseWare 18.706, Spring 2023, §§15–17 for group cohomology, the Brauer description and projective forms. See the <a href="https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/pages/lecture-notes/">lecture notes</a>. The explicit semilinear products (7)–(8) keep the coefficient action visible.</li>
+<li><strong>[Milne CFT]</strong> J. S. Milne, <em>Class Field Theory</em>, version 4.03, 2020: chapter II, §1 for cocycles and Proposition 1.30 for restriction–corestriction, and chapter IV, §3 for crossed-product algebras and Theorem 3.14. The <a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">author's notes</a> are freely available. The geometric formulation through matrix and projective groups is a further reading path; the finite crossed-product isomorphism is proved directly above.</li>
+</ul>
+<p>The next lesson, <em>Hilbert 90 in Noether's form and Galois descent</em>, proves that semilinear actions with trivial multiplier descend to vector spaces over the ground field. It also explains why the matrix 1-cocycles in the projective comparison become a complete descent description.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The finite Galois and primitive-element facts used in (5), the usual compactness of the absolute Galois group, and the Dedekind lattice facts stated in section 7 are prerequisites. The restriction–corestriction transfer identity is stated with [Milne CFT, chapter II, Proposition 1.30] as its locator; its general construction is not proved here. The period–index divisibility has its independent determinant proof above. We do not prove the local–global classification of number-field Brauer groups, global cyclicity of division algebras over number fields, or geometric results such as Tsen's theorem. All six finite crossed-product and relative-Brauer assertions, the inflation compatibility, the continuous second-cohomology identification, and the five exercise solutions are proved in the lesson.</p>
+</article></main></body></html>

@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cyclotomic fields · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="cyclotomic-fields">Cyclotomic fields</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>The roots of unity give number fields whose automorphisms and prime decomposition can be read from congruences. Their integral bases also have a particularly simple form: powers of a single root generate the full ring of integers. Inside these fields, quadratic Gauss sums connect two descriptions of Frobenius and prove quadratic reciprocity.</p>
+<p>Fix the complex embedding and write
+<span class="math math-display" data-tex="\[
+\zeta_n=e^{2\pi i/n},\qquad K_n=\mathbf Q(\zeta_n),\qquad
+U_n=(\mathbf Z/n\mathbf Z)^\times.
+\tag{1}
+\]">\[
+\zeta_n=e^{2\pi i/n},\qquad K_n=\mathbf Q(\zeta_n),\qquad
+U_n=(\mathbf Z/n\mathbf Z)^\times.
+\tag{1}
+\]</span>
+We take <span class="math" data-tex="\(U_1\)">\(U_1\)</span> to be the trivial group and <span class="math" data-tex="\(\varphi(1)=1\)">\(\varphi(1)=1\)</span>. Both <span class="math" data-tex="\(K_1\)">\(K_1\)</span> and <span class="math" data-tex="\(K_2\)">\(K_2\)</span> are <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<p>We use integral lattices and the discriminant–index identity from <a href="discriminants-and-integral-bases.html"><em>Discriminants and integral bases</em></a>; the local membership test and DVR characterization from <a href="discrete-valuation-rings-and-dedekind-domains.html"><em>Discrete valuation rings and Dedekind domains</em></a>; the quadratic splitting law and discriminant ramification criterion from <a href="decomposition-of-primes-in-extensions.html"><em>Decomposition of primes in extensions</em></a>; and inertia, arithmetic Frobenius, and unramified composita and Galois closures from <a href="hilberts-ramification-theory-in-galois-extensions.html"><em>Hilbert's ramification theory in Galois extensions</em></a>, Corollary 6.6. We also use the consequence of Minkowski's bound in <a href="finiteness-of-the-class-number.html"><em>Finiteness of the class number</em></a>: a number field unramified at every finite prime of <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> is <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<h2 id="cyclotomic-polynomials-and-their-automorphisms">Cyclotomic polynomials and their automorphisms</h2>
+<p>Define
+<span class="math math-display" data-tex="\[
+\Phi_n(X)=\prod_{\substack{1\leq a\leq n\\(a,n)=1}}(X-\zeta_n^a).
+\]">\[
+\Phi_n(X)=\prod_{\substack{1\leq a\leq n\\(a,n)=1}}(X-\zeta_n^a).
+\]</span>
+Grouping roots by their exact orders gives
+<span class="math math-display" data-tex="\[
+X^n-1=\prod_{d\mid n}\Phi_d(X).
+\tag{2}
+\]">\[
+X^n-1=\prod_{d\mid n}\Phi_d(X).
+\tag{2}
+\]</span>
+Inductively, every <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span> is monic and integral. Indeed, divide <span class="math" data-tex="\(X^n-1\)">\(X^n-1\)</span> by the product of the already integral monic factors for proper divisors. Monic division has integer quotient and remainder; the identity over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> makes that remainder zero.</p>
+<p><strong>Theorem 12.1.</strong> The polynomial <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span> is irreducible over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Its degree is <span class="math" data-tex="\(\varphi(n)\)">\(\varphi(n)\)</span>, and the map
+<span class="math math-display" data-tex="\[
+U_n\xrightarrow{\sim}\operatorname{Gal}(K_n/\mathbf Q),
+\qquad a\longmapsto\sigma_a,\quad \sigma_a(\zeta_n)=\zeta_n^a
+\tag{3}
+\]">\[
+U_n\xrightarrow{\sim}\operatorname{Gal}(K_n/\mathbf Q),
+\qquad a\longmapsto\sigma_a,\quad \sigma_a(\zeta_n)=\zeta_n^a
+\tag{3}
+\]</span>
+is an isomorphism.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be the monic minimal polynomial of <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>. Its coefficients are integers by integrality, and it divides <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span>. Suppose <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span> is prime and <span class="math" data-tex="\(\zeta_n^p\)">\(\zeta_n^p\)</span> is not a root of <span class="math" data-tex="\(f\)">\(f\)</span>. Let <span class="math" data-tex="\(g\)">\(g\)</span> be its monic minimal polynomial, a distinct irreducible factor of <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span>. Since <span class="math" data-tex="\(g(\zeta_n^p)=0\)">\(g(\zeta_n^p)=0\)</span>, we have <span class="math" data-tex="\(f(X)\mid g(X^p)\)">\(f(X)\mid g(X^p)\)</span> in <span class="math" data-tex="\(\mathbf Z[X]\)">\(\mathbf Z[X]\)</span>.</p>
+<p>Reduce modulo <span class="math" data-tex="\(p\)">\(p\)</span>. The identity <span class="math" data-tex="\(g(X^p)=g(X)^p\)">\(g(X^p)=g(X)^p\)</span> there shows that any irreducible factor of <span class="math" data-tex="\(\overline f\)">\(\overline f\)</span> also divides <span class="math" data-tex="\(\overline g\)">\(\overline g\)</span>. Since <span class="math" data-tex="\(fg\mid X^n-1\)">\(fg\mid X^n-1\)</span>, the latter polynomial would have a repeated factor modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Its derivative <span class="math" data-tex="\(nX^{n-1}\)">\(nX^{n-1}\)</span> is relatively prime to it, which is a contradiction.</p>
+<p>The same argument works for any primitive root that is already a root of <span class="math" data-tex="\(f\)">\(f\)</span>. Every positive integer <span class="math" data-tex="\(a\)">\(a\)</span> coprime to <span class="math" data-tex="\(n\)">\(n\)</span> is a product of primes not dividing <span class="math" data-tex="\(n\)">\(n\)</span>. Repeated application therefore puts every <span class="math" data-tex="\(\zeta_n^a\)">\(\zeta_n^a\)</span> among the roots of <span class="math" data-tex="\(f\)">\(f\)</span>. Thus <span class="math" data-tex="\(f=\Phi_n\)">\(f=\Phi_n\)</span>. All these roots lie in <span class="math" data-tex="\(K_n\)">\(K_n\)</span>; sending <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span> to any one of them defines an automorphism. Composition multiplies exponents, proving (3). The cases <span class="math" data-tex="\(n=1,2\)">\(n=1,2\)</span> are linear polynomials and trivial groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The isomorphism (3) follows from the action on roots of unity. Throughout this lesson Frobenius means the <strong>arithmetic</strong> automorphism acting on residue fields by <span class="math" data-tex="\(x\mapsto x^p\)">\(x\mapsto x^p\)</span>.</p>
+<h2 id="prime-powers-and-integral-bases">Prime powers and integral bases</h2>
+<p>Let <span class="math" data-tex="\(n=p^r\)">\(n=p^r\)</span>, <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, put <span class="math" data-tex="\(\zeta=\zeta_n\)">\(\zeta=\zeta_n\)</span>, and set <span class="math" data-tex="\(t=\varphi(n)=p^{r-1}(p-1)\)">\(t=\varphi(n)=p^{r-1}(p-1)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\Phi_{p^r}(X)=\frac{X^{p^r}-1}{X^{p^{r-1}}-1}
+=\sum_{j=0}^{p-1}X^{jp^{r-1}}.
+\tag{4}
+\]">\[
+\Phi_{p^r}(X)=\frac{X^{p^r}-1}{X^{p^{r-1}}-1}
+=\sum_{j=0}^{p-1}X^{jp^{r-1}}.
+\tag{4}
+\]</span>
+Modulo <span class="math" data-tex="\(p\)">\(p\)</span> this is <span class="math" data-tex="\((X-1)^t\)">\((X-1)^t\)</span>. Consequently <span class="math" data-tex="\(\Phi_{p^r}(X+1)\)">\(\Phi_{p^r}(X+1)\)</span> has all nonleading coefficients divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, while its constant term is <span class="math" data-tex="\(\Phi_{p^r}(1)=p\)">\(\Phi_{p^r}(1)=p\)</span>. It is Eisenstein at <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>We prove the full integral-basis assertion, rather than infer it merely from Eisenstein irreducibility. In <span class="math" data-tex="\(R=\mathbf Z[\zeta]\)">\(R=\mathbf Z[\zeta]\)</span>, put <span class="math" data-tex="\(\pi=1-\zeta\)">\(\pi=1-\zeta\)</span>. Equation (4) gives
+<span class="math math-display" data-tex="\[
+N_{K_n/\mathbf Q}\pi=p,\qquad
+p=\prod_{a\in U_n}(1-\zeta^a)=u\pi^t,\quad u\in R^\times.
+\tag{5}
+\]">\[
+N_{K_n/\mathbf Q}\pi=p,\qquad
+p=\prod_{a\in U_n}(1-\zeta^a)=u\pi^t,\quad u\in R^\times.
+\tag{5}
+\]</span>
+For the unit assertion, each ratio <span class="math" data-tex="\((1-\zeta^a)/(1-\zeta)\)">\((1-\zeta^a)/(1-\zeta)\)</span> is a geometric sum in <span class="math" data-tex="\(R\)">\(R\)</span>. Choose a positive <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(ac\equiv1\pmod n\)">\(ac\equiv1\pmod n\)</span>; the reverse ratio is the geometric sum <span class="math" data-tex="\((1-(\zeta^a)^c)/(1-\zeta^a)\)">\((1-(\zeta^a)^c)/(1-\zeta^a)\)</span>. These two sums are inverses.</p>
+<p>There is exactly one prime of <span class="math" data-tex="\(R\)">\(R\)</span> over <span class="math" data-tex="\(p\)">\(p\)</span>, because
+<span class="math math-display" data-tex="\[
+R/pR\simeq\mathbf F_p[X]/((X-1)^t).
+\]">\[
+R/pR\simeq\mathbf F_p[X]/((X-1)^t).
+\]</span>
+It is <span class="math" data-tex="\(P=(p,\pi)=(\pi)\)">\(P=(p,\pi)=(\pi)\)</span>, and <span class="math" data-tex="\(R/P=\mathbf F_p\)">\(R/P=\mathbf F_p\)</span>. An order is Noetherian of dimension one, as proved in <a href="orders-in-number-fields-and-their-picard-groups.html"><em>Orders in number fields and their Picard groups</em></a>, “Orders and their conductors.” Thus <span class="math" data-tex="\(R_P\)">\(R_P\)</span> is a one-dimensional Noetherian local domain with principal maximal ideal. The DVR characterization makes it integrally closed.</p>
+<p>The power-basis discriminant is supported only at <span class="math" data-tex="\(p\)">\(p\)</span>. To calculate it, differentiation of (4) at <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> gives
+<span class="math math-display" data-tex="\[
+\Phi_{p^r}&#x27;(\zeta)=\frac{p^r\zeta^{p^r-1}}{\zeta^{p^{r-1}}-1}.
+\]">\[
+\Phi_{p^r}&#x27;(\zeta)=\frac{p^r\zeta^{p^r-1}}{\zeta^{p^{r-1}}-1}.
+\]</span>
+The denominator has absolute norm <span class="math" data-tex="\(p^{p^{r-1}}\)">\(p^{p^{r-1}}\)</span>: its value belongs to <span class="math" data-tex="\(K_p\)">\(K_p\)</span>, has norm <span class="math" data-tex="\(p\)">\(p\)</span> there, and <span class="math" data-tex="\([K_{p^r}:K_p]=p^{r-1}\)">\([K_{p^r}:K_p]=p^{r-1}\)</span>. The discriminant formula using the derivative therefore gives
+<span class="math math-display" data-tex="\[
+|\operatorname{disc}(1,\zeta,\ldots,\zeta^{t-1})|
+=p^{rt-p^{r-1}}
+=p^{p^{r-1}(rp-r-1)}.
+\tag{6}
+\]">\[
+|\operatorname{disc}(1,\zeta,\ldots,\zeta^{t-1})|
+=p^{rt-p^{r-1}}
+=p^{p^{r-1}(rp-r-1)}.
+\tag{6}
+\]</span></p>
+<p>The discriminant–index identity excludes every prime other than <span class="math" data-tex="\(p\)">\(p\)</span> from <span class="math" data-tex="\([O_{K_n}:R]\)">\([O_{K_n}:R]\)</span>. Nor can <span class="math" data-tex="\(p\)">\(p\)</span> divide that index: at the only maximal ideal of <span class="math" data-tex="\(R\)">\(R\)</span> over <span class="math" data-tex="\(p\)">\(p\)</span>, every element of <span class="math" data-tex="\(O_{K_n}\)">\(O_{K_n}\)</span>, being integral over <span class="math" data-tex="\(R_P\)">\(R_P\)</span>, belongs to the normal ring <span class="math" data-tex="\(R_P\)">\(R_P\)</span>. The quotient <span class="math" data-tex="\(O_{K_n}/R\)">\(O_{K_n}/R\)</span> consequently vanishes after localization there; a nonzero <span class="math" data-tex="\(p\)">\(p\)</span>-primary quotient would survive at some maximal ideal over <span class="math" data-tex="\(p\)">\(p\)</span>, by the local membership test. Hence
+<span class="math math-display" data-tex="\[
+O_{K_{p^r}}=\mathbf Z[\zeta_{p^r}],\qquad
+(p)=(1-\zeta_{p^r})^{\varphi(p^r)}.
+\tag{7}
+\]">\[
+O_{K_{p^r}}=\mathbf Z[\zeta_{p^r}],\qquad
+(p)=(1-\zeta_{p^r})^{\varphi(p^r)}.
+\tag{7}
+\]</span>
+Here the last expression is an equality of ideals; the prime is <span class="math" data-tex="\((1-\zeta_{p^r})\)">\((1-\zeta_{p^r})\)</span>, of residue degree one. For <span class="math" data-tex="\(p=2,r=1\)">\(p=2,r=1\)</span>, it is simply <span class="math" data-tex="\((2)\)">\((2)\)</span> in <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, with ramification index one.</p>
+<h2 id="combining-fields-with-coprime-discriminants">Combining fields with coprime discriminants</h2>
+<p><strong>Coprime-discriminant lemma.</strong> Let <span class="math" data-tex="\(K,L\)">\(K,L\)</span> be number fields with relatively prime absolute discriminants <span class="math" data-tex="\(d_K,d_L\)">\(d_K,d_L\)</span>. Then
+<span class="math math-display" data-tex="\[
+[KL:\mathbf Q]=[K:\mathbf Q][L:\mathbf Q],\quad
+O_{KL}=O_KO_L,\quad
+d_{KL}=d_K^{[L:\mathbf Q]}d_L^{[K:\mathbf Q]}.
+\tag{8}
+\]">\[
+[KL:\mathbf Q]=[K:\mathbf Q][L:\mathbf Q],\quad
+O_{KL}=O_KO_L,\quad
+d_{KL}=d_K^{[L:\mathbf Q]}d_L^{[K:\mathbf Q]}.
+\tag{8}
+\]</span>
+The product <span class="math" data-tex="\(O_KO_L\)">\(O_KO_L\)</span> means the ring of finite sums of products.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(E,F\)">\(E,F\)</span> be the Galois closures of <span class="math" data-tex="\(K,L\)">\(K,L\)</span>. A prime not dividing <span class="math" data-tex="\(d_K\)">\(d_K\)</span> is unramified in <span class="math" data-tex="\(K\)">\(K\)</span> and in its Galois closure, by the unramified-closure result of the ramification lesson. The analogous assertion holds for <span class="math" data-tex="\(F\)">\(F\)</span>. At every rational prime, at least one of <span class="math" data-tex="\(E,F\)">\(E,F\)</span> is therefore unramified. Their intersection is unramified there by multiplicativity of ramification indices in towers. The discriminant ramification criterion and Minkowski's discriminant bound imply <span class="math" data-tex="\(E\cap F=\mathbf Q\)">\(E\cap F=\mathbf Q\)</span>.</p>
+<p>For completeness, Galois fields with this intersection have full product degree. Restrict <span class="math" data-tex="\(\operatorname{Gal}(EF/F)\)">\(\operatorname{Gal}(EF/F)\)</span> to <span class="math" data-tex="\(E\)">\(E\)</span>, obtaining a subgroup <span class="math" data-tex="\(H\)">\(H\)</span>. An element of <span class="math" data-tex="\(E\)">\(E\)</span> fixed by <span class="math" data-tex="\(H\)">\(H\)</span> is fixed by <span class="math" data-tex="\(\operatorname{Gal}(EF/F)\)">\(\operatorname{Gal}(EF/F)\)</span>, so belongs to <span class="math" data-tex="\(F\)">\(F\)</span>. Thus <span class="math" data-tex="\(E^H=E\cap F=\mathbf Q\)">\(E^H=E\cap F=\mathbf Q\)</span>. Galois correspondence gives <span class="math" data-tex="\(H=\operatorname{Gal}(E/\mathbf Q)\)">\(H=\operatorname{Gal}(E/\mathbf Q)\)</span> and <span class="math" data-tex="\([EF:F]=[E:\mathbf Q]\)">\([EF:F]=[E:\mathbf Q]\)</span>. The multiplication map <span class="math" data-tex="\(E\otimes_{\mathbf Q}F\to EF\)">\(E\otimes_{\mathbf Q}F\to EF\)</span> is an isomorphism; its restriction to <span class="math" data-tex="\(K\otimes_{\mathbf Q}L\)">\(K\otimes_{\mathbf Q}L\)</span> is injective. Its image is <span class="math" data-tex="\(KL\)">\(KL\)</span>, since that image is a finite-dimensional domain and therefore a field. This proves the first assertion in (8).</p>
+<p>Take integral bases <span class="math" data-tex="\(e_1,\ldots,e_a\)">\(e_1,\ldots,e_a\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(f_1,\ldots,f_b\)">\(f_1,\ldots,f_b\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>, and put <span class="math" data-tex="\(S=O_KO_L\)">\(S=O_KO_L\)</span>. Their products are a <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-basis of <span class="math" data-tex="\(S\)">\(S\)</span>. For <span class="math" data-tex="\(\alpha\in O_{KL}\)">\(\alpha\in O_{KL}\)</span>, expand
+<span class="math math-display" data-tex="\[
+\alpha=\sum_i e_i\beta_i,\qquad \beta_i\in L.
+\]">\[
+\alpha=\sum_i e_i\beta_i,\qquad \beta_i\in L.
+\]</span>
+Every relative trace <span class="math" data-tex="\(\operatorname{Tr}_{KL/L}(e_j\alpha)\)">\(\operatorname{Tr}_{KL/L}(e_j\alpha)\)</span> is integral and belongs to <span class="math" data-tex="\(L\)">\(L\)</span>, hence lies in <span class="math" data-tex="\(O_L\)">\(O_L\)</span>. Full product degree makes the relative embeddings precisely the embeddings of <span class="math" data-tex="\(K\)">\(K\)</span>, so these traces give the linear system
+<span class="math math-display" data-tex="\[
+\sum_i\operatorname{Tr}_{K/\mathbf Q}(e_je_i)\beta_i\in O_L.
+\]">\[
+\sum_i\operatorname{Tr}_{K/\mathbf Q}(e_je_i)\beta_i\in O_L.
+\]</span>
+Its integral coefficient matrix has determinant <span class="math" data-tex="\(d_K\)">\(d_K\)</span>. Its adjugate shows <span class="math" data-tex="\(d_K\beta_i\in O_L\)">\(d_K\beta_i\in O_L\)</span>, and therefore <span class="math" data-tex="\(d_K\alpha\in S\)">\(d_K\alpha\in S\)</span>. Interchanging the fields gives <span class="math" data-tex="\(d_L\alpha\in S\)">\(d_L\alpha\in S\)</span>. Bézout's identity now gives <span class="math" data-tex="\(\alpha\in S\)">\(\alpha\in S\)</span>. The opposite inclusion follows from integrality of products and sums, proving the second assertion.</p>
+<p>Finally the trace matrix in the product basis is the tensor product of the two trace matrices, since full product degree pairs the embeddings independently. Its determinant is <span class="math" data-tex="\(d_K^b d_L^a\)">\(d_K^b d_L^a\)</span>; the tensor determinant identity follows, for example, by triangularizing the two matrices over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> and multiplying their diagonal entries. This proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lemma supplies full product degree even when neither field is Galois. An intersection computation by itself would not supply that conclusion for arbitrary fields.</p>
+<p><strong>Theorem 12.2.</strong> For every <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+O_{K_n}=\mathbf Z[\zeta_n].
+\tag{9}
+\]">\[
+O_{K_n}=\mathbf Z[\zeta_n].
+\tag{9}
+\]</span>
+For <span class="math" data-tex="\(n&gt;2\)">\(n&gt;2\)</span> its discriminant is
+<span class="math math-display" data-tex="\[
+d_{K_n}=(-1)^{\varphi(n)/2}
+\frac{n^{\varphi(n)}}{\displaystyle\prod_{p\mid n}p^{\varphi(n)/(p-1)}}.
+\tag{10}
+\]">\[
+d_{K_n}=(-1)^{\varphi(n)/2}
+\frac{n^{\varphi(n)}}{\displaystyle\prod_{p\mid n}p^{\varphi(n)/(p-1)}}.
+\tag{10}
+\]</span>
+For <span class="math" data-tex="\(n=1,2\)">\(n=1,2\)</span>, it is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(n=\prod_i q_i\)">\(n=\prod_i q_i\)</span> with <span class="math" data-tex="\(q_i\)">\(q_i\)</span> distinct prime powers. Their fields have coprime discriminants by (6). Repeated application of (8) gives the full ring as the product of the rings <span class="math" data-tex="\(\mathbf Z[\zeta_{q_i}]\)">\(\mathbf Z[\zeta_{q_i}]\)</span>. Inside <span class="math" data-tex="\(K_n\)">\(K_n\)</span>, <span class="math" data-tex="\(\zeta_{q_i}=\zeta_n^{n/q_i}\)">\(\zeta_{q_i}=\zeta_n^{n/q_i}\)</span>. The integers <span class="math" data-tex="\(n/q_i\)">\(n/q_i\)</span> have gcd one, so integer powers of these roots also generate <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>. This proves (9); <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is immediate.</p>
+<p>Here is a direct derivation of the discriminant formula. Möbius inversion in (2) gives
+<span class="math math-display" data-tex="\[
+\Phi_n(X)=\prod_{d\mid n}(X^d-1)^{\mu(n/d)}.
+\]">\[
+\Phi_n(X)=\prod_{d\mid n}(X^d-1)^{\mu(n/d)}.
+\]</span>
+At a primitive root <span class="math" data-tex="\(\zeta=\zeta_n\)">\(\zeta=\zeta_n\)</span>, differentiation after removing the factor <span class="math" data-tex="\(X^n-1\)">\(X^n-1\)</span> yields
+<span class="math math-display" data-tex="\[
+\Phi_n&#x27;(\zeta)=n\zeta^{n-1}
+\prod_{\substack{d\mid n\\d&lt;n}}(\zeta^d-1)^{\mu(n/d)}.
+\tag{11}
+\]">\[
+\Phi_n&#x27;(\zeta)=n\zeta^{n-1}
+\prod_{\substack{d\mid n\\d&lt;n}}(\zeta^d-1)^{\mu(n/d)}.
+\tag{11}
+\]</span>
+For <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>, taking the limit at <span class="math" data-tex="\(1\)">\(1\)</span> in the same product gives
+<span class="math math-display" data-tex="\[
+\Phi_m(1)=\prod_{d\mid m}d^{\mu(m/d)}=
+\begin{cases}
+p,&amp;m\text{ is a power of the prime }p,\\
+1,&amp;m\text{ has at least two prime divisors}.
+\end{cases}
+\tag{12}
+\]">\[
+\Phi_m(1)=\prod_{d\mid m}d^{\mu(m/d)}=
+\begin{cases}
+p,&amp;m\text{ is a power of the prime }p,\\
+1,&amp;m\text{ has at least two prime divisors}.
+\end{cases}
+\tag{12}
+\]</span>
+To verify the last equality, take the valuation at a prime <span class="math" data-tex="\(q\)">\(q\)</span>. In <span class="math" data-tex="\(\sum_{d\mid m}\mu(m/d)v_q(d)\)">\(\sum_{d\mid m}\mu(m/d)v_q(d)\)</span>, summation over any other prime divisor cancels the terms in pairs. If <span class="math" data-tex="\(m=q^k\)">\(m=q^k\)</span>, just the terms <span class="math" data-tex="\(d=q^k,q^{k-1}\)">\(d=q^k,q^{k-1}\)</span> survive, with difference one.</p>
+<p>For <span class="math" data-tex="\(m=n/d\)">\(m=n/d\)</span>, the root <span class="math" data-tex="\(\zeta^d\)">\(\zeta^d\)</span> is primitive of order <span class="math" data-tex="\(m\)">\(m\)</span>, so
+<span class="math math-display" data-tex="\[
+|N_{K_n/\mathbf Q}(1-\zeta^d)|
+=\Phi_m(1)^{\varphi(n)/\varphi(m)}.
+\]">\[
+|N_{K_n/\mathbf Q}(1-\zeta^d)|
+=\Phi_m(1)^{\varphi(n)/\varphi(m)}.
+\]</span>
+In (11), all <span class="math" data-tex="\(m\)">\(m\)</span> other than prime powers contribute one, and <span class="math" data-tex="\(\mu(p^k)=0\)">\(\mu(p^k)=0\)</span> for <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>. The terms <span class="math" data-tex="\(m=p\)">\(m=p\)</span> contribute <span class="math" data-tex="\(p^{-\varphi(n)/(p-1)}\)">\(p^{-\varphi(n)/(p-1)}\)</span>. Taking the derivative norm proves the absolute value in (10). For <span class="math" data-tex="\(n&gt;2\)">\(n&gt;2\)</span>, no embedding is real: a primitive root of order greater than two is nonreal. Thus <span class="math" data-tex="\(r_2=\varphi(n)/2\)">\(r_2=\varphi(n)/2\)</span>, and the signature sign of the discriminant gives (10). The two degree-one cases have integral basis <span class="math" data-tex="\(1\)">\(1\)</span> and discriminant <span class="math" data-tex="\(1\)">\(1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="decomposition-of-primes">Decomposition of primes</h2>
+<p>For <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>, write <span class="math" data-tex="\(\operatorname{ord}_m(p)\)">\(\operatorname{ord}_m(p)\)</span> for the order of <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(U_m\)">\(U_m\)</span>, with <span class="math" data-tex="\(\operatorname{ord}_1(p)=1\)">\(\operatorname{ord}_1(p)=1\)</span>.</p>
+<p><strong>Theorem 12.3.</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be any rational prime and write <span class="math" data-tex="\(n=p^r m\)">\(n=p^r m\)</span>, with <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span> and <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>. In <span class="math" data-tex="\(K_n\)">\(K_n\)</span>, every prime over <span class="math" data-tex="\(p\)">\(p\)</span> has
+<span class="math math-display" data-tex="\[
+e=\varphi(p^r),\qquad f=\operatorname{ord}_m(p),\qquad
+g=\frac{\varphi(m)}{f}
+\tag{13}
+\]">\[
+e=\varphi(p^r),\qquad f=\operatorname{ord}_m(p),\qquad
+g=\frac{\varphi(m)}{f}
+\tag{13}
+\]</span>
+as ramification index, residue degree, and number of primes, respectively. Here <span class="math" data-tex="\(p^0=1\)">\(p^0=1\)</span>. For <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span>, arithmetic Frobenius is <span class="math" data-tex="\(\sigma_p\)">\(\sigma_p\)</span>.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span>. Formula (10), with the degree-one cases treated separately, shows that <span class="math" data-tex="\(p\)">\(p\)</span> is unramified. At a prime <span class="math" data-tex="\(P\)">\(P\)</span> over <span class="math" data-tex="\(p\)">\(p\)</span>, the reduction of <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span> still has order <span class="math" data-tex="\(n\)">\(n\)</span>. Indeed, the factors <span class="math" data-tex="\(\overline\Phi_d\)">\(\overline\Phi_d\)</span>, <span class="math" data-tex="\(d\mid n\)">\(d\mid n\)</span>, of <span class="math" data-tex="\(X^n-1\)">\(X^n-1\)</span> are pairwise coprime because that polynomial is squarefree. A root of <span class="math" data-tex="\(\overline\Phi_n\)">\(\overline\Phi_n\)</span> cannot also have a proper divisor of <span class="math" data-tex="\(n\)">\(n\)</span> as its order.</p>
+<p>The arithmetic Frobenius <span class="math" data-tex="\(F_P\)">\(F_P\)</span> satisfies <span class="math" data-tex="\(F_P(\zeta_n)\equiv\zeta_n^p\pmod P\)">\(F_P(\zeta_n)\equiv\zeta_n^p\pmod P\)</span>. Both are powers of <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>, and the exact order of its reduction makes the two powers equal already in <span class="math" data-tex="\(K_n\)">\(K_n\)</span>. Thus <span class="math" data-tex="\(F_P=\sigma_p\)">\(F_P=\sigma_p\)</span>. The decomposition group is the cyclic group it generates, of order <span class="math" data-tex="\(\operatorname{ord}_n(p)\)">\(\operatorname{ord}_n(p)\)</span>; the unramified decomposition theorem gives <span class="math" data-tex="\(f\)">\(f\)</span> equal to this order and <span class="math" data-tex="\(g=\varphi(n)/f\)">\(g=\varphi(n)/f\)</span>.</p>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, the prime-power field <span class="math" data-tex="\(K_{p^r}\)">\(K_{p^r}\)</span> is totally ramified at <span class="math" data-tex="\(p\)">\(p\)</span>, with residue field <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>, by (7). The field <span class="math" data-tex="\(K_m\)">\(K_m\)</span> is unramified there by the first part. Coprime discriminants and (3) identify
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(K_n/\mathbf Q)=U_{p^r}\times U_m.
+\]">\[
+\operatorname{Gal}(K_n/\mathbf Q)=U_{p^r}\times U_m.
+\]</span>
+Restriction of inertia to a Galois subfield is onto its inertia group. Hence inertia maps onto <span class="math" data-tex="\(U_{p^r}\)">\(U_{p^r}\)</span> and has trivial image in <span class="math" data-tex="\(U_m\)">\(U_m\)</span>. It is exactly <span class="math" data-tex="\(U_{p^r}\times1\)">\(U_{p^r}\times1\)</span>. Restriction of decomposition groups is likewise onto, so the decomposition group has projection <span class="math" data-tex="\(\langle p\bmod m\rangle\)">\(\langle p\bmod m\rangle\)</span> in <span class="math" data-tex="\(U_m\)">\(U_m\)</span>. Since it contains <span class="math" data-tex="\(U_{p^r}\times1\)">\(U_{p^r}\times1\)</span>, it is
+<span class="math math-display" data-tex="\[
+D=U_{p^r}\times\langle p\bmod m\rangle,\qquad
+I=U_{p^r}\times1.
+\tag{14}
+\]">\[
+D=U_{p^r}\times\langle p\bmod m\rangle,\qquad
+I=U_{p^r}\times1.
+\tag{14}
+\]</span>
+The formulas <span class="math" data-tex="\(e=|I|\)">\(e=|I|\)</span>, <span class="math" data-tex="\(f=|D/I|\)">\(f=|D/I|\)</span>, and <span class="math" data-tex="\(g=|G/D|\)">\(g=|G/D|\)</span> give (13). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, a prime ramifies exactly when <span class="math" data-tex="\(\varphi(p^r)&gt;1\)">\(\varphi(p^r)&gt;1\)</span>. If <span class="math" data-tex="\(n&gt;2\)">\(n&gt;2\)</span> and <span class="math" data-tex="\(n\not\equiv2\pmod4\)">\(n\not\equiv2\pmod4\)</span>, this means exactly the primes dividing <span class="math" data-tex="\(n\)">\(n\)</span>. If <span class="math" data-tex="\(n=2m\)">\(n=2m\)</span> with <span class="math" data-tex="\(m\)">\(m\)</span> odd, then
+<span class="math math-display" data-tex="\[
+\zeta_{2m}=-\zeta_m^{(m+1)/2},\qquad K_{2m}=K_m;
+\tag{15}
+\]">\[
+\zeta_{2m}=-\zeta_m^{(m+1)/2},\qquad K_{2m}=K_m;
+\tag{15}
+\]</span>
+the factor <span class="math" data-tex="\(2\)">\(2\)</span> contributes no ramification. The fields <span class="math" data-tex="\(K_1,K_2\)">\(K_1,K_2\)</span> have no ramified primes.</p>
+<p>For <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span>, complete splitting means <span class="math" data-tex="\(p\equiv1\pmod n\)">\(p\equiv1\pmod n\)</span>. More generally, the finite-field factorization of <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span> consists of <span class="math" data-tex="\(g\)">\(g\)</span> distinct irreducible factors, each of degree <span class="math" data-tex="\(f\)">\(f\)</span>: its roots are primitive roots of order <span class="math" data-tex="\(n\)">\(n\)</span>, whose Frobenius orbits all have length <span class="math" data-tex="\(\operatorname{ord}_n(p)\)">\(\operatorname{ord}_n(p)\)</span>. The full-ring factorization theorem identifies the primes with those factors.</p>
+<p><strong>Examples.</strong> In <span class="math" data-tex="\(K_5\)">\(K_5\)</span>, the residues of <span class="math" data-tex="\(11,19,2,3\)">\(11,19,2,3\)</span> modulo <span class="math" data-tex="\(5\)">\(5\)</span> have orders <span class="math" data-tex="\(1,2,4,4\)">\(1,2,4,4\)</span>. Thus <span class="math" data-tex="\(11\)">\(11\)</span> splits into four primes of norm <span class="math" data-tex="\(11\)">\(11\)</span>; <span class="math" data-tex="\(19\)">\(19\)</span> into two primes of norm <span class="math" data-tex="\(19^2\)">\(19^2\)</span>; and <span class="math" data-tex="\(2,3\)">\(2,3\)</span> are inert, with norms <span class="math" data-tex="\(2^4,3^4\)">\(2^4,3^4\)</span>. The prime <span class="math" data-tex="\(5\)">\(5\)</span> is totally ramified. Formula (10) gives <span class="math" data-tex="\(d_{K_5}=5^3\)">\(d_{K_5}=5^3\)</span>.</p>
+<p>In <span class="math" data-tex="\(K_{12}\)">\(K_{12}\)</span>, put <span class="math" data-tex="\(\zeta=\zeta_{12}\)">\(\zeta=\zeta_{12}\)</span>. Then <span class="math" data-tex="\(i=\zeta^3\)">\(i=\zeta^3\)</span> and <span class="math" data-tex="\(\sqrt3=\zeta+\zeta^{-1}\)">\(\sqrt3=\zeta+\zeta^{-1}\)</span>. Conversely <span class="math" data-tex="\(\zeta=(\sqrt3+i)/2\)">\(\zeta=(\sqrt3+i)/2\)</span>, so
+<span class="math math-display" data-tex="\[
+K_{12}=\mathbf Q(i,\sqrt3).
+\]">\[
+K_{12}=\mathbf Q(i,\sqrt3).
+\]</span>
+Its degree is four, and its Galois group is <span class="math" data-tex="\(U_{12}\simeq(\mathbf Z/2\mathbf Z)^2\)">\(U_{12}\simeq(\mathbf Z/2\mathbf Z)^2\)</span>. The three index-two subgroups give exactly the three quadratic subfields <span class="math" data-tex="\(\mathbf Q(i),\mathbf Q(\sqrt3),\mathbf Q(\sqrt{-3})\)">\(\mathbf Q(i),\mathbf Q(\sqrt3),\mathbf Q(\sqrt{-3})\)</span>. Its discriminant is <span class="math" data-tex="\(144\)">\(144\)</span>.</p>
+<p>For <span class="math" data-tex="\(K_7\)">\(K_7\)</span>, the signature has three complex pairs, and (10) gives <span class="math" data-tex="\(d_{K_7}=-7^5\)">\(d_{K_7}=-7^5\)</span>.</p>
+<h2 id="a-gauss-sum-and-quadratic-reciprocity">A Gauss sum and quadratic reciprocity</h2>
+<p>For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, let <span class="math" data-tex="\(\chi(a)=(a/p)\)">\(\chi(a)=(a/p)\)</span> be the Legendre symbol, extended by <span class="math" data-tex="\(\chi(0)=0\)">\(\chi(0)=0\)</span>. The cyclic group <span class="math" data-tex="\(\mathbf F_p^\times\)">\(\mathbf F_p^\times\)</span> has a subgroup of squares of index two; thus <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is multiplicative, its sum over <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span> is zero, and
+<span class="math math-display" data-tex="\[
+\chi(-1)=(-1)^{(p-1)/2}.
+\tag{16}
+\]">\[
+\chi(-1)=(-1)^{(p-1)/2}.
+\tag{16}
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+G_p=\sum_{a\bmod p}\chi(a)\zeta_p^a,\qquad
+p^*=(-1)^{(p-1)/2}p.
+\tag{17}
+\]">\[
+G_p=\sum_{a\bmod p}\chi(a)\zeta_p^a,\qquad
+p^*=(-1)^{(p-1)/2}p.
+\tag{17}
+\]</span></p>
+<p><strong>Proposition 12.4.</strong> For every odd prime <span class="math" data-tex="\(p\)">\(p\)</span>,
+<span class="math math-display" data-tex="\[
+G_p^2=p^*,\qquad
+\mathbf Q(G_p)=\mathbf Q(\sqrt{p^*}),
+\tag{18}
+\]">\[
+G_p^2=p^*,\qquad
+\mathbf Q(G_p)=\mathbf Q(\sqrt{p^*}),
+\tag{18}
+\]</span>
+and this is the unique quadratic subfield of <span class="math" data-tex="\(K_p\)">\(K_p\)</span>.</p>
+<p><strong>Proof.</strong> Reindexing the sum gives
+<span class="math math-display" data-tex="\[
+\sigma_b(G_p)=\chi(b)G_p,\qquad
+\overline{G_p}=\chi(-1)G_p.
+\tag{19}
+\]">\[
+\sigma_b(G_p)=\chi(b)G_p,\qquad
+\overline{G_p}=\chi(-1)G_p.
+\tag{19}
+\]</span>
+The norm square is computed without choosing a sign for a square root. With <span class="math" data-tex="\(a=tb\)">\(a=tb\)</span> and <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+G_p\overline{G_p}
+=\sum_{t\bmod p}\chi(t)\sum_{b\ne0}\zeta_p^{(t-1)b}
+=(p-1)-\sum_{t\ne1}\chi(t)=p.
+\tag{20}
+\]">\[
+G_p\overline{G_p}
+=\sum_{t\bmod p}\chi(t)\sum_{b\ne0}\zeta_p^{(t-1)b}
+=(p-1)-\sum_{t\ne1}\chi(t)=p.
+\tag{20}
+\]</span>
+The inner sum is <span class="math" data-tex="\(p-1\)">\(p-1\)</span> for <span class="math" data-tex="\(t=1\)">\(t=1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise, by the finite geometric sum; the total character sum is zero. Equations (19)–(20) prove (18). The rational number <span class="math" data-tex="\(p^*\)">\(p^*\)</span> is not a rational square, so this field is quadratic. Finally <span class="math" data-tex="\(U_p\)">\(U_p\)</span> is cyclic, and a cyclic group of even order has exactly one index-two subgroup. Galois correspondence proves uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 12.5 (quadratic reciprocity).</strong> For distinct odd primes <span class="math" data-tex="\(p,q\)">\(p,q\)</span>,
+<span class="math math-display" data-tex="\[
+\left(\frac pq\right)\left(\frac qp\right)
+=(-1)^{(p-1)(q-1)/4}.
+\tag{21}
+\]">\[
+\left(\frac pq\right)\left(\frac qp\right)
+=(-1)^{(p-1)(q-1)/4}.
+\tag{21}
+\]</span>
+The supplements, for odd <span class="math" data-tex="\(p\)">\(p\)</span>, are
+<span class="math math-display" data-tex="\[
+\left(\frac{-1}{p}\right)=(-1)^{(p-1)/2},\qquad
+\left(\frac2p\right)=(-1)^{(p^2-1)/8}.
+\tag{22}
+\]">\[
+\left(\frac{-1}{p}\right)=(-1)^{(p-1)/2},\qquad
+\left(\frac2p\right)=(-1)^{(p^2-1)/8}.
+\tag{22}
+\]</span></p>
+<p><strong>Proof.</strong> The first supplement is (16). The quadratic field <span class="math" data-tex="\(E=\mathbf Q(\sqrt{p^*})\)">\(E=\mathbf Q(\sqrt{p^*})\)</span> has fundamental discriminant <span class="math" data-tex="\(p^*\)">\(p^*\)</span>. The prime <span class="math" data-tex="\(q\)">\(q\)</span> is unramified in <span class="math" data-tex="\(K_p\)">\(K_p\)</span>, so its Frobenius restricts to the Frobenius in <span class="math" data-tex="\(E\)">\(E\)</span>. By (19), its action on <span class="math" data-tex="\(G_p\)">\(G_p\)</span> is multiplication by <span class="math" data-tex="\((q/p)\)">\((q/p)\)</span>. By the quadratic splitting law, that same action is multiplication by <span class="math" data-tex="\((p^*/q)\)">\((p^*/q)\)</span>: Frobenius is the identity when the prime splits and the conjugation when it is inert. Thus
+<span class="math math-display" data-tex="\[
+\left(\frac qp\right)=\left(\frac{p^*}{q}\right)
+=\left(\frac pq\right)
+(-1)^{(p-1)(q-1)/4},
+\tag{23}
+\]">\[
+\left(\frac qp\right)=\left(\frac{p^*}{q}\right)
+=\left(\frac pq\right)
+(-1)^{(p-1)(q-1)/4},
+\tag{23}
+\]</span>
+which is (21). No reciprocity statement has been used in deriving (23).</p>
+<p>For the second supplement, in <span class="math" data-tex="\(K_8\)">\(K_8\)</span> set <span class="math" data-tex="\(s=\zeta_8+\zeta_8^{-1}=\sqrt2\)">\(s=\zeta_8+\zeta_8^{-1}=\sqrt2\)</span>. For odd <span class="math" data-tex="\(q\)">\(q\)</span>, the automorphism <span class="math" data-tex="\(\sigma_q\)">\(\sigma_q\)</span> sends <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(s\)">\(s\)</span> for <span class="math" data-tex="\(q\equiv1,7\pmod8\)">\(q\equiv1,7\pmod8\)</span> and to <span class="math" data-tex="\(-s\)">\(-s\)</span> for <span class="math" data-tex="\(q\equiv3,5\pmod8\)">\(q\equiv3,5\pmod8\)</span>. The prime <span class="math" data-tex="\(q\)">\(q\)</span> is unramified in <span class="math" data-tex="\(K_8\)">\(K_8\)</span>, and restricting its Frobenius to <span class="math" data-tex="\(\mathbf Q(\sqrt2)\)">\(\mathbf Q(\sqrt2)\)</span> identifies this sign with <span class="math" data-tex="\((2/q)\)">\((2/q)\)</span>, by the quadratic splitting law. The four signs are exactly <span class="math" data-tex="\((-1)^{(q^2-1)/8}\)">\((-1)^{(q^2-1)/8}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="quadratic-fields-inside-cyclotomic-fields">Quadratic fields inside cyclotomic fields</h2>
+<p>For an odd prime put <span class="math" data-tex="\(d_p=p^*\)">\(d_p=p^*\)</span>, and use these three even discriminants:
+<span class="math math-display" data-tex="\[
+\chi_{-4}(a)=(-1)^{(a-1)/2},\quad
+\chi_8(a)=(-1)^{(a^2-1)/8},\quad
+\chi_{-8}(a)=\chi_{-4}(a)\chi_8(a)
+\tag{24}
+\]">\[
+\chi_{-4}(a)=(-1)^{(a-1)/2},\quad
+\chi_8(a)=(-1)^{(a^2-1)/8},\quad
+\chi_{-8}(a)=\chi_{-4}(a)\chi_8(a)
+\tag{24}
+\]</span>
+for odd <span class="math" data-tex="\(a\)">\(a\)</span>, with value zero for even <span class="math" data-tex="\(a\)">\(a\)</span>. These are multiplicative functions on the units modulo <span class="math" data-tex="\(4,8,8\)">\(4,8,8\)</span>, respectively. For the first this follows by multiplying signs modulo four. For the second it follows from the four unit residues modulo eight: the kernel is <span class="math" data-tex="\(\{1,7\}\)">\(\{1,7\}\)</span>. For <span class="math" data-tex="\(d_p\)">\(d_p\)</span>, let <span class="math" data-tex="\(\chi_{d_p}(a)=(a/p)\)">\(\chi_{d_p}(a)=(a/p)\)</span>.</p>
+<p>Every quadratic fundamental discriminant <span class="math" data-tex="\(D\)">\(D\)</span> factors uniquely as
+<span class="math math-display" data-tex="\[
+D=\delta\prod_{p\mid D,\ p&gt;2}p^*,
+\qquad \delta\in\{1,-4,8,-8\},
+\tag{25}
+\]">\[
+D=\delta\prod_{p\mid D,\ p&gt;2}p^*,
+\qquad \delta\in\{1,-4,8,-8\},
+\tag{25}
+\]</span>
+where the absolute values of the displayed factors are pairwise coprime. To check this directly, an odd fundamental <span class="math" data-tex="\(D\equiv1\pmod4\)">\(D\equiv1\pmod4\)</span> equals the product of its <span class="math" data-tex="\(p^*\)">\(p^*\)</span>, since that product is <span class="math" data-tex="\(1\pmod4\)">\(1\pmod4\)</span> and has the same absolute value. If <span class="math" data-tex="\(D=4d\)">\(D=4d\)</span> with odd squarefree <span class="math" data-tex="\(d\equiv3\pmod4\)">\(d\equiv3\pmod4\)</span>, the odd product is <span class="math" data-tex="\(-d\)">\(-d\)</span>, so <span class="math" data-tex="\(\delta=-4\)">\(\delta=-4\)</span>. If <span class="math" data-tex="\(D=8u\)">\(D=8u\)</span> with odd squarefree <span class="math" data-tex="\(u\)">\(u\)</span>, the odd product is <span class="math" data-tex="\(u\)">\(u\)</span> for <span class="math" data-tex="\(u\equiv1\pmod4\)">\(u\equiv1\pmod4\)</span> and <span class="math" data-tex="\(-u\)">\(-u\)</span> for <span class="math" data-tex="\(u\equiv3\pmod4\)">\(u\equiv3\pmod4\)</span>, giving <span class="math" data-tex="\(\delta=8\)">\(\delta=8\)</span> or <span class="math" data-tex="\(-8\)">\(-8\)</span>.</p>
+<p>For a factor <span class="math" data-tex="\(d_i\)">\(d_i\)</span> in (25), set <span class="math" data-tex="\(f_i=|d_i|\)">\(f_i=|d_i|\)</span> and
+<span class="math math-display" data-tex="\[
+\tau_i=\sum_{a\bmod f_i}\chi_{d_i}(a)\zeta_{f_i}^a.
+\]">\[
+\tau_i=\sum_{a\bmod f_i}\chi_{d_i}(a)\zeta_{f_i}^a.
+\]</span>
+The odd factors satisfy <span class="math" data-tex="\(\tau_i^2=d_i\)">\(\tau_i^2=d_i\)</span> by Proposition 12.4. Direct sums of the four or eight residues give
+<span class="math math-display" data-tex="\[
+\tau_{-4}=2i,\qquad \tau_8=2\sqrt2,\qquad
+\tau_{-8}=2i\sqrt2,
+\tag{26}
+\]">\[
+\tau_{-4}=2i,\qquad \tau_8=2\sqrt2,\qquad
+\tau_{-8}=2i\sqrt2,
+\tag{26}
+\]</span>
+so the same square identity holds for the even factors.</p>
+<p>Put <span class="math" data-tex="\(f=|D|=\prod_i f_i\)">\(f=|D|=\prod_i f_i\)</span> and <span class="math" data-tex="\(\chi_D(a)=\prod_i\chi_{d_i}(a)\)">\(\chi_D(a)=\prod_i\chi_{d_i}(a)\)</span>, with the factors evaluated modulo their respective moduli. The Chinese remainder theorem makes this a quadratic character modulo <span class="math" data-tex="\(f\)">\(f\)</span>. Write <span class="math" data-tex="\(M_i=f/f_i\)">\(M_i=f/f_i\)</span> and choose <span class="math" data-tex="\(t_iM_i\equiv1\pmod{f_i}\)">\(t_iM_i\equiv1\pmod{f_i}\)</span>. A residue is <span class="math" data-tex="\(a=\sum_i a_iM_it_i\)">\(a=\sum_i a_iM_it_i\)</span>, and <span class="math" data-tex="\(\zeta_f^a=\prod_i\zeta_{f_i}^{a_it_i}\)">\(\zeta_f^a=\prod_i\zeta_{f_i}^{a_it_i}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\tau_D:=\sum_{a\bmod f}\chi_D(a)\zeta_f^a
+=\prod_i\left(\sum_{a_i\bmod f_i}
+ \chi_{d_i}(a_i)\zeta_{f_i}^{t_i a_i}\right)
+=\left(\prod_i\chi_{d_i}(M_i)\right)\prod_i\tau_i.
+\tag{27}
+\]">\[
+\tau_D:=\sum_{a\bmod f}\chi_D(a)\zeta_f^a
+=\prod_i\left(\sum_{a_i\bmod f_i}
+ \chi_{d_i}(a_i)\zeta_{f_i}^{t_i a_i}\right)
+=\left(\prod_i\chi_{d_i}(M_i)\right)\prod_i\tau_i.
+\tag{27}
+\]</span>
+The substitution <span class="math" data-tex="\(b=t_i a_i\)">\(b=t_i a_i\)</span> gives the last equality; for a quadratic character the value at an inverse equals the value at the element. The prefactor is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\tau_D^2=D,\qquad \tau_D\in K_{|D|}.
+\tag{28}
+\]">\[
+\tau_D^2=D,\qquad \tau_D\in K_{|D|}.
+\tag{28}
+\]</span></p>
+<p><strong>Proposition 12.6.</strong> If <span class="math" data-tex="\(E\)">\(E\)</span> is a quadratic number field of discriminant <span class="math" data-tex="\(D\)">\(D\)</span>, then
+<span class="math math-display" data-tex="\[
+E=\mathbf Q(\tau_D)\subseteq K_{|D|}.
+\tag{29}
+\]">\[
+E=\mathbf Q(\tau_D)\subseteq K_{|D|}.
+\tag{29}
+\]</span></p>
+<p><strong>Proof.</strong> Its integral basis identifies <span class="math" data-tex="\(E=\mathbf Q(\sqrt D)\)">\(E=\mathbf Q(\sqrt D)\)</span>. Equation (28) gives a nonzero square root of <span class="math" data-tex="\(D\)">\(D\)</span> in the indicated cyclotomic field. Since a quadratic discriminant is not a rational square, <span class="math" data-tex="\(\tau_D\)">\(\tau_D\)</span> generates <span class="math" data-tex="\(E\)">\(E\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is an explicit algebraic inclusion. Determining which of the two complex square roots equals a general Gauss sum requires additional information; (28) does not select that sign.</p>
+<p>For example, <span class="math" data-tex="\(12=(-4)(-3)\)">\(12=(-4)(-3)\)</span>; the factors <span class="math" data-tex="\(2i\)">\(2i\)</span> and <span class="math" data-tex="\(i\sqrt3\)">\(i\sqrt3\)</span> in (26) and (18) already give a square root of <span class="math" data-tex="\(12\)">\(12\)</span> inside <span class="math" data-tex="\(K_{12}\)">\(K_{12}\)</span>, with the CRT sign in (27) fixing the resulting Gauss sum.</p>
+<p><strong>Real subfield.</strong> For <span class="math" data-tex="\(n&gt;2\)">\(n&gt;2\)</span>, put <span class="math" data-tex="\(K_n^+=\mathbf Q(\zeta_n+\zeta_n^{-1})\)">\(K_n^+=\mathbf Q(\zeta_n+\zeta_n^{-1})\)</span>. This field is real, and <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span> satisfies
+<span class="math math-display" data-tex="\[
+X^2-(\zeta_n+\zeta_n^{-1})X+1=0.
+\]">\[
+X^2-(\zeta_n+\zeta_n^{-1})X+1=0.
+\]</span>
+It is nonreal, so <span class="math" data-tex="\([K_n:K_n^+]=2\)">\([K_n:K_n^+]=2\)</span>. Complex conjugation is <span class="math" data-tex="\(\sigma_{-1}\)">\(\sigma_{-1}\)</span>; its fixed field also has index two, and hence is exactly <span class="math" data-tex="\(K_n^+\)">\(K_n^+\)</span>. Thus <span class="math" data-tex="\([K_n^+:\mathbf Q]=\varphi(n)/2\)">\([K_n^+:\mathbf Q]=\varphi(n)/2\)</span>. For <span class="math" data-tex="\(n=1,2\)">\(n=1,2\)</span>, the real subfield is <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, of degree one.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>Compute the decomposition of <span class="math" data-tex="\(2,3,5,7,11\)">\(2,3,5,7,11\)</span> in <span class="math" data-tex="\(K_8\)">\(K_8\)</span>, including the norms of the primes.</li>
+<li>Prove the coprime-discriminant lemma (8) for arbitrary number fields; explain where full product degree enters the integral-basis proof.</li>
+<li>Prove <span class="math" data-tex="\(K_n\cap K_m=K_{\gcd(n,m)}\)">\(K_n\cap K_m=K_{\gcd(n,m)}\)</span>, including the cases with a factor <span class="math" data-tex="\(2\)">\(2\)</span> occurring to the first power.</li>
+<li>Compute quadratic Gauss sums up to sign for composite moduli. Treat primitive characters and characters induced to a larger modulus separately, and deduce (29) explicitly.</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>1.</strong> At <span class="math" data-tex="\(2\)">\(2\)</span>, formula (7) gives
+<span class="math math-display" data-tex="\[
+(2)=(1-\zeta_8)^4,\qquad e=4,\ f=1,\ g=1,\ N(1-\zeta_8)=2.
+\]">\[
+(2)=(1-\zeta_8)^4,\qquad e=4,\ f=1,\ g=1,\ N(1-\zeta_8)=2.
+\]</span>
+For each of <span class="math" data-tex="\(3,5,7,11\)">\(3,5,7,11\)</span>, its residue modulo <span class="math" data-tex="\(8\)">\(8\)</span> is nonidentity and has order two in <span class="math" data-tex="\(U_8\)">\(U_8\)</span>. Thus it is unramified and splits into two distinct primes, each of residue degree two and norm <span class="math" data-tex="\(p^2\)">\(p^2\)</span>. Their norms are <span class="math" data-tex="\(9,25,49,121\)">\(9,25,49,121\)</span>, respectively. None is inert: <span class="math" data-tex="\(U_8\)">\(U_8\)</span> has no element of order four.</p>
+<p><strong>2.</strong> The first part of the proof of (8) establishes full product degree before any trace expansion: the intersection of the Galois closures is unramified everywhere and hence trivial, and restriction of Galois groups then proves linear disjointness. Restricting the tensor multiplication map to the original fields gives degree <span class="math" data-tex="\([K:\mathbf Q][L:\mathbf Q]\)">\([K:\mathbf Q][L:\mathbf Q]\)</span>.</p>
+<p>With integral bases <span class="math" data-tex="\(e_i,f_j\)">\(e_i,f_j\)</span>, the products <span class="math" data-tex="\(e_if_j\)">\(e_if_j\)</span> are therefore linearly independent. Their span is closed under multiplication, because each original integral basis has integer multiplication coefficients. It is exactly the product ring <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>An integer <span class="math" data-tex="\(\alpha\in KL\)">\(\alpha\in KL\)</span> has a unique expansion <span class="math" data-tex="\(\sum_i e_i\beta_i\)">\(\sum_i e_i\beta_i\)</span>, <span class="math" data-tex="\(\beta_i\in L\)">\(\beta_i\in L\)</span>. Full product degree identifies the relative trace coefficients with the rational trace matrix of <span class="math" data-tex="\(K\)">\(K\)</span>. Its adjugate gives <span class="math" data-tex="\(d_K\alpha\in S\)">\(d_K\alpha\in S\)</span>; reversing <span class="math" data-tex="\(K,L\)">\(K,L\)</span> gives <span class="math" data-tex="\(d_L\alpha\in S\)">\(d_L\alpha\in S\)</span>. For integers <span class="math" data-tex="\(u,v\)">\(u,v\)</span> with <span class="math" data-tex="\(ud_K+vd_L=1\)">\(ud_K+vd_L=1\)</span>,
+<span class="math math-display" data-tex="\[
+\alpha=u(d_K\alpha)+v(d_L\alpha)\in S.
+\]">\[
+\alpha=u(d_K\alpha)+v(d_L\alpha)\in S.
+\]</span>
+Thus <span class="math" data-tex="\(O_{KL}=S\)">\(O_{KL}=S\)</span>, with no Galois hypothesis on <span class="math" data-tex="\(K,L\)">\(K,L\)</span>. The trace tensor determinant proves the discriminant formula. The full degree was needed both for uniqueness of the expansion and for the identification of its relative traces.</p>
+<p><strong>3.</strong> Put <span class="math" data-tex="\(l=\operatorname{lcm}(n,m)\)">\(l=\operatorname{lcm}(n,m)\)</span>, <span class="math" data-tex="\(d=\gcd(n,m)\)">\(d=\gcd(n,m)\)</span>. All the fields lie in <span class="math" data-tex="\(K_l\)">\(K_l\)</span>. For any divisor <span class="math" data-tex="\(a\mid l\)">\(a\mid l\)</span>, the subgroup fixing <span class="math" data-tex="\(K_a\)">\(K_a\)</span> is
+<span class="math math-display" data-tex="\[
+H_a=\ker(U_l\longrightarrow U_a).
+\tag{30}
+\]">\[
+H_a=\ker(U_l\longrightarrow U_a).
+\tag{30}
+\]</span>
+Indeed, <span class="math" data-tex="\(\zeta_a=\zeta_l^{l/a}\)">\(\zeta_a=\zeta_l^{l/a}\)</span> is fixed precisely when the exponent is <span class="math" data-tex="\(1\pmod a\)">\(1\pmod a\)</span>.</p>
+<p>The reduction map is onto. To lift a unit modulo <span class="math" data-tex="\(a\)">\(a\)</span>, retain its specified residue at primes dividing <span class="math" data-tex="\(a\)">\(a\)</span>, and impose a unit residue, for instance <span class="math" data-tex="\(1\)">\(1\)</span>, at primes dividing <span class="math" data-tex="\(l\)">\(l\)</span> but not <span class="math" data-tex="\(a\)">\(a\)</span>; the Chinese remainder theorem supplies the lift. Consequently its fixed field has degree <span class="math" data-tex="\(|U_a|=\varphi(a)\)">\(|U_a|=\varphi(a)\)</span>, confirming it is <span class="math" data-tex="\(K_a\)">\(K_a\)</span>.</p>
+<p>Factor <span class="math" data-tex="\(l=\prod_p p^{c_p}\)">\(l=\prod_p p^{c_p}\)</span>, and write the exponents in <span class="math" data-tex="\(n,m\)">\(n,m\)</span> as <span class="math" data-tex="\(a_p,b_p\)">\(a_p,b_p\)</span>, allowing zero. The Chinese remainder theorem decomposes <span class="math" data-tex="\(U_l\)">\(U_l\)</span> as the product of the groups <span class="math" data-tex="\(U_{p^{c_p}}\)">\(U_{p^{c_p}}\)</span>. In each component the kernels of reduction to <span class="math" data-tex="\(U_{p^{a_p}}\)">\(U_{p^{a_p}}\)</span> and <span class="math" data-tex="\(U_{p^{b_p}}\)">\(U_{p^{b_p}}\)</span> are nested. Their generated subgroup is the kernel of reduction to exponent <span class="math" data-tex="\(\min(a_p,b_p)\)">\(\min(a_p,b_p)\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\langle H_n,H_m\rangle=H_d.
+\]">\[
+\langle H_n,H_m\rangle=H_d.
+\]</span>
+An element belongs to both fixed fields exactly when it is fixed by both groups, hence by the group they generate. Galois correspondence yields <span class="math" data-tex="\(K_n\cap K_m=K_d\)">\(K_n\cap K_m=K_d\)</span>. The trivial groups <span class="math" data-tex="\(U_1,U_2\)">\(U_1,U_2\)</span> make this argument valid without any exception for <span class="math" data-tex="\(n\equiv2\pmod4\)">\(n\equiv2\pmod4\)</span>.</p>
+<p><strong>4.</strong> First, the characters in (25) are primitive at their displayed moduli. A nontrivial Legendre character modulo a prime cannot have a smaller conductor. The character <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span> distinguishes <span class="math" data-tex="\(1,3\pmod4\)">\(1,3\pmod4\)</span>. Each of <span class="math" data-tex="\(\chi_8,\chi_{-8}\)">\(\chi_8,\chi_{-8}\)</span> distinguishes <span class="math" data-tex="\(1,5\pmod8\)">\(1,5\pmod8\)</span>, and so cannot come from modulus four. Their CRT product cannot lose any prime-power component: a hypothetical smaller conductor would make one of these component characters factor through a smaller modulus. Hence <span class="math" data-tex="\(\chi_D\)">\(\chi_D\)</span> is primitive of conductor <span class="math" data-tex="\(f=|D|\)">\(f=|D|\)</span>.</p>
+<p>These describe all nontrivial primitive quadratic characters. For an odd prime power <span class="math" data-tex="\(p^r\)">\(p^r\)</span>, the kernel of <span class="math" data-tex="\(U_{p^r}\to U_p\)">\(U_{p^r}\to U_p\)</span> has odd order <span class="math" data-tex="\(p^{r-1}\)">\(p^{r-1}\)</span>, so any homomorphism to <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span> kills it. The only nontrivial quadratic character on the cyclic group <span class="math" data-tex="\(U_p\)">\(U_p\)</span> is the Legendre character.</p>
+<p>For <span class="math" data-tex="\(2^r\)">\(2^r\)</span>, <span class="math" data-tex="\(r\geq3\)">\(r\geq3\)</span>, the group of units is generated by <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(5\)">\(5\)</span>. To see this, induction using
+<span class="math math-display" data-tex="\[
+5^{2^{k+1}}-1=(5^{2^k}-1)(5^{2^k}+1)
+\]">\[
+5^{2^{k+1}}-1=(5^{2^k}-1)(5^{2^k}+1)
+\]</span>
+gives <span class="math" data-tex="\(v_2(5^{2^k}-1)=k+2\)">\(v_2(5^{2^k}-1)=k+2\)</span>. Thus <span class="math" data-tex="\(5\)">\(5\)</span> has order <span class="math" data-tex="\(2^{r-2}\)">\(2^{r-2}\)</span> modulo <span class="math" data-tex="\(2^r\)">\(2^r\)</span>, and its powers give all residues <span class="math" data-tex="\(1\pmod4\)">\(1\pmod4\)</span>; their negatives give the other odd residues. A quadratic character kills <span class="math" data-tex="\(5^2\)">\(5^2\)</span>, whose powers are all residues <span class="math" data-tex="\(1\pmod8\)">\(1\pmod8\)</span>. It therefore factors through modulus eight. The three nontrivial characters there have primitive conductors <span class="math" data-tex="\(4,8,8\)">\(4,8,8\)</span> and are exactly (24). The cases <span class="math" data-tex="\(r=1,2\)">\(r=1,2\)</span> are immediate. CRT now gives precisely the factorization (25), with its sign determined by the selected local characters. The trivial primitive character has conductor <span class="math" data-tex="\(1\)">\(1\)</span>; set <span class="math" data-tex="\(D=1,\tau_1=1\)">\(D=1,\tau_1=1\)</span> for it.</p>
+<p>For a primitive nontrivial character <span class="math" data-tex="\(\chi_D\)">\(\chi_D\)</span>, (27) is the requested composite calculation:
+<span class="math math-display" data-tex="\[
+\tau_D=\epsilon_D\prod_i\tau_i,\qquad
+\epsilon_D=\prod_i\chi_{d_i}(f/f_i)\in\{1,-1\},\qquad
+\tau_D^2=D.
+\tag{31}
+\]">\[
+\tau_D=\epsilon_D\prod_i\tau_i,\qquad
+\epsilon_D=\prod_i\chi_{d_i}(f/f_i)\in\{1,-1\},\qquad
+\tau_D^2=D.
+\tag{31}
+\]</span>
+In particular <span class="math" data-tex="\(\tau_D=\pm\sqrt D\)">\(\tau_D=\pm\sqrt D\)</span>, and its value is explicitly a product of the odd-prime sums (17) and the three known even sums (26), with the specified CRT sign. This proves the quadratic-field inclusion directly.</p>
+<p>Now induce this character to a modulus <span class="math" data-tex="\(M\)">\(M\)</span> divisible by <span class="math" data-tex="\(f\)">\(f\)</span>: let <span class="math" data-tex="\(\chi(a)=\chi_D(a)\)">\(\chi(a)=\chi_D(a)\)</span> when <span class="math" data-tex="\((a,M)=1\)">\((a,M)=1\)</span>, and zero otherwise. Its Gauss sum need not have absolute value <span class="math" data-tex="\(\sqrt M\)">\(\sqrt M\)</span>. The exact formula is
+<span class="math math-display" data-tex="\[
+\tau_M(\chi)
+=\mu(M/f)\chi_D(M/f)\tau_D.
+\tag{32}
+\]">\[
+\tau_M(\chi)
+=\mu(M/f)\chi_D(M/f)\tau_D.
+\tag{32}
+\]</span>
+Here <span class="math" data-tex="\(\chi_D\)">\(\chi_D\)</span> is zero on integers not coprime to <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>To prove (32), let <span class="math" data-tex="\(S\)">\(S\)</span> be the product of the distinct primes dividing <span class="math" data-tex="\(M\)">\(M\)</span> but not <span class="math" data-tex="\(f\)">\(f\)</span>. The zeros already imposed by <span class="math" data-tex="\(\chi_D\)">\(\chi_D\)</span> handle primes dividing <span class="math" data-tex="\(f\)">\(f\)</span>; exclusion of the remaining primes gives
+<span class="math math-display" data-tex="\[
+\tau_M(\chi)
+=\sum_{d\mid S}\mu(d)\chi_D(d)
+\sum_{b\bmod M/d}\chi_D(b)\zeta_{M/d}^b.
+\tag{33}
+\]">\[
+\tau_M(\chi)
+=\sum_{d\mid S}\mu(d)\chi_D(d)
+\sum_{b\bmod M/d}\chi_D(b)\zeta_{M/d}^b.
+\tag{33}
+\]</span>
+Since <span class="math" data-tex="\(d\)">\(d\)</span> is coprime to <span class="math" data-tex="\(f\)">\(f\)</span>, the integer <span class="math" data-tex="\(M/d\)">\(M/d\)</span> is still divisible by <span class="math" data-tex="\(f\)">\(f\)</span>. Put <span class="math" data-tex="\(M/d=fh\)">\(M/d=fh\)</span> and write <span class="math" data-tex="\(b=c+kf\)">\(b=c+kf\)</span>, <span class="math" data-tex="\(0\leq c&lt;f,\ 0\leq k&lt;h\)">\(0\leq c&lt;f,\ 0\leq k&lt;h\)</span>. The inner sum contains the factor
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^{h-1}e^{2\pi i k/h},
+\]">\[
+\sum_{k=0}^{h-1}e^{2\pi i k/h},
+\]</span>
+which is zero unless <span class="math" data-tex="\(h=1\)">\(h=1\)</span>. The only possible surviving term in (33) is consequently <span class="math" data-tex="\(d=M/f\)">\(d=M/f\)</span>. Such a term exists exactly when <span class="math" data-tex="\(M/f\)">\(M/f\)</span> is squarefree and coprime to <span class="math" data-tex="\(f\)">\(f\)</span>. It is then the right side of (32); otherwise either the Möbius value or the character value there is zero. This also proves the formula for the conductor-one trivial character.</p>
+<p>For example, the Jacobi symbol modulo an odd squarefree <span class="math" data-tex="\(M\)">\(M\)</span> is primitive and corresponds to <span class="math" data-tex="\(D=(-1)^{(M-1)/2}M\)">\(D=(-1)^{(M-1)/2}M\)</span>, so its sum squares to that <span class="math" data-tex="\(D\)">\(D\)</span>. For an odd nonsquarefree <span class="math" data-tex="\(M\)">\(M\)</span>, its primitive conductor is the product of primes occurring to odd exponent. The quotient <span class="math" data-tex="\(M/f\)">\(M/f\)</span> contains a square or shares a prime with <span class="math" data-tex="\(f\)">\(f\)</span>, so (32) makes its Gauss sum zero. This includes square moduli, where the induced character is principal. Thus a blanket square formula for imprimitive quadratic characters would be false.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<ul>
+<li>The integral-lattice and discriminant–index results, the DVR characterization and local membership test, and the finite-field cyclicity used above are the precise prerequisites in lessons 2, 3, and 5.</li>
+<li>Prime factorization, the discriminant ramification criterion, and the full quadratic splitting law including the prime <span class="math" data-tex="\(2\)">\(2\)</span> come from <em>Decomposition of primes in extensions</em>. Inertia restriction, Frobenius restriction, and preservation of unramifiedness under composita and Galois closure come from <em>Hilbert's ramification theory in Galois extensions</em>.</li>
+<li>The discriminant lower bound excluding a nontrivial everywhere-unramified extension of <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> comes from <em>Finiteness of the class number</em>, Theorem 8.3, “Discriminants cannot be too small.”</li>
+<li>The exact analytic choice of sign of general primitive Gauss sums, the full Kronecker–Weber theorem for abelian extensions, and the class-field-theory reciprocity convention are outside this lesson. The square identities and the explicit quadratic inclusions require none of them.</li>
+</ul>
+<p>The next lesson studies cyclotomic units and class numbers. The canonical action (3) also supplies the cyclotomic Galois input used in the Bost–Connes system and in the arithmetic of the field with one element.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. S. Milne, <em>Algebraic Number Theory</em>, version 3.08, 2020, Chapter 6, “The basic results,” Propositions 6.1–6.5 and Remark 6.6, pp. 95–100.</li>
+<li>J. S. Milne, <em>Fields and Galois Theory</em>, version 5.10, 2022, Chapter 5, “Cyclotomic extensions,” Lemma 5.8, Proposition 5.9, and Theorem 5.10, pp. 64–66.</li>
+<li>Erich Hecke, <em>Vorlesungen über die Theorie der algebraischen Zahlen</em>, 1923, Chapter V, §30, Satz 91–92, pp. 110–113, for the historical cyclotomic decomposition argument; Chapter VI, §43, Satz 126–131, pp. 165–172, with the cyclotomic degree conclusion on p. 170.</li>
+</ul>
+</article><nav><a href="src/cyclotomic-fields.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

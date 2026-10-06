@@ -1,0 +1,132 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A spectral filtration determines operator frequencies · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L80.html">Previous lesson</a><a href="OA-FLOW-ND.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L81.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original programme exposition in Codex (OpenAI), September2026; restoration and supporting proofs by GPT-6 Astra (OpenAI), Ultra, independent review by GPT-6.1 Sol (OpenAI), Ultra, and owner mathematical/source/expression review by GPT-6 Astra (OpenAI), Ultra, October2026. Human review and formal verification are not asserted.</p><h1 id="OA-FLOW.TRANSFER.CONE">A spectral filtration determines operator frequencies</h1>
+<p>An operator may preserve every translate of a spectral region even though it does not intertwine the two actions. The frequencies of that operator are precisely constrained by the translations that keep the region inside itself. The forward implication follows from the spectral-sum theorem of lesson 80. For the converse, translated input and output filters produce a scalar convolution kernel whose Fourier transform vanishes for every translation. A pointwise value of that kernel then supplies an annihilating filter for the conjugation action. This lesson proves Takesaki II, Theorem XI.1.5 under its regular-closed hypothesis.</p>
+<p><em>Written in Codex (OpenAI), September 2026; provider restoration October 2026. No human review is claimed. Newly written original expression in this lesson and its figure is dedicated under CC0.</em></p>
+<p><a id="transfer-claim"></a></p>
+<h2 id="translation-semigroup-and-theorem">Translation semigroup and theorem</h2>
+<p>Keep the full arbitrary LCA and specified dual-Banach setting of <a href="OA-FLOW-MX.html#mx-0">MX0–4</a> and the <a href="OA-FLOW-L80.html#sum-claim">spectral-sum theorem</a>. Thus <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> are uniformly bounded normal actions on <span class="math" data-tex="\(X=X_*^*\)">\(X=X_*^*\)</span> and <span class="math" data-tex="\(Y=Y_*^*\)">\(Y=Y_*^*\)</span>, with norm-continuous predual orbits; <span class="math" data-tex="\(\gamma_t(A)=\beta_tA\alpha_{-t}\)">\(\gamma_t(A)=\beta_tA\alpha_{-t}\)</span> acts on <span class="math" data-tex="\(\mathcal L_w(X,Y)\)">\(\mathcal L_w(X,Y)\)</span>. The vector filter laws (S4), (S14), (S16) below are the full weak-star integral, closed-space annihilator test and support inclusion proved in BS1/BS3 and reflected to (MX1). Let <span class="math" data-tex="\(E\subset H=\widehat G\)">\(E\subset H=\widehat G\)</span> be closed, contain <span class="math" data-tex="\(0\)">\(0\)</span>, and satisfy</p>
+<p><a id="equation-r1"></a></p>
+<p><span class="math math-display" data-tex="$$E=\overline{\operatorname{int}E}. \tag{R1}$$">$$E=\overline{\operatorname{int}E}. \tag{R1}$$</span></p>
+<p>Define its translation semigroup</p>
+<p><a id="equation-r2"></a></p>
+<p><span class="math math-display" data-tex="$$S_E=\{q\in H:q+E\subset E\}
+=\bigcap_{p\in E}(E-p). \tag{R2}$$">$$S_E=\{q\in H:q+E\subset E\}
+=\bigcap_{p\in E}(E-p). \tag{R2}$$</span></p>
+<p>It is closed, contains <span class="math" data-tex="\(0\)">\(0\)</span>, and is closed under addition. Because <span class="math" data-tex="\(0\in E\)">\(0\in E\)</span>, it is a subset of <span class="math" data-tex="\(E\)">\(E\)</span>. A closed set such as <span class="math" data-tex="\(E=[-1,1]\subset\mathbb R\)">\(E=[-1,1]\subset\mathbb R\)</span> has <span class="math" data-tex="\(S_E=\{0\}\)">\(S_E=\{0\}\)</span>, whereas <span class="math" data-tex="\(E=[0,\infty)\)">\(E=[0,\infty)\)</span> has <span class="math" data-tex="\(S_E=[0,\infty)\)">\(S_E=[0,\infty)\)</span>. The regular-closed condition (R1) will be used in only one direction of the proof.</p>
+<p><strong>Spectral-filtration theorem.</strong> For <span class="math" data-tex="\(A\in\mathcal L_w(X,Y)\)">\(A\in\mathcal L_w(X,Y)\)</span>, the following are equivalent:</p>
+<p><a id="equation-r3"></a></p>
+<p><span class="math math-display" data-tex="$$\begin{aligned}
+\text{(i)}\quad&amp;\operatorname{Sp}_\gamma(A)\subset S_E;\\
+\text{(ii)}\quad&amp;A X_\alpha(E+p)\subset Y_\beta(E+p)
+\quad\text{for every }p\in H.
+\end{aligned}\tag{R3}$$">$$\begin{aligned}
+\text{(i)}\quad&amp;\operatorname{Sp}_\gamma(A)\subset S_E;\\
+\text{(ii)}\quad&amp;A X_\alpha(E+p)\subset Y_\beta(E+p)
+\quad\text{for every }p\in H.
+\end{aligned}\tag{R3}$$</span></p>
+<p>Neither action is assumed isometric, and <span class="math" data-tex="\(G\)">\(G\)</span> need not be second countable or sigma compact. The operator <span class="math" data-tex="\(A\)">\(A\)</span> may be zero. The same proof therefore covers empty operator spectrum without adding a spurious nonzero assumption.</p>
+<p><a id="transfer-forward"></a></p>
+<h2 id="OA-FLOW.TRANSFER.FORWARD">Frequencies in the semigroup preserve every translate</h2>
+<p>Assume (i), fix <span class="math" data-tex="\(p\in H\)">\(p\in H\)</span> and <span class="math" data-tex="\(x\in X_\alpha(E+p)\)">\(x\in X_\alpha(E+p)\)</span>. The spectral-sum theorem (T1) gives</p>
+<p><a id="equation-r4"></a></p>
+<p><span class="math math-display" data-tex="$$Ax\in Y_\beta\bigl(\overline{S_E+E+p}\bigr). \tag{R4}$$">$$Ax\in Y_\beta\bigl(\overline{S_E+E+p}\bigr). \tag{R4}$$</span></p>
+<p>The defining property of <span class="math" data-tex="\(S_E\)">\(S_E\)</span> gives <span class="math" data-tex="\(S_E+E\subset E\)">\(S_E+E\subset E\)</span>. Since <span class="math" data-tex="\(E+p\)">\(E+p\)</span> is closed, <span class="math" data-tex="\(\overline{S_E+E+p}\subset E+p\)">\(\overline{S_E+E+p}\subset E+p\)</span>; hence <span class="math" data-tex="\(Ax\in Y_\beta(E+p)\)">\(Ax\in Y_\beta(E+p)\)</span>. This proves (ii). Notice that regular-closedness was not used here.</p>
+<p><a id="transfer-kernel"></a></p>
+<h2 id="OA-FLOW.TRANSFER.KERNEL">Translating input and output filters</h2>
+<p>Assume (ii). Fix <span class="math" data-tex="\(f,g\in A_c(H)\)">\(f,g\in A_c(H)\)</span> with</p>
+<p><a id="equation-r5"></a></p>
+<p><span class="math math-display" data-tex="$$\operatorname{supp}(f)\subset\operatorname{int}E,
+\qquad \operatorname{supp}(g)\cap E=\varnothing. \tag{R5}$$">$$\operatorname{supp}(f)\subset\operatorname{int}E,
+\qquad \operatorname{supp}(g)\cap E=\varnothing. \tag{R5}$$</span></p>
+<p>For <span class="math" data-tex="\(p\in H\)">\(p\in H\)</span>, put <span class="math" data-tex="\(f_p(r)=f(r-p)\)">\(f_p(r)=f(r-p)\)</span> and <span class="math" data-tex="\(g_p(r)=g(r-p)\)">\(g_p(r)=g(r-p)\)</span>. The support of <span class="math" data-tex="\(f_p\)">\(f_p\)</span> lies inside <span class="math" data-tex="\(E+p\)">\(E+p\)</span>, so (S16) makes <span class="math" data-tex="\(\alpha_{f_p}x\in X_\alpha(E+p)\)">\(\alpha_{f_p}x\in X_\alpha(E+p)\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. The support of <span class="math" data-tex="\(g_p\)">\(g_p\)</span> misses <span class="math" data-tex="\(E+p\)">\(E+p\)</span>, so (S14) makes <span class="math" data-tex="\(\beta_{g_p}\)">\(\beta_{g_p}\)</span> annihilate <span class="math" data-tex="\(Y_\beta(E+p)\)">\(Y_\beta(E+p)\)</span>. Hypothesis (ii) therefore implies the operator identity</p>
+<p><a id="equation-r6"></a></p>
+<p><span class="math math-display" data-tex="$$\beta_{g_p}A\alpha_{f_p}=0\quad(p\in H). \tag{R6}$$">$$\beta_{g_p}A\alpha_{f_p}=0\quad(p\in H). \tag{R6}$$</span></p>
+<p>Let <span class="math" data-tex="\(f=\mathcal Fa\)">\(f=\mathcal Fa\)</span> and <span class="math" data-tex="\(g=\mathcal Fb\)">\(g=\mathcal Fb\)</span>. Their defining kernels lie in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>. <a href="OA-FLOW-MX.html#mx-4">MX4</a> proves that their compact continuous Fourier transforms put these very <span class="math" data-tex="\(L^1\)">\(L^1\)</span> classes in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>, with the same transform under the unitary extension. Thus <span class="math" data-tex="\(a,b\in L^1\cap L^2\)">\(a,b\in L^1\cap L^2\)</span>; this is an actual domain identification, not a converse silently inferred from the definition of Plancherel. Use the paired dual Haar measure of H2–4. Translation in frequency gives</p>
+<p><a id="equation-r7"></a></p>
+<p><span class="math math-display" data-tex="$$f_p=\mathcal F\bigl((\,\cdot,-p)a\bigr),\qquad
+g_p=\mathcal F\bigl((\,\cdot,-p)b\bigr). \tag{R7}$$">$$f_p=\mathcal F\bigl((\,\cdot,-p)a\bigr),\qquad
+g_p=\mathcal F\bigl((\,\cdot,-p)b\bigr). \tag{R7}$$</span></p>
+<p>For fixed <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> and <span class="math" data-tex="\(\psi\in Y_*\)">\(\psi\in Y_*\)</span>, expand (R6) with the weak-star integral formula (S4), using normality of <span class="math" data-tex="\(A\)">\(A\)</span> and the filtered maps. This gives a scalar Fourier transform in the translation parameter:</p>
+<p><a id="equation-r8"></a></p>
+<p><span class="math math-display" data-tex="$$0=\int_{G^2}b(t)a(s)(t+s,-p)
+\langle\beta_tA\alpha_sx,\psi\rangle\,dt\,ds
+\quad(p\in H). \tag{R8}$$">$$0=\int_{G^2}b(t)a(s)(t+s,-p)
+\langle\beta_tA\alpha_sx,\psi\rangle\,dt\,ds
+\quad(p\in H). \tag{R8}$$</span></p>
+<p>The absolute bound is <span class="math" data-tex="\(C_\alpha C_\beta\|A\|\|x\|\|\psi\|\|a\|_1\|b\|_1\)">\(C_\alpha C_\beta\|A\|\|x\|\|\psi\|\|a\|_1\|b\|_1\)</span>. Compact-support approximants justify Fubini and then the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> estimate passes to (R8), without a global sigma-finite Haar assumption.</p>
+<p>Set <span class="math" data-tex="\(u=t+s\)">\(u=t+s\)</span> and define the scalar kernel</p>
+<p><a id="equation-r9"></a></p>
+<p><span class="math math-display" data-tex="$$k(u)=\int_G b(t)a(u-t)
+\langle\beta_tA\alpha_{u-t}x,\psi\rangle\,dt. \tag{R9}$$">$$k(u)=\int_G b(t)a(u-t)
+\langle\beta_tA\alpha_{u-t}x,\psi\rangle\,dt. \tag{R9}$$</span></p>
+<p>The same absolute estimate makes <span class="math" data-tex="\(k\in L^1(G)\)">\(k\in L^1(G)\)</span>. Equation (R8) says <span class="math" data-tex="\(\widehat k(-p)=0\)">\(\widehat k(-p)=0\)</span> for all <span class="math" data-tex="\(p\in H\)">\(p\in H\)</span>, so Fourier injectivity gives <span class="math" data-tex="\(k=0\)">\(k=0\)</span> almost everywhere. We need its value at <span class="math" data-tex="\(0\)">\(0\)</span>, not just its equivalence class. Put
+<span class="math math-display" data-tex="\[
+ \Phi(t,u)=\langle\beta_tA\alpha_{u-t}x,\psi\rangle,\qquad
+ M=C_\alpha C_\beta\|A\|\|x\|\|\psi\|.
+\]">\[
+ \Phi(t,u)=\langle\beta_tA\alpha_{u-t}x,\psi\rangle,\qquad
+ M=C_\alpha C_\beta\|A\|\|x\|\|\psi\|.
+\]</span>
+This function is jointly continuous and bounded by <span class="math" data-tex="\(M\)">\(M\)</span>: write the pairing as <span class="math" data-tex="\(\langle\alpha_{u-t}x,A_*\beta_{t,*}\psi\rangle\)">\(\langle\alpha_{u-t}x,A_*\beta_{t,*}\psi\rangle\)</span>, split the difference, and use a norm-continuous predual vector and a bounded weak-star-continuous vector. Cauchy–Schwarz shows the integral (R9) exists at every <span class="math" data-tex="\(u\)">\(u\)</span>, bounded by <span class="math" data-tex="\(M\|a\|_2\|b\|_2\)">\(M\|a\|_2\|b\|_2\)</span>, and null changes to the kernels do not change any one of these integrals. For a fixed <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, split the difference by first changing <span class="math" data-tex="\(a(u-t)\)">\(a(u-t)\)</span>, then <span class="math" data-tex="\(\Phi(t,u)\)">\(\Phi(t,u)\)</span>. If <span class="math" data-tex="\(K\subset G\)">\(K\subset G\)</span> is compact, the resulting bounds are</p>
+<p><a id="equation-r9a"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ |k(u)-k(u_0)|\le{}&amp;
+ M\|b\|_2\|a(u-\cdot)-a(u_0-\cdot)\|_2\\
+ &amp;+\|a\|_2\|b\|_2\sup_{t\in K}|\Phi(t,u)-\Phi(t,u_0)|\\
+ &amp;+2M\|a\|_2\|1_{G\setminus K}b\|_2 .
+ \end{aligned}\tag{R9a}
+\]">\[
+ \begin{aligned}
+ |k(u)-k(u_0)|\le{}&amp;
+ M\|b\|_2\|a(u-\cdot)-a(u_0-\cdot)\|_2\\
+ &amp;+\|a\|_2\|b\|_2\sup_{t\in K}|\Phi(t,u)-\Phi(t,u_0)|\\
+ &amp;+2M\|a\|_2\|1_{G\setminus K}b\|_2 .
+ \end{aligned}\tag{R9a}
+\]</span>
+L24's <span class="math" data-tex="\(L^2\)">\(L^2\)</span> translation continuity makes the first term tend to zero. Joint continuity and a finite cover of <span class="math" data-tex="\(K\)">\(K\)</span> make the second tend to zero. The third is arbitrarily small for a suitably chosen compact <span class="math" data-tex="\(K\)">\(K\)</span>, by HR3 finite-exponent compact approximation. These estimates prove continuity for arbitrary nets <span class="math" data-tex="\(u\to u_0\)">\(u\to u_0\)</span>, without a net version of dominated convergence. This continuous representative agrees almost everywhere with the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> kernel already used in (R8), by HR5. A continuous function zero almost everywhere is identically zero, because every nonempty open set has positive Haar measure. Evaluating at <span class="math" data-tex="\(u=0\)">\(u=0\)</span>,</p>
+<p><a id="equation-r10"></a></p>
+<p><span class="math math-display" data-tex="$$0=k(0)=\int_G b(t)a(-t)
+\langle\gamma_t(A)x,\psi\rangle\,dt. \tag{R10}$$">$$0=k(0)=\int_G b(t)a(-t)
+\langle\gamma_t(A)x,\psi\rangle\,dt. \tag{R10}$$</span></p>
+<p>This step is the reason for the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> observation. An arbitrary convolution of two <span class="math" data-tex="\(L^1\)">\(L^1\)</span> kernels only defines an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function almost everywhere, so setting <span class="math" data-tex="\(u=0\)">\(u=0\)</span> without more regularity would be unjustified.</p>
+<p><a id="transfer-reverse"></a></p>
+<h2 id="OA-FLOW.TRANSFER.REVERSE">Annihilators outside the translation semigroup</h2>
+<p>Define <span class="math" data-tex="\(c(t)=b(t)a(-t)\)">\(c(t)=b(t)a(-t)\)</span>. By Cauchy–Schwarz, <span class="math" data-tex="\(c\in L^1(G)\)">\(c\in L^1(G)\)</span>; let <span class="math" data-tex="\(h_{f,g}=\mathcal Fc\in A(H)\)">\(h_{f,g}=\mathcal Fc\in A(H)\)</span>. Since (R10) holds for every <span class="math" data-tex="\(x,\psi\)">\(x,\psi\)</span>, the operator filter of MX2 satisfies</p>
+<p><a id="equation-r11"></a></p>
+<p><span class="math math-display" data-tex="$$\Gamma_{h_{f,g}}(A)=0. \tag{R11}$$">$$\Gamma_{h_{f,g}}(A)=0. \tag{R11}$$</span></p>
+<p>Fourier inversion and Plancherel give a second, frequency-side description:</p>
+<p><a id="equation-r12"></a></p>
+<p><span class="math math-display" data-tex="$$h_{f,g}(q)=\int_H g(r)f(r-q)\,dr. \tag{R12}$$">$$h_{f,g}(q)=\int_H g(r)f(r-q)\,dr. \tag{R12}$$</span></p>
+<p>All functions in (R12) are compactly supported and continuous, so the integral is ordinary Haar integration. The equality is <a href="OA-FLOW-MX.html#mx-4">MX4</a>, equation (MX9), which binds the complete <span class="math" data-tex="\(L^2\)">\(L^2\)</span> product theorem in LF0, the reflection of <span class="math" data-tex="\(a\)">\(a\)</span>, and the actual <span class="math" data-tex="\(L^1\)">\(L^1\)</span> Fourier transform of <span class="math" data-tex="\(c\)">\(c\)</span>. It holds at every <span class="math" data-tex="\(q\)">\(q\)</span>. In particular, <span class="math" data-tex="\(h_{f,g}\)">\(h_{f,g}\)</span> is an annihilator of <span class="math" data-tex="\(A\)">\(A\)</span> for every pair satisfying (R5).</p>
+<p>Now take <span class="math" data-tex="\(q\notin S_E\)">\(q\notin S_E\)</span>. Some <span class="math" data-tex="\(e\in E\)">\(e\in E\)</span> has <span class="math" data-tex="\(e+q\notin E\)">\(e+q\notin E\)</span>. Since <span class="math" data-tex="\(E=\overline{\operatorname{int}E}\)">\(E=\overline{\operatorname{int}E}\)</span> and <span class="math" data-tex="\(H\setminus E\)">\(H\setminus E\)</span> is open, <span class="math" data-tex="\(e\)">\(e\)</span> can be chosen in <span class="math" data-tex="\(\operatorname{int}E\)">\(\operatorname{int}E\)</span> while retaining <span class="math" data-tex="\(e+q\notin E\)">\(e+q\notin E\)</span>. Choose small open neighborhoods <span class="math" data-tex="\(U\ni e\)">\(U\ni e\)</span> and <span class="math" data-tex="\(V\ni e+q\)">\(V\ni e+q\)</span> with compact closures, <span class="math" data-tex="\(\overline U\subset\operatorname{int}E\)">\(\overline U\subset\operatorname{int}E\)</span>, <span class="math" data-tex="\(\overline V\subset H\setminus E\)">\(\overline V\subset H\setminus E\)</span>, and <span class="math" data-tex="\(U+q\subset V\)">\(U+q\subset V\)</span>. <span class="unlinked">LF1/LF4</span> give local Fourier cutoffs <span class="math" data-tex="\(c_U,c_V\in A_c(H)\)">\(c_U,c_V\in A_c(H)\)</span> supported in <span class="math" data-tex="\(U,V\)">\(U,V\)</span> and equal to <span class="math" data-tex="\(1\)">\(1\)</span> near their center points. Set <span class="math" data-tex="\(f=|c_U|^2\)">\(f=|c_U|^2\)</span>, <span class="math" data-tex="\(g=|c_V|^2\)">\(g=|c_V|^2\)</span>, which are nonnegative members of <span class="math" data-tex="\(A_c(H)\)">\(A_c(H)\)</span> satisfying (R5). On an open neighborhood of <span class="math" data-tex="\(r=e+q\)">\(r=e+q\)</span>, both <span class="math" data-tex="\(g(r)\)">\(g(r)\)</span> and <span class="math" data-tex="\(f(r-q)\)">\(f(r-q)\)</span> are positive. Haar measure of that neighborhood is positive, so (R12) yields</p>
+<p><a id="equation-r13"></a></p>
+<p><span class="math math-display" data-tex="$$h_{f,g}(q)&gt;0,\qquad h_{f,g}\in I_\gamma(A). \tag{R13}$$">$$h_{f,g}(q)&gt;0,\qquad h_{f,g}\in I_\gamma(A). \tag{R13}$$</span></p>
+<p>Thus <span class="math" data-tex="\(q\)">\(q\)</span> is not in the hull <span class="math" data-tex="\(\operatorname{Sp}_\gamma(A)\)">\(\operatorname{Sp}_\gamma(A)\)</span>. Every point outside <span class="math" data-tex="\(S_E\)">\(S_E\)</span> is excluded this way, proving (i) and the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="For a regular closed half-line, a negative translation sends an interior point outside the set. Local Fourier cutoffs at the two points produce an annihilator nonzero at that translation, excluding it from the operator spectrum." src="assets/spectral-transfer/81-transfer-semigroup-witness.png" style="display:block;width:1280px;max-width:none"/></p>
+<p><a href="assets/spectral-transfer/81-transfer-semigroup-witness.png">View the figure for spectral transfer on a half-line at full size</a>.</p>
+<p><em>Figure 81.1.</em> The example uses <span class="math" data-tex="\(E=[0,\infty)\subset\mathbb R\)">\(E=[0,\infty)\subset\mathbb R\)</span>, so <span class="math" data-tex="\(S_E=[0,\infty)\)">\(S_E=[0,\infty)\)</span>. The negative candidate frequency is <span class="math" data-tex="\(q=-3/5\)">\(q=-3/5\)</span>. An interior point <span class="math" data-tex="\(e=1/4\)">\(e=1/4\)</span> moves to <span class="math" data-tex="\(e+q=-7/20\notin E\)">\(e+q=-7/20\notin E\)</span>. Local nonnegative Fourier cutoffs <span class="math" data-tex="\(f\)">\(f\)</span> near <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> near <span class="math" data-tex="\(e+q\)">\(e+q\)</span> make the convolution value <span class="math" data-tex="\(h_{f,g}(q)\)">\(h_{f,g}(q)\)</span> in (R12) positive. The figure shows exact coordinates and the direction of the translation. The shaded support intervals are schematic neighborhoods, not a claim about the shape of the Fourier cutoffs.</p>
+<p><strong>Problem.</strong> For <span class="math" data-tex="\(E=[-1,1]\subset\mathbb R\)">\(E=[-1,1]\subset\mathbb R\)</span>, compute <span class="math" data-tex="\(S_E\)">\(S_E\)</span> and interpret (R3) when <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> is the identity operator.</p>
+<p><strong>Solution.</strong> A translation <span class="math" data-tex="\(q\)">\(q\)</span> satisfies <span class="math" data-tex="\(q+[-1,1]\subset[-1,1]\)">\(q+[-1,1]\subset[-1,1]\)</span> only when <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, so <span class="math" data-tex="\(S_E=\{0\}\)">\(S_E=\{0\}\)</span>. The identity maps each <span class="math" data-tex="\(X_\alpha(E+p)\)">\(X_\alpha(E+p)\)</span> to itself, satisfying (ii). Its conjugation orbit is constant, so its <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>-spectrum is contained in <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, satisfying (i). If <span class="math" data-tex="\(X=\{0\}\)">\(X=\{0\}\)</span>, the identity is the zero map and its spectrum is empty; the containment remains true. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="transfer-approximation"></a></p>
+<h2 id="OA-FLOW.TRANSFER.APPROX">Support-preserving Fourier approximation</h2>
+<p>The source proof also uses a Tauberian approximation that preserves a filter's support restriction. Let <span class="math" data-tex="\(e_V=\mathcal Fa_V\)">\(e_V=\mathcal Fa_V\)</span>, where <span class="math" data-tex="\(a_V\ge0\)">\(a_V\ge0\)</span>, <span class="math" data-tex="\(\int a_V=1\)">\(\int a_V=1\)</span>, and <span class="math" data-tex="\(\operatorname{supp}(a_V)\)">\(\operatorname{supp}(a_V)\)</span> shrinks to the identity as in <a href="OA-FLOW-L24.html#oa-flow.grp.algebra">L24</a>. Translation continuity in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> gives <span class="math" data-tex="\(e_Vf\to f\)">\(e_Vf\to f\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>-norm for every <span class="math" data-tex="\(f\in A(H)\)">\(f\in A(H)\)</span>, because Fourier multiplication corresponds to convolution. Choose <span class="math" data-tex="\(d_{V,n}\in A_c(H)\)">\(d_{V,n}\in A_c(H)\)</span> with <span class="math" data-tex="\(\|d_{V,n}-e_V\|_A&lt;1/n\)">\(\|d_{V,n}-e_V\|_A&lt;1/n\)</span>, possible by <span class="unlinked">LF5</span>, and direct the pairs <span class="math" data-tex="\((V,n)\)">\((V,n)\)</span> by shrinking <span class="math" data-tex="\(V\)">\(V\)</span> and increasing <span class="math" data-tex="\(n\)">\(n\)</span>. Then</p>
+<p><a id="equation-r14"></a></p>
+<p><span class="math math-display" data-tex="$$\|d_{V,n}f-f\|_A
+\le\frac{\|f\|_A}{n}+\|e_Vf-f\|_A\longrightarrow0. \tag{R14}$$">$$\|d_{V,n}f-f\|_A
+\le\frac{\|f\|_A}{n}+\|e_Vf-f\|_A\longrightarrow0. \tag{R14}$$</span></p>
+<p>Each <span class="math" data-tex="\(d_{V,n}f\)">\(d_{V,n}f\)</span> belongs to <span class="math" data-tex="\(A_c(H)\subset A(H)\cap L^1(H)\)">\(A_c(H)\subset A(H)\cap L^1(H)\)</span>, and</p>
+<p><a id="equation-r15"></a></p>
+<p><span class="math math-display" data-tex="$$\operatorname{supp}(d_{V,n}f)
+\subset\operatorname{supp}(f). \tag{R15}$$">$$\operatorname{supp}(d_{V,n}f)
+\subset\operatorname{supp}(f). \tag{R15}$$</span></p>
+<p>Also <span class="math" data-tex="\(A(H)\cap L^1(H)\)">\(A(H)\cap L^1(H)\)</span> is an ideal of <span class="math" data-tex="\(A(H)\)">\(A(H)\)</span>: multiplying an integrable Fourier function by a bounded Fourier function remains integrable. Thus the ideal is dense and approximation can respect a prescribed closed support set. The converse proof above starts with compactly supported filters, so its Fourier-uniqueness step does not discard any support condition through approximation.</p>
+<p>The source is <a href="https://doi.org/10.1007/978-3-662-10451-4">Takesaki, Theory of Operator Algebras II</a>, Theorem XI.1.5. The preserved programme argument uses the translated-filter mechanism, with an explicit scalar kernel and a local positive annihilator. MX4 and (R9a) supply full inverse-domain and pointwise-continuity details. The earlier inputs are MX0–4, the spectral-sum theorem, BS1/BS3, LF0/LF1/LF4/LF5, L24/HR3/HR5 and H1–4 at their exact declared hypotheses. No one-sided action-recovery theorem is substituted for (R3), and neither an arbitrary closed-set synthesis assertion nor a full-dual identification of the normal-operator space is used.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L80.html">Previous lesson</a><a href="OA-FLOW-ND.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L81.md">Lesson source</a></nav></main></body></html>

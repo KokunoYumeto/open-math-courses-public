@@ -1,0 +1,273 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite module tests and Banach quotients</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="finite-module-tests-and-banach-quotients">Finite module tests and Banach quotients</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original text: CC0.</em></p>
+<p>An additive subcategory can lose a kernel because the required object is too large for its finiteness condition. A category of complete normed spaces can instead have every kernel and cokernel while its coimage–image comparison fails. We will compute both boundaries, and prove that the normed-space category still preserves strict quotients under pullback and strict embeddings under pushout.</p>
+<p>Work in a fixed universe. Rings are unital, modules are left modules, and Banach spaces are over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, with bounded linear maps. Retain the complete general universal and module constructions in <a href="kernels-cokernels-and-the-abelian-comparison.html">Kernels, cokernels and the abelian comparison</a>. Retain <a href="full-subcategories-and-exact-closure.html#1-which-objects-belong-to-the-subcategory">Full subcategories and exact closure, §§1–2</a>, <a href="coherence-from-finite-probes.html#2-pullbacks-transport-finite-relations">Coherence from finite probes, §§2–5</a>, and <a href="coimages-images-and-composition-of-quotients.html#1-two-constructions-attached-to-a-map">Coimages, images and composition of quotients, §§1–3</a>. These full proofs remain the foundations; the new arguments check the finite-object and norm interfaces.</p>
+<h2 id="1-finitely-generated-modules-test-the-ring">1. Finitely generated modules test the ring</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a unital ring, possibly noncommutative. Call it <strong>left Noetherian</strong> when every left ideal is finitely generated. Retain the complete left-module proofs in <a href="https://personalpages.manchester.ac.uk/staff/mike.prest/CourseNotes-2018updated#page=39">Stafford–Prest, <em>Noncommutative Algebra</em>, Theorems 3.1 and 3.6, Corollaries 3.7–3.8</a>, printed pp. 39–40 and 43–44. They identify the ascending chain condition with the maximal-member condition and finite generation of every submodule, and prove preservation under submodules, quotients and extensions. Consequently every finitely generated left module over a left Noetherian ring has all its submodules finitely generated. The zero module gives the rank-zero case, and every unital module over the zero ring is zero.</p>
+<p>Let <span class="math" data-tex="\(\operatorname{Mod}^f(R)\)">\(\operatorname{Mod}^f(R)\)</span> be the full category of finitely generated left modules. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Mod}^f(R)\text{ is abelian}
+\\ \Longleftrightarrow
+\\ R\text{ is left Noetherian}.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\operatorname{Mod}^f(R)\text{ is abelian}
+\\ \Longleftrightarrow
+\\ R\text{ is left Noetherian}.
+\end{gathered}
+\tag{1.1}
+\]</span></p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(R\)">\(R\)</span> left Noetherian. The retained result makes the ordinary kernel of a map between finitely generated modules finitely generated. Its ordinary cokernel is finitely generated because the images of generators of the target generate the quotient. Zero and finite direct sums are finitely generated. The full category of all modules is abelian by the previous lesson's complete proof. Thus the full-subcategory criterion, Theorem 2.2 of <em>Full subcategories</em>, applies and supplies the abelian structure and exact inclusion.</p>
+<p>Conversely, if a left ideal <span class="math" data-tex="\(I\)">\(I\)</span> is not finitely generated, the quotient <span class="math" data-tex="\(R\to R/I\)">\(R\to R/I\)</span> has both ends in <span class="math" data-tex="\(\operatorname{Mod}^f(R)\)">\(\operatorname{Mod}^f(R)\)</span>, but has no kernel there. This is exactly the full rank-one-probe proof in the preceding lesson, §5, for an arbitrary left ideal. An abelian category must have that kernel. Therefore no such <span class="math" data-tex="\(I\)">\(I\)</span> exists. This proves (1.1), including the zero ring. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The side matters: (1.1) concerns left ideals and left modules throughout. No right-Noetherian assumption is added.</p>
+<h2 id="2-finite-presentation-and-the-coherence-convention">2. Finite presentation and the coherence convention</h2>
+<p>A module <span class="math" data-tex="\(M\)">\(M\)</span> is finitely presented if it has an exact presentation <span class="math" data-tex="\(R^a\to R^b\to M\to0\)">\(R^a\to R^b\to M\to0\)</span>, with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> finite. Write <span class="math" data-tex="\(\operatorname{Mod}^{fp}(R)\)">\(\operatorname{Mod}^{fp}(R)\)</span> for their full category. The categorical convention calls <span class="math" data-tex="\(R\)">\(R\)</span> <strong>left coherent</strong> when this category is abelian. We reconcile this with the already proved finite-free-probe convention, which calls the regular left module <span class="math" data-tex="\(R\)">\(R\)</span> coherent when every map <span class="math" data-tex="\(R^n\to R\)">\(R^n\to R\)</span> has finitely generated kernel.</p>
+<p><strong>Proposition 2.1.</strong> These two conventions agree. When they hold, <span class="math" data-tex="\(\operatorname{Mod}^{fp}(R)\)">\(\operatorname{Mod}^{fp}(R)\)</span> is the exact full abelian subcategory of modules coherent for finite free probes.</p>
+<p><strong>Proof.</strong> First assume the regular module coherent in the probe convention. The full proofs in <em>Coherence</em>, §§2–5, show that coherent modules are closed under finite biproducts and cokernels, and form an exact abelian subcategory. In Section 5 the cover condition is proved for arbitrary unital <span class="math" data-tex="\(R\)">\(R\)</span> by lifting a finite free basis; commutativity is unnecessary. Consequently finite free modules are coherent, and the cokernel of any map <span class="math" data-tex="\(R^a\to R^b\)">\(R^a\to R^b\)</span> is coherent. Thus every finitely presented module is coherent. Conversely every coherent module is finitely presented by the complete proof of Proposition 5.2 there, applied to the module as its own finitely generated submodule. The two full subcategories agree, so the categorical condition follows, with exact inclusion.</p>
+<p>Now suppose only that <span class="math" data-tex="\(\operatorname{Mod}^{fp}(R)\)">\(\operatorname{Mod}^{fp}(R)\)</span> is abelian; exactness of its inclusion has not yet been established. Take any <span class="math" data-tex="\(f:R^n\to R\)">\(f:R^n\to R\)</span>, and let <span class="math" data-tex="\(\kappa:K\to R^n\)">\(\kappa:K\to R^n\)</span> be its kernel in that category. Both finite free modules and <span class="math" data-tex="\(R\)">\(R\)</span> are allowed test objects. The rank-one test identifies this intrinsic kernel with the ordinary one. Indeed, if <span class="math" data-tex="\(\kappa(z)=0\)">\(\kappa(z)=0\)</span>, the two linear maps <span class="math" data-tex="\(R\to K\)">\(R\to K\)</span> given by <span class="math" data-tex="\(r\mapsto rz\)">\(r\mapsto rz\)</span> and zero factor the same zero map to <span class="math" data-tex="\(R^n\)">\(R^n\)</span>; kernel uniqueness forces <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. Every <span class="math" data-tex="\(x\in\ker_R f\)">\(x\in\ker_R f\)</span> defines a linear map <span class="math" data-tex="\(R\to R^n\)">\(R\to R^n\)</span>, <span class="math" data-tex="\(r\mapsto rx\)">\(r\mapsto rx\)</span>, killed by <span class="math" data-tex="\(f\)">\(f\)</span>, so factors through <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> puts <span class="math" data-tex="\(x\)">\(x\)</span> in its image. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K\xrightarrow{\kappa}\ker_R f
+\\ \text{is a module isomorphism}.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+K\xrightarrow{\kappa}\ker_R f
+\\ \text{is a module isomorphism}.
+\end{gathered}
+\tag{2.1}
+\]</span>
+Since <span class="math" data-tex="\(K\)">\(K\)</span> is finitely presented, it is finitely generated. This makes every such ordinary kernel finitely generated, so the regular module is coherent for finite free probes. The first implication now applies and proves exactness as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument distinguishes an intrinsic kernel from an ambient kernel before identifying them. It does not assume that an abelian full subcategory automatically has exact inclusion.</p>
+<h2 id="3-closed-subspaces-supply-banach-universal-objects">3. Closed subspaces supply Banach universal objects</h2>
+<p>The bounded-map convention includes exactly the continuous linear maps used in the source. A bound proves continuity by <span class="math" data-tex="\(\|f(x)-f(y)\|\le\|f\|\|x-y\|\)">\(\|f(x)-f(y)\|\le\|f\|\|x-y\|\)</span>. Conversely, continuity at zero gives some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> for which <span class="math" data-tex="\(\|x\|&lt;\delta\)">\(\|x\|&lt;\delta\)</span> implies <span class="math" data-tex="\(\|f(x)\|&lt;1\)">\(\|f(x)\|&lt;1\)</span>. For nonzero <span class="math" data-tex="\(x\)">\(x\)</span>, apply this to <span class="math" data-tex="\(\delta x/(2\|x\|)\)">\(\delta x/(2\|x\|)\)</span> to get
+<span class="math math-display" data-tex="\[
+\|f(x)\|\le2\|x\|/\delta.
+\]">\[
+\|f(x)\|\le2\|x\|/\delta.
+\]</span> The zero vector causes no exception. Thus no continuous morphisms have been excluded.</p>
+<p>Closed subspaces of a Banach space are complete: a Cauchy sequence converges in the ambient space, and closedness places its limit in the subspace. For a closed linear subspace <span class="math" data-tex="\(K\subseteq X\)">\(K\subseteq X\)</span>, equip the quotient with
+<span class="math math-display" data-tex="\[
+\|[x]\|_{X/K}=\inf_{k\in K}\|x+k\|_X.
+\tag{3.1}
+\]">\[
+\|[x]\|_{X/K}=\inf_{k\in K}\|x+k\|_X.
+\tag{3.1}
+\]</span>
+This is independent of the representative. It is positive on a nonzero coset because distance zero places <span class="math" data-tex="\(x\)">\(x\)</span> in the closed set <span class="math" data-tex="\(K\)">\(K\)</span>. Homogeneity follows by replacing <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(\lambda k\)">\(\lambda k\)</span> for <span class="math" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span>, and the zero scalar is immediate. Adding representatives whose norms approach the two infima proves the triangle inequality. Thus (3.1) is a norm, and the quotient map is contractive.</p>
+<p>The quotient is complete. Given a Cauchy sequence of cosets, choose a subsequence <span class="math" data-tex="\(c_j\)">\(c_j\)</span> whose successive differences have norm less than <span class="math" data-tex="\(2^{-j-1}\)">\(2^{-j-1}\)</span>. Choose representatives <span class="math" data-tex="\(v_j\)">\(v_j\)</span> of <span class="math" data-tex="\(c_{j+1}-c_j\)">\(c_{j+1}-c_j\)</span> with <span class="math" data-tex="\(\|v_j\|&lt;2^{-j}\)">\(\|v_j\|&lt;2^{-j}\)</span>. Starting with any representative of <span class="math" data-tex="\(c_1\)">\(c_1\)</span>, its sum with <span class="math" data-tex="\(\sum_jv_j\)">\(\sum_jv_j\)</span> converges in <span class="math" data-tex="\(X\)">\(X\)</span>: the partial sums are Cauchy by the convergent geometric majorant, and <span class="math" data-tex="\(X\)">\(X\)</span> is complete. The contractive quotient sends these partial sums to the chosen subsequence. That subsequence converges, and the Cauchy property makes the full original sequence converge to the same coset.</p>
+<p>For additivity and finite sums, retain the full proof of <a href="additive-localization-and-projector-decompositions.html#1-finite-sums-in-familiar-categories">Additive localization and projector decompositions, Proposition 1.2</a> and its full Exercise 1 solution in <a href="additive-localization-and-projector-decompositions.html#5-exercises-with-complete-solutions">§5</a>. They prove completeness and both bounded universal properties, and the bounded isomorphism between the maximum and sum norms. We use their sum-norm biproduct <span class="math" data-tex="\(X\oplus_1Y\)">\(X\oplus_1Y\)</span>, with <span class="math" data-tex="\(\|(x,y)\|=\|x\|+\|y\|\)">\(\|(x,y)\|=\|x\|+\|y\|\)</span>; the later estimates depend on this chosen norm. These exact stronger norm computations remain in the earlier lesson.</p>
+<p>For bounded linear <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, its nullspace is closed: if <span class="math" data-tex="\(x_j\to x\)">\(x_j\to x\)</span> and <span class="math" data-tex="\(f(x_j)=0\)">\(f(x_j)=0\)</span>, boundedness gives <span class="math" data-tex="\(f(x)=0\)">\(f(x)=0\)</span>. With its subspace norm, inclusion is a kernel. A bounded map <span class="math" data-tex="\(t:T\to X\)">\(t:T\to X\)</span> killed by <span class="math" data-tex="\(f\)">\(f\)</span> has exactly the same bounded element function as its unique factor through that nullspace.</p>
+<p>Let <span class="math" data-tex="\(L=\overline{f(X)}\)">\(L=\overline{f(X)}\)</span>. This is a closed linear subspace, and the quotient
+<span class="math math-display" data-tex="\[
+q:Y\longrightarrow Y/L
+\tag{3.2}
+\]">\[
+q:Y\longrightarrow Y/L
+\tag{3.2}
+\]</span>
+is a cokernel. A bounded <span class="math" data-tex="\(t:Y\to T\)">\(t:Y\to T\)</span> with <span class="math" data-tex="\(tf=0\)">\(tf=0\)</span> vanishes on <span class="math" data-tex="\(L\)">\(L\)</span> by continuity. Its unique induced linear map <span class="math" data-tex="\(\bar t([y])=t(y)\)">\(\bar t([y])=t(y)\)</span> is bounded: for every <span class="math" data-tex="\(l\in L\)">\(l\in L\)</span>,
+<span class="math math-display" data-tex="\[
+\|\bar t([y])\|
+\le\|t\|\|y+l\|,
+\tag{3.3}
+\]">\[
+\|\bar t([y])\|
+\le\|t\|\|y+l\|,
+\tag{3.3}
+\]</span>
+and taking the infimum gives its bound by <span class="math" data-tex="\(\|t\|\)">\(\|t\|\)</span>. Uniqueness follows from surjectivity of the quotient map. This proves every required universal property in <span class="math" data-tex="\(\operatorname{Ban}\)">\(\operatorname{Ban}\)</span>.</p>
+<p>The complete additive comparison proof in the preceding lesson, §3, now applies. It identifies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Coim}f=X/\ker f,\\
+\operatorname{Im}f=\overline{f(X)},\\
+u_f([x])=f(x).
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+\operatorname{Coim}f=X/\ker f,\\
+\operatorname{Im}f=\overline{f(X)},\\
+u_f([x])=f(x).
+\end{gathered}
+\tag{3.4}
+\]</span>
+The image has its inherited Banach norm. The last map is bounded by the same infimum argument, and is the specified canonical comparison, rather than a chosen abstract identification.</p>
+<h2 id="4-a-dense-injection-defeats-the-abelian-axiom">4. A dense injection defeats the abelian axiom</h2>
+<p>Use <span class="math" data-tex="\(H=\ell^2(\mathbb N,\mathbb C)\)">\(H=\ell^2(\mathbb N,\mathbb C)\)</span>, with the square-sum norm. Its norm properties follow from finite sums: minimizing <span class="math" data-tex="\(\sum_{n\le N}(|x_n|-t|y_n|)^2\)">\(\sum_{n\le N}(|x_n|-t|y_n|)^2\)</span> over real <span class="math" data-tex="\(t\)">\(t\)</span> proves finite Cauchy–Schwarz, with the zero <span class="math" data-tex="\(y\)">\(y\)</span> case immediate. Expanding <span class="math" data-tex="\(\sum_{n\le N}|x_n+y_n|^2\)">\(\sum_{n\le N}|x_n+y_n|^2\)</span> and applying that inequality gives the finite triangle inequality. Taking increasing limits proves both square summability of the sum and the triangle inequality in <span class="math" data-tex="\(H\)">\(H\)</span>; positivity and homogeneity are coordinatewise.</p>
+<p>Its completeness follows directly. A norm-Cauchy sequence has Cauchy coordinates, hence limits <span class="math" data-tex="\(a_n\)">\(a_n\)</span>. Its norms are bounded by some <span class="math" data-tex="\(M\)">\(M\)</span>. Passing to the limit in any finite sum gives <span class="math" data-tex="\(\sum_{n\le N}|a_n|^2\le M^2\)">\(\sum_{n\le N}|a_n|^2\le M^2\)</span>, so <span class="math" data-tex="\(a\in H\)">\(a\in H\)</span>. Once two sufficiently late vectors are within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, passing to the coordinate limit in every finite sum gives norm distance at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> from <span class="math" data-tex="\(a\)">\(a\)</span>. Thus the vectors converge to <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+D:H\to H,\qquad (Da)_n=a_n/n.
+\tag{4.1}
+\]">\[
+D:H\to H,\qquad (Da)_n=a_n/n.
+\tag{4.1}
+\]</span>
+It is linear, bounded with norm at most <span class="math" data-tex="\(1\)">\(1\)</span>, and injective. Every finitely supported vector lies in its image, since multiplying its finitely many nonzero coordinates by their indices gives another element of <span class="math" data-tex="\(H\)">\(H\)</span>. Such vectors are dense by convergence of the square-sum tails. But <span class="math" data-tex="\(h=(1/n)_n\)">\(h=(1/n)_n\)</span> is in <span class="math" data-tex="\(H\)">\(H\)</span> and not in the image: its only coordinatewise preimage would be <span class="math" data-tex="\((1,1,\ldots)\)">\((1,1,\ldots)\)</span>, which is not square summable. The square summability of <span class="math" data-tex="\(h\)">\(h\)</span> follows, for example, by bounding the contribution of <span class="math" data-tex="\(2^j\le n&lt;2^{j+1}\)">\(2^j\le n&lt;2^{j+1}\)</span> by <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>.</p>
+<p>Therefore <span class="math" data-tex="\(D(H)\)">\(D(H)\)</span> is dense and not closed. Section 3 gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\ker D=0,\qquad \operatorname{coker}D=0,\\
+\operatorname{Coim}D=H=\operatorname{Im}D,\\
+u_D=D.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\ker D=0,\qquad \operatorname{coker}D=0,\\
+\operatorname{Coim}D=H=\operatorname{Im}D,\\
+u_D=D.
+\end{gathered}
+\tag{4.2}
+\]</span>
+This comparison is not invertible, since <span class="math" data-tex="\(h\)">\(h\)</span> has no preimage. Thus <span class="math" data-tex="\(\operatorname{Ban}\)">\(\operatorname{Ban}\)</span> is not abelian. It has all kernels and cokernels, and <span class="math" data-tex="\(D\)">\(D\)</span> is both monic and epic by the complete general zero-object tests in the preceding lesson, §1. In particular it is not balanced either.</p>
+<h2 id="5-the-two-quasi-abelian-stability-axioms">5. The two quasi-abelian stability axioms</h2>
+<p>An additive category with kernels and cokernels is <strong>quasi-abelian</strong> when pullbacks of strict epimorphisms are strict epimorphisms and pushouts of strict monomorphisms are strict monomorphisms. This is the convention of Schneiders, Definition 1.1.3; strictness uses the same specified comparison as (3.4).</p>
+<p>We first retain the exact bridge to universal arrows. By the full proof of Theorem 3.1 of <em>Coimages</em>, a strict epimorphism is a coequalizer of its kernel pair. In an additive category this is the cokernel of the difference of those projections; by the full biproduct calculation in the previous lesson, it is the cokernel of its ordinary kernel arrow. Conversely any cokernel is a coequalizer of the defining arrow and zero, hence is strict epic by that same theorem. Reversing its complete argument shows that strict monomorphisms are exactly kernels. The previous lesson's opposite and finite-diagram constructions check all hypotheses. We can therefore transport each strict mono or epi through the unique bounded isomorphism to a canonical closed-subspace inclusion or quotient from Section 3.</p>
+<p>For pullbacks, take a closed <span class="math" data-tex="\(K\subseteq X\)">\(K\subseteq X\)</span>, the quotient <span class="math" data-tex="\(q:X\to X/K\)">\(q:X\to X/K\)</span>, and any bounded <span class="math" data-tex="\(g:Z\to X/K\)">\(g:Z\to X/K\)</span>. Their pullback is the closed subspace
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E\subseteq X\oplus_1 Z,
+\\ E=\{(x,z):q(x)=g(z)\}.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+E\subseteq X\oplus_1 Z,
+\\ E=\{(x,z):q(x)=g(z)\}.
+\end{gathered}
+\tag{5.1}
+\]</span>
+Indeed it is the kernel of the bounded map <span class="math" data-tex="\((x,z)\mapsto q(x)-g(z)\)">\((x,z)\mapsto q(x)-g(z)\)</span>, with the universal property already proved in Section 3. Let <span class="math" data-tex="\(p:E\to Z\)">\(p:E\to Z\)</span> be projection. It is surjective, and its kernel is <span class="math" data-tex="\(K\oplus0\)">\(K\oplus0\)</span>. Two lifts of the same <span class="math" data-tex="\(z\)">\(z\)</span> differ by this kernel, so the induced map
+<span class="math math-display" data-tex="\[
+\bar p:E/(K\oplus0)\longrightarrow Z
+\tag{5.2}
+\]">\[
+\bar p:E/(K\oplus0)\longrightarrow Z
+\tag{5.2}
+\]</span>
+is a linear bijection. It is bounded by <span class="math" data-tex="\(1\)">\(1\)</span>. Its inverse is bounded as well. For each <span class="math" data-tex="\(z\)">\(z\)</span> and each <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the quotient norm allows a lift of <span class="math" data-tex="\(g(z)\)">\(g(z)\)</span> with
+<span class="math math-display" data-tex="\[
+\|x\|&lt;\|g(z)\|+\varepsilon.
+\tag{5.3}
+\]">\[
+\|x\|&lt;\|g(z)\|+\varepsilon.
+\tag{5.3}
+\]</span>
+Consequently the class of <span class="math" data-tex="\((x,z)\)">\((x,z)\)</span>, which is independent of that lift, has norm at most <span class="math" data-tex="\((1+\|g\|)\|z\|+\varepsilon\)">\((1+\|g\|)\|z\|+\varepsilon\)</span>. Taking the infimum over lifts and then letting <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to zero gives
+<span class="math math-display" data-tex="\[
+\|\bar p^{-1}(z)\|
+\le(1+\|g\|)\|z\|.
+\tag{5.4}
+\]">\[
+\|\bar p^{-1}(z)\|
+\le(1+\|g\|)\|z\|.
+\tag{5.4}
+\]</span>
+Thus (5.2) is a bounded isomorphism. Section 3 identifies it with the coimage comparison of <span class="math" data-tex="\(p\)">\(p\)</span>, so <span class="math" data-tex="\(p\)">\(p\)</span> is strict epic.</p>
+<p>For pushouts, take a closed <span class="math" data-tex="\(K\subseteq X\)">\(K\subseteq X\)</span> and any bounded <span class="math" data-tex="\(a:K\to Z\)">\(a:K\to Z\)</span>. The relation subspace
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+N=\{(k,-a(k)):k\in K\},
+\\ N\subseteq X\oplus_1Z.
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+N=\{(k,-a(k)):k\in K\},
+\\ N\subseteq X\oplus_1Z.
+\end{gathered}
+\tag{5.5}
+\]</span>
+is closed. Convergence of a sequence in <span class="math" data-tex="\(N\)">\(N\)</span> makes its first coordinates converge to some <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>, and continuity of <span class="math" data-tex="\(a\)">\(a\)</span> determines the second-coordinate limit. Hence Section 3 and the retained signed pushout construction give the Banach pushout
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P=(X\oplus_1Z)/N,
+\\ j(z)=[0,z].
+\end{gathered}
+\tag{5.6}
+\]">\[
+\begin{gathered}
+P=(X\oplus_1Z)/N,
+\\ j(z)=[0,z].
+\end{gathered}
+\tag{5.6}
+\]</span>
+The map <span class="math" data-tex="\(j\)">\(j\)</span> is injective and bounded by <span class="math" data-tex="\(1\)">\(1\)</span>. Put <span class="math" data-tex="\(C=\max(1,\|a\|)\)">\(C=\max(1,\|a\|)\)</span>. For every <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|z\|&amp;\le\|z+a(k)\|\\
+&amp;\quad+\|a\|\|k\|\\
+&amp;\le C\bigl(\|k\|\\
+&amp;\quad+\|z+a(k)\|\bigr).
+\end{aligned}
+\tag{5.7}
+\]">\[
+\begin{aligned}
+\|z\|&amp;\le\|z+a(k)\|\\
+&amp;\quad+\|a\|\|k\|\\
+&amp;\le C\bigl(\|k\|\\
+&amp;\quad+\|z+a(k)\|\bigr).
+\end{aligned}
+\tag{5.7}
+\]</span>
+Taking the infimum over representatives <span class="math" data-tex="\((-k,z+a(k))\)">\((-k,z+a(k))\)</span> of <span class="math" data-tex="\(j(z)\)">\(j(z)\)</span> gives <span class="math" data-tex="\(\|z\|\le C\|j(z)\|\)">\(\|z\|\le C\|j(z)\|\)</span>. Thus <span class="math" data-tex="\(j\)">\(j\)</span> has bounded inverse on its range. That range is closed: a convergent sequence <span class="math" data-tex="\(j(z_n)\)">\(j(z_n)\)</span> makes <span class="math" data-tex="\(z_n\)">\(z_n\)</span> Cauchy by this inequality, and its limit maps to the given limit in <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>One can also exhibit its kernel property explicitly. The bounded map
+<span class="math math-display" data-tex="\[
+\rho:P\to X/K,\qquad \rho([x,z])=[x]
+\tag{5.8}
+\]">\[
+\rho:P\to X/K,\qquad \rho([x,z])=[x]
+\tag{5.8}
+\]</span>
+is well defined and contractive by the quotient infimum. Its kernel consists precisely of classes with <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>; such a class is <span class="math" data-tex="\([0,z+a(x)]\)">\([0,z+a(x)]\)</span>. Thus its kernel is <span class="math" data-tex="\(j(Z)\)">\(j(Z)\)</span>. A bounded map into <span class="math" data-tex="\(P\)">\(P\)</span> killed by <span class="math" data-tex="\(\rho\)">\(\rho\)</span> factors uniquely through <span class="math" data-tex="\(j\)">\(j\)</span>, and the bound on <span class="math" data-tex="\(j^{-1}\)">\(j^{-1}\)</span> makes that factor bounded. Therefore <span class="math" data-tex="\(j\)">\(j\)</span> is a kernel, hence strict monic.</p>
+<p>Transporting these two computations through the bounded structural isomorphisms covers every strict epimorphism and strict monomorphism, not just the displayed models. Both defining axioms hold, so <span class="math" data-tex="\(\operatorname{Ban}\)">\(\operatorname{Ban}\)</span> is quasi-abelian. Each stability proof includes its norm bound and its universal identification.</p>
+<h2 id="6-four-graded-exercises-with-full-solutions">6. Four graded exercises with full solutions</h2>
+<p><strong>Exercise 1 (introductory: a noncommutative finite test).</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be the algebra of upper triangular <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Show that <span class="math" data-tex="\(\operatorname{Mod}^f(R)\)">\(\operatorname{Mod}^f(R)\)</span> is abelian. For the left-linear map <span class="math" data-tex="\(f:R\to R\)">\(f:R\to R\)</span>, <span class="math" data-tex="\(f(r)=r e_{11}\)">\(f(r)=r e_{11}\)</span>, compute its kernel, image and coimage comparison. Check why the order of multiplication matters.</p>
+<p><strong>Solution.</strong> Every left ideal is a complex linear subspace of the three-dimensional vector space <span class="math" data-tex="\(R\)">\(R\)</span>. A finite complex basis also generates it as a left <span class="math" data-tex="\(R\)">\(R\)</span>-module, since scalar matrices belong to <span class="math" data-tex="\(R\)">\(R\)</span>. Hence <span class="math" data-tex="\(R\)">\(R\)</span> is left Noetherian, and (1.1) applies.</p>
+<p>Writing <span class="math" data-tex="\(r=\left(\begin{smallmatrix}a&amp;b\\0&amp;c\end{smallmatrix}\right)\)">\(r=\left(\begin{smallmatrix}a&amp;b\\0&amp;c\end{smallmatrix}\right)\)</span>, we get <span class="math" data-tex="\(f(r)=a e_{11}\)">\(f(r)=a e_{11}\)</span>. Thus <span class="math" data-tex="\(\ker f=R e_{22}\)">\(\ker f=R e_{22}\)</span>, consisting of matrices with <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, and <span class="math" data-tex="\(\operatorname{im}f=R e_{11}=\mathbb C e_{11}\)">\(\operatorname{im}f=R e_{11}=\mathbb C e_{11}\)</span>. The canonical comparison sends <span class="math" data-tex="\([r]\in R/(R e_{22})\)">\([r]\in R/(R e_{22})\)</span> to <span class="math" data-tex="\(a e_{11}\)">\(a e_{11}\)</span>. Its inverse sends <span class="math" data-tex="\(a e_{11}\)">\(a e_{11}\)</span> to <span class="math" data-tex="\([a e_{11}]\)">\([a e_{11}]\)</span>; their composites are identities because <span class="math" data-tex="\(r-a e_{11}\in R e_{22}\)">\(r-a e_{11}\in R e_{22}\)</span>. Both maps are left linear, so this is the specified isomorphism.</p>
+<p>Right multiplication by <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span> is left linear by associativity. Left multiplication by <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span> would not be: with <span class="math" data-tex="\(s=e_{12}\)">\(s=e_{12}\)</span> and <span class="math" data-tex="\(r=e_{22}\)">\(r=e_{22}\)</span>, one has <span class="math" data-tex="\(e_{11}(sr)=e_{12}\)">\(e_{11}(sr)=e_{12}\)</span> but <span class="math" data-tex="\(s(e_{11}r)=0\)">\(s(e_{11}r)=0\)</span>. This explains the order in the exercise.</p>
+<p><strong>Exercise 2 (intermediate: diagonal strictness).</strong> Let <span class="math" data-tex="\((w_n)\)">\((w_n)\)</span> be a bounded sequence of nonzero complex numbers. On <span class="math" data-tex="\(H=\ell^2\)">\(H=\ell^2\)</span>, set <span class="math" data-tex="\((D_wx)_n=w_nx_n\)">\((D_wx)_n=w_nx_n\)</span>. Prove it is monic and epic, and is strict exactly when <span class="math" data-tex="\(\inf_n|w_n|&gt;0\)">\(\inf_n|w_n|&gt;0\)</span>. If the infimum is zero, exhibit a vector outside its range.</p>
+<p><strong>Solution.</strong> Boundedness follows from <span class="math" data-tex="\(\|D_wx\|\le(\sup_n|w_n|)\|x\|\)">\(\|D_wx\|\le(\sup_n|w_n|)\|x\|\)</span>. Nonzero weights give injectivity, and every finitely supported vector lies in its image. Thus the image is dense, and the kernel and cokernel are zero by Section 3. The general tests make it monic and epic. Its canonical comparison is itself, as in (4.2).</p>
+<p>If <span class="math" data-tex="\(c=\inf_n|w_n|&gt;0\)">\(c=\inf_n|w_n|&gt;0\)</span>, coordinatewise division by <span class="math" data-tex="\(w_n\)">\(w_n\)</span> sends every <span class="math" data-tex="\(y\in H\)">\(y\in H\)</span> to an element of norm at most <span class="math" data-tex="\(c^{-1}\|y\|\)">\(c^{-1}\|y\|\)</span>. It is a bounded inverse, so <span class="math" data-tex="\(D_w\)">\(D_w\)</span> is strict. Conversely, a bounded inverse with norm <span class="math" data-tex="\(B\)">\(B\)</span> would give <span class="math" data-tex="\(1/|w_n|\le B\)">\(1/|w_n|\le B\)</span> by applying it to the unit vector <span class="math" data-tex="\(e_n\)">\(e_n\)</span>, forcing a positive lower bound.</p>
+<p>If the infimum is zero, choose distinct indices <span class="math" data-tex="\(n_j\)">\(n_j\)</span> with <span class="math" data-tex="\(|w_{n_j}|&lt;2^{-j}\)">\(|w_{n_j}|&lt;2^{-j}\)</span>. Distinctness can be maintained because any finite set of nonzero weights has positive minimum. Define <span class="math" data-tex="\(y_{n_j}=w_{n_j}\)">\(y_{n_j}=w_{n_j}\)</span>, and set other coordinates zero. Its square sum is bounded by <span class="math" data-tex="\(\sum_j4^{-j}\)">\(\sum_j4^{-j}\)</span>, so <span class="math" data-tex="\(y\in H\)">\(y\in H\)</span>. A preimage would have coordinate <span class="math" data-tex="\(1\)">\(1\)</span> at every <span class="math" data-tex="\(n_j\)">\(n_j\)</span>, which is not square summable. Hence no preimage exists.</p>
+<p><strong>Exercise 3 (hard: complements and split squares).</strong> For a closed <span class="math" data-tex="\(K\subseteq X\)">\(K\subseteq X\)</span>, with inclusion <span class="math" data-tex="\(\iota:K\to X\)">\(\iota:K\to X\)</span>, prove the quotient <span class="math" data-tex="\(q:X\to X/K\)">\(q:X\to X/K\)</span> has a bounded linear section exactly when there is a bounded linear <span class="math" data-tex="\(B:X\to K\)">\(B:X\to K\)</span> with <span class="math" data-tex="\(B\iota=1_K\)">\(B\iota=1_K\)</span>. In that case give a bounded section of every pullback in (5.1), and a bounded retraction of every pushout embedding in (5.6).</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(s:X/K\to X\)">\(s:X/K\to X\)</span> is a bounded section, <span class="math" data-tex="\(1_X-sq\)">\(1_X-sq\)</span> has range in <span class="math" data-tex="\(K\)">\(K\)</span>, since <span class="math" data-tex="\(q(1_X-sq)=0\)">\(q(1_X-sq)=0\)</span>. Its codomain restriction defines a bounded <span class="math" data-tex="\(B:X\to K\)">\(B:X\to K\)</span> with <span class="math" data-tex="\(\iota B=1_X-sq\)">\(\iota B=1_X-sq\)</span> and <span class="math" data-tex="\(B\iota=1_K\)">\(B\iota=1_K\)</span>, using the subspace norm. Conversely, given <span class="math" data-tex="\(B\)">\(B\)</span>, set
+<span class="math math-display" data-tex="\[
+s([x])=(1_X-\iota B)x.
+\tag{6.1}
+\]">\[
+s([x])=(1_X-\iota B)x.
+\tag{6.1}
+\]</span>
+It is independent of the representative because <span class="math" data-tex="\(B\iota=1_K\)">\(B\iota=1_K\)</span>. Taking the infimum of <span class="math" data-tex="\(\|(1_X-\iota B)(x+\iota k)\|\le\|1_X-\iota B\|\|x+\iota k\|\)">\(\|(1_X-\iota B)(x+\iota k)\|\le\|1_X-\iota B\|\|x+\iota k\|\)</span> over <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span> proves boundedness. Since <span class="math" data-tex="\(\iota Bx\in K\)">\(\iota Bx\in K\)</span>, <span class="math" data-tex="\(qs=1\)">\(qs=1\)</span>. This proves both directions.</p>
+<p>For (5.1), the map <span class="math" data-tex="\(z\mapsto(sg(z),z)\)">\(z\mapsto(sg(z),z)\)</span> lands in <span class="math" data-tex="\(E\)">\(E\)</span>, is linear, and satisfies the bound
+<span class="math math-display" data-tex="\[
+\|(sg(z),z)\|\le(1+\|s\|\|g\|)\|z\|.
+\]">\[
+\|(sg(z),z)\|\le(1+\|s\|\|g\|)\|z\|.
+\]</span> Projection to <span class="math" data-tex="\(Z\)">\(Z\)</span> gives the identity, so it is the requested section. For (5.6), define
+<span class="math math-display" data-tex="\[
+r([x,z])=z+a(Bx).
+\tag{6.2}
+\]">\[
+r([x,z])=z+a(Bx).
+\tag{6.2}
+\]</span>
+The numerator map kills <span class="math" data-tex="\((k,-a(k))\)">\((k,-a(k))\)</span>, since <span class="math" data-tex="\(Bk=k\)">\(Bk=k\)</span>, so factors uniquely through the quotient. Its norm is bounded by <span class="math" data-tex="\(\max(1,\|a\|\|B\|)\)">\(\max(1,\|a\|\|B\|)\)</span> against the sum norm, hence against the quotient norm after taking the infimum. Also <span class="math" data-tex="\(rj=1_Z\)">\(rj=1_Z\)</span>. The formulas prove split stability under the additional complement hypothesis; no assertion that every closed subspace has such a projection is needed.</p>
+<p><strong>Exercise 4 (advanced: why strictness is essential).</strong> For <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> of Section 4, pull <span class="math" data-tex="\(D:H\to H\)">\(D:H\to H\)</span> back along <span class="math" data-tex="\(g:\mathbb C\to H\)">\(g:\mathbb C\to H\)</span>, <span class="math" data-tex="\(g(\lambda)=\lambda h\)">\(g(\lambda)=\lambda h\)</span>. Compute the resulting map to <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Then push the monomorphism <span class="math" data-tex="\(D:H\to H\)">\(D:H\to H\)</span> out along <span class="math" data-tex="\(H\to0\)">\(H\to0\)</span>. Explain why the two results do not contradict quasi-abelianity.</p>
+<p><strong>Solution.</strong> The pullback is the closed subspace of <span class="math" data-tex="\(H\oplus_1\mathbb C\)">\(H\oplus_1\mathbb C\)</span> where <span class="math" data-tex="\(Dx=\lambda h\)">\(Dx=\lambda h\)</span>. If <span class="math" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span>, division by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> would put <span class="math" data-tex="\(h\)">\(h\)</span> in <span class="math" data-tex="\(D(H)\)">\(D(H)\)</span>, contradicting Section 4. Thus <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>, and injectivity of <span class="math" data-tex="\(D\)">\(D\)</span> gives <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. The pullback object is zero and its projection is <span class="math" data-tex="\(0\to\mathbb C\)">\(0\to\mathbb C\)</span>, which is not epic: the identity and zero maps on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> agree after it but differ.</p>
+<p>The signed pushout is the Banach cokernel of <span class="math" data-tex="\(D\)">\(D\)</span>, namely <span class="math" data-tex="\(H/\overline{D(H)}=0\)">\(H/\overline{D(H)}=0\)</span>. Its induced map from the target copy of <span class="math" data-tex="\(H\)">\(H\)</span> is <span class="math" data-tex="\(H\to0\)">\(H\to0\)</span>, which is not monic: the identity and zero maps into <span class="math" data-tex="\(H\)">\(H\)</span> agree after it but differ. The starting arrow <span class="math" data-tex="\(D\)">\(D\)</span> is both epic and monic, but is not strict. The stability axioms concern strict epi and strict mono arrows, so both counterexamples are compatible with the full proofs in Section 5. They show why replacing those hypotheses by ordinary epicity or monicity would be false.</p>
+<h2 id="7-references">7. References</h2>
+<ul>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Examples 5.1.2 and 5.1.4, for the category of Banach spaces, which has kernels and cokernels but is not abelian, and for finitely generated modules over a ring that is not Noetherian.</li>
+<li>Jean-Pierre Schneiders, <em>Quasi-Abelian Categories and Sheaves</em>, Mémoires de la Société Mathématique de France 76, 1999, Definitions 1.1.1 and 1.1.3, printed pp. 7–8, for the strictness and stability conventions. The Banach proofs and norm estimates above are supplied in full here.</li>
+<li>Toby Stafford; notes modified by Mike Prest, <a href="https://personalpages.manchester.ac.uk/staff/mike.prest/CourseNotes-2018updated#page=39"><em>MATH 42041/62041: Noncommutative Algebra</em>, Autumn 2018</a>, Theorems 3.1 and 3.6 and Corollaries 3.7–3.8, printed pp. 39–40 and 43–44, for the complete left-module criterion and extension proofs. This is a citation and link to author-hosted university notes; no provider prose or PDF is redistributed and no CC0 licence is asserted for those notes. The remaining linked course proofs retain their stated terms.</li>
+</ul>
+</main></body></html>

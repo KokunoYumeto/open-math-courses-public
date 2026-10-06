@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smooth local representations and the Hecke-module dictionary · Automorphic forms and representations of GL(2)</title>
+<meta name="description" content="A lesson of the course Automorphic forms and representations of GL(2). Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/automorphic-forms-and-representations-of-gl2/smooth-local-representations-and-the-hecke-module-dictionary.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Automorphic forms and representations of GL(2)</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 14</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="smooth-local-representations-and-the-hecke-module-dictionary">Smooth local representations and the Hecke-module dictionary</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).</em></p>
+<p>At a finite place there are compact open subgroups arbitrarily close to the identity. Averaging over one of them is therefore an exact algebraic operation: it fixes a vector once the subgroup is small enough. This replaces the real Lie derivatives and compact-type projections used in the previous lesson. We will use these averages to reconstruct a smooth representation from its Hecke module, prove Schur's lemma without assuming admissibility, and identify the correct dual.</p>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a nonarchimedean local field, <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> its integers, <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> a uniformizer, and <span class="math" data-tex="\(q=|\mathcal O/\varpi\mathcal O|\)">\(q=|\mathcal O/\varpi\mathcal O|\)</span>. Put <span class="math" data-tex="\(G=\mathrm{GL}_2(F)\)">\(G=\mathrm{GL}_2(F)\)</span> and normalize Haar measure by <span class="math" data-tex="\(\operatorname{vol}(K_0)=1\)">\(\operatorname{vol}(K_0)=1\)</span>, where <span class="math" data-tex="\(K_0=\mathrm{GL}_2(\mathcal O)\)">\(K_0=\mathrm{GL}_2(\mathcal O)\)</span>. For the local topology and valuation, use <a href="../NT-LOC/NT-LOC-06.html">Local fields: classification and Haar measure</a>, Proposition 3.1; its Proposition 6.1 fixes the additive and multiplicative measure conventions. Finite-group Maschke theory is <a href="../RT-FIN/representations-and-complete-reducibility.html">Representations and complete reducibility</a>, Theorem 2.3. We also use Haar integration and algebraic tensor products. The finite-group theorem does not itself assert exactness for an arbitrary infinite-dimensional smooth representation: the compact averages needed here are constructed and proved exact in Section 1. The double-coset basis and multiplication of a fixed-level Hecke algebra belong to the adèle prerequisite, NT-ADL-12, Proposition 12.1; only that basis description is recalled here. The representation-theoretic projection, reconstruction and simple-module assertions are proved below. For GL₂, admissibility of irreducible smooth representations is proved in the next lesson, Theorem 5.4, using compact averaging and the two cases of the Jacquet module. It is a conclusion rather than part of the definition. The Hilbert compact decomposition used in Lemma 3.2 is proved in <a href="../representations-of-compact-groups/reader/courses/representations-of-compact-groups/representations-of-compact-groups-unitarity-complete-reducibility-and-finite-dimension.html">Representations of compact groups</a>, Theorem 3.1; its Schur and isotypic results are Theorems 4.1–4.2. The compression and convolution assertions for the noncompact group are proved here.</p>
+<h2 id="1-exact-averages-and-local-units">1. Exact averages and local units</h2>
+<p>For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+K_n=1+\varpi^n M_2(\mathcal O)
+\tag{1.1}
+\]">\[
+K_n=1+\varpi^n M_2(\mathcal O)
+\tag{1.1}
+\]</span>
+<p>is a compact open subgroup. Products have the form <span class="math" data-tex="\(1+\varpi^n(A+B+\varpi^nAB)\)">\(1+\varpi^n(A+B+\varpi^nAB)\)</span>, and the convergent inverse series retains that form. Compactness follows from the four compact entry sets, and openness from the entry topology. These groups form a neighbourhood basis of the identity. The field, and hence <span class="math" data-tex="\(G\)">\(G\)</span>, is second countable: countably many valuation balls cover it, with finite residue digits at each precision. Any disjoint family of open cosets is consequently countable.</p>
+<p>A complex algebraic representation <span class="math" data-tex="\((\pi,V)\)">\((\pi,V)\)</span> is <strong>smooth</strong> when every vector has an open stabilizer, equivalently <span class="math" data-tex="\(V=\bigcup_K V^K\)">\(V=\bigcup_K V^K\)</span> over compact open subgroups. It is <strong>admissible</strong> when additionally <span class="math" data-tex="\(\dim V^K&lt;\infty\)">\(\dim V^K&lt;\infty\)</span> for each such <span class="math" data-tex="\(K\)">\(K\)</span>. Neither condition asks for a Hilbert norm.</p>
+<p>Let <span class="math" data-tex="\(A=\mathcal H(G)=C_c^\infty(G)\)">\(A=\mathcal H(G)=C_c^\infty(G)\)</span>, where smooth means locally constant, with</p>
+<span class="math math-display" data-tex="\[
+(f_1*f_2)(g)=\int_G f_1(t)f_2(t^{-1}g)\,dt,
+\qquad \pi(f)v=\int_G f(g)\pi(g)v\,dg.
+\tag{1.2}
+\]">\[
+(f_1*f_2)(g)=\int_G f_1(t)f_2(t^{-1}g)\,dt,
+\qquad \pi(f)v=\int_G f(g)\pi(g)v\,dg.
+\tag{1.2}
+\]</span>
+<p>The last integral is a finite sum of vectors: intersect the locally constant pieces of <span class="math" data-tex="\(f\)">\(f\)</span> on its compact support with the open stabilizer of <span class="math" data-tex="\(v\)">\(v\)</span>. Fubini on these finite decompositions proves <span class="math" data-tex="\(\pi(f_1*f_2)=\pi(f_1)\pi(f_2)\)">\(\pi(f_1*f_2)=\pi(f_1)\pi(f_2)\)</span>. The group is unimodular. Indeed <span class="math" data-tex="\(|\det g|^{-2}d^4g\)">\(|\det g|^{-2}d^4g\)</span>, obtained from additive Haar measure on matrices, is both left and right invariant: left or right multiplication scales the four-entry measure by <span class="math" data-tex="\(|\det g|^2\)">\(|\det g|^2\)</span>, cancelling the determinant density.</p>
+<p>For compact open <span class="math" data-tex="\(K\)">\(K\)</span>, write <span class="math" data-tex="\(e_K=\operatorname{vol}(K)^{-1}1_K\)">\(e_K=\operatorname{vol}(K)^{-1}1_K\)</span>.</p>
+<p><strong>Proposition 1.1 — averages and corners.</strong> We have</p>
+<span class="math math-display" data-tex="\[
+e_K*e_K=e_K,\qquad \pi(e_K)V=V^K,
+\qquad e_K*A*e_K=\mathcal H(G,K),
+\tag{1.3}
+\]">\[
+e_K*e_K=e_K,\qquad \pi(e_K)V=V^K,
+\qquad e_K*A*e_K=\mathcal H(G,K),
+\tag{1.3}
+\]</span>
+<p>where <span class="math" data-tex="\(\mathcal H(G,K)\)">\(\mathcal H(G,K)\)</span> consists of the compactly supported bi-<span class="math" data-tex="\(K\)">\(K\)</span>-invariant functions. Its identity is <span class="math" data-tex="\(e_K\)">\(e_K\)</span>.</p>
+<p><strong>Proof.</strong> Averaging a <span class="math" data-tex="\(K\)">\(K\)</span>-invariant vector leaves it fixed; averaging any vector makes it invariant, by Haar translation. This proves the projection and idempotence assertions, including idempotence within the algebra by the same convolution calculation. Left convolution by <span class="math" data-tex="\(e_K\)">\(e_K\)</span> averages left translations of a function, and right convolution averages right translations. Thus the corner consists of bi-invariant functions. Conversely those two averages fix every bi-invariant function, proving equality and the identity assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The double-coset characteristic functions <span class="math" data-tex="\(1_{KgK}\)">\(1_{KgK}\)</span> give a basis of that corner: the double cosets are open and compact, and a compact support meets finitely many of them. Their product counts the appropriate finite cosets with the Haar factors; its detailed counting formula is the prerequisite result identified above. One must retain <span class="math" data-tex="\(\operatorname{vol}(K)\)">\(\operatorname{vol}(K)\)</span> when <span class="math" data-tex="\(K\ne K_0\)">\(K\ne K_0\)</span>.</p>
+<p>Every <span class="math" data-tex="\(f\in A\)">\(f\in A\)</span> is bi-invariant under some compact open subgroup. For the right side, cover its compact support by finitely many cosets on which it is constant, and intersect their fixing subgroups. The support is a finite union of those cosets, so its complement is preserved as well. Do the same on the left and intersect again. For finitely many functions choose a common smaller subgroup. Consequently the <span class="math" data-tex="\(e_K\)">\(e_K\)</span> are <strong>local units</strong>: a given finite set of algebra elements satisfies <span class="math" data-tex="\(e_K*f_i=f_i=f_i*e_K\)">\(e_K*f_i=f_i=f_i*e_K\)</span> for some <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>The full algebra has no identity for this nondiscrete <span class="math" data-tex="\(G\)">\(G\)</span>. For if an identity <span class="math" data-tex="\(u\)">\(u\)</span> existed, it would be fixed on both sides by some <span class="math" data-tex="\(e_J\)">\(e_J\)</span>, so <span class="math" data-tex="\(u=e_J*u=e_J\)">\(u=e_J*u=e_J\)</span>. But for any proper compact open <span class="math" data-tex="\(L\subset J\)">\(L\subset J\)</span>, <span class="math" data-tex="\(e_J*e_L=e_J\ne e_L\)">\(e_J*e_L=e_J\ne e_L\)</span>, contradicting the identity property. The exact identities are in the fixed-level corners.</p>
+<h2 id="2-recovering-the-group-action">2. Recovering the group action</h2>
+<p>Call an <span class="math" data-tex="\(A\)">\(A\)</span>-module <strong>nondegenerate</strong> if <span class="math" data-tex="\(AM=M\)">\(AM=M\)</span>, meaning each vector is a finite sum of algebra actions. Local units imply the useful equivalent statement: every <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span> satisfies <span class="math" data-tex="\(e_Km=m\)">\(e_Km=m\)</span> for some <span class="math" data-tex="\(K\)">\(K\)</span>. To see it for <span class="math" data-tex="\(m=\sum f_im_i\)">\(m=\sum f_im_i\)</span>, use a common left local unit of the <span class="math" data-tex="\(f_i\)">\(f_i\)</span>.</p>
+<p><strong>Proposition 2.1.</strong> Smooth <span class="math" data-tex="\(G\)">\(G\)</span>-representations and nondegenerate <span class="math" data-tex="\(A\)">\(A\)</span>-modules are equivalent, with the same invariant subspaces and intertwining maps.</p>
+<p><strong>Proof.</strong> A smooth representation gives (1.2), and a subgroup fixing <span class="math" data-tex="\(v\)">\(v\)</span> supplies <span class="math" data-tex="\(e_Kv=v\)">\(e_Kv=v\)</span>, so its module is nondegenerate. Conversely, given a nondegenerate module, define</p>
+<span class="math math-display" data-tex="\[
+\pi(g)m=(L_ge_K)m,
+\qquad (L_gf)(t)=f(g^{-1}t),\qquad e_Km=m.
+\tag{2.1}
+\]">\[
+\pi(g)m=(L_ge_K)m,
+\qquad (L_gf)(t)=f(g^{-1}t),\qquad e_Km=m.
+\tag{2.1}
+\]</span>
+<p>This is independent of the choice of <span class="math" data-tex="\(K\)">\(K\)</span>. If <span class="math" data-tex="\(J\subset K\)">\(J\subset K\)</span>, then <span class="math" data-tex="\(e_Je_K=e_K=e_Ke_J\)">\(e_Je_K=e_K=e_Ke_J\)</span>, so <span class="math" data-tex="\(e_Jm=m\)">\(e_Jm=m\)</span> and
+<span class="math" data-tex="\((L_ge_J)m=(L_ge_J)e_Km=(L_ge_K)m\)">\((L_ge_J)m=(L_ge_J)e_Km=(L_ge_K)m\)</span>.
+For two choices take a common subgroup contained in both. The same argument proves linearity on vectors with different fixing subgroups.</p>
+<p>For <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span>, choose a common local unit <span class="math" data-tex="\(e_J\)">\(e_J\)</span> fixing <span class="math" data-tex="\(m\)">\(m\)</span> and satisfying <span class="math" data-tex="\(e_Jb=b\)">\(e_Jb=b\)</span>. The identity
+<span class="math" data-tex="\((L_g f)*b=L_g(f*b)\)">\((L_g f)*b=L_g(f*b)\)</span> then gives
+<span class="math" data-tex="\(\pi(g)(bm)=(L_gb)m\)">\(\pi(g)(bm)=(L_gb)m\)</span>.
+Applying it to <span class="math" data-tex="\(b=L_he_K\)">\(b=L_he_K\)</span> proves <span class="math" data-tex="\(\pi(g)\pi(h)m=(L_{gh}e_K)m\)">\(\pi(g)\pi(h)m=(L_{gh}e_K)m\)</span>. The identity acts as the identity. Also <span class="math" data-tex="\(K\)">\(K\)</span> fixes <span class="math" data-tex="\(m\)">\(m\)</span>, since <span class="math" data-tex="\(L_ke_K=e_K\)">\(L_ke_K=e_K\)</span> for <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>; hence the recovered action is smooth.</p>
+<p>Integration of (2.1) gives the original module action: <span class="math" data-tex="\(\int f(g)L_ge_Kdg=f*e_K\)">\(\int f(g)L_ge_Kdg=f*e_K\)</span>, and choosing <span class="math" data-tex="\(K\)">\(K\)</span> also a right local unit for <span class="math" data-tex="\(f\)">\(f\)</span> gives <span class="math" data-tex="\(\pi(f)m=fm\)">\(\pi(f)m=fm\)</span>. Starting from a smooth representation, <span class="math" data-tex="\(\pi(L_ge_K)m=\pi(g)\pi(e_K)m=\pi(g)m\)">\(\pi(L_ge_K)m=\pi(g)\pi(e_K)m=\pi(g)m\)</span>, recovering its original group action. A subspace stable under the group is stable under finite-sum integrals. A subspace stable under <span class="math" data-tex="\(A\)">\(A\)</span> is stable under (2.1). The same formulas prove the assertion for morphisms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is no assertion here that all smooth representations are admissible. The equivalence applies to infinite-dimensional fixed spaces as well.</p>
+<h2 id="3-a-fixed-subgroup-and-all-simple-modules">3. A fixed subgroup and all simple modules</h2>
+<p>Fix compact open <span class="math" data-tex="\(K\)">\(K\)</span>, and abbreviate <span class="math" data-tex="\(e=e_K\)">\(e=e_K\)</span>, <span class="math" data-tex="\(B=eAe\)">\(B=eAe\)</span>. Modules for the unital algebra <span class="math" data-tex="\(B\)">\(B\)</span> are understood to have its identity <span class="math" data-tex="\(e\)">\(e\)</span> act as one. A simple module or irreducible representation is nonzero.</p>
+<p><strong>Theorem 3.1 — Hecke-module dictionary.</strong> The map
+<span class="math" data-tex="\(V\longmapsto V^K=eV\)">\(V\longmapsto V^K=eV\)</span>
+gives a bijection between the isomorphism classes of irreducible smooth <span class="math" data-tex="\(G\)">\(G\)</span>-representations with <span class="math" data-tex="\(V^K\ne0\)">\(V^K\ne0\)</span> and simple <span class="math" data-tex="\(B\)">\(B\)</span>-modules.</p>
+<p><strong>Proof of the forward assertion.</strong> If <span class="math" data-tex="\(0\ne W\subset eV\)">\(0\ne W\subset eV\)</span> is a <span class="math" data-tex="\(B\)">\(B\)</span>-submodule, the <span class="math" data-tex="\(A\)">\(A\)</span>-submodule <span class="math" data-tex="\(AW\)">\(AW\)</span> is nonzero and therefore all of <span class="math" data-tex="\(V\)">\(V\)</span>. Multiplying by <span class="math" data-tex="\(e\)">\(e\)</span> gives
+<span class="math" data-tex="\(eV=eAW=eAeW=BW=W\)">\(eV=eAW=eAeW=BW=W\)</span>.
+Thus <span class="math" data-tex="\(eV\)">\(eV\)</span> is simple. Conversely an irreducible representation with nonzero fixed vectors is generated by them, since <span class="math" data-tex="\(AeV\)">\(AeV\)</span> is a nonzero invariant subspace.</p>
+<p><strong>Construction of the inverse.</strong> Given a simple <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, form</p>
+<span class="math math-display" data-tex="\[
+P=Ae\otimes_B M.
+\tag{3.1}
+\]">\[
+P=Ae\otimes_B M.
+\tag{3.1}
+\]</span>
+<p>It is a nondegenerate <span class="math" data-tex="\(A\)">\(A\)</span>-module, by local units on the finitely many first tensor factors of a vector. Its fixed part is exactly <span class="math" data-tex="\(eP\simeq M\)">\(eP\simeq M\)</span>: send <span class="math" data-tex="\(eae\otimes m\)">\(eae\otimes m\)</span> to <span class="math" data-tex="\((eae)m\)">\((eae)m\)</span>, with inverse <span class="math" data-tex="\(m\mapsto e\otimes m\)">\(m\mapsto e\otimes m\)</span>. The tensor relations prove that these maps are inverse. Further, <span class="math" data-tex="\(P=A(eP)\)">\(P=A(eP)\)</span>.</p>
+<p>Define the submodule</p>
+<span class="math math-display" data-tex="\[
+N=\{x\in P:eAx=0\}.
+\tag{3.2}
+\]">\[
+N=\{x\in P:eAx=0\}.
+\tag{3.2}
+\]</span>
+<p>It is stable under <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(eN=0\)">\(eN=0\)</span>, taking the algebra element <span class="math" data-tex="\(e\)">\(e\)</span> in its defining condition. Every submodule <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(eU=0\)">\(eU=0\)</span> lies in <span class="math" data-tex="\(N\)">\(N\)</span>, since then <span class="math" data-tex="\(eAU=0\)">\(eAU=0\)</span>. Thus <span class="math" data-tex="\(N\)">\(N\)</span> is the largest submodule invisible to <span class="math" data-tex="\(e\)">\(e\)</span>, and <span class="math" data-tex="\(N\cap eP=0\)">\(N\cap eP=0\)</span>. Put <span class="math" data-tex="\(V_M=P/N\)">\(V_M=P/N\)</span>. It is nonzero and its fixed part is <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>If <span class="math" data-tex="\(U\subset V_M\)">\(U\subset V_M\)</span> is a nonzero submodule, <span class="math" data-tex="\(eU\)">\(eU\)</span> is either zero or all of <span class="math" data-tex="\(eV_M=M\)">\(eV_M=M\)</span>. In the first case the inverse image <span class="math" data-tex="\(\widetilde U\subset P\)">\(\widetilde U\subset P\)</span> has <span class="math" data-tex="\(e\widetilde U\subset N\cap eP=0\)">\(e\widetilde U\subset N\cap eP=0\)</span>; maximality in (3.2) forces <span class="math" data-tex="\(\widetilde U\subset N\)">\(\widetilde U\subset N\)</span>, contrary to <span class="math" data-tex="\(U\ne0\)">\(U\ne0\)</span>. In the second case <span class="math" data-tex="\(U\)">\(U\)</span> contains <span class="math" data-tex="\(eV_M\)">\(eV_M\)</span> and hence <span class="math" data-tex="\(A(eV_M)=V_M\)">\(A(eV_M)=V_M\)</span>. This proves simplicity. Proposition 2.1 converts it to an irreducible smooth representation.</p>
+<p><strong>Uniqueness.</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> is irreducible and <span class="math" data-tex="\(eV=M\)">\(eV=M\)</span>, the map <span class="math" data-tex="\(P\to V\)">\(P\to V\)</span>, <span class="math" data-tex="\(ae\otimes m\mapsto am\)">\(ae\otimes m\mapsto am\)</span>, is surjective and an isomorphism on fixed parts. Its kernel has fixed part zero and hence lies in <span class="math" data-tex="\(N\)">\(N\)</span>. The image of <span class="math" data-tex="\(N\)">\(N\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span> also has fixed part zero, so irreducibility makes it zero, giving the opposite inclusion. Therefore its kernel is exactly <span class="math" data-tex="\(N\)">\(N\)</span>. This proves uniqueness and both inverse assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The quotient by <span class="math" data-tex="\(N\)">\(N\)</span> is essential. The induced module (3.1) can have additional submodules with no <span class="math" data-tex="\(K\)">\(K\)</span>-fixed vectors; simply declaring that tensor product irreducible would skip the reconstruction problem. This theorem classifies simple objects with fixed vectors, rather than claiming an equivalence between all <span class="math" data-tex="\(G\)">\(G\)</span>-representations and all modules of one fixed corner.</p>
+<p><strong>Smooth admissibility.</strong> Every irreducible smooth complex representation of <span class="math" data-tex="\(G\)">\(G\)</span> is admissible, by the complete proof in <a href="normalized-induction-and-jacquet-modules.html">Normalized induction and Jacquet modules</a>, Theorem 5.4. Its noncuspidal case embeds into an explicitly admissible principal series. In the zero-Jacquet case, Theorem 5.3 proves a uniform support bound for the vector-valued compact projection of a cyclic vector, then uses compactness to bound the fixed space. That argument needs the countable Schur lemma in Section 4 and the exact averages above, without assuming admissibility. Consequently Theorem 3.1 implies that every simple <span class="math" data-tex="\(\mathcal H(G,K)\)">\(\mathcal H(G,K)\)</span>-module is finite dimensional.</p>
+<p><strong>Lemma 3.2 — compact conjugacy and Hilbert multiplicity.</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be a unimodular locally compact group and <span class="math" data-tex="\(K\)">\(K\)</span> a compact subgroup. Suppose a Haar-preserving continuous anti-automorphism <span class="math" data-tex="\(\tau\)">\(\tau\)</span> sends each <span class="math" data-tex="\(g\)">\(g\)</span> to a <span class="math" data-tex="\(K\)">\(K\)</span>-conjugate of <span class="math" data-tex="\(g\)">\(g\)</span>. Then every irreducible strongly continuous unitary representation of <span class="math" data-tex="\(G\)">\(G\)</span> contains each irreducible compact <span class="math" data-tex="\(K\)">\(K\)</span>-type at most once.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be the continuous compactly supported functions invariant under <span class="math" data-tex="\(K\)">\(K\)</span>-conjugation. It is a convolution algebra closed under the adjoint
+<span class="math" data-tex="\(f^*(g)=\overline{f(g^{-1})}\)">\(f^*(g)=\overline{f(g^{-1})}\)</span>. Every <span class="math" data-tex="\(f\in\mathcal C\)">\(f\in\mathcal C\)</span> satisfies <span class="math" data-tex="\(f\circ\tau=f\)">\(f\circ\tau=f\)</span>. Reversing products and changing Haar variables gives
+<span class="math math-display" data-tex="\[
+(f*h)\circ\tau=(h\circ\tau)*(f\circ\tau).
+\]">\[
+(f*h)\circ\tau=(h\circ\tau)*(f\circ\tau).
+\]</span>
+Convolution is again <span class="math" data-tex="\(K\)">\(K\)</span>-conjugation invariant. Thus <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is commutative.</p>
+<p>Here is the full multiplicity argument, since commutativity alone does not make a compact isotypic space one dimensional. Compact Hilbert decomposition writes that space as
+<span class="math math-display" data-tex="\[
+E_\rho=P_\rho\mathcal H=V_\rho\otimes M_\rho,\qquad
+d=\dim V_\rho&lt;\infty.
+\]">\[
+E_\rho=P_\rho\mathcal H=V_\rho\otimes M_\rho,\qquad
+d=\dim V_\rho&lt;\infty.
+\]</span>
+Every <span class="math" data-tex="\(\pi(f)\)">\(\pi(f)\)</span>, <span class="math" data-tex="\(f\in\mathcal C\)">\(f\in\mathcal C\)</span>, restricts there to <span class="math" data-tex="\(I\otimes b_f\)">\(I\otimes b_f\)</span>.
+For an arbitrary <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>, its compression
+<span class="math" data-tex="\(A=P_\rho\pi(f)P_\rho\)">\(A=P_\rho\pi(f)P_\rho\)</span> is a <span class="math" data-tex="\(d\times d\)">\(d\times d\)</span> matrix of bounded operators on <span class="math" data-tex="\(M_\rho\)">\(M_\rho\)</span>. Average <span class="math" data-tex="\(\pi(k)\pi(f)\)">\(\pi(k)\pi(f)\)</span> under compact conjugation. Its kernel is continuous, compactly supported and in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>; its restriction is
+<span class="math math-display" data-tex="\[
+I\otimes\frac1d
+ \operatorname{Tr}_{V_\rho}\bigl((\rho(k)\otimes I)A\bigr).
+\]">\[
+I\otimes\frac1d
+ \operatorname{Tr}_{V_\rho}\bigl((\rho(k)\otimes I)A\bigr).
+\]</span>
+The normalization follows from compact Schur averaging:
+<span class="math math-display" data-tex="\[
+\int_K\rho(k)B\rho(k)^*\,dk
+ =\frac{\operatorname{tr}B}{d}I.
+\]">\[
+\int_K\rho(k)B\rho(k)^*\,dk
+ =\frac{\operatorname{tr}B}{d}I.
+\]</span>
+To justify both this identity and the needed matrix extraction, its average commutes with <span class="math" data-tex="\(\rho(K)\)">\(\rho(K)\)</span>, hence is scalar by finite-dimensional Schur, and its trace is <span class="math" data-tex="\(\operatorname{tr}B\)">\(\operatorname{tr}B\)</span>. Taking <span class="math" data-tex="\(B\)">\(B\)</span> to be a matrix unit gives matrix-coefficient orthogonality
+<span class="math math-display" data-tex="\[
+\int_K\rho(k)_{ij}\overline{\rho(k)_{\ell m}}\,dk
+ =\frac1d\delta_{i\ell}\delta_{jm}.
+\]">\[
+\int_K\rho(k)_{ij}\overline{\rho(k)_{\ell m}}\,dk
+ =\frac1d\delta_{i\ell}\delta_{jm}.
+\]</span>
+Integrating <span class="math" data-tex="\(\rho(k)\)">\(\rho(k)\)</span> against those coefficients produces every matrix unit. Its linear span is therefore all <span class="math" data-tex="\(\operatorname{End}(V_\rho)\)">\(\operatorname{End}(V_\rho)\)</span>, and the partial traces in the preceding display extract every entry of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Suppose a closed nonzero proper <span class="math" data-tex="\(M_0\subset M_\rho\)">\(M_0\subset M_\rho\)</span> reduced all <span class="math" data-tex="\(b_f\)">\(b_f\)</span>. Every entry of every compression <span class="math" data-tex="\(A\)">\(A\)</span> would preserve <span class="math" data-tex="\(M_0\)">\(M_0\)</span> and its orthogonal complement, so <span class="math" data-tex="\(V_\rho\otimes M_0\)">\(V_\rho\otimes M_0\)</span> would reduce every compressed <span class="math" data-tex="\(\pi(f)\)">\(\pi(f)\)</span>. Approximate a point mass at <span class="math" data-tex="\(g\)">\(g\)</span> by compactly supported continuous probability kernels. Strong continuity and unitarity make their integrated operators converge strongly to <span class="math" data-tex="\(\pi(g)\)">\(\pi(g)\)</span>, so the same reduction holds for <span class="math" data-tex="\(P_\rho\pi(g)P_\rho\)">\(P_\rho\pi(g)P_\rho\)</span>. If <span class="math" data-tex="\(v\)">\(v\)</span> is in this subspace and <span class="math" data-tex="\(w\)">\(w\)</span> in its orthogonal complement inside <span class="math" data-tex="\(E_\rho\)">\(E_\rho\)</span>, then
+<span class="math math-display" data-tex="\[
+\langle\pi(g)v,\pi(h)w\rangle
+ =\langle P_\rho\pi(h^{-1}g)P_\rho v,w\rangle=0.
+\]">\[
+\langle\pi(g)v,\pi(h)w\rangle
+ =\langle P_\rho\pi(h^{-1}g)P_\rho v,w\rangle=0.
+\]</span>
+Their closed group spans are nonzero orthogonal invariant subspaces, contradicting irreducibility. Thus the commutative adjoint-closed algebra of the <span class="math" data-tex="\(b_f\)">\(b_f\)</span> acts irreducibly on <span class="math" data-tex="\(M_\rho\)">\(M_\rho\)</span>. Spectral projections of each of its self-adjoint elements commute with the algebra and must be zero or the identity; that element is scalar. Real and imaginary parts make every <span class="math" data-tex="\(b_f\)">\(b_f\)</span> scalar. If <span class="math" data-tex="\(\dim M_\rho&gt;1\)">\(\dim M_\rho&gt;1\)</span>, a nonzero proper closed subspace would then reduce them all. Hence <span class="math" data-tex="\(\dim M_\rho=1\)">\(\dim M_\rho=1\)</span> whenever the type occurs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.3 — integral transpose conjugacy.</strong> Every <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrix over <span class="math" data-tex="\(F\)">\(F\)</span> is conjugate to its transpose by a matrix in <span class="math" data-tex="\(\mathrm{GL}_2(\mathcal O)\)">\(\mathrm{GL}_2(\mathcal O)\)</span>.</p>
+<p><strong>Proof.</strong> A scalar matrix needs no conjugation. Otherwise set
+<span class="math math-display" data-tex="\[
+r=\min\{v(A_{12}),v(A_{21}),v(A_{22}-A_{11})\},\qquad
+B=\varpi^{-r}(A-A_{11}I),
+\]">\[
+r=\min\{v(A_{12}),v(A_{21}),v(A_{22}-A_{11})\},\qquad
+B=\varpi^{-r}(A-A_{11}I),
+\]</span>
+using <span class="math" data-tex="\(v(0)=+\infty\)">\(v(0)=+\infty\)</span>. This <span class="math" data-tex="\(r\)">\(r\)</span> is finite, <span class="math" data-tex="\(B\)">\(B\)</span> is integral, and its reduction is nonscalar: its upper-left entry is zero and at least one of the other displayed entries is a unit.</p>
+<p>A nonscalar <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrix over the residue field has a cyclic vector among <span class="math" data-tex="\(e_1,e_2,e_1+e_2\)">\(e_1,e_2,e_1+e_2\)</span>. Indeed if none were cyclic, the first two would be eigenvectors, making the matrix diagonal, and the third being an eigenvector would make its diagonal entries equal. Choose such a vector and lift it integrally. Then
+<span class="math" data-tex="\(P=(v,Bv)\in\mathrm{GL}_2(\mathcal O)\)">\(P=(v,Bv)\in\mathrm{GL}_2(\mathcal O)\)</span>. Cayley–Hamilton gives
+<span class="math math-display" data-tex="\[
+P^{-1}BP=C=
+ \begin{pmatrix}0&amp;-\det B\\1&amp;\operatorname{tr}B\end{pmatrix}.
+\]">\[
+P^{-1}BP=C=
+ \begin{pmatrix}0&amp;-\det B\\1&amp;\operatorname{tr}B\end{pmatrix}.
+\]</span>
+Put
+<span class="math math-display" data-tex="\[
+Q=\begin{pmatrix}0&amp;1\\1&amp;\operatorname{tr}B\end{pmatrix}.
+\]">\[
+Q=\begin{pmatrix}0&amp;1\\1&amp;\operatorname{tr}B\end{pmatrix}.
+\]</span>
+It has determinant <span class="math" data-tex="\(-1\)">\(-1\)</span>, a unit in every residue characteristic. Multiplication gives
+<span class="math math-display" data-tex="\[
+QC=\begin{pmatrix}
+1&amp;\operatorname{tr}B\\
+\operatorname{tr}B&amp;(\operatorname{tr}B)^2-\det B
+\end{pmatrix},
+\]">\[
+QC=\begin{pmatrix}
+1&amp;\operatorname{tr}B\\
+\operatorname{tr}B&amp;(\operatorname{tr}B)^2-\det B
+\end{pmatrix},
+\]</span>
+which is symmetric. Thus <span class="math" data-tex="\(C^{\mathsf T}Q=QC\)">\(C^{\mathsf T}Q=QC\)</span>. The integral invertible matrix
+<span class="math" data-tex="\(S=PQ^{-1}P^{\mathsf T}\)">\(S=PQ^{-1}P^{\mathsf T}\)</span> satisfies
+<span class="math" data-tex="\(SB^{\mathsf T}S^{-1}=B\)">\(SB^{\mathsf T}S^{-1}=B\)</span>, hence
+<span class="math" data-tex="\(SA^{\mathsf T}S^{-1}=A\)">\(SA^{\mathsf T}S^{-1}=A\)</span>. Nothing used odd characteristic or a separability hypothesis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.4 — full unitary admissibility and the smooth module.</strong> Every irreducible strongly continuous unitary representation of <span class="math" data-tex="\(\mathrm{GL}_2(F)\)">\(\mathrm{GL}_2(F)\)</span> has finite-dimensional fixed spaces for all compact open subgroups. Its smooth vectors are dense and form an irreducible admissible smooth representation. In fact every irreducible <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-type occurs at most once.</p>
+<p><strong>Proof.</strong> Transpose is a continuous anti-automorphism. The Haar density
+<span class="math" data-tex="\(|\det g|^{-2}d^4g\)">\(|\det g|^{-2}d^4g\)</span> in Section 1 is unchanged by it: transpose permutes the additive matrix coordinates and preserves determinant. Lemma 3.3 supplies the compact conjugacy required by Lemma 3.2. That lemma therefore proves the compact multiplicity bound without assuming smooth admissibility.</p>
+<p>Let <span class="math" data-tex="\(J\subset K_0\)">\(J\subset K_0\)</span> be compact open. Its normal core
+<span class="math" data-tex="\(J_0=\bigcap_{k\in K_0}kJk^{-1}\)">\(J_0=\bigcap_{k\in K_0}kJk^{-1}\)</span> is open: the finite coset space <span class="math" data-tex="\(K_0/J\)">\(K_0/J\)</span> makes this a finite intersection. The <span class="math" data-tex="\(J\)">\(J\)</span>-fixed space is contained in the <span class="math" data-tex="\(J_0\)">\(J_0\)</span>-fixed space. Only compact types factoring through the finite group <span class="math" data-tex="\(K_0/J_0\)">\(K_0/J_0\)</span> can contribute to the latter, and each occurs at most once. There are finitely many such types and each is finite dimensional, so both spaces are finite dimensional. More explicitly,
+<span class="math math-display" data-tex="\[
+\dim\mathcal H^J
+ \le\sum_{\rho\in\widehat{K_0/J_0}}\dim\rho
+ \le [K_0:J_0].
+\]">\[
+\dim\mathcal H^J
+ \le\sum_{\rho\in\widehat{K_0/J_0}}\dim\rho
+ \le [K_0:J_0].
+\]</span>
+For the last bound embed one matrix-coefficient column of each irreducible type in the finite regular function space; compact orthogonality makes these subspaces independent. If <span class="math" data-tex="\(J\)">\(J\)</span> is not contained in <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, use <span class="math" data-tex="\(J\cap K_0\)">\(J\cap K_0\)</span>, whose fixed space contains <span class="math" data-tex="\(\mathcal H^J\)">\(\mathcal H^J\)</span>.</p>
+<p>Averaging over the shrinking <span class="math" data-tex="\(K_n\)">\(K_n\)</span> converges strongly to the identity: the norm difference on a vector is bounded by
+<span class="math" data-tex="\(\sup_{k\in K_n}\|\pi(k)v-v\|\)">\(\sup_{k\in K_n}\|\pi(k)v-v\|\)</span>, which tends to zero. Thus the smooth vectors
+<span class="math" data-tex="\(\mathcal H_{\rm sm}=\bigcup_J\mathcal H^J\)">\(\mathcal H_{\rm sm}=\bigcup_J\mathcal H^J\)</span> are dense.</p>
+<p>Finally let <span class="math" data-tex="\(W\)">\(W\)</span> be a nonzero invariant algebraic subspace of <span class="math" data-tex="\(\mathcal H_{\rm sm}\)">\(\mathcal H_{\rm sm}\)</span>. Its Hilbert closure is group invariant and is all of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. Compact averaging preserves <span class="math" data-tex="\(W\)">\(W\)</span> algebraically, since the compact orbit of a smooth vector has finitely many values. Its averaged image in <span class="math" data-tex="\(\mathcal H^J\)">\(\mathcal H^J\)</span> is dense; finite dimension makes it equal to <span class="math" data-tex="\(\mathcal H^J\)">\(\mathcal H^J\)</span>. Taking all <span class="math" data-tex="\(J\)">\(J\)</span> yields <span class="math" data-tex="\(W=\mathcal H_{\rm sm}\)">\(W=\mathcal H_{\rm sm}\)</span>. This proves smooth irreducibility as well as admissibility. The proof works over every nonarchimedean local field, including characteristic two. Getz–Hahn, Theorem 5.3.7, remains historical credit for the unitary admissibility assertion now proved here. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-schur-s-lemma-before-admissibility">4. Schur's lemma before admissibility</h2>
+<p><strong>Theorem 4.1.</strong> For an irreducible smooth representation of <span class="math" data-tex="\(G\)">\(G\)</span>,
+<span class="math" data-tex="\(\operatorname{End}_G(V)=\mathbb C\)">\(\operatorname{End}_G(V)=\mathbb C\)</span>.
+It has a smooth central character.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(0\ne v\in V^J\)">\(0\ne v\in V^J\)</span>. The cosets <span class="math" data-tex="\(G/J\)">\(G/J\)</span> are countable, because they are disjoint open sets in a second-countable space. The orbit span of <span class="math" data-tex="\(v\)">\(v\)</span> is all of <span class="math" data-tex="\(V\)">\(V\)</span> by irreducibility. Hence <span class="math" data-tex="\(V\)">\(V\)</span> has countable dimension.</p>
+<p>Any nonzero commuting endomorphism has invariant kernel and image, so it is invertible. Suppose a commuting <span class="math" data-tex="\(T\)">\(T\)</span> is not scalar. Then every <span class="math" data-tex="\(T-\lambda I\)">\(T-\lambda I\)</span>, <span class="math" data-tex="\(\lambda\in\mathbb C\)">\(\lambda\in\mathbb C\)</span>, is nonzero and invertible. For a fixed <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, the uncountable family
+<span class="math" data-tex="\((T-\lambda I)^{-1}v\)">\((T-\lambda I)^{-1}v\)</span>
+is linearly independent. Indeed a finite relation with distinct <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span>, after multiplication by <span class="math" data-tex="\(\prod_i(T-\lambda_iI)\)">\(\prod_i(T-\lambda_iI)\)</span>, gives <span class="math" data-tex="\(p(T)v=0\)">\(p(T)v=0\)</span>, where
+<span class="math" data-tex="\(p(z)=\sum_i c_i\prod_{j\ne i}(z-\lambda_j)\)">\(p(z)=\sum_i c_i\prod_{j\ne i}(z-\lambda_j)\)</span>.
+If some <span class="math" data-tex="\(c_i\ne0\)">\(c_i\ne0\)</span>, evaluation at <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> makes <span class="math" data-tex="\(p\ne0\)">\(p\ne0\)</span>. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, every nonzero polynomial factors into linear factors, each invertible at <span class="math" data-tex="\(T\)">\(T\)</span>, so <span class="math" data-tex="\(p(T)\)">\(p(T)\)</span> is invertible. This contradicts <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. Countable dimension cannot contain an uncountable independent family. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is scalar.</p>
+<p>Central matrices commute with the representation and act by scalars <span class="math" data-tex="\(\omega(a)\)">\(\omega(a)\)</span>. Multiplication makes <span class="math" data-tex="\(\omega:F^\times\to\mathbb C^\times\)">\(\omega:F^\times\to\mathbb C^\times\)</span> a character. A nonzero smooth vector is fixed by an open subgroup, so <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is one on an open subgroup of the centre. It is therefore a smooth character. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the countable-dimension form of Schur's lemma, often called the Dixmier argument. It avoids using the admissibility theorem to supply an eigenvector in a finite-dimensional fixed space. If admissibility is already known, that shorter proof is available too.</p>
+<h2 id="5-the-smooth-dual-and-bidual">5. The smooth dual and bidual</h2>
+<p>The full algebraic dual <span class="math" data-tex="\(V^*=\operatorname{Hom}_{\mathbb C}(V,\mathbb C)\)">\(V^*=\operatorname{Hom}_{\mathbb C}(V,\mathbb C)\)</span> has action
+<span class="math" data-tex="\((\pi^\vee(g)\ell)(v)=\ell(\pi(g^{-1})v)\)">\((\pi^\vee(g)\ell)(v)=\ell(\pi(g^{-1})v)\)</span>, but most of its functionals need not have open stabilizers. Define the <strong>contragredient</strong> by</p>
+<span class="math math-display" data-tex="\[
+V^\vee=(V^*)_{\rm sm}=\bigcup_K(V^*)^K.
+\tag{5.1}
+\]">\[
+V^\vee=(V^*)_{\rm sm}=\bigcup_K(V^*)^K.
+\tag{5.1}
+\]</span>
+<p>This is a smooth representation. The pairing satisfies
+<span class="math" data-tex="\(\langle\pi(g)v,\ell\rangle=\langle v,\pi^\vee(g^{-1})\ell\rangle\)">\(\langle\pi(g)v,\ell\rangle=\langle v,\pi^\vee(g^{-1})\ell\rangle\)</span>.</p>
+<p><strong>Lemma 5.1 — fixed-space duality.</strong> Restriction gives a natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+(V^\vee)^K\simeq(V^K)^*.
+\tag{5.2}
+\]">\[
+(V^\vee)^K\simeq(V^K)^*.
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> For a <span class="math" data-tex="\(K\)">\(K\)</span>-fixed functional, averaging yields <span class="math" data-tex="\(\ell(v)=\ell(e_Kv)\)">\(\ell(v)=\ell(e_Kv)\)</span>, so its restriction determines it. Any functional <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(V^K\)">\(V^K\)</span> extends to the <span class="math" data-tex="\(K\)">\(K\)</span>-fixed functional <span class="math" data-tex="\(a\circ e_K\)">\(a\circ e_K\)</span>. These constructions are inverse. In particular smooth functionals separate all vectors: choose a subgroup fixing a given nonzero vector and a fixed-space functional nonzero on it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 — admissible reflexivity.</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> is admissible, <span class="math" data-tex="\(V^\vee\)">\(V^\vee\)</span> is admissible and the evaluation map</p>
+<span class="math math-display" data-tex="\[
+V\longrightarrow(V^\vee)^\vee,
+\qquad v\longmapsto(\ell\mapsto\ell(v)),
+\tag{5.3}
+\]">\[
+V\longrightarrow(V^\vee)^\vee,
+\qquad v\longmapsto(\ell\mapsto\ell(v)),
+\tag{5.3}
+\]</span>
+<p>is a representation isomorphism. Moreover <span class="math" data-tex="\(V\)">\(V\)</span> is irreducible if and only if <span class="math" data-tex="\(V^\vee\)">\(V^\vee\)</span> is irreducible.</p>
+<p><strong>Proof of reflexivity.</strong> Equation (5.2) proves admissibility of the dual. A vector fixed by <span class="math" data-tex="\(K\)">\(K\)</span> gives a <span class="math" data-tex="\(K\)">\(K\)</span>-fixed evaluation functional, so (5.3) takes values in the smooth bidual. It is equivariant and injective by separation. On the <span class="math" data-tex="\(K\)">\(K\)</span>-fixed spaces it is exactly
+<span class="math" data-tex="\(V^K\to((V^K)^*)^*\)">\(V^K\to((V^K)^*)^*\)</span>: if <span class="math" data-tex="\(v\in V^K\)">\(v\in V^K\)</span>, evaluating a general <span class="math" data-tex="\(\ell\)">\(\ell\)</span> at <span class="math" data-tex="\(v\)">\(v\)</span> equals evaluating <span class="math" data-tex="\(e_K\ell\)">\(e_K\ell\)</span>. Finite dimension makes this map an isomorphism. Every smooth bidual vector is fixed by some <span class="math" data-tex="\(K\)">\(K\)</span>, proving surjectivity.</p>
+<p><strong>Proof of irreducibility.</strong> Suppose <span class="math" data-tex="\(V\)">\(V\)</span> is irreducible and <span class="math" data-tex="\(0\ne U\subset V^\vee\)">\(0\ne U\subset V^\vee\)</span> is a submodule. Its annihilator in <span class="math" data-tex="\(V\)">\(V\)</span> is invariant and proper, hence zero. For a fixed <span class="math" data-tex="\(K\)">\(K\)</span>, the annihilator of <span class="math" data-tex="\(U^K=e_KU\)">\(U^K=e_KU\)</span> in <span class="math" data-tex="\(V^K\)">\(V^K\)</span> is also zero: for <span class="math" data-tex="\(v\in V^K\)">\(v\in V^K\)</span>, <span class="math" data-tex="\((e_K\ell)(v)=\ell(v)\)">\((e_K\ell)(v)=\ell(v)\)</span>. Finite-dimensional duality now gives <span class="math" data-tex="\(U^K=(V^\vee)^K\)">\(U^K=(V^\vee)^K\)</span>. Taking the union over <span class="math" data-tex="\(K\)">\(K\)</span> gives <span class="math" data-tex="\(U=V^\vee\)">\(U=V^\vee\)</span>. Conversely apply this conclusion to the admissible <span class="math" data-tex="\(V^\vee\)">\(V^\vee\)</span> and use (5.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same averages show that the smooth-dual functor is exact on admissible representations. Given a smooth functional on a subrepresentation <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span> fixed by <span class="math" data-tex="\(K\)">\(K\)</span>, extend its functional on <span class="math" data-tex="\(W^K\)">\(W^K\)</span> to <span class="math" data-tex="\(V^K\)">\(V^K\)</span>, and compose with <span class="math" data-tex="\(e_K\)">\(e_K\)</span>. This extends it smoothly to <span class="math" data-tex="\(V\)">\(V\)</span>. The kernel of restriction consists exactly of the smooth functionals on <span class="math" data-tex="\(V/W\)">\(V/W\)</span>. Thus
+<span class="math" data-tex="\(0\to(V/W)^\vee\to V^\vee\to W^\vee\to0\)">\(0\to(V/W)^\vee\to V^\vee\to W^\vee\to0\)</span>
+is exact. Subrepresentations and quotients remain admissible because taking compact invariants is exact: average a lift of any invariant quotient vector.</p>
+<h2 id="6-finite-dimensional-representations-and-examples">6. Finite-dimensional representations and examples</h2>
+<p><strong>Lemma 6.1.</strong> Every open normal subgroup of <span class="math" data-tex="\(\mathrm{GL}_2(F)\)">\(\mathrm{GL}_2(F)\)</span> contains <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span>.</p>
+<p><strong>Proof.</strong> An open subgroup contains <span class="math" data-tex="\(K_n\)">\(K_n\)</span> for some <span class="math" data-tex="\(n\)">\(n\)</span>, hence every upper unipotent <span class="math" data-tex="\(n(x)\)">\(n(x)\)</span> with <span class="math" data-tex="\(x\in\varpi^n\mathcal O\)">\(x\in\varpi^n\mathcal O\)</span>. Normality and
+<span class="math" data-tex="\(\operatorname{diag}(a,1)n(x)\operatorname{diag}(a^{-1},1)=n(ax)\)">\(\operatorname{diag}(a,1)n(x)\operatorname{diag}(a^{-1},1)=n(ax)\)</span>
+then include every upper unipotent: scale any prescribed parameter into that ideal and conjugate back. Conjugation by the matrix interchanging the two coordinates includes every lower unipotent as well. Elementary row elimination over a field shows that these generate <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span>. Explicitly, eliminate a nonzero pivot to leave <span class="math" data-tex="\(\operatorname{diag}(a,a^{-1})\)">\(\operatorname{diag}(a,a^{-1})\)</span>, and write this last matrix as <span class="math" data-tex="\(w(a)w(-1)\)">\(w(a)w(-1)\)</span>, with
+<span class="math" data-tex="\(w(a)=n(a)\begin{pmatrix}1&amp;0\\ -a^{-1}&amp;1\end{pmatrix}n(a)=\begin{pmatrix}0&amp;a\\ -a^{-1}&amp;0\end{pmatrix}\)">\(w(a)=n(a)\begin{pmatrix}1&amp;0\\ -a^{-1}&amp;1\end{pmatrix}n(a)=\begin{pmatrix}0&amp;a\\ -a^{-1}&amp;0\end{pmatrix}\)</span>.
+A zero pivot is exchanged using <span class="math" data-tex="\(w(1)\)">\(w(1)\)</span>. This proves the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 6.2.</strong> Every finite-dimensional irreducible smooth representation of <span class="math" data-tex="\(G\)">\(G\)</span> is <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span> for a smooth character <span class="math" data-tex="\(\chi:F^\times\to\mathbb C^\times\)">\(\chi:F^\times\to\mathbb C^\times\)</span>.</p>
+<p><strong>Proof.</strong> Intersect the open stabilizers of a finite basis. This gives an open kernel, which is normal. By Lemma 6.1 it contains <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span>, so the representation factors through the determinant quotient <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>. The image is commuting. Schur's lemma makes every image matrix scalar, and irreducibility makes the space one dimensional. The resulting character is smooth: <span class="math" data-tex="\(a\mapsto\operatorname{diag}(a,1)\)">\(a\mapsto\operatorname{diag}(a,1)\)</span> is continuous and its inverse image of the open kernel is open. Conversely every such determinant character is one-dimensional smooth and irreducible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The trivial representation has a one-dimensional fixed space for every compact open subgroup and <span class="math" data-tex="\(\pi(f)=\int f\)">\(\pi(f)=\int f\)</span>. For <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span>, the fixed space for <span class="math" data-tex="\(K\)">\(K\)</span> is the whole line if <span class="math" data-tex="\(\chi(\det K)=1\)">\(\chi(\det K)=1\)</span>, and zero otherwise. In particular
+<span class="math" data-tex="\(\det K_n=1+\varpi^n\mathcal O\)">\(\det K_n=1+\varpi^n\mathcal O\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>: the entry determinant is in this set, and <span class="math" data-tex="\(\operatorname{diag}(u,1)\)">\(\operatorname{diag}(u,1)\)</span> realizes every <span class="math" data-tex="\(u\)">\(u\)</span> in it. Thus its fixed spaces record the conductor of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Its central character is <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span> and its contragredient is <span class="math" data-tex="\(\chi^{-1}\circ\det\)">\(\chi^{-1}\circ\det\)</span>. Admissibility is immediate.</p>
+<p>As a first corner eigenvalue, take unramified <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and <span class="math" data-tex="\(T=1_{K_0\operatorname{diag}(\varpi,1)K_0}\)">\(T=1_{K_0\operatorname{diag}(\varpi,1)K_0}\)</span>. The familiar <span class="math" data-tex="\(q+1\)">\(q+1\)</span> right-coset decomposition from the lift lesson, Section 5, gives volume <span class="math" data-tex="\(q+1\)">\(q+1\)</span>. On this support the determinant is <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> times a unit, so</p>
+<span class="math math-display" data-tex="\[
+\pi(T)=(q+1)\chi(\varpi).
+\tag{6.1}
+\]">\[
+\pi(T)=(q+1)\chi(\varpi).
+\tag{6.1}
+\]</span>
+<p>This is an unnormalized characteristic-function eigenvalue. Dividing the operator by a power of <span class="math" data-tex="\(q\)">\(q\)</span> changes it; Haar normalization alone does not insert that factor.</p>
+<p>For an example separating smoothness from admissibility, let the additive group <span class="math" data-tex="\(F\)">\(F\)</span> act on <span class="math" data-tex="\(C_c^\infty(F)\)">\(C_c^\infty(F)\)</span> by <span class="math" data-tex="\((\tau(t)f)(x)=f(x-t)\)">\((\tau(t)f)(x)=f(x-t)\)</span>. A locally constant compact support is a finite union of cosets of one sufficiently small additive compact open subgroup, so every function has an open translation stabilizer. Yet the <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-fixed functions include <span class="math" data-tex="\(1_{a+\mathcal O}\)">\(1_{a+\mathcal O}\)</span> for all <span class="math" data-tex="\(a\in F/\mathcal O\)">\(a\in F/\mathcal O\)</span>. Their disjoint supports make them linearly independent, and <span class="math" data-tex="\(F/\mathcal O\)">\(F/\mathcal O\)</span> is infinite. The fixed space is infinite dimensional, so this smooth representation of the additive group is not admissible. This does not contradict the proved theorem for irreducible smooth representations of GL₂.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 7.1 — compact-group semisimplicity.</strong> Show that every smooth complex representation of a compact totally disconnected group is an algebraic direct sum of irreducible representations.</p>
+<p><strong>Solution 7.1.</strong> For a vector <span class="math" data-tex="\(v\)">\(v\)</span>, its open stabilizer has finite index by compactness. The orbit span is finite dimensional. Intersect the finitely many conjugates of its stabilizer to obtain an open normal subgroup fixing that span, so it factors through a finite group. Maschke's theorem decomposes the span into simple submodules. As every vector belongs to such a span, the whole representation is a sum of simple submodules. Choose a maximal family whose sum is direct. If that sum were proper, some simple submodule in the preceding spanning family would not be contained in it. Its intersection with the sum is zero by simplicity, so it could be adjoined, a contradiction. Thus the maximal direct sum is the whole space. Multiplicities may be infinite; smoothness alone does not imply finite multiplicities.</p>
+<p><strong>Exercise 7.2 — countable Schur.</strong> Prove that every commuting endomorphism of an irreducible countable-dimensional complex representation is scalar, without assuming a fixed-space dimension bound.</p>
+<p><strong>Solution 7.2.</strong> Its nonzero commuting endomorphisms are invertible by their kernels and images. A nonscalar <span class="math" data-tex="\(T\)">\(T\)</span> would therefore have invertible <span class="math" data-tex="\(T-\lambda I\)">\(T-\lambda I\)</span> for every complex <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Fix <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. A finite linear relation among the vectors <span class="math" data-tex="\((T-\lambda_iI)^{-1}v\)">\((T-\lambda_iI)^{-1}v\)</span> clears denominators to <span class="math" data-tex="\(p(T)v=0\)">\(p(T)v=0\)</span>, with <span class="math" data-tex="\(p(z)=\sum_i c_i\prod_{j\ne i}(z-\lambda_j)\)">\(p(z)=\sum_i c_i\prod_{j\ne i}(z-\lambda_j)\)</span>. Distinct parameters and a nonzero coefficient make this polynomial nonzero by evaluation at that parameter. Factor it over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>; every factor is invertible at <span class="math" data-tex="\(T\)">\(T\)</span>, giving a contradiction. Hence the uncountable parameter set would produce uncountably many independent vectors, which countable dimension excludes. For <span class="math" data-tex="\(\mathrm{GL}_2(F)\)">\(\mathrm{GL}_2(F)\)</span>, countable dimension follows because one smooth cyclic vector has an open stabilizer and the corresponding coset set is countable. This proves Theorem 4.1 independently of admissibility.</p>
+<p><strong>Exercise 7.3 — open normal subgroups.</strong> Prove Lemma 6.1 and identify where normality is used.</p>
+<p><strong>Solution 7.3.</strong> Openness includes all upper unipotents with sufficiently small parameter. For arbitrary <span class="math" data-tex="\(t\in F\)">\(t\in F\)</span>, choose <span class="math" data-tex="\(a\in F^\times\)">\(a\in F^\times\)</span> with <span class="math" data-tex="\(at\)">\(at\)</span> sufficiently small. Conjugate <span class="math" data-tex="\(n(at)\)">\(n(at)\)</span> by <span class="math" data-tex="\(\operatorname{diag}(a^{-1},1)\)">\(\operatorname{diag}(a^{-1},1)\)</span> to get <span class="math" data-tex="\(n(t)\)">\(n(t)\)</span>. Normality is exactly what retains membership under this conjugation. Conjugation by the coordinate-interchange matrix similarly gives every lower unipotent. The explicit elementary-elimination and diagonal factorization in Lemma 6.1 express every determinant-one matrix as their product, so the normal subgroup contains <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span>. Openness without normality would supply only the small parameters, as <span class="math" data-tex="\(K_n\)">\(K_n\)</span> illustrates.</p>
+<p><strong>Exercise 7.4 — contragredient and irreducibility.</strong> For admissible <span class="math" data-tex="\(V\)">\(V\)</span>, prove smooth biduality and the equivalence of irreducibility with irreducibility of the smooth dual.</p>
+<p><strong>Solution 7.4.</strong> A <span class="math" data-tex="\(K\)">\(K\)</span>-fixed functional is uniquely determined by its restriction to <span class="math" data-tex="\(V^K\)">\(V^K\)</span>, with inverse extension <span class="math" data-tex="\(a\mapsto a\circ e_K\)">\(a\mapsto a\circ e_K\)</span>. Hence <span class="math" data-tex="\((V^\vee)^K=(V^K)^*\)">\((V^\vee)^K=(V^K)^*\)</span>, which is finite dimensional. Evaluation is equivariant, smooth and injective because these fixed-space functionals separate vectors. On each <span class="math" data-tex="\(K\)">\(K\)</span>-fixed space the evaluation map to the smooth bidual is the ordinary finite-dimensional bidual isomorphism. Taking the union proves its surjectivity.</p>
+<p>If <span class="math" data-tex="\(V\)">\(V\)</span> is irreducible and <span class="math" data-tex="\(U\ne0\)">\(U\ne0\)</span> is a submodule of <span class="math" data-tex="\(V^\vee\)">\(V^\vee\)</span>, its annihilator in <span class="math" data-tex="\(V\)">\(V\)</span> is an invariant proper subspace and thus zero. The annihilator of <span class="math" data-tex="\(U^K\)">\(U^K\)</span> in <span class="math" data-tex="\(V^K\)">\(V^K\)</span> is zero as well, since averaging a functional does not change its value on a fixed vector. Finite dimension gives <span class="math" data-tex="\(U^K=(V^\vee)^K\)">\(U^K=(V^\vee)^K\)</span>. The union gives <span class="math" data-tex="\(U=V^\vee\)">\(U=V^\vee\)</span>. Apply this implication to <span class="math" data-tex="\(V^\vee\)">\(V^\vee\)</span>, which is admissible, and use biduality for the converse. The finite-dimensional argument is why the smooth bidual statement was made with admissibility rather than with smoothness alone.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>H. Jacquet and R. P. Langlands, <a href="https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf"><em>Automorphic Forms on GL(2)</em></a> (1970), §2, conditions (2.1)–(2.4), Lemma 2.5 and Proposition 2.7(a), for the foundational local framework and contragredients. This lesson proves the simple-corner reconstruction and countable Schur statement explicitly rather than incorporating admissibility into irreducibility.</li>
+<li>J. R. Getz and H. Hahn, <em>An Introduction to Automorphic Representations</em>, draft of 22 April 2022, §§5.1–5.4, especially Theorem 5.3.4 for smooth admissibility, proved for GL₂ in Lesson 6, Theorem 5.4, and Theorem 5.3.7 for unitary admissibility, proved directly here in Theorem 3.4. The <a href="https://sites.duke.edu/jgetz/graduate-text/">author's graduate-text page</a> supplies the reference.</li>
+<li>NT-ADL-12, Proposition 12.1, owns the fixed-level Hecke double-coset algebra and its multiplication; <a href="from-modular-forms-to-adelic-functions.html">From modular forms to adelic functions</a>, Section 5, supplies the GL₂ right-coset calculation used in (6.1).</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="why-the-cuspidal-spectrum-is-discrete.html">← Why the cuspidal spectrum is discrete</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="normalized-induction-and-jacquet-modules.html">Normalized induction and Jacquet modules →</a></span></nav>
+<p class="small source-link"><a href="src/smooth-local-representations-and-the-hecke-module-dictionary.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/automorphic-forms-and-representations-of-gl2">Repository</a></nav>
+</footer>
+</body>
+</html>

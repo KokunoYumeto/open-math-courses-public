@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Simple wave caustics and the Airy transition</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="simple-wave-caustics-and-the-airy-transition">Simple wave caustics and the Airy transition</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A regular ray amplitude contains the inverse square root of a projection Jacobian. When that Jacobian vanishes, the regular formula loses its validity. At a simple fold, two critical points merge. Keeping the cubic direction intact while integrating the remaining directions gives an Airy function and a uniform transition between two-ray oscillation and shadow.</p>
+<p>We use the phase, ray maps and complementary Hessian calculation in <a href="AN02-L035.html">Wave rays, caustics, and stationary amplitudes</a>. Three precise analytic prerequisites suffice: compact stationary phase from <a href="prerequisites/stationary-phase-and-critical-manifolds.html">Stationary phase and critical manifolds</a>; the controlled even/odd square decomposition from <a href="prerequisites/folds-reflections-and-uniform-descent.html">Folds, reflections and uniform smooth descent</a>; and the cutoff Airy definition and real derivative bounds from <a href="prerequisites/airy-functions-and-fold-model-operators.html">Airy functions and fold model operators</a>. We prove the full local cubic normal form and the amplitude reduction needed for this wave problem.</p>
+<p>All expansions below hold locally with every prescribed observation derivative, up to a remainder <span class="math" data-tex="\(O(\omega^{-\infty})\)">\(O(\omega^{-\infty})\)</span>. The explicit Airy terms decay exponentially in a fixed shadow region. A general smooth localized contribution has the retained rapid remainder, so an exponential bound for that entire contribution requires an additional argument.</p>
+<p>Take <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, real smooth <span class="math" data-tex="\(\phi\)">\(\phi\)</span> with nonzero gradient, and compact smooth <span class="math" data-tex="\(a\)">\(a\)</span>. The wave equation has zero initial displacement and initial velocity <span class="math" data-tex="\(a e^{i\omega\phi}\)">\(a e^{i\omega\phi}\)</span>. Fix one branch <span class="math" data-tex="\(\sigma=\pm1\)">\(\sigma=\pm1\)</span> of the Fourier sine split. At its critical point write <span class="math" data-tex="\(k=\nabla\phi=\kappa e_1\)">\(k=\nabla\phi=\kappa e_1\)</span>, and diagonalize the restriction of <span class="math" data-tex="\(B=\phi&#x27;&#x27;\)">\(B=\phi&#x27;&#x27;\)</span> to <span class="math" data-tex="\(e_1^\perp\)">\(e_1^\perp\)</span>, with eigenvalues <span class="math" data-tex="\(b_2,\ldots,b_n\)">\(b_2,\ldots,b_n\)</span>. Its ray is <span class="math" data-tex="\(x=y-\sigma t k/|k|\)">\(x=y-\sigma t k/|k|\)</span>. These are the conventions from the preceding lesson.</p>
+<h2 id="a-simple-center-and-its-cubic-contact">A simple center and its cubic contact</h2>
+<p>Keep the coordinates of the Hessian calculation and suppose exactly one tangential index <span class="math" data-tex="\(j\)">\(j\)</span> satisfies <span class="math" data-tex="\(\sigma t b_j/\kappa=1\)">\(\sigma t b_j/\kappa=1\)</span>. Then <span class="math" data-tex="\(b_j\ne0\)">\(b_j\ne0\)</span>, and the Hessian has a one-dimensional kernel. A vector in it, normalized by <span class="math" data-tex="\(\delta y_j=1\)">\(\delta y_j=1\)</span>, is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\delta y=e_j,\qquad \delta\eta_j=b_j,\quad\delta\eta_1=B_{1j},\\
+\delta\eta_\ell=0\quad(\ell\ne1,j).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\delta y=e_j,\qquad \delta\eta_j=b_j,\quad\delta\eta_1=B_{1j},\\
+\delta\eta_\ell=0\quad(\ell\ne1,j).
+\end{gathered}
+\]</span>
+This follows directly from <span class="math" data-tex="\(H_\sigma(\delta\eta,\delta y)=0\)">\(H_\sigma(\delta\eta,\delta y)=0\)</span>; in particular the normal component <span class="math" data-tex="\(B_{1j}\)">\(B_{1j}\)</span> must not be discarded.</p>
+<p>Expand <span class="math" data-tex="\(|\kappa e_1+\delta\eta|\)">\(|\kappa e_1+\delta\eta|\)</span>. Its cubic term is
+<span class="math" data-tex="\(-\delta\eta_1|\delta\eta&#x27;|^2/(2\kappa^2)\)">\(-\delta\eta_1|\delta\eta&#x27;|^2/(2\kappa^2)\)</span>. Restricting the third-order part of <span class="math" data-tex="\(\Psi_\sigma\)">\(\Psi_\sigma\)</span> to the kernel line therefore gives
+<span class="math math-display" data-tex="\[
+\left(\frac{\phi_{jjj}}6-\frac{b_jB_{1j}}{2\kappa}\right)s^3 .
+\]">\[
+\left(\frac{\phi_{jjj}}6-\frac{b_jB_{1j}}{2\kappa}\right)s^3 .
+\]</span>
+The actual third derivative on the normalized kernel vector is
+<span class="math" data-tex="\(\phi_{jjj}-3b_jB_{1j}/\kappa\)">\(\phi_{jjj}-3b_jB_{1j}/\kappa\)</span>. This is the nonzero-cubic hypothesis.</p>
+<p>The normal plane section of the level surface in direction <span class="math" data-tex="\(e_j\)">\(e_j\)</span> has expansion
+<span class="math math-display" data-tex="\[
+y_1=-\frac{b_j}{2\kappa}s^2
+-\left(\frac{\phi_{jjj}}{6\kappa}
+-\frac{b_jB_{1j}}{2\kappa^2}\right)s^3+O(s^4).
+\]">\[
+y_1=-\frac{b_j}{2\kappa}s^2
+-\left(\frac{\phi_{jjj}}{6\kappa}
+-\frac{b_jB_{1j}}{2\kappa^2}\right)s^3+O(s^4).
+\]</span>
+To verify it, substitute <span class="math" data-tex="\(y_1=c_2s^2+c_3s^3+O(s^4)\)">\(y_1=c_2s^2+c_3s^3+O(s^4)\)</span> into the Taylor series of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>: the terms through cubic order are <span class="math" data-tex="\(\kappa y_1+b_js^2/2+B_{1j}y_1s+\phi_{jjj}s^3/6\)">\(\kappa y_1+b_js^2/2+B_{1j}y_1s+\phi_{jjj}s^3/6\)</span>. The successive coefficients give precisely the formula above. The osculating circle with signed radius <span class="math" data-tex="\(-\kappa/b_j\)">\(-\kappa/b_j\)</span> has that same quadratic coefficient and no cubic term. Consequently the nonzero-cubic hypothesis is exactly the absence of third-order contact with that circle in this normal section.</p>
+<p>The parameter family has an actual transverse unfolding direction. At a full critical point the derivative, with respect to <span class="math" data-tex="\(x\)">\(x\)</span>, of the first phase derivative along the kernel vector is <span class="math" data-tex="\(\delta\eta\)">\(\delta\eta\)</span>; this vector is nonzero because <span class="math" data-tex="\(b_j\ne0\)">\(b_j\ne0\)</span>. Thus a parameter variation in <span class="math" data-tex="\(x\)">\(x\)</span> makes that first derivative nonzero. The following arguments prove the needed general local reduction; the fixed Airy model alone is not used as a theorem for arbitrary wave phases.</p>
+<h2 id="divide-the-amplitude-on-both-sides-of-the-fold">Divide the amplitude on both sides of the fold</h2>
+<p>Corollary 5.2 of <a href="prerequisites/folds-reflections-and-uniform-descent.html">Folds, reflections and uniform smooth descent</a> gives the following controlled square decomposition. For a smooth <span class="math" data-tex="\(b(z,p)\)">\(b(z,p)\)</span>, that corollary supplies smooth <span class="math" data-tex="\(E(r,p),O(r,p)\)">\(E(r,p),O(r,p)\)</span>, on a full neighborhood of <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, satisfying
+<span class="math math-display" data-tex="\[
+b(z,p)=E(z^2,p)+zO(z^2,p).
+\]">\[
+b(z,p)=E(z^2,p)+zO(z^2,p).
+\]</span>
+The choice is linear in <span class="math" data-tex="\(b\)">\(b\)</span>, each prescribed mixed derivative is bounded by finitely many mixed derivatives of <span class="math" data-tex="\(b\)">\(b\)</span>, and external parameter derivatives commute with the construction. This full negative-<span class="math" data-tex="\(r\)">\(r\)</span> extension is necessary below; a formula merely on the attained side would not suffice.</p>
+<p>Allow one parameter to be <span class="math" data-tex="\(h\)">\(h\)</span>, and set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(h,p)=E(-h,h,p),\\
+B(h,p)=O(-h,h,p).
+\end{gathered}
+\]">\[
+\begin{gathered}
+A(h,p)=E(-h,h,p),\\
+B(h,p)=O(-h,h,p).
+\end{gathered}
+\]</span>
+The fundamental theorem of calculus gives the exact division
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b(z,h,p)&amp;=A(h,p)+zB(h,p)\\
+&amp;\quad+(z^2+h)C(z,h,p).
+\end{aligned}
+\]">\[
+\begin{aligned}
+b(z,h,p)&amp;=A(h,p)+zB(h,p)\\
+&amp;\quad+(z^2+h)C(z,h,p).
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(r_s=-h+s(z^2+h)\)">\(r_s=-h+s(z^2+h)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C(z,h,p)&amp;=\int_0^1E_r(r_s,h,p)\,ds\\
+&amp;\quad+z\int_0^1O_r(r_s,h,p)\,ds .
+\end{aligned}
+\]">\[
+\begin{aligned}
+C(z,h,p)&amp;=\int_0^1E_r(r_s,h,p)\,ds\\
+&amp;\quad+z\int_0^1O_r(r_s,h,p)\,ds .
+\end{aligned}
+\]</span>
+Shrink the fixed neighborhoods so the line segment lies in the extension domain. This proves joint smoothness across <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, including the shadow side <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>. All maps are linear in <span class="math" data-tex="\(b\)">\(b\)</span>, and their estimates follow by the chain rule on compact neighborhoods and the prerequisite's finite-seminorm bounds. If <span class="math" data-tex="\(b(z,h,p,\omega)\)">\(b(z,h,p,\omega)\)</span> is a symbol of order <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, uniformly with all <span class="math" data-tex="\(z,h,p\)">\(z,h,p\)</span> derivatives, the same construction preserves that symbol order with every <span class="math" data-tex="\(\omega\)">\(\omega\)</span> derivative: all kernels and coordinate operations are fixed independently of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<p>At <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, <span class="math" data-tex="\(A=b(0,0,p)\)">\(A=b(0,0,p)\)</span>, <span class="math" data-tex="\(B=b_z(0,0,p)\)">\(B=b_z(0,0,p)\)</span>. These values follow either from the identity or from the attained-side parity decomposition. The division is not claimed unique in the shadow; the fixed extension gives one controlled choice.</p>
+<h2 id="a-cubic-normal-form-with-transverse-unfolding">A cubic normal form with transverse unfolding</h2>
+<p><strong>Theorem 1 (a transverse cubic normal form).</strong> Let <span class="math" data-tex="\(f(p,z)\)">\(f(p,z)\)</span> be real and smooth, with, at the marked point,
+<span class="math math-display" data-tex="\[
+f_z=f_{zz}=0,\qquad f_{zzz}\ne0,\qquad d_p f_z\ne0 .
+\]">\[
+f_z=f_{zz}=0,\qquad f_{zzz}\ne0,\qquad d_p f_z\ne0 .
+\]</span>
+There are smooth real <span class="math" data-tex="\(\rho(p),\psi(p)\)">\(\rho(p),\psi(p)\)</span> and a smooth fiber coordinate <span class="math" data-tex="\(Z(p,w)\)">\(Z(p,w)\)</span>, a local diffeomorphism in <span class="math" data-tex="\(w\)">\(w\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(p,Z(p,w))=\rho(p)+\frac{w^3}{3}+\psi(p)w,\\
+\psi(p_0)=0,\qquad d\psi(p_0)\ne0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(p,Z(p,w))=\rho(p)+\frac{w^3}{3}+\psi(p)w,\\
+\psi(p_0)=0,\qquad d\psi(p_0)\ne0 .
+\end{gathered}
+\]</span>
+The final formula uses the original parameter <span class="math" data-tex="\(p\)">\(p\)</span>, without changing which wave observation it denotes.</p>
+<p>To prove it, reverse the fiber coordinate if necessary so <span class="math" data-tex="\(f_{zzz}&gt;0\)">\(f_{zzz}&gt;0\)</span> at the marked point. The implicit function theorem solves <span class="math" data-tex="\(f_{zz}(p,r(p))=0\)">\(f_{zz}(p,r(p))=0\)</span>. Translate by <span class="math" data-tex="\(r(p)\)">\(r(p)\)</span>, then rescale the fiber by the positive smooth factor <span class="math" data-tex="\((2/f_{zzz}(p,r(p)))^{1/3}\)">\((2/f_{zzz}(p,r(p)))^{1/3}\)</span>. Subtract the new value <span class="math" data-tex="\(\rho_0(p)\)">\(\rho_0(p)\)</span> at zero. The resulting phase is exactly
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g(p,z)=h(p)z+z^3/3+r(p,z),\\
+r(p,z)=z^4a(p,z).
+\end{gathered}
+\]">\[
+\begin{gathered}
+g(p,z)=h(p)z+z^3/3+r(p,z),\\
+r(p,z)=z^4a(p,z).
+\end{gathered}
+\]</span>
+Taylor's integral remainder proves the smooth factorization. The parameter differential of the new <span class="math" data-tex="\(h=g_z(p,0)\)">\(h=g_z(p,0)\)</span> is nonzero at the marked point: translating the inflection point adds <span class="math" data-tex="\(f_{zz}\,dr=0\)">\(f_{zz}\,dr=0\)</span> there, and the rescaling is nonzero. Use <span class="math" data-tex="\((h,q)\)">\((h,q)\)</span> as parameter coordinates, where <span class="math" data-tex="\(q\)">\(q\)</span> are the remaining parameters.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_\tau(h,q,z)=hz+z^3/3+\tau r(h,q,z),\\
+0\leq\tau\leq1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+g_\tau(h,q,z)=hz+z^3/3+\tau r(h,q,z),\\
+0\leq\tau\leq1 .
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(r_z=z^3d\)">\(r_z=z^3d\)</span> for a smooth <span class="math" data-tex="\(d\)">\(d\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(g_\tau)_z=h+z^2(1+\tau z d)=h+w_\tau^2,\\
+w_\tau=z\sqrt{1+\tau z d}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+(g_\tau)_z=h+z^2(1+\tau z d)=h+w_\tau^2,\\
+w_\tau=z\sqrt{1+\tau z d}.
+\end{gathered}
+\]</span>
+This is a smooth fiber diffeomorphism on one common sufficiently small neighborhood, for every <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Divide both <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\((g_\tau)_h\)">\((g_\tau)_h\)</span>, using the quadratic-division lemma in the <span class="math" data-tex="\(w_\tau\)">\(w_\tau\)</span> coordinate:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r=A+B w_\tau+(g_\tau)_z C,\\
+(g_\tau)_h=D+E w_\tau+(g_\tau)_z G .
+\end{gathered}
+\]">\[
+\begin{gathered}
+r=A+B w_\tau+(g_\tau)_z C,\\
+(g_\tau)_h=D+E w_\tau+(g_\tau)_z G .
+\end{gathered}
+\]</span>
+All coefficients are smooth in <span class="math" data-tex="\(h,q,\tau\)">\(h,q,\tau\)</span>. At <span class="math" data-tex="\(h=0,w_\tau=0\)">\(h=0,w_\tau=0\)</span>, <span class="math" data-tex="\(r\)">\(r\)</span> vanishes to order four in <span class="math" data-tex="\(w_\tau\)">\(w_\tau\)</span>, so <span class="math" data-tex="\(A=B=0\)">\(A=B=0\)</span> and <span class="math" data-tex="\(C=O(w_\tau^2)\)">\(C=O(w_\tau^2)\)</span>. At that point <span class="math" data-tex="\((g_\tau)_h=z+\tau r_h\)">\((g_\tau)_h=z+\tau r_h\)</span> has value zero and first <span class="math" data-tex="\(w_\tau\)">\(w_\tau\)</span> derivative one, so <span class="math" data-tex="\(D=0,E=1\)">\(D=0,E=1\)</span>. Shrink uniformly in <span class="math" data-tex="\(\tau\)">\(\tau\)</span> so <span class="math" data-tex="\(E\)">\(E\)</span> never vanishes.
+In fact <span class="math" data-tex="\(A,B=O(h^2)\)">\(A,B=O(h^2)\)</span>, uniformly in the other parameters: the attained-side even and divided-odd square coefficients of <span class="math" data-tex="\(r\)">\(r\)</span> have both their value and first square derivative zero at zero, for every <span class="math" data-tex="\(h,q,\tau\)">\(h,q,\tau\)</span>. Their full smooth extensions retain these two jets. Taylor's formula then gives that order on evaluating the square variable at <span class="math" data-tex="\(-h\)">\(-h\)</span>. Consequently the parameter flow below has identity first differential in <span class="math" data-tex="\(h\)">\(h\)</span> at <span class="math" data-tex="\(h=0\)">\(h=0\)</span>.</p>
+<p>Define a vector field, with zero <span class="math" data-tex="\(q\)">\(q\)</span> component, by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V_h=-B/E,\qquad V_z=-C+(B/E)G,\\
+K=A-(B/E)D .
+\end{gathered}
+\]">\[
+\begin{gathered}
+V_h=-B/E,\qquad V_z=-C+(B/E)G,\\
+K=A-(B/E)D .
+\end{gathered}
+\]</span>
+Direct substitution proves
+<span class="math math-display" data-tex="\[
+\partial_\tau g_\tau+V_h(g_\tau)_h+V_z(g_\tau)_z=K(h,q,\tau).
+\]">\[
+\partial_\tau g_\tau+V_h(g_\tau)_h+V_z(g_\tau)_z=K(h,q,\tau).
+\]</span>
+Crucially <span class="math" data-tex="\(V_h\)">\(V_h\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span> depend only on the parameters. The field vanishes at <span class="math" data-tex="\(h=z=0\)">\(h=z=0\)</span>; standard local smooth ODE existence, after shrinking, gives its flow for all <span class="math" data-tex="\(0\leq\tau\leq1\)">\(0\leq\tau\leq1\)</span>. To justify the common time interval, take a compact neighborhood on which the field and its derivative are uniformly bounded in <span class="math" data-tex="\(\tau\)">\(\tau\)</span>; it is uniformly Lipschitz and zero at the marked point, so Grönwall bounds displacement by a fixed multiple of the initial distance. A smaller initial neighborhood then stays inside that compact neighborhood for the entire unit interval.</p>
+<p>Write the flow as
+<span class="math" data-tex="\((h,q,z)\mapsto(H_\tau(h,q),q,Z_\tau(h,q,z))\)">\((h,q,z)\mapsto(H_\tau(h,q),q,Z_\tau(h,q,z))\)</span>.
+The parameter flow is independent of <span class="math" data-tex="\(z\)">\(z\)</span>, and each <span class="math" data-tex="\(H_\tau\)">\(H_\tau\)</span> is a local diffeomorphism in <span class="math" data-tex="\(h\)">\(h\)</span>. The fiber map is a diffeomorphism as well: its derivative in the initial <span class="math" data-tex="\(z\)">\(z\)</span> satisfies a scalar linear ODE, initially one, and is a positive exponential. Along the flow,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_1(H_1(h,q),q,Z_1(h,q,z))\\
+=hz+z^3/3+\int_0^1K(H_\tau(h,q),q,\tau)\,d\tau .
+\end{gathered}
+\]">\[
+\begin{gathered}
+g_1(H_1(h,q),q,Z_1(h,q,z))\\
+=hz+z^3/3+\int_0^1K(H_\tau(h,q),q,\tau)\,d\tau .
+\end{gathered}
+\]</span>
+The last term is independent of <span class="math" data-tex="\(z\)">\(z\)</span>. Invert the parameter map <span class="math" data-tex="\(h\mapsto H_1(h,q)\)">\(h\mapsto H_1(h,q)\)</span>. Set <span class="math" data-tex="\(\psi\)">\(\psi\)</span> equal to its inverse first coordinate, add the displayed parameter integral to the original <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span>, and compose the fiber flow with the preliminary translation and scaling. This gives the claimed formula in the original parameter.</p>
+<p>Since <span class="math" data-tex="\(B=0\)">\(B=0\)</span> at <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, the parameter flow preserves <span class="math" data-tex="\(h=0\)">\(h=0\)</span>; thus <span class="math" data-tex="\(\psi(p_0)=0\)">\(\psi(p_0)=0\)</span>. The inverse flow has nonzero <span class="math" data-tex="\(h\)">\(h\)</span> derivative and the preliminary <span class="math" data-tex="\(h\)">\(h\)</span> had nonzero parameter differential, proving <span class="math" data-tex="\(d\psi(p_0)\ne0\)">\(d\psi(p_0)\ne0\)</span>. This is a proof for the transverse unfolding required here. No general preparation theorem for arbitrary singularities has been inferred from it.</p>
+<h2 id="integrate-the-nondegenerate-directions">Integrate the nondegenerate directions</h2>
+<p>Consider one simple wave caustic as in the cubic-contact calculation, with nonzero cubic coefficient. Use a linear basis in the <span class="math" data-tex="\(2n\)">\(2n\)</span> integration variables whose first vector is the Hessian kernel and whose other <span class="math" data-tex="\(2n-1\)">\(2n-1\)</span> vectors span a complementary subspace on which the Hessian is nondegenerate. Denote the resulting variables by <span class="math" data-tex="\((z,q)\)">\((z,q)\)</span> and the observation parameter by <span class="math" data-tex="\(p=(t,x)\)">\(p=(t,x)\)</span>.</p>
+<p>The equations <span class="math" data-tex="\(\partial_q\Psi_\sigma=0\)">\(\partial_q\Psi_\sigma=0\)</span> have a unique smooth solution <span class="math" data-tex="\(q=Q(p,z)\)">\(q=Q(p,z)\)</span> near the marked point. Put
+<span class="math math-display" data-tex="\[
+f(p,z)=\Psi_\sigma(p,z,Q(p,z)).
+\]">\[
+f(p,z)=\Psi_\sigma(p,z,Q(p,z)).
+\]</span>
+The first two <span class="math" data-tex="\(z\)">\(z\)</span> derivatives vanish at the marked point. The third is the cubic derivative on the original kernel. Indeed, differentiate along the curve <span class="math" data-tex="\((z,Q(p_0,z))\)">\((z,Q(p_0,z))\)</span>: its initial tangent is the kernel vector, because the mixed Hessian with that vector is zero and the complementary Hessian is invertible. In the third derivative, the term involving the Hessian paired with that tangent is zero, and the term involving the phase gradient is zero. Thus only <span class="math" data-tex="\(D^3\Psi_\sigma\)">\(D^3\Psi_\sigma\)</span> on the kernel remains. This also proves that the nonzero kernel cubic is invariant under smooth changes of integration coordinates.</p>
+<p>Furthermore <span class="math" data-tex="\(d_p f_z\ne0\)">\(d_p f_z\ne0\)</span>. In these kernel coordinates the mixed Hessian <span class="math" data-tex="\(H_{zq}\)">\(H_{zq}\)</span> is zero at the marked point, so differentiating <span class="math" data-tex="\(Q\)">\(Q\)</span> contributes nothing to <span class="math" data-tex="\(d_p f_z\)">\(d_p f_z\)</span> there. Its <span class="math" data-tex="\(x\)">\(x\)</span> differential is the nonzero <span class="math" data-tex="\(\delta\eta\)">\(\delta\eta\)</span> calculated in the cubic-contact calculation. Hence the cubic-normal-form theorem applies with a genuine transverse <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<p>Localize the branch integral with a smooth cutoff supported in this critical neighborhood and equal to one near the marked critical point. Apply the compact stationary-phase theorem in <a href="prerequisites/stationary-phase-and-critical-manifolds.html">Stationary phase and critical manifolds</a> in the <span class="math" data-tex="\(q\)">\(q\)</span> variables, treating <span class="math" data-tex="\((p,z)\)">\((p,z)\)</span> as finite parameters. On a smaller common compact neighborhood, the complementary Hessian has bounded inverse, and the compact portion away from <span class="math" data-tex="\(Q(p,z)\)">\(Q(p,z)\)</span> has a uniformly nonzero <span class="math" data-tex="\(q\)">\(q\)</span> gradient. The theorem and its symbol corollary, followed by the classical realization in the preceding lesson with a fixed compact <span class="math" data-tex="\(z\)">\(z\)</span> cutoff, give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+I_\omega(p)=\int e^{i\omega f(p,z)}b(p,z,\omega)\,dz,\\
+\begin{aligned}
+u_{\omega,\mathrm{loc}}^\sigma(p)
+&amp;=(2\pi)^{-1/2}\omega^{-1/2}I_\omega(p)\\
+&amp;\quad+O(\omega^{-\infty}).
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+I_\omega(p)=\int e^{i\omega f(p,z)}b(p,z,\omega)\,dz,\\
+\begin{aligned}
+u_{\omega,\mathrm{loc}}^\sigma(p)
+&amp;=(2\pi)^{-1/2}\omega^{-1/2}I_\omega(p)\\
+&amp;\quad+O(\omega^{-\infty}).
+\end{aligned}
+\end{gathered}
+\]</span>
+Here <span class="math" data-tex="\(b\)">\(b\)</span> is a classical order-zero symbol with compact fixed fiber support, uniformly with all local parameter derivatives. The constant follows from
+<span class="math" data-tex="\((2\pi)^{-n}(2\pi)^{(2n-1)/2}=(2\pi)^{-1/2}\)">\((2\pi)^{-n}(2\pi)^{(2n-1)/2}=(2\pi)^{-1/2}\)</span>
+and
+<span class="math" data-tex="\(\omega^{n-1-(2n-1)/2}=\omega^{-1/2}\)">\(\omega^{n-1-(2n-1)/2}=\omega^{-1/2}\)</span>.
+The complementary signature, Hessian determinant, original amplitude and coordinate Jacobians are included in <span class="math" data-tex="\(b\)">\(b\)</span>; none is discarded. The normalized stationary remainder gives a rapid full remainder after integrating the compact <span class="math" data-tex="\(z\)">\(z\)</span> variable, because any fixed number of derivatives costs only a fixed polynomial in <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<p>Make the cubic-normal-form theorem fiber change and absorb its absolute Jacobian into <span class="math" data-tex="\(b\)">\(b\)</span>. The local contribution becomes
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(2\pi)^{-1/2}\omega^{-1/2}e^{i\omega\rho(p)}
+J_\omega(p)+O(\omega^{-\infty}),\\
+J_\omega(p)=\int
+e^{i\omega(z^3/3+\psi(p)z)}b(p,z,\omega)\,dz .
+\end{gathered}
+\]">\[
+\begin{gathered}
+(2\pi)^{-1/2}\omega^{-1/2}e^{i\omega\rho(p)}
+J_\omega(p)+O(\omega^{-\infty}),\\
+J_\omega(p)=\int
+e^{i\omega(z^3/3+\psi(p)z)}b(p,z,\omega)\,dz .
+\end{gathered}
+\]</span>
+All coordinate changes are smooth and independent of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>; therefore the complete order-zero symbol estimates survive. The change may reverse orientation in the preliminary step, and the integration Jacobian uses its absolute value.</p>
+<h2 id="obtain-both-airy-coefficients-to-every-order">Obtain both Airy coefficients to every order</h2>
+<p>The cutoff definition, all real derivatives and the bounds we use are proved in Section 1 of <a href="prerequisites/airy-functions-and-fold-model-operators.html">Airy functions and fold model operators</a>.</p>
+<p>In this convention the exact canonical identities are
+<span class="math math-display" data-tex="\[
+\begin{split}
+\operatorname{Os}\int_{\mathbb R}e^{i\omega(z^3/3+\psi z)}\,dz
+&amp;=2\pi\omega^{-1/3}\operatorname{Ai}(\omega^{2/3}\psi),\\
+\operatorname{Os}\int_{\mathbb R}z e^{i\omega(z^3/3+\psi z)}\,dz
+&amp;=-2\pi i\,\omega^{-2/3}\operatorname{Ai}&#x27;(\omega^{2/3}\psi).
+\end{split}
+\]">\[
+\begin{split}
+\operatorname{Os}\int_{\mathbb R}e^{i\omega(z^3/3+\psi z)}\,dz
+&amp;=2\pi\omega^{-1/3}\operatorname{Ai}(\omega^{2/3}\psi),\\
+\operatorname{Os}\int_{\mathbb R}z e^{i\omega(z^3/3+\psi z)}\,dz
+&amp;=-2\pi i\,\omega^{-2/3}\operatorname{Ai}&#x27;(\omega^{2/3}\psi).
+\end{split}
+\]</span>
+The first follows by <span class="math" data-tex="\(s=\omega^{1/3}z\)">\(s=\omega^{1/3}z\)</span> in the exact Fourier definition. The second follows by differentiating that definition in its real argument, whose legitimacy is part of the exact cutoff lemma. The sign is <span class="math" data-tex="\(1/i=-i\)">\(1/i=-i\)</span>.</p>
+<p>In the remaining displays write <span class="math" data-tex="\(\zeta=\omega^{2/3}\psi(p)\)">\(\zeta=\omega^{2/3}\psi(p)\)</span>.</p>
+<p>Choose a fixed cutoff <span class="math" data-tex="\(\theta(z)\)">\(\theta(z)\)</span>, equal to one near zero, and shrink <span class="math" data-tex="\(|\psi|\)">\(|\psi|\)</span> so all possible local critical points <span class="math" data-tex="\(z=\pm\sqrt{-\psi}\)">\(z=\pm\sqrt{-\psi}\)</span> are in its one region. It is supported in a slightly larger coordinate neighborhood. The two integrals with <span class="math" data-tex="\(\theta\)">\(\theta\)</span> differ from the canonical identities by <span class="math" data-tex="\(O(\omega^{-\infty})\)">\(O(\omega^{-\infty})\)</span>, uniformly with every fixed parameter derivative. Here is the needed tail justification. On the support of <span class="math" data-tex="\(1-\theta\)">\(1-\theta\)</span>,
+<span class="math" data-tex="\(|z^2+\psi|\geq c(1+z^2)\)">\(|z^2+\psi|\geq c(1+z^2)\)</span> outside a fixed central interval. Use transposed integration by parts
+<span class="math math-display" data-tex="\[
+T_\psi c=-\partial_z\!\left(\frac{c}{i(z^2+\psi)}\right).
+\]">\[
+T_\psi c=-\partial_z\!\left(\frac{c}{i(z^2+\psi)}\right).
+\]</span>
+For a polynomial amplitude of degree <span class="math" data-tex="\(m\)">\(m\)</span>, each application lowers its order at infinity by three, with uniform bounds in small <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. After any fixed parameter or frequency derivatives the initial amplitude still has a finite polynomial order (parameter differentiation inserts <span class="math" data-tex="\(\omega z\)">\(\omega z\)</span>, frequency differentiation inserts the cubic phase). Take enough applications that the resulting order is integrable; each integration supplies <span class="math" data-tex="\(\omega^{-1}\)">\(\omega^{-1}\)</span>. To justify removal of the remote cutoff, put in <span class="math" data-tex="\(\chi(z/R)\)">\(\chi(z/R)\)</span> first. On its derivative support the quotient denominator has size <span class="math" data-tex="\(R^2\)">\(R^2\)</span>, the cutoff derivatives supply the usual <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> factors, and after sufficiently many applications the integrated terms there are <span class="math" data-tex="\(O(R^{m-3N+1})\to0\)">\(O(R^{m-3N+1})\to0\)</span>. Dominated convergence then leaves the integrable tail. Increasing <span class="math" data-tex="\(N\)">\(N\)</span> proves the asserted rapid estimates, without analytically continuing a smooth cutoff.</p>
+<p>Apply the quadratic-division lemma to <span class="math" data-tex="\(b\)">\(b\)</span>, with <span class="math" data-tex="\(h=\psi\)">\(h=\psi\)</span> and all remaining variables as parameters:
+<span class="math math-display" data-tex="\[
+b=A_0+zB_0+(z^2+\psi)C_0 .
+\]">\[
+b=A_0+zB_0+(z^2+\psi)C_0 .
+\]</span>
+For iteration we need compact quotients. Define
+<span class="math math-display" data-tex="\[
+\widetilde C_0=\frac{b-\theta(A_0+zB_0)}{z^2+\psi}.
+\]">\[
+\widetilde C_0=\frac{b-\theta(A_0+zB_0)}{z^2+\psi}.
+\]</span>
+Where <span class="math" data-tex="\(\theta=1\)">\(\theta=1\)</span>, this is the smooth <span class="math" data-tex="\(C_0\)">\(C_0\)</span> just constructed. On the rest of the common support neighborhood the denominator is uniformly nonzero. Extend by zero outside the compact supports. Thus <span class="math" data-tex="\(\widetilde C_0\)">\(\widetilde C_0\)</span> is smooth, compactly supported and an order-zero symbol with all finite-seminorm estimates. The supports can be put inside a fixed interval on which the parity extension is defined; choose nested central and support intervals at the start.</p>
+<p>Integration by parts, with no boundary term, gives the exact recurrence modulo the rapid canonical-cutoff tails:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_\omega[b]&amp;=2\pi\omega^{-1/3}A_0\operatorname{Ai}(\zeta)\\
+&amp;\quad-2\pi i\,\omega^{-2/3}B_0\operatorname{Ai}&#x27;(\zeta)\\
+&amp;\quad+\omega^{-1}J_\omega[b_1]+O(\omega^{-\infty}),\\
+b_1&amp;=i\,\partial_z\widetilde C_0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+J_\omega[b]&amp;=2\pi\omega^{-1/3}A_0\operatorname{Ai}(\zeta)\\
+&amp;\quad-2\pi i\,\omega^{-2/3}B_0\operatorname{Ai}&#x27;(\zeta)\\
+&amp;\quad+\omega^{-1}J_\omega[b_1]+O(\omega^{-\infty}),\\
+b_1&amp;=i\,\partial_z\widetilde C_0 .
+\end{aligned}
+\]</span>
+In particular the quotient step has sign <span class="math" data-tex="\(+i/\omega\)">\(+i/\omega\)</span>. Repeat with <span class="math" data-tex="\(b_1,b_2,\ldots\)">\(b_1,b_2,\ldots\)</span>, using the same fixed intervals and cutoff. The controlled linear operations preserve order zero and the classical expansions in <span class="math" data-tex="\(\omega^{-1}\)">\(\omega^{-1}\)</span>. For every <span class="math" data-tex="\(N\)">\(N\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+T_j&amp;=A_j(p,\omega)\operatorname{Ai}(\zeta)\\
+&amp;\quad-i\omega^{-1/3}B_j(p,\omega)\operatorname{Ai}&#x27;(\zeta),\\
+J_\omega&amp;=2\pi\omega^{-1/3}\sum_{j&lt;N}\omega^{-j}T_j\\
+&amp;\quad+\omega^{-N}J_\omega[b_N]+O(\omega^{-\infty}).
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+T_j&amp;=A_j(p,\omega)\operatorname{Ai}(\zeta)\\
+&amp;\quad-i\omega^{-1/3}B_j(p,\omega)\operatorname{Ai}&#x27;(\zeta),\\
+J_\omega&amp;=2\pi\omega^{-1/3}\sum_{j&lt;N}\omega^{-j}T_j\\
+&amp;\quad+\omega^{-N}J_\omega[b_N]+O(\omega^{-\infty}).
+\end{aligned}
+\end{gathered}
+\]</span>
+The remainder integral is <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> before differentiation, simply by compact support and bounded amplitude. Any prescribed derivatives cost a fixed polynomial in <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, so choosing <span class="math" data-tex="\(N\)">\(N\)</span> sufficiently large gives any required negative order. This elementary bound suffices; a uniform cubic decay theorem is not assumed in this step.</p>
+<p>Collect the classical coefficients from both <span class="math" data-tex="\(j\)">\(j\)</span> and each <span class="math" data-tex="\(A_j,B_j\)">\(A_j,B_j\)</span> expansion. Use the classical realization in the preceding lesson to obtain classical order-zero symbols <span class="math" data-tex="\(\mathcal A,\mathcal B\)">\(\mathcal A,\mathcal B\)</span> for these two collected series. The exact Airy derivative bounds imply at most polynomial <span class="math" data-tex="\(\omega\)">\(\omega\)</span> growth for every fixed parameter or frequency derivative of the Airy factors on a fixed compact parameter set. Hence the replacement of a sufficiently long finite expansion by the two realizations leaves a rapid remainder, after choosing the truncation order to absorb those polynomial factors. We obtain
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_\omega&amp;=2\pi\omega^{-1/3}\mathcal A(p,\omega)\operatorname{Ai}(\zeta)\\
+&amp;\quad-2\pi i\,\omega^{-2/3}\mathcal B(p,\omega)\operatorname{Ai}&#x27;(\zeta)\\
+&amp;\quad+O(\omega^{-\infty}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+J_\omega&amp;=2\pi\omega^{-1/3}\mathcal A(p,\omega)\operatorname{Ai}(\zeta)\\
+&amp;\quad-2\pi i\,\omega^{-2/3}\mathcal B(p,\omega)\operatorname{Ai}&#x27;(\zeta)\\
+&amp;\quad+O(\omega^{-\infty}).
+\end{aligned}
+\]</span>
+All remainders here are local <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span> rapid remainders, including any fixed frequency derivatives. The leading coefficients satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal A_0(p)=E_0(-\psi(p),p),\\
+\mathcal B_0(p)=O_0(-\psi(p),p).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal A_0(p)=E_0(-\psi(p),p),\\
+\mathcal B_0(p)=O_0(-\psi(p),p).
+\end{gathered}
+\]</span>
+for the chosen parity extensions of <span class="math" data-tex="\(b_0\)">\(b_0\)</span>. On <span class="math" data-tex="\(\psi&lt;0\)">\(\psi&lt;0\)</span>, with <span class="math" data-tex="\(r=\sqrt{-\psi}\)">\(r=\sqrt{-\psi}\)</span>,
+<span class="math" data-tex="\(b_0(p,\pm r)=\mathcal A_0\pm r\mathcal B_0\)">\(b_0(p,\pm r)=\mathcal A_0\pm r\mathcal B_0\)</span>.
+At <span class="math" data-tex="\(\psi=0\)">\(\psi=0\)</span>, <span class="math" data-tex="\(\mathcal A_0=b_0(p,0)\)">\(\mathcal A_0=b_0(p,0)\)</span>.</p>
+<h2 id="the-local-wave-formula-and-its-three-regimes">The local wave formula and its three regimes</h2>
+<p><strong>Theorem 2 (the uniform local wave fold).</strong> Under the simple-center and nonzero-cubic hypotheses above, the localized branch has the expansion
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+W_\omega(p)&amp;=A(p,\omega)\operatorname{Ai}(\zeta)\\
+&amp;\quad+\omega^{-1/3}B(p,\omega)\operatorname{Ai}&#x27;(\zeta),\\
+u_{\omega,\mathrm{loc}}^\sigma(p)
+&amp;=\omega^{-5/6}e^{i\omega\rho(p)}W_\omega(p)\\
+&amp;\quad+O(\omega^{-\infty}).
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+W_\omega(p)&amp;=A(p,\omega)\operatorname{Ai}(\zeta)\\
+&amp;\quad+\omega^{-1/3}B(p,\omega)\operatorname{Ai}&#x27;(\zeta),\\
+u_{\omega,\mathrm{loc}}^\sigma(p)
+&amp;=\omega^{-5/6}e^{i\omega\rho(p)}W_\omega(p)\\
+&amp;\quad+O(\omega^{-\infty}).
+\end{aligned}
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\zeta=\omega^{2/3}\psi(p)\)">\(\zeta=\omega^{2/3}\psi(p)\)</span>, <span class="math" data-tex="\(A=\sqrt{2\pi}\mathcal A\)">\(A=\sqrt{2\pi}\mathcal A\)</span>, <span class="math" data-tex="\(B=-i\sqrt{2\pi}\mathcal B\)">\(B=-i\sqrt{2\pi}\mathcal B\)</span> are classical order-zero symbols, <span class="math" data-tex="\(\psi(p_0)=0\)">\(\psi(p_0)=0\)</span>, and <span class="math" data-tex="\(d\psi(p_0)\ne0\)">\(d\psi(p_0)\ne0\)</span>. This is the contribution of one localized branch neighborhood; other ray branches, and the outer difference <span class="math" data-tex="\(u^+-u^-\)">\(u^+-u^-\)</span>, retain their separate contributions.</p>
+<p>The power <span class="math" data-tex="\(-5/6\)">\(-5/6\)</span> has a precise dimensional origin:
+<span class="math math-display" data-tex="\[
+(n-1)-\frac{2n-1}{2}-\frac13=-\frac56 .
+\]">\[
+(n-1)-\frac{2n-1}{2}-\frac13=-\frac56 .
+\]</span>
+The derivative-Airy term has the additional power <span class="math" data-tex="\(-1/3\)">\(-1/3\)</span>. A phase with a more degenerate Hessian or vanishing kernel cubic is outside this theorem.</p>
+<p>For <span class="math" data-tex="\(\psi&lt;0\)">\(\psi&lt;0\)</span>, the cubic has two real critical points <span class="math" data-tex="\(z=\pm r\)">\(z=\pm r\)</span>, <span class="math" data-tex="\(r=\sqrt{-\psi}\)">\(r=\sqrt{-\psi}\)</span>. Their reduced critical phases are
+<span class="math" data-tex="\(\rho-2r^3/3\)">\(\rho-2r^3/3\)</span> and <span class="math" data-tex="\(\rho+2r^3/3\)">\(\rho+2r^3/3\)</span>, respectively, and their scalar Hessians are <span class="math" data-tex="\(2r\)">\(2r\)</span> and <span class="math" data-tex="\(-2r\)">\(-2r\)</span>. The complementary Hessian remains invertible, so these are precisely two nondegenerate critical points of the original local wave phase. The leading negative-Airy formulas give
+<span class="math math-display" data-tex="\[
+\begin{split}
+J_\omega\sim
+\sqrt{\frac{2\pi}{\omega}}\,
+\frac1{\sqrt{2r}}\big[
+&amp;b_0(p,r)e^{-2i\omega r^3/3+i\pi/4}\\
+&amp;+b_0(p,-r)e^{2i\omega r^3/3-i\pi/4}\big].
+\end{split}
+\]">\[
+\begin{split}
+J_\omega\sim
+\sqrt{\frac{2\pi}{\omega}}\,
+\frac1{\sqrt{2r}}\big[
+&amp;b_0(p,r)e^{-2i\omega r^3/3+i\pi/4}\\
+&amp;+b_0(p,-r)e^{2i\omega r^3/3-i\pi/4}\big].
+\end{split}
+\]</span>
+To check both signs explicitly, put <span class="math" data-tex="\(\Theta=2\omega r^3/3-\pi/4\)">\(\Theta=2\omega r^3/3-\pi/4\)</span>. The Airy combination is proportional to</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal A_0\cos\Theta-ir\mathcal B_0\sin\Theta\\
+=\tfrac12(\mathcal A_0-r\mathcal B_0)e^{i\Theta}\\
++\tfrac12(\mathcal A_0+r\mathcal B_0)e^{-i\Theta}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal A_0\cos\Theta-ir\mathcal B_0\sin\Theta\\
+=\tfrac12(\mathcal A_0-r\mathcal B_0)e^{i\Theta}\\
++\tfrac12(\mathcal A_0+r\mathcal B_0)e^{-i\Theta}.
+\end{gathered}
+\]</span>
+<p>This is exactly the two stationary contributions above. The full agreement also follows by applying the nondegenerate stationary-phase theorem directly to those two critical neighborhoods; since the Airy expansion approximates the same integral to arbitrary order, its collected expansion must match. Multiplication by the complementary stationary-phase prefactor restores the usual wave order <span class="math" data-tex="\(\omega^{-1}\)">\(\omega^{-1}\)</span> and the signatures of the Hessian calculation.</p>
+<p>For <span class="math" data-tex="\(\psi&gt;0\)">\(\psi&gt;0\)</span>, there is no real critical point in this localized neighborhood. On each compact subset bounded away from <span class="math" data-tex="\(\psi=0\)">\(\psi=0\)</span>, direct integration by parts gives <span class="math" data-tex="\(O(\omega^{-\infty})\)">\(O(\omega^{-\infty})\)</span> for the actual local wave contribution, with all derivatives. The explicit Airy factors obey an exponential bound with exponent
+<span class="math" data-tex="\(-2\omega\psi^{3/2}/3\)">\(-2\omega\psi^{3/2}/3\)</span>; for example
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\operatorname{Ai}(R)|\leq CR^{-1/4}e^{-2R^{3/2}/3},\\
+|\operatorname{Ai}&#x27;(R)|\leq CR^{1/4}e^{-2R^{3/2}/3},\\
+R\geq1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\operatorname{Ai}(R)|\leq CR^{-1/4}e^{-2R^{3/2}/3},\\
+|\operatorname{Ai}&#x27;(R)|\leq CR^{1/4}e^{-2R^{3/2}/3},\\
+R\geq1 .
+\end{gathered}
+\]</span>
+After adding the general smooth-data rapid remainder, no exponential estimate for the entire localized contribution is asserted. The formal Airy terms exhibit exponential shadow decay; the proved actual contribution is rapidly decreasing on a fixed shadow compact. This distinction preserves the actual asymptotic contract.</p>
+<p>In the transition region <span class="math" data-tex="\(|\omega^{2/3}\psi|\leq C\)">\(|\omega^{2/3}\psi|\leq C\)</span>, both Airy factors are bounded. Hence the local contribution is <span class="math" data-tex="\(O(\omega^{-5/6})\)">\(O(\omega^{-5/6})\)</span>, with the displayed additional <span class="math" data-tex="\(\omega^{-1/3}\)">\(\omega^{-1/3}\)</span> correction. Since <span class="math" data-tex="\(d\psi\ne0\)">\(d\psi\ne0\)</span>, <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a smooth transverse defining coordinate for the local caustic; the transition has transverse width comparable to <span class="math" data-tex="\(\omega^{-2/3}\)">\(\omega^{-2/3}\)</span>. On the illuminated side the two-ray approximation is appropriate when <span class="math" data-tex="\(\omega|\psi|^{3/2}\)">\(\omega|\psi|^{3/2}\)</span> is large. On the shadow side that same scaled quantity controls the canonical exponential.</p>
+<p>At the marked fold the leading coefficient <span class="math" data-tex="\(A_0\)">\(A_0\)</span> is nonzero if <span class="math" data-tex="\(a(y_0)\ne0\)">\(a(y_0)\ne0\)</span>. The original amplitude is <span class="math" data-tex="\(a(y_0)/(2i\kappa)\)">\(a(y_0)/(2i\kappa)\)</span>, and all complementary determinants and coordinate Jacobians in the complementary stationary reduction are nonzero. Moreover <span class="math" data-tex="\(\operatorname{Ai}(0)&gt;0\)">\(\operatorname{Ai}(0)&gt;0\)</span>. For an explicit verification in this convention,
+<span class="math math-display" data-tex="\[
+\operatorname{Ai}(0)
+=\frac{3^{-2/3}}{\pi}\Gamma(1/3)\cos(\pi/6)&gt;0 .
+\]">\[
+\operatorname{Ai}(0)
+=\frac{3^{-2/3}}{\pi}\Gamma(1/3)\cos(\pi/6)&gt;0 .
+\]</span>
+Substitute <span class="math" data-tex="\(s=z^3/3\)">\(s=z^3/3\)</span> in the cosine integral and insert <span class="math" data-tex="\(e^{-\varepsilon s}\)">\(e^{-\varepsilon s}\)</span>; the Laplace identity
+<span class="math" data-tex="\(\int_0^\infty s^{\alpha-1}e^{-ws}\,ds=\Gamma(\alpha)w^{-\alpha}\)">\(\int_0^\infty s^{\alpha-1}e^{-ws}\,ds=\Gamma(\alpha)w^{-\alpha}\)</span>
+for <span class="math" data-tex="\(\Re w&gt;0\)">\(\Re w&gt;0\)</span> follows from its positive-real version by holomorphic uniqueness. Let <span class="math" data-tex="\(w=\varepsilon-i\)">\(w=\varepsilon-i\)</span>, <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, using Dirichlet convergence for <span class="math" data-tex="\(\alpha=1/3\)">\(\alpha=1/3\)</span>. This gives the formula. Thus generically the fold has an actual nonzero <span class="math" data-tex="\(\omega^{-5/6}\)">\(\omega^{-5/6}\)</span> leading value, larger than the regular <span class="math" data-tex="\(\omega^{-1}\)">\(\omega^{-1}\)</span> scale by <span class="math" data-tex="\(\omega^{1/6}\)">\(\omega^{1/6}\)</span>, while the exact solution remains smooth for each fixed frequency.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (introductory: count the powers).</strong> The wave integral has prefactor <span class="math" data-tex="\(\omega^{n-1}\)">\(\omega^{n-1}\)</span>. A simple fold leaves one cubic direction among its <span class="math" data-tex="\(2n\)">\(2n\)</span> integration variables. Compute its uniform order for <span class="math" data-tex="\(n=2\)">\(n=2\)</span> and for general <span class="math" data-tex="\(n\)">\(n\)</span>, and the transverse transition width.</p>
+<p><strong>Solution.</strong> The <span class="math" data-tex="\(2n-1\)">\(2n-1\)</span> nondegenerate directions contribute <span class="math" data-tex="\(\omega^{-(2n-1)/2}\)">\(\omega^{-(2n-1)/2}\)</span>, and the cubic integral contributes <span class="math" data-tex="\(\omega^{-1/3}\)">\(\omega^{-1/3}\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\omega^{n-1-(2n-1)/2-1/3}=\omega^{-5/6}.
+\]">\[
+\omega^{n-1-(2n-1)/2-1/3}=\omega^{-5/6}.
+\]</span>
+For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> this is <span class="math" data-tex="\(\omega^1\omega^{-3/2}\omega^{-1/3}\)">\(\omega^1\omega^{-3/2}\omega^{-1/3}\)</span>, with the same result. The Airy argument is <span class="math" data-tex="\(\omega^{2/3}\psi\)">\(\omega^{2/3}\psi\)</span>, so its bounded transition occurs on <span class="math" data-tex="\(|\psi|=O(\omega^{-2/3})\)">\(|\psi|=O(\omega^{-2/3})\)</span>. Since <span class="math" data-tex="\(d\psi\ne0\)">\(d\psi\ne0\)</span>, this is also the order of the width in any smooth transverse distance coordinate.</p>
+<p><strong>Exercise 2 (introductory: divide a polynomial).</strong> Divide
+<span class="math math-display" data-tex="\[
+b(z,h)=1+2z+3z^2+4z^3+5z^4
+\]">\[
+b(z,h)=1+2z+3z^2+4z^3+5z^4
+\]</span>
+by <span class="math" data-tex="\(z^2+h\)">\(z^2+h\)</span>, leaving a remainder <span class="math" data-tex="\(A(h)+zB(h)\)">\(A(h)+zB(h)\)</span>. Find the first amplitude created by one integration by parts in the cubic integral. Interpret this calculation with a compact cutoff equal to one near both critical points.</p>
+<p><strong>Solution.</strong> Direct multiplication gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A(h)&amp;=1-3h+5h^2,\\
+B(h)&amp;=2-4h,\\
+C(z,h)&amp;=3-5h+4z+5z^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+A(h)&amp;=1-3h+5h^2,\\
+B(h)&amp;=2-4h,\\
+C(z,h)&amp;=3-5h+4z+5z^2.
+\end{aligned}
+\]</span>
+The identity is <span class="math" data-tex="\(b=A+zB+(z^2+h)C\)">\(b=A+zB+(z^2+h)C\)</span>. The next amplitude is <span class="math" data-tex="\(iC_z=i(4+10z)\)">\(iC_z=i(4+10z)\)</span>, so its two remainders are <span class="math" data-tex="\(4i\)">\(4i\)</span> and <span class="math" data-tex="\(10i\)">\(10i\)</span>, with no further polynomial quotient. For a cutoff that is one near the critical points, its derivatives occur in a nonstationary annulus and contribute a rapid remainder. Therefore the first two formal coefficient terms are <span class="math" data-tex="\(A+4i/\omega\)">\(A+4i/\omega\)</span> and <span class="math" data-tex="\(B+10i/\omega\)">\(B+10i/\omega\)</span>. The derivative-Airy coefficient in the integral additionally has the factor <span class="math" data-tex="\(-i\)">\(-i\)</span>, as the theorem specifies.</p>
+<p><strong>Exercise 3 (intermediate: the mixed normal derivative is essential).</strong> Let
+<span class="math math-display" data-tex="\[
+\phi(y_1,y_2)=e^{\varepsilon y_2}y_1
++\frac{\beta}{2}y_2^2+\frac{\gamma}{6}y_2^3,
+\qquad\beta&gt;0.
+\]">\[
+\phi(y_1,y_2)=e^{\varepsilon y_2}y_1
++\frac{\beta}{2}y_2^2+\frac{\gamma}{6}y_2^3,
+\qquad\beta&gt;0.
+\]</span>
+At zero, compute the Hessian-kernel cubic for the <span class="math" data-tex="\(+\)">\(+\)</span> branch at <span class="math" data-tex="\(t=1/\beta\)">\(t=1/\beta\)</span>. Compare <span class="math" data-tex="\((\beta,\varepsilon,\gamma)=(1,1,0)\)">\((\beta,\varepsilon,\gamma)=(1,1,0)\)</span> and <span class="math" data-tex="\((1,1,3)\)">\((1,1,3)\)</span>. Check that the gradient is globally nonzero.</p>
+<p><strong>Solution.</strong> The first gradient component is <span class="math" data-tex="\(e^{\varepsilon y_2}&gt;0\)">\(e^{\varepsilon y_2}&gt;0\)</span>, so it never vanishes. At zero, <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>, <span class="math" data-tex="\(b_2=\beta\)">\(b_2=\beta\)</span>, <span class="math" data-tex="\(B_{12}=\varepsilon\)">\(B_{12}=\varepsilon\)</span>, and <span class="math" data-tex="\(\phi_{222}=\gamma\)">\(\phi_{222}=\gamma\)</span>. The normalized kernel vector has <span class="math" data-tex="\(\delta y=(0,1)\)">\(\delta y=(0,1)\)</span>, <span class="math" data-tex="\(\delta\eta=(\varepsilon,\beta)\)">\(\delta\eta=(\varepsilon,\beta)\)</span>. Its third derivative is
+<span class="math math-display" data-tex="\[
+\gamma-3\beta\varepsilon,
+\]">\[
+\gamma-3\beta\varepsilon,
+\]</span>
+and its Taylor cubic coefficient is <span class="math" data-tex="\(\gamma/6-\beta\varepsilon/2\)">\(\gamma/6-\beta\varepsilon/2\)</span>. For the first triple it is <span class="math" data-tex="\(-3\ne0\)">\(-3\ne0\)</span>, although <span class="math" data-tex="\(\phi_{222}=0\)">\(\phi_{222}=0\)</span>; this is a fold. For the second it is zero, although <span class="math" data-tex="\(\phi_{222}=3\ne0\)">\(\phi_{222}=3\ne0\)</span>; the ordinary fold theorem does not apply. Indeed the level graph is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y_1&amp;=-e^{-\varepsilon s}
+\left(\frac{\beta s^2}{2}+\frac{\gamma s^3}{6}\right)\\
+&amp;=-\frac{\beta s^2}{2}
+-\left(\frac{\gamma}{6}-\frac{\beta\varepsilon}{2}\right)s^3
++O(s^4).
+\end{aligned}
+\]">\[
+\begin{aligned}
+y_1&amp;=-e^{-\varepsilon s}
+\left(\frac{\beta s^2}{2}+\frac{\gamma s^3}{6}\right)\\
+&amp;=-\frac{\beta s^2}{2}
+-\left(\frac{\gamma}{6}-\frac{\beta\varepsilon}{2}\right)s^3
++O(s^4).
+\end{aligned}
+\]</span>
+This is precisely the osculating-circle contact test. The pure tangent third derivative alone gives the wrong criterion.</p>
+<p><strong>Exercise 4 (intermediate: recover the two ray amplitudes).</strong> For <span class="math" data-tex="\(\psi=-r^2&lt;0\)">\(\psi=-r^2&lt;0\)</span>, suppose the reduced leading amplitude has remainder <span class="math" data-tex="\(A+zB\)">\(A+zB\)</span> modulo <span class="math" data-tex="\(z^2+\psi\)">\(z^2+\psi\)</span>. Match the Airy expression with the two nondegenerate stationary contributions, including their signs and constants.</p>
+<p><strong>Solution.</strong> The critical points <span class="math" data-tex="\(r,-r\)">\(r,-r\)</span> have phases <span class="math" data-tex="\(-2r^3/3,2r^3/3\)">\(-2r^3/3,2r^3/3\)</span> and Hessians <span class="math" data-tex="\(2r,-2r\)">\(2r,-2r\)</span>. Their amplitudes are <span class="math" data-tex="\(A+rB,A-rB\)">\(A+rB,A-rB\)</span>. Put <span class="math" data-tex="\(\Theta=2\omega r^3/3-\pi/4\)">\(\Theta=2\omega r^3/3-\pi/4\)</span>. The leading Airy combination is
+<span class="math math-display" data-tex="\[
+2\sqrt\pi\,\omega^{-1/2}r^{-1/2}
+\left(A\cos\Theta-irB\sin\Theta\right).
+\]">\[
+2\sqrt\pi\,\omega^{-1/2}r^{-1/2}
+\left(A\cos\Theta-irB\sin\Theta\right).
+\]</span>
+Expand it into exponentials:
+<span class="math math-display" data-tex="\[
+\sqrt\pi\,\omega^{-1/2}r^{-1/2}
+\left[(A-rB)e^{i\Theta}+(A+rB)e^{-i\Theta}\right].
+\]">\[
+\sqrt\pi\,\omega^{-1/2}r^{-1/2}
+\left[(A-rB)e^{i\Theta}+(A+rB)e^{-i\Theta}\right].
+\]</span>
+Since <span class="math" data-tex="\(\sqrt\pi\,\omega^{-1/2}r^{-1/2}
+=\sqrt{2\pi/\omega}/\sqrt{2r}\)">\(\sqrt\pi\,\omega^{-1/2}r^{-1/2}
+=\sqrt{2\pi/\omega}/\sqrt{2r}\)</span>, the first term is the saddle at <span class="math" data-tex="\(-r\)">\(-r\)</span>, with phase <span class="math" data-tex="\(+2\omega r^3/3-\pi/4\)">\(+2\omega r^3/3-\pi/4\)</span>, and the second is the saddle at <span class="math" data-tex="\(r\)">\(r\)</span>, with phase <span class="math" data-tex="\(-2\omega r^3/3+\pi/4\)">\(-2\omega r^3/3+\pi/4\)</span>. This checks the negative <span class="math" data-tex="\(i\)">\(i\)</span> in front of the derivative Airy function.</p>
+<p><strong>Exercise 5 (advanced: determine an illuminated side).</strong> Take
+<span class="math" data-tex="\(\phi(y)=y_1+y_2^2/2+y_2^3/6\)">\(\phi(y)=y_1+y_2^2/2+y_2^3/6\)</span>, and consider the <span class="math" data-tex="\(+\)">\(+\)</span> branch near <span class="math" data-tex="\(t=1,y=0,x=(-1,0)\)">\(t=1,y=0,x=(-1,0)\)</span>. Expand the second ray-map component at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. Determine the locally illuminated and shadow sides in the <span class="math" data-tex="\(x_2\)">\(x_2\)</span> direction, and the first differential of the canonical <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(s=y_2\)">\(s=y_2\)</span>, <span class="math" data-tex="\(g(s)=s+s^2/2\)">\(g(s)=s+s^2/2\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F^+_{1,2}(y)&amp;=s-\frac{g(s)}{\sqrt{1+g(s)^2}}\\
+&amp;=-\frac12s^2+\frac12s^3+O(s^4).
+\end{aligned}
+\]">\[
+\begin{aligned}
+F^+_{1,2}(y)&amp;=s-\frac{g(s)}{\sqrt{1+g(s)^2}}\\
+&amp;=-\frac12s^2+\frac12s^3+O(s^4).
+\end{aligned}
+\]</span>
+It has a strict local maximum at zero. Near the marked point, <span class="math" data-tex="\(x_2&lt;0\)">\(x_2&lt;0\)</span> has two local initial points and <span class="math" data-tex="\(x_2&gt;0\)">\(x_2&gt;0\)</span> has none; <span class="math" data-tex="\(x_1\)">\(x_1\)</span> can be adjusted by <span class="math" data-tex="\(y_1\)">\(y_1\)</span>. Hence <span class="math" data-tex="\(x_2&lt;0\)">\(x_2&lt;0\)</span> is the local illuminated side. The normalized raw kernel direction has cubic coefficient <span class="math" data-tex="\(1/6\)">\(1/6\)</span> and its unfolding coefficient in <span class="math" data-tex="\(x_2\)">\(x_2\)</span> is one. Rescaling the old fiber <span class="math" data-tex="\(s=2^{1/3}z\)">\(s=2^{1/3}z\)</span> gives <span class="math" data-tex="\(z^3/3+2^{1/3}x_2z\)">\(z^3/3+2^{1/3}x_2z\)</span> to first parameter order. The homotopy preserves that first-order unfolding, since its parameter field vanishes to at least second order in <span class="math" data-tex="\(h\)">\(h\)</span>. Thus at the marked point
+<span class="math math-display" data-tex="\[
+d\psi=2^{1/3}\,dx_2.
+\]">\[
+d\psi=2^{1/3}\,dx_2.
+\]</span>
+Its positive side is the same local shadow. This identifies the sign rather than inferring it from a picture of rays.</p>
+<p><strong>Exercise 6 (advanced: exponential terms and a smooth shadow remainder).</strong> Fix <span class="math" data-tex="\(\psi&gt;0\)">\(\psi&gt;0\)</span> and a real, nonzero <span class="math" data-tex="\(b\in C^\infty_c(\mathbb R)\)">\(b\in C^\infty_c(\mathbb R)\)</span>. Show that
+<span class="math math-display" data-tex="\[
+J(\omega)=\int e^{i\omega(z^3/3+\psi z)}b(z)\,dz
+\]">\[
+J(\omega)=\int e^{i\omega(z^3/3+\psi z)}b(z)\,dz
+\]</span>
+is rapidly decreasing but cannot satisfy <span class="math" data-tex="\(|J(\omega)|\leq Ce^{-c\omega}\)">\(|J(\omega)|\leq Ce^{-c\omega}\)</span> for every sufficiently large positive <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. You may use Fourier inversion and holomorphic uniqueness.</p>
+<p><strong>Solution.</strong> The phase derivative is <span class="math" data-tex="\(z^2+\psi&gt;0\)">\(z^2+\psi&gt;0\)</span>, so repeated integration by parts on the compact support gives rapid decay. The map <span class="math" data-tex="\(q=z^3/3+\psi z\)">\(q=z^3/3+\psi z\)</span> is a smooth increasing global diffeomorphism. Changing variables gives
+<span class="math math-display" data-tex="\[
+J(\omega)=\int e^{i\omega q}v(q)\,dq,\qquad
+v(q)=\frac{b(z(q))}{z(q)^2+\psi}.
+\]">\[
+J(\omega)=\int e^{i\omega q}v(q)\,dq,\qquad
+v(q)=\frac{b(z(q))}{z(q)^2+\psi}.
+\]</span>
+Here <span class="math" data-tex="\(v\)">\(v\)</span> is real, nonzero and compactly supported. If the proposed positive-frequency exponential bound held, reality would give the same bound at negative frequencies because <span class="math" data-tex="\(J(-\omega)=\overline{J(\omega)}\)">\(J(-\omega)=\overline{J(\omega)}\)</span>. Enlarging the constant covers bounded frequencies. The inverse Fourier integral would then define <span class="math" data-tex="\(v\)">\(v\)</span> holomorphically in the strip <span class="math" data-tex="\(|\operatorname{Im}q|&lt;c\)">\(|\operatorname{Im}q|&lt;c\)</span>: on every smaller closed strip the exponential Fourier bound supplies absolute convergence of the integral and all differentiated integrals. But <span class="math" data-tex="\(v\)">\(v\)</span> vanishes on a real interval outside its compact support. Holomorphic uniqueness forces it to vanish everywhere, a contradiction.</p>
+<p>Thus smooth localization permits a rapid shadow remainder that is not exponentially bounded. The Airy terms' exponential shadow decay remains valid and useful; it does not impose a stronger bound on this entire smooth localized integral.</p>
+<h2 id="references">References</h2>
+<p><a href="prerequisites/stationary-phase-and-critical-manifolds.html">stationary</a> <em>Stationary phase and critical manifolds</em>, Theorem 5.1 and Corollary 6.1: the compact expansion with smooth parameters and symbol amplitudes.</p>
+<p><a href="prerequisites/folds-reflections-and-uniform-descent.html">descent</a> <em>Folds, reflections and uniform smooth descent</em>, Corollary 5.2 and its proof: controlled smooth even/odd square decomposition across the fold.</p>
+<p><a href="prerequisites/airy-functions-and-fold-model-operators.html">airy</a> <em>Airy functions and fold model operators</em>, Section 1: cutoff Airy integrals, all real derivatives and shadow and two-saddle estimates.</p>
+<p>NIST, <em>Digital Library of Mathematical Functions</em>, <a href="https://dlmf.nist.gov/9.5">§9.5</a> and <a href="https://dlmf.nist.gov/9.7">§9.7</a>, for the Airy integral convention and its positive and negative real regimes.</p>
+</main></body></html>

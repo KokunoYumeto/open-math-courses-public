@@ -1,0 +1,810 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Generic zeros and absolute
+primality}\label{generic-zeros-and-absolute-primality}
+
+\emph{Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra reasoning
+effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at
+Ultra. No independent review is claimed. Public domain (CC0).}
+
+A prime ideal can describe a whole variety through one point, provided
+that point is allowed to have transcendental coordinates. Its
+specializations recover all the ordinary points. Changing the
+coefficient field asks a further question: does this variety remain
+integral, or does it split or acquire nilpotents? Generic zeros connect
+these questions to field extensions.
+
+Let \(k\) be any field, \(R=k[x_1,\ldots,x_n]\), and let
+\(\Omega\supset k\) be algebraically closed. When generic points must
+belong to \(\Omega^n\), assume \(\operatorname{trdeg}_k\Omega\ge n\).
+For arbitrary points we may use different extension fields. We assume
+the \href{../prerequisites/AG-CA/AG-CA-06.html}{Nullstellensatz},
+Theorems 2.1--2.2, and
+\href{../prerequisites/AG-CA/AG-CA-09.html}{dimension and Noether
+normalization}, Theorems 4.2--4.3 and 5.1. The primary-decomposition
+facts come from the preceding lessons and the associated-prime
+prerequisite. The field-extension criteria in Section 5 are proved here.
+Noether's working English edition and the AI Integrated Stacks Project
+provide further reading.
+
+\subsection{1. A point that remembers exactly an
+ideal}\label{a-point-that-remembers-exactly-an-ideal}
+
+For a tuple \(\xi\) in an extension field define
+
+\[
+I_k(\xi)=\{f\in R:f(\xi)=0\}.
+\]
+
+It is prime because evaluation has values in a field.
+
+\textbf{Theorem 1.1 (generic zero).} For a prime
+\(\mathfrak p\subset R\), put \(A=R/\mathfrak p\),
+\(L=\operatorname{Frac}(A)\), and let \(\xi_i\) be the image of \(x_i\)
+in \(L\). Then \(I_k(\xi)=\mathfrak p\).
+
+\textbf{Proof.} Evaluation is the quotient map \(R\to A\) followed by
+the injective map \(A\to L\). Its kernel is precisely \(\mathfrak p\).
+\(\square\)
+
+The tuple is called a \textbf{generic zero}. The field
+\(L=k(\xi_1,\ldots,\xi_n)\) is its function field. It can be embedded
+over \(k\) into the stated large \(\Omega\): send a transcendence basis
+of \(L/k\), of size at most \(n\), to algebraically independent elements
+of \(\Omega\), then extend over the finite algebraic extension to an
+embedding in the algebraically closed field. The relation ideal stays
+\(\mathfrak p\).
+
+For \(\mathfrak p=(y-x^2)\), the generic zero is \((t,t^2)\), with \(t\)
+transcendental. Evaluation gives \(k[x,y]/\mathfrak p\cong k[t]\), so no
+additional relation is hidden.
+
+\subsection{2. Specialization acts on coordinate
+rings}\label{specialization-acts-on-coordinate-rings}
+
+Say that \(\eta\) is a \textbf{specialization} of \(\xi\) if
+\(I_k(\xi)\subset I_k(\eta)\). This definition preserves equations
+rather than prescribing a limiting process.
+
+\textbf{Theorem 2.1.} The condition is equivalent to a \(k\)-algebra
+homomorphism
+
+\[
+k[\xi_1,\ldots,\xi_n]\longrightarrow k[\eta_1,\ldots,\eta_n],
+\qquad \xi_i\longmapsto\eta_i.
+\]
+
+For a fixed target field \(F\supset k\), the specializations in \(F^n\)
+are exactly \(V_F(I_k(\xi))\).
+
+\textbf{Proof.} Both coordinate algebras are quotients of \(R\) by their
+relation ideals. A map induced by the prescribed assignment exists
+exactly when every relation of \(\xi\) is a relation of \(\eta\). The
+last assertion restates this condition as evaluation of all polynomials
+in the relation ideal. \(\square\)
+
+Such a map is not in general a map of function fields. For example,
+\(t\mapsto0\) defines \(k[t]\to k\) but cannot extend to \(k(t)\), since
+\(t^{-1}\) would require an inverse of zero. This is why specialization
+uses \(k[\xi]\).
+
+The prime-inclusion picture of specialization in the spectrum is
+precisely the same order: a larger prime imposes more equations. Closed
+points have coordinates algebraic over \(k\), by the weak
+Nullstellensatz; generic zeros may require transcendental coordinates.
+
+\subsection{3. All zeros, including those of primary
+ideals}\label{all-zeros-including-those-of-primary-ideals}
+
+\textbf{Proposition 3.1.} For every ideal \(I\), \(V_F(I)=V_F(\sqrt I)\)
+in every extension field \(F\). If \(Q\) is \(\mathfrak p\)-primary,
+\(V_F(Q)=V_F(\mathfrak p)\).
+
+\textbf{Proof.} If \(f^r\in I\), then at a zero of \(I\) one has
+\(f(\eta)^r=0\); fields have no nonzero nilpotents, so \(f(\eta)=0\).
+The reverse inclusion follows from \(I\subset\sqrt I\). Apply this to
+\(\sqrt Q=\mathfrak p\). \(\square\)
+
+If \(\mathfrak p_1,\ldots,\mathfrak p_s\) are the minimal primes over
+\(I\), then
+
+\[
+V_\Omega(I)=\bigcup_i V_\Omega(\mathfrak p_i).
+\]
+
+Indeed \(\sqrt I=\bigcap_i\mathfrak p_i\). A point outside every
+\(V(\mathfrak p_i)\) admits \(f_i\in\mathfrak p_i\) nonzero there, and
+the product \(\prod f_i\in\sqrt I\) stays nonzero there, a
+contradiction. By Theorem 2.1 these sets are the specializations of the
+generic zeros, when those zeros are realized in \(\Omega\).
+
+The strong Nullstellensatz implies
+
+\[
+I_k(V_\Omega(I))=\sqrt I.
+\]
+
+For a general \(k\) this follows by applying it to \(I\Omega[x]\) and
+contracting: field extension is faithfully flat, and
+\(I\Omega[x]\cap k[x]=I\); the same holds for radicals, since powers
+detect them. This does not claim that \(\Omega\) need be large enough
+for a generic zero: an algebraic closure of \(k\) already suffices for
+the equality of ideals of zeros.
+
+The primary ideal \((x^2,y)\) has only the origin as its geometric zero.
+The quotient still contains a nonzero nilpotent class \(x\). A set of
+field-valued zeros detects the radical, so multiplicity needs more
+algebra.
+
+\subsection{4. Counting parameters and excluding embedded
+dimensions}\label{counting-parameters-and-excluding-embedded-dimensions}
+
+Krull dimension is the supremum of the lengths of strict prime chains.
+For a prime \(\mathfrak p\), the cited dimension theorem gives
+
+\[
+\dim(R/\mathfrak p)=\operatorname{trdeg}_k k(\xi).
+\]
+
+Noether's 1923 prime-chain formulation describes the same number as the
+parameter formulation. The catenarity and height formula belong to the
+cited commutative-algebra lesson. For the parabola, \((0)\subsetneq(t)\)
+in \(k[t]\) is a length-one chain, and its function field has one
+parameter.
+
+An ideal in a polynomial ring is \textbf{unmixed} here if every
+associated prime of its quotient has the same height. This includes
+embedded associated primes in the test. Equidimensionality, which only
+tests minimal primes, is weaker. For \((x^2,xy)\), the associated
+heights are one and two, so it is not unmixed, although its reduced
+closed set is just one line.
+
+\textbf{Theorem 4.1 (Macaulay's unmixedness theorem).} In
+\(k[x_1,\ldots,x_n]\), an ideal generated by \(r\) elements and having
+height \(r\) is unmixed: every associated prime of its quotient has
+height \(r\).
+
+\textbf{Proof using the internal prerequisites.} Polynomial
+localizations are regular by Proposition 3.3 of
+\href{../prerequisites/AG-CA/AG-CA-14.html}{Regular local rings}. They
+are Cohen--Macaulay by Theorem 6.1 of
+\href{../prerequisites/AG-CA/AG-CA-12.html}{Regular sequences, depth and
+Cohen--Macaulay modules}. Let \(\mathfrak q\) be associated to the
+quotient, and localize at \(\mathfrak q\). Every minimal prime
+\(\mathfrak p\) over \(I\) contained in \(\mathfrak q\) has height
+exactly \(r\): height is at least \(r\) by the assumed height of \(I\),
+and at most \(r\) by the generalized principal ideal theorem for \(r\)
+generators. The polynomial height and catenarity formulas in the
+dimension prerequisite give
+\(\dim (R_{\mathfrak q}/IR_{\mathfrak q})=\operatorname{ht}\mathfrak q-r\).
+Corollary 6.2 of the depth lesson makes this quotient Cohen--Macaulay
+with that dimension. Since its maximal ideal is associated, it has depth
+zero, by Lemma 2.2 of that same lesson. Its dimension is therefore zero,
+forcing \(\operatorname{ht}\mathfrak q=r\). This proves unmixedness. The
+generalized principal ideal theorem is proved in
+\href{../prerequisites/AG-CA/AG-CA-11.html}{Dimension theory of
+Noetherian local rings}, Section 3. \(\square\)
+
+This argument uses regularity of polynomial localizations. The same
+number-of-generators condition in an arbitrary Noetherian ring is
+insufficient.
+
+\subsection{5. When the variety survives every field
+extension}\label{when-the-variety-survives-every-field-extension}
+
+The prime \(\mathfrak p\) is \textbf{absolutely prime} if
+\(\mathfrak p\bar k[x]\) is prime for an algebraic closure \(\bar k\) of
+\(k\). A \(k\)-algebra is \textbf{geometrically integral} when its
+tensor product with every extension field is a domain.
+
+For a finitely generated field extension, \textbf{separable over \(k\)}
+means \textbf{separably generated}: it has a transcendence basis
+\(t_1,\ldots,t_d\) such that the finite algebraic extension over
+\(k(t_1,\ldots,t_d)\) is separable. A \(k\)-algebra is
+\textbf{geometrically reduced} when its tensor product with every
+extension field is reduced. The next four lemmas provide all
+field-extension facts used in the criterion, including the
+imperfect-field case.
+
+\textbf{Lemma 5.A (finite separable extensions).} A finite separable
+extension \(E/F\) has a primitive element. For any extension field
+\(H/F\), \(E\otimes_F H\) is a finite product of finite separable
+extensions of \(H\), hence is reduced. In characteristic \(p>0\), a
+finite extension \(E/F\) is separable if and only if \(E=FE^p\), where
+\(FE^p\) denotes the subfield generated by \(F\) and all \(p\)-th powers
+in \(E\).
+
+\textbf{Proof.} First recall the root-count argument. In a finite tower
+of simple algebraic extensions, each embedding of an intermediate field
+into an algebraic closure extends by choosing a root of the transported
+minimal polynomial. The number of choices is its degree when that
+polynomial is separable and is at most its degree in general. Thus a
+separable tower has exactly its total degree many embeddings. Every
+element of its top field is separable: an inseparable element would have
+fewer roots than its degree, and counting embeddings by restriction to
+the field it generates would give fewer embeddings than the total
+degree. This also proves transitivity of finite algebraic separability
+and that the separable elements in a finite extension form a subfield.
+
+If \(F\) is infinite and \(E=F(a,b)\) is separable, there are \([E:F]\)
+embeddings. Two distinct embeddings disagree on \(a\) or \(b\), so their
+images of \(a+cb\) coincide for at most one \(c\in F\). Avoiding the
+finitely many forbidden values gives an element with \([E:F]\) distinct
+conjugates. Its degree is therefore \([E:F]\), so it generates \(E\).
+Induct on a finite list of generators. If \(F\) is finite, then \(E\) is
+finite. Its multiplicative group is cyclic: for its exponent \(m\),
+combining commuting elements of maximal prime-power orders produces an
+element of order \(m\); all group elements are roots of \(T^m-1\), so
+the group has at most \(m\) elements, and it has at least \(m\) because
+of this element. A generator of that group generates the field. This
+proves the primitive-element assertion in both cases.
+
+Write \(E=F(a)\) with separable minimal polynomial \(f\). Bézout's
+identity for \(f,f'\) remains valid over \(H\), so the irreducible
+factors of \(f\) in \(H[T]\) are distinct and separable. The Chinese
+remainder theorem gives
+
+\[
+E\otimes_F H=H[T]/(f)\cong\prod_j H[T]/(g_j),
+\]
+
+with each factor a finite separable field. The Chinese remainder theorem
+here follows directly from the Bézout identities between distinct
+irreducible polynomials: their ideals are comaximal, and the usual
+remainder maps have kernel their product.
+
+For the last assertion, if \(a\in E\) is separable over \(F\), its
+minimal polynomial over \(F(a^p)\) is separable and divides \(T^p-a^p\),
+which has only one distinct root. That minimal polynomial has degree
+one, so \(a\in F(a^p)\). Consequently separability implies \(E=FE^p\).
+
+Conversely let \(E_s\) be the subfield of elements of \(E\) separable
+over \(F\). Every irreducible polynomial in characteristic \(p\) can be
+written \(g(T^{p^e})\) with \(g'\ne0\); \(g\) is irreducible and hence
+separable. It follows that some \(p\)-power of each element of \(E\)
+belongs to \(E_s\). A finite generating list supplies one exponent \(N\)
+such that \(E^{p^N}\subset E_s\). If \(E=FE^p\), then \(E=E_sE^p\), and
+iteration gives \(E=E_sE^{p^N}=E_s\). This is separability. \(\square\)
+
+\textbf{Lemma 5.B (separability and geometric reducedness).} For a
+finitely generated field extension \(L/k\), the following are
+equivalent:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(L/k\) is separably generated.
+\item
+  \(L\otimes_k K\) is reduced for every extension field \(K/k\).
+\item
+  \(L\otimes_k\bar k\) is reduced.
+\end{enumerate}
+
+In characteristic \(p>0\), they are also equivalent to reducedness of
+\(L\otimes_k k^{1/p}\), where \(k^{1/p}=\{c\in\bar k:c^p\in k\}\).
+
+\textbf{Proof.} Suppose \(F=k(t_1,\ldots,t_d)\subset L\) is a separating
+transcendence basis. For any \(K/k\),
+
+\[
+B=F\otimes_k K=(k[t_1,\ldots,t_d]\setminus\{0\})^{-1}K[t_1,\ldots,t_d]
+\]
+
+is a domain. If \(H=\operatorname{Frac}(B)\), the injection
+\(B\hookrightarrow H\) remains injective after tensoring with the
+finite-dimensional \(F\)-vector space \(L\): choose an \(F\)-basis to
+see this coordinate by coordinate. Hence
+
+\[
+L\otimes_k K=L\otimes_F B\hookrightarrow L\otimes_F H.
+\]
+
+The ring on the right is reduced by Lemma 5.A, so its subring on the
+left is reduced. Thus (1) implies (2), which implies (3). In
+characteristic zero, every finitely generated field extension has a
+separating transcendence basis: choose any transcendence basis, and its
+remaining finite extension is separable because an irreducible
+nonconstant polynomial has nonzero derivative. This proves the
+equivalences in that characteristic.
+
+Assume now that the characteristic is \(p>0\) and that
+\(L\otimes_k k^{1/p}\) is reduced. Condition (3) implies this
+hypothesis, since tensoring the injection \(k^{1/p}\subset\bar k\) with
+the \(k\)-vector space \(L\) is injective. Place the compositum
+\(Lk^{1/p}\) in an algebraic closure of \(L\). The multiplication map
+
+\[
+L\otimes_k k^{1/p}\longrightarrow Lk^{1/p}
+\]
+
+is injective. Indeed, for \(z=\sum_i a_i\otimes c_i\),
+\(z^p=(\sum_i a_i^pc_i^p)\otimes1\); if the multiplication image of
+\(z\) vanishes, this power is zero, and reducedness gives \(z=0\).
+Frobenius gives an isomorphism from this tensor ring to
+\(L^p\otimes_{k^p}k\). Therefore its multiplication map into \(L\) is
+also injective. Explicitly, any elements of \(k\) linearly independent
+over \(k^p\) remain linearly independent over \(L^p\).
+
+Take any transcendence basis \(t_1,\ldots,t_d\), put
+\(F=k(t_1,\ldots,t_d)\), and write \(n=[L:F]\). Frobenius is an
+isomorphism of the extensions \(L/F\) and \(L^p/F^p\), so
+\([L^p:F^p]=n\). The injective tensor product \(k\otimes_{k^p}L^p\) is
+free of rank \(n\) over its subring \(k\otimes_{k^p}F^p\). The fraction
+field of the latter subring is \(kF^p=k(t_1^p,\ldots,t_d^p)\).
+Localizing at its nonzero elements consequently gives a domain of
+dimension \(n\) over \(kF^p\). A finite-dimensional domain over a field
+is a field: multiplication by a nonzero element is an injective
+endomorphism of a finite-dimensional vector space, hence surjective.
+This field is the compositum \(kL^p\). Thus
+
+\[
+[kL^p:kF^p]=n,\qquad
+[L:kL^p]=\frac{[L:F][F:kF^p]}{[kL^p:kF^p]}=p^d.
+\tag{5.1}
+\]
+
+Here \([F:kF^p]=p^d\): the monomials \(t_1^{e_1}\cdots t_d^{e_d}\),
+\(0\le e_i<p\), are independent by grouping polynomial exponents modulo
+\(p\) after clearing denominators, and they span because a polynomial
+denominator \(q(t)\) has inverse \(q(t)^{p-1}/q(t)^p\), with
+\(q(t)^p\in kF^p\).
+
+Put \(M=kL^p\). Each element of \(L\) has its \(p\)-th power in \(M\).
+Whenever an element \(u\) is outside an intermediate field containing
+\(M\), adjoining it has degree \(p\): its minimal polynomial divides
+\((T-u)^p\), and a monic factor of degree \(e\) with \(0<e<p\) would
+have coefficient \(-eu\), forcing \(u\) into that field. By (5.1),
+adjoining such elements successively stops after exactly \(d\) steps. We
+obtain
+
+\[
+L=M(u_1,\ldots,u_d),
+\qquad
+\{u_1^{e_1}\cdots u_d^{e_d}:0\le e_i<p\}
+\text{ is an }M\text{-basis of }L.
+\tag{5.2}
+\]
+
+These \(u_i\) are algebraically independent over \(k\). If not, choose a
+nonzero relation \(f(u)=0\) of least total degree. Group its exponents
+to write
+
+\[
+f(X)=\sum_{0\le e_i<p}X^e f_e(X_1^p,\ldots,X_d^p),\qquad f_e\in k[Y_1,\ldots,Y_d].
+\]
+
+The basis (5.2) forces every \(f_e(u_1^p,\ldots,u_d^p)\) to vanish.
+Choose a nonzero \(f_e\), and express its finitely many coefficients
+using elements \(b_1,\ldots,b_r\in k\) independent over \(k^p\):
+\(f_e(Y)=\sum_j b_jg_j(Y)\), with \(g_j\in k^p[Y]\). The injectivity of
+\(k\otimes_{k^p}L^p\to L\) forces each \(g_j(u_1^p,\ldots,u_d^p)=0\).
+Taking \(p\)-th roots of its coefficients gives a polynomial
+\(h_j\in k[X]\) with \(g_j(u_1^p,\ldots,u_d^p)=h_j(u)^p\). At least one
+\(h_j\) is nonzero, and its total degree is at most
+\(\deg f_e\le\deg f/p<\deg f\). Its vanishing contradicts minimality. If
+\(d=0\), the asserted independence is empty and needs no argument.
+
+The \(u_i\) therefore form a transcendence basis. The extension
+\(L/k(u_1,\ldots,u_d)\) is finite, and (5.2) says
+\(L=k(u_1,\ldots,u_d)L^p\). Lemma 5.A makes that finite extension
+separable. This proves (1) from the \(k^{1/p}\) test, completing all
+equivalences. \(\square\)
+
+\textbf{Lemma 5.C (algebraic-closure tests).} For any \(k\)-algebra
+\(S\),
+
+\[
+S\text{ is geometrically integral}
+\Longleftrightarrow S\otimes_k\bar k\text{ is a domain},
+\]
+
+and
+
+\[
+S\text{ is geometrically reduced}
+\Longleftrightarrow S\otimes_k\bar k\text{ is reduced}.
+\]
+
+No finite-generation hypothesis on \(S\) or on the test extension is
+required.
+
+\textbf{Proof.} Only the reverse implications need proof. Suppose
+\(u,v\in S\otimes_k K\) are nonzero with \(uv=0\). Express them as
+\(u=\sum_i a_i\otimes c_i\), \(v=\sum_j b_j\otimes d_j\), choosing the
+\(a_i\) linearly independent over \(k\), and likewise the \(b_j\).
+Choose \(c_{i_0},d_{j_0}\ne0\). Form the nonzero finite-type
+\(k\)-algebra
+
+\[
+C=k[c_i,d_j,(c_{i_0}d_{j_0})^{-1}]\subset K.
+\]
+
+Expand the finitely many products \(a_ib_j\) in a \(k\)-basis of their
+span. The equation \(uv=0\) says that the corresponding finite list of
+polynomial expressions in the \(c_i,d_j\) vanishes in \(C\). Choose a
+maximal ideal of \(C\). Its residue field is finite algebraic over
+\(k\), by the proved weak Nullstellensatz, and embeds over \(k\) in
+\(\bar k\). The resulting map \(C\to\bar k\) preserves all these
+equations and keeps \(c_{i_0},d_{j_0}\) nonzero, since their product is
+invertible in \(C\). Linear independence of the chosen lists then gives
+nonzero images \(\bar u,\bar v\in S\otimes_k\bar k\) with
+\(\bar u\bar v=0\), contradicting the domain hypothesis. The zero ring
+cannot intervene: if \(S\otimes_k\bar k\) is a domain, then \(S\ne0\),
+and tensoring its nonzero vector space with any field extension remains
+nonzero.
+
+For reducedness, take a nonzero \(u=\sum_i a_i\otimes c_i\) with
+\(u^m=0\), choose \(c_{i_0}\ne0\), and use \(C=k[c_i,c_{i_0}^{-1}]\).
+Expand the finitely many products arising in \(u^m\) in a basis of their
+span. The same specialization produces a nonzero nilpotent in
+\(S\otimes_k\bar k\), a contradiction. This proves the second test as
+well. \(\square\)
+
+\textbf{Lemma 5.D (purely inseparable scalar extension).} Let \(F/E\) be
+a field extension and \(P/E\) a purely inseparable algebraic extension.
+Then \(F\otimes_E P\) has exactly one prime ideal. It is a domain
+whenever it is reduced.
+
+\textbf{Proof.} In characteristic zero \(P=E\), so this is immediate. In
+characteristic \(p>0\), choose compatible embeddings in an algebraic
+closure of \(F\), and multiply tensors into the compositum \(FP\). For
+any \(z=\sum_i a_i\otimes c_i\), there is \(N\) with every
+\(c_i^{p^N}\in E\); hence \(z^{p^N}\) belongs to the embedded field
+\(F\). If the multiplication image of \(z\) is zero, this power is zero;
+conversely a nilpotent has zero image in a field. Thus the kernel is
+exactly the nilradical. If the image of \(z\) is nonzero, its scalar
+power is nonzero, and \(z^{p^N-1}/z^{p^N}\) is already an inverse in the
+tensor ring. The image is therefore a field. Every prime contains the
+nilradical, and its quotient is this field, proving uniqueness. If the
+ring is reduced, that unique prime is zero, so the ring is a domain.
+\(\square\)
+
+\textbf{Theorem 5.1 (regular-extension criterion).} For
+\(A=R/\mathfrak p\) and \(L=\operatorname{Frac}(A)\), the following are
+equivalent:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\mathfrak p\) is absolutely prime.
+\item
+  \(A\) is geometrically integral.
+\item
+  \(L/k\) is separable and every element of \(L\) algebraic over \(k\)
+  belongs to \(k\).
+\end{enumerate}
+
+A field extension satisfying the third condition is called
+\textbf{regular}.
+
+\textbf{Proof.} The first two conditions are equivalent by Lemma 5.C,
+since \(A\otimes_k\bar k=\bar k[x_1,\ldots,x_n]/\mathfrak p\bar k[x]\).
+For every extension \(K/k\), tensoring the injection
+\(A\hookrightarrow L\) over the field \(k\) gives an injection
+\(A\otimes_k K\hookrightarrow L\otimes_k K\). Also \(L\otimes_k K\) is
+the localization of \(A\otimes_k K\) at the images of
+\(A\setminus\{0\}\). These images are nonzero because field extension
+preserves the injection of \(A\). Hence these two rings are domains
+simultaneously: one implication uses the injection, the other uses
+localization of a domain at nonzero elements. It suffices to establish
+the criterion for \(L\).
+
+If \(L\otimes_k\bar k\) is a domain, it is reduced, so Lemma 5.B gives
+separability of \(L/k\). If \(\alpha\in L\) is algebraic over \(k\),
+tensoring the subfield injection gives
+\(k[\alpha]\otimes_k\bar k\hookrightarrow L\otimes_k\bar k\). The source
+is \(\bar k[T]/(f)\), where \(f\) is the minimal polynomial of
+\(\alpha\). If \(\deg f>1\), write \(f=(T-a)g\) in \(\bar k[T]\). Both
+factors have positive degree smaller than \(\deg f\), so both give
+nonzero classes whose product is zero. This is impossible in a subring
+of a domain, including when all roots of \(f\) coincide. Hence
+\(\deg f=1\), giving \(\alpha\in k\).
+
+Conversely assume the third condition. Any irreducible polynomial
+\(f\in k[T]\) remains irreducible over \(L\). Indeed, the coefficients
+of a monic factor in \(L[T]\) are elementary symmetric expressions in a
+selection of roots in an algebraic closure of \(L\), so are algebraic
+over \(k\). The constants hypothesis puts those coefficients in \(k\);
+monic division then puts the complementary factor in \(k[T]\) too,
+contradicting irreducibility. For a finite separable extension \(E/k\),
+Lemma 5.A supplies a primitive element, and this irreducibility makes
+\(L\otimes_k E\) a field. The separable closure \(k^{\mathrm{sep}}\) is
+the directed union of its finite separable subextensions. Their tensor
+rings inject into one another and are fields, so their union
+\(F=L\otimes_k k^{\mathrm{sep}}\) is a field.
+
+The extension \(\bar k/k^{\mathrm{sep}}\) is purely inseparable: in
+characteristic \(p\), the minimal polynomial of any algebraic element
+has the form \(g(T^{p^e})\) with \(g\) separable, so its \(p^e\)-th
+power belongs to \(k^{\mathrm{sep}}\). In characteristic zero this stage
+is absent. Consequently
+
+\[
+L\otimes_k\bar k=F\otimes_{k^{\mathrm{sep}}}\bar k
+\]
+
+has one prime by Lemma 5.D. Separability of \(L/k\) makes it reduced by
+Lemma 5.B. Lemma 5.D therefore makes it a domain, proving absolute
+primality and the equivalence of all three conditions. \(\square\)
+
+\subsection{6. Two distinct failures}\label{two-distinct-failures}
+
+Over \(\mathbb R\), the polynomial \(x^2+y^2\) is irreducible: a
+degree-two factorization would be into homogeneous linear factors, but a
+real line cannot lie in its zero set, which is only the origin. Since
+\(\mathbb R[x,y]\) is a unique factorization domain, the generated ideal
+is prime. Over \(\mathbb C\),
+
+\[
+x^2+y^2=(x+iy)(x-iy),
+\]
+
+so it is not absolutely prime. In its function field, \(y\ne0\) and
+\((x/y)^2=-1\), yielding a new algebraic constant. Separability holds in
+characteristic zero; algebraic closedness of the constants fails.
+
+Over \(k=\mathbb F_p(t)\), the polynomial \(X^p-t\) is irreducible. The
+element \(t\) is not a \(p\)-th power, as its order of vanishing at
+\(t=0\) is one. If \(a^p=t\) in an algebraic closure, a monic proper
+factor of \((X-a)^p\) would be \((X-a)^e\), \(0<e<p\); its coefficient
+\(-ea\) would force \(a\in k\). This proves irreducibility. Its quotient
+is the field \(k(t^{1/p})\). Over \(\bar k\) it becomes
+\((X-t^{1/p})^p\); the class of \(X-t^{1/p}\) is nonzero by monic
+division and is nilpotent. The field extension is inseparable and has
+new algebraic constants, so both regularity conditions fail.
+
+Separability cannot be dropped even if the constants condition holds.
+Here is a complete example. Let \(s,x,y\) be independent indeterminates
+over \(\mathbb F_p\), put
+
+\[
+L=\mathbb F_p(s,x,y),\qquad t=y^p-sx^p,\qquad k=\mathbb F_p(s,t).
+\tag{6.1}
+\]
+
+The elements \(s,x,t\) are algebraically independent: in a polynomial in
+\(t\), substitution of \(y^p-sx^p\) makes its highest \(t\)-degree term
+the unique highest \(y\)-degree term. Thus \(x\) is transcendental over
+\(k\). The element \(sx^p+t\) is not a \(p\)-th power in \(k(x)\), since
+its formal derivative with respect to \(t\) is one, whereas every
+\(p\)-th power has derivative zero. The preceding monic-factor argument
+proves that
+
+\[
+A=k[x,y]/(y^p-sx^p-t)
+\]
+
+is a domain with fraction field \(L\). Over \(\bar k\), its equation is
+\((y-s^{1/p}x-t^{1/p})^p\). Write \(h=y-s^{1/p}x-t^{1/p}\). The ring
+\(A\otimes_k\bar k=\bar k[x,y]/(h^p)\) has nilradical \((h)\), quotient
+\(\bar k[x]\), and a nonzero nilpotent \(h\). Reduction modulo \(h\)
+embeds \(A\) in \(\bar k[x]\): the displayed value of \(y\) has the
+irreducible degree-\(p\) polynomial just proved as its minimal
+polynomial over \(k(x)\). Thus the elements of \(A\setminus\{0\}\) stay
+outside \((h)\). Localize at those elements to obtain
+\(L\otimes_k\bar k\). Its reduction is a subring of \(\bar k(x)\)
+containing \(k(x)\), because every nonzero polynomial in \(k[x]\) is
+among the denominators. Every element of this subring is algebraic over
+\(k(x)\): only finitely many coefficients in the algebraic extension
+\(\bar k/k\) occur in each rational function. A nonzero such element has
+a minimal polynomial with nonzero constant coefficient, which expresses
+its inverse as a polynomial in it with coefficients in \(k(x)\). Hence
+the reduction is a field. Since \(h\) is nilpotent, this makes \((h)\)
+the unique prime after localization. Also \(h\ne0\) there: its
+annihilator before localization is \((h^{p-1})\subset(h)\), disjoint
+from the denominators. Thus \(L\otimes_k\bar k\) is nonreduced, so
+\(L/k\) is not separably generated by Lemma 5.B.
+
+Nevertheless \(k\) is algebraically closed in \(L\). First there are no
+new separable algebraic constants. A proper finite separable subfield
+\(E/k\) would give an injection of \(E\otimes_k\bar k\), a product of at
+least two copies of \(\bar k\), into \(L\otimes_k\bar k\). A ring with
+one prime has no idempotents except zero and one: its unique prime is
+its nilradical, so for an idempotent \(e\), either \(e\) or \(1-e\) is
+both nilpotent and idempotent and must be zero. This rules out that
+injection.
+
+To exclude purely inseparable constants, put \(U=x^p,V=y^p\). Then
+\(L^p=\mathbb F_p(s^p,U,V)\). If \(f\in k\cap L^p\), differentiate in
+\(\mathbb F_p(s,U,V)\), holding \(U,V\) fixed. Since \(t=V-sU\), the
+result is
+
+\[
+0=\frac{\partial f}{\partial s}-U\frac{\partial f}{\partial t},
+\]
+
+where the two derivatives on the right are computed in
+\(k=\mathbb F_p(s,t)\). The element \(U\) is transcendental over \(k\),
+so both derivatives vanish. The monomials \(s^it^j\), \(0\le i,j<p\),
+are a basis of \(k\) over \(k^p\), by the same rational monomial
+argument used in (5.1). Differentiating their expansion first in \(s\)
+and then in \(t\) forces all coefficients except the constant one to
+vanish. Hence \(f\in k^p\), proving \(k\cap L^p=k^p\). If \(a\in L\) has
+\(a^p\in k\), then \(a^p=c^p\) for some \(c\in k\), and uniqueness of
+\(p\)-th roots in a field gives \(a=c\). Repetition excludes every
+nontrivial purely inseparable constant. Finally, an arbitrary element
+algebraic over \(k\) has a suitable \(p\)-power separable over \(k\), by
+the polynomial argument in Lemma 5.A. That power is in \(k\), and the
+purely inseparable argument puts the element itself in \(k\). Thus (6.1)
+satisfies the constants condition but fails separability, as claimed.
+
+\subsection{7. Exercises}\label{exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Basic.} Find a generic zero for \((y^2-x^3)\), and describe
+  its specializations over an algebraically closed extension.
+\item
+  \textbf{Intermediate.} Show that a point whose coordinates are
+  algebraic over \(k\) specializes the generic zero of \(\mathfrak p\)
+  exactly when it lies in \(V(\mathfrak p)\). Explain why a map on
+  coordinate rings suffices.
+\item
+  \textbf{Intermediate.} Prove that \((x^2+y^2)\) is prime over
+  \(\mathbb R\) and compute its complex extension as an intersection of
+  prime ideals.
+\item
+  \textbf{Intermediate.} For \((X^p-t,Y)\subset\mathbb F_p(t)[X,Y]\),
+  identify the quotient field and its base change to an algebraic
+  closure.
+\item
+  \textbf{Advanced.} Prove the regular-extension criterion in
+  characteristic zero, identifying exactly where the characteristic-zero
+  hypothesis removes a step.
+\end{enumerate}
+
+\subsection{8. Solutions}\label{solutions}
+
+\textbf{1.} Use \((t^2,t^3)\), with \(t\) transcendental. Dividing by
+the monic relation in \(y\) leaves \(a(x)+yb(x)\). Its evaluation has
+disjoint even powers from \(a(t^2)\) and odd powers at least three from
+\(t^3b(t^2)\), so vanishing forces both polynomials zero. The kernel is
+exactly the given ideal, which is therefore prime. Every cusp point is
+parametrized: if \(x\ne0\), set \(t=y/x\), giving \(t^2=x,t^3=y\); if
+\(x=0\), then \(y=0\) and set \(t=0\). These are all specializations by
+Theorem 2.1.
+
+\textbf{2.} Containment of relation ideals is exactly the condition that
+every polynomial in \(\mathfrak p\) vanish at the point; this is
+membership in \(V(\mathfrak p)\). The quotient map therefore descends to
+the coordinate algebra. Algebraicity ensures the point's coordinate
+algebra is a finite field extension, by adjoining finitely many
+algebraic elements, but it does not make a specialization map extend to
+the generic function field.
+
+\textbf{3.} The real irreducibility argument in Section 6 gives
+primality. In \(\mathbb C[x,y]\) the distinct irreducible linear factors
+are relatively prime as elements, so their principal ideals intersect in
+their product:
+
+\[
+(x^2+y^2)=(x+iy)\cap(x-iy).
+\]
+
+These two ideals are not comaximal: their sum is \((x,y)\). The complex
+variety is two lines meeting at the origin.
+
+\textbf{4.} The quotient is \(\mathbb F_p(t)(t^{1/p})\), a purely
+inseparable degree-\(p\) extension. The base-changed quotient is
+\(\bar k[\epsilon]/(\epsilon^p)\) with \(\epsilon=X-t^{1/p}\) and
+\(Y=0\). It is nonreduced and not a domain. The extension is not
+separable and \(k\) is not algebraically closed in it.
+
+\textbf{5.} In characteristic zero every finitely generated field
+extension is separably generated. If \(k\) is algebraically closed in
+\(L\), the monic-factor argument in Theorem 5.1 keeps every finite
+separable minimal polynomial irreducible over \(L\), so
+\(L\otimes_k\bar k\) is the directed union of fields and is a domain.
+There is no purely inseparable stage. Conversely any algebraic
+\(\alpha\in L\setminus k\) would give a degree-greater-than-one
+separable polynomial whose tensor quotient over \(\bar k\) is a product
+of fields, injecting into \(L\otimes_k\bar k\); this contradicts its
+being a domain. The passage between \(A\) and \(L\) is the injective
+localization argument already proved.
+
+\subsection{In Noether's words}\label{in-noethers-words}
+
+\href{https://zenodo.org/records/21923146/files/00_EMMY_NOETHER_EN_COMPLETE_LINKED_READER.pdf}{Elimination
+Theory and General Ideal Theory, work 24} announces the arithmetic
+dimension in its introduction and develops zeros in Sections 2--3,
+dimension in Section 4, and absolute prime ideals in Section 7. Thus
+absolute primality occurs later than the initial zero theory. The short
+announcements are works 18 and 25.
+\href{https://zenodo.org/records/21908301/files/10-de.pdf}{The German
+authority} gives the original text.
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  Emmy Noether,
+  \href{https://zenodo.org/records/21908301/files/10-de.pdf}{\emph{Eliminationstheorie
+  und allgemeine Idealtheorie}, work 24 in the freely readable German
+  edition}, Mathematische Annalen \textbf{90} (1923), 229--261,
+  introduction and Sections 1--4, 7;
+  \href{https://zenodo.org/records/21923146/files/00_EMMY_NOETHER_EN_COMPLETE_LINKED_READER.pdf}{freely
+  readable English edition}, work 24.
+\item
+  The Stacks project authors, freely accessible comparison statements:
+  \href{https://stacks.math.columbia.edu/tag/030I}{separable extensions,
+  Tag 030I}; \href{https://stacks.math.columbia.edu/tag/0322}{geometric
+  reducedness, Tag 0322};
+  \href{https://stacks.math.columbia.edu/tag/037P}{algebraically closed
+  constants, Tag 037P};
+  \href{https://stacks.math.columbia.edu/tag/0FWF}{algebraic-closure
+  test for geometric integrality, Tag 0FWF}. The source retains its GFDL
+  licence. Lemmas 5.A--5.D and Theorem 5.1 above supply the complete
+  proofs needed here, including the finitely generated separability
+  convention and arbitrary test extensions.
+\end{itemize}
+
+\subsection{Editable sources}\label{editable-sources}
+
+\href{ideal-theory-in-rings-source.zip}{Complete source archive} ·
+\href{ideal-theory-in-rings.tex}{Complete course in LaTeX} ·
+\href{NOE-IDL-04.tex}{This lesson in LaTeX}. The archive includes all
+five lesson texts, the figures and their reproducible source.
+
+\end{document}

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Lie algebras: definitions, examples and first constructions · Open Mathematics Courses</title><link href="../../../../assets/site.css" rel="stylesheet"/><style>main{max-width:76rem;margin:auto;padding:1.5rem}.lesson{max-width:66rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}img{max-width:100%;height:auto}table{display:block;overflow-x:auto}td,th{padding:.4rem} .math-display{display:block;overflow-x:auto}details{margin:1rem 0}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer="" src="../../../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../../..">Open Mathematics Courses</a><nav><a href="../../../RT-LIE/index.html">Semisimple Lie algebras</a> · <a href="../../../RT-LIE/proof-crosswalk.html">Proof index</a> · <a href="../../../RT-LIE/sources.html">Sources and terms</a></nav></div></header><main id="main"><nav class="lesson-nav"><a href="../../../RT-LIE/index.html">Course contents</a><a download="" href="src/RT-LIE-01.md">Editable source</a><a href="../../../RT-LIE/RT-LIE-02.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#lemma-0-3">Lemma 0.3 (Complex square roots).</a></li><li><a href="#lemma-0-2">Lemma 0.2 (Quotient algebras and factorization).</a></li><li><a href="#lemma-0-1">Lemma 0.1 (Rank–nullity).</a></li><li><a href="#proposition-1-1">Proposition 1.1 (commutators).</a></li><li><a href="#proposition-2-1">Proposition 2.1 (quotients and isomorphism theorems).</a></li><li><a href="#proposition-3-1">Proposition 3.1 (derivations and the adjoint action).</a></li><li><a href="#proposition-3-2">Proposition 3.2.</a></li><li><a href="#proposition-4-1">Proposition 4.1 (classical matrix algebras).</a></li><li><a href="#theorem-5-1">Theorem 5.1 (small dimensions).</a></li><li><a href="#proposition-6-1">Proposition 6.1 (universality and modules).</a></li><li><a href="#theorem-6-2">Theorem 6.2 (Poincaré–Birkhoff–Witt).</a></li></ul></details><article class="lesson"><h1 id="lie-algebras-definitions-examples-and-first-constructions">Lie algebras: definitions, examples and first constructions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Foundation proofs, source comparison and integration by GPT-6 Astra (OpenAI), Ultra; self-checked by that AI. Public domain (CC0). Linked human-source components retain their stated terms.</em></p>
+<p>Two linear operators need not commute. Their difference in the two possible orders, <span class="math" data-tex="\(XY-YX\)">\(XY-YX\)</span>, carries a useful algebraic structure of its own. Lie algebras isolate that structure. We will learn how to form their quotients, let them act on vector spaces, recognize the classical matrix examples, and replace their brackets by relations in an associative algebra. We also classify the smallest examples, including the first complex algebra that equals its own derived algebra.</p>
+<p>The prerequisites are <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B40">Linear Algebra</a> and <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C40">Abstract Algebra II</a>. We use vector-space and field axioms, matrix multiplication, determinants and complex arithmetic. The programme's <span class="unlinked">basis and complement proofs</span>, developed from Jim Hefferon's work, supply the finite-basis results. <span class="unlinked">Determinants and changes of basis</span> proves the matrix identities, including multiplication, invertibility and the coordinate rule for brackets. The preliminary arguments below supply rank–nullity, quotient factorization and the square roots used later; tensor products are constructed in Section 3. Milne's freely available notes provide companion treatments of Lie algebras and algebraic groups; Judson's reader treats quotient rings. All Lie-algebra arguments used here are given below.</p>
+<p>Unless explicitly stated otherwise, <span class="math" data-tex="\(k\)">\(k\)</span> is a field of characteristic zero. A Lie algebra need not be finite-dimensional; the dimension statements have their indicated finite-dimensional hypotheses. All tensor products are over the ground field. Associative algebras and their modules are unital, and representations are left actions.</p>
+<h2 id="before-the-brackets-linear-and-scalar-foundations">Before the brackets: linear and scalar foundations</h2>
+<p id="lemma-0-1"><strong>Lemma 0.1 (rank–nullity).</strong> Let <span class="math" data-tex="\(T:V\to W\)">\(T:V\to W\)</span> be linear over any field, with <span class="math" data-tex="\(V\)">\(V\)</span> finite-dimensional and no dimension restriction on <span class="math" data-tex="\(W\)">\(W\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\dim V=\dim\ker T+\dim\operatorname{im}T.
+\]">\[
+\dim V=\dim\ker T+\dim\operatorname{im}T.
+\]</span>
+<p><strong>Proof.</strong> By the linked finite-basis theorem, choose a basis <span class="math" data-tex="\(u_1,\ldots,u_r\)">\(u_1,\ldots,u_r\)</span> of the kernel and extend it to a basis <span class="math" data-tex="\(u_1,\ldots,u_r,v_1,\ldots,v_s\)">\(u_1,\ldots,u_r,v_1,\ldots,v_s\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span>. Applying <span class="math" data-tex="\(T\)">\(T\)</span> to a basis expansion shows that the <span class="math" data-tex="\(T(v_j)\)">\(T(v_j)\)</span> span the image. If <span class="math" data-tex="\(\sum c_jT(v_j)=0\)">\(\sum c_jT(v_j)=0\)</span>, then <span class="math" data-tex="\(\sum c_jv_j\)">\(\sum c_jv_j\)</span> lies in the kernel. Express it in the <span class="math" data-tex="\(u_i\)">\(u_i\)</span>; independence of the extended basis forces every <span class="math" data-tex="\(c_j=0\)">\(c_j=0\)</span>. Thus the image has basis <span class="math" data-tex="\(T(v_1),\ldots,T(v_s)\)">\(T(v_1),\ldots,T(v_s)\)</span>, and the dimensions are <span class="math" data-tex="\(r+s,r,s\)">\(r+s,r,s\)</span>, respectively. Empty lists cover zero kernels or zero images. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="lemma-0-2"><strong>Lemma 0.2 (quotient algebras and factorization).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a unital associative algebra and <span class="math" data-tex="\(I\)">\(I\)</span> a two-sided ideal. The cosets <span class="math" data-tex="\(A/I\)">\(A/I\)</span> form an associative algebra. A unital algebra map <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span> factors uniquely through <span class="math" data-tex="\(A/I\)">\(A/I\)</span> exactly when <span class="math" data-tex="\(I\subseteq\ker f\)">\(I\subseteq\ker f\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\((a+I)+(b+I)=a+b+I\)">\((a+I)+(b+I)=a+b+I\)</span>, <span class="math" data-tex="\(c(a+I)=ca+I\)">\(c(a+I)=ca+I\)</span>, and <span class="math" data-tex="\((a+I)(b+I)=ab+I\)">\((a+I)(b+I)=ab+I\)</span>. Addition and scalar multiplication are unchanged when representatives differ by elements of the subspace <span class="math" data-tex="\(I\)">\(I\)</span>. For multiplication, replacing <span class="math" data-tex="\(a,b\)">\(a,b\)</span> by <span class="math" data-tex="\(a+i,b+j\)">\(a+i,b+j\)</span> changes the product by <span class="math" data-tex="\(aj+ib+ij\in I\)">\(aj+ib+ij\in I\)</span>. Every vector-space law, associativity and distributivity now descends by applying the coset map to the corresponding equality in <span class="math" data-tex="\(A\)">\(A\)</span>; the unit is <span class="math" data-tex="\(1+I\)">\(1+I\)</span>. If <span class="math" data-tex="\(f(I)=0\)">\(f(I)=0\)</span>, define <span class="math" data-tex="\(\bar f(a+I)=f(a)\)">\(\bar f(a+I)=f(a)\)</span>. Differences in representatives map to zero, so this is a well-defined unital algebra map. Surjectivity of the coset map gives uniqueness. Conversely any factorization kills <span class="math" data-tex="\(I\)">\(I\)</span>. This also allows the zero quotient when <span class="math" data-tex="\(I=A\)">\(I=A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="lemma-0-3"><strong>Lemma 0.3 (complex square roots).</strong> Every complex number has a square root.</p>
+<p><strong>Proof.</strong> First recall how the least-upper-bound axiom for the real numbers supplies nonnegative square roots. For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the nonempty set <span class="math" data-tex="\(S=\{t\ge0:t^2\le a\}\)">\(S=\{t\ge0:t^2\le a\}\)</span> is bounded above by <span class="math" data-tex="\(\max(1,a)\)">\(\max(1,a)\)</span>. Its supremum <span class="math" data-tex="\(s\)">\(s\)</span> is positive, since <span class="math" data-tex="\(\min(1,a)/2\in S\)">\(\min(1,a)/2\in S\)</span>. If <span class="math" data-tex="\(s^2&lt;a\)">\(s^2&lt;a\)</span>, choose <span class="math" data-tex="\(0&lt;\epsilon&lt;1\)">\(0&lt;\epsilon&lt;1\)</span> with <span class="math" data-tex="\((2s+1)\epsilon&lt;a-s^2\)">\((2s+1)\epsilon&lt;a-s^2\)</span>; then <span class="math" data-tex="\((s+\epsilon)^2&lt;a\)">\((s+\epsilon)^2&lt;a\)</span>, contradicting the upper-bound property. If <span class="math" data-tex="\(s^2&gt;a\)">\(s^2&gt;a\)</span>, choose <span class="math" data-tex="\(0&lt;\epsilon&lt;s\)">\(0&lt;\epsilon&lt;s\)</span> with <span class="math" data-tex="\(2s\epsilon&lt;s^2-a\)">\(2s\epsilon&lt;s^2-a\)</span>. Then <span class="math" data-tex="\((s-\epsilon)^2&gt;a\)">\((s-\epsilon)^2&gt;a\)</span>, so every element of <span class="math" data-tex="\(S\)">\(S\)</span> is smaller than <span class="math" data-tex="\(s-\epsilon\)">\(s-\epsilon\)</span>, contradicting the definition of <span class="math" data-tex="\(s\)">\(s\)</span>. Thus <span class="math" data-tex="\(s^2=a\)">\(s^2=a\)</span>. The case <span class="math" data-tex="\(a=0\)">\(a=0\)</span> is immediate; monotonicity of squaring on nonnegative reals gives uniqueness.</p>
+<p>Write <span class="math" data-tex="\(z=a+bi\)">\(z=a+bi\)</span>, and set <span class="math" data-tex="\(r=\sqrt{a^2+b^2}\)">\(r=\sqrt{a^2+b^2}\)</span>, so <span class="math" data-tex="\(r\ge|a|\)">\(r\ge|a|\)</span>. If <span class="math" data-tex="\(u=\sqrt{(r+a)/2}&gt;0\)">\(u=\sqrt{(r+a)/2}&gt;0\)</span>, put <span class="math" data-tex="\(v=b/(2u)\)">\(v=b/(2u)\)</span>. The identity <span class="math" data-tex="\((r-a)(r+a)=b^2\)">\((r-a)(r+a)=b^2\)</span> gives <span class="math" data-tex="\(v^2=(r-a)/2\)">\(v^2=(r-a)/2\)</span>. Consequently <span class="math" data-tex="\((u+iv)^2=a+bi\)">\((u+iv)^2=a+bi\)</span>. If <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, then <span class="math" data-tex="\(a=-r\)">\(a=-r\)</span> and <span class="math" data-tex="\(b=0\)">\(b=0\)</span>; the number <span class="math" data-tex="\(i\sqrt{-a}\)">\(i\sqrt{-a}\)</span> is a square root. These cases include <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The full theorem that every complex polynomial splits, not just a quadratic, has its proof in <a href="../../../AG-CA/the-nullstellensatz-and-jacobson-rings.html#section-5">The Nullstellensatz and Jacobson rings, Lemma 5.1</a>. Only Lemma 0.3 is needed for this lesson's symmetric-form calculation.</p>
+<span id="section-1"></span><h2 id="1-what-the-commutator-remembers">1. What the commutator remembers</h2>
+<p>A <strong>Lie algebra</strong> is a vector space <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> with a bilinear bracket satisfying</p>
+<span class="math math-display" data-tex="\[
+[x,x]=0,\qquad
+[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0.
+\]">\[
+[x,x]=0,\qquad
+[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0.
+\]</span>
+<p>The first condition is <strong>alternation</strong>; the second is the <strong>Jacobi identity</strong>. Expanding <span class="math" data-tex="\([x+y,x+y]=0\)">\([x+y,x+y]=0\)</span> gives <span class="math" data-tex="\([x,y]=-[y,x]\)">\([x,y]=-[y,x]\)</span>. Conversely, this skew-symmetry implies alternation when <span class="math" data-tex="\(2\ne0\)">\(2\ne0\)</span> in <span class="math" data-tex="\(k\)">\(k\)</span>. In characteristic two it does not, so alternation remains part of the definition even in our exercise over arbitrary fields.</p>
+<p>The zero bracket makes any vector space an <strong>abelian</strong> Lie algebra. The Jacobi identity can also be written</p>
+<span class="math math-display" data-tex="\[
+[x,[y,z]]=[[x,y],z]+[y,[x,z]]. \tag{1.1}
+\]">\[
+[x,[y,z]]=[[x,y],z]+[y,[x,z]]. \tag{1.1}
+\]</span>
+<p>This version says that bracketing with <span class="math" data-tex="\(x\)">\(x\)</span> obeys a product rule. It will explain both the adjoint action and many closure properties.</p>
+<p id="proposition-1-1"><strong>Proposition 1.1 (commutators).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is an associative <span class="math" data-tex="\(k\)">\(k\)</span>-algebra, then <span class="math" data-tex="\([a,b]=ab-ba\)">\([a,b]=ab-ba\)</span> makes its underlying vector space a Lie algebra.</p>
+<p><strong>Proof.</strong> Bilinearity and alternation follow from multiplication. Associativity permits us to omit parentheses in</p>
+<span class="math math-display" data-tex="\[
+[a,[b,c]]=abc-acb-bca+cba.
+\]">\[
+[a,[b,c]]=abc-acb-bca+cba.
+\]</span>
+<p>Its cyclic sum is zero: each of the six ordered products occurs once with each sign. This proves Jacobi. The argument works over every field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, <span class="math" data-tex="\(\mathfrak{gl}(V)=\operatorname{End}_k(V)\)">\(\mathfrak{gl}(V)=\operatorname{End}_k(V)\)</span> has this bracket. For <span class="math" data-tex="\(V=k^n\)">\(V=k^n\)</span>, write <span class="math" data-tex="\(\mathfrak{gl}_n(k)\)">\(\mathfrak{gl}_n(k)\)</span>. If <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> has its only nonzero entry, equal to <span class="math" data-tex="\(1\)">\(1\)</span>, in position <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>, multiplication gives</p>
+<span class="math math-display" data-tex="\[
+[E_{ij},E_{rs}]=\delta_{jr}E_{is}-\delta_{si}E_{rj}. \tag{1.2}
+\]">\[
+[E_{ij},E_{rs}]=\delta_{jr}E_{is}-\delta_{si}E_{rj}. \tag{1.2}
+\]</span>
+<p>This formula is a quick way to check matrix brackets.</p>
+<p>Our first noncommutative example is <span class="math" data-tex="\(\mathfrak{sl}_2(k)\)">\(\mathfrak{sl}_2(k)\)</span>, the trace-zero two-by-two matrices. Set</p>
+<span class="math math-display" data-tex="\[
+e=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\quad
+h=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\quad
+f=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}.
+\]">\[
+e=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\quad
+h=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\quad
+f=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}.
+\]</span>
+<p>They form a basis and satisfy</p>
+<span class="math math-display" data-tex="\[
+[h,e]=2e,\qquad [h,f]=-2f,\qquad [e,f]=h. \tag{1.3}
+\]">\[
+[h,e]=2e,\qquad [h,f]=-2f,\qquad [e,f]=h. \tag{1.3}
+\]</span>
+<p>Trace-zero matrices are closed under brackets because</p>
+<span class="math math-display" data-tex="\[
+\operatorname{tr}(XY)=\sum_{i,j}X_{ij}Y_{ji}
+=\operatorname{tr}(YX).
+\]">\[
+\operatorname{tr}(XY)=\sum_{i,j}X_{ij}Y_{ji}
+=\operatorname{tr}(YX).
+\]</span>
+<p>Thus <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> is a Lie subalgebra of <span class="math" data-tex="\(\mathfrak{gl}_2\)">\(\mathfrak{gl}_2\)</span>. It is not an associative subalgebra: <span class="math" data-tex="\(h^2=I_2\)">\(h^2=I_2\)</span> has nonzero trace in characteristic zero. A bracket and an associative product impose different closure conditions.</p>
+<span id="section-2"></span><h2 id="2-subspaces-quotients-and-useful-invariants">2. Subspaces, quotients and useful invariants</h2>
+<p>A <strong>subalgebra</strong> <span class="math" data-tex="\(\mathfrak s\subseteq\mathfrak g\)">\(\mathfrak s\subseteq\mathfrak g\)</span> is a linear subspace with <span class="math" data-tex="\([\mathfrak s,\mathfrak s]\subseteq\mathfrak s\)">\([\mathfrak s,\mathfrak s]\subseteq\mathfrak s\)</span>. An <strong>ideal</strong> <span class="math" data-tex="\(I\)">\(I\)</span> satisfies the stronger condition <span class="math" data-tex="\([\mathfrak g,I]\subseteq I\)">\([\mathfrak g,I]\subseteq I\)</span>. Here <span class="math" data-tex="\([U,W]\)">\([U,W]\)</span> means the linear span of all brackets <span class="math" data-tex="\([u,w]\)">\([u,w]\)</span>, not merely their set.</p>
+<p>A linear map <span class="math" data-tex="\(\phi:\mathfrak g\to\mathfrak h\)">\(\phi:\mathfrak g\to\mathfrak h\)</span> is a <strong>homomorphism</strong> if <span class="math" data-tex="\(\phi([x,y])=[\phi(x),\phi(y)]\)">\(\phi([x,y])=[\phi(x),\phi(y)]\)</span>. Its image is a subalgebra and its kernel is an ideal: bracket preservation proves both assertions immediately.</p>
+<p id="proposition-2-1"><strong>Proposition 2.1 (quotients and isomorphism theorems).</strong> If <span class="math" data-tex="\(I\)">\(I\)</span> is an ideal, the quotient vector space has the bracket</p>
+<span class="math math-display" data-tex="\[
+[x+I,y+I]=[x,y]+I.
+\]">\[
+[x+I,y+I]=[x,y]+I.
+\]</span>
+<p>For a homomorphism <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, there is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\mathfrak g/\ker\phi\ \simeq\ \operatorname{im}\phi.
+\]">\[
+\mathfrak g/\ker\phi\ \simeq\ \operatorname{im}\phi.
+\]</span>
+<p>If <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> is a subalgebra, then</p>
+<span class="math math-display" data-tex="\[
+\mathfrak s/(\mathfrak s\cap I)\simeq(\mathfrak s+I)/I.
+\]">\[
+\mathfrak s/(\mathfrak s\cap I)\simeq(\mathfrak s+I)/I.
+\]</span>
+<p>If <span class="math" data-tex="\(I\subseteq J\)">\(I\subseteq J\)</span> are ideals, then</p>
+<span class="math math-display" data-tex="\[
+(\mathfrak g/I)/(J/I)\simeq\mathfrak g/J.
+\]">\[
+(\mathfrak g/I)/(J/I)\simeq\mathfrak g/J.
+\]</span>
+<p>Subalgebras containing <span class="math" data-tex="\(I\)">\(I\)</span> correspond to subalgebras of <span class="math" data-tex="\(\mathfrak g/I\)">\(\mathfrak g/I\)</span>; the correspondence also preserves ideals.</p>
+<p><strong>Proof.</strong> Replacing <span class="math" data-tex="\(x,y\)">\(x,y\)</span> by <span class="math" data-tex="\(x+i,y+j\)">\(x+i,y+j\)</span> changes their bracket by <span class="math" data-tex="\([i,y]+[x,j]+[i,j]\)">\([i,y]+[x,j]+[i,j]\)</span>, which lies in <span class="math" data-tex="\(I\)">\(I\)</span>. Bilinearity, alternation and Jacobi therefore descend. The first displayed isomorphism sends <span class="math" data-tex="\(x+\ker\phi\)">\(x+\ker\phi\)</span> to <span class="math" data-tex="\(\phi(x)\)">\(\phi(x)\)</span>; it is well-defined, injective, surjective onto the image, and preserves brackets.</p>
+<p>The sum <span class="math" data-tex="\(\mathfrak s+I\)">\(\mathfrak s+I\)</span> is closed under brackets because all mixed terms lie in <span class="math" data-tex="\(I\)">\(I\)</span>. Restrict the quotient map to <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>; its kernel is <span class="math" data-tex="\(\mathfrak s\cap I\)">\(\mathfrak s\cap I\)</span> and its image is <span class="math" data-tex="\((\mathfrak s+I)/I\)">\((\mathfrak s+I)/I\)</span>. For the third theorem, the map <span class="math" data-tex="\(x+I\mapsto x+J\)">\(x+I\mapsto x+J\)</span> has kernel <span class="math" data-tex="\(J/I\)">\(J/I\)</span>, so the first theorem applies again. Finally, image and inverse image under the quotient map are inverse operations on the indicated subalgebras. Bracketing with arbitrary elements shows that an ideal on either side gives an ideal on the other. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The <strong>centre</strong> and <strong>derived algebra</strong> are</p>
+<span class="math math-display" data-tex="\[
+Z(\mathfrak g)=\{z:[z,x]=0\text{ for every }x\},\qquad
+[\mathfrak g,\mathfrak g]=\operatorname{span}\{[x,y]\}.
+\]">\[
+Z(\mathfrak g)=\{z:[z,x]=0\text{ for every }x\},\qquad
+[\mathfrak g,\mathfrak g]=\operatorname{span}\{[x,y]\}.
+\]</span>
+<p>Both are ideals. The assertion for the centre follows from its definition; for the derived algebra use (1.1). The quotient by the derived algebra is abelian. More precisely, a map from <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> to an abelian Lie algebra kills every bracket and hence factors uniquely through this quotient. Thus it records all possible abelian images of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>.</p>
+<p>For a subalgebra <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>, define its <strong>normalizer</strong> and <strong>centralizer</strong> by</p>
+<span class="math math-display" data-tex="\[
+N_{\mathfrak g}(\mathfrak s)=\{x:[x,\mathfrak s]\subseteq\mathfrak s\},\qquad
+C_{\mathfrak g}(\mathfrak s)=\{x:[x,\mathfrak s]=0\}.
+\]">\[
+N_{\mathfrak g}(\mathfrak s)=\{x:[x,\mathfrak s]\subseteq\mathfrak s\},\qquad
+C_{\mathfrak g}(\mathfrak s)=\{x:[x,\mathfrak s]=0\}.
+\]</span>
+<p>They are subalgebras: for <span class="math" data-tex="\(x,y\)">\(x,y\)</span> in either one, apply</p>
+<span class="math math-display" data-tex="\[
+[[x,y],s]=[x,[y,s]]-[y,[x,s]].
+\]">\[
+[[x,y],s]=[x,[y,s]]-[y,[x,s]].
+\]</span>
+<p>The subalgebra <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> is an ideal in its normalizer, and its centralizer is also an ideal there. For the latter claim, if <span class="math" data-tex="\(x\)">\(x\)</span> normalizes <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> centralizes it, the same equation has both terms zero. In particular, <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> is an ideal of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> exactly when <span class="math" data-tex="\(N_{\mathfrak g}(\mathfrak s)=\mathfrak g\)">\(N_{\mathfrak g}(\mathfrak s)=\mathfrak g\)</span>.</p>
+<p><strong>Example 2.2 (a central bracket).</strong> For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, on a basis <span class="math" data-tex="\(p_1,\ldots,p_m,q_1,\ldots,q_m,z\)">\(p_1,\ldots,p_m,q_1,\ldots,q_m,z\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+[p_i,q_j]=\delta_{ij}z
+\]">\[
+[p_i,q_j]=\delta_{ij}z
+\]</span>
+<p>and set all other basis brackets to zero, extending by alternation. Every bracket is central, so every double bracket vanishes and Jacobi holds. This is the <strong>Heisenberg algebra</strong> <span class="math" data-tex="\(\mathfrak H_{2m+1}\)">\(\mathfrak H_{2m+1}\)</span>. For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, its centre and derived algebra are both <span class="math" data-tex="\(kz\)">\(kz\)</span>: bracketing a general vector with each <span class="math" data-tex="\(p_j,q_j\)">\(p_j,q_j\)</span> forces all its <span class="math" data-tex="\(p\)">\(p\)</span>- and <span class="math" data-tex="\(q\)">\(q\)</span>-coefficients to vanish if it is central. The quotient by <span class="math" data-tex="\(kz\)">\(kz\)</span> is abelian of dimension <span class="math" data-tex="\(2m\)">\(2m\)</span>.</p>
+<p>One matrix realization sends <span class="math" data-tex="\(p_i\)">\(p_i\)</span> to <span class="math" data-tex="\(E_{1,i+1}\)">\(E_{1,i+1}\)</span>, <span class="math" data-tex="\(q_i\)">\(q_i\)</span> to <span class="math" data-tex="\(E_{i+1,m+2}\)">\(E_{i+1,m+2}\)</span>, and <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(E_{1,m+2}\)">\(E_{1,m+2}\)</span>. Equation (1.2) checks every bracket and the distinct matrix entries prove injectivity.</p>
+<span id="section-3"></span><h2 id="3-product-rules-become-representations">3. Product rules become representations</h2>
+<p>For any vector space <span class="math" data-tex="\(A\)">\(A\)</span> with a bilinear multiplication, a <strong>derivation</strong> is a linear map <span class="math" data-tex="\(D:A\to A\)">\(D:A\to A\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+D(ab)=D(a)b+aD(b).
+\]">\[
+D(ab)=D(a)b+aD(b).
+\]</span>
+<p>No associativity is needed for this definition. In a Lie algebra the multiplication is the bracket.</p>
+<p id="proposition-3-1"><strong>Proposition 3.1 (derivations and the adjoint action).</strong> Derivations form a Lie subalgebra <span class="math" data-tex="\(\operatorname{Der}_k(A)\subseteq\mathfrak{gl}(A)\)">\(\operatorname{Der}_k(A)\subseteq\mathfrak{gl}(A)\)</span>. For a Lie algebra,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ad}:\mathfrak g\longrightarrow\operatorname{Der}_k(\mathfrak g),\qquad
+\operatorname{ad}(x)(y)=[x,y]
+\]">\[
+\operatorname{ad}:\mathfrak g\longrightarrow\operatorname{Der}_k(\mathfrak g),\qquad
+\operatorname{ad}(x)(y)=[x,y]
+\]</span>
+<p>is a homomorphism with kernel <span class="math" data-tex="\(Z(\mathfrak g)\)">\(Z(\mathfrak g)\)</span>. Its image, the <strong>inner derivations</strong>, is an ideal in <span class="math" data-tex="\(\operatorname{Der}_k(\mathfrak g)\)">\(\operatorname{Der}_k(\mathfrak g)\)</span>.</p>
+<p><strong>Proof.</strong> Linear combinations preserve the product rule. Expanding <span class="math" data-tex="\(DE(ab)-ED(ab)\)">\(DE(ab)-ED(ab)\)</span>, the terms <span class="math" data-tex="\(E(a)D(b)\)">\(E(a)D(b)\)</span> and <span class="math" data-tex="\(D(a)E(b)\)">\(D(a)E(b)\)</span> cancel, leaving</p>
+<span class="math math-display" data-tex="\[
+[D,E](ab)=[D,E](a)b+a[D,E](b).
+\]">\[
+[D,E](ab)=[D,E](a)b+a[D,E](b).
+\]</span>
+<p>Jacobi is inherited from <span class="math" data-tex="\(\mathfrak{gl}(A)\)">\(\mathfrak{gl}(A)\)</span>. Equation (1.1) says that every <span class="math" data-tex="\(\operatorname{ad}(x)\)">\(\operatorname{ad}(x)\)</span> is a derivation. On <span class="math" data-tex="\(z\)">\(z\)</span>, Jacobi gives</p>
+<span class="math math-display" data-tex="\[
+[\operatorname{ad}(x),\operatorname{ad}(y)]z
+=[x,[y,z]]-[y,[x,z]]=[[x,y],z].
+\]">\[
+[\operatorname{ad}(x),\operatorname{ad}(y)]z
+=[x,[y,z]]-[y,[x,z]]=[[x,y],z].
+\]</span>
+<p>The kernel assertion is exactly the definition of the centre. For any derivation <span class="math" data-tex="\(D\)">\(D\)</span>, its product rule gives</p>
+<span class="math math-display" data-tex="\[
+[D,\operatorname{ad}(x)](y)=D[x,y]-[x,Dy]=[Dx,y],
+\]">\[
+[D,\operatorname{ad}(x)](y)=D[x,y]-[x,Dy]=[Dx,y],
+\]</span>
+<p>which proves the ideal assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an associative algebra, the maps <span class="math" data-tex="\(a\mapsto ba-ab\)">\(a\mapsto ba-ab\)</span> are derivations, by a direct expansion of <span class="math" data-tex="\([b,ac]\)">\([b,ac]\)</span>. Not every derivation has this form. On <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span>, differentiation is nonzero, while all such commutator maps are zero. In fact every derivation of <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span> is <span class="math" data-tex="\(r(t)\partial_t\)">\(r(t)\partial_t\)</span>: the rule for <span class="math" data-tex="\(1\cdot1\)">\(1\cdot1\)</span> gives <span class="math" data-tex="\(D(1)=0\)">\(D(1)=0\)</span>, and its value <span class="math" data-tex="\(r=D(t)\)">\(r=D(t)\)</span> determines <span class="math" data-tex="\(D(t^j)=jt^{j-1}r\)">\(D(t^j)=jt^{j-1}r\)</span> by induction. Conversely, the polynomial product rule makes every <span class="math" data-tex="\(r(t)\partial_t\)">\(r(t)\partial_t\)</span> a derivation. Consequently</p>
+<span class="math math-display" data-tex="\[
+[r\partial_t,s\partial_t]=(rs'-sr')\partial_t.
+\]">\[
+[r\partial_t,s\partial_t]=(rs'-sr')\partial_t.
+\]</span>
+<p>A <strong>representation</strong> of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> is a Lie homomorphism <span class="math" data-tex="\(\rho:\mathfrak g\to\mathfrak{gl}(V)\)">\(\rho:\mathfrak g\to\mathfrak{gl}(V)\)</span>. Equivalently, <span class="math" data-tex="\(V\)">\(V\)</span> is a <strong><span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-module</strong> with a bilinear action <span class="math" data-tex="\(xv=\rho(x)v\)">\(xv=\rho(x)v\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+[x,y]v=x(yv)-y(xv). \tag{3.1}
+\]">\[
+[x,y]v=x(yv)-y(xv). \tag{3.1}
+\]</span>
+<p>A submodule is an invariant subspace; it gives a quotient module by <span class="math" data-tex="\(x(v+W)=xv+W\)">\(x(v+W)=xv+W\)</span>. A module homomorphism <span class="math" data-tex="\(T:V\to W\)">\(T:V\to W\)</span> obeys <span class="math" data-tex="\(T(xv)=xT(v)\)">\(T(xv)=xT(v)\)</span>. A representation is <strong>faithful</strong> when its kernel is zero. Proposition 3.1 makes <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> its own adjoint module; this representation is faithful exactly when the centre vanishes.</p>
+<p>For example, in the ordered basis <span class="math" data-tex="\(e,h,f\)">\(e,h,f\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ad}(h)=\operatorname{diag}(2,0,-2),\quad
+\operatorname{ad}(e)=\begin{pmatrix}0&amp;-2&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix},\quad
+\operatorname{ad}(f)=\begin{pmatrix}0&amp;0&amp;0\\-1&amp;0&amp;0\\0&amp;2&amp;0\end{pmatrix}.
+\]">\[
+\operatorname{ad}(h)=\operatorname{diag}(2,0,-2),\quad
+\operatorname{ad}(e)=\begin{pmatrix}0&amp;-2&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix},\quad
+\operatorname{ad}(f)=\begin{pmatrix}0&amp;0&amp;0\\-1&amp;0&amp;0\\0&amp;2&amp;0\end{pmatrix}.
+\]</span>
+<p>These differ from the two-by-two matrices of the defining representation: a representation includes its space, not just the name of the acting algebra.</p>
+<p>The tensor product <span class="math" data-tex="\(V\otimes W\)">\(V\otimes W\)</span> is generated by symbols <span class="math" data-tex="\(v\otimes w\)">\(v\otimes w\)</span> subject to bilinearity. More precisely, take the free vector space on the pairs <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> and quotient by the relations expressing linearity in each argument. A bilinear map on <span class="math" data-tex="\(V\times W\)">\(V\times W\)</span> kills these relations, so it extends uniquely to a linear map on the quotient. Iterating constructs higher tensor products. For modules <span class="math" data-tex="\(V,W\)">\(V,W\)</span>, the following constructions give further modules:</p>
+<table>
+<thead>
+<tr>
+<th>Space</th>
+<th>Action of <span class="math" data-tex="\(x\)">\(x\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(V\oplus W\)">\(V\oplus W\)</span></td>
+<td><span class="math" data-tex="\(x(v,w)=(xv,xw)\)">\(x(v,w)=(xv,xw)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(V^*=\operatorname{Hom}_k(V,k)\)">\(V^*=\operatorname{Hom}_k(V,k)\)</span></td>
+<td><span class="math" data-tex="\((x\lambda)(v)=-\lambda(xv)\)">\((x\lambda)(v)=-\lambda(xv)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(V\otimes W\)">\(V\otimes W\)</span></td>
+<td><span class="math" data-tex="\(x(v\otimes w)=xv\otimes w+v\otimes xw\)">\(x(v\otimes w)=xv\otimes w+v\otimes xw\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\operatorname{Hom}_k(V,W)\)">\(\operatorname{Hom}_k(V,W)\)</span></td>
+<td><span class="math" data-tex="\((xT)(v)=x(Tv)-T(xv)\)">\((xT)(v)=x(Tv)-T(xv)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p id="proposition-3-2"><strong>Proposition 3.2.</strong> These actions satisfy (3.1), without a finite-dimensional restriction.</p>
+<p><strong>Proof.</strong> The direct-sum assertion follows componentwise. For the dual,</p>
+<span class="math math-display" data-tex="\[
+(x(y\lambda)-y(x\lambda))(v)
+=\lambda(y(xv)-x(yv))=-\lambda([x,y]v).
+\]">\[
+(x(y\lambda)-y(x\lambda))(v)
+=\lambda(y(xv)-x(yv))=-\lambda([x,y]v).
+\]</span>
+<p>On a tensor product, write the operator as <span class="math" data-tex="\(\rho_V(x)\otimes1+1\otimes\rho_W(x)\)">\(\rho_V(x)\otimes1+1\otimes\rho_W(x)\)</span>. Operators on different factors commute, so its commutator with the corresponding operator for <span class="math" data-tex="\(y\)">\(y\)</span> is the operator for <span class="math" data-tex="\([x,y]\)">\([x,y]\)</span>. Bilinearity makes the action well-defined. On <span class="math" data-tex="\(\operatorname{Hom}(V,W)\)">\(\operatorname{Hom}(V,W)\)</span>, left composition by <span class="math" data-tex="\(\rho_W(x)\)">\(\rho_W(x)\)</span> commutes with right composition by <span class="math" data-tex="\(\rho_V(y)\)">\(\rho_V(y)\)</span>. Expanding the commutator leaves <span class="math" data-tex="\(\rho_W([x,y])T-T\rho_V([x,y])\)">\(\rho_W([x,y])T-T\rho_V([x,y])\)</span>, as required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus the invariant elements of <span class="math" data-tex="\(\operatorname{Hom}(V,W)\)">\(\operatorname{Hom}(V,W)\)</span> are exactly the module homomorphisms. If <span class="math" data-tex="\(V\)">\(V\)</span> is finite-dimensional, the linear isomorphism <span class="math" data-tex="\(W\otimes V^*\to\operatorname{Hom}(V,W)\)">\(W\otimes V^*\to\operatorname{Hom}(V,W)\)</span>, <span class="math" data-tex="\(w\otimes\lambda\mapsto(v\mapsto\lambda(v)w)\)">\(w\otimes\lambda\mapsto(v\mapsto\lambda(v)w)\)</span>, respects these actions; a basis and its dual show bijectivity. Without finite-dimensionality this need not be onto: its image consists of finite-rank maps, whereas the identity of an infinite-dimensional space has infinite rank.</p>
+<p>For the defining <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>-module with basis <span class="math" data-tex="\(v_1,v_2\)">\(v_1,v_2\)</span>, <span class="math" data-tex="\(ev_2=v_1\)">\(ev_2=v_1\)</span> and <span class="math" data-tex="\(ev_1=0\)">\(ev_1=0\)</span>. If <span class="math" data-tex="\(\xi_1,\xi_2\)">\(\xi_1,\xi_2\)</span> is its dual basis, <span class="math" data-tex="\(e\xi_1=-\xi_2\)">\(e\xi_1=-\xi_2\)</span>. On the tensor square,</p>
+<span class="math math-display" data-tex="\[
+e(v_2\otimes v_2)=v_1\otimes v_2+v_2\otimes v_1.
+\]">\[
+e(v_2\otimes v_2)=v_1\otimes v_2+v_2\otimes v_1.
+\]</span>
+<p>The signs and the two terms are consequences of the action formulas, not choices to be made separately.</p>
+<span id="section-4"></span><h2 id="4-matrices-preserving-forms">4. Matrices preserving forms</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be an invertible <span class="math" data-tex="\(N\times N\)">\(N\times N\)</span> matrix. The infinitesimal form-preserving condition is</p>
+<span class="math math-display" data-tex="\[
+X^{\mathsf T}F+FX=0. \tag{4.1}
+\]">\[
+X^{\mathsf T}F+FX=0. \tag{4.1}
+\]</span>
+<p>Indeed, for the bilinear form <span class="math" data-tex="\(B(u,v)=u^{\mathsf T}Fv\)">\(B(u,v)=u^{\mathsf T}Fv\)</span>, it is equivalent to <span class="math" data-tex="\(B(Xu,v)+B(u,Xv)=0\)">\(B(Xu,v)+B(u,Xv)=0\)</span>. If <span class="math" data-tex="\(F\)">\(F\)</span> is symmetric, its solutions form the orthogonal Lie algebra <span class="math" data-tex="\(\mathfrak{so}(F)\)">\(\mathfrak{so}(F)\)</span>; for an alternating form on <span class="math" data-tex="\(k^{2n}\)">\(k^{2n}\)</span>, they form a symplectic Lie algebra.</p>
+<p id="proposition-4-1"><strong>Proposition 4.1 (classical matrix algebras).</strong> These solution spaces are Lie subalgebras. For <span class="math" data-tex="\(n,N\ge1\)">\(n,N\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\dim\mathfrak{gl}_n=n^2,\quad
+\dim\mathfrak{sl}_n=n^2-1,\quad
+\dim\mathfrak{so}(F)=\frac{N(N-1)}2,\quad
+\dim\mathfrak{sp}_{2n}=n(2n+1).
+\]">\[
+\dim\mathfrak{gl}_n=n^2,\quad
+\dim\mathfrak{sl}_n=n^2-1,\quad
+\dim\mathfrak{so}(F)=\frac{N(N-1)}2,\quad
+\dim\mathfrak{sp}_{2n}=n(2n+1).
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> satisfy (4.1), then</p>
+<span class="math math-display" data-tex="\[
+[X,Y]^{\mathsf T}F
+=Y^{\mathsf T}X^{\mathsf T}F-X^{\mathsf T}Y^{\mathsf T}F
+=FYX-FXY=-F[X,Y].
+\]">\[
+[X,Y]^{\mathsf T}F
+=Y^{\mathsf T}X^{\mathsf T}F-X^{\mathsf T}Y^{\mathsf T}F
+=FYX-FXY=-F[X,Y].
+\]</span>
+<p>Linearity gives the other closure conditions. The <span class="math" data-tex="\(n^2\)">\(n^2\)</span> matrix units form a basis of <span class="math" data-tex="\(\mathfrak{gl}_n\)">\(\mathfrak{gl}_n\)</span>. Trace is onto <span class="math" data-tex="\(k\)">\(k\)</span>, since <span class="math" data-tex="\(\operatorname{tr}(E_{11})=1\)">\(\operatorname{tr}(E_{11})=1\)</span>, so its kernel has dimension <span class="math" data-tex="\(n^2-1\)">\(n^2-1\)</span> by rank–nullity.</p>
+<p>For symmetric <span class="math" data-tex="\(F\)">\(F\)</span>, the invertible linear map <span class="math" data-tex="\(X\mapsto FX\)">\(X\mapsto FX\)</span> identifies (4.1) with skew-symmetric matrices. Each entry strictly above the diagonal is free, the entries below are its negatives, and diagonal entries vanish because <span class="math" data-tex="\(2\ne0\)">\(2\ne0\)</span>. This gives <span class="math" data-tex="\(N(N-1)/2\)">\(N(N-1)/2\)</span>. For alternating <span class="math" data-tex="\(F=\Omega\)">\(F=\Omega\)</span>, <span class="math" data-tex="\((\Omega X)^{\mathsf T}=-X^{\mathsf T}\Omega=\Omega X\)">\((\Omega X)^{\mathsf T}=-X^{\mathsf T}\Omega=\Omega X\)</span>. Thus the solutions correspond to symmetric <span class="math" data-tex="\(2n\times2n\)">\(2n\times2n\)</span> matrices, of dimension <span class="math" data-tex="\((2n)(2n+1)/2=n(2n+1)\)">\((2n)(2n+1)/2=n(2n+1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>It is useful to see how the block equations depend on coordinates. Begin with the alternating matrix</p>
+<span class="math math-display" data-tex="\[
+J=\begin{pmatrix}0&amp;I_n\\-I_n&amp;0\end{pmatrix}.
+\]">\[
+J=\begin{pmatrix}0&amp;I_n\\-I_n&amp;0\end{pmatrix}.
+\]</span>
+<p>For <span class="math" data-tex="\(X=\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}\)">\(X=\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}\)</span>, block multiplication in <span class="math" data-tex="\(X^{\mathsf T}J+JX=0\)">\(X^{\mathsf T}J+JX=0\)</span> gives <span class="math" data-tex="\(C=C^{\mathsf T}\)">\(C=C^{\mathsf T}\)</span>, <span class="math" data-tex="\(B=B^{\mathsf T}\)">\(B=B^{\mathsf T}\)</span>, and <span class="math" data-tex="\(D=-A^{\mathsf T}\)">\(D=-A^{\mathsf T}\)</span>. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is arbitrary and <span class="math" data-tex="\(B,C\)">\(B,C\)</span> are symmetric. This gives the same dimension <span class="math" data-tex="\(n^2+2n(n+1)/2\)">\(n^2+2n(n+1)/2\)</span> as Proposition 4.1.</p>
+<p>For paired diagonal coordinates let <span class="math" data-tex="\(R_N\)">\(R_N\)</span> reverse the order of the standard basis. It satisfies <span class="math" data-tex="\(R_N^{\mathsf T}=R_N=R_N^{-1}\)">\(R_N^{\mathsf T}=R_N=R_N^{-1}\)</span>. With <span class="math" data-tex="\(P=\operatorname{diag}(I_n,R_n)\)">\(P=\operatorname{diag}(I_n,R_n)\)</span>, one has <span class="math" data-tex="\(P^{\mathsf T}JP=\begin{pmatrix}0&amp;R_n\\-R_n&amp;0\end{pmatrix}\)">\(P^{\mathsf T}JP=\begin{pmatrix}0&amp;R_n\\-R_n&amp;0\end{pmatrix}\)</span>. Accordingly we may use the models</p>
+<span class="math math-display" data-tex="\[
+\mathfrak{so}_N(k)=\mathfrak{so}(R_N),\qquad
+\Omega_{2n}=\begin{pmatrix}0&amp;R_n\\-R_n&amp;0\end{pmatrix},\qquad
+\mathfrak{sp}_{2n}(k)=\{X:X^{\mathsf T}\Omega_{2n}+\Omega_{2n}X=0\}.
+\]">\[
+\mathfrak{so}_N(k)=\mathfrak{so}(R_N),\qquad
+\Omega_{2n}=\begin{pmatrix}0&amp;R_n\\-R_n&amp;0\end{pmatrix},\qquad
+\mathfrak{sp}_{2n}(k)=\{X:X^{\mathsf T}\Omega_{2n}+\Omega_{2n}X=0\}.
+\]</span>
+<p>The signs in <span class="math" data-tex="\(\Omega_{2n}\)">\(\Omega_{2n}\)</span> make the form alternating. The change of coordinates just displayed, or direct block multiplication, gives</p>
+<span class="math math-display" data-tex="\[
+X=\begin{pmatrix}A&amp;B\\C&amp;-R_nA^{\mathsf T}R_n\end{pmatrix},\qquad
+R_nB\text{ and }R_nC\text{ symmetric}.
+\]">\[
+X=\begin{pmatrix}A&amp;B\\C&amp;-R_nA^{\mathsf T}R_n\end{pmatrix},\qquad
+R_nB\text{ and }R_nC\text{ symmetric}.
+\]</span>
+<p>For example, the upper-left block equation is <span class="math" data-tex="\(-C^{\mathsf T}R_n+R_nC=0\)">\(-C^{\mathsf T}R_n+R_nC=0\)</span>, the lower-right one is <span class="math" data-tex="\(B^{\mathsf T}R_n-R_nB=0\)">\(B^{\mathsf T}R_n-R_nB=0\)</span>, and the upper-right one is <span class="math" data-tex="\(A^{\mathsf T}R_n+R_nD=0\)">\(A^{\mathsf T}R_n+R_nD=0\)</span>. These prove all the stated conditions and their converse. The diagonal elements in either anti-diagonal model have opposite paired entries. For <span class="math" data-tex="\(\mathfrak{so}_{2r+1}\)">\(\mathfrak{so}_{2r+1}\)</span> they are</p>
+<span class="math math-display" data-tex="\[
+\operatorname{diag}(t_1,\ldots,t_r,0,-t_r,\ldots,-t_1);
+\]">\[
+\operatorname{diag}(t_1,\ldots,t_r,0,-t_r,\ldots,-t_1);
+\]</span>
+<p>for <span class="math" data-tex="\(\mathfrak{so}_{2r}\)">\(\mathfrak{so}_{2r}\)</span> and <span class="math" data-tex="\(\mathfrak{sp}_{2r}\)">\(\mathfrak{sp}_{2r}\)</span>, omit the middle zero. Denote each such diagonal subalgebra by <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span>. It is abelian and equals its Lie-algebra normalizer. To see this, choose <span class="math" data-tex="\(H\in\mathfrak d\)">\(H\in\mathfrak d\)</span> with all diagonal entries distinct, possible over an infinite field. If <span class="math" data-tex="\([X,H]\in\mathfrak d\)">\([X,H]\in\mathfrak d\)</span>, its off-diagonal entries <span class="math" data-tex="\((H_{jj}-H_{ii})X_{ij}\)">\((H_{jj}-H_{ii})X_{ij}\)</span> force <span class="math" data-tex="\(X\)">\(X\)</span> to be diagonal. This also proves that its centralizer is <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span>. A Lie algebra <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> is nilpotent if the sequence <span class="math" data-tex="\(\gamma_1=\mathfrak a,\ \gamma_{j+1}=[\mathfrak a,\gamma_j]\)">\(\gamma_1=\mathfrak a,\ \gamma_{j+1}=[\mathfrak a,\gamma_j]\)</span> reaches zero; a Cartan subalgebra is a nilpotent subalgebra equal to its normalizer. Since <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> is abelian, it is therefore a Cartan subalgebra.</p>
+<p>A change of basis <span class="math" data-tex="\(F'=P^{\mathsf T}FP\)">\(F'=P^{\mathsf T}FP\)</span> identifies the form algebras by <span class="math" data-tex="\(X\mapsto P^{-1}XP\)">\(X\mapsto P^{-1}XP\)</span>. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, all nondegenerate symmetric forms are congruent, as the symmetric-form argument in Section 5 shows. Over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, one must specify the form. The next example uses <span class="math" data-tex="\(I_3\)">\(I_3\)</span>, not <span class="math" data-tex="\(R_3\)">\(R_3\)</span>.</p>
+<p><strong>Example 4.2 (rotations and <span class="math" data-tex="\(\mathfrak{su}(2)\)">\(\mathfrak{su}(2)\)</span>).</strong> For <span class="math" data-tex="\(u=(u_1,u_2,u_3)\)">\(u=(u_1,u_2,u_3)\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+\widehat u=\begin{pmatrix}0&amp;-u_3&amp;u_2\\u_3&amp;0&amp;-u_1\\-u_2&amp;u_1&amp;0\end{pmatrix}.
+\]">\[
+\widehat u=\begin{pmatrix}0&amp;-u_3&amp;u_2\\u_3&amp;0&amp;-u_1\\-u_2&amp;u_1&amp;0\end{pmatrix}.
+\]</span>
+<p>Then <span class="math" data-tex="\(\widehat u\,v=u\times v\)">\(\widehat u\,v=u\times v\)</span>. The vector triple-product identity gives</p>
+<span class="math math-display" data-tex="\[
+[\widehat u,\widehat v]w
+=v(u\cdot w)-u(v\cdot w)=(u\times v)\times w.
+\]">\[
+[\widehat u,\widehat v]w
+=v(u\cdot w)-u(v\cdot w)=(u\times v)\times w.
+\]</span>
+<p>That identity follows by expanding the three coordinates of the cross product. Hence <span class="math" data-tex="\(u\mapsto\widehat u\)">\(u\mapsto\widehat u\)</span> is a Lie isomorphism from <span class="math" data-tex="\((\mathbb R^3,\times)\)">\((\mathbb R^3,\times)\)</span> to <span class="math" data-tex="\(\mathfrak{so}(I_3)\)">\(\mathfrak{so}(I_3)\)</span>: its entries show injectivity and every skew-symmetric matrix has this form. Jacobi for the cross product follows from this isomorphism.</p>
+<p>The real algebra <span class="math" data-tex="\(\mathfrak{su}(2)\)">\(\mathfrak{su}(2)\)</span> consists of trace-zero anti-Hermitian complex matrices. They are exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}ia&amp;b+ic\\-b+ic&amp;-ia\end{pmatrix},\qquad a,b,c\in\mathbb R.
+\]">\[
+\begin{pmatrix}ia&amp;b+ic\\-b+ic&amp;-ia\end{pmatrix},\qquad a,b,c\in\mathbb R.
+\]</span>
+<p>Conjugate transpose shows closure under commutators. In terms of (1.3), a real basis is</p>
+<span class="math math-display" data-tex="\[
+T_1=-\frac{i}{2}(e+f),\qquad T_2=\frac12(f-e),\qquad T_3=-\frac{i}{2}h.
+\]">\[
+T_1=-\frac{i}{2}(e+f),\qquad T_2=\frac12(f-e),\qquad T_3=-\frac{i}{2}h.
+\]</span>
+<p>Direct substitution gives <span class="math" data-tex="\([T_1,T_2]=T_3\)">\([T_1,T_2]=T_3\)</span>, <span class="math" data-tex="\([T_2,T_3]=T_1\)">\([T_2,T_3]=T_1\)</span>, and <span class="math" data-tex="\([T_3,T_1]=T_2\)">\([T_3,T_1]=T_2\)</span>. Thus <span class="math" data-tex="\(\mathfrak{su}(2)\simeq(\mathbb R^3,\times)\)">\(\mathfrak{su}(2)\simeq(\mathbb R^3,\times)\)</span>. The same three matrices are a complex basis of <span class="math" data-tex="\(\mathfrak{sl}_2(\mathbb C)\)">\(\mathfrak{sl}_2(\mathbb C)\)</span>, so complexifying <span class="math" data-tex="\(\mathfrak{su}(2)\)">\(\mathfrak{su}(2)\)</span> gives <span class="math" data-tex="\(\mathfrak{sl}_2(\mathbb C)\)">\(\mathfrak{sl}_2(\mathbb C)\)</span>.</p>
+<p>The upper-triangular algebra <span class="math" data-tex="\(\mathfrak b_n\)">\(\mathfrak b_n\)</span> and strictly upper-triangular algebra <span class="math" data-tex="\(\mathfrak n_n\)">\(\mathfrak n_n\)</span> have dimensions <span class="math" data-tex="\(n(n+1)/2\)">\(n(n+1)/2\)</span> and <span class="math" data-tex="\(n(n-1)/2\)">\(n(n-1)/2\)</span>. Products of upper-triangular matrices remain upper-triangular; their commutators have zero diagonal, since the diagonal of a product is the componentwise product of diagonals. Also <span class="math" data-tex="\([\mathfrak b_n,\mathfrak n_n]\subseteq\mathfrak n_n\)">\([\mathfrak b_n,\mathfrak n_n]\subseteq\mathfrak n_n\)</span>, by triangular multiplication. Thus <span class="math" data-tex="\(\mathfrak n_n\)">\(\mathfrak n_n\)</span> is an ideal in <span class="math" data-tex="\(\mathfrak b_n\)">\(\mathfrak b_n\)</span>, and the quotient is the abelian diagonal algebra.</p>
+<span id="section-5"></span><h2 id="5-how-much-structure-fits-in-three-dimensions">5. How much structure fits in three dimensions?</h2>
+<p id="theorem-5-1"><strong>Theorem 5.1 (small dimensions).</strong> Over any field, an alternating Lie algebra of dimension at most two is abelian or isomorphic to the two-dimensional algebra with basis <span class="math" data-tex="\(x,y\)">\(x,y\)</span> and <span class="math" data-tex="\([x,y]=y\)">\([x,y]=y\)</span>. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, a three-dimensional Lie algebra with <span class="math" data-tex="\([\mathfrak g,\mathfrak g]=\mathfrak g\)">\([\mathfrak g,\mathfrak g]=\mathfrak g\)</span> is isomorphic to <span class="math" data-tex="\(\mathfrak{sl}_2(\mathbb C)\)">\(\mathfrak{sl}_2(\mathbb C)\)</span>.</p>
+<p><strong>Proof in dimensions at most two.</strong> Dimensions zero and one are abelian by bilinearity and alternation. In dimension two, choose <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and write <span class="math" data-tex="\([a,b]=\alpha a+\beta b\)">\([a,b]=\alpha a+\beta b\)</span>. If this vector is zero, the algebra is abelian. Otherwise set <span class="math" data-tex="\(y=[a,b]\)">\(y=[a,b]\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+[a,y]=\beta y,\qquad [b,y]=-\alpha y.
+\]">\[
+[a,y]=\beta y,\qquad [b,y]=-\alpha y.
+\]</span>
+<p>If <span class="math" data-tex="\(\beta\ne0\)">\(\beta\ne0\)</span>, take <span class="math" data-tex="\(x=\beta^{-1}a\)">\(x=\beta^{-1}a\)</span>; otherwise take <span class="math" data-tex="\(x=-\alpha^{-1}b\)">\(x=-\alpha^{-1}b\)</span>. We obtain <span class="math" data-tex="\([x,y]=y\)">\([x,y]=y\)</span>, and <span class="math" data-tex="\(x,y\)">\(x,y\)</span> are independent since dependent vectors bracket to zero. This works also in characteristic two. Conversely, the indicated table satisfies Jacobi: its Jacobi expression is trilinear, vanishes when two arguments coincide by skew-symmetry and alternation, and every triple of basis vectors has a repetition. There is therefore exactly one nonabelian isomorphism class in dimension two. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof in dimension three.</strong> Choose a basis <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>, and form the matrix</p>
+<span class="math math-display" data-tex="\[
+M=\bigl([b,c]\ \ [c,a]\ \ [a,b]\bigr),
+\]">\[
+M=\bigl([b,c]\ \ [c,a]\ \ [a,b]\bigr),
+\]</span>
+<p>whose columns are coordinates in that basis. These three brackets span the derived algebra, so the hypothesis says that <span class="math" data-tex="\(M\)">\(M\)</span> is invertible. Writing <span class="math" data-tex="\(M=(m_{ij})\)">\(M=(m_{ij})\)</span>, the Jacobi expression on <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span> is</p>
+<span class="math math-display" data-tex="\[
+M\begin{pmatrix}m_{32}-m_{23}\\m_{13}-m_{31}\\m_{21}-m_{12}\end{pmatrix}.
+\]">\[
+M\begin{pmatrix}m_{32}-m_{23}\\m_{13}-m_{31}\\m_{21}-m_{12}\end{pmatrix}.
+\]</span>
+<p>For example, <span class="math" data-tex="\([a,[b,c]]=m_{21}[a,b]-m_{31}[c,a]\)">\([a,[b,c]]=m_{21}[a,b]-m_{31}[c,a]\)</span>; the other two terms give the displayed expression. Jacobi and invertibility force <span class="math" data-tex="\(M=M^{\mathsf T}\)">\(M=M^{\mathsf T}\)</span>.</p>
+<p>We need a short fact about complex symmetric forms. If a symmetric bilinear form <span class="math" data-tex="\(B\)">\(B\)</span> is nonzero, some <span class="math" data-tex="\(v\)">\(v\)</span> has <span class="math" data-tex="\(B(v,v)\ne0\)">\(B(v,v)\ne0\)</span>: otherwise <span class="math" data-tex="\(B(v+w,v+w)-B(v,v)-B(w,w)=2B(v,w)\)">\(B(v+w,v+w)-B(v,v)-B(w,w)=2B(v,w)\)</span> would make <span class="math" data-tex="\(B\)">\(B\)</span> zero. For a nondegenerate form, every <span class="math" data-tex="\(x\)">\(x\)</span> is the sum of <span class="math" data-tex="\(B(v,x)v/B(v,v)\)">\(B(v,x)v/B(v,v)\)</span> and a vector orthogonal to <span class="math" data-tex="\(v\)">\(v\)</span>. This splits off the line <span class="math" data-tex="\(kv\)">\(kv\)</span>. Its orthogonal complement is nondegenerate, because a vector orthogonal to both the line and its complement is orthogonal to the whole space. Repeat this argument to obtain an orthogonal basis with nonzero diagonal values. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, rescaling its vectors by square roots makes all those values <span class="math" data-tex="\(1\)">\(1\)</span>. Applied to <span class="math" data-tex="\(M\)">\(M\)</span>, this gives an invertible matrix <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(SMS^{\mathsf T}=I_3\)">\(SMS^{\mathsf T}=I_3\)</span>.</p>
+<p>To translate that fact back to brackets, let the columns of <span class="math" data-tex="\(P\)">\(P\)</span> be a new basis in old coordinates. The new bracket matrix is</p>
+<span class="math math-display" data-tex="\[
+M'=\det(P)P^{-1}MP^{-\mathsf T}. \tag{5.1}
+\]">\[
+M'=\det(P)P^{-1}MP^{-\mathsf T}. \tag{5.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(P^{-\mathsf T}=(P^{-1})^{\mathsf T}\)">\(P^{-\mathsf T}=(P^{-1})^{\mathsf T}\)</span>. Indeed, the old coordinate bracket is <span class="math" data-tex="\(M(v\times w)\)">\(M(v\times w)\)</span>, where the cross product is the alternating coordinate formula. The identity</p>
+<span class="math math-display" data-tex="\[
+(Pv)\times(Pw)=\det(P)P^{-\mathsf T}(v\times w)
+\]">\[
+(Pv)\times(Pw)=\det(P)P^{-\mathsf T}(v\times w)
+\]</span>
+<p>follows by taking its dot product with <span class="math" data-tex="\(Pz\)">\(Pz\)</span>: both sides give <span class="math" data-tex="\(\det(P)\det(v,w,z)\)">\(\det(P)\det(v,w,z)\)</span>. Multiplying by <span class="math" data-tex="\(P^{-1}\)">\(P^{-1}\)</span> proves (5.1).</p>
+<p>Take <span class="math" data-tex="\(P=S^{-1}\)">\(P=S^{-1}\)</span>. Then <span class="math" data-tex="\(M'=dI_3\)">\(M'=dI_3\)</span>, with <span class="math" data-tex="\(d=\det(P)\ne0\)">\(d=\det(P)\ne0\)</span>. Rescale all three new basis vectors by <span class="math" data-tex="\(d^{-1}\)">\(d^{-1}\)</span>. The resulting basis <span class="math" data-tex="\(u,v,w\)">\(u,v,w\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+[u,v]=w,\qquad [v,w]=u,\qquad [w,u]=v.
+\]">\[
+[u,v]=w,\qquad [v,w]=u,\qquad [w,u]=v.
+\]</span>
+<p>Finally put</p>
+<span class="math math-display" data-tex="\[
+e'=u+iv,\qquad f'=-u+iv,\qquad h'=2iw.
+\]">\[
+e'=u+iv,\qquad f'=-u+iv,\qquad h'=2iw.
+\]</span>
+<p>They are independent and direct calculation gives <span class="math" data-tex="\([h',e']=2e'\)">\([h',e']=2e'\)</span>, <span class="math" data-tex="\([h',f']=-2f'\)">\([h',f']=-2f'\)</span>, <span class="math" data-tex="\([e',f']=h'\)">\([e',f']=h'\)</span>. Sending them to <span class="math" data-tex="\(e,f,h\)">\(e,f,h\)</span> in (1.3) is the required isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The hypothesis <span class="math" data-tex="\([\mathfrak g,\mathfrak g]=\mathfrak g\)">\([\mathfrak g,\mathfrak g]=\mathfrak g\)</span>, called <strong>perfectness</strong>, matters: the three-dimensional Heisenberg algebra has only a one-dimensional derived algebra. The real three-dimensional classification associated with Bianchi is a separate classification problem; no such classification is needed for this theorem.</p>
+<span id="section-6"></span><h2 id="6-turning-brackets-into-multiplication-relations">6. Turning brackets into multiplication relations</h2>
+<p>In a representation, <span class="math" data-tex="\(x\)">\(x\)</span> acts as an operator, so products such as <span class="math" data-tex="\(xyv=x(yv)\)">\(xyv=x(yv)\)</span> have meaning. We now build one associative algebra that accounts for all such products at once.</p>
+<p>For a vector space <span class="math" data-tex="\(V\)">\(V\)</span>, its <strong>tensor algebra</strong> is</p>
+<span class="math math-display" data-tex="\[
+T(V)=\bigoplus_{r\ge0}V^{\otimes r},\qquad V^{\otimes0}=k,
+\]">\[
+T(V)=\bigoplus_{r\ge0}V^{\otimes r},\qquad V^{\otimes0}=k,
+\]</span>
+<p>with multiplication given by concatenation of tensors and unit <span class="math" data-tex="\(1\in k\)">\(1\in k\)</span>. For every linear map <span class="math" data-tex="\(\ell:V\to A\)">\(\ell:V\to A\)</span> to an associative algebra there is a unique unital algebra map</p>
+<span class="math math-display" data-tex="\[
+\widetilde\ell:T(V)\to A,\qquad
+v_1\otimes\cdots\otimes v_r\mapsto\ell(v_1)\cdots\ell(v_r).
+\]">\[
+\widetilde\ell:T(V)\to A,\qquad
+v_1\otimes\cdots\otimes v_r\mapsto\ell(v_1)\cdots\ell(v_r).
+\]</span>
+<p>The universal property of tensor products makes this well-defined; concatenation proves multiplicativity, and generation by <span class="math" data-tex="\(V\)">\(V\)</span> proves uniqueness.</p>
+<p>Let <span class="math" data-tex="\(J\)">\(J\)</span> be the two-sided ideal in <span class="math" data-tex="\(T(\mathfrak g)\)">\(T(\mathfrak g)\)</span> generated by</p>
+<span class="math math-display" data-tex="\[
+x\otimes y-y\otimes x-[x,y],\qquad x,y\in\mathfrak g,
+\]">\[
+x\otimes y-y\otimes x-[x,y],\qquad x,y\in\mathfrak g,
+\]</span>
+<p>where the bracket term lies in tensor degree one. Define the <strong>universal enveloping algebra</strong></p>
+<span class="math math-display" data-tex="\[
+U(\mathfrak g)=T(\mathfrak g)/J
+\]">\[
+U(\mathfrak g)=T(\mathfrak g)/J
+\]</span>
+<p>and write <span class="math" data-tex="\(\iota:\mathfrak g\to U(\mathfrak g)\)">\(\iota:\mathfrak g\to U(\mathfrak g)\)</span> for the natural linear map. The defining relations make <span class="math" data-tex="\(\iota\)">\(\iota\)</span> a Lie homomorphism to the commutator algebra of <span class="math" data-tex="\(U(\mathfrak g)\)">\(U(\mathfrak g)\)</span>.</p>
+<p id="proposition-6-1"><strong>Proposition 6.1 (universality and modules).</strong> For every unital associative <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, restriction gives a bijection</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{k\text{-alg}}(U(\mathfrak g),A)
+\simeq
+\operatorname{Hom}_{\mathrm{Lie}}(\mathfrak g,A_{\mathrm{comm}}).
+\]">\[
+\operatorname{Hom}_{k\text{-alg}}(U(\mathfrak g),A)
+\simeq
+\operatorname{Hom}_{\mathrm{Lie}}(\mathfrak g,A_{\mathrm{comm}}).
+\]</span>
+<p>The pair <span class="math" data-tex="\((U(\mathfrak g),\iota)\)">\((U(\mathfrak g),\iota)\)</span> is unique up to a unique isomorphism respecting <span class="math" data-tex="\(\iota\)">\(\iota\)</span>. For any fixed vector space <span class="math" data-tex="\(V\)">\(V\)</span>, its <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-module structures correspond bijectively to its unital <span class="math" data-tex="\(U(\mathfrak g)\)">\(U(\mathfrak g)\)</span>-module structures. This also identifies module homomorphisms.</p>
+<p><strong>Proof.</strong> A linear map <span class="math" data-tex="\(\ell:\mathfrak g\to A\)">\(\ell:\mathfrak g\to A\)</span> extends uniquely to <span class="math" data-tex="\(T(\mathfrak g)\)">\(T(\mathfrak g)\)</span>. This extension kills <span class="math" data-tex="\(J\)">\(J\)</span> exactly when</p>
+<span class="math math-display" data-tex="\[
+\ell(x)\ell(y)-\ell(y)\ell(x)=\ell([x,y]),
+\]">\[
+\ell(x)\ell(y)-\ell(y)\ell(x)=\ell([x,y]),
+\]</span>
+<p>which is precisely bracket preservation. Factoring through the quotient gives the claimed unique map. If another pair has this property, there are unique maps between the two pairs; each composite extends the respective structure map and therefore equals the identity. This proves uniqueness in the stated compatible sense.</p>
+<p>A representation <span class="math" data-tex="\(\rho:\mathfrak g\to\operatorname{End}(V)\)">\(\rho:\mathfrak g\to\operatorname{End}(V)\)</span> extends to <span class="math" data-tex="\(U(\mathfrak g)\)">\(U(\mathfrak g)\)</span> by the bijection, giving a unital action. Conversely, restriction of a unital associative action gives (3.1). The two operations undo each other. A linear map commuting with every <span class="math" data-tex="\(\rho(x)\)">\(\rho(x)\)</span> commutes with their products and linear combinations, hence with the whole enveloping algebra. The converse follows by restriction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof does not yet show that <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is injective. That is one consequence of the next theorem.</p>
+<p id="theorem-6-2"><strong>Theorem 6.2 (Poincaré–Birkhoff–Witt).</strong> For a Lie algebra over any field and a totally ordered basis <span class="math" data-tex="\((x_i)_{i\in I}\)">\((x_i)_{i\in I}\)</span>, the products</p>
+<span class="math math-display" data-tex="\[
+\iota(x_{i_1})\cdots\iota(x_{i_r}),\qquad
+i_1\le\cdots\le i_r,\quad r\ge0,
+\]">\[
+\iota(x_{i_1})\cdots\iota(x_{i_r}),\qquad
+i_1\le\cdots\le i_r,\quad r\ge0,
+\]</span>
+<p>form a vector-space basis of <span class="math" data-tex="\(U(\mathfrak g)\)">\(U(\mathfrak g)\)</span>. The product for <span class="math" data-tex="\(r=0\)">\(r=0\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Proof.</strong> We first justify the tensor coordinates used in the argument. For each basis vector <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, its coefficient map <span class="math" data-tex="\(c_i:\mathfrak g\to k\)">\(c_i:\mathfrak g\to k\)</span> is linear. Products of these coefficient maps define multilinear functions, and hence linear functions on each tensor power. They take value <span class="math" data-tex="\(1\)">\(1\)</span> on the selected basis tensor and <span class="math" data-tex="\(0\)">\(0\)</span> on every other basis tensor. Basis tensors span by multilinearity; applying the coefficient functions to any finite relation proves their independence. Thus finite words in the given basis form a basis of the tensor algebra, including the empty word in degree zero.</p>
+<p>Choose a basis <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> with any total order. A word means a finite sequence of basis letters, regarded as a tensor; the empty word is <span class="math" data-tex="\(1\)">\(1\)</span>. A word is ordered when its letters are nondecreasing. For a word <span class="math" data-tex="\(w=x_1\cdots x_d\)">\(w=x_1\cdots x_d\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+\operatorname{inv}(w)=\#\{(r,s):r&lt;s,\ x_r&gt;x_s\}.
+\tag{6.2a}
+\]">\[
+\operatorname{inv}(w)=\#\{(r,s):r&lt;s,\ x_r&gt;x_s\}.
+\tag{6.2a}
+\]</span>
+<p>For adjacent letters <span class="math" data-tex="\(x&gt;y\)">\(x&gt;y\)</span>, use the replacement</p>
+<span class="math math-display" data-tex="\[
+AxyB\ \rightsquigarrow\ AyxB+A[x,y]B.
+\tag{6.2b}
+\]">\[
+AxyB\ \rightsquigarrow\ AyxB+A[x,y]B.
+\tag{6.2b}
+\]</span>
+<p>A bracket is expanded in the chosen basis. This is a finite sum, even when the basis is infinite. The swapped term has the same length and one fewer inversion; every bracket term has smaller length. Consequently every new word is smaller in the lexicographic pair <span class="math" data-tex="\((d,\operatorname{inv})\)">\((d,\operatorname{inv})\)</span>. These pairs are well-founded in <span class="math" data-tex="\(\mathbb N^2\)">\(\mathbb N^2\)</span>. Recursive reduction therefore terminates, with finite branching, without requiring the basis order itself to be a well-order.</p>
+<p>We prove that the final linear combination of ordered words is independent of every choice in the reductions. The proof is simultaneous induction on <span class="math" data-tex="\((d,\operatorname{inv})\)">\((d,\operatorname{inv})\)</span>. All reduced values of smaller words are already defined; extend their normal-form map <span class="math" data-tex="\(N\)">\(N\)</span> linearly. Compare two possible first replacements in <span class="math" data-tex="\(w\)">\(w\)</span>.</p>
+<p>If they choose the same pair, they coincide. If the pairs are disjoint, performing both replacements gives the same four-term expansion: both pairs swapped, either one replaced by its bracket, and both replaced by brackets. Each term has smaller measure, so its further normal form is independent by induction. The two choices thus have the same normal form.</p>
+<p>The only overlapping case consists of three consecutive letters <span class="math" data-tex="\(x&gt;y&gt;z\)">\(x&gt;y&gt;z\)</span>. Sorting the three ordinary letters along the two paths gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L&amp;=zyx+[y,z]x+y[x,z]+[x,y]z,\\
+R&amp;=zyx+z[x,y]+[x,z]y+x[y,z].
+\end{aligned}
+\tag{6.2c}
+\]">\[
+\begin{aligned}
+L&amp;=zyx+[y,z]x+y[x,z]+[x,y]z,\\
+R&amp;=zyx+z[x,y]+[x,z]y+x[y,z].
+\end{aligned}
+\tag{6.2c}
+\]</span>
+<p>These are identities of tensor expressions produced by (6.2b), with the surrounding words <span class="math" data-tex="\(A,B\)">\(A,B\)</span> left in place. The difference has one fewer letter than <span class="math" data-tex="\(AxyzB\)">\(AxyzB\)</span>. For all expressions of that smaller length, induction already gives</p>
+<span class="math math-display" data-tex="\[
+N\bigl(A(uv-vu)B\bigr)=N\bigl(A[u,v]B\bigr),
+\qquad u,v\in\mathfrak g.
+\tag{6.2d}
+\]">\[
+N\bigl(A(uv-vu)B\bigr)=N\bigl(A[u,v]B\bigr),
+\qquad u,v\in\mathfrak g.
+\tag{6.2d}
+\]</span>
+<p>Indeed, for basis letters in decreasing order this is the invariance of the lower-length normal form under its replacement; for increasing order it follows by reversing the pair, for equal letters by alternation, and for general <span class="math" data-tex="\(u,v\)">\(u,v\)</span> by bilinearity. Applying (6.2d) to the three differences in <span class="math" data-tex="\(L-R\)">\(L-R\)</span>, their normal form is the normal form of</p>
+<span class="math math-display" data-tex="\[
+A\bigl([[y,z],x]+[y,[x,z]]+[[x,y],z]\bigr)B=0.
+\tag{6.2e}
+\]">\[
+A\bigl([[y,z],x]+[y,[x,z]]+[[x,y],z]\bigr)B=0.
+\tag{6.2e}
+\]</span>
+<p>The equality is Jacobi. Hence the two overlapping choices also agree after normal reduction. This establishes the induction: define <span class="math" data-tex="\(N(w)\)">\(N(w)\)</span> using any first replacement and the already-defined lower normal forms. The comparison proves this definition is independent of that first choice, and recursively of all subsequent choices. Ordered words are fixed by <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>We now separate the relation ideal, using the normal form just proved. For any words <span class="math" data-tex="\(A,B\)">\(A,B\)</span> and any basis letters <span class="math" data-tex="\(x,y\)">\(x,y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+N\bigl(A(xy-yx-[x,y])B\bigr)=0.
+\tag{6.2f}
+\]">\[
+N\bigl(A(xy-yx-[x,y])B\bigr)=0.
+\tag{6.2f}
+\]</span>
+<p>For <span class="math" data-tex="\(x&gt;y\)">\(x&gt;y\)</span> this is (6.2b); the other cases follow as in (6.2d). Bilinearity gives it for all Lie elements. These contextual relations span the ideal <span class="math" data-tex="\(J\)">\(J\)</span>, so <span class="math" data-tex="\(N(J)=0\)">\(N(J)=0\)</span>. Conversely, each replacement changes a tensor by an element of <span class="math" data-tex="\(J\)">\(J\)</span>, so <span class="math" data-tex="\(t-N(t)\in J\)">\(t-N(t)\in J\)</span> for every tensor <span class="math" data-tex="\(t\)">\(t\)</span>. If <span class="math" data-tex="\(N(t)=0\)">\(N(t)=0\)</span>, then <span class="math" data-tex="\(t\in J\)">\(t\in J\)</span>. Thus <span class="math" data-tex="\(\ker N=J\)">\(\ker N=J\)</span>, and the tensor algebra is the direct vector-space sum of <span class="math" data-tex="\(J\)">\(J\)</span> and the span of the ordered words.</p>
+<p>Since <span class="math" data-tex="\(N\)">\(N\)</span> fixes every ordered word and has kernel <span class="math" data-tex="\(J\)">\(J\)</span>, their images form a basis of <span class="math" data-tex="\(T(\mathfrak g)/J=U(\mathfrak g)\)">\(T(\mathfrak g)/J=U(\mathfrak g)\)</span>. This proves the theorem in every characteristic and in arbitrary dimension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument is also developed, with its further consequences, in <a href="../../../RT-LIE/RT-LIE-13.html#theorem-2-1">Universal enveloping algebras and PBW</a>. For a freely accessible human treatment, see <a href="https://www.jmilne.org/math/Books/iAG2022.pdf">Milne's corrected author edition of <em>Algebraic Groups</em></a>.</p>
+<p>In particular, the length-one products are independent, so <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is injective. For a finite basis <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span>, the basis consists of <span class="math" data-tex="\(x_1^{a_1}\cdots x_n^{a_n}\)">\(x_1^{a_1}\cdots x_n^{a_n}\)</span> with <span class="math" data-tex="\(a_j\ge0\)">\(a_j\ge0\)</span>, after identifying <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> with its image. These are vector-space coordinates, not an assertion that the algebra is commutative.</p>
+<p>The filtration <span class="math" data-tex="\(F_rU\)">\(F_rU\)</span> by products of length at most <span class="math" data-tex="\(r\)">\(r\)</span>, with <span class="math" data-tex="\(F_{-1}U=0\)">\(F_{-1}U=0\)</span>, has associated graded algebra <span class="math" data-tex="\(\bigoplus F_rU/F_{r-1}U\)">\(\bigoplus F_rU/F_{r-1}U\)</span>. The commutator relation has lower degree than <span class="math" data-tex="\(xy\)">\(xy\)</span>, so degree-one symbols commute. There is consequently a canonical surjection from the symmetric algebra <span class="math" data-tex="\(S(\mathfrak g)\)">\(S(\mathfrak g)\)</span> to this graded algebra. Swapping adjacent out-of-order generators by <span class="math" data-tex="\(xy=yx+[x,y]\)">\(xy=yx+[x,y]\)</span>, induction on length and then the number of inversions shows that ordered monomials of length at most <span class="math" data-tex="\(r\)">\(r\)</span> span <span class="math" data-tex="\(F_rU\)">\(F_rU\)</span>. PBW makes them independent. Thus the graded map is an isomorphism: ordered monomials of length exactly <span class="math" data-tex="\(r\)">\(r\)</span> give bases on both sides. Here <span class="math" data-tex="\(S(V)\)">\(S(V)\)</span> means the quotient of <span class="math" data-tex="\(T(V)\)">\(T(V)\)</span> by <span class="math" data-tex="\(v\otimes w-w\otimes v\)">\(v\otimes w-w\otimes v\)</span>. Given a basis of <span class="math" data-tex="\(V\)">\(V\)</span>, maps sending those basis vectors to independent polynomial variables, and those variables back to the basis vectors in <span class="math" data-tex="\(S(V)\)">\(S(V)\)</span>, are inverse algebra maps. Its basis is therefore the finite commutative monomials in those variables.</p>
+<p><strong>Example 6.3 (two presentations).</strong> For an abelian algebra <span class="math" data-tex="\(k^n\)">\(k^n\)</span>, the defining ideal is exactly the symmetric-algebra ideal, so <span class="math" data-tex="\(U(k^n)=S(k^n)=k[t_1,\ldots,t_n]\)">\(U(k^n)=S(k^n)=k[t_1,\ldots,t_n]\)</span>. For <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>, it is generated by <span class="math" data-tex="\(e,h,f\)">\(e,h,f\)</span> with relations</p>
+<span class="math math-display" data-tex="\[
+he-eh=2e,\qquad hf-fh=-2f,\qquad ef-fe=h.
+\]">\[
+he-eh=2e,\qquad hf-fh=-2f,\qquad ef-fe=h.
+\]</span>
+<p>Bilinearity shows that the relations on a basis generate all defining relations. For the order <span class="math" data-tex="\(f&lt;h&lt;e\)">\(f&lt;h&lt;e\)</span>, PBW gives basis <span class="math" data-tex="\(f^ah^be^c\)">\(f^ah^be^c\)</span>. For instance <span class="math" data-tex="\(ef=fe+h\)">\(ef=fe+h\)</span> rewrites a product but does not make it symmetric.</p>
+<p><strong>Example 6.4 (canonical commutation).</strong> In <span class="math" data-tex="\(U(\mathfrak H_{2m+1})\)">\(U(\mathfrak H_{2m+1})\)</span>, <span class="math" data-tex="\(p_iq_j-q_jp_i=\delta_{ij}z\)">\(p_iq_j-q_jp_i=\delta_{ij}z\)</span>, with <span class="math" data-tex="\(z\)">\(z\)</span> central. The associative quotient by <span class="math" data-tex="\(z-1\)">\(z-1\)</span> therefore has</p>
+<span class="math math-display" data-tex="\[
+p_iq_j-q_jp_i=\delta_{ij}1.
+\]">\[
+p_iq_j-q_jp_i=\delta_{ij}1.
+\]</span>
+<p>It acts nontrivially on <span class="math" data-tex="\(k[t_1,\ldots,t_m]\)">\(k[t_1,\ldots,t_m]\)</span> by <span class="math" data-tex="\(p_i=\partial_{t_i}\)">\(p_i=\partial_{t_i}\)</span>, <span class="math" data-tex="\(q_i=t_i\)">\(q_i=t_i\)</span>, and <span class="math" data-tex="\(z=1\)">\(z=1\)</span>: applying the product rule to a polynomial verifies every relation. This is an associative quotient, not a Lie quotient setting a vector <span class="math" data-tex="\(z\)">\(z\)</span> equal to a scalar. In characteristic zero it has no nonzero finite-dimensional unital module: taking traces of <span class="math" data-tex="\([p_1,q_1]=1\)">\([p_1,q_1]=1\)</span> would give <span class="math" data-tex="\(0=\dim V\)">\(0=\dim V\)</span> in <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<span id="section-7"></span><h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Verify Jacobi in <span class="math" data-tex="\(\mathfrak{gl}(V)\)">\(\mathfrak{gl}(V)\)</span> by expansion, and verify that the solutions of <span class="math" data-tex="\(X^{\mathsf T}F+FX=0\)">\(X^{\mathsf T}F+FX=0\)</span> are closed under brackets. Apply the latter to the orthogonal and symplectic forms above.</p>
+<p><strong>Solution.</strong> Expand the three terms as</p>
+<span class="math math-display" data-tex="\[
+XYZ-XZY-YZX+ZYX,\quad
+YZX-YXZ-ZXY+XZY,\quad
+ZXY-ZYX-XYZ+YXZ.
+\]">\[
+XYZ-XZY-YZX+ZYX,\quad
+YZX-YXZ-ZXY+XZY,\quad
+ZXY-ZYX-XYZ+YXZ.
+\]</span>
+<p>Every term cancels. For the form condition, transpose the commutator to get <span class="math" data-tex="\(Y^{\mathsf T}X^{\mathsf T}-X^{\mathsf T}Y^{\mathsf T}\)">\(Y^{\mathsf T}X^{\mathsf T}-X^{\mathsf T}Y^{\mathsf T}\)</span>. Multiplication by <span class="math" data-tex="\(F\)">\(F\)</span>, followed by <span class="math" data-tex="\(X^{\mathsf T}F=-FX\)">\(X^{\mathsf T}F=-FX\)</span> and <span class="math" data-tex="\(Y^{\mathsf T}F=-FY\)">\(Y^{\mathsf T}F=-FY\)</span>, gives <span class="math" data-tex="\(-F[X,Y]\)">\(-F[X,Y]\)</span>. Thus the bracket is a solution. The solution space is linear, and alternation and Jacobi are inherited from <span class="math" data-tex="\(\mathfrak{gl}(V)\)">\(\mathfrak{gl}(V)\)</span>. Both choices of <span class="math" data-tex="\(F\)">\(F\)</span> qualify; this closure argument itself does not require a particular symmetry of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Exercise 7.2 (medium).</strong> Over an arbitrary field, classify all alternating Lie brackets on a two-dimensional space up to isomorphism. Include characteristic two and verify existence of the nonabelian case.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\([a,b]=\alpha a+\beta b=y\)">\([a,b]=\alpha a+\beta b=y\)</span>. If <span class="math" data-tex="\(\alpha=\beta=0\)">\(\alpha=\beta=0\)</span>, the bracket is zero. Otherwise <span class="math" data-tex="\([a,y]=\beta y\)">\([a,y]=\beta y\)</span> and <span class="math" data-tex="\([b,y]=-\alpha y\)">\([b,y]=-\alpha y\)</span>. Choose <span class="math" data-tex="\(x=\beta^{-1}a\)">\(x=\beta^{-1}a\)</span> when <span class="math" data-tex="\(\beta\ne0\)">\(\beta\ne0\)</span>, and <span class="math" data-tex="\(x=-\alpha^{-1}b\)">\(x=-\alpha^{-1}b\)</span> otherwise. Then <span class="math" data-tex="\([x,y]=y\)">\([x,y]=y\)</span>; these vectors are independent since their bracket is nonzero. The table on <span class="math" data-tex="\(x,y\)">\(x,y\)</span> determines every bracket. Its Jacobi expression vanishes on triples with repeated basis vectors: for instance, <span class="math" data-tex="\(J(x,x,y)=[x,[x,y]]+[x,[y,x]]=0\)">\(J(x,x,y)=[x,[x,y]]+[x,[y,x]]=0\)</span>, with the remaining term zero. Trilinearity covers all triples. This cancellation remains valid in characteristic two, where the two terms are equal but sum to zero. The table is alternating by construction. The abelian and nonabelian cases cannot be isomorphic because their derived algebras have dimensions zero and one.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Let a complex three-dimensional Lie algebra equal its derived algebra. Starting with the three columns <span class="math" data-tex="\([b,c],[c,a],[a,b]\)">\([b,c],[c,a],[a,b]\)</span>, produce a basis satisfying (1.3). Account for the determinant in the basis change.</p>
+<p><strong>Solution.</strong> The column matrix <span class="math" data-tex="\(M\)">\(M\)</span> is invertible because the columns span the algebra. Jacobi gives <span class="math" data-tex="\(M(m_{32}-m_{23},m_{13}-m_{31},m_{21}-m_{12})^{\mathsf T}=0\)">\(M(m_{32}-m_{23},m_{13}-m_{31},m_{21}-m_{12})^{\mathsf T}=0\)</span>, hence symmetry. Orthogonal splitting for the nondegenerate symmetric form and rescaling by complex square roots give <span class="math" data-tex="\(SMS^{\mathsf T}=I\)">\(SMS^{\mathsf T}=I\)</span>. For a basis matrix <span class="math" data-tex="\(P\)">\(P\)</span>, the coordinate cross-product identity proves <span class="math" data-tex="\(M'=\det(P)P^{-1}MP^{-\mathsf T}\)">\(M'=\det(P)P^{-1}MP^{-\mathsf T}\)</span>. With <span class="math" data-tex="\(P=S^{-1}\)">\(P=S^{-1}\)</span> this is <span class="math" data-tex="\(dI\)">\(dI\)</span>, where <span class="math" data-tex="\(d=\det P\)">\(d=\det P\)</span>. Multiplying every basis vector by <span class="math" data-tex="\(d^{-1}\)">\(d^{-1}\)</span> multiplies its bracket coefficients by <span class="math" data-tex="\(d^{-1}\)">\(d^{-1}\)</span>, so the new table is <span class="math" data-tex="\([u,v]=w,[v,w]=u,[w,u]=v\)">\([u,v]=w,[v,w]=u,[w,u]=v\)</span>. Now <span class="math" data-tex="\(e'=u+iv,f'=-u+iv,h'=2iw\)">\(e'=u+iv,f'=-u+iv,h'=2iw\)</span> form a basis. Calculation gives <span class="math" data-tex="\([w,u+iv]=-i(u+iv)\)">\([w,u+iv]=-i(u+iv)\)</span>, <span class="math" data-tex="\([w,-u+iv]=i(-u+iv)\)">\([w,-u+iv]=i(-u+iv)\)</span>, and <span class="math" data-tex="\([u+iv,-u+iv]=2iw\)">\([u+iv,-u+iv]=2iw\)</span>. These are exactly the three relations (1.3), and the corresponding basis map is the required isomorphism.</p>
+<p><strong>Exercise 7.4 (hard).</strong> Compute all derivations of <span class="math" data-tex="\(\mathfrak{sl}_2(\mathbb C)\)">\(\mathfrak{sl}_2(\mathbb C)\)</span> directly, and show that each is inner. Do not use a cohomology theorem.</p>
+<p><strong>Solution.</strong> Write</p>
+<span class="math math-display" data-tex="\[
+D(h)=ae+bh+cf,\quad D(e)=de+qh+rf,\quad D(f)=se+th+uf.
+\]">\[
+D(h)=ae+bh+cf,\quad D(e)=de+qh+rf,\quad D(f)=se+th+uf.
+\]</span>
+<p>Applying the product rule to <span class="math" data-tex="\([h,e]=2e\)">\([h,e]=2e\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+2de+2qh+2rf=2be-ch+2de-2rf.
+\]">\[
+2de+2qh+2rf=2be-ch+2de-2rf.
+\]</span>
+<p>Thus <span class="math" data-tex="\(b=0,q=-c/2,r=0\)">\(b=0,q=-c/2,r=0\)</span>. Applying it to <span class="math" data-tex="\([h,f]=-2f\)">\([h,f]=-2f\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+-2se-2th-2uf=ah+2se-2uf,
+\]">\[
+-2se-2th-2uf=ah+2se-2uf,
+\]</span>
+<p>so <span class="math" data-tex="\(s=0,t=-a/2\)">\(s=0,t=-a/2\)</span>. Finally the rule for <span class="math" data-tex="\([e,f]=h\)">\([e,f]=h\)</span> gives <span class="math" data-tex="\(d+u=0\)">\(d+u=0\)</span>. Every derivation must therefore have</p>
+<span class="math math-display" data-tex="\[
+D(h)=ae+cf,\qquad D(e)=de-\frac c2h,\qquad
+D(f)=-\frac a2h-df.
+\]">\[
+D(h)=ae+cf,\qquad D(e)=de-\frac c2h,\qquad
+D(f)=-\frac a2h-df.
+\]</span>
+<p>Set <span class="math" data-tex="\(z=-\frac a2e+\frac d2h+\frac c2f\)">\(z=-\frac a2e+\frac d2h+\frac c2f\)</span>. Its brackets with <span class="math" data-tex="\(h,e,f\)">\(h,e,f\)</span> are exactly these values, so <span class="math" data-tex="\(D=\operatorname{ad}(z)\)">\(D=\operatorname{ad}(z)\)</span>. Conversely Proposition 3.1 proves that every such map is a derivation. A vector commuting with <span class="math" data-tex="\(h\)">\(h\)</span> is a multiple of <span class="math" data-tex="\(h\)">\(h\)</span>, and commuting also with <span class="math" data-tex="\(e\)">\(e\)</span> forces that multiple to vanish. Hence <span class="math" data-tex="\(Z(\mathfrak{sl}_2)=0\)">\(Z(\mathfrak{sl}_2)=0\)</span>, and <span class="math" data-tex="\(z\)">\(z\)</span> is unique.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Theorem 6.2 includes the full Poincaré–Birkhoff–Witt proof for arbitrary dimension and characteristic, followed by its injectivity and associated-graded consequences. Later applications are developed in <a href="../../../RT-LIE/RT-LIE-13.html#theorem-2-1">Universal enveloping algebras and PBW</a>.</p>
+<p>Finite-basis existence and extension are proved in the linked programme component. Lemmas 0.1–0.3 prove rank–nullity, quotient-algebra factorization and complex square roots here. The real scalar system is assumed to be an ordered field satisfying the least-upper-bound axiom. Tensor products and the tensor-algebra extension property are constructed above. <span class="unlinked">Determinants and changes of basis, Theorems 2–4</span>, proves determinant multilinearity, multiplication and matrix invertibility; <span class="unlinked">Proposition 7</span> proves the coordinate rule in (5.1). Those determinant identities hold over every commutative ring, so they apply over all the fields used here. For arbitrary-dimensional PBW we start with a specified totally ordered basis: this is not a proof that every vector space has such a basis without a choice principle.</p>
+<p>The connections with local groups are developed in the lessons <em>The second fundamental theorem and the group of parameters</em>, <em>The third fundamental theorem</em>, and <em>The adjoint group, composition and isomorphism</em>. Tangent spaces, Lie algebras of group schemes, and infinitesimal extensions belong to <em>Lie algebras and infinitesimal theory</em>. None of their group-existence or smoothness theorems is needed here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne, Lie algebras]</strong> J. S. Milne, <em>Lie Algebras, Algebraic Groups, and Lie Groups</em>, version 2.00, 2013, Chapter I §1. <a href="https://www.jmilne.org/math/CourseNotes/LAG.pdf">Author’s notes</a>.</li>
+<li><strong>[Judson]</strong> T. W. Judson, <em>Abstract Algebra: Theory and Applications</em>, 2026, §16.3, “Ring Homomorphisms and Ideals.” <a href="https://judsonbooks.org/aata-files/aata-html/rings-section-homomorphisms.html">Author’s reader</a>.</li>
+<li><strong>[Milne, Algebraic groups]</strong> J. S. Milne, <em>Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field</em>, corrected edition, 2022. <a href="https://www.jmilne.org/math/Books/iAG2022.pdf">Author’s edition</a>. Its enveloping-algebra treatment accompanies the complete PBW argument in Section 6.</li>
+</ul>
+</article><nav class="lesson-nav"><a href="../../../RT-LIE/index.html">Course contents</a><a download="" href="src/RT-LIE-01.md">Editable source</a><a href="../../../RT-LIE/RT-LIE-02.html">Next lesson →</a></nav></main></body></html>

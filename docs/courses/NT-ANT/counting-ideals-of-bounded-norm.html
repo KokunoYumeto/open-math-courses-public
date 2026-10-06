@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Counting ideals of bounded norm · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="counting-ideals-of-bounded-norm">Counting ideals of bounded norm</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>The geometry of numbers does more than prove that the class group is finite. Once units identify the repeated generators of a principal ideal, lattice counting gives a common density for every ideal class. The density contains the regulator because a fundamental domain for the logarithms of units controls the size of the region being counted.</p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> have degree <span class="math" data-tex="\(n=r_1+2r_2\)">\(n=r_1+2r_2\)</span>, absolute discriminant <span class="math" data-tex="\(|d_K|\)">\(|d_K|\)</span>, class number <span class="math" data-tex="\(h_K\)">\(h_K\)</span>, and <span class="math" data-tex="\(w_K=|\mu_K|\)">\(w_K=|\mu_K|\)</span> roots of unity. Put
+<span class="math math-display" data-tex="\[
+V=K\otimes_{\mathbf Q}\mathbf R
+=\mathbf R^{r_1}\times\mathbf C^{r_2},\qquad
+m=r_1+r_2,\quad q=m-1.
+\tag{1}
+\]">\[
+V=K\otimes_{\mathbf Q}\mathbf R
+=\mathbf R^{r_1}\times\mathbf C^{r_2},\qquad
+m=r_1+r_2,\quad q=m-1.
+\tag{1}
+\]</span>
+We use ordinary coordinate Lebesgue measure on <span class="math" data-tex="\(V\)">\(V\)</span>, with each complex coordinate contributing its real and imaginary parts. For a nonzero integral ideal <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span>, <a href="lattices-minkowskis-theorem-and-the-minkowski-embedding.html"><em>Lattices, Minkowski's theorem and the Minkowski embedding</em></a> gives
+<span class="math math-display" data-tex="\[
+\operatorname{covol}(\mathfrak c)
+=2^{-r_2}\sqrt{|d_K|}\,N(\mathfrak c).
+\tag{2}
+\]">\[
+\operatorname{covol}(\mathfrak c)
+=2^{-r_2}\sqrt{|d_K|}\,N(\mathfrak c).
+\tag{2}
+\]</span>
+The finite class group comes from <a href="finiteness-of-the-class-number.html"><em>Finiteness of the class number</em></a>. The units, their weighted logarithms and the regulator convention come from <a href="dirichlets-unit-theorem.html"><em>Dirichlet's unit theorem</em></a>: a complex-place logarithm has weight two, and the regulator is a deleted-row determinant. For unit rank zero, <span class="math" data-tex="\(R_K=1\)">\(R_K=1\)</span>.</p>
+<h2 id="a-lattice-count-with-a-boundary-error">A lattice count with a boundary error</h2>
+<p>Call a bounded subset <span class="math" data-tex="\(D\subseteq\mathbf R^n\)">\(D\subseteq\mathbf R^n\)</span> <strong>Lipschitz bounded</strong> if its topological boundary is covered by finitely many images of Lipschitz maps
+<span class="math math-display" data-tex="\[
+\phi_j:[0,1]^{n-1}\longrightarrow\mathbf R^n.
+\]">\[
+\phi_j:[0,1]^{n-1}\longrightarrow\mathbf R^n.
+\]</span>
+For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the parameter cube is a singleton, so this means that the boundary is finite. Such a boundary has <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional measure zero: subdividing each parameter cube into <span class="math" data-tex="\(M^{n-1}\)">\(M^{n-1}\)</span> small cubes covers its image by boxes of diameter <span class="math" data-tex="\(O(1/M)\)">\(O(1/M)\)</span> and total <span class="math" data-tex="\(n\)">\(n\)</span>-volume <span class="math" data-tex="\(O(1/M)\)">\(O(1/M)\)</span>. In particular <span class="math" data-tex="\(D\)">\(D\)</span> is Lebesgue measurable, regardless of which boundary points it includes.</p>
+<p><strong>Lemma 15.1 (Lipschitz principle).</strong> If <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is a full lattice and <span class="math" data-tex="\(D\)">\(D\)</span> is Lipschitz bounded, then, for <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+\#(tD\cap\Lambda)
+=\frac{\operatorname{vol}(D)}{\operatorname{covol}(\Lambda)}t^n
++O_{D,\Lambda}(t^{n-1}).
+\tag{3}
+\]">\[
+\#(tD\cap\Lambda)
+=\frac{\operatorname{vol}(D)}{\operatorname{covol}(\Lambda)}t^n
++O_{D,\Lambda}(t^{n-1}).
+\tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> A linear change of variables reduces to <span class="math" data-tex="\(\Lambda=\mathbf Z^n\)">\(\Lambda=\mathbf Z^n\)</span>, changes volume by the lattice determinant, and preserves finite Lipschitz boundary covers. Partition space into the half-open unit cubes <span class="math" data-tex="\(\lambda+[0,1)^n\)">\(\lambda+[0,1)^n\)</span>, <span class="math" data-tex="\(\lambda\in\mathbf Z^n\)">\(\lambda\in\mathbf Z^n\)</span>.</p>
+<p>Only cubes meeting <span class="math" data-tex="\(\partial(tD)\)">\(\partial(tD)\)</span> contribute to the discrepancy between the lattice count and volume. In any other cube, all points lie on the same side of the boundary: connectedness prevents an inside point and an outside point without a boundary point between them. Such a cube contributes either one to both the count and volume or zero to both. Each boundary cube contributes an error of absolute value at most one.</p>
+<p>To count the boundary cubes, partition the domain of each <span class="math" data-tex="\(\phi_j\)">\(\phi_j\)</span> into <span class="math" data-tex="\(M^{n-1}\)">\(M^{n-1}\)</span> cubes, where <span class="math" data-tex="\(M=\lceil t\rceil\)">\(M=\lceil t\rceil\)</span>. A scaled image <span class="math" data-tex="\(t\phi_j\)">\(t\phi_j\)</span> of one small cube has diameter at most <span class="math" data-tex="\(tL_j\sqrt{n-1}/M\)">\(tL_j\sqrt{n-1}/M\)</span>, uniformly bounded in <span class="math" data-tex="\(t\)">\(t\)</span>. Any set of this bounded diameter meets only a uniformly bounded number of unit cubes: enclose it in a box of fixed side length. Thus at most <span class="math" data-tex="\(O(t^{n-1})\)">\(O(t^{n-1})\)</span> cubes meet the boundary. When <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, each of the finitely many boundary points meets only a bounded number of intervals, giving <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>. Summing the errors proves (3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lemma permits half-open domains. Ownership of their boundary points changes only the boundary-cube error.</p>
+<h2 id="ideals-as-orbits-of-elements">Ideals as orbits of elements</h2>
+<p>Fix an ideal class <span class="math" data-tex="\(C\)">\(C\)</span>, and choose an integral ideal <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span> representing <span class="math" data-tex="\(C^{-1}\)">\(C^{-1}\)</span>. There is a bijection
+<span class="math math-display" data-tex="\[
+(\mathfrak c\setminus\{0\})/\mathcal O_K^\times
+\longrightarrow
+\{\mathfrak a\subseteq\mathcal O_K:\mathfrak a\ne0,\ [\mathfrak a]=C\},
+\qquad \alpha\longmapsto(\alpha)\mathfrak c^{-1}.
+\tag{4}
+\]">\[
+(\mathfrak c\setminus\{0\})/\mathcal O_K^\times
+\longrightarrow
+\{\mathfrak a\subseteq\mathcal O_K:\mathfrak a\ne0,\ [\mathfrak a]=C\},
+\qquad \alpha\longmapsto(\alpha)\mathfrak c^{-1}.
+\tag{4}
+\]</span>
+For <span class="math" data-tex="\(\alpha\in\mathfrak c\)">\(\alpha\in\mathfrak c\)</span>, the ideal on the right is integral because <span class="math" data-tex="\(\alpha\mathfrak c^{-1}\subseteq\mathfrak c\mathfrak c^{-1}=\mathcal O_K\)">\(\alpha\mathfrak c^{-1}\subseteq\mathfrak c\mathfrak c^{-1}=\mathcal O_K\)</span>. Conversely, an integral ideal in <span class="math" data-tex="\(C\)">\(C\)</span> makes <span class="math" data-tex="\(\mathfrak a\mathfrak c\)">\(\mathfrak a\mathfrak c\)</span> principal, say <span class="math" data-tex="\((\alpha)\)">\((\alpha)\)</span>. The inclusion <span class="math" data-tex="\(\mathfrak a\mathfrak c\subseteq\mathfrak c\)">\(\mathfrak a\mathfrak c\subseteq\mathfrak c\)</span> puts <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> in <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span>. Two generators yield the same ideal exactly when they differ by a unit. Norm multiplicativity gives
+<span class="math math-display" data-tex="\[
+N(\mathfrak a)=\frac{|N_{K/\mathbf Q}(\alpha)|}{N(\mathfrak c)}.
+\tag{5}
+\]">\[
+N(\mathfrak a)=\frac{|N_{K/\mathbf Q}(\alpha)|}{N(\mathfrak c)}.
+\tag{5}
+\]</span></p>
+<p>We now construct a region that counts these unit orbits. Index the infinite places by <span class="math" data-tex="\(v=1,\ldots,m\)">\(v=1,\ldots,m\)</span>, and give them weights
+<span class="math math-display" data-tex="\[
+d_v=\begin{cases}1&amp;v\text{ real},\\2&amp;v\text{ complex}.\end{cases}
+\]">\[
+d_v=\begin{cases}1&amp;v\text{ real},\\2&amp;v\text{ complex}.\end{cases}
+\]</span>
+For <span class="math" data-tex="\(z\in V^\times\)">\(z\in V^\times\)</span>, meaning that every coordinate is nonzero, set
+<span class="math math-display" data-tex="\[
+\ell_v(z)=d_v\log|z_v|,\qquad
+|N(z)|=\prod_v|z_v|^{d_v}.
+\tag{6}
+\]">\[
+\ell_v(z)=d_v\log|z_v|,\qquad
+|N(z)|=\prod_v|z_v|^{d_v}.
+\tag{6}
+\]</span>
+Choose fundamental units <span class="math" data-tex="\(\varepsilon_1,\ldots,\varepsilon_q\)">\(\varepsilon_1,\ldots,\varepsilon_q\)</span>, and let <span class="math" data-tex="\(L_j=\ell(\varepsilon_j)\)">\(L_j=\ell(\varepsilon_j)\)</span>. Their logarithms form a lattice in
+<span class="math math-display" data-tex="\[
+H=\{h\in\mathbf R^m:\sum_vh_v=0\}.
+\]">\[
+H=\{h\in\mathbf R^m:\sum_vh_v=0\}.
+\]</span>
+Choose its half-open fundamental parallelepiped
+<span class="math math-display" data-tex="\[
+P=\left\{\sum_{j=1}^q s_jL_j:0\leq s_j&lt;1\right\}.
+\tag{7}
+\]">\[
+P=\left\{\sum_{j=1}^q s_jL_j:0\leq s_j&lt;1\right\}.
+\tag{7}
+\]</span>
+For <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, this is the singleton zero.</p>
+<p>For <span class="math" data-tex="\(z\in V^\times\)">\(z\in V^\times\)</span>, put
+<span class="math math-display" data-tex="\[
+\rho=|N(z)|^{1/n},\qquad
+h_v(z)=\ell_v(z)-d_v\log\rho.
+\tag{8}
+\]">\[
+\rho=|N(z)|^{1/n},\qquad
+h_v(z)=\ell_v(z)-d_v\log\rho.
+\tag{8}
+\]</span>
+Then <span class="math" data-tex="\(h(z)\in H\)">\(h(z)\in H\)</span>. Define the cone and its truncation by
+<span class="math math-display" data-tex="\[
+F=\{z\in V^\times:h(z)\in P\},\qquad
+D=\{0\}\cup\{z\in F:|N(z)|\leq1\}.
+\tag{9}
+\]">\[
+F=\{z\in V^\times:h(z)\in P\},\qquad
+D=\{0\}\cup\{z\in F:|N(z)|\leq1\}.
+\tag{9}
+\]</span>
+Positive scalar dilation preserves <span class="math" data-tex="\(F\)">\(F\)</span> and scales <span class="math" data-tex="\(\rho\)">\(\rho\)</span> by that scalar.</p>
+<p>To make the orbit statement precise, take the free subgroup <span class="math" data-tex="\(E_0=\langle\varepsilon_1,\ldots,\varepsilon_q\rangle\)">\(E_0=\langle\varepsilon_1,\ldots,\varepsilon_q\rangle\)</span>. Dirichlet's theorem gives
+<span class="math" data-tex="\(\mathcal O_K^\times=\mu_K\times E_0\)">\(\mathcal O_K^\times=\mu_K\times E_0\)</span>.
+Multiplication by an element of <span class="math" data-tex="\(E_0\)">\(E_0\)</span> shifts <span class="math" data-tex="\(h(z)\)">\(h(z)\)</span> by its unit-logarithm vector. Uniqueness in (7) therefore makes <span class="math" data-tex="\(F\)">\(F\)</span> meet each <span class="math" data-tex="\(E_0\)">\(E_0\)</span>-orbit exactly once. Roots of unity leave <span class="math" data-tex="\(h\)">\(h\)</span> fixed and preserve <span class="math" data-tex="\(F\)">\(F\)</span>. On a nonzero field element their action is free. Consequently every full unit orbit of such elements has exactly <span class="math" data-tex="\(w_K\)">\(w_K\)</span> representatives in <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<h2 id="a-bounded-domain-and-its-volume">A bounded domain and its volume</h2>
+<p><strong>Proposition 15.2.</strong> The domain <span class="math" data-tex="\(D\)">\(D\)</span> is bounded and Lipschitz bounded, and
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(D)=2^{r_1}\pi^{r_2}R_K.
+\tag{10}
+\]">\[
+\operatorname{vol}(D)=2^{r_1}\pi^{r_2}R_K.
+\tag{10}
+\]</span></p>
+<p><strong>Proof of boundedness and the boundary assertion.</strong> Write <span class="math" data-tex="\(h=\sum s_jL_j\)">\(h=\sum s_jL_j\)</span>. For each real sign choice, use the parametrization
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+z_v&amp;=\eta_v\rho\,e^{h_v}, &amp;&amp;v\text{ real},\quad\eta_v\in\{1,-1\},\\
+z_v&amp;=\rho\,e^{h_v/2}e^{i\theta_v}, &amp;&amp;v\text{ complex},
+\end{aligned}
+\tag{11}
+\]">\[
+\begin{aligned}
+z_v&amp;=\eta_v\rho\,e^{h_v}, &amp;&amp;v\text{ real},\quad\eta_v\in\{1,-1\},\\
+z_v&amp;=\rho\,e^{h_v/2}e^{i\theta_v}, &amp;&amp;v\text{ complex},
+\end{aligned}
+\tag{11}
+\]</span>
+with <span class="math" data-tex="\(0&lt;\rho\leq1\)">\(0&lt;\rho\leq1\)</span>, <span class="math" data-tex="\(0\leq s_j&lt;1\)">\(0\leq s_j&lt;1\)</span>, and <span class="math" data-tex="\(0\leq\theta_v&lt;2\pi\)">\(0\leq\theta_v&lt;2\pi\)</span>. The parameters <span class="math" data-tex="\(h_v\)">\(h_v\)</span> stay bounded, so every coordinate has modulus at most a constant times <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. This proves boundedness. It also shows that the only possible limit with any coordinate zero is the origin.</p>
+<p>Use closed intervals for the parameters in (11) to obtain the closure of <span class="math" data-tex="\(D\)">\(D\)</span>. Away from <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>, these are smooth local coordinates: the absolute logarithms determine <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> uniquely, and the complex angles have ordinary local circle coordinates. At <span class="math" data-tex="\(0&lt;\rho&lt;1\)">\(0&lt;\rho&lt;1\)</span> with all <span class="math" data-tex="\(0&lt;s_j&lt;1\)">\(0&lt;s_j&lt;1\)</span>, the coordinate map has nonzero Jacobian and its image is interior. Hence the boundary is covered by the following images:</p>
+<ul>
+<li>the top <span class="math" data-tex="\(\rho=1\)">\(\rho=1\)</span>, parametrized by <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>;</li>
+<li>each side <span class="math" data-tex="\(s_j=0\)">\(s_j=0\)</span> or <span class="math" data-tex="\(s_j=1\)">\(s_j=1\)</span>, parametrized by <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, the remaining <span class="math" data-tex="\(s\)">\(s\)</span>, and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>;</li>
+<li>the origin, covered by a constant map.</li>
+</ul>
+<p>The top has <span class="math" data-tex="\(q+r_2=n-1\)">\(q+r_2=n-1\)</span> parameters; a side has <span class="math" data-tex="\(1+(q-1)+r_2=n-1\)">\(1+(q-1)+r_2=n-1\)</span>. Rescale angle intervals to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Each map has bounded derivatives on its compact parameter cube, including <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>, because the coordinates depend linearly on <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and exponentially only on bounded <span class="math" data-tex="\(s\)">\(s\)</span>. Thus each map is Lipschitz. There are finitely many signs and sides. Circle-angle seams do not add geometric boundary; allowing both angle endpoints still covers the entire circle. For <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, there are no sides. The argument includes <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, where the boundary consists of finitely many points.</p>
+<p><strong>Volume calculation.</strong> Let <span class="math" data-tex="\(L\)">\(L\)</span> be the <span class="math" data-tex="\(m\)">\(m\)</span>-by-<span class="math" data-tex="\(q\)">\(q\)</span> matrix with columns <span class="math" data-tex="\(L_j\)">\(L_j\)</span>, and let <span class="math" data-tex="\(d=(d_v)\)">\(d=(d_v)\)</span>. The coordinate relation is
+<span class="math math-display" data-tex="\[
+\ell=d\log\rho+Ls.
+\]">\[
+\ell=d\log\rho+Ls.
+\]</span>
+Since every column of <span class="math" data-tex="\(L\)">\(L\)</span> has sum zero, adding all rows into one row and expanding gives
+<span class="math math-display" data-tex="\[
+|\det[d,L]|=nR_K.
+\tag{12}
+\]">\[
+|\det[d,L]|=nR_K.
+\tag{12}
+\]</span>
+For <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, this states <span class="math" data-tex="\(d_1=n\)">\(d_1=n\)</span>, with the empty minor equal to one. For the general case, the remaining minor is exactly the deleted-row determinant defining <span class="math" data-tex="\(R_K\)">\(R_K\)</span>.</p>
+<p>In a fixed real sign sector, a real coordinate has <span class="math" data-tex="\(d|z_v|=e^{\ell_v}d\ell_v\)">\(d|z_v|=e^{\ell_v}d\ell_v\)</span>. A complex coordinate contributes polar area
+<span class="math math-display" data-tex="\[
+|z_v|\,d|z_v|\,d\theta_v
+=\tfrac12e^{\ell_v}d\ell_v\,d\theta_v.
+\]">\[
+|z_v|\,d|z_v|\,d\theta_v
+=\tfrac12e^{\ell_v}d\ell_v\,d\theta_v.
+\]</span>
+Thus the full volume element in (11) is
+<span class="math math-display" data-tex="\[
+2^{-r_2}nR_K\,\rho^{n-1}\,d\rho\,ds\,d\theta.
+\tag{13}
+\]">\[
+2^{-r_2}nR_K\,\rho^{n-1}\,d\rho\,ds\,d\theta.
+\tag{13}
+\]</span>
+There are <span class="math" data-tex="\(2^{r_1}\)">\(2^{r_1}\)</span> real sign sectors, the angle integral is <span class="math" data-tex="\((2\pi)^{r_2}\)">\((2\pi)^{r_2}\)</span>, the <span class="math" data-tex="\(s\)">\(s\)</span>-cube has volume one, and <span class="math" data-tex="\(\int_0^1n\rho^{n-1}d\rho=1\)">\(\int_0^1n\rho^{n-1}d\rho=1\)</span>. Their product is (10). Boundary ownership changes no volume. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The determinant in (12) uses the projected regulator convention. Replacing it by the Euclidean covolume of the unit lattice in <span class="math" data-tex="\(H\)">\(H\)</span> would introduce an unwanted factor <span class="math" data-tex="\(\sqrt m\)">\(\sqrt m\)</span>.</p>
+<h2 id="the-count-in-each-ideal-class">The count in each ideal class</h2>
+<p>Set
+<span class="math math-display" data-tex="\[
+\kappa_K=\frac{2^{r_1}(2\pi)^{r_2}R_K}
+{w_K\sqrt{|d_K|}}.
+\tag{14}
+\]">\[
+\kappa_K=\frac{2^{r_1}(2\pi)^{r_2}R_K}
+{w_K\sqrt{|d_K|}}.
+\tag{14}
+\]</span></p>
+<p><strong>Theorem 15.3.</strong> For each ordinary ideal class <span class="math" data-tex="\(C\)">\(C\)</span>, as <span class="math" data-tex="\(X\to\infty\)">\(X\to\infty\)</span>,
+<span class="math math-display" data-tex="\[
+A_C(X):=\#\{\mathfrak a\ne0:\mathfrak a\subseteq\mathcal O_K,\
+[\mathfrak a]=C,\ N(\mathfrak a)\leq X\}
+=\kappa_KX+O_{K,C}(X^{1-1/n}).
+\tag{15}
+\]">\[
+A_C(X):=\#\{\mathfrak a\ne0:\mathfrak a\subseteq\mathcal O_K,\
+[\mathfrak a]=C,\ N(\mathfrak a)\leq X\}
+=\kappa_KX+O_{K,C}(X^{1-1/n}).
+\tag{15}
+\]</span>
+The count of all nonzero integral ideals satisfies
+<span class="math math-display" data-tex="\[
+A_K(X)=h_K\kappa_KX+O_K(X^{1-1/n}).
+\tag{16}
+\]">\[
+A_K(X)=h_K\kappa_KX+O_K(X^{1-1/n}).
+\tag{16}
+\]</span></p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span> as in (4), and put <span class="math" data-tex="\(T=XN(\mathfrak c)\)">\(T=XN(\mathfrak c)\)</span>. The condition (5) is <span class="math" data-tex="\(|N(\alpha)|\leq T\)">\(|N(\alpha)|\leq T\)</span>. Each ideal has exactly <span class="math" data-tex="\(w_K\)">\(w_K\)</span> representatives in <span class="math" data-tex="\(F\)">\(F\)</span>, and the domain with this bound is <span class="math" data-tex="\(T^{1/n}D\)">\(T^{1/n}D\)</span>. Therefore the count is exactly
+<span class="math math-display" data-tex="\[
+A_C(X)=\frac{\#(\mathfrak c\cap T^{1/n}D)-1}{w_K}.
+\tag{17}
+\]">\[
+A_C(X)=\frac{\#(\mathfrak c\cap T^{1/n}D)-1}{w_K}.
+\tag{17}
+\]</span>
+The subtraction removes the origin. Apply Lemma 15.1 and Proposition 15.2:
+<span class="math math-display" data-tex="\[
+\#(\mathfrak c\cap T^{1/n}D)
+=\frac{2^{r_1}\pi^{r_2}R_K\,XN(\mathfrak c)}
+{2^{-r_2}\sqrt{|d_K|}N(\mathfrak c)}
++O_{K,\mathfrak c}(X^{1-1/n}).
+\]">\[
+\#(\mathfrak c\cap T^{1/n}D)
+=\frac{2^{r_1}\pi^{r_2}R_K\,XN(\mathfrak c)}
+{2^{-r_2}\sqrt{|d_K|}N(\mathfrak c)}
++O_{K,\mathfrak c}(X^{1-1/n}).
+\]</span>
+The ideal norm cancels. Dividing by <span class="math" data-tex="\(w_K\)">\(w_K\)</span> gives (15); the constant subtraction is absorbed in the error, also when <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. There are finitely many classes, so summing their asymptotics gives (16). The coefficient is independent of the chosen class, although its error constant may depend on the representative lattice. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(K=\mathbf Q\)">\(K=\mathbf Q\)</span>, the conventions are <span class="math" data-tex="\(r_1=1,r_2=0,R_K=1,w_K=2,d_K=1\)">\(r_1=1,r_2=0,R_K=1,w_K=2,d_K=1\)</span>, giving <span class="math" data-tex="\(\kappa_K=1\)">\(\kappa_K=1\)</span>. The exact count is <span class="math" data-tex="\(\lfloor X\rfloor\)">\(\lfloor X\rfloor\)</span>, which verifies the degree-one error <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>.</p>
+<h2 id="two-checks-of-the-constant">Two checks of the constant</h2>
+<h3 id="gaussian-ideals">Gaussian ideals</h3>
+<p>For <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span>, the preceding class-number calculation gives <span class="math" data-tex="\(h_K=1\)">\(h_K=1\)</span>. Every ideal is principal, its generators differ by the four units, and
+<span class="math math-display" data-tex="\[
+N(a+bi)=a^2+b^2.
+\]">\[
+N(a+bi)=a^2+b^2.
+\]</span>
+There are no free units, so <span class="math" data-tex="\(D\)">\(D\)</span> is the closed unit disk. Consequently
+<span class="math math-display" data-tex="\[
+A_K(X)=\frac{\#\{(a,b)\in\mathbf Z^2:a^2+b^2\leq X\}-1}{4}
+=\frac{\pi}{4}X+O(\sqrt X).
+\tag{18}
+\]">\[
+A_K(X)=\frac{\#\{(a,b)\in\mathbf Z^2:a^2+b^2\leq X\}-1}{4}
+=\frac{\pi}{4}X+O(\sqrt X).
+\tag{18}
+\]</span>
+This is exactly (14), since <span class="math" data-tex="\(R_K=1\)">\(R_K=1\)</span>, <span class="math" data-tex="\(w_K=4\)">\(w_K=4\)</span>, and <span class="math" data-tex="\(\sqrt{|d_K|}=2\)">\(\sqrt{|d_K|}=2\)</span>. If explicit generators are desired, the sector <span class="math" data-tex="\(a&gt;0,b\geq0\)">\(a&gt;0,b\geq0\)</span> selects one in each nonzero unit orbit; the positive horizontal axis owns the axis cases.</p>
+<h3 id="a-real-quadratic-cone">A real quadratic cone</h3>
+<p>For any real quadratic field, let <span class="math" data-tex="\(\varepsilon&gt;1\)">\(\varepsilon&gt;1\)</span> be a fundamental unit under one embedding, and put <span class="math" data-tex="\(R=\log\varepsilon\)">\(R=\log\varepsilon\)</span>. The other absolute value is <span class="math" data-tex="\(\varepsilon^{-1}\)">\(\varepsilon^{-1}\)</span>, whether the unit norm is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus its unit-logarithm vector is <span class="math" data-tex="\((R,-R)\)">\((R,-R)\)</span>. Formula (11) becomes
+<span class="math math-display" data-tex="\[
+z_1=\eta_1\rho\,e^{sR},\qquad
+z_2=\eta_2\rho\,e^{-sR},\qquad
+0&lt;\rho\leq1,\quad0\leq s&lt;1.
+\tag{19}
+\]">\[
+z_1=\eta_1\rho\,e^{sR},\qquad
+z_2=\eta_2\rho\,e^{-sR},\qquad
+0&lt;\rho\leq1,\quad0\leq s&lt;1.
+\tag{19}
+\]</span>
+In each of the four sign sectors the absolute Jacobian is <span class="math" data-tex="\(2R\rho\)">\(2R\rho\)</span>. Its integral is <span class="math" data-tex="\(R\)">\(R\)</span>, so <span class="math" data-tex="\(\operatorname{vol}(D)=4R\)">\(\operatorname{vol}(D)=4R\)</span>, exactly (10). Equivalently, the cone and truncation satisfy
+<span class="math math-display" data-tex="\[
+1\leq|z_1/z_2|&lt;\varepsilon^2,\qquad |z_1z_2|\leq1.
+\tag{20}
+\]">\[
+1\leq|z_1/z_2|&lt;\varepsilon^2,\qquad |z_1z_2|\leq1.
+\tag{20}
+\]</span>
+Both coordinates stay bounded as their product tends to zero, because their ratio stays in a compact interval. The apparent cusp is therefore just the origin, parametrized regularly by <span class="math" data-tex="\(\rho\)">\(\rho\)</span> in (19).</p>
+<p>For <span class="math" data-tex="\(K=\mathbf Q(\sqrt2)\)">\(K=\mathbf Q(\sqrt2)\)</span>, the previously proved values are
+<span class="math math-display" data-tex="\[
+h_K=1,\quad w_K=2,\quad d_K=8,\quad
+\varepsilon=1+\sqrt2,\quad R_K=\log(1+\sqrt2).
+\]">\[
+h_K=1,\quad w_K=2,\quad d_K=8,\quad
+\varepsilon=1+\sqrt2,\quad R_K=\log(1+\sqrt2).
+\]</span>
+The ideal density is
+<span class="math math-display" data-tex="\[
+\kappa_K=\frac{\log(1+\sqrt2)}{\sqrt2}.
+\tag{21}
+\]">\[
+\kappa_K=\frac{\log(1+\sqrt2)}{\sqrt2}.
+\tag{21}
+\]</span>
+There are two cone representatives of each ideal, because the torsion units are <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>. Although <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> has norm <span class="math" data-tex="\(-1\)">\(-1\)</span> and changes one embedding's sign, the use of all four sign sectors in (19) preserves the exact orbit count.</p>
+<p>An integer description makes this example directly countable. For <span class="math" data-tex="\(\alpha=a+b\sqrt2\)">\(\alpha=a+b\sqrt2\)</span>, put <span class="math" data-tex="\(z_1=a+b\sqrt2\)">\(z_1=a+b\sqrt2\)</span>, <span class="math" data-tex="\(z_2=a-b\sqrt2\)">\(z_2=a-b\sqrt2\)</span>. The cone (20) is equivalent to
+<span class="math math-display" data-tex="\[
+ab\geq0,\qquad (a-b)(a-2b)&gt;0.
+\tag{22}
+\]">\[
+ab\geq0,\qquad (a-b)(a-2b)&gt;0.
+\tag{22}
+\]</span>
+The lower inequality follows from <span class="math" data-tex="\(z_1^2-z_2^2=4ab\sqrt2\)">\(z_1^2-z_2^2=4ab\sqrt2\)</span>. For the upper inequality, use <span class="math" data-tex="\(\varepsilon^4=17+12\sqrt2\)">\(\varepsilon^4=17+12\sqrt2\)</span> to obtain
+<span class="math math-display" data-tex="\[
+z_1^2-\varepsilon^4z_2^2
+=-4(4+3\sqrt2)(a^2-3ab+2b^2).
+\]">\[
+z_1^2-\varepsilon^4z_2^2
+=-4(4+3\sqrt2)(a^2-3ab+2b^2).
+\]</span>
+Thus (22) implements the half-open upper boundary exactly. Counting its nonzero integer pairs with <span class="math" data-tex="\(|a^2-2b^2|\leq X\)">\(|a^2-2b^2|\leq X\)</span>, and dividing by two, gives the ideal count without any logarithmic rounding.</p>
+<h2 id="exercises-and-complete-solutions">Exercises and complete solutions</h2>
+<p><strong>Exercise 1.</strong> Verify the density <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span> for <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span> directly from its integer lattice.</p>
+<p><strong>Solution 1.</strong> The disk of radius <span class="math" data-tex="\(\sqrt X\)">\(\sqrt X\)</span> has area <span class="math" data-tex="\(\pi X\)">\(\pi X\)</span>. Its circle boundary is covered by a Lipschitz parametrization, so Lemma 15.1 for <span class="math" data-tex="\(\mathbf Z^2\)">\(\mathbf Z^2\)</span> gives <span class="math" data-tex="\(\pi X+O(\sqrt X)\)">\(\pi X+O(\sqrt X)\)</span> lattice points. Remove the origin and divide by four, since multiplication by <span class="math" data-tex="\(1,-1,i,-i\)">\(1,-1,i,-i\)</span> acts freely on each nonzero generator and preserves the norm. This yields (18). In terms of the general factors, the lattice covolume is <span class="math" data-tex="\(2^{-1}\sqrt4=1\)">\(2^{-1}\sqrt4=1\)</span>, the logarithmic domain has volume <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and <span class="math" data-tex="\(w_K=4\)">\(w_K=4\)</span>. These checks use the same coordinate measure as (2).</p>
+<p><strong>Exercise 2.</strong> Prove the Lipschitz principle, including half-open boundary choices and the case <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+<p><strong>Solution 2.</strong> Send a lattice basis to the standard basis. The determinant rescales the domain volume by <span class="math" data-tex="\(1/\operatorname{covol}(\Lambda)\)">\(1/\operatorname{covol}(\Lambda)\)</span>. For each boundary map, subdivide its parameter cube into <span class="math" data-tex="\(\lceil t\rceil^{n-1}\)">\(\lceil t\rceil^{n-1}\)</span> equal cubes. The image of each under <span class="math" data-tex="\(t\phi_j\)">\(t\phi_j\)</span> has bounded diameter, hence meets only a fixed number of unit lattice cells. Thus <span class="math" data-tex="\(O(t^{n-1})\)">\(O(t^{n-1})\)</span> cells meet <span class="math" data-tex="\(\partial(tD)\)">\(\partial(tD)\)</span>. All other cells are entirely inside or outside and give equal contributions to count and volume. Boundary cells each contribute bounded error, regardless of whether a boundary lattice point is included. In dimension one the boundary consists of finitely many points, so only <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> intervals are involved. This proves every case of (3).</p>
+<p><strong>Exercise 3.</strong> Compute the volume of the unit-domain truncation for a real quadratic field and recover its class density.</p>
+<p><strong>Solution 3.</strong> Use (19) with <span class="math" data-tex="\(R=\log\varepsilon\)">\(R=\log\varepsilon\)</span>. Differentiation gives the determinant
+<span class="math math-display" data-tex="\[
+\det\begin{pmatrix}
+\eta_1e^{sR}&amp;\eta_1\rho R e^{sR}\\
+\eta_2e^{-sR}&amp;-\eta_2\rho R e^{-sR}
+\end{pmatrix}=-2\eta_1\eta_2R\rho.
+\]">\[
+\det\begin{pmatrix}
+\eta_1e^{sR}&amp;\eta_1\rho R e^{sR}\\
+\eta_2e^{-sR}&amp;-\eta_2\rho R e^{-sR}
+\end{pmatrix}=-2\eta_1\eta_2R\rho.
+\]</span>
+Integrating its absolute value for <span class="math" data-tex="\(0\leq\rho\leq1\)">\(0\leq\rho\leq1\)</span>, <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span> gives <span class="math" data-tex="\(R\)">\(R\)</span> in each sign sector, hence <span class="math" data-tex="\(4R\)">\(4R\)</span> in total. The ideal lattice has covolume <span class="math" data-tex="\(\sqrt{d_K}N(\mathfrak c)\)">\(\sqrt{d_K}N(\mathfrak c)\)</span>, and the norm cutoff is <span class="math" data-tex="\(XN(\mathfrak c)\)">\(XN(\mathfrak c)\)</span>. Divide by the two torsion units to get <span class="math" data-tex="\(\kappa_K=2R/\sqrt{d_K}\)">\(\kappa_K=2R/\sqrt{d_K}\)</span>, which specializes to (21). A negative norm of the fundamental unit changes signs, not this Jacobian or the orbit multiplicity.</p>
+<p><strong>Exercise 4.</strong> Supply a finite Lipschitz parametrization cover of the boundary in arbitrary signature, including its origin.</p>
+<p><strong>Solution 4.</strong> Fix one of the <span class="math" data-tex="\(2^{r_1}\)">\(2^{r_1}\)</span> real sign choices. In (11), write <span class="math" data-tex="\(h_v=\sum_j s_jL_{vj}\)">\(h_v=\sum_j s_jL_{vj}\)</span> and replace every angle by <span class="math" data-tex="\(2\pi a_v\)">\(2\pi a_v\)</span>, <span class="math" data-tex="\(0\leq a_v\leq1\)">\(0\leq a_v\leq1\)</span>. For the top, set <span class="math" data-tex="\(\rho=1\)">\(\rho=1\)</span>; this gives a map from the <span class="math" data-tex="\(q+r_2=n-1\)">\(q+r_2=n-1\)</span> dimensional cube. For each <span class="math" data-tex="\(j\)">\(j\)</span>, set <span class="math" data-tex="\(s_j=0\)">\(s_j=0\)</span> and <span class="math" data-tex="\(s_j=1\)">\(s_j=1\)</span> in turn; retain <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, all other <span class="math" data-tex="\(s\)">\(s\)</span>, and the angles, again <span class="math" data-tex="\(n-1\)">\(n-1\)</span> variables. All derivatives of the exponentials on these compact cubes are bounded, and the dependence on <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is linear, so each map is Lipschitz even at <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>. Add one constant map for the origin. Every other point with <span class="math" data-tex="\(\rho&lt;1\)">\(\rho&lt;1\)</span> and all <span class="math" data-tex="\(s_j\)">\(s_j\)</span> strictly between their endpoints is interior by the nonzero coordinate Jacobian, so this list covers the whole boundary. There are no side maps when <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, and when <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the top maps are singleton endpoints. Periodic angle endpoints cover circle seams without requiring any additional boundary pieces.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The unit theorem, regulator convention, ideal-lattice covolume, integral bases, and class numbers used in the examples are imported from the preceding lessons. All three numbered counting results and all four solutions are proved here. Sharper lattice-point error terms, including improvements for the circle problem, are outside this count. Analytic properties of the Dedekind zeta function are treated in the next lesson; none is used to derive the ideal density.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Erich Hecke, <em>Vorlesungen über die Theorie der algebraischen Zahlen</em>, 1923, Chapter VI §§40–42, printed pp.155–164; Satz 121 gives the common class density, and Satz 122 its sum over classes.</li>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em>, v3.08</a>, Chapter 5, “Regulators,” printed p.94, for the weighted logarithm determinant convention.</li>
+<li>Andrew V. Sutherland, <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes19.pdf">MIT 18.785 Lecture 19</a>, Lemma 19.5, Section 19.1.1 and Theorem 19.8, pp.2-7. Source scaled-coordinate volume and covolume both have factor 2^r2; the quotient matches this lesson ordinary-coordinate convention.</li>
+</ul>
+</article><nav><a href="src/counting-ideals-of-bounded-norm.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

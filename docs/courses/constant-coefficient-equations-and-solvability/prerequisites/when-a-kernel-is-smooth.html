@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>When a kernel is smooth</title><link rel="stylesheet" href="../course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}</style></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a> · <a href="complete-distribution-foundations.html">Complete distribution foundations</a></nav><h1 id="when-a-kernel-is-smooth">When a kernel is smooth</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>Smoothness of an operator's output on smooth inputs is a weak test. Differentiation passes that test. A more revealing question is what happens to point masses and their derivatives. If an operator sends every compactly supported distribution to a smooth function continuously, its entire kernel is smooth. This lesson proves both directions and explains the continuity behind the assertion.</p>
+<p>The prerequisites are <a href="distributions-as-kernels.html">Distributions as kernels of continuous operators</a>, Taylor's formula with its remainder, the Arzelà–Ascoli theorem on compact sets, and smooth approximate identities. We use the bilinear distribution pairing and Euclidean Lebesgue measure. Basic references are [Dyatlov 2026], [Melrose 2016] and [Schwartz 1952].</p>
+<h2 id="compact-distributions-test-all-smooth-functions">Compact distributions test all smooth functions</h2>
+<p>For an open <span class="math" data-tex="\(V\subset\mathbb R^n\)">\(V\subset\mathbb R^n\)</span>, put <span class="math" data-tex="\(\mathcal E(V)=C^\infty(V)\)">\(\mathcal E(V)=C^\infty(V)\)</span>, with seminorms
+<span class="math math-display" data-tex="\[
+p_{M,r}(f)=\max_{|\beta|\le r}\sup_{y\in M}|\partial^\beta f(y)|,
+\qquad M\Subset V.
+\]">\[
+p_{M,r}(f)=\max_{|\beta|\le r}\sup_{y\in M}|\partial^\beta f(y)|,
+\qquad M\Subset V.
+\]</span>
+An exhaustion by compact sets and the increasing derivative orders make this a Fréchet space. Its continuous dual is <span class="math" data-tex="\(\mathcal E&#x27;(V)\)">\(\mathcal E&#x27;(V)\)</span>. We give this dual its strong topology, whose seminorms are
+<span class="math math-display" data-tex="\[
+q_B(u)=\sup_{f\in B}|\langle u,f\rangle|
+\]">\[
+q_B(u)=\sup_{f\in B}|\langle u,f\rangle|
+\]</span>
+for bounded <span class="math" data-tex="\(B\subset\mathcal E(V)\)">\(B\subset\mathcal E(V)\)</span>. Boundedness means uniform bounds for each smooth seminorm, on each compact set; it does not require a common support for the functions in <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Every <span class="math" data-tex="\(u\in\mathcal E&#x27;(V)\)">\(u\in\mathcal E&#x27;(V)\)</span> has an estimate
+<span class="math math-display" data-tex="\[
+|\langle u,f\rangle|\le C p_{M,r}(f)
+\tag{1.1}
+\]">\[
+|\langle u,f\rangle|\le C p_{M,r}(f)
+\tag{1.1}
+\]</span>
+for some compact <span class="math" data-tex="\(M\)">\(M\)</span> and integer <span class="math" data-tex="\(r\)">\(r\)</span>. Its restriction to test functions is therefore a distribution supported in <span class="math" data-tex="\(M\)">\(M\)</span>. Conversely, a compactly supported distribution acts on arbitrary smooth functions by <span class="math" data-tex="\(\langle u,f\rangle=\langle u,\chi f\rangle\)">\(\langle u,f\rangle=\langle u,\chi f\rangle\)</span>, where <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near its support and is compactly supported. This is independent of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, since the difference vanishes near the support. A distribution estimate for <span class="math" data-tex="\(\chi f\)">\(\chi f\)</span> gives (1.1), on a compact neighborhood of the support. Thus <span class="math" data-tex="\(\mathcal E&#x27;(V)\)">\(\mathcal E&#x27;(V)\)</span> is precisely the space of compactly supported distributions.</p>
+<p>The weak convergence used in this lesson is
+<span class="math math-display" data-tex="\[
+u_j\longrightarrow u\text{ weakly in }\mathcal E&#x27;(V)
+\quad\Longleftrightarrow\quad
+\langle u_j,f\rangle\longrightarrow\langle u,f\rangle
+\text{ for every }f\in\mathcal E(V).
+\tag{1.2}
+\]">\[
+u_j\longrightarrow u\text{ weakly in }\mathcal E&#x27;(V)
+\quad\Longleftrightarrow\quad
+\langle u_j,f\rangle\longrightarrow\langle u,f\rangle
+\text{ for every }f\in\mathcal E(V).
+\tag{1.2}
+\]</span>
+Testing against all smooth functions, rather than only compactly supported ones, matters. A point mass escaping to infinity converges to zero against every compact test, but need not converge against a smooth function growing at infinity.</p>
+<h2 id="uniform-estimates-for-a-convergent-sequence">Uniform estimates for a convergent sequence</h2>
+<p><strong>Lemma 2.1 (weak convergence is strong convergence for sequences here).</strong> If <span class="math" data-tex="\(u_j\to u\)">\(u_j\to u\)</span> as in (1.2), then <span class="math" data-tex="\(q_B(u_j-u)\to0\)">\(q_B(u_j-u)\to0\)</span> for every bounded <span class="math" data-tex="\(B\subset\mathcal E(V)\)">\(B\subset\mathcal E(V)\)</span>. Furthermore there exist <span class="math" data-tex="\(C,M,r\)">\(C,M,r\)</span>, independent of <span class="math" data-tex="\(j\)">\(j\)</span>, such that
+<span class="math math-display" data-tex="\[
+|\langle u_j-u,f\rangle|\le Cp_{M,r}(f)
+\quad(f\in\mathcal E(V)).
+\tag{2.1}
+\]">\[
+|\langle u_j-u,f\rangle|\le Cp_{M,r}(f)
+\quad(f\in\mathcal E(V)).
+\tag{2.1}
+\]</span>
+The same uniform estimate holds for any pointwise bounded family of continuous functionals on <span class="math" data-tex="\(\mathcal E(V)\)">\(\mathcal E(V)\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(v_j=u_j-u\)">\(v_j=u_j-u\)</span>. The sets
+<span class="math math-display" data-tex="\[
+A_N=\{f:\sup_j|\langle v_j,f\rangle|\le N\}
+\]">\[
+A_N=\{f:\sup_j|\langle v_j,f\rangle|\le N\}
+\]</span>
+are closed and cover <span class="math" data-tex="\(\mathcal E(V)\)">\(\mathcal E(V)\)</span>, because each scalar sequence converges. Baire's theorem gives one set with nonempty interior. Subtracting two elements in a small neighborhood of an interior point gives <span class="math" data-tex="\(\sup_j|\langle v_j,f\rangle|\le2N\)">\(\sup_j|\langle v_j,f\rangle|\le2N\)</span> on a neighborhood of zero. That neighborhood contains a ball for one of the increasing smooth seminorms. Scaling, including the zero-seminorm case as in Lemma 2.1 of the preceding lesson, proves (2.1). The proof uses only pointwise boundedness, so it also proves the final assertion for an arbitrary family.</p>
+<p>For bounded <span class="math" data-tex="\(B\)">\(B\)</span>, Arzelà–Ascoli applied to derivatives through order <span class="math" data-tex="\(r\)">\(r\)</span> makes <span class="math" data-tex="\(B\)">\(B\)</span> totally bounded in <span class="math" data-tex="\(p_{M,r}\)">\(p_{M,r}\)</span>. To justify this for any compact <span class="math" data-tex="\(M\)">\(M\)</span>, cover it by finitely many closed coordinate boxes whose slightly larger boxes lie in <span class="math" data-tex="\(V\)">\(V\)</span>. The uniform bounds for derivatives through order <span class="math" data-tex="\(r+1\)">\(r+1\)</span> on those larger boxes give equicontinuity of the derivatives through order <span class="math" data-tex="\(r\)">\(r\)</span>. The finite collection of Arzelà–Ascoli conclusions gives a finite net on <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(f_1,\ldots,f_a\in B\)">\(f_1,\ldots,f_a\in B\)</span> with every <span class="math" data-tex="\(f\in B\)">\(f\in B\)</span> within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of some <span class="math" data-tex="\(f_i\)">\(f_i\)</span> in <span class="math" data-tex="\(p_{M,r}\)">\(p_{M,r}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sup_{f\in B}|\langle v_j,f\rangle|
+\le\max_i|\langle v_j,f_i\rangle|+C\varepsilon.
+\]">\[
+\sup_{f\in B}|\langle v_j,f\rangle|
+\le\max_i|\langle v_j,f_i\rangle|+C\varepsilon.
+\]</span>
+The maximum tends to zero. Then let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> tend to zero. This proves strong convergence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The conclusion is about sequences in this particular dual. It does not identify the weak and strong topologies on all subsets or all nets.</p>
+<p><strong>Lemma 2.2 (smooth tests approximate compact distributions strongly).</strong> For each <span class="math" data-tex="\(u\in\mathcal E&#x27;(V)\)">\(u\in\mathcal E&#x27;(V)\)</span>, there exist <span class="math" data-tex="\(u_\varepsilon\in\mathcal D(V)\)">\(u_\varepsilon\in\mathcal D(V)\)</span>, all supported in one compact subset of <span class="math" data-tex="\(V\)">\(V\)</span>, such that <span class="math" data-tex="\(u_\varepsilon\to u\)">\(u_\varepsilon\to u\)</span> in the strong topology of <span class="math" data-tex="\(\mathcal E&#x27;(V)\)">\(\mathcal E&#x27;(V)\)</span>.</p>
+<p><strong>Proof.</strong> Extend the compact distribution to <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> using a cutoff supported in <span class="math" data-tex="\(V\)">\(V\)</span>, and let <span class="math" data-tex="\(\rho\in\mathcal D(\mathbb R^n)\)">\(\rho\in\mathcal D(\mathbb R^n)\)</span> have integral one. Put <span class="math" data-tex="\(\rho_\varepsilon(z)=\varepsilon^{-n}\rho(z/\varepsilon)\)">\(\rho_\varepsilon(z)=\varepsilon^{-n}\rho(z/\varepsilon)\)</span>, and regularize by
+<span class="math math-display" data-tex="\[
+u_\varepsilon(x)=\langle u(y),\rho_\varepsilon(x-y)\rangle.
+\]">\[
+u_\varepsilon(x)=\langle u(y),\rho_\varepsilon(x-y)\rangle.
+\]</span>
+Differentiating this test family proves that <span class="math" data-tex="\(u_\varepsilon\)">\(u_\varepsilon\)</span> is smooth. Its support lies in <span class="math" data-tex="\(\operatorname{supp}u+\varepsilon\operatorname{supp}\rho\)">\(\operatorname{supp}u+\varepsilon\operatorname{supp}\rho\)</span>, inside one compact subset of <span class="math" data-tex="\(V\)">\(V\)</span> for small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>Let <span class="math" data-tex="\(B\subset\mathcal E(V)\)">\(B\subset\mathcal E(V)\)</span> be bounded and use (1.1) for <span class="math" data-tex="\(u\)">\(u\)</span>. Testing the regularization against <span class="math" data-tex="\(f\in B\)">\(f\in B\)</span> gives
+<span class="math math-display" data-tex="\[
+\langle u_\varepsilon-u,f\rangle
+=\left\langle u,
+y\longmapsto\int\rho(z)\big(f(y+\varepsilon z)-f(y)\big)\,dz
+\right\rangle.
+\]">\[
+\langle u_\varepsilon-u,f\rangle
+=\left\langle u,
+y\longmapsto\int\rho(z)\big(f(y+\varepsilon z)-f(y)\big)\,dz
+\right\rangle.
+\]</span>
+The displayed function is needed only near <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>. Taylor's formula on a fixed compact neighborhood bounds its derivatives through order <span class="math" data-tex="\(r\)">\(r\)</span> by
+<span class="math math-display" data-tex="\[
+\varepsilon\Big(\int |z\rho(z)|\,dz\Big)
+\sup_{f\in B}p_{M&#x27;,r+1}(f).
+\]">\[
+\varepsilon\Big(\int |z\rho(z)|\,dz\Big)
+\sup_{f\in B}p_{M&#x27;,r+1}(f).
+\]</span>
+The last supremum is finite. The distribution estimate proves <span class="math" data-tex="\(q_B(u_\varepsilon-u)=O(\varepsilon)\)">\(q_B(u_\varepsilon-u)=O(\varepsilon)\)</span>, so convergence is strong. The pairing identity follows by approximating the integral by Riemann sums in the finite derivative seminorm used by <span class="math" data-tex="\(u\)">\(u\)</span>. Thus no unproved interchange with an arbitrary functional is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="point-masses-vary-smoothly">Point masses vary smoothly</h2>
+<p>For <span class="math" data-tex="\(y\in V\)">\(y\in V\)</span>, let <span class="math" data-tex="\(\delta_y(f)=f(y)\)">\(\delta_y(f)=f(y)\)</span>. Spatial differentiation of a distribution and differentiation of its parameter have opposite signs:
+<span class="math math-display" data-tex="\[
+\partial_{y_k}\delta_y=-\partial_{t_k}\delta_y,
+\tag{3.1}
+\]">\[
+\partial_{y_k}\delta_y=-\partial_{t_k}\delta_y,
+\tag{3.1}
+\]</span>
+where <span class="math" data-tex="\(t\)">\(t\)</span> denotes the distribution's test variable. Indeed the left side applied to <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\(\partial_k f(y)\)">\(\partial_k f(y)\)</span>, while <span class="math" data-tex="\(\partial_{t_k}\delta_y(f)=-\partial_kf(y)\)">\(\partial_{t_k}\delta_y(f)=-\partial_kf(y)\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> The map <span class="math" data-tex="\(y\mapsto\delta_y\)">\(y\mapsto\delta_y\)</span> has continuous derivatives of every order into the strong dual <span class="math" data-tex="\(\mathcal E&#x27;(V)\)">\(\mathcal E&#x27;(V)\)</span>. They are
+<span class="math math-display" data-tex="\[
+\partial_y^\beta\delta_y=(-1)^{|\beta|}\partial_t^\beta\delta_y.
+\tag{3.2}
+\]">\[
+\partial_y^\beta\delta_y=(-1)^{|\beta|}\partial_t^\beta\delta_y.
+\tag{3.2}
+\]</span></p>
+<p><strong>Proof.</strong> On a compact parameter neighborhood <span class="math" data-tex="\(M\Subset V\)">\(M\Subset V\)</span>, Taylor's formula gives, for each bounded <span class="math" data-tex="\(B\subset\mathcal E(V)\)">\(B\subset\mathcal E(V)\)</span>,
+<span class="math math-display" data-tex="\[
+q_B\left(\frac{\delta_{y+he_k}-\delta_y}{h}
++\partial_{t_k}\delta_y\right)
+\le \frac{|h|}{2}\sup_{f\in B}p_{M,2}(f),
+\]">\[
+q_B\left(\frac{\delta_{y+he_k}-\delta_y}{h}
++\partial_{t_k}\delta_y\right)
+\le \frac{|h|}{2}\sup_{f\in B}p_{M,2}(f),
+\]</span>
+whenever the segment stays in <span class="math" data-tex="\(M\)">\(M\)</span>. This proves the first derivative in the strong topology. The same estimate applied to derivatives of <span class="math" data-tex="\(f\)">\(f\)</span> proves (3.2) inductively. Continuity of each derivative follows from the mean-value bound with one further derivative, uniformly on <span class="math" data-tex="\(B\)">\(B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-smoothing-equivalence">The smoothing equivalence</h2>
+<p>Let <span class="math" data-tex="\(T:\mathcal D(V)\to\mathcal D&#x27;(U)\)">\(T:\mathcal D(V)\to\mathcal D&#x27;(U)\)</span> be weakly continuous, and let <span class="math" data-tex="\(K\)">\(K\)</span> be its kernel from the preceding lesson.</p>
+<p><strong>Theorem 4.1 (smooth kernels and smoothing operators).</strong> The following statements are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(K\)">\(K\)</span> is represented by a function <span class="math" data-tex="\(k\in C^\infty(U\times V)\)">\(k\in C^\infty(U\times V)\)</span>.</li>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> extends to a continuous linear map <span class="math" data-tex="\(S:\mathcal E&#x27;_b(V)\to C^\infty(U)\)">\(S:\mathcal E&#x27;_b(V)\to C^\infty(U)\)</span>, where the input has its strong dual topology.</li>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> extends to a linear map <span class="math" data-tex="\(S:\mathcal E&#x27;(V)\to C^\infty(U)\)">\(S:\mathcal E&#x27;(V)\to C^\infty(U)\)</span> carrying every sequence converging as in (1.2) to a sequence converging in every smooth seminorm on compact subsets of <span class="math" data-tex="\(U\)">\(U\)</span>.</li>
+</ol>
+<p>The extension is unique in either class, and is
+<span class="math math-display" data-tex="\[
+Su(x)=\langle u(y),k(x,y)\rangle.
+\tag{4.1}
+\]">\[
+Su(x)=\langle u(y),k(x,y)\rangle.
+\tag{4.1}
+\]</span>
+Neither <span class="math" data-tex="\(k\)">\(k\)</span> nor its derivatives need be bounded on the whole product. There is no proper-support assumption in this theorem.</p>
+<p><strong>Proof that a smooth kernel gives a continuous extension.</strong> For a compact distribution <span class="math" data-tex="\(u\)">\(u\)</span>, (1.1) and Taylor's formula for the smooth function <span class="math" data-tex="\(k\)">\(k\)</span> show that (4.1) is smooth and
+<span class="math math-display" data-tex="\[
+\partial_x^\alpha Su(x)
+=\langle u(y),\partial_x^\alpha k(x,y)\rangle.
+\tag{4.2}
+\]">\[
+\partial_x^\alpha Su(x)
+=\langle u(y),\partial_x^\alpha k(x,y)\rangle.
+\tag{4.2}
+\]</span>
+For example, the first difference quotient in <span class="math" data-tex="\(x\)">\(x\)</span> converges in the <span class="math" data-tex="\(C^r\)">\(C^r\)</span> seminorm in <span class="math" data-tex="\(y\)">\(y\)</span> on the compact set controlling <span class="math" data-tex="\(u\)">\(u\)</span>; its pairing therefore converges. The same reasoning works at every order.</p>
+<p>Fix <span class="math" data-tex="\(L\Subset U\)">\(L\Subset U\)</span> and an integer <span class="math" data-tex="\(a\)">\(a\)</span>. The family
+<span class="math math-display" data-tex="\[
+B_{L,a}=\{\partial_x^\alpha k(x,\cdot):x\in L,\ |\alpha|\le a\}
+\]">\[
+B_{L,a}=\{\partial_x^\alpha k(x,\cdot):x\in L,\ |\alpha|\le a\}
+\]</span>
+is bounded in <span class="math" data-tex="\(\mathcal E(V)\)">\(\mathcal E(V)\)</span>. For every <span class="math" data-tex="\(M\Subset V\)">\(M\Subset V\)</span> and every <span class="math" data-tex="\(r\)">\(r\)</span>, all mixed derivatives in question are bounded on <span class="math" data-tex="\(L\times M\)">\(L\times M\)</span>, by compactness. Formula (4.2) gives
+<span class="math math-display" data-tex="\[
+p_{L,a}(Su)\le q_{B_{L,a}}(u).
+\tag{4.3}
+\]">\[
+p_{L,a}(Su)\le q_{B_{L,a}}(u).
+\tag{4.3}
+\]</span>
+This proves strong-dual continuity. For a smooth compactly supported input, (4.1) is the integral against <span class="math" data-tex="\(k\)">\(k\)</span>, so it agrees with <span class="math" data-tex="\(T\)">\(T\)</span> by kernel uniqueness. Lemma 2.1 shows that a weakly convergent input sequence is strongly convergent, proving statement 3 too.</p>
+<p><strong>Proof that a continuous extension has a smooth kernel.</strong> First assume statement 2 and set
+<span class="math math-display" data-tex="\[
+k(x,y)=(S\delta_y)(x).
+\tag{4.4}
+\]">\[
+k(x,y)=(S\delta_y)(x).
+\tag{4.4}
+\]</span>
+Lemma 3.1 and continuity of <span class="math" data-tex="\(S\)">\(S\)</span> imply that <span class="math" data-tex="\(y\mapsto S\delta_y\)">\(y\mapsto S\delta_y\)</span> has continuous derivatives of every order with values in <span class="math" data-tex="\(C^\infty(U)\)">\(C^\infty(U)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\partial_x^\alpha\partial_y^\beta k(x,y)
+=(-1)^{|\beta|}
+\big(\partial_x^\alpha S(\partial_t^\beta\delta_y)\big)(x).
+\tag{4.5}
+\]">\[
+\partial_x^\alpha\partial_y^\beta k(x,y)
+=(-1)^{|\beta|}
+\big(\partial_x^\alpha S(\partial_t^\beta\delta_y)\big)(x).
+\tag{4.5}
+\]</span>
+These derivatives are jointly continuous. To check this, let <span class="math" data-tex="\((x_j,y_j)\to(x,y)\)">\((x_j,y_j)\to(x,y)\)</span> in one compact product neighborhood. The corresponding functions of <span class="math" data-tex="\(x\)">\(x\)</span> on the right of (4.5) converge uniformly on that neighborhood as <span class="math" data-tex="\(y_j\to y\)">\(y_j\to y\)</span>; evaluation at <span class="math" data-tex="\(x_j\)">\(x_j\)</span>, followed by continuity of the limiting function, gives convergence of their values. Thus <span class="math" data-tex="\(k\in C^\infty(U\times V)\)">\(k\in C^\infty(U\times V)\)</span>.</p>
+<p>If only statement 3 is assumed, the same argument still works. Every parameter difference quotient in Lemma 3.1 converges weakly as well as strongly. Applying <span class="math" data-tex="\(S\)">\(S\)</span> gives convergence in <span class="math" data-tex="\(C^\infty(U)\)">\(C^\infty(U)\)</span>. The parameter derivatives are continuous because a convergent sequence of parameters gives weak convergence of the corresponding derivatives of point masses. Sequential continuity suffices to establish continuity for this finite-dimensional parameter space. Induction gives (4.5) and the same joint smoothness.</p>
+<p>It remains to identify this smooth function with the kernel of <span class="math" data-tex="\(T\)">\(T\)</span>. For <span class="math" data-tex="\(\phi\in\mathcal D(V)\)">\(\phi\in\mathcal D(V)\)</span>, approximate the integral <span class="math" data-tex="\(\int\phi(y)\delta_y\,dy\)">\(\int\phi(y)\delta_y\,dy\)</span> by Riemann sums in a finite collection of rectangles covering its support. These sums converge to the regular distribution <span class="math" data-tex="\(\phi\)">\(\phi\)</span> strongly in <span class="math" data-tex="\(\mathcal E&#x27;(V)\)">\(\mathcal E&#x27;(V)\)</span>: on a bounded family of smooth functions the integrands <span class="math" data-tex="\(\phi(y)f(y)\)">\(\phi(y)f(y)\)</span> have a uniform derivative bound on the fixed compact integration region, so the Riemann-sum errors tend to zero uniformly. They also converge weakly. Applying either type of <span class="math" data-tex="\(S\)">\(S\)</span> therefore gives
+<span class="math math-display" data-tex="\[
+S\phi=\int\phi(y)S\delta_y\,dy
+=\int\phi(y)k(\cdot,y)\,dy
+\quad\text{in }C^\infty(U).
+\]">\[
+S\phi=\int\phi(y)S\delta_y\,dy
+=\int\phi(y)k(\cdot,y)\,dy
+\quad\text{in }C^\infty(U).
+\]</span>
+The last Riemann sums converge in each smooth output seminorm by smoothness on compact products. Thus the function kernel <span class="math" data-tex="\(k\)">\(k\)</span> gives the same test-input operator as <span class="math" data-tex="\(K\)">\(K\)</span>; kernel uniqueness shows they agree as distributions.</p>
+<p>Finally Lemma 2.2 approximates every compact distribution by smooth compactly supported inputs. Continuity, or the sequential property in statement 3, proves that the extension must be (4.1) and is unique. Since the smooth-kernel construction already satisfies (4.3), statement 3 also implies statement 2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof explains why output smoothness on test inputs alone cannot establish the theorem: (4.4) needs the operator to act on point masses, and (4.5) needs controlled limits of their difference quotients.</p>
+<h2 id="a-smooth-kernel-can-have-no-global-size-bound">A smooth kernel can have no global size bound</h2>
+<p>Consider
+<span class="math math-display" data-tex="\[
+k(x,y)=e^{xy}+\sin(x+y^3)
+\quad\text{on }\mathbb R^2.
+\]">\[
+k(x,y)=e^{xy}+\sin(x+y^3)
+\quad\text{on }\mathbb R^2.
+\]</span>
+This function and its mixed derivatives are bounded on every compact product but have no useful uniform bound on the whole plane. The theorem still supplies a continuous map <span class="math" data-tex="\(\mathcal E&#x27;_b(\mathbb R)\to C^\infty(\mathbb R)\)">\(\mathcal E&#x27;_b(\mathbb R)\to C^\infty(\mathbb R)\)</span>. For instance,
+<span class="math math-display" data-tex="\[
+S\delta_a(x)=e^{ax}+\sin(x+a^3),
+\]">\[
+S\delta_a(x)=e^{ax}+\sin(x+a^3),
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+S\delta&#x27;_a(x)=-xe^{ax}-3a^2\cos(x+a^3).
+\]">\[
+S\delta&#x27;_a(x)=-xe^{ax}-3a^2\cos(x+a^3).
+\]</span>
+The minus sign is the sign of spatial distributional differentiation. Its input can have any fixed compact support; the output estimate uses a bounded family in <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span>, not a bound uniform over the whole plane.</p>
+<p>The theorem's domain is compactly supported distributions. Extensions to arbitrary distributions require additional input-support control. For those geometric support conditions, see <a href="geometric-microlocal-calculus.html">Detecting regularity without choosing coordinates</a>. Smoothness and support control answer different questions.</p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (basic: a dipole under Gaussian smoothing).</strong> For <span class="math" data-tex="\(k(x,y)=e^{-(x-y)^2}\)">\(k(x,y)=e^{-(x-y)^2}\)</span>, compute <span class="math" data-tex="\(S(2\delta_{-1}-\delta&#x27;_2)\)">\(S(2\delta_{-1}-\delta&#x27;_2)\)</span>. State a formula for <span class="math" data-tex="\(S\partial_y^j\delta_a\)">\(S\partial_y^j\delta_a\)</span>, with the sign convention made explicit.</p>
+<p><strong>Exercise 2 (intermediate: smoothing only to finite order).</strong> Fix an integer <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>. Let
+<span class="math math-display" data-tex="\[
+a(x)=|x|^{r+1/2},\qquad
+Su(x)=a(x)\langle u,e^{-y^2}\rangle.
+\]">\[
+a(x)=|x|^{r+1/2},\qquad
+Su(x)=a(x)\langle u,e^{-y^2}\rangle.
+\]</span>
+Show that <span class="math" data-tex="\(S:\mathcal E&#x27;_b(\mathbb R)\to C^r(\mathbb R)\)">\(S:\mathcal E&#x27;_b(\mathbb R)\to C^r(\mathbb R)\)</span> is continuous, but its kernel is not smooth. Explain the role of all derivative orders in Theorem 4.1.</p>
+<p><strong>Exercise 3 (intermediate: smooth outputs on test inputs).</strong> Show that the identity <span class="math" data-tex="\(I:\mathcal D(\mathbb R)\to C^\infty(\mathbb R)\)">\(I:\mathcal D(\mathbb R)\to C^\infty(\mathbb R)\)</span> is continuous, but has no extension of either type in Theorem 4.1. Prove this directly using an approximate identity converging to <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>.</p>
+<p><strong>Exercise 4 (advanced: extracting a kernel from moving point masses).</strong> Suppose <span class="math" data-tex="\(S\)">\(S\)</span> is continuous as in statement 2 of Theorem 4.1. Derive a compact-set estimate for
+<span class="math math-display" data-tex="\[
+\frac{k(x,y+h)-k(x,y)}{h}-\partial_yk(x,y)
+\]">\[
+\frac{k(x,y+h)-k(x,y)}{h}-\partial_yk(x,y)
+\]</span>
+that tends to zero uniformly in <span class="math" data-tex="\(x\)">\(x\)</span> on a fixed compact set, in the one-dimensional input case. Explain why differentiating <span class="math" data-tex="\(S\delta_y\)">\(S\delta_y\)</span> is legitimate, while applying an arbitrary linear map to a difference quotient would not be.</p>
+<p><strong>Exercise 5 (advanced: finite-rank approximation of a smoothing operator).</strong> Let <span class="math" data-tex="\(k_j\in C^\infty(U\times V)\)">\(k_j\in C^\infty(U\times V)\)</span> converge to <span class="math" data-tex="\(k\)">\(k\)</span> with all derivatives on compact products. Show that the corresponding maps <span class="math" data-tex="\(S_j\)">\(S_j\)</span> converge to <span class="math" data-tex="\(S\)">\(S\)</span>, uniformly on each bounded subset of <span class="math" data-tex="\(\mathcal E&#x27;_b(V)\)">\(\mathcal E&#x27;_b(V)\)</span>, in every smooth output seminorm. Explain how locally cut-off Fourier expansions give a sequence of finite sums <span class="math" data-tex="\(k_j(x,y)=\sum_{a=1}^{N_j}f_{j,a}(x)g_{j,a}(y)\)">\(k_j(x,y)=\sum_{a=1}^{N_j}f_{j,a}(x)g_{j,a}(y)\)</span> with this convergence.</p>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> Since <span class="math" data-tex="\(\partial_yk(x,y)=2(x-y)e^{-(x-y)^2}\)">\(\partial_yk(x,y)=2(x-y)e^{-(x-y)^2}\)</span>,
+<span class="math math-display" data-tex="\[
+S(2\delta_{-1}-\delta&#x27;_2)(x)
+=2e^{-(x+1)^2}+2(x-2)e^{-(x-2)^2}.
+\]">\[
+S(2\delta_{-1}-\delta&#x27;_2)(x)
+=2e^{-(x+1)^2}+2(x-2)e^{-(x-2)^2}.
+\]</span>
+Generally the spatial derivative of the input point mass satisfies
+<span class="math math-display" data-tex="\[
+S(\partial_y^j\delta_a)(x)
+=(-1)^j\partial_a^j e^{-(x-a)^2}.
+\]">\[
+S(\partial_y^j\delta_a)(x)
+=(-1)^j\partial_a^j e^{-(x-a)^2}.
+\]</span>
+Here <span class="math" data-tex="\(\partial_y^j\delta_a\)">\(\partial_y^j\delta_a\)</span> denotes distributional differentiation in its test variable; parameter differentiation in <span class="math" data-tex="\(a\)">\(a\)</span> would have the opposite sign at odd orders.</p>
+<p><strong>Solution 2.</strong> On either side of zero, a derivative of order <span class="math" data-tex="\(j\le r\)">\(j\le r\)</span> is a constant times <span class="math" data-tex="\(|x|^{r+1/2-j}\)">\(|x|^{r+1/2-j}\)</span>, with a possible sign factor. It tends to zero at zero. Inductively these derivatives extend continuously there, so <span class="math" data-tex="\(a\in C^r\)">\(a\in C^r\)</span>. The derivative of order <span class="math" data-tex="\(r+1\)">\(r+1\)</span> on a half-line is a nonzero constant times <span class="math" data-tex="\(|x|^{-1/2}\)">\(|x|^{-1/2}\)</span>, which cannot extend continuously. For a compact <span class="math" data-tex="\(L\)">\(L\)</span>,
+<span class="math math-display" data-tex="\[
+\|Su\|_{C^r(L)}\le\|a\|_{C^r(L)}q_{\{e^{-y^2}\}}(u),
+\]">\[
+\|Su\|_{C^r(L)}\le\|a\|_{C^r(L)}q_{\{e^{-y^2}\}}(u),
+\]</span>
+proving continuity. The kernel is the function <span class="math" data-tex="\(a(x)e^{-y^2}\)">\(a(x)e^{-y^2}\)</span>, which is not <span class="math" data-tex="\(C^{r+1}\)">\(C^{r+1}\)</span> near <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. The smooth conclusion of Theorem 4.1 requires output estimates and parameter derivatives at every order, rather than at one prescribed finite order.</p>
+<p><strong>Solution 3.</strong> On every fixed test-support space, the inclusion into <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span> is continuous, so the inductive-limit property gives continuity of <span class="math" data-tex="\(I\)">\(I\)</span>. Choose a nonnegative bump <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of integral one with <span class="math" data-tex="\(\rho(0)&gt;0\)">\(\rho(0)&gt;0\)</span>. Its rescalings <span class="math" data-tex="\(\rho_\varepsilon(x)=\varepsilon^{-1}\rho(x/\varepsilon)\)">\(\rho_\varepsilon(x)=\varepsilon^{-1}\rho(x/\varepsilon)\)</span> converge strongly, and therefore weakly, to <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> in <span class="math" data-tex="\(\mathcal E&#x27;\)">\(\mathcal E&#x27;\)</span>, by Lemma 2.2. An extension would make <span class="math" data-tex="\(I\rho_\varepsilon=\rho_\varepsilon\)">\(I\rho_\varepsilon=\rho_\varepsilon\)</span> converge in <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span>. But their values at zero are <span class="math" data-tex="\(\varepsilon^{-1}\rho(0)\)">\(\varepsilon^{-1}\rho(0)\)</span>, which diverge. Even uniform convergence near zero is impossible. The identity kernel is the distribution on the diagonal, rather than a smooth function.</p>
+<p><strong>Solution 4.</strong> Continuity of <span class="math" data-tex="\(S\)">\(S\)</span> for the output seminorm <span class="math" data-tex="\(p_{L,0}\)">\(p_{L,0}\)</span> gives finitely many bounded test families and constants controlling it. Combine those families, with the constants absorbed by scaling, into one bounded <span class="math" data-tex="\(B\subset\mathcal E(V)\)">\(B\subset\mathcal E(V)\)</span>; then <span class="math" data-tex="\(p_{L,0}(Sv)\le Cq_B(v)\)">\(p_{L,0}(Sv)\le Cq_B(v)\)</span>. For <span class="math" data-tex="\(y,y+h\)">\(y,y+h\)</span> in a fixed compact interval <span class="math" data-tex="\(M\Subset V\)">\(M\Subset V\)</span>, Lemma 3.1 gives
+<span class="math math-display" data-tex="\[
+\sup_{x\in L}\left|
+\frac{k(x,y+h)-k(x,y)}{h}-\partial_y k(x,y)
+\right|
+\le \frac{C|h|}{2}\sup_{f\in B}p_{M,2}(f).
+\]">\[
+\sup_{x\in L}\left|
+\frac{k(x,y+h)-k(x,y)}{h}-\partial_y k(x,y)
+\right|
+\le \frac{C|h|}{2}\sup_{f\in B}p_{M,2}(f).
+\]</span>
+The right side is finite and tends to zero. Replacing the output seminorm by <span class="math" data-tex="\(p_{L,a}\)">\(p_{L,a}\)</span> proves the same result with every output derivative. The operation is legitimate because continuity of <span class="math" data-tex="\(S\)">\(S\)</span> transfers a proved strong-dual remainder estimate to a smooth-output remainder estimate. Algebraic linearity alone provides no such transfer of limits.</p>
+<p><strong>Solution 5.</strong> A bounded subset <span class="math" data-tex="\(A\subset\mathcal E&#x27;_b(V)\)">\(A\subset\mathcal E&#x27;_b(V)\)</span> is pointwise bounded, since each singleton <span class="math" data-tex="\(\{f\}\)">\(\{f\}\)</span> is bounded in <span class="math" data-tex="\(\mathcal E(V)\)">\(\mathcal E(V)\)</span>. The last assertion of Lemma 2.1 gives one <span class="math" data-tex="\(C,M,r\)">\(C,M,r\)</span> such that
+<span class="math math-display" data-tex="\[
+|\langle u,f\rangle|\le Cp_{M,r}(f)
+\quad(u\in A).
+\]">\[
+|\langle u,f\rangle|\le Cp_{M,r}(f)
+\quad(u\in A).
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+\sup_{u\in A}p_{L,a}((S_j-S)u)
+\le C\max_{|\alpha|\le a,\ |\beta|\le r}
+\sup_{L\times M}|\partial_x^\alpha\partial_y^\beta(k_j-k)|,
+\]">\[
+\sup_{u\in A}p_{L,a}((S_j-S)u)
+\le C\max_{|\alpha|\le a,\ |\beta|\le r}
+\sup_{L\times M}|\partial_x^\alpha\partial_y^\beta(k_j-k)|,
+\]</span>
+which tends to zero.</p>
+<p>For the finite-sum construction, exhaust <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> by compact sets with interiors, and choose compact cutoffs equal to one on the <span class="math" data-tex="\(j\)">\(j\)</span>-th sets. Split their product times <span class="math" data-tex="\(k\)">\(k\)</span> into finitely many pieces supported in product rectangles, using product partitions. Expand each piece periodically on a larger product rectangle and multiply the modes by separate cutoffs, as in Section 3 of the preceding lesson. Finite Fourier sums are finite sums of functions of <span class="math" data-tex="\(x\)">\(x\)</span> times functions of <span class="math" data-tex="\(y\)">\(y\)</span>. Choose their truncation sufficiently large to approximate derivatives through order <span class="math" data-tex="\(j\)">\(j\)</span> on the <span class="math" data-tex="\(j\)">\(j\)</span>-th compact product within <span class="math" data-tex="\(1/j\)">\(1/j\)</span>. Summing the finitely many pieces gives <span class="math" data-tex="\(k_j\)">\(k_j\)</span>. On every fixed compact product, the outer cutoffs eventually equal one and the derivative errors tend to zero. Thus <span class="math" data-tex="\(k_j\to k\)">\(k_j\to k\)</span> in <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span> on compact products. Each corresponding operator has finite-dimensional range, spanned by its finitely many <span class="math" data-tex="\(f_{j,a}\)">\(f_{j,a}\)</span>'s. The estimate above proves the claimed operator convergence.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, MIT, 2026. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Open notes</a>.</li>
+<li>[Melrose 2016] Richard Melrose, <em>18.155 Lecture 15: Schwartz's kernel theorem</em>, MIT, 2016. <a href="https://math.mit.edu/~rbm/18.155-F16/L15.pdf">Open lecture</a>.</li>
+<li>[Schwartz 1952] Laurent Schwartz, <em>Théorie des noyaux</em>, Proceedings of the International Congress of Mathematicians, Cambridge, Massachusetts, 1950, volume I, American Mathematical Society, 1952. <a href="https://www.mathunion.org/icm/proceedings">Proceedings archive</a>.</li>
+</ul>
+<p><a href="src/when-a-kernel-is-smooth.md">Download the complete original CC0 source</a>.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

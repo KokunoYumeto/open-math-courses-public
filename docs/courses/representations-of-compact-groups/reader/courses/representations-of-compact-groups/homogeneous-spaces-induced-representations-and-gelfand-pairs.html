@@ -1,0 +1,556 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Homogeneous spaces, induced representations and Gelfand pairs</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Representations of compact groups</a><a href="casimir-operators-laplacians-and-tensor-products.html">Previous lesson</a></nav></header><main id="main"><article class="math"><h1 id="homogeneous-spaces-induced-representations-and-gelfand-pairs">Homogeneous spaces, induced representations and Gelfand pairs</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. No separate AI review of this revision is recorded. Public domain (CC0). Revised and self-checked on 3 October 2026 by GPT-6.1 Sol (OpenAI), Ultra effort.</em></p>
+<p>Choosing an observation point in a space with symmetry also chooses its stabilizer. Functions on that space are the group functions that ignore motion inside this stabilizer. In Peter–Weyl coordinates, ignoring those motions is an orthogonal projection on each finite coefficient space. This turns the geometric question “which modes can be observed here?” into a fixed-vector calculation.</p>
+<p>We first perform that compression for scalar functions. It gives the multiplicity formula and the criterion for commuting invariant filters. A finite permutation space makes both statements concrete. We then allow vector values with a prescribed stabilizer action; a circle example shows how this changes the permitted frequencies, and full Frobenius reciprocity identifies all multiplicity spaces. Finally, on spheres the scalar compression produces harmonic polynomials and normalized Gegenbauer coefficients.</p>
+<p>Throughout, <span class="math" data-tex="\(G\)">\(G\)</span> is compact Hausdorff and <span class="math" data-tex="\(K\)">\(K\)</span> is closed. Haar measures have mass one and inner products are linear in the first variable. We use <a href="matrix-coefficients-and-the-peter-weyl-theorem.html">Peter–Weyl and coefficient orthogonality</a> and the <a href="fourier-analysis-and-class-functions-on-compact-groups.html">Fourier convention</a>
+<span class="math math-display" data-tex="\[
+\widehat f(\pi)=\int_G f(g)\pi(g)^*\,dg,\qquad
+(f*h)(g)=\int_G f(x)h(x^{-1}g)\,dx.
+\tag{1.1}
+\]">\[
+\widehat f(\pi)=\int_G f(g)\pi(g)^*\,dg,\qquad
+(f*h)(g)=\int_G f(x)h(x^{-1}g)\,dx.
+\tag{1.1}
+\]</span>
+Thus <span class="math" data-tex="\(\widehat{f*h}(\pi)=\widehat h(\pi)\widehat f(\pi)\)">\(\widehat{f*h}(\pi)=\widehat h(\pi)\widehat f(\pi)\)</span>. No countability assumption on <span class="math" data-tex="\(G\)">\(G\)</span> is imposed.</p>
+<h2 id="quotient-measure-and-invariant-functions">Quotient measure and invariant functions</h2>
+<p>The space <span class="math" data-tex="\(G/K\)">\(G/K\)</span> is compact Hausdorff: the equivalence relation <span class="math" data-tex="\(xK=yK\)">\(xK=yK\)</span> is closed, since <span class="math" data-tex="\(x^{-1}y\in K\)">\(x^{-1}y\in K\)</span>. Let <span class="math" data-tex="\(q:G\to G/K\)">\(q:G\to G/K\)</span> be its quotient map and let <span class="math" data-tex="\(\mu=q_*dg\)">\(\mu=q_*dg\)</span>. It is a <span class="math" data-tex="\(G\)">\(G\)</span>-invariant probability measure with full support. Indeed, inverse images of nonempty open sets are nonempty open subsets of <span class="math" data-tex="\(G\)">\(G\)</span>, and such sets have positive Haar measure.</p>
+<p id="result-proposition-1-2"><strong>Proposition 1.2 (compact Weil formula).</strong> This is the unique invariant probability measure on <span class="math" data-tex="\(G/K\)">\(G/K\)</span>, and for <span class="math" data-tex="\(f\in C(G)\)">\(f\in C(G)\)</span>,
+<span class="math math-display" data-tex="\[
+\int_G f(g)\,dg
+=\int_{G/K}\int_K f(gk)\,dk\,d\mu(gK).
+\tag{1.3}
+\]">\[
+\int_G f(g)\,dg
+=\int_{G/K}\int_K f(gk)\,dk\,d\mu(gK).
+\tag{1.3}
+\]</span>
+Pullback by <span class="math" data-tex="\(q\)">\(q\)</span> identifies <span class="math" data-tex="\(L^2(G/K,\mu)\)">\(L^2(G/K,\mu)\)</span> unitarily with the right-<span class="math" data-tex="\(K\)">\(K\)</span>-fixed subspace of <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>.</p>
+<p><em>Proof.</em> The inner integral is continuous and right-<span class="math" data-tex="\(K\)">\(K\)</span>-invariant, so descends to the quotient. By the definition of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, the right side is <span class="math" data-tex="\(\int_G\int_Kf(gk)\,dk\,dg=\int_Gf(g)\,dg\)">\(\int_G\int_Kf(gk)\,dk\,dg=\int_Gf(g)\,dg\)</span>, using Fubini and right invariance.</p>
+<p>If <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is another invariant probability measure and <span class="math" data-tex="\(u\in C(G/K)\)">\(u\in C(G/K)\)</span>, invariance gives
+<span class="math math-display" data-tex="\[
+\int u\,d\nu
+=\int_{G/K}\int_Gu(xgK)\,dx\,d\nu(gK).
+\]">\[
+\int u\,d\nu
+=\int_{G/K}\int_Gu(xgK)\,dx\,d\nu(gK).
+\]</span>
+The inner integral equals <span class="math" data-tex="\(\int_Gu(xK)\,dx\)">\(\int_Gu(xK)\,dx\)</span>, independently of <span class="math" data-tex="\(gK\)">\(gK\)</span>, by right Haar invariance. Thus <span class="math" data-tex="\(\nu=\mu\)">\(\nu=\mu\)</span>.</p>
+<p>Pullback is an isometry by the pushforward definition. On <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>, the operator
+<span class="math math-display" data-tex="\[
+P_Kf=\int_K R_kf\,dk,\qquad R_kf(g)=f(gk),
+\tag{1.4}
+\]">\[
+P_Kf=\int_K R_kf\,dk,\qquad R_kf(g)=f(gk),
+\tag{1.4}
+\]</span>
+is the orthogonal projection onto the common fixed space of the <span class="math" data-tex="\(R_k\)">\(R_k\)</span>'s: Haar averaging is self-adjoint, idempotent and fixes exactly the fixed vectors. Strong continuity of right translations makes the vector integral legitimate. Averaging continuous approximants shows that its range is the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> closure of the continuous right-invariant functions. Those are exactly pullbacks of <span class="math" data-tex="\(C(G/K)\)">\(C(G/K)\)</span>, which is dense in <span class="math" data-tex="\(L^2(G/K,\mu)\)">\(L^2(G/K,\mu)\)</span>. Hence the closed isometric image of pullback is precisely that range. All fixed-space equalities refer to <span class="math" data-tex="\(L^2\)">\(L^2\)</span> classes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For compact abelian groups, <a href="../HA-LCA/HA-LCA-10.html#section-4"><strong>HA-LCA-10, Theorem 4.1</strong></a> proves the general subgroup–quotient Weil formula, with compatible Haar measures. Equation (1.3) proves the compact case here, including nonnormal <span class="math" data-tex="\(K\)">\(K\)</span>; no quotient group is required.</p>
+<h2 id="compressing-a-coefficient-space-to-an-observation-space">Compressing a coefficient space to an observation space</h2>
+<p>Write a coefficient in the form
+<span class="math math-display" data-tex="\[
+f_{v,\ell}(g)=\ell(\pi(g^{-1})v),\qquad v\in V_\pi,\quad\ell\in V_\pi^*.
+\]">\[
+f_{v,\ell}(g)=\ell(\pi(g^{-1})v),\qquad v\in V_\pi,\quad\ell\in V_\pi^*.
+\]</span>
+Then <span class="math" data-tex="\(L_xf_{v,\ell}=f_{\pi(x)v,\ell}\)">\(L_xf_{v,\ell}=f_{\pi(x)v,\ell}\)</span>, while <span class="math" data-tex="\(R_kf_{v,\ell}=f_{v,\pi^*(k)\ell}\)">\(R_kf_{v,\ell}=f_{v,\pi^*(k)\ell}\)</span>. The coefficient basis from lesson 2, with its <span class="math" data-tex="\(\sqrt{d_\pi}\)">\(\sqrt{d_\pi}\)</span> normalization, identifies the <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-type for the left action with <span class="math" data-tex="\(V_\pi\otimes V_\pi^*\)">\(V_\pi\otimes V_\pi^*\)</span>. Averaging the right <span class="math" data-tex="\(K\)">\(K\)</span> action therefore preserves the first factor and projects the second onto <span class="math" data-tex="\((V_\pi^*)^K\)">\((V_\pi^*)^K\)</span>. Proposition 1.2 identifies the range of this average with <span class="math" data-tex="\(L^2(G/K)\)">\(L^2(G/K)\)</span>, so
+<span class="math math-display" data-tex="\[
+L^2(G/K)\simeq
+\widehat{\bigoplus}_{\pi\in\widehat G}
+V_\pi\otimes(V_\pi^*)^K,\qquad
+\operatorname{mult}(\pi,L^2(G/K))=\dim V_\pi^K.
+\tag{2.5}
+\]">\[
+L^2(G/K)\simeq
+\widehat{\bigoplus}_{\pi\in\widehat G}
+V_\pi\otimes(V_\pi^*)^K,\qquad
+\operatorname{mult}(\pi,L^2(G/K))=\dim V_\pi^K.
+\tag{2.5}
+\]</span>
+The last equality follows from the antilinear Riesz identification of <span class="math" data-tex="\(V_\pi\)">\(V_\pi\)</span> with its dual, which preserves fixed vectors for a unitary action. Projection on each block extends to the full Hilbert sum by boundedness and finite-sum density. This proves the formula without evaluating arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> functions and without choosing one exceptional null set for all of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>There are two limiting cases worth checking. If <span class="math" data-tex="\(K=\{1\}\)">\(K=\{1\}\)</span>, every dual vector survives and the regular multiplicity is <span class="math" data-tex="\(d_\pi\)">\(d_\pi\)</span>. If <span class="math" data-tex="\(K=G\)">\(K=G\)</span>, only the trivial type survives and the quotient is a point. For a general stabilizer, multiplicities can decrease to zero, but cannot exceed the regular multiplicity. A space is <strong>multiplicity free</strong> when each surviving type has multiplicity one.</p>
+<h2 id="commutativity-and-spherical-functions">Commutativity and spherical functions</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A=C(K\backslash G/K)\)">\(\mathcal A=C(K\backslash G/K)\)</span> be the continuous functions invariant under both left and right multiplication by <span class="math" data-tex="\(K\)">\(K\)</span>, with convolution (1.1). The integral triangle inequality makes it a Banach algebra in the supremum norm, since <span class="math" data-tex="\(\|f*h\|_\infty\leq\|f\|_\infty\|h\|_\infty\)">\(\|f*h\|_\infty\leq\|f\|_\infty\|h\|_\infty\)</span>. It usually has no identity.</p>
+<p id="result-theorem-3-1"><strong>Theorem 3.1.</strong> The following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(L^2(G/K)\)">\(L^2(G/K)\)</span> is multiplicity free.</li>
+<li><span class="math" data-tex="\(\dim V_\pi^K\leq1\)">\(\dim V_\pi^K\leq1\)</span> for every irreducible <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</li>
+<li><span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is commutative.</li>
+</ol>
+<p>A pair with these properties is a <strong>Gelfand pair</strong>. Multiplicity free allows irreducibles to occur zero times.</p>
+<p><em>Proof.</em> Equivalence of the first two statements is (2.5). Put <span class="math" data-tex="\(p_\pi=\int_K\pi(k)\,dk\)">\(p_\pi=\int_K\pi(k)\,dk\)</span>, the orthogonal projection onto <span class="math" data-tex="\(V_\pi^K\)">\(V_\pi^K\)</span>. The Fourier transform of any bi-invariant <span class="math" data-tex="\(f\)">\(f\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\widehat f(\pi)=p_\pi\widehat f(\pi)p_\pi.
+\tag{3.2}
+\]">\[
+\widehat f(\pi)=p_\pi\widehat f(\pi)p_\pi.
+\tag{3.2}
+\]</span>
+This follows by substituting left and right <span class="math" data-tex="\(K\)">\(K\)</span>-translations into (1.1). Conversely these equalities for all <span class="math" data-tex="\(\pi\)">\(\pi\)</span> imply both invariances, by Fourier injectivity.</p>
+<p>Every matrix on <span class="math" data-tex="\(V_\pi^K\)">\(V_\pi^K\)</span>, extended by zero on its orthogonal complement, is the Fourier block of a continuous bi-invariant coefficient function: the inversion function <span class="math" data-tex="\(d_\pi\operatorname{tr}(B\pi(g))\)">\(d_\pi\operatorname{tr}(B\pi(g))\)</span> has precisely that block and all other blocks zero, by coefficient orthogonality. Consequently if a fixed space has dimension at least two, two noncommuting matrix units supply noncommuting functions. If all fixed spaces have dimension at most one, all blocks are scalar or zero; the reversed multiplication rule and injectivity make every convolution commute. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="result-proposition-3-3"><strong>Proposition 3.3 (Gelfand's trick).</strong> Suppose <span class="math" data-tex="\(\tau:G\to G\)">\(\tau:G\to G\)</span> is a continuous involutive anti-automorphism with <span class="math" data-tex="\(\tau(g)\in KgK\)">\(\tau(g)\in KgK\)</span> for every <span class="math" data-tex="\(g\)">\(g\)</span>. Then <span class="math" data-tex="\((G,K)\)">\((G,K)\)</span> is a Gelfand pair.</p>
+<p><em>Proof.</em> An anti-automorphism preserves normalized Haar measure: composing with inversion gives an automorphism, and both preserve Haar measure on a compact group. Substitution in the convolution integral gives
+<span class="math math-display" data-tex="\[
+(f*h)\circ\tau=(h\circ\tau)*(f\circ\tau).
+\]">\[
+(f*h)\circ\tau=(h\circ\tau)*(f\circ\tau).
+\]</span>
+Every bi-invariant function is fixed by <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Their convolution is bi-invariant too, so <span class="math" data-tex="\(f*h=h*f\)">\(f*h=h*f\)</span>. Apply Theorem 3.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a Gelfand pair and an irreducible <span class="math" data-tex="\(\pi\)">\(\pi\)</span> with a fixed unit vector <span class="math" data-tex="\(v\)">\(v\)</span>, the <strong>zonal spherical function</strong> is
+<span class="math math-display" data-tex="\[
+\phi_\pi(g)=\langle\pi(g)v,v\rangle.
+\tag{3.4}
+\]">\[
+\phi_\pi(g)=\langle\pi(g)v,v\rangle.
+\tag{3.4}
+\]</span>
+It is independent of the phase of <span class="math" data-tex="\(v\)">\(v\)</span>, bi-invariant, and has value one at the identity. Coefficient orthogonality gives
+<span class="math math-display" data-tex="\[
+\|\phi_\pi\|_2^2=\frac1{d_\pi},\qquad
+\phi_\pi*\phi_\eta
+=\delta_{\pi\eta}\frac{\phi_\pi}{d_\pi}.
+\tag{3.5}
+\]">\[
+\|\phi_\pi\|_2^2=\frac1{d_\pi},\qquad
+\phi_\pi*\phi_\eta
+=\delta_{\pi\eta}\frac{\phi_\pi}{d_\pi}.
+\tag{3.5}
+\]</span>
+The nonzero multiplicative functionals of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> are precisely
+<span class="math math-display" data-tex="\[
+b_\pi(f)=\int_G f(g)\phi_\pi(g^{-1})\,dg.
+\tag{3.6}
+\]">\[
+b_\pi(f)=\int_G f(g)\phi_\pi(g^{-1})\,dg.
+\tag{3.6}
+\]</span>
+To prove this claim, (3.2) makes <span class="math" data-tex="\(\widehat f(\pi)=b_\pi(f)p_\pi\)">\(\widehat f(\pi)=b_\pi(f)p_\pi\)</span>; hence <span class="math" data-tex="\(b_\pi\)">\(b_\pi\)</span> is bounded and multiplicative. Bi-averaging the uniformly dense finite coefficient sums proves uniform density of the span of all <span class="math" data-tex="\(\phi_\pi\)">\(\phi_\pi\)</span> in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Every nonzero multiplicative linear functional <span class="math" data-tex="\(b\)">\(b\)</span> on a Banach algebra is bounded by its norm: extend it to the unitization by <span class="math" data-tex="\(b(f+c1)=b(f)+c\)">\(b(f+c1)=b(f)+c\)</span>. If <span class="math" data-tex="\(|b(f)|&gt;\|f\|\)">\(|b(f)|&gt;\|f\|\)</span>, the geometric series makes <span class="math" data-tex="\(b(f)1-f\)">\(b(f)1-f\)</span> invertible, whereas its image under the extended functional is zero, a contradiction.</p>
+<p>The elements <span class="math" data-tex="\(e_\pi=d_\pi\phi_\pi\)">\(e_\pi=d_\pi\phi_\pi\)</span> are orthogonal idempotents. Density and continuity imply <span class="math" data-tex="\(b(e_\pi)\ne0\)">\(b(e_\pi)\ne0\)</span> for some <span class="math" data-tex="\(\pi\)">\(\pi\)</span>; that value must be one. Moreover <span class="math" data-tex="\(f*e_\pi=b_\pi(f)e_\pi\)">\(f*e_\pi=b_\pi(f)e_\pi\)</span>, by its Fourier blocks. Applying <span class="math" data-tex="\(b\)">\(b\)</span> proves <span class="math" data-tex="\(b=b_\pi\)">\(b=b_\pi\)</span>, and orthogonal idempotents give uniqueness. Thus (3.6) means a functional obtained by integrating against the spherical function, rather than point evaluation at a group element.</p>
+<h2 id="a-finite-observation-space">A finite observation space</h2>
+<p>For <span class="math" data-tex="\(S_m/S_{m-1}\)">\(S_m/S_{m-1}\)</span>, <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, the coset representation is <span class="math" data-tex="\(\mathbb C^m=\mathbb C(1,\ldots,1)\oplus W\)">\(\mathbb C^m=\mathbb C(1,\ldots,1)\oplus W\)</span>, where <span class="math" data-tex="\(W\)">\(W\)</span> consists of the zero-sum vectors. It is irreducible: in any nonzero invariant subspace of <span class="math" data-tex="\(W\)">\(W\)</span>, choose <span class="math" data-tex="\(a\)">\(a\)</span> with unequal coordinates. Subtract its image under the transposition of those coordinates; the result is a nonzero multiple of <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span>. All such differences are permutation translates and span <span class="math" data-tex="\(W\)">\(W\)</span>. Thus the coset representation has two inequivalent irreducibles, each once, and the pair is Gelfand. With <span class="math" data-tex="\(S_{m-1}\)">\(S_{m-1}\)</span> fixing <span class="math" data-tex="\(m\)">\(m\)</span>, its nontrivial spherical function is <span class="math" data-tex="\(1\)">\(1\)</span> when <span class="math" data-tex="\(g(m)=m\)">\(g(m)=m\)</span> and <span class="math" data-tex="\(-1/(m-1)\)">\(-1/(m-1)\)</span> otherwise: use the normalized vector proportional to <span class="math" data-tex="\(e_m-\frac1m(1,\ldots,1)\)">\(e_m-\frac1m(1,\ldots,1)\)</span>. The trivial spherical function is constant one.</p>
+<p>An invariant operator on the <span class="math" data-tex="\(m\)">\(m\)</span> observation points has a matrix with a common diagonal entry and a common off-diagonal entry: simultaneous permutation of its two indices preserves exactly the cases “same point” and “different point”. Hence it is <span class="math" data-tex="\(aI+bJ\)">\(aI+bJ\)</span>, where <span class="math" data-tex="\(J\)">\(J\)</span> is the all-ones matrix. Such operators commute. The constant line and the zero-sum space are their common scalar-response spaces. This is the matrix form of the Gelfand criterion above, rather than an extra classification assumption.</p>
+<h2 id="prescribing-a-stabilizer-response-changes-the-frequencies">Prescribing a stabilizer response changes the frequencies</h2>
+<p>Before defining vector-valued induction, consider the circle <span class="math" data-tex="\(G=\mathbb T\)">\(G=\mathbb T\)</span> and its subgroup <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(q\)">\(q\)</span>-th roots of unity, <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>. Let <span class="math" data-tex="\(\sigma(k)=k^r\)">\(\sigma(k)=k^r\)</span>, where <span class="math" data-tex="\(r\)">\(r\)</span> is an integer taken modulo <span class="math" data-tex="\(q\)">\(q\)</span>. A scalar function with this prescribed covariance satisfies <span class="math" data-tex="\(F(gk)=k^{-r}F(g)\)">\(F(gk)=k^{-r}F(g)\)</span>. The circle basis <span class="math" data-tex="\(e_n(g)=g^n\)">\(e_n(g)=g^n\)</span> satisfies it precisely when <span class="math" data-tex="\(n+r\)">\(n+r\)</span> is divisible by <span class="math" data-tex="\(q\)">\(q\)</span>. Indeed the projection onto the permitted functions is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(P_rF)(g)&amp;=\frac1q\sum_{k\in K}k^rF(gk),\\
+P_re_n&amp;=\left(\frac1q\sum_{k\in K}k^{n+r}\right)e_n.
+\end{aligned}
+\]">\[
+\begin{aligned}
+(P_rF)(g)&amp;=\frac1q\sum_{k\in K}k^rF(gk),\\
+P_re_n&amp;=\left(\frac1q\sum_{k\in K}k^{n+r}\right)e_n.
+\end{aligned}
+\]</span>
+The geometric sum in parentheses is one in that congruence class and zero otherwise. Thus the permitted functions have the complete orthonormal basis <span class="math" data-tex="\(e_{qj-r}\)">\(e_{qj-r}\)</span>, <span class="math" data-tex="\(j\in\mathbb Z\)">\(j\in\mathbb Z\)</span>. Left translation by <span class="math" data-tex="\(x\)">\(x\)</span> acts on <span class="math" data-tex="\(e_n\)">\(e_n\)</span> by <span class="math" data-tex="\(x^{-n}\)">\(x^{-n}\)</span>; the resulting representation labels are exactly the integers congruent to <span class="math" data-tex="\(r\)">\(r\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span>. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> these are ordinary quotient functions; nonzero <span class="math" data-tex="\(r\)">\(r\)</span> imposes a different response to the same stabilizer. General induction replaces this scalar response by a finite-dimensional representation of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<h2 id="induction-and-compact-frobenius-reciprocity">Induction and compact Frobenius reciprocity</h2>
+<p>Let <span class="math" data-tex="\(\sigma:K\to U(V_\sigma)\)">\(\sigma:K\to U(V_\sigma)\)</span> be finite dimensional. Define
+<span class="math math-display" data-tex="\[
+\mathcal I_\sigma
+=\{F\in L^2(G,V_\sigma):R_kF=\sigma(k)^{-1}F
+\text{ for every }k\in K\}.
+\tag{2.1}
+\]">\[
+\mathcal I_\sigma
+=\{F\in L^2(G,V_\sigma):R_kF=\sigma(k)^{-1}F
+\text{ for every }k\in K\}.
+\tag{2.1}
+\]</span>
+Each equality is an equality in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. This avoids choosing a common exceptional null set for an uncountable subgroup. The operators
+<span class="math math-display" data-tex="\[
+Q_kF(g)=\sigma(k)F(gk)
+\]">\[
+Q_kF(g)=\sigma(k)F(gk)
+\]</span>
+form a strongly continuous unitary representation of <span class="math" data-tex="\(K\)">\(K\)</span>. Their Haar average is the projection onto <span class="math" data-tex="\(\mathcal I_\sigma\)">\(\mathcal I_\sigma\)</span>, so continuous covariant functions are dense in it. Left translation
+<span class="math math-display" data-tex="\[
+(\operatorname{Ind}_K^G\sigma)(x)F(g)=F(x^{-1}g)
+\tag{2.2}
+\]">\[
+(\operatorname{Ind}_K^G\sigma)(x)F(g)=F(x^{-1}g)
+\tag{2.2}
+\]</span>
+commutes with every <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span>. It therefore defines a continuous unitary representation on <span class="math" data-tex="\(\mathcal I_\sigma\)">\(\mathcal I_\sigma\)</span>.</p>
+<p>A continuous covariant function gives a section of the associated quotient <span class="math" data-tex="\(G\times_KV_\sigma\)">\(G\times_KV_\sigma\)</span>, by <span class="math" data-tex="\(gK\mapsto[g,F(g)]\)">\(gK\mapsto[g,F(g)]\)</span>, where <span class="math" data-tex="\((g,v)\sim(gk,\sigma(k)^{-1}v)\)">\((g,v)\sim(gk,\sigma(k)^{-1}v)\)</span>. Its squared norm descends to <span class="math" data-tex="\(G/K\)">\(G/K\)</span>, and (1.3) makes the section norm equal to <span class="math" data-tex="\(\int_G\|F(g)\|^2\,dg\)">\(\int_G\|F(g)\|^2\,dg\)</span>. Thus (2.1) is the Hilbert completion of these sections. Local triviality of an associated bundle is not needed for arbitrary compact Hausdorff groups.</p>
+<p id="result-theorem-2-3"><strong>Theorem 2.3 (Frobenius reciprocity).</strong> For an irreducible <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_G(V_\pi,\mathcal I_\sigma)
+\simeq\operatorname{Hom}_K(V_\pi|_K,V_\sigma).
+\tag{2.4}
+\]">\[
+\operatorname{Hom}_G(V_\pi,\mathcal I_\sigma)
+\simeq\operatorname{Hom}_K(V_\pi|_K,V_\sigma).
+\tag{2.4}
+\]</span>
+In particular the multiplicity of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> in <span class="math" data-tex="\(\operatorname{Ind}_K^G\sigma\)">\(\operatorname{Ind}_K^G\sigma\)</span> is the dimension of the right side. The trivial <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> recovers the scalar formula (2.5) already proved; we now prove the full vector-valued statement.</p>
+<p><em>Proof.</em> Use coefficient functions
+<span class="math math-display" data-tex="\[
+f_{v,\ell}(g)=\ell(\pi(g^{-1})v).
+\]">\[
+f_{v,\ell}(g)=\ell(\pi(g^{-1})v).
+\]</span>
+Left translation acts on <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(\pi(x)\)">\(\pi(x)\)</span>, and right translation acts on <span class="math" data-tex="\(\ell\)">\(\ell\)</span> by the dual representation <span class="math" data-tex="\(\pi^*(k)\)">\(\pi^*(k)\)</span>. The coefficient version of Peter–Weyl, with its Hilbert–Schmidt normalization, therefore gives
+<span class="math math-display" data-tex="\[
+L^2(G,V_\sigma)\simeq
+\widehat{\bigoplus}_\pi
+V_\pi\otimes(V_\pi^*\otimes V_\sigma).
+\]">\[
+L^2(G,V_\sigma)\simeq
+\widehat{\bigoplus}_\pi
+V_\pi\otimes(V_\pi^*\otimes V_\sigma).
+\]</span>
+The <span class="math" data-tex="\(K\)">\(K\)</span>-average acts on the second factor as <span class="math" data-tex="\(\pi^*|_K\otimes\sigma\)">\(\pi^*|_K\otimes\sigma\)</span>. Taking its range gives
+<span class="math math-display" data-tex="\[
+\mathcal I_\sigma\simeq
+\widehat{\bigoplus}_\pi
+V_\pi\otimes\operatorname{Hom}_K(V_\pi,V_\sigma).
+\tag{2.6}
+\]">\[
+\mathcal I_\sigma\simeq
+\widehat{\bigoplus}_\pi
+V_\pi\otimes\operatorname{Hom}_K(V_\pi,V_\sigma).
+\tag{2.6}
+\]</span>
+Here <span class="math" data-tex="\(\ell\otimes w\)">\(\ell\otimes w\)</span> corresponds to <span class="math" data-tex="\(v\mapsto\ell(v)w\)">\(v\mapsto\ell(v)w\)</span>; fixed tensors correspond exactly to intertwiners. Schur's lemma identifies the second factor as the multiplicity space. For the trivial target, taking adjoints again identifies this multiplicity dimension with <span class="math" data-tex="\(\dim V_\pi^K\)">\(\dim V_\pi^K\)</span>, consistently with (2.5).</p>
+<p>Explicitly, a <span class="math" data-tex="\(K\)">\(K\)</span>-intertwiner <span class="math" data-tex="\(A:V_\pi\to V_\sigma\)">\(A:V_\pi\to V_\sigma\)</span> gives
+<span class="math math-display" data-tex="\[
+(T_Av)(g)=A\pi(g^{-1})v.
+\tag{2.7}
+\]">\[
+(T_Av)(g)=A\pi(g^{-1})v.
+\tag{2.7}
+\]</span>
+It is continuous, covariant, and <span class="math" data-tex="\(G\)">\(G\)</span>-equivariant. Averaging <span class="math" data-tex="\(\pi(g)A^*A\pi(g)^*\)">\(\pi(g)A^*A\pi(g)^*\)</span> gives its scalar trace divided by <span class="math" data-tex="\(d_\pi\)">\(d_\pi\)</span>, so
+<span class="math math-display" data-tex="\[
+\|T_Av\|_2^2
+=\frac{\|A\|_{\mathrm{HS}}^2}{d_\pi}\|v\|^2.
+\tag{2.8}
+\]">\[
+\|T_Av\|_2^2
+=\frac{\|A\|_{\mathrm{HS}}^2}{d_\pi}\|v\|^2.
+\tag{2.8}
+\]</span>
+Thus the tensor identification in (2.6) uses <span class="math" data-tex="\(\sqrt{d_\pi}T_A\)">\(\sqrt{d_\pi}T_A\)</span> for Hilbert–Schmidt normalized <span class="math" data-tex="\(A\)">\(A\)</span>. Conversely the range of every <span class="math" data-tex="\(G\)">\(G\)</span>-intertwiner <span class="math" data-tex="\(T\)">\(T\)</span> lies in the finite-dimensional <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-coefficient block of <span class="math" data-tex="\(L^2(G,V_\sigma)\)">\(L^2(G,V_\sigma)\)</span>. Its elements have unique continuous representatives, because Haar measure has full support. Evaluation there is defined; <span class="math" data-tex="\(A(v)=(Tv)(1)\)">\(A(v)=(Tv)(1)\)</span> satisfies <span class="math" data-tex="\(A\pi(k)=\sigma(k)A\)">\(A\pi(k)=\sigma(k)A\)</span>. Equivariance gives <span class="math" data-tex="\((Tv)(g)=A\pi(g^{-1})v\)">\((Tv)(g)=A\pi(g^{-1})v\)</span>. These operations are inverse and prove (2.4) directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For finite groups, <a href="../RT-FIN/induced-representations-and-frobenius-reciprocity.html#3-both-adjunctions"><strong>RT-FIN-06, Theorem 3.1</strong></a> proves both induction adjunctions. Its function model uses <span class="math" data-tex="\(f(hx)=h f(x)\)">\(f(hx)=h f(x)\)</span> and <span class="math" data-tex="\((a f)(x)=f(xa)\)">\((a f)(x)=f(xa)\)</span>. Replacing <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> gives exactly the covariance and left action in (2.1)–(2.2). Normalized Haar counting measure only rescales the Hilbert norm; it does not change multiplicities.</p>
+<h2 id="spherical-harmonics-in-every-dimension">Spherical harmonics in every dimension</h2>
+<p>Let <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, <span class="math" data-tex="\(G=SO(n)\)">\(G=SO(n)\)</span>, <span class="math" data-tex="\(K=SO(n-1)\)">\(K=SO(n-1)\)</span> fixing <span class="math" data-tex="\(e_n\)">\(e_n\)</span>. The map <span class="math" data-tex="\(gK\mapsto ge_n\)">\(gK\mapsto ge_n\)</span> identifies <span class="math" data-tex="\(G/K\)">\(G/K\)</span> with <span class="math" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span>. Its invariant probability measure is normalized surface measure, since rotations preserve that measure and Proposition 1.2 proves uniqueness.</p>
+<p>The <span class="math" data-tex="\(K\)">\(K\)</span>-orbits on the sphere are determined by <span class="math" data-tex="\(t=x_n\)">\(t=x_n\)</span>. Indeed <span class="math" data-tex="\(SO(n-1)\)">\(SO(n-1)\)</span>, with <span class="math" data-tex="\(n-1\geq2\)">\(n-1\geq2\)</span>, acts transitively on each sphere in the first <span class="math" data-tex="\(n-1\)">\(n-1\)</span> coordinates; the endpoint orbits are single points. Double cosets in <span class="math" data-tex="\(G\)">\(G\)</span> are therefore determined by
+<span class="math math-display" data-tex="\[
+t(g)=\langle ge_n,e_n\rangle=g_{nn}.
+\]">\[
+t(g)=\langle ge_n,e_n\rangle=g_{nn}.
+\]</span>
+Inversion leaves this entry unchanged. Proposition 3.3 proves the Gelfand property before we classify its irreducible summands.</p>
+<p>Let <span class="math" data-tex="\(\mathcal P_k\)">\(\mathcal P_k\)</span> denote the complex homogeneous polynomials of degree <span class="math" data-tex="\(k\)">\(k\)</span> in <span class="math" data-tex="\(n\)">\(n\)</span> real variables, and put
+<span class="math math-display" data-tex="\[
+r^2=\sum_{i=1}^n x_i^2,\qquad
+\Delta_{\mathbb R^n}=\sum_i\partial_{x_i}^2,\qquad
+\mathcal H_k=\ker\Delta_{\mathbb R^n}\cap\mathcal P_k.
+\]">\[
+r^2=\sum_{i=1}^n x_i^2,\qquad
+\Delta_{\mathbb R^n}=\sum_i\partial_{x_i}^2,\qquad
+\mathcal H_k=\ker\Delta_{\mathbb R^n}\cap\mathcal P_k.
+\]</span>
+Negative-degree spaces are zero. Restriction embeds <span class="math" data-tex="\(\mathcal H_k\)">\(\mathcal H_k\)</span> in <span class="math" data-tex="\(C(S^{n-1})\)">\(C(S^{n-1})\)</span>: a homogeneous polynomial vanishing on the sphere vanishes at every nonzero real point, and hence is the zero polynomial.</p>
+<p id="result-lemma-4-1"><strong>Lemma 4.1 (harmonic decomposition).</strong>
+<span class="math math-display" data-tex="\[
+\mathcal P_k=\mathcal H_k\oplus r^2\mathcal P_{k-2},\qquad
+\dim\mathcal H_k
+=\binom{n+k-1}{k}-\binom{n+k-3}{k-2},
+\tag{4.2}
+\]">\[
+\mathcal P_k=\mathcal H_k\oplus r^2\mathcal P_{k-2},\qquad
+\dim\mathcal H_k
+=\binom{n+k-1}{k}-\binom{n+k-3}{k-2},
+\tag{4.2}
+\]</span>
+where the second binomial is interpreted as zero for <span class="math" data-tex="\(k&lt;2\)">\(k&lt;2\)</span>.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(h\in\mathcal H_d\)">\(h\in\mathcal H_d\)</span>, the product rule and Euler's identity give
+<span class="math math-display" data-tex="\[
+\Delta_{\mathbb R^n}(r^{2j}h)
+=2j(2d+2j+n-2)r^{2j-2}h.
+\tag{4.3}
+\]">\[
+\Delta_{\mathbb R^n}(r^{2j}h)
+=2j(2d+2j+n-2)r^{2j-2}h.
+\tag{4.3}
+\]</span>
+Induct on <span class="math" data-tex="\(k\)">\(k\)</span>, starting with <span class="math" data-tex="\(k=0,1\)">\(k=0,1\)</span>. The inductive harmonic decomposition of <span class="math" data-tex="\(\mathcal P_{k-2}\)">\(\mathcal P_{k-2}\)</span> splits it into the spaces <span class="math" data-tex="\(r^{2j}\mathcal H_{k-2-2j}\)">\(r^{2j}\mathcal H_{k-2-2j}\)</span>. Equation (4.3) shows that
+<span class="math" data-tex="\(\Delta_{\mathbb R^n}:r^2\mathcal P_{k-2}\to\mathcal P_{k-2}\)">\(\Delta_{\mathbb R^n}:r^2\mathcal P_{k-2}\to\mathcal P_{k-2}\)</span>
+is an isomorphism: each of those summands is multiplied by the nonzero scalar <span class="math" data-tex="\(2(j+1)(2(k-2-2j)+2(j+1)+n-2)\)">\(2(j+1)(2(k-2-2j)+2(j+1)+n-2)\)</span>. For every <span class="math" data-tex="\(p\in\mathcal P_k\)">\(p\in\mathcal P_k\)</span>, choose the unique <span class="math" data-tex="\(q\in r^2\mathcal P_{k-2}\)">\(q\in r^2\mathcal P_{k-2}\)</span> with <span class="math" data-tex="\(\Delta q=\Delta p\)">\(\Delta q=\Delta p\)</span>; then <span class="math" data-tex="\(p-q\)">\(p-q\)</span> is harmonic. Injectivity proves directness. Counting monomials gives <span class="math" data-tex="\(\dim\mathcal P_k=\binom{n+k-1}{k}\)">\(\dim\mathcal P_k=\binom{n+k-1}{k}\)</span>, proving (4.2). Iteration gives the full decomposition into <span class="math" data-tex="\(r^{2j}\mathcal H_{k-2j}\)">\(r^{2j}\mathcal H_{k-2j}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="result-theorem-4-4"><strong>Theorem 4.4.</strong>
+<span class="math math-display" data-tex="\[
+L^2(S^{n-1})
+=\widehat{\bigoplus}_{k\geq0}\mathcal H_k.
+\tag{4.5}
+\]">\[
+L^2(S^{n-1})
+=\widehat{\bigoplus}_{k\geq0}\mathcal H_k.
+\tag{4.5}
+\]</span>
+Each <span class="math" data-tex="\(\mathcal H_k\)">\(\mathcal H_k\)</span> is an irreducible <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span>-representation, with dimension (4.2), and different degrees are inequivalent.</p>
+<p><em>Proof.</em> First compute its fixed space under <span class="math" data-tex="\(K\)">\(K\)</span>. Write <span class="math" data-tex="\(x=(x&#x27;,t)\)">\(x=(x&#x27;,t)\)</span>, <span class="math" data-tex="\(s=|x&#x27;|^2\)">\(s=|x&#x27;|^2\)</span>. A homogeneous <span class="math" data-tex="\(K\)">\(K\)</span>-invariant polynomial is a linear combination of
+<span class="math math-display" data-tex="\[
+t^{k-2j}s^j,\qquad 0\leq j\leq\lfloor k/2\rfloor.
+\]">\[
+t^{k-2j}s^j,\qquad 0\leq j\leq\lfloor k/2\rfloor.
+\]</span>
+For completeness, an invariant homogeneous polynomial in <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span> is constant on each sphere; evaluating it on <span class="math" data-tex="\(ue_1\)">\(ue_1\)</span> shows it is zero in odd degree and a scalar multiple of <span class="math" data-tex="\(|x&#x27;|^{2j}\)">\(|x&#x27;|^{2j}\)</span> in degree <span class="math" data-tex="\(2j\)">\(2j\)</span>. Rotation by <span class="math" data-tex="\(\pi\)">\(\pi\)</span> sends <span class="math" data-tex="\(e_1\)">\(e_1\)</span> to <span class="math" data-tex="\(-e_1\)">\(-e_1\)</span>, and equality on real points is a polynomial identity. Apply this argument to every coefficient of <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>For <span class="math" data-tex="\(\sum a_jt^{k-2j}s^j\)">\(\sum a_jt^{k-2j}s^j\)</span> to be harmonic, the coefficients must satisfy
+<span class="math math-display" data-tex="\[
+2(j+1)(2j+n-1)a_{j+1}
+=-(k-2j)(k-2j-1)a_j.
+\tag{4.6}
+\]">\[
+2(j+1)(2j+n-1)a_{j+1}
+=-(k-2j)(k-2j-1)a_j.
+\tag{4.6}
+\]</span>
+This follows from <span class="math" data-tex="\(\Delta_{x&#x27;}s^{j+1}=2(j+1)(2j+n-1)s^j\)">\(\Delta_{x&#x27;}s^{j+1}=2(j+1)(2j+n-1)s^j\)</span> and differentiation twice in <span class="math" data-tex="\(t\)">\(t\)</span>. The last <span class="math" data-tex="\(t\)">\(t\)</span>-power is zero or one, so there is no further condition. Every <span class="math" data-tex="\(a_j\)">\(a_j\)</span> is determined by <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, and <span class="math" data-tex="\(a_0=1\)">\(a_0=1\)</span> gives a nonzero polynomial with value one at <span class="math" data-tex="\(e_n\)">\(e_n\)</span>. Thus <span class="math" data-tex="\(\dim\mathcal H_k^K=1\)">\(\dim\mathcal H_k^K=1\)</span>.</p>
+<p>Complete reducibility splits <span class="math" data-tex="\(\mathcal H_k\)">\(\mathcal H_k\)</span> into irreducible summands. Each summand embeds in <span class="math" data-tex="\(L^2(G/K)\)">\(L^2(G/K)\)</span>; (2.5) forces its fixed space to be nonzero. The one-dimensional total fixed space therefore permits exactly one summand. This proves irreducibility.</p>
+<p>To distinguish degrees and prove orthogonality, set <span class="math" data-tex="\(E=\sum x_i\partial_{x_i}\)">\(E=\sum x_i\partial_{x_i}\)</span> and <span class="math" data-tex="\(L_{ij}=x_i\partial_{x_j}-x_j\partial_{x_i}\)">\(L_{ij}=x_i\partial_{x_j}-x_j\partial_{x_i}\)</span>. Expanding each square gives
+<span class="math math-display" data-tex="\[
+\sum_{i&lt;j}L_{ij}^2
+=r^2\Delta_{\mathbb R^n}-E(E+n-2).
+\tag{4.7}
+\]">\[
+\sum_{i&lt;j}L_{ij}^2
+=r^2\Delta_{\mathbb R^n}-E(E+n-2).
+\tag{4.7}
+\]</span>
+Indeed the second-order terms are <span class="math" data-tex="\(r^2\Delta-\sum_{i,j}x_ix_j\partial_i\partial_j\)">\(r^2\Delta-\sum_{i,j}x_ix_j\partial_i\partial_j\)</span>, and the first-order terms are <span class="math" data-tex="\(-(n-1)E\)">\(-(n-1)E\)</span>; use <span class="math" data-tex="\(E^2=\sum_{i,j}x_ix_j\partial_i\partial_j+E\)">\(E^2=\sum_{i,j}x_ix_j\partial_i\partial_j+E\)</span>. On <span class="math" data-tex="\(\mathcal H_k\)">\(\mathcal H_k\)</span>, (4.7) is the scalar <span class="math" data-tex="\(-k(k+n-2)\)">\(-k(k+n-2)\)</span>.</p>
+<p>Rotation flows preserve surface measure, so their generators <span class="math" data-tex="\(L_{ij}\)">\(L_{ij}\)</span> are skew-adjoint on smooth functions under integration. Their sum of squares is symmetric, hence different values of <span class="math" data-tex="\(k\)">\(k\)</span> give orthogonal spaces. Intertwiners commute with differentiated rotations and (4.7), so the distinct scalars also prohibit equivalence. Finally restrictions of polynomials are uniformly dense in continuous functions by Stone–Weierstrass. Lemma 4.1, with <span class="math" data-tex="\(r^2=1\)">\(r^2=1\)</span> on the sphere, puts every restricted polynomial in the algebraic sum of the <span class="math" data-tex="\(\mathcal H_k\)">\(\mathcal H_k\)</span>'s. Continuous functions are <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-dense, proving (4.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The operator (4.7) on the sphere is its nonpositive round Laplacian: at <span class="math" data-tex="\(x\in S^{n-1}\)">\(x\in S^{n-1}\)</span>, the rotation fields satisfy <span class="math" data-tex="\(\sum_{i&lt;j}L_{ij}(x)\otimes L_{ij}(x)=I-x\otimes x\)">\(\sum_{i&lt;j}L_{ij}(x)\otimes L_{ij}(x)=I-x\otimes x\)</span>, the tangent projection, and each field has divergence zero. Thus its spectrum on these spaces is <span class="math" data-tex="\(-k(k+n-2)\)">\(-k(k+n-2)\)</span>, consistently with the sign fixed in <a href="casimir-operators-laplacians-and-tensor-products.html">Casimir operators and Laplacians</a>.</p>
+<h2 id="gegenbauer-polynomials-and-examples">Gegenbauer polynomials and examples</h2>
+<p>Put <span class="math" data-tex="\(\nu=(n-2)/2&gt;0\)">\(\nu=(n-2)/2&gt;0\)</span>. Define <span class="math" data-tex="\(C_k^\nu(t)\)">\(C_k^\nu(t)\)</span> by the generating function
+<span class="math math-display" data-tex="\[
+(1-2tz+z^2)^{-\nu}
+=\sum_{k\geq0}C_k^\nu(t)z^k.
+\tag{5.1}
+\]">\[
+(1-2tz+z^2)^{-\nu}
+=\sum_{k\geq0}C_k^\nu(t)z^k.
+\tag{5.1}
+\]</span>
+The binomial expansion gives a degree-<span class="math" data-tex="\(k\)">\(k\)</span> polynomial with powers of the same parity as <span class="math" data-tex="\(k\)">\(k\)</span>. Differentiating the left side verifies
+<span class="math math-display" data-tex="\[
+(1-t^2)F_{tt}-(n-1)tF_t
++(z\partial_z)^2F+(n-2)z\partial_zF=0.
+\]">\[
+(1-t^2)F_{tt}-(n-1)tF_t
++(z\partial_z)^2F+(n-2)z\partial_zF=0.
+\]</span>
+Comparing coefficients yields
+<span class="math math-display" data-tex="\[
+(1-t^2)(C_k^\nu)&#x27;&#x27;-(n-1)t(C_k^\nu)&#x27;
++k(k+n-2)C_k^\nu=0.
+\tag{5.2}
+\]">\[
+(1-t^2)(C_k^\nu)&#x27;&#x27;-(n-1)t(C_k^\nu)&#x27;
++k(k+n-2)C_k^\nu=0.
+\tag{5.2}
+\]</span>
+Setting <span class="math" data-tex="\(t=1\)">\(t=1\)</span> in (5.1) gives
+<span class="math math-display" data-tex="\[
+C_k^\nu(1)=\frac{(2\nu)_k}{k!}&gt;0,
+\tag{5.3}
+\]">\[
+C_k^\nu(1)=\frac{(2\nu)_k}{k!}&gt;0,
+\tag{5.3}
+\]</span>
+where <span class="math" data-tex="\((a)_k=a(a+1)\cdots(a+k-1)\)">\((a)_k=a(a+1)\cdots(a+k-1)\)</span>, with <span class="math" data-tex="\((a)_0=1\)">\((a)_0=1\)</span>.</p>
+<p>A zonal homogeneous polynomial has the form <span class="math" data-tex="\(r^kp(t/r)\)">\(r^kp(t/r)\)</span>; its Laplacian is
+<span class="math math-display" data-tex="\[
+r^{k-2}\bigl[(1-u^2)p&#x27;&#x27;(u)-(n-1)u p&#x27;(u)
++k(k+n-2)p(u)\bigr],\qquad u=t/r.
+\]">\[
+r^{k-2}\bigl[(1-u^2)p&#x27;&#x27;(u)-(n-1)u p&#x27;(u)
++k(k+n-2)p(u)\bigr],\qquad u=t/r.
+\]</span>
+This follows by the product and chain rules, or by (4.7) and <span class="math" data-tex="\(\Delta=\partial_r^2+(n-1)r^{-1}\partial_r+r^{-2}\Delta_S\)">\(\Delta=\partial_r^2+(n-1)r^{-1}\partial_r+r^{-2}\Delta_S\)</span>. The degree and parity in (5.1) make <span class="math" data-tex="\(r^kC_k^\nu(t/r)\)">\(r^kC_k^\nu(t/r)\)</span> a polynomial. Equation (5.2) makes it harmonic. By the fixed-line computation (4.6), it is the unique zonal harmonic normalized by (5.3).</p>
+<p>The spherical function for <span class="math" data-tex="\(\mathcal H_k\)">\(\mathcal H_k\)</span> is consequently
+<span class="math math-display" data-tex="\[
+\phi_k(g)=
+\frac{C_k^{(n-2)/2}(g_{nn})}{C_k^{(n-2)/2}(1)}.
+\tag{5.4}
+\]">\[
+\phi_k(g)=
+\frac{C_k^{(n-2)/2}(g_{nn})}{C_k^{(n-2)/2}(1)}.
+\tag{5.4}
+\]</span>
+Here is the coefficient identification, including its normalization. Evaluation <span class="math" data-tex="\(h\mapsto h(e_n)\)">\(h\mapsto h(e_n)\)</span> on <span class="math" data-tex="\(\mathcal H_k\)">\(\mathcal H_k\)</span> has a nonzero Riesz vector <span class="math" data-tex="\(Z\)">\(Z\)</span>, which is <span class="math" data-tex="\(K\)">\(K\)</span>-fixed. The action is <span class="math" data-tex="\((\pi(g)h)(x)=h(g^{-1}x)\)">\((\pi(g)h)(x)=h(g^{-1}x)\)</span>, so for <span class="math" data-tex="\(v=Z/\|Z\|\)">\(v=Z/\|Z\|\)</span>,
+<span class="math" data-tex="\(\langle\pi(g)v,v\rangle=Z(g^{-1}e_n)/Z(e_n)\)">\(\langle\pi(g)v,v\rangle=Z(g^{-1}e_n)/Z(e_n)\)</span>.
+Since <span class="math" data-tex="\(g^{-1}_{nn}=g_{nn}\)">\(g^{-1}_{nn}=g_{nn}\)</span>, this is exactly (5.4).</p>
+<p>When <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, <span class="math" data-tex="\(\nu=1/2\)">\(\nu=1/2\)</span> and <span class="math" data-tex="\(C_k^{1/2}=P_k\)">\(C_k^{1/2}=P_k\)</span>, the Legendre polynomials defined by (5.1). Thus the <span class="math" data-tex="\(SO(3)/SO(2)\)">\(SO(3)/SO(2)\)</span> spherical functions begin <span class="math" data-tex="\(1,t,(3t^2-1)/2\)">\(1,t,(3t^2-1)/2\)</span>, with dimensions <span class="math" data-tex="\(1,3,5\)">\(1,3,5\)</span>. This recovers <a href="su-2-so-3-and-spherical-harmonics.html">the degree-<span class="math" data-tex="\(k\)">\(k\)</span> harmonics</a>, corresponding to the <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> highest weight <span class="math" data-tex="\(2k\)">\(2k\)</span>. The constant representation is included at <span class="math" data-tex="\(k=0\)">\(k=0\)</span>.</p>
+<p>Finally <span class="math" data-tex="\((U(n),U(n-1))\)">\((U(n),U(n-1))\)</span> is Gelfand. For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, the branching theorem in <a href="unitary-groups-characters-dimensions-and-branching.html">Unitary groups</a>, Theorem 3.2, shows that the trivial <span class="math" data-tex="\(U(n-1)\)">\(U(n-1)\)</span>-label occurs at most once. It occurs exactly for
+<span class="math math-display" data-tex="\[
+\lambda=(p,0,\ldots,0,-q),\qquad p,q\in\mathbb Z_{\geq0}.
+\tag{5.5}
+\]">\[
+\lambda=(p,0,\ldots,0,-q),\qquad p,q\in\mathbb Z_{\geq0}.
+\tag{5.5}
+\]</span>
+Indeed the interlacing condition for <span class="math" data-tex="\(\mu=(0,\ldots,0)\)">\(\mu=(0,\ldots,0)\)</span> forces each middle entry of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to be zero and its endpoints to have those signs. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> there are no middle entries. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(U(0)\)">\(U(0)\)</span> is trivial and every circle irreducible is one-dimensional; hence that pair is Gelfand too.</p>
+<h2 id="positive-kernels-from-spherical-coefficients">Positive kernels from spherical coefficients</h2>
+<p>A continuous function <span class="math" data-tex="\(q\)">\(q\)</span> on a topological group <span class="math" data-tex="\(H\)">\(H\)</span> is <strong>positive definite</strong> if every finite matrix <span class="math" data-tex="\([q(h_i^{-1}h_j)]_{i,j}\)">\([q(h_i^{-1}h_j)]_{i,j}\)</span> is positive semidefinite. In particular <span class="math" data-tex="\(q(e)\geq0\)">\(q(e)\geq0\)</span>, <span class="math" data-tex="\(q(h^{-1})=\overline{q(h)}\)">\(q(h^{-1})=\overline{q(h)}\)</span>, and <span class="math" data-tex="\(|q(h)|\leq q(e)\)">\(|q(h)|\leq q(e)\)</span>, by its one- and two-point matrices. Positive definiteness is a condition on all these matrices, rather than pointwise positivity of the function.</p>
+<p>Here is the Hilbert-space construction we will need. Give the formal span of symbols <span class="math" data-tex="\(e_h\)">\(e_h\)</span> the sesquilinear form
+<span class="math math-display" data-tex="\[
+\langle e_h,e_k\rangle=q(k^{-1}h),
+\]">\[
+\langle e_h,e_k\rangle=q(k^{-1}h),
+\]</span>
+linear in the first variable. The matrix condition makes this form nonnegative. Cauchy–Schwarz follows by applying nonnegativity to <span class="math" data-tex="\(u+av\)">\(u+av\)</span> and minimizing over <span class="math" data-tex="\(a\in\mathbb C\)">\(a\in\mathbb C\)</span>; hence null vectors are orthogonal to every vector. Quotient by the null space and complete. Left translation of the symbols preserves the form and induces unitaries <span class="math" data-tex="\(U(a)e_h=e_{ah}\)">\(U(a)e_h=e_{ah}\)</span>. With <span class="math" data-tex="\(\xi=e_e\)">\(\xi=e_e\)</span>,
+<span class="math math-display" data-tex="\[
+q(a)=\langle U(a)\xi,\xi\rangle.
+\]">\[
+q(a)=\langle U(a)\xi,\xi\rangle.
+\]</span>
+These unitaries are strongly continuous: on a basis symbol the squared displacement is <span class="math" data-tex="\(2q(e)-2\operatorname{Re}q(h^{-1}ah)\)">\(2q(e)-2\operatorname{Re}q(h^{-1}ah)\)</span>, which tends to zero as <span class="math" data-tex="\(a\to e\)">\(a\to e\)</span>. Finite linear combinations follow by the triangle inequality, and density and unitarity give the assertion on the completion. Conversely every coefficient <span class="math" data-tex="\(\langle U(a)\xi,\xi\rangle\)">\(\langle U(a)\xi,\xi\rangle\)</span> is positive definite, since its matrices are Gram matrices. This proves the required coefficient characterization without a countability assumption.</p>
+<p id="result-theorem-5-3"><strong>Theorem 5.3.</strong> Let <span class="math" data-tex="\((G,K)\)">\((G,K)\)</span> be a compact Hausdorff Gelfand pair, and let <span class="math" data-tex="\(L\)">\(L\)</span> be any locally compact Hausdorff group. A continuous function <span class="math" data-tex="\(q:G\times L\to\mathbb C\)">\(q:G\times L\to\mathbb C\)</span>, bi-invariant under <span class="math" data-tex="\(K\)">\(K\)</span> in its first variable, is positive definite if and only if
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q(g,l)=\sum_{\pi:\,V_\pi^K\ne0}\beta_\pi(l)\phi_\pi(g),\\
+\sum_\pi\beta_\pi(e_L)&lt;\infty,
+\end{gathered}
+\]">\[
+\begin{gathered}
+q(g,l)=\sum_{\pi:\,V_\pi^K\ne0}\beta_\pi(l)\phi_\pi(g),\\
+\sum_\pi\beta_\pi(e_L)&lt;\infty,
+\end{gathered}
+\]</span>
+where every <span class="math" data-tex="\(\beta_\pi\)">\(\beta_\pi\)</span> is a continuous positive definite function on <span class="math" data-tex="\(L\)">\(L\)</span>. The series is absolutely and uniformly convergent on all of <span class="math" data-tex="\(G\times L\)">\(G\times L\)</span>, and the coefficients are uniquely determined by
+<span class="math math-display" data-tex="\[
+\beta_\pi(l)=d_\pi\int_G q(g,l)\overline{\phi_\pi(g)}\,dg.
+\]">\[
+\beta_\pi(l)=d_\pi\int_G q(g,l)\overline{\phi_\pi(g)}\,dg.
+\]</span>
+Moreover <span class="math" data-tex="\(\sum_\pi\beta_\pi(e_L)=q(e_G,e_L)\)">\(\sum_\pi\beta_\pi(e_L)=q(e_G,e_L)\)</span>, and at most countably many coefficients are nonzero, even if <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> is uncountable.</p>
+<p><em>Proof.</em> Apply the construction above to <span class="math" data-tex="\(G\times L\)">\(G\times L\)</span>. Bi-invariance and the displacement formula show that <span class="math" data-tex="\(U(k,e_L)\xi=\xi\)">\(U(k,e_L)\xi=\xi\)</span> for every <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>. The arbitrary-Hilbert-space decomposition of a compact representation from lesson one writes
+<span class="math math-display" data-tex="\[
+\mathcal H=\bigoplus_\pi V_\pi\otimes M_\pi,
+\qquad U(g,e_L)=\bigoplus_\pi\pi(g)\otimes I.
+\]">\[
+\mathcal H=\bigoplus_\pi V_\pi\otimes M_\pi,
+\qquad U(g,e_L)=\bigoplus_\pi\pi(g)\otimes I.
+\]</span>
+The commuting operators <span class="math" data-tex="\(U(e_G,l)\)">\(U(e_G,l)\)</span> preserve these isotypic subspaces. On each they have the form <span class="math" data-tex="\(I\otimes U_\pi(l)\)">\(I\otimes U_\pi(l)\)</span>. To justify this even for infinite-dimensional <span class="math" data-tex="\(M_\pi\)">\(M_\pi\)</span>, take matrix coefficients between two vectors of <span class="math" data-tex="\(M_\pi\)">\(M_\pi\)</span>; each resulting operator on the finite-dimensional <span class="math" data-tex="\(V_\pi\)">\(V_\pi\)</span> commutes with <span class="math" data-tex="\(\pi(G)\)">\(\pi(G)\)</span>, and is scalar by Schur's lemma. The scalars define the bounded operator on <span class="math" data-tex="\(M_\pi\)">\(M_\pi\)</span>, giving the asserted tensor form. Unitarity, the group law and strong continuity descend by restricting to <span class="math" data-tex="\(v\otimes M_\pi\)">\(v\otimes M_\pi\)</span> for a fixed unit vector <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>The <span class="math" data-tex="\(K\)">\(K\)</span>-fixed component of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> belongs to <span class="math" data-tex="\(V_\pi^K\otimes M_\pi\)">\(V_\pi^K\otimes M_\pi\)</span>. Theorem 3.1 makes this space either zero or <span class="math" data-tex="\(\mathbb Cv_\pi\otimes M_\pi\)">\(\mathbb Cv_\pi\otimes M_\pi\)</span>, where <span class="math" data-tex="\(v_\pi\)">\(v_\pi\)</span> is a fixed unit vector. Thus <span class="math" data-tex="\(\xi_\pi=v_\pi\otimes w_\pi\)">\(\xi_\pi=v_\pi\otimes w_\pi\)</span>. Set
+<span class="math math-display" data-tex="\[
+\beta_\pi(l)=\langle U_\pi(l)w_\pi,w_\pi\rangle.
+\]">\[
+\beta_\pi(l)=\langle U_\pi(l)w_\pi,w_\pi\rangle.
+\]</span>
+It is continuous and positive definite, and <span class="math" data-tex="\(\beta_\pi(e_L)=\|w_\pi\|^2\)">\(\beta_\pi(e_L)=\|w_\pi\|^2\)</span>. Orthogonality gives <span class="math" data-tex="\(\sum_\pi\|w_\pi\|^2=\|\xi\|^2=q(e_G,e_L)\)">\(\sum_\pi\|w_\pi\|^2=\|\xi\|^2=q(e_G,e_L)\)</span>. Computing the coefficient of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> gives the asserted expansion. The bounds <span class="math" data-tex="\(|\phi_\pi(g)|\leq1\)">\(|\phi_\pi(g)|\leq1\)</span> and <span class="math" data-tex="\(|\beta_\pi(l)|\leq\beta_\pi(e_L)\)">\(|\beta_\pi(l)|\leq\beta_\pi(e_L)\)</span> prove absolute uniform convergence, using finite-subset sums. A summable nonnegative family has only finitely many entries exceeding <span class="math" data-tex="\(1/m\)">\(1/m\)</span> for each positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, so its positive support is countable. A coefficient with zero value at the identity vanishes everywhere by the same two-point bound.</p>
+<p>Conversely a product <span class="math" data-tex="\(\beta_\pi(l)\phi_\pi(g)\)">\(\beta_\pi(l)\phi_\pi(g)\)</span> is a coefficient of the tensor product of their unitary representations, using the construction above for <span class="math" data-tex="\(\beta_\pi\)">\(\beta_\pi\)</span>. It is positive definite. Finite sums preserve the matrix condition, and the uniform limit does too. The sum is continuous and bi-invariant. Finally the spherical orthogonality relation (3.5), and uniform convergence under the integral, recover exactly the displayed coefficient formula and prove uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Taking <span class="math" data-tex="\(L\)">\(L\)</span> to be the trivial group gives the compact Bochner–Godement theorem: the continuous bi-invariant positive definite functions are precisely <span class="math" data-tex="\(\sum_\pi a_\pi\phi_\pi\)">\(\sum_\pi a_\pi\phi_\pi\)</span> with <span class="math" data-tex="\(a_\pi\geq0\)">\(a_\pi\geq0\)</span> and <span class="math" data-tex="\(\sum_\pi a_\pi&lt;\infty\)">\(\sum_\pi a_\pi&lt;\infty\)</span>. The proof above includes that theorem, rather than assuming it as a source result. For an abelian compact group with <span class="math" data-tex="\(K=\{e\}\)">\(K=\{e\}\)</span>, this is the positive Fourier-series criterion.</p>
+<p id="result-corollary-5-4"><strong>Corollary 5.4.</strong> For <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, a continuous function <span class="math" data-tex="\(c:[-1,1]\to\mathbb C\)">\(c:[-1,1]\to\mathbb C\)</span> defines a positive semidefinite kernel <span class="math" data-tex="\((x,y)\mapsto c(x\cdot y)\)">\((x,y)\mapsto c(x\cdot y)\)</span> on the unit sphere <span class="math" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span> if and only if
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c(t)=\sum_{k=0}^\infty a_k\frac{C_k^{(n-2)/2}(t)}{C_k^{(n-2)/2}(1)},\\
+a_k\geq0,\qquad \sum_k a_k&lt;\infty.
+\end{gathered}
+\]">\[
+\begin{gathered}
+c(t)=\sum_{k=0}^\infty a_k\frac{C_k^{(n-2)/2}(t)}{C_k^{(n-2)/2}(1)},\\
+a_k\geq0,\qquad \sum_k a_k&lt;\infty.
+\end{gathered}
+\]</span>
+The coefficients are unique, convergence is uniform, and <span class="math" data-tex="\(\sum_k a_k=c(1)\)">\(\sum_k a_k=c(1)\)</span>.</p>
+<p><em>Proof.</em> Set <span class="math" data-tex="\(G=SO(n)\)">\(G=SO(n)\)</span>, <span class="math" data-tex="\(K=SO(n-1)\)">\(K=SO(n-1)\)</span>, and <span class="math" data-tex="\(p=e_n\)">\(p=e_n\)</span>. These form the Gelfand pair already proved above; its spherical functions are the displayed normalized Gegenbauer polynomials evaluated at <span class="math" data-tex="\(p\cdot gp\)">\(p\cdot gp\)</span>. The stabilizer acts transitively on each latitude of the sphere for <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, including its endpoint latitudes, so this scalar parametrizes the double cosets. It follows that <span class="math" data-tex="\(g\mapsto c(p\cdot gp)\)">\(g\mapsto c(p\cdot gp)\)</span> is a continuous bi-invariant function. Its positive-definiteness matrices are exactly the matrices <span class="math" data-tex="\([c(x_i\cdot x_j)]\)">\([c(x_i\cdot x_j)]\)</span>, because <span class="math" data-tex="\(x_i=g_ip\)">\(x_i=g_ip\)</span> ranges over all sphere points and
+<span class="math" data-tex="\(p\cdot g_i^{-1}g_jp=(g_ip)\cdot(g_jp)\)">\(p\cdot g_i^{-1}g_jp=(g_ip)\cdot(g_jp)\)</span>. Apply Theorem 5.3 with trivial <span class="math" data-tex="\(L\)">\(L\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example,
+<span class="math math-display" data-tex="\[
+t^2=\frac1n+\frac{n-1}{n}\frac{C_2^{(n-2)/2}(t)}{C_2^{(n-2)/2}(1)}.
+\]">\[
+t^2=\frac1n+\frac{n-1}{n}\frac{C_2^{(n-2)/2}(t)}{C_2^{(n-2)/2}(1)}.
+\]</span>
+Its two coefficients are nonnegative. Directly, the kernel is the Gram kernel of <span class="math" data-tex="\(x\mapsto x\otimes x\)">\(x\mapsto x\otimes x\)</span>, since <span class="math" data-tex="\(\langle x\otimes x,y\otimes y\rangle=(x\cdot y)^2\)">\(\langle x\otimes x,y\otimes y\rangle=(x\cdot y)^2\)</span>. In contrast, <span class="math" data-tex="\(c(t)=1-\varepsilon t\)">\(c(t)=1-\varepsilon t\)</span>, with <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>, is pointwise positive but fails the kernel condition: antipodal points give the matrix
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}1-\varepsilon&amp;1+\varepsilon\\1+\varepsilon&amp;1-\varepsilon\end{pmatrix},
+\]">\[
+\begin{pmatrix}1-\varepsilon&amp;1+\varepsilon\\1+\varepsilon&amp;1-\varepsilon\end{pmatrix},
+\]</span>
+whose eigenvalues are <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(-2\varepsilon\)">\(-2\varepsilon\)</span>.</p>
+<p>The product theorem also handles time or another group parameter. On <span class="math" data-tex="\(L=\mathbb R\)">\(L=\mathbb R\)</span>, the functions <span class="math" data-tex="\(\beta_0(s)=1/2\)">\(\beta_0(s)=1/2\)</span> and <span class="math" data-tex="\(\beta_1(s)=\cos(s)/2\)">\(\beta_1(s)=\cos(s)/2\)</span> are positive definite, the latter being the average of the two characters <span class="math" data-tex="\(e^{is}\)">\(e^{is}\)</span> and <span class="math" data-tex="\(e^{-is}\)">\(e^{-is}\)</span>, divided by two. Hence
+<span class="math math-display" data-tex="\[
+((x,t),(y,u))\longmapsto\frac12+\frac12\cos(u-t)(x\cdot y)
+\]">\[
+((x,t),(y,u))\longmapsto\frac12+\frac12\cos(u-t)(x\cdot y)
+\]</span>
+is a positive covariance kernel on <span class="math" data-tex="\(S^{n-1}\times\mathbb R\)">\(S^{n-1}\times\mathbb R\)</span>. An explicit Gram realization is the feature vector <span class="math" data-tex="\(2^{-1/2}(1,\cos(t)x,\sin(t)x)\)">\(2^{-1/2}(1,\cos(t)x,\sin(t)x)\)</span>. This example connects spherical frequencies with covariance while keeping positivity visible.</p>
+<h2 id="four-exercises-with-complete-solutions">Four exercises with complete solutions</h2>
+<h3 id="exercise-1-the-diagonal-pair">Exercise 1 — the diagonal pair</h3>
+<p>For any compact <span class="math" data-tex="\(G\)">\(G\)</span>, prove that <span class="math" data-tex="\((G\times G,\operatorname{diag}G)\)">\((G\times G,\operatorname{diag}G)\)</span> is a Gelfand pair and identify its spherical functions.</p>
+<p><strong>Solution.</strong> Every irreducible of <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span> is <span class="math" data-tex="\(\pi\otimes\eta\)">\(\pi\otimes\eta\)</span>: restrict to the first factor, whose finite-dimensional isotypic spaces are preserved by the second factor. Irreducibility leaves one isotypic type <span class="math" data-tex="\(V_\pi\otimes M\)">\(V_\pi\otimes M\)</span>. Schur's lemma makes the second factor act on <span class="math" data-tex="\(M\)">\(M\)</span>, and this action is irreducible; thus <span class="math" data-tex="\(M=V_\eta\)">\(M=V_\eta\)</span>.</p>
+<p>Diagonal invariants in <span class="math" data-tex="\(V_\pi\otimes V_\eta\)">\(V_\pi\otimes V_\eta\)</span> are identified with <span class="math" data-tex="\(\operatorname{Hom}_G(V_\pi^*,V_\eta)\)">\(\operatorname{Hom}_G(V_\pi^*,V_\eta)\)</span>, of dimension one if <span class="math" data-tex="\(\eta\simeq\pi^*\)">\(\eta\simeq\pi^*\)</span> and zero otherwise. Theorem 3.1 proves the Gelfand property. Identify <span class="math" data-tex="\(V_\pi\otimes V_\pi^*\)">\(V_\pi\otimes V_\pi^*\)</span> with its Hilbert–Schmidt endomorphisms. The action of <span class="math" data-tex="\((g,h)\)">\((g,h)\)</span> is <span class="math" data-tex="\(A\mapsto\pi(g)A\pi(h)^*\)">\(A\mapsto\pi(g)A\pi(h)^*\)</span>, and the fixed unit vector is <span class="math" data-tex="\(I/\sqrt{d_\pi}\)">\(I/\sqrt{d_\pi}\)</span>. Its coefficient is
+<span class="math math-display" data-tex="\[
+\phi_\pi(g,h)=\frac{\chi_\pi(gh^{-1})}{d_\pi}.
+\tag{6.1}
+\]">\[
+\phi_\pi(g,h)=\frac{\chi_\pi(gh^{-1})}{d_\pi}.
+\tag{6.1}
+\]</span>
+This is bi-invariant under diagonal multiplication and equals one at <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, fixing both the inverse and the dimension factor.</p>
+<h3 id="exercise-2-counting-harmonics">Exercise 2 — counting harmonics</h3>
+<p>Prove the dimension formula in (4.2), and compute the first three dimensions on <span class="math" data-tex="\(S^2\)">\(S^2\)</span> and the degree-two dimension on <span class="math" data-tex="\(S^3\)">\(S^3\)</span>.</p>
+<p><strong>Solution.</strong> Formula (4.3) and the inductive decomposition show that <span class="math" data-tex="\(\Delta:r^2\mathcal P_{k-2}\to\mathcal P_{k-2}\)">\(\Delta:r^2\mathcal P_{k-2}\to\mathcal P_{k-2}\)</span> is bijective: on <span class="math" data-tex="\(r^{2j+2}\mathcal H_d\)">\(r^{2j+2}\mathcal H_d\)</span> its scalar is <span class="math" data-tex="\(2(j+1)(2d+2j+n)\)">\(2(j+1)(2d+2j+n)\)</span>, which is positive. Thus <span class="math" data-tex="\(\Delta:\mathcal P_k\to\mathcal P_{k-2}\)">\(\Delta:\mathcal P_k\to\mathcal P_{k-2}\)</span> is onto, with kernel <span class="math" data-tex="\(\mathcal H_k\)">\(\mathcal H_k\)</span>. Monomial counting and rank–nullity give
+<span class="math math-display" data-tex="\[
+\dim\mathcal H_k=\dim\mathcal P_k-\dim\mathcal P_{k-2}
+=\binom{n+k-1}{k}-\binom{n+k-3}{k-2}.
+\]">\[
+\dim\mathcal H_k=\dim\mathcal P_k-\dim\mathcal P_{k-2}
+=\binom{n+k-1}{k}-\binom{n+k-3}{k-2}.
+\]</span>
+For <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, this is <span class="math" data-tex="\(2k+1\)">\(2k+1\)</span>, including <span class="math" data-tex="\(k=0,1\)">\(k=0,1\)</span>, so the first three values are <span class="math" data-tex="\(1,3,5\)">\(1,3,5\)</span>. For <span class="math" data-tex="\(n=4,k=2\)">\(n=4,k=2\)</span>, the value is <span class="math" data-tex="\(10-1=9\)">\(10-1=9\)</span>. Degree-two harmonics are precisely the trace-zero quadratic forms, another direct count.</p>
+<h3 id="exercise-3-the-rotation-gelfand-trick">Exercise 3 — the rotation Gelfand trick</h3>
+<p>Prove that <span class="math" data-tex="\((SO(3),SO(2))\)">\((SO(3),SO(2))\)</span> is Gelfand by inversion on double cosets.</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(SO(2)\)">\(SO(2)\)</span> to fix <span class="math" data-tex="\(e_3\)">\(e_3\)</span>. Two vectors on the unit sphere lie on the same <span class="math" data-tex="\(SO(2)\)">\(SO(2)\)</span>-orbit exactly when they have the same third coordinate: the horizontal circles are transitive orbits, and the poles are fixed. Hence <span class="math" data-tex="\(KgK\)">\(KgK\)</span> is specified by <span class="math" data-tex="\(g_{33}\)">\(g_{33}\)</span>. Since <span class="math" data-tex="\((g^{-1})_{33}=(g^t)_{33}=g_{33}\)">\((g^{-1})_{33}=(g^t)_{33}=g_{33}\)</span>, inversion preserves every double coset. It is a continuous involutive anti-automorphism preserving Haar measure. Substitution reverses convolution as in Proposition 3.3, and all bi-invariant functions and their convolutions are fixed. Their convolution therefore commutes, giving the Gelfand pair.</p>
+<h3 id="exercise-4-reciprocity-with-the-evaluation-issue-resolved">Exercise 4 — reciprocity with the evaluation issue resolved</h3>
+<p>Prove the morphism isomorphism (2.4), explaining why evaluation at the identity is permitted. Give the normalization of an induced copy.</p>
+<p><strong>Solution.</strong> Peter–Weyl places the image of any <span class="math" data-tex="\(G\)">\(G\)</span>-intertwiner <span class="math" data-tex="\(T:V_\pi\to L^2(G,V_\sigma)\)">\(T:V_\pi\to L^2(G,V_\sigma)\)</span> in the finite-dimensional <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-coefficient block. Every vector there has a continuous representative, unique by full Haar support. For a covariant image the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> covariance becomes an equality of continuous functions, separately for each <span class="math" data-tex="\(k\)">\(k\)</span>. Therefore <span class="math" data-tex="\(A(v)=(Tv)(1)\)">\(A(v)=(Tv)(1)\)</span> is defined and
+<span class="math math-display" data-tex="\[
+A\pi(k)v=(T\pi(k)v)(1)=(Tv)(k^{-1})
+=\sigma(k)(Tv)(1).
+\]">\[
+A\pi(k)v=(T\pi(k)v)(1)=(Tv)(k^{-1})
+=\sigma(k)(Tv)(1).
+\]</span>
+It is a <span class="math" data-tex="\(K\)">\(K\)</span>-intertwiner. Equivariance at <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> also yields
+<span class="math" data-tex="\((Tv)(g)=(T\pi(g^{-1})v)(1)=A\pi(g^{-1})v\)">\((Tv)(g)=(T\pi(g^{-1})v)(1)=A\pi(g^{-1})v\)</span>.
+Conversely that formula for any <span class="math" data-tex="\(K\)">\(K\)</span>-intertwiner <span class="math" data-tex="\(A\)">\(A\)</span> gives a continuous covariant function and obeys
+<span class="math math-display" data-tex="\[
+(L_xT_Av)(g)=A\pi(g^{-1}x)v=T_A(\pi(x)v)(g).
+\]">\[
+(L_xT_Av)(g)=A\pi(g^{-1}x)v=T_A(\pi(x)v)(g).
+\]</span>
+Evaluation recovers <span class="math" data-tex="\(A\)">\(A\)</span>, so both maps are inverse. To check its norm, the averaged positive operator
+<span class="math math-display" data-tex="\[
+\int_G\pi(g)A^*A\pi(g)^*\,dg
+=\frac{\operatorname{tr}(A^*A)}{d_\pi}I
+\]">\[
+\int_G\pi(g)A^*A\pi(g)^*\,dg
+=\frac{\operatorname{tr}(A^*A)}{d_\pi}I
+\]</span>
+follows from Schur and trace. Consequently (2.8) holds. If <span class="math" data-tex="\(\|A\|_{\mathrm{HS}}=1\)">\(\|A\|_{\mathrm{HS}}=1\)</span>, the map <span class="math" data-tex="\(\sqrt{d_\pi}T_A\)">\(\sqrt{d_\pi}T_A\)</span> is an isometric copy of <span class="math" data-tex="\(V_\pi\)">\(V_\pi\)</span>; orthogonal Hilbert–Schmidt intertwiners give orthogonal copies, by polarization of the same identity. This proves the multiplicity claim, without evaluating an arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> class.</p>
+<h2 id="what-this-lesson-assumes">What this lesson assumes</h2>
+<p>Hilbert complete reducibility, Schur's lemma, Peter–Weyl, Fourier injectivity and coefficient orthogonality were proved in lessons 1–3. Haar measure is supplied by the full internal analysis proofs identified in lesson 1. The <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> branching theorem is lesson 9, Theorem 3.2, including its internally proved determinant–tableau identity. Scalar Fubini, regular measure density, compact Hausdorff quotient topology and Stone–Weierstrass are the measure and topology prerequisites; the exact internal Stone–Weierstrass proof is identified in lesson 2. All induction, compact quotient measure, reciprocity, Gelfand-pair criteria, spherical-harmonic decomposition and zonal polynomial formulas used here have been proved in this lesson.</p>
+<p>The comparisons with <strong>RT-FIN-06, Theorem 3.1 and Exercise 4</strong>, and <a href="../HA-LCA/HA-LCA-10.html#section-4"><strong>HA-LCA-10, Theorem 4.1</strong></a>, refer to their proved statements. General noncompact induction needs quasi-invariant measures and may require modular corrections; the present formulas use compact probability Haar measure throughout.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+
+</li>
+<li>
+<p>C. Gruson and V. Serganova, <em>A Journey Through Representation Theory</em> (2018), Chapter 2, §9, Proposition 9.5 and Lemma 9.6; Chapter 3, §3, for the circle, <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span>, <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span> and degree harmonics.</p>
+</li>
+<li>
+
+</li>
+<li>
+<p>Pavel Etingof, <a href="https://arxiv.org/abs/2201.09397v5"><em>Lie groups and Lie algebras</em>, arXiv:2201.09397v5</a>, §35, exercise on homogeneous spaces: compact Lie quotient multiplicities. The scalar formula (2.5) and full reciprocity (2.4) are proved here for arbitrary compact Hausdorff groups, including the normalization and evaluation issue.</p>
+</li>
+</ul>
+<h2 id="accessible-source-notes">Accessible source notes</h2>
+<p>Pavel Etingof, <a href="https://arxiv.org/abs/2201.09397v5"><em>Lie Groups and Lie Algebras</em>, arXiv:2201.09397v5</a>, 23 May 2026 (accessed 3 October 2026), §37. Its homogeneous-space coefficient exercise gives a compact comparison, with the source countable-base convention. General vector-valued induction and compact reciprocity for arbitrary closed subgroups are proved here.</p>
+<p>Christian Berg, <a href="https://arxiv.org/abs/2004.12842v2"><em>A unified view of space-time covariance functions through Gelfand pairs</em>, arXiv:2004.12842v2</a>, Theorem 3.7, points to the product expansion of Christian Berg, Ana P. Peron and Emilio Porcu, <a href="https://arxiv.org/abs/1612.03718v1"><em>Orthogonal expansions related to compact Gelfand pairs</em>, arXiv:1612.03718v1</a>, Theorem 3.3 with proof in §4 and the sphere specialization in §5 (accessed 3 October 2026). Theorem 5.3 here proves that expansion through the Hilbert-space construction and compact isotypic decomposition, and includes the needed compact Bochner–Godement argument.</p>
+</article></main><footer>Original lesson text and solutions: CC0 1.0. Mathematical sources are credited in each lesson. <a href="../../assets/mathjax/LICENSE">MathJax licence</a> · <a href="../../assets/mathjax/FONT-LICENSES.txt">Font licences</a> · <a href="src/RT-CPT-13.provenance.json">Source and result records</a></footer></body></html>

@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algebraic functions of one variable: conductors and adjoints · The abstract theory of ideals</title>
+<meta name="description" content="A lesson of the course The abstract theory of ideals. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-ABS/NOE-ABS-06.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The abstract theory of ideals</a> <span aria-hidden="true">›</span> <span>Lesson 6 of 6</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="algebraic-functions-of-one-variable-conductors-and-adjoints">Algebraic functions of one variable: conductors and adjoints</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A singular plane curve can put several branches at one point or omit functions that are regular on its normalization. The conductor measures that omission. Trace duality relates it to the different; at an ordinary multiple point it gives precisely the vanishing conditions of an adjoint curve.</p>
+<p>We assume <a href="NOE-ABS-01.html">Noether's axioms for Dedekind domains</a>, <a href="NOE-ABS-04.html">Three differents</a>, finite normalization for curves, and elementary divisors on a smooth curve. Throughout the geometric discussion, <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed and the curves are integral. Arithmetic analogues use orders in number fields, as in <strong>Orders in number fields and their Picard groups</strong>. Prime factorization in a monogenic order is governed by <a href="../NT-ANT/decomposition-of-primes-in-extensions.html">Decomposition of primes in extensions</a>, Theorem 5.3 (Kummer–Dedekind). Geometric results used without proof are identified when they occur. Basic references are [Noether], [Fulton], [Stacks] and [Vakil].</p>
+<h2 id="1-a-function-field-a-plane-model-and-its-normalization">1. A function field, a plane model and its normalization</h2>
+<p>Let <span class="math" data-tex="\(L/k\)">\(L/k\)</span> be finitely generated of transcendence degree one. A nonconstant <span class="math" data-tex="\(z\in L\)">\(z\in L\)</span> makes <span class="math" data-tex="\(L/k(z)\)">\(L/k(z)\)</span> finite. The integral closure <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\(k[z]\)">\(k[z]\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span> is finite and Dedekind. Finiteness here follows from the normalization theorem over a Nagata base, applied to <span class="math" data-tex="\(k[z]\)">\(k[z]\)</span> [Stacks, Tag 03GR]; when the extension is separable it also follows from the trace finiteness proof in the first lesson. The prime ideals of <span class="math" data-tex="\(B\)">\(B\)</span> give the places where <span class="math" data-tex="\(z\)">\(z\)</span> is finite. The places at infinity are obtained from the normalization over <span class="math" data-tex="\(k[1/z]\)">\(k[1/z]\)</span>. Together they are the closed points of the smooth projective curve with function field <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>For trace arguments choose <span class="math" data-tex="\(z\)">\(z\)</span> <strong>separating</strong>, so that <span class="math" data-tex="\(L/k(z)\)">\(L/k(z)\)</span> is separable. Such a choice exists over the perfect field <span class="math" data-tex="\(k\)">\(k\)</span> [Milne FT, Theorem 9.27]. Tags 030Q and 030W describe separating bases and characterize separability; their hypotheses alone do not assert existence over a perfect ground field. An arbitrary transcendental element need not be separating in positive characteristic.</p>
+<p>Choose an integral primitive element <span class="math" data-tex="\(s\)">\(s\)</span> and its monic minimal polynomial <span class="math" data-tex="\(f(z,T)\in k[z][T]\)">\(f(z,T)\in k[z][T]\)</span>. The plane order</p>
+<span class="math math-display" data-tex="\[
+O=k[z,s]\subseteq B
+\]">\[
+O=k[z,s]\subseteq B
+\]</span>
+<p>is free over <span class="math" data-tex="\(k[z]\)">\(k[z]\)</span>. Its normalization may have more than one point above a singular point. Each local ring upstairs is a DVR, although the normalization over that point is a semilocal ring rather than one DVR.</p>
+<p>The <strong>conductor</strong> is</p>
+<span class="math math-display" data-tex="\[
+\mathfrak c=(O:B)=\{b\in B:bB\subseteq O\}
+=\operatorname{Ann}_O(B/O).
+\]">\[
+\mathfrak c=(O:B)=\{b\in B:bB\subseteq O\}
+=\operatorname{Ann}_O(B/O).
+\]</span>
+<p>It is an ideal of both rings, contained in <span class="math" data-tex="\(O\)">\(O\)</span>, and is nonzero: clear denominators of finitely many <span class="math" data-tex="\(O\)">\(O\)</span>-module generators of <span class="math" data-tex="\(B\)">\(B\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\delta_P=\dim_k(\widetilde{O_P}/O_P),
+\]">\[
+\delta_P=\dim_k(\widetilde{O_P}/O_P),
+\]</span>
+<p>where <span class="math" data-tex="\(\widetilde{O_P}\)">\(\widetilde{O_P}\)</span> denotes the semilocal normalization. It is finite and supported at the singular points [Stacks, Section 0C3Q].</p>
+<p><strong>Proposition 1.1.</strong> The conductor is the unit ideal at a point exactly when that point is nonsingular.</p>
+<p><strong>Proof.</strong> A conductor equal to the unit ideal means <span class="math" data-tex="\(1\cdot\widetilde{O_P}\subseteq O_P\)">\(1\cdot\widetilde{O_P}\subseteq O_P\)</span>, hence equality of the two rings. Conversely equality makes the conductor the unit ideal. A one-dimensional Noetherian normal local domain is a DVR; a nonsingular point on a curve over a perfect field has a regular one-dimensional local ring, also a DVR. These implications give the equivalence. Thus <span class="math" data-tex="\(\operatorname{Supp}(B/O)\)">\(\operatorname{Supp}(B/O)\)</span>, the vanishing locus of its annihilator, is exactly the singular locus. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-euler-s-lemma-and-the-conductor-identity">2. Euler's lemma and the conductor identity</h2>
+<p>We first retain a general normal base. Let <span class="math" data-tex="\(A\)">\(A\)</span> be a normal Noetherian domain with fraction field <span class="math" data-tex="\(K\)">\(K\)</span>, let <span class="math" data-tex="\(L=K(\theta)\)">\(L=K(\theta)\)</span> be finite separable, and let <span class="math" data-tex="\(f\in A[T]\)">\(f\in A[T]\)</span> be the monic minimal polynomial of the integral element <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Put <span class="math" data-tex="\(O=A[\theta]\)">\(O=A[\theta]\)</span>. Let <span class="math" data-tex="\(B\)">\(B\)</span> be its integral closure and assume <span class="math" data-tex="\(B\)">\(B\)</span> finite over <span class="math" data-tex="\(A\)">\(A\)</span>. For a lattice <span class="math" data-tex="\(N\)">\(N\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+N^*=\{x\in L:\operatorname{Tr}_{L/K}(xN)\subseteq A\}.
+\]">\[
+N^*=\{x\in L:\operatorname{Tr}_{L/K}(xN)\subseteq A\}.
+\]</span>
+<p><strong>Lemma 2.1 (Euler).</strong> <span class="math" data-tex="\(O^*=f&#x27;(\theta)^{-1}O\)">\(O^*=f&#x27;(\theta)^{-1}O\)</span>, and <span class="math" data-tex="\(O^{**}=O\)">\(O^{**}=O\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> extract the coefficient of <span class="math" data-tex="\(\theta^{n-1}\)">\(\theta^{n-1}\)</span> from the unique representative of degree less than <span class="math" data-tex="\(n=\deg f\)">\(n=\deg f\)</span>. In the power basis the pairing <span class="math" data-tex="\(\lambda(ab)\)">\(\lambda(ab)\)</span> has zeros when the exponents sum to less than <span class="math" data-tex="\(n-1\)">\(n-1\)</span> and ones when they sum to <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. Reversing its columns gives a triangular matrix with diagonal ones. It therefore identifies <span class="math" data-tex="\(O\)">\(O\)</span> with <span class="math" data-tex="\(\operatorname{Hom}_A(O,A)\)">\(\operatorname{Hom}_A(O,A)\)</span>.</p>
+<p>For distinct roots <span class="math" data-tex="\(r_i\)">\(r_i\)</span> of <span class="math" data-tex="\(f\)">\(f\)</span>, Lagrange interpolation gives</p>
+<span class="math math-display" data-tex="\[
+[T^{n-1}]q(T)=\sum_i\frac{q(r_i)}{f&#x27;(r_i)}
+=\operatorname{Tr}_{L/K}\left(\frac{q(\theta)}{f&#x27;(\theta)}\right)
+\]">\[
+[T^{n-1}]q(T)=\sum_i\frac{q(r_i)}{f&#x27;(r_i)}
+=\operatorname{Tr}_{L/K}\left(\frac{q(\theta)}{f&#x27;(\theta)}\right)
+\]</span>
+<p>for <span class="math" data-tex="\(\deg q&lt;n\)">\(\deg q&lt;n\)</span>. Applying this to products reduced modulo <span class="math" data-tex="\(f\)">\(f\)</span>, the perfect <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-pairing says exactly that the trace-dual lattice is <span class="math" data-tex="\(f&#x27;(\theta)^{-1}O\)">\(f&#x27;(\theta)^{-1}O\)</span>. Double duality follows from the perfect pairing and freeness of <span class="math" data-tex="\(O\)">\(O\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (general conductor formula).</strong> In this setting,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\mathfrak c=f&#x27;(\theta)B^*.}
+\tag{2.1}
+\]">\[
+\boxed{\mathfrak c=f&#x27;(\theta)B^*.}
+\tag{2.1}
+\]</span>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> is Dedekind, its trace-dual fractional ideal is invertible and this becomes Dedekind's familiar formula</p>
+<span class="math math-display" data-tex="\[
+\boxed{\mathfrak c\mathfrak D_{B/A}=f&#x27;(\theta)B.}
+\tag{2.2}
+\]">\[
+\boxed{\mathfrak c\mathfrak D_{B/A}=f&#x27;(\theta)B.}
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> Double duality tests membership in <span class="math" data-tex="\(O\)">\(O\)</span> by traces against <span class="math" data-tex="\(O^*\)">\(O^*\)</span>. For <span class="math" data-tex="\(c\in L\)">\(c\in L\)</span>,</p>
+<span class="math math-display" data-tex="\[
+cB\subseteq O
+\Longleftrightarrow cO^*\subseteq B^*
+\Longleftrightarrow \frac{c}{f&#x27;(\theta)}O\subseteq B^*
+\Longleftrightarrow \frac{c}{f&#x27;(\theta)}\in B^*.
+\]">\[
+cB\subseteq O
+\Longleftrightarrow cO^*\subseteq B^*
+\Longleftrightarrow \frac{c}{f&#x27;(\theta)}O\subseteq B^*
+\Longleftrightarrow \frac{c}{f&#x27;(\theta)}\in B^*.
+\]</span>
+<p>The last equivalence uses <span class="math" data-tex="\(1\in O\)">\(1\in O\)</span> and the <span class="math" data-tex="\(B\)">\(B\)</span>-module structure of <span class="math" data-tex="\(B^*\)">\(B^*\)</span>. The first condition already forces <span class="math" data-tex="\(c\in O\subseteq B\)">\(c\in O\subseteq B\)</span>, so it is exactly the conductor condition. This proves (2.1). When <span class="math" data-tex="\(B^*\)">\(B^*\)</span> is invertible, multiply by its inverse <span class="math" data-tex="\(\mathfrak D\)">\(\mathfrak D\)</span> to obtain (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument applies to plane orders over <span class="math" data-tex="\(k[z]\)">\(k[z]\)</span> and number orders over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. It also identifies the limitation over a higher-dimensional normal base: defining <span class="math" data-tex="\(\mathfrak D=(B:B^*)\)">\(\mathfrak D=(B:B^*)\)</span> does not make <span class="math" data-tex="\(B^*\mathfrak D=B\)">\(B^*\mathfrak D=B\)</span>.</p>
+<p>Here is a counterexample to (2.2) in that greater generality. Over an algebraically closed field of characteristic different from three, put</p>
+<span class="math math-display" data-tex="\[
+A=k[u,v],\quad u=x^3,\quad v=y^3,\quad
+B=k[x^3,x^2y,xy^2,y^3],\quad
+\theta=x^2y,\quad\eta=xy^2.
+\]">\[
+A=k[u,v],\quad u=x^3,\quad v=y^3,\quad
+B=k[x^3,x^2y,xy^2,y^3],\quad
+\theta=x^2y,\quad\eta=xy^2.
+\]</span>
+<p>The ring <span class="math" data-tex="\(B\)">\(B\)</span> is normal: it is the invariants of <span class="math" data-tex="\(k[x,y]\)">\(k[x,y]\)</span> under scalar multiplication by cube roots of unity. An invariant fraction integral over it lies in the normal polynomial ring and remains invariant. Grouping exponents modulo three gives <span class="math" data-tex="\(B=A\oplus A\theta\oplus A\eta\)">\(B=A\oplus A\theta\oplus A\eta\)</span>. Its fraction field over <span class="math" data-tex="\(\operatorname{Frac}(A)\)">\(\operatorname{Frac}(A)\)</span> is generated by <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, with separable polynomial <span class="math" data-tex="\(T^3-u^2v\)">\(T^3-u^2v\)</span>. The products are <span class="math" data-tex="\(\theta^2=u\eta\)">\(\theta^2=u\eta\)</span>, <span class="math" data-tex="\(\eta^2=v\theta\)">\(\eta^2=v\theta\)</span>, <span class="math" data-tex="\(\theta\eta=uv\)">\(\theta\eta=uv\)</span>. The trace matrix in <span class="math" data-tex="\(1,\theta,\eta\)">\(1,\theta,\eta\)</span> therefore has its only nonzero entries <span class="math" data-tex="\(3\)">\(3\)</span> at <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> and <span class="math" data-tex="\(3uv\)">\(3uv\)</span> at the two off-diagonal positions. Hence</p>
+<span class="math math-display" data-tex="\[
+B^*=A+A\frac{\theta}{uv}+A\frac{\eta}{uv},\qquad
+\mathfrak c=f&#x27;(\theta)B^*=(u,\theta)B.
+\]">\[
+B^*=A+A\frac{\theta}{uv}+A\frac{\eta}{uv},\qquad
+\mathfrak c=f&#x27;(\theta)B^*=(u,\theta)B.
+\]</span>
+<p>Since <span class="math" data-tex="\(\theta/(uv)=1/\eta\)">\(\theta/(uv)=1/\eta\)</span> and <span class="math" data-tex="\(\eta/(uv)=1/\theta\)">\(\eta/(uv)=1/\theta\)</span>, one has <span class="math" data-tex="\(\mathfrak D=\theta B\cap\eta B\)">\(\mathfrak D=\theta B\cap\eta B\)</span>. Give <span class="math" data-tex="\(x,y\)">\(x,y\)</span> degree one. This intersection has no nonzero element of degree below six: in degree three the two spaces are respectively <span class="math" data-tex="\(k\theta\)">\(k\theta\)</span> and <span class="math" data-tex="\(k\eta\)">\(k\eta\)</span>, with zero intersection. The conductor has minimum degree three. Thus <span class="math" data-tex="\(\mathfrak c\mathfrak D\)">\(\mathfrak c\mathfrak D\)</span> has minimum degree at least nine, whereas <span class="math" data-tex="\(f&#x27;(\theta)=3\theta^2\)">\(f&#x27;(\theta)=3\theta^2\)</span> has degree six. Formula (2.2) fails, while (2.1) remains valid with all its stated hypotheses.</p>
+<h2 id="3-ordinary-multiple-points">3. Ordinary multiple points</h2>
+<p>An ordinary <span class="math" data-tex="\(r\)">\(r\)</span>-fold point has multiplicity <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span> distinct tangent lines. Choose local coordinates <span class="math" data-tex="\(x,y\)">\(x,y\)</span> with the <span class="math" data-tex="\(x\)">\(x\)</span>-projection transverse to each tangent. None of those tangents is <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, so their equations are <span class="math" data-tex="\(y=a_i x\)">\(y=a_i x\)</span> with distinct <span class="math" data-tex="\(a_i\in k\)">\(a_i\in k\)</span>.</p>
+<p>In the completed local ring put <span class="math" data-tex="\(A=k[[x]]\)">\(A=k[[x]]\)</span>. Substitution <span class="math" data-tex="\(y=xv\)">\(y=xv\)</span>, followed by division by <span class="math" data-tex="\(x^r\)">\(x^r\)</span>, gives an equation whose reduction at <span class="math" data-tex="\(x=0\)">\(x=0\)</span> has the simple roots <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. Solving its coefficients successively, the nonzero derivative at each <span class="math" data-tex="\(a_i\)">\(a_i\)</span> gives a unique root <span class="math" data-tex="\(v_i(x)\in A\)">\(v_i(x)\in A\)</span>. Thus the branches are</p>
+<span class="math math-display" data-tex="\[
+y=\phi_i(x)=xv_i(x),\qquad
+\phi_i-\phi_j=x\cdot\text{unit}\quad(i\ne j).
+\]">\[
+y=\phi_i(x)=xv_i(x),\qquad
+\phi_i-\phi_j=x\cdot\text{unit}\quad(i\ne j).
+\]</span>
+<p>Formal division by each <span class="math" data-tex="\(y-\phi_i\)">\(y-\phi_i\)</span> factors the curve equation as a unit times <span class="math" data-tex="\(g(y)=\prod_i(y-\phi_i)\)">\(g(y)=\prod_i(y-\phi_i)\)</span>. The final factor is a unit because the initial form already has precisely those <span class="math" data-tex="\(r\)">\(r\)</span> factors. Since <span class="math" data-tex="\(g\)">\(g\)</span> is monic and its lower coefficients are divisible by <span class="math" data-tex="\(x\)">\(x\)</span>, formal division gives</p>
+<span class="math math-display" data-tex="\[
+\widehat O=A[y]/(g),\qquad
+\widehat B=\prod_{i=1}^r A,
+\tag{3.1}
+\]">\[
+\widehat O=A[y]/(g),\qquad
+\widehat B=\prod_{i=1}^r A,
+\tag{3.1}
+\]</span>
+<p>with inclusion <span class="math" data-tex="\(q(y)\mapsto(q(\phi_i))_i\)">\(q(y)\mapsto(q(\phi_i))_i\)</span>. Formal reduction of a power series by <span class="math" data-tex="\(g\)">\(g\)</span> converges <span class="math" data-tex="\(x\)">\(x\)</span>-adically and gives a unique remainder of degree less than <span class="math" data-tex="\(r\)">\(r\)</span>; thus the stated polynomial presentation also represents the power-series quotient. The normalization description is the branch description of a curve with these smooth formal branches. Finite normalization and completion commute here because curves of finite type over a field are excellent; equivalently, completing each normalized branch DVR gives exactly the factors in (3.1).</p>
+<p><strong>Theorem 3.1.</strong> At an ordinary <span class="math" data-tex="\(r\)">\(r\)</span>-fold point,</p>
+<span class="math math-display" data-tex="\[
+\mathfrak c_P=\mathfrak m_P^{r-1},\qquad
+\delta_P=\frac{r(r-1)}2.
+\]">\[
+\mathfrak c_P=\mathfrak m_P^{r-1},\qquad
+\delta_P=\frac{r(r-1)}2.
+\]</span>
+<p><strong>Proof.</strong> The matrix of (3.1), in the basis <span class="math" data-tex="\(1,y,\ldots,y^{r-1}\)">\(1,y,\ldots,y^{r-1}\)</span>, is a Vandermonde matrix. Its determinant is</p>
+<span class="math math-display" data-tex="\[
+\prod_{i&lt;j}(\phi_j-\phi_i),
+\]">\[
+\prod_{i&lt;j}(\phi_j-\phi_i),
+\]</span>
+<p>of <span class="math" data-tex="\(x\)">\(x\)</span>-valuation <span class="math" data-tex="\(r(r-1)/2\)">\(r(r-1)/2\)</span>. Smith reduction of a full-rank matrix over the DVR <span class="math" data-tex="\(A\)">\(A\)</span> says that this valuation is the length of its cokernel. Length over <span class="math" data-tex="\(A\)">\(A\)</span> equals dimension over <span class="math" data-tex="\(k\)">\(k\)</span>, giving the formula for <span class="math" data-tex="\(\delta_P\)">\(\delta_P\)</span>.</p>
+<p>Let <span class="math" data-tex="\(e_i\)">\(e_i\)</span> be the <span class="math" data-tex="\(i\)">\(i\)</span>-th component idempotent of <span class="math" data-tex="\(\widehat B\)">\(\widehat B\)</span>. A vector <span class="math" data-tex="\(c=(c_i)\)">\(c=(c_i)\)</span> is in the conductor precisely when every <span class="math" data-tex="\(c_i e_i\)">\(c_i e_i\)</span> is in <span class="math" data-tex="\(\widehat O\)">\(\widehat O\)</span>, because the conductor is a <span class="math" data-tex="\(\widehat B\)">\(\widehat B\)</span>-ideal and these idempotents split it. The unique interpolating polynomial for <span class="math" data-tex="\(c_i e_i\)">\(c_i e_i\)</span> is</p>
+<span class="math math-display" data-tex="\[
+c_i\frac{\prod_{j\ne i}(y-\phi_j)}
+{\prod_{j\ne i}(\phi_i-\phi_j)}.
+\]">\[
+c_i\frac{\prod_{j\ne i}(y-\phi_j)}
+{\prod_{j\ne i}(\phi_i-\phi_j)}.
+\]</span>
+<p>Its leading coefficient is integral only if <span class="math" data-tex="\(v_x(c_i)\ge r-1\)">\(v_x(c_i)\ge r-1\)</span>. Conversely that inequality makes every coefficient integral: the denominator is <span class="math" data-tex="\(x^{r-1}\)">\(x^{r-1}\)</span> times a unit. Therefore <span class="math" data-tex="\(\widehat{\mathfrak c}=x^{r-1}\widehat B\)">\(\widehat{\mathfrak c}=x^{r-1}\widehat B\)</span>.</p>
+<p>The generators <span class="math" data-tex="\(x^{r-1-j}y^j\)">\(x^{r-1-j}y^j\)</span>, <span class="math" data-tex="\(0\le j\le r-1\)">\(0\le j\le r-1\)</span>, of <span class="math" data-tex="\(\widehat{\mathfrak m}^{r-1}\)">\(\widehat{\mathfrak m}^{r-1}\)</span> have component vectors</p>
+<span class="math math-display" data-tex="\[
+x^{r-1}(v_i(x)^j)_i.
+\]">\[
+x^{r-1}(v_i(x)^j)_i.
+\]</span>
+<p>This second Vandermonde matrix is invertible over <span class="math" data-tex="\(A\)">\(A\)</span>, since its reduction has the distinct <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. These vectors span <span class="math" data-tex="\(x^{r-1}\widehat B\)">\(x^{r-1}\widehat B\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>. Hence <span class="math" data-tex="\(\widehat{\mathfrak m}^{r-1}=\widehat{\mathfrak c}\)">\(\widehat{\mathfrak m}^{r-1}=\widehat{\mathfrak c}\)</span>.</p>
+<p>The conductor is a finite kernel: choose module generators <span class="math" data-tex="\(b_j\)">\(b_j\)</span> for the normalization and test that <span class="math" data-tex="\(c b_j\)">\(c b_j\)</span> belongs to <span class="math" data-tex="\(O\)">\(O\)</span> for each <span class="math" data-tex="\(j\)">\(j\)</span>. Flat completion preserves this kernel and the finite quotient defining <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Faithful flatness descends the ideal equality, and completion preserves the finite length. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument imposes no restriction on the characteristic beyond distinctness of the tangents. It does not say that every singularity has conductor a power of its maximal ideal.</p>
+<h2 id="4-the-symmetry-of-a-plane-singularity-and-the-genus">4. The symmetry of a plane singularity and the genus</h2>
+<p><strong>Proposition 4.1.</strong> For a plane curve singularity,</p>
+<span class="math math-display" data-tex="\[
+\dim_k(\widetilde O/\mathfrak c)=2\dim_k(\widetilde O/O)=2\delta.
+\tag{4.1}
+\]">\[
+\dim_k(\widetilde O/\mathfrak c)=2\dim_k(\widetilde O/O)=2\delta.
+\tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> Work in the completion and choose a generic transverse separating projection <span class="math" data-tex="\(x\)">\(x\)</span>. Here is why it gives a free monogenic order over <span class="math" data-tex="\(A=k[[x]]\)">\(A=k[[x]]\)</span>. If the local multiplicity is <span class="math" data-tex="\(r\)">\(r\)</span>, the equation has the form <span class="math" data-tex="\(y^r u(y)+x h(x,y)\)">\(y^r u(y)+x h(x,y)\)</span>, with <span class="math" data-tex="\(u(0)\ne0\)">\(u(0)\ne0\)</span>. Hence <span class="math" data-tex="\(y^r\in xO\)">\(y^r\in xO\)</span>, so the maximal-ideal and <span class="math" data-tex="\(x\)">\(x\)</span>-adic topologies are equivalent. Lifting the basis <span class="math" data-tex="\(1,y,\ldots,y^{r-1}\)">\(1,y,\ldots,y^{r-1}\)</span> of <span class="math" data-tex="\(O/xO\)">\(O/xO\)</span> successively in powers of <span class="math" data-tex="\(x\)">\(x\)</span> shows that these elements generate <span class="math" data-tex="\(O\)">\(O\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>. The transverse parameter <span class="math" data-tex="\(x\)">\(x\)</span> is a nonzerodivisor. Thus this finite module is free over the DVR, of rank <span class="math" data-tex="\(r\)">\(r\)</span>, and the lifted powers are a basis. Expressing <span class="math" data-tex="\(y^r\)">\(y^r\)</span> in that basis gives a monic polynomial and <span class="math" data-tex="\(O=A[y]/(f)\)">\(O=A[y]/(f)\)</span>. Its normalization <span class="math" data-tex="\(B\)">\(B\)</span> is a product of DVRs finite free over <span class="math" data-tex="\(A\)">\(A\)</span>; the separating choice makes its generic algebra separable. Euler's lemma and (2.2) apply equally to that product. Denote length over <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p>For any full-rank lattice <span class="math" data-tex="\(N\)">\(N\)</span> with integral nondegenerate trace form, the trace matrix represents <span class="math" data-tex="\(N\to N^*\)">\(N\to N^*\)</span>. Thus <span class="math" data-tex="\(\ell(N^*/N)\)">\(\ell(N^*/N)\)</span> is the valuation of its discriminant. For <span class="math" data-tex="\(B\)">\(B\)</span>, since <span class="math" data-tex="\(B^*=\mathfrak D^{-1}\)">\(B^*=\mathfrak D^{-1}\)</span>, this length is <span class="math" data-tex="\(\ell(B/\mathfrak D)\)">\(\ell(B/\mathfrak D)\)</span>: factor the ideal on each DVR component and compare the lengths of opposite intervals of powers of its uniformizer. Changing from a basis of <span class="math" data-tex="\(B\)">\(B\)</span> to one of <span class="math" data-tex="\(O\)">\(O\)</span> multiplies the discriminant by the square of the determinant of the inclusion. Consequently</p>
+<span class="math math-display" data-tex="\[
+v_x(\operatorname{disc}O)=2\ell(B/O)+\ell(B/\mathfrak D).
+\]">\[
+v_x(\operatorname{disc}O)=2\ell(B/O)+\ell(B/\mathfrak D).
+\]</span>
+<p>For a monogenic order its discriminant, up to sign, is the norm of <span class="math" data-tex="\(f&#x27;(s)\)">\(f&#x27;(s)\)</span>. The valuation of that norm is <span class="math" data-tex="\(\ell(B/f&#x27;(s)B)\)">\(\ell(B/f&#x27;(s)B)\)</span>, by the determinant of multiplication on the free module <span class="math" data-tex="\(B\)">\(B\)</span>. From <span class="math" data-tex="\(f&#x27;(s)B=\mathfrak c\mathfrak D\)">\(f&#x27;(s)B=\mathfrak c\mathfrak D\)</span>, adding ideal exponents on each component gives</p>
+<span class="math math-display" data-tex="\[
+\ell(B/f&#x27;(s)B)=\ell(B/\mathfrak c)+\ell(B/\mathfrak D).
+\]">\[
+\ell(B/f&#x27;(s)B)=\ell(B/\mathfrak c)+\ell(B/\mathfrak D).
+\]</span>
+<p>Subtract to obtain (4.1). The residue fields are <span class="math" data-tex="\(k\)">\(k\)</span>, so all these finite lengths equal the corresponding <span class="math" data-tex="\(k\)">\(k\)</span>-dimensions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(C\subset\mathbb P^2_k\)">\(C\subset\mathbb P^2_k\)</span> be an integral curve of degree <span class="math" data-tex="\(d\)">\(d\)</span>, and let <span class="math" data-tex="\(X\to C\)">\(X\to C\)</span> be its normalization. Its arithmetic genus is <span class="math" data-tex="\((d-1)(d-2)/2\)">\((d-1)(d-2)/2\)</span> [Stacks, Tag 0BYD]. The exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to\mathcal O_C\to\nu_*\mathcal O_X\to Q\to0
+\]">\[
+0\to\mathcal O_C\to\nu_*\mathcal O_X\to Q\to0
+\]</span>
+<p>has <span class="math" data-tex="\(\dim_k H^0(Q)=\sum_P\delta_P\)">\(\dim_k H^0(Q)=\sum_P\delta_P\)</span>; <span class="math" data-tex="\(Q\)">\(Q\)</span> has finite support and no higher cohomology. Both curves have only constant global regular functions. Taking Euler characteristics therefore proves</p>
+<span class="math math-display" data-tex="\[
+g(X)=\frac{(d-1)(d-2)}2-\sum_P\delta_P.
+\tag{4.2}
+\]">\[
+g(X)=\frac{(d-1)(d-2)}2-\sum_P\delta_P.
+\tag{4.2}
+\]</span>
+<p>Over our perfect field, the normalized projective curve is smooth and this is its geometric genus [Stacks, Section 0BYE]. The dimension theorem that completes the picture is Riemann–Roch:</p>
+<span class="math math-display" data-tex="\[
+\ell(D)-\ell(K_X-D)=\deg D+1-g(X),
+\]">\[
+\ell(D)-\ell(K_X-D)=\deg D+1-g(X),
+\]</span>
+<p>where <span class="math" data-tex="\(\ell(D)=\dim_k H^0(X,\mathcal O_X(D))\)">\(\ell(D)=\dim_k H^0(X,\mathcal O_X(D))\)</span> and <span class="math" data-tex="\(K_X\)">\(K_X\)</span> is a canonical divisor. This is a stated input [Stacks, Tag 0BS6, in Section 0B5B; Vakil, Section 18.4 and the duality form of Riemann–Roch]. Its role in point counting is explained in <a href="../the-field-with-one-element/weil-s-proof-for-curves-and-what-is-missing-over-the-integers.html">Weil's proof for curves and what is missing over the integers</a>.</p>
+<h2 id="5-adjoints-and-the-residual-theorem">5. Adjoints and the residual theorem</h2>
+<p>An adjoint condition is a conductor condition. For a projective plane curve <span class="math" data-tex="\(C\)">\(C\)</span> with only ordinary singularities, write</p>
+<span class="math math-display" data-tex="\[
+E=\sum_{P\in\operatorname{Sing}C}\ \sum_{Q\mapsto P}(r_P-1)Q
+\]">\[
+E=\sum_{P\in\operatorname{Sing}C}\ \sum_{Q\mapsto P}(r_P-1)Q
+\]</span>
+<p>on its normalization <span class="math" data-tex="\(X\)">\(X\)</span>. Theorem 3.1 says that a form <span class="math" data-tex="\(H\)">\(H\)</span> is an <strong>adjoint</strong> precisely when it has multiplicity at least <span class="math" data-tex="\(r_P-1\)">\(r_P-1\)</span> at each singular point. Its pulled-back section has a zero divisor containing <span class="math" data-tex="\(E\)">\(E\)</span>. Thus adjoints of degree <span class="math" data-tex="\(m\)">\(m\)</span> give residual divisors in</p>
+<span class="math math-display" data-tex="\[
+\nu^*\mathcal O_C(m)(-E).
+\tag{5.1}
+\]">\[
+\nu^*\mathcal O_C(m)(-E).
+\tag{5.1}
+\]</span>
+<p>This removes the forced zeros from the branch divisor of the form. In degree <span class="math" data-tex="\(d-3\)">\(d-3\)</span>, adjunction identifies (5.1) with the canonical bundle of <span class="math" data-tex="\(X\)">\(X\)</span> [Fulton, Section 8.5, Proposition 8; the adjoint-section description is Section 8.3, Corollary 3(a)]. On an affine chart its sections are represented by <span class="math" data-tex="\(H\,dz/f_s\)">\(H\,dz/f_s\)</span>; the conductor identity (2.2) supplies the regularity condition at the singular branches. The degree of the adjoint form also accounts for its behavior at infinity. We use the global adjunction statement as a cited input.</p>
+<p><strong>Max Noether's AF+BG theorem (stated).</strong> Let <span class="math" data-tex="\(F,G\)">\(F,G\)</span> be homogeneous plane forms of degrees <span class="math" data-tex="\(a,b\)">\(a,b\)</span> having no common component, and <span class="math" data-tex="\(H\)">\(H\)</span> a form of degree <span class="math" data-tex="\(n\)">\(n\)</span>. There exist forms <span class="math" data-tex="\(U,V\)">\(U,V\)</span>, of degrees <span class="math" data-tex="\(n-a,n-b\)">\(n-a,n-b\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+H=UF+VG
+\]">\[
+H=UF+VG
+\]</span>
+<p>if and only if, at every point of <span class="math" data-tex="\(V(F)\cap V(G)\)">\(V(F)\cap V(G)\)</span>, the dehomogenization of <span class="math" data-tex="\(H\)">\(H\)</span> lies in the local ideal generated by those of <span class="math" data-tex="\(F,G\)">\(F,G\)</span>. A form of negative degree is interpreted as zero [Fulton, Section 5.5, <em>Max Noether's Fundamental Theorem</em>]. Set-theoretic vanishing at the intersection is insufficient when the intersection has multiplicity.</p>
+<p><strong>Brill–Noether residual theorem (stated).</strong> Suppose <span class="math" data-tex="\(C\)">\(C\)</span> has only ordinary singularities, <span class="math" data-tex="\(D,D&#x27;\)">\(D,D&#x27;\)</span> are effective divisors on <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(D&#x27;\sim D\)">\(D&#x27;\sim D\)</span>, and an adjoint <span class="math" data-tex="\(H\)">\(H\)</span> of degree <span class="math" data-tex="\(m\)">\(m\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{div}_X(H)=E+D+T
+\]">\[
+\operatorname{div}_X(H)=E+D+T
+\]</span>
+<p>with <span class="math" data-tex="\(T\)">\(T\)</span> effective. Then an adjoint <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> of the same degree satisfies <span class="math" data-tex="\(\operatorname{div}_X(H&#x27;)=E+D&#x27;+T\)">\(\operatorname{div}_X(H&#x27;)=E+D&#x27;+T\)</span> [Fulton, Section 8.1, <em>Residue Theorem</em>]. This is the historical residual theorem about divisors and linear series; it is distinct from the residue theorem for meromorphic differentials.</p>
+<p>The conclusion keeps the residual divisor <span class="math" data-tex="\(T\)">\(T\)</span> fixed, which is stronger than merely keeping its class fixed. The class calculation behind it is immediate: all cuts of (5.1) are linearly equivalent, so if <span class="math" data-tex="\(D+T\)">\(D+T\)</span> and <span class="math" data-tex="\(D&#x27;+T&#x27;\)">\(D&#x27;+T&#x27;\)</span> arise from degree-<span class="math" data-tex="\(m\)">\(m\)</span> adjoints, then <span class="math" data-tex="\(D\sim D&#x27;\)">\(D\sim D&#x27;\)</span> if and only if <span class="math" data-tex="\(T\sim T&#x27;\)">\(T\sim T&#x27;\)</span>. The theorem asserts that the effective replacement can actually be cut by a form of that same degree.</p>
+<h2 id="6-the-ideal-theoretic-counterpart">6. The ideal-theoretic counterpart</h2>
+<p><strong>Theorem 6.1.</strong> For an order <span class="math" data-tex="\(O\)">\(O\)</span> in a finite Dedekind normalization <span class="math" data-tex="\(B\)">\(B\)</span>, extension and contraction give inverse, product-preserving bijections</p>
+<span class="math math-display" data-tex="\[
+\{I\subseteq O:I+\mathfrak c=O\}
+\longleftrightarrow
+\{J\subseteq B:J+\mathfrak c=B\},
+\quad I\mapsto IB,\quad J\mapsto J\cap O.
+\]">\[
+\{I\subseteq O:I+\mathfrak c=O\}
+\longleftrightarrow
+\{J\subseteq B:J+\mathfrak c=B\},
+\quad I\mapsto IB,\quad J\mapsto J\cap O.
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(I+\mathfrak c=O\)">\(I+\mathfrak c=O\)</span>, write <span class="math" data-tex="\(1=a+c\)">\(1=a+c\)</span>, <span class="math" data-tex="\(a\in I,c\in\mathfrak c\)">\(a\in I,c\in\mathfrak c\)</span>. For <span class="math" data-tex="\(x\in IB\cap O\)">\(x\in IB\cap O\)</span>, <span class="math" data-tex="\(ax\in I\)">\(ax\in I\)</span>, and <span class="math" data-tex="\(cx\in I\)">\(cx\in I\)</span>, since writing <span class="math" data-tex="\(x=\sum i_jb_j\)">\(x=\sum i_jb_j\)</span> gives <span class="math" data-tex="\(cx=\sum i_j(cb_j)\)">\(cx=\sum i_j(cb_j)\)</span> with <span class="math" data-tex="\(cb_j\in O\)">\(cb_j\in O\)</span>. Therefore <span class="math" data-tex="\(x=ax+cx\in I\)">\(x=ax+cx\in I\)</span>, proving <span class="math" data-tex="\(IB\cap O=I\)">\(IB\cap O=I\)</span>. Extension also gives <span class="math" data-tex="\(IB+\mathfrak c=B\)">\(IB+\mathfrak c=B\)</span>.</p>
+<p>Conversely take <span class="math" data-tex="\(J+\mathfrak c=B\)">\(J+\mathfrak c=B\)</span>, and write <span class="math" data-tex="\(1=b+c\)">\(1=b+c\)</span>, <span class="math" data-tex="\(b\in J,c\in\mathfrak c\)">\(b\in J,c\in\mathfrak c\)</span>. Then <span class="math" data-tex="\(b=1-c\in O\)">\(b=1-c\in O\)</span>, so <span class="math" data-tex="\(b\in I=J\cap O\)">\(b\in I=J\cap O\)</span> and <span class="math" data-tex="\(I+\mathfrak c=O\)">\(I+\mathfrak c=O\)</span>. For <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span>, the term <span class="math" data-tex="\(bx\)">\(bx\)</span> belongs to <span class="math" data-tex="\(IB\)">\(IB\)</span>, while <span class="math" data-tex="\(cx\in O\cap J=I\)">\(cx\in O\cap J=I\)</span>; thus <span class="math" data-tex="\(x\in IB\)">\(x\in IB\)</span>. The reverse inclusion is automatic. Finally extension preserves products, and products of ideals prime to <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span> remain prime to it: multiply their representations of one modulo <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span>. The bijection therefore preserves products in both directions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This single proof covers number and function fields. Outside the conductor, the local rings of <span class="math" data-tex="\(O\)">\(O\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> agree, so primes and their factorizations agree there. In a monogenic order, factoring its polynomial modulo such a base prime gives the usual Kummer–Dedekind factorization, assuming that no prime above it lies in the conductor [Sutherland, Lecture 6, Theorem 6.14 and Corollary 6.33].</p>
+<p>Theorem 6.1 is a bijection of ideals. It does not identify all the ideal class groups of the two rings: a generator in <span class="math" data-tex="\(B\)">\(B\)</span> need not be a permitted generator of an invertible ideal of <span class="math" data-tex="\(O\)">\(O\)</span>. This is the unit-congruence obstruction for arithmetic orders [Conrad, Section 5].</p>
+<p>For the geometric ideal-class statement, let <span class="math" data-tex="\(U=\operatorname{Spec}B\subset X\)">\(U=\operatorname{Spec}B\subset X\)</span>. To a finite-support divisor <span class="math" data-tex="\(D=\sum_{Q\in U}n_Q Q\)">\(D=\sum_{Q\in U}n_Q Q\)</span> attach the fractional ideal</p>
+<span class="math math-display" data-tex="\[
+I_D=\prod_{Q\in U}\mathfrak P_Q^{n_Q}.
+\]">\[
+I_D=\prod_{Q\in U}\mathfrak P_Q^{n_Q}.
+\]</span>
+<p>Unique ideal factorization proves <span class="math" data-tex="\(I_{D+D&#x27;}=I_DI_{D&#x27;}\)">\(I_{D+D&#x27;}=I_DI_{D&#x27;}\)</span>. For <span class="math" data-tex="\(h\in L^*\)">\(h\in L^*\)</span>, the exponent of <span class="math" data-tex="\(\mathfrak P_Q\)">\(\mathfrak P_Q\)</span> in <span class="math" data-tex="\(hB\)">\(hB\)</span> is exactly <span class="math" data-tex="\(v_Q(h)\)">\(v_Q(h)\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+[I_D]=[I_{D&#x27;}]\text{ in }\operatorname{Cl}(B)
+\Longleftrightarrow
+D-D&#x27;=\operatorname{div}_U(h)\text{ for some }h\in L^*.
+\tag{6.1}
+\]">\[
+[I_D]=[I_{D&#x27;}]\text{ in }\operatorname{Cl}(B)
+\Longleftrightarrow
+D-D&#x27;=\operatorname{div}_U(h)\text{ for some }h\in L^*.
+\tag{6.1}
+\]</span>
+<p>Divisors away from the conductor can also be transferred through the ideals of <span class="math" data-tex="\(O\)">\(O\)</span> by Theorem 6.1. Products representing adjoint cuts, with their forced conductor contribution removed, obey the same cancellation law: if <span class="math" data-tex="\([I_DI_T]=[I_{D&#x27;}I_{T&#x27;}]\)">\([I_DI_T]=[I_{D&#x27;}I_{T&#x27;}]\)</span>, then <span class="math" data-tex="\([I_D]=[I_{D&#x27;}]\)">\([I_D]=[I_{D&#x27;}]\)</span> exactly when <span class="math" data-tex="\([I_T]=[I_{T&#x27;}]\)">\([I_T]=[I_{T&#x27;}]\)</span>. This is the proved ideal-theoretic counterpart of the residual class calculation.</p>
+<p>There is one necessary boundary distinction. Formula (6.1) uses only finite places. On <span class="math" data-tex="\(X\)">\(X\)</span> a rational function also has zeros and poles at infinity. Thus <span class="math" data-tex="\(\operatorname{Cl}(B)\)">\(\operatorname{Cl}(B)\)</span> is the projective divisor class group modulo the classes of points in <span class="math" data-tex="\(X\setminus U\)">\(X\setminus U\)</span>: a principal finite divisor becomes a divisor supported at infinity in the projective group, and conversely. To translate projective adjoint equivalence into ideal equivalence without losing information, retain the infinity divisor or impose its specified valuations on <span class="math" data-tex="\(h\)">\(h\)</span>. Equality of affine ideal classes alone cannot prove projective linear equivalence.</p>
+<p>These are the three views compared by Emmy Noether in her 1919 paper: integral ideals after choosing <span class="math" data-tex="\(z\)">\(z\)</span>, divisors including all places, and adjoint forms on a plane model. For <span class="math" data-tex="\(k=\mathbb C\)">\(k=\mathbb C\)</span>, the normalized smooth projective curve is also the compact Riemann surface of the field. The conductor and ideal factorization are algebraic over any <span class="math" data-tex="\(k\)">\(k\)</span> used here; analytic periods and prescribed-ramification existence questions belong to the further questions in her part 8. Number fields have archimedean places too, but these are not extra closed points of a smooth projective curve over a constant field.</p>
+<h2 id="7-four-conductor-computations">7. Four conductor computations</h2>
+<p><strong>The cusp.</strong> For <span class="math" data-tex="\(s^2=z^3\)">\(s^2=z^3\)</span>, put <span class="math" data-tex="\(z=t^2,s=t^3\)">\(z=t^2,s=t^3\)</span>. Then <span class="math" data-tex="\(O=k[t^2,t^3]\)">\(O=k[t^2,t^3]\)</span> and <span class="math" data-tex="\(B=k[t]\)">\(B=k[t]\)</span>. The latter is integral over <span class="math" data-tex="\(O\)">\(O\)</span>, has the same fraction field, and is normal, so it is the normalization. Only the exponent one is missing among the nonnegative powers of <span class="math" data-tex="\(t\)">\(t\)</span>: <span class="math" data-tex="\(B/O\)">\(B/O\)</span> has basis the class of <span class="math" data-tex="\(t\)">\(t\)</span>. Thus <span class="math" data-tex="\(\delta=1\)">\(\delta=1\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathfrak c=t^2B=(z,s)O.
+\]">\[
+\mathfrak c=t^2B=(z,s)O.
+\]</span>
+<p>Indeed every power from two onwards is in <span class="math" data-tex="\(O\)">\(O\)</span>, while a nonzero constant in the conductor would require <span class="math" data-tex="\(t\in O\)">\(t\in O\)</span>. In characteristic different from two, <span class="math" data-tex="\(B/k[z]\)">\(B/k[z]\)</span> has different <span class="math" data-tex="\((2t)\)">\((2t)\)</span>, and <span class="math" data-tex="\(f_s=2s=2t^3\)">\(f_s=2s=2t^3\)</span>, so <span class="math" data-tex="\(t^2B\cdot(2t)=2t^3B\)">\(t^2B\cdot(2t)=2t^3B\)</span>. The conductor and <span class="math" data-tex="\(\delta\)">\(\delta\)</span> calculation itself works in characteristic two as well; that projection is then inseparable and its trace formula is unavailable.</p>
+<p><strong>The node.</strong> Assume <span class="math" data-tex="\(\operatorname{char}k\ne2\)">\(\operatorname{char}k\ne2\)</span> and let <span class="math" data-tex="\(s^2=z^2(z+1)\)">\(s^2=z^2(z+1)\)</span>. With <span class="math" data-tex="\(t=s/z\)">\(t=s/z\)</span>,</p>
+<span class="math math-display" data-tex="\[
+z=t^2-1,\qquad s=t(t^2-1),\qquad B=k[t].
+\]">\[
+z=t^2-1,\qquad s=t(t^2-1),\qquad B=k[t].
+\]</span>
+<p>Over <span class="math" data-tex="\(A=k[z]\)">\(A=k[z]\)</span>, the two lattices are <span class="math" data-tex="\(B=A\oplus At\)">\(B=A\oplus At\)</span> and <span class="math" data-tex="\(O=A\oplus Azt\)">\(O=A\oplus Azt\)</span>. Their quotient is <span class="math" data-tex="\((A/zA)t\)">\((A/zA)t\)</span>, of dimension one. If <span class="math" data-tex="\(c=a+bt\in B\)">\(c=a+bt\in B\)</span> is in <span class="math" data-tex="\(O\)">\(O\)</span>, then <span class="math" data-tex="\(z\mid b\)">\(z\mid b\)</span>; requiring <span class="math" data-tex="\(ct=at+b(z+1)\in O\)">\(ct=at+b(z+1)\in O\)</span> also forces <span class="math" data-tex="\(z\mid a\)">\(z\mid a\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathfrak c=zB=(z,s)O,\qquad\delta=1.
+\]">\[
+\mathfrak c=zB=(z,s)O,\qquad\delta=1.
+\]</span>
+<p>The two points of the normalization over the origin are <span class="math" data-tex="\(t=1,-1\)">\(t=1,-1\)</span>. The different for <span class="math" data-tex="\(t^2-z-1\)">\(t^2-z-1\)</span> is <span class="math" data-tex="\((2t)\)">\((2t)\)</span>, and <span class="math" data-tex="\(\mathfrak c\mathfrak D=(2zt)=(2s)\)">\(\mathfrak c\mathfrak D=(2zt)=(2s)\)</span>, the required derivative.</p>
+<p><strong>An integral ordinary triple point.</strong> Assume <span class="math" data-tex="\(\operatorname{char}k\ne3\)">\(\operatorname{char}k\ne3\)</span> and choose</p>
+<span class="math math-display" data-tex="\[
+s^3=z^3(1+z).
+\]">\[
+s^3=z^3(1+z).
+\]</span>
+<p>The equation is irreducible over <span class="math" data-tex="\(k(z)\)">\(k(z)\)</span>: <span class="math" data-tex="\(1+z\)">\(1+z\)</span> is not a cube, since its order at <span class="math" data-tex="\(z=-1\)">\(z=-1\)</span> is one. The initial form <span class="math" data-tex="\(s^3-z^3\)">\(s^3-z^3\)</span> has three distinct tangents. Put <span class="math" data-tex="\(t=s/z\)">\(t=s/z\)</span>, so <span class="math" data-tex="\(z=t^3-1\)">\(z=t^3-1\)</span> and <span class="math" data-tex="\(s=zt\)">\(s=zt\)</span>. Its normalization is <span class="math" data-tex="\(B=k[t]\)">\(B=k[t]\)</span>. Over <span class="math" data-tex="\(A=k[z]\)">\(A=k[z]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+B=A\oplus At\oplus At^2,\qquad
+O=A\oplus Azt\oplus Az^2t^2.
+\]">\[
+B=A\oplus At\oplus At^2,\qquad
+O=A\oplus Azt\oplus Az^2t^2.
+\]</span>
+<p>The quotient has lengths one and two in its last two components, giving <span class="math" data-tex="\(\delta=3\)">\(\delta=3\)</span>, entirely at the origin. The different is <span class="math" data-tex="\((3t^2)\)">\((3t^2)\)</span>; since <span class="math" data-tex="\(f_s=3s^2=3z^2t^2\)">\(f_s=3s^2=3z^2t^2\)</span>, formula (2.2) gives</p>
+<span class="math math-display" data-tex="\[
+\mathfrak c=z^2B=(z^2,zs,s^2)O=\mathfrak m^2.
+\]">\[
+\mathfrak c=z^2B=(z^2,zs,s^2)O=\mathfrak m^2.
+\]</span>
+<p>The equality of the displayed ideal with <span class="math" data-tex="\(z^2B\)">\(z^2B\)</span> follows already from its three <span class="math" data-tex="\(A\)">\(A\)</span>-basis vectors <span class="math" data-tex="\(z^2,z^2t,z^2t^2\)">\(z^2,z^2t,z^2t^2\)</span>.</p>
+<p><strong>The quadratic number order.</strong> Put <span class="math" data-tex="\(s=\sqrt{-3}\)">\(s=\sqrt{-3}\)</span>, <span class="math" data-tex="\(O=\mathbb Z[s]\)">\(O=\mathbb Z[s]\)</span> and <span class="math" data-tex="\(B=\mathbb Z[\omega]\)">\(B=\mathbb Z[\omega]\)</span>, <span class="math" data-tex="\(\omega=(1+s)/2\)">\(\omega=(1+s)/2\)</span>. Since <span class="math" data-tex="\(\omega^2=\omega-1\)">\(\omega^2=\omega-1\)</span>, an element <span class="math" data-tex="\(a+b\omega\)">\(a+b\omega\)</span> and its product with <span class="math" data-tex="\(\omega\)">\(\omega\)</span> both belong to <span class="math" data-tex="\(O\)">\(O\)</span> exactly when <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are even. Thus <span class="math" data-tex="\(\mathfrak c=2B\)">\(\mathfrak c=2B\)</span>. The polynomial of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is <span class="math" data-tex="\(T^2-T+1\)">\(T^2-T+1\)</span>, so <span class="math" data-tex="\(\mathfrak D_{B/\mathbb Z}=(2\omega-1)=(s)\)">\(\mathfrak D_{B/\mathbb Z}=(2\omega-1)=(s)\)</span>. For the generator <span class="math" data-tex="\(s\)">\(s\)</span> of the smaller order, <span class="math" data-tex="\(f=T^2+3\)">\(f=T^2+3\)</span> and <span class="math" data-tex="\(f&#x27;(s)=2s\)">\(f&#x27;(s)=2s\)</span>. Therefore <span class="math" data-tex="\(\mathfrak c\mathfrak D=2sB\)">\(\mathfrak c\mathfrak D=2sB\)</span>. The order has lattice index two; its nonnormality is concentrated over two, whereas the maximal ring's different is supported over three. These are distinct phenomena.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Verify the conductor-different identity for <span class="math" data-tex="\(\mathbb Z[\sqrt{-3}]\)">\(\mathbb Z[\sqrt{-3}]\)</span> in its maximal order.</li>
+<li><strong>Medium.</strong> Compute the normalization, conductor and <span class="math" data-tex="\(\delta\)">\(\delta\)</span> of the cusp and the node.</li>
+<li><strong>Medium.</strong> Prove Euler's lemma directly for <span class="math" data-tex="\(A=k[z]\)">\(A=k[z]\)</span>, <span class="math" data-tex="\(f=T^2-z^3\)">\(f=T^2-z^3\)</span>, assuming <span class="math" data-tex="\(\operatorname{char}k\ne2\)">\(\operatorname{char}k\ne2\)</span>.</li>
+<li><strong>Medium.</strong> Find the genus of a nonsingular plane quartic and of an integral quartic whose only singularity is one ordinary node.</li>
+<li><strong>Hard.</strong> Prove the ordinary-point conductor formula and its <span class="math" data-tex="\(\delta\)">\(\delta\)</span> value using branch interpolation.</li>
+</ol>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>1.</strong> In <span class="math" data-tex="\(1,\omega\)">\(1,\omega\)</span>, membership in <span class="math" data-tex="\(O\)">\(O\)</span> requires the second coefficient even. For <span class="math" data-tex="\(a+b\omega\)">\(a+b\omega\)</span>, multiplication by <span class="math" data-tex="\(\omega\)">\(\omega\)</span> gives <span class="math" data-tex="\(-b+(a+b)\omega\)">\(-b+(a+b)\omega\)</span>. Testing both elements therefore requires <span class="math" data-tex="\(b\)">\(b\)</span> even and <span class="math" data-tex="\(a+b\)">\(a+b\)</span> even, equivalently <span class="math" data-tex="\(a,b\)">\(a,b\)</span> even. This proves <span class="math" data-tex="\(\mathfrak c=2B\)">\(\mathfrak c=2B\)</span>. The derivative of <span class="math" data-tex="\(T^2-T+1\)">\(T^2-T+1\)</span> at <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is <span class="math" data-tex="\(2\omega-1=s\)">\(2\omega-1=s\)</span>, so <span class="math" data-tex="\(\mathfrak D=(s)\)">\(\mathfrak D=(s)\)</span>. Their product is <span class="math" data-tex="\((2s)\)">\((2s)\)</span>, the derivative ideal for <span class="math" data-tex="\(T^2+3\)">\(T^2+3\)</span>.</p>
+<p><strong>2.</strong> For the cusp, <span class="math" data-tex="\(t=s/z\)">\(t=s/z\)</span> lies in the fraction field and satisfies <span class="math" data-tex="\(t^2=z\)">\(t^2=z\)</span>; the integral normal ring <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span> is its normalization. All <span class="math" data-tex="\(t^j\)">\(t^j\)</span>, <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>, lie in <span class="math" data-tex="\(O\)">\(O\)</span>, while <span class="math" data-tex="\(t\)">\(t\)</span> does not. Hence <span class="math" data-tex="\(B/O=kt\)">\(B/O=kt\)</span>, and precisely <span class="math" data-tex="\(t^2B\)">\(t^2B\)</span> multiplies every power of <span class="math" data-tex="\(t\)">\(t\)</span> into <span class="math" data-tex="\(O\)">\(O\)</span>. It is <span class="math" data-tex="\((z,s)O\)">\((z,s)O\)</span>.</p>
+<p>For the node, <span class="math" data-tex="\(t=s/z\)">\(t=s/z\)</span> satisfies <span class="math" data-tex="\(t^2=z+1\)">\(t^2=z+1\)</span>, so again the normalization is <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span>. The power bases over <span class="math" data-tex="\(k[z]\)">\(k[z]\)</span> give <span class="math" data-tex="\(B/O=(k[z]/(z))t\)">\(B/O=(k[z]/(z))t\)</span>, of length one. Write <span class="math" data-tex="\(c=a+bt\)">\(c=a+bt\)</span>. Membership of <span class="math" data-tex="\(c\)">\(c\)</span> in <span class="math" data-tex="\(O\)">\(O\)</span> requires <span class="math" data-tex="\(z\mid b\)">\(z\mid b\)</span>, and membership of <span class="math" data-tex="\(ct\)">\(ct\)</span> requires <span class="math" data-tex="\(z\mid a\)">\(z\mid a\)</span>. These two tests suffice because <span class="math" data-tex="\(1,t\)">\(1,t\)</span> generate <span class="math" data-tex="\(B\)">\(B\)</span> over <span class="math" data-tex="\(k[z]\)">\(k[z]\)</span>. Thus the conductor is <span class="math" data-tex="\(zB=(z,s)O\)">\(zB=(z,s)O\)</span>. These node statements require characteristic different from two, ensuring two distinct branches.</p>
+<p><strong>3.</strong> Every fraction-field element is <span class="math" data-tex="\(x=a+bs\)">\(x=a+bs\)</span>, with <span class="math" data-tex="\(a,b\in k(z)\)">\(a,b\in k(z)\)</span>. Its traces against the basis <span class="math" data-tex="\(1,s\)">\(1,s\)</span> are <span class="math" data-tex="\(2a\)">\(2a\)</span> and <span class="math" data-tex="\(2bz^3\)">\(2bz^3\)</span>. Therefore <span class="math" data-tex="\(x\in O^*\)">\(x\in O^*\)</span> exactly when <span class="math" data-tex="\(2a,2bz^3\in A\)">\(2a,2bz^3\in A\)</span>. Since two is invertible, this lattice has basis <span class="math" data-tex="\(1,s/z^3\)">\(1,s/z^3\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>, equivalently <span class="math" data-tex="\(1/2,1/(2s)\)">\(1/2,1/(2s)\)</span> because <span class="math" data-tex="\(s^2=z^3\)">\(s^2=z^3\)</span>. It is exactly <span class="math" data-tex="\((2s)^{-1}O=f&#x27;(s)^{-1}O\)">\((2s)^{-1}O=f&#x27;(s)^{-1}O\)</span>.</p>
+<p><strong>4.</strong> The arithmetic genus for degree four is <span class="math" data-tex="\((4-1)(4-2)/2=3\)">\((4-1)(4-2)/2=3\)</span>. A nonsingular quartic has every <span class="math" data-tex="\(\delta_P=0\)">\(\delta_P=0\)</span>, hence genus three. The single ordinary node contributes <span class="math" data-tex="\(\delta=1\)">\(\delta=1\)</span> by Theorem 3.1 or the explicit node computation, so the normalization has genus two. The assertion specifies no other singularities, including at infinity.</p>
+<p><strong>5.</strong> Choose a transverse <span class="math" data-tex="\(x\)">\(x\)</span> and write the completed smooth branches as <span class="math" data-tex="\(y=\phi_i(x)\)">\(y=\phi_i(x)\)</span>, with pairwise differences <span class="math" data-tex="\(x\)">\(x\)</span> times units. The normalization is <span class="math" data-tex="\(A^r\)">\(A^r\)</span>, and interpolation identifies the conductor component in position <span class="math" data-tex="\(i\)">\(i\)</span> with the multiples of <span class="math" data-tex="\(\prod_{j\ne i}(\phi_i-\phi_j)\)">\(\prod_{j\ne i}(\phi_i-\phi_j)\)</span>, hence with <span class="math" data-tex="\(x^{r-1}A\)">\(x^{r-1}A\)</span>. Necessity comes from the leading interpolation coefficient; sufficiency follows by integrality of every coefficient. The degree-<span class="math" data-tex="\(r-1\)">\(r-1\)</span> monomials in <span class="math" data-tex="\(x,y\)">\(x,y\)</span> map to <span class="math" data-tex="\(x^{r-1}\)">\(x^{r-1}\)</span> times a Vandermonde matrix in <span class="math" data-tex="\(\phi_i/x\)">\(\phi_i/x\)</span>, which is invertible modulo <span class="math" data-tex="\(x\)">\(x\)</span>. Thus <span class="math" data-tex="\(\mathfrak m^{r-1}\)">\(\mathfrak m^{r-1}\)</span> is this entire conductor. The inclusion matrix for the power basis is the Vandermonde in the <span class="math" data-tex="\(\phi_i\)">\(\phi_i\)</span>, with determinant valuation <span class="math" data-tex="\(\binom r2\)">\(\binom r2\)</span>; Smith reduction gives the quotient length. Finite kernels, finite lengths and faithful flatness transfer both conclusions from completion to the original local ring, as in Theorem 3.1.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The inputs are finite normalization and its completed branch description for curves over a field, existence of a separating transcendence basis, the projective smooth model, the plane arithmetic genus formula [Stacks, Tag 0BYD], Riemann–Roch [Stacks, Tag 0BS6], global adjunction for plane adjoints, Max Noether's AF+BG theorem and the Brill–Noether residual theorem with the Fulton locators above. Euler's lemma, the general conductor formula and its limitation, the ordinary multiple-point formulas, plane conductor symmetry, the normalization correction to the genus, the ideal correspondence and the affine ideal-class statement are proved here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Noether]</strong> Emmy Noether, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN37721857X_0028/LOG_0022.pdf"><em>Die arithmetische Theorie der algebraischen Funktionen einer Veränderlichen in ihrer Beziehung zu den übrigen Theorien und zu der Zahlkörpertheorie</em></a>, Jahresbericht der Deutschen Mathematiker-Vereinigung <strong>28</strong> (1919), 182–203, parts 1–8; conductor and different on p. 189, part 7 on residual systems and ideal theory, pp. 199–201, and part 8 on further existence questions, pp. 201–203. <a href="https://github.com/KokunoYumeto/emmy-noether-en">English edition</a>.</li>
+<li><strong>[Stacks]</strong> The Stacks Project, Tags <a href="https://stacks.math.columbia.edu/tag/03GR">03GR</a>, <a href="https://stacks.math.columbia.edu/tag/030Q">030Q</a>, <a href="https://stacks.math.columbia.edu/tag/030W">030W</a>, <a href="https://stacks.math.columbia.edu/tag/09N2">09N2</a>, <a href="https://stacks.math.columbia.edu/tag/09NW">09NW</a>, <a href="https://stacks.math.columbia.edu/tag/0C3Q">0C3Q</a>, <a href="https://stacks.math.columbia.edu/tag/0C3U">0C3U</a>, <a href="https://stacks.math.columbia.edu/tag/0BYD">0BYD</a>, <a href="https://stacks.math.columbia.edu/tag/0BYE">0BYE</a>, and <a href="https://stacks.math.columbia.edu/tag/0BS6">0BS6</a>. Read in the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/curves.html">AI Integrated Stacks Project English reader</a>, whose AI-proposed corrections and additions have not been reviewed by the Stacks Project's maintainers.</li>
+<li><strong>[Fulton]</strong> William Fulton, <a href="https://poisson.phc.dm.unipi.it/~camponovo/libri/Fulton%20-%20CurveBook"><em>Algebraic Curves</em></a>, free edition, 28 January 2008, Sections 5.5 (AF+BG), 7.5 (ordinary branches and Noether conditions), 8.1 (residual theorem), 8.3 (adjoint sections), 8.5, Proposition 8 (canonical adjoints), and 8.6 (Riemann–Roch).</li>
+<li><strong>[Sutherland]</strong> Andrew V. Sutherland, <em>Number Theory I</em>, MIT 18.785 lecture notes, Fall 2021: <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes6.pdf">Lecture 6</a>, <em>Ideal norms and the Dedekind-Kummer theorem</em>, including the conductor of an order, and <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes12.pdf">Lecture 12</a>, <em>The different and the discriminant</em>.</li>
+<li><strong>[Conrad]</strong> Keith Conrad, <a href="https://kconrad.math.uconn.edu/blurbs/gradnumthy/conductor.pdf"><em>The conductor ideal of an order</em></a>, Sections 3 and 5.</li>
+<li><strong>[Vakil]</strong> Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic Geometry</em>, public draft of 27 July 2024, Sections 13.5 (regular curves and DVRs), 18.4 (Riemann–Roch and arithmetic genus), and 18.5 (Serre duality).</li>
+<li><strong>[Milne FT]</strong> J. S. Milne, <em>Fields and Galois Theory</em>, Theorem 9.27 (separating transcendence bases over a perfect field), <a href="https://www.jmilne.org/math/CourseNotes/FT.pdf">author’s course notes</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NOE-ABS-05.html">← Normal integral bases in tame extensions</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/NOE-ABS-06.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-ABS">Repository</a></nav>
+</footer>
+</body>
+</html>

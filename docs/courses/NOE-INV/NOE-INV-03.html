@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invariants of finite groups and Noether&#x27;s degree bound · Invariants and finiteness</title>
+<meta name="description" content="A lesson of the course Invariants and finiteness. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-INV/NOE-INV-03.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Invariants and finiteness</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 5</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="invariants-of-finite-groups-and-noether-s-degree-bound">Invariants of finite groups and Noether's degree bound</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in this Codex instance at Ultra. Public domain (CC0).</em></p>
+<p>A group action identifies points, but polynomial functions need not forget those identifications. The invariant ring consists of the functions that do. For finite groups we can find these functions by averaging, bound the degrees needed to generate them, and count them degree by degree. The degree bound is useful because it turns an unbounded search into a finite linear algebra problem.</p>
+<p>We assume elementary group representations and polynomial rings. The Hilbert basis theorem used below is proved in <a href="../AG-CA/AG-CA-03.html">Noetherian and Artinian rings</a>, Theorem 2.1, in <em>Commutative algebra for geometry</em>. The averaging argument works whenever the group order is invertible in the field. The orbit-resolvent proofs begin in characteristic zero; section 3 then proves the degree bound whenever the group order is invertible. Molien's formula is written over the complex numbers. Noether's original paper and the modern references credited below guided the subject coverage; the core proofs are supplied here. Section 5 proves Schmid’s characterization of equality, with the group-theoretic and zero-sum reductions supplied in full, then proves modular unboundedness for every group whose order is divisible by the characteristic.</p>
+<h2 id="1-averaging-without-losing-multiplication-by-invariants">1. Averaging without losing multiplication by invariants</h2>
+<p>Let a finite group <span class="math" data-tex="\(G\)">\(G\)</span> act linearly on a finite-dimensional vector space <span class="math" data-tex="\(V\)">\(V\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span>. Put <span class="math" data-tex="\(A=k[V]=\operatorname{Sym}(V^*)\)">\(A=k[V]=\operatorname{Sym}(V^*)\)</span>, with <span class="math" data-tex="\((g\cdot f)(v)=f(g^{-1}v)\)">\((g\cdot f)(v)=f(g^{-1}v)\)</span>, and put <span class="math" data-tex="\(B=A^G\)">\(B=A^G\)</span>. The action preserves degree, so <span class="math" data-tex="\(B=\bigoplus_{d\geq0}B_d\)">\(B=\bigoplus_{d\geq0}B_d\)</span>.</p>
+<p><strong>Theorem 1.1 (Reynolds operator).</strong> If <span class="math" data-tex="\(h=|G|\)">\(h=|G|\)</span> is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>, then
+<span class="math math-display" data-tex="\[
+\rho(f)=\frac1h\sum_{g\in G}g\cdot f
+\]">\[
+\rho(f)=\frac1h\sum_{g\in G}g\cdot f
+\]</span>
+is a degree-preserving projection <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>. For <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, it satisfies <span class="math" data-tex="\(\rho(bf)=b\rho(f)\)">\(\rho(bf)=b\rho(f)\)</span>.</p>
+<p><strong>Proof.</strong> Left multiplication permutes the summands, so <span class="math" data-tex="\(\rho(f)\)">\(\rho(f)\)</span> is invariant. For invariant <span class="math" data-tex="\(f\)">\(f\)</span>, every summand equals <span class="math" data-tex="\(f\)">\(f\)</span>, hence <span class="math" data-tex="\(\rho(f)=f\)">\(\rho(f)=f\)</span>. This proves projection and idempotence. Each group element preserves degree. Finally <span class="math" data-tex="\(g\cdot(bf)=b(g\cdot f)\)">\(g\cdot(bf)=b(g\cdot f)\)</span>, and summing proves the asserted linearity. This is linearity over the invariant ring, not multiplicativity of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. For the sign action on <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>, <span class="math" data-tex="\(\rho(x)=0\)">\(\rho(x)=0\)</span> but <span class="math" data-tex="\(\rho(x^2)=x^2\)">\(\rho(x^2)=x^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.2 (finite generation).</strong> Under the same hypothesis, <span class="math" data-tex="\(B\)">\(B\)</span> is generated by finitely many homogeneous invariants.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(I=AB_+\)">\(I=AB_+\)</span>, the ideal generated by all positive-degree homogeneous invariants. The Hilbert basis theorem makes <span class="math" data-tex="\(I\)">\(I\)</span> finitely generated. A finite set of generators for this ideal uses only finitely many of its original invariant generators; consequently there are homogeneous <span class="math" data-tex="\(f_1,\ldots,f_s\in B_+\)">\(f_1,\ldots,f_s\in B_+\)</span> with <span class="math" data-tex="\(I=(f_1,\ldots,f_s)\)">\(I=(f_1,\ldots,f_s)\)</span>. For <span class="math" data-tex="\(b\in B_d\)">\(b\in B_d\)</span>, <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, write <span class="math" data-tex="\(b=\sum_i a_i f_i\)">\(b=\sum_i a_i f_i\)</span>. Taking the degree <span class="math" data-tex="\(d\)">\(d\)</span> part lets us choose <span class="math" data-tex="\(a_i\)">\(a_i\)</span> homogeneous of degree <span class="math" data-tex="\(d-\deg f_i\)">\(d-\deg f_i\)</span>, with a negative degree interpreted as zero. Apply <span class="math" data-tex="\(\rho\)">\(\rho\)</span>:
+<span class="math math-display" data-tex="\[
+b=\sum_i\rho(a_i)f_i.
+\]">\[
+b=\sum_i\rho(a_i)f_i.
+\]</span>
+Each nonzero <span class="math" data-tex="\(\rho(a_i)\)">\(\rho(a_i)\)</span> has degree less than <span class="math" data-tex="\(d\)">\(d\)</span>. Induction on <span class="math" data-tex="\(d\)">\(d\)</span>, starting with <span class="math" data-tex="\(B_0=k\)">\(B_0=k\)</span>, gives <span class="math" data-tex="\(B=k[f_1,\ldots,f_s]\)">\(B=k[f_1,\ldots,f_s]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof explains existence but supplies no numerical limit on the degrees of the <span class="math" data-tex="\(f_i\)">\(f_i\)</span>. Noether's argument supplies that limit by studying the finite orbit of one linear form.</p>
+<h2 id="2-a-finite-orbit-as-a-symmetric-function-problem">2. A finite orbit as a symmetric-function problem</h2>
+<p>For <span class="math" data-tex="\(h\)">\(h\)</span> vector variables <span class="math" data-tex="\(y_1,\ldots,y_h\in k^n\)">\(y_1,\ldots,y_h\in k^n\)</span>, let the symmetric group permute the vectors, leaving the coordinates within each vector in place. For a multi-index <span class="math" data-tex="\(\alpha\in\mathbb N^n\)">\(\alpha\in\mathbb N^n\)</span>, write
+<span class="math math-display" data-tex="\[
+y_i^\alpha=\prod_j y_{ij}^{\alpha_j},\qquad
+p_\alpha=\sum_{i=1}^h y_i^\alpha.
+\]">\[
+y_i^\alpha=\prod_j y_{ij}^{\alpha_j},\qquad
+p_\alpha=\sum_{i=1}^h y_i^\alpha.
+\]</span></p>
+<p><strong>Theorem 2.1 (multisymmetric generation).</strong> In characteristic zero the invariant ring for these permutations is generated by the <span class="math" data-tex="\(p_\alpha\)">\(p_\alpha\)</span> with <span class="math" data-tex="\(1\leq|\alpha|\leq h\)">\(1\leq|\alpha|\leq h\)</span>.</p>
+<p><strong>Proof.</strong> First allow all positive <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span>. For nonzero multi-indices <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_r\)">\(\alpha_1,\ldots,\alpha_r\)</span>, define
+<span class="math math-display" data-tex="\[
+M(\alpha_1,\ldots,\alpha_r)
+=\sum_{i_1,\ldots,i_r\ \mathrm{distinct}}
+y_{i_1}^{\alpha_1}\cdots y_{i_r}^{\alpha_r}.
+\]">\[
+M(\alpha_1,\ldots,\alpha_r)
+=\sum_{i_1,\ldots,i_r\ \mathrm{distinct}}
+y_{i_1}^{\alpha_1}\cdots y_{i_r}^{\alpha_r}.
+\]</span>
+Each such <span class="math" data-tex="\(M\)">\(M\)</span> is the corresponding monomial orbit sum multiplied by the product of the factorials of the multiplicities of repeated multi-indices. Those nonzero integers are invertible in <span class="math" data-tex="\(k\)">\(k\)</span>, so conversely every orbit sum is a scalar multiple of an <span class="math" data-tex="\(M\)">\(M\)</span>. Thus the <span class="math" data-tex="\(M\)">\(M\)</span>'s span all invariants. Multiplying by a power sum gives the exact identity
+<span class="math math-display" data-tex="\[
+p_\beta M(\alpha_1,\ldots,\alpha_r)
+=M(\beta,\alpha_1,\ldots,\alpha_r)
++\sum_{j=1}^r M(\alpha_1,\ldots,\alpha_j+\beta,\ldots,\alpha_r).
+\]">\[
+p_\beta M(\alpha_1,\ldots,\alpha_r)
+=M(\beta,\alpha_1,\ldots,\alpha_r)
++\sum_{j=1}^r M(\alpha_1,\ldots,\alpha_j+\beta,\ldots,\alpha_r).
+\]</span>
+The summands on the right separate whether the index contributed by <span class="math" data-tex="\(p_\beta\)">\(p_\beta\)</span> is new or coincides with the <span class="math" data-tex="\(j\)">\(j\)</span>-th index. Induction on the number of occupied rows expresses every <span class="math" data-tex="\(M\)">\(M\)</span> as a polynomial in power sums.</p>
+<p>Now introduce auxiliary variables <span class="math" data-tex="\(u_1,\ldots,u_n\)">\(u_1,\ldots,u_n\)</span> and set <span class="math" data-tex="\(\ell_i=\sum_j u_jy_{ij}\)">\(\ell_i=\sum_j u_jy_{ij}\)</span>. Write <span class="math" data-tex="\(s_d(u)=\sum_i\ell_i^d\)">\(s_d(u)=\sum_i\ell_i^d\)</span>. To derive Newton's identities, set <span class="math" data-tex="\(E(T)=\prod_i(1+\ell_iT)=\sum_r e_rT^r\)">\(E(T)=\prod_i(1+\ell_iT)=\sum_r e_rT^r\)</span>. Formal differentiation gives <span class="math" data-tex="\(E&#x27;(T)/E(T)=\sum_i\ell_i/(1+\ell_iT)=\sum_{a\geq1}(-1)^{a-1}s_aT^{a-1}\)">\(E&#x27;(T)/E(T)=\sum_i\ell_i/(1+\ell_iT)=\sum_{a\geq1}(-1)^{a-1}s_aT^{a-1}\)</span>. Multiplying by <span class="math" data-tex="\(E(T)\)">\(E(T)\)</span> and comparing the coefficient of <span class="math" data-tex="\(T^{r-1}\)">\(T^{r-1}\)</span> gives
+<span class="math math-display" data-tex="\[
+r e_r=\sum_{a=1}^r(-1)^{a-1}e_{r-a}s_a,\qquad e_0=1.
+\]">\[
+r e_r=\sum_{a=1}^r(-1)^{a-1}e_{r-a}s_a,\qquad e_0=1.
+\]</span>
+Since each <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span> is a root of <span class="math" data-tex="\(T^h-e_1T^{h-1}+\cdots+(-1)^he_h\)">\(T^h-e_1T^{h-1}+\cdots+(-1)^he_h\)</span>, summing after multiplication by <span class="math" data-tex="\(\ell_i^{d-h}\)">\(\ell_i^{d-h}\)</span> expresses every <span class="math" data-tex="\(s_d\)">\(s_d\)</span>, <span class="math" data-tex="\(d&gt;h\)">\(d&gt;h\)</span>, in these first <span class="math" data-tex="\(h\)">\(h\)</span> power sums. But
+<span class="math math-display" data-tex="\[
+s_d(u)=\sum_{|\alpha|=d}\binom d\alpha p_\alpha u^\alpha.
+\]">\[
+s_d(u)=\sum_{|\alpha|=d}\binom d\alpha p_\alpha u^\alpha.
+\]</span>
+Comparing coefficients shows that every <span class="math" data-tex="\(p_\alpha\)">\(p_\alpha\)</span> of degree greater than <span class="math" data-tex="\(h\)">\(h\)</span> is a polynomial in the <span class="math" data-tex="\(p_\beta\)">\(p_\beta\)</span> of degree at most <span class="math" data-tex="\(h\)">\(h\)</span>. Division by the nonzero multinomial coefficient is valid in characteristic zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-two-generating-sets-of-bounded-degree">3. Two generating sets of bounded degree</h2>
+<p><strong>Theorem 3.1 (Noether's bound).</strong> If <span class="math" data-tex="\(\operatorname{char}k=0\)">\(\operatorname{char}k=0\)</span>, then
+<span class="math math-display" data-tex="\[
+k[V]^G=k[\rho(x^\alpha):1\leq|\alpha|\leq h],\qquad h=|G|.
+\]">\[
+k[V]^G=k[\rho(x^\alpha):1\leq|\alpha|\leq h],\qquad h=|G|.
+\]</span>
+In particular, invariants of degree at most <span class="math" data-tex="\(h\)">\(h\)</span> generate the invariant ring.</p>
+<p><strong>First proof: the orbit resolvent.</strong> Apply Theorem 2.1 to the <span class="math" data-tex="\(h\)">\(h\)</span> vectors <span class="math" data-tex="\(g^{-1}v\)">\(g^{-1}v\)</span>. For every invariant <span class="math" data-tex="\(f\)">\(f\)</span>, the multisymmetric polynomial <span class="math" data-tex="\(h^{-1}\sum_i f(y_i)\)">\(h^{-1}\sum_i f(y_i)\)</span> specializes to <span class="math" data-tex="\(f(v)\)">\(f(v)\)</span>. Introduce
+<span class="math math-display" data-tex="\[
+\Phi(z,u)=\prod_{g\in G}(z-\langle u,g^{-1}v\rangle)
+=z^h+\sum_{r=1}^h(-1)^re_r(u)z^{h-r}.
+\]">\[
+\Phi(z,u)=\prod_{g\in G}(z-\langle u,g^{-1}v\rangle)
+=z^h+\sum_{r=1}^h(-1)^re_r(u)z^{h-r}.
+\]</span>
+Each coefficient of <span class="math" data-tex="\(e_r(u)\)">\(e_r(u)\)</span> in <span class="math" data-tex="\(u\)">\(u\)</span> is an invariant of degree <span class="math" data-tex="\(r\)">\(r\)</span> in <span class="math" data-tex="\(v\)">\(v\)</span>, because <span class="math" data-tex="\(G\)">\(G\)</span> permutes the factors. Newton's identities express all orbit power sums as polynomials in these coefficient invariants, so they generate <span class="math" data-tex="\(B\)">\(B\)</span>. Conversely, the same identities express each <span class="math" data-tex="\(e_r(u)\)">\(e_r(u)\)</span> in the orbit power sums of degree at most <span class="math" data-tex="\(h\)">\(h\)</span>. Their coefficients are scalar multiples of <span class="math" data-tex="\(\rho(x^\alpha)\)">\(\rho(x^\alpha)\)</span>. Thus the resolvent coefficients and the indicated averages generate the same algebra. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Second proof: one-row power sums.</strong> This argument does not need the full multisymmetric theorem. Averaged monomials span <span class="math" data-tex="\(B\)">\(B\)</span>, since applying <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to the monomial expansion of <span class="math" data-tex="\(f\in B\)">\(f\in B\)</span> returns <span class="math" data-tex="\(f\)">\(f\)</span>. Set
+<span class="math math-display" data-tex="\[
+S_d(u)=\sum_g\langle u,g^{-1}v\rangle^d
+=h\sum_{|\alpha|=d}\binom d\alpha\rho(x^\alpha)u^\alpha.
+\]">\[
+S_d(u)=\sum_g\langle u,g^{-1}v\rangle^d
+=h\sum_{|\alpha|=d}\binom d\alpha\rho(x^\alpha)u^\alpha.
+\]</span>
+Newton's identities express <span class="math" data-tex="\(S_d\)">\(S_d\)</span>, <span class="math" data-tex="\(d&gt;h\)">\(d&gt;h\)</span>, in <span class="math" data-tex="\(S_1,\ldots,S_h\)">\(S_1,\ldots,S_h\)</span>. Taking the coefficient of each <span class="math" data-tex="\(u^\alpha\)">\(u^\alpha\)</span> and dividing by <span class="math" data-tex="\(h\binom d\alpha\)">\(h\binom d\alpha\)</span> expresses every high-degree averaged monomial in the lower-degree averages. These span all invariants, proving the result. Noether credits the substance of this second argument to E. Fischer. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> Noether, <em>Der Endlichkeitssatz der Invarianten endlicher Gruppen</em>, parts 1, 2 and 4.</p>
+<p>Both arguments divide by integers besides <span class="math" data-tex="\(h\)">\(h\)</span>. The following ideal identity removes that restriction. Credit: Fogarty, <em>Calculations</em>, equations (2)–(3); Fleischmann independently established the bound.</p>
+<p><strong>Lemma 3.2.</strong> For a <span class="math" data-tex="\(G\)">\(G\)</span>-stable ideal <span class="math" data-tex="\(\mathfrak m\subset A\)">\(\mathfrak m\subset A\)</span>, let <span class="math" data-tex="\(J=A(\mathfrak m\cap A^G)\)">\(J=A(\mathfrak m\cap A^G)\)</span>. Then <span class="math" data-tex="\(h\mathfrak m^h\subseteq J\)">\(h\mathfrak m^h\subseteq J\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(f_\gamma\in\mathfrak m\)">\(f_\gamma\in\mathfrak m\)</span>, indexed by <span class="math" data-tex="\(G\)">\(G\)</span>. Each product below has its <span class="math" data-tex="\(\gamma=\sigma\)">\(\gamma=\sigma\)</span> factor zero:
+<span class="math math-display" data-tex="\[
+0=\sum_{\sigma\in G}\prod_{\gamma\in G}
+\bigl(f_\gamma-\sigma^{-1}\gamma(f_\gamma)\bigr)
+=\sum_{S\subseteq G}(-1)^{|S|}
+\Bigl(\prod_{\gamma\notin S}f_\gamma\Bigr)
+\operatorname{Tr}\Bigl(\prod_{\gamma\in S}\gamma(f_\gamma)\Bigr).
+\]">\[
+0=\sum_{\sigma\in G}\prod_{\gamma\in G}
+\bigl(f_\gamma-\sigma^{-1}\gamma(f_\gamma)\bigr)
+=\sum_{S\subseteq G}(-1)^{|S|}
+\Bigl(\prod_{\gamma\notin S}f_\gamma\Bigr)
+\operatorname{Tr}\Bigl(\prod_{\gamma\in S}\gamma(f_\gamma)\Bigr).
+\]</span>
+For nonempty <span class="math" data-tex="\(S\)">\(S\)</span>, the transfer is invariant and belongs to <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. These terms lie in <span class="math" data-tex="\(J\)">\(J\)</span>. The empty-subset term is <span class="math" data-tex="\(h\prod_\gamma f_\gamma\)">\(h\prod_\gamma f_\gamma\)</span>. Such products generate <span class="math" data-tex="\(\mathfrak m^h\)">\(\mathfrak m^h\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.3 (non-modular bound).</strong> If <span class="math" data-tex="\(h\)">\(h\)</span> is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>, invariants of degrees at most <span class="math" data-tex="\(h\)">\(h\)</span> generate <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> Apply the lemma with <span class="math" data-tex="\(\mathfrak m=A_+\)">\(\mathfrak m=A_+\)</span>. Then <span class="math" data-tex="\(A_{\geq h}\subset J=AB_+\)">\(A_{\geq h}\subset J=AB_+\)</span>, so <span class="math" data-tex="\(J\)">\(J\)</span> is generated by its pieces of degrees at most <span class="math" data-tex="\(h\)">\(h\)</span>. Express bases of these pieces using homogeneous positive-degree invariants; taking homogeneous components retains only invariant factors of degree at most <span class="math" data-tex="\(h\)">\(h\)</span>. The resulting finite list generates <span class="math" data-tex="\(J\)">\(J\)</span>. The averaging and degree induction in Theorem 1.2 makes it generate <span class="math" data-tex="\(B\)">\(B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-counting-invariants-molien-s-formula">4. Counting invariants: Molien's formula</h2>
+<p>The Hilbert series <span class="math" data-tex="\(H_B(t)=\sum_{d\geq0}\dim_{\mathbb C}B_d\,t^d\)">\(H_B(t)=\sum_{d\geq0}\dim_{\mathbb C}B_d\,t^d\)</span> records the dimension of each space of homogeneous invariants. It can check a proposed set of generators and relations, but it cannot by itself prove that proposed generators generate: an inclusion and equality of graded dimensions are both needed.</p>
+<p><strong>Theorem 4.1 (Molien).</strong> Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>,
+<span class="math math-display" data-tex="\[
+H_B(t)=\frac1h\sum_{g\in G}\frac1{\det(I-tg\mid V)}.
+\]">\[
+H_B(t)=\frac1h\sum_{g\in G}\frac1{\det(I-tg\mid V)}.
+\]</span></p>
+<p><strong>Proof.</strong> A projection has eigenvalues zero and one, so its trace on <span class="math" data-tex="\(A_d\)">\(A_d\)</span> equals its rank <span class="math" data-tex="\(\dim B_d\)">\(\dim B_d\)</span>. Hence <span class="math" data-tex="\(\dim B_d=h^{-1}\sum_g\operatorname{tr}(g\mid\operatorname{Sym}^dV^*)\)">\(\dim B_d=h^{-1}\sum_g\operatorname{tr}(g\mid\operatorname{Sym}^dV^*)\)</span>. A finite-order complex matrix is diagonalizable, since its minimal polynomial divides <span class="math" data-tex="\(T^h-1\)">\(T^h-1\)</span>, which has no repeated roots. If its eigenvalues on <span class="math" data-tex="\(V^*\)">\(V^*\)</span> are <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_n\)">\(\lambda_1,\ldots,\lambda_n\)</span>, then the monomial basis gives the formal-power-series identity
+<span class="math math-display" data-tex="\[
+\sum_{d\geq0}\operatorname{tr}(g\mid\operatorname{Sym}^dV^*)t^d
+=\prod_j\left(\sum_{a\geq0}(t\lambda_j)^a\right)
+=\frac1{\det(I-tg^{-1}\mid V)}.
+\]">\[
+\sum_{d\geq0}\operatorname{tr}(g\mid\operatorname{Sym}^dV^*)t^d
+=\prod_j\left(\sum_{a\geq0}(t\lambda_j)^a\right)
+=\frac1{\det(I-tg^{-1}\mid V)}.
+\]</span>
+Sum over <span class="math" data-tex="\(G\)">\(G\)</span> and reindex by inversion. All manipulations are coefficientwise finite, so analytic convergence is unnecessary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="4-1-the-sign-action-on-two-coordinates">4.1 The sign action on two coordinates</h3>
+<p>For <span class="math" data-tex="\(g=-I\)">\(g=-I\)</span>, a monomial <span class="math" data-tex="\(x^ay^b\)">\(x^ay^b\)</span> is invariant exactly when <span class="math" data-tex="\(a+b\)">\(a+b\)</span> is even. If both exponents are even, it is a product of <span class="math" data-tex="\(x^2,y^2\)">\(x^2,y^2\)</span>; if both are odd, it is <span class="math" data-tex="\(xy\)">\(xy\)</span> times such a product. Thus
+<span class="math math-display" data-tex="\[
+B=\mathbb C[u,v,w]/(v^2-uw),\qquad (u,v,w)=(x^2,xy,y^2).
+\]">\[
+B=\mathbb C[u,v,w]/(v^2-uw),\qquad (u,v,w)=(x^2,xy,y^2).
+\]</span>
+There are no further relations: after reduction by <span class="math" data-tex="\(v^2=uw\)">\(v^2=uw\)</span>, monomials <span class="math" data-tex="\(u^aw^b\)">\(u^aw^b\)</span> and <span class="math" data-tex="\(vu^aw^b\)">\(vu^aw^b\)</span> map to distinct monomials in <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. The Hilbert series is
+<span class="math math-display" data-tex="\[
+\frac12\left(\frac1{(1-t)^2}+\frac1{(1+t)^2}\right)
+=\frac{1+t^2}{(1-t^2)^2}.
+\]">\[
+\frac12\left(\frac1{(1-t)^2}+\frac1{(1+t)^2}\right)
+=\frac{1+t^2}{(1-t^2)^2}.
+\]</span></p>
+<figure><img src="figures/sign-monomials.png" alt="Exponent lattice for sign invariants: blue points have even a+b; arrows mark the generators (2,0), (1,1) and (0,2)." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p>The blue exponent pairs form the monoid generated by the three arrows. The relation twice (1,1) equals (2,0)+(0,2) becomes <span class="math" data-tex="\(v^2=uw\)">\(v^2=uw\)</span>. The diagram displays only exponents from zero through six; the argument applies to the entire nonnegative lattice. Editable vector diagram.</p>
+<p>The two terms in the numerator reflect the basis <span class="math" data-tex="\(1,v\)">\(1,v\)</span> over <span class="math" data-tex="\(\mathbb C[u,w]\)">\(\mathbb C[u,w]\)</span>.</p>
+<h3 id="4-2-opposite-characters-of-a-cyclic-group">4.2 Opposite characters of a cyclic group</h3>
+<p>Let <span class="math" data-tex="\(G=C_r\)">\(G=C_r\)</span> act by <span class="math" data-tex="\((x,y)\mapsto(\zeta x,\zeta^{-1}y)\)">\((x,y)\mapsto(\zeta x,\zeta^{-1}y)\)</span>, with <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> primitive. The invariant monomials have <span class="math" data-tex="\(a-b\equiv0\pmod r\)">\(a-b\equiv0\pmod r\)</span>. Removing <span class="math" data-tex="\((xy)^{\min(a,b)}\)">\((xy)^{\min(a,b)}\)</span> leaves a power of <span class="math" data-tex="\(x^r\)">\(x^r\)</span> or <span class="math" data-tex="\(y^r\)">\(y^r\)</span>, so
+<span class="math math-display" data-tex="\[
+B=\mathbb C[u,v,z]/(uv-z^r),\qquad (u,v,z)=(x^r,y^r,xy).
+\]">\[
+B=\mathbb C[u,v,z]/(uv-z^r),\qquad (u,v,z)=(x^r,y^r,xy).
+\]</span>
+Reduction to monomials containing at most one of <span class="math" data-tex="\(u,v\)">\(u,v\)</span> proves the displayed relation is the entire kernel. Therefore
+<span class="math math-display" data-tex="\[
+H_B(t)=\frac{1-t^{2r}}{(1-t^r)^2(1-t^2)}
+=\frac{1+t^r}{(1-t^r)(1-t^2)}.
+\]">\[
+H_B(t)=\frac{1-t^{2r}}{(1-t^r)^2(1-t^2)}
+=\frac{1+t^r}{(1-t^r)(1-t^2)}.
+\]</span>
+For <span class="math" data-tex="\(r=3\)">\(r=3\)</span>, this is <span class="math" data-tex="\((1+t^3)/((1-t^2)(1-t^3))\)">\((1+t^3)/((1-t^2)(1-t^3))\)</span>; it agrees with the Molien average of <span class="math" data-tex="\(I,\operatorname{diag}(\zeta,\zeta^{-1}),\operatorname{diag}(\zeta^{-1},\zeta)\)">\(I,\operatorname{diag}(\zeta,\zeta^{-1}),\operatorname{diag}(\zeta^{-1},\zeta)\)</span>.</p>
+<h3 id="4-3-permuting-coordinates">4.3 Permuting coordinates</h3>
+<p>For <span class="math" data-tex="\(S_n\)">\(S_n\)</span> acting by coordinate permutations, the invariant ring is <span class="math" data-tex="\(\mathbb C[e_1,\ldots,e_n]\)">\(\mathbb C[e_1,\ldots,e_n]\)</span>, where <span class="math" data-tex="\(e_j\)">\(e_j\)</span> is the elementary symmetric polynomial of degree <span class="math" data-tex="\(j\)">\(j\)</span>. Here is an algebraic proof that also works over every field. The lexicographically greatest monomial of a symmetric polynomial has exponent sequence <span class="math" data-tex="\(a_1\geq\cdots\geq a_n\)">\(a_1\geq\cdots\geq a_n\)</span>. The product
+<span class="math math-display" data-tex="\[
+e_1^{a_1-a_2}e_2^{a_2-a_3}\cdots e_n^{a_n}
+\]">\[
+e_1^{a_1-a_2}e_2^{a_2-a_3}\cdots e_n^{a_n}
+\]</span>
+has that same leading monomial with coefficient one. Subtract its scalar multiple and repeat within the finite set of monomials of the original total degree. This expresses the polynomial in the <span class="math" data-tex="\(e_j\)">\(e_j\)</span>. Distinct products have distinct leading exponent sequences, proving algebraic independence. Thus
+<span class="math math-display" data-tex="\[
+H_B(t)=\prod_{j=1}^n(1-t^j)^{-1}.
+\]">\[
+H_B(t)=\prod_{j=1}^n(1-t^j)^{-1}.
+\]</span>
+The degrees needed are at most <span class="math" data-tex="\(n\)">\(n\)</span>, which is much smaller than <span class="math" data-tex="\(n!\)">\(n!\)</span> when <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>. Molien's summand for a permutation with cycle lengths <span class="math" data-tex="\(c_1,\ldots,c_s\)">\(c_1,\ldots,c_s\)</span> is <span class="math" data-tex="\(\prod_j(1-t^{c_j})^{-1}\)">\(\prod_j(1-t^{c_j})^{-1}\)</span>, since the eigenvalues of each cycle are all <span class="math" data-tex="\(c_j\)">\(c_j\)</span>-th roots of unity. This also computes the series by cycle type.</p>
+<h3 id="4-4-the-quaternion-group">4.4 The quaternion group</h3>
+<p>Take the matrices <span class="math" data-tex="\(r=\operatorname{diag}(i,-i)\)">\(r=\operatorname{diag}(i,-i)\)</span> and <span class="math" data-tex="\(s(x,y)=(y,-x)\)">\(s(x,y)=(y,-x)\)</span>. They generate <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>. Its eight elements consist of <span class="math" data-tex="\(I,-I\)">\(I,-I\)</span> and six matrices with eigenvalues <span class="math" data-tex="\(i,-i\)">\(i,-i\)</span>. Molien therefore gives
+<span class="math math-display" data-tex="\[
+H_B(t)=\frac18\left(\frac1{(1-t)^2}+\frac1{(1+t)^2}
++\frac6{1+t^2}\right)
+=\frac{1+t^6}{(1-t^4)^2}.
+\]">\[
+H_B(t)=\frac18\left(\frac1{(1-t)^2}+\frac1{(1+t)^2}
++\frac6{1+t^2}\right)
+=\frac{1+t^6}{(1-t^4)^2}.
+\]</span>
+The following invariants realize that series:
+<span class="math math-display" data-tex="\[
+a=x^4+y^4,\qquad b=x^2y^2,\qquad c=xy(x^4-y^4),\qquad
+c^2=b(a^2-4b^2).
+\]">\[
+a=x^4+y^4,\qquad b=x^2y^2,\qquad c=xy(x^4-y^4),\qquad
+c^2=b(a^2-4b^2).
+\]</span>
+To prove generation, first take invariants of <span class="math" data-tex="\(\langle r\rangle\)">\(\langle r\rangle\)</span>. They form <span class="math" data-tex="\(\mathbb C[u,v,z]/(uv-z^4)\)">\(\mathbb C[u,v,z]/(uv-z^4)\)</span>, with <span class="math" data-tex="\(u=x^4,v=y^4,z=xy\)">\(u=x^4,v=y^4,z=xy\)</span>. The remaining transformation swaps <span class="math" data-tex="\(u,v\)">\(u,v\)</span> and sends <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(-z\)">\(-z\)</span>. In the monomial normal form from the cyclic example, its invariant combinations with an even power of <span class="math" data-tex="\(z\)">\(z\)</span> are <span class="math" data-tex="\(z^{2j}(u^a+v^a)\)">\(z^{2j}(u^a+v^a)\)</span>; those with an odd power are <span class="math" data-tex="\(z^{2j+1}(u^a-v^a)\)">\(z^{2j+1}(u^a-v^a)\)</span>. Symmetric powers are polynomials in <span class="math" data-tex="\(u+v,uv\)">\(u+v,uv\)</span>, and <span class="math" data-tex="\((u^a-v^a)/(u-v)\)">\((u^a-v^a)/(u-v)\)</span> is symmetric. Thus every invariant is in <span class="math" data-tex="\(\mathbb C[a,b]+c\mathbb C[a,b]\)">\(\mathbb C[a,b]+c\mathbb C[a,b]\)</span>. The displayed relation reduces all expressions to that form. The degrees of the two summands are respectively zero and two modulo four, so they are independent. Finally <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are algebraically independent: in lexicographic order with <span class="math" data-tex="\(x&gt;y\)">\(x&gt;y\)</span>, the leading monomial of <span class="math" data-tex="\(a^pb^q\)">\(a^pb^q\)</span> is <span class="math" data-tex="\(x^{4p+2q}y^{2q}\)">\(x^{4p+2q}y^{2q}\)</span>. Different pairs <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> give different leading monomials, so no polynomial relation exists. This proves the presentation and the series. The necessary generator degrees are <span class="math" data-tex="\(4,4,6\)">\(4,4,6\)</span>, below the bound eight.</p>
+<h2 id="5-rational-functions-and-the-limits-of-the-bound">5. Rational functions and the limits of the bound</h2>
+<p><strong>Proposition 5.1.</strong> For a finite group acting on a domain <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Frac}(A)^G=\operatorname{Frac}(A^G).
+\]">\[
+\operatorname{Frac}(A)^G=\operatorname{Frac}(A^G).
+\]</span></p>
+<p><strong>Proof.</strong> Write an invariant rational function as <span class="math" data-tex="\(q=a/b\)">\(q=a/b\)</span>, <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, and set <span class="math" data-tex="\(N=\prod_g g(b)\)">\(N=\prod_g g(b)\)</span>. The nonzero element <span class="math" data-tex="\(N\)">\(N\)</span> is invariant. Since the identity factor is <span class="math" data-tex="\(b\)">\(b\)</span>, the product <span class="math" data-tex="\(qN=a\prod_{g\ne1}g(b)\)">\(qN=a\prod_{g\ne1}g(b)\)</span> lies in <span class="math" data-tex="\(A\)">\(A\)</span>, and it is invariant as a product of two invariant rational functions. Thus <span class="math" data-tex="\(q=(qN)/N\)">\(q=(qN)/N\)</span> is a quotient of invariant elements. The opposite inclusion is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If a cyclic group of order <span class="math" data-tex="\(r\)">\(r\)</span> acts faithfully on a line through a primitive <span class="math" data-tex="\(r\)">\(r\)</span>-th root of unity, then <span class="math" data-tex="\(k[x]^G=k[x^r]\)">\(k[x]^G=k[x^r]\)</span>. No positive invariant of smaller degree exists. The bound is therefore sharp. More generally, define <span class="math" data-tex="\(\beta(G,V)\)">\(\beta(G,V)\)</span> as the greatest degree of an element in a minimal homogeneous algebra generating set, equivalently the greatest degree occurring in <span class="math" data-tex="\(B_+/B_+^2\)">\(B_+/B_+^2\)</span>. Set <span class="math" data-tex="\(\beta(G,V)=0\)">\(\beta(G,V)=0\)</span> when <span class="math" data-tex="\(B=k\)">\(B=k\)</span>. Define <span class="math" data-tex="\(\beta(G)\)">\(\beta(G)\)</span> as its supremum over representations. The equality case requires a theorem about all representations; the following argument proves it.</p>
+<h3 id="when-the-group-wide-bound-is-attained">When the group-wide bound is attained</h3>
+<p>The number <span class="math" data-tex="\(\beta(G,V)\)">\(\beta(G,V)\)</span> measures a particular representation. Schmid's theorem concerns <span class="math" data-tex="\(\beta(G)\)">\(\beta(G)\)</span>, the supremum over all finite-dimensional representations. We now prove its noncyclic direction. The subgroup and quotient reductions are due to Schmid; the proof below supplies their arguments and the two elementary base cases. We work over an algebraically closed field of characteristic zero until the final descent paragraph.</p>
+<p><strong>Lemma 5.2 (relative degree bounds).</strong> For <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span> and <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span>,
+<span class="math math-display" data-tex="\[
+\beta(G)\leq [G:H]\beta(H),\qquad
+\beta(G)\leq\beta(N)\beta(G/N).
+\tag{S1}
+\]">\[
+\beta(G)\leq [G:H]\beta(H),\qquad
+\beta(G)\leq\beta(N)\beta(G/N).
+\tag{S1}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(I=k[V]^H\)">\(I=k[V]^H\)</span>, <span class="math" data-tex="\(R=k[V]^G\)">\(R=k[V]^G\)</span>, and <span class="math" data-tex="\(r=[G:H]\)">\(r=[G:H]\)</span>. If <span class="math" data-tex="\(f\in I_+\)">\(f\in I_+\)</span>, its orbit polynomial, with one factor for each left coset of <span class="math" data-tex="\(H\)">\(H\)</span>, has coefficients in <span class="math" data-tex="\(R\)">\(R\)</span>. Substituting <span class="math" data-tex="\(f\)">\(f\)</span> into it gives
+<span class="math math-display" data-tex="\[
+f^r\in I_+R_++R_+.
+\]">\[
+f^r\in I_+R_++R_+.
+\]</span>
+Here a product of subspaces means the span of their products. Polarizing this equality proves
+<span class="math math-display" data-tex="\[
+I_+^r\subseteq I_+R_++R_+,
+\qquad I_+^{r+1}\subseteq I_+R_+.
+\tag{S2}
+\]">\[
+I_+^r\subseteq I_+R_++R_+,
+\qquad I_+^{r+1}\subseteq I_+R_+.
+\tag{S2}
+\]</span>
+Explicitly, <span class="math" data-tex="\(r!f_1\cdots f_r\)">\(r!f_1\cdots f_r\)</span> is the alternating sum of the <span class="math" data-tex="\(r\)">\(r\)</span>-th powers of the sums over all subsets of <span class="math" data-tex="\(\{f_1,\ldots,f_r\}\)">\(\{f_1,\ldots,f_r\}\)</span>; the subspace on the right is closed under addition. The second inclusion follows by multiplication by <span class="math" data-tex="\(I_+\)">\(I_+\)</span>. The relative average
+<span class="math math-display" data-tex="\[
+\rho_H^G(f)=\frac1r\sum_{gH\in G/H}g f
+\]">\[
+\rho_H^G(f)=\frac1r\sum_{gH\in G/H}g f
+\]</span>
+maps <span class="math" data-tex="\(I\)">\(I\)</span> onto <span class="math" data-tex="\(R\)">\(R\)</span> and is <span class="math" data-tex="\(R\)">\(R\)</span>-linear. Thus (S2) also gives
+<span class="math math-display" data-tex="\[
+\rho_H^G(I_+^{r+1})\subseteq R_+^2.
+\tag{S3}
+\]">\[
+\rho_H^G(I_+^{r+1})\subseteq R_+^2.
+\tag{S3}
+\]</span>
+If <span class="math" data-tex="\(I\)">\(I\)</span> has generators of degrees at most <span class="math" data-tex="\(b=\beta(H,V)\)">\(b=\beta(H,V)\)</span>, every homogeneous element of degree greater than <span class="math" data-tex="\(rb\)">\(rb\)</span> is a sum of products of at least <span class="math" data-tex="\(r+1\)">\(r+1\)</span> of these positive-degree generators. For an element of <span class="math" data-tex="\(R\)">\(R\)</span>, apply (S3) to that expression. It is decomposable in <span class="math" data-tex="\(R\)">\(R\)</span>. Hence <span class="math" data-tex="\(\beta(G,V)\leq rb\)">\(\beta(G,V)\leq rb\)</span>; taking suprema proves the first inequality.</p>
+<p>For the second, take the finite-dimensional, graded, <span class="math" data-tex="\(G/N\)">\(G/N\)</span>-stable space
+<span class="math" data-tex="\(W=\bigoplus_{1\leq d\leq\beta(N,V)}k[V]^N_d\)">\(W=\bigoplus_{1\leq d\leq\beta(N,V)}k[V]^N_d\)</span>.
+Its inclusion gives a surjection <span class="math" data-tex="\(\operatorname{Sym}(W)\to k[V]^N\)">\(\operatorname{Sym}(W)\to k[V]^N\)</span>. Averaging lifts every <span class="math" data-tex="\(G/N\)">\(G/N\)</span>-invariant of the target to an invariant of the source. The source invariant ring is generated in ordinary symmetric degree at most <span class="math" data-tex="\(\beta(G/N)\)">\(\beta(G/N)\)</span>. Each source variable maps to an element of degree at most <span class="math" data-tex="\(\beta(N,V)\)">\(\beta(N,V)\)</span>; therefore the images generate <span class="math" data-tex="\(R\)">\(R\)</span> in degrees at most their product. If a generator has several original degrees, take its homogeneous parts; the group preserves those degrees and the bound remains the same. This proves the second inequality after taking suprema. Representations with invariant ring <span class="math" data-tex="\(k\)">\(k\)</span> cause no exception. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.3 (maximal zero-sum sequences).</strong> In a finite abelian group <span class="math" data-tex="\(A\)">\(A\)</span> of order <span class="math" data-tex="\(n\)">\(n\)</span>, a sequence with sum zero and no nonempty proper zero-sum subsequence has length at most <span class="math" data-tex="\(n\)">\(n\)</span>. If its length is <span class="math" data-tex="\(n\)">\(n\)</span>, all its entries are the same element, of order <span class="math" data-tex="\(n\)">\(n\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\beta(A)&lt;|A|\quad\text{when }A\text{ is not cyclic}.
+\tag{S4}
+\]">\[
+\beta(A)&lt;|A|\quad\text{when }A\text{ is not cyclic}.
+\tag{S4}
+\]</span></p>
+<p><strong>Proof.</strong> In any ordering of a minimal zero-sum sequence of length <span class="math" data-tex="\(s\)">\(s\)</span>, the <span class="math" data-tex="\(s-1\)">\(s-1\)</span> proper partial sums are distinct and nonzero. Equality of two of them, or a zero partial sum, would exhibit a proper zero-sum subsequence. Thus <span class="math" data-tex="\(s\leq n\)">\(s\leq n\)</span>. If <span class="math" data-tex="\(s=n\)">\(s=n\)</span>, the proper partial sums exhaust <span class="math" data-tex="\(A\setminus\{0\}\)">\(A\setminus\{0\}\)</span>. Interchange the first two entries <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Only the first partial sum changes, from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>. Both lists must exhaust the same set, so <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. Any two entries may be placed first, so all entries coincide. Minimality says their common value has order exactly <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>Choose an eigenbasis for an abelian-group representation. Its coordinate variables have weights in the character group <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>, which is an abelian group of order <span class="math" data-tex="\(n\)">\(n\)</span>. To verify that order directly, simultaneously diagonalize the commuting matrices of the regular representation. A joint eigenspace has dimension one: its coefficients are determined by its coefficient at the identity and its character. Conversely every character gives such an eigenvector. Thus exactly <span class="math" data-tex="\(n\)">\(n\)</span> characters occur. If <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> were cyclic, its generating character would have order <span class="math" data-tex="\(n\)">\(n\)</span>, hence image of order <span class="math" data-tex="\(n\)">\(n\)</span>, making <span class="math" data-tex="\(A\)">\(A\)</span> isomorphic to a cyclic group of roots of unity. So it is noncyclic when <span class="math" data-tex="\(A\)">\(A\)</span> is. Invariant monomials are precisely the monomials whose weight sequence sums to zero. Factoring off minimal zero-sum subsequences shows that they are generated by the minimal ones. The preceding equality case excludes degree <span class="math" data-tex="\(n\)">\(n\)</span>. Therefore invariants of degrees at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span> generate every invariant ring. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The nonabelian reduction uses only elementary finite-group theory. We include the needed group argument rather than assume a classification of minimal noncyclic groups.</p>
+<p><strong>Lemma 5.4 (the smallest nonabelian case).</strong> If a finite nonabelian group <span class="math" data-tex="\(G\)">\(G\)</span> has every proper subgroup cyclic and every quotient by a nontrivial proper normal subgroup cyclic, then
+<span class="math math-display" data-tex="\[
+G\cong C_p\rtimes C_q,
+\qquad p,q\text{ prime},\quad q\mid p-1,
+\tag{S5}
+\]">\[
+G\cong C_p\rtimes C_q,
+\qquad p,q\text{ prime},\quad q\mid p-1,
+\tag{S5}
+\]</span>
+with a nontrivial action of <span class="math" data-tex="\(C_q\)">\(C_q\)</span> on <span class="math" data-tex="\(C_p\)">\(C_p\)</span>.</p>
+<p><strong>Proof.</strong> We first justify the Sylow and transfer facts used here. If <span class="math" data-tex="\(|G|=p^a m\)">\(|G|=p^a m\)</span> with <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>, let <span class="math" data-tex="\(G\)">\(G\)</span> act by left multiplication on the subsets of <span class="math" data-tex="\(G\)">\(G\)</span> of size <span class="math" data-tex="\(p^a\)">\(p^a\)</span>. The number of subsets is prime to <span class="math" data-tex="\(p\)">\(p\)</span>: the coefficient of <span class="math" data-tex="\(T^{p^a}\)">\(T^{p^a}\)</span> in
+<span class="math" data-tex="\((1+T)^{p^a m}\equiv(1+T^{p^a})^m\pmod p\)">\((1+T)^{p^a m}\equiv(1+T^{p^a})^m\pmod p\)</span>
+is <span class="math" data-tex="\(m\)">\(m\)</span>. Some orbit therefore has length prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Its stabilizer <span class="math" data-tex="\(P\)">\(P\)</span> has order divisible by <span class="math" data-tex="\(p^a\)">\(p^a\)</span>; it acts freely on the stabilized subset, so its order also divides <span class="math" data-tex="\(p^a\)">\(p^a\)</span>. Thus <span class="math" data-tex="\(|P|=p^a\)">\(|P|=p^a\)</span>. For any <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup <span class="math" data-tex="\(Q\)">\(Q\)</span>, its action on the <span class="math" data-tex="\(m\)">\(m\)</span> left cosets of <span class="math" data-tex="\(P\)">\(P\)</span> has a fixed coset, since every nontrivial orbit has size divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. Hence <span class="math" data-tex="\(Q\)">\(Q\)</span> is contained in a conjugate of <span class="math" data-tex="\(P\)">\(P\)</span>; subgroups of order <span class="math" data-tex="\(p^a\)">\(p^a\)</span> are consequently conjugate. These are the precise Sylow facts needed below.</p>
+<p>Suppose an abelian Sylow subgroup <span class="math" data-tex="\(P\)">\(P\)</span> satisfies <span class="math" data-tex="\(P\subseteq Z(N_G(P))\)">\(P\subseteq Z(N_G(P))\)</span>. If <span class="math" data-tex="\(u,v\in P\)">\(u,v\in P\)</span> are conjugate, say <span class="math" data-tex="\(v=gug^{-1}\)">\(v=gug^{-1}\)</span>, then <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(gPg^{-1}\)">\(gPg^{-1}\)</span> are Sylow subgroups of <span class="math" data-tex="\(C_G(v)\)">\(C_G(v)\)</span>. Conjugacy there supplies <span class="math" data-tex="\(c\in C_G(v)\)">\(c\in C_G(v)\)</span> with <span class="math" data-tex="\(cg\in N_G(P)\)">\(cg\in N_G(P)\)</span>. This element centralizes <span class="math" data-tex="\(P\)">\(P\)</span>, so
+<span class="math" data-tex="\(u=cgug^{-1}c^{-1}=cvc^{-1}=v\)">\(u=cgug^{-1}c^{-1}=cvc^{-1}=v\)</span>.
+Thus conjugation between elements of <span class="math" data-tex="\(P\)">\(P\)</span> cannot change an element.</p>
+<p>Choose representatives <span class="math" data-tex="\(t\)">\(t\)</span> for the right cosets <span class="math" data-tex="\(P\backslash G\)">\(P\backslash G\)</span>. If <span class="math" data-tex="\(Ptg=Pt&#x27;\)">\(Ptg=Pt&#x27;\)</span>, put <span class="math" data-tex="\(h(t,g)=tgt&#x27;^{-1}\in P\)">\(h(t,g)=tgt&#x27;^{-1}\in P\)</span>. The transfer
+<span class="math math-display" data-tex="\[
+v_P(g)=\prod_t h(t,g)\in P
+\]">\[
+v_P(g)=\prod_t h(t,g)\in P
+\]</span>
+is a homomorphism: the equality
+<span class="math" data-tex="\(h(t,gh)=h(t,g)h(t&#x27;,h)\)">\(h(t,gh)=h(t,g)h(t&#x27;,h)\)</span>, followed by multiplication over the permuted coset representatives, proves it because <span class="math" data-tex="\(P\)">\(P\)</span> is abelian. For <span class="math" data-tex="\(u\in P\)">\(u\in P\)</span>, divide its permutation of these right cosets into cycles. A cycle of length <span class="math" data-tex="\(l\)">\(l\)</span> contributes <span class="math" data-tex="\(tu^lt^{-1}\in P\)">\(tu^lt^{-1}\in P\)</span>, which is <span class="math" data-tex="\(u^l\)">\(u^l\)</span> by the preceding conjugacy argument. Hence
+<span class="math" data-tex="\(v_P(u)=u^{[G:P]}\)">\(v_P(u)=u^{[G:P]}\)</span>.
+Since the exponent is prime to <span class="math" data-tex="\(p\)">\(p\)</span>, this is an automorphism of the abelian <span class="math" data-tex="\(p\)">\(p\)</span>-group <span class="math" data-tex="\(P\)">\(P\)</span>. Transfer is surjective and its kernel is a normal subgroup of order <span class="math" data-tex="\(|G|/|P|\)">\(|G|/|P|\)</span>.</p>
+<p>Now <span class="math" data-tex="\(G\)">\(G\)</span> cannot be simple. If it were, each Sylow subgroup <span class="math" data-tex="\(P\)">\(P\)</span> would be proper, hence cyclic, and its normalizer would be proper, hence cyclic. A normalizer equal to <span class="math" data-tex="\(G\)">\(G\)</span> would already make <span class="math" data-tex="\(P\)">\(P\)</span> a nontrivial proper normal subgroup. A cyclic normalizer centralizes <span class="math" data-tex="\(P\)">\(P\)</span>; transfer therefore gives a nontrivial proper normal kernel whenever <span class="math" data-tex="\([G:P]&gt;1\)">\([G:P]&gt;1\)</span>. If <span class="math" data-tex="\(G\)">\(G\)</span> were a <span class="math" data-tex="\(p\)">\(p\)</span>-group, its center would instead give a nontrivial proper normal subgroup: the conjugation class equation makes the center nontrivial, and a simple <span class="math" data-tex="\(p\)">\(p\)</span>-group must have order <span class="math" data-tex="\(p\)">\(p\)</span>, hence be abelian. In every case simplicity is impossible.</p>
+<p>Take a nontrivial proper minimal normal subgroup <span class="math" data-tex="\(N\)">\(N\)</span>. It is cyclic because it is proper, and has prime order <span class="math" data-tex="\(p\)">\(p\)</span>, since a proper nontrivial characteristic subgroup of a cyclic group would contradict minimality. The quotient <span class="math" data-tex="\(G/N\)">\(G/N\)</span> is cyclic, of order <span class="math" data-tex="\(m\)">\(m\)</span>. Lift a generator to <span class="math" data-tex="\(x\)">\(x\)</span>; then <span class="math" data-tex="\(G=\langle N,x\rangle\)">\(G=\langle N,x\rangle\)</span>. Conjugation by <span class="math" data-tex="\(x\)">\(x\)</span> is nontrivial on <span class="math" data-tex="\(N\)">\(N\)</span>, since otherwise <span class="math" data-tex="\(G\)">\(G\)</span> is abelian. Let its order be <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>. We have <span class="math" data-tex="\(x^m\in N\)">\(x^m\in N\)</span>, and this element is fixed by conjugation by <span class="math" data-tex="\(x\)">\(x\)</span>. A nontrivial automorphism of the prime-order group <span class="math" data-tex="\(N\)">\(N\)</span> fixes only the identity. Thus <span class="math" data-tex="\(x^m=1\)">\(x^m=1\)</span>, and <span class="math" data-tex="\(x\)">\(x\)</span> has order exactly <span class="math" data-tex="\(m\)">\(m\)</span>. In particular <span class="math" data-tex="\(\langle x\rangle\cap N=1\)">\(\langle x\rangle\cap N=1\)</span> and <span class="math" data-tex="\(G=N\rtimes\langle x\rangle\)">\(G=N\rtimes\langle x\rangle\)</span>.</p>
+<p>The subgroup <span class="math" data-tex="\(\langle x^d\rangle\)">\(\langle x^d\rangle\)</span> is central. If it were nontrivial, quotienting by it would leave a nonabelian quotient, contrary to the hypothesis. Hence <span class="math" data-tex="\(m=d\)">\(m=d\)</span>, so <span class="math" data-tex="\(m\mid p-1\)">\(m\mid p-1\)</span>. If <span class="math" data-tex="\(m\)">\(m\)</span> were composite, an element of prime order <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(\langle x\rangle\)">\(\langle x\rangle\)</span> would act nontrivially on <span class="math" data-tex="\(N\)">\(N\)</span>, and these two subgroups would generate a nonabelian proper subgroup. Therefore <span class="math" data-tex="\(m=q\)">\(m=q\)</span> is prime, proving (S5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.5 (strictness for a prime semidirect product).</strong> For the group in (S5), every characteristic-zero representation satisfies
+<span class="math math-display" data-tex="\[
+\beta(G,V)\leq pq-1.
+\tag{S6}
+\]">\[
+\beta(G,V)\leq pq-1.
+\tag{S6}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(N=C_p\)">\(N=C_p\)</span>, choose a generator <span class="math" data-tex="\(b\)">\(b\)</span> of <span class="math" data-tex="\(C_q\)">\(C_q\)</span>, and let <span class="math" data-tex="\(I=k[V]^N\)">\(I=k[V]^N\)</span>, <span class="math" data-tex="\(R=k[V]^G\)">\(R=k[V]^G\)</span>. Choose an <span class="math" data-tex="\(N\)">\(N\)</span>-eigenbasis for the coordinate variables; its weights belong to <span class="math" data-tex="\(\mathbb Z/p\)">\(\mathbb Z/p\)</span>. Conjugation by <span class="math" data-tex="\(b\)">\(b\)</span> permutes nonzero weights in orbits of length <span class="math" data-tex="\(q\)">\(q\)</span>. Write
+<span class="math" data-tex="\(\tau(f)=\sum_{j=0}^{q-1}b^jf\)">\(\tau(f)=\sum_{j=0}^{q-1}b^jf\)</span>.
+Formula (S3), with <span class="math" data-tex="\(H=N\)">\(H=N\)</span>, says
+<span class="math math-display" data-tex="\[
+\tau(I_+^{q+1})\subseteq R_+^2.
+\tag{S7}
+\]">\[
+\tau(I_+^{q+1})\subseteq R_+^2.
+\tag{S7}
+\]</span></p>
+<p>Every sequence of <span class="math" data-tex="\(p\)">\(p\)</span> weights has a nonempty zero-sum subsequence: among the <span class="math" data-tex="\(p+1\)">\(p+1\)</span> partial sums including zero, two coincide. By Lemma 5.3 a minimal zero-sum sequence of length <span class="math" data-tex="\(p\)">\(p\)</span> consists of one repeated nonzero weight. Consequently any <span class="math" data-tex="\(N\)">\(N\)</span>-invariant monomial <span class="math" data-tex="\(m\)">\(m\)</span> of degree <span class="math" data-tex="\(pq\)">\(pq\)</span> which either uses a weight-zero variable or uses two different weights has a zero-sum factor of degree at most <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. In the second case, select <span class="math" data-tex="\(p\)">\(p\)</span> entries containing two different weights and take a minimal zero-sum subsequence within them; it cannot have length <span class="math" data-tex="\(p\)">\(p\)</span>. After removing the short factor, the remaining weight sum is still zero and its length is at least <span class="math" data-tex="\((q-1)p+1\)">\((q-1)p+1\)</span>. Remove <span class="math" data-tex="\(q-1\)">\(q-1\)</span> further zero-sum factors, each of length at most <span class="math" data-tex="\(p\)">\(p\)</span>; at every step enough entries remain to do this. A nonempty zero-sum factor remains at the end. Thus <span class="math" data-tex="\(m\)">\(m\)</span> is a product of at least <span class="math" data-tex="\(q+1\)">\(q+1\)</span> positive-degree <span class="math" data-tex="\(N\)">\(N\)</span>-invariants. By (S7), <span class="math" data-tex="\(\tau(m)\)">\(\tau(m)\)</span> is decomposable in <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>It remains to treat <span class="math" data-tex="\(m\)">\(m\)</span> using just one nonzero weight <span class="math" data-tex="\(a\)">\(a\)</span>. Partition its <span class="math" data-tex="\(pq\)">\(pq\)</span> variable occurrences into <span class="math" data-tex="\(q\)">\(q\)</span> monomials <span class="math" data-tex="\(u_1,\ldots,u_q\)">\(u_1,\ldots,u_q\)</span> of degree <span class="math" data-tex="\(p\)">\(p\)</span>. Each <span class="math" data-tex="\(u_i\)">\(u_i\)</span> is <span class="math" data-tex="\(N\)">\(N\)</span>-invariant. Introduce scalar indeterminates <span class="math" data-tex="\(t_i\)">\(t_i\)</span>, fixed by the group, and put <span class="math" data-tex="\(f=\sum_i t_i u_i\)">\(f=\sum_i t_i u_i\)</span>. For the <span class="math" data-tex="\(q\)">\(q\)</span> conjugates <span class="math" data-tex="\(b^jf\)">\(b^jf\)</span>, write <span class="math" data-tex="\(e_i\)">\(e_i\)</span> for their elementary symmetric functions and <span class="math" data-tex="\(s_i=\tau(f^i)\)">\(s_i=\tau(f^i)\)</span> for their power sums. Newton's identity from Section 2 gives
+<span class="math math-display" data-tex="\[
+s_q+(-1)^q q e_q\in R_+^2[t_1,\ldots,t_q].
+\tag{S8}
+\]">\[
+s_q+(-1)^q q e_q\in R_+^2[t_1,\ldots,t_q].
+\tag{S8}
+\]</span>
+Indeed, each other term is a product of two positive-degree invariants.</p>
+<p>Every monomial in
+<span class="math" data-tex="\(e_q=\prod_{j=0}^{q-1}b^jf\)">\(e_q=\prod_{j=0}^{q-1}b^jf\)</span>
+uses variables from the <span class="math" data-tex="\(q\)">\(q\)</span> distinct nonzero weights in the orbit of <span class="math" data-tex="\(a\)">\(a\)</span>, with <span class="math" data-tex="\(p\)">\(p\)</span> occurrences from each weight. This remains true if <span class="math" data-tex="\(b\)">\(b\)</span> acts by linear combinations inside the weight spaces; no monomial basis for the whole group is assumed. Each such monomial belongs to <span class="math" data-tex="\(I_+^{q+1}\)">\(I_+^{q+1}\)</span> by the preceding short-factor argument. There is also a direct factorization in this particular case: write the weights as <span class="math" data-tex="\(a,ra,\ldots,r^{q-1}a\)">\(a,ra,\ldots,r^{q-1}a\)</span>, where <span class="math" data-tex="\(r\)">\(r\)</span> has order <span class="math" data-tex="\(q\)">\(q\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Their sum is zero. Taking one variable from each weight gives a zero-sum packet of length <span class="math" data-tex="\(q\)">\(q\)</span>; the monomial splits into <span class="math" data-tex="\(p&gt;q\)">\(p&gt;q\)</span> such packets. Each coefficient of <span class="math" data-tex="\(e_q\)">\(e_q\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>-invariant. Averaging it with <span class="math" data-tex="\(\tau/q\)">\(\tau/q\)</span> and using (S7) shows that it lies in <span class="math" data-tex="\(R_+^2\)">\(R_+^2\)</span>. Formula (S8) now puts <span class="math" data-tex="\(s_q\)">\(s_q\)</span> in that same subspace. The coefficient of <span class="math" data-tex="\(t_1\cdots t_q\)">\(t_1\cdots t_q\)</span> in <span class="math" data-tex="\(s_q\)">\(s_q\)</span> is exactly <span class="math" data-tex="\(q!\tau(m)\)">\(q!\tau(m)\)</span>, so <span class="math" data-tex="\(\tau(m)\)">\(\tau(m)\)</span> is decomposable as well.</p>
+<p>Transfers of <span class="math" data-tex="\(N\)">\(N\)</span>-invariant monomials span <span class="math" data-tex="\(R\)">\(R\)</span>. We have proved <span class="math" data-tex="\(R_{pq}\subseteq R_+^2\)">\(R_{pq}\subseteq R_+^2\)</span>. Noether's bound already excludes indispensable generators of degrees greater than <span class="math" data-tex="\(pq=|G|\)">\(pq=|G|\)</span>; the remaining degree <span class="math" data-tex="\(pq\)">\(pq\)</span> has just been excluded. This proves (S6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.6 (Schmid's equality characterization).</strong> For every finite group over a field of characteristic zero,
+<span class="math math-display" data-tex="\[
+\beta(G)=|G|\quad\Longleftrightarrow\quad G\text{ is cyclic}.
+\tag{S9}
+\]">\[
+\beta(G)=|G|\quad\Longleftrightarrow\quad G\text{ is cyclic}.
+\tag{S9}
+\]</span></p>
+<p><strong>Proof.</strong> Over an algebraically closed field, cyclic sharpness is the faithful one-dimensional example above. For the converse, induct on <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. A noncyclic proper subgroup gives strictness by the first inequality in (S1) and induction. A noncyclic proper quotient gives strictness by the second inequality in (S1), induction and Noether's bound for the kernel. If neither exists, a nonabelian <span class="math" data-tex="\(G\)">\(G\)</span> satisfies Lemma 5.4 and is handled by Lemma 5.5. An abelian noncyclic <span class="math" data-tex="\(G\)">\(G\)</span> is handled by Lemma 5.3. Thus <span class="math" data-tex="\(\beta(G)\leq|G|-1\)">\(\beta(G)\leq|G|-1\)</span> for every noncyclic <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>For a characteristic-zero field <span class="math" data-tex="\(k\)">\(k\)</span> which is not algebraically closed, extend to an algebraic closure <span class="math" data-tex="\(K\)">\(K\)</span>. In each degree, invariance is the kernel of the finitely many linear maps <span class="math" data-tex="\(g-1\)">\(g-1\)</span>, so
+<span class="math" data-tex="\(K\otimes_k k[V]^G=K[V_K]^G\)">\(K\otimes_k k[V]^G=K[V_K]^G\)</span>.
+The same equality holds for the space of products of positive-degree invariants, since multiplication commutes with extension of scalars. Therefore the graded indecomposable spaces <span class="math" data-tex="\(B_+/B_+^2\)">\(B_+/B_+^2\)</span> commute with this extension, proving the upper bound over <span class="math" data-tex="\(k\)">\(k\)</span>. For a cyclic group of order <span class="math" data-tex="\(h\)">\(h\)</span>, use its regular representation over <span class="math" data-tex="\(k\)">\(k\)</span>. After extension to <span class="math" data-tex="\(K\)">\(K\)</span>, it contains a faithful character as a direct summand: the usual eigenvectors <span class="math" data-tex="\(\sum_{j=0}^{h-1}\zeta^{-ij}e_j\)">\(\sum_{j=0}^{h-1}\zeta^{-ij}e_j\)</span> diagonalize the cyclic permutation. Restriction to the faithful character line is a surjection of invariant rings, with a section from projection onto that summand. Its degree-<span class="math" data-tex="\(h\)">\(h\)</span> indecomposable cannot come from lower degrees. Thus the regular representation has a nonzero degree-<span class="math" data-tex="\(h\)">\(h\)</span> indecomposable over <span class="math" data-tex="\(K\)">\(K\)</span>, and hence over <span class="math" data-tex="\(k\)">\(k\)</span>. Noether's bound proves equality. This also includes the trivial group, whose faithful regular line has generator degree one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem gives a uniform strict inequality for noncyclic groups; it does not assert that every representation of a cyclic group attains the bound. For <span class="math" data-tex="\(C_2\times C_2\)">\(C_2\times C_2\)</span>, degree-four minimal zero-sum sequences are impossible. For a concrete nonabelian example let <span class="math" data-tex="\(C_3\rtimes C_2\)">\(C_3\rtimes C_2\)</span> act by <span class="math" data-tex="\(a(x,y)=(\zeta x,\zeta^{-1}y)\)">\(a(x,y)=(\zeta x,\zeta^{-1}y)\)</span>, <span class="math" data-tex="\(b(x,y)=(y,x)\)">\(b(x,y)=(y,x)\)</span>. Its cyclic-subgroup invariants are <span class="math" data-tex="\(k[xy,x^3,y^3]\)">\(k[xy,x^3,y^3]\)</span>; averaging the involution, or using symmetric polynomials in <span class="math" data-tex="\(x^3,y^3\)">\(x^3,y^3\)</span>, gives <span class="math" data-tex="\(k[xy,x^3+y^3]\)">\(k[xy,x^3+y^3]\)</span>. The top-degree reduction used above appears explicitly as
+<span class="math math-display" data-tex="\[
+x^6+y^6=(x^3+y^3)^2-2(xy)^3.
+\]">\[
+x^6+y^6=(x^3+y^3)^2-2(xy)^3.
+\]</span>
+The norm term <span class="math" data-tex="\(x^3y^3\)">\(x^3y^3\)</span> consists of three weight-zero pairs. This is the packet factorization in the proof, while the displayed equality is its quadratic Newton identity.</p>
+<p>When the characteristic divides the group order, averaging by <span class="math" data-tex="\(1/h\)">\(1/h\)</span> is unavailable and the degree bound can fail. Richman proves that, for a group whose order is divisible by the characteristic, generator degrees can be unbounded as the representation varies. Finite generation for each fixed finite-dimensional representation still holds; it is proved in the later lesson <em>Finiteness for finite groups in every characteristic</em>.</p>
+<p><span id="7-why-modular-degrees-have-no-uniform-bound"></span></p>
+<h3 id="why-modular-degrees-have-no-uniform-bound">Why modular degrees have no uniform bound</h3>
+<p>For a graded invariant ring <span class="math" data-tex="\(B\)">\(B\)</span>, a positive-degree invariant has a necessary generator class when its image in <span class="math" data-tex="\(B_+/(B_+)^2\)">\(B_+/(B_+)^2\)</span> is nonzero. A degree-<span class="math" data-tex="\(d\)">\(d\)</span> class of this kind cannot be generated by invariants of smaller degree: any expression in smaller homogeneous positive-degree generators lies in <span class="math" data-tex="\((B_+)^2\)">\((B_+)^2\)</span> in degree <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Theorem 5.7 (modular unboundedness).</strong> Suppose <span class="math" data-tex="\(G\)">\(G\)</span> has order <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(k\)">\(k\)</span> has positive characteristic dividing <span class="math" data-tex="\(h\)">\(h\)</span>, and <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>. On <span class="math" data-tex="\(m\)">\(m\)</span> copies of the regular permutation representation, of dimension <span class="math" data-tex="\(mh\)">\(mh\)</span>, the invariant ring needs a generator of degree at least <span class="math" data-tex="\(m\)">\(m\)</span>. Consequently no representation-independent degree bound exists for this fixed group in this characteristic.</p>
+<p><strong>Proof.</strong> Work in the polynomial ring
+<span class="math math-display" data-tex="\[
+A=k[x_{i,g}:1\leq i\leq m,\ g\in G],\qquad
+a(x_{i,g})=x_{i,ag}.
+\]">\[
+A=k[x_{i,g}:1\leq i\leq m,\ g\in G],\qquad
+a(x_{i,g})=x_{i,ag}.
+\]</span>
+It has the multigrading recording total degree in each row <span class="math" data-tex="\(i\)">\(i\)</span>; the group preserves that grading.</p>
+<p>For a nonempty subset <span class="math" data-tex="\(S\)">\(S\)</span> of rows, let <span class="math" data-tex="\(B_S\)">\(B_S\)</span> be the invariant subspace of multidegree one in every row in <span class="math" data-tex="\(S\)">\(S\)</span>, zero elsewhere. Its monomials are
+<span class="math" data-tex="\(\prod_{i\in S}x_{i,g_i}\)">\(\prod_{i\in S}x_{i,g_i}\)</span>.
+The action on these monomials is free: an element fixing the monomial must fix the label in any one nonempty row, so is the identity. Every orbit therefore has <span class="math" data-tex="\(h\)">\(h\)</span> distinct monomials. Invariance of a polynomial says its coefficients are constant on each orbit, regardless of characteristic. Hence the sums <span class="math" data-tex="\(O\)">\(O\)</span> of the monomials in individual orbits form a basis of <span class="math" data-tex="\(B_S\)">\(B_S\)</span>.</p>
+<p>Define a linear functional
+<span class="math math-display" data-tex="\[
+\ell_S:B_S\longrightarrow k,\qquad \ell_S(O)=1
+\]">\[
+\ell_S:B_S\longrightarrow k,\qquad \ell_S(O)=1
+\]</span>
+on this basis. Take a disjoint partition <span class="math" data-tex="\(S=S_1\sqcup S_2\)">\(S=S_1\sqcup S_2\)</span> with both parts nonempty. If <span class="math" data-tex="\(M_1,M_2\)">\(M_1,M_2\)</span> are representative monomials for orbit sums on those parts, then
+<span class="math math-display" data-tex="\[
+\left(\sum_{a\in G}aM_1\right)
+\left(\sum_{b\in G}bM_2\right)
+=\sum_{t\in G}\sum_{a\in G}a(M_1\,tM_2).
+\tag{5}
+\]">\[
+\left(\sum_{a\in G}aM_1\right)
+\left(\sum_{b\in G}bM_2\right)
+=\sum_{t\in G}\sum_{a\in G}a(M_1\,tM_2).
+\tag{5}
+\]</span>
+Indeed write <span class="math" data-tex="\(b=at\)">\(b=at\)</span>. The <span class="math" data-tex="\(h\)">\(h\)</span> inner orbit sums are distinct: equality of the orbits for <span class="math" data-tex="\(t,t&#x27;\)">\(t,t&#x27;\)</span> would give an <span class="math" data-tex="\(a\)">\(a\)</span> fixing the labels on <span class="math" data-tex="\(S_1\)">\(S_1\)</span>, hence <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, and then <span class="math" data-tex="\(t=t&#x27;\)">\(t=t&#x27;\)</span> from the labels on <span class="math" data-tex="\(S_2\)">\(S_2\)</span>. Each inner sum is an orbit basis vector of <span class="math" data-tex="\(B_S\)">\(B_S\)</span>. Applying <span class="math" data-tex="\(\ell_S\)">\(\ell_S\)</span> to (5) gives <span class="math" data-tex="\(h=0\)">\(h=0\)</span> in <span class="math" data-tex="\(k\)">\(k\)</span>. By bilinearity it annihilates every product from <span class="math" data-tex="\(B_{S_1}B_{S_2}\)">\(B_{S_1}B_{S_2}\)</span>.</p>
+<p>Now take <span class="math" data-tex="\(S=\{1,\ldots,m\}\)">\(S=\{1,\ldots,m\}\)</span>. The multidegree-<span class="math" data-tex="\((1,\ldots,1)\)">\((1,\ldots,1)\)</span> component of <span class="math" data-tex="\((B_+)^2\)">\((B_+)^2\)</span> is spanned by those products over all disjoint nonempty partitions. To see this, decompose each factor into its invariant row-homogeneous components. Nonnegative degrees adding to one in every row must be zero or one, so each contributing pair has exactly such disjoint supports. Thus <span class="math" data-tex="\(\ell_S\)">\(\ell_S\)</span> annihilates this entire component.</p>
+<p>The invariant
+<span class="math math-display" data-tex="\[
+T_m=\sum_{g\in G}\prod_{i=1}^m x_{i,g}
+\]">\[
+T_m=\sum_{g\in G}\prod_{i=1}^m x_{i,g}
+\]</span>
+is one orbit sum, so <span class="math" data-tex="\(\ell_S(T_m)=1\)">\(\ell_S(T_m)=1\)</span>. Its class in <span class="math" data-tex="\(B_+/(B_+)^2\)">\(B_+/(B_+)^2\)</span> is nonzero. It has degree <span class="math" data-tex="\(m\)">\(m\)</span>, proving the required lower bound. When <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, there are no disjoint nonempty partitions and the same conclusion is immediate. Since <span class="math" data-tex="\(m\)">\(m\)</span> is arbitrary, the degrees are unbounded; taking <span class="math" data-tex="\(m&gt;h\)">\(m&gt;h\)</span> directly disproves the modular analogue of the Noether bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The invariant rings in this theorem are still finitely generated for each fixed <span class="math" data-tex="\(m\)">\(m\)</span>, by Theorem 1.2 of <a href="NOE-INV-05.html">Finiteness for finite groups in every characteristic</a>. There is no conflict: finiteness for each representation does not give one degree bound for all representations.</p>
+<p>Richman's 1996 paper establishes modular lower bounds in terms of representation dimension. The proof above gives the explicit linear lower bound <span class="math" data-tex="\(\dim(V)/|G|\)">\(\dim(V)/|G|\)</span> on these regular-copy representations and proves the full unboundedness assertion without importing its proof from that paper. The characteristic hypothesis enters at the exact equality <span class="math" data-tex="\(\ell_S(O_1O_2)=|G|=0\)">\(\ell_S(O_1O_2)=|G|=0\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 6.1 (easy).</strong> For the sign action on <span class="math" data-tex="\(k[x,y]\)">\(k[x,y]\)</span>, with <span class="math" data-tex="\(\operatorname{char}k\ne2\)">\(\operatorname{char}k\ne2\)</span>, find the invariants of degree four and verify generation in degree two.</p>
+<p><strong>Solution.</strong> The degree-four basis is <span class="math" data-tex="\(x^4,x^3y,x^2y^2,xy^3,y^4\)">\(x^4,x^3y,x^2y^2,xy^3,y^4\)</span>. They are respectively <span class="math" data-tex="\(u^2,uv,v^2=uw,vw,w^2\)">\(u^2,uv,v^2=uw,vw,w^2\)</span> in the notation of section 4.1. Every even-degree invariant monomial reduces the same way; odd-degree invariant spaces vanish. Hence degree two suffices and is necessary.</p>
+<p><strong>Exercise 6.2 (medium).</strong> Compute the Molien series and a presentation for <span class="math" data-tex="\(C_4\)">\(C_4\)</span> acting by <span class="math" data-tex="\(\operatorname{diag}(i,-i)\)">\(\operatorname{diag}(i,-i)\)</span>.</p>
+<p><strong>Solution.</strong> The four summands are <span class="math" data-tex="\((1-t)^{-2},(1+t)^{-2}\)">\((1-t)^{-2},(1+t)^{-2}\)</span> and twice <span class="math" data-tex="\((1+t^2)^{-1}\)">\((1+t^2)^{-1}\)</span>. Their average is <span class="math" data-tex="\((1+t^4)/((1-t^2)(1-t^4))\)">\((1+t^4)/((1-t^2)(1-t^4))\)</span>. The ring is <span class="math" data-tex="\(\mathbb C[x^4,y^4,xy]\)">\(\mathbb C[x^4,y^4,xy]\)</span>, with the single relation <span class="math" data-tex="\(x^4y^4=(xy)^4\)">\(x^4y^4=(xy)^4\)</span>. The monomial reduction in section 4.2 proves both generation and absence of other relations.</p>
+<p><strong>Exercise 6.3 (medium).</strong> Prove sharpness on a faithful cyclic line, and determine the invariant ring for the pair of opposite faithful characters.</p>
+<p><strong>Solution.</strong> On the line, invariance of <span class="math" data-tex="\(x^a\)">\(x^a\)</span> is equivalent to <span class="math" data-tex="\(r\mid a\)">\(r\mid a\)</span>; linear independence of monomials yields <span class="math" data-tex="\(k[x^r]\)">\(k[x^r]\)</span>. On two coordinates invariance means <span class="math" data-tex="\(r\mid a-b\)">\(r\mid a-b\)</span>. If <span class="math" data-tex="\(a\geq b\)">\(a\geq b\)</span>, write <span class="math" data-tex="\(x^ay^b=(xy)^b(x^r)^{(a-b)/r}\)">\(x^ay^b=(xy)^b(x^r)^{(a-b)/r}\)</span>, and use the analogous expression if <span class="math" data-tex="\(b\geq a\)">\(b\geq a\)</span>. This gives the generators and relation of section 4.2. These arguments work whenever the field contains the primitive root, including non-modular positive characteristic.</p>
+<p><strong>Exercise 6.4 (medium).</strong> Find the rational invariant field for coordinate permutations, and give an invariant denominator for a general rational invariant.</p>
+<p><strong>Solution.</strong> Given denominator <span class="math" data-tex="\(b\)">\(b\)</span>, use <span class="math" data-tex="\(N=\prod_{\sigma\in S_n}\sigma(b)\)">\(N=\prod_{\sigma\in S_n}\sigma(b)\)</span> as in Proposition 5.1. Both numerator and denominator then belong to <span class="math" data-tex="\(k[e_1,\ldots,e_n]\)">\(k[e_1,\ldots,e_n]\)</span>, by the leading-monomial proof in section 4.3. Hence the field is <span class="math" data-tex="\(k(e_1,\ldots,e_n)\)">\(k(e_1,\ldots,e_n)\)</span>. No characteristic restriction is needed for this statement.</p>
+<p><strong>Exercise 6.5 (hard).</strong> Over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, let an involution exchange the variables <span class="math" data-tex="\(x_j,y_j\)">\(x_j,y_j\)</span>, <span class="math" data-tex="\(1\leq j\leq d\)">\(1\leq j\leq d\)</span>, with <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>. Show that the transfer <span class="math" data-tex="\(\operatorname{Tr}=1+s\)">\(\operatorname{Tr}=1+s\)</span> is not onto the degree-two invariants. Show also that there is no equivariant projection of the degree-two polynomial space onto its invariants.</p>
+<p><strong>Solution.</strong> The monomial <span class="math" data-tex="\(x_1y_1\)">\(x_1y_1\)</span> is fixed. On every two-element monomial orbit, the transfer gives the sum of the two monomials; on a fixed monomial, it gives zero. Thus <span class="math" data-tex="\(x_1y_1\)">\(x_1y_1\)</span> is outside its image. For the stronger assertion put <span class="math" data-tex="\(a=x_1^2\)">\(a=x_1^2\)</span>. Then <span class="math" data-tex="\((1+s)a=x_1^2+y_1^2\ne0\)">\((1+s)a=x_1^2+y_1^2\ne0\)</span> is invariant. If an equivariant projection <span class="math" data-tex="\(P\)">\(P\)</span> existed, its value <span class="math" data-tex="\(P(a)\)">\(P(a)\)</span> would be invariant, so <span class="math" data-tex="\(P((1+s)a)=(1+s)P(a)=0\)">\(P((1+s)a)=(1+s)P(a)=0\)</span>. But a projection onto invariants fixes <span class="math" data-tex="\((1+s)a\)">\((1+s)a\)</span>, a contradiction. Failure of the transfer alone would not prove this stronger assertion; the equivariance argument does. A trivial modular action does admit the identity projection, so the conclusion concerns this representation.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>E. Noether, <em>Der Endlichkeitssatz der Invarianten endlicher Gruppen</em>, Mathematische Annalen 77 (1916), 89–92, parts 1–4. <a href="https://github.com/KokunoYumeto/emmy-noether-en">German and English editions</a>.</li>
+<li>H. Kraft and C. Procesi, <em>Classical Invariant Theory: A Primer</em> (1996), section 1.6. <a href="https://dmi.unibas.ch/fileadmin/user_upload/dmi/Personen/Kraft_Hanspeter/Classical_Invariant_Theory.pdf">Authors' freely available notes</a>.</li>
+<li>P. Fleischmann, <em>The Noether Bound in Invariant Theory of Finite Groups</em>, Advances in Mathematics 156 (2000), 23–32. <a href="https://doi.org/10.1006/aima.2000.1952">Published paper</a>.</li>
+<li>J. Fogarty, <em>On Noether's Bound for Polynomial Invariants of a Finite Group</em>, Electronic Research Announcements 7 (2001), 5–7. <a href="https://doi.org/10.1090/S1079-6762-01-00088-9">Published paper</a>.</li>
+<li>Schmid's theorem that the Noether number equals the group order only for cyclic groups, with the subgroup and quotient inequalities on which its proof rests (B. J. Schmid, 1991), is stated in Kraft–Procesi, section 1.6, and in Wehlau's survey below, Proposition 3.3 and Theorem 3.7.</li>
+<li>D. R. Richman, <em>Invariants of Finite Groups over Fields of Characteristic p</em>, Advances in Mathematics 124 (1996), 25–48. <a href="https://doi.org/10.1006/aima.1996.0076">Published paper</a>.</li>
+<li>Kraft–Procesi, section 1.6, Theorem 2 and its proof, also gives the computational route: the averages of the monomials of degree at most the group order generate the invariant ring, by Newton's power-sum identities.</li>
+<li>D. L. Wehlau, <em>The Noether Number in Invariant Theory</em>, C. R. Math. Rep. Acad. Sci. Canada 28 (2006), 39–62, Section 3, especially Proposition 3.3 and Theorem 3.7. <a href="https://mathreports.ca/article/the-noether-number-in-invariant-theory/">Published survey</a>. The survey records the subgroup/quotient induction and the prime semidirect base case; the complete arguments used here are supplied above.</li>
+<li>K. Cziszter and M. Domokos, <em>Groups with Large Noether Bound</em>, Annales de l’Institut Fourier 64 (2014), 909–944, Section 1.3, Proposition 1.6 and Corollary 1.8, for the relative-transfer framework and its wider nonmodular form. <a href="https://arxiv.org/abs/1105.0679">Primary preprint, version 5</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NOE-INV-02.html">← Forms in several variables and Hilbert finiteness</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NOE-INV-04.html">Polarization and invariants of many vectors →</a></span></nav>
+<p class="small source-link"><a href="src/NOE-INV-03.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-INV">Repository</a></nav>
+</footer>
+</body>
+</html>

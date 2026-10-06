@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quadratic fields: ideal classes and binary quadratic forms · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="quadratic-fields-ideal-classes-and-binary-quadratic-forms">Quadratic fields: ideal classes and binary quadratic forms</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>A binary quadratic form records the norm on a two-dimensional ideal lattice. Changing its integral coordinates gives an equivalent form; multiplying ideals gives composition of forms. For imaginary quadratic fields, reduction selects one form in each class and makes the class number a finite calculation. For real quadratic fields, the signs of the two embeddings determine which ideal classes the forms record.</p>
+<h2 id="forms-and-orientation">Forms and orientation</h2>
+<p>Write
+<span class="math math-display" data-tex="\[
+f(x,y)=ax^2+bxy+cy^2,\qquad D=b^2-4ac.
+\tag{1}
+\]">\[
+f(x,y)=ax^2+bxy+cy^2,\qquad D=b^2-4ac.
+\tag{1}
+\]</span>
+The form is <strong>primitive</strong> if <span class="math" data-tex="\(\gcd(a,b,c)=1\)">\(\gcd(a,b,c)=1\)</span>. Proper equivalence means change of variables by a matrix in <span class="math" data-tex="\(\operatorname{SL}_2(\mathbf Z)\)">\(\operatorname{SL}_2(\mathbf Z)\)</span>. Such a change preserves the discriminant, primitivity, and the represented integers: its inverse is also integral. More generally a change with determinant <span class="math" data-tex="\(t\)">\(t\)</span> multiplies the discriminant by <span class="math" data-tex="\(t^2\)">\(t^2\)</span>, as follows by taking determinants of the symmetric coefficient matrix.</p>
+<p>We restrict to nonsquare field discriminants <span class="math" data-tex="\(D\)">\(D\)</span>. Thus <span class="math" data-tex="\(K=\mathbf Q(\sqrt D)\)">\(K=\mathbf Q(\sqrt D)\)</span> is quadratic, and <span class="math" data-tex="\(D\)">\(D\)</span> is <strong>fundamental</strong>: either <span class="math" data-tex="\(D\)">\(D\)</span> is squarefree and <span class="math" data-tex="\(D\equiv1\pmod4\)">\(D\equiv1\pmod4\)</span>, or <span class="math" data-tex="\(D=4d\)">\(D=4d\)</span>, where <span class="math" data-tex="\(d\)">\(d\)</span> is squarefree and <span class="math" data-tex="\(d\equiv2,3\pmod4\)">\(d\equiv2,3\pmod4\)</span>. The full ring of integers, proved in <a href="algebraic-integers-and-rings-of-integers.html"><em>Algebraic integers and rings of integers</em></a>, is
+<span class="math math-display" data-tex="\[
+O_K=\mathbf Z\left[\frac{D+\sqrt D}{2}\right].
+\tag{2}
+\]">\[
+O_K=\mathbf Z\left[\frac{D+\sqrt D}{2}\right].
+\tag{2}
+\]</span>
+Conjugation is denoted by a bar. Take <span class="math" data-tex="\(\sqrt D\)">\(\sqrt D\)</span> with positive imaginary part for <span class="math" data-tex="\(D&lt;0\)">\(D&lt;0\)</span>, and positive in the first real embedding for <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(C(D)\)">\(C(D)\)</span> be the proper classes of primitive forms of discriminant <span class="math" data-tex="\(D\)">\(D\)</span>; for <span class="math" data-tex="\(D&lt;0\)">\(D&lt;0\)</span>, include only positive definite forms. Completing the square gives
+<span class="math math-display" data-tex="\[
+4af(x,y)=(2ax+by)^2-Dy^2.
+\tag{3}
+\]">\[
+4af(x,y)=(2ax+by)^2-Dy^2.
+\tag{3}
+\]</span>
+Consequently <span class="math" data-tex="\(D&lt;0,a&gt;0\)">\(D&lt;0,a&gt;0\)</span> gives positive definiteness; <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span> gives an indefinite form. In the latter case the open set where <span class="math" data-tex="\(f&gt;0\)">\(f&gt;0\)</span> contains a rational vector. Clearing denominators and dividing the coordinate gcd gives a primitive integral vector of positive value. A primitive vector extends to an <span class="math" data-tex="\(\operatorname{SL}_2(\mathbf Z)\)">\(\operatorname{SL}_2(\mathbf Z)\)</span> basis by Bézout's identity. Thus every class has a representative with <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>.</p>
+<p>For a nonzero fractional ideal <span class="math" data-tex="\(I\)">\(I\)</span>, its norm <span class="math" data-tex="\(N I\)">\(N I\)</span> is positive; the ideal norm and its scaling law
+<span class="math math-display" data-tex="\[
+N(\gamma I)=|N_{K/\mathbf Q}\gamma|\,N I
+\tag{4}
+\]">\[
+N(\gamma I)=|N_{K/\mathbf Q}\gamma|\,N I
+\tag{4}
+\]</span>
+are those of <a href="norms-class-groups-and-modules-over-dedekind-domains.html"><em>Norms, class groups, and modules over Dedekind domains</em></a>. Orient a basis <span class="math" data-tex="\((\alpha,\beta)\)">\((\alpha,\beta)\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span> by requiring
+<span class="math math-display" data-tex="\[
+\alpha\bar\beta-\bar\alpha\beta=-\sqrt D\,N I.
+\tag{5}
+\]">\[
+\alpha\bar\beta-\bar\alpha\beta=-\sqrt D\,N I.
+\tag{5}
+\]</span>
+Such a basis exists: the absolute value of its embedding determinant is <span class="math" data-tex="\(\sqrt{|D|}N I\)">\(\sqrt{|D|}N I\)</span>, by the ideal covolume calculation in <a href="lattices-minkowskis-theorem-and-the-minkowski-embedding.html"><em>Lattices, Minkowski's theorem and the Minkowski embedding</em></a>, Theorem 7.1 and Proposition 7.2. Interchanging the basis vectors changes the sign. For <span class="math" data-tex="\(D&lt;0\)">\(D&lt;0\)</span>, (5) says <span class="math" data-tex="\(\operatorname{Im}(\bar\alpha\beta)&gt;0\)">\(\operatorname{Im}(\bar\alpha\beta)&gt;0\)</span>.</p>
+<p>Define the narrow class group <span class="math" data-tex="\(\operatorname{Cl}_K^+\)">\(\operatorname{Cl}_K^+\)</span> by quotienting fractional ideals by principal ideals generated by elements positive at both real embeddings. For an imaginary field, there is no real positivity condition, so <span class="math" data-tex="\(\operatorname{Cl}_K^+=\operatorname{Cl}_K\)">\(\operatorname{Cl}_K^+=\operatorname{Cl}_K\)</span>. In a real quadratic field an element of positive norm has either two positive or two negative embeddings. It or its negative is totally positive, and they generate the same ideal.</p>
+<h2 id="the-ideal-form-correspondence">The ideal–form correspondence</h2>
+<p><strong>Theorem 10.1.</strong> For a quadratic field of discriminant <span class="math" data-tex="\(D\)">\(D\)</span>, an oriented basis of <span class="math" data-tex="\(I\)">\(I\)</span> gives
+<span class="math math-display" data-tex="\[
+f_I(x,y)=\frac{N_{K/\mathbf Q}(\alpha x-\beta y)}{N I}.
+\tag{6}
+\]">\[
+f_I(x,y)=\frac{N_{K/\mathbf Q}(\alpha x-\beta y)}{N I}.
+\tag{6}
+\]</span>
+This induces a bijection <span class="math" data-tex="\(\operatorname{Cl}_K^+\longrightarrow C(D)\)">\(\operatorname{Cl}_K^+\longrightarrow C(D)\)</span>.</p>
+<p><strong>Proof.</strong> First take <span class="math" data-tex="\(I\)">\(I\)</span> integral. For <span class="math" data-tex="\(u\in I\setminus\{0\}\)">\(u\in I\setminus\{0\}\)</span>, the ideal <span class="math" data-tex="\((u)I^{-1}\)">\((u)I^{-1}\)</span> is integral. Its norm is <span class="math" data-tex="\(|N u|/N I\)">\(|N u|/N I\)</span>, an integer. Hence the outer coefficients in (6) are integral. The mixed coefficient is integral too, by subtracting <span class="math" data-tex="\(N\alpha/N I+N\beta/N I\)">\(N\alpha/N I+N\beta/N I\)</span> from <span class="math" data-tex="\(N(\alpha+\beta)/N I\)">\(N(\alpha+\beta)/N I\)</span>. Multiplying a fractional ideal by a positive rational integer reduces to this case without changing its form.</p>
+<p>The discriminant of (6) is
+<span class="math math-display" data-tex="\[
+\frac{(\alpha\bar\beta-\bar\alpha\beta)^2}{(N I)^2}=D.
+\]">\[
+\frac{(\alpha\bar\beta-\bar\alpha\beta)^2}{(N I)^2}=D.
+\]</span>
+The coefficients are primitive. An odd prime dividing all three would have its square divide <span class="math" data-tex="\(D\)">\(D\)</span>, impossible for a fundamental discriminant. If all three were even, <span class="math" data-tex="\(D/4\)">\(D/4\)</span> would itself be congruent to <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(1\pmod4\)">\(1\pmod4\)</span>. This is impossible when <span class="math" data-tex="\(D=4d\)">\(D=4d\)</span> with <span class="math" data-tex="\(d\equiv2,3\pmod4\)">\(d\equiv2,3\pmod4\)</span>; if <span class="math" data-tex="\(D\)">\(D\)</span> is odd, it is already impossible that <span class="math" data-tex="\(4\mid D\)">\(4\mid D\)</span>. For <span class="math" data-tex="\(D&lt;0\)">\(D&lt;0\)</span>, the norm is positive on nonzero elements, so the form is positive definite.</p>
+<p>Two oriented bases differ by a determinant-one integral matrix. Because (6) uses <span class="math" data-tex="\(\alpha x-\beta y\)">\(\alpha x-\beta y\)</span>, their variable-change matrices are obtained by conjugating that basis-change matrix by <span class="math" data-tex="\(\operatorname{diag}(1,-1)\)">\(\operatorname{diag}(1,-1)\)</span>; their determinants are still one. They therefore give the same proper class. Multiplication of both basis elements by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> preserves (5) exactly when <span class="math" data-tex="\(N\gamma&gt;0\)">\(N\gamma&gt;0\)</span>, and then (4) preserves (6). In an imaginary quadratic field every nonzero <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> has positive norm. In a real quadratic field the preceding observation identifies these scalings with narrow principal equivalence. The map is well defined.</p>
+<p>For surjectivity choose <span class="math" data-tex="\(f=(a,b,c)\)">\(f=(a,b,c)\)</span> with <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and put
+<span class="math math-display" data-tex="\[
+\beta=\frac{-b+\sqrt D}{2},\qquad
+I_f=\mathbf Za+\mathbf Z\beta.
+\tag{7}
+\]">\[
+\beta=\frac{-b+\sqrt D}{2},\qquad
+I_f=\mathbf Za+\mathbf Z\beta.
+\tag{7}
+\]</span>
+Since <span class="math" data-tex="\(b\equiv D\pmod2\)">\(b\equiv D\pmod2\)</span>, the element <span class="math" data-tex="\(\beta\)">\(\beta\)</span> differs from the generator in (2) by an integer. Moreover
+<span class="math math-display" data-tex="\[
+\beta^2=-b\beta-ac.
+\tag{8}
+\]">\[
+\beta^2=-b\beta-ac.
+\tag{8}
+\]</span>
+Multiplication by <span class="math" data-tex="\(\beta\)">\(\beta\)</span> preserves <span class="math" data-tex="\(I_f\)">\(I_f\)</span>, so it is an <span class="math" data-tex="\(O_K\)">\(O_K\)</span>-ideal. Relative to the basis <span class="math" data-tex="\((1,\beta)\)">\((1,\beta)\)</span> of <span class="math" data-tex="\(O_K\)">\(O_K\)</span>, its basis <span class="math" data-tex="\((a,\beta)\)">\((a,\beta)\)</span> has determinant <span class="math" data-tex="\(a\)">\(a\)</span>; hence <span class="math" data-tex="\(N I_f=a\)">\(N I_f=a\)</span>. This basis satisfies (5). Since <span class="math" data-tex="\(\operatorname{Tr}\beta=-b\)">\(\operatorname{Tr}\beta=-b\)</span> and <span class="math" data-tex="\(N\beta=ac\)">\(N\beta=ac\)</span>, its form is exactly <span class="math" data-tex="\(ax^2+bxy+cy^2\)">\(ax^2+bxy+cy^2\)</span>.</p>
+<p>For injectivity suppose two oriented ideal bases give properly equivalent forms. Change one basis so that the forms are equal, say <span class="math" data-tex="\((a,b,c)\)">\((a,b,c)\)</span>. Their first elements are nonzero, and <span class="math" data-tex="\(a=N\alpha/N I\ne0\)">\(a=N\alpha/N I\ne0\)</span>. Setting <span class="math" data-tex="\(z=\beta/\alpha\)">\(z=\beta/\alpha\)</span>, coefficient comparison and (5) give
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}z=-b/a,\qquad
+z-\bar z=\sqrt D/a,\qquad
+z=\frac{-b+\sqrt D}{2a}.
+\tag{9}
+\]">\[
+\operatorname{Tr}z=-b/a,\qquad
+z-\bar z=\sqrt D/a,\qquad
+z=\frac{-b+\sqrt D}{2a}.
+\tag{9}
+\]</span>
+The corresponding ratio for the other ideal <span class="math" data-tex="\(J\)">\(J\)</span> is identical. Thus <span class="math" data-tex="\(J=\gamma I\)">\(J=\gamma I\)</span>, with <span class="math" data-tex="\(\gamma=\alpha&#x27;/\alpha\)">\(\gamma=\alpha&#x27;/\alpha\)</span>, and
+<span class="math math-display" data-tex="\[
+N\gamma=\frac{N J}{N I}&gt;0.
+\]">\[
+N\gamma=\frac{N J}{N I}&gt;0.
+\]</span>
+This is narrow principal equivalence. Surjectivity and injectivity prove the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The sign and orientation in (5) belong together. Conjugating an ideal reverses its basis orientation. Replacing one basis vector by its negative restores the orientation and changes <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(-b\)">\(-b\)</span>.</p>
+<h2 id="composition-and-a-calculation-rule">Composition and a calculation rule</h2>
+<p>Transport ideal multiplication through Theorem 10.1:
+<span class="math math-display" data-tex="\[
+[f]\ast[g]=[f_{I_fI_g}].
+\tag{10}
+\]">\[
+[f]\ast[g]=[f_{I_fI_g}].
+\tag{10}
+\]</span>
+If <span class="math" data-tex="\(I_f,J_f\)">\(I_f,J_f\)</span> represent the same narrow class, replacing one by a scalar of positive norm replaces the product by such a scalar. Thus (10) is well defined. Associativity and commutativity follow from ideal multiplication. The identity is the class of <span class="math" data-tex="\(O_K\)">\(O_K\)</span>, represented by
+<span class="math math-display" data-tex="\[
+f_0=
+\begin{cases}
+x^2-\dfrac D4y^2,&amp;D\equiv0\pmod4,\\[4pt]
+x^2+xy+\dfrac{1-D}{4}y^2,&amp;D\equiv1\pmod4.
+\end{cases}
+\tag{11}
+\]">\[
+f_0=
+\begin{cases}
+x^2-\dfrac D4y^2,&amp;D\equiv0\pmod4,\\[4pt]
+x^2+xy+\dfrac{1-D}{4}y^2,&amp;D\equiv1\pmod4.
+\end{cases}
+\tag{11}
+\]</span>
+Indeed <span class="math" data-tex="\(I_{f_0}=O_K\)">\(I_{f_0}=O_K\)</span> in (7). The inverse of <span class="math" data-tex="\([f]\)">\([f]\)</span> is represented by its opposite <span class="math" data-tex="\((a,-b,c)\)">\((a,-b,c)\)</span>: conjugation corresponds to this opposite, and <span class="math" data-tex="\(I\bar I=(N I)\)">\(I\bar I=(N I)\)</span> has a positive rational generator. To check this identity directly for (7), the product <span class="math" data-tex="\(I_f\bar I_f\)">\(I_f\bar I_f\)</span> is generated by <span class="math" data-tex="\(a^2,a\beta,a\bar\beta,ac\)">\(a^2,a\beta,a\bar\beta,ac\)</span>. All belong to <span class="math" data-tex="\(aO_K\)">\(aO_K\)</span>; the product also contains <span class="math" data-tex="\(ab=-a(\beta+\bar\beta)\)">\(ab=-a(\beta+\bar\beta)\)</span>, so <span class="math" data-tex="\(\gcd(a,b,c)=1\)">\(\gcd(a,b,c)=1\)</span> puts <span class="math" data-tex="\(a\)">\(a\)</span> in it. The product is therefore <span class="math" data-tex="\((a)\)">\((a)\)</span>. For any ideal, change its oriented basis to make <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>; (9) identifies it with a scalar multiple of <span class="math" data-tex="\(I_f\)">\(I_f\)</span>, and (4) transports the identity to that ideal. Consequently (10) makes <span class="math" data-tex="\(C(D)\)">\(C(D)\)</span> a group isomorphic to <span class="math" data-tex="\(\operatorname{Cl}_K^+\)">\(\operatorname{Cl}_K^+\)</span>.</p>
+<p>Here is an explicit rule requiring only congruences. Suppose representatives <span class="math" data-tex="\((a,b,c)\)">\((a,b,c)\)</span>, <span class="math" data-tex="\((a&#x27;,b&#x27;,c&#x27;)\)">\((a&#x27;,b&#x27;,c&#x27;)\)</span> have <span class="math" data-tex="\(a,a&#x27;&gt;0\)">\(a,a&#x27;&gt;0\)</span> and <span class="math" data-tex="\(\gcd(a,a&#x27;)=1\)">\(\gcd(a,a&#x27;)=1\)</span>. Choose <span class="math" data-tex="\(B\)">\(B\)</span> satisfying
+<span class="math math-display" data-tex="\[
+B\equiv b\pmod{2a},\qquad B\equiv b&#x27;\pmod{2a&#x27;}.
+\tag{12}
+\]">\[
+B\equiv b\pmod{2a},\qquad B\equiv b&#x27;\pmod{2a&#x27;}.
+\tag{12}
+\]</span>
+Their parities agree, so the Chinese remainder theorem gives a solution unique modulo <span class="math" data-tex="\(2aa&#x27;\)">\(2aa&#x27;\)</span>. Then
+<span class="math math-display" data-tex="\[
+[a,b,c]\ast[a&#x27;,b&#x27;,c&#x27;]
+=\left[aa&#x27;,B,\frac{B^2-D}{4aa&#x27;}\right].
+\tag{13}
+\]">\[
+[a,b,c]\ast[a&#x27;,b&#x27;,c&#x27;]
+=\left[aa&#x27;,B,\frac{B^2-D}{4aa&#x27;}\right].
+\tag{13}
+\]</span>
+The last coefficient is integral: <span class="math" data-tex="\(B^2-D\)">\(B^2-D\)</span> is divisible by both <span class="math" data-tex="\(4a\)">\(4a\)</span> and <span class="math" data-tex="\(4a&#x27;\)">\(4a&#x27;\)</span>, whose least common multiple is <span class="math" data-tex="\(4aa&#x27;\)">\(4aa&#x27;\)</span>.</p>
+<p>To prove the rule, put <span class="math" data-tex="\(\delta=(-B+\sqrt D)/2\)">\(\delta=(-B+\sqrt D)/2\)</span>. The two ideals in (7) are <span class="math" data-tex="\((a,\delta)\)">\((a,\delta)\)</span> and <span class="math" data-tex="\((a&#x27;,\delta)\)">\((a&#x27;,\delta)\)</span>. Their product is generated by
+<span class="math math-display" data-tex="\[
+aa&#x27;,\quad a\delta,\quad a&#x27;\delta,\quad\delta^2.
+\]">\[
+aa&#x27;,\quad a\delta,\quad a&#x27;\delta,\quad\delta^2.
+\]</span>
+Bézout gives <span class="math" data-tex="\(\delta\)">\(\delta\)</span> from the middle two generators, while
+<span class="math" data-tex="\(\delta^2=-B\delta-aa&#x27;C\)">\(\delta^2=-B\delta-aa&#x27;C\)</span>, where <span class="math" data-tex="\(C=(B^2-D)/(4aa&#x27;)\)">\(C=(B^2-D)/(4aa&#x27;)\)</span>. The product is exactly <span class="math" data-tex="\((aa&#x27;,\delta)\)">\((aa&#x27;,\delta)\)</span>, which gives (13).</p>
+<p>Coprime leading coefficients can always be arranged. For a primitive form and any positive integer <span class="math" data-tex="\(M\)">\(M\)</span>, each prime <span class="math" data-tex="\(q\mid M\)">\(q\mid M\)</span> has at least one of <span class="math" data-tex="\(f(1,0),f(0,1),f(1,1)\)">\(f(1,0),f(0,1),f(1,1)\)</span> nonzero modulo <span class="math" data-tex="\(q\)">\(q\)</span>; otherwise <span class="math" data-tex="\(q\)">\(q\)</span> divides all coefficients. Choose such pairs and combine them modulo the product <span class="math" data-tex="\(L\)">\(L\)</span> of these primes. Choose a nonzero integer <span class="math" data-tex="\(y\)">\(y\)</span> in the resulting residue class. For each prime dividing <span class="math" data-tex="\(y\)">\(y\)</span> but not <span class="math" data-tex="\(L\)">\(L\)</span>, impose <span class="math" data-tex="\(x\equiv1\)">\(x\equiv1\)</span> modulo that prime; simultaneously retain the chosen <span class="math" data-tex="\(x\)">\(x\)</span> modulo <span class="math" data-tex="\(L\)">\(L\)</span>. The Chinese remainder theorem permits this. Primes dividing both <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> already do not divide <span class="math" data-tex="\(x\)">\(x\)</span>. Thus <span class="math" data-tex="\(\gcd(x,y)=1\)">\(\gcd(x,y)=1\)</span>, and <span class="math" data-tex="\(f(x,y)\)">\(f(x,y)\)</span> is coprime to <span class="math" data-tex="\(M\)">\(M\)</span>. Begin with <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and choose <span class="math" data-tex="\(|x|\)">\(|x|\)</span> sufficiently large in this progression to make <span class="math" data-tex="\(f(x,y)&gt;0\)">\(f(x,y)&gt;0\)</span>. Extend <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> to a determinant-one basis. The transformed leading coefficient is the desired value. Apply this to the second form with <span class="math" data-tex="\(M=a\)">\(M=a\)</span>, and then use (13). Different choices give the same class by its proved ideal interpretation.</p>
+<h2 id="reduction-of-positive-definite-forms">Reduction of positive definite forms</h2>
+<p>A primitive positive definite form <span class="math" data-tex="\((a,b,c)\)">\((a,b,c)\)</span> is <strong>reduced</strong> when
+<span class="math math-display" data-tex="\[
+|b|\leq a\leq c,\qquad
+b\geq0\ \text{if }|b|=a\text{ or }a=c.
+\tag{14}
+\]">\[
+|b|\leq a\leq c,\qquad
+b\geq0\ \text{if }|b|=a\text{ or }a=c.
+\tag{14}
+\]</span>
+The last convention removes duplicate representatives on the boundary.</p>
+<p><strong>Theorem 10.2.</strong> Every primitive positive definite integral form is properly equivalent to exactly one reduced form.</p>
+<p><strong>Proof of existence.</strong> Choose the smallest positive value <span class="math" data-tex="\(a_0\)">\(a_0\)</span> of the form on primitive integral vectors. Such values are positive integers, and the set is nonempty. Extend a minimizing vector to a determinant-one basis, making the leading coefficient <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. The substitution <span class="math" data-tex="\(x\mapsto x+ky\)">\(x\mapsto x+ky\)</span> changes <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(b+2a_0k\)">\(b+2a_0k\)</span>, so arrange
+<span class="math math-display" data-tex="\[
+-a_0&lt;b\leq a_0.
+\]">\[
+-a_0&lt;b\leq a_0.
+\]</span>
+The new <span class="math" data-tex="\(c\)">\(c\)</span> is the value at a primitive vector and therefore <span class="math" data-tex="\(c\geq a_0\)">\(c\geq a_0\)</span>. If <span class="math" data-tex="\(a_0=c\)">\(a_0=c\)</span> and <span class="math" data-tex="\(b&lt;0\)">\(b&lt;0\)</span>, the determinant-one substitution <span class="math" data-tex="\((x,y)\mapsto(-y,x)\)">\((x,y)\mapsto(-y,x)\)</span> interchanges <span class="math" data-tex="\(a_0,c\)">\(a_0,c\)</span> and changes <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(-b\)">\(-b\)</span>. The result satisfies all of (14).</p>
+<p><strong>Proof of uniqueness.</strong> A reduced form satisfies, for every integral pair,
+<span class="math math-display" data-tex="\[
+f(x,y)\geq a\bigl(x^2-|xy|+y^2\bigr).
+\tag{15}
+\]">\[
+f(x,y)\geq a\bigl(x^2-|xy|+y^2\bigr).
+\tag{15}
+\]</span>
+For a nonzero pair the expression in parentheses is at least one: it equals <span class="math" data-tex="\((|x|-|y|)^2+|xy|\)">\((|x|-|y|)^2+|xy|\)</span>. It equals one only at <span class="math" data-tex="\((\pm1,0),(0,\pm1)\)">\((\pm1,0),(0,\pm1)\)</span>, and at the pairs with <span class="math" data-tex="\(|x|=|y|=1\)">\(|x|=|y|=1\)</span>. It follows that the minimum nonzero value of <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\(a\)">\(a\)</span>. More precisely its minimizing vectors are:</p>
+<ul>
+<li>if <span class="math" data-tex="\(c&gt;a\)">\(c&gt;a\)</span>, only <span class="math" data-tex="\(\pm(1,0)\)">\(\pm(1,0)\)</span>;</li>
+<li>if <span class="math" data-tex="\(c=a\)">\(c=a\)</span> and <span class="math" data-tex="\(|b|&lt;a\)">\(|b|&lt;a\)</span>, only <span class="math" data-tex="\(\pm(1,0),\pm(0,1)\)">\(\pm(1,0),\pm(0,1)\)</span>;</li>
+<li>if <span class="math" data-tex="\(c=a=|b|\)">\(c=a=|b|\)</span>, these vectors and the suitable diagonal pair. Primitivity and (14) force this last form to be <span class="math" data-tex="\((1,1,1)\)">\((1,1,1)\)</span>.</li>
+</ul>
+<p>Suppose <span class="math" data-tex="\(g=f(rx+sy,tx+uy)\)">\(g=f(rx+sy,tx+uy)\)</span> is also reduced, with <span class="math" data-tex="\(ru-st=1\)">\(ru-st=1\)</span>. Equivalence preserves minimum values, so the leading coefficient of <span class="math" data-tex="\(g\)">\(g\)</span> is <span class="math" data-tex="\(a\)">\(a\)</span>, and its first column <span class="math" data-tex="\((r,t)\)">\((r,t)\)</span> is a minimizing vector of <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>When <span class="math" data-tex="\(c&gt;a\)">\(c&gt;a\)</span>, this column is <span class="math" data-tex="\(\pm(1,0)\)">\(\pm(1,0)\)</span>. The determinant condition gives the middle coefficient of <span class="math" data-tex="\(g\)">\(g\)</span> congruent to <span class="math" data-tex="\(b\pmod{2a}\)">\(b\pmod{2a}\)</span>. Every reduced middle coefficient lies in <span class="math" data-tex="\((-a,a]\)">\((-a,a]\)</span>: the value <span class="math" data-tex="\(-a\)">\(-a\)</span> is excluded by (14). There is a unique representative of any residue class in that interval, so the middle coefficient is <span class="math" data-tex="\(b\)">\(b\)</span>, and the discriminant then forces the last coefficient to be <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>When <span class="math" data-tex="\(c=a\)">\(c=a\)</span> and <span class="math" data-tex="\(|b|&lt;a\)">\(|b|&lt;a\)</span>, the first column may also be <span class="math" data-tex="\(\pm(0,1)\)">\(\pm(0,1)\)</span>. In that case the middle coefficient is congruent to <span class="math" data-tex="\(-b\pmod{2a}\)">\(-b\pmod{2a}\)</span>; its sole representative in <span class="math" data-tex="\((-a,a]\)">\((-a,a]\)</span> is <span class="math" data-tex="\(-b\)">\(-b\)</span>. The last coefficient, determined by <span class="math" data-tex="\(D\)">\(D\)</span>, is again <span class="math" data-tex="\(a\)">\(a\)</span>. Since <span class="math" data-tex="\(a=c\)">\(a=c\)</span> requires a nonnegative middle coefficient, this is possible only when <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, and then the form is unchanged. The columns <span class="math" data-tex="\(\pm(1,0)\)">\(\pm(1,0)\)</span> work as before.</p>
+<p>Finally, the exceptional form has <span class="math" data-tex="\(a=1,D=-3\)">\(a=1,D=-3\)</span>. Any reduced form with these data must have <span class="math" data-tex="\(b=1,c=1\)">\(b=1,c=1\)</span>. Thus it too has a unique reduced representative. These cases exhaust the minimizing vectors and prove uniqueness, including both boundaries. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Since
+<span class="math math-display" data-tex="\[
+|D|=4ac-b^2\geq3a^2,
+\]">\[
+|D|=4ac-b^2\geq3a^2,
+\]</span>
+enumeration is finite:
+<span class="math math-display" data-tex="\[
+1\leq a\leq\sqrt{|D|/3},\quad -a\leq b\leq a,\quad
+c=\frac{b^2-D}{4a}.
+\tag{16}
+\]">\[
+1\leq a\leq\sqrt{|D|/3},\quad -a\leq b\leq a,\quad
+c=\frac{b^2-D}{4a}.
+\tag{16}
+\]</span>
+Keep only integral <span class="math" data-tex="\(c\)">\(c\)</span>, primitive triples, and the inequalities and tie conventions (14). For a fundamental negative discriminant, Theorem 10.1 identifies the number of surviving triples with <span class="math" data-tex="\(h_K\)">\(h_K\)</span>.</p>
+<h2 id="examples-and-the-two-class-groups">Examples and the two class groups</h2>
+<p>For <span class="math" data-tex="\(D=-20\)">\(D=-20\)</span>, (16) has <span class="math" data-tex="\(a\leq2\)">\(a\leq2\)</span>; the complete list is
+<span class="math math-display" data-tex="\[
+(1,0,5),\qquad(2,2,3).
+\]">\[
+(1,0,5),\qquad(2,2,3).
+\]</span>
+Thus <span class="math" data-tex="\(h_K=2\)">\(h_K=2\)</span>, and <span class="math" data-tex="\(C(-20)\)">\(C(-20)\)</span> is cyclic of order two. The second form corresponds to <span class="math" data-tex="\((2,-1+\sqrt{-5})\)">\((2,-1+\sqrt{-5})\)</span>, the same ideal as <span class="math" data-tex="\((2,1+\sqrt{-5})\)">\((2,1+\sqrt{-5})\)</span>.</p>
+<p>For <span class="math" data-tex="\(D=-56\)">\(D=-56\)</span>, the bound is <span class="math" data-tex="\(a\leq4\)">\(a\leq4\)</span>; the complete list is
+<span class="math math-display" data-tex="\[
+(1,0,14),\quad(2,0,7),\quad(3,2,5),\quad(3,-2,5).
+\tag{17}
+\]">\[
+(1,0,14),\quad(2,0,7),\quad(3,2,5),\quad(3,-2,5).
+\tag{17}
+\]</span>
+The last two are distinct proper classes by Theorem 10.2. They become equivalent under <span class="math" data-tex="\((x,y)\mapsto(x,-y)\)">\((x,y)\mapsto(x,-y)\)</span>, whose determinant is <span class="math" data-tex="\(-1\)">\(-1\)</span>. This is why improper equivalence loses information.</p>
+<p>The group in (17) is cyclic of order four. To see this without guessing from its size, let
+<span class="math math-display" data-tex="\[
+P=(2,\sqrt{-14}),\qquad Q=(3,\sqrt{-14}-1).
+\]">\[
+P=(2,\sqrt{-14}),\qquad Q=(3,\sqrt{-14}-1).
+\]</span>
+The complete ideal calculation in <a href="finiteness-of-the-class-number.html"><em>Finiteness of the class number</em></a>, in the <span class="math" data-tex="\(\mathbf Q(\sqrt{-14})\)">\(\mathbf Q(\sqrt{-14})\)</span> example, gives <span class="math" data-tex="\(P^2=(2)\)">\(P^2=(2)\)</span>, <span class="math" data-tex="\((2+\sqrt{-14})=PQ^2\)">\((2+\sqrt{-14})=PQ^2\)</span>, and nonprincipality of <span class="math" data-tex="\(P\)">\(P\)</span>. Hence <span class="math" data-tex="\([Q]^2=[P]\ne1\)">\([Q]^2=[P]\ne1\)</span> and <span class="math" data-tex="\([Q]\)">\([Q]\)</span> has order four. Under (7), <span class="math" data-tex="\(Q\)">\(Q\)</span> corresponds to <span class="math" data-tex="\((3,2,5)\)">\((3,2,5)\)</span>, so the two middle-sign forms are inverse generators.</p>
+<p><strong>Proposition 10.3.</strong> The natural map <span class="math" data-tex="\(\operatorname{Cl}_K^+\to\operatorname{Cl}_K\)">\(\operatorname{Cl}_K^+\to\operatorname{Cl}_K\)</span> is surjective. For real quadratic <span class="math" data-tex="\(K\)">\(K\)</span>, its kernel has order one if a fundamental unit has norm <span class="math" data-tex="\(-1\)">\(-1\)</span>, and order two if it has norm <span class="math" data-tex="\(+1\)">\(+1\)</span>. For imaginary <span class="math" data-tex="\(K\)">\(K\)</span>, it is an isomorphism.</p>
+<p><strong>Proof.</strong> The ordinary principal subgroup contains the narrow one, giving surjectivity. For real <span class="math" data-tex="\(K\)">\(K\)</span>, the sign map
+<span class="math math-display" data-tex="\[
+K^\times\longrightarrow\{\pm1\}^2
+\]">\[
+K^\times\longrightarrow\{\pm1\}^2
+\]</span>
+is onto: <span class="math" data-tex="\(1,-1,\sqrt D,-\sqrt D\)">\(1,-1,\sqrt D,-\sqrt D\)</span> realize all four patterns. Its kernel is the totally positive elements. Two generators give the same principal ideal exactly when they differ by a unit. Thus the kernel of the class-group map is <span class="math" data-tex="\(\{\pm1\}^2\)">\(\{\pm1\}^2\)</span> modulo the signs of units.</p>
+<p>By <a href="dirichlets-unit-theorem.html"><em>Dirichlet's unit theorem</em></a>, <span class="math" data-tex="\(O_K^\times=\{\pm\epsilon^j\mid j\in\mathbf Z\}\)">\(O_K^\times=\{\pm\epsilon^j\mid j\in\mathbf Z\}\)</span>, where <span class="math" data-tex="\(\epsilon&gt;1\)">\(\epsilon&gt;1\)</span> is fundamental. The unit <span class="math" data-tex="\(-1\)">\(-1\)</span> gives the diagonal negative pattern. If <span class="math" data-tex="\(N\epsilon=-1\)">\(N\epsilon=-1\)</span>, its mixed pattern generates the remaining signs, so the quotient is trivial. If <span class="math" data-tex="\(N\epsilon=1\)">\(N\epsilon=1\)</span>, every unit has equal signs at the two embeddings, and the quotient has order two. The imaginary case follows from the definition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(K=\mathbf Q(\sqrt3)\)">\(K=\mathbf Q(\sqrt3)\)</span>, <span class="math" data-tex="\(D=12\)">\(D=12\)</span>. The class-number calculation in lesson 8 gives <span class="math" data-tex="\(h_K=1\)">\(h_K=1\)</span>, and lesson 9 proves that <span class="math" data-tex="\(\epsilon=2+\sqrt3\)">\(\epsilon=2+\sqrt3\)</span> is fundamental with norm <span class="math" data-tex="\(+1\)">\(+1\)</span>. Therefore <span class="math" data-tex="\(h_K^+=2\)">\(h_K^+=2\)</span>. The forms
+<span class="math math-display" data-tex="\[
+x^2-3y^2,\qquad 3x^2-y^2
+\tag{18}
+\]">\[
+x^2-3y^2,\qquad 3x^2-y^2
+\tag{18}
+\]</span>
+give the two classes. The second belongs to the ideal <span class="math" data-tex="\((\sqrt3)\)">\((\sqrt3)\)</span>: its oriented basis <span class="math" data-tex="\((3,\sqrt3)\)">\((3,\sqrt3)\)</span> has norm <span class="math" data-tex="\(3\)">\(3\)</span> and gives that form. This principal ideal is not narrow principal, because a generator of positive norm would differ from <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span>, of norm <span class="math" data-tex="\(-3\)">\(-3\)</span>, by a unit of norm <span class="math" data-tex="\(-1\)">\(-1\)</span>, and no such unit exists.</p>
+<h2 id="primes-represented-by-forms">Primes represented by forms</h2>
+<p>For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\((D/p)\)">\((D/p)\)</span> denotes the Legendre symbol. At <span class="math" data-tex="\(p=2\)">\(p=2\)</span> use the Kronecker convention
+<span class="math math-display" data-tex="\[
+\left(\frac D2\right)=
+\begin{cases}
+0,&amp;2\mid D,\\
+1,&amp;D\equiv1\pmod8,\\
+-1,&amp;D\equiv5\pmod8.
+\end{cases}
+\tag{19}
+\]">\[
+\left(\frac D2\right)=
+\begin{cases}
+0,&amp;2\mid D,\\
+1,&amp;D\equiv1\pmod8,\\
+-1,&amp;D\equiv5\pmod8.
+\end{cases}
+\tag{19}
+\]</span>
+An odd field discriminant is congruent to <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(5\pmod8\)">\(5\pmod8\)</span>.</p>
+<p><strong>Proposition 10.4.</strong> If <span class="math" data-tex="\(p\nmid D\)">\(p\nmid D\)</span> is a rational prime, then <span class="math" data-tex="\(p\)">\(p\)</span> is represented by a primitive form of discriminant <span class="math" data-tex="\(D\)">\(D\)</span> if and only if <span class="math" data-tex="\((D/p)=1\)">\((D/p)=1\)</span>. For <span class="math" data-tex="\(D&lt;0\)">\(D&lt;0\)</span>, the representing form can be chosen positive definite.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(f(x,y)=p\)">\(f(x,y)=p\)</span>, then <span class="math" data-tex="\(\gcd(x,y)=1\)">\(\gcd(x,y)=1\)</span>, since its square divides <span class="math" data-tex="\(p\)">\(p\)</span>. Extending this vector to a determinant-one basis gives a form <span class="math" data-tex="\((p,b,c)\)">\((p,b,c)\)</span>, so
+<span class="math math-display" data-tex="\[
+D=b^2-4pc.
+\tag{20}
+\]">\[
+D=b^2-4pc.
+\tag{20}
+\]</span>
+For odd <span class="math" data-tex="\(p\nmid D\)">\(p\nmid D\)</span>, this says that <span class="math" data-tex="\(D\)">\(D\)</span> is a nonzero square modulo <span class="math" data-tex="\(p\)">\(p\)</span>. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the oddness of <span class="math" data-tex="\(D\)">\(D\)</span> forces <span class="math" data-tex="\(b\)">\(b\)</span> odd, and (20) gives <span class="math" data-tex="\(D\equiv1\pmod8\)">\(D\equiv1\pmod8\)</span>.</p>
+<p>Conversely, for odd <span class="math" data-tex="\(p\)">\(p\)</span> choose a square root <span class="math" data-tex="\(b\)">\(b\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> and choose its parity to agree with <span class="math" data-tex="\(D\)">\(D\)</span>. Then <span class="math" data-tex="\(c=(b^2-D)/(4p)\)">\(c=(b^2-D)/(4p)\)</span> is integral. The form <span class="math" data-tex="\((p,b,c)\)">\((p,b,c)\)</span> has discriminant <span class="math" data-tex="\(D\)">\(D\)</span>, represents <span class="math" data-tex="\(p\)">\(p\)</span>, and is primitive: a common coefficient divisor would be <span class="math" data-tex="\(p\)">\(p\)</span>, contradicting <span class="math" data-tex="\(p\nmid D\)">\(p\nmid D\)</span>. If <span class="math" data-tex="\(D&lt;0\)">\(D&lt;0\)</span>, its positive leading coefficient makes it positive definite. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span> and <span class="math" data-tex="\(D\equiv1\pmod8\)">\(D\equiv1\pmod8\)</span>, use <span class="math" data-tex="\((2,1,(1-D)/8)\)">\((2,1,(1-D)/8)\)</span>; its odd middle coefficient proves primitivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(D&lt;0\)">\(D&lt;0\)</span> and <span class="math" data-tex="\(h_K=1\)">\(h_K=1\)</span>, every such form is properly equivalent to (11). Thus the principal form represents every split unramified prime, and only those primes. The same statement holds for <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span> if <strong>the narrow</strong> class number is one.</p>
+<p><strong>Corollary 10.5.</strong> For a rational prime <span class="math" data-tex="\(p\)">\(p\)</span>, with <span class="math" data-tex="\(x,y\)">\(x,y\)</span> allowed to be any integers,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p=x^2+y^2
+&amp;\iff p=2\text{ or }p\equiv1\pmod4,\\
+p=x^2+2y^2
+&amp;\iff p=2\text{ or }p\equiv1,3\pmod8,\\
+p=x^2+xy+y^2
+&amp;\iff p=3\text{ or }p\equiv1\pmod3,\\
+p=x^2+xy+2y^2
+&amp;\iff p=7\text{ or }p\equiv1,2,4\pmod7.
+\end{aligned}
+\tag{21}
+\]">\[
+\begin{aligned}
+p=x^2+y^2
+&amp;\iff p=2\text{ or }p\equiv1\pmod4,\\
+p=x^2+2y^2
+&amp;\iff p=2\text{ or }p\equiv1,3\pmod8,\\
+p=x^2+xy+y^2
+&amp;\iff p=3\text{ or }p\equiv1\pmod3,\\
+p=x^2+xy+2y^2
+&amp;\iff p=7\text{ or }p\equiv1,2,4\pmod7.
+\end{aligned}
+\tag{21}
+\]</span></p>
+<p><strong>Proof.</strong> Applying (16) to <span class="math" data-tex="\(-4,-8,-3,-7\)">\(-4,-8,-3,-7\)</span> leaves respectively just
+<span class="math" data-tex="\((1,0,1),(1,0,2),(1,1,1),(1,1,2)\)">\((1,0,1),(1,0,2),(1,1,1),(1,1,2)\)</span>. For odd unramified <span class="math" data-tex="\(p\)">\(p\)</span>, Proposition 10.4 reduces the four questions to
+<span class="math" data-tex="\((-1/p),(-2/p),(-3/p),(-7/p)=1\)">\((-1/p),(-2/p),(-3/p),(-7/p)=1\)</span>. We use quadratic reciprocity and its supplementary laws, proved in <a href="cyclotomic-fields.html"><em>Cyclotomic fields</em></a>, Theorem 12.5:
+<span class="math math-display" data-tex="\[
+\left(\frac{-1}p\right)=(-1)^{(p-1)/2},\quad
+\left(\frac2p\right)=(-1)^{(p^2-1)/8},\quad
+\left(\frac qp\right)\left(\frac pq\right)=
+(-1)^{(p-1)(q-1)/4}
+\tag{22}
+\]">\[
+\left(\frac{-1}p\right)=(-1)^{(p-1)/2},\quad
+\left(\frac2p\right)=(-1)^{(p^2-1)/8},\quad
+\left(\frac qp\right)\left(\frac pq\right)=
+(-1)^{(p-1)(q-1)/4}
+\tag{22}
+\]</span>
+for distinct odd primes <span class="math" data-tex="\(p,q\)">\(p,q\)</span>. Multiplicativity then gives
+<span class="math" data-tex="\((-3/p)=(p/3)\)">\((-3/p)=(p/3)\)</span> and <span class="math" data-tex="\((-7/p)=(p/7)\)">\((-7/p)=(p/7)\)</span>. The nonzero squares modulo <span class="math" data-tex="\(7\)">\(7\)</span> are <span class="math" data-tex="\(1,2,4\)">\(1,2,4\)</span>, producing (21).</p>
+<p>The ramified primes are represented directly:
+<span class="math math-display" data-tex="\[
+2=1^2+1^2=0^2+2\cdot1^2,\quad
+3=1^2+1\cdot1+1^2,\quad
+7=(-1)^2+(-1)\cdot2+2\cdot2^2.
+\]">\[
+2=1^2+1^2=0^2+2\cdot1^2,\quad
+3=1^2+1\cdot1+1^2,\quad
+7=(-1)^2+(-1)\cdot2+2\cdot2^2.
+\]</span>
+For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the third form never represents <span class="math" data-tex="\(2\)">\(2\)</span>: by (3), <span class="math" data-tex="\(4f=(2x+y)^2+3y^2=8\)">\(4f=(2x+y)^2+3y^2=8\)</span> would force <span class="math" data-tex="\(|y|\leq1\)">\(|y|\leq1\)</span>, and then neither <span class="math" data-tex="\(8\)">\(8\)</span> nor <span class="math" data-tex="\(5\)">\(5\)</span> is a square. The fourth form does represent <span class="math" data-tex="\(2\)">\(2\)</span>, at <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, agreeing with its congruence rule. These checks include every excluded small prime. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="genus-characters-and-the-principal-genus">Genus characters and the principal genus</h2>
+<p>Put <span class="math" data-tex="\(m=|D|\)">\(m=|D|\)</span> and <span class="math" data-tex="\(U_m=(\mathbf Z/m\mathbf Z)^\times\)">\(U_m=(\mathbf Z/m\mathbf Z)^\times\)</span>. A <strong>genus</strong> groups forms that represent the same unit residues modulo <span class="math" data-tex="\(m\)">\(m\)</span>; for indefinite forms we may require the represented integers to be positive. Proper equivalence preserves this set. For ideals prime to <span class="math" data-tex="\(D\)">\(D\)</span>, the equivalent definition compares their positive norms modulo <span class="math" data-tex="\(m\)">\(m\)</span>, allowing multiplication by norms of integral field elements whose norms are prime to <span class="math" data-tex="\(D\)">\(D\)</span>. We prove the equivalence of these definitions below.</p>
+<p>We use one explicit forward programme prerequisite: the narrow Hilbert class field theorem in <a href="../NT-CFT/hilbert-and-ring-class-fields-and-quadratic-prime-forms.html"><em>Hilbert and ring class fields, and quadratic prime forms</em></a>, Theorem 19.1. It supplies a finite abelian extension <span class="math" data-tex="\(H^+/K\)">\(H^+/K\)</span>, maximal among extensions unramified at every finite prime, whose ideal Artin map identifies <span class="math" data-tex="\(\operatorname{Gal}(H^+/K)\)">\(\operatorname{Gal}(H^+/K)\)</span> with <span class="math" data-tex="\(\operatorname{Cl}_K^+\)">\(\operatorname{Cl}_K^+\)</span>. At real places complexification is permitted. Its proof uses the ray class field existence and conductor theorems, Theorem 18.4 and Proposition 18.3 of that course. The genus theorem itself is proved here. The other forward input is the explicit quadratic Gauss-sum construction in <em>Cyclotomic fields</em>, Proposition 12.6; its proof uses no genus theorem.</p>
+<p>Factor the fundamental discriminant into <strong>prime discriminants</strong>
+<span class="math math-display" data-tex="\[
+D=d_1\cdots d_t,\qquad p^*=(-1)^{(p-1)/2}p\quad(p\text{ odd}),
+\]">\[
+D=d_1\cdots d_t,\qquad p^*=(-1)^{(p-1)/2}p\quad(p\text{ odd}),
+\]</span>
+with one dyadic factor <span class="math" data-tex="\(-4,8\)">\(-4,8\)</span>, or <span class="math" data-tex="\(-8\)">\(-8\)</span> if <span class="math" data-tex="\(2\mid D\)">\(2\mid D\)</span>. Thus <span class="math" data-tex="\(t\)">\(t\)</span> counts rational primes dividing <span class="math" data-tex="\(D\)">\(D\)</span>, and the conductors <span class="math" data-tex="\(|d_i|\)">\(|d_i|\)</span> are pairwise coprime. This factorization and the following characters are proved in <em>Cyclotomic fields</em>, equations (24)–(25): for <span class="math" data-tex="\(d_i=p^*\)">\(d_i=p^*\)</span>, put <span class="math" data-tex="\(\chi_i(n)=(n/p)\)">\(\chi_i(n)=(n/p)\)</span>; the even factors have
+<span class="math math-display" data-tex="\[
+\chi_{-4}(n)=(-1)^{(n-1)/2},\qquad
+\chi_8(n)=(-1)^{(n^2-1)/8},\qquad
+\chi_{-8}(n)=\chi_{-4}(n)\chi_8(n)
+\]">\[
+\chi_{-4}(n)=(-1)^{(n-1)/2},\qquad
+\chi_8(n)=(-1)^{(n^2-1)/8},\qquad
+\chi_{-8}(n)=\chi_{-4}(n)\chi_8(n)
+\]</span>
+on odd integers. Write <span class="math" data-tex="\(\chi_D=\prod_i\chi_i\)">\(\chi_D=\prod_i\chi_i\)</span>.</p>
+<p><strong>Theorem 10.6 (genus and principal genus).</strong> For a fundamental discriminant of either sign, genus characters identify
+<span class="math math-display" data-tex="\[
+C(D)/C(D)^2\simeq
+\{(e_1,\ldots,e_t)\in\{\pm1\}^t\mid\prod_i e_i=1\}.
+\qquad \#\{\text{genera}\}=2^{t-1}.
+\tag{23}
+\]">\[
+C(D)/C(D)^2\simeq
+\{(e_1,\ldots,e_t)\in\{\pm1\}^t\mid\prod_i e_i=1\}.
+\qquad \#\{\text{genera}\}=2^{t-1}.
+\tag{23}
+\]</span>
+For an integral ideal <span class="math" data-tex="\(I\)">\(I\)</span> prime to <span class="math" data-tex="\(D\)">\(D\)</span>, its character vector is <span class="math" data-tex="\((\chi_i(NI))_i\)">\((\chi_i(NI))_i\)</span>. The principal genus is exactly <span class="math" data-tex="\(C(D)^2\)">\(C(D)^2\)</span>, and every genus has the same number of proper classes. For real fields these are narrow classes.</p>
+<p><strong>Proof: the unramified multiquadratic field.</strong> Set
+<span class="math math-display" data-tex="\[
+E=\mathbf Q(\sqrt{d_1},\ldots,\sqrt{d_t}).
+\tag{23a}
+\]">\[
+E=\mathbf Q(\sqrt{d_1},\ldots,\sqrt{d_t}).
+\tag{23a}
+\]</span>
+The square classes of the <span class="math" data-tex="\(d_i\)">\(d_i\)</span> are independent: an odd prime valuation detects its own factor, and the remaining dyadic class is one of <span class="math" data-tex="\(-1,2,-2\)">\(-1,2,-2\)</span>, all nonsquares. Hence <span class="math" data-tex="\([E:\mathbf Q]=2^t\)">\([E:\mathbf Q]=2^t\)</span>. Here is the elementary degree argument. Inductively the products of the chosen square roots form a basis of their multiquadratic field, with distinct sign characters under its sign-changing automorphisms. If the next <span class="math" data-tex="\(d_i\)">\(d_i\)</span> were a square there, its square root would be a simultaneous eigenvector, since every automorphism sends it to itself or its negative. Each such eigenspace is spanned by one basis product. Its square would express <span class="math" data-tex="\(d_i\)">\(d_i\)</span> as a rational square times a product of previous factors, contradicting independence. This proves the induction. Their full product has square <span class="math" data-tex="\(D\)">\(D\)</span>, so <span class="math" data-tex="\(K\subset E\)">\(K\subset E\)</span> and <span class="math" data-tex="\([E:K]=2^{t-1}\)">\([E:K]=2^{t-1}\)</span>.</p>
+<p>At a rational prime <span class="math" data-tex="\(p\mid D\)">\(p\mid D\)</span>, precisely one quadratic factor in (23a) ramifies, by the discriminant ramification criterion. An inertia element in <span class="math" data-tex="\(E/\mathbf Q\)">\(E/\mathbf Q\)</span> restricts trivially to all the other factors. Restriction to all factors is injective, so this inertia group has order at most two; restriction onto the ramified factor makes its order two. Its nontrivial element changes the sign of <span class="math" data-tex="\(\sqrt D\)">\(\sqrt D\)</span>, so restriction to the inertia in <span class="math" data-tex="\(K/\mathbf Q\)">\(K/\mathbf Q\)</span> is injective. The relative inertia in <span class="math" data-tex="\(E/K\)">\(E/K\)</span> is therefore trivial. At primes outside <span class="math" data-tex="\(D\)">\(D\)</span>, all the restrictions are trivial, with the same conclusion. This argument includes <span class="math" data-tex="\(p=2\)">\(p=2\)</span>: an odd quadratic discriminant is unramified there, and the unique factor <span class="math" data-tex="\(-4,8\)">\(-4,8\)</span>, or <span class="math" data-tex="\(-8\)">\(-8\)</span> supplies the ramified quadratic extension. These inertia restriction and intersection statements are proved in <em>Hilbert's ramification theory</em>, Theorem 6.2 and the proof of Proposition 6.3. Thus <span class="math" data-tex="\(E/K\)">\(E/K\)</span> is abelian and unramified at all finite primes, so <span class="math" data-tex="\(E\subset H^+\)">\(E\subset H^+\)</span>. No condition at real places was imposed.</p>
+<p><strong>Proof: maximality and squares.</strong> Put <span class="math" data-tex="\(A=\operatorname{Cl}_K^+\)">\(A=\operatorname{Cl}_K^+\)</span>, and let <span class="math" data-tex="\(B\subset H^+\)">\(B\subset H^+\)</span> be the fixed field of <span class="math" data-tex="\(A^2\)">\(A^2\)</span>. Uniqueness of <span class="math" data-tex="\(H^+\)">\(H^+\)</span> makes it stable under conjugation over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, and <span class="math" data-tex="\(A^2\)">\(A^2\)</span> is characteristic, so <span class="math" data-tex="\(B/\mathbf Q\)">\(B/\mathbf Q\)</span> is Galois. Conjugation acts on ideal classes by inversion, since <span class="math" data-tex="\(I\bar I=(NI)\)">\(I\bar I=(NI)\)</span> has a positive rational generator. The Artin map respects this action: conjugating a prime conjugates its Frobenius, and prime ideals generate the ideal group. Thus the induced action on <span class="math" data-tex="\(A/A^2\)">\(A/A^2\)</span> is trivial.</p>
+<p>Choose a finite prime ramified in <span class="math" data-tex="\(K\)">\(K\)</span>, which exists for every nontrivial quadratic discriminant. Since <span class="math" data-tex="\(B/K\)">\(B/K\)</span> is unramified there, its absolute inertia has order two and maps isomorphically onto <span class="math" data-tex="\(\operatorname{Gal}(K/\mathbf Q)\)">\(\operatorname{Gal}(K/\mathbf Q)\)</span>. Its generator is an order-two lift of conjugation. Consequently
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(B/\mathbf Q)\simeq(A/A^2)\times\mathbf Z/2,
+\tag{23b}
+\]">\[
+\operatorname{Gal}(B/\mathbf Q)\simeq(A/A^2)\times\mathbf Z/2,
+\tag{23b}
+\]</span>
+an elementary abelian two-group. The inertia lift is essential: trivial conjugation action alone would allow a cyclic group of order four. An elementary abelian two-extension is the compositum of its quadratic subfields, because the intersection of the kernels of its sign characters is trivial.</p>
+<p>We show every such quadratic subfield belongs to <span class="math" data-tex="\(E\)">\(E\)</span>. Each quadratic field of discriminant <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> lies in <span class="math" data-tex="\(\mathbf Q(\zeta_{|\Delta|})\)">\(\mathbf Q(\zeta_{|\Delta|})\)</span> by Proposition 12.6. Use a common cyclotomic field containing these finitely many fields and <span class="math" data-tex="\(\mathbf Q(\zeta_m)\)">\(\mathbf Q(\zeta_m)\)</span>. Its Galois group is a product of prime-power unit groups. At a finite prime its inertia is exactly the corresponding unit-group component, by Theorem 12.3. In <span class="math" data-tex="\(B/\mathbf Q\)">\(B/\mathbf Q\)</span>, inertia has order at most two and restricts injectively to the inertia of <span class="math" data-tex="\(K/\mathbf Q\)">\(K/\mathbf Q\)</span>. Therefore the character of any quadratic subfield, on that component, is either trivial or equal to the character of <span class="math" data-tex="\(K\)">\(K\)</span>. For <span class="math" data-tex="\(p\mid D\)">\(p\mid D\)</span> that latter component is <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span> for its unique prime discriminant; for other primes it is trivial. The Chinese remainder theorem now makes the entire character a product of a subset of the <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span>. The Gauss-sum construction identifies its field with the square root of the corresponding product of <span class="math" data-tex="\(d_i\)">\(d_i\)</span>, which lies in <span class="math" data-tex="\(E\)">\(E\)</span>. This proves <span class="math" data-tex="\(B\subset E\)">\(B\subset E\)</span>. Conversely <span class="math" data-tex="\(E/K\)">\(E/K\)</span> has exponent two and lies in <span class="math" data-tex="\(H^+\)">\(H^+\)</span>, so it lies in <span class="math" data-tex="\(B\)">\(B\)</span>. Hence <span class="math" data-tex="\(B=E\)">\(B=E\)</span>, and Artin reciprocity gives
+<span class="math math-display" data-tex="\[
+A/A^2\simeq\operatorname{Gal}(E/K).
+\tag{23c}
+\]">\[
+A/A^2\simeq\operatorname{Gal}(E/K).
+\tag{23c}
+\]</span>
+This uses only explicit quadratic cyclotomic inclusions, not the general Kronecker–Weber theorem.</p>
+<p>For a prime ideal <span class="math" data-tex="\(P\)">\(P\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span> above <span class="math" data-tex="\(p\nmid D\)">\(p\nmid D\)</span>, put <span class="math" data-tex="\(f=f(P/p)\)">\(f=f(P/p)\)</span>. The Frobenius of <span class="math" data-tex="\(P\)">\(P\)</span> in <span class="math" data-tex="\(E/K\)">\(E/K\)</span> is the <span class="math" data-tex="\(f\)">\(f\)</span>-th power of the rational Frobenius, by equation (10) of the ramification lesson. On <span class="math" data-tex="\(\sqrt{d_i}\)">\(\sqrt{d_i}\)</span> its sign is <span class="math" data-tex="\(\chi_i(p)^f=\chi_i(NP)\)">\(\chi_i(p)^f=\chi_i(NP)\)</span>; the sign assertion follows also directly by substituting <span class="math" data-tex="\(a\mapsto pa\)">\(a\mapsto pa\)</span> in the quadratic Gauss sum. Multiplicativity gives the character vector <span class="math" data-tex="\((\chi_i(NI))_i\)">\((\chi_i(NI))_i\)</span> for every ideal prime to <span class="math" data-tex="\(D\)">\(D\)</span>. The signs in <span class="math" data-tex="\(\operatorname{Gal}(E/K)\)">\(\operatorname{Gal}(E/K)\)</span> are exactly those whose product is one, since they fix <span class="math" data-tex="\(\sqrt D\)">\(\sqrt D\)</span>. Every narrow class has an integral representative prime to <span class="math" data-tex="\(D\)">\(D\)</span>: apply the primitive-value construction preceding Theorem 10.2 with <span class="math" data-tex="\(M=m\)">\(M=m\)</span>, then use (7), whose ideal norm is its coprime positive leading coefficient. Thus (23c) proves that these characters are onto that sign group and their common kernel is <span class="math" data-tex="\(A^2\)">\(A^2\)</span>.</p>
+<p><strong>Proof: norm residues and forms.</strong> Let
+<span class="math math-display" data-tex="\[
+Q_D=\{N\gamma\bmod m\mid\gamma\in O_K,\ \gcd(N\gamma,m)=1\}.
+\tag{23d}
+\]">\[
+Q_D=\{N\gamma\bmod m\mid\gamma\in O_K,\ \gcd(N\gamma,m)=1\}.
+\tag{23d}
+\]</span>
+It is a subgroup of <span class="math" data-tex="\(U_m\)">\(U_m\)</span>: it is the image of the norm on <span class="math" data-tex="\((O_K/mO_K)^\times\)">\((O_K/mO_K)^\times\)</span>. Indeed a residue with unit norm is invertible, with inverse its conjugate divided by its norm. We compute
+<span class="math math-display" data-tex="\[
+Q_D=\bigcap_i\ker\chi_i\subset U_m.
+\tag{23e}
+\]">\[
+Q_D=\bigcap_i\ker\chi_i\subset U_m.
+\tag{23e}
+\]</span>
+At an odd <span class="math" data-tex="\(p\mid D\)">\(p\mid D\)</span>, the norm in the quadratic integral basis reduces to a square modulo <span class="math" data-tex="\(p\)">\(p\)</span>, since <span class="math" data-tex="\(\sqrt D\)">\(\sqrt D\)</span> becomes nilpotent and <span class="math" data-tex="\(2\)">\(2\)</span> is invertible. Every nonzero square occurs as the norm of a rational integer. Its image on units is therefore exactly the kernel of the Legendre character.</p>
+<p>At the dyadic component write <span class="math" data-tex="\(D=4d\)">\(D=4d\)</span>. If <span class="math" data-tex="\(d\)">\(d\)</span> is odd, then <span class="math" data-tex="\(d\equiv3\pmod4\)">\(d\equiv3\pmod4\)</span>, the factor is <span class="math" data-tex="\(-4\)">\(-4\)</span>, and <span class="math" data-tex="\(O_K=\mathbf Z[\sqrt d]\)">\(O_K=\mathbf Z[\sqrt d]\)</span>. An odd norm <span class="math" data-tex="\(a^2-db^2\)">\(a^2-db^2\)</span> is always <span class="math" data-tex="\(1\pmod4\)">\(1\pmod4\)</span>, and this value occurs. If <span class="math" data-tex="\(D=8u\)">\(D=8u\)</span> with <span class="math" data-tex="\(u\)">\(u\)</span> odd, an odd norm <span class="math" data-tex="\(a^2-2ub^2\)">\(a^2-2ub^2\)</span> requires <span class="math" data-tex="\(a\)">\(a\)</span> odd. Modulo eight its possible values are precisely <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(1-2u\)">\(1-2u\)</span>, realized by <span class="math" data-tex="\((a,b)=(1,0),(1,1)\)">\((a,b)=(1,0),(1,1)\)</span>. For <span class="math" data-tex="\(u\equiv1\pmod4\)">\(u\equiv1\pmod4\)</span> these are <span class="math" data-tex="\(1,7\)">\(1,7\)</span>, the kernel of <span class="math" data-tex="\(\chi_8\)">\(\chi_8\)</span>; for <span class="math" data-tex="\(u\equiv3\pmod4\)">\(u\equiv3\pmod4\)</span> they are <span class="math" data-tex="\(1,3\)">\(1,3\)</span>, the kernel of <span class="math" data-tex="\(\chi_{-8}\)">\(\chi_{-8}\)</span>. These are exactly the factors specified by (25) of the cyclotomic lesson. Finally, choose the two integral-basis coefficients separately by the Chinese remainder theorem. The local norm images can be prescribed independently, proving (23e), including every case at two. It also proves that <span class="math" data-tex="\(U_m/Q_D\)">\(U_m/Q_D\)</span> is identified by the <span class="math" data-tex="\(t\)">\(t\)</span> independent character signs with <span class="math" data-tex="\(\{\pm1\}^t\)">\(\{\pm1\}^t\)</span>.</p>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be integral and prime to <span class="math" data-tex="\(D\)">\(D\)</span>. Then <span class="math" data-tex="\(I+mO_K=O_K\)">\(I+mO_K=O_K\)</span>, so reduction maps <span class="math" data-tex="\(I\)">\(I\)</span> onto <span class="math" data-tex="\(O_K/mO_K\)">\(O_K/mO_K\)</span>. As the coefficients of its basis range over integers, (6) therefore represents precisely the unit residues
+<span class="math math-display" data-tex="\[
+R(I)=(NI)^{-1}Q_D\subset U_m.
+\tag{23f}
+\]">\[
+R(I)=(NI)^{-1}Q_D\subset U_m.
+\tag{23f}
+\]</span>
+For a real field, every such residue has a positive representative: choose an oriented basis with <span class="math" data-tex="\(N\alpha&gt;0\)">\(N\alpha&gt;0\)</span>, and replace <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(x+km\)">\(x+km\)</span> in (6). For large <span class="math" data-tex="\(|k|\)">\(|k|\)</span> the value is positive and retains its residue. The same observation for the principal form shows that (23d) can be defined using positive norms. Thus (23f) respects the real narrow-class convention.</p>
+<p>Two form classes have equal represented unit residues exactly when their norm cosets modulo <span class="math" data-tex="\(Q_D\)">\(Q_D\)</span> agree; by (23e), this means equality of every <span class="math" data-tex="\(\chi_i(NI)\)">\(\chi_i(NI)\)</span>. The ideal-genus definition gives the same condition. By (23c) its kernel is precisely <span class="math" data-tex="\(A^2\)">\(A^2\)</span>, which Theorem 10.1 identifies with <span class="math" data-tex="\(C(D)^2\)">\(C(D)^2\)</span>. Its image is the product-one sign group, of order <span class="math" data-tex="\(2^{t-1}\)">\(2^{t-1}\)</span>. Fibers are cosets of this kernel and hence have equal size. The principal ideal has norm one, so its genus is the kernel. This completes both definitions, the count, and the principal-genus assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular a genus can contain several classes. For <span class="math" data-tex="\(D=-56\)">\(D=-56\)</span>, <span class="math" data-tex="\(t=2\)">\(t=2\)</span> and <span class="math" data-tex="\(C(D)\simeq\mathbf Z/4\mathbf Z\)">\(C(D)\simeq\mathbf Z/4\mathbf Z\)</span>, so there are two genera, each containing two classes. For <span class="math" data-tex="\(D=-20\)">\(D=-20\)</span>, <span class="math" data-tex="\(C(D)\)">\(C(D)\)</span> has order two, so each genus has one class. For <span class="math" data-tex="\(D=12=(-4)(-3)\)">\(D=12=(-4)(-3)\)</span>, the two narrow classes in (18) have unit residue sets <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span> and <span class="math" data-tex="\(\{11\}\)">\(\{11\}\)</span> modulo twelve. The ordinary class group is trivial; its quotient cannot replace the narrow quotient in (23).</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>List all reduced forms of discriminants <span class="math" data-tex="\(-23\)">\(-23\)</span> and <span class="math" data-tex="\(-47\)">\(-47\)</span>, and compute their class numbers.</li>
+<li>Prove Theorem 10.2, paying particular attention to <span class="math" data-tex="\(|b|=a\)">\(|b|=a\)</span> and <span class="math" data-tex="\(a=c\)">\(a=c\)</span>.</li>
+<li>Determine exactly which rational primes are <span class="math" data-tex="\(x^2+5y^2\)">\(x^2+5y^2\)</span>, using the two forms of discriminant <span class="math" data-tex="\(-20\)">\(-20\)</span> and their genera.</li>
+<li>Prove that composition transported through Theorem 10.1 makes <span class="math" data-tex="\(C(D)\)">\(C(D)\)</span> a group isomorphic to <span class="math" data-tex="\(\operatorname{Cl}_K^+\)">\(\operatorname{Cl}_K^+\)</span>, and derive the coprime-coefficient formula.</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>1.</strong> For <span class="math" data-tex="\(-23\)">\(-23\)</span>, (16) gives <span class="math" data-tex="\(a\leq2\)">\(a\leq2\)</span>. Odd discriminants require <span class="math" data-tex="\(b\)">\(b\)</span> odd. At <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, only <span class="math" data-tex="\(b=1,c=6\)">\(b=1,c=6\)</span> survives the boundary convention; at <span class="math" data-tex="\(a=2\)">\(a=2\)</span>, <span class="math" data-tex="\(b=\pm1,c=3\)">\(b=\pm1,c=3\)</span> survive. Thus
+<span class="math math-display" data-tex="\[
+(1,1,6),\quad(2,1,3),\quad(2,-1,3),
+\qquad h(-23)=3.
+\]">\[
+(1,1,6),\quad(2,1,3),\quad(2,-1,3),
+\qquad h(-23)=3.
+\]</span>
+For <span class="math" data-tex="\(-47\)">\(-47\)</span>, <span class="math" data-tex="\(a\leq3\)">\(a\leq3\)</span>. At <span class="math" data-tex="\(a=1\)">\(a=1\)</span> the survivor is <span class="math" data-tex="\((1,1,12)\)">\((1,1,12)\)</span>. At <span class="math" data-tex="\(a=2\)">\(a=2\)</span>, <span class="math" data-tex="\(b=\pm1\)">\(b=\pm1\)</span> gives <span class="math" data-tex="\(c=6\)">\(c=6\)</span>. At <span class="math" data-tex="\(a=3\)">\(a=3\)</span>, <span class="math" data-tex="\(b=\pm1\)">\(b=\pm1\)</span> gives <span class="math" data-tex="\(c=4\)">\(c=4\)</span>; <span class="math" data-tex="\(b=\pm3\)">\(b=\pm3\)</span> gives nonintegral <span class="math" data-tex="\(c\)">\(c\)</span>. Hence
+<span class="math math-display" data-tex="\[
+(1,1,12),\quad(2,1,6),\quad(2,-1,6),\quad
+(3,1,4),\quad(3,-1,4),
+\qquad h(-47)=5.
+\]">\[
+(1,1,12),\quad(2,1,6),\quad(2,-1,6),\quad
+(3,1,4),\quad(3,-1,4),
+\qquad h(-47)=5.
+\]</span>
+Theorems 10.1–10.2 prove that these finite lists count ideal classes, with no identifications between the displayed sign pairs.</p>
+<p><strong>2.</strong> The existence argument uses the smallest value on primitive vectors as its leading coefficient; translating the second basis vector puts the middle coefficient in <span class="math" data-tex="\((-a,a]\)">\((-a,a]\)</span>, and minimality forces <span class="math" data-tex="\(c\geq a\)">\(c\geq a\)</span>. The determinant-one interchange of the two coordinate directions fixes a negative <span class="math" data-tex="\(b\)">\(b\)</span> when <span class="math" data-tex="\(a=c\)">\(a=c\)</span>.</p>
+<p>For uniqueness, (15) makes <span class="math" data-tex="\(a\)">\(a\)</span> the minimum. Equality permits only the two coordinate directions unless <span class="math" data-tex="\(a=c=|b|\)">\(a=c=|b|\)</span>; the latter primitive case is <span class="math" data-tex="\((1,1,1)\)">\((1,1,1)\)</span>. With <span class="math" data-tex="\(c&gt;a\)">\(c&gt;a\)</span>, the first column of an equivalence must be <span class="math" data-tex="\(\pm(1,0)\)">\(\pm(1,0)\)</span>; its new middle coefficient is <span class="math" data-tex="\(b\)">\(b\)</span> modulo <span class="math" data-tex="\(2a\)">\(2a\)</span>, and the interval <span class="math" data-tex="\((-a,a]\)">\((-a,a]\)</span> selects it uniquely. With <span class="math" data-tex="\(c=a,|b|&lt;a\)">\(c=a,|b|&lt;a\)</span>, using <span class="math" data-tex="\(\pm(0,1)\)">\(\pm(0,1)\)</span> instead changes that residue to <span class="math" data-tex="\(-b\)">\(-b\)</span>, but the new last coefficient is still <span class="math" data-tex="\(a\)">\(a\)</span>. The tie rule then excludes this option unless <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, when it gives the same form. The hexagonal exception is uniquely determined by <span class="math" data-tex="\(a=1,D=-3\)">\(a=1,D=-3\)</span>. This proves the result in every boundary case; in particular <span class="math" data-tex="\(b=-a\)">\(b=-a\)</span> is never an extra representative.</p>
+<p><strong>3.</strong> The correct rule for all rational primes is
+<span class="math math-display" data-tex="\[
+p=x^2+5y^2
+\iff p=5\text{ or }p\equiv1,9\pmod{20}.
+\tag{24}
+\]">\[
+p=x^2+5y^2
+\iff p=5\text{ or }p\equiv1,9\pmod{20}.
+\tag{24}
+\]</span>
+The prime <span class="math" data-tex="\(5\)">\(5\)</span> occurs at <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>; <span class="math" data-tex="\(2\)">\(2\)</span> does not, since <span class="math" data-tex="\(|y|\geq1\)">\(|y|\geq1\)</span> gives a value at least <span class="math" data-tex="\(5\)">\(5\)</span>, and <span class="math" data-tex="\(y=0\)">\(y=0\)</span> gives a square.</p>
+<p>For an odd prime <span class="math" data-tex="\(p\ne5\)">\(p\ne5\)</span>, (22) gives
+<span class="math math-display" data-tex="\[
+\left(\frac{-20}p\right)
+=\left(\frac{-1}p\right)\left(\frac p5\right)=1
+\iff p\equiv1,3,7,9\pmod{20}.
+\]">\[
+\left(\frac{-20}p\right)
+=\left(\frac{-1}p\right)\left(\frac p5\right)=1
+\iff p\equiv1,3,7,9\pmod{20}.
+\]</span>
+Proposition 10.4 and reduction imply that such a prime is represented by one of
+<span class="math math-display" data-tex="\[
+F=x^2+5y^2,\qquad G=2x^2+2xy+3y^2.
+\]">\[
+F=x^2+5y^2,\qquad G=2x^2+2xy+3y^2.
+\]</span>
+If a value of <span class="math" data-tex="\(F\)">\(F\)</span> is prime to <span class="math" data-tex="\(20\)">\(20\)</span>, then <span class="math" data-tex="\(x\)">\(x\)</span> is odd and <span class="math" data-tex="\(5\nmid x\)">\(5\nmid x\)</span>. Modulo <span class="math" data-tex="\(20\)">\(20\)</span>, an odd square prime to <span class="math" data-tex="\(5\)">\(5\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(9\)">\(9\)</span>. The value is odd only when <span class="math" data-tex="\(y\)">\(y\)</span> is even; then <span class="math" data-tex="\(5y^2\equiv0\pmod{20}\)">\(5y^2\equiv0\pmod{20}\)</span>. Thus the unit residues represented by <span class="math" data-tex="\(F\)">\(F\)</span> are exactly <span class="math" data-tex="\(1,9\)">\(1,9\)</span>, attained at <span class="math" data-tex="\((1,0),(3,0)\)">\((1,0),(3,0)\)</span>.</p>
+<p>For <span class="math" data-tex="\(G\)">\(G\)</span> to have an odd value, <span class="math" data-tex="\(y\)">\(y\)</span> must be odd. Modulo <span class="math" data-tex="\(4\)">\(4\)</span>, it is then always <span class="math" data-tex="\(3\)">\(3\)</span>: <span class="math" data-tex="\(2x(x+y)\)">\(2x(x+y)\)</span> is divisible by <span class="math" data-tex="\(4\)">\(4\)</span>, and <span class="math" data-tex="\(3y^2\equiv3\pmod4\)">\(3y^2\equiv3\pmod4\)</span>. Also
+<span class="math math-display" data-tex="\[
+2G=(2x+y)^2+5y^2.
+\]">\[
+2G=(2x+y)^2+5y^2.
+\]</span>
+If <span class="math" data-tex="\(5\nmid G\)">\(5\nmid G\)</span>, this says that <span class="math" data-tex="\(2G\)">\(2G\)</span> is a nonzero square modulo <span class="math" data-tex="\(5\)">\(5\)</span>, so <span class="math" data-tex="\(G\equiv2,3\pmod5\)">\(G\equiv2,3\pmod5\)</span>. Combining with <span class="math" data-tex="\(G\equiv3\pmod4\)">\(G\equiv3\pmod4\)</span> gives precisely <span class="math" data-tex="\(G\equiv3,7\pmod{20}\)">\(G\equiv3,7\pmod{20}\)</span>, both attained at <span class="math" data-tex="\((0,1),(1,1)\)">\((0,1),(1,1)\)</span>. These disjoint residue sets are the two genera. Every split prime in residues <span class="math" data-tex="\(1,9\)">\(1,9\)</span> must therefore be represented by <span class="math" data-tex="\(F\)">\(F\)</span>, and none in residues <span class="math" data-tex="\(3,7\)">\(3,7\)</span> can be. This proves (24).</p>
+<p><strong>4.</strong> Let <span class="math" data-tex="\(\Phi:\operatorname{Cl}_K^+\to C(D)\)">\(\Phi:\operatorname{Cl}_K^+\to C(D)\)</span> be Theorem 10.1's bijection and define <span class="math" data-tex="\(u\ast v=\Phi(\Phi^{-1}(u)\Phi^{-1}(v))\)">\(u\ast v=\Phi(\Phi^{-1}(u)\Phi^{-1}(v))\)</span>. Changing an ideal representative by a totally positive scalar changes a product by that same scalar, proving independence of choices. Then
+<span class="math math-display" data-tex="\[
+(u\ast v)\ast w=\Phi(IJK)=u\ast(v\ast w),\qquad
+u\ast v=v\ast u.
+\]">\[
+(u\ast v)\ast w=\Phi(IJK)=u\ast(v\ast w),\qquad
+u\ast v=v\ast u.
+\]</span>
+The class <span class="math" data-tex="\(\Phi(O_K)\)">\(\Phi(O_K)\)</span> is the identity (11); <span class="math" data-tex="\(\Phi(I^{-1})\)">\(\Phi(I^{-1})\)</span> is the inverse. Since <span class="math" data-tex="\(I\bar I=(N I)\)">\(I\bar I=(N I)\)</span>, that inverse is the opposite form. These verifications prove every group axiom and that <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is a group isomorphism.</p>
+<p>The primitive-value argument preceding reduction supplies representatives with coprime positive leading coefficients. Solve (12), put <span class="math" data-tex="\(\delta=(-B+\sqrt D)/2\)">\(\delta=(-B+\sqrt D)/2\)</span>, and multiply the ideals <span class="math" data-tex="\((a,\delta),(a&#x27;,\delta)\)">\((a,\delta),(a&#x27;,\delta)\)</span>. Bézout and the equation for <span class="math" data-tex="\(\delta^2\)">\(\delta^2\)</span> show that their product is <span class="math" data-tex="\((aa&#x27;,\delta)\)">\((aa&#x27;,\delta)\)</span>, so its norm form is exactly (13). Thus the computational rule agrees with the defined group operation, including its independence of the choices of coefficients and <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<ul>
+<li>The quadratic reciprocity law and its supplements (22) use the complete proof in <em>Cyclotomic fields</em>, Theorem 12.5. They turn the proved representation criterion into explicit congruences.</li>
+<li>Theorem 10.6 proves the full genus theorem for fundamental discriminants of either sign. It imports the narrow Hilbert class field and its ideal Artin isomorphism from the class field course, Theorem 19.1, with ray existence and the conductor criterion in Theorem 18.4 and Proposition 18.3. It also uses the proved inertia and Frobenius statements in lesson 6 and the cyclotomic quadratic inclusions in lesson 12. These forward programme dependencies must be read before that proof. The Hilbert class field assertion does not use this lesson's genus theorem: the class field lesson's quadratic arithmetic inputs are the earlier Theorems 10.1–10.2 and Proposition 10.3.</li>
+<li>Integral bases, ideal norms and multiplication, ideal embedding covolumes, finiteness of class groups, and the unit theorem are the previously proved prerequisites cited above. The exact <span class="math" data-tex="\(\mathbf Q(\sqrt{-14})\)">\(\mathbf Q(\sqrt{-14})\)</span> ideal relations and <span class="math" data-tex="\(\mathbf Q(\sqrt3)\)">\(\mathbf Q(\sqrt3)\)</span> class-number and unit computations are imported from lessons 8–9 at the indicated examples.</li>
+</ul>
+<p>Nonfundamental discriminants correspond to orders rather than full rings of integers. In particular <span class="math" data-tex="\(x^2+3y^2,x^2+4y^2,x^2+7y^2\)">\(x^2+3y^2,x^2+4y^2,x^2+7y^2\)</span>, of discriminants <span class="math" data-tex="\(-12,-16,-28\)">\(-12,-16,-28\)</span>, belong to <em>Orders in number fields and their Picard groups</em>. Ring class fields and the general classification of primes <span class="math" data-tex="\(x^2+ny^2\)">\(x^2+ny^2\)</span> belong to class field theory.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, version 3.08, 2020, Chapter 4, “Binary quadratic forms,” Theorem 4.29, pp. 81–82, for the correspondence statement. Theorem 10.1 supplies its proof here.</li>
+<li>Erich Hecke, <a href="https://archive.org/details/vorlesungenber00heckuoft"><em>Vorlesungen über die Theorie der algebraischen Zahlen</em></a>, 1923, Chapter VII: §45, pp. 178–181, for narrow equivalence; §48, Sätze 142–145, pp. 193–197, for norm-residue genera and the principal genus; §53, Satz 154, pp. 210–217, for ideals and forms. Theorem 10.6 independently expresses the norm-residue bridge and uses the explicit programme class field proof route.</li>
+<li><a href="../NT-CFT/hilbert-and-ring-class-fields-and-quadratic-prime-forms.html"><em>Hilbert and ring class fields, and quadratic prime forms</em></a>, Theorem 19.1 and §3, Proposition 19.3, for the narrow class field and the multiquadratic genus-field mechanism. Only Theorem 19.1 is imported into the proof above.</li>
+</ul>
+</article><nav><a href="src/quadratic-fields-ideal-classes-and-binary-quadratic-forms.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

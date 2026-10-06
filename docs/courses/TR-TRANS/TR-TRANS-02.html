@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heights of algebraic numbers · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="heights-of-algebraic-numbers">Heights of algebraic numbers</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Public domain (CC0).</em></p>
+<p>A small complex absolute value need not mean a small algebraic number. Another conjugate may be large, or a denominator may carry the arithmetic complexity. The absolute logarithmic Weil height sees all these contributions at once. It converts the integer obstruction of <a href="TR-TRANS-01.html">Algebraic and transcendental numbers; Liouville's theorem</a> into a lower bound at every place of a number field.</p>
+<p>We start with a norm bound, build a bridge between polynomial coefficients and local absolute values, and then prove the height inequalities and the theorems of Northcott and Kronecker. The exact arithmetic prerequisite is the lesson <em>Places of number fields in extensions and the product formula</em> in <em>Local fields</em>. Its required statements and normalization are given in Section 3. Its proof belongs to that course. This lesson proves the height results that use it.</p>
+<p>Basic references are Waldschmidt's <em>Linear Independence of Logarithms of Algebraic Numbers</em>, Chapter 3, Evertse's lecture notes <em>Diophantine Approximation</em>, Chapter 3, and the paper of Cantor and Straus on Lehmer's problem. Their roles are local heights, Mahler measure and Liouville's inequality; coefficient heights and the house; and the determinant bound of Section 7.</p>
+<h2 id="1-the-elementary-norm-obstruction">1. The elementary norm obstruction</h2>
+<p>An <strong>algebraic integer</strong> is a root of a monic polynomial in <span class="math" data-tex="\(\mathbb Z[X]\)">\(\mathbb Z[X]\)</span>. We use the opening lesson <em>Algebraic integers and rings of integers</em> in <em>Number fields</em>: Proposition 1.1 identifies these numbers with those having monic integral minimal polynomial and proves that they form an integrally closed ring; Proposition 1.2 identifies the field norm with the product of conjugates and proves that the norm of an algebraic integer is integral. In particular, a rational algebraic integer is an ordinary integer. These statements apply in every number field, and hence in a finite field containing any specified finite collection of algebraic numbers.</p>
+<p>For an algebraic number <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+\operatorname{house}(\gamma)=\max_\sigma|\sigma(\gamma)|,
+\]">\[
+\operatorname{house}(\gamma)=\max_\sigma|\sigma(\gamma)|,
+\]</span>
+<p>where <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> ranges over the embeddings of <span class="math" data-tex="\(\mathbb Q(\gamma)\)">\(\mathbb Q(\gamma)\)</span> into <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The <strong>denominator</strong> <span class="math" data-tex="\(\operatorname{den}(\gamma)\)">\(\operatorname{den}(\gamma)\)</span> is the least positive integer <span class="math" data-tex="\(\delta\)">\(\delta\)</span> for which <span class="math" data-tex="\(\delta\gamma\)">\(\delta\gamma\)</span> is an algebraic integer. It exists: if <span class="math" data-tex="\(P_\gamma\)">\(P_\gamma\)</span> has leading coefficient <span class="math" data-tex="\(a_d\)">\(a_d\)</span>, then <span class="math" data-tex="\(a_d\gamma\)">\(a_d\gamma\)</span> satisfies the monic integer polynomial <span class="math" data-tex="\(a_d^{d-1}P_\gamma(Y/a_d)\)">\(a_d^{d-1}P_\gamma(Y/a_d)\)</span>.</p>
+<h3 id="lemma-2-1-a-bound-from-the-norm">Lemma 2.1. A bound from the norm</h3>
+<p>Suppose <span class="math" data-tex="\(\gamma\neq0\)">\(\gamma\neq0\)</span> has degree <span class="math" data-tex="\(D\)">\(D\)</span>, and <span class="math" data-tex="\(\delta\gamma\)">\(\delta\gamma\)</span> is an algebraic integer. For every embedding <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\sigma(\gamma)|\geq
+\delta^{-D}\operatorname{house}(\gamma)^{-(D-1)}.
+\]">\[
+|\sigma(\gamma)|\geq
+\delta^{-D}\operatorname{house}(\gamma)^{-(D-1)}.
+\]</span>
+<p><strong>Proof.</strong> The product of the <span class="math" data-tex="\(D\)">\(D\)</span> conjugates of <span class="math" data-tex="\(\delta\gamma\)">\(\delta\gamma\)</span> is a nonzero rational integer, up to sign the constant coefficient of its monic minimal polynomial. Its absolute value is at least one. Bounding the other <span class="math" data-tex="\(D-1\)">\(D-1\)</span> conjugates by the house gives</p>
+<span class="math math-display" data-tex="\[
+1\leq\delta^D\prod_\tau|\tau(\gamma)|
+\leq\delta^D|\sigma(\gamma)|\operatorname{house}(\gamma)^{D-1}.
+\]">\[
+1\leq\delta^D\prod_\tau|\tau(\gamma)|
+\leq\delta^D|\sigma(\gamma)|\operatorname{house}(\gamma)^{D-1}.
+\]</span>
+<p>Rearrange. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The estimate uses a single maximum for all the other conjugates. Heights keep their individual contributions and also measure denominators.</p>
+<h2 id="2-measuring-a-polynomial-on-the-unit-circle">2. Measuring a polynomial on the unit circle</h2>
+<p>For a nonzero complex polynomial</p>
+<span class="math math-display" data-tex="\[
+P(X)=a_d\prod_{j=1}^d(X-\alpha_j)=\sum_{k=0}^d a_kX^k,
+\]">\[
+P(X)=a_d\prod_{j=1}^d(X-\alpha_j)=\sum_{k=0}^d a_kX^k,
+\]</span>
+<p>define</p>
+<span class="math math-display" data-tex="\[
+H(P)=\max_k|a_k|,\qquad L(P)=\sum_k|a_k|,\qquad
+M(P)=|a_d|\prod_{j=1}^d\max(1,|\alpha_j|).
+\]">\[
+H(P)=\max_k|a_k|,\qquad L(P)=\sum_k|a_k|,\qquad
+M(P)=|a_d|\prod_{j=1}^d\max(1,|\alpha_j|).
+\]</span>
+<p>These are the coefficient <strong>height</strong>, <strong>length</strong>, and <strong>Mahler measure</strong>. Roots are counted with multiplicity. For a nonzero constant, <span class="math" data-tex="\(M(P)=|P|\)">\(M(P)=|P|\)</span>. Factorization gives <span class="math" data-tex="\(M(PQ)=M(P)M(Q)\)">\(M(PQ)=M(P)M(Q)\)</span>.</p>
+<h3 id="proposition-2-2-the-coefficient-and-circle-bounds">Proposition 2.2. The coefficient and circle bounds</h3>
+<p>For <span class="math" data-tex="\(0\leq k\leq d\)">\(0\leq k\leq d\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|a_k|\leq\binom dkM(P),\qquad
+M(P)\leq\left(\sum_{k=0}^d|a_k|^2\right)^{1/2}.
+\]">\[
+|a_k|\leq\binom dkM(P),\qquad
+M(P)\leq\left(\sum_{k=0}^d|a_k|^2\right)^{1/2}.
+\]</span>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+2^{-d}H(P)\leq M(P)\leq\sqrt{d+1}\,H(P).
+\]">\[
+2^{-d}H(P)\leq M(P)\leq\sqrt{d+1}\,H(P).
+\]</span>
+<p><strong>Proof.</strong> Express <span class="math" data-tex="\(a_k\)">\(a_k\)</span> as <span class="math" data-tex="\(a_d\)">\(a_d\)</span> times an elementary symmetric sum of <span class="math" data-tex="\(d-k\)">\(d-k\)</span> roots. There are <span class="math" data-tex="\(\binom dk\)">\(\binom dk\)</span> products, each bounded by <span class="math" data-tex="\(\prod_j\max(1,|\alpha_j|)\)">\(\prod_j\max(1,|\alpha_j|)\)</span>. This proves the first inequality. Its consequence follows from <span class="math" data-tex="\(\binom dk\leq2^d\)">\(\binom dk\leq2^d\)</span>.</p>
+<p>The analytic bridge is the circle-mean identity</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi}\int_0^{2\pi}\log|e^{it}-a|\,dt
+=\log\max(1,|a|).
+\]">\[
+\frac1{2\pi}\int_0^{2\pi}\log|e^{it}-a|\,dt
+=\log\max(1,|a|).
+\]</span>
+<p>For <span class="math" data-tex="\(|a|&lt;1\)">\(|a|&lt;1\)</span>, the power series for <span class="math" data-tex="\(\log(1-ae^{-it})\)">\(\log(1-ae^{-it})\)</span> converges uniformly, and each nonconstant Fourier term has mean zero. Integrate its real part. For <span class="math" data-tex="\(|a|&gt;1\)">\(|a|&gt;1\)</span>, factor out <span class="math" data-tex="\(a\)">\(a\)</span> and use the first case with <span class="math" data-tex="\(1/a\)">\(1/a\)</span>. For <span class="math" data-tex="\(|a|=1\)">\(|a|=1\)</span>, rotate to <span class="math" data-tex="\(a=1\)">\(a=1\)</span> and take radial limits. Away from zero these limits are uniform. Near zero, for <span class="math" data-tex="\(1/2\leq r&lt;1\)">\(1/2\leq r&lt;1\)</span>, the identity</p>
+<span class="math math-display" data-tex="\[
+|e^{it}-r|^2=(1-r)^2+2r(1-\cos t)
+\]">\[
+|e^{it}-r|^2=(1-r)^2+2r(1-\cos t)
+\]</span>
+<p>bounds the negative logarithm by <span class="math" data-tex="\(C+|\log|t||\)">\(C+|\log|t||\)</span>; the positive logarithm is bounded by <span class="math" data-tex="\(\log2\)">\(\log2\)</span>. Dominated convergence therefore applies, because <span class="math" data-tex="\(|\log|t||\)">\(|\log|t||\)</span> is integrable near zero.</p>
+<p>Sum the circle-mean identities over the roots. They give</p>
+<span class="math math-display" data-tex="\[
+\log M(P)=\frac1{2\pi}\int_0^{2\pi}\log|P(e^{it})|\,dt.
+\]">\[
+\log M(P)=\frac1{2\pi}\int_0^{2\pi}\log|P(e^{it})|\,dt.
+\]</span>
+<p>Concavity of <span class="math" data-tex="\(\log\)">\(\log\)</span>, followed by orthogonality of <span class="math" data-tex="\(e^{ikt}\)">\(e^{ikt}\)</span>, yields</p>
+<span class="math math-display" data-tex="\[
+\log M(P)\leq\frac12\log\left(
+\frac1{2\pi}\int_0^{2\pi}|P(e^{it})|^2\,dt\right)
+=\frac12\log\sum_{k=0}^d|a_k|^2.
+\]">\[
+\log M(P)\leq\frac12\log\left(
+\frac1{2\pi}\int_0^{2\pi}|P(e^{it})|^2\,dt\right)
+=\frac12\log\sum_{k=0}^d|a_k|^2.
+\]</span>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> has a root on the circle, first apply concavity to <span class="math" data-tex="\(|P|^2+\varepsilon\)">\(|P|^2+\varepsilon\)</span> and let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. The root factorization shows that the logarithmic singularities are integrable. Exponentiation proves Landau's inequality. Finally, <span class="math" data-tex="\(\sum|a_k|^2\leq(d+1)H(P)^2\)">\(\sum|a_k|^2\leq(d+1)H(P)^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> Waldschmidt, Chapter 3, formula (3.8) and Lemma 3.11, for Mahler measure and coefficient comparisons.</p>
+<h2 id="3-the-arithmetic-normalization-and-the-weil-height">3. The arithmetic normalization and the Weil height</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field, <span class="math" data-tex="\(D=[K:\mathbb Q]\)">\(D=[K:\mathbb Q]\)</span>. We use absolute values extending those of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. At a finite place over <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(|p|_v=p^{-1}\)">\(|p|_v=p^{-1}\)</span>. At a real place use the usual absolute value; at a complex place use the usual modulus, without squaring it. Write</p>
+<span class="math math-display" data-tex="\[
+d_v=[K_v:\mathbb Q_v].
+\]">\[
+d_v=[K_v:\mathbb Q_v].
+\]</span>
+<p>The degree is one at a real place and two at a complex place. A sum over places has one term for each complex-conjugate pair, with weight two.</p>
+<p>The precise inputs from the <em>Local fields</em> lesson <em>Places of number fields in extensions and the product formula</em> are the following. For a finite extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> and every place <span class="math" data-tex="\(v\)">\(v\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L\otimes_K K_v\simeq\prod_{w\mid v}L_w,\qquad
+\sum_{w\mid v}[L_w:K_v]=[L:K].
+\]">\[
+L\otimes_K K_v\simeq\prod_{w\mid v}L_w,\qquad
+\sum_{w\mid v}[L_w:K_v]=[L:K].
+\]</span>
+<p>Factoring a primitive element's minimal polynomial over <span class="math" data-tex="\(K_v\)">\(K_v\)</span> identifies the factors with these completions. In particular, for <span class="math" data-tex="\(K=\mathbb Q(\alpha)\)">\(K=\mathbb Q(\alpha)\)</span>, its roots in <span class="math" data-tex="\(\overline{\mathbb Q}_p\)">\(\overline{\mathbb Q}_p\)</span> account for each place above <span class="math" data-tex="\(p\)">\(p\)</span> with multiplicity <span class="math" data-tex="\(d_v\)">\(d_v\)</span>. The archimedean analogue counts real embeddings individually and complex embeddings in pairs. The product formula, in our normalization, is</p>
+<span class="math math-display" data-tex="\[
+\sum_v d_v\log|\alpha|_v=0\qquad(\alpha\in K^\times).
+\]">\[
+\sum_v d_v\log|\alpha|_v=0\qquad(\alpha\in K^\times).
+\]</span>
+<p>Here only finitely many terms are nonzero. The internal lesson's fully weighted normalization is <span class="math" data-tex="\(\|\alpha\|_v=|\alpha|_v^{d_v}\)">\(\|\alpha\|_v=|\alpha|_v^{d_v}\)</span>: at a finite prime ideal <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, it is <span class="math" data-tex="\(N\mathfrak p^{-v_{\mathfrak p}(\alpha)}\)">\(N\mathfrak p^{-v_{\mathfrak p}(\alpha)}\)</span>, and at a complex place it is the squared modulus. Thus its unweighted product <span class="math" data-tex="\(\prod_v\|\alpha\|_v=1\)">\(\prod_v\|\alpha\|_v=1\)</span> is exactly the formula above. This conversion, together with the extension-of-absolute-values theorem in <em>Extensions of complete valued fields</em> in the same course, supplies the normalization used here.</p>
+<p>For <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, the product formula itself follows immediately from prime factorization: <span class="math" data-tex="\(\log|a/b|=\sum_p(v_p(a)-v_p(b))\log p\)">\(\log|a/b|=\sum_p(v_p(a)-v_p(b))\log p\)</span>, cancelling the finite-place terms.</p>
+<h3 id="definition-2-3-absolute-logarithmic-weil-height">Definition 2.3. Absolute logarithmic Weil height</h3>
+<p>For <span class="math" data-tex="\(\alpha\in K\)">\(\alpha\in K\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+h(\alpha)=\frac1D\sum_v d_v\log\max(1,|\alpha|_v).
+\]">\[
+h(\alpha)=\frac1D\sum_v d_v\log\max(1,|\alpha|_v).
+\]</span>
+<p>The sum is finite and nonnegative. In particular, <span class="math" data-tex="\(h(0)=0\)">\(h(0)=0\)</span>.</p>
+<h3 id="theorem-2-4-independence-of-field-and-the-polynomial-formula">Theorem 2.4. Independence of field and the polynomial formula</h3>
+<p>The height is independent of the number field containing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has degree <span class="math" data-tex="\(d\)">\(d\)</span> and primitive minimal polynomial <span class="math" data-tex="\(P_\alpha\)">\(P_\alpha\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+h(\alpha)=\frac1d\log M(P_\alpha).
+\]">\[
+h(\alpha)=\frac1d\log M(P_\alpha).
+\]</span>
+<p><strong>Proof.</strong> In an extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, the absolute values agree on <span class="math" data-tex="\(K\)">\(K\)</span>, and the local-degree identity gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{w\mid v}[L_w:\mathbb Q_v]\log\max(1,|\alpha|_w)
+=[L:K]d_v\log\max(1,|\alpha|_v).
+\]">\[
+\sum_{w\mid v}[L_w:\mathbb Q_v]\log\max(1,|\alpha|_w)
+=[L:K]d_v\log\max(1,|\alpha|_v).
+\]</span>
+<p>Divide by <span class="math" data-tex="\([L:\mathbb Q]=[L:K]D\)">\([L:\mathbb Q]=[L:K]D\)</span>. The height is unchanged. Two arbitrary containing fields can both be compared with their compositum.</p>
+<p>Take <span class="math" data-tex="\(K=\mathbb Q(\alpha)\)">\(K=\mathbb Q(\alpha)\)</span>, write <span class="math" data-tex="\(P_\alpha=a_d\prod_i(X-\alpha_i)\)">\(P_\alpha=a_d\prod_i(X-\alpha_i)\)</span>, and count the embeddings at infinity. Their total contribution is <span class="math" data-tex="\(\log M(P_\alpha)-\log a_d\)">\(\log M(P_\alpha)-\log a_d\)</span>. We must recover <span class="math" data-tex="\(\log a_d\)">\(\log a_d\)</span> from the finite places.</p>
+<p>Over a nonarchimedean valued field the Gauss norm <span class="math" data-tex="\(\|\sum b_kX^k\|=\max_k|b_k|\)">\(\|\sum b_kX^k\|=\max_k|b_k|\)</span> is multiplicative. To prove this, divide each polynomial by a coefficient of maximal modulus. Its coefficients then belong to the valuation ring and its reduction in the residue field is nonzero. The product of the reductions is nonzero, so the product has norm one. Undo the rescaling.</p>
+<p>Fix a rational prime <span class="math" data-tex="\(p\)">\(p\)</span>, and factor <span class="math" data-tex="\(P_\alpha\)">\(P_\alpha\)</span> in a finite extension of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> containing all its roots. Its integer coefficients have maximum <span class="math" data-tex="\(p\)">\(p\)</span>-adic modulus one, because they are primitive. Multiplicativity gives</p>
+<span class="math math-display" data-tex="\[
+1=|a_d|_p\prod_i\max(1,|\alpha_i|_p).
+\]">\[
+1=|a_d|_p\prod_i\max(1,|\alpha_i|_p).
+\]</span>
+<p>The root-place correspondence therefore gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{v\mid p}d_v\log\max(1,|\alpha|_v)=-\log|a_d|_p.
+\]">\[
+\sum_{v\mid p}d_v\log\max(1,|\alpha|_v)=-\log|a_d|_p.
+\]</span>
+<p>Summing over <span class="math" data-tex="\(p\)">\(p\)</span> produces <span class="math" data-tex="\(\log a_d\)">\(\log a_d\)</span> by prime factorization. Add this to the infinite contribution and divide by <span class="math" data-tex="\(d\)">\(d\)</span>. For <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, its polynomial is <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(M(X)=1\)">\(M(X)=1\)</span>, so the same conclusion holds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are coprime integers, <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, the primitive polynomial <span class="math" data-tex="\(qX-p\)">\(qX-p\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+h(p/q)=\log\max(|p|,q).
+\]">\[
+h(p/q)=\log\max(|p|,q).
+\]</span>
+<p>For a nonzero rational the finite contribution is <span class="math" data-tex="\(\log q\)">\(\log q\)</span>, while the infinite contribution is <span class="math" data-tex="\(\log\max(1,|p|/q)\)">\(\log\max(1,|p|/q)\)</span>. This explains directly why height measures denominators.</p>
+<h2 id="4-height-arithmetic-and-finite-sets">4. Height arithmetic and finite sets</h2>
+<h3 id="proposition-2-5-sums-products-powers-and-conjugates">Proposition 2.5. Sums, products, powers and conjugates</h3>
+<p>For algebraic numbers <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+h(\alpha_1\cdots\alpha_n)\leq\sum_i h(\alpha_i),\qquad
+h(\alpha_1+\cdots+\alpha_n)\leq\log n+\sum_i h(\alpha_i).
+\]">\[
+h(\alpha_1\cdots\alpha_n)\leq\sum_i h(\alpha_i),\qquad
+h(\alpha_1+\cdots+\alpha_n)\leq\log n+\sum_i h(\alpha_i).
+\]</span>
+<p>For <span class="math" data-tex="\(\alpha\neq0\)">\(\alpha\neq0\)</span>, <span class="math" data-tex="\(m\in\mathbb Z\)">\(m\in\mathbb Z\)</span>, one has <span class="math" data-tex="\(h(\alpha^m)=|m|h(\alpha)\)">\(h(\alpha^m)=|m|h(\alpha)\)</span>. Conjugates have equal height.</p>
+<p><strong>Proof.</strong> Use one field containing all the numbers. At every place,</p>
+<span class="math math-display" data-tex="\[
+\max(1,|\alpha_1\cdots\alpha_n|_v)
+\leq\prod_i\max(1,|\alpha_i|_v).
+\]">\[
+\max(1,|\alpha_1\cdots\alpha_n|_v)
+\leq\prod_i\max(1,|\alpha_i|_v).
+\]</span>
+<p>For sums the ultrametric inequality gives the same bound at finite places; the triangle inequality requires a factor <span class="math" data-tex="\(n\)">\(n\)</span> at infinite places. Take weighted logarithms and use <span class="math" data-tex="\(\sum_{v\mid\infty}d_v=D\)">\(\sum_{v\mid\infty}d_v=D\)</span>. This proves the inequalities. Nonnegative powers follow directly from the definition. For inverses, <span class="math" data-tex="\(\log\max(1,t^{-1})=\log\max(1,t)-\log t\)">\(\log\max(1,t^{-1})=\log\max(1,t)-\log t\)</span>, and the product formula gives <span class="math" data-tex="\(h(\alpha^{-1})=h(\alpha)\)">\(h(\alpha^{-1})=h(\alpha)\)</span>. Conjugates have the same primitive minimal polynomial, so Theorem 2.4 proves their height equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The term <span class="math" data-tex="\(\log n\)">\(\log n\)</span> cannot generally be removed: <span class="math" data-tex="\(h(1)=0\)">\(h(1)=0\)</span>, but <span class="math" data-tex="\(h(1+1)=\log2\)">\(h(1+1)=\log2\)</span>.</p>
+<h3 id="theorem-2-6-northcott-s-finite-box">Theorem 2.6. Northcott's finite box</h3>
+<p>For <span class="math" data-tex="\(D\geq1\)">\(D\geq1\)</span> integral and <span class="math" data-tex="\(X\geq0\)">\(X\geq0\)</span>, the number of algebraic numbers of degree at most <span class="math" data-tex="\(D\)">\(D\)</span> and height at most <span class="math" data-tex="\(X\)">\(X\)</span> is at most</p>
+<span class="math math-display" data-tex="\[
+D^2(2^{D+1}e^{DX}+1)^{D+1}.
+\]">\[
+D^2(2^{D+1}e^{DX}+1)^{D+1}.
+\]</span>
+<p><strong>Proof.</strong> For degree <span class="math" data-tex="\(d\leq D\)">\(d\leq D\)</span>, Proposition 2.2 and Theorem 2.4 imply <span class="math" data-tex="\(H(P_\alpha)\leq2^de^{dh(\alpha)}\leq2^De^{DX}=:B\)">\(H(P_\alpha)\leq2^de^{dh(\alpha)}\leq2^De^{DX}=:B\)</span>. A polynomial of degree <span class="math" data-tex="\(d\)">\(d\)</span> with integer coefficients in <span class="math" data-tex="\([-B,B]\)">\([-B,B]\)</span> has at most <span class="math" data-tex="\((2\lfloor B\rfloor+1)^{d+1}\)">\((2\lfloor B\rfloor+1)^{d+1}\)</span> possible coefficient tuples, and at most <span class="math" data-tex="\(d\)">\(d\)</span> roots. With <span class="math" data-tex="\(C=2^{D+1}e^{DX}+1\)">\(C=2^{D+1}e^{DX}+1\)</span>, the total number is bounded by <span class="math" data-tex="\(\sum_{d=1}^D dC^{d+1}\leq D(D+1)C^{D+1}/2\leq D^2C^{D+1}\)">\(\sum_{d=1}^D dC^{d+1}\leq D(D+1)C^{D+1}/2\leq D^2C^{D+1}\)</span>. Counting reducible and nonprimitive polynomials only increases this upper bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="theorem-2-7-kronecker-s-theorem">Theorem 2.7. Kronecker's theorem</h3>
+<p>A nonzero algebraic number has height zero if and only if it is a root of unity. An algebraic integer whose conjugates all lie in the closed unit disc is zero or a root of unity.</p>
+<p><strong>Proof.</strong> If a positive power is one, Proposition 2.5 forces height zero. Conversely, <span class="math" data-tex="\(h(\alpha)=0\)">\(h(\alpha)=0\)</span> gives <span class="math" data-tex="\(M(P_\alpha)=1\)">\(M(P_\alpha)=1\)</span>. Its positive integer leading coefficient is one and all roots have modulus at most one. Every positive power of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is again an algebraic integer, of degree at most <span class="math" data-tex="\(d=\deg\alpha\)">\(d=\deg\alpha\)</span>, with all conjugates in the unit disc. Its monic minimal polynomial has integer coefficients bounded by <span class="math" data-tex="\(2^d\)">\(2^d\)</span>, by elementary symmetric sums. Only finitely many such polynomials, and therefore only finitely many such roots, exist. Two positive powers are equal. Cancel the lower power, since <span class="math" data-tex="\(\alpha\neq0\)">\(\alpha\neq0\)</span>, to obtain a root of unity. The second assertion follows from the same bounded-powers argument, allowing zero separately. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Integrality matters. The number <span class="math" data-tex="\(\alpha=(3+4i)/5\)">\(\alpha=(3+4i)/5\)</span> has two conjugates of modulus one, but its primitive polynomial is <span class="math" data-tex="\(5X^2-6X+5\)">\(5X^2-6X+5\)</span>, its Mahler measure is five and <span class="math" data-tex="\(h(\alpha)=\tfrac12\log5\)">\(h(\alpha)=\tfrac12\log5\)</span>. The monic minimal polynomial has nonintegral coefficients. The denominator prevents this number from having height zero.</p>
+<h2 id="5-a-lower-bound-at-every-place">5. A lower bound at every place</h2>
+<h3 id="theorem-2-8-liouville-s-inequality">Theorem 2.8. Liouville's inequality</h3>
+<p>Let <span class="math" data-tex="\([K:\mathbb Q]=D\)">\([K:\mathbb Q]=D\)</span>. For <span class="math" data-tex="\(\eta\in K^\times\)">\(\eta\in K^\times\)</span> and every place <span class="math" data-tex="\(v\)">\(v\)</span>,</p>
+<span class="math math-display" data-tex="\[
+d_v\log|\eta|_v\geq-Dh(\eta).
+\]">\[
+d_v\log|\eta|_v\geq-Dh(\eta).
+\]</span>
+<p>If <span class="math" data-tex="\(f\in\mathbb Z[X_1,\ldots,X_t]\)">\(f\in\mathbb Z[X_1,\ldots,X_t]\)</span> is nonzero and <span class="math" data-tex="\(\gamma_i\in K\)">\(\gamma_i\in K\)</span>, then, with <span class="math" data-tex="\(e_i=\deg_{X_i}f\)">\(e_i=\deg_{X_i}f\)</span>,</p>
+<span class="math math-display" data-tex="\[
+h(f(\gamma))\leq\log L(f)+\sum_i e_i h(\gamma_i).
+\]">\[
+h(f(\gamma))\leq\log L(f)+\sum_i e_i h(\gamma_i).
+\]</span>
+<p>If additionally <span class="math" data-tex="\(f(\gamma)\neq0\)">\(f(\gamma)\neq0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+d_v\log|f(\gamma)|_v\geq
+-D\left(\log L(f)+\sum_i e_i h(\gamma_i)\right).
+\]">\[
+d_v\log|f(\gamma)|_v\geq
+-D\left(\log L(f)+\sum_i e_i h(\gamma_i)\right).
+\]</span>
+<p><strong>Proof.</strong> The nonnegative sum defining <span class="math" data-tex="\(Dh(\eta^{-1})\)">\(Dh(\eta^{-1})\)</span> bounds each summand. Hence <span class="math" data-tex="\(-d_v\log|\eta|_v\leq d_v\log\max(1,|\eta^{-1}|_v)\leq Dh(\eta)\)">\(-d_v\log|\eta|_v\leq d_v\log\max(1,|\eta^{-1}|_v)\leq Dh(\eta)\)</span>.</p>
+<p>At a finite place each integer coefficient has modulus at most one, and the ultrametric inequality bounds <span class="math" data-tex="\(\max(1,|f(\gamma)|_v)\)">\(\max(1,|f(\gamma)|_v)\)</span> by <span class="math" data-tex="\(\prod_i\max(1,|\gamma_i|_v)^{e_i}\)">\(\prod_i\max(1,|\gamma_i|_v)^{e_i}\)</span>. At an infinite place, sum the coefficient moduli to obtain the same bound multiplied by <span class="math" data-tex="\(L(f)\geq1\)">\(L(f)\geq1\)</span>. Weighted logarithmic summation gives the height bound. Apply the first inequality to the nonzero value and insert its height bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> Waldschmidt, Chapter 3, inequality (3.13) and Lemma 3.14. The nonzero-value condition in the last statement is essential.</p>
+<p>At a specified complex embedding the local weight is one or two. Thus <span class="math" data-tex="\(\log|\sigma(\eta)|\geq-Dh(\eta)/d_v\)">\(\log|\sigma(\eta)|\geq-Dh(\eta)/d_v\)</span>, and the weaker bound <span class="math" data-tex="\(\log|\sigma(\eta)|\geq-Dh(\eta)\)">\(\log|\sigma(\eta)|\geq-Dh(\eta)\)</span> is always valid. Distinguishing these normalizations prevents a factor two from being lost in determinant estimates.</p>
+<p>For example, let <span class="math" data-tex="\(\gamma=\sqrt[3]2\)">\(\gamma=\sqrt[3]2\)</span> and <span class="math" data-tex="\(f(X)=qX-p\)">\(f(X)=qX-p\)</span>, with <span class="math" data-tex="\(p,q\in\mathbb Z\)">\(p,q\in\mathbb Z\)</span>, <span class="math" data-tex="\(q\neq0\)">\(q\neq0\)</span>. At the real embedding of <span class="math" data-tex="\(\mathbb Q(\gamma)\)">\(\mathbb Q(\gamma)\)</span>, the theorem gives</p>
+<span class="math math-display" data-tex="\[
+\log|q\gamma-p|\geq-3\log(|p|+|q|)-\log2.
+\]">\[
+\log|q\gamma-p|\geq-3\log(|p|+|q|)-\log2.
+\]</span>
+<p>This is coarser than a specialized rational-approximation bound, but the same method applies to multivariable polynomials and all places.</p>
+<h2 id="6-converting-conventions-without-losing-a-degree">6. Converting conventions without losing a degree</h2>
+<p>Put <span class="math" data-tex="\(d=\deg\alpha\)">\(d=\deg\alpha\)</span>, <span class="math" data-tex="\(H=H(P_\alpha)\)">\(H=H(P_\alpha)\)</span>, <span class="math" data-tex="\(R=\operatorname{house}(\alpha)\)">\(R=\operatorname{house}(\alpha)\)</span>, and <span class="math" data-tex="\(\delta=\operatorname{den}(\alpha)\)">\(\delta=\operatorname{den}(\alpha)\)</span>. Our formulas give</p>
+<span class="math math-display" data-tex="\[
+H\leq2^de^{dh(\alpha)},\qquad
+dh(\alpha)\leq\log H+\tfrac12\log(d+1),\qquad
+L(P_\alpha)\leq(d+1)H.
+\]">\[
+H\leq2^de^{dh(\alpha)},\qquad
+dh(\alpha)\leq\log H+\tfrac12\log(d+1),\qquad
+L(P_\alpha)\leq(d+1)H.
+\]</span>
+<p>Also,</p>
+<span class="math math-display" data-tex="\[
+\log\max(1,R)\leq dh(\alpha),\quad
+\log\delta\leq dh(\alpha),\quad
+h(\alpha)\leq\log\delta+\log\max(1,R).
+\]">\[
+\log\max(1,R)\leq dh(\alpha),\quad
+\log\delta\leq dh(\alpha),\quad
+h(\alpha)\leq\log\delta+\log\max(1,R).
+\]</span>
+<p>For the first two bounds, each root factor and the leading coefficient are at most <span class="math" data-tex="\(M(P_\alpha)\)">\(M(P_\alpha)\)</span>, and <span class="math" data-tex="\(\delta\leq a_d\)">\(\delta\leq a_d\)</span>. For the last, a monic integral relation implies <span class="math" data-tex="\(|\delta\alpha|_v\leq1\)">\(|\delta\alpha|_v\leq1\)</span> at every finite place: otherwise its highest power strictly dominates all other terms. Thus the finite contribution to <span class="math" data-tex="\(h(\alpha)\)">\(h(\alpha)\)</span> is at most <span class="math" data-tex="\(\log\delta\)">\(\log\delta\)</span>, by the product formula for the rational integer <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The infinite contribution is at most <span class="math" data-tex="\(\log\max(1,R)\)">\(\log\max(1,R)\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Source convention</th>
+<th>Quantity</th>
+<th>Conversion used here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evertse's height of a number</td>
+<td>Primitive coefficient height <span class="math" data-tex="\(H\)">\(H\)</span></td>
+<td><span class="math" data-tex="\(\log H\leq d(h+\log2)\)">\(\log H\leq d(h+\log2)\)</span></td>
+</tr>
+<tr>
+<td>Evertse's house of a number</td>
+<td>House <span class="math" data-tex="\(R\)">\(R\)</span></td>
+<td><span class="math" data-tex="\(\log\max(1,R)\leq dh\)">\(\log\max(1,R)\leq dh\)</span>; retain the denominator separately</td>
+</tr>
+<tr>
+<td>Waldschmidt's polynomial height and length</td>
+<td><span class="math" data-tex="\(H(P),L(P)\)">\(H(P),L(P)\)</span></td>
+<td><span class="math" data-tex="\(H(P)\leq L(P)\leq(d+1)H(P)\)">\(H(P)\leq L(P)\leq(d+1)H(P)\)</span></td>
+</tr>
+<tr>
+<td>Waldschmidt's logarithmic height</td>
+<td>Absolute Weil height <span class="math" data-tex="\(h\)">\(h\)</span></td>
+<td><span class="math" data-tex="\(M(P_\alpha)=e^{dh}\)">\(M(P_\alpha)=e^{dh}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These comparisons are bounds, not equalities between the conventions. An exponential in a coefficient height can have a quite different appearance after the degree enters the conversion.</p>
+<p>For example, <span class="math" data-tex="\(M(P_\alpha)\leq\|P_\alpha\|_2\leq L(P_\alpha)\)">\(M(P_\alpha)\leq\|P_\alpha\|_2\leq L(P_\alpha)\)</span> gives <span class="math" data-tex="\(h(\alpha)\leq\log L(P_\alpha)/\deg\alpha\)">\(h(\alpha)\leq\log L(P_\alpha)/\deg\alpha\)</span>. Substituting this in Theorem 2.8, for <span class="math" data-tex="\(K=\mathbb Q(\gamma_1,\ldots,\gamma_t)\)">\(K=\mathbb Q(\gamma_1,\ldots,\gamma_t)\)</span>, yields the following length form:</p>
+<span class="math math-display" data-tex="\[
+|f(\gamma)|\geq L(f)^{-[K:\mathbb Q]}
+\prod_i L(P_{\gamma_i})^{-e_i[K:\mathbb Q(\gamma_i)]}
+\qquad(f(\gamma)\neq0).
+\]">\[
+|f(\gamma)|\geq L(f)^{-[K:\mathbb Q]}
+\prod_i L(P_{\gamma_i})^{-e_i[K:\mathbb Q(\gamma_i)]}
+\qquad(f(\gamma)\neq0).
+\]</span>
+<p>Indeed, <span class="math" data-tex="\([K:\mathbb Q]/\deg\gamma_i=[K:\mathbb Q(\gamma_i)]\)">\([K:\mathbb Q]/\deg\gamma_i=[K:\mathbb Q(\gamma_i)]\)</span>. At a complex place we use the weaker unweighted embedding bound from Section 5. Thus the coefficient-length version follows from the placewise height statement with every degree factor accounted for.</p>
+<h3 id="examples">Examples</h3>
+<p>For <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, the polynomial <span class="math" data-tex="\(X^2-2\)">\(X^2-2\)</span> has <span class="math" data-tex="\(H=2\)">\(H=2\)</span>, house <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, denominator one, and Mahler measure two; hence <span class="math" data-tex="\(h=\tfrac12\log2\)">\(h=\tfrac12\log2\)</span>. For <span class="math" data-tex="\(\varphi=(1+\sqrt5)/2\)">\(\varphi=(1+\sqrt5)/2\)</span>, the polynomial <span class="math" data-tex="\(X^2-X-1\)">\(X^2-X-1\)</span> has coefficient height one. Its roots are <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and <span class="math" data-tex="\(-1/\varphi\)">\(-1/\varphi\)</span>, so its house and Mahler measure are <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and <span class="math" data-tex="\(h(\varphi)=\tfrac12\log\varphi\)">\(h(\varphi)=\tfrac12\log\varphi\)</span>. Small integer coefficients therefore do not force height zero.</p>
+<p>For <span class="math" data-tex="\(\alpha=2^{1/n}\)">\(\alpha=2^{1/n}\)</span>, <span class="math" data-tex="\(X^n-2\)">\(X^n-2\)</span> is irreducible. Here is the argument needed for this family. A factorization into monic rational polynomials would have integral coefficients: their coefficients are symmetric sums of subsets of the integral roots, hence rational algebraic integers. Reducing modulo two, both positive-degree factors of <span class="math" data-tex="\(X^n-2\)">\(X^n-2\)</span> must be powers of <span class="math" data-tex="\(X\)">\(X\)</span>. Their constant coefficients would both be even, whereas their product is <span class="math" data-tex="\(-2\)">\(-2\)</span>, a contradiction. Thus the degree is <span class="math" data-tex="\(n\)">\(n\)</span>. All conjugates have modulus <span class="math" data-tex="\(2^{1/n}\)">\(2^{1/n}\)</span>, so <span class="math" data-tex="\(M=2\)">\(M=2\)</span> and</p>
+<span class="math math-display" data-tex="\[
+h(2^{1/n})=\frac{\log2}{n}.
+\]">\[
+h(2^{1/n})=\frac{\log2}{n}.
+\]</span>
+<p>For <span class="math" data-tex="\(\sqrt[3]2\)">\(\sqrt[3]2\)</span>, the four sizes are <span class="math" data-tex="\(H=2\)">\(H=2\)</span>, <span class="math" data-tex="\(L=3\)">\(L=3\)</span>, <span class="math" data-tex="\(R=2^{1/3}\)">\(R=2^{1/3}\)</span>, and <span class="math" data-tex="\(h=\log2/3\)">\(h=\log2/3\)</span>. The denominator is one. In contrast, for <span class="math" data-tex="\((3+4i)/5\)">\((3+4i)/5\)</span>, they are <span class="math" data-tex="\(H=6\)">\(H=6\)</span>, <span class="math" data-tex="\(L=16\)">\(L=16\)</span>, <span class="math" data-tex="\(R=1\)">\(R=1\)</span>, and <span class="math" data-tex="\(h=\tfrac12\log5\)">\(h=\tfrac12\log5\)</span>. Its denominator is five: this value works, and integrality of the trace <span class="math" data-tex="\(6\delta/5\)">\(6\delta/5\)</span> forces <span class="math" data-tex="\(5\mid\delta\)">\(5\mid\delta\)</span>. These examples check both the degree factor and the information that the house omits.</p>
+<h2 id="7-lehmer-s-problem-and-the-determinant-bound">7. Lehmer's problem and the determinant bound</h2>
+<p>Kronecker separates measure one from measure greater than one. It does not give a separation uniform in the degree. <strong>Lehmer's problem</strong> asks whether there is an absolute <span class="math" data-tex="\(c&gt;1\)">\(c&gt;1\)</span> such that every nonzero algebraic integer that is not a root of unity has Mahler measure at least <span class="math" data-tex="\(c\)">\(c\)</span>. We do not assume an answer. The polynomial</p>
+<span class="math math-display" data-tex="\[
+P(X)=X^{10}+X^9-X^7-X^6-X^5-X^4-X^3+X+1
+\]">\[
+P(X)=X^{10}+X^9-X^7-X^6-X^5-X^4-X^3+X+1
+\]</span>
+<p>illustrates the difficulty. To check its measure, put <span class="math" data-tex="\(Y=X+X^{-1}\)">\(Y=X+X^{-1}\)</span>. Direct expansion gives</p>
+<span class="math math-display" data-tex="\[
+X^{-5}P(X)=R(Y),\qquad
+R(Y)=Y^5+Y^4-5Y^3-5Y^2+4Y+3.
+\]">\[
+X^{-5}P(X)=R(Y),\qquad
+R(Y)=Y^5+Y^4-5Y^3-5Y^2+4Y+3.
+\]</span>
+<p>The signs at <span class="math" data-tex="\(-2,-3/2,-1,0,1,2,21/10\)">\(-2,-3/2,-1,0,1,2,21/10\)</span> show one root in each of <span class="math" data-tex="\((-2,-3/2)\)">\((-2,-3/2)\)</span>, <span class="math" data-tex="\((-3/2,-1)\)">\((-3/2,-1)\)</span>, <span class="math" data-tex="\((-1,0)\)">\((-1,0)\)</span>, <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, and <span class="math" data-tex="\((2,21/10)\)">\((2,21/10)\)</span>. These exhaust its five roots. The first four yield eight roots of <span class="math" data-tex="\(P\)">\(P\)</span> on the unit circle; the last yields <span class="math" data-tex="\(\lambda&gt;1\)">\(\lambda&gt;1\)</span> and <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>. Hence <span class="math" data-tex="\(M(P)=\lambda\)">\(M(P)=\lambda\)</span>. Numerical bisection of the last root and the formula <span class="math" data-tex="\(\lambda=(Y+\sqrt{Y^2-4})/2\)">\(\lambda=(Y+\sqrt{Y^2-4})/2\)</span> give <span class="math" data-tex="\(M(P)\approx1.176280818\)">\(M(P)\approx1.176280818\)</span>.</p>
+<p>The polynomial is irreducible as well. Modulo two, <span class="math" data-tex="\(R\)">\(R\)</span> is <span class="math" data-tex="\(Y^5+Y^4+Y^3+Y^2+1\)">\(Y^5+Y^4+Y^3+Y^2+1\)</span>. It has no linear factor, and division by the only irreducible quadratic <span class="math" data-tex="\(Y^2+Y+1\)">\(Y^2+Y+1\)</span> leaves remainder <span class="math" data-tex="\(Y\)">\(Y\)</span>. A reducible polynomial of degree five without a linear factor must have a quadratic factor, so this reduction is irreducible. It follows that <span class="math" data-tex="\([\mathbb Q(Y):\mathbb Q]=5\)">\([\mathbb Q(Y):\mathbb Q]=5\)</span>. If <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> had degree five, it would lie in <span class="math" data-tex="\(\mathbb Q(Y)\)">\(\mathbb Q(Y)\)</span>. Every embedding of that field is real because all five conjugates of <span class="math" data-tex="\(Y\)">\(Y\)</span> are real. But at a conjugate in <span class="math" data-tex="\((-2,2)\)">\((-2,2)\)</span>, the equation <span class="math" data-tex="\(\lambda^2-Y\lambda+1=0\)">\(\lambda^2-Y\lambda+1=0\)</span> has no real root. Therefore <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> has degree ten, proving the assertion.</p>
+<p>Dobrowolski's theorem gives a lower bound that tends to one very slowly. The proof explains why primes and repeated columns improve the simple integer obstruction. Its analytic input is the lesson <em>The prime number theorem</em> in <em>The Riemann zeta function</em>, which proves <span class="math" data-tex="\(p_j\sim j\log j\)">\(p_j\sim j\log j\)</span> for the <span class="math" data-tex="\(j\)">\(j\)</span>-th prime. We use that result only in this section. All determinant and arithmetic arguments are supplied here.</p>
+<h3 id="lemma-2-9-removing-quotients-that-are-roots-of-unity">Lemma 2.9. Removing quotients that are roots of unity</h3>
+<p>If a nonzero algebraic integer <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span> has distinct conjugates with a root-of-unity quotient, there is an algebraic integer <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of degree less than <span class="math" data-tex="\(d\)">\(d\)</span>, with <span class="math" data-tex="\(M(\beta)=M(\alpha)\)">\(M(\beta)=M(\alpha)\)</span>, whose distinct conjugates have no such quotient.</p>
+<p><strong>Proof.</strong> In a splitting field, partition the conjugates into classes under the relation that their quotient is a root of unity. The Galois group acts transitively on conjugates and permutes the classes, so all classes have the same size <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>. For each class take its product <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span>. These products are integral and form one Galois orbit. Writing a representative as <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span>, we have <span class="math" data-tex="\(\beta_j=\zeta_j\alpha_j^r\)">\(\beta_j=\zeta_j\alpha_j^r\)</span>, with <span class="math" data-tex="\(\zeta_j\)">\(\zeta_j\)</span> a root of unity. If two products had a root-of-unity quotient, then <span class="math" data-tex="\((\alpha_j/\alpha_k)^r\)">\((\alpha_j/\alpha_k)^r\)</span>, and hence <span class="math" data-tex="\(\alpha_j/\alpha_k\)">\(\alpha_j/\alpha_k\)</span>, would be a root of unity. This contradicts their belonging to distinct classes. Thus the products are distinct, and any one has degree <span class="math" data-tex="\(d/r\)">\(d/r\)</span>. All elements in a class have the same modulus, so</p>
+<span class="math math-display" data-tex="\[
+\prod_j\max(1,|\beta_j|)
+=\prod_i\max(1,|\alpha_i|)=M(\alpha).
+\]">\[
+\prod_j\max(1,|\beta_j|)
+=\prod_i\max(1,|\alpha_i|)=M(\alpha).
+\]</span>
+<p>This proves the lemma. The Galois fact used here is the elementary splitting-field theorem from the algebra prerequisite: embeddings of a simple separable extension extend to the splitting field by successively choosing roots of the transported minimal polynomials. Since the field contains all these roots, the resulting embeddings are automorphisms; they can send any conjugate to any other. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-2-10-prime-divisibility">Lemma 2.10. Prime divisibility</h3>
+<p>Suppose distinct conjugates of a nonzero algebraic integer <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> have no root-of-unity quotient, and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is not a root of unity. For every prime <span class="math" data-tex="\(p\)">\(p\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|\prod_{i,j=1}^d(\alpha_i^p-\alpha_j)\right|\geq p^d.
+\]">\[
+\left|\prod_{i,j=1}^d(\alpha_i^p-\alpha_j)\right|\geq p^d.
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(f(X)=\prod_i(X-\alpha_i)\)">\(f(X)=\prod_i(X-\alpha_i)\)</span>, and let <span class="math" data-tex="\(f_p(X)=\prod_i(X-\alpha_i^p)\)">\(f_p(X)=\prod_i(X-\alpha_i^p)\)</span>. The latter is monic integral: its coefficients are integral symmetric expressions invariant under the Galois group, hence rational integers. Moreover <span class="math" data-tex="\(f_p\equiv f\pmod p\)">\(f_p\equiv f\pmod p\)</span>. For completeness, if <span class="math" data-tex="\(e_k\)">\(e_k\)</span> is the <span class="math" data-tex="\(k\)">\(k\)</span>-th elementary symmetric polynomial, then <span class="math" data-tex="\(e_k(X_1^p,\ldots,X_d^p)-e_k(X_1,\ldots,X_d)^p\)">\(e_k(X_1^p,\ldots,X_d^p)-e_k(X_1,\ldots,X_d)^p\)</span> has all coefficients divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, by the multinomial theorem. Dividing by <span class="math" data-tex="\(p\)">\(p\)</span> gives an integral symmetric polynomial. Such a polynomial is an integer polynomial in the elementary symmetric polynomials: subtract the corresponding product of the <span class="math" data-tex="\(e_k\)">\(e_k\)</span>'s to cancel its largest monomial in lexicographic order, then repeat; the leading exponent tuple of a symmetric polynomial is decreasing, so this procedure terminates. Evaluate at the conjugates, and use <span class="math" data-tex="\(a^p\equiv a\pmod p\)">\(a^p\equiv a\pmod p\)</span> for integers <span class="math" data-tex="\(a\)">\(a\)</span>. This proves the congruence.</p>
+<p>Consequently <span class="math" data-tex="\(f_p(\alpha)=p\gamma\)">\(f_p(\alpha)=p\gamma\)</span> for an algebraic integer <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. It is nonzero. Indeed, an equality <span class="math" data-tex="\(\alpha_i^p=\alpha_j\)">\(\alpha_i^p=\alpha_j\)</span> would give <span class="math" data-tex="\(p h(\alpha)=h(\alpha)\)">\(p h(\alpha)=h(\alpha)\)</span>, contradicting <span class="math" data-tex="\(h(\alpha)&gt;0\)">\(h(\alpha)&gt;0\)</span> from Kronecker. Its norm is therefore a nonzero integer divisible by <span class="math" data-tex="\(p^d\)">\(p^d\)</span>, and its absolute value is the displayed product. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-2-11-a-determinant-with-repeated-nodes">Lemma 2.11. A determinant with repeated nodes</h3>
+<p>Given distinct complex nodes <span class="math" data-tex="\(v_1,\ldots,v_k\)">\(v_1,\ldots,v_k\)</span>, positive multiplicities <span class="math" data-tex="\(m_1,\ldots,m_k\)">\(m_1,\ldots,m_k\)</span>, and <span class="math" data-tex="\(N=\sum m_i\)">\(N=\sum m_i\)</span>, form a matrix whose block at <span class="math" data-tex="\(v_i\)">\(v_i\)</span> has columns indexed by <span class="math" data-tex="\(0\leq r&lt;m_i\)">\(0\leq r&lt;m_i\)</span>, with entries indexed by <span class="math" data-tex="\(0\leq n&lt;N\)">\(0\leq n&lt;N\)</span>:</p>
+<span class="math math-display" data-tex="\[
+W_{n,(i,r)}=\binom nr v_i^{n-r},
+\]">\[
+W_{n,(i,r)}=\binom nr v_i^{n-r},
+\]</span>
+<p>where entries with <span class="math" data-tex="\(n&lt;r\)">\(n&lt;r\)</span> are zero. Then</p>
+<span class="math math-display" data-tex="\[
+|\det W|=\prod_{i&lt;j}|v_i-v_j|^{m_im_j}.
+\]">\[
+|\det W|=\prod_{i&lt;j}|v_i-v_j|^{m_im_j}.
+\]</span>
+<p>A column indexed by <span class="math" data-tex="\(r\)">\(r\)</span> has squared Euclidean norm at most</p>
+<span class="math math-display" data-tex="\[
+N^{2r+1}\max(1,|v_i|)^{2N}.
+\]">\[
+N^{2r+1}\max(1,|v_i|)^{2N}.
+\]</span>
+<p><strong>Proof.</strong> For all multiplicities one, the determinant is the Vandermonde product: it vanishes when two nodes agree, has exactly the sum of the degrees of the pairwise factors, and comparison of the diagonal monomial fixes its coefficient as one. For a larger multiplicity, split the block of size <span class="math" data-tex="\(m\)">\(m\)</span> into a block of size <span class="math" data-tex="\(m-1\)">\(m-1\)</span> at <span class="math" data-tex="\(v\)">\(v\)</span> and a single column at <span class="math" data-tex="\(v+t\)">\(v+t\)</span>. Subtract the first <span class="math" data-tex="\(m-1\)">\(m-1\)</span> terms in the Taylor expansion of that column. Divide the determinant by <span class="math" data-tex="\(t^{m-1}\)">\(t^{m-1}\)</span> and let <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>. Its new column tends to the column with entries <span class="math" data-tex="\(\binom n{m-1}v^{n-m+1}\)">\(\binom n{m-1}v^{n-m+1}\)</span>. The Vandermonde product has the same limit and the stated cross-node exponents. Induction on the number of blocks proves the formula. For the norm bound, each entry is at most <span class="math" data-tex="\(N^r\max(1,|v_i|)^N\)">\(N^r\max(1,|v_i|)^N\)</span>, and there are <span class="math" data-tex="\(N\)">\(N\)</span> entries. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also use Hadamard's inequality: the squared modulus of a determinant is at most the product of the squared column norms. Gram–Schmidt proves it directly: subtraction of previous orthogonal projections preserves the determinant and can only decrease each column length; the orthogonal columns have determinant modulus equal to the product of their lengths. A dependent matrix has determinant zero, so is included.</p>
+<h3 id="theorem-2-12-dobrowolski-s-lower-bound">Theorem 2.12. Dobrowolski's lower bound</h3>
+<p>For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is <span class="math" data-tex="\(d_0(\varepsilon)\)">\(d_0(\varepsilon)\)</span> such that every nonzero algebraic integer <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of degree <span class="math" data-tex="\(d\geq d_0(\varepsilon)\)">\(d\geq d_0(\varepsilon)\)</span>, not a root of unity, satisfies</p>
+<span class="math math-display" data-tex="\[
+M(\alpha)&gt;1+(2-\varepsilon)
+\left(\frac{\log\log d}{\log d}\right)^3.
+\]">\[
+M(\alpha)&gt;1+(2-\varepsilon)
+\left(\frac{\log\log d}{\log d}\right)^3.
+\]</span>
+<p><strong>Proof.</strong> It suffices to consider <span class="math" data-tex="\(0&lt;\varepsilon&lt;2\)">\(0&lt;\varepsilon&lt;2\)</span>. First assume that distinct conjugates have no root-of-unity quotient. Take the nodes <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> with multiplicity <span class="math" data-tex="\(S\)">\(S\)</span>, and the nodes <span class="math" data-tex="\(\alpha_i^{p_j}\)">\(\alpha_i^{p_j}\)</span>, for the first <span class="math" data-tex="\(T\)">\(T\)</span> primes, with multiplicity one. All nodes are distinct: within a prime power this follows from the quotient condition; between powers with different exponents it follows from their unequal heights <span class="math" data-tex="\(p_jh(\alpha)\)">\(p_jh(\alpha)\)</span>. Put <span class="math" data-tex="\(N=d(S+T)\)">\(N=d(S+T)\)</span>, and let <span class="math" data-tex="\(V\)">\(V\)</span> be the determinant in Lemma 2.11.</p>
+<p>The columns at <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>, summed over their derivative orders, contribute at most <span class="math" data-tex="\(N^{dS^2}M(\alpha)^{2NS}\)">\(N^{dS^2}M(\alpha)^{2NS}\)</span> to the product of squared norms. The remaining columns contribute at most <span class="math" data-tex="\(N^{dT}M(\alpha)^{2N\sum_{j\leq T}p_j}\)">\(N^{dT}M(\alpha)^{2N\sum_{j\leq T}p_j}\)</span>. Hadamard therefore gives</p>
+<span class="math math-display" data-tex="\[
+|V|^2\leq N^{d(S^2+T)}
+M(\alpha)^{2N(S+\sum_{j\leq T}p_j)}.
+\]">\[
+|V|^2\leq N^{d(S^2+T)}
+M(\alpha)^{2N(S+\sum_{j\leq T}p_j)}.
+\]</span>
+<p>On the other hand the squared Vandermonde formula contains the original discriminant to power <span class="math" data-tex="\(S^2\)">\(S^2\)</span>, the discriminant of the polynomial with all roots <span class="math" data-tex="\(\alpha_i^{p_j}\)">\(\alpha_i^{p_j}\)</span>, and the cross products between the original roots and each prime-power set to power <span class="math" data-tex="\(2S\)">\(2S\)</span>. The first two discriminants are nonzero integers: their monic polynomials have integral coefficients and their roots are distinct. Their absolute values are at least one. Lemma 2.10 bounds the remaining factors, giving</p>
+<span class="math math-display" data-tex="\[
+|V|^2\geq\prod_{j\leq T}p_j^{2Sd}.
+\]">\[
+|V|^2\geq\prod_{j\leq T}p_j^{2Sd}.
+\]</span>
+<p>Thus</p>
+<span class="math math-display" data-tex="\[
+\log M(\alpha)\geq
+\frac{2S\sum_{j\leq T}\log p_j-(S^2+T)\log(d(S+T))}
+{2(S+T)(S+\sum_{j\leq T}p_j)}. \tag{*}
+\]">\[
+\log M(\alpha)\geq
+\frac{2S\sum_{j\leq T}\log p_j-(S^2+T)\log(d(S+T))}
+{2(S+T)(S+\sum_{j\leq T}p_j)}. \tag{*}
+\]</span>
+<p>The internal prime number theorem input gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{j\leq T}p_j=\tfrac12T^2\log T\,(1+o(1)),\qquad
+\sum_{j\leq T}\log p_j=T\log T\,(1+o(1)).
+\]">\[
+\sum_{j\leq T}p_j=\tfrac12T^2\log T\,(1+o(1)),\qquad
+\sum_{j\leq T}\log p_j=T\log T\,(1+o(1)).
+\]</span>
+<p>Here are the summation details. From <span class="math" data-tex="\(p_j\sim j\log j\)">\(p_j\sim j\log j\)</span>, the first sum differs by a relative <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span> from <span class="math" data-tex="\(\sum j\log j\)">\(\sum j\log j\)</span>; comparison with its integral gives <span class="math" data-tex="\(\tfrac12T^2\log T+O(T^2)\)">\(\tfrac12T^2\log T+O(T^2)\)</span>. For the second, <span class="math" data-tex="\(\log p_j=\log j+O(\log\log j)\)">\(\log p_j=\log j+O(\log\log j)\)</span> for all large <span class="math" data-tex="\(j\)">\(j\)</span>, and integral comparison gives <span class="math" data-tex="\(\sum\log j=T\log T+O(T)\)">\(\sum\log j=T\log T+O(T)\)</span>. Finite initial terms do not change either asymptotic.</p>
+<p>Write <span class="math" data-tex="\(u=\log d\)">\(u=\log d\)</span>, <span class="math" data-tex="\(\ell=\log\log d\)">\(\ell=\log\log d\)</span>, choose <span class="math" data-tex="\(S=\lceil u/\ell\rceil\)">\(S=\lceil u/\ell\rceil\)</span>, and <span class="math" data-tex="\(T=\lfloor S^2/2\rfloor\)">\(T=\lfloor S^2/2\rfloor\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\log T=2\ell(1+o(1)),\quad
+\log(d(S+T))=u(1+o(1)),\quad
+S+T=\frac{u^2}{2\ell^2}(1+o(1)).
+\]">\[
+\log T=2\ell(1+o(1)),\quad
+\log(d(S+T))=u(1+o(1)),\quad
+S+T=\frac{u^2}{2\ell^2}(1+o(1)).
+\]</span>
+<p>The numerator in (*) is <span class="math" data-tex="\(\tfrac12u^3\ell^{-2}(1+o(1))\)">\(\tfrac12u^3\ell^{-2}(1+o(1))\)</span>, and its denominator is <span class="math" data-tex="\(\tfrac14u^6\ell^{-5}(1+o(1))\)">\(\tfrac14u^6\ell^{-5}(1+o(1))\)</span>. The errors depend only on <span class="math" data-tex="\(d\)">\(d\)</span>, not on <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\log M(\alpha)\geq(2+o(1))(\ell/u)^3.
+\]">\[
+\log M(\alpha)\geq(2+o(1))(\ell/u)^3.
+\]</span>
+<p>Now allow root-of-unity quotients. Lemma 2.9 replaces <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by a number <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of degree <span class="math" data-tex="\(e\leq d\)">\(e\leq d\)</span> and the same measure, with no such quotients. For all sufficiently large <span class="math" data-tex="\(e\)">\(e\)</span>, the just-proved estimate holds uniformly with coefficient <span class="math" data-tex="\(2-\varepsilon/2\)">\(2-\varepsilon/2\)</span>. The function <span class="math" data-tex="\((\log\log x/\log x)^3\)">\((\log\log x/\log x)^3\)</span> is positive and decreasing for <span class="math" data-tex="\(x&gt;e^e\)">\(x&gt;e^e\)</span>, by differentiation. Thus that estimate at degree <span class="math" data-tex="\(e\)">\(e\)</span> implies the required bound at degree <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>For the finitely many remaining degrees <span class="math" data-tex="\(e\)">\(e\)</span>, there is a uniform positive lower bound on <span class="math" data-tex="\(\log M(\beta)\)">\(\log M(\beta)\)</span> among nonroots of unity. Indeed, those with <span class="math" data-tex="\(M\leq2\)">\(M\leq2\)</span> have bounded degree and bounded height and form a finite set by Northcott; each has positive height by Kronecker. Those with <span class="math" data-tex="\(M&gt;2\)">\(M&gt;2\)</span> already have <span class="math" data-tex="\(\log M&gt;\log2\)">\(\log M&gt;\log2\)</span>. Their common positive lower bound eventually exceeds <span class="math" data-tex="\((2-\varepsilon/2)(\log\log d/\log d)^3\)">\((2-\varepsilon/2)(\log\log d/\log d)^3\)</span>. This handles every degree reduction. Finally <span class="math" data-tex="\(e^x&gt;1+x\)">\(e^x&gt;1+x\)</span> for <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, and the margin <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> gives the strict inequality stated in the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> Dobrowolski's theorem, in the determinant form of Cantor and Straus, <em>On a conjecture of D. H. Lehmer</em>, §2, Lemmas 1–2 and the theorem. Since <span class="math" data-tex="\(h=\log M/d\)">\(h=\log M/d\)</span>, the same argument gives <span class="math" data-tex="\(h(\alpha)&gt;(2-\varepsilon)d^{-1}(\log\log d/\log d)^3\)">\(h(\alpha)&gt;(2-\varepsilon)d^{-1}(\log\log d/\log d)^3\)</span> for all sufficiently large <span class="math" data-tex="\(d\)">\(d\)</span>. It does not give a positive degree-independent lower bound on <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy — compare three sizes.</strong> Compute <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(H\)">\(H\)</span>, and the house for <span class="math" data-tex="\((1+\sqrt{-3})/2\)">\((1+\sqrt{-3})/2\)</span>, <span class="math" data-tex="\(3/2\)">\(3/2\)</span>, and <span class="math" data-tex="\(1+\sqrt2\)">\(1+\sqrt2\)</span>. Check the two comparisons between <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+</li>
+<li>
+<p><strong>Easy — the archimedean cost of addition.</strong> Prove <span class="math" data-tex="\(h(\alpha+\beta)\leq\log2+h(\alpha)+h(\beta)\)">\(h(\alpha+\beta)\leq\log2+h(\alpha)+h(\beta)\)</span>, and give a pair for which the <span class="math" data-tex="\(\log2\)">\(\log2\)</span> term cannot be removed.</p>
+</li>
+<li>
+<p><strong>Medium — bounded powers.</strong> Prove that an algebraic integer with all conjugates in the closed unit disc is zero or a root of unity, using coefficient bounds and powers rather than local heights.</p>
+</li>
+<li>
+<p><strong>Medium — the circle estimate.</strong> Deduce <span class="math" data-tex="\(M(P)\leq\|P\|_2\)">\(M(P)\leq\|P\|_2\)</span> from the circle mean of <span class="math" data-tex="\(\log|P|\)">\(\log|P|\)</span>, including roots on the unit circle.</p>
+</li>
+<li>
+<p><strong>Medium — why degree matters.</strong> Exhibit infinitely many distinct algebraic numbers of height at most <span class="math" data-tex="\(\log2\)">\(\log2\)</span>, and explain precisely which hypothesis of Northcott prevents a contradiction.</p>
+</li>
+<li>
+<p><strong>Hard — a difference from one.</strong> For <span class="math" data-tex="\(\alpha\neq1\)">\(\alpha\neq1\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>, prove for every complex embedding <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> that</p>
+</li>
+</ol>
+<span class="math math-display" data-tex="\[
+\log|\sigma(\alpha)-1|\geq-d(\log2+h(\alpha)).
+\]">\[
+\log|\sigma(\alpha)-1|\geq-d(\log2+h(\alpha)).
+\]</span>
+<p>Explain why the nonzero-value condition is needed, and why the bound is also valid at a complex place even though that place has weight two.</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>1.</strong> The first number has polynomial <span class="math" data-tex="\(X^2-X+1\)">\(X^2-X+1\)</span>; both roots have modulus one. Thus <span class="math" data-tex="\(H=1\)">\(H=1\)</span>, house one, <span class="math" data-tex="\(M=1\)">\(M=1\)</span>, and <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. For <span class="math" data-tex="\(3/2\)">\(3/2\)</span>, the primitive polynomial is <span class="math" data-tex="\(2X-3\)">\(2X-3\)</span>; <span class="math" data-tex="\(H=3\)">\(H=3\)</span>, house <span class="math" data-tex="\(3/2\)">\(3/2\)</span>, <span class="math" data-tex="\(M=3\)">\(M=3\)</span>, and <span class="math" data-tex="\(h=\log3\)">\(h=\log3\)</span>. For <span class="math" data-tex="\(1+\sqrt2\)">\(1+\sqrt2\)</span>, the polynomial is <span class="math" data-tex="\(X^2-2X-1\)">\(X^2-2X-1\)</span>; its other root is <span class="math" data-tex="\(1-\sqrt2\)">\(1-\sqrt2\)</span>, of modulus less than one. Hence <span class="math" data-tex="\(H=2\)">\(H=2\)</span>, house <span class="math" data-tex="\(1+\sqrt2\)">\(1+\sqrt2\)</span>, <span class="math" data-tex="\(M=1+\sqrt2\)">\(M=1+\sqrt2\)</span>, and <span class="math" data-tex="\(h=\tfrac12\log(1+\sqrt2)\)">\(h=\tfrac12\log(1+\sqrt2)\)</span>. The comparisons <span class="math" data-tex="\(2^{-d}H\leq M\leq\sqrt{d+1}H\)">\(2^{-d}H\leq M\leq\sqrt{d+1}H\)</span> become, respectively, <span class="math" data-tex="\(1/4\leq1\leq\sqrt3\)">\(1/4\leq1\leq\sqrt3\)</span>, <span class="math" data-tex="\(3/2\leq3\leq3\sqrt2\)">\(3/2\leq3\leq3\sqrt2\)</span>, and <span class="math" data-tex="\(1/2\leq1+\sqrt2\leq2\sqrt3\)">\(1/2\leq1+\sqrt2\leq2\sqrt3\)</span>; each is true.</p>
+<p><strong>2.</strong> At finite places use <span class="math" data-tex="\(|\alpha+\beta|_v\leq\max(|\alpha|_v,|\beta|_v)\)">\(|\alpha+\beta|_v\leq\max(|\alpha|_v,|\beta|_v)\)</span>; at infinite places insert a factor two. The weighted infinite degrees sum to the field degree, so the contribution of that factor is exactly <span class="math" data-tex="\(\log2\)">\(\log2\)</span>. Take <span class="math" data-tex="\(\alpha=\beta=1\)">\(\alpha=\beta=1\)</span>: the separate heights are zero and the height of their sum is <span class="math" data-tex="\(\log2\)">\(\log2\)</span>.</p>
+<p><strong>3.</strong> If <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, there is nothing to prove. Otherwise each <span class="math" data-tex="\(\alpha^n\)">\(\alpha^n\)</span> is integral of degree at most <span class="math" data-tex="\(d\)">\(d\)</span>, with all conjugates in the unit disc. The coefficients of its monic minimal polynomial are bounded by the corresponding binomial coefficients, hence by <span class="math" data-tex="\(2^d\)">\(2^d\)</span>. Only finitely many integer coefficient tuples occur, each supplying finitely many roots. Two positive powers of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> coincide. Division by the lower power proves that a positive power is one.</p>
+<p><strong>4.</strong> Root factorization and the circle-mean identity give <span class="math" data-tex="\(\log M(P)=\frac1{2\pi}\int\log|P(e^{it})|\,dt\)">\(\log M(P)=\frac1{2\pi}\int\log|P(e^{it})|\,dt\)</span>. Jensen's inequality for the concave logarithm, applied to <span class="math" data-tex="\(|P(e^{it})|^2+\varepsilon\)">\(|P(e^{it})|^2+\varepsilon\)</span>, bounds this mean by half the logarithm of its mean square plus <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The logarithmic singularities at the finitely many circle roots are integrable, as shown in Proposition 2.2; taking <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> is valid. Orthogonality of the exponentials makes the mean square <span class="math" data-tex="\(\sum|a_k|^2\)">\(\sum|a_k|^2\)</span>. Exponentiate. This is the concavity step after the circle formula; no assumption of a zero-free unit circle is needed.</p>
+<p><strong>5.</strong> The positive numbers <span class="math" data-tex="\(2^{1/n}\)">\(2^{1/n}\)</span> are strictly decreasing and distinct, and their heights are <span class="math" data-tex="\(\log2/n\)">\(\log2/n\)</span>. Their degrees are <span class="math" data-tex="\(n\)">\(n\)</span>, by the irreducibility proof in Section 6. They meet a fixed height bound but not a fixed degree bound. Northcott requires both.</p>
+<p><strong>6.</strong> In <span class="math" data-tex="\(K=\mathbb Q(\alpha)\)">\(K=\mathbb Q(\alpha)\)</span>, apply Theorem 2.8 to the nonzero value of <span class="math" data-tex="\(f(X)=X-1\)">\(f(X)=X-1\)</span>. Its length is two and degree one, so <span class="math" data-tex="\(d_v\log|\alpha-1|_v\geq-d(\log2+h(\alpha))\)">\(d_v\log|\alpha-1|_v\geq-d(\log2+h(\alpha))\)</span>. At the place corresponding to <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, divide by <span class="math" data-tex="\(d_v\)">\(d_v\)</span>, which is one or two. Since the right side is nonpositive, replacing <span class="math" data-tex="\(1/d_v\)">\(1/d_v\)</span> by one weakens the bound and gives the claimed inequality. If <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span>, the left side is <span class="math" data-tex="\(\log0\)">\(\log0\)</span>, and no finite lower bound exists.</p>
+<h2 id="prerequisite-theorems">Prerequisite theorems</h2>
+<p>The opening lesson <em>Algebraic integers and rings of integers</em> in <em>Number fields</em> supplies the ring of algebraic integers, monic minimal polynomials, and the norm formula, as specified in Section 1. <em>Extensions of complete valued fields</em> and <em>Places of number fields in extensions and the product formula</em> in <em>Local fields</em> supply the local extension, local-degree and product-formula statements of Section 3. <em>The prime number theorem</em> in <em>The Riemann zeta function</em> supplies <span class="math" data-tex="\(p_j\sim j\log j\)">\(p_j\sim j\log j\)</span> in Section 7. The required statements are specified at their points of use. The height inequalities, finiteness and zero-height theorems, placewise lower bounds and Dobrowolski's determinant argument are proved in this lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p><strong>Waldschmidt.</strong> Michel Waldschmidt, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/LIL.pdf"><em>Linear Independence of Logarithms of Algebraic Numbers</em></a>, IMSc Report 116, The Institute of Mathematical Sciences, Madras, 1992, Chapter 3: absolute values and the absolute logarithmic height, Mahler measure (formula (3.8) and Lemma 3.9), the usual height, house and denominator with their comparisons (Lemma 3.11), Liouville's inequality in height and length form ((3.13) and Lemma 3.14), and a survey of Lehmer's problem.</p>
+</li>
+<li>
+<p><strong>Cantor–Straus.</strong> D. C. Cantor and E. G. Straus, <a href="https://matwbn.icm.edu.pl/ksiazki/aa/aa42/aa4219.pdf">“On a conjecture of D. H. Lehmer”</a>, <em>Acta Arithmetica</em> 42 (1982), 97–100: the confluent Vandermonde determinant, Hadamard's inequality and the constant <span class="math" data-tex="\(2\)">\(2\)</span> in Dobrowolski's bound.</p>
+</li>
+<li>
+<p><strong>Evertse.</strong> J.-H. Evertse, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-3.pdf"><em>Diophantine Approximation</em>, Chapter 3: Algebraic numbers and algebraic number fields</a>, Leiden course notes: the height of an algebraic number as the largest coefficient of its primitive minimal polynomial, the house, and Siegel's lemma with coefficients measured by the house (Theorem 3.20).</p>
+</li>
+<li>
+<p><strong>Waldschmidt, IMPA notes.</strong> M. Waldschmidt, <em>Diophantine approximation, irrationality and transcendence</em>, IMPA course notes, Course 3 (2010), §4.1, Lemma 24 and Proposition 26: Liouville's inequality for polynomial values in coefficient notation. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/IMPA2010Cours3.pdf">Course 3</a>.</p>
+</li>
+<li>
+<p><strong>Historical credit.</strong> E. Dobrowolski, <a href="https://matwbn.icm.edu.pl/ksiazki/aa/aa34/aa34411.pdf">“On a question of Lehmer and the number of irreducible factors of a polynomial”</a>, <em>Acta Arithmetica</em> 34 (1979), 391–401. The determinant route and the improved asymptotic coefficient are those of Cantor and Straus, listed above.</p>
+</li>
+<li>
+<p><strong>Milne.</strong> J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, version 3.08, July 19, 2020: Chapter 2 for algebraic integers and norms; Theorem 7.38 for finite separable extensions of complete discretely valued fields; Proposition 8.2 for decomposition into completions; Proposition 8.7 and Theorem 8.8 for the norm and product formulas. These are parallel treatments of the number-field prerequisites.</p>
+</li>
+<li>
+<p><strong>Sutherland.</strong> Andrew V. Sutherland, <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes16.pdf"><em>Number Theory I</em>, Lecture 16</a>, MIT, Fall 2021: Theorem 16.15 and its proof for the prime number theorem used in Section 7.</p>
+</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="TR-TRANS-01.html">← Algebraic and transcendental numbers; Liouville&#x27;s theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-TRANS-03.html">Hermite and the transcendence of e →</a></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-02.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

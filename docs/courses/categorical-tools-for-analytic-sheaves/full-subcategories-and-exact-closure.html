@@ -1,0 +1,369 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Full subcategories and exact closure</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="full-subcategories-and-exact-closure">Full subcategories and exact closure</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, October 2026. Self-checked by GPT-6.1 Sol, the AI that wrote it; no independent review. Public domain (CC0).</em></p>
+<p>A full subcategory keeps every map between its objects. It need not keep the objects that express the kernel or cokernel of those maps. That distinction controls whether an exact sequence computed in the subcategory remains exact in the ambient category. Extension closure asks a further question: does a middle object belong when its two ends do?</p>
+<p>We first identify the ambient operations that a subcategory must retain. A five-term sequence then packages three closure conditions into one test. We prove a useful criterion based on covering quotients from within the subcategory, and construct ordinary exact sequences from generating or cogenerating objects. The exercises show that several plausible closure conditions are genuinely different.</p>
+<p>We assume additive and abelian categories, kernels, cokernels and short exact sequences. Use <a href="formal-linear-combinations-and-finite-sums.html">Formal linear combinations and finite sums</a>, Section 1, for biproduct identities and the additivity of a fully faithful functor. The ordinary abelian framework is described in <a href="trace-coreflections-and-balanced-nonabelian-categories.html">Trace coreflections and balanced nonabelian categories</a>. Basic open references are [Stacks, Abelian categories], [Stacks, Subcategories] and [Mathlib, Abelian subcategories], listed below. All categories are locally small in a fixed universe; their object collections may be larger. No small colimit hypothesis is imposed.</p>
+<h2 id="1-which-objects-belong-to-the-subcategory">1. Which objects belong to the subcategory?</h2>
+<p>Fix an abelian category <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and a full subcategory <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Write <span class="math" data-tex="\(\mathcal J^{\simeq}\)">\(\mathcal J^{\simeq}\)</span> for the full subcategory of objects isomorphic to an object of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Thus membership in <span class="math" data-tex="\(\mathcal J^{\simeq}\)">\(\mathcal J^{\simeq}\)</span> does not depend on a chosen representative. Such a subcategory is called <em>replete</em>.</p>
+<p>All the following closure conditions use ambient constructions in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>:</p>
+<ul>
+<li><em>Subobject closure:</em> if <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span> is monic and <span class="math" data-tex="\(Y\in\mathcal J\)">\(Y\in\mathcal J\)</span>, then <span class="math" data-tex="\(X\in\mathcal J^{\simeq}\)">\(X\in\mathcal J^{\simeq}\)</span>.</li>
+<li><em>Quotient closure:</em> if <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span> is epic and <span class="math" data-tex="\(Y\in\mathcal J\)">\(Y\in\mathcal J\)</span>, then <span class="math" data-tex="\(X\in\mathcal J^{\simeq}\)">\(X\in\mathcal J^{\simeq}\)</span>.</li>
+<li><em>Kernel closure:</em> for every <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> between objects of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, the ambient <span class="math" data-tex="\(\ker f\)">\(\ker f\)</span> lies in <span class="math" data-tex="\(\mathcal J^{\simeq}\)">\(\mathcal J^{\simeq}\)</span>.</li>
+<li><em>Cokernel closure:</em> for every such <span class="math" data-tex="\(f\)">\(f\)</span>, the ambient <span class="math" data-tex="\(\operatorname{coker}f\)">\(\operatorname{coker}f\)</span> lies in <span class="math" data-tex="\(\mathcal J^{\simeq}\)">\(\mathcal J^{\simeq}\)</span>.</li>
+<li><em>Extension closure:</em> in a short exact sequence <span class="math" data-tex="\(0\to X\to E\to Y\to0\)">\(0\to X\to E\to Y\to0\)</span> with <span class="math" data-tex="\(X,Y\in\mathcal J\)">\(X,Y\in\mathcal J\)</span>, the middle object <span class="math" data-tex="\(E\)">\(E\)</span> lies in <span class="math" data-tex="\(\mathcal J^{\simeq}\)">\(\mathcal J^{\simeq}\)</span>.</li>
+</ul>
+<p>Replacing the ends of a morphism or short exact sequence by isomorphic objects transports its kernel, cokernel and exactness. Hence these conditions hold for <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> exactly when they hold for <span class="math" data-tex="\(\mathcal J^{\simeq}\)">\(\mathcal J^{\simeq}\)</span>. We may pass to the latter when proving them.</p>
+<p>In this lesson, <em>thick</em> means closed under ambient kernels, cokernels and extensions. This definition makes sense for any full subcategory. The structural theorems below impose their stated additive or nonempty hypotheses. A nonempty replete full subcategory closed under subobjects, quotients and extensions is a <em>Serre subcategory</em>. The five-term criterion in Section 3 identifies nonempty thickness with the <em>weak Serre</em> convention of [Stacks, Subcategories].</p>
+<p>The difference concerns which maps may have their ends outside the subcategory. A kernel of a map between two objects of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is a special ambient subobject. Subobject closure tests all ambient subobjects, including those whose quotient is outside <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Exercise 3 exhibits the distinction.</p>
+<p><strong>Proposition 1.1.</strong> A full subcategory <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is additive if and only if an ambient zero object and every ambient binary biproduct of its objects are isomorphic to objects of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. In that case the inclusion is additive and preserves finite biproducts.</p>
+<p><strong>Proof.</strong> Suppose first that <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is additive, even if its addition was initially specified without reference to <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Its inclusion is fully faithful between additive categories, so is additive by the criterion in the prerequisite lesson. If <span class="math" data-tex="\(Z\)">\(Z\)</span> is zero in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, then <span class="math" data-tex="\(1_Z=0\)">\(1_Z=0\)</span>. The same equation holds in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and an object whose identity is zero is a zero object: every map into or out of it equals zero.</p>
+<p>For a biproduct <span class="math" data-tex="\(S=X\oplus Y\)">\(S=X\oplus Y\)</span> in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, its inclusions and projections satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_ri_s=\delta_{rs},\\
+i_Xp_X+i_Yp_Y=1_S.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+p_ri_s=\delta_{rs},\\
+i_Xp_X+i_Yp_Y=1_S.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\delta_{rs}\)">\(\delta_{rs}\)</span> denotes the identity when <span class="math" data-tex="\(r=s\)">\(r=s\)</span> and the zero morphism otherwise. The additive inclusion preserves these equations. They give the ambient product and coproduct universal properties: a map with coordinates <span class="math" data-tex="\(a,b\)">\(a,b\)</span> is <span class="math" data-tex="\(i_Xa+i_Yb\)">\(i_Xa+i_Yb\)</span>, and a map with specified restrictions <span class="math" data-tex="\(c,d\)">\(c,d\)</span> is <span class="math" data-tex="\(cp_X+dp_Y\)">\(cp_X+dp_Y\)</span>. Thus <span class="math" data-tex="\(S\)">\(S\)</span> is an ambient biproduct.</p>
+<p>Conversely, restrict the ambient abelian Hom groups and bilinear composition to the full subcategory. Transport the ambient zero and biproduct structure through the specified isomorphisms to objects of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Fullness gives their universal properties inside <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. This makes <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> additive, with additive inclusion. Empty and iterated binary biproducts give all finite ones. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This statement requires suitable representatives, rather than literal inclusion of every chosen model of zero or a biproduct. Working with <span class="math" data-tex="\(\mathcal J^{\simeq}\)">\(\mathcal J^{\simeq}\)</span> makes that qualification automatic.</p>
+<h2 id="2-when-the-inclusion-is-exact">2. When the inclusion is exact</h2>
+<p>A full subcategory is <em>fully abelian</em> if it is abelian and its inclusion into <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is exact. Here exactness of an additive functor means that it sends every short exact sequence to a short exact sequence.</p>
+<p>We use the following precise criterion from [Stacks, Additive functors].</p>
+<p><strong>Lemma 2.1.</strong> An additive functor between abelian categories is exact if and only if it preserves kernels and cokernels of all morphisms.</p>
+<p><strong>Proof.</strong> If it preserves both constructions, it sends a pair consisting of a kernel and its cokernel to such a pair. Thus it preserves every short exact sequence.</p>
+<p>Conversely, let <span class="math" data-tex="\(F\)">\(F\)</span> be exact and factor a morphism <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span> through its image <span class="math" data-tex="\(I\)">\(I\)</span>. The two short exact sequences are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to K\to A\to I\to0,\\
+0\to I\to B\to Q\to0,
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+0\to K\to A\to I\to0,\\
+0\to I\to B\to Q\to0,
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>where <span class="math" data-tex="\(K=\ker f\)">\(K=\ker f\)</span> and <span class="math" data-tex="\(Q=\operatorname{coker}f\)">\(Q=\operatorname{coker}f\)</span>. Their images are short exact. In particular <span class="math" data-tex="\(F(A)\to F(I)\)">\(F(A)\to F(I)\)</span> is epic and <span class="math" data-tex="\(F(I)\to F(B)\)">\(F(I)\to F(B)\)</span> is monic. The composite is <span class="math" data-tex="\(Ff\)">\(Ff\)</span>. Its kernel is the kernel of the first map, namely <span class="math" data-tex="\(FK\)">\(FK\)</span>; its cokernel is the cokernel of the second map, namely <span class="math" data-tex="\(FQ\)">\(FQ\)</span>. The displayed structure maps are the required universal maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> For a full additive subcategory <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, these are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is fully abelian.</li>
+<li><span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is closed under ambient kernels and cokernels.</li>
+</ol>
+<p>The sufficiency direction is also the full-subcategory construction in [Mathlib, Abelian subcategories].</p>
+<p><strong>Proof.</strong> Suppose (2). Choose, inside <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, representatives of the ambient kernels and cokernels of all its maps. Their ambient universal properties restrict to <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> because it is full. Thus they are kernels and cokernels inside <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, and inclusion preserves them.</p>
+<p>For any <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, its coimage and image are obtained from these same kernels and cokernels:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{coim}f
+=\operatorname{coker}(\ker f\to X),\\
+\operatorname{im}f
+=\ker(Y\to\operatorname{coker}f).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\operatorname{coim}f
+=\operatorname{coker}(\ker f\to X),\\
+\operatorname{im}f
+=\ker(Y\to\operatorname{coker}f).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>They lie in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> after choosing representatives. Their canonical comparison is the ambient comparison, which is invertible in the abelian category <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Its inverse lies in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> by fullness. Therefore <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is abelian. Inclusion is additive by Proposition 1.1 and preserves kernels and cokernels, so Lemma 2.1 makes it exact.</p>
+<p>If (1) holds, the exact inclusion preserves the internal kernels and cokernels by Lemma 2.1. These are therefore representatives of the ambient constructions, proving (2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Having internal kernels and cokernels is not enough. They must agree with the ambient ones up to their universal comparisons. Exercise 2 gives a full additive category where both internal constructions exist but the category is not abelian.</p>
+<h2 id="3-a-test-with-five-terms">3. A test with five terms</h2>
+<p>The following criterion is the weak Serre characterization of [Stacks, Subcategories]. We keep its distinction from Serre closure and prove the exact interface needed here.</p>
+<p><strong>Theorem 3.1.</strong> A full additive subcategory <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is thick if and only if every ambient sequence</p>
+<span class="math math-display" data-tex="\[
+X_0\xrightarrow{f_0}X_1
+\xrightarrow{f_1}X_2
+\xrightarrow{f_2}X_3
+\xrightarrow{f_3}X_4
+\tag{3.1}
+\]">\[
+X_0\xrightarrow{f_0}X_1
+\xrightarrow{f_1}X_2
+\xrightarrow{f_2}X_3
+\xrightarrow{f_3}X_4
+\tag{3.1}
+\]</span>
+<p>exact at <span class="math" data-tex="\(X_1,X_2,X_3\)">\(X_1,X_2,X_3\)</span>, with <span class="math" data-tex="\(X_0,X_1,X_3,X_4\)">\(X_0,X_1,X_3,X_4\)</span> in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, has <span class="math" data-tex="\(X_2\in\mathcal J^{\simeq}\)">\(X_2\in\mathcal J^{\simeq}\)</span>.</p>
+<p><strong>Proof.</strong> Pass to the replete closure. Suppose <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is thick. Put</p>
+<span class="math math-display" data-tex="\[
+K=\operatorname{coker}f_0,
+\qquad L=\ker f_3.
+\tag{3.2}
+\]">\[
+K=\operatorname{coker}f_0,
+\qquad L=\ker f_3.
+\tag{3.2}
+\]</span>
+<p>Both objects belong to <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Exactness at <span class="math" data-tex="\(X_1\)">\(X_1\)</span> identifies the quotient <span class="math" data-tex="\(K\)">\(K\)</span> with <span class="math" data-tex="\(\operatorname{coim}f_1\)">\(\operatorname{coim}f_1\)</span>, hence with <span class="math" data-tex="\(\operatorname{im}f_1\)">\(\operatorname{im}f_1\)</span>. Its induced map into <span class="math" data-tex="\(X_2\)">\(X_2\)</span> is monic. Exactness at <span class="math" data-tex="\(X_3\)">\(X_3\)</span> identifies <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(\operatorname{im}f_2\)">\(\operatorname{im}f_2\)</span>, so the induced map <span class="math" data-tex="\(X_2\to L\)">\(X_2\to L\)</span> is epic. Exactness at <span class="math" data-tex="\(X_2\)">\(X_2\)</span> identifies the first image with the kernel of the second map. We obtain</p>
+<span class="math math-display" data-tex="\[
+0\to K\to X_2\to L\to0.
+\tag{3.3}
+\]">\[
+0\to K\to X_2\to L\to0.
+\tag{3.3}
+\]</span>
+<p>Extension closure gives <span class="math" data-tex="\(X_2\in\mathcal J\)">\(X_2\in\mathcal J\)</span>.</p>
+<p>Conversely, assume the five-term test. For a map <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span> in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, apply it to</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to0\to\ker f\to A\xrightarrow{f}B,\\
+A\xrightarrow{f}B\to\operatorname{coker}f\to0\to0.
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+0\to0\to\ker f\to A\xrightarrow{f}B,\\
+A\xrightarrow{f}B\to\operatorname{coker}f\to0\to0.
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>These sequences are exact at their three interior positions. The additive subcategory contains a zero object, so the test gives both kernel and cokernel closure. Applied to <span class="math" data-tex="\(0\to A\to E\to B\to0\)">\(0\to A\to E\to B\to0\)</span> with <span class="math" data-tex="\(A,B\in\mathcal J\)">\(A,B\in\mathcal J\)</span>, it gives extension closure. Thus <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is thick. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> A nonempty thick full subcategory is additive and fully abelian. After passing to its replete closure, it is a weak Serre subcategory. Every Serre subcategory satisfies these conclusions.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(X\)">\(X\)</span> in the subcategory. The kernel of <span class="math" data-tex="\(1_X\)">\(1_X\)</span> is zero, so zero belongs up to isomorphism. For two of its objects <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, the split exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to A\to A\oplus B\to B\to0
+\tag{3.5}
+\]">\[
+0\to A\to A\oplus B\to B\to0
+\tag{3.5}
+\]</span>
+<p>puts their biproduct in the subcategory up to isomorphism. Proposition 1.1 proves additivity, Theorem 2.2 proves full abelianness, and Theorem 3.1 gives the canonical weak Serre test.</p>
+<p>For a Serre subcategory, an ambient kernel is a subobject of the source and an ambient cokernel is a quotient of the target. Its defining closures therefore imply thickness, and it is nonempty by definition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The nonempty hypothesis matters in this corollary: the empty full subcategory satisfies the three closure conditions vacuously. Exercise 3 shows that a nonempty thick subcategory need not be Serre.</p>
+<h2 id="4-covering-quotients-from-within">4. Covering quotients from within</h2>
+<p>To prove extension closure, one can sometimes construct a presentation whose two defining objects already lie in the subcategory.</p>
+<p><strong>Theorem 4.1.</strong> Let <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> be a fully abelian subcategory of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Suppose that whenever <span class="math" data-tex="\(q:E\to B\)">\(q:E\to B\)</span> is an ambient epimorphism with <span class="math" data-tex="\(B\in\mathcal J\)">\(B\in\mathcal J\)</span>, there are <span class="math" data-tex="\(T\in\mathcal J\)">\(T\in\mathcal J\)</span> and <span class="math" data-tex="\(f:T\to E\)">\(f:T\to E\)</span> such that <span class="math" data-tex="\(qf\)">\(qf\)</span> is epic. Then <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is thick.</p>
+<p>The map <span class="math" data-tex="\(f\)">\(f\)</span> need not be epic, and the object <span class="math" data-tex="\(T\)">\(T\)</span> may depend on <span class="math" data-tex="\(q\)">\(q\)</span>. The premise asks for an epimorphic composite onto <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> We may replace <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> by its replete closure; the premise transports through isomorphisms. Fully abelian closure already gives ambient kernels and cokernels by Theorem 2.2. It remains to prove extension closure.</p>
+<p>Take a short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to A\xrightarrow{j}E\xrightarrow{q}B\to0
+\tag{4.1}
+\]">\[
+0\to A\xrightarrow{j}E\xrightarrow{q}B\to0
+\tag{4.1}
+\]</span>
+<p>with <span class="math" data-tex="\(A,B\in\mathcal J\)">\(A,B\in\mathcal J\)</span>. Choose <span class="math" data-tex="\(T,f\)">\(T,f\)</span> as in the premise and put <span class="math" data-tex="\(v=qf\)">\(v=qf\)</span>. Its ambient kernel <span class="math" data-tex="\(k:K\to T\)">\(k:K\to T\)</span> belongs to <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Since <span class="math" data-tex="\(qfk=0\)">\(qfk=0\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> is the kernel of <span class="math" data-tex="\(q\)">\(q\)</span>, there is a unique <span class="math" data-tex="\(b:K\to A\)">\(b:K\to A\)</span> with</p>
+<span class="math math-display" data-tex="\[
+jb=fk.
+\tag{4.2}
+\]">\[
+jb=fk.
+\tag{4.2}
+\]</span>
+<p>Form the two morphisms</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d=\langle k,-b\rangle:K\to T\oplus A,\\
+h=(f,j):T\oplus A\to E.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+d=\langle k,-b\rangle:K\to T\oplus A,\\
+h=(f,j):T\oplus A\to E.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>Their composite is <span class="math" data-tex="\(fk-jb=0\)">\(fk-jb=0\)</span>. We claim that <span class="math" data-tex="\(d\)">\(d\)</span> is the kernel of <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>Let <span class="math" data-tex="\(z:Z\to T\oplus A\)">\(z:Z\to T\oplus A\)</span> have components <span class="math" data-tex="\(t:Z\to T\)">\(t:Z\to T\)</span> and <span class="math" data-tex="\(a:Z\to A\)">\(a:Z\to A\)</span>, and suppose <span class="math" data-tex="\(hz=0\)">\(hz=0\)</span>. Applying <span class="math" data-tex="\(q\)">\(q\)</span> gives <span class="math" data-tex="\(vt=0\)">\(vt=0\)</span>. Thus <span class="math" data-tex="\(t=k\ell\)">\(t=k\ell\)</span> for a unique <span class="math" data-tex="\(\ell:Z\to K\)">\(\ell:Z\to K\)</span>. Substitution and (4.2) give</p>
+<span class="math math-display" data-tex="\[
+0=ft+ja=j(b\ell+a).
+\tag{4.4}
+\]">\[
+0=ft+ja=j(b\ell+a).
+\tag{4.4}
+\]</span>
+<p>Since <span class="math" data-tex="\(j\)">\(j\)</span> is monic, <span class="math" data-tex="\(a=-b\ell\)">\(a=-b\ell\)</span>. Hence <span class="math" data-tex="\(z=d\ell\)">\(z=d\ell\)</span>, uniquely. This is the kernel universal property in the arbitrary abelian category.</p>
+<p>Next <span class="math" data-tex="\(h\)">\(h\)</span> is epic. If <span class="math" data-tex="\(r:E\to W\)">\(r:E\to W\)</span> satisfies <span class="math" data-tex="\(rh=0\)">\(rh=0\)</span>, then <span class="math" data-tex="\(rj=0\)">\(rj=0\)</span>. Because <span class="math" data-tex="\(q\)">\(q\)</span> is the cokernel of <span class="math" data-tex="\(j\)">\(j\)</span>, write <span class="math" data-tex="\(r=sq\)">\(r=sq\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+0=rf=sqf=sv.
+\tag{4.5}
+\]">\[
+0=rf=sqf=sv.
+\tag{4.5}
+\]</span>
+<p>The epimorphism <span class="math" data-tex="\(v\)">\(v\)</span> forces <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, so <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Applying this zero-annihilator argument to the difference of any two maps proves right cancellation for <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>An epimorphism in an abelian category is the cokernel of its kernel. Therefore (4.3) presents <span class="math" data-tex="\(E\)">\(E\)</span> as the ambient cokernel of a morphism <span class="math" data-tex="\(K\to T\oplus A\)">\(K\to T\oplus A\)</span> between objects of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Cokernel closure puts <span class="math" data-tex="\(E\)">\(E\)</span> in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. This proves extension closure and the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The premise is sufficient. Exercise 3 gives a thick fully abelian subcategory for which it fails.</p>
+<h2 id="5-generating-and-cogenerating-objects">5. Generating and cogenerating objects</h2>
+<p>A full subcategory <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is <em>generating</em> in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> if every <span class="math" data-tex="\(X\in\mathcal A\)">\(X\in\mathcal A\)</span> receives an epimorphism <span class="math" data-tex="\(J\to X\)">\(J\to X\)</span> from an object <span class="math" data-tex="\(J\in\mathcal J\)">\(J\in\mathcal J\)</span>. It is <em>cogenerating</em> if every <span class="math" data-tex="\(X\)">\(X\)</span> admits a monomorphism <span class="math" data-tex="\(X\to J\)">\(X\to J\)</span> into an object of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>.</p>
+<p>These two definitions exchange under opposite categories: a monomorphism in <span class="math" data-tex="\(\mathcal A^{\rm op}\)">\(\mathcal A^{\rm op}\)</span> is an epimorphism in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. They use a possibly different object of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> for each <span class="math" data-tex="\(X\)">\(X\)</span>. No common generating object or supply of coproducts is assumed.</p>
+<p><strong>Proposition 5.1.</strong> If <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is cogenerating, every <span class="math" data-tex="\(X\)">\(X\)</span> has an ambient exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to X\to J^0\to J^1\to J^2\to\cdots
+\tag{5.1}
+\]">\[
+0\to X\to J^0\to J^1\to J^2\to\cdots
+\tag{5.1}
+\]</span>
+<p>with all <span class="math" data-tex="\(J^n\in\mathcal J\)">\(J^n\in\mathcal J\)</span>. If <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> is generating, every <span class="math" data-tex="\(X\)">\(X\)</span> has an exact sequence</p>
+<span class="math math-display" data-tex="\[
+\cdots\to J^{-1}\to J^0\to X\to0
+\tag{5.2}
+\]">\[
+\cdots\to J^{-1}\to J^0\to X\to0
+\tag{5.2}
+\]</span>
+<p>with all <span class="math" data-tex="\(J^{-n}\in\mathcal J\)">\(J^{-n}\in\mathcal J\)</span>.</p>
+<p><strong>Proof.</strong> In the cogenerating case, put <span class="math" data-tex="\(C_0=X\)">\(C_0=X\)</span>. Choose a monomorphism <span class="math" data-tex="\(a_n:C_n\to J^n\)">\(a_n:C_n\to J^n\)</span> and let <span class="math" data-tex="\(c_n:J^n\to C_{n+1}\)">\(c_n:J^n\to C_{n+1}\)</span> be its cokernel. Induction supplies all these choices. Each pair is short exact:</p>
+<span class="math math-display" data-tex="\[
+0\to C_n\xrightarrow{a_n}J^n
+\xrightarrow{c_n}C_{n+1}\to0.
+\tag{5.3}
+\]">\[
+0\to C_n\xrightarrow{a_n}J^n
+\xrightarrow{c_n}C_{n+1}\to0.
+\tag{5.3}
+\]</span>
+<p>Define <span class="math" data-tex="\(d_n=a_{n+1}c_n\)">\(d_n=a_{n+1}c_n\)</span>. Then <span class="math" data-tex="\(d_{n+1}d_n=0\)">\(d_{n+1}d_n=0\)</span>, since <span class="math" data-tex="\(c_{n+1}a_{n+1}=0\)">\(c_{n+1}a_{n+1}=0\)</span>. Because <span class="math" data-tex="\(a_{n+1}\)">\(a_{n+1}\)</span> is monic, <span class="math" data-tex="\(\ker d_n=\ker c_n=\operatorname{im}a_n\)">\(\ker d_n=\ker c_n=\operatorname{im}a_n\)</span>. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, the epimorphism <span class="math" data-tex="\(c_{n-1}\)">\(c_{n-1}\)</span> gives <span class="math" data-tex="\(\operatorname{im}d_{n-1}=\operatorname{im}a_n\)">\(\operatorname{im}d_{n-1}=\operatorname{im}a_n\)</span>. At <span class="math" data-tex="\(J^0\)">\(J^0\)</span>, the incoming map is <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. These equalities prove exactness of (5.1), including its first terms.</p>
+<p>For completeness, the generating construction starts with <span class="math" data-tex="\(K_0=X\)">\(K_0=X\)</span>. Choose an epimorphism <span class="math" data-tex="\(p_n:J^{-n}\to K_n\)">\(p_n:J^{-n}\to K_n\)</span>, with kernel <span class="math" data-tex="\(b_n:K_{n+1}\to J^{-n}\)">\(b_n:K_{n+1}\to J^{-n}\)</span>. The map from <span class="math" data-tex="\(J^{-(n+1)}\)">\(J^{-(n+1)}\)</span> to <span class="math" data-tex="\(J^{-n}\)">\(J^{-n}\)</span> is <span class="math" data-tex="\(b_np_{n+1}\)">\(b_np_{n+1}\)</span>. Consecutive composites vanish because <span class="math" data-tex="\(p_nb_n=0\)">\(p_nb_n=0\)</span>. Its image is <span class="math" data-tex="\(\operatorname{im}b_n=\ker p_n\)">\(\operatorname{im}b_n=\ker p_n\)</span>; at <span class="math" data-tex="\(J^{-n}\)">\(J^{-n}\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, the outgoing map is <span class="math" data-tex="\(b_{n-1}p_n\)">\(b_{n-1}p_n\)</span>, whose kernel is <span class="math" data-tex="\(\ker p_n\)">\(\ker p_n\)</span> since <span class="math" data-tex="\(b_{n-1}\)">\(b_{n-1}\)</span> is monic. The last map <span class="math" data-tex="\(p_0\)">\(p_0\)</span> is epic. Thus (5.2) is exact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This construction uses successive objectwise choices. It asserts no functorial choice and no injectivity, projectivity or acyclicity of the terms. Its content is an ordinary exact sequence under the stated generating or cogenerating hypothesis.</p>
+<h2 id="6-four-exercises-with-complete-solutions">6. Four exercises with complete solutions</h2>
+<p><strong>Exercise 1 (warm-up: a set of allowed primes).</strong> Fix a set <span class="math" data-tex="\(P\)">\(P\)</span> of prime numbers. Let <span class="math" data-tex="\(\mathcal T_P\)">\(\mathcal T_P\)</span> consist of abelian groups in which every element has finite order whose prime divisors belong to <span class="math" data-tex="\(P\)">\(P\)</span>. Prove that it is a Serre subcategory of <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span>. Is it generating or cogenerating? Include the case <span class="math" data-tex="\(P=\varnothing\)">\(P=\varnothing\)</span>.</p>
+<p><strong>Solution.</strong> Zero belongs, and the condition is preserved by isomorphisms. An element of a subgroup has its same order in the larger group. An element of a quotient has order dividing the order of any chosen representative. Thus subobjects and quotients remain in <span class="math" data-tex="\(\mathcal T_P\)">\(\mathcal T_P\)</span>.</p>
+<p>Consider <span class="math" data-tex="\(0\to A\to E\to B\to0\)">\(0\to A\to E\to B\to0\)</span> with <span class="math" data-tex="\(A,B\in\mathcal T_P\)">\(A,B\in\mathcal T_P\)</span>. For <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, its image in <span class="math" data-tex="\(B\)">\(B\)</span> is killed by a positive integer <span class="math" data-tex="\(m\)">\(m\)</span> whose prime divisors lie in <span class="math" data-tex="\(P\)">\(P\)</span>. Then <span class="math" data-tex="\(mx\)">\(mx\)</span> belongs to <span class="math" data-tex="\(A\)">\(A\)</span>, where it is killed by another such integer <span class="math" data-tex="\(n\)">\(n\)</span>. Consequently <span class="math" data-tex="\(mnx=0\)">\(mnx=0\)</span>. The order of <span class="math" data-tex="\(x\)">\(x\)</span> divides <span class="math" data-tex="\(mn\)">\(mn\)</span>, so has only primes in <span class="math" data-tex="\(P\)">\(P\)</span>. This proves extension closure, without a uniform exponent bound on the groups. Hence <span class="math" data-tex="\(\mathcal T_P\)">\(\mathcal T_P\)</span> is Serre.</p>
+<p>A quotient of a torsion group is torsion, so no object of <span class="math" data-tex="\(\mathcal T_P\)">\(\mathcal T_P\)</span> can surject onto <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Also any map <span class="math" data-tex="\(\mathbb Z\to T\)">\(\mathbb Z\to T\)</span> into a torsion group sends <span class="math" data-tex="\(1\)">\(1\)</span> to an element of finite order <span class="math" data-tex="\(m\)">\(m\)</span>, and kills <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span>. Such a map cannot be monic. Thus the subcategory is neither generating nor cogenerating in <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span>.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> is empty, a permitted element order has no prime divisor and must be <span class="math" data-tex="\(1\)">\(1\)</span>. Every element is zero, so <span class="math" data-tex="\(\mathcal T_P\)">\(\mathcal T_P\)</span> consists exactly of zero groups and their isomorphic copies. The same conclusions hold.</p>
+<p><strong>Exercise 2 (intermediate: internal cokernels change).</strong> Let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be the full subcategory of torsion-free abelian groups. Prove that it is additive, closed under ambient kernels and extensions, and has internal cokernels of every morphism. Compute these cokernels. Show that <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> is not abelian, and that extension closure together with kernel closure does not imply thickness.</p>
+<p><strong>Solution.</strong> The zero group and finite direct sums are torsion-free. Proposition 1.1 gives additivity. A subgroup of a torsion-free group is torsion-free, so ambient kernels belong to <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>.</p>
+<p>For an extension <span class="math" data-tex="\(0\to A\to E\to B\to0\)">\(0\to A\to E\to B\to0\)</span> with torsion-free ends, let <span class="math" data-tex="\(nx=0\)">\(nx=0\)</span> for <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span> and <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>. Its image in <span class="math" data-tex="\(B\)">\(B\)</span> is zero, so <span class="math" data-tex="\(x\)">\(x\)</span> comes from <span class="math" data-tex="\(A\)">\(A\)</span>. Injectivity identifies the equation with <span class="math" data-tex="\(na=0\)">\(na=0\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>, giving <span class="math" data-tex="\(a=0\)">\(a=0\)</span> and <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Thus <span class="math" data-tex="\(E\)">\(E\)</span> is torsion-free.</p>
+<p>For <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span>, put <span class="math" data-tex="\(C=B/\operatorname{im}f\)">\(C=B/\operatorname{im}f\)</span> and let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Tor}(C)\\
+=\{c\in C:\exists n&gt;0,\ nc=0\}.
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+\operatorname{Tor}(C)\\
+=\{c\in C:\exists n&gt;0,\ nc=0\}.
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>This is a subgroup: if positive integers <span class="math" data-tex="\(m,n\)">\(m,n\)</span> kill <span class="math" data-tex="\(c,d\)">\(c,d\)</span>, then <span class="math" data-tex="\(mn\)">\(mn\)</span> kills <span class="math" data-tex="\(c+d\)">\(c+d\)</span>, and <span class="math" data-tex="\(-c\)">\(-c\)</span> has the same annihilating integers as <span class="math" data-tex="\(c\)">\(c\)</span>. The quotient <span class="math" data-tex="\(C/\operatorname{Tor}(C)\)">\(C/\operatorname{Tor}(C)\)</span> is torsion-free. Indeed, if <span class="math" data-tex="\(n\bar c=0\)">\(n\bar c=0\)</span>, then <span class="math" data-tex="\(nc\)">\(nc\)</span> is torsion and some <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> kills it. Hence <span class="math" data-tex="\(mn c=0\)">\(mn c=0\)</span>, so <span class="math" data-tex="\(c\)">\(c\)</span> is torsion and <span class="math" data-tex="\(\bar c=0\)">\(\bar c=0\)</span>.</p>
+<p>Every map <span class="math" data-tex="\(C\to H\)">\(C\to H\)</span> into a torsion-free group kills <span class="math" data-tex="\(\operatorname{Tor}(C)\)">\(\operatorname{Tor}(C)\)</span>. Therefore the composite</p>
+<span class="math math-display" data-tex="\[
+B\to C\to C/\operatorname{Tor}(C)
+\tag{6.2}
+\]">\[
+B\to C\to C/\operatorname{Tor}(C)
+\tag{6.2}
+\]</span>
+<p>has exactly the universal property of a cokernel of <span class="math" data-tex="\(f\)">\(f\)</span> among torsion-free groups. Thus it is the internal cokernel.</p>
+<p>For multiplication by <span class="math" data-tex="\(2\)">\(2\)</span> on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, the ambient cokernel is <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>, while the internal cokernel is zero. The map is monic in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> because it is injective. It is epic there as well: if two maps <span class="math" data-tex="\(r,s:\mathbb Z\to H\)">\(r,s:\mathbb Z\to H\)</span> agree after multiplication by <span class="math" data-tex="\(2\)">\(2\)</span>, then <span class="math" data-tex="\(2(r(1)-s(1))=0\)">\(2(r(1)-s(1))=0\)</span>, so <span class="math" data-tex="\(r=s\)">\(r=s\)</span> in the torsion-free target. It is not invertible, since no integer maps to <span class="math" data-tex="\(1\)">\(1\)</span> under multiplication by <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p>In an abelian category a map which is both mono and epi is invertible: its zero kernel and cokernel make its coimage and image its source and target, and the canonical comparison is the map itself. Hence <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> is not abelian. It has internal kernels and cokernels, but the latter differ from ambient cokernels. In particular it is not fully abelian and not thick, despite its kernel and extension closure.</p>
+<p><strong>Exercise 3 (advanced: a sufficient premise need not be necessary).</strong> Let <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> be the full subcategory of <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span> consisting of underlying groups of rational vector spaces. Prove that it is fully abelian and thick but not Serre. Show that the epi-lifting premise of Theorem 4.1 fails, using the epimorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q:\bigoplus_{r\in\mathbb Q}\mathbb Z\to\mathbb Q,\\
+q(e_r)=r.
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+q:\bigoplus_{r\in\mathbb Q}\mathbb Z\to\mathbb Q,\\
+q(e_r)=r.
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p><strong>Solution.</strong> An abelian group is the underlying group of a rational vector space exactly when multiplication by every positive integer is bijective. In one direction this follows by multiplying by its reciprocal. Conversely, unique division defines</p>
+<span class="math math-display" data-tex="\[
+\frac{a}{b}x=a\,y,
+\qquad by=x,\quad b&gt;0.
+\tag{6.4}
+\]">\[
+\frac{a}{b}x=a\,y,
+\qquad by=x,\quad b&gt;0.
+\tag{6.4}
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(bb&#x27;\)">\(bb&#x27;\)</span> verifies independence of equivalent fractions; multiplication by common denominators verifies the vector-space addition and scalar laws. Bijectivity lets us cancel those denominators, so this gives a unique rational structure. Any group homomorphism between such groups respects unique division and hence is rational linear.</p>
+<p>Thus <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> is full in <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span>, contains zero and finite sums, and is additive. Kernels of rational-linear maps are rational subspaces, and their group cokernels are their ordinary rational-vector-space quotients. Theorem 2.2 gives full abelianness.</p>
+<p>For extension closure, take <span class="math" data-tex="\(0\to A\xrightarrow{j}E\xrightarrow{p}B\to0\)">\(0\to A\xrightarrow{j}E\xrightarrow{p}B\to0\)</span> with rational-vector-space ends, and fix <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>. If <span class="math" data-tex="\(nx=0\)">\(nx=0\)</span>, then <span class="math" data-tex="\(np(x)=0\)">\(np(x)=0\)</span>, so <span class="math" data-tex="\(p(x)=0\)">\(p(x)=0\)</span>. Write <span class="math" data-tex="\(x=j(a)\)">\(x=j(a)\)</span>; injectivity gives <span class="math" data-tex="\(na=0\)">\(na=0\)</span>, hence <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. To prove surjectivity of multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>, take <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>. Choose <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> with <span class="math" data-tex="\(nb=p(x)\)">\(nb=p(x)\)</span>, then <span class="math" data-tex="\(y\in E\)">\(y\in E\)</span> with <span class="math" data-tex="\(p(y)=b\)">\(p(y)=b\)</span>. The difference <span class="math" data-tex="\(x-ny\)">\(x-ny\)</span> is <span class="math" data-tex="\(j(a)\)">\(j(a)\)</span>. Choose <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> with <span class="math" data-tex="\(na&#x27;=a\)">\(na&#x27;=a\)</span>; then</p>
+<span class="math math-display" data-tex="\[
+n\bigl(y+j(a&#x27;)\bigr)=x.
+\tag{6.5}
+\]">\[
+n\bigl(y+j(a&#x27;)\bigr)=x.
+\tag{6.5}
+\]</span>
+<p>Every positive integer acts bijectively on <span class="math" data-tex="\(E\)">\(E\)</span>, so (6.4) makes it a rational vector space. This proves extension closure and thickness. But <span class="math" data-tex="\(\mathbb Z\subset\mathbb Q\)">\(\mathbb Z\subset\mathbb Q\)</span> is an ambient subobject whose underlying group is not uniquely divisible. Therefore <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> is not Serre.</p>
+<p>The map (6.3) is onto, since any rational number is the image of its indexed basis element. Any map from a rational vector space <span class="math" data-tex="\(T\)">\(T\)</span> to a free abelian group is zero. For <span class="math" data-tex="\(t\in T\)">\(t\in T\)</span>, its image is divisible by every positive integer in that free group. A finite-support integer vector with this property is zero: each coordinate integer is divisible by every positive integer, forcing it to vanish. Thus every <span class="math" data-tex="\(T\to\bigoplus_{r\in\mathbb Q}\mathbb Z\)">\(T\to\bigoplus_{r\in\mathbb Q}\mathbb Z\)</span> is zero. Its composite with <span class="math" data-tex="\(q\)">\(q\)</span> cannot be epic onto the nonzero group <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. This disproves the epi-lifting premise for this thick subcategory.</p>
+<p><strong>Exercise 4 (challenge: an idempotent kernel and a trace).</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be a unital ring and <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>. Prove that <span class="math" data-tex="\(M\mapsto eM\)">\(M\mapsto eM\)</span>, regarded as a functor from left <span class="math" data-tex="\(R\)">\(R\)</span>-modules to abelian groups, is exact, and that its zero class is Serre. For the upper-triangular matrix ring over a field <span class="math" data-tex="\(k\)">\(k\)</span>, with <span class="math" data-tex="\(e=\operatorname{diag}(1,0)\)">\(e=\operatorname{diag}(1,0)\)</span>, describe its zero class and compare it with the class of modules satisfying <span class="math" data-tex="\(M=ReM\)">\(M=ReM\)</span>. Give the actual module maps and actions.</p>
+<p><strong>Solution.</strong> The map <span class="math" data-tex="\(m\mapsto em\)">\(m\mapsto em\)</span> is an additive idempotent on the underlying group. Its image <span class="math" data-tex="\(eM\)">\(eM\)</span> is an abelian subgroup, even when it is not an <span class="math" data-tex="\(R\)">\(R\)</span>-submodule. An <span class="math" data-tex="\(R\)">\(R\)</span>-linear map <span class="math" data-tex="\(f\)">\(f\)</span> satisfies <span class="math" data-tex="\(f(em)=ef(m)\)">\(f(em)=ef(m)\)</span>, so restricts to <span class="math" data-tex="\(eM\to eN\)">\(eM\to eN\)</span>. This makes an additive functor to <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span>.</p>
+<p>Apply it to <span class="math" data-tex="\(0\to A\xrightarrow{i}B\xrightarrow{p}C\to0\)">\(0\to A\xrightarrow{i}B\xrightarrow{p}C\to0\)</span>. The restricted <span class="math" data-tex="\(i\)">\(i\)</span> is injective. If <span class="math" data-tex="\(eb\)">\(eb\)</span> is killed by <span class="math" data-tex="\(p\)">\(p\)</span>, write <span class="math" data-tex="\(eb=i(a)\)">\(eb=i(a)\)</span>; applying <span class="math" data-tex="\(e\)">\(e\)</span> gives <span class="math" data-tex="\(eb=i(ea)\)">\(eb=i(ea)\)</span>, so the kernel is the image of <span class="math" data-tex="\(eA\)">\(eA\)</span>. For <span class="math" data-tex="\(ec\in eC\)">\(ec\in eC\)</span>, choose <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(p(b)=c\)">\(p(b)=c\)</span>; then <span class="math" data-tex="\(p(eb)=ec\)">\(p(eb)=ec\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+0\to eA\to eB\to eC\to0
+\tag{6.6}
+\]">\[
+0\to eA\to eB\to eC\to0
+\tag{6.6}
+\]</span>
+<p>is exact. Its zero class contains zero and is replete and full. If <span class="math" data-tex="\(eB=0\)">\(eB=0\)</span>, exactness forces <span class="math" data-tex="\(eA=eC=0\)">\(eA=eC=0\)</span>. If <span class="math" data-tex="\(eA=eC=0\)">\(eA=eC=0\)</span>, it forces <span class="math" data-tex="\(eB=0\)">\(eB=0\)</span>. These observations give subobject, quotient and extension closure, hence the zero class is Serre. This is the exact-functor kernel principle in [Stacks, Subcategories], proved directly for this functor.</p>
+<p>Now write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R=\left\{\begin{pmatrix}a&amp;b\\0&amp;c\end{pmatrix}:a,b,c\in k\right\},\\
+e_1=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},
+\quad e_2=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}.
+\end{gathered}
+\tag{6.7}
+\]">\[
+\begin{gathered}
+R=\left\{\begin{pmatrix}a&amp;b\\0&amp;c\end{pmatrix}:a,b,c\in k\right\},\\
+e_1=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},
+\quad e_2=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}.
+\end{gathered}
+\tag{6.7}
+\]</span>
+<p>A left module is a <span class="math" data-tex="\(k\)">\(k\)</span>-vector space. The two complementary idempotents give <span class="math" data-tex="\(M=V\oplus W\)">\(M=V\oplus W\)</span>, where <span class="math" data-tex="\(V=e_1M\)">\(V=e_1M\)</span> and <span class="math" data-tex="\(W=e_2M\)">\(W=e_2M\)</span>. The off-diagonal matrix <span class="math" data-tex="\(u=E_{12}\)">\(u=E_{12}\)</span> satisfies <span class="math" data-tex="\(e_1u=u=ue_2\)">\(e_1u=u=ue_2\)</span>, so defines a linear map <span class="math" data-tex="\(t:W\to V\)">\(t:W\to V\)</span>. Conversely, any such map gives the action</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{pmatrix}a&amp;b\\0&amp;c\end{pmatrix}(v,w)\\
+=\bigl(av+b\,t(w),cw\bigr).
+\end{gathered}
+\tag{6.8}
+\]">\[
+\begin{gathered}
+\begin{pmatrix}a&amp;b\\0&amp;c\end{pmatrix}(v,w)\\
+=\bigl(av+b\,t(w),cw\bigr).
+\end{gathered}
+\tag{6.8}
+\]</span>
+<p>To check associativity, the product of two matrices has diagonal entries <span class="math" data-tex="\(aa&#x27;,cc&#x27;\)">\(aa&#x27;,cc&#x27;\)</span> and off-diagonal entry <span class="math" data-tex="\(ab&#x27;+bc&#x27;\)">\(ab&#x27;+bc&#x27;\)</span>. Applying (6.8) twice gives</p>
+<span class="math math-display" data-tex="\[
+\bigl(aa&#x27;v+(ab&#x27;+bc&#x27;)t(w),cc&#x27;w\bigr),
+\tag{6.9}
+\]">\[
+\bigl(aa&#x27;v+(ab&#x27;+bc&#x27;)t(w),cc&#x27;w\bigr),
+\tag{6.9}
+\]</span>
+<p>the same result as their matrix product. The identity acts as the identity. This constructs the module and recovers every original module action.</p>
+<p>A module map is exactly a pair of linear maps <span class="math" data-tex="\(\alpha:V\to V&#x27;\)">\(\alpha:V\to V&#x27;\)</span>, <span class="math" data-tex="\(\beta:W\to W&#x27;\)">\(\beta:W\to W&#x27;\)</span> with <span class="math" data-tex="\(\alpha t=t&#x27;\beta\)">\(\alpha t=t&#x27;\beta\)</span>: commuting with the diagonal idempotents gives the pair, and commuting with <span class="math" data-tex="\(u\)">\(u\)</span> gives that equation. Conversely the equation makes the pair commute with (6.8).</p>
+<p>For <span class="math" data-tex="\(e=e_1\)">\(e=e_1\)</span>, the kernel condition <span class="math" data-tex="\(eM=0\)">\(eM=0\)</span> means <span class="math" data-tex="\(V=0\)">\(V=0\)</span>, so <span class="math" data-tex="\(t=0\)">\(t=0\)</span> and the objects are <span class="math" data-tex="\((0,W,0)\)">\((0,W,0)\)</span>. On the other hand <span class="math" data-tex="\(ReM=V\oplus0\)">\(ReM=V\oplus0\)</span>: applying any matrix to <span class="math" data-tex="\((v,0)\)">\((v,0)\)</span> gives <span class="math" data-tex="\((av,0)\)">\((av,0)\)</span>, and the identity already supplies every such vector. Thus <span class="math" data-tex="\(M=ReM\)">\(M=ReM\)</span> exactly when <span class="math" data-tex="\(W=0\)">\(W=0\)</span>, giving objects <span class="math" data-tex="\((V,0,0)\)">\((V,0,0)\)</span>. For nonzero <span class="math" data-tex="\(V\)">\(V\)</span> or <span class="math" data-tex="\(W\)">\(W\)</span>, these are two different classes; their intersection contains only zero. The second condition expresses trace generation by <span class="math" data-tex="\(Re\)">\(Re\)</span>, as in <a href="trace-coreflections-and-balanced-nonabelian-categories.html">Trace coreflections and balanced nonabelian categories</a>, while the first expresses the kernel of an exact functor.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Stacks, Abelian categories] The Stacks Project, <em>Homological Algebra</em>, <a href="https://stacks.math.columbia.edu/tag/00ZX">Section 12.5</a>, for the ambient kernel, cokernel and coimage–image framework.</li>
+<li>[Stacks, Additive functors] The Stacks Project, <em>Homological Algebra</em>, <a href="https://stacks.math.columbia.edu/tag/010M">Section 12.7</a>, for exactness and preservation of kernels and cokernels.</li>
+<li>[Stacks, Subcategories] The Stacks Project, <em>Homological Algebra</em>, <a href="https://stacks.math.columbia.edu/tag/02MN">Section 12.10</a>, especially the <a href="https://stacks.math.columbia.edu/tag/0754">weak Serre criterion</a>. The canonical terminology separates five-term closure from closure under all subobjects and quotients.</li>
+<li>[Mathlib, Abelian subcategories] The mathlib community, <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Abelian/Subcategory.html">Subcategories of abelian categories</a>, for the abelian full-subcategory construction under zero, finite-product, kernel and cokernel closure.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Sections 5.1 and 5.4, for abelian categories and generators.</li>
+</ul>
+</main></body></html>

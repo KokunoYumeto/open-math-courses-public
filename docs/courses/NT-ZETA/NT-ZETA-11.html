@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perron&#x27;s formula and the explicit formula for ψ(x) · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-11.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 11 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="perron-s-formula-and-the-explicit-formula-for-prime-counting">Perron's formula and the explicit formula for prime counting</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The poles of <span class="math" data-tex="$-\zeta&#x27;/\zeta$">$-\zeta&#x27;/\zeta$</span> turn a counting integral into a sum over zeros. A sharp cutoff decays more slowly on a vertical line than the averaged kernel used for the prime number theorem. We therefore start with finite integrals, estimate the cutoff error, and choose contour heights that avoid zeros. The resulting estimate also proves convergence and explains what happens at prime powers. We then obtain the absolutely convergent averaged formula and the full logarithmic-integral formula of Riemann, with its branch and constant specified.</p>
+<p>The Euler series are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, §3. We use the functional equation and the values at zero from <a href="NT-ZETA-04.html">Poisson summation, theta, and the functional equation</a>, Theorems 3.2 and 4.2; the gamma logarithmic-derivative estimates from <a href="NT-ZETA-03.html">The Gamma function and Stirling's formula</a>, Theorem 3.1; the local partial fractions and count from <a href="NT-ZETA-08.html">Nonvanishing on the line one and a zero-free region</a>, Theorem 2.2; and the window and reciprocal-ordinate estimates from <a href="NT-ZETA-10.html">Counting the zeros</a>, Theorem 4.1. The smoothed counting kernel is proved in <a href="NT-ZETA-09.html">The prime number theorem</a>, Proposition 1.2. Free comparisons are Koukoulopoulos’s preliminary version, Chapters 5, 7 and 8, the Wilkins transcription of Riemann’s memoir, and Connes’s arXiv survey, Sections 2.1.2–2.1.3, listed below.</p>
+<p>Set
+<span class="math math-display" data-tex="$$
+A(s)=-\frac{\zeta&#x27;(s)}{\zeta(s)},\qquad
+\psi_0(x)=\sum_{n&lt;x}\Lambda(n)+\tfrac12\Lambda(x),
+\tag{0.1}
+$$">$$
+A(s)=-\frac{\zeta&#x27;(s)}{\zeta(s)},\qquad
+\psi_0(x)=\sum_{n&lt;x}\Lambda(n)+\tfrac12\Lambda(x),
+\tag{0.1}
+$$</span>
+where <span class="math" data-tex="$\Lambda(x)=0$">$\Lambda(x)=0$</span> unless <span class="math" data-tex="$x$">$x$</span> is a positive integer prime power. Thus <span class="math" data-tex="$\psi_0$">$\psi_0$</span> takes the average at every jump. Let <span class="math" data-tex="$\Delta(x)$">$\Delta(x)$</span> be the distance from <span class="math" data-tex="$x$">$x$</span> to the nearest prime power other than <span class="math" data-tex="$x$">$x$</span> itself. It is positive for each fixed <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>. Zeros <span class="math" data-tex="$\rho=\beta+i\gamma$">$\rho=\beta+i\gamma$</span> are counted with multiplicity, and every conditionally convergent zero sum means the symmetric limit <span class="math" data-tex="$|\gamma|&lt;T$">$|\gamma|&lt;T$</span>.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-a-finite-integral-for-a-sharp-cutoff">1. A finite integral for a sharp cutoff</h2>
+<p><strong>Lemma 1.1 (truncated Perron kernel).</strong> For <span class="math" data-tex="$c,T&gt;0$">$c,T&gt;0$</span> and <span class="math" data-tex="$y&gt;0$">$y&gt;0$</span>, put
+<span class="math math-display" data-tex="$$
+K_{c,T}(y)=\frac1{2\pi i}\int_{c-iT}^{c+iT}\frac{y^s}s\,ds,
+\qquad
+\delta(y)=\begin{cases}0,&amp;y&lt;1,\\1/2,&amp;y=1,\\1,&amp;y&gt;1.\end{cases}
+$$">$$
+K_{c,T}(y)=\frac1{2\pi i}\int_{c-iT}^{c+iT}\frac{y^s}s\,ds,
+\qquad
+\delta(y)=\begin{cases}0,&amp;y&lt;1,\\1/2,&amp;y=1,\\1,&amp;y&gt;1.\end{cases}
+$$</span>
+For <span class="math" data-tex="$y\ne1$">$y\ne1$</span>,
+<span class="math math-display" data-tex="$$
+|K_{c,T}(y)-\delta(y)|
+\le y^c\min\left(1,\frac1{T|\log y|}\right).
+\tag{1.1}
+$$">$$
+|K_{c,T}(y)-\delta(y)|
+\le y^c\min\left(1,\frac1{T|\log y|}\right).
+\tag{1.1}
+$$</span>
+At <span class="math" data-tex="$y=1$">$y=1$</span> the exact value and error are
+<span class="math math-display" data-tex="$$
+K_{c,T}(1)=\frac1\pi\arctan\frac Tc,
+\qquad
+|K_{c,T}(1)-1/2|=\frac1\pi\arctan\frac cT
+\le\frac c{\pi T}.
+\tag{1.2}
+$$">$$
+K_{c,T}(1)=\frac1\pi\arctan\frac Tc,
+\qquad
+|K_{c,T}(1)-1/2|=\frac1\pi\arctan\frac cT
+\le\frac c{\pi T}.
+\tag{1.2}
+$$</span></p>
+<p><strong>Proof.</strong> Suppose first that <span class="math" data-tex="$y&lt;1$">$y&lt;1$</span>. Close the finite segment to the right along a rectangle whose other vertical side is <span class="math" data-tex="$\sigma=B$">$\sigma=B$</span>, and let <span class="math" data-tex="$B\to\infty$">$B\to\infty$</span>. That side has integral tending to zero, and there is no pole inside. Each horizontal integral has modulus at most
+<span class="math math-display" data-tex="$$
+\int_c^\infty\frac{y^\sigma}{T}\,d\sigma
+=\frac{y^c}{T|\log y|}.
+$$">$$
+\int_c^\infty\frac{y^\sigma}{T}\,d\sigma
+=\frac{y^c}{T|\log y|}.
+$$</span>
+After the factor <span class="math" data-tex="$1/(2\pi)$">$1/(2\pi)$</span>, the two sides bound <span class="math" data-tex="$|K|$">$|K|$</span> by <span class="math" data-tex="$y^c/(\pi T|\log y|)$">$y^c/(\pi T|\log y|)$</span>.</p>
+<p>For a second bound, replace the segment by the right circular arc centred at zero with radius <span class="math" data-tex="$r=\sqrt{c^2+T^2}$">$r=\sqrt{c^2+T^2}$</span> and the same endpoints. On this arc <span class="math" data-tex="$\Re s\ge c$">$\Re s\ge c$</span>, so <span class="math" data-tex="$|y^s|\le y^c$">$|y^s|\le y^c$</span>; <span class="math" data-tex="$|s|=r$">$|s|=r$</span> and its length is at most <span class="math" data-tex="$\pi r$">$\pi r$</span>. Cauchy's theorem therefore gives <span class="math" data-tex="$|K|\le y^c/2$">$|K|\le y^c/2$</span>.</p>
+<p>For <span class="math" data-tex="$y&gt;1$">$y&gt;1$</span>, close instead to the left. The pole at zero has residue one, and the other vertical side tends to zero. The two horizontal rays give <span class="math" data-tex="$|K-1|\le y^c/(\pi T\log y)$">$|K-1|\le y^c/(\pi T\log y)$</span>. The left arc on the same circle has <span class="math" data-tex="$\Re s\le c$">$\Re s\le c$</span> and length at most <span class="math" data-tex="$2\pi r$">$2\pi r$</span>, so the circular residue formula also gives <span class="math" data-tex="$|K-1|\le y^c$">$|K-1|\le y^c$</span>. These paired bounds imply (1.1). Finally pair <span class="math" data-tex="$s=c+it$">$s=c+it$</span> and <span class="math" data-tex="$s=c-it$">$s=c-it$</span> when <span class="math" data-tex="$y=1$">$y=1$</span>: the integral is <span class="math" data-tex="$(c/\pi)\int_0^Tdt/(c^2+t^2)=\arctan(T/c)/\pi$">$(c/\pi)\int_0^Tdt/(c^2+t^2)=\arctan(T/c)/\pi$</span>. This proves (1.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Proposition 1.2 (finite Perron formula).</strong> If <span class="math" data-tex="$D(s)=\sum b(n)n^{-s}$">$D(s)=\sum b(n)n^{-s}$</span> converges absolutely at a real <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span>, then
+<span class="math math-display" data-tex="$$
+\sum_{n&lt;x}b(n)+\tfrac12b(x)
+=\frac1{2\pi i}\int_{c-iT}^{c+iT}D(s)\frac{x^s}s\,ds+E,
+\tag{1.3}
+$$">$$
+\sum_{n&lt;x}b(n)+\tfrac12b(x)
+=\frac1{2\pi i}\int_{c-iT}^{c+iT}D(s)\frac{x^s}s\,ds+E,
+\tag{1.3}
+$$</span>
+where <span class="math" data-tex="$b(x)=0$">$b(x)=0$</span> for noninteger <span class="math" data-tex="$x$">$x$</span> and
+<span class="math math-display" data-tex="$$
+|E|\le\sum_{n\ne x}|b(n)|(x/n)^c
+\min\left(1,\frac1{T|\log(x/n)|}\right)
++\frac{c|b(x)|}{\pi T}.
+\tag{1.4}
+$$">$$
+|E|\le\sum_{n\ne x}|b(n)|(x/n)^c
+\min\left(1,\frac1{T|\log(x/n)|}\right)
++\frac{c|b(x)|}{\pi T}.
+\tag{1.4}
+$$</span></p>
+<p><strong>Proof.</strong> The integral has finite length and no denominator zero. Its absolute sum-integral interchange is bounded by <span class="math" data-tex="$x^c\sum|b(n)|n^{-c}$">$x^c\sum|b(n)|n^{-c}$</span> times the finite integral of <span class="math" data-tex="$1/|c+it|$">$1/|c+it|$</span>. Each term is <span class="math" data-tex="$b(n)K_{c,T}(x/n)$">$b(n)K_{c,T}(x/n)$</span>. Apply Lemma 1.1 separately to <span class="math" data-tex="$n=x$">$n=x$</span> and all other terms. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Corollary 1.3 (arithmetic cutoff error).</strong> For <span class="math" data-tex="$x,T\ge2$">$x,T\ge2$</span>, take <span class="math" data-tex="$c=1+1/\log x$">$c=1+1/\log x$</span> and <span class="math" data-tex="$D=A$">$D=A$</span>. Then
+<span class="math math-display" data-tex="$$
+\psi_0(x)=\frac1{2\pi i}\int_{c-iT}^{c+iT}A(s)\frac{x^s}s\,ds
++O\left(\frac{x\log^2x}{T}
++\log x\min\left(1,\frac{x}{T\Delta(x)}\right)\right).
+\tag{1.5}
+$$">$$
+\psi_0(x)=\frac1{2\pi i}\int_{c-iT}^{c+iT}A(s)\frac{x^s}s\,ds
++O\left(\frac{x\log^2x}{T}
++\log x\min\left(1,\frac{x}{T\Delta(x)}\right)\right).
+\tag{1.5}
+$$</span></p>
+<p><strong>Proof.</strong> Here <span class="math" data-tex="$x^c=ex$">$x^c=ex$</span> and <span class="math" data-tex="$1&lt;c\le1+1/\log2$">$1&lt;c\le1+1/\log2$</span>. For <span class="math" data-tex="$n\le x/2$">$n\le x/2$</span> or <span class="math" data-tex="$n\ge2x$">$n\ge2x$</span>, <span class="math" data-tex="$|\log(x/n)|\ge\log2$">$|\log(x/n)|\ge\log2$</span>. Since <span class="math" data-tex="$\Lambda(n)\le\log n$">$\Lambda(n)\le\log n$</span>, their total in (1.4) is bounded by
+<span class="math math-display" data-tex="$$
+\frac{Cx}{T}\sum_{n\ge2}\frac{\log n}{n^{1+1/\log x}}
+\ll\frac{x\log^2x}{T}.
+$$">$$
+\frac{Cx}{T}\sum_{n\ge2}\frac{\log n}{n^{1+1/\log x}}
+\ll\frac{x\log^2x}{T}.
+$$</span>
+The last bound follows by integrating <span class="math" data-tex="$(\log u)u^{-1-\eta}$">$(\log u)u^{-1-\eta}$</span>: its integral on <span class="math" data-tex="$[1,\infty)$">$[1,\infty)$</span> is <span class="math" data-tex="$\eta^{-2}$">$\eta^{-2}$</span>; a fixed adjustment for the maximum of the integrand handles the discrete sum, uniformly for <span class="math" data-tex="$0&lt;\eta\le1/\log2$">$0&lt;\eta\le1/\log2$</span>.</p>
+<p>On <span class="math" data-tex="$x/2&lt;n&lt;2x$">$x/2&lt;n&lt;2x$</span>, <span class="math" data-tex="$(x/n)^c\ll1$">$(x/n)^c\ll1$</span>, <span class="math" data-tex="$\Lambda(n)\le\log(2x)\ll\log x$">$\Lambda(n)\le\log(2x)\ll\log x$</span>, and <span class="math" data-tex="$|\log(x/n)|\ge|x-n|/(2x)$">$|\log(x/n)|\ge|x-n|/(2x)$</span>. At most two integers satisfy <span class="math" data-tex="$0&lt;|x-n|&lt;1$">$0&lt;|x-n|&lt;1$</span>, and each prime-power term among them has <span class="math" data-tex="$|x-n|\ge\Delta(x)$">$|x-n|\ge\Delta(x)$</span>. Their cost is at most <span class="math" data-tex="$C\log x\min(1,x/(T\Delta(x)))$">$C\log x\min(1,x/(T\Delta(x)))$</span>. In the other terms, group distances in <span class="math" data-tex="$[j,j+1)$">$[j,j+1)$</span> for integers <span class="math" data-tex="$j\ge1$">$j\ge1$</span>. At most two integers belong to each group, and its minimum factor is at most <span class="math" data-tex="$Cx/(Tj)$">$Cx/(Tj)$</span>. The resulting harmonic sum costs <span class="math" data-tex="$Cx\log^2x/T$">$Cx\log^2x/T$</span>. The term <span class="math" data-tex="$n=x$">$n=x$</span>, if present, costs <span class="math" data-tex="$c\Lambda(x)/(\pi T)\ll\log x/T$">$c\Lambda(x)/(\pi T)\ll\log x/T$</span> and is absorbed by the first error. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The nearest-prime-power term is what distinguishes a sharp cutoff from an averaged one. At a jump, the term at <span class="math" data-tex="$x$">$x$</span> is already given half weight; its error tends to zero as <span class="math" data-tex="$T$">$T$</span> grows.</p>
+<h2 id="2-heights-and-a-contour-reaching-all-trivial-zeros">2. Heights and a contour reaching all trivial zeros</h2>
+<p><strong>Lemma 2.1 (available heights and contour bounds).</strong> For every <span class="math" data-tex="$T\ge2$">$T\ge2$</span> there is an <span class="math" data-tex="$H\in[T,T+1]$">$H\in[T,T+1]$</span> with
+<span class="math math-display" data-tex="$$
+|H-\gamma|\ge\frac1{120\log(T+6)}
+\quad\text{for every zero ordinate }\gamma.
+\tag{2.1}
+$$">$$
+|H-\gamma|\ge\frac1{120\log(T+6)}
+\quad\text{for every zero ordinate }\gamma.
+\tag{2.1}
+$$</span>
+At such a height,
+<span class="math math-display" data-tex="$$
+A(\sigma\pm iH)=O(\log^2(H+4))\quad(-1\le\sigma\le2).
+\tag{2.2}
+$$">$$
+A(\sigma\pm iH)=O(\log^2(H+4))\quad(-1\le\sigma\le2).
+\tag{2.2}
+$$</span>
+For <span class="math" data-tex="$\sigma\le-1$">$\sigma\le-1$</span> on those horizontal lines, and on a negative odd vertical line <span class="math" data-tex="$\sigma=-V$">$\sigma=-V$</span>, we also have
+<span class="math math-display" data-tex="$$
+|A(s)|\ll\log(|s|+2).
+\tag{2.3}
+$$">$$
+|A(s)|\ll\log(|s|+2).
+\tag{2.3}
+$$</span></p>
+<p><strong>Proof.</strong> The local count of lesson eight, (2.4), bounds the number of ordinates in <span class="math" data-tex="$[T-1,T+2]$">$[T-1,T+2]$</span> by at most <span class="math" data-tex="$30\log(T+6)$">$30\log(T+6)$</span>, for example by covering this interval with three windows of radius one. Remove from <span class="math" data-tex="$[T,T+1]$">$[T,T+1]$</span> intervals of radius <span class="math" data-tex="$1/(120\log(T+6))$">$1/(120\log(T+6))$</span> around those ordinates. Their total length is at most <span class="math" data-tex="$1/2$">$1/2$</span>, counting multiplicities only makes this estimate larger. A point outside them satisfies (2.1); all other ordinates are at distance at least one. Conjugation supplies the same distance for the lower horizontal line.</p>
+<p>The full local partial fractions in lesson eight give
+<span class="math math-display" data-tex="$$
+A(s)=\frac1{s-1}-\sum_{|\gamma-H|\le1}\frac1{s-\rho}
++O(\log(H+4))
+$$">$$
+A(s)=\frac1{s-1}-\sum_{|\gamma-H|\le1}\frac1{s-\rho}
++O(\log(H+4))
+$$</span>
+on <span class="math" data-tex="$-1\le\sigma\le2$">$-1\le\sigma\le2$</span>, away from singularities. Each nearby denominator has modulus at least the lower bound in (2.1), and there are <span class="math" data-tex="$O(\log(H+4))$">$O(\log(H+4))$</span> terms. The pole term is bounded for <span class="math" data-tex="$H\ge2$">$H\ge2$</span>. This proves (2.2); for <span class="math" data-tex="$\sigma\ge2$">$\sigma\ge2$</span> the Euler series bounds <span class="math" data-tex="$A$">$A$</span> absolutely.</p>
+<p>Differentiate the nonsymmetric functional equation, already proved in lesson four, in the form
+<span class="math math-display" data-tex="$$
+\frac{\zeta&#x27;}{\zeta}(s)
+=\log(2\pi)-\frac{\Gamma&#x27;}{\Gamma}(1-s)
++\frac\pi2\cot\frac{\pi s}2
+-\frac{\zeta&#x27;}{\zeta}(1-s).
+\tag{2.4}
+$$">$$
+\frac{\zeta&#x27;}{\zeta}(s)
+=\log(2\pi)-\frac{\Gamma&#x27;}{\Gamma}(1-s)
++\frac\pi2\cot\frac{\pi s}2
+-\frac{\zeta&#x27;}{\zeta}(1-s).
+\tag{2.4}
+$$</span>
+For <span class="math" data-tex="$\sigma\le-1$">$\sigma\le-1$</span>, the last term is bounded by its absolutely convergent series, and the gamma term is <span class="math" data-tex="$O(\log(|s|+2))$">$O(\log(|s|+2))$</span> by the gamma estimates in the right half-plane. The cotangent is bounded on <span class="math" data-tex="$|\Im s|\ge2$">$|\Im s|\ge2$</span>. On <span class="math" data-tex="$\sigma=-V$">$\sigma=-V$</span> with <span class="math" data-tex="$V$">$V$</span> odd, its modulus is <span class="math" data-tex="$|\tanh(\pi t/2)|\le1$">$|\tanh(\pi t/2)|\le1$</span>. These observations prove (2.3). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 2.2 (truncated explicit formula).</strong> For every <span class="math" data-tex="$x,T\ge2$">$x,T\ge2$</span>,
+<span class="math math-display" data-tex="$$
+\begin{split}
+\psi_0(x)={}&amp;x-\sum_{|\gamma|&lt;T}\frac{x^\rho}{\rho}
+-\log(2\pi)-\frac12\log(1-x^{-2})+R(x,T),\\
+|R(x,T)|\ll{}&amp;\frac{x\log^2(xT)}T
++\log x\min\left(1,\frac{x}{T\Delta(x)}\right).
+\end{split}
+\tag{2.5}
+$$">$$
+\begin{split}
+\psi_0(x)={}&amp;x-\sum_{|\gamma|&lt;T}\frac{x^\rho}{\rho}
+-\log(2\pi)-\frac12\log(1-x^{-2})+R(x,T),\\
+|R(x,T)|\ll{}&amp;\frac{x\log^2(xT)}T
++\log x\min\left(1,\frac{x}{T\Delta(x)}\right).
+\end{split}
+\tag{2.5}
+$$</span>
+The implied constant is absolute. The final assertion includes heights arbitrarily close to ordinates, and heights equal to ordinates.</p>
+<p><strong>Proof.</strong> First use an available height <span class="math" data-tex="$H$">$H$</span> from Lemma 2.1. Close the segment <span class="math" data-tex="$c-iH$">$c-iH$</span> to <span class="math" data-tex="$c+iH$">$c+iH$</span> to the left at <span class="math" data-tex="$\sigma=-V$">$\sigma=-V$</span>, where <span class="math" data-tex="$V$">$V$</span> is a large positive odd integer. On <span class="math" data-tex="$[-1,c]$">$[-1,c]$</span> the upper and lower integrals are bounded, independently of <span class="math" data-tex="$V$">$V$</span>, by
+<span class="math math-display" data-tex="$$
+\frac{C\log^2(H+4)}H\int_{-1}^c x^\sigma d\sigma
+\ll\frac{x\log^2(H+4)}{H\log x},
+$$">$$
+\frac{C\log^2(H+4)}H\int_{-1}^c x^\sigma d\sigma
+\ll\frac{x\log^2(H+4)}{H\log x},
+$$</span>
+using <span class="math" data-tex="$x^c=ex$">$x^c=ex$</span>. For <span class="math" data-tex="$\sigma\le-1$">$\sigma\le-1$</span>, (2.3) bounds their remaining portions by
+<span class="math math-display" data-tex="$$
+\frac CH\int_{-\infty}^{-1}x^\sigma
+\log(|\sigma|+H+2)\,d\sigma
+\ll\frac{x^{-1}\log(H+4)}H.
+$$">$$
+\frac CH\int_{-\infty}^{-1}x^\sigma
+\log(|\sigma|+H+2)\,d\sigma
+\ll\frac{x^{-1}\log(H+4)}H.
+$$</span>
+This follows by putting <span class="math" data-tex="$u=-1-\sigma$">$u=-1-\sigma$</span> and using <span class="math" data-tex="$\log(H+3+u)\le\log(H+3)+\log(1+u)$">$\log(H+3+u)\le\log(H+3)+\log(1+u)$</span>; both exponential integrals are bounded uniformly for <span class="math" data-tex="$\log x\ge\log2$">$\log x\ge\log2$</span>. The left vertical integral is at most <span class="math" data-tex="$CHx^{-V}\log(V+H+2)/V$">$CHx^{-V}\log(V+H+2)/V$</span>, which tends to zero as <span class="math" data-tex="$V\to\infty$">$V\to\infty$</span>.</p>
+<p>The residues of <span class="math" data-tex="$A(s)x^s/s$">$A(s)x^s/s$</span> are <span class="math" data-tex="$x$">$x$</span> at <span class="math" data-tex="$s=1$">$s=1$</span>, <span class="math" data-tex="$-x^\rho/\rho$">$-x^\rho/\rho$</span> at each nontrivial zero, <span class="math" data-tex="$A(0)=-\log(2\pi)$">$A(0)=-\log(2\pi)$</span> at zero by lesson four, Theorem 4.2, and <span class="math" data-tex="$x^{-2k}/(2k)$">$x^{-2k}/(2k)$</span> at the simple trivial zero <span class="math" data-tex="$-2k$">$-2k$</span>. Their latter sum converges absolutely to <span class="math" data-tex="$-\tfrac12\log(1-x^{-2})$">$-\tfrac12\log(1-x^{-2})$</span>. The residue theorem, the preceding side bounds and Corollary 1.3 therefore give (2.5) at height <span class="math" data-tex="$H$">$H$</span>.</p>
+<p>Finally replace <span class="math" data-tex="$H$">$H$</span> by the originally specified <span class="math" data-tex="$T$">$T$</span>. The number of zeros with <span class="math" data-tex="$T\le|\gamma|&lt;H$">$T\le|\gamma|&lt;H$</span> is <span class="math" data-tex="$O(\log(T+4))$">$O(\log(T+4))$</span> by the local count, and each term has modulus at most <span class="math" data-tex="$x/T$">$x/T$</span> because <span class="math" data-tex="$0&lt;\beta&lt;1$">$0&lt;\beta&lt;1$</span>. The change in the zero sum is <span class="math" data-tex="$O(x\log(T+4)/T)$">$O(x\log(T+4)/T)$</span>, already covered by (2.5). Since <span class="math" data-tex="$T\le H\le T+1\le3T/2$">$T\le H\le T+1\le3T/2$</span>, the first error at <span class="math" data-tex="$H$">$H$</span> has the asserted bound at <span class="math" data-tex="$T$">$T$</span>, and its minimum factor is no larger than the one at <span class="math" data-tex="$T$">$T$</span>. This proves the result for every height, without a final avoidance restriction. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="3-the-symmetric-limit-and-the-largest-real-part">3. The symmetric limit and the largest real part</h2>
+<p><strong>Theorem 3.1 (von Mangoldt's formula and its convergence).</strong> For every <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>,
+<span class="math math-display" data-tex="$$
+\psi_0(x)=x-\lim_{T\to\infty}\sum_{|\gamma|&lt;T}\frac{x^\rho}\rho
+-\log(2\pi)-\frac12\log(1-x^{-2}).
+\tag{3.1}
+$$">$$
+\psi_0(x)=x-\lim_{T\to\infty}\sum_{|\gamma|&lt;T}\frac{x^\rho}\rho
+-\log(2\pi)-\frac12\log(1-x^{-2}).
+\tag{3.1}
+$$</span>
+The zero sums converge uniformly on each compact set in <span class="math" data-tex="$(1,\infty)$">$(1,\infty)$</span> containing no prime power. They are uniformly bounded on every compact interval in <span class="math" data-tex="$(1,\infty)$">$(1,\infty)$</span> and converge pointwise there, including at prime powers. Thus bounded convergence applies when integrating them on such intervals.</p>
+<p><strong>Proof.</strong> For fixed <span class="math" data-tex="$x\ge2$">$x\ge2$</span>, both error terms in (2.5) tend to zero: <span class="math" data-tex="$\Delta(x)&gt;0$">$\Delta(x)&gt;0$</span> is fixed, and <span class="math" data-tex="$\log^2(xT)/T\to0$">$\log^2(xT)/T\to0$</span>. This gives (3.1). For <span class="math" data-tex="$1&lt;x&lt;2$">$1&lt;x&lt;2$</span>, repeat Corollary 1.3 and the contour argument on any compact range <span class="math" data-tex="$[a,B]\subset(1,\infty)$">$[a,B]\subset(1,\infty)$</span> containing <span class="math" data-tex="$x$">$x$</span>. The exponent <span class="math" data-tex="$c=1+1/\log x$">$c=1+1/\log x$</span> is bounded on that range, <span class="math" data-tex="$\log(2x)\ll_a\log x$">$\log(2x)\ll_a\log x$</span>, and the exponential side-integral bounds are uniform for <span class="math" data-tex="$\log x\ge\log a&gt;0$">$\log x\ge\log a&gt;0$</span>. The same proof gives (2.5) with a constant allowed to depend on <span class="math" data-tex="$a$">$a$</span>; this suffices for the limit at each such <span class="math" data-tex="$x$">$x$</span>.</p>
+<p>On a compact set avoiding prime powers, the distance <span class="math" data-tex="$\Delta(x)$">$\Delta(x)$</span> has a positive lower bound. The finitely many prime powers near the set are separated from it, and all others are at a fixed greater distance. The error therefore tends to zero uniformly. On any compact interval <span class="math" data-tex="$[a,B]$">$[a,B]$</span> including prime powers, the minimum factor is at most one, while the first error is bounded uniformly for <span class="math" data-tex="$T\ge2$">$T\ge2$</span>. The remaining terms of (2.5) and <span class="math" data-tex="$\psi_0$">$\psi_0$</span> are bounded on that interval, so the finite zero sums are uniformly bounded as well. Their pointwise limit is already established, which gives bounded convergence for integrals. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Uniform convergence across a prime-power jump is impossible: each finite zero sum is continuous in <span class="math" data-tex="$x$">$x$</span>, whereas (3.1) has a discontinuous limit there. “Bounded convergence” here means pointwise convergence under a common bound, not uniform convergence at discontinuities. For an interval free of prime powers, one may also read directly from (2.5) the bound <span class="math" data-tex="$O_{a,B,\Delta}(\log^2T/T)$">$O_{a,B,\Delta}(\log^2T/T)$</span> for the remainder.</p>
+<p><strong>Source convention note.</strong> In the exact free version <a href="https://arxiv.org/pdf/2602.04022v1">Connes, arXiv:2602.04022v1</a>, Section 2.1.3 writes the sharp formula with <span class="math" data-tex="$\psi(x)=\sum_{p^k\le x}\log p$">$\psi(x)=\sum_{p^k\le x}\log p$</span> without a prime-power qualification. Our formula (3.1) uses <span class="math" data-tex="$\psi_0$">$\psi_0$</span>, as proved above. Since <span class="math" data-tex="$\psi(x)=\psi_0(x)+\Lambda(x)/2$">$\psi(x)=\psi_0(x)+\Lambda(x)/2$</span>, its right-hand side requires the additional term <span class="math" data-tex="$\tfrac12\log p$">$\tfrac12\log p$</span> when <span class="math" data-tex="$x=p^k$">$x=p^k$</span>. For example, <span class="math" data-tex="$\psi(2)=\log2$">$\psi(2)=\log2$</span> but the right-hand side of (3.1) equals <span class="math" data-tex="$\psi_0(2)=\tfrac12\log2$">$\psi_0(2)=\tfrac12\log2$</span>. This comparison concerns the stated convention in that exact v1; the half weight in this lesson follows from Corollary 1.3 and Theorem 3.1.</p>
+<p><strong>Proposition 3.2 (lack of absolute convergence).</strong> For every <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>, <span class="math" data-tex="$\sum_\rho x^\rho/\rho$">$\sum_\rho x^\rho/\rho$</span> does not converge absolutely.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="$\beta&gt;0$">$\beta&gt;0$</span>, <span class="math" data-tex="$|x^\rho|=x^\beta\ge1$">$|x^\rho|=x^\beta\ge1$</span>. For <span class="math" data-tex="$\gamma\ge1$">$\gamma\ge1$</span>, <span class="math" data-tex="$|\rho|\le\gamma+1\le2\gamma$">$|\rho|\le\gamma+1\le2\gamma$</span>. Therefore
+<span class="math math-display" data-tex="$$
+\sum_{0&lt;\gamma\le T}\left|\frac{x^\rho}\rho\right|
+\ge\frac12\sum_{1\le\gamma\le T}\frac1\gamma.
+$$">$$
+\sum_{0&lt;\gamma\le T}\left|\frac{x^\rho}\rho\right|
+\ge\frac12\sum_{1\le\gamma\le T}\frac1\gamma.
+$$</span>
+The latter diverges like <span class="math" data-tex="$\log^2T/(8\pi)$">$\log^2T/(8\pi)$</span> by lesson ten, Theorem 4.1. The finitely many lower ordinates cannot affect divergence. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Corollary 3.3 (a bound from zero location).</strong> Put <span class="math" data-tex="$\Theta=\sup_\rho\Re\rho$">$\Theta=\sup_\rho\Re\rho$</span>. Then for <span class="math" data-tex="$x\ge2$">$x\ge2$</span>,
+<span class="math math-display" data-tex="$$
+\psi(x)=x+O(x^\Theta\log^2x).
+\tag{3.2}
+$$">$$
+\psi(x)=x+O(x^\Theta\log^2x).
+\tag{3.2}
+$$</span>
+In particular RH gives <span class="math" data-tex="$\psi(x)=x+O(\sqrt x\log^2x)$">$\psi(x)=x+O(\sqrt x\log^2x)$</span>.</p>
+<p><strong>Proof.</strong> The functional-equation symmetry and existence of zeros imply <span class="math" data-tex="$1/2\le\Theta\le1$">$1/2\le\Theta\le1$</span>. In (2.5) choose <span class="math" data-tex="$T=x$">$T=x$</span>. Since <span class="math" data-tex="$x^\beta\le x^\Theta$">$x^\beta\le x^\Theta$</span> and <span class="math" data-tex="$|\rho|\ge|\gamma|$">$|\rho|\ge|\gamma|$</span>, lesson ten gives
+<span class="math math-display" data-tex="$$
+\left|\sum_{|\gamma|&lt;x}\frac{x^\rho}\rho\right|
+\le x^\Theta\sum_{|\gamma|&lt;x}\frac1{|\rho|}
+\ll x^\Theta\log^2x.
+$$">$$
+\left|\sum_{|\gamma|&lt;x}\frac{x^\rho}\rho\right|
+\le x^\Theta\sum_{|\gamma|&lt;x}\frac1{|\rho|}
+\ll x^\Theta\log^2x.
+$$</span>
+The low ordinates contribute a fixed finite constant. The error in (2.5) is <span class="math" data-tex="$O(\log^2x)$">$O(\log^2x)$</span>, the constant and trivial-zero terms are bounded for <span class="math" data-tex="$x\ge2$">$x\ge2$</span>, and <span class="math" data-tex="$|\psi(x)-\psi_0(x)|\le\tfrac12\log x$">$|\psi(x)-\psi_0(x)|\le\tfrac12\log x$</span>. All are absorbed by the asserted bound. Under RH, <span class="math" data-tex="$\Theta=1/2$">$\Theta=1/2$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="4-an-absolutely-convergent-averaged-formula">4. An absolutely convergent averaged formula</h2>
+<p><strong>Theorem 4.1.</strong> For <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>,
+<span class="math math-display" data-tex="$$
+\begin{split}
+\psi_1(x):=\int_1^x\psi(u)\,du
+={}&amp;\frac{x^2}{2}
+-\sum_\rho\frac{x^{\rho+1}}{\rho(\rho+1)}
+-x\log(2\pi)+\frac{\zeta&#x27;(-1)}{\zeta(-1)}\\
+&amp;-\sum_{k\ge1}\frac{x^{1-2k}}{2k(2k-1)}.
+\end{split}
+\tag{4.1}
+$$">$$
+\begin{split}
+\psi_1(x):=\int_1^x\psi(u)\,du
+={}&amp;\frac{x^2}{2}
+-\sum_\rho\frac{x^{\rho+1}}{\rho(\rho+1)}
+-x\log(2\pi)+\frac{\zeta&#x27;(-1)}{\zeta(-1)}\\
+&amp;-\sum_{k\ge1}\frac{x^{1-2k}}{2k(2k-1)}.
+\end{split}
+\tag{4.1}
+$$</span>
+Both series converge absolutely, uniformly on compact subsets of <span class="math" data-tex="$[1,\infty)$">$[1,\infty)$</span>, and the identity extends continuously to <span class="math" data-tex="$x=1$">$x=1$</span>.</p>
+<p><strong>Proof.</strong> The smoothed Perron identity in lesson nine gives
+<span class="math math-display" data-tex="$$
+\psi_1(x)=\frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}
+\frac{x^{s+1}A(s)}{s(s+1)}\,ds\qquad(c&gt;1).
+$$">$$
+\psi_1(x)=\frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}
+\frac{x^{s+1}A(s)}{s(s+1)}\,ds\qquad(c&gt;1).
+$$</span>
+Truncate at available heights <span class="math" data-tex="$H\to\infty$">$H\to\infty$</span> and close at the negative odd line <span class="math" data-tex="$-V$">$-V$</span> as before. The horizontal bounds now have an extra factor <span class="math" data-tex="$O(1/H)$">$O(1/H)$</span>, so their total is <span class="math" data-tex="$O_x(\log^2(H+4)/H^2)$">$O_x(\log^2(H+4)/H^2)$</span>, uniformly as <span class="math" data-tex="$V\to\infty$">$V\to\infty$</span>. The left vertical contribution tends to zero at each fixed <span class="math" data-tex="$H$">$H$</span>, by exponential decay of <span class="math" data-tex="$x^{1-V}$">$x^{1-V}$</span> and (2.3).</p>
+<p>The pole at one gives <span class="math" data-tex="$x^2/2$">$x^2/2$</span>. Each nontrivial zero gives <span class="math" data-tex="$-x^{\rho+1}/(\rho(\rho+1))$">$-x^{\rho+1}/(\rho(\rho+1))$</span>. At zero the residue is <span class="math" data-tex="$xA(0)=-x\log(2\pi)$">$xA(0)=-x\log(2\pi)$</span>. At minus one, <span class="math" data-tex="$A$">$A$</span> is regular and <span class="math" data-tex="$s(s+1)$">$s(s+1)$</span> has derivative minus one, so the residue is <span class="math" data-tex="$-A(-1)=\zeta&#x27;(-1)/\zeta(-1)$">$-A(-1)=\zeta&#x27;(-1)/\zeta(-1)$</span>. At the trivial zero <span class="math" data-tex="$-2k$">$-2k$</span> the residue is <span class="math" data-tex="$-x^{1-2k}/(2k(2k-1))$">$-x^{1-2k}/(2k(2k-1))$</span>. The residue theorem and the vanishing side integrals give (4.1).</p>
+<p>For <span class="math" data-tex="$1\le x\le B$">$1\le x\le B$</span> and large <span class="math" data-tex="$|\gamma|$">$|\gamma|$</span>, a zero summand has modulus at most <span class="math" data-tex="$B^2/\gamma^2$">$B^2/\gamma^2$</span>. The reciprocal-square sum converges by lesson ten. The trivial series is bounded by <span class="math" data-tex="$\sum_{k\ge1}1/(2k(2k-1))&lt;\infty$">$\sum_{k\ge1}1/(2k(2k-1))&lt;\infty$</span> on this range. These bounds prove absolute and uniform convergence. The left side tends to zero as <span class="math" data-tex="$x\downarrow1$">$x\downarrow1$</span>, so the formula extends to one. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>At <span class="math" data-tex="$x=1$">$x=1$</span> the identity determines the constant consistently:
+<span class="math math-display" data-tex="$$
+\frac{\zeta&#x27;(-1)}{\zeta(-1)}
+=-\frac12+\sum_\rho\frac1{\rho(\rho+1)}+\log(2\pi)+\log2,
+$$">$$
+\frac{\zeta&#x27;(-1)}{\zeta(-1)}
+=-\frac12+\sum_\rho\frac1{\rho(\rho+1)}+\log(2\pi)+\log2,
+$$</span>
+since <span class="math" data-tex="$\sum_{k\ge1}1/(2k(2k-1))=\sum_{k\ge1}(1/(2k-1)-1/(2k))=\log2$">$\sum_{k\ge1}1/(2k(2k-1))=\sum_{k\ge1}(1/(2k-1)-1/(2k))=\log2$</span>. This computation retains the pole at <span class="math" data-tex="$s=-1$">$s=-1$</span>, which is created by the smoothing kernel rather than by zeta.</p>
+<p>Theorem 2.2 proves the sharp pointwise formula and its convergence; equation (4.1), proved above, gives the absolutely convergent averaged formula.</p>
+<h2 id="5-riemann-s-logarithmic-integral-formula">5. Riemann's logarithmic-integral formula</h2>
+<p>Let
+<span class="math math-display" data-tex="$$
+J_0(x)=\sum_{n&lt;x}\frac{\Lambda(n)}{\log n}
++\frac{\Lambda(x)}{2\log x}\qquad(x&gt;1),
+\tag{5.1}
+$$">$$
+J_0(x)=\sum_{n&lt;x}\frac{\Lambda(n)}{\log n}
++\frac{\Lambda(x)}{2\log x}\qquad(x&gt;1),
+\tag{5.1}
+$$</span>
+with noninteger boundary term zero. Away from prime powers, this is <span class="math" data-tex="$J(x)=\sum_{k\ge1}\pi(x^{1/k})/k$">$J(x)=\sum_{k\ge1}\pi(x^{1/k})/k$</span>: a power <span class="math" data-tex="$p^k$">$p^k$</span> has weight <span class="math" data-tex="$1/k$">$1/k$</span>. At a prime power <span class="math" data-tex="$x$">$x$</span>, <span class="math" data-tex="$J_0(x)=J(x)-\Lambda(x)/(2\log x)$">$J_0(x)=J(x)-\Lambda(x)/(2\log x)$</span>.</p>
+<p>For the main term use <span class="math" data-tex="$\operatorname{li}(x)=\operatorname{Ei}(\log x)$">$\operatorname{li}(x)=\operatorname{Ei}(\log x)$</span>, the principal-value logarithmic integral. Under our convention <span class="math" data-tex="$\operatorname{Li}(x)=\int_2^xdu/\log u$">$\operatorname{Li}(x)=\int_2^xdu/\log u$</span>, one instead has <span class="math" data-tex="$\operatorname{li}(x)=\operatorname{Li}(x)+\operatorname{li}(2)$">$\operatorname{li}(x)=\operatorname{Li}(x)+\operatorname{li}(2)$</span>. For a zero term, the notation sometimes written <span class="math" data-tex="$\operatorname{li}(x^\rho)$">$\operatorname{li}(x^\rho)$</span> means <span class="math" data-tex="$\operatorname{Ei}(\rho\log x)$">$\operatorname{Ei}(\rho\log x)$</span> with that argument retained. Taking a principal logarithm of the endpoint <span class="math" data-tex="$x^\rho$">$x^\rho$</span> would lose the path's turns.</p>
+<p><strong>Lemma 5.1 (the zero-term branch).</strong> Put <span class="math" data-tex="$v=\log x&gt;0$">$v=\log x&gt;0$</span>. For <span class="math" data-tex="$\rho=\beta+i\gamma$">$\rho=\beta+i\gamma$</span> define
+<span class="math math-display" data-tex="$$
+\mathcal E_v(\rho)=\int_{-\infty}^{\beta}
+\frac{e^{(u+i\gamma)v}}{u+i\gamma}\,du.
+\tag{5.2}
+$$">$$
+\mathcal E_v(\rho)=\int_{-\infty}^{\beta}
+\frac{e^{(u+i\gamma)v}}{u+i\gamma}\,du.
+\tag{5.2}
+$$</span>
+Then
+<span class="math math-display" data-tex="$$
+\operatorname{Ei}(\rho v)=\mathcal E_v(\rho)
++i\pi\operatorname{sgn}\gamma,
+\qquad
+\mathcal E_v(\rho)=\frac{x^\rho}{\rho\log x}+O_{a,B}(|\gamma|^{-2})
+\tag{5.3}
+$$">$$
+\operatorname{Ei}(\rho v)=\mathcal E_v(\rho)
++i\pi\operatorname{sgn}\gamma,
+\qquad
+\mathcal E_v(\rho)=\frac{x^\rho}{\rho\log x}+O_{a,B}(|\gamma|^{-2})
+\tag{5.3}
+$$</span>
+uniformly for <span class="math" data-tex="$a\le x\le B$">$a\le x\le B$</span> with <span class="math" data-tex="$1&lt;a&lt;B$">$1&lt;a&lt;B$</span>. The symmetric sums of the two versions in (5.3) are equal and converge, with the uniform and bounded convergence properties of Theorem 3.1.</p>
+<p><strong>Proof.</strong> The integral (5.2) converges absolutely in <span class="math" data-tex="$u$">$u$</span> because <span class="math" data-tex="$\gamma\ne0$">$\gamma\ne0$</span> and <span class="math" data-tex="$v&gt;0$">$v&gt;0$</span>. As a function of its endpoint it is an antiderivative of <span class="math" data-tex="$e^{zv}/z$">$e^{zv}/z$</span>. Approaching a positive real endpoint from above, its path passes above the pole at zero: its limit is <span class="math" data-tex="$\operatorname{Ei}(\beta v)-i\pi$">$\operatorname{Ei}(\beta v)-i\pi$</span>, as follows by a small semicircle and the real principal-value integral. Below the pole the sign reverses. Adding the indicated constant therefore gives the standard analytic exponential integral normalized to be real on the positive axis. This proves the first identity, with conjugation respected.</p>
+<p>Integration by parts gives
+<span class="math math-display" data-tex="$$
+\mathcal E_v(\rho)=\frac{e^{\rho v}}{v\rho}
++\frac1v\int_{-\infty}^{\beta}
+\frac{e^{(u+i\gamma)v}}{(u+i\gamma)^2}\,du.
+$$">$$
+\mathcal E_v(\rho)=\frac{e^{\rho v}}{v\rho}
++\frac1v\int_{-\infty}^{\beta}
+\frac{e^{(u+i\gamma)v}}{(u+i\gamma)^2}\,du.
+$$</span>
+The remainder has modulus at most <span class="math" data-tex="$e^{\beta v}/(v^2\gamma^2)$">$e^{\beta v}/(v^2\gamma^2)$</span>, proving the uniform bound in (5.3). Its zero sum converges absolutely by lesson ten. The leading zero sum is the one in Theorem 3.1 divided by <span class="math" data-tex="$\log x$">$\log x$</span>, so the convergence assertions follow. Conjugate zeros have equal multiplicities; their added constants <span class="math" data-tex="$\pm i\pi$">$\pm i\pi$</span> cancel at every symmetric cutoff. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 5.2 (Riemann's formula with specified branches).</strong> For <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>,
+<span class="math math-display" data-tex="$$
+J_0(x)=\operatorname{li}(x)
+-\lim_{T\to\infty}\sum_{|\gamma|&lt;T}\operatorname{Ei}(\rho\log x)
+-\log2+\int_x^\infty\frac{dt}{t(t^2-1)\log t}.
+\tag{5.4}
+$$">$$
+J_0(x)=\operatorname{li}(x)
+-\lim_{T\to\infty}\sum_{|\gamma|&lt;T}\operatorname{Ei}(\rho\log x)
+-\log2+\int_x^\infty\frac{dt}{t(t^2-1)\log t}.
+\tag{5.4}
+$$</span>
+With <span class="math" data-tex="$\operatorname{Li}(x)=\int_2^xdt/\log t$">$\operatorname{Li}(x)=\int_2^xdt/\log t$</span>, add <span class="math" data-tex="$\operatorname{li}(2)$">$\operatorname{li}(2)$</span> to that version's main term. The formula has the averaged value at prime powers.</p>
+<p><strong>Proof.</strong> The Euler logarithm is
+<span class="math math-display" data-tex="$$
+\log\zeta(s)=\sum_{n\ge2}\frac{\Lambda(n)}{\log n}\,n^{-s}
+\qquad(\Re s&gt;1).
+$$">$$
+\log\zeta(s)=\sum_{n\ge2}\frac{\Lambda(n)}{\log n}\,n^{-s}
+\qquad(\Re s&gt;1).
+$$</span>
+Proposition 1.2 applies to it. For fixed <span class="math" data-tex="$c&gt;1$">$c&gt;1$</span> and <span class="math" data-tex="$x$">$x$</span>, its finite-height integral tends to <span class="math" data-tex="$J_0(x)$">$J_0(x)$</span>: each cutoff kernel tends to its assigned weight, and the absolute majorant is a fixed multiple of <span class="math" data-tex="$\sum (\Lambda(n)/\log n)(x/n)^c&lt;\infty$">$\sum (\Lambda(n)/\log n)(x/n)^c&lt;\infty$</span>. This justifies the limit without interchanging an absolutely divergent infinite vertical integral.</p>
+<p>We evaluate that integral at available heights <span class="math" data-tex="$H$">$H$</span>. Use the rectangle with left side <span class="math" data-tex="$-V$">$-V$</span>, with <span class="math" data-tex="$V$">$V$</span> odd, and slit it along leftward horizontal rays from the zeros and from the pole at one. There are finitely many endpoints in each finite rectangle. Continue the Euler branch of <span class="math" data-tex="$\log\zeta$">$\log\zeta$</span> from the right side on this slit domain. Coincident rays are counted with their multiplicities. The upper-minus-lower jump is <span class="math" data-tex="$2\pi i$">$2\pi i$</span> at a simple zero, multiplied by its multiplicity at any other zero, and <span class="math" data-tex="$-2\pi i$">$-2\pi i$</span> at the pole. On the upper side of a slit the boundary runs from its left end to its right endpoint; the lower side runs back. Therefore Cauchy's formula for the slit domain contributes minus the zero-ray integrals and plus the pole-ray integral to the original vertical integral.</p>
+<p>For completeness, this deformation has vanishing outer errors in the required order of limits. On <span class="math" data-tex="$-1\le\sigma\le c$">$-1\le\sigma\le c$</span> at height <span class="math" data-tex="$H$">$H$</span>, integrate the bound for <span class="math" data-tex="$\zeta&#x27;/\zeta$">$\zeta&#x27;/\zeta$</span> from <span class="math" data-tex="$2+iH$">$2+iH$</span>, where the Euler logarithm is bounded. This gives <span class="math" data-tex="$|\log\zeta(\sigma+iH)|\ll_x\log^2(H+4)$">$|\log\zeta(\sigma+iH)|\ll_x\log^2(H+4)$</span>. Continuing farther left with (2.3) gives
+<span class="math math-display" data-tex="$$
+|\log\zeta(\sigma+iH)|
+\ll_x\log^2(H+4)+(|\sigma|+1)\log(|\sigma|+H+2).
+$$">$$
+|\log\zeta(\sigma+iH)|
+\ll_x\log^2(H+4)+(|\sigma|+1)\log(|\sigma|+H+2).
+$$</span>
+The conjugate bound holds below. Multiplication by <span class="math" data-tex="$x^\sigma/|s|$">$x^\sigma/|s|$</span> and integration make the horizontal contributions <span class="math" data-tex="$O_x(\log^2(H+4)/H)$">$O_x(\log^2(H+4)/H)$</span>, uniformly as <span class="math" data-tex="$V\to\infty$">$V\to\infty$</span>, just as in the exponential integrals in Theorem 2.2. On the left line, the functional equation and the right-half-plane gamma logarithm bound the chosen logarithm by <span class="math" data-tex="$O_H((V+1)\log(V+2))$">$O_H((V+1)\log(V+2))$</span>. Its possible branch changes add at most <span class="math" data-tex="$O(V+N(H))$">$O(V+N(H))$</span>, from the trivial and nontrivial zeros already passed. The left contribution is thus <span class="math" data-tex="$O_H(x^{-V}\log(V+2))\to0$">$O_H(x^{-V}\log(V+2))\to0$</span>. Small circles around nonzero branch endpoints have integrals <span class="math" data-tex="$O(\varepsilon|\log\varepsilon|)$">$O(\varepsilon|\log\varepsilon|)$</span> and vanish. These estimates justify the slit calculation first at fixed <span class="math" data-tex="$H$">$H$</span> as <span class="math" data-tex="$V\to\infty$">$V\to\infty$</span>, then as <span class="math" data-tex="$H\to\infty$">$H\to\infty$</span>.</p>
+<p>The point <span class="math" data-tex="$s=0$">$s=0$</span> needs a separate symmetric indentation because of the factor <span class="math" data-tex="$1/s$">$1/s$</span>. Here <span class="math" data-tex="$\zeta(0)=-1/2$">$\zeta(0)=-1/2$</span>. The upper branch value is <span class="math" data-tex="$-\log2-i\pi$">$-\log2-i\pi$</span> and the lower value is <span class="math" data-tex="$-\log2+i\pi$">$-\log2+i\pi$</span>: starting above the pole at one gives argument <span class="math" data-tex="$-\pi$">$-\pi$</span> on the real interval <span class="math" data-tex="$(0,1)$">$(0,1)$</span>, where zeta is negative and has no zero. The lower branch is its conjugate. The two half-circle integrals around zero consequently give the mean value <span class="math" data-tex="$-\log2$">$-\log2$</span> as the constant contribution. Equivalently their clockwise sum is <span class="math" data-tex="$-2\pi i(-\log2)$">$-2\pi i(-\log2)$</span>; the imaginary branch constants cancel. The real cut through zero is read as a symmetric principal value.</p>
+<p>Put <span class="math" data-tex="$v=\log x$">$v=\log x$</span>. The pole ray gives
+<span class="math math-display" data-tex="$$
+\operatorname{PV}\int_{-\infty}^1\frac{e^{uv}}u\,du
+=\operatorname{Ei}(v)=\operatorname{li}(x).
+$$">$$
+\operatorname{PV}\int_{-\infty}^1\frac{e^{uv}}u\,du
+=\operatorname{Ei}(v)=\operatorname{li}(x).
+$$</span>
+Each nonreal zero ray gives <span class="math" data-tex="$\mathcal E_v(\rho)$">$\mathcal E_v(\rho)$</span> from (5.2), with a minus sign. Each negative real zero <span class="math" data-tex="$-2k$">$-2k$</span> gives <span class="math" data-tex="$\operatorname{Ei}(-2kv)$">$\operatorname{Ei}(-2kv)$</span>, also with a minus sign. Its series is absolutely convergent, and
+<span class="math math-display" data-tex="$$
+-\sum_{k\ge1}\operatorname{Ei}(-2k\log x)
+=\sum_{k\ge1}\int_x^\infty\frac{t^{-2k}}{t\log t}\,dt
+=\int_x^\infty\frac{dt}{t(t^2-1)\log t}.
+$$">$$
+-\sum_{k\ge1}\operatorname{Ei}(-2k\log x)
+=\sum_{k\ge1}\int_x^\infty\frac{t^{-2k}}{t\log t}\,dt
+=\int_x^\infty\frac{dt}{t(t^2-1)\log t}.
+$$</span>
+The interchange here is justified by nonnegative terms. At symmetric finite heights the constants in Lemma 5.1 cancel, so the nonreal rays give the stated exponential-integral sum. That lemma proves its limit exists; the horizontal errors tend to zero, and the initial Perron integral tends to <span class="math" data-tex="$J_0(x)$">$J_0(x)$</span>. All contributions combine to (5.4). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Finally the usual prime count is recovered by finite Möbius inversion:
+<span class="math math-display" data-tex="$$
+\pi_0(x)=\sum_{k\ge1}\frac{\mu(k)}kJ_0(x^{1/k}),
+\tag{5.5}
+$$">$$
+\pi_0(x)=\sum_{k\ge1}\frac{\mu(k)}kJ_0(x^{1/k}),
+\tag{5.5}
+$$</span>
+where <span class="math" data-tex="$\pi_0$">$\pi_0$</span> has half weight at primes. Only <span class="math" data-tex="$k\le\log x/\log2$">$k\le\log x/\log2$</span> can contribute. On substituting the prime-power definition of <span class="math" data-tex="$J_0$">$J_0$</span>, the coefficient at an exponent <span class="math" data-tex="$r$">$r$</span> is <span class="math" data-tex="$\sum_{k\mid r}\mu(k)/r$">$\sum_{k\mid r}\mu(k)/r$</span>, equal to one for <span class="math" data-tex="$r=1$">$r=1$</span> and zero otherwise. The same cancellation applies to each half-weight boundary term. This proves (5.5) and explains how the prime-power formula becomes Riemann's prime-counting formula.</p>
+<h2 id="6-what-ten-pairs-of-zeros-contribute">6. What ten pairs of zeros contribute</h2>
+<p><strong>Example 6.1.</strong> Write <span class="math" data-tex="$\rho_j=1/2+i\gamma_j$">$\rho_j=1/2+i\gamma_j$</span> for the first ten numerically computed critical-line zeros. Their first and last ordinates are approximately <span class="math" data-tex="$14.1347251417$">$14.1347251417$</span> and <span class="math" data-tex="$49.7738324777$">$49.7738324777$</span>. Define
+<span class="math math-display" data-tex="$$
+Q_{10}(x)=2\Re\sum_{j=1}^{10}\frac{x^{\rho_j}}{\rho_j},\qquad
+P_{10}(x)=x-Q_{10}(x)-\log(2\pi)-\tfrac12\log(1-x^{-2}).
+$$">$$
+Q_{10}(x)=2\Re\sum_{j=1}^{10}\frac{x^{\rho_j}}{\rho_j},\qquad
+P_{10}(x)=x-Q_{10}(x)-\log(2\pi)-\tfrac12\log(1-x^{-2}).
+$$</span>
+Exact integer enumeration of prime powers and 65-digit evaluation of these ten pairs give the following rounded values. These finite samples illustrate the terms; they do not certify a truncation error or the absence of other zeros.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="$x$">$x$</span></th>
+<th style="text-align:right"><span class="math" data-tex="$\psi_0(x)$">$\psi_0(x)$</span></th>
+<th style="text-align:right"><span class="math" data-tex="$Q_{10}(x)$">$Q_{10}(x)$</span></th>
+<th style="text-align:right"><span class="math" data-tex="$P_{10}(x)$">$P_{10}(x)$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">95</td>
+<td style="text-align:right">89.470600</td>
+<td style="text-align:right">2.824013</td>
+<td style="text-align:right">90.338165</td>
+</tr>
+<tr>
+<td style="text-align:right">97</td>
+<td style="text-align:right">91.757956</td>
+<td style="text-align:right">3.504123</td>
+<td style="text-align:right">91.658053</td>
+</tr>
+<tr>
+<td style="text-align:right">100</td>
+<td style="text-align:right">94.045311</td>
+<td style="text-align:right">3.121832</td>
+<td style="text-align:right">95.040341</td>
+</tr>
+<tr>
+<td style="text-align:right">101</td>
+<td style="text-align:right">96.352871</td>
+<td style="text-align:right">2.609686</td>
+<td style="text-align:right">96.552486</td>
+</tr>
+<tr>
+<td style="text-align:right">105</td>
+<td style="text-align:right">103.295161</td>
+<td style="text-align:right"><span class="math" data-tex="$-0.334766$">$-0.334766$</span></td>
+<td style="text-align:right">103.496935</td>
+</tr>
+</tbody>
+</table>
+<p>At 97 and 101 the exact value includes half the corresponding jump, respectively <span class="math" data-tex="$\log97$">$\log97$</span> and <span class="math" data-tex="$\log101$">$\log101$</span>. The continuous curve <span class="math" data-tex="$P_{10}$">$P_{10}$</span> cannot reproduce the discontinuities of the exact count. The theorem concerns a growing symmetric cutoff, with uniform convergence restricted to sets away from prime powers.</p>
+<figure><img src="figures/NT-ZETA-11/explicit_formula.png" alt="Exact prime-power staircase and the approximation using ten computed conjugate pairs" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. The staircase gives the one-sided values of <span class="math" data-tex="$\psi$">$\psi$</span>, and the marked midpoint at each prime in this interval gives <span class="math" data-tex="$\psi_0$">$\psi_0$</span>. The smooth curve uses precisely ten computed conjugate pairs and the constant and trivial-zero terms in (3.1). Coordinates and half weights come from the integer prime-power list. This is a finite numerical illustration of Theorem 3.1, not a bound for its remainder. The accompanying Python source reproduces the figure.</em></p>
+<p>For the same ten pairs in Riemann's formula at 100,
+<span class="math math-display" data-tex="$$
+2\Re\sum_{j=1}^{10}\operatorname{Ei}(\rho_j\log100)
+\approx0.6836740391.
+$$">$$
+2\Re\sum_{j=1}^{10}\operatorname{Ei}(\rho_j\log100)
+\approx0.6836740391.
+$$</span>
+Here <span class="math" data-tex="$J_0(100)=28.5333333333$">$J_0(100)=28.5333333333$</span>, whereas retaining those pairs in (5.4) gives approximately <span class="math" data-tex="$28.7493302401$">$28.7493302401$</span>. The main term is <span class="math" data-tex="$\operatorname{Ei}(\log100)\approx30.1261415841$">$\operatorname{Ei}(\log100)\approx30.1261415841$</span>. These values use the branch specified in Lemma 5.1; conjugate branch constants cancel.</p>
+<p><strong>Example 6.2 (all trivial zeros).</strong> For <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>, the convergent power series of <span class="math" data-tex="$-\log(1-z)$">$-\log(1-z)$</span> at <span class="math" data-tex="$z=x^{-2}$">$z=x^{-2}$</span> gives
+<span class="math math-display" data-tex="$$
+-\frac12\log(1-x^{-2})
+=\sum_{k\ge1}\frac{x^{-2k}}{2k}.
+$$">$$
+-\frac12\log(1-x^{-2})
+=\sum_{k\ge1}\frac{x^{-2k}}{2k}.
+$$</span>
+Each term is exactly the residue at <span class="math" data-tex="$-2k$">$-2k$</span> in the sharp contour. At <span class="math" data-tex="$x=100$">$x=100$</span> the first two terms are <span class="math" data-tex="$0.00005$">$0.00005$</span> and <span class="math" data-tex="$0.0000000025$">$0.0000000025$</span>; the full sum is approximately <span class="math" data-tex="$0.0000500025001666792$">$0.0000500025001666792$</span>. It is positive and small here. Its divergence as <span class="math" data-tex="$x\downarrow1$">$x\downarrow1$</span> explains why the separate terms of the sharp formula should not be extended to that endpoint.</p>
+<h2 id="7-exercises-and-worked-solutions">7. Exercises and worked solutions</h2>
+<p><strong>Exercise 1.</strong> Compute the residue of <span class="math" data-tex="$A(s)x^s/s$">$A(s)x^s/s$</span> at zero using the values of zeta and its derivative proved in lesson four.</p>
+<p><strong>Solution 1.</strong> Those values are <span class="math" data-tex="$\zeta(0)=-1/2$">$\zeta(0)=-1/2$</span> and <span class="math" data-tex="$\zeta&#x27;(0)=-\tfrac12\log(2\pi)$">$\zeta&#x27;(0)=-\tfrac12\log(2\pi)$</span>. Since zeta is nonzero there, <span class="math" data-tex="$A$">$A$</span> is holomorphic and <span class="math" data-tex="$A(0)=-\log(2\pi)$">$A(0)=-\log(2\pi)$</span>. Also <span class="math" data-tex="$x^s=1+O(s)$">$x^s=1+O(s)$</span>, so the coefficient of <span class="math" data-tex="$1/s$">$1/s$</span> is <span class="math" data-tex="$-\log(2\pi)$">$-\log(2\pi)$</span>. This residue is independent of <span class="math" data-tex="$x$">$x$</span>.</p>
+<p><strong>Exercise 2.</strong> Prove the absolutely convergent explicit formula for <span class="math" data-tex="$\psi_1(x)=\int_1^x\psi(u)\,du$">$\psi_1(x)=\int_1^x\psi(u)\,du$</span>, retaining every constant and trivial-zero term.</p>
+<p><strong>Solution 2.</strong> Use the proved smoothed Perron identity with kernel <span class="math" data-tex="$x^{s+1}/(s(s+1))$">$x^{s+1}/(s(s+1))$</span> and the available heights of Lemma 2.1. Compared with the sharp contour, the additional denominator makes the horizontal error <span class="math" data-tex="$O_x(\log^2H/H^2)$">$O_x(\log^2H/H^2)$</span>; the negative odd left side tends to zero as before. The residues at <span class="math" data-tex="$1$">$1$</span>, <span class="math" data-tex="$\rho$">$\rho$</span>, <span class="math" data-tex="$0$">$0$</span>, <span class="math" data-tex="$-1$">$-1$</span>, and <span class="math" data-tex="$-2k$">$-2k$</span> are respectively
+<span class="math math-display" data-tex="$$
+\frac{x^2}{2},\quad
+-\frac{x^{\rho+1}}{\rho(\rho+1)},\quad
+-x\log(2\pi),\quad
+\frac{\zeta&#x27;(-1)}{\zeta(-1)},\quad
+-\frac{x^{1-2k}}{2k(2k-1)}.
+$$">$$
+\frac{x^2}{2},\quad
+-\frac{x^{\rho+1}}{\rho(\rho+1)},\quad
+-x\log(2\pi),\quad
+\frac{\zeta&#x27;(-1)}{\zeta(-1)},\quad
+-\frac{x^{1-2k}}{2k(2k-1)}.
+$$</span>
+The pole at <span class="math" data-tex="$-1$">$-1$</span> comes from the kernel and must be included even though zeta does not vanish there. Summing these residues and passing to the available-height limit gives (4.1). On <span class="math" data-tex="$1\le x\le B$">$1\le x\le B$</span>, the large-ordinate terms are bounded by <span class="math" data-tex="$B^2/\gamma^2$">$B^2/\gamma^2$</span>, whose sum converges by lesson ten. The trivial terms are bounded by <span class="math" data-tex="$1/(2k(2k-1))$">$1/(2k(2k-1))$</span>. Thus both series converge absolutely and uniformly on this interval; the identity extends continuously to one. This is the contour proof, including its limit justification, rather than a formal integration of a series at a singular endpoint.</p>
+<p><strong>Exercise 3.</strong> With <span class="math" data-tex="$\Theta=\sup_\rho\Re\rho$">$\Theta=\sup_\rho\Re\rho$</span>, prove <span class="math" data-tex="$\psi(x)=x+O(x^\Theta\log^2x)$">$\psi(x)=x+O(x^\Theta\log^2x)$</span>.</p>
+<p><strong>Solution 3.</strong> Functional-equation symmetry gives <span class="math" data-tex="$\Theta\ge1/2$">$\Theta\ge1/2$</span>. Choose <span class="math" data-tex="$T=x$">$T=x$</span> in Theorem 2.2. Every zero term has modulus at most <span class="math" data-tex="$x^\Theta/|\rho|$">$x^\Theta/|\rho|$</span>, and lesson ten's partial-summation estimate gives <span class="math" data-tex="$\sum_{|\gamma|&lt;x}1/|\rho|=O(\log^2x)$">$\sum_{|\gamma|&lt;x}1/|\rho|=O(\log^2x)$</span>; finitely many low zeros are absorbed in the constant. The contour error is <span class="math" data-tex="$O(\log^2x)$">$O(\log^2x)$</span> because its minimum factor is at most one. The fixed constant and trivial-zero correction are bounded for <span class="math" data-tex="$x\ge2$">$x\ge2$</span>, and replacing <span class="math" data-tex="$\psi_0$">$\psi_0$</span> by <span class="math" data-tex="$\psi$">$\psi$</span> adds at most <span class="math" data-tex="$\tfrac12\log x$">$\tfrac12\log x$</span>. As <span class="math" data-tex="$x^\Theta\ge\sqrt x$">$x^\Theta\ge\sqrt x$</span>, these terms are all absorbed. This proves the asserted bound for all <span class="math" data-tex="$x\ge2$">$x\ge2$</span>.</p>
+<p><strong>Exercise 4.</strong> Show that <span class="math" data-tex="$\sum_\rho x^\rho/\rho$">$\sum_\rho x^\rho/\rho$</span> fails to converge absolutely for every <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>.</p>
+<p><strong>Solution 4.</strong> For positive ordinates at least one, <span class="math" data-tex="$|x^\rho|=x^\beta\ge1$">$|x^\rho|=x^\beta\ge1$</span> and <span class="math" data-tex="$|\rho|\le2\gamma$">$|\rho|\le2\gamma$</span>. Consequently the absolute sum up to <span class="math" data-tex="$T$">$T$</span> is at least <span class="math" data-tex="$\tfrac12\sum_{1\le\gamma\le T}1/\gamma$">$\tfrac12\sum_{1\le\gamma\le T}1/\gamma$</span>. The latter tends to infinity by the proved zero-counting asymptotic and partial summation in lesson ten. Hence even the positive-ordinate part diverges absolutely. Symmetric convergence in (3.1) uses cancellation and is not absolute convergence.</p>
+<p><strong>Exercise 5.</strong> Prove uniform convergence of the symmetric zero sums on a compact interval containing no prime power.</p>
+<p><strong>Solution 5.</strong> Let <span class="math" data-tex="$[a,B]\subset(1,\infty)$">$[a,B]\subset(1,\infty)$</span> contain no prime power. Only finitely many prime powers lie in <span class="math" data-tex="$[a/2,2B]$">$[a/2,2B]$</span>; their distances from this compact interval have a positive minimum. Those outside that range are separated from it as well. Thus <span class="math" data-tex="$\Delta(x)\ge d&gt;0$">$\Delta(x)\ge d&gt;0$</span> throughout the interval. The compact-range version of Theorem 2.2, proved in Theorem 3.1, gives uniformly
+<span class="math math-display" data-tex="$$
+|R(x,T)|\le C_{a,B,d}\frac{\log^2(T+4)}T\longrightarrow0.
+$$">$$
+|R(x,T)|\le C_{a,B,d}\frac{\log^2(T+4)}T\longrightarrow0.
+$$</span>
+Solving (2.5) for its finite zero sum shows that it converges uniformly to the continuous function <span class="math" data-tex="$x-\psi_0(x)-\log(2\pi)-\tfrac12\log(1-x^{-2})$">$x-\psi_0(x)-\log(2\pi)-\tfrac12\log(1-x^{-2})$</span> there. The interval contains no jump, so <span class="math" data-tex="$\psi_0$">$\psi_0$</span> is locally constant on it. This proves the required uniform convergence. If a prime-power jump were included, a uniform limit of the continuous finite sums could not equal that discontinuous function.</p>
+<h2 id="freely-readable-sources">Freely readable sources</h2>
+<ul>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, freely readable author preliminary version, 367 pages. Chapters 5 and 7, Theorem 5.1, Lemma 7.1 and Theorem 7.2; the Chapter 5 explicit-formula proof is developed in Chapter 8.</li>
+<li>B. Riemann, <a href="https://www.claymath.org/wp-content/uploads/2023/04/Wilkins-transcription.pdf"><em>Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse</em></a> (1859), freely readable D. R. Wilkins transcription, December 1998, 10 pages. Transcription pages 6–10: inversion, logarithm branches and the logarithmic integral.</li>
+<li>A. Connes, <a href="https://arxiv.org/pdf/2602.04022v1"><em>The Riemann Hypothesis: Past, Present and a Letter Through Time</em></a>, arXiv:2602.04022v1 (2026). Sections 2.1.2–2.1.3.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-10.html">← The Riemann–von Mangoldt formula</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-12.html">The prime number theorem with the classical error term →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-11.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Doubling a boundary problem and computing its index</title>
+<style>body{box-sizing:border-box;width:100%;min-width:0}main{min-width:0}body{font:18px/1.65 system-ui;color:#142535;background:#fbfcfa;max-width:980px;margin:2rem auto;padding:0 1.3rem}a{color:#075c89}h1{font-size:2.3rem;line-height:1.2}h2{margin-top:2rem}img{max-width:100%;height:auto}.math.display{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.5rem 0}math{font-size:1.04em}.math.display math{width:max-content;min-width:100%}.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle}pre{overflow-x:auto}nav,footer{border-block:1px solid #ccd8df;padding:1rem 0;margin:1.5rem 0}article{overflow-wrap:anywhere}table{border-collapse:collapse;max-width:100%;display:block;overflow-x:auto}td,th{border:1px solid #ccd;padding:.4rem}aside{background:#eef4f7;padding:1rem;border-radius:8px}</style>
+</head><body><main><nav><a href="index.html">Elliptic operators and boundary problems</a> · <a href="supporting-proofs.html">Learn first</a> · <a href="src/split-doubling-boundary-index.md">Markdown</a> · <a href="pdf/split-doubling-boundary-index.pdf">PDF</a> · <a href="tex/split-doubling-boundary-index.tex">TeX</a> · <a href="credits.html">Credits and terms</a></nav>
+<aside>Component license: CC0-1.0. Original contributor notices remain in the source. HTML preparation: OpenAI Codex, GPT-6.1 Sol, Ultra effort. Programme proof and review evidence is retained for each lesson. This edition does not claim independent review of the whole course. <a href="component-notices/TITLE_PAGE.md">Authors and component terms</a></aside><details><summary>Contents</summary><ul><li><a href="#the-split-first-order-model">1. The split first-order model</a></li><li><a href="#the-boundary-signs-and-the-shifted-kernel">2. The boundary signs
+and the shifted kernel</a></li><li><a href="#the-adjoint-boundary-relation-and-the-shifted-cokernel">3. The
+adjoint boundary relation and the shifted cokernel</a></li><li><a href="#the-full-positivity-remainder-and-adjoint-coefficients">The full
+positivity remainder and adjoint coefficients</a></li><li><a href="#a-surjective-boundary-constraint-preserves-the-index">4. A
+surjective boundary constraint preserves the index</a></li><li><a href="#the-reflected-complementary-half">5. The reflected complementary
+half</a></li><li><a href="#smooth-gluing-of-the-doubled-bundles-and-operator">6. Smooth
+gluing of the doubled bundles and operator</a></li><li><a href="#the-coupling-path-and-the-h1-gluing-domain">7. The coupling path
+and the H 1 H^1 gluing domain</a></li><li><a href="#the-complete-seam-distribution">The complete seam
+distribution</a></li><li><a href="#approximation-by-ordinary-operators-and-the-symbol-index">8.
+Approximation by ordinary operators and the symbol index</a></li><li><a href="#the-two-exact-kinds-of-doubled-index-datum">9. The two exact
+kinds of doubled index datum</a></li><li><a href="#scalar-sign-check">10. Scalar sign check</a></li><li><a href="#three-concrete-models">11. Three concrete models</a></li><li><a href="#a-finite-dimensional-boundary-constraint">A finite-dimensional
+boundary constraint</a></li><li><a href="#why-matching-values-is-the-right-h1-condition">Why matching
+values is the right H 1 H^1 condition</a></li><li><a href="#the-angular-cap-estimate">The angular cap estimate</a></li><li><a href="#exercises-with-complete-solutions">12. Exercises with complete
+solutions</a></li><li><a href="#reading-notes-and-references">13. Reading notes and
+references</a></li></ul></details><article><h1 id="doubling-a-boundary-problem-and-computing-its-index">Doubling a
+boundary problem and computing its index</h1>
+<p>A first-order elliptic boundary problem can be turned into an
+operator on a closed doubled manifold. The construction has three parts
+that must agree exactly: the reflected half must carry the complementary
+stable modes, the boundary coupling must stay elliptic while separate
+boundary conditions become matching traces, and the resulting mixed
+operator must be approximated in operator norm before its continuous
+symbol can compute the index.</p>
+<p>This lesson proves all three parts. It also resolves a possible
+factor-of-two ambiguity: the geometric double built here has a
+zero-index complementary half, so its index equals the boundary index. A
+one-half formula belongs to a different doubled datum whose
+complementary half has the same index as the original problem.</p>
+<p>The named prerequisites are <a href="stable-boundary-models.html">Stable modes and the algebra of
+boundary data</a>, <a href="generalized-collar-fredholm.html">Fredholm
+boundary problems with first-order Calderón defects</a>, <a href="fredholm-stability.html">Finite defects under perturbation</a>, and
+<a href="global-elliptic-symbol-index.html">Symbols, finite defects, and
+the index on a closed manifold</a>. We use
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>t</mi></msub><mo>=</mo><mi>−</mi><mi>i</mi><msub><mi>∂</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">D_t=-i\partial_t</annotation></semantics></math></span>,
+inward collar coordinates, and Hermitian inner products linear in the
+first entry. Matrix factors retain their displayed order.</p>
+<span id="AN03-SDI-001"></span><span id="1-the-split-first-order-model"></span><h2 id="the-split-first-order-model">1. The split first-order model</h2>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math></span>
+be compact with boundary
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math></span>.
+Suppose</p>
+<p><span class="math display"><math display="block" id="eq-DI1" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>Y</mi></msub><mo>=</mo><msup><mi>E</mi><mo>+</mo></msup><mo>⊕</mo><msup><mi>E</mi><mo>−</mo></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI1)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ E|_Y=E^+\oplus E^-&#13;
+ \tag{DI1}&#13;
+</annotation></semantics></math></span></p>
+<p>is orthogonal for a chosen Hermitian metric. Choose a product density
+and product metric in a collar
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>×</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>δ</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">Y\times[0,\delta)_t</annotation></semantics></math></span>.
+Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>∈</mo><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>δ</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\phi\in C_c^\infty([0,\delta))</annotation></semantics></math></span>
+be real,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>ϕ</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0\leq\phi\leq1</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\phi=1</annotation></semantics></math></span>
+near
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math></span>.
+Take
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="normal">Λ</mi><mo>±</mo></msup><mo>∈</mo><msubsup><mi mathvariant="normal">Ψ</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">g</mi></mrow><mn>1</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mi>Y</mi><mo>;</mo><msup><mi>E</mi><mo>±</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Lambda^\pm\in\Psi_{\mathrm{phg}}^1(Y;E^\pm)</annotation></semantics></math></span>
+with positive scalar real principal symbols
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>λ</mi><mo>±</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>I</mi><msup><mi>E</mi><mo>±</mo></msup></msub></mrow><annotation encoding="application/x-tex">\lambda^\pm(y,\eta)I_{E^\pm}</annotation></semantics></math></span>,
+and take an interior operator
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Λ</mi><mo>∈</mo><msubsup><mi mathvariant="normal">Ψ</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">g</mi></mrow><mn>1</mn></msubsup><mo form="prefix" stretchy="false">(</mo><msup><mi>X</mi><mo>∘</mo></msup><mo>;</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Lambda\in\Psi_{\mathrm{phg}}^1(X^\circ;E)</annotation></semantics></math></span>
+whose principal symbol
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>I</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">\lambda(x,\xi)I_E</annotation></semantics></math></span>
+is positive for every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi\ne0</annotation></semantics></math></span>.
+Extend
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="normal">Λ</mi><mo>±</mo></msup><annotation encoding="application/x-tex">\Lambda^\pm</annotation></semantics></math></span>
+constantly in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math></span>
+where
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\phi=1</annotation></semantics></math></span>,
+and put</p>
+<p><span class="math display"><math display="block" id="eq-DI2" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msup><mi>P</mi><mi>b</mi></msup><mi>u</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>ϕ</mi><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>D</mi><mi>t</mi></msub><mo>+</mo><mi>i</mi><msup><mi mathvariant="normal">Λ</mi><mo>+</mo></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>D</mi><mi>t</mi></msub><mo>+</mo><mi>i</mi><msup><mi mathvariant="normal">Λ</mi><mo>−</mo></msup></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac linethickness="0"><msup><mi>u</mi><mo>+</mo></msup><msup><mi>u</mi><mo>−</mo></msup></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msup><mi>P</mi><mi>i</mi></msup><mi>u</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mi mathvariant="normal">Λ</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mi>u</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>P</mi><mo>=</mo><msup><mi>P</mi><mi>b</mi></msup><mo>+</mo><msup><mi>P</mi><mi>i</mi></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>B</mi><mi>u</mi><mo>=</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>u</mi><mo>−</mo></msup><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI2)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{aligned}&#13;
+ P^bu&amp;=\phi&#13;
+ \begin{pmatrix}&#13;
+  D_t+i\Lambda^+&amp;0\\&#13;
+  0&amp;-D_t+i\Lambda^-&#13;
+ \end{pmatrix}&#13;
+ \binom{u^+}{u^-},\\&#13;
+ P^iu&amp;=i(1-\phi)\Lambda(1-\phi)u,\qquad&#13;
+ P=P^b+P^i,\qquad Bu=\gamma_0u^-.&#13;
+ \end{aligned}&#13;
+ \tag{DI2}&#13;
+</annotation></semantics></math></span></p>
+<p>In the collar-transition region the principal symbol is</p>
+<p><span class="math display"><math display="block" id="eq-DI3" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>t</mi><mo>,</mo><mi>η</mi><mo>,</mo><mi>τ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>τ</mi><mo>+</mo><mi>i</mi><msup><mi>λ</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>τ</mi><mo>+</mo><mi>i</mi><msup><mi>λ</mi><mo>−</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mi>λ</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>t</mi><mo>,</mo><mi>η</mi><mo>,</mo><mi>τ</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>I</mi><mi>E</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI3)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ p(y,t,\eta,\tau)=&#13;
+ \phi(t)&#13;
+ \begin{pmatrix}&#13;
+  \tau+i\lambda^+(y,\eta)&amp;0\\&#13;
+  0&amp;-\tau+i\lambda^-(y,\eta)&#13;
+ \end{pmatrix}&#13;
+ +i(1-\phi(t))^2\lambda(y,t,\eta,\tau)I_E.&#13;
+ \tag{DI3}&#13;
+</annotation></semantics></math></span></p>
+<p>If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>ϕ</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;\phi&lt;1</annotation></semantics></math></span>,
+the imaginary part of each diagonal scalar is positive at every nonzero
+covector. Where
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\phi=1</annotation></semantics></math></span>,
+a nonzero tangential covector gives a positive imaginary part and a
+nonzero pure normal covector gives the real entries
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>±</mi><mi>τ</mi></mrow><annotation encoding="application/x-tex">\pm\tau</annotation></semantics></math></span>.
+Where
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi=0</annotation></semantics></math></span>,
+the last term is invertible. Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math></span>
+is elliptic.</p>
+<p>Freeze at
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msup><mi>T</mi><mo>*</mo></msup><mi>Y</mi><mo>\</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(y,\eta)\in T^*Y\setminus0</annotation></semantics></math></span>.
+The two normal equations and their solutions are</p>
+<p><span class="math display"><math display="block" id="eq-DI4" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="left" style="text-align: left"><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>t</mi></msub><mo>+</mo><mi>i</mi><msup><mi>λ</mi><mo>+</mo></msup><mo form="postfix" stretchy="false">)</mo><msup><mi>v</mi><mo>+</mo></msup><mo>=</mo><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>v</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><msup><mi>λ</mi><mo>+</mo></msup><mi>t</mi></mrow></msup><msup><mi>v</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>v</mi><mo>+</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> bounded</mtext></mrow><mo>⇔</mo><msup><mi>v</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msub><mi>D</mi><mi>t</mi></msub><mo>+</mo><mi>i</mi><msup><mi>λ</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo><msup><mi>v</mi><mo>−</mo></msup><mo>=</mo><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>v</mi><mo>−</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><msup><mi>λ</mi><mo>−</mo></msup><mi>t</mi></mrow></msup><msup><mi>v</mi><mo>−</mo></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>v</mi><mo>−</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> bounded for every </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>v</mi><mo>−</mo></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI4)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{array}{lll}&#13;
+ (D_t+i\lambda^+)v^+=0,&#13;
+ &amp;v^+(t)=e^{\lambda^+t}v^+(0),&#13;
+ &amp;v^+\text{ bounded}\Longleftrightarrow v^+(0)=0,\\[1mm]&#13;
+ (-D_t+i\lambda^-)v^-=0,&#13;
+ &amp;v^-(t)=e^{-\lambda^-t}v^-(0),&#13;
+ &amp;v^-\text{ bounded for every }v^-(0).&#13;
+ \end{array}&#13;
+ \tag{DI4}&#13;
+</annotation></semantics></math></span></p>
+<p>Hence the stable Cauchy space is exactly
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>E</mi><mi>y</mi><mo>−</mo></msubsup><annotation encoding="application/x-tex">E^-_y</annotation></semantics></math></span>,
+and the principal boundary map
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>↦</mo><msup><mi>v</mi><mo>−</mo></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v\mapsto v^-(0)</annotation></semantics></math></span>
+is its identity. The generalized interior and boundary symbols are
+elliptic. <a href="generalized-collar-fredholm.html">Fredholm boundary
+problems with first-order Calderón defects</a> therefore makes</p>
+<p><span class="math display"><math display="block" id="eq-DI5" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>B</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>s</mi></msub><mo>:</mo><msub><mover><mi>H</mi><mo accent="true">‾</mo></mover><mi>s</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>X</mi><mo>∘</mo></msup><mo>;</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><msub><mover><mi>H</mi><mo accent="true">‾</mo></mover><mrow><mi>s</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>X</mi><mo>∘</mo></msup><mo>;</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>⊕</mo><msup><mi>H</mi><mrow><mi>s</mi><mo>−</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>Y</mi><mo>;</mo><msup><mi>E</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI5)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ (P,B)_s:\bar H_s(X^\circ;E)\longrightarrow&#13;
+ \bar H_{s-1}(X^\circ;E)\oplus H^{s-1/2}(Y;E^-)&#13;
+ \tag{DI5}&#13;
+</annotation></semantics></math></span></p>
+<p>Fredholm for every real
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s\geq1</annotation></semantics></math></span>.</p>
+<span id="AN03-SDI-002"></span><span id="2-the-boundary-signs-and-the-shifted-kernel"></span><h2 id="the-boundary-signs-and-the-shifted-kernel">2. The boundary signs
+and the shifted kernel</h2>
+<p>For a compactly supported smooth scalar or vector function
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math></span>
+in the collar, integration by parts with the stated inner-product
+convention gives the exact signs</p>
+<p><span class="math display"><math display="block" id="eq-DI6" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mn>2</mn><mrow><mi mathvariant="normal">Im</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ϕ</mi><msub><mi>D</mi><mi>t</mi></msub><mi>w</mi><mo>,</mo><mi>w</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>X</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><msub><mi>γ</mi><mn>0</mn></msub><mi>w</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>Y</mi><mn>2</mn></msubsup><mo>+</mo><msub><mo>∫</mo><mi>X</mi></msub><msup><mi>ϕ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">|</mo><mi>w</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mn>2</mn><mrow><mi mathvariant="normal">Im</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>ϕ</mi><msub><mi>D</mi><mi>t</mi></msub><mi>w</mi><mo>,</mo><mi>w</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>X</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mo form="postfix" stretchy="false">∥</mo><msub><mi>γ</mi><mn>0</mn></msub><mi>w</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>Y</mi><mn>2</mn></msubsup><mo>−</mo><msub><mo>∫</mo><mi>X</mi></msub><msup><mi>ϕ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">|</mo><mi>w</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI6)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{aligned}&#13;
+ 2\operatorname{Im}(\phi D_tw,w)_X&#13;
+   &amp;=\|\gamma_0w\|_Y^2+\int_X\phi'(t)|w|^2,\\&#13;
+ 2\operatorname{Im}(-\phi D_tw,w)_X&#13;
+   &amp;=-\|\gamma_0w\|_Y^2-\int_X\phi'(t)|w|^2.&#13;
+ \end{aligned}&#13;
+ \tag{DI6}&#13;
+</annotation></semantics></math></span></p>
+<p>Indeed, the first difference from its complex conjugate is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>i</mi><mo>∫</mo><mi>ϕ</mi><msub><mi>∂</mi><mi>t</mi></msub><mo form="prefix" stretchy="false">|</mo><mi>w</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">-i\int\phi\partial_t|w|^2</annotation></semantics></math></span>,
+and the endpoint at
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math></span>
+has the displayed positive sign. The second identity is its
+negative.</p>
+<p>The scalar positive principal symbols of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="normal">Λ</mi><mo>±</mo></msup><annotation encoding="application/x-tex">\Lambda^\pm</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math></span>
+give the matrix Gårding lower bounds for the real parts of their
+quadratic forms. Derivatives of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span>,
+nonsymmetric lower-order terms, and the bounded collar patching terms
+contribute at most
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>X</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">C\|u\|_X^2</annotation></semantics></math></span>.
+Combining these facts with (DI6) gives</p>
+<p><span class="math display"><math display="block" id="eq-DI7" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mrow><mi mathvariant="normal">Im</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mi>u</mi><mo>,</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>X</mi></msub><mo>≥</mo><mo form="postfix" stretchy="false">∥</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>u</mi><mo>+</mo></msup><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>Y</mi><mn>2</mn></msubsup><mi>−</mi><mo form="postfix" stretchy="false">∥</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>u</mi><mo>−</mo></msup><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>Y</mi><mn>2</mn></msubsup><mo>−</mo><mi>C</mi><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>X</mi><mn>2</mn></msubsup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI7)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ 2\operatorname{Im}(Pu,u)_X&#13;
+ \geq \|\gamma_0u^+\|_Y^2-&#13;
+       \|\gamma_0u^-\|_Y^2-C\|u\|_X^2.&#13;
+ \tag{DI7}&#13;
+</annotation></semantics></math></span></p>
+<p>For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>&gt;</mo><mi>C</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">T&gt;C/2</annotation></semantics></math></span>,
+set
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>T</mi></msub><mo>=</mo><mi>P</mi><mo>+</mo><mi>i</mi><mi>T</mi><msub><mi>I</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">P_T=P+iT I_E</annotation></semantics></math></span>.
+If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>T</mi></msub><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">P_Tu=0</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Bu=0</annotation></semantics></math></span>,
+then</p>
+<p><span class="math display"><math display="block" id="eq-DI8" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><mn>2</mn><mrow><mi mathvariant="normal">Im</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>T</mi></msub><mi>u</mi><mo>,</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>X</mi></msub><mo>≥</mo><mo form="postfix" stretchy="false">∥</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>u</mi><mo>+</mo></msup><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>Y</mi><mn>2</mn></msubsup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>T</mi><mo>−</mo><mi>C</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>X</mi><mn>2</mn></msubsup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI8)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ 0=2\operatorname{Im}(P_Tu,u)_X&#13;
+ \geq\|\gamma_0u^+\|_Y^2+(2T-C)\|u\|_X^2.&#13;
+ \tag{DI8}&#13;
+</annotation></semantics></math></span></p>
+<p>Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u=0</annotation></semantics></math></span>.
+Elliptic regularity from <a href="generalized-collar-fredholm.html">Fredholm boundary problems with
+first-order Calderón defects</a> first makes every weak kernel element
+smooth, so the calculation applies to the full kernel of (DI5).</p>
+<span id="AN03-SDI-003"></span><span id="3-the-adjoint-boundary-relation-and-the-shifted-cokernel"></span><h2 id="the-adjoint-boundary-relation-and-the-shifted-cokernel">3. The
+adjoint boundary relation and the shifted cokernel</h2>
+<p>Take the base realization
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s=1</annotation></semantics></math></span>.
+A pair
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo>,</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(v,h)</annotation></semantics></math></span>
+in the annihilator of the range of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>T</mi></msub><mo>,</mo><mi>B</mi><msub><mo form="postfix" stretchy="false">)</mo><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">(P_T,B)_1</annotation></semantics></math></span>
+is smooth by the dual regularity theorem in <a href="generalized-collar-fredholm.html">Fredholm boundary problems with
+first-order Calderón defects</a>. The leading normal terms give Green’s
+identity</p>
+<p><span class="math display"><math display="block" id="eq-DI9" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mi>u</mi><mo>,</mo><mi>v</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>X</mi></msub><mo>−</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><msup><mi>P</mi><mo>*</mo></msup><mi>v</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>X</mi></msub><mo>=</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>u</mi><mo>+</mo></msup><mo>,</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>+</mo></msup><msub><mo form="postfix" stretchy="false">)</mo><mi>Y</mi></msub><mo>−</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>u</mi><mo>−</mo></msup><mo>,</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>−</mo></msup><msub><mo form="postfix" stretchy="false">)</mo><mi>Y</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI9)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ (Pu,v)_X-(u,P^*v)_X&#13;
+ =i(\gamma_0u^+,\gamma_0v^+)_Y&#13;
+  -i(\gamma_0u^-,\gamma_0v^-)_Y.&#13;
+ \tag{DI9}&#13;
+</annotation></semantics></math></span></p>
+<p>The annihilation equation is therefore</p>
+<p><span class="math display"><math display="block" id="eq-DI10" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>P</mi><mo>*</mo></msup><mo>−</mo><mi>i</mi><mi>T</mi><mo form="postfix" stretchy="false">)</mo><mi>v</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>X</mi></msub><mo>+</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>u</mi><mo>+</mo></msup><mo>,</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>+</mo></msup><msub><mo form="postfix" stretchy="false">)</mo><mi>Y</mi></msub><mo>−</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>u</mi><mo>−</mo></msup><mo>,</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>−</mo></msup><msub><mo form="postfix" stretchy="false">)</mo><mi>Y</mi></msub><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>u</mi><mo>−</mo></msup><mo>,</mo><mi>h</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>Y</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI10)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ 0=(u,(P^*-iT)v)_X&#13;
+   +i(\gamma_0u^+,\gamma_0v^+)_Y&#13;
+   -i(\gamma_0u^-,\gamma_0v^-)_Y&#13;
+   +(\gamma_0u^-,h)_Y.&#13;
+ \tag{DI10}&#13;
+</annotation></semantics></math></span></p>
+<p>Interior tests and arbitrary boundary traces give, with no change of
+the conjugate-linear slot,</p>
+<p><span class="math display"><math display="block" id="eq-DI11" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>P</mi><mo>*</mo></msup><mo>−</mo><mi>i</mi><mi>T</mi><mo form="postfix" stretchy="false">)</mo><mi>v</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>+</mo></msup><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>h</mi><mo>=</mo><mi>−</mi><mi>i</mi><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>−</mo></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI11)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ (P^*-iT)v=0,\qquad&#13;
+ \gamma_0v^+=0,\qquad h=-i\gamma_0v^-.&#13;
+ \tag{DI11}&#13;
+</annotation></semantics></math></span></p>
+<p>Put
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mi>−</mi><msup><mi>P</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">Q=-P^*</annotation></semantics></math></span>.
+Exchange the names of the two orthogonal summands:</p>
+<p><span class="math display"><math display="block" id="eq-DI12" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>E</mi><mi>Q</mi><mo>+</mo></msubsup><mo>=</mo><msup><mi>E</mi><mo>−</mo></msup><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>E</mi><mi>Q</mi><mo>−</mo></msubsup><mo>=</mo><msup><mi>E</mi><mo>+</mo></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI12)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ E_Q^+=E^-,\qquad E_Q^-=E^+.&#13;
+ \tag{DI12}&#13;
+</annotation></semantics></math></span></p>
+<p>The full differentiated-cutoff terms are computed below in
+(DA3)–(DA5). The collar principal part of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math></span>,
+written in the order
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>E</mi><mi>Q</mi><mo>+</mo></msubsup><mo>⊕</mo><msubsup><mi>E</mi><mi>Q</mi><mo>−</mo></msubsup></mrow><annotation encoding="application/x-tex">E_Q^+\oplus E_Q^-</annotation></semantics></math></span>,
+is</p>
+<p><span class="math display"><math display="block" id="eq-DI13" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>D</mi><mi>t</mi></msub><mo>+</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="normal">Λ</mi><mo>−</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mo>*</mo></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>D</mi><mi>t</mi></msub><mo>+</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="normal">Λ</mi><mo>+</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mo>*</mo></msup></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>B</mi><mi>Q</mi></msub><mi>v</mi><mo>=</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>+</mo></msup><mo>=</mo><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>v</mi><mi>Q</mi><mo>−</mo></msubsup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI13)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{pmatrix}&#13;
+  D_t+i(\Lambda^-)^*&amp;0\\&#13;
+ 0&amp;-D_t+i(\Lambda^+)^*&#13;
+ \end{pmatrix},\qquad&#13;
+ B_Qv=\gamma_0v^+=\gamma_0v_Q^-.&#13;
+ \tag{DI13}&#13;
+</annotation></semantics></math></span></p>
+<p>Multiplying the first equation in (DI11) by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span>
+gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>Q</mi><mo>+</mo><mi>i</mi><mi>T</mi><mo form="postfix" stretchy="false">)</mo><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(Q+iT)v=0</annotation></semantics></math></span>,
+while
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>Q</mi></msub><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">B_Qv=0</annotation></semantics></math></span>.
+The estimate (DI8), with the same sufficiently large
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math></span>
+after enlarging
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math></span>
+once, gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v=0</annotation></semantics></math></span>,
+and then
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h=0</annotation></semantics></math></span>.
+Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>T</mi></msub><mo>,</mo><mi>B</mi><msub><mo form="postfix" stretchy="false">)</mo><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">(P_T,B)_1</annotation></semantics></math></span>
+is bijective. The path</p>
+<p><span class="math display"><math display="block" id="eq-DI14" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>+</mo><mi>i</mi><mi>r</mi><mi>T</mi><msub><mi>I</mi><mi>E</mi></msub><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mn>0</mn><mo>≤</mo><mi>r</mi><mo>≤</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI14)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ (P+i rT I_E,B),\qquad 0\leq r\leq1,&#13;
+ \tag{DI14}&#13;
+</annotation></semantics></math></span></p>
+<p>keeps both principal symbols fixed and stays Fredholm. Its index is
+constant, so
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>B</mi><msub><mo form="postfix" stretchy="false">)</mo><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\operatorname{ind}(P,B)_1=0</annotation></semantics></math></span>.
+<a href="generalized-collar-fredholm.html">Fredholm boundary problems with
+first-order Calderón defects</a> identifies the same smooth kernel and
+adjoint obstruction spaces at every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s\geq1</annotation></semantics></math></span>.
+Consequently</p>
+<p><span class="math display"><math display="block" id="eq-DI15" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><menclose notation="box"><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>B</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>s</mi></msub><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo>≥</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow></menclose><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI15)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \boxed{\operatorname{ind}(P,B)_s=0\quad(s\geq1).}&#13;
+ \tag{DI15}&#13;
+</annotation></semantics></math></span></p>
+<span id="AN03-SDI-ADJOINT-001"></span><h3 id="the-full-positivity-remainder-and-adjoint-coefficients">The full
+positivity remainder and adjoint coefficients</h3>
+<p>Here is a direct proof of the lower bounds used in (DI7), with their
+actual lower-order operators retained. If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+is any of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="normal">Λ</mi><mo>+</mo></msup><annotation encoding="application/x-tex">\Lambda^+</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="normal">Λ</mi><mo>−</mo></msup><annotation encoding="application/x-tex">\Lambda^-</annotation></semantics></math></span>,
+or the interior
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math></span>,
+its principal symbol is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>A</mi></msub><mi>I</mi></mrow><annotation encoding="application/x-tex">\lambda_A I</annotation></semantics></math></span>,
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>A</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda_A&gt;0</annotation></semantics></math></span>
+off the zero section. Quantize the degree-one-half symbol
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><msub><mi>λ</mi><mi>A</mi></msub></msqrt><mi>I</mi></mrow><annotation encoding="application/x-tex">\sqrt{\lambda_A}I</annotation></semantics></math></span>
+to an operator
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>A</mi></msub><annotation encoding="application/x-tex">R_A</annotation></semantics></math></span>.
+Use the full bundle composition and adjoint formulas in <a href="euclidean-symbol-calculus.html">Symbols, operators and Sobolev
+scales</a> and <a href="geometric-microlocal-calculus.html">Detecting
+regularity without choosing coordinates</a>. Their principal product is
+exactly
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>A</mi></msub><mi>I</mi></mrow><annotation encoding="application/x-tex">\lambda_A I</annotation></semantics></math></span>.
+Hence</p>
+<p><span class="math display"><math display="block" id="eq-DA1" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>A</mi></msub><mo>=</mo><mfrac><mrow><mi>A</mi><mo>+</mo><msup><mi>A</mi><mo>*</mo></msup></mrow><mn>2</mn></mfrac><mo>−</mo><msubsup><mi>R</mi><mi>A</mi><mo>*</mo></msubsup><msub><mi>R</mi><mi>A</mi></msub><mo>∈</mo><msup><mi mathvariant="normal">Ψ</mi><mn>0</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">Re</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mi>w</mi><mo>,</mo><mi>w</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><msub><mi>R</mi><mi>A</mi></msub><mi>w</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><mi>A</mi></msub><mi>w</mi><mo>,</mo><mi>w</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mi>A</mi></msub><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><msub><mi>H</mi><mi>A</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi>L</mi><mn>2</mn></msup><mo>→</mo><msup><mi>L</mi><mn>2</mn></msup></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DA1)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ H_A=\frac{A+A^*}{2}-R_A^*R_A\in\Psi^0,&#13;
+ \qquad&#13;
+ \operatorname{Re}(Aw,w)=\|R_Aw\|_2^2+(H_Aw,w),&#13;
+ \qquad C_A=\|H_A\|_{L^2\to L^2}.&#13;
+ \tag{DA1}&#13;
+</annotation></semantics></math></span></p>
+<p>The principal symbol comparison proves the order-zero claim; the
+linked order-zero mapping theorem makes
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>A</mi></msub><annotation encoding="application/x-tex">C_A</annotation></semantics></math></span>
+finite. The formula retains the entire lower-order operator
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi>A</mi></msub><annotation encoding="application/x-tex">H_A</annotation></semantics></math></span>,
+rather than replacing
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+by its positive principal symbol. It gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Re</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mi>w</mi><mo>,</mo><mi>w</mi><mo form="postfix" stretchy="false">)</mo><mo>≥</mo><mi>−</mi><msub><mi>C</mi><mi>A</mi></msub><mo form="postfix" stretchy="false">∥</mo><mi>w</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\operatorname{Re}(Aw,w)\geq-C_A\|w\|_2^2</annotation></semantics></math></span>.
+For tangential families take the supremum of these constants on the
+compact support of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span>.
+Smooth family quantization and the finite seminorm bounds give finite
+suprema. For the interior operator the input
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">(1-\phi)u</annotation></semantics></math></span>
+is supported away from the boundary; insert cutoffs equal to one on that
+support and use the same calculation on interior charts. All errors from
+these cutoffs are included in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi mathvariant="normal">Λ</mi></msub><annotation encoding="application/x-tex">H_\Lambda</annotation></semantics></math></span>.</p>
+<p>At each fixed
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math></span>,
+the scalar
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\phi(t)</annotation></semantics></math></span>
+commutes with the tangential operators. It is nonnegative, so
+multiplying (DA1) by it and integrating in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math></span>
+gives the tangential lower bound without taking a square root of the
+cutoff. The exact interior quadratic form is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Im</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mi mathvariant="normal">Λ</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mi>u</mi><mo>,</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Re</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="normal">Λ</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mi>u</mi><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Im}(i(1-\phi)\Lambda(1-\phi)u,u)&#13;
+=\operatorname{Re}(\Lambda(1-\phi)u,(1-\phi)u)</annotation></semantics></math></span>.
+Combining these statements with both full identities in (DI6) proves
+(DI7) with the concrete choice</p>
+<p><span class="math display"><math display="block" id="eq-DA2" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>b</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>C</mi><msup><mi mathvariant="normal">Λ</mi><mo>+</mo></msup></msub><mo>,</mo><msub><mi>C</mi><msup><mi mathvariant="normal">Λ</mi><mo>−</mo></msup></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><msub><mi>C</mi><mi mathvariant="normal">Λ</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mi>P</mi></msub><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><msup><mi>ϕ</mi><mo>′</mo></msup><msub><mo form="postfix" stretchy="false">∥</mo><mi>∞</mi></msub><mo>+</mo><mn>2</mn><msub><mi>C</mi><mi>b</mi></msub><mo>+</mo><mn>2</mn><msub><mi>C</mi><mi>i</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DA2)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ C_b=\max(C_{\Lambda^+},C_{\Lambda^-}),\qquad&#13;
+ C_i=C_\Lambda,\qquad&#13;
+ C_P=\|\phi'\|_\infty+2C_b+2C_i.&#13;
+ \tag{DA2}&#13;
+</annotation></semantics></math></span></p>
+<p>No self-adjointness of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+was assumed. Its geometric adjoint has the same real quadratic form, so
+the same constants work for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="normal">Λ</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\Lambda^*</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="normal">Λ</mi><mo>±</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">(\Lambda^\pm)^*</annotation></semantics></math></span>.</p>
+<p>To compute
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mi>−</mi><msup><mi>P</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">Q=-P^*</annotation></semantics></math></span>,
+use the original product metric and density. Multiplication by the real
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span>
+is self-adjoint and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>t</mi></msub><mi>ϕ</mi><mo>=</mo><mi>ϕ</mi><msub><mi>D</mi><mi>t</mi></msub><mo>−</mo><mi>i</mi><msup><mi>ϕ</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">D_t\phi=\phi D_t-i\phi'</annotation></semantics></math></span>.
+The full collar adjoint, before exchanging summands, is</p>
+<p><span class="math display"><math display="block" id="eq-DA3" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>P</mi><mi>b</mi></msup><msup><mo form="postfix" stretchy="false">)</mo><mo>*</mo></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>ϕ</mi><msub><mi>D</mi><mi>t</mi></msub><mo>−</mo><mi>i</mi><msup><mi>ϕ</mi><mo>′</mo></msup><mo>−</mo><mi>i</mi><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="normal">Λ</mi><mo>+</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mo>*</mo></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>ϕ</mi><msub><mi>D</mi><mi>t</mi></msub><mo>+</mo><mi>i</mi><msup><mi>ϕ</mi><mo>′</mo></msup><mo>−</mo><mi>i</mi><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="normal">Λ</mi><mo>−</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mo>*</mo></msup></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><msup><mi>P</mi><mi>i</mi></msup><msup><mo form="postfix" stretchy="false">)</mo><mo>*</mo></msup><mo>=</mo><mi>−</mi><mi>i</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><msup><mi mathvariant="normal">Λ</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DA3)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ (P^b)^*=&#13;
+ \begin{pmatrix}&#13;
+  \phi D_t-i\phi'-i\phi(\Lambda^+)^*&amp;0\\&#13;
+  0&amp;-\phi D_t+i\phi'-i\phi(\Lambda^-)^*&#13;
+ \end{pmatrix},\qquad&#13;
+ (P^i)^*=-i(1-\phi)\Lambda^*(1-\phi).&#13;
+ \tag{DA3}&#13;
+</annotation></semantics></math></span></p>
+<p>Tangential operators commute with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\phi(t)</annotation></semantics></math></span>,
+including when their coefficients depend on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math></span>.
+Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>v</mi><mo>+</mo></msup><mo>,</mo><msup><mi>v</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>v</mi><mo>−</mo></msup><mo>,</mo><msup><mi>v</mi><mo>+</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">S(v^+,v^-)=(v^-,v^+)</annotation></semantics></math></span>
+be the unitary change of order on the collar. In precisely the order
+(DI12) the full operator is</p>
+<p><span class="math display"><math display="block" id="eq-DA4" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>S</mi><msup><mi>Q</mi><mi>b</mi></msup><msup><mi>S</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>ϕ</mi><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>D</mi><mi>t</mi></msub><mo>+</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="normal">Λ</mi><mo>−</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mo>*</mo></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>D</mi><mi>t</mi></msub><mo>+</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="normal">Λ</mi><mo>+</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mo>*</mo></msup></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>i</mi><msup><mi>ϕ</mi><mo>′</mo></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>i</mi><msup><mi>ϕ</mi><mo>′</mo></msup></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>S</mi><msup><mi>Q</mi><mi>i</mi></msup><msup><mi>S</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mi>S</mi><msup><mi mathvariant="normal">Λ</mi><mo>*</mo></msup><msup><mi>S</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>B</mi><mi>Q</mi></msub><mi>v</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>+</mo></msup><mo>=</mo><msub><mi>γ</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mi>v</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>−</mo></msup><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DA4)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{aligned}&#13;
+ SQ^bS^{-1}&#13;
+ &amp;=\phi\begin{pmatrix}&#13;
+       D_t+i(\Lambda^-)^*&amp;0\\&#13;
+       0&amp;-D_t+i(\Lambda^+)^*&#13;
+      \end{pmatrix}&#13;
+       +\begin{pmatrix}-i\phi'&amp;0\\0&amp;i\phi'\end{pmatrix},\\&#13;
+ SQ^iS^{-1}&amp;=i(1-\phi)S\Lambda^*S^{-1}(1-\phi),\\&#13;
+ B_Qv&amp;=\gamma_0v^+=\gamma_0(Sv)^-.&#13;
+ \end{aligned}&#13;
+ \tag{DA4}&#13;
+</annotation></semantics></math></span></p>
+<p>The second formula is a collar expression only; it does not assert
+that the splitting or
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>
+extends over the whole interior bundle. On the original bundle the full
+interior operator is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><msup><mi mathvariant="normal">Λ</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">i(1-\phi)\Lambda^*(1-\phi)</annotation></semantics></math></span>.
+These descriptions give the same quadratic form on their respective
+charts. The displayed multiplication remainder contributes exactly</p>
+<p><span class="math display"><math display="block" id="eq-DA5" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mrow><mi mathvariant="normal">Im</mi><mo>⁡</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>i</mi><msup><mi>ϕ</mi><mo>′</mo></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>i</mi><msup><mi>ϕ</mi><mo>′</mo></msup></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><msub><mi>v</mi><mi>Q</mi></msub><mo>,</mo><msub><mi>v</mi><mi>Q</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>−</mi><mn>2</mn><mo>∫</mo><msup><mi>ϕ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><msubsup><mi>v</mi><mi>Q</mi><mo>+</mo></msubsup><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><mn>2</mn><mo>∫</mo><msup><mi>ϕ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><msubsup><mi>v</mi><mi>Q</mi><mo>−</mo></msubsup><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DA5)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ 2\operatorname{Im}&#13;
+   \left(\begin{pmatrix}-i\phi'&amp;0\\0&amp;i\phi'\end{pmatrix}&#13;
+                       v_Q,v_Q\right)&#13;
+   =-2\int\phi'|v_Q^+|^2+2\int\phi'|v_Q^-|^2.&#13;
+ \tag{DA5}&#13;
+</annotation></semantics></math></span></p>
+<p>Its absolute value is at most
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo form="postfix" stretchy="false">∥</mo><msup><mi>ϕ</mi><mo>′</mo></msup><msub><mo form="postfix" stretchy="false">∥</mo><mi>∞</mi></msub><mo form="postfix" stretchy="false">∥</mo><mi>v</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">2\|\phi'\|_\infty\|v\|_2^2</annotation></semantics></math></span>.
+Therefore (DI7) holds for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>Q</mi></msub><mo>=</mo><msub><mi>C</mi><mi>P</mi></msub><mo>+</mo><mn>2</mn><mo form="postfix" stretchy="false">∥</mo><msup><mi>ϕ</mi><mo>′</mo></msup><msub><mo form="postfix" stretchy="false">∥</mo><mi>∞</mi></msub></mrow><annotation encoding="application/x-tex">C_Q=C_P+2\|\phi'\|_\infty</annotation></semantics></math></span>,
+with its plus and minus boundary spaces exactly as in (DI12). A single
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>&gt;</mo><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>C</mi><mi>P</mi></msub><mo>,</mo><msub><mi>C</mi><mi>Q</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">T&gt;\max(C_P,C_Q)/2</annotation></semantics></math></span>
+supplies both estimates used in (DI8) and (DI11). This proves the
+shifted bijectivity without discarding either differentiated-cutoff
+term.</p>
+<span id="AN03-SDI-004"></span><span id="4-a-surjective-boundary-constraint-preserves-the-index"></span><h2 id="a-surjective-boundary-constraint-preserves-the-index">4. A
+surjective boundary constraint preserves the index</h2>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>,</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>,</mo><msub><mi>Z</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">X_0,Y_0,Z_0</annotation></semantics></math></span>
+be Hilbert spaces, let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><msub><mi>X</mi><mn>0</mn></msub><mo>→</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>⊕</mo><msub><mi>Z</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">A=(P,B):X_0\to Y_0\oplus Z_0</annotation></semantics></math></span>
+be Fredholm, and suppose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>:</mo><msub><mi>X</mi><mn>0</mn></msub><mo>→</mo><msub><mi>Z</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">B:X_0\to Z_0</annotation></semantics></math></span>
+is surjective. Its restriction to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mi>B</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>⟂</mo></msup></mrow><annotation encoding="application/x-tex">(\ker B)^\perp</annotation></semantics></math></span>
+is a bounded bijection onto
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">Z_0</annotation></semantics></math></span>,
+so the Banach inverse theorem supplies a bounded right inverse
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>:</mo><msub><mi>Z</mi><mn>0</mn></msub><mo>→</mo><msub><mi>X</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">R:Z_0\to X_0</annotation></semantics></math></span>.
+Set
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>B</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">X_B=\ker B</annotation></semantics></math></span>.
+Define</p>
+<p><span class="math display"><math display="block" id="eq-DI16" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>J</mi><mo>:</mo><msub><mi>X</mi><mi>B</mi></msub><mo>⊕</mo><msub><mi>Z</mi><mn>0</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><msub><mi>X</mi><mn>0</mn></msub><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>x</mi><mo>+</mo><mi>R</mi><mi>z</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msup><mi>J</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>u</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>−</mo><mi>R</mi><mi>B</mi><mi>u</mi><mo>,</mo><mi>B</mi><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>S</mi><mo>:</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>⊕</mo><msub><mi>Z</mi><mn>0</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>⊕</mo><msub><mi>Z</mi><mn>0</mn></msub><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>S</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>−</mo><mi>P</mi><mi>R</mi><mi>z</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI16)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{aligned}&#13;
+ J:X_B\oplus Z_0&amp;\longrightarrow X_0,&#13;
+ &amp;J(x,z)&amp;=x+Rz,\\&#13;
+ J^{-1}u&amp;=(u-RBu,Bu),\\&#13;
+ S:Y_0\oplus Z_0&amp;\longrightarrow Y_0\oplus Z_0,&#13;
+ &amp;S(y,z)&amp;=(y-PRz,z).&#13;
+ \end{aligned}&#13;
+ \tag{DI16}&#13;
+</annotation></semantics></math></span></p>
+<p>Both
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>
+are bounded isomorphisms, and direct substitution gives the exact
+triangular reduction</p>
+<p><span class="math display"><math display="block" id="eq-DI17" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>A</mi><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mi>x</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>S</mi><mi>A</mi><mi>J</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>P</mi><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>X</mi><mi>B</mi></msub></msub><mo form="postfix" stretchy="false">)</mo><mo>⊕</mo><msub><mi>I</mi><msub><mi>Z</mi><mn>0</mn></msub></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI17)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ SAJ(x,z)=(Px,z),\qquad&#13;
+ SAJ=(P|_{X_B})\oplus I_{Z_0}.&#13;
+ \tag{DI17}&#13;
+</annotation></semantics></math></span></p>
+<p>It follows that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>X</mi><mi>B</mi></msub></msub><mo>:</mo><msub><mi>X</mi><mi>B</mi></msub><mo>→</mo><msub><mi>Y</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">P|_{X_B}:X_B\to Y_0</annotation></semantics></math></span>
+is Fredholm and that its kernel, cokernel, and index agree with those of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>:</p>
+<p><span class="math display"><math display="block" id="eq-DI18" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>X</mi><mi>B</mi></msub></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mi>A</mi><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">coker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>X</mi><mi>B</mi></msub></msub><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mrow><mi mathvariant="normal">coker</mi><mo>⁡</mo></mrow><mi>A</mi><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>X</mi><mi>B</mi></msub></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>A</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI18)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \ker(P|_{X_B})=\ker A,\qquad&#13;
+ \operatorname{coker}(P|_{X_B})\simeq\operatorname{coker}A,\qquad&#13;
+ \operatorname{ind}(P|_{X_B})=\operatorname{ind}A.&#13;
+ \tag{DI18}&#13;
+</annotation></semantics></math></span></p>
+<p>This also proves the cokernel isomorphism, rather than only an index
+count.</p>
+<span id="AN03-SDI-005"></span><span id="5-the-reflected-complementary-half"></span><h2 id="the-reflected-complementary-half">5. The reflected complementary
+half</h2>
+<p>Now let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>:</mo><msub><mi>E</mi><mn>1</mn></msub><mo>→</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">P_1:E_1\to F_1</annotation></semantics></math></span>
+be any elliptic first-order mixed operator on a copy
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>=</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">X_1=X</annotation></semantics></math></span>
+whose collar part, after a fixed collar identification
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>:</mo><msub><mi>F</mi><mn>1</mn></msub><mo>≃</mo><msub><mi>E</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\kappa:F_1\simeq E_1</annotation></semantics></math></span>,
+is the split expression in (DI2). Its compactly supported interior part
+need not be the positive model used to prove (DI15). Give a second copy
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>2</mn></msub><mo>=</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">X_2=X</annotation></semantics></math></span>
+the inward coordinate
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>2</mn></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t_2\geq0</annotation></semantics></math></span>,
+copy the split bundle
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>E</mi><mn>2</mn><mo>+</mo></msubsup><mo>⊕</mo><msubsup><mi>E</mi><mn>2</mn><mo>−</mo></msubsup></mrow><annotation encoding="application/x-tex">E_2^+\oplus E_2^-</annotation></semantics></math></span>,
+and set near its boundary</p>
+<p><span class="math display"><math display="block" id="eq-DI19" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>P</mi><mn>2</mn><mi>b</mi></msubsup><mo>=</mo><mi>ϕ</mi><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>D</mi><msub><mi>t</mi><mn>2</mn></msub></msub><mo>+</mo><mi>i</mi><msup><mi mathvariant="normal">Λ</mi><mo>+</mo></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>D</mi><msub><mi>t</mi><mn>2</mn></msub></msub><mo>+</mo><mi>i</mi><msup><mi mathvariant="normal">Λ</mi><mo>−</mo></msup></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>B</mi><mn>2</mn></msub><msub><mi>u</mi><mn>2</mn></msub><mo>=</mo><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>2</mn><mo>+</mo></msubsup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI19)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ P_2^b=\phi&#13;
+ \begin{pmatrix}&#13;
+  -D_{t_2}+i\Lambda^+&amp;0\\&#13;
+  0&amp;D_{t_2}+i\Lambda^-&#13;
+ \end{pmatrix},\qquad&#13;
+ B_2u_2=\gamma_0u_2^+.&#13;
+ \tag{DI19}&#13;
+</annotation></semantics></math></span></p>
+<p>Complete
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>P</mi><mn>2</mn><mi>b</mi></msubsup><annotation encoding="application/x-tex">P_2^b</annotation></semantics></math></span>
+away from the boundary by the reflected version of the positive interior
+term in (DI2): choose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Λ</mi><mn>2</mn></msub><mo>∈</mo><msubsup><mi mathvariant="normal">Ψ</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">g</mi></mrow><mn>1</mn></msubsup><mo form="prefix" stretchy="false">(</mo><msubsup><mi>X</mi><mn>2</mn><mo>∘</mo></msubsup><mo>;</mo><msub><mi>E</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Lambda_2\in\Psi_{\mathrm{phg}}^1(X_2^\circ;E_2)</annotation></semantics></math></span>
+with positive scalar principal symbol and set
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>P</mi><mn>2</mn><mi>i</mi></msubsup><mo>=</mo><mi>i</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><msub><mi mathvariant="normal">Λ</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_2^i=i(1-\phi)\Lambda_2(1-\phi)</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>2</mn></msub><mo>=</mo><msubsup><mi>P</mi><mn>2</mn><mi>b</mi></msubsup><mo>+</mo><msubsup><mi>P</mi><mn>2</mn><mi>i</mi></msubsup></mrow><annotation encoding="application/x-tex">P_2=P_2^b+P_2^i</annotation></semantics></math></span>.
+Its frozen solutions are</p>
+<p><span class="math display"><math display="block" id="eq-DI20" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>u</mi><mn>2</mn><mo>+</mo></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>t</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><msup><mi>λ</mi><mo>+</mo></msup><msub><mi>t</mi><mn>2</mn></msub></mrow></msup><msubsup><mi>u</mi><mn>2</mn><mo>+</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>u</mi><mn>2</mn><mo>−</mo></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>t</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><msup><mi>λ</mi><mo>−</mo></msup><msub><mi>t</mi><mn>2</mn></msub></mrow></msup><msubsup><mi>u</mi><mn>2</mn><mo>−</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI20)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ u_2^+(t_2)=e^{-\lambda^+t_2}u_2^+(0),\qquad&#13;
+ u_2^-(t_2)=e^{\lambda^-t_2}u_2^-(0).&#13;
+ \tag{DI20}&#13;
+</annotation></semantics></math></span></p>
+<p>Thus its stable trace is exactly
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>E</mi><mo>+</mo></msup><annotation encoding="application/x-tex">E^+</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mn>2</mn></msub><annotation encoding="application/x-tex">B_2</annotation></semantics></math></span>
+is the identity there. After ordering the summands as
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>E</mi><mn>2</mn><mo>−</mo></msubsup><mo>⊕</mo><msubsup><mi>E</mi><mn>2</mn><mo>+</mo></msubsup></mrow><annotation encoding="application/x-tex">E_2^-\oplus E_2^+</annotation></semantics></math></span>,
+this is the model of Section 1. Hence</p>
+<p><span class="math display"><math display="block" id="eq-DI21" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>2</mn></msub><mo>,</mo><msub><mi>B</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI21)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \operatorname{ind}(P_2,B_2)=0.&#13;
+ \tag{DI21}&#13;
+</annotation></semantics></math></span></p>
+<span id="AN03-SDI-006"></span><span id="6-smooth-gluing-of-the-doubled-bundles-and-operator"></span><h2 id="smooth-gluing-of-the-doubled-bundles-and-operator">6. Smooth
+gluing of the doubled bundles and operator</h2>
+<p>Glue
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mn>1</mn></msub><annotation encoding="application/x-tex">X_1</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mn>2</mn></msub><annotation encoding="application/x-tex">X_2</annotation></semantics></math></span>
+along
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math></span>.
+In the resulting two-sided collar use the signed coordinate</p>
+<p><span class="math display"><math display="block" id="eq-DI22" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><msub><mi>t</mi><mn>1</mn></msub><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">on </mtext><mspace width="0.333em"></mspace></mrow><msub><mi>X</mi><mn>1</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>r</mi><mo>=</mo><mi>−</mi><msub><mi>t</mi><mn>2</mn></msub><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">on </mtext><mspace width="0.333em"></mspace></mrow><msub><mi>X</mi><mn>2</mn></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI22)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ r=t_1\quad\hbox{on }X_1,\qquad&#13;
+ r=-t_2\quad\hbox{on }X_2.&#13;
+ \tag{DI22}&#13;
+</annotation></semantics></math></span></p>
+<p>Glue
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>1</mn></msub><annotation encoding="application/x-tex">E_1</annotation></semantics></math></span>
+to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>2</mn></msub><annotation encoding="application/x-tex">E_2</annotation></semantics></math></span>
+by the identity on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>E</mi><mo>+</mo></msup><mo>⊕</mo><msup><mi>E</mi><mo>−</mo></msup></mrow><annotation encoding="application/x-tex">E^+\oplus E^-</annotation></semantics></math></span>,
+producing
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>E</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\widehat E</annotation></semantics></math></span>.
+Glue
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mn>1</mn></msub><annotation encoding="application/x-tex">F_1</annotation></semantics></math></span>
+to the target
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>2</mn></msub><annotation encoding="application/x-tex">E_2</annotation></semantics></math></span>
+by the collar identification
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math></span>,
+producing
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>F</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\widehat F</annotation></semantics></math></span>.
+Since
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><msub><mi>t</mi><mn>2</mn></msub></msub><mo>=</mo><mi>−</mi><msub><mi>D</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">D_{t_2}=-D_r</annotation></semantics></math></span>,
+both collar formulas become</p>
+<p><span class="math display"><math display="block" id="eq-DI23" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover><mi>P</mi><mo accent="true">̂</mo></mover><mi>b</mi></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>D</mi><mi>r</mi></msub><mo>+</mo><mi>i</mi><msup><mi mathvariant="normal">Λ</mi><mo>+</mo></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>D</mi><mi>r</mi></msub><mo>+</mo><mi>i</mi><msup><mi mathvariant="normal">Λ</mi><mo>−</mo></msup></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI23)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \widehat P^b=&#13;
+ \begin{pmatrix}&#13;
+  D_r+i\Lambda^+&amp;0\\&#13;
+ 0&amp;-D_r+i\Lambda^-&#13;
+ \end{pmatrix}&#13;
+ \tag{DI23}&#13;
+</annotation></semantics></math></span></p>
+<p>on a full two-sided neighborhood of the seam. The interior terms
+vanish on that neighborhood because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mi>ϕ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">1-\phi=0</annotation></semantics></math></span>
+there. Thus all coefficient jets and the bundle maps match, and the
+piecewise operator defines</p>
+<p><span class="math display"><math display="block" id="eq-DI24" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>P</mi><mo accent="true">̂</mo></mover><mo>:</mo><msup><mi>H</mi><mi>s</mi></msup><mo form="prefix" stretchy="false">(</mo><mover><mi>X</mi><mo accent="true">̂</mo></mover><mo>;</mo><mover><mi>E</mi><mo accent="true">̂</mo></mover><mo form="postfix" stretchy="false">)</mo><mo>→</mo><msup><mi>H</mi><mrow><mi>s</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mover><mi>X</mi><mo accent="true">̂</mo></mover><mo>;</mo><mover><mi>F</mi><mo accent="true">̂</mo></mover><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI24)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \widehat P:H^s(\widehat X;\widehat E)&#13;
+       \longrightarrow H^{s-1}(\widehat X;\widehat F).&#13;
+ \tag{DI24}&#13;
+</annotation></semantics></math></span></p>
+<p>This is a smooth mixed collar operator. It need not be an ordinary
+global pseudodifferential operator, because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="normal">Λ</mi><mo>±</mo></msup><annotation encoding="application/x-tex">\Lambda^\pm</annotation></semantics></math></span>
+act only in the tangential variables near the seam. This proves both the
+construction and the distinction between a mixed collar operator and an
+ordinary global pseudodifferential operator.</p>
+<span id="AN03-SDI-007"></span><span id="7-the-coupling-path-and-the-h-1-gluing-domain"></span><h2 id="the-coupling-path-and-the-h1-gluing-domain">7. The coupling path
+and the
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math></span>
+gluing domain</h2>
+<p>At the base level put</p>
+<p><span class="math display"><math display="block" id="eq-DI25" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi mathvariant="script">𝒳</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mover><mi>H</mi><mo accent="true">‾</mo></mover><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>X</mi><mn>1</mn></msub><mo>;</mo><msub><mi>E</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>⊕</mo><msub><mover><mi>H</mi><mo accent="true">‾</mo></mover><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>X</mi><mn>2</mn></msub><mo>;</mo><msub><mi>E</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi mathvariant="script">𝒴</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>X</mi><mn>1</mn></msub><mo>;</mo><msub><mi>F</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>⊕</mo><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>X</mi><mn>2</mn></msub><mo>;</mo><msub><mi>E</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi mathvariant="script">𝒵</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>Y</mi><mo>;</mo><msup><mi>E</mi><mo>+</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>⊕</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>Y</mi><mo>;</mo><msup><mi>E</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>C</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mn>1</mn></msub><mo>,</mo><msub><mi>u</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>2</mn><mo>+</mo></msubsup><mo>−</mo><mi>τ</mi><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>1</mn><mo>+</mo></msubsup><mo>,</mo><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>1</mn><mo>−</mo></msubsup><mo>−</mo><mi>τ</mi><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>2</mn><mo>−</mo></msubsup><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mn>0</mn><mo>≤</mo><mi>τ</mi><mo>≤</mo><mn>1</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="script">𝒜</mi><mi>τ</mi></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>⊕</mo><msub><mi>P</mi><mn>2</mn></msub><mo>,</mo><msub><mi>C</mi><mi>τ</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi mathvariant="script">𝒳</mi><mo>→</mo><mi mathvariant="script">𝒴</mi><mo>⊕</mo><mi mathvariant="script">𝒵</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI25)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{aligned}&#13;
+ \mathcal X&amp;=\bar H_1(X_1;E_1)\oplus\bar H_1(X_2;E_2),\\&#13;
+ \mathcal Y&amp;=L^2(X_1;F_1)\oplus L^2(X_2;E_2),\\&#13;
+ \mathcal Z&amp;=H^{1/2}(Y;E^+)\oplus H^{1/2}(Y;E^-),\\&#13;
+ C_\tau(u_1,u_2)&amp;=&#13;
+ \bigl(\gamma_0u_2^+-\tau\gamma_0u_1^+,&#13;
+       \gamma_0u_1^--\tau\gamma_0u_2^-\bigr),&#13;
+       \qquad0\leq\tau\leq1,\\&#13;
+ \mathcal A_\tau&amp;=(P_1\oplus P_2,C_\tau):&#13;
+              \mathcal X\longrightarrow\mathcal Y\oplus\mathcal Z.&#13;
+ \end{aligned}&#13;
+ \tag{DI25}&#13;
+</annotation></semantics></math></span></p>
+<p>The stable traces of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>⊕</mo><msub><mi>P</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">P_1\oplus P_2</annotation></semantics></math></span>
+have the form
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><msup><mi>a</mi><mo>−</mo></msup><mo>;</mo><msup><mi>a</mi><mo>+</mo></msup><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,a^-;a^+,0)</annotation></semantics></math></span>.
+On them,</p>
+<p><span class="math display"><math display="block" id="eq-DI26" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><msup><mi>a</mi><mo>−</mo></msup><mo>;</mo><msup><mi>a</mi><mo>+</mo></msup><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>a</mi><mo>+</mo></msup><mo>,</mo><msup><mi>a</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI26)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ C_\tau(0,a^-;a^+,0)=(a^+,a^-),&#13;
+ \tag{DI26}&#13;
+</annotation></semantics></math></span></p>
+<p>independently of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math></span>.
+The principal boundary map is therefore an isomorphism for every
+parameter. The generalized Fredholm theorem and homotopy stability
+give</p>
+<p><span class="math display"><math display="block" id="eq-DI27" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><msub><mi mathvariant="script">𝒜</mi><mi>τ</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><msub><mi mathvariant="script">𝒜</mi><mn>0</mn></msub><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>≤</mo><mi>τ</mi><mo>≤</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI27)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \operatorname{ind}\mathcal A_\tau&#13;
+       =\operatorname{ind}\mathcal A_0&#13;
+       \qquad(0\leq\tau\leq1).&#13;
+ \tag{DI27}&#13;
+</annotation></semantics></math></span></p>
+<p>The coupling map itself is surjective. For data
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>a</mi><mo>+</mo></msup><mo>,</mo><msup><mi>b</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a^+,b^-)</annotation></semantics></math></span>,
+choose fixed Sobolev trace extensions with</p>
+<p><span class="math display"><math display="block" id="eq-DI28" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>2</mn><mo>+</mo></msubsup><mo>=</mo><msup><mi>a</mi><mo>+</mo></msup><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>1</mn><mo>−</mo></msubsup><mo>=</mo><msup><mi>b</mi><mo>−</mo></msup><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>1</mn><mo>+</mo></msubsup><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>2</mn><mo>−</mo></msubsup><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI28)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \gamma_0u_2^+=a^+,\quad \gamma_0u_1^-=b^-,\quad&#13;
+ \gamma_0u_1^+=0,\quad \gamma_0u_2^-=0.&#13;
+ \tag{DI28}&#13;
+</annotation></semantics></math></span></p>
+<p>This gives one bounded right inverse
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>:</mo><mi mathvariant="script">𝒵</mi><mo>→</mo><mi mathvariant="script">𝒳</mi></mrow><annotation encoding="application/x-tex">R:\mathcal Z\to\mathcal X</annotation></semantics></math></span>
+for every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>τ</mi></msub><annotation encoding="application/x-tex">C_\tau</annotation></semantics></math></span>.
+Apply (DI18):</p>
+<p><span class="math display"><math display="block" id="eq-DI29" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>⊕</mo><msub><mi>P</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><msub><mo form="prefix" stretchy="false">|</mo><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mi>τ</mi></msub></mrow></msub><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><msub><mi mathvariant="script">𝒜</mi><mi>τ</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI29)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \operatorname{ind}\bigl((P_1\oplus P_2)|_{\ker C_\tau}\bigr)&#13;
+       =\operatorname{ind}\mathcal A_\tau.&#13;
+ \tag{DI29}&#13;
+</annotation></semantics></math></span></p>
+<p>At
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\tau=0</annotation></semantics></math></span>,
+the two constraints are
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>2</mn><mo>+</mo></msubsup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\gamma_0u_2^+=0</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>1</mn><mo>−</mo></msubsup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\gamma_0u_1^-=0</annotation></semantics></math></span>.
+After a fixed permutation of the target factors, the constrained
+operator is the direct sum of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><msub><mo form="prefix" stretchy="false">|</mo><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>B</mi><mn>1</mn></msub></mrow></msub></mrow><annotation encoding="application/x-tex">P_1|_{\ker B_1}</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>2</mn></msub><msub><mo form="prefix" stretchy="false">|</mo><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>B</mi><mn>2</mn></msub></mrow></msub></mrow><annotation encoding="application/x-tex">P_2|_{\ker B_2}</annotation></semantics></math></span>.
+Equation (DI18) identifies their indices with those of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>,</mo><msub><mi>B</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(P_1,B_1)</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>2</mn></msub><mo>,</mo><msub><mi>B</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(P_2,B_2)</annotation></semantics></math></span>.
+Equations (DI21), (DI27), and (DI29) give</p>
+<p><span class="math display"><math display="block" id="eq-DI30" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>⊕</mo><msub><mi>P</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><msub><mo form="prefix" stretchy="false">|</mo><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mn>1</mn></msub></mrow></msub><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>,</mo><msub><mi>B</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI30)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \operatorname{ind}\bigl((P_1\oplus P_2)|_{\ker C_1}\bigr)&#13;
+ =\operatorname{ind}(P_1,B_1).&#13;
+ \tag{DI30}&#13;
+</annotation></semantics></math></span></p>
+<p>The varying kernels can also be trivialized explicitly. Put</p>
+<p><span class="math display"><math display="block" id="eq-DI31" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mn>1</mn></msub><mo>,</mo><msub><mi>u</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>1</mn><mo>+</mo></msubsup><mo>,</mo><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>2</mn><mo>−</mo></msubsup><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mi>τ</mi></msub><mo>=</mo><msub><mi>C</mi><mn>0</mn></msub><mo>−</mo><mi>τ</mi><mi>K</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>K</mi><mi>R</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mn>0</mn></msub><mi>R</mi><mo>=</mo><msub><mi>I</mi><mi mathvariant="script">𝒵</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI31)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ K(u_1,u_2)=(\gamma_0u_1^+,\gamma_0u_2^-),\qquad&#13;
+ C_\tau=C_0-\tau K,\qquad KR=0,\qquad C_0R=I_{\mathcal Z}.&#13;
+ \tag{DI31}&#13;
+</annotation></semantics></math></span></p>
+<p>For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x\in\ker C_0</annotation></semantics></math></span>,
+define</p>
+<p><span class="math display"><math display="block" id="eq-DI32" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>τ</mi></msub><mi>x</mi><mo>=</mo><mi>x</mi><mo>+</mo><mi>τ</mi><mi>R</mi><mi>K</mi><mi>x</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI32)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ J_\tau x=x+\tau RKx.&#13;
+ \tag{DI32}&#13;
+</annotation></semantics></math></span></p>
+<p>Then
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>τ</mi></msub><msub><mi>J</mi><mi>τ</mi></msub><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C_\tau J_\tau x=0</annotation></semantics></math></span>.
+Its inverse on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mi>τ</mi></msub></mrow><annotation encoding="application/x-tex">\ker C_\tau</annotation></semantics></math></span>
+is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>↦</mo><mi>y</mi><mo>−</mo><mi>R</mi><msub><mi>C</mi><mn>0</mn></msub><mi>y</mi></mrow><annotation encoding="application/x-tex">y\mapsto y-RC_0y</annotation></semantics></math></span>,
+because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mi>y</mi><mo>=</mo><mi>τ</mi><mi>K</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">C_0y=\tau Ky</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>R</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">KR=0</annotation></semantics></math></span>.
+Hence
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>τ</mi></msub><mo>:</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mn>0</mn></msub><mo>→</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mi>τ</mi></msub></mrow><annotation encoding="application/x-tex">J_\tau:\ker C_0\to\ker C_\tau</annotation></semantics></math></span>
+is a continuous family of bounded isomorphisms. This makes the Fredholm
+deformation in (DI30) an actual fixed-domain path, not merely an index
+comparison between unnamed spaces.</p>
+<p>At
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\tau=1</annotation></semantics></math></span>,
+the constraint is equality of the two full boundary traces. The exact
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math></span>
+gluing identity is</p>
+<p><span class="math display"><math display="block" id="eq-DI33" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mover><mi>X</mi><mo accent="true">̂</mo></mover><mo>;</mo><mover><mi>E</mi><mo accent="true">̂</mo></mover><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mn>1</mn></msub><mo>,</mo><msub><mi>u</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mi mathvariant="script">𝒳</mi><mo>:</mo><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>1</mn><mo>+</mo></msubsup><mo>=</mo><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>2</mn><mo>+</mo></msubsup><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>1</mn><mo>−</mo></msubsup><mo>=</mo><msub><mi>γ</mi><mn>0</mn></msub><msubsup><mi>u</mi><mn>2</mn><mo>−</mo></msubsup><mo form="postfix" stretchy="false">}</mo><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mn>1</mn></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI33)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ H^1(\widehat X;\widehat E)&#13;
+ \simeq\{(u_1,u_2)\in\mathcal X:&#13;
+        \gamma_0u_1^+=\gamma_0u_2^+,&#13;
+        \ \gamma_0u_1^-=\gamma_0u_2^-\}&#13;
+ =\ker C_1.&#13;
+ \tag{DI33}&#13;
+</annotation></semantics></math></span></p>
+<p>One direction follows by restriction. Conversely, the distributional
+first derivative of a piecewise
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math></span>
+section has a seam delta whose coefficient is its trace jump; equality
+of traces removes that delta, leaving every weak first derivative in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>.
+Under (DI33), the constrained piecewise operator is exactly (DI24).
+Thus</p>
+<p><span class="math display"><math display="block" id="eq-DI34" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><menclose notation="box"><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mover><mi>P</mi><mo accent="true">̂</mo></mover><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>,</mo><msub><mi>B</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></menclose><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI34)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \boxed{\operatorname{ind}\widehat P&#13;
+       =\operatorname{ind}(P_1,B_1)}&#13;
+ \tag{DI34}&#13;
+</annotation></semantics></math></span></p>
+<p>at
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>1</mn></msup><mo>→</mo><msup><mi>L</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">H^1\to L^2</annotation></semantics></math></span>.
+The statement at this step is deliberately made at
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s=1</annotation></semantics></math></span>:
+equality of value traces alone is not the complete gluing condition for
+arbitrary higher Sobolev order.</p>
+<figure>
+<img alt="The stable summands on the reflected halves, the coupling path, and the two index strata" src="figures/split_doubling_index.png"/>
+<figcaption aria-hidden="true">The stable summands on the reflected
+halves, the coupling path, and the two index strata</figcaption>
+</figure>
+<p>The left panel keeps both inward coordinates and the signed collar
+coordinate visible. The middle panel shows why the boundary symbol stays
+invertible throughout the coupling. The right panel records the
+complementary index that distinguishes equality from a one-half
+formula.</p>
+<span id="AN03-SDI-SEAM-001"></span><h3 id="the-complete-seam-distribution">The complete seam
+distribution</h3>
+<p>We verify the asserted gluing in the actual product collar. Use its
+signed coordinate
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><msub><mi>t</mi><mn>1</mn></msub><mo>=</mo><mi>−</mi><msub><mi>t</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">r=t_1=-t_2</annotation></semantics></math></span>,
+product density
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi>μ</mi><mi>Y</mi></msub><mspace width="0.167em"></mspace><mi>d</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">d\mu_Y\,dr</annotation></semantics></math></span>,
+and the domain-bundle identification from Section 6. In any product
+frame, write</p>
+<p><span class="math display"><math display="block" id="eq-DG1" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>u</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>r</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>u</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>−</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>r</mi><mo>&lt;</mo><mn>0</mn><mo>,</mo></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mi>j</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>γ</mi><mn>0</mn></msub><msub><mi>u</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><msub><mi>γ</mi><mn>0</mn></msub><msub><mi>u</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DG1)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ u(y,r)=\begin{cases}&#13;
+             u_1(y,r),&amp;r&gt;0,\\&#13;
+             u_2(y,-r),&amp;r&lt;0,&#13;
+          \end{cases}&#13;
+ \qquad j(y)=\gamma_0u_1(y)-\gamma_0u_2(y).&#13;
+ \tag{DG1}&#13;
+</annotation></semantics></math></span></p>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>
+be the Heaviside function; its value at zero does not affect the
+distribution. Integration by parts on each half, with the common
+boundary measure, gives every first derivative:</p>
+<p><span class="math display"><math display="block" id="eq-DG2" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>D</mi><mi>r</mi></msub><mi>u</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>H</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>D</mi><msub><mi>t</mi><mn>1</mn></msub></msub><msub><mi>u</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>H</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>D</mi><msub><mi>t</mi><mn>2</mn></msub></msub><msub><mi>u</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>−</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>i</mi><mi>j</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>D</mi><msub><mi>y</mi><mi>a</mi></msub></msub><mi>u</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>H</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>D</mi><msub><mi>y</mi><mi>a</mi></msub></msub><msub><mi>u</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>H</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>D</mi><msub><mi>y</mi><mi>a</mi></msub></msub><msub><mi>u</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>−</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mn>1</mn><mo>≤</mo><mi>a</mi><mo>≤</mo><mrow><mi mathvariant="normal">dim</mi><mo>⁡</mo></mrow><mi>Y</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DG2)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{aligned}&#13;
+ D_ru&amp;=H(r)D_{t_1}u_1(y,r)&#13;
+        -H(-r)D_{t_2}u_2(y,-r)-i j(y)\delta(r),\\&#13;
+ D_{y_a}u&amp;=H(r)D_{y_a}u_1(y,r)&#13;
+               +H(-r)D_{y_a}u_2(y,-r),&#13;
+       \qquad 1\leq a\leq\dim Y.&#13;
+ \end{aligned}&#13;
+ \tag{DG2}&#13;
+</annotation></semantics></math></span></p>
+<p>For smooth half-sections this follows directly from
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>r</mi></msub><mi>H</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\partial_rH(r)=\delta(r)</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>r</mi></msub><mi>H</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\partial_rH(-r)=-\delta(r)</annotation></semantics></math></span>.
+For half-sections in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math></span>,
+approximate on each half by smooth sections. The continuous
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>1</mn></msup><mo>→</mo><msup><mi>H</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">H^1\to H^{1/2}</annotation></semantics></math></span>
+trace map from <a href="mixed-sobolev-mapping.html">Mixed symbols on every
+real two-parameter Sobolev scale</a> makes the seam coefficients
+converge, while the half-space functions and weak derivatives converge
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>.
+Pairing with each compactly supported smooth test section passes the
+identities to the limit. Thus no differentiability of the traces is
+assumed.</p>
+<p>All bulk terms in (DG2) are in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>.
+If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j=0</annotation></semantics></math></span>,
+every weak first derivative is in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>,
+proving the converse in (DI33). If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">j\ne0</annotation></semantics></math></span>,
+choose a smooth compactly supported tangential test section
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>j</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\langle j,b\rangle\ne0</annotation></semantics></math></span>.
+Such a test exists because a nonzero distribution cannot vanish on every
+test section. Choose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>∈</mo><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi mathvariant="double-struck">ℝ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h\in C_c^\infty(\mathbb R)</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h(0)=1</annotation></semantics></math></span>,
+and put
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>ε</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mi>/</mi><mi>ε</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h_\varepsilon(r)=h(r/\varepsilon)</annotation></semantics></math></span>.
+Then</p>
+<p><span class="math display"><math display="block" id="eq-DG3" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="prefix" stretchy="false">⟨</mo><mi>j</mi><mi>δ</mi><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>b</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>h</mi><mi>ε</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">⟩</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">⟨</mo><mi>j</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">⟩</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><mi>b</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>h</mi><mi>ε</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>d</mi><msub><mi>μ</mi><mi>Y</mi></msub><mspace width="0.167em"></mspace><mi>d</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msup><mi>ε</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mi>b</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>d</mi><msub><mi>μ</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="postfix" stretchy="false">∥</mo><mi>h</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>d</mi><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DG3)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{aligned}&#13;
+ \langle j\delta(r),b(y)h_\varepsilon(r)\rangle&#13;
+     &amp;=\langle j,b\rangle,\\&#13;
+ \|b(y)h_\varepsilon(r)\|_{L^2(d\mu_Y\,dr)}&#13;
+     &amp;=\varepsilon^{1/2}\|b\|_{L^2(d\mu_Y)}\|h\|_{L^2(dr)}.&#13;
+ \end{aligned}&#13;
+ \tag{DG3}&#13;
+</annotation></semantics></math></span></p>
+<p>An
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+distribution has pairings bounded by its
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+norm times the second line, which tends to zero. The first line is a
+fixed nonzero number. Therefore the seam delta is not in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>.
+In (DG2) it cannot cancel an
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+bulk term. This proves necessity of trace equality as well.</p>
+<p>The restriction map and the piecewise inverse are bounded for the
+finite-chart
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math></span>
+norms: (DG2) with zero jump bounds every coordinate first derivative by
+the two half-norms, and restriction bounds each half-norm by the global
+norm. Smooth transition matrices contribute their actual bounded first
+derivatives; the fixed product metric and density compare these finitely
+many chart norms. This proves the bounded isomorphism (DI33), including
+its full domain. It makes no claim that matching values alone glues
+higher Sobolev orders, which would require the corresponding normal-jet
+conditions.</p>
+<span id="AN03-SDI-008"></span><span id="8-approximation-by-ordinary-operators-and-the-symbol-index"></span><h2 id="approximation-by-ordinary-operators-and-the-symbol-index">8.
+Approximation by ordinary operators and the symbol index</h2>
+<p>In the signed collar let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo>,</mo><mi>ρ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\eta,\rho)</annotation></semantics></math></span>
+be the covariables dual to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(y,r)</annotation></semantics></math></span>.
+The principal symbol of (DI23), extended by the ordinary interior
+symbols, is continuous and degree one on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mo>*</mo></msup><mover><mi>X</mi><mo accent="true">̂</mo></mover><mo>\</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T^*\widehat X\setminus0</annotation></semantics></math></span>.
+At
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\eta=0</annotation></semantics></math></span>,
+positive homogeneity gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>λ</mi><mo>±</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda^\pm(y,0)=0</annotation></semantics></math></span>,
+so its two collar blocks equal
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>ρ</mi></mrow><annotation encoding="application/x-tex">-\rho</annotation></semantics></math></span>.
+Thus it is still invertible there. Denote this continuous elliptic
+symbol by</p>
+<p><span class="math display"><math display="block" id="eq-DI35" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo>:</mo><msup><mi>T</mi><mo>*</mo></msup><mover><mi>X</mi><mo accent="true">̂</mo></mover><mo>\</mo><mn>0</mn><mo>→</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>π</mi><mo>*</mo></msup><mover><mi>E</mi><mo accent="true">̂</mo></mover><mo>,</mo><msup><mi>π</mi><mo>*</mo></msup><mover><mi>F</mi><mo accent="true">̂</mo></mover><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI35)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \widehat p:T^*\widehat X\setminus0&#13;
+       \longrightarrow&#13;
+       \operatorname{Hom}(\pi^*\widehat E,\pi^*\widehat F).&#13;
+ \tag{DI35}&#13;
+</annotation></semantics></math></span></p>
+<p>We now verify the operator-norm approximation required by <a href="global-elliptic-symbol-index.html">Symbols, finite defects, and the
+index on a closed manifold</a> rather than inferring it from pointwise
+smoothing. Choose the scalar cutoff from <a href="global-elliptic-symbol-index.html">Symbols, finite defects, and the
+index on a closed manifold</a>, Section 10,</p>
+<p><span class="math display"><math display="block" id="eq-DI36" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo>,</mo><mi>ρ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>1</mn><mspace width="0.222em"></mspace><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">|</mo><mi>ρ</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo>,</mo><mi>ρ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mspace width="0.222em"></mspace><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">|</mo><mi>ρ</mi><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><mn>2</mn><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI36)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \chi(\eta,\rho)=1\ \text{if }|\rho|\leq\max(1,|\eta|),&#13;
+ \qquad&#13;
+ \chi(\eta,\rho)=0\ \text{if }|\rho|\geq2\max(1,|\eta|),&#13;
+ \tag{DI36}&#13;
+</annotation></semantics></math></span></p>
+<p>and for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>ε</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;\varepsilon\leq1</annotation></semantics></math></span>
+replace every partial tangential symbol
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>r</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a(y,r,\eta)</annotation></semantics></math></span>
+of order one by</p>
+<p><span class="math display"><math display="block" id="eq-DI37" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>ε</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>r</mi><mo>,</mo><mi>η</mi><mo>,</mo><mi>ρ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>r</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo>,</mo><mi>ε</mi><mi>ρ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI37)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ a_\varepsilon(y,r,\eta,\rho)&#13;
+       =a(y,r,\eta)\chi(\eta,\varepsilon\rho).&#13;
+ \tag{DI37}&#13;
+</annotation></semantics></math></span></p>
+<p>For fixed
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon&gt;0</annotation></semantics></math></span>,
+this is a classical full-variable symbol. On the total unit cosphere its
+leading term differs from the continuous zero extension of the partial
+leading symbol only where
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>2</mn><mi>ε</mi><mo form="prefix" stretchy="false">|</mo><mi>ρ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|\eta|\leq2\varepsilon|\rho|</annotation></semantics></math></span>.
+Since that leading term has size at most
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">C|\eta|</annotation></semantics></math></span>,</p>
+<p><span class="math display"><math display="block" id="eq-DI38" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">sup</mi><mrow><mo form="prefix" stretchy="false">|</mo><mi>η</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><msup><mi>ρ</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow></munder><mo form="postfix" stretchy="false">∥</mo><msub><mi>a</mi><mrow><mi>ε</mi><mo>,</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><mi>C</mi><mi>ε</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI38)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \sup_{|\eta|^2+\rho^2=1}&#13;
+ \|a_{\varepsilon,1}-a_1\|\leq C\varepsilon.&#13;
+ \tag{DI38}&#13;
+</annotation></semantics></math></span></p>
+<p>The exact partial-operator estimate in Section 10 of <a href="global-elliptic-symbol-index.html">Symbols, finite defects, and the
+index on a closed manifold</a> gives, for every real
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math></span>,</p>
+<p><span class="math display"><math display="block" id="eq-DI39" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mrow><mi mathvariant="normal">Op</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>a</mi><mi>ε</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>r</mi><mo>,</mo><msub><mi>D</mi><mi>y</mi></msub><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi>H</mi><mi>s</mi></msup><mo>→</mo><msup><mi>H</mi><mrow><mi>s</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow></msub><mo>≤</mo><msub><mi>C</mi><mi>s</mi></msub><mi>ε</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI39)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \|\operatorname{Op}(a_\varepsilon)-a(y,r,D_y)\|&#13;
+       _{H^s\to H^{s-1}}\leq C_s\varepsilon.&#13;
+ \tag{DI39}&#13;
+</annotation></semantics></math></span></p>
+<p>Apply this construction in a finite signed-collar atlas. Keep
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mi>r</mi></msub><annotation encoding="application/x-tex">D_r</annotation></semantics></math></span>
+and every ordinary interior operator unchanged, and patch with the same
+fixed bundle charts and cutoffs. The compactness of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>X</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\widehat X</annotation></semantics></math></span>
+turns the local estimates into ordinary classical operators
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>P</mi><mo accent="true">̂</mo></mover><mi>ε</mi></msub><annotation encoding="application/x-tex">\widehat P_\varepsilon</annotation></semantics></math></span>
+satisfying</p>
+<p><span class="math display"><math display="block" id="eq-DI40" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>P</mi><mo accent="true">̂</mo></mover><mi>ε</mi></msub><mo>→</mo><mover><mi>P</mi><mo accent="true">̂</mo></mover><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">in </mtext><mspace width="0.333em"></mspace></mrow><mi mathvariant="script">ℒ</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>H</mi><mi>s</mi></msup><mo>,</mo><msup><mi>H</mi><mrow><mi>s</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> for every real </mtext><mspace width="0.333em"></mspace></mrow><mi>s</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>ε</mi></msub><mo>→</mo><mover><mi>p</mi><mo accent="true">̂</mo></mover><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> uniformly on </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>S</mi><mo>*</mo></msup><mover><mi>X</mi><mo accent="true">̂</mo></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI40)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \widehat P_\varepsilon\longrightarrow\widehat P&#13;
+ \quad\text{in }\mathcal L(H^s,H^{s-1})&#13;
+ \text{ for every real }s,\qquad&#13;
+ \widehat p_\varepsilon\longrightarrow\widehat p&#13;
+ \text{ uniformly on }S^*\widehat X.&#13;
+ \tag{DI40}&#13;
+</annotation></semantics></math></span></p>
+<p>Uniform invertibility of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>p</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\widehat p</annotation></semantics></math></span>
+on the compact cosphere makes
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>p</mi><mo accent="true">̂</mo></mover><mi>ε</mi></msub><annotation encoding="application/x-tex">\widehat p_\varepsilon</annotation></semantics></math></span>
+elliptic for all sufficiently small
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math></span>.
+The norm-limit theorem and its continuous-symbol identity, proved in
+Sections 5 and 8 of that lesson, now give</p>
+<p><span class="math display"><math display="block" id="eq-DI41" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mover><mi>P</mi><mo accent="true">̂</mo></mover><mo>=</mo><mrow><mi mathvariant="normal">sind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI41)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \operatorname{ind}\widehat P&#13;
+       =\operatorname{sind}(\widehat p).&#13;
+ \tag{DI41}&#13;
+</annotation></semantics></math></span></p>
+<p>Because (DI40) is compatible at every Sobolev order, the compatible
+norm-limit conclusion in that lesson identifies the same smooth kernel
+and adjoint obstruction spaces at all levels. Hence (DI34) and (DI41)
+hold for every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">s\geq1</annotation></semantics></math></span>:</p>
+<p><span class="math display"><math display="block" id="eq-DI42" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><menclose notation="box"><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>,</mo><msub><mi>B</mi><mn>1</mn></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>s</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mover><mi>P</mi><mo accent="true">̂</mo></mover><mo>:</mo><msup><mi>H</mi><mi>s</mi></msup><mo>→</mo><msup><mi>H</mi><mrow><mi>s</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">sind</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow></menclose><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI42)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \boxed{\operatorname{ind}(P_1,B_1)_s&#13;
+       =\operatorname{ind}(\widehat P:H^s\to H^{s-1})&#13;
+       =\operatorname{sind}(\widehat p).}&#13;
+ \tag{DI42}&#13;
+</annotation></semantics></math></span></p>
+<p>This proves the doubled symbol-index formula with the precise
+approximation hypotheses.</p>
+<span id="AN03-SDI-009"></span><span id="9-the-two-exact-kinds-of-doubled-index-datum"></span><h2 id="the-two-exact-kinds-of-doubled-index-datum">9. The two exact
+kinds of doubled index datum</h2>
+<p>Two published index wordings become exact once the complementary half
+is made part of the datum. Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>:</mo><msub><mi>X</mi><mi>A</mi></msub><mo>→</mo><msub><mi>Y</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">A:X_A\to Y_A</annotation></semantics></math></span>
+be Fredholm. A <em>deformation double datum</em> for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+is a Fredholm operator
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>:</mo><msub><mi>X</mi><mi>D</mi></msub><mo>→</mo><msub><mi>Y</mi><mi>D</mi></msub></mrow><annotation encoding="application/x-tex">D:X_D\to Y_D</annotation></semantics></math></span>,
+a Fredholm complement
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo><msub><mi>X</mi><mi>C</mi></msub><mo>→</mo><msub><mi>Y</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">C:X_C\to Y_C</annotation></semantics></math></span>,
+fixed domain and target isomorphisms at the two endpoints, and a
+continuous fixed-space Fredholm path joining
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math></span>
+to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊕</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">A\oplus C</annotation></semantics></math></span>.
+Homotopy invariance and direct-sum additivity give the exact morphism
+from this space of data to the integers:</p>
+<p><span class="math display"><math display="block" id="eq-DI43" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="fraktur">ℑ</mi><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo>,</mo><mi>C</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>D</mi><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>A</mi><mo>+</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>C</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI43)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \mathfrak I(D,C)=\operatorname{ind}D&#13;
+ =\operatorname{ind}A+\operatorname{ind}C.&#13;
+ \tag{DI43}&#13;
+</annotation></semantics></math></span></p>
+<p>There are two mathematically different strata:</p>
+<p><span class="math display"><math display="block" id="eq-DI44" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="left" style="text-align: left"><msub><mi mathvariant="fraktur">𝔇</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo>,</mo><mi>C</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>C</mi><mo>=</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mtd><mtd columnalign="left" style="text-align: left"><mo>⇒</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>D</mi><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>A</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msub><mi mathvariant="fraktur">𝔇</mi><mo>=</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo>,</mo><mi>C</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>C</mi><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>A</mi><mo form="postfix" stretchy="false">}</mo></mtd><mtd columnalign="left" style="text-align: left"><mo>⇒</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>D</mi><mo>=</mo><mn>2</mn><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>A</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI44)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{array}{lll}&#13;
+ \mathfrak D_0(A)=\{(D,C):\operatorname{ind}C=0\}&#13;
+ &amp;\Longrightarrow&amp;\operatorname{ind}D=\operatorname{ind}A,\\[1mm]&#13;
+ \mathfrak D_{=}(A)=\{(D,C):\operatorname{ind}C=\operatorname{ind}A\}&#13;
+ &amp;\Longrightarrow&amp;\operatorname{ind}D=2\operatorname{ind}A.&#13;
+ \end{array}&#13;
+ \tag{DI44}&#13;
+</annotation></semantics></math></span></p>
+<p>Equations (DI31)–(DI34) supply all the data for the geometric double:
+the fixed-domain path is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>⊕</mo><msub><mi>P</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><msub><mi>J</mi><mi>τ</mi></msub></mrow><annotation encoding="application/x-tex">(P_1\oplus P_2)J_\tau</annotation></semantics></math></span>,
+its endpoint complement is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>2</mn></msub><mo>,</mo><msub><mi>B</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(P_2,B_2)</annotation></semantics></math></span>,
+and (DI21) gives its index zero. Therefore the concrete operator
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>P</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\widehat P</annotation></semantics></math></span>
+belongs to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="fraktur">𝔇</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>,</mo><msub><mi>B</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathfrak D_0(P_1,B_1)</annotation></semantics></math></span>,
+and its formula is the equality in (DI42).</p>
+<p>A one-half formula is valid only after a separately specified double
+datum is proved to lie in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="fraktur">𝔇</mi><mo>=</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathfrak D_{=}(A)</annotation></semantics></math></span>:</p>
+<p><span class="math display"><math display="block" id="eq-DI45" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>A</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>D</mi><mspace width="1.0em"></mspace><mo>⇔</mo><mspace width="1.0em"></mspace><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>C</mi><mo>=</mo><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>A</mi><mspace width="1.0em"></mspace><mtext mathvariant="normal">within a deformation double datum.</mtext><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI45)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \operatorname{ind}A=\frac12\operatorname{ind}D&#13;
+ \quad\Longleftrightarrow\quad&#13;
+ \operatorname{ind}C=\operatorname{ind}A&#13;
+ \quad\text{within a deformation double datum.}&#13;
+ \tag{DI45}&#13;
+</annotation></semantics></math></span></p>
+<p>Thus the introductory one-half wording cannot be applied to the
+operator
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>P</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\widehat P</annotation></semantics></math></span>
+constructed here. The zero-index complementary half proved in (DI21)
+gives equality. A summary using one half must name and prove a different
+same-index complement and its deformation data. Without that information
+the one-half statement is underdetermined; it is not a replacement for
+(DI42). This is the exact conceptual correction. It keeps the equality
+theorem and the conditional one-half formula attached to their
+respective doubled constructions.</p>
+<span id="AN03-SDI-010"></span><span id="10-scalar-sign-check"></span><h2 id="scalar-sign-check">10. Scalar sign check</h2>
+<p>For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>E</mi><mo>+</mo></msup><mo>=</mo><msup><mi>E</mi><mo>−</mo></msup><mo>=</mo><mi mathvariant="double-struck">ℂ</mi></mrow><annotation encoding="application/x-tex">E^+=E^-=\mathbb C</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="normal">Λ</mi><mo>+</mo></msup><mo>=</mo><msup><mi mathvariant="normal">Λ</mi><mo>−</mo></msup><mo>=</mo><mo form="prefix" stretchy="false">|</mo><msub><mi>D</mi><mi>y</mi></msub><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\Lambda^+=\Lambda^-=|D_y|</annotation></semantics></math></span>,
+the first-half stable mode is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><msub><mi>t</mi><mn>1</mn></msub></mrow></msup><msup><mi>a</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,e^{-|\eta|t_1}a^-)</annotation></semantics></math></span>,
+while the second-half stable mode is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><msub><mi>t</mi><mn>2</mn></msub></mrow></msup><msup><mi>a</mi><mo>+</mo></msup><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(e^{-|\eta|t_2}a^+,0)</annotation></semantics></math></span>.
+The coupling gives</p>
+<p><span class="math display"><math display="block" id="eq-DI46" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><msub><mi>t</mi><mn>1</mn></msub></mrow></msup><msup><mi>a</mi><mo>−</mo></msup><mo>;</mo><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><msub><mi>t</mi><mn>2</mn></msub></mrow></msup><msup><mi>a</mi><mo>+</mo></msup><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>a</mi><mo>+</mo></msup><mo>,</mo><msup><mi>a</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI46)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ C_\tau(0,e^{-|\eta|t_1}a^-;&#13;
+        e^{-|\eta|t_2}a^+,0)=(a^+,a^-).&#13;
+ \tag{DI46}&#13;
+</annotation></semantics></math></span></p>
+<p>In the signed coordinate, both halves have symbol
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">diag</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ρ</mi><mo>+</mo><mi>i</mi><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo>,</mo><mi>−</mi><mi>ρ</mi><mo>+</mo><mi>i</mi><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{diag}(\rho+i|\eta|,-\rho+i|\eta|)</annotation></semantics></math></span>.
+This checks the reflection sign, the stable summands, the order of the
+coupling components, and the seam compatibility in one calculation.</p>
+<span id="AN03-SDI-011"></span><span id="11-three-concrete-models"></span><h2 id="three-concrete-models">11. Three concrete models</h2>
+<h3 id="a-finite-dimensional-boundary-constraint">A finite-dimensional
+boundary constraint</h3>
+<p>Take
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>=</mo><msup><mi mathvariant="double-struck">ℂ</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">X_0=\mathbb C^3</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Y</mi><mn>0</mn></msub><mo>=</mo><msup><mi mathvariant="double-struck">ℂ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">Y_0=\mathbb C^2</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mn>0</mn></msub><mo>=</mo><mi mathvariant="double-struck">ℂ</mi></mrow><annotation encoding="application/x-tex">Z_0=\mathbb C</annotation></semantics></math></span>,
+and</p>
+<p><span class="math display"><math display="block" id="eq-DI47" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>x</mi><mn>3</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><msub><mi>x</mi><mn>3</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>B</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>x</mi><mn>3</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>x</mi><mn>3</mn></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI47)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ P(x_1,x_2,x_3)=(x_1,x_2+x_3),\qquad B(x_1,x_2,x_3)=x_3.&#13;
+ \tag{DI47}&#13;
+</annotation></semantics></math></span></p>
+<p>The combined map
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(P,B)</annotation></semantics></math></span>
+is invertible. On
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">\ker B</annotation></semantics></math></span>,
+the restricted map is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_1,x_2,0)\mapsto(x_1,x_2)</annotation></semantics></math></span>,
+also invertible. The right inverse
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>z</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Rz=(0,0,z)</annotation></semantics></math></span>
+makes (DI16)–(DI17) an ordinary triangular matrix factorization. This
+finite model displays the exact cokernel isomorphism used for Sobolev
+boundary spaces.</p>
+<h3 id="why-matching-values-is-the-right-h1-condition">Why matching
+values is the right
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math></span>
+condition</h3>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>1</mn></msub><mo>∈</mo><msup><mi>H</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u_1\in H^1([0,1])</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>2</mn></msub><mo>∈</mo><msup><mi>H</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u_2\in H^1([-1,0])</annotation></semantics></math></span>,
+and join them as a piecewise function
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math></span>.
+For every compactly supported smooth test function
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math></span>,
+integration by parts on the two halves gives</p>
+<p><span class="math display"><math display="block" id="eq-DI48" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><msub><mi>∂</mi><mi>r</mi></msub><mi>u</mi><mo>,</mo><mi>φ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mi>−</mi><mn>1</mn></mrow><mn>0</mn></msubsup><msubsup><mi>u</mi><mn>2</mn><mo>′</mo></msubsup><mi>φ</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>r</mi><mo>+</mo><msubsup><mo>∫</mo><mn>0</mn><mn>1</mn></msubsup><msubsup><mi>u</mi><mn>1</mn><mo>′</mo></msubsup><mi>φ</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>r</mi><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>−</mo><msub><mi>u</mi><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI48)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \langle \partial_ru,\varphi\rangle&#13;
+ =\int_{-1}^0u_2'\varphi\,dr+\int_0^1u_1'\varphi\,dr&#13;
+  +(u_1(0)-u_2(0))\varphi(0).&#13;
+ \tag{DI48}&#13;
+</annotation></semantics></math></span></p>
+<p>The distributional derivative lies in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+exactly when the trace jump vanishes. This is the one-dimensional form
+of (DI33). Higher Sobolev gluing needs further matching derivatives,
+which is why the index identification is first made at
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>1</mn></msup><mo>→</mo><msup><mi>L</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">H^1\to L^2</annotation></semantics></math></span>.</p>
+<h3 id="the-angular-cap-estimate">The angular cap estimate</h3>
+<p>For the scalar partial symbol
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">a(\eta)=|\eta|</annotation></semantics></math></span>,
+the leading-symbol difference in (DI37) is supported where
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>2</mn><mi>ε</mi><mo form="prefix" stretchy="false">|</mo><mi>ρ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|\eta|\leq2\varepsilon|\rho|</annotation></semantics></math></span>.
+On
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>η</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><msup><mi>ρ</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\eta|^2+\rho^2=1</annotation></semantics></math></span>,</p>
+<p><span class="math display"><math display="block" id="eq-DI49" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>a</mi><mrow><mi>ε</mi><mo>,</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>2</mn><mi>ε</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI49)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ |a_{\varepsilon,1}-a_1|\leq|\eta|\leq2\varepsilon.&#13;
+ \tag{DI49}&#13;
+</annotation></semantics></math></span></p>
+<p>This is the exact small factor that turns the tangential operator
+into an operator-norm limit of ordinary full-variable pseudodifferential
+operators.</p>
+<span id="AN03-SDI-012"></span><span id="12-exercises-with-complete-solutions"></span><h2 id="exercises-with-complete-solutions">12. Exercises with complete
+solutions</h2>
+<p><strong>1. Recover the two endpoint signs.</strong> Starting from
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>t</mi></msub><mo>=</mo><mi>−</mi><mi>i</mi><msub><mi>∂</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">D_t=-i\partial_t</annotation></semantics></math></span>,
+prove (DI6) without assuming that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math></span>
+is scalar.</p>
+<p><strong>Solution.</strong> The fiber metric gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mo form="prefix" stretchy="false">|</mo><mi>w</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>t</mi></msub><mi>w</mi><mo>,</mo><mi>w</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mi>w</mi><mo>,</mo><msub><mi>∂</mi><mi>t</mi></msub><mi>w</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\partial_t|w|^2=(\partial_tw,w)+(w,\partial_tw)</annotation></semantics></math></span>.
+Hence</p>
+<p><span class="math display"><math display="block" id="eq-DI50" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mn>2</mn><mi>i</mi><mrow><mi mathvariant="normal">Im</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ϕ</mi><msub><mi>D</mi><mi>t</mi></msub><mi>w</mi><mo>,</mo><mi>w</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>−</mi><mi>i</mi><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mi>ϕ</mi><mspace width="0.167em"></mspace><msub><mi>∂</mi><mi>t</mi></msub><mo form="prefix" stretchy="false">|</mo><mi>w</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mi>d</mi><mi>t</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>i</mi><mo form="prefix" stretchy="false">|</mo><mi>w</mi><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><mi>i</mi><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><msup><mi>ϕ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><mi>w</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mi>d</mi><mi>t</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI50)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \begin{aligned}&#13;
+ 2i\operatorname{Im}(\phi D_tw,w)&#13;
+ &amp;=-i\int_0^\infty\phi\,\partial_t|w|^2dt\\&#13;
+ &amp;=i|w(0)|^2+i\int_0^\infty\phi'|w|^2dt.&#13;
+ \end{aligned}&#13;
+ \tag{DI50}&#13;
+</annotation></semantics></math></span></p>
+<p>Divide by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math></span>.
+Replacing
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mi>t</mi></msub><annotation encoding="application/x-tex">D_t</annotation></semantics></math></span>
+by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>D</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">-D_t</annotation></semantics></math></span>
+reverses both terms. The calculation is component-free, so it holds for
+bundle-valued
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math></span>.</p>
+<p><strong>2. Check the cokernel multiplier.</strong> In (DI10), use
+arbitrary minus traces to recover the exact formula for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math></span>.</p>
+<p><strong>Solution.</strong> For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>u</mi><mo>−</mo></msup></mrow><annotation encoding="application/x-tex">a=\gamma_0u^-</annotation></semantics></math></span>,
+the minus terms are
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>i</mi><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-i(a,\gamma_0v^-)+(a,h)</annotation></semantics></math></span>.
+Since the inner product is linear in the first entry,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>i</mi><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mi>i</mi><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>−</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a,i\gamma_0v^-)=-i(a,\gamma_0v^-)</annotation></semantics></math></span>.
+Vanishing for every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>
+gives</p>
+<p><span class="math display"><math display="block" id="eq-DI51" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>+</mo><mi>i</mi><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>−</mo></msup><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>h</mi><mo>=</mo><mi>−</mi><mi>i</mi><msub><mi>γ</mi><mn>0</mn></msub><msup><mi>v</mi><mo>−</mo></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI51)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ h+i\gamma_0v^-=0,\qquad h=-i\gamma_0v^-.&#13;
+ \tag{DI51}&#13;
+</annotation></semantics></math></span></p>
+<p><strong>3. Verify the triangular reduction.</strong> Prove directly
+that the maps
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>
+in (DI16) are invertible and calculate
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>A</mi><mi>J</mi></mrow><annotation encoding="application/x-tex">SAJ</annotation></semantics></math></span>.</p>
+<p><strong>Solution.</strong> Because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mi>R</mi><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">BR=I</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>−</mo><mi>R</mi><mi>B</mi><mi>u</mi><mo>∈</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">u-RBu\in\ker B</annotation></semantics></math></span>,
+so the displayed formula for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>J</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">J^{-1}</annotation></semantics></math></span>
+is defined. Direct substitution gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">J^{-1}J(x,z)=(x,z)</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msup><mi>J</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>u</mi><mo>=</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">JJ^{-1}u=u</annotation></semantics></math></span>.
+The inverse of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>
+is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>+</mo><mi>P</mi><mi>R</mi><mi>z</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">S^{-1}(y,z)=(y+PRz,z)</annotation></semantics></math></span>.
+Finally,</p>
+<p><span class="math display"><math display="block" id="eq-DI52" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>A</mi><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>S</mi><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mi>x</mi><mo>+</mo><mi>P</mi><mi>R</mi><mi>z</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mi>x</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI52)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ SAJ(x,z)=S(Px+PRz,z)=(Px,z).&#13;
+ \tag{DI52}&#13;
+</annotation></semantics></math></span></p>
+<p><strong>4. Trivialize the coupling kernels.</strong> Prove that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>J</mi><mi>τ</mi></msub><annotation encoding="application/x-tex">J_\tau</annotation></semantics></math></span>
+in (DI32) maps
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\ker C_0</annotation></semantics></math></span>
+bijectively onto
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mi>τ</mi></msub></mrow><annotation encoding="application/x-tex">\ker C_\tau</annotation></semantics></math></span>.</p>
+<p><strong>Solution.</strong> For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x\in\ker C_0</annotation></semantics></math></span>,
+use
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>τ</mi></msub><mo>=</mo><msub><mi>C</mi><mn>0</mn></msub><mo>−</mo><mi>τ</mi><mi>K</mi></mrow><annotation encoding="application/x-tex">C_\tau=C_0-\tau K</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mi>R</mi><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">C_0R=I</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>R</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">KR=0</annotation></semantics></math></span>:</p>
+<p><span class="math display"><math display="block" id="eq-DI53" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>τ</mi><mi>R</mi><mi>K</mi><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>+</mo><mi>τ</mi><mi>K</mi><mi>x</mi><mo>−</mo><mi>τ</mi><mi>K</mi><mi>x</mi><mo>−</mo><msup><mi>τ</mi><mn>2</mn></msup><mi>K</mi><mi>R</mi><mi>K</mi><mi>x</mi><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI53)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ C_\tau(x+\tau RKx)=0+\tau Kx-\tau Kx-\tau^2KRKx=0.&#13;
+ \tag{DI53}&#13;
+</annotation></semantics></math></span></p>
+<p>If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>∈</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mi>τ</mi></msub></mrow><annotation encoding="application/x-tex">y\in\ker C_\tau</annotation></semantics></math></span>,
+then
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mi>y</mi><mo>=</mo><mi>τ</mi><mi>K</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">C_0y=\tau Ky</annotation></semantics></math></span>.
+Put
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi><mo>−</mo><mi>R</mi><msub><mi>C</mi><mn>0</mn></msub><mi>y</mi></mrow><annotation encoding="application/x-tex">x=y-RC_0y</annotation></semantics></math></span>.
+This lies in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\ker C_0</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>x</mi><mo>=</mo><mi>K</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">Kx=Ky</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mi>τ</mi><mi>R</mi><mi>K</mi><mi>x</mi><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x+\tau RKx=y</annotation></semantics></math></span>.
+Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>↦</mo><mi>y</mi><mo>−</mo><mi>R</mi><msub><mi>C</mi><mn>0</mn></msub><mi>y</mi></mrow><annotation encoding="application/x-tex">y\mapsto y-RC_0y</annotation></semantics></math></span>
+is the inverse.</p>
+<p><strong>5. Test the two index strata.</strong> Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>A</mi><mo>=</mo><mi>−</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\operatorname{ind}A=-3</annotation></semantics></math></span>.
+Compute the doubled index for a zero-index complement and for a
+same-index complement.</p>
+<p><strong>Solution.</strong> Equation (DI43) gives</p>
+<p><span class="math display"><math display="block" id="eq-DI54" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>D</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>−</mi><mn>3</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>C</mi><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>−</mi><mn>6</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>C</mi><mo>=</mo><mi>−</mi><mn>3</mn><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI54)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \operatorname{ind}D=&#13;
+ \begin{cases}&#13;
+ -3,&amp;\operatorname{ind}C=0,\\&#13;
+ -6,&amp;\operatorname{ind}C=-3.&#13;
+ \end{cases}&#13;
+ \tag{DI54}&#13;
+</annotation></semantics></math></span></p>
+<p>The first construction gives equality. The second gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>A</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mi mathvariant="normal">ind</mi><mo>⁡</mo></mrow><mi>D</mi><mo>=</mo><mi>−</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\operatorname{ind}A=\frac12\operatorname{ind}D=-3</annotation></semantics></math></span>.
+Moving the factor
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math></span>
+between these two data would give the wrong integer.</p>
+<p><strong>6. Why must the approximation be in operator norm?</strong>
+Explain why pointwise convergence of the full symbols in (DI37) would
+not by itself prove the index identity.</p>
+<p><strong>Solution.</strong> Fredholm index stability applies to
+bounded operators in their operator-norm topology. Pointwise symbol
+convergence gives no uniform control on the maps between Sobolev spaces
+and does not exclude a loss concentrated in a shrinking angular cap. The
+partial-operator estimate supplies the needed bound:</p>
+<p><span class="math display"><math display="block" id="eq-DI55" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mover><mi>P</mi><mo accent="true">̂</mo></mover><mi>ε</mi></msub><mo>−</mo><mover><mi>P</mi><mo accent="true">̂</mo></mover><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi>H</mi><mi>s</mi></msup><mo>→</mo><msup><mi>H</mi><mrow><mi>s</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow></msub><mo>≤</mo><msub><mi>C</mi><mi>s</mi></msub><mi>ε</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(DI55)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \|\widehat P_\varepsilon-\widehat P\|_{H^s\to H^{s-1}}&#13;
+ \leq C_s\varepsilon.&#13;
+ \tag{DI55}&#13;
+</annotation></semantics></math></span></p>
+<p>Together with uniform principal-symbol convergence and ellipticity,
+this is exactly the hypothesis of the norm-limit index theorem.</p>
+<span id="AN03-SDI-013"></span><span id="13-reading-notes-and-references"></span><h2 id="reading-notes-and-references">13. Reading notes and
+references</h2>
+<p>Equations (DI43)–(DI45) identify the missing datum and give the exact
+correction for the actual chosen complementary half.</p>
+<p><a href="stable-boundary-models.html">Stable modes and the algebra of
+boundary data</a> proves the stable-space algebra used in Sections 1 and
+5. <a href="generalized-collar-fredholm.html">Fredholm boundary problems
+with first-order Calderón defects</a> supplies the generalized Fredholm
+and regularity theorem. <a href="global-elliptic-symbol-index.html">Symbols, finite defects, and the
+index on a closed manifold</a> proves the partial-operator approximation
+and continuous symbol-index theorem used in Section 8.</p>
+<p>The arguments, examples, figure, and exercises in this lesson are
+independently written.</p>
+<p>Written and dedicated to the public domain by Codex under CC0
+1.0.</p></article>
+<footer></footer></main></body></html>

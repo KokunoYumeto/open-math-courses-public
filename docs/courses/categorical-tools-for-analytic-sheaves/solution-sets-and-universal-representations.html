@@ -1,0 +1,293 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Solution sets and universal representations</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="solution-sets-and-universal-representations">Solution sets and universal representations</h1>
+<p>A functor may assign compatible data to every test object without offering a formula for a universal object. A solution set reduces that search to a small family. Colimits then combine the candidates, while their universal properties remove the ambiguity in choosing among them.</p>
+<p>We fix universes, use small Hom sets, and take all families and diagram categories in the stated small universe. “All colimits” and “all limits” below mean all small ones. We assume the Yoneda convention from <a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a>, the separate detecting and separating probes from <a href="generators-and-small-quotient-families.html">Generators and small quotient families</a>, and the intrinsic strict epimorphisms from <a href="coimages-images-and-composition-of-quotients.html">Coimages, images and composition of quotients</a>.</p>
+<h2 id="1-universal-elements-and-variance">1. Universal elements and variance</h2>
+<p>Let <span class="math" data-tex="\(F:\mathcal C^{op}\to\operatorname{Set}\)">\(F:\mathcal C^{op}\to\operatorname{Set}\)</span>. Its category of elements <span class="math" data-tex="\(\mathcal E_F\)">\(\mathcal E_F\)</span> has objects <span class="math" data-tex="\((X,x)\)">\((X,x)\)</span>, where <span class="math" data-tex="\(x\in F(X)\)">\(x\in F(X)\)</span>, and arrows
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(X,x)\xrightarrow{a}(Y,y),\\
+a:X\to Y,\qquad F(a)(y)=x.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+(X,x)\xrightarrow{a}(Y,y),\\
+a:X\to Y,\qquad F(a)(y)=x.
+\end{gathered}
+\tag{1.1}
+\]</span>
+A universal element is a pair <span class="math" data-tex="\((T,t)\)">\((T,t)\)</span> for which
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(X,T)\longrightarrow F(X),\\
+a\longmapsto F(a)(t).
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(X,T)\longrightarrow F(X),\\
+a\longmapsto F(a)(t).
+\end{gathered}
+\tag{1.2}
+\]</span>
+is bijective for every <span class="math" data-tex="\(X\)">\(X\)</span>. These functions are natural, since applying <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(ab\)">\(ab\)</span> gives <span class="math" data-tex="\(F(b)F(a)\)">\(F(b)F(a)\)</span>. Thus they represent <span class="math" data-tex="\(F\)">\(F\)</span>. The pair is universal precisely when <span class="math" data-tex="\((T,t)\)">\((T,t)\)</span> is terminal in <span class="math" data-tex="\(\mathcal E_F\)">\(\mathcal E_F\)</span>. This is the contravariant statement of <a href="https://emilyriehl.github.io/files/context.pdf">Riehl, Proposition 2.4.8</a>. For a covariant functor <span class="math" data-tex="\(H:\mathcal A\to\operatorname{Set}\)">\(H:\mathcal A\to\operatorname{Set}\)</span>, the corresponding object is initial and the formula uses <span class="math" data-tex="\(\operatorname{Hom}(T,X)\)">\(\operatorname{Hom}(T,X)\)</span>.</p>
+<p>The variance affects preservation. A contravariant representation <span class="math" data-tex="\(\operatorname{Hom}(-,T)\)">\(\operatorname{Hom}(-,T)\)</span> sends colimits in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> to limits of sets. A covariant representation <span class="math" data-tex="\(\operatorname{Hom}(T,-)\)">\(\operatorname{Hom}(T,-)\)</span> preserves limits in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Neither statement asserts preservation of colimits by a covariant representation.</p>
+<p>Suppose <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has all colimits and <span class="math" data-tex="\(F\)">\(F\)</span> sends them to limits. Then the projection
+<span class="math math-display" data-tex="\[
+\mathcal E_F\longrightarrow\mathcal C,\qquad (X,x)\longmapsto X
+\tag{1.3}
+\]">\[
+\mathcal E_F\longrightarrow\mathcal C,\qquad (X,x)\longmapsto X
+\tag{1.3}
+\]</span>
+creates colimits. Indeed, for a small diagram <span class="math" data-tex="\((X_i,x_i)\)">\((X_i,x_i)\)</span>, let <span class="math" data-tex="\(L=\operatorname{colim}_iX_i\)">\(L=\operatorname{colim}_iX_i\)</span>, with structure maps <span class="math" data-tex="\(c_i\)">\(c_i\)</span>. Compatibility of the <span class="math" data-tex="\(x_i\)">\(x_i\)</span> gives an element of <span class="math" data-tex="\(\lim_iF(X_i)\)">\(\lim_iF(X_i)\)</span>, so the preservation bijection supplies a unique <span class="math" data-tex="\(l\in F(L)\)">\(l\in F(L)\)</span> with <span class="math" data-tex="\(F(c_i)(l)=x_i\)">\(F(c_i)(l)=x_i\)</span>. Given a cocone <span class="math" data-tex="\(a_i:(X_i,x_i)\to(Y,y)\)">\(a_i:(X_i,x_i)\to(Y,y)\)</span>, the underlying colimit supplies a unique <span class="math" data-tex="\(a:L\to Y\)">\(a:L\to Y\)</span>. The elements <span class="math" data-tex="\(F(a)(y)\)">\(F(a)(y)\)</span> and <span class="math" data-tex="\(l\)">\(l\)</span> agree after every <span class="math" data-tex="\(F(c_i)\)">\(F(c_i)\)</span>, so are equal by that same bijection. Thus <span class="math" data-tex="\(a\)">\(a\)</span> is a morphism of elements, proving its universal property.</p>
+<p>For the empty diagram this says <span class="math" data-tex="\(F(0)=1\)">\(F(0)=1\)</span>, and supplies an initial object of <span class="math" data-tex="\(\mathcal E_F\)">\(\mathcal E_F\)</span>. In particular this category is nonempty. Its small coproducts and coequalizers also show that it is filtered: two objects map to their coproduct, and two parallel arrows are equalized by their coequalizer. Nothing here requires finite limits in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<h2 id="2-a-small-solution-set-is-enough">2. A small solution set is enough</h2>
+<p>A <strong>solution set</strong> for <span class="math" data-tex="\(F\)">\(F\)</span> is a small family of elements <span class="math" data-tex="\((T_j,t_j)\)">\((T_j,t_j)\)</span> such that every <span class="math" data-tex="\((X,x)\in\mathcal E_F\)">\((X,x)\in\mathcal E_F\)</span> has at least one arrow to a member of the family. The arrow need not be unique. This is a jointly weakly terminal set in <span class="math" data-tex="\(\mathcal E_F\)">\(\mathcal E_F\)</span>.</p>
+<p>A category is <strong>cofinally small</strong> if it receives a cofinal functor from a small category. We use the colimit convention: <span class="math" data-tex="\(K:\mathcal D\to\mathcal E\)">\(K:\mathcal D\to\mathcal E\)</span> is cofinal when every <span class="math" data-tex="\(e\downarrow K\)">\(e\downarrow K\)</span> is nonempty and connected. It lets colimits over <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be computed over <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> when the universal cocones in question exist.</p>
+<p><strong>Theorem 2.1.</strong> Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> have all colimits. For <span class="math" data-tex="\(F:\mathcal C^{op}\to\operatorname{Set}\)">\(F:\mathcal C^{op}\to\operatorname{Set}\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> is representable.</li>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> sends colimits to limits, and <span class="math" data-tex="\(\mathcal E_F\)">\(\mathcal E_F\)</span> has a solution set.</li>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> sends colimits to limits, and <span class="math" data-tex="\(\mathcal E_F\)">\(\mathcal E_F\)</span> is cofinally small.</li>
+</ol>
+<p>The terminal-object construction below is the dual of the construction discussed in <a href="https://emilyriehl.github.io/files/context.pdf">Riehl, Lemma 4.7.5</a>. We give the complete colimit argument, including the uniqueness of the resulting arrows.</p>
+<p><strong>Proof.</strong> A representation makes <span class="math" data-tex="\((T,t)\)">\((T,t)\)</span> terminal. Its singleton family is a solution set and the inclusion of that terminal object is cofinal. Preservation follows from the Hom universal property.</p>
+<p>Assume preservation and a solution set, and let <span class="math" data-tex="\(\mathcal D\subset\mathcal E_F\)">\(\mathcal D\subset\mathcal E_F\)</span> be the full subcategory on its objects. Local smallness makes <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> small, including all its morphisms. The comma category <span class="math" data-tex="\(e\downarrow\mathcal D\)">\(e\downarrow\mathcal D\)</span> is nonempty. Given two arrows <span class="math" data-tex="\(e\to d_1,e\to d_2\)">\(e\to d_1,e\to d_2\)</span>, form their pushout in <span class="math" data-tex="\(\mathcal E_F\)">\(\mathcal E_F\)</span>; it has an arrow to some <span class="math" data-tex="\(d_3\in\mathcal D\)">\(d_3\in\mathcal D\)</span>. The resulting arrows <span class="math" data-tex="\(d_1\to d_3\)">\(d_1\to d_3\)</span> and <span class="math" data-tex="\(d_2\to d_3\)">\(d_2\to d_3\)</span> belong to <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> by fullness and agree on <span class="math" data-tex="\(e\)">\(e\)</span>. They connect the two comma objects. Thus this inclusion is cofinal. Conversely a small cofinal functor supplies a solution set by the nonemptiness of its comma categories. This proves the equivalence of the two smallness formulations under preservation.</p>
+<p>We now construct the terminal object. Let <span class="math" data-tex="\(T=\operatorname{colim}_{d\in\mathcal D}d\)">\(T=\operatorname{colim}_{d\in\mathcal D}d\)</span> in <span class="math" data-tex="\(\mathcal E_F\)">\(\mathcal E_F\)</span>, with maps <span class="math" data-tex="\(\eta_d:d\to T\)">\(\eta_d:d\to T\)</span>. For any <span class="math" data-tex="\(e\)">\(e\)</span>, choose <span class="math" data-tex="\(h:e\to d\)">\(h:e\to d\)</span> and put <span class="math" data-tex="\(\lambda_e=\eta_dh\)">\(\lambda_e=\eta_dh\)</span>. This is independent of the choice: push out two choices over <span class="math" data-tex="\(e\)">\(e\)</span>, then map that pushout to a member <span class="math" data-tex="\(d_3\)">\(d_3\)</span> of the solution set. The two composites to <span class="math" data-tex="\(T\)">\(T\)</span> agree by the colimit cocone equations for the resulting maps in the full <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>.</p>
+<p>For <span class="math" data-tex="\(f:e\to e&#x27;\)">\(f:e\to e&#x27;\)</span>, a choice <span class="math" data-tex="\(e&#x27;\to d\)">\(e&#x27;\to d\)</span> also gives a choice <span class="math" data-tex="\(e\to d\)">\(e\to d\)</span>, so <span class="math" data-tex="\(\lambda_{e&#x27;}f=\lambda_e\)">\(\lambda_{e&#x27;}f=\lambda_e\)</span>. For <span class="math" data-tex="\(d\in\mathcal D\)">\(d\in\mathcal D\)</span>, choosing its identity gives <span class="math" data-tex="\(\lambda_d=\eta_d\)">\(\lambda_d=\eta_d\)</span>. Therefore <span class="math" data-tex="\(\lambda_T\eta_d=\eta_d\)">\(\lambda_T\eta_d=\eta_d\)</span> for every <span class="math" data-tex="\(d\)">\(d\)</span>, and colimit uniqueness gives <span class="math" data-tex="\(\lambda_T=\operatorname{id}_T\)">\(\lambda_T=\operatorname{id}_T\)</span>. For any arrow <span class="math" data-tex="\(a:e\to T\)">\(a:e\to T\)</span>, naturality now gives <span class="math" data-tex="\(a=\lambda_Ta=\lambda_e\)">\(a=\lambda_Ta=\lambda_e\)</span>. This makes <span class="math" data-tex="\(T\)">\(T\)</span> terminal. Its underlying object and chosen element represent <span class="math" data-tex="\(F\)">\(F\)</span> by §1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The full small subcategory must include its morphisms. A coproduct of a solution family alone is merely weakly terminal; the cocone relations in the colimit enforce uniqueness.</p>
+<h2 id="3-co-wellpowered-categories-and-the-detecting-generator-interface">3. Co-wellpowered categories and the detecting-generator interface</h2>
+<p>An <strong>ordinary quotient</strong> of <span class="math" data-tex="\(X\)">\(X\)</span> is an epimorphism <span class="math" data-tex="\(q:X\to Q\)">\(q:X\to Q\)</span>, considered up to isomorphisms of targets that commute with the specified map from <span class="math" data-tex="\(X\)">\(X\)</span>. Call <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> <strong>co-wellpowered</strong> if the ordinary quotient classes of each <span class="math" data-tex="\(X\)">\(X\)</span> form a small set. This includes all epimorphisms, whether or not they are strict.</p>
+<p>The role of ordinary quotient-smallness is to bound the possible targets of one fixed presentation object. This gives a direct solution-set proof of the representability principle, without assuming finite limits. Compare the dual special adjoint functor theorem in <a href="https://emilyriehl.github.io/files/context.pdf">Riehl, Theorem 4.7.10</a>.</p>
+<p><strong>Theorem 3.1.</strong> If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is cocomplete, co-wellpowered and has a small separating family, every <span class="math" data-tex="\(F:\mathcal C^{op}\to\operatorname{Set}\)">\(F:\mathcal C^{op}\to\operatorname{Set}\)</span> sending colimits to limits is representable. The conclusion also holds if the family is only assumed detecting.</p>
+<p><strong>Proof for a separating family.</strong> For each object <span class="math" data-tex="\(X\)">\(X\)</span>, the evaluation map <span class="math" data-tex="\(e_X:P_X\to X\)">\(e_X:P_X\to X\)</span> from (3.3) is epic: two maps agreeing after it agree after every probe <span class="math" data-tex="\(G_i\to X\)">\(G_i\to X\)</span>, hence agree by separation. Define a fixed small coproduct
+<span class="math math-display" data-tex="\[
+Z_0=\coprod_{\substack{i\in I\\a\in F(G_i)}}G_i.
+\]">\[
+Z_0=\coprod_{\substack{i\in I\\a\in F(G_i)}}G_i.
+\]</span>
+Preservation gives <span class="math" data-tex="\(z_0\in F(Z_0)\)">\(z_0\in F(Z_0)\)</span> whose component at <span class="math" data-tex="\((i,a)\)">\((i,a)\)</span> is <span class="math" data-tex="\(a\)">\(a\)</span>. For <span class="math" data-tex="\((X,x)\)">\((X,x)\)</span>, send the summand of <span class="math" data-tex="\(P_X\)">\(P_X\)</span> indexed by <span class="math" data-tex="\((i,b:G_i\to X)\)">\((i,b:G_i\to X)\)</span> to the summand of <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span> indexed by <span class="math" data-tex="\((i,F(b)(x))\)">\((i,F(b)(x))\)</span>. This defines <span class="math" data-tex="\(h:P_X\to Z_0\)">\(h:P_X\to Z_0\)</span>, and the componentwise preservation bijection gives
+<span class="math math-display" data-tex="\[
+F(h)(z_0)=F(e_X)(x).
+\]">\[
+F(h)(z_0)=F(e_X)(x).
+\]</span>
+Form the pushout <span class="math" data-tex="\(X&#x27;=X\amalg_{P_X}Z_0\)">\(X&#x27;=X\amalg_{P_X}Z_0\)</span>, with maps <span class="math" data-tex="\(c:X\to X&#x27;\)">\(c:X\to X&#x27;\)</span> and <span class="math" data-tex="\(d:Z_0\to X&#x27;\)">\(d:Z_0\to X&#x27;\)</span>. Preservation of this pushout supplies <span class="math" data-tex="\(x&#x27;\in F(X&#x27;)\)">\(x&#x27;\in F(X&#x27;)\)</span> with <span class="math" data-tex="\(F(c)(x&#x27;)=x\)">\(F(c)(x&#x27;)=x\)</span> and <span class="math" data-tex="\(F(d)(x&#x27;)=z_0\)">\(F(d)(x&#x27;)=z_0\)</span>. Thus <span class="math" data-tex="\((X,x)\to(X&#x27;,x&#x27;)\)">\((X,x)\to(X&#x27;,x&#x27;)\)</span> is a morphism of elements. Also <span class="math" data-tex="\(d\)">\(d\)</span> is epic. Indeed, two maps out of <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span> agreeing after <span class="math" data-tex="\(d\)">\(d\)</span> agree after <span class="math" data-tex="\(ce_X=dh\)">\(ce_X=dh\)</span>; cancel <span class="math" data-tex="\(e_X\)">\(e_X\)</span> to make them agree after <span class="math" data-tex="\(c\)">\(c\)</span>, and use the pushout property to equate them.</p>
+<p>Choose a small representative family of ordinary quotients of <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span>. Decorate each representative target <span class="math" data-tex="\(Q\)">\(Q\)</span> by every element of the small set <span class="math" data-tex="\(F(Q)\)">\(F(Q)\)</span>. This is a small family of elements. Each <span class="math" data-tex="\((X&#x27;,x&#x27;)\)">\((X&#x27;,x&#x27;)\)</span> above is isomorphic over its quotient map to one of these decorated targets, so every <span class="math" data-tex="\((X,x)\)">\((X,x)\)</span> maps to a member of the family. It is a solution set. Theorem 2.1 now gives a representing object <span class="math" data-tex="\(T\)">\(T\)</span> and natural bijections
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathcal C}(X,T)\simeq F(X).
+\tag{3.1}
+\]">\[
+\operatorname{Hom}_{\mathcal C}(X,T)\simeq F(X).
+\tag{3.1}
+\]</span>
+The construction includes an empty separating family: the fixed coproduct is then initial, and the same cancellation and pushout argument applies.</p>
+<p><strong>Bridge for a detecting family.</strong> We first prove that cocompleteness and co-wellpoweredness give an epi–mono factorization of every <span class="math" data-tex="\(f:P\to X\)">\(f:P\to X\)</span>. Choose a small set of representatives <span class="math" data-tex="\(e_i:P\to Q_i\)">\(e_i:P\to Q_i\)</span> of all ordinary quotient classes through which <span class="math" data-tex="\(f\)">\(f\)</span> factors. Write <span class="math" data-tex="\(f=v_ie_i\)">\(f=v_ie_i\)</span>; each <span class="math" data-tex="\(v_i\)">\(v_i\)</span> is unique because <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is epic. The identity quotient is among the classes, so the set is nonempty.</p>
+<p>Form the colimit of the small star diagram consisting of <span class="math" data-tex="\(P\)">\(P\)</span> and all the arrows <span class="math" data-tex="\(e_i\)">\(e_i\)</span>. It gives maps
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q:P\to Q,\qquad r_i:Q_i\to Q,\\
+r_ie_i=q.
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+q:P\to Q,\qquad r_i:Q_i\to Q,\\
+r_ie_i=q.
+\end{gathered}
+\tag{3.2}
+\]</span>
+The maps <span class="math" data-tex="\(f,v_i\)">\(f,v_i\)</span> form a cocone, giving <span class="math" data-tex="\(v:Q\to X\)">\(v:Q\to X\)</span> with <span class="math" data-tex="\(vq=f\)">\(vq=f\)</span>. The map <span class="math" data-tex="\(q\)">\(q\)</span> is epic: if two maps out of <span class="math" data-tex="\(Q\)">\(Q\)</span> agree after <span class="math" data-tex="\(q\)">\(q\)</span>, their composites with every <span class="math" data-tex="\(r_i\)">\(r_i\)</span> agree after the epic <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, hence agree, and the colimit property makes the two maps equal.</p>
+<p>To prove <span class="math" data-tex="\(v\)">\(v\)</span> monic, suppose <span class="math" data-tex="\(a,b:W\to Q\)">\(a,b:W\to Q\)</span> satisfy <span class="math" data-tex="\(va=vb\)">\(va=vb\)</span>. Form their coequalizer <span class="math" data-tex="\(c:Q\to Q&#x27;\)">\(c:Q\to Q&#x27;\)</span>. It is epic, and <span class="math" data-tex="\(v=v&#x27;c\)">\(v=v&#x27;c\)</span> for some <span class="math" data-tex="\(v&#x27;\)">\(v&#x27;\)</span>. Thus <span class="math" data-tex="\(cq:P\to Q&#x27;\)">\(cq:P\to Q&#x27;\)</span> is an ordinary quotient through which <span class="math" data-tex="\(f\)">\(f\)</span> factors. It has the class of some <span class="math" data-tex="\(e_k\)">\(e_k\)</span>, so there is an isomorphism <span class="math" data-tex="\(s:Q_k\to Q&#x27;\)">\(s:Q_k\to Q&#x27;\)</span> with <span class="math" data-tex="\(se_k=cq\)">\(se_k=cq\)</span>. Put <span class="math" data-tex="\(d=r_ks^{-1}:Q&#x27;\to Q\)">\(d=r_ks^{-1}:Q&#x27;\to Q\)</span>. Then
+<span class="math math-display" data-tex="\[
+dcq=r_ke_k=q.
+\]">\[
+dcq=r_ke_k=q.
+\]</span>
+Cancel <span class="math" data-tex="\(q\)">\(q\)</span> to get <span class="math" data-tex="\(dc=\operatorname{id}_Q\)">\(dc=\operatorname{id}_Q\)</span>, and cancel <span class="math" data-tex="\(cq\)">\(cq\)</span> in <span class="math" data-tex="\(cdcq=cq\)">\(cdcq=cq\)</span> to get <span class="math" data-tex="\(cd=\operatorname{id}_{Q&#x27;}\)">\(cd=\operatorname{id}_{Q&#x27;}\)</span>. Hence <span class="math" data-tex="\(c\)">\(c\)</span> is invertible; since <span class="math" data-tex="\(ca=cb\)">\(ca=cb\)</span>, we have <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. This proves the factorization.</p>
+<p>Now let <span class="math" data-tex="\((G_i)_{i\in I}\)">\((G_i)_{i\in I}\)</span> be a small detecting family and use the canonical evaluation map
+<span class="math math-display" data-tex="\[
+e_X:\coprod_{(i,a),\ a:G_i\to X}G_i\longrightarrow X.
+\tag{3.3}
+\]">\[
+e_X:\coprod_{(i,a),\ a:G_i\to X}G_i\longrightarrow X.
+\tag{3.3}
+\]</span>
+Factor <span class="math" data-tex="\(e_X=vq\)">\(e_X=vq\)</span> by the result just proved, with <span class="math" data-tex="\(q\)">\(q\)</span> epic and <span class="math" data-tex="\(v\)">\(v\)</span> monic. For every <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(\operatorname{Hom}(G_i,v)\)">\(\operatorname{Hom}(G_i,v)\)</span> is injective by monicity. It is surjective because each <span class="math" data-tex="\(a:G_i\to X\)">\(a:G_i\to X\)</span> lifts to its summand of the evaluation coproduct and then through <span class="math" data-tex="\(q\)">\(q\)</span>. Detection makes <span class="math" data-tex="\(v\)">\(v\)</span> invertible. Hence <span class="math" data-tex="\(e_X\)">\(e_X\)</span> is epic.</p>
+<p>If maps <span class="math" data-tex="\(b,c:X\to Y\)">\(b,c:X\to Y\)</span> agree after every map from every <span class="math" data-tex="\(G_i\)">\(G_i\)</span>, they agree after <span class="math" data-tex="\(e_X\)">\(e_X\)</span>, so <span class="math" data-tex="\(b=c\)">\(b=c\)</span>. The detecting family is consequently separating, and the solution-set proof above applies. This also checks the empty-family case whenever it is detecting. No finite-limit hypothesis was introduced. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a single generator <span class="math" data-tex="\(G\)">\(G\)</span>, the fixed object used in the proof is simply
+<span class="math math-display" data-tex="\[
+Z_0=\coprod_{a\in F(G)}G.
+\tag{3.4}
+\]">\[
+Z_0=\coprod_{a\in F(G)}G.
+\tag{3.4}
+\]</span>
+Thus the solution set uses quotients of one explicitly specified object, rather than coproducts depending on every possible <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>The quotient-smallness assumption is used here for <strong>ordinary</strong> quotients of <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span>. Smallness only for strict quotients does not justify dropping it. The next section treats the case in which all ordinary epimorphisms are strict.</p>
+<h2 id="4-strict-quotients-limits-and-right-adjoints">4. Strict quotients, limits and right adjoints</h2>
+<p><strong>Corollary 4.1.</strong> Suppose <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is cocomplete, has finite limits and a detecting generator, and every epimorphism is strict. Then <span class="math" data-tex="\(F:\mathcal C^{op}\to\operatorname{Set}\)">\(F:\mathcal C^{op}\to\operatorname{Set}\)</span> is representable exactly when it sends colimits to limits.</p>
+<p><strong>Proof.</strong> The kernel-pair argument in <a href="generators-and-small-quotient-families.html#4-small-subobjects-and-strict-quotients">Generators and small quotient families, §4</a> gives a small set of strict quotient classes of each object. Since all epimorphisms are strict, these are all ordinary quotient classes. Thus <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is co-wellpowered, and Theorem 3.1 applies. Necessity follows from the Hom universal property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This applies to sets and to left modules over any unital ring. In sets the singleton is detecting; in left modules the regular module <span class="math" data-tex="\(R\)">\(R\)</span> is detecting by evaluation at <span class="math" data-tex="\(1\)">\(1\)</span>. Both categories have the required colimits and finite limits. All their maps are strict by the explicit Set and arbitrary-ring module calculations in <a href="coimages-images-and-composition-of-quotients.html#5-sets-modules-presheaves-and-spaces">Coimages, images and composition of quotients, §5</a>. Small module colimits are formed by a direct sum modulo the relations imposed by diagram arrows: a map out is precisely a compatible family of linear maps. Small limits are the compatible tuples in a product. These descriptions apply without commutativity or finite-generation assumptions.</p>
+<p>The representability principle has consequences beyond an individual functor.</p>
+<p><strong>Theorem 4.2.</strong> Suppose <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is cocomplete and every <span class="math" data-tex="\(F:\mathcal C^{op}\to\operatorname{Set}\)">\(F:\mathcal C^{op}\to\operatorname{Set}\)</span> sending colimits to limits is representable. Then:</p>
+<ol>
+<li><span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has all limits.</li>
+<li>For any locally small <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, a functor <span class="math" data-tex="\(U:\mathcal C\to\mathcal D\)">\(U:\mathcal C\to\mathcal D\)</span> has a right adjoint exactly when it preserves colimits.</li>
+</ol>
+<p><strong>Proof.</strong> For a small diagram <span class="math" data-tex="\(A:I\to\mathcal C\)">\(A:I\to\mathcal C\)</span>, define
+<span class="math math-display" data-tex="\[
+H(X)=\lim_{i\in I}\operatorname{Hom}(X,A_i).
+\tag{4.1}
+\]">\[
+H(X)=\lim_{i\in I}\operatorname{Hom}(X,A_i).
+\tag{4.1}
+\]</span>
+This is the set of cones with vertex <span class="math" data-tex="\(X\)">\(X\)</span>. For a small diagram <span class="math" data-tex="\(X_j\)">\(X_j\)</span> with colimit <span class="math" data-tex="\(X\)">\(X\)</span>, the Hom universal property gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H(X)=\lim_i\lim_j\operatorname{Hom}(X_j,A_i)\\
+\simeq\lim_j\lim_i\operatorname{Hom}(X_j,A_i)\\
+=\lim_jH(X_j).
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+H(X)=\lim_i\lim_j\operatorname{Hom}(X_j,A_i)\\
+\simeq\lim_j\lim_i\operatorname{Hom}(X_j,A_i)\\
+=\lim_jH(X_j).
+\end{gathered}
+\tag{4.2}
+\]</span>
+The interchange bijection sends a compatible family of compatible tuples to the same doubly indexed family in the other order. This covers arbitrary small diagram categories, including empty ones. The representing object for <span class="math" data-tex="\(H\)">\(H\)</span> has the required cone universal property, so is a limit of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Now suppose <span class="math" data-tex="\(U\)">\(U\)</span> preserves colimits. For each <span class="math" data-tex="\(Y\in\mathcal D\)">\(Y\in\mathcal D\)</span>, the functor
+<span class="math math-display" data-tex="\[
+H_Y(X)=\operatorname{Hom}_{\mathcal D}(U(X),Y)
+\tag{4.3}
+\]">\[
+H_Y(X)=\operatorname{Hom}_{\mathcal D}(U(X),Y)
+\tag{4.3}
+\]</span>
+sends colimits to limits, so choose a representing object <span class="math" data-tex="\(R(Y)\)">\(R(Y)\)</span> with its natural identification. A map <span class="math" data-tex="\(b:Y\to Y&#x27;\)">\(b:Y\to Y&#x27;\)</span> gives, by postcomposition, a natural transformation <span class="math" data-tex="\(H_Y\to H_{Y&#x27;}\)">\(H_Y\to H_{Y&#x27;}\)</span>. Yoneda determines a unique <span class="math" data-tex="\(R(b):R(Y)\to R(Y&#x27;)\)">\(R(b):R(Y)\to R(Y&#x27;)\)</span> implementing it. Identity and composite transformations determine identity and composite maps, so <span class="math" data-tex="\(R\)">\(R\)</span> is a functor. Its representing bijections give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal D}(U(X),Y)\\
+\simeq\operatorname{Hom}_{\mathcal C}(X,R(Y)).
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal D}(U(X),Y)\\
+\simeq\operatorname{Hom}_{\mathcal C}(X,R(Y)).
+\end{gathered}
+\tag{4.4}
+\]</span>
+natural in both variables by construction. Thus <span class="math" data-tex="\(U\dashv R\)">\(U\dashv R\)</span>.</p>
+<p>Conversely, if <span class="math" data-tex="\(U\dashv R\)">\(U\dashv R\)</span>, apply (4.4) to a colimit of <span class="math" data-tex="\(X_j\)">\(X_j\)</span>. The Hom universal property in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> identifies the right side with <span class="math" data-tex="\(\lim_j\operatorname{Hom}(X_j,R(Y))\)">\(\lim_j\operatorname{Hom}(X_j,R(Y))\)</span>, hence the left side with <span class="math" data-tex="\(\lim_j\operatorname{Hom}(U(X_j),Y)\)">\(\lim_j\operatorname{Hom}(U(X_j),Y)\)</span>, naturally in <span class="math" data-tex="\(Y\)">\(Y\)</span>. This says exactly that <span class="math" data-tex="\(U(\operatorname{colim}_jX_j)\)">\(U(\operatorname{colim}_jX_j)\)</span>, with its image cocone, is a colimit of the <span class="math" data-tex="\(U(X_j)\)">\(U(X_j)\)</span>. No general completeness or cocompleteness hypothesis on <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction of <span class="math" data-tex="\(R\)">\(R\)</span> includes its action on arrows and both naturality variables. Choosing unrelated representatives on objects without their universal identifications would not by itself define an adjoint.</p>
+<h2 id="5-covariant-set-functors">5. Covariant set functors</h2>
+<p>The solution-set construction also solves a covariant problem. Here it is necessary to bound the size of a carrier of each element.</p>
+<p><strong>Theorem 5.1.</strong> Every functor <span class="math" data-tex="\(H:\operatorname{Set}\to\operatorname{Set}\)">\(H:\operatorname{Set}\to\operatorname{Set}\)</span> preserving all small limits is naturally isomorphic to <span class="math" data-tex="\(X\mapsto X^A\)">\(X\mapsto X^A\)</span> for some small set <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(H\)">\(H\)</span> preserves equalizers, it preserves injections. Indeed an injection of sets is isomorphic to an equalizer of two maps: take its image and the characteristic function of that image, equalized with the constant-one function. Applying <span class="math" data-tex="\(H\)">\(H\)</span> preserves this equalizer and hence its monomorphism.</p>
+<p>Given <span class="math" data-tex="\(x\in H(X)\)">\(x\in H(X)\)</span>, consider all subsets <span class="math" data-tex="\(D\subseteq X\)">\(D\subseteq X\)</span> through whose inclusion <span class="math" data-tex="\(x\)">\(x\)</span> lifts. There is at least one, namely <span class="math" data-tex="\(X\)">\(X\)</span>. Each lift is unique by preservation of injections. The diagram of these inclusions has their intersection <span class="math" data-tex="\(A\)">\(A\)</span> as its limit. Its corresponding <span class="math" data-tex="\(H\)">\(H\)</span>-diagram has the compatible tuple consisting of <span class="math" data-tex="\(x\)">\(x\)</span> and its lifts. Limit preservation therefore supplies <span class="math" data-tex="\(a\in H(A)\)">\(a\in H(A)\)</span> mapping to <span class="math" data-tex="\(x\)">\(x\)</span>. This <span class="math" data-tex="\(A\)">\(A\)</span> is the smallest subset through which <span class="math" data-tex="\(x\)">\(x\)</span> lifts.</p>
+<p>Put <span class="math" data-tex="\(2=\{0,1\}\)">\(2=\{0,1\}\)</span>. The map
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Map}(A,2)\longrightarrow H(2),\\
+f\longmapsto H(f)(a)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Map}(A,2)\longrightarrow H(2),\\
+f\longmapsto H(f)(a)
+\end{gathered}
+\]</span>
+is injective. For if <span class="math" data-tex="\(H(f)(a)=H(g)(a)\)">\(H(f)(a)=H(g)(a)\)</span>, preservation of the equalizer <span class="math" data-tex="\(E\hookrightarrow A\)">\(E\hookrightarrow A\)</span> of <span class="math" data-tex="\(f,g\)">\(f,g\)</span> makes <span class="math" data-tex="\(a\)">\(a\)</span> lift through <span class="math" data-tex="\(E\)">\(E\)</span>. Then <span class="math" data-tex="\(x\)">\(x\)</span> lifts through the subset <span class="math" data-tex="\(E\subseteq X\)">\(E\subseteq X\)</span>, so minimality gives <span class="math" data-tex="\(E=A\)">\(E=A\)</span>, hence <span class="math" data-tex="\(f=g\)">\(f=g\)</span>.</p>
+<p>Every such <span class="math" data-tex="\(A\)">\(A\)</span> embeds in the fixed small set <span class="math" data-tex="\(B=2^{H(2)}\)">\(B=2^{H(2)}\)</span>. Explicitly, for <span class="math" data-tex="\(u\in A\)">\(u\in A\)</span>, define <span class="math" data-tex="\(b_u:H(2)\to2\)">\(b_u:H(2)\to2\)</span> by
+<span class="math math-display" data-tex="\[
+ b_u(H(f)(a))=f(u),
+\]">\[
+ b_u(H(f)(a))=f(u),
+\]</span>
+and give it value zero outside this injective map's image. Distinct <span class="math" data-tex="\(u,v\)">\(u,v\)</span> are distinguished by a function <span class="math" data-tex="\(f:A\to2\)">\(f:A\to2\)</span>, so <span class="math" data-tex="\(u\mapsto b_u\)">\(u\mapsto b_u\)</span> is injective. Transport <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(H(C)\)">\(H(C)\)</span>, where <span class="math" data-tex="\(C\subseteq B\)">\(C\subseteq B\)</span> is the image of this embedding. The resulting decorated subset <span class="math" data-tex="\((C,c)\)">\((C,c)\)</span> maps to <span class="math" data-tex="\((X,x)\)">\((X,x)\)</span>. Therefore the family of all subsets <span class="math" data-tex="\(C\subseteq B\)">\(C\subseteq B\)</span>, each decorated by all elements of <span class="math" data-tex="\(H(C)\)">\(H(C)\)</span>, is a small weakly initial family in the category of elements of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>That category is complete: for a small diagram of decorated sets, preservation of its underlying limit gives the unique compatible decoration and the limit universal property, exactly as in §1 with arrows reversed. It is locally small. Apply the terminal-object construction in the proof of Theorem 2.1 with all arrows reversed. In detail, take the full small subcategory on the weakly initial family and form its limit. For any target element, choose a map from a family member; the limit projection followed by that map is independent of the choice, since a pullback of two choices receives a map from another family member. These maps are natural in the target. At the limit itself the induced endomorphism agrees with the identity after every limit projection, hence is the identity. Naturality then makes every map from the limit to a target equal to the constructed one. Thus this decorated limit is initial.</p>
+<p>Write it as <span class="math" data-tex="\((A_0,a_0)\)">\((A_0,a_0)\)</span>. By §1 its universal maps give natural bijections
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}(A_0,X)\longrightarrow H(X),\\
+f\longmapsto H(f)(a_0).
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}(A_0,X)\longrightarrow H(X),\\
+f\longmapsto H(f)(a_0).
+\end{gathered}
+\tag{5.1}
+\]</span>
+This proves the power-functor assertion, including empty carriers. Conversely every such power functor preserves limits by the covariant Hom universal property. The representing set is unique up to a unique isomorphism preserving the chosen representation. Exercise 3 determines all natural transformations between these functors; Exercise 4 shows why finite limits do not suffice. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-graded-exercises-with-complete-solutions">6. Graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (warm-up: two distinguished subsets).</strong> For a set <span class="math" data-tex="\(X\)">\(X\)</span>, let <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span> be the set of ordered pairs <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span> of disjoint subsets of <span class="math" data-tex="\(X\)">\(X\)</span>. Define its action on maps by inverse image. Find a terminal object of its category of elements and an explicit representation. What changes if disjointness is omitted?</p>
+<p><strong>Solution.</strong> Inverse images preserve disjointness, identities and composition, so this is a contravariant functor. Let <span class="math" data-tex="\(T=\{a,b,c\}\)">\(T=\{a,b,c\}\)</span> with distinguished pair <span class="math" data-tex="\((\{a\},\{b\})\)">\((\{a\},\{b\})\)</span>. For any disjoint pair <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span> in <span class="math" data-tex="\(X\)">\(X\)</span>, the unique function to <span class="math" data-tex="\(T\)">\(T\)</span> with these inverse images assigns <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>, and <span class="math" data-tex="\(c\)">\(c\)</span> elsewhere. These are all the points, since the subsets are disjoint. The inverse construction takes a function's inverse images of <span class="math" data-tex="\(\{a\},\{b\}\)">\(\{a\},\{b\}\)</span>. These operations are inverse and commute with inverse image along every <span class="math" data-tex="\(X&#x27;\to X\)">\(X&#x27;\to X\)</span>. Thus <span class="math" data-tex="\(F\simeq\operatorname{Hom}(-,T)\)">\(F\simeq\operatorname{Hom}(-,T)\)</span> and the displayed element is terminal.</p>
+<p>If arbitrary pairs are allowed, use <span class="math" data-tex="\(T&#x27;=2\times2\)">\(T&#x27;=2\times2\)</span> and its two coordinate-one subsets. A point maps to its two membership bits, including <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> for points in the intersection. Taking coordinate inverse images reverses this construction. The representative has four points instead of three. Both functors send all colimits to limits by their explicit representations.</p>
+<p><strong>Exercise 2 (standard: open sets and ordinary quotients).</strong> Let <span class="math" data-tex="\(\mathcal O(X)\)">\(\mathcal O(X)\)</span> be the set of open subsets of a topological space, with inverse image along continuous maps. Represent <span class="math" data-tex="\(\mathcal O:\operatorname{Top}^{op}\to\operatorname{Set}\)">\(\mathcal O:\operatorname{Top}^{op}\to\operatorname{Set}\)</span>. Then verify that all topological spaces satisfy the separating-family form of Theorem 3.1, although the singleton does not detect isomorphisms.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(S=\{0,1\}\)">\(S=\{0,1\}\)</span> have open sets <span class="math" data-tex="\(\varnothing,\{1\},S\)">\(\varnothing,\{1\},S\)</span>. A function <span class="math" data-tex="\(\chi_U:X\to S\)">\(\chi_U:X\to S\)</span> is continuous exactly when <span class="math" data-tex="\(U=\chi_U^{-1}(\{1\})\)">\(U=\chi_U^{-1}(\{1\})\)</span> is open, because the other two inverse images are automatically open. Thus <span class="math" data-tex="\(\operatorname{Hom}_{\operatorname{Top}}(X,S)\simeq\mathcal O(X)\)">\(\operatorname{Hom}_{\operatorname{Top}}(X,S)\simeq\mathcal O(X)\)</span>, naturally under inverse image, with universal open set <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>. In particular this functor sends all colimits to limits.</p>
+<p>The singleton is separating in <span class="math" data-tex="\(\operatorname{Top}\)">\(\operatorname{Top}\)</span>: its maps pick every point, so equality after all these maps is equality of underlying functions. It is not detecting, as the continuous bijection from a discrete two-point space to an indiscrete one is not a homeomorphism.</p>
+<p>To check cocompleteness, take the colimit of the underlying sets of a small diagram and give it the final topology for the maps from its spaces: a subset is open exactly when its inverse image in every diagram object is open. This is a topology, and a function out is continuous exactly when all its composites with the diagram maps are continuous. This proves the required colimit property, including the empty space for the empty diagram.</p>
+<p>For co-wellpoweredness, epimorphisms in all of <span class="math" data-tex="\(\operatorname{Top}\)">\(\operatorname{Top}\)</span> are exactly surjections, as proved in the prerequisite strict-morphism lesson. An ordinary quotient <span class="math" data-tex="\(q:X\to Y\)">\(q:X\to Y\)</span> is encoded by its fibre equivalence relation on the set <span class="math" data-tex="\(X\)">\(X\)</span>, together with the topology transported to the fibre set <span class="math" data-tex="\(X/{\sim_q}\)">\(X/{\sim_q}\)</span> by <span class="math" data-tex="\([x]\mapsto q(x)\)">\([x]\mapsto q(x)\)</span>. There is a small set of equivalence relations on <span class="math" data-tex="\(X\)">\(X\)</span>, and a small set of topologies on each of their quotient sets, since topologies are subsets of the power set. Equal codes give the unique compatible homeomorphism of targets. Thus all ordinary quotient classes form a small set, even though many of these quotients are not strict. Local smallness is immediate from the set of underlying functions.</p>
+<p>All hypotheses of the separating-family form of Theorem 3.1 hold. It follows that every contravariant set-valued functor on all topological spaces sending colimits to limits is representable. This conclusion uses the separating singleton and co-wellpoweredness; it does not replace them by a detecting-singleton assertion.</p>
+<p><strong>Exercise 3 (advanced: all natural operations on power functors).</strong> For small sets <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, determine every natural transformation <span class="math" data-tex="\(X^A\to X^B\)">\(X^A\to X^B\)</span>. Explain the direction of the resulting function between <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>, and classify the natural endomorphisms of the identity functor on sets.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(P_A(X)=\operatorname{Hom}(A,X)\)">\(P_A(X)=\operatorname{Hom}(A,X)\)</span>. For a natural transformation <span class="math" data-tex="\(\theta:P_A\to P_B\)">\(\theta:P_A\to P_B\)</span>, evaluate at the identity:
+<span class="math math-display" data-tex="\[
+s=\theta_A(\operatorname{id}_A)\in\operatorname{Hom}(B,A).
+\]">\[
+s=\theta_A(\operatorname{id}_A)\in\operatorname{Hom}(B,A).
+\]</span>
+For <span class="math" data-tex="\(f:A\to X\)">\(f:A\to X\)</span>, naturality along <span class="math" data-tex="\(f\)">\(f\)</span> says
+<span class="math math-display" data-tex="\[
+\theta_X(f)=f\circ s.
+\tag{6.1}
+\]">\[
+\theta_X(f)=f\circ s.
+\tag{6.1}
+\]</span>
+Thus <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is determined by the function <span class="math" data-tex="\(s:B\to A\)">\(s:B\to A\)</span>. Conversely precomposition with any such <span class="math" data-tex="\(s\)">\(s\)</span> defines a natural transformation by associativity of composition. Evaluation at the identity recovers <span class="math" data-tex="\(s\)">\(s\)</span>, proving
+<span class="math math-display" data-tex="\[
+\operatorname{Nat}(P_A,P_B)\simeq\operatorname{Hom}(B,A).
+\tag{6.2}
+\]">\[
+\operatorname{Nat}(P_A,P_B)\simeq\operatorname{Hom}(B,A).
+\tag{6.2}
+\]</span>
+The direction reverses because these functors are covariant represented functors. For a <span class="math" data-tex="\(B\)">\(B\)</span>-coordinate <span class="math" data-tex="\(b\)">\(b\)</span>, the output reads the <span class="math" data-tex="\(A\)">\(A\)</span>-coordinate <span class="math" data-tex="\(s(b)\)">\(s(b)\)</span>, allowing repeated or omitted coordinates.</p>
+<p>The identity functor is <span class="math" data-tex="\(P_1\)">\(P_1\)</span>, so its natural endomorphisms correspond to the unique function <span class="math" data-tex="\(1\to1\)">\(1\to1\)</span>. Its only natural endomorphism is the identity. Empty cases are included: <span class="math" data-tex="\(P_{\varnothing}\)">\(P_{\varnothing}\)</span> is the constant singleton functor, and there is no natural map from it to the identity, because there is no function <span class="math" data-tex="\(1\to\varnothing\)">\(1\to\varnothing\)</span>. There is a unique natural map from the identity to the constant singleton functor.</p>
+<p><strong>Exercise 4 (expert: finite limits do not give a representation).</strong> Let
+<span class="math math-display" data-tex="\[
+H(X)=X^{\mathbb N}/{\sim},
+\tag{6.3}
+\]">\[
+H(X)=X^{\mathbb N}/{\sim},
+\tag{6.3}
+\]</span>
+where sequences are equivalent if their entries are equal for all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>. Use componentwise application of functions to make <span class="math" data-tex="\(H\)">\(H\)</span> a functor. Prove that it preserves finite limits but not countable products, and hence is not representable.</p>
+<p><strong>Solution.</strong> Eventual equality is an equivalence relation and is preserved by applying a function, so the action is well-defined. Componentwise identities and composition give the functor laws.</p>
+<p>There is exactly one sequence in a singleton set, so <span class="math" data-tex="\(H(1)=1\)">\(H(1)=1\)</span>. The comparison
+<span class="math math-display" data-tex="\[
+H(X\times Y)\longrightarrow H(X)\times H(Y)
+\]">\[
+H(X\times Y)\longrightarrow H(X)\times H(Y)
+\]</span>
+is surjective: pair representatives of the two classes term by term. It is injective: eventual equality in each coordinate implies eventual equality of pairs after the maximum of the two bounds. Thus it preserves binary products, and by induction all finite products including the empty one.</p>
+<p>For <span class="math" data-tex="\(a,b:X\to Y\)">\(a,b:X\to Y\)</span>, let <span class="math" data-tex="\(E=\{x\in X:a(x)=b(x)\}\)">\(E=\{x\in X:a(x)=b(x)\}\)</span>. The map <span class="math" data-tex="\(H(E)\to H(X)\)">\(H(E)\to H(X)\)</span> is injective, since equality of sequences in <span class="math" data-tex="\(E\)">\(E\)</span> is tested by the same eventual relation in <span class="math" data-tex="\(X\)">\(X\)</span>. Its image lies in the equalizer of <span class="math" data-tex="\(H(a),H(b)\)">\(H(a),H(b)\)</span>. Conversely a class <span class="math" data-tex="\([x_n]\)">\([x_n]\)</span> in that equalizer has <span class="math" data-tex="\(a(x_n)=b(x_n)\)">\(a(x_n)=b(x_n)\)</span> for every <span class="math" data-tex="\(n\ge N\)">\(n\ge N\)</span>, so its tail lies in <span class="math" data-tex="\(E\)">\(E\)</span>. In particular <span class="math" data-tex="\(E\)">\(E\)</span> is nonempty; replace the finitely many earlier entries by <span class="math" data-tex="\(x_N\in E\)">\(x_N\in E\)</span>. This gives an <span class="math" data-tex="\(E\)">\(E\)</span>-sequence with the same class. If <span class="math" data-tex="\(E\)">\(E\)</span> is empty, no such equalizer class exists and <span class="math" data-tex="\(H(E)\)">\(H(E)\)</span> is empty as required. Thus <span class="math" data-tex="\(H\)">\(H\)</span> preserves equalizers. Finite products and equalizers construct every finite limit by taking compatible tuples, so it preserves finite limits.</p>
+<p>For the product of countably many copies of <span class="math" data-tex="\(2\)">\(2\)</span>, put <span class="math" data-tex="\(X=2^{\mathbb N}\)">\(X=2^{\mathbb N}\)</span>. Let <span class="math" data-tex="\(z_n\in X\)">\(z_n\in X\)</span> be the all-zero tuple, and let <span class="math" data-tex="\(e_n\in X\)">\(e_n\in X\)</span> have value <span class="math" data-tex="\(1\)">\(1\)</span> at coordinate <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere. The sequence classes <span class="math" data-tex="\([z_n]\)">\([z_n]\)</span> and <span class="math" data-tex="\([e_n]\)">\([e_n]\)</span> in <span class="math" data-tex="\(H(X)\)">\(H(X)\)</span> are distinct: their entries differ at every <span class="math" data-tex="\(n\)">\(n\)</span>. But for each fixed coordinate <span class="math" data-tex="\(j\)">\(j\)</span>, the two coordinate sequences differ only when <span class="math" data-tex="\(n=j\)">\(n=j\)</span>, so their classes in <span class="math" data-tex="\(H(2)\)">\(H(2)\)</span> are equal. Consequently
+<span class="math math-display" data-tex="\[
+H(2^{\mathbb N})\longrightarrow H(2)^{\mathbb N}
+\tag{6.4}
+\]">\[
+H(2^{\mathbb N})\longrightarrow H(2)^{\mathbb N}
+\tag{6.4}
+\]</span>
+is not injective. It fails to preserve this countable product. Every covariant represented functor preserves all limits, so <span class="math" data-tex="\(H\)">\(H\)</span> is not representable. This identifies the exact missing hypothesis rather than contradicting Theorem 5.1.</p>
+<p><em>Original lesson text: CC0 1.0. Adjoint and universal-element results have complete proofs in this lesson and its specified prerequisites; cited references give mathematical credit, and no source prose is reproduced. Self-checked; no independent review has occurred.</em></p>
+</main></body></html>

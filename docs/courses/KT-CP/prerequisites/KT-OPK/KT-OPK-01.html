@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="53D4FB4CA1EA0109FFFE45D229070D005302A7DAF9B74650C06A90F91EC54167">
+<title>Idempotents, projections and their equivalences — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-KT-OPK/KT-OPK-01</span></nav>
+<article id="lesson" class="lesson"><h1 id="idempotents-projections-and-their-equivalences">Idempotents, projections and their equivalences</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An idempotent records a direct-sum decomposition. A projection records one with an orthogonal complement. Operator K-theory begins by deciding when two such decompositions describe the same object. There are several answers: compare their ranges algebraically, change coordinates, or deform one continuously into the other. These answers differ in a fixed algebra. They agree once we allow extra zero matrix blocks.</p>
+<p>We develop the distinction before using stabilization to remove it. We also give two practical constructions: an explicit projection associated to an idempotent, and an exact idempotent associated to an approximate one. The latter explains why small errors in multiplication can be repaired.</p>
+<p>We assume Functional Analysis, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html">Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory</a>, and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients</a>. The precise background facts used without proof are listed near the end. The freely accessible equivalence comparison is [Blackadar 1998, §§4.1–4.6]; <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/af-algebras.html">AF-algebras</a> supplies the exact background stated below.</p>
+<h2 id="1-decompositions-and-the-matrix-setting">1. Decompositions and the matrix setting</h2>
+<p>Unless stated otherwise, <span class="math" data-tex="\(A\)">\(A\)</span> is a nonzero complex unital Banach algebra. We use a submultiplicative norm with <span class="math" data-tex="\(\|1\|=1\)">\(\|1\|=1\)</span>. An equivalent such norm exists by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html">Banach algebras, Proposition 3.1</a>. Estimates always refer to the chosen norm. The zero algebra has only the zero idempotent and can be treated separately.</p>
+<p>An <strong>idempotent</strong> is an element <span class="math" data-tex="\(e\)">\(e\)</span> satisfying <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>. On any module on which <span class="math" data-tex="\(e\)">\(e\)</span> acts, a vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> splits as</p>
+<span class="math math-display" data-tex="\[
+\xi=e\xi+(1-e)\xi,\qquad e(1-e)=(1-e)e=0.
+\]">\[
+\xi=e\xi+(1-e)\xi,\qquad e(1-e)=(1-e)e=0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(e\)">\(e\)</span> selects one summand and <span class="math" data-tex="\(1-e\)">\(1-e\)</span> the other. In a C*-algebra a <strong>projection</strong> is an idempotent with <span class="math" data-tex="\(e=e^*\)">\(e=e^*\)</span>. For projections acting on a Hilbert space the two summands are orthogonal.</p>
+<p>The algebra <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> consists of <span class="math" data-tex="\(n\)">\(n\)</span>-by-<span class="math" data-tex="\(n\)">\(n\)</span> matrices with entries in <span class="math" data-tex="\(A\)">\(A\)</span>. In the Banach case we choose a submultiplicative complete norm equivalent to the maximum of the entry norms, normalized at the identity. In the C*-case we use its C*-norm. The embeddings</p>
+<span class="math math-display" data-tex="\[
+M_n(A)\longrightarrow M_{n+1}(A),\qquad a\longmapsto
+\begin{pmatrix}a&amp;0\\0&amp;0\end{pmatrix}
+\]">\[
+M_n(A)\longrightarrow M_{n+1}(A),\qquad a\longmapsto
+\begin{pmatrix}a&amp;0\\0&amp;0\end{pmatrix}
+\]</span>
+<p>preserve multiplication but do not preserve the identities. Their algebraic union <span class="math" data-tex="\(M_\infty(A)\)">\(M_\infty(A)\)</span> consists of matrices with finitely many nonzero entries. It is not a completed matrix algebra. All homotopies in this lesson take place in one specified finite matrix algebra; a homotopy after stabilization means that such a finite stage exists.</p>
+<p>The <strong>orthogonal sum</strong> is <span class="math" data-tex="\(e\oplus f=\operatorname{diag}(e,f)\)">\(e\oplus f=\operatorname{diag}(e,f)\)</span>. Its square is <span class="math" data-tex="\(\operatorname{diag}(e^2,f^2)\)">\(\operatorname{diag}(e^2,f^2)\)</span>, so it is an idempotent whenever <span class="math" data-tex="\(e,f\)">\(e,f\)</span> are. Even when <span class="math" data-tex="\(e,f\)">\(e,f\)</span> are not self-adjoint, the two block summands annihilate each other. For projections their sum is a projection.</p>
+<p>For any algebra, including an already unital one, we fix the <strong>external unitization</strong></p>
+<span class="math math-display" data-tex="\[
+A^+=A\oplus\mathbb C,\qquad
+(a,\lambda)(b,\mu)=(ab+\lambda b+\mu a,\lambda\mu).
+\]">\[
+A^+=A\oplus\mathbb C,\qquad
+(a,\lambda)(b,\mu)=(ab+\lambda b+\mu a,\lambda\mu).
+\]</span>
+<p>Its new identity is <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, its augmentation is <span class="math" data-tex="\(\epsilon(a,\lambda)=\lambda\)">\(\epsilon(a,\lambda)=\lambda\)</span>, and <span class="math" data-tex="\(A\)">\(A\)</span> embeds as the ideal <span class="math" data-tex="\(A\oplus0\)">\(A\oplus0\)</span>. For Banach algebras the sum norm gives a Banach algebra. For C*-algebras we use the C*-unitization norm. If <span class="math" data-tex="\(A\)">\(A\)</span> already has identity <span class="math" data-tex="\(1_A\)">\(1_A\)</span>, the map <span class="math" data-tex="\((a,\lambda)\mapsto(a+\lambda1_A,\lambda)\)">\((a,\lambda)\mapsto(a+\lambda1_A,\lambda)\)</span> identifies <span class="math" data-tex="\(A^+\)">\(A^+\)</span> with the product C*-algebra <span class="math" data-tex="\(A\times\mathbb C\)">\(A\times\mathbb C\)</span>; the norm is then <span class="math" data-tex="\(\max(\|a+\lambda1_A\|,|\lambda|)\)">\(\max(\|a+\lambda1_A\|,|\lambda|)\)</span>. These background constructions are <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html">Banach algebras, Construction 3.2 and Propositions 3.3–3.4</a>.</p>
+<p>When <span class="math" data-tex="\(A\)">\(A\)</span> is nonunital, complements, invertible conjugators and unitaries are taken in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. The idempotents and their homotopies remain in <span class="math" data-tex="\(A\)">\(A\)</span>. Matrix complements use the identity of the ambient <span class="math" data-tex="\(M_n(A^+)\)">\(M_n(A^+)\)</span>.</p>
+<h2 id="2-changing-coordinates-and-following-a-deformation">2. Changing coordinates and following a deformation</h2>
+<p><span id="definition-2-1"></span><strong>Definition 2.1.</strong> For idempotents in a common unital algebra, write</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e\sim_a f&amp;\quad\text{if }e=xy,\ f=yx\text{ for some }x,y,\\
+e\sim_s f&amp;\quad\text{if }f=zez^{-1}\text{ for some invertible }z,\\
+e\sim_h f&amp;\quad\text{if a norm-continuous idempotent path joins }e\text{ to }f.
+\end{aligned}
+\]">\[
+\begin{aligned}
+e\sim_a f&amp;\quad\text{if }e=xy,\ f=yx\text{ for some }x,y,\\
+e\sim_s f&amp;\quad\text{if }f=zez^{-1}\text{ for some invertible }z,\\
+e\sim_h f&amp;\quad\text{if a norm-continuous idempotent path joins }e\text{ to }f.
+\end{aligned}
+\]</span>
+<p>In a nonunital algebra the witnesses <span class="math" data-tex="\(x,y\)">\(x,y\)</span> are in <span class="math" data-tex="\(A\)">\(A\)</span> and the similarity is implemented in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. Algebraic equivalence compares the selected summands. Similarity compares both selected and complementary summands. Homotopy adds a condition on the continuous change of coordinates.</p>
+<p><span id="lemma-2-2"></span><strong>Lemma 2.2.</strong> Algebraic witnesses can be chosen with</p>
+<span class="math math-display" data-tex="\[
+x=exf,\qquad y=fye.
+\]">\[
+x=exf,\qquad y=fye.
+\]</span>
+<p>Similarity implies algebraic equivalence.</p>
+<p><strong>Proof.</strong> Start with <span class="math" data-tex="\(xy=e,\ yx=f\)">\(xy=e,\ yx=f\)</span>. Associativity gives <span class="math" data-tex="\(ex=xf\)">\(ex=xf\)</span> and <span class="math" data-tex="\(fy=ye\)">\(fy=ye\)</span>. Replacing the witnesses by <span class="math" data-tex="\(x&#x27;=exf\)">\(x&#x27;=exf\)</span>, <span class="math" data-tex="\(y&#x27;=fye\)">\(y&#x27;=fye\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+x&#x27;y&#x27;=exfye=e(xyxy)e=e^4=e,\qquad
+y&#x27;x&#x27;=fyexf=f(yxyx)f=f^4=f.
+\]">\[
+x&#x27;y&#x27;=exfye=e(xyxy)e=e^4=e,\qquad
+y&#x27;x&#x27;=fyexf=f(yxyx)f=f^4=f.
+\]</span>
+<p>The required corner identities follow by multiplying by <span class="math" data-tex="\(e\)">\(e\)</span> or <span class="math" data-tex="\(f\)">\(f\)</span>. If <span class="math" data-tex="\(f=zez^{-1}\)">\(f=zez^{-1}\)</span>, take <span class="math" data-tex="\(x=ez^{-1}\)">\(x=ez^{-1}\)</span>, <span class="math" data-tex="\(y=ze\)">\(y=ze\)</span>; then <span class="math" data-tex="\(xy=e\)">\(xy=e\)</span>, <span class="math" data-tex="\(yx=f\)">\(yx=f\)</span>. In the nonunital case these witnesses lie in the ideal <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-2-3"></span><strong>Theorem 2.3 (Nearby idempotents).</strong> If</p>
+<span class="math math-display" data-tex="\[
+\|e-f\|&lt;\frac1{\|2e-1\|},
+\]">\[
+\|e-f\|&lt;\frac1{\|2e-1\|},
+\]</span>
+<p>then</p>
+<span class="math math-display" data-tex="\[
+z=ef+(1-e)(1-f)
+\]">\[
+z=ef+(1-e)(1-f)
+\]</span>
+<p>is invertible, <span class="math" data-tex="\(ez=zf\)">\(ez=zf\)</span>, and <span class="math" data-tex="\(f=z^{-1}ez\)">\(f=z^{-1}ez\)</span>. Moreover <span class="math" data-tex="\(z\)">\(z\)</span> is connected to <span class="math" data-tex="\(1\)">\(1\)</span> through invertibles.</p>
+<p><strong>Proof.</strong> Expand rather than commute factors:</p>
+<span class="math math-display" data-tex="\[
+z=1-e-f+2ef,\qquad
+z-1=(2e-1)(f-e),\qquad ez=ef=zf.
+\]">\[
+z=1-e-f+2ef,\qquad
+z-1=(2e-1)(f-e),\qquad ez=ef=zf.
+\]</span>
+<p>The hypothesis gives <span class="math" data-tex="\(\|z-1\|&lt;1\)">\(\|z-1\|&lt;1\)</span>, so the Neumann-series criterion makes <span class="math" data-tex="\(z\)">\(z\)</span> invertible. The same criterion applies to <span class="math" data-tex="\(z_t=1+t(z-1)\)">\(z_t=1+t(z-1)\)</span>, since <span class="math" data-tex="\(\|z_t-1\|&lt;1\)">\(\|z_t-1\|&lt;1\)</span> for <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>. Hence <span class="math" data-tex="\(z_t^{-1}ez_t\)">\(z_t^{-1}ez_t\)</span> is an idempotent path from <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(f\)">\(f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The factor <span class="math" data-tex="\(\|2e-1\|\)">\(\|2e-1\|\)</span> matters: idempotents need not have norm one. The formula also gives a continuous local choice of conjugator in the direction <span class="math" data-tex="\(e\mapsto f\)">\(e\mapsto f\)</span>, namely <span class="math" data-tex="\(w_e(f)=z^{-1}\)">\(w_e(f)=z^{-1}\)</span>.</p>
+<p><span id="theorem-2-4"></span><strong>Theorem 2.4 (Homotopy and the identity component).</strong> Two idempotents are homotopic if and only if they are conjugate by an element of <span class="math" data-tex="\(\mathrm{GL}(A)_0\)">\(\mathrm{GL}(A)_0\)</span>, the connected component of <span class="math" data-tex="\(1\)">\(1\)</span> in the invertible group.</p>
+<p><strong>Proof.</strong> Small balls in <span class="math" data-tex="\(\mathrm{GL}(A)\)">\(\mathrm{GL}(A)\)</span> are path-connected: near an invertible <span class="math" data-tex="\(g\)">\(g\)</span>, write an element as <span class="math" data-tex="\(g(1+h)\)">\(g(1+h)\)</span> with <span class="math" data-tex="\(\|h\|&lt;1\)">\(\|h\|&lt;1\)</span>, and use <span class="math" data-tex="\(g(1+th)\)">\(g(1+th)\)</span>. Therefore the invertible group is locally path-connected; its connected components are its path components. A path <span class="math" data-tex="\(g_t\)">\(g_t\)</span> from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(g\)">\(g\)</span> gives the idempotent path <span class="math" data-tex="\(g_teg_t^{-1}\)">\(g_teg_t^{-1}\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(e_t\)">\(e_t\)</span> be an idempotent path with <span class="math" data-tex="\(e_0=e\)">\(e_0=e\)</span>. Compactness gives a bound <span class="math" data-tex="\(K\geq\|2e_t-1\|\)">\(K\geq\|2e_t-1\|\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>. Choose a partition <span class="math" data-tex="\(0=t_0&lt;\cdots&lt;t_m=1\)">\(0=t_0&lt;\cdots&lt;t_m=1\)</span> fine enough that <span class="math" data-tex="\(\|e_t-e_{t_i}\|&lt;1/K\)">\(\|e_t-e_{t_i}\|&lt;1/K\)</span> on each subinterval. Define</p>
+<span class="math math-display" data-tex="\[
+z_i(t)=e_{t_i}e_t+(1-e_{t_i})(1-e_t).
+\]">\[
+z_i(t)=e_{t_i}e_t+(1-e_{t_i})(1-e_t).
+\]</span>
+<p>It starts at <span class="math" data-tex="\(1\)">\(1\)</span>, stays invertible, and satisfies <span class="math" data-tex="\(z_i(t)^{-1}e_{t_i}z_i(t)=e_t\)">\(z_i(t)^{-1}e_{t_i}z_i(t)=e_t\)</span>. Set <span class="math" data-tex="\(Z_0=1\)">\(Z_0=1\)</span> and, successively,</p>
+<span class="math math-display" data-tex="\[
+Z(t)=Z_i z_i(t)\quad(t_i\leq t\leq t_{i+1}),\qquad
+Z_{i+1}=Z_i z_i(t_{i+1}).
+\]">\[
+Z(t)=Z_i z_i(t)\quad(t_i\leq t\leq t_{i+1}),\qquad
+Z_{i+1}=Z_i z_i(t_{i+1}).
+\]</span>
+<p>The pieces match. Induction gives <span class="math" data-tex="\(Z(t)^{-1}eZ(t)=e_t\)">\(Z(t)^{-1}eZ(t)=e_t\)</span>; indeed the inverse of <span class="math" data-tex="\(Z_i z_i(t)\)">\(Z_i z_i(t)\)</span> is <span class="math" data-tex="\(z_i(t)^{-1}Z_i^{-1}\)">\(z_i(t)^{-1}Z_i^{-1}\)</span>. Thus <span class="math" data-tex="\(Z(1)^{-1}\in\mathrm{GL}(A)_0\)">\(Z(1)^{-1}\in\mathrm{GL}(A)_0\)</span> implements the desired conjugation. The order of these products is essential. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="corollary-2-5"></span><strong>Corollary 2.5 (Orbits).</strong> The set <span class="math" data-tex="\(\operatorname{Idem}(A)\)">\(\operatorname{Idem}(A)\)</span> is closed. Each similarity class is both open and closed in it. Its path components are precisely the conjugation orbits of <span class="math" data-tex="\(\mathrm{GL}(A)_0\)">\(\mathrm{GL}(A)_0\)</span>.</p>
+<p><strong>Proof.</strong> The map <span class="math" data-tex="\(a\mapsto a^2-a\)">\(a\mapsto a^2-a\)</span> is continuous, so its zero set is closed. Theorem 2.3 supplies a relative neighbourhood of every idempotent inside its similarity class. Every other class is open as well, so the complement of any one class is open. The last assertion is Theorem 2.4. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An open and closed similarity class may contain several path components. Local deformation and unrestricted coordinate change are different questions.</p>
+<p><span id="proposition-2-6"></span><strong>Proposition 2.6 (The complementary summand).</strong> Idempotents <span class="math" data-tex="\(e,f\)">\(e,f\)</span> are similar if and only if <span class="math" data-tex="\(e\sim_a f\)">\(e\sim_a f\)</span> and <span class="math" data-tex="\(1-e\sim_a1-f\)">\(1-e\sim_a1-f\)</span>.</p>
+<p><strong>Proof.</strong> Similarity conjugates both the idempotent and its complement; apply Lemma 2.2 to each. Conversely take normalized witnesses <span class="math" data-tex="\(xy=e,\ yx=f\)">\(xy=e,\ yx=f\)</span> and <span class="math" data-tex="\(ab=1-e,\ ba=1-f\)">\(ab=1-e,\ ba=1-f\)</span>. The corner conditions make <span class="math" data-tex="\(xb=ay=ya=bx=0\)">\(xb=ay=ya=bx=0\)</span>. Thus <span class="math" data-tex="\(z=x+a\)">\(z=x+a\)</span> has inverse <span class="math" data-tex="\(y+b\)">\(y+b\)</span>, since their products are <span class="math" data-tex="\(e+(1-e)=1\)">\(e+(1-e)=1\)</span> and <span class="math" data-tex="\(f+(1-f)=1\)">\(f+(1-f)=1\)</span>. Also <span class="math" data-tex="\(ez=x=zf\)">\(ez=x=zf\)</span>. Consequently <span class="math" data-tex="\(zfz^{-1}=e\)">\(zfz^{-1}=e\)</span>, or <span class="math" data-tex="\(z^{-1}ez=f\)">\(z^{-1}ez=f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-why-an-extra-block-removes-the-difference">3. Why an extra block removes the difference</h2>
+<p><span id="theorem-3-1"></span><strong>Theorem 3.1 (Algebraic equivalence after stabilization).</strong> Suppose <span class="math" data-tex="\(e=xy,\ f=yx\)">\(e=xy,\ f=yx\)</span>, with <span class="math" data-tex="\(x=exf,\ y=fye\)">\(x=exf,\ y=fye\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+Z=\begin{pmatrix}x&amp;1-e\\1-f&amp;y\end{pmatrix},\qquad
+W=\begin{pmatrix}y&amp;1-f\\1-e&amp;x\end{pmatrix}.
+\]">\[
+Z=\begin{pmatrix}x&amp;1-e\\1-f&amp;y\end{pmatrix},\qquad
+W=\begin{pmatrix}y&amp;1-f\\1-e&amp;x\end{pmatrix}.
+\]</span>
+<p>Then <span class="math" data-tex="\(ZW=WZ=1\)">\(ZW=WZ=1\)</span> and <span class="math" data-tex="\(Z(f\oplus0)Z^{-1}=e\oplus0\)">\(Z(f\oplus0)Z^{-1}=e\oplus0\)</span>. Also <span class="math" data-tex="\(e\oplus0\)">\(e\oplus0\)</span> and <span class="math" data-tex="\(f\oplus0\)">\(f\oplus0\)</span> are homotopic in <span class="math" data-tex="\(M_2(A)\)">\(M_2(A)\)</span>.</p>
+<p><strong>Proof.</strong> The four entries of <span class="math" data-tex="\(ZW\)">\(ZW\)</span> are</p>
+<span class="math math-display" data-tex="\[
+xy+(1-e)^2=1,\quad x(1-f)+(1-e)x=0,\quad
+(1-f)y+y(1-e)=0,\quad (1-f)^2+yx=1.
+\]">\[
+xy+(1-e)^2=1,\quad x(1-f)+(1-e)x=0,\quad
+(1-f)y+y(1-e)=0,\quad (1-f)^2+yx=1.
+\]</span>
+<p>Those of <span class="math" data-tex="\(WZ\)">\(WZ\)</span> are, respectively,</p>
+<span class="math math-display" data-tex="\[
+yx+(1-f)^2=1,\quad y(1-e)+(1-f)y=0,\quad
+(1-e)x+x(1-f)=0,\quad (1-e)^2+xy=1.
+\]">\[
+yx+(1-f)^2=1,\quad y(1-e)+(1-f)y=0,\quad
+(1-e)x+x(1-f)=0,\quad (1-e)^2+xy=1.
+\]</span>
+<p>Finally,</p>
+<span class="math math-display" data-tex="\[
+Z(f\oplus0)=\begin{pmatrix}x&amp;0\\0&amp;0\end{pmatrix}
+=(e\oplus0)Z,
+\]">\[
+Z(f\oplus0)=\begin{pmatrix}x&amp;0\\0&amp;0\end{pmatrix}
+=(e\oplus0)Z,
+\]</span>
+<p>which proves the conjugation identity.</p>
+<p>For a homotopy in the same two-block algebra, write <span class="math" data-tex="\(c=\cos\theta,\ s=\sin\theta\)">\(c=\cos\theta,\ s=\sin\theta\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+E_\theta=\begin{pmatrix}c^2e&amp;csx\\csy&amp;s^2f\end{pmatrix},\qquad
+0\leq\theta\leq\frac\pi2.
+\]">\[
+E_\theta=\begin{pmatrix}c^2e&amp;csx\\csy&amp;s^2f\end{pmatrix},\qquad
+0\leq\theta\leq\frac\pi2.
+\]</span>
+<p>The entries of its square are</p>
+<span class="math math-display" data-tex="\[
+c^4e+c^2s^2xy=c^2e,\quad c^3sex+cs^3xf=csx,
+\]">\[
+c^4e+c^2s^2xy=c^2e,\quad c^3sex+cs^3xf=csx,
+\]</span>
+<span class="math math-display" data-tex="\[
+c^3sye+cs^3fy=csy,\quad c^2s^2yx+s^4f=s^2f.
+\]">\[
+c^3sye+cs^3fy=csy,\quad c^2s^2yx+s^4f=s^2f.
+\]</span>
+<p>Thus the path joins <span class="math" data-tex="\(e\oplus0\)">\(e\oplus0\)</span> to <span class="math" data-tex="\(0\oplus f\)">\(0\oplus f\)</span>. Now conjugate <span class="math" data-tex="\(0\oplus f\)">\(0\oplus f\)</span> by the scalar rotation</p>
+<span class="math math-display" data-tex="\[
+R_\theta=\begin{pmatrix}c&amp;-s\\s&amp;c\end{pmatrix}.
+\]">\[
+R_\theta=\begin{pmatrix}c&amp;-s\\s&amp;c\end{pmatrix}.
+\]</span>
+<p>Its inverse is <span class="math" data-tex="\(\begin{pmatrix}c&amp;s\\-s&amp;c\end{pmatrix}\)">\(\begin{pmatrix}c&amp;s\\-s&amp;c\end{pmatrix}\)</span>; in both orders their products have entries <span class="math" data-tex="\(c^2+s^2,0,0,c^2+s^2\)">\(c^2+s^2,0,0,c^2+s^2\)</span>. Entrywise multiplication gives</p>
+<span class="math math-display" data-tex="\[
+R_\theta(0\oplus f)R_\theta^{-1}
+=\begin{pmatrix}s^2f&amp;-scf\\-scf&amp;c^2f\end{pmatrix},
+\]">\[
+R_\theta(0\oplus f)R_\theta^{-1}
+=\begin{pmatrix}s^2f&amp;-scf\\-scf&amp;c^2f\end{pmatrix},
+\]</span>
+<p>a path from <span class="math" data-tex="\(0\oplus f\)">\(0\oplus f\)</span> to <span class="math" data-tex="\(f\oplus0\)">\(f\oplus0\)</span>. Concatenate the paths. For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, all entries of both idempotent paths remain in <span class="math" data-tex="\(A\)">\(A\)</span>, while the conjugators are in its unitization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-3-2"></span><strong>Theorem 3.2 (A rotation for similar idempotents).</strong> If <span class="math" data-tex="\(f=zez^{-1}\)">\(f=zez^{-1}\)</span>, then <span class="math" data-tex="\(e\oplus0\sim_h f\oplus0\)">\(e\oplus0\sim_h f\oplus0\)</span> in <span class="math" data-tex="\(M_2(A)\)">\(M_2(A)\)</span>.</p>
+<p><strong>Proof.</strong> Here is a direct coordinate-change path, useful beyond this theorem:</p>
+<span class="math math-display" data-tex="\[
+H_\theta=\operatorname{diag}(z,1)\,R_\theta\,
+\operatorname{diag}(1,z^{-1})\,R_\theta^{-1}.
+\]">\[
+H_\theta=\operatorname{diag}(z,1)\,R_\theta\,
+\operatorname{diag}(1,z^{-1})\,R_\theta^{-1}.
+\]</span>
+<p>Every factor is invertible. Multiplying the four entries gives</p>
+<span class="math math-display" data-tex="\[
+H_\theta=\begin{pmatrix}
+c^2z+s^2&amp;cs(z-1)\\cs(1-z^{-1})&amp;s^2+c^2z^{-1}
+\end{pmatrix}.
+\]">\[
+H_\theta=\begin{pmatrix}
+c^2z+s^2&amp;cs(z-1)\\cs(1-z^{-1})&amp;s^2+c^2z^{-1}
+\end{pmatrix}.
+\]</span>
+<p>It joins <span class="math" data-tex="\(\operatorname{diag}(z,z^{-1})\)">\(\operatorname{diag}(z,z^{-1})\)</span> at <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(\theta=\pi/2\)">\(\theta=\pi/2\)</span>. Reversing it and conjugating <span class="math" data-tex="\(e\oplus0\)">\(e\oplus0\)</span> gives a path ending at <span class="math" data-tex="\(f\oplus0\)">\(f\oplus0\)</span>. If <span class="math" data-tex="\(z\)">\(z\)</span> is unitary, every <span class="math" data-tex="\(H_\theta\)">\(H_\theta\)</span> is unitary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="corollary-3-3"></span><strong>Corollary 3.3.</strong> In a fixed algebra,</p>
+<span class="math math-display" data-tex="\[
+e\sim_h f\ \Longrightarrow\ e\sim_s f\ \Longrightarrow\ e\sim_a f.
+\]">\[
+e\sim_h f\ \Longrightarrow\ e\sim_s f\ \Longrightarrow\ e\sim_a f.
+\]</span>
+<p>For <span class="math" data-tex="\(e,f\in M_n(A)\)">\(e,f\in M_n(A)\)</span>, algebraic equivalence implies that <span class="math" data-tex="\(e\oplus0_n\)">\(e\oplus0_n\)</span> and <span class="math" data-tex="\(f\oplus0_n\)">\(f\oplus0_n\)</span> are both similar and homotopic in <span class="math" data-tex="\(M_{2n}(A)\)">\(M_{2n}(A)\)</span>. Consequently the three relations agree on <span class="math" data-tex="\(M_\infty(A)\)">\(M_\infty(A)\)</span> when similarity and homotopy are allowed in a larger finite stage.</p>
+<p>There is no assumption about a topology on an infinite matrix completion in this assertion. Conversely, algebraic equivalence in a larger finite stage can be compressed to the common original stage: corner-normalized witnesses <span class="math" data-tex="\(x=exf,\ y=fye\)">\(x=exf,\ y=fye\)</span> have no entries outside that stage. Algebraic equivalence is unchanged by adding zeros.</p>
+<p>The addition of classes by block sum gives the monoid used later for <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. In the C*-case we use the existing notation <span class="math" data-tex="\(V(A)\)">\(V(A)\)</span> from <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/af-algebras.html">AF-algebras, Definition 7.4</a>; we do not need its AF-specific dimension-group theory here.</p>
+<h2 id="4-replacing-idempotents-by-projections">4. Replacing idempotents by projections</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> now be a C*-algebra. An element <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(v^*v=p,\ vv^*=q\)">\(v^*v=p,\ vv^*=q\)</span> for projections <span class="math" data-tex="\(p,q\)">\(p,q\)</span> is a <strong>partial isometry from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span></strong>. We write <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span> for this Murray–von Neumann equivalence, and <span class="math" data-tex="\(p\sim_u q\)">\(p\sim_u q\)</span> if <span class="math" data-tex="\(q=upu^*\)">\(q=upu^*\)</span> for a unitary in the ambient unital algebra.</p>
+<p>The identities <span class="math" data-tex="\(v=vp=qv\)">\(v=vp=qv\)</span> follow from the C*-identity. For example,</p>
+<span class="math math-display" data-tex="\[
+\|v(1-p)\|^2=\|(1-p)v^*v(1-p)\|=0;
+\]">\[
+\|v(1-p)\|^2=\|(1-p)v^*v(1-p)\|=0;
+\]</span>
+<p>the corresponding computation with <span class="math" data-tex="\((1-q)v\)">\((1-q)v\)</span> gives the other identity.</p>
+<p><span id="theorem-4-1"></span><strong>Theorem 4.1 (The range projection).</strong> For any idempotent <span class="math" data-tex="\(e\)">\(e\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+D=1+(e-e^*)(e^*-e)=1-(e-e^*)^2,\qquad P(e)=ee^*D^{-1}.
+\]">\[
+D=1+(e-e^*)(e^*-e)=1-(e-e^*)^2,\qquad P(e)=ee^*D^{-1}.
+\]</span>
+<p>Then <span class="math" data-tex="\(P(e)\)">\(P(e)\)</span> is a projection, <span class="math" data-tex="\(eP(e)=P(e)\)">\(eP(e)=P(e)\)</span>, and <span class="math" data-tex="\(P(e)e=e\)">\(P(e)e=e\)</span>. The invertible element <span class="math" data-tex="\(1+e-P(e)\)">\(1+e-P(e)\)</span> conjugates <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(P(e)\)">\(P(e)\)</span>, and <span class="math" data-tex="\(e\)">\(e\)</span> is homotopic to <span class="math" data-tex="\(P(e)\)">\(P(e)\)</span>. The map <span class="math" data-tex="\(P\)">\(P\)</span> is continuous and fixes every projection.</p>
+<p><strong>Proof.</strong> The element <span class="math" data-tex="\(D=1+(e-e^*)(e-e^*)^*\)">\(D=1+(e-e^*)(e-e^*)^*\)</span> is positive and at least <span class="math" data-tex="\(1\)">\(1\)</span>, hence invertible. Expanding gives</p>
+<span class="math math-display" data-tex="\[
+D=1-e-e^*+ee^*+e^*e,\qquad
+De=eD=ee^*e.
+\]">\[
+D=1-e-e^*+ee^*+e^*e,\qquad
+De=eD=ee^*e.
+\]</span>
+<p>Taking adjoints shows that <span class="math" data-tex="\(D\)">\(D\)</span> also commutes with <span class="math" data-tex="\(e^*\)">\(e^*\)</span>. Consequently <span class="math" data-tex="\(ee^*D^{-1}\)">\(ee^*D^{-1}\)</span> is self-adjoint. Since <span class="math" data-tex="\((ee^*)^2=Dee^*\)">\((ee^*)^2=Dee^*\)</span>, its square equals itself:</p>
+<span class="math math-display" data-tex="\[
+P(e)^2=(ee^*)^2D^{-2}=ee^*D^{-1}=P(e).
+\]">\[
+P(e)^2=(ee^*)^2D^{-2}=ee^*D^{-1}=P(e).
+\]</span>
+<p>Also <span class="math" data-tex="\(eP(e)=P(e)\)">\(eP(e)=P(e)\)</span> and <span class="math" data-tex="\(P(e)e=ee^*eD^{-1}=DeD^{-1}=e\)">\(P(e)e=ee^*eD^{-1}=DeD^{-1}=e\)</span>.</p>
+<p>Put <span class="math" data-tex="\(p=P(e)\)">\(p=P(e)\)</span>, <span class="math" data-tex="\(n=e-p\)">\(n=e-p\)</span>. The four terms in</p>
+<span class="math math-display" data-tex="\[
+n^2=e^2-ep-pe+p^2=e-p-e+p=0
+\]">\[
+n^2=e^2-ep-pe+p^2=e-p-e+p=0
+\]</span>
+<p>show that <span class="math" data-tex="\(1+tn\)">\(1+tn\)</span> has inverse <span class="math" data-tex="\(1-tn\)">\(1-tn\)</span>. Since <span class="math" data-tex="\(ne=0\)">\(ne=0\)</span> and <span class="math" data-tex="\(en=n\)">\(en=n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(1+tn)e(1-tn)=e-tn=(1-t)e+tp.
+\]">\[
+(1+tn)e(1-tn)=e-tn=(1-t)e+tp.
+\]</span>
+<p>This proves both the conjugation formula and a homotopy already inside <span class="math" data-tex="\(A\)">\(A\)</span>. Continuity follows from continuity of multiplication, involution and inversion. If <span class="math" data-tex="\(e=p=p^*\)">\(e=p=p^*\)</span>, then <span class="math" data-tex="\(D=1\)">\(D=1\)</span> and <span class="math" data-tex="\(P(p)=p\)">\(P(p)=p\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In a representation on a Hilbert space, <span class="math" data-tex="\(ep=p\)">\(ep=p\)</span> and <span class="math" data-tex="\(pe=e\)">\(pe=e\)</span> imply that <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> have the same range. This explains the name without requiring a polar decomposition in a larger operator algebra.</p>
+<p><span id="theorem-4-2"></span><strong>Theorem 4.2 (Relations for projections).</strong> Algebraic equivalence of projections is Murray–von Neumann equivalence. Similarity of projections is unitary equivalence. Two projections are homotopic as idempotents if and only if a projection path joins them; equivalently, they are conjugate by a unitary in <span class="math" data-tex="\(U(A)_0\)">\(U(A)_0\)</span>. Unitization is understood for nonunital <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(v^*v=p,\ vv^*=q\)">\(v^*v=p,\ vv^*=q\)</span>, take <span class="math" data-tex="\(x=v^*,y=v\)">\(x=v^*,y=v\)</span> to obtain algebraic witnesses. Conversely normalize <span class="math" data-tex="\(p=xy,\ q=yx\)">\(p=xy,\ q=yx\)</span>, with <span class="math" data-tex="\(x=pxq,\ y=qyp\)">\(x=pxq,\ y=qyp\)</span>. If <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, the corner identities give <span class="math" data-tex="\(x=y=q=0\)">\(x=y=q=0\)</span>. Otherwise</p>
+<span class="math math-display" data-tex="\[
+p=(xy)^*(xy)=y^*x^*xy\leq\|x\|^2y^*y.
+\]">\[
+p=(xy)^*(xy)=y^*x^*xy\leq\|x\|^2y^*y.
+\]</span>
+<p>Thus <span class="math" data-tex="\(y^*y\)">\(y^*y\)</span> is positive and invertible in the unital corner <span class="math" data-tex="\(pAp\)">\(pAp\)</span>. Let <span class="math" data-tex="\(h=(y^*y)^{-1/2}\)">\(h=(y^*y)^{-1/2}\)</span> in that corner and <span class="math" data-tex="\(v=yh\)">\(v=yh\)</span>. Then <span class="math" data-tex="\(v^*v=p\)">\(v^*v=p\)</span> and <span class="math" data-tex="\(qv=v\)">\(qv=v\)</span>. The projection <span class="math" data-tex="\(r=vv^*\)">\(r=vv^*\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+ry=yh^2y^*y=y,\qquad rq=ryx=yx=q.
+\]">\[
+ry=yh^2y^*y=y,\qquad rq=ryx=yx=q.
+\]</span>
+<p>On the other hand <span class="math" data-tex="\(qr=r\)">\(qr=r\)</span>, and taking adjoints gives <span class="math" data-tex="\(rq=r\)">\(rq=r\)</span>. Hence <span class="math" data-tex="\(r=q\)">\(r=q\)</span>.</p>
+<p>If <span class="math" data-tex="\(q=zpz^{-1}\)">\(q=zpz^{-1}\)</span>, then <span class="math" data-tex="\(zp=qz\)">\(zp=qz\)</span> and <span class="math" data-tex="\(pz^*=z^*q\)">\(pz^*=z^*q\)</span>. These give</p>
+<span class="math math-display" data-tex="\[
+pz^*z=z^*qz=z^*zp.
+\]">\[
+pz^*z=z^*qz=z^*zp.
+\]</span>
+<p>Continuous functional calculus makes <span class="math" data-tex="\((z^*z)^{-1/2}\)">\((z^*z)^{-1/2}\)</span> commute with <span class="math" data-tex="\(p\)">\(p\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+u=z(z^*z)^{-1/2}
+\]">\[
+u=z(z^*z)^{-1/2}
+\]</span>
+<p>is unitary and <span class="math" data-tex="\(up=qu\)">\(up=qu\)</span>. Here <span class="math" data-tex="\(u^*u=1\)">\(u^*u=1\)</span>, and <span class="math" data-tex="\(u\)">\(u\)</span> is invertible, so <span class="math" data-tex="\(uu^*=1\)">\(uu^*=1\)</span>. The converse is immediate.</p>
+<p>For a path of idempotents <span class="math" data-tex="\(e_t\)">\(e_t\)</span> with projection endpoints, Theorem 4.1 makes <span class="math" data-tex="\(P(e_t)\)">\(P(e_t)\)</span> a projection path with the same endpoints. Apply Theorem 2.4 to this path to obtain an invertible path <span class="math" data-tex="\(z_t\)">\(z_t\)</span>, starting at <span class="math" data-tex="\(1\)">\(1\)</span>, with <span class="math" data-tex="\(z_tpz_t^{-1}=P(e_t)\)">\(z_tpz_t^{-1}=P(e_t)\)</span>. Taking the polar unitaries <span class="math" data-tex="\(u_t=z_t(z_t^*z_t)^{-1/2}\)">\(u_t=z_t(z_t^*z_t)^{-1/2}\)</span> gives a continuous unitary path with the same conjugations and <span class="math" data-tex="\(u_0=1\)">\(u_0=1\)</span>. Continuity uses continuous functional calculus on positive invertibles. Conversely a unitary path produces a projection path by conjugation.</p>
+<p>Unitary path components are open: if <span class="math" data-tex="\(u,w\)">\(u,w\)</span> are sufficiently close unitaries, the segment <span class="math" data-tex="\((1-t)u+tw\)">\((1-t)u+tw\)</span> is invertible, and its polar unitaries give a path from <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(w\)">\(w\)</span>. Thus connected and path components of the unitary group agree, justifying the notation <span class="math" data-tex="\(U(A)_0\)">\(U(A)_0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-4-3"></span><strong>Theorem 4.3 (Stable projection equivalence).</strong> If <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span>, then <span class="math" data-tex="\(p\oplus0\)">\(p\oplus0\)</span> and <span class="math" data-tex="\(q\oplus0\)">\(q\oplus0\)</span> are unitarily equivalent and homotopic through projections in <span class="math" data-tex="\(M_2(A^+)\)">\(M_2(A^+)\)</span>, with the projection path contained in <span class="math" data-tex="\(M_2(A)\)">\(M_2(A)\)</span>.</p>
+<p><strong>Proof.</strong> The unitary</p>
+<span class="math math-display" data-tex="\[
+U=\begin{pmatrix}v&amp;1-q\\1-p&amp;v^*\end{pmatrix}
+\]">\[
+U=\begin{pmatrix}v&amp;1-q\\1-p&amp;v^*\end{pmatrix}
+\]</span>
+<p>implements the equivalence; all entries of <span class="math" data-tex="\(UU^*\)">\(UU^*\)</span>, <span class="math" data-tex="\(U^*U\)">\(U^*U\)</span>, and the conjugation are computed in Exercise 3. For the homotopy use Theorem 3.1 with <span class="math" data-tex="\(e=p,\ f=q,\ x=v^*,y=v\)">\(e=p,\ f=q,\ x=v^*,y=v\)</span>. Its path</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}c^2p&amp;csv^*\\csv&amp;s^2q\end{pmatrix}
+\]">\[
+\begin{pmatrix}c^2p&amp;csv^*\\csv&amp;s^2q\end{pmatrix}
+\]</span>
+<p>is self-adjoint as well as idempotent. Its second rotation path is also self-adjoint. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We will use the following existing result without another proof: if <span class="math" data-tex="\(\|p-q\|&lt;1\)">\(\|p-q\|&lt;1\)</span>, then <span class="math" data-tex="\(p\sim_u q\)">\(p\sim_u q\)</span>, by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/af-algebras.html">AF-algebras, Lemma 7.1</a>. Its hypotheses concern arbitrary C*-algebras, not just AF-algebras. The projection version of the bound has radius <span class="math" data-tex="\(1\)">\(1\)</span> because <span class="math" data-tex="\(2p-1\)">\(2p-1\)</span> is a self-adjoint unitary. Theorems 2.3 and 4.2 also show that such projections are homotopic.</p>
+<h2 id="5-examples-that-separate-the-relations">5. Examples that separate the relations</h2>
+<p><span id="example-5-1"></span><strong>Example 5.1 (An oblique decomposition).</strong> In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+e_t=\begin{pmatrix}1&amp;t\\0&amp;0\end{pmatrix},\qquad t\in\mathbb C.
+\]">\[
+e_t=\begin{pmatrix}1&amp;t\\0&amp;0\end{pmatrix},\qquad t\in\mathbb C.
+\]</span>
+<p>Its square equals itself. It is self-adjoint exactly when <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. The path <span class="math" data-tex="\(e_{st}\)">\(e_{st}\)</span>, <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>, joins <span class="math" data-tex="\(e_0\)">\(e_0\)</span> to <span class="math" data-tex="\(e_t\)">\(e_t\)</span>; the change of coordinates</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}1&amp;-t\\0&amp;1\end{pmatrix}
+\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}
+\begin{pmatrix}1&amp;t\\0&amp;1\end{pmatrix}
+=e_t
+\]">\[
+\begin{pmatrix}1&amp;-t\\0&amp;1\end{pmatrix}
+\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}
+\begin{pmatrix}1&amp;t\\0&amp;1\end{pmatrix}
+=e_t
+\]</span>
+<p>also proves similarity. The range-projection formula gives</p>
+<span class="math math-display" data-tex="\[
+(e_t-e_t^*)^2=-|t|^2I,\quad
+e_te_t^*=\begin{pmatrix}1+|t|^2&amp;0\\0&amp;0\end{pmatrix},\quad
+P(e_t)=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}.
+\]">\[
+(e_t-e_t^*)^2=-|t|^2I,\quad
+e_te_t^*=\begin{pmatrix}1+|t|^2&amp;0\\0&amp;0\end{pmatrix},\quad
+P(e_t)=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}.
+\]</span>
+<p><span id="example-5-2"></span><strong>Example 5.2 (Losing one direction).</strong> On <span class="math" data-tex="\(H=\ell^2(\mathbb N)\)">\(H=\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(S\)">\(S\)</span> be the shift <span class="math" data-tex="\(S\xi_j=\xi_{j+1}\)">\(S\xi_j=\xi_{j+1}\)</span>. Then <span class="math" data-tex="\(S^*S=1\)">\(S^*S=1\)</span> and <span class="math" data-tex="\(SS^*=1-P_0\)">\(SS^*=1-P_0\)</span>, where <span class="math" data-tex="\(P_0\)">\(P_0\)</span> projects onto <span class="math" data-tex="\(\mathbb C\xi_0\)">\(\mathbb C\xi_0\)</span>. Thus <span class="math" data-tex="\(1\sim SS^*\)">\(1\sim SS^*\)</span> in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>. But conjugation by any invertible, in particular by any unitary, fixes <span class="math" data-tex="\(1\)">\(1\)</span>; since <span class="math" data-tex="\(SS^*\neq1\)">\(SS^*\neq1\)</span>, these projections are neither similar nor homotopic. Explicitly,</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}S&amp;P_0\\0&amp;S^*\end{pmatrix}
+\]">\[
+\begin{pmatrix}S&amp;P_0\\0&amp;S^*\end{pmatrix}
+\]</span>
+<p>is a unitary conjugating <span class="math" data-tex="\(1\oplus0\)">\(1\oplus0\)</span> to <span class="math" data-tex="\(SS^*\oplus0\)">\(SS^*\oplus0\)</span>, by Theorem 4.3.</p>
+<p><span id="example-5-3"></span><strong>Example 5.3 (Topology inside one similarity class).</strong> There exist similar idempotents in <span class="math" data-tex="\(M_2(C(S^3))\)">\(M_2(C(S^3))\)</span> which are not homotopic as idempotents. Blackadar [1998, §4.4] records this phenomenon. This is a forward illustration, not an input to the projection or stabilization proofs above. The construction and obstruction proof are <a href="KT-OPK-12.html#an-explicit-unstable-projection-example">Topological K-theory, Proposition 4.2</a>: an explicit two-by-two unitary on the three-sphere conjugates a constant rank-one projection to a projection with no projection or idempotent homotopy back to it.</p>
+<p>It also supplies a projection example, with no further topological assertion needed. Choose such idempotents <span class="math" data-tex="\(e,f\)">\(e,f\)</span>, and set <span class="math" data-tex="\(p=P(e),q=P(f)\)">\(p=P(e),q=P(f)\)</span>. They are similar by transitivity and Theorem 4.1, hence unitarily equivalent by Theorem 4.2. If <span class="math" data-tex="\(p,q\)">\(p,q\)</span> had a projection homotopy, concatenate it with the homotopies <span class="math" data-tex="\(e\sim_h p\)">\(e\sim_h p\)</span> and <span class="math" data-tex="\(q\sim_h f\)">\(q\sim_h f\)</span>, contradicting the choice of <span class="math" data-tex="\(e,f\)">\(e,f\)</span>.</p>
+<p>Consequently, for projections in a fixed algebra the complete implication pattern is</p>
+<span class="math math-display" data-tex="\[
+\sim_h\ \Longrightarrow\ (\sim_s\ \Longleftrightarrow\ \sim_u)
+\ \Longrightarrow\ (\sim_a\ \Longleftrightarrow\ \sim).
+\]">\[
+\sim_h\ \Longrightarrow\ (\sim_s\ \Longleftrightarrow\ \sim_u)
+\ \Longrightarrow\ (\sim_a\ \Longleftrightarrow\ \sim).
+\]</span>
+<p>Example 5.2 disproves every implication from the rightmost pair to either of the preceding groups. Example 5.3 disproves the implication from the middle pair to homotopy. Transitivity supplies every other forward implication. After stabilization, all five relations coincide.</p>
+<p><span id="example-5-4"></span><strong>Example 5.4 (Scalar functions).</strong> For compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span>, an idempotent <span class="math" data-tex="\(f\in C(X)\)">\(f\in C(X)\)</span> has values in <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>; continuity makes <span class="math" data-tex="\(U=f^{-1}(1)\)">\(U=f^{-1}(1)\)</span> clopen. Conversely <span class="math" data-tex="\(1_U\)">\(1_U\)</span> is a continuous idempotent for every clopen <span class="math" data-tex="\(U\)">\(U\)</span>. In a commutative algebra algebraic witnesses obey <span class="math" data-tex="\(xy=yx\)">\(xy=yx\)</span>, so algebraically equivalent scalar idempotents are equal. A scalar idempotent homotopy also stays constant pointwise, since a continuous path in <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span> is constant. In <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span>, connectedness makes an idempotent constant and vanishing at infinity rules out the constant <span class="math" data-tex="\(1\)">\(1\)</span>. Hence its only idempotent is <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><span id="example-5-5"></span><strong>Example 5.5 (The Bott projection).</strong> On <span class="math" data-tex="\(S^2=\{(a,b,c):a^2+b^2+c^2=1\}\)">\(S^2=\{(a,b,c):a^2+b^2+c^2=1\}\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+B(a,b,c)=\frac12
+\begin{pmatrix}1+c&amp;a-ib\\a+ib&amp;1-c\end{pmatrix}.
+\]">\[
+B(a,b,c)=\frac12
+\begin{pmatrix}1+c&amp;a-ib\\a+ib&amp;1-c\end{pmatrix}.
+\]</span>
+<p>The four entries of <span class="math" data-tex="\(4B^2\)">\(4B^2\)</span> are <span class="math" data-tex="\(2(1+c),\,2(a-ib),\,2(a+ib),\,2(1-c)\)">\(2(1+c),\,2(a-ib),\,2(a+ib),\,2(1-c)\)</span>; here <span class="math" data-tex="\(a^2+b^2=1-c^2\)">\(a^2+b^2=1-c^2\)</span>. Thus <span class="math" data-tex="\(B=B^*=B^2\)">\(B=B^*=B^2\)</span>. It has rank one at every point, but <span class="math" data-tex="\(B\not\sim\operatorname{diag}(1,0)\)">\(B\not\sim\operatorname{diag}(1,0)\)</span>.</p>
+<p>To prove this last assertion, on the northern and southern closed hemispheres choose unit sections of its range:</p>
+<span class="math math-display" data-tex="\[
+n=\frac{(1+c,a+ib)^T}{\sqrt{2(1+c)}},\qquad
+s=\frac{(a-ib,1-c)^T}{\sqrt{2(1-c)}}.
+\]">\[
+n=\frac{(1+c,a+ib)^T}{\sqrt{2(1+c)}},\qquad
+s=\frac{(a-ib,1-c)^T}{\sqrt{2(1-c)}}.
+\]</span>
+<p>Their denominators do not vanish on their respective hemispheres. The entries of <span class="math" data-tex="\(nn^*\)">\(nn^*\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\frac{1+c}{2},\quad\frac{a-ib}{2},\quad
+\frac{a+ib}{2},\quad\frac{a^2+b^2}{2(1+c)}=\frac{1-c}{2}.
+\]">\[
+\frac{1+c}{2},\quad\frac{a-ib}{2},\quad
+\frac{a+ib}{2},\quad\frac{a^2+b^2}{2(1+c)}=\frac{1-c}{2}.
+\]</span>
+<p>Those of <span class="math" data-tex="\(ss^*\)">\(ss^*\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\frac{a^2+b^2}{2(1-c)}=\frac{1+c}{2},\quad
+\frac{a-ib}{2},\quad\frac{a+ib}{2},\quad\frac{1-c}{2}.
+\]">\[
+\frac{a^2+b^2}{2(1-c)}=\frac{1+c}{2},\quad
+\frac{a-ib}{2},\quad\frac{a+ib}{2},\quad\frac{1-c}{2}.
+\]</span>
+<p>Thus both products equal <span class="math" data-tex="\(B\)">\(B\)</span> wherever defined. On the equator <span class="math" data-tex="\(a+ib=e^{i\phi}\)">\(a+ib=e^{i\phi}\)</span>, they satisfy <span class="math" data-tex="\(n=e^{i\phi}s\)">\(n=e^{i\phi}s\)</span>.</p>
+<p>An equivalence with <span class="math" data-tex="\(\operatorname{diag}(1,0)\)">\(\operatorname{diag}(1,0)\)</span> would supply a continuous unit vector <span class="math" data-tex="\(w\)">\(w\)</span> in the range of <span class="math" data-tex="\(B\)">\(B\)</span>: take the first column of the implementing partial isometry. Write <span class="math" data-tex="\(w=n\alpha_N=s\alpha_S\)">\(w=n\alpha_N=s\alpha_S\)</span> on the two hemispheres, where <span class="math" data-tex="\(\alpha_N,\alpha_S\)">\(\alpha_N,\alpha_S\)</span> are continuous circle-valued functions. Their equatorial loops satisfy</p>
+<span class="math math-display" data-tex="\[
+\alpha_S(e^{i\phi})=e^{i\phi}\alpha_N(e^{i\phi}).
+\]">\[
+\alpha_S(e^{i\phi})=e^{i\phi}\alpha_N(e^{i\phi}).
+\]</span>
+<p>Each loop extends over a disk, so each has winding number zero. Their winding numbers therefore cannot differ by one.</p>
+<p>For completeness, the elementary winding facts needed here follow by choosing a continuous argument for a loop on successive short intervals. The total argument change divided by <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> is an integer; multiplication adds these integers. A sufficiently small uniform perturbation has the same integer, since its quotient with the original loop has a continuous argument of total change zero. Subdivide a homotopy into such perturbations to get invariance. A disk extension contracts its boundary loop radially to a constant, whose integer is zero, whereas <span class="math" data-tex="\(e^{i\phi}\)">\(e^{i\phi}\)</span> has integer one. This proves the obstruction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus pointwise rank does not classify continuous matrix-valued projections. The lessons on vector bundles and on topological K-theory develop what the varying ranges retain.</p>
+<h2 id="6-repairing-an-approximate-idempotent">6. Repairing an approximate idempotent</h2>
+<p>Let <span class="math" data-tex="\(\delta=x^2-x\)">\(\delta=x^2-x\)</span> and <span class="math" data-tex="\(\eta=\|\delta\|\)">\(\eta=\|\delta\|\)</span>. The useful threshold is <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, because on the line <span class="math" data-tex="\(\operatorname{Re}\lambda=1/2\)">\(\operatorname{Re}\lambda=1/2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|\lambda^2-\lambda\right|=\frac14+(\operatorname{Im}\lambda)^2.
+\]">\[
+\left|\lambda^2-\lambda\right|=\frac14+(\operatorname{Im}\lambda)^2.
+\]</span>
+<p><span id="theorem-6-1"></span><strong>Theorem 6.1 (Riesz correction with a quantitative bound).</strong> If <span class="math" data-tex="\(\eta&lt;1/4\)">\(\eta&lt;1/4\)</span>, the spectrum of <span class="math" data-tex="\(x\)">\(x\)</span> misses that line. Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be the holomorphic function which is <span class="math" data-tex="\(0\)">\(0\)</span> near the part of the spectrum in the left half-plane and <span class="math" data-tex="\(1\)">\(1\)</span> near the part in the right half-plane. Then <span class="math" data-tex="\(p=\chi(x)\)">\(p=\chi(x)\)</span> is an idempotent, and, with <span class="math" data-tex="\(r=\sqrt{1-4\eta}\)">\(r=\sqrt{1-4\eta}\)</span>,</p>
+<span id="equation-6-1"></span><span class="math math-display" data-tex="\[
+\|p-x\|\leq
+\frac{2(2\|x\|+1)}{r(1+r)}\,\eta.
+\tag{6.1}
+\]">\[
+\|p-x\|\leq
+\frac{2(2\|x\|+1)}{r(1+r)}\,\eta.
+\tag{6.1}
+\]</span>
+<p>In particular, if <span class="math" data-tex="\(\eta\leq1/8\)">\(\eta\leq1/8\)</span>, then</p>
+<span id="equation-6-2"></span><span class="math math-display" data-tex="\[
+\|p-x\|\leq2(2\|x\|+1)\eta.
+\tag{6.2}
+\]">\[
+\|p-x\|\leq2(2\|x\|+1)\eta.
+\tag{6.2}
+\]</span>
+<p>It lies in any subalgebra containing <span class="math" data-tex="\(x\)">\(x\)</span> and closed under holomorphic functional calculus in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Proof.</strong> Spectral mapping gives <span class="math" data-tex="\(|\lambda^2-\lambda|\leq\eta\)">\(|\lambda^2-\lambda|\leq\eta\)</span> for <span class="math" data-tex="\(\lambda\in\sigma(x)\)">\(\lambda\in\sigma(x)\)</span>. This excludes the displayed line. The two spectral pieces are compact and separated, so the function <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is holomorphic on their disjoint neighbourhoods. Since <span class="math" data-tex="\(\chi^2=\chi\)">\(\chi^2=\chi\)</span>, the calculus gives <span class="math" data-tex="\(p^2=p\)">\(p^2=p\)</span>. Equivalently <span class="math" data-tex="\(p\)">\(p\)</span> is the Riesz integral</p>
+<span class="math math-display" data-tex="\[
+p=\frac1{2\pi i}\int_{\Gamma_1}(\lambda-x)^{-1}\,d\lambda,
+\]">\[
+p=\frac1{2\pi i}\int_{\Gamma_1}(\lambda-x)^{-1}\,d\lambda,
+\]</span>
+<p>where a surrounding cycle has index one on the right spectral piece and zero on the left.</p>
+<p>For the estimate, put <span class="math" data-tex="\(a=2x-1\)">\(a=2x-1\)</span>, so <span class="math" data-tex="\(a^2=1+4\delta\)">\(a^2=1+4\delta\)</span>. The norm-convergent binomial series</p>
+<span class="math math-display" data-tex="\[
+T=(1+4\delta)^{-1/2}
+=\sum_{k=0}^{\infty}(-1)^k\binom{2k}{k}\delta^k
+\]">\[
+T=(1+4\delta)^{-1/2}
+=\sum_{k=0}^{\infty}(-1)^k\binom{2k}{k}\delta^k
+\]</span>
+<p>commutes with <span class="math" data-tex="\(a\)">\(a\)</span> and satisfies <span class="math" data-tex="\(a^2T^2=1\)">\(a^2T^2=1\)</span>. Hence <span class="math" data-tex="\((1+aT)/2\)">\((1+aT)/2\)</span> is idempotent. It is precisely <span class="math" data-tex="\(p\)">\(p\)</span>: for a spectral value <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, the principal square root of <span class="math" data-tex="\((2\lambda-1)^2=1+4(\lambda^2-\lambda)\)">\((2\lambda-1)^2=1+4(\lambda^2-\lambda)\)</span> equals <span class="math" data-tex="\(2\lambda-1\)">\(2\lambda-1\)</span> in the right half-plane and its negative in the left. The scalar formula <span class="math" data-tex="\((1+(2\lambda-1)/\sqrt{1+4(\lambda^2-\lambda)})/2\)">\((1+(2\lambda-1)/\sqrt{1+4(\lambda^2-\lambda)})/2\)</span> therefore agrees with <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on a neighbourhood of the spectrum, and the composition property of the calculus gives the asserted equality.</p>
+<p>The series majorant yields</p>
+<span class="math math-display" data-tex="\[
+\|T-1\|\leq\sum_{k\geq1}\binom{2k}{k}\eta^k
+=(1-4\eta)^{-1/2}-1=\frac{4\eta}{r(1+r)}.
+\]">\[
+\|T-1\|\leq\sum_{k\geq1}\binom{2k}{k}\eta^k
+=(1-4\eta)^{-1/2}-1=\frac{4\eta}{r(1+r)}.
+\]</span>
+<p>Since <span class="math" data-tex="\(p-x=a(T-1)/2\)">\(p-x=a(T-1)/2\)</span> and <span class="math" data-tex="\(\|a\|\leq2\|x\|+1\)">\(\|a\|\leq2\|x\|+1\)</span>, this is (6.1). For <span class="math" data-tex="\(\eta\leq1/8\)">\(\eta\leq1/8\)</span>, <span class="math" data-tex="\(r\geq1/\sqrt2\)">\(r\geq1/\sqrt2\)</span> and <span class="math" data-tex="\(r(1+r)\geq1\)">\(r(1+r)\geq1\)</span>, giving (6.2). Closure under the calculus gives the subalgebra assertion. For a nonunital subalgebra, apply its external unitization and use <span class="math" data-tex="\(\chi(0)=0\)">\(\chi(0)=0\)</span>, so the result has zero augmentation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="example-6-2"></span><strong>Example 6.2 (Why a margin is necessary).</strong> A constant depending only on <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span> cannot work uniformly for every <span class="math" data-tex="\(\eta&lt;1/4\)">\(\eta&lt;1/4\)</span>. In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> with the maximum row-sum norm take</p>
+<span class="math math-display" data-tex="\[
+x_t=\begin{pmatrix}\frac12+t&amp;\frac12-t\\0&amp;\frac12-t\end{pmatrix},
+\qquad 0&lt;t&lt;\frac12.
+\]">\[
+x_t=\begin{pmatrix}\frac12+t&amp;\frac12-t\\0&amp;\frac12-t\end{pmatrix},
+\qquad 0&lt;t&lt;\frac12.
+\]</span>
+<p>Here <span class="math" data-tex="\(\|x_t\|=1\)">\(\|x_t\|=1\)</span>, and direct multiplication gives <span class="math" data-tex="\(x_t^2-x_t=-(1/4-t^2)I\)">\(x_t^2-x_t=-(1/4-t^2)I\)</span>. The Riesz correction is</p>
+<span class="math math-display" data-tex="\[
+p_t=\frac{x_t-(\frac12-t)I}{2t}
+=\begin{pmatrix}1&amp;\dfrac{\frac12-t}{2t}\\0&amp;0\end{pmatrix}.
+\]">\[
+p_t=\frac{x_t-(\frac12-t)I}{2t}
+=\begin{pmatrix}1&amp;\dfrac{\frac12-t}{2t}\\0&amp;0\end{pmatrix}.
+\]</span>
+<p>Its upper-right entry diverges as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>, so <span class="math" data-tex="\(\|p_t-x_t\|\)">\(\|p_t-x_t\|\)</span> is unbounded while <span class="math" data-tex="\(\|x_t\|=1\)">\(\|x_t\|=1\)</span> and <span class="math" data-tex="\(\|x_t^2-x_t\|&lt;1/4\)">\(\|x_t^2-x_t\|&lt;1/4\)</span>. Formula (6.1) states the estimate on the entire permitted interval; formula (6.2) gives the uniform small-error estimate.</p>
+<p>For example, if <span class="math" data-tex="\(x\to e\)">\(x\to e\)</span> for an exact idempotent <span class="math" data-tex="\(e\)">\(e\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|x^2-x\|\leq(\|x\|+\|e\|+1)\|x-e\|\longrightarrow0.
+\]">\[
+\|x^2-x\|\leq(\|x\|+\|e\|+1)\|x-e\|\longrightarrow0.
+\]</span>
+<p>The corrected idempotents approach <span class="math" data-tex="\(e\)">\(e\)</span>, and Theorem 2.3 eventually makes them similar to <span class="math" data-tex="\(e\)">\(e\)</span>. If the approximants lie in a subalgebra closed under the calculus, so do their corrections. This is the local mechanism later used for continuity and dense subalgebras.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (Basic).</strong> Check <span class="math" data-tex="\(ZW=1,\ WZ=1\)">\(ZW=1,\ WZ=1\)</span>, and <span class="math" data-tex="\(Z(f\oplus0)=(e\oplus0)Z\)">\(Z(f\oplus0)=(e\oplus0)Z\)</span> in Theorem 3.1. Prove that <span class="math" data-tex="\(\sim_a\)">\(\sim_a\)</span> is an equivalence relation on the idempotents of <span class="math" data-tex="\(M_\infty(A)\)">\(M_\infty(A)\)</span>.</p>
+<p><strong>Solution.</strong> The eight entries of the two products and the four entries of the intertwining identity are displayed in Theorem 3.1; each zero follows from <span class="math" data-tex="\(ex=x=xf,\ fy=y=ye\)">\(ex=x=xf,\ fy=y=ye\)</span>, and each diagonal identity uses <span class="math" data-tex="\(xy=e,\ yx=f\)">\(xy=e,\ yx=f\)</span>.</p>
+<p>For reflexivity take <span class="math" data-tex="\(x=y=e\)">\(x=y=e\)</span>. Symmetry exchanges the two witnesses. For transitivity work in a common finite stage and normalize witnesses for <span class="math" data-tex="\(e=xy,\ f=yx=ab,\ g=ba\)">\(e=xy,\ f=yx=ab,\ g=ba\)</span>, with <span class="math" data-tex="\(x=exf,\ y=fye,\ a=fag,\ b=gbf\)">\(x=exf,\ y=fye,\ a=fag,\ b=gbf\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+(xa)(by)=x(ab)y=xfy=xy=e,\qquad
+(by)(xa)=b(yx)a=bfa=ba=g.
+\]">\[
+(xa)(by)=x(ab)y=xfy=xy=e,\qquad
+(by)(xa)=b(yx)a=bfa=ba=g.
+\]</span>
+<p>This proves transitivity, and adding zero corners puts any finite collection of witnesses in a common stage.</p>
+<p><strong>Exercise 2 (Basic).</strong> Show that Murray–von Neumann equivalence and unitary equivalence coincide in a finite-dimensional C*-algebra.</p>
+<p><strong>Solution.</strong> By <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/af-algebras.html">AF-algebras, Theorem 2.4</a>, the algebra is a finite direct sum <span class="math" data-tex="\(\bigoplus_jM_{d_j}(\mathbb C)\)">\(\bigoplus_jM_{d_j}(\mathbb C)\)</span>. A partial isometry from <span class="math" data-tex="\(p_j\)">\(p_j\)</span> to <span class="math" data-tex="\(q_j\)">\(q_j\)</span> is an isometric bijection of their ranges, so the ranks agree in each summand. Choose orthonormal bases of each range and its orthogonal complement. The complements also have equal dimension, namely <span class="math" data-tex="\(d_j-\operatorname{rank}p_j\)">\(d_j-\operatorname{rank}p_j\)</span>. Sending these two pairs of bases to their counterparts gives a unitary <span class="math" data-tex="\(u_j\)">\(u_j\)</span> with <span class="math" data-tex="\(u_jp_ju_j^*=q_j\)">\(u_jp_ju_j^*=q_j\)</span>. The tuple <span class="math" data-tex="\((u_j)_j\)">\((u_j)_j\)</span> is the required unitary. Conversely <span class="math" data-tex="\(q=upu^*\)">\(q=upu^*\)</span> gives the partial isometry <span class="math" data-tex="\(v=up\)">\(v=up\)</span>. The zero algebra is immediate.</p>
+<p><strong>Exercise 3 (Intermediate).</strong> For <span class="math" data-tex="\(v^*v=p,\ vv^*=q\)">\(v^*v=p,\ vv^*=q\)</span>, verify that</p>
+<span class="math math-display" data-tex="\[
+U=\begin{pmatrix}v&amp;1-q\\1-p&amp;v^*\end{pmatrix}
+\]">\[
+U=\begin{pmatrix}v&amp;1-q\\1-p&amp;v^*\end{pmatrix}
+\]</span>
+<p>is unitary and <span class="math" data-tex="\(U(p\oplus0)U^*=q\oplus0\)">\(U(p\oplus0)U^*=q\oplus0\)</span>. Determine whether it must be self-adjoint.</p>
+<p><strong>Solution.</strong> The adjoint is</p>
+<span class="math math-display" data-tex="\[
+U^*=\begin{pmatrix}v^*&amp;1-p\\1-q&amp;v\end{pmatrix}.
+\]">\[
+U^*=\begin{pmatrix}v^*&amp;1-p\\1-q&amp;v\end{pmatrix}.
+\]</span>
+<p>The four entries of <span class="math" data-tex="\(UU^*\)">\(UU^*\)</span> are</p>
+<span class="math math-display" data-tex="\[
+vv^*+(1-q)^2=1,\quad v(1-p)+(1-q)v=0,
+\]">\[
+vv^*+(1-q)^2=1,\quad v(1-p)+(1-q)v=0,
+\]</span>
+<span class="math math-display" data-tex="\[
+(1-p)v^*+v^*(1-q)=0,\quad (1-p)^2+v^*v=1.
+\]">\[
+(1-p)v^*+v^*(1-q)=0,\quad (1-p)^2+v^*v=1.
+\]</span>
+<p>The four entries of <span class="math" data-tex="\(U^*U\)">\(U^*U\)</span> are</p>
+<span class="math math-display" data-tex="\[
+v^*v+(1-p)^2=1,\quad v^*(1-q)+(1-p)v^*=0,
+\]">\[
+v^*v+(1-p)^2=1,\quad v^*(1-q)+(1-p)v^*=0,
+\]</span>
+<span class="math math-display" data-tex="\[
+(1-q)v+v(1-p)=0,\quad (1-q)^2+vv^*=1.
+\]">\[
+(1-q)v+v(1-p)=0,\quad (1-q)^2+vv^*=1.
+\]</span>
+<p>Moreover <span class="math" data-tex="\(U(p\oplus0)=\begin{pmatrix}v&amp;0\\0&amp;0\end{pmatrix}\)">\(U(p\oplus0)=\begin{pmatrix}v&amp;0\\0&amp;0\end{pmatrix}\)</span>, whose product with <span class="math" data-tex="\(U^*\)">\(U^*\)</span> has entries <span class="math" data-tex="\(q,0,0,0\)">\(q,0,0,0\)</span>, because <span class="math" data-tex="\(v(1-p)=0\)">\(v(1-p)=0\)</span>. Self-adjointness fails even in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>: take <span class="math" data-tex="\(v=i,\ p=q=1\)">\(v=i,\ p=q=1\)</span>; then <span class="math" data-tex="\(U=\operatorname{diag}(i,-i)\)">\(U=\operatorname{diag}(i,-i)\)</span>. Thus the matrix is a unitary, but need not be a self-adjoint unitary.</p>
+<p><strong>Exercise 4 (Intermediate).</strong> Prove that the idempotents form a closed set and that every similarity class is relatively open.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(e_n\to e\)">\(e_n\to e\)</span> and <span class="math" data-tex="\(e_n^2=e_n\)">\(e_n^2=e_n\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|e_n^2-e^2\|\leq(\|e_n\|+\|e\|)\|e_n-e\|\longrightarrow0,
+\]">\[
+\|e_n^2-e^2\|\leq(\|e_n\|+\|e\|)\|e_n-e\|\longrightarrow0,
+\]</span>
+<p>so <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>. For a fixed idempotent <span class="math" data-tex="\(e\)">\(e\)</span>, every idempotent in the ball of radius <span class="math" data-tex="\(\|2e-1\|^{-1}\)">\(\|2e-1\|^{-1}\)</span> around it is similar to it by Theorem 2.3. Apply the same argument at each member of the class. This is openness in the set of idempotents, not openness in the whole algebra. Its relative complement is a union of open classes, proving relative closedness too.</p>
+<p><strong>Exercise 5 (Advanced).</strong> In the Toeplitz algebra <span class="math" data-tex="\(\mathcal T=C^*(S)\)">\(\mathcal T=C^*(S)\)</span>, show that <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(SS^*\)">\(SS^*\)</span> are algebraically equivalent but not similar. Find the least <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span> for which <span class="math" data-tex="\(\operatorname{diag}(1,0_n)\)">\(\operatorname{diag}(1,0_n)\)</span> and <span class="math" data-tex="\(\operatorname{diag}(SS^*,0_n)\)">\(\operatorname{diag}(SS^*,0_n)\)</span> are similar.</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(x=S^*,y=S\)">\(x=S^*,y=S\)</span>. Then <span class="math" data-tex="\(xy=1\)">\(xy=1\)</span> and <span class="math" data-tex="\(yx=SS^*=1-P_0\neq1\)">\(yx=SS^*=1-P_0\neq1\)</span>. Any invertible conjugation fixes the identity, so similarity fails for <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. Since <span class="math" data-tex="\(P_0=1-SS^*\in\mathcal T\)">\(P_0=1-SS^*\in\mathcal T\)</span>, the matrix</p>
+<span class="math math-display" data-tex="\[
+U=\begin{pmatrix}S&amp;P_0\\0&amp;S^*\end{pmatrix}\in M_2(\mathcal T)
+\]">\[
+U=\begin{pmatrix}S&amp;P_0\\0&amp;S^*\end{pmatrix}\in M_2(\mathcal T)
+\]</span>
+<p>belongs to the algebra. Its products with <span class="math" data-tex="\(U^*\)">\(U^*\)</span> have diagonal entries <span class="math" data-tex="\(SS^*+P_0=1,\ S^*S=1\)">\(SS^*+P_0=1,\ S^*S=1\)</span> in one order and <span class="math" data-tex="\(S^*S=1,\ P_0+SS^*=1\)">\(S^*S=1,\ P_0+SS^*=1\)</span> in the other; the off-diagonal entries vanish because <span class="math" data-tex="\(P_0S=0,\ S^*P_0=0\)">\(P_0S=0,\ S^*P_0=0\)</span>. Also <span class="math" data-tex="\(U(1\oplus0)U^*=SS^*\oplus0\)">\(U(1\oplus0)U^*=SS^*\oplus0\)</span>. Hence <span class="math" data-tex="\(n=1\)">\(n=1\)</span> works and is least. No quotient description of the Toeplitz algebra or index theorem is needed.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The general analytic background is used in the following exact forms:</p>
+<ul>
+<li>The Neumann-series criterion: <span class="math" data-tex="\(\|h\|&lt;1\)">\(\|h\|&lt;1\)</span> implies that <span class="math" data-tex="\(1-h\)">\(1-h\)</span> is invertible. The equivalent normalization of a unital Banach-algebra norm and the external-unitization construction are also assumed. See <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html">Banach algebras, Sections 2–3</a>.</li>
+<li>Holomorphic functional calculus is a unital homomorphism, obeys spectral mapping and composition, and evaluates functions defined near separated spectral pieces by surrounding-cycle integrals. See <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html">Banach algebras, Definition 6.4, Theorem 6.7, Theorem 6.10 and Example 6.12</a>.</li>
+<li>Continuous functional calculus for a normal element is an isometric unital *-homomorphism with spectral mapping, commutation, and composition properties. The inverse square root depends continuously on a positive invertible element. See <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">C*-algebras, Theorems 5.1 and 6.1</a>.</li>
+<li>Positive elements form a closed cone; <span class="math" data-tex="\(x^*x\geq0\)">\(x^*x\geq0\)</span>, <span class="math" data-tex="\(x^*x\leq\|x\|^2 1\)">\(x^*x\leq\|x\|^2 1\)</span>, order is preserved by <span class="math" data-tex="\(a\mapsto c^*ac\)">\(a\mapsto c^*ac\)</span>, and a positive element at least <span class="math" data-tex="\(\varepsilon1\)">\(\varepsilon1\)</span>, with <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, is invertible. Positive square roots exist. See <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">C*-algebras, Theorem 8.2 and Proposition 8.5</a>, also [Blackadar 2006, II.3.1.2–II.3.1.9].</li>
+<li>Projections of distance less than <span class="math" data-tex="\(1\)">\(1\)</span> are unitarily equivalent in the unitization; finite-dimensional C*-algebras are finite direct sums of full matrix algebras. See <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/af-algebras.html">AF-algebras, Lemma 7.1 and Theorem 2.4</a>. The definition of <span class="math" data-tex="\(V(A)\)">\(V(A)\)</span> is <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/af-algebras.html">AF-algebras, Definition 7.4</a>.</li>
+<li>The full construction for Example 5.3 in <span class="math" data-tex="\(M_2(C(S^3))\)">\(M_2(C(S^3))\)</span> is <a href="KT-OPK-12.html#an-explicit-unstable-projection-example">Topological K-theory, Proposition 4.2</a>, using the projection retraction and stable homotopy proved above together with the suspension and Bott results developed in that lesson. Blackadar [1998, §4.4] retains credit for the qualitative example. The range-replacement deduction of a projection counterexample is also proved here.</li>
+</ul>
+<p>The Grothendieck-group construction, projective-module classification and Bott periodicity are subjects of subsequent lessons. The Bott projection's non-equivalence in Example 5.5 uses only the elementary winding argument supplied there.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Banach algebras] <em>Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory</em>, in the open course <em>Foundations of von Neumann algebras</em>.</li>
+<li>[C*-algebras] <em>C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients</em>, in the open course <em>Foundations of von Neumann algebras</em>.</li>
+<li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/af-algebras.html">AF-algebras</a> <em>AF-algebras</em>, in the open course <em>Foundations of von Neumann algebras</em>.</li>
+<li>[Blackadar 1998] B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, MSRI Publications 5, Cambridge University Press, 1998. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>. Sections 4.1–4.6, especially Propositions 4.2.2, 4.2.5, 4.3.1–4.3.3, 4.4.1 and 4.6.2–4.6.7, printed pp. 20–24 (PDF pp. 34–38), give the corner and stable-equivalence comparisons. The complete finite-matrix proofs and quantitative correction bound are written in this lesson; Example 5.3 uses the explicit obstruction proof in Lesson 12, Proposition 4.2.</li>
+<li>[Blackadar 2006] B. Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Encyclopaedia of Mathematical Sciences 122, Springer, 2006.</li>
+<li>[Emerson 2024] H. Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser Advanced Texts, 2024.</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/KT-OPK/KT-OPK-01.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

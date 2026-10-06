@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Groups with an abelian normal subgroup: the little-group method · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/groups-with-an-abelian-normal-subgroup-the-little-group-method.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="mackey-theory-and-cliffords-theorem.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-08.md" download>Editable source</a><a href="frobenius-groups-and-frobeniuss-theorem.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#lemma-1-1">Lemma 1.1</a></li><li><a href="#lemma-1-2">Lemma 1.2</a></li><li><a href="#theorem-2-1">Theorem 2.1</a></li><li><a href="#proposition-4-1">Proposition 4.1</a></li><li><a href="#theorem-6-1">Theorem 6.1</a></li></ul></details><h1 id="groups-with-an-abelian-normal-subgroup-the-little-group-method">Groups with an abelian normal subgroup: the little-group method</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the AI that wrote it. Public domain (CC0).</em></p>
+<p>An abelian normal subgroup supplies a set of simultaneous eigencharacters. The rest of the group permutes those characters. An irreducible representation uses one orbit, and the action on one eigenspace determines the action everywhere.</p>
+<p>When the normal subgroup has a complement, its character extends to the stabilizer by an explicit formula. The remaining data are ordinary representations of a smaller group. We will prove this classification, use it for several familiar groups, and construct the finite Schrödinger representation with all signs fixed by the group law.</p>
+<p>Basic references are Teleman's <em>Representation Theory</em> and Gruson–Serganova's <em>A Journey Through Representation Theory</em>.</p>
+<h2 id="prerequisites-and-conventions">Prerequisites and conventions</h2>
+<p>All groups are finite and all representations are finite-dimensional over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. We use complete reducibility, Schur's lemma, character orthogonality and the degree-square identity from <em>Representations and complete reducibility</em> and <em>Characters and the orthogonality relations</em>. From <em>Induced representations and Frobenius reciprocity</em> we use induction, its dimension and conjugation properties. From <em>Mackey theory and Clifford's theorem</em> we use Mackey's criterion and the Clifford correspondence.</p>
+<p>Write <span class="math" data-tex="\(\widehat A=\operatorname{Hom}(A,\mathbb C^\times)\)">\(\widehat A=\operatorname{Hom}(A,\mathbb C^\times)\)</span> for the character group of an abelian group <span class="math" data-tex="\(A\)">\(A\)</span>. Its elements are exactly the irreducible representations of <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(|\widehat A|=|A|\)">\(|\widehat A|=|A|\)</span>. If <span class="math" data-tex="\(G=A\rtimes H\)">\(G=A\rtimes H\)</span>, each element has a unique expression <span class="math" data-tex="\(ah\)">\(ah\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+(ah)(a&#x27;h&#x27;)=a(ha&#x27;h^{-1})hh&#x27;.
+\tag{1}
+\]">\[
+(ah)(a&#x27;h&#x27;)=a(ha&#x27;h^{-1})hh&#x27;.
+\tag{1}
+\]</span>
+<p>The action on characters is</p>
+<span class="math math-display" data-tex="\[
+(h\lambda)(a)=\lambda(h^{-1}ah).
+\tag{2}
+\]">\[
+(h\lambda)(a)=\lambda(h^{-1}ah).
+\tag{2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(h\)">\(h\)</span> sends a vector of weight <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to a vector of weight <span class="math" data-tex="\(h\lambda\)">\(h\lambda\)</span>. For a representation <span class="math" data-tex="\(V\)">\(V\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+V_\lambda=\{v\in V:av=\lambda(a)v\text{ for all }a\in A\}.
+\tag{3}
+\]">\[
+V_\lambda=\{v\in V:av=\lambda(a)v\text{ for all }a\in A\}.
+\tag{3}
+\]</span>
+<p>Complete reducibility gives <span class="math" data-tex="\(V=\bigoplus_{\lambda\in\widehat A}V_\lambda\)">\(V=\bigoplus_{\lambda\in\widehat A}V_\lambda\)</span>.</p>
+<h2 id="1-extending-one-weight-to-its-stabilizer">1. Extending one weight to its stabilizer</h2>
+<p>Fix <span class="math" data-tex="\(\lambda\in\widehat A\)">\(\lambda\in\widehat A\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+H_\lambda=\{h\in H:h\lambda=\lambda\},
+\qquad I_\lambda=A\rtimes H_\lambda.
+\tag{4}
+\]">\[
+H_\lambda=\{h\in H:h\lambda=\lambda\},
+\qquad I_\lambda=A\rtimes H_\lambda.
+\tag{4}
+\]</span>
+<p>The inertia group of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> in <span class="math" data-tex="\(G\)">\(G\)</span> is <span class="math" data-tex="\(I_\lambda\)">\(I_\lambda\)</span>: conjugation by <span class="math" data-tex="\(A\)">\(A\)</span> fixes every character of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p id="lemma-1-1" class="result-link"><strong>Lemma 1.1.</strong> The formula</p>
+<span class="math math-display" data-tex="\[
+\widetilde\lambda(ah)=\lambda(a)
+\quad(a\in A,\ h\in H_\lambda)
+\tag{5}
+\]">\[
+\widetilde\lambda(ah)=\lambda(a)
+\quad(a\in A,\ h\in H_\lambda)
+\tag{5}
+\]</span>
+<p>defines a character of <span class="math" data-tex="\(I_\lambda\)">\(I_\lambda\)</span> extending <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p><strong>Proof.</strong> Invariance under <span class="math" data-tex="\(h\)">\(h\)</span> implies <span class="math" data-tex="\(\lambda(ha&#x27;h^{-1})=\lambda(a&#x27;)\)">\(\lambda(ha&#x27;h^{-1})=\lambda(a&#x27;)\)</span>. Apply this to (1):</p>
+<span class="math math-display" data-tex="\[
+\widetilde\lambda((ah)(a&#x27;h&#x27;))
+=\lambda(a)\lambda(ha&#x27;h^{-1})
+=\widetilde\lambda(ah)\widetilde\lambda(a&#x27;h&#x27;).
+\]">\[
+\widetilde\lambda((ah)(a&#x27;h&#x27;))
+=\lambda(a)\lambda(ha&#x27;h^{-1})
+=\widetilde\lambda(ah)\widetilde\lambda(a&#x27;h&#x27;).
+\]</span>
+<p>The restriction to <span class="math" data-tex="\(A\)">\(A\)</span> is the required character. Unique factorization makes the definition unambiguous. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a representation <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(H_\lambda\)">\(H_\lambda\)</span>, inflate <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> along <span class="math" data-tex="\(I_\lambda\to H_\lambda\)">\(I_\lambda\to H_\lambda\)</span> and form</p>
+<span class="math math-display" data-tex="\[
+U_{\lambda,\sigma}(ah)=\lambda(a)\sigma(h),
+\qquad
+\Theta_{\lambda,\sigma}=\operatorname{Ind}_{I_\lambda}^{G}U_{\lambda,\sigma}.
+\tag{6}
+\]">\[
+U_{\lambda,\sigma}(ah)=\lambda(a)\sigma(h),
+\qquad
+\Theta_{\lambda,\sigma}=\operatorname{Ind}_{I_\lambda}^{G}U_{\lambda,\sigma}.
+\tag{6}
+\]</span>
+<p>Multiplication in (6) is valid for exactly the reason in Lemma 1.1.</p>
+<p id="lemma-1-2" class="result-link"><strong>Lemma 1.2.</strong> The irreducible representations of <span class="math" data-tex="\(I_\lambda\)">\(I_\lambda\)</span> whose restriction to <span class="math" data-tex="\(A\)">\(A\)</span> is a sum of copies of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> are exactly <span class="math" data-tex="\(U_{\lambda,\sigma}\)">\(U_{\lambda,\sigma}\)</span>, with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> irreducible over <span class="math" data-tex="\(H_\lambda\)">\(H_\lambda\)</span>. This parametrization is a bijection on isomorphism classes.</p>
+<p><strong>Proof.</strong> In such a representation <span class="math" data-tex="\(U\)">\(U\)</span>, every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> acts as <span class="math" data-tex="\(\lambda(a)\operatorname{Id}\)">\(\lambda(a)\operatorname{Id}\)</span>. Tensor <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(\widetilde\lambda^{-1}\)">\(\widetilde\lambda^{-1}\)</span>. The resulting action kills <span class="math" data-tex="\(A\)">\(A\)</span>, so factors through <span class="math" data-tex="\(I_\lambda/A=H_\lambda\)">\(I_\lambda/A=H_\lambda\)</span>; call it <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Conversely, (6) reverses this operation. Tensoring by a character preserves invariant subspaces and intertwiners, as does passing between a quotient representation and its inflation. Thus irreducibility and isomorphism are preserved in both directions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The complement is doing real work here. An invariant character of an abelian normal subgroup of an arbitrary extension need not extend to its inertia group. The quaternion examples below explain both the obstruction and what remains usable.</p>
+<h2 id="2-the-classification-theorem">2. The classification theorem</h2>
+<p>Conjugation transports <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> to a representation <span class="math" data-tex="\({}^{h}\sigma\)">\({}^{h}\sigma\)</span> of <span class="math" data-tex="\(hH_\lambda h^{-1}=H_{h\lambda}\)">\(hH_\lambda h^{-1}=H_{h\lambda}\)</span>, by</p>
+<span class="math math-display" data-tex="\[
+({}^{h}\sigma)(k)=\sigma(h^{-1}kh).
+\tag{7}
+\]">\[
+({}^{h}\sigma)(k)=\sigma(h^{-1}kh).
+\tag{7}
+\]</span>
+<p id="theorem-2-1" class="result-link"><strong>Theorem 2.1 (little-group method).</strong> For <span class="math" data-tex="\(G=A\rtimes H\)">\(G=A\rtimes H\)</span> with <span class="math" data-tex="\(A\)">\(A\)</span> abelian:</p>
+<ol>
+<li>Every <span class="math" data-tex="\(\Theta_{\lambda,\sigma}\)">\(\Theta_{\lambda,\sigma}\)</span> with <span class="math" data-tex="\(\sigma\in\operatorname{Irr}(H_\lambda)\)">\(\sigma\in\operatorname{Irr}(H_\lambda)\)</span> is irreducible, and
+<span class="math math-display" data-tex="\[
+\dim\Theta_{\lambda,\sigma}=[H:H_\lambda]\dim\sigma.
+\tag{8}
+\]">\[
+\dim\Theta_{\lambda,\sigma}=[H:H_\lambda]\dim\sigma.
+\tag{8}
+\]</span></li>
+<li>Two such representations are isomorphic precisely when there is <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span> such that <span class="math" data-tex="\(\lambda&#x27;=h\lambda\)">\(\lambda&#x27;=h\lambda\)</span> and <span class="math" data-tex="\(\sigma&#x27;\simeq{}^{h}\sigma\)">\(\sigma&#x27;\simeq{}^{h}\sigma\)</span>.</li>
+<li>Every irreducible representation of <span class="math" data-tex="\(G\)">\(G\)</span> arises in this way.</li>
+</ol>
+<p><strong>Proof of irreducibility and the dimension.</strong> Lemma 1.2 makes <span class="math" data-tex="\(U_{\lambda,\sigma}\)">\(U_{\lambda,\sigma}\)</span> irreducible over the inertia group. The Clifford correspondence, Theorem 4.1 of <em>Mackey theory and Clifford's theorem</em>, makes its induction irreducible. The induction dimension formula gives (8).</p>
+<p>Here is also a direct check using Mackey's criterion. If <span class="math" data-tex="\(s\notin I_\lambda\)">\(s\notin I_\lambda\)</span>, the restrictions of <span class="math" data-tex="\(U_{\lambda,\sigma}\)">\(U_{\lambda,\sigma}\)</span> and its conjugate by <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(A\)">\(A\)</span> have distinct weights <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(s\lambda\)">\(s\lambda\)</span>. Their intertwiners on <span class="math" data-tex="\(I_\lambda\cap sI_\lambda s^{-1}\)">\(I_\lambda\cap sI_\lambda s^{-1}\)</span> vanish because this intersection contains <span class="math" data-tex="\(A\)">\(A\)</span>. The identity double coset contributes the scalar endomorphisms of <span class="math" data-tex="\(U_{\lambda,\sigma}\)">\(U_{\lambda,\sigma}\)</span>. Mackey's criterion therefore gives irreducibility.</p>
+<p><strong>Proof of the isomorphism assertion.</strong> The restriction of <span class="math" data-tex="\(\Theta_{\lambda,\sigma}\)">\(\Theta_{\lambda,\sigma}\)</span> to <span class="math" data-tex="\(A\)">\(A\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\bigoplus_{h\in H/H_\lambda}(h\lambda)^{\oplus\dim\sigma}.
+\tag{9}
+\]">\[
+\bigoplus_{h\in H/H_\lambda}(h\lambda)^{\oplus\dim\sigma}.
+\tag{9}
+\]</span>
+<p>Indeed, a coset summand <span class="math" data-tex="\(h\otimes U_{\lambda,\sigma}\)">\(h\otimes U_{\lambda,\sigma}\)</span> has weight <span class="math" data-tex="\(h\lambda\)">\(h\lambda\)</span>; distinct cosets give distinct weights. Its <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-eigenspace is the original <span class="math" data-tex="\(U_{\lambda,\sigma}\)">\(U_{\lambda,\sigma}\)</span>.</p>
+<p>An isomorphism must preserve the set of weights, so <span class="math" data-tex="\(\lambda&#x27;=h\lambda\)">\(\lambda&#x27;=h\lambda\)</span> for some <span class="math" data-tex="\(h\)">\(h\)</span>. Conjugation carries the inducing representation to <span class="math" data-tex="\(U_{\lambda&#x27;,{}^{h}\sigma}\)">\(U_{\lambda&#x27;,{}^{h}\sigma}\)</span>, by (5) and (7), and conjugate inducing data give isomorphic inductions. We may therefore reduce to <span class="math" data-tex="\(\lambda&#x27;=\lambda\)">\(\lambda&#x27;=\lambda\)</span>. An isomorphism now restricts to an <span class="math" data-tex="\(I_\lambda\)">\(I_\lambda\)</span>-isomorphism on the intrinsic <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-eigenspaces. Lemma 1.2 forces <span class="math" data-tex="\(\sigma&#x27;\simeq\sigma\)">\(\sigma&#x27;\simeq\sigma\)</span>. Conversely, the stated conjugacy of the data induces an isomorphism.</p>
+<p><strong>Proof of exhaustion.</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be irreducible, and choose a weight <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> occurring in its restriction to <span class="math" data-tex="\(A\)">\(A\)</span>. Clifford theory says that <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span> is irreducible over <span class="math" data-tex="\(I_\lambda\)">\(I_\lambda\)</span> and that</p>
+<span class="math math-display" data-tex="\[
+V\simeq\operatorname{Ind}_{I_\lambda}^{G}V_\lambda.
+\]">\[
+V\simeq\operatorname{Ind}_{I_\lambda}^{G}V_\lambda.
+\]</span>
+<p>On this eigenspace <span class="math" data-tex="\(A\)">\(A\)</span> acts by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, so Lemma 1.2 identifies <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span> with <span class="math" data-tex="\(U_{\lambda,\sigma}\)">\(U_{\lambda,\sigma}\)</span> for an irreducible <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(H_\lambda\)">\(H_\lambda\)</span>. This proves exhaustion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In practice, choose one character from each <span class="math" data-tex="\(H\)">\(H\)</span>-orbit. For each chosen character, list the irreducibles of its stabilizer. This removes duplication from the classification.</p>
+<p>The dimensions provide a useful completeness check. The degree-square identity for each stabilizer gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{\lambda\text{ orbit representatives}}\ \sum_\sigma
+\bigl([H:H_\lambda]\dim\sigma\bigr)^2
+&amp;=\sum_{\lambda\text{ orbit representatives}}
+[H:H_\lambda]^2|H_\lambda|\\
+&amp;=|H|\sum_{\lambda\text{ orbit representatives}}[H:H_\lambda]\\
+&amp;=|H||A|=|G|.
+\end{aligned}
+\tag{10}
+\]">\[
+\begin{aligned}
+\sum_{\lambda\text{ orbit representatives}}\ \sum_\sigma
+\bigl([H:H_\lambda]\dim\sigma\bigr)^2
+&amp;=\sum_{\lambda\text{ orbit representatives}}
+[H:H_\lambda]^2|H_\lambda|\\
+&amp;=|H|\sum_{\lambda\text{ orbit representatives}}[H:H_\lambda]\\
+&amp;=|H||A|=|G|.
+\end{aligned}
+\tag{10}
+\]</span>
+<h2 id="3-dihedral-groups-and-permutation-groups">3. Dihedral groups and permutation groups</h2>
+<h3 id="dihedral-groups">Dihedral groups</h3>
+<p>Let <span class="math" data-tex="\(D_n=\langle r,s:r^n=s^2=1,\ srs^{-1}=r^{-1}\rangle\)">\(D_n=\langle r,s:r^n=s^2=1,\ srs^{-1}=r^{-1}\rangle\)</span>, of order <span class="math" data-tex="\(2n\)">\(2n\)</span>, with <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Here <span class="math" data-tex="\(A=\langle r\rangle\)">\(A=\langle r\rangle\)</span> and <span class="math" data-tex="\(H=\langle s\rangle\)">\(H=\langle s\rangle\)</span>. Put <span class="math" data-tex="\(\zeta=e^{2\pi i/n}\)">\(\zeta=e^{2\pi i/n}\)</span> and <span class="math" data-tex="\(\lambda_k(r)=\zeta^k\)">\(\lambda_k(r)=\zeta^k\)</span>, with <span class="math" data-tex="\(k\)">\(k\)</span> taken modulo <span class="math" data-tex="\(n\)">\(n\)</span>. The nonidentity element of <span class="math" data-tex="\(H\)">\(H\)</span> sends <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\(-k\)">\(-k\)</span>.</p>
+<p>A fixed character has <span class="math" data-tex="\(2k=0\)">\(2k=0\)</span> modulo <span class="math" data-tex="\(n\)">\(n\)</span>. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, and also <span class="math" data-tex="\(k=n/2\)">\(k=n/2\)</span> when <span class="math" data-tex="\(n\)">\(n\)</span> is even, the stabilizer is all of <span class="math" data-tex="\(H\)">\(H\)</span>. Each gives two linear representations, with <span class="math" data-tex="\(s\)">\(s\)</span> acting by <span class="math" data-tex="\(+1\)">\(+1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Each remaining pair <span class="math" data-tex="\(\{k,-k\}\)">\(\{k,-k\}\)</span> gives one irreducible of degree two:</p>
+<span class="math math-display" data-tex="\[
+r\longmapsto
+\begin{pmatrix}\zeta^k&amp;0\\0&amp;\zeta^{-k}\end{pmatrix},
+\qquad
+s\longmapsto
+\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\tag{11}
+\]">\[
+r\longmapsto
+\begin{pmatrix}\zeta^k&amp;0\\0&amp;\zeta^{-k}\end{pmatrix},
+\qquad
+s\longmapsto
+\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\tag{11}
+\]</span>
+<p>These are the coset matrices of the induction from <span class="math" data-tex="\(A\)">\(A\)</span>. The relations are immediate, and the theorem proves irreducibility and exhausts the list. Their characters are</p>
+<span class="math math-display" data-tex="\[
+\chi_k(r^j)=\zeta^{kj}+\zeta^{-kj},
+\qquad \chi_k(sr^j)=0.
+\tag{12}
+\]">\[
+\chi_k(r^j)=\zeta^{kj}+\zeta^{-kj},
+\qquad \chi_k(sr^j)=0.
+\tag{12}
+\]</span>
+<p>For odd <span class="math" data-tex="\(n\)">\(n\)</span>, there are two linear representations and <span class="math" data-tex="\((n-1)/2\)">\((n-1)/2\)</span> of degree two. For even <span class="math" data-tex="\(n\)">\(n\)</span>, there are four linear representations and <span class="math" data-tex="\(n/2-1\)">\(n/2-1\)</span> of degree two. The formulas include <span class="math" data-tex="\(D_1\simeq C_2\)">\(D_1\simeq C_2\)</span> and <span class="math" data-tex="\(D_2\simeq C_2\times C_2\)">\(D_2\simeq C_2\times C_2\)</span>, where there are no degree-two representations.</p>
+<h3 id="the-alternating-group-on-four-letters">The alternating group on four letters</h3>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+A=\{1,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2.
+\]">\[
+A=\{1,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2.
+\]</span>
+<p>It is normal in <span class="math" data-tex="\(A_4\)">\(A_4\)</span>, and <span class="math" data-tex="\(H=\langle(123)\rangle\)">\(H=\langle(123)\rangle\)</span> is a complement. The trivial character of <span class="math" data-tex="\(A\)">\(A\)</span> is fixed and gives the three linear representations inflated from <span class="math" data-tex="\(C_3\)">\(C_3\)</span>. Conjugation by <span class="math" data-tex="\((123)\)">\((123)\)</span> cycles the three nontrivial elements of <span class="math" data-tex="\(A\)">\(A\)</span>, and therefore cycles the three nontrivial characters. That orbit has trivial stabilizer and gives one irreducible of degree three. The degree squares are <span class="math" data-tex="\(3+9=12\)">\(3+9=12\)</span>.</p>
+<p>This degree-three representation is the subspace</p>
+<span class="math math-display" data-tex="\[
+V=\{(v_1,v_2,v_3,v_4)\in\mathbb C^4:\textstyle\sum_i v_i=0\}
+\]">\[
+V=\{(v_1,v_2,v_3,v_4)\in\mathbb C^4:\textstyle\sum_i v_i=0\}
+\]</span>
+<p>in the permutation representation. To see the identification, its character on a nonidentity element of <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(-1\)">\(-1\)</span>, since that permutation has no fixed coordinate. The sum of the three nontrivial characters of <span class="math" data-tex="\(A\)">\(A\)</span> has the same values: it is <span class="math" data-tex="\(3\)">\(3\)</span> at <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> elsewhere by orthogonality. Thus <span class="math" data-tex="\(V|_A\)">\(V|_A\)</span> contains each nontrivial weight once. A nonzero invariant subspace contains some weight and, by the transitive <span class="math" data-tex="\(H\)">\(H\)</span>-action, contains all three. This proves irreducibility and identifies it with the unique degree-three entry.</p>
+<h3 id="the-symmetric-group-on-four-letters">The symmetric group on four letters</h3>
+<p>The same <span class="math" data-tex="\(A\)">\(A\)</span> is normal in <span class="math" data-tex="\(S_4\)">\(S_4\)</span>. The permutations fixing <span class="math" data-tex="\(4\)">\(4\)</span> form a complement <span class="math" data-tex="\(H\simeq S_3\)">\(H\simeq S_3\)</span>. Its action permutes the three nontrivial characters transitively. The trivial orbit gives the two linear representations and one degree-two representation inflated from <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, whose classification was proved in <em>Characters and the orthogonality relations</em>.</p>
+<p>Choose the character <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with kernel <span class="math" data-tex="\(\{1,(12)(34)\}\)">\(\{1,(12)(34)\}\)</span>. Its stabilizer inside <span class="math" data-tex="\(H\)">\(H\)</span> is <span class="math" data-tex="\(\{1,(12)\}\simeq C_2\)">\(\{1,(12)\}\simeq C_2\)</span>, so its two characters give two irreducibles of degree three. This accounts for</p>
+<span class="math math-display" data-tex="\[
+1^2+1^2+2^2+3^2+3^2=24.
+\]">\[
+1^2+1^2+2^2+3^2+3^2=24.
+\]</span>
+<p>They are the standard permutation subspace <span class="math" data-tex="\(V\)">\(V\)</span> above and <span class="math" data-tex="\(V\otimes\operatorname{sgn}\)">\(V\otimes\operatorname{sgn}\)</span>. Indeed, the vector <span class="math" data-tex="\((1,1,-1,-1)\)">\((1,1,-1,-1)\)</span> spans <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>: <span class="math" data-tex="\((12)(34)\)">\((12)(34)\)</span> fixes it and the other two nonidentity elements of <span class="math" data-tex="\(A\)">\(A\)</span> negate it. The stabilizer generator <span class="math" data-tex="\((12)\)">\((12)\)</span> fixes that vector, so <span class="math" data-tex="\(V\)">\(V\)</span> uses the positive stabilizer character. The sign character is trivial on <span class="math" data-tex="\(A\)">\(A\)</span> and negative on <span class="math" data-tex="\((12)\)">\((12)\)</span>, so the twist uses the negative stabilizer character. Theorem 2.1 both proves their irreducibility and distinguishes them.</p>
+<h2 id="4-the-affine-group-of-a-finite-field">4. The affine group of a finite field</h2>
+<p>For a finite field <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+G=\{(b,a):b\in\mathbb F_q,\ a\in\mathbb F_q^\times\},
+\qquad
+(b,a)(b&#x27;,a&#x27;)=(b+ab&#x27;,aa&#x27;).
+\tag{13}
+\]">\[
+G=\{(b,a):b\in\mathbb F_q,\ a\in\mathbb F_q^\times\},
+\qquad
+(b,a)(b&#x27;,a&#x27;)=(b+ab&#x27;,aa&#x27;).
+\tag{13}
+\]</span>
+<p>It acts on the field by <span class="math" data-tex="\(u\mapsto au+b\)">\(u\mapsto au+b\)</span>. Translations form the abelian normal subgroup <span class="math" data-tex="\(A=(\mathbb F_q,+)\)">\(A=(\mathbb F_q,+)\)</span>, and <span class="math" data-tex="\(H=\mathbb F_q^\times\)">\(H=\mathbb F_q^\times\)</span> is a complement.</p>
+<p>Choose a nontrivial additive character <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Such a character exists: choose a nonzero <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>-linear functional on the vector space <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> and compose it with <span class="math" data-tex="\(j\mapsto e^{2\pi ij/p}\)">\(j\mapsto e^{2\pi ij/p}\)</span>. For <span class="math" data-tex="\(t\in\mathbb F_q\)">\(t\in\mathbb F_q\)</span>, put <span class="math" data-tex="\(\psi_t(b)=\psi(tb)\)">\(\psi_t(b)=\psi(tb)\)</span>. These are distinct. If <span class="math" data-tex="\(t\ne u\)">\(t\ne u\)</span>, multiplication by <span class="math" data-tex="\(t-u\)">\(t-u\)</span> is a bijection of the field, so some <span class="math" data-tex="\(b\)">\(b\)</span> satisfies <span class="math" data-tex="\(\psi((t-u)b)\ne1\)">\(\psi((t-u)b)\ne1\)</span>. There are <span class="math" data-tex="\(q\)">\(q\)</span> characters, so these are all the characters of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>The action is <span class="math" data-tex="\(a\psi_t=\psi_{t/a}\)">\(a\psi_t=\psi_{t/a}\)</span>. There are two orbits: <span class="math" data-tex="\(\psi_0\)">\(\psi_0\)</span>, with stabilizer <span class="math" data-tex="\(H\)">\(H\)</span>, and all <span class="math" data-tex="\(q-1\)">\(q-1\)</span> nontrivial characters, with trivial stabilizer.</p>
+<p id="proposition-4-1" class="result-link"><strong>Proposition 4.1.</strong> The irreducibles of the affine group are the <span class="math" data-tex="\(q-1\)">\(q-1\)</span> characters inflated from <span class="math" data-tex="\(\mathbb F_q^\times\)">\(\mathbb F_q^\times\)</span>, and one additional irreducible <span class="math" data-tex="\(W\)">\(W\)</span> of degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. For <span class="math" data-tex="\(q&gt;2\)">\(q&gt;2\)</span>, these are exactly <span class="math" data-tex="\(q-1\)">\(q-1\)</span> linear representations and one of higher degree. For <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, both representations are linear.</p>
+<p><strong>Proof.</strong> The two orbits and their stabilizers give the list by Theorem 2.1. The group <span class="math" data-tex="\(H\)">\(H\)</span> is abelian and has <span class="math" data-tex="\(q-1\)">\(q-1\)</span> irreducible characters. The other stabilizer is trivial and yields degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. At <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, <span class="math" data-tex="\(G\simeq C_2\)">\(G\simeq C_2\)</span>, and the additional representation has degree one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An explicit model for <span class="math" data-tex="\(W\)">\(W\)</span> is the space of functions on <span class="math" data-tex="\(\mathbb F_q^\times\)">\(\mathbb F_q^\times\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+(\rho(b,a)f)(t)=\psi(tb)f(ta).
+\tag{14}
+\]">\[
+(\rho(b,a)f)(t)=\psi(tb)f(ta).
+\tag{14}
+\]</span>
+<p>Composing two operators gives the phase <span class="math" data-tex="\(\psi(t(b+ab&#x27;))\)">\(\psi(t(b+ab&#x27;))\)</span> and argument <span class="math" data-tex="\(taa&#x27;\)">\(taa&#x27;\)</span>, exactly as required by (13). The translation weights are the <span class="math" data-tex="\(q-1\)">\(q-1\)</span> distinct nontrivial characters, and <span class="math" data-tex="\(H\)">\(H\)</span> permutes their lines transitively; this also proves irreducibility directly.</p>
+<p>When <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span>, multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> fixes no nonzero field element, so the operator in (14) has zero trace. When <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, its trace is <span class="math" data-tex="\(\sum_{t\ne0}\psi(tb)\)">\(\sum_{t\ne0}\psi(tb)\)</span>. Additive-character orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\chi_W(b,a)=
+\begin{cases}
+q-1,&amp;a=1,\ b=0,\\
+-1,&amp;a=1,\ b\ne0,\\
+0,&amp;a\ne1.
+\end{cases}
+\tag{15}
+\]">\[
+\chi_W(b,a)=
+\begin{cases}
+q-1,&amp;a=1,\ b=0,\\
+-1,&amp;a=1,\ b\ne0,\\
+0,&amp;a\ne1.
+\end{cases}
+\tag{15}
+\]</span>
+<p>For <span class="math" data-tex="\(\mathbb F_5\)">\(\mathbb F_5\)</span>, take <span class="math" data-tex="\(\psi(b)=e^{2\pi ib/5}\)">\(\psi(b)=e^{2\pi ib/5}\)</span>. The four inflated characters and <span class="math" data-tex="\(W\)">\(W\)</span> have degrees <span class="math" data-tex="\(1,1,1,1,4\)">\(1,1,1,1,4\)</span>, whose squares sum to <span class="math" data-tex="\(20\)">\(20\)</span>. On functions indexed by <span class="math" data-tex="\(1,2,3,4\)">\(1,2,3,4\)</span>, translations are diagonal with entries <span class="math" data-tex="\(\psi(b),\psi(2b),\psi(3b),\psi(4b)\)">\(\psi(b),\psi(2b),\psi(3b),\psi(4b)\)</span>; multiplication by <span class="math" data-tex="\(2\)">\(2\)</span> permutes the arguments through <span class="math" data-tex="\(1,2,4,3\)">\(1,2,4,3\)</span>. The character of <span class="math" data-tex="\(W\)">\(W\)</span> is <span class="math" data-tex="\(4\)">\(4\)</span> at the identity, <span class="math" data-tex="\(-1\)">\(-1\)</span> at a nonzero translation and <span class="math" data-tex="\(0\)">\(0\)</span> at every element with multiplier different from <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="5-quaternion-groups-using-the-inertia-group-without-a-complement">5. Quaternion groups: using the inertia group without a complement</h2>
+<p>Consider the group <span class="math" data-tex="\(Q_{4m}\)">\(Q_{4m}\)</span>, <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, with relations</p>
+<span class="math math-display" data-tex="\[
+a^{2m}=1,\qquad b^2=a^m,\qquad bab^{-1}=a^{-1}.
+\tag{16}
+\]">\[
+a^{2m}=1,\qquad b^2=a^m,\qquad bab^{-1}=a^{-1}.
+\tag{16}
+\]</span>
+<p>It has elements <span class="math" data-tex="\(a^j\)">\(a^j\)</span> and <span class="math" data-tex="\(ba^j\)">\(ba^j\)</span>, <span class="math" data-tex="\(0\leq j&lt;2m\)">\(0\leq j&lt;2m\)</span>. These normal forms are distinct: the matrices</p>
+<span class="math math-display" data-tex="\[
+a=\operatorname{diag}(\xi,\xi^{-1}),\qquad
+b=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},
+\quad \xi=e^{\pi i/m},
+\]">\[
+a=\operatorname{diag}(\xi,\xi^{-1}),\qquad
+b=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},
+\quad \xi=e^{\pi i/m},
+\]</span>
+<p>satisfy (16) and give <span class="math" data-tex="\(4m\)">\(4m\)</span> distinct such matrices. The relations reduce every word to one of the normal forms, so the order is exactly <span class="math" data-tex="\(4m\)">\(4m\)</span>. When <span class="math" data-tex="\(m\)">\(m\)</span> is a power of two, these are the usual generalized quaternion groups; the same presentation for general <span class="math" data-tex="\(m\)">\(m\)</span> defines a dicyclic group.</p>
+<p>The cyclic subgroup <span class="math" data-tex="\(A=\langle a\rangle\)">\(A=\langle a\rangle\)</span> is normal of index two. Every element outside it squares to <span class="math" data-tex="\(a^m\)">\(a^m\)</span>, which is not the identity, so there is no subgroup of order two complementary to <span class="math" data-tex="\(A\)">\(A\)</span>. We must use Clifford theory directly.</p>
+<p>For <span class="math" data-tex="\(\lambda_k(a)=\xi^k\)">\(\lambda_k(a)=\xi^k\)</span>, the conjugation orbit is <span class="math" data-tex="\(\{k,-k\}\)">\(\{k,-k\}\)</span> modulo <span class="math" data-tex="\(2m\)">\(2m\)</span>. If <span class="math" data-tex="\(k\notin\{0,m\}\)">\(k\notin\{0,m\}\)</span>, the inertia group is just <span class="math" data-tex="\(A\)">\(A\)</span>, so <span class="math" data-tex="\(\operatorname{Ind}_A^{Q_{4m}}\lambda_k\)">\(\operatorname{Ind}_A^{Q_{4m}}\lambda_k\)</span> is irreducible of degree two. Choose <span class="math" data-tex="\(1\leq k\leq m-1\)">\(1\leq k\leq m-1\)</span> to avoid duplication. Coset representatives <span class="math" data-tex="\(1,b\)">\(1,b\)</span> give</p>
+<span class="math math-display" data-tex="\[
+a\longmapsto
+\begin{pmatrix}\xi^k&amp;0\\0&amp;\xi^{-k}\end{pmatrix},
+\qquad
+b\longmapsto
+\begin{pmatrix}0&amp;(-1)^k\\1&amp;0\end{pmatrix}.
+\tag{17}
+\]">\[
+a\longmapsto
+\begin{pmatrix}\xi^k&amp;0\\0&amp;\xi^{-k}\end{pmatrix},
+\qquad
+b\longmapsto
+\begin{pmatrix}0&amp;(-1)^k\\1&amp;0\end{pmatrix}.
+\tag{17}
+\]</span>
+<p>The factor <span class="math" data-tex="\((-1)^k\)">\((-1)^k\)</span> records <span class="math" data-tex="\(b^2=a^m\)">\(b^2=a^m\)</span>; replacing this matrix by the dihedral flip would fail for odd <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>For each of the fixed characters <span class="math" data-tex="\(k=0,m\)">\(k=0,m\)</span>, the inertia group is all of <span class="math" data-tex="\(Q_{4m}\)">\(Q_{4m}\)</span>. Here an extension does exist, but its value on <span class="math" data-tex="\(b\)">\(b\)</span> must be chosen to satisfy the relation. Assign <span class="math" data-tex="\(a\mapsto\alpha\)">\(a\mapsto\alpha\)</span>, where <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, and <span class="math" data-tex="\(b\mapsto\beta\)">\(b\mapsto\beta\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+\beta^2=\alpha^m.
+\tag{18}
+\]">\[
+\beta^2=\alpha^m.
+\tag{18}
+\]</span>
+<p>There are two choices of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> for each <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, giving four linear representations. They respect all the relations because <span class="math" data-tex="\(\alpha=\alpha^{-1}\)">\(\alpha=\alpha^{-1}\)</span>. Every irreducible over that fixed character is one of these: tensor with one extension to make <span class="math" data-tex="\(A\)">\(A\)</span> act trivially, then use the two characters of <span class="math" data-tex="\(Q_{4m}/A\simeq C_2\)">\(Q_{4m}/A\simeq C_2\)</span>.</p>
+<p>We have obtained all irreducibles, with degree squares <span class="math" data-tex="\(4+4(m-1)=4m\)">\(4+4(m-1)=4m\)</span>. In <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>, this gives four linear representations and one degree-two representation. Its central character sends <span class="math" data-tex="\(a^2\)">\(a^2\)</span> to <span class="math" data-tex="\(-1\)">\(-1\)</span>. That character of the center cannot extend to a linear character of <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>, because the center's nonidentity element is a commutator. Thus extension from <span class="math" data-tex="\(A\)">\(A\)</span> in this example does not justify extension from every abelian normal subgroup.</p>
+<h2 id="6-the-finite-heisenberg-group">6. The finite Heisenberg group</h2>
+<p>Let <span class="math" data-tex="\(p\)">\(p\)</span> be an odd prime. On <span class="math" data-tex="\(\mathbb F_p^3\)">\(\mathbb F_p^3\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(x,y,z)(x&#x27;,y&#x27;,z&#x27;)=(x+x&#x27;,y+y&#x27;,z+z&#x27;+xy&#x27;).
+\tag{19}
+\]">\[
+(x,y,z)(x&#x27;,y&#x27;,z&#x27;)=(x+x&#x27;,y+y&#x27;,z+z&#x27;+xy&#x27;).
+\tag{19}
+\]</span>
+<p>Associativity follows because either bracketing of three factors has third coordinate <span class="math" data-tex="\(z+z&#x27;+z&#x27;&#x27;+xy&#x27;+xy&#x27;&#x27;+x&#x27;y&#x27;&#x27;\)">\(z+z&#x27;+z&#x27;&#x27;+xy&#x27;+xy&#x27;&#x27;+x&#x27;y&#x27;&#x27;\)</span>. The identity is <span class="math" data-tex="\((0,0,0)\)">\((0,0,0)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+(x,y,z)^{-1}=(-x,-y,-z+xy).
+\tag{20}
+\]">\[
+(x,y,z)^{-1}=(-x,-y,-z+xy).
+\tag{20}
+\]</span>
+<p>The commutator of two elements is <span class="math" data-tex="\((0,0,xy&#x27;-x&#x27;y)\)">\((0,0,xy&#x27;-x&#x27;y)\)</span>. Consequently the center is</p>
+<span class="math math-display" data-tex="\[
+Z=\{(0,0,z):z\in\mathbb F_p\}.
+\tag{21}
+\]">\[
+Z=\{(0,0,z):z\in\mathbb F_p\}.
+\tag{21}
+\]</span>
+<p>Indeed, commuting with all <span class="math" data-tex="\((x&#x27;,y&#x27;,0)\)">\((x&#x27;,y&#x27;,0)\)</span> forces <span class="math" data-tex="\(x=y=0\)">\(x=y=0\)</span>. The same commutator formula shows that <span class="math" data-tex="\([G,G]=Z\)">\([G,G]=Z\)</span>: take <span class="math" data-tex="\(x=1,y=0,x&#x27;=0\)">\(x=1,y=0,x&#x27;=0\)</span> and vary <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span>. Thus the linear characters are exactly</p>
+<span class="math math-display" data-tex="\[
+\ell_{s,r}(x,y,z)=\zeta^{sx+ry},
+\qquad s,r\in\mathbb F_p,\quad \zeta=e^{2\pi i/p}.
+\tag{22}
+\]">\[
+\ell_{s,r}(x,y,z)=\zeta^{sx+ry},
+\qquad s,r\in\mathbb F_p,\quad \zeta=e^{2\pi i/p}.
+\tag{22}
+\]</span>
+<p>They are distinct and give the <span class="math" data-tex="\(p^2\)">\(p^2\)</span> characters of <span class="math" data-tex="\(G/Z\simeq\mathbb F_p^2\)">\(G/Z\simeq\mathbb F_p^2\)</span>.</p>
+<h3 id="classification-by-the-little-group-method">Classification by the little-group method</h3>
+<p>For this application use the larger abelian normal subgroup</p>
+<span class="math math-display" data-tex="\[
+B=\{(0,y,z)\},\qquad X=\{(x,0,0)\}.
+\]">\[
+B=\{(0,y,z)\},\qquad X=\{(x,0,0)\}.
+\]</span>
+<p>It is a split extension <span class="math" data-tex="\(G=B\rtimes X\)">\(G=B\rtimes X\)</span>; in fact
+<span class="math" data-tex="\((x,y,z)=(0,y,z)(x,0,0)\)">\((x,y,z)=(0,y,z)(x,0,0)\)</span>. The characters of <span class="math" data-tex="\(B\)">\(B\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\lambda_{r,c}(0,y,z)=\zeta^{ry+cz}.
+\]">\[
+\lambda_{r,c}(0,y,z)=\zeta^{ry+cz}.
+\]</span>
+<p>Conjugation as in (2) sends <span class="math" data-tex="\(\lambda_{r,c}\)">\(\lambda_{r,c}\)</span> to <span class="math" data-tex="\(\lambda_{r-cx,c}\)">\(\lambda_{r-cx,c}\)</span>, since conjugating <span class="math" data-tex="\((0,y,z)\)">\((0,y,z)\)</span> by <span class="math" data-tex="\((-x,0,0)\)">\((-x,0,0)\)</span> on the left and <span class="math" data-tex="\((x,0,0)\)">\((x,0,0)\)</span> on the right gives <span class="math" data-tex="\((0,y,z-xy)\)">\((0,y,z-xy)\)</span>.</p>
+<p>If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, each character is fixed, and the <span class="math" data-tex="\(p\)">\(p\)</span> characters of <span class="math" data-tex="\(X\)">\(X\)</span> supply (22). If <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, its orbit contains every <span class="math" data-tex="\(r\)">\(r\)</span> and its stabilizer in <span class="math" data-tex="\(X\)">\(X\)</span> is trivial. There is exactly one irreducible of degree <span class="math" data-tex="\(p\)">\(p\)</span> for each <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>. The central character is <span class="math" data-tex="\(\psi_c(z)=\zeta^{cz}\)">\(\psi_c(z)=\zeta^{cz}\)</span>.</p>
+<h3 id="the-schrödinger-model">The Schrödinger model</h3>
+<p>Fix a nontrivial character <span class="math" data-tex="\(\psi=\psi_c\)">\(\psi=\psi_c\)</span> of the additive group <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>. On the space of functions <span class="math" data-tex="\(f:\mathbb F_p\to\mathbb C\)">\(f:\mathbb F_p\to\mathbb C\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(\rho_\psi(x,y,z)f)(t)=\psi(z+yt)f(t+x).
+\tag{23}
+\]">\[
+(\rho_\psi(x,y,z)f)(t)=\psi(z+yt)f(t+x).
+\tag{23}
+\]</span>
+<p>This formula is tied to the nonsymmetric cocycle <span class="math" data-tex="\(xy&#x27;\)">\(xy&#x27;\)</span> in (19). Direct composition gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\rho_\psi(x,y,z)\rho_\psi(x&#x27;,y&#x27;,z&#x27;)f)(t)
+&amp;=\psi\bigl(z+yt+z&#x27;+y&#x27;(t+x)\bigr)f(t+x+x&#x27;)\\
+&amp;=\psi\bigl(z+z&#x27;+xy&#x27;+(y+y&#x27;)t\bigr)f(t+x+x&#x27;),
+\end{aligned}
+\tag{24}
+\]">\[
+\begin{aligned}
+(\rho_\psi(x,y,z)\rho_\psi(x&#x27;,y&#x27;,z&#x27;)f)(t)
+&amp;=\psi\bigl(z+yt+z&#x27;+y&#x27;(t+x)\bigr)f(t+x+x&#x27;)\\
+&amp;=\psi\bigl(z+z&#x27;+xy&#x27;+(y+y&#x27;)t\bigr)f(t+x+x&#x27;),
+\end{aligned}
+\tag{24}
+\]</span>
+<p>which is the operator for the product in (19).</p>
+<p>Let <span class="math" data-tex="\(e_u\)">\(e_u\)</span> be the function supported at <span class="math" data-tex="\(u\)">\(u\)</span> with value <span class="math" data-tex="\(1\)">\(1\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\rho_\psi(x,y,z)e_u=\psi\bigl(z+y(u-x)\bigr)e_{u-x}.
+\tag{25}
+\]">\[
+\rho_\psi(x,y,z)e_u=\psi\bigl(z+y(u-x)\bigr)e_{u-x}.
+\tag{25}
+\]</span>
+<p>Put <span class="math" data-tex="\(T=\rho_\psi(1,0,0)\)">\(T=\rho_\psi(1,0,0)\)</span> and <span class="math" data-tex="\(M=\rho_\psi(0,1,0)\)">\(M=\rho_\psi(0,1,0)\)</span>. Thus <span class="math" data-tex="\(Te_u=e_{u-1}\)">\(Te_u=e_{u-1}\)</span>, <span class="math" data-tex="\(Me_u=\psi(u)e_u\)">\(Me_u=\psi(u)e_u\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+TM=\psi(1)MT.
+\tag{26}
+\]">\[
+TM=\psi(1)MT.
+\tag{26}
+\]</span>
+<p>The <span class="math" data-tex="\(p\)">\(p\)</span> eigenvalues <span class="math" data-tex="\(\psi(u)\)">\(\psi(u)\)</span> are distinct. Any endomorphism commuting with <span class="math" data-tex="\(M\)">\(M\)</span> is diagonal in this basis, and commuting also with the cyclic shift <span class="math" data-tex="\(T\)">\(T\)</span> forces all diagonal entries to agree. The commutant is therefore <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Complete reducibility implies that this representation is irreducible: a proper invariant summand would give a nonscalar commuting projection.</p>
+<p id="theorem-6-1" class="result-link"><strong>Theorem 6.1 (finite Stone–von Neumann theorem).</strong> For every nontrivial character <span class="math" data-tex="\(\psi\)">\(\psi\)</span> of <span class="math" data-tex="\(Z\simeq\mathbb F_p\)">\(Z\simeq\mathbb F_p\)</span>, there is exactly one irreducible representation of the group (19), up to isomorphism, with central action <span class="math" data-tex="\(z\mapsto\psi(z)\operatorname{Id}\)">\(z\mapsto\psi(z)\operatorname{Id}\)</span>. It has degree <span class="math" data-tex="\(p\)">\(p\)</span> and is realized by (23).</p>
+<p><strong>Proof.</strong> Formula (24) proves existence of the representation; the commutant argument proves irreducibility, and (23) gives the stated central action. The little-group classification above proves uniqueness, since for a fixed nonzero <span class="math" data-tex="\(c\)">\(c\)</span> all characters <span class="math" data-tex="\(\lambda_{r,c}\)">\(\lambda_{r,c}\)</span> form one orbit with trivial stabilizer.</p>
+<p>One can also see uniqueness directly in any irreducible <span class="math" data-tex="\(V\)">\(V\)</span> with this central action. Write <span class="math" data-tex="\(T,M\)">\(T,M\)</span> for the actions of <span class="math" data-tex="\((1,0,0),(0,1,0)\)">\((1,0,0),(0,1,0)\)</span>. They satisfy (26) and <span class="math" data-tex="\(T^p=M^p=1\)">\(T^p=M^p=1\)</span>. Diagonalize <span class="math" data-tex="\(M\)">\(M\)</span>. The relation <span class="math" data-tex="\(MT=\psi(1)^{-1}TM\)">\(MT=\psi(1)^{-1}TM\)</span> shows that powers of <span class="math" data-tex="\(T\)">\(T\)</span> move an eigenvector through all <span class="math" data-tex="\(p\)">\(p\)</span> distinct eigenvalues, since <span class="math" data-tex="\(\psi(1)\)">\(\psi(1)\)</span> has order <span class="math" data-tex="\(p\)">\(p\)</span>. In particular, an eigenvector <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> with eigenvalue <span class="math" data-tex="\(1\)">\(1\)</span> exists. The vectors <span class="math" data-tex="\(T^jv\)">\(T^jv\)</span>, <span class="math" data-tex="\(0\leq j&lt;p\)">\(0\leq j&lt;p\)</span>, are linearly independent and their span is stable under <span class="math" data-tex="\(T,M\)">\(T,M\)</span> and the center. These elements generate <span class="math" data-tex="\(G\)">\(G\)</span>, so irreducibility makes that span all of <span class="math" data-tex="\(V\)">\(V\)</span>. The map</p>
+<span class="math math-display" data-tex="\[
+e_{-j}\longmapsto T^jv
+\]">\[
+e_{-j}\longmapsto T^jv
+\]</span>
+<p>intertwines <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(M\)">\(M\)</span> and the center, hence all of <span class="math" data-tex="\(G\)">\(G\)</span>. It identifies <span class="math" data-tex="\(V\)">\(V\)</span> with (23) and proves both the dimension and uniqueness again. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the character, (25) has no fixed basis vector when <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>. When <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, its trace is <span class="math" data-tex="\(\psi(z)\sum_t\psi(yt)\)">\(\psi(z)\sum_t\psi(yt)\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\chi_\psi(x,y,z)=
+\begin{cases}
+p\psi(z),&amp;x=y=0,\\
+0,&amp;(x,y)\ne(0,0).
+\end{cases}
+\tag{27}
+\]">\[
+\chi_\psi(x,y,z)=
+\begin{cases}
+p\psi(z),&amp;x=y=0,\\
+0,&amp;(x,y)\ne(0,0).
+\end{cases}
+\tag{27}
+\]</span>
+<p>The whole classification contains <span class="math" data-tex="\(p^2\)">\(p^2\)</span> linear representations and <span class="math" data-tex="\(p-1\)">\(p-1\)</span> of degree <span class="math" data-tex="\(p\)">\(p\)</span>, with degree squares <span class="math" data-tex="\(p^2+(p-1)p^2=p^3\)">\(p^2+(p-1)p^2=p^3\)</span>. Two nontrivial central characters give nonisomorphic representations already by their central actions.</p>
+<p>For <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, let <span class="math" data-tex="\(\omega=e^{2\pi i/3}\)">\(\omega=e^{2\pi i/3}\)</span> and <span class="math" data-tex="\(\psi(z)=\omega^z\)">\(\psi(z)=\omega^z\)</span>. In the ordered basis <span class="math" data-tex="\(e_0,e_1,e_2\)">\(e_0,e_1,e_2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+T=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\1&amp;0&amp;0\end{pmatrix},
+\qquad M=\operatorname{diag}(1,\omega,\omega^2),
+\qquad \rho_\psi(0,0,1)=\omega I.
+\tag{28}
+\]">\[
+T=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\1&amp;0&amp;0\end{pmatrix},
+\qquad M=\operatorname{diag}(1,\omega,\omega^2),
+\qquad \rho_\psi(0,0,1)=\omega I.
+\tag{28}
+\]</span>
+<p>We have <span class="math" data-tex="\(TM=\omega MT\)">\(TM=\omega MT\)</span> and <span class="math" data-tex="\(\rho_\psi(x,y,z)=\omega^zM^yT^x\)">\(\rho_\psi(x,y,z)=\omega^zM^yT^x\)</span>. The other degree-three irreducible replaces <span class="math" data-tex="\(\omega\)">\(\omega\)</span> by <span class="math" data-tex="\(\omega^2\)">\(\omega^2\)</span>. Alongside the nine characters in (22), these exhaust the group of order <span class="math" data-tex="\(27\)">\(27\)</span>.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> Classify the irreducible representations of <span class="math" data-tex="\(D_5\)">\(D_5\)</span> by the little-group method and write their characters.</p>
+<p><strong>Solution.</strong> The action on the five characters of <span class="math" data-tex="\(\langle r\rangle\)">\(\langle r\rangle\)</span> has orbits <span class="math" data-tex="\(\{0\},\{1,4\},\{2,3\}\)">\(\{0\},\{1,4\},\{2,3\}\)</span>. The fixed orbit has stabilizer <span class="math" data-tex="\(C_2\)">\(C_2\)</span>, giving the trivial character and the character with <span class="math" data-tex="\(r\mapsto1,s\mapsto-1\)">\(r\mapsto1,s\mapsto-1\)</span>. The other stabilizers are trivial, giving the two matrices (11) for <span class="math" data-tex="\(k=1,2\)">\(k=1,2\)</span>. Their characters are <span class="math" data-tex="\(2\cos(2\pi kj/5)\)">\(2\cos(2\pi kj/5)\)</span> on <span class="math" data-tex="\(r^j\)">\(r^j\)</span> and zero on <span class="math" data-tex="\(sr^j\)">\(sr^j\)</span>. The linear characters take value <span class="math" data-tex="\(1\)">\(1\)</span> on rotations and respectively <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> on reflections. Theorem 2.1 proves irreducibility and exhaustion; the check <span class="math" data-tex="\(1+1+4+4=10\)">\(1+1+4+4=10\)</span> agrees with the order.</p>
+<p><strong>Exercise 2.</strong> Derive the affine-group classification and compute the character of the additional degree-<span class="math" data-tex="\((q-1)\)">\((q-1)\)</span> representation, including the smallest field.</p>
+<p><strong>Solution.</strong> Choose a nontrivial additive <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The characters <span class="math" data-tex="\(\psi_t\)">\(\psi_t\)</span> constructed in Section 4 are distinct and exhaust <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>. The multiplier <span class="math" data-tex="\(a\)">\(a\)</span> sends <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(t/a\)">\(t/a\)</span>, so the zero orbit gives the <span class="math" data-tex="\(q-1\)">\(q-1\)</span> inflated characters of <span class="math" data-tex="\(H\)">\(H\)</span>, and the nonzero orbit gives one irreducible of degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. In (14), the underlying permutation of the basis has no fixed point for <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span>, hence trace zero. For <span class="math" data-tex="\(a=1\)">\(a=1\)</span> the trace is <span class="math" data-tex="\(\sum_{t\ne0}\psi(tb)\)">\(\sum_{t\ne0}\psi(tb)\)</span>. It is <span class="math" data-tex="\(q-1\)">\(q-1\)</span> when <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. When <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, a change of variable and orthogonality give <span class="math" data-tex="\(\sum_{t\in\mathbb F_q}\psi(tb)=0\)">\(\sum_{t\in\mathbb F_q}\psi(tb)=0\)</span>; removing the zero term gives <span class="math" data-tex="\(-1\)">\(-1\)</span>. This proves (15). The degrees check as
+<span class="math" data-tex="\((q-1)+(q-1)^2=q(q-1)\)">\((q-1)+(q-1)^2=q(q-1)\)</span>. At <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, <span class="math" data-tex="\(H\)">\(H\)</span> is trivial and the additional representation is <span class="math" data-tex="\(b\mapsto(-1)^b\)">\(b\mapsto(-1)^b\)</span>; together with the trivial character it gives the two linear characters of <span class="math" data-tex="\(C_2\)">\(C_2\)</span>.</p>
+<p><strong>Exercise 3.</strong> Construct the Schrödinger representation for (19), check its group law and prove irreducibility.</p>
+<p><strong>Solution.</strong> Define the operators by (23). Calculation (24) verifies their multiplication, including the term <span class="math" data-tex="\(xy&#x27;\)">\(xy&#x27;\)</span>. Their inverse operators exist because they permute the basis (25) and multiply its vectors by nonzero scalars. On this basis, <span class="math" data-tex="\(M\)">\(M\)</span> has the <span class="math" data-tex="\(p\)">\(p\)</span> distinct eigenvalues <span class="math" data-tex="\(\psi(u)\)">\(\psi(u)\)</span>, while <span class="math" data-tex="\(T\)">\(T\)</span> permutes the corresponding lines cyclically.</p>
+<p>If <span class="math" data-tex="\(W\ne0\)">\(W\ne0\)</span> is invariant, it contains an <span class="math" data-tex="\(M\)">\(M\)</span>-eigenvector: the spectral projection onto an eigenvalue is a polynomial in <span class="math" data-tex="\(M\)">\(M\)</span>, by interpolation at the distinct eigenvalues, and some such projection of a nonzero vector of <span class="math" data-tex="\(W\)">\(W\)</span> is nonzero. That eigenvector spans one of the lines <span class="math" data-tex="\(\mathbb Ce_u\)">\(\mathbb Ce_u\)</span>. Applying powers of <span class="math" data-tex="\(T\)">\(T\)</span> puts every basis line in <span class="math" data-tex="\(W\)">\(W\)</span>, so <span class="math" data-tex="\(W\)">\(W\)</span> is the whole space. This proves irreducibility directly from invariant subspaces.</p>
+<p>The model is also the induction of <span class="math" data-tex="\(\lambda_{0,c}\)">\(\lambda_{0,c}\)</span> from <span class="math" data-tex="\(B\)">\(B\)</span>. Explicitly send <span class="math" data-tex="\((j,0,0)\otimes1\)">\((j,0,0)\otimes1\)</span> in its coset basis to <span class="math" data-tex="\(e_{-j}\)">\(e_{-j}\)</span>. For <span class="math" data-tex="\(g=(x,y,z)\)">\(g=(x,y,z)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+g(j,0,0)=(x+j,0,0)(0,y,z-(x+j)y).
+\]">\[
+g(j,0,0)=(x+j,0,0)(0,y,z-(x+j)y).
+\]</span>
+<p>The induced action therefore gives the factor <span class="math" data-tex="\(\psi(z-(x+j)y)\)">\(\psi(z-(x+j)y)\)</span> and basis vector <span class="math" data-tex="\(e_{-(x+j)}\)">\(e_{-(x+j)}\)</span>, exactly as (25). This verifies the induction identification with its signs.</p>
+<p><strong>Exercise 4.</strong> Prove the little-group theorem in full using Mackey's criterion, weight spaces and the degree-square identity.</p>
+<p><strong>Solution.</strong> Formula (5) is multiplicative by (1) and character invariance. For every irreducible <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(H_\lambda\)">\(H_\lambda\)</span>, <span class="math" data-tex="\(U_{\lambda,\sigma}\)">\(U_{\lambda,\sigma}\)</span> is irreducible: its invariant subspaces are exactly those of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, since <span class="math" data-tex="\(A\)">\(A\)</span> acts by scalars. For a double coset represented by <span class="math" data-tex="\(s\notin I_\lambda\)">\(s\notin I_\lambda\)</span>, the two inducing representations restrict to distinct <span class="math" data-tex="\(A\)">\(A\)</span>-weights. An intertwiner must commute with <span class="math" data-tex="\(A\)">\(A\)</span>, so is zero. The identity double coset has a one-dimensional intertwiner space by Schur's lemma. Mackey's criterion proves <span class="math" data-tex="\(\Theta_{\lambda,\sigma}\)">\(\Theta_{\lambda,\sigma}\)</span> irreducible, of degree (8).</p>
+<p>Its <span class="math" data-tex="\(A\)">\(A\)</span>-weights are (9). Distinct orbits therefore give nonisomorphic representations. Within a fixed orbit choose the same <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-eigenspace is exactly the identity coset summand, with action <span class="math" data-tex="\(U_{\lambda,\sigma}\)">\(U_{\lambda,\sigma}\)</span>. An isomorphism of induced representations restricts to an isomorphism on this eigenspace and forces <span class="math" data-tex="\(\sigma\simeq\sigma&#x27;\)">\(\sigma\simeq\sigma&#x27;\)</span>. Conjugating the data by <span class="math" data-tex="\(h\)">\(h\)</span> transports the extension (5) and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> as in (7), and induction of conjugate data is isomorphic. This proves precisely the stated equivalence on all pairs.</p>
+<p>Finally, choose orbit representatives so the representations just proved irreducible are pairwise distinct. Their degree squares sum to <span class="math" data-tex="\(|G|\)">\(|G|\)</span> by (10). The degree-square identity for all irreducibles of <span class="math" data-tex="\(G\)">\(G\)</span> leaves no room for any additional irreducible, since its squared dimension would be positive. This proves exhaustion and completes every part of Theorem 2.1.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The earlier course results listed under prerequisites, and the real Hilbert-space analogue discussed in Gruson–Serganova, Chapter 4 §2, Definition 2.2 and Theorem 2.4. That analytic theorem is outside the scope of this lesson; our finite theorem requires only finite-dimensional linear algebra. There are no unproved new finite-group results used in the classification or the exercise solutions.</p>
+<p>The broader analytic analogue is also discussed in <em>Recovering multiplicity from a Weyl system</em> in the operator-algebra course; that pointer supplies no prerequisite for the finite proof.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Constantin Teleman, <a href="https://math.berkeley.edu/~teleman/math/RepThry.pdf"><em>Representation Theory</em></a>, lecture notes, §§17.6–17.7: abelian normal subgroups and stabilizers.</li>
+<li>Caroline Gruson and Vera Serganova, <em>A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras</em>, Universitext, Springer, 2018, Chapter 2 §10: the affine group; Chapter 4 §2: the real Heisenberg group and its unitary representations.</li>
+</ul>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

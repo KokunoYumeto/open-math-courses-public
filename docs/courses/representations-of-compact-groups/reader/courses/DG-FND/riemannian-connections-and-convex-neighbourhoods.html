@@ -1,0 +1,550 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Riemannian connections and convex neighbourhoods</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="../representations-of-compact-groups/index.html">Representations of compact groups</a></nav></header><main id="main"><article class="math"><h1 id="riemannian-connections-and-convex-neighbourhoods">Riemannian connections and convex neighbourhoods</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Draft; self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Original text dedicated to the public domain under CC0 1.0.</em></p>
+<p>A metric measures the speed of a curve, while a connection differentiates its velocity. Requiring that transport preserve the metric and that torsion vanish links these two operations in a unique way. The resulting geodesics are locally the shortest curves. We prove that assertion against all competing curves, including curves that leave the chosen coordinates, and obtain neighbourhoods in which every pair has a unique shortest geodesic.</p>
+<p>Read <a href="linear-and-affine-connections.html">Linear and affine connections</a>, Sections 1–2, for covariant derivatives, tensor derivatives and fibre metrics. <a href="geodesics-normal-coordinates-and-curvature.html">Geodesics, normal coordinates and curvature</a>, Sections 1–2, proves the smooth exponential map and the affine convex-neighbourhood theorem. Its Section 3 fixes our torsion and curvature signs. <a href="local-tools-for-bundles-and-transport.html">Local tools for bundles and transport</a>, Sections 1–3, supplies local inversion, smooth differential equations and partitions of unity. We assume finite-dimensional linear algebra and elementary multivariable calculus. Basic references are [Durrer], [Valencia] and [Pinkall–Gross].</p>
+<h2 id="section-1">1. Length before a connection</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a finite-dimensional Hausdorff second-countable smooth manifold without boundary. A <strong>Riemannian metric</strong> is a smooth symmetric two-tensor <span class="math" data-tex="\(g\)">\(g\)</span> whose value on every tangent space is positive definite. Write</p>
+<span class="math math-display" data-tex="\[
+|v|_g=\sqrt{g(v,v)}.
+\]">\[
+|v|_g=\sqrt{g(v,v)}.
+\]</span>
+<p>Such metrics exist: apply the fibre-metric construction in Linear and affine connections, Theorem 2.1, to <span class="math" data-tex="\(TM\)">\(TM\)</span>. It sums local Euclidean metrics with a smooth partition of unity. Positivity holds because some weight is positive at every point.</p>
+<p>In coordinates <span class="math" data-tex="\(g=g_{ij}\,dx^i\otimes dx^j\)">\(g=g_{ij}\,dx^i\otimes dx^j\)</span>, the symmetric matrix <span class="math" data-tex="\(G=(g_{ij})\)">\(G=(g_{ij})\)</span> is positive definite. Its inverse <span class="math" data-tex="\((g^{ij})\)">\((g^{ij})\)</span> is smooth by the cofactor formula. The metric identifies vectors with covectors:</p>
+<span class="math math-display" data-tex="\[
+v^\flat=g(v,\cdot),\qquad
+(\alpha^\sharp)^i=g^{ij}\alpha_j.
+\tag{1.1}
+\]">\[
+v^\flat=g(v,\cdot),\qquad
+(\alpha^\sharp)^i=g^{ij}\alpha_j.
+\tag{1.1}
+\]</span>
+<p>These are inverse bundle maps. The induced pairing of covectors is <span class="math" data-tex="\(g^{-1}(\alpha,\beta)=g^{ij}\alpha_i\beta_j\)">\(g^{-1}(\alpha,\beta)=g^{ij}\alpha_i\beta_j\)</span>. Applying these maps to individual tensor factors raises and lowers indices; this changes the type of a tensor, rather than merely changing the way its coefficients are printed.</p>
+<p>We will also use a <strong>pseudo-Riemannian metric</strong>: a smooth symmetric two-tensor that is nondegenerate at every point, with a fixed signature on each connected component. The maps (1.1) still exist. Its values can be negative on nonzero vectors, so the length and distance constructions below are reserved for positive definite metrics. No existence of a metric of an arbitrarily prescribed indefinite signature is asserted.</p>
+<p>For a path <span class="math" data-tex="\(\eta:[a,b]\to M\)">\(\eta:[a,b]\to M\)</span> that is <span class="math" data-tex="\(C^1\)">\(C^1\)</span> on finitely many closed subintervals, define its length by summing</p>
+<span class="math math-display" data-tex="\[
+L_g(\eta)=\int_a^b|\dot\eta(t)|_g\,dt
+\tag{1.2}
+\]">\[
+L_g(\eta)=\int_a^b|\dot\eta(t)|_g\,dt
+\tag{1.2}
+\]</span>
+<p>over these pieces. One-sided derivatives may differ at a break. Refining the division does not change the integral. Pauses and constant pieces are allowed. A <span class="math" data-tex="\(C^1\)">\(C^1\)</span> diffeomorphism of the parameter interval preserves length: the chain rule introduces the absolute value of its derivative, and substitution in the integral cancels that factor. Reversing a path has the same length. Concatenation adds lengths.</p>
+<p>Assume for the moment that <span class="math" data-tex="\(M\)">\(M\)</span> is connected. Any two points can be joined by such a path. Indeed, the points reachable from one fixed point by finitely many coordinate line segments form an open set. Its complement is open too: a sufficiently small coordinate ball joins each of its points to every nearby point. Connectedness therefore makes every point reachable.</p>
+<p>Define the <strong>Riemannian distance</strong></p>
+<span class="math math-display" data-tex="\[
+d_g(p,q)=\inf_{\eta:p\to q}L_g(\eta),
+\tag{1.3}
+\]">\[
+d_g(p,q)=\inf_{\eta:p\to q}L_g(\eta),
+\tag{1.3}
+\]</span>
+<p>where the infimum runs through these piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> paths. This is finite. Reversal and concatenation give symmetry and the triangle inequality. The infimum need not be attained; Exercise 6.4 gives an example.</p>
+<p><strong>Proposition 1.1 (distance and topology).</strong> The function <span class="math" data-tex="\(d_g\)">\(d_g\)</span> is a metric, and its topology is the manifold topology.</p>
+<p><strong>Proof.</strong> A connected zero-dimensional manifold is a single point, where the assertion is immediate. In positive dimension, centre a coordinate chart at <span class="math" data-tex="\(p\)">\(p\)</span>, and choose a closed Euclidean ball <span class="math" data-tex="\(\overline B_R\)">\(\overline B_R\)</span> lying inside it. On its compact product with the Euclidean unit sphere, <span class="math" data-tex="\(g_x(v,v)\)">\(g_x(v,v)\)</span> has a positive minimum and a finite maximum. Thus constants <span class="math" data-tex="\(0&lt;m\le B\)">\(0&lt;m\le B\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m|v|\le|v|_{g_x}\le B|v|,\\
+x\in\overline B_R.
+\end{gathered}
+\tag{1.4}
+\]">\[
+\begin{gathered}
+m|v|\le|v|_{g_x}\le B|v|,\\
+x\in\overline B_R.
+\end{gathered}
+\tag{1.4}
+\]</span>
+<p>Here and only in this local estimate, unadorned norms are Euclidean coordinate norms.</p>
+<p>A path contained in this ball has length at least <span class="math" data-tex="\(m\)">\(m\)</span> times the Euclidean displacement of its endpoints, by integrating the Euclidean speed. A path from <span class="math" data-tex="\(p\)">\(p\)</span> that leaves <span class="math" data-tex="\(B_R\)">\(B_R\)</span> first meets its boundary. The length up to that meeting is at least <span class="math" data-tex="\(mR\)">\(mR\)</span>. The boundary assertion follows because the coordinate closed ball is compact, hence closed in the Hausdorff manifold; its interior is the coordinate open ball.</p>
+<p>Consequently, for <span class="math" data-tex="\(q\in B_R\)">\(q\in B_R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+m|q|\le d_g(p,q)\le B|q|.
+\tag{1.5}
+\]">\[
+m|q|\le d_g(p,q)\le B|q|.
+\tag{1.5}
+\]</span>
+<p>For the lower bound, paths staying in the ball cost at least <span class="math" data-tex="\(m|q|\)">\(m|q|\)</span>, and paths leaving it cost at least <span class="math" data-tex="\(mR\ge m|q|\)">\(mR\ge m|q|\)</span>. The upper bound uses the coordinate straight segment. If <span class="math" data-tex="\(q\notin B_R\)">\(q\notin B_R\)</span>, every path to <span class="math" data-tex="\(q\)">\(q\)</span> costs at least <span class="math" data-tex="\(mR\)">\(mR\)</span>. These bounds prove <span class="math" data-tex="\(d_g(p,q)&gt;0\)">\(d_g(p,q)&gt;0\)</span> when <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>.</p>
+<p>They also compare neighbourhoods at <span class="math" data-tex="\(p\)">\(p\)</span>. Small coordinate balls lie in prescribed distance balls by the upper bound. Conversely a distance ball of radius less than <span class="math" data-tex="\(mR\)">\(mR\)</span> lies inside <span class="math" data-tex="\(B_R\)">\(B_R\)</span>, and its points satisfy the lower bound. The two topologies agree at every point. □</p>
+<p>For a disconnected manifold the construction applies on each component. Distances between different components can be left undefined or taken to be <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>; an ordinary finite metric requires the connected-component convention.</p>
+<h2 id="section-2">2. The derivative selected by a metric</h2>
+<p>For a connection <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span>, <strong>metric compatibility</strong> means</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Xg(Y,Z)&amp;=g(\nabla_XY,Z)\\
+&amp;\quad+g(Y,\nabla_XZ).
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+Xg(Y,Z)&amp;=g(\nabla_XY,Z)\\
+&amp;\quad+g(Y,\nabla_XZ).
+\end{aligned}
+\tag{2.1}
+\]</span>
+<p>Equivalently <span class="math" data-tex="\(\nabla g=0\)">\(\nabla g=0\)</span>, by the tensor derivative rule. It also means that parallel transport preserves the metric. Along a path, differentiate the pairing of two parallel fields; equation (2.1) makes the derivative zero. Conversely choose parallel extensions of arbitrary initial vectors along a path with any specified initial velocity. Constancy of their pairing gives <span class="math" data-tex="\((\nabla_Xg)(Y,Z)=0\)">\((\nabla_Xg)(Y,Z)=0\)</span> at the initial point. This proof works for both positive and indefinite metrics.</p>
+<p>The torsion convention is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T(X,Y)&amp;=\nabla_XY-\nabla_YX\\
+&amp;\quad-[X,Y].
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+T(X,Y)&amp;=\nabla_XY-\nabla_YX\\
+&amp;\quad-[X,Y].
+\end{aligned}
+\tag{2.2}
+\]</span>
+<p>Compatibility alone does not force <span class="math" data-tex="\(T=0\)">\(T=0\)</span>; Exercise 6.2 describes a family of metric connections with torsion.</p>
+<p><strong>Theorem 2.1 (Levi-Civita).</strong> Every smooth pseudo-Riemannian metric has exactly one compatible connection with zero torsion. It is determined by the Koszul formula</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;2g(\nabla_XY,Z)\\
+&amp;=Xg(Y,Z)+Yg(Z,X)\\
+&amp;\quad-Zg(X,Y)-g(X,[Y,Z])\\
+&amp;\quad+g(Y,[Z,X])+g(Z,[X,Y]).
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+&amp;2g(\nabla_XY,Z)\\
+&amp;=Xg(Y,Z)+Yg(Z,X)\\
+&amp;\quad-Zg(X,Y)-g(X,[Y,Z])\\
+&amp;\quad+g(Y,[Z,X])+g(Z,[X,Y]).
+\end{aligned}
+\tag{2.3}
+\]</span>
+<p>In particular the theorem applies to every Riemannian metric.</p>
+<p><strong>Proof.</strong> Denote the right side of (2.3) by <span class="math" data-tex="\(K(X,Y,Z)\)">\(K(X,Y,Z)\)</span>. The bracket rules</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+[X,fY]=f[X,Y]+X(f)Y,\\
+[fX,Y]=f[X,Y]-Y(f)X.
+\end{gathered}
+\]">\[
+\begin{gathered}
+[X,fY]=f[X,Y]+X(f)Y,\\
+[fX,Y]=f[X,Y]-Y(f)X.
+\end{gathered}
+\]</span>
+<p>give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K(fX,Y,Z)&amp;=fK(X,Y,Z),\\
+K(X,fY,Z)&amp;=fK(X,Y,Z)\\
+&amp;\quad+2X(f)g(Y,Z),\\
+K(X,Y,fZ)&amp;=fK(X,Y,Z).
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+K(fX,Y,Z)&amp;=fK(X,Y,Z),\\
+K(X,fY,Z)&amp;=fK(X,Y,Z)\\
+&amp;\quad+2X(f)g(Y,Z),\\
+K(X,Y,fZ)&amp;=fK(X,Y,Z).
+\end{aligned}
+\tag{2.4}
+\]</span>
+<p>Here is the cancellation in each slot. In the first slot, the extra terms from the three derivatives and three brackets are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Y(f)g(Z,X)-Z(f)g(X,Y)\\
++Z(f)g(Y,X)-Y(f)g(Z,X)=0.
+\end{gathered}
+\]">\[
+\begin{gathered}
+Y(f)g(Z,X)-Z(f)g(X,Y)\\
++Z(f)g(Y,X)-Y(f)g(Z,X)=0.
+\end{gathered}
+\]</span>
+<p>In the second slot they are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X(f)g(Y,Z)-Z(f)g(X,Y)\\
++Z(f)g(X,Y)+X(f)g(Z,Y)\\
+=2X(f)g(Y,Z).
+\end{gathered}
+\]">\[
+\begin{gathered}
+X(f)g(Y,Z)-Z(f)g(X,Y)\\
++Z(f)g(X,Y)+X(f)g(Z,Y)\\
+=2X(f)g(Y,Z).
+\end{gathered}
+\]</span>
+<p>In the third slot they are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X(f)g(Y,Z)+Y(f)g(Z,X)\\
+-Y(f)g(X,Z)-X(f)g(Y,Z)=0.
+\end{gathered}
+\]">\[
+\begin{gathered}
+X(f)g(Y,Z)+Y(f)g(Z,X)\\
+-Y(f)g(X,Z)-X(f)g(Y,Z)=0.
+\end{gathered}
+\]</span>
+<p>Additivity and real linearity are immediate from the same definition.</p>
+<p>Thus <span class="math" data-tex="\(Z\mapsto K(X,Y,Z)/2\)">\(Z\mapsto K(X,Y,Z)/2\)</span> is a smooth covector field. Nondegeneracy of <span class="math" data-tex="\(g\)">\(g\)</span> defines one smooth vector field <span class="math" data-tex="\(\nabla_XY\)">\(\nabla_XY\)</span> by (2.3): in coordinates multiply the covector components by <span class="math" data-tex="\(g^{ij}\)">\(g^{ij}\)</span>. The first two identities in (2.4) are precisely linearity over functions in <span class="math" data-tex="\(X\)">\(X\)</span> and the derivative rule in <span class="math" data-tex="\(Y\)">\(Y\)</span>. Hence this operation is a connection.</p>
+<p>Subtracting the definitions with <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> exchanged gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K(X,Y,Z)-K(Y,X,Z)\\
+=2g([X,Y],Z).
+\end{gathered}
+\tag{2.5}
+\]">\[
+\begin{gathered}
+K(X,Y,Z)-K(Y,X,Z)\\
+=2g([X,Y],Z).
+\end{gathered}
+\tag{2.5}
+\]</span>
+<p>The derivative terms cancel in pairs; the two remaining bracket terms are <span class="math" data-tex="\(g(Z,[X,Y])-g(Z,[Y,X])\)">\(g(Z,[X,Y])-g(Z,[Y,X])\)</span>. Equation (2.5) and nondegeneracy prove zero torsion. Adding the definitions with <span class="math" data-tex="\(Y,Z\)">\(Y,Z\)</span> exchanged instead gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K(X,Y,Z)+K(X,Z,Y)\\
+=2Xg(Y,Z).
+\end{gathered}
+\tag{2.6}
+\]">\[
+\begin{gathered}
+K(X,Y,Z)+K(X,Z,Y)\\
+=2Xg(Y,Z).
+\end{gathered}
+\tag{2.6}
+\]</span>
+<p>The other derivative terms cancel, as do all six bracket terms. This is metric compatibility.</p>
+<p>For uniqueness, suppose a connection has both required properties. Write the three compatibility identities for <span class="math" data-tex="\(Xg(Y,Z)\)">\(Xg(Y,Z)\)</span>, <span class="math" data-tex="\(Yg(Z,X)\)">\(Yg(Z,X)\)</span> and <span class="math" data-tex="\(Zg(X,Y)\)">\(Zg(X,Y)\)</span>. Add the first two and subtract the third. Replace <span class="math" data-tex="\(\nabla_YX,\nabla_ZX,\nabla_ZY\)">\(\nabla_YX,\nabla_ZX,\nabla_ZY\)</span> using (2.2) with <span class="math" data-tex="\(T=0\)">\(T=0\)</span>. The terms not involving <span class="math" data-tex="\(\nabla_XY\)">\(\nabla_XY\)</span> cancel, leaving exactly (2.3). Since <span class="math" data-tex="\(g\)">\(g\)</span> is nondegenerate, (2.3) determines <span class="math" data-tex="\(\nabla_XY\)">\(\nabla_XY\)</span> uniquely. □</p>
+<p>This is the <strong>Levi-Civita connection</strong>. Taking coordinate fields in (2.3), whose brackets vanish, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Gamma^k_{ij}
+&amp;=\tfrac12g^{k\ell}\bigl(\partial_i g_{j\ell}\\
+&amp;\quad+\partial_j g_{i\ell}
+-\partial_\ell g_{ij}\bigr).
+\end{aligned}
+\tag{2.7}
+\]">\[
+\begin{aligned}
+\Gamma^k_{ij}
+&amp;=\tfrac12g^{k\ell}\bigl(\partial_i g_{j\ell}\\
+&amp;\quad+\partial_j g_{i\ell}
+-\partial_\ell g_{ij}\bigr).
+\end{aligned}
+\tag{2.7}
+\]</span>
+<p>The lower indices are symmetric. Formula (2.7) works for indefinite metrics as well: only matrix invertibility was required.</p>
+<p>For a positive metric, the orthonormal frames form a smooth principal <span class="math" data-tex="\(\mathrm O(n)\)">\(\mathrm O(n)\)</span>-bundle. Smooth Gram–Schmidt on a local frame constructs its sections: subtract the earlier orthogonal projections and divide by the positive square root of the remaining squared norm. Compatibility makes transport preserve these frames. In an orthonormal frame its potential <span class="math" data-tex="\(A\)">\(A\)</span> satisfies <span class="math" data-tex="\(A^T+A=0\)">\(A^T+A=0\)</span>, obtained by differentiating <span class="math" data-tex="\(g(e_i,e_j)=\delta_{ij}\)">\(g(e_i,e_j)=\delta_{ij}\)</span>. Conversely a skew potential gives (2.1).</p>
+<p>For signature <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span>, the same argument is local with a frame whose Gram matrix is <span class="math" data-tex="\(J=\operatorname{diag}(I_p,-I_q)\)">\(J=\operatorname{diag}(I_p,-I_q)\)</span>. Start with a basis of that signature at the chosen point. Orthogonalize in its fixed order nearby; each nonzero squared norm retains its sign, so division by the square root of its absolute value is smooth. The compatibility condition becomes <span class="math" data-tex="\(A^TJ+JA=0\)">\(A^TJ+JA=0\)</span>. This identifies the corresponding <span class="math" data-tex="\(\mathrm O(p,q)\)">\(\mathrm O(p,q)\)</span>-reduction.</p>
+<p>The normal coordinates of Geodesics, normal coordinates and curvature, Theorem 2.1, now have</p>
+<span class="math math-display" data-tex="\[
+\Gamma^k_{ij}(p)=0.
+\]">\[
+\Gamma^k_{ij}(p)=0.
+\]</span>
+<p>If the initial basis is orthonormal, <span class="math" data-tex="\(g_{ij}(p)=\delta_{ij}\)">\(g_{ij}(p)=\delta_{ij}\)</span>. Compatibility gives</p>
+<span class="math math-display" data-tex="\[
+\partial_k g_{ij}
+=\Gamma^\ell_{ki}g_{\ell j}
++\Gamma^\ell_{kj}g_{i\ell},
+\tag{2.8}
+\]">\[
+\partial_k g_{ij}
+=\Gamma^\ell_{ki}g_{\ell j}
++\Gamma^\ell_{kj}g_{i\ell},
+\tag{2.8}
+\]</span>
+<p>so all first metric derivatives vanish at the centre. This is a pointwise statement; the metric need not be constant nearby.</p>
+<p><strong>Proposition 2.2 (local isometries).</strong> A local isometry between manifolds of the same dimension preserves their Levi-Civita connections, parallel transport and geodesics.</p>
+<p><strong>Proof.</strong> On a neighbourhood where <span class="math" data-tex="\(F:(M,g)\to(N,h)\)">\(F:(M,g)\to(N,h)\)</span> is a diffeomorphism onto an open set, pull back the connection of <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(dF\)">\(dF\)</span>. The derivative rule follows from the chain rule. Because <span class="math" data-tex="\(F^*h=g\)">\(F^*h=g\)</span>, the pulled-back connection is metric; because diffeomorphisms preserve vector-field brackets, its torsion is zero. Uniqueness in Theorem 2.1 therefore gives</p>
+<span class="math math-display" data-tex="\[
+dF(\nabla_XY)=\nabla^h_{dF(X)}dF(Y).
+\tag{2.9}
+\]">\[
+dF(\nabla_XY)=\nabla^h_{dF(X)}dF(Y).
+\tag{2.9}
+\]</span>
+<p>Along a path this equality makes the image of a parallel field parallel, and the image of a geodesic geodesic. Cover a compact path interval by finitely many such neighbourhoods and use uniqueness of parallel transport and of geodesic initial values to glue the statements. Thus <span class="math" data-tex="\(F\)">\(F\)</span> need not be globally injective. Wherever both sides are defined,</p>
+<span class="math math-display" data-tex="\[
+F(\exp_pv)=\exp_{F(p)}(dF_pv).
+\tag{2.10}
+\]">\[
+F(\exp_pv)=\exp_{F(p)}(dF_pv).
+\tag{2.10}
+\]</span>
+<p>□</p>
+<p>The equal-dimension condition matters. An isometric immersion of positive codimension need not carry intrinsic parallel vectors to ambient parallel vectors. For the unit circle in the Euclidean plane, its unit tangent is intrinsically parallel along the circle, but its ambient derivative is the nonzero normal acceleration.</p>
+<h2 id="section-3">3. Radial orthogonality and shortest curves</h2>
+<p>From now on <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> is the Levi-Civita connection of a positive metric, except where another signature is explicitly allowed. Along a geodesic,</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}g(\dot\gamma,\dot\gamma)
+=2g(D_t\dot\gamma,\dot\gamma)=0.
+\tag{3.1}
+\]">\[
+\frac{d}{dt}g(\dot\gamma,\dot\gamma)
+=2g(D_t\dot\gamma,\dot\gamma)=0.
+\tag{3.1}
+\]</span>
+<p>Thus every nonconstant geodesic has a constant positive speed. Its affine parameter can be rescaled to unit speed.</p>
+<p>The <strong>energy</strong> of a path on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is</p>
+<span class="math math-display" data-tex="\[
+E_g(\eta)=\tfrac12\int_0^1|\dot\eta|_g^2\,dt.
+\]">\[
+E_g(\eta)=\tfrac12\int_0^1|\dot\eta|_g^2\,dt.
+\]</span>
+<p>Writing <span class="math" data-tex="\(L=L_g(\eta)\)">\(L=L_g(\eta)\)</span>, direct expansion gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+2E_g(\eta)-L^2
+&amp;=\int_0^1\bigl(|\dot\eta|_g-L\bigr)^2\,dt\\
+&amp;\ge0.
+\end{aligned}
+\tag{3.2}
+\]">\[
+\begin{aligned}
+2E_g(\eta)-L^2
+&amp;=\int_0^1\bigl(|\dot\eta|_g-L\bigr)^2\,dt\\
+&amp;\ge0.
+\end{aligned}
+\tag{3.2}
+\]</span>
+<p>Equality holds precisely when the speed is constant on every smooth piece, with that same value on all pieces. Length disregards the rate of traversal; energy detects it.</p>
+<p><strong>Theorem 3.1 (Gauss lemma).</strong> Write <span class="math" data-tex="\(E=\exp_p\)">\(E=\exp_p\)</span>. Wherever this map is defined, its differential satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_{E(v)}\bigl((dE)_v v,(dE)_v w\bigr)\\
+=g_p(v,w).
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+g_{E(v)}\bigl((dE)_v v,(dE)_v w\bigr)\\
+=g_p(v,w).
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>This identity also holds for a pseudo-Riemannian metric, with its Levi-Civita connection.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(s\)">\(s\)</span> near zero consider the smooth variation</p>
+<span class="math math-display" data-tex="\[
+F(t,s)=\exp_p\bigl(t(v+sw)\bigr),
+\qquad 0\le t\le1.
+\]">\[
+F(t,s)=\exp_p\bigl(t(v+sw)\bigr),
+\qquad 0\le t\le1.
+\]</span>
+<p>It is defined for all these <span class="math" data-tex="\(t\)">\(t\)</span> and sufficiently small <span class="math" data-tex="\(s\)">\(s\)</span>. The geodesic for <span class="math" data-tex="\(v\)">\(v\)</span> exists on a neighbourhood of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, and the smooth initial-value theorem supplies nearby solutions on that compact interval. Put <span class="math" data-tex="\(T=\partial_tF\)">\(T=\partial_tF\)</span>, <span class="math" data-tex="\(S=\partial_sF\)">\(S=\partial_sF\)</span>, as vector fields along the map <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>The connection pulled back along <span class="math" data-tex="\(F\)">\(F\)</span> gives <span class="math" data-tex="\(D_tT=0\)">\(D_tT=0\)</span>. It also gives <span class="math" data-tex="\(D_tS=D_sT\)">\(D_tS=D_sT\)</span>. To verify the latter without requiring <span class="math" data-tex="\(F\)">\(F\)</span> to be an immersion, compute in any target coordinates:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(D_tS)^k
+&amp;=\partial_t\partial_sF^k
++\Gamma^k_{ij}(F)\,\partial_tF^i\,\partial_sF^j,\\
+(D_sT)^k
+&amp;=\partial_s\partial_tF^k
++\Gamma^k_{ij}(F)\,\partial_sF^i\,\partial_tF^j.
+\end{aligned}
+\]">\[
+\begin{aligned}
+(D_tS)^k
+&amp;=\partial_t\partial_sF^k
++\Gamma^k_{ij}(F)\,\partial_tF^i\,\partial_sF^j,\\
+(D_sT)^k
+&amp;=\partial_s\partial_tF^k
++\Gamma^k_{ij}(F)\,\partial_sF^i\,\partial_tF^j.
+\end{aligned}
+\]</span>
+<p>The mixed partials agree, and the coefficients are symmetric in <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. These local identities agree on overlapping charts, so they hold throughout the variation.</p>
+<p>Metric compatibility and constant geodesic speed now give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_t g(T,S)
+&amp;=g(T,D_tS)=g(T,D_sT)\\
+&amp;=\tfrac12\partial_s g(T,T)\\
+&amp;=g_p(v+sw,w).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial_t g(T,S)
+&amp;=g(T,D_tS)=g(T,D_sT)\\
+&amp;=\tfrac12\partial_s g(T,T)\\
+&amp;=g_p(v+sw,w).
+\end{aligned}
+\]</span>
+<p>At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, <span class="math" data-tex="\(F(0,s)=p\)">\(F(0,s)=p\)</span>, hence <span class="math" data-tex="\(S(0,s)=0\)">\(S(0,s)=0\)</span>. Integration therefore gives <span class="math" data-tex="\(g(T,S)=t\,g_p(v+sw,w)\)">\(g(T,S)=t\,g_p(v+sw,w)\)</span>. At <span class="math" data-tex="\((t,s)=(1,0)\)">\((t,s)=(1,0)\)</span>, the two fields are <span class="math" data-tex="\((d\exp_p)_v v\)">\((d\exp_p)_v v\)</span> and <span class="math" data-tex="\((d\exp_p)_v w\)">\((d\exp_p)_v w\)</span>. This proves (3.3). Positivity was never used. □</p>
+<p>In particular a radial geodesic is perpendicular to the images under <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> of spheres in <span class="math" data-tex="\(T_pM\)">\(T_pM\)</span>. The assertion is about one radial factor. It does not say that the whole differential of <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> is an isometry.</p>
+<p>Suppose <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> maps the open metric ball <span class="math" data-tex="\(B_R(0)\subset T_pM\)">\(B_R(0)\subset T_pM\)</span> diffeomorphically onto <span class="math" data-tex="\(U\)">\(U\)</span>. For a lifted curve <span class="math" data-tex="\(v(t)\ne0\)">\(v(t)\ne0\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+r(t)=|v(t)|_{g_p},\qquad u(t)=v(t)/r(t).
+\]">\[
+r(t)=|v(t)|_{g_p},\qquad u(t)=v(t)/r(t).
+\]</span>
+<p>Then <span class="math" data-tex="\(g_p(u,u)=1\)">\(g_p(u,u)=1\)</span> and <span class="math" data-tex="\(g_p(u,u&#x27;)=0\)">\(g_p(u,u&#x27;)=0\)</span>. Since <span class="math" data-tex="\(v&#x27;=r&#x27;u+ru&#x27;\)">\(v&#x27;=r&#x27;u+ru&#x27;\)</span>, Gauss lemma gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\dot\eta|_g^2
+=(r&#x27;)^2+
+\bigl|(d\exp_p)_{ru}(ru&#x27;)\bigr|_g^2,\\
+\eta(t)=\exp_p(v(t)).
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+|\dot\eta|_g^2
+=(r&#x27;)^2+
+\bigl|(d\exp_p)_{ru}(ru&#x27;)\bigr|_g^2,\\
+\eta(t)=\exp_p(v(t)).
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>The radial factor has unit length. Thus angular motion can only increase the speed beyond its radial component.</p>
+<p><strong>Theorem 3.2 (a normal ball minimizes in the manifold).</strong> With this normal ball, for every <span class="math" data-tex="\(q=\exp_pv\in U\)">\(q=\exp_pv\in U\)</span>,</p>
+<span class="math math-display" data-tex="\[
+d_g(p,q)=|v|_{g_p}.
+\tag{3.5}
+\]">\[
+d_g(p,q)=|v|_{g_p}.
+\tag{3.5}
+\]</span>
+<p>The radial geodesic is the unique minimizing geodesic on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span>. More generally, every piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> path of that length traces this radial segment monotonically, with pauses allowed. Also</p>
+<span class="math math-display" data-tex="\[
+U=\{q\in M:d_g(p,q)&lt;R\}.
+\tag{3.6}
+\]">\[
+U=\{q\in M:d_g(p,q)&lt;R\}.
+\tag{3.6}
+\]</span>
+<p>All distances are taken in the connected component of <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Proof.</strong> First let a competing path <span class="math" data-tex="\(\eta:[a,b]\to U\)">\(\eta:[a,b]\to U\)</span> start at <span class="math" data-tex="\(p\)">\(p\)</span>. Its lift <span class="math" data-tex="\(v=\exp_p^{-1}\eta\)">\(v=\exp_p^{-1}\eta\)</span> is piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span>. The radius <span class="math" data-tex="\(r=|v|\)">\(r=|v|\)</span> need not be differentiable when <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. To handle every return to the centre, use instead the smooth function of <span class="math" data-tex="\(v\)">\(v\)</span></p>
+<span class="math math-display" data-tex="\[
+r_\varepsilon(t)=\sqrt{|v(t)|_{g_p}^2+\varepsilon^2}.
+\]">\[
+r_\varepsilon(t)=\sqrt{|v(t)|_{g_p}^2+\varepsilon^2}.
+\]</span>
+<p>Where <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, equation (3.4) implies</p>
+<span class="math math-display" data-tex="\[
+|r_\varepsilon&#x27;|
+=\frac{r}{r_\varepsilon}|r&#x27;|
+\le|\dot\eta|_g.
+\tag{3.7}
+\]">\[
+|r_\varepsilon&#x27;|
+=\frac{r}{r_\varepsilon}|r&#x27;|
+\le|\dot\eta|_g.
+\tag{3.7}
+\]</span>
+<p>At <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, direct differentiation gives <span class="math" data-tex="\(r_\varepsilon&#x27;=0\)">\(r_\varepsilon&#x27;=0\)</span>, so the same inequality holds. Integrate it over the finitely many smooth pieces. Their endpoint terms telescope. Letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+L_g(\eta)\ge r(b)-r(a)=|v(b)|_{g_p}.
+\tag{3.8}
+\]">\[
+L_g(\eta)\ge r(b)-r(a)=|v(b)|_{g_p}.
+\tag{3.8}
+\]</span>
+<p>No differentiability assumption on <span class="math" data-tex="\(r\)">\(r\)</span> at its zero set is required. The radial geodesic has exactly this length, by its constant speed.</p>
+<p>For equality, consider an open interval on a smooth piece where <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. If <span class="math" data-tex="\(r&#x27;&lt;0\)">\(r&#x27;&lt;0\)</span>, or if the angular term in (3.4) is nonzero at some interior point, continuity gives a smaller interval on which <span class="math" data-tex="\(|\dot\eta|_g-r&#x27;\)">\(|\dot\eta|_g-r&#x27;\)</span> is strictly positive. On that interval <span class="math" data-tex="\(r_\varepsilon&#x27;\to r&#x27;\)">\(r_\varepsilon&#x27;\to r&#x27;\)</span> uniformly. Everywhere else <span class="math" data-tex="\(|\dot\eta|_g-r_\varepsilon&#x27;\ge0\)">\(|\dot\eta|_g-r_\varepsilon&#x27;\ge0\)</span>. Integrating and taking the limit would make (3.8) strict. Therefore equality forces <span class="math" data-tex="\(r&#x27;\ge0\)">\(r&#x27;\ge0\)</span> and <span class="math" data-tex="\(u&#x27;=0\)">\(u&#x27;=0\)</span> wherever <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>; injectivity of <span class="math" data-tex="\(d\exp_p\)">\(d\exp_p\)</span> was used for the second conclusion.</p>
+<p>On each connected component of <span class="math" data-tex="\(\{r&gt;0\}\)">\(\{r&gt;0\}\)</span>, continuity across the finitely many parameter breaks makes <span class="math" data-tex="\(u\)">\(u\)</span> constant and <span class="math" data-tex="\(r\)">\(r\)</span> nondecreasing. Such a component cannot end before <span class="math" data-tex="\(b\)">\(b\)</span>: its positive nondecreasing radius could not tend to zero at that endpoint. If <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>, there is consequently one terminal positive component, with the constant direction of <span class="math" data-tex="\(v(b)\)">\(v(b)\)</span>, and the path is at <span class="math" data-tex="\(p\)">\(p\)</span> before it. Its radius is nondecreasing. This proves the stated rigidity. If <span class="math" data-tex="\(q=p\)">\(q=p\)</span>, length zero makes every smooth-piece velocity zero, so the path is constant. Conversely monotone radial traversal, with pauses, has length <span class="math" data-tex="\(r(b)\)">\(r(b)\)</span>.</p>
+<p>We must still compare with paths that leave <span class="math" data-tex="\(U\)">\(U\)</span>. For <span class="math" data-tex="\(r(q)&lt;\rho&lt;R\)">\(r(q)&lt;\rho&lt;R\)</span>, the image of the closed tangent ball <span class="math" data-tex="\(\overline B_\rho\)">\(\overline B_\rho\)</span> is compact and lies inside <span class="math" data-tex="\(U\)">\(U\)</span>. Its boundary in <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(\exp_p(S_\rho)\)">\(\exp_p(S_\rho)\)</span>, because <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> is a homeomorphism there and the compact image is closed in <span class="math" data-tex="\(M\)">\(M\)</span>. A path from <span class="math" data-tex="\(p\)">\(p\)</span> that leaves <span class="math" data-tex="\(U\)">\(U\)</span> first crosses this boundary. Its initial portion, including that boundary point, lies in <span class="math" data-tex="\(U\)">\(U\)</span>, and (3.8) gives length at least <span class="math" data-tex="\(\rho&gt;r(q)\)">\(\rho&gt;r(q)\)</span>. Such a path cannot shorten the radial segment or tie its length. This proves (3.5) against every path in the manifold.</p>
+<p>Among constant-speed minimizing paths on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, the rigidity just proved forces the unique parametrization <span class="math" data-tex="\(t\mapsto\exp_p(tv)\)">\(t\mapsto\exp_p(tv)\)</span>. In particular this is the unique minimizing geodesic.</p>
+<p>Every <span class="math" data-tex="\(q\in U\)">\(q\in U\)</span> has distance less than <span class="math" data-tex="\(R\)">\(R\)</span>. If <span class="math" data-tex="\(q\notin U\)">\(q\notin U\)</span>, each path from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span> crosses <span class="math" data-tex="\(\exp_p(S_\rho)\)">\(\exp_p(S_\rho)\)</span> for every <span class="math" data-tex="\(\rho&lt;R\)">\(\rho&lt;R\)</span>, and hence has length at least <span class="math" data-tex="\(R\)">\(R\)</span>. This proves (3.6). □</p>
+<p>It follows that every geodesic minimizes on sufficiently short subintervals: centre a normal ball at a point on it and take a short enough initial tangent vector. No completeness hypothesis is needed.</p>
+<h3 id="the-same-geometry-in-parallel-frames">The same geometry in parallel frames</h3>
+<p>Choose an orthonormal frame <span class="math" data-tex="\(e_0\)">\(e_0\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span> and transport it along each radial geodesic. This gives a smooth orthonormal frame <span class="math" data-tex="\(e(x)\)">\(e(x)\)</span> on the normal ball. Smoothness at the centre follows from the smooth transport equation for the family <span class="math" data-tex="\(t\mapsto\exp_p(tx)\)">\(t\mapsto\exp_p(tx)\)</span>.</p>
+<p>Identify the tangent normal coordinates with <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, and write <span class="math" data-tex="\(\zeta(X)=e^{-1}X\)">\(\zeta(X)=e^{-1}X\)</span> for the dual coframe and <span class="math" data-tex="\(A\)">\(A\)</span> for the frame potential. Thus <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is the solder form pulled back by the frame section. For the radial field <span class="math" data-tex="\(\mathcal R=x^i\partial_i\)">\(\mathcal R=x^i\partial_i\)</span>,</p>
+<span class="math math-display" data-tex="\[
+A(\mathcal R)=0,\qquad \zeta(\mathcal R)=x.
+\tag{3.9}
+\]">\[
+A(\mathcal R)=0,\qquad \zeta(\mathcal R)=x.
+\tag{3.9}
+\]</span>
+<p>The first identity holds because the frame is radially parallel; the second because radial velocity has the initial-vector components <span class="math" data-tex="\(x\)">\(x\)</span> in that frame. Letting <span class="math" data-tex="\(x=\varepsilon a\)">\(x=\varepsilon a\)</span> tend to zero in the first identity gives <span class="math" data-tex="\(A_0(a)=0\)">\(A_0(a)=0\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>, so the potential vanishes at the centre.</p>
+<p>Away from the centre put <span class="math" data-tex="\(x=ru\)">\(x=ru\)</span>, <span class="math" data-tex="\(|u|=1\)">\(|u|=1\)</span>. Pull forms back to <span class="math" data-tex="\((0,R)\times S^{n-1}\)">\((0,R)\times S^{n-1}\)</span>, and decompose</p>
+<span class="math math-display" data-tex="\[
+\zeta=u\,dr+\phi,\qquad A(\partial_r)=0.
+\tag{3.10}
+\]">\[
+\zeta=u\,dr+\phi,\qquad A(\partial_r)=0.
+\tag{3.10}
+\]</span>
+<p>Here <span class="math" data-tex="\(\phi\)">\(\phi\)</span> has only angular components. Gauss lemma says <span class="math" data-tex="\(u^T\phi=0\)">\(u^T\phi=0\)</span>. Orthonormality of the frame consequently expresses the metric as</p>
+<span class="math math-display" data-tex="\[
+g=dr^2+\sum_i\phi^i\otimes\phi^i.
+\tag{3.11}
+\]">\[
+g=dr^2+\sum_i\phi^i\otimes\phi^i.
+\tag{3.11}
+\]</span>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> there are two radial directions and no angular term.</p>
+<p>The structure equations give more information without making the radial frame a coordinate frame. With <span class="math" data-tex="\(F=dA+A\wedge A\)">\(F=dA+A\wedge A\)</span>, zero torsion gives <span class="math" data-tex="\(d\zeta=-A\wedge\zeta\)">\(d\zeta=-A\wedge\zeta\)</span>. Evaluating these equations on <span class="math" data-tex="\(\partial_r\)">\(\partial_r\)</span> and any angular coordinate field <span class="math" data-tex="\(W\)">\(W\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_r\phi(W)&amp;=du(W)+A(W)u,\\
+\partial_r A(W)&amp;=F(\partial_r,W).
+\end{aligned}
+\tag{3.12}
+\]">\[
+\begin{aligned}
+\partial_r\phi(W)&amp;=du(W)+A(W)u,\\
+\partial_r A(W)&amp;=F(\partial_r,W).
+\end{aligned}
+\tag{3.12}
+\]</span>
+<p>Indeed, differentiate <span class="math" data-tex="\(\zeta(W)=\phi(W)\)">\(\zeta(W)=\phi(W)\)</span>, use <span class="math" data-tex="\(\zeta(\partial_r)=u\)">\(\zeta(\partial_r)=u\)</span>, and note that <span class="math" data-tex="\([\partial_r,W]=0\)">\([\partial_r,W]=0\)</span>. In the second equation <span class="math" data-tex="\(A(\partial_r)=0\)">\(A(\partial_r)=0\)</span> removes both the angular derivative and the product terms. Both <span class="math" data-tex="\(\phi(W)\)">\(\phi(W)\)</span> and <span class="math" data-tex="\(A(W)\)">\(A(W)\)</span> tend to zero at <span class="math" data-tex="\(r=0\)">\(r=0\)</span>: the angular vector in Cartesian coordinates is <span class="math" data-tex="\(r\,du(W)\)">\(r\,du(W)\)</span>, and all Cartesian coefficients are smooth. Thus (3.12) records how angular lengths and the frame connection evolve outward from the centre. Its curvature term is</p>
+<span class="math math-display" data-tex="\[
+F(\partial_r,W)
+=e^{-1}R(eu,e\phi(W))e,
+\]">\[
+F(\partial_r,W)
+=e^{-1}R(eu,e\phi(W))e,
+\]</span>
+<p>by the tensor/frame correspondence of the preceding lesson.</p>
+<h2 id="section-4">4. Every pair in a small neighbourhood</h2>
+<p>An open set is <strong>strongly convex</strong> here if each ordered pair of its points has a unique minimizing geodesic in the whole manifold and that segment lies in the set. Uniqueness refers to the affine parametrization on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>; length-minimizing paths can insert pauses.</p>
+<p><strong>Theorem 4.1 (strongly convex normal neighbourhoods).</strong> Every point of a Riemannian manifold has arbitrarily small strongly convex neighbourhoods <span class="math" data-tex="\(V\)">\(V\)</span>. Their joining geodesics depend smoothly on the two endpoints. For each <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span>, <span class="math" data-tex="\(\exp_x\)">\(\exp_x\)</span> maps an open star-shaped neighbourhood of zero diffeomorphically onto <span class="math" data-tex="\(V\)">\(V\)</span>. On <span class="math" data-tex="\(V\times V\)">\(V\times V\)</span>, the squared distance <span class="math" data-tex="\(d_g(x,y)^2\)">\(d_g(x,y)^2\)</span> is smooth, including at the diagonal.</p>
+<p><strong>Proof.</strong> Work near <span class="math" data-tex="\(p\)">\(p\)</span> in coordinates, and use the pair map</p>
+<span class="math math-display" data-tex="\[
+\Phi(x,v)=(x,\exp_xv)
+\]">\[
+\Phi(x,v)=(x,\exp_xv)
+\]</span>
+<p>from the complete affine-convexity proof in Geodesics, normal coordinates and curvature, Theorem 2.2. Its differential at <span class="math" data-tex="\((p,0)\)">\((p,0)\)</span> is invertible. Choose an inverse-function domain <span class="math" data-tex="\(O\)">\(O\)</span> containing a product</p>
+<span class="math math-display" data-tex="\[
+\{|x|&lt;a,\ |v|&lt;b\}.
+\tag{4.1}
+\]">\[
+\{|x|&lt;a,\ |v|&lt;b\}.
+\tag{4.1}
+\]</span>
+<p>Shrink <span class="math" data-tex="\(a\)">\(a\)</span> so that the metric comparison <span class="math" data-tex="\(|v|_{g_x}\ge m|v|\)">\(|v|_{g_x}\ge m|v|\)</span>, for some <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, holds uniformly for these base points. Choose <span class="math" data-tex="\(0&lt;\rho&lt;mb\)">\(0&lt;\rho&lt;mb\)</span>. For every such <span class="math" data-tex="\(x\)">\(x\)</span>, the tangent metric ball <span class="math" data-tex="\(\{|v|_{g_x}&lt;\rho\}\)">\(\{|v|_{g_x}&lt;\rho\}\)</span> lies in its fibre of <span class="math" data-tex="\(O\)">\(O\)</span>.</p>
+<p>On this ball <span class="math" data-tex="\(\exp_x\)">\(\exp_x\)</span> is injective. Its differential in <span class="math" data-tex="\(v\)">\(v\)</span> is invertible too: the differential of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> has identity in its first diagonal block and <span class="math" data-tex="\(d_v\exp_x\)">\(d_v\exp_x\)</span> in its second. Thus it maps this ball diffeomorphically onto an open normal ball. Theorem 3.2 applies in the whole manifold with the same radius <span class="math" data-tex="\(\rho\)">\(\rho\)</span> for all these <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>Now use the affine-convexity construction with this same pair map. Its endpoint inverse <span class="math" data-tex="\(v(x,y)\)">\(v(x,y)\)</span> is smooth and satisfies <span class="math" data-tex="\(v(p,p)=0\)">\(v(p,p)=0\)</span>. Shrink its endpoint neighbourhood until</p>
+<span class="math math-display" data-tex="\[
+|v(x,y)|_{g_x}&lt;\rho.
+\tag{4.2}
+\]">\[
+|v(x,y)|_{g_x}&lt;\rho.
+\tag{4.2}
+\]</span>
+<p>That construction then chooses an arbitrarily small <span class="math" data-tex="\(V\)">\(V\)</span> inside the base box, with every pair in this endpoint neighbourhood. It proves that the segment launched with <span class="math" data-tex="\(v(x,y)\)">\(v(x,y)\)</span> stays in <span class="math" data-tex="\(V\)">\(V\)</span>, is unique among geodesics staying there, and gives the asserted star-shaped exponential domains. Its velocity bound excludes competing confined segments with large initial velocity; none are silently discarded here.</p>
+<p>By (4.2), this segment is also the radial segment of the normal ball centred at <span class="math" data-tex="\(x\)">\(x\)</span>. Theorem 3.2 proves that it is the unique minimizing geodesic among all curves in <span class="math" data-tex="\(M\)">\(M\)</span>, including curves leaving <span class="math" data-tex="\(V\)">\(V\)</span>. Thus <span class="math" data-tex="\(V\)">\(V\)</span> is strongly convex. Smooth dependence comes from</p>
+<span class="math math-display" data-tex="\[
+\gamma_{x,y}(t)=\exp_x\bigl(t\,v(x,y)\bigr).
+\]">\[
+\gamma_{x,y}(t)=\exp_x\bigl(t\,v(x,y)\bigr).
+\]</span>
+<p>Its constant speed gives</p>
+<span class="math math-display" data-tex="\[
+d_g(x,y)^2=g_x(v(x,y),v(x,y)).
+\tag{4.3}
+\]">\[
+d_g(x,y)^2=g_x(v(x,y),v(x,y)).
+\tag{4.3}
+\]</span>
+<p>Both the metric and endpoint inverse are smooth, so this expression is smooth even where <span class="math" data-tex="\(x=y\)">\(x=y\)</span>. This proves all assertions. □</p>
+<p>The distance itself is smooth off the diagonal in this neighbourhood, since it is the positive square root of (4.3). In positive dimension it is not generally differentiable at the diagonal: along a radial line from <span class="math" data-tex="\(p\)">\(p\)</span>, Theorem 3.2 gives <span class="math" data-tex="\(d_g(p,\exp_p(tv))=|t|\,|v|_{g_p}\)">\(d_g(p,\exp_p(tv))=|t|\,|v|_{g_p}\)</span>. Squaring removes that corner.</p>
+<p>Nothing in this theorem says that an arbitrary large normal ball is strongly convex for all pairs. On the sphere a normal ball can have radius nearly <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, whereas the strong convexity radius is only <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span>.</p>
+</article></main><footer>Reading support. Authorship and component terms are stated in this lesson; its source is retained unchanged. <a href="../../assets/mathjax/LICENSE">MathJax licence</a> · <a href="../../assets/mathjax/FONT-LICENSES.txt">Font licences</a> Exact sections1–4, including complete Levi–Civita, Gauss, normal-ball and strong-convexity proofs; later examples/exercises outside this support excerpt.</footer></body></html>

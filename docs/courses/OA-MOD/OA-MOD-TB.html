@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finite trace domains, central parts and amplification · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-TB.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 66 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="finite-trace-domains-central-parts-and-amplification">Finite trace domains, central parts and amplification</h1>
+
+<p>For a general weight, finite values and zero values are controlled by different projections, neither of which need be central. The trace identity changes this geometry: the finite domain becomes a two-sided ideal, both projections become central, and ordered finite approximations become available. These facts let us add traces on disjoint central pieces and amplify a trace by an arbitrary type I factor.</p>
+<p>The source correspondence is Masamichi Takesaki, <em>Theory of Operator Algebras I</em>, V.2: Definition 2.1; Proposition 2.10, Definition 2.11 and Lemmas 2.12–2.13; Proposition 2.14; Lemma 2.16, its following remark and Definition 2.17. These are PDF pages 317 and 323–327 in the approved edition. The present organization starts with the finite-domain algebra, constructs the two central parts, and then uses ordered cutoffs for amplification. Every invoked weight result has an exact earlier proof below. Existing programme trace proofs retain their ownership; this direct route supplements their uses in the course.</p>
+<h2 id="trace-axioms-and-the-two-finite-ideals"><span id="oa-mod-tb-01"></span><span id="OA-MOD-TB-01"></span>Trace axioms and the two finite ideals</h2>
+<p>Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> be a unital von Neumann algebra. No countability hypothesis is imposed. A <strong>trace</strong> is a weight <span class="math" data-tex="\(\tau:M_+\to[0,\infty]\)">\(\tau:M_+\to[0,\infty]\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\tau(x^*x)=\tau(xx^*)\quad(x\in M).
+\]">\[
+\tau(x^*x)=\tau(xx^*)\quad(x\in M).
+\]</span>
+<p>Thus it is additive on positive elements and nonnegatively homogeneous, with <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span> and <span class="math" data-tex="\(\tau(0)=0\)">\(\tau(0)=0\)</span>. These are the weight conventions of <a href="OA-MOD-WG.html#oa-mod-wg-002">WG002</a>. A trace is <strong>faithful</strong> if its only positive zero is zero, <strong>finite</strong> if <span class="math" data-tex="\(\tau(1)&lt;\infty\)">\(\tau(1)&lt;\infty\)</span>, and <strong>normal</strong> if it preserves the supremum of every bounded increasing positive net. We use the course definition of <strong>semifinite</strong>, namely ultraweak density of its finite definition algebra. TB02 proves its equivalence, specifically for traces, to the condition that every nonzero positive element dominates a nonzero positive element of finite trace.</p>
+<p>We keep three domains distinct:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F_\tau=\{a\in M_+:\tau(a)&lt;\infty\},\\
+\mathfrak n_\tau=\{x\in M:\tau(x^*x)&lt;\infty\},\\
+\mathfrak m_\tau=\operatorname{span}_{\mathbb C}
+(\mathfrak n_\tau^*\mathfrak n_\tau).
+\end{gathered}
+\]">\[
+\begin{gathered}
+F_\tau=\{a\in M_+:\tau(a)&lt;\infty\},\\
+\mathfrak n_\tau=\{x\in M:\tau(x^*x)&lt;\infty\},\\
+\mathfrak m_\tau=\operatorname{span}_{\mathbb C}
+(\mathfrak n_\tau^*\mathfrak n_\tau).
+\end{gathered}
+\]</span>
+<p>WG003 proves that <span class="math" data-tex="\(F_\tau\)">\(F_\tau\)</span> is hereditary, <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span> is a left ideal, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathfrak m_\tau=\operatorname{span}_{\mathbb C}F_\tau,\\
+(\mathfrak m_\tau)_+=F_\tau.
+\end{gathered}
+\tag{TB.1}
+\]">\[
+\begin{gathered}
+\mathfrak m_\tau=\operatorname{span}_{\mathbb C}F_\tau,\\
+(\mathfrak m_\tau)_+=F_\tau.
+\end{gathered}
+\tag{TB.1}
+\]</span>
+<p>For a trace there is more. Its defining equality makes <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span> invariant under adjoints; a self-adjoint left ideal is two-sided, since <span class="math" data-tex="\(xb=(b^*x^*)^*\)">\(xb=(b^*x^*)^*\)</span>. Thus <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span> and its product span <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span> are self-adjoint two-sided ideals. They need not be closed.</p>
+<p>By <a href="OA-MOD-WG.html#oa-mod-wg-004">WG004</a>, there is a unique positive complex-linear extension <span class="math" data-tex="\(\widetilde\tau:\mathfrak m_\tau\to\mathbb C\)">\(\widetilde\tau:\mathfrak m_\tau\to\mathbb C\)</span>. It satisfies <span class="math" data-tex="\(\widetilde\tau(a^*)=\overline{\widetilde\tau(a)}\)">\(\widetilde\tau(a^*)=\overline{\widetilde\tau(a)}\)</span>. The proof defines it first on differences of finite positive elements, verifies independence by an equality involving only finite numbers, and then complexifies. In particular, no subtraction of infinite trace values occurs.</p>
+<p>Polarizing the equality <span class="math" data-tex="\(\widetilde\tau(w^*w)=\widetilde\tau(ww^*)\)">\(\widetilde\tau(w^*w)=\widetilde\tau(ww^*)\)</span> on the complex vector space <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span> gives
+<span class="math" data-tex="\(\widetilde\tau(y^*x)=\widetilde\tau(xy^*)\)">\(\widetilde\tau(y^*x)=\widetilde\tau(xy^*)\)</span>. To see exactly what polarization uses, substitute <span class="math" data-tex="\(w=x+y\)">\(w=x+y\)</span> and <span class="math" data-tex="\(w=x+iy\)">\(w=x+iy\)</span>, expand by linearity, and use the Hermitian identity to identify respectively the real and imaginary parts of the cross terms. Replacing <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(y^*\)">\(y^*\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widetilde\tau(xy)=\widetilde\tau(yx)\\
+(x,y\in\mathfrak n_\tau).
+\end{gathered}
+\tag{TB.2}
+\]">\[
+\begin{gathered}
+\widetilde\tau(xy)=\widetilde\tau(yx)\\
+(x,y\in\mathfrak n_\tau).
+\end{gathered}
+\tag{TB.2}
+\]</span>
+<p>For <span class="math" data-tex="\(b\in M\)">\(b\in M\)</span>, <span class="math" data-tex="\(x,y\in\mathfrak n_\tau\)">\(x,y\in\mathfrak n_\tau\)</span>, both <span class="math" data-tex="\(bx\)">\(bx\)</span> and <span class="math" data-tex="\(yb\)">\(yb\)</span> lie in <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span>. Applying (TB.2) twice gives
+<span class="math" data-tex="\(\widetilde\tau((bx)y)=\widetilde\tau(y(bx))=\widetilde\tau(x(yb))\)">\(\widetilde\tau((bx)y)=\widetilde\tau(y(bx))=\widetilde\tau(x(yb))\)</span>.
+Products <span class="math" data-tex="\(xy\)">\(xy\)</span> span <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widetilde\tau(ba)=\widetilde\tau(ab)\\
+(a\in\mathfrak m_\tau,\ b\in M).
+\end{gathered}
+\tag{TB.3}
+\]">\[
+\begin{gathered}
+\widetilde\tau(ba)=\widetilde\tau(ab)\\
+(a\in\mathfrak m_\tau,\ b\in M).
+\end{gathered}
+\tag{TB.3}
+\]</span>
+<p>These finite-valued identities require the stated domains.</p>
+<p>The bounded polar decomposition of <a href="OA-MOD-BK.html#oa-mod-bk-07">BK07</a> also shows that, for either of these two-sided ideals, <span class="math" data-tex="\(x\)">\(x\)</span> belongs to the ideal if and only if <span class="math" data-tex="\(|x|\)">\(|x|\)</span> does: use <span class="math" data-tex="\(x=v|x|\)">\(x=v|x|\)</span> and <span class="math" data-tex="\(|x|=v^*x\)">\(|x|=v^*x\)</span>. If <span class="math" data-tex="\(a\in\mathfrak m_\tau\)">\(a\in\mathfrak m_\tau\)</span>, then <span class="math" data-tex="\(|a|\in F_\tau\)">\(|a|\in F_\tau\)</span> by (TB.1). Both <span class="math" data-tex="\(|a|^{1/2}\)">\(|a|^{1/2}\)</span> and <span class="math" data-tex="\(v|a|^{1/2}\)">\(v|a|^{1/2}\)</span> lie in <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span>. Consequently every member of <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span> is a <strong>single</strong> product of two members of <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span>, not merely a finite sum of such products. We call <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span> the definition ideal.</p>
+<p>If <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is finite, then every positive element has finite trace because <span class="math" data-tex="\(a\leq\|a\|1\)">\(a\leq\|a\|1\)</span>; hence <span class="math" data-tex="\(\mathfrak m_\tau=M\)">\(\mathfrak m_\tau=M\)</span>. The extension is bounded, with norm <span class="math" data-tex="\(\tau(1)\)">\(\tau(1)\)</span>: the Cauchy–Schwarz inequality <a href="OA-MOD-WG.html#oa-mod-wg-005">WG005</a> gives
+<span class="math" data-tex="\(|\widetilde\tau(x)|^2\leq\tau(x^*x)\tau(1)\leq\|x\|^2\tau(1)^2\)">\(|\widetilde\tau(x)|^2\leq\tau(x^*x)\tau(1)\leq\|x\|^2\tau(1)^2\)</span>, and evaluation at the identity gives equality of norms when <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span>. The zero algebra has the same conclusion with norm zero. No normality assumption was used here.</p>
+<p>Finally, every trace is invariant under unitary conjugation. For <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> and a unitary <span class="math" data-tex="\(u\)">\(u\)</span>, apply the trace identity to <span class="math" data-tex="\(ua^{1/2}\)">\(ua^{1/2}\)</span>; its two squared products are <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(uau^*\)">\(uau^*\)</span>. This argument includes infinite values.</p>
+<h2 id="where-finite-approximation-is-possible">Where finite approximation is possible</h2>
+<p>For any trace, even before assuming normality, <a href="OA-MOD-WS.html#oa-mod-ws-02">WS02</a> constructs a projection <span class="math" data-tex="\(e\in M\)">\(e\in M\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\overline{\mathfrak n_\tau}^{\mathrm{uw}}=Me,\\
+\overline{\mathfrak m_\tau}^{\mathrm{uw}}=eMe.
+\end{gathered}
+\tag{TB.4}
+\]">\[
+\begin{gathered}
+\overline{\mathfrak n_\tau}^{\mathrm{uw}}=Me,\\
+\overline{\mathfrak m_\tau}^{\mathrm{uw}}=eMe.
+\end{gathered}
+\tag{TB.4}
+\]</span>
+<p>Here “uw” denotes the ultraweak topology. The same closure equalities hold strongly and sigma-strongly. That proof gives the increasing finite positive contractions</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_a=a(1+a)^{-1},\\
+a\in F_\tau,\qquad u_a\uparrow e,
+\end{gathered}
+\tag{TB.5}
+\]">\[
+\begin{gathered}
+u_a=a(1+a)^{-1},\\
+a\in F_\tau,\qquad u_a\uparrow e,
+\end{gathered}
+\tag{TB.5}
+\]</span>
+<p>where <span class="math" data-tex="\(F_\tau\)">\(F_\tau\)</span> is directed by positive order. It also identifies <span class="math" data-tex="\(eH\)">\(eH\)</span> as the closed span of the ranges of all finite positive elements. The fact that these contractions increase follows from inverse order; their strong limit is the projection onto that span, as proved there.</p>
+<p>Unitary conjugation permutes <span class="math" data-tex="\(F_\tau\)">\(F_\tau\)</span>, so it preserves this closed span. Hence <span class="math" data-tex="\(ueu^*=e\)">\(ueu^*=e\)</span> for every unitary <span class="math" data-tex="\(u\in M\)">\(u\in M\)</span>. By <a href="OA-MOD-BK.html#oa-mod-bk-08">BK08</a>, unitaries span <span class="math" data-tex="\(M\)">\(M\)</span>. Thus <span class="math" data-tex="\(e\in Z(M)\)">\(e\in Z(M)\)</span>, and <span class="math" data-tex="\(eMe=Me\)">\(eMe=Me\)</span>. This is the additional centrality supplied by the trace identity.</p>
+<p>Let <span class="math" data-tex="\(x\in(Me)_+\)">\(x\in(Me)_+\)</span>. The ordered approximants</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+y_a=x^{1/2}u_ax^{1/2},\\
+0\leq y_a\uparrow x
+\end{gathered}
+\tag{TB.6}
+\]">\[
+\begin{gathered}
+y_a=x^{1/2}u_ax^{1/2},\\
+0\leq y_a\uparrow x
+\end{gathered}
+\tag{TB.6}
+\]</span>
+<p>have finite trace. Indeed, applying the trace identity to <span class="math" data-tex="\(u_a^{1/2}x^{1/2}\)">\(u_a^{1/2}x^{1/2}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau(y_a)=\tau(u_a^{1/2}xu_a^{1/2})\\
+\leq\|x\|\tau(u_a)&lt;\infty.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\tau(y_a)=\tau(u_a^{1/2}xu_a^{1/2})\\
+\leq\|x\|\tau(u_a)&lt;\infty.
+\end{gathered}
+\]</span>
+<p>Thus every nonzero positive <span class="math" data-tex="\(x\)">\(x\)</span> in this central corner dominates a nonzero finite positive element: otherwise all <span class="math" data-tex="\(y_a\)">\(y_a\)</span> would be zero, contradicting their strong limit <span class="math" data-tex="\(x\)">\(x\)</span>. Conversely, a finite positive element belongs to <span class="math" data-tex="\(eMe\)">\(eMe\)</span> by WS02. Therefore <span class="math" data-tex="\(M(1-e)\)">\(M(1-e)\)</span> contains no nonzero finite positive element.</p>
+<p>This proves the equivalence between the course's density definition of semifiniteness and the order condition used for traces in Definition V.2.1: both say precisely <span class="math" data-tex="\(e=1\)">\(e=1\)</span>. More strongly, the restriction to <span class="math" data-tex="\(Me\)">\(Me\)</span> is semifinite, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x\in(M(1-e))_+,\\ x\ne0\\
+\Longrightarrow\tau(x)=\infty.
+\end{gathered}
+\tag{TB.7}
+\]">\[
+\begin{gathered}
+x\in(M(1-e))_+,\\ x\ne0\\
+\Longrightarrow\tau(x)=\infty.
+\end{gathered}
+\tag{TB.7}
+\]</span>
+<p>The restriction is a trace because <span class="math" data-tex="\(e\)">\(e\)</span> is central. If <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is normal, both central restrictions are normal, and (TB.6) further gives <span class="math" data-tex="\(\tau(x)=\sup_a\tau(y_a)\)">\(\tau(x)=\sup_a\tau(y_a)\)</span>. Without normality we have only the stated order and strong-convergence assertions, not that equality of values.</p>
+<p>The projection <span class="math" data-tex="\(e\)">\(e\)</span> is unique with these properties. If a central <span class="math" data-tex="\(z\)">\(z\)</span> also has a semifinite restriction and no nonzero finite positive element on its complement, every <span class="math" data-tex="\(a\in F_\tau\)">\(a\in F_\tau\)</span> has <span class="math" data-tex="\((1-z)a=0\)">\((1-z)a=0\)</span>, since that positive component has trace at most <span class="math" data-tex="\(\tau(a)\)">\(\tau(a)\)</span>. The range characterization gives <span class="math" data-tex="\(e\leq z\)">\(e\leq z\)</span>. If <span class="math" data-tex="\(z-e\ne0\)">\(z-e\ne0\)</span>, semifiniteness on <span class="math" data-tex="\(Mz\)">\(Mz\)</span> supplies a nonzero finite positive element below <span class="math" data-tex="\(z-e\)">\(z-e\)</span>, contradicting (TB.7). Thus <span class="math" data-tex="\(z=e\)">\(z=e\)</span>.</p>
+<p>This proof yields the normal-trace decomposition of Lemma V.2.13, and also shows which assertions hold without normality. It does not impose the order condition on general weights: <a href="OA-MOD-WG.html#oa-mod-wg-013">WG013</a> gives a normal semifinite weight for which that condition fails.</p>
+<h2 id="null-support-is-a-different-central-projection"><span id="oa-mod-tb-03"></span><span id="OA-MOD-TB-03"></span>Null support is a different central projection</h2>
+<p>Now suppose <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is normal. By <a href="OA-MOD-WS.html#oa-mod-ws-04">WS04</a>, there is a largest projection <span class="math" data-tex="\(q\)">\(q\)</span> of trace zero, and a positive <span class="math" data-tex="\(x\)">\(x\)</span> has trace zero exactly when <span class="math" data-tex="\(x=qxq\)">\(x=qxq\)</span>. That earlier proof takes finite joins of null projections and then their increasing supremum, using normality at the supremum. Its support-cutoff argument also proves the assertion for every positive element.</p>
+<p>Conjugation by a unitary preserves null projections. By maximality, <span class="math" data-tex="\(uqu^*=q\)">\(uqu^*=q\)</span> for all unitaries, so <span class="math" data-tex="\(q\)">\(q\)</span> is central. Put</p>
+<span class="math math-display" data-tex="\[
+s(\tau)=1-q.
+\tag{TB.8}
+\]">\[
+s(\tau)=1-q.
+\tag{TB.8}
+\]</span>
+<p>The trace vanishes on <span class="math" data-tex="\((Mq)_+\)">\((Mq)_+\)</span>, since every positive element there is bounded above by a scalar multiple of <span class="math" data-tex="\(q\)">\(q\)</span>. Its restriction to <span class="math" data-tex="\(Ms(\tau)\)">\(Ms(\tau)\)</span> is faithful: a positive zero there would also be supported in the orthogonal projection <span class="math" data-tex="\(q\)">\(q\)</span>, hence would be zero. This restriction is normal, and central decomposition gives</p>
+<span class="math math-display" data-tex="\[
+\tau(x)=\tau(s(\tau)x)\quad(x\geq0).
+\]">\[
+\tau(x)=\tau(s(\tau)x)\quad(x\geq0).
+\]</span>
+<p>This remains valid at infinite values, since the omitted summand is zero.</p>
+<p>The support is unique. If a central <span class="math" data-tex="\(s&#x27;\)">\(s&#x27;\)</span> has faithful restriction and zero trace on its complement, then <span class="math" data-tex="\(1-s&#x27;\leq q\)">\(1-s&#x27;\leq q\)</span>. Also <span class="math" data-tex="\(s&#x27;q\)">\(s&#x27;q\)</span> is a null projection in the faithful corner, so <span class="math" data-tex="\(s&#x27;q=0\)">\(s&#x27;q=0\)</span>, giving <span class="math" data-tex="\(q\leq1-s&#x27;\)">\(q\leq1-s&#x27;\)</span>. Thus <span class="math" data-tex="\(s&#x27;=1-q\)">\(s&#x27;=1-q\)</span>. Semifiniteness was not needed for this support theorem; when the whole trace is semifinite, its support restriction is semifinite too, by the order characterization in TB02. This covers the full statement of Proposition V.2.10 and its support definition.</p>
+<p>Since <span class="math" data-tex="\(\tau(q)=0&lt;\infty\)">\(\tau(q)=0&lt;\infty\)</span>, the finite-domain projection satisfies <span class="math" data-tex="\(q\leq e\)">\(q\leq e\)</span>. We therefore have three orthogonal central pieces:</p>
+<span class="math math-display" data-tex="\[
+q,\quad e-q,\quad1-e.
+\tag{TB.9}
+\]">\[
+q,\quad e-q,\quad1-e.
+\tag{TB.9}
+\]</span>
+<p>The trace is zero on the first, faithful and semifinite on the second, and infinite on every nonzero positive element of the third. Their sum is the identity. In particular, the faithful support <span class="math" data-tex="\(1-q\)">\(1-q\)</span> and the semifinite projection <span class="math" data-tex="\(e\)">\(e\)</span> need not coincide. For the zero trace they are respectively <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>; for the trace that is infinite on every nonzero positive element they are respectively <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>. Both conventions agree on the zero algebra, where <span class="math" data-tex="\(1=0\)">\(1=0\)</span>.</p>
+<h2 id="arbitrary-sums-on-disjoint-supports">Arbitrary sums on disjoint supports</h2>
+<p>Let <span class="math" data-tex="\((\tau_i)_{i\in I}\)">\((\tau_i)_{i\in I}\)</span> be normal semifinite traces on the same algebra <span class="math" data-tex="\(M\)">\(M\)</span>, with pairwise orthogonal supports <span class="math" data-tex="\(s_i=s(\tau_i)\)">\(s_i=s(\tau_i)\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau(x)=\sum_{i\in I}\tau_i(x),\\
+x\in M_+.
+\end{gathered}
+\tag{TB.10}
+\]">\[
+\begin{gathered}
+\tau(x)=\sum_{i\in I}\tau_i(x),\\
+x\in M_+.
+\end{gathered}
+\tag{TB.10}
+\]</span>
+<p>A sum of nonnegative extended numbers means the supremum over finite subsets of <span class="math" data-tex="\(I\)">\(I\)</span>, including the empty subset. Additivity follows because any two finite index sets have a finite union: both inequalities between the sum of two suprema and the supremum of their finite sums follow this way. Homogeneity, the zero convention and the trace identity follow term by term. Hence (TB.10) is a trace.</p>
+<p>It is normal. For <span class="math" data-tex="\(x_\alpha\uparrow x\)">\(x_\alpha\uparrow x\)</span>, normality of each summand and directedness of the net give, for each finite <span class="math" data-tex="\(F\subseteq I\)">\(F\subseteq I\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{i\in F}\sup_\alpha\tau_i(x_\alpha)
+=\sup_\alpha\sum_{i\in F}\tau_i(x_\alpha).
+\]">\[
+\sum_{i\in F}\sup_\alpha\tau_i(x_\alpha)
+=\sup_\alpha\sum_{i\in F}\tau_i(x_\alpha).
+\]</span>
+<p>For a finite target below the left side, choose sufficiently large values of the finitely many terms and then one common upper index; this proves the nontrivial inequality even if some supremum is infinite. Taking the supremum over <span class="math" data-tex="\(F\)">\(F\)</span> allows the two suprema to be interchanged. The result is <span class="math" data-tex="\(\tau(x)=\sup_\alpha\tau(x_\alpha)\)">\(\tau(x)=\sup_\alpha\tau(x_\alpha)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span> be nonzero. If <span class="math" data-tex="\(xs_i=0\)">\(xs_i=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, TB03 gives <span class="math" data-tex="\(\tau_i(x)=0\)">\(\tau_i(x)=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, so <span class="math" data-tex="\(x\)">\(x\)</span> itself has finite trace. Otherwise choose <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(xs_i\ne0\)">\(xs_i\ne0\)</span>. Centrality gives <span class="math" data-tex="\(0\leq xs_i\leq x\)">\(0\leq xs_i\leq x\)</span>. Semifiniteness of <span class="math" data-tex="\(\tau_i\)">\(\tau_i\)</span> supplies <span class="math" data-tex="\(0\ne y\leq xs_i\)">\(0\ne y\leq xs_i\)</span> with <span class="math" data-tex="\(\tau_i(y)&lt;\infty\)">\(\tau_i(y)&lt;\infty\)</span>. Its support is under <span class="math" data-tex="\(s_i\)">\(s_i\)</span>: positivity of <span class="math" data-tex="\(y\leq xs_i\)">\(y\leq xs_i\)</span> forces <span class="math" data-tex="\(y^{1/2}(1-s_i)=0\)">\(y^{1/2}(1-s_i)=0\)</span>. Orthogonality then gives <span class="math" data-tex="\(\tau_j(y)=0\)">\(\tau_j(y)=0\)</span> for <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>, by TB03. Hence <span class="math" data-tex="\(\tau(y)=\tau_i(y)&lt;\infty\)">\(\tau(y)=\tau_i(y)&lt;\infty\)</span>. TB02 proves semifiniteness of the sum.</p>
+<p>Its support is <span class="math" data-tex="\(s=\bigvee_i s_i\)">\(s=\bigvee_i s_i\)</span>. Indeed, <span class="math" data-tex="\(\tau(x)=0\)">\(\tau(x)=0\)</span> is equivalent to <span class="math" data-tex="\(\tau_i(x)=0\)">\(\tau_i(x)=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, or <span class="math" data-tex="\(xs_i=0\)">\(xs_i=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>; strong convergence of the finite projection sums makes this equivalent to <span class="math" data-tex="\(xs=0\)">\(xs=0\)</span>. TB03 characterizes the support by exactly these positive zeros. All assertions include empty families and zero summands.</p>
+<p>The support hypothesis has content. On <span class="math" data-tex="\(M=\mathbb C\)">\(M=\mathbb C\)</span>, take <span class="math" data-tex="\(\tau_n(t)=t\)">\(\tau_n(t)=t\)</span> for every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>. Each summand is faithful, finite and normal, but the sum is infinite at every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. It is not semifinite. No claim about arbitrary overlapping sums follows from the disjoint-support theorem.</p>
+<h2 id="matrix-amplification-without-a-countable-basis"><span id="oa-mod-tb-05"></span><span id="OA-MOD-TB-05"></span>Matrix amplification without a countable basis</h2>
+<p>Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be a faithful normal semifinite trace on <span class="math" data-tex="\(M\)">\(M\)</span>, and let <span class="math" data-tex="\(K\)">\(K\)</span> be any Hilbert space with orthonormal basis <span class="math" data-tex="\((f_i)_{i\in I}\)">\((f_i)_{i\in I}\)</span>. The Hilbert tensor product used here is the completion of finite tensors with their product inner product. To check positivity of that inner product, express the finitely many first-coordinate vectors in an orthonormal basis of their finite-dimensional span: a tensor becomes <span class="math" data-tex="\(\sum_r h_r\otimes k_r\)">\(\sum_r h_r\otimes k_r\)</span> with orthonormal <span class="math" data-tex="\(h_r\)">\(h_r\)</span>, and its squared norm is <span class="math" data-tex="\(\sum_r\|k_r\|^2\)">\(\sum_r\|k_r\|^2\)</span>. This also proves <span class="math" data-tex="\(\|I_H\otimes b\|\leq\|b\|\)">\(\|I_H\otimes b\|\leq\|b\|\)</span>; exchanging factors proves the corresponding bound for <span class="math" data-tex="\(a\otimes I_K\)">\(a\otimes I_K\)</span>. These bounded maps extend to the completion, with product and adjoint rules checked on finite tensors. Positive elementary tensors are positive because their square roots give a factorization as a bounded operator times its adjoint. In particular, identifying <span class="math" data-tex="\(\xi\otimes f_i\)">\(\xi\otimes f_i\)</span> with the <span class="math" data-tex="\(i\)">\(i\)</span>-th copy of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> gives the isometry onto the Hilbert direct sum of copies of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>On this Hilbert space put <span class="math" data-tex="\(N=M\mathbin{\overline\otimes}B(K)\)">\(N=M\mathbin{\overline\otimes}B(K)\)</span>, the weak closure of the elementary tensor algebra, equivalently its bicommutant by BK02. For <span class="math" data-tex="\(X\in N\)">\(X\in N\)</span>, its entry is
+<span class="math" data-tex="\(X_{ji}=\iota_j^*X\iota_i\in M\)">\(X_{ji}=\iota_j^*X\iota_i\in M\)</span>, where <span class="math" data-tex="\(\iota_i:H\to H\otimes K\)">\(\iota_i:H\to H\otimes K\)</span> sends <span class="math" data-tex="\(\xi\)">\(\xi\)</span> to <span class="math" data-tex="\(\xi\otimes f_i\)">\(\xi\otimes f_i\)</span>. Membership in <span class="math" data-tex="\(M\)">\(M\)</span> holds first on elementary tensors and then on their weak closure, since coordinate compression is weakly continuous. For positive <span class="math" data-tex="\(X\)">\(X\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}\mathcal T(X)\\=\sum_{i\in I}\tau(X_{ii}).\end{gathered}
+\tag{TB.11}
+\]">\[
+\begin{gathered}\mathcal T(X)\\=\sum_{i\in I}\tau(X_{ii}).\end{gathered}
+\tag{TB.11}
+\]</span>
+<p>Additivity and homogeneity follow as in TB04. To prove the trace identity, let <span class="math" data-tex="\(P_F\)">\(P_F\)</span> project onto the span of a finite subset <span class="math" data-tex="\(F\subseteq I\)">\(F\subseteq I\)</span>. The projections <span class="math" data-tex="\(I_H\otimes P_F\)">\(I_H\otimes P_F\)</span> increase strongly to the identity, by finite-span density of an orthonormal basis. Consequently, for each <span class="math" data-tex="\(i\)">\(i\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(X^*X)_{ii}=\sum_{j\in I}X_{ji}^*X_{ji},\\
+(XX^*)_{jj}=\sum_{i\in I}X_{ji}X_{ji}^*.
+\end{gathered}
+\]">\[
+\begin{gathered}
+(X^*X)_{ii}=\sum_{j\in I}X_{ji}^*X_{ji},\\
+(XX^*)_{jj}=\sum_{i\in I}X_{ji}X_{ji}^*.
+\end{gathered}
+\]</span>
+<p>These are bounded increasing strong sums of positive operators in <span class="math" data-tex="\(M\)">\(M\)</span>; the first is obtained by compressing <span class="math" data-tex="\(X^*(I_H\otimes P_F)X\)">\(X^*(I_H\otimes P_F)X\)</span>, and the second in the same way with <span class="math" data-tex="\(X^*\)">\(X^*\)</span> in place of <span class="math" data-tex="\(X\)">\(X\)</span>. Normality and the scalar trace identity therefore give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal T(X^*X)\\
+=\sum_i\sum_j\tau(X_{ji}^*X_{ji})\\
+=\sum_j\sum_i\tau(X_{ji}X_{ji}^*)\\
+=\mathcal T(XX^*).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal T(X^*X)\\
+=\sum_i\sum_j\tau(X_{ji}^*X_{ji})\\
+=\sum_j\sum_i\tau(X_{ji}X_{ji}^*)\\
+=\mathcal T(XX^*).
+\end{gathered}
+\]</span>
+<p>Interchanging these sums is legitimate for arbitrary index sets: both sides are the supremum of finite sums over subsets of <span class="math" data-tex="\(I\times I\)">\(I\times I\)</span>. Thus <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is a trace.</p>
+<p>If <span class="math" data-tex="\(X_\alpha\uparrow X\)">\(X_\alpha\uparrow X\)</span>, each diagonal entry increases to the corresponding entry of <span class="math" data-tex="\(X\)">\(X\)</span>, by bounded monotone convergence and coordinate testing. Interchanging the increasing supremum with the finite-subset supremum, exactly as in TB04, proves normality. If <span class="math" data-tex="\(X\geq0\)">\(X\geq0\)</span> and <span class="math" data-tex="\(\mathcal T(X)=0\)">\(\mathcal T(X)=0\)</span>, faithfulness of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> gives <span class="math" data-tex="\(X_{ii}=0\)">\(X_{ii}=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. Hence <span class="math" data-tex="\(X^{1/2}\iota_i=0\)">\(X^{1/2}\iota_i=0\)</span>, by its squared norm on each vector. The ranges of all <span class="math" data-tex="\(\iota_i\)">\(\iota_i\)</span> have dense linear span, so <span class="math" data-tex="\(X=0\)">\(X=0\)</span>. This proves faithfulness.</p>
+<p>For semifiniteness, take the finite positive contractions <span class="math" data-tex="\(u_a\uparrow1\)">\(u_a\uparrow1\)</span> from TB02 and set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d_{a,F}=u_a\otimes P_F,\\
+d_{a,F}\uparrow1,
+\end{gathered}
+\tag{TB.12}
+\]">\[
+\begin{gathered}
+d_{a,F}=u_a\otimes P_F,\\
+d_{a,F}\uparrow1,
+\end{gathered}
+\tag{TB.12}
+\]</span>
+<p>with the product ordering on the two index sets. Positivity of tensor products gives monotonicity; strong convergence follows first on elementary tensors and then by their density and the uniform contraction bound. Moreover
+<span class="math" data-tex="\(\mathcal T(d_{a,F})=|F|\tau(u_a)&lt;\infty\)">\(\mathcal T(d_{a,F})=|F|\tau(u_a)&lt;\infty\)</span>.
+For <span class="math" data-tex="\(X\geq0\)">\(X\geq0\)</span>, the elements <span class="math" data-tex="\(X^{1/2}d_{a,F}X^{1/2}\)">\(X^{1/2}d_{a,F}X^{1/2}\)</span> increase strongly to <span class="math" data-tex="\(X\)">\(X\)</span>, lie below it, and have finite trace: the trace identity bounds their values by <span class="math" data-tex="\(\|X\|\mathcal T(d_{a,F})\)">\(\|X\|\mathcal T(d_{a,F})\)</span>. A nonzero <span class="math" data-tex="\(X\)">\(X\)</span> has a nonzero member of this approximating net, proving semifiniteness by TB02. This argument avoids a separability assumption and avoids assuming that the diagonal corners of <span class="math" data-tex="\(X\)">\(X\)</span> are already trace-finite.</p>
+<p>The trace is independent of the chosen basis. To compare two bases <span class="math" data-tex="\((f_i)_{i\in I}\)">\((f_i)_{i\in I}\)</span> and <span class="math" data-tex="\((g_j)_{j\in J}\)">\((g_j)_{j\in J}\)</span>, put <span class="math" data-tex="\(Y=X^{1/2}\)">\(Y=X^{1/2}\)</span> and form its rectangular coefficients from the <span class="math" data-tex="\(f\)">\(f\)</span>-coordinates to the <span class="math" data-tex="\(g\)">\(g\)</span>-coordinates. Their entries lie in <span class="math" data-tex="\(M\)">\(M\)</span> by the same coordinate-compression argument. The two positive-sum identities just proved express <span class="math" data-tex="\(X_{ii}\)">\(X_{ii}\)</span> in the first basis as a column sum <span class="math" data-tex="\(\sum_jY_{ji}^*Y_{ji}\)">\(\sum_jY_{ji}^*Y_{ji}\)</span>, and <span class="math" data-tex="\(X_{jj}\)">\(X_{jj}\)</span> in the second basis as a row sum <span class="math" data-tex="\(\sum_iY_{ji}Y_{ji}^*\)">\(\sum_iY_{ji}Y_{ji}^*\)</span>. The same trace and double-sum calculation equates the two values of (TB.11). No correspondence of individual basis vectors is asserted or needed.</p>
+<p>For a unit vector <span class="math" data-tex="\(f\in K\)">\(f\in K\)</span>, this trace satisfies</p>
+<span class="math math-display" data-tex="\[
+\mathcal T(a\otimes p_f)=\tau(a)\quad(a\geq0),
+\]">\[
+\mathcal T(a\otimes p_f)=\tau(a)\quad(a\geq0),
+\]</span>
+<p>where <span class="math" data-tex="\(p_f\)">\(p_f\)</span> is its rank-one projection: choose a basis containing <span class="math" data-tex="\(f\)">\(f\)</span> in the basis-independent formula. When <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, the amplified algebra is zero and the empty sum is its zero trace, which is faithful and semifinite in the vacuous sense.</p>
+<h2 id="returning-to-an-arbitrary-type-i-factor">Returning to an arbitrary type I factor</h2>
+<p>The preceding theorem is formulated on a specified tensor product with <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span>. Here is the exact reduction from any type I factor in its given concrete representation. We use the intrinsic condition that a nonzero factor <span class="math" data-tex="\(A\subseteq B(L)\)">\(A\subseteq B(L)\)</span> of type I contains a minimal nonzero projection <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>First <span class="math" data-tex="\(pAp=\mathbb Cp\)">\(pAp=\mathbb Cp\)</span>. If a self-adjoint element of that corner were nonscalar, its continuous calculus from <a href="OA-MOD-BK.html#oa-mod-bk-01">BK01</a> would have two nonzero positive continuous functions with disjoint supports. The support projection of either function, constructed by <a href="OA-MOD-BK.html#oa-mod-bk-06">BK06</a>, would be nonzero and strictly below <span class="math" data-tex="\(p\)">\(p\)</span>: the other function has a nonzero range orthogonal to it. This contradicts minimality. Taking real and imaginary parts proves the assertion for all corner elements.</p>
+<p>The closed subspace <span class="math" data-tex="\([ApL]\)">\([ApL]\)</span> reduces both <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>. For the latter, use <span class="math" data-tex="\(b&#x27;ap\xi=apb&#x27;\xi\)">\(b&#x27;ap\xi=apb&#x27;\xi\)</span>; for the former, use the algebra and adjoints. Its projection therefore belongs to <span class="math" data-tex="\(A&#x27;\cap A&#x27;&#x27;=Z(A)\)">\(A&#x27;\cap A&#x27;&#x27;=Z(A)\)</span>, by <a href="OA-MOD-BK.html#oa-mod-bk-02">BK02</a>. It is nonzero, so it is the identity, because <span class="math" data-tex="\(A\)">\(A\)</span> is a factor. In particular, if <span class="math" data-tex="\(q\in A\)">\(q\in A\)</span> is a nonzero projection, then <span class="math" data-tex="\(qAp\ne0\)">\(qAp\ne0\)</span>. The bounded polar decomposition of a nonzero <span class="math" data-tex="\(qap\)">\(qap\)</span> supplies a partial isometry with initial projection a nonzero subprojection of <span class="math" data-tex="\(p\)">\(p\)</span>, hence equal to <span class="math" data-tex="\(p\)">\(p\)</span>, and final projection under <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p>Use Zorn's lemma to choose a maximal orthogonal family <span class="math" data-tex="\((p_i)_{i\in I}\)">\((p_i)_{i\in I}\)</span> of projections equivalent to <span class="math" data-tex="\(p\)">\(p\)</span>, beginning with <span class="math" data-tex="\(p\)">\(p\)</span> itself. If its strong sum were not the identity, the preceding argument in the nonzero complement would supply another member. Thus <span class="math" data-tex="\(\sum_i p_i=1\)">\(\sum_i p_i=1\)</span>. Choose partial isometries <span class="math" data-tex="\(w_i\in A\)">\(w_i\in A\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}w_i^*w_i=p,\\w_iw_i^*=p_i.\end{gathered}
+\tag{TB.13}
+\]">\[
+\begin{gathered}w_i^*w_i=p,\\w_iw_i^*=p_i.\end{gathered}
+\tag{TB.13}
+\]</span>
+<p>Let <span class="math" data-tex="\(E=pL\ne0\)">\(E=pL\ne0\)</span>, <span class="math" data-tex="\(K=\ell^2(I)\)">\(K=\ell^2(I)\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U:K\otimes E\longrightarrow L,\\
+U(\delta_i\otimes\xi)=w_i\xi.
+\end{gathered}
+\tag{TB.14}
+\]">\[
+\begin{gathered}
+U:K\otimes E\longrightarrow L,\\
+U(\delta_i\otimes\xi)=w_i\xi.
+\end{gathered}
+\tag{TB.14}
+\]</span>
+<p>Orthogonality of the final projections makes this map isometric on finite sums; completeness extends it to an isometry on the tensor product. Its range contains every <span class="math" data-tex="\(p_iL\)">\(p_iL\)</span>, so their totality makes it onto. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is a unitary with the specified coordinates.</p>
+<p>For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, every coefficient <span class="math" data-tex="\(w_i^*aw_j\)">\(w_i^*aw_j\)</span> is a scalar multiple of <span class="math" data-tex="\(p\)">\(p\)</span>. These scalars form a bounded matrix on <span class="math" data-tex="\(K\)">\(K\)</span>: test finite scalar vectors against a fixed unit vector of <span class="math" data-tex="\(E\)">\(E\)</span>, which bounds its norm by <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>. Coordinate testing and density give <span class="math" data-tex="\(U^*aU=B_a\otimes I_E\)">\(U^*aU=B_a\otimes I_E\)</span> for that bounded matrix <span class="math" data-tex="\(B_a\)">\(B_a\)</span>. Conversely, every finite scalar matrix gives an element <span class="math" data-tex="\(\sum_{i,j}b_{ij}w_iw_j^*\)">\(\sum_{i,j}b_{ij}w_iw_j^*\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>. For a bounded <span class="math" data-tex="\(B\in B(K)\)">\(B\in B(K)\)</span>, its finite compressions <span class="math" data-tex="\(P_FBP_F\)">\(P_FBP_F\)</span> converge strongly to <span class="math" data-tex="\(B\)">\(B\)</span>, with norms bounded by <span class="math" data-tex="\(\|B\|\)">\(\|B\|\)</span>. Their images under <span class="math" data-tex="\(U\)">\(U\)</span> converge strongly to <span class="math" data-tex="\(U(B\otimes I_E)U^*\)">\(U(B\otimes I_E)U^*\)</span>, which belongs to the strongly closed algebra <span class="math" data-tex="\(A\)">\(A\)</span>. We have proved the concrete equality</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}U^*AU\\=B(K)\otimes I_E.\end{gathered}
+\tag{TB.15}
+\]">\[
+\begin{gathered}U^*AU\\=B(K)\otimes I_E.\end{gathered}
+\tag{TB.15}
+\]</span>
+<p>On <span class="math" data-tex="\(H\otimes L\)">\(H\otimes L\)</span>, conjugate <span class="math" data-tex="\(M\mathbin{\overline\otimes}A\)">\(M\mathbin{\overline\otimes}A\)</span> by <span class="math" data-tex="\(I_H\otimes U\)">\(I_H\otimes U\)</span>, and associate the three Hilbert factors in their displayed order; the associating map is isometric on elementary tensors by the product inner product and extends onto by density. Equation (TB.15), first on elementary tensors and then by weak closure, identifies the image with
+<span class="math" data-tex="\((M\mathbin{\overline\otimes}B(K))\otimes I_E\)">\((M\mathbin{\overline\otimes}B(K))\otimes I_E\)</span>. To justify closedness of this last image, if <span class="math" data-tex="\(B_\alpha\otimes I_E\)">\(B_\alpha\otimes I_E\)</span> converges weakly, compression by a fixed unit vector of <span class="math" data-tex="\(E\)">\(E\)</span> gives a weak limit <span class="math" data-tex="\(B\)">\(B\)</span> in <span class="math" data-tex="\(M\mathbin{\overline\otimes}B(K)\)">\(M\mathbin{\overline\otimes}B(K)\)</span>; testing elementary tensors then identifies the original limit with <span class="math" data-tex="\(B\otimes I_E\)">\(B\otimes I_E\)</span>. This proves one inclusion. For the other, the finite matrix compressions of any <span class="math" data-tex="\(B\in M\mathbin{\overline\otimes}B(K)\)">\(B\in M\mathbin{\overline\otimes}B(K)\)</span> have entries in <span class="math" data-tex="\(M\)">\(M\)</span>, by TB05. They are finite sums <span class="math" data-tex="\(\sum_{i,j\in F}B_{ij}\otimes e_{ij}\)">\(\sum_{i,j\in F}B_{ij}\otimes e_{ij}\)</span>, converge strongly to <span class="math" data-tex="\(B\)">\(B\)</span>, and have norms at most <span class="math" data-tex="\(\|B\|\)">\(\|B\|\)</span>. Tensoring these bounded approximants with <span class="math" data-tex="\(I_E\)">\(I_E\)</span> preserves strong convergence, first on elementary tensors and then by density. Each approximant belongs to the conjugated tensor algebra; its strong limit therefore belongs there too. This proves the claimed equality without assuming weak continuity of infinite amplification on arbitrary unbounded nets.</p>
+<p>The map <span class="math" data-tex="\(B\mapsto B\otimes I_E\)">\(B\mapsto B\otimes I_E\)</span> is consequently a faithful normal star isomorphism onto this image. Positivity is reflected by testing vectors <span class="math" data-tex="\(\eta\otimes\xi\)">\(\eta\otimes\xi\)</span> for a fixed unit <span class="math" data-tex="\(\xi\in E\)">\(\xi\in E\)</span>, and bounded increasing suprema are preserved and reflected by the same vector tests and finite-tensor density. Its inverse on this image has those properties as well.</p>
+<p>Pulling back the trace of TB05 through these specified isomorphisms gives a faithful normal semifinite trace on <span class="math" data-tex="\(M\mathbin{\overline\otimes}A\)">\(M\mathbin{\overline\otimes}A\)</span>. Faithfulness follows from injectivity and positivity reflection, normality from preservation of bounded increasing suprema, and semifiniteness from carrying a nonzero finite positive subelement back through the order isomorphism. Thus the matrix construction proves the full type I factor statement, including representations with arbitrary multiplicity.</p>
+<h2 id="examples-and-the-limits-of-the-hypotheses">Examples and the limits of the hypotheses</h2>
+<p><strong>Three different central parts in one trace.</strong> On <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span>, define, for <span class="math" data-tex="\(a,b,c\geq0\)">\(a,b,c\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\tau(a,b,c)=b+\infty\,c,
+\]">\[
+\tau(a,b,c)=b+\infty\,c,
+\]</span>
+<p>with the fixed convention <span class="math" data-tex="\(\infty\,0=0\)">\(\infty\,0=0\)</span>. Additivity and homogeneity are coordinatewise; commutativity makes the trace identity automatic. It is normal: increasing coordinate nets have the usual scalar suprema; if the final third coordinate is positive, some net member already has positive third coordinate and hence infinite trace. The null projection is <span class="math" data-tex="\(q=(1,0,0)\)">\(q=(1,0,0)\)</span>, the semifinite projection is <span class="math" data-tex="\(e=(1,1,0)\)">\(e=(1,1,0)\)</span>, and the faithful support is <span class="math" data-tex="\(s(\tau)=(0,1,1)\)">\(s(\tau)=(0,1,1)\)</span>. The middle coordinate is the faithful semifinite piece. This computes, rather than identifies by analogy, all three parts in TB03.</p>
+<p><strong>Normality is needed for recovery of values.</strong> On <span class="math" data-tex="\(\ell^\infty(\mathbb N)\)">\(\ell^\infty(\mathbb N)\)</span>, let <span class="math" data-tex="\(\theta(a)=0\)">\(\theta(a)=0\)</span> for positive <span class="math" data-tex="\(a\in c_0(\mathbb N)\)">\(a\in c_0(\mathbb N)\)</span>, and <span class="math" data-tex="\(\theta(a)=\infty\)">\(\theta(a)=\infty\)</span> for other positive <span class="math" data-tex="\(a\)">\(a\)</span>. A sum of two nonnegative sequences tends to zero exactly when each does, proving additivity with extended values; scaling proves homogeneity. It is a trace because the algebra is commutative. It is semifinite: any nonzero positive sequence dominates a nonzero single-coordinate sequence of trace zero. But the finite-coordinate projections <span class="math" data-tex="\(p_n\uparrow1\)">\(p_n\uparrow1\)</span> have <span class="math" data-tex="\(\theta(p_n)=0\)">\(\theta(p_n)=0\)</span>, while <span class="math" data-tex="\(\theta(1)=\infty\)">\(\theta(1)=\infty\)</span>. Thus the value-recovery conclusion of TB02 and the largest-null-projection conclusion of TB03 fail without normality. Indeed each coordinate projection is null, so a largest null projection would dominate their supremum <span class="math" data-tex="\(1\)">\(1\)</span>, which is not null. The underlying diagonal algebra is a von Neumann algebra by <a href="OA-MOD-CY.html#oa-mod-cy-05">CY05</a>.</p>
+<p><strong>Semifinite is not finite, and finite is not faithful.</strong> Counting trace on <span class="math" data-tex="\(\ell^\infty(I)\)">\(\ell^\infty(I)\)</span> for an infinite set <span class="math" data-tex="\(I\)">\(I\)</span> is faithful, normal and semifinite, but has infinite value on the identity. Positivity of coordinate sums proves faithfulness, finite-coordinate suprema prove normality, and finite-coordinate subelements prove semifiniteness. On <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, the trace <span class="math" data-tex="\((a,b)\mapsto a\)">\((a,b)\mapsto a\)</span> is finite and normal but not faithful. The trace on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> taking infinity at every positive scalar is faithful and normal but not semifinite. These examples keep the four adjectives distinct; every finite trace is nevertheless semifinite, since all its positive values are finite.</p>
+<p><strong>A finite-rank compression need not have finite amplified trace.</strong> If <span class="math" data-tex="\(\tau(1)=\infty\)">\(\tau(1)=\infty\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> is a unit vector, then <span class="math" data-tex="\(I_H\otimes p_f\)">\(I_H\otimes p_f\)</span> has amplified trace <span class="math" data-tex="\(\tau(1)=\infty\)">\(\tau(1)=\infty\)</span>. The proof of TB05 therefore uses both a finite-coordinate projection and a finite-trace cutoff in <span class="math" data-tex="\(M\)">\(M\)</span>. Its ordered approximation is <span class="math" data-tex="\(X^{1/2}dX^{1/2}\)">\(X^{1/2}dX^{1/2}\)</span>, which lies below <span class="math" data-tex="\(X\)">\(X\)</span>; the compression <span class="math" data-tex="\(d^{1/2}Xd^{1/2}\)">\(d^{1/2}Xd^{1/2}\)</span> supplies the trace bound and need not lie below <span class="math" data-tex="\(X\)">\(X\)</span>. Keeping those two roles separate is necessary even for finite matrices.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-GP.html">← Closed operators through their graph projections</a></span><a href="./">Course contents</a><span class="pager-next"><span class="unlinked">Averaging, central traces and normality →</span></span></nav>
+<p class="small source-link"><a href="src/trace-domains-central-parts-and-amplification.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

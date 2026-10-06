@@ -1,0 +1,46 @@
+"""Exact reproducible rank/capacity schematic for Figure80.1; standard library only."""
+from pathlib import Path
+from html import escape
+W,H=1000,1400
+parts=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">', '<rect width="1000" height="1400" fill="#f6f8fb"/>', '<style>text{font-family:Arial,sans-serif;fill:#182738}.title{font-size:25px;font-weight:700}.head{font-size:20px;font-weight:700}.text{font-size:17px}.small{font-size:15px}.blue{fill:#d9e9fa;stroke:#376fa3}.red{fill:#f7d8da;stroke:#a83f47}.green{fill:#d9eee3;stroke:#3e8260}.panel{fill:#fff;stroke:#aab8c9}</style>']
+def text(x,y,s,cls='text',color=None):
+ parts.append(f'<text x="{x}" y="{y}" class="{cls}"'+(f' fill="{color}"' if color else '')+'>'+escape(s)+'</text>')
+def rect(x,y,w,h,cls):parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" class="{cls}"/>')
+def panel(y,h,title):rect(24,y,952,h,'panel');text(44,y+33,title,'head')
+text(28,38,'Finite rank capacity → exact remainder','title')
+text(28,66,'Inherited normal trace measures the cuts; canonical ranks certify the enlarged physical remainder.','small')
+panel(90,280,'A. Two copies of an outer path projection — Example 80.6')
+text(44,153,'Even level 4: capacities (2, 3, 1), total ranks (0, 0, 2).')
+for a,(cap,h) in enumerate([(2,0),(3,0),(1,2)]):
+ x=60+290*a
+ rect(x,177,240,70,'blue');text(x+13,204,f'capacity {cap}');text(x+13,231,f'selected ranks {h}')
+ if h>cap:rect(x+178,184,50,56,'red');text(x+190,217,'+1')
+text(44,284,'Exact loss Δ₂ = 31/81. The red excess is one rank, weighted by 31/81.')
+text(44,315,'Even level 6: capacities (5, 9, 5, 1), total ranks (0, 2, 4, 2).')
+text(44,344,'Exact loss Δ₃ = 127/729. At level 8 two blocks contribute: Δ₄ = 85/729.')
+panel(390,245,'B. Finite averages converge to the normal central dimension — 80.3–80.8')
+rect(52,453,262,78,'blue');text(66,480,'block fraction Hⱼℓ / nⱼℓ');text(66,508,'Dⱼ(x),  x = Σᵢ gᵢ')
+rect(366,453,262,78,'green');text(380,480,'normal central limit');text(380,508,'T(x) = Σᵢ T(gᵢ)')
+text(325,500,'→','title')
+text(660,481,'Δⱼ decreases');text(660,511,'to τ((T(x) − 1)₊)')
+text(44,568,'If S is a factor and Σᵢ τ(gᵢ) ≤ 1, this limit is zero — Corollary 80.5.')
+text(44,599,'Other norm traces may still overbook; they need not extend normally to S.')
+panel(655,320,'C. Physical cuts and canonical certificates — Theorem 80.4')
+text(44,718,'Physical supports remain in N; each rᵢ′ lies inside its original rᵢ.')
+rect(54,743,220,84,'blue');rect(240,743,34,84,'red');text(68,775,'retained r₁′');text(68,803,'old r₁ = r₁′ + d₁')
+rect(307,743,220,84,'blue');rect(499,743,28,84,'red');text(321,775,'retained r₂′');text(321,803,'old r₂ = r₂′ + d₂')
+rect(574,743,342,84,'green');text(590,775,'new remainder f* = f + Σᵢ dᵢ');text(590,803,'total removed trace = Δⱼ')
+text(44,865,'In Bⱼ, rearrange the retained ranks into orthogonal qᵢ and q₀ = 1 − Σᵢ qᵢ.')
+text(44,896,'Their traces agree: τ(f*) = τ(q₀). Exact placement gives the last whole-tunnel block.')
+text(44,929,'Target error ≤ old error + (1 + √2) ‖y‖ √Δⱼ; the A₀ component is lifted exactly.')
+panel(995,235,'D. Scalar room does not imply central room — Example 80.7')
+rect(52,1058,370,64,'blue');text(68,1085,'first central component: selected 0');text(68,1108,'capacity 1, weight α = √2/2','small')
+rect(456,1058,468,64,'red');text(472,1085,'second central component: selected 2');text(472,1108,'capacity 1, weight 1 − α','small')
+text(44,1160,'Positive scalar remainder: 2α − 1. Unavoidable cut cost: Δ∞ = 1 − α.')
+text(44,1191,'This fixed-family diagnostic supplies no amenable-subfactor counterexample.')
+text(28,1272,'Rectangles show ranks and support relations schematically; widths are not trace proportions.','small')
+text(28,1305,'Proof locators: 80.6 (central limit), 80.9–80.12 (rank cuts), 80.13–80.18 (target errors).','small')
+text(28,1338,'Human source: S. Popa (1994), Theorem 4.4.1(1), printed p.222.','small')
+text(28,1371,'Exact SVG source retained. All coordinates, capacities and inherited weights are specified.','small')
+parts.append('</svg>')
+Path(__file__).with_suffix('.svg').write_bytes(('\n'.join(parts)+'\n').encode('utf-8'))

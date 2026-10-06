@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Principal roots and uniform time kernels</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="principal-roots-and-uniform-time-kernels">Principal roots and uniform time kernels</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Time evolution starts with scalar polynomial roots. We bound their displacement from the real principal roots and construct time kernels uniformly even when roots repeat.</p>
+<p>Read <a href="AN02-L044.html">Primitive factors and moving polynomial roots</a>, <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz inversion; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the integration estimates. <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies scalar calculus and cutoffs. <a href="prerequisites/cauchy-kernels-and-boundary-limits.html">Cauchy kernels and distributional boundary limits</a> proves the Cauchy–Pompeiu formula; <a href="prerequisites/stable-prerequisite-bridges.html">Polynomial and contour interfaces for stable boundary models</a> proves scalar factorization and the exponential series.</p>
+<p>For Fourier background, Grubb's author-hosted Chapter 5, <em>Fourier transformation of distributions</em>, gives the differentiation convention used in Exercise 1: Theorem 5.4(2), equation (5.9), printed pp. 5.3–5.4. The root-displacement and uniform time-kernel estimates are proved below. Other general background references are Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs below use the linked prerequisite lessons and the stated planned results.</p>
+<h2 id="sublinear-displacement-from-the-real-characteristic-roots">Sublinear displacement from the real characteristic roots</h2>
+<p><strong>Lemma 1.</strong> Let <span class="math" data-tex="\(P(\zeta,\tau)\)">\(P(\zeta,\tau)\)</span> have total degree <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, with principal part <span class="math" data-tex="\(F\)">\(F\)</span> hyperbolic with respect to the last frequency vector <span class="math" data-tex="\(N=(0,\ldots,0,1)\)">\(N=(0,\ldots,0,1)\)</span>. Every root of <span class="math" data-tex="\(P(\zeta,\tau)=0\)">\(P(\zeta,\tau)=0\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ |\tau|\le C(1+|\zeta|),\qquad \zeta\in\mathbb C^{n-1},
+ \tag{1}
+\]">\[
+ |\tau|\le C(1+|\zeta|),\qquad \zeta\in\mathbb C^{n-1},
+ \tag{1}
+\]</span>
+and for real <span class="math" data-tex="\(\xi\in\mathbb R^{n-1}\)">\(\xi\in\mathbb R^{n-1}\)</span> also
+<span class="math math-display" data-tex="\[
+ |\operatorname{Im}\tau|
+          \le C(1+|\xi|)^{1-1/m}.
+ \tag{2}
+\]">\[
+ |\operatorname{Im}\tau|
+          \le C(1+|\xi|)^{1-1/m}.
+ \tag{2}
+\]</span>
+The constant depends on the full polynomial; every lower-order complex coefficient is allowed.</p>
+<p><strong>Proof.</strong> Divide by the nonzero constant <span class="math" data-tex="\(F(N)\)">\(F(N)\)</span>, which does not change any root or the hyperbolicity property. The result is monic in <span class="math" data-tex="\(\tau\)">\(\tau\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(\zeta,\tau)=\tau^m+\sum_{j=1}^m a_j(\zeta)\tau^{m-j},
+ \\
+\qquad \deg a_j\le j.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+P(\zeta,\tau)=\tau^m+\sum_{j=1}^m a_j(\zeta)\tau^{m-j},
+ \\
+\qquad \deg a_j\le j.
+\end{gathered}
+\tag{3}
+\]</span>
+There is <span class="math" data-tex="\(C_1\ge1\)">\(C_1\ge1\)</span> with <span class="math" data-tex="\(|a_j(\zeta)|\le[C_1(1+|\zeta|)]^j\)">\(|a_j(\zeta)|\le[C_1(1+|\zeta|)]^j\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>: bound the finitely many polynomial coefficients and choose <span class="math" data-tex="\(C_1\)">\(C_1\)</span> greater than each resulting coefficient bound's <span class="math" data-tex="\(j\)">\(j\)</span>-th root. If <span class="math" data-tex="\(|\tau|&gt;2C_1(1+|\zeta|)\)">\(|\tau|&gt;2C_1(1+|\zeta|)\)</span>, then
+<span class="math math-display" data-tex="\[
+ \left|\sum_{j=1}^m a_j(\zeta)\tau^{m-j}\right|
+ \le|\tau|^m\sum_{j=1}^m2^{-j}&lt;|\tau|^m.
+ \tag{4}
+\]">\[
+ \left|\sum_{j=1}^m a_j(\zeta)\tau^{m-j}\right|
+ \le|\tau|^m\sum_{j=1}^m2^{-j}&lt;|\tau|^m.
+ \tag{4}
+\]</span>
+This contradicts <span class="math" data-tex="\(P=0\)">\(P=0\)</span>. Thus (1) holds, even for complex <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>.</p>
+<p>For real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, hyperbolicity and scalar factorization give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(\xi,\tau)=\prod_{\ell=1}^m(\tau-\lambda_\ell(\xi)),
+ \\
+\qquad \lambda_\ell(\xi)\in\mathbb R.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+F(\xi,\tau)=\prod_{\ell=1}^m(\tau-\lambda_\ell(\xi)),
+ \\
+\qquad \lambda_\ell(\xi)\in\mathbb R.
+\end{gathered}
+\tag{5}
+\]</span>
+Multiplicity is included. Hence <span class="math" data-tex="\(|F(\xi,\tau)|\ge|\operatorname{Im}\tau|^m\)">\(|F(\xi,\tau)|\ge|\operatorname{Im}\tau|^m\)</span>. At a root of <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(F=-(P-F)\)">\(F=-(P-F)\)</span>. The latter polynomial has total degree at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, and (1) bounds <span class="math" data-tex="\(|\tau|\)">\(|\tau|\)</span> by a fixed multiple of <span class="math" data-tex="\(1+|\xi|\)">\(1+|\xi|\)</span>. Bounding its finitely many monomials gives <span class="math" data-tex="\(|P-F|\le C_2(1+|\xi|)^{m-1}\)">\(|P-F|\le C_2(1+|\xi|)^{m-1}\)</span>. Taking the <span class="math" data-tex="\(m\)">\(m\)</span>-th root proves (2). For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the exponent is zero, and the imaginary parts are uniformly bounded. We do not extend the real-principal-root argument to complex <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="a-contour-that-remains-away-from-every-root">A contour that remains away from every root</h2>
+<p><strong>Lemma 2.</strong> Let <span class="math" data-tex="\(p(\tau)=\tau^m+a_1\tau^{m-1}+\cdots+a_m\)">\(p(\tau)=\tau^m+a_1\tau^{m-1}+\cdots+a_m\)</span> be a monic scalar polynomial, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>. Suppose each of its roots satisfies <span class="math" data-tex="\(|\tau|\le A\)">\(|\tau|\le A\)</span> and <span class="math" data-tex="\(|\operatorname{Im}\tau|\le B\)">\(|\operatorname{Im}\tau|\le B\)</span>, where <span class="math" data-tex="\(A,B\ge0\)">\(A,B\ge0\)</span>. For <span class="math" data-tex="\(0\le k&lt;m\)">\(0\le k&lt;m\)</span>, the Cauchy problem
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p(D_t)v_k=0,\\
+\qquad D_t^jv_k(0)=\delta_{jk}\\
+\quad(0\le j&lt;m)
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+p(D_t)v_k=0,\\
+\qquad D_t^jv_k(0)=\delta_{jk}\\
+\quad(0\le j&lt;m)
+\end{gathered}
+\tag{6}
+\]</span>
+has a unique smooth solution on the real line, and, for every integer <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+ |D_t^jv_k(t)|
+ \le2^m(A+1)^{j+m-k}e^{(B+1)|t|}.
+ \tag{7}
+\]">\[
+ |D_t^jv_k(t)|
+ \le2^m(A+1)^{j+m-k}e^{(B+1)|t|}.
+ \tag{7}
+\]</span>
+Repeated roots are permitted.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(R=A+1\)">\(R=A+1\)</span>, <span class="math" data-tex="\(h=B+1\)">\(h=B+1\)</span>, and let <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> be the intersection of the disk <span class="math" data-tex="\(|\tau|&lt;R\)">\(|\tau|&lt;R\)</span> with the strip <span class="math" data-tex="\(|\operatorname{Im}\tau|&lt;h\)">\(|\operatorname{Im}\tau|&lt;h\)</span>, with positively oriented boundary. All roots are inside. At a boundary point on the circle, its distance from every root is at least <span class="math" data-tex="\(R-A=1\)">\(R-A=1\)</span>; at a boundary point on a horizontal edge, its imaginary-coordinate distance is at least <span class="math" data-tex="\(h-B=1\)">\(h-B=1\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ |p(\tau)|=\prod_{\ell=1}^m|\tau-\tau_\ell|\ge1,
+ \qquad \tau\in\partial\Omega.
+ \tag{8}
+\]">\[
+ |p(\tau)|=\prod_{\ell=1}^m|\tau-\tau_\ell|\ge1,
+ \qquad \tau\in\partial\Omega.
+ \tag{8}
+\]</span></p>
+<p>Its perimeter is at most <span class="math" data-tex="\(2\pi R\)">\(2\pi R\)</span>. If <span class="math" data-tex="\(h\ge R\)">\(h\ge R\)</span>, it is the circle. Otherwise put <span class="math" data-tex="\(u=h/R\in(0,1)\)">\(u=h/R\in(0,1)\)</span>. The two circular side arcs have total length <span class="math" data-tex="\(4R\arcsin u\)">\(4R\arcsin u\)</span>, and the two horizontal chords have total length <span class="math" data-tex="\(4R\sqrt{1-u^2}\)">\(4R\sqrt{1-u^2}\)</span>. Their sum is <span class="math" data-tex="\(4R(\arcsin u+\sqrt{1-u^2})\)">\(4R(\arcsin u+\sqrt{1-u^2})\)</span>. The expression in parentheses has derivative <span class="math" data-tex="\((1-u)/\sqrt{1-u^2}\ge0\)">\((1-u)/\sqrt{1-u^2}\ge0\)</span> and value <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span> at <span class="math" data-tex="\(u=1\)">\(u=1\)</span>, proving the bound. This retains the constant used below, including the corners where arcs meet chords.</p>
+<p>Let <span class="math" data-tex="\(q_k\)">\(q_k\)</span> be the polynomial part of <span class="math" data-tex="\(p(\tau)\tau^{-1-k}\)">\(p(\tau)\tau^{-1-k}\)</span>. Its degree is <span class="math" data-tex="\(m-1-k\)">\(m-1-k\)</span>. Define
+<span class="math math-display" data-tex="\[
+ v_k(t)=\frac1{2\pi i}
+       \int_{\partial\Omega}e^{it\tau}\frac{q_k(\tau)}{p(\tau)}\,d\tau.
+ \tag{9}
+\]">\[
+ v_k(t)=\frac1{2\pi i}
+       \int_{\partial\Omega}e^{it\tau}\frac{q_k(\tau)}{p(\tau)}\,d\tau.
+ \tag{9}
+\]</span>
+The contour is compact and avoids all poles, so differentiation of every time order is legitimate. Applying <span class="math" data-tex="\(p(D_t)\)">\(p(D_t)\)</span> cancels its denominator; the remaining entire function <span class="math" data-tex="\(e^{it\tau}q_k(\tau)\)">\(e^{it\tau}q_k(\tau)\)</span> has zero contour integral by Cauchy's formula. Thus the equation holds.</p>
+<p>For the initial conditions,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{q_k(\tau)}{p(\tau)}
+       =\tau^{-1-k}+O(\tau^{-m-1})\\
+\quad\text{at infinity}.
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+\frac{q_k(\tau)}{p(\tau)}
+       =\tau^{-1-k}+O(\tau^{-m-1})\\
+\quad\text{at infinity}.
+\end{gathered}
+\tag{10}
+\]</span>
+Indeed, subtract the negative-power part of <span class="math" data-tex="\(p(\tau)\tau^{-1-k}\)">\(p(\tau)\tau^{-1-k}\)</span>; its highest power is at most <span class="math" data-tex="\(-1\)">\(-1\)</span>, and division by the monic degree-<span class="math" data-tex="\(m\)">\(m\)</span> polynomial gives the displayed remainder. For <span class="math" data-tex="\(j&lt;m\)">\(j&lt;m\)</span>, the coefficient of <span class="math" data-tex="\(\tau^{-1}\)">\(\tau^{-1}\)</span> in <span class="math" data-tex="\(\tau^jq_k/p\)">\(\tau^jq_k/p\)</span> is precisely <span class="math" data-tex="\(\delta_{jk}\)">\(\delta_{jk}\)</span>. Its integral over our boundary equals the integral over a large positive circle: the rational function has no poles between those contours, so the annular Cauchy formula applies. Expanding its convergent Laurent series on that circle selects exactly the coefficient of <span class="math" data-tex="\(\tau^{-1}\)">\(\tau^{-1}\)</span>. In (9), <span class="math" data-tex="\(D_t^je^{it\tau}=\tau^je^{it\tau}\)">\(D_t^je^{it\tau}=\tau^je^{it\tau}\)</span>; hence all the initial values in (6) follow.</p>
+<p>The scalar coefficients obey <span class="math" data-tex="\(|a_\ell|\le\binom m\ell A^\ell\)">\(|a_\ell|\le\binom m\ell A^\ell\)</span>, by their elementary-symmetric root formula. On <span class="math" data-tex="\(|\tau|\le R\)">\(|\tau|\le R\)</span> this gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|q_k(\tau)|
+ \\
+\le R^{-1-k}\sum_{\ell=0}^m\binom m\ell A^\ell R^{m-\ell}
+ \\
+=R^{-1-k}(R+A)^m
+ \\
+\le2^mR^{m-1-k}.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+|q_k(\tau)|
+ \\
+\le R^{-1-k}\sum_{\ell=0}^m\binom m\ell A^\ell R^{m-\ell}
+ \\
+=R^{-1-k}(R+A)^m
+ \\
+\le2^mR^{m-1-k}.
+\end{gathered}
+\tag{11}
+\]</span>
+Here <span class="math" data-tex="\(a_0=1\)">\(a_0=1\)</span>; extending the sum through <span class="math" data-tex="\(m\)">\(m\)</span> only increases its nonnegative bound. On our contour, <span class="math" data-tex="\(|\tau|^j\le R^j\)">\(|\tau|^j\le R^j\)</span> and <span class="math" data-tex="\(|e^{it\tau}|\le e^{h|t|}\)">\(|e^{it\tau}|\le e^{h|t|}\)</span>. Combine (8), (11), the perimeter bound and the prefactor <span class="math" data-tex="\(1/(2\pi)\)">\(1/(2\pi)\)</span> in (9). The result is exactly (7).</p>
+<p>Finally, uniqueness does not require distinct roots. The vector of the first <span class="math" data-tex="\(m\)">\(m\)</span> <span class="math" data-tex="\(D_t\)">\(D_t\)</span>-jets of a difference of two solutions satisfies a constant companion system <span class="math" data-tex="\(\partial_tV=iCV\)">\(\partial_tV=iCV\)</span> with <span class="math" data-tex="\(V(0)=0\)">\(V(0)=0\)</span>. Integration on an interval of length <span class="math" data-tex="\(\ell\)">\(\ell\)</span> gives <span class="math" data-tex="\(\sup|V|\le\|C\|\ell\sup|V|\)">\(\sup|V|\le\|C\|\ell\sup|V|\)</span>. Choose <span class="math" data-tex="\(\|C\|\ell&lt;1\)">\(\|C\|\ell&lt;1\)</span>, or any length if <span class="math" data-tex="\(C=0\)">\(C=0\)</span>; the supremum must be zero. Iterate in both directions on the real line. The difference is zero everywhere. Existence was already supplied by (9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — basic: the sideways heat scale.</strong> Regard <span class="math" data-tex="\(-\partial_x^2+\partial_t\)">\(-\partial_x^2+\partial_t\)</span> as a second-order equation with Cauchy normal in the <span class="math" data-tex="\(x\)">\(x\)</span>-direction. Compute the time-kernel roots after Fourier transformation in <span class="math" data-tex="\(t\)">\(t\)</span>, and verify the exponent in Lemma 1.</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, the symbol is <span class="math" data-tex="\(P(\xi,\tau)=\tau^2+i\xi\)">\(P(\xi,\tau)=\tau^2+i\xi\)</span>, where <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is the frequency of <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> that of <span class="math" data-tex="\(x\)">\(x\)</span>. Its principal part is <span class="math" data-tex="\(\tau^2\)">\(\tau^2\)</span>, hyperbolic with respect to the last vector, since its repeated characteristic root is real. For real <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, the roots satisfy <span class="math" data-tex="\(\tau^2=-i\xi\)">\(\tau^2=-i\xi\)</span>; therefore
+<span class="math math-display" data-tex="\[
+ |\tau|=|\xi|^{1/2},\qquad
+ |\operatorname{Im}\tau|=(|\xi|/2)^{1/2}.
+ \tag{12}
+\]">\[
+ |\tau|=|\xi|^{1/2},\qquad
+ |\operatorname{Im}\tau|=(|\xi|/2)^{1/2}.
+ \tag{12}
+\]</span>
+At <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> both roots are zero. The growth exponent <span class="math" data-tex="\(1-1/m=1/2\)">\(1-1/m=1/2\)</span> is attained. This identifies the root growth that the full endpoint small-Gevrey order <span class="math" data-tex="\(\delta=2\)">\(\delta=2\)</span> must control; it is not yet a proof of the full Cauchy existence theorem.</p>
+<p><strong>Exercise 2 — intermediate: repeated roots create no denominator loss.</strong> For <span class="math" data-tex="\(p(\tau)=(\tau-iB)^m\)">\(p(\tau)=(\tau-iB)^m\)</span>, <span class="math" data-tex="\(B\ge0\)">\(B\ge0\)</span>, find <span class="math" data-tex="\(v_{m-1}\)">\(v_{m-1}\)</span> in (6) and check the first <span class="math" data-tex="\(m\)">\(m\)</span> jets.</p>
+<p><strong>Solution.</strong> The function
+<span class="math math-display" data-tex="\[
+ v_{m-1}(t)=\frac{(it)^{m-1}}{(m-1)!}e^{-Bt}
+ \tag{13}
+\]">\[
+ v_{m-1}(t)=\frac{(it)^{m-1}}{(m-1)!}e^{-Bt}
+ \tag{13}
+\]</span>
+has <span class="math" data-tex="\((D_t-iB)^m v_{m-1}=0\)">\((D_t-iB)^m v_{m-1}=0\)</span>: multiplying by <span class="math" data-tex="\(e^{Bt}\)">\(e^{Bt}\)</span> conjugates <span class="math" data-tex="\(D_t-iB\)">\(D_t-iB\)</span> to <span class="math" data-tex="\(D_t\)">\(D_t\)</span>, which annihilates the degree-<span class="math" data-tex="\((m-1)\)">\((m-1)\)</span> polynomial after <span class="math" data-tex="\(m\)">\(m\)</span> derivatives. Every derivative of order less than <span class="math" data-tex="\(m-1\)">\(m-1\)</span> at zero is zero. At order <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, its ordinary derivative is <span class="math" data-tex="\(i^{m-1}\)">\(i^{m-1}\)</span>; multiplying by <span class="math" data-tex="\((-i)^{m-1}\)">\((-i)^{m-1}\)</span> gives one. Thus all prescribed <span class="math" data-tex="\(D_t\)">\(D_t\)</span>-jets agree, and uniqueness identifies it with the contour kernel. The polynomial factor records the root multiplicity, while Lemma 2 remains valid with <span class="math" data-tex="\(A=B\)">\(A=B\)</span> and no inverse root gap.</p>
+<p><strong>Exercise 3 — advanced: the general displacement exponent is sharp.</strong> For <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, consider <span class="math" data-tex="\(P(\xi,\tau)=(\tau-\xi)^m+i\xi^{m-1}\)">\(P(\xi,\tau)=(\tau-\xi)^m+i\xi^{m-1}\)</span>. Show that its principal part is hyperbolic and that an imaginary root displacement of order <span class="math" data-tex="\(\xi^{1-1/m}\)">\(\xi^{1-1/m}\)</span> occurs as real <span class="math" data-tex="\(\xi\to+\infty\)">\(\xi\to+\infty\)</span>.</p>
+<p><strong>Solution.</strong> The principal part is <span class="math" data-tex="\((\tau-\xi)^m\)">\((\tau-\xi)^m\)</span>, with the repeated real root <span class="math" data-tex="\(\tau=\xi\)">\(\tau=\xi\)</span> for every real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Its value at the last frequency vector is 1. For <span class="math" data-tex="\(\xi&gt;0\)">\(\xi&gt;0\)</span>, choose any <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c^m=-i\)">\(c^m=-i\)</span>; then
+<span class="math math-display" data-tex="\[
+ \tau=\xi+c\xi^{(m-1)/m}
+ \tag{14}
+\]">\[
+ \tau=\xi+c\xi^{(m-1)/m}
+ \tag{14}
+\]</span>
+is an exact root. At least one such <span class="math" data-tex="\(c\)">\(c\)</span>, and in fact every real candidate fails, has nonzero imaginary part: a real number's integer power is real, whereas <span class="math" data-tex="\(-i\)">\(-i\)</span> is not. Hence
+<span class="math" data-tex="\(|\operatorname{Im}\tau|=|\operatorname{Im}c|\xi^{1-1/m}\)">\(|\operatorname{Im}\tau|=|\operatorname{Im}c|\xi^{1-1/m}\)</span>. The exponent of Lemma 1 cannot be reduced uniformly over this class of full polynomials. The lower-order term and its complex coefficient are retained, rather than replaced by a condition on the full polynomial's hyperbolicity.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Fourier transformation of distributions</em>, author-hosted Chapter 5 of <em>Distributions and Operators</em>. Theorem 5.4(2), equation (5.9), printed pp. 5.3–5.4, supplies Fourier differentiation background for Exercise 1. The root-displacement and uniform contour-kernel arguments are proved in this lesson. <a href="https://www.math.ku.dk/~grubb/dist5.pdf">Exact freely readable chapter</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition (1990), reprinted in <em>Classics in Mathematics</em>, Springer, 2003, e-ISBN 978-3-642-61497-2. Definition 7.1.1 and Lemma 7.1.3, printed pp. 160–161, give Fourier convention and differentiation background for Exercise 1 (Fourier transformation in t). The root-displacement and uniform time-kernel estimates are proved in this lesson.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

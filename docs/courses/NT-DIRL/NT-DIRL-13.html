@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The multiplicative large sieve and bilinear forms with characters · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-13.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 13 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-multiplicative-large-sieve-and-bilinear-forms-with-characters">The multiplicative large sieve and bilinear forms with characters</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Gauss sums connect additive and multiplicative Fourier analysis. They transfer the sharp large sieve to primitive Dirichlet characters. Cauchy–Schwarz then controls bilinear sums, and a truncated Mellin integral separates the product cutoff while allowing a different maximizing endpoint for every character. Hybrid estimates add a height variable; family moments apply those estimates to the functional equation.</p>
+<p>The prerequisites are <em>Gauss sums</em> and <em>The large sieve inequality</em>. The scalar truncated Perron kernel used in <em>Counting zeros and the explicit formula for character sums over prime powers</em> is the precise Mellin inversion input below. The family moment argument uses the entire completed function, functional equation and uniform fixed-strip gamma estimates from <em>The functional equation of Dirichlet L-functions</em>. Write <span class="math" data-tex="\(\sum_\chi^*\)">\(\sum_\chi^*\)</span> for primitive characters, and include the unique primitive character of conductor 1. Implied constants are effective and absolute unless a dependence is indicated.</p>
+<h2 id="1-transferring-the-additive-inequality">1. Transferring the additive inequality</h2>
+<p>Let <span class="math" data-tex="\(M\in\mathbb Z\)">\(M\in\mathbb Z\)</span>, let <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> be an integer, and put</p>
+<span class="math math-display" data-tex="\[
+S(\chi)=\sum_{M&lt;n\le M+N}a_n\chi(n),
+\qquad T(t)=\sum_{M&lt;n\le M+N}a_n e(nt).
+\]">\[
+S(\chi)=\sum_{M&lt;n\le M+N}a_n\chi(n),
+\qquad T(t)=\sum_{M&lt;n\le M+N}a_n e(nt).
+\]</span>
+<p>For primitive <span class="math" data-tex="\(\chi\pmod q\)">\(\chi\pmod q\)</span>, the Gauss identity, with <span class="math" data-tex="\(\tau(\chi)=\sum_{b\bmod q}\chi(b)e(b/q)\)">\(\tau(\chi)=\sum_{b\bmod q}\chi(b)e(b/q)\)</span>, is</p>
+<span class="math math-display" data-tex="\[
+\chi(n)=\frac1{\tau(\overline\chi)}
+\sum_{b\bmod q}\overline\chi(b)e(bn/q).
+\tag{1.1}
+\]">\[
+\chi(n)=\frac1{\tau(\overline\chi)}
+\sum_{b\bmod q}\overline\chi(b)e(bn/q).
+\tag{1.1}
+\]</span>
+<p>This holds even when <span class="math" data-tex="\((n,q)&gt;1\)">\((n,q)&gt;1\)</span>, and <span class="math" data-tex="\(|\tau(\overline\chi)|=\sqrt q\)">\(|\tau(\overline\chi)|=\sqrt q\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+q\sum_\chi^*|S(\chi)|^2
+=\sum_\chi^*\left|\sum_{b\bmod q}^{*}\overline\chi(b)T(b/q)\right|^2
+\le\varphi(q)\sum_{b\bmod q}^{*}|T(b/q)|^2.
+\tag{1.2}
+\]">\[
+q\sum_\chi^*|S(\chi)|^2
+=\sum_\chi^*\left|\sum_{b\bmod q}^{*}\overline\chi(b)T(b/q)\right|^2
+\le\varphi(q)\sum_{b\bmod q}^{*}|T(b/q)|^2.
+\tag{1.2}
+\]</span>
+<p>The inequality enlarges the character sum to all characters modulo <span class="math" data-tex="\(q\)">\(q\)</span>; character orthogonality then gives the expression on the right. This explains the weight <span class="math" data-tex="\(q/\varphi(q)\)">\(q/\varphi(q)\)</span>.</p>
+<p><strong>Theorem 1.1 (the multiplicative large sieve).</strong> For real <span class="math" data-tex="\(Q\ge1\)">\(Q\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\sum_{q\le Q}\frac q{\varphi(q)}\sum_{\chi\bmod q}^{*}|S(\chi)|^2
+\le(N-1+Q^2)\sum_{M&lt;n\le M+N}|a_n|^2.}
+\tag{1.3}
+\]">\[
+\boxed{\sum_{q\le Q}\frac q{\varphi(q)}\sum_{\chi\bmod q}^{*}|S(\chi)|^2
+\le(N-1+Q^2)\sum_{M&lt;n\le M+N}|a_n|^2.}
+\tag{1.3}
+\]</span>
+<p><strong>Proof.</strong> Divide (1.2) by <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span>, sum over <span class="math" data-tex="\(q\)">\(q\)</span>, and apply the sharp Farey inequality from the preceding lesson. With Gallagher's additive estimate the same argument gives <span class="math" data-tex="\(\pi(N-1)+Q^2\)">\(\pi(N-1)+Q^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Primitivity is required in (1.1). Induced characters do not have a Gauss sum of magnitude <span class="math" data-tex="\(\sqrt q\)">\(\sqrt q\)</span>; some have Gauss sum zero. Repeated induced principal characters would also invalidate an unrestricted version of (1.3).</p>
+<p>For <span class="math" data-tex="\(a_n=1\)">\(a_n=1\)</span> on <span class="math" data-tex="\(1\le n\le N\)">\(1\le n\le N\)</span>, the conductor-one term is <span class="math" data-tex="\(N^2\)">\(N^2\)</span>. Subtract it from (1.3) to obtain</p>
+<span class="math math-display" data-tex="\[
+\sum_{1&lt;q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\left|\sum_{n\le N}\chi(n)\right|^2\le(Q^2-1)N.
+\tag{1.4}
+\]">\[
+\sum_{1&lt;q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\left|\sum_{n\le N}\chi(n)\right|^2\le(Q^2-1)N.
+\tag{1.4}
+\]</span>
+<p>Bounding every primitive nonprincipal character separately by Pólya–Vinogradov instead gives <span class="math" data-tex="\(O(Q^3\log^2(2Q))\)">\(O(Q^3\log^2(2Q))\)</span> after summing. Estimate (1.4) gains in many ranges by averaging, without asserting a bound for each individual character.</p>
+<p>Here are four exact constant-coefficient examples. The energy column is the left side of (1.4).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(Q\)">\(Q\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(N\)">\(N\)</span></th>
+<th style="text-align:right">Weighted nonprincipal energy</th>
+<th style="text-align:right">Bound <span class="math" data-tex="\((Q^2-1)N\)">\((Q^2-1)N\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">40</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">288</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right"><span class="math" data-tex="\(113/6\)">\(113/6\)</span></td>
+<td style="text-align:right">756</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">25</td>
+<td style="text-align:right"><span class="math" data-tex="\(734/15\)">\(734/15\)</span></td>
+<td style="text-align:right">3575</td>
+</tr>
+</tbody>
+</table>
+<p>They can be computed without numerical roots of unity. If <span class="math" data-tex="\(c_{q,d}(h)\)">\(c_{q,d}(h)\)</span> counts the <span class="math" data-tex="\(n\le N\)">\(n\le N\)</span> with <span class="math" data-tex="\((n,q)=1\)">\((n,q)=1\)</span> and <span class="math" data-tex="\(n\equiv h\pmod d\)">\(n\equiv h\pmod d\)</span>, then primitive-character inclusion–exclusion and ordinary orthogonality give
+<span class="math" data-tex="\(\sum_\chi^*|\sum_{n\le N}\chi(n)|^2=\sum_{d\mid q}\mu(q/d)\varphi(d)\sum_{h\bmod d}c_{q,d}(h)^2\)">\(\sum_\chi^*|\sum_{n\le N}\chi(n)|^2=\sum_{d\mid q}\mu(q/d)\varphi(d)\sum_{h\bmod d}c_{q,d}(h)^2\)</span>.
+Multiply by <span class="math" data-tex="\(q/\varphi(q)\)">\(q/\varphi(q)\)</span> and sum <span class="math" data-tex="\(2\le q\le Q\)">\(2\le q\le Q\)</span>. For example, <span class="math" data-tex="\((Q,N)=(8,12)\)">\((Q,N)=(8,12)\)</span> receives 5 from conductor 5, <span class="math" data-tex="\(35/6\)">\(35/6\)</span> from conductor 7, and 8 from conductor 8; the other nonprincipal conductors contribute zero. The large sieve bound is uniform, not an assertion that every example comes close to equality.</p>
+<h2 id="2-large-values-and-rectangular-bilinear-sums">2. Large values and rectangular bilinear sums</h2>
+<p>Write <span class="math" data-tex="\(E=\sum|a_n|^2\)">\(E=\sum|a_n|^2\)</span>. For <span class="math" data-tex="\(V&gt;0\)">\(V&gt;0\)</span>, (1.3) immediately implies</p>
+<span class="math math-display" data-tex="\[
+\sum_{\substack{q\le Q,\ \chi\bmod q\text{ primitive}\\ |S(\chi)|&gt;V}}
+\frac q{\varphi(q)}\le\frac{(N-1+Q^2)E}{V^2}.
+\tag{2.1}
+\]">\[
+\sum_{\substack{q\le Q,\ \chi\bmod q\text{ primitive}\\ |S(\chi)|&gt;V}}
+\frac q{\varphi(q)}\le\frac{(N-1+Q^2)E}{V^2}.
+\tag{2.1}
+\]</span>
+<p>The same expression bounds the unweighted number of those characters because every weight is at least 1. The family consists of pairs <span class="math" data-tex="\((q,\chi)\)">\((q,\chi)\)</span>, with <span class="math" data-tex="\(q\)">\(q\)</span> the primitive conductor.</p>
+<p>Let <span class="math" data-tex="\(a_m\)">\(a_m\)</span> be supported on <span class="math" data-tex="\(1\le m\le M\)">\(1\le m\le M\)</span> and <span class="math" data-tex="\(b_n\)">\(b_n\)</span> on <span class="math" data-tex="\(1\le n\le N\)">\(1\le n\le N\)</span>, with integer <span class="math" data-tex="\(M,N\ge1\)">\(M,N\ge1\)</span>. Put <span class="math" data-tex="\(A(\chi)=\sum_{m\le M}a_m\chi(m)\)">\(A(\chi)=\sum_{m\le M}a_m\chi(m)\)</span> and <span class="math" data-tex="\(B(\chi)=\sum_{n\le N}b_n\chi(n)\)">\(B(\chi)=\sum_{n\le N}b_n\chi(n)\)</span>. Complete multiplicativity gives <span class="math" data-tex="\(\sum_{m,n}a_mb_n\chi(mn)=A(\chi)B(\chi)\)">\(\sum_{m,n}a_mb_n\chi(mn)=A(\chi)B(\chi)\)</span>, including nonunits, where the character vanishes. Cauchy–Schwarz in the weighted family and two applications of (1.3) give</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\left|\sum_{m\le M}\sum_{n\le N}a_mb_n\chi(mn)\right|
+\le\sqrt{(M-1+Q^2)(N-1+Q^2)}\,\|a\|_2\|b\|_2.
+\tag{2.2}
+\]">\[
+\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\left|\sum_{m\le M}\sum_{n\le N}a_mb_n\chi(mn)\right|
+\le\sqrt{(M-1+Q^2)(N-1+Q^2)}\,\|a\|_2\|b\|_2.
+\tag{2.2}
+\]</span>
+<p>It is the character average that makes this useful. For a single chosen character, coefficients <span class="math" data-tex="\(a_m=\overline{\chi(m)}\)">\(a_m=\overline{\chi(m)}\)</span>, <span class="math" data-tex="\(b_n=\overline{\chi(n)}\)">\(b_n=\overline{\chi(n)}\)</span> can align every nonzero term.</p>
+<h2 id="3-separating-a-product-cutoff-including-the-maximum">3. Separating a product cutoff, including the maximum</h2>
+<p><strong>Theorem 3.1.</strong> With these supports,</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\max_{u\ge0}\left|\sum_{\substack{m\le M,\ n\le N\\ mn\le u}}a_mb_n\chi(mn)\right|
+\ll\sqrt{(M+Q^2)(N+Q^2)}\,\|a\|_2\|b\|_2\log(2MN).
+\tag{3.1}
+\]">\[
+\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\max_{u\ge0}\left|\sum_{\substack{m\le M,\ n\le N\\ mn\le u}}a_mb_n\chi(mn)\right|
+\ll\sqrt{(M+Q^2)(N+Q^2)}\,\|a\|_2\|b\|_2\log(2MN).
+\tag{3.1}
+\]</span>
+<p>The maximizing endpoint may differ for every character.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(P=MN\)">\(P=MN\)</span>. Only thresholds <span class="math" data-tex="\(K\in\{0,\ldots,P\}\)">\(K\in\{0,\ldots,P\}\)</span> matter. Replace each by <span class="math" data-tex="\(y=K+1/2\)">\(y=K+1/2\)</span>, including exactly the same positive integer products. Set <span class="math" data-tex="\(c=1/\log(2P)\)">\(c=1/\log(2P)\)</span>, <span class="math" data-tex="\(H=4P^2\)">\(H=4P^2\)</span>. The scalar Perron kernel gives</p>
+<span class="math math-display" data-tex="\[
+\mathbf1_{k&lt;y}
+=\frac1{2\pi}\int_{-H}^H\frac{(y/k)^{c+it}}{c+it}\,dt
++O\left((y/k)^c\min\left(1,\frac1{H|\log(y/k)|}\right)\right).
+\tag{3.2}
+\]">\[
+\mathbf1_{k&lt;y}
+=\frac1{2\pi}\int_{-H}^H\frac{(y/k)^{c+it}}{c+it}\,dt
++O\left((y/k)^c\min\left(1,\frac1{H|\log(y/k)|}\right)\right).
+\tag{3.2}
+\]</span>
+<p>This is the exact truncated inversion lemma used in the earlier explicit-formula lesson. There is no equality-endpoint term at a half-integer. For <span class="math" data-tex="\(1\le k\le P\)">\(1\le k\le P\)</span>, <span class="math" data-tex="\(1/2\le y\le P+1/2\)">\(1/2\le y\le P+1/2\)</span>, we have <span class="math" data-tex="\((y/k)^c\le e\)">\((y/k)^c\le e\)</span> and <span class="math" data-tex="\(|\log(y/k)|\ge|y-k|/\max(y,k)\ge1/(3P)\)">\(|\log(y/k)|\ge|y-k|/\max(y,k)\ge1/(3P)\)</span>; therefore each scalar error is <span class="math" data-tex="\(O(P/H)\)">\(O(P/H)\)</span>.</p>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+A_t(\chi)=\sum_{m\le M}\frac{a_m\chi(m)}{m^{c+it}},
+\qquad B_t(\chi)=\sum_{n\le N}\frac{b_n\chi(n)}{n^{c+it}}.
+\]">\[
+A_t(\chi)=\sum_{m\le M}\frac{a_m\chi(m)}{m^{c+it}},
+\qquad B_t(\chi)=\sum_{n\le N}\frac{b_n\chi(n)}{n^{c+it}}.
+\]</span>
+<p>Multiply (3.2) by the coefficients and sum. Cauchy–Schwarz in the two finite ranges bounds the accumulated error by <span class="math" data-tex="\(O(P\sqrt P\,\|a\|_2\|b\|_2/H)=O(\|a\|_2\|b\|_2)\)">\(O(P\sqrt P\,\|a\|_2\|b\|_2/H)=O(\|a\|_2\|b\|_2)\)</span>. Since <span class="math" data-tex="\(y^c\le e\)">\(y^c\le e\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\max_u\left|\sum_{mn\le u}a_mb_n\chi(mn)\right|
+\ll\int_{-H}^H\frac{|A_t(\chi)B_t(\chi)|}{|c+it|}\,dt
++\|a\|_2\|b\|_2.
+\tag{3.3}
+\]">\[
+\max_u\left|\sum_{mn\le u}a_mb_n\chi(mn)\right|
+\ll\int_{-H}^H\frac{|A_t(\chi)B_t(\chi)|}{|c+it|}\,dt
++\|a\|_2\|b\|_2.
+\tag{3.3}
+\]</span>
+<p>The right side no longer depends on the endpoint. Its summed error is <span class="math" data-tex="\(O(Q^2\|a\|_2\|b\|_2)\)">\(O(Q^2\|a\|_2\|b\|_2)\)</span>, because <span class="math" data-tex="\(\sum_{q\le Q}(q/\varphi(q))\sum_\chi^*1\le\sum_{q\le Q}q\le Q^2\)">\(\sum_{q\le Q}(q/\varphi(q))\sum_\chi^*1\le\sum_{q\le Q}q\le Q^2\)</span>. At every <span class="math" data-tex="\(t\)">\(t\)</span>, (2.2) applies to <span class="math" data-tex="\(a_mm^{-c-it}\)">\(a_mm^{-c-it}\)</span>, <span class="math" data-tex="\(b_nn^{-c-it}\)">\(b_nn^{-c-it}\)</span>, whose norms do not increase. Finally <span class="math" data-tex="\(\int_{-H}^Hdt/|c+it|\ll\log(2H/c)\ll\log(2P)\)">\(\int_{-H}^Hdt/|c+it|\ll\log(2H/c)\ll\log(2P)\)</span>, and <span class="math" data-tex="\(\sqrt{(M+Q^2)(N+Q^2)}\ge Q^2\)">\(\sqrt{(M+Q^2)(N+Q^2)}\ge Q^2\)</span> absorbs the error. This also covers <span class="math" data-tex="\(P=1\)">\(P=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The logarithm comes from a kernel of size <span class="math" data-tex="\(1/|t|\)">\(1/|t|\)</span>, rather than a union bound over all endpoints. Removing the endpoint from the majorant is what permits a different maximum for each character.</p>
+<p>For a restricted maximum <span class="math" data-tex="\(0\le u\le x\)">\(0\le u\le x\)</span>, <span class="math" data-tex="\(x\ge1\)">\(x\ge1\)</span>, first truncate both supports to indices at most <span class="math" data-tex="\(\lfloor x\rfloor\)">\(\lfloor x\rfloor\)</span>. Their norms cannot increase, and their new support product is at most <span class="math" data-tex="\(x^2\)">\(x^2\)</span>. Thus (3.1) also holds with <span class="math" data-tex="\(\log(2x)\)">\(\log(2x)\)</span> in place of <span class="math" data-tex="\(\log(2MN)\)">\(\log(2MN)\)</span>, retaining the original support factors <span class="math" data-tex="\(M+Q^2\)">\(M+Q^2\)</span>, <span class="math" data-tex="\(N+Q^2\)">\(N+Q^2\)</span>. This version is valid at <span class="math" data-tex="\(x=1\)">\(x=1\)</span> as well.</p>
+<h2 id="4-fixed-modulus-orthogonality-and-inducing-characters">4. Fixed-modulus orthogonality and inducing characters</h2>
+<p>For <span class="math" data-tex="\(\chi\pmod q\)">\(\chi\pmod q\)</span>, let <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span> be its unique primitive inducing character. Each primitive character with conductor dividing <span class="math" data-tex="\(q\)">\(q\)</span> occurs exactly once. On one period modulo <span class="math" data-tex="\(q\)">\(q\)</span>, the functions <span class="math" data-tex="\(\chi^*(n)\)">\(\chi^*(n)\)</span> are pairwise orthogonal: the product of two distinct ones, extended to the least common multiple of their conductors, is nonprincipal, since uniqueness of primitive induction would otherwise identify them. Its complete sum, including the multiple <span class="math" data-tex="\(q\)">\(q\)</span>, is zero. A function with conductor <span class="math" data-tex="\(d\mid q\)">\(d\mid q\)</span> has squared norm <span class="math" data-tex="\(q\varphi(d)/d\le q\)">\(q\varphi(d)/d\le q\)</span>.</p>
+<p>Bessel's inequality for these orthogonal vectors, equivalently the norm identity for their linear combinations and duality, therefore gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{\chi\bmod q}\left|\sum_{n=1}^q a_n\chi^*(n)\right|^2
+\le q\sum_{n=1}^q|a_n|^2.
+\tag{4.1}
+\]">\[
+\sum_{\chi\bmod q}\left|\sum_{n=1}^q a_n\chi^*(n)\right|^2
+\le q\sum_{n=1}^q|a_n|^2.
+\tag{4.1}
+\]</span>
+<p>This includes the conductor-one function, with squared norm <span class="math" data-tex="\(q\)">\(q\)</span>. Evaluating <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span> differs from evaluating the imprimitive <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, which vanishes at every nonunit modulo <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p>For a block of <span class="math" data-tex="\(N\)">\(N\)</span> consecutive integers, put <span class="math" data-tex="\(k=\lfloor(N-1)/q\rfloor+1\)">\(k=\lfloor(N-1)/q\rfloor+1\)</span>. Group its coefficients into residue classes. Each contains at most <span class="math" data-tex="\(k\)">\(k\)</span> terms, so Cauchy–Schwarz and ordinary character orthogonality give</p>
+<span class="math math-display" data-tex="\[
+\sum_{\chi\bmod q}\left|\sum_{M&lt;n\le M+N}a_n\chi(n)\right|^2
+\le k\varphi(q)\sum_{\substack{M&lt;n\le M+N\\(n,q)=1}}|a_n|^2.
+\tag{4.2}
+\]">\[
+\sum_{\chi\bmod q}\left|\sum_{M&lt;n\le M+N}a_n\chi(n)\right|^2
+\le k\varphi(q)\sum_{\substack{M&lt;n\le M+N\\(n,q)=1}}|a_n|^2.
+\tag{4.2}
+\]</span>
+<p>Using (4.1) in place of ordinary orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{\chi\bmod q}\left|\sum_{M&lt;n\le M+N}a_n\chi^*(n)\right|^2
+\le kq\sum_{M&lt;n\le M+N}|a_n|^2.
+\tag{4.3}
+\]">\[
+\sum_{\chi\bmod q}\left|\sum_{M&lt;n\le M+N}a_n\chi^*(n)\right|^2
+\le kq\sum_{M&lt;n\le M+N}|a_n|^2.
+\tag{4.3}
+\]</span>
+<p>Empty blocks contribute zero. These are the fixed-modulus inputs for the hybrid estimates.</p>
+<h2 id="5-gallagher-s-logarithmic-window">5. Gallagher's logarithmic window</h2>
+<p>For a finite Dirichlet polynomial <span class="math" data-tex="\(D(t)=\sum_n c_n n^{-it}\)">\(D(t)=\sum_n c_n n^{-it}\)</span> and <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, define <span class="math" data-tex="\(W(u)=\sum_{|\log n-u|\le h/2}c_n\)">\(W(u)=\sum_{|\log n-u|\le h/2}c_n\)</span>. Its Fourier transform with kernel <span class="math" data-tex="\(e^{-itu}\)">\(e^{-itu}\)</span> is <span class="math" data-tex="\(h\operatorname{sinc}(th/2)D(t)\)">\(h\operatorname{sinc}(th/2)D(t)\)</span>, where <span class="math" data-tex="\(\operatorname{sinc}(v)=\sin v/v\)">\(\operatorname{sinc}(v)=\sin v/v\)</span>. We have the exact identity</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}|h\operatorname{sinc}(th/2)D(t)|^2\,dt
+=2\pi\int_{\mathbb R}|W(u)|^2\,du.
+\tag{5.1}
+\]">\[
+\int_{\mathbb R}|h\operatorname{sinc}(th/2)D(t)|^2\,dt
+=2\pi\int_{\mathbb R}|W(u)|^2\,du.
+\tag{5.1}
+\]</span>
+<p>Here no general Plancherel theorem is needed. Expand both finite quadratic forms. The overlap of two intervals of length <span class="math" data-tex="\(h\)">\(h\)</span>, centered at <span class="math" data-tex="\(\log m\)">\(\log m\)</span> and <span class="math" data-tex="\(\log n\)">\(\log n\)</span>, is <span class="math" data-tex="\((h-|\log(m/n)|)_+\)">\((h-|\log(m/n)|)_+\)</span>. For their separation <span class="math" data-tex="\(d\)">\(d\)</span>, the integral on the left is</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}\frac{4\sin^2(th/2)}{t^2}\cos(dt)\,dt
+=\pi\bigl(|h+d|+|h-d|-2|d|\bigr)=2\pi(h-|d|)_+.
+\]">\[
+\int_{\mathbb R}\frac{4\sin^2(th/2)}{t^2}\cos(dt)\,dt
+=\pi\bigl(|h+d|+|h-d|-2|d|\bigr)=2\pi(h-|d|)_+.
+\]</span>
+<p>Rewrite its numerator as a sum of <span class="math" data-tex="\(1-\cos(at)\)">\(1-\cos(at)\)</span> terms, and use <span class="math" data-tex="\(\int_{\mathbb R}(1-\cos(at))dt/t^2=\pi|a|\)">\(\int_{\mathbb R}(1-\cos(at))dt/t^2=\pi|a|\)</span>, obtained by integration by parts and the sine-integral normalization in the preceding lesson. Absolute convergence justifies the finite expansions.</p>
+<p>For <span class="math" data-tex="\(|t|\le1/h\)">\(|t|\le1/h\)</span>, <span class="math" data-tex="\(|\operatorname{sinc}(th/2)|\ge1/2\)">\(|\operatorname{sinc}(th/2)|\ge1/2\)</span>. Center a time interval by replacing <span class="math" data-tex="\(c_n\)">\(c_n\)</span> with <span class="math" data-tex="\(c_nn^{-i(A+T/2)}\)">\(c_nn^{-i(A+T/2)}\)</span>, preserving magnitudes, and take <span class="math" data-tex="\(h=1/T\)">\(h=1/T\)</span>. Setting <span class="math" data-tex="\(y=e^{u-h/2}\)">\(y=e^{u-h/2}\)</span> in (5.1) proves</p>
+<span class="math math-display" data-tex="\[
+\int_A^{A+T}|D(t)|^2\,dt
+\ll T^2\int_0^\infty
+\left|\sum_{y&lt;n\le e^{1/T}y}c_nn^{-i(A+T/2)}\right|^2\frac{dy}y.
+\tag{5.2}
+\]">\[
+\int_A^{A+T}|D(t)|^2\,dt
+\ll T^2\int_0^\infty
+\left|\sum_{y&lt;n\le e^{1/T}y}c_nn^{-i(A+T/2)}\right|^2\frac{dy}y.
+\tag{5.2}
+\]</span>
+<p>This holds for every <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>. Changing window endpoints affects a set of <span class="math" data-tex="\(y\)">\(y\)</span> of measure zero.</p>
+<h2 id="6-continuous-hybrid-large-sieves">6. Continuous hybrid large sieves</h2>
+<p>Put <span class="math" data-tex="\(D(t,\chi)=\sum_{n\le N}a_n\chi(n)n^{-it}\)">\(D(t,\chi)=\sum_{n\le N}a_n\chi(n)n^{-it}\)</span>.</p>
+<p><strong>Theorem 6.1.</strong> Uniformly for real <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{\chi\bmod q}\int_A^{A+T}|D(t,\chi)|^2\,dt
+\ll\frac{\varphi(q)}q\sum_{\substack{n\le N\\(n,q)=1}}|a_n|^2(qT+n),
+\tag{6.1}
+\]">\[
+\sum_{\chi\bmod q}\int_A^{A+T}|D(t,\chi)|^2\,dt
+\ll\frac{\varphi(q)}q\sum_{\substack{n\le N\\(n,q)=1}}|a_n|^2(qT+n),
+\tag{6.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+\sum_{\chi\bmod q}\int_A^{A+T}|D(t,\chi^*)|^2\,dt
+\ll\sum_{n\le N}|a_n|^2(qT+n),
+\tag{6.2}
+\]">\[
+\sum_{\chi\bmod q}\int_A^{A+T}|D(t,\chi^*)|^2\,dt
+\ll\sum_{n\le N}|a_n|^2(qT+n),
+\tag{6.2}
+\]</span>
+<p>and, for <span class="math" data-tex="\(Q\ge1\)">\(Q\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\int_A^{A+T}|D(t,\chi)|^2\,dt
+\ll\sum_{n\le N}|a_n|^2(Q^2T+n).}
+\tag{6.3}
+\]">\[
+\boxed{\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\int_A^{A+T}|D(t,\chi)|^2\,dt
+\ll\sum_{n\le N}|a_n|^2(Q^2T+n).}
+\tag{6.3}
+\]</span>
+<p><strong>Proof for <span class="math" data-tex="\(T\ge1\)">\(T\ge1\)</span>.</strong> Apply (5.2) to each character. Put <span class="math" data-tex="\(\tau=e^{1/T}\)">\(\tau=e^{1/T}\)</span>, so <span class="math" data-tex="\(\tau-1\asymp1/T\)">\(\tau-1\asymp1/T\)</span>. The integer window <span class="math" data-tex="\((y,\tau y]\)">\((y,\tau y]\)</span> has span at most <span class="math" data-tex="\((\tau-1)y\)">\((\tau-1)y\)</span>. Equations (4.2), (4.3) and (1.3) bound its summed energy, respectively, by</p>
+<span class="math math-display" data-tex="\[
+\frac{\varphi(q)}q\bigl(q+(\tau-1)y\bigr)
+\sum_{\substack{y&lt;n\le\tau y\\(n,q)=1}}|a_n|^2,
+\]">\[
+\frac{\varphi(q)}q\bigl(q+(\tau-1)y\bigr)
+\sum_{\substack{y&lt;n\le\tau y\\(n,q)=1}}|a_n|^2,
+\]</span>
+<span class="math math-display" data-tex="\[
+\bigl(q+(\tau-1)y\bigr)\sum_{y&lt;n\le\tau y}|a_n|^2,
+\qquad
+\bigl(Q^2+(\tau-1)y\bigr)\sum_{y&lt;n\le\tau y}|a_n|^2.
+\]">\[
+\bigl(q+(\tau-1)y\bigr)\sum_{y&lt;n\le\tau y}|a_n|^2,
+\qquad
+\bigl(Q^2+(\tau-1)y\bigr)\sum_{y&lt;n\le\tau y}|a_n|^2.
+\]</span>
+<p>The span <span class="math" data-tex="\(N_y-1\)">\(N_y-1\)</span> in the sharp large sieve avoids an extra unit in the last expression. Interchange the nonnegative sum and integral. Index <span class="math" data-tex="\(n\)">\(n\)</span> occurs for <span class="math" data-tex="\(n/\tau\le y&lt;n\)">\(n/\tau\le y&lt;n\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+T^2\int_{n/\tau}^n\bigl(Q^2+(\tau-1)y\bigr)\frac{dy}y
+=Q^2T+T^2(\tau-1)n(1-\tau^{-1})\ll Q^2T+n.
+\]">\[
+T^2\int_{n/\tau}^n\bigl(Q^2+(\tau-1)y\bigr)\frac{dy}y
+=Q^2T+T^2(\tau-1)n(1-\tau^{-1})\ll Q^2T+n.
+\]</span>
+<p>The other two cases have the same calculation with <span class="math" data-tex="\(q\)">\(q\)</span> in place of <span class="math" data-tex="\(Q^2\)">\(Q^2\)</span>. The constants are absolute for <span class="math" data-tex="\(T\ge1\)">\(T\ge1\)</span>.</p>
+<p><strong>The small-height range.</strong> The logarithmic window becomes too long if <span class="math" data-tex="\(T&lt;1\)">\(T&lt;1\)</span>. A three-range argument gives all the same estimates. Treat (6.3) first; write <span class="math" data-tex="\(B=Q^2\)">\(B=Q^2\)</span>, <span class="math" data-tex="\(H=BT\)">\(H=BT\)</span>, and use the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm over the weighted family and the interval <span class="math" data-tex="\([A,A+T]\)">\([A,A+T]\)</span>.</p>
+<p>For indices <span class="math" data-tex="\(n\le H\)">\(n\le H\)</span>, the pointwise large sieve, integrated over this interval, gives squared norm at most <span class="math" data-tex="\(T(B+H)\sum_{n\le H}|a_n|^2\le2H\sum_{n\le H}|a_n|^2\)">\(T(B+H)\sum_{n\le H}|a_n|^2\le2H\sum_{n\le H}|a_n|^2\)</span>. For <span class="math" data-tex="\(n&gt;B\)">\(n&gt;B\)</span>, enlarge the time interval to length 1 and apply the already proved case of (6.3). Since <span class="math" data-tex="\(B+n\le2n\)">\(B+n\le2n\)</span>, this gives squared norm <span class="math" data-tex="\(\ll\sum_{n&gt;B}n|a_n|^2\)">\(\ll\sum_{n&gt;B}n|a_n|^2\)</span>.</p>
+<p>Partition the middle indices <span class="math" data-tex="\(H&lt;n\le B\)">\(H&lt;n\le B\)</span> into blocks <span class="math" data-tex="\((x_j,2x_j]\)">\((x_j,2x_j]\)</span>, where <span class="math" data-tex="\(x_j=2^jH\)">\(x_j=2^jH\)</span>, clipping the last at <span class="math" data-tex="\(B\)">\(B\)</span>. The pointwise large sieve gives squared norm on a block at most <span class="math" data-tex="\(T(B+x_j)E_j\)">\(T(B+x_j)E_j\)</span>, where <span class="math" data-tex="\(E_j\)">\(E_j\)</span> is its coefficient energy. The triangle inequality for the family-time <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm and Cauchy–Schwarz therefore bound the total middle norm by</p>
+<span class="math math-display" data-tex="\[
+\sum_j\sqrt{T(B+x_j)E_j}
+\le\left(\sum_j(2^{-j}+T)\right)^{1/2}
+\left(\sum_jx_jE_j\right)^{1/2}
+\ll\left(\sum_{H&lt;n\le B}n|a_n|^2\right)^{1/2}.
+\]">\[
+\sum_j\sqrt{T(B+x_j)E_j}
+\le\left(\sum_j(2^{-j}+T)\right)^{1/2}
+\left(\sum_jx_jE_j\right)^{1/2}
+\ll\left(\sum_{H&lt;n\le B}n|a_n|^2\right)^{1/2}.
+\]</span>
+<p>There are at most <span class="math" data-tex="\(1+\log_2(1/T)\)">\(1+\log_2(1/T)\)</span> blocks, and <span class="math" data-tex="\(T(1+\log_2(1/T))\)">\(T(1+\log_2(1/T))\)</span> is uniformly bounded. The geometric sum is bounded as well. Empty blocks, including initial blocks below 1 when <span class="math" data-tex="\(H&lt;1\)">\(H&lt;1\)</span>, contribute zero. Add the three norms and square, using <span class="math" data-tex="\((u+v+w)^2\le3(u^2+v^2+w^2)\)">\((u+v+w)^2\le3(u^2+v^2+w^2)\)</span>; this proves (6.3) for <span class="math" data-tex="\(0&lt;T&lt;1\)">\(0&lt;T&lt;1\)</span>.</p>
+<p>For (6.1) use the same argument with <span class="math" data-tex="\(B=q\)">\(B=q\)</span>, restrict to units, and retain the common factor <span class="math" data-tex="\(\varphi(q)/q\)">\(\varphi(q)/q\)</span>. For (6.2) again use <span class="math" data-tex="\(B=q\)">\(B=q\)</span>, now with (4.3) and no unit restriction. Their pointwise block bounds are precisely the bounds required above. This finishes all positive heights. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-sampling-at-separated-heights-and-to-the-right">7. Sampling at separated heights and to the right</h2>
+<p>Let <span class="math" data-tex="\(T\ge2\)">\(T\ge2\)</span>, <span class="math" data-tex="\(0&lt;\delta\le1\)">\(0&lt;\delta\le1\)</span>. For each character, choose points <span class="math" data-tex="\(t_r(\chi)\in[A,A+T]\)">\(t_r(\chi)\in[A,A+T]\)</span>, separated by at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span> for that character. Points belonging to different characters need not be separated. The midpoint inequality proved in the analytic large sieve lesson, applied to <span class="math" data-tex="\(|D(t,\chi)|^2\)">\(|D(t,\chi)|^2\)</span> on an interval of length <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+|D(t_r,\chi)|^2\le\delta^{-1}\int_{t_r-\delta/2}^{t_r+\delta/2}|D(t,\chi)|^2dt
++\int_{t_r-\delta/2}^{t_r+\delta/2}|D(t,\chi)D_t&#x27;(t,\chi)|dt.
+\tag{7.1}
+\]">\[
+|D(t_r,\chi)|^2\le\delta^{-1}\int_{t_r-\delta/2}^{t_r+\delta/2}|D(t,\chi)|^2dt
++\int_{t_r-\delta/2}^{t_r+\delta/2}|D(t,\chi)D_t&#x27;(t,\chi)|dt.
+\tag{7.1}
+\]</span>
+<p>The intervals have disjoint interiors for each character. Sum (7.1), then use Cauchy–Schwarz for the character-time measure. Theorem 6.1 applies on <span class="math" data-tex="\([A-1,A+T+1]\)">\([A-1,A+T+1]\)</span>, of length at most <span class="math" data-tex="\(2T\)">\(2T\)</span>, both to <span class="math" data-tex="\(a_n\)">\(a_n\)</span> and to <span class="math" data-tex="\(-ia_n\log n\)">\(-ia_n\log n\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*\sum_r
+\left|\sum_{n\le N}a_n\chi(n)n^{-it_r(\chi)}\right|^2
+\ll\left(\delta^{-1}+\log(2N)\right)
+\sum_{n\le N}|a_n|^2(Q^2T+n).
+\tag{7.2}
+\]">\[
+\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*\sum_r
+\left|\sum_{n\le N}a_n\chi(n)n^{-it_r(\chi)}\right|^2
+\ll\left(\delta^{-1}+\log(2N)\right)
+\sum_{n\le N}|a_n|^2(Q^2T+n).
+\tag{7.2}
+\]</span>
+<p>The corresponding fixed-modulus estimates have, respectively, right sides</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\left(\delta^{-1}+\log(2N)\right)\frac{\varphi(q)}q
+\sum_{\substack{n\le N\\(n,q)=1}}|a_n|^2(qT+n),\\
+\left(\delta^{-1}+\log(2N)\right)\sum_{n\le N}|a_n|^2(qT+n).
+\end{aligned}
+\tag{7.3}
+\]">\[
+\begin{aligned}
+\left(\delta^{-1}+\log(2N)\right)\frac{\varphi(q)}q
+\sum_{\substack{n\le N\\(n,q)=1}}|a_n|^2(qT+n),\\
+\left(\delta^{-1}+\log(2N)\right)\sum_{n\le N}|a_n|^2(qT+n).
+\end{aligned}
+\tag{7.3}
+\]</span>
+<p>for evaluation at <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span>, respectively. This proves the separated-height hybrid bounds, including their coefficientwise weights.</p>
+<p>One can also sample <span class="math" data-tex="\(s_r=\sigma_r+it_r\)">\(s_r=\sigma_r+it_r\)</span> anywhere in <span class="math" data-tex="\(\sigma_r\ge0\)">\(\sigma_r\ge0\)</span>. The exact loss is a slowly varying weight</p>
+<span class="math math-display" data-tex="\[
+W_N(n)=1+\log\left(\frac{\log(2N)}{\log(2n)}\right)\ge1.
+\tag{7.4}
+\]">\[
+W_N(n)=1+\log\left(\frac{\log(2N)}{\log(2n)}\right)\ge1.
+\tag{7.4}
+\]</span>
+<p><strong>Theorem 7.1.</strong> Under the preceding separation assumptions, with arbitrary <span class="math" data-tex="\(\sigma_r\ge0\)">\(\sigma_r\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*\sum_r
+\left|\sum_{n\le N}a_n\chi(n)n^{-s_r(\chi)}\right|^2
+\ll\left(\delta^{-1}+\log(2N)\right)
+\sum_{n\le N}|a_n|^2(Q^2T+n)W_N(n).
+\tag{7.5}
+\]">\[
+\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*\sum_r
+\left|\sum_{n\le N}a_n\chi(n)n^{-s_r(\chi)}\right|^2
+\ll\left(\delta^{-1}+\log(2N)\right)
+\sum_{n\le N}|a_n|^2(Q^2T+n)W_N(n).
+\tag{7.5}
+\]</span>
+<p>The two fixed-modulus forms are obtained from (7.3) by multiplying every coefficient energy by the same <span class="math" data-tex="\(W_N(n)\)">\(W_N(n)\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(D_u(t,\chi)=\sum_{n\le u}a_n\chi(n)n^{-it}\)">\(D_u(t,\chi)=\sum_{n\le u}a_n\chi(n)n^{-it}\)</span>. Partial summation gives, for <span class="math" data-tex="\(\sigma\ge0\)">\(\sigma\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le N}a_n\chi(n)n^{-\sigma-it}
+=N^{-\sigma}D_N(t,\chi)+\sigma\int_1^N D_u(t,\chi)u^{-\sigma-1}du.
+\]">\[
+\sum_{n\le N}a_n\chi(n)n^{-\sigma-it}
+=N^{-\sigma}D_N(t,\chi)+\sigma\int_1^N D_u(t,\chi)u^{-\sigma-1}du.
+\]</span>
+<p>The nonnegative weights on the right have total mass 1, including the case <span class="math" data-tex="\(\sigma=0\)">\(\sigma=0\)</span>. Jensen's inequality therefore bounds its squared modulus by the same average of <span class="math" data-tex="\(|D_u|^2\)">\(|D_u|^2\)</span>. For <span class="math" data-tex="\(1\le u&lt;2\)">\(1\le u&lt;2\)</span>, only <span class="math" data-tex="\(a_1\)">\(a_1\)</span> occurs; for <span class="math" data-tex="\(u\ge2\)">\(u\ge2\)</span>,
+<span class="math" data-tex="\(\sup_{\sigma\ge0}\sigma u^{-\sigma}=1/(e\log u)\)">\(\sup_{\sigma\ge0}\sigma u^{-\sigma}=1/(e\log u)\)</span>. Hence, uniformly in the real part,</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_{n\le N}a_n\chi(n)n^{-\sigma-it}\right|^2
+\le |a_1|^2+|D_N(t,\chi)|^2
++\frac1e\int_2^N\frac{|D_u(t,\chi)|^2}{u\log u}\,du,
+\tag{7.6}
+\]">\[
+\left|\sum_{n\le N}a_n\chi(n)n^{-\sigma-it}\right|^2
+\le |a_1|^2+|D_N(t,\chi)|^2
++\frac1e\int_2^N\frac{|D_u(t,\chi)|^2}{u\log u}\,du,
+\tag{7.6}
+\]</span>
+<p>where the integral is omitted if <span class="math" data-tex="\(N&lt;2\)">\(N&lt;2\)</span>. Apply (7.2) to each truncated polynomial, enlarging its logarithmic factor to <span class="math" data-tex="\(\log(2N)+\delta^{-1}\)">\(\log(2N)+\delta^{-1}\)</span>. The constant term costs at most <span class="math" data-tex="\(O(Q^2T\delta^{-1}|a_1|^2)\)">\(O(Q^2T\delta^{-1}|a_1|^2)\)</span>, since each character has at most <span class="math" data-tex="\(1+T/\delta\)">\(1+T/\delta\)</span> sample points and the total weighted character count is at most <span class="math" data-tex="\(Q^2\)">\(Q^2\)</span>. Interchanging the remaining nonnegative integrals and sums, coefficient <span class="math" data-tex="\(n\)">\(n\)</span> acquires</p>
+<span class="math math-display" data-tex="\[
+\int_{\max(2,n)}^N\frac{du}{u\log u}
+=\log\left(\frac{\log N}{\log\max(2,n)}\right)
+\ll W_N(n)
+\]">\[
+\int_{\max(2,n)}^N\frac{du}{u\log u}
+=\log\left(\frac{\log N}{\log\max(2,n)}\right)
+\ll W_N(n)
+\]</span>
+<p>when the integration interval is nonempty. For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, use <span class="math" data-tex="\(\log(2n)\le2\log n\)">\(\log(2n)\le2\log n\)</span>; for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, absorb the bounded change of logarithm into the added 1. The <span class="math" data-tex="\(|D_N|^2\)">\(|D_N|^2\)</span> term supplies the other part of that 1. The fixed-modulus cases use their own versions of (7.3); their character counts are <span class="math" data-tex="\(\varphi(q)\le q\)">\(\varphi(q)\le q\)</span>, compatible with both stated energies. This proves all three assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The outer logarithm in (7.4) is essential: this is <span class="math" data-tex="\(1+\log(\log(2N)/\log(2n))\)">\(1+\log(\log(2N)/\log(2n))\)</span>, not a quotient with only the numerator inside a second logarithm.</p>
+<h2 id="8-the-divisor-energy-for-fourth-moments">8. The divisor energy for fourth moments</h2>
+<p>Squaring an <span class="math" data-tex="\(L\)">\(L\)</span>-function replaces the coefficients 1 by <span class="math" data-tex="\(d(n)\)">\(d(n)\)</span>, the number of divisors of <span class="math" data-tex="\(n\)">\(n\)</span>. We need the following elementary estimates, with <span class="math" data-tex="\(X\ge1\)">\(X\ge1\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le X}d(n)^2\ll X\log^3(2X),\qquad
+\sum_{n\le X}\frac{d(n)^2}{n}\ll\log^4(2X).
+\tag{8.1}
+\]">\[
+\sum_{n\le X}d(n)^2\ll X\log^3(2X),\qquad
+\sum_{n\le X}\frac{d(n)^2}{n}\ll\log^4(2X).
+\tag{8.1}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(d(n)^2\le d_4(n)\)">\(d(n)^2\le d_4(n)\)</span>: at a prime power, this is
+<span class="math" data-tex="\((k+1)^2\le\binom{k+3}{3}\)">\((k+1)^2\le\binom{k+3}{3}\)</span>, equivalent for <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span> to <span class="math" data-tex="\(k(k-1)\ge0\)">\(k(k-1)\ge0\)</span>. Multiply over primes. Counting ordered products of four positive integers then gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le X}d_4(n)
+=\sum_{abc\le X}\left\lfloor\frac X{abc}\right\rfloor
+\le X\left(\sum_{m\le X}\frac1m\right)^3,
+\]">\[
+\sum_{n\le X}d_4(n)
+=\sum_{abc\le X}\left\lfloor\frac X{abc}\right\rfloor
+\le X\left(\sum_{m\le X}\frac1m\right)^3,
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le X}\frac{d_4(n)}n
+=\sum_{abcd\le X}\frac1{abcd}
+\le\left(\sum_{m\le X}\frac1m\right)^4.
+\]">\[
+\sum_{n\le X}\frac{d_4(n)}n
+=\sum_{abcd\le X}\frac1{abcd}
+\le\left(\sum_{m\le X}\frac1m\right)^4.
+\]</span>
+<p>Partial summation, or summation over dyadic blocks, further yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{n\le X}d(n)^2n^{-1+\theta}&amp;\ll_\theta X^\theta\log^3(2X),\\
+\sum_{n&gt;X}d(n)^2n^{-1-\theta}&amp;\ll_\theta X^{-\theta}\log^3(2X).
+\end{aligned}
+\tag{8.2}
+\]">\[
+\begin{aligned}
+\sum_{n\le X}d(n)^2n^{-1+\theta}&amp;\ll_\theta X^\theta\log^3(2X),\\
+\sum_{n&gt;X}d(n)^2n^{-1-\theta}&amp;\ll_\theta X^{-\theta}\log^3(2X).
+\end{aligned}
+\tag{8.2}
+\]</span>
+<p>for every fixed <span class="math" data-tex="\(\theta&gt;0\)">\(\theta&gt;0\)</span>. The constants can be chosen uniformly when <span class="math" data-tex="\(\theta\)">\(\theta\)</span> ranges in a compact subinterval of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>: the geometric block sums, including the factors <span class="math" data-tex="\((1+j)^3\)">\((1+j)^3\)</span> in the tail, converge uniformly. These estimates will also control the two remainders of our smoothing formula.</p>
+<h2 id="9-a-smoothed-functional-equation-with-its-remainders">9. A smoothed functional equation, with its remainders</h2>
+<p>Here is a self-contained bridge from the functional equation in lesson 05 to the fourth moment. For a primitive character of conductor <span class="math" data-tex="\(q\)">\(q\)</span> and parity <span class="math" data-tex="\(a\in\{0,1\}\)">\(a\in\{0,1\}\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+G_\chi(s)=\left(\frac q\pi\right)^{s+a}\Gamma\left(\frac{s+a}{2}\right)^2.
+\]">\[
+G_\chi(s)=\left(\frac q\pi\right)^{s+a}\Gamma\left(\frac{s+a}{2}\right)^2.
+\]</span>
+<p>Thus <span class="math" data-tex="\(G_\chi(s)L(s,\chi)^2=\Lambda(s,\chi)^2\)">\(G_\chi(s)L(s,\chi)^2=\Lambda(s,\chi)^2\)</span>, and the completed functional equation reads
+<span class="math" data-tex="\(\Lambda(s,\chi)^2=\varepsilon_\chi^2\Lambda(1-s,\overline\chi)^2\)">\(\Lambda(s,\chi)^2=\varepsilon_\chi^2\Lambda(1-s,\overline\chi)^2\)</span>, with <span class="math" data-tex="\(|\varepsilon_\chi|=1\)">\(|\varepsilon_\chi|=1\)</span>. Throughout this section take <span class="math" data-tex="\(3/10\le\Re s\le7/10\)">\(3/10\le\Re s\le7/10\)</span>. Define the absolutely convergent integral</p>
+<span class="math math-display" data-tex="\[
+I_\chi(s)=\frac1{2\pi i}\int_{(1)}
+\frac{G_\chi(s+w)}{G_\chi(s)}L(s+w,\chi)^2\frac{e^{w^2}}w\,dw.
+\tag{9.1}
+\]">\[
+I_\chi(s)=\frac1{2\pi i}\int_{(1)}
+\frac{G_\chi(s+w)}{G_\chi(s)}L(s+w,\chi)^2\frac{e^{w^2}}w\,dw.
+\tag{9.1}
+\]</span>
+<p>The notation <span class="math" data-tex="\(\int_{(c)}\)">\(\int_{(c)}\)</span> means upward integration on <span class="math" data-tex="\(\Re w=c\)">\(\Re w=c\)</span>. For <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span> the completed function is entire. Shift the line from 1 to <span class="math" data-tex="\(-1\)">\(-1\)</span>; its only pole is the factor <span class="math" data-tex="\(1/w\)">\(1/w\)</span>, of residue <span class="math" data-tex="\(L(s,\chi)^2\)">\(L(s,\chi)^2\)</span>. The functional equation followed by <span class="math" data-tex="\(w\mapsto-w\)">\(w\mapsto-w\)</span> turns the new integral into
+<span class="math" data-tex="\(-\varepsilon_\chi^2G_\chi(1-s)I_{\overline\chi}(1-s)/G_\chi(s)\)">\(-\varepsilon_\chi^2G_\chi(1-s)I_{\overline\chi}(1-s)/G_\chi(s)\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)^2=I_\chi(s)
++\varepsilon_\chi^2\frac{G_\chi(1-s)}{G_\chi(s)}I_{\overline\chi}(1-s)-P_\chi(s).
+\tag{9.2}
+\]">\[
+L(s,\chi)^2=I_\chi(s)
++\varepsilon_\chi^2\frac{G_\chi(1-s)}{G_\chi(s)}I_{\overline\chi}(1-s)-P_\chi(s).
+\tag{9.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(P_\chi=0\)">\(P_\chi=0\)</span> for <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>. For <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, the primitive character is the zeta function, and <span class="math" data-tex="\(P_\chi\)">\(P_\chi\)</span> is exactly the sum of the residues of
+<span class="math" data-tex="\(\Lambda(s+w)^2 e^{w^2}/(wG_\chi(s))\)">\(\Lambda(s+w)^2 e^{w^2}/(wG_\chi(s))\)</span> at <span class="math" data-tex="\(w=-s,1-s\)">\(w=-s,1-s\)</span>. They are double poles. Neither is <span class="math" data-tex="\(w=0\)">\(w=0\)</span> in our strip. All shifts are justified by the Gaussian decay on horizontal sides, the functional equation, and the fixed-strip growth established in lesson 05.</p>
+<p>For later use,</p>
+<span class="math math-display" data-tex="\[
+|P_1(\sigma+it)|\ll e^{-t^2/2}
+\quad(3/10\le\sigma\le7/10).
+\tag{9.3}
+\]">\[
+|P_1(\sigma+it)|\ll e^{-t^2/2}
+\quad(3/10\le\sigma\le7/10).
+\tag{9.3}
+\]</span>
+<p>To verify this, write the two fixed Laurent expansions of <span class="math" data-tex="\(\Lambda(z)^2\)">\(\Lambda(z)^2\)</span> at <span class="math" data-tex="\(z=0,1\)">\(z=0,1\)</span>. Each residue is a linear combination of the value and derivative of <span class="math" data-tex="\(e^{w^2}/w\)">\(e^{w^2}/w\)</span> at <span class="math" data-tex="\(w=-s\)">\(w=-s\)</span> or <span class="math" data-tex="\(1-s\)">\(1-s\)</span>, divided by <span class="math" data-tex="\(G_1(s)\)">\(G_1(s)\)</span>. Their real parts stay a distance at least <span class="math" data-tex="\(3/10\)">\(3/10\)</span> from zero. The values are bounded by a fixed polynomial in <span class="math" data-tex="\(1+|t|\)">\(1+|t|\)</span> times <span class="math" data-tex="\(e^{-t^2}\)">\(e^{-t^2}\)</span>; the reciprocal gamma square is bounded by another such polynomial times <span class="math" data-tex="\(e^{\pi|t|/2}\)">\(e^{\pi|t|/2}\)</span>, by Stirling's formula. The resulting expression is <span class="math" data-tex="\(O(e^{-t^2/2})\)">\(O(e^{-t^2/2})\)</span> for large <span class="math" data-tex="\(|t|\)">\(|t|\)</span>, and is bounded on the remaining compact set. This proves (9.3), rather than discarding the principal character.</p>
+<p>Let <span class="math" data-tex="\(b=1/4\)">\(b=1/4\)</span> and <span class="math" data-tex="\(X\ge1\)">\(X\ge1\)</span>. On the line in (9.1), expand the absolutely convergent series
+<span class="math" data-tex="\(L(s+w,\chi)^2=\sum_{n\ge1}d(n)\chi(n)n^{-s-w}\)">\(L(s+w,\chi)^2=\sum_{n\ge1}d(n)\chi(n)n^{-s-w}\)</span>, and split it at <span class="math" data-tex="\(X\)">\(X\)</span>. Shift only the finite part to <span class="math" data-tex="\(\Re w=-b\)">\(\Re w=-b\)</span>, crossing the residue at zero. Since <span class="math" data-tex="\(\Re(s-b)&gt;0\)">\(\Re(s-b)&gt;0\)</span>, no gamma pole is crossed. We obtain the exact decomposition</p>
+<span class="math math-display" data-tex="\[
+I_\chi(s)=\sum_{n\le X}d(n)\chi(n)n^{-s}+E^-_\chi(s;X)+E^+_\chi(s;X),
+\tag{9.4}
+\]">\[
+I_\chi(s)=\sum_{n\le X}d(n)\chi(n)n^{-s}+E^-_\chi(s;X)+E^+_\chi(s;X),
+\tag{9.4}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+E^-_\chi(s;X)=\frac1{2\pi i}\int_{(-b)}
+\frac{G_\chi(s+w)}{G_\chi(s)}\frac{e^{w^2}}w
+\sum_{n\le X}d(n)\chi(n)n^{-s-w}\,dw,
+\tag{9.5}
+\]">\[
+E^-_\chi(s;X)=\frac1{2\pi i}\int_{(-b)}
+\frac{G_\chi(s+w)}{G_\chi(s)}\frac{e^{w^2}}w
+\sum_{n\le X}d(n)\chi(n)n^{-s-w}\,dw,
+\tag{9.5}
+\]</span>
+<span class="math math-display" data-tex="\[
+E^+_\chi(s;X)=\frac1{2\pi i}\int_{(1)}
+\frac{G_\chi(s+w)}{G_\chi(s)}\frac{e^{w^2}}w
+\sum_{n&gt;X}d(n)\chi(n)n^{-s-w}\,dw.
+\tag{9.6}
+\]">\[
+E^+_\chi(s;X)=\frac1{2\pi i}\int_{(1)}
+\frac{G_\chi(s+w)}{G_\chi(s)}\frac{e^{w^2}}w
+\sum_{n&gt;X}d(n)\chi(n)n^{-s-w}\,dw.
+\tag{9.6}
+\]</span>
+<p>The positive line remains at 1 so that the infinite tail is absolutely convergent throughout the prescribed strip.</p>
+<p>To estimate these formulas in a family, group conductors in <span class="math" data-tex="\(R/2&lt;q\le R\)">\(R/2&lt;q\le R\)</span>, where <span class="math" data-tex="\(R\ge1\)">\(R\ge1\)</span>, and heights in <span class="math" data-tex="\([U,2U]\)">\([U,2U]\)</span>, where <span class="math" data-tex="\(U\ge1\)">\(U\ge1\)</span>. We may instead use <span class="math" data-tex="\([0,2]\)">\([0,2]\)</span> when <span class="math" data-tex="\(U=1\)">\(U=1\)</span>, or shorten any of these intervals. Set <span class="math" data-tex="\(X=R(U+1)\)">\(X=R(U+1)\)</span>, so <span class="math" data-tex="\(X\asymp q(1+|t|)\)">\(X\asymp q(1+|t|)\)</span>. Uniformly in these blocks, for <span class="math" data-tex="\(u=-b\)">\(u=-b\)</span> or <span class="math" data-tex="\(u=1\)">\(u=1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|\frac{G_\chi(s+u+iv)}{G_\chi(s)}\right|
+\ll X^u(1+|v|)^C e^{C|v|},
+\qquad
+\left|\frac{G_\chi(1-s)}{G_\chi(s)}\right|
+\ll\bigl(q(1+|t|)\bigr)^{1-2\sigma}.
+\tag{9.7}
+\]">\[
+\left|\frac{G_\chi(s+u+iv)}{G_\chi(s)}\right|
+\ll X^u(1+|v|)^C e^{C|v|},
+\qquad
+\left|\frac{G_\chi(1-s)}{G_\chi(s)}\right|
+\ll\bigl(q(1+|t|)\bigr)^{1-2\sigma}.
+\tag{9.7}
+\]</span>
+<p>Here and below <span class="math" data-tex="\(C\)">\(C\)</span> denotes an absolute fixed constant, not necessarily the same at different occurrences. For completeness, fixed-strip Stirling bounds the modulus of a gamma square at height <span class="math" data-tex="\(t\)">\(t\)</span> by constants times
+<span class="math" data-tex="\((1+|t|)^{\Re z-1}e^{-\pi|t|/2}\)">\((1+|t|)^{\Re z-1}e^{-\pi|t|/2}\)</span>, where <span class="math" data-tex="\(z\)">\(z\)</span> is its unsplit argument <span class="math" data-tex="\(s+a\)">\(s+a\)</span>. On <span class="math" data-tex="\(|v|\le(1+|t|)/2\)">\(|v|\le(1+|t|)/2\)</span>, the polynomial factors in the ratio are comparable to <span class="math" data-tex="\((1+|t|)^u\)">\((1+|t|)^u\)</span>, and the exponential ratio is at most <span class="math" data-tex="\(e^{\pi|v|/2}\)">\(e^{\pi|v|/2}\)</span>. On the complementary range, <span class="math" data-tex="\(1+|t|\ll1+|v|\)">\(1+|t|\ll1+|v|\)</span>; any extra polynomial factors are absorbed into <span class="math" data-tex="\((1+|v|)^C\)">\((1+|v|)^C\)</span>, while the same exponential bound still holds. On bounded heights, the gamma arguments have positive real parts and no poles or zeros, so compactness supplies the bounds. The conductor factor contributes <span class="math" data-tex="\((q/\pi)^u\)">\((q/\pi)^u\)</span>. The second assertion follows directly by comparing the arguments <span class="math" data-tex="\(1-s+a\)">\(1-s+a\)</span> and <span class="math" data-tex="\(s+a\)">\(s+a\)</span> at opposite heights. This proves (9.7) using the Stirling estimates imported in lesson 05.</p>
+<p>Use the weighted family-time norm</p>
+<span class="math math-display" data-tex="\[
+\|F\|_{R,U}^2=
+\sum_{R/2&lt;q\le R}\frac q{\varphi(q)}\sum_\chi^*
+\int_J |F(t,\chi)|^2dt,
+\]">\[
+\|F\|_{R,U}^2=
+\sum_{R/2&lt;q\le R}\frac q{\varphi(q)}\sum_\chi^*
+\int_J |F(t,\chi)|^2dt,
+\]</span>
+<p>where <span class="math" data-tex="\(J\)">\(J\)</span> is one of the preceding intervals. If <span class="math" data-tex="\(s=\sigma+it\)">\(s=\sigma+it\)</span>, the continuous hybrid sieve, including translated intervals, gives</p>
+<span class="math math-display" data-tex="\[
+\left\|\sum_n c_n\chi(n)n^{-it-iv}\right\|_{R,U}^2
+\ll\sum_n|c_n|^2(R^2U+n)
+\tag{9.8}
+\]">\[
+\left\|\sum_n c_n\chi(n)n^{-it-iv}\right\|_{R,U}^2
+\ll\sum_n|c_n|^2(R^2U+n)
+\tag{9.8}
+\]</span>
+<p>for every real <span class="math" data-tex="\(v\)">\(v\)</span>. Infinite coefficient sequences with finite right side follow by completing finite partial sums in this <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm.</p>
+<p>Write <span class="math" data-tex="\(\eta=\sigma-1/2\)">\(\eta=\sigma-1/2\)</span>, and assume
+<span class="math" data-tex="\(|\eta|\le1/(4\log(QT))\)">\(|\eta|\le1/(4\log(QT))\)</span>, where <span class="math" data-tex="\(Q,T\ge2\)">\(Q,T\ge2\)</span>, <span class="math" data-tex="\(R\le Q\)">\(R\le Q\)</span>, <span class="math" data-tex="\(U\le T\)">\(U\le T\)</span>. This places <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> strictly between <span class="math" data-tex="\(3/10\)">\(3/10\)</span> and <span class="math" data-tex="\(7/10\)">\(7/10\)</span>. Moreover <span class="math" data-tex="\(X^{2|\eta|}\ll1\)">\(X^{2|\eta|}\ll1\)</span>, uniformly: <span class="math" data-tex="\(X\le Q(T+1)\le(3/2)QT\)">\(X\le Q(T+1)\le(3/2)QT\)</span>. Equations (8.1), (8.2), and (9.8) imply</p>
+<span class="math math-display" data-tex="\[
+\left\|\sum_{n\le X}d(n)\chi(n)n^{-\sigma-it}\right\|_{R,U}^2
+\ll(R^2U+X)\log^4(2X)
+\ll R^2U\log^4(2X).
+\tag{9.9}
+\]">\[
+\left\|\sum_{n\le X}d(n)\chi(n)n^{-\sigma-it}\right\|_{R,U}^2
+\ll(R^2U+X)\log^4(2X)
+\ll R^2U\log^4(2X).
+\tag{9.9}
+\]</span>
+<p>In the last inequality <span class="math" data-tex="\(X=R(U+1)\le2R^2U\)">\(X=R(U+1)\le2R^2U\)</span>. For the first, the <span class="math" data-tex="\(R^2U\)">\(R^2U\)</span> term uses <span class="math" data-tex="\(n^{-2\eta}\le X^{2|\eta|}\)">\(n^{-2\eta}\le X^{2|\eta|}\)</span> and the second part of (8.1); the term with <span class="math" data-tex="\(n\)">\(n\)</span> uses (8.2) with <span class="math" data-tex="\(\theta=2-2\sigma&gt;0\)">\(\theta=2-2\sigma&gt;0\)</span>.</p>
+<p>Minkowski's integral inequality in (9.5), combined with (9.7) and the Gaussian, gives</p>
+<span class="math math-display" data-tex="\[
+\|E^-_\chi(\sigma+it;X)\|_{R,U}^2
+\ll X^{-2b}\sum_{n\le X}d(n)^2n^{-2\sigma+2b}(R^2U+n)
+\ll(R^2U+X)\log^3(2X).
+\tag{9.10}
+\]">\[
+\|E^-_\chi(\sigma+it;X)\|_{R,U}^2
+\ll X^{-2b}\sum_{n\le X}d(n)^2n^{-2\sigma+2b}(R^2U+n)
+\ll(R^2U+X)\log^3(2X).
+\tag{9.10}
+\]</span>
+<p>Indeed the <span class="math" data-tex="\(v\)">\(v\)</span> kernel is bounded by a constant times
+<span class="math" data-tex="\(e^{-v^2+C|v|}(1+|v|)^C/|{-b+iv}|\)">\(e^{-v^2+C|v|}(1+|v|)^C/|{-b+iv}|\)</span>, with a finite integral. In (8.2) the head exponent <span class="math" data-tex="\(\theta=2b-2\eta\)">\(\theta=2b-2\eta\)</span> stays in a compact positive interval, and after multiplication by <span class="math" data-tex="\(X^{-2b}\)">\(X^{-2b}\)</span> leaves the bounded factor <span class="math" data-tex="\(X^{-2\eta}\)">\(X^{-2\eta}\)</span>. The additional <span class="math" data-tex="\(n\)">\(n\)</span> leaves <span class="math" data-tex="\(X^{1-2\eta}\)">\(X^{1-2\eta}\)</span>. Thus all constants in (9.10) are uniform in the stated strip.</p>
+<p>Likewise the absolutely convergent tail in (9.6) satisfies</p>
+<span class="math math-display" data-tex="\[
+\|E^+_\chi(\sigma+it;X)\|_{R,U}^2
+\ll X^2\sum_{n&gt;X}d(n)^2n^{-2\sigma-2}(R^2U+n)
+\ll(R^2U+X)\log^3(2X).
+\tag{9.11}
+\]">\[
+\|E^+_\chi(\sigma+it;X)\|_{R,U}^2
+\ll X^2\sum_{n&gt;X}d(n)^2n^{-2\sigma-2}(R^2U+n)
+\ll(R^2U+X)\log^3(2X).
+\tag{9.11}
+\]</span>
+<p>For the two tail sums, use (8.2) with <span class="math" data-tex="\(\theta=2\sigma+1\)">\(\theta=2\sigma+1\)</span> and <span class="math" data-tex="\(\theta=2\sigma\)">\(\theta=2\sigma\)</span>. They leave respectively <span class="math" data-tex="\(X^{-2\eta}\)">\(X^{-2\eta}\)</span> and <span class="math" data-tex="\(X^{1-2\eta}\)">\(X^{1-2\eta}\)</span>. The <span class="math" data-tex="\(v\)">\(v\)</span> kernel on the line 1 is again integrable. Finite tail truncations prove the bound first; their bounds and convergence pass it to the infinite tail. Equations (9.9)–(9.11) therefore control the exact integral (9.1), with no unspecified approximation error.</p>
+<h2 id="10-family-fourth-moments-and-their-two-consequences">10. Family fourth moments and their two consequences</h2>
+<p><strong>Theorem 10.1.</strong> For <span class="math" data-tex="\(Q,T\ge2\)">\(Q,T\ge2\)</span> and
+<span class="math" data-tex="\(|\sigma-1/2|\le1/(4\log(QT))\)">\(|\sigma-1/2|\le1/(4\log(QT))\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}\sum_\chi^*\int_0^T|L(\sigma+it,\chi)|^4dt
+\ll Q^2T\log^4(QT).
+\tag{10.1}
+\]">\[
+\sum_{q\le Q}\sum_\chi^*\int_0^T|L(\sigma+it,\chi)|^4dt
+\ll Q^2T\log^4(QT).
+\tag{10.1}
+\]</span>
+<p><strong>Proof.</strong> In each conductor-height block of section 9, (9.4) and (9.9)–(9.11) give <span class="math" data-tex="\(\|I_\chi(s)\|_{R,U}^2\ll R^2U\log^4(2X)\)">\(\|I_\chi(s)\|_{R,U}^2\ll R^2U\log^4(2X)\)</span>. The same estimate holds for <span class="math" data-tex="\(I_{\overline\chi}(1-s)\)">\(I_{\overline\chi}(1-s)\)</span>: replace <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> by <span class="math" data-tex="\(1-\sigma\)">\(1-\sigma\)</span>, conjugate the character, and reflect the height interval. The hybrid estimate permits every translated interval, so reflection causes no change. In the prescribed strip the second bound in (9.7) is <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>, because <span class="math" data-tex="\(q(1+|t|)\le Q(T+1)\)">\(q(1+|t|)\le Q(T+1)\)</span>. Thus the functional equation decomposition (9.2), the triangle inequality, and (9.3) imply</p>
+<span class="math math-display" data-tex="\[
+\sum_{R/2&lt;q\le R}\frac q{\varphi(q)}\sum_\chi^*
+\int_J|L(\sigma+it,\chi)|^4dt
+\ll R^2U\log^4(2X).
+\]">\[
+\sum_{R/2&lt;q\le R}\frac q{\varphi(q)}\sum_\chi^*
+\int_J|L(\sigma+it,\chi)|^4dt
+\ll R^2U\log^4(2X).
+\]</span>
+<p>The principal conductor-one residue contributes an absolutely bounded integral, compatible with this bound if it lies in the block. Cover <span class="math" data-tex="\(q\le Q\)">\(q\le Q\)</span> by disjoint descending dyadic conductor blocks, the last of which contains 1. Cover <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> by <span class="math" data-tex="\([0,\min(2,T)]\)">\([0,\min(2,T)]\)</span> and successive dyadic height intervals, shortening the last. The sums of <span class="math" data-tex="\(R^2\)">\(R^2\)</span> and <span class="math" data-tex="\(U\)">\(U\)</span> over these blocks are <span class="math" data-tex="\(O(Q^2)\)">\(O(Q^2)\)</span> and <span class="math" data-tex="\(O(T)\)">\(O(T)\)</span>, respectively. Also <span class="math" data-tex="\(\log(2X)\ll\log(QT)\)">\(\log(2X)\ll\log(QT)\)</span>. Summing gives the asserted bound, even with the weights <span class="math" data-tex="\(q/\varphi(q)\)">\(q/\varphi(q)\)</span>; dropping them proves (10.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 10.2.</strong> For <span class="math" data-tex="\(Q,T\ge2\)">\(Q,T\ge2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}\sum_\chi^*\int_0^T
+|L(1/2+it,\chi)L&#x27;(1/2+it,\chi)|^2dt
+\ll Q^2T\log^6(QT).
+\tag{10.2}
+\]">\[
+\sum_{q\le Q}\sum_\chi^*\int_0^T
+|L(1/2+it,\chi)L&#x27;(1/2+it,\chi)|^2dt
+\ll Q^2T\log^6(QT).
+\tag{10.2}
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(F(s)=L(s,\chi)^2\)">\(F(s)=L(s,\chi)^2\)</span>, so <span class="math" data-tex="\(F&#x27;=2LL&#x27;\)">\(F&#x27;=2LL&#x27;\)</span>, and take
+<span class="math" data-tex="\(r=1/(16\log(Q(T+1)))\)">\(r=1/(16\log(Q(T+1)))\)</span>. Every circle of radius <span class="math" data-tex="\(r\)">\(r\)</span> centered at <span class="math" data-tex="\(1/2+it\)">\(1/2+it\)</span>, <span class="math" data-tex="\(0\le t\le T\)">\(0\le t\le T\)</span>, avoids the principal pole at 1. Cauchy's integral formula and Cauchy–Schwarz on the circle give</p>
+<span class="math math-display" data-tex="\[
+|F&#x27;(1/2+it)|^2\le r^{-2}\frac1{2\pi}\int_0^{2\pi}
+|L(1/2+it+re^{i\theta},\chi)|^4d\theta.
+\]">\[
+|F&#x27;(1/2+it)|^2\le r^{-2}\frac1{2\pi}\int_0^{2\pi}
+|L(1/2+it+re^{i\theta},\chi)|^4d\theta.
+\]</span>
+<p>For each <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, the real part is within <span class="math" data-tex="\(r\)">\(r\)</span> of <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and the translated heights lie in <span class="math" data-tex="\([-1,T+1]\)">\([-1,T+1]\)</span>. Apply (10.1) with height <span class="math" data-tex="\(T+1\)">\(T+1\)</span>, and use <span class="math" data-tex="\(L(\sigma-it,\chi)=\overline{L(\sigma+it,\overline\chi)}\)">\(L(\sigma-it,\chi)=\overline{L(\sigma+it,\overline\chi)}\)</span> to cover negative heights. The radius lies within the required strip at that height. Integrate, sum, and use <span class="math" data-tex="\(r^{-2}\ll\log^2(QT)\)">\(r^{-2}\ll\log^2(QT)\)</span>. Dividing by 4 proves (10.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 10.3.</strong> Let <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, <span class="math" data-tex="\(Q,T\ge2\)">\(Q,T\ge2\)</span>. For every primitive character choose points in <span class="math" data-tex="\([\delta/2,T-\delta/2]\)">\([\delta/2,T-\delta/2]\)</span>, separated by at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span> for that character. Then</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}\sum_\chi^*\sum_r|L(1/2+it_r(\chi),\chi)|^4
+\ll\left(\delta^{-1}+\log(QT)\right)Q^2T\log^4(QT).
+\tag{10.3}
+\]">\[
+\sum_{q\le Q}\sum_\chi^*\sum_r|L(1/2+it_r(\chi),\chi)|^4
+\ll\left(\delta^{-1}+\log(QT)\right)Q^2T\log^4(QT).
+\tag{10.3}
+\]</span>
+<p><strong>Proof.</strong> The midpoint intervals of length <span class="math" data-tex="\(\delta\)">\(\delta\)</span> have disjoint interiors and lie in <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>. Apply the midpoint inequality to <span class="math" data-tex="\(f(t)=|L(1/2+it,\chi)^2|^2\)">\(f(t)=|L(1/2+it,\chi)^2|^2\)</span>. Its derivative has modulus at most <span class="math" data-tex="\(4|L|^2|LL&#x27;|\)">\(4|L|^2|LL&#x27;|\)</span>, so their summed bound is</p>
+<span class="math math-display" data-tex="\[
+\delta^{-1}\sum_{q\le Q}\sum_\chi^*\int_0^T|L|^4dt
++2\sum_{q\le Q}\sum_\chi^*\int_0^T|L|^2|LL&#x27;|dt.
+\]">\[
+\delta^{-1}\sum_{q\le Q}\sum_\chi^*\int_0^T|L|^4dt
++2\sum_{q\le Q}\sum_\chi^*\int_0^T|L|^2|LL&#x27;|dt.
+\]</span>
+<p>Cauchy–Schwarz and (10.1), (10.2) bound the second term by
+<span class="math" data-tex="\(O(Q^2T\log^5(QT))\)">\(O(Q^2T\log^5(QT))\)</span>. This proves (10.3) for every positive <span class="math" data-tex="\(\delta\)">\(\delta\)</span>; if <span class="math" data-tex="\(\delta&gt;T\)">\(\delta&gt;T\)</span>, there are no sample points. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The fourth power of the logarithm comes from the energy of the divisor coefficients. Differentiation costs two further logarithms in the integrated square, and sampling takes the geometric mean of those two moment bounds.</p>
+<h2 id="11-a-type-ii-estimate-for-the-prime-sum-decomposition">11. A Type II estimate for the prime-sum decomposition</h2>
+<p>Let <span class="math" data-tex="\(x,Q\ge2\)">\(x,Q\ge2\)</span>, <span class="math" data-tex="\(1\le U,V\le x\)">\(1\le U,V\le x\)</span>, and let <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> be an integer. Define</p>
+<span class="math math-display" data-tex="\[
+\alpha(m)=\sum_{\substack{d\mid m\\d&gt;U}}\Lambda(d),\qquad
+\beta(n)=\mu(n)\mathbf1_{n&gt;V},\qquad
+\Lambda^\flat=\alpha*\beta.
+\]">\[
+\alpha(m)=\sum_{\substack{d\mid m\\d&gt;U}}\Lambda(d),\qquad
+\beta(n)=\mu(n)\mathbf1_{n&gt;V},\qquad
+\Lambda^\flat=\alpha*\beta.
+\]</span>
+<p>Here <span class="math" data-tex="\(*\)">\(*\)</span> is Dirichlet convolution. We have <span class="math" data-tex="\(0\le\alpha(m)\le\log m\)">\(0\le\alpha(m)\le\log m\)</span>, because
+<span class="math" data-tex="\(\sum_{d\mid m}\Lambda(d)=\log m\)">\(\sum_{d\mid m}\Lambda(d)=\log m\)</span>: at each prime power <span class="math" data-tex="\(p^k\Vert m\)">\(p^k\Vert m\)</span>, the contributing divisors are <span class="math" data-tex="\(p,\ldots,p^k\)">\(p,\ldots,p^k\)</span>, whose values sum to <span class="math" data-tex="\(k\log p\)">\(k\log p\)</span>. Also <span class="math" data-tex="\(\alpha(m)=0\)">\(\alpha(m)=0\)</span> for <span class="math" data-tex="\(m\le U\)">\(m\le U\)</span>, and <span class="math" data-tex="\(|\beta(n)|\le1\)">\(|\beta(n)|\le1\)</span>.</p>
+<p><strong>Corollary 11.1.</strong> Uniformly in <span class="math" data-tex="\(r\)">\(r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\max_{0\le y\le x}\left|\sum_{k\le y}\Lambda^\flat(k)\chi(k)\mathbf1_{(k,r)=1}\right|
+\ll\left(x+\frac{Qx}{\sqrt U}+\frac{Qx}{\sqrt V}+Q^2\sqrt x\right)\log^3(2x).
+\tag{11.1}
+\]">\[
+\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\max_{0\le y\le x}\left|\sum_{k\le y}\Lambda^\flat(k)\chi(k)\mathbf1_{(k,r)=1}\right|
+\ll\left(x+\frac{Qx}{\sqrt U}+\frac{Qx}{\sqrt V}+Q^2\sqrt x\right)\log^3(2x).
+\tag{11.1}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(UV\ge x\)">\(UV\ge x\)</span>, the sum is empty. Otherwise partition <span class="math" data-tex="\(U&lt;m\le x/V\)">\(U&lt;m\le x/V\)</span> into dyadic blocks <span class="math" data-tex="\((L,2L]\)">\((L,2L]\)</span>, <span class="math" data-tex="\(L=2^jU\)">\(L=2^jU\)</span>, clipping the last block. For a fixed block define
+<span class="math" data-tex="\(a_m=\alpha(m)\mathbf1_{L&lt;m\le2L}\mathbf1_{(m,r)=1}\)">\(a_m=\alpha(m)\mathbf1_{L&lt;m\le2L}\mathbf1_{(m,r)=1}\)</span> and
+<span class="math" data-tex="\(b_n=\beta(n)\mathbf1_{n\le x/L}\mathbf1_{(n,r)=1}\)">\(b_n=\beta(n)\mathbf1_{n\le x/L}\mathbf1_{(n,r)=1}\)</span>. These selectors correctly represent <span class="math" data-tex="\((mn,r)=1\)">\((mn,r)=1\)</span>. Their support lengths satisfy
+<span class="math" data-tex="\(M\ll L\)">\(M\ll L\)</span>, <span class="math" data-tex="\(N\le x/L\)">\(N\le x/L\)</span>, and
+<span class="math" data-tex="\(\|a\|_2\|b\|_2\ll\sqrt{x}\log(2x)\)">\(\|a\|_2\|b\|_2\ll\sqrt{x}\log(2x)\)</span>. Theorem 3.1, with <span class="math" data-tex="\(MN\ll x\)">\(MN\ll x\)</span>, bounds this block's weighted maximal sum by</p>
+<span class="math math-display" data-tex="\[
+\ll\bigl(x+Q\sqrt{xL}+Qx/\sqrt L+Q^2\sqrt x\bigr)\log^2(2x).
+\]">\[
+\ll\bigl(x+Q\sqrt{xL}+Qx/\sqrt L+Q^2\sqrt x\bigr)\log^2(2x).
+\]</span>
+<p>Since <span class="math" data-tex="\(U\le L&lt;x/V\)">\(U\le L&lt;x/V\)</span>, the middle two terms are at most constant multiples of <span class="math" data-tex="\(Qx/\sqrt V\)">\(Qx/\sqrt V\)</span> and <span class="math" data-tex="\(Qx/\sqrt U\)">\(Qx/\sqrt U\)</span>. There are <span class="math" data-tex="\(O(\log(2x))\)">\(O(\log(2x))\)</span> blocks. The triangle inequality bounds the maximum of their sum by the sum of their maxima, proving (11.1). Rounding support lengths changes only absolute constants. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the Type II consequence needed in the Bombieri–Vinogradov argument. The next lesson explains why <span class="math" data-tex="\(\Lambda^\flat\)">\(\Lambda^\flat\)</span> is one term of Vaughan's identity; this estimate itself required only its displayed convolution and coefficient bounds.</p>
+<h2 id="12-exercises">12. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Derive the factor <span class="math" data-tex="\(q/\varphi(q)\)">\(q/\varphi(q)\)</span> in the multiplicative large sieve, keeping both orthogonality and the Gauss sum normalization explicit.</li>
+<li><strong>Medium.</strong> For <span class="math" data-tex="\(V&gt;0\)">\(V&gt;0\)</span>, bound the number of primitive pairs <span class="math" data-tex="\((q,\chi)\)">\((q,\chi)\)</span>, <span class="math" data-tex="\(q\le Q\)">\(q\le Q\)</span>, for which <span class="math" data-tex="\(\left|\sum_{n\le N}a_n\chi(n)\right|&gt;V\)">\(\left|\sum_{n\le N}a_n\chi(n)\right|&gt;V\)</span>. Give also a weighted count.</li>
+<li><strong>Medium.</strong> Prove the rectangular bilinear estimate without a maximum, and explain why the double sum factors when some indices are nonunits.</li>
+<li><strong>Hard.</strong> Prove the bilinear estimate with a different maximizing product cutoff for each character. State the half-integer choice, the truncation height, and how the summed truncation error is absorbed.</li>
+</ol>
+<h2 id="13-complete-solutions">13. Complete solutions</h2>
+<p><strong>1.</strong> The identity <span class="math" data-tex="\(\chi(n)=\tau(\overline\chi)^{-1}\sum_b\overline\chi(b)e(bn/q)\)">\(\chi(n)=\tau(\overline\chi)^{-1}\sum_b\overline\chi(b)e(bn/q)\)</span> gives
+<span class="math" data-tex="\(q\sum_\chi^*|S(\chi)|^2=\sum_\chi^*|\sum_b^*\overline\chi(b)T(b/q)|^2\)">\(q\sum_\chi^*|S(\chi)|^2=\sum_\chi^*|\sum_b^*\overline\chi(b)T(b/q)|^2\)</span>. Enlarge the last sum to all characters. Expanding the square and using
+<span class="math" data-tex="\(\sum_{\chi\bmod q}\overline\chi(b)\chi(c)=\varphi(q)\mathbf1_{b=c\bmod q}\)">\(\sum_{\chi\bmod q}\overline\chi(b)\chi(c)=\varphi(q)\mathbf1_{b=c\bmod q}\)</span> for unit <span class="math" data-tex="\(b,c\)">\(b,c\)</span> gives <span class="math" data-tex="\(\varphi(q)\sum_b^*|T(b/q)|^2\)">\(\varphi(q)\sum_b^*|T(b/q)|^2\)</span>. Divide by <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span>, then sum the additive Farey bound. The numerator <span class="math" data-tex="\(q\)">\(q\)</span> is the squared Gauss sum modulus; the denominator <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span> is the orthogonality normalization. No imprimitive Gauss identity is used.</p>
+<p><strong>2.</strong> In the subfamily where <span class="math" data-tex="\(|S|&gt;V\)">\(|S|&gt;V\)</span>, each energy term exceeds <span class="math" data-tex="\(V^2\)">\(V^2\)</span>. Thus its weighted size is at most
+<span class="math" data-tex="\((N-1+Q^2)\sum_{n\le N}|a_n|^2/V^2\)">\((N-1+Q^2)\sum_{n\le N}|a_n|^2/V^2\)</span>, by (1.3). Its ordinary size is no greater, since <span class="math" data-tex="\(q/\varphi(q)\ge1\)">\(q/\varphi(q)\ge1\)</span>. If all coefficients vanish the subfamily is empty; if the bound is nonintegral, its integer part is a valid bound for the ordinary size. The parameter <span class="math" data-tex="\(V\)">\(V\)</span> must be positive.</p>
+<p><strong>3.</strong> Complete multiplicativity gives <span class="math" data-tex="\(\chi(mn)=\chi(m)\chi(n)\)">\(\chi(mn)=\chi(m)\chi(n)\)</span> for all positive integers: if a prime dividing <span class="math" data-tex="\(q\)">\(q\)</span> divides either factor, both sides are zero. Hence the sum is <span class="math" data-tex="\(A(\chi)B(\chi)\)">\(A(\chi)B(\chi)\)</span>. In the measure assigning weight <span class="math" data-tex="\(q/\varphi(q)\)">\(q/\varphi(q)\)</span> to each primitive character, Cauchy–Schwarz bounds its first absolute moment by the product of the square roots of the two second moments. Applying (1.3) to the supports <span class="math" data-tex="\(1\le m\le M\)">\(1\le m\le M\)</span>, <span class="math" data-tex="\(1\le n\le N\)">\(1\le n\le N\)</span> gives exactly
+<span class="math" data-tex="\(\sqrt{(M-1+Q^2)(N-1+Q^2)}\,\|a\|_2\|b\|_2\)">\(\sqrt{(M-1+Q^2)(N-1+Q^2)}\,\|a\|_2\|b\|_2\)</span>. Replacing <span class="math" data-tex="\(M-1,N-1\)">\(M-1,N-1\)</span> by <span class="math" data-tex="\(M,N\)">\(M,N\)</span> gives the stated coarser version.</p>
+<p><strong>4.</strong> Set <span class="math" data-tex="\(P=MN\)">\(P=MN\)</span>, <span class="math" data-tex="\(c=1/\log(2P)\)">\(c=1/\log(2P)\)</span>, <span class="math" data-tex="\(H=4P^2\)">\(H=4P^2\)</span>. A product threshold depends only on an integer <span class="math" data-tex="\(K\in[0,P]\)">\(K\in[0,P]\)</span>; use <span class="math" data-tex="\(y=K+1/2\)">\(y=K+1/2\)</span>. Then <span class="math" data-tex="\(|\log(y/(mn))|\ge1/(3P)\)">\(|\log(y/(mn))|\ge1/(3P)\)</span>, and the scalar Perron error is <span class="math" data-tex="\(O(P/H)\)">\(O(P/H)\)</span> per coefficient. Its total for one character is at most
+<span class="math" data-tex="\(O(P\sqrt{MN}\,\|a\|_2\|b\|_2/H)=O(\|a\|_2\|b\|_2)\)">\(O(P\sqrt{MN}\,\|a\|_2\|b\|_2/H)=O(\|a\|_2\|b\|_2)\)</span>. The integral is bounded independently of <span class="math" data-tex="\(K\)">\(K\)</span> by
+<span class="math" data-tex="\(O(\int_{-H}^H|A_t(\chi)B_t(\chi)|dt/|c+it|)\)">\(O(\int_{-H}^H|A_t(\chi)B_t(\chi)|dt/|c+it|)\)</span>, because <span class="math" data-tex="\(y^c\le e\)">\(y^c\le e\)</span>. Taking a maximum now is legitimate for each character separately. Sum that common majorant over the family, use solution 3 at every <span class="math" data-tex="\(t\)">\(t\)</span>, and integrate the kernel, whose integral is <span class="math" data-tex="\(O(\log(2P))\)">\(O(\log(2P))\)</span>. The total error is <span class="math" data-tex="\(O(Q^2\|a\|_2\|b\|_2)\)">\(O(Q^2\|a\|_2\|b\|_2)\)</span>, because the weighted primitive count is at most <span class="math" data-tex="\(Q^2\)">\(Q^2\)</span>. It is absorbed by <span class="math" data-tex="\(\sqrt{(M+Q^2)(N+Q^2)}\log(2P)\,\|a\|_2\|b\|_2\)">\(\sqrt{(M+Q^2)(N+Q^2)}\log(2P)\,\|a\|_2\|b\|_2\)</span>. This proves (3.1), including <span class="math" data-tex="\(P=1\)">\(P=1\)</span>; a union bound over endpoints is unnecessary.</p>
+<h2 id="14-proof-scope-and-references">14. Proof scope and references</h2>
+<p>The multiplicative and maximal bilinear estimates, all three continuous hybrid forms for every positive height, their separated-height and right-half-plane versions, the family fourth moment in its full stated strip, both moment corollaries, and the Type II consequence are proved above. The imported inputs are the sharp additive large sieve and midpoint inequality proved in <em>The large sieve inequality</em>, the primitive Gauss identity proved in <em>Gauss sums</em>, the scalar Perron kernel used in <em>Counting zeros and the explicit formula for character sums over prime powers</em>, and the completed functional equation and fixed-strip gamma bounds used in <em>The functional equation of Dirichlet L-functions</em>.</p>
+<ul>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, AMS, 2019, author's preliminary version, Theorem 25.15, Theorem 26.6 and Corollary 26.7: the character transfer, maximal product-cutoff estimate and Type II consequence.</li>
+<li>P. X. Gallagher, “A large sieve density estimate near <span class="math" data-tex="\(\sigma=1\)">\(\sigma=1\)</span>,” <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0011/LOG_0035.pdf"><em>Inventiones Mathematicae</em> 11 (1970), 329–339</a>: the logarithmic short-window method underlying the hybrid large sieve.</li>
+</ul>
+<p>The cutoff and fourth moment arguments here retain their explicit truncation and smoothing remainders. The final cited work supplies historical attribution for Gallagher's method; its density theorem is not an input to this lesson.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-12.html">← The large sieve inequality</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-14.html">Vaughan&#x27;s identity and sums over primes →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-13.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

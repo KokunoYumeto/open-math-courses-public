@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Sheaf kernels and cotangent correspondences</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><h1 id="sheaf-kernels-and-cotangent-correspondences">Sheaf kernels and
+cotangent correspondences</h1>
+<p>A sheaf kernel describes an operation with an input variable and an
+output variable. Composing two such operations means eliminating a
+middle variable. At the level of sheaves we use a tensor product and a
+direct image with proper supports. At the level of cotangent bundles we
+match two covectors with opposite signs. This lesson explains how these
+two calculations fit together and why the hypotheses that connect them
+matter.</p>
+<p>We assume bounded derived sheaf operations and the microsupport
+estimates taught in <a href="SH02-kernel-calculus.html">Composing sheaf
+operators through an intermediate space</a> and <a href="SH02-microsupport-operations.html">Transporting directional
+obstructions</a>. Theorem 1 develops the kernel estimate in Pierre
+Schapira’s <em>A short review on microlocal sheaf theory</em>, §2.4,
+equations (2.11)–(2.13), by tracing each intermediate covector through
+the three operation estimates in §2.3. The graph calculations, nonlinear
+example and solved exercises then test the distinction between a
+possible cotangent direction and nonzero output cohomology. The exact
+operation hypotheses and coefficient bounds remain explicit below.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author
+self-check recorded; not independently reviewed. New original text is
+public domain (CC0).</em></p>
+<h2 id="variables-and-coefficient-bounds">Variables and coefficient
+bounds</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+be a commutative ring with identity and finite global dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>,</mo><mi>Y</mi><mo>,</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">X,Y,Z</annotation></semantics></math>
+be finite-dimensional smooth real manifolds, Hausdorff and countable at
+infinity. No field, Noetherian, finite-rank or constructibility
+assumption is made. Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^b(k_X)</annotation></semantics></math>
+for bounded complexes of sheaves of
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-modules</span>
+up to quasi-isomorphism. Bounded means one finite cohomological interval
+works over the whole space. Our shift convention is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>j</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>H</mi><mrow><mi>j</mi><mo>+</mo><mi>s</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H^j(F[s])=H^{j+s}(F).
+</annotation></semantics></math></p>
+<p>Every tensor product of complexes is derived over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+The notation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>S</mi></msub><annotation encoding="application/x-tex">k_S</annotation></semantics></math>,
+for a closed submanifold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+means the constant sheaf on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+extended by its closed embedding. Properness of a map means inverse
+images of compact sets are compact. The functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">Rf_!</annotation></semantics></math>
+uses sections with support proper over the base.</p>
+<p>For a kernel
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mrow><mi>X</mi><mo>×</mo><mi>Y</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">K\in D^b(k_{X\times Y})</annotation></semantics></math>,
+let</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>R</mi><msub><mi>q</mi><mrow><mi>X</mi><mi>!</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><msup><mo>⊗</mo><mi>L</mi></msup><msubsup><mi>q</mi><mi>Y</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Phi_K(F)=Rq_{X!}(K\otimes^L q_Y^{-1}F),\qquad F\in D^b(k_Y).
+</annotation></semantics></math></p>
+<p>The output is on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.
+Given
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mrow><mi>Y</mi><mo>×</mo><mi>Z</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L\in D^b(k_{Y\times Z})</annotation></semantics></math>,
+put</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><msub><mo>∘</mo><mi>Y</mi></msub><mi>L</mi><mo>=</mo><mi>R</mi><msub><mi>q</mi><mrow><mn>13</mn><mi>!</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><msubsup><mi>q</mi><mn>12</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>K</mi><msup><mo>⊗</mo><mi>L</mi></msup><msubsup><mi>q</mi><mn>23</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1)</mtext></mrow><annotation encoding="application/x-tex">
+K\circ_Y L
+=Rq_{13!}(q_{12}^{-1}K\otimes^L q_{23}^{-1}L).
+\qquad\text{(1)}
+</annotation></semantics></math></p>
+<p>The ordinary composition theorem gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub><mo>≃</mo><msub><mi mathvariant="normal">Φ</mi><mrow><mi>K</mi><msub><mo>∘</mo><mi>Y</mi></msub><mi>L</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\Phi_K\Phi_L\simeq\Phi_{K\circ_Y L}</annotation></semantics></math>.
+This theorem concerns proper-support operations; it does not require the
+projections themselves to be proper. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">K\in D^{[a,b]}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">L\in D^{[c,d]}</annotation></semantics></math>,
+finite Tor dimension and the compact-support cohomological dimension of
+the fibre give</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><msub><mo>∘</mo><mi>Y</mi></msub><mi>L</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>+</mo><mi>c</mi><mo>−</mo><mi>g</mi><mo>,</mo><mspace width="0.167em"></mspace><mi>b</mi><mo>+</mo><mi>d</mi><mo>+</mo><mrow><mi mathvariant="normal">dim</mi><mo>⁡</mo></mrow><mi>Y</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mrow><mi>X</mi><mo>×</mo><mi>Z</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2)</mtext></mrow><annotation encoding="application/x-tex">
+K\circ_YL\in D^{[a+c-g,\,b+d+\dim Y]}(k_{X\times Z}).
+\qquad\text{(2)}
+</annotation></semantics></math></p>
+<p>The dimension bound in (2) is a manifold sheaf-cohomology bound. It
+does not require a choice of orientation. An orientation enters other
+formulas, such as exceptional inverse image of a submersion; it does not
+enter the definition (1).</p>
+<h2 id="why-the-input-covector-changes-sign">Why the input covector
+changes sign</h2>
+<p>Identify
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>×</mo><mi>Y</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T^*(X\times Y)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi><mo>×</mo><msup><mi>T</mi><mo>*</mo></msup><mi>Y</mi></mrow><annotation encoding="application/x-tex">T^*X\times T^*Y</annotation></semantics></math>.
+Attach to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+the relation</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>K</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mi>−</mi><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3)</mtext></mrow><annotation encoding="application/x-tex">
+C_K=\{((x,\xi),(y,\eta)):(x,y;\xi,-\eta)\in\operatorname{SS}(K)\}.
+\qquad\text{(3)}
+</annotation></semantics></math></p>
+<p>This twists only the input covector. On the triple product, a
+covector pulled back from the first kernel has the form</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mi>−</mi><mi>η</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(x,y,z;\xi,-\eta,0).
+</annotation></semantics></math></p>
+<p>A covector pulled back from the second has the form</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mn>0</mn><mo>,</mo><mi>η</mi><mo>,</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(x,y,z;0,\eta,\zeta).
+</annotation></semantics></math></p>
+<p>Their sum is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mn>0</mn><mo>,</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y,z;\xi,0,\zeta)</annotation></semantics></math>,
+which is horizontal for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mn>13</mn></msub><annotation encoding="application/x-tex">q_{13}</annotation></semantics></math>.
+Thus it can contribute to the direct image. If the output covector of
+the second kernel is denoted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math>,
+its input covector is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">-\theta</annotation></semantics></math>,
+and the surviving pair is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>,</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">((x,\xi),(z,\theta))</annotation></semantics></math>.
+This is precisely ordinary composition of the twisted relations:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>K</mi></msub><mo>∘</mo><msub><mi>C</mi><mi>L</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>,</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mo>∃</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msub><mi>C</mi><mi>K</mi></msub><mo>,</mo><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>,</mo><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msub><mi>C</mi><mi>L</mi></msub><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4)</mtext></mrow><annotation encoding="application/x-tex">
+C_K\circ C_L
+=\{((x,\xi),(z,\theta)):
+\exists(y,\eta),\ ((x,\xi),(y,\eta))\in C_K,
+\ ((y,\eta),(z,\theta))\in C_L\}.
+\qquad\text{(4)}
+</annotation></semantics></math></p>
+<p>Relation composition records a possible covector. It does not assert
+that the corresponding sheaf cohomology is nonzero.</p>
+<h2 id="a-composition-estimate-with-proper-supports">A composition
+estimate with proper supports</h2>
+<p>Schapira’s Theorem
+2.11 supplies the submersion equality; Corollary 2.12(i) obtains the
+tensor estimate by pulling an external product back to the diagonal;
+Theorem 2.9 proves the proper-image estimate by commuting a local
+support test with proper direct image and evaluating on the fibre. His
+§2.4 combines them into the kernel estimate. The proof here expands that
+combination so that the zero middle covector, the support condition and
+the antipode can each be checked in coordinates.</p>
+<p>We recall three microsupport facts with their hypotheses. For a
+submersion
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>p</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>p</mi><mi>d</mi></msub><msubsup><mi>p</mi><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(p^{-1}F)=p_d p_\pi^{-1}\operatorname{SS}(F).
+\qquad\text{(5)}
+</annotation></semantics></math></p>
+<p>For bounded complexes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>,</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A,B</annotation></semantics></math>
+on a manifold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>B</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup><mo>⊂</mo><msubsup><mi>T</mi><mi>M</mi><mo>*</mo></msubsup><mi>M</mi></mrow><annotation encoding="application/x-tex">\operatorname{SS}(A)\cap\operatorname{SS}(B)^a\subset T_M^*M</annotation></semantics></math>,
+then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(A\otimes^LB)
+\subset \operatorname{SS}(A)+\operatorname{SS}(B).
+\qquad\text{(6)}
+</annotation></semantics></math></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+negates a covector, and the sum is the fibrewise sum at the same base
+point. Under the hypothesis in (6) this sum is closed. For a smooth map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>M</mi><mo>→</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">f:M\to N</annotation></semantics></math>
+proper on the support of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msub><mi>f</mi><mi>π</mi></msub><msubsup><mi>f</mi><mi>d</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>A</mi><mo>≃</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>A</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(Rf_!A)
+\subset f_\pi f_d^{-1}\operatorname{SS}(A),\qquad Rf_!A\simeq Rf_*A.
+\qquad\text{(7)}
+</annotation></semantics></math></p>
+<p><strong>Theorem 1.</strong> Suppose the projection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mn>13</mn></msub><annotation encoding="application/x-tex">q_{13}</annotation></semantics></math>
+is proper on</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><msubsup><mi>q</mi><mn>12</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msubsup><mi>q</mi><mn>23</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(8)</mtext></mrow><annotation encoding="application/x-tex">
+S=q_{12}^{-1}\operatorname{supp}(K)
+\cap q_{23}^{-1}\operatorname{supp}(L).
+\qquad\text{(8)}
+</annotation></semantics></math></p>
+<p>Suppose also that for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y,z)</annotation></semantics></math>
+and every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>∈</mo><msubsup><mi>T</mi><mi>y</mi><mo>*</mo></msubsup><mi>Y</mi></mrow><annotation encoding="application/x-tex">\eta\in T_y^*Y</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>;</mo><mn>0</mn><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>−</mi><mi>η</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mspace width="1.0em"></mspace><mo>⟹</mo><mspace width="1.0em"></mspace><mi>η</mi><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(9)</mtext></mrow><annotation encoding="application/x-tex">
+(x,y;0,\eta)\in\operatorname{SS}(K),\quad
+(y,z;-\eta,0)\in\operatorname{SS}(L)
+\quad\Longrightarrow\quad\eta=0.
+\qquad\text{(9)}
+</annotation></semantics></math></p>
+<p>Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>K</mi><msub><mo>∘</mo><mi>Y</mi></msub><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mo>∃</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mi>−</mi><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>η</mi><mo>,</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(10)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(K\circ_YL)
+\subset\{(x,z;\xi,\zeta):
+\exists(y,\eta),\ (x,y;\xi,-\eta)\in\operatorname{SS}(K),
+\ (y,z;\eta,\zeta)\in\operatorname{SS}(L)\}.
+\qquad\text{(10)}
+</annotation></semantics></math></p>
+<p>Equivalently,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>K</mi><msub><mo>∘</mo><mi>Y</mi></msub><mi>L</mi></mrow></msub><mo>⊂</mo><msub><mi>C</mi><mi>K</mi></msub><mo>∘</mo><msub><mi>C</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">C_{K\circ_Y L}\subset C_K\circ C_L</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><msubsup><mi>q</mi><mn>12</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>K</mi></mrow><annotation encoding="application/x-tex">A=q_{12}^{-1}K</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><msubsup><mi>q</mi><mn>23</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>L</mi></mrow><annotation encoding="application/x-tex">B=q_{23}^{-1}L</annotation></semantics></math>.
+The projections are submersions. Formula (5) identifies their
+microsupports as</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mi>α</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mn>0</mn><mo>,</mo><mi>β</mi><mo>,</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>β</mi><mo>,</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\operatorname{SS}(A)
+&amp;=\{(x,y,z;\xi,\alpha,0):(x,y;\xi,\alpha)\in\operatorname{SS}(K)\},\\
+\operatorname{SS}(B)
+&amp;=\{(x,y,z;0,\beta,\zeta):(y,z;\beta,\zeta)\in\operatorname{SS}(L)\}.
+\end{aligned}
+</annotation></semantics></math></p>
+<p>A covector in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>B</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup></mrow><annotation encoding="application/x-tex">\operatorname{SS}(A)\cap\operatorname{SS}(B)^a</annotation></semantics></math>
+must have first and last components zero, with middle components
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mi>−</mi><mi>β</mi></mrow><annotation encoding="application/x-tex">\alpha=-\beta</annotation></semantics></math>.
+Condition (9) says that this middle component vanishes. The hypothesis
+of (6) therefore holds, and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mi>α</mi><mo>+</mo><mi>β</mi><mo>,</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>β</mi><mo>,</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(A\otimes^LB)
+\subset\{(x,y,z;\xi,\alpha+\beta,\zeta):
+(x,y;\xi,\alpha)\in\operatorname{SS}(K),
+(y,z;\beta,\zeta)\in\operatorname{SS}(L)\}.
+</annotation></semantics></math></p>
+<p>The support of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>B</mi></mrow><annotation encoding="application/x-tex">A\otimes^LB</annotation></semantics></math>
+is contained in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+If support is taken as its closed support, the inclusion still holds
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+is closed. Properness on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+implies properness on this support. Apply (7) to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mn>13</mn></msub><annotation encoding="application/x-tex">q_{13}</annotation></semantics></math>.
+Its cotangent pullback sends
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,z;\xi,\zeta)</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mn>0</mn><mo>,</mo><mi>ζ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y,z;\xi,0,\zeta)</annotation></semantics></math>.
+A lift through the displayed sum must satisfy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>+</mo><mi>β</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha+\beta=0</annotation></semantics></math>.
+Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mi>−</mi><mi>η</mi></mrow><annotation encoding="application/x-tex">\alpha=-\eta</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mi>η</mi></mrow><annotation encoding="application/x-tex">\beta=\eta</annotation></semantics></math>.
+This gives (10). Negating the surviving input covector gives (4). All
+complexes in this calculation are bounded by finite Tor and manifold
+dimension, as in (2).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The properness condition in this theorem is about supports in the
+ordinary product of manifolds. A local theorem on open cotangent regions
+can instead impose properness of a microsupport projection. These are
+different hypotheses, and Theorem 1 does not assert the latter
+theorem.</p>
+<p>In particular, the ordinary support condition in (8) and the
+pure-middle-covector exclusion in (9) are the two clauses of Schapira’s
+(2.12). Neither is a condition on a chosen cotangent region alone. The
+proof uses (9) before integration, to justify an ordinary fibrewise
+tensor sum, and uses (8) only at the direct-image step. This order makes
+clear why properness cannot repair a failed noncharacteristic tensor
+argument.</p>
+<h2 id="graph-kernels-and-changes-of-coordinates">Graph kernels and
+changes of coordinates</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>Y</mi><mo>→</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">f:Y\to X</annotation></semantics></math>
+be a smooth map and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mi>f</mi></msub><mo>:</mo><mi>Y</mi><mo>↪</mo><mi>X</mi><mo>×</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">i_f:Y\hookrightarrow X\times Y</annotation></semantics></math>
+send
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(f(y),y)</annotation></semantics></math>.
+Its graph is closed. Define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>f</mi></msub><mo>=</mo><msub><mi>i</mi><mrow><mi>f</mi><mo>*</mo></mrow></msub><msub><mi>k</mi><mi>Y</mi></msub></mrow><annotation encoding="application/x-tex">G_f=i_{f*}k_Y</annotation></semantics></math>.</p>
+<p><strong>Proposition 2.</strong> There is a natural isomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><msub><mi>G</mi><mi>f</mi></msub></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">\Phi_{G_f}(F)\simeq Rf_!F</annotation></semantics></math>.
+Moreover,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><msub><mi>G</mi><mi>f</mi></msub></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>d</mi><msubsup><mi>f</mi><mi>y</mi><mi>t</mi></msubsup><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>y</mi><mo>∈</mo><mi>Y</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>ξ</mi><mo>∈</mo><msubsup><mi>T</mi><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow><mo>*</mo></msubsup><mi>X</mi><mo form="postfix" stretchy="false">}</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(11)</mtext></mrow><annotation encoding="application/x-tex">
+C_{G_f}
+=\{((f(y),\xi),(y,d f_y^t\xi)):y\in Y,\ \xi\in T_{f(y)}^*X\}
+\qquad\text{(11)}
+</annotation></semantics></math></p>
+<p>when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\neq0</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Projection formula for the closed embedding
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>f</mi></msub><msup><mo>⊗</mo><mi>L</mi></msup><msubsup><mi>q</mi><mi>Y</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi><mo>≃</mo><msub><mi>i</mi><mrow><mi>f</mi><mo>*</mo></mrow></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">G_f\otimes^Lq_Y^{-1}F\simeq i_{f*}F</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>Y</mi></msub><msub><mi>i</mi><mi>f</mi></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mi>Y</mi></msub></mrow><annotation encoding="application/x-tex">q_Yi_f=\mathrm{id}_Y</annotation></semantics></math>.
+Composition of proper-support images and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>X</mi></msub><msub><mi>i</mi><mi>f</mi></msub><mo>=</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">q_Xi_f=f</annotation></semantics></math>
+give the functor statement.</p>
+<p>The microsupport of a nonzero constant sheaf on a smooth closed
+submanifold is its full conormal bundle. A tangent vector to the graph
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>d</mi><msub><mi>f</mi><mi>y</mi></msub><mi>v</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(d f_y v,v)</annotation></semantics></math>.
+A covector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo>,</mo><mi>ν</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\xi,\nu)</annotation></semantics></math>
+annihilates every such vector exactly when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>=</mo><mi>−</mi><mi>d</mi><msubsup><mi>f</mi><mi>y</mi><mi>t</mi></msubsup><mi>ξ</mi></mrow><annotation encoding="application/x-tex">\nu=-d f_y^t\xi</annotation></semantics></math>.
+Twisting the second component as in (3) yields (11).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>For the zero coefficient ring all kernels and microsupports vanish;
+the functor statement remains true, while the equality with a generally
+nonempty conormal is not asserted.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+is a diffeomorphism, (11) is the graph of the cotangent
+transformation</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>χ</mi><mi>f</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mo form="prefix" stretchy="false">(</mo><mi>d</mi><msubsup><mi>f</mi><mi>y</mi><mi>t</mi></msubsup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(12)</mtext></mrow><annotation encoding="application/x-tex">
+\chi_f(y,\eta)
+=(f(y),(d f_y^t)^{-1}\eta).
+\qquad\text{(12)}
+</annotation></semantics></math></p>
+<p>It preserves the tautological one-form. Indeed, for a tangent vector
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(y,\eta)</annotation></semantics></math>
+with base component
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
+evaluation of the target covector on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi>f</mi><mi>y</mi></msub><mi>v</mi></mrow><annotation encoding="application/x-tex">d f_yv</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>d</mi><msubsup><mi>f</mi><mi>y</mi><mi>t</mi></msubsup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>d</mi><msub><mi>f</mi><mi>y</mi></msub><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>η</mi><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">((d f_y^t)^{-1}\eta)(d f_yv)=\eta(v)</annotation></semantics></math>.
+Taking exterior derivatives shows that it preserves the cotangent
+symplectic form. It also commutes with positive scaling of covectors.
+This is the most direct example of a homogeneous symplectic
+transformation acting on sheaves.</p>
+<p>For smooth maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mi>Z</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">g:Z\to Y</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>Y</mi><mo>→</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">f:Y\to X</annotation></semantics></math>,
+the graph kernels satisfy</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>f</mi></msub><msub><mo>∘</mo><mi>Y</mi></msub><msub><mi>G</mi><mi>g</mi></msub><mo>≃</mo><msub><mi>G</mi><mrow><mi>f</mi><mi>g</mi></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13)</mtext></mrow><annotation encoding="application/x-tex">
+G_f\circ_YG_g\simeq G_{fg}.
+\qquad\text{(13)}
+</annotation></semantics></math></p>
+<p>To verify this as a statement about kernels, the intersection of the
+two pulled-back graphs is parametrized by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mi>g</mi><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>g</mi><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">z\mapsto(fg(z),g(z),z)</annotation></semantics></math>.
+The two graph equations are transverse because the first equation has
+the identity in the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+variable and the second has the identity in the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+variable. Their derived tensor is the constant sheaf on this
+intersection: at a point its tensor is either
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><msubsup><mo>⊗</mo><mi>k</mi><mi>L</mi></msubsup><mi>k</mi><mo>≃</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">k\otimes_k^Lk\simeq k</annotation></semantics></math>
+or zero, and the multiplication map gives the isomorphism at all stalks.
+Projection to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,z)</annotation></semantics></math>
+identifies this intersection with the closed graph of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">fg</annotation></semantics></math>,
+a proper embedding. Its direct image is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mrow><mi>f</mi><mi>g</mi></mrow></msub><annotation encoding="application/x-tex">G_{fg}</annotation></semantics></math>.
+No orientation line or cohomological shift is introduced.</p>
+<h2 id="a-nonlinear-example">A nonlinear example</h2>
+<p>Consider the diffeomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>2</mn></msup><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>+</mo><msup><mi>u</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f:\mathbb R^2\longrightarrow\mathbb R^2,
+\qquad f(u,v)=(u,v+u^2).
+</annotation></semantics></math></p>
+<p>Write an input covector as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>u</mi><mo>+</mo><mi>b</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">a\,du+b\,dv</annotation></semantics></math>.
+Since</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>f</mi><mi>t</mi></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn><mi>u</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">
+d f^t=\begin{pmatrix}1&amp;2u\\0&amp;1\end{pmatrix},
+</annotation></semantics></math></p>
+<p>the transformation (12) is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>;</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longmapsto" stretchy="false">⟼</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>+</mo><msup><mi>u</mi><mn>2</mn></msup><mo>;</mo><mi>a</mi><mo>−</mo><mn>2</mn><mi>u</mi><mi>b</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(14)</mtext></mrow><annotation encoding="application/x-tex">
+(u,v;a,b)\longmapsto(u,v+u^2;a-2ub,b).
+\qquad\text{(14)}
+</annotation></semantics></math></p>
+<p>The graph conormal in the product has coordinates
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>ξ</mi><mn>2</mn></msub><mo>;</mo><mi>−</mi><msub><mi>ξ</mi><mn>1</mn></msub><mo>−</mo><mn>2</mn><mi>u</mi><msub><mi>ξ</mi><mn>2</mn></msub><mo>,</mo><mi>−</mi><msub><mi>ξ</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\xi_1,\xi_2;-\xi_1-2u\xi_2,-\xi_2)</annotation></semantics></math>.
+Its input after twisting is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><mi>u</mi><msub><mi>ξ</mi><mn>2</mn></msub><mo>,</mo><msub><mi>ξ</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\xi_1+2u\xi_2,\xi_2)</annotation></semantics></math>,
+which inverts to (14). Thus the antipodal sign and the transpose have
+different jobs: the sign comes from relation convention; the transpose
+comes from differentiating the graph.</p>
+<h2 id="when-a-possible-direction-disappears">When a possible direction
+disappears</h2>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>Z</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">t</mi></mrow><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">X=Z=\{\mathrm{pt}\}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><msup><mi>S</mi><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">Y=S^1</annotation></semantics></math>,
+and a field
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+be a rank-one local system on the circle with monodromy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≠</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda\neq1</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><msub><mi>k</mi><msup><mi>S</mi><mn>1</mn></msup></msub></mrow><annotation encoding="application/x-tex">L=k_{S^1}</annotation></semantics></math>.
+Both microsupports are the zero section, so (9) holds. The support
+condition is proper because the circle is compact. Their convolution is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>S</mi><mn>1</mn></msup><mo>;</mo><mi>K</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma(S^1;K)</annotation></semantics></math>.</p>
+<p>Cut the circle at a point and trivialize the local system on the
+resulting interval. Gluing the two ends imposes the map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>−</mo><mn>1</mn><mo>:</mo><mi>k</mi><mo>→</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">\lambda-1:k\to k</annotation></semantics></math>.
+The resulting cellular cochain complex is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">[</mo><mi>k</mi><mover><mo>→</mo><mrow><mi>λ</mi><mo>−</mo><mn>1</mn></mrow></mover><mi>k</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">]</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\bigl[k\xrightarrow{\lambda-1}k\bigr],
+</annotation></semantics></math></p>
+<p>in degrees zero and one. Since the differential is invertible, the
+convolution vanishes. The relation on the right of (10) nevertheless
+contains the zero covector of the point. This gives a strict inclusion
+without violating either hypothesis of Theorem 1. The cell calculation
+uses the usual cellular computation for a local system, established in
+algebraic topology.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<h3 id="a-scaling-graph">A scaling graph</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>3</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">f(t)=3t</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\neq0</annotation></semantics></math>.
+Compute the twisted graph relation and its inverse. Show that using the
+untwisted conormal as if it were the graph of a transformation produces
+the wrong composite.</p>
+<p><strong>Solution.</strong> A graph conormal has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mi>−</mi><mn>3</mn><mi>ξ</mi></mrow><annotation encoding="application/x-tex">\eta=-3\xi</annotation></semantics></math>.
+The twisted input is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>η</mi><mo>=</mo><mn>3</mn><mi>ξ</mi></mrow><annotation encoding="application/x-tex">-\eta=3\xi</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>χ</mi><mi>f</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>3</mn><mi>t</mi><mo>,</mo><mi>α</mi><mi>/</mi><mn>3</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\chi_f(t,\alpha)=(3t,\alpha/3)</annotation></semantics></math>.
+The inverse is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>/</mi><mn>3</mn><mo>,</mo><mn>3</mn><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,\xi)\mapsto(x/3,3\xi)</annotation></semantics></math>,
+exactly the cotangent lift of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">f^{-1}</annotation></semantics></math>.
+Their composite is the identity. If one uses the untwisted input, the
+proposed map is instead
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mn>3</mn><mi>t</mi><mo>,</mo><mi>−</mi><mi>α</mi><mi>/</mi><mn>3</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(t,\alpha)\mapsto(3t,-\alpha/3)</annotation></semantics></math>.
+Composing this with the correct inverse gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>−</mi><mi>α</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(t,-\alpha)</annotation></semantics></math>,
+the antipodal map, rather than the identity. This diagnoses a mismatch
+of conventions; a consistently untwisted calculation must insert the
+antipodal map explicitly at composition.</p>
+<h3 id="an-unbounded-middle-variable">An unbounded middle variable</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>Z</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">t</mi></mrow><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">X=Z=\{\mathrm{pt}\}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">Y=\mathbb R</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mi>L</mi><mo>=</mo><msub><mi>k</mi><mi mathvariant="double-struck">ℝ</mi></msub></mrow><annotation encoding="application/x-tex">K=L=k_{\mathbb R}</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\neq0</annotation></semantics></math>.
+Explain which hypothesis of Theorem 1 fails and compute the convolution.
+Compare ordinary cohomology.</p>
+<p><strong>Solution.</strong> The cancellation condition holds because
+the constant sheaf has only zero covectors. The support
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">S=\mathbb R</annotation></semantics></math>
+is not proper over a point. The convolution is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi mathvariant="double-struck">ℝ</mi><mo>;</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">R\Gamma_c(\mathbb R;k)\simeq k[-1]</annotation></semantics></math>,
+with its nonzero cohomology in degree one. Ordinary cohomology is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi mathvariant="double-struck">ℝ</mi><mo>;</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">R\Gamma(\mathbb R;k)\simeq k</annotation></semantics></math>,
+in degree zero. One can calculate the compact-support group by the
+relative cohomology of a closed interval modulo its endpoints. This
+example shows why replacing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>!</mi><annotation encoding="application/x-tex">!</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>*</mi><annotation encoding="application/x-tex">*</annotation></semantics></math>
+needs its own hypothesis.</p>
+<h3 id="a-failed-cancellation-test">A failed cancellation test</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>Z</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">t</mi></mrow><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">X=Z=\{\mathrm{pt}\}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">Y=\mathbb R</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mi>L</mi><mo>=</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub></mrow><annotation encoding="application/x-tex">K=L=k_{\{0\}}</annotation></semantics></math>.
+Compute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+verify properness, and test (9).</p>
+<p><strong>Solution.</strong> The support intersection is the point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>,
+so it is proper. Both kernels have the full cotangent fibre over zero as
+microsupport. Every nonzero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>∈</mo><msubsup><mi>T</mi><mn>0</mn><mo>*</mo></msubsup><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">\eta\in T_0^*\mathbb R</annotation></semantics></math>
+satisfies both clauses on the left of (9). Thus cancellation fails. In
+this particular example the convolution is still
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>;
+failure of a sufficient hypothesis is not a proof that the conclusion is
+false. Theorem 1 simply provides no estimate through its
+noncharacteristic tensor argument in this case.</p>
+<h3 id="shifts-and-inverse-kernels">Shifts and inverse kernels</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>Y</mi><mo>→</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">f:Y\to X</annotation></semantics></math>
+be a diffeomorphism and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>∈</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">m\in\mathbb Z</annotation></semantics></math>.
+Find an inverse kernel for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>f</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>m</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">G_f[m]</annotation></semantics></math>,
+and determine the degrees of its action on a sheaf in degree zero.</p>
+<p><strong>Solution.</strong> Formula (13) gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>f</mi></msub><msub><mo>∘</mo><mi>Y</mi></msub><msub><mi>G</mi><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></msub><mo>≃</mo><msub><mi>k</mi><msub><mi mathvariant="normal">Δ</mi><mi>X</mi></msub></msub></mrow><annotation encoding="application/x-tex">G_f\circ_YG_{f^{-1}}\simeq k_{\Delta_X}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></msub><msub><mo>∘</mo><mi>X</mi></msub><msub><mi>G</mi><mi>f</mi></msub><mo>≃</mo><msub><mi>k</mi><msub><mi mathvariant="normal">Δ</mi><mi>Y</mi></msub></msub></mrow><annotation encoding="application/x-tex">G_{f^{-1}}\circ_XG_f\simeq k_{\Delta_Y}</annotation></semantics></math>.
+Shifts add under convolution, so the inverse kernel is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>m</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">G_{f^{-1}}[-m]</annotation></semantics></math>.
+Since a diffeomorphism has exact direct image,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mrow><msub><mi>G</mi><mi>f</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>m</mi><mo form="postfix" stretchy="false">]</mo></mrow></msub><mi>F</mi><mo>≃</mo><msub><mi>f</mi><mo>*</mo></msub><mi>F</mi><mo form="prefix" stretchy="false">[</mo><mi>m</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\Phi_{G_f[m]}F\simeq f_*F[m]</annotation></semantics></math>,
+whose only nonzero cohomology is in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">-m</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+is a nonzero degree-zero sheaf. The inverse returns that degree to zero.
+No dimension correction is needed.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf"><em>A
+short review on microlocal sheaf theory</em></a>, 19 January 2016:
+coefficient and orientation conventions, pp. 6–7; conormal and
+half-space examples, Example 2.5; functorial operations, Theorems
+2.8–2.11 and Corollary 2.12, pp. 10–13; kernel convolution and its two
+hypotheses, §2.4, pp. 13–14.</li>
+<li>Masaki Kashiwara and Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal
+Study of Sheaves</em></a>, Astérisque 128 (1985), §§4.1–4.2 and §6.3.
+Proposition 4.2.1 and the proof of Proposition 4.2.2, pp. 64–65, supply
+earlier external-operation arguments; Proposition 6.3.3, pp. 110–111,
+gives the localized composition antecedent, whose hypotheses differ from
+Theorem 1 here.</li>
+</ul>
+<p><strong>Construction and remaining prerequisites.</strong> The human
+mathematical credit for the composition estimate belongs to the cited
+microlocal sheaf calculus. The present account orders the calculation
+around horizontal covectors and then checks graph kernels at stalks,
+derives the cotangent lift from the graph tangent space, and uses a
+circle local system to show that the estimate can be strict. These
+explicit calculations and all four solutions are retained as programme
+arguments; no claim of a new composition theorem is made. The source
+review assumes the six operations and gives only a sketch of part of its
+inverse-image theorem. Accordingly, this reading still depends on the
+linked proofs of the six-operation identities, finite Tor and manifold
+cohomological-dimension bounds, and microsupport estimates. Comparing
+the selected human passages does not close every transitive
+prerequisite.</p>
+</main></body></html>

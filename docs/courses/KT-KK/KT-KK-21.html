@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asymptotic morphisms and E-theory · Kasparov’s KK-theory</title>
+<meta name="description" content="A lesson of the course Kasparov&#x27;s KK-theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Kasparov&#x27;s KK-theory</a> <span aria-hidden="true">›</span> <span>Lesson 21 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson"><p><strong>Draft.</strong> Self-checked by the writing AI. English · CC0 1.0.</p></aside>
+
+<article class="lesson">
+<h1 id="asymptotic-morphisms-and-e-theory">Asymptotic morphisms and E-theory</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).</em></p>
+<p>An extension has a boundary map even when its quotient has no completely positive section. Asymptotic morphisms provide a bivariant place for these maps. Their errors tend to zero, and composition is defined by allowing the second morphism enough time to control the moving image of the first.</p>
+<p>Throughout, algebras are complex and trivially graded. They are separable unless a statement expressly allows an arbitrary coefficient algebra. Put <span class="math" data-tex="\(S=C_0((0,1))\)">\(S=C_0((0,1))\)</span>, <span class="math" data-tex="\(SA=S\otimes A\)">\(SA=S\otimes A\)</span>, and <span class="math" data-tex="\(\mathcal K=\mathcal K(\ell^2)\)">\(\mathcal K=\mathcal K(\ell^2)\)</span>. Suspensions have their increasing interval coordinate. Cones vanish at the right endpoint:
+<span class="math math-display" data-tex="\[
+CA=C_0([0,1),A),\qquad
+C_f=\{(a,g)\in A\oplus CB:g(0)=f(a)\}.
+\tag{1.1}
+\]">\[
+CA=C_0([0,1),A),\qquad
+C_f=\{(a,g)\in A\oplus CB:g(0)=f(a)\}.
+\tag{1.1}
+\]</span>
+We use the <a href="KT-KK-14.html#1-cones-and-two-explicit-deformations">cone deformations</a> and <a href="KT-KK-14.html#13-solutions">separable split-exactness</a> proved in <em>Exact sequences in KK and the universal coefficient theorem</em>, Lemma 1.1 and Solution 12.1; the quasihomomorphism picture proved in <a href="KT-KK-07.html#4-quasihomomorphisms"><em>Pictures of KK: Fredholm operators, quasihomomorphisms and extensions</em>, Theorems 4.1 and 4.5</a>; and the <a href="KT-KK-12.html#4-the-first-product-and-its-gaussian">first</a>, <a href="KT-KK-12.html#5-rotating-the-two-position-spaces">second</a> and <a href="KT-KK-12.html#7-the-one-dimensional-extension-cycles">one-dimensional</a> inverse products proved in <em>Bott periodicity in KK: the Bott and Dirac elements</em>, Theorems 4.1, 5.2 and 7.3. The free author editions of Blackadar's <em>K-Theory for Operator Algebras</em> and Connes's <em>Noncommutative Geometry</em> are basic references.</p>
+<h2 id="1-families-quotients-and-continuous-representatives">1. Families, quotients and continuous representatives</h2>
+<p>An <strong>asymptotic morphism</strong> <span class="math" data-tex="\(\phi:A \rightsquigarrow B\)">\(\phi:A \rightsquigarrow B\)</span> is a family <span class="math" data-tex="\(\phi_t:A\to B\)">\(\phi_t:A\to B\)</span>, <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>, continuous in <span class="math" data-tex="\(t\)">\(t\)</span> at each <span class="math" data-tex="\(a\)">\(a\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\phi_t(a+\lambda b)-\phi_t(a)-\lambda\phi_t(b)&amp;\longrightarrow0,\\
+\phi_t(ab)-\phi_t(a)\phi_t(b)&amp;\longrightarrow0,\\
+\phi_t(a^*)-\phi_t(a)^*&amp;\longrightarrow0
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+\phi_t(a+\lambda b)-\phi_t(a)-\lambda\phi_t(b)&amp;\longrightarrow0,\\
+\phi_t(ab)-\phi_t(a)\phi_t(b)&amp;\longrightarrow0,\\
+\phi_t(a^*)-\phi_t(a)^*&amp;\longrightarrow0
+\end{aligned}
+\tag{1.2}
+\]</span>
+in norm, for all <span class="math" data-tex="\(a,b\in A\)">\(a,b\in A\)</span> and <span class="math" data-tex="\(\lambda\in\mathbb C\)">\(\lambda\in\mathbb C\)</span>. The individual maps need not be linear, positive or multiplicative. Two families are <strong>equivalent</strong> if their difference tends to zero at every <span class="math" data-tex="\(a\)">\(a\)</span>. A homotopy is an asymptotic morphism into <span class="math" data-tex="\(IB=C([0,1],B)\)">\(IB=C([0,1],B)\)</span> with the prescribed endpoint families. Its errors tend to zero uniformly in the homotopy parameter. Write <span class="math" data-tex="\([[A,B]]\)">\([[A,B]]\)</span> for homotopy classes.</p>
+<p><strong>Lemma 1.1 (the quotient description).</strong> Every family satisfying (1.2) is bounded at each <span class="math" data-tex="\(a\)">\(a\)</span>, and
+<span class="math math-display" data-tex="\[
+\limsup_{t\to\infty}\|\phi_t(a)\|\leq\|a\|.
+\tag{1.3}
+\]">\[
+\limsup_{t\to\infty}\|\phi_t(a)\|\leq\|a\|.
+\tag{1.3}
+\]</span>
+Its equivalence class is precisely a homomorphism
+<span class="math math-display" data-tex="\[
+\bar\phi:A\longrightarrow B_\infty,
+\qquad
+B_\infty=C_b([1,\infty),B)/C_0([1,\infty),B).
+\tag{1.4}
+\]">\[
+\bar\phi:A\longrightarrow B_\infty,
+\qquad
+B_\infty=C_b([1,\infty),B)/C_0([1,\infty),B).
+\tag{1.4}
+\]</span>
+Every such homomorphism has an asymptotic representative.</p>
+<p><strong>Proof.</strong> Extend the family algebraically to unitizations by <span class="math" data-tex="\(\widetilde\phi_t(a+\lambda1)=\phi_t(a)+\lambda1\)">\(\widetilde\phi_t(a+\lambda1)=\phi_t(a)+\lambda1\)</span>. For <span class="math" data-tex="\(\|a\|\leq1\)">\(\|a\|\leq1\)</span>, set <span class="math" data-tex="\(x=(1-a^*a)^{1/2}\)">\(x=(1-a^*a)^{1/2}\)</span>. Relations (1.2) give, with <span class="math" data-tex="\(y_t=\|\widetilde\phi_t(a)\|\)">\(y_t=\|\widetilde\phi_t(a)\|\)</span>, <span class="math" data-tex="\(z_t=\|\widetilde\phi_t(x)\|\)">\(z_t=\|\widetilde\phi_t(x)\|\)</span>,
+<span class="math math-display" data-tex="\[
+\widetilde\phi_t(a)^*\widetilde\phi_t(a)
++\widetilde\phi_t(x)^*\widetilde\phi_t(x)
+=1+R_t,
+\qquad
+\|R_t\|\leq\epsilon_t(1+y_t+z_t),\quad\epsilon_t\to0.
+\]">\[
+\widetilde\phi_t(a)^*\widetilde\phi_t(a)
++\widetilde\phi_t(x)^*\widetilde\phi_t(x)
+=1+R_t,
+\qquad
+\|R_t\|\leq\epsilon_t(1+y_t+z_t),\quad\epsilon_t\to0.
+\]</span>
+This estimate allows the adjoint errors to be multiplied before boundedness has been proved. Positivity implies both <span class="math" data-tex="\(y_t^2\)">\(y_t^2\)</span> and <span class="math" data-tex="\(z_t^2\)">\(z_t^2\)</span> are at most <span class="math" data-tex="\(1+\epsilon_t(1+y_t+z_t)\)">\(1+\epsilon_t(1+y_t+z_t)\)</span>. Their sum is therefore bounded by twice that expression. The elementary quadratic inequality bounds <span class="math" data-tex="\(y_t,z_t\)">\(y_t,z_t\)</span> on a tail. Thus <span class="math" data-tex="\(R_t\to0\)">\(R_t\to0\)</span>, and positivity gives <span class="math" data-tex="\(\limsup y_t\leq1\)">\(\limsup y_t\leq1\)</span>. Asymptotic scalar linearity proves (1.3) for arbitrary <span class="math" data-tex="\(a\)">\(a\)</span>; continuity bounds the remaining initial interval.</p>
+<p>Taking quotient classes now turns (1.2) into exact homomorphism identities. The norm in the quotient is <span class="math" data-tex="\(\limsup_t\|b(t)\|\)">\(\limsup_t\|b(t)\|\)</span>: subtracting an initial-interval cutoff proves the upper bound, and any function vanishing at infinity proves the lower bound. Conversely choose, for every <span class="math" data-tex="\(a\)">\(a\)</span>, a bounded continuous lift of <span class="math" data-tex="\(\bar\phi(a)\)">\(\bar\phi(a)\)</span>. Quotient homomorphism identities say exactly that its defects belong to <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. Two choices differ by an element of <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We shall need representatives which behave uniformly on compact sets. The following selection argument supplies them without a linear lifting hypothesis.</p>
+<p><strong>Lemma 1.2 (continuous nonlinear selection).</strong> Let <span class="math" data-tex="\(q:V\to W\)">\(q:V\to W\)</span> be a surjective bounded linear map of Banach spaces, with <span class="math" data-tex="\(W\)">\(W\)</span> separable. Suppose every <span class="math" data-tex="\(w\)">\(w\)</span> has a lift of norm at most <span class="math" data-tex="\(L\|w\|\)">\(L\|w\|\)</span>. There is a continuous map <span class="math" data-tex="\(s:W\to V\)">\(s:W\to V\)</span> with
+<span class="math math-display" data-tex="\[
+qs(w)=w,\qquad s(0)=0,\qquad
+\|s(w)\|\leq 2L\|w\|.
+\tag{1.5}
+\]">\[
+qs(w)=w,\qquad s(0)=0,\qquad
+\|s(w)\|\leq 2L\|w\|.
+\tag{1.5}
+\]</span>
+It can be chosen homogeneous for nonnegative real scalars.</p>
+<p><strong>Proof.</strong> Choose a countable dense family <span class="math" data-tex="\(w_j\)">\(w_j\)</span> in the unit sphere and lifts <span class="math" data-tex="\(v_j\)">\(v_j\)</span> of norm at most <span class="math" data-tex="\(L\)">\(L\)</span>. For a unit vector <span class="math" data-tex="\(w\)">\(w\)</span>, put
+<span class="math math-display" data-tex="\[
+p_j(w)=2^{-j}\max\{0,\tfrac12-\|w-w_j\|\},\qquad
+H(w)=\frac{\sum_jp_j(w)v_j}{\sum_jp_j(w)}.
+\tag{1.6}
+\]">\[
+p_j(w)=2^{-j}\max\{0,\tfrac12-\|w-w_j\|\},\qquad
+H(w)=\frac{\sum_jp_j(w)v_j}{\sum_jp_j(w)}.
+\tag{1.6}
+\]</span>
+The denominator is positive. Near a fixed unit vector it has a positive lower bound; the tails of both series converge uniformly there. Thus <span class="math" data-tex="\(H\)">\(H\)</span> is continuous, <span class="math" data-tex="\(\|H(w)\|\leq L\)">\(\|H(w)\|\leq L\)</span>, and <span class="math" data-tex="\(\|qH(w)-w\|\leq1/2\)">\(\|qH(w)-w\|\leq1/2\)</span>. Extend by <span class="math" data-tex="\(H(w)=\|w\|H(w/\|w\|)\)">\(H(w)=\|w\|H(w/\|w\|)\)</span> and <span class="math" data-tex="\(H(0)=0\)">\(H(0)=0\)</span>.</p>
+<p>Set <span class="math" data-tex="\(r_0(w)=w\)">\(r_0(w)=w\)</span>, <span class="math" data-tex="\(r_{n+1}(w)=r_n(w)-qH(r_n(w))\)">\(r_{n+1}(w)=r_n(w)-qH(r_n(w))\)</span>, and
+<span class="math math-display" data-tex="\[
+s(w)=\sum_{n=0}^\infty H(r_n(w)).
+\tag{1.7}
+\]">\[
+s(w)=\sum_{n=0}^\infty H(r_n(w)).
+\tag{1.7}
+\]</span>
+The residual has norm at most <span class="math" data-tex="\(2^{-n}\|w\|\)">\(2^{-n}\|w\|\)</span>. The series converges uniformly on bounded sets, so is continuous; it has norm at most <span class="math" data-tex="\(2L\|w\|\)">\(2L\|w\|\)</span>. Its image under <span class="math" data-tex="\(q\)">\(q\)</span> telescopes to <span class="math" data-tex="\(w\)">\(w\)</span>. All operations preserve nonnegative homogeneity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply this lemma to the <strong>pullback</strong>
+<span class="math math-display" data-tex="\[
+V=\{(a,b)\in A\oplus C_b([1,\infty),B):\bar\phi(a)=\pi(b)\}
+\longrightarrow A.
+\tag{1.8}
+\]">\[
+V=\{(a,b)\in A\oplus C_b([1,\infty),B):\bar\phi(a)=\pi(b)\}
+\longrightarrow A.
+\tag{1.8}
+\]</span>
+With the maximum norm, quotient-norm lifts have norm at most <span class="math" data-tex="\(2\|a\|\)">\(2\|a\|\)</span>. The residuals in (1.7) remain in <span class="math" data-tex="\(A\)">\(A\)</span>, which is separable. The second coordinate of the resulting section is a continuous map <span class="math" data-tex="\(A\to C_b([1,\infty),B)\)">\(A\to C_b([1,\infty),B)\)</span> lifting <span class="math" data-tex="\(\bar\phi\)">\(\bar\phi\)</span>. Denote its evaluations by <span class="math" data-tex="\(\phi_t\)">\(\phi_t\)</span>. In particular <span class="math" data-tex="\((t,a)\mapsto\phi_t(a)\)">\((t,a)\mapsto\phi_t(a)\)</span> is jointly continuous and <span class="math" data-tex="\(\sup_t\|\phi_t(a)\|\leq4\|a\|\)">\(\sup_t\|\phi_t(a)\|\leq4\|a\|\)</span>.</p>
+<p><strong>Corollary 1.3 (compact uniformity).</strong> Every asymptotic morphism with separable source is equivalent to one obtained from a continuous map into <span class="math" data-tex="\(C_b\)">\(C_b\)</span>. Such a representative has (1.2) uniformly for <span class="math" data-tex="\(a,b\)">\(a,b\)</span> in any compact subset and <span class="math" data-tex="\(|\lambda|\leq R\)">\(|\lambda|\leq R\)</span>, and has (1.3) uniformly on compact subsets. Equivalence between two such representatives is uniform on compact subsets. Homotopies can be chosen with all these controls uniform also in their interval parameter.</p>
+<p><strong>Proof.</strong> Each defect is a continuous function from its compact parameter set to <span class="math" data-tex="\(C_b\)">\(C_b\)</span>, taking its values in <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. A compact subset of <span class="math" data-tex="\(C_0([1,\infty),B)\)">\(C_0([1,\infty),B)\)</span> has uniformly small tails: cover it by finitely many norm balls and use the tail bound for their centers. This proves the assertion about defects and equivalence. For the norm assertion, cover the compact subset of <span class="math" data-tex="\(A\)">\(A\)</span> by finitely many neighborhoods on which the map into <span class="math" data-tex="\(C_b\)">\(C_b\)</span> changes by less than <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, and apply (1.3) to their centers. Apply (1.8) with target <span class="math" data-tex="\(IB\)">\(IB\)</span> for a homotopy. If necessary, correct its two endpoint values by affine functions of the interval coordinate; these corrections are compact-uniformly vanishing errors. This keeps any already specified endpoint representatives. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equivalent representatives are homotopic by straight interpolation: multiplicative cross terms reduce to products with their vanishing difference, and Lemma 1.1 bounds the other factors. A continuous reparametrization <span class="math" data-tex="\(r(t)\to\infty\)">\(r(t)\to\infty\)</span> gives the same class, by <span class="math" data-tex="\(\phi_{(1-s)t+sr(t)}\)">\(\phi_{(1-s)t+sr(t)}\)</span>. The minimum of the interpolated times tends to infinity, which proves uniformity in <span class="math" data-tex="\(s\)">\(s\)</span>. Concatenating interval homotopies proves transitivity.</p>
+<p>Constant homomorphisms and ordinary homotopies therefore give asymptotic ones. A point-norm continuous family of actual homomorphisms is homotopic to its initial value: use its evaluations at <span class="math" data-tex="\(1+s(t-1)\)">\(1+s(t-1)\)</span>. All errors are zero, so no uniform continuity at infinite time is required.</p>
+<h2 id="2-the-scalar-computation">2. The scalar computation</h2>
+<p>Before constructing the category, we compute the classes needed to recognize its unit and its K-theory.</p>
+<p><strong>Proposition 2.1.</strong> For every C*-algebra <span class="math" data-tex="\(D\)">\(D\)</span>, the natural map
+<span class="math math-display" data-tex="\[
+[S,D]\longrightarrow[[S,D]]
+\tag{2.1}
+\]">\[
+[S,D]\longrightarrow[[S,D]]
+\tag{2.1}
+\]</span>
+is a bijection. If <span class="math" data-tex="\(D=B\otimes\mathcal K\)">\(D=B\otimes\mathcal K\)</span>, then
+<span class="math math-display" data-tex="\[
+[[S,B\otimes\mathcal K]]=K_1(B).
+\tag{2.2}
+\]">\[
+[[S,B\otimes\mathcal K]]=K_1(B).
+\tag{2.2}
+\]</span>
+With target <span class="math" data-tex="\(SB\otimes\mathcal K\)">\(SB\otimes\mathcal K\)</span>, the resulting group is <span class="math" data-tex="\(K_0(B)\)">\(K_0(B)\)</span>.</p>
+<p><strong>Proof.</strong> The unitization of <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. Its generator is <span class="math" data-tex="\(u(s)=e^{2\pi is}\)">\(u(s)=e^{2\pi is}\)</span>. Extend an asymptotic morphism to the unitizations and set <span class="math" data-tex="\(z_t=\widetilde\phi_t(u)\)">\(z_t=\widetilde\phi_t(u)\)</span>. It has scalar quotient 1, and
+<span class="math" data-tex="\(z_t^*z_t-1\to0\)">\(z_t^*z_t-1\to0\)</span>, <span class="math" data-tex="\(z_tz_t^*-1\to0\)">\(z_tz_t^*-1\to0\)</span>. On a tail, polar correction gives
+<span class="math math-display" data-tex="\[
+U_t=z_t(z_t^*z_t)^{-1/2},\qquad U_t-1\in D,
+\qquad\|U_t-z_t\|\to0.
+\tag{2.3}
+\]">\[
+U_t=z_t(z_t^*z_t)^{-1/2},\qquad U_t-1\in D,
+\qquad\|U_t-z_t\|\to0.
+\tag{2.3}
+\]</span>
+It is a norm-continuous family of actual unitaries. Functional calculus gives homomorphisms <span class="math" data-tex="\(\theta_t:S\to D\)">\(\theta_t:S\to D\)</span>, <span class="math" data-tex="\(f\mapsto f(U_t)\)">\(f\mapsto f(U_t)\)</span>. Their quotient agrees with <span class="math" data-tex="\(\bar\phi\)">\(\bar\phi\)</span>: check Laurent polynomials in <span class="math" data-tex="\(u,u^*\)">\(u,u^*\)</span>, then use their uniform density in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span> and contractivity of the quotient homomorphisms. Thus <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is equivalent to a family of homomorphisms. That family is homotopic to any one of its tail values by the last paragraph of Section 1.</p>
+<p>For injectivity apply the same correction in <span class="math" data-tex="\(C([0,1],D)\)">\(C([0,1],D)\)</span> to an asymptotic homotopy. At a fixed sufficiently large time it gives an ordinary homotopy of unitaries. Its endpoints are close to the two prescribed unitaries; close unitaries are joined by <span class="math" data-tex="\(U\exp(s\log(U^*V))\)">\(U\exp(s\log(U^*V))\)</span>, since their ratio has spectrum away from the negative real axis. Hence the prescribed homomorphisms are ordinarily homotopic.</p>
+<p>A homomorphism from <span class="math" data-tex="\(S\)">\(S\)</span> is exactly a unitary <span class="math" data-tex="\(U\in D^+\)">\(U\in D^+\)</span> with scalar quotient 1, through this functional calculus. For stable <span class="math" data-tex="\(D\)">\(D\)</span>, their homotopy classes are <span class="math" data-tex="\(K_1(D)\)">\(K_1(D)\)</span>: finite matrix stabilization does not change the classes. Indeed every compact-matrix element is approximated by a finite corner; polar correction repairs a unitary approximation, and the same finite approximation uniformly over an interval treats its homotopies. The two corner placements are homotopic by the isometry construction in Section 4. This proves (2.2). Finally the positive ordinary suspension isomorphism
+<span class="math" data-tex="\(K_0(B)\to K_1(SB)\)">\(K_0(B)\to K_1(SB)\)</span> is proved in <a href="KT-KK-07.html#projection-lifts-and-the-exponential-boundary"><em>Pictures of KK</em>, Lemma 3.1d</a>, including nonunital and arbitrary coefficients. Use its increasing interval coordinate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same elementary repair for an almost projection proves <span class="math" data-tex="\([[\mathbb C,D]]=[\mathbb C,D]\)">\([[\mathbb C,D]]=[\mathbb C,D]\)</span>: replace a self-adjoint almost projection by its spectral projection at <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. For stable <span class="math" data-tex="\(D\)">\(D\)</span> this is its projection semigroup. We will not need a general semiprojectivity theorem.</p>
+<h2 id="3-letting-the-second-family-run-faster">3. Letting the second family run faster</h2>
+<p>Tensoring an asymptotic morphism with a commutative interval algebra is legitimate. For example, the commuting homomorphisms into a quotient, obtained from <span class="math" data-tex="\(f\mapsto f\otimes1\)">\(f\mapsto f\otimes1\)</span> and <span class="math" data-tex="\(a\mapsto1\otimes\bar\phi(a)\)">\(a\mapsto1\otimes\bar\phi(a)\)</span>, give a homomorphism on the maximal tensor product. For <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> the maximal and minimal norms agree: on a compact space, approximate a finite sum of algebra-valued functions by <span class="math" data-tex="\(\sum_i p_i\otimes b_i\)">\(\sum_i p_i\otimes b_i\)</span>, where the nonnegative partition of unity sums to 1 and each <span class="math" data-tex="\(b_i\)">\(b_i\)</span> is a nearby point value. In any representation with commuting images, this last sum is <span class="math" data-tex="\(R\operatorname{diag}(b_i)R^*\)">\(R\operatorname{diag}(b_i)R^*\)</span>, with row <span class="math" data-tex="\(R=(p_i^{1/2})_i\)">\(R=(p_i^{1/2})_i\)</span> and <span class="math" data-tex="\(RR^*=1\)">\(RR^*=1\)</span>, so its norm is at most <span class="math" data-tex="\(\max_i\|b_i\|\)">\(\max_i\|b_i\|\)</span>. The error is small also in the maximal norm: for each of the finitely many original scalar coefficients, its uniform approximation error bounds its tensor norm error. Refining the partition proves the supremum norm bound. Exhaustion gives the assertion for locally compact <span class="math" data-tex="\(X\)">\(X\)</span>. The quotient homomorphism thus defines <span class="math" data-tex="\(S\phi\)">\(S\phi\)</span> and interval homotopies. A continuous lift is then chosen by Lemma 1.2. On elementary tensors it is equivalent to <span class="math" data-tex="\(f\otimes\phi_t(a)\)">\(f\otimes\phi_t(a)\)</span>.</p>
+<p>More generally, two asymptotic morphisms can be tensored using maximal tensor products. Their two quotient homomorphisms have commuting images; the universal norm of the maximal tensor product gives a contractive homomorphism. Its image lies in the intended nonunital tensor ideal, since elementary products lie there and are dense. Choose a continuous representative. We only use minimal tensor products when one of the relevant tensor factors is <span class="math" data-tex="\(S\)">\(S\)</span>, an interval algebra, a matrix algebra or <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>. For <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, finite-corner approximation gives the same norm assertion.</p>
+<p><strong>Theorem 3.1 (composition).</strong> For separable <span class="math" data-tex="\(A,B,C\)">\(A,B,C\)</span>, there is an associative operation
+<span class="math math-display" data-tex="\[
+[[A,B]]\times[[B,C]]\longrightarrow[[A,C]],
+\qquad (x,y)\longmapsto yx,
+\tag{3.1}
+\]">\[
+[[A,B]]\times[[B,C]]\longrightarrow[[A,C]],
+\qquad (x,y)\longmapsto yx,
+\tag{3.1}
+\]</span>
+agreeing with ordinary composition. It commutes with suspension and with the tensor operations just described.</p>
+<p><strong>Proof.</strong> Take continuous representatives <span class="math" data-tex="\(\phi,\psi\)">\(\phi,\psi\)</span>. Choose a countable generating family for <span class="math" data-tex="\(A\)">\(A\)</span>, and let <span class="math" data-tex="\(A_0\)">\(A_0\)</span> be the complex *-algebra it generates. It is a union of compact sets <span class="math" data-tex="\(K_n\)">\(K_n\)</span>: use words in only the first <span class="math" data-tex="\(n\)">\(n\)</span> chosen generators and their adjoints, and bound the number and length of words and their coefficients. There are finitely many allowed words at each stage, so their bounded coefficient sets have compact images. Enlarge these compact sets recursively so that their union remains <span class="math" data-tex="\(A_0\)">\(A_0\)</span>, they increase, and sums, products, adjoints and scalar multiplication with <span class="math" data-tex="\(|\lambda|\leq n\)">\(|\lambda|\leq n\)</span> land in the next set. Images of finite products and sums of compact sets are compact.</p>
+<p>Choose <span class="math" data-tex="\(1&lt;t_1&lt;t_2&lt;\cdots\)">\(1&lt;t_1&lt;t_2&lt;\cdots\)</span>, with <span class="math" data-tex="\(t_n\to\infty\)">\(t_n\to\infty\)</span>, so that the defects and the norm excess of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-tex="\(K_{n+4}\)">\(K_{n+4}\)</span> are at most <span class="math" data-tex="\(1/n\)">\(1/n\)</span> for <span class="math" data-tex="\(t\geq t_n\)">\(t\geq t_n\)</span>. Form compact sets in <span class="math" data-tex="\(B\)">\(B\)</span> containing
+<span class="math math-display" data-tex="\[
+\{\phi_t(a):a\in K_{n+4},\ 1\leq t\leq t_{n+1}\}
+\tag{3.2}
+\]">\[
+\{\phi_t(a):a\in K_{n+4},\ 1\leq t\leq t_{n+1}\}
+\tag{3.2}
+\]</span>
+and all sums, products, adjoints, scalar combinations and differences needed to compare the identities (1.2). In particular they contain each defect as an element of <span class="math" data-tex="\(B\)">\(B\)</span>, as well as the operands in which it occurs. Enlarge them by the corresponding sets for the first <span class="math" data-tex="\(n\)">\(n\)</span> stages. Choose increasing <span class="math" data-tex="\(R_n\)">\(R_n\)</span> such that the defects and norm excess of <span class="math" data-tex="\(\psi_v\)">\(\psi_v\)</span> on these compact sets are at most <span class="math" data-tex="\(1/n\)">\(1/n\)</span> whenever <span class="math" data-tex="\(v\geq R_n\)">\(v\geq R_n\)</span>. Let <span class="math" data-tex="\(r\)">\(r\)</span> be a continuous increasing function with <span class="math" data-tex="\(r(t_n)\geq R_n\)">\(r(t_n)\geq R_n\)</span>.</p>
+<p>For <span class="math" data-tex="\(t_n\leq t\leq t_{n+1}\)">\(t_n\leq t\leq t_{n+1}\)</span>, all the required <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-estimates therefore apply to <span class="math" data-tex="\(\phi_t(a)\)">\(\phi_t(a)\)</span>, for <span class="math" data-tex="\(a\in K_n\)">\(a\in K_n\)</span>. To see why moving errors cause no difficulty, if
+<span class="math" data-tex="\(e_t=\phi_t(a+b)-\phi_t(a)-\phi_t(b)\)">\(e_t=\phi_t(a+b)-\phi_t(a)-\phi_t(b)\)</span>, add and subtract <span class="math" data-tex="\(\psi_{r(t)}(\phi_t(a)+\phi_t(b))\)">\(\psi_{r(t)}(\phi_t(a)+\phi_t(b))\)</span>. Approximate additivity, applied also to the pair consisting of that sum and <span class="math" data-tex="\(e_t\)">\(e_t\)</span>, gives
+<span class="math math-display" data-tex="\[
+\|\psi_{r(t)}\phi_t(a+b)-\psi_{r(t)}\phi_t(a)
+-\psi_{r(t)}\phi_t(b)\|
+\leq 2/n+\|e_t\|+1/n\leq4/n.
+\tag{3.3}
+\]">\[
+\|\psi_{r(t)}\phi_t(a+b)-\psi_{r(t)}\phi_t(a)
+-\psi_{r(t)}\phi_t(b)\|
+\leq 2/n+\|e_t\|+1/n\leq4/n.
+\tag{3.3}
+\]</span>
+The multiplicative estimate is identical after inserting
+<span class="math" data-tex="\(\phi_t(ab)-\phi_t(a)\phi_t(b)\)">\(\phi_t(ab)-\phi_t(a)\phi_t(b)\)</span>; apply multiplicativity of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> to the two image operands, additivity to the error, and its norm estimate to that error. Adjoint and bounded-scalar estimates use the same included sets. The norm estimate is
+<span class="math math-display" data-tex="\[
+\|\psi_{r(t)}\phi_t(a)\|\leq\|a\|+2/n\qquad(a\in K_n).
+\tag{3.4}
+\]">\[
+\|\psi_{r(t)}\phi_t(a)\|\leq\|a\|+2/n\qquad(a\in K_n).
+\tag{3.4}
+\]</span>
+Thus the raw family on <span class="math" data-tex="\(A_0\)">\(A_0\)</span> defines a contractive *-homomorphism <span class="math" data-tex="\(A_0\to C_\infty\)">\(A_0\to C_\infty\)</span>. It extends uniquely to <span class="math" data-tex="\(A\)">\(A\)</span>. Choose its continuous representative by (1.8). This representative, not an unproved extension of the raw nonlinear composition, defines (3.1). On every <span class="math" data-tex="\(a\in A_0\)">\(a\in A_0\)</span> it is equivalent to the raw family.</p>
+<p>Two sufficiently fast choices <span class="math" data-tex="\(r_0,r_1\)">\(r_0,r_1\)</span> are joined by <span class="math" data-tex="\((1-s)r_0+sr_1\)">\((1-s)r_0+sr_1\)</span>. The same estimates hold uniformly in <span class="math" data-tex="\(s\)">\(s\)</span>; extension and lifting with target <span class="math" data-tex="\(IC\)">\(IC\)</span> give the required homotopy. Given two choices of <span class="math" data-tex="\(A_0\)">\(A_0\)</span> or its exhaustion, the *-algebra generated by their union is again a countable union of compact sets. Choose a rate fast enough for both. Equivalent continuous representatives have compact-uniformly small differences by Corollary 1.3. Include these differences and operands in the sets (3.2); estimate (3.3) shows that the two quotient compositions agree. For homotopies include the entire compact interval of their images in (3.2), and choose the <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-bounds in <span class="math" data-tex="\(IC\)">\(IC\)</span>. This proves independence of the homotopy classes in both variables.</p>
+<p>For associativity add a third representative <span class="math" data-tex="\(\omega:C \rightsquigarrow D\)">\(\omega:C \rightsquigarrow D\)</span>. Enlarge the chosen dense *-algebra of <span class="math" data-tex="\(B\)">\(B\)</span> to contain every <span class="math" data-tex="\(\phi_t(K_n)\)">\(\phi_t(K_n)\)</span>; this is still a countable union of compact sets, by subdividing time into bounded intervals. Include representatives of the first quotient composition and their vanishing differences in the next-stage compact sets. Choose two rates successively so that all three compositions are represented, on <span class="math" data-tex="\(A_0\)">\(A_0\)</span>, by
+<span class="math math-display" data-tex="\[
+\omega_{s(t)}\psi_{r(t)}\phi_t(a).
+\tag{3.5}
+\]">\[
+\omega_{s(t)}\psi_{r(t)}\phi_t(a).
+\tag{3.5}
+\]</span>
+For an iterated rate prescribed by the other bracketing, increase <span class="math" data-tex="\(s\)">\(s\)</span> so that it dominates that rate as well. Reparametrization independence then identifies both bracketings with (3.5). Equality on dense <span class="math" data-tex="\(A_0\)">\(A_0\)</span> is equality of the extended quotient homomorphisms. The lifted representatives are equivalent. If an operand is an actual homomorphism, ordinary composition already obeys (1.2), and these constructions give its class. Finally on elementary tensor products the two constructions give the same raw triple products. A common rate works on compact exhaustions of the algebraic tensor product; contractive extension proves the tensor assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The dense algebra in this proof need not contain every compact subset of <span class="math" data-tex="\(A\)">\(A\)</span>. Compact uniformity on all of <span class="math" data-tex="\(A\)">\(A\)</span> is supplied by the final continuous lift. It does not follow from the dense-algebra estimates alone.</p>
+<h2 id="4-stability-addition-and-the-category">4. Stability, addition and the category</h2>
+<p>We record the Hilbert-space homotopies behind stability. Identify the infinite Hilbert space with <span class="math" data-tex="\(L^2(\mathbb R_+)\)">\(L^2(\mathbb R_+)\)</span>, and define
+<span class="math math-display" data-tex="\[
+(V_af)(x)=\begin{cases}0,&amp;x&lt;a,\\ f(x-a),&amp;x\geq a.\end{cases}
+\qquad 0\leq a\leq1.
+\tag{4.1}
+\]">\[
+(V_af)(x)=\begin{cases}0,&amp;x&lt;a,\\ f(x-a),&amp;x\geq a.\end{cases}
+\qquad 0\leq a\leq1.
+\tag{4.1}
+\]</span>
+These are isometries. Translations and their adjoints are strongly continuous, first on compactly supported continuous vectors and then by density. For a rank-one compact operator, <span class="math" data-tex="\(V_a\theta_{f,g}V_a^*=\theta_{V_af,V_ag}\)">\(V_a\theta_{f,g}V_a^*=\theta_{V_af,V_ag}\)</span>; its norm continuity follows from the rank-one bound. Finite-rank approximation proves that <span class="math" data-tex="\(k\mapsto V_akV_a^*\)">\(k\mapsto V_akV_a^*\)</span> is a point-norm homotopy from identity to a corner of infinite codimension. Every other infinite-codimensional corner is obtained by a unitary change of coordinates.</p>
+<p>Conjugation by an arbitrary unitary <span class="math" data-tex="\(U\)">\(U\)</span> on a standard coefficient module is harmless after stabilization: the columns
+<span class="math math-display" data-tex="\[
+R_\theta x=(\cos\theta\,x,\sin\theta\,Ux),\qquad
+0\leq\theta\leq\pi/2,
+\tag{4.2}
+\]">\[
+R_\theta x=(\cos\theta\,x,\sin\theta\,Ux),\qquad
+0\leq\theta\leq\pi/2,
+\tag{4.2}
+\]</span>
+are norm-continuous adjointable isometries. Conjugating a compact-valued map by these columns joins its first-corner placement to its second-corner conjugate. Both corners are homotopic to the original placement by (4.1), followed by a norm-continuous unitary path exchanging the two infinite subspaces. One such exchange is a self-adjoint unitary <span class="math" data-tex="\(W\)">\(W\)</span>; the path is <span class="math" data-tex="\(\exp(i\pi s(1-W)/2)\)">\(\exp(i\pi s(1-W)/2)\)</span>. For an asymptotic family, these homotopies have uniform errors in the interval parameter because conjugation is contractive.</p>
+<p><strong>Lemma 4.1 (stabilization).</strong> For separable <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+[[A,B\otimes\mathcal K]]\longrightarrow
+[[A\otimes\mathcal K,B\otimes\mathcal K\otimes\mathcal K]],
+\qquad \phi\longmapsto\phi\otimes1_{\mathcal K},
+\tag{4.3}
+\]">\[
+[[A,B\otimes\mathcal K]]\longrightarrow
+[[A\otimes\mathcal K,B\otimes\mathcal K\otimes\mathcal K]],
+\qquad \phi\longmapsto\phi\otimes1_{\mathcal K},
+\tag{4.3}
+\]</span>
+is a bijection after identifying the two target compact factors. A rank-one source corner gives its inverse.</p>
+<p><strong>Proof.</strong> One composite is the target rank-one corner, homotopic to an isomorphism by (4.1)–(4.2). For the other, interchange the two compact factors after extending the source-corner map by <span class="math" data-tex="\(1_{\mathcal K}\)">\(1_{\mathcal K}\)</span>. The interchange is implemented by the tensor-flip unitary, whose conjugation is harmless by (4.2). What remains is the corner <span class="math" data-tex="\(\mathcal K\to\mathcal K\otimes\mathcal K\)">\(\mathcal K\to\mathcal K\otimes\mathcal K\)</span>, <span class="math" data-tex="\(k\mapsto k\otimes e_{11}\)">\(k\mapsto k\otimes e_{11}\)</span>, tensored with the identity of <span class="math" data-tex="\(A\)">\(A\)</span>. Under a Hilbert-space identification this corner has infinite codimension and hence is homotopic to an isomorphism by (4.1). Composition respects these homotopies by Theorem 3.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Two orthogonal isometries whose ranges sum to the standard Hilbert space give an addition on <span class="math" data-tex="\([[A,B\otimes\mathcal K]]\)">\([[A,B\otimes\mathcal K]]\)</span>. It is independent of the isometries by (4.2). Permuting two or three summands proves commutativity and associativity; (4.1) proves that a zero summand changes no class. Composition and suspension preserve this addition.</p>
+<p>There is another addition when the target is suspended. Compress one function into <span class="math" data-tex="\((0,1/2)\)">\((0,1/2)\)</span>, the other into <span class="math" data-tex="\((1/2,1)\)">\((1/2,1)\)</span>, and add their disjointly supported families. Interval compression is homotopic to identity: vary the two endpoints of its supporting interval continuously, and extend by zero. Uniform continuity of each suspension function proves point-norm continuity, even at moving endpoints. Three adjacent intervals prove associativity. In the stable suspended target, this addition equals orthogonal sum. Compress the first and second diagonal entries separately; then rotate the second entry into the first. Their disjoint supports make every mixed product zero during this rotation. The explicit matrix is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+\phi+c^2\psi&amp;cs\psi\\ c s\psi&amp;s^2\psi
+\end{pmatrix},\qquad c=\cos\theta,\quad s=\sin\theta,
+\tag{4.4}
+\]">\[
+\begin{pmatrix}
+\phi+c^2\psi&amp;cs\psi\\ c s\psi&amp;s^2\psi
+\end{pmatrix},\qquad c=\cos\theta,\quad s=\sin\theta,
+\tag{4.4}
+\]</span>
+with the rotation parameter run from <span class="math" data-tex="\(\theta=\pi/2\)">\(\theta=\pi/2\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>. Its endpoint is the sum plus a zero corner. Approximate identities and errors obey the same formula and norm bounds.</p>
+<p>Reversal <span class="math" data-tex="\(\rho(f)(s)=f(1-s)\)">\(\rho(f)(s)=f(1-s)\)</span> gives the inverse. Indeed identity followed by reversal, on the two half intervals, is <span class="math" data-tex="\(f\mapsto f(h)\)">\(f\mapsto f(h)\)</span>, where
+<span class="math math-display" data-tex="\[
+h(s)=\begin{cases}2s,&amp;s\leq1/2,\\2-2s,&amp;s\geq1/2.\end{cases}
+\tag{4.5}
+\]">\[
+h(s)=\begin{cases}2s,&amp;s\leq1/2,\\2-2s,&amp;s\geq1/2.\end{cases}
+\tag{4.5}
+\]</span>
+The homomorphisms <span class="math" data-tex="\(f\mapsto f(rh)\)">\(f\mapsto f(rh)\)</span>, <span class="math" data-tex="\(0\leq r\leq1\)">\(0\leq r\leq1\)</span>, contract it to zero. Thus <span class="math" data-tex="\([[A,SB\otimes\mathcal K]]\)">\([[A,SB\otimes\mathcal K]]\)</span> is an abelian group. Reversal acts on the <strong>target</strong> suspension coordinate.</p>
+<p>We can now define
+<span class="math math-display" data-tex="\[
+E(A,B)=[[SA,SB\otimes\mathcal K]].
+\tag{4.6}
+\]">\[
+E(A,B)=[[SA,SB\otimes\mathcal K]].
+\tag{4.6}
+\]</span>
+For <span class="math" data-tex="\(x:A\to B\)">\(x:A\to B\)</span>, <span class="math" data-tex="\(y:B\to C\)">\(y:B\to C\)</span> in this notation, extend the representative of <span class="math" data-tex="\(y\)">\(y\)</span> stably by (4.3), compose with a representative of <span class="math" data-tex="\(x\)">\(x\)</span>, and fold the two target compact factors. Lemma 4.1 and Theorem 3.1 make this associative and bilinear. Its identity is the constant homomorphism <span class="math" data-tex="\(SA\to SA\otimes\mathcal K\)">\(SA\to SA\otimes\mathcal K\)</span>, <span class="math" data-tex="\(a\mapsto a\otimes e_{11}\)">\(a\mapsto a\otimes e_{11}\)</span>. A homomorphism <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span> represents <span class="math" data-tex="\(Sf\)">\(Sf\)</span> followed by that corner. We obtain an additive category whose objects are the separable C*-algebras.</p>
+<p>Proposition 2.1 gives, for arbitrary <span class="math" data-tex="\(B\)">\(B\)</span>,
+<span class="math math-display" data-tex="\[
+E(\mathbb C,B)=K_0(B).
+\tag{4.7}
+\]">\[
+E(\mathbb C,B)=K_0(B).
+\tag{4.7}
+\]</span>
+This agrees with addition. Direct sum of homomorphisms corresponds to block sum of their unitaries, hence to K-theory addition. The identity of <span class="math" data-tex="\(E(\mathbb C,\mathbb C)\)">\(E(\mathbb C,\mathbb C)\)</span> corresponds to the positive loop <span class="math" data-tex="\(e^{2\pi is}\)">\(e^{2\pi is}\)</span>, hence to <span class="math" data-tex="\(1\in\mathbb Z\)">\(1\in\mathbb Z\)</span>.</p>
+<p>The definition sometimes made with both source and target stabilized gives the same groups: (4.3), with source <span class="math" data-tex="\(SA\)">\(SA\)</span> and target <span class="math" data-tex="\(SB\)">\(SB\)</span>, is the precise comparison. There is no change of category or product, since the inverse corner and tensor flip used in its proof respect composition.</p>
+<h2 id="5-the-boundary-family-and-split-extensions">5. The boundary family and split extensions</h2>
+<p>Consider an extension
+<span class="math math-display" data-tex="\[
+0\longrightarrow J\xrightarrow{i}A\xrightarrow{q}B\longrightarrow0.
+\tag{5.1}
+\]">\[
+0\longrightarrow J\xrightarrow{i}A\xrightarrow{q}B\longrightarrow0.
+\tag{5.1}
+\]</span>
+Choose a continuous section <span class="math" data-tex="\(\sigma:B\to A\)">\(\sigma:B\to A\)</span>, <span class="math" data-tex="\(\sigma(0)=0\)">\(\sigma(0)=0\)</span>, bounded by a constant times <span class="math" data-tex="\(\|b\|\)">\(\|b\|\)</span>, using Lemma 1.2. Choose a norm-continuous positive contractive approximate identity <span class="math" data-tex="\(u_t\)">\(u_t\)</span> of <span class="math" data-tex="\(J\)">\(J\)</span>, quasicentral for <span class="math" data-tex="\(A\)">\(A\)</span>. Its existence for separable <span class="math" data-tex="\(A\)">\(A\)</span> is proved in <a href="KT-KK-08.html#1-approximate-identities-with-commutator-control"><em>Kasparov's technical theorem</em>, Theorem 1.1</a>; interpolation between its successive positive contractions gives the continuous version.</p>
+<p>Two elementary functional-calculus consequences will be used repeatedly:
+<span class="math math-display" data-tex="\[
+[f(u_t),a]\longrightarrow0\quad(a\in A),\qquad
+f(u_t)j\longrightarrow0\quad(j\in J),\qquad f\in S.
+\tag{5.2}
+\]">\[
+[f(u_t),a]\longrightarrow0\quad(a\in A),\qquad
+f(u_t)j\longrightarrow0\quad(j\in J),\qquad f\in S.
+\tag{5.2}
+\]</span>
+To prove them, approximate <span class="math" data-tex="\(f\)">\(f\)</span> uniformly by polynomials vanishing at 0 and 1. For a monomial, the commutator is the sum of <span class="math" data-tex="\(k\)">\(k\)</span> terms containing <span class="math" data-tex="\([u_t,a]\)">\([u_t,a]\)</span>, and <span class="math" data-tex="\(\|u_t^kj-j\|\leq k\|u_tj-j\|\)">\(\|u_t^kj-j\|\leq k\|u_tj-j\|\)</span>. In a polynomial <span class="math" data-tex="\(\sum_{k\geq1}a_ku^k\)">\(\sum_{k\geq1}a_ku^k\)</span>, the coefficients sum to zero at 1, which proves the second assertion. Uniform polynomial approximation proves (5.2). These estimates hold uniformly on compact sets, by finite nets. They also hold uniformly in an extra compact parameter for convex combinations of quasicentral approximate identities.</p>
+<p><strong>Proposition 5.1 (the extension morphism).</strong> The prescription
+<span class="math math-display" data-tex="\[
+\epsilon_{q,t}(f\otimes b)=f(u_t)\sigma(b)
+\tag{5.3}
+\]">\[
+\epsilon_{q,t}(f\otimes b)=f(u_t)\sigma(b)
+\tag{5.3}
+\]</span>
+defines, after quotient extension and continuous lifting, a class
+<span class="math" data-tex="\(\epsilon_q\in[[SB,J]]\)">\(\epsilon_q\in[[SB,J]]\)</span>. It is independent of the choices, natural for diagrams of extensions, and
+<span class="math math-display" data-tex="\[
+\epsilon_{Sq}=S\epsilon_q\circ\operatorname{flip}_{S,S}.
+\tag{5.4}
+\]">\[
+\epsilon_{Sq}=S\epsilon_q\circ\operatorname{flip}_{S,S}.
+\tag{5.4}
+\]</span>
+Here the boundary suspension is first in <span class="math" data-tex="\(\epsilon_{Sq}\)">\(\epsilon_{Sq}\)</span>, while the functor suspension is first in <span class="math" data-tex="\(S\epsilon_q\)">\(S\epsilon_q\)</span>. No completely positive section is assumed.</p>
+<p><strong>Proof.</strong> Every section defect, such as <span class="math" data-tex="\(\sigma(bc)-\sigma(b)\sigma(c)\)">\(\sigma(bc)-\sigma(b)\sigma(c)\)</span>, lies in <span class="math" data-tex="\(J\)">\(J\)</span>, and is killed asymptotically by (5.2). Quasicentrality moves <span class="math" data-tex="\(g(u_t)\)">\(g(u_t)\)</span> past <span class="math" data-tex="\(\sigma(b)\)">\(\sigma(b)\)</span>. Therefore (5.3) gives exact linear, adjoint and multiplicative identities in <span class="math" data-tex="\(J_\infty\)">\(J_\infty\)</span> on <span class="math" data-tex="\(S\odot B\)">\(S\odot B\)</span>. It has the spatial tensor norm, as follows without a bound for a chosen section on all tensors. Represent the generated quotient algebra faithfully on a Hilbert space. The commuting action of <span class="math" data-tex="\(S\)">\(S\)</span>, by <span class="math" data-tex="\(f(u_t)\)">\(f(u_t)\)</span>, and the induced action of <span class="math" data-tex="\(B\)">\(B\)</span> on its essential subspace define a representation of <span class="math" data-tex="\(S\otimes_{\max}B\)">\(S\otimes_{\max}B\)</span>. For precision, represent the C*-algebra generated by the constant copy of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(f([u_t])\)">\(f([u_t])\)</span> in <span class="math" data-tex="\((A^+)_\infty\)">\((A^+)_\infty\)</span>. Let <span class="math" data-tex="\(H_S\)">\(H_S\)</span> be the closed span of the ranges of these latter operators. Constant elements of <span class="math" data-tex="\(A\)">\(A\)</span> and their adjoints preserve <span class="math" data-tex="\(H_S\)">\(H_S\)</span>, since they commute with the latter operators in the quotient. Constant elements of <span class="math" data-tex="\(J\)">\(J\)</span> vanish on <span class="math" data-tex="\(H_S\)">\(H_S\)</span>, by (5.2). Multiplication by a lift <span class="math" data-tex="\(\sigma(b)\)">\(\sigma(b)\)</span> restricted to <span class="math" data-tex="\(H_S\)">\(H_S\)</span> is therefore independent of the lift; all section defects vanish there. Its norm is at most <span class="math" data-tex="\(\|b\|\)">\(\|b\|\)</span>, since lifts can have norm arbitrarily close to that quotient norm. This defines the second action as a contractive homomorphism. On the orthogonal complement of <span class="math" data-tex="\(H_S\)">\(H_S\)</span> the <span class="math" data-tex="\(S\)">\(S\)</span>-action is zero. The inclusion <span class="math" data-tex="\(J_\infty\to(A^+)_\infty\)">\(J_\infty\to(A^+)_\infty\)</span> is isometric, by the identical tail-norm formula. The actions commute. The interval norm argument in Section 3 identifies this maximal tensor product with <span class="math" data-tex="\(SB\)">\(SB\)</span>. Thus the quotient map extends contractively. Lemma 1.2 supplies a representative on all of <span class="math" data-tex="\(SB\)">\(SB\)</span>.</p>
+<p>Changing the section gives the same quotient map, by (5.2). The straight path between two quasicentral approximate identities is a quasicentral approximate identity in <span class="math" data-tex="\(C([0,1],J)\)">\(C([0,1],J)\)</span>, uniformly in its parameter: the two approximate-identity errors and commutators bound its errors. Functional calculus then gives a homotopy of (5.3).</p>
+<p>For naturality write a diagram as <span class="math" data-tex="\(\alpha:A\to A&#x27;\)">\(\alpha:A\to A&#x27;\)</span>, <span class="math" data-tex="\(\beta:B\to B&#x27;\)">\(\beta:B\to B&#x27;\)</span>, <span class="math" data-tex="\(q&#x27;\alpha=\beta q\)">\(q&#x27;\alpha=\beta q\)</span>, with <span class="math" data-tex="\(\alpha(J)\subset J&#x27;\)">\(\alpha(J)\subset J&#x27;\)</span>. Start with the lifts <span class="math" data-tex="\(\alpha\sigma(b)\)">\(\alpha\sigma(b)\)</span> and the positive contractions <span class="math" data-tex="\(\alpha(u_t)\)">\(\alpha(u_t)\)</span>. Their section defects lie in <span class="math" data-tex="\(\alpha(J)\)">\(\alpha(J)\)</span>, which these contractions approximate, and their commutators with the lifts tend to zero. Interpolate the contractions with a quasicentral approximate identity <span class="math" data-tex="\(v_t\)">\(v_t\)</span> of <span class="math" data-tex="\(J&#x27;\)">\(J&#x27;\)</span>. This interpolation approximates the same defects uniformly and is quasicentral for the tested lifts. It therefore joins <span class="math" data-tex="\(\alpha\epsilon_q\)">\(\alpha\epsilon_q\)</span> to <span class="math" data-tex="\(f(v_t)\alpha\sigma(b)\)">\(f(v_t)\alpha\sigma(b)\)</span>. Only at this latter endpoint replace the lift by <span class="math" data-tex="\(\sigma&#x27;(\beta b)\)">\(\sigma&#x27;(\beta b)\)</span>: their difference is in <span class="math" data-tex="\(J&#x27;\)">\(J&#x27;\)</span> and is killed by <span class="math" data-tex="\(f(v_t)\)">\(f(v_t)\)</span>. Thus this endpoint is equivalent to <span class="math" data-tex="\(\epsilon_{q&#x27;}S\beta\)">\(\epsilon_{q&#x27;}S\beta\)</span>. This argument does not require <span class="math" data-tex="\(\alpha(J)\)">\(\alpha(J)\)</span> to be an ideal of <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>, or <span class="math" data-tex="\(\alpha(u_t)\)">\(\alpha(u_t)\)</span> to approximate arbitrary elements of <span class="math" data-tex="\(J&#x27;\)">\(J&#x27;\)</span>.</p>
+<p>For suspension take the ideal approximate identity <span class="math" data-tex="\(h_t(s)u_t\)">\(h_t(s)u_t\)</span>, where, for <span class="math" data-tex="\(t\geq2\)">\(t\geq2\)</span>, <span class="math" data-tex="\(h_t\in S\)">\(h_t\in S\)</span> is 1 on <span class="math" data-tex="\([1/t,1-1/t]\)">\([1/t,1-1/t]\)</span>, 0 at the two endpoints, and has linear ramps. Keep <span class="math" data-tex="\(h_t=h_2\)">\(h_t=h_2\)</span> on the initial interval <span class="math" data-tex="\(1\leq t\leq2\)">\(1\leq t\leq2\)</span>. All later ramp formulas use this same harmless initial extension. The representative has value
+<span class="math" data-tex="\(f(h_t(s)u_t)g(s)\sigma(b)\)">\(f(h_t(s)u_t)g(s)\sigma(b)\)</span>. Replace <span class="math" data-tex="\(h_t(s)\)">\(h_t(s)\)</span> by <span class="math" data-tex="\(h_{t+r/(1-r)}(s)\)">\(h_{t+r/(1-r)}(s)\)</span>, and at <span class="math" data-tex="\(r=1\)">\(r=1\)</span> by 1. For fixed <span class="math" data-tex="\(g\in S\)">\(g\in S\)</span>, the tails of <span class="math" data-tex="\(g\)">\(g\)</span> make this continuous at <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, uniformly in <span class="math" data-tex="\(t\)">\(t\)</span>. Polynomial estimates (5.2) control all defects uniformly in <span class="math" data-tex="\(r\)">\(r\)</span>. The terminal family is <span class="math" data-tex="\(g(s)f(u_t)\sigma(b)\)">\(g(s)f(u_t)\sigma(b)\)</span>, proving (5.4) with its displayed coordinate flip. It is not <span class="math" data-tex="\(f(s)g(u_t)\sigma(b)\)">\(f(s)g(u_t)\sigma(b)\)</span> in this ordered notation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the cone extension <span class="math" data-tex="\(0\to SA\to CA\to A\to0\)">\(0\to SA\to CA\to A\to0\)</span>, this class is identity on <span class="math" data-tex="\(SA\)">\(SA\)</span>. To see this explicitly, take a section equal to <span class="math" data-tex="\(a\)">\(a\)</span> near 0 and zero near 1, and take <span class="math" data-tex="\(h_t\)">\(h_t\)</span> with two linear ramps, from 0 to 1 on <span class="math" data-tex="\([1/(t+1),1/t]\)">\([1/(t+1),1/t]\)</span>, and back from 1 to 0 on <span class="math" data-tex="\([1-1/t,1-1/(t+1)]\)">\([1-1/t,1-1/(t+1)]\)</span>. Only the first ramp survives multiplication by the section. On its support the family differs from the copy of <span class="math" data-tex="\(f\otimes a\)">\(f\otimes a\)</span> by a quantity tending to zero. Expanding this supporting interval monotonically to <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> gives a homotopy to identity. Uniform continuity proves this for compact subsets of the elementary tensor algebra; quotient extension and Lemma 1.2 complete the homotopy.</p>
+<p>If (5.1) has a homomorphic splitting <span class="math" data-tex="\(s\)">\(s\)</span>, then <span class="math" data-tex="\(\epsilon_q=0\)">\(\epsilon_q=0\)</span>. Use <span class="math" data-tex="\(f(ru_t)s(b)\)">\(f(ru_t)s(b)\)</span>, <span class="math" data-tex="\(0\leq r\leq1\)">\(0\leq r\leq1\)</span>. All section defects are now zero; quasicentrality gives uniform multiplicativity, and functional calculus gives a homotopy from zero to (5.3).</p>
+<p><strong>Proposition 5.2 (the splitting map).</strong> For a split extension (5.1), there is <span class="math" data-tex="\(\eta_{q,s}\in[[SA,SJ]]\)">\(\eta_{q,s}\in[[SA,SJ]]\)</span> with
+<span class="math math-display" data-tex="\[
+\eta_{q,s}\,Si=1_{SJ},\qquad
+Si\,\eta_{q,s}=1_{SA}-S(sq),\qquad
+\eta_{q,s}\,Ss=0.
+\tag{5.5}
+\]">\[
+\eta_{q,s}\,Si=1_{SJ},\qquad
+Si\,\eta_{q,s}=1_{SA}-S(sq),\qquad
+\eta_{q,s}\,Ss=0.
+\tag{5.5}
+\]</span>
+Consequently every split extension becomes a biproduct in <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Proof.</strong> Form the path algebra
+<span class="math math-display" data-tex="\[
+L=\{(a,g):a\in A,\ g\in C([0,1],A),\
+g(0)=a,\ g(1)=sq(a),\ qg(\lambda)=q(a)\}.
+\tag{5.6}
+\]">\[
+L=\{(a,g):a\in A,\ g\in C([0,1],A),\
+g(0)=a,\ g(1)=sq(a),\ qg(\lambda)=q(a)\}.
+\tag{5.6}
+\]</span>
+It has ideal <span class="math" data-tex="\(SJ\)">\(SJ\)</span> and quotient <span class="math" data-tex="\(A\)">\(A\)</span>. A continuous linear section is any interpolation from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(sq(a)\)">\(sq(a)\)</span>, chosen constant on the first and last thirds. Apply Proposition 5.1 with approximate identity <span class="math" data-tex="\(h_t(\lambda)u_t\)">\(h_t(\lambda)u_t\)</span>. This gives the family <span class="math" data-tex="\(f(h_t(\lambda)u_t)g_a(\lambda)\)">\(f(h_t(\lambda)u_t)g_a(\lambda)\)</span>, with target <span class="math" data-tex="\(SJ\)">\(SJ\)</span>.</p>
+<p>After composing on the left with <span class="math" data-tex="\(Si\)">\(Si\)</span>, replace <span class="math" data-tex="\(u_t\)">\(u_t\)</span> by <span class="math" data-tex="\((1-r)u_t+r1\)">\((1-r)u_t+r1\)</span>. On every ideal defect it converges uniformly to 1, so the same polynomial estimates give a homotopy. At the terminal endpoint, the two ramps of <span class="math" data-tex="\(h_t\)">\(h_t\)</span> give a positive copy of <span class="math" data-tex="\(f\otimes a\)">\(f\otimes a\)</span> and a reversed copy of <span class="math" data-tex="\(f\otimes sq(a)\)">\(f\otimes sq(a)\)</span>. Expanding their disjoint supports gives the second identity in (5.5) by (4.4)–(4.5). For <span class="math" data-tex="\(a\in J\)">\(a\in J\)</span>, the terminal value <span class="math" data-tex="\(sq(a)\)">\(sq(a)\)</span> is zero, so the very same homotopy, now staying in <span class="math" data-tex="\(SJ\)">\(SJ\)</span>, gives the first identity. For <span class="math" data-tex="\(a=s(b)\)">\(a=s(b)\)</span>, the constant path is a homomorphic splitting of (5.6) restricted to <span class="math" data-tex="\(s(B)\)">\(s(B)\)</span>, so the preceding split-extension contraction gives the third identity.</p>
+<p>It follows that <span class="math" data-tex="\((\eta,Sq)\)">\((\eta,Sq)\)</span> and <span class="math" data-tex="\(Si+Ss\)">\(Si+Ss\)</span> are inverse maps between <span class="math" data-tex="\(SA\)">\(SA\)</span> and <span class="math" data-tex="\(SJ\oplus SB\)">\(SJ\oplus SB\)</span>: the two diagonal composites are identities, the off-diagonal composites vanish, and <span class="math" data-tex="\(Si\eta+SsSq=1\)">\(Si\eta+SsSq=1\)</span>. Stable target placement and (4.3) give the assertion in <span class="math" data-tex="\(E\)">\(E\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-transporting-the-bott-equivalence">6. Transporting the Bott equivalence</h2>
+<p>The split-extension calculation is enough to transport the proved KK inverse cycles. We give the factorization argument explicitly.</p>
+<p><strong>Lemma 6.1 (the split-exact factorization).</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be a homotopy-invariant, stable functor from separable C*-algebras to an additive category. Suppose split extensions become biproducts under <span class="math" data-tex="\(F\)">\(F\)</span>. There is a unique additive functor on the KK category extending <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(QA=A*A\)">\(QA=A*A\)</span>, <span class="math" data-tex="\(qA=\ker(QA\to A)\)">\(qA=\ker(QA\to A)\)</span>, with embeddings <span class="math" data-tex="\(\iota_+,\iota_-\)">\(\iota_+,\iota_-\)</span> and fold <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span>. The extension
+<span class="math math-display" data-tex="\[
+0\to qA\xrightarrow{j}QA\xrightarrow{\nabla}A\to0
+\tag{6.1}
+\]">\[
+0\to qA\xrightarrow{j}QA\xrightarrow{\nabla}A\to0
+\tag{6.1}
+\]</span>
+is split by <span class="math" data-tex="\(\iota_-\)">\(\iota_-\)</span>. Let <span class="math" data-tex="\(R_A:F(QA)\to F(qA)\)">\(R_A:F(QA)\to F(qA)\)</span> be its biproduct retraction. Thus
+<span class="math math-display" data-tex="\[
+FjR_A=1-F\iota_-F\nabla,\qquad R_AFj=1,
+\qquad R_AF\iota_-=0.
+\tag{6.2}
+\]">\[
+FjR_A=1-F\iota_-F\nabla,\qquad R_AFj=1,
+\qquad R_AF\iota_-=0.
+\tag{6.2}
+\]</span>
+The exact homomorphism picture in the preceding lesson represents
+<span class="math" data-tex="\(x\in KK(A,B)\)">\(x\in KK(A,B)\)</span> by <span class="math" data-tex="\(\theta_x:qA\to B\otimes\mathcal K\)">\(\theta_x:qA\to B\otimes\mathcal K\)</span>, with ordinary homotopy and direct-sum addition. Define
+<span class="math math-display" data-tex="\[
+F(x)=(F\kappa_B)^{-1}F\theta_x R_A F\iota_+,
+\qquad\kappa_B(b)=b\otimes e_{11}.
+\tag{6.3}
+\]">\[
+F(x)=(F\kappa_B)^{-1}F\theta_x R_A F\iota_+,
+\qquad\kappa_B(b)=b\otimes e_{11}.
+\tag{6.3}
+\]</span>
+Ordinary homotopy makes this independent of <span class="math" data-tex="\(\theta_x\)">\(\theta_x\)</span>. Direct sum is additive under <span class="math" data-tex="\(F\)">\(F\)</span>: factor a sum through the biproduct <span class="math" data-tex="\((B\otimes\mathcal K)\oplus(B\otimes\mathcal K)\)">\((B\otimes\mathcal K)\oplus(B\otimes\mathcal K)\)</span>, then use its two corner maps. Each corner becomes the same stable identification, by (4.1)–(4.2). Thus (6.3) is additive. It is natural for target homomorphisms, directly from their postcomposition of <span class="math" data-tex="\(\theta_x\)">\(\theta_x\)</span>.</p>
+<p>For an ordinary homomorphism <span class="math" data-tex="\(h:A\to B\)">\(h:A\to B\)</span>, the pair <span class="math" data-tex="\((h,0)\)">\((h,0)\)</span> represents its KK class. The free-product homomorphism <span class="math" data-tex="\(\pi_h:QA\to B\)">\(\pi_h:QA\to B\)</span> equals <span class="math" data-tex="\(h\)">\(h\)</span> on the positive copy and zero on the negative copy. Apply <span class="math" data-tex="\(F\pi_h\)">\(F\pi_h\)</span> to the first identity in (6.2). Its term containing <span class="math" data-tex="\(\iota_-\)">\(\iota_-\)</span> is zero, and its term on <span class="math" data-tex="\(\iota_+\)">\(\iota_+\)</span> is <span class="math" data-tex="\(Fh\)">\(Fh\)</span>. Hence (6.3) equals <span class="math" data-tex="\(Fh\)">\(Fh\)</span>. In particular it sends identity to identity.</p>
+<p>Consider now any split extension <span class="math" data-tex="\(0\to J\xrightarrow{j}D\xrightarrow{q}B\to0\)">\(0\to J\xrightarrow{j}D\xrightarrow{q}B\to0\)</span>, split by <span class="math" data-tex="\(s\)">\(s\)</span>. Its KK retraction <span class="math" data-tex="\(r\in KK(D,J)\)">\(r\in KK(D,J)\)</span> is the pair of actions of <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(sq(d)\)">\(sq(d)\)</span> on the standard ideal module; equivalently its universal difference map is the restriction to <span class="math" data-tex="\(qD\)">\(qD\)</span> of the homomorphism <span class="math" data-tex="\(\Psi:QD\to D\)">\(\Psi:QD\to D\)</span> with copies <span class="math" data-tex="\(1_D,sq\)">\(1_D,sq\)</span>. To identify this pair with the KK retraction, its precomposition with <span class="math" data-tex="\(j\)">\(j\)</span> is <span class="math" data-tex="\((1_J,0)\)">\((1_J,0)\)</span>, while its precomposition with <span class="math" data-tex="\(s\)">\(s\)</span> is an equal pair and hence degenerate. After inclusion in <span class="math" data-tex="\(D\)">\(D\)</span>, its universal difference map is the pair <span class="math" data-tex="\((1_D,sq)\)">\((1_D,sq)\)</span>. Both actions are compact on the coefficient module <span class="math" data-tex="\(D\)">\(D\)</span>. Its flip can therefore be deformed to zero by multiplying it by <span class="math" data-tex="\(1-r\)">\(1-r\)</span>: every cycle defect remains compact throughout. The two zero-operator grading summands are the cycles of these compact homomorphisms with opposite grading, so the class is <span class="math" data-tex="\([1_D]-[sq]\)">\([1_D]-[sq]\)</span>. The support homotopy in Lemma 4.4 of <em>Pictures of KK</em> identifies the ideal-supported pair with this included pair. Thus it has all the biproduct identities proved in <a href="KT-KK-14.html#13-solutions"><em>Exact sequences in KK</em>, Solution 12.1</a>, and is that unique retraction. There is a map of split extensions from (6.1), for <span class="math" data-tex="\(D\)">\(D\)</span>, to this extension. Naturality of the biproduct retraction gives
+<span class="math math-display" data-tex="\[
+F\Theta\,R_D=R_sF\Psi,
+\tag{6.4}
+\]">\[
+F\Theta\,R_D=R_sF\Psi,
+\tag{6.4}
+\]</span>
+where <span class="math" data-tex="\(\Theta:qD\to J\)">\(\Theta:qD\to J\)</span> is the restriction and <span class="math" data-tex="\(R_s\)">\(R_s\)</span> is the retraction under <span class="math" data-tex="\(F\)">\(F\)</span>. One can check (6.4) without any cancellation assumption: multiply on the left by the split monomorphism <span class="math" data-tex="\(Fj\)">\(Fj\)</span>, use (6.2) and <span class="math" data-tex="\(FjR_s=1-FsFq\)">\(FjR_s=1-FsFq\)</span>, and then apply <span class="math" data-tex="\(R_s\)">\(R_s\)</span>. Formula (6.3), followed by <span class="math" data-tex="\(F\iota_+\)">\(F\iota_+\)</span>, therefore sends <span class="math" data-tex="\(r\)">\(r\)</span> to <span class="math" data-tex="\(R_s\)">\(R_s\)</span>.</p>
+<p>For fixed source <span class="math" data-tex="\(A\)">\(A\)</span>, (6.3) is also natural for such retractions in its target. Indeed KK split-exactness gives
+<span class="math math-display" data-tex="\[
+x=j(rx)+s(qx)\qquad(x\in KK(A,D)).
+\tag{6.5}
+\]">\[
+x=j(rx)+s(qx)\qquad(x\in KK(A,D)).
+\tag{6.5}
+\]</span>
+Additivity and the already proved homomorphism naturality yield
+<span class="math" data-tex="\(F(x)=FjF(rx)+FsF(qx)\)">\(F(x)=FjF(rx)+FsF(qx)\)</span>. Applying <span class="math" data-tex="\(R_s\)">\(R_s\)</span> proves <span class="math" data-tex="\(R_sF(x)=F(rx)\)">\(R_sF(x)=F(rx)\)</span>.</p>
+<p>Every KK morphism is a composite of ordinary homomorphisms, a split retraction and a stable corner inverse: this is the explicit quasihomomorphism factorization (4.4)–(4.5) in <em>Pictures of KK</em>. Consequently the naturality just proved, successively along those factors, gives
+<span class="math" data-tex="\(F(yx)=F(y)F(x)\)">\(F(yx)=F(y)F(x)\)</span>. The formula therefore defines a functor. The same factorization forces any extending functor to agree with it: a biproduct retraction and a corner inverse have unique images. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply the lemma to the functor from algebras to <span class="math" data-tex="\(E\)">\(E\)</span> defined in Section 4. Proposition 5.2 proves its split-exact hypothesis. We obtain
+<span class="math math-display" data-tex="\[
+\mathfrak c:KK(A,B)\longrightarrow E(A,B),
+\tag{6.6}
+\]">\[
+\mathfrak c:KK(A,B)\longrightarrow E(A,B),
+\tag{6.6}
+\]</span>
+preserving products, sums and homomorphisms. No half-exactness of KK for arbitrary extensions has been assumed.</p>
+<p>Let <span class="math" data-tex="\(\beta\in KK(\mathbb C,S^2)\)">\(\beta\in KK(\mathbb C,S^2)\)</span> be the outward positive planar Bott class, and <span class="math" data-tex="\(\alpha\in KK(S^2,\mathbb C)\)">\(\alpha\in KK(S^2,\mathbb C)\)</span> its inverse. Their two products are identity by the oscillator and rotation proofs in <em>Bott periodicity in KK</em>. Put <span class="math" data-tex="\(b=\mathfrak c(\beta)\)">\(b=\mathfrak c(\beta)\)</span>, <span class="math" data-tex="\(a=\mathfrak c(\alpha)\)">\(a=\mathfrak c(\alpha)\)</span>. Then
+<span class="math math-display" data-tex="\[
+ab=1_{\mathbb C},\qquad ba=1_{S^2}
+\quad\text{in }E.
+\tag{6.7}
+\]">\[
+ab=1_{\mathbb C},\qquad ba=1_{S^2}
+\quad\text{in }E.
+\tag{6.7}
+\]</span>
+The scalar identification (4.7) sends <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span> to the usual identity on <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. To check this, represent a projection class by its compact homomorphism from <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, use the <span class="math" data-tex="\((h,0)\)">\((h,0)\)</span> computation in Lemma 6.1, and subtract projection classes. Thus <span class="math" data-tex="\(b\)">\(b\)</span> corresponds to the positive planar projection class <span class="math" data-tex="\([q]-[P]\)">\([q]-[P]\)</span> computed in Section 6 of the Bott lesson. Its coordinate is <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span>.</p>
+<p><strong>Theorem 6.2 (Bott periodicity in either variable).</strong> There are natural isomorphisms
+<span class="math math-display" data-tex="\[
+E(A,B)\cong E(S^2A,B)\cong E(A,S^2B).
+\tag{6.8}
+\]">\[
+E(A,B)\cong E(S^2A,B)\cong E(A,S^2B).
+\tag{6.8}
+\]</span></p>
+<p><strong>Proof.</strong> Tensor the scalar morphisms <span class="math" data-tex="\(b,a\)">\(b,a\)</span> with <span class="math" data-tex="\(1_A\)">\(1_A\)</span>, to obtain inverse classes <span class="math" data-tex="\(b_A:A\to S^2A\)">\(b_A:A\to S^2A\)</span>, <span class="math" data-tex="\(a_A:S^2A\to A\)">\(a_A:S^2A\to A\)</span>. This minimal tensor operation is valid: a representative of <span class="math" data-tex="\(b\)">\(b\)</span> has source <span class="math" data-tex="\(S\)">\(S\)</span>, and one of <span class="math" data-tex="\(a\)">\(a\)</span> has source <span class="math" data-tex="\(S^3\)">\(S^3\)</span>, both commutative. The quotient tensor construction in Section 3 therefore factors through the minimal norm even for arbitrary <span class="math" data-tex="\(A\)">\(A\)</span>. Tensor interchange and (6.7) give both inverse identities. Composition with these classes proves the first two isomorphisms.</p>
+<p>The maps are natural in ordinary homomorphisms, since their representatives are tensored with those homomorphisms. This proves the assertion without cancellation of any suspension of an arbitrary asymptotic class. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.3 (simultaneous suspension).</strong> The suspension functor gives an isomorphism
+<span class="math math-display" data-tex="\[
+S:E(A,B)\overset\cong\longrightarrow E(SA,SB).
+\tag{6.9}
+\]">\[
+S:E(A,B)\overset\cong\longrightarrow E(SA,SB).
+\tag{6.9}
+\]</span>
+The proof in Section 8.4 uses the covariant cone sequence and the reduced Toeplitz extension, independently of contravariant exactness. It also proves <span class="math" data-tex="\(S^2x=b_Bxa_A\)">\(S^2x=b_Bxa_A\)</span> for every E morphism <span class="math" data-tex="\(x\)">\(x\)</span>, with the positive Bott normalization of (6.7).</p>
+<p>Define <span class="math" data-tex="\(E_0(A,B)=E(A,B)\)">\(E_0(A,B)=E(A,B)\)</span> and <span class="math" data-tex="\(E_1(A,B)=E(A,SB)\)">\(E_1(A,B)=E(A,SB)\)</span>. For later formulas it is useful to specify the transfer
+<span class="math math-display" data-tex="\[
+T_{A,B}:E(SA,B)\longrightarrow E(A,SB),
+\qquad T(x)=(Sx)b_A.
+\tag{6.10}
+\]">\[
+T_{A,B}:E(SA,B)\longrightarrow E(A,SB),
+\qquad T(x)=(Sx)b_A.
+\tag{6.10}
+\]</span>
+Its inverse is <span class="math" data-tex="\(y\mapsto S^{-1}(ya_A)\)">\(y\mapsto S^{-1}(ya_A)\)</span>, by Theorem 6.3 and the two inverse products (6.7). A cone connecting arrow in the ordinary Puppe sequence has an additional minus under the right-Clifford degree-one normalization; we calculate it next.</p>
+<h2 id="7-a-cone-calculation-which-needs-no-splitting">7. A cone calculation which needs no splitting</h2>
+<p>Keep (5.1), and write <span class="math" data-tex="\(\alpha:C_q\to A\)">\(\alpha:C_q\to A\)</span> for its projection. The map
+<span class="math math-display" data-tex="\[
+p:CA\longrightarrow C_q,\qquad
+p(g)=(g(0),qg)
+\tag{7.1}
+\]">\[
+p:CA\longrightarrow C_q,\qquad
+p(g)=(g(0),qg)
+\tag{7.1}
+\]</span>
+is surjective with kernel <span class="math" data-tex="\(SJ\)">\(SJ\)</span>. To see surjectivity, start with a continuous lift of the <span class="math" data-tex="\(B\)">\(B\)</span>-valued path using Lemma 1.2. Correct its value at 0 by a <span class="math" data-tex="\(J\)">\(J\)</span>-valued function equal to the endpoint difference near 0 and zero near 1. This gives the prescribed <span class="math" data-tex="\(A\)">\(A\)</span>-value. All algebras in this extension remain separable.</p>
+<p><strong>Lemma 7.1 (the suspended cone projection).</strong> In asymptotic homotopy,
+<span class="math math-display" data-tex="\[
+Si\,\epsilon_p=S\alpha,
+\qquad
+\epsilon_p\,Se=1_{SJ},\qquad e(j)=(j,0).
+\tag{7.2}
+\]">\[
+Si\,\epsilon_p=S\alpha,
+\qquad
+\epsilon_p\,Se=1_{SJ},\qquad e(j)=(j,0).
+\tag{7.2}
+\]</span></p>
+<p><strong>Proof.</strong> Choose a continuous section <span class="math" data-tex="\(\sigma:C_q\to CA\)">\(\sigma:C_q\to CA\)</span> as in Section 1. For <span class="math" data-tex="\(x=(a,g)\)">\(x=(a,g)\)</span>, it satisfies <span class="math" data-tex="\(\sigma(x)(0)=a\)">\(\sigma(x)(0)=a\)</span>. The ideal approximate identity is <span class="math" data-tex="\(h_t(s)u_t\)">\(h_t(s)u_t\)</span>; the associated family is
+<span class="math math-display" data-tex="\[
+f(h_t(s)u_t)\sigma(x)(s).
+\tag{7.3}
+\]">\[
+f(h_t(s)u_t)\sigma(x)(s).
+\tag{7.3}
+\]</span>
+After inclusion in <span class="math" data-tex="\(SA\)">\(SA\)</span>, replace <span class="math" data-tex="\(u_t\)">\(u_t\)</span> by <span class="math" data-tex="\((1-r)u_t+r1\)">\((1-r)u_t+r1\)</span>. For every section defect its path lies in <span class="math" data-tex="\(SJ\)">\(SJ\)</span>. This replacement is an approximate identity on its compact range, uniformly in <span class="math" data-tex="\(r\)">\(r\)</span>. Quasicentrality on compact sets of section values and (5.2) prove the homotopy identities uniformly in <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span>. At its terminal endpoint the right ramp contributes a quantity bounded by <span class="math" data-tex="\(\|f\|\sup_{s\geq1-1/t}\|\sigma(x)(s)\|\)">\(\|f\|\sup_{s\geq1-1/t}\|\sigma(x)(s)\|\)</span>, tending to zero. On the left ramp the value of the section tends uniformly to <span class="math" data-tex="\(a\)">\(a\)</span>. Thus the terminal family is equivalent to the left-ramp copy <span class="math" data-tex="\(\widetilde f_t(s)a\)">\(\widetilde f_t(s)a\)</span>. Expanding its support gives <span class="math" data-tex="\(S\alpha\)">\(S\alpha\)</span>. These estimates are uniform over compact sets of <span class="math" data-tex="\(x,f\)">\(x,f\)</span>, by continuity of the section into the path algebra.</p>
+<p>Restrict to <span class="math" data-tex="\(x=e(j)\)">\(x=e(j)\)</span>. A section of the restricted extension can be chosen inside <span class="math" data-tex="\(CJ\)">\(CJ\)</span>, equal to <span class="math" data-tex="\(j\)">\(j\)</span> near 0 and zero near 1. The same replacement now stays in <span class="math" data-tex="\(SJ\)">\(SJ\)</span> because every section value is in <span class="math" data-tex="\(J\)">\(J\)</span>. The left ramp gives identity on <span class="math" data-tex="\(SJ\)">\(SJ\)</span>, by the explicit cone calculation after Proposition 5.1. Independence of sections permits this choice. This proves the second identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 7.2 (two lifting statements).</strong> For (5.1):</p>
+<ol>
+<li>If <span class="math" data-tex="\(h:D \rightsquigarrow A\)">\(h:D \rightsquigarrow A\)</span> and <span class="math" data-tex="\(qh\)">\(qh\)</span> is null-homotopic, there is <span class="math" data-tex="\(k:SD \rightsquigarrow SJ\)">\(k:SD \rightsquigarrow SJ\)</span> with <span class="math" data-tex="\(Si\,k=Sh\)">\(Si\,k=Sh\)</span> in homotopy classes.</li>
+<li>If <span class="math" data-tex="\(h:A \rightsquigarrow D\)">\(h:A \rightsquigarrow D\)</span> and <span class="math" data-tex="\(hi\)">\(hi\)</span> is null-homotopic, there is <span class="math" data-tex="\(k:S^2B \rightsquigarrow S^2D\)">\(k:S^2B \rightsquigarrow S^2D\)</span> with <span class="math" data-tex="\(kS^2q=S^2h\)">\(kS^2q=S^2h\)</span> in homotopy classes.</li>
+</ol>
+<p><strong>Proof.</strong> For the first assertion take a homotopy <span class="math" data-tex="\(\Phi:D \rightsquigarrow CB\)">\(\Phi:D \rightsquigarrow CB\)</span> from <span class="math" data-tex="\(qh\)">\(qh\)</span> to zero. Its endpoint at 0 can be made exactly <span class="math" data-tex="\(qh_t\)">\(qh_t\)</span>, and at 1 exactly zero. Indeed regularize the homotopy into <span class="math" data-tex="\(IB\)">\(IB\)</span> by Section 1 and subtract the affine endpoint errors; those errors vanish compact-uniformly. Then correct <span class="math" data-tex="\(h_t\)">\(h_t\)</span> by the continuous section of <span class="math" data-tex="\(q\)">\(q\)</span> applied to <span class="math" data-tex="\(\Phi_t(0)-qh_t\)">\(\Phi_t(0)-qh_t\)</span>, if required. This is an equivalent family and enforces the matching condition. We obtain an asymptotic morphism
+<span class="math" data-tex="\(\psi_t(d)=(h_t(d),\Phi_t(d))\)">\(\psi_t(d)=(h_t(d),\Phi_t(d))\)</span> into <span class="math" data-tex="\(C_q\)">\(C_q\)</span>, with <span class="math" data-tex="\(\alpha\psi=h\)">\(\alpha\psi=h\)</span>. Lemma 7.1 gives
+<span class="math" data-tex="\(Sh=Si\,\epsilon_p S\psi\)">\(Sh=Si\,\epsilon_p S\psi\)</span>, proving the first assertion by composition.</p>
+<p>We first prove the second assertion with the stronger hypothesis that <span class="math" data-tex="\(h\alpha\)">\(h\alpha\)</span> is null-homotopic. Choose a continuous representative <span class="math" data-tex="\(\Phi:C_q\rightsquigarrow CD\)">\(\Phi:C_q\rightsquigarrow CD\)</span> of that null homotopy, with its initial evaluation exactly <span class="math" data-tex="\(h_t\alpha\)">\(h_t\alpha\)</span>. Normalize <span class="math" data-tex="\(h_t(0)=\Phi_t(0)=0\)">\(h_t(0)=\Phi_t(0)=0\)</span>; subtracting these vanishing constants does not change their classes. On the ideal <span class="math" data-tex="\(SB\)">\(SB\)</span> its initial evaluation is zero, so restriction gives <span class="math" data-tex="\(k:SB \rightsquigarrow SD\)">\(k:SB \rightsquigarrow SD\)</span>.</p>
+<p>Here is the required homotopy from <span class="math" data-tex="\(kSq\)">\(kSq\)</span> to <span class="math" data-tex="\(Sh\)">\(Sh\)</span>, initially on elementary tensors <span class="math" data-tex="\(f\otimes a\)">\(f\otimes a\)</span>. For <span class="math" data-tex="\(0\leq r&lt;1\)">\(0\leq r&lt;1\)</span>, define
+<span class="math math-display" data-tex="\[
+x_r=(f(r)a,\ [\lambda\mapsto f(r+(1-r)\lambda)q(a)])\in C_q
+\tag{7.4}
+\]">\[
+x_r=(f(r)a,\ [\lambda\mapsto f(r+(1-r)\lambda)q(a)])\in C_q
+\tag{7.4}
+\]</span>
+and, for <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>, put
+<span class="math math-display" data-tex="\[
+\Psi_t^r(f\otimes a)(s)=
+\begin{cases}
+h_t(f(s)a),&amp;s\leq r,\\
+\Phi_t(x_r)((s-r)/(1-r)),&amp;s&gt;r.
+\end{cases}
+\tag{7.5}
+\]">\[
+\Psi_t^r(f\otimes a)(s)=
+\begin{cases}
+h_t(f(s)a),&amp;s\leq r,\\
+\Phi_t(x_r)((s-r)/(1-r)),&amp;s&gt;r.
+\end{cases}
+\tag{7.5}
+\]</span>
+At <span class="math" data-tex="\(s=r\)">\(s=r\)</span> the two values agree exactly. At <span class="math" data-tex="\(r=1\)">\(r=1\)</span> use the first formula throughout. The input <span class="math" data-tex="\(x_r\)">\(x_r\)</span> tends to zero in <span class="math" data-tex="\(C_q\)">\(C_q\)</span> as <span class="math" data-tex="\(r\to1\)">\(r\to1\)</span>. Continuity of <span class="math" data-tex="\(\Phi:C_q\to C_b([1,\infty),CD)\)">\(\Phi:C_q\to C_b([1,\infty),CD)\)</span> makes the second branch uniformly small there. The first branch is also small on <span class="math" data-tex="\([r,1]\)">\([r,1]\)</span>, by continuity of <span class="math" data-tex="\(h:A\to C_b\)">\(h:A\to C_b\)</span> at zero. This proves continuity at the terminal parameter in the norm of <span class="math" data-tex="\(SD\)">\(SD\)</span>. At other junctions ordinary uniform continuity on compact parameter sets proves continuity. For a general <span class="math" data-tex="\(F\in SA\)">\(F\in SA\)</span>, use <span class="math" data-tex="\(x_r=(F(r),[\lambda\mapsto qF(r+(1-r)\lambda)])\)">\(x_r=(F(r),[\lambda\mapsto qF(r+(1-r)\lambda)])\)</span>, and replace the first branch by <span class="math" data-tex="\(h_t(F(s))\)">\(h_t(F(s))\)</span>. This defines the same formula on all of <span class="math" data-tex="\(SA\)">\(SA\)</span>. Their operands, products and differences form compact sets as <span class="math" data-tex="\(r,s\)">\(r,s\)</span> vary; Corollary 1.3 therefore proves every asymptotic identity uniformly in <span class="math" data-tex="\(r,s\)">\(r,s\)</span>. Quotient contractivity, extension and the lift in Section 1 give an asymptotic homotopy on all of <span class="math" data-tex="\(SA\)">\(SA\)</span>. At <span class="math" data-tex="\(r=0\)">\(r=0\)</span> it is <span class="math" data-tex="\(kSq\)">\(kSq\)</span>; at <span class="math" data-tex="\(r=1\)">\(r=1\)</span> it represents <span class="math" data-tex="\(Sh\)">\(Sh\)</span>, since <span class="math" data-tex="\(h_t(f(s)a)-f(s)h_t(a)\to0\)">\(h_t(f(s)a)-f(s)h_t(a)\to0\)</span> uniformly in <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>Under the original hypothesis, Lemma 7.1 gives
+<span class="math math-display" data-tex="\[
+(Sh)(S\alpha)=(Sh)(Si)\epsilon_p=0.
+\]">\[
+(Sh)(S\alpha)=(Sh)(Si)\epsilon_p=0.
+\]</span>
+Apply the stronger case just proved to <span class="math" data-tex="\(Sh:SA \rightsquigarrow SD\)">\(Sh:SA \rightsquigarrow SD\)</span> and the extension suspended once. It supplies <span class="math" data-tex="\(k:S^2B \rightsquigarrow S^2D\)">\(k:S^2B \rightsquigarrow S^2D\)</span> with the required identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The nonlinear representatives in (7.5) are evaluated on <span class="math" data-tex="\(f(s)a\)">\(f(s)a\)</span>. Replacing this by <span class="math" data-tex="\(f(s)h_t(a)\)">\(f(s)h_t(a)\)</span> before the junction would only give asymptotic equality, and would not establish continuity of the displayed homotopy.</p>
+<p><strong>Theorem 7.3 (covariant half-exactness).</strong> For every extension (5.1) of separable algebras and every separable <span class="math" data-tex="\(D\)">\(D\)</span>,
+<span class="math math-display" data-tex="\[
+E(D,J)\xrightarrow{i_*}E(D,A)\xrightarrow{q_*}E(D,B)
+\tag{7.6}
+\]">\[
+E(D,J)\xrightarrow{i_*}E(D,A)\xrightarrow{q_*}E(D,B)
+\tag{7.6}
+\]</span>
+is exact at its middle group.</p>
+<p><strong>Proof.</strong> Represent a kernel class by <span class="math" data-tex="\(h:SD \rightsquigarrow SA\otimes\mathcal K\)">\(h:SD \rightsquigarrow SA\otimes\mathcal K\)</span>. Its matched null homotopy gives an asymptotic morphism
+<span class="math math-display" data-tex="\[
+\psi:SD \rightsquigarrow C_{S(q\otimes1)}
+\cong S(C_q\otimes\mathcal K).
+\tag{7.7}
+\]">\[
+\psi:SD \rightsquigarrow C_{S(q\otimes1)}
+\cong S(C_q\otimes\mathcal K).
+\tag{7.7}
+\]</span>
+The identification is the actual interchange of its two path coordinates: a continuous cone path with values in <span class="math" data-tex="\(SB\)">\(SB\)</span> vanishes uniformly at the suspension endpoints, since its range on the closed cone interval is compact in <span class="math" data-tex="\(SB\)">\(SB\)</span>. Thus it is a suspension function with values in the original cone. Apply the extension morphism of (7.1), tensored with the compact matrices:
+<span class="math math-display" data-tex="\[
+\epsilon_{p\otimes1}:S(C_q\otimes\mathcal K)
+\rightsquigarrow S(J\otimes\mathcal K).
+\tag{7.8}
+\]">\[
+\epsilon_{p\otimes1}:S(C_q\otimes\mathcal K)
+\rightsquigarrow S(J\otimes\mathcal K).
+\tag{7.8}
+\]</span>
+Composition gives <span class="math" data-tex="\(k:SD \rightsquigarrow SJ\otimes\mathcal K\)">\(k:SD \rightsquigarrow SJ\otimes\mathcal K\)</span>, and (7.2) gives <span class="math" data-tex="\(Si\,k=h\)">\(Si\,k=h\)</span>. These are already the E representatives required by (7.6); no additional suspension has been taken. The reverse inclusion follows from <span class="math" data-tex="\(qi=0\)">\(qi=0\)</span>. Tensoring (5.1) with <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> preserves exactness: the former is pointwise exact with continuous lifts from Lemma 1.2, and the latter follows by finite-corner approximation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7.4 (contravariant half-exactness).</strong> For every separable extension (5.1) and every separable <span class="math" data-tex="\(D\)">\(D\)</span>,
+<span class="math math-display" data-tex="\[
+E(B,D)\xrightarrow{q^*}E(A,D)\xrightarrow{i^*}E(J,D)
+\quad\text{exact in the middle}.
+\tag{7.9}
+\]">\[
+E(B,D)\xrightarrow{q^*}E(A,D)\xrightarrow{i^*}E(J,D)
+\quad\text{exact in the middle}.
+\tag{7.9}
+\]</span>
+<strong>Proof.</strong> Stabilize a kernel representative by Lemma 4.1. Lemma 7.2(2), applied to the stabilized suspended extension, factors it after two extra simultaneous suspensions. Theorem 6.3 cancels those suspensions in the homotopy classes and gives a factor in <span class="math" data-tex="\(E(B,D)\)">\(E(B,D)\)</span>. Restrict its source corner to recover the convention (4.6). The reverse inclusion follows from <span class="math" data-tex="\(qi=0\)">\(qi=0\)</span>. This proves (7.9) for every separable extension, without a section positivity assumption. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-connecting-arrows-and-the-six-term-sequences">8. Connecting arrows and the six-term sequences</h2>
+<p>We keep the sign of (5.3), and distinguish it from the ordinary cone connecting arrow. For a homomorphism <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span>, the Puppe sequence is
+<span class="math math-display" data-tex="\[
+SB\xrightarrow{j}C_f\xrightarrow{\alpha}A\xrightarrow{f}B.
+\tag{8.1}
+\]">\[
+SB\xrightarrow{j}C_f\xrightarrow{\alpha}A\xrightarrow{f}B.
+\tag{8.1}
+\]</span>
+It is exact after applying the covariant E variable and rotating the cones. A null homotopy of <span class="math" data-tex="\(fh\)">\(fh\)</span>, with <span class="math" data-tex="\(h:SD \rightsquigarrow SA\otimes\mathcal K\)">\(h:SD \rightsquigarrow SA\otimes\mathcal K\)</span>, gives a matched asymptotic map into <span class="math" data-tex="\(S(C_f\otimes\mathcal K)\)">\(S(C_f\otimes\mathcal K)\)</span>. This proves exactness at <span class="math" data-tex="\(E(D,A)\)">\(E(D,A)\)</span>. Apply the same assertion to the cone projection and the ideal inclusion. Their further cones are homotopy equivalent respectively to <span class="math" data-tex="\(SB\)">\(SB\)</span> and <span class="math" data-tex="\(SA\)">\(SA\)</span>, by the explicit substitutions of Lemma 1.1 in <em>Exact sequences in KK</em>. Their projections become <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(Sf\)">\(Sf\)</span>. This proves exactness at the other positions, with source <span class="math" data-tex="\(D\)">\(D\)</span> fixed throughout. In particular one obtains the whole covariant sequence ending
+<span class="math math-display" data-tex="\[
+\cdots\to E(D,S^2B)\xrightarrow{(Sj)_*}E(D,SC_f)
+\to E(D,SA)\to E(D,SB)\xrightarrow{j_*}
+E(D,C_f)\to E(D,A)\to E(D,B).
+\tag{8.1a}
+\]">\[
+\cdots\to E(D,S^2B)\xrightarrow{(Sj)_*}E(D,SC_f)
+\to E(D,SA)\to E(D,SB)\xrightarrow{j_*}
+E(D,C_f)\to E(D,A)\to E(D,B).
+\tag{8.1a}
+\]</span>
+No simultaneous suspension is cancelled here. In the contravariant variable, (7.4)–(7.5), with <span class="math" data-tex="\(q\)">\(q\)</span> replaced by <span class="math" data-tex="\(f\)">\(f\)</span>, proves cone exactness after an extra simultaneous suspension. Theorem 6.3 cancels it and gives the contravariant Puppe sequence.</p>
+<p>For the quotient <span class="math" data-tex="\(q\)">\(q\)</span> in (5.1), the map <span class="math" data-tex="\(e:J\to C_q\)">\(e:J\to C_q\)</span>, <span class="math" data-tex="\(j\mapsto(j,0)\)">\(j\mapsto(j,0)\)</span>, is an isomorphism in <span class="math" data-tex="\(E\)">\(E\)</span>. Indeed the second identity in (7.2) gives a left inverse represented directly by <span class="math" data-tex="\(\epsilon_p:SC_q\rightsquigarrow SJ\)">\(\epsilon_p:SC_q\rightsquigarrow SJ\)</span>. The extension
+<span class="math" data-tex="\(0\to J\xrightarrow e C_q\to CB\to0\)">\(0\to J\xrightarrow e C_q\to CB\to0\)</span> and covariant half-exactness give a right inverse: apply (7.6) with <span class="math" data-tex="\(D=C_q\)">\(D=C_q\)</span>, since <span class="math" data-tex="\(CB\)">\(CB\)</span> is contractible. Left and right inverses coincide by associativity. Replacing <span class="math" data-tex="\(C_q\)">\(C_q\)</span> in (8.1) by <span class="math" data-tex="\(J\)">\(J\)</span> therefore gives the extension Puppe sequence.</p>
+<p><strong>Proposition 8.1 (the endpoint sign).</strong> Regard <span class="math" data-tex="\(\epsilon_q\)">\(\epsilon_q\)</span> as the E morphism <span class="math" data-tex="\(\epsilon_q^E:SB\to J\)">\(\epsilon_q^E:SB\to J\)</span> represented by <span class="math" data-tex="\(S\epsilon_q\)">\(S\epsilon_q\)</span> and a target corner. Then
+<span class="math math-display" data-tex="\[
+e\epsilon_q^E=-j\quad\text{in }E(SB,C_q),
+\qquad d_q=e^{-1}j=-\epsilon_q^E.
+\tag{8.2}
+\]">\[
+e\epsilon_q^E=-j\quad\text{in }E(SB,C_q),
+\qquad d_q=e^{-1}j=-\epsilon_q^E.
+\tag{8.2}
+\]</span></p>
+<p><strong>Proof.</strong> Extend <span class="math" data-tex="\(f\in S\)">\(f\in S\)</span> by zero outside <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. For <span class="math" data-tex="\(0\leq r\leq1\)">\(0\leq r\leq1\)</span> use the following pair in <span class="math" data-tex="\(C_q\)">\(C_q\)</span>:
+<span class="math math-display" data-tex="\[
+\left(
+f((1-r)u_t+r1)\sigma(b),\quad
+[s\mapsto f(s+r)b]
+\right).
+\tag{8.3}
+\]">\[
+\left(
+f((1-r)u_t+r1)\sigma(b),\quad
+[s\mapsto f(s+r)b]
+\right).
+\tag{8.3}
+\]</span>
+Its quotient and its path value at 0 are both <span class="math" data-tex="\(f(r)b\)">\(f(r)b\)</span>, so it satisfies the cone condition. Polynomial approximation, quasicentrality and the fact that <span class="math" data-tex="\((1-r)u_t+r1\)">\((1-r)u_t+r1\)</span> is uniformly an approximate identity on <span class="math" data-tex="\(J\)">\(J\)</span> prove all asymptotic identities uniformly in <span class="math" data-tex="\(r\)">\(r\)</span>. At <span class="math" data-tex="\(r=1\)">\(r=1\)</span> both entries are zero. At <span class="math" data-tex="\(r=0\)">\(r=0\)</span> it is the sum of <span class="math" data-tex="\(e\epsilon_{q,t}\)">\(e\epsilon_{q,t}\)</span> and <span class="math" data-tex="\(j(f\otimes b)\)">\(j(f\otimes b)\)</span>. These two entries multiply to zero in both orders. After suspension and stabilization their sum is their group sum: the rotation (4.4) applies whenever the ranges are orthogonal. Hence (8.3) proves (8.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The minus in (8.2) comes from our right-vanishing cone. Use the increasing-coordinate transfer (6.10) to specify the degree-one arrow:
+<span class="math math-display" data-tex="\[
+\partial_q=T(d_q)=-T(\epsilon_q^E)
+=-(S\epsilon_q^E)b_B\in E(B,SJ).
+\tag{8.4}
+\]">\[
+\partial_q=T(d_q)=-T(\epsilon_q^E)
+=-(S\epsilon_q^E)b_B\in E(B,SJ).
+\tag{8.4}
+\]</span>
+For the right-vanishing cone evaluated at 0, <span class="math" data-tex="\(\epsilon_q=1_S\)">\(\epsilon_q=1_S\)</span>, so (8.4) is the negative outward Bott class. Reflection gives the positive class for the cone evaluated at 1. This agrees with the native right-Clifford convention: Lemma 3.1 in <em>Exact sequences in KK</em> identifies the first cone class with <span class="math" data-tex="\(-x\)">\(-x\)</span>, whereas Proposition 7.1 in <em>Bott periodicity in KK</em> identifies the second with <span class="math" data-tex="\(+x\)">\(+x\)</span>. The ordinary Puppe arrow and its degree-one presentation have been specified separately.</p>
+<p><strong>Theorem 8.2 (the six-term sequences).</strong> Extension (5.1) gives the following covariant cyclic exact sequence:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E_0(D,J)&amp;\to E_0(D,A)\to E_0(D,B)
+\xrightarrow{\partial_q}E_1(D,J)\\
+&amp;\to E_1(D,A)\to E_1(D,B)
+\xrightarrow{\epsilon_q^E}E_0(D,J),
+\end{aligned}
+\tag{8.5}
+\]">\[
+\begin{aligned}
+E_0(D,J)&amp;\to E_0(D,A)\to E_0(D,B)
+\xrightarrow{\partial_q}E_1(D,J)\\
+&amp;\to E_1(D,A)\to E_1(D,B)
+\xrightarrow{\epsilon_q^E}E_0(D,J),
+\end{aligned}
+\tag{8.5}
+\]</span>
+Its contravariant cyclic exact sequence is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E_0(B,D)&amp;\to E_0(A,D)\to E_0(J,D)
+\xrightarrow{\delta}E_1(B,D)\\
+&amp;\to E_1(A,D)\to E_1(J,D)
+\xrightarrow{\delta&#x27;}E_0(B,D).
+\end{aligned}
+\tag{8.6}
+\]">\[
+\begin{aligned}
+E_0(B,D)&amp;\to E_0(A,D)\to E_0(J,D)
+\xrightarrow{\delta}E_1(B,D)\\
+&amp;\to E_1(A,D)\to E_1(J,D)
+\xrightarrow{\delta&#x27;}E_0(B,D).
+\end{aligned}
+\tag{8.6}
+\]</span>
+Unlabelled maps are induced by <span class="math" data-tex="\(i,q\)">\(i,q\)</span>. The covariant boundary formulas are composition with the indicated classes. The formulas in the coordinates (6.10) are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_q(x)&amp;=\partial_q\,x,\qquad
+\epsilon_q^E(x)=\epsilon_q^E x,\\
+\delta(z)&amp;=-T(z\epsilon_q^E),\qquad
+\delta&#x27;(w)=S^{-1}(w\epsilon_q^E).
+\end{aligned}
+\tag{8.7}
+\]">\[
+\begin{aligned}
+\partial_q(x)&amp;=\partial_q\,x,\qquad
+\epsilon_q^E(x)=\epsilon_q^E x,\\
+\delta(z)&amp;=-T(z\epsilon_q^E),\qquad
+\delta&#x27;(w)=S^{-1}(w\epsilon_q^E).
+\end{aligned}
+\tag{8.7}
+\]</span></p>
+<p><strong>Proof of the covariant assertion.</strong> Apply the covariant variable to (8.1a), replace <span class="math" data-tex="\(C_q\)">\(C_q\)</span> by <span class="math" data-tex="\(J\)">\(J\)</span> using <span class="math" data-tex="\(e\)">\(e\)</span>, and rotate. Equation (8.2) gives its connecting morphism. To join the two ends of the six-term diagram use the inverse target Bott classes of Theorem 6.2. They are natural for the ordinary maps <span class="math" data-tex="\(i,q,j,e\)">\(i,q,j,e\)</span>, and therefore also for the inverse of <span class="math" data-tex="\(e\)">\(e\)</span>. Transport exactness at <span class="math" data-tex="\(E(D,S^2B)\)">\(E(D,S^2B)\)</span> through <span class="math" data-tex="\(b_B\)">\(b_B\)</span> and exactness at <span class="math" data-tex="\(E(D,S^2J)\)">\(E(D,S^2J)\)</span> through <span class="math" data-tex="\(b_J\)">\(b_J\)</span>. The transported arrow is <span class="math" data-tex="\((Sd_q)b_B\)">\((Sd_q)b_B\)</span>, which is (8.4). The arrow from <span class="math" data-tex="\(E(D,SB)\)">\(E(D,SB)\)</span> back to <span class="math" data-tex="\(E(D,J)\)">\(E(D,J)\)</span> is <span class="math" data-tex="\(d_q=-\epsilon_q^E\)">\(d_q=-\epsilon_q^E\)</span>; taking its negative gives (8.5). Changing this arrow by its negative changes neither its image nor its kernel. This proves exactness at every displayed group. Naturality follows from Proposition 5.1 and the cone substitutions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of the contravariant assertion.</strong> The matched pinch (7.4)–(7.5) gives cone exactness after suspension; Theorem 6.3 cancels it. Apply the same assertion to the two rotated cone maps of Lemma 1.1 in <em>Exact sequences in KK</em>. Replace the quotient cone by <span class="math" data-tex="\(J\)">\(J\)</span> through <span class="math" data-tex="\(e\)">\(e\)</span>, which is an E isomorphism. The degree-zero connecting arrow is <span class="math" data-tex="\(d_q=-\epsilon_q^E\)">\(d_q=-\epsilon_q^E\)</span> by (8.2). Transfer the first connecting arrow through <span class="math" data-tex="\(T\)">\(T\)</span>, giving <span class="math" data-tex="\(\delta(z)=-T(z\epsilon_q^E)\)">\(\delta(z)=-T(z\epsilon_q^E)\)</span>. At the second one identify <span class="math" data-tex="\(E(SB,SD)\)">\(E(SB,SD)\)</span> with <span class="math" data-tex="\(E(B,D)\)">\(E(B,D)\)</span> by <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span>, and take the negative of its unnormalized Puppe arrow, giving <span class="math" data-tex="\(\delta&#x27;(w)=S^{-1}(w\epsilon_q^E)\)">\(\delta&#x27;(w)=S^{-1}(w\epsilon_q^E)\)</span>. Target and source Bott isomorphisms close the sequence; their full E naturality is proved in Section 8.4. Negating that second arrow preserves its image and kernel. Thus the exact sequence has precisely (8.6)–(8.7). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Both sequences apply to every separable extension. A semisplitting hypothesis occurs only when one asks for the corresponding general KK extension class.</p>
+<p><strong>Proposition 8.3 (the scalar exponential sign).</strong> Under the positive suspension <span class="math" data-tex="\(K_0(B)\to K_1(SB)\)">\(K_0(B)\to K_1(SB)\)</span>, the action of the raw family <span class="math" data-tex="\(\epsilon_q\)">\(\epsilon_q\)</span> sends a projection lift <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\([e^{-2\pi ih}]\in K_1(J)\)">\([e^{-2\pi ih}]\in K_1(J)\)</span>. Thus the minus used in (8.4) gives positive exponentiation.</p>
+<p><strong>Proof.</strong> Work first with a projection <span class="math" data-tex="\(p\in B\)">\(p\in B\)</span>, and choose a positive contraction lift <span class="math" data-tex="\(h\in A\)">\(h\in A\)</span>. The suspended class is the unitary <span class="math" data-tex="\(1+(e^{2\pi is}-1)p\)">\(1+(e^{2\pi is}-1)p\)</span>. Applying (5.3) gives the almost unitary
+<span class="math math-display" data-tex="\[
+Z_t=1+(e^{2\pi iu_t}-1)h\in J^+.
+\tag{8.8}
+\]">\[
+Z_t=1+(e^{2\pi iu_t}-1)h\in J^+.
+\tag{8.8}
+\]</span>
+It is asymptotically unitary because <span class="math" data-tex="\([u_t,h]\to0\)">\([u_t,h]\to0\)</span> and every continuous function of <span class="math" data-tex="\(u_t\)">\(u_t\)</span> vanishing at both endpoints kills <span class="math" data-tex="\(h^2-h\in J\)">\(h^2-h\in J\)</span>. Polar correction gives an actual unitary with the same tail class.</p>
+<p>In the quotient of bounded <span class="math" data-tex="\(A\)">\(A\)</span>-valued families, <span class="math" data-tex="\(u=[u_t]\)">\(u=[u_t]\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> commute and satisfy <span class="math" data-tex="\((1-u)h(1-h)=0\)">\((1-u)h(1-h)=0\)</span>. Their joint spectrum lies in
+<span class="math math-display" data-tex="\[
+X=\{(u,h)\in[0,1]^2:h=0\text{ or }h=1\text{ or }u=1\}.
+\tag{8.9}
+\]">\[
+X=\{(u,h)\in[0,1]^2:h=0\text{ or }h=1\text{ or }u=1\}.
+\tag{8.9}
+\]</span>
+On this set <span class="math" data-tex="\(1+(e^{2\pi iu}-1)h=\exp(-2\pi ih(1-u))\)">\(1+(e^{2\pi iu}-1)h=\exp(-2\pi ih(1-u))\)</span>. Check its bottom, top and right edges respectively: the values are <span class="math" data-tex="\(1,e^{2\pi iu},1\)">\(1,e^{2\pi iu},1\)</span>. Therefore <span class="math" data-tex="\(Z_t\)">\(Z_t\)</span> differs in norm by a quantity tending to zero from the actual unitary
+<span class="math" data-tex="\(W_t^0=\exp(-2\pi i h^{1/2}(1-u_t)h^{1/2})\)">\(W_t^0=\exp(-2\pi i h^{1/2}(1-u_t)h^{1/2})\)</span>. The unitaries
+<span class="math math-display" data-tex="\[
+W_t^r=\exp\bigl(-2\pi i h^{1/2}((1-r)(1-u_t)+r)h^{1/2}\bigr)
+\tag{8.10}
+\]">\[
+W_t^r=\exp\bigl(-2\pi i h^{1/2}((1-r)(1-u_t)+r)h^{1/2}\bigr)
+\tag{8.10}
+\]</span>
+belong to <span class="math" data-tex="\(J^+\)">\(J^+\)</span>, since their quotient exponent is <span class="math" data-tex="\(-2\pi ip\)">\(-2\pi ip\)</span>, and join <span class="math" data-tex="\(W_t^0\)">\(W_t^0\)</span> to <span class="math" data-tex="\(e^{-2\pi ih}\)">\(e^{-2\pi ih}\)</span>. Close unitaries have the logarithm homotopy used in Proposition 2.1. Hence the corrected (8.8) has this K-class. For projections in matrix unitizations use the same ideal approximate identity, diagonally repeated, and the fixed scalar projection <span class="math" data-tex="\(P\)">\(P\)</span> as reference lift. Its exponential is identity, and the corresponding raw family <span class="math" data-tex="\(\exp(2\pi iu_tP)\)">\(\exp(2\pi iu_tP)\)</span> is null-homotopic through <span class="math" data-tex="\(\exp(2\pi iru_tP)\)">\(\exp(2\pi iru_tP)\)</span>. Subtract this reference class. This proves the assertion for every <span class="math" data-tex="\(K_0(B)\)">\(K_0(B)\)</span> class. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="8-4-a-tensor-family-cancels-simultaneous-suspension">8.4. A tensor family cancels simultaneous suspension</h3>
+<p>We prove Theorem 6.3 using the covariant Puppe sequence. Its proof used only Theorem 6.2 and ordinary-map Bott naturality, so contravariant exactness is not a premise.</p>
+<p>Let <span class="math" data-tex="\(\mathcal T=C^*(V)\)">\(\mathcal T=C^*(V)\)</span> be the unilateral-shift Toeplitz algebra, <span class="math" data-tex="\(q:\mathcal T\to C(\mathbb T)\)">\(q:\mathcal T\to C(\mathbb T)\)</span> its symbol quotient, <span class="math" data-tex="\(\chi=\operatorname{ev}_1q\)">\(\chi=\operatorname{ev}_1q\)</span>, and <span class="math" data-tex="\(\mathcal T_0=\ker\chi\)">\(\mathcal T_0=\ker\chi\)</span>. <a href="KT-KK-07.html#projection-lifts-and-the-exponential-boundary"><em>Pictures of KK</em>, Lemma 3.1b</a> proves its symbol algebra and coefficient kernels. In particular,
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal K\longrightarrow\mathcal T_0
+\xrightarrow{q_0}S\longrightarrow0.
+\tag{8.11}
+\]">\[
+0\longrightarrow\mathcal K\longrightarrow\mathcal T_0
+\xrightarrow{q_0}S\longrightarrow0.
+\tag{8.11}
+\]</span>
+Proposition 5.1 gives the raw boundary family
+<span class="math math-display" data-tex="\[
+\sigma=\epsilon_{q_0}:S^2\rightsquigarrow\mathcal K.
+\tag{8.12}
+\]">\[
+\sigma=\epsilon_{q_0}:S^2\rightsquigarrow\mathcal K.
+\tag{8.12}
+\]</span>
+Its first coordinate is the boundary suspension, its second the quotient suspension. Choose the continuous representative of Lemma 1.2, with Corollary 1.3's compact-uniform controls. Set
+<span class="math math-display" data-tex="\[
+\gamma=[S\sigma]\in E(S^2,\mathcal K)
+\cong E(S^2,\mathbb C).
+\tag{8.13}
+\]">\[
+\gamma=[S\sigma]\in E(S^2,\mathcal K)
+\cong E(S^2,\mathbb C).
+\tag{8.13}
+\]</span></p>
+<p><strong>The Toeplitz family is invertible.</strong> <a href="KT-KK-14.html#6-the-generalized-toeplitz-algebra"><em>Exact sequences in KK</em>, Theorem 6.2</a>, with scalar coefficients and trivial automorphism, makes the scalar inclusion <span class="math" data-tex="\(j:\mathbb C\to\mathcal T\)">\(j:\mathbb C\to\mathcal T\)</span> a KK-equivalence. Since <span class="math" data-tex="\(\chi j=1\)">\(\chi j=1\)</span> as an actual homomorphism, <span class="math" data-tex="\(\chi=j^{-1}\)">\(\chi=j^{-1}\)</span> and <span class="math" data-tex="\(j\chi=1_{\mathcal T}\)">\(j\chi=1_{\mathcal T}\)</span> in KK. The split extension <span class="math" data-tex="\(0\to\mathcal T_0\to\mathcal T\to\mathbb C\to0\)">\(0\to\mathcal T_0\to\mathcal T\to\mathbb C\to0\)</span> has a KK retraction <span class="math" data-tex="\(r\)">\(r\)</span>, by <a href="KT-KK-14.html#13-solutions">Solution 12.1 of that lesson</a>. For its ideal inclusion <span class="math" data-tex="\(l\)">\(l\)</span>,
+<span class="math math-display" data-tex="\[
+lr=1_{\mathcal T}-j\chi=0,\qquad rl=1_{\mathcal T_0}.
+\]">\[
+lr=1_{\mathcal T}-j\chi=0,\qquad rl=1_{\mathcal T_0}.
+\]</span>
+Thus <span class="math" data-tex="\(1_{\mathcal T_0}=r(lr)l=0\)">\(1_{\mathcal T_0}=r(lr)l=0\)</span> in KK. Lemma 6.1 sends this identity to zero in E. Hence <span class="math" data-tex="\(\mathcal T_0\)">\(\mathcal T_0\)</span> is a zero object in E. Suspension sends its zero identity to a zero identity, so <span class="math" data-tex="\(S\mathcal T_0\)">\(S\mathcal T_0\)</span> is also a zero object.</p>
+<p>The covariant Puppe sequence for (8.11), with its ideal-to-cone E equivalence, contains
+<span class="math math-display" data-tex="\[
+0=E(D,S\mathcal T_0)\longrightarrow E(D,S^2)
+\xrightarrow{-\gamma}E(D,\mathcal K)
+\longrightarrow E(D,\mathcal T_0)=0.
+\tag{8.14}
+\]">\[
+0=E(D,S\mathcal T_0)\longrightarrow E(D,S^2)
+\xrightarrow{-\gamma}E(D,\mathcal K)
+\longrightarrow E(D,\mathcal T_0)=0.
+\tag{8.14}
+\]</span>
+Therefore composition with <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is bijective for every <span class="math" data-tex="\(D\)">\(D\)</span>. Under the stable corner identification <span class="math" data-tex="\(\mathcal K\simeq\mathbb C\)">\(\mathcal K\simeq\mathbb C\)</span>, take <span class="math" data-tex="\(D=\mathbb C\)">\(D=\mathbb C\)</span> to obtain <span class="math" data-tex="\(\rho:\mathbb C\to S^2\)">\(\rho:\mathbb C\to S^2\)</span> with <span class="math" data-tex="\(\gamma\rho=1_{\mathbb C}\)">\(\gamma\rho=1_{\mathbb C}\)</span>. For <span class="math" data-tex="\(D=S^2\)">\(D=S^2\)</span>, injectivity gives <span class="math" data-tex="\(\rho\gamma=1_{S^2}\)">\(\rho\gamma=1_{S^2}\)</span>, since <span class="math" data-tex="\(\gamma(\rho\gamma)=\gamma\)">\(\gamma(\rho\gamma)=\gamma\)</span>. This proves both inverse products. No scalar index was used.</p>
+<p>Tensor these two raw inverse homotopies with <span class="math" data-tex="\(1_B\)">\(1_B\)</span>. The representative sources are <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(S^3\)">\(S^3\)</span>, so Section 3's interval tensor norm proof applies for every coefficient <span class="math" data-tex="\(B\)">\(B\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\gamma_B=[S\sigma\otimes1_B]:S^2B\longrightarrow B
+\tag{8.15}
+\]">\[
+\gamma_B=[S\sigma\otimes1_B]:S^2B\longrightarrow B
+\tag{8.15}
+\]</span>
+is invertible in E. Compact matrix factors are folded by Lemma 4.1. Only covariant exactness and the proved KK functor have been used.</p>
+<p><strong>The three-coordinate rotation.</strong> The representative in (8.15) acts on the last two of its three suspension coordinates. Label their order <span class="math" data-tex="\((s_0,s_1,s_2)\)">\((s_0,s_1,s_2)\)</span>: functor suspension, boundary suspension, quotient suspension. Another representative from <span class="math" data-tex="\(S^3B\)">\(S^3B\)</span> to <span class="math" data-tex="\(SB\otimes\mathcal K\)">\(SB\otimes\mathcal K\)</span> is
+<span class="math math-display" data-tex="\[
+\widetilde\gamma_{B,t}(f_0\otimes f_1\otimes f_2\otimes b)
+=f_2\otimes b\otimes\sigma_t(f_0\otimes f_1).
+\tag{8.16}
+\]">\[
+\widetilde\gamma_{B,t}(f_0\otimes f_1\otimes f_2\otimes b)
+=f_2\otimes b\otimes\sigma_t(f_0\otimes f_1).
+\tag{8.16}
+\]</span>
+It applies <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> to the first two coordinates and retains the third as the E suspension. Quotient tensor extension and continuous lifting define it on the completed algebra; its displayed elementary formula is equivalence to that chosen representative.</p>
+<p>Let <span class="math" data-tex="\(R:S^3\to S^3\)">\(R:S^3\to S^3\)</span> send <span class="math" data-tex="\(f_0\otimes f_1\otimes f_2\)">\(f_0\otimes f_1\otimes f_2\)</span> to <span class="math" data-tex="\(f_2\otimes f_0\otimes f_1\)">\(f_2\otimes f_0\otimes f_1\)</span>. After the displayed compact-factor placement, (8.16) is <span class="math" data-tex="\((S\sigma\otimes1_B)(R\otimes1_B)\)">\((S\sigma\otimes1_B)(R\otimes1_B)\)</span>. The elementary formulas give the same quotient homomorphism, hence equivalent continuous representatives on the completed algebra.</p>
+<p>Identify each interval with the increasing real coordinate <span class="math" data-tex="\(x=\tan(\pi(s-1/2))\)">\(x=\tan(\pi(s-1/2))\)</span>. The map <span class="math" data-tex="\(R\)">\(R\)</span> is pullback by <span class="math" data-tex="\(P(x_0,x_1,x_2)=(x_1,x_2,x_0)\)">\(P(x_0,x_1,x_2)=(x_1,x_2,x_0)\)</span>. This cyclic permutation has determinant <span class="math" data-tex="\(+1\)">\(+1\)</span>. With <span class="math" data-tex="\(n=(1,1,1)/\sqrt3\)">\(n=(1,1,1)/\sqrt3\)</span>, an explicit rotation path from identity to <span class="math" data-tex="\(P\)">\(P\)</span> is
+<span class="math math-display" data-tex="\[
+P_r=\cos(2\pi r/3)I+
+(1-\cos(2\pi r/3))nn^T-
+\sin(2\pi r/3)[n]_\times,
+\qquad0\leq r\leq1,
+\tag{8.17}
+\]">\[
+P_r=\cos(2\pi r/3)I+
+(1-\cos(2\pi r/3))nn^T-
+\sin(2\pi r/3)[n]_\times,
+\qquad0\leq r\leq1,
+\tag{8.17}
+\]</span>
+where <span class="math" data-tex="\([n]_\times x=n\times x\)">\([n]_\times x=n\times x\)</span>. Decompose into <span class="math" data-tex="\(\mathbb Rn\)">\(\mathbb Rn\)</span> and its perpendicular plane. The formula fixes the first summand and rotates the second through <span class="math" data-tex="\(-2\pi r/3\)">\(-2\pi r/3\)</span>, so <span class="math" data-tex="\(P_r^TP_r=I\)">\(P_r^TP_r=I\)</span> and <span class="math" data-tex="\(\det P_r=1\)">\(\det P_r=1\)</span>. Substitution at <span class="math" data-tex="\(r=1\)">\(r=1\)</span> gives <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>Pullback <span class="math" data-tex="\(f\mapsto f\circ P_r\)">\(f\mapsto f\circ P_r\)</span> is an isometric homomorphism of <span class="math" data-tex="\(C_0(\mathbb R^3)\)">\(C_0(\mathbb R^3)\)</span>, point-norm continuous in <span class="math" data-tex="\(r\)">\(r\)</span>. For compactly supported functions this follows from uniform continuity and radius preservation; general functions are their uniform limits. Finite tensor approximation proves the same assertion for <span class="math" data-tex="\(B\)">\(B\)</span>-valued functions. Theorem 3.1 composes this ordinary homotopy with <span class="math" data-tex="\(S\sigma\otimes1_B\)">\(S\sigma\otimes1_B\)</span>, controlling the whole compact rotation parameter and lifting into the interval target. It follows that
+<span class="math math-display" data-tex="\[
+[\widetilde\gamma_B]=\gamma_B
+\quad\text{in }E(S^2B,B).
+\tag{8.18}
+\]">\[
+[\widetilde\gamma_B]=\gamma_B
+\quad\text{in }E(S^2B,B).
+\tag{8.18}
+\]</span>
+This three-cycle preserves orientation. The two-coordinate flip in (5.4) remains explicit.</p>
+<p><img src="assets/KT-KK-21/suspension-rotation-CE1A7EB8EAF4141E160B56BA6E0081F658EFB184FA3A792FF8C3D135B6A88008.png" alt="The cyclic permutation of three suspension coordinates is an orientation-preserving rotation along an explicit point-norm homotopy." class="course-figure" width="999" height="973" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="suspension-rotation" data-asset-sha256="CE1A7EB8EAF4141E160B56BA6E0081F658EFB184FA3A792FF8C3D135B6A88008"></p>
+<p>The rotation fixes <span class="math" data-tex="\(n\)">\(n\)</span> and sends <span class="math" data-tex="\(e_0\mapsto e_2\)">\(e_0\mapsto e_2\)</span>, <span class="math" data-tex="\(e_1\mapsto e_0\)">\(e_1\mapsto e_0\)</span>, <span class="math" data-tex="\(e_2\mapsto e_1\)">\(e_2\mapsto e_1\)</span>. The curves sample (8.17); their unit norm is proved by that formula. Pullback moves the free suspension coordinate past the two coordinates used by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. The boundary-family construction is described in Blackadar's free author edition, Section 25.5, and Connes's author edition, Chapter II, Appendix B. Equations (8.17)–(8.19) give its coordinate and tensor argument.</p>
+<p><strong>Naturality for every E morphism.</strong> Represent <span class="math" data-tex="\(x\in E(A,B)\)">\(x\in E(A,B)\)</span> by <span class="math" data-tex="\(h:SA \rightsquigarrow SB\otimes\mathcal K\)">\(h:SA \rightsquigarrow SB\otimes\mathcal K\)</span>. In <span class="math" data-tex="\(S^2x\)">\(S^2x\)</span>, the two newly added coordinates precede the original E suspension. Family (8.16) acts on exactly those first two coordinates. The tensor interchange of Theorem 3.1 gives
+<span class="math math-display" data-tex="\[
+\widetilde\gamma_B(S^2x)=x\widetilde\gamma_A,
+\qquad\gamma_B(S^2x)=x\gamma_A.
+\tag{8.19}
+\]">\[
+\widetilde\gamma_B(S^2x)=x\widetilde\gamma_A,
+\qquad\gamma_B(S^2x)=x\gamma_A.
+\tag{8.19}
+\]</span>
+Here are the time and norm controls in this application. On elementary inputs the left composite is <span class="math" data-tex="\(\sigma_{r(t)}(f_0\otimes f_1)\)">\(\sigma_{r(t)}(f_0\otimes f_1)\)</span> tensored with <span class="math" data-tex="\(h_t(f_2\otimes a)\)">\(h_t(f_2\otimes a)\)</span>; the right is <span class="math" data-tex="\(\sigma_t(f_0\otimes f_1)\)">\(\sigma_t(f_0\otimes f_1)\)</span> tensored with <span class="math" data-tex="\(h_{s(t)}(f_2\otimes a)\)">\(h_{s(t)}(f_2\otimes a)\)</span>. Each is the class <span class="math" data-tex="\([\sigma]\otimes[h]\)">\([\sigma]\otimes[h]\)</span>, by reparametrization independence and tensor interchange. The diagonal construction includes every moving operand, product and defect in its compact stage sets. Contractive quotient extension followed by Lemma 1.2 gives representatives on the completed algebra. Corollary 1.3 makes the resulting homotopies compact-uniform. The two compact factors differ only by their flip unitary, handled by (4.2). This proves (8.19) for nonlinear families with the same controls as composition itself.</p>
+<p>Since both <span class="math" data-tex="\(\gamma_A\)">\(\gamma_A\)</span> and <span class="math" data-tex="\(\gamma_B\)">\(\gamma_B\)</span> are invertible, the actual twice-applied suspension map is
+<span class="math math-display" data-tex="\[
+S^2:E(A,B)\overset\cong\longrightarrow E(S^2A,S^2B),
+\qquad S^2x=\gamma_B^{-1}x\gamma_A.
+\tag{8.20}
+\]">\[
+S^2:E(A,B)\overset\cong\longrightarrow E(S^2A,S^2B),
+\qquad S^2x=\gamma_B^{-1}x\gamma_A.
+\tag{8.20}
+\]</span>
+This proves cancellation without cancelling any unproved suspension. If <span class="math" data-tex="\(Sx=0\)">\(Sx=0\)</span>, then <span class="math" data-tex="\(S^2x=0\)">\(S^2x=0\)</span> and hence <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Given <span class="math" data-tex="\(y\in E(SA,SB)\)">\(y\in E(SA,SB)\)</span>, choose <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(S^2x=Sy\)">\(S^2x=Sy\)</span>. Then
+<span class="math math-display" data-tex="\[
+S^2(Sx)=S(S^2x)=S^2y.
+\]">\[
+S^2(Sx)=S(S^2x)=S^2y.
+\]</span>
+Injectivity of <span class="math" data-tex="\(S^2\)">\(S^2\)</span> on <span class="math" data-tex="\(E(SA,SB)\)">\(E(SA,SB)\)</span> gives <span class="math" data-tex="\(Sx=y\)">\(Sx=y\)</span>. Therefore <span class="math" data-tex="\(S\)">\(S\)</span> is bijective, proving Theorem 6.3.</p>
+<p><strong>Positive Bott normalization.</strong> The classes <span class="math" data-tex="\(b=\mathfrak c(\beta)\)">\(b=\mathfrak c(\beta)\)</span>, <span class="math" data-tex="\(a=\mathfrak c(\alpha)\)">\(a=\mathfrak c(\alpha)\)</span> satisfy both inverse products (6.7). Hence <span class="math" data-tex="\(\gamma b\)">\(\gamma b\)</span> is a unit in <span class="math" data-tex="\(E(\mathbb C,\mathbb C)=\mathbb Z\)">\(E(\mathbb C,\mathbb C)=\mathbb Z\)</span>: it equals <span class="math" data-tex="\(k1\)">\(k1\)</span> with <span class="math" data-tex="\(k=+1\)">\(k=+1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus <span class="math" data-tex="\(\gamma=ka\)">\(\gamma=ka\)</span>, and tensoring gives <span class="math" data-tex="\(\gamma_B=ka_B\)">\(\gamma_B=ka_B\)</span>. The sign cancels from (8.19), proving
+<span class="math math-display" data-tex="\[
+a_B(S^2x)=xa_A,\qquad S^2x=b_Bxa_A.
+\tag{8.21}
+\]">\[
+a_B(S^2x)=xa_A,\qquad S^2x=b_Bxa_A.
+\tag{8.21}
+\]</span>
+This gives full E naturality in the positive Bott convention fixed in (6.7). It also justifies the suspension cancellation in Theorem 7.4 and Exercise 10.4. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="9-examples-and-the-comparison-statements">9. Examples and the comparison statements</h2>
+<p><img src="assets/KT-KK-21/cone-signs-713F10F4ACDF8C7F970B17CE298873DF06968B64825D085F13E96017435E40F6.png" alt="The two cone endpoints retain opposite ramps of the ideal approximate identity; their raw and native boundary signs are opposite. The three-edge joint spectrum controls the scalar exponential homotopy." class="course-figure" width="1185" height="1558" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="cone-signs" data-asset-sha256="713F10F4ACDF8C7F970B17CE298873DF06968B64825D085F13E96017435E40F6"></p>
+<p>For <span class="math" data-tex="\(t=4\)">\(t=4\)</span>, the two ramps are <span class="math" data-tex="\([1/5,1/4]\)">\([1/5,1/4]\)</span> and <span class="math" data-tex="\([3/4,4/5]\)">\([3/4,4/5]\)</span>. A section constant near its evaluated endpoint retains exactly the indicated ramp. Equations (8.2)–(8.4) compute the native signs; the three-edge set on the right is (8.9), used in the full unitary homotopy (8.10). In that panel <span class="math" data-tex="\(U(u,h)=1+(e^{2\pi iu}-1)h\)">\(U(u,h)=1+(e^{2\pi iu}-1)h\)</span> is the quotient of (8.8), and <span class="math" data-tex="\(W(u,h)=e^{-2\pi ih}\)">\(W(u,h)=e^{-2\pi ih}\)</span> is the terminal unitary in (8.10); the displayed edge values describe the two endpoints of the homotopy. The raw extension family is the Connes–Higson construction, described by Blackadar, Section 25.5, and Connes, Chapter II, Appendix B.</p>
+<p><strong>The two scalar cones.</strong> For <span class="math" data-tex="\(C_0([0,1))\to\mathbb C\)">\(C_0([0,1))\to\mathbb C\)</span> evaluated at 0, take a section equal to the scalar near 0 and zero near 1. The first ramp of the ideal approximate identity gives <span class="math" data-tex="\(\epsilon=1_S\)">\(\epsilon=1_S\)</span>. Its ordinary Puppe arrow is <span class="math" data-tex="\(-1_S\)">\(-1_S\)</span>, and its degree-one arrow is <span class="math" data-tex="\(-b\)">\(-b\)</span>. A projection lift <span class="math" data-tex="\(1-s\)">\(1-s\)</span> exponentiates positively to <span class="math" data-tex="\(e^{-2\pi is}\)">\(e^{-2\pi is}\)</span>, consistently with this sign. For <span class="math" data-tex="\(C_0((0,1])\to\mathbb C\)">\(C_0((0,1])\to\mathbb C\)</span> evaluated at 1, only the second, reversed ramp survives. Hence <span class="math" data-tex="\(\epsilon=\rho\)">\(\epsilon=\rho\)</span>, the ordinary Puppe arrow is <span class="math" data-tex="\(-\rho\)">\(-\rho\)</span>, and its degree-one presentation is <span class="math" data-tex="\(+b\)">\(+b\)</span>. Reversal acts by <span class="math" data-tex="\(-1\)">\(-1\)</span> on E. Indeed coefficient reflection changes the operator of the positive cone cycle in Proposition 7.1 of the Bott lesson from <span class="math" data-tex="\(-h\sigma_2\)">\(-h\sigma_2\)</span> to <span class="math" data-tex="\(+h\sigma_2\)">\(+h\sigma_2\)</span>, its additive inverse. The cone class is invertible by that lesson's Theorem 7.3, so reflection is <span class="math" data-tex="\(-1_S\)">\(-1_S\)</span> in KK. Lemma 6.1 transports this identity to E. The positive exponential of the lift <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\(e^{2\pi is}\)">\(e^{2\pi is}\)</span>.</p>
+<p><strong>The E Bott element.</strong> The positive element <span class="math" data-tex="\(b\in E(\mathbb C,S^2)\)">\(b\in E(\mathbb C,S^2)\)</span> corresponds through (4.7) to the planar relative projection
+<span class="math math-display" data-tex="\[
+q(z)=\frac1{1+|z|^2}
+\begin{pmatrix}1&amp;\overline z\\z&amp;|z|^2\end{pmatrix},
+\qquad P=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}.
+\tag{9.1}
+\]">\[
+q(z)=\frac1{1+|z|^2}
+\begin{pmatrix}1&amp;\overline z\\z&amp;|z|^2\end{pmatrix},
+\qquad P=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}.
+\tag{9.1}
+\]</span>
+Here <span class="math" data-tex="\(q-P\)">\(q-P\)</span> vanishes at infinity. The representative is the ordinary homomorphism from <span class="math" data-tex="\(S\)">\(S\)</span> associated, by Proposition 2.1, to the positive suspension of <span class="math" data-tex="\([q]-[P]\)">\([q]-[P]\)</span>. Its inverse is <span class="math" data-tex="\(a=\mathfrak c(\alpha)\)">\(a=\mathfrak c(\alpha)\)</span>, constructed by (6.3) from the planar Dirac cycle. Both inverse products follow from (6.7), and tensoring with the identity gives the inverse classes over any separable coefficient algebra. Both bivariant products are proved in (6.7); the tensor naturality argument in Section 8.4 gives their compatibility with every E morphism.</p>
+<p><strong>A split extension.</strong> For <span class="math" data-tex="\(A=J\oplus B\)">\(A=J\oplus B\)</span>, with the second-coordinate splitting, <span class="math" data-tex="\(\epsilon_q=0\)">\(\epsilon_q=0\)</span> and <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is suspension of the first-coordinate projection. For a general split extension <span class="math" data-tex="\(\eta\)">\(\eta\)</span> still depends on its splitting, as (5.5) shows. The boundary is zero but the splitting map need not be zero.</p>
+<p><strong>A deformation.</strong> Suppose <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is a continuous field algebra over <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, its fiber at 0 is <span class="math" data-tex="\(A\)">\(A\)</span>, and its restriction to <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span> is trivial with fiber <span class="math" data-tex="\(B\)">\(B\)</span>. Assume evaluation at 0 is onto; this is part of the continuous-field section condition. Choose a continuous section <span class="math" data-tex="\(\sigma:A\to\mathcal D\)">\(\sigma:A\to\mathcal D\)</span> of this Banach quotient by Lemma 1.2. In the fixed trivialization on <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>, put
+<span class="math math-display" data-tex="\[
+\phi_t(a)=\sigma(a)(1/t).
+\tag{9.2}
+\]">\[
+\phi_t(a)=\sigma(a)(1/t).
+\tag{9.2}
+\]</span>
+Every section defect has zero fiber at 0. Continuity of its norm makes its value at <span class="math" data-tex="\(1/t\)">\(1/t\)</span> tend to zero. Thus (9.2) is an asymptotic morphism. Different choices differ by a section with zero fiber at 0 and give equivalent families. The construction needs neither an inverse E class nor an exactness theorem.</p>
+<p>Its action on K-theory is also direct. Extend a family unitally and to matrices. For a projection <span class="math" data-tex="\(p\)">\(p\)</span>, self-adjoint correction and the spectral cutoff at <span class="math" data-tex="\(1/2\)">\(1/2\)</span> give projections <span class="math" data-tex="\(p_t\)">\(p_t\)</span> on a tail. They vary continuously there, so their stable K-class is independent of the tail time. A projection homotopy gives a projection homotopy at a sufficiently large common time, because its defects are compact-uniformly small. For a normalized unitary apply polar correction instead. Orthogonal sums, unitization kernels and homotopies are preserved, so these operations give maps on <span class="math" data-tex="\(K_0\)">\(K_0\)</span> and <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. They agree with ordinary functoriality for a constant homomorphism. Composition agrees with (3.1): choose a common compact set containing the corrected projection or unitary paths, run the second family sufficiently fast there, and use the close-projection or close-unitary homotopies. No assertion that every deformation is an E equivalence is involved.</p>
+<p>For context, two universal properties explain the distinction between KK and E. Lemma 6.1 proves the one needed here: KK is universal among stable, homotopy-invariant functors carrying split extensions to biproducts. It applies to covariant functors; the contravariant version follows by taking the opposite additive category.</p>
+<p>The stronger Connes–Higson universal property states that a stable, homotopy-invariant, half-exact functor on separable C*-algebras with values in abelian groups factors uniquely through E, compatibly with composition. The contravariant version has the reversed action. Its additive-category form uses half-exactness after applying the relevant Hom functors. A reference is Blackadar, Theorem 25.6.1, or Connes, Chapter II, Appendix B, Theorem 12 and Corollary 13. This stronger universal property is stated, not used to prove the results above.</p>
+<p>The canonical comparison (6.6) is an isomorphism for a separable <span class="math" data-tex="\(A\)">\(A\)</span> whenever <span class="math" data-tex="\(KK(A,\cdot)\)">\(KK(A,\cdot)\)</span> is half-exact on all separable extensions; in particular this holds for separable nuclear <span class="math" data-tex="\(A\)">\(A\)</span>. This is the comparison theorem stated by Blackadar, Theorem 25.6.3. Its proof uses the stronger universal property to let E act on <span class="math" data-tex="\(KK(A,\cdot)\)">\(KK(A,\cdot)\)</span>, and applies that action to <span class="math" data-tex="\(1_A\)">\(1_A\)</span>. The assertion and its nuclear special case are not premises for our construction of (6.6), for the scalar computation, or for the Bott inverse products. They are recorded here without a full proof of that stronger universality argument.</p>
+<h2 id="10-exercises-and-solutions">10. Exercises and solutions</h2>
+<p><strong>10.1. Constant families.</strong> Show that a homomorphism defines an asymptotic morphism, and that an ordinary homotopy gives an asymptotic homotopy. Also show that a continuous family of homomorphisms has the class of its initial member.</p>
+<p><strong>Solution.</strong> All three defects in (1.2) are identically zero. An ordinary homotopy is a homomorphism into <span class="math" data-tex="\(IB\)">\(IB\)</span>, so is a constant asymptotic family with that target. For a family <span class="math" data-tex="\(h_t\)">\(h_t\)</span> of homomorphisms, use <span class="math" data-tex="\(h_{1+s(t-1)}\)">\(h_{1+s(t-1)}\)</span>. For each fixed <span class="math" data-tex="\(t\)">\(t\)</span> this is a continuous <span class="math" data-tex="\(IB\)">\(IB\)</span>-valued homomorphism; its dependence on <span class="math" data-tex="\(t\)">\(t\)</span> is norm continuous at each source element on compact time intervals. Its errors are zero uniformly in <span class="math" data-tex="\(s\)">\(s\)</span>. Its endpoints are <span class="math" data-tex="\(h_1\)">\(h_1\)</span> and <span class="math" data-tex="\(h_t\)">\(h_t\)</span>.</p>
+<p><strong>10.2. Reparametrization.</strong> Prove that different sufficiently fast rates give the same composition class. Explain why a dense-algebra argument must be followed by quotient extension and lifting.</p>
+<p><strong>Solution.</strong> Given two rates first increase their common lower bound so that every stage set in (3.2), including errors and products, is controlled for both. The interpolated rates <span class="math" data-tex="\((1-s)r_0(t)+sr_1(t)\)">\((1-s)r_0(t)+sr_1(t)\)</span> remain above this bound. Equations (3.3)–(3.4) hold uniformly in <span class="math" data-tex="\(s\)">\(s\)</span>; hence the raw family gives a contractive homomorphism <span class="math" data-tex="\(A_0\to(IC)_\infty\)">\(A_0\to(IC)_\infty\)</span>. Extend it to <span class="math" data-tex="\(A\)">\(A\)</span>, then use the pullback Banach section of Lemma 1.2 with target <span class="math" data-tex="\(IC\)">\(IC\)</span>. Its endpoints give the two quotient compositions, up to equivalence, and these endpoint equivalences have straight-line homotopies. This proves independence. A dense set gives contractivity of the quotient map, which permits that extension; it does not make an arbitrary nonlinear raw family continuous or uniform on every compact subset of the completed algebra. The final lift supplies those properties.</p>
+<p><strong>10.3. The extension family.</strong> Construct the asymptotic morphism of an arbitrary separable extension, and prove independence from its section and its quasicentral approximate identity. Identify its two scalar cone signs.</p>
+<p><strong>Solution.</strong> Use (5.3). The ideal annihilation estimate (5.2) kills every section defect. Its commutator estimate lets functional calculus factors move past lifts, proving multiplicativity and the adjoint identity in the quotient. The commuting representation argument in Proposition 5.1 proves the completed tensor norm; Lemma 1.2 supplies a continuous representative. A different section changes each value by <span class="math" data-tex="\(f(u_t)j\to0\)">\(f(u_t)j\to0\)</span>. Convex interpolation of two approximate identities gives the homotopy, with compact-uniform estimates. The left-endpoint cone has one surviving positive ramp, so <span class="math" data-tex="\(\epsilon=1_S\)">\(\epsilon=1_S\)</span>; the right-endpoint cone has one surviving reversed ramp, so <span class="math" data-tex="\(\epsilon=\rho\)">\(\epsilon=\rho\)</span>. Their Puppe arrows are their negatives by (8.3), and their degree-one arrows are <span class="math" data-tex="\(-b,+b\)">\(-b,+b\)</span>, respectively.</p>
+<p><strong>10.4. Half-exactness from quasicentral approximate identities.</strong> Prove half-exactness in both variables for a separable extension.</p>
+<p><strong>Solution of the covariant assertion.</strong> Represent a class killed by <span class="math" data-tex="\(q\)">\(q\)</span> by <span class="math" data-tex="\(h:SD \rightsquigarrow SA\otimes\mathcal K\)">\(h:SD \rightsquigarrow SA\otimes\mathcal K\)</span>. Its null homotopy gives the matched pair (7.7). The quasicentral family (7.3), for <span class="math" data-tex="\(CA\to C_q\)">\(CA\to C_q\)</span>, defines (7.8). Composing them gives a class in <span class="math" data-tex="\(E(D,J)\)">\(E(D,J)\)</span>; replacing <span class="math" data-tex="\(u_t\)">\(u_t\)</span> by <span class="math" data-tex="\((1-r)u_t+r1\)">\((1-r)u_t+r1\)</span> and removing the vanishing right ramp proves that its inclusion equals <span class="math" data-tex="\(h\)">\(h\)</span>. These estimates and the exact coordinate interchange are proved in Lemma 7.1 and Theorem 7.3. Conversely every included class is killed by <span class="math" data-tex="\(q\)">\(q\)</span>, because <span class="math" data-tex="\(qi=0\)">\(qi=0\)</span>.</p>
+<p><strong>Solution of the contravariant assertion.</strong> Stabilize a representative <span class="math" data-tex="\(h:SA\otimes\mathcal K \rightsquigarrow SD\otimes\mathcal K\)">\(h:SA\otimes\mathcal K \rightsquigarrow SD\otimes\mathcal K\)</span> whose restriction to <span class="math" data-tex="\(SJ\otimes\mathcal K\)">\(SJ\otimes\mathcal K\)</span> is null-homotopic. Lemma 7.2(2), applied to this stabilized suspended extension, constructs a factorization of <span class="math" data-tex="\(S^2h\)">\(S^2h\)</span> through <span class="math" data-tex="\(S^3B\otimes\mathcal K\)">\(S^3B\otimes\mathcal K\)</span>. Theorem 6.3 cancels its two extra suspensions. Restrict the source corner to obtain the required class in <span class="math" data-tex="\(E(B,D)\)">\(E(B,D)\)</span>. The opposite inclusion follows from <span class="math" data-tex="\(qi=0\)">\(qi=0\)</span>. The cancellation proof in Section 8.4 uses the covariant sequence only, so this argument does not assume the contravariant exactness it proves.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>B. Blackadar, <em>K-Theory for Operator Algebras</em>, <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">corrected free author edition</a>, Sections 22.1–22.3 and 25.1–25.6. Sections 25.1–25.4 treat quotient representatives, composition and stabilization; Sections 25.5–25.6 give the extension and comparison theory. The local arguments above supply their required lifting and compact-uniform details, and specify the ordered suspension and cone signs.</li>
+<li>A. Connes, <em>Noncommutative Geometry</em>, <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">free author edition</a>, Chapter II, Appendix B, especially Sections <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>–<span class="math" data-tex="\(\delta\)">\(\delta\)</span>, Lemmas 3, 6–7 and Proposition 8, and Theorem 12 with Corollary 13. Its cone is evaluated at the right endpoint; our cone is (1.1), and (8.2)–(8.4) give our corresponding signs.</li>
+</ul>
+</article>
+<p class="small source-link"><a href="KT-KK-21.md">Markdown source</a> · <a href="KT-KK-21.tex">LaTeX source</a></p>
+</main>
+<footer class="site-footer"><p>Course text, solutions and original figures: CC0 1.0.</p></footer>
+</body>
+</html>

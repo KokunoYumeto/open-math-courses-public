@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Graph operators, continuity and Egorov</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="graph-operators-continuity-and-egorov">Graph operators, continuity and Egorov</h1>
+<p>An FIO associated with a canonical graph moves one cotangent direction to one other direction. After dividing its symbol by the graph's symplectic half volume, an order-zero graph operator behaves on <span class="math" data-tex="\(L^2\)">\(L^2\)</span> like an order-zero pseudodifferential operator. The same graph calculus constructs inverses and transports pseudodifferential symbols by canonical changes of variables.</p>
+<p>The local phase and symbol inputs are <a href="phase-space-and-generating-families.html">Phase space and generating families</a>, <a href="intrinsic-lagrangian-regularity.html">Recognizing a Lagrangian distribution intrinsically</a>, <a href="gaussian-lines-and-invariant-symbols.html">Gaussian lines, densities and invariant symbols</a>, and <a href="clean-composition-of-fourier-integral-operators.html">Kernels, adjoints and clean composition</a>. The coordinate second-jet construction is in <a href="hamilton-fields-and-subprincipal-transport.html">Hamilton fields and subprincipal transport</a>.</p>
+<p>We import the finite-seminorm <span class="math" data-tex="\(L^2\)">\(L^2\)</span> estimates E23 and E28 from §6–7 of <a href="euclidean-symbol-calculus.html">Symbols, operators and Sobolev scales</a>. The quantitative PDO amplitude reduction G3–G4, proper pseudodifferential parametrices, real Sobolev mapping and elliptic tests come from §1, §6 and §11 of <a href="geometric-microlocal-calculus.html">Detecting regularity without choosing coordinates</a>. Their exact ordinary-symbol conventions agree with ours: <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, Fourier phase <span class="math" data-tex="\(-y\cdot\eta\)">\(-y\cdot\eta\)</span>, and inverse Fourier factor <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>. We use those results rather than redoing their symbol calculus.</p>
+<p>The authority is [Hörmander IV, §25.3], through Theorem 25.3.5. Symbols are ordinary <span class="math" data-tex="\(S_{1,0}\)">\(S_{1,0}\)</span> symbols. Every noncompact-manifold estimate is local over compact base sets. The canonical relations have the full punctured-cotangent closure and both nonzero covectors specified in the composition lesson. Later corank and fold estimates require additional geometry; their different losses are not consequences of the graph theorem alone.</p>
+<h2 id="divide-out-the-symplectic-half-volume"><span id="1-divide-out-the-symplectic-half-volume"></span><span id="section-1"></span>1. Divide out the symplectic half volume</h2>
+<p>Suppose <span class="math" data-tex="\(C\)">\(C\)</span> is the graph of a homogeneous canonical diffeomorphism <span class="math" data-tex="\(\chi:U_Y\to U_X\)">\(\chi:U_Y\to U_X\)</span> between open punctured cotangent cones. Then <span class="math" data-tex="\(\dim X=\dim Y=n\)">\(\dim X=\dim Y=n\)</span>. Either projection identifies the graph with a symplectic manifold, with common form
+<span class="math math-display" data-tex="\[
+\omega_C=\pi_X^*\omega_X=\pi_Y^*\omega_Y.
+\tag{1.1}
+\]">\[
+\omega_C=\pi_X^*\omega_X=\pi_Y^*\omega_Y.
+\tag{1.1}
+\]</span>
+Its positive symplectic volume and half volume are
+<span class="math math-display" data-tex="\[
+v_C=\left|\frac{\omega_C^n}{n!}\right|,
+\qquad v_C^{1/2}.
+\tag{1.2}
+\]">\[
+v_C=\left|\frac{\omega_C^n}{n!}\right|,
+\qquad v_C^{1/2}.
+\tag{1.2}
+\]</span>
+Cotangent dilation pulls <span class="math" data-tex="\(\omega_C\)">\(\omega_C\)</span> back to <span class="math" data-tex="\(t\omega_C\)">\(t\omega_C\)</span>, so the half volume has degree <span class="math" data-tex="\(n/2\)">\(n/2\)</span>. The intrinsic symbol of an order-<span class="math" data-tex="\(m\)">\(m\)</span> kernel on <span class="math" data-tex="\(X\times Y\)">\(X\times Y\)</span> has order <span class="math" data-tex="\(m+n/2\)">\(m+n/2\)</span>. Consequently its <strong>reduced graph symbol</strong>
+<span class="math math-display" data-tex="\[
+\alpha=\sigma(A)/v_C^{1/2}
+\tag{1.3}
+\]">\[
+\alpha=\sigma(A)/v_C^{1/2}
+\tag{1.3}
+\]</span>
+has order <span class="math" data-tex="\(m\)">\(m\)</span>, in the Maslov line and the lifted bundle <span class="math" data-tex="\(\operatorname{Hom}(F,E)\)">\(\operatorname{Hom}(F,E)\)</span>, modulo one lower order. A local Maslov frame turns it into an ordinary matrix symbol. The half volume is canonical; choosing coordinate Lebesgue measures is unnecessary for (1.3).</p>
+<p>When one factor of a clean composition is a graph, the matching fiber is a point and the excess is zero. The graph-factor density contraction proved in the linear-symbol lesson removes this half volume exactly. Thus reduced graph symbols compose by their ordered bundle maps and the canonical Maslov identification. The identity graph has unit reduced symbol. The inverse graph and the adjoint use the inverse and conjugated Maslov lines already identified in the adjoint theorem.</p>
+<p>For scalar half densities, <span class="math" data-tex="\(\|u\|_2^2=\int|u|^2\)">\(\|u\|_2^2=\int|u|^2\)</span> is intrinsic. For finite-rank bundles choose smooth Hermitian metrics. On each compact chart their norms are uniformly equivalent to component norms, so the local boundedness and compactness assertions below do not depend on that choice. Formal adjoints in these Hilbert spaces agree with the previously proved anti-dual adjoints after the metric identifications.</p>
+<h2 id="a-mixed-generating-function-gives-a-left-operator-form"><span id="2-a-mixed-generating-function-gives-a-left-operator-form"></span><span id="section-2"></span>2. A mixed generating function gives a left operator form</h2>
+<p><strong>Proposition 2.1.</strong> Near any point of a homogeneous canonical graph, input base coordinates can be chosen, while keeping the output base coordinates fixed, so that
+<span class="math math-display" data-tex="\[
+C=\{(x,\phi_x(x,\eta);y=\phi_\eta(x,\eta),\eta)\},
+\qquad\det\phi_{x\eta}\neq0,
+\tag{2.1}
+\]">\[
+C=\{(x,\phi_x(x,\eta);y=\phi_\eta(x,\eta),\eta)\},
+\qquad\det\phi_{x\eta}\neq0,
+\tag{2.1}
+\]</span>
+where <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is homogeneous of degree one in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p><strong>Proof.</strong> At the point, take the inverse image under <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of the output vertical cotangent fiber. It is a conic Lagrangian in <span class="math" data-tex="\(T^*Y\)">\(T^*Y\)</span>. The input covector is nonzero. The diagonal-complement lemma and the input-coordinate second-jet construction of the transport lesson therefore make its tangent plane transverse to the horizontal plane in the new input coordinates.</p>
+<p>A tangent vector to <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(\delta x=0\)">\(\delta x=0\)</span> lies in this inverse image of the output vertical plane. If also <span class="math" data-tex="\(\delta\eta=0\)">\(\delta\eta=0\)</span>, the new transversality forces its input tangent vector to be zero, and the diffeomorphism forces its output vector to be zero. Thus projection from <span class="math" data-tex="\(C\)">\(C\)</span> to <span class="math" data-tex="\((x,\eta)\)">\((x,\eta)\)</span> has injective differential. Both spaces have dimension <span class="math" data-tex="\(2n\)">\(2n\)</span>, so these are local coordinates on the graph.</p>
+<p>Write <span class="math" data-tex="\(y=y(x,\eta)\)">\(y=y(x,\eta)\)</span>, <span class="math" data-tex="\(\xi=\xi(x,\eta)\)">\(\xi=\xi(x,\eta)\)</span>. Homogeneity makes <span class="math" data-tex="\(y\)">\(y\)</span> degree zero and <span class="math" data-tex="\(\xi\)">\(\xi\)</span> degree one. The conic Lagrangian identity in the signed product is
+<span class="math math-display" data-tex="\[
+\xi\cdot dx-\eta\cdot dy=0\quad\text{on }C.
+\]">\[
+\xi\cdot dx-\eta\cdot dy=0\quad\text{on }C.
+\]</span>
+Therefore <span class="math" data-tex="\(\phi=\eta\cdot y(x,\eta)\)">\(\phi=\eta\cdot y(x,\eta)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+d\phi=\xi\cdot dx+y\cdot d\eta.
+\]">\[
+d\phi=\xi\cdot dx+y\cdot d\eta.
+\]</span>
+It gives (2.1). Projection to <span class="math" data-tex="\((x,\xi)\)">\((x,\xi)\)</span> is a diffeomorphism because <span class="math" data-tex="\(C\)">\(C\)</span> is a graph with a diffeomorphic inverse. Its expression in the new parameters is <span class="math" data-tex="\((x,\eta)\mapsto(x,\phi_x)\)">\((x,\eta)\mapsto(x,\phi_x)\)</span>, whose determinant is <span class="math" data-tex="\(\det\phi_{x\eta}\)">\(\det\phi_{x\eta}\)</span>. That determinant is nonzero. ∎</p>
+<p>The phase <span class="math" data-tex="\(\Phi(x,y,\eta)=\phi(x,\eta)-y\cdot\eta\)">\(\Phi(x,y,\eta)=\phi(x,\eta)-y\cdot\eta\)</span> is nondegenerate: its critical equations are <span class="math" data-tex="\(\phi_\eta-y=0\)">\(\phi_\eta-y=0\)</span>, with derivative <span class="math" data-tex="\(-I\)">\(-I\)</span> in <span class="math" data-tex="\(y\)">\(y\)</span>. The kernel normalization and amplitude order are
+<span class="math math-display" data-tex="\[
+K_A(x,y)=(2\pi)^{-n}\int e^{i\Phi}a(x,y,\eta)\,d\eta,
+\qquad a\in S^m.
+\tag{2.2}
+\]">\[
+K_A(x,y)=(2\pi)^{-n}\int e^{i\Phi}a(x,y,\eta)\,d\eta,
+\qquad a\in S^m.
+\tag{2.2}
+\]</span>
+The local phase converse supplies this form modulo a smooth kernel. In parameters <span class="math" data-tex="\((x,\eta)\)">\((x,\eta)\)</span>, its critical density is <span class="math" data-tex="\(|dx\,d\eta|\)">\(|dx\,d\eta|\)</span>, so its intrinsic symbol is the critical restriction
+<span class="math math-display" data-tex="\[
+a(x,\phi_\eta,\eta)|dx\,d\eta|^{1/2}
+\tag{2.3}
+\]">\[
+a(x,\phi_\eta,\eta)|dx\,d\eta|^{1/2}
+\tag{2.3}
+\]</span>
+in the Maslov frame associated with <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. On the other hand,
+<span class="math math-display" data-tex="\[
+v_C^{1/2}=|\det\phi_{x\eta}|^{1/2}|dx\,d\eta|^{1/2}.
+\]">\[
+v_C^{1/2}=|\det\phi_{x\eta}|^{1/2}|dx\,d\eta|^{1/2}.
+\]</span>
+Hence the reduced graph symbol in this frame is
+<span class="math math-display" data-tex="\[
+\alpha=a(x,\phi_\eta,\eta)|\det\phi_{x\eta}|^{-1/2}.
+\tag{2.4}
+\]">\[
+\alpha=a(x,\phi_\eta,\eta)|\det\phi_{x\eta}|^{-1/2}.
+\tag{2.4}
+\]</span></p>
+<p>The amplitude can be made independent of <span class="math" data-tex="\(y\)">\(y\)</span>. Put <span class="math" data-tex="\(a_0(x,\eta)=a(x,\phi_\eta,\eta)\)">\(a_0(x,\eta)=a(x,\phi_\eta,\eta)\)</span>. Taylor's integral formula expresses <span class="math" data-tex="\(a-a_0\)">\(a-a_0\)</span> as <span class="math" data-tex="\(\sum_j(y_j-\phi_{\eta_j})a_j\)">\(\sum_j(y_j-\phi_{\eta_j})a_j\)</span>, with <span class="math" data-tex="\(a_j\in S^m\)">\(a_j\in S^m\)</span>. In the oscillatory integral,
+<span class="math math-display" data-tex="\[
+(y_j-\phi_{\eta_j})e^{i\Phi}
+=-\frac1i\partial_{\eta_j}e^{i\Phi},
+\]">\[
+(y_j-\phi_{\eta_j})e^{i\Phi}
+=-\frac1i\partial_{\eta_j}e^{i\Phi},
+\]</span>
+so integration by parts replaces this term by <span class="math" data-tex="\(D_{\eta_j}a_j\)">\(D_{\eta_j}a_j\)</span>, of order <span class="math" data-tex="\(m-1\)">\(m-1\)</span>. Derivatives of <span class="math" data-tex="\(\phi_\eta\)">\(\phi_\eta\)</span> cost one frequency order. Repeating and using the imported support-preserving asymptotic sum gives <span class="math" data-tex="\(b(x,\eta)\in S^m\)">\(b(x,\eta)\in S^m\)</span> with
+<span class="math math-display" data-tex="\[
+(Au)(x)=(2\pi)^{-n}\int e^{i\phi(x,\eta)}b(x,\eta)\widehat u(\eta)\,d\eta
+\tag{2.5}
+\]">\[
+(Au)(x)=(2\pi)^{-n}\int e^{i\phi(x,\eta)}b(x,\eta)\widehat u(\eta)\,d\eta
+\tag{2.5}
+\]</span>
+microlocally modulo a smooth kernel. All finite remainders have the stated lower orders. Base and angular supports remain in slightly enlarged compact interior sets. Remove a bounded-frequency piece into the smooth remainder, so the working amplitude vanishes near zero. This is a local normal form; base cutoffs equal to one on the working graph patch are retained when estimating operators.</p>
+<h2 id="order-zero-gives-local-l2-continuity"><span id="3-order-zero-gives-local-l2-continuity"></span><span id="section-3"></span>3. Order zero gives local L2 continuity</h2>
+<p><strong>Theorem 3.1 (graph continuity).</strong> If <span class="math" data-tex="\(C\)">\(C\)</span> is locally the graph of a homogeneous canonical transformation and <span class="math" data-tex="\(A\in I^0(X\times Y,C&#x27;;\Omega^{1/2}\otimes\operatorname{Hom}(F,E))\)">\(A\in I^0(X\times Y,C&#x27;;\Omega^{1/2}\otimes\operatorname{Hom}(F,E))\)</span>, then
+<span class="math math-display" data-tex="\[
+A:L^2_{\mathrm{comp}}(Y;\Omega^{1/2}\otimes F)
+\longrightarrow L^2_{\mathrm{loc}}(X;\Omega^{1/2}\otimes E)
+\tag{3.1}
+\]">\[
+A:L^2_{\mathrm{comp}}(Y;\Omega^{1/2}\otimes F)
+\longrightarrow L^2_{\mathrm{loc}}(X;\Omega^{1/2}\otimes E)
+\tag{3.1}
+\]</span>
+is continuous. For a fixed phase patch and fixed compact support data, its localized operator norm is bounded by finitely many order-zero amplitude seminorms.</p>
+<p>Here continuity means that for each compact input support and each compact output cutoff, the output <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm has a bound by the input <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm. It does not assert a uniform estimate across a noncompact manifold.</p>
+<p><strong>Proof on one graph patch.</strong> Localize the kernel to a compact coordinate product and to a sufficiently small graph cone. Call the resulting operator <span class="math" data-tex="\(T\)">\(T\)</span>. Both base support projections are now proper. Shrink the cone so that <span class="math" data-tex="\(C^{-1}\circ C\)">\(C^{-1}\circ C\)</span> in this patch is the identity graph. Its matching fibers are points. The adjoint and composition theorems give
+<span class="math math-display" data-tex="\[
+T^*T\in\Psi^0(Y),
+\qquad\sigma(T^*T)=\alpha^*\alpha.
+\tag{3.2}
+\]">\[
+T^*T\in\Psi^0(Y),
+\qquad\sigma(T^*T)=\alpha^*\alpha.
+\tag{3.2}
+\]</span>
+The identity-relation kernel class is exactly the pseudodifferential class: choose the phase <span class="math" data-tex="\((y-z)\cdot\eta\)">\((y-z)\cdot\eta\)</span> and apply the local converse, followed by the imported amplitude reduction. The compactly localized smooth remainder stays smooth.</p>
+<p>The exact AN-03 estimate now gives <span class="math" data-tex="\(\|T^*T\|_{2\to2}\leq C\)">\(\|T^*T\|_{2\to2}\leq C\)</span>. For compact smooth <span class="math" data-tex="\(u\)">\(u\)</span>,
+<span class="math math-display" data-tex="\[
+\|Tu\|_2^2=(T^*Tu,u)\leq C\|u\|_2^2.
+\tag{3.3}
+\]">\[
+\|Tu\|_2^2=(T^*Tu,u)\leq C\|u\|_2^2.
+\tag{3.3}
+\]</span>
+The pairing identity follows on these smooth inputs from the kernel adjoint; its outputs are compact smooth by the nonzero-covector mapping theorem. Thus no bounded extension of <span class="math" data-tex="\(T\)">\(T\)</span> has been assumed in using (3.3). Density gives its unique bounded <span class="math" data-tex="\(L^2\)">\(L^2\)</span> extension.</p>
+<p>The constants depend on finitely many amplitude seminorms. Indeed the composition construction is bilinear and has finite-seminorm estimates on fixed phase/support data. To recover the finitely many ordinary pseudodifferential symbol derivatives required by E23, perform its Fourier reduction to a finite order, and leave a sufficiently negative remainder. The finite coefficients and the absolutely integrable remainder use finitely many input derivatives. The latter remainder and the smooth kernel are controlled in the kernel norms used by the elementary integral estimate. This yields
+<span class="math math-display" data-tex="\[
+\|T\|_{2\to2}\leq C p_{0,L}(a)
+\tag{3.4}
+\]">\[
+\|T\|_{2\to2}\leq C p_{0,L}(a)
+\tag{3.4}
+\]</span>
+for a finite <span class="math" data-tex="\(L\)">\(L\)</span> and the fixed working data. An infinite asymptotic-sum choice is unnecessary for this estimate.</p>
+<p><strong>Assembly.</strong> For fixed compact input and output base supports, the closed normalized kernel relation is compact and contains no covector on either axis. Cover it by finitely many small graph cones and use a smooth phase partition. Each piece has the bound just proved. The residual kernel is smooth on the compact base product and has a bounded integral-operator norm by Cauchy–Schwarz. Sum these finitely many bounds. They prove (3.1), including finite-rank bundle coefficients by the matrix version of the imported bound and equivalence of local Hermitian norms.</p>
+<p>Several different graph branches may occur in the full relation. We have only applied (3.2) to each single graph patch. Cross-products between different patches need not have the identity relation, and no claim that the full <span class="math" data-tex="\(A^*A\)">\(A^*A\)</span> is pseudodifferential is needed. ∎</p>
+<p>For the left form (2.5), a direct calculation makes its finite-seminorm estimate particularly explicit. Cut the amplitude to a small compact output patch and an interior angular cone. First truncate frequency smoothly, writing <span class="math" data-tex="\(b_R=h(\eta/R)b\)">\(b_R=h(\eta/R)b\)</span>, with real <span class="math" data-tex="\(h\)">\(h\)</span>. These operators <span class="math" data-tex="\(T_R\)">\(T_R\)</span> have bounded-frequency <span class="math" data-tex="\(L^2\)">\(L^2\)</span> kernels, so their Hilbert adjoints and products already exist. Plancherel in the input variable gives their product kernel
+<span class="math math-display" data-tex="\[
+(T_RT_R^*)(x,x&#x27;)=(2\pi)^{-n}\int
+e^{i(\phi(x,\eta)-\phi(x&#x27;,\eta))}
+b_R(x,\eta)b_R(x&#x27;,\eta)^*\,d\eta.
+\tag{3.5}
+\]">\[
+(T_RT_R^*)(x,x&#x27;)=(2\pi)^{-n}\int
+e^{i(\phi(x,\eta)-\phi(x&#x27;,\eta))}
+b_R(x,\eta)b_R(x&#x27;,\eta)^*\,d\eta.
+\tag{3.5}
+\]</span>
+Use a small convex output chart and put
+<span class="math math-display" data-tex="\[
+F(x,x&#x27;,\eta)=\int_0^1\phi_x(x&#x27;+t(x-x&#x27;),\eta)\,dt.
+\]">\[
+F(x,x&#x27;,\eta)=\int_0^1\phi_x(x&#x27;+t(x-x&#x27;),\eta)\,dt.
+\]</span>
+Then the phase difference is <span class="math" data-tex="\((x-x&#x27;)\cdot F\)">\((x-x&#x27;)\cdot F\)</span>. The derivative <span class="math" data-tex="\(F_\eta\)">\(F_\eta\)</span> is invertible on the selected patch by (2.1), after shrinking it, so <span class="math" data-tex="\(\zeta=F(x,x&#x27;,\eta)\)">\(\zeta=F(x,x&#x27;,\eta)\)</span> is a homogeneous local frequency diffeomorphism. Changing variables turns (3.5) into an ordinary order-zero PDO amplitude with phase <span class="math" data-tex="\((x-x&#x27;)\cdot\zeta\)">\((x-x&#x27;)\cdot\zeta\)</span>. Its coefficient is
+<span class="math math-display" data-tex="\[
+b_R(x,\eta)b_R(x&#x27;,\eta)^*|\det F_\eta|^{-1},
+\tag{3.6}
+\]">\[
+b_R(x,\eta)b_R(x&#x27;,\eta)^*|\det F_\eta|^{-1},
+\tag{3.6}
+\]</span>
+evaluated at the inverse frequency map. Homogeneity and the chain rule give order-zero bounds uniformly in <span class="math" data-tex="\(R\)">\(R\)</span>. A base derivative of the inverse frequency costs one frequency power, canceled by the frequency derivative of its symbol factor. Derivatives of the cutoff obey the same bounds on its transition annulus.</p>
+<p>The imported quantitative PDO amplitude reduction and E23 therefore bound <span class="math" data-tex="\(\|T_RT_R^*\|\)">\(\|T_RT_R^*\|\)</span> by <span class="math" data-tex="\(C p_{0,L}(b)^2\)">\(C p_{0,L}(b)^2\)</span>, for a finite <span class="math" data-tex="\(L\)">\(L\)</span> independent of <span class="math" data-tex="\(R\)">\(R\)</span>. The Hilbert adjoint pairing gives <span class="math" data-tex="\(\|T_R\|\leq C p_{0,L}(b)\)">\(\|T_R\|\leq C p_{0,L}(b)\)</span>. On Schwartz inputs the truncated integrals converge to (2.5), since the input Fourier transform decreases rapidly; their compact-output pointwise limit and the uniform bound give the same norm inequality for the limiting operator, followed by density. Thus
+<span class="math math-display" data-tex="\[
+\|T(b)\|_{2\to2}\leq C p_{0,L}(b)
+\tag{3.7}
+\]">\[
+\|T(b)\|_{2\to2}\leq C p_{0,L}(b)
+\tag{3.7}
+\]</span>
+on these fixed supports. Bounded input cutoffs preserve the estimate. This proof uses an actual frequency change and finitely many ordinary amplitude derivatives; it will control the norm of high-frequency tails in the compactness proof.</p>
+<h2 id="a-symbol-tending-to-zero-gives-localized-compactness"><span id="4-a-symbol-tending-to-zero-gives-localized-compactness"></span><span id="section-4"></span>4. A symbol tending to zero gives localized compactness</h2>
+<p>The symbol limit in this section is uniform over compact base products and over their normalized graph directions. It is a statement about the reduced order-zero symbol; adding a representative of order <span class="math" data-tex="\(-1\)">\(-1\)</span> preserves it.</p>
+<p><strong>Lemma 4.1 (small symbols have small fixed jets).</strong> Let <span class="math" data-tex="\(b\in S^0\)">\(b\in S^0\)</span> on a fixed compact-base, compact-angular patch, and suppose <span class="math" data-tex="\(b(x,\eta)\to0\)">\(b(x,\eta)\to0\)</span> uniformly as <span class="math" data-tex="\(|\eta|\to\infty\)">\(|\eta|\to\infty\)</span>. If <span class="math" data-tex="\(h\in C_c^\infty\)">\(h\in C_c^\infty\)</span> equals one near zero, then
+<span class="math math-display" data-tex="\[
+b_R=(1-h(\eta/R))b
+\longrightarrow0
+\quad\text{in every fixed }S^0\text{ seminorm}.
+\tag{4.1}
+\]">\[
+b_R=(1-h(\eta/R))b
+\longrightarrow0
+\quad\text{in every fixed }S^0\text{ seminorm}.
+\tag{4.1}
+\]</span></p>
+<p><strong>Proof.</strong> On a slightly enlarged compact frequency annulus put <span class="math" data-tex="\(F_r(x,\omega)=b(x,r\omega)\)">\(F_r(x,\omega)=b(x,r\omega)\)</span>, <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>. All derivatives in <span class="math" data-tex="\((x,\omega)\)">\((x,\omega)\)</span> are bounded uniformly in <span class="math" data-tex="\(r\)">\(r\)</span>, by the order-zero symbol estimates, while <span class="math" data-tex="\(\|F_r\|_\infty\to0\)">\(\|F_r\|_\infty\to0\)</span>. Finite Taylor estimates imply that each fixed derivative also tends uniformly to zero on a smaller annulus and base set. For the first derivative in one direction, Taylor's formula gives, whenever the segment remains in the larger set,
+<span class="math math-display" data-tex="\[
+|\partial_jF_r|\leq\frac{2\|F_r\|_\infty}{\delta}
++\frac\delta2\|\partial_j^2F_r\|_\infty.
+\tag{4.2}
+\]">\[
+|\partial_jF_r|\leq\frac{2\|F_r\|_\infty}{\delta}
++\frac\delta2\|\partial_j^2F_r\|_\infty.
+\tag{4.2}
+\]</span>
+First choose small <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, then large <span class="math" data-tex="\(r\)">\(r\)</span>. Repeating the argument on successive derivatives, with finitely many nested interior sets, proves the assertion for any prescribed finite jet. A finite cover makes it uniform. Returning to physical frequencies turns each <span class="math" data-tex="\(\omega\)">\(\omega\)</span>-derivative into the corresponding weighted frequency derivative. The same bounds hold uniformly for all <span class="math" data-tex="\(r\)">\(r\)</span> above a large threshold.</p>
+<p>In (4.1), derivatives hitting <span class="math" data-tex="\(h(\eta/R)\)">\(h(\eta/R)\)</span> are supported where <span class="math" data-tex="\(|\eta|\asymp R\)">\(|\eta|\asymp R\)</span>; the seminorm weight cancels their <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> factors. Derivatives not hitting it are supported above a fixed multiple of <span class="math" data-tex="\(R\)">\(R\)</span>, where the preceding uniform jet bounds tend to zero. Leibniz's rule proves (4.1). Zero extension from the interior supporting patch permits the enlarged sets used in the Taylor estimates. ∎</p>
+<p>This lemma uses the extra uniform zero limit. For a general order-zero symbol, frequency truncations need not converge in the same-order symbol topology.</p>
+<p><strong>Theorem 4.2 (graph compactness).</strong> Under Theorem 3.1, if the reduced principal symbol tends uniformly to zero at infinity over every compact subset of <span class="math" data-tex="\(X\times Y\)">\(X\times Y\)</span>, then every localized operator <span class="math" data-tex="\(\chi_X A\chi_Y:L^2(Y)\to L^2(X)\)">\(\chi_X A\chi_Y:L^2(Y)\to L^2(X)\)</span>, with compact smooth base cutoffs, is compact.</p>
+<p><strong>Proof.</strong> Reduce to finitely many graph patches and a smooth compact kernel, as in Theorem 3.1. On one patch use (2.5). Its symbol is <span class="math" data-tex="\(b|\det\phi_{x\eta}|^{-1/2}\)">\(b|\det\phi_{x\eta}|^{-1/2}\)</span> modulo order <span class="math" data-tex="\(-1\)">\(-1\)</span>. The determinant and its inverse are bounded on the compact normalized patch. Thus the hypothesis implies the zero limit for <span class="math" data-tex="\(b\)">\(b\)</span> itself. Lemma 4.1 and the finite-seminorm graph estimate give
+<span class="math math-display" data-tex="\[
+\|T(b)-T(h(\eta/R)b)\|_{2\to2}\longrightarrow0.
+\tag{4.3}
+\]">\[
+\|T(b)-T(h(\eta/R)b)\|_{2\to2}\longrightarrow0.
+\tag{4.3}
+\]</span>
+The bounded-frequency operator has an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> kernel. For example, Fourier inversion in the input variable and Plancherel give
+<span class="math math-display" data-tex="\[
+\|K_R\|_{L^2(dx\,dy)}^2
+=(2\pi)^{-n}\iint|h(\eta/R)b(x,\eta)|^2\,dx\,d\eta&lt;\infty
+\tag{4.4}
+\]">\[
+\|K_R\|_{L^2(dx\,dy)}^2
+=(2\pi)^{-n}\iint|h(\eta/R)b(x,\eta)|^2\,dx\,d\eta&lt;\infty
+\tag{4.4}
+\]</span>
+before an additional bounded input cutoff. The output base support is compact and the frequency support is bounded. The phase factor has absolute value one.</p>
+<p>An <span class="math" data-tex="\(L^2\)">\(L^2\)</span> kernel is compact: approximate it in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by finite sums of product functions of the two variables. Their operators have finite rank, and Cauchy–Schwarz bounds the operator-norm difference by the kernel's <span class="math" data-tex="\(L^2\)">\(L^2\)</span> difference. Product simple functions are dense by the usual Lebesgue approximation on product charts. The same proof handles matrix components. Hence (4.3) is a norm limit of compact operators, and is compact. Smooth kernels localized to compact base products are compact by this same argument. Finitely many pieces prove the theorem. ∎</p>
+<p>This proves the stated compactness directly from the graph estimates and the symbol limit. It makes no assertion about global compactness without the relevant support or geometry bounds.</p>
+<h2 id="every-real-sobolev-order-shifts-by-the-operator-order"><span id="5-every-real-sobolev-order-shifts-by-the-operator-order"></span><span id="section-5"></span>5. Every real Sobolev order shifts by the operator order</h2>
+<p><strong>Theorem 5.1.</strong> For <span class="math" data-tex="\(A\in I^m\)">\(A\in I^m\)</span> with locally graph relation as above, and every real <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math math-display" data-tex="\[
+A:H^s_{\mathrm{comp}}(Y)\longrightarrow H^{s-m}_{\mathrm{loc}}(X)
+\tag{5.1}
+\]">\[
+A:H^s_{\mathrm{comp}}(Y)\longrightarrow H^{s-m}_{\mathrm{loc}}(X)
+\tag{5.1}
+\]</span>
+continuously, with the same half-density and finite-rank bundle coefficients.</p>
+<p><strong>Proof.</strong> Fix input and output compact localizations. Choose proper elliptic order reducers <span class="math" data-tex="\(B_Y\in\Psi^s(Y)\)">\(B_Y\in\Psi^s(Y)\)</span>, <span class="math" data-tex="\(B_X\in\Psi^{s-m}(X)\)">\(B_X\in\Psi^{s-m}(X)\)</span>, and a proper parametrix <span class="math" data-tex="\(C_Y\in\Psi^{-s}(Y)\)">\(C_Y\in\Psi^{-s}(Y)\)</span> of <span class="math" data-tex="\(B_Y\)">\(B_Y\)</span>. These are the imported real-order pseudodifferential constructions. Arrange an output localization of <span class="math" data-tex="\(B_X\)">\(B_X\)</span> to the larger compact set needed for the chosen output cutoff. The graph calculus gives
+<span class="math math-display" data-tex="\[
+B_XAC_Y\in I^0.
+\]">\[
+B_XAC_Y\in I^0.
+\]</span>
+On compact smooth inputs the exact identity is
+<span class="math math-display" data-tex="\[
+B_XA=(B_XAC_Y)B_Y+B_XA(I-C_YB_Y).
+\tag{5.2}
+\]">\[
+B_XA=(B_XAC_Y)B_Y+B_XA(I-C_YB_Y).
+\tag{5.2}
+\]</span>
+The first term maps <span class="math" data-tex="\(H^s\)">\(H^s\)</span> to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>: the imported mapping gives <span class="math" data-tex="\(B_Y:H^s\to L^2\)">\(B_Y:H^s\to L^2\)</span>, with proper support keeping a common compact input set for the graph operator, and Theorem 3.1 treats the order-zero middle factor.</p>
+<p>The second term has a smooth kernel on the localized base product. The proper smoothing error <span class="math" data-tex="\(I-C_YB_Y\)">\(I-C_YB_Y\)</span> has compact output support relevant to the input support. The FIO smooth-input theorem and its adjoint version show that composing such a smooth kernel with <span class="math" data-tex="\(A\)">\(A\)</span> is smooth; differentiating compact smooth test families proves every derivative. It therefore maps the fixed compact <span class="math" data-tex="\(H^s\)">\(H^s\)</span> input space to every local smooth and Sobolev space. Thus (5.2) bounds <span class="math" data-tex="\(B_XAu\)">\(B_XAu\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</p>
+<p>Use a proper local parametrix <span class="math" data-tex="\(C_X\)">\(C_X\)</span> of <span class="math" data-tex="\(B_X\)">\(B_X\)</span>. On the smaller output set,
+<span class="math math-display" data-tex="\[
+Au=C_XB_XAu+R_XAu,
+\]">\[
+Au=C_XB_XAu+R_XAu,
+\]</span>
+where <span class="math" data-tex="\(R_X\)">\(R_X\)</span> is the localized smoothing error. The first term belongs to <span class="math" data-tex="\(H^{s-m}\)">\(H^{s-m}\)</span> by the imported PDO mapping. The second has a smooth localized kernel when composed with <span class="math" data-tex="\(A\)">\(A\)</span>, by the same adjoint smooth-input argument. These bounds prove (5.1) for smooth inputs. Compact smooth approximation of an <span class="math" data-tex="\(H^s\)">\(H^s\)</span> distribution, in a common slightly larger compact support, gives the unique extension. Its distributional limit agrees with the original kernel action by the compact-distribution continuity of the mapping theorem. Local partitions prove the bundle and manifold assertions. ∎</p>
+<h2 id="elliptic-graph-operators-have-two-sided-parametrices"><span id="6-elliptic-graph-operators-have-two-sided-parametrices"></span><span id="section-6"></span>6. Elliptic graph operators have two-sided parametrices</h2>
+<p>Assume now that <span class="math" data-tex="\(C\)">\(C\)</span> is the graph of a homogeneous canonical bijection
+<span class="math math-display" data-tex="\[
+\chi:T^*Y\setminus0\longrightarrow T^*X\setminus0.
+\tag{6.1}
+\]">\[
+\chi:T^*Y\setminus0\longrightarrow T^*X\setminus0.
+\tag{6.1}
+\]</span>
+An order-<span class="math" data-tex="\(m\)">\(m\)</span> graph FIO is <strong>noncharacteristic</strong> at a point if its reduced symbol has an inverse of order <span class="math" data-tex="\(-m\)">\(-m\)</span> in a conic neighborhood, in the inverse Maslov line and reversed Hom bundle. The two ordered products equal identity modulo order <span class="math" data-tex="\(-1\)">\(-1\)</span>. It is <strong>elliptic</strong> if this holds everywhere. This includes the symbol bounds on the inverse; pointwise invertibility alone is insufficient for an arbitrary nonhomogeneous symbol. In the classical case it is the usual nonvanishing or matrix-isomorphism condition on normalized compact cone slices.</p>
+<p><strong>Support lemma.</strong> The base projection of a global graph (6.1) is a closed relation with both base projections proper. Any distribution with wavefront contained in its twisted graph can consequently be replaced, modulo a smooth kernel, by one with proper base support.</p>
+<p><strong>Proof.</strong> For input base points in a compact set, normalize input covectors to length one in finitely many charts. Their set is compact. Homogeneity makes the output base independent of the covector radius; continuity of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> therefore confines it to a compact set. Apply <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span> for the other projection. For a convergent sequence of base pairs in this relation, normalize the input covectors and take a subsequence. Their output covectors are bounded and bounded away from zero on that compact set, since <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is a homogeneous diffeomorphism. The limit yields a graph point over the limiting base pair. Thus the base relation is closed.</p>
+<p>We justify the proper cutoff as well. Choose compact exhaustions <span class="math" data-tex="\(K_j\)">\(K_j\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(L_j\)">\(L_j\)</span> of <span class="math" data-tex="\(Y\)">\(Y\)</span>, each lying inside the next interior. Properness lets us choose integers <span class="math" data-tex="\(N(j)&gt;j\)">\(N(j)&gt;j\)</span>, <span class="math" data-tex="\(M(j)&gt;j\)">\(M(j)&gt;j\)</span> so that the relation avoids
+<span class="math math-display" data-tex="\[
+K_j\times(Y\setminus\operatorname{int}L_{N(j)}),
+\qquad
+(X\setminus\operatorname{int}K_{M(j)})\times L_j.
+\]">\[
+K_j\times(Y\setminus\operatorname{int}L_{N(j)}),
+\qquad
+(X\setminus\operatorname{int}K_{M(j)})\times L_j.
+\]</span>
+The union of these closed forbidden sets is locally finite: on a fixed compact product the forbidden outside factor is absent for every sufficiently large <span class="math" data-tex="\(j\)">\(j\)</span>. Its complement is an open neighborhood of the relation. The closure of this neighborhood has both projections proper; over <span class="math" data-tex="\(K_j\)">\(K_j\)</span>, use the bound from <span class="math" data-tex="\(K_{j+1}\)">\(K_{j+1}\)</span> to include boundary points, and do the reverse for <span class="math" data-tex="\(L_j\)">\(L_j\)</span>.</p>
+<p>A smooth partition subordinate to this neighborhood and the complement of the closed relation supplies a cutoff equal to one near the relation and supported in that proper neighborhood. Multiplying the kernel by it gives proper support. The difference is smooth, since its multiplier vanishes near the base projection of every permitted wavefront point. ∎</p>
+<p><strong>Theorem 6.1 (elliptic graph parametrix).</strong> A proper elliptic <span class="math" data-tex="\(A\in I^m(X\times Y,C&#x27;;\Omega^{1/2}\otimes\operatorname{Hom}(F,E))\)">\(A\in I^m(X\times Y,C&#x27;;\Omega^{1/2}\otimes\operatorname{Hom}(F,E))\)</span> has a proper
+<span class="math math-display" data-tex="\[
+B\in I^{-m}(Y\times X,(C^{-1})&#x27;;\Omega^{1/2}\otimes\operatorname{Hom}(E,F))
+\tag{6.2}
+\]">\[
+B\in I^{-m}(Y\times X,(C^{-1})&#x27;;\Omega^{1/2}\otimes\operatorname{Hom}(E,F))
+\tag{6.2}
+\]</span>
+such that <span class="math" data-tex="\(AB-I\)">\(AB-I\)</span> and <span class="math" data-tex="\(BA-I\)">\(BA-I\)</span> have smooth kernels. At a single noncharacteristic point the corresponding two identities hold microlocally on smaller input and output cones.</p>
+<p><strong>Proof.</strong> The inverse reduced symbol is a section of the inverse-relation symbol bundle: the graph-factor Maslov product identifies its product with the original symbol as the identity unit, and the bundle map is the ordinary inverse map. The invariant-symbol surjectivity theorem realizes it by an FIO <span class="math" data-tex="\(B_0\)">\(B_0\)</span> of order <span class="math" data-tex="\(-m\)">\(-m\)</span>. The support lemma permits a proper representative without changing its symbol.</p>
+<p>The graph composition theorem gives proper order-zero pseudodifferential operators
+<span class="math math-display" data-tex="\[
+P_X=AB_0,\qquad P_Y=B_0A,
+\tag{6.3}
+\]">\[
+P_X=AB_0,\qquad P_Y=B_0A,
+\tag{6.3}
+\]</span>
+with identity principal symbols. The exact AN-03 elliptic parametrix result supplies proper order-zero <span class="math" data-tex="\(R_X,S_Y\)">\(R_X,S_Y\)</span> with <span class="math" data-tex="\(P_XR_X-I\)">\(P_XR_X-I\)</span> and <span class="math" data-tex="\(S_YP_Y-I\)">\(S_YP_Y-I\)</span> smooth. Set
+<span class="math math-display" data-tex="\[
+B_R=B_0R_X,\qquad B_L=S_YB_0.
+\tag{6.4}
+\]">\[
+B_R=B_0R_X,\qquad B_L=S_YB_0.
+\tag{6.4}
+\]</span>
+They have the order and relation in (6.2), with proper support. Their right and left inverse identities follow from (6.3). Moreover
+<span class="math math-display" data-tex="\[
+B_L-B_R
+=B_L(I-AB_R)+(B_LA-I)B_R.
+\tag{6.5}
+\]">\[
+B_L-B_R
+=B_L(I-AB_R)+(B_LA-I)B_R.
+\tag{6.5}
+\]</span>
+Both terms have smooth kernels: smooth proper kernels form a two-sided ideal with proper FIOs, by the proved smooth-input and adjoint mappings. Thus either representative is a two-sided inverse modulo smooth kernels. This uses the imported finite-order PDO parametrix construction; it does not assume convergence of a bounded-operator Neumann series.</p>
+<p>For the local statement, extend the inverse symbol with interior cone cutoffs and use the conic PDO parametrix construction. The same identities hold on smaller cones because changes of extension and separated supports are microlocally smoothing. The graph carries these input cones diffeomorphically to output cones, so the left/right comparison applies there. ∎</p>
+<h2 id="egorov-transports-symbols-by-the-canonical-map"><span id="7-egorov-transports-symbols-by-the-canonical-map"></span><span id="section-7"></span>7. Egorov transports symbols by the canonical map</h2>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be the graph in (6.1), <span class="math" data-tex="\(A\in I^m(C&#x27;)\)">\(A\in I^m(C&#x27;)\)</span>, <span class="math" data-tex="\(B\in I^{-m}((C^{-1})&#x27;)\)">\(B\in I^{-m}((C^{-1})&#x27;)\)</span>, and let <span class="math" data-tex="\(P\in\Psi^\mu(X)\)">\(P\in\Psi^\mu(X)\)</span>. Suppose all three operators are proper. They need not satisfy any inverse identity. Use reduced symbols <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> for <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, and principal symbol <span class="math" data-tex="\(p\)">\(p\)</span> for <span class="math" data-tex="\(P\)">\(P\)</span>. In the formulas below regard <span class="math" data-tex="\(\beta\)">\(\beta\)</span> as pulled back to <span class="math" data-tex="\(C\)">\(C\)</span> by the interchange of its two graph members; its bundle map still goes from <span class="math" data-tex="\(E_x\)">\(E_x\)</span> to <span class="math" data-tex="\(F_y\)">\(F_y\)</span>.</p>
+<p><strong>Theorem 7.1 (ordered Egorov formula).</strong> The operator <span class="math" data-tex="\(Q=BPA\)">\(Q=BPA\)</span> is a proper pseudodifferential operator of order <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>. Its principal symbol is
+<span class="math math-display" data-tex="\[
+q(\gamma)=\beta(\chi\gamma,\gamma)\,
+p(\chi\gamma)\,
+\alpha(\chi\gamma,\gamma),
+\tag{7.1}
+\]">\[
+q(\gamma)=\beta(\chi\gamma,\gamma)\,
+p(\chi\gamma)\,
+\alpha(\chi\gamma,\gamma),
+\tag{7.1}
+\]</span>
+where the inverse Maslov factors are contracted canonically and the bundle maps remain in the displayed order. For scalar <span class="math" data-tex="\(P\)">\(P\)</span>, if <span class="math" data-tex="\(c\)">\(c\)</span> is the principal symbol of <span class="math" data-tex="\(BA\)">\(BA\)</span>, this becomes
+<span class="math math-display" data-tex="\[
+q=c\,(p\circ\chi).
+\tag{7.2}
+\]">\[
+q=c\,(p\circ\chi).
+\tag{7.2}
+\]</span>
+In particular a microlocal inverse <span class="math" data-tex="\(B\)">\(B\)</span> gives <span class="math" data-tex="\(c=1\)">\(c=1\)</span> there. For matrix-valued <span class="math" data-tex="\(p\)">\(p\)</span>, the inverse case gives <span class="math" data-tex="\(q=\alpha^{-1}(p\circ\chi)\alpha\)">\(q=\alpha^{-1}(p\circ\chi)\alpha\)</span>.</p>
+<p><strong>Proof.</strong> The identity graph of <span class="math" data-tex="\(P\)">\(P\)</span> composed with <span class="math" data-tex="\(C\)">\(C\)</span> gives <span class="math" data-tex="\(C\)">\(C\)</span>, with excess zero and symbol <span class="math" data-tex="\(p\alpha\)">\(p\alpha\)</span>. Composing with the inverse graph gives the identity relation on <span class="math" data-tex="\(Y\)">\(Y\)</span>, again with excess zero. Its kernel class is <span class="math" data-tex="\(\Psi^\mu\)">\(\Psi^\mu\)</span>, and its symbol is exactly the ordered product (7.1). Proper kernel support is preserved by the already proved support theorem. Scalar <span class="math" data-tex="\(p\)">\(p\)</span> commutes with the Hom maps, leaving <span class="math" data-tex="\(c=\beta\alpha\)">\(c=\beta\alpha\)</span> and (7.2). The inverse identity and the matrix formula follow by substituting <span class="math" data-tex="\(\beta=\alpha^{-1}\)">\(\beta=\alpha^{-1}\)</span> in this same ordered product. ∎</p>
+<p>The theorem has a local conic version. Choose the inverse only near the desired covector, use proper interior cutoffs, and apply the same two compositions on smaller cones. It is principal-symbol transport; subsequent removal of lower terms requires additional arguments.</p>
+<p>It also justifies changes of canonical coordinates for a general FIO relation. Choose local elliptic graph FIOs quantizing the desired homogeneous canonical changes on the two sides, using symbol surjectivity and nonzero local Maslov units. Composition replaces <span class="math" data-tex="\(C\)">\(C\)</span> by <span class="math" data-tex="\(C_1\circ C\circ C_2\)">\(C_1\circ C\circ C_2\)</span>, with zero excess from the graph factors and unchanged order. Their microlocal parametrices undo the change. Order-zero graph quantizations and their inverses preserve the local <span class="math" data-tex="\(L^2\)">\(L^2\)</span> estimates. These facts supply a tool for the later corank and fold arguments, without assuming their normal-form theorems here.</p>
+<h2 id="a-half-density-change-of-variables-is-an-exact-model"><span id="8-a-half-density-change-of-variables-is-an-exact-model"></span><span id="section-8"></span>8. A half-density change of variables is an exact model</h2>
+<p>Let <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> be a diffeomorphism of one-dimensional manifolds. In positive coordinate charts define
+<span class="math math-display" data-tex="\[
+(Au)(x)=|f&#x27;(x)|^{1/2}u(f(x)).
+\tag{8.1}
+\]">\[
+(Au)(x)=|f&#x27;(x)|^{1/2}u(f(x)).
+\tag{8.1}
+\]</span>
+This is pullback of half densities. Its kernel is <span class="math" data-tex="\(|f&#x27;(x)|^{1/2}\delta(y-f(x))\)">\(|f&#x27;(x)|^{1/2}\delta(y-f(x))\)</span>, with phase <span class="math" data-tex="\(f(x)\eta-y\eta\)">\(f(x)\eta-y\eta\)</span> and amplitude <span class="math" data-tex="\(|f&#x27;|^{1/2}\)">\(|f&#x27;|^{1/2}\)</span>. Formula (2.4) makes its reduced symbol the unit, since <span class="math" data-tex="\(|\phi_{x\eta}|=|f&#x27;|\)">\(|\phi_{x\eta}|=|f&#x27;|\)</span>. It is a proper order-zero FIO with graph
+<span class="math math-display" data-tex="\[
+\chi(y,\eta)=(f^{-1}(y),f&#x27;(f^{-1}(y))\eta).
+\tag{8.2}
+\]">\[
+\chi(y,\eta)=(f^{-1}(y),f&#x27;(f^{-1}(y))\eta).
+\tag{8.2}
+\]</span>
+Change of variables gives <span class="math" data-tex="\(\|Au\|_2=\|u\|_2\)">\(\|Au\|_2=\|u\|_2\)</span>, exactly, and its half-density inverse is its Hilbert adjoint.</p>
+<p>Take <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span>, <span class="math" data-tex="\(Y=(0,\infty)\)">\(Y=(0,\infty)\)</span>, and <span class="math" data-tex="\(f(x)=e^x\)">\(f(x)=e^x\)</span>. Then
+<span class="math math-display" data-tex="\[
+Au(x)=e^{x/2}u(e^x),\qquad
+Bv(y)=y^{-1/2}v(\log y),\qquad BA=AB=I.
+\tag{8.3}
+\]">\[
+Au(x)=e^{x/2}u(e^x),\qquad
+Bv(y)=y^{-1/2}v(\log y),\qquad BA=AB=I.
+\tag{8.3}
+\]</span>
+For <span class="math" data-tex="\(P=D_x\)">\(P=D_x\)</span>, direct differentiation gives
+<span class="math math-display" data-tex="\[
+B D_x A=yD_y-\frac i2.
+\tag{8.4}
+\]">\[
+B D_x A=yD_y-\frac i2.
+\tag{8.4}
+\]</span>
+The transported principal symbol is <span class="math" data-tex="\(y\eta\)">\(y\eta\)</span>, in agreement with (7.2). Its left order-zero coefficient is <span class="math" data-tex="\(-i/2\)">\(-i/2\)</span>, and the subprincipal correction <span class="math" data-tex="\((i/2)\partial_y\partial_\eta(y\eta)=i/2\)">\((i/2)\partial_y\partial_\eta(y\eta)=i/2\)</span> leaves zero subprincipal symbol. Thus this exact coordinate model also checks the half-density convention used in the transport lesson.</p>
+<h2 id="exercises-with-complete-solutions"><span id="9-exercises-with-complete-solutions"></span><span id="section-9"></span>9. Exercises with complete solutions</h2>
+<p><strong>Exercise 9.1 (the graph volume; introductory).</strong> On <span class="math" data-tex="\(T^*\mathbb R^n\)">\(T^*\mathbb R^n\)</span>, compute the degree of <span class="math" data-tex="\(|dx\,d\xi|^{1/2}\)">\(|dx\,d\xi|^{1/2}\)</span> under cotangent dilation. Explain why an order-<span class="math" data-tex="\(m\)">\(m\)</span> graph FIO has a reduced symbol of order <span class="math" data-tex="\(m\)">\(m\)</span>, although its intrinsic symbol has order <span class="math" data-tex="\(m+n/2\)">\(m+n/2\)</span>.</p>
+<p><strong>Solution.</strong> Dilation fixes <span class="math" data-tex="\(dx\)">\(dx\)</span> and multiplies each frequency differential by <span class="math" data-tex="\(t\)">\(t\)</span>. Thus the density scales by <span class="math" data-tex="\(t^n\)">\(t^n\)</span> and its square root by <span class="math" data-tex="\(t^{n/2}\)">\(t^{n/2}\)</span>. The kernel ambient dimension is <span class="math" data-tex="\(2n\)">\(2n\)</span>, giving intrinsic order <span class="math" data-tex="\(m+2n/4=m+n/2\)">\(m+2n/4=m+n/2\)</span>. Dividing by the graph symplectic half volume subtracts <span class="math" data-tex="\(n/2\)">\(n/2\)</span>, leaving <span class="math" data-tex="\(m\)">\(m\)</span>. No amplitude-frequency count is substituted for this density calculation.</p>
+<p><strong>Exercise 9.2 (a nonunit coordinate amplitude; intermediate).</strong> For a linear diffeomorphism <span class="math" data-tex="\(f(x)=Mx\)">\(f(x)=Mx\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, write the normalized kernel of half-density pullback, its canonical graph and its reduced symbol. Compare with pullback acting on function coefficients without the half-density factor.</p>
+<p><strong>Solution.</strong> The half-density operator is <span class="math" data-tex="\(Au(x)=|\det M|^{1/2}u(Mx)\)">\(Au(x)=|\det M|^{1/2}u(Mx)\)</span>, with kernel
+<span class="math math-display" data-tex="\[
+(2\pi)^{-n}\int e^{i(Mx-y)\cdot\eta}|\det M|^{1/2}\,d\eta.
+\]">\[
+(2\pi)^{-n}\int e^{i(Mx-y)\cdot\eta}|\det M|^{1/2}\,d\eta.
+\]</span>
+The graph is <span class="math" data-tex="\((x,M^T\eta;y=Mx,\eta)\)">\((x,M^T\eta;y=Mx,\eta)\)</span>, and the mixed determinant has absolute value <span class="math" data-tex="\(|\det M|\)">\(|\det M|\)</span>. Therefore (2.4) gives reduced symbol one. Its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm is one by change of variables. Without the half-density factor the amplitude is one, the reduced symbol is <span class="math" data-tex="\(|\det M|^{-1/2}\)">\(|\det M|^{-1/2}\)</span>, and its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm is that same constant. This is a local coefficient comparison; the intrinsic half-density pullback includes its Jacobian.</p>
+<p><strong>Exercise 9.3 (unitary need not be compact; intermediate).</strong> On the circle of length <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, let <span class="math" data-tex="\(T_a u(x)=u(x+a)\)">\(T_a u(x)=u(x+a)\)</span>. Show that it is an order-zero graph FIO and a unitary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> operator, but is not compact.</p>
+<p><strong>Solution.</strong> Its delta kernel has the translation graph and order zero, with unit reduced symbol. The circle is compact, so the kernel support is proper. Rotation preserves the density, hence <span class="math" data-tex="\(T_a\)">\(T_a\)</span> is unitary. On the orthonormal modes <span class="math" data-tex="\(e_k=(2\pi)^{-1/2}e^{ikx}\)">\(e_k=(2\pi)^{-1/2}e^{ikx}\)</span>, it acts by <span class="math" data-tex="\(T_a e_k=e^{ika}e_k\)">\(T_a e_k=e^{ika}e_k\)</span>. Images of distinct modes remain orthonormal and have distance <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, so the image of the unit ball has no convergent subsequence containing these images. Its unit symbol does not satisfy the zero-limit compactness hypothesis.</p>
+<p><strong>Exercise 9.4 (a compact regularized graph; intermediate).</strong> On the same circle let <span class="math" data-tex="\(R e_k=\langle k\rangle^{-1}e_k\)">\(R e_k=\langle k\rangle^{-1}e_k\)</span>, where <span class="math" data-tex="\(\langle k\rangle=(1+k^2)^{1/2}\)">\(\langle k\rangle=(1+k^2)^{1/2}\)</span>. Use the ordinary Fourier multiplier calculus to identify the order and symbol of <span class="math" data-tex="\(T_aR\)">\(T_aR\)</span>, and prove compactness directly.</p>
+<p><strong>Solution.</strong> The multiplier <span class="math" data-tex="\(R\)">\(R\)</span> is a proper ordinary PDO of order <span class="math" data-tex="\(-1\)">\(-1\)</span>, with leading symbol <span class="math" data-tex="\(|\eta|^{-1}\)">\(|\eta|^{-1}\)</span> off zero. Composition with the translation graph leaves order <span class="math" data-tex="\(-1\)">\(-1\)</span>, with reduced symbol transported from that multiplier. In particular it lies in the declared order-zero class with a symbol tending to zero. Directly, truncate its Fourier action to <span class="math" data-tex="\(|k|\leq N\)">\(|k|\leq N\)</span>. This is finite rank, and the norm of the omitted diagonal multiplier is
+<span class="math math-display" data-tex="\[
+\sup_{|k|&gt;N}\langle k\rangle^{-1}=(1+(N+1)^2)^{-1/2}\longrightarrow0.
+\]">\[
+\sup_{|k|&gt;N}\langle k\rangle^{-1}=(1+(N+1)^2)^{-1/2}\longrightarrow0.
+\]</span>
+Translation is unitary, so it preserves this error norm. The operator is a norm limit of finite-rank maps and is compact, independently confirming Theorem 4.2 in this model.</p>
+<p><strong>Exercise 9.5 (local graph branches; advanced).</strong> On the circle set <span class="math" data-tex="\(A=I+T_\pi\)">\(A=I+T_\pi\)</span>. Describe its canonical relation, compute <span class="math" data-tex="\(A^*A\)">\(A^*A\)</span>, and explain why Theorem 3.1 still applies although this full product is not pseudodifferential.</p>
+<p><strong>Solution.</strong> Its relation is the disjoint union of the identity and the half-turn graph. Each is locally a canonical graph, and their kernel supports are disjoint base diagonals. Since <span class="math" data-tex="\(T_\pi^*=T_\pi\)">\(T_\pi^*=T_\pi\)</span> and <span class="math" data-tex="\(T_\pi^2=I\)">\(T_\pi^2=I\)</span>,
+<span class="math math-display" data-tex="\[
+A^*A=(I+T_\pi)^2=2I+2T_\pi.
+\]">\[
+A^*A=(I+T_\pi)^2=2I+2T_\pi.
+\]</span>
+The half-turn kernel is singular away from the ordinary diagonal, so this full product is not a PDO. The graph-continuity proof estimates the two graph pieces separately and sums the bounds. On Fourier modes, <span class="math" data-tex="\(A e_k=(1+(-1)^k)e_k\)">\(A e_k=(1+(-1)^k)e_k\)</span>, giving norm two. The zero action on odd modes is consistent with its two different graph pieces; it does not turn their full relation into the identity graph.</p>
+<p><strong>Exercise 9.6 (exact Egorov and the density correction; advanced).</strong> For (8.3), compute <span class="math" data-tex="\(B D_x A\)">\(B D_x A\)</span> directly, its principal and subprincipal symbols, and its formal symmetry on compact smooth half densities on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>.</p>
+<p><strong>Solution.</strong> Differentiate <span class="math" data-tex="\(e^{x/2}u(e^x)\)">\(e^{x/2}u(e^x)\)</span>: its <span class="math" data-tex="\(D_x\)">\(D_x\)</span> derivative is
+<span class="math" data-tex="\(-i e^{x/2}(u(e^x)/2+e^xu&#x27;(e^x))\)">\(-i e^{x/2}(u(e^x)/2+e^xu&#x27;(e^x))\)</span>. Multiplying by <span class="math" data-tex="\(y^{-1/2}\)">\(y^{-1/2}\)</span> and substituting <span class="math" data-tex="\(x=\log y\)">\(x=\log y\)</span> gives <span class="math" data-tex="\(yD_yu-iu/2\)">\(yD_yu-iu/2\)</span>. The principal symbol is <span class="math" data-tex="\(y\eta\)">\(y\eta\)</span>, the left next coefficient is <span class="math" data-tex="\(-i/2\)">\(-i/2\)</span>, and the mixed derivative correction is <span class="math" data-tex="\(+i/2\)">\(+i/2\)</span>, so the subprincipal symbol is zero. Moreover
+<span class="math" data-tex="\(yD_y-i/2=\frac12(yD_y+D_yy)\)">\(yD_y-i/2=\frac12(yD_y+D_yy)\)</span>. Integration by parts on compact supports shows that this expression is formally symmetric, as also follows from unitary conjugation of the formally symmetric <span class="math" data-tex="\(D_x\)">\(D_x\)</span>.</p>
+<p><strong>Exercise 9.7 (retain the noninverse coefficient; intermediate).</strong> In the exact model replace <span class="math" data-tex="\(B\)">\(B\)</span> by <span class="math" data-tex="\(2B\)">\(2B\)</span>. For <span class="math" data-tex="\(P=D_x\)">\(P=D_x\)</span>, give the symbol of <span class="math" data-tex="\((2B)PA\)">\((2B)PA\)</span>. Explain which hypothesis would have been needed to omit the factor two.</p>
+<p><strong>Solution.</strong> Now <span class="math" data-tex="\((2B)A=2I\)">\((2B)A=2I\)</span>, so <span class="math" data-tex="\(c=2\)">\(c=2\)</span>. The principal symbol of <span class="math" data-tex="\((2B)D_xA\)">\((2B)D_xA\)</span> is <span class="math" data-tex="\(2y\eta\)">\(2y\eta\)</span>; the full operator is <span class="math" data-tex="\(2yD_y-i\)">\(2yD_y-i\)</span>. Formula (7.2) gives exactly <span class="math" data-tex="\(c(p\circ\chi)=2y\eta\)">\(c(p\circ\chi)=2y\eta\)</span>. To omit the coefficient in the principal-symbol formula, require <span class="math" data-tex="\(c=\sigma_0(BA)=1\)">\(c=\sigma_0(BA)=1\)</span> in the region, equivalently <span class="math" data-tex="\(BA-I\in\Psi^{-1}\)">\(BA-I\in\Psi^{-1}\)</span> there. A microlocally smoothing error is sufficient for this normalization, but is stronger than necessary. Proper support and the inverse canonical relation alone do not impose that symbol identity.</p>
+<p><strong>Exercise 9.8 (ordered matrix transport; advanced).</strong> On two-component half densities on the circle, take <span class="math" data-tex="\(A=S\)">\(A=S\)</span>, <span class="math" data-tex="\(B=S^{-1}\)">\(B=S^{-1}\)</span>, and <span class="math" data-tex="\(P=\operatorname{diag}(1,2)D_x\)">\(P=\operatorname{diag}(1,2)D_x\)</span>, where
+<span class="math math-display" data-tex="\[
+S=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}.
+\]">\[
+S=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}.
+\]</span>
+Compute <span class="math" data-tex="\(BPA\)">\(BPA\)</span> and its principal symbol. Explain why the scalar simplification (7.2) cannot be used for this matrix <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Solution.</strong> The graph is identity and the constant matrix commutes with <span class="math" data-tex="\(D_x\)">\(D_x\)</span>, so the full operator is
+<span class="math math-display" data-tex="\[
+S^{-1}\operatorname{diag}(1,2)S D_x
+=\begin{pmatrix}1&amp;-1\\0&amp;2\end{pmatrix}D_x.
+\]">\[
+S^{-1}\operatorname{diag}(1,2)S D_x
+=\begin{pmatrix}1&amp;-1\\0&amp;2\end{pmatrix}D_x.
+\]</span>
+Its symbol is the displayed matrix times <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Although <span class="math" data-tex="\(BA=I\)">\(BA=I\)</span>, conjugation by <span class="math" data-tex="\(S\)">\(S\)</span> changes the matrix principal symbol. The ordered product <span class="math" data-tex="\(\beta p\alpha\)">\(\beta p\alpha\)</span> is therefore required. Scalar <span class="math" data-tex="\(p\)">\(p\)</span> commutes with the bundle maps, which is the step used in (7.2) and fails here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Hörmander IV, §25.3] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators</em>, Springer, 1985, Theorem 25.3.1, Corollary 25.3.2, Proposition 25.3.3, Definition 25.3.4 and Theorem 25.3.5.</li>
+</ul>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).</em></p>
+<footer><p>Original text: CC0.</p><p><a href="src/graph-operators-continuity-and-egorov.md">Editable original Markdown</a>. Source commit 39ee5c0c073550633578b12a80111fc27c86d250.</p></footer></main></body></html>

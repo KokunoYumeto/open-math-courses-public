@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyclotomic, quadratic and Kummer extensions of local fields · Local fields</title>
+<meta name="description" content="A lesson of the course Local fields. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-12.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Local fields</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by GPT-6.1 Sol at Ultra. Independent full-lesson AI review of this version is not yet recorded.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<article class="lesson">
+<h1 id="cyclotomic-quadratic-and-kummer-extensions-of-local-fields">Cyclotomic, quadratic and Kummer extensions of local fields</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).</em></p>
+<p>We finish with extensions whose defining equations reveal their ramification. Roots of unity split into an unramified prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> part and a totally ramified <span class="math" data-tex="\(p\)">\(p\)</span>-power part. Quadratic extensions can be read from square classes, but the integral generator changes in the unramified <span class="math" data-tex="\(2\)">\(2\)</span>-adic case. For tame Kummer extensions, the valuation of the radicand determines the ramification index exactly.</p>
+<p>We use <strong>Ramification groups and the different of a local extension</strong> for cyclotomic <span class="math" data-tex="\(p\)">\(p\)</span>-power degrees and differents, and <strong>The multiplicative group of a local field</strong> for the unit filtration. The square criteria and unramified constructions come from the earlier lessons named in the precise imports below.</p>
+<h2 id="1-two-kinds-of-cyclotomic-extension">1. Two kinds of cyclotomic extension</h2>
+<p><strong>Proposition 1.1.</strong> Let <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span> be prime to <span class="math" data-tex="\(p\)">\(p\)</span>, and let <span class="math" data-tex="\(\zeta_m\)">\(\zeta_m\)</span> be primitive of order <span class="math" data-tex="\(m\)">\(m\)</span>. Then
+<span class="math math-display" data-tex="\[
+\mathbf Q_p(\zeta_m)/\mathbf Q_p
+\]">\[
+\mathbf Q_p(\zeta_m)/\mathbf Q_p
+\]</span>
+is unramified of degree <span class="math" data-tex="\(r=\operatorname{ord}_m(p)\)">\(r=\operatorname{ord}_m(p)\)</span>, the least positive integer with <span class="math" data-tex="\(p^r\equiv1\pmod m\)">\(p^r\equiv1\pmod m\)</span>. Its Galois group is cyclic of order <span class="math" data-tex="\(r\)">\(r\)</span>, with arithmetic Frobenius <span class="math" data-tex="\(\zeta_m\mapsto\zeta_m^p\)">\(\zeta_m\mapsto\zeta_m^p\)</span>. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the extension is trivial of degree one.</p>
+<p>For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, the extension
+<span class="math math-display" data-tex="\[
+L_n=\mathbf Q_p(\zeta_{p^n})
+\]">\[
+L_n=\mathbf Q_p(\zeta_{p^n})
+\]</span>
+is totally ramified of degree <span class="math" data-tex="\(N=(p-1)p^{n-1}\)">\(N=(p-1)p^{n-1}\)</span>, has uniformizer <span class="math" data-tex="\(1-\zeta_{p^n}\)">\(1-\zeta_{p^n}\)</span>, and has Galois group
+<span class="math math-display" data-tex="\[
+(\mathbf Z/p^n\mathbf Z)^\times,\qquad
+a: \zeta_{p^n}\longmapsto\zeta_{p^n}^a.
+\tag{1.1}
+\]">\[
+(\mathbf Z/p^n\mathbf Z)^\times,\qquad
+a: \zeta_{p^n}\longmapsto\zeta_{p^n}^a.
+\tag{1.1}
+\]</span>
+Its different exponent is <span class="math" data-tex="\(np^n-(n+1)p^{n-1}\)">\(np^n-(n+1)p^{n-1}\)</span>.</p>
+<p><em>Proof.</em> For the prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> statement, reduction is injective on <span class="math" data-tex="\(m\)">\(m\)</span>-th roots of unity, by uniqueness of their simple-root Hensel lifts. The reduction of a primitive root therefore still has order <span class="math" data-tex="\(m\)">\(m\)</span>. A finite field <span class="math" data-tex="\(\mathbf F_{p^s}\)">\(\mathbf F_{p^s}\)</span> contains such a root exactly when <span class="math" data-tex="\(m\mid p^s-1\)">\(m\mid p^s-1\)</span>; its multiplicative group is cyclic. Thus the residue field generated by that root has degree <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>The unramified extension of degree <span class="math" data-tex="\(r\)">\(r\)</span> contains all the Hensel lifts of the <span class="math" data-tex="\(m\)">\(m\)</span>-th residue roots. It contains <span class="math" data-tex="\(\zeta_m\)">\(\zeta_m\)</span>, so the field generated by <span class="math" data-tex="\(\zeta_m\)">\(\zeta_m\)</span> is unramified and has degree at most <span class="math" data-tex="\(r\)">\(r\)</span>. Its residue field already has degree <span class="math" data-tex="\(r\)">\(r\)</span>, forcing equality. The unramified correspondence makes its group cyclic, and uniqueness of lifts changes the residue Frobenius action into <span class="math" data-tex="\(\zeta_m\mapsto\zeta_m^p\)">\(\zeta_m\mapsto\zeta_m^p\)</span>.</p>
+<p>For the <span class="math" data-tex="\(p\)">\(p\)</span>-power statement, Proposition 5.1 of <strong>Ramification groups and the different of a local extension</strong> proves that <span class="math" data-tex="\(\Phi_{p^n}(1+Y)\)">\(\Phi_{p^n}(1+Y)\)</span> is Eisenstein, gives the degree and full exponent group, and computes the different. Its uniformizer <span class="math" data-tex="\(\zeta_{p^n}-1\)">\(\zeta_{p^n}-1\)</span> differs from the one here by a unit <span class="math" data-tex="\(-1\)">\(-1\)</span>, so all assertions follow with the stated sign convention. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>More generally, write an arbitrary positive order as <span class="math" data-tex="\(p^n m\)">\(p^n m\)</span>, <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>. Its root field is the compositum of these two root fields. The unramified and totally ramified fields intersect only in <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span>, since an intermediate field that is both has degree one. Since both are Galois, their compositum has the product Galois group, ramification index <span class="math" data-tex="\((p-1)p^{n-1}\)">\((p-1)p^{n-1}\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, and residue degree <span class="math" data-tex="\(\operatorname{ord}_m(p)\)">\(\operatorname{ord}_m(p)\)</span> for <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>; a missing factor has degree one. This follows also by adjoining the Eisenstein <span class="math" data-tex="\(p\)">\(p\)</span>-power generator over the unramified field, where <span class="math" data-tex="\(p\)">\(p\)</span> remains a uniformizer.</p>
+<p><strong>Example 1.2.</strong> The field <span class="math" data-tex="\(\mathbf Q_3(\zeta_9)\)">\(\mathbf Q_3(\zeta_9)\)</span> has degree <span class="math" data-tex="\(6\)">\(6\)</span> and is totally ramified. Its Galois group is <span class="math" data-tex="\((\mathbf Z/9\mathbf Z)^\times\)">\((\mathbf Z/9\mathbf Z)^\times\)</span>, cyclic of order <span class="math" data-tex="\(6\)">\(6\)</span>, and its different exponent is <span class="math" data-tex="\(2\cdot9-3\cdot3=9\)">\(2\cdot9-3\cdot3=9\)</span>. In contrast, <span class="math" data-tex="\(\mathbf Q_3(\zeta_8)\)">\(\mathbf Q_3(\zeta_8)\)</span> is unramified of degree <span class="math" data-tex="\(2\)">\(2\)</span>, since <span class="math" data-tex="\(3^2\equiv1\pmod8\)">\(3^2\equiv1\pmod8\)</span> and <span class="math" data-tex="\(3\not\equiv1\pmod8\)">\(3\not\equiv1\pmod8\)</span>.</p>
+<h2 id="2-an-elementary-norm-and-a-class-field-theoretic-statement">2. An elementary norm and a class-field-theoretic statement</h2>
+<p><strong>Proposition 2.1.</strong> With <span class="math" data-tex="\(L_n\)">\(L_n\)</span> as above,
+<span class="math math-display" data-tex="\[
+N_{L_n/\mathbf Q_p}(1-\zeta_{p^n})=p,
+\qquad
+[\mathbf Q_p^\times:p^{\mathbf Z}(1+p^n\mathbf Z_p)]
+=(p-1)p^{n-1}.
+\tag{2.1}
+\]">\[
+N_{L_n/\mathbf Q_p}(1-\zeta_{p^n})=p,
+\qquad
+[\mathbf Q_p^\times:p^{\mathbf Z}(1+p^n\mathbf Z_p)]
+=(p-1)p^{n-1}.
+\tag{2.1}
+\]</span></p>
+<p><em>Proof.</em> The conjugates of <span class="math" data-tex="\(\zeta_{p^n}\)">\(\zeta_{p^n}\)</span> are all the primitive roots. Their product of differences from <span class="math" data-tex="\(1\)">\(1\)</span> is
+<span class="math math-display" data-tex="\[
+\prod_{a\in(\mathbf Z/p^n\mathbf Z)^\times}(1-\zeta_{p^n}^a)
+=\Phi_{p^n}(1)
+=\sum_{j=0}^{p-1}1=p.
+\]">\[
+\prod_{a\in(\mathbf Z/p^n\mathbf Z)^\times}(1-\zeta_{p^n}^a)
+=\Phi_{p^n}(1)
+=\sum_{j=0}^{p-1}1=p.
+\]</span>
+This is the norm, with its exact sign.</p>
+<p>The decomposition <span class="math" data-tex="\(\mathbf Q_p^\times=p^{\mathbf Z}\times\mathbf Z_p^\times\)">\(\mathbf Q_p^\times=p^{\mathbf Z}\times\mathbf Z_p^\times\)</span> reduces the index to that of <span class="math" data-tex="\(1+p^n\mathbf Z_p\)">\(1+p^n\mathbf Z_p\)</span> in <span class="math" data-tex="\(\mathbf Z_p^\times\)">\(\mathbf Z_p^\times\)</span>. The first residue quotient has order <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, and each subsequent quotient has order <span class="math" data-tex="\(p\)">\(p\)</span>. There are <span class="math" data-tex="\(n-1\)">\(n-1\)</span> subsequent quotients, proving the index. For <span class="math" data-tex="\(p=2,n=1\)">\(p=2,n=1\)</span>, the index is one, as it should be for the trivial extension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The stronger equality is stated here with its precise classical locator:
+<span class="math math-display" data-tex="\[
+N_{L_n/\mathbf Q_p}(L_n^\times)
+=p^{\mathbf Z}(1+p^n\mathbf Z_p).
+\tag{2.2}
+\]">\[
+N_{L_n/\mathbf Q_p}(L_n^\times)
+=p^{\mathbf Z}(1+p^n\mathbf Z_p).
+\tag{2.2}
+\]</span>
+It is proved in <em>Class field theory</em>. For the multiplicative Lubin–Tate module over <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span>, with uniformizer <span class="math" data-tex="\(p\)">\(p\)</span>, the division field of level <span class="math" data-tex="\(n\)">\(n\)</span> is <span class="math" data-tex="\(L_n\)">\(L_n\)</span> (<a href="../NT-CFT/lubin-tate-division-fields.html#4-two-concrete-descriptions"><strong>Lubin–Tate division fields</strong></a>, Section 4, equation (16)). Corollary 9.2 of <a href="../NT-CFT/explicit-local-reciprocity-and-existence.html#corollary-9-2-norm-groups-of-the-explicit-fields"><strong>Explicit local reciprocity and the existence theorem</strong></a> says that its norm group is <span class="math" data-tex="\(\langle p\rangle U^{(n)}\)">\(\langle p\rangle U^{(n)}\)</span>, which is the right-hand side of (2.2). Proposition 2.1 alone does not prove (2.2): it exhibits the norm <span class="math" data-tex="\(p\)">\(p\)</span> and computes the candidate subgroup's index, without identifying the norms of all units. None of the ramification or quadratic proofs below assumes (2.2).</p>
+<h2 id="3-quadratic-extensions-from-square-classes">3. Quadratic extensions from square classes</h2>
+<p>First recall an elementary field fact. Over a field of characteristic different from <span class="math" data-tex="\(2\)">\(2\)</span>, every quadratic extension has the form <span class="math" data-tex="\(K(\sqrt a)\)">\(K(\sqrt a)\)</span> for a nonsquare <span class="math" data-tex="\(a\)">\(a\)</span>. Completing the square in a quadratic minimal polynomial proves this. Moreover,
+<span class="math math-display" data-tex="\[
+K(\sqrt a)=K(\sqrt b)
+\quad\Longleftrightarrow\quad a/b\in K^{\times2}
+\tag{3.1}
+\]">\[
+K(\sqrt a)=K(\sqrt b)
+\quad\Longleftrightarrow\quad a/b\in K^{\times2}
+\tag{3.1}
+\]</span>
+for nonsquares <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Indeed write <span class="math" data-tex="\(\sqrt b=x+y\sqrt a\)">\(\sqrt b=x+y\sqrt a\)</span>. The coefficient of <span class="math" data-tex="\(\sqrt a\)">\(\sqrt a\)</span> in its square is <span class="math" data-tex="\(2xy\)">\(2xy\)</span>, so <span class="math" data-tex="\(xy=0\)">\(xy=0\)</span>. Since <span class="math" data-tex="\(\sqrt b\notin K\)">\(\sqrt b\notin K\)</span>, <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span> and <span class="math" data-tex="\(x=0\)">\(x=0\)</span>; hence <span class="math" data-tex="\(b=ay^2\)">\(b=ay^2\)</span>. The converse is immediate.</p>
+<p><strong>Proposition 3.1 (all quadratic extensions and their discriminants).</strong> For odd <span class="math" data-tex="\(p\)">\(p\)</span>, choose a unit <span class="math" data-tex="\(u\)">\(u\)</span> with nonsquare residue. The three quadratic extensions of <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span> and their discriminant exponents are</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Ramification</th>
+<th>Discriminant exponent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q_p(\sqrt u)\)">\(\mathbf Q_p(\sqrt u)\)</span></td>
+<td>Unramified</td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q_p(\sqrt p)\)">\(\mathbf Q_p(\sqrt p)\)</span></td>
+<td>Totally ramified, tame</td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q_p(\sqrt{up})\)">\(\mathbf Q_p(\sqrt{up})\)</span></td>
+<td>Totally ramified, tame</td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the seven extensions are</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Integral generator</th>
+<th>Discriminant exponent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q_2(\sqrt5)\)">\(\mathbf Q_2(\sqrt5)\)</span></td>
+<td><span class="math" data-tex="\((1+\sqrt5)/2\)">\((1+\sqrt5)/2\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q_2(\sqrt{-1})\)">\(\mathbf Q_2(\sqrt{-1})\)</span></td>
+<td><span class="math" data-tex="\(\sqrt{-1}\)">\(\sqrt{-1}\)</span></td>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q_2(\sqrt3)\)">\(\mathbf Q_2(\sqrt3)\)</span></td>
+<td><span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span></td>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q_2(\sqrt{2u})\)">\(\mathbf Q_2(\sqrt{2u})\)</span>, <span class="math" data-tex="\(u\in\{1,-1,5,-5\}\)">\(u\in\{1,-1,5,-5\}\)</span></td>
+<td><span class="math" data-tex="\(\sqrt{2u}\)">\(\sqrt{2u}\)</span></td>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The first <span class="math" data-tex="\(2\)">\(2\)</span>-adic extension is unramified; the other six are totally ramified and wild. Also <span class="math" data-tex="\(\mathbf Q_2(\sqrt5)=\mathbf Q_2(\sqrt{-3})\)">\(\mathbf Q_2(\sqrt5)=\mathbf Q_2(\sqrt{-3})\)</span>.</p>
+<p><em>Proof.</em> The square criterion for odd <span class="math" data-tex="\(p\)">\(p\)</span> says that an element is a square exactly when its valuation is even and its unit residue is a square. Thus the four square classes have representatives <span class="math" data-tex="\(1,u,p,up\)">\(1,u,p,up\)</span>. Equation (3.1) proves completeness and distinctness of the three nontrivial extensions.</p>
+<p>The polynomial <span class="math" data-tex="\(X^2-u\)">\(X^2-u\)</span> has irreducible separable reduction, giving the unramified quadratic field and its integral basis <span class="math" data-tex="\(1,\sqrt u\)">\(1,\sqrt u\)</span>. The other two polynomials are Eisenstein; they give total quadratic fields with integral bases <span class="math" data-tex="\(1,\sqrt p\)">\(1,\sqrt p\)</span> and <span class="math" data-tex="\(1,\sqrt{up}\)">\(1,\sqrt{up}\)</span>. For a quadratic integral basis <span class="math" data-tex="\(1,\sqrt a\)">\(1,\sqrt a\)</span>, the trace determinant is <span class="math" data-tex="\(4a\)">\(4a\)</span>. Its valuation is zero for the unit <span class="math" data-tex="\(u\)">\(u\)</span> and one for <span class="math" data-tex="\(p,up\)">\(p,up\)</span>. Their degree <span class="math" data-tex="\(2\)">\(2\)</span> is prime to odd <span class="math" data-tex="\(p\)">\(p\)</span>, so the ramification is tame.</p>
+<p>At <span class="math" data-tex="\(2\)">\(2\)</span>, the square criterion says that <span class="math" data-tex="\(2^r w\)">\(2^r w\)</span>, with <span class="math" data-tex="\(w\)">\(w\)</span> an odd unit, is a square exactly when <span class="math" data-tex="\(r\)">\(r\)</span> is even and <span class="math" data-tex="\(w\equiv1\pmod8\)">\(w\equiv1\pmod8\)</span>. The eight square classes can therefore be represented by
+<span class="math math-display" data-tex="\[
+1,\ -1,\ 3,\ 5,\ 2,\ -2,\ 10,\ -10.
+\tag{3.2}
+\]">\[
+1,\ -1,\ 3,\ 5,\ 2,\ -2,\ 10,\ -10.
+\tag{3.2}
+\]</span>
+The four odd representatives have distinct residues <span class="math" data-tex="\(1,7,3,5\)">\(1,7,3,5\)</span> modulo <span class="math" data-tex="\(8\)">\(8\)</span>, and multiplying each class by <span class="math" data-tex="\(2\)">\(2\)</span> gives the four odd-valuation classes. For the residue-three class, <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(-5\)">\(-5\)</span> represent the same class. Equation (3.1) again proves there are exactly seven quadratic extensions.</p>
+<p>Let <span class="math" data-tex="\(\omega=(1+\sqrt5)/2\)">\(\omega=(1+\sqrt5)/2\)</span>. It satisfies
+<span class="math math-display" data-tex="\[
+\omega^2-\omega-1=0.
+\]">\[
+\omega^2-\omega-1=0.
+\]</span>
+The reduction <span class="math" data-tex="\(X^2+X+1\)">\(X^2+X+1\)</span> is irreducible over <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>, so this is the unramified quadratic extension, with integer ring <span class="math" data-tex="\(\mathbf Z_2[\omega]\)">\(\mathbf Z_2[\omega]\)</span>. Its basis discriminant is <span class="math" data-tex="\(5\)">\(5\)</span>, a unit. Furthermore <span class="math" data-tex="\((-3)/5\equiv1\pmod8\)">\((-3)/5\equiv1\pmod8\)</span>, so the square criterion and (3.1) give the claimed equality with <span class="math" data-tex="\(\mathbf Q_2(\sqrt{-3})\)">\(\mathbf Q_2(\sqrt{-3})\)</span>.</p>
+<p>For <span class="math" data-tex="\(a=-1\)">\(a=-1\)</span> or <span class="math" data-tex="\(3\)">\(3\)</span>, put <span class="math" data-tex="\(\pi=\sqrt a-1\)">\(\pi=\sqrt a-1\)</span>. Its equation is
+<span class="math math-display" data-tex="\[
+Y^2+2Y+(1-a)=0.
+\]">\[
+Y^2+2Y+(1-a)=0.
+\]</span>
+The constant coefficient is respectively <span class="math" data-tex="\(2\)">\(2\)</span> or <span class="math" data-tex="\(-2\)">\(-2\)</span>, so both polynomials are Eisenstein. Thus each field is totally ramified, with
+<span class="math" data-tex="\(\mathcal O_L=\mathbf Z_2[\pi]=\mathbf Z_2[\sqrt a]\)">\(\mathcal O_L=\mathbf Z_2[\pi]=\mathbf Z_2[\sqrt a]\)</span>.
+The discriminant <span class="math" data-tex="\(4a\)">\(4a\)</span> has exponent <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p>For <span class="math" data-tex="\(a=2u\)">\(a=2u\)</span>, <span class="math" data-tex="\(u\in\{1,-1,5,-5\}\)">\(u\in\{1,-1,5,-5\}\)</span>, the polynomial <span class="math" data-tex="\(X^2-2u\)">\(X^2-2u\)</span> is Eisenstein. Its root is a uniformizer and gives the full integer ring. The basis discriminant <span class="math" data-tex="\(8u\)">\(8u\)</span> has exponent <span class="math" data-tex="\(3\)">\(3\)</span>. These six fields have ramification index <span class="math" data-tex="\(2\)">\(2\)</span>, divisible by their residue characteristic, so are wild.</p>
+<p>These discriminant computations also check the different. In the ramified odd-unit <span class="math" data-tex="\(2\)">\(2\)</span>-adic fields, the derivative <span class="math" data-tex="\(2\sqrt a\)">\(2\sqrt a\)</span> has normalized upper value <span class="math" data-tex="\(2\)">\(2\)</span>; in the even-radicand fields it has value <span class="math" data-tex="\(2+1=3\)">\(2+1=3\)</span>. Each residue degree is one, so these are also the base discriminant exponents. In the unramified field the derivative <span class="math" data-tex="\(2\omega-1=\sqrt5\)">\(2\omega-1=\sqrt5\)</span> of the integral generator's polynomial is a unit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The integral generator in the first row matters: the power basis <span class="math" data-tex="\(1,\sqrt5\)">\(1,\sqrt5\)</span> has discriminant <span class="math" data-tex="\(20\)">\(20\)</span>, and is not an integral basis of that unramified extension.</p>
+<h2 id="4-tame-kummer-ramification">4. Tame Kummer ramification</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> now be any nonarchimedean local field, in either characteristic, with residue characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, and let <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> be prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Assume <span class="math" data-tex="\(\mu_n\subseteq K\)">\(\mu_n\subseteq K\)</span>. For <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>, choose <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(\alpha^n=a\)">\(\alpha^n=a\)</span>, and put <span class="math" data-tex="\(L=K(\alpha)\)">\(L=K(\alpha)\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> The extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is cyclic Galois of degree dividing <span class="math" data-tex="\(n\)">\(n\)</span>, and is tame. If <span class="math" data-tex="\(r=v_K(a)\)">\(r=v_K(a)\)</span>, then
+<span class="math math-display" data-tex="\[
+e(L/K)=\frac n{\gcd(n,r)}.
+\tag{4.1}
+\]">\[
+e(L/K)=\frac n{\gcd(n,r)}.
+\tag{4.1}
+\]</span>
+Here <span class="math" data-tex="\(\gcd(n,0)=n\)">\(\gcd(n,0)=n\)</span>. In particular,
+<span class="math math-display" data-tex="\[
+L/K\text{ is unramified}
+\quad\Longleftrightarrow\quad n\mid v_K(a)
+\quad\Longleftrightarrow\quad
+a\in U_K K^{\times n}.
+\tag{4.2}
+\]">\[
+L/K\text{ is unramified}
+\quad\Longleftrightarrow\quad n\mid v_K(a)
+\quad\Longleftrightarrow\quad
+a\in U_K K^{\times n}.
+\tag{4.2}
+\]</span></p>
+<p><em>Proof.</em> The polynomial <span class="math" data-tex="\(X^n-a\)">\(X^n-a\)</span> is separable, and all its roots <span class="math" data-tex="\(\zeta\alpha\)">\(\zeta\alpha\)</span> lie in <span class="math" data-tex="\(L\)">\(L\)</span>, because <span class="math" data-tex="\(\mu_n\subseteq K\)">\(\mu_n\subseteq K\)</span>. Thus it splits there and <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is Galois. The ratio map
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(L/K)\longrightarrow\mu_n,\qquad
+\sigma\longmapsto\sigma(\alpha)/\alpha
+\]">\[
+\operatorname{Gal}(L/K)\longrightarrow\mu_n,\qquad
+\sigma\longmapsto\sigma(\alpha)/\alpha
+\]</span>
+is an injective homomorphism, since its ratios lie in <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> generates <span class="math" data-tex="\(L\)">\(L\)</span>. It proves cyclicity and that the degree divides <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>Write <span class="math" data-tex="\(a=\pi^r u\)">\(a=\pi^r u\)</span>, with <span class="math" data-tex="\(u\in U_K\)">\(u\in U_K\)</span>. At a finite unramified level <span class="math" data-tex="\(K&#x27;/K\)">\(K&#x27;/K\)</span>, the residue unit <span class="math" data-tex="\(\bar u\)">\(\bar u\)</span> has an <span class="math" data-tex="\(n\)">\(n\)</span>-th root. Simple-root Hensel lifting then gives <span class="math" data-tex="\(\beta\in U_{K&#x27;}\)">\(\beta\in U_{K&#x27;}\)</span> with <span class="math" data-tex="\(\beta^n=u\)">\(\beta^n=u\)</span>. The field <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> contains <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>. Choosing <span class="math" data-tex="\(\rho^n=\pi\)">\(\rho^n=\pi\)</span>, we obtain
+<span class="math math-display" data-tex="\[
+K&#x27;L=K&#x27;(\rho^r),
+\tag{4.3}
+\]">\[
+K&#x27;L=K&#x27;(\rho^r),
+\tag{4.3}
+\]</span>
+since <span class="math" data-tex="\(\alpha/(\beta\rho^r)\)">\(\alpha/(\beta\rho^r)\)</span> is an <span class="math" data-tex="\(n\)">\(n\)</span>-th root of unity.</p>
+<p>Put <span class="math" data-tex="\(g=\gcd(n,r)\)">\(g=\gcd(n,r)\)</span>, <span class="math" data-tex="\(e_0=n/g\)">\(e_0=n/g\)</span>, <span class="math" data-tex="\(r_0=r/g\)">\(r_0=r/g\)</span>. The element <span class="math" data-tex="\(\gamma=\rho^g\)">\(\gamma=\rho^g\)</span> satisfies <span class="math" data-tex="\(\gamma^{e_0}=\pi\)">\(\gamma^{e_0}=\pi\)</span>, and <span class="math" data-tex="\(\rho^r=\gamma^{r_0}\)">\(\rho^r=\gamma^{r_0}\)</span>. As <span class="math" data-tex="\(\gcd(e_0,r_0)=1\)">\(\gcd(e_0,r_0)=1\)</span>, integers <span class="math" data-tex="\(A,B\)">\(A,B\)</span> with <span class="math" data-tex="\(A r_0+B e_0=1\)">\(A r_0+B e_0=1\)</span> give
+<span class="math" data-tex="\(\gamma=(\gamma^{r_0})^A\pi^B\)">\(\gamma=(\gamma^{r_0})^A\pi^B\)</span>.
+Thus the fields in (4.3) equal <span class="math" data-tex="\(K&#x27;(\gamma)\)">\(K&#x27;(\gamma)\)</span>. The Eisenstein polynomial <span class="math" data-tex="\(X^{e_0}-\pi\)">\(X^{e_0}-\pi\)</span> shows that this field is totally ramified of degree <span class="math" data-tex="\(e_0\)">\(e_0\)</span> over <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>; this includes <span class="math" data-tex="\(e_0=1\)">\(e_0=1\)</span>.</p>
+<p>The extension <span class="math" data-tex="\(K&#x27;L/L\)">\(K&#x27;L/L\)</span> is unramified. Indeed the finite unramified field <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> is generated by prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> roots of unity, and adjoining those roots to the local field <span class="math" data-tex="\(L\)">\(L\)</span> again gives an unramified extension, by the unramified roots-of-unity description. Multiplication of ramification indices in the two towers therefore gives
+<span class="math math-display" data-tex="\[
+e(L/K)=e(K&#x27;L/K)=e(K&#x27;L/K&#x27;)=e_0.
+\]">\[
+e(L/K)=e(K&#x27;L/K)=e(K&#x27;L/K&#x27;)=e_0.
+\]</span>
+This proves (4.1). Since <span class="math" data-tex="\(e_0\mid n\)">\(e_0\mid n\)</span>, it is prime to <span class="math" data-tex="\(p\)">\(p\)</span>; residue fields are finite, so the extension is tame.</p>
+<p>It is unramified exactly when <span class="math" data-tex="\(e_0=1\)">\(e_0=1\)</span>, or <span class="math" data-tex="\(n\mid r\)">\(n\mid r\)</span>. Finally <span class="math" data-tex="\(a\in U_K K^{\times n}\)">\(a\in U_K K^{\times n}\)</span> exactly when its valuation is divisible by <span class="math" data-tex="\(n\)">\(n\)</span>: divide it by <span class="math" data-tex="\(\pi^{nk}\)">\(\pi^{nk}\)</span> when <span class="math" data-tex="\(r=nk\)">\(r=nk\)</span>, and use valuation for the converse. This proves (4.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The degree need not be <span class="math" data-tex="\(n\)">\(n\)</span>: a radicand already an <span class="math" data-tex="\(n\)">\(n\)</span>-th power gives the trivial extension. The formula concerns the ramification index and retains that case.</p>
+<p>For characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, the different kind of cyclic extension is stated from [Stacks, Tag 09I7]: adjoining a root of <span class="math" data-tex="\(X^p-X-a\)">\(X^p-X-a\)</span> gives a Galois extension of degree <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(p\)">\(p\)</span>, with automorphisms acting by additions from <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>; conversely every cyclic degree-<span class="math" data-tex="\(p\)">\(p\)</span> extension has such a generator. This Artin–Schreier theorem is a cited comparison, not a prerequisite of Proposition 4.1.</p>
+<h2 id="5-a-norm-obstruction-at-two">5. A norm obstruction at two</h2>
+<p>In <span class="math" data-tex="\(\mathbf Q_2(i)\)">\(\mathbf Q_2(i)\)</span>,
+<span class="math math-display" data-tex="\[
+N(x+iy)=x^2+y^2.
+\]">\[
+N(x+iy)=x^2+y^2.
+\]</span>
+Thus <span class="math" data-tex="\(5=1^2+2^2\)">\(5=1^2+2^2\)</span> is a norm. To show that <span class="math" data-tex="\(3\)">\(3\)</span> is not a norm, the possibility of denominators must be ruled out before reducing modulo <span class="math" data-tex="\(4\)">\(4\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(x^2+y^2=3\)">\(x^2+y^2=3\)</span>, and let <span class="math" data-tex="\(m=\min(v_2(x),v_2(y))\)">\(m=\min(v_2(x),v_2(y))\)</span>. Neither coordinate need individually be nonzero, but the minimum is finite. After factoring out <span class="math" data-tex="\(2^m\)">\(2^m\)</span>, at least one scaled coordinate is odd. If exactly one is odd, the scaled sum has valuation zero; if both are odd, their squares sum to <span class="math" data-tex="\(2\)">\(2\)</span> modulo <span class="math" data-tex="\(8\)">\(8\)</span>, so it has valuation one. Hence the valuation of the original sum is <span class="math" data-tex="\(2m\)">\(2m\)</span> or <span class="math" data-tex="\(2m+1\)">\(2m+1\)</span>. If <span class="math" data-tex="\(m&lt;0\)">\(m&lt;0\)</span>, both are negative, contradicting <span class="math" data-tex="\(v_2(3)=0\)">\(v_2(3)=0\)</span>.</p>
+<p>Therefore <span class="math" data-tex="\(x,y\in\mathbf Z_2\)">\(x,y\in\mathbf Z_2\)</span>. Their squares modulo <span class="math" data-tex="\(4\)">\(4\)</span> lie in <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>, whose two-element sums cannot equal <span class="math" data-tex="\(3\)">\(3\)</span>. This contradiction proves that <span class="math" data-tex="\(3\)">\(3\)</span> is not a norm, without using reciprocity or Hilbert symbols.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li>
+<p>Show that <span class="math" data-tex="\(\mathbf Q_p(\zeta_p)=\mathbf Q_p((-p)^{1/(p-1)})\)">\(\mathbf Q_p(\zeta_p)=\mathbf Q_p((-p)^{1/(p-1)})\)</span>, including <span class="math" data-tex="\(p=2\)">\(p=2\)</span>.</p>
+</li>
+<li>
+<p>List the quadratic extensions of <span class="math" data-tex="\(\mathbf Q_3\)">\(\mathbf Q_3\)</span>, giving integral bases and discriminant exponents.</p>
+</li>
+<li>
+<p>Prove that <span class="math" data-tex="\(5\)">\(5\)</span> is a norm from <span class="math" data-tex="\(\mathbf Q_2(i)\)">\(\mathbf Q_2(i)\)</span>, and <span class="math" data-tex="\(3\)">\(3\)</span> is not.</p>
+</li>
+<li>
+<p>Prove the full <span class="math" data-tex="\(2\)">\(2\)</span>-adic quadratic list in Proposition 3.1, with its discriminant exponents.</p>
+</li>
+</ol>
+<h2 id="7-complete-solutions">7. Complete solutions</h2>
+<p><strong>Solution 1.</strong> Put <span class="math" data-tex="\(\delta=\zeta_p-1\)">\(\delta=\zeta_p-1\)</span>. Its translated cyclotomic equation gives
+<span class="math math-display" data-tex="\[
+\delta^{p-1}=-p\,u,\qquad
+u=1+\sum_{j=1}^{p-2}\frac{\binom p{j+1}}p\delta^j.
+\]">\[
+\delta^{p-1}=-p\,u,\qquad
+u=1+\sum_{j=1}^{p-2}\frac{\binom p{j+1}}p\delta^j.
+\]</span>
+The displayed coefficients are integral and <span class="math" data-tex="\(u\equiv1\)">\(u\equiv1\)</span> in the upper residue field. Since <span class="math" data-tex="\(p\nmid p-1\)">\(p\nmid p-1\)</span>, Hensel lifting at the residue root <span class="math" data-tex="\(1\)">\(1\)</span> gives <span class="math" data-tex="\(b\equiv1\)">\(b\equiv1\)</span> with <span class="math" data-tex="\(b^{p-1}=u\)">\(b^{p-1}=u\)</span>. Hence <span class="math" data-tex="\(\gamma=\delta/b\)">\(\gamma=\delta/b\)</span> satisfies <span class="math" data-tex="\(\gamma^{p-1}=-p\)">\(\gamma^{p-1}=-p\)</span>. It is an upper uniformizer, so it generates the totally ramified field; alternatively its Eisenstein equation has the same degree <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. Thus the two fields coincide. All choices of the radical differ by <span class="math" data-tex="\(\mu_{p-1}\subseteq\mathbf Q_p\)">\(\mu_{p-1}\subseteq\mathbf Q_p\)</span>, so the field is independent of that choice. At <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the sum is empty, <span class="math" data-tex="\(\delta=-2\)">\(\delta=-2\)</span>, and both fields are simply <span class="math" data-tex="\(\mathbf Q_2\)">\(\mathbf Q_2\)</span>.</p>
+<p><strong>Solution 2.</strong> The nonsquare unit class in <span class="math" data-tex="\(\mathbf Q_3\)">\(\mathbf Q_3\)</span> can be represented by <span class="math" data-tex="\(-1\)">\(-1\)</span>. The four square classes are <span class="math" data-tex="\(1,-1,3,-3\)">\(1,-1,3,-3\)</span>, so the three quadratic fields are
+<span class="math math-display" data-tex="\[
+\mathbf Q_3(i),\quad
+\mathbf Q_3(\sqrt3),\quad
+\mathbf Q_3(\sqrt{-3}).
+\]">\[
+\mathbf Q_3(i),\quad
+\mathbf Q_3(\sqrt3),\quad
+\mathbf Q_3(\sqrt{-3}).
+\]</span>
+The polynomial <span class="math" data-tex="\(X^2+1\)">\(X^2+1\)</span> has irreducible separable reduction over <span class="math" data-tex="\(\mathbf F_3\)">\(\mathbf F_3\)</span>, so the first is unramified with integral basis <span class="math" data-tex="\(1,i\)">\(1,i\)</span> and discriminant <span class="math" data-tex="\(-4\)">\(-4\)</span>, of exponent zero. The other polynomials <span class="math" data-tex="\(X^2-3\)">\(X^2-3\)</span> and <span class="math" data-tex="\(X^2+3\)">\(X^2+3\)</span> are Eisenstein, so their roots give integral bases and total quadratic extensions. Their basis discriminants are <span class="math" data-tex="\(12\)">\(12\)</span> and <span class="math" data-tex="\(-12\)">\(-12\)</span>, each with exponent one. Equation (3.1) and the square criterion prove distinctness and completeness.</p>
+<p><strong>Solution 3.</strong> Multiplying <span class="math" data-tex="\(1+2i\)">\(1+2i\)</span> by its conjugate gives <span class="math" data-tex="\(5\)">\(5\)</span>. Suppose instead that <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span> had norm <span class="math" data-tex="\(3\)">\(3\)</span>. With <span class="math" data-tex="\(m=\min(v_2(x),v_2(y))\)">\(m=\min(v_2(x),v_2(y))\)</span>, scale the coordinates by <span class="math" data-tex="\(2^{-m}\)">\(2^{-m}\)</span>; their squared sum has valuation zero if just one is odd and one if both are odd. Thus <span class="math" data-tex="\(v_2(x^2+y^2)\)">\(v_2(x^2+y^2)\)</span> is <span class="math" data-tex="\(2m\)">\(2m\)</span> or <span class="math" data-tex="\(2m+1\)">\(2m+1\)</span>. A negative <span class="math" data-tex="\(m\)">\(m\)</span> would make that valuation negative, impossible for <span class="math" data-tex="\(3\)">\(3\)</span>. Both coordinates are therefore integral. Squares modulo <span class="math" data-tex="\(4\)">\(4\)</span> are zero or one, and the sum of two cannot be three. This contradiction excludes every possible norm representation, including those with denominators.</p>
+<p><strong>Solution 4.</strong> For a nonzero <span class="math" data-tex="\(2\)">\(2\)</span>-adic number, remove an even power of <span class="math" data-tex="\(2\)">\(2\)</span>. Its remaining valuation is zero or one. Remove an odd-unit square as well; an odd unit is a square exactly when it is one modulo <span class="math" data-tex="\(8\)">\(8\)</span>. The four distinct odd unit classes are represented by <span class="math" data-tex="\(1,-1,3,5\)">\(1,-1,3,5\)</span>; multiplying them by <span class="math" data-tex="\(2\)">\(2\)</span> gives four more distinct classes. The class of <span class="math" data-tex="\(3\)">\(3\)</span> equals that of <span class="math" data-tex="\(-5\)">\(-5\)</span>, since their ratio is one modulo <span class="math" data-tex="\(8\)">\(8\)</span>. Thus the nonidentity classes are exactly those in the <span class="math" data-tex="\(2\)">\(2\)</span>-adic table.</p>
+<p>Every quadratic field arises by adjoining a square root of one of them, by completing the square; equation (3.1) proves these seven fields are distinct. For <span class="math" data-tex="\(5\)">\(5\)</span>, use <span class="math" data-tex="\(\omega=(1+\sqrt5)/2\)">\(\omega=(1+\sqrt5)/2\)</span>, whose polynomial <span class="math" data-tex="\(X^2-X-1\)">\(X^2-X-1\)</span> has irreducible reduction <span class="math" data-tex="\(X^2+X+1\)">\(X^2+X+1\)</span>. It is unramified, has integer ring <span class="math" data-tex="\(\mathbf Z_2[\omega]\)">\(\mathbf Z_2[\omega]\)</span>, and discriminant <span class="math" data-tex="\(5\)">\(5\)</span>.</p>
+<p>For <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span>, the shifted roots <span class="math" data-tex="\(\sqrt a-1\)">\(\sqrt a-1\)</span> satisfy the Eisenstein polynomials <span class="math" data-tex="\(Y^2+2Y+2\)">\(Y^2+2Y+2\)</span> and <span class="math" data-tex="\(Y^2+2Y-2\)">\(Y^2+2Y-2\)</span>. The rings generated by the shifted and original roots are equal, so <span class="math" data-tex="\(1,\sqrt a\)">\(1,\sqrt a\)</span> are integral bases. Their discriminants <span class="math" data-tex="\(-4\)">\(-4\)</span> and <span class="math" data-tex="\(12\)">\(12\)</span> have exponent two.</p>
+<p>The four remaining radicands <span class="math" data-tex="\(2,-2,10,-10\)">\(2,-2,10,-10\)</span> are <span class="math" data-tex="\(2u\)">\(2u\)</span> with <span class="math" data-tex="\(u\in\{1,-1,5,-5\}\)">\(u\in\{1,-1,5,-5\}\)</span>. Their polynomials <span class="math" data-tex="\(X^2-2u\)">\(X^2-2u\)</span> are Eisenstein, giving integral bases <span class="math" data-tex="\(1,\sqrt{2u}\)">\(1,\sqrt{2u}\)</span>. Each discriminant <span class="math" data-tex="\(8u\)">\(8u\)</span> has exponent three. All six ramified fields have <span class="math" data-tex="\(e=2\)">\(e=2\)</span> and <span class="math" data-tex="\(f=1\)">\(f=1\)</span>; the unramified field has <span class="math" data-tex="\(e=1,f=2\)">\(e=1,f=2\)</span>. Finally <span class="math" data-tex="\((-3)/5\equiv1\pmod8\)">\((-3)/5\equiv1\pmod8\)</span> proves <span class="math" data-tex="\(\mathbf Q_2(\sqrt5)=\mathbf Q_2(\sqrt{-3})\)">\(\mathbf Q_2(\sqrt5)=\mathbf Q_2(\sqrt{-3})\)</span>, as claimed.</p>
+<h2 id="8-what-this-lesson-does-not-prove">8. What this lesson does not prove</h2>
+<ul>
+<li>The cyclotomic <span class="math" data-tex="\(p\)">\(p\)</span>-power Eisenstein equation, its degree, Galois group, lower groups and different exponent are Proposition 5.1 of <strong>Ramification groups and the different of a local extension</strong>. Upper cyclotomic groups are Proposition 5.1 of <strong>Herbrand's function and the upper numbering</strong>; they are not needed for the elementary norm calculation.</li>
+<li>The odd-prime and <span class="math" data-tex="\(2\)">\(2\)</span>-adic square criteria and complete square-class representatives are Proposition 2.1 of <strong>Hensel's lemma, squares and roots of unity in p-adic fields</strong>. Simple-root lifting is its Corollary 1.2, and multiplicative residue lifts are Proposition 4.1.</li>
+<li>Unramified extensions correspond to finite residue extensions, and prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> roots of unity generate unramified fields: Theorem 2.1 and Corollary 3.1 of <strong>Unramified and totally ramified extensions</strong>. Its Theorem 5.1 gives the Eisenstein integral-basis theorem. The unit quotients used in (2.1) are Proposition 1.1 of <strong>The multiplicative group of a local field</strong>.</li>
+<li>The monogenic different is generated by the derivative of the minimal polynomial, and its ideal norm is the discriminant. The written programme proofs are <em>Number fields</em>, lesson 14, <strong>The different and the discriminant</strong>, Proposition 14.2 and Theorem 14.3, for a finite separable field extension with finite integral closure over a Dedekind base; the derivative formula additionally requires the full integral closure to be monogenic. A basis <span class="math" data-tex="\(1,\sqrt a\)">\(1,\sqrt a\)</span> has trace Gram matrix <span class="math" data-tex="\(\operatorname{diag}(2,2a)\)">\(\operatorname{diag}(2,2a)\)</span>, whose determinant <span class="math" data-tex="\(4a\)">\(4a\)</span> was used directly here.</li>
+<li>The full cyclotomic norm-group equality (2.2) is proved in <em>Class field theory</em>: Corollary 9.2 of <a href="../NT-CFT/explicit-local-reciprocity-and-existence.html#corollary-9-2-norm-groups-of-the-explicit-fields"><strong>Explicit local reciprocity and the existence theorem</strong></a>, applied to the multiplicative Lubin–Tate module of <a href="../NT-CFT/lubin-tate-division-fields.html#4-two-concrete-descriptions"><strong>Lubin–Tate division fields</strong></a>. Artin–Schreier theory has an accessible open proof at [Stacks, Tag 09I7]; it is cited as a comparison, not used by the Kummer ramification argument.</li>
+<li>The finite-field multiplicative group is cyclic by <a href="NT-LOC-03.html"><strong>Hensel's lemma, squares and roots of unity in p-adic fields</strong>, Lemma 4.0</a>. Stacks, Tag 09HX remains a comparison source. Finite-field Frobenius and extensions are supplied by the residue-field argument in <strong>Unramified and totally ramified extensions</strong>, Corollary 3.1. See also Milne, <em>Fields and Galois Theory</em>, Propositions 4.19–4.20 and 4.23. Multiplication of ramification indices and the finite-Galois intersection facts of <strong>Graduate Algebra</strong> are used in the compositum and Kummer arguments.</li>
+</ul>
+<h2 id="references">References</h2>
+<p>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, Chapter 6, “The basic results,” and Chapter 7.</p>
+<p><a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-section-Kummer">Stacks, Tag 09I6</a>, “Kummer extensions,” and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-section-Artin-Schreier">Tag 09I7</a>, “Artin–Schreier extensions.”</p>
+
+</article>
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-LOC-11.html">← The multiplicative group of a local field</a></span><a href="./">Course contents</a><span class="pager-next"><span></span></span></nav>
+<p class="small source-link"><a href="src/NT-LOC-12.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><span class="unlinked">GitHub repository</span><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

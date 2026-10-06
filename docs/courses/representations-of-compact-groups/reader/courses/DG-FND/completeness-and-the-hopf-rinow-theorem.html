@@ -1,0 +1,732 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Completeness and the Hopf–Rinow theorem</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="../representations-of-compact-groups/index.html">Representations of compact groups</a></nav></header><main id="main"><article class="math"><h1 id="completeness-and-the-hopf-rinow-theorem">Completeness and the Hopf–Rinow theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Draft; self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Original text is CC0 1.0; the attributed Clifton half-cylinder subsection retains CC BY 4.0.</em></p>
+<p>A geodesic is specified by a position and a velocity. A Cauchy sequence concerns only positions. On a Riemannian manifold these two kinds of completeness nevertheless agree. The link is positivity of the metric: constant geodesic speed controls the velocity whenever the position stays in a compact region. A second link is more surprising. Extending every geodesic from one point produces shortest geodesics and compact distance balls throughout the manifold.</p>
+<p>Read <a href="riemannian-connections-and-convex-neighbourhoods.html">Riemannian connections and convex neighbourhoods</a>, Sections 1–4, for the distance topology, Levi-Civita connection, normal-ball minimization and uniform local normal balls. <a href="geodesics-normal-coordinates-and-curvature.html">Geodesics, normal coordinates and curvature</a>, Section 2, proves the exponential map and uniqueness of geodesic initial values. <a href="local-tools-for-bundles-and-transport.html">Local tools for bundles and transport</a>, Theorem 2.1, supplies differential-equation continuation. Section 4 below also uses development, proved in <a href="linear-and-affine-connections.html">Linear and affine connections</a>, Section 5. Basic references are [Meinrenken], [Kunzinger–Steinbauer] and [Wilkins]. The example of a metric connection with torsion in Section 6 uses the open treatment [Erickson–McKay].</p>
+<h2 id="section-1">1. What can fail at a finite endpoint?</h2>
+<p>Throughout, <span class="math" data-tex="\(M\)">\(M\)</span> is a nonempty connected finite-dimensional smooth manifold without boundary, and <span class="math" data-tex="\(g\)">\(g\)</span> is a positive definite smooth Riemannian metric. It is Hausdorff and second countable. Write <span class="math" data-tex="\(d=d_g\)">\(d=d_g\)</span> for its Riemannian distance and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_r(p)&amp;=\{q:d(p,q)&lt;r\},\\
+\overline B_r(p)&amp;=\{q:d(p,q)\le r\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+B_r(p)&amp;=\{q:d(p,q)&lt;r\},\\
+\overline B_r(p)&amp;=\{q:d(p,q)\le r\}.
+\end{aligned}
+\]</span>
+<p>The second symbol denotes a closed distance ball. The distance topology is the manifold topology, by Riemannian connections and convex neighbourhoods, Proposition 1.1. In particular, <span class="math" data-tex="\(d(p,\cdot)\)">\(d(p,\cdot)\)</span> is continuous in that topology: the triangle inequality gives</p>
+<span class="math math-display" data-tex="\[
+|d(p,x)-d(p,y)|\le d(x,y).
+\tag{1.1}
+\]">\[
+|d(p,x)-d(p,y)|\le d(x,y).
+\tag{1.1}
+\]</span>
+<p>The metric is <strong>complete</strong> if every Cauchy sequence converges in <span class="math" data-tex="\(M\)">\(M\)</span>. A sequence <span class="math" data-tex="\((x_j)\)">\((x_j)\)</span> is Cauchy if for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> all sufficiently late pairs satisfy <span class="math" data-tex="\(d(x_j,x_k)&lt;\varepsilon\)">\(d(x_j,x_k)&lt;\varepsilon\)</span>.</p>
+<p>The metric is <strong>geodesically complete</strong> if every maximal affinely parametrized Levi-Civita geodesic is defined on all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Constant geodesics already have this property. A nonconstant one has constant speed, so it can be rescaled to have speed one. Rescaling an affine parameter does not change whether its domain has a finite endpoint.</p>
+<p>A <strong>minimizing geodesic</strong> between two points has length equal to their distance. When discussing uniqueness between fixed endpoints, we use its affine parametrization on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<p>A metric space is <strong>proper</strong> if every closed bounded subset is compact. Here bounded means contained in some finite-radius ball. By the triangle inequality the centre used in this definition is immaterial. Properness is equivalent to compactness of all closed distance balls: one implication applies to those balls; the other puts a closed bounded set in one such ball and uses closedness.</p>
+<p>Completeness and properness differ for general metric spaces. The discrete metric <span class="math" data-tex="\(d(x,y)=1\)">\(d(x,y)=1\)</span> for distinct points on an infinite set is complete: a Cauchy sequence is eventually constant. The whole set is closed and bounded but not compact, since its singleton open cover has no finite subcover. The geometry of a Riemannian distance will supply the missing implication.</p>
+<p><strong>Lemma 1.1 (normal radii near a compact set).</strong> If <span class="math" data-tex="\(K\subset M\)">\(K\subset M\)</span> is compact, there is <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> such that, for every <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, <span class="math" data-tex="\(\exp_x\)">\(\exp_x\)</span> maps the tangent ball <span class="math" data-tex="\(\{|v|_{g_x}&lt;\rho\}\)">\(\{|v|_{g_x}&lt;\rho\}\)</span> diffeomorphically onto <span class="math" data-tex="\(B_\rho(x)\)">\(B_\rho(x)\)</span>. Its radial segments are the unique minimizing geodesics in <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Proof.</strong> The proof of Riemannian connections and convex neighbourhoods, Theorem 4.1, gives an open neighbourhood <span class="math" data-tex="\(W\)">\(W\)</span> of each point and one positive radius <span class="math" data-tex="\(\rho_W\)">\(\rho_W\)</span> valid for every centre in <span class="math" data-tex="\(W\)">\(W\)</span>. Indeed the pair map</p>
+<span class="math math-display" data-tex="\[
+(x,v)\longmapsto(x,\exp_xv)
+\]">\[
+(x,v)\longmapsto(x,\exp_xv)
+\]</span>
+<p>is a diffeomorphism on a coordinate product near the zero vector. A uniform lower bound for the metric norm puts a fixed tangent metric ball in that product. Its fibre exponential is injective with invertible differential. Theorem 3.2 of that lesson then identifies its image with the whole-manifold distance ball and proves the asserted minimization.</p>
+<p>Take finitely many of these neighbourhoods covering <span class="math" data-tex="\(K\)">\(K\)</span>, and let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be the minimum of their positive radii. Restricting a larger tangent ball to radius <span class="math" data-tex="\(\rho\)">\(\rho\)</span> gives the claimed normal ball, again by that theorem. □</p>
+<p><strong>Lemma 1.2 (finite-time extension).</strong> Let <span class="math" data-tex="\(\gamma:[a,b)\to M\)">\(\gamma:[a,b)\to M\)</span> be a geodesic, where <span class="math" data-tex="\(b&lt;\infty\)">\(b&lt;\infty\)</span>. If <span class="math" data-tex="\(\gamma(t)\)">\(\gamma(t)\)</span> converges to a point of <span class="math" data-tex="\(M\)">\(M\)</span> as <span class="math" data-tex="\(t\uparrow b\)">\(t\uparrow b\)</span>, then <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> extends as a geodesic beyond <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><strong>Proof.</strong> Let its constant speed be <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Choose a coordinate ball with compact closure around the limit point, contained in a slightly larger chart. The tail of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> lies in this closed ball. On it positivity gives a constant <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|w|_{g_x}\ge m|w|_{\mathbb R^n}.
+\]">\[
+|w|_{g_x}\ge m|w|_{\mathbb R^n}.
+\]</span>
+<p>Thus the coordinate velocity of this tail is bounded by <span class="math" data-tex="\(\kappa/m\)">\(\kappa/m\)</span>. The geodesic equation is the smooth first-order equation for position and velocity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(x^i)&#x27;&amp;=v^i,\\
+(v^k)&#x27;&amp;=-\Gamma^k_{ij}(x)v^iv^j.
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+(x^i)&#x27;&amp;=v^i,\\
+(v^k)&#x27;&amp;=-\Gamma^k_{ij}(x)v^iv^j.
+\end{aligned}
+\tag{1.2}
+\]</span>
+<p>Its phase trajectory therefore lies in a compact product of the closed coordinate ball and a closed velocity ball. Include a compact interval of time ending at <span class="math" data-tex="\(b\)">\(b\)</span>. This product lies inside the equation's open domain. The continuation part of Local tools for bundles and transport, Theorem 2.1, gives a positive uniform existence time for initial phase points in this compact product. Start at a time sufficiently close to <span class="math" data-tex="\(b\)">\(b\)</span>; the resulting solution exists beyond <span class="math" data-tex="\(b\)">\(b\)</span>. Uniqueness makes it agree with the old solution on their common interval. □</p>
+<p>The proof controls velocity as well as position. Merely assigning a limiting position is not an initial condition for (1.2).</p>
+<p><strong>Lemma 1.3 (a minimizing broken geodesic has no corner).</strong> Suppose a path is the concatenation of finitely many unit-speed geodesic segments and has length equal to the distance between its endpoints. Then it is one smooth unit-speed geodesic.</p>
+<p><strong>Proof.</strong> Every subpath minimizes between its endpoints. Otherwise choose a competing path whose length is strictly smaller than that subpath's length, and replace it. The resulting whole path would be shorter than the distance between its endpoints.</p>
+<p>Consider a joining point <span class="math" data-tex="\(z\)">\(z\)</span>. By the local version of Lemma 1.1, centres near <span class="math" data-tex="\(z\)">\(z\)</span> have a common normal radius <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>. Choose points <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> just before and after this join so that <span class="math" data-tex="\(a\)">\(a\)</span> is one of those centres and the subpath from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span> has length less than <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Every point of this subpath has distance from <span class="math" data-tex="\(a\)">\(a\)</span> at most the length already traversed, hence lies in <span class="math" data-tex="\(B_\rho(a)\)">\(B_\rho(a)\)</span>. It is a minimizing path in that normal ball.</p>
+<p>Riemannian connections and convex neighbourhoods, Theorem 3.2, proves that every piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> minimizer from its centre traces the radial geodesic monotonically. Since the path here has speed one on both pieces, its radial parameter is the elapsed length. Both pieces are therefore the same affinely parametrized radial geodesic across the join. Apply this at every join. □</p>
+<p>This argument uses local minimality and its equality case. No variational formula is required.</p>
+<h2 id="section-2">2. One point gives compact balls</h2>
+<p>Saying that <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> is defined on all of <span class="math" data-tex="\(T_pM\)">\(T_pM\)</span> means that each initial vector at <span class="math" data-tex="\(p\)">\(p\)</span> has a geodesic existing through time one. By rescaling initial vectors this is equivalent to every geodesic starting at <span class="math" data-tex="\(p\)">\(p\)</span> existing for all positive and negative times:</p>
+<span class="math math-display" data-tex="\[
+\gamma_v(t)=\exp_p(tv).
+\tag{2.1}
+\]">\[
+\gamma_v(t)=\exp_p(tv).
+\tag{2.1}
+\]</span>
+<p>The exponential map need not be injective on this full tangent space.</p>
+<p><strong>Theorem 2.1 (one-point completeness).</strong> Suppose <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> is defined on all of <span class="math" data-tex="\(T_pM\)">\(T_pM\)</span> for some <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span>. Then every <span class="math" data-tex="\(q\in M\)">\(q\in M\)</span> can be joined to <span class="math" data-tex="\(p\)">\(p\)</span> by a minimizing geodesic, and every closed distance ball centred at <span class="math" data-tex="\(p\)">\(p\)</span> is compact. Consequently every closed bounded subset of <span class="math" data-tex="\(M\)">\(M\)</span> is compact.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(M\)">\(M\)</span> has dimension zero, connectedness makes it a single point and everything is immediate. Suppose its dimension is positive.</p>
+<p>For <span class="math" data-tex="\(R\ge0\)">\(R\ge0\)</span>, consider the initial vectors whose radial geodesics really minimize:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_R=\{v\in T_pM:\\
+|v|_{g_p}\le R,\quad
+d(p,\exp_pv)=|v|_{g_p}\},\\
+E_R=\exp_p(A_R),\\
+S_R=\overline B_R(p).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+A_R=\{v\in T_pM:\\
+|v|_{g_p}\le R,\quad
+d(p,\exp_pv)=|v|_{g_p}\},\\
+E_R=\exp_p(A_R),\\
+S_R=\overline B_R(p).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>The tangent closed ball is compact in a finite-dimensional vector space. The equality in (2.2) is a closed condition, since the norm, exponential and distance are continuous. Thus <span class="math" data-tex="\(A_R\)">\(A_R\)</span> and <span class="math" data-tex="\(E_R\)">\(E_R\)</span> are compact for every <span class="math" data-tex="\(R\)">\(R\)</span>, even before we know that <span class="math" data-tex="\(S_R\)">\(S_R\)</span> is compact. Moreover</p>
+<span class="math math-display" data-tex="\[
+E_R\subset S_R,
+\]">\[
+E_R\subset S_R,
+\]</span>
+<p>and the sets <span class="math" data-tex="\(E_R\)">\(E_R\)</span> increase with <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>Every point of <span class="math" data-tex="\(E_R\)">\(E_R\)</span> is reached by a geodesic of length equal to its distance from <span class="math" data-tex="\(p\)">\(p\)</span>. Conversely, a minimizing geodesic from <span class="math" data-tex="\(p\)">\(p\)</span> of length at most <span class="math" data-tex="\(R\)">\(R\)</span>, parametrized on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, has initial velocity of norm its length and places its endpoint in <span class="math" data-tex="\(E_R\)">\(E_R\)</span>. Thus <span class="math" data-tex="\(E_R\)">\(E_R\)</span> is precisely the part of <span class="math" data-tex="\(S_R\)">\(S_R\)</span> already reached by minimizing geodesics.</p>
+<p>A normal ball at <span class="math" data-tex="\(p\)">\(p\)</span> proves <span class="math" data-tex="\(E_R=S_R\)">\(E_R=S_R\)</span> for all sufficiently small <span class="math" data-tex="\(R\)">\(R\)</span>, including zero. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_*=\sup\{R\ge0:\\
+E_s=S_s\text{ for all }s\in[0,R]\}.
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+R_*=\sup\{R\ge0:\\
+E_s=S_s\text{ for all }s\in[0,R]\}.
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>We will prove that <span class="math" data-tex="\(R_*=\infty\)">\(R_*=\infty\)</span>. Suppose instead that <span class="math" data-tex="\(0&lt;R_*&lt;\infty\)">\(0&lt;R_*&lt;\infty\)</span>. First we show</p>
+<span class="math math-display" data-tex="\[
+E_{R_*}=S_{R_*}.
+\tag{2.4}
+\]">\[
+E_{R_*}=S_{R_*}.
+\tag{2.4}
+\]</span>
+<p>If <span class="math" data-tex="\(d(p,q)&lt;R_*\)">\(d(p,q)&lt;R_*\)</span>, choose <span class="math" data-tex="\(s\)">\(s\)</span> strictly between these numbers. The definition of the supremum, together with the requirement for every smaller radius in (2.3), gives <span class="math" data-tex="\(E_s=S_s\)">\(E_s=S_s\)</span>, hence <span class="math" data-tex="\(q\in E_{R_*}\)">\(q\in E_{R_*}\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(d(p,q)=R_*\)">\(d(p,q)=R_*\)</span>. Choose positive <span class="math" data-tex="\(\varepsilon_j\downarrow0\)">\(\varepsilon_j\downarrow0\)</span>, with <span class="math" data-tex="\(\varepsilon_j&lt;R_*\)">\(\varepsilon_j&lt;R_*\)</span>, and paths from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span> of length less than <span class="math" data-tex="\(R_*+\varepsilon_j\)">\(R_*+\varepsilon_j\)</span>. Along each path the accumulated length is continuous from zero to its total length. Choose a point <span class="math" data-tex="\(q_j\)">\(q_j\)</span> at accumulated length <span class="math" data-tex="\(R_*-\varepsilon_j\)">\(R_*-\varepsilon_j\)</span>. The remaining path has length less than <span class="math" data-tex="\(2\varepsilon_j\)">\(2\varepsilon_j\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d(p,q_j)&amp;\le R_*-\varepsilon_j&lt;R_*,\\
+d(q_j,q)&amp;&lt;2\varepsilon_j.
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+d(p,q_j)&amp;\le R_*-\varepsilon_j&lt;R_*,\\
+d(q_j,q)&amp;&lt;2\varepsilon_j.
+\end{aligned}
+\tag{2.5}
+\]</span>
+<p>Each <span class="math" data-tex="\(q_j\)">\(q_j\)</span> lies in <span class="math" data-tex="\(E_{R_*}\)">\(E_{R_*}\)</span> by the preceding case. This set is compact, hence closed in <span class="math" data-tex="\(M\)">\(M\)</span>. Since <span class="math" data-tex="\(q_j\to q\)">\(q_j\to q\)</span>, it also contains <span class="math" data-tex="\(q\)">\(q\)</span>. This proves (2.4), and in particular makes <span class="math" data-tex="\(S_{R_*}\)">\(S_{R_*}\)</span> compact.</p>
+<p>By Lemma 1.1 choose a common normal radius <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> for centres in <span class="math" data-tex="\(S_{R_*}\)">\(S_{R_*}\)</span>, and choose <span class="math" data-tex="\(0&lt;\delta&lt;\rho\)">\(0&lt;\delta&lt;\rho\)</span>. We claim that every point at distance at most <span class="math" data-tex="\(R_*+\delta\)">\(R_*+\delta\)</span> is also reached by a minimizing geodesic from <span class="math" data-tex="\(p\)">\(p\)</span>. Only a point <span class="math" data-tex="\(q\)">\(q\)</span> with</p>
+<span class="math math-display" data-tex="\[
+R_*&lt;D:=d(p,q)\le R_*+\delta
+\]">\[
+R_*&lt;D:=d(p,q)\le R_*+\delta
+\]</span>
+<p>needs to be considered.</p>
+<p>Choose paths <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(L(\eta_j)&lt;D+1/j\)">\(L(\eta_j)&lt;D+1/j\)</span>. Continuity of <span class="math" data-tex="\(d(p,\eta_j(t))\)">\(d(p,\eta_j(t))\)</span> gives a point <span class="math" data-tex="\(x_j\)">\(x_j\)</span> on each path at distance exactly <span class="math" data-tex="\(R_*\)">\(R_*\)</span> from <span class="math" data-tex="\(p\)">\(p\)</span>. Splitting the path there yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D&amp;\le R_*+d(x_j,q)\\
+&amp;\le L(\eta_j)&lt;D+1/j.
+\end{aligned}
+\tag{2.6}
+\]">\[
+\begin{aligned}
+D&amp;\le R_*+d(x_j,q)\\
+&amp;\le L(\eta_j)&lt;D+1/j.
+\end{aligned}
+\tag{2.6}
+\]</span>
+<p>The points <span class="math" data-tex="\(x_j\)">\(x_j\)</span> lie in the compact set <span class="math" data-tex="\(S_{R_*}\)">\(S_{R_*}\)</span>. Pass to a subsequence converging to <span class="math" data-tex="\(x\)">\(x\)</span>. Continuity in (1.1) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d(p,x)=R_*,\\
+d(x,q)=D-R_*,\\
+D-R_*\le\delta&lt;\rho.
+\end{gathered}
+\tag{2.7}
+\]">\[
+\begin{gathered}
+d(p,x)=R_*,\\
+d(x,q)=D-R_*,\\
+D-R_*\le\delta&lt;\rho.
+\end{gathered}
+\tag{2.7}
+\]</span>
+<p>Equation (2.4) supplies a minimizing unit-speed segment from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>. The normal ball at <span class="math" data-tex="\(x\)">\(x\)</span> supplies a minimizing unit-speed segment from <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span>. Their concatenation has length</p>
+<span class="math math-display" data-tex="\[
+R_*+(D-R_*)=D=d(p,q).
+\]">\[
+R_*+(D-R_*)=D=d(p,q).
+\]</span>
+<p>Lemma 1.3 makes this concatenation a single smooth geodesic. If <span class="math" data-tex="\(w\)">\(w\)</span> is its initial unit vector, its endpoint is <span class="math" data-tex="\(\exp_p(Dw)\)">\(\exp_p(Dw)\)</span>. The vector <span class="math" data-tex="\(Dw\)">\(Dw\)</span> belongs to <span class="math" data-tex="\(A_{R_*+\delta}\)">\(A_{R_*+\delta}\)</span>. In fact it belongs to <span class="math" data-tex="\(A_s\)">\(A_s\)</span> whenever <span class="math" data-tex="\(D\le s\)">\(D\le s\)</span>. Together with (2.4), this proves <span class="math" data-tex="\(E_s=S_s\)">\(E_s=S_s\)</span> for every <span class="math" data-tex="\(s\le R_*+\delta\)">\(s\le R_*+\delta\)</span>, contradicting (2.3).</p>
+<p>Therefore <span class="math" data-tex="\(R_*=\infty\)">\(R_*=\infty\)</span>, so <span class="math" data-tex="\(E_R=S_R\)">\(E_R=S_R\)</span> for every finite <span class="math" data-tex="\(R\)">\(R\)</span>. Equation (2.2) proves that each such ball is compact and every point in it has a minimizing geodesic from <span class="math" data-tex="\(p\)">\(p\)</span>. Finally any closed bounded set lies in a ball centred at <span class="math" data-tex="\(p\)">\(p\)</span>, by the triangle inequality, and is a closed subset of that compact ball. □</p>
+<p>The compactness used in this proof comes first from a bounded set of initial vectors. It is then transferred to distance balls. Assuming compact distance balls at the outset would assume part of the conclusion.</p>
+<p><em>References:</em> [Meinrenken, Section 17] gives a radius-extension proof; [Kunzinger–Steinbauer, Lemma 2.4.1] gives a proof by continuing a geodesic toward a fixed endpoint. </p>
+<h2 id="section-3">3. The completeness equivalences</h2>
+<p><strong>Theorem 3.1 (Hopf–Rinow).</strong> For a connected Riemannian manifold the following conditions are equivalent:</p>
+<ol>
+<li>Its Riemannian distance is a complete metric.</li>
+<li>Every affinely parametrized geodesic exists on all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</li>
+<li>For some <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span>, <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> is defined on all of <span class="math" data-tex="\(T_pM\)">\(T_pM\)</span>.</li>
+<li>Every closed bounded subset of <span class="math" data-tex="\(M\)">\(M\)</span> is compact.</li>
+</ol>
+<p>When these conditions hold, every pair of points is joined by a minimizing geodesic.</p>
+<p><strong>Proof.</strong> First assume metric completeness. If a maximal nonconstant geodesic has a finite upper endpoint <span class="math" data-tex="\(b\)">\(b\)</span>, rescale it to speed one and choose <span class="math" data-tex="\(t_j\uparrow b\)">\(t_j\uparrow b\)</span>. Length bounds distance, so</p>
+<span class="math math-display" data-tex="\[
+d(\gamma(t_j),\gamma(t_k))\le|t_j-t_k|.
+\tag{3.1}
+\]">\[
+d(\gamma(t_j),\gamma(t_k))\le|t_j-t_k|.
+\tag{3.1}
+\]</span>
+<p>This is a Cauchy sequence and has a limit <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>. The whole curve tends to <span class="math" data-tex="\(x\)">\(x\)</span>, not just the chosen sequence: for <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(t_j\)">\(t_j\)</span> close to <span class="math" data-tex="\(b\)">\(b\)</span>,</p>
+<span class="math math-display" data-tex="\[
+d(\gamma(t),x)
+\le |t-t_j|+d(\gamma(t_j),x),
+\]">\[
+d(\gamma(t),x)
+\le |t-t_j|+d(\gamma(t_j),x),
+\]</span>
+<p>and both terms can be made arbitrarily small. Lemma 1.2 extends the geodesic beyond <span class="math" data-tex="\(b\)">\(b\)</span>, a contradiction. Reversing time excludes a finite lower endpoint. This proves <span class="math" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>.</p>
+<p>The implication <span class="math" data-tex="\(2\Rightarrow3\)">\(2\Rightarrow3\)</span> follows from the definition of the exponential map. Theorem 2.1 proves <span class="math" data-tex="\(3\Rightarrow4\)">\(3\Rightarrow4\)</span>.</p>
+<p>For <span class="math" data-tex="\(4\Rightarrow1\)">\(4\Rightarrow1\)</span>, let <span class="math" data-tex="\((x_j)\)">\((x_j)\)</span> be Cauchy. Its tail lies in <span class="math" data-tex="\(B_1(x_N)\)">\(B_1(x_N)\)</span> for some <span class="math" data-tex="\(N\)">\(N\)</span>. Including the finitely many earlier points in a larger ball shows that the whole sequence is bounded. It lies in a compact closed ball and thus has a convergent subsequence, say <span class="math" data-tex="\(x_{j_k}\to x\)">\(x_{j_k}\to x\)</span>. To see that the whole sequence converges, given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> choose late indices so that <span class="math" data-tex="\(d(x_j,x_{j_k})&lt;\varepsilon/2\)">\(d(x_j,x_{j_k})&lt;\varepsilon/2\)</span> and <span class="math" data-tex="\(d(x_{j_k},x)&lt;\varepsilon/2\)">\(d(x_{j_k},x)&lt;\varepsilon/2\)</span>; the triangle inequality gives <span class="math" data-tex="\(d(x_j,x)&lt;\varepsilon\)">\(d(x_j,x)&lt;\varepsilon\)</span>. The subsequence exists because a compact metric space is sequentially compact: if a sequence has no accumulation point, each point has a neighbourhood containing only finitely many of its terms, and a finite subcover gives a contradiction. An accumulation point supplies a subsequence in its successive radius-<span class="math" data-tex="\(1/k\)">\(1/k\)</span> balls.</p>
+<p>Finally, condition 2 gives the hypothesis of Theorem 2.1 at every chosen starting point. That theorem supplies a minimizing geodesic to every other point. □</p>
+<p>Thus <strong>complete Riemannian manifold</strong> can mean either metric or geodesic completeness. The positive metric and the Levi-Civita connection are part of the assertion.</p>
+<p>Having a shortest geodesic for every pair is a consequence, not an equivalent fifth condition. An open Euclidean ball has a straight minimizing segment between every pair but is incomplete: a sequence tending radially to its missing boundary is Cauchy with no limit in the ball. Nor does completeness force uniqueness. Opposite points of a round sphere have many shortest great-circle semicircles.</p>
+<p><strong>Corollary 3.2 (compact manifolds).</strong> Every compact Riemannian manifold is geodesically complete, and its connected components are complete metric spaces.</p>
+<p><strong>Proof.</strong> A connected component is closed in the compact manifold, hence compact. It is also open, since manifolds have connected coordinate neighbourhoods. Its Riemannian distance gives its topology. Every closed bounded subset of the component is a closed subset of this compact component, so Theorem 3.1 applies. Geodesics remain in their connected component. □</p>
+<p><strong>Corollary 3.3 (homogeneous manifolds).</strong> If the isometries of a Riemannian manifold act transitively on it, the manifold is geodesically complete. Each connected component is metrically complete.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(p\)">\(p\)</span>. In positive dimension the set of unit initial vectors at <span class="math" data-tex="\(p\)">\(p\)</span> is compact. Smooth local existence and a finite cover of this sphere give <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> such that every one of these initial geodesics exists on <span class="math" data-tex="\((-\epsilon,\epsilon)\)">\((-\epsilon,\epsilon)\)</span>. In dimension zero all geodesics are constant.</p>
+<p>For any <span class="math" data-tex="\(q\)">\(q\)</span> and any unit vector <span class="math" data-tex="\(v\in T_qM\)">\(v\in T_qM\)</span>, choose an isometry <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(F(p)=q\)">\(F(p)=q\)</span>. The vector <span class="math" data-tex="\((dF_p)^{-1}v\)">\((dF_p)^{-1}v\)</span> has norm one. Isometries preserve geodesics, by Riemannian connections and convex neighbourhoods, Proposition 2.2. Its geodesic, followed by <span class="math" data-tex="\(F\)">\(F\)</span>, gives a geodesic with initial data <span class="math" data-tex="\((q,v)\)">\((q,v)\)</span> on the same interval <span class="math" data-tex="\((-\epsilon,\epsilon)\)">\((-\epsilon,\epsilon)\)</span>. Thus every unit initial datum at every point has this uniform existence time.</p>
+<p>Start a unit-speed geodesic again at the end of successive intervals of length <span class="math" data-tex="\(\epsilon/2\)">\(\epsilon/2\)</span>. The new segment exists for time <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>; initial-value uniqueness glues it to the preceding one. Finitely many steps reach any prescribed finite positive or negative time. Rescale for other nonzero speeds. Theorem 3.1 then gives metric completeness on each component. □</p>
+<p>Transitivity here concerns isometries of the given metric. An arbitrary transitive smooth action need not preserve that metric and does not provide the argument.</p>
+
+<h2 id="section-4">4. Completeness and development</h2>
+<p>Development compares a path with a path in its initial tangent space. Let <span class="math" data-tex="\(\gamma(0)=p\)">\(\gamma(0)=p\)</span>, let <span class="math" data-tex="\(u_0:\mathbb R^n\to T_pM\)">\(u_0:\mathbb R^n\to T_pM\)</span> be an orthonormal frame, and let <span class="math" data-tex="\(u(t)\)">\(u(t)\)</span> be its parallel transport along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The development, proved in Linear and affine connections, Theorem 5.1, is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\delta(t)&amp;=u_0\int_0^t u(s)^{-1}\gamma&#x27;(s)\,ds,\\
+\delta&#x27;(t)&amp;=T_{0t}^{-1}\gamma&#x27;(t).
+\end{aligned}
+\tag{4.1}
+\]">\[
+\begin{aligned}
+\delta(t)&amp;=u_0\int_0^t u(s)^{-1}\gamma&#x27;(s)\,ds,\\
+\delta&#x27;(t)&amp;=T_{0t}^{-1}\gamma&#x27;(t).
+\end{aligned}
+\tag{4.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(T_{0t}\)">\(T_{0t}\)</span> is linear parallel transport. Metric compatibility makes it an isometry, so</p>
+<span class="math math-display" data-tex="\[
+|\delta&#x27;(t)|_{g_p}=|\gamma&#x27;(t)|_g.
+\tag{4.2}
+\]">\[
+|\delta&#x27;(t)|_{g_p}=|\gamma&#x27;(t)|_g.
+\tag{4.2}
+\]</span>
+<p>Thus development preserves length on every subinterval, though it need not preserve endpoints or the shape of a curve.</p>
+<p><strong>Theorem 4.1 (prescribed finite developments).</strong> If <span class="math" data-tex="\(M\)">\(M\)</span> is complete, every piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> curve <span class="math" data-tex="\(\delta:[0,a]\to T_pM\)">\(\delta:[0,a]\to T_pM\)</span>, with <span class="math" data-tex="\(\delta(0)=0\)">\(\delta(0)=0\)</span>, is the development of a unique piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> curve <span class="math" data-tex="\(\gamma:[0,a]\to M\)">\(\gamma:[0,a]\to M\)</span> starting at <span class="math" data-tex="\(p\)">\(p\)</span>. Conversely, if every such curve can be realized at one fixed point <span class="math" data-tex="\(p\)">\(p\)</span>, then <span class="math" data-tex="\(M\)">\(M\)</span> is complete.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(d(t)=u_0^{-1}\delta(t)\)">\(d(t)=u_0^{-1}\delta(t)\)</span>. To recover the base path and its parallel frame, solve simultaneously</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\gamma&#x27;&amp;=u(t)d&#x27;(t),\\
+(u^k_{\alpha})&#x27;
+&amp;=-\Gamma^k_{ij}(\gamma)\,
+(\gamma^i)&#x27;u^j_{\alpha},\\
+\gamma(0)&amp;=p,\qquad u(0)=u_0.
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+\gamma&#x27;&amp;=u(t)d&#x27;(t),\\
+(u^k_{\alpha})&#x27;
+&amp;=-\Gamma^k_{ij}(\gamma)\,
+(\gamma^i)&#x27;u^j_{\alpha},\\
+\gamma(0)&amp;=p,\qquad u(0)=u_0.
+\end{aligned}
+\tag{4.3}
+\]</span>
+<p>The second equation is precisely parallel transport of each frame column. In a chart these equations are continuous in time and smooth, with locally bounded derivatives, in the position and frame entries on each <span class="math" data-tex="\(C^1\)">\(C^1\)</span> piece. The integral-equation proof of Local tools for bundles and transport, Theorem 2.1, works under these time conditions: it uses bounds and continuity in time, not time derivatives, for existence and uniqueness. This gives a local solution.</p>
+<p>Along it,</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}g(u_\alpha,u_\beta)=0,
+\]">\[
+\frac{d}{dt}g(u_\alpha,u_\beta)=0,
+\]</span>
+<p>so its frame remains orthonormal. Hence <span class="math" data-tex="\(|\gamma&#x27;|=|d&#x27;|\)">\(|\gamma&#x27;|=|d&#x27;|\)</span>, and (4.1) recovers the prescribed development.</p>
+<p>We show that this solution reaches the end of a whole <span class="math" data-tex="\(C^1\)">\(C^1\)</span> piece. Suppose its maximal upper endpoint on that piece is <span class="math" data-tex="\(b\le a\)">\(b\le a\)</span>. Since <span class="math" data-tex="\(d&#x27;\)">\(d&#x27;\)</span> is bounded there, for <span class="math" data-tex="\(s&lt;t&lt;b\)">\(s&lt;t&lt;b\)</span></p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d(\gamma(s),\gamma(t))
+&amp;\le\int_s^t|d&#x27;(\tau)|\,d\tau\\
+&amp;\le C(t-s).
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+d(\gamma(s),\gamma(t))
+&amp;\le\int_s^t|d&#x27;(\tau)|\,d\tau\\
+&amp;\le C(t-s).
+\end{aligned}
+\tag{4.4}
+\]</span>
+<p>Completeness implies that <span class="math" data-tex="\(\gamma(t)\)">\(\gamma(t)\)</span> has a limit as <span class="math" data-tex="\(t\uparrow b\)">\(t\uparrow b\)</span>, by the same Cauchy and whole-tail argument as in Theorem 3.1.</p>
+<p>Take a compact coordinate ball <span class="math" data-tex="\(K\)">\(K\)</span> containing this tail and its limiting point. The orthonormal frames above <span class="math" data-tex="\(K\)">\(K\)</span> form a compact subset of the frame coordinates. To verify this directly, let <span class="math" data-tex="\(G(x)\)">\(G(x)\)</span> be the metric matrix. A frame matrix <span class="math" data-tex="\(U\)">\(U\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+U^TG(x)U=I.
+\tag{4.5}
+\]">\[
+U^TG(x)U=I.
+\tag{4.5}
+\]</span>
+<p>A uniform positive lower bound for <span class="math" data-tex="\(G\)">\(G\)</span> bounds every column of <span class="math" data-tex="\(U\)">\(U\)</span>. Equation (4.5) defines a closed set over compact <span class="math" data-tex="\(K\)">\(K\)</span>, so the resulting matrices form a compact set. Every one is invertible: a vector in the kernel of <span class="math" data-tex="\(U\)">\(U\)</span> would contradict (4.5). Thus this compact set lies inside the frame equation's domain.</p>
+<p>The time-continuous continuation argument for (4.3) now gives a uniform existence time on this compact set, and extends the solution to and, when inside the piece, beyond <span class="math" data-tex="\(b\)">\(b\)</span>. At a piece endpoint the continuous coefficient <span class="math" data-tex="\(d&#x27;\)">\(d&#x27;\)</span> can be extended by its endpoint value to apply that argument on a slightly larger time interval. Take the limiting frame there as the initial frame for the next piece. Finitely many such steps reach <span class="math" data-tex="\(a\)">\(a\)</span>. Local uniqueness glues the solution and proves global uniqueness.</p>
+<p>For the converse, prescribe <span class="math" data-tex="\(\delta(t)=tv\)">\(\delta(t)=tv\)</span>, for any <span class="math" data-tex="\(v\in T_pM\)">\(v\in T_pM\)</span> and any finite interval. Equation (4.1) says <span class="math" data-tex="\(\gamma&#x27;(t)=T_{0t}v\)">\(\gamma&#x27;(t)=T_{0t}v\)</span>, so <span class="math" data-tex="\(D_t\gamma&#x27;=0\)">\(D_t\gamma&#x27;=0\)</span>. This is the geodesic with initial vector <span class="math" data-tex="\(v\)">\(v\)</span>, defined through the prescribed time. Taking time one for every vector gives <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> on all of <span class="math" data-tex="\(T_pM\)">\(T_pM\)</span>. Theorem 3.1 proves completeness. □</p>
+<p>The compact fibre in (4.5) and the speed identity (4.2) are the two features that prevent this coupled equation from escaping. For a general affine connection they are unavailable. Geodesic completeness alone must therefore not be used to assert arbitrary prescribed-development existence for that connection.</p>
+
+<h2 id="section-5">5. Local isometries become coverings</h2>
+<p>A <strong>local isometry</strong> <span class="math" data-tex="\(F:(N,h)\to(M,g)\)">\(F:(N,h)\to(M,g)\)</span> in this section has equal-dimensional source and target, is a local diffeomorphism, and satisfies <span class="math" data-tex="\(F^*g=h\)">\(F^*g=h\)</span>. A <strong>covering map</strong> is a surjective map such that each point has an open neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> whose inverse image is a disjoint union of open sets, each mapped homeomorphically onto <span class="math" data-tex="\(V\)">\(V\)</span>. For a smooth local isometry these restrictions are smooth isometries.</p>
+<p><strong>Theorem 5.1 (complete local isometries).</strong> Let <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> be nonempty and connected, and let <span class="math" data-tex="\(F:(N,h)\to(M,g)\)">\(F:(N,h)\to(M,g)\)</span> be a local isometry.</p>
+<ol>
+<li>If <span class="math" data-tex="\(N\)">\(N\)</span> is complete, then <span class="math" data-tex="\(M\)">\(M\)</span> is complete and <span class="math" data-tex="\(F\)">\(F\)</span> is a surjective covering map.</li>
+<li>If <span class="math" data-tex="\(F\)">\(F\)</span> is a covering map and <span class="math" data-tex="\(M\)">\(M\)</span> is complete, then <span class="math" data-tex="\(N\)">\(N\)</span> is complete.</li>
+</ol>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(N\)">\(N\)</span> is complete. Fix <span class="math" data-tex="\(\widetilde p\in N\)">\(\widetilde p\in N\)</span>, and put <span class="math" data-tex="\(p=F(\widetilde p)\)">\(p=F(\widetilde p)\)</span>. Every vector <span class="math" data-tex="\(v\in T_pM\)">\(v\in T_pM\)</span> is the image of a unique vector <span class="math" data-tex="\(\widetilde v\in T_{\widetilde p}N\)">\(\widetilde v\in T_{\widetilde p}N\)</span>. The geodesic in <span class="math" data-tex="\(N\)">\(N\)</span> with that initial vector exists for all times. Its image is the geodesic in <span class="math" data-tex="\(M\)">\(M\)</span> with initial vector <span class="math" data-tex="\(v\)">\(v\)</span>, by Riemannian connections and convex neighbourhoods, Proposition 2.2. Thus <span class="math" data-tex="\(M\)">\(M\)</span> is geodesically complete at this one point <span class="math" data-tex="\(p\)">\(p\)</span>. Theorem 3.1 makes it complete everywhere.</p>
+<p>To prove surjectivity, join <span class="math" data-tex="\(p\)">\(p\)</span> to any <span class="math" data-tex="\(q\in M\)">\(q\in M\)</span> by a minimizing geodesic, parametrized on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, with initial vector <span class="math" data-tex="\(v\)">\(v\)</span>. The geodesic in <span class="math" data-tex="\(N\)">\(N\)</span> with initial vector <span class="math" data-tex="\((dF_{\widetilde p})^{-1}v\)">\((dF_{\widetilde p})^{-1}v\)</span> is defined through time one and maps to that segment. Its endpoint maps to <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p>We now prove the covering property. Fix any <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span>, and choose <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> such that <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> is a diffeomorphism on its tangent ball of radius <span class="math" data-tex="\(2r\)">\(2r\)</span>. For each <span class="math" data-tex="\(\widetilde p\in F^{-1}(p)\)">\(\widetilde p\in F^{-1}(p)\)</span>, geodesic naturality gives</p>
+<span class="math math-display" data-tex="\[
+F\circ\exp_{\widetilde p}
+=\exp_p\circ dF_{\widetilde p}.
+\tag{5.1}
+\]">\[
+F\circ\exp_{\widetilde p}
+=\exp_p\circ dF_{\widetilde p}.
+\tag{5.1}
+\]</span>
+<p>On the tangent ball of radius <span class="math" data-tex="\(2r\)">\(2r\)</span>, the right-hand side is a diffeomorphism onto <span class="math" data-tex="\(B_{2r}(p)\)">\(B_{2r}(p)\)</span>. Consequently <span class="math" data-tex="\(\exp_{\widetilde p}\)">\(\exp_{\widetilde p}\)</span> is injective there. Its differential is invertible, because <span class="math" data-tex="\(dF\)">\(dF\)</span> is invertible and the differential of their composition is invertible. It is a diffeomorphism onto its open image. The normal-ball theorem identifies that image with <span class="math" data-tex="\(B_{2r}(\widetilde p)\)">\(B_{2r}(\widetilde p)\)</span>. Equation (5.1) therefore makes</p>
+<span class="math math-display" data-tex="\[
+F:B_r(\widetilde p)\longrightarrow B_r(p)
+\tag{5.2}
+\]">\[
+F:B_r(\widetilde p)\longrightarrow B_r(p)
+\tag{5.2}
+\]</span>
+<p>a diffeomorphism and a local isometry.</p>
+<p>These balls exhaust <span class="math" data-tex="\(F^{-1}(B_r(p))\)">\(F^{-1}(B_r(p))\)</span>. Indeed, if <span class="math" data-tex="\(F(\widetilde q)=q\in B_r(p)\)">\(F(\widetilde q)=q\in B_r(p)\)</span>, take the reversed radial minimizing geodesic from <span class="math" data-tex="\(q\)">\(q\)</span> to <span class="math" data-tex="\(p\)">\(p\)</span>. Launch its lift from <span class="math" data-tex="\(\widetilde q\)">\(\widetilde q\)</span> with the unique corresponding initial velocity. Completeness of <span class="math" data-tex="\(N\)">\(N\)</span> defines this lifted geodesic through its full length, and naturality maps it to the chosen radial segment. It ends at some <span class="math" data-tex="\(\widetilde p\in F^{-1}(p)\)">\(\widetilde p\in F^{-1}(p)\)</span> and has length <span class="math" data-tex="\(d(p,q)&lt;r\)">\(d(p,q)&lt;r\)</span>. Hence <span class="math" data-tex="\(\widetilde q\in B_r(\widetilde p)\)">\(\widetilde q\in B_r(\widetilde p)\)</span>.</p>
+<p>The balls in (5.2) are disjoint. If two meet at <span class="math" data-tex="\(\widetilde q\)">\(\widetilde q\)</span>, the triangle inequality gives</p>
+<span class="math math-display" data-tex="\[
+d_h(\widetilde p,\widetilde p&#x27;)&lt;2r.
+\]">\[
+d_h(\widetilde p,\widetilde p&#x27;)&lt;2r.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\widetilde p&#x27;\in B_{2r}(\widetilde p)\)">\(\widetilde p&#x27;\in B_{2r}(\widetilde p)\)</span>, where (5.1) makes <span class="math" data-tex="\(F\)">\(F\)</span> injective. Since both centres map to <span class="math" data-tex="\(p\)">\(p\)</span>, they coincide. This proves the covering property.</p>
+<p>Conversely suppose <span class="math" data-tex="\(F\)">\(F\)</span> is a covering and <span class="math" data-tex="\(M\)">\(M\)</span> is complete. We recall why a path on a compact interval has a unique lift after its initial point is fixed. The inverse images in the interval of evenly covered neighbourhoods form an open cover. There is a finite subdivision such that each closed subinterval maps into one of those neighbourhoods. To justify the subdivision, a finite open cover of a compact interval has a positive Lebesgue number: otherwise intervals of length tending to zero, contained in no cover member, have points with a convergent subsequence; a neighbourhood of the limit lying in one cover member gives a contradiction. Subdivide more finely than this number. On the first piece use the inverse of the sheet containing the initial point; on each subsequent piece use the sheet containing the endpoint already reached. These lifts agree at the breaks. Local sheet inverses also prove uniqueness.</p>
+<p>Given initial data in <span class="math" data-tex="\(N\)">\(N\)</span>, the corresponding geodesic in <span class="math" data-tex="\(M\)">\(M\)</span> exists on all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Lift it on every interval <span class="math" data-tex="\([-k,k]\)">\([-k,k]\)</span> with the specified point over time zero, applying the preceding construction in both directions from zero. Uniqueness makes these lifts agree. Each lift is smooth and a geodesic, since the local sheet inverse is a local isometry. Their union is a geodesic in <span class="math" data-tex="\(N\)">\(N\)</span> on all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with the specified initial data. Hence <span class="math" data-tex="\(N\)">\(N\)</span> is complete. □</p>
+<p>Completeness of the source is essential in the first assertion. The inclusion of an open Euclidean ball into Euclidean space is a local isometry with a proper open image.</p>
+<p><strong>Corollary 5.2 (compact immersions of equal dimension).</strong> A smooth immersion from a nonempty connected compact manifold <span class="math" data-tex="\(N\)">\(N\)</span> to a connected manifold <span class="math" data-tex="\(M\)">\(M\)</span> of the same dimension is a covering map onto <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(M\)">\(M\)</span> is compact.</p>
+<p><strong>Proof.</strong> Choose a Riemannian metric <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, whose existence is proved in Linear and affine connections, Theorem 2.1. The pullback <span class="math" data-tex="\(F^*g\)">\(F^*g\)</span> is positive definite because the equal-dimensional immersion has invertible differential. Local inversion makes <span class="math" data-tex="\(F\)">\(F\)</span> a local isometry for this pullback metric. Its source is complete by Corollary 3.2. Theorem 5.1 proves that it is a covering onto <span class="math" data-tex="\(M\)">\(M\)</span>. The image of compact <span class="math" data-tex="\(N\)">\(N\)</span> is compact, so <span class="math" data-tex="\(M\)">\(M\)</span> is compact. □</p>
+<p><strong>Corollary 5.3 (open isometry orbits).</strong> If an orbit of a group of isometries of connected <span class="math" data-tex="\(M\)">\(M\)</span> contains a nonempty open subset, then that orbit is all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(O\)">\(O\)</span> be that orbit. Translate its open subset by group elements to see that every point of <span class="math" data-tex="\(O\)">\(O\)</span> has a neighbourhood contained in <span class="math" data-tex="\(O\)">\(O\)</span>; thus <span class="math" data-tex="\(O\)">\(O\)</span> is open. Let <span class="math" data-tex="\(C\)">\(C\)</span> be one connected component of <span class="math" data-tex="\(O\)">\(O\)</span>. It is open, because <span class="math" data-tex="\(O\)">\(O\)</span> is a manifold. For <span class="math" data-tex="\(x,y\in C\)">\(x,y\in C\)</span> choose a group element sending <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span>. It maps <span class="math" data-tex="\(O\)">\(O\)</span> onto itself and its components onto components. The image of <span class="math" data-tex="\(C\)">\(C\)</span> is the component containing <span class="math" data-tex="\(y\)">\(y\)</span>, namely <span class="math" data-tex="\(C\)">\(C\)</span>. Hence its restriction is an isometry of <span class="math" data-tex="\(C\)">\(C\)</span>, and <span class="math" data-tex="\(C\)">\(C\)</span> is homogeneous. Corollary 3.3 makes <span class="math" data-tex="\(C\)">\(C\)</span> complete. Its inclusion into <span class="math" data-tex="\(M\)">\(M\)</span> is a local isometry, so Theorem 5.1 makes that inclusion surjective. Therefore <span class="math" data-tex="\(C=M\)">\(C=M\)</span> and <span class="math" data-tex="\(O=M\)">\(O=M\)</span>. □</p>
+<p><strong>Proposition 5.4 (closed pieces of a submanifold).</strong> Suppose <span class="math" data-tex="\(M\)">\(M\)</span> is complete and <span class="math" data-tex="\(N\subset M\)">\(N\subset M\)</span> is an embedded submanifold with its induced metric. Assume that every point of <span class="math" data-tex="\(M\)">\(M\)</span> has an open neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> such that every connected component of <span class="math" data-tex="\(N\cap U\)">\(N\cap U\)</span> is closed in <span class="math" data-tex="\(U\)">\(U\)</span>. Then each component of <span class="math" data-tex="\(N\)">\(N\)</span> is complete. In particular, a closed embedded submanifold of a complete Riemannian manifold is complete for its intrinsic metric.</p>
+<p><strong>Proof.</strong> Work on a connected component of <span class="math" data-tex="\(N\)">\(N\)</span>. Its intrinsic distance <span class="math" data-tex="\(d_N\)">\(d_N\)</span> can exceed the ambient distance, but</p>
+<span class="math math-display" data-tex="\[
+d_M(x,y)\le d_N(x,y),
+\tag{5.3}
+\]">\[
+d_M(x,y)\le d_N(x,y),
+\tag{5.3}
+\]</span>
+<p>because every path in <span class="math" data-tex="\(N\)">\(N\)</span> is a competing ambient path of the same length.</p>
+<p>If a unit-speed intrinsic geodesic <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> has a finite maximal endpoint <span class="math" data-tex="\(b\)">\(b\)</span>, then (5.3) makes <span class="math" data-tex="\(\gamma(t)\)">\(\gamma(t)\)</span>, as <span class="math" data-tex="\(t\uparrow b\)">\(t\uparrow b\)</span>, Cauchy in <span class="math" data-tex="\(M\)">\(M\)</span>. Let its ambient limit be <span class="math" data-tex="\(x\)">\(x\)</span>. Choose the neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> from the hypothesis. The whole tail lies in <span class="math" data-tex="\(U\)">\(U\)</span>; being connected, it lies in one connected component <span class="math" data-tex="\(C\)">\(C\)</span> of <span class="math" data-tex="\(N\cap U\)">\(N\cap U\)</span>. Closedness of <span class="math" data-tex="\(C\)">\(C\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span> gives <span class="math" data-tex="\(x\in C\)">\(x\in C\)</span>. The embedded submanifold topology is the subspace topology, so the tail converges to <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span> too. Lemma 1.2, applied to the induced metric on <span class="math" data-tex="\(N\)">\(N\)</span>, extends this intrinsic geodesic beyond <span class="math" data-tex="\(b\)">\(b\)</span>. Time reversal treats a lower endpoint, proving completeness.</p>
+<p>If <span class="math" data-tex="\(N\)">\(N\)</span> is closed in <span class="math" data-tex="\(M\)">\(M\)</span>, then <span class="math" data-tex="\(N\cap U\)">\(N\cap U\)</span> is closed in <span class="math" data-tex="\(U\)">\(U\)</span>, and its connected components are closed there as well. This proves the final assertion. □</p>
+<p>Intrinsic geodesics of a submanifold need not be ambient geodesics. For example, a round circle in the Euclidean plane is intrinsically complete, although its nonconstant geodesics have nonzero ambient acceleration.</p>
+<p><em>References:</em> [Wilkins, Theorem 7.3] proves the complete-local-isometry covering theorem. </p>
+<h2 id="section-6">6. Finite and infinite distance to a missing boundary</h2>
+<h3 id="the-punctured-plane">The punctured plane</h3>
+<p>Give <span class="math" data-tex="\(M=\mathbb R^2\setminus\{0\}\)">\(M=\mathbb R^2\setminus\{0\}\)</span> its Euclidean metric. The points</p>
+<span class="math math-display" data-tex="\[
+q_j=(1/j,0)
+\]">\[
+q_j=(1/j,0)
+\]</span>
+<p>form a Cauchy sequence. The straight segment between two of them stays on the positive horizontal axis, and Euclidean displacement is a lower bound for any path length. Therefore</p>
+<span class="math math-display" data-tex="\[
+d(q_j,q_k)=|1/j-1/k|.
+\tag{6.1}
+\]">\[
+d(q_j,q_k)=|1/j-1/k|.
+\tag{6.1}
+\]</span>
+<p>They have no limit in <span class="math" data-tex="\(M\)">\(M\)</span>: convergence in the Riemannian distance would imply convergence in the manifold topology, while their only Euclidean limit is the removed origin.</p>
+<p>The set <span class="math" data-tex="\(\{q_j:j\ge1\}\)">\(\{q_j:j\ge1\}\)</span> is closed in <span class="math" data-tex="\(M\)">\(M\)</span>. Its only additional accumulation point in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> is zero, which is absent. It is bounded by (6.1), and is not compact because its displayed sequence has no convergent subsequence in <span class="math" data-tex="\(M\)">\(M\)</span>. This witnesses the failure of properness.</p>
+<p>Geodesic incompleteness is equally explicit. The path</p>
+<span class="math math-display" data-tex="\[
+\gamma(t)=(1-t,0),\qquad t&lt;1,
+\tag{6.2}
+\]">\[
+\gamma(t)=(1-t,0),\qquad t&lt;1,
+\tag{6.2}
+\]</span>
+<p>is a unit-speed geodesic, since the Euclidean Levi-Civita coefficients vanish. It cannot extend continuously through <span class="math" data-tex="\(t=1\)">\(t=1\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>. All three failures are the same obstruction seen through Theorem 3.1.</p>
+<p>Riemannian connections and convex neighbourhoods, Exercise 6.4, proves a further effect of this puncture: the distance from <span class="math" data-tex="\((-1,0)\)">\((-1,0)\)</span> to <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> is two, but no path of length two exists. A sequence of shorter and shorter detours has an infimum without a minimizing path.</p>
+<h3 id="hyperbolic-space">Hyperbolic space</h3>
+<p>For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb H^n=\mathbb R^{n-1}\times(0,\infty),\\
+g=\frac{|dx|^2+dz^2}{z^2}.
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+\mathbb H^n=\mathbb R^{n-1}\times(0,\infty),\\
+g=\frac{|dx|^2+dz^2}{z^2}.
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p>Although the plane <span class="math" data-tex="\(z=0\)">\(z=0\)</span> is missing, it is infinitely far away in this metric. For every path from height <span class="math" data-tex="\(z_0\)">\(z_0\)</span> to height <span class="math" data-tex="\(z_1\)">\(z_1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L_g(\eta)\ge
+\left|\log(z_1/z_0)\right|,
+\tag{6.4}
+\]">\[
+L_g(\eta)\ge
+\left|\log(z_1/z_0)\right|,
+\tag{6.4}
+\]</span>
+<p>by integrating <span class="math" data-tex="\(|z&#x27;|/z\)">\(|z&#x27;|/z\)</span>. This is proved, including its equality case, in Riemannian connections and convex neighbourhoods, Section 5. In particular no finite-length path can approach height zero.</p>
+<p>There are several concrete ways to prove completeness. The maps</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(x,z)\longmapsto(ax+b,az),\\
+a&gt;0,\quad b\in\mathbb R^{n-1},
+\end{gathered}
+\tag{6.5}
+\]">\[
+\begin{gathered}
+(x,z)\longmapsto(ax+b,az),\\
+a&gt;0,\quad b\in\mathbb R^{n-1},
+\end{gathered}
+\tag{6.5}
+\]</span>
+<p>preserve (6.3): their differential multiplies Euclidean lengths by <span class="math" data-tex="\(a\)">\(a\)</span>, and their new height is <span class="math" data-tex="\(az\)">\(az\)</span>. They act transitively, since the map with <span class="math" data-tex="\(a=z\)">\(a=z\)</span> and <span class="math" data-tex="\(b=x\)">\(b=x\)</span> takes <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> to <span class="math" data-tex="\((x,z)\)">\((x,z)\)</span>. Corollary 3.3 proves completeness. The previous lesson's explicit vertical exponential and semicircle formulas also give every geodesic for all real times.</p>
+<p>We can see compactness of distance balls directly as well. Fix <span class="math" data-tex="\((x_0,z_0)\)">\((x_0,z_0)\)</span> and let <span class="math" data-tex="\(d((x_0,z_0),(x,z))\le R\)">\(d((x_0,z_0),(x,z))\le R\)</span>. For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> take a path of length less than <span class="math" data-tex="\(R+\varepsilon\)">\(R+\varepsilon\)</span>. Inequality (6.4) on each initial subpath bounds its height by <span class="math" data-tex="\(z_0e^{R+\varepsilon}\)">\(z_0e^{R+\varepsilon}\)</span>, and bounds the endpoint height below by <span class="math" data-tex="\(z_0e^{-(R+\varepsilon)}\)">\(z_0e^{-(R+\varepsilon)}\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|x-x_0|
+&amp;\le\int |x&#x27;|\,dt\\
+&amp;\le z_0e^{R+\varepsilon}
+\int\frac{|x&#x27;|}{z}\,dt\\
+&amp;\le z_0e^{R+\varepsilon}(R+\varepsilon).
+\end{aligned}
+\]">\[
+\begin{aligned}
+|x-x_0|
+&amp;\le\int |x&#x27;|\,dt\\
+&amp;\le z_0e^{R+\varepsilon}
+\int\frac{|x&#x27;|}{z}\,dt\\
+&amp;\le z_0e^{R+\varepsilon}(R+\varepsilon).
+\end{aligned}
+\]</span>
+<p>Letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> shows that the closed distance ball lies in the Euclidean compact set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|x-x_0|\le z_0 R e^R,\\
+z_0e^{-R}\le z\le z_0e^R.
+\end{gathered}
+\tag{6.6}
+\]">\[
+\begin{gathered}
+|x-x_0|\le z_0 R e^R,\\
+z_0e^{-R}\le z\le z_0e^R.
+\end{gathered}
+\tag{6.6}
+\]</span>
+<p>This compact set is contained in the upper half-space. The distance ball is closed in its manifold, hence Euclidean, topology, so it is compact. This proves properness without starting from geodesic completeness.</p>
+<h3 id="an-affine-connection-on-a-complete-metric-space">An affine connection on a complete metric space</h3>
+<p>Theorem 3.1 concerns the connection selected by <span class="math" data-tex="\(g\)">\(g\)</span>. An arbitrary affine connection on the same manifold can be incomplete. On the Euclidean line take</p>
+<span class="math math-display" data-tex="\[
+\nabla_{\partial_x}\partial_x=\partial_x.
+\]">\[
+\nabla_{\partial_x}\partial_x=\partial_x.
+\]</span>
+<p>Its geodesic equation is <span class="math" data-tex="\(x&#x27;&#x27;+(x&#x27;)^2=0\)">\(x&#x27;&#x27;+(x&#x27;)^2=0\)</span>. With <span class="math" data-tex="\(x(0)=0\)">\(x(0)=0\)</span>, <span class="math" data-tex="\(x&#x27;(0)=1\)">\(x&#x27;(0)=1\)</span>, its solution is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x(t)=\log(1+t),\\
+-1&lt;t&lt;\infty.
+\end{gathered}
+\tag{6.7}
+\]">\[
+\begin{gathered}
+x(t)=\log(1+t),\\
+-1&lt;t&lt;\infty.
+\end{gathered}
+\tag{6.7}
+\]</span>
+<p>Direct differentiation verifies the equation. The solution cannot extend through <span class="math" data-tex="\(t=-1\)">\(t=-1\)</span>, where its position tends to <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>. The Euclidean distance on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> is complete, but this connection is not its Levi-Civita connection. This example also appears, with its full initial-value calculation, in Geodesics, normal coordinates and curvature, Exercise 6.3.</p>
+<p>An indefinite metric has a further difficulty: null vectors can have zero metric square while being nonzero. Neither the positive speed bound in Lemma 1.2 nor a Riemannian distance construction is then available. No indefinite version of the completeness equivalences is asserted here.</p>
+<h3 id="clifton-s-half-cylinder-a-metric-connection-with-torsion">Clifton's half-cylinder: a metric connection with torsion</h3>
+<p><em>This subsection adapts Jacob W. Erickson and Benjamin McKay, <a href="https://arxiv.org/abs/2606.00354v1">Inequivalence of the various notions of completeness for Cartan geometries</a>, Section 4.1, under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. They present an example due to Yeaton H. Clifton on a half-cylinder, replacing his punctured-plane presentation. The coframe and geodesic-completeness argument are retained; the linear connection, torsion, scalar-ODE argument and finite <span class="math" data-tex="\(C^1\)">\(C^1\)</span> development below are made explicit here. This subsection retains CC BY 4.0.</em></p>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C=(\mathbb R/\mathbb Z)\times(0,\infty),\\
+g=dx^2+dy^2,\\
+R(\theta)=
+\begin{pmatrix}
+\cos\theta&amp;-\sin\theta\\
+\sin\theta&amp;\cos\theta
+\end{pmatrix},\\
+\upsilon=R(1/y)\binom{dx}{dy}.
+\end{gathered}
+\tag{6.8}
+\]">\[
+\begin{gathered}
+C=(\mathbb R/\mathbb Z)\times(0,\infty),\\
+g=dx^2+dy^2,\\
+R(\theta)=
+\begin{pmatrix}
+\cos\theta&amp;-\sin\theta\\
+\sin\theta&amp;\cos\theta
+\end{pmatrix},\\
+\upsilon=R(1/y)\binom{dx}{dy}.
+\end{gathered}
+\tag{6.8}
+\]</span>
+<p>The coordinate <span class="math" data-tex="\(x\)">\(x\)</span> is read modulo one. The translation charts of this circle make <span class="math" data-tex="\(dx\)">\(dx\)</span>, <span class="math" data-tex="\(\partial_x\)">\(\partial_x\)</span> and (6.8) well defined. Let <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> be the frame dual to the coframe <span class="math" data-tex="\(\upsilon\)">\(\upsilon\)</span>. Its matrix in the coordinate frame is <span class="math" data-tex="\(R(-1/y)\)">\(R(-1/y)\)</span>, so it is orthonormal. Define a connection by declaring this global frame parallel:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\nabla_X(V^1e_1+V^2e_2)\\
+=X(V^1)e_1+X(V^2)e_2.
+\end{gathered}
+\tag{6.9}
+\]">\[
+\begin{gathered}
+\nabla_X(V^1e_1+V^2e_2)\\
+=X(V^1)e_1+X(V^2)e_2.
+\end{gathered}
+\tag{6.9}
+\]</span>
+<p>Differentiating the Euclidean inner product of the coefficient vectors proves <span class="math" data-tex="\(\nabla g=0\)">\(\nabla g=0\)</span>. Thus parallel transport for this connection preserves the metric. But it is not the Levi-Civita connection.</p>
+<p>Indeed put <span class="math" data-tex="\(J=\left(\begin{smallmatrix}0&amp;-1\\1&amp;0\end{smallmatrix}\right)\)">\(J=\left(\begin{smallmatrix}0&amp;-1\\1&amp;0\end{smallmatrix}\right)\)</span>. If <span class="math" data-tex="\(B=R(-1/y)\)">\(B=R(-1/y)\)</span> is the frame matrix, its coordinate connection matrix is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A&amp;=-dB\,B^{-1}\\
+&amp;=J\,d(1/y)\\
+&amp;=-y^{-2}J\,dy.
+\end{aligned}
+\tag{6.10}
+\]">\[
+\begin{aligned}
+A&amp;=-dB\,B^{-1}\\
+&amp;=J\,d(1/y)\\
+&amp;=-y^{-2}J\,dy.
+\end{aligned}
+\tag{6.10}
+\]</span>
+<p>This follows by differentiating <span class="math" data-tex="\(\nabla e_i=0\)">\(\nabla e_i=0\)</span>, namely <span class="math" data-tex="\(dB+AB=0\)">\(dB+AB=0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\nabla_{\partial_x}\partial_y&amp;=0,\\
+\nabla_{\partial_y}\partial_x&amp;=-y^{-2}\partial_y,\\
+T(\partial_x,\partial_y)&amp;=y^{-2}\partial_y.
+\end{aligned}
+\tag{6.11}
+\]">\[
+\begin{aligned}
+\nabla_{\partial_x}\partial_y&amp;=0,\\
+\nabla_{\partial_y}\partial_x&amp;=-y^{-2}\partial_y,\\
+T(\partial_x,\partial_y)&amp;=y^{-2}\partial_y.
+\end{aligned}
+\tag{6.11}
+\]</span>
+<p>The torsion is nonzero. The connection is flat as well: its global parallel frame gives <span class="math" data-tex="\(\nabla_X\nabla_Y e_i-\nabla_Y\nabla_X e_i-\nabla_{[X,Y]}e_i=0\)">\(\nabla_X\nabla_Y e_i-\nabla_Y\nabla_X e_i-\nabla_{[X,Y]}e_i=0\)</span>, and curvature is tensorial.</p>
+<p>The metric <span class="math" data-tex="\(g\)">\(g\)</span> is incomplete. The sequence <span class="math" data-tex="\(([0],1/j)\)">\(([0],1/j)\)</span> is Cauchy, since a vertical segment has length <span class="math" data-tex="\(|1/j-1/k|\)">\(|1/j-1/k|\)</span>; this is also a lower bound by its height displacement. Its only possible limiting height is zero, outside <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>Nevertheless all geodesics of (6.9) are complete. Their velocity coefficients in the parallel frame are constant, so, for some <span class="math" data-tex="\(v=(a,b)\)">\(v=(a,b)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\binom{x&#x27;}{y&#x27;}=R(-1/y)v,\\
+y&#x27;=-a\sin(1/y)+b\cos(1/y).
+\end{gathered}
+\tag{6.12}
+\]">\[
+\begin{gathered}
+\binom{x&#x27;}{y&#x27;}=R(-1/y)v,\\
+y&#x27;=-a\sin(1/y)+b\cos(1/y).
+\end{gathered}
+\tag{6.12}
+\]</span>
+<p>Erickson and McKay explain the mechanism: “all of the exponential curves for the geometry have <span class="math" data-tex="\(y\)">\(y\)</span>-components bounded away from <span class="math" data-tex="\(0\)">\(0\)</span>”. Here their exponential curves are exactly these geodesics. We give the full scalar argument.</p>
+<p>If <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, the curve is constant. Otherwise the scalar function</p>
+<span class="math math-display" data-tex="\[
+f(y)=-a\sin(1/y)+b\cos(1/y)
+\]">\[
+f(y)=-a\sin(1/y)+b\cos(1/y)
+\]</span>
+<p>has positive zeros tending to zero: a nonzero linear combination of sine and cosine has zeros at angles differing by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and their positive reciprocal angles tend to zero. For an initial height <span class="math" data-tex="\(y_0&gt;0\)">\(y_0&gt;0\)</span>, choose such a zero <span class="math" data-tex="\(y_*&lt;y_0\)">\(y_*&lt;y_0\)</span>. The constant solution <span class="math" data-tex="\(y=y_*\)">\(y=y_*\)</span> of <span class="math" data-tex="\(y&#x27;=f(y)\)">\(y&#x27;=f(y)\)</span> cannot meet another solution at a finite time, by uniqueness for this smooth scalar ODE. Continuity prevents crossing without meeting. Thus the height of the geodesic stays above <span class="math" data-tex="\(y_*\)">\(y_*\)</span> in both time directions.</p>
+<p>Equation (6.12) also gives <span class="math" data-tex="\(|x&#x27;|\le |v|\)">\(|x&#x27;|\le |v|\)</span> and <span class="math" data-tex="\(|y&#x27;|\le |v|\)">\(|y&#x27;|\le |v|\)</span>. On any bounded time interval its height is bounded above and below by positive constants. Its position stays in a compact slab of the cylinder, and its smooth first-order vector field in (6.12) has a uniform existence time there. The continuation theorem therefore excludes a finite maximal endpoint in either direction. This proves geodesic completeness for <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span>.</p>
+<p>There is even a prescribed <span class="math" data-tex="\(C^1\)">\(C^1\)</span> development that cannot be realized through its finite endpoint. Set <span class="math" data-tex="\(p=([0],1)\)">\(p=([0],1)\)</span>, take <span class="math" data-tex="\(u_0=(e_1(p),e_2(p))\)">\(u_0=(e_1(p),e_2(p))\)</span>, and consider</p>
+<span class="math math-display" data-tex="\[
+\gamma(t)=([0],(1-t)^2),\qquad 0\le t&lt;1.
+\]">\[
+\gamma(t)=([0],(1-t)^2),\qquad 0\le t&lt;1.
+\]</span>
+<p>Its parallel frame is <span class="math" data-tex="\(u(t)=(e_1(\gamma(t)),e_2(\gamma(t)))\)">\(u(t)=(e_1(\gamma(t)),e_2(\gamma(t)))\)</span>, by (6.9). Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\delta(t)=u_0\int_0^t w(s)\,ds,\\
+w(s)=R(\theta(s))\binom{0}{-2(1-s)},\\
+\theta(s)=(1-s)^{-2}.
+\end{gathered}
+\tag{6.13}
+\]">\[
+\begin{gathered}
+\delta(t)=u_0\int_0^t w(s)\,ds,\\
+w(s)=R(\theta(s))\binom{0}{-2(1-s)},\\
+\theta(s)=(1-s)^{-2}.
+\end{gathered}
+\tag{6.13}
+\]</span>
+<p>The integrand has norm <span class="math" data-tex="\(2(1-s)\)">\(2(1-s)\)</span>, so it extends continuously by zero at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. Its integral defines a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> curve on the closed interval <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, with <span class="math" data-tex="\(\delta&#x27;(1)=0\)">\(\delta&#x27;(1)=0\)</span>. Equation (4.1) verifies that it is the development of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. Any realization with the same initial point agrees with this one on that interval, by local uniqueness of the development equations. It cannot have an endpoint in <span class="math" data-tex="\(C\)">\(C\)</span>, since its height tends to zero.</p>
+<p>Thus geodesic completeness for a metric-compatible connection with torsion need not imply metric completeness or the prescribed-development conclusion. The torsion-free hypothesis that singles out the Levi-Civita connection is essential to those implications.</p>
+<h2 id="section-7">7. Exercises and complete solutions</h2>
+<h3 id="exercise-7-1-easy-a-line-with-a-finite-end">Exercise 7.1 (easy): a line with a finite end</h3>
+<p>On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, give the coordinate <span class="math" data-tex="\(x\)">\(x\)</span> the metric <span class="math" data-tex="\(g=e^{2x}\,dx^2\)">\(g=e^{2x}\,dx^2\)</span>. Find the distance, all affinely parametrized geodesics and their maximal domains. Determine completeness.</p>
+<p><strong>Solution.</strong> The coordinate <span class="math" data-tex="\(r=e^x\)">\(r=e^x\)</span> is a diffeomorphism from <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> to <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, and <span class="math" data-tex="\(dr^2=e^{2x}dx^2\)">\(dr^2=e^{2x}dx^2\)</span>. Thus it is an isometry to the positive Euclidean half-line. The straight segment between two positive values stays positive, giving</p>
+<span class="math math-display" data-tex="\[
+d_g(x,y)=|e^x-e^y|.
+\tag{7.1}
+\]">\[
+d_g(x,y)=|e^x-e^y|.
+\tag{7.1}
+\]</span>
+<p>Euclidean geodesics in that coordinate are <span class="math" data-tex="\(r(t)=r_0+ct\)">\(r(t)=r_0+ct\)</span>, so all the original geodesics are</p>
+<span class="math math-display" data-tex="\[
+x(t)=\log(r_0+ct),\qquad r_0&gt;0,
+\tag{7.2}
+\]">\[
+x(t)=\log(r_0+ct),\qquad r_0&gt;0,
+\tag{7.2}
+\]</span>
+<p>on the maximal interval where <span class="math" data-tex="\(r_0+ct&gt;0\)">\(r_0+ct&gt;0\)</span>. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, this interval is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. If <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, it is <span class="math" data-tex="\((-r_0/c,\infty)\)">\((-r_0/c,\infty)\)</span>; if <span class="math" data-tex="\(c&lt;0\)">\(c&lt;0\)</span>, it is <span class="math" data-tex="\((-\infty,-r_0/c)\)">\((-\infty,-r_0/c)\)</span>. With initial coordinate velocity <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, <span class="math" data-tex="\(c=e^{x_0}v_0\)">\(c=e^{x_0}v_0\)</span> and <span class="math" data-tex="\(r_0=e^{x_0}\)">\(r_0=e^{x_0}\)</span>.</p>
+<p>For a coordinate check, the one-dimensional Levi-Civita formula gives <span class="math" data-tex="\(\Gamma^x_{xx}=1\)">\(\Gamma^x_{xx}=1\)</span>, and (7.2) satisfies <span class="math" data-tex="\(x&#x27;&#x27;+(x&#x27;)^2=0\)">\(x&#x27;&#x27;+(x&#x27;)^2=0\)</span>. This is the same equation as (6.7), but here it belongs to a different, incomplete metric.</p>
+<p>The sequence <span class="math" data-tex="\(x_j=-\log j\)">\(x_j=-\log j\)</span> has <span class="math" data-tex="\(e^{x_j}=1/j\)">\(e^{x_j}=1/j\)</span>, so (7.1) makes it Cauchy. It cannot converge to any real <span class="math" data-tex="\(x\)">\(x\)</span>, since that would require <span class="math" data-tex="\(e^x=0\)">\(e^x=0\)</span>. The metric is incomplete, consistently with the finite endpoints in (7.2). □</p>
+<h3 id="exercise-7-2-medium-enlarging-a-complete-metric">Exercise 7.2 (medium): enlarging a complete metric</h3>
+<p>Let <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> be smooth Riemannian metrics on the same connected manifold. Assume that <span class="math" data-tex="\(h\)">\(h\)</span> is complete and that some constant <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> satisfies <span class="math" data-tex="\(g(v,v)\ge c^2h(v,v)\)">\(g(v,v)\ge c^2h(v,v)\)</span> for every tangent vector. Prove that <span class="math" data-tex="\(g\)">\(g\)</span> is complete. Decide whether a uniform upper bound for <span class="math" data-tex="\(g\)">\(g\)</span> in terms of <span class="math" data-tex="\(h\)">\(h\)</span> is needed.</p>
+<p><strong>Solution.</strong> For every piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> path, <span class="math" data-tex="\(L_g\ge cL_h\)">\(L_g\ge cL_h\)</span>; taking infima gives</p>
+<span class="math math-display" data-tex="\[
+d_g(x,y)\ge c\,d_h(x,y).
+\tag{7.3}
+\]">\[
+d_g(x,y)\ge c\,d_h(x,y).
+\tag{7.3}
+\]</span>
+<p>A <span class="math" data-tex="\(d_g\)">\(d_g\)</span>-Cauchy sequence is therefore <span class="math" data-tex="\(d_h\)">\(d_h\)</span>-Cauchy. Completeness of <span class="math" data-tex="\(h\)">\(h\)</span> gives a limit <span class="math" data-tex="\(x\)">\(x\)</span> in the <span class="math" data-tex="\(h\)">\(h\)</span>-distance. Both distances induce the manifold topology, by Riemannian connections and convex neighbourhoods, Proposition 1.1. Convergence in <span class="math" data-tex="\(d_h\)">\(d_h\)</span> is thus convergence in that topology and hence in <span class="math" data-tex="\(d_g\)">\(d_g\)</span>. This proves completeness of <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p>No global upper bound is needed. For example, on the line <span class="math" data-tex="\(h=dx^2\)">\(h=dx^2\)</span> and <span class="math" data-tex="\(g=(1+x^2)^2dx^2\)">\(g=(1+x^2)^2dx^2\)</span> satisfy the lower bound with <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, while <span class="math" data-tex="\(g/h=(1+x^2)^2\)">\(g/h=(1+x^2)^2\)</span> is unbounded. The preceding proof still applies. Its use of the common local topology is what supplies convergence in the larger metric. □</p>
+<h3 id="exercise-7-3-medium-the-shortest-route-on-a-flat-cylinder">Exercise 7.3 (medium): the shortest route on a flat cylinder</h3>
+<p>For <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span>, form <span class="math" data-tex="\(C=\mathbb R\times(\mathbb R/\ell\mathbb Z)\)">\(C=\mathbb R\times(\mathbb R/\ell\mathbb Z)\)</span>, with the metric descended from <span class="math" data-tex="\(dx^2+dy^2\)">\(dx^2+dy^2\)</span>. Prove completeness. For representatives <span class="math" data-tex="\(y_0,y_1\)">\(y_0,y_1\)</span>, write <span class="math" data-tex="\(p_i=(x_i,[y_i])\)">\(p_i=(x_i,[y_i])\)</span> and show that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d_C(p_0,p_1)
+=\min_{k\in\mathbb Z}\sqrt{\Delta x^2+\Delta y_k^2},\\
+\Delta x=x_1-x_0,\\
+\Delta y_k=y_1-y_0+k\ell.
+\end{gathered}
+\tag{7.4}
+\]">\[
+\begin{gathered}
+d_C(p_0,p_1)
+=\min_{k\in\mathbb Z}\sqrt{\Delta x^2+\Delta y_k^2},\\
+\Delta x=x_1-x_0,\\
+\Delta y_k=y_1-y_0+k\ell.
+\end{gathered}
+\tag{7.4}
+\]</span>
+<p>Determine when the minimizing geodesic is unique.</p>
+<p><strong>Solution.</strong> The circle factor is the quotient of the line by translations by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. An interval of length less than <span class="math" data-tex="\(\ell\)">\(\ell\)</span> gives a coordinate neighbourhood on it; transition functions are translations. These charts make the metric well defined. They also show that</p>
+<span class="math math-display" data-tex="\[
+P:\mathbb R^2\to C,\qquad
+P(x,y)=(x,[y])
+\]">\[
+P:\mathbb R^2\to C,\qquad
+P(x,y)=(x,[y])
+\]</span>
+<p>is a covering local isometry: take a circle interval shorter than <span class="math" data-tex="\(\ell\)">\(\ell\)</span>; its inverse image consists of its disjoint translates. Euclidean geodesics are lines existing for all times, so <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> is complete. Theorem 5.1 gives completeness of <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>Lift any competing path to <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, starting at <span class="math" data-tex="\((x_0,y_0)\)">\((x_0,y_0)\)</span>, using the path-lifting proof in Theorem 5.1. Its endpoint is <span class="math" data-tex="\((x_1,y_1+k\ell)\)">\((x_1,y_1+k\ell)\)</span> for some integer <span class="math" data-tex="\(k\)">\(k\)</span>, and its length is unchanged by the local isometry. Euclidean displacement bounds that length below by the corresponding quantity in (7.4).</p>
+<p>Conversely each straight segment to one of these lifted endpoints projects to a geodesic of exactly that length. The quantity tends to infinity as <span class="math" data-tex="\(|k|\to\infty\)">\(|k|\to\infty\)</span>, so its infimum over the integers is a minimum. This proves (7.4).</p>
+<p>The minimizing integers are precisely those making <span class="math" data-tex="\(|y_1-y_0+k\ell|\)">\(|y_1-y_0+k\ell|\)</span> smallest. There is one such integer unless <span class="math" data-tex="\(y_1-y_0\)">\(y_1-y_0\)</span> is congruent to <span class="math" data-tex="\(\ell/2\)">\(\ell/2\)</span> modulo <span class="math" data-tex="\(\ell\)">\(\ell\)</span>; in that case there are two, with opposite angular displacements <span class="math" data-tex="\(\ell/2\)">\(\ell/2\)</span> and <span class="math" data-tex="\(-\ell/2\)">\(-\ell/2\)</span>.</p>
+<p>For each integer the Euclidean minimizing affine segment is unique. Indeed equality between length and displacement forces its velocity to be a nonnegative multiple of that displacement; constant speed then fixes its affine parametrization. A minimizing geodesic in <span class="math" data-tex="\(C\)">\(C\)</span> lifts to one of these segments, because its length equals the minimum in (7.4). Hence there is one minimizing geodesic, or exactly two in the half-period case. This includes the constant path as the unique minimizer when the endpoints coincide. □</p>
+<h3 id="exercise-7-4-hard-a-metric-that-controls-an-exhaustion">Exercise 7.4 (hard): a metric that controls an exhaustion</h3>
+<p>Let <span class="math" data-tex="\(h\)">\(h\)</span> be a Riemannian metric on a connected manifold, and suppose a smooth function <span class="math" data-tex="\(\rho:M\to[0,\infty)\)">\(\rho:M\to[0,\infty)\)</span> is proper: the inverse image of every compact set is compact. No completeness of <span class="math" data-tex="\(h\)">\(h\)</span> is assumed. Prove that</p>
+<span class="math math-display" data-tex="\[
+g=(1+|d\rho|_h^2)\,h
+\tag{7.5}
+\]">\[
+g=(1+|d\rho|_h^2)\,h
+\tag{7.5}
+\]</span>
+<p>is complete. Here <span class="math" data-tex="\(|d\rho|_h\)">\(|d\rho|_h\)</span> is the norm of the covector for the inverse metric. Explain how <span class="math" data-tex="\(\rho\)">\(\rho\)</span> prevents a Cauchy sequence from escaping.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(a=|d\rho|_h^2\)">\(a=|d\rho|_h^2\)</span>. This is a smooth nonnegative function, so <span class="math" data-tex="\(g\)">\(g\)</span> is a smooth positive metric. The inverse metric scales by <span class="math" data-tex="\((1+a)^{-1}\)">\((1+a)^{-1}\)</span>; hence</p>
+<span class="math math-display" data-tex="\[
+|d\rho|_g^2=\frac{a}{1+a}\le1.
+\tag{7.6}
+\]">\[
+|d\rho|_g^2=\frac{a}{1+a}\le1.
+\tag{7.6}
+\]</span>
+<p>The covector–vector Cauchy–Schwarz inequality gives</p>
+<span class="math math-display" data-tex="\[
+|(\rho\circ\eta)&#x27;|
+\le |d\rho|_g\,|\eta&#x27;|_g
+\le|\eta&#x27;|_g.
+\]">\[
+|(\rho\circ\eta)&#x27;|
+\le |d\rho|_g\,|\eta&#x27;|_g
+\le|\eta&#x27;|_g.
+\]</span>
+<p>Integrate on each smooth path piece and add. For every path from <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span>, its length bounds <span class="math" data-tex="\(|\rho(y)-\rho(x)|\)">\(|\rho(y)-\rho(x)|\)</span>. Taking the infimum gives</p>
+<span class="math math-display" data-tex="\[
+|\rho(y)-\rho(x)|\le d_g(x,y).
+\tag{7.7}
+\]">\[
+|\rho(y)-\rho(x)|\le d_g(x,y).
+\tag{7.7}
+\]</span>
+<p>Let <span class="math" data-tex="\((x_j)\)">\((x_j)\)</span> be <span class="math" data-tex="\(d_g\)">\(d_g\)</span>-Cauchy. Equation (7.7) makes <span class="math" data-tex="\((\rho(x_j))\)">\((\rho(x_j))\)</span> Cauchy in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, hence bounded. Since <span class="math" data-tex="\(\rho\ge0\)">\(\rho\ge0\)</span>, choose <span class="math" data-tex="\(R\)">\(R\)</span> containing all these values in <span class="math" data-tex="\([0,R]\)">\([0,R]\)</span>. Properness puts the whole sequence in the compact set <span class="math" data-tex="\(\rho^{-1}([0,R])\)">\(\rho^{-1}([0,R])\)</span>. The manifold topology equals the <span class="math" data-tex="\(g\)">\(g\)</span>-distance topology, so it has a <span class="math" data-tex="\(d_g\)">\(d_g\)</span>-convergent subsequence. As in Theorem 3.1, the Cauchy property makes the whole sequence converge to the same point. Thus <span class="math" data-tex="\(g\)">\(g\)</span> is complete.</p>
+<p>The argument does not assert that the original metric <span class="math" data-tex="\(h\)">\(h\)</span> is complete. It enlarges <span class="math" data-tex="\(h\)">\(h\)</span> precisely enough to make changes in the proper function cost length. A sequence escaping every compact set would have unbounded <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-values, which (7.7) excludes for a Cauchy sequence. □</p>
+<h2 id="references">References</h2>
+<p>[Erickson–McKay] J. W. Erickson and B. McKay, <a href="https://arxiv.org/abs/2606.00354v1"><em>Inequivalence of the various notions of completeness for Cartan geometries</em></a>, arXiv:2606.00354v1, 29 May 2026, CC BY 4.0. Section 4.1 presents Clifton's half-cylinder and explains its completeness properties.</p>
+<p>[Meinrenken] E. Meinrenken, <a href="https://www.math.toronto.edu/mein/teaching/LectureNotes/rieall.pdf"><em>Riemannian Geometry</em></a>, lecture notes, University of Toronto, Spring 2002. Section 17 treats radial minimization, Hopf–Rinow, compact distance balls and one-point completeness.</p>
+<p>[Kunzinger–Steinbauer] M. Kunzinger and R. Steinbauer, <a href="https://www.mat.univie.ac.at/~stein/teaching/courses/skripten/rg-2021-04-17.pdf"><em>Riemannian Geometry</em></a>, lecture notes for the fall term 2020, University of Vienna, dated 16 April 2021. Section 2.4 proves the completeness equivalences; Sections 2.2–2.3 discuss continuation and minimizing curves.</p>
+<p>[Wilkins] D. R. Wilkins, <a href="https://www.maths.tcd.ie/~dwilkins/Courses/425/RiemGeom.pdf"><em>A Course in Riemannian Geometry</em></a>, 2005. Section 7.1 proves that a complete local isometry is a surjective covering.</p>
+
+</article></main><footer>Reading support. Authorship and component terms are stated in this lesson; its source is retained unchanged. <a href="../../assets/mathjax/LICENSE">MathJax licence</a> · <a href="../../assets/mathjax/FONT-LICENSES.txt">Font licences</a></footer></body></html>

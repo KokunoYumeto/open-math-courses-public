@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Geodesics, normal coordinates and curvature</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+<style>.lesson .math:not(.math-display){padding-inline-end:2px}</style><style>.lesson .math:not(.math-display){padding-inline-end:2px}</style></head>
+<body><main><nav aria-label="Chapter contents"><ul><li><a href="#part-a">A. From a connection to its trajectories</a></li><li><a href="#part-b">B. Local endpoint coordinates and convexity</a></li><li><a href="#part-c">C. Curvature on tensors and both Bianchi identities</a></li><li><a href="#part-d">D. Curvature derivatives and the geometry of the holonomy bundle</a></li><li><a href="#part-e">E. Coordinate and smooth-jet tests</a></li><li><a href="#part-f">F. Three geometries with explicit geodesics</a></li><li><a href="#part-g">G. Global trajectories and pointwise distinctions</a></li></ul></nav><article class="lesson"><h1 id="geodesics-normal-coordinates-and-curvature">Geodesics, normal coordinates and curvature</h1>
+<p>A connection determines trajectories from initial vectors, local coordinates from its exponential map, and curvature through parallel transport. This lesson proves these constructions for arbitrary smooth linear connections, including torsion, convex neighbourhoods, curvature jets and holonomy. Complete calculations distinguish local and global behaviour on the line, plane, torus and sphere. Every proof uses freely accessible construction material and exact earlier programme proofs.</p>
+<h2 id="part-a">A. From a connection to its trajectories</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a finite-dimensional Hausdorff, second-countable smooth manifold without boundary, and let <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> be a smooth real connection on <span class="math" data-tex="\(TM\)">\(TM\)</span>. No metric or torsion hypothesis is imposed. In a coordinate frame our convention is <span class="math" data-tex="\(\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k\)">\(\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k\)</span>, with summation over repeated indices. The complete earlier chapter <a href="linear-and-affine-connections.html">Linear and affine connections</a>, abbreviated <strong>Linear</strong>, proves derivatives along maps, tangent connectors and all connection axioms. <strong>Local</strong> refers to <a href="local-tools-for-bundles-and-transport.html">Local tools</a>, and <strong>PB</strong> to <a href="principal-bundles-and-associated-bundles.html">Principal bundles</a>.</p>
+<p>The free construction source is Peter W. Michor's exact <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf">author manuscript, <em>Topics in Differential Geometry</em></a>, §§22.6–22.8. Its connector uses the opposite sign for its Christoffel symbol. All formulas below are derived with the programme convention <span class="math" data-tex="\(\nabla=d+A\)">\(\nabla=d+A\)</span>. Local 2.1 supplies the complete ODE proof and Local 1.2 the complete inverse-function proof; the external source replaces neither.</p>
+<p id="theorem-a-1"><strong>Theorem A.1 (maximal geodesics and smooth flow).</strong> A geodesic is a curve satisfying <span class="math" data-tex="\(D_t\dot\gamma=0\)">\(D_t\dot\gamma=0\)</span>. Each initial tangent vector <span class="math" data-tex="\(v\in T_pM\)">\(v\in T_pM\)</span> determines exactly one maximal geodesic <span class="math" data-tex="\(\gamma_v:I_v\to M\)">\(\gamma_v:I_v\to M\)</span>, where <span class="math" data-tex="\(I_v\)">\(I_v\)</span> is an open interval containing zero. The set
+<span class="math math-display" data-tex="\[
+\mathcal D=\{(t,v):t\in I_v\}\subset\mathbb R\times TM
+\]">\[
+\mathcal D=\{(t,v):t\in I_v\}\subset\mathbb R\times TM
+\]</span>
+is open, and <span class="math" data-tex="\((t,v)\mapsto(\gamma_v(t),\dot\gamma_v(t))\)">\((t,v)\mapsto(\gamma_v(t),\dot\gamma_v(t))\)</span> is smooth on it. If a geodesic has zero velocity at one time, it is constant. Thus every nonconstant geodesic has nowhere-zero velocity.</p>
+<p><strong>Proof.</strong> Linear B.2 gives the coordinate equation
+<span class="math math-display" data-tex="\[
+\ddot x^k+\Gamma^k_{ij}(x)\dot x^i\dot x^j=0.
+\tag{A.1}
+\]">\[
+\ddot x^k+\Gamma^k_{ij}(x)\dot x^i\dot x^j=0.
+\tag{A.1}
+\]</span>
+Equivalently <span class="math" data-tex="\((x,v)\)">\((x,v)\)</span> is an integral curve of the smooth field
+<span class="math math-display" data-tex="\[
+S(x,v)=(x,v;v,-\Gamma_x(v,v))\in T_{(x,v)}TM.
+\tag{A.2}
+\]">\[
+S(x,v)=(x,v;v,-\Gamma_x(v,v))\in T_{(x,v)}TM.
+\tag{A.2}
+\]</span>
+This is a global field. Indeed, Linear B.1 constructs the intrinsic horizontal lift <span class="math" data-tex="\(H_u:T_pM\to T_uTM\)">\(H_u:T_pM\to T_uTM\)</span>, with <span class="math" data-tex="\(p=\pi(u)\)">\(p=\pi(u)\)</span>, whose coordinates are <span class="math" data-tex="\((x,u;w,-\Gamma_x(w,u))\)">\((x,u;w,-\Gamma_x(w,u))\)</span>. Setting <span class="math" data-tex="\(S(u)=H_u(u)\)">\(S(u)=H_u(u)\)</span> gives (A.2) without choosing a chart. Its tangent projection to <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(u\)">\(u\)</span>, so every integral curve <span class="math" data-tex="\((x(t),v(t))\)">\((x(t),v(t))\)</span> has <span class="math" data-tex="\(v=\dot x\)">\(v=\dot x\)</span>, and conversely (A.1) gives an integral curve.</p>
+<p>Local 2.1 gives a unique local integral curve through each tangent vector, with smooth local dependence. Any two such solutions through the same datum agree on the intersection of their time intervals: that intersection is an interval containing zero, and the uniqueness assertion in Local 2.1 applies throughout it. Take the union of all intervals of solutions through the datum. It is an open interval, because each interval contains zero. The matching solutions define a solution there. Any extension would already appear in that union, proving maximality and uniqueness.</p>
+<p>We justify openness and smoothness on the full maximal domain, not merely near time zero. Fix <span class="math" data-tex="\((t_0,v_0)\in\mathcal D\)">\((t_0,v_0)\in\mathcal D\)</span>. The reference solution on the compact time segment between zero and <span class="math" data-tex="\(t_0\)">\(t_0\)</span> has compact image by Local 0.1. Cover that image by the smaller initial-value neighbourhoods from Local 2.1, on each of which a smooth local flow is defined for every time of absolute value less than some positive <span class="math" data-tex="\(\epsilon_i\)">\(\epsilon_i\)</span>. Take a finite subcover and subdivide the reference time segment into steps of size less than half the minimum of those finitely many <span class="math" data-tex="\(\epsilon_i\)">\(\epsilon_i\)</span>. At each step choose a member containing the reference starting value. Compose the corresponding finitely many smooth local solution maps. By continuity, shrinking the initial neighbourhood ensures that every composed intermediate value remains in the next prescribed neighbourhood. A final local flow near the endpoint allows the terminal time to vary near <span class="math" data-tex="\(t_0\)">\(t_0\)</span>. This constructs a smooth solution for all initial data and times in a product neighbourhood of <span class="math" data-tex="\((t_0,v_0)\)">\((t_0,v_0)\)</span>. Uniqueness identifies it with the maximal solution. This proves that <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is open and its flow is smooth. The same reasoning with negative steps covers <span class="math" data-tex="\(t_0&lt;0\)">\(t_0&lt;0\)</span>.</p>
+<p>At <span class="math" data-tex="\((p,0)\)">\((p,0)\)</span>, (A.2) vanishes, so its constant integral curve exists for all time. If another solution has zero velocity at a time, uniqueness with that constant solution makes them agree on their common interval; maximality then makes the original maximal solution constant for all time. This proves the velocity assertion, including dimension zero. □</p>
+<p id="theorem-a-2"><strong>Theorem A.2 (rescaling, exponential domain and completeness).</strong> For <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+I_{av}=a^{-1}I_v,\qquad \gamma_{av}(t)=\gamma_v(at).
+\tag{A.3}
+\]">\[
+I_{av}=a^{-1}I_v,\qquad \gamma_{av}(t)=\gamma_v(at).
+\tag{A.3}
+\]</span>
+For <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span> is the constant curve. Define
+<span class="math math-display" data-tex="\[
+\mathcal E=\{v\in TM:1\in I_v\},\qquad
+\exp(v)=\gamma_v(1).
+\tag{A.4}
+\]">\[
+\mathcal E=\{v\in TM:1\in I_v\},\qquad
+\exp(v)=\gamma_v(1).
+\tag{A.4}
+\]</span>
+Then <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> is an open neighbourhood of the zero section, <span class="math" data-tex="\(\exp:\mathcal E\to M\)">\(\exp:\mathcal E\to M\)</span> is smooth, and every fibre domain <span class="math" data-tex="\(\mathcal E_p\)">\(\mathcal E_p\)</span> is star-shaped about zero. Whenever either expression is defined,
+<span class="math math-display" data-tex="\[
+\exp_p(tv)=\gamma_v(t).
+\tag{A.5}
+\]">\[
+\exp_p(tv)=\gamma_v(t).
+\tag{A.5}
+\]</span>
+The connection is geodesically complete, meaning <span class="math" data-tex="\(I_v=\mathbb R\)">\(I_v=\mathbb R\)</span> for every <span class="math" data-tex="\(v\)">\(v\)</span>, if and only if <span class="math" data-tex="\(\mathcal E=TM\)">\(\mathcal E=TM\)</span>. On a nonconstant geodesic a regular <span class="math" data-tex="\(C^2\)">\(C^2\)</span> change of parameter preserves the geodesic equation if and only if the change is affine with nonzero slope.</p>
+<p><strong>Proof.</strong> The chain rule in Linear B.2 gives
+<span class="math math-display" data-tex="\[
+D_t\frac d{dt}\gamma_v(at)=a^2(D_s\dot\gamma_v)(at)=0.
+\]">\[
+D_t\frac d{dt}\gamma_v(at)=a^2(D_s\dot\gamma_v)(at)=0.
+\]</span>
+Its initial velocity is <span class="math" data-tex="\(av\)">\(av\)</span>; A.1 identifies it with <span class="math" data-tex="\(\gamma_{av}\)">\(\gamma_{av}\)</span> on <span class="math" data-tex="\(a^{-1}I_v\)">\(a^{-1}I_v\)</span>. Applying the same argument with <span class="math" data-tex="\(1/a\)">\(1/a\)</span> proves equality of the maximal intervals: a proper extension on either side would extend the other by inverse rescaling. This proves (A.3), including negative <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>Openness and smoothness in (A.4) follow by restricting A.1's domain and flow to time one. Every zero vector belongs to it by the constant solution. If <span class="math" data-tex="\(v\in\mathcal E_p\)">\(v\in\mathcal E_p\)</span> and <span class="math" data-tex="\(0&lt;a\le1\)">\(0&lt;a\le1\)</span>, then <span class="math" data-tex="\(a\in I_v\)">\(a\in I_v\)</span>, since <span class="math" data-tex="\(I_v\)">\(I_v\)</span> is an interval containing zero and one. Equation (A.3) gives <span class="math" data-tex="\(av\in\mathcal E_p\)">\(av\in\mathcal E_p\)</span>; the case <span class="math" data-tex="\(a=0\)">\(a=0\)</span> is already proved. The same equation gives (A.5) and equality of its two domains, also for negative <span class="math" data-tex="\(t\)">\(t\)</span>, with the case <span class="math" data-tex="\(t=0\)">\(t=0\)</span> immediate. Completeness implies <span class="math" data-tex="\(\mathcal E=TM\)">\(\mathcal E=TM\)</span>. Conversely, if every vector belongs to <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, then every multiple <span class="math" data-tex="\(tv\)">\(tv\)</span> does; (A.5) makes every real <span class="math" data-tex="\(t\)">\(t\)</span> belong to <span class="math" data-tex="\(I_v\)">\(I_v\)</span>, proving completeness.</p>
+<p>For a general <span class="math" data-tex="\(C^2\)">\(C^2\)</span> parameter function <span class="math" data-tex="\(s=\phi(t)\)">\(s=\phi(t)\)</span>, the chain and product rules give
+<span class="math math-display" data-tex="\[
+D_t\frac d{dt}\gamma(\phi(t))
+ =\phi'(t)^2D_s\dot\gamma(\phi(t))+\phi''(t)\dot\gamma(\phi(t)).
+\tag{A.6}
+\]">\[
+D_t\frac d{dt}\gamma(\phi(t))
+ =\phi'(t)^2D_s\dot\gamma(\phi(t))+\phi''(t)\dot\gamma(\phi(t)).
+\tag{A.6}
+\]</span>
+For a nonconstant geodesic A.1 makes the last vector nowhere zero, so this vanishes precisely when <span class="math" data-tex="\(\phi''=0\)">\(\phi''=0\)</span>. Local 0.3 then gives <span class="math" data-tex="\(\phi(t)=at+b\)">\(\phi(t)=at+b\)</span> on the parameter interval. Regularity means <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. Conversely every such change satisfies (A.6). A constant curve remains geodesic under every change of parameter; the nonconstant hypothesis is essential. □</p>
+<p id="theorem-a-3"><strong>Theorem A.3 (what the geodesics determine).</strong> Two connections have the same affinely parametrized geodesics with every initial tangent vector if and only if their difference <span class="math" data-tex="\(B(X,Y)\)">\(B(X,Y)\)</span> is alternating in <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>. Every connection therefore has the same geodesics as the unique torsion-free connection
+<span class="math math-display" data-tex="\[
+\nabla^{\mathrm s}_XY=\nabla_XY-\tfrac12T(X,Y).
+\tag{A.7}
+\]">\[
+\nabla^{\mathrm s}_XY=\nabla_XY-\tfrac12T(X,Y).
+\tag{A.7}
+\]</span>
+Conversely, a smooth second-order field on all of <span class="math" data-tex="\(TM\)">\(TM\)</span>, homogeneous of degree two in its fibre acceleration, determines a unique torsion-free connection whose geodesic field it is. Smoothness at the zero section is part of this assertion.</p>
+<p><strong>Proof.</strong> Linear A.3 makes the difference a bilinear tensor <span class="math" data-tex="\(B\)">\(B\)</span>. In (A.1), changing the connection adds <span class="math" data-tex="\(B(\dot\gamma,\dot\gamma)\)">\(B(\dot\gamma,\dot\gamma)\)</span>. If <span class="math" data-tex="\(B\)">\(B\)</span> is alternating, this is zero and A.1's uniqueness gives the same maximal geodesics. Conversely equality of the curves with initial velocity <span class="math" data-tex="\(v\)">\(v\)</span>, evaluated in their two equations at time zero, gives <span class="math" data-tex="\(B_p(v,v)=0\)">\(B_p(v,v)=0\)</span> for every <span class="math" data-tex="\(p,v\)">\(p,v\)</span>. Expanding <span class="math" data-tex="\(B(v+w,v+w)=0\)">\(B(v+w,v+w)=0\)</span> and subtracting the two diagonal equalities gives <span class="math" data-tex="\(B(v,w)+B(w,v)=0\)">\(B(v,w)+B(w,v)=0\)</span>. Linear D.4 proves that (A.7) is torsion-free and preserves the geodesic equation. If two torsion-free connections had these same geodesics, their difference would be both symmetric, by their torsion formula, and alternating, hence zero.</p>
+<p>For the converse write a second-order field in a chart as <span class="math" data-tex="\((x,v;v,F(x,v))\)">\((x,v;v,F(x,v))\)</span>, with <span class="math" data-tex="\(F(x,av)=a^2F(x,v)\)">\(F(x,av)=a^2F(x,v)\)</span> for every real <span class="math" data-tex="\(a\)">\(a\)</span>. Differentiate this identity twice in <span class="math" data-tex="\(a\)">\(a\)</span> at zero, using smoothness there and Local 0.3. It gives
+<span class="math math-display" data-tex="\[
+F(x,v)=\tfrac12D_v^2F(x,0)[v,v].
+\]">\[
+F(x,v)=\tfrac12D_v^2F(x,0)[v,v].
+\]</span>
+The second derivative is a symmetric bilinear form by the mixed-partial proof in PB C.3. Set <span class="math" data-tex="\(\Gamma_x(v,w)=-\tfrac12D_v^2F(x,0)[v,w]\)">\(\Gamma_x(v,w)=-\tfrac12D_v^2F(x,0)[v,w]\)</span>. These coefficients are smooth and symmetric. Under a coordinate change <span class="math" data-tex="\(y=f(x)\)">\(y=f(x)\)</span>, the acceleration transforms as <span class="math" data-tex="\(F'(f(x),df_xv)=df_xF(x,v)+d^2f_x(v,v)\)">\(F'(f(x),df_xv)=df_xF(x,v)+d^2f_x(v,v)\)</span>. Polarizing this equality yields
+<span class="math math-display" data-tex="\[
+\Gamma'_{f(x)}(df_xv,df_xw)
+ =df_x\Gamma_x(v,w)-d^2f_x(v,w).
+\tag{A.8}
+\]">\[
+\Gamma'_{f(x)}(df_xv,df_xw)
+ =df_x\Gamma_x(v,w)-d^2f_x(v,w).
+\tag{A.8}
+\]</span>
+This is exactly the connection change rule: for local fields <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, the extra term <span class="math" data-tex="\(d^2f(X,Y)\)">\(d^2f(X,Y)\)</span> in <span class="math" data-tex="\(d(df\,Y)(X)\)">\(d(df\,Y)(X)\)</span> cancels the last term of (A.8). Thus <span class="math" data-tex="\(dY(X)+\Gamma(X,Y)\)">\(dY(X)+\Gamma(X,Y)\)</span> defines a global derivative satisfying the axioms, and its symmetry gives zero torsion by Linear D.1. Its field is the prescribed one. The first part proves uniqueness. A homogeneous field defined only away from zero has not met the smoothness hypothesis and is not covered by this conclusion. □</p>
+<p id="example-a-4"><strong>Example A.4 (a globally invertible exponential for an incomplete connection).</strong> On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> take <span class="math" data-tex="\(\nabla_{\partial_x}\partial_x=\partial_x\)">\(\nabla_{\partial_x}\partial_x=\partial_x\)</span>. For initial point <span class="math" data-tex="\(p\)">\(p\)</span> and velocity <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+\gamma_v(t)=p+\log(1+vt),\qquad
+I_v=\{t:1+vt&gt;0\}.
+\tag{A.9}
+\]">\[
+\gamma_v(t)=p+\log(1+vt),\qquad
+I_v=\{t:1+vt&gt;0\}.
+\tag{A.9}
+\]</span>
+For <span class="math" data-tex="\(v=0\)">\(v=0\)</span> this means the constant curve on all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. The full exponential domain at every <span class="math" data-tex="\(p\)">\(p\)</span> is <span class="math" data-tex="\((-1,\infty)\)">\((-1,\infty)\)</span>, and
+<span class="math math-display" data-tex="\[
+\exp_p(v)=p+\log(1+v)
+\tag{A.10}
+\]">\[
+\exp_p(v)=p+\log(1+v)
+\tag{A.10}
+\]</span>
+is a diffeomorphism of that domain onto <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Nevertheless the connection is incomplete.</p>
+<p><strong>Proof.</strong> Apply Local 2.3 to the multiplicative Lie group <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span>. Its identity-starting exponential <span class="math" data-tex="\(E\)">\(E\)</span> satisfies <span class="math" data-tex="\(E'=E\)">\(E'=E\)</span>, <span class="math" data-tex="\(E(0)=1\)">\(E(0)=1\)</span>, <span class="math" data-tex="\(E(t+s)=E(t)E(s)\)">\(E(t+s)=E(t)E(s)\)</span>, and is positive by its target. Hence it is strictly increasing. For <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, <span class="math" data-tex="\(E(t)=1+\int_0^tE(s)\,ds\ge1+t\)">\(E(t)=1+\int_0^tE(s)\,ds\ge1+t\)</span>, so it tends to infinity; <span class="math" data-tex="\(E(-t)=1/E(t)\)">\(E(-t)=1/E(t)\)</span> makes it tend to zero as <span class="math" data-tex="\(t\to-\infty\)">\(t\to-\infty\)</span>. Every <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span> is attained: choose <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span> with <span class="math" data-tex="\(E(a)&lt;u&lt;E(b)\)">\(E(a)&lt;u&lt;E(b)\)</span> and take <span class="math" data-tex="\(c=\sup\{t\in[a,b]:E(t)\le u\}\)">\(c=\sup\{t\in[a,b]:E(t)\le u\}\)</span>, using Local 0.0's real supremum property. Continuity forces <span class="math" data-tex="\(E(c)=u\)">\(E(c)=u\)</span>; a smaller value would permit a larger member of the set, and a larger value would exclude members approaching <span class="math" data-tex="\(c\)">\(c\)</span> from below. Thus the image is <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Local 1.2 supplies a smooth inverse <span class="math" data-tex="\(\log\)">\(\log\)</span>, whose derivative is <span class="math" data-tex="\(1/u\)">\(1/u\)</span> by differentiating <span class="math" data-tex="\(E(\log u)=u\)">\(E(\log u)=u\)</span>. This justifies all logarithmic facts used here.</p>
+<p>For (A.9), direct differentiation gives <span class="math" data-tex="\(\dot\gamma=v/(1+vt)\)">\(\dot\gamma=v/(1+vt)\)</span> and <span class="math" data-tex="\(\ddot\gamma=-v^2/(1+vt)^2=-\dot\gamma^2\)">\(\ddot\gamma=-v^2/(1+vt)^2=-\dot\gamma^2\)</span>, which is (A.1) for this connection. The initial data are <span class="math" data-tex="\(p,v\)">\(p,v\)</span>; A.1 supplies uniqueness. For nonzero <span class="math" data-tex="\(v\)">\(v\)</span>, the finite boundary time of the indicated interval has <span class="math" data-tex="\(1+vt\to0^+\)">\(1+vt\to0^+\)</span>, hence <span class="math" data-tex="\(\gamma_v(t)\to-\infty\)">\(\gamma_v(t)\to-\infty\)</span>. No continuous extension as an <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>-valued curve across that endpoint exists. The other endpoint is infinite, proving maximality. Evaluating at time one gives the domain and (A.10). Its smooth inverse is <span class="math" data-tex="\(q\mapsto E(q-p)-1\)">\(q\mapsto E(q-p)-1\)</span>. Taking, for instance, <span class="math" data-tex="\(v=1\)">\(v=1\)</span> gives the finite lower endpoint <span class="math" data-tex="\(-1\)">\(-1\)</span>, proving incompleteness. □</p>
+<h2 id="part-b">B. Local endpoint coordinates and convexity</h2>
+<p>Michor's exact free author manuscript, §22.7, supplies the exponential-map construction used here. We prove the stronger endpoint uniqueness needed for convex neighbourhoods by an explicit speed estimate. The argument applies to every smooth linear connection, with arbitrary torsion; no length-minimization theorem for a metric is assumed.</p>
+<p id="theorem-b-1"><strong>Theorem B.1 (normal coordinates and local endpoint inversion).</strong> The vertical differential <span class="math" data-tex="\((d\exp_p)_0:T_pM\to T_pM\)">\((d\exp_p)_0:T_pM\to T_pM\)</span> is the identity. Some open ball about zero in <span class="math" data-tex="\(T_pM\)">\(T_pM\)</span> is mapped diffeomorphically onto a neighbourhood of <span class="math" data-tex="\(p\)">\(p\)</span>. With a chosen basis, the inverse coordinates satisfy
+<span class="math math-display" data-tex="\[
+x(\exp_p(tv))=tv
+\tag{B.1}
+\]">\[
+x(\exp_p(tv))=tv
+\tag{B.1}
+\]</span>
+when <span class="math" data-tex="\(tv\)">\(tv\)</span> lies in this ball. At their centre,
+<span class="math math-display" data-tex="\[
+\Gamma^k_{ij}(p)+\Gamma^k_{ji}(p)=0,\qquad
+\Gamma^k_{ij}(p)=\tfrac12 T^k_{ij}(p).
+\tag{B.2}
+\]">\[
+\Gamma^k_{ij}(p)+\Gamma^k_{ji}(p)=0,\qquad
+\Gamma^k_{ij}(p)=\tfrac12 T^k_{ij}(p).
+\tag{B.2}
+\]</span>
+Thus all coefficients vanish there exactly when the torsion vanishes there. Moreover, near <span class="math" data-tex="\((p,0)\)">\((p,0)\)</span> in <span class="math" data-tex="\(TM\)">\(TM\)</span>, the endpoint map
+<span class="math math-display" data-tex="\[
+\Psi(v)=(\pi(v),\exp(v))
+\tag{B.3}
+\]">\[
+\Psi(v)=(\pi(v),\exp(v))
+\tag{B.3}
+\]</span>
+is a diffeomorphism onto an open neighbourhood of <span class="math" data-tex="\((p,p)\)">\((p,p)\)</span> in <span class="math" data-tex="\(M\times M\)">\(M\times M\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(v\in T_pM\)">\(v\in T_pM\)</span>, equation (A.5) gives
+<span class="math" data-tex="\((d\exp_p)_0v=\left.\frac d{dt}\right|_0\gamma_v(t)=v\)">\((d\exp_p)_0v=\left.\frac d{dt}\right|_0\gamma_v(t)=v\)</span>.
+Local 1.2 makes <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> a diffeomorphism between neighbourhoods of zero and <span class="math" data-tex="\(p\)">\(p\)</span>. Restrict its source to a smaller open Euclidean ball in a chosen basis. The restricted image is open because the original diffeomorphism has a continuous inverse. The inverse coordinates then give (B.1). Their tangent identification at <span class="math" data-tex="\(p\)">\(p\)</span> is the chosen basis, by the just-proved differential.</p>
+<p>Each curve <span class="math" data-tex="\(t\mapsto tv\)">\(t\mapsto tv\)</span> is the coordinate expression of a geodesic near time zero. Substitution in (A.1) at zero yields <span class="math" data-tex="\(\Gamma_p(v,v)=0\)">\(\Gamma_p(v,v)=0\)</span> for every <span class="math" data-tex="\(v\)">\(v\)</span>. Polarization gives the first equality in (B.2). Linear D.1 gives <span class="math" data-tex="\(T^k_{ij}=\Gamma^k_{ij}-\Gamma^k_{ji}\)">\(T^k_{ij}=\Gamma^k_{ij}-\Gamma^k_{ji}\)</span> in any coordinate frame, proving the second equality and its two-way vanishing assertion. More generally these coordinates satisfy <span class="math" data-tex="\(\Gamma_x(x,x)=0\)">\(\Gamma_x(x,x)=0\)</span> at every point in their radial domain: at <span class="math" data-tex="\(x=tv\)">\(x=tv\)</span>, the radial geodesic has zero coordinate acceleration and constant velocity <span class="math" data-tex="\(v\)">\(v\)</span>; multiply its equation by <span class="math" data-tex="\(t^2\)">\(t^2\)</span>. The case <span class="math" data-tex="\(x=0\)">\(x=0\)</span> was already handled.</p>
+<p>Use a coordinate trivialization of <span class="math" data-tex="\(TM\)">\(TM\)</span>. Along the zero section, <span class="math" data-tex="\(\exp_x(0)=x\)">\(\exp_x(0)=x\)</span>, so the derivative of <span class="math" data-tex="\(\exp\)">\(\exp\)</span> in the base direction is the identity. Its fibre derivative is the identity by the first part. Thus
+<span class="math math-display" data-tex="\[
+d\Psi_{(p,0)}=
+\begin{pmatrix}I&amp;0\\ I&amp;I\end{pmatrix}.
+\]">\[
+d\Psi_{(p,0)}=
+\begin{pmatrix}I&amp;0\\ I&amp;I\end{pmatrix}.
+\]</span>
+Its inverse sends <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> to <span class="math" data-tex="\((a,b-a)\)">\((a,b-a)\)</span>. Local 1.2 applies and proves the last assertion. This is a local inverse near one diagonal point; no assertion of global injectivity of the full exponential domain is being used. □</p>
+<p id="lemma-b-2"><strong>Lemma B.2 (a small contained geodesic cannot have a large velocity).</strong> Suppose the connection coefficients on a Euclidean coordinate ball satisfy
+<span class="math math-display" data-tex="\[
+|\Gamma_x(v,v)|\le C|v|^2
+\tag{B.4}
+\]">\[
+|\Gamma_x(v,v)|\le C|v|^2
+\tag{B.4}
+\]</span>
+for a constant <span class="math" data-tex="\(C\ge0\)">\(C\ge0\)</span>. Choose <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> such that
+<span class="math" data-tex="\(16C\rho\le\tfrac12\)">\(16C\rho\le\tfrac12\)</span> and <span class="math" data-tex="\(e^{8C\rho}&lt;2\)">\(e^{8C\rho}&lt;2\)</span>.
+Every geodesic <span class="math" data-tex="\(\gamma:[0,1]\to B(0,\rho)\)">\(\gamma:[0,1]\to B(0,\rho)\)</span> has
+<span class="math math-display" data-tex="\[
+\max_{0\le t\le1}|\dot\gamma(t)|&lt;16\rho.
+\tag{B.5}
+\]">\[
+\max_{0\le t\le1}|\dot\gamma(t)|&lt;16\rho.
+\tag{B.5}
+\]</span></p>
+<p><strong>Proof.</strong> The constant case is immediate. Otherwise A.1 makes the speed <span class="math" data-tex="\(w=|\dot\gamma|\)">\(w=|\dot\gamma|\)</span> positive everywhere. Its Euclidean arclength parameter
+<span class="math" data-tex="\(\ell(t)=\int_0^t w(r)\,dr\)">\(\ell(t)=\int_0^t w(r)\,dr\)</span> is smooth with positive derivative, and has a smooth inverse on its image by Local 1.2. Write <span class="math" data-tex="\(u=\dot\gamma/w\)">\(u=\dot\gamma/w\)</span> for its unit tangent. Differentiating and using (A.1), (B.4) gives
+<span class="math math-display" data-tex="\[
+\left|\frac{du}{d\ell}\right|\le2C,\qquad
+\left|\frac{d\log w}{d\ell}\right|\le C.
+\tag{B.6}
+\]">\[
+\left|\frac{du}{d\ell}\right|\le2C,\qquad
+\left|\frac{d\log w}{d\ell}\right|\le C.
+\tag{B.6}
+\]</span>
+For detail, <span class="math" data-tex="\(w'=\dot\gamma\cdot\ddot\gamma/w\)">\(w'=\dot\gamma\cdot\ddot\gamma/w\)</span>, so <span class="math" data-tex="\(|w'|\le|\ddot\gamma|\le Cw^2\)">\(|w'|\le|\ddot\gamma|\le Cw^2\)</span>. Therefore <span class="math" data-tex="\(u'=\ddot\gamma/w-\dot\gamma w'/w^2\)">\(u'=\ddot\gamma/w-\dot\gamma w'/w^2\)</span> has norm at most <span class="math" data-tex="\(2Cw\)">\(2Cw\)</span>; division by <span class="math" data-tex="\(\ell'=w\)">\(\ell'=w\)</span> gives the first bound. The second is <span class="math" data-tex="\(|w'|/w^2\le C\)">\(|w'|/w^2\le C\)</span>. The dot-product estimate used here follows by expanding the nonnegative square <span class="math" data-tex="\(|a-tb|^2\)">\(|a-tb|^2\)</span> and minimizing over <span class="math" data-tex="\(t\)">\(t\)</span>. The logarithm and its derivative were proved in A.4.</p>
+<p>Let <span class="math" data-tex="\(L=\ell(1)\)">\(L=\ell(1)\)</span>. If <span class="math" data-tex="\(L\ge8\rho\)">\(L\ge8\rho\)</span>, the first estimate, integrated with Local 0.3, gives <span class="math" data-tex="\(u(0)\cdot u(\ell)\ge1-2C\ell\ge\tfrac12\)">\(u(0)\cdot u(\ell)\ge1-2C\ell\ge\tfrac12\)</span> for <span class="math" data-tex="\(0\le\ell\le8\rho\)">\(0\le\ell\le8\rho\)</span>. Integrating <span class="math" data-tex="\(d\gamma/d\ell=u\)">\(d\gamma/d\ell=u\)</span> then gives a displacement of at least <span class="math" data-tex="\(4\rho\)">\(4\rho\)</span> in the <span class="math" data-tex="\(u(0)\)">\(u(0)\)</span> direction over that portion of the curve. But two points in <span class="math" data-tex="\(B(0,\rho)\)">\(B(0,\rho)\)</span> have distance less than <span class="math" data-tex="\(2\rho\)">\(2\rho\)</span>, a contradiction. Hence <span class="math" data-tex="\(L&lt;8\rho\)">\(L&lt;8\rho\)</span>.</p>
+<p>The second estimate in (B.6) gives <span class="math" data-tex="\(w(t)\le e^{CL}w(r)\)">\(w(t)\le e^{CL}w(r)\)</span> for every two times, by integration and the increasing exponential of A.4. Integrating with respect to <span class="math" data-tex="\(r\)">\(r\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> yields <span class="math" data-tex="\(w(t)\le e^{CL}L&lt;2(8\rho)=16\rho\)">\(w(t)\le e^{CL}L&lt;2(8\rho)=16\rho\)</span>. This proves (B.5). Both required choices of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> are possible by continuity of the exponential at zero, including <span class="math" data-tex="\(C=0\)">\(C=0\)</span>. □</p>
+<p id="theorem-b-3"><strong>Theorem B.3 (convex normal neighbourhoods for arbitrary connections).</strong> Every point has arbitrarily small open neighbourhoods <span class="math" data-tex="\(V\)">\(V\)</span> such that any <span class="math" data-tex="\(x,y\in V\)">\(x,y\in V\)</span> are joined by exactly one affinely parametrized geodesic <span class="math" data-tex="\([0,1]\to V\)">\([0,1]\to V\)</span> with endpoints <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. That segment depends smoothly on <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>. For each <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span> there is an open star-shaped neighbourhood <span class="math" data-tex="\(W_x\subset T_xM\)">\(W_x\subset T_xM\)</span> of zero such that <span class="math" data-tex="\(\exp_x:W_x\to V\)">\(\exp_x:W_x\to V\)</span> is a diffeomorphism.</p>
+<p><strong>Proof.</strong> Dimension zero is immediate with <span class="math" data-tex="\(V=\{p\}\)">\(V=\{p\}\)</span>, <span class="math" data-tex="\(W_p=\{0\}\)">\(W_p=\{0\}\)</span>. Otherwise put <span class="math" data-tex="\(p=0\)">\(p=0\)</span> in a coordinate chart contained in any prescribed neighbourhood. Choose a closed coordinate ball inside that chart. Smoothness and compactness, Local 0.1, bound the finitely many coefficients there and therefore give (B.4) for some <span class="math" data-tex="\(C\)">\(C\)</span>. Shrink its radius to <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span> with <span class="math" data-tex="\(2CR\le1\)">\(2CR\le1\)</span>, retaining the same bound. Along a geodesic lying in <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{d^2}{dt^2}|\gamma(t)|^2
+=2|\dot\gamma|^2-2\gamma\cdot\Gamma_\gamma(\dot\gamma,\dot\gamma)
+\ge|\dot\gamma|^2\ge0.
+\tag{B.7}
+\]">\[
+\frac{d^2}{dt^2}|\gamma(t)|^2
+=2|\dot\gamma|^2-2\gamma\cdot\Gamma_\gamma(\dot\gamma,\dot\gamma)
+\ge|\dot\gamma|^2\ge0.
+\tag{B.7}
+\]</span></p>
+<p>B.1 gives an open neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> in the coordinate tangent bundle on which <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is a diffeomorphism. We may shrink <span class="math" data-tex="\(U\)">\(U\)</span> so that every initial vector in it has a geodesic on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> lying in <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>. Here is the uniform justification. The constant zero solution exists at every time; A.1's open flow domain and continuity give, at each <span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span>, a product of a time neighbourhood and an initial-data neighbourhood on which solutions are defined and their base values lie in <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>. Finitely many time neighbourhoods cover <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>; intersect their initial-data neighbourhoods. This open neighbourhood of <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> has the required property. Restrict the inverse-function neighbourhood to its intersection with it; its image is still open about <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> small enough that <span class="math" data-tex="\(V=B(0,\rho)\)">\(V=B(0,\rho)\)</span> satisfies all of the following: <span class="math" data-tex="\(V\subset B(0,R)\)">\(V\subset B(0,R)\)</span>, <span class="math" data-tex="\(V\times V\subset\Psi(U)\)">\(V\times V\subset\Psi(U)\)</span>, <span class="math" data-tex="\(\{(x,v):|x|&lt;\rho,\ |v|&lt;16\rho\}\subset U\)">\(\{(x,v):|x|&lt;\rho,\ |v|&lt;16\rho\}\subset U\)</span>, and the two inequalities of B.2. Each containment follows from openness about the relevant origin by reducing <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; the inequalities follow as in B.2.</p>
+<p>For <span class="math" data-tex="\(x,y\in V\)">\(x,y\in V\)</span>, the inverse <span class="math" data-tex="\(\Psi^{-1}(x,y)=(x,v(x,y))\)">\(\Psi^{-1}(x,y)=(x,v(x,y))\)</span> is smooth and supplies a geodesic joining them, lying initially by construction in <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span> for its entire parameter interval. Its squared coordinate norm is convex by (B.7), hence bounded above by the affine interpolation of its endpoint values. To verify this elementary convexity step, the fundamental theorem makes the derivative of a function with nonnegative second derivative nondecreasing. Its average derivative on <span class="math" data-tex="\([0,t]\)">\([0,t]\)</span> is at most its average derivative on <span class="math" data-tex="\([t,1]\)">\([t,1]\)</span>; rearranging gives <span class="math" data-tex="\(f(t)\le(1-t)f(0)+tf(1)\)">\(f(t)\le(1-t)f(0)+tf(1)\)</span>. Apply this to <span class="math" data-tex="\(f=|\gamma|^2\)">\(f=|\gamma|^2\)</span>. Both endpoint values are less than <span class="math" data-tex="\(\rho^2\)">\(\rho^2\)</span>; thus this geodesic stays in <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>Any other geodesic with the same endpoints and entirely contained in <span class="math" data-tex="\(V\)">\(V\)</span> has initial speed less than <span class="math" data-tex="\(16\rho\)">\(16\rho\)</span>, by B.2. Its initial vector therefore lies in <span class="math" data-tex="\(U\)">\(U\)</span>. Injectivity of <span class="math" data-tex="\(\Psi|_U\)">\(\Psi|_U\)</span> forces that vector to equal <span class="math" data-tex="\(v(x,y)\)">\(v(x,y)\)</span>, and A.1 forces equality of the curves. This proves uniqueness among all segments contained in <span class="math" data-tex="\(V\)">\(V\)</span>, including ones not initially assumed to lie in the small endpoint-inverse family.</p>
+<p>Fix <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span> and put <span class="math" data-tex="\(W_x=\{v(x,y):y\in V\}\)">\(W_x=\{v(x,y):y\in V\}\)</span>. Since <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> preserves the base coordinate, its inverse restricts on each slice to a smooth inverse for <span class="math" data-tex="\(\exp_x\)">\(\exp_x\)</span>. The set <span class="math" data-tex="\(W_x\)">\(W_x\)</span> is open in <span class="math" data-tex="\(T_xM\)">\(T_xM\)</span>, by restricting the open source and target of this fibre-preserving diffeomorphism, and it contains zero by the unique constant segment. For <span class="math" data-tex="\(v=v(x,y)\)">\(v=v(x,y)\)</span> and <span class="math" data-tex="\(0&lt;t\le1\)">\(0&lt;t\le1\)</span>, the reparametrized initial portion <span class="math" data-tex="\(s\mapsto\gamma_v(ts)\)">\(s\mapsto\gamma_v(ts)\)</span> lies in <span class="math" data-tex="\(V\)">\(V\)</span> and has initial vector <span class="math" data-tex="\(tv\)">\(tv\)</span>. B.2 puts that vector in <span class="math" data-tex="\(U\)">\(U\)</span>; uniqueness just proved identifies it with <span class="math" data-tex="\(v(x,\gamma_v(t))\)">\(v(x,\gamma_v(t))\)</span>. Hence <span class="math" data-tex="\(tv\in W_x\)">\(tv\in W_x\)</span>, and <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is already included. This proves star-shapedness and every assertion. □</p>
+<p id="theorem-b-4"><strong>Theorem B.4 (a normal frame with a prescribed value).</strong> For a real or complex vector bundle with connection, any frame at <span class="math" data-tex="\(p\)">\(p\)</span> extends to a smooth local frame whose potential is zero at <span class="math" data-tex="\(p\)">\(p\)</span>. In a tangent bundle this does not require zero torsion.</p>
+<p><strong>Proof.</strong> Begin with a local frame having the prescribed value: multiply any frame by the constant invertible matrix needed at <span class="math" data-tex="\(p\)">\(p\)</span>. Choose real coordinates with <span class="math" data-tex="\(x(p)=0\)">\(x(p)=0\)</span> and write its potential as <span class="math" data-tex="\(A=\sum_iA_i\,dx^i\)">\(A=\sum_iA_i\,dx^i\)</span>. Put
+<span class="math math-display" data-tex="\[
+g(x)=I-\sum_i x^i A_i(p).
+\tag{B.8}
+\]">\[
+g(x)=I-\sum_i x^i A_i(p).
+\tag{B.8}
+\]</span>
+It is invertible near <span class="math" data-tex="\(p\)">\(p\)</span>, since <span class="math" data-tex="\(g(p)=I\)">\(g(p)=I\)</span> and matrix inversion is open and smooth by Local 0.4. This holds for complex matrices as proved in Linear A.2. The changed frame <span class="math" data-tex="\(e'=eg\)">\(e'=eg\)</span> has the same value at <span class="math" data-tex="\(p\)">\(p\)</span>, and Linear A.1 gives <span class="math" data-tex="\(A'=g^{-1}Ag+g^{-1}dg\)">\(A'=g^{-1}Ag+g^{-1}dg\)</span>. At <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(dg=-A(p)\)">\(dg=-A(p)\)</span>, so <span class="math" data-tex="\(A'(p)=0\)">\(A'(p)=0\)</span>. On <span class="math" data-tex="\(TM\)">\(TM\)</span>, Linear D.1 then gives <span class="math" data-tex="\(T(e'_i,e'_j)(p)=-[e'_i,e'_j](p)\)">\(T(e'_i,e'_j)(p)=-[e'_i,e'_j](p)\)</span>. Thus such a frame can be noncoordinate when torsion is nonzero; the restriction in (B.2) on normal coordinate coefficients and this unrestricted frame construction are consistent. □</p>
+<h2 id="part-c">C. Curvature on tensors and both Bianchi identities</h2>
+<p>The construction source for this part is Peter W. Michor's freely accessible <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf">author manuscript, §§24.3–24.4</a>. We use the programme convention <span class="math" data-tex="\(\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k\)">\(\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k\)</span>; Michor's displayed acceleration coefficients have the opposite sign. All formulas below are derived with our convention. <a href="linear-and-affine-connections.html">Linear B.3, C.1 and D.1–D.2</a> supply the complete earlier proofs of curvature, tensor differentiation, torsion and the structure identities.</p>
+<p id="theorem-c-1"><strong>Theorem C.1 (coordinate curvature, tensor action and the second derivative).</strong> Write <span class="math" data-tex="\(R^l{}_{kij}\partial_l=R(\partial_i,\partial_j)\partial_k\)">\(R^l{}_{kij}\partial_l=R(\partial_i,\partial_j)\partial_k\)</span>. For every smooth linear connection,
+<span class="math math-display" data-tex="\[
+R^l{}_{kij}
+=\partial_i\Gamma^l_{jk}-\partial_j\Gamma^l_{ik}
+ +\Gamma^l_{im}\Gamma^m_{jk}-\Gamma^l_{jm}\Gamma^m_{ik}.
+\tag{C.1}
+\]">\[
+R^l{}_{kij}
+=\partial_i\Gamma^l_{jk}-\partial_j\Gamma^l_{ik}
+ +\Gamma^l_{im}\Gamma^m_{jk}-\Gamma^l_{jm}\Gamma^m_{ik}.
+\tag{C.1}
+\]</span>
+Repeated indices are summed. Curvature on any tensor bundle acts by <span class="math" data-tex="\(R(X,Y)\)">\(R(X,Y)\)</span> on each vector factor and by its negative dual action on each covector factor. In particular, for a vector-valued <span class="math" data-tex="\(q\)">\(q\)</span>-covariant tensor <span class="math" data-tex="\(S\)">\(S\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{split}
+(\mathcal R(X,Y)S)(Z_1,\ldots,Z_q)
+={}&amp;R(X,Y)\bigl(S(Z_1,\ldots,Z_q)\bigr)\\
+&amp;-\sum_{\nu=1}^q
+ S(Z_1,\ldots,R(X,Y)Z_\nu,\ldots,Z_q),
+\end{split}
+\tag{C.2}
+\]">\[
+\begin{split}
+(\mathcal R(X,Y)S)(Z_1,\ldots,Z_q)
+={}&amp;R(X,Y)\bigl(S(Z_1,\ldots,Z_q)\bigr)\\
+&amp;-\sum_{\nu=1}^q
+ S(Z_1,\ldots,R(X,Y)Z_\nu,\ldots,Z_q),
+\end{split}
+\tag{C.2}
+\]</span>
+where <span class="math" data-tex="\(\mathcal R(X,Y)=[\nabla_X,\nabla_Y]-\nabla_{[X,Y]}\)">\(\mathcal R(X,Y)=[\nabla_X,\nabla_Y]-\nabla_{[X,Y]}\)</span> uses the induced tensor connection. Set
+<span class="math" data-tex="\(\nabla^2S(X,Y)=\nabla_X(\nabla_Y S)-\nabla_{\nabla_XY}S\)">\(\nabla^2S(X,Y)=\nabla_X(\nabla_Y S)-\nabla_{\nabla_XY}S\)</span>.
+Then
+<span class="math math-display" data-tex="\[
+\nabla^2S(X,Y)-\nabla^2S(Y,X)
+=\mathcal R(X,Y)S-\nabla_{\mathcal T(X,Y)}S.
+\tag{C.3}
+\]">\[
+\nabla^2S(X,Y)-\nabla^2S(Y,X)
+=\mathcal R(X,Y)S-\nabla_{\mathcal T(X,Y)}S.
+\tag{C.3}
+\]</span>
+For functions this becomes
+<span class="math" data-tex="\(\nabla^2f(X,Y)-\nabla^2f(Y,X)=-df(\mathcal T(X,Y))\)">\(\nabla^2f(X,Y)-\nabla^2f(Y,X)=-df(\mathcal T(X,Y))\)</span>.</p>
+<p><strong>Proof.</strong> In the coordinate frame let <span class="math" data-tex="\(A_i\)">\(A_i\)</span> be the matrix with entries
+<span class="math" data-tex="\((A_i)^l{}_k=\Gamma^l_{ik}\)">\((A_i)^l{}_k=\Gamma^l_{ik}\)</span>. Linear B.3 gives
+<span class="math" data-tex="\(R_{ij}=\partial_i A_j-\partial_j A_i+[A_i,A_j]\)">\(R_{ij}=\partial_i A_j-\partial_j A_i+[A_i,A_j]\)</span>. Matrix multiplication gives (C.1), including the order of the two last factors. The same earlier proof establishes tensoriality and skew-symmetry in <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, so this is an intrinsic tensor formula.</p>
+<p>On a tensor product <span class="math" data-tex="\(s\otimes t\)">\(s\otimes t\)</span>, apply the product rule of Linear C.1 twice. The two mixed terms in <span class="math" data-tex="\(\nabla_X\nabla_Y(s\otimes t)\)">\(\nabla_X\nabla_Y(s\otimes t)\)</span> are
+<span class="math" data-tex="\((\nabla_Ys)\otimes(\nabla_Xt)\)">\((\nabla_Ys)\otimes(\nabla_Xt)\)</span> and
+<span class="math" data-tex="\((\nabla_Xs)\otimes(\nabla_Yt)\)">\((\nabla_Xs)\otimes(\nabla_Yt)\)</span>. They occur in the opposite-order derivative as well and cancel in its subtraction. Subtracting the product rule for <span class="math" data-tex="\(\nabla_{[X,Y]}\)">\(\nabla_{[X,Y]}\)</span> therefore leaves
+<span class="math math-display" data-tex="\[
+\mathcal R(X,Y)(s\otimes t)
+=(\mathcal R(X,Y)s)\otimes t+s\otimes(\mathcal R(X,Y)t).
+\tag{C.4}
+\]">\[
+\mathcal R(X,Y)(s\otimes t)
+=(\mathcal R(X,Y)s)\otimes t+s\otimes(\mathcal R(X,Y)t).
+\tag{C.4}
+\]</span>
+On a function <span class="math" data-tex="\(f\)">\(f\)</span>, the operator is <span class="math" data-tex="\(XYf-YXf-[X,Y]f=0\)">\(XYf-YXf-[X,Y]f=0\)</span>, by PB C.3. Apply (C.4) and contraction compatibility from Linear C.1 to the scalar evaluation <span class="math" data-tex="\(\alpha(s)\)">\(\alpha(s)\)</span>. Its curvature is zero, so
+<span class="math math-display" data-tex="\[
+(\mathcal R(X,Y)\alpha)(s)+\alpha(R(X,Y)s)=0.
+\]">\[
+(\mathcal R(X,Y)\alpha)(s)+\alpha(R(X,Y)s)=0.
+\]</span>
+This proves the negative dual action. Iterating (C.4) proves the action on every pure tensor. Such tensors span each fibre in the local tensor bases constructed in Linear C.1. Curvature is linear over functions by Linear B.3 on the induced bundle. Consequently the formula holds for arbitrary tensor sections. Evaluation on <span class="math" data-tex="\(Z_1,\ldots,Z_q\)">\(Z_1,\ldots,Z_q\)</span> gives (C.2); the same argument covers several vector factors and scalar-valued tensors.</p>
+<p>Finally, subtract the two defining second derivatives. Their difference is
+<span class="math math-display" data-tex="\[
+[\nabla_X,\nabla_Y]S-\nabla_{\nabla_XY-\nabla_YX}S.
+\]">\[
+[\nabla_X,\nabla_Y]S-\nabla_{\nabla_XY-\nabla_YX}S.
+\]</span>
+Linear D.1 says
+<span class="math" data-tex="\(\nabla_XY-\nabla_YX=[X,Y]+\mathcal T(X,Y)\)">\(\nabla_XY-\nabla_YX=[X,Y]+\mathcal T(X,Y)\)</span>.
+Linearity of the derivative in its direction now proves (C.3). The scalar case uses the zero curvature already proved. These computations also show that the second derivative is tensorial in <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>: the differentiated coefficient in <span class="math" data-tex="\(\nabla_X(\nabla_{fY}S)\)">\(\nabla_X(\nabla_{fY}S)\)</span> cancels that in <span class="math" data-tex="\(\nabla_{\nabla_X(fY)}S\)">\(\nabla_{\nabla_X(fY)}S\)</span>, and linearity in <span class="math" data-tex="\(X\)">\(X\)</span> is immediate. □</p>
+<p id="theorem-c-2"><strong>Theorem C.2 (Bianchi identities with torsion).</strong> With <span class="math" data-tex="\(\sum_{\mathrm{cyc}}\)">\(\sum_{\mathrm{cyc}}\)</span> denoting the sum over <span class="math" data-tex="\((X,Y,Z),(Y,Z,X),(Z,X,Y)\)">\((X,Y,Z),(Y,Z,X),(Z,X,Y)\)</span>, one has
+<span class="math math-display" data-tex="\[
+\sum_{\mathrm{cyc}}R(X,Y)Z
+=\sum_{\mathrm{cyc}}(\nabla_X\mathcal T)(Y,Z)
+ +\sum_{\mathrm{cyc}}\mathcal T(\mathcal T(X,Y),Z),
+\tag{C.5}
+\]">\[
+\sum_{\mathrm{cyc}}R(X,Y)Z
+=\sum_{\mathrm{cyc}}(\nabla_X\mathcal T)(Y,Z)
+ +\sum_{\mathrm{cyc}}\mathcal T(\mathcal T(X,Y),Z),
+\tag{C.5}
+\]</span>
+and, as an equality of endomorphisms of <span class="math" data-tex="\(TM\)">\(TM\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{\mathrm{cyc}}(\nabla_XR)(Y,Z)
+=-\sum_{\mathrm{cyc}}R(\mathcal T(X,Y),Z).
+\tag{C.6}
+\]">\[
+\sum_{\mathrm{cyc}}(\nabla_XR)(Y,Z)
+=-\sum_{\mathrm{cyc}}R(\mathcal T(X,Y),Z).
+\tag{C.6}
+\]</span>
+Both correction sums disappear for a torsion-free connection. Covariant differentiation in these formulas includes every tensor slot.</p>
+<p><strong>Proof.</strong> We first establish the conversion from exterior covariant differentiation to tensor covariant differentiation. Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be an <span class="math" data-tex="\(E\)">\(E\)</span>-valued alternating two-form, where <span class="math" data-tex="\(E\)">\(E\)</span> has a covariant derivative. Its exterior covariant derivative, from the local formula <span class="math" data-tex="\(D\alpha=d\alpha+A\wedge\alpha\)">\(D\alpha=d\alpha+A\wedge\alpha\)</span> in Curvature A.5, is
+<span class="math math-display" data-tex="\[
+(D\alpha)(X,Y,Z)
+=\sum_{\mathrm{cyc}}\nabla^E_X\bigl(\alpha(Y,Z)\bigr)
+ -\sum_{\mathrm{cyc}}\alpha([X,Y],Z).
+\tag{C.7}
+\]">\[
+(D\alpha)(X,Y,Z)
+=\sum_{\mathrm{cyc}}\nabla^E_X\bigl(\alpha(Y,Z)\bigr)
+ -\sum_{\mathrm{cyc}}\alpha([X,Y],Z).
+\tag{C.7}
+\]</span>
+Indeed the three derivative terms in the exterior-derivative formula of Curvature A.2 combine with the three <span class="math" data-tex="\(A\)">\(A\)</span>-action terms to form <span class="math" data-tex="\(\nabla^E\)">\(\nabla^E\)</span>; the bracket terms are unchanged. Linear C.1 gives
+<span class="math math-display" data-tex="\[
+\nabla^E_X(\alpha(Y,Z))
+=(\nabla_X\alpha)(Y,Z)
+ +\alpha(\nabla_XY,Z)+\alpha(Y,\nabla_XZ).
+\]">\[
+\nabla^E_X(\alpha(Y,Z))
+=(\nabla_X\alpha)(Y,Z)
+ +\alpha(\nabla_XY,Z)+\alpha(Y,\nabla_XZ).
+\]</span>
+In the cyclic sum, alternating the last term and relabelling the three summands turns it into
+<span class="math" data-tex="\(-\sum_{\mathrm{cyc}}\alpha(\nabla_YX,Z)\)">\(-\sum_{\mathrm{cyc}}\alpha(\nabla_YX,Z)\)</span>.
+Thus (C.7) becomes the fully tensorial identity
+<span class="math math-display" data-tex="\[
+(D\alpha)(X,Y,Z)
+=\sum_{\mathrm{cyc}}(\nabla_X\alpha)(Y,Z)
+ +\sum_{\mathrm{cyc}}\alpha(\mathcal T(X,Y),Z).
+\tag{C.8}
+\]">\[
+(D\alpha)(X,Y,Z)
+=\sum_{\mathrm{cyc}}(\nabla_X\alpha)(Y,Z)
+ +\sum_{\mathrm{cyc}}\alpha(\mathcal T(X,Y),Z).
+\tag{C.8}
+\]</span></p>
+<p>Apply this first with <span class="math" data-tex="\(E=TM\)">\(E=TM\)</span> and <span class="math" data-tex="\(\alpha=\mathcal T\)">\(\alpha=\mathcal T\)</span>. Linear D.2 proves
+<span class="math" data-tex="\(D\mathcal T=R\wedge\operatorname{Id}_{TM}\)">\(D\mathcal T=R\wedge\operatorname{Id}_{TM}\)</span>: in a frame this is its identity
+<span class="math" data-tex="\(d\tau+A\wedge\tau=F\wedge\sigma\)">\(d\tau+A\wedge\tau=F\wedge\sigma\)</span>, and Linear D.1 identifies its terms intrinsically. The right side, on <span class="math" data-tex="\(X,Y,Z\)">\(X,Y,Z\)</span>, is
+<span class="math" data-tex="\(R(X,Y)Z+R(Y,Z)X+R(Z,X)Y\)">\(R(X,Y)Z+R(Y,Z)X+R(Z,X)Y\)</span>.
+Equation (C.8) proves (C.5).</p>
+<p>For the second application let <span class="math" data-tex="\(E=\operatorname{End}(TM)\)">\(E=\operatorname{End}(TM)\)</span> and <span class="math" data-tex="\(\alpha=R\)">\(\alpha=R\)</span>. The endomorphism connection in Linear C.1 has
+<span class="math" data-tex="\(\nabla^{\operatorname{End}}_XA=X(A)+[\Gamma(X),A]\)">\(\nabla^{\operatorname{End}}_XA=X(A)+[\Gamma(X),A]\)</span> in any local frame. Consequently its exterior derivative on an endomorphism-valued two-form is <span class="math" data-tex="\(dR+\Gamma\wedge R-R\wedge\Gamma\)">\(dR+\Gamma\wedge R-R\wedge\Gamma\)</span>. The second structure identity of Linear D.2 says exactly that this expression vanishes for curvature. Substitution into (C.8) gives (C.6). No coordinate frame with vanishing connection coefficients or vanishing torsion was used. □</p>
+<p id="corollary-c-3"><strong>Corollary C.3 (the metric symmetries and their hypotheses).</strong> Suppose a nondegenerate symmetric bilinear form <span class="math" data-tex="\(g\)">\(g\)</span> is parallel. Then
+<span class="math math-display" data-tex="\[
+g(R(X,Y)Z,U)=-g(R(X,Y)U,Z).
+\tag{C.9}
+\]">\[
+g(R(X,Y)Z,U)=-g(R(X,Y)U,Z).
+\tag{C.9}
+\]</span>
+If the connection is also torsion-free, then
+<span class="math math-display" data-tex="\[
+g(R(X,Y)Z,U)=g(R(Z,U)X,Y).
+\tag{C.10}
+\]">\[
+g(R(X,Y)Z,U)=g(R(Z,U)X,Y).
+\tag{C.10}
+\]</span>
+Positive definiteness is unnecessary for these two assertions.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\nabla g=0\)">\(\nabla g=0\)</span>, its tensor curvature is zero. The two negative covector actions proved in C.1 yield
+<span class="math math-display" data-tex="\[
+0=(\mathcal R(X,Y)g)(Z,U)
+  =-g(R(X,Y)Z,U)-g(Z,R(X,Y)U).
+\]">\[
+0=(\mathcal R(X,Y)g)(Z,U)
+  =-g(R(X,Y)Z,U)-g(Z,R(X,Y)U).
+\]</span>
+Symmetry of <span class="math" data-tex="\(g\)">\(g\)</span> proves (C.9).</p>
+<p>Put <span class="math" data-tex="\(K(X,Y,Z,U)=g(R(X,Y)Z,U)\)">\(K(X,Y,Z,U)=g(R(X,Y)Z,U)\)</span>. It is skew in its first two positions by C.1 and its last two by (C.9). For zero torsion, C.2 gives the cyclic relation in its first three positions. Use that relation in these four orders, with the displayed signs:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0={}&amp;K(X,Y,Z,U)+K(Y,Z,X,U)+K(Z,X,Y,U),\\
+0={}&amp;K(Y,Z,U,X)+K(Z,U,Y,X)+K(U,Y,Z,X),\\
+0={}&amp;-K(Z,U,X,Y)-K(U,X,Z,Y)-K(X,Z,U,Y),\\
+0={}&amp;-K(U,X,Y,Z)-K(X,Y,U,Z)-K(Y,U,X,Z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+0={}&amp;K(X,Y,Z,U)+K(Y,Z,X,U)+K(Z,X,Y,U),\\
+0={}&amp;K(Y,Z,U,X)+K(Z,U,Y,X)+K(U,Y,Z,X),\\
+0={}&amp;-K(Z,U,X,Y)-K(U,X,Z,Y)-K(X,Z,U,Y),\\
+0={}&amp;-K(U,X,Y,Z)-K(X,Y,U,Z)-K(Y,U,X,Z).
+\end{aligned}
+\]</span>
+The <span class="math" data-tex="\(YZ\)">\(YZ\)</span> terms cancel by last-pair skewness; the <span class="math" data-tex="\(ZX\)">\(ZX\)</span> and <span class="math" data-tex="\(XZ\)">\(XZ\)</span> terms cancel using both skewness rules. The <span class="math" data-tex="\(UY\)">\(UY\)</span> and <span class="math" data-tex="\(YU\)">\(YU\)</span> terms cancel using both rules, and the <span class="math" data-tex="\(UX\)">\(UX\)</span> terms cancel by last-pair skewness. What remains is
+<span class="math" data-tex="\(2K(X,Y,Z,U)-2K(Z,U,X,Y)=0\)">\(2K(X,Y,Z,U)-2K(Z,U,X,Y)=0\)</span>.
+Division by two proves (C.10). □</p>
+<h2 id="part-d">D. Curvature derivatives and the geometry of the holonomy bundle</h2>
+<p>This part specializes complete programme proofs to the tangent frame bundle. Its providers are <a href="curvature-and-holonomy-groups.html">Curvature C.5, G.3–G.4 and I.1</a>, <a href="flat-connections-and-infinitesimal-holonomy.html">Flat A.2–A.5 and B.1–B.2</a>, and <a href="linear-and-affine-connections.html">Linear A.2, C.1 and H.2</a>. Those lessons retain the exact freely accessible human sources used to construct their proofs. Here we prove the identifications with tangent-space curvature and its full covariant derivatives; external references supply none of the proof obligations.</p>
+<p id="theorem-d-1"><strong>Theorem D.1 (transported curvature in one tangent space).</strong> Fix <span class="math" data-tex="\(p\)">\(p\)</span> in a connected smooth manifold and a frame <span class="math" data-tex="\(u:\mathbb R^n\to T_pM\)">\(u:\mathbb R^n\to T_pM\)</span>. Let <span class="math" data-tex="\(P_\lambda:T_pM\to T_qM\)">\(P_\lambda:T_pM\to T_qM\)</span> be parallel transport along any piecewise smooth path <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span>. The Lie algebra of the full linear holonomy group at <span class="math" data-tex="\(p\)">\(p\)</span>, equivalently of its restricted group, is
+<span class="math math-display" data-tex="\[
+\mathfrak{hol}_p
+=\operatorname{span}_{\lambda,\ v,w\in T_pM}
+\left\{
+P_\lambda^{-1}\circ
+R_q(P_\lambda v,P_\lambda w)\circ P_\lambda
+\right\}.
+\tag{D.1}
+\]">\[
+\mathfrak{hol}_p
+=\operatorname{span}_{\lambda,\ v,w\in T_pM}
+\left\{
+P_\lambda^{-1}\circ
+R_q(P_\lambda v,P_\lambda w)\circ P_\lambda
+\right\}.
+\tag{D.1}
+\]</span>
+The span is an ordinary finite-dimensional real linear span, without a topological closure. The full group need not be connected or closed.</p>
+<p><strong>Proof.</strong> Linear A.2 proves that the connection on <span class="math" data-tex="\(TM\)">\(TM\)</span> corresponds to a principal connection <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on its full frame bundle, and that the horizontal endpoint of <span class="math" data-tex="\(u\)">\(u\)</span> above <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is the frame <span class="math" data-tex="\(u_\lambda=P_\lambda\circ u\)">\(u_\lambda=P_\lambda\circ u\)</span>. A loop with principal endpoint <span class="math" data-tex="\(ua\)">\(ua\)</span> therefore has tangent transport <span class="math" data-tex="\(uau^{-1}\)">\(uau^{-1}\)</span>. Thus the principal and linear holonomy groups are related by the Lie-group isomorphism <span class="math" data-tex="\(a\mapsto uau^{-1}\)">\(a\mapsto uau^{-1}\)</span>, including their restricted groups and Lie algebras. Their identity components and Lie algebras agree by Curvature C.5.</p>
+<p>The local curvature identity of Linear B.3, equivalently the principal/associated curvature calculation in Curvature A.6, gives
+<span class="math math-display" data-tex="\[
+\Omega_{u_\lambda}(B(a),B(b))
+=u_\lambda^{-1}R_q(u_\lambda a,u_\lambda b)u_\lambda
+\tag{D.2}
+\]">\[
+\Omega_{u_\lambda}(B(a),B(b))
+=u_\lambda^{-1}R_q(u_\lambda a,u_\lambda b)u_\lambda
+\tag{D.2}
+\]</span>
+for <span class="math" data-tex="\(a,b\in\mathbb R^n\)">\(a,b\in\mathbb R^n\)</span>. Here <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span> is the standard horizontal field of Linear H.2. To check (D.2) directly in a local frame <span class="math" data-tex="\(e\)">\(e\)</span>, write <span class="math" data-tex="\(u_\lambda=eg\)">\(u_\lambda=eg\)</span>. The principal curvature is <span class="math" data-tex="\(g^{-1}Fg\)">\(g^{-1}Fg\)</span> on horizontal lifts, while <span class="math" data-tex="\(F\)">\(F\)</span> is the matrix of <span class="math" data-tex="\(R\)">\(R\)</span> in <span class="math" data-tex="\(e\)">\(e\)</span>; moreover <span class="math" data-tex="\(d\pi B(a)=u_\lambda a\)">\(d\pi B(a)=u_\lambda a\)</span>. Substitution gives precisely (D.2).</p>
+<p>Every reachable frame is some <span class="math" data-tex="\(u_\lambda\)">\(u_\lambda\)</span>, by the definition of horizontal reachability and the uniqueness of transport. The fields <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span> span the horizontal space at each such frame; curvature vanishes on vertical arguments. Curvature G.3 proves that these values of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> span the principal holonomy Lie algebra, without assuming that holonomy is closed. Conjugate its equality by <span class="math" data-tex="\(u\)">\(u\)</span>, substitute <span class="math" data-tex="\(u_\lambda=P_\lambda u\)">\(u_\lambda=P_\lambda u\)</span>, and put <span class="math" data-tex="\(v=ua,w=ub\)">\(v=ua,w=ub\)</span>. This gives (D.1) with exactly the stated range of paths and vectors. □</p>
+<p id="theorem-d-2"><strong>Theorem D.2 (covariant curvature jets and local holonomy).</strong> Let <span class="math" data-tex="\(\nabla^0R=R\)">\(\nabla^0R=R\)</span> and <span class="math" data-tex="\(\nabla^{k+1}R=\nabla(\nabla^kR)\)">\(\nabla^{k+1}R=\nabla(\nabla^kR)\)</span>, using the full tensor derivative in every input and output position. At <span class="math" data-tex="\(p\)">\(p\)</span>, define
+<span class="math math-display" data-tex="\[
+\mathfrak j_p
+=\operatorname{span}_{k\geq0,\ v_1,\ldots,v_k,a,b\in T_pM}
+ \left\{(\nabla^kR)_p(v_1,\ldots,v_k;a,b)\right\}
+\subseteq\operatorname{End}(T_pM).
+\tag{D.3}
+\]">\[
+\mathfrak j_p
+=\operatorname{span}_{k\geq0,\ v_1,\ldots,v_k,a,b\in T_pM}
+ \left\{(\nabla^kR)_p(v_1,\ldots,v_k;a,b)\right\}
+\subseteq\operatorname{End}(T_pM).
+\tag{D.3}
+\]</span>
+These are endomorphism values; the last vector acted on by the endomorphism is not fixed. Then <span class="math" data-tex="\(\mathfrak j_p\)">\(\mathfrak j_p\)</span> is a Lie algebra and
+<span class="math math-display" data-tex="\[
+\mathfrak j_p\subseteq\mathfrak{hol}^{\mathrm{loc}}_p
+ \subseteq\mathfrak{hol}^{0}_p.
+\tag{D.4}
+\]">\[
+\mathfrak j_p\subseteq\mathfrak{hol}^{\mathrm{loc}}_p
+ \subseteq\mathfrak{hol}^{0}_p.
+\tag{D.4}
+\]</span>
+Local holonomy means the intersection of the restricted holonomy groups of all connected open neighbourhoods of <span class="math" data-tex="\(p\)">\(p\)</span>, with loops contracted in those neighbourhoods. The connected immersed subgroup with algebra <span class="math" data-tex="\(\mathfrak j_p\)">\(\mathfrak j_p\)</span> is contained in the local holonomy group.</p>
+<p>If <span class="math" data-tex="\(\dim\mathfrak j_q\)">\(\dim\mathfrak j_q\)</span> is constant in a neighbourhood of <span class="math" data-tex="\(p\)">\(p\)</span>, then <span class="math" data-tex="\(\mathfrak j_p=\mathfrak{hol}^{\mathrm{loc}}_p\)">\(\mathfrak j_p=\mathfrak{hol}^{\mathrm{loc}}_p\)</span>, and the corresponding connected groups agree. If the dimension is constant on connected <span class="math" data-tex="\(M\)">\(M\)</span>, these groups also agree with restricted holonomy. If <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> are real analytic, the infinitesimal, local and restricted groups agree at every point. None of these assertions removes possible additional components of full holonomy.</p>
+<p><strong>Proof.</strong> For each frame <span class="math" data-tex="\(u\)">\(u\)</span>, let
+<span class="math math-display" data-tex="\[
+f_{k;c_1,\ldots,c_k,a,b}(u)
+=u^{-1}(\nabla^kR)_{\pi(u)}
+ (uc_1,\ldots,uc_k;ua,ub)u,
+\tag{D.5}
+\]">\[
+f_{k;c_1,\ldots,c_k,a,b}(u)
+=u^{-1}(\nabla^kR)_{\pi(u)}
+ (uc_1,\ldots,uc_k;ua,ub)u,
+\tag{D.5}
+\]</span>
+where all displayed lower-case arguments are fixed vectors in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>.
+The tensor connection and its transport rule are proved in Linear C.1. Along a horizontal frame path, the frame and every vector obtained by applying it to a fixed column are parallel. Differentiating the evaluated expression (D.5) along an integral curve of <span class="math" data-tex="\(B(c)\)">\(B(c)\)</span> therefore differentiates only the tensor by its covariant derivative: all argument and conjugation derivatives are exactly cancelled by parallel transport. More explicitly, in that parallel frame the connection matrix on the path is zero by Linear A.2, so Linear C.1 makes tensor differentiation ordinary differentiation of all tensor components. Since the projected velocity is <span class="math" data-tex="\(uc\)">\(uc\)</span>, at the initial frame this proves
+<span class="math math-display" data-tex="\[
+B(c)f_{k;c_1,\ldots,c_k,a,b}
+=f_{k+1;c,c_1,\ldots,c_k,a,b}.
+\tag{D.6}
+\]">\[
+B(c)f_{k;c_1,\ldots,c_k,a,b}
+=f_{k+1;c,c_1,\ldots,c_k,a,b}.
+\tag{D.6}
+\]</span>
+The integral curves used here exist locally by Local 2.1, because Linear H.2 proves that <span class="math" data-tex="\(B(c)\)">\(B(c)\)</span> is smooth. Formula (D.2) is the <span class="math" data-tex="\(k=0\)">\(k=0\)</span> case.</p>
+<p>It follows inductively that the values in (D.5), for all <span class="math" data-tex="\(k\)">\(k\)</span>, are exactly the span of all words in the fields <span class="math" data-tex="\(B(e_i)\)">\(B(e_i)\)</span> applied to the functions <span class="math" data-tex="\(\Omega(B(e_j),B(e_l))\)">\(\Omega(B(e_j),B(e_l))\)</span>, with <span class="math" data-tex="\(e_i\)">\(e_i\)</span> the standard basis of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Multilinearity permits arbitrary constant arguments to be replaced by basis arguments. This is the horizontal curvature-jet space <span class="math" data-tex="\(J(u)\)">\(J(u)\)</span> of Flat A.2. To check that no choice of horizontal frame changes that space, write any other local horizontal frame as <span class="math" data-tex="\(E_i=\sum_j c_i^jB(e_j)\)">\(E_i=\sum_j c_i^jB(e_j)\)</span> with smooth coefficients; such coefficients exist and the coefficient matrix is invertible because both are bases of the horizontal subbundle. Curvature evaluations transform by two such coefficient factors. Repeated application of the product rule expresses every <span class="math" data-tex="\(E\)">\(E\)</span>-word of order at most <span class="math" data-tex="\(k\)">\(k\)</span> as a smooth linear combination of <span class="math" data-tex="\(B\)">\(B\)</span>-words of order at most <span class="math" data-tex="\(k\)">\(k\)</span>. The inverse coefficient matrix gives the reverse inclusion. This is also the coordinate-independence argument of Flat A.2. Consequently
+<span class="math math-display" data-tex="\[
+J(u)=u^{-1}\mathfrak j_{\pi(u)}u.
+\tag{D.7}
+\]">\[
+J(u)=u^{-1}\mathfrak j_{\pi(u)}u.
+\tag{D.7}
+\]</span>
+This argument includes all tensor slots in <span class="math" data-tex="\(\nabla^kR\)">\(\nabla^kR\)</span>; differentiating only the coordinate entries of <span class="math" data-tex="\(R\)">\(R\)</span> would not give (D.6).</p>
+<p>Apply Flat A.3 to (D.7). It proves closure under commutators, and Flat A.1 constructs the connected immersed subgroup for this Lie algebra. Flat A.4 proves that the local-holonomy intersection stabilizes in a small neighbourhood and defines a connected immersed group. Flat A.5 proves both inclusions in (D.4) and the connected-group inclusion. Conjugation by <span class="math" data-tex="\(u\)">\(u\)</span>, as in D.1, gives exactly the stated tangent-space groups.</p>
+<p>Dimension is preserved by this conjugation. Thus local constant dimension is precisely the constant-rank hypothesis of Flat B.1, which proves local equality and, on a connected base with constant dimension, equality with restricted holonomy. All its hypotheses hold for the smooth principal frame connection established in Linear A.2; torsion was not a hypothesis of that theorem.</p>
+<p>In the analytic case, the coordinate frame-bundle transitions are the Jacobian matrices of analytic coordinate changes, hence analytic: termwise differentiation of convergent power series is justified in Curvature I.1. Matrix multiplication and inversion are analytic there as well. The principal connection formula
+<span class="math" data-tex="\(\omega=g^{-1}A g+g^{-1}dg\)">\(\omega=g^{-1}A g+g^{-1}dg\)</span> from Linear A.2 is therefore analytic when the coefficients of <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> are analytic. Apply Flat B.2 on the connected component containing the point in question; all based loops and sufficiently small connected neighbourhoods stay in that component. It proves equality of the infinitesimal, local and restricted groups of this analytic principal connection. Equation (D.7) transfers that equality to <span class="math" data-tex="\(TM\)">\(TM\)</span>. These providers assert equality of connected groups, so no assertion about other components of full holonomy follows. □</p>
+<p id="theorem-d-3"><strong>Theorem D.3 (parallel torsion and curvature give a frame algebra).</strong> Suppose <span class="math" data-tex="\(\nabla\mathcal T=0\)">\(\nabla\mathcal T=0\)</span> and <span class="math" data-tex="\(\nabla R=0\)">\(\nabla R=0\)</span>. Fix a frame <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, let <span class="math" data-tex="\(H\subseteq\mathrm{GL}(n,\mathbb R)\)">\(H\subseteq\mathrm{GL}(n,\mathbb R)\)</span> be its full principal holonomy group, and let <span class="math" data-tex="\(Q=P(u_0)\)">\(Q=P(u_0)\)</span> be its reachable holonomy reduction, with its intrinsic principal-bundle structure. Put <span class="math" data-tex="\(\mathfrak h=\operatorname{Lie}H\)">\(\mathfrak h=\operatorname{Lie}H\)</span>. There are constant alternating bilinear maps
+<span class="math math-display" data-tex="\[
+t:\mathbb R^n\times\mathbb R^n\to\mathbb R^n,
+\qquad
+r:\mathbb R^n\times\mathbb R^n\to\mathfrak h
+\]">\[
+t:\mathbb R^n\times\mathbb R^n\to\mathbb R^n,
+\qquad
+r:\mathbb R^n\times\mathbb R^n\to\mathfrak h
+\]</span>
+such that on <span class="math" data-tex="\(Q\)">\(Q\)</span>
+<span class="math math-display" data-tex="\[
+\mathcal T_{\pi(u)}(ua,ub)=u\,t(a,b),\qquad
+R_{\pi(u)}(ua,ub)=u\,r(a,b)u^{-1}.
+\tag{D.8}
+\]">\[
+\mathcal T_{\pi(u)}(ua,ub)=u\,t(a,b),\qquad
+R_{\pi(u)}(ua,ub)=u\,r(a,b)u^{-1}.
+\tag{D.8}
+\]</span>
+The reduction lies over the connected component of <span class="math" data-tex="\(\pi(u_0)\)">\(\pi(u_0)\)</span>. For <span class="math" data-tex="\(A\in\mathfrak h\)">\(A\in\mathfrak h\)</span> let <span class="math" data-tex="\(A^\#\)">\(A^\#\)</span> be its fundamental vertical field and set <span class="math" data-tex="\(Z_{A,a}=A^\#+B(a)\)">\(Z_{A,a}=A^\#+B(a)\)</span>. These fields form a Lie algebra of dimension <span class="math" data-tex="\(\dim\mathfrak h+n=\dim Q\)">\(\dim\mathfrak h+n=\dim Q\)</span>, span each tangent space of <span class="math" data-tex="\(Q\)">\(Q\)</span>, and satisfy
+<span class="math math-display" data-tex="\[
+[Z_{A,a},Z_{C,b}]
+=Z_{[A,C]-r(a,b),\,Ab-Ca-t(a,b)}.
+\tag{D.9}
+\]">\[
+[Z_{A,a},Z_{C,b}]
+=Z_{[A,C]-r(a,b),\,Ab-Ca-t(a,b)}.
+\tag{D.9}
+\]</span>
+No closedness of <span class="math" data-tex="\(H\)">\(H\)</span>, completeness of these fields, or global action is asserted.</p>
+<p><strong>Proof.</strong> Curvature G.4 constructs the full reachable reduction as a Hausdorff, second-countable principal <span class="math" data-tex="\(H\)">\(H\)</span>-bundle, possibly immersed in the full frame bundle, and proves that the original connection restricts to it. Thus its horizontal spaces project isomorphically onto <span class="math" data-tex="\(TM\)">\(TM\)</span>, and <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span> is tangent to <span class="math" data-tex="\(Q\)">\(Q\)</span>. Fundamental fields for <span class="math" data-tex="\(A\in\mathfrak h\)">\(A\in\mathfrak h\)</span> are also tangent to <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Linear C.1 identifies parallel transport on tensors with the corresponding operations on vector transport. If a tensor has zero covariant derivative, its coefficients in a parallel frame on a path have derivative zero and are constant, by Linear A.2 and Local 0.3. Apply this to <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> along each of the paths reaching a point of <span class="math" data-tex="\(Q\)">\(Q\)</span> from <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. Their components therefore equal their components at <span class="math" data-tex="\(u_0\)">\(u_0\)</span>; these constants define <span class="math" data-tex="\(t,r\)">\(t,r\)</span> and prove (D.8), independently of the chosen path. Curvature G.3 and (D.2) put every value <span class="math" data-tex="\(r(a,b)\)">\(r(a,b)\)</span> in <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>. Alternation follows from torsion's definition and curvature's skew-symmetry.</p>
+<p>The coframe <span class="math" data-tex="\((\theta,\omega)\)">\((\theta,\omega)\)</span> of Linear H.2 restricts on <span class="math" data-tex="\(TQ\)">\(TQ\)</span> to an isomorphism onto <span class="math" data-tex="\(\mathbb R^n\oplus\mathfrak h\)">\(\mathbb R^n\oplus\mathfrak h\)</span>: its horizontal part gives the first summand, and on the vertical fundamental field <span class="math" data-tex="\(A^\#\)">\(A^\#\)</span> it gives <span class="math" data-tex="\((0,A)\)">\((0,A)\)</span>. Hence <span class="math" data-tex="\(Z_{A,a}\)">\(Z_{A,a}\)</span> has the constant coframe value <span class="math" data-tex="\((a,A)\)">\((a,A)\)</span>.</p>
+<p>For fundamental fields one has <span class="math" data-tex="\([A^\#,C^\#]=[A,C]^\#\)">\([A^\#,C^\#]=[A,C]^\#\)</span>. This sign can be checked in a principal-bundle chart: in its group coordinate <span class="math" data-tex="\(g\)">\(g\)</span>, the two fields are <span class="math" data-tex="\(gA,gC\)">\(gA,gC\)</span>. The coordinate bracket <span class="math" data-tex="\(d(gC)(gA)-d(gA)(gC)\)">\(d(gC)(gA)-d(gA)(gC)\)</span> is <span class="math" data-tex="\(g(AC-CA)\)">\(g(AC-CA)\)</span>, by PB C.3. Linear H.2 proves <span class="math" data-tex="\([A^\#,B(b)]=B(Ab)\)">\([A^\#,B(b)]=B(Ab)\)</span>. Its two standard-horizontal bracket identities, combined with (D.8), give
+<span class="math math-display" data-tex="\[
+[B(a),B(b)]=-r(a,b)^\#-B(t(a,b)).
+\tag{D.10}
+\]">\[
+[B(a),B(b)]=-r(a,b)^\#-B(t(a,b)).
+\tag{D.10}
+\]</span>
+Indeed the <span class="math" data-tex="\(\omega\)">\(\omega\)</span>-value is <span class="math" data-tex="\(-r(a,b)\)">\(-r(a,b)\)</span> and the <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-value is <span class="math" data-tex="\(-t(a,b)\)">\(-t(a,b)\)</span>; the coframe is injective. Expand the bracket of <span class="math" data-tex="\(A^\#+B(a)\)">\(A^\#+B(a)\)</span> and <span class="math" data-tex="\(C^\#+B(b)\)">\(C^\#+B(b)\)</span>, use skew-symmetry for the second mixed term, and apply (D.10). This proves (D.9).</p>
+<p>The right side has constant coefficients and belongs to the same family, so its image is closed under brackets. The linear map <span class="math" data-tex="\((A,a)\mapsto Z_{A,a}\)">\((A,a)\mapsto Z_{A,a}\)</span> is injective since evaluation at any point followed by the coframe returns <span class="math" data-tex="\((a,A)\)">\((a,A)\)</span>. Its dimension is therefore <span class="math" data-tex="\(\dim\mathfrak h+n\)">\(\dim\mathfrak h+n\)</span>; the same coframe proves spanning at every point. Bilinearity, skew-symmetry and Jacobi are inherited from actual vector fields, whose bracket and Jacobi identity were proved in PB C.3. This establishes a Lie algebra without assuming any theorem integrating it to a global group action. □</p>
+<h2 id="part-e">E. Coordinate and smooth-jet tests</h2>
+<p>These computations apply the proved formulas to explicit connections. The smooth flat function used in E.3 is constructed, with all derivative limits proved, in <a href="local-tools-for-bundles-and-transport.html">Local 0.5</a>. The principal-bundle analogue in <a href="flat-connections-and-infinitesimal-holonomy.html">Flat C.2</a> motivates distinguishing all derivatives at one point from curvature in every neighbourhood. We give the tangent-bundle calculation separately, including its torsion and its actual transport groups.</p>
+<p id="exercise-e-1"><strong>Exercise E.1 (Euclidean polar coordinates).</strong> Let the plane have its connection given by ordinary component differentiation in Cartesian coordinates. In a polar coordinate chart with <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, calculate every connection coefficient and verify its curvature directly.</p>
+<p><strong>Solution.</strong> Use <span class="math" data-tex="\(x=r\cos\phi,\ y=r\sin\phi\)">\(x=r\cos\phi,\ y=r\sin\phi\)</span> on a sufficiently small angular interval. The sine and cosine functions and their derivatives are established in Connections E.1. The Jacobian determinant is <span class="math" data-tex="\(r\)">\(r\)</span>, since <span class="math" data-tex="\(\cos^2\phi+\sin^2\phi=1\)">\(\cos^2\phi+\sin^2\phi=1\)</span>, so Local 1.2 makes this a coordinate chart near each point with <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Its coordinate fields, written in the Cartesian frame, are
+<span class="math math-display" data-tex="\[
+e_r=(\cos\phi,\sin\phi),\qquad
+e_\phi=(-r\sin\phi,r\cos\phi).
+\]">\[
+e_r=(\cos\phi,\sin\phi),\qquad
+e_\phi=(-r\sin\phi,r\cos\phi).
+\]</span>
+Differentiating these Cartesian components gives
+<span class="math math-display" data-tex="\[
+\nabla_{e_r}e_r=0,\quad
+\nabla_{e_r}e_\phi=r^{-1}e_\phi,\quad
+\nabla_{e_\phi}e_r=r^{-1}e_\phi,\quad
+\nabla_{e_\phi}e_\phi=-r e_r.
+\tag{E.1}
+\]">\[
+\nabla_{e_r}e_r=0,\quad
+\nabla_{e_r}e_\phi=r^{-1}e_\phi,\quad
+\nabla_{e_\phi}e_r=r^{-1}e_\phi,\quad
+\nabla_{e_\phi}e_\phi=-r e_r.
+\tag{E.1}
+\]</span>
+Here <span class="math" data-tex="\(e_r\)">\(e_r\)</span> differentiates coordinate functions by <span class="math" data-tex="\(\partial_r\)">\(\partial_r\)</span> and <span class="math" data-tex="\(e_\phi\)">\(e_\phi\)</span> by <span class="math" data-tex="\(\partial_\phi\)">\(\partial_\phi\)</span>, as follows from the coordinate map. Thus the only nonzero coefficients are
+<span class="math" data-tex="\(\Gamma^r_{\phi\phi}=-r\)">\(\Gamma^r_{\phi\phi}=-r\)</span> and
+<span class="math" data-tex="\(\Gamma^\phi_{r\phi}=\Gamma^\phi_{\phi r}=r^{-1}\)">\(\Gamma^\phi_{r\phi}=\Gamma^\phi_{\phi r}=r^{-1}\)</span>.
+They give the matrix potential
+<span class="math math-display" data-tex="\[
+A_r=\begin{pmatrix}0&amp;0\\0&amp;r^{-1}\end{pmatrix},
+\qquad
+A_\phi=\begin{pmatrix}0&amp;-r\\r^{-1}&amp;0\end{pmatrix}.
+\]">\[
+A_r=\begin{pmatrix}0&amp;0\\0&amp;r^{-1}\end{pmatrix},
+\qquad
+A_\phi=\begin{pmatrix}0&amp;-r\\r^{-1}&amp;0\end{pmatrix}.
+\]</span>
+Compute
+<span class="math math-display" data-tex="\[
+\partial_rA_\phi=
+\begin{pmatrix}0&amp;-1\\-r^{-2}&amp;0\end{pmatrix},
+\qquad
+\partial_\phi A_r=0,\qquad
+[A_r,A_\phi]=
+\begin{pmatrix}0&amp;1\\r^{-2}&amp;0\end{pmatrix}.
+\]">\[
+\partial_rA_\phi=
+\begin{pmatrix}0&amp;-1\\-r^{-2}&amp;0\end{pmatrix},
+\qquad
+\partial_\phi A_r=0,\qquad
+[A_r,A_\phi]=
+\begin{pmatrix}0&amp;1\\r^{-2}&amp;0\end{pmatrix}.
+\]</span>
+Their sum <span class="math" data-tex="\(\partial_rA_\phi-\partial_\phi A_r+[A_r,A_\phi]\)">\(\partial_rA_\phi-\partial_\phi A_r+[A_r,A_\phi]\)</span> is zero. C.1 and skew-symmetry show that every curvature component vanishes. The symmetric lower coefficient indices also make torsion zero, by Linear D.1 and commutation of coordinate fields. Nonzero connection coefficients in this chart therefore do not imply nonzero curvature. □</p>
+<p id="exercise-e-2"><strong>Exercise E.2 (both torsion corrections are necessary).</strong> On <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, let <span class="math" data-tex="\(e_i=\partial_i\)">\(e_i=\partial_i\)</span> and specify
+<span class="math math-display" data-tex="\[
+\nabla_{e_1}e_2=e_1,\qquad
+\nabla_{e_2}e_3=e_2,
+\]">\[
+\nabla_{e_1}e_2=e_1,\qquad
+\nabla_{e_2}e_3=e_2,
+\]</span>
+with all other <span class="math" data-tex="\(\nabla_{e_i}e_j=0\)">\(\nabla_{e_i}e_j=0\)</span>. Verify both identities of C.2 at <span class="math" data-tex="\((e_1,e_2,e_3)\)">\((e_1,e_2,e_3)\)</span>, including each correction.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> be the matrix taking <span class="math" data-tex="\(e_j\)">\(e_j\)</span> to <span class="math" data-tex="\(e_i\)">\(e_i\)</span> and all other basis vectors to zero. The connection matrices are
+<span class="math" data-tex="\(A_1=E_{12}, A_2=E_{23}, A_3=0\)">\(A_1=E_{12}, A_2=E_{23}, A_3=0\)</span>.
+Their constant coefficients define a smooth connection by Linear A.1. Since the coordinate fields commute,
+<span class="math math-display" data-tex="\[
+\mathcal T_{12}=e_1,\qquad
+\mathcal T_{23}=e_2,\qquad
+\mathcal T_{31}=0.
+\tag{E.2}
+\]">\[
+\mathcal T_{12}=e_1,\qquad
+\mathcal T_{23}=e_2,\qquad
+\mathcal T_{31}=0.
+\tag{E.2}
+\]</span>
+Here <span class="math" data-tex="\(\mathcal T_{ij}=\mathcal T(e_i,e_j)\)">\(\mathcal T_{ij}=\mathcal T(e_i,e_j)\)</span>. Matrix units obey
+<span class="math" data-tex="\(E_{ij}E_{kl}=\delta_{jk}E_{il}\)">\(E_{ij}E_{kl}=\delta_{jk}E_{il}\)</span>, by applying both sides to each basis vector. Consequently C.1 gives
+<span class="math math-display" data-tex="\[
+R_{12}=E_{13},\qquad R_{23}=R_{31}=0.
+\tag{E.3}
+\]">\[
+R_{12}=E_{13},\qquad R_{23}=R_{31}=0.
+\tag{E.3}
+\]</span>
+The left side of (C.5) is therefore <span class="math" data-tex="\(e_1\)">\(e_1\)</span>.</p>
+<p>To calculate its derivative sum, use all three terms in the tensor derivative:
+<span class="math math-display" data-tex="\[
+(\nabla_i\mathcal T)_{jk}
+=A_i\mathcal T_{jk}
+ -\mathcal T(A_i e_j,e_k)-\mathcal T(e_j,A_i e_k).
+\]">\[
+(\nabla_i\mathcal T)_{jk}
+=A_i\mathcal T_{jk}
+ -\mathcal T(A_i e_j,e_k)-\mathcal T(e_j,A_i e_k).
+\]</span>
+For the three cyclic triples this gives
+<span class="math math-display" data-tex="\[
+(\nabla_1\mathcal T)_{23}=e_1,\qquad
+(\nabla_2\mathcal T)_{31}=e_1,\qquad
+(\nabla_3\mathcal T)_{12}=0.
+\tag{E.4}
+\]">\[
+(\nabla_1\mathcal T)_{23}=e_1,\qquad
+(\nabla_2\mathcal T)_{31}=e_1,\qquad
+(\nabla_3\mathcal T)_{12}=0.
+\tag{E.4}
+\]</span>
+For example the middle expression is
+<span class="math" data-tex="\(0-\mathcal T(e_2,e_1)-0=e_1\)">\(0-\mathcal T(e_2,e_1)-0=e_1\)</span>; the first is
+<span class="math" data-tex="\(A_1e_2-\mathcal T(e_1,e_3)-0=e_1\)">\(A_1e_2-\mathcal T(e_1,e_3)-0=e_1\)</span>.
+The quadratic torsion sum is
+<span class="math math-display" data-tex="\[
+\mathcal T(e_1,e_3)+\mathcal T(e_2,e_1)+0=-e_1.
+\tag{E.5}
+\]">\[
+\mathcal T(e_1,e_3)+\mathcal T(e_2,e_1)+0=-e_1.
+\tag{E.5}
+\]</span>
+Thus the right side of (C.5) is <span class="math" data-tex="\(2e_1-e_1=e_1\)">\(2e_1-e_1=e_1\)</span>, as required; deleting the quadratic torsion term would give a false equality.</p>
+<p>For endomorphism-valued curvature the complete derivative is
+<span class="math math-display" data-tex="\[
+(\nabla_iR)_{jk}
+=[A_i,R_{jk}]-R(A_i e_j,e_k)-R(e_j,A_i e_k),
+\tag{E.6}
+\]">\[
+(\nabla_iR)_{jk}
+=[A_i,R_{jk}]-R(A_i e_j,e_k)-R(e_j,A_i e_k),
+\tag{E.6}
+\]</span>
+because its ordinary coordinate derivatives vanish. In the three cyclic positions it gives respectively
+<span class="math math-display" data-tex="\[
+(\nabla_1R)_{23}=0,\qquad
+(\nabla_2R)_{31}=E_{13},\qquad
+(\nabla_3R)_{12}=0.
+\]">\[
+(\nabla_1R)_{23}=0,\qquad
+(\nabla_2R)_{31}=E_{13},\qquad
+(\nabla_3R)_{12}=0.
+\]</span>
+Indeed the first is <span class="math" data-tex="\(-R(e_1,e_3)=0\)">\(-R(e_1,e_3)=0\)</span>, while the second is
+<span class="math" data-tex="\(-R(e_2,e_1)=E_{13}\)">\(-R(e_2,e_1)=E_{13}\)</span>. The curvature-torsion sum is
+<span class="math math-display" data-tex="\[
+R(\mathcal T_{12},e_3)+R(\mathcal T_{23},e_1)
+ +R(\mathcal T_{31},e_2)
+=R_{13}+R_{21}+0=-E_{13}.
+\]">\[
+R(\mathcal T_{12},e_3)+R(\mathcal T_{23},e_1)
+ +R(\mathcal T_{31},e_2)
+=R_{13}+R_{21}+0=-E_{13}.
+\]</span>
+Its negative is exactly the derivative sum in (C.6). Deleting that correction would incorrectly assert <span class="math" data-tex="\(E_{13}=0\)">\(E_{13}=0\)</span>. □</p>
+<p id="exercise-e-3"><strong>Exercise E.3 (a torsion-free connection invisible to every curvature jet).</strong> On the tangent bundle of <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, in its coordinate frame, set
+<span class="math math-display" data-tex="\[
+N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\qquad
+f(x)=\begin{cases}e^{-1/x^2},&amp;x&gt;0,\\0,&amp;x\leq0,\end{cases}
+\qquad A=f(x)N\,dy.
+\tag{E.7}
+\]">\[
+N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\qquad
+f(x)=\begin{cases}e^{-1/x^2},&amp;x&gt;0,\\0,&amp;x\leq0,\end{cases}
+\qquad A=f(x)N\,dy.
+\tag{E.7}
+\]</span>
+Show that torsion vanishes and every covariant derivative of curvature at the origin vanishes, while the local, restricted and full holonomy groups there are
+<span class="math math-display" data-tex="\[
+U=\{I+tN:t\in\mathbb R\}.
+\tag{E.8}
+\]">\[
+U=\{I+tN:t\in\mathbb R\}.
+\tag{E.8}
+\]</span>
+Consequently the infinitesimal group is trivial although the local group is not.</p>
+<p><strong>Solution.</strong> Local 0.5 proves that <span class="math" data-tex="\(f\)">\(f\)</span> is smooth and <span class="math" data-tex="\(f^{(m)}(0)=0\)">\(f^{(m)}(0)=0\)</span> for every <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>. The only nonzero connection coefficient is <span class="math" data-tex="\(\Gamma^1_{22}=f(x)\)">\(\Gamma^1_{22}=f(x)\)</span>. All antisymmetric differences <span class="math" data-tex="\(\Gamma^k_{ij}-\Gamma^k_{ji}\)">\(\Gamma^k_{ij}-\Gamma^k_{ji}\)</span> vanish, so Linear D.1 proves zero torsion. Linear B.3 gives
+<span class="math math-display" data-tex="\[
+R=f'(x)N\,dx\wedge dy,
+\tag{E.9}
+\]">\[
+R=f'(x)N\,dx\wedge dy,
+\tag{E.9}
+\]</span>
+since <span class="math" data-tex="\(A\wedge A=0\)">\(A\wedge A=0\)</span>.</p>
+<p>Every ordinary partial derivative of every coefficient in (E.9) vanishes at the origin. This property persists after applying a tensor covariant derivative. To see this, Linear C.1 writes each resulting coefficient as an ordinary partial derivative of an old coefficient plus a finite sum of products of a connection coefficient with an old coefficient, one term for each tensor slot. Every ordinary partial derivative of the first term vanishes by hypothesis. Applying any finite collection of ordinary derivatives to a product gives a finite sum of derivatives of its two factors, by repeated use of the product rule; its old-tensor factor is always zero at the origin. Thus every such derivative of the product vanishes as well. Induction proves that all coefficients of every <span class="math" data-tex="\(\nabla^kR\)">\(\nabla^kR\)</span>, and all their ordinary derivatives, vanish there. D.2 makes <span class="math" data-tex="\(\mathfrak j_0=0\)">\(\mathfrak j_0=0\)</span>, whose connected group is the identity by Flat A.1.</p>
+<p>For a piecewise smooth path <span class="math" data-tex="\(\gamma(t)=(x(t),y(t))\)">\(\gamma(t)=(x(t),y(t))\)</span>, let
+<span class="math" data-tex="\(I_\gamma(t)=\int_0^t f(x(s))y'(s)\,ds\)">\(I_\gamma(t)=\int_0^t f(x(s))y'(s)\,ds\)</span>.
+Since <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>, the matrix
+<span class="math math-display" data-tex="\[
+G(t)=I-NI_\gamma(t)
+\tag{E.10}
+\]">\[
+G(t)=I-NI_\gamma(t)
+\tag{E.10}
+\]</span>
+has inverse <span class="math" data-tex="\(I+NI_\gamma(t)\)">\(I+NI_\gamma(t)\)</span> and satisfies
+<span class="math" data-tex="\(G'=-f(x(t))y'(t)NG,\ G(0)=I\)">\(G'=-f(x(t))y'(t)NG,\ G(0)=I\)</span>.
+The fundamental theorem of calculus on each smooth piece is Local 0.3. Linear A.2 and uniqueness of its transport ODE identify (E.10) with parallel transport. At a junction the product of two such matrices adds their integrals, again because <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>; hence the formula holds for the entire piecewise path. In particular every loop transport lies in <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>Choose a coordinate ball about the origin and choose <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> small enough that the rectangles below lie in it for all sufficiently small <span class="math" data-tex="\(|b|\)">\(|b|\)</span>. Traverse
+<span class="math math-display" data-tex="\[
+(0,0)\longrightarrow(h,0)\longrightarrow(h,b)
+\longrightarrow(0,b)\longrightarrow(0,0).
+\]">\[
+(0,0)\longrightarrow(h,0)\longrightarrow(h,b)
+\longrightarrow(0,b)\longrightarrow(0,0).
+\]</span>
+The integral in (E.10) is <span class="math" data-tex="\(b f(h)\)">\(b f(h)\)</span>: horizontal sides contribute zero, the right side contributes <span class="math" data-tex="\(bf(h)\)">\(bf(h)\)</span>, and the left side contributes zero since <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>. Thus these loops give <span class="math" data-tex="\(I-bf(h)N\)">\(I-bf(h)N\)</span>. Since <span class="math" data-tex="\(f(h)&gt;0\)">\(f(h)&gt;0\)</span>, varying <span class="math" data-tex="\(b\)">\(b\)</span> over an interval about zero gives all parameters <span class="math" data-tex="\(t\)">\(t\)</span> in an interval about zero in (E.8). Any real <span class="math" data-tex="\(t\)">\(t\)</span> is a finite sum of parameters in this interval: choose a positive integer <span class="math" data-tex="\(m\)">\(m\)</span> so large that <span class="math" data-tex="\(t/m\)">\(t/m\)</span> is in it and repeat that loop <span class="math" data-tex="\(m\)">\(m\)</span> times. Matrix multiplication adds parameters, so every element of <span class="math" data-tex="\(U\)">\(U\)</span> occurs. All these loops stay in the ball and contract there by linear contraction to the origin, including their finite concatenations. Their transports therefore belong to its restricted holonomy.</p>
+<p>We have proved that every sufficiently small coordinate ball has restricted holonomy exactly <span class="math" data-tex="\(U\)">\(U\)</span>, and every loop anywhere has transport in <span class="math" data-tex="\(U\)">\(U\)</span>. Every connected neighbourhood contains such a ball. Its restricted holonomy also equals <span class="math" data-tex="\(U\)">\(U\)</span>, by the two inclusions. Taking the neighbourhood intersection gives local holonomy <span class="math" data-tex="\(U\)">\(U\)</span>; the same inclusions give global restricted and full holonomy <span class="math" data-tex="\(U\)">\(U\)</span>. Its smooth connected group structure is explicit: <span class="math" data-tex="\(t\mapsto I+tN\)">\(t\mapsto I+tN\)</span> is an injective smooth parametrization with smooth inverse given by the upper-right matrix entry, and multiplication is addition. Its Lie algebra is <span class="math" data-tex="\(\mathbb RN\ne0\)">\(\mathbb RN\ne0\)</span>.</p>
+<p>Finally this does not contradict the analytic assertion of D.2. The function <span class="math" data-tex="\(f\)">\(f\)</span> is not analytic at zero: its Taylor coefficients there are all zero, so analyticity would force it to vanish on an interval, whereas it is positive for every <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>. The difference between curvature jets at one point and curvature arbitrarily near that point is essential. □</p>
+<h2 id="part-f">F. Three geometries with explicit geodesics</h2>
+<p>The first example uses the connection specified in the historical coverage checklist; all its calculations are made below from the derivative axioms. The torus construction is already proved in <a href="curvature-and-holonomy-groups.html">Curvature D.3</a>. For the sphere we use Michor's exact free <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf">author manuscript, §25.7</a>, together with the complete sphere and projection-connection proofs in <a href="supporting/DG-CHAR-8e0b5f71efec/DG-CHAR-17.html">DG-CHAR-17 V.5</a> and <a href="linear-and-affine-connections.html">Linear G.2</a>. We use colatitude <span class="math" data-tex="\(0&lt;\theta&lt;\pi\)">\(0&lt;\theta&lt;\pi\)</span>, with longitude restricted to an interval of length less than <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> when a coordinate chart is needed.</p>
+<p id="example-f-1"><strong>Example F.1 (straight geodesics with nonzero torsion and curvature).</strong> On <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, with <span class="math" data-tex="\(e_1=\partial_x,e_2=\partial_y\)">\(e_1=\partial_x,e_2=\partial_y\)</span>, prescribe
+<span class="math math-display" data-tex="\[
+\nabla_{e_1}e_2=e_1,\qquad
+\nabla_{e_2}e_1=-e_1,\qquad
+\nabla_{e_1}e_1=\nabla_{e_2}e_2=0.
+\tag{F.1}
+\]">\[
+\nabla_{e_1}e_2=e_1,\qquad
+\nabla_{e_2}e_1=-e_1,\qquad
+\nabla_{e_1}e_1=\nabla_{e_2}e_2=0.
+\tag{F.1}
+\]</span>
+Every maximal geodesic is <span class="math" data-tex="\(\gamma_v(t)=p+tv\)">\(\gamma_v(t)=p+tv\)</span>, on all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and <span class="math" data-tex="\(\exp_p(v)=p+v\)">\(\exp_p(v)=p+v\)</span>. Nevertheless
+<span class="math math-display" data-tex="\[
+\mathcal T(e_1,e_2)=2e_1,\qquad
+R(e_1,e_2)=N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\ne0.
+\tag{F.2}
+\]">\[
+\mathcal T(e_1,e_2)=2e_1,\qquad
+R(e_1,e_2)=N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\ne0.
+\tag{F.2}
+\]</span>
+Both tensors are parallel. Full, restricted, local and infinitesimal holonomy at any point, in the coordinate frame, are <span class="math" data-tex="\(\{I+tN:t\in\mathbb R\}\)">\(\{I+tN:t\in\mathbb R\}\)</span>.</p>
+<p><strong>Proof.</strong> The matrices of (F.1) are <span class="math" data-tex="\(A_1=N\)">\(A_1=N\)</span> and <span class="math" data-tex="\(A_2=\operatorname{diag}(-1,0)\)">\(A_2=\operatorname{diag}(-1,0)\)</span>; Linear A.1 constructs the connection. For <span class="math" data-tex="\(v=(a,b)\)">\(v=(a,b)\)</span>,
+<span class="math math-display" data-tex="\[
+(aA_1+bA_2)v
+=\begin{pmatrix}-b&amp;a\\0&amp;0\end{pmatrix}
+ \begin{pmatrix}a\\b\end{pmatrix}=0.
+\]">\[
+(aA_1+bA_2)v
+=\begin{pmatrix}-b&amp;a\\0&amp;0\end{pmatrix}
+ \begin{pmatrix}a\\b\end{pmatrix}=0.
+\]</span>
+Thus A.1's geodesic equation is ordinary zero acceleration. Local 0.3 gives precisely <span class="math" data-tex="\(p+tv\)">\(p+tv\)</span>, and this curve exists for all time. Uniqueness and maximality in A.1 prove the first assertions, including the full exponential domain. The coordinate chart centred at any <span class="math" data-tex="\(p\)">\(p\)</span> is therefore a normal chart although its coefficients are nonzero.</p>
+<p>Linear D.1 gives
+<span class="math" data-tex="\(\mathcal T_{12}=A_1e_2-A_2e_1=2e_1\)">\(\mathcal T_{12}=A_1e_2-A_2e_1=2e_1\)</span>.
+The coefficient matrices are constant and
+<span class="math" data-tex="\([A_1,A_2]=N\)">\([A_1,A_2]=N\)</span>; C.1 gives (F.2). To check parallelism, use the full tensor formulas from C.1 and E.2. Since these tensors are alternating in two arguments on a two-dimensional space, it suffices to check the pair <span class="math" data-tex="\((e_1,e_2)\)">\((e_1,e_2)\)</span> in each coordinate direction. They give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\nabla_1\mathcal T)_{12}
+ &amp;=A_1(2e_1)-\mathcal T(0,e_2)-\mathcal T(e_1,e_1)=0,\\
+(\nabla_2\mathcal T)_{12}
+ &amp;=-2e_1-\mathcal T(-e_1,e_2)-\mathcal T(e_1,0)=0,\\
+(\nabla_1R)_{12}
+ &amp;=[N,N]-R(0,e_2)-R(e_1,e_1)=0,\\
+(\nabla_2R)_{12}
+ &amp;=[A_2,N]-R(-e_1,e_2)-R(e_1,0)=-N+N=0.
+\end{aligned}
+\tag{F.3}
+\]">\[
+\begin{aligned}
+(\nabla_1\mathcal T)_{12}
+ &amp;=A_1(2e_1)-\mathcal T(0,e_2)-\mathcal T(e_1,e_1)=0,\\
+(\nabla_2\mathcal T)_{12}
+ &amp;=-2e_1-\mathcal T(-e_1,e_2)-\mathcal T(e_1,0)=0,\\
+(\nabla_1R)_{12}
+ &amp;=[N,N]-R(0,e_2)-R(e_1,e_1)=0,\\
+(\nabla_2R)_{12}
+ &amp;=[A_2,N]-R(-e_1,e_2)-R(e_1,0)=-N+N=0.
+\end{aligned}
+\tag{F.3}
+\]</span>
+The derivative preserves alternation by Linear C.1, justifying the reduction to that pair. Thus <span class="math" data-tex="\(\nabla\mathcal T=\nabla R=0\)">\(\nabla\mathcal T=\nabla R=0\)</span>.</p>
+<p>All higher covariant derivatives of <span class="math" data-tex="\(R\)">\(R\)</span> vanish, while the values of <span class="math" data-tex="\(R\)">\(R\)</span> span <span class="math" data-tex="\(\mathbb RN\)">\(\mathbb RN\)</span> at every point. The rank is constantly one, so D.2 makes the infinitesimal, local and restricted groups the connected immersed subgroup with that algebra. It is the displayed shear group: <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span> gives <span class="math" data-tex="\((I+sN)(I+tN)=I+(s+t)N\)">\((I+sN)(I+tN)=I+(s+t)N\)</span>, the upper-right entry is a smooth inverse parameter, and its tangent algebra is <span class="math" data-tex="\(\mathbb RN\)">\(\mathbb RN\)</span>. Uniqueness of the connected subgroup is Flat A.1. Every loop in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> contracts by the linear homotopy to its base point. Curvature C.5 therefore makes full holonomy equal to restricted holonomy here.</p>
+<p>As a concrete instance of D.3, write <span class="math" data-tex="\(V=N^\#\)">\(V=N^\#\)</span>, <span class="math" data-tex="\(H_1=B(e_1)\)">\(H_1=B(e_1)\)</span>, <span class="math" data-tex="\(H_2=B(e_2)\)">\(H_2=B(e_2)\)</span> on the reachable reduction. They form a frame with
+<span class="math math-display" data-tex="\[
+[V,H_1]=0,\qquad [V,H_2]=H_1,\qquad
+[H_1,H_2]=-V-2H_1.
+\tag{F.4}
+\]">\[
+[V,H_1]=0,\qquad [V,H_2]=H_1,\qquad
+[H_1,H_2]=-V-2H_1.
+\tag{F.4}
+\]</span>
+These follow by substituting (F.2) into (D.9). Straight geodesics alone therefore determine neither torsion, curvature nor this frame algebra. □</p>
+<p id="example-f-2"><strong>Example F.2 (the complete flat torus).</strong> The ordinary derivative on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> descends to <span class="math" data-tex="\(\mathbb T^n=\mathbb R^n/\mathbb Z^n\)">\(\mathbb T^n=\mathbb R^n/\mathbb Z^n\)</span>. Identify each tangent space with <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> by its descended coordinate frame. Then
+<span class="math math-display" data-tex="\[
+\gamma_v(t)=[p+tv]\quad(t\in\mathbb R),\qquad
+\exp_{[p]}(v)=[p+v].
+\tag{F.5}
+\]">\[
+\gamma_v(t)=[p+tv]\quad(t\in\mathbb R),\qquad
+\exp_{[p]}(v)=[p+v].
+\tag{F.5}
+\]</span>
+Torsion and curvature vanish and full holonomy is trivial. The connection is complete. For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, its full exponential map at a point is surjective and is not injective, although every coordinate ball of radius less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span> obtained by projection from <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> is a convex normal neighbourhood in the sense of B.3.</p>
+<p><strong>Proof.</strong> Curvature D.3 proves the smooth quotient charts, descent of the ordinary derivative, the global parallel frame, zero torsion and curvature, and trivial full holonomy for every lattice, including <span class="math" data-tex="\(\mathbb Z^n\)">\(\mathbb Z^n\)</span>. In its local lifted coordinates all coefficients vanish. The globally defined curve <span class="math" data-tex="\([p+tv]\)">\([p+tv]\)</span> solves the local zero-acceleration equation and has the prescribed initial data. A.1 identifies it as the unique maximal geodesic, with domain all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. A.2 then proves (F.5) and completeness.</p>
+<p>Every class <span class="math" data-tex="\([q]\)">\([q]\)</span> is the image of <span class="math" data-tex="\(v=q-p\)">\(v=q-p\)</span>, proving surjectivity. Adding any integer vector to <span class="math" data-tex="\(v\)">\(v\)</span> leaves that image unchanged; nonzero such vectors exist for <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, proving noninjectivity.</p>
+<p>For the final assertion let <span class="math" data-tex="\(B=B(c,\rho)\subset\mathbb R^n\)">\(B=B(c,\rho)\subset\mathbb R^n\)</span>, <span class="math" data-tex="\(0&lt;\rho&lt;1/2\)">\(0&lt;\rho&lt;1/2\)</span>, and let <span class="math" data-tex="\(V\)">\(V\)</span> be its quotient image. Two distinct lifts of the same point differ by a nonzero integer vector, whose length is at least one. Two points in <span class="math" data-tex="\(B\)">\(B\)</span> have distance less than <span class="math" data-tex="\(2\rho&lt;1\)">\(2\rho&lt;1\)</span>, so the quotient is injective on <span class="math" data-tex="\(B\)">\(B\)</span>. The quotient charts of Curvature D.3 make its restriction a local diffeomorphism, hence an open map with smooth local inverses; injectivity makes these inverses a single smooth inverse on <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>In that chart a geodesic contained in <span class="math" data-tex="\(V\)">\(V\)</span> has zero coordinate acceleration. Its endpoints have unique lifts <span class="math" data-tex="\(x,y\in B\)">\(x,y\in B\)</span>, so Local 0.3 forces its coordinate expression to be <span class="math" data-tex="\((1-t)x+ty\)">\((1-t)x+ty\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Conversely that segment stays in <span class="math" data-tex="\(B\)">\(B\)</span>: the norm triangle inequality gives
+<span class="math math-display" data-tex="\[
+|(1-t)x+ty-c|
+\leq(1-t)|x-c|+t|y-c|&lt;\rho.
+\]">\[
+|(1-t)x+ty-c|
+\leq(1-t)|x-c|+t|y-c|&lt;\rho.
+\]</span>
+Thus it projects to a contained geodesic and is the unique one with those endpoints. It depends smoothly on <span class="math" data-tex="\(x,y\)">\(x,y\)</span> and hence on the quotient endpoints. For the endpoint with lift <span class="math" data-tex="\(x\)">\(x\)</span>, the open domain <span class="math" data-tex="\(W_x=B-x\)">\(W_x=B-x\)</span> contains zero, is star-shaped by the same inequality, and its exponential is the diffeomorphism <span class="math" data-tex="\(v\mapsto[x+v]\)">\(v\mapsto[x+v]\)</span> onto <span class="math" data-tex="\(V\)">\(V\)</span>. This proves the asserted full convex-normal property. In dimension zero the torus and its tangent space are single points and all assertions have their evident zero-dimensional interpretation. □</p>
+<p id="example-f-3"><strong>Example F.3 (round-sphere geodesics, curvature and holonomy).</strong> On the unit sphere <span class="math" data-tex="\(S^2\subset\mathbb R^3\)">\(S^2\subset\mathbb R^3\)</span>, set
+<span class="math math-display" data-tex="\[
+\nabla_XY=P_p(dY(X)),\qquad P_p(w)=w-(p\cdot w)p.
+\tag{F.6}
+\]">\[
+\nabla_XY=P_p(dY(X)),\qquad P_p(w)=w-(p\cdot w)p.
+\tag{F.6}
+\]</span>
+This is the torsion-free metric connection. For <span class="math" data-tex="\(v\in T_pS^2\)">\(v\in T_pS^2\)</span>, <span class="math" data-tex="\(r=|v|\)">\(r=|v|\)</span>, its maximal geodesic is
+<span class="math math-display" data-tex="\[
+\gamma_v(t)=
+\begin{cases}
+\cos(rt)p+\dfrac{\sin(rt)}r\,v,&amp;r&gt;0,\\
+p,&amp;r=0,
+\end{cases}
+\qquad t\in\mathbb R.
+\tag{F.7}
+\]">\[
+\gamma_v(t)=
+\begin{cases}
+\cos(rt)p+\dfrac{\sin(rt)}r\,v,&amp;r&gt;0,\\
+p,&amp;r=0,
+\end{cases}
+\qquad t\in\mathbb R.
+\tag{F.7}
+\]</span>
+The exponential is its value at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>; it is defined on all of <span class="math" data-tex="\(T_pS^2\)">\(T_pS^2\)</span>, and maps the open ball <span class="math" data-tex="\(|v|&lt;\pi\)">\(|v|&lt;\pi\)</span> diffeomorphically onto <span class="math" data-tex="\(S^2\setminus\{-p\}\)">\(S^2\setminus\{-p\}\)</span>. In the programme curvature convention,
+<span class="math math-display" data-tex="\[
+R(X,Y)Z=(Y\cdot Z)X-(X\cdot Z)Y.
+\tag{F.8}
+\]">\[
+R(X,Y)Z=(Y\cdot Z)X-(X\cdot Z)Y.
+\tag{F.8}
+\]</span>
+Its sectional curvature is one and <span class="math" data-tex="\(\nabla R=0\)">\(\nabla R=0\)</span>. At every point all four holonomy groups in D.2, including the full group, are <span class="math" data-tex="\(\mathrm{SO}(2)\)">\(\mathrm{SO}(2)\)</span> in an outward oriented orthonormal frame.</p>
+<p><strong>Proof.</strong> DG-CHAR-17 V.5 proves that this sphere is a smooth surface with its induced positive metric. Linear G.2 proves directly, on the entire sphere, that (F.6) obeys the connection axioms, preserves the metric and has zero torsion. Those facts are not inferred solely from a chart omitting the poles.</p>
+<p>For a curve on the sphere, differentiating <span class="math" data-tex="\(\gamma\cdot\gamma=1\)">\(\gamma\cdot\gamma=1\)</span> gives
+<span class="math" data-tex="\(\gamma\cdot\dot\gamma=0\)">\(\gamma\cdot\dot\gamma=0\)</span> and
+<span class="math" data-tex="\(\gamma\cdot\ddot\gamma=-|\dot\gamma|^2\)">\(\gamma\cdot\ddot\gamma=-|\dot\gamma|^2\)</span>.
+The geodesic equation <span class="math" data-tex="\(P_\gamma\ddot\gamma=0\)">\(P_\gamma\ddot\gamma=0\)</span> therefore reads
+<span class="math" data-tex="\(\ddot\gamma=-|\dot\gamma|^2\gamma\)">\(\ddot\gamma=-|\dot\gamma|^2\gamma\)</span>.
+It follows that
+<span class="math" data-tex="\(\frac d{dt}|\dot\gamma|^2=2\dot\gamma\cdot\ddot\gamma=0\)">\(\frac d{dt}|\dot\gamma|^2=2\dot\gamma\cdot\ddot\gamma=0\)</span>,
+so the speed is constant. Conversely direct differentiation of (F.7), using the trigonometric identities proved in Connections E.1, gives that equation and the initial data. Orthogonality of <span class="math" data-tex="\(p,v\)">\(p,v\)</span> and their lengths gives <span class="math" data-tex="\(|\gamma_v(t)|^2=1\)">\(|\gamma_v(t)|^2=1\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>. The case <span class="math" data-tex="\(v=0\)">\(v=0\)</span> is constant. Thus these are sphere-valued geodesics for all time; A.1 proves maximality and uniqueness, and A.2 supplies the smooth exponential map and completeness.</p>
+<p>To check the stated normal domain, for <span class="math" data-tex="\(0&lt;r&lt;\pi\)">\(0&lt;r&lt;\pi\)</span> take the dot product of <span class="math" data-tex="\(\exp_p(v)\)">\(\exp_p(v)\)</span> with <span class="math" data-tex="\(p\)">\(p\)</span>. It is <span class="math" data-tex="\(\cos r\)">\(\cos r\)</span>. The cosine is strictly decreasing from one to minus one on <span class="math" data-tex="\([0,\pi]\)">\([0,\pi]\)</span>, since its derivative is <span class="math" data-tex="\(-\sin r&lt;0\)">\(-\sin r&lt;0\)</span> in the interior, with the signs and endpoints established in Connections E.1. Consequently, for <span class="math" data-tex="\(q\ne p,-p\)">\(q\ne p,-p\)</span>, there is a unique <span class="math" data-tex="\(r\in(0,\pi)\)">\(r\in(0,\pi)\)</span> with <span class="math" data-tex="\(p\cdot q=\cos r\)">\(p\cdot q=\cos r\)</span>, and then the unique possible initial vector is
+<span class="math math-display" data-tex="\[
+v=\frac r{\sin r}\bigl(q-(p\cdot q)p\bigr).
+\tag{F.9}
+\]">\[
+v=\frac r{\sin r}\bigl(q-(p\cdot q)p\bigr).
+\tag{F.9}
+\]</span>
+The vector in parentheses is orthogonal to <span class="math" data-tex="\(p\)">\(p\)</span>, with length <span class="math" data-tex="\(\sin r\)">\(\sin r\)</span>, so this vector indeed has length <span class="math" data-tex="\(r\)">\(r\)</span> and satisfies the exponential formula. The intermediate-value assertion is Local 0.0. The point <span class="math" data-tex="\(q=p\)">\(q=p\)</span> corresponds only to <span class="math" data-tex="\(v=0\)">\(v=0\)</span> inside the ball. This proves bijectivity onto the stated punctured sphere. Away from <span class="math" data-tex="\(p\)">\(p\)</span>, the inverse cosine is smooth by Local 1.2 because <span class="math" data-tex="\(-\sin r\ne0\)">\(-\sin r\ne0\)</span>, so (F.9) is smooth. At <span class="math" data-tex="\(p\)">\(p\)</span>, B.1 already supplies a smooth local inverse; uniqueness makes it agree with (F.9) off <span class="math" data-tex="\(p\)">\(p\)</span>. Hence the global inverse is smooth. At radius <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, all radial directions give <span class="math" data-tex="\(-p\)">\(-p\)</span>, explaining the stated restriction. These geodesics join <span class="math" data-tex="\(p\)">\(p\)</span> to every point, including <span class="math" data-tex="\(-p\)">\(-p\)</span>, so the sphere is path connected and hence connected.</p>
+<p>Now use the local coordinates
+<span class="math math-display" data-tex="\[
+p(\theta,\phi)=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta),
+\qquad 0&lt;\theta&lt;\pi.
+\]">\[
+p(\theta,\phi)=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta),
+\qquad 0&lt;\theta&lt;\pi.
+\]</span>
+Writing <span class="math" data-tex="\(s=\sin\theta,\ c=\cos\theta\)">\(s=\sin\theta,\ c=\cos\theta\)</span>, their orthonormal frame is
+<span class="math" data-tex="\(e_1=(c\cos\phi,c\sin\phi,-s)\)">\(e_1=(c\cos\phi,c\sin\phi,-s)\)</span>,
+<span class="math" data-tex="\(e_2=(-\sin\phi,\cos\phi,0)\)">\(e_2=(-\sin\phi,\cos\phi,0)\)</span>, and their dual coframe is
+<span class="math" data-tex="\(\sigma^1=d\theta,\sigma^2=s\,d\phi\)">\(\sigma^1=d\theta,\sigma^2=s\,d\phi\)</span>.
+Their tangent, orthonormal and outward orientation properties are checked in Linear G.2. That proof computes the derivatives in the longitude direction. In the other direction, <span class="math" data-tex="\(\partial_\theta e_1=-p\)">\(\partial_\theta e_1=-p\)</span> has zero tangent projection and <span class="math" data-tex="\(\partial_\theta e_2=0\)">\(\partial_\theta e_2=0\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+A=J\cos\theta\,d\phi,\quad
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\qquad
+F=-J\sin\theta\,d\theta\wedge d\phi=-J\,\sigma^1\wedge\sigma^2.
+\tag{F.10}
+\]">\[
+A=J\cos\theta\,d\phi,\quad
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\qquad
+F=-J\sin\theta\,d\theta\wedge d\phi=-J\,\sigma^1\wedge\sigma^2.
+\tag{F.10}
+\]</span>
+The last equality follows from Linear B.3: <span class="math" data-tex="\(A\wedge A=0\)">\(A\wedge A=0\)</span> and differentiating <span class="math" data-tex="\(\cos\theta\)">\(\cos\theta\)</span> gives <span class="math" data-tex="\(-\sin\theta\)">\(-\sin\theta\)</span>. Thus
+<span class="math" data-tex="\(R(e_1,e_2)e_1=-e_2\)">\(R(e_1,e_2)e_1=-e_2\)</span> and
+<span class="math" data-tex="\(R(e_1,e_2)e_2=e_1\)">\(R(e_1,e_2)e_2=e_1\)</span>.
+Expand <span class="math" data-tex="\(X,Y,Z\)">\(X,Y,Z\)</span> in this basis, using skew-symmetry and trilinearity, to get (F.8) on the chart. Both sides of (F.8) are smooth tensors on the whole sphere and agree off the two poles. The punctured charts approach each pole; continuity therefore gives equality there too. For any orthonormal <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, (F.8) gives
+<span class="math" data-tex="\(g(R(X,Y)Y,X)=1\)">\(g(R(X,Y)Y,X)=1\)</span>, which is the sectional curvature in this convention. Linear C.1's product and contraction rules and <span class="math" data-tex="\(\nabla g=0\)">\(\nabla g=0\)</span> show directly from (F.8) that <span class="math" data-tex="\(\nabla R=0\)">\(\nabla R=0\)</span>.</p>
+<p>Finally, the outward area form is
+<span class="math" data-tex="\(\mu_p(Y,Z)=\det(p,Y,Z)\)">\(\mu_p(Y,Z)=\det(p,Y,Z)\)</span>.
+It is parallel: when differentiating it in a tangent direction <span class="math" data-tex="\(X\)">\(X\)</span>, the term <span class="math" data-tex="\(\det(X,Y,Z)\)">\(\det(X,Y,Z)\)</span> vanishes since three tangent vectors lie in a two-dimensional plane. Replacing each ambient derivative of <span class="math" data-tex="\(Y,Z\)">\(Y,Z\)</span> by its tangent projection changes its determinant term only by a multiple with two <span class="math" data-tex="\(p\)">\(p\)</span>'s, which is zero. Subtracting these two projected-derivative terms is precisely the covariant derivative of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, by Linear C.1. Thus transport preserves both the metric and this orientation form, and every holonomy matrix belongs to <span class="math" data-tex="\(\mathrm{SO}(2)\)">\(\mathrm{SO}(2)\)</span>.</p>
+<p>The values of <span class="math" data-tex="\(R_p\)">\(R_p\)</span> span the nonzero line <span class="math" data-tex="\(\mathbb RJ\)">\(\mathbb RJ\)</span>, and all its higher covariant derivatives vanish. This line has constant dimension, so D.2 identifies the infinitesimal, local and restricted groups with its connected subgroup. That subgroup is <span class="math" data-tex="\(\mathrm{SO}(2)\)">\(\mathrm{SO}(2)\)</span>: every positively oriented orthogonal <span class="math" data-tex="\(2\)">\(2\)</span>-by-<span class="math" data-tex="\(2\)">\(2\)</span> matrix has columns <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, <span class="math" data-tex="\((-b,a)\)">\((-b,a)\)</span>, with <span class="math" data-tex="\(a^2+b^2=1\)">\(a^2+b^2=1\)</span>; Connections E.1 writes <span class="math" data-tex="\(a+ib=e^{i\alpha}\)">\(a+ib=e^{i\alpha}\)</span>. Hence it is a rotation <span class="math" data-tex="\(e^{\alpha J}\)">\(e^{\alpha J}\)</span>, connected to the identity through <span class="math" data-tex="\(e^{t\alpha J}\)">\(e^{t\alpha J}\)</span>, with Lie algebra <span class="math" data-tex="\(\mathbb RJ\)">\(\mathbb RJ\)</span>. Flat A.1 supplies uniqueness of the connected immersed subgroup. Restricted holonomy is therefore all of <span class="math" data-tex="\(\mathrm{SO}(2)\)">\(\mathrm{SO}(2)\)</span>, while full holonomy is both a supergroup of it and a subgroup of it. The two coincide, proving the final assertion without an unproved assertion about the fundamental group of the sphere. □</p>
+<h2 id="part-g">G. Global trajectories and pointwise distinctions</h2>
+<p>This part supplies additional coverage identified after the preceding six parts were written. Its construction uses their complete proofs and the exact earlier programme proofs cited below. In particular, the horizontal-lift theorem is <a href="connections-and-parallel-transport.html">Connections C.1–C.2</a>, tensor and frame differentiation are <a href="linear-and-affine-connections.html">Linear A.2, C.1 and H.2</a>, and exterior differentiation is <a href="curvature-and-holonomy-groups.html">Curvature A.2 and A.5</a>. These earlier chapters retain the free human sources used in their construction.</p>
+<p id="theorem-g-1"><strong>Theorem G.1 (completeness on the frame bundle).</strong> Fix a frame <span class="math" data-tex="\(u:\mathbb R^n\to T_pM\)">\(u:\mathbb R^n\to T_pM\)</span> and a vector <span class="math" data-tex="\(a\in\mathbb R^n\)">\(a\in\mathbb R^n\)</span>. The maximal integral curve of the standard horizontal field <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span> through <span class="math" data-tex="\(u\)">\(u\)</span> has exactly the maximal time interval <span class="math" data-tex="\(I_{ua}\)">\(I_{ua}\)</span> of the geodesic with initial velocity <span class="math" data-tex="\(ua\)">\(ua\)</span>. Its projection is that geodesic. Consequently the connection is geodesically complete if and only if every <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span> on the full frame bundle is complete.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(U(t)\)">\(U(t)\)</span> be an integral curve of <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span>. Linear H.2 gives
+<span class="math math-display" data-tex="\[
+\omega(\dot U)=0,\qquad \theta(\dot U)=a,\qquad
+\dot\gamma(t)=U(t)a,\quad \gamma=\pi\circ U.
+\tag{G.1}
+\]">\[
+\omega(\dot U)=0,\qquad \theta(\dot U)=a,\qquad
+\dot\gamma(t)=U(t)a,\quad \gamma=\pi\circ U.
+\tag{G.1}
+\]</span>
+Linear A.2 says that <span class="math" data-tex="\(U(t)a\)">\(U(t)a\)</span> is parallel, since <span class="math" data-tex="\(U\)">\(U\)</span> is horizontal. Thus <span class="math" data-tex="\(D_t\dot\gamma=0\)">\(D_t\dot\gamma=0\)</span>. A.1 identifies its projection with <span class="math" data-tex="\(\gamma_{ua}\)">\(\gamma_{ua}\)</span> wherever it is defined.</p>
+<p>Conversely lift <span class="math" data-tex="\(\gamma_{ua}\)">\(\gamma_{ua}\)</span> horizontally starting at <span class="math" data-tex="\(u\)">\(u\)</span>. Connections C.1 supplies a unique lift on every compact subinterval of <span class="math" data-tex="\(I_{ua}\)">\(I_{ua}\)</span> containing zero, in both time directions. Uniqueness makes the lifts agree on overlaps. Their union defines a smooth horizontal lift <span class="math" data-tex="\(U\)">\(U\)</span> on all of <span class="math" data-tex="\(I_{ua}\)">\(I_{ua}\)</span>: each time has a compact subinterval with that time in its interior, and on that interior the lift is smooth by C.1. The velocity <span class="math" data-tex="\(\dot\gamma_{ua}\)">\(\dot\gamma_{ua}\)</span> and the vector <span class="math" data-tex="\(U(t)a\)">\(U(t)a\)</span> are parallel with the same value at zero. The uniqueness of vector transport in Linear A.2 makes them equal throughout this interval. Hence <span class="math" data-tex="\(\theta(\dot U)=a\)">\(\theta(\dot U)=a\)</span>; together with horizontality, the coframe isomorphism in Linear H.2 gives <span class="math" data-tex="\(\dot U=B(a)\)">\(\dot U=B(a)\)</span>.</p>
+<p>This integral curve cannot extend beyond <span class="math" data-tex="\(I_{ua}\)">\(I_{ua}\)</span>, because its projection would extend the maximal geodesic, contradicting A.1. It is therefore precisely the maximal integral curve. If the connection is complete, these intervals are all <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, proving completeness of each field. Conversely, any tangent vector is <span class="math" data-tex="\(ua\)">\(ua\)</span> for a frame <span class="math" data-tex="\(u\)">\(u\)</span> and a column <span class="math" data-tex="\(a\)">\(a\)</span>, so completeness of all those fields gives every required geodesic for all real time. When <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, the coframe gives <span class="math" data-tex="\(B(0)=0\)">\(B(0)=0\)</span>; both curves are constant, consistently with the assertion. □</p>
+<p id="theorem-g-2"><strong>Theorem G.2 (tensor coordinates and exterior differentiation in every degree).</strong> For a tensor <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(r\)">\(r\)</span> vector and <span class="math" data-tex="\(s\)">\(s\)</span> covector factors, its coordinate derivative is
+<span class="math math-display" data-tex="\[
+\begin{split}
+(\nabla_i S)^{a_1\ldots a_r}{}_{b_1\ldots b_s}
+={}&amp;\partial_i S^{a_1\ldots a_r}{}_{b_1\ldots b_s}\\
+&amp;+\sum_{\nu=1}^r\Gamma^{a_\nu}_{ic}
+ S^{a_1\ldots c\ldots a_r}{}_{b_1\ldots b_s}\\
+&amp;-\sum_{\mu=1}^s\Gamma^c_{ib_\mu}
+ S^{a_1\ldots a_r}{}_{b_1\ldots c\ldots b_s}.
+\end{split}
+\tag{G.2}
+\]">\[
+\begin{split}
+(\nabla_i S)^{a_1\ldots a_r}{}_{b_1\ldots b_s}
+={}&amp;\partial_i S^{a_1\ldots a_r}{}_{b_1\ldots b_s}\\
+&amp;+\sum_{\nu=1}^r\Gamma^{a_\nu}_{ic}
+ S^{a_1\ldots c\ldots a_r}{}_{b_1\ldots b_s}\\
+&amp;-\sum_{\mu=1}^s\Gamma^c_{ib_\mu}
+ S^{a_1\ldots a_r}{}_{b_1\ldots c\ldots b_s}.
+\end{split}
+\tag{G.2}
+\]</span>
+At the centre of a normal coordinate chart, <span class="math" data-tex="\(\mathcal T_p=0\)">\(\mathcal T_p=0\)</span> suffices for all the connection corrections in (G.2) to vanish at <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>More generally let <span class="math" data-tex="\(E\)">\(E\)</span> have a connection, and let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be an <span class="math" data-tex="\(E\)">\(E\)</span>-valued alternating <span class="math" data-tex="\(q\)">\(q\)</span>-form, <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>. Give its covariant input positions the tangent connection <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span>. Write <span class="math" data-tex="\(\mathbf X_{\widehat i}\)">\(\mathbf X_{\widehat i}\)</span> for the ordered list <span class="math" data-tex="\(X_0,\ldots,X_q\)">\(X_0,\ldots,X_q\)</span> with <span class="math" data-tex="\(X_i\)">\(X_i\)</span> omitted, and use two hats for two omissions. Then
+<span class="math math-display" data-tex="\[
+\begin{split}
+(D\alpha)(X_0,\ldots,X_q)
+={}&amp;\sum_{i=0}^q(-1)^i(\nabla_{X_i}\alpha)(\mathbf X_{\widehat i})\\
+&amp;+\sum_{0\leq i&lt;j\leq q}(-1)^{i+j+1}
+ \alpha\bigl(\mathcal T(X_i,X_j),\mathbf X_{\widehat{i,j}}\bigr).
+\end{split}
+\tag{G.3}
+\]">\[
+\begin{split}
+(D\alpha)(X_0,\ldots,X_q)
+={}&amp;\sum_{i=0}^q(-1)^i(\nabla_{X_i}\alpha)(\mathbf X_{\widehat i})\\
+&amp;+\sum_{0\leq i&lt;j\leq q}(-1)^{i+j+1}
+ \alpha\bigl(\mathcal T(X_i,X_j),\mathbf X_{\widehat{i,j}}\bigr).
+\end{split}
+\tag{G.3}
+\]</span>
+For a scalar form <span class="math" data-tex="\(D=d\)">\(D=d\)</span>, using ordinary differentiation on the scalar line. Empty sums are zero.</p>
+<p><strong>Proof.</strong> Expand <span class="math" data-tex="\(S\)">\(S\)</span> in the basis tensors made from <span class="math" data-tex="\(\partial_a\)">\(\partial_a\)</span> and <span class="math" data-tex="\(dx^b\)">\(dx^b\)</span>. Linear C.1 gives the product rule on every factor. The vector derivative is <span class="math" data-tex="\(\nabla_i\partial_b=\Gamma^a_{ib}\partial_a\)">\(\nabla_i\partial_b=\Gamma^a_{ib}\partial_a\)</span>. Differentiating <span class="math" data-tex="\(dx^b(\partial_c)=\delta^b_c\)">\(dx^b(\partial_c)=\delta^b_c\)</span> gives
+<span class="math math-display" data-tex="\[
+(\nabla_i dx^b)(\partial_c)=-\Gamma^b_{ic},
+\qquad \nabla_i dx^b=-\Gamma^b_{ic}\,dx^c.
+\]">\[
+(\nabla_i dx^b)(\partial_c)=-\Gamma^b_{ic},
+\qquad \nabla_i dx^b=-\Gamma^b_{ic}\,dx^c.
+\]</span>
+Applying the product rule to each coefficient and factor, then renaming the summed index in each affected position, gives exactly (G.2). It includes <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, <span class="math" data-tex="\(s=0\)">\(s=0\)</span> and the scalar case. B.1 proves that at a normal-coordinate centre <span class="math" data-tex="\(\Gamma^a_{ib}=\tfrac12\mathcal T^a_{ib}\)">\(\Gamma^a_{ib}=\tfrac12\mathcal T^a_{ib}\)</span>. Hence <span class="math" data-tex="\(\mathcal T_p=0\)">\(\mathcal T_p=0\)</span> makes all those coefficients zero at <span class="math" data-tex="\(p\)">\(p\)</span>, without any hypothesis about torsion nearby.</p>
+<p>For (G.3), Curvature A.2 and A.5 give the evaluated exterior formula
+<span class="math math-display" data-tex="\[
+\begin{split}
+D\alpha(\mathbf X)
+={}&amp;\sum_i(-1)^i\nabla^E_{X_i}
+       \bigl(\alpha(\mathbf X_{\widehat i})\bigr)\\
+&amp;+\sum_{i&lt;j}(-1)^{i+j}
+       \alpha([X_i,X_j],\mathbf X_{\widehat{i,j}}).
+\end{split}
+\tag{G.4}
+\]">\[
+\begin{split}
+D\alpha(\mathbf X)
+={}&amp;\sum_i(-1)^i\nabla^E_{X_i}
+       \bigl(\alpha(\mathbf X_{\widehat i})\bigr)\\
+&amp;+\sum_{i&lt;j}(-1)^{i+j}
+       \alpha([X_i,X_j],\mathbf X_{\widehat{i,j}}).
+\end{split}
+\tag{G.4}
+\]</span>
+Indeed, in a local frame the matrix-action terms from <span class="math" data-tex="\(A^E\wedge\alpha\)">\(A^E\wedge\alpha\)</span> combine with the ordinary derivatives to form the first sum, and the bracket terms are unchanged. Linear C.1 expands its first sum into the tensor derivatives in (G.3) and the terms differentiating the arguments.</p>
+<p>Fix a pair <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>. The term differentiating <span class="math" data-tex="\(X_j\)">\(X_j\)</span> in the <span class="math" data-tex="\(i\)">\(i\)</span>-summand has sign <span class="math" data-tex="\((-1)^i\)">\((-1)^i\)</span>; after omission of <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, that argument has position <span class="math" data-tex="\(j-1\)">\(j-1\)</span>, counting from zero. Moving it to the first position therefore gives sign <span class="math" data-tex="\((-1)^{i+j-1}\)">\((-1)^{i+j-1}\)</span>. The term differentiating <span class="math" data-tex="\(X_i\)">\(X_i\)</span> in the <span class="math" data-tex="\(j\)">\(j\)</span>-summand similarly gives sign <span class="math" data-tex="\((-1)^{i+j}\)">\((-1)^{i+j}\)</span>. Together they are
+<span class="math math-display" data-tex="\[
+(-1)^{i+j+1}
+\alpha(\nabla_{X_i}X_j-\nabla_{X_j}X_i,\mathbf X_{\widehat{i,j}}).
+\]">\[
+(-1)^{i+j+1}
+\alpha(\nabla_{X_i}X_j-\nabla_{X_j}X_i,\mathbf X_{\widehat{i,j}}).
+\]</span>
+Add the bracket term for this same pair in (G.4). Linear D.1 identifies the resulting first argument as <span class="math" data-tex="\(\mathcal T(X_i,X_j)\)">\(\mathcal T(X_i,X_j)\)</span>, giving its term in (G.3). Every differentiated-argument term belongs to exactly one pair, so summing proves the identity. When <span class="math" data-tex="\(q=0\)">\(q=0\)</span> there are no pairs, and (G.4) is just the derivative of an <span class="math" data-tex="\(E\)">\(E\)</span>-section. Taking the scalar connection gives the assertion for <span class="math" data-tex="\(d\)">\(d\)</span>. □</p>
+<p id="example-g-3"><strong>Example G.3 (what vanishing at one point does not imply).</strong> A frame normal at a point need not be a coordinate frame on any neighbourhood. Also <span class="math" data-tex="\(\mathcal T_p=0\)">\(\mathcal T_p=0\)</span> does not imply the torsion-free first Bianchi identity at that point.</p>
+<p><strong>Proof.</strong> On the ordinary Euclidean plane put <span class="math" data-tex="\(h=x^2\)">\(h=x^2\)</span>, <span class="math" data-tex="\(c=\cos h\)">\(c=\cos h\)</span>, <span class="math" data-tex="\(s=\sin h\)">\(s=\sin h\)</span>, and
+<span class="math math-display" data-tex="\[
+E_1=c\,\partial_x+s\,\partial_y,\qquad
+E_2=-s\,\partial_x+c\,\partial_y.
+\tag{G.5}
+\]">\[
+E_1=c\,\partial_x+s\,\partial_y,\qquad
+E_2=-s\,\partial_x+c\,\partial_y.
+\tag{G.5}
+\]</span>
+Connections E.1 proves the trigonometric derivatives and <span class="math" data-tex="\(c^2+s^2=1\)">\(c^2+s^2=1\)</span>, so these vectors form an orthonormal frame. Its matrix relative to the coordinate frame is
+<span class="math" data-tex="\(g=\left(\begin{smallmatrix}c&amp;-s\\s&amp;c\end{smallmatrix}\right)\)">\(g=\left(\begin{smallmatrix}c&amp;-s\\s&amp;c\end{smallmatrix}\right)\)</span>.
+The change rule in Linear A.1 gives its potential
+<span class="math math-display" data-tex="\[
+A'=g^{-1}dg=J\,dh=2xJ\,dx,\qquad
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}.
+\tag{G.6}
+\]">\[
+A'=g^{-1}dg=J\,dh=2xJ\,dx,\qquad
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}.
+\tag{G.6}
+\]</span>
+For example, <span class="math" data-tex="\(dg=gJ\,dh\)">\(dg=gJ\,dh\)</span> follows by differentiating its four entries, and multiplication by <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> proves the displayed formula. Thus <span class="math" data-tex="\(A'\)">\(A'\)</span> vanishes at the origin. The coordinate bracket formula of PB C.3 gives
+<span class="math math-display" data-tex="\[
+[E_1,E_2]
+ =\bigl(-2x(c^2+s^2)\bigr)\partial_x
+   +\bigl(-2xcs+2xsc\bigr)\partial_y
+ =-2x\,\partial_x.
+\tag{G.7}
+\]">\[
+[E_1,E_2]
+ =\bigl(-2x(c^2+s^2)\bigr)\partial_x
+   +\bigl(-2xcs+2xsc\bigr)\partial_y
+ =-2x\,\partial_x.
+\tag{G.7}
+\]</span>
+Every open neighbourhood of the origin contains a point with <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, where this bracket is nonzero. Coordinate frame vectors commute, by equality of mixed partials in PB C.3. Consequently this normal frame cannot be a coordinate frame on such a neighbourhood.</p>
+<p>For the second assertion use <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, with coordinate vectors <span class="math" data-tex="\(e_1,e_2,e_3\)">\(e_1,e_2,e_3\)</span>, and prescribe only
+<span class="math" data-tex="\(\nabla_{e_2}e_3=x^1e_1\)">\(\nabla_{e_2}e_3=x^1e_1\)</span>; all other coordinate derivatives are zero. Linear A.1 constructs a smooth connection with <span class="math" data-tex="\(A_2=x^1E_{13}\)">\(A_2=x^1E_{13}\)</span>, <span class="math" data-tex="\(A_1=A_3=0\)">\(A_1=A_3=0\)</span>, where <span class="math" data-tex="\(E_{13}e_3=e_1\)">\(E_{13}e_3=e_1\)</span>. Linear D.1 gives <span class="math" data-tex="\(\mathcal T_{23}=x^1e_1\)">\(\mathcal T_{23}=x^1e_1\)</span>, with the other independent pairs zero. C.1 gives <span class="math" data-tex="\(R_{12}=E_{13}\)">\(R_{12}=E_{13}\)</span>, <span class="math" data-tex="\(R_{23}=R_{31}=0\)">\(R_{23}=R_{31}=0\)</span>. At the origin the connection coefficients and torsion vanish, but (G.2) gives
+<span class="math math-display" data-tex="\[
+\sum_{\mathrm{cyc}}(\nabla_{e_1}\mathcal T)(e_2,e_3)=e_1
+ =\sum_{\mathrm{cyc}}R(e_1,e_2)e_3.
+\tag{G.8}
+\]">\[
+\sum_{\mathrm{cyc}}(\nabla_{e_1}\mathcal T)(e_2,e_3)=e_1
+ =\sum_{\mathrm{cyc}}R(e_1,e_2)e_3.
+\tag{G.8}
+\]</span>
+The quadratic torsion sum is zero there. This verifies the first Bianchi identity C.2 and disproves its torsion-free reduction under the weaker pointwise assumption. By contrast, the correction on the right of the second identity C.6 uses only the value of torsion, so it does vanish at a point where torsion vanishes. □</p>
+<p id="lemma-g-4"><strong>Lemma G.4 (finite jets at a point and separate bracket components).</strong> The space <span class="math" data-tex="\(\mathfrak j_p\)">\(\mathfrak j_p\)</span> in D.2 is spanned by derivatives up to some finite order depending on <span class="math" data-tex="\(p\)">\(p\)</span>. Its dimension is lower semicontinuous. These pointwise facts do not assert any uniform derivative-order bound.</p>
+<p>On the reachable frame bundle <span class="math" data-tex="\(Q\)">\(Q\)</span> of D.3, the horizontal coframe component of <span class="math" data-tex="\([B(a),B(b)]\)">\([B(a),B(b)]\)</span> is constant whenever <span class="math" data-tex="\(\nabla\mathcal T=0\)">\(\nabla\mathcal T=0\)</span>, regardless of whether <span class="math" data-tex="\(\nabla R=0\)">\(\nabla R=0\)</span>. The vertical component is constant whenever <span class="math" data-tex="\(\nabla R=0\)">\(\nabla R=0\)</span>, regardless of whether <span class="math" data-tex="\(\nabla\mathcal T=0\)">\(\nabla\mathcal T=0\)</span>. If torsion vanishes identically, this bracket is vertical; if curvature vanishes identically, it is horizontal.</p>
+<p><strong>Proof.</strong> The endomorphism space has finite dimension <span class="math" data-tex="\(n^2\)">\(n^2\)</span>, with basis its matrix units in a frame. Starting with the empty list, choose a generator of (D.3) outside the span of those already chosen whenever that span is smaller than <span class="math" data-tex="\(\mathfrak j_p\)">\(\mathfrak j_p\)</span>. Each choice increases the independent-list length by one, so after at most <span class="math" data-tex="\(n^2\)">\(n^2\)</span> choices the list spans <span class="math" data-tex="\(\mathfrak j_p\)">\(\mathfrak j_p\)</span>. Taking the maximum of its finitely many derivative orders proves the first assertion. For the zero space take order zero.</p>
+<p>For lower semicontinuity suppose <span class="math" data-tex="\(d=\dim\mathfrak j_p&gt;0\)">\(d=\dim\mathfrak j_p&gt;0\)</span>. Extend the arguments of the selected generators as constant-component fields in a local frame. The resulting <span class="math" data-tex="\(d\)">\(d\)</span> endomorphism-valued functions <span class="math" data-tex="\(S_1(q),\ldots,S_d(q)\)">\(S_1(q),\ldots,S_d(q)\)</span> are smooth, by smoothness of the tensor derivatives, and their values always belong to <span class="math" data-tex="\(\mathfrak j_q\)">\(\mathfrak j_q\)</span>. At <span class="math" data-tex="\(p\)">\(p\)</span> their column matrix, obtained by listing the <span class="math" data-tex="\(n^2\)">\(n^2\)</span> entries of each, has a nonzero <span class="math" data-tex="\(d\)">\(d\)</span>-by-<span class="math" data-tex="\(d\)">\(d\)</span> minor. To justify this elementary criterion, perform elimination on successive independent columns: each new column has a nonzero residual after eliminating the preceding pivots, so one can choose a new pivot row; the resulting selected square system is triangular after these column operations and has nonzero diagonal product. Its determinant, unchanged by subtracting multiples of earlier columns, is nonzero. That determinant is a polynomial in the original entries, hence continuous. It remains nonzero near <span class="math" data-tex="\(p\)">\(p\)</span>, so the <span class="math" data-tex="\(S_i(q)\)">\(S_i(q)\)</span> stay independent and <span class="math" data-tex="\(\dim\mathfrak j_q\geq d\)">\(\dim\mathfrak j_q\geq d\)</span> there. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span> the same inequality is automatic. This is precisely lower semicontinuity.</p>
+<p>For the bracket assertions, the full reachable reduction and its restricted connection exist by Curvature G.4 without either parallel-tensor hypothesis. Linear H.2 gives on it
+<span class="math math-display" data-tex="\[
+\begin{split}
+\theta([B(a),B(b)])&amp;=-u^{-1}\mathcal T_{\pi(u)}(ua,ub),\\
+\omega([B(a),B(b)])&amp;=-u^{-1}R_{\pi(u)}(ua,ub)u.
+\end{split}
+\tag{G.9}
+\]">\[
+\begin{split}
+\theta([B(a),B(b)])&amp;=-u^{-1}\mathcal T_{\pi(u)}(ua,ub),\\
+\omega([B(a),B(b)])&amp;=-u^{-1}R_{\pi(u)}(ua,ub)u.
+\end{split}
+\tag{G.9}
+\]</span>
+The first row is the horizontal component expressed by the solder coframe; the second is the vertical component expressed by the connection coframe. The parallel-frame argument in the proof of D.3 applies separately to each tensor. Thus its own covariant constancy suffices to make the corresponding row constant throughout <span class="math" data-tex="\(Q\)">\(Q\)</span>; no use of the other tensor is made. Finally the coframe splitting of Linear H.2 identifies a vector as vertical exactly when its <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-value is zero, and as horizontal exactly when its <span class="math" data-tex="\(\omega\)">\(\omega\)</span>-value is zero. Substitution in (G.9) proves the last assertions. □</p>
+<p id="example-g-5"><strong>Example G.5 (which flat-torus geodesics close).</strong> For <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, the geodesic <span class="math" data-tex="\([p+tv]\)">\([p+tv]\)</span> in F.2 is periodic exactly when <span class="math" data-tex="\(av\in\mathbb Z^n\)">\(av\in\mathbb Z^n\)</span> for some <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. On <span class="math" data-tex="\(\mathbb T^2\)">\(\mathbb T^2\)</span> the velocities <span class="math" data-tex="\((1,1/2)\)">\((1,1/2)\)</span> and <span class="math" data-tex="\((1,\sqrt2)\)">\((1,\sqrt2)\)</span> give a periodic and a nonperiodic geodesic, respectively.</p>
+<p><strong>Proof.</strong> A return at time <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> means <span class="math" data-tex="\([p+av]=[p]\)">\([p+av]=[p]\)</span>, equivalent by the quotient definition to <span class="math" data-tex="\(av\in\mathbb Z^n\)">\(av\in\mathbb Z^n\)</span>. In that case
+<span class="math" data-tex="\([p+(t+a)v]=[p+tv]\)">\([p+(t+a)v]=[p+tv]\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>, so the return gives a full period, including the velocity in the global frame of F.2. A period conversely gives a return. For <span class="math" data-tex="\((1,1/2)\)">\((1,1/2)\)</span>, take <span class="math" data-tex="\(a=2\)">\(a=2\)</span>.</p>
+<p>For <span class="math" data-tex="\((1,\sqrt2)\)">\((1,\sqrt2)\)</span>, such an <span class="math" data-tex="\(a\)">\(a\)</span> would be a positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(m\sqrt2\)">\(m\sqrt2\)</span> an integer <span class="math" data-tex="\(k\)">\(k\)</span>, making <span class="math" data-tex="\(\sqrt2=k/m\)">\(\sqrt2=k/m\)</span>. Here <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> denotes the unique positive solution of <span class="math" data-tex="\(z^2=2\)">\(z^2=2\)</span>: existence follows from continuity on <span class="math" data-tex="\([1,2]\)">\([1,2]\)</span> and the intermediate-value property of Local 0.0, and strict increase there gives uniqueness. It is irrational. Indeed choose a representation <span class="math" data-tex="\(k/m\)">\(k/m\)</span> with the smallest positive integer denominator, if any exists. The equation <span class="math" data-tex="\(k^2=2m^2\)">\(k^2=2m^2\)</span> makes <span class="math" data-tex="\(k\)">\(k\)</span> even, since the square of an odd integer <span class="math" data-tex="\(2l+1\)">\(2l+1\)</span> is <span class="math" data-tex="\(4l(l+1)+1\)">\(4l(l+1)+1\)</span>, which is odd. Write <span class="math" data-tex="\(k=2j\)">\(k=2j\)</span>; then <span class="math" data-tex="\(m^2=2j^2\)">\(m^2=2j^2\)</span> makes <span class="math" data-tex="\(m\)">\(m\)</span> even by the same argument. Cancelling two gives a representation with smaller positive denominator, a contradiction. The minimum exists because a nonempty set of positive integers has a smallest member, or simply by choosing a denominator and checking the finite positive list below it. Thus the second velocity has no positive period. □</p>
+<p id="example-g-6"><strong>Example G.6 (the sphere's coordinate coefficients).</strong> In the colatitude and longitude chart of F.3, the only nonzero coordinate connection coefficients are
+<span class="math math-display" data-tex="\[
+\Gamma^\phi_{\theta\phi}
+ =\Gamma^\phi_{\phi\theta}=\cot\theta,\qquad
+\Gamma^\theta_{\phi\phi}=-\sin\theta\cos\theta.
+\tag{G.10}
+\]">\[
+\Gamma^\phi_{\theta\phi}
+ =\Gamma^\phi_{\phi\theta}=\cot\theta,\qquad
+\Gamma^\theta_{\phi\phi}=-\sin\theta\cos\theta.
+\tag{G.10}
+\]</span>
+These statements are confined to the chart <span class="math" data-tex="\(0&lt;\theta&lt;\pi\)">\(0&lt;\theta&lt;\pi\)</span>.</p>
+<p><strong>Proof.</strong> In the notation of F.3, <span class="math" data-tex="\(\partial_\theta=e_1\)">\(\partial_\theta=e_1\)</span> and <span class="math" data-tex="\(\partial_\phi=s e_2\)">\(\partial_\phi=s e_2\)</span>. Its already proved potential <span class="math" data-tex="\(A=Jc\,d\phi\)">\(A=Jc\,d\phi\)</span> gives
+<span class="math math-display" data-tex="\[
+\nabla_\theta e_1=\nabla_\theta e_2=0,\qquad
+\nabla_\phi e_1=c e_2,\qquad
+\nabla_\phi e_2=-c e_1.
+\]">\[
+\nabla_\theta e_1=\nabla_\theta e_2=0,\qquad
+\nabla_\phi e_1=c e_2,\qquad
+\nabla_\phi e_2=-c e_1.
+\]</span>
+The derivative rule and <span class="math" data-tex="\(\partial_\theta s=c\)">\(\partial_\theta s=c\)</span>, <span class="math" data-tex="\(\partial_\phi s=0\)">\(\partial_\phi s=0\)</span>, proved in Connections E.1, therefore give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\nabla_\theta\partial_\theta&amp;=0,&amp;
+\nabla_\theta\partial_\phi&amp;=c e_2=(c/s)\partial_\phi,\\
+\nabla_\phi\partial_\theta&amp;=c e_2=(c/s)\partial_\phi,&amp;
+\nabla_\phi\partial_\phi&amp;=-sc e_1=-sc\partial_\theta.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\nabla_\theta\partial_\theta&amp;=0,&amp;
+\nabla_\theta\partial_\phi&amp;=c e_2=(c/s)\partial_\phi,\\
+\nabla_\phi\partial_\theta&amp;=c e_2=(c/s)\partial_\phi,&amp;
+\nabla_\phi\partial_\phi&amp;=-sc e_1=-sc\partial_\theta.
+\end{aligned}
+\]</span>
+These four derivatives exhaust the coordinate input pairs, proving (G.10). Dividing by <span class="math" data-tex="\(s\)">\(s\)</span> is legitimate on this chart. The poles are excluded only from these coordinates: the global connection, geodesics and curvature there were already proved in F.3. □</p>
+</article><footer><p><a href="src/geodesics-normal-coordinates-and-curvature.md">Chapter source</a> · <span class="unlinked">Course contents</span></p><p>New exposition: CC0 1.0. Exact free construction sources are credited in the text.</p><p><a href="assets/mathjax/LICENSE">MathJax licence</a> · <a href="assets/mathjax/FONT-LICENSES.txt">Font notices</a></p></footer></main></body></html>

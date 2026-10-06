@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kashiwara&#x27;s equivalence and D-modules on singular spaces · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/kashiwaras-equivalence-and-singular-spaces.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 10</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="kashiwara-s-equivalence-and-d-modules-on-singular-spaces">Kashiwara's equivalence and D-modules on singular spaces</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A module of distributions supported at a point contains the delta vector and all its normal derivatives. Kashiwara's theorem says that this is the general shape of a differential-operator module supported on a smooth closed subvariety: the normal derivatives carry no extra choice. After proving the theorem, we will use smooth ambient varieties to define modules on a singular variety and prove that the resulting category does not depend on the ambient variety.</p>
+<p>The ground field <span class="math" data-tex="$k$">$k$</span> has characteristic zero. All modules are quasi-coherent over the structure sheaf. Smooth varieties are separated, and characteristic varieties are taken only for coherent differential-operator modules. We retain the left-module convention
+<span class="math math-display" data-tex="\[
+f^!=Lf^*[d_X-d_Y].
+\]">\[
+f^!=Lf^*[d_X-d_Y].
+\]</span>
+For a closed embedding of codimension <span class="math" data-tex="$c$">$c$</span>, this is <span class="math" data-tex="$i^!=Li^*[-c]$">$i^!=Li^*[-c]$</span>, with no additional shift. Our prerequisite is Direct images and the relative de Rham complex, including closed direct image, composition, and the normal derivative description. We also use the derived Koszul calculation from Inverse images.</p>
+<h2 id="1-support-means-local-nilpotence">1. Support means local nilpotence</h2>
+<p>Let <span class="math" data-tex="$i:Z\hookrightarrow X$">$i:Z\hookrightarrow X$</span> be a smooth closed embedding, with ideal <span class="math" data-tex="$\mathcal I$">$\mathcal I$</span>. Let <span class="math" data-tex="$\operatorname{Mod}_Z(\mathcal D_X)$">$\operatorname{Mod}_Z(\mathcal D_X)$</span> denote modules whose restriction to <span class="math" data-tex="$X\setminus Z$">$X\setminus Z$</span> vanishes. This is set-theoretic support; it does not require <span class="math" data-tex="$\mathcal I M=0$">$\mathcal I M=0$</span>.</p>
+<p>On an affine chart where <span class="math" data-tex="$\mathcal I=(t_1,\ldots,t_c)$">$\mathcal I=(t_1,\ldots,t_c)$</span>, quasi-coherence makes the support condition equivalent to
+<span class="math math-display" data-tex="\[
+\text{for every }m,\text{ some }N\text{ satisfies }\mathcal I^Nm=0.
+\tag{1.1}
+\]">\[
+\text{for every }m,\text{ some }N\text{ satisfies }\mathcal I^Nm=0.
+\tag{1.1}
+\]</span>
+Indeed <span class="math" data-tex="$M_{t_a}=0$">$M_{t_a}=0$</span> implies <span class="math" data-tex="$t_a^{N_a}m=0$">$t_a^{N_a}m=0$</span> for each <span class="math" data-tex="$a$">$a$</span>. Every monomial in the <span class="math" data-tex="$t_a$">$t_a$</span> of total degree greater than <span class="math" data-tex="$\sum_a(N_a-1)$">$\sum_a(N_a-1)$</span> has one exponent at least <span class="math" data-tex="$N_a$">$N_a$</span> and kills <span class="math" data-tex="$m$">$m$</span>. Conversely (1.1) makes each localization vanish. This argument applies to arbitrary quasi-coherent modules and uses no finite-generation hypothesis.</p>
+<p>In one normal coordinate, the Weyl relation is
+<span class="math math-display" data-tex="\[
+[\partial,t]=1.
+\]">\[
+[\partial,t]=1.
+\]</span>
+If <span class="math" data-tex="$tv=0$">$tv=0$</span>, it forces
+<span class="math math-display" data-tex="\[
+t\partial^jv=-j\partial^{j-1}v,\qquad
+(t\partial)\partial^jv=-(j+1)\partial^jv. \tag{1.2}
+\]">\[
+t\partial^jv=-j\partial^{j-1}v,\qquad
+(t\partial)\partial^jv=-(j+1)\partial^jv. \tag{1.2}
+\]</span>
+Thus <span class="math" data-tex="$t$">$t$</span> need not act as zero on a module supported on <span class="math" data-tex="$t=0$">$t=0$</span>. Repeated normal differentiation produces vectors on which it acts nontrivially, but locally nilpotently.</p>
+<h2 id="2-recovering-every-coefficient">2. Recovering every coefficient</h2>
+<p>The key algebraic fact works with any vector space carrying operators <span class="math" data-tex="$t,\partial$">$t,\partial$</span> satisfying the Weyl relation, provided <span class="math" data-tex="$t$">$t$</span> is locally nilpotent. Put <span class="math" data-tex="$V=\ker t$">$V=\ker t$</span>.</p>
+<p><strong>Lemma 2.1.</strong> The map
+<span class="math math-display" data-tex="\[
+k[\partial]\otimes_kV\longrightarrow M,\qquad
+\partial^j\otimes v\longmapsto\partial^jv \tag{2.1}
+\]">\[
+k[\partial]\otimes_kV\longrightarrow M,\qquad
+\partial^j\otimes v\longmapsto\partial^jv \tag{2.1}
+\]</span>
+is an isomorphism. It commutes with every operator that commutes with both <span class="math" data-tex="$t$">$t$</span> and <span class="math" data-tex="$\partial$">$\partial$</span>.</p>
+<p><strong>Proof.</strong> Define a finite sum on each vector:
+<span class="math math-display" data-tex="\[
+\pi(m)=\sum_{\ell\geq0}\frac{\partial^\ell t^\ell m}{\ell!}. \tag{2.2}
+\]">\[
+\pi(m)=\sum_{\ell\geq0}\frac{\partial^\ell t^\ell m}{\ell!}. \tag{2.2}
+\]</span>
+The relation <span class="math" data-tex="$t\partial^\ell=\partial^\ell t-\ell\partial^{\ell-1}$">$t\partial^\ell=\partial^\ell t-\ell\partial^{\ell-1}$</span> gives <span class="math" data-tex="$t\pi(m)=0$">$t\pi(m)=0$</span> by cancellation of consecutive terms. Also <span class="math" data-tex="$\pi(v)=v$">$\pi(v)=v$</span> for <span class="math" data-tex="$v\in V$">$v\in V$</span>. The formula
+<span class="math math-display" data-tex="\[
+\pi(\partial^rv)=
+\sum_{\ell=0}^r(-1)^\ell\binom r\ell\,\partial^rv
+\]">\[
+\pi(\partial^rv)=
+\sum_{\ell=0}^r(-1)^\ell\binom r\ell\,\partial^rv
+\]</span>
+equals <span class="math" data-tex="$v$">$v$</span> if <span class="math" data-tex="$r=0$">$r=0$</span> and zero if <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span>.</p>
+<p>Every vector has the expansion
+<span class="math math-display" data-tex="\[
+m=\sum_{j\geq0}\frac{(-1)^j}{j!}\,
+\partial^j\pi(t^jm). \tag{2.3}
+\]">\[
+m=\sum_{j\geq0}\frac{(-1)^j}{j!}\,
+\partial^j\pi(t^jm). \tag{2.3}
+\]</span>
+To check it, substitute (2.2). The coefficient of <span class="math" data-tex="$\partial^nt^nm$">$\partial^nt^nm$</span> in the resulting finite double sum is
+<span class="math" data-tex="$\sum_{j=0}^n(-1)^j/(j!(n-j)!)$">$\sum_{j=0}^n(-1)^j/(j!(n-j)!)$</span>, which is <span class="math" data-tex="$1$">$1$</span> for <span class="math" data-tex="$n=0$">$n=0$</span> and <span class="math" data-tex="$0$">$0$</span> otherwise. This proves surjectivity of (2.1).</p>
+<p>For uniqueness, if <span class="math" data-tex="$\sum_{j=0}^q\partial^jv_j=0$">$\sum_{j=0}^q\partial^jv_j=0$</span>, apply <span class="math" data-tex="$\pi t^r$">$\pi t^r$</span>. Formula (1.2) gives
+<span class="math math-display" data-tex="\[
+\pi t^r\left(\sum_j\partial^jv_j\right)=(-1)^rr!v_r.
+\tag{2.4}
+\]">\[
+\pi t^r\left(\sum_j\partial^jv_j\right)=(-1)^rr!v_r.
+\tag{2.4}
+\]</span>
+Characteristic zero implies <span class="math" data-tex="$v_r=0$">$v_r=0$</span> for every <span class="math" data-tex="$r$">$r$</span>. The final assertion follows directly from the projector formulas. ∎</p>
+<p>In particular the Euler operator <span class="math" data-tex="$\theta=t\partial$">$\theta=t\partial$</span> is diagonalizable in the algebraic direct-sum sense:
+<span class="math math-display" data-tex="\[
+M=\bigoplus_{j\geq1}M_{-j},\qquad
+M_{-j}=\partial^{j-1}V,\qquad M_{-1}=V. \tag{2.5}
+\]">\[
+M=\bigoplus_{j\geq1}M_{-j},\qquad
+M_{-j}=\partial^{j-1}V,\qquad M_{-1}=V. \tag{2.5}
+\]</span>
+Every vector has finitely many components. Normal differentiation is an isomorphism <span class="math" data-tex="$M_{-j}\to M_{-j-1}$">$M_{-j}\to M_{-j-1}$</span>, and <span class="math" data-tex="$t$">$t$</span> is a nonzero scalar multiple of its inverse between those spaces.</p>
+<p>For commuting normal pairs <span class="math" data-tex="$(t_a,\partial_a)$">$(t_a,\partial_a)$</span>, all cross commutators vanish. The projectors <span class="math" data-tex="$\pi_a$">$\pi_a$</span> commute, so <span class="math" data-tex="$\pi=\pi_1\cdots\pi_c$">$\pi=\pi_1\cdots\pi_c$</span> projects to
+<span class="math" data-tex="$V=\bigcap_a\ker t_a$">$V=\bigcap_a\ker t_a$</span>. The same binomial calculation gives
+<span class="math math-display" data-tex="\[
+M=\bigoplus_{\alpha\in\mathbb N^c}\partial_t^\alpha V,\qquad
+m=\sum_\alpha\frac{(-1)^{|\alpha|}}{\alpha!}\,
+\partial_t^\alpha\pi(t^\alpha m). \tag{2.6}
+\]">\[
+M=\bigoplus_{\alpha\in\mathbb N^c}\partial_t^\alpha V,\qquad
+m=\sum_\alpha\frac{(-1)^{|\alpha|}}{\alpha!}\,
+\partial_t^\alpha\pi(t^\alpha m). \tag{2.6}
+\]</span>
+The sums are finite by (1.1). Tangent-coordinate operators commute with all the normal pairs, and hence act on <span class="math" data-tex="$V$">$V$</span>.</p>
+<h2 id="3-the-equivalence-with-its-intrinsic-inverse">3. The equivalence, with its intrinsic inverse</h2>
+<p><strong>Theorem 3.1 (Kashiwara).</strong> For a smooth closed embedding <span class="math" data-tex="$i:Z\hookrightarrow X$">$i:Z\hookrightarrow X$</span>, direct image is an exact equivalence
+<span class="math math-display" data-tex="\[
+i_*:\operatorname{Mod}(\mathcal D_Z)
+\ \xrightarrow{\ \sim\ }\
+\operatorname{Mod}_Z(\mathcal D_X). \tag{3.1}
+\]">\[
+i_*:\operatorname{Mod}(\mathcal D_Z)
+\ \xrightarrow{\ \sim\ }\
+\operatorname{Mod}_Z(\mathcal D_X). \tag{3.1}
+\]</span>
+Its inverse is <span class="math" data-tex="$K_i(M)=H^0(i^!M)$">$K_i(M)=H^0(i^!M)$</span>. On the supported category, <span class="math" data-tex="$i^!M$">$i^!M$</span> is concentrated in degree zero. The equivalence preserves and reflects coherence and holonomicity.</p>
+<p>There is a density factor in the global inverse. If <span class="math" data-tex="$\mathcal N^*_{Z/X}=\mathcal I/\mathcal I^2$">$\mathcal N^*_{Z/X}=\mathcal I/\mathcal I^2$</span>, its underlying module is
+<span class="math math-display" data-tex="\[
+K_i(M)=\det(\mathcal N^*_{Z/X})
+\otimes_{\mathcal O_Z}\{m\in i^{-1}M:\mathcal I m=0\}.
+\tag{3.2}
+\]">\[
+K_i(M)=\det(\mathcal N^*_{Z/X})
+\otimes_{\mathcal O_Z}\{m\in i^{-1}M:\mathcal I m=0\}.
+\tag{3.2}
+\]</span>
+This formula includes the differential-operator action induced by transfer. A coordinate choice trivializes the determinant and identifies the inverse with the common kernel in (2.6); a bare common kernel without that twist is not the intrinsic left-module inverse.</p>
+<p><strong>Proof of the equivalence.</strong> An intrinsic construction of the actions and comparison maps is easiest on right modules. Let <span class="math" data-tex="$T_i=\mathcal D_{Z\to X}$">$T_i=\mathcal D_{Z\to X}$</span>. For a right <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>-module <span class="math" data-tex="$Q$">$Q$</span> set
+<span class="math math-display" data-tex="\[
+K_i^r(Q)
+=\mathcal Hom_{\,i^{-1}\mathcal D_X^{\mathrm{op}}}
+(T_i,i^{-1}Q). \tag{3.3}
+\]">\[
+K_i^r(Q)
+=\mathcal Hom_{\,i^{-1}\mathcal D_X^{\mathrm{op}}}
+(T_i,i^{-1}Q). \tag{3.3}
+\]</span>
+The left <span class="math" data-tex="$\mathcal D_Z$">$\mathcal D_Z$</span>-action on <span class="math" data-tex="$T_i$">$T_i$</span> induces a right action on this Hom: <span class="math" data-tex="$(\phi P)(t)=\phi(Pt)$">$(\phi P)(t)=\phi(Pt)$</span>. Since
+<span class="math" data-tex="$T_i=\mathcal O_Z\otimes_{i^{-1}\mathcal O_X}i^{-1}\mathcal D_X$">$T_i=\mathcal O_Z\otimes_{i^{-1}\mathcal O_X}i^{-1}\mathcal D_X$</span>,
+tensor-Hom adjunction identifies (3.3) with the subsheaf of <span class="math" data-tex="$Q$">$Q$</span> killed by <span class="math" data-tex="$\mathcal I$">$\mathcal I$</span>.</p>
+<p>There are canonical maps
+<span class="math math-display" data-tex="\[
+N\longrightarrow K_i^r(i_*^rN),\qquad
+i_*^rK_i^r(Q)\longrightarrow Q, \tag{3.4}
+\]">\[
+N\longrightarrow K_i^r(i_*^rN),\qquad
+i_*^rK_i^r(Q)\longrightarrow Q, \tag{3.4}
+\]</span>
+given by <span class="math" data-tex="$n\mapsto(t\mapsto n\otimes t)$">$n\mapsto(t\mapsto n\otimes t)$</span> and evaluation <span class="math" data-tex="$\phi\otimes t\mapsto\phi(t)$">$\phi\otimes t\mapsto\phi(t)$</span>. The tensor relations verify that these maps are differential-operator linear, and their definitions imply the two adjunction identities.</p>
+<p>Side-changing (3.3) gives the left inverse
+<span class="math" data-tex="$S_Z^{-1}K_i^rS_X$">$S_Z^{-1}K_i^rS_X$</span>. Its underlying sheaf is the common kernel tensor
+<span class="math" data-tex="$\omega_X|_Z\otimes\omega_Z^{-1}$">$\omega_X|_Z\otimes\omega_Z^{-1}$</span>. The cotangent exact sequence identifies this line with <span class="math" data-tex="$\det(\mathcal N^*_{Z/X})$">$\det(\mathcal N^*_{Z/X})$</span>, proving (3.2).</p>
+<p>Now take adapted étale coordinates on <span class="math" data-tex="$X$">$X$</span> in which the normal equations are <span class="math" data-tex="$t_1,\ldots,t_c$">$t_1,\ldots,t_c$</span> and the remaining coordinates restrict to étale coordinates on <span class="math" data-tex="$Z$">$Z$</span>. The direct-image formula in the prerequisite identifies <span class="math" data-tex="$i_*N$">$i_*N$</span> with <span class="math" data-tex="$N[\partial_{t_1},\ldots,\partial_{t_c}]$">$N[\partial_{t_1},\ldots,\partial_{t_c}]$</span>, after trivializing the density lines. Its common normal kernel is the constant polynomial part. Thus the first map in (3.4), side-changed, is an isomorphism.</p>
+<p>For a module <span class="math" data-tex="$M$">$M$</span> supported on <span class="math" data-tex="$Z$">$Z$</span>, (1.1) and (2.6) identify the second comparison map with the bijection
+<span class="math math-display" data-tex="\[
+K_i(M)[\partial_{t_1},\ldots,\partial_{t_c}]
+\longrightarrow M.
+\]">\[
+K_i(M)[\partial_{t_1},\ldots,\partial_{t_c}]
+\longrightarrow M.
+\]</span>
+It respects tangent operators, normal derivatives, and the normal-coordinate lowering action (1.2). It is already intrinsically <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>-linear by evaluation. This last observation also handles arbitrary coefficient functions in an étale coordinate ring; no product identification of the whole ambient chart is needed. Both comparison maps are therefore isomorphisms locally and globally. Their canonical definitions supply the gluing and the unit-counit identities. Exactness of <span class="math" data-tex="$i_*$">$i_*$</span> was proved in the preceding lesson; an inverse equivalence is exact as well. ∎</p>
+<h3 id="the-derived-degree">The derived degree</h3>
+<p>Locally <span class="math" data-tex="$Li^*M$">$Li^*M$</span> is the normal Koszul complex in degrees <span class="math" data-tex="$-c,\ldots,0$">$-c,\ldots,0$</span>. On the polynomial normal form in (2.6), <span class="math" data-tex="$t_a$">$t_a$</span> acts as <span class="math" data-tex="$-\partial/\partial(\partial_{t_a})$">$-\partial/\partial(\partial_{t_a})$</span>. In one variable this map on <span class="math" data-tex="$k[\partial]$">$k[\partial]$</span> is surjective and its kernel is <span class="math" data-tex="$k$">$k$</span>. Hence the one-variable Koszul complex has only its degree <span class="math" data-tex="$-1$">$-1$</span> cohomology. Tensoring these <span class="math" data-tex="$c$">$c$</span> complexes over <span class="math" data-tex="$k$">$k$</span> proves that the full Koszul complex has only degree <span class="math" data-tex="$-c$">$-c$</span> cohomology. Its top exterior generator supplies precisely the determinant in (3.2). The shift <span class="math" data-tex="$[-c]$">$[-c]$</span> moves this group to degree zero. Thus
+<span class="math math-display" data-tex="\[
+i^!i_*N\simeq N,\qquad
+i^!M\simeq K_i(M)\quad(M\text{ supported on }Z). \tag{3.5}
+\]">\[
+i^!i_*N\simeq N,\qquad
+i^!M\simeq K_i(M)\quad(M\text{ supported on }Z). \tag{3.5}
+\]</span>
+These identifications are the intrinsic transfer identifications above. There is no second shift to append to <span class="math" data-tex="$H^0i^!$">$H^0i^!$</span>.</p>
+<h3 id="coherence-and-characteristic-support">Coherence and characteristic support</h3>
+<p>If <span class="math" data-tex="$N$">$N$</span> is locally finitely generated over <span class="math" data-tex="$\mathcal D_Z$">$\mathcal D_Z$</span>, its generators in normal degree zero generate <span class="math" data-tex="$i_*N$">$i_*N$</span> over <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>. Conversely, finitely many generators of <span class="math" data-tex="$M$">$M$</span> have finite expansions (2.6). Let <span class="math" data-tex="$N_0$">$N_0$</span> be the <span class="math" data-tex="$\mathcal D_Z$">$\mathcal D_Z$</span>-submodule generated by their normal coefficients. Then <span class="math" data-tex="$i_*N_0$">$i_*N_0$</span> contains the chosen generators and, by the intrinsic direct-image action, is a <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>-submodule of <span class="math" data-tex="$M$">$M$</span>. It must equal <span class="math" data-tex="$M$">$M$</span>; taking common kernels gives <span class="math" data-tex="$N_0=K_i(M)$">$N_0=K_i(M)$</span>. The rings of differential operators are locally Noetherian, so these finite-generation statements prove coherence in both directions.</p>
+<p>Let <span class="math" data-tex="$\rho:T^*X|_Z\to T^*Z$">$\rho:T^*X|_Z\to T^*Z$</span> restrict covectors to tangent vectors on <span class="math" data-tex="$Z$">$Z$</span>. For coherent <span class="math" data-tex="$N$">$N$</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Ch}(i_*N)=\rho^{-1}\operatorname{Ch}(N). \tag{3.6}
+\]">\[
+\operatorname{Ch}(i_*N)=\rho^{-1}\operatorname{Ch}(N). \tag{3.6}
+\]</span>
+To prove equality, choose a good filtration <span class="math" data-tex="$F$">$F$</span> on <span class="math" data-tex="$N$">$N$</span> and filter the normal form by
+<span class="math math-display" data-tex="\[
+F_p(i_*N)=
+\sum_{q+|\alpha|\leq p}\partial_t^\alpha F_qN.
+\]">\[
+F_p(i_*N)=
+\sum_{q+|\alpha|\leq p}\partial_t^\alpha F_qN.
+\]</span>
+PBW and the uniqueness in (2.6) give
+<span class="math" data-tex="$\operatorname{gr}(i_*N)=\operatorname{gr}N\otimes_k k[\xi_{t_1},\ldots,\xi_{t_c}]$">$\operatorname{gr}(i_*N)=\operatorname{gr}N\otimes_k k[\xi_{t_1},\ldots,\xi_{t_c}]$</span>
+in these coordinates. Normal equations act as zero on this graded module, since they lower normal degree; tangent symbols act on <span class="math" data-tex="$\operatorname{gr}N$">$\operatorname{gr}N$</span>. The filtration is good, and its support is exactly the right side of (3.6). This proves the intrinsic formula by local gluing.</p>
+<p>For nonzero <span class="math" data-tex="$N$">$N$</span>, the fibers of <span class="math" data-tex="$\rho$">$\rho$</span> have dimension <span class="math" data-tex="$c$">$c$</span>, so
+<span class="math math-display" data-tex="\[
+\dim\operatorname{Ch}(i_*N)=\dim\operatorname{Ch}(N)+c.
+\]">\[
+\dim\operatorname{Ch}(i_*N)=\dim\operatorname{Ch}(N)+c.
+\]</span>
+Since <span class="math" data-tex="$d_X=d_Z+c$">$d_X=d_Z+c$</span>, the dimension criterion for holonomicity proves preservation and reflection. The zero module is preserved too.</p>
+<h2 id="4-three-concrete-supported-modules">4. Three concrete supported modules</h2>
+<p>At the origin in the line, <span class="math" data-tex="$\delta_0=k[\partial]\delta$">$\delta_0=k[\partial]\delta$</span> satisfies
+<span class="math math-display" data-tex="\[
+x\partial^j\delta=-j\partial^{j-1}\delta,\qquad
+(x\partial)\partial^j\delta=-(j+1)\partial^j\delta.
+\]">\[
+x\partial^j\delta=-j\partial^{j-1}\delta,\qquad
+(x\partial)\partial^j\delta=-(j+1)\partial^j\delta.
+\]</span>
+Every quasi-coherent module supported at the origin is <span class="math" data-tex="$\delta_0\otimes_k V$">$\delta_0\otimes_k V$</span> for a vector space <span class="math" data-tex="$V$">$V$</span>. Choosing a basis of <span class="math" data-tex="$V$">$V$</span> writes it as a direct sum of copies of <span class="math" data-tex="$\delta_0$">$\delta_0$</span>; this choice is not canonical. It is coherent, and hence holonomic, precisely when <span class="math" data-tex="$V$">$V$</span> is finite-dimensional.</p>
+<p>The Laurent quotient
+<span class="math math-display" data-tex="\[
+L=k[x,x^{-1}]/k[x]
+\]">\[
+L=k[x,x^{-1}]/k[x]
+\]</span>
+has basis <span class="math" data-tex="$x^{-j}$">$x^{-j}$</span> for <span class="math" data-tex="$j\geq1$">$j\geq1$</span>. Its Euler eigenvalue on <span class="math" data-tex="$x^{-j}$">$x^{-j}$</span> is <span class="math" data-tex="$-j$">$-j$</span>, its common kernel is <span class="math" data-tex="$\operatorname{span}_k\{[x^{-1}]\}$">$\operatorname{span}_k\{[x^{-1}]\}$</span>, and
+<span class="math math-display" data-tex="\[
+\partial^{j-1}[x^{-1}]
+=(-1)^{j-1}(j-1)![x^{-j}].
+\]">\[
+\partial^{j-1}[x^{-1}]
+=(-1)^{j-1}(j-1)![x^{-j}].
+\]</span>
+Thus <span class="math" data-tex="$L\simeq\delta_0$">$L\simeq\delta_0$</span> with the complete eigenspace decomposition (2.5).</p>
+<p>A point in <span class="math" data-tex="$\mathbb A^2$">$\mathbb A^2$</span> gives
+<span class="math math-display" data-tex="\[
+\delta_0^{(2)}=k[\partial_x,\partial_y]\delta,
+\qquad x\delta=y\delta=0.
+\]">\[
+\delta_0^{(2)}=k[\partial_x,\partial_y]\delta,
+\qquad x\delta=y\delta=0.
+\]</span>
+Its two-variable normal Koszul complex has top kernel <span class="math" data-tex="$k\delta$">$k\delta$</span> in degree <span class="math" data-tex="$-2$">$-2$</span> and no other cohomology. After shifting by <span class="math" data-tex="$[-2]$">$[-2]$</span>, the inverse is again a vector space in degree zero. The difference between one and two ambient dimensions consists of one additional freely generated normal derivative.</p>
+<h2 id="5-a-singular-variety-and-two-ambient-varieties">5. A singular variety and two ambient varieties</h2>
+<p>Let <span class="math" data-tex="$Y$">$Y$</span> be a finite-type variety, possibly singular, with a closed embedding <span class="math" data-tex="$e:Y\hookrightarrow X$">$e:Y\hookrightarrow X$</span> into a smooth variety. Define
+<span class="math math-display" data-tex="\[
+\mathcal C_X(Y)=\operatorname{Mod}_{e(Y)}(\mathcal D_X). \tag{5.1}
+\]">\[
+\mathcal C_X(Y)=\operatorname{Mod}_{e(Y)}(\mathcal D_X). \tag{5.1}
+\]</span>
+One calls this the category of differential-operator modules on <span class="math" data-tex="$Y$">$Y$</span>. It is defined by ambient support, not by the ring of differential operators of the singular coordinate ring.</p>
+<p><strong>Theorem 5.1.</strong> For two smooth ambient embeddings <span class="math" data-tex="$e_a:Y\hookrightarrow X_a$">$e_a:Y\hookrightarrow X_a$</span>, the categories <span class="math" data-tex="$\mathcal C_{X_1}(Y)$">$\mathcal C_{X_1}(Y)$</span> and <span class="math" data-tex="$\mathcal C_{X_2}(Y)$">$\mathcal C_{X_2}(Y)$</span> are canonically equivalent, with coherent comparison isomorphisms for three or more embeddings.</p>
+<p>Here “canonically” means equivalences and natural isomorphisms obeying the composition and unit identities, rather than an identification of different sheaves as literally equal.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="$W=X_1\times X_2$">$W=X_1\times X_2$</span>, and support modules on the joint embedding <span class="math" data-tex="$e=(e_1,e_2):Y\hookrightarrow W$">$e=(e_1,e_2):Y\hookrightarrow W$</span>. Write <span class="math" data-tex="$\mathcal C_W(Y)$">$\mathcal C_W(Y)$</span> for this category. We claim that the projection direct images
+<span class="math math-display" data-tex="\[
+P_a=(p_a)_*:\mathcal C_W(Y)\longrightarrow\mathcal C_{X_a}(Y)
+\tag{5.2}
+\]">\[
+P_a=(p_a)_*:\mathcal C_W(Y)\longrightarrow\mathcal C_{X_a}(Y)
+\tag{5.2}
+\]</span>
+are exact equivalences concentrated in degree zero.</p>
+<p>First suppose <span class="math" data-tex="$X_2=\mathbb A^m$">$X_2=\mathbb A^m$</span> and <span class="math" data-tex="$X_1$">$X_1$</span> is affine. Each coordinate function of <span class="math" data-tex="$e_2$">$e_2$</span> on <span class="math" data-tex="$Y$">$Y$</span> lifts through the surjection <span class="math" data-tex="$\mathcal O(X_1)\to\mathcal O(Y)$">$\mathcal O(X_1)\to\mathcal O(Y)$</span>. The lifts define a map <span class="math" data-tex="$F:X_1\to\mathbb A^m$">$F:X_1\to\mathbb A^m$</span> extending <span class="math" data-tex="$e_2$">$e_2$</span> along <span class="math" data-tex="$e_1$">$e_1$</span>. Its graph <span class="math" data-tex="$a:X_1\hookrightarrow X_1\times\mathbb A^m$">$a:X_1\hookrightarrow X_1\times\mathbb A^m$</span> is a smooth closed subvariety containing the joint image of <span class="math" data-tex="$Y$">$Y$</span>. Kashiwara's equivalence, restricted to modules supported on that image, gives
+<span class="math math-display" data-tex="\[
+a_*:\mathcal C_{X_1}(Y)\xrightarrow{\sim}
+\mathcal C_{X_1\times\mathbb A^m}(Y).
+\]">\[
+a_*:\mathcal C_{X_1}(Y)\xrightarrow{\sim}
+\mathcal C_{X_1\times\mathbb A^m}(Y).
+\]</span>
+It applies to the smooth graph, even though <span class="math" data-tex="$Y$">$Y$</span> may be singular. The direct-image composition theorem and <span class="math" data-tex="$p_1a=\mathrm{id}$">$p_1a=\mathrm{id}$</span> show <span class="math" data-tex="$P_1a_*=\mathrm{id}$">$P_1a_*=\mathrm{id}$</span>. Hence <span class="math" data-tex="$P_1$">$P_1$</span> is the inverse equivalence. In particular its images are in the heart. This proves the claim for this local situation.</p>
+<p>If <span class="math" data-tex="$X_2$">$X_2$</span> is any smooth affine variety, embed it as a closed subvariety <span class="math" data-tex="$b:X_2\hookrightarrow\mathbb A^m$">$b:X_2\hookrightarrow\mathbb A^m$</span>. The product <span class="math" data-tex="$1\times b$">$1\times b$</span> is a smooth closed embedding. Kashiwara identifies <span class="math" data-tex="$\mathcal C_{X_1\times X_2}(Y)$">$\mathcal C_{X_1\times X_2}(Y)$</span> with <span class="math" data-tex="$\mathcal C_{X_1\times\mathbb A^m}(Y)$">$\mathcal C_{X_1\times\mathbb A^m}(Y)$</span>, and projection composition identifies their functors to <span class="math" data-tex="$\mathcal C_{X_1}(Y)$">$\mathcal C_{X_1}(Y)$</span>. The preceding argument proves that <span class="math" data-tex="$P_1$">$P_1$</span> is an equivalence. Interchanging the factors proves the claim for <span class="math" data-tex="$P_2$">$P_2$</span>.</p>
+<p>This argument is local around <span class="math" data-tex="$Y$">$Y$</span> in both factors. Fix an affine neighborhood in <span class="math" data-tex="$X_2$">$X_2$</span> of a chosen image point. Shrink an affine neighborhood in <span class="math" data-tex="$X_1$">$X_1$</span> so that every point of <span class="math" data-tex="$Y$">$Y$</span> lying over it maps into that neighborhood of <span class="math" data-tex="$X_2$">$X_2$</span>: remove the closed image under <span class="math" data-tex="$e_1$">$e_1$</span> of the complementary closed subset of <span class="math" data-tex="$Y$">$Y$</span>. On this piece the joint support is contained in the product of the two affine neighborhoods. Restricting a module to that product and applying derived open direct image restores the original supported module. Indeed every point outside the smaller product has a neighborhood disjoint from the closed joint support, on which the module and all these derived images vanish. Composition of direct images consequently reduces <span class="math" data-tex="$P_1$">$P_1$</span> locally to the affine case proved above; the symmetric argument applies to <span class="math" data-tex="$P_2$">$P_2$</span>.</p>
+<p>The affine inverse constructions and their intrinsic unit and evaluation maps commute with these restrictions. Local inverse objects therefore glue by ordinary sheaf descent. On overlaps they are inverses to the same projection functor; full faithfulness gives the unique overlap isomorphisms respecting the unit and counit, and their cocycle identity. This proves the global assertion about (5.2).</p>
+<p>Choose a quasi-inverse <span class="math" data-tex="$P_1^{-1}$">$P_1^{-1}$</span> with its unit and counit, and define
+<span class="math math-display" data-tex="\[
+E_{12}=P_2P_1^{-1}. \tag{5.3}
+\]">\[
+E_{12}=P_2P_1^{-1}. \tag{5.3}
+\]</span>
+Any other such quasi-inverse has a unique comparison isomorphism compatible with those data. In particular the equivalence (5.3) is independent of the coordinate lifts <span class="math" data-tex="$F$">$F$</span>: those lifts were used to prove that the fixed functor <span class="math" data-tex="$P_1$">$P_1$</span> is an equivalence, and do not occur in its definition.</p>
+<p>For three embeddings, use the joint support in <span class="math" data-tex="$X_1\times X_2\times X_3$">$X_1\times X_2\times X_3$</span>. Every projection to a factor or to a pair of factors is an equivalence by the same argument, regarding a product of smooth varieties as one factor. Direct-image composition identifies all routes to each factor. Full faithfulness therefore gives the natural comparison
+<span class="math math-display" data-tex="\[
+E_{23}E_{12}\xrightarrow{\sim}E_{13}. \tag{5.4}
+\]">\[
+E_{23}E_{12}\xrightarrow{\sim}E_{13}. \tag{5.4}
+\]</span>
+For four factors, both ways of composing these comparisons become the same direct-image associativity map from the fourfold product. Faithfulness implies their equality. The diagonal graph handles repeated embeddings and yields the identity comparisons. This proves the coherence assertions. ∎</p>
+<p>This proof never applies the smooth closed-embedding theorem to the singular immersion <span class="math" data-tex="$Y\hookrightarrow X_a$">$Y\hookrightarrow X_a$</span> itself. It applies that theorem only to graphs and smooth ambient inclusions.</p>
+<p>Every affine open of <span class="math" data-tex="$Y$">$Y$</span> embeds into an affine space, so the construction defines <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span>-modules even when a chosen global smooth embedding is unavailable. On overlaps use Theorem 5.1 and (5.4) to glue the categories and objects. Since support only uses the complement of <span class="math" data-tex="$Y$">$Y$</span>, a nilpotent thickening of <span class="math" data-tex="$Y$">$Y$</span> gives the same category.</p>
+<p>Coherence and holonomicity are intrinsic as well. Locally each projection equivalence in the proof is the inverse of a smooth graph direct image, possibly composed with a smooth closed ambient inclusion. Theorem 3.1 preserves and reflects both properties for each such operation. Thus the comparison equivalences preserve them, and they can be checked on the ambient open cover.</p>
+<h3 id="étale-locality">Étale locality</h3>
+<p>The construction also descends on the étale site. Locally an étale map <span class="math" data-tex="$Y&#x27;\to Y$">$Y&#x27;\to Y$</span> has a standard étale presentation: adjoin a variable with a polynomial relation and invert its derivative. Lift the polynomial coefficients from <span class="math" data-tex="$\mathcal O(Y)$">$\mathcal O(Y)$</span> to those of a smooth affine ambient <span class="math" data-tex="$X$">$X$</span>. The same presentation defines an étale smooth ambient <span class="math" data-tex="$X&#x27;\to X$">$X&#x27;\to X$</span> with <span class="math" data-tex="$Y&#x27;=X&#x27;\times_XY$">$Y&#x27;=X&#x27;\times_XY$</span>. Étale pullback is flat; its differential-operator action is the unique lifted tangent action. Hence it gives an exact pullback between the supported categories.</p>
+<p>For an étale cover, quasi-coherent modules and their morphisms descend by the usual faithfully flat descent theorem. The operator actions descend as maps satisfying the Leibniz and Lie identities; these identities may be checked after the faithfully flat pullback. The support condition descends because a module vanishing after a faithfully flat restriction vanishes. Thus the descended sheaf is again a supported differential-operator module. Different ambient lifts give the same descent functor through the comparisons of Theorem 5.1: on joint ambient products the étale base changes of the smooth graphs have exactly the same normal derivative description, and their unit and evaluation maps commute with base change. This also proves compatibility of the comparison isomorphisms with descent.</p>
+<h2 id="6-two-crystal-conventions-and-a-stack-preview">6. Two crystal conventions and a stack preview</h2>
+<p>A crystal describes how an object is transported between infinitesimal thickenings, with a composition rule. It is essential to specify the transport functor.</p>
+<p>For a smooth variety <span class="math" data-tex="$X$">$X$</span> in characteristic zero, consider the infinitesimal site of nilpotent thickenings <span class="math" data-tex="$U\hookrightarrow T$">$U\hookrightarrow T$</span>, with <span class="math" data-tex="$U$">$U$</span> open in <span class="math" data-tex="$X$">$X$</span>. An ordinary quasi-coherent crystal assigns an <span class="math" data-tex="$\mathcal O_T$">$\mathcal O_T$</span>-module <span class="math" data-tex="$E_T$">$E_T$</span> and isomorphisms
+<span class="math math-display" data-tex="\[
+h^*E_T\xrightarrow{\sim}E_{T&#x27;}
+\tag{6.1}
+\]">\[
+h^*E_T\xrightarrow{\sim}E_{T&#x27;}
+\tag{6.1}
+\]</span>
+for maps of thickenings <span class="math" data-tex="$h:T&#x27;\to T$">$h:T&#x27;\to T$</span>, compatible with identity and composition.</p>
+<p>The local link with left modules can be seen directly. In smooth coordinates, set <span class="math" data-tex="$\Delta_i=x_i^{(2)}-x_i^{(1)}$">$\Delta_i=x_i^{(2)}-x_i^{(1)}$</span> on an infinitesimal neighborhood of the diagonal. For a left module with commuting coordinate derivatives, its Taylor transport is
+<span class="math math-display" data-tex="\[
+\varepsilon(m)=
+\sum_\alpha\frac{\Delta^\alpha}{\alpha!}\,\partial^\alpha m.
+\tag{6.2}
+\]">\[
+\varepsilon(m)=
+\sum_\alpha\frac{\Delta^\alpha}{\alpha!}\,\partial^\alpha m.
+\tag{6.2}
+\]</span>
+Only finitely many terms survive on each nilpotent neighborhood. Leibniz proves that (6.2) is balanced over the two coordinate-ring actions. Replacing <span class="math" data-tex="$\Delta$">$\Delta$</span> by <span class="math" data-tex="$-\Delta$">$-\Delta$</span> gives its inverse. On a triple neighborhood, adding the coordinate differences and using the binomial formula proves the composition rule. Formal smoothness lets one locally lift <span class="math" data-tex="$U\to X$">$U\to X$</span> to <span class="math" data-tex="$T\to X$">$T\to X$</span>; pull back the module along such a lift and identify different lifts by (6.2). The composition rule glues these pullbacks into (6.1).</p>
+<p>Conversely, evaluate a crystal on <span class="math" data-tex="$X$">$X$</span> and on the first neighborhood of its diagonal. The linear coefficients of its transport give the operators <span class="math" data-tex="$\partial_i$">$\partial_i$</span>. Balancing gives their Leibniz rule; the triple-neighborhood identity gives commuting derivatives. Its identities on higher neighborhoods force the coefficients to be <span class="math" data-tex="$\partial^\alpha/\alpha!$">$\partial^\alpha/\alpha!$</span>, by comparing successive differences in the composition rule. Thus they recover (6.2). Coordinate changes respect the construction because these are the same crystal comparison maps, and the tangent action extends to <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span> by PBW. This proves the smooth characteristic-zero correspondence with ordinary infinitesimal quasi-coherent crystals.</p>
+<p><a href="https://stacks.math.columbia.edu/tag/07IR">Stacks, Tag 07IR</a> names quasi-coherent crystals on its divided-power crystalline site. Its preceding definition and lemma specify the ordinary-pullback comparison condition. That site and its hypotheses must be distinguished from the characteristic-zero infinitesimal site just used.</p>
+<p>For a singular space, Beilinson and Drinfeld use a different, right-module formulation. For a finite map of affine schemes corresponding to <span class="math" data-tex="$B\to A$">$B\to A$</span>, their coefficient transport is
+<span class="math math-display" data-tex="\[
+h_{\mathcal O}^!(F)=\operatorname{Hom}_B(A,F).
+\tag{6.3}
+\]">\[
+h_{\mathcal O}^!(F)=\operatorname{Hom}_B(A,F).
+\tag{6.3}
+\]</span>
+For a closed immersion <span class="math" data-tex="$A=B/I$">$A=B/I$</span>, it takes the submodule killed by <span class="math" data-tex="$I$">$I$</span>. This is coefficient-sheaf transport, and is distinct from our derived differential-operator functor <span class="math" data-tex="$h^!$">$h^!$</span>. A BD D-crystal assigns modules on nilpotent thickenings with comparisons using (6.3) and its quasi-finite extension, rather than ordinary tensor pullback.</p>
+<p>We state the comparison needed for this preview: BD D-crystals on a finite-type complex algebraic space form the intrinsic category of right <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span>-modules; for a smooth space they recover right modules over its operator sheaf, and for a singular space they recover the supported ambient category. The precise references are Beilinson–Drinfeld, §§7.10.3, 7.10.8, 7.10.11–7.10.14. On smooth ambient varieties, side-changing relates this formulation to the left categories used above.</p>
+<p>For an algebraic stack locally of finite type, one defines objects by compatible families on a smooth scheme atlas and its iterated overlaps. Overlaps may be algebraic spaces; their categories are defined by the étale descent just described. Each possibly singular scheme chart has the intrinsic category constructed in Section 5. Transition functors are the unshifted smooth inverse images; where the relative dimension is <span class="math" data-tex="$r$">$r$</span>, their relation with our derived convention is <span class="math" data-tex="$f^\natural=f^![-r]$">$f^\natural=f^![-r]$</span>. Objects carry transition isomorphisms satisfying the identity and triple-overlap cocycle conditions, and morphisms respect them. The smooth descent formalism for these intrinsic categories is stated here from BD §1.1.7. This specifies the classical category on a nonsmooth stack; the derived stack category, its dimension normalizations and the de Rham prestack require the later lesson on stacks and ind-schemes.</p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<h3 id="exercise-9-1-euler-eigenvalues-easy">Exercise 9.1 — Euler eigenvalues (easy)</h3>
+<p>Check the Euler eigenvalues of the normal derivative basis of <span class="math" data-tex="$\delta_0$">$\delta_0$</span>.</p>
+<p><strong>Solution.</strong> From <span class="math" data-tex="$x\delta=0$">$x\delta=0$</span> and <span class="math" data-tex="$[x,\partial^j]=-j\partial^{j-1}$">$[x,\partial^j]=-j\partial^{j-1}$</span> we obtain
+<span class="math" data-tex="$x\partial^{j+1}\delta=-(j+1)\partial^j\delta$">$x\partial^{j+1}\delta=-(j+1)\partial^j\delta$</span>.
+The left side is <span class="math" data-tex="$(x\partial)\partial^j\delta$">$(x\partial)\partial^j\delta$</span>. Thus the eigenvalue on <span class="math" data-tex="$\partial^j\delta$">$\partial^j\delta$</span> is <span class="math" data-tex="$-(j+1)$">$-(j+1)$</span> for every <span class="math" data-tex="$j\geq0$">$j\geq0$</span>. The basis spans algebraically, so the eigenspaces are exactly their one-dimensional spans. In particular zero is not an Euler eigenvalue in this nonzero supported left module.</p>
+<h3 id="exercise-9-2-the-inverse-image-of-a-pushed-point-easy">Exercise 9.2 — the inverse image of a pushed point (easy)</h3>
+<p>Show directly that <span class="math" data-tex="$i^!i_*=\mathrm{id}$">$i^!i_*=\mathrm{id}$</span> for the origin <span class="math" data-tex="$i:\operatorname{Spec}k\hookrightarrow\mathbb A^1$">$i:\operatorname{Spec}k\hookrightarrow\mathbb A^1$</span>, including the shift.</p>
+<p><strong>Solution.</strong> For a vector space <span class="math" data-tex="$V$">$V$</span>, <span class="math" data-tex="$i_*V=k[\partial]\otimes V$">$i_*V=k[\partial]\otimes V$</span>, and <span class="math" data-tex="$x$">$x$</span> acts as <span class="math" data-tex="$-d/d\partial$">$-d/d\partial$</span>. The complex for <span class="math" data-tex="$Li^*$">$Li^*$</span> is multiplication by <span class="math" data-tex="$x$">$x$</span> in degrees <span class="math" data-tex="$-1,0$">$-1,0$</span>. Polynomial integration proves its surjectivity and its kernel is <span class="math" data-tex="$1\otimes V$">$1\otimes V$</span>. Thus <span class="math" data-tex="$Li^*i_*V\simeq V[1]$">$Li^*i_*V\simeq V[1]$</span>. Since <span class="math" data-tex="$i^!=Li^*[-1]$">$i^!=Li^*[-1]$</span>, the result is <span class="math" data-tex="$V$">$V$</span> in degree zero. The inclusion of constant normal polynomials identifies this isomorphism with the unit of Theorem 3.1, so it is natural in <span class="math" data-tex="$V$">$V$</span>.</p>
+<h3 id="exercise-9-3-all-modules-at-the-origin-medium">Exercise 9.3 — all modules at the origin (medium)</h3>
+<p>Classify quasi-coherent <span class="math" data-tex="$\mathcal D_{\mathbb A^1}$">$\mathcal D_{\mathbb A^1}$</span>-modules set-theoretically supported at the origin, including maps and coherent objects.</p>
+<p><strong>Solution.</strong> Such a module has locally nilpotent <span class="math" data-tex="$x$">$x$</span> by Section 1. Put <span class="math" data-tex="$V=\ker x$">$V=\ker x$</span>. The projector (2.2) and expansion (2.3) give <span class="math" data-tex="$M\simeq k[\partial]\otimes V$">$M\simeq k[\partial]\otimes V$</span> with <span class="math" data-tex="$x$">$x$</span> acting by negative polynomial differentiation. A differential-operator map preserves <span class="math" data-tex="$V$">$V$</span> and is determined by its restriction to <span class="math" data-tex="$V$">$V$</span>, since it commutes with <span class="math" data-tex="$\partial$">$\partial$</span>. Conversely every linear map <span class="math" data-tex="$V\to W$">$V\to W$</span> extends to the indicated module map. Hence the category is equivalent to vector spaces. A basis of <span class="math" data-tex="$V$">$V$</span> exhibits a direct sum of delta modules. The finite-generation argument in Section 3 proves that <span class="math" data-tex="$M$">$M$</span> is coherent exactly when <span class="math" data-tex="$\dim_kV&lt;\infty$">$\dim_kV&lt;\infty$</span>. Formula (3.6) gives characteristic variety the point's cotangent fiber. The associated graded is free of rank <span class="math" data-tex="$\dim_kV$">$\dim_kV$</span> on that fiber, so its generic length, and hence characteristic multiplicity, is <span class="math" data-tex="$\dim_kV$">$\dim_kV$</span>. The coherent objects are holonomic. Infinite direct sums remain legitimate quasi-coherent modules, but are not coherent holonomic objects.</p>
+<h3 id="exercise-9-4-simple-objects-on-a-smooth-support-medium">Exercise 9.4 — simple objects on a smooth support (medium)</h3>
+<p>Show that simple holonomic modules supported on a smooth closed <span class="math" data-tex="$Z\subset X$">$Z\subset X$</span> correspond exactly to simple holonomic <span class="math" data-tex="$\mathcal D_Z$">$\mathcal D_Z$</span>-modules.</p>
+<p><strong>Solution.</strong> The equivalence and its inverse are exact. They therefore carry subobjects bijectively to subobjects and preserve nonzero objects. A nonzero object has no nonzero proper subobject on one side exactly when its image has none on the other. The characteristic dimension calculation (3.6) preserves and reflects holonomicity. Combining these two statements proves the assertion, including uniqueness of the source simple object up to isomorphism.</p>
+<h3 id="exercise-9-5-a-point-in-two-ambient-spaces-hard">Exercise 9.5 — a point in two ambient spaces (hard)</h3>
+<p>Construct the equivalence between modules supported at a point of <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span> and modules supported at a point of <span class="math" data-tex="$\mathbb A^2$">$\mathbb A^2$</span> without using the general embedding-independence theorem.</p>
+<p><strong>Solution.</strong> Translate the points to the origins. For a line module take <span class="math" data-tex="$V=\ker x$">$V=\ker x$</span>, and form <span class="math" data-tex="$k[\partial_x,\partial_y]\otimes V$">$k[\partial_x,\partial_y]\otimes V$</span>. Let the derivatives multiply the polynomial variables and let <span class="math" data-tex="$x,y$">$x,y$</span> act by their respective negative derivatives. This is supported at the plane origin and satisfies the two Weyl relations. In the reverse direction, take <span class="math" data-tex="$W=\ker x\cap\ker y$">$W=\ker x\cap\ker y$</span> of a plane module and form <span class="math" data-tex="$k[\partial]\otimes W$">$k[\partial]\otimes W$</span> with the analogous line action. Formula (2.6) proves that these operations are inverse; their comparison maps send polynomial normal derivatives of the common kernel to the corresponding vectors. A map is determined by its restriction to the kernel, so the construction also gives an equivalence on morphisms. For the coordinate axis embedding <span class="math" data-tex="$a:\mathbb A^1\hookrightarrow\mathbb A^2$">$a:\mathbb A^1\hookrightarrow\mathbb A^2$</span>, the forward operation is <span class="math" data-tex="$a_*$">$a_*$</span> restricted to point-supported modules, and projection back is its inverse by the computation of a delta module's direct image to a point. This matches the canonical projection comparison of Section 5.</p>
+<h3 id="exercise-9-6-powers-of-a-normal-equation-medium">Exercise 9.6 — powers of a normal equation (medium)</h3>
+<p>For <span class="math" data-tex="$m\geq1$">$m\geq1$</span>, compute the supported left module <span class="math" data-tex="$A_1/A_1x^m$">$A_1/A_1x^m$</span>. Explain why insensitivity to a nilpotent thickening does not say that <span class="math" data-tex="$x$">$x$</span> acts as zero.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="$v$">$v$</span> be its generator. PBW gives a basis <span class="math" data-tex="$\partial^b x^av$">$\partial^b x^av$</span> with <span class="math" data-tex="$b\geq0$">$b\geq0$</span> and <span class="math" data-tex="$0\leq a&lt;m$">$0\leq a&lt;m$</span>. The relation <span class="math" data-tex="$x^mv=0$">$x^mv=0$</span> and the commutator formula show that a sufficiently high power of <span class="math" data-tex="$x$">$x$</span> kills every basis vector, so the module is supported at the origin. Write a general vector as
+<span class="math" data-tex="$\sum_{a=0}^{m-1}h_a(\partial)x^av$">$\sum_{a=0}^{m-1}h_a(\partial)x^av$</span>. Multiplication by <span class="math" data-tex="$x$">$x$</span> gives the kernel equations
+<span class="math math-display" data-tex="\[
+h_0&#x27;=0,\qquad h_a&#x27;=h_{a-1}\quad(1\leq a&lt;m).
+\]">\[
+h_0&#x27;=0,\qquad h_a&#x27;=h_{a-1}\quad(1\leq a&lt;m).
+\]</span>
+Their polynomial solutions are
+<span class="math math-display" data-tex="\[
+h_a(\partial)=\sum_{j=0}^a c_j\,\frac{\partial^{a-j}}{(a-j)!}.
+\]">\[
+h_a(\partial)=\sum_{j=0}^a c_j\,\frac{\partial^{a-j}}{(a-j)!}.
+\]</span>
+Thus <span class="math" data-tex="$\ker x$">$\ker x$</span> has dimension <span class="math" data-tex="$m$">$m$</span>, with independent vectors
+<span class="math math-display" data-tex="\[
+v_j=\sum_{a=j}^{m-1}
+\frac{\partial^{a-j}}{(a-j)!}x^av,\qquad 0\leq j&lt;m.
+\]">\[
+v_j=\sum_{a=j}^{m-1}
+\frac{\partial^{a-j}}{(a-j)!}x^av,\qquad 0\leq j&lt;m.
+\]</span>
+Theorem 3.1 gives <span class="math" data-tex="$A_1/A_1x^m\simeq\delta_0^{\oplus m}$">$A_1/A_1x^m\simeq\delta_0^{\oplus m}$</span>. Normal multiplication is still nonzero on, for example, <span class="math" data-tex="$\partial v_j$">$\partial v_j$</span>, since <span class="math" data-tex="$x\partial v_j=-v_j$">$x\partial v_j=-v_j$</span>. The category depends on the reduced support; its individual objects retain their normal-derivative actions.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The comparison between BD right D-crystals and intrinsic supported modules on arbitrary complex algebraic spaces is stated from §§7.10.8, 7.10.11–7.10.14. The smooth descent formalism used to define the classical category on nonsmooth algebraic stacks is stated from §1.1.7. The derived category of a stack and the full de Rham-prestack formalism are reserved for the later stacks lesson.</p>
+<p>Quasi-coherent étale descent and the standard étale presentation theorem used in Section 5 are algebraic-geometric prerequisites. The two central theorems here, Kashiwara's equivalence and canonical independence of a smooth ambient embedding, were proved without importing the crystal comparison.</p>
+<h2 id="references">References</h2>
+<p>Victor Ginzburg, <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em>, §§3.3.13–3.3.15 and Corollary 3.3.26</a>, discusses Kashiwara, singular ambient support and characteristic varieties. Dragan Miličić, <a href="https://www.math.utah.edu/~milicic/Eprints/hk_chapter1.pdf"><em>Lectures on Algebraic Theory of D-Modules</em>, Chapter I, Lemma 12.2 and Corollaries 12.3–12.4, pp. 50–51</a>, gives the affine hyperplane argument. Christian Schnell, <a href="https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf"><em>D-modules</em>, Theorem 13.12 and Lecture 14, pp. 66–68</a>, uses right modules, whose Euler eigenvalues differ from the left eigenvalues in (2.5) by transposition.</p>
+<p>Beilinson and Drinfeld, <a href="https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf"><em>Quantization of Hitchin's integrable system and Hecke eigensheaves</em>, §1.1.7 and §7.10</a>, give the nonsmooth-stack and right D-crystal formulations. The ordinary-pullback crystal terminology is in <a href="https://stacks.math.columbia.edu/tag/07IR">Stacks, Tag 07IR</a> and its preceding definition and lemma.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="bernstein-sato-polynomials.html">← Bernstein-Sato polynomials</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="adjunctions-base-change-and-the-projection-formula.html">Adjunctions, base change and the projection formula →</a></span></nav>
+<p class="small source-link"><a href="src/kashiwaras-equivalence-and-singular-spaces.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

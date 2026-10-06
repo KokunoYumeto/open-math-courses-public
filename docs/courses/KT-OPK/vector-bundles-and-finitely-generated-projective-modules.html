@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vector bundles and finitely generated projective modules · K-theory of C*-algebras</title>
+<meta name="description" content="A lesson of the course K-theory of C*-algebras. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../index.html">Courses</a>
+<a href="sources.html">Licensing</a>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">K-theory of C*-algebras</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by the writing AI.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (1)</summary><ul><li><a href="idempotents-projections-and-their-equivalences.html">Idempotents, projections and their equivalences</a></li></ul></details>
+<article class="lesson">
+<h1 id="vector-bundles-and-finitely-generated-projective-modules">Vector bundles and finitely generated projective modules</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A continuous projection chooses a vector subspace continuously at each point of a space. Its range is a vector bundle; its range on continuous functions is a projective module. Over a compact Hausdorff space, these descriptions capture every complex vector bundle and every finitely generated projective module. This lesson proves that correspondence, including all morphisms, then uses matrices to transport bundles along homotopies and to study a nontrivial line bundle on the sphere.</p>
+<p>We assume <a href="idempotents-projections-and-their-equivalences.html">Idempotents, projections and their equivalences</a> and <em>Point-Set Topology</em>. We prove the finite partition of unity needed below from the core topology course's normality and Urysohn proofs, and use the close-projection lemma. Exact statements used without proof are collected below. Freely accessible comparisons are [Hatcher 2017], [Blackadar 1998] and [Connes 1994]; the additional sources consulted are credited in the references.</p>
+<p>Throughout, <span class="math" data-tex="\(X\)">\(X\)</span> is compact Hausdorff and <span class="math" data-tex="\(A=C(X,\mathbb C)\)">\(A=C(X,\mathbb C)\)</span>. Modules are right modules, represented by columns. Hermitian inner products are conjugate-linear in the first variable and linear in the second. Bundle morphisms cover the identity unless another base map is specified. We allow the finite fibre dimension to vary between components.</p>
+<h2 id="1-reading-geometry-from-a-matrix">1. Reading geometry from a matrix</h2>
+<p>A complex vector bundle <span class="math" data-tex="\(\pi:E\to X\)">\(\pi:E\to X\)</span> consists of finite-dimensional complex vector spaces <span class="math" data-tex="\(E_x=\pi^{-1}(x)\)">\(E_x=\pi^{-1}(x)\)</span>, with a topology locally described by fibrewise linear homeomorphisms</p>
+<span class="math math-display" data-tex="\[
+E|_U\longrightarrow U\times\mathbb C^r.
+\]">\[
+E|_U\longrightarrow U\times\mathbb C^r.
+\]</span>
+<p>The integer <span class="math" data-tex="\(r\)">\(r\)</span> is constant on each such neighbourhood. These homeomorphisms are <em>local trivializations</em>. A continuous fibrewise linear map is a bundle morphism. In local trivializations it is multiplication by a continuous matrix. Consequently a fibrewise bijective morphism has continuous inverse: invert its local matrix. A bundle is <em>trivial of rank <span class="math" data-tex="\(r\)">\(r\)</span></em> if it is isomorphic to <span class="math" data-tex="\(X\times\mathbb C^r\)">\(X\times\mathbb C^r\)</span>.</p>
+<p>A section <span class="math" data-tex="\(s\)">\(s\)</span> satisfies <span class="math" data-tex="\(\pi(s(x))=x\)">\(\pi(s(x))=x\)</span>. The continuous sections form an <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(\Gamma(E)\)">\(\Gamma(E)\)</span>, with <span class="math" data-tex="\((sf)(x)=s(x)f(x)\)">\((sf)(x)=s(x)f(x)\)</span>. The Whitney sum <span class="math" data-tex="\(E\oplus F\)">\(E\oplus F\)</span> has fibre <span class="math" data-tex="\(E_x\oplus F_x\)">\(E_x\oplus F_x\)</span>; product trivializations give its topology. Taking the two coordinates identifies</p>
+<span class="math math-display" data-tex="\[
+\Gamma(E\oplus F)=\Gamma(E)\oplus\Gamma(F),\qquad
+\Gamma(X\times\mathbb C^r)=A^r.
+\]">\[
+\Gamma(E\oplus F)=\Gamma(E)\oplus\Gamma(F),\qquad
+\Gamma(X\times\mathbb C^r)=A^r.
+\]</span>
+<p>For <span class="math" data-tex="\(f:Z\to X\)">\(f:Z\to X\)</span>, the <em>pullback</em> is</p>
+<span class="math math-display" data-tex="\[
+f^*E=\{(z,e)\in Z\times E:f(z)=\pi(e)\}.
+\]">\[
+f^*E=\{(z,e)\in Z\times E:f(z)=\pi(e)\}.
+\]</span>
+<p>A trivialization on <span class="math" data-tex="\(U\)">\(U\)</span> pulls back to one on <span class="math" data-tex="\(f^{-1}(U)\)">\(f^{-1}(U)\)</span>. This is a bundle with fibre <span class="math" data-tex="\(E_{f(z)}\)">\(E_{f(z)}\)</span>. Pullback respects direct sums, and successive pullbacks agree with pullback along the composite, by the displayed fibre description and its topology.</p>
+<p><strong>Lemma 1.1 (Range bundles).</strong> If <span class="math" data-tex="\(p:X\to M_N(\mathbb C)\)">\(p:X\to M_N(\mathbb C)\)</span> is continuous and <span class="math" data-tex="\(p(x)^2=p(x)=p(x)^*\)">\(p(x)^2=p(x)=p(x)^*\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+E_p=\{(x,v):p(x)v=v\}\subseteq X\times\mathbb C^N
+\]">\[
+E_p=\{(x,v):p(x)v=v\}\subseteq X\times\mathbb C^N
+\]</span>
+<p>is a vector bundle. Its section module is <span class="math" data-tex="\(pA^N\)">\(pA^N\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+E_p\oplus E_{1-p}\cong X\times\mathbb C^N.
+\]">\[
+E_p\oplus E_{1-p}\cong X\times\mathbb C^N.
+\]</span>
+<p><em>Proof.</em> The trace of <span class="math" data-tex="\(p(x)\)">\(p(x)\)</span> equals its rank: a projection is the identity on its range and zero on its kernel. Thus its rank is a continuous integer-valued function and is locally constant. Fix <span class="math" data-tex="\(x_0\)">\(x_0\)</span> of rank <span class="math" data-tex="\(r\)">\(r\)</span>, and put an orthonormal basis of its range in the columns of <span class="math" data-tex="\(V\)">\(V\)</span>. The columns of <span class="math" data-tex="\(B(x)=p(x)V\)">\(B(x)=p(x)V\)</span> remain independent near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, since <span class="math" data-tex="\(B(x)^*B(x)\)">\(B(x)^*B(x)\)</span> remains invertible. Shrink the neighbourhood so that the rank remains <span class="math" data-tex="\(r\)">\(r\)</span>. These columns then span the range. The maps</p>
+<span class="math math-display" data-tex="\[
+(x,a)\longmapsto(x,B(x)a),\qquad
+(x,v)\longmapsto\bigl(x,(B(x)^*B(x))^{-1}B(x)^*v\bigr)
+\]">\[
+(x,a)\longmapsto(x,B(x)a),\qquad
+(x,v)\longmapsto\bigl(x,(B(x)^*B(x))^{-1}B(x)^*v\bigr)
+\]</span>
+<p>are inverse continuous trivializations. Rank zero uses the empty frame.</p>
+<p>A section is a continuous column <span class="math" data-tex="\(s\in A^N\)">\(s\in A^N\)</span> with <span class="math" data-tex="\(ps=s\)">\(ps=s\)</span>, equivalent to <span class="math" data-tex="\(s\in pA^N\)">\(s\in pA^N\)</span>. Addition maps the two range bundles to the trivial bundle, with inverse <span class="math" data-tex="\(v\mapsto(pv,(1-p)v)\)">\(v\mapsto(pv,(1-p)v)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The columns <span class="math" data-tex="\(pe_1,\ldots,pe_N\)">\(pe_1,\ldots,pe_N\)</span> generate <span class="math" data-tex="\(pA^N\)">\(pA^N\)</span>, even when no subset is a global basis. Moreover</p>
+<span class="math math-display" data-tex="\[
+A^N=pA^N\oplus(1-p)A^N.
+\]">\[
+A^N=pA^N\oplus(1-p)A^N.
+\]</span>
+<p>A module is <em>projective</em> if maps from it lift through surjective module maps. A finitely generated module <span class="math" data-tex="\(P\)">\(P\)</span> is projective exactly when it is a direct summand of some <span class="math" data-tex="\(A^N\)">\(A^N\)</span>. Indeed, finite generators give a surjection <span class="math" data-tex="\(A^N\to P\)">\(A^N\to P\)</span>; lifting the identity splits it. Conversely, a map from a summand extends to the free module by the summand projection, lifts by choosing preimages of the standard basis, and restricts back. This proves the characterization we use.</p>
+<h2 id="2-finitely-many-coordinates-suffice">2. Finitely many coordinates suffice</h2>
+<p><strong>Lemma 2.0 (Finite partitions with closed supports).</strong> For any finite open cover <span class="math" data-tex="\(U_1,\ldots,U_J\)">\(U_1,\ldots,U_J\)</span> of a compact Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span>, there are continuous functions <span class="math" data-tex="\(\rho_j:X\to[0,1]\)">\(\rho_j:X\to[0,1]\)</span> such that <span class="math" data-tex="\(\sum_j\rho_j=1\)">\(\sum_j\rho_j=1\)</span> and <span class="math" data-tex="\(\operatorname{supp}\rho_j\subset U_j\)">\(\operatorname{supp}\rho_j\subset U_j\)</span>.</p>
+<p><em>Proof.</em> The empty base is immediate. The core topology course proves <a href="https://kokunoyumeto.github.io/topology-an-inquiry-based-approach-id/reader/complete/o003-c90-ch17-exercise-guides-d.html#o003-c90-ch17-exer-c-03">compact Hausdorff normality</a> and <a href="https://kokunoyumeto.github.io/topology-an-inquiry-based-approach-id/reader/complete/o003-c90-completion-separation.html#o003-c90-thm-urysohn-bridge">Urysohn's lemma, including normal-space shrinking</a>. These results apply without metrizability or countability assumptions.</p>
+<p>For each <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, choose <span class="math" data-tex="\(j(x)\)">\(j(x)\)</span> with <span class="math" data-tex="\(x\in U_{j(x)}\)">\(x\in U_{j(x)}\)</span>. Shrinking gives an open <span class="math" data-tex="\(V_x\)">\(V_x\)</span> with <span class="math" data-tex="\(x\in V_x\)">\(x\in V_x\)</span> and <span class="math" data-tex="\(\overline{V_x}\subset U_{j(x)}\)">\(\overline{V_x}\subset U_{j(x)}\)</span>. Urysohn's lemma applied to the disjoint closed sets <span class="math" data-tex="\(\{x\}\)">\(\{x\}\)</span> and <span class="math" data-tex="\(X\setminus V_x\)">\(X\setminus V_x\)</span> gives <span class="math" data-tex="\(f_x:X\to[0,1]\)">\(f_x:X\to[0,1]\)</span> with <span class="math" data-tex="\(f_x(x)=1\)">\(f_x(x)=1\)</span> and <span class="math" data-tex="\(f_x=0\)">\(f_x=0\)</span> outside <span class="math" data-tex="\(V_x\)">\(V_x\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}f_x\subseteq\overline{V_x}\subset U_{j(x)}.
+\]">\[
+\operatorname{supp}f_x\subseteq\overline{V_x}\subset U_{j(x)}.
+\]</span>
+<p>The open sets <span class="math" data-tex="\(\{f_x&gt;0\}\)">\(\{f_x&gt;0\}\)</span> cover <span class="math" data-tex="\(X\)">\(X\)</span>. Select a finite subcover with functions <span class="math" data-tex="\(f_1,\ldots,f_L\)">\(f_1,\ldots,f_L\)</span>, and write <span class="math" data-tex="\(j_\ell=j(x_\ell)\)">\(j_\ell=j(x_\ell)\)</span>. Their sum <span class="math" data-tex="\(S=\sum_{\ell=1}^L f_\ell\)">\(S=\sum_{\ell=1}^L f_\ell\)</span> is continuous and strictly positive. Set</p>
+<span class="math math-display" data-tex="\[
+\rho_j=S^{-1}\sum_{\{\ell:j_\ell=j\}}f_\ell.
+\]">\[
+\rho_j=S^{-1}\sum_{\{\ell:j_\ell=j\}}f_\ell.
+\]</span>
+<p>These functions are nonnegative and sum to one. Each support is contained in the finite union of the closed sets <span class="math" data-tex="\(\operatorname{supp}f_\ell\)">\(\operatorname{supp}f_\ell\)</span> assigned to <span class="math" data-tex="\(j\)">\(j\)</span>, which lies inside <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. This proves the stronger closed-support condition required for zero extension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choose a finite trivializing cover <span class="math" data-tex="\(U_1,\ldots,U_J\)">\(U_1,\ldots,U_J\)</span>, with fibre-coordinate maps <span class="math" data-tex="\(\tau_j:E|_{U_j}\to\mathbb C^{r_j}\)">\(\tau_j:E|_{U_j}\to\mathbb C^{r_j}\)</span>. Choose continuous functions <span class="math" data-tex="\(\rho_j\geq0\)">\(\rho_j\geq0\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\sum_j\rho_j=1,\qquad \operatorname{supp}\rho_j\subset U_j.
+\]">\[
+\sum_j\rho_j=1,\qquad \operatorname{supp}\rho_j\subset U_j.
+\]</span>
+<p>Lemma 2.0 supplies these functions. The support condition is stronger than merely vanishing outside the chart: it makes the following zero extensions continuous. Hatcher's freely available treatment proves the metric and complement constructions [Hatcher 2017, Propositions 1.2–1.4]. We retain the explicit projection formula below and allow the rank to vary between components.</p>
+<p><strong>Theorem 2.1 (Metrics and finite complements).</strong> Every complex vector bundle over <span class="math" data-tex="\(X\)">\(X\)</span> admits a continuous Hermitian metric and is isomorphic to <span class="math" data-tex="\(E_p\)">\(E_p\)</span> for a projection <span class="math" data-tex="\(p\in M_N(A)\)">\(p\in M_N(A)\)</span>. It has a bundle complement <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(E\oplus F\cong X\times\mathbb C^N\)">\(E\oplus F\cong X\times\mathbb C^N\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(v,w\in E_x\)">\(v,w\in E_x\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+h_x(v,w)=\sum_j\rho_j(x)\langle\tau_j(v),\tau_j(w)\rangle,
+\]">\[
+h_x(v,w)=\sum_j\rho_j(x)\langle\tau_j(v),\tau_j(w)\rangle,
+\]</span>
+<p>interpreting a term as zero off <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. Each term is continuous by the support condition. The form is Hermitian and positive definite because some <span class="math" data-tex="\(\rho_j(x)&gt;0\)">\(\rho_j(x)&gt;0\)</span> and <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> is a fibre isomorphism.</p>
+<p>Put <span class="math" data-tex="\(N=\sum_jr_j\)">\(N=\sum_jr_j\)</span> and define</p>
+<span class="math math-display" data-tex="\[
+J_xv=\bigl(\sqrt{\rho_1(x)}\,\tau_1(v),\ldots,
+\sqrt{\rho_J(x)}\,\tau_J(v)\bigr)\in\mathbb C^N,
+\]">\[
+J_xv=\bigl(\sqrt{\rho_1(x)}\,\tau_1(v),\ldots,
+\sqrt{\rho_J(x)}\,\tau_J(v)\bigr)\in\mathbb C^N,
+\]</span>
+<p>again using zero extensions. This continuous bundle map satisfies <span class="math" data-tex="\(\|J_xv\|^2=h_x(v,v)\)">\(\|J_xv\|^2=h_x(v,v)\)</span>, so it is injective on each fibre.</p>
+<p>On a neighbourhood with a local frame of <span class="math" data-tex="\(E\)">\(E\)</span>, let <span class="math" data-tex="\(B(x)\)">\(B(x)\)</span> have as columns the images of that frame. Its columns are independent. The projection onto their span is</p>
+<span class="math math-display" data-tex="\[
+p(x)=B(x)(B(x)^*B(x))^{-1}B(x)^*.
+\]">\[
+p(x)=B(x)(B(x)^*B(x))^{-1}B(x)^*.
+\]</span>
+<p>This formula is continuous, self-adjoint and idempotent. It is independent of the frame because it is the orthogonal projection onto <span class="math" data-tex="\(J_xE_x\)">\(J_xE_x\)</span>. The local formulas define <span class="math" data-tex="\(p\in M_N(A)\)">\(p\in M_N(A)\)</span>. The map <span class="math" data-tex="\(J:E\to E_p\)">\(J:E\to E_p\)</span> has continuous inverse in these frames, given by the coefficient formula in Lemma 1.1. That lemma supplies <span class="math" data-tex="\(F=E_{1-p}\)">\(F=E_{1-p}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The metric is auxiliary; the bundle and its section module do not include it as structure. The theorem represents any failure of global triviality inside a larger trivial bundle. It does not say that adding only trivial summands makes a bundle trivial.</p>
+<p>The smooth complement statement is already proved in <a href="../bott-and-weyl-traces/bott-suspension.html#12-embeddings-tubular-neighbourhoods-and-stable-complements">The Bott operator, suspension, and reduction of the index to Euclidean space, Lemma 12.5</a>. Theorem 2.1 addresses continuous bundles on arbitrary compact Hausdorff bases. The algebraic projection-module description is used in <a href="../NCG-CYCLIC/public/reader/connections-and-curvature.html#1-smooth-elements-retain-projective-modules">Connections and curvature from symmetries of an algebra, §1</a>. Here we identify its geometric meaning.</p>
+<h2 id="3-recovering-bundles-and-all-their-maps">3. Recovering bundles and all their maps</h2>
+<p>The section functor sends <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> to <span class="math" data-tex="\(s\mapsto T\circ s\)">\(s\mapsto T\circ s\)</span>. An equivalence of categories requires more than matching isomorphism classes: every module map must arise from exactly one bundle map.</p>
+<p><strong>Theorem 3.1 (Serre–Swan).</strong> The functor</p>
+<span class="math math-display" data-tex="\[
+\Gamma:\{\text{complex vector bundles over }X\}\longrightarrow
+\{\text{finitely generated projective }A\text{-modules}\}
+\]">\[
+\Gamma:\{\text{complex vector bundles over }X\}\longrightarrow
+\{\text{finitely generated projective }A\text{-modules}\}
+\]</span>
+<p>is an equivalence of categories, with continuous bundle morphisms on the left and algebraic <span class="math" data-tex="\(A\)">\(A\)</span>-linear maps on the right.</p>
+<p><em>Proof on objects.</em> Theorem 2.1 and Lemma 1.1 give <span class="math" data-tex="\(\Gamma(E)\cong pA^N\)">\(\Gamma(E)\cong pA^N\)</span>, hence finite projectivity. Conversely, express a finite projective module as a summand of <span class="math" data-tex="\(A^N\)">\(A^N\)</span>. Its summand projection is an idempotent <span class="math" data-tex="\(e\in M_N(A)\)">\(e\in M_N(A)\)</span>, so <span class="math" data-tex="\(P\cong eA^N\)">\(P\cong eA^N\)</span>. The idempotent-to-projection result from <em>Idempotents, projections and their equivalences</em> supplies <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(eA^N\cong pA^N\)">\(eA^N\cong pA^N\)</span>; its exact source is [Blackadar 1998, Proposition 4.6.2]. Thus <span class="math" data-tex="\(P\cong\Gamma(E_p)\)">\(P\cong\Gamma(E_p)\)</span>.</p>
+<p><em>Proof on morphisms.</em> It suffices to use range bundles. Let</p>
+<span class="math math-display" data-tex="\[
+\alpha:pA^m\longrightarrow qA^n
+\]">\[
+\alpha:pA^m\longrightarrow qA^n
+\]</span>
+<p>be <span class="math" data-tex="\(A\)">\(A\)</span>-linear. Extend it to <span class="math" data-tex="\(A^m\)">\(A^m\)</span> by composing with <span class="math" data-tex="\(p\)">\(p\)</span>. A map out of <span class="math" data-tex="\(A^m\)">\(A^m\)</span> is determined by the images of its standard basis. Put these columns in <span class="math" data-tex="\(a\in M_{n,m}(A)\)">\(a\in M_{n,m}(A)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+a=qap,\qquad \alpha(s)=as\quad(s\in pA^m).
+\]">\[
+a=qap,\qquad \alpha(s)=as\quad(s\in pA^m).
+\]</span>
+<p>Hence <span class="math" data-tex="\((x,v)\mapsto(x,a(x)v)\)">\((x,v)\mapsto(x,a(x)v)\)</span> is a continuous map <span class="math" data-tex="\(E_p\to E_q\)">\(E_p\to E_q\)</span> inducing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. No continuity assumption on <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is needed: its finitely many columns are continuous sections.</p>
+<p>For uniqueness, the sections <span class="math" data-tex="\(pe_j\)">\(pe_j\)</span> span every fibre. A bundle map is determined by its action on them. Conversely, any bundle map <span class="math" data-tex="\(T:E_p\to E_q\)">\(T:E_p\to E_q\)</span> yields the continuous columns <span class="math" data-tex="\(T_x(p(x)e_j)\)">\(T_x(p(x)e_j)\)</span>; their matrix satisfies <span class="math" data-tex="\(a=qap\)">\(a=qap\)</span> and induces <span class="math" data-tex="\(\Gamma(T)\)">\(\Gamma(T)\)</span>. This proves fullness and faithfulness. Identities and compositions agree under the constructions, proving the equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>One can recognize a fibre without choosing matrices. Let <span class="math" data-tex="\(I_x=\{f\in A:f(x)=0\}\)">\(I_x=\{f\in A:f(x)=0\}\)</span>, and let <span class="math" data-tex="\(\mathbb C_x\)">\(\mathbb C_x\)</span> be <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> with <span class="math" data-tex="\(A\)">\(A\)</span>-action by evaluation. Then</p>
+<span class="math math-display" data-tex="\[
+P_x=P/PI_x\cong P\otimes_A\mathbb C_x.
+\]">\[
+P_x=P/PI_x\cong P\otimes_A\mathbb C_x.
+\]</span>
+<p>The isomorphism sends <span class="math" data-tex="\([s]\)">\([s]\)</span> to <span class="math" data-tex="\(s\otimes1\)">\(s\otimes1\)</span>; its inverse sends <span class="math" data-tex="\(s\otimes\lambda\)">\(s\otimes\lambda\)</span> to <span class="math" data-tex="\([s\lambda]\)">\([s\lambda]\)</span>, and the balancing relation makes it well-defined.</p>
+<p>For <span class="math" data-tex="\(P=pA^N\)">\(P=pA^N\)</span>, evaluation identifies this quotient with <span class="math" data-tex="\(p(x)\mathbb C^N\)">\(p(x)\mathbb C^N\)</span>. It is onto since <span class="math" data-tex="\(pc\)">\(pc\)</span>, for a constant column <span class="math" data-tex="\(c\)">\(c\)</span>, takes the value <span class="math" data-tex="\(p(x)c\)">\(p(x)c\)</span>. If <span class="math" data-tex="\(s(x)=0\)">\(s(x)=0\)</span>, every coordinate of <span class="math" data-tex="\(s\)">\(s\)</span> belongs to <span class="math" data-tex="\(I_x\)">\(I_x\)</span>, and
+<span class="math" data-tex="\(s=ps=\sum_j(pe_j)s_j\)">\(s=ps=\sum_j(pe_j)s_j\)</span> lies in <span class="math" data-tex="\(PI_x\)">\(PI_x\)</span>. This proves injectivity. Thus rank is intrinsic to the module. Transporting the range-bundle topology gives a bundle for any <span class="math" data-tex="\(P\)">\(P\)</span>; the morphism proof shows that different presentations give isomorphic realizations, acting as the identity on these intrinsic fibres.</p>
+<p><strong>Theorem 3.2 (Isomorphism and projection equivalence).</strong> For projections <span class="math" data-tex="\(p\in M_m(A)\)">\(p\in M_m(A)\)</span> and <span class="math" data-tex="\(q\in M_n(A)\)">\(q\in M_n(A)\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(E_p\cong E_q\)">\(E_p\cong E_q\)</span>.</li>
+<li><span class="math" data-tex="\(pA^m\cong qA^n\)">\(pA^m\cong qA^n\)</span>.</li>
+<li>There is <span class="math" data-tex="\(v\in M_{n,m}(A)\)">\(v\in M_{n,m}(A)\)</span> with <span class="math" data-tex="\(v^*v=p\)">\(v^*v=p\)</span> and <span class="math" data-tex="\(vv^*=q\)">\(vv^*=q\)</span>.</li>
+</ol>
+<p>The last condition is Murray–von Neumann equivalence in <span class="math" data-tex="\(M_\infty(A)\)">\(M_\infty(A)\)</span>, where stabilization adjoins zero blocks.</p>
+<p><em>Proof.</em> Theorem 3.1 gives the first equivalence. An isomorphism in the second condition and its inverse have matrices <span class="math" data-tex="\(a=qap\)">\(a=qap\)</span> and <span class="math" data-tex="\(b=pbq\)">\(b=pbq\)</span>, with <span class="math" data-tex="\(ba=p\)">\(ba=p\)</span>, <span class="math" data-tex="\(ab=q\)">\(ab=q\)</span>. The algebraic-equivalence-to-partial-isometry result from <em>Idempotents, projections and their equivalences</em>, verified in [Blackadar 1998, Proposition 4.6.4], gives the third condition after embedding the matrices in a common square algebra. The support identities <span class="math" data-tex="\(v=qvp\)">\(v=qvp\)</span> recover a rectangular <span class="math" data-tex="\(n\)">\(n\)</span>-by-<span class="math" data-tex="\(m\)">\(m\)</span> matrix. Conversely, such a <span class="math" data-tex="\(v\)">\(v\)</span> induces a bundle isomorphism with inverse <span class="math" data-tex="\(v^*\)">\(v^*\)</span>, or a module isomorphism by multiplication. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Zero stabilization adds no nonzero fibres. Adding identity blocks instead adds trivial bundles. These are different operations: the latter can weaken the notion of bundle equivalence.</p>
+<h2 id="4-transport-along-a-cylinder">4. Transport along a cylinder</h2>
+<p>For a continuous <span class="math" data-tex="\(p:X\times[0,1]\to M_N(\mathbb C)\)">\(p:X\times[0,1]\to M_N(\mathbb C)\)</span>, put <span class="math" data-tex="\(p_t(x)=p(x,t)\)">\(p_t(x)=p(x,t)\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> The map <span class="math" data-tex="\(t\mapsto p_t\)">\(t\mapsto p_t\)</span> is norm-continuous in <span class="math" data-tex="\(M_N(A)\)">\(M_N(A)\)</span>.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(t_0\)">\(t_0\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. The continuous function <span class="math" data-tex="\(p(x,t)-p(x,t_0)\)">\(p(x,t)-p(x,t_0)\)</span> vanishes on <span class="math" data-tex="\(X\times\{t_0\}\)">\(X\times\{t_0\}\)</span>. At each <span class="math" data-tex="\(x\)">\(x\)</span>, its norm is less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> on a product neighbourhood <span class="math" data-tex="\(U_x\times J_x\)">\(U_x\times J_x\)</span>. Finitely many <span class="math" data-tex="\(U_x\)">\(U_x\)</span> cover <span class="math" data-tex="\(X\)">\(X\)</span>; intersecting their intervals gives a neighbourhood of <span class="math" data-tex="\(t_0\)">\(t_0\)</span> on which <span class="math" data-tex="\(\sup_x\|p(x,t)-p(x,t_0)\|&lt;\varepsilon\)">\(\sup_x\|p(x,t)-p(x,t_0)\|&lt;\varepsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We use the close-projection result without repeating its proof. For projections <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> in a unital C*-algebra with <span class="math" data-tex="\(\|P-Q\|&lt;1\)">\(\|P-Q\|&lt;1\)</span>, a unitary carrying <span class="math" data-tex="\(P\)">\(P\)</span> to <span class="math" data-tex="\(Q\)">\(Q\)</span> is</p>
+<span class="math math-display" data-tex="\[
+u(Q,P)=\bigl(QP+(1-Q)(1-P)\bigr)
+\bigl(1-(P-Q)^2\bigr)^{-1/2}.
+\]">\[
+u(Q,P)=\bigl(QP+(1-Q)(1-P)\bigr)
+\bigl(1-(P-Q)^2\bigr)^{-1/2}.
+\]</span>
+<p>This is <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-06">AF-algebras, Lemma 7.1</a>. Its formula is continuous in <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> on this domain, by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-11">Continuous functional calculus, Theorem 6.1(4)</a>, and <span class="math" data-tex="\(u(P,P)=1\)">\(u(P,P)=1\)</span>.</p>
+<p><strong>Theorem 4.2 (Cylinder trivialization).</strong> For a bundle <span class="math" data-tex="\(E\)">\(E\)</span> over <span class="math" data-tex="\(X\times[0,1]\)">\(X\times[0,1]\)</span>, let <span class="math" data-tex="\(E_0=E|_{X\times\{0\}}\)">\(E_0=E|_{X\times\{0\}}\)</span>. There is an isomorphism <span class="math" data-tex="\(\operatorname{pr}_X^*E_0\to E\)">\(\operatorname{pr}_X^*E_0\to E\)</span> equal to the identity at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. In particular <span class="math" data-tex="\(E_0\cong E_1\)">\(E_0\cong E_1\)</span>.</p>
+<p><em>Proof.</em> Represent <span class="math" data-tex="\(E\)">\(E\)</span> by a projection <span class="math" data-tex="\(p(x,t)\)">\(p(x,t)\)</span>, using Theorem 2.1 on the compact Hausdorff product. Lemma 4.1 and uniform continuity on the interval give a subdivision <span class="math" data-tex="\(0=t_0&lt;\cdots&lt;t_L=1\)">\(0=t_0&lt;\cdots&lt;t_L=1\)</span> with <span class="math" data-tex="\(\|p_t-p_{t_i}\|&lt;1\)">\(\|p_t-p_{t_i}\|&lt;1\)</span> throughout each <span class="math" data-tex="\([t_i,t_{i+1}]\)">\([t_i,t_{i+1}]\)</span>.</p>
+<p>Start with <span class="math" data-tex="\(U_0=1\)">\(U_0=1\)</span>, and on that interval set</p>
+<span class="math math-display" data-tex="\[
+U_t=u(p_t,p_{t_i})U_{t_i}.
+\]">\[
+U_t=u(p_t,p_{t_i})U_{t_i}.
+\]</span>
+<p>At <span class="math" data-tex="\(t_i\)">\(t_i\)</span>, the new factor is <span class="math" data-tex="\(1\)">\(1\)</span>, so the formulas join continuously. Induction gives <span class="math" data-tex="\(U_tp_0U_t^*=p_t\)">\(U_tp_0U_t^*=p_t\)</span>. The matrix <span class="math" data-tex="\(U(x,t)\)">\(U(x,t)\)</span> is jointly continuous: norm-continuity in <span class="math" data-tex="\(t\)">\(t\)</span> and continuity in <span class="math" data-tex="\(x\)">\(x\)</span> imply this by the triangle inequality. Thus</p>
+<span class="math math-display" data-tex="\[
+(x,t,v)\longmapsto(x,t,U(x,t)v),\qquad
+v\in\operatorname{ran}p(x,0),
+\]">\[
+(x,t,v)\longmapsto(x,t,U(x,t)v),\qquad
+v\in\operatorname{ran}p(x,0),
+\]</span>
+<p>is the required isomorphism; its inverse uses <span class="math" data-tex="\(U(x,t)^*\)">\(U(x,t)^*\)</span>. Transport it back to <span class="math" data-tex="\(E\)">\(E\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.3 (Homotopic pullbacks).</strong> For homotopic maps <span class="math" data-tex="\(f_0,f_1:X\to Y\)">\(f_0,f_1:X\to Y\)</span> between compact Hausdorff spaces, <span class="math" data-tex="\(f_0^*E\cong f_1^*E\)">\(f_0^*E\cong f_1^*E\)</span> for every complex vector bundle <span class="math" data-tex="\(E\to Y\)">\(E\to Y\)</span>. Every bundle over a nonempty contractible compact Hausdorff space is trivial.</p>
+<p><em>Proof.</em> Pull <span class="math" data-tex="\(E\)">\(E\)</span> back along the homotopy <span class="math" data-tex="\(F:X\times[0,1]\to Y\)">\(F:X\times[0,1]\to Y\)</span> and apply Theorem 4.2. If <span class="math" data-tex="\(X\)">\(X\)</span> is contractible, its identity is homotopic to a constant map at some <span class="math" data-tex="\(x_*\)">\(x_*\)</span>. Their pullbacks are <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(X\times E_{x_*}\)">\(X\times E_{x_*}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, bundles on closed discs and cubes are trivial. No smoothness of the contraction is needed. Over the empty base there is only the empty bundle.</p>
+<p><strong>Theorem 4.4 (Compact-base classifying maps).</strong> Fix <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. For <span class="math" data-tex="\(N\geq\max(n,1)\)">\(N\geq\max(n,1)\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_n(\mathbb C^N)=\{p\in M_N(\mathbb C):\\
+p=p^*=p^2,\ \operatorname{Tr}p=n\}.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+G_n(\mathbb C^N)=\{p\in M_N(\mathbb C):\\
+p=p^*=p^2,\ \operatorname{Tr}p=n\}.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>Give each stage its matrix norm topology, include it in the next by <span class="math" data-tex="\(p\mapsto\operatorname{diag}(p,0)\)">\(p\mapsto\operatorname{diag}(p,0)\)</span>, and give the union <span class="math" data-tex="\(G_n(\mathbb C^\infty)\)">\(G_n(\mathbb C^\infty)\)</span> its final topology: a subset is open exactly when its intersection with each stage is open. If <span class="math" data-tex="\(\operatorname{Vect}_n(X)\)">\(\operatorname{Vect}_n(X)\)</span> denotes the isomorphism classes of rank-<span class="math" data-tex="\(n\)">\(n\)</span> complex bundles over a compact Hausdorff space, there is a natural bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+{[X,G_n(\mathbb C^\infty)]}
+\longrightarrow\operatorname{Vect}_n(X),\\
+{[p]}\longmapsto[E_p].
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+{[X,G_n(\mathbb C^\infty)]}
+\longrightarrow\operatorname{Vect}_n(X),\\
+{[p]}\longmapsto[E_p].
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>Here brackets on the left mean unbased homotopy classes. Each map and each homotopy factors through a finite stage, so its range bundle is the finite-dimensional range construction of Lemma 1.1.</p>
+<p><em>Proof.</em> Each stage is compact Hausdorff: it is a closed bounded subset of a finite-dimensional matrix space. The inclusions are closed topological embeddings. The final union induces the original topology on each stage. Indeed, an open set in a fixed stage extends to an open set in the next stage with precisely that intersection, by the subspace topology; iterate this extension and use the prescribed intersections at earlier stages. Their compatible union is final-open. Conversely a final-open set has an open intersection with every stage by definition.</p>
+<p>Every compact subset <span class="math" data-tex="\(K\)">\(K\)</span> of the final union is contained in a finite stage. Otherwise choose strictly increasing <span class="math" data-tex="\(N_j\geq j\)">\(N_j\geq j\)</span> containing all previously chosen points, and choose <span class="math" data-tex="\(x_j\in K\)">\(x_j\in K\)</span> outside stage <span class="math" data-tex="\(N_j\)">\(N_j\)</span>. The set <span class="math" data-tex="\(S=\{x_j:j\geq1\}\)">\(S=\{x_j:j\geq1\}\)</span> meets each fixed stage in finitely many points. Thus every subset of <span class="math" data-tex="\(S\)">\(S\)</span> meets each stage in a closed subset and is closed in the final union. In particular <span class="math" data-tex="\(S\)">\(S\)</span> is closed in <span class="math" data-tex="\(K\)">\(K\)</span>, and every subset of <span class="math" data-tex="\(S\)">\(S\)</span> is closed in its subspace topology. It is therefore an infinite discrete compact space, which is impossible: its singleton cover has no finite subcover.</p>
+<p>The image of a continuous map from <span class="math" data-tex="\(X\)">\(X\)</span>, or from <span class="math" data-tex="\(X\times[0,1]\)">\(X\times[0,1]\)</span>, is compact. It lies in a finite stage and factors continuously through it because that stage has its original subspace topology. Lemma 1.1 constructs its range bundle. Theorem 4.2 makes the endpoint bundles of a homotopy isomorphic, and zero padding leaves a range bundle unchanged. Hence (4.2) is well-defined. Theorem 2.1 proves surjectivity.</p>
+<p>For injectivity, let <span class="math" data-tex="\(E_p\cong E_q\)">\(E_p\cong E_q\)</span>, with stages <span class="math" data-tex="\(N,M\)">\(N,M\)</span>, and regard both as one bundle <span class="math" data-tex="\(E\)">\(E\)</span>. Their coordinate inclusions give fibrewise injections <span class="math" data-tex="\(j_0:E\to X\times\mathbb C^N\)">\(j_0:E\to X\times\mathbb C^N\)</span> and <span class="math" data-tex="\(j_1:E\to X\times\mathbb C^M\)">\(j_1:E\to X\times\mathbb C^M\)</span>. For <span class="math" data-tex="\(0\leq t\leq\pi/2\)">\(0\leq t\leq\pi/2\)</span>, the fibre map</p>
+<span class="math math-display" data-tex="\[
+j_t(v)=(\cos t\,j_0(v),\sin t\,j_1(v))
+\tag{4.3}
+\]">\[
+j_t(v)=(\cos t\,j_0(v),\sin t\,j_1(v))
+\tag{4.3}
+\]</span>
+<p>is injective, since at least one coefficient is nonzero. In a local frame let <span class="math" data-tex="\(B_t\)">\(B_t\)</span> have these images as columns. The matrix</p>
+<span class="math math-display" data-tex="\[
+p_t=B_t(B_t^*B_t)^{-1}B_t^*
+\tag{4.4}
+\]">\[
+p_t=B_t(B_t^*B_t)^{-1}B_t^*
+\tag{4.4}
+\]</span>
+<p>is the orthogonal range projection, independent of the frame, and continuous in <span class="math" data-tex="\((x,t)\)">\((x,t)\)</span>. It joins <span class="math" data-tex="\(p\oplus0_M\)">\(p\oplus0_M\)</span> to <span class="math" data-tex="\(0_N\oplus q\)">\(0_N\oplus q\)</span>. A scalar coordinate permutation takes the latter to <span class="math" data-tex="\(q\oplus0_N\)">\(q\oplus0_N\)</span>. The unitary path argument in Proposition 5.1 joins that permutation to the identity; conjugation along the path completes a homotopy to the padded <span class="math" data-tex="\(q\)">\(q\)</span>. Thus the maps have the same class in the union. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> all projections are zero and both sets are singletons, so no empty-frame inverse is needed. The empty base is immediate. Finally pullback of a projection range is the range of the pulled-back projection, proving naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For variable rank, compactness and local constancy give finitely many clopen rank strata. Apply the theorem separately on those strata. This compact statement supplies the classifying-map treatment of [Hatcher 2017, Theorem 1.16] without importing its additional noncompact-base argument.</p>
+<h2 id="5-gluing-around-a-circle-and-across-a-sphere">5. Gluing around a circle and across a sphere</h2>
+<p>Cutting the circle at <span class="math" data-tex="\(1\)">\(1\)</span> produces an interval. A bundle pulled back to that interval is trivial by Corollary 4.3. Its endpoint fibres are identified by an invertible matrix <span class="math" data-tex="\(a\)">\(a\)</span>, giving a model</p>
+<span class="math math-display" data-tex="\[
+([0,1]\times\mathbb C^r)/\bigl((1,v)\sim(0,av)\bigr).
+\]">\[
+([0,1]\times\mathbb C^r)/\bigl((1,v)\sim(0,av)\bigr).
+\]</span>
+<p>This model is locally trivial near the seam: use <span class="math" data-tex="\(v\)">\(v\)</span> near <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(av\)">\(av\)</span> near <span class="math" data-tex="\(1\)">\(1\)</span> as one common coordinate. The interval trivialization identifies its quotient with the original bundle, including these seam neighbourhoods.</p>
+<p><strong>Proposition 5.1.</strong> Every complex vector bundle over <span class="math" data-tex="\(S^1\)">\(S^1\)</span> is trivial.</p>
+<p><em>Proof.</em> The group <span class="math" data-tex="\(GL_r(\mathbb C)\)">\(GL_r(\mathbb C)\)</span> is path-connected. Put <span class="math" data-tex="\(h=(a^*a)^{1/2}\)">\(h=(a^*a)^{1/2}\)</span> and <span class="math" data-tex="\(u=ah^{-1}\)">\(u=ah^{-1}\)</span>. Then <span class="math" data-tex="\(u^*u=1\)">\(u^*u=1\)</span>; invertibility gives <span class="math" data-tex="\(uu^*=1\)">\(uu^*=1\)</span>. The path <span class="math" data-tex="\(u((1-s)h+s1)\)">\(u((1-s)h+s1)\)</span> joins <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(u\)">\(u\)</span> through invertibles. A unitary has a complex eigenvector; its orthogonal complement is invariant, since its adjoint is its inverse. Induction gives an orthonormal eigenbasis, with all eigenvalues of modulus one. Choose an argument for each eigenvalue and interpolate these arguments to zero to join <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(b:[0,1]\to GL_r(\mathbb C)\)">\(b:[0,1]\to GL_r(\mathbb C)\)</span> with <span class="math" data-tex="\(b(0)=1\)">\(b(0)=1\)</span>, <span class="math" data-tex="\(b(1)=a\)">\(b(1)=a\)</span>. The map <span class="math" data-tex="\((t,v)\mapsto(e^{2\pi it},b(t)v)\)">\((t,v)\mapsto(e^{2\pi it},b(t)v)\)</span> descends to an isomorphism to the trivial bundle, because its endpoint values agree on the prescribed equivalence; its inverse in the local seam coordinates is continuous. Rank zero is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the sphere, use the Riemann-sphere coordinate <span class="math" data-tex="\(z\in\mathbb C\cup\{\infty\}\)">\(z\in\mathbb C\cup\{\infty\}\)</span>, identified with <span class="math" data-tex="\([1:z]\in\mathbb{CP}^1\)">\([1:z]\in\mathbb{CP}^1\)</span>. Give it the complex orientation. The two closed discs are <span class="math" data-tex="\(D_0=\{|z|\leq1\}\)">\(D_0=\{|z|\leq1\}\)</span> and <span class="math" data-tex="\(D_\infty=\{|z|\geq1\}\cup\{\infty\}\)">\(D_\infty=\{|z|\geq1\}\cup\{\infty\}\)</span>. Parametrize their equator by <span class="math" data-tex="\(z=e^{i\theta}\)">\(z=e^{i\theta}\)</span>, counterclockwise in the <span class="math" data-tex="\(z\)">\(z\)</span>-plane. The infinity chart has coordinate <span class="math" data-tex="\(w=1/z\)">\(w=1/z\)</span>.</p>
+<p>For <span class="math" data-tex="\(g:S^1\to GL_r(\mathbb C)\)">\(g:S^1\to GL_r(\mathbb C)\)</span>, identify</p>
+<span class="math math-display" data-tex="\[
+(z,a)_0\sim(z,g(z)a)_\infty
+\]">\[
+(z,a)_0\sim(z,g(z)a)_\infty
+\]</span>
+<p>to define the clutched bundle <span class="math" data-tex="\(E_g\)">\(E_g\)</span>. Thus <span class="math" data-tex="\(g\)">\(g\)</span> transfers the <em>coordinate column</em> from the finite disc to the infinity disc. Extend <span class="math" data-tex="\(g\)">\(g\)</span> radially into a collar of the equator. On that collar, the finite-disc column <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, or <span class="math" data-tex="\(g(z/|z|)^{-1}a_\infty\)">\(g(z/|z|)^{-1}a_\infty\)</span> on the other side, is a common coordinate, proving local triviality. Away from the equator use the disc coordinates. Conversely, every bundle on <span class="math" data-tex="\(S^2\)">\(S^2\)</span> has this form: both disc restrictions are trivial, and their frames determine <span class="math" data-tex="\(g\)">\(g\)</span> on the equator.</p>
+<p><strong>Lemma 5.2 (Winding).</strong> A continuous <span class="math" data-tex="\(g:S^1\to\mathbb C^\times\)">\(g:S^1\to\mathbb C^\times\)</span> has an integer <span class="math" data-tex="\(\operatorname{wind}(g)\)">\(\operatorname{wind}(g)\)</span>, additive under multiplication and invariant under homotopy. A loop extending to a nonvanishing function on a disc has winding zero; <span class="math" data-tex="\(z\mapsto z^k\)">\(z\mapsto z^k\)</span> has winding <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><em>Proof.</em> Normalize <span class="math" data-tex="\(g\)">\(g\)</span> to modulus one. Subdivide <span class="math" data-tex="\([0,2\pi]\)">\([0,2\pi]\)</span> into intervals on which the normalized values lie in open arcs admitting an argument. Adding multiples of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> at the subdivision points joins the arguments to a continuous real function <span class="math" data-tex="\(\phi(\theta)\)">\(\phi(\theta)\)</span>. Its endpoint difference is <span class="math" data-tex="\(2\pi k\)">\(2\pi k\)</span>, since the endpoint values of <span class="math" data-tex="\(g\)">\(g\)</span> agree. Any two argument lifts differ by a constant multiple of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, so <span class="math" data-tex="\(k\)">\(k\)</span> is well-defined.</p>
+<p>Arguments add for products. If two normalized loops are uniformly close enough that their quotient avoids <span class="math" data-tex="\(-1\)">\(-1\)</span>, the quotient has a single continuous argument in <span class="math" data-tex="\((-\pi,\pi)\)">\((-\pi,\pi)\)</span>, with equal endpoint values. Their windings agree. Uniform continuity of a homotopy and a finite subdivision of its parameter prove homotopy invariance. A disc extension contracts radially to its centre; a constant loop has winding zero. The argument <span class="math" data-tex="\(k\theta\)">\(k\theta\)</span> proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.3 (Distinct line bundles).</strong> The line bundles <span class="math" data-tex="\(L_k=E_{z^k}\)">\(L_k=E_{z^k}\)</span>, <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>, are pairwise non-isomorphic. <span class="math" data-tex="\(L_0\)">\(L_0\)</span> is trivial.</p>
+<p><em>Proof.</em> An isomorphism <span class="math" data-tex="\(E_g\cong E_h\)">\(E_g\cong E_h\)</span> is multiplication in the disc coordinates by nonvanishing functions <span class="math" data-tex="\(a_0:D_0\to\mathbb C^\times\)">\(a_0:D_0\to\mathbb C^\times\)</span> and <span class="math" data-tex="\(a_\infty:D_\infty\to\mathbb C^\times\)">\(a_\infty:D_\infty\to\mathbb C^\times\)</span>. Compatibility at the seam says</p>
+<span class="math math-display" data-tex="\[
+a_\infty(z)g(z)=h(z)a_0(z).
+\]">\[
+a_\infty(z)g(z)=h(z)a_0(z).
+\]</span>
+<p>Both <span class="math" data-tex="\(a_0\)">\(a_0\)</span> and <span class="math" data-tex="\(a_\infty\)">\(a_\infty\)</span>, restricted to the equator parametrized by <span class="math" data-tex="\(z\)">\(z\)</span>, have winding zero. Each extends over a disc, whose radial contraction gives a null-homotopy regardless of boundary parametrization. Lemma 5.2 yields <span class="math" data-tex="\(\operatorname{wind}(g)=\operatorname{wind}(h)\)">\(\operatorname{wind}(g)=\operatorname{wind}(h)\)</span>. Hence <span class="math" data-tex="\(L_k\cong L_l\)">\(L_k\cong L_l\)</span> forces <span class="math" data-tex="\(k=l\)">\(k=l\)</span>. For <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, the coordinates glue to a global trivialization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We now identify one of these bundles as a projection range. The convention for the rest of the course is this single formula:</p>
+<span class="math math-display" data-tex="\[
+\boxed{\displaystyle
+q(z)=\frac{1}{1+|z|^2}
+\begin{pmatrix}1&amp;\overline z\\ z&amp;|z|^2\end{pmatrix}
+\quad(z\in\mathbb C),\qquad
+q(\infty)=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}.}
+\]">\[
+\boxed{\displaystyle
+q(z)=\frac{1}{1+|z|^2}
+\begin{pmatrix}1&amp;\overline z\\ z&amp;|z|^2\end{pmatrix}
+\quad(z\in\mathbb C),\qquad
+q(\infty)=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}.}
+\]</span>
+<p>With <span class="math" data-tex="\(c(z)=(1,z)^T\)">\(c(z)=(1,z)^T\)</span>, this is <span class="math" data-tex="\(c(z)c(z)^*/(c(z)^*c(z))\)">\(c(z)c(z)^*/(c(z)^*c(z))\)</span>. Thus <span class="math" data-tex="\(q=q^*=q^2\)">\(q=q^*=q^2\)</span> and has rank one. Its entries converge to those of <span class="math" data-tex="\(q(\infty)\)">\(q(\infty)\)</span>. In the chart <span class="math" data-tex="\(w=1/z\)">\(w=1/z\)</span>, it is the orthogonal projection onto <span class="math" data-tex="\((w,1)^T\)">\((w,1)^T\)</span>, so it is continuous at infinity.</p>
+<p>The range <span class="math" data-tex="\(H=E_q\)">\(H=E_q\)</span> is the tautological line: its fibre at <span class="math" data-tex="\([1:z]\)">\([1:z]\)</span> is that line in <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>. Frames on the two discs are</p>
+<span class="math math-display" data-tex="\[
+c_0(z)=(1,z)^T,\qquad c_\infty(w)=(w,1)^T.
+\]">\[
+c_0(z)=(1,z)^T,\qquad c_\infty(w)=(w,1)^T.
+\]</span>
+<p>On the equator, <span class="math" data-tex="\(c_0(z)=z\,c_\infty(1/z)\)">\(c_0(z)=z\,c_\infty(1/z)\)</span>. A vector of finite-disc coefficient <span class="math" data-tex="\(a\)">\(a\)</span> therefore has infinity-disc coefficient <span class="math" data-tex="\(za\)">\(za\)</span>. With our coordinate-transfer convention, <span class="math" data-tex="\(H=L_1\)">\(H=L_1\)</span>, with clutching winding <span class="math" data-tex="\(+1\)">\(+1\)</span>. Theorem 5.3 proves its nontriviality. This winding convention is fixed separately from any definition of a first Chern number.</p>
+<p>By Theorem 3.1, <span class="math" data-tex="\(\Gamma(H)=qA^2\)">\(\Gamma(H)=qA^2\)</span> is projective. It is not free: a finitely generated free module has a finite basis, since finitely many generators use only finitely many basis coordinates. Evaluation forces that basis to have one element, and Serre–Swan would then make <span class="math" data-tex="\(H\)">\(H\)</span> trivial. The columns of <span class="math" data-tex="\(q\)">\(q\)</span> nevertheless give two explicit generators. A finite generating set is weaker than a global basis.</p>
+<p>The dual line bundle <span class="math" data-tex="\(H^*\)">\(H^*\)</span> has reciprocal transition <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>, so <span class="math" data-tex="\(H\oplus H^*\)">\(H\oplus H^*\)</span> has transition <span class="math" data-tex="\(\operatorname{diag}(z,z^{-1})\)">\(\operatorname{diag}(z,z^{-1})\)</span>. Exercise 7.4 proves that this sum is trivial. Applying sections gives</p>
+<span class="math math-display" data-tex="\[
+\Gamma(H)\oplus\Gamma(H^*)\cong C(S^2)^2.
+\]">\[
+\Gamma(H)\oplus\Gamma(H^*)\cong C(S^2)^2.
+\]</span>
+<p>In this rank-two trivial module, the nonfree projective module <span class="math" data-tex="\(\Gamma(H)\)">\(\Gamma(H)\)</span> has a nonfree complement: <span class="math" data-tex="\(H^*=L_{-1}\)">\(H^*=L_{-1}\)</span> is also nontrivial by Theorem 5.3.</p>
+<p><strong>Theorem 5.4 (Clutching in every sphere dimension).</strong> For <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span> and <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, clutching the two closed hemispheres along their equator induces a bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+{[S^{k-1},GL_n(\mathbb C)]}\\
+\longrightarrow\operatorname{Vect}_n(S^k),\\
+{[g]}\longmapsto[E_g].
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+{[S^{k-1},GL_n(\mathbb C)]}\\
+\longrightarrow\operatorname{Vect}_n(S^k),\\
+{[g]}\longmapsto[E_g].
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>The homotopies are unbased. We take <span class="math" data-tex="\(GL_0(\mathbb C)\)">\(GL_0(\mathbb C)\)</span> to be the one-element group. The convention is the coordinate transfer <span class="math" data-tex="\(a_+=g(x)a_-\)">\(a_+=g(x)a_-\)</span> on the equator.</p>
+<p><em>Proof.</em> Extend this transfer constantly in the transverse coordinate of an equatorial collar <span class="math" data-tex="\(S^{k-1}\times(-\varepsilon,\varepsilon)\)">\(S^{k-1}\times(-\varepsilon,\varepsilon)\)</span>. The column <span class="math" data-tex="\(a_-\)">\(a_-\)</span>, or <span class="math" data-tex="\(g(x)^{-1}a_+\)">\(g(x)^{-1}a_+\)</span> on the other side, gives a common coordinate there. Together with the hemisphere coordinates this proves local triviality. This works also for <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, when the equator has two points.</p>
+<p>A homotopy of transfers gives these same collar charts over <span class="math" data-tex="\(S^k\times[0,1]\)">\(S^k\times[0,1]\)</span>, so Theorem 4.2 identifies the endpoint bundles. Conversely, Corollary 4.3 trivializes every bundle on each closed hemisphere. The two trivializations determine its transfer <span class="math" data-tex="\(g\)">\(g\)</span>, and reconstruct the bundle by the seam charts just described.</p>
+<p>Changing a hemisphere trivialization multiplies the transfer on the corresponding side by the restriction of a map from a closed disc to <span class="math" data-tex="\(GL_n(\mathbb C)\)">\(GL_n(\mathbb C)\)</span>, or by its inverse. Contracting the disc makes that map homotopic to a constant. Proposition 5.1 joins the constant to the identity. These homotopies show that the transfer class is independent of both choices. A bundle isomorphism transports the two trivializations, so the class depends only on the isomorphism class. Clutching then recovers the original bundle, while the evident hemisphere trivializations of <span class="math" data-tex="\(E_g\)">\(E_g\)</span> recover <span class="math" data-tex="\(g\)">\(g\)</span>. These two constructions are inverse. Rank zero is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.5 (Products of transfers and direct sums).</strong> For continuous <span class="math" data-tex="\(f,g:S^{k-1}\to GL_n(\mathbb C)\)">\(f,g:S^{k-1}\to GL_n(\mathbb C)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+E_{fg}\oplus\underline{\mathbb C}^{\,n}
+\cong E_f\oplus E_g.
+\tag{5.2}
+\]">\[
+E_{fg}\oplus\underline{\mathbb C}^{\,n}
+\cong E_f\oplus E_g.
+\tag{5.2}
+\]</span>
+<p>In particular <span class="math" data-tex="\(E_g\oplus E_{g^{-1}}\)">\(E_g\oplus E_{g^{-1}}\)</span> is trivial of rank <span class="math" data-tex="\(2n\)">\(2n\)</span>.</p>
+<p><em>Proof.</em> The direct sum has transfer <span class="math" data-tex="\(f\oplus g\)">\(f\oplus g\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_t=\begin{pmatrix}
+\cos t\,I_n&amp;-\sin t\,I_n\\
+\sin t\,I_n&amp;\cos t\,I_n
+\end{pmatrix},\\
+0\leq t\leq\pi/2.
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+R_t=\begin{pmatrix}
+\cos t\,I_n&amp;-\sin t\,I_n\\
+\sin t\,I_n&amp;\cos t\,I_n
+\end{pmatrix},\\
+0\leq t\leq\pi/2.
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>The invertible transfer <span class="math" data-tex="\((f\oplus I_n)R_t(I_n\oplus g)R_t^{-1}\)">\((f\oplus I_n)R_t(I_n\oplus g)R_t^{-1}\)</span> starts at <span class="math" data-tex="\(f\oplus g\)">\(f\oplus g\)</span> and ends at <span class="math" data-tex="\(fg\oplus I_n\)">\(fg\oplus I_n\)</span>. Theorem 5.4 proves (5.2). Taking <span class="math" data-tex="\(f=g\)">\(f=g\)</span> and the second transfer <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> makes their product the identity. The identity transfer yields a global trivialization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are the complex clutching bijection and product relation of [Hatcher 2017, Proposition 1.11 and Example 1.13]. No stable-range homotopy-group computation is needed.</p>
+<h2 id="6-the-next-algebraic-step">6. The next algebraic step</h2>
+<p>Let <span class="math" data-tex="\(V_{\mathrm{bun}}(X)\)">\(V_{\mathrm{bun}}(X)\)</span> be the commutative monoid of bundle isomorphism classes, with addition by Whitney sum and zero the zero bundle. Theorems 3.1 and 3.2 identify it with the monoid of Murray–von Neumann projection classes over <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>, with addition by block sum. This follows from the section identity in §1 and the equivalence of isomorphism classes in §3.</p>
+<p>The Grothendieck group allows formal differences and imposes <span class="math" data-tex="\([E\oplus F]=[E]+[F]\)">\([E\oplus F]=[E]+[F]\)</span>. Taking this construction on the two identified monoids gives</p>
+<span class="math math-display" data-tex="\[
+K^0(X)\cong K_0(C(X)).
+\]">\[
+K^0(X)\cong K_0(C(X)).
+\]</span>
+<p>The group formulation is [Blackadar 1998, §§1.7.1–1.7.2]. This announces the construction developed in <em>The Grothendieck group and <span class="math" data-tex="\(K_0\)">\(K_0\)</span> of a unital algebra</em>. <em>Topological K-theory of spaces, pairs and vector bundles</em> develops functoriality and noncompact versions. We have proved the underlying bundle–module–projection correspondence, including direct sums, before taking formal differences. Neither periodicity nor a computation of <span class="math" data-tex="\(K^0(S^2)\)">\(K^0(S^2)\)</span> is needed to prove <span class="math" data-tex="\(H\)">\(H\)</span> nontrivial.</p>
+<h2 id="7-exercises-with-solutions">7. Exercises with solutions</h2>
+<p><strong>Exercise 7.1 (Basic: rank).</strong> For a finite projective <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>-module <span class="math" data-tex="\(P\)">\(P\)</span>, define its rank at <span class="math" data-tex="\(x\)">\(x\)</span> using <span class="math" data-tex="\(P\otimes_A\mathbb C_x\)">\(P\otimes_A\mathbb C_x\)</span>. Prove it is locally constant. Give an example where it is not constant.</p>
+<p><em>Solution.</em> Write <span class="math" data-tex="\(P\cong pA^N\)">\(P\cong pA^N\)</span>. The fibre calculation identifies <span class="math" data-tex="\(P\otimes_A\mathbb C_x\)">\(P\otimes_A\mathbb C_x\)</span> with <span class="math" data-tex="\(p(x)\mathbb C^N\)">\(p(x)\mathbb C^N\)</span>; its dimension is <span class="math" data-tex="\(\operatorname{Tr}p(x)\)">\(\operatorname{Tr}p(x)\)</span>. This is continuous and integer-valued, hence locally constant. The tensor-product fibre makes it independent of presentation. On <span class="math" data-tex="\(X=\{a,b\}\)">\(X=\{a,b\}\)</span>, take <span class="math" data-tex="\(p(a)=\operatorname{diag}(1,0)\)">\(p(a)=\operatorname{diag}(1,0)\)</span> and <span class="math" data-tex="\(p(b)=1_2\)">\(p(b)=1_2\)</span>. The ranks are one and two. Compactness does not force connectedness.</p>
+<p><strong>Exercise 7.2 (Basic: the Bott transition).</strong> With the boxed projection and coordinate-transfer convention, compute the clutching function of <span class="math" data-tex="\(H\)">\(H\)</span>, its winding, and the transition for <span class="math" data-tex="\(H^*\)">\(H^*\)</span>.</p>
+<p><em>Solution.</em> The frames <span class="math" data-tex="\(c_0=(1,z)^T\)">\(c_0=(1,z)^T\)</span> and <span class="math" data-tex="\(c_\infty=(1/z,1)^T\)">\(c_\infty=(1/z,1)^T\)</span> satisfy <span class="math" data-tex="\(c_0=z c_\infty\)">\(c_0=z c_\infty\)</span>. Hence <span class="math" data-tex="\(a_\infty=za_0\)">\(a_\infty=za_0\)</span>, so the clutching map is <span class="math" data-tex="\(z\)">\(z\)</span>. Its argument is <span class="math" data-tex="\(\theta\)">\(\theta\)</span> on <span class="math" data-tex="\(e^{i\theta}\)">\(e^{i\theta}\)</span>, giving winding <span class="math" data-tex="\(+1\)">\(+1\)</span>. The dual frames <span class="math" data-tex="\(\ell_0,\ell_\infty\)">\(\ell_0,\ell_\infty\)</span>, each taking value one on its corresponding original frame, satisfy <span class="math" data-tex="\(\ell_0=z^{-1}\ell_\infty\)">\(\ell_0=z^{-1}\ell_\infty\)</span>. Thus the dual coordinate transfer is <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>, with winding <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p><strong>Exercise 7.3 (Intermediate: a cube).</strong> Prove directly through projections that every complex vector bundle over <span class="math" data-tex="\([0,1]^k\)">\([0,1]^k\)</span> is trivial, and describe a global frame.</p>
+<p><em>Solution.</em> For <span class="math" data-tex="\(k=0\)">\(k=0\)</span> the base is a point. Otherwise represent the bundle by <span class="math" data-tex="\(p(x)\)">\(p(x)\)</span>. The projections <span class="math" data-tex="\(P_t(x)=p(tx)\)">\(P_t(x)=p(tx)\)</span> form a norm-continuous path by Lemma 4.1. It starts with the constant projection <span class="math" data-tex="\(p(0)\)">\(p(0)\)</span> and ends with <span class="math" data-tex="\(p(x)\)">\(p(x)\)</span>. The subdivision construction of Theorem 4.2 supplies <span class="math" data-tex="\(U(x)\)">\(U(x)\)</span> with <span class="math" data-tex="\(U(x)p(0)U(x)^*=p(x)\)">\(U(x)p(0)U(x)^*=p(x)\)</span>. A basis <span class="math" data-tex="\(v_1,\ldots,v_r\)">\(v_1,\ldots,v_r\)</span> of <span class="math" data-tex="\(\operatorname{ran}p(0)\)">\(\operatorname{ran}p(0)\)</span> gives the continuous fibre bases <span class="math" data-tex="\(U(x)v_j\)">\(U(x)v_j\)</span>. They trivialize the range bundle; the isomorphism representing the original bundle transfers the frame back.</p>
+<p><strong>Exercise 7.4 (Intermediate: a trivial sum).</strong> Prove that a loop in <span class="math" data-tex="\(GL_2(\mathbb C)\)">\(GL_2(\mathbb C)\)</span> is null-homotopic if its determinant has winding zero. Deduce that <span class="math" data-tex="\(H\oplus H^*\)">\(H\oplus H^*\)</span> is trivial, while <span class="math" data-tex="\(H\)">\(H\)</span> is not, and obtain the section-module identity.</p>
+<p><em>Solution.</em> Polar decomposition deforms the loop to a unitary loop <span class="math" data-tex="\(u\)">\(u\)</span> by the positive interpolation in Proposition 5.1. Its determinant has the same winding because the positive polar factor has positive determinant. For winding zero, Lemma 5.2 gives a continuous periodic argument <span class="math" data-tex="\(\phi\)">\(\phi\)</span> for <span class="math" data-tex="\(\det u\)">\(\det u\)</span>. The loop <span class="math" data-tex="\(d=\operatorname{diag}(\det u,1)\)">\(d=\operatorname{diag}(\det u,1)\)</span> contracts through <span class="math" data-tex="\(\operatorname{diag}(e^{i(1-s)\phi},1)\)">\(\operatorname{diag}(e^{i(1-s)\phi},1)\)</span>. The loop <span class="math" data-tex="\(d^{-1}u\)">\(d^{-1}u\)</span> lies in <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span>.</p>
+<p>Every <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> matrix has the form</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}a&amp;-\overline b\\b&amp;\overline a\end{pmatrix},
+\qquad |a|^2+|b|^2=1,
+\]">\[
+\begin{pmatrix}a&amp;-\overline b\\b&amp;\overline a\end{pmatrix},
+\qquad |a|^2+|b|^2=1,
+\]</span>
+<p>which identifies <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> with <span class="math" data-tex="\(S^3\)">\(S^3\)</span>. Its loops contract by the following elementary argument. Uniform continuity allows approximation of a loop by finitely many short great-circle arcs joining sampled points. Choose the sampling fine enough that corresponding points of the two loops have Euclidean distance less than one. Normalized straight interpolation gives a homotopy between them.</p>
+<p>The finite union of arcs misses a point of <span class="math" data-tex="\(S^3\)">\(S^3\)</span>: each arc lies in a real linear subspace of dimension at most two, and a finite union of proper linear subspaces cannot cover <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>. For the latter assertion, choose a nonzero linear functional vanishing on each subspace. The product of these functionals is a nonzero polynomial, so it cannot vanish on all of <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>. Stereographic projection from a missed point identifies its complement with <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, where straight interpolation contracts the approximating loop. Thus <span class="math" data-tex="\(d^{-1}u\)">\(d^{-1}u\)</span>, and then <span class="math" data-tex="\(u=d(d^{-1}u)\)">\(u=d(d^{-1}u)\)</span>, are null-homotopic. Any constant value can be joined to the identity by Proposition 5.1.</p>
+<p>Apply this to <span class="math" data-tex="\(g(z)=\operatorname{diag}(z,z^{-1})\)">\(g(z)=\operatorname{diag}(z,z^{-1})\)</span>, whose determinant is <span class="math" data-tex="\(1\)">\(1\)</span>. A null-homotopy gives an extension <span class="math" data-tex="\(G:D_0\to GL_2(\mathbb C)\)">\(G:D_0\to GL_2(\mathbb C)\)</span> with boundary <span class="math" data-tex="\(g\)">\(g\)</span>: use the homotopy on concentric circles, with its constant endpoint at the centre. In the clutched bundle use <span class="math" data-tex="\(G(x)a_0\)">\(G(x)a_0\)</span> as coordinate on <span class="math" data-tex="\(D_0\)">\(D_0\)</span> and <span class="math" data-tex="\(a_\infty\)">\(a_\infty\)</span> on <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span>. They agree because <span class="math" data-tex="\(a_\infty=ga_0\)">\(a_\infty=ga_0\)</span> at the seam. This trivializes <span class="math" data-tex="\(H\oplus H^*\)">\(H\oplus H^*\)</span>. Theorem 5.3 gives nontriviality of <span class="math" data-tex="\(H\)">\(H\)</span>, and taking sections gives <span class="math" data-tex="\(\Gamma(H)\oplus\Gamma(H^*)\cong C(S^2)^2\)">\(\Gamma(H)\oplus\Gamma(H^*)\cong C(S^2)^2\)</span>.</p>
+<p><strong>Exercise 7.5 (Advanced: <span class="math" data-tex="\(X\times S^1\)">\(X\times S^1\)</span>).</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a complex vector bundle over <span class="math" data-tex="\(X\times S^1\)">\(X\times S^1\)</span>, and set <span class="math" data-tex="\(F=E|_{X\times\{1\}}\)">\(F=E|_{X\times\{1\}}\)</span>. Show that <span class="math" data-tex="\(E\)">\(E\)</span> is obtained by identifying the ends of <span class="math" data-tex="\(F\times[0,1]\)">\(F\times[0,1]\)</span> with an automorphism of <span class="math" data-tex="\(F\)">\(F\)</span>. Describe it and its dependence on the cylinder trivialization.</p>
+<p><em>Solution.</em> Pull <span class="math" data-tex="\(E\)">\(E\)</span> back along <span class="math" data-tex="\(c(x,t)=(x,e^{2\pi it})\)">\(c(x,t)=(x,e^{2\pi it})\)</span>. Theorem 4.2 gives maps <span class="math" data-tex="\(T_t:F\to E|_{X\times\{e^{2\pi it}\}}\)">\(T_t:F\to E|_{X\times\{e^{2\pi it}\}}\)</span>, continuous in <span class="math" data-tex="\(x,t\)">\(x,t\)</span>, with <span class="math" data-tex="\(T_0=1_F\)">\(T_0=1_F\)</span>. Both endpoint targets are <span class="math" data-tex="\(F\)">\(F\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+a=T_0^{-1}T_1=T_1:F\longrightarrow F
+\]">\[
+a=T_0^{-1}T_1=T_1:F\longrightarrow F
+\]</span>
+<p>is a bundle automorphism. Identify <span class="math" data-tex="\((x,1,v)\sim(x,0,a_xv)\)">\((x,1,v)\sim(x,0,a_xv)\)</span> in <span class="math" data-tex="\(\operatorname{pr}_X^*F\)">\(\operatorname{pr}_X^*F\)</span>. The map <span class="math" data-tex="\((x,t,v)\mapsto T_t(v)\)">\((x,t,v)\mapsto T_t(v)\)</span> descends to <span class="math" data-tex="\(E\)">\(E\)</span> since <span class="math" data-tex="\(T_1(v)=T_0(a_xv)\)">\(T_1(v)=T_0(a_xv)\)</span>.</p>
+<p>It is a bundle isomorphism. Away from the seam this follows from <span class="math" data-tex="\(T_t\)">\(T_t\)</span>. Near the seam choose a local frame of <span class="math" data-tex="\(F\)">\(F\)</span>, using <span class="math" data-tex="\(v\)">\(v\)</span> near <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(a_xv\)">\(a_xv\)</span> near <span class="math" data-tex="\(1\)">\(1\)</span> as quotient coordinates. In a local trivialization of <span class="math" data-tex="\(E\)">\(E\)</span>, the descended map has continuous invertible matrices agreeing at the seam; matrix inversion proves its inverse continuous there too. This argument works locally around every <span class="math" data-tex="\(x\)">\(x\)</span>, without a global frame of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>For another cylinder trivialization <span class="math" data-tex="\(T&#x27;_t=T_tb_t\)">\(T&#x27;_t=T_tb_t\)</span>, with <span class="math" data-tex="\(b_t\)">\(b_t\)</span> a continuous path of automorphisms of <span class="math" data-tex="\(F\)">\(F\)</span>, the resulting automorphism is <span class="math" data-tex="\(a&#x27;=b_0^{-1}ab_1\)">\(a&#x27;=b_0^{-1}ab_1\)</span>. If both trivializations start at the identity, <span class="math" data-tex="\(b_0=1\)">\(b_0=1\)</span>; then <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> differs by right multiplication by the endpoint of a path starting at the identity. This gives an automorphism after a choice of trivialization, not a distinguished automorphism determined by <span class="math" data-tex="\(E\)">\(E\)</span>. It makes no claim that <span class="math" data-tex="\(F\)">\(F\)</span> is trivial.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<ul>
+<li><strong>Normality and Urysohn's lemma.</strong> The exact core-course proofs are <a href="https://kokunoyumeto.github.io/topology-an-inquiry-based-approach-id/reader/complete/o003-c90-ch17-exercise-guides-d.html#o003-c90-ch17-exer-c-03">compact Hausdorff normality, self-study exercise Q.55</a> and <a href="https://kokunoyumeto.github.io/topology-an-inquiry-based-approach-id/reader/complete/o003-c90-completion-separation.html#o003-c90-thm-urysohn-bridge">Urysohn's lemma, Theorem U.12</a>. Lemma 2.0 proves the finite closed-support partition used here from those results.</li>
+<li><strong>Projection algebra.</strong> An idempotent over a unital C*-algebra has a projection with isomorphic range module [Blackadar 1998, Proposition 4.6.2]. Algebraically equivalent projections admit a partial isometry [Blackadar 1998, Proposition 4.6.4]. Projections at norm distance less than one admit the displayed continuous unitary formula <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-06">AF-algebras, Lemma 7.1</a>. These are the results used from the preceding lesson.</li>
+<li><strong>Continuous functional calculus.</strong> For a normal element <span class="math" data-tex="\(a\)">\(a\)</span> of a unital C*-algebra and a continuous function <span class="math" data-tex="\(f\)">\(f\)</span> on its spectrum, <span class="math" data-tex="\(f(a)\)">\(f(a)\)</span> respects products, adjoints and spectral mapping <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07">Continuous functional calculus, Theorem 5.1</a>. For continuous <span class="math" data-tex="\(f\)">\(f\)</span> on an open set <span class="math" data-tex="\(U\)">\(U\)</span>, the map <span class="math" data-tex="\(a\mapsto f(a)\)">\(a\mapsto f(a)\)</span> is continuous on normal elements with spectrum in <span class="math" data-tex="\(U\)">\(U\)</span> <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-11">ibid., Theorem 6.1(4)</a>. In particular, positive invertible elements have positive square roots and inverse square roots varying continuously. These are the exact functional-calculus facts used here.</li>
+<li><strong>Smooth complements.</strong> The smooth result is <a href="../bott-and-weyl-traces/bott-suspension.html#12-embeddings-tubular-neighbourhoods-and-stable-complements">The Bott operator, suspension, and reduction of the index to Euclidean space, Lemma 12.5</a>, cited only to relate the two settings.</li>
+<li><strong>Later K-theory.</strong> The group-completion formulation is [Blackadar 1998, §§1.7.1–1.7.2]. Pairs, compactly supported K-theory and Bott periodicity are developed in later lessons. The identification in §6 records the common group completion of the monoids proved equivalent here.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>[Hatcher 2017] Allen Hatcher, <em>Vector Bundles &amp; K-Theory</em>, version 2.2, November 2017, Propositions 1.2–1.4, 1.7, 1.11 and 1.18; Theorems 1.6 and 1.16; Example 1.13. <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf">Author's free edition</a>. The matrix construction and cylinder proof here are independently written.</li>
+<li>[Point-Set Topology] <em>Topologi: Pendekatan Berbasis Inkuiri</em>, complete programme edition, core topology self-study supplement, <a href="https://kokunoyumeto.github.io/topology-an-inquiry-based-approach-id/reader/complete/o003-c90-ch17-exercise-guides-d.html#o003-c90-ch17-exer-c-03">compact Hausdorff normality</a> and <a href="https://kokunoyumeto.github.io/topology-an-inquiry-based-approach-id/reader/complete/o003-c90-completion-separation.html#o003-c90-thm-urysohn-bridge">Urysohn's lemma</a>. These supplement proofs are credited as programme work, rather than as the original textbook author's solutions.</li>
+<li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-06">AF-algebras</a> <em>AF-algebras</em>, Lemma 7.1, in <em>Foundations of von Neumann algebras</em>.</li>
+<li><a href="../bott-and-weyl-traces/bott-suspension.html#12-embeddings-tubular-neighbourhoods-and-stable-complements">The Bott operator, suspension, and reduction of the index to Euclidean space</a> <em>The Bott operator, suspension, and reduction of the index to Euclidean space</em>, Lemma 12.5 and Example 12.6, in <em>Index theory of elliptic operators</em>.</li>
+<li><a href="../NCG-CYCLIC/public/reader/connections-and-curvature.html#1-smooth-elements-retain-projective-modules">Connections and curvature from symmetries of an algebra</a> <em>Connections and curvature from symmetries of an algebra</em>, §1, in <em>Cyclic cohomology and noncommutative geometry</em>.</li>
+<li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07">Continuous functional calculus</a> <em>C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients</em>, Theorems 5.1 and 6.1, in <em>Foundations of von Neumann algebras</em>.</li>
+<li>[Connes 1994] Alain Connes, <em>Noncommutative Geometry</em>, Academic Press, 1994, Chapter II, §1. <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">Author's electronic edition</a>.</li>
+<li>[Blackadar 1998] Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, MSRI Publications 5, Cambridge University Press, 1998, §§1.1, 1.7 and 4.6. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</li>
+<li>[Roe 2017] John Roe, <em>Lectures on K-Theory and Operator Algebras</em>, Math 582, Spring 2017, Lecture 1, Propositions 1.10 and 1.12, printed/PDF pp. 5–6. <a href="https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/1/4020/files/2017/12/KTheoryNotes-1uvuwyz.pdf#page=5">Freely readable lecture notes</a>. This gives the finite-coordinate route to projective section modules. Lemma 2.0 and Theorems 2.1, 3.1 and 3.2 here prove the closed-support, variable-rank, converse and all-morphism details.</li>
+<li>[Emerson 2024] Heath Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser, 2024, §§5.1–5.2.</li>
+</ul>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="idempotents-projections-and-their-equivalences.html">← Idempotents, projections and their equivalences</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-grothendieck-group-and-k0-of-a-unital-algebra.html">The Grothendieck group and <span class="math" data-tex="\(K_0\)">\(K_0\)</span> of a unital algebra →</a></span></nav>
+<p class="small source-link"><a href="src/KT-OPK-02.md">Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer"><p>This course’s original exposition and solutions use CC0 1.0. Human mathematical sources are credited in each lesson. See <a href="sources.html">sources, authorship and component terms</a>.</p><p><a href="../../index.html">Open Mathematics Courses</a> · <a href="preparation.html">Preparation</a></p></footer>
+</body>
+</html>

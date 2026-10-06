@@ -1,0 +1,286 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Descent through replacement objects</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Subsequent full independent model review: GPT-6 Astra, Ultra; no corrections requested. This review covers the recorded version of this lesson and its specified prerequisite interfaces.</p><h1 id="descent-through-replacement-objects">Descent through replacement objects</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, September 2026. Self-checked; no independent review. Public domain (CC0).</em></p>
+<p>A natural transformation can be determined on a smaller family of objects even when the functor being transformed does not invert the available comparison maps. The essential condition is on its target: the comparison maps must become invertible there. This principle explains how a localization can be computed on replacement objects, and why a reflective subcategory supplies universal localized values for every functor.</p>
+<p>We use the outgoing fraction calculus referenced in <a href="localizing-functors-through-formal-objects.html">Localizing functors through formal objects</a>. Thus an ordinary arrow in a localization has the form <span class="math" data-tex="\(Q(s)^{-1}Q(f)\)">\(Q(s)^{-1}Q(f)\)</span>, with <span class="math" data-tex="\(s\)">\(s\)</span> pointing out of its target. This is the left calculus of <a href="https://stacks.math.columbia.edu/tag/04VB">Stacks, Section 4.27</a>. The arguments in this lesson take place in an ambient universe containing the categories in question. They do not assume that denominator categories are cofinally small in the original universe. In particular, no existence of filtered colimits in the target is assumed.</p>
+<h2 id="1-comparison-objects-determine-every-component">1. Comparison objects determine every component</h2>
+<p>Let <span class="math" data-tex="\(q:\mathsf D\to\mathsf C\)">\(q:\mathsf D\to\mathsf C\)</span> and <span class="math" data-tex="\(G:\mathsf C\to\mathsf B\)">\(G:\mathsf C\to\mathsf B\)</span> be functors. For each <span class="math" data-tex="\(X\in\mathsf C\)">\(X\in\mathsf C\)</span>, suppose we can choose</p>
+<span class="math math-display" data-tex="\[
+s_X:X\longrightarrow qD_X
+\]">\[
+s_X:X\longrightarrow qD_X
+\]</span>
+<p>such that <span class="math" data-tex="\(G(s_X)\)">\(G(s_X)\)</span> is invertible. Suppose also that every <span class="math" data-tex="\(t:X\to qE\)">\(t:X\to qE\)</span> admits arrows <span class="math" data-tex="\(a:D_X\to H\)">\(a:D_X\to H\)</span> and <span class="math" data-tex="\(b:E\to H\)">\(b:E\to H\)</span> in <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q(a)s_X=q(b)t,\\
+G(q(b))\text{ invertible}.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+q(a)s_X=q(b)t,\\
+G(q(b))\text{ invertible}.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The comparison arrow <span class="math" data-tex="\(a\)">\(a\)</span> need not become invertible.</p>
+<p><strong>Theorem 1.1.</strong> For every <span class="math" data-tex="\(F:\mathsf C\to\mathsf B\)">\(F:\mathsf C\to\mathsf B\)</span>, restriction induces a bijection</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Nat}(F,G)
+\simeq\operatorname{Nat}(Fq,Gq).
+\tag{1.2}
+\]">\[
+\operatorname{Nat}(F,G)
+\simeq\operatorname{Nat}(Fq,Gq).
+\tag{1.2}
+\]</span>
+<p><strong>Proof.</strong> Consider the comma category <span class="math" data-tex="\( (X\downarrow q)\)">\( (X\downarrow q)\)</span>. Its objects are pairs <span class="math" data-tex="\( (D,t)\)">\( (D,t)\)</span> with <span class="math" data-tex="\(t:X\to qD\)">\(t:X\to qD\)</span>; an arrow to <span class="math" data-tex="\( (E,u)\)">\( (E,u)\)</span> is an <span class="math" data-tex="\(h:D\to E\)">\(h:D\to E\)</span> with <span class="math" data-tex="\(q(h)t=u\)">\(q(h)t=u\)</span>. The maps <span class="math" data-tex="\(G(t):G(X)\to G(qD)\)">\(G(t):G(X)\to G(qD)\)</span> form a cone.</p>
+<p>This cone is a limit, in the sense of its universal property, even if <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> has no other limits. Indeed, let <span class="math" data-tex="\(z_t:Z\to G(qD)\)">\(z_t:Z\to G(qD)\)</span> be a compatible cone and put</p>
+<span class="math math-display" data-tex="\[
+z=G(s_X)^{-1}z_{s_X}.
+\]">\[
+z=G(s_X)^{-1}z_{s_X}.
+\]</span>
+<p>For the comparison (1.1), compatibility gives <span class="math" data-tex="\(G(q(b))z_t=G(q(a))z_{s_X}\)">\(G(q(b))z_t=G(q(a))z_{s_X}\)</span>. On the other hand,</p>
+<span class="math math-display" data-tex="\[
+G(q(b))G(t)z
+=G(q(a))G(s_X)z
+=G(q(a))z_{s_X}.
+\]">\[
+G(q(b))G(t)z
+=G(q(a))G(s_X)z
+=G(q(a))z_{s_X}.
+\]</span>
+<p>Cancel <span class="math" data-tex="\(G(q(b))\)">\(G(q(b))\)</span> to get <span class="math" data-tex="\(z_t=G(t)z\)">\(z_t=G(t)z\)</span>. The component at <span class="math" data-tex="\(s_X\)">\(s_X\)</span> forces uniqueness. Thus</p>
+<span class="math math-display" data-tex="\[
+G(X)\simeq\lim_{(D,t)\in(X\downarrow q)}G(qD).
+\tag{1.3}
+\]">\[
+G(X)\simeq\lim_{(D,t)\in(X\downarrow q)}G(qD).
+\tag{1.3}
+\]</span>
+<p>Given <span class="math" data-tex="\(\theta:Fq\to Gq\)">\(\theta:Fq\to Gq\)</span>, the maps <span class="math" data-tex="\(\theta_DF(t)\)">\(\theta_DF(t)\)</span> form such a cone with vertex <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span>. Let <span class="math" data-tex="\(\widetilde\theta_X:F(X)\to G(X)\)">\(\widetilde\theta_X:F(X)\to G(X)\)</span> be its unique factorization. Explicitly,</p>
+<span class="math math-display" data-tex="\[
+\widetilde\theta_X
+=G(s_X)^{-1}\theta_{D_X}F(s_X).
+\tag{1.4}
+\]">\[
+\widetilde\theta_X
+=G(s_X)^{-1}\theta_{D_X}F(s_X).
+\tag{1.4}
+\]</span>
+<p>For <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, compose both <span class="math" data-tex="\(G(f)\widetilde\theta_X\)">\(G(f)\widetilde\theta_X\)</span> and <span class="math" data-tex="\(\widetilde\theta_YF(f)\)">\(\widetilde\theta_YF(f)\)</span> with each <span class="math" data-tex="\(G(t)\)">\(G(t)\)</span>, where <span class="math" data-tex="\(t:Y\to qD\)">\(t:Y\to qD\)</span>. Both composites are <span class="math" data-tex="\(\theta_DF(tf)\)">\(\theta_DF(tf)\)</span>. Uniqueness in (1.3) proves naturality. At <span class="math" data-tex="\(X=qD\)">\(X=qD\)</span>, the comma object <span class="math" data-tex="\( (D,1_{qD})\)">\( (D,1_{qD})\)</span> gives <span class="math" data-tex="\(\widetilde\theta_{qD}=\theta_D\)">\(\widetilde\theta_{qD}=\theta_D\)</span>. Conversely any extension must satisfy the cone equations and hence (1.4). These constructions prove (1.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The displayed limit is a proved universal property of the particular cone. It asserts neither general completeness of <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> nor smallness of its comma index in a previously fixed universe.</p>
+<p>Reversing all arrows gives the following useful dual. Choose <span class="math" data-tex="\(s_X:qD_X\to X\)">\(s_X:qD_X\to X\)</span> with <span class="math" data-tex="\(G(s_X)\)">\(G(s_X)\)</span> invertible. For each <span class="math" data-tex="\(t:qE\to X\)">\(t:qE\to X\)</span>, require <span class="math" data-tex="\(a:H\to D_X\)">\(a:H\to D_X\)</span> and <span class="math" data-tex="\(b:H\to E\)">\(b:H\to E\)</span> such that <span class="math" data-tex="\(s_Xq(a)=tq(b)\)">\(s_Xq(a)=tq(b)\)</span> and <span class="math" data-tex="\(G(q(b))\)">\(G(q(b))\)</span> is invertible. Then <span class="math" data-tex="\(G(X)\)">\(G(X)\)</span> is the colimit of <span class="math" data-tex="\(Gq\)">\(Gq\)</span> over <span class="math" data-tex="\( (q\downarrow X)\)">\( (q\downarrow X)\)</span>, and restriction gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Nat}(G,F)
+\simeq\operatorname{Nat}(Gq,Fq).
+\tag{1.5}
+\]">\[
+\operatorname{Nat}(G,F)
+\simeq\operatorname{Nat}(Gq,Fq).
+\tag{1.5}
+\]</span>
+<p>This follows by applying the proved theorem to <span class="math" data-tex="\(q^{\mathrm{op}}\)">\(q^{\mathrm{op}}\)</span> and <span class="math" data-tex="\(G^{\mathrm{op}}\)">\(G^{\mathrm{op}}\)</span>, including the target category <span class="math" data-tex="\(\mathsf B^{\mathrm{op}}\)">\(\mathsf B^{\mathrm{op}}\)</span>.</p>
+<p><strong>Corollary 1.2.</strong> Suppose <span class="math" data-tex="\(q\)">\(q\)</span> is essentially surjective. Suppose every <span class="math" data-tex="\(f:qD\to qE\)">\(f:qD\to qE\)</span> can be written using arrows <span class="math" data-tex="\(a:D\to H\)">\(a:D\to H\)</span>, <span class="math" data-tex="\(b:E\to H\)">\(b:E\to H\)</span> with <span class="math" data-tex="\(q(b)\)">\(q(b)\)</span> invertible and <span class="math" data-tex="\(q(a)=q(b)f\)">\(q(a)=q(b)f\)</span>. Then restriction <span class="math" data-tex="\(q^*:\operatorname{Fun}(\mathsf C,\mathsf B)\to\operatorname{Fun}(\mathsf D,\mathsf B)\)">\(q^*:\operatorname{Fun}(\mathsf C,\mathsf B)\to\operatorname{Fun}(\mathsf D,\mathsf B)\)</span> is fully faithful for every <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span>.</p>
+<p><strong>Proof.</strong> Choose an isomorphism <span class="math" data-tex="\(s_X:X\to qD_X\)">\(s_X:X\to qD_X\)</span>. Apply the stated condition to <span class="math" data-tex="\(ts_X^{-1}\)">\(ts_X^{-1}\)</span> for each <span class="math" data-tex="\(t:X\to qE\)">\(t:X\to qE\)</span>. This gives (1.1) for every target functor <span class="math" data-tex="\(G\)">\(G\)</span>, so Theorem 1.1 applies to every pair <span class="math" data-tex="\(F,G\)">\(F,G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-localize-a-full-family-of-replacements">2. Localize a full family of replacements</h2>
+<p>Let <span class="math" data-tex="\(\mathsf I\subseteq\mathsf C\)">\(\mathsf I\subseteq\mathsf C\)</span> be a full subcategory, let <span class="math" data-tex="\(S\)">\(S\)</span> be an outgoing multiplicative system, and put <span class="math" data-tex="\(T=S\cap\operatorname{Arrows}(\mathsf I)\)">\(T=S\cap\operatorname{Arrows}(\mathsf I)\)</span>. Whenever <span class="math" data-tex="\(T\)">\(T\)</span> is itself an outgoing system, inclusion induces a functor <span class="math" data-tex="\(\mathsf I[T^{-1}]\to\mathsf C[S^{-1}]\)">\(\mathsf I[T^{-1}]\to\mathsf C[S^{-1}]\)</span>: the composite of inclusion with <span class="math" data-tex="\(Q\)">\(Q\)</span> inverts <span class="math" data-tex="\(T\)">\(T\)</span>, so the localization universal property applies. To obtain <span class="math" data-tex="\(T\)">\(T\)</span>'s axioms and full faithfulness together, consider the following condition:</p>
+<blockquote>
+<p>For every <span class="math" data-tex="\(s:X\to Y\)">\(s:X\to Y\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(X\in\mathsf I\)">\(X\in\mathsf I\)</span>, there is a <span class="math" data-tex="\(g:Y\to W\)">\(g:Y\to W\)</span>, with <span class="math" data-tex="\(W\in\mathsf I\)">\(W\in\mathsf I\)</span>, such that <span class="math" data-tex="\(gs\in S\)">\(gs\in S\)</span>.</p>
+</blockquote>
+<p>The condition concerns the composite <span class="math" data-tex="\(gs\)">\(gs\)</span>. It does not require <span class="math" data-tex="\(g\in S\)">\(g\in S\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> Under this condition, <span class="math" data-tex="\(T\)">\(T\)</span> is an outgoing multiplicative system in <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span>, and inclusion induces a fully faithful functor</p>
+<span class="math math-display" data-tex="\[
+e:\mathsf I[T^{-1}]\longrightarrow\mathsf C[S^{-1}].
+\tag{2.1}
+\]">\[
+e:\mathsf I[T^{-1}]\longrightarrow\mathsf C[S^{-1}].
+\tag{2.1}
+\]</span>
+<p><strong>Proof.</strong> Isomorphisms and compositions in <span class="math" data-tex="\(T\)">\(T\)</span> remain in <span class="math" data-tex="\(T\)">\(T\)</span>. For an outgoing square with <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, <span class="math" data-tex="\(s:X\to X&#x27;\)">\(s:X\to X&#x27;\)</span> in <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> and <span class="math" data-tex="\(s\in T\)">\(s\in T\)</span>, the calculus in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> gives <span class="math" data-tex="\(t:Y\to Z\)">\(t:Y\to Z\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(h:X&#x27;\to Z\)">\(h:X&#x27;\to Z\)</span> with <span class="math" data-tex="\(hs=tf\)">\(hs=tf\)</span>. Apply the condition to <span class="math" data-tex="\(t\)">\(t\)</span>, whose source lies in <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span>. It supplies <span class="math" data-tex="\(k:Z\to W\)">\(k:Z\to W\)</span> with <span class="math" data-tex="\(W\in\mathsf I\)">\(W\in\mathsf I\)</span> and <span class="math" data-tex="\(kt\in S\)">\(kt\in S\)</span>. The square with sides <span class="math" data-tex="\(kt\)">\(kt\)</span> and <span class="math" data-tex="\(kh\)">\(kh\)</span> lies in <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> by fullness, and its denominator <span class="math" data-tex="\(kt\)">\(kt\)</span> lies in <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For cancellation, a pair <span class="math" data-tex="\(f,g: X\rightrightarrows Y\)">\(f,g: X\rightrightarrows Y\)</span> in <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> equal after precomposition by a <span class="math" data-tex="\(T\)">\(T\)</span>-arrow is equalized by some <span class="math" data-tex="\(t:Y\to Z\)">\(t:Y\to Z\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span>. Apply the same condition to obtain <span class="math" data-tex="\(kt:Y\to W\)">\(kt:Y\to W\)</span> in <span class="math" data-tex="\(T\)">\(T\)</span>; it still equalizes <span class="math" data-tex="\(f,g\)">\(f,g\)</span>. This proves the axioms for <span class="math" data-tex="\(T\)">\(T\)</span>. Universal descent now gives (2.1).</p>
+<p>Fix <span class="math" data-tex="\(Y\in\mathsf I\)">\(Y\in\mathsf I\)</span>. Inside its filtered denominator category <span class="math" data-tex="\(\mathsf D_Y\)">\(\mathsf D_Y\)</span>, let <span class="math" data-tex="\(\mathsf E_Y\)">\(\mathsf E_Y\)</span> be the full subcategory of denominators whose targets lie in <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span>. Every <span class="math" data-tex="\(s:Y\to Z\)">\(s:Y\to Z\)</span> maps to an object <span class="math" data-tex="\(gs:Y\to W\)">\(gs:Y\to W\)</span> in <span class="math" data-tex="\(\mathsf E_Y\)">\(\mathsf E_Y\)</span> by the hypothesis. This implies that <span class="math" data-tex="\(\mathsf E_Y\)">\(\mathsf E_Y\)</span> is filtered: a common target or an equalizing object constructed in <span class="math" data-tex="\(\mathsf D_Y\)">\(\mathsf D_Y\)</span> can be moved once more into <span class="math" data-tex="\(\mathsf E_Y\)">\(\mathsf E_Y\)</span>, and fullness retains the resulting arrows.</p>
+<p>It also proves cofinality. For a fixed object of <span class="math" data-tex="\(\mathsf D_Y\)">\(\mathsf D_Y\)</span>, the comma category of maps from it into <span class="math" data-tex="\(\mathsf E_Y\)">\(\mathsf E_Y\)</span> is nonempty. Two such maps acquire a common target in <span class="math" data-tex="\(\mathsf D_Y\)">\(\mathsf D_Y\)</span>; equalize their composites from the fixed object using filteredness, then move the target into <span class="math" data-tex="\(\mathsf E_Y\)">\(\mathsf E_Y\)</span>. This makes the comma category connected. The full filtered cofinal-subcategory criterion is also recorded in <a href="https://stacks.math.columbia.edu/tag/0BUC">Stacks, full cofinal-subcategory criterion</a>.</p>
+<p>For <span class="math" data-tex="\(X,Y\in\mathsf I\)">\(X,Y\in\mathsf I\)</span>, the Hom formula for fractions therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\mathsf I[T^{-1}]}(X,Y)
+&amp;\simeq\operatorname{colim}_{s\in\mathsf E_Y}
+\operatorname{Hom}_{\mathsf I}(X,Y_s),\\
+\operatorname{Hom}_{\mathsf C[S^{-1}]}(X,Y)
+&amp;\simeq\operatorname{colim}_{s\in\mathsf D_Y}
+\operatorname{Hom}_{\mathsf C}(X,Y_s).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\mathsf I[T^{-1}]}(X,Y)
+&amp;\simeq\operatorname{colim}_{s\in\mathsf E_Y}
+\operatorname{Hom}_{\mathsf I}(X,Y_s),\\
+\operatorname{Hom}_{\mathsf C[S^{-1}]}(X,Y)
+&amp;\simeq\operatorname{colim}_{s\in\mathsf D_Y}
+\operatorname{Hom}_{\mathsf C}(X,Y_s).
+\end{aligned}
+\]</span>
+<p>Fullness identifies the first diagram with the restriction of the second; cofinality identifies their colimits. The bijection is the map induced by <span class="math" data-tex="\(e\)">\(e\)</span>, proving full faithfulness. All these colimits can be interpreted in the ambient universe. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.2.</strong> If every <span class="math" data-tex="\(X\in\mathsf C\)">\(X\in\mathsf C\)</span> has a denominator <span class="math" data-tex="\(X\to I_X\)">\(X\to I_X\)</span> with <span class="math" data-tex="\(I_X\in\mathsf I\)">\(I_X\in\mathsf I\)</span>, then <span class="math" data-tex="\(e\)">\(e\)</span> is an equivalence.</p>
+<p><strong>Proof.</strong> Such replacements satisfy the hypothesis of Theorem 2.1 by applying it to <span class="math" data-tex="\(Y\)">\(Y\)</span> and composing denominators. They also make every <span class="math" data-tex="\(QX\)">\(QX\)</span> isomorphic to an object from <span class="math" data-tex="\(\mathsf I[T^{-1}]\)">\(\mathsf I[T^{-1}]\)</span>. Thus <span class="math" data-tex="\(e\)">\(e\)</span> is fully faithful and essentially surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-functor-only-needs-to-descend-on-the-replacements">3. A functor only needs to descend on the replacements</h2>
+<p>Assume the global denominator replacements of Corollary 2.2. Let <span class="math" data-tex="\(F:\mathsf C\to\mathsf B\)">\(F:\mathsf C\to\mathsf B\)</span> send every arrow of <span class="math" data-tex="\(T\)">\(T\)</span> to an isomorphism. Let <span class="math" data-tex="\(F_T:\mathsf I[T^{-1}]\to\mathsf B\)">\(F_T:\mathsf I[T^{-1}]\to\mathsf B\)</span> be its descent on <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span>, and choose a quasi-inverse <span class="math" data-tex="\(W\)">\(W\)</span> to <span class="math" data-tex="\(e\)">\(e\)</span>. Put <span class="math" data-tex="\(H=F_TW\)">\(H=F_TW\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> The functor <span class="math" data-tex="\(H\)">\(H\)</span> is a universal right localization of <span class="math" data-tex="\(F\)">\(F\)</span>. Its unit <span class="math" data-tex="\(\tau:F\to HQ\)">\(\tau:F\to HQ\)</span> is characterized on <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> by the canonical identification <span class="math" data-tex="\(F|_{\mathsf I}\simeq HQ|_{\mathsf I}\)">\(F|_{\mathsf I}\simeq HQ|_{\mathsf I}\)</span>. For every <span class="math" data-tex="\(K:\mathsf B\to\mathsf B&#x27;\)">\(K:\mathsf B\to\mathsf B&#x27;\)</span>, the pair <span class="math" data-tex="\( (KH,K\tau)\)">\( (KH,K\tau)\)</span> right localizes <span class="math" data-tex="\(KF\)">\(KF\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(j:\mathsf I\hookrightarrow\mathsf C\)">\(j:\mathsf I\hookrightarrow\mathsf C\)</span>. For any <span class="math" data-tex="\(G:\mathsf C[S^{-1}]\to\mathsf B\)">\(G:\mathsf C[S^{-1}]\to\mathsf B\)</span>, Theorem 1.1 applies to <span class="math" data-tex="\(q=j\)">\(q=j\)</span> and target <span class="math" data-tex="\(GQ\)">\(GQ\)</span>. Choose <span class="math" data-tex="\(s:X\to I_X\)">\(s:X\to I_X\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span>. For <span class="math" data-tex="\(t:X\to I&#x27;\)">\(t:X\to I&#x27;\)</span>, an Ore square gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+as=bt,\qquad b\in S,\\
+a:I_X\to Z,\quad b:I&#x27;\to Z.
+\end{gathered}
+\]">\[
+\begin{gathered}
+as=bt,\qquad b\in S,\\
+a:I_X\to Z,\quad b:I&#x27;\to Z.
+\end{gathered}
+\]</span>
+<p>Here only <span class="math" data-tex="\(b\)">\(b\)</span> is required to lie in <span class="math" data-tex="\(S\)">\(S\)</span>. Choose a further denominator <span class="math" data-tex="\(w:Z\to I&#x27;&#x27;\)">\(w:Z\to I&#x27;&#x27;\)</span>. Then <span class="math" data-tex="\(wa,wb\)">\(wa,wb\)</span> are arrows in the full subcategory, <span class="math" data-tex="\(wb\in T\)">\(wb\in T\)</span>, and <span class="math" data-tex="\(GQ(wb)\)">\(GQ(wb)\)</span> is invertible. These are precisely the conditions of (1.1). Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Nat}(F,GQ)
+&amp;\simeq\operatorname{Nat}(Fj,GQj),\\
+&amp;\simeq\operatorname{Nat}(F_T,Ge),\\
+&amp;\simeq\operatorname{Nat}(H,G).
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+\operatorname{Nat}(F,GQ)
+&amp;\simeq\operatorname{Nat}(Fj,GQj),\\
+&amp;\simeq\operatorname{Nat}(F_T,Ge),\\
+&amp;\simeq\operatorname{Nat}(H,G).
+\end{aligned}
+\tag{3.1}
+\]</span>
+<p>The middle bijection is full faithfulness of restriction along the localization of <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span>. The last comes from the equivalence <span class="math" data-tex="\(e\)">\(e\)</span>. Apply the first bijection with <span class="math" data-tex="\(G=H\)">\(G=H\)</span> to extend the canonical identification on <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> to a unique <span class="math" data-tex="\(\tau:F\to HQ\)">\(\tau:F\to HQ\)</span>. Every map in (3.1) is restriction or composition with this identification, so the inverse chain sends <span class="math" data-tex="\(u:H\to G\)">\(u:H\to G\)</span> to <span class="math" data-tex="\(uQ\circ\tau\)">\(uQ\circ\tau\)</span>. This proves the required universal property with its specified unit.</p>
+<p>The same argument applies to <span class="math" data-tex="\(KF\)">\(KF\)</span>: its restriction descends as <span class="math" data-tex="\(KF_T\)">\(KF_T\)</span>, the chosen value is <span class="math" data-tex="\(KH\)">\(KH\)</span>, and uniqueness in Theorem 1.1 identifies the resulting unit with <span class="math" data-tex="\(K\tau\)">\(K\tau\)</span>. No preservation of colimits by <span class="math" data-tex="\(K\)">\(K\)</span> is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In the displayed Ore square, the notation declares <span class="math" data-tex="\(b\in S\)">\(b\in S\)</span> and imposes no such condition on <span class="math" data-tex="\(a\)">\(a\)</span>. Nor does the theorem require <span class="math" data-tex="\(F(s)\)">\(F(s)\)</span> to be invertible for denominators whose endpoints are outside <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span>. Exercise 2 exhibits that freedom.</p>
+<h2 id="4-reflection-supplies-denominator-replacements">4. Reflection supplies denominator replacements</h2>
+<p>Let <span class="math" data-tex="\(L:\mathsf C\to\mathsf D\)">\(L:\mathsf C\to\mathsf D\)</span> be left adjoint to a fully faithful <span class="math" data-tex="\(R:\mathsf D\to\mathsf C\)">\(R:\mathsf D\to\mathsf C\)</span>. Write <span class="math" data-tex="\(\eta:1_{\mathsf C}\to RL\)">\(\eta:1_{\mathsf C}\to RL\)</span> for the unit and <span class="math" data-tex="\(\varepsilon:LR\to1_{\mathsf D}\)">\(\varepsilon:LR\to1_{\mathsf D}\)</span> for the counit. The counit is an isomorphism by <a href="https://stacks.math.columbia.edu/tag/07RB">Stacks, Lemma 4.24.4</a>. Set</p>
+<span class="math math-display" data-tex="\[
+S=\{f:L(f)\text{ is invertible}\}.
+\]">\[
+S=\{f:L(f)\text{ is invertible}\}.
+\]</span>
+<p><strong>Theorem 4.1.</strong> The family <span class="math" data-tex="\(S\)">\(S\)</span> is an outgoing multiplicative system and equals the inverse image of the isomorphisms under its localization <span class="math" data-tex="\(Q\)">\(Q\)</span>. Every <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span> belongs to <span class="math" data-tex="\(S\)">\(S\)</span>. The descended functor</p>
+<span class="math math-display" data-tex="\[
+\overline L:\mathsf C[S^{-1}]\longrightarrow\mathsf D
+\]">\[
+\overline L:\mathsf C[S^{-1}]\longrightarrow\mathsf D
+\]</span>
+<p>is an equivalence. Every <span class="math" data-tex="\(F:\mathsf C\to\mathsf B\)">\(F:\mathsf C\to\mathsf B\)</span> has universal right localization <span class="math" data-tex="\(FR\overline L\)">\(FR\overline L\)</span>, with unit <span class="math" data-tex="\(F\eta\)">\(F\eta\)</span> under <span class="math" data-tex="\(\overline LQ=L\)">\(\overline LQ=L\)</span>.</p>
+<p><strong>Proof.</strong> The triangle identity <span class="math" data-tex="\(\varepsilon_{LX}L(\eta_X)=1_{LX}\)">\(\varepsilon_{LX}L(\eta_X)=1_{LX}\)</span> makes <span class="math" data-tex="\(L(\eta_X)\)">\(L(\eta_X)\)</span> invertible. Closure of <span class="math" data-tex="\(S\)">\(S\)</span> under isomorphisms and composition is immediate. For <span class="math" data-tex="\(f:X\to Z\)">\(f:X\to Z\)</span>, <span class="math" data-tex="\(s:X\to Y\)">\(s:X\to Y\)</span> with <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>, use <span class="math" data-tex="\(W=RLZ\)">\(W=RLZ\)</span>, <span class="math" data-tex="\(t=\eta_Z:Z\to W\)">\(t=\eta_Z:Z\to W\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+g=R(Lf)R(Ls)^{-1}\eta_Y:Y\longrightarrow W.
+\]">\[
+g=R(Lf)R(Ls)^{-1}\eta_Y:Y\longrightarrow W.
+\]</span>
+<p>Naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives <span class="math" data-tex="\(gs=\eta_Zf=tf\)">\(gs=\eta_Zf=tf\)</span>. This is the outgoing Ore square. If <span class="math" data-tex="\(f,g: X\rightrightarrows Y\)">\(f,g: X\rightrightarrows Y\)</span> agree after precomposition by an <span class="math" data-tex="\(S\)">\(S\)</span>-arrow, then <span class="math" data-tex="\(Lf=Lg\)">\(Lf=Lg\)</span>. Naturality now gives <span class="math" data-tex="\(\eta_Yf=\eta_Yg\)">\(\eta_Yf=\eta_Yg\)</span>, proving cancellation.</p>
+<p>The localization property supplies <span class="math" data-tex="\(\overline L\)">\(\overline L\)</span>. A quasi-inverse is <span class="math" data-tex="\(QR\)">\(QR\)</span>. The counit gives <span class="math" data-tex="\(\overline LQR\simeq1_{\mathsf D}\)">\(\overline LQR\simeq1_{\mathsf D}\)</span>. The transformation <span class="math" data-tex="\(Q\eta:Q\to QRL\)">\(Q\eta:Q\to QRL\)</span> is an isomorphism on every object. Full faithfulness of restriction along <span class="math" data-tex="\(Q\)">\(Q\)</span> descends it to <span class="math" data-tex="\(1_{\mathsf C[S^{-1}]}\simeq QR\overline L\)">\(1_{\mathsf C[S^{-1}]}\simeq QR\overline L\)</span>. Thus <span class="math" data-tex="\(\overline L\)">\(\overline L\)</span> is an equivalence. It follows that <span class="math" data-tex="\(Q(f)\)">\(Q(f)\)</span> is invertible exactly when <span class="math" data-tex="\(L(f)\)">\(L(f)\)</span> is invertible; hence <span class="math" data-tex="\(S\)">\(S\)</span> is saturated in this precise sense.</p>
+<p>Let <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> be the full essential image of <span class="math" data-tex="\(R\)">\(R\)</span>. The arrows <span class="math" data-tex="\(\eta_X:X\to RLX\)">\(\eta_X:X\to RLX\)</span> give the global replacements required in Section 3. The restriction <span class="math" data-tex="\(L|_{\mathsf I}\)">\(L|_{\mathsf I}\)</span> is fully faithful: identify objects with <span class="math" data-tex="\(RA,RB\)">\(RA,RB\)</span>, use full faithfulness of <span class="math" data-tex="\(R\)">\(R\)</span>, and conjugate <span class="math" data-tex="\(LR\)">\(LR\)</span> by its counit to identify the induced Hom map. Therefore an arrow of <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> whose <span class="math" data-tex="\(L\)">\(L\)</span>-image is invertible is itself invertible. Every functor <span class="math" data-tex="\(F\)">\(F\)</span> inverts these arrows. Theorem 3.1 applies, with the replacement value <span class="math" data-tex="\(FR\overline L\)">\(FR\overline L\)</span> and unit <span class="math" data-tex="\(F\eta\)">\(F\eta\)</span>. Its restriction to <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> is the requisite isomorphism because <span class="math" data-tex="\(\eta_{RA}\)">\(\eta_{RA}\)</span> is invertible, by the other triangle identity and invertibility of <span class="math" data-tex="\(R\varepsilon_A\)">\(R\varepsilon_A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, the inclusion of abelian groups in groups is fully faithful and has abelianization as left adjoint. The theorem applies to every functor defined on groups, including functors with targets that have no filtered colimits.</p>
+<h2 id="5-universal-localization-of-the-identity-forces-reflection">5. Universal localization of the identity forces reflection</h2>
+<p>The converse uses universality with a target as large as the localization itself. Interpret all functor categories in the ambient universe fixed at the start of the lesson.</p>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be an outgoing multiplicative system. Suppose <span class="math" data-tex="\(H:\mathsf C[S^{-1}]\to\mathsf C\)">\(H:\mathsf C[S^{-1}]\to\mathsf C\)</span>, with <span class="math" data-tex="\(\eta:1_{\mathsf C}\to HQ\)">\(\eta:1_{\mathsf C}\to HQ\)</span>, is a universal right localization of <span class="math" data-tex="\(1_{\mathsf C}\)">\(1_{\mathsf C}\)</span>. Then <span class="math" data-tex="\(Q\dashv H\)">\(Q\dashv H\)</span>, and <span class="math" data-tex="\(H\)">\(H\)</span> is fully faithful. If <span class="math" data-tex="\(S\)">\(S\)</span> is saturated, then each <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span> is in <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Proof.</strong> Universality with the further functor <span class="math" data-tex="\(K=Q\)">\(K=Q\)</span> says that <span class="math" data-tex="\( (QH,Q\eta)\)">\( (QH,Q\eta)\)</span> right localizes <span class="math" data-tex="\(Q\)">\(Q\)</span>. Since <span class="math" data-tex="\(Q\)">\(Q\)</span> already inverts <span class="math" data-tex="\(S\)">\(S\)</span>, its right localization is <span class="math" data-tex="\(1_{\mathsf C[S^{-1}]}\)">\(1_{\mathsf C[S^{-1}]}\)</span>, with identity unit. Uniqueness supplies an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varepsilon:QH\longrightarrow1_{\mathsf C[S^{-1}]},\\
+\varepsilon Q\circ Q\eta=1_Q.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\varepsilon:QH\longrightarrow1_{\mathsf C[S^{-1}]},\\
+\varepsilon Q\circ Q\eta=1_Q.
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>Put <span class="math" data-tex="\(\theta=H\varepsilon\circ\eta H:H\to H\)">\(\theta=H\varepsilon\circ\eta H:H\to H\)</span>. Naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> at <span class="math" data-tex="\(\eta_X:X\to HQX\)">\(\eta_X:X\to HQX\)</span>, followed by (5.1), shows</p>
+<span class="math math-display" data-tex="\[
+\theta_{QX}\eta_X
+=H(\varepsilon_{QX}Q\eta_X)\eta_X
+=\eta_X.
+\]">\[
+\theta_{QX}\eta_X
+=H(\varepsilon_{QX}Q\eta_X)\eta_X
+=\eta_X.
+\]</span>
+<p>The universal property of <span class="math" data-tex="\( (H,\eta)\)">\( (H,\eta)\)</span> makes composition <span class="math" data-tex="\(u\mapsto uQ\circ\eta\)">\(u\mapsto uQ\circ\eta\)</span> injective on <span class="math" data-tex="\(\operatorname{Nat}(H,H)\)">\(\operatorname{Nat}(H,H)\)</span>. Hence <span class="math" data-tex="\(\theta=1_H\)">\(\theta=1_H\)</span>, which is the second triangle identity.</p>
+<p>The adjunction bijection and its inverse are now explicit:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}(QX,Y)\longrightarrow\operatorname{Hom}(X,HY),\\
+f\longmapsto H(f)\eta_X,\\
+\operatorname{Hom}(X,HY)\longrightarrow\operatorname{Hom}(QX,Y),\\
+b\longmapsto\varepsilon_YQ(b).
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}(QX,Y)\longrightarrow\operatorname{Hom}(X,HY),\\
+f\longmapsto H(f)\eta_X,\\
+\operatorname{Hom}(X,HY)\longrightarrow\operatorname{Hom}(QX,Y),\\
+b\longmapsto\varepsilon_YQ(b).
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>For the composite starting with <span class="math" data-tex="\(f\)">\(f\)</span>, naturality of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> reduces it to <span class="math" data-tex="\(f\varepsilon_{QX}Q\eta_X=f\)">\(f\varepsilon_{QX}Q\eta_X=f\)</span>. Starting with <span class="math" data-tex="\(b\)">\(b\)</span>, naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> reduces it to <span class="math" data-tex="\(H\varepsilon_Y\eta_{HY}b=b\)">\(H\varepsilon_Y\eta_{HY}b=b\)</span>. These formulas are natural in <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, so they prove the adjunction. Its counit is an isomorphism; the cited fully faithful adjoint criterion makes <span class="math" data-tex="\(H\)">\(H\)</span> fully faithful. Equation (5.1) also makes <span class="math" data-tex="\(Q\eta_X\)">\(Q\eta_X\)</span> invertible. Saturation is exactly what upgrades this conclusion to <span class="math" data-tex="\(\eta_X\in S\)">\(\eta_X\in S\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The adjunction and full faithfulness themselves do not need saturation. For contrast, localizing the ordered category <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span> at all arrows gives a terminal category, but the localization has no right adjoint: a right adjoint would choose a terminal object of <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, and none exists. Thus its identity functor cannot have a universal right localization.</p>
+<h2 id="6-projectors-detect-the-objects-of-a-reflection">6. Projectors detect the objects of a reflection</h2>
+<p>A <strong>projector</strong> on <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is an endofunctor <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(e:1_{\mathsf C}\to P\)">\(e:1_{\mathsf C}\to P\)</span> such that both <span class="math" data-tex="\(Pe\)">\(Pe\)</span> and <span class="math" data-tex="\(eP\)">\(eP\)</span> are isomorphisms. The two whiskerings are part of the hypothesis.</p>
+<p><strong>Lemma 6.1.</strong> For a projector, <span class="math" data-tex="\(Pe=eP\)">\(Pe=eP\)</span>.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(u=(eP)^{-1}Pe:P\to P\)">\(u=(eP)^{-1}Pe:P\to P\)</span>. Naturality of <span class="math" data-tex="\(e\)">\(e\)</span> at <span class="math" data-tex="\(e_X\)">\(e_X\)</span> gives <span class="math" data-tex="\(ue=e\)">\(ue=e\)</span>. Applying <span class="math" data-tex="\(P\)">\(P\)</span> and canceling the isomorphism <span class="math" data-tex="\(Pe\)">\(Pe\)</span> gives <span class="math" data-tex="\(Pu=1_{P^2}\)">\(Pu=1_{P^2}\)</span>. Naturality of <span class="math" data-tex="\(e\)">\(e\)</span> at <span class="math" data-tex="\(u_X\)">\(u_X\)</span> then reads <span class="math" data-tex="\(e_{PX}u_X=P(u_X)e_{PX}=e_{PX}\)">\(e_{PX}u_X=P(u_X)e_{PX}=e_{PX}\)</span>. Cancel <span class="math" data-tex="\(e_{PX}\)">\(e_{PX}\)</span> to obtain <span class="math" data-tex="\(u_X=1_{PX}\)">\(u_X=1_{PX}\)</span>, for every <span class="math" data-tex="\(X\)">\(X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2.</strong> Precomposition by <span class="math" data-tex="\(e_X\)">\(e_X\)</span> gives a natural bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C}(PX,PY)
+\\
+\simeq\operatorname{Hom}_{\mathsf C}(X,PY).
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C}(PX,PY)
+\\
+\simeq\operatorname{Hom}_{\mathsf C}(X,PY).
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>For an object <span class="math" data-tex="\(X\)">\(X\)</span>, the following are equivalent: <span class="math" data-tex="\(e_X\)">\(e_X\)</span> is invertible; precomposition by <span class="math" data-tex="\(e_Y\)">\(e_Y\)</span> gives a bijection <span class="math" data-tex="\(\operatorname{Hom}(PY,X)\to\operatorname{Hom}(Y,X)\)">\(\operatorname{Hom}(PY,X)\to\operatorname{Hom}(Y,X)\)</span> for every <span class="math" data-tex="\(Y\)">\(Y\)</span>; this map is surjective just for <span class="math" data-tex="\(Y=X\)">\(Y=X\)</span>. The full subcategory <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span> of these objects is reflective, with reflector <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Proof.</strong> The inverse in (6.1) sends <span class="math" data-tex="\(v:X\to PY\)">\(v:X\to PY\)</span> to <span class="math" data-tex="\(e_{PY}^{-1}P(v)\)">\(e_{PY}^{-1}P(v)\)</span>. Its composite with precomposition by <span class="math" data-tex="\(e_X\)">\(e_X\)</span> is <span class="math" data-tex="\(v\)">\(v\)</span>, by naturality of <span class="math" data-tex="\(e\)">\(e\)</span> at <span class="math" data-tex="\(v\)">\(v\)</span>. For <span class="math" data-tex="\(w:PX\to PY\)">\(w:PX\to PY\)</span>, its other composite is</p>
+<span class="math math-display" data-tex="\[
+e_{PY}^{-1}P(w)P(e_X)
+=e_{PY}^{-1}P(w)e_{PX}=w,
+\]">\[
+e_{PY}^{-1}P(w)P(e_X)
+=e_{PY}^{-1}P(w)e_{PX}=w,
+\]</span>
+<p>using Lemma 6.1 and naturality at <span class="math" data-tex="\(w\)">\(w\)</span>. This proves the bijection.</p>
+<p>If <span class="math" data-tex="\(e_X\)">\(e_X\)</span> is invertible, identify <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(PX\)">\(PX\)</span> and use (6.1) to obtain the asserted bijection for every <span class="math" data-tex="\(Y\)">\(Y\)</span>. Bijectivity implies the specified surjectivity. Conversely, that surjectivity lifts <span class="math" data-tex="\(1_X\)">\(1_X\)</span> to a map <span class="math" data-tex="\(r:PX\to X\)">\(r:PX\to X\)</span> with <span class="math" data-tex="\(re_X=1_X\)">\(re_X=1_X\)</span>. The maps <span class="math" data-tex="\(e_Xr\)">\(e_Xr\)</span> and <span class="math" data-tex="\(1_{PX}\)">\(1_{PX}\)</span> agree after precomposition by <span class="math" data-tex="\(e_X\)">\(e_X\)</span>; injectivity of (6.1) with <span class="math" data-tex="\(Y=X\)">\(Y=X\)</span> implies <span class="math" data-tex="\(e_Xr=1_{PX}\)">\(e_Xr=1_{PX}\)</span>. Thus <span class="math" data-tex="\(e_X\)">\(e_X\)</span> is invertible.</p>
+<p>Each <span class="math" data-tex="\(PX\)">\(PX\)</span> lies in <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span>, since <span class="math" data-tex="\(e_{PX}\)">\(e_{PX}\)</span> is invertible. For any <span class="math" data-tex="\(Z\in\mathsf C_0\)">\(Z\in\mathsf C_0\)</span>, the same Hom bijection, identifying <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(PZ\)">\(PZ\)</span>, gives <span class="math" data-tex="\(\operatorname{Hom}(PX,Z)\simeq\operatorname{Hom}(X,Z)\)">\(\operatorname{Hom}(PX,Z)\simeq\operatorname{Hom}(X,Z)\)</span>. It is natural in both arguments and has unit <span class="math" data-tex="\(e\)">\(e\)</span>. This is the reflection. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Conversely, for <span class="math" data-tex="\(L\dashv R\)">\(L\dashv R\)</span> with <span class="math" data-tex="\(R\)">\(R\)</span> fully faithful, the actual counit <span class="math" data-tex="\(\varepsilon:LR\to1\)">\(\varepsilon:LR\to1\)</span> is invertible by the checked adjoint criterion in Section 4. Both <span class="math" data-tex="\(\eta RL\)">\(\eta RL\)</span> and <span class="math" data-tex="\(RL\eta\)">\(RL\eta\)</span> are inverse to <span class="math" data-tex="\(R\varepsilon L\)">\(R\varepsilon L\)</span>, by the triangle identities. Thus <span class="math" data-tex="\(P=RL\)">\(P=RL\)</span>, with <span class="math" data-tex="\(e=\eta\)">\(e=\eta\)</span>, is a projector. The functor <span class="math" data-tex="\(R\)">\(R\)</span> takes values in <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span>, because <span class="math" data-tex="\(R(\varepsilon_Y)\eta_{RY}=1\)">\(R(\varepsilon_Y)\eta_{RY}=1\)</span> and <span class="math" data-tex="\(R(\varepsilon_Y)\)">\(R(\varepsilon_Y)\)</span> is invertible. It remains fully faithful there. It is essentially surjective onto <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span>, since any such <span class="math" data-tex="\(X\)">\(X\)</span> is isomorphic to <span class="math" data-tex="\(RLX\)">\(RLX\)</span>. Hence the reflected target is equivalent to exactly the objects detected by Theorem 6.2.</p>
+<p>One whiskering does not suffice. Consider the one-object category with endomorphisms <span class="math" data-tex="\(1,p\)">\(1,p\)</span>, where <span class="math" data-tex="\(p^2=p\ne1\)">\(p^2=p\ne1\)</span>. Let <span class="math" data-tex="\(P\)">\(P\)</span> send both arrows to <span class="math" data-tex="\(1\)">\(1\)</span>, and let <span class="math" data-tex="\(e\)">\(e\)</span> have component <span class="math" data-tex="\(p\)">\(p\)</span>. This is natural: <span class="math" data-tex="\(P(a)p=pa=p\)">\(P(a)p=pa=p\)</span> for either arrow <span class="math" data-tex="\(a\)">\(a\)</span>. The functor laws hold, and <span class="math" data-tex="\(Pe\)">\(Pe\)</span> has component <span class="math" data-tex="\(1\)">\(1\)</span>, but <span class="math" data-tex="\(eP\)">\(eP\)</span> has component <span class="math" data-tex="\(p\)">\(p\)</span>. The latter is not invertible, since neither endomorphism is an inverse of <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<p><strong>Exercise 1 (Grade 1: detect a missing hypothesis).</strong> Let <span class="math" data-tex="\(q\)">\(q\)</span> include the discrete category on two objects <span class="math" data-tex="\(a,b\)">\(a,b\)</span> into the category with one additional arrow <span class="math" data-tex="\(a\to b\)">\(a\to b\)</span>. Show that <span class="math" data-tex="\(q\)">\(q\)</span> is essentially surjective but restriction on functor categories need not be full. Use the constant functor with value <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>.</p>
+<p><strong>Solution.</strong> Both objects occur in the image, so <span class="math" data-tex="\(q\)">\(q\)</span> is essentially surjective. Let <span class="math" data-tex="\(F=G\)">\(F=G\)</span> send the additional arrow to the identity of <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>. On the discrete category, take the component at <span class="math" data-tex="\(a\)">\(a\)</span> to be the identity and the component at <span class="math" data-tex="\(b\)">\(b\)</span> to be the constant function with value <span class="math" data-tex="\(0\)">\(0\)</span>. This is a natural transformation there. Naturality at <span class="math" data-tex="\(a\to b\)">\(a\to b\)</span> in the larger category would equate these two functions. They differ at <span class="math" data-tex="\(1\)">\(1\)</span>, so it has no extension. The morphism comparison condition in Corollary 1.2 is substantive.</p>
+<p><strong>Exercise 2 (Grade 2: descend only on replacements).</strong> In the ordered category <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, invert every arrow and let <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> be the full subcategory of even integers. Define <span class="math" data-tex="\(F:\mathbb N\to\mathsf{Set}\)">\(F:\mathbb N\to\mathsf{Set}\)</span> by <span class="math" data-tex="\(F(1)=\{a,b\}\)">\(F(1)=\{a,b\}\)</span> and <span class="math" data-tex="\(F(n)=\{*\}\)">\(F(n)=\{*\}\)</span> for <span class="math" data-tex="\(n\ne1\)">\(n\ne1\)</span>. The map <span class="math" data-tex="\(F(0\to1)\)">\(F(0\to1)\)</span> selects <span class="math" data-tex="\(a\)">\(a\)</span>; maps from <span class="math" data-tex="\(1\)">\(1\)</span> to later stages are the unique collapse. Find its universal right localization and unit. Does <span class="math" data-tex="\(F\)">\(F\)</span> invert every denominator?</p>
+<p><strong>Solution.</strong> Composites through <span class="math" data-tex="\(1\)">\(1\)</span> between singleton stages are the unique maps, so this is a functor. Every integer maps to an even integer, and every restricted arrow of <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> is sent to a bijection between singletons. The localization of <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span> is terminal: a common upper bound represents the unique fraction between any two integers. Theorem 3.1 therefore gives the singleton functor as the universal right localization. Its unit is the unique map <span class="math" data-tex="\(F(n)\to\{*\}\)">\(F(n)\to\{*\}\)</span>; at <span class="math" data-tex="\(1\)">\(1\)</span> it identifies <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. The arrow <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span> is a denominator, but its image is not surjective. Thus <span class="math" data-tex="\(F\)">\(F\)</span> does not invert all denominators, and this does not prevent universal localization.</p>
+<p><strong>Exercise 3 (Grade 3: distinguish the two replacement conditions).</strong> Take the concrete category with objects <span class="math" data-tex="\(0=\{0\}\)">\(0=\{0\}\)</span>, <span class="math" data-tex="\(1=\{0,1\}\)">\(1=\{0,1\}\)</span>, inclusion <span class="math" data-tex="\(s:0\to1\)">\(s:0\to1\)</span>, retraction <span class="math" data-tex="\(r:1\to0\)">\(r:1\to0\)</span>, and <span class="math" data-tex="\(e=sr:1\to1\)">\(e=sr:1\to1\)</span>. Its arrows are the identities, <span class="math" data-tex="\(s,r,e\)">\(s,r,e\)</span>. Put <span class="math" data-tex="\(S=\{1_0,1_1,s,e\}\)">\(S=\{1_0,1_1,s,e\}\)</span> and <span class="math" data-tex="\(\mathsf I=\{0\}\)">\(\mathsf I=\{0\}\)</span>. Verify the outgoing axioms and the hypothesis of Theorem 2.1. Show that the hypothesis of Corollary 2.2 fails, and determine both localized categories.</p>
+<p><strong>Solution.</strong> The identities are the only isomorphisms. The equations <span class="math" data-tex="\(rs=1_0\)">\(rs=1_0\)</span>, <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>, <span class="math" data-tex="\(es=s\)">\(es=s\)</span>, <span class="math" data-tex="\(re=r\)">\(re=r\)</span> verify closure of <span class="math" data-tex="\(S\)">\(S\)</span>. Identity denominators require no construction. For denominator <span class="math" data-tex="\(s\)">\(s\)</span>, the possible maps from its source are <span class="math" data-tex="\(1_0,s\)">\(1_0,s\)</span>; their squares use respectively the pairs <span class="math" data-tex="\( (t,h)=(s,1_1)\)">\( (t,h)=(s,1_1)\)</span>, <span class="math" data-tex="\( (1_1,1_1)\)">\( (1_1,1_1)\)</span>. For denominator <span class="math" data-tex="\(e\)">\(e\)</span>, the possible maps are <span class="math" data-tex="\(r,1_1,e\)">\(r,1_1,e\)</span>; use respectively <span class="math" data-tex="\( (t,h)=(1_0,r),(e,1_1),(1_1,1_1)\)">\( (t,h)=(1_0,r),(e,1_1),(1_1,1_1)\)</span>. In each pair <span class="math" data-tex="\(t\)">\(t\)</span> is the outgoing denominator and <span class="math" data-tex="\(he=tf\)">\(he=tf\)</span>. The only distinct parallel arrows are <span class="math" data-tex="\(1_1,e\)">\(1_1,e\)</span>, and postcomposition by <span class="math" data-tex="\(e\in S\)">\(e\in S\)</span> equalizes them. Hence every needed cancellation holds.</p>
+<p>The denominators with source <span class="math" data-tex="\(0\)">\(0\)</span> are <span class="math" data-tex="\(1_0,s\)">\(1_0,s\)</span>. For <span class="math" data-tex="\(1_0\)">\(1_0\)</span>, take the identity comparison; for <span class="math" data-tex="\(s\)">\(s\)</span>, take <span class="math" data-tex="\(g=r\)">\(g=r\)</span>, so <span class="math" data-tex="\(gs=1_0\in S\)">\(gs=1_0\in S\)</span>. This proves the weak condition, although <span class="math" data-tex="\(r\notin S\)">\(r\notin S\)</span>. There is no <span class="math" data-tex="\(S\)">\(S\)</span>-arrow from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>, so global denominator replacement fails.</p>
+<p>The localization of <span class="math" data-tex="\(\mathsf I\)">\(\mathsf I\)</span> is terminal. In the larger localization, <span class="math" data-tex="\(Qs\)">\(Qs\)</span> is invertible, <span class="math" data-tex="\(Qr=(Qs)^{-1}\)">\(Qr=(Qs)^{-1}\)</span>, and <span class="math" data-tex="\(Qe=1_{Q1}\)">\(Qe=1_{Q1}\)</span>. Every map is generated by these arrows and denominator inverses, so each Hom set is a singleton. Its two objects are isomorphic; it too is equivalent to a terminal category. Here the conclusion of Corollary 2.2 happens to hold although its sufficient hypothesis does not. The two hypotheses still differ strictly.</p>
+<p><strong>Exercise 4 (Grade 4: compute a reflection and its localized value).</strong> Prove that abelianization <span class="math" data-tex="\(L(G)=G/[G,G]\)">\(L(G)=G/[G,G]\)</span> is left adjoint to the inclusion of abelian groups. Apply Theorem 4.1 to the underlying-set functor. Compute the unit for the free group on two generators and show that it need not be injective.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\([G,G]\)">\([G,G]\)</span> be the normal subgroup generated by all commutators. The quotient is abelian, since each commutator becomes the identity. Every homomorphism <span class="math" data-tex="\(G\to A\)">\(G\to A\)</span> with <span class="math" data-tex="\(A\)">\(A\)</span> abelian kills every commutator and its normal closure, hence factors uniquely through the quotient. This gives a natural bijection <span class="math" data-tex="\(\operatorname{Hom}_{\mathsf{Ab}}(G/[G,G],A)\simeq\operatorname{Hom}_{\mathsf{Grp}}(G,A)\)">\(\operatorname{Hom}_{\mathsf{Ab}}(G/[G,G],A)\simeq\operatorname{Hom}_{\mathsf{Grp}}(G,A)\)</span>, proving the adjunction. Inclusion is fully faithful. For <span class="math" data-tex="\(F\)">\(F\)</span> the underlying-set functor, the universal localized value at <span class="math" data-tex="\(QG\)">\(QG\)</span> is the underlying set of <span class="math" data-tex="\(G/[G,G]\)">\(G/[G,G]\)</span>, and the unit is the quotient function.</p>
+<p>For the free group <span class="math" data-tex="\(G=\langle x,y\rangle\)">\(G=\langle x,y\rangle\)</span>, its abelianization is <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>. Indeed, sending <span class="math" data-tex="\(x,y\)">\(x,y\)</span> to its standard generators factors through <span class="math" data-tex="\(G/[G,G]\)">\(G/[G,G]\)</span>; conversely those two commuting classes give a map <span class="math" data-tex="\(\mathbb Z^2\to G/[G,G]\)">\(\mathbb Z^2\to G/[G,G]\)</span>. The maps are inverse on the generators. The reduced word <span class="math" data-tex="\(xyx^{-1}y^{-1}\)">\(xyx^{-1}y^{-1}\)</span> is nonempty in the free group and therefore differs from the identity, but both map to <span class="math" data-tex="\( (0,0)\)">\( (0,0)\)</span>. The unit is not injective. The theorem nonetheless proves universality after every further functor on sets.</p>
+<h2 id="references">References</h2>
+<p>Reflective subcategories and idempotent monads are treated in Emily Riehl, <a href="https://emilyriehl.github.io/files/context.pdf"><em>Category Theory in Context</em></a>, Sections 4.5 and 5.2.</p>
+<p>The outgoing fraction calculus is retained from <a href="https://stacks.math.columbia.edu/tag/04VB">Stacks, Section 4.27</a>. The full filtered cofinal-subcategory interface is <a href="https://stacks.math.columbia.edu/tag/0BUC">Stacks, full cofinal-subcategory criterion</a>. The fully faithful adjoint criterion is <a href="https://stacks.math.columbia.edu/tag/07RB">Stacks, Lemma 4.24.4</a>. These references supply the named canonical interfaces; their text is not reproduced.</p>
+<p>Localization of categories, of subcategories and of functors is treated in Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Chapter 3.</p>
+</main></body></html>

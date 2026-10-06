@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Two measuring scales, one Weyl product</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="two-measuring-scales-one-weyl-product">Two measuring scales, one Weyl product</h1>
+
+<p>Two symbols can have very different derivative scales. Their product under Weyl quantization couples these scales through the symplectic form. The useful small parameter measures that coupling; it need not control either scale separately. We first identify the precise compatibility conditions, then derive the quantization formula and apply the quadratic multiplier theorem of AN03-U002. This order keeps the geometric hypotheses visible when the analytic estimate is used.</p>
+<p>The local symbol spaces and bounded compactly supported approximation are those of AN03-U001. We use all the conclusions of AN03-U002, with its Fourier convention <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. The additional prerequisites are finite-dimensional linear algebra; completeness, compact smooth approximation and integration in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>; and the tempered Schwartz kernel theorem: every continuous linear map <span class="math" data-tex="\(\mathcal S(V)\to\mathcal S&#x27;(V)\)">\(\mathcal S(V)\to\mathcal S&#x27;(V)\)</span> has a unique kernel in <span class="math" data-tex="\(\mathcal S&#x27;(V\times V)\)">\(\mathcal S&#x27;(V\times V)\)</span>. We prove the needed quadratic minimization, core property and unitary-group formulas below. The kernel theorem is used only for the converse classification of all Schwartz-to-distribution operators; the displayed operators and kernel identities are constructed directly. External prerequisite import closure is a separate course obligation.</p>
+<p>Throughout, <span class="math" data-tex="\(V\)">\(V\)</span> is a real vector space of dimension <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, <span class="math" data-tex="\(W=V\oplus V^*\)">\(W=V\oplus V^*\)</span>, and
+<span class="math math-display" data-tex="\[
+\sigma((x,\xi),(y,\eta))=\langle\xi,y\rangle-\langle x,\eta\rangle.
+\tag{W1}
+\]">\[
+\sigma((x,\xi),(y,\eta))=\langle\xi,y\rangle-\langle x,\eta\rangle.
+\tag{W1}
+\]</span>
+Measures on <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(V^*\)">\(V^*\)</span> are dual for Fourier inversion with coefficient <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>. Multiplying one measure by a positive constant divides the other by that constant; the phase-space measure and all quantizations below are unchanged.</p>
+<h2 id="AN03-WP-001"><span id="an03-wp-001"></span><span id="an03-wp-001-quadratic-forms-and-the-cross-parameter"></span>AN03-WP-001 — Quadratic forms and the cross parameter</h2>
+<p>For a positive-definite quadratic form <span class="math" data-tex="\(q\)">\(q\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span>, define
+<span class="math math-display" data-tex="\[
+q^\sigma(T)=\sup_{S\ne0}\frac{|\sigma(T,S)|^2}{q(S)}.
+\tag{W2}
+\]">\[
+q^\sigma(T)=\sup_{S\ne0}\frac{|\sigma(T,S)|^2}{q(S)}.
+\tag{W2}
+\]</span>
+This is positive definite. Ordinary quadratic duality, composed with the invertible linear map induced by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, gives
+<span class="math math-display" data-tex="\[
+(q^\sigma)^\sigma=q,\qquad (c q)^\sigma=c^{-1}q^\sigma,
+\qquad q\leq C r\ \Longleftrightarrow\ r^\sigma\leq Cq^\sigma.
+\tag{W3}
+\]">\[
+(q^\sigma)^\sigma=q,\qquad (c q)^\sigma=c^{-1}q^\sigma,
+\qquad q\leq C r\ \Longleftrightarrow\ r^\sigma\leq Cq^\sigma.
+\tag{W3}
+\]</span>
+For example, write <span class="math" data-tex="\(q(T)=T^tQT\)">\(q(T)=T^tQT\)</span> in coordinates and let <span class="math" data-tex="\(J\)">\(J\)</span> represent <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Then <span class="math" data-tex="\(q^\sigma(T)=T^tJQ^{-1}J^tT\)">\(q^\sigma(T)=T^tJQ^{-1}J^tT\)</span>; substitution proves the first identity, and inversion of positive matrices proves the order reversal. Alternatively, all three follow by mapping the unit ellipsoid to its polar ellipsoid and using that taking the polar twice returns the original ellipsoid.</p>
+<p>We will need an exact formula for the dual of a sum. If <span class="math" data-tex="\(F_1,F_2\)">\(F_1,F_2\)</span> are positive quadratic forms on a finite-dimensional space and primes denote ordinary dual forms, then
+<span class="math math-display" data-tex="\[
+(F_1+F_2)&#x27;(\zeta)
+=\min_{\zeta_1+\zeta_2=\zeta}
+\big(F_1&#x27;(\zeta_1)+F_2&#x27;(\zeta_2)\big).
+\tag{W4}
+\]">\[
+(F_1+F_2)&#x27;(\zeta)
+=\min_{\zeta_1+\zeta_2=\zeta}
+\big(F_1&#x27;(\zeta_1)+F_2&#x27;(\zeta_2)\big).
+\tag{W4}
+\]</span>
+To prove it, represent the forms by positive matrices <span class="math" data-tex="\(A_1,A_2\)">\(A_1,A_2\)</span>. Put <span class="math" data-tex="\(v=(A_1+A_2)^{-1}\zeta\)">\(v=(A_1+A_2)^{-1}\zeta\)</span> and <span class="math" data-tex="\(\zeta_j=A_jv\)">\(\zeta_j=A_jv\)</span>. Every other decomposition is <span class="math" data-tex="\((\zeta_1+e,\zeta_2-e)\)">\((\zeta_1+e,\zeta_2-e)\)</span>. Expanding its objective gives the value <span class="math" data-tex="\(v^t(A_1+A_2)v\)">\(v^t(A_1+A_2)v\)</span>, plus <span class="math" data-tex="\(e^t(A_1^{-1}+A_2^{-1})e\)">\(e^t(A_1^{-1}+A_2^{-1})e\)</span>; the mixed terms cancel. The latter quantity is nonnegative and vanishes only at <span class="math" data-tex="\(e=0\)">\(e=0\)</span>. This proves both the minimum and its value. In particular, if <span class="math" data-tex="\(g=(g_1+g_2)/2\)">\(g=(g_1+g_2)/2\)</span>,
+<span class="math math-display" data-tex="\[
+g^\sigma(T)=2\min_{T_1+T_2=T}
+\big(g_1^\sigma(T_1)+g_2^\sigma(T_2)\big).
+\tag{W5}
+\]">\[
+g^\sigma(T)=2\min_{T_1+T_2=T}
+\big(g_1^\sigma(T_1)+g_2^\sigma(T_2)\big).
+\tag{W5}
+\]</span>
+The factor two comes from the factor one half in the mean; it is not optional.</p>
+<p>At one point of phase space, set
+<span class="math math-display" data-tex="\[
+h_j^2=\sup_{T\ne0}\frac{g_j(T)}{g_j^\sigma(T)},\qquad
+H^2=\sup_{T\ne0}\frac{g_1(T)}{g_2^\sigma(T)}
+=\sup_{T\ne0}\frac{g_2(T)}{g_1^\sigma(T)}.
+\tag{W6}
+\]">\[
+h_j^2=\sup_{T\ne0}\frac{g_j(T)}{g_j^\sigma(T)},\qquad
+H^2=\sup_{T\ne0}\frac{g_1(T)}{g_2^\sigma(T)}
+=\sup_{T\ne0}\frac{g_2(T)}{g_1^\sigma(T)}.
+\tag{W6}
+\]</span>
+The two expressions for <span class="math" data-tex="\(H\)">\(H\)</span> are equal by (W3): each is the least constant in one of the equivalent inequalities <span class="math" data-tex="\(g_1\leq H^2g_2^\sigma\)">\(g_1\leq H^2g_2^\sigma\)</span>, <span class="math" data-tex="\(g_2\leq H^2g_1^\sigma\)">\(g_2\leq H^2g_1^\sigma\)</span>. These are also equivalent to
+<span class="math math-display" data-tex="\[
+|\sigma(T,S)|^2\leq H^2g_1^\sigma(T)g_2^\sigma(S).
+\tag{W7}
+\]">\[
+|\sigma(T,S)|^2\leq H^2g_1^\sigma(T)g_2^\sigma(S).
+\tag{W7}
+\]</span>
+Indeed, divide by <span class="math" data-tex="\(g_2^\sigma(S)\)">\(g_2^\sigma(S)\)</span>, take the supremum over <span class="math" data-tex="\(S\)">\(S\)</span>, and use (W3).</p>
+<p>For the mean metric, write <span class="math" data-tex="\(h_g^2=\sup g/g^\sigma\)">\(h_g^2=\sup g/g^\sigma\)</span>. Then
+<span class="math math-display" data-tex="\[
+\max(h_1^2,h_2^2,H^2)\leq4h_g^2
+\leq h_1^2+h_2^2+2H^2.
+\tag{W8}
+\]">\[
+\max(h_1^2,h_2^2,H^2)\leq4h_g^2
+\leq h_1^2+h_2^2+2H^2.
+\tag{W8}
+\]</span>
+For the first inequality, <span class="math" data-tex="\(g_j\leq2g\)">\(g_j\leq2g\)</span> and <span class="math" data-tex="\(g^\sigma\leq2g_k^\sigma\)">\(g^\sigma\leq2g_k^\sigma\)</span> show that <span class="math" data-tex="\(g_j(T)/g_k^\sigma(T)\leq4g(T)/g^\sigma(T)\)">\(g_j(T)/g_k^\sigma(T)\leq4g(T)/g^\sigma(T)\)</span>, for both choices of <span class="math" data-tex="\(j,k\)">\(j,k\)</span>. For the second, <span class="math" data-tex="\(2g=g_j+g_k\leq(h_j^2+H^2)g_j^\sigma\)">\(2g=g_j+g_k\leq(h_j^2+H^2)g_j^\sigma\)</span>. Dualizing gives <span class="math" data-tex="\(2g_j\leq(h_j^2+H^2)g^\sigma\)">\(2g_j\leq(h_j^2+H^2)g^\sigma\)</span>. Add the two inequalities. No uncertainty inequality has been assumed in this argument.</p>
+<h2 id="AN03-WP-002"><span id="an03-wp-002"></span><span id="an03-wp-002-a-transport-test-for-compatible-metrics"></span>AN03-WP-002 — A transport test for compatible metrics</h2>
+<p>Let <span class="math" data-tex="\(g_1,g_2\)">\(g_1,g_2\)</span> be slowly varying metrics on <span class="math" data-tex="\(W\)">\(W\)</span>, in the sense of AN03-U001. Write <span class="math" data-tex="\(q_j(X)=g_{j,X}^\sigma\)">\(q_j(X)=g_{j,X}^\sigma\)</span>. Each metric is assumed symplectically temperate, meaning that for fixed constants <span class="math" data-tex="\(C,N\)">\(C,N\)</span>, uniformly in <span class="math" data-tex="\(X,Y,T\)">\(X,Y,T\)</span>,
+<span class="math math-display" data-tex="\[
+q_j(X)(T)\leq Cq_j(Y)(T)
+\big(1+q_j(Y)(X-Y)\big)^N.
+\tag{W9}
+\]">\[
+q_j(X)(T)\leq Cq_j(Y)(T)
+\big(1+q_j(Y)(X-Y)\big)^N.
+\tag{W9}
+\]</span>
+By (W3), this is equivalent to the primal inequality
+<span class="math" data-tex="\(g_{j,Y}\leq Cg_{j,X}(1+q_j(Y)(X-Y))^N\)">\(g_{j,Y}\leq Cg_{j,X}(1+q_j(Y)(X-Y))^N\)</span>.
+Constants can be enlarged so that a common <span class="math" data-tex="\(C\geq1\)">\(C\geq1\)</span>, <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span> works for both metrics. The bases of the quadratic distances matter.</p>
+<p>The cross tests are
+<span class="math math-display" data-tex="\[
+\begin{split}
+q_1(X)(T)&amp;\leq Cq_1(Y)(T)
+\big(1+q_2(X)(Y-X)\big)^N,\\
+q_2(X)(T)&amp;\leq Cq_2(Y)(T)
+\big(1+q_1(X)(Y-X)\big)^N.
+\end{split}
+\tag{W10}
+\]">\[
+\begin{split}
+q_1(X)(T)&amp;\leq Cq_1(Y)(T)
+\big(1+q_2(X)(Y-X)\big)^N,\\
+q_2(X)(T)&amp;\leq Cq_2(Y)(T)
+\big(1+q_1(X)(Y-X)\big)^N.
+\end{split}
+\tag{W10}
+\]</span>
+We call the pair compatible when these hold. They require more than temperateness of each metric separately.</p>
+<p><strong>Transport lemma.</strong> Under (W9)–(W10), there are common constants <span class="math" data-tex="\(C,L\)">\(C,L\)</span> such that, for all <span class="math" data-tex="\(j,k\in\{1,2\}\)">\(j,k\in\{1,2\}\)</span>,
+<span class="math math-display" data-tex="\[
+q_j(X)\leq Cq_j(Y)\big(1+q_k(Y)(X-Y)\big)^L,
+\quad
+g_{j,Y}\leq Cg_{j,X}\big(1+q_k(Y)(X-Y)\big)^L.
+\tag{W11}
+\]">\[
+q_j(X)\leq Cq_j(Y)\big(1+q_k(Y)(X-Y)\big)^L,
+\quad
+g_{j,Y}\leq Cg_{j,X}\big(1+q_k(Y)(X-Y)\big)^L.
+\tag{W11}
+\]</span>
+Moreover, with <span class="math" data-tex="\(g=(g_1+g_2)/2\)">\(g=(g_1+g_2)/2\)</span>, there are <span class="math" data-tex="\(C&#x27;,L&#x27;\)">\(C&#x27;,L&#x27;\)</span> such that
+<span class="math math-display" data-tex="\[
+g_{j,Y}\leq C&#x27;g_{j,X}
+\big(1+g_Y^\sigma(X-Y)\big)^{L&#x27;},\qquad j=1,2.
+\tag{W12}
+\]">\[
+g_{j,Y}\leq C&#x27;g_{j,X}
+\big(1+g_Y^\sigma(X-Y)\big)^{L&#x27;},\qquad j=1,2.
+\tag{W12}
+\]</span>
+Consequently <span class="math" data-tex="\(g\)">\(g\)</span> is symplectically temperate.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(j=k\)">\(j=k\)</span>, the first estimate in (W11) is (W9). For <span class="math" data-tex="\(j\ne k\)">\(j\ne k\)</span>, (W9) gives
+<span class="math math-display" data-tex="\[
+1+q_k(X)(X-Y)\leq C_0\big(1+q_k(Y)(X-Y)\big)^{N+1}.
+\]">\[
+1+q_k(X)(X-Y)\leq C_0\big(1+q_k(Y)(X-Y)\big)^{N+1}.
+\]</span>
+Insert this into (W10). Dualizing gives the second estimate in (W11).</p>
+<p>Fix <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, choose any intermediate point <span class="math" data-tex="\(Z\)">\(Z\)</span>, and put
+<span class="math math-display" data-tex="\[
+R=1+q_1(Y)(X-Z)+q_2(Y)(Z-Y).
+\]">\[
+R=1+q_1(Y)(X-Z)+q_2(Y)(Z-Y).
+\]</span>
+Use (W11) first on the segment from <span class="math" data-tex="\(Z\)">\(Z\)</span> to <span class="math" data-tex="\(Y\)">\(Y\)</span>, with <span class="math" data-tex="\(k=2\)">\(k=2\)</span>. It gives
+<span class="math math-display" data-tex="\[
+g_{j,Y}\leq Cg_{j,Z}R^L,
+\qquad q_1(Z)(X-Z)\leq Cq_1(Y)(X-Z)R^L\leq CR^{L+1}.
+\]">\[
+g_{j,Y}\leq Cg_{j,Z}R^L,
+\qquad q_1(Z)(X-Z)\leq Cq_1(Y)(X-Z)R^L\leq CR^{L+1}.
+\]</span>
+Use (W11) again on the segment from <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(Z\)">\(Z\)</span>, now with <span class="math" data-tex="\(k=1\)">\(k=1\)</span>. Thus
+<span class="math math-display" data-tex="\[
+g_{j,Z}\leq Cg_{j,X}(1+q_1(Z)(X-Z))^L
+\leq C_1g_{j,X}R^{L(L+1)}.
+\]">\[
+g_{j,Z}\leq Cg_{j,X}(1+q_1(Z)(X-Z))^L
+\leq C_1g_{j,X}R^{L(L+1)}.
+\]</span>
+Multiplication gives an exponent <span class="math" data-tex="\(L^2+2L\)">\(L^2+2L\)</span>. Minimize <span class="math" data-tex="\(R\)">\(R\)</span> using (W5); its minimum is <span class="math" data-tex="\(1+g_Y^\sigma(X-Y)/2\)">\(1+g_Y^\sigma(X-Y)/2\)</span>. This proves (W12). Adding the two primal inequalities proves temperateness of the mean. It is also slowly varying: if <span class="math" data-tex="\(g_X(Y-X)\)">\(g_X(Y-X)\)</span> is sufficiently small, then <span class="math" data-tex="\(g_{j,X}(Y-X)\leq2g_X(Y-X)\)">\(g_{j,X}(Y-X)\leq2g_X(Y-X)\)</span> is small for both metrics, and their slow-variation comparisons can be added. ∎</p>
+<p>A positive weight <span class="math" data-tex="\(m\)">\(m\)</span> is symplectically temperate for <span class="math" data-tex="\(g\)">\(g\)</span> if it is <span class="math" data-tex="\(g\)">\(g\)</span>-continuous locally and
+<span class="math math-display" data-tex="\[
+m(Y)\leq Cm(X)\big(1+g_Y^\sigma(X-Y)\big)^N.
+\tag{W13}
+\]">\[
+m(Y)\leq Cm(X)\big(1+g_Y^\sigma(X-Y)\big)^N.
+\tag{W13}
+\]</span>
+Its reciprocal has the same property, with possibly larger exponent. In fact, apply (W13) with <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> exchanged and use (W9) to replace the resulting distance based at <span class="math" data-tex="\(X\)">\(X\)</span> by a power of the distance based at <span class="math" data-tex="\(Y\)">\(Y\)</span>. Local comparability also reverses. Products and positive real powers are handled in the same way.</p>
+<p>Suppose <span class="math" data-tex="\(m_j\)">\(m_j\)</span> is initially temperate for its own <span class="math" data-tex="\(g_j\)">\(g_j\)</span>. The additional weight tests are
+<span class="math math-display" data-tex="\[
+m_1(Y)\leq Cm_1(X)(1+q_2(X)(X-Y))^N,
+\quad
+m_2(Y)\leq Cm_2(X)(1+q_1(X)(X-Y))^N.
+\tag{W14}
+\]">\[
+m_1(Y)\leq Cm_1(X)(1+q_2(X)(X-Y))^N,
+\quad
+m_2(Y)\leq Cm_2(X)(1+q_1(X)(X-Y))^N.
+\tag{W14}
+\]</span>
+For a compatible pair, these are equivalent to both weights being temperate for the mean <span class="math" data-tex="\(g\)">\(g\)</span>. Here is the full reduction. Own temperateness and (W14), with the distance-base conversion used above, give
+<span class="math" data-tex="\(m_j(Y)\leq Cm_j(X)(1+q_k(Y)(X-Y))^L\)">\(m_j(Y)\leq Cm_j(X)(1+q_k(Y)(X-Y))^L\)</span> for either <span class="math" data-tex="\(k\)">\(k\)</span>. Repeat the two-segment proof of (W12), replacing its primal metric factor by <span class="math" data-tex="\(m_j\)">\(m_j\)</span>; the estimate for <span class="math" data-tex="\(q_1(Z)\)">\(q_1(Z)\)</span> is unchanged. Minimization proves (W13) for the mean. Local <span class="math" data-tex="\(g\)">\(g\)</span>-continuity follows from <span class="math" data-tex="\(g_j\)">\(g_j\)</span>-continuity and <span class="math" data-tex="\(g_j\leq2g\)">\(g_j\leq2g\)</span>.</p>
+<p>Conversely, <span class="math" data-tex="\(g_Y^\sigma\leq2q_k(Y)\)">\(g_Y^\sigma\leq2q_k(Y)\)</span>, followed by the distance-base conversion for <span class="math" data-tex="\(g_k\)">\(g_k\)</span>, turns mean temperateness into (W14). If only mean temperateness and <span class="math" data-tex="\(g_j\)">\(g_j\)</span>-continuity were given at the outset, the same inequality with <span class="math" data-tex="\(k=j\)">\(k=j\)</span> also proves own temperateness. This explains the exact weight hypotheses used later.</p>
+<h2 id="AN03-WP-003"><span id="an03-wp-003"></span><span id="an03-wp-003-why-the-tests-are-exactly-the-diagonal-conditions"></span>AN03-WP-003 — Why the tests are exactly the diagonal conditions</h2>
+<p>On <span class="math" data-tex="\(W\times W\)">\(W\times W\)</span>, use the product metric and weight
+<span class="math math-display" data-tex="\[
+G_{(Y,Z)}(T,S)=g_{1,Y}(T)+g_{2,Z}(S),\qquad
+M(Y,Z)=m_1(Y)m_2(Z).
+\tag{W15}
+\]">\[
+G_{(Y,Z)}(T,S)=g_{1,Y}(T)+g_{2,Z}(S),\qquad
+M(Y,Z)=m_1(Y)m_2(Z).
+\tag{W15}
+\]</span>
+The product metric is slowly varying and the product weight is locally <span class="math" data-tex="\(G\)">\(G\)</span>-continuous, directly from the separate local comparisons.</p>
+<p>Use dual coordinates <span class="math" data-tex="\((p,q;r,s)\)">\((p,q;r,s)\)</span> and the auxiliary quadratic phase
+<span class="math" data-tex="\(A_0(p,q;r,s)=2(q\cdot r-p\cdot s)\)">\(A_0(p,q;r,s)=2(q\cdot r-p\cdot s)\)</span>.
+Its symmetric map in the convention of AN03-GAU-001 sends
+<span class="math" data-tex="\((p,q;r,s)\)">\((p,q;r,s)\)</span> to <span class="math" data-tex="\((-s,r;q,-p)\)">\((-s,r;q,-p)\)</span>. Substitution in that unit's definition of the phase-dual form gives
+<span class="math math-display" data-tex="\[
+G_{(Y,Z)}^{A_0}(T,S)=q_2(Z)(T)+q_1(Y)(S).
+\tag{W16}
+\]">\[
+G_{(Y,Z)}^{A_0}(T,S)=q_2(Z)(T)+q_1(Y)(S).
+\tag{W16}
+\]</span>
+Consequently <span class="math" data-tex="\(G_{(X,X)}\leq H(X)^2G_{(X,X)}^{A_0}\)">\(G_{(X,X)}\leq H(X)^2G_{(X,X)}^{A_0}\)</span>, and <span class="math" data-tex="\(H(X)^2\)">\(H(X)^2\)</span> is the least possible constant. Notice the interchange of the two metrics in (W16).</p>
+<p><strong>Diagonal criterion.</strong> The product metric is uniformly <span class="math" data-tex="\(A_0\)">\(A_0\)</span>-temperate at the points <span class="math" data-tex="\((X,X)\)">\((X,X)\)</span> if and only if (W10) holds. If the individual weights are temperate for their own metrics, the product weight is uniformly <span class="math" data-tex="\(A_0,G\)">\(A_0,G\)</span>-temperate there if and only if (W14) holds.</p>
+<p><strong>Proof of necessity.</strong> In dual form, metric temperateness on the diagonal says
+<span class="math math-display" data-tex="\[
+q_1(X)(T)+q_2(X)(S)
+\leq C\big(q_1(Y)(T)+q_2(Z)(S)\big)\mathcal D^L,
+\quad
+\mathcal D=1+q_2(Z)(X-Y)+q_1(Y)(X-Z).
+\tag{W17}
+\]">\[
+q_1(X)(T)+q_2(X)(S)
+\leq C\big(q_1(Y)(T)+q_2(Z)(S)\big)\mathcal D^L,
+\quad
+\mathcal D=1+q_2(Z)(X-Y)+q_1(Y)(X-Z).
+\tag{W17}
+\]</span>
+Set <span class="math" data-tex="\(Z=X,S=0\)">\(Z=X,S=0\)</span> to obtain the first cross test. Set <span class="math" data-tex="\(Y=X,T=0\)">\(Y=X,T=0\)</span> for the second. The analogous product-weight inequality is
+<span class="math" data-tex="\(m_1(Y)m_2(Z)\leq Cm_1(X)m_2(X)\mathcal D^L\)">\(m_1(Y)m_2(Z)\leq Cm_1(X)m_2(X)\mathcal D^L\)</span>.
+The same substitutions and cancellation of a positive factor give (W14).</p>
+<p><strong>Proof of sufficiency.</strong> We supply the distance comparison that is needed for this implication. For any single temperate metric <span class="math" data-tex="\(g\)">\(g\)</span>, write <span class="math" data-tex="\(q(U)=g_U^\sigma\)">\(q(U)=g_U^\sigma\)</span>, and let
+<span class="math math-display" data-tex="\[
+\mathcal E=1+q(Y)(X-Z)+q(Z)(X-Y),\qquad P=Y+Z-X.
+\]">\[
+\mathcal E=1+q(Y)(X-Z)+q(Z)(X-Y),\qquad P=Y+Z-X.
+\]</span>
+Because <span class="math" data-tex="\(P-Z=Y-X\)">\(P-Z=Y-X\)</span> and <span class="math" data-tex="\(P-Y=Z-X\)">\(P-Y=Z-X\)</span>, temperateness gives
+<span class="math math-display" data-tex="\[
+q(P)(X-Y)\leq C\mathcal E^{L+1},\qquad
+q(P)(X-Z)\leq C\mathcal E^{L+1}.
+\]">\[
+q(P)(X-Y)\leq C\mathcal E^{L+1},\qquad
+q(P)(X-Z)\leq C\mathcal E^{L+1}.
+\]</span>
+For example, the first is the comparison of <span class="math" data-tex="\(q(P)\)">\(q(P)\)</span> with <span class="math" data-tex="\(q(Z)\)">\(q(Z)\)</span>, whose controlling distance <span class="math" data-tex="\(P-Z\)">\(P-Z\)</span> is exactly <span class="math" data-tex="\(-(X-Y)\)">\(-(X-Y)\)</span>. Compare <span class="math" data-tex="\(q(Y)\)">\(q(Y)\)</span> with <span class="math" data-tex="\(q(P)\)">\(q(P)\)</span>; the controlling distance <span class="math" data-tex="\(Y-P=X-Z\)">\(Y-P=X-Z\)</span> is bounded by the second estimate. Do the analogous comparison for <span class="math" data-tex="\(q(Z)\)">\(q(Z)\)</span>. We obtain
+<span class="math math-display" data-tex="\[
+q(Y)(X-Y)+q(Z)(X-Z)\leq C&#x27;\mathcal E^{(L+1)^2}.
+\tag{W18}
+\]">\[
+q(Y)(X-Y)+q(Z)(X-Z)\leq C&#x27;\mathcal E^{(L+1)^2}.
+\tag{W18}
+\]</span></p>
+<p>Now take the mean metric from AN03-WP-002. Its dual is at most twice each <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, so <span class="math" data-tex="\(\mathcal E\leq2\mathcal D\)">\(\mathcal E\leq2\mathcal D\)</span>. Apply (W12) to <span class="math" data-tex="\(g_{1,Y}/g_{1,X}\)">\(g_{1,Y}/g_{1,X}\)</span> and <span class="math" data-tex="\(g_{2,Z}/g_{2,X}\)">\(g_{2,Z}/g_{2,X}\)</span>, and then (W18). This yields
+<span class="math math-display" data-tex="\[
+g_{1,Y}(T)+g_{2,Z}(S)
+\leq C&#x27;&#x27;\big(g_{1,X}(T)+g_{2,X}(S)\big)\mathcal D^{L&#x27;&#x27;}.
+\]">\[
+g_{1,Y}(T)+g_{2,Z}(S)
+\leq C&#x27;&#x27;\big(g_{1,X}(T)+g_{2,X}(S)\big)\mathcal D^{L&#x27;&#x27;}.
+\]</span>
+It is precisely the primal phase-temperateness condition from AN03-GAU-005. Dualization gives (W17). The weights are temperate for the mean by the preceding weight equivalence, so applying (W13) and (W18) also proves the product-weight condition. ∎</p>
+<p>Taking <span class="math" data-tex="\(g_1=g_2=g\)">\(g_1=g_2=g\)</span> makes the cross tests consequences of ordinary symplectic temperateness and its distance-base conversion. Thus one temperate metric and any two temperate weights always satisfy the diagonal conditions, with parameter <span class="math" data-tex="\(H=h_g\)">\(H=h_g\)</span>. This includes metrics and weights with no initial ordinary continuity.</p>
+<h2 id="AN03-WP-004"><span id="an03-wp-004"></span><span id="an03-wp-004-kernels-fix-the-normalization"></span>AN03-WP-004 — Kernels fix the normalization</h2>
+<p>For <span class="math" data-tex="\(a\in\mathcal S(W)\)">\(a\in\mathcal S(W)\)</span> and <span class="math" data-tex="\(\tau\in\mathbb R\)">\(\tau\in\mathbb R\)</span>, define
+<span class="math math-display" data-tex="\[
+\operatorname{Op}_\tau(a)u(x)
+=(2\pi)^{-n}\iint e^{i\langle x-y,\xi\rangle}
+a((1-\tau)x+\tau y,\xi)u(y)\,dy\,d\xi.
+\tag{W19}
+\]">\[
+\operatorname{Op}_\tau(a)u(x)
+=(2\pi)^{-n}\iint e^{i\langle x-y,\xi\rangle}
+a((1-\tau)x+\tau y,\xi)u(y)\,dy\,d\xi.
+\tag{W19}
+\]</span>
+The choices <span class="math" data-tex="\(\tau=0,1,1/2\)">\(\tau=0,1,1/2\)</span> are left, right and Weyl quantization. We write <span class="math" data-tex="\(a^w=\operatorname{Op}_{1/2}(a)\)">\(a^w=\operatorname{Op}_{1/2}(a)\)</span>.</p>
+<p>These definitions extend to every tempered distribution <span class="math" data-tex="\(a\)">\(a\)</span>. For example, put
+<span class="math math-display" data-tex="\[
+K_a(z+t/2,z-t/2)
+=(2\pi)^{-n}\int e^{i\langle t,\xi\rangle}a(z,\xi)\,d\xi,
+\qquad
+a(z,\xi)=\int e^{-i\langle t,\xi\rangle}
+K_a(z+t/2,z-t/2)\,dt.
+\tag{W20}
+\]">\[
+K_a(z+t/2,z-t/2)
+=(2\pi)^{-n}\int e^{i\langle t,\xi\rangle}a(z,\xi)\,d\xi,
+\qquad
+a(z,\xi)=\int e^{-i\langle t,\xi\rangle}
+K_a(z+t/2,z-t/2)\,dt.
+\tag{W20}
+\]</span>
+Both equalities are identities of tempered distributions: partial Fourier transformation and the invertible linear coordinate map <span class="math" data-tex="\((z,t)\mapsto(z+t/2,z-t/2)\)">\((z,t)\mapsto(z+t/2,z-t/2)\)</span> are continuous isomorphisms of Schwartz space and its dual. The absolute determinant of this coordinate map is one.</p>
+<p>For <span class="math" data-tex="\(u,v\in\mathcal S(V)\)">\(u,v\in\mathcal S(V)\)</span>, define <span class="math" data-tex="\(\langle a^wu,v\rangle\)">\(\langle a^wu,v\rangle\)</span> by applying <span class="math" data-tex="\(K_a\)">\(K_a\)</span> to <span class="math" data-tex="\(u(y)\overline{v(x)}\)">\(u(y)\overline{v(x)}\)</span>. This is a continuous map <span class="math" data-tex="\(\mathcal S\to\mathcal S&#x27;\)">\(\mathcal S\to\mathcal S&#x27;\)</span>. Indeed, each Schwartz seminorm of the test tensor is bounded by a product of finitely many seminorms of <span class="math" data-tex="\(u,v\)">\(u,v\)</span>; a tempered distribution is bounded by a finite sum of such seminorms. The same construction works for every <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. It also gives the usual weak integral interpretation of (W19). The kernel theorem contract supplies the converse: all continuous maps <span class="math" data-tex="\(\mathcal S\to\mathcal S&#x27;\)">\(\mathcal S\to\mathcal S&#x27;\)</span> are obtained uniquely in this way.</p>
+<p>For a finite polynomial in frequency, <span class="math" data-tex="\(a(x,\xi)=\sum_\alpha a_\alpha(x)\xi^\alpha\)">\(a(x,\xi)=\sum_\alpha a_\alpha(x)\xi^\alpha\)</span>, left and right quantization put the coefficients on the corresponding sides:
+<span class="math math-display" data-tex="\[
+\operatorname{Op}_0(a)u=\sum_\alpha a_\alpha D^\alpha u,
+\qquad
+\operatorname{Op}_1(a)u=\sum_\alpha D^\alpha(a_\alpha u).
+\]">\[
+\operatorname{Op}_0(a)u=\sum_\alpha a_\alpha D^\alpha u,
+\qquad
+\operatorname{Op}_1(a)u=\sum_\alpha D^\alpha(a_\alpha u).
+\]</span>
+This remains valid for coefficients <span class="math" data-tex="\(a_\alpha\in\mathcal S&#x27;(V)\)">\(a_\alpha\in\mathcal S&#x27;(V)\)</span> and <span class="math" data-tex="\(u\in\mathcal S(V)\)">\(u\in\mathcal S(V)\)</span>. Indeed, the inverse Fourier transform of <span class="math" data-tex="\(\xi^\alpha\)">\(\xi^\alpha\)</span> is <span class="math" data-tex="\(D_t^\alpha\delta(t)\)">\(D_t^\alpha\delta(t)\)</span>. In the left kernel the coefficient is evaluated at <span class="math" data-tex="\(x\)">\(x\)</span>, so pairing this delta derivative against the input differentiates <span class="math" data-tex="\(u\)">\(u\)</span>; in the right kernel it is evaluated at <span class="math" data-tex="\(y\)">\(y\)</span>, so the output derivative acts on the entire product <span class="math" data-tex="\(a_\alpha u\)">\(a_\alpha u\)</span>. These kernels are defined by tensor products followed by invertible linear coordinate changes, and multiplication of a tempered coefficient by the smooth Schwartz input is well defined. No product of two arbitrary distributions is used.</p>
+<p>Taking the complex conjugate and exchanging <span class="math" data-tex="\(x,y\)">\(x,y\)</span> in (W20) proves
+<span class="math math-display" data-tex="\[
+(a^w)^*=(\overline a)^w.
+\tag{W21}
+\]">\[
+(a^w)^*=(\overline a)^w.
+\tag{W21}
+\]</span>
+Here the adjoint is the distributional sesquilinear adjoint on Schwartz functions. A real symbol therefore gives a symmetric Schwartz-domain operator whenever it has values in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Equation (W21) alone makes no assertion of selfadjoint closure for a general real symbol.</p>
+<h2 id="AN03-WP-005"><span id="an03-wp-005"></span><span id="an03-wp-005-linear-observables-and-their-unitary-groups"></span>AN03-WP-005 — Linear observables and their unitary groups</h2>
+<p>For smooth symbols define
+<span class="math math-display" data-tex="\[
+\{a,b\}=\partial_\xi a\cdot\partial_xb-
+\partial_xa\cdot\partial_\xi b.
+\tag{W22}
+\]">\[
+\{a,b\}=\partial_\xi a\cdot\partial_xb-
+\partial_xa\cdot\partial_\xi b.
+\tag{W22}
+\]</span>
+When one factor is affine, this is also defined for distributional other factors. Directly from (W20), multiplication of the output by <span class="math" data-tex="\(x_j\)">\(x_j\)</span> and differentiation by <span class="math" data-tex="\(D_{x_j}\)">\(D_{x_j}\)</span> give
+<span class="math math-display" data-tex="\[
+x_j a^w=(x_ja+\tfrac i2\partial_{\xi_j}a)^w,
+\qquad
+D_{x_j}a^w=(\xi_ja+\tfrac1{2i}\partial_{x_j}a)^w.
+\]">\[
+x_j a^w=(x_ja+\tfrac i2\partial_{\xi_j}a)^w,
+\qquad
+D_{x_j}a^w=(\xi_ja+\tfrac1{2i}\partial_{x_j}a)^w.
+\]</span>
+For the first formula, write the output coordinate as <span class="math" data-tex="\(z_j+t_j/2\)">\(z_j+t_j/2\)</span>, and integrate the <span class="math" data-tex="\(t_j\)">\(t_j\)</span> factor by parts in <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span>. For the second, <span class="math" data-tex="\(\partial_{x_j}=\frac12\partial_{z_j}+\partial_{t_j}\)">\(\partial_{x_j}=\frac12\partial_{z_j}+\partial_{t_j}\)</span> on the kernel. These operations on distributions are legitimate by duality. Linearity gives, for every affine <span class="math" data-tex="\(L\)">\(L\)</span>,
+<span class="math math-display" data-tex="\[
+L^w a^w=\big(La+\{L,a\}/(2i)\big)^w.
+\tag{W23}
+\]">\[
+L^w a^w=\big(La+\{L,a\}/(2i)\big)^w.
+\tag{W23}
+\]</span></p>
+<p><strong>Proposition.</strong> For real affine <span class="math" data-tex="\(L(x,\xi)=b\cdot x+c\cdot\xi+d\)">\(L(x,\xi)=b\cdot x+c\cdot\xi+d\)</span>, the operator <span class="math" data-tex="\(L^w=b\cdot x+c\cdot D+d\)">\(L^w=b\cdot x+c\cdot D+d\)</span>, initially on <span class="math" data-tex="\(\mathcal S(V)\)">\(\mathcal S(V)\)</span>, is essentially selfadjoint. Its unitary group is
+<span class="math math-display" data-tex="\[
+U_tu(x)=e^{itd+it b\cdot x+it^2 b\cdot c/2}u(x+tc),
+\qquad U_t=(e^{itL})^w.
+\tag{W24}
+\]">\[
+U_tu(x)=e^{itd+it b\cdot x+it^2 b\cdot c/2}u(x+tc),
+\qquad U_t=(e^{itL})^w.
+\tag{W24}
+\]</span></p>
+<p><strong>Proof.</strong> We first obtain the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Fourier transform from the Schwartz Plancherel prerequisite. The normalized transform <span class="math" data-tex="\(\mathcal F_0=(2\pi)^{-n/2}\mathcal F\)">\(\mathcal F_0=(2\pi)^{-n/2}\mathcal F\)</span> is an isometry on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. If <span class="math" data-tex="\(u_j\to u\)">\(u_j\to u\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, with <span class="math" data-tex="\(u_j\in\mathcal S\)">\(u_j\in\mathcal S\)</span>, then <span class="math" data-tex="\(\mathcal F_0u_j\)">\(\mathcal F_0u_j\)</span> is Cauchy in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>; completeness defines its limit, independently of the approximating sequence. Density therefore extends <span class="math" data-tex="\(\mathcal F_0\)">\(\mathcal F_0\)</span> to an isometry on all of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. The normalized inverse extends by the same argument. Their compositions are the identity on the dense Schwartz subspace, hence on <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by continuity. Thus the extension is unitary, using precisely Schwartz Plancherel and the declared density/completeness prerequisites.</p>
+<p>Multiplication by a real linear function <span class="math" data-tex="\(\ell\)">\(\ell\)</span> on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, with domain <span class="math" data-tex="\(\{u:\ell u\in L^2\}\)">\(\{u:\ell u\in L^2\}\)</span>, is selfadjoint. If a vector lies in the adjoint domain, testing against compactly supported smooth functions identifies its adjoint value as <span class="math" data-tex="\(\ell u\)">\(\ell u\)</span>, so it belongs to the displayed domain; the reverse inclusion follows by integration. Compact cutoff followed by smooth convolution approximates every domain vector in the graph norm: on a fixed compact set <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is bounded, and the error in commuting convolution past <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is bounded by the mollifier radius times <span class="math" data-tex="\(|\nabla\ell|\|u\|_2\)">\(|\nabla\ell|\|u\|_2\)</span>. Thus <span class="math" data-tex="\(C_c^\infty\)">\(C_c^\infty\)</span>, and hence <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, is a core. The unitary Fourier transform gives the same conclusion for <span class="math" data-tex="\(c\cdot D\)">\(c\cdot D\)</span>, because its Fourier transform is multiplication by <span class="math" data-tex="\(c\cdot\xi\)">\(c\cdot\xi\)</span>.</p>
+<p>If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, this already proves the assertion. If <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, choose orthonormal coordinates with <span class="math" data-tex="\(c=(\gamma,0,\ldots,0)\)">\(c=(\gamma,0,\ldots,0)\)</span>, <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>, and put
+<span class="math math-display" data-tex="\[
+\phi(x)=\gamma^{-1}
+\left(b_1x_1^2/2+x_1\sum_{j&gt;1}b_jx_j\right).
+\]">\[
+\phi(x)=\gamma^{-1}
+\left(b_1x_1^2/2+x_1\sum_{j&gt;1}b_jx_j\right).
+\]</span>
+Multiplication by <span class="math" data-tex="\(e^{i\phi}\)">\(e^{i\phi}\)</span> is unitary and preserves Schwartz space, as does its inverse. Since <span class="math" data-tex="\(c\cdot\nabla\phi=b\cdot x\)">\(c\cdot\nabla\phi=b\cdot x\)</span>,
+<span class="math math-display" data-tex="\[
+e^{-i\phi}(c\cdot D)e^{i\phi}=c\cdot D+b\cdot x.
+\]">\[
+e^{-i\phi}(c\cdot D)e^{i\phi}=c\cdot D+b\cdot x.
+\]</span>
+Unitary conjugation preserves selfadjointness and the core property. Addition of the real constant <span class="math" data-tex="\(d\)">\(d\)</span> completes the closure argument.</p>
+<p>The formula for <span class="math" data-tex="\(U_t\)">\(U_t\)</span> in (W24) is unitary, preserves <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, and obeys <span class="math" data-tex="\(U_tU_s=U_{t+s}\)">\(U_tU_s=U_{t+s}\)</span>. Its derivative on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> is <span class="math" data-tex="\(iL^wU_t\)">\(iL^wU_t\)</span>. It is also the exponential of the closure just constructed: conjugate the translation group for <span class="math" data-tex="\(c\cdot D\)">\(c\cdot D\)</span> by <span class="math" data-tex="\(e^{i\phi}\)">\(e^{i\phi}\)</span>; the identity
+<span class="math" data-tex="\(\phi(x+tc)-\phi(x)=t b\cdot x+t^2b\cdot c/2\)">\(\phi(x+tc)-\phi(x)=t b\cdot x+t^2b\cdot c/2\)</span>
+gives exactly (W24). The pure multiplication case is immediate. Strong continuity follows from continuity of translations in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, first for compactly supported smooth functions and then by density and the unitary norm bound. Finally, substituting <span class="math" data-tex="\(e^{itL}\)">\(e^{itL}\)</span> into the distributional kernel formula sets <span class="math" data-tex="\(y=x+tc\)">\(y=x+tc\)</span> and gives the same phase. ∎</p>
+<p>For later use write <span class="math" data-tex="\(P=(p,q)\in W^*\)">\(P=(p,q)\in W^*\)</span> and let <span class="math" data-tex="\(E_P(x,\xi)=e^{i(p\cdot x+q\cdot\xi)}\)">\(E_P(x,\xi)=e^{i(p\cdot x+q\cdot\xi)}\)</span>. The preceding calculation gives
+<span class="math math-display" data-tex="\[
+E_P^wu(x)=e^{ip\cdot(x+q/2)}u(x+q),\quad
+E_P^wE_Q^w=e^{i\sigma(P,Q)/2}E_{P+Q}^w,
+\quad \sigma(P,Q)=q\cdot r-p\cdot s
+\tag{W25}
+\]">\[
+E_P^wu(x)=e^{ip\cdot(x+q/2)}u(x+q),\quad
+E_P^wE_Q^w=e^{i\sigma(P,Q)/2}E_{P+Q}^w,
+\quad \sigma(P,Q)=q\cdot r-p\cdot s
+\tag{W25}
+\]</span>
+for <span class="math" data-tex="\(Q=(r,s)\)">\(Q=(r,s)\)</span>. The last scalar factor follows by subtracting the phase of <span class="math" data-tex="\(E_{P+Q}^w\)">\(E_{P+Q}^w\)</span> from the phase of the composite. Fourier inversion expresses a Schwartz symbol as a superposition of the <span class="math" data-tex="\(E_P\)">\(E_P\)</span>'s with integrable coefficient <span class="math" data-tex="\((2\pi)^{-2n}\widehat a(P)\)">\((2\pi)^{-2n}\widehat a(P)\)</span>. Thus (W24), together with continuity in the symbol distribution, characterizes Weyl quantization. This claim uses the Fourier representation of arbitrary Schwartz symbols and its dual extension; it does not require pointwise Fourier integrability for every tempered distribution.</p>
+<h2 id="AN03-WP-006"><span id="an03-wp-006"></span><span id="an03-wp-006-the-exact-product-before-extension"></span>AN03-WP-006 — The exact product before extension</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+\mathcal A(P,Q)=\sigma(P,Q)/2,
+\qquad
+C_j(a,b)(X)=\frac1{j!}
+\left[(i\mathcal A(D_X,D_Y))^j(a(X)b(Y))\right]_{Y=X}.
+\tag{W26}
+\]">\[
+\mathcal A(P,Q)=\sigma(P,Q)/2,
+\qquad
+C_j(a,b)(X)=\frac1{j!}
+\left[(i\mathcal A(D_X,D_Y))^j(a(X)b(Y))\right]_{Y=X}.
+\tag{W26}
+\]</span>
+For <span class="math" data-tex="\(a,b\in\mathcal S(W)\)">\(a,b\in\mathcal S(W)\)</span>, (W25) and Fourier inversion give
+<span class="math math-display" data-tex="\[
+a\#b=\left[e^{i\mathcal A(D_X,D_Y)}(a\otimes b)\right]_{Y=X},
+\qquad (a\#b)^w=a^wb^w.
+\tag{W27}
+\]">\[
+a\#b=\left[e^{i\mathcal A(D_X,D_Y)}(a\otimes b)\right]_{Y=X},
+\qquad (a\#b)^w=a^wb^w.
+\tag{W27}
+\]</span>
+All integrals of Fourier coefficients in this derivation are absolutely convergent; the plane-wave operators have <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm one. The resulting symbol is Schwartz, since the quadratic multiplier preserves <span class="math" data-tex="\(\mathcal S(W\times W)\)">\(\mathcal S(W\times W)\)</span>, and restriction to the diagonal preserves Schwartz space.</p>
+<p>An equivalent formula, with no Fourier transforms left in it, is
+<span class="math math-display" data-tex="\[
+(a\#b)(X)=\pi^{-2n}\iint
+a(X+S)b(X+T)e^{2i\sigma(T,S)}\,dS\,dT.
+\tag{W28}
+\]">\[
+(a\#b)(X)=\pi^{-2n}\iint
+a(X+S)b(X+T)e^{2i\sigma(T,S)}\,dS\,dT.
+\tag{W28}
+\]</span>
+For clarity about the constant and sign, the distributional Fourier transform of the kernel <span class="math" data-tex="\(\pi^{-2n}e^{2i\sigma(T,S)}\)">\(\pi^{-2n}e^{2i\sigma(T,S)}\)</span>, evaluated on the Fourier exponentials <span class="math" data-tex="\(e^{iP\cdot S+iQ\cdot T}\)">\(e^{iP\cdot S+iQ\cdot T}\)</span>, is <span class="math" data-tex="\(e^{i\sigma(P,Q)/2}\)">\(e^{i\sigma(P,Q)/2}\)</span>. Indeed, integration in <span class="math" data-tex="\(S\)">\(S\)</span> imposes <span class="math" data-tex="\(T=(q/2,-p/2)\)">\(T=(q/2,-p/2)\)</span>. Its Jacobian is <span class="math" data-tex="\(2^{-2n}\)">\(2^{-2n}\)</span>, so the coefficient is <span class="math" data-tex="\(\pi^{-2n}(2\pi)^{2n}2^{-2n}=1\)">\(\pi^{-2n}(2\pi)^{2n}2^{-2n}=1\)</span>; the remaining phase is <span class="math" data-tex="\((q\cdot r-p\cdot s)/2\)">\((q\cdot r-p\cdot s)/2\)</span>. This calculation is an identity of tempered distributions, tested against Schwartz functions; it can equally be justified by Gaussian regularization and passage to that topology. Since the integrand in (W28) has integrable absolute value for Schwartz factors, the identity gives the ordinary integral as written.</p>
+<p>The first two coefficients are
+<span class="math math-display" data-tex="\[
+C_0(a,b)=ab,\qquad C_1(a,b)=\{a,b\}/(2i).
+\tag{W29}
+\]">\[
+C_0(a,b)=ab,\qquad C_1(a,b)=\{a,b\}/(2i).
+\tag{W29}
+\]</span>
+In fact, replacing each <span class="math" data-tex="\(D\)">\(D\)</span> by <span class="math" data-tex="\(-i\partial\)">\(-i\partial\)</span> in <span class="math" data-tex="\(i\mathcal A(D_X,D_Y)\)">\(i\mathcal A(D_X,D_Y)\)</span> gives exactly the second expression. The sign agrees with the affine identity (W23).</p>
+<p>There are two related quadratic phases in this proof. The auxiliary phase of (W16) is <span class="math" data-tex="\(A_0=2\sigma\)">\(A_0=2\sigma\)</span>; the actual multiplier in (W27) is <span class="math" data-tex="\(\mathcal A=\sigma/2=A_0/4\)">\(\mathcal A=\sigma/2=A_0/4\)</span>. With the convention <span class="math" data-tex="\(A(\Xi)=\langle B\Xi,\Xi\rangle\)">\(A(\Xi)=\langle B\Xi,\Xi\rangle\)</span> fixed in AN03-U002,
+<span class="math math-display" data-tex="\[
+G^{\mathcal A}=16G^{A_0},\qquad
+h_{G,\mathcal A}(X,X)=H(X)/4.
+\tag{W30}
+\]">\[
+G^{\mathcal A}=16G^{A_0},\qquad
+h_{G,\mathcal A}(X,X)=H(X)/4.
+\tag{W30}
+\]</span>
+Scaling a quadratic phase by <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span> scales its symmetric map by <span class="math" data-tex="\(t\)">\(t\)</span>, hence its phase-dual form by <span class="math" data-tex="\(t^{-2}\)">\(t^{-2}\)</span>. This proves (W30) directly. Keeping these phases distinct prevents a normalization error in applying the Gauss estimate.</p>
+<h2 id="AN03-WP-007"><span id="an03-wp-007"></span><span id="an03-wp-007-the-full-product-with-distinct-metrics"></span>AN03-WP-007 — The full product with distinct metrics</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(g_1,g_2\)">\(g_1,g_2\)</span> be symplectically temperate, compatible metrics. Suppose <span class="math" data-tex="\(H(X)\leq1\)">\(H(X)\leq1\)</span> everywhere, with <span class="math" data-tex="\(H\)">\(H\)</span> as in (W6). Set <span class="math" data-tex="\(g=(g_1+g_2)/2\)">\(g=(g_1+g_2)/2\)</span>. Let <span class="math" data-tex="\(m_j\)">\(m_j\)</span> be positive, <span class="math" data-tex="\(g_j\)">\(g_j\)</span>-continuous weights, both symplectically temperate for <span class="math" data-tex="\(g\)">\(g\)</span>. Then (W27) has a unique weakly continuous bilinear extension
+<span class="math math-display" data-tex="\[
+\#:\ S(m_1,g_1)\times S(m_2,g_2)\longrightarrow S(m_1m_2,g).
+\tag{W31}
+\]">\[
+\#:\ S(m_1,g_1)\times S(m_2,g_2)\longrightarrow S(m_1m_2,g).
+\tag{W31}
+\]</span>
+For every integer <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+R_N(a,b)=a\#b-\sum_{j&lt;N}C_j(a,b)
+\quad\hbox{belongs to}\quad S(H^Nm_1m_2,g).
+\tag{W32}
+\]">\[
+R_N(a,b)=a\#b-\sum_{j&lt;N}C_j(a,b)
+\quad\hbox{belongs to}\quad S(H^Nm_1m_2,g).
+\tag{W32}
+\]</span>
+These maps are continuous in the respective Fréchet symbol topologies and continuous on products of bounded source sets with their local smooth topologies. For every target derivative order <span class="math" data-tex="\(k\)">\(k\)</span>, there is a finite <span class="math" data-tex="\(J\)">\(J\)</span> such that
+<span class="math math-display" data-tex="\[
+p_k(R_N(a,b);H^Nm_1m_2,g)
+\leq C_{N,k}
+p_{\leq J}(a;m_1,g_1)p_{\leq J}(b;m_2,g_2).
+\tag{W33}
+\]">\[
+p_k(R_N(a,b);H^Nm_1m_2,g)
+\leq C_{N,k}
+p_{\leq J}(a;m_1,g_1)p_{\leq J}(b;m_2,g_2).
+\tag{W33}
+\]</span>
+Constants depend on the fixed dimension, orders and structural metric/weight constants. Individual inequalities <span class="math" data-tex="\(g_j\leq g_j^\sigma\)">\(g_j\leq g_j^\sigma\)</span> and the mean inequality <span class="math" data-tex="\(g\leq g^\sigma\)">\(g\leq g^\sigma\)</span> are not hypotheses.</p>
+<p><strong>Proof.</strong> Use <span class="math" data-tex="\(G,M\)">\(G,M\)</span> from (W15). The weight equivalence in AN03-WP-002 implies the own and cross weight conditions needed by AN03-WP-003. That criterion gives uniform temperateness along the diagonal for the auxiliary phase. By (W30), the same inequalities hold for the actual phase: its dual distances are larger, so the right sides of the required upper bounds only increase. Also <span class="math" data-tex="\(G\leq G^{\mathcal A}\)">\(G\leq G^{\mathcal A}\)</span> on the diagonal because <span class="math" data-tex="\(H/4\leq1\)">\(H/4\leq1\)</span>.</p>
+<p>The tensor map <span class="math" data-tex="\((a,b)\mapsto a\otimes b\)">\((a,b)\mapsto a\otimes b\)</span> is a continuous bilinear map into <span class="math" data-tex="\(S(M,G)\)">\(S(M,G)\)</span>. To check this without coordinate assumptions, split every direction in <span class="math" data-tex="\(W\times W\)">\(W\times W\)</span> into its two components. If its <span class="math" data-tex="\(G\)">\(G\)</span>-length is at most one, each component has length at most one for its corresponding metric. The multilinear product rule has at most <span class="math" data-tex="\(2^l\)">\(2^l\)</span> terms at derivative order <span class="math" data-tex="\(l\)">\(l\)</span>, so
+<span class="math math-display" data-tex="\[
+p_l(a\otimes b;M,G)
+\leq2^l p_{\leq l}(a;m_1,g_1)p_{\leq l}(b;m_2,g_2).
+\tag{W34}
+\]">\[
+p_l(a\otimes b;M,G)
+\leq2^l p_{\leq l}(a;m_1,g_1)p_{\leq l}(b;m_2,g_2).
+\tag{W34}
+\]</span>
+The tensor map also preserves boundedness and local smooth convergence.</p>
+<p>Apply AN03-GAU-007 and AN03-GAU-008 on the linear diagonal subspace. The metric induced there by <span class="math" data-tex="\(G\)">\(G\)</span> is <span class="math" data-tex="\(g_1+g_2=2g\)">\(g_1+g_2=2g\)</span>, which defines the same symbol space as <span class="math" data-tex="\(g\)">\(g\)</span>, with the factor <span class="math" data-tex="\(2^{k/2}\)">\(2^{k/2}\)</span> in order <span class="math" data-tex="\(k\)">\(k\)</span>. The restricted weight is <span class="math" data-tex="\(m_1m_2\)">\(m_1m_2\)</span>, and the remainder factor in (W30) is <span class="math" data-tex="\((H/4)^N\)">\((H/4)^N\)</span>. The harmless fixed factor <span class="math" data-tex="\(4^{-N}\)">\(4^{-N}\)</span> is absorbed in the seminorm bound. Equations (W31)–(W33) follow from the Gauss theorem and (W34).</p>
+<p>The weight <span class="math" data-tex="\(H\)">\(H\)</span> is positive and locally <span class="math" data-tex="\(g\)">\(g\)</span>-continuous. Positivity follows from nondegeneracy in (W6); local comparison follows by comparing both metrics at nearby points and dualizing. It is also temperate for the mean: (W12) gives <span class="math" data-tex="\(g_{j,Y}\leq Cg_{j,X}R^L\)">\(g_{j,Y}\leq Cg_{j,X}R^L\)</span>, where <span class="math" data-tex="\(R=1+g_Y^\sigma(X-Y)\)">\(R=1+g_Y^\sigma(X-Y)\)</span>; dualizing the estimate for <span class="math" data-tex="\(j=2\)">\(j=2\)</span> gives <span class="math" data-tex="\(q_2(Y)\geq C^{-1}q_2(X)R^{-L}\)">\(q_2(Y)\geq C^{-1}q_2(X)R^{-L}\)</span>. Hence <span class="math" data-tex="\(H(Y)\leq CH(X)R^L\)">\(H(Y)\leq CH(X)R^L\)</span>. Thus the target weights in (W32) satisfy the asserted local and global conditions.</p>
+<p>Finally, AN03-MET-007 gives compactly supported approximants to both input symbols that remain bounded and converge locally smoothly. For those approximants the definition agrees with (W27). Weak continuity passes to their limit and gives uniqueness. This is a bounded-set argument, rather than an incorrect claim of compact-support density in the full Fréchet topology. ∎</p>
+<p><strong>Polynomial termination.</strong> If either factor in the theorem is a polynomial of total degree less than <span class="math" data-tex="\(N\)">\(N\)</span>, then <span class="math" data-tex="\(R_N(a,b)=0\)">\(R_N(a,b)=0\)</span>. Here is a justification that also covers a noncompact second factor. For compactly supported smooth <span class="math" data-tex="\(u\)">\(u\)</span> on the product space, Taylor's integral formula gives, for <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+T_{\mathcal A}u-\sum_{j&lt;N}(i\mathcal A(D))^ju/j!
+=\frac{i^N}{(N-1)!}\int_0^1(1-t)^{N-1}
+T_{t\mathcal A}\big(\mathcal A(D)^Nu\big)\,dt.
+\tag{W35}
+\]">\[
+T_{\mathcal A}u-\sum_{j&lt;N}(i\mathcal A(D))^ju/j!
+=\frac{i^N}{(N-1)!}\int_0^1(1-t)^{N-1}
+T_{t\mathcal A}\big(\mathcal A(D)^Nu\big)\,dt.
+\tag{W35}
+\]</span>
+This identity extends to the bounded-symbol restriction on the diagonal. To see the needed continuity, expand <span class="math" data-tex="\(\mathcal A(D)^N\)">\(\mathcal A(D)^N\)</span> into its finitely many constant-coefficient directional derivatives. For a term <span class="math" data-tex="\(\partial_{V_1}\cdots\partial_{V_{2N}}u\)">\(\partial_{V_1}\cdots\partial_{V_{2N}}u\)</span>, use the weight
+<span class="math" data-tex="\(M_V(Z)=M(Z)\prod_\ell G_Z(V_\ell)^{1/2}\)">\(M_V(Z)=M(Z)\prod_\ell G_Z(V_\ell)^{1/2}\)</span>, as in AN03-GAU-007. It is locally continuous and phase-temperate along the diagonal by the product-metric comparisons already proved. The corresponding Gauss evaluation estimate is uniform for <span class="math" data-tex="\(0&lt; t\leq1\)">\(0&lt; t\leq1\)</span>: its dual distance is <span class="math" data-tex="\(t^{-2}G^{\mathcal A}\)">\(t^{-2}G^{\mathcal A}\)</span>, so the same temperateness constants work and its uncertainty bound is no larger. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, use ordinary evaluation. These estimates give a common integrable bound in (W35). Bounded compactly supported approximation, weak continuity for each <span class="math" data-tex="\(t\)">\(t\)</span>, and dominated convergence extend (W35) term by term. This argument needs only finitely many modified weights.</p>
+<p>Every term of <span class="math" data-tex="\(\mathcal A(D_X,D_Y)^N(a\otimes b)\)">\(\mathcal A(D_X,D_Y)^N(a\otimes b)\)</span> differentiates each factor exactly <span class="math" data-tex="\(N\)">\(N\)</span> times. Thus it is identically zero when either polynomial has degree less than <span class="math" data-tex="\(N\)">\(N\)</span>. The right side of (W35) vanishes, proving termination. The assertion concerns a polynomial that belongs to the specified input symbol space; it does not assert membership for every polynomial and every weight.</p>
+<p><strong>One metric and scalar parity.</strong> Taking <span class="math" data-tex="\(g_1=g_2=g\)">\(g_1=g_2=g\)</span>, <span class="math" data-tex="\(H=h_g\)">\(H=h_g\)</span>, gives the full one-metric theorem under <span class="math" data-tex="\(g\leq g^\sigma\)">\(g\leq g^\sigma\)</span>. For scalar symbols, interchanging the two arguments changes <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> to <span class="math" data-tex="\(-\mathcal A\)">\(-\mathcal A\)</span>. Hence <span class="math" data-tex="\(C_j(b,a)=(-1)^jC_j(a,b)\)">\(C_j(b,a)=(-1)^jC_j(a,b)\)</span>. Apply (W32) with <span class="math" data-tex="\(N=3\)">\(N=3\)</span> to the difference and with <span class="math" data-tex="\(N=2\)">\(N=2\)</span> to the sum. Using (W29) gives
+<span class="math math-display" data-tex="\[
+a\#b-b\#a-\{a,b\}/i\in S(h_g^3m_1m_2,g),
+\qquad
+a\#b+b\#a-2ab\in S(h_g^2m_1m_2,g).
+\tag{W36}
+\]">\[
+a\#b-b\#a-\{a,b\}/i\in S(h_g^3m_1m_2,g),
+\qquad
+a\#b+b\#a-2ab\in S(h_g^2m_1m_2,g).
+\tag{W36}
+\]</span>
+The even/odd cancellation uses commutativity of scalar multiplication. Applying it unchanged to matrix symbols would be incorrect.</p>
+<p>Equations (W31)–(W36) construct a symbol product and its estimates. Equation <span class="math" data-tex="\((a\#b)^w=a^wb^w\)">\((a\#b)^w=a^wb^w\)</span> has been proved here for Schwartz symbols. For arbitrary metric symbols the composition on the right needs a common operator domain and continuity theorem; that is the separate operator-calculus dependency AN03-E02. It is not inferred from two maps <span class="math" data-tex="\(\mathcal S\to\mathcal S&#x27;\)">\(\mathcal S\to\mathcal S&#x27;\)</span>, whose composite need not be defined.</p>
+<h2 id="AN03-WP-008"><span id="an03-wp-008"></span><span id="an03-wp-008-classical-parameter-ranges-and-change-of-quantization"></span>AN03-WP-008 — Classical parameter ranges and change of quantization</h2>
+<p>Consider, for real <span class="math" data-tex="\(\mu\)">\(\mu\)</span>,
+<span class="math math-display" data-tex="\[
+g_{(x,\xi)}(y,\eta)=\langle\xi\rangle^{2\delta}|y|^2+
+\langle\xi\rangle^{-2\rho}|\eta|^2,
+\qquad m(x,\xi)=\langle\xi\rangle^\mu,
+\quad 0\leq\delta\leq\rho\leq1,\quad\delta&lt;1.
+\tag{W37}
+\]">\[
+g_{(x,\xi)}(y,\eta)=\langle\xi\rangle^{2\delta}|y|^2+
+\langle\xi\rangle^{-2\rho}|\eta|^2,
+\qquad m(x,\xi)=\langle\xi\rangle^\mu,
+\quad 0\leq\delta\leq\rho\leq1,\quad\delta&lt;1.
+\tag{W37}
+\]</span>
+AN03-EX-001 proves slow variation and local weight continuity. Direct quadratic inversion gives
+<span class="math math-display" data-tex="\[
+g_{(x,\xi)}^\sigma(y,\eta)
+=\langle\xi\rangle^{2\rho}|y|^2+
+\langle\xi\rangle^{-2\delta}|\eta|^2,
+\qquad h_g=\langle\xi\rangle^{\delta-\rho}\leq1.
+\tag{W38}
+\]">\[
+g_{(x,\xi)}^\sigma(y,\eta)
+=\langle\xi\rangle^{2\rho}|y|^2+
+\langle\xi\rangle^{-2\delta}|\eta|^2,
+\qquad h_g=\langle\xi\rangle^{\delta-\rho}\leq1.
+\tag{W38}
+\]</span></p>
+<p>We verify the global condition, including the endpoint. Let <span class="math" data-tex="\(r=\langle\eta\rangle\)">\(r=\langle\eta\rangle\)</span>, <span class="math" data-tex="\(s=\langle\xi\rangle\)">\(s=\langle\xi\rangle\)</span>, <span class="math" data-tex="\(d=|\eta-\xi|\)">\(d=|\eta-\xi|\)</span>. It suffices to bound
+<span class="math math-display" data-tex="\[
+(r/s)^{2\delta}+(s/r)^{2\rho}
+\leq C(1+d^2r^{-2\delta})^L.
+\tag{W39}
+\]">\[
+(r/s)^{2\delta}+(s/r)^{2\rho}
+\leq C(1+d^2r^{-2\delta})^L.
+\tag{W39}
+\]</span>
+If <span class="math" data-tex="\(r/2\leq s\leq2r\)">\(r/2\leq s\leq2r\)</span>, the left side is bounded. If <span class="math" data-tex="\(r&gt;2s\)">\(r&gt;2s\)</span>, the Lipschitz property of <span class="math" data-tex="\(\langle\cdot\rangle\)">\(\langle\cdot\rangle\)</span> gives <span class="math" data-tex="\(d\geq r-s&gt;r/2\)">\(d\geq r-s&gt;r/2\)</span>, so the base on the right is at least a constant times <span class="math" data-tex="\(r^{2(1-\delta)}\)">\(r^{2(1-\delta)}\)</span>. Since <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>, an exponent <span class="math" data-tex="\(L\geq\delta/(1-\delta)\)">\(L\geq\delta/(1-\delta)\)</span> controls the first ratio; the second is at most one. If <span class="math" data-tex="\(s&gt;2r\)">\(s&gt;2r\)</span>, then <span class="math" data-tex="\(d&gt;s/2\)">\(d&gt;s/2\)</span>, and <span class="math" data-tex="\(d^2r^{-2\delta}\geq(s/r)^2/4\)">\(d^2r^{-2\delta}\geq(s/r)^2/4\)</span> because <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span> and <span class="math" data-tex="\(\delta\leq1\)">\(\delta\leq1\)</span>. Now <span class="math" data-tex="\(L\geq\rho\)">\(L\geq\rho\)</span> works. This proves (W39) and metric temperateness. The same three cases control <span class="math" data-tex="\((r/s)^\mu\)">\((r/s)^\mu\)</span>: in the second case take <span class="math" data-tex="\(2L(1-\delta)\geq\max(\mu,0)\)">\(2L(1-\delta)\geq\max(\mu,0)\)</span>, and in the third take <span class="math" data-tex="\(2L\geq\max(-\mu,0)\)">\(2L\geq\max(-\mu,0)\)</span>. Thus every indicated real-order weight is temperate.</p>
+<p>The class <span class="math" data-tex="\(S(m,g)\)">\(S(m,g)\)</span> is exactly <span class="math" data-tex="\(S^\mu_{\rho,\delta}\)">\(S^\mu_{\rho,\delta}\)</span>. The product theorem therefore has remainder order
+<span class="math" data-tex="\(\mu_1+\mu_2-N(\rho-\delta)\)">\(\mu_1+\mu_2-N(\rho-\delta)\)</span>. When <span class="math" data-tex="\(\delta=\rho&lt;1\)">\(\delta=\rho&lt;1\)</span>, it remains a continuous closure and finite-remainder theorem, but the order does not decrease with <span class="math" data-tex="\(N\)">\(N\)</span>. This is not an asymptotic expansion in decreasing orders at that endpoint. At <span class="math" data-tex="\((\rho,\delta)=(1,1)\)">\((\rho,\delta)=(1,1)\)</span>, (W39) fails: take <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>; its right-hand base stays bounded while the first ratio grows. The present argument therefore excludes type <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>.</p>
+<p>For completeness the same metric calculation proves the full symbol change between the quantizations (W19). For fixed real <span class="math" data-tex="\(\tau,s\)">\(\tau,s\)</span>, set
+<span class="math math-display" data-tex="\[
+b=\exp\big(i(\tau-s)\langle D_x,D_\xi\rangle\big)a.
+\tag{W40}
+\]">\[
+b=\exp\big(i(\tau-s)\langle D_x,D_\xi\rangle\big)a.
+\tag{W40}
+\]</span>
+Then <span class="math" data-tex="\(\operatorname{Op}_s(b)=\operatorname{Op}_\tau(a)\)">\(\operatorname{Op}_s(b)=\operatorname{Op}_\tau(a)\)</span> as distributional kernels. One can verify the sign on a plane wave: in the kernel coordinates for <span class="math" data-tex="\(s\)">\(s\)</span>, the old base point is <span class="math" data-tex="\(z+(s-\tau)t\)">\(z+(s-\tau)t\)</span>. Partial Fourier inversion sets <span class="math" data-tex="\(t=-q\)">\(t=-q\)</span>, giving the factor <span class="math" data-tex="\(e^{i(\tau-s)p\cdot q}\)">\(e^{i(\tau-s)p\cdot q}\)</span>, exactly the multiplier in (W40). Fourier transformation and invertible linear coordinate changes extend this identity to all tempered distributions.</p>
+<p>For the auxiliary phase <span class="math" data-tex="\(2\langle D_x,D_\xi\rangle\)">\(2\langle D_x,D_\xi\rangle\)</span>, the phase-dual metric is (W38). For the actual phase in (W40), its Gauss parameter is <span class="math" data-tex="\(|\tau-s|h_g/2\)">\(|\tau-s|h_g/2\)</span>. If this exceeds one, replace <span class="math" data-tex="\(g\)">\(g\)</span> by a fixed sufficiently small positive multiple; this leaves the symbol class unchanged, preserves the local and temperateness hypotheses, and makes that parameter at most one. AN03-GAU-008 now proves
+<span class="math math-display" data-tex="\[
+b-\sum_{|\alpha|&lt;N}
+\frac{(\tau-s)^{|\alpha|}}{\alpha!}
+\partial_\xi^\alpha D_x^\alpha a
+\ \in\ S^{\mu-N(\rho-\delta)}_{\rho,\delta}.
+\tag{W41}
+\]">\[
+b-\sum_{|\alpha|&lt;N}
+\frac{(\tau-s)^{|\alpha|}}{\alpha!}
+\partial_\xi^\alpha D_x^\alpha a
+\ \in\ S^{\mu-N(\rho-\delta)}_{\rho,\delta}.
+\tag{W41}
+\]</span>
+The map and every remainder are continuous with finite source-seminorm control, and weakly continuous on bounded symbol sets. The zero phase is the identity and is handled directly. Constants may depend on <span class="math" data-tex="\(\tau-s\)">\(\tau-s\)</span>; no uniformity over unbounded quantization parameters is claimed.</p>
+<p>These classical symbols are tempered, since all coordinate derivatives have polynomial growth in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>. Bounded symbol approximants that converge locally smoothly converge also in <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>: their common polynomial growth bound and the rapid decay of a Schwartz test function give dominated convergence. Thus the Gauss extension used in (W40) agrees with its distributional Fourier multiplier, since both are limits of the same compactly supported approximants, and the Gauss limit is locally smooth on the whole phase space. Their left quantizations map <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> continuously into <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>: write the output as <span class="math" data-tex="\((2\pi)^{-n}\int e^{ix\cdot\xi}a(x,\xi)\widehat u(\xi)\,d\xi\)">\((2\pi)^{-n}\int e^{ix\cdot\xi}a(x,\xi)\widehat u(\xi)\,d\xi\)</span>. Any output derivative introduces finitely many polynomial factors and symbol derivatives. To multiply by <span class="math" data-tex="\(x^\alpha\)">\(x^\alpha\)</span>, integrate by parts <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span> times in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Each term is bounded uniformly in <span class="math" data-tex="\(x\)">\(x\)</span> by finitely many Schwartz seminorms of <span class="math" data-tex="\(u\)">\(u\)</span>, after choosing a sufficiently integrable negative power of <span class="math" data-tex="\(\langle\xi\rangle\)">\(\langle\xi\rangle\)</span>. This proves all output Schwartz seminorms. The other quantizations have the same mapping property by (W40).</p>
+<p>In particular, the adjoint of a left quantization has left symbol
+<span class="math" data-tex="\(\exp(i\langle D_x,D_\xi\rangle)\overline a\)">\(\exp(i\langle D_x,D_\xi\rangle)\overline a\)</span>, which is in the same class by (W40). Transposition of its continuous Schwartz action extends the original operator continuously to <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>. This classical statement is proved using (W37); it does not close the separate arbitrary-metric operator dependency.</p>
+<h2 id="AN03-WEX-001"><span id="an03-wex-001"></span><span id="an03-wex-001-scales-that-one-metric-uncertainty-would-exclude"></span>AN03-WEX-001 — Scales that one-metric uncertainty would exclude</h2>
+<p>Take a standard symplectic Euclidean form <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(Q^\sigma=Q\)">\(Q^\sigma=Q\)</span>, and choose constants <span class="math" data-tex="\(L&gt;1\)">\(L&gt;1\)</span>, <span class="math" data-tex="\(0&lt;\varepsilon\leq1\)">\(0&lt;\varepsilon\leq1\)</span>. Let
+<span class="math math-display" data-tex="\[
+g_1=LQ,\qquad g_2=\varepsilon^2L^{-1}Q,\qquad m_1=m_2=1.
+\tag{W42}
+\]">\[
+g_1=LQ,\qquad g_2=\varepsilon^2L^{-1}Q,\qquad m_1=m_2=1.
+\tag{W42}
+\]</span>
+All local and cross comparisons are constant. The duals are <span class="math" data-tex="\(L^{-1}Q\)">\(L^{-1}Q\)</span> and <span class="math" data-tex="\(L\varepsilon^{-2}Q\)">\(L\varepsilon^{-2}Q\)</span>, so <span class="math" data-tex="\(H=\varepsilon\)">\(H=\varepsilon\)</span>. But <span class="math" data-tex="\(h_1=L\)">\(h_1=L\)</span>, and
+<span class="math" data-tex="\(h_g=(L+\varepsilon^2/L)/2\)">\(h_g=(L+\varepsilon^2/L)/2\)</span>, which exceeds one when <span class="math" data-tex="\(L\)">\(L\)</span> is large. Theorem (W31) still applies, with the <span class="math" data-tex="\(\varepsilon^N\)">\(\varepsilon^N\)</span> remainder bound. Thus replacing its hypotheses by uncertainty of the mean would discard actual valid cases. Letting <span class="math" data-tex="\(L\)">\(L\)</span> grow also separates <span class="math" data-tex="\(H\)">\(H\)</span> from <span class="math" data-tex="\(h_g\)">\(h_g\)</span> by an arbitrarily large ratio.</p>
+<p>As a normalization check in one dimension, (W23) gives
+<span class="math" data-tex="\(x\#\xi=x\xi+i/2\)">\(x\#\xi=x\xi+i/2\)</span> and <span class="math" data-tex="\(\xi\#x=x\xi-i/2\)">\(\xi\#x=x\xi-i/2\)</span>. Their difference is <span class="math" data-tex="\(i\)">\(i\)</span>, agreeing with <span class="math" data-tex="\([x,D]=i\)">\([x,D]=i\)</span>. Since either factor has degree one, every remainder with <span class="math" data-tex="\(N\geq2\)">\(N\geq2\)</span> vanishes exactly.</p>
+<h2 id="AN03-WPS-001"><span id="an03-wps-001"></span><span id="an03-wps-001-problems-with-solutions"></span>AN03-WPS-001 — Problems with solutions</h2>
+<p><strong>Problem 1.</strong> On <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, take <span class="math" data-tex="\(g_1=9Q\)">\(g_1=9Q\)</span>, <span class="math" data-tex="\(g_2=Q/36\)">\(g_2=Q/36\)</span>. Compute <span class="math" data-tex="\(H,h_1,h_2,h_g\)">\(H,h_1,h_2,h_g\)</span>. Which theorem applies to their product?</p>
+<p><strong>Solution.</strong> Their duals are <span class="math" data-tex="\(Q/9\)">\(Q/9\)</span> and <span class="math" data-tex="\(36Q\)">\(36Q\)</span>. Thus <span class="math" data-tex="\(H^2=9/36=1/4\)">\(H^2=9/36=1/4\)</span>, <span class="math" data-tex="\(H=1/2\)">\(H=1/2\)</span>, while <span class="math" data-tex="\(h_1=9\)">\(h_1=9\)</span>, <span class="math" data-tex="\(h_2=1/36\)">\(h_2=1/36\)</span>. The mean is <span class="math" data-tex="\((325/72)Q\)">\((325/72)Q\)</span>, so <span class="math" data-tex="\(h_g=325/72\)">\(h_g=325/72\)</span>. The distinct-metric theorem applies with remainder weight <span class="math" data-tex="\(2^{-N}\)">\(2^{-N}\)</span>; its one-metric specialization applied to the mean does not meet its uncertainty hypothesis. Each chosen symbol must, of course, have the derivative bounds in its own stated metric.</p>
+<p><strong>Problem 2.</strong> Prove the sharp scalar version of (W5) for <span class="math" data-tex="\(g_1(t)=a t^2\)">\(g_1(t)=a t^2\)</span>, <span class="math" data-tex="\(g_2(t)=b t^2\)">\(g_2(t)=b t^2\)</span>, <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span>, using ordinary duality in place of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>.</p>
+<p><strong>Solution.</strong> Minimize <span class="math" data-tex="\(2((t-z)^2/a+z^2/b)\)">\(2((t-z)^2/a+z^2/b)\)</span>. Differentiation gives <span class="math" data-tex="\(z=bt/(a+b)\)">\(z=bt/(a+b)\)</span>. Substitution gives <span class="math" data-tex="\(2t^2/(a+b)\)">\(2t^2/(a+b)\)</span>, which is the ordinary dual of <span class="math" data-tex="\((a+b)t^2/2\)">\((a+b)t^2/2\)</span>. The missing factor two would give the wrong dual even when <span class="math" data-tex="\(a=b=1\)">\(a=b=1\)</span>.</p>
+<p><strong>Problem 3.</strong> Let <span class="math" data-tex="\(a(x,\xi)=x^2\)">\(a(x,\xi)=x^2\)</span>, <span class="math" data-tex="\(b(x,\xi)=\xi^2\)">\(b(x,\xi)=\xi^2\)</span> in one dimension, with polynomial weights that contain them. Compute the exact Weyl product and its operator.</p>
+<p><strong>Solution.</strong> The zeroth term is <span class="math" data-tex="\(x^2\xi^2\)">\(x^2\xi^2\)</span>; the first is <span class="math" data-tex="\(\{x^2,\xi^2\}/(2i)=2ix\xi\)">\(\{x^2,\xi^2\}/(2i)=2ix\xi\)</span>. The only second-order term differentiates twice in <span class="math" data-tex="\(x\)">\(x\)</span> in the first factor and twice in <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in the second; its coefficient is <span class="math" data-tex="\((i/2)^2/2!=-1/8\)">\((i/2)^2/2!=-1/8\)</span>, so its value is <span class="math" data-tex="\(-1/2\)">\(-1/2\)</span>. All later terms vanish. Therefore <span class="math" data-tex="\(x^2\#\xi^2=x^2\xi^2+2ix\xi-1/2\)">\(x^2\#\xi^2=x^2\xi^2+2ix\xi-1/2\)</span>. Its Weyl operator equals <span class="math" data-tex="\(x^2D^2\)">\(x^2D^2\)</span>: apply (W23) twice to multiplication by <span class="math" data-tex="\(x\)">\(x\)</span>, starting with <span class="math" data-tex="\(\xi^2\)">\(\xi^2\)</span>. This polynomial calculation defines the composite on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> directly, so it does not require the unresolved general operator theorem.</p>
+<p><strong>Problem 4.</strong> For <span class="math" data-tex="\(\rho=\delta=2/3\)">\(\rho=\delta=2/3\)</span>, what does an arbitrary number of terms in (W41) guarantee? Why can it not prove that its remainder is smoothing?</p>
+<p><strong>Solution.</strong> Every finite remainder belongs to the original order <span class="math" data-tex="\(S^\mu_{2/3,2/3}\)">\(S^\mu_{2/3,2/3}\)</span>, with the indicated finite-seminorm continuity. The loss <span class="math" data-tex="\(N(\rho-\delta)\)">\(N(\rho-\delta)\)</span> is zero for every <span class="math" data-tex="\(N\)">\(N\)</span>. There is therefore no assertion of membership in lower orders, much less in their intersection. The theorem remains useful for stable quantization changes; the estimate alone supplies no smoothing conclusion.</p>
+<p><strong>Problem 5.</strong> Why is (W14) not replaceable by temperateness of <span class="math" data-tex="\(m_j\)">\(m_j\)</span> for <span class="math" data-tex="\(g_j\)">\(g_j\)</span> alone?</p>
+<p><strong>Solution.</strong> Necessity follows by setting the second input point equal to the diagonal point in the product-weight inequality: its remaining distance is measured by <span class="math" data-tex="\(q_2(X)\)">\(q_2(X)\)</span>, and its remaining ratio is <span class="math" data-tex="\(m_1(Y)/m_1(X)\)">\(m_1(Y)/m_1(X)\)</span>. This gives the first cross-weight test; exchanging the two roles gives the second. To show that own temperateness does not imply these tests, we give a compatible pair and a weight for which one test fails.</p>
+<p>In one dimension put <span class="math" data-tex="\(s=\langle\xi\rangle\)">\(s=\langle\xi\rangle\)</span> and
+<span class="math math-display" data-tex="\[
+g_{1,(x,\xi)}=s\,dx^2+s^{-1}d\xi^2,\qquad
+g_2=dx^2+d\xi^2,\qquad
+m_1(x,\xi)=\sqrt{1+s x^2},\qquad m_2=1.
+\]">\[
+g_{1,(x,\xi)}=s\,dx^2+s^{-1}d\xi^2,\qquad
+g_2=dx^2+d\xi^2,\qquad
+m_1(x,\xi)=\sqrt{1+s x^2},\qquad m_2=1.
+\]</span>
+Here <span class="math" data-tex="\(g_1^\sigma=g_1\)">\(g_1^\sigma=g_1\)</span>; it is the temperate classical metric with <span class="math" data-tex="\(\rho=\delta=1/2\)">\(\rho=\delta=1/2\)</span>. The second metric is constant. The first cross metric test follows from
+<span class="math" data-tex="\(\max(\langle\xi\rangle/\langle\eta\rangle,\langle\eta\rangle/\langle\xi\rangle)\leq C(1+|\xi-\eta|^2)\)">\(\max(\langle\xi\rangle/\langle\eta\rangle,\langle\eta\rangle/\langle\xi\rangle)\leq C(1+|\xi-\eta|^2)\)</span>; the second is immediate because <span class="math" data-tex="\(q_2\)">\(q_2\)</span> is constant. Thus the metrics are compatible.</p>
+<p>For <span class="math" data-tex="\(X=(x,\xi)\)">\(X=(x,\xi)\)</span>, <span class="math" data-tex="\(Y=(y,\eta)\)">\(Y=(y,\eta)\)</span>, write <span class="math" data-tex="\(r=\langle\eta\rangle\)">\(r=\langle\eta\rangle\)</span> and
+<span class="math math-display" data-tex="\[
+R=1+r(y-x)^2+r^{-1}|\eta-\xi|^2=1+g_{1,Y}^\sigma(X-Y).
+\]">\[
+R=1+r(y-x)^2+r^{-1}|\eta-\xi|^2=1+g_{1,Y}^\sigma(X-Y).
+\]</span>
+The same three cases used in (W39), now with <span class="math" data-tex="\(\rho=\delta=1/2\)">\(\rho=\delta=1/2\)</span>, give <span class="math" data-tex="\(r/s\leq C(1+|\eta-\xi|^2/r)\)">\(r/s\leq C(1+|\eta-\xi|^2/r)\)</span>. The triangle inequality in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> therefore yields
+<span class="math math-display" data-tex="\[
+\frac{m_1(Y)}{m_1(X)}
+\leq\max(1,\sqrt{r/s})+\sqrt r\,|y-x|
+\leq C&#x27;\sqrt R.
+\]">\[
+\frac{m_1(Y)}{m_1(X)}
+\leq\max(1,\sqrt{r/s})+\sqrt r\,|y-x|
+\leq C&#x27;\sqrt R.
+\]</span>
+This proves own temperateness. For local continuity, a small <span class="math" data-tex="\(g_{1,X}\)">\(g_{1,X}\)</span>-displacement has a bounded <span class="math" data-tex="\(g_{1,Y}\)">\(g_{1,Y}\)</span>-displacement by slow variation; the displayed bound and its reversed version then bound both weight ratios. Hence <span class="math" data-tex="\(m_1\)">\(m_1\)</span> is also <span class="math" data-tex="\(g_1\)">\(g_1\)</span>-continuous.</p>
+<p>But for <span class="math" data-tex="\(X=(0,\xi)\)">\(X=(0,\xi)\)</span> and <span class="math" data-tex="\(Y=(1,\xi)\)">\(Y=(1,\xi)\)</span>, the weight ratio is <span class="math" data-tex="\(\sqrt{1+\langle\xi\rangle}\)">\(\sqrt{1+\langle\xi\rangle}\)</span>, whereas <span class="math" data-tex="\(1+q_2(X)(Y-X)=2\)">\(1+q_2(X)(Y-X)=2\)</span>. The ratio is unbounded, so no fixed constants in (W14) can work. This example concerns the weight-compatibility criterion, which does not assume <span class="math" data-tex="\(H\leq1\)">\(H\leq1\)</span>; that separate hypothesis is imposed only when the product estimate is applied.</p>
+<h2 id="references-and-claim-boundary">References and claim boundary</h2>
+<p>The antecedents are Lars Hörmander's <a href="https://onlinelibrary.wiley.com/doi/10.1002/cpa.3160320304">The Weyl calculus of pseudo-differential operators</a>, <em>Communications on Pure and Applied Mathematics</em> 32 (1979), 359–443, and the later treatment in Volume III of <em>The Analysis of Linear Partial Differential Operators</em>. Nicolas Lerner's author-hosted <a href="https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf">chapter on metrics in phase space</a>, Theorems 2.3.7–2.3.8, and <a href="https://webusers.imj-prg.fr/~nicolas.lerner/PSEUDO.2005.pdf">Weyl–Hörmander lecture notes</a>, Theorems 3.2.4 and 4.1.1, provide further comparison references. The checked distinct-metric book theorem additionally imposes uncertainty on each input metric; example (W42) shows why that narrower statement cannot replace (W31). Its Fourier normalization also differs from the one fixed here. No reference prose, figures or proof text are imported.</p>
+<p>The present unit gives full symbol-product statements at its declared prerequisites, including distinct metrics, scalar parity and endpoint behavior. Independent proof and correspondence review, external prerequisite closure, and rendered-artifact review remain required. General metric operator composition, continuity, positivity and the later elliptic and boundary results are separate course obligations.</p>
+<footer><p>CC0 1.0. <a href="notices/AN-03/RIGHTS.md">Rights</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 dedication</a> · <a href="notices/AN-03/TITLE_PAGE.md">Original title</a> · <a href="notices/AN-03/HISTORY.md">Original history</a> · <a href="notices/AN-02/RENDERING.md">This rendering</a></p><p><a href="src/weyl-metric-products.md">Editable Markdown</a>. Source commit ab6fb17dcee250eb2fb6c550358b6b3362854f30.</p></footer></main></body></html>

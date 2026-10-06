@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The group algebra and Fourier analysis on a finite group · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/the-group-algebra-and-fourier-analysis-on-a-finite-group.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="characters-and-the-orthogonality-relations.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-03.md" download>Editable source</a><a href="tensor-products-duals-and-real-representations.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#theorem-1-1">Theorem 1.1</a></li><li><a href="#proposition-1-2">Proposition 1.2</a></li><li><a href="#proposition-1-3">Proposition 1.3</a></li><li><a href="#theorem-3-1">Theorem 3.1</a></li><li><a href="#proposition-3-2">Proposition 3.2</a></li><li><a href="#theorem-4-1">Theorem 4.1</a></li><li><a href="#theorem-4-2">Theorem 4.2</a></li><li><a href="#lemma-6-1">Lemma 6.1</a></li><li><a href="#lemma-6-2">Lemma 6.2</a></li></ul></details><h1 id="the-group-algebra-and-fourier-analysis-on-a-finite-group">The group algebra and Fourier analysis on a finite group</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the AI that wrote it. Public domain (CC0).</em></p>
+<p>Multiplication in a group algebra initially looks like a long convolution sum. Its irreducible representations turn that multiplication into independent matrix multiplications. This makes Fourier inversion a statement about finite-dimensional algebras and makes character theory a tool for counting solutions of equations in a group.</p>
+<p>We use <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a>: matrix-coefficient orthogonality, the decomposition of the regular representation, and the character inner product. All vector spaces in this lesson are finite-dimensional over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Write <span class="math" data-tex="\(n=|G|\)">\(n=|G|\)</span>, choose one representative <span class="math" data-tex="\(\rho_i:G\to\operatorname{GL}(V_i)\)">\(\rho_i:G\to\operatorname{GL}(V_i)\)</span> of each irreducible isomorphism class, and put <span class="math" data-tex="\(d_i=\dim V_i\)">\(d_i=\dim V_i\)</span>, <span class="math" data-tex="\(\chi_i=\operatorname{tr}\rho_i\)">\(\chi_i=\operatorname{tr}\rho_i\)</span>. References and the exact boundary of the lesson appear at the end.</p>
+<h2 id="1-convolution-becomes-matrix-multiplication">1. Convolution becomes matrix multiplication</h2>
+<p>Identify a function <span class="math" data-tex="\(f:G\to\mathbb C\)">\(f:G\to\mathbb C\)</span> with <span class="math" data-tex="\(\sum_g f(g)g\in\mathbb C[G]\)">\(\sum_g f(g)g\in\mathbb C[G]\)</span>. Multiplication becomes</p>
+<span class="math math-display" data-tex="\[
+(f*h)(g)=\sum_{x\in G}f(x)h(x^{-1}g).
+\]">\[
+(f*h)(g)=\sum_{x\in G}f(x)h(x^{-1}g).
+\]</span>
+<p>The delta function at the identity is the unit. Define the <strong>Fourier transform</strong></p>
+<span class="math math-display" data-tex="\[
+\widehat f(i)=\sum_{g\in G}f(g)\rho_i(g)\in\operatorname{End}(V_i).
+\tag{1}
+\]">\[
+\widehat f(i)=\sum_{g\in G}f(g)\rho_i(g)\in\operatorname{End}(V_i).
+\tag{1}
+\]</span>
+<p>Our convention uses <span class="math" data-tex="\(\rho_i(g)\)">\(\rho_i(g)\)</span>. For an abelian group, the convention using the conjugate of a character gives the same transform after replacing that character by its inverse. This change of index matters when comparing inversion formulas.</p>
+<p id="theorem-1-1" class="result-link"><strong>Theorem 1.1 (Fourier decomposition).</strong> The map</p>
+<span class="math math-display" data-tex="\[
+\mathcal F:\mathbb C[G]\longrightarrow
+\bigoplus_i\operatorname{End}(V_i),\qquad
+f\longmapsto(\widehat f(i))_i
+\tag{2}
+\]">\[
+\mathcal F:\mathbb C[G]\longrightarrow
+\bigoplus_i\operatorname{End}(V_i),\qquad
+f\longmapsto(\widehat f(i))_i
+\tag{2}
+\]</span>
+<p>is an isomorphism of unital complex algebras.</p>
+<p><strong>Proof.</strong> Substitute <span class="math" data-tex="\(g=xy\)">\(g=xy\)</span> in the convolution sum:</p>
+<span class="math math-display" data-tex="\[
+\widehat{f*h}(i)=
+\sum_{x,y}f(x)h(y)\rho_i(xy)
+=\widehat f(i)\widehat h(i).
+\]">\[
+\widehat{f*h}(i)=
+\sum_{x,y}f(x)h(y)\rho_i(xy)
+=\widehat f(i)\widehat h(i).
+\]</span>
+<p>The unit maps to the identity in every block. Suppose all blocks of <span class="math" data-tex="\(f\)">\(f\)</span> vanish. The preceding lesson gives the regular representation as <span class="math" data-tex="\(\bigoplus_i V_i^{\oplus d_i}\)">\(\bigoplus_i V_i^{\oplus d_i}\)</span>. Therefore left multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> vanishes on <span class="math" data-tex="\(\mathbb C[G]\)">\(\mathbb C[G]\)</span>. Applying it to the unit gives <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. This proves injectivity. Finally,</p>
+<span class="math math-display" data-tex="\[
+\dim\mathbb C[G]=n=\sum_i d_i^2
+=\dim\bigoplus_i\operatorname{End}(V_i),
+\]">\[
+\dim\mathbb C[G]=n=\sum_i d_i^2
+=\dim\bigoplus_i\operatorname{End}(V_i),
+\]</span>
+<p>so the injective linear map is surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The crucial faithfulness here is faithfulness of the <strong>algebra</strong> acting on its regular module: <span class="math" data-tex="\(a\cdot1=a\)">\(a\cdot1=a\)</span>. A faithful action of the group on an arbitrary vector space does not by itself give an injective action of its group algebra. For example, a faithful character of a nontrivial cyclic group acts on a one-dimensional space, whereas its group algebra has larger dimension.</p>
+<h3 id="recovering-coefficients">Recovering coefficients</h3>
+<p>The regular character is <span class="math" data-tex="\(n\)">\(n\)</span> at the identity and zero elsewhere, and equals <span class="math" data-tex="\(\sum_i d_i\chi_i\)">\(\sum_i d_i\chi_i\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\frac1n\sum_i d_i\chi_i(g^{-1}x)=
+\begin{cases}1&amp;x=g,\\0&amp;x\ne g.\end{cases}
+\]">\[
+\frac1n\sum_i d_i\chi_i(g^{-1}x)=
+\begin{cases}1&amp;x=g,\\0&amp;x\ne g.\end{cases}
+\]</span>
+<p>Multiplying by <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> and summing gives:</p>
+<p id="proposition-1-2" class="result-link"><strong>Proposition 1.2 (inversion).</strong> For every <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f(g)=\frac1n\sum_i d_i
+\operatorname{tr}\bigl(\rho_i(g^{-1})\widehat f(i)\bigr).
+\tag{3}
+\]">\[
+f(g)=\frac1n\sum_i d_i
+\operatorname{tr}\bigl(\rho_i(g^{-1})\widehat f(i)\bigr).
+\tag{3}
+\]</span>
+<p>This also writes down the inverse of (2) on an arbitrary tuple of matrices. In particular, a matrix <span class="math" data-tex="\(A\)">\(A\)</span> in block <span class="math" data-tex="\(i\)">\(i\)</span>, with all other blocks zero, corresponds to the function</p>
+<span class="math math-display" data-tex="\[
+g\longmapsto\frac{d_i}{n}
+\operatorname{tr}\bigl(\rho_i(g^{-1})A\bigr).
+\tag{4}
+\]">\[
+g\longmapsto\frac{d_i}{n}
+\operatorname{tr}\bigl(\rho_i(g^{-1})A\bigr).
+\tag{4}
+\]</span>
+<h3 id="the-inner-product">The inner product</h3>
+<p>Choose invariant Hermitian inner products on the <span class="math" data-tex="\(V_i\)">\(V_i\)</span>, so that their matrices are unitary. The adjoint of a group-algebra element is the function</p>
+<span class="math math-display" data-tex="\[
+f^\star(g)=\overline{f(g^{-1})}.
+\]">\[
+f^\star(g)=\overline{f(g^{-1})}.
+\]</span>
+<p>Directly from (1), <span class="math" data-tex="\(\widehat{f^\star}(i)=\widehat f(i)^*\)">\(\widehat{f^\star}(i)=\widehat f(i)^*\)</span>. Moreover,</p>
+<span class="math math-display" data-tex="\[
+(f*h^\star)(1)=\sum_g f(g)\overline{h(g)}.
+\]">\[
+(f*h^\star)(1)=\sum_g f(g)\overline{h(g)}.
+\]</span>
+<p>Apply inversion at the identity to <span class="math" data-tex="\(f*h^\star\)">\(f*h^\star\)</span>. We obtain the polarized form of Plancherel:</p>
+<p id="proposition-1-3" class="result-link"><strong>Proposition 1.3 (Plancherel).</strong></p>
+<span class="math math-display" data-tex="\[
+\sum_g f(g)\overline{h(g)}
+=\frac1n\sum_i d_i
+\operatorname{tr}\bigl(\widehat f(i)\widehat h(i)^*\bigr).
+\tag{5}
+\]">\[
+\sum_g f(g)\overline{h(g)}
+=\frac1n\sum_i d_i
+\operatorname{tr}\bigl(\widehat f(i)\widehat h(i)^*\bigr).
+\tag{5}
+\]</span>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+\sum_g|f(g)|^2=\frac1n\sum_i d_i
+\|\widehat f(i)\|_{\mathrm{HS}}^2.
+\tag{6}
+\]">\[
+\sum_g|f(g)|^2=\frac1n\sum_i d_i
+\|\widehat f(i)\|_{\mathrm{HS}}^2.
+\tag{6}
+\]</span>
+<p>The adjoint in these formulas refers to the chosen invariant inner products. In a nonorthonormal basis, taking the ordinary conjugate transpose of the displayed coordinate matrix need not compute that adjoint.</p>
+<h2 id="2-seeing-every-block-for-the-smallest-nonabelian-group">2. Seeing every block for the smallest nonabelian group</h2>
+<p>Let <span class="math" data-tex="\(r=(123)\)">\(r=(123)\)</span>, <span class="math" data-tex="\(s=(12)\)">\(s=(12)\)</span> in <span class="math" data-tex="\(S_3\)">\(S_3\)</span>; permutations act on the left and products act from right to left. The irreducibles are trivial, sign, and the standard plane</p>
+<span class="math math-display" data-tex="\[
+W=\{(z_1,z_2,z_3):z_1+z_2+z_3=0\}.
+\]">\[
+W=\{(z_1,z_2,z_3):z_1+z_2+z_3=0\}.
+\]</span>
+<p>In the basis <span class="math" data-tex="\(a=e_1-e_2,\ b=e_2-e_3\)">\(a=e_1-e_2,\ b=e_2-e_3\)</span>, their standard matrices are</p>
+<span class="math math-display" data-tex="\[
+R=\rho_W(r)=\begin{pmatrix}0&amp;-1\\1&amp;-1\end{pmatrix},
+\qquad
+S=\rho_W(s)=\begin{pmatrix}-1&amp;1\\0&amp;1\end{pmatrix}.
+\tag{7}
+\]">\[
+R=\rho_W(r)=\begin{pmatrix}0&amp;-1\\1&amp;-1\end{pmatrix},
+\qquad
+S=\rho_W(s)=\begin{pmatrix}-1&amp;1\\0&amp;1\end{pmatrix}.
+\tag{7}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(ra=b,\ rb=-a-b,\ sa=-a,\ sb=a+b\)">\(ra=b,\ rb=-a-b,\ sa=-a,\ sb=a+b\)</span>. One checks <span class="math" data-tex="\(R^3=S^2=I\)">\(R^3=S^2=I\)</span> and <span class="math" data-tex="\(SRS=R^{-1}\)">\(SRS=R^{-1}\)</span>. The basis is convenient for arithmetic but is not orthonormal.</p>
+<p>Write a group-algebra element uniquely as</p>
+<span class="math math-display" data-tex="\[
+f=\sum_{j=0}^2\bigl(a_j r^j+b_jr^js\bigr).
+\]">\[
+f=\sum_{j=0}^2\bigl(a_j r^j+b_jr^js\bigr).
+\]</span>
+<p>The complete isomorphism <span class="math" data-tex="\(\mathbb C[S_3]\cong\mathbb C\oplus\mathbb C\oplus M_2(\mathbb C)\)">\(\mathbb C[S_3]\cong\mathbb C\oplus\mathbb C\oplus M_2(\mathbb C)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+f\longmapsto
+\left(\sum_j(a_j+b_j),\
+\sum_j(a_j-b_j),\
+\sum_j(a_jR^j+b_jR^jS)\right).
+\tag{8}
+\]">\[
+f\longmapsto
+\left(\sum_j(a_j+b_j),\
+\sum_j(a_j-b_j),\
+\sum_j(a_jR^j+b_jR^jS)\right).
+\tag{8}
+\]</span>
+<p>Formula (3) recovers all six coefficients, so this is also an explicit description in both directions.</p>
+<p>Now let <span class="math" data-tex="\(S_3\)">\(S_3\)</span> act on <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span> by permuting coordinates. Its trivial-isotypic projection is</p>
+<span class="math math-display" data-tex="\[
+P_{\mathrm{triv}}(z)=
+\frac{z_1+z_2+z_3}{3}(1,1,1).
+\tag{9}
+\]">\[
+P_{\mathrm{triv}}(z)=
+\frac{z_1+z_2+z_3}{3}(1,1,1).
+\tag{9}
+\]</span>
+<p>There is no sign constituent, so <span class="math" data-tex="\(P_{\mathrm{sign}}=0\)">\(P_{\mathrm{sign}}=0\)</span>. The standard-isotypic projection is <span class="math" data-tex="\(I-P_{\mathrm{triv}}\)">\(I-P_{\mathrm{triv}}\)</span>. In the next section these projections arise from fixed elements of the group algebra, independently of this realization.</p>
+<h2 id="3-central-elements-select-representation-types">3. Central elements select representation types</h2>
+<p>For a conjugacy class <span class="math" data-tex="\(C\)">\(C\)</span>, write <span class="math" data-tex="\(K_C=\sum_{g\in C}g\)">\(K_C=\sum_{g\in C}g\)</span>. A group-algebra element <span class="math" data-tex="\(\sum_g a_gg\)">\(\sum_g a_gg\)</span> commutes with every <span class="math" data-tex="\(h\in G\)">\(h\in G\)</span> exactly when <span class="math" data-tex="\(a_g=a_{hgh^{-1}}\)">\(a_g=a_{hgh^{-1}}\)</span>. Since the group elements span the algebra, this is exactly the condition for centrality. Thus the class sums form a basis of <span class="math" data-tex="\(Z(\mathbb C[G])\)">\(Z(\mathbb C[G])\)</span>.</p>
+<p>The centre of <span class="math" data-tex="\(M_d(\mathbb C)\)">\(M_d(\mathbb C)\)</span> consists of scalar matrices: commuting with diagonal matrix units forces an operator to be diagonal, and commuting with off-diagonal units forces its diagonal entries to agree. The Fourier isomorphism therefore identifies the centre with <span class="math" data-tex="\(\mathbb C^r\)">\(\mathbb C^r\)</span>, where <span class="math" data-tex="\(r\)">\(r\)</span> is the number of irreducible types. Comparing the two bases again gives equality between the numbers of conjugacy classes and irreducibles. It supplies no distinguished bijection between those sets.</p>
+<p id="theorem-3-1" class="result-link"><strong>Theorem 3.1 (central idempotents).</strong> The elements</p>
+<span class="math math-display" data-tex="\[
+e_i=\frac{d_i}{n}\sum_{g\in G}\chi_i(g^{-1})g
+\tag{10}
+\]">\[
+e_i=\frac{d_i}{n}\sum_{g\in G}\chi_i(g^{-1})g
+\tag{10}
+\]</span>
+<p>are all the primitive central idempotents of <span class="math" data-tex="\(\mathbb C[G]\)">\(\mathbb C[G]\)</span>. They satisfy</p>
+<span class="math math-display" data-tex="\[
+e_ie_j=\delta_{ij}e_i,\qquad \sum_i e_i=1.
+\tag{11}
+\]">\[
+e_ie_j=\delta_{ij}e_i,\qquad \sum_i e_i=1.
+\tag{11}
+\]</span>
+<p>On any representation, <span class="math" data-tex="\(e_i\)">\(e_i\)</span> acts as the projection onto its <span class="math" data-tex="\(V_i\)">\(V_i\)</span>-isotypic component.</p>
+<p><strong>Proof.</strong> The coefficient function in (10) is a class function, so <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is central. On <span class="math" data-tex="\(V_j\)">\(V_j\)</span>, Schur's lemma makes its action a scalar <span class="math" data-tex="\(\lambda_{ij}I\)">\(\lambda_{ij}I\)</span>. Its trace is</p>
+<span class="math math-display" data-tex="\[
+d_j\lambda_{ij}
+=\frac{d_i}{n}\sum_g\chi_i(g^{-1})\chi_j(g)
+=d_i\delta_{ij}.
+\]">\[
+d_j\lambda_{ij}
+=\frac{d_i}{n}\sum_g\chi_i(g^{-1})\chi_j(g)
+=d_i\delta_{ij}.
+\]</span>
+<p>Hence <span class="math" data-tex="\(\lambda_{ij}=\delta_{ij}\)">\(\lambda_{ij}=\delta_{ij}\)</span>. Under (2), <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is exactly the tuple with identity in block <span class="math" data-tex="\(i\)">\(i\)</span> and zero in all other blocks. This proves (11). A central idempotent in <span class="math" data-tex="\(\mathbb C^r\)">\(\mathbb C^r\)</span> has every coordinate equal to zero or one. The nonzero ones that cannot split into two nonzero orthogonal central idempotents have exactly one coordinate equal to one. These are precisely the <span class="math" data-tex="\(e_i\)">\(e_i\)</span>. Finally decompose any representation into irreducibles. On every copy of <span class="math" data-tex="\(V_j\)">\(V_j\)</span>, the action is <span class="math" data-tex="\(\delta_{ij}I\)">\(\delta_{ij}I\)</span>, proving the isotypic assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here “primitive central” concerns splitting among <strong>central</strong> idempotents. It does not assert primitivity among all idempotents. If <span class="math" data-tex="\(d_i&gt;1\)">\(d_i&gt;1\)</span>, the identity in its matrix block splits into diagonal matrix units.</p>
+<p id="proposition-3-2" class="result-link"><strong>Proposition 3.2 (class sums).</strong> For <span class="math" data-tex="\(c\in C\)">\(c\in C\)</span>, the class sum acts on <span class="math" data-tex="\(V_i\)">\(V_i\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\omega_i(C)=\frac{|C|\chi_i(c)}{d_i},\qquad
+K_C=\sum_i\frac{|C|\chi_i(c)}{d_i}e_i.
+\tag{12}
+\]">\[
+\omega_i(C)=\frac{|C|\chi_i(c)}{d_i},\qquad
+K_C=\sum_i\frac{|C|\chi_i(c)}{d_i}e_i.
+\tag{12}
+\]</span>
+<p><strong>Proof.</strong> The central operator is scalar by Schur's lemma. Its trace is <span class="math" data-tex="\(|C|\chi_i(c)\)">\(|C|\chi_i(c)\)</span>, so division by <span class="math" data-tex="\(d_i\)">\(d_i\)</span> gives the scalar. Its scalars in all blocks uniquely determine it by (2), giving the expansion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, put <span class="math" data-tex="\(T\)">\(T\)</span> equal to the sum of its three transpositions and <span class="math" data-tex="\(Q=r+r^2\)">\(Q=r+r^2\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+e_{\mathrm{triv}}=\frac{1+T+Q}{6},\qquad
+e_{\mathrm{sign}}=\frac{1-T+Q}{6},\qquad
+e_{\mathrm{std}}=\frac{2-Q}{3}.
+\tag{13}
+\]">\[
+e_{\mathrm{triv}}=\frac{1+T+Q}{6},\qquad
+e_{\mathrm{sign}}=\frac{1-T+Q}{6},\qquad
+e_{\mathrm{std}}=\frac{2-Q}{3}.
+\tag{13}
+\]</span>
+<p>On the permutation module the first is (9), the second is zero, and the third is its complementary standard projection. Their coefficients and (11) can also be checked from</p>
+<span class="math math-display" data-tex="\[
+T^2=3\cdot1+3Q,\qquad Q^2=2\cdot1+Q,\qquad TQ=QT=2T.
+\tag{14}
+\]">\[
+T^2=3\cdot1+3Q,\qquad Q^2=2\cdot1+Q,\qquad TQ=QT=2T.
+\tag{14}
+\]</span>
+<p>For example, among the nine ordered products of transpositions, three are the identity and the other six give each 3-cycle three times.</p>
+<h2 id="4-counting-products-and-commutators">4. Counting products and commutators</h2>
+<p id="theorem-4-1" class="result-link"><strong>Theorem 4.1 (class-product count).</strong> For classes <span class="math" data-tex="\(C,D\)">\(C,D\)</span>, representatives <span class="math" data-tex="\(c,d\)">\(c,d\)</span>, and a fixed <span class="math" data-tex="\(z\in G\)">\(z\in G\)</span>, the number of ordered pairs <span class="math" data-tex="\(x\in C,\ y\in D\)">\(x\in C,\ y\in D\)</span> with <span class="math" data-tex="\(xy=z\)">\(xy=z\)</span> is</p>
+<span class="math math-display" data-tex="\[
+N_{C,D}(z)=\frac{|C||D|}{n}
+\sum_i\frac{\chi_i(c)\chi_i(d)\chi_i(z^{-1})}{d_i}.
+\tag{15}
+\]">\[
+N_{C,D}(z)=\frac{|C||D|}{n}
+\sum_i\frac{\chi_i(c)\chi_i(d)\chi_i(z^{-1})}{d_i}.
+\tag{15}
+\]</span>
+<p>Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, <span class="math" data-tex="\(\chi_i(z^{-1})=\overline{\chi_i(z)}\)">\(\chi_i(z^{-1})=\overline{\chi_i(z)}\)</span>.</p>
+<p><strong>Proof.</strong> The desired number is the coefficient of <span class="math" data-tex="\(z\)">\(z\)</span> in <span class="math" data-tex="\(K_CK_D\)">\(K_CK_D\)</span>. Multiplying (12) and using (11) gives</p>
+<span class="math math-display" data-tex="\[
+K_CK_D=\sum_i
+\frac{|C||D|\chi_i(c)\chi_i(d)}{d_i^2}e_i.
+\]">\[
+K_CK_D=\sum_i
+\frac{|C||D|\chi_i(c)\chi_i(d)}{d_i^2}e_i.
+\]</span>
+<p>The coefficient of <span class="math" data-tex="\(z\)">\(z\)</span> in (10) is <span class="math" data-tex="\(d_i\chi_i(z^{-1})/n\)">\(d_i\chi_i(z^{-1})/n\)</span>; substituting it proves (15). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This counts pairs with one <strong>fixed product</strong>. To count pairs whose product lies anywhere in a third class, multiply by that class's size.</p>
+<p>For instance, using the <span class="math" data-tex="\(S_3\)">\(S_3\)</span> rows <span class="math" data-tex="\((1,1,1),(1,-1,1),(2,0,-1)\)">\((1,1,1),(1,-1,1),(2,0,-1)\)</span>, ordered by identity, transposition, 3-cycle, formula (15) gives three products of two transpositions equal to the identity, zero equal to a transposition, and three equal to each 3-cycle, exactly as in (14).</p>
+<p id="theorem-4-2" class="result-link"><strong>Theorem 4.2 (commutator count).</strong> With <span class="math" data-tex="\([x,y]=xyx^{-1}y^{-1}\)">\([x,y]=xyx^{-1}y^{-1}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\#\{(x,y)\in G^2:[x,y]=z\}
+=n\sum_i\frac{\chi_i(z)}{d_i}.
+\tag{16}
+\]">\[
+\#\{(x,y)\in G^2:[x,y]=z\}
+=n\sum_i\frac{\chi_i(z)}{d_i}.
+\tag{16}
+\]</span>
+<p><strong>Proof.</strong> We first record the averaging identity</p>
+<span class="math math-display" data-tex="\[
+\sum_{x\in G}\rho_i(x)A\rho_i(x^{-1})
+=\frac{n\,\operatorname{tr}A}{d_i}I.
+\tag{17}
+\]">\[
+\sum_{x\in G}\rho_i(x)A\rho_i(x^{-1})
+=\frac{n\,\operatorname{tr}A}{d_i}I.
+\tag{17}
+\]</span>
+<p>The left side commutes with <span class="math" data-tex="\(G\)">\(G\)</span> by a change of variable, so it is scalar; taking its trace computes that scalar.</p>
+<p>Let <span class="math" data-tex="\(B=\sum_{x,y}[x,y]\in\mathbb C[G]\)">\(B=\sum_{x,y}[x,y]\in\mathbb C[G]\)</span>. Conjugating both variables shows that <span class="math" data-tex="\(B\)">\(B\)</span> is central. In its <span class="math" data-tex="\(i\)">\(i\)</span>-th block, use (17) with <span class="math" data-tex="\(A=\rho_i(y)\)">\(A=\rho_i(y)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\widehat B(i)=\frac n{d_i}\sum_y\chi_i(y)\rho_i(y^{-1}).
+\]">\[
+\widehat B(i)=\frac n{d_i}\sum_y\chi_i(y)\rho_i(y^{-1}).
+\]</span>
+<p>This is scalar, and its trace is</p>
+<span class="math math-display" data-tex="\[
+\frac n{d_i}\sum_y\chi_i(y)\chi_i(y^{-1})=\frac{n^2}{d_i}.
+\]">\[
+\frac n{d_i}\sum_y\chi_i(y)\chi_i(y^{-1})=\frac{n^2}{d_i}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\widehat B(i)=n^2d_i^{-2}I\)">\(\widehat B(i)=n^2d_i^{-2}I\)</span>. Inversion yields the coefficient</p>
+<span class="math math-display" data-tex="\[
+B(z)=n\sum_i\frac{\chi_i(z^{-1})}{d_i}.
+\]">\[
+B(z)=n\sum_i\frac{\chi_i(z^{-1})}{d_i}.
+\]</span>
+<p>Duality permutes the irreducibles without changing their dimensions and replaces <span class="math" data-tex="\(\chi_i(z)\)">\(\chi_i(z)\)</span> by <span class="math" data-tex="\(\chi_i(z^{-1})\)">\(\chi_i(z^{-1})\)</span>. Reindexing gives (16). Equivalently, swapping <span class="math" data-tex="\(x,y\)">\(x,y\)</span> sends the commutator to its inverse, so the count has the same value at <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At <span class="math" data-tex="\(z=1\)">\(z=1\)</span>, every quotient <span class="math" data-tex="\(\chi_i(1)/d_i\)">\(\chi_i(1)/d_i\)</span> is one. Consequently the number of commuting ordered pairs is <span class="math" data-tex="\(n\,k(G)\)">\(n\,k(G)\)</span>, where <span class="math" data-tex="\(k(G)\)">\(k(G)\)</span> is the number of classes.</p>
+<h2 id="5-exercises-with-solutions">5. Exercises with solutions</h2>
+<h3 id="exercise-1-the-two-generators-of-s_3">Exercise 1. The two generators of <span class="math" data-tex="\(S_3\)">\(S_3\)</span></h3>
+<p>Give the images of <span class="math" data-tex="\((12)\)">\((12)\)</span> and <span class="math" data-tex="\((123)\)">\((123)\)</span> under the isomorphism with <span class="math" data-tex="\(\mathbb C\oplus\mathbb C\oplus M_2(\mathbb C)\)">\(\mathbb C\oplus\mathbb C\oplus M_2(\mathbb C)\)</span>. Verify the relations and recover the coefficient of the identity from an arbitrary tuple.</p>
+<p><strong>Solution.</strong> In the conventions of (7), the images are</p>
+<span class="math math-display" data-tex="\[
+s\longmapsto(1,-1,S),\qquad r\longmapsto(1,1,R).
+\]">\[
+s\longmapsto(1,-1,S),\qquad r\longmapsto(1,1,R).
+\]</span>
+<p>The matrices obey <span class="math" data-tex="\(S^2=I,\ R^3=I,\ SRS=R^{-1}\)">\(S^2=I,\ R^3=I,\ SRS=R^{-1}\)</span>, while the two scalar components obey the same relations. For a tuple <span class="math" data-tex="\((u,v,A)\)">\((u,v,A)\)</span>, inversion at the identity gives</p>
+<span class="math math-display" data-tex="\[
+f(1)=\frac{u+v+2\operatorname{tr}A}{6}.
+\]">\[
+f(1)=\frac{u+v+2\operatorname{tr}A}{6}.
+\]</span>
+<p>More generally <span class="math" data-tex="\(f(g)=(u+\operatorname{sgn}(g)v+
+2\operatorname{tr}(\rho_W(g^{-1})A))/6\)">\(f(g)=(u+\operatorname{sgn}(g)v+
+2\operatorname{tr}(\rho_W(g^{-1})A))/6\)</span>. These six coefficients exhibit the entire inverse, rather than only verifying a homomorphism on generators.</p>
+<h3 id="exercise-2-how-often-do-elements-commute">Exercise 2. How often do elements commute?</h3>
+<p>Show that the commuting probability is <span class="math" data-tex="\(k(G)/|G|\)">\(k(G)/|G|\)</span>, and that for a nonabelian finite group it is at most <span class="math" data-tex="\(5/8\)">\(5/8\)</span>.</p>
+<p><strong>Solution.</strong> For each <span class="math" data-tex="\(x\)">\(x\)</span>, there are <span class="math" data-tex="\(|C_G(x)|\)">\(|C_G(x)|\)</span> possible commuting <span class="math" data-tex="\(y\)">\(y\)</span>. A class containing <span class="math" data-tex="\(x\)">\(x\)</span> has <span class="math" data-tex="\(n/|C_G(x)|\)">\(n/|C_G(x)|\)</span> elements, so its total contribution is <span class="math" data-tex="\(n\)">\(n\)</span>. Summing over classes gives <span class="math" data-tex="\(nk(G)\)">\(nk(G)\)</span> and division by <span class="math" data-tex="\(n^2\)">\(n^2\)</span> gives the probability.</p>
+<p>Write <span class="math" data-tex="\(Z=Z(G)\)">\(Z=Z(G)\)</span>. If <span class="math" data-tex="\(x\notin Z\)">\(x\notin Z\)</span>, its centralizer is a proper subgroup and has size at most <span class="math" data-tex="\(n/2\)">\(n/2\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\operatorname{cp}(G)\le
+\frac{|Z|n+(n-|Z|)n/2}{n^2}
+=\frac12+\frac{|Z|}{2n}.
+\]">\[
+\operatorname{cp}(G)\le
+\frac{|Z|n+(n-|Z|)n/2}{n^2}
+=\frac12+\frac{|Z|}{2n}.
+\]</span>
+<p>If <span class="math" data-tex="\(G/Z\)">\(G/Z\)</span> were cyclic, choose <span class="math" data-tex="\(aZ\)">\(aZ\)</span> generating it. Every element would have the form <span class="math" data-tex="\(a^rz\)">\(a^rz\)</span>, and any two such elements commute. Therefore a nonabelian <span class="math" data-tex="\(G\)">\(G\)</span> has noncyclic <span class="math" data-tex="\(G/Z\)">\(G/Z\)</span>. Groups of orders two and three are cyclic, so <span class="math" data-tex="\(|G:Z|\ge4\)">\(|G:Z|\ge4\)</span>. The bound is at most <span class="math" data-tex="\(1/2+1/8=5/8\)">\(1/2+1/8=5/8\)</span>. For the dihedral group of order eight, the centre has size two and every noncentral centralizer has size four, giving equality.</p>
+<h3 id="exercise-3-the-scalar-hidden-in-a-commutator-sum">Exercise 3. The scalar hidden in a commutator sum</h3>
+<p>Prove (16) by computing the Fourier block of <span class="math" data-tex="\(\sum_{x,y}[x,y]\)">\(\sum_{x,y}[x,y]\)</span>. Explain both the factor <span class="math" data-tex="\(d_i^{-2}\)">\(d_i^{-2}\)</span> in the block and the factor <span class="math" data-tex="\(d_i^{-1}\)">\(d_i^{-1}\)</span> in the final count.</p>
+<p><strong>Solution.</strong> Averaging over <span class="math" data-tex="\(x\)">\(x\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sum_x\rho_i(xyx^{-1}y^{-1})
+=\frac{n\chi_i(y)}{d_i}\rho_i(y^{-1}).
+\]">\[
+\sum_x\rho_i(xyx^{-1}y^{-1})
+=\frac{n\chi_i(y)}{d_i}\rho_i(y^{-1}).
+\]</span>
+<p>Sum over <span class="math" data-tex="\(y\)">\(y\)</span>. The result is central; its trace is <span class="math" data-tex="\(n^2/d_i\)">\(n^2/d_i\)</span>, by row orthogonality. A scalar matrix on a <span class="math" data-tex="\(d_i\)">\(d_i\)</span>-dimensional space has trace <span class="math" data-tex="\(d_i\)">\(d_i\)</span> times its scalar, so the block is <span class="math" data-tex="\(n^2/d_i^2\)">\(n^2/d_i^2\)</span> times the identity. Inversion contributes <span class="math" data-tex="\(d_i/n\)">\(d_i/n\)</span> and the trace of <span class="math" data-tex="\(\rho_i(z^{-1})\)">\(\rho_i(z^{-1})\)</span>, producing <span class="math" data-tex="\(n\chi_i(z^{-1})/d_i\)">\(n\chi_i(z^{-1})/d_i\)</span>. Summing over <span class="math" data-tex="\(i\)">\(i\)</span> and pairing each row with its dual gives (16). The second division by <span class="math" data-tex="\(d_i\)">\(d_i\)</span> occurs when passing from the block's trace to its scalar.</p>
+<h3 id="exercise-4-every-element-of-a_5-is-a-commutator">Exercise 4. Every element of <span class="math" data-tex="\(A_5\)">\(A_5\)</span> is a commutator</h3>
+<p>Use (16) to prove the assertion. Supply the character information needed for the count.</p>
+<p><strong>Solution.</strong> The five classes are <span class="math" data-tex="\(1\)">\(1\)</span>, double transpositions <span class="math" data-tex="\(2A\)">\(2A\)</span>, 3-cycles <span class="math" data-tex="\(3A\)">\(3A\)</span>, and two classes <span class="math" data-tex="\(5A,5B\)">\(5A,5B\)</span> of 5-cycles. Their sizes are</p>
+<span class="math math-display" data-tex="\[
+1,\quad15,\quad20,\quad12,\quad12.
+\]">\[
+1,\quad15,\quad20,\quad12,\quad12.
+\]</span>
+<p>The cycle counts give the first three sizes. The centralizer of a 5-cycle in <span class="math" data-tex="\(A_5\)">\(A_5\)</span> is its cyclic subgroup of order five, giving size twelve; the twenty-four 5-cycles therefore form two classes. Conjugation sending a generator to its inverse is even, whereas conjugation sending it to its square is odd: on its four nonidentity powers these permutations have signs <span class="math" data-tex="\(+1\)">\(+1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>, respectively. Thus a cycle and its inverse are in the same class, and its square is in the other. The other classes also equal their inverse classes.</p>
+<p>Here is a derivation of the table, so the exercise does not presuppose a later lesson. The action on five letters has character <span class="math" data-tex="\((5,1,2,0,0)\)">\((5,1,2,0,0)\)</span>. Removing the invariant line gives</p>
+<span class="math math-display" data-tex="\[
+\chi_4=(4,0,1,-1,-1).
+\]">\[
+\chi_4=(4,0,1,-1,-1).
+\]</span>
+<p>Its weighted norm is <span class="math" data-tex="\((16+20+24)/60=1\)">\((16+20+24)/60=1\)</span>, so it is irreducible.</p>
+<p>There are six cyclic subgroups of order five, as counted in Lemma 6.1 below. Their normalizers have order ten and are dihedral: even automorphisms of a chosen 5-cycle induce exactly inversion and identity. Each normalizer contains five involutions. Double-counting incidences of involutions and these six normalizers gives <span class="math" data-tex="\(6\cdot5/15=2\)">\(6\cdot5/15=2\)</span> fixed subgroups for each involution. A 3-cycle fixes none since it cannot belong to a normalizer of order ten. A 5-cycle fixes exactly its own subgroup: if it normalizes another cyclic group of order five, its induced automorphism has order dividing both five and four, so it centralizes that group, which then lies in its centralizer. The character of this six-point action is <span class="math" data-tex="\((6,2,0,1,1)\)">\((6,2,0,1,1)\)</span>. Removing its invariant line gives</p>
+<span class="math math-display" data-tex="\[
+\chi_5=(5,1,-1,0,0),
+\]">\[
+\chi_5=(5,1,-1,0,0),
+\]</span>
+<p>whose weighted norm is <span class="math" data-tex="\((25+15+20)/60=1\)">\((25+15+20)/60=1\)</span>.</p>
+<p>We justify the remaining degree-three rows. The class sizes also prove simplicity of <span class="math" data-tex="\(A_5\)">\(A_5\)</span>: the order of a normal subgroup is one plus a subset sum of <span class="math" data-tex="\(15,20,12,12\)">\(15,20,12,12\)</span>, and no proper value greater than one divides sixty. There are no nontrivial one-dimensional representations, since a homomorphism from this nonabelian simple group to an abelian group cannot be injective. There are five irreducibles by the class count. After degrees <span class="math" data-tex="\(1,4,5\)">\(1,4,5\)</span>, the squares of the two remaining degrees sum to <span class="math" data-tex="\(60-1-16-25=18\)">\(60-1-16-25=18\)</span>; both degrees are at least two, so both are three.</p>
+<p>Each of these representations is faithful, and its determinant is trivial. At an involution its eigenvalues must be <span class="math" data-tex="\(1,-1,-1\)">\(1,-1,-1\)</span>, giving trace <span class="math" data-tex="\(-1\)">\(-1\)</span>. At a 3-cycle, determinant one permits either three equal cube roots or the three distinct cube roots. Three equal roots would make the operator scalar; faithfulness would then make the group element central, which it is not. The trace is therefore zero.</p>
+<p>At a 5-cycle the character is real, since its class equals its inverse class. Write its three eigenvalues as powers of a primitive fifth root <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. If <span class="math" data-tex="\(m_j\)">\(m_j\)</span> is the multiplicity of <span class="math" data-tex="\(\zeta^j\)">\(\zeta^j\)</span>, real trace gives <span class="math" data-tex="\(\sum_j(m_j-m_{-j})\zeta^j=0\)">\(\sum_j(m_j-m_{-j})\zeta^j=0\)</span>. The only rational relation among these five powers is a multiple of <span class="math" data-tex="\(1+\zeta+\cdots+\zeta^4=0\)">\(1+\zeta+\cdots+\zeta^4=0\)</span>; its coefficient at <span class="math" data-tex="\(j=0\)">\(j=0\)</span> is zero, so every difference vanishes. The multiset is inversion-stable. Faithfulness and dimension three force it to be <span class="math" data-tex="\(1,\zeta^a,\zeta^{-a}\)">\(1,\zeta^a,\zeta^{-a}\)</span> with <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. Its trace is either</p>
+<span class="math math-display" data-tex="\[
+\varphi=\frac{1+\sqrt5}{2}\quad\text{or}\quad
+\varphi&#x27;=\frac{1-\sqrt5}{2}.
+\]">\[
+\varphi=\frac{1+\sqrt5}{2}\quad\text{or}\quad
+\varphi&#x27;=\frac{1-\sqrt5}{2}.
+\]</span>
+<p>Squaring the cycle interchanges these values. Orthogonality of the two remaining rows prevents their being equal. Up to naming them, the full table is</p>
+<table>
+<thead>
+<tr>
+<th>Degree</th>
+<th style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2A\)">\(2A\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(3A\)">\(3A\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(5A\)">\(5A\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(5B\)">\(5B\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(\varphi\)">\(\varphi\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(\varphi&#x27;\)">\(\varphi&#x27;\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(\varphi&#x27;\)">\(\varphi&#x27;\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(\varphi\)">\(\varphi\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Substitute these rows into (16). For a fixed element in the five respective classes, the counts are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|ccccc}
+\text{class}&amp;1&amp;2A&amp;3A&amp;5A&amp;5B\\ \hline
+\#\text{commutator pairs}&amp;300&amp;32&amp;63&amp;65&amp;65.
+\end{array}
+\]">\[
+\begin{array}{c|ccccc}
+\text{class}&amp;1&amp;2A&amp;3A&amp;5A&amp;5B\\ \hline
+\#\text{commutator pairs}&amp;300&amp;32&amp;63&amp;65&amp;65.
+\end{array}
+\]</span>
+<p>For example the <span class="math" data-tex="\(2A\)">\(2A\)</span> count is <span class="math" data-tex="\(60(1-1/3-1/3+1/5)=32\)">\(60(1-1/3-1/3+1/5)=32\)</span>, and each 5-cycle count is <span class="math" data-tex="\(60(1+(\varphi+\varphi&#x27;)/3-1/4)=65\)">\(60(1+(\varphi+\varphi&#x27;)/3-1/4)=65\)</span>. Every count is positive, proving the assertion. Their size-weighted sum is <span class="math" data-tex="\(300+15\cdot32+20\cdot63+24\cdot65=3600=|A_5|^2\)">\(300+15\cdot32+20\cdot63+24\cdot65=3600=|A_5|^2\)</span>, as required.</p>
+<h2 id="6-what-this-lesson-uses-and-what-it-does-not-prove">6. What this lesson uses and what it does not prove</h2>
+<p>The representation-theoretic prerequisites have the following proof locators. Complete reducibility is Theorem 2.3 and Schur's lemma is Theorem 3.1 in <a href="representations-and-complete-reducibility.html">Representations and complete reducibility</a>. Matrix-coefficient orthogonality, character determination and multiplicities, regular multiplicities and the degree-square identity, and character completeness are respectively Theorems 2.1, 3.1, 3.2 and 4.1 in <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a>.</p>
+<p>Here are the elementary counting and arithmetic tools used in the examples. Their proofs are independent of the representation-theoretic conclusions above.</p>
+<p id="lemma-6-1" class="result-link"><strong>Lemma 6.1 (cosets, orbits and quotient orders).</strong> If <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span> is finite, its left cosets partition <span class="math" data-tex="\(G\)">\(G\)</span>, each has <span class="math" data-tex="\(|H|\)">\(|H|\)</span> elements, and <span class="math" data-tex="\(|G|=[G:H]|H|\)">\(|G|=[G:H]|H|\)</span>. An orbit of <span class="math" data-tex="\(x\)">\(x\)</span> in a finite <span class="math" data-tex="\(G\)">\(G\)</span>-set has size <span class="math" data-tex="\([G:G_x]\)">\([G:G_x]\)</span>. Consequently <span class="math" data-tex="\(|g^G|=[G:C_G(g)]\)">\(|g^G|=[G:C_G(g)]\)</span>, and the number of conjugates of <span class="math" data-tex="\(H\)">\(H\)</span> is <span class="math" data-tex="\([G:N_G(H)]\)">\([G:N_G(H)]\)</span>. A homomorphism <span class="math" data-tex="\(f:G\to K\)">\(f:G\to K\)</span> has <span class="math" data-tex="\(|G|=|\ker f|\,|\operatorname{im}f|\)">\(|G|=|\ker f|\,|\operatorname{im}f|\)</span>. A group of prime order is cyclic.</p>
+<p><strong>Proof.</strong> Two left cosets that meet are equal: from <span class="math" data-tex="\(ah=bk\)">\(ah=bk\)</span>, obtain <span class="math" data-tex="\(b^{-1}a=kh^{-1}\in H\)">\(b^{-1}a=kh^{-1}\in H\)</span>. Left multiplication gives a bijection <span class="math" data-tex="\(H\to aH\)">\(H\to aH\)</span>. Counting the disjoint cosets proves the first formula. The map <span class="math" data-tex="\(aG_x\mapsto ax\)">\(aG_x\mapsto ax\)</span> is onto the orbit and is one-to-one, because <span class="math" data-tex="\(ax=bx\)">\(ax=bx\)</span> is equivalent to <span class="math" data-tex="\(b^{-1}a\in G_x\)">\(b^{-1}a\in G_x\)</span>. For conjugation of elements its stabilizer is the centralizer; for conjugation of subgroups its stabilizer is the normalizer. The fibers of <span class="math" data-tex="\(f\)">\(f\)</span> are precisely cosets of its kernel, and they are indexed by its image. Finally, the cyclic subgroup generated by a nonidentity element in a prime-order group has order greater than one dividing that prime, so it is the whole group. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Permutation matrices satisfy <span class="math" data-tex="\(P_\sigma P_\tau=P_{\sigma\tau}\)">\(P_\sigma P_\tau=P_{\sigma\tau}\)</span>, by applying them to each coordinate basis vector. Multiplicativity of the determinant therefore makes <span class="math" data-tex="\(\det P_\sigma\)">\(\det P_\sigma\)</span> a homomorphism, the sign. A transposition exchanges two columns of the identity and has determinant <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p>Exercise 4 needs only cyclic subgroups of order five. There are <span class="math" data-tex="\(24\)">\(24\)</span> five-cycles, and each cyclic subgroup contains exactly four of them. Two distinct subgroups cannot share a nonidentity element, since that element generates both. Thus there are exactly six subgroups, without invoking a Sylow existence or conjugacy theorem. The normalizer of one acts on its generator by powers <span class="math" data-tex="\(1,2,3,4\)">\(1,2,3,4\)</span>. The centralizer consists of its five powers: a commuting permutation is determined by the image of one letter. On the remaining four powers, multiplication by <span class="math" data-tex="\(2\)">\(2\)</span> or <span class="math" data-tex="\(3\)">\(3\)</span> is a four-cycle and odd, while multiplication by <span class="math" data-tex="\(4\)">\(4\)</span> is two transpositions and even. Hence the even normalizer has order ten, consisting of the cyclic subgroup and its inversion coset. Inversion is represented by an involution on the five letters. This is the dihedral group with five involutions. Conjugation is transitive on the six subgroups: any permutation conjugating two of them can, if odd, be multiplied on the right by an odd element of the first normalizer. The resulting conjugator is even. These facts justify all subgroup counts in that exercise.</p>
+<p id="lemma-6-2" class="result-link"><strong>Lemma 6.2 (the fifth-root relation).</strong> For a primitive fifth root <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, the only rational linear relations among <span class="math" data-tex="\(1,\zeta,\ldots,\zeta^4\)">\(1,\zeta,\ldots,\zeta^4\)</span> are multiples of <span class="math" data-tex="\(1+\zeta+\cdots+\zeta^4=0\)">\(1+\zeta+\cdots+\zeta^4=0\)</span>.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(\Phi(X)=1+X+\cdots+X^4\)">\(\Phi(X)=1+X+\cdots+X^4\)</span>. Its shift is
+<span class="math math-display" data-tex="\[
+\Phi(Y+1)=Y^4+5Y^3+10Y^2+10Y+5.
+\]">\[
+\Phi(Y+1)=Y^4+5Y^3+10Y^2+10Y+5.
+\]</span>
+This polynomial is irreducible over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Here is the needed Eisenstein argument, including its passage to integer factors. An integer polynomial is primitive when the greatest common divisor of its coefficients is one. The product of two primitive polynomials is primitive: otherwise a prime dividing every product coefficient would make the product of their two nonzero reductions in <span class="math" data-tex="\(\mathbb F_p[Y]\)">\(\mathbb F_p[Y]\)</span> zero. That is impossible, since a product of nonzero polynomials over a field has degree the sum of their degrees. Clear denominators in a proposed rational factorization and divide each factor by its coefficient gcd. Primitivity then shows that a primitive integer polynomial factors over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> only if it factors over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, up to signs: a rational scalar carrying one primitive integer polynomial to another has numerator and denominator both units after reducing the fraction.</p>
+<p>Suppose the displayed monic polynomial were a product of two nonconstant integer polynomials. Their leading coefficients are units. Reduction modulo five makes each factor a unit times a positive power of <span class="math" data-tex="\(Y\)">\(Y\)</span>, since their product is <span class="math" data-tex="\(Y^4\)">\(Y^4\)</span>. To see this last assertion without unique factorization, <span class="math" data-tex="\(Y\)">\(Y\)</span> divides a product exactly when one factor has constant term zero; divide out powers of <span class="math" data-tex="\(Y\)">\(Y\)</span> until the two remaining constant terms are nonzero. Their product must be constant. Thus both original factors have constant terms divisible by five. Their product has constant term divisible by <span class="math" data-tex="\(25\)">\(25\)</span>, contradicting its value <span class="math" data-tex="\(5\)">\(5\)</span>. Irreducibility is proved. Substitution <span class="math" data-tex="\(Y=X-1\)">\(Y=X-1\)</span> preserves rational factorizations, so <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is irreducible too.</p>
+<p>Since <span class="math" data-tex="\(\zeta\ne1\)">\(\zeta\ne1\)</span> and <span class="math" data-tex="\(\zeta^5=1\)">\(\zeta^5=1\)</span>, it is a root of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. For a rational polynomial of degree at most four vanishing at <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, divide by the monic <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. A nonzero remainder of smaller degree would contradict irreducibility, by the Euclidean algorithm applied to that remainder and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. The remainder is zero, and the quotient is constant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the finite-order diagonalization used in the table, let <span class="math" data-tex="\(T^r=I\)">\(T^r=I\)</span> and let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be a primitive <span class="math" data-tex="\(r\)">\(r\)</span>-th root. The operators
+<span class="math math-display" data-tex="\[
+E_j=\frac1r\sum_{k=0}^{r-1}\omega^{-jk}T^k\qquad(0\leq j&lt;r)
+\]">\[
+E_j=\frac1r\sum_{k=0}^{r-1}\omega^{-jk}T^k\qquad(0\leq j&lt;r)
+\]</span>
+satisfy <span class="math" data-tex="\(TE_j=\omega^jE_j\)">\(TE_j=\omega^jE_j\)</span> and <span class="math" data-tex="\(\sum_jE_j=I\)">\(\sum_jE_j=I\)</span>, by the finite geometric-sum identity. Their images lie in the distinct eigenspaces, whose sum is direct: applying the polynomial <span class="math" data-tex="\(\prod_{a\ne j}(T-\omega^a I)\)">\(\prod_{a\ne j}(T-\omega^a I)\)</span> to a relation isolates its <span class="math" data-tex="\(j\)">\(j\)</span>-th term. Hence <span class="math" data-tex="\(T\)">\(T\)</span> is diagonalizable. The earlier Lesson 1 complex-root provider supplies the roots of unity. No Sylow or later character theorem is needed for the <span class="math" data-tex="\(A_5\)">\(A_5\)</span> table.</p>
+<p>The general structure theorem for finite simple algebras is contextual: a finite-dimensional simple algebra over a field <span class="math" data-tex="\(k\)">\(k\)</span> is a matrix algebra over a division algebra finite-dimensional over <span class="math" data-tex="\(k\)">\(k\)</span>. See <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/brauer.html#brauer-theorem-wedderburn">Stacks, Tag 0747</a>. We have proved the complex finite-group Fourier decomposition directly; no general density or structure theorem was needed for it. The <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">AI Integrated Stacks Project edition</a> contains AI-proposed material not reviewed by the official Stacks maintainers.</p>
+<p>Fourier analysis on compact groups requires integration and infinite-dimensional convergence arguments. They lie beyond this finite algebra calculation.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>Stacks project</strong>, <em>Brauer groups</em>, Tag 0747, Wedderburn's theorem; linked above through the English edition of the AI Integrated Stacks Project.</li>
+<li><strong>C. Gruson and V. Serganova</strong>, <em>A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras</em>, 2018, Chapter 2 §1, Lemmas 1.11–1.12 and Theorem 1.13, and §3, items 3.1–3.6. The group-algebra blocks and central-idempotent formulas provide checks on (2), (10) and (12).</li>
+</ul>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

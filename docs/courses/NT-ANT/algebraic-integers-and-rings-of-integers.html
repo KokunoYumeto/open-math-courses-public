@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Algebraic integers and rings of integers · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="algebraic-integers-and-rings-of-integers">Algebraic integers and rings of integers</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>Arithmetic in a number field starts by deciding which elements deserve to be called integers. A basis over the rational numbers cannot answer this: replacing a basis changes its integer span. Monic polynomial equations give a definition that survives every change of coordinates. We will turn that definition into practical tests, determine every quadratic ring of integers, and exhibit a failure of unique factorization.</p>
+<p>The prerequisites are polynomial factorization and Gauss's lemma, field extensions and Galois theory, and modules and finite-dimensional linear algebra. The precise facts used are collected under <a href="#what-this-lesson-does-not-prove">What this lesson does not prove</a>. Freely accessible references are [Milne ANT], [Milne FGT] and [Stacks]. The general integral-extension arguments are taught in <em>Integral extensions: lying over, going up and going down</em>. Here we concentrate on arithmetic over the rational integers.</p>
+<h2 id="1-seeing-a-field-through-its-embeddings">1. Seeing a field through its embeddings</h2>
+<p>A <strong>number field</strong> is an abstract field <span class="math" data-tex="$K$">$K$</span> with a specified inclusion <span class="math" data-tex="$\mathbb Q\subset K$">$\mathbb Q\subset K$</span> and finite degree <span class="math" data-tex="$n=[K:\mathbb Q]$">$n=[K:\mathbb Q]$</span>. It is not supplied with a preferred inclusion into <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. An <strong>embedding</strong> means a field homomorphism <span class="math" data-tex="$\sigma:K\to\mathbb C$">$\sigma:K\to\mathbb C$</span> fixing <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span>. Field homomorphisms are injective.</p>
+<p>Characteristic zero makes every finite extension separable. The primitive element theorem gives <span class="math" data-tex="$K=\mathbb Q(\theta)$">$K=\mathbb Q(\theta)$</span>. If <span class="math" data-tex="$f$">$f$</span> is the minimal polynomial of <span class="math" data-tex="$\theta$">$\theta$</span>, its <span class="math" data-tex="$n$">$n$</span> distinct roots in <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> correspond to the embeddings: choosing a root determines the image of <span class="math" data-tex="$\theta$">$\theta$</span>, hence the entire map. Here are the algebraic proofs needed for these statements.</p>
+<p><strong>Separable embeddings and a primitive element.</strong> In characteristic zero an irreducible polynomial has nonzero derivative of smaller degree, so it is coprime to its derivative and has no repeated root. A finite separable extension <span class="math" data-tex="$L/k$">$L/k$</span> has exactly <span class="math" data-tex="$[L:k]$">$[L:k]$</span> embeddings into an algebraic closure. Write it as a tower adjoining finitely many elements. An embedding of an intermediate field extends in exactly as many ways as the degree of the next minimal polynomial: its distinct roots give the maps out of the polynomial quotient. Multiplying these counts along the tower proves the assertion. Products of basis elements give the same multiplication rule for the degrees.</p>
+<p>If <span class="math" data-tex="$k$">$k$</span> is infinite and <span class="math" data-tex="$L=k(\alpha,\beta)$">$L=k(\alpha,\beta)$</span>, list its embeddings as <span class="math" data-tex="$\sigma_i$">$\sigma_i$</span>. Choose <span class="math" data-tex="$c\in k$">$c\in k$</span> so that all <span class="math" data-tex="$\sigma_i(\alpha)+c\sigma_i(\beta)$">$\sigma_i(\alpha)+c\sigma_i(\beta)$</span> differ. For a pair with different <span class="math" data-tex="$\beta$">$\beta$</span>-images there is at most one forbidden <span class="math" data-tex="$c$">$c$</span>; if those images agree, the <span class="math" data-tex="$\alpha$">$\alpha$</span>-images differ, since the embeddings agree on both generators only when they are the same. Finitely many forbidden values cannot exhaust <span class="math" data-tex="$k$">$k$</span>. Thus <span class="math" data-tex="$\gamma=\alpha+c\beta$">$\gamma=\alpha+c\beta$</span> has at least <span class="math" data-tex="$[L:k]$">$[L:k]$</span> conjugates, forcing <span class="math" data-tex="$[k(\gamma):k]=[L:k]$">$[k(\gamma):k]=[L:k]$</span> and <span class="math" data-tex="$L=k(\gamma)$">$L=k(\gamma)$</span>. Induction handles more generators.</p>
+<p>If <span class="math" data-tex="$k$">$k$</span> is finite, so is <span class="math" data-tex="$L$">$L$</span>. The multiplicative group of any finite field is cyclic. Take the least common multiple <span class="math" data-tex="$m$">$m$</span> of its element orders. For each prime dividing <span class="math" data-tex="$m$">$m$</span>, choose an element whose order contains the maximal power of that prime, and take a power to remove the other prime factors. The product of the resulting commuting elements of relatively prime orders has order <span class="math" data-tex="$m$">$m$</span>: raising to the separate orders proves that none of these components can cancel another. Every field unit is a root of <span class="math" data-tex="$X^m-1$">$X^m-1$</span>, so their number is at most <span class="math" data-tex="$m$">$m$</span>. The constructed element already has <span class="math" data-tex="$m$">$m$</span> distinct powers, hence generates all units. Such a generator also generates <span class="math" data-tex="$L$">$L$</span> as a field over <span class="math" data-tex="$k$">$k$</span>. This proves the primitive element theorem for every finite separable extension.</p>
+<p>Complex conjugation sends <span class="math" data-tex="$\sigma$">$\sigma$</span> to <span class="math" data-tex="$\bar\sigma$">$\bar\sigma$</span>, where <span class="math" data-tex="$\bar\sigma(x)=\overline{\sigma(x)}$">$\bar\sigma(x)=\overline{\sigma(x)}$</span>. It fixes precisely those embeddings whose images lie in <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span>. All remaining embeddings occur in distinct pairs. The <strong>signature</strong> is <span class="math" data-tex="$(r_1,r_2)$">$(r_1,r_2)$</span>, where <span class="math" data-tex="$r_1$">$r_1$</span> counts real embeddings and <span class="math" data-tex="$r_2$">$r_2$</span> counts these pairs. Consequently</p>
+<span class="math math-display" data-tex="$$
+n=r_1+2r_2.
+$$">$$
+n=r_1+2r_2.
+$$</span>
+<p>The roots of a primitive element's polynomial make the signature visible:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Minimal polynomial of the indicated generator</th>
+<th>Images of the generator</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="$\mathbb Q(\sqrt2)$">$\mathbb Q(\sqrt2)$</span></td>
+<td><span class="math" data-tex="$X^2-2$">$X^2-2$</span></td>
+<td><span class="math" data-tex="$\sqrt2,-\sqrt2$">$\sqrt2,-\sqrt2$</span></td>
+<td><span class="math" data-tex="$(2,0)$">$(2,0)$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$\mathbb Q(\sqrt[3]2)$">$\mathbb Q(\sqrt[3]2)$</span></td>
+<td><span class="math" data-tex="$X^3-2$">$X^3-2$</span></td>
+<td><span class="math" data-tex="$c,c\xi,c\xi^2$">$c,c\xi,c\xi^2$</span>, with <span class="math" data-tex="$c=\sqrt[3]2&gt;0$">$c=\sqrt[3]2&gt;0$</span>, <span class="math" data-tex="$\xi=e^{2\pi i/3}$">$\xi=e^{2\pi i/3}$</span></td>
+<td><span class="math" data-tex="$(1,1)$">$(1,1)$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$\mathbb Q(2^{1/4})$">$\mathbb Q(2^{1/4})$</span></td>
+<td><span class="math" data-tex="$X^4-2$">$X^4-2$</span></td>
+<td><span class="math" data-tex="$u,-u,iu,-iu$">$u,-u,iu,-iu$</span>, with <span class="math" data-tex="$u=2^{1/4}&gt;0$">$u=2^{1/4}&gt;0$</span></td>
+<td><span class="math" data-tex="$(2,1)$">$(2,1)$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$\mathbb Q(\zeta_7)$">$\mathbb Q(\zeta_7)$</span></td>
+<td><span class="math" data-tex="$X^6+X^5+\cdots+X+1$">$X^6+X^5+\cdots+X+1$</span></td>
+<td><span class="math" data-tex="$\zeta_7^j$">$\zeta_7^j$</span>, <span class="math" data-tex="$1\le j\le6$">$1\le j\le6$</span></td>
+<td><span class="math" data-tex="$(0,3)$">$(0,3)$</span></td>
+</tr>
+</tbody>
+</table>
+<p>Here <span class="math" data-tex="$\zeta_7=e^{2\pi i/7}$">$\zeta_7=e^{2\pi i/7}$</span>. The first three polynomials are Eisenstein at <span class="math" data-tex="$2$">$2$</span>. For the last one, substituting <span class="math" data-tex="$X=Y+1$">$X=Y+1$</span> gives</p>
+<span class="math math-display" data-tex="$$
+Y^6+7Y^5+21Y^4+35Y^3+35Y^2+21Y+7,
+$$">$$
+Y^6+7Y^5+21Y^4+35Y^3+35Y^2+21Y+7,
+$$</span>
+<p>which is Eisenstein at <span class="math" data-tex="$7$">$7$</span>; translation preserves irreducibility. Its roots are the nontrivial seventh roots of unity, and conjugation pairs <span class="math" data-tex="$j$">$j$</span> with <span class="math" data-tex="$7-j$">$7-j$</span>. More generally, for a primitive <span class="math" data-tex="$m$">$m$</span>th root <span class="math" data-tex="$\zeta_m$">$\zeta_m$</span>, <span class="math" data-tex="$m&gt;2$">$m&gt;2$</span>, every embedding sends it to another primitive <span class="math" data-tex="$m$">$m$</span>th root. Such a root cannot be real, since the only real roots of unity are <span class="math" data-tex="$1$">$1$</span> and <span class="math" data-tex="$-1$">$-1$</span>. Thus every cyclotomic field of this kind has signature <span class="math" data-tex="$(0,[\mathbb Q(\zeta_m):\mathbb Q]/2)$">$(0,[\mathbb Q(\zeta_m):\mathbb Q]/2)$</span>.</p>
+<p>The four displayed minimal polynomials give traces <span class="math" data-tex="$0,0,0,-1$">$0,0,0,-1$</span> and norms <span class="math" data-tex="$-2,2,-2,1$">$-2,2,-2,1$</span>, respectively. These follow from minus the next-to-leading coefficient and <span class="math" data-tex="$(-1)^n$">$(-1)^n$</span> times the constant coefficient, as Section 3 will prove.</p>
+<p>Two kinds of conjugates must be distinguished. An element <span class="math" data-tex="$\alpha$">$\alpha$</span> has distinct conjugates given by its minimal polynomial. Its images under all embeddings of a larger field <span class="math" data-tex="$K$">$K$</span> can repeat. For example, <span class="math" data-tex="$1$">$1$</span> has just one distinct conjugate, but all <span class="math" data-tex="$n$">$n$</span> embeddings of <span class="math" data-tex="$K$">$K$</span> send it to <span class="math" data-tex="$1$">$1$</span>. This multiplicity will matter for norms.</p>
+<h2 id="2-integers-defined-by-equations">2. Integers defined by equations</h2>
+<p>An element of a field containing a ring <span class="math" data-tex="$A$">$A$</span> is <strong>integral over <span class="math" data-tex="$A$">$A$</span></strong> if it satisfies a monic polynomial with coefficients in <span class="math" data-tex="$A$">$A$</span>. The word “monic” means that the leading coefficient is <span class="math" data-tex="$1$">$1$</span>. An <strong>algebraic integer</strong> is an element integral over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>. Every element of a number field is integral over <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span>; that weaker statement does not make it an algebraic integer.</p>
+<p>We need the finite-module criterion, the ring property and transitivity of integrality. We prove them for arbitrary commutative rings, with homomorphisms preserving the identity.</p>
+<p><strong>Finite-module criterion.</strong> An element <span class="math" data-tex="$x$">$x$</span> in an <span class="math" data-tex="$A$">$A$</span>-algebra is integral over <span class="math" data-tex="$A$">$A$</span> if and only if <span class="math" data-tex="$A[x]$">$A[x]$</span> is finite as an <span class="math" data-tex="$A$">$A$</span>-module. A monic equation expresses every sufficiently high power in the span of the lower powers, proving one direction. Conversely, multiplication by <span class="math" data-tex="$x$">$x$</span> on generators <span class="math" data-tex="$m_1,\ldots,m_r$">$m_1,\ldots,m_r$</span> of a finite <span class="math" data-tex="$A$">$A$</span>-subalgebra <span class="math" data-tex="$B$">$B$</span> is given by a matrix <span class="math" data-tex="$C$">$C$</span> over <span class="math" data-tex="$A$">$A$</span>. The adjugate identity makes the monic polynomial <span class="math" data-tex="$\det(TI-C)$">$\det(TI-C)$</span> at <span class="math" data-tex="$T=x$">$T=x$</span> annihilate all generators. It annihilates <span class="math" data-tex="$1\in B$">$1\in B$</span>, so it vanishes at <span class="math" data-tex="$x$">$x$</span>. This also proves integrality whenever <span class="math" data-tex="$x$">$x$</span> lies in any finite <span class="math" data-tex="$A$">$A$</span>-subalgebra, without requiring a free module or a domain.</p>
+<p><strong>Ring property and transitivity.</strong> If <span class="math" data-tex="$x_1,\ldots,x_r$">$x_1,\ldots,x_r$</span> are integral, adjoining them successively gives a finite module at every step, hence a finite <span class="math" data-tex="$A$">$A$</span>-module overall: products of finite generating sets generate the composite module. The criterion makes every element of <span class="math" data-tex="$A[x_1,\ldots,x_r]$">$A[x_1,\ldots,x_r]$</span> integral. Taking <span class="math" data-tex="$r=2$">$r=2$</span> proves closure under sums, differences and products. If <span class="math" data-tex="$x$">$x$</span> is integral over an algebra <span class="math" data-tex="$B$">$B$</span> integral over <span class="math" data-tex="$A$">$A$</span>, its monic equation uses only finitely many coefficients <span class="math" data-tex="$b_i\in B$">$b_i\in B$</span>. The algebra <span class="math" data-tex="$A[b_1,\ldots,b_m]$">$A[b_1,\ldots,b_m]$</span> is finite over <span class="math" data-tex="$A$">$A$</span>; adjoining <span class="math" data-tex="$x$">$x$</span> is finite over that algebra. Their generating sets multiply, so the criterion makes <span class="math" data-tex="$x$">$x$</span> integral over <span class="math" data-tex="$A$">$A$</span>. This proves transitivity even when <span class="math" data-tex="$B$">$B$</span> itself is not finite over <span class="math" data-tex="$A$">$A$</span>.</p>
+<p>The full statements are also in <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-characterize-integral">Stacks, Tag 00GM</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-transitive">Tag 00GN</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-closure-is-ring">Tag 00GO</a>. The proofs above supply the dependencies here.</p>
+<p>Therefore</p>
+<span class="math math-display" data-tex="$$
+\mathcal O_K=\{\alpha\in K\mid\alpha\text{ is integral over }\mathbb Z\}
+$$">$$
+\mathcal O_K=\{\alpha\in K\mid\alpha\text{ is integral over }\mathbb Z\}
+$$</span>
+<p>is a subring of <span class="math" data-tex="$K$">$K$</span>, called its <strong>ring of integers</strong>. For instance, <span class="math" data-tex="$\sqrt2$">$\sqrt2$</span> and <span class="math" data-tex="$\sqrt3$">$\sqrt3$</span> are algebraic integers because their squares are integers. Their sum is an algebraic integer by the ring property, before we compute its polynomial.</p>
+<p><strong>Proposition 1.1 (the minimal-polynomial test).</strong> An element <span class="math" data-tex="$\alpha\in K$">$\alpha\in K$</span> belongs to <span class="math" data-tex="$\mathcal O_K$">$\mathcal O_K$</span> if and only if its monic minimal polynomial over <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span> lies in <span class="math" data-tex="$\mathbb Z[X]$">$\mathbb Z[X]$</span>. Moreover,</p>
+<span class="math math-display" data-tex="$$
+\mathcal O_K\cap\mathbb Q=\mathbb Z,\qquad
+K=\operatorname{Frac}(\mathcal O_K),
+$$">$$
+\mathcal O_K\cap\mathbb Q=\mathbb Z,\qquad
+K=\operatorname{Frac}(\mathcal O_K),
+$$</span>
+<p>and <span class="math" data-tex="$\mathcal O_K$">$\mathcal O_K$</span> is integrally closed in <span class="math" data-tex="$K$">$K$</span>. Every <span class="math" data-tex="$\alpha\in K$">$\alpha\in K$</span> has a positive integer multiple belonging to <span class="math" data-tex="$\mathcal O_K$">$\mathcal O_K$</span>.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="$\alpha$">$\alpha$</span> satisfies a monic <span class="math" data-tex="$F\in\mathbb Z[X]$">$F\in\mathbb Z[X]$</span>, its minimal polynomial <span class="math" data-tex="$f\in\mathbb Q[X]$">$f\in\mathbb Q[X]$</span> divides <span class="math" data-tex="$F$">$F$</span>. Here is the needed form of Gauss's lemma. A polynomial is primitive when the gcd of its integer coefficients is one. The product of two primitive polynomials is primitive: a prime dividing every product coefficient would give a zero product of two nonzero polynomials over <span class="math" data-tex="$\mathbf F_p$">$\mathbf F_p$</span>, impossible in that domain. Write the two monic rational factors of <span class="math" data-tex="$F$">$F$</span> as <span class="math" data-tex="$P/a,Q/b$">$P/a,Q/b$</span>, with primitive integer <span class="math" data-tex="$P,Q$">$P,Q$</span> and positive integers <span class="math" data-tex="$a,b$">$a,b$</span> equal to their leading coefficients. Then <span class="math" data-tex="$PQ=abF$">$PQ=abF$</span>. Its left side has coefficient gcd one; its right side has gcd <span class="math" data-tex="$ab$">$ab$</span>, since <span class="math" data-tex="$F$">$F$</span> is monic. Thus <span class="math" data-tex="$a=b=1$">$a=b=1$</span>, proving <span class="math" data-tex="$f\in\mathbb Z[X]$">$f\in\mathbb Z[X]$</span>. The converse follows from the definition. For <span class="math" data-tex="$q\in\mathbb Q$">$q\in\mathbb Q$</span>, the minimal polynomial is <span class="math" data-tex="$X-q$">$X-q$</span>, so this test gives <span class="math" data-tex="$q\in\mathcal O_K$">$q\in\mathcal O_K$</span> exactly when <span class="math" data-tex="$q\in\mathbb Z$">$q\in\mathbb Z$</span>.</p>
+<p>Write the minimal polynomial of an arbitrary <span class="math" data-tex="$\alpha$">$\alpha$</span> as</p>
+<span class="math math-display" data-tex="$$
+X^d+c_1X^{d-1}+\cdots+c_d,\qquad c_j\in\mathbb Q.
+$$">$$
+X^d+c_1X^{d-1}+\cdots+c_d,\qquad c_j\in\mathbb Q.
+$$</span>
+<p>Choose a positive common denominator <span class="math" data-tex="$m$">$m$</span> for the <span class="math" data-tex="$c_j$">$c_j$</span>. Then <span class="math" data-tex="$m\alpha$">$m\alpha$</span> satisfies</p>
+<span class="math math-display" data-tex="$$
+X^d+(mc_1)X^{d-1}+(m^2c_2)X^{d-2}+\cdots+m^dc_d\in\mathbb Z[X].
+$$">$$
+X^d+(mc_1)X^{d-1}+(m^2c_2)X^{d-2}+\cdots+m^dc_d\in\mathbb Z[X].
+$$</span>
+<p>Thus <span class="math" data-tex="$\alpha=(m\alpha)/m$">$\alpha=(m\alpha)/m$</span> is a fraction of elements of <span class="math" data-tex="$\mathcal O_K$">$\mathcal O_K$</span>, proving the fraction-field assertion. Finally, if <span class="math" data-tex="$x\in K$">$x\in K$</span> is integral over <span class="math" data-tex="$\mathcal O_K$">$\mathcal O_K$</span>, transitivity applied to <span class="math" data-tex="$\mathbb Z\subset\mathcal O_K\subset\mathcal O_K[x]$">$\mathbb Z\subset\mathcal O_K\subset\mathcal O_K[x]$</span> makes <span class="math" data-tex="$x$">$x$</span> integral over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>. Hence <span class="math" data-tex="$x\in\mathcal O_K$">$x\in\mathcal O_K$</span>. This is precisely integral closedness. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The same transitivity argument shows that an element integral over any ring all of whose elements are algebraic integers is itself an algebraic integer. Also, if <span class="math" data-tex="$L/K$">$L/K$</span> is an extension of number fields, then <span class="math" data-tex="$\mathcal O_L\cap K=\mathcal O_K$">$\mathcal O_L\cap K=\mathcal O_K$</span>: both sides use exactly the same monic equations over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>.</p>
+<p><strong>Polynomial irreducibility tests used here.</strong> The same primitive-product argument shows that a primitive integer polynomial factoring over <span class="math" data-tex="$\mathbf Q$">$\mathbf Q$</span> factors into nonconstant integer polynomials: clear rational denominators, divide out coefficient gcds, and write <span class="math" data-tex="$f=cPQ$">$f=cPQ$</span> with primitive <span class="math" data-tex="$P,Q$">$P,Q$</span> and rational <span class="math" data-tex="$c$">$c$</span>. Integrality of the coefficients forces the denominator of <span class="math" data-tex="$c$">$c$</span> to divide their gcd one; primitiveness of <span class="math" data-tex="$f$">$f$</span> then forces <span class="math" data-tex="$c=\pm1$">$c=\pm1$</span>. If a prime <span class="math" data-tex="$p$">$p$</span> divides all nonleading coefficients but not the leading one, reduction of such a factorization makes both factors monomials over <span class="math" data-tex="$\mathbf F_p$">$\mathbf F_p$</span>, with their positive degrees preserved. Both constant coefficients are divisible by <span class="math" data-tex="$p$">$p$</span>, forcing <span class="math" data-tex="$p^2\mid f(0)$">$p^2\mid f(0)$</span>. Excluding that square proves Eisenstein's criterion. Finally a root <span class="math" data-tex="$a/b$">$a/b$</span> in lowest terms of a monic integer polynomial satisfies <span class="math" data-tex="$b\mid a^n$">$b\mid a^n$</span> after denominators are cleared, so <span class="math" data-tex="$b=1$">$b=1$</span>; its integer value divides the constant coefficient. This proves the rational-root test used in the examples.</p>
+<h2 id="3-multiplication-as-a-linear-transformation">3. Multiplication as a linear transformation</h2>
+<p>For a finite field extension <span class="math" data-tex="$L/K$">$L/K$</span>, multiplication by <span class="math" data-tex="$\alpha\in L$">$\alpha\in L$</span> is the <span class="math" data-tex="$K$">$K$</span>-linear map <span class="math" data-tex="$m_\alpha:x\mapsto\alpha x$">$m_\alpha:x\mapsto\alpha x$</span>. Define</p>
+<span class="math math-display" data-tex="$$
+\chi_{\alpha,L/K}(X)=\det(XI-m_\alpha),\quad
+\operatorname{Tr}_{L/K}(\alpha)=\operatorname{tr}(m_\alpha),\quad
+N_{L/K}(\alpha)=\det(m_\alpha).
+$$">$$
+\chi_{\alpha,L/K}(X)=\det(XI-m_\alpha),\quad
+\operatorname{Tr}_{L/K}(\alpha)=\operatorname{tr}(m_\alpha),\quad
+N_{L/K}(\alpha)=\det(m_\alpha).
+$$</span>
+<p>These do not depend on the chosen basis. If <span class="math" data-tex="$n=[L:K]$">$n=[L:K]$</span>, then</p>
+<span class="math math-display" data-tex="$$
+\chi_{\alpha,L/K}(X)=X^n-\operatorname{Tr}_{L/K}(\alpha)X^{n-1}
++\cdots+(-1)^nN_{L/K}(\alpha).
+$$">$$
+\chi_{\alpha,L/K}(X)=X^n-\operatorname{Tr}_{L/K}(\alpha)X^{n-1}
++\cdots+(-1)^nN_{L/K}(\alpha).
+$$</span>
+<p>When a number field <span class="math" data-tex="$K$">$K$</span> is fixed, <span class="math" data-tex="$\operatorname{Tr}$">$\operatorname{Tr}$</span> and <span class="math" data-tex="$N$">$N$</span> without subscripts mean <span class="math" data-tex="$\operatorname{Tr}_{K/\mathbb Q}$">$\operatorname{Tr}_{K/\mathbb Q}$</span> and <span class="math" data-tex="$N_{K/\mathbb Q}$">$N_{K/\mathbb Q}$</span>.</p>
+<p>Linearity of matrix trace gives additivity and <span class="math" data-tex="$K$">$K$</span>-linearity of field trace. The identity <span class="math" data-tex="$m_{\alpha\beta}=m_\alpha m_\beta$">$m_{\alpha\beta}=m_\alpha m_\beta$</span> gives multiplicativity of norm. For <span class="math" data-tex="$a\in K$">$a\in K$</span>, the matrix is <span class="math" data-tex="$aI$">$aI$</span>, so its trace is <span class="math" data-tex="$na$">$na$</span> and its norm is <span class="math" data-tex="$a^n$">$a^n$</span>. In particular, norms of rational elements still depend on the field degree.</p>
+<p><strong>Proposition 1.2 (conjugates and towers).</strong> If <span class="math" data-tex="$L/K$">$L/K$</span> is finite separable and <span class="math" data-tex="$\alpha\in L$">$\alpha\in L$</span>, then</p>
+<span class="math math-display" data-tex="$$
+\chi_{\alpha,L/K}(X)=\prod_{\sigma:L\hookrightarrow\overline K}(X-\sigma(\alpha)),
+$$">$$
+\chi_{\alpha,L/K}(X)=\prod_{\sigma:L\hookrightarrow\overline K}(X-\sigma(\alpha)),
+$$</span>
+<p>where the embeddings fix <span class="math" data-tex="$K$">$K$</span>. Thus trace and norm are the sum and product of these images, including repetitions. For every tower <span class="math" data-tex="$M/L/K$">$M/L/K$</span> of finite field extensions, including inseparable ones,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Tr}_{M/K}=\operatorname{Tr}_{L/K}\circ\operatorname{Tr}_{M/L},\qquad
+N_{M/K}=N_{L/K}\circ N_{M/L}.
+$$">$$
+\operatorname{Tr}_{M/K}=\operatorname{Tr}_{L/K}\circ\operatorname{Tr}_{M/L},\qquad
+N_{M/K}=N_{L/K}\circ N_{M/L}.
+$$</span>
+<p>If <span class="math" data-tex="$L/K$">$L/K$</span> is an extension of number fields and <span class="math" data-tex="$\alpha\in\mathcal O_L$">$\alpha\in\mathcal O_L$</span>, every coefficient of <span class="math" data-tex="$\chi_{\alpha,L/K}$">$\chi_{\alpha,L/K}$</span>, in particular its trace and norm, belongs to <span class="math" data-tex="$\mathcal O_K$">$\mathcal O_K$</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="$E=K(\alpha)$">$E=K(\alpha)$</span>, let <span class="math" data-tex="$f=X^d+c_1X^{d-1}+\cdots+c_d$">$f=X^d+c_1X^{d-1}+\cdots+c_d$</span> be the minimal polynomial, and set <span class="math" data-tex="$r=[L:E]$">$r=[L:E]$</span>. On <span class="math" data-tex="$E$">$E$</span>, use the basis <span class="math" data-tex="$1,\alpha,\ldots,\alpha^{d-1}$">$1,\alpha,\ldots,\alpha^{d-1}$</span>. Multiplication shifts each basis vector to the next, while</p>
+<span class="math math-display" data-tex="$$
+\alpha^d=-c_d-c_{d-1}\alpha-\cdots-c_1\alpha^{d-1}.
+$$">$$
+\alpha^d=-c_d-c_{d-1}\alpha-\cdots-c_1\alpha^{d-1}.
+$$</span>
+<p>Its matrix has ones immediately below the diagonal, zeros elsewhere except for the last column <span class="math" data-tex="$(-c_d,-c_{d-1},\ldots,-c_1)^t$">$(-c_d,-c_{d-1},\ldots,-c_1)^t$</span>. Expanding <span class="math" data-tex="$\det(XI-m_\alpha)$">$\det(XI-m_\alpha)$</span> along that column gives <span class="math" data-tex="$f(X)$">$f(X)$</span>. A basis <span class="math" data-tex="$v_1,\ldots,v_r$">$v_1,\ldots,v_r$</span> of <span class="math" data-tex="$L/E$">$L/E$</span> decomposes <span class="math" data-tex="$L$">$L$</span> as <span class="math" data-tex="$\bigoplus_j Ev_j$">$\bigoplus_j Ev_j$</span>, with multiplication having the same matrix on every summand. Consequently</p>
+<span class="math math-display" data-tex="$$
+\chi_{\alpha,L/K}=f^r. \tag{1}
+$$">$$
+\chi_{\alpha,L/K}=f^r. \tag{1}
+$$</span>
+<p>This equality needs no separability. In the separable case, <span class="math" data-tex="$E/K$">$E/K$</span> has <span class="math" data-tex="$d$">$d$</span> embeddings and each extends to exactly <span class="math" data-tex="$r$">$r$</span> embeddings of <span class="math" data-tex="$L$">$L$</span>. This extension count was proved in Section 1. Each root of <span class="math" data-tex="$f$">$f$</span> therefore occurs <span class="math" data-tex="$r$">$r$</span> times in the required product. Equation (1) proves the characteristic-polynomial formula. Comparing coefficients gives trace and norm.</p>
+<p>To prove the tower identities without a separability assumption, let <span class="math" data-tex="$A=(a_{ij})$">$A=(a_{ij})$</span> represent an <span class="math" data-tex="$L$">$L$</span>-linear map on <span class="math" data-tex="$L^s$">$L^s$</span>. Over <span class="math" data-tex="$K$">$K$</span>, each entry becomes the block representing multiplication by <span class="math" data-tex="$a_{ij}$">$a_{ij}$</span> on <span class="math" data-tex="$L$">$L$</span>. The sum of the traces of the diagonal blocks is</p>
+<span class="math math-display" data-tex="$$
+\operatorname{tr}_K(A)=\operatorname{Tr}_{L/K}\left(\sum_i a_{ii}\right).
+$$">$$
+\operatorname{tr}_K(A)=\operatorname{Tr}_{L/K}\left(\sum_i a_{ii}\right).
+$$</span>
+<p>We also have</p>
+<span class="math math-display" data-tex="$$
+\det_K(A)=N_{L/K}(\det_L A). \tag{2}
+$$">$$
+\det_K(A)=N_{L/K}(\det_L A). \tag{2}
+$$</span>
+<p>If <span class="math" data-tex="$A$">$A$</span> is singular, a nonzero kernel vector makes both sides zero. If it is invertible, Gaussian elimination expresses it as a product of row additions, diagonal scalings and row interchanges. Both sides of (2) multiply under products. A row addition has determinant <span class="math" data-tex="$1$">$1$</span> over both fields. Scaling one coordinate by <span class="math" data-tex="$a$">$a$</span> gives determinant <span class="math" data-tex="$N_{L/K}(a)$">$N_{L/K}(a)$</span> over <span class="math" data-tex="$K$">$K$</span>. Interchanging two <span class="math" data-tex="$L$">$L$</span>-coordinates interchanges two blocks of size <span class="math" data-tex="$[L:K]$">$[L:K]$</span>, giving <span class="math" data-tex="$(-1)^{[L:K]}=N_{L/K}(-1)$">$(-1)^{[L:K]}=N_{L/K}(-1)$</span>. This proves (2) for every factor and hence for <span class="math" data-tex="$A$">$A$</span>. Apply these two identities to multiplication by <span class="math" data-tex="$x$">$x$</span> on <span class="math" data-tex="$M$">$M$</span>, considered first as an <span class="math" data-tex="$L$">$L$</span>-vector space. Its <span class="math" data-tex="$L$">$L$</span>-trace and determinant are precisely <span class="math" data-tex="$\operatorname{Tr}_{M/L}(x)$">$\operatorname{Tr}_{M/L}(x)$</span> and <span class="math" data-tex="$N_{M/L}(x)$">$N_{M/L}(x)$</span>. This proves both tower identities.</p>
+<p>Finally, an embedding sends a monic equation over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> for <span class="math" data-tex="$\alpha$">$\alpha$</span> to the same equation for <span class="math" data-tex="$\sigma(\alpha)$">$\sigma(\alpha)$</span>. Thus all those images are algebraic integers. Every elementary symmetric expression in them is an algebraic integer by the ring property. These expressions are the coefficients of <span class="math" data-tex="$\chi_{\alpha,L/K}$">$\chi_{\alpha,L/K}$</span>, which already lie in <span class="math" data-tex="$K$">$K$</span>. They therefore lie in <span class="math" data-tex="$\mathcal O_K$">$\mathcal O_K$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For <span class="math" data-tex="$\alpha\in K$">$\alpha\in K$</span>, Proposition 1.2 and (1) now give a second integrality test:</p>
+<span class="math math-display" data-tex="$$
+\alpha\in\mathcal O_K\quad\Longleftrightarrow\quad
+\chi_{\alpha,K/\mathbb Q}\in\mathbb Z[X]. \tag{3}
+$$">$$
+\alpha\in\mathcal O_K\quad\Longleftrightarrow\quad
+\chi_{\alpha,K/\mathbb Q}\in\mathbb Z[X]. \tag{3}
+$$</span>
+<p>The forward implication was proved above. For the converse, (1) shows that <span class="math" data-tex="$\chi_{\alpha,K/\mathbb Q}(\alpha)=0$">$\chi_{\alpha,K/\mathbb Q}(\alpha)=0$</span>, so it is a monic integer equation for <span class="math" data-tex="$\alpha$">$\alpha$</span>. In a quadratic field, its only nonleading coefficients are minus the trace and the norm. Hence trace and norm being integers is sufficient there. For larger degrees, (3) asks for all coefficients, not just those two.</p>
+<p>For a concrete distinction, let <span class="math" data-tex="$\gamma$">$\gamma$</span> be a root of <span class="math" data-tex="$X^3+\tfrac12X+1$">$X^3+\tfrac12X+1$</span>. The polynomial <span class="math" data-tex="$2X^3+X+2$">$2X^3+X+2$</span> has none of its possible rational roots <span class="math" data-tex="$\pm1,\pm2,\pm\tfrac12$">$\pm1,\pm2,\pm\tfrac12$</span>, so the cubic is irreducible. In <span class="math" data-tex="$\mathbb Q(\gamma)$">$\mathbb Q(\gamma)$</span>, its trace is <span class="math" data-tex="$0$">$0$</span> and its norm is <span class="math" data-tex="$-1$">$-1$</span>, yet Proposition 1.1 shows that <span class="math" data-tex="$\gamma$">$\gamma$</span> is not an algebraic integer. Thus integer trace and norm, even norm <span class="math" data-tex="$\pm1$">$\pm1$</span>, cannot replace the full integrality test.</p>
+<p><strong>A real cyclotomic integer.</strong> Let <span class="math" data-tex="$t=2\cos(2\pi/7)=\zeta_7+\zeta_7^{-1}$">$t=2\cos(2\pi/7)=\zeta_7+\zeta_7^{-1}$</span>. Roots of unity are algebraic integers since they satisfy <span class="math" data-tex="$X^m-1$">$X^m-1$</span>, so <span class="math" data-tex="$t$">$t$</span> is one too. Dividing <span class="math" data-tex="$1+\zeta_7+\cdots+\zeta_7^6=0$">$1+\zeta_7+\cdots+\zeta_7^6=0$</span> by <span class="math" data-tex="$\zeta_7^3$">$\zeta_7^3$</span> gives</p>
+<span class="math math-display" data-tex="$$
+1+t+(t^2-2)+(t^3-3t)=0.
+$$">$$
+1+t+(t^2-2)+(t^3-3t)=0.
+$$</span>
+<p>Thus <span class="math" data-tex="$t^3+t^2-2t-1=0$">$t^3+t^2-2t-1=0$</span>. This cubic has no rational root: a rational root of a monic integer polynomial must be an integer dividing its constant coefficient, and neither <span class="math" data-tex="$1$">$1$</span> nor <span class="math" data-tex="$-1$">$-1$</span> is a root. It is therefore the minimal polynomial. Sending <span class="math" data-tex="$\zeta_7$">$\zeta_7$</span> to <span class="math" data-tex="$\zeta_7^j$">$\zeta_7^j$</span> gives the three distinct conjugates</p>
+<span class="math math-display" data-tex="$$
+2\cos(2\pi/7),\quad2\cos(4\pi/7),\quad2\cos(6\pi/7).
+$$">$$
+2\cos(2\pi/7),\quad2\cos(4\pi/7),\quad2\cos(6\pi/7).
+$$</span>
+<p>They are distinct because cosine decreases on <span class="math" data-tex="$(0,\pi)$">$(0,\pi)$</span>. In <span class="math" data-tex="$\mathbb Q(t)$">$\mathbb Q(t)$</span>, the trace of <span class="math" data-tex="$t$">$t$</span> is <span class="math" data-tex="$-1$">$-1$</span> and its norm is <span class="math" data-tex="$1$">$1$</span>. In <span class="math" data-tex="$\mathbb Q(\zeta_7)$">$\mathbb Q(\zeta_7)$</span>, each image occurs twice, so its trace is <span class="math" data-tex="$-2$">$-2$</span> and its norm is <span class="math" data-tex="$1$">$1$</span>.</p>
+<p><strong>Proposition 1.3 (recognizing units).</strong> For <span class="math" data-tex="$\alpha\in\mathcal O_K$">$\alpha\in\mathcal O_K$</span>,</p>
+<span class="math math-display" data-tex="$$
+\alpha\in\mathcal O_K^\times\quad\Longleftrightarrow\quad
+N_{K/\mathbb Q}(\alpha)=\pm1.
+$$">$$
+\alpha\in\mathcal O_K^\times\quad\Longleftrightarrow\quad
+N_{K/\mathbb Q}(\alpha)=\pm1.
+$$</span>
+<p><em>Proof.</em> If <span class="math" data-tex="$\alpha\beta=1$">$\alpha\beta=1$</span> with <span class="math" data-tex="$\beta\in\mathcal O_K$">$\beta\in\mathcal O_K$</span>, multiplicativity gives <span class="math" data-tex="$N(\alpha)N(\beta)=1$">$N(\alpha)N(\beta)=1$</span>. Both factors are integers, so <span class="math" data-tex="$N(\alpha)=\pm1$">$N(\alpha)=\pm1$</span>. Conversely, write</p>
+<span class="math math-display" data-tex="$$
+\chi_{\alpha,K/\mathbb Q}=X^n+b_1X^{n-1}+\cdots+b_n.
+$$">$$
+\chi_{\alpha,K/\mathbb Q}=X^n+b_1X^{n-1}+\cdots+b_n.
+$$</span>
+<p>All <span class="math" data-tex="$b_j$">$b_j$</span> are integers and <span class="math" data-tex="$b_n=(-1)^nN(\alpha)=\pm1$">$b_n=(-1)^nN(\alpha)=\pm1$</span>. Put <span class="math" data-tex="$b_0=1$">$b_0=1$</span>. Since this polynomial vanishes at <span class="math" data-tex="$\alpha$">$\alpha$</span>,</p>
+<span class="math math-display" data-tex="$$
+\alpha^{-1}=-b_n^{-1}\sum_{j=0}^{n-1}b_j\alpha^{n-1-j}\in\mathcal O_K.
+$$">$$
+\alpha^{-1}=-b_n^{-1}\sum_{j=0}^{n-1}b_j\alpha^{n-1-j}\in\mathcal O_K.
+$$</span>
+<p>The norm hypothesis ensures <span class="math" data-tex="$\alpha\ne0$">$\alpha\ne0$</span>, so this division is valid. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For example, <span class="math" data-tex="$1+\sqrt2$">$1+\sqrt2$</span> satisfies <span class="math" data-tex="$X^2-2X-1$">$X^2-2X-1$</span>, has trace <span class="math" data-tex="$2$">$2$</span>, norm <span class="math" data-tex="$-1$">$-1$</span>, and inverse <span class="math" data-tex="$\sqrt2-1$">$\sqrt2-1$</span>. Similarly, <span class="math" data-tex="$2+\sqrt3$">$2+\sqrt3$</span> satisfies <span class="math" data-tex="$X^2-4X+1$">$X^2-4X+1$</span>, has trace <span class="math" data-tex="$4$">$4$</span>, norm <span class="math" data-tex="$1$">$1$</span>, and inverse <span class="math" data-tex="$2-\sqrt3$">$2-\sqrt3$</span>. These equations prove integrality as well as invertibility.</p>
+<h2 id="4-solving-the-quadratic-case-completely">4. Solving the quadratic case completely</h2>
+<p>Let <span class="math" data-tex="$d\ne0,1$">$d\ne0,1$</span> be a squarefree integer, possibly negative. Write <span class="math" data-tex="$s=\sqrt d$">$s=\sqrt d$</span> and <span class="math" data-tex="$K=\mathbb Q(s)$">$K=\mathbb Q(s)$</span>. Its nonidentity automorphism sends <span class="math" data-tex="$s$">$s$</span> to <span class="math" data-tex="$-s$">$-s$</span>. Thus, for <span class="math" data-tex="$a,b\in\mathbb Q$">$a,b\in\mathbb Q$</span>,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Tr}(a+bs)=2a,\qquad N(a+bs)=a^2-db^2.
+$$">$$
+\operatorname{Tr}(a+bs)=2a,\qquad N(a+bs)=a^2-db^2.
+$$</span>
+<p><strong>Theorem 1.4 (quadratic rings of integers).</strong></p>
+<span class="math math-display" data-tex="$$
+\mathcal O_{\mathbb Q(\sqrt d)}=
+\begin{cases}
+\mathbb Z[\sqrt d],&amp;d\equiv2,3\pmod4,\\
+\mathbb Z[(1+\sqrt d)/2],&amp;d\equiv1\pmod4.
+\end{cases}
+$$">$$
+\mathcal O_{\mathbb Q(\sqrt d)}=
+\begin{cases}
+\mathbb Z[\sqrt d],&amp;d\equiv2,3\pmod4,\\
+\mathbb Z[(1+\sqrt d)/2],&amp;d\equiv1\pmod4.
+\end{cases}
+$$</span>
+<p><em>Proof.</em> If <span class="math" data-tex="$a+bs$">$a+bs$</span> is integral, its trace and norm are integers. Set <span class="math" data-tex="$u=2a\in\mathbb Z$">$u=2a\in\mathbb Z$</span>, <span class="math" data-tex="$v=2b\in\mathbb Q$">$v=2b\in\mathbb Q$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+dv^2=u^2-4N(a+bs)\in\mathbb Z.
+$$">$$
+dv^2=u^2-4N(a+bs)\in\mathbb Z.
+$$</span>
+<p>Write <span class="math" data-tex="$v=r/q$">$v=r/q$</span> in lowest terms with <span class="math" data-tex="$q&gt;0$">$q&gt;0$</span>. The condition implies <span class="math" data-tex="$q^2\mid d$">$q^2\mid d$</span>, because <span class="math" data-tex="$r$">$r$</span> and <span class="math" data-tex="$q$">$q$</span> are coprime. Squarefreeness of <span class="math" data-tex="$|d|$">$|d|$</span> forces <span class="math" data-tex="$q=1$">$q=1$</span>. Thus <span class="math" data-tex="$v\in\mathbb Z$">$v\in\mathbb Z$</span>, and norm integrality becomes</p>
+<span class="math math-display" data-tex="$$
+u^2\equiv dv^2\pmod4. \tag{4}
+$$">$$
+u^2\equiv dv^2\pmod4. \tag{4}
+$$</span>
+<p>If <span class="math" data-tex="$d\equiv2$">$d\equiv2$</span> or <span class="math" data-tex="$3\pmod4$">$3\pmod4$</span>, odd <span class="math" data-tex="$v$">$v$</span> would force a square to be <span class="math" data-tex="$2$">$2$</span> or <span class="math" data-tex="$3\pmod4$">$3\pmod4$</span>. Therefore <span class="math" data-tex="$v$">$v$</span> is even, and (4) makes <span class="math" data-tex="$u$">$u$</span> even too. We obtain <span class="math" data-tex="$a,b\in\mathbb Z$">$a,b\in\mathbb Z$</span>.</p>
+<p>If <span class="math" data-tex="$d\equiv1\pmod4$">$d\equiv1\pmod4$</span>, (4) holds exactly when <span class="math" data-tex="$u,v$">$u,v$</span> have the same parity. In that case</p>
+<span class="math math-display" data-tex="$$
+\frac{u+vs}{2}=\frac{u-v}{2}+v\frac{1+s}{2}
+$$">$$
+\frac{u+vs}{2}=\frac{u-v}{2}+v\frac{1+s}{2}
+$$</span>
+<p>belongs to the asserted integer span. Conversely, every element satisfying these parity conditions has integer trace and norm, so is integral by the quadratic case of (3). Equivalently, the extra generator <span class="math" data-tex="$w=(1+s)/2$">$w=(1+s)/2$</span> satisfies</p>
+<span class="math math-display" data-tex="$$
+w^2-w+\frac{1-d}{4}=0.
+$$">$$
+w^2-w+\frac{1-d}{4}=0.
+$$</span>
+<p>In each case the two displayed generators are linearly independent over <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span> and span exactly the ring described. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For <span class="math" data-tex="$d=5$">$d=5$</span>, <span class="math" data-tex="$w=(1+\sqrt5)/2$">$w=(1+\sqrt5)/2$</span> satisfies <span class="math" data-tex="$X^2-X-1$">$X^2-X-1$</span>, with trace <span class="math" data-tex="$1$">$1$</span> and norm <span class="math" data-tex="$-1$">$-1$</span>. It is an integer and a unit. For <span class="math" data-tex="$d=3$">$d=3$</span>, <span class="math" data-tex="$(1+\sqrt3)/2$">$(1+\sqrt3)/2$</span> has trace <span class="math" data-tex="$1$">$1$</span> but norm <span class="math" data-tex="$-1/2$">$-1/2$</span>, and minimal polynomial <span class="math" data-tex="$X^2-X-1/2$">$X^2-X-1/2$</span>. It is not integral.</p>
+<p>Negative <span class="math" data-tex="$d$">$d$</span> uses the same congruences. Since <span class="math" data-tex="$-3\equiv1\pmod4$">$-3\equiv1\pmod4$</span>, putting <span class="math" data-tex="$\omega=(-1+\sqrt{-3})/2$">$\omega=(-1+\sqrt{-3})/2$</span> gives</p>
+<span class="math math-display" data-tex="$$
+\mathcal O_{\mathbb Q(\sqrt{-3})}=\mathbb Z[\omega],\qquad
+\omega^2+\omega+1=0.
+$$">$$
+\mathcal O_{\mathbb Q(\sqrt{-3})}=\mathbb Z[\omega],\qquad
+\omega^2+\omega+1=0.
+$$</span>
+<p>The integer <span class="math" data-tex="$\omega$">$\omega$</span> has trace <span class="math" data-tex="$-1$">$-1$</span> and norm <span class="math" data-tex="$1$">$1$</span>, but does not lie in <span class="math" data-tex="$\mathbb Z[\sqrt{-3}]$">$\mathbb Z[\sqrt{-3}]$</span>. Indeed,</p>
+<span class="math math-display" data-tex="$$
+\mathbb Z[\sqrt{-3}]=\{a+2b\omega:a,b\in\mathbb Z\},
+$$">$$
+\mathbb Z[\sqrt{-3}]=\{a+2b\omega:a,b\in\mathbb Z\},
+$$</span>
+<p>since <span class="math" data-tex="$\sqrt{-3}=1+2\omega$">$\sqrt{-3}=1+2\omega$</span>. The two additive cosets are represented by <span class="math" data-tex="$0,\omega$">$0,\omega$</span>. Thus even an integral primitive generator can generate a proper subring of the full ring of integers.</p>
+<p>For <span class="math" data-tex="$d=-1$">$d=-1$</span>, Theorem 1.4 gives <span class="math" data-tex="$\mathcal O_{\mathbb Q(i)}=\mathbb Z[i]$">$\mathcal O_{\mathbb Q(i)}=\mathbb Z[i]$</span>. The norm of <span class="math" data-tex="$a+bi$">$a+bi$</span> is <span class="math" data-tex="$a^2+b^2$">$a^2+b^2$</span>. Proposition 1.3 reduces the unit equation to <span class="math" data-tex="$a^2+b^2=1$">$a^2+b^2=1$</span>, whose integer solutions give exactly <span class="math" data-tex="$1,-1,i,-i$">$1,-1,i,-i$</span>. Their traces are <span class="math" data-tex="$2,-2,0,0$">$2,-2,0,0$</span>, respectively, and all have norm <span class="math" data-tex="$1$">$1$</span>.</p>
+<h2 id="5-when-irreducible-elements-stop-factoring-uniquely">5. When irreducible elements stop factoring uniquely</h2>
+<p>In a domain, a <strong>unit</strong> has a multiplicative inverse in the domain. Two elements are <strong>associates</strong> if one is a unit times the other. A nonzero nonunit is <strong>irreducible</strong> if every factorization of it has a unit factor. Unique factorization requires that products of irreducibles representing the same element agree up to associates and reordering.</p>
+<p><strong>Proposition 1.5.</strong> The ring <span class="math" data-tex="$\mathbb Z[\sqrt{-5}]$">$\mathbb Z[\sqrt{-5}]$</span> is not a unique factorization domain.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="$-5\equiv3\pmod4$">$-5\equiv3\pmod4$</span>, this is the full ring of integers. Write <span class="math" data-tex="$s=\sqrt{-5}$">$s=\sqrt{-5}$</span>. For <span class="math" data-tex="$a,b\in\mathbb Z$">$a,b\in\mathbb Z$</span>,</p>
+<span class="math math-display" data-tex="$$
+N(a+bs)=a^2+5b^2.
+$$">$$
+N(a+bs)=a^2+5b^2.
+$$</span>
+<p>The only elements of norm <span class="math" data-tex="$1$">$1$</span> are <span class="math" data-tex="$\pm1$">$\pm1$</span>, so these are its units. No element has norm <span class="math" data-tex="$2$">$2$</span> or <span class="math" data-tex="$3$">$3$</span>: if <span class="math" data-tex="$b\ne0$">$b\ne0$</span> the norm is at least <span class="math" data-tex="$5$">$5$</span>, and if <span class="math" data-tex="$b=0$">$b=0$</span> it is a square. Now</p>
+<span class="math math-display" data-tex="$$
+6=2\cdot3=(1+s)(1-s),\qquad
+N(2)=4,\ N(3)=9,\ N(1\pm s)=6.
+$$">$$
+6=2\cdot3=(1+s)(1-s),\qquad
+N(2)=4,\ N(3)=9,\ N(1\pm s)=6.
+$$</span>
+<p>A factorization of <span class="math" data-tex="$2$">$2$</span> into nonunits would split <span class="math" data-tex="$4$">$4$</span> into two integer norms greater than <span class="math" data-tex="$1$">$1$</span>, necessarily <span class="math" data-tex="$2\cdot2$">$2\cdot2$</span>. A factorization of <span class="math" data-tex="$3$">$3$</span> would similarly require <span class="math" data-tex="$3\cdot3$">$3\cdot3$</span>; one of <span class="math" data-tex="$1\pm s$">$1\pm s$</span> would require <span class="math" data-tex="$2\cdot3$">$2\cdot3$</span>. All are impossible. The four factors are irreducible. Associates have the same norm, so all pairs with different norms are excluded. Finally <span class="math" data-tex="$1+s$">$1+s$</span> is neither <span class="math" data-tex="$1-s$">$1-s$</span> nor <span class="math" data-tex="$-(1-s)$">$-(1-s)$</span>, excluding the remaining pair. These are two inequivalent factorizations. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Integral closedness has therefore not restored unique factorization of elements. The next arithmetic step changes the objects being factored. <em>Discrete valuation rings and Dedekind domains</em> develops ideal factorization; <em>Noether's axioms for Dedekind domains</em> presents its global axiomatic proof.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Show that <span class="math" data-tex="$\sqrt2+\sqrt3$">$\sqrt2+\sqrt3$</span> is an algebraic integer and find its minimal polynomial over <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span>.</p>
+</li>
+<li>
+<p><strong>Easy.</strong> Compute the trace and norm of <span class="math" data-tex="$1+\sqrt[3]2+\sqrt[3]4$">$1+\sqrt[3]2+\sqrt[3]4$</span> in <span class="math" data-tex="$\mathbb Q(\sqrt[3]2)$">$\mathbb Q(\sqrt[3]2)$</span>. Decide whether it is a unit and exhibit its inverse if it is.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Prove that <span class="math" data-tex="$2,3,1+\sqrt{-5},1-\sqrt{-5}$">$2,3,1+\sqrt{-5},1-\sqrt{-5}$</span> are irreducible and pairwise nonassociate in <span class="math" data-tex="$\mathbb Z[\sqrt{-5}]$">$\mathbb Z[\sqrt{-5}]$</span>. Also show directly that <span class="math" data-tex="$2$">$2$</span> is not prime.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> If <span class="math" data-tex="$\alpha$">$\alpha$</span> is a root of <span class="math" data-tex="$X^2+3$">$X^2+3$</span>, show that <span class="math" data-tex="$\mathbb Z[\alpha]$">$\mathbb Z[\alpha]$</span> is not integrally closed in its fraction field and identify its integral closure.</p>
+</li>
+<li>
+<p><strong>Hard (Kronecker's theorem).</strong> An algebraic integer all of whose distinct conjugates have absolute value <span class="math" data-tex="$1$">$1$</span> is a root of unity. Prove this by considering polynomials whose roots are powers of its conjugates.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> For <span class="math" data-tex="$K=\mathbb Q(\sqrt2,\sqrt3)$">$K=\mathbb Q(\sqrt2,\sqrt3)$</span>, prove that</p>
+<span class="math math-display" data-tex="$$
+1,\quad\sqrt2,\quad\sqrt3,\quad\frac{\sqrt2+\sqrt6}{2}
+$$">$$
+1,\quad\sqrt2,\quad\sqrt3,\quad\frac{\sqrt2+\sqrt6}{2}
+$$</span>
+<p>is a <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>-basis of <span class="math" data-tex="$\mathcal O_K$">$\mathcal O_K$</span>. Define the discriminant of such a basis as <span class="math" data-tex="$\det(\operatorname{Tr}_{K/\mathbb Q}(b_i b_j))$">$\det(\operatorname{Tr}_{K/\mathbb Q}(b_i b_j))$</span>. Compute <span class="math" data-tex="$d_K=2304$">$d_K=2304$</span> and verify <span class="math" data-tex="$2304=8\cdot12\cdot24$">$2304=8\cdot12\cdot24$</span>, the product of the discriminants of the three quadratic subfields.</p>
+</li>
+</ol>
+<h2 id="7-complete-solutions">7. Complete solutions</h2>
+<p><strong>1.</strong> Put <span class="math" data-tex="$s=\sqrt2$">$s=\sqrt2$</span>, <span class="math" data-tex="$t=\sqrt3$">$t=\sqrt3$</span>, <span class="math" data-tex="$z=s+t$">$z=s+t$</span>. The ring property proves integrality. Since <span class="math" data-tex="$z^2=5+2\sqrt6$">$z^2=5+2\sqrt6$</span>, we have <span class="math" data-tex="$(z^2-5)^2=24$">$(z^2-5)^2=24$</span>, giving <span class="math" data-tex="$z^4-10z^2+1=0$">$z^4-10z^2+1=0$</span>.</p>
+<p>For minimality, first <span class="math" data-tex="$\sqrt3\notin\mathbb Q(\sqrt2)$">$\sqrt3\notin\mathbb Q(\sqrt2)$</span>. If <span class="math" data-tex="$t=a+bs$">$t=a+bs$</span> with rational <span class="math" data-tex="$a,b$">$a,b$</span>, squaring forces <span class="math" data-tex="$ab=0$">$ab=0$</span>. The alternatives would make <span class="math" data-tex="$3$">$3$</span> or <span class="math" data-tex="$3/2$">$3/2$</span> a rational square; prime exponents show neither is. Hence <span class="math" data-tex="$[\mathbb Q(s,t):\mathbb Q]=4$">$[\mathbb Q(s,t):\mathbb Q]=4$</span>. But <span class="math" data-tex="$z(t-s)=1$">$z(t-s)=1$</span>, so</p>
+<span class="math math-display" data-tex="$$
+s=\frac{z-z^{-1}}2,\qquad t=\frac{z+z^{-1}}2.
+$$">$$
+s=\frac{z-z^{-1}}2,\qquad t=\frac{z+z^{-1}}2.
+$$</span>
+<p>Thus <span class="math" data-tex="$\mathbb Q(z)=\mathbb Q(s,t)$">$\mathbb Q(z)=\mathbb Q(s,t)$</span> has degree <span class="math" data-tex="$4$">$4$</span>, and the displayed quartic is the minimal polynomial. Its distinct roots are the four signed sums <span class="math" data-tex="$\pm s\pm t$">$\pm s\pm t$</span>.</p>
+<p><strong>2.</strong> Put <span class="math" data-tex="$c=\sqrt[3]2$">$c=\sqrt[3]2$</span>, so <span class="math" data-tex="$c^3=2$">$c^3=2$</span> and <span class="math" data-tex="$1,c,c^2$">$1,c,c^2$</span> is a basis. Multiplication by <span class="math" data-tex="$\beta=1+c+c^2$">$\beta=1+c+c^2$</span> has matrix</p>
+<span class="math math-display" data-tex="$$
+\begin{pmatrix}1&amp;2&amp;2\\1&amp;1&amp;2\\1&amp;1&amp;1\end{pmatrix}.
+$$">$$
+\begin{pmatrix}1&amp;2&amp;2\\1&amp;1&amp;2\\1&amp;1&amp;1\end{pmatrix}.
+$$</span>
+<p>Its trace is <span class="math" data-tex="$3$">$3$</span> and determinant is <span class="math" data-tex="$1$">$1$</span>. Its characteristic polynomial is <span class="math" data-tex="$X^3-3X^2-3X-1$">$X^3-3X^2-3X-1$</span>. The element is integral because it is a sum of algebraic integers, and norm <span class="math" data-tex="$1$">$1$</span> makes it a unit. More directly,</p>
+<span class="math math-display" data-tex="$$
+(c-1)(1+c+c^2)=c^3-1=1,
+$$">$$
+(c-1)(1+c+c^2)=c^3-1=1,
+$$</span>
+<p>so its inverse is <span class="math" data-tex="$c-1\in\mathcal O_K$">$c-1\in\mathcal O_K$</span>.</p>
+<p><strong>3.</strong> The norm <span class="math" data-tex="$a^2+5b^2$">$a^2+5b^2$</span> is positive for nonzero elements, and norms <span class="math" data-tex="$2,3$">$2,3$</span> cannot occur. The only units are <span class="math" data-tex="$\pm1$">$\pm1$</span>. A nontrivial factorization would require norms <span class="math" data-tex="$2,2$">$2,2$</span> for <span class="math" data-tex="$2$">$2$</span>, norms <span class="math" data-tex="$3,3$">$3,3$</span> for <span class="math" data-tex="$3$">$3$</span>, or norms <span class="math" data-tex="$2,3$">$2,3$</span> for <span class="math" data-tex="$1\pm\sqrt{-5}$">$1\pm\sqrt{-5}$</span>; none exists. Their norms <span class="math" data-tex="$4,9,6,6$">$4,9,6,6$</span> separate every pair except the last. Those two differ neither by <span class="math" data-tex="$1$">$1$</span> nor by <span class="math" data-tex="$-1$">$-1$</span>, so all four are pairwise nonassociate.</p>
+<p>Nevertheless <span class="math" data-tex="$2$">$2$</span> divides <span class="math" data-tex="$(1+\sqrt{-5})(1-\sqrt{-5})=6$">$(1+\sqrt{-5})(1-\sqrt{-5})=6$</span>, and divides neither factor: dividing either by <span class="math" data-tex="$2$">$2$</span> gives half-integer coefficients in the basis <span class="math" data-tex="$1,\sqrt{-5}$">$1,\sqrt{-5}$</span>. Thus it is irreducible but not prime.</p>
+<p><strong>4.</strong> The fraction field is <span class="math" data-tex="$\mathbb Q(\alpha)$">$\mathbb Q(\alpha)$</span>, with <span class="math" data-tex="$\alpha^2=-3$">$\alpha^2=-3$</span>. The element <span class="math" data-tex="$w=(1+\alpha)/2$">$w=(1+\alpha)/2$</span> satisfies <span class="math" data-tex="$w^2-w+1=0$">$w^2-w+1=0$</span>, a monic equation even over <span class="math" data-tex="$\mathbb Z[\alpha]$">$\mathbb Z[\alpha]$</span>, but <span class="math" data-tex="$w\notin\mathbb Z[\alpha]$">$w\notin\mathbb Z[\alpha]$</span>. The ring is not integrally closed. Its integral closure is</p>
+<span class="math math-display" data-tex="$$
+\mathcal O_{\mathbb Q(\alpha)}=\mathbb Z[w]
+$$">$$
+\mathcal O_{\mathbb Q(\alpha)}=\mathbb Z[w]
+$$</span>
+<p>by Theorem 1.4. To check that “integral closure” over <span class="math" data-tex="$\mathbb Z[\alpha]$">$\mathbb Z[\alpha]$</span> gives the same answer as over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>, note that <span class="math" data-tex="$\mathbb Z[\alpha]$">$\mathbb Z[\alpha]$</span> is integral over <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>. Transitivity makes every element integral over it an algebraic integer. Conversely, every algebraic integer satisfies a monic equation over <span class="math" data-tex="$\mathbb Z\subset\mathbb Z[\alpha]$">$\mathbb Z\subset\mathbb Z[\alpha]$</span>.</p>
+<p><strong>5.</strong> Let <span class="math" data-tex="$\alpha_1,\ldots,\alpha_d$">$\alpha_1,\ldots,\alpha_d$</span> be the distinct conjugates of <span class="math" data-tex="$\alpha$">$\alpha$</span>, and let <span class="math" data-tex="$F=\mathbb Q(\alpha)$">$F=\mathbb Q(\alpha)$</span>. For every positive integer <span class="math" data-tex="$m$">$m$</span>,</p>
+<span class="math math-display" data-tex="$$
+P_m(X)=\prod_{j=1}^d(X-\alpha_j^m)
+$$">$$
+P_m(X)=\prod_{j=1}^d(X-\alpha_j^m)
+$$</span>
+<p>is the characteristic polynomial of multiplication by <span class="math" data-tex="$\alpha^m$">$\alpha^m$</span> on <span class="math" data-tex="$F$">$F$</span>. Proposition 1.2 makes it a monic polynomial in <span class="math" data-tex="$\mathbb Z[X]$">$\mathbb Z[X]$</span>, even if some powers coincide. Its coefficient of <span class="math" data-tex="$X^{d-k}$">$X^{d-k}$</span> has absolute value at most <span class="math" data-tex="$\binom dk$">$\binom dk$</span>: it is a sum of that many products, each of absolute value <span class="math" data-tex="$1$">$1$</span>. There are therefore only finitely many possible <span class="math" data-tex="$P_m$">$P_m$</span>.</p>
+<p>The union of the root sets of these finitely many polynomials is finite. It contains every <span class="math" data-tex="$\alpha^m$">$\alpha^m$</span>, so <span class="math" data-tex="$\alpha^r=\alpha^s$">$\alpha^r=\alpha^s$</span> for some <span class="math" data-tex="$r&gt;s&gt;0$">$r&gt;s&gt;0$</span>. Since <span class="math" data-tex="$|\alpha|=1$">$|\alpha|=1$</span>, <span class="math" data-tex="$\alpha\ne0$">$\alpha\ne0$</span>, and division yields <span class="math" data-tex="$\alpha^{r-s}=1$">$\alpha^{r-s}=1$</span>. This proves the theorem. Finiteness of the polynomials alone would not justify matching their roots in the same order; using their finite union avoids that issue.</p>
+<h3 id="a-biquadratic-integral-basis">A biquadratic integral basis</h3>
+<p><strong>6.</strong> Put <span class="math" data-tex="$s=\sqrt2$">$s=\sqrt2$</span>, <span class="math" data-tex="$t=\sqrt3$">$t=\sqrt3$</span>, <span class="math" data-tex="$u=st=\sqrt6$">$u=st=\sqrt6$</span>, and <span class="math" data-tex="$v=(s+u)/2$">$v=(s+u)/2$</span>. Solution 1 proved <span class="math" data-tex="$[K:\mathbb Q]=4$">$[K:\mathbb Q]=4$</span>. Its four embeddings independently change the signs of <span class="math" data-tex="$s,t$">$s,t$</span>. The elements <span class="math" data-tex="$1,s,t$">$1,s,t$</span> are integral, and</p>
+<span class="math math-display" data-tex="$$
+v^2=2+t,\qquad (v^2-2)^2=3,\qquad v^4-4v^2+1=0
+$$">$$
+v^2=2+t,\qquad (v^2-2)^2=3,\qquad v^4-4v^2+1=0
+$$</span>
+<p>shows that <span class="math" data-tex="$v$">$v$</span> is integral. The proposed four elements are a <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span>-basis, since replacing <span class="math" data-tex="$u$">$u$</span> by <span class="math" data-tex="$v=(s+u)/2$">$v=(s+u)/2$</span> is an invertible change of basis. Their integer span is therefore contained in <span class="math" data-tex="$\mathcal O_K$">$\mathcal O_K$</span>. The essential remaining step is to prove it contains every integer.</p>
+<p>Write <span class="math" data-tex="$x=a+bs+ct+eu\in\mathcal O_K$">$x=a+bs+ct+eu\in\mathcal O_K$</span>, with rational coefficients. The relative traces to <span class="math" data-tex="$\mathbb Q(s),\mathbb Q(t),\mathbb Q(u)$">$\mathbb Q(s),\mathbb Q(t),\mathbb Q(u)$</span> are respectively</p>
+<span class="math math-display" data-tex="$$
+2a+2bs,\qquad2a+2ct,\qquad2a+2eu.
+$$">$$
+2a+2bs,\qquad2a+2ct,\qquad2a+2eu.
+$$</span>
+<p>They lie in the corresponding quadratic rings of integers, which are <span class="math" data-tex="$\mathbb Z[s],\mathbb Z[t],\mathbb Z[u]$">$\mathbb Z[s],\mathbb Z[t],\mathbb Z[u]$</span>. Thus <span class="math" data-tex="$2a,2b,2c,2e$">$2a,2b,2c,2e$</span> are integers. We can write</p>
+<span class="math math-display" data-tex="$$
+x=\frac{A+Bs+Ct+Du}{2},\qquad A,B,C,D\in\mathbb Z.
+$$">$$
+x=\frac{A+Bs+Ct+Du}{2},\qquad A,B,C,D\in\mathbb Z.
+$$</span>
+<p>Its relative norm to <span class="math" data-tex="$\mathbb Q(s)$">$\mathbb Q(s)$</span>, obtained by changing the sign of <span class="math" data-tex="$t$">$t$</span>, equals</p>
+<span class="math math-display" data-tex="$$
+\frac{A^2+2B^2-3C^2-6D^2}{4}
++\frac{AB-3CD}{2}s.
+$$">$$
+\frac{A^2+2B^2-3C^2-6D^2}{4}
++\frac{AB-3CD}{2}s.
+$$</span>
+<p>Since it lies in <span class="math" data-tex="$\mathbb Z[s]$">$\mathbb Z[s]$</span>, its rational coefficient is an integer. Reducing its numerator modulo <span class="math" data-tex="$2$">$2$</span> gives <span class="math" data-tex="$A\equiv C\pmod2$">$A\equiv C\pmod2$</span>. The relative norm to <span class="math" data-tex="$\mathbb Q(t)$">$\mathbb Q(t)$</span> is</p>
+<span class="math math-display" data-tex="$$
+\frac{A^2+3C^2-2B^2-6D^2}{4}
++\frac{AC-2BD}{2}t.
+$$">$$
+\frac{A^2+3C^2-2B^2-6D^2}{4}
++\frac{AC-2BD}{2}t.
+$$</span>
+<p>Its <span class="math" data-tex="$t$">$t$</span>-coefficient must be integral, so <span class="math" data-tex="$AC$">$AC$</span> is even. Together with equal parity, this forces both <span class="math" data-tex="$A,C$">$A,C$</span> even. Return to the first norm's rational coefficient and reduce its numerator modulo <span class="math" data-tex="$4$">$4$</span>. We obtain <span class="math" data-tex="$2B^2-6D^2\equiv0\pmod4$">$2B^2-6D^2\equiv0\pmod4$</span>, hence <span class="math" data-tex="$B\equiv D\pmod2$">$B\equiv D\pmod2$</span>. It follows that</p>
+<span class="math math-display" data-tex="$$
+x=\frac A2+\frac{B-D}{2}s+\frac C2t+Dv
+$$">$$
+x=\frac A2+\frac{B-D}{2}s+\frac C2t+Dv
+$$</span>
+<p>has integer coefficients in the proposed basis. This proves the basis assertion, without presupposing the answer from a discriminant calculation.</p>
+<p>The absolute trace of <span class="math" data-tex="$a+bs+ct+eu$">$a+bs+ct+eu$</span> is <span class="math" data-tex="$4a$">$4a$</span>. Using <span class="math" data-tex="$s^2=2$">$s^2=2$</span>, <span class="math" data-tex="$t^2=3$">$t^2=3$</span>, <span class="math" data-tex="$sv=1+t$">$sv=1+t$</span> and <span class="math" data-tex="$v^2=2+t$">$v^2=2+t$</span>, the trace matrix in the order <span class="math" data-tex="$1,s,t,v$">$1,s,t,v$</span> is</p>
+<span class="math math-display" data-tex="$$
+G=\begin{pmatrix}
+4&amp;0&amp;0&amp;0\\
+0&amp;8&amp;0&amp;4\\
+0&amp;0&amp;12&amp;0\\
+0&amp;4&amp;0&amp;8
+\end{pmatrix}.
+$$">$$
+G=\begin{pmatrix}
+4&amp;0&amp;0&amp;0\\
+0&amp;8&amp;0&amp;4\\
+0&amp;0&amp;12&amp;0\\
+0&amp;4&amp;0&amp;8
+\end{pmatrix}.
+$$</span>
+<p>Therefore</p>
+<span class="math math-display" data-tex="$$
+d_K=\det G=4\cdot12\cdot(8\cdot8-4\cdot4)=2304.
+$$">$$
+d_K=\det G=4\cdot12\cdot(8\cdot8-4\cdot4)=2304.
+$$</span>
+<p>This value is independent of the integer basis: changing between two such bases uses an integer matrix whose inverse is also integral, hence whose determinant is <span class="math" data-tex="$\pm1$">$\pm1$</span>. The Gram determinant changes by the square of that determinant. Finally, the quadratic bases <span class="math" data-tex="$1,\sqrt d$">$1,\sqrt d$</span> for <span class="math" data-tex="$d=2,3,6$">$d=2,3,6$</span> have trace matrices <span class="math" data-tex="$\operatorname{diag}(2,2d)$">$\operatorname{diag}(2,2d)$</span>, so their discriminants are <span class="math" data-tex="$8,12,24$">$8,12,24$</span>. Their product is <span class="math" data-tex="$2304$">$2304$</span>, as claimed. The equality here is a computation, not an assumed general formula for composita.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The finite-module criterion, transitivity and ring property of integrality were proved in Section 2 without a Noetherian hypothesis. The same section proves Gauss's lemma in the forms used here, Eisenstein's criterion and the rational-root test. Section 1 proves degree multiplication, the embedding count and the primitive element theorem for every finite separable extension. These full arguments supply the imports of the following lessons; the Stacks and Milne links are additional human-source context.</p>
+<p>Matrix trace, determinant, Gaussian elimination and change of basis are assumed from linear algebra. We have proved the arithmetic propositions and both hard exercises. We have not proved the general existence of integral bases, ideal factorization, or the general discriminant theory; the following lessons develop those topics. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-section-trace-pairing">Stacks, Tag 0BIE</a> is the section <em>Trace and norm</em>, giving broader algebraic context for Section 3.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne ANT]</strong> J. S. Milne, <em>Algebraic Number Theory</em>, version 3.08, 2020, Chapter 2, from <em>First proof that the integral elements form a ring</em> through <em>Review of norms and traces</em>. <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Author's lecture notes</a>.</li>
+<li><strong>[Milne FGT]</strong> J. S. Milne, <em>Fields and Galois Theory</em>, version 5.10, 2022, Chapters 1–3 and the primitive element theorem in Chapter 5. <a href="https://www.jmilne.org/math/CourseNotes/FT.pdf">Author's lecture notes</a>.</li>
+<li><strong>[Stacks]</strong> The Stacks project authors, <em>The Stacks project</em>. The tag citations here link to the corresponding statements in the AI Integrated Stacks Project: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-characterize-integral">00GM</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-transitive">00GN</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-closure-is-ring">00GO</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-primitive-element">030N</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-section-trace-pairing">0BIE</a>. The AI Integrated Stacks Project is an edition with AI-proposed corrections and AI-written additions, not reviewed by the maintainers of the <a href="https://stacks.math.columbia.edu/">official Stacks project</a>.</li>
+</ul>
+</article><nav><a href="src/algebraic-integers-and-rings-of-integers.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

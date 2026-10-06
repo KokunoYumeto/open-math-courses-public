@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Affine morphisms, Artin vanishing and perverse cohomology · Perverse sheaves and intersection cohomology</title>
+<meta name="description" content="A lesson of the course Perverse sheaves and intersection cohomology. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-PERV/affine-morphisms-artin-vanishing-and-perverse-cohomology.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Perverse sheaves and intersection cohomology</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="affine-morphisms-artin-vanishing-and-perverse-cohomology">Affine morphisms, Artin vanishing and perverse cohomology</h1>
+<p><em>Reconstructed by GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A direct image can acquire cohomology in two different ways: its fibres can have positive dimension, and sections near a missing boundary can carry higher cohomology. We will calculate both effects before asking what affineness removes. This makes the direction of each perverse inequality visible. The final application cuts a projective variety by a hyperplane: the error in restriction is compactly supported cohomology of the affine complement.</p>
+<p>We use the categories of <span class="unlinked">Constructible complexes on algebraic varieties</span>, the truncation construction in <span class="unlinked">Gluing t-structures</span>, and the support tests of <a href="the-perverse-t-structure.html">The perverse t-structure</a>. Coefficients are the classical field coefficients of those lessons, or rational adic coefficients with the qualifications in Section 4. All maps are separated and of finite type. Dimensions are complex or algebraic dimensions; the dimension of an empty support is minus infinity. Our shift convention is <span class="math" data-tex="\(\mathcal H^q(K[r])=\mathcal H^{q+r}K\)">\(\mathcal H^q(K[r])=\mathcal H^{q+r}K\)</span>. In the étale case, global cohomology is geometric cohomology over an algebraic closure; relative functors retain descent data and Tate twists.</p>
+<p>The free author-hosted edition of Beilinson–Bernstein–Deligne, Sections 4.1–4.2, supplies the affine and smooth statements against which we check the hypotheses. The free de Cataldo–Migliorini survey, Section 5.3, supplies a second comparison of operation directions. The proofs below use the earlier programme constructions at the places specified, with unresolved inputs recorded as such.</p>
+<h2 id="1-read-degrees-from-a-perverse-tower">1. Read degrees from a perverse tower</h2>
+<p>Write <span class="math" data-tex="\(\mathcal P(X)\)">\(\mathcal P(X)\)</span> for the perverse heart. For a bounded constructible complex <span class="math" data-tex="\(M\)">\(M\)</span>, its successive perverse layers are</p>
+<span class="math math-display" data-tex="\[
+{}^pH^b(M)=({}^p\tau^{\ge b}{}^p\tau^{\le b}M)[b]\in\mathcal P(X).
+\tag{1.1}
+\]">\[
+{}^pH^b(M)=({}^p\tau^{\ge b}{}^p\tau^{\le b}M)[b]\in\mathcal P(X).
+\tag{1.1}
+\]</span>
+<p>The truncation axioms proved in the gluing lesson give triangles</p>
+<span class="math math-display" data-tex="\[
+{}^p\tau^{\le b-1}M\longrightarrow{}^p\tau^{\le b}M
+\longrightarrow{}^pH^b(M)[-b]\longrightarrow.
+\tag{1.2}
+\]">\[
+{}^p\tau^{\le b-1}M\longrightarrow{}^p\tau^{\le b}M
+\longrightarrow{}^pH^b(M)[-b]\longrightarrow.
+\tag{1.2}
+\]</span>
+<p>Boundedness makes this a finite construction of <span class="math" data-tex="\(M\)">\(M\)</span> from its layers. It does not provide a direct-sum decomposition. An exact triangulated functor which preserves both halves of the t-structure carries the truncation triangle to a truncation triangle; uniqueness of that triangle gives</p>
+<span class="math math-display" data-tex="\[
+F({}^pH^bM)\simeq{}^pH^b(FM).
+\tag{1.3}
+\]">\[
+F({}^pH^bM)\simeq{}^pH^b(FM).
+\tag{1.3}
+\]</span>
+<p>Here <strong>right t-exact</strong> means preservation of <span class="math" data-tex="\({}^pD^{\le0}\)">\({}^pD^{\le0}\)</span>, and <strong>left t-exact</strong> means preservation of <span class="math" data-tex="\({}^pD^{\ge0}\)">\({}^pD^{\ge0}\)</span>. We will state the inequalities as well as the terminology.</p>
+<p>For <span class="math" data-tex="\(M=Rf_*K\)">\(M=Rf_*K\)</span>, apply <span class="math" data-tex="\(H^*(Y,-)\)">\(H^*(Y,-)\)</span> to (1.2). To see the indexing rather than guess it, put</p>
+<span class="math math-display" data-tex="\[
+D^{a,b}=H^{a+b}(Y,{}^p\tau^{\le b}M),\qquad
+E^{a,b}=H^a(Y,{}^pH^bM).
+\tag{1.4}
+\]">\[
+D^{a,b}=H^{a+b}(Y,{}^p\tau^{\le b}M),\qquad
+E^{a,b}=H^a(Y,{}^pH^bM).
+\tag{1.4}
+\]</span>
+<p>The long exact sequences give an exact couple with arrows
+<span class="math" data-tex="\(D^{a+1,b-1}\to D^{a,b}\to E^{a,b}\to D^{a+2,b-1}\)">\(D^{a+1,b-1}\to D^{a,b}\to E^{a,b}\to D^{a+2,b-1}\)</span>.
+The composite through the next <span class="math" data-tex="\(D\)">\(D\)</span>-term has bidegree <span class="math" data-tex="\((2,-1)\)">\((2,-1)\)</span>. Taking its kernels modulo its images, and replacing <span class="math" data-tex="\(D\)">\(D\)</span> by the image of its first arrow, gives the derived couple. Repeating this construction increases the first component of the differential by one and decreases the second by one. Thus the resulting spectral sequence has</p>
+<span class="math math-display" data-tex="\[
+E_2^{a,b}=H^a(Y,{}^pH^b(Rf_*K)),\qquad
+d_r:E_r^{a,b}\to E_r^{a+r,b-r+1},
+\quad E_2\Longrightarrow H^{a+b}(X,K).
+\tag{1.5}
+\]">\[
+E_2^{a,b}=H^a(Y,{}^pH^b(Rf_*K)),\qquad
+d_r:E_r^{a,b}\to E_r^{a+r,b-r+1},
+\quad E_2\Longrightarrow H^{a+b}(X,K).
+\tag{1.5}
+\]</span>
+<p>The finite tower ensures convergence: below its first layer the truncation is zero, and above its last it is <span class="math" data-tex="\(M\)">\(M\)</span>; consequently the surviving quotients are exactly those of the finite filtration</p>
+<span class="math math-display" data-tex="\[
+P_bH^n(X,K)=\operatorname{im}\bigl(
+H^n(Y,{}^p\tau^{\le b}Rf_*K)\to H^n(X,K)\bigr).
+\tag{1.6}
+\]">\[
+P_bH^n(X,K)=\operatorname{im}\bigl(
+H^n(Y,{}^p\tau^{\le b}Rf_*K)\to H^n(X,K)\bigr).
+\tag{1.6}
+\]</span>
+<p>This is the perverse Leray spectral sequence. Negative indices are allowed. No degeneration assertion has entered its construction.</p>
+<p>Two calculations now test any proposed degree bound. For the proper map <span class="math" data-tex="\(a:\mathbb P^1\to\mathrm{pt}\)">\(a:\mathbb P^1\to\mathrm{pt}\)</span>, the perverse input <span class="math" data-tex="\(\Lambda[1]\)">\(\Lambda[1]\)</span> has image with cohomology in degrees <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>: these come from the degree-zero and degree-two cohomology of the projective line. For the open map
+<span class="math" data-tex="\(v:\mathbb C^2\setminus\{0\}\to\mathbb C^2\)">\(v:\mathbb C^2\setminus\{0\}\to\mathbb C^2\)</span>, the degree-one stalk of <span class="math" data-tex="\(Rv_*\Lambda[2]\)">\(Rv_*\Lambda[2]\)</span> is also nonzero: a punctured ball retracts onto <span class="math" data-tex="\(S^3\)">\(S^3\)</span>, and shifting its top cohomology by two puts it in degree one. The first map has one-dimensional fibres; the second has zero-dimensional fibres. Thus positive degree in a nonproper direct image cannot be bounded by fibre dimension alone. We will justify and use both calculations below.</p>
+<h2 id="2-obtain-the-inequalities-supplied-by-dimension">2. Obtain the inequalities supplied by dimension</h2>
+<p>Suppose every fibre of <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> has dimension at most <span class="math" data-tex="\(d\)">\(d\)</span>. For a constructible subset <span class="math" data-tex="\(T\subset Y\)">\(T\subset Y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\dim f^{-1}T\le\dim T+d.
+\tag{2.1}
+\]">\[
+\dim f^{-1}T\le\dim T+d.
+\tag{2.1}
+\]</span>
+<p>Indeed, partition <span class="math" data-tex="\(T\)">\(T\)</span> into locally closed pieces and take an irreducible component <span class="math" data-tex="\(W\)">\(W\)</span> of their inverse images. If <span class="math" data-tex="\(Z\)">\(Z\)</span> is its image closure, the dimension formula for finite-type integral varieties gives
+<span class="math" data-tex="\(\dim W=\dim Z+\operatorname{trdeg}_{k(Z)}k(W)\)">\(\dim W=\dim Z+\operatorname{trdeg}_{k(Z)}k(W)\)</span>.
+The second summand is the dimension of the generic fibre of <span class="math" data-tex="\(W\to Z\)">\(W\to Z\)</span>, at most <span class="math" data-tex="\(d\)">\(d\)</span>. Taking maxima proves (2.1). The dimension formula itself is one of the algebraic prerequisites still to be checked recursively.</p>
+<p><strong>Proposition 2.1.</strong> Under this fibre hypothesis the following four bounds hold:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f^*({}^pD^{\le0}(Y))&amp;\subset{}^pD^{\le d}(X),&amp;
+Rf_!({}^pD^{\le0}(X))&amp;\subset{}^pD^{\le d}(Y),\\
+f^!({}^pD^{\ge0}(Y))&amp;\subset{}^pD^{\ge-d}(X),&amp;
+Rf_*({}^pD^{\ge0}(X))&amp;\subset{}^pD^{\ge-d}(Y).
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+f^*({}^pD^{\le0}(Y))&amp;\subset{}^pD^{\le d}(X),&amp;
+Rf_!({}^pD^{\le0}(X))&amp;\subset{}^pD^{\le d}(Y),\\
+f^!({}^pD^{\ge0}(Y))&amp;\subset{}^pD^{\ge-d}(X),&amp;
+Rf_*({}^pD^{\ge0}(X))&amp;\subset{}^pD^{\ge-d}(Y).
+\end{aligned}
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> The upper support test says that <span class="math" data-tex="\(A\in{}^pD^{\le0}(Y)\)">\(A\in{}^pD^{\le0}(Y)\)</span> has
+<span class="math" data-tex="\(\dim\operatorname{Supp}\mathcal H^qA\le-q\)">\(\dim\operatorname{Supp}\mathcal H^qA\le-q\)</span>.
+Ordinary pullback is exact, so (2.1) bounds the support of <span class="math" data-tex="\(\mathcal H^qf^*A\)">\(\mathcal H^qf^*A\)</span> by <span class="math" data-tex="\(-q+d\)">\(-q+d\)</span>. This proves the first inclusion.</p>
+<p>Next take <span class="math" data-tex="\(B\in{}^pD^{\ge0}(X)\)">\(B\in{}^pD^{\ge0}(X)\)</span>. For every <span class="math" data-tex="\(A\in{}^pD^{\le-d-1}(Y)\)">\(A\in{}^pD^{\le-d-1}(Y)\)</span>, the first inclusion puts <span class="math" data-tex="\(f^*A\)">\(f^*A\)</span> in <span class="math" data-tex="\({}^pD^{\le-1}(X)\)">\({}^pD^{\le-1}(X)\)</span>. Adjunction and orthogonality give
+<span class="math" data-tex="\(\operatorname{Hom}(A,Rf_*B)=\operatorname{Hom}(f^*A,B)=0\)">\(\operatorname{Hom}(A,Rf_*B)=\operatorname{Hom}(f^*A,B)=0\)</span>.
+The orthogonal characterization of the lower half therefore gives the last inclusion. Over our field coefficients, Verdier duality reverses the two perverse halves and exchanges star with shriek. Dualizing the two proved inclusions gives the other two. These last deductions require the precise operation and duality prerequisites, which remain part of the course audit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For proper <span class="math" data-tex="\(f\)">\(f\)</span>, identify <span class="math" data-tex="\(Rf_!=Rf_*\)">\(Rf_!=Rf_*\)</span>. A perverse input then has image only in perverse degrees <span class="math" data-tex="\([-d,d]\)">\([-d,d]\)</span>. For finite <span class="math" data-tex="\(f\)">\(f\)</span>, use <span class="math" data-tex="\(d=0\)">\(d=0\)</span>: <strong>finite direct image is t-exact</strong>. Smoothness is unnecessary. For quasi-finite <span class="math" data-tex="\(f\)">\(f\)</span>, properness is unnecessary for the individual conclusions</p>
+<span class="math math-display" data-tex="\[
+Rf_*({}^pD^{\ge0})\subset{}^pD^{\ge0},\qquad
+Rf_!({}^pD^{\le0})\subset{}^pD^{\le0}.
+\tag{2.3}
+\]">\[
+Rf_*({}^pD^{\ge0})\subset{}^pD^{\ge0},\qquad
+Rf_!({}^pD^{\le0})\subset{}^pD^{\le0}.
+\tag{2.3}
+\]</span>
+<p>Return to the open immersion <span class="math" data-tex="\(v\)">\(v\)</span> of Section 1. On its smooth source <span class="math" data-tex="\(\Lambda[2]\)">\(\Lambda[2]\)</span> is perverse. The sphere calculation gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal H^q(i^*Rv_*\Lambda[2])=
+\begin{cases}\Lambda&amp;q=-2,1,\\0&amp;\text{otherwise},\end{cases}
+\quad i:\{0\}\hookrightarrow\mathbb C^2.
+\tag{2.4}
+\]">\[
+\mathcal H^q(i^*Rv_*\Lambda[2])=
+\begin{cases}\Lambda&amp;q=-2,1,\\0&amp;\text{otherwise},\end{cases}
+\quad i:\{0\}\hookrightarrow\mathbb C^2.
+\tag{2.4}
+\]</span>
+<p>The sphere has one cell in dimensions zero and three, with zero cellular differential, so these are precisely its two groups after the shift. Its degree-one group violates the upper perverse stalk test at a point. Thus <span class="math" data-tex="\(d=0\)">\(d=0\)</span> in (2.2) cannot be used to add an upper bound on <span class="math" data-tex="\(Rf_*\)">\(Rf_*\)</span>. The map <span class="math" data-tex="\(v\)">\(v\)</span> is not affine. To verify this algebraically, cover the punctured plane by <span class="math" data-tex="\(D(x)\)">\(D(x)\)</span> and <span class="math" data-tex="\(D(y)\)">\(D(y)\)</span>. A regular function belongs to
+<span class="math" data-tex="\(\mathbb C[x,y]_x\cap\mathbb C[x,y]_y\)">\(\mathbb C[x,y]_x\cap\mathbb C[x,y]_y\)</span>
+inside <span class="math" data-tex="\(\mathbb C(x,y)\)">\(\mathbb C(x,y)\)</span>. Coprimality of <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> forces all denominators to cancel, so the intersection is <span class="math" data-tex="\(\mathbb C[x,y]\)">\(\mathbb C[x,y]\)</span>. If the punctured plane were affine, its canonical map to the spectrum of its global functions would be an isomorphism; that map is the inclusion missing the origin, a contradiction.</p>
+<p>The projective-line calculation is different. The classical sphere model for <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> has one cell in dimensions zero and two. The earlier étale curve calculation gives the corresponding geometric groups with the orientation twist. Hence</p>
+<span class="math math-display" data-tex="\[
+{}^pH^b(Ra_*\Lambda[1])=
+\begin{cases}\Lambda&amp;b=-1,\\\Lambda(-1)&amp;b=1,\\0&amp;\text{otherwise},\end{cases}
+\tag{2.5}
+\]">\[
+{}^pH^b(Ra_*\Lambda[1])=
+\begin{cases}\Lambda&amp;b=-1,\\\Lambda(-1)&amp;b=1,\\0&amp;\text{otherwise},\end{cases}
+\tag{2.5}
+\]</span>
+<p>where the twist is omitted classically. The target is a point, so ordinary and perverse degrees agree. This attains both ends of the proper interval <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> and disproves right t-exactness for a general proper map.</p>
+<h2 id="3-transport-a-perverse-sheaf-through-a-smooth-map">3. Transport a perverse sheaf through a smooth map</h2>
+<p><strong>Proposition 3.1.</strong> If <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> is smooth of pure relative dimension <span class="math" data-tex="\(r\)">\(r\)</span>, then <span class="math" data-tex="\(f^*[r]\)">\(f^*[r]\)</span> is t-exact. If all its geometric fibres are connected and nonempty, its restriction to perverse hearts is fully faithful.</p>
+<p><strong>Proof of t-exactness.</strong> Apply (2.1) to each ordinary cohomology sheaf of <span class="math" data-tex="\(K\in{}^pD^{\le0}(Y)\)">\(K\in{}^pD^{\le0}(Y)\)</span>. The degree <span class="math" data-tex="\(q\)">\(q\)</span> sheaf of <span class="math" data-tex="\(f^*K[r]\)">\(f^*K[r]\)</span> has support dimension at most
+<span class="math" data-tex="\(-(q+r)+r=-q\)">\(-(q+r)+r=-q\)</span>.
+Thus the upper test holds. Smooth duality, with the orientation supplied by the complex or étale theory, reads</p>
+<span class="math math-display" data-tex="\[
+D_X(f^*K[r])\simeq f^*(D_YK)[r](r).
+\tag{3.1}
+\]">\[
+D_X(f^*K[r])\simeq f^*(D_YK)[r](r).
+\tag{3.1}
+\]</span>
+<p>Again omit the twist classically. Apply the already proved upper bound to <span class="math" data-tex="\(D_YK\)">\(D_YK\)</span>; since twisting does not change support or degrees, duality gives the lower bound. This proves both halves. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of full faithfulness.</strong> For <span class="math" data-tex="\(P,Q\in\mathcal P(Y)\)">\(P,Q\in\mathcal P(Y)\)</span>, let
+<span class="math" data-tex="\(H=\mathcal H^0R\mathcal Hom_Y(P,Q)\)">\(H=\mathcal H^0R\mathcal Hom_Y(P,Q)\)</span>.
+On each open or étale neighbourhood, negative derived Hom between heart objects vanishes by t-structure orthogonality. Sheafification shows that the internal Hom complex has no negative ordinary cohomology sheaves. Its degree-zero global cohomology is consequently <span class="math" data-tex="\(\Gamma(Y,H)\)">\(\Gamma(Y,H)\)</span>, either by ordinary truncation or by the degree-zero edge of its hypercohomology sequence. Thus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(P,Q)=\Gamma(Y,H).
+\tag{3.2}
+\]">\[
+\operatorname{Hom}(P,Q)=\Gamma(Y,H).
+\tag{3.2}
+\]</span>
+<p>The identity <span class="math" data-tex="\(R\mathcal Hom(P,Q)=D(P\otimes DQ)\)">\(R\mathcal Hom(P,Q)=D(P\otimes DQ)\)</span> and smooth duality show that pullback commutes with this internal Hom: the relative shifts and twists appear once on each side of the inner dual and cancel. Exactness of ordinary pullback then identifies the morphism sheaf for <span class="math" data-tex="\(f^*P[r],f^*Q[r]\)">\(f^*P[r],f^*Q[r]\)</span> with <span class="math" data-tex="\(f^*H\)">\(f^*H\)</span>.</p>
+<p>It remains to prove <span class="math" data-tex="\(H\simeq f_*^{\mathrm{ord}}f^*H\)">\(H\simeq f_*^{\mathrm{ord}}f^*H\)</span>. A smooth surjection has local sections, in the analytic or étale topology. Pull a section of <span class="math" data-tex="\(f^*H\)">\(f^*H\)</span> back along one such section. On every geometric fibre, <span class="math" data-tex="\(f^*H\)">\(f^*H\)</span> is the constant sheaf with the value of the corresponding stalk of <span class="math" data-tex="\(H\)">\(H\)</span>; connectedness means its sections have a single value. The pullback along the local section therefore recovers the value on that entire fibre. The same stalk comparison proves that the reconstructed section pulls back to the original one. Nonempty fibres make this reconstruction unique, so the local sections agree on overlaps and glue. Taking global sections in (3.2) proves full faithfulness. The local-section and smooth-duality inputs are required at the coefficient version in use. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Both qualifications on fibres are necessary. A non-surjective open immersion is smooth with nonempty fibres connected wherever they exist, but kills a nonzero perverse sheaf supported in its complement. Pullback from a point to two points sends <span class="math" data-tex="\(V\)">\(V\)</span> to <span class="math" data-tex="\((V,V)\)">\((V,V)\)</span>; the target allows two independent endomorphisms, whereas pullback supplies only diagonal pairs.</p>
+<h2 id="4-why-affineness-removes-the-positive-degrees">4. Why affineness removes the positive degrees</h2>
+<p>The ordinary support estimate needed here is</p>
+<span class="math math-display" data-tex="\[
+\dim\operatorname{Supp}R^af_*F\le
+\dim\operatorname{Supp}F-a\qquad(a\ge0)
+\tag{4.1}
+\]">\[
+\dim\operatorname{Supp}R^af_*F\le
+\dim\operatorname{Supp}F-a\qquad(a\ge0)
+\tag{4.1}
+\]</span>
+<p>for affine <span class="math" data-tex="\(f\)">\(f\)</span> and an ordinary constructible sheaf <span class="math" data-tex="\(F\)">\(F\)</span>. We first deduce the perverse consequence from this precise estimate, then examine its coefficients and proof obligations.</p>
+<p><strong>Theorem 4.1 (affine bounds).</strong> With (4.1) available at the coefficient version in question,</p>
+<span class="math math-display" data-tex="\[
+Rf_*({}^pD^{\le0})\subset{}^pD^{\le0},\qquad
+Rf_!({}^pD^{\ge0})\subset{}^pD^{\ge0}.
+\tag{4.2}
+\]">\[
+Rf_*({}^pD^{\le0})\subset{}^pD^{\le0},\qquad
+Rf_!({}^pD^{\ge0})\subset{}^pD^{\ge0}.
+\tag{4.2}
+\]</span>
+<p><strong>Proof.</strong> For an upper object <span class="math" data-tex="\(K\)">\(K\)</span>, use its finite <em>ordinary</em> truncation tower. A layer is <span class="math" data-tex="\(\mathcal H^bK[-b]\)">\(\mathcal H^bK[-b]\)</span>, and its direct image has degree <span class="math" data-tex="\(n=a+b\)">\(n=a+b\)</span> sheaf <span class="math" data-tex="\(R^af_*\mathcal H^bK\)">\(R^af_*\mathcal H^bK\)</span>. Equation (4.1) bounds that support by
+<span class="math" data-tex="\(-b-a=-n\)">\(-b-a=-n\)</span>.
+Thus every image layer lies in the upper perverse part. This part is extension closed: the cohomology sequence of a triangle bounds each middle support by the union of the two outer supports. The finite tower therefore puts <span class="math" data-tex="\(Rf_*K\)">\(Rf_*K\)</span> in the upper part. For a lower object <span class="math" data-tex="\(L\)">\(L\)</span>, apply this to <span class="math" data-tex="\(D_XL\)">\(D_XL\)</span> and use <span class="math" data-tex="\(D_YRf_!L=Rf_*D_XL\)">\(D_YRf_!L=Rf_*D_XL\)</span>. Field duality reverses the inequality and proves the second assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a perverse sheaf <span class="math" data-tex="\(P\)">\(P\)</span> on an affine variety <span class="math" data-tex="\(U\)">\(U\)</span>, the structural map has a point as target; (4.2) gives</p>
+<span class="math math-display" data-tex="\[
+H^n(U,P)=0\ (n&gt;0),\qquad H_c^n(U,P)=0\ (n&lt;0).
+\tag{4.3}
+\]">\[
+H^n(U,P)=0\ (n&gt;0),\qquad H_c^n(U,P)=0\ (n&lt;0).
+\tag{4.3}
+\]</span>
+<p>These conclusions concern geometric cohomology in the arithmetic setting. Including the Galois cohomology of a non-algebraically-closed base would be a different operation.</p>
+<h3 id="torsion-support-and-the-integral-cut">Torsion support and the integral cut</h3>
+<p>For torsion coefficients with torsion prime to the characteristic, the earlier lesson <a href="../ag-etale-cohomology/cohomological-dimension-and-the-kunneth-formula.html#6-affine-direct-images-lower-support-dimension">Cohomological dimension and the Künneth formula</a>, Theorem 6.2, writes the relative Artin proof. Its bound applies to every torsion sheaf, using the transcendence degrees of points with nonzero stalks. The proof uses strict-local finite models and affine cohomological-dimension induction; it does not replace a nonproper direct-image stalk by the cohomology of the geometric fibre. On constructible supports the transcendence-degree bound is (4.1). Its own prerequisites remain subject to recursive verification.</p>
+<p>For rational adic coefficients we need a separate argument. Let <span class="math" data-tex="\(E/\mathbb Q_\ell\)">\(E/\mathbb Q_\ell\)</span> be finite, <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> its valuation ring, <span class="math" data-tex="\(\pi\)">\(\pi\)</span> a uniformizer, and <span class="math" data-tex="\(k=\mathcal O/(\pi)\)">\(k=\mathcal O/(\pi)\)</span>. We require a bounded normalized constructible integral category with recollement; its operations must preserve the required constructibility and finiteness, and flat rationalization must commute with ordinary and exceptional restriction. The latter exceptional comparison and nonproper image finiteness are still unresolved prerequisites here. Under these hypotheses, the necessary integral truncation can be constructed now, without referring to a later lesson.</p>
+<p><strong>Lemma 4.2 (integral upper model).</strong> Under these integral hypotheses, every rational <span class="math" data-tex="\(K\in{}^pD^{\le0}(X,E)\)">\(K\in{}^pD^{\le0}(X,E)\)</span> has a model <span class="math" data-tex="\(L\in{}^pD^{\le0}(X,\mathcal O)\)">\(L\in{}^pD^{\le0}(X,\mathcal O)\)</span> whose derived reduction <span class="math" data-tex="\(L\otimes^L_{\mathcal O}k\)">\(L\otimes^L_{\mathcal O}k\)</span> is also upper perverse.</p>
+<p><strong>Proof.</strong> Construct the integral t-structure by induction on a finite stratification. On a smooth stratum of dimension <span class="math" data-tex="\(s\)">\(s\)</span>, use the ordinary t-structure shifted so that its upper part is <span class="math" data-tex="\(D^{\le-s}\)">\(D^{\le-s}\)</span>. For an object <span class="math" data-tex="\(L_0\)">\(L_0\)</span>, choose such a dense open union <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span> on which its cohomology is locally constant; let <span class="math" data-tex="\(i:Z\hookrightarrow X\)">\(i:Z\hookrightarrow X\)</span> be the smaller-dimensional complement. Cut the open restriction at the indicated ordinary degree, obtaining <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. Form</p>
+<span class="math math-display" data-tex="\[
+j_!U_0\longrightarrow L_0\longrightarrow L_1\longrightarrow,
+\qquad F_0={}^p\tau_Z^{\le0}i^!L_1,
+\qquad i_*F_0\longrightarrow L_1\longrightarrow B\longrightarrow.
+\tag{4.4}
+\]">\[
+j_!U_0\longrightarrow L_0\longrightarrow L_1\longrightarrow,
+\qquad F_0={}^p\tau_Z^{\le0}i^!L_1,
+\qquad i_*F_0\longrightarrow L_1\longrightarrow B\longrightarrow.
+\tag{4.4}
+\]</span>
+<p>The closed truncation exists by induction. The octahedron produces triangles
+<span class="math" data-tex="\(A\to L_0\to B\to\)">\(A\to L_0\to B\to\)</span> and <span class="math" data-tex="\(j_!U_0\to A\to i_*F_0\to\)">\(j_!U_0\to A\to i_*F_0\to\)</span>.
+They give <span class="math" data-tex="\(j^*A=U_0\)">\(j^*A=U_0\)</span>, <span class="math" data-tex="\(i^*A=F_0\)">\(i^*A=F_0\)</span>, while <span class="math" data-tex="\(j^*B\)">\(j^*B\)</span> and <span class="math" data-tex="\(i^!B\)">\(i^!B\)</span> have the positive bounds on their respective pieces. Hence <span class="math" data-tex="\(A\)">\(A\)</span> is upper and <span class="math" data-tex="\(B\)">\(B\)</span> is lower of degree at least one for the glued pair. Orthogonality follows from the open ordinary orthogonality and the closed inductive orthogonality by applying Hom to <span class="math" data-tex="\(j_!j^*A\to A\to i_*i^*A\to\)">\(j_!j^*A\to A\to i_*i^*A\to\)</span>. This is precisely the truncation construction proved in the earlier gluing lesson. Its upper condition is the stalk-support condition; the lower condition uses exceptional restriction. No self-duality of an integral heart is asserted. The finite number of strata and the stated operation hypotheses ensure boundedness and constructibility. Refinement uses the corresponding smooth-stratum restriction and purity comparisons, included among those integral prerequisites.</p>
+<p>Choose an integral model <span class="math" data-tex="\(L_0\)">\(L_0\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>, using the rational-model construction in <a href="../AG-LTF/l-adic-sheaves-and-their-cohomology.html#4-changing-the-coefficient-field">ℓ-adic sheaves and their cohomology</a>. Flat rationalization commutes with both restriction tests, by the specified comparison hypotheses. It therefore carries a glued truncation triangle to the rational truncation triangle. Uniqueness gives
+<span class="math" data-tex="\(({}^p\tau^{\le0}L_0)\otimes E\simeq{}^p\tau^{\le0}K=K\)">\(({}^p\tau^{\le0}L_0)\otimes E\simeq{}^p\tau^{\le0}K=K\)</span>.
+Take <span class="math" data-tex="\(L={}^p\tau^{\le0}L_0\)">\(L={}^p\tau^{\le0}L_0\)</span>.</p>
+<p>Derived reduction is the cone in</p>
+<span class="math math-display" data-tex="\[
+L\xrightarrow{\pi}L\longrightarrow L\otimes^L_{\mathcal O}k
+\longrightarrow L[1].
+\tag{4.5}
+\]">\[
+L\xrightarrow{\pi}L\longrightarrow L\otimes^L_{\mathcal O}k
+\longrightarrow L[1].
+\tag{4.5}
+\]</span>
+<p>The upper part contains both <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(L[1]\)">\(L[1]\)</span>, and is extension closed, so it contains the cone. This uses derived reduction, including its adjacent-degree torsion term. The stalk-support upper test is the same whether that cone is viewed over <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> or over <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply the torsion case of Theorem 4.1 to this reduction. Exactness and <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-linearity of <span class="math" data-tex="\(Rf_*\)">\(Rf_*\)</span> carry (4.5) to its coefficient cone. With <span class="math" data-tex="\(M_n=\mathcal H^n(Rf_*L)\)">\(M_n=\mathcal H^n(Rf_*L)\)</span>, its long exact sequence gives</p>
+<span class="math math-display" data-tex="\[
+M_n/\pi M_n\hookrightarrow
+\mathcal H^n\bigl(Rf_*(L\otimes^Lk)\bigr).
+\tag{4.6}
+\]">\[
+M_n/\pi M_n\hookrightarrow
+\mathcal H^n\bigl(Rf_*(L\otimes^Lk)\bigr).
+\tag{4.6}
+\]</span>
+<p>At any point of transcendence degree greater than <span class="math" data-tex="\(-n\)">\(-n\)</span>, the right stalk vanishes by the upper test. If the stalk of <span class="math" data-tex="\(M_n\)">\(M_n\)</span> is finite over <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, it must then be zero. To spell out this use of Nakayama, choose generators <span class="math" data-tex="\(m_1,\ldots,m_t\)">\(m_1,\ldots,m_t\)</span>. The equality <span class="math" data-tex="\(M=\pi M\)">\(M=\pi M\)</span> expresses their column as <span class="math" data-tex="\(\pi C\)">\(\pi C\)</span> times itself. The determinant of <span class="math" data-tex="\(I-\pi C\)">\(I-\pi C\)</span> is a unit; its adjugate therefore forces every generator to vanish. This proves the support bound on <span class="math" data-tex="\(M_n\)">\(M_n\)</span>. Rationalizing, with the required image comparison, proves (4.2) over <span class="math" data-tex="\(E\)">\(E\)</span>. Descent to a finite coefficient field and exact faithful scalar extension give the <span class="math" data-tex="\(\overline{\mathbb Q}_\ell\)">\(\overline{\mathbb Q}_\ell\)</span> statement. Applying that statement to <span class="math" data-tex="\(F[s]\)">\(F[s]\)</span>, where <span class="math" data-tex="\(s=\dim\operatorname{Supp}F\)">\(s=\dim\operatorname{Supp}F\)</span>, recovers (4.1) for rational adic ordinary sheaves.</p>
+<p>The normalized reduction and rational-model arguments are developed in the cited adic-sheaf lesson and <a href="../AG-LTF/the-pro-etale-site-and-l-adic-complexes.html#4-completion-remembers-a-complex">The pro-étale site and ℓ-adic complexes</a>. They do not, by themselves, prove finiteness of a nonproper image or the exceptional rationalization comparison. The argument (4.4)–(4.6) is conditional on those exact geometric inputs; taking inverse limits of torsion vanishing is not a substitute for them.</p>
+<h3 id="the-classical-input-still-to-be-completed">The classical input still to be completed</h3>
+<p>The classical form of (4.1) remains a proof obligation for every allowed algebraically constructible field-valued sheaf, not only for sheaves already obtained from an étale coefficient system. The free BBD edition, Remark 4.1.9, states the complex analogue and points to comparison theorems. That remark does not write the comparison proof we need here. In particular, identifying the constant-coefficient cohomology of an algebraic variety with its analytic cohomology would not yet establish the required comparison for arbitrary constructible complexes and relative direct images. Descent of coefficients, constructibility, compatibility of the direct image and preservation of support dimensions must all be supplied at the stated generality before that route proves (4.1).</p>
+<p>Another possible route passes through ordinary perverse cohomology on Stein spaces. The analytic programme has written <a href="../constant-coefficient-equations-and-solvability/reproduce/L124/context/providers/holomorphic-morse-exhaustions-on-stein-manifolds.html">Morse exhaustion geometry</a> and a microlocal Stein argument, but its ordinary/microlocal comparison and transverse restriction remain planned. Those texts therefore cannot currently serve as a completed provider for (4.1). We retain the full classical theorem as an assigned result to be proved. Its applications in this lesson are the explicit deductions from (4.1); neither this source pointer nor the proposed analytic route completes that premise.</p>
+<h2 id="5-extensions-and-the-remaining-degree-intervals">5. Extensions and the remaining degree intervals</h2>
+<p>Combining the dimension bounds in Section 2 with the affine bounds in Section 4 gives the following precise ranges for a perverse input <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Map <span class="math" data-tex="\(f\)">\(f\)</span></th>
+<th>Possible perverse degrees of <span class="math" data-tex="\(Rf_*P\)">\(Rf_*P\)</span></th>
+<th>Possible perverse degrees of <span class="math" data-tex="\(Rf_!P\)">\(Rf_!P\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fibres of dimension at most <span class="math" data-tex="\(d\)">\(d\)</span></td>
+<td>At least <span class="math" data-tex="\(-d\)">\(-d\)</span></td>
+<td>At most <span class="math" data-tex="\(d\)">\(d\)</span></td>
+</tr>
+<tr>
+<td>Affine, with the same fibre bound</td>
+<td><span class="math" data-tex="\([-d,0]\)">\([-d,0]\)</span></td>
+<td><span class="math" data-tex="\([0,d]\)">\([0,d]\)</span></td>
+</tr>
+<tr>
+<td>Proper, with the same fibre bound</td>
+<td><span class="math" data-tex="\([-d,d]\)">\([-d,d]\)</span></td>
+<td><span class="math" data-tex="\([-d,d]\)">\([-d,d]\)</span></td>
+</tr>
+<tr>
+<td>Finite</td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The affine row has exactly the coefficient and prerequisite qualifications of Section 4. For an affine quasi-finite map, <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, so both images are t-exact. In particular an affine open immersion <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span> gives exact functors
+<span class="math" data-tex="\(j_!,Rj_*:\mathcal P(U)\to\mathcal P(X)\)">\(j_!,Rj_*:\mathcal P(U)\to\mathcal P(X)\)</span>.
+To see exactness on hearts, regard a short exact sequence as its distinguished triangle; the perverse cohomology sequence of its image has only degree zero, and is again short exact.</p>
+<p>For a local calculation independent of the unfinished general classical Artin input, take <span class="math" data-tex="\(j:\mathbb C^*\hookrightarrow\mathbb C\)">\(j:\mathbb C^*\hookrightarrow\mathbb C\)</span>, <span class="math" data-tex="\(A=\Lambda[1]\)">\(A=\Lambda[1]\)</span>, and <span class="math" data-tex="\(i:\{0\}\hookrightarrow\mathbb C\)">\(i:\{0\}\hookrightarrow\mathbb C\)</span>. A circle has cellular cochains <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in degrees zero and one with zero differential. The earlier boundary triangle and recollement therefore give</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Degrees and values of its stalk at zero</th>
+<th>Degrees and values of its costalk at zero</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(Rj_*A\)">\(Rj_*A\)</span></td>
+<td><span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span></td>
+<td>Zero</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(j_!A\)">\(j_!A\)</span></td>
+<td>Zero</td>
+<td><span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in <span class="math" data-tex="\(0,1\)">\(0,1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\Lambda_{\mathbb C}[1]\)">\(\Lambda_{\mathbb C}[1]\)</span></td>
+<td><span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in <span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in <span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For the middle row use <span class="math" data-tex="\(i^!j_!A\simeq i^*Rj_*A[-1]\)">\(i^!j_!A\simeq i^*Rj_*A[-1]\)</span>; for the last use the oriented real two-dimensional ball. All three objects restrict to <span class="math" data-tex="\(A\)">\(A\)</span> on the open stratum. The upper stalk and lower costalk tests show directly that each is perverse. The adjunction map from the constant shifted sheaf to <span class="math" data-tex="\(Rj_*A\)">\(Rj_*A\)</span> is an isomorphism in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>; its only remaining cone group is <span class="math" data-tex="\(i_*\Lambda\)">\(i_*\Lambda\)</span> in degree zero. It gives</p>
+<span class="math math-display" data-tex="\[
+0\to\Lambda_{\mathbb C}[1]\to Rj_*A\to i_*\Lambda\to0.
+\tag{5.1}
+\]">\[
+0\to\Lambda_{\mathbb C}[1]\to Rj_*A\to i_*\Lambda\to0.
+\tag{5.1}
+\]</span>
+<p>Dualizing in this classical field setting gives</p>
+<span class="math math-display" data-tex="\[
+0\to i_*\Lambda\to j_!A\to\Lambda_{\mathbb C}[1]\to0.
+\tag{5.2}
+\]">\[
+0\to i_*\Lambda\to j_!A\to\Lambda_{\mathbb C}[1]\to0.
+\tag{5.2}
+\]</span>
+<p>The first sequence cannot split: a direct summand <span class="math" data-tex="\(i_*\Lambda\)">\(i_*\Lambda\)</span> would give a nonzero costalk in degree zero to an object with zero costalk. The second cannot split because such a summand would give a nonzero stalk to <span class="math" data-tex="\(j_!A\)">\(j_!A\)</span>. The image of <span class="math" data-tex="\(j_!A\to Rj_*A\)">\(j_!A\to Rj_*A\)</span> is <span class="math" data-tex="\(\Lambda_{\mathbb C}[1]\)">\(\Lambda_{\mathbb C}[1]\)</span>, so this is the intermediate extension. The boundary contribution has moved from a quotient to a subobject.</p>
+<p>Affineness can also be measured by a finite cover. Suppose the inverse image of every affine open of <span class="math" data-tex="\(Y\)">\(Y\)</span> admits a cover by <span class="math" data-tex="\(c+1\)">\(c+1\)</span> affine opens. Their intersections are affine because <span class="math" data-tex="\(X\)">\(X\)</span> is separated. The augmented alternating Čech complex is exact stalkwise: choose an open containing the point and insert its index to contract the augmented complex. After deriving sections, this gives a finite tower for <span class="math" data-tex="\(Rf_*K\)">\(Rf_*K\)</span>, whose degree-<span class="math" data-tex="\(q\)">\(q\)</span> layers are images from intersections shifted by <span class="math" data-tex="\([-q]\)">\([-q]\)</span>, for <span class="math" data-tex="\(0\le q\le c\)">\(0\le q\le c\)</span>. The maps from those intersections to the affine target are affine. For upper <span class="math" data-tex="\(K\)">\(K\)</span>, Theorem 4.1 puts their unshifted images in <span class="math" data-tex="\({}^pD^{\le0}\)">\({}^pD^{\le0}\)</span>; the shifts put every layer in <span class="math" data-tex="\({}^pD^{\le c}\)">\({}^pD^{\le c}\)</span>. Extension closure and then duality give</p>
+<span class="math math-display" data-tex="\[
+Rf_*({}^pD^{\le0})\subset{}^pD^{\le c},\qquad
+Rf_!({}^pD^{\ge0})\subset{}^pD^{\ge-c}.
+\tag{5.3}
+\]">\[
+Rf_*({}^pD^{\le0})\subset{}^pD^{\le c},\qquad
+Rf_!({}^pD^{\ge0})\subset{}^pD^{\ge-c}.
+\tag{5.3}
+\]</span>
+<p>These are cover bounds, with the same Artin qualifications. They explain how an arbitrary open immersion can have an upper amplitude larger than its zero fibre dimension.</p>
+<h2 id="6-remove-a-hyperplane-and-compute-the-error">6. Remove a hyperplane and compute the error</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be proper, <span class="math" data-tex="\(i:Y\hookrightarrow X\)">\(i:Y\hookrightarrow X\)</span> closed, and <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span> its affine complement. A projective variety with a hyperplane section is the main example. For a perverse <span class="math" data-tex="\(K\)">\(K\)</span>, the error in restricting cohomology to <span class="math" data-tex="\(Y\)">\(Y\)</span> is measured by the localization triangle</p>
+<span class="math math-display" data-tex="\[
+j_!j^*K\longrightarrow K\longrightarrow i_*i^*K\longrightarrow.
+\tag{6.1}
+\]">\[
+j_!j^*K\longrightarrow K\longrightarrow i_*i^*K\longrightarrow.
+\tag{6.1}
+\]</span>
+<p>Since <span class="math" data-tex="\(X\)">\(X\)</span> is proper, cohomology of the first term is compactly supported cohomology on <span class="math" data-tex="\(U\)">\(U\)</span>. The exact sequence around restriction is</p>
+<span class="math math-display" data-tex="\[
+H_c^n(U,j^*K)\longrightarrow H^n(X,K)
+\longrightarrow H^n(Y,i^*K)\longrightarrow H_c^{n+1}(U,j^*K).
+\tag{6.2}
+\]">\[
+H_c^n(U,j^*K)\longrightarrow H^n(X,K)
+\longrightarrow H^n(Y,i^*K)\longrightarrow H_c^{n+1}(U,j^*K).
+\tag{6.2}
+\]</span>
+<p><strong>Theorem 6.1 (weak Lefschetz).</strong> Under the affine compact-support vanishing established subject to the inputs in Section 4, the middle map in (6.2) is an isomorphism for <span class="math" data-tex="\(n&lt;-1\)">\(n&lt;-1\)</span>, and injective for <span class="math" data-tex="\(n=-1\)">\(n=-1\)</span>.</p>
+<p><strong>Proof.</strong> Open restriction is t-exact, so <span class="math" data-tex="\(j^*K\)">\(j^*K\)</span> is perverse. Equation (4.3) kills the two outside terms when <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(n+1\)">\(n+1\)</span> are negative. At <span class="math" data-tex="\(n=-1\)">\(n=-1\)</span>, it still kills the first term, which proves injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No perversity of the unshifted closed restriction <span class="math" data-tex="\(i^*K\)">\(i^*K\)</span> was required. If <span class="math" data-tex="\(X\)">\(X\)</span> is smooth projective of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, substitute <span class="math" data-tex="\(K=\Lambda_X[d]\)">\(K=\Lambda_X[d]\)</span> and write <span class="math" data-tex="\(m=n+d\)">\(m=n+d\)</span>. The conclusion becomes</p>
+<span class="math math-display" data-tex="\[
+H^m(X,\Lambda)\longrightarrow H^m(Y,\Lambda)
+\quad\text{is an isomorphism for }m&lt;d-1,
+\quad\text{and injective for }m=d-1.
+\tag{6.3}
+\]">\[
+H^m(X,\Lambda)\longrightarrow H^m(Y,\Lambda)
+\quad\text{is an isomorphism for }m&lt;d-1,
+\quad\text{and injective for }m=d-1.
+\tag{6.3}
+\]</span>
+<p>For a smooth hyperplane section this is ordinary weak Lefschetz. Its proof here inherits the exact classical or adic input still identified in Section 4; the short localization deduction does not close that gap.</p>
+<h2 id="7-exercises-and-solutions">7. Exercises and solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> For <span class="math" data-tex="\(j:\mathbb C^*\hookrightarrow\mathbb C\)">\(j:\mathbb C^*\hookrightarrow\mathbb C\)</span>, verify the perversity of <span class="math" data-tex="\(Rj_*\Lambda[1]\)">\(Rj_*\Lambda[1]\)</span> from the point tests, and identify its quotient by <span class="math" data-tex="\(\Lambda_{\mathbb C}[1]\)">\(\Lambda_{\mathbb C}[1]\)</span>.</p>
+<p><strong>Solution.</strong> Write the cellular cochains of the punctured disc as the two-term complex <span class="math" data-tex="\([\Lambda\xrightarrow{0}\Lambda]\)">\([\Lambda\xrightarrow{0}\Lambda]\)</span> in degrees zero and one. After shifting by one, the stalk degrees are <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, meeting the upper point bound. The costalk is zero because <span class="math" data-tex="\(i^!Rj_*=0\)">\(i^!Rj_*=0\)</span>, meeting the lower point bound. On the open stratum the object is the required shifted local system, so both tests hold everywhere. The map from the constant shifted sheaf identifies the degree-minus-one stalk and is an isomorphism off zero. Its cone has only <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in degree zero at the origin; thus it is <span class="math" data-tex="\(i_*\Lambda\)">\(i_*\Lambda\)</span>. Since the three terms lie in the perverse heart, this cone is the asserted quotient. This calculation does not invoke the general affine theorem.</p>
+<p><strong>Exercise 2 (easy).</strong> Compute the perverse cohomology of <span class="math" data-tex="\(Ra_*\Lambda_{\mathbb P^1}[1]\)">\(Ra_*\Lambda_{\mathbb P^1}[1]\)</span> for <span class="math" data-tex="\(a:\mathbb P^1\to\mathrm{pt}\)">\(a:\mathbb P^1\to\mathrm{pt}\)</span>, and decide whether <span class="math" data-tex="\(Ra_*\)">\(Ra_*\)</span> is right t-exact.</p>
+<p><strong>Solution.</strong> The classical cell structure has a degree-zero and a degree-two generator, with no adjacent cell for a differential. The geometric étale computation gives the same degrees and a Tate twist on the upper generator. Shifting by one yields precisely <span class="math" data-tex="\({}^pH^{-1}=\Lambda\)">\({}^pH^{-1}=\Lambda\)</span> and <span class="math" data-tex="\({}^pH^1=\Lambda(-1)\)">\({}^pH^1=\Lambda(-1)\)</span>, with the twist omitted classically; all other groups are zero. On a point these are ordinary cohomology groups. The smooth-curve sheaf <span class="math" data-tex="\(\Lambda[1]\)">\(\Lambda[1]\)</span> is in the perverse heart, but its image has a positive group. Right t-exactness therefore fails, despite properness.</p>
+<p><strong>Exercise 3 (medium).</strong> Convert the perverse restriction degrees into ordinary weak Lefschetz for a smooth projective <span class="math" data-tex="\(d\)">\(d\)</span>-fold and a smooth hyperplane section. Determine what happens at the boundary degree.</p>
+<p><strong>Solution.</strong> The shifted constant sheaf on the <span class="math" data-tex="\(d\)">\(d\)</span>-fold is perverse. Its degree-<span class="math" data-tex="\(n\)">\(n\)</span> cohomology on either side of restriction is degree <span class="math" data-tex="\(n+d\)">\(n+d\)</span> cohomology with unshifted coefficients. The two compact-support groups adjoining restriction in (6.2) have perverse indices <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. Both vanish for <span class="math" data-tex="\(n&lt;-1\)">\(n&lt;-1\)</span>; just the first is forced to vanish for <span class="math" data-tex="\(n=-1\)">\(n=-1\)</span>. Translating gives an isomorphism for ordinary degree <span class="math" data-tex="\(m&lt;d-1\)">\(m&lt;d-1\)</span> and injectivity for <span class="math" data-tex="\(m=d-1\)">\(m=d-1\)</span>. For a curve this boundary is degree zero: constants on a connected curve map diagonally to constants at its hyperplane points, an injective map which need not be onto. The deduction is conditional on the same affine input as Theorem 6.1.</p>
+<p><strong>Exercise 4 (medium).</strong> Prove that finite direct image is perverse t-exact, allowing singular source and target.</p>
+<p><strong>Solution.</strong> A finite map has zero-dimensional fibres. Pullback of any ordinary cohomology support therefore has no larger dimension; the upper test gives <span class="math" data-tex="\(f^*({}^pD^{\le0})\subset{}^pD^{\le0}\)">\(f^*({}^pD^{\le0})\subset{}^pD^{\le0}\)</span>. For lower <span class="math" data-tex="\(B\)">\(B\)</span>, adjunction makes every map from an upper object of degree at most <span class="math" data-tex="\(-1\)">\(-1\)</span> to <span class="math" data-tex="\(Rf_*B\)">\(Rf_*B\)</span> zero. Hence <span class="math" data-tex="\(Rf_*\)">\(Rf_*\)</span> preserves the lower part. Field duality gives preservation of the upper part by <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span>. Properness of a finite map identifies these two direct images, supplying both halves for one functor. The perverse cohomology sequence then proves exactness on hearts, and uniqueness of truncation gives commutation with (1.1). This uses the dimension, operation and duality prerequisites, without an Artin-vanishing step.</p>
+<p><strong>Exercise 5 (hard).</strong> Derive positive-degree affine vanishing for every <span class="math" data-tex="\(K\in{}^pD^{\le0}(U)\)">\(K\in{}^pD^{\le0}(U)\)</span> directly from ordinary Artin vanishing. Explain the compact-support consequence and the absence of a degree-zero concentration claim.</p>
+<p><strong>Solution.</strong> Ordinary Artin vanishing bounds cohomology of an ordinary sheaf by the dimension of its support. For <span class="math" data-tex="\(F=\mathcal H^bK\)">\(F=\mathcal H^bK\)</span>, that dimension is at most <span class="math" data-tex="\(-b\)">\(-b\)</span>, so
+<span class="math" data-tex="\(H^a(U,\mathcal H^bK)=0\)">\(H^a(U,\mathcal H^bK)=0\)</span> whenever <span class="math" data-tex="\(a&gt;-b\)">\(a&gt;-b\)</span>.
+In the ordinary hypercohomology spectral sequence, every term of total degree <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span> satisfies this inequality and vanishes on its second page. Every later subquotient in that total degree is zero. Boundedness supplies a finite filtration of the abutment; an iterated extension of zero groups is zero. Thus <span class="math" data-tex="\(H^n(U,K)=0\)">\(H^n(U,K)=0\)</span> for <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>.</p>
+<p>For a perverse <span class="math" data-tex="\(P\)">\(P\)</span>, its field dual is again perverse. The identity
+<span class="math" data-tex="\(H_c^n(U,P)^\vee=H^{-n}(U,D_UP)\)">\(H_c^n(U,P)^\vee=H^{-n}(U,D_UP)\)</span>
+then gives compact-support vanishing for <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>. On <span class="math" data-tex="\(\mathbb A^r\)">\(\mathbb A^r\)</span>, however, the perverse sheaf <span class="math" data-tex="\(\Lambda[r]\)">\(\Lambda[r]\)</span> has an ordinary global group <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in degree <span class="math" data-tex="\(-r\)">\(-r\)</span> and a compact-support group <span class="math" data-tex="\(\Lambda(-r)\)">\(\Lambda(-r)\)</span> in degree <span class="math" data-tex="\(r\)">\(r\)</span>. Classically these follow by contraction and the one-point compactification <span class="math" data-tex="\(S^{2r}\)">\(S^{2r}\)</span>; the geometric étale versions use affine-space cohomology and smooth duality. They exhibit the two permitted sides of the bounds. Neither functor is asserted to concentrate in degree zero. As in Section 4, the ordinary Artin premise at the exact coefficient version must be supplied, not inferred from a citation.</p>
+<h2 id="remaining-proof-obligations-and-free-references">Remaining proof obligations and free references</h2>
+<p>This reconstruction retains the following dependencies explicitly. The torsion support theorem is written in the earlier étale companion, but its strict-local models, continuity, curve results and dimension induction still require recursive verification at exact versions. The integral truncation used here now has its construction in (4.4); its ambient normalized operations, nonproper finiteness, refinement/purity and rationalization comparisons remain required. The classical ordinary perverse Stein theorem is unfinished because the ordinary/microlocal comparison and transverse restriction have not been supplied. Smooth duality, local smooth sections, constructibility, finite-type dimension, oriented ball/sphere comparisons and the geometric étale curve and affine-space calculations must all have their earlier proofs verified. Thus neither the displayed deductions nor a successful render grants whole-lesson P514 clearance.</p>
+<p>The sources used for the affine and smooth comparison are the freely accessible versions below. The Bhatt–Blickle–Lyubeznik–Singh–Zhang reference concerns a different characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> coefficient theory; its subsection 5.1 is a further reading direction and supplies no proof input to the prime-to-characteristic arguments here.</p>
+<ul>
+<li>A. Beilinson, J. Bernstein and P. Deligne, with contributions by O. Gabber, <a href="https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf"><em>Faisceaux pervers</em></a>, freely readable IAS edition; Sections 4.1.1–4.1.5, Remark 4.1.9 and Sections 4.2.3–4.2.5.</li>
+<li>M. A. A. de Cataldo and L. Migliorini, <a href="https://arxiv.org/abs/0712.0349v2"><em>The Decomposition Theorem and the topology of algebraic maps</em></a>, arXiv:0712.0349v2; Section 5.3.</li>
+<li>M. Artin, A. Grothendieck and J.-L. Verdier, <a href="https://www.normalesup.org/~forgogozo/SGA4/tomes/SGA4.pdf"><em>Théorie des topos et cohomologie étale des schémas</em></a>, free Laszlo–Orgogozo transcription of SGA 4; Exposé XIV supplies the torsion affine theorem discussed in the earlier companion.</li>
+<li>B. Bhatt, M. Blickle, G. Lyubeznik, A. K. Singh and W. Zhang, <a href="https://arxiv.org/abs/2308.03155"><em>Applications of perverse sheaves in commutative algebra</em></a>, free arXiv version; subsection 5.1 for the separate characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> setting.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="intermediate-extensions-and-intersection-complexes.html">← Intermediate extensions and intersection complexes</a></span><a href="./">Course contents</a><span class="pager-next"><span class="unlinked">Nearby and vanishing cycles →</span></span></nav>
+<p class="small source-link"><a href="src/affine-morphisms-artin-vanishing-and-perverse-cohomology.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-PERV">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pinnings and the classification of split reductive groups | Reductive group schemes</title><link rel="stylesheet" href="assets/reader.css"><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"],["$","$"]],"displayMath":[["\\[","\\]"],["$$","$$"]],"processEscapes":true,"macros":{"NL":"\\operatorname{NL}","colim":"\\operatorname*{colim}"}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"]}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><header><nav><a href="https://kokunoyumeto.github.io/open-math-courses-public/">Open mathematics courses</a><span class="unlinked">Reductive group schemes</span><span class="unlinked">Prerequisites</span></nav></header><main><nav><a href="AG-RG-04.html">Previous lesson</a><a href="AG-RG-05.pdf">Lesson PDF</a><a href="AG-RG-05.md">Markdown source</a><a href="AG-RG-05.tex">Editable TeX</a><a href="AG-RG-06.html">Next lesson</a></nav><h1 id="pinnings-and-the-classification-of-split-reductive-groups">Pinnings and the classification of split reductive groups</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original contributions are dedicated to the public domain (CC0). The collected lesson also carries the GNU Free Documentation License 1.2 for the explicitly attributed Stacks proof below; see History.</em></p>
+<p>The integral root datum remembers a reductive group up to isomorphism. A pinning removes the conjugation ambiguity and makes this assertion functorial. The main work is to show that the multiplication of root groups is forced by the datum, including over rings in which two or three vanish. We first do those calculations and glue them across the open cell. We then construct groups in characteristic zero and pass to an integral model.</p>
+<p>Throughout, a split group has a specified split maximal torus, a constant identification of its character lattice, and trivial root lines. All assertions about a base scheme allow nilpotents and arbitrary characteristic. On a disconnected base, maps of constant data are locally constant; they need not have one value on every component. The purely combinatorial Coxeter presentation and length formula are the precise prerequisites from <span class="unlinked">Root systems and their Weyl groups</span>, identified at the end.</p>
+<h2 id="1-what-a-pinning-fixes">1. What a pinning fixes</h2>
+<p>Let <span class="math" data-tex="\(G/S\)">\(G/S\)</span> be reductive, let <span class="math" data-tex="\(T=D_S(X)\)">\(T=D_S(X)\)</span> be a split maximal torus, and choose a positive system <span class="math" data-tex="\(\Phi^+\)">\(\Phi^+\)</span> with simple roots <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. A <strong>pinning</strong> consists of a frame <span class="math" data-tex="\(E_\alpha\)">\(E_\alpha\)</span> in every simple root line <span class="math" data-tex="\(\mathfrak g_\alpha\)">\(\mathfrak g_\alpha\)</span>, <span class="math" data-tex="\(\alpha\in\Delta\)">\(\alpha\in\Delta\)</span>. The canonical root parametrization from the preceding lesson gives</p>
+<span class="math math-display" data-tex="$$
+x_\alpha:\mathbf G_a\longrightarrow U_\alpha,\qquad
+x_\alpha(u)=\exp_\alpha(uE_\alpha).
+$$">$$
+x_\alpha:\mathbf G_a\longrightarrow U_\alpha,\qquad
+x_\alpha(u)=\exp_\alpha(uE_\alpha).
+$$</span>
+<p>The perfect rank-one pairing gives a unique frame <span class="math" data-tex="\(E_{-\alpha}\)">\(E_{-\alpha}\)</span> with <span class="math" data-tex="\(E_\alpha E_{-\alpha}=1\)">\(E_\alpha E_{-\alpha}=1\)</span>. Put</p>
+<span class="math math-display" data-tex="$$
+n_\alpha=x_\alpha(1)x_{-\alpha}(-1)x_\alpha(1),
+\qquad t_\alpha=\alpha^\vee(-1).
+\tag{1.1}
+$$">$$
+n_\alpha=x_\alpha(1)x_{-\alpha}(-1)x_\alpha(1),
+\qquad t_\alpha=\alpha^\vee(-1).
+\tag{1.1}
+$$</span>
+<p>The rank-one homomorphism <span class="math" data-tex="\(\operatorname{SL}_2\to G\)">\(\operatorname{SL}_2\to G\)</span> proves</p>
+<span class="math math-display" data-tex="$$
+n_\alpha^2=t_\alpha,\quad
+n_\alpha t n_\alpha^{-1}=s_\alpha(t),\quad
+\operatorname{Ad}(n_\alpha)E_\alpha=-E_{-\alpha}.
+\tag{1.2}
+$$">$$
+n_\alpha^2=t_\alpha,\quad
+n_\alpha t n_\alpha^{-1}=s_\alpha(t),\quad
+\operatorname{Ad}(n_\alpha)E_\alpha=-E_{-\alpha}.
+\tag{1.2}
+$$</span>
+<p>It also proves <span class="math" data-tex="\((n_\alpha x_\alpha(1))^3=1\)">\((n_\alpha x_\alpha(1))^3=1\)</span>. These are identities of group schemes, including in characteristic two.</p>
+<p>For example, the usual pinning of <span class="math" data-tex="\(\operatorname{SL}_2\)">\(\operatorname{SL}_2\)</span> uses the diagonal torus, the upper triangular Borel, and</p>
+<span class="math math-display" data-tex="$$
+x_\alpha(u)=
+\begin{pmatrix}1&amp;u\\0&amp;1\end{pmatrix}.
+$$">$$
+x_\alpha(u)=
+\begin{pmatrix}1&amp;u\\0&amp;1\end{pmatrix}.
+$$</span>
+<p>Then <span class="math" data-tex="\(\alpha(\operatorname{diag}(z,z^{-1}))=z^2\)">\(\alpha(\operatorname{diag}(z,z^{-1}))=z^2\)</span>, <span class="math" data-tex="\(\alpha^\vee(z)=\operatorname{diag}(z,z^{-1})\)">\(\alpha^\vee(z)=\operatorname{diag}(z,z^{-1})\)</span>, and <span class="math" data-tex="\(n_\alpha=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)">\(n_\alpha=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)</span>. The frame, rather than just its line, is part of the pinning.</p>
+<p>A based root datum includes <span class="math" data-tex="\(X,X^\vee,\Phi,\Phi^\vee\)">\(X,X^\vee,\Phi,\Phi^\vee\)</span> and <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. An isomorphism of based data induces the corresponding torus isomorphism, and matches roots and coroots. We use this covariant formulation; its map on character lattices runs in the opposite direction.</p>
+<h3 id="integral-weyl-representatives">Integral Weyl representatives</h3>
+<p>The pinned representatives also determine the full arithmetic normalizer, including the signs from the central torus.</p>
+<p id="ag-rg-05-p11"><strong>Proposition 1.1 (the integral normalizer).</strong> Let <span class="math" data-tex="\(G/\mathbb Z\)">\(G/\mathbb Z\)</span> be a pinned split reductive group, with split maximal torus <span class="math" data-tex="\(T=D_{\mathbb Z}(X)\)">\(T=D_{\mathbb Z}(X)\)</span>, constant reduced root datum and Weyl group <span class="math" data-tex="\(W\)">\(W\)</span>. Put <span class="math" data-tex="\(r=\operatorname{rank}X\)">\(r=\operatorname{rank}X\)</span> and <span class="math" data-tex="\(N=N_G(T)\)">\(N=N_G(T)\)</span>. Then <span class="math" data-tex="\(N/T\simeq\underline W\)">\(N/T\simeq\underline W\)</span>, and
+<span class="math math-display" data-tex="\[
+1\longrightarrow\operatorname{Hom}(X,\{\pm1\})
+\longrightarrow N(\mathbb Z)\longrightarrow W\longrightarrow1
+\]">\[
+1\longrightarrow\operatorname{Hom}(X,\{\pm1\})
+\longrightarrow N(\mathbb Z)\longrightarrow W\longrightarrow1
+\]</span>
+is an exact sequence of finite groups. Thus <span class="math" data-tex="\(|N(\mathbb Z)|=2^r|W|\)">\(|N(\mathbb Z)|=2^r|W|\)</span>. For every ring <span class="math" data-tex="\(A\)">\(A\)</span>, an integral element <span class="math" data-tex="\(n\)">\(n\)</span> above <span class="math" data-tex="\(w\)">\(w\)</span> acts on <span class="math" data-tex="\(T(A)\)">\(T(A)\)</span> by
+<span class="math math-display" data-tex="\[
+(nhn^{-1})(\chi)=h(w^{-1}\chi).
+\]">\[
+(nhn^{-1})(\chi)=h(w^{-1}\chi).
+\]</span>
+Moreover
+<span class="math math-display" data-tex="\[
+N(A)/T(A)\simeq\underline W(A)
+=\operatorname{LC}(\operatorname{Spec}A,W).
+\]">\[
+N(A)/T(A)\simeq\underline W(A)
+=\operatorname{LC}(\operatorname{Spec}A,W).
+\]</span>
+The representatives of <span class="math" data-tex="\(W\)">\(W\)</span> need not form a subgroup of <span class="math" data-tex="\(N(\mathbb Z)\)">\(N(\mathbb Z)\)</span>.</p>
+<p><strong>Proof.</strong> Choose the negative parameter linked to each pinned simple-root parameter. The rank-one homomorphism <span class="math" data-tex="\(\operatorname{SL}_2\to G\)">\(\operatorname{SL}_2\to G\)</span> gives
+<span class="math math-display" data-tex="\[
+n_\alpha=x_\alpha(1)x_{-\alpha}(-1)x_\alpha(1),
+\qquad n_\alpha^2=\alpha^\vee(-1),
+\qquad\operatorname{Int}(n_\alpha)|_T=s_\alpha.
+\]">\[
+n_\alpha=x_\alpha(1)x_{-\alpha}(-1)x_\alpha(1),
+\qquad n_\alpha^2=\alpha^\vee(-1),
+\qquad\operatorname{Int}(n_\alpha)|_T=s_\alpha.
+\]</span>
+These identities are proved in AG-RG-03 Theorem 7.1 and AG-RG-05 (1.1)–(1.2). Since the simple reflections generate the Weyl group, selecting one reflection word for each <span class="math" data-tex="\(w\)">\(w\)</span> and multiplying these elements yields <span class="math" data-tex="\(n_w\in N(\mathbb Z)\)">\(n_w\in N(\mathbb Z)\)</span>. This choice uses no word-independence assertion.</p>
+<p>AG-RG-04 Theorem 4.2 makes <span class="math" data-tex="\(Q=N/T\)">\(Q=N/T\)</span> finite étale. The chosen classes define a map <span class="math" data-tex="\(\coprod_{w\in W}\operatorname{Spec}\mathbb Z\to Q\)">\(\coprod_{w\in W}\operatorname{Spec}\mathbb Z\to Q\)</span>. By AG-RG-04 Theorem 4.1, on every geometric fibre these classes are distinct and exhaust its Weyl group. On coordinate rings the map is between finite free <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-modules of equal rank, and its determinant is invertible modulo every prime; the determinant is therefore <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. The map is an isomorphism. Its group laws agree on geometric fibres and hence on the constant reduced source. This identifies <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(\underline W\)">\(\underline W\)</span> as a group scheme.</p>
+<p>A section of <span class="math" data-tex="\(N\)">\(N\)</span> maps to the identity section of <span class="math" data-tex="\(Q\)">\(Q\)</span> exactly when it factors through the kernel <span class="math" data-tex="\(T\)">\(T\)</span>. The chosen representatives prove surjectivity on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-points. Since
+<span class="math math-display" data-tex="\[
+T(\mathbb Z)=\operatorname{Hom}(X,\mathbb Z^\times)
+=\operatorname{Hom}(X,\{\pm1\}),
+\]">\[
+T(\mathbb Z)=\operatorname{Hom}(X,\mathbb Z^\times)
+=\operatorname{Hom}(X,\{\pm1\}),
+\]</span>
+the displayed extension and its order follow. Retain all these torus signs, including those arising from the central torus; the subgroup generated by coroot signs can be smaller.</p>
+<p>The convention <span class="math" data-tex="\(w\chi=\chi\circ\operatorname{Int}(n^{-1})\)">\(w\chi=\chi\circ\operatorname{Int}(n^{-1})\)</span> gives <span class="math" data-tex="\(\chi(nhn^{-1})=(w^{-1}\chi)(h)\)">\(\chi(nhn^{-1})=(w^{-1}\chi)(h)\)</span> after every base change. This proves the stated action.</p>
+<p>Finally a section of <span class="math" data-tex="\(\underline W\)">\(\underline W\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span> is a locally constant map from <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span> to <span class="math" data-tex="\(W\)">\(W\)</span>. Its finitely many fibres are clopen. On the fibre with value <span class="math" data-tex="\(w\)">\(w\)</span>, base change <span class="math" data-tex="\(n_w\)">\(n_w\)</span>; these sections glue to an element of <span class="math" data-tex="\(N(A)\)">\(N(A)\)</span>. Thus the map <span class="math" data-tex="\(N(A)\to\underline W(A)\)">\(N(A)\to\underline W(A)\)</span> is surjective, with kernel <span class="math" data-tex="\(T(A)\)">\(T(A)\)</span>. This proves the quotient formula without a hypothesis on <span class="math" data-tex="\(\operatorname{Pic}(A)\)">\(\operatorname{Pic}(A)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(\operatorname{SL}_2\)">\(\operatorname{SL}_2\)</span>, <span class="math" data-tex="\(T(\mathbb Z)=\{\pm I\}\)">\(T(\mathbb Z)=\{\pm I\}\)</span>, and both lifts of the nonidentity Weyl element square to <span class="math" data-tex="\(-I\)">\(-I\)</span>. Hence this extension is <span class="math" data-tex="\(C_4\to C_2\)">\(C_4\to C_2\)</span>, and has no group-homomorphic section.</p>
+<p><strong>Lifting scope.</strong> For a general normalizer extension over a scheme, the fibre over a Weyl section is a <span class="math" data-tex="\(T\)">\(T\)</span>-torsor. That section lifts precisely when this torsor has a global section, equivalently when its class in <span class="math" data-tex="\(H^1_{\mathrm{fppf}}(A,T)\)">\(H^1_{\mathrm{fppf}}(A,T)\)</span> is trivial. A sheaf quotient alone does not assert surjectivity on <span class="math" data-tex="\(A\)">\(A\)</span>-points. For the pinned split model above, the explicit integral representatives trivialize every such fibre; the obstruction is zero even when <span class="math" data-tex="\(\operatorname{Pic}(A)\ne0\)">\(\operatorname{Pic}(A)\ne0\)</span>. This is a torsor trivialization argument, not an assertion that <span class="math" data-tex="\(H^1(A,T)\)">\(H^1(A,T)\)</span> vanishes.</p>
+<h2 id="2-reducing-comparisons-to-two-simple-roots">2. Reducing comparisons to two simple roots</h2>
+<p>We need two facts about root systems. The first explains why rank-two calculations control commutators even when the two roots under consideration are not simple.</p>
+<p><strong>Lemma 2.1.</strong> For independent roots <span class="math" data-tex="\(\alpha,\gamma\)">\(\alpha,\gamma\)</span>, there is a base of the root system containing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and another root <span class="math" data-tex="\(\beta\)">\(\beta\)</span> such that <span class="math" data-tex="\(\gamma=a\alpha+b\beta\)">\(\gamma=a\alpha+b\beta\)</span>, with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> nonnegative integers.</p>
+<p><strong>Proof.</strong> In the plane <span class="math" data-tex="\(E=\mathbf R\alpha+\mathbf R\gamma\)">\(E=\mathbf R\alpha+\mathbf R\gamma\)</span>, choose a positive system for <span class="math" data-tex="\(\Phi\cap E\)">\(\Phi\cap E\)</span> in which <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is simple and <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is positive. One can do this by taking a linear functional which is positive and sufficiently small on <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and positive on <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. In the limit in which its value on <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is zero, the only roots of <span class="math" data-tex="\(E\)">\(E\)</span> on that wall are <span class="math" data-tex="\(\pm\alpha\)">\(\pm\alpha\)</span>. Thus <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is an extremal positive root; reducedness makes it simple. Let <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be the other simple root of this plane system. The positive-root expansion gives the asserted integers.</p>
+<p>Extend this positive system to the whole root system as follows. Choose a functional <span class="math" data-tex="\(q\)">\(q\)</span> vanishing on <span class="math" data-tex="\(E\)">\(E\)</span> and nonzero on each root outside <span class="math" data-tex="\(E\)">\(E\)</span>, and add a sufficiently small extension of the functional just chosen on <span class="math" data-tex="\(E\)">\(E\)</span>. Roots outside <span class="math" data-tex="\(E\)">\(E\)</span> keep the sign of <span class="math" data-tex="\(q\)">\(q\)</span>. A sum of positive roots involving any root outside <span class="math" data-tex="\(E\)">\(E\)</span> has positive <span class="math" data-tex="\(q\)">\(q\)</span>-value and cannot equal <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> or <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Their indecomposability in the plane therefore implies their indecomposability in the full positive system. They belong to its base. If <span class="math" data-tex="\(E\)">\(E\)</span> is the full root space, the extension step is unnecessary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The next fact controls different choices for transporting a simple root to another root. Write</p>
+<span class="math math-display" data-tex="$$
+\ell(w)=\#\{\gamma\in\Phi^+:w\gamma\in-\Phi^+\}.
+$$">$$
+\ell(w)=\#\{\gamma\in\Phi^+:w\gamma\in-\Phi^+\}.
+$$</span>
+<p><strong>Lemma 2.2 (root transport).</strong> If <span class="math" data-tex="\(w\alpha=\beta\)">\(w\alpha=\beta\)</span> for simple roots <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>, then <span class="math" data-tex="\(w\)">\(w\)</span> is a product of elements of standard rank-two Weyl groups, each carrying the current simple root to the next simple root. A factor fixing that root belongs to a rank-two subgroup containing it.</p>
+<p><strong>Proof.</strong> Induct on <span class="math" data-tex="\(\ell(w)\)">\(\ell(w)\)</span>. Length zero means <span class="math" data-tex="\(w=1\)">\(w=1\)</span>. Otherwise some simple root <span class="math" data-tex="\(\delta\)">\(\delta\)</span> has <span class="math" data-tex="\(w\delta&lt;0\)">\(w\delta&lt;0\)</span>: if all simple roots had positive images, all positive roots would. Here <span class="math" data-tex="\(\delta\ne\alpha\)">\(\delta\ne\alpha\)</span>. Let <span class="math" data-tex="\(E\)">\(E\)</span> be their plane and set</p>
+<span class="math math-display" data-tex="$$
+A=w^{-1}\Phi^+\cap E.
+$$">$$
+A=w^{-1}\Phi^+\cap E.
+$$</span>
+<p>This is a positive system of <span class="math" data-tex="\(\Phi\cap E\)">\(\Phi\cap E\)</span>. Choose <span class="math" data-tex="\(v\in W_{\alpha,\delta}\)">\(v\in W_{\alpha,\delta}\)</span> with <span class="math" data-tex="\(vA=\Phi^+\cap E\)">\(vA=\Phi^+\cap E\)</span>, and put <span class="math" data-tex="\(w&#x27;=wv^{-1}\)">\(w&#x27;=wv^{-1}\)</span>. An element of this rank-two subgroup permutes the positive roots outside <span class="math" data-tex="\(E\)">\(E\)</span>: their positive coefficients at the other simple roots are unchanged. Thus <span class="math" data-tex="\(w&#x27;\)">\(w&#x27;\)</span> has the same number of inversions outside <span class="math" data-tex="\(E\)">\(E\)</span> as <span class="math" data-tex="\(w\)">\(w\)</span>, and no inversions inside <span class="math" data-tex="\(E\)">\(E\)</span>. At least <span class="math" data-tex="\(\delta\)">\(\delta\)</span> was an inversion of <span class="math" data-tex="\(w\)">\(w\)</span>, so <span class="math" data-tex="\(\ell(w&#x27;)&lt;\ell(w)\)">\(\ell(w&#x27;)&lt;\ell(w)\)</span>.</p>
+<p>The root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is simple for <span class="math" data-tex="\(A\)">\(A\)</span>, since <span class="math" data-tex="\(w\alpha=\beta\)">\(w\alpha=\beta\)</span> is simple in the full positive system. Consequently <span class="math" data-tex="\(v\alpha\)">\(v\alpha\)</span> is either <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> or <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Apply induction to <span class="math" data-tex="\(w&#x27;\)">\(w&#x27;\)</span>, which carries this simple root to <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, and prepend the factor <span class="math" data-tex="\(v\)">\(v\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These arguments apply to the root space; central directions in a reductive datum are fixed by its Weyl group.</p>
+<h2 id="3-the-multiplication-forced-in-rank-two">3. The multiplication forced in rank two</h2>
+<p>Fix two distinct simple roots <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>, taking <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> short in the unequal-length cases. In the formulas below all parameters are sections over an arbitrary <span class="math" data-tex="\(S\)">\(S\)</span>-scheme. We choose frames for the remaining positive roots by the indicated conjugations:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Positive roots besides <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span></th>
+<th>Chosen frames</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(A_2\)">\(A_2\)</span></td>
+<td><span class="math" data-tex="\(c=\alpha+\beta\)">\(c=\alpha+\beta\)</span></td>
+<td><span class="math" data-tex="\(E_c=\operatorname{Ad}(n_\beta)E_\alpha\)">\(E_c=\operatorname{Ad}(n_\beta)E_\alpha\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(B_2\)">\(B_2\)</span></td>
+<td><span class="math" data-tex="\(c=\alpha+\beta,\ d=2\alpha+\beta\)">\(c=\alpha+\beta,\ d=2\alpha+\beta\)</span></td>
+<td><span class="math" data-tex="\(E_c=\operatorname{Ad}(n_\beta)E_\alpha,\ E_d=\operatorname{Ad}(n_\alpha)E_\beta\)">\(E_c=\operatorname{Ad}(n_\beta)E_\alpha,\ E_d=\operatorname{Ad}(n_\alpha)E_\beta\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(G_2\)">\(G_2\)</span></td>
+<td><span class="math" data-tex="\(c=\alpha+\beta,\ d=2\alpha+\beta,\ e=3\alpha+\beta,\ f=3\alpha+2\beta\)">\(c=\alpha+\beta,\ d=2\alpha+\beta,\ e=3\alpha+\beta,\ f=3\alpha+2\beta\)</span></td>
+<td><span class="math" data-tex="\(E_c=\operatorname{Ad}(n_\beta)E_\alpha,\ E_d=\operatorname{Ad}(n_\alpha)E_c,\ E_e=-\operatorname{Ad}(n_\alpha)E_\beta,\ E_f=\operatorname{Ad}(n_\beta)E_e\)">\(E_c=\operatorname{Ad}(n_\beta)E_\alpha,\ E_d=\operatorname{Ad}(n_\alpha)E_c,\ E_e=-\operatorname{Ad}(n_\alpha)E_\beta,\ E_f=\operatorname{Ad}(n_\beta)E_e\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Write <span class="math" data-tex="\(x_c,x_d,\ldots\)">\(x_c,x_d,\ldots\)</span> for the corresponding root parametrizations. The complete noncommuting positive-root relations are</p>
+<span class="math math-display" data-tex="$$
+\begin{array}{ll}
+A_2:&amp;
+x_\beta(y)x_\alpha(x)=
+x_\alpha(x)x_\beta(y)x_c(xy);\\[2mm]
+B_2:&amp;
+x_\beta(y)x_\alpha(x)=
+x_\alpha(x)x_\beta(y)x_c(xy)x_d(x^2y),\\
+&amp;
+x_c(y)x_\alpha(x)=x_\alpha(x)x_c(y)x_d(2xy);\\[2mm]
+G_2:&amp;
+x_\beta(y)x_\alpha(x)=
+x_\alpha(x)x_\beta(y)x_c(xy)x_d(x^2y)x_e(x^3y)x_f(x^3y^2),\\
+&amp;
+x_c(y)x_\alpha(x)=
+x_\alpha(x)x_c(y)x_d(2xy)x_e(3x^2y)x_f(3xy^2),\\
+&amp;
+x_d(y)x_\alpha(x)=x_\alpha(x)x_d(y)x_e(3xy),\\
+&amp;
+x_e(y)x_\beta(x)=x_\beta(x)x_e(y)x_f(-xy),\\
+&amp;
+x_d(y)x_c(x)=x_c(x)x_d(y)x_f(3xy).
+\end{array}
+\tag{3.1}
+$$">$$
+\begin{array}{ll}
+A_2:&amp;
+x_\beta(y)x_\alpha(x)=
+x_\alpha(x)x_\beta(y)x_c(xy);\\[2mm]
+B_2:&amp;
+x_\beta(y)x_\alpha(x)=
+x_\alpha(x)x_\beta(y)x_c(xy)x_d(x^2y),\\
+&amp;
+x_c(y)x_\alpha(x)=x_\alpha(x)x_c(y)x_d(2xy);\\[2mm]
+G_2:&amp;
+x_\beta(y)x_\alpha(x)=
+x_\alpha(x)x_\beta(y)x_c(xy)x_d(x^2y)x_e(x^3y)x_f(x^3y^2),\\
+&amp;
+x_c(y)x_\alpha(x)=
+x_\alpha(x)x_c(y)x_d(2xy)x_e(3x^2y)x_f(3xy^2),\\
+&amp;
+x_d(y)x_\alpha(x)=x_\alpha(x)x_d(y)x_e(3xy),\\
+&amp;
+x_e(y)x_\beta(x)=x_\beta(x)x_e(y)x_f(-xy),\\
+&amp;
+x_d(y)x_c(x)=x_c(x)x_d(y)x_f(3xy).
+\end{array}
+\tag{3.1}
+$$</span>
+<p>All other positive-root pairs commute. The powers in these formulas are forced by torus weights, and the coefficient integers are independent of the base. In particular, the terms with coefficient two or three disappear in the relevant characteristics; the proof never divides by them.</p>
+<p>Here are the conjugation rules needed along with (3.1):</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th><span class="math" data-tex="\(\operatorname{Ad}(n_\alpha)\)">\(\operatorname{Ad}(n_\alpha)\)</span></th>
+<th><span class="math" data-tex="\(\operatorname{Ad}(n_\beta)\)">\(\operatorname{Ad}(n_\beta)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(A_2\)">\(A_2\)</span></td>
+<td><span class="math" data-tex="\(E_\beta\mapsto-E_c,\ E_c\mapsto E_\beta\)">\(E_\beta\mapsto-E_c,\ E_c\mapsto E_\beta\)</span></td>
+<td><span class="math" data-tex="\(E_\alpha\mapsto E_c,\ E_c\mapsto-E_\alpha\)">\(E_\alpha\mapsto E_c,\ E_c\mapsto-E_\alpha\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(B_2\)">\(B_2\)</span></td>
+<td><span class="math" data-tex="\(E_\beta\mapsto E_d,\ E_d\mapsto E_\beta,\ E_c\mapsto-E_c\)">\(E_\beta\mapsto E_d,\ E_d\mapsto E_\beta,\ E_c\mapsto-E_c\)</span></td>
+<td><span class="math" data-tex="\(E_\alpha\mapsto E_c,\ E_c\mapsto-E_\alpha,\ E_d\mapsto E_d\)">\(E_\alpha\mapsto E_c,\ E_c\mapsto-E_\alpha,\ E_d\mapsto E_d\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(G_2\)">\(G_2\)</span></td>
+<td><span class="math" data-tex="\(E_c\mapsto E_d,\ E_d\mapsto-E_c,\ E_\beta\mapsto-E_e,\ E_e\mapsto E_\beta,\ E_f\mapsto E_f\)">\(E_c\mapsto E_d,\ E_d\mapsto-E_c,\ E_\beta\mapsto-E_e,\ E_e\mapsto E_\beta,\ E_f\mapsto E_f\)</span></td>
+<td><span class="math" data-tex="\(E_\alpha\mapsto E_c,\ E_c\mapsto-E_\alpha,\ E_d\mapsto E_d,\ E_e\mapsto E_f,\ E_f\mapsto-E_e\)">\(E_\alpha\mapsto E_c,\ E_c\mapsto-E_\alpha,\ E_d\mapsto E_d,\ E_e\mapsto E_f,\ E_f\mapsto-E_e\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In <span class="math" data-tex="\(A_1\times A_1\)">\(A_1\times A_1\)</span>, the two rank-one groups commute. The normalizer relations are</p>
+<span class="math math-display" data-tex="$$
+(n_\alpha n_\beta)^m=
+\begin{cases}
+t_\alpha t_\beta,&amp;m=2,\ A_1\times A_1,\\
+1,&amp;m=3,\ A_2,\\
+t_\alpha,&amp;m=4,\ B_2\text{ with }\alpha\text{ short},\\
+1,&amp;m=6,\ G_2.
+\end{cases}
+\tag{3.2}
+$$">$$
+(n_\alpha n_\beta)^m=
+\begin{cases}
+t_\alpha t_\beta,&amp;m=2,\ A_1\times A_1,\\
+1,&amp;m=3,\ A_2,\\
+t_\alpha,&amp;m=4,\ B_2\text{ with }\alpha\text{ short},\\
+1,&amp;m=6,\ G_2.
+\end{cases}
+\tag{3.2}
+$$</span>
+<h3 id="deriving-the-coefficients">Deriving the coefficients</h3>
+<p>We give the calculations over an affine open of <span class="math" data-tex="\(S\)">\(S\)</span>, where all unknown coefficients lie in its ring <span class="math" data-tex="\(R\)">\(R\)</span>. Since root-product coordinates are unique, identities with indeterminate parameters in <span class="math" data-tex="\(R[x,y]\)">\(R[x,y]\)</span> determine coefficients even when <span class="math" data-tex="\(R\)">\(R\)</span> has nilpotents.</p>
+<p>If no root is a positive integral combination of two roots, their root groups commute, by the weight calculation in the preceding lesson. A rank-one group therefore acts trivially on a root line <span class="math" data-tex="\(\mathfrak g_\gamma\)">\(\mathfrak g_\gamma\)</span> when neither <span class="math" data-tex="\(\gamma+\alpha\)">\(\gamma+\alpha\)</span> nor <span class="math" data-tex="\(\gamma-\alpha\)">\(\gamma-\alpha\)</span> is a root. The definition of the frames and <span class="math" data-tex="\(n_\alpha^2=t_\alpha\)">\(n_\alpha^2=t_\alpha\)</span> give every entry in the conjugation table except the scalar on <span class="math" data-tex="\(E_c\)">\(E_c\)</span> in <span class="math" data-tex="\(B_2\)">\(B_2\)</span> and the scalar carrying <span class="math" data-tex="\(E_\beta\)">\(E_\beta\)</span> to <span class="math" data-tex="\(E_c\)">\(E_c\)</span> in <span class="math" data-tex="\(A_2\)">\(A_2\)</span>.</p>
+<p>For <span class="math" data-tex="\(A_2\)">\(A_2\)</span>, put an unknown <span class="math" data-tex="\(A\)">\(A\)</span> in the last parameter of the first formula of (3.1). Conjugating that formula by <span class="math" data-tex="\(n_\beta\)">\(n_\beta\)</span> gives</p>
+<span class="math math-display" data-tex="$$
+x_{-\beta}(-y)x_c(x)
+=x_c(x)x_{-\beta}(-y)x_\alpha(-Axy).
+$$">$$
+x_{-\beta}(-y)x_c(x)
+=x_c(x)x_{-\beta}(-y)x_\alpha(-Axy).
+$$</span>
+<p>The identity <span class="math" data-tex="\(n_\beta x_\alpha(x)n_\beta^{-1}=x_c(x)\)">\(n_\beta x_\alpha(x)n_\beta^{-1}=x_c(x)\)</span>, after cancelling commuting end factors, becomes</p>
+<span class="math math-display" data-tex="$$
+x_\beta(1)x_\alpha(x)x_\beta(-1)
+=x_{-\beta}(1)x_c(x)x_{-\beta}(-1).
+$$">$$
+x_\beta(1)x_\alpha(x)x_\beta(-1)
+=x_{-\beta}(1)x_c(x)x_{-\beta}(-1).
+$$</span>
+<p>Reordering its two sides gives respectively <span class="math" data-tex="\(x_\alpha(x)x_c(Ax)\)">\(x_\alpha(x)x_c(Ax)\)</span> and <span class="math" data-tex="\(x_\alpha(Ax)x_c(x)\)">\(x_\alpha(Ax)x_c(x)\)</span>. Thus <span class="math" data-tex="\(A=1\)">\(A=1\)</span>. If <span class="math" data-tex="\(\operatorname{Ad}(n_\alpha)E_\beta=zE_c\)">\(\operatorname{Ad}(n_\alpha)E_\beta=zE_c\)</span>, apply the same cancellation with <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> interchanged. It gives</p>
+<span class="math math-display" data-tex="$$
+x_\beta(y)x_c(-y)=x_\beta(-z^{-1}y)x_c(zy).
+$$">$$
+x_\beta(y)x_c(-y)=x_\beta(-z^{-1}y)x_c(zy).
+$$</span>
+<p>Hence <span class="math" data-tex="\(z=-1\)">\(z=-1\)</span>. This proves both tables for <span class="math" data-tex="\(A_2\)">\(A_2\)</span>.</p>
+<p>For <span class="math" data-tex="\(B_2\)">\(B_2\)</span>, use unknown coefficients <span class="math" data-tex="\(A,B,C\)">\(A,B,C\)</span> in place of <span class="math" data-tex="\(1,1,2\)">\(1,1,2\)</span> in its two relations, and write <span class="math" data-tex="\(\operatorname{Ad}(n_\alpha)E_c=kE_c\)">\(\operatorname{Ad}(n_\alpha)E_c=kE_c\)</span>. Conjugating the first relation by <span class="math" data-tex="\(n_\beta\)">\(n_\beta\)</span>, and cancelling as above, gives</p>
+<span class="math math-display" data-tex="$$
+x_\alpha(x)x_c(Ax)x_d(Bx^2)
+=x_\alpha(Ax)x_c(x)x_d((AC-B)x^2).
+$$">$$
+x_\alpha(x)x_c(Ax)x_d(Bx^2)
+=x_\alpha(Ax)x_c(x)x_d((AC-B)x^2).
+$$</span>
+<p>Thus <span class="math" data-tex="\(A=1\)">\(A=1\)</span> and <span class="math" data-tex="\(C=2B\)">\(C=2B\)</span>. Conjugate the first relation by <span class="math" data-tex="\(n_\alpha\)">\(n_\alpha\)</span>, and use <span class="math" data-tex="\(n_\alpha x_\beta(y)n_\alpha^{-1}=x_d(y)\)">\(n_\alpha x_\beta(y)n_\alpha^{-1}=x_d(y)\)</span>. The resulting cancellation gives</p>
+<span class="math math-display" data-tex="$$
+x_\beta(y)x_c(-Ay)x_d(By)
+=x_\beta(By)x_c(Aky)x_d(y).
+$$">$$
+x_\beta(y)x_c(-Ay)x_d(By)
+=x_\beta(By)x_c(Aky)x_d(y).
+$$</span>
+<p>The three groups on each side commute. Therefore <span class="math" data-tex="\(B=1,\ k=-1,\ C=2\)">\(B=1,\ k=-1,\ C=2\)</span>.</p>
+<p>For <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, put coefficients <span class="math" data-tex="\(A,B,C,D\)">\(A,B,C,D\)</span> in the four extra parameters of the first relation, <span class="math" data-tex="\(E,F,G\)">\(E,F,G\)</span> in the second, <span class="math" data-tex="\(H\)">\(H\)</span> in the third, and <span class="math" data-tex="\(J\)">\(J\)</span> in the fourth. Conjugation by <span class="math" data-tex="\(n_\beta\)">\(n_\beta\)</span> makes the coefficient in the fifth relation also <span class="math" data-tex="\(H\)">\(H\)</span>. The frame choices and the square relations already give its full conjugation table.</p>
+<p>The cancellation identity for <span class="math" data-tex="\(n_\beta x_\alpha(x)n_\beta^{-1}=x_c(x)\)">\(n_\beta x_\alpha(x)n_\beta^{-1}=x_c(x)\)</span> gives the following two normal forms:</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;x_\alpha(x)x_c(Ax)x_d(Bx^2)x_e(Cx^3)x_f((D-CJ)x^3),\\
+&amp;x_\alpha(Ax)x_c(x)x_d((AE-B)x^2)
+x_e((A^2F+CJ-D)x^3)x_f((AG-C)x^3).
+\end{aligned}
+$$">$$
+\begin{aligned}
+&amp;x_\alpha(x)x_c(Ax)x_d(Bx^2)x_e(Cx^3)x_f((D-CJ)x^3),\\
+&amp;x_\alpha(Ax)x_c(x)x_d((AE-B)x^2)
+x_e((A^2F+CJ-D)x^3)x_f((AG-C)x^3).
+\end{aligned}
+$$</span>
+<p>Comparison gives</p>
+<span class="math math-display" data-tex="$$
+A=1,\qquad E=2B,\qquad C+D=F+CJ,\qquad F=G.
+\tag{3.3}
+$$">$$
+A=1,\qquad E=2B,\qquad C+D=F+CJ,\qquad F=G.
+\tag{3.3}
+$$</span>
+<p>The identity <span class="math" data-tex="\(n_\alpha x_\beta(y)n_\alpha^{-1}=x_e(-y)\)">\(n_\alpha x_\beta(y)n_\alpha^{-1}=x_e(-y)\)</span> similarly gives</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;x_\beta(y)x_c(-Ay)x_d(By)x_e(-Cy)x_f(-Dy^2),\\
+&amp;x_\beta(Cy)x_c(-By)x_d(Ay)x_e(-y)x_f((D-CJ-ABH)y^2).
+\end{aligned}
+$$">$$
+\begin{aligned}
+&amp;x_\beta(y)x_c(-Ay)x_d(By)x_e(-Cy)x_f(-Dy^2),\\
+&amp;x_\beta(Cy)x_c(-By)x_d(Ay)x_e(-y)x_f((D-CJ-ABH)y^2).
+\end{aligned}
+$$</span>
+<p>Consequently <span class="math" data-tex="\(C=1,\ A=B,\ D-CJ-ABH=-D\)">\(C=1,\ A=B,\ D-CJ-ABH=-D\)</span>. Together with (3.3) this says</p>
+<span class="math math-display" data-tex="$$
+A=B=C=1,\quad E=2,\quad F=G,\quad D+1=F+J,\quad 2D=H+J.
+\tag{3.4}
+$$">$$
+A=B=C=1,\quad E=2,\quad F=G,\quad D+1=F+J,\quad 2D=H+J.
+\tag{3.4}
+$$</span>
+<p>The cancellation identity carrying <span class="math" data-tex="\(E_e\)">\(E_e\)</span> to <span class="math" data-tex="\(E_f\)">\(E_f\)</span> under <span class="math" data-tex="\(n_\beta\)">\(n_\beta\)</span> reduces to</p>
+<span class="math math-display" data-tex="$$
+x_e(x)x_f(-Jx)=x_e(-Jx)x_f(x);
+$$">$$
+x_e(x)x_f(-Jx)=x_e(-Jx)x_f(x);
+$$</span>
+<p>thus <span class="math" data-tex="\(J=-1\)">\(J=-1\)</span>. Finally use <span class="math" data-tex="\(n_\alpha x_c(y)n_\alpha^{-1}=x_d(y)\)">\(n_\alpha x_c(y)n_\alpha^{-1}=x_d(y)\)</span>. The left side, after cancelling its rank-one end factors, has normal form</p>
+<span class="math math-display" data-tex="$$
+x_c(y)x_d(-Ey)x_e(Fy)x_f(-Gy^2).
+$$">$$
+x_c(y)x_d(-Ey)x_e(Fy)x_f(-Gy^2).
+$$</span>
+<p>The right side is <span class="math" data-tex="\(x_{-\alpha}(1)x_d(y)x_e(Hy)x_{-\alpha}(-1)\)">\(x_{-\alpha}(1)x_d(y)x_e(Hy)x_{-\alpha}(-1)\)</span>. Move <span class="math" data-tex="\(x_{-\alpha}\)">\(x_{-\alpha}\)</span> past these factors, using the conjugates by <span class="math" data-tex="\(n_\alpha\)">\(n_\alpha\)</span> of the already written relations. In this movement a <span class="math" data-tex="\(d\)">\(d\)</span>-factor can create a <span class="math" data-tex="\(c\)">\(c\)</span>-factor, and an <span class="math" data-tex="\(e\)">\(e\)</span>-factor can create <span class="math" data-tex="\(\beta,c,d\)">\(\beta,c,d\)</span>-factors; none creates an additional <span class="math" data-tex="\(e\)">\(e\)</span>-factor. The <span class="math" data-tex="\(e\)">\(e\)</span>-coordinate is therefore <span class="math" data-tex="\(Hy\)">\(Hy\)</span>. This gives <span class="math" data-tex="\(F=H\)">\(F=H\)</span>. Equations (3.4) now imply <span class="math" data-tex="\(F=D+2\)">\(F=D+2\)</span> and <span class="math" data-tex="\(2D=F-1\)">\(2D=F-1\)</span>, so <span class="math" data-tex="\(D=1\)">\(D=1\)</span> by subtraction, and <span class="math" data-tex="\(F=G=H=3\)">\(F=G=H=3\)</span>. No cancellation by two or three has occurred. This proves (3.1).</p>
+<h3 id="checking-the-normalizer-powers">Checking the normalizer powers</h3>
+<p>For a frame <span class="math" data-tex="\(E_\gamma\)">\(E_\gamma\)</span>, write <span class="math" data-tex="\(n_\gamma\)">\(n_\gamma\)</span> for its rank-one representative. If <span class="math" data-tex="\(n\)">\(n\)</span> carries <span class="math" data-tex="\(E_\gamma\)">\(E_\gamma\)</span> to <span class="math" data-tex="\(zE_\delta\)">\(zE_\delta\)</span>, direct substitution in (1.1) gives</p>
+<span class="math math-display" data-tex="$$
+n n_\gamma n^{-1}=\delta^\vee(z)n_\delta.
+\tag{3.5}
+$$">$$
+n n_\gamma n^{-1}=\delta^\vee(z)n_\delta.
+\tag{3.5}
+$$</span>
+<p>For <span class="math" data-tex="\(z=-1\)">\(z=-1\)</span> this is <span class="math" data-tex="\(n_\delta^{-1}\)">\(n_\delta^{-1}\)</span>. In moving torus factors through representatives use <span class="math" data-tex="\(n_\alpha t=s_\alpha(t)n_\alpha\)">\(n_\alpha t=s_\alpha(t)n_\alpha\)</span>; in particular</p>
+<span class="math math-display" data-tex="$$
+s_\alpha(t_\beta)
+=t_\beta t_\alpha^{\langle\alpha,\beta^\vee\rangle}.
+\tag{3.6}
+$$">$$
+s_\alpha(t_\beta)
+=t_\beta t_\alpha^{\langle\alpha,\beta^\vee\rangle}.
+\tag{3.6}
+$$</span>
+<p>These formulas give (3.2) without assuming that torus two-torsion is central. For clarity, here are reductions of the alternating words. In <span class="math" data-tex="\(A_2\)">\(A_2\)</span>,</p>
+<span class="math math-display" data-tex="$$
+n_\alpha n_\beta n_\alpha=n_c^{-1}t_\alpha,\qquad
+n_\beta n_\alpha n_\beta n_\alpha n_\beta=n_\alpha^{-1}.
+$$">$$
+n_\alpha n_\beta n_\alpha=n_c^{-1}t_\alpha,\qquad
+n_\beta n_\alpha n_\beta n_\alpha n_\beta=n_\alpha^{-1}.
+$$</span>
+<p>In <span class="math" data-tex="\(B_2\)">\(B_2\)</span>,</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+n_\alpha n_\beta n_\alpha&amp;=n_dt_\alpha,\\
+n_\beta n_\alpha n_\beta n_\alpha n_\beta&amp;=n_dt_\alpha t_\beta,\\
+n_\alpha n_\beta n_\alpha n_\beta n_\alpha n_\beta n_\alpha&amp;=n_\beta^{-1}t_\alpha.
+\end{aligned}
+$$">$$
+\begin{aligned}
+n_\alpha n_\beta n_\alpha&amp;=n_dt_\alpha,\\
+n_\beta n_\alpha n_\beta n_\alpha n_\beta&amp;=n_dt_\alpha t_\beta,\\
+n_\alpha n_\beta n_\alpha n_\beta n_\alpha n_\beta n_\alpha&amp;=n_\beta^{-1}t_\alpha.
+\end{aligned}
+$$</span>
+<p>Here <span class="math" data-tex="\(t_\alpha\)">\(t_\alpha\)</span> is central in this rank-two group. In <span class="math" data-tex="\(G_2\)">\(G_2\)</span> the conjugation table and (3.5) give, successively,</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+n_\alpha n_\beta n_\alpha&amp;=n_e^{-1}t_\alpha,\\
+n_\beta(n_\alpha n_\beta)^2&amp;=n_f^{-1}t_\alpha,\\
+n_\alpha(n_\beta n_\alpha)^3&amp;=n_f^{-1},\\
+n_\beta(n_\alpha n_\beta)^4&amp;=n_et_\beta,\\
+n_\alpha(n_\beta n_\alpha)^5&amp;=n_\beta^{-1}.
+\end{aligned}
+$$">$$
+\begin{aligned}
+n_\alpha n_\beta n_\alpha&amp;=n_e^{-1}t_\alpha,\\
+n_\beta(n_\alpha n_\beta)^2&amp;=n_f^{-1}t_\alpha,\\
+n_\alpha(n_\beta n_\alpha)^3&amp;=n_f^{-1},\\
+n_\beta(n_\alpha n_\beta)^4&amp;=n_et_\beta,\\
+n_\alpha(n_\beta n_\alpha)^5&amp;=n_\beta^{-1}.
+\end{aligned}
+$$</span>
+<p>Multiplying the last word by <span class="math" data-tex="\(n_\beta\)">\(n_\beta\)</span> proves the sixth-power relation. The commuting case follows at once from <span class="math" data-tex="\(n_\alpha^2=t_\alpha\)">\(n_\alpha^2=t_\alpha\)</span> and <span class="math" data-tex="\(n_\beta^2=t_\beta\)">\(n_\beta^2=t_\beta\)</span>. This completes all the rank-two assertions.</p>
+<h2 id="4-from-local-multiplication-to-the-entire-group">4. From local multiplication to the entire group</h2>
+<p>We first record a translation argument that works over any base.</p>
+<p><strong>Lemma 4.1 (extension from the open cell).</strong> Let <span class="math" data-tex="\(K/S\)">\(K/S\)</span> be a smooth group with geometrically connected fibres, let <span class="math" data-tex="\(\Omega\subset K\)">\(\Omega\subset K\)</span> be a fibrewise dense open containing the identity, and let <span class="math" data-tex="\(H/S\)">\(H/S\)</span> be a separated group scheme. A morphism <span class="math" data-tex="\(f:\Omega\to H\)">\(f:\Omega\to H\)</span> with <span class="math" data-tex="\(f(1)=1\)">\(f(1)=1\)</span> and</p>
+<span class="math math-display" data-tex="$$
+f(xy)=f(x)f(y)\quad\text{whenever }x,y,xy\in\Omega
+\tag{4.1}
+$$">$$
+f(xy)=f(x)f(y)\quad\text{whenever }x,y,xy\in\Omega
+\tag{4.1}
+$$</span>
+<p>extends uniquely to a homomorphism <span class="math" data-tex="\(K\to H\)">\(K\to H\)</span>.</p>
+<p><strong>Proof.</strong> This is the word-extension argument of AG-RG-03 Lemma 8.B. A geometrically connected smooth algebraic group is geometrically irreducible: its regular irreducible components are disjoint and open, and connectedness leaves one component. For a test scheme <span class="math" data-tex="$R\to S$">$R\to S$</span> and finitely many sections <span class="math" data-tex="$g_i\in K(R)$">$g_i\in K(R)$</span>, the open <span class="math" data-tex="$\Omega_R\cap\bigcap_i\Omega_Rg_i^{-1}$">$\Omega_R\cap\bigcap_i\Omega_Rg_i^{-1}$</span> has a nonempty open in every geometric fibre of <span class="math" data-tex="$K_R$">$K_R$</span>. Its morphism to <span class="math" data-tex="$R$">$R$</span> is smooth and surjective, so it supplies a section after an fppf cover. Apply this also to the dense open <span class="math" data-tex="$\Omega_R^{-1}$">$\Omega_R^{-1}$</span>. For any <span class="math" data-tex="$g\in K(R)$">$g\in K(R)$</span> we can consequently choose <span class="math" data-tex="$c$">$c$</span> locally with <span class="math" data-tex="$c,c^{-1},cg\in\Omega_R$">$c,c^{-1},cg\in\Omega_R$</span>. Thus <span class="math" data-tex="$g=c^{-1}(cg)$">$g=c^{-1}(cg)$</span> is a word in cell points. Assign to a word <span class="math" data-tex="$x_1\cdots x_d$">$x_1\cdots x_d$</span> in cell points the product <span class="math" data-tex="$f(x_1)\cdots f(x_d)$">$f(x_1)\cdots f(x_d)$</span>. To compare two words with endpoint <span class="math" data-tex="$g$">$g$</span>, choose <span class="math" data-tex="$a$">$a$</span> so that <span class="math" data-tex="$a$">$a$</span> and every translated partial product of either word belong to <span class="math" data-tex="$\Omega_R$">$\Omega_R$</span>. There are only finitely many such open conditions, so the same smooth surjectivity argument permits this choice. Repeated use of (4.1) shows that multiplying either assigned image word on the left by <span class="math" data-tex="$f(a)$">$f(a)$</span> gives <span class="math" data-tex="$f(ag)$">$f(ag)$</span>. Cancellation proves independence of the word. In particular the image of an identity word is <span class="math" data-tex="$1$">$1$</span>, and the assigned values of words for <span class="math" data-tex="$g$">$g$</span> and <span class="math" data-tex="$g^{-1}$">$g^{-1}$</span> are inverse. The assignments are compatible with fppf pullback and agree on overlaps, so the sheaf property of <span class="math" data-tex="$H$">$H$</span> descends them to a map <span class="math" data-tex="$K\to H$">$K\to H$</span>. Concatenating words proves multiplicativity. Yoneda gives the scheme morphism. Every extension must have the same values on these locally generating words, proving uniqueness. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The open cell of a split reductive group is <span class="math" data-tex="\(\Omega=U^-TU^+\)">\(\Omega=U^-TU^+\)</span>. To construct <span class="math" data-tex="\(f\)">\(f\)</span> there, maps on individual root groups and <span class="math" data-tex="\(T\)">\(T\)</span> are enough, provided they respect the normalizer conjugations, the rank-one multiplication and the positive rank-two relations.</p>
+<p>Here is the gluing argument in detail. Torus-equivariance and Lemma 2.1 reduce any reordering of positive root factors to (3.1) in a conjugate standard rank-two subgroup. Thus the product of their images defines a homomorphism on <span class="math" data-tex="\(U^+\)">\(U^+\)</span>, independent of the chosen root order. The same holds on <span class="math" data-tex="\(U^-\)">\(U^-\)</span>. The resulting cell map satisfies</p>
+<span class="math math-display" data-tex="$$
+f(vgu)=f(v)f(g)f(u)
+\quad(v\in B^-,\ u\in B^+,\ g\in\Omega).
+\tag{4.2}
+$$">$$
+f(vgu)=f(v)f(g)f(u)
+\quad(v\in B^-,\ u\in B^+,\ g\in\Omega).
+\tag{4.2}
+$$</span>
+<p>Indeed, write the three factors in <span class="math" data-tex="\(U^-TU^+\)">\(U^-TU^+\)</span> coordinates, move torus factors using their character actions, and multiply only within <span class="math" data-tex="\(U^-\)">\(U^-\)</span> or <span class="math" data-tex="\(U^+\)">\(U^+\)</span>.</p>
+<p>For a simple representative <span class="math" data-tex="\(n_\alpha\)">\(n_\alpha\)</span>, split off the <span class="math" data-tex="\(\pm\alpha\)">\(\pm\alpha\)</span> root factors in the cell. All remaining positive roots stay positive under <span class="math" data-tex="\(s_\alpha\)">\(s_\alpha\)</span>, and all remaining negative roots stay negative. On the middle factor <span class="math" data-tex="\(U_{-\alpha}TU_\alpha\)">\(U_{-\alpha}TU_\alpha\)</span>, the conjugation identity is the rank-one identity. Equation (4.2) therefore proves</p>
+<span class="math math-display" data-tex="$$
+f(n_\alpha g n_\alpha^{-1})
+=f_N(n_\alpha)f(g)f_N(n_\alpha)^{-1}
+\tag{4.3}
+$$">$$
+f(n_\alpha g n_\alpha^{-1})
+=f_N(n_\alpha)f(g)f_N(n_\alpha)^{-1}
+\tag{4.3}
+$$</span>
+<p>whenever both cell expressions exist. For a word in the representatives, first impose the finitely many open conditions that all intermediate conjugates lie in the cell. This open contains the identity and is fibrewise dense. Induction proves (4.3) there. <a href="AG-RG-S08.html#universal-schematic-density">AG-RG-S08 Lemma G.3.5</a> proves that this open is universally schematically dense in the full common domain: that domain is an open in the smooth cell with geometrically irreducible fibres. Since the target is separated, the equalizer ideal is zero on the whole domain. The identity consequently holds for every <span class="math" data-tex="$n\in N_K(T)$">$n\in N_K(T)$</span>, including after nonreduced base changes.</p>
+<p>Choose a representative <span class="math" data-tex="\(n_0\)">\(n_0\)</span> of the longest Weyl element using an actual reduced word for <span class="math" data-tex="\(w_0\)">\(w_0\)</span>. It interchanges <span class="math" data-tex="\(U^+\)">\(U^+\)</span> and <span class="math" data-tex="\(U^-\)">\(U^-\)</span>. For <span class="math" data-tex="\(u\in U^+,v\in U^-\)">\(u\in U^+,v\in U^-\)</span> with <span class="math" data-tex="\(uv\in\Omega\)">\(uv\in\Omega\)</span>, the product <span class="math" data-tex="\(n_0uvn_0^{-1}\)">\(n_0uvn_0^{-1}\)</span> is a negative-positive product and always lies in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Its cell formula, followed by (4.3), gives <span class="math" data-tex="\(f(uv)=f(u)f(v)\)">\(f(uv)=f(u)f(v)\)</span>. Finally, if <span class="math" data-tex="\(x=vtu\)">\(x=vtu\)</span> and <span class="math" data-tex="\(x&#x27;=v&#x27;t&#x27;u&#x27;\)">\(x&#x27;=v&#x27;t&#x27;u&#x27;\)</span>, then</p>
+<span class="math math-display" data-tex="$$
+xx&#x27;=vt(uv&#x27;)t&#x27;u&#x27;.
+$$">$$
+xx&#x27;=vt(uv&#x27;)t&#x27;u&#x27;.
+$$</span>
+<p>Equation (4.2) reduces (4.1) to the case just treated. Lemma 4.1 completes the extension.</p>
+<h2 id="5-the-isomorphism-theorem">5. The isomorphism theorem</h2>
+<p id="ag-rg-05-t51"><strong>Theorem 5.1.</strong> For pinned split reductive groups over a scheme <span class="math" data-tex="\(S\)">\(S\)</span>, isomorphisms preserving the pinnings correspond bijectively to isomorphisms of their based root data. The correspondence commutes with every base change. Over a disconnected base, the datum isomorphism is allowed to be locally constant.</p>
+<p><strong>Proof.</strong> A pinning-preserving group isomorphism gives the based-datum isomorphism by its action on the torus, roots, coroots and frames. Conversely, given an isomorphism of based data, match the tori by their character lattices and match each pinned simple root parameter. Match its linked negative parameter by the perfect pairing. The rank-one formula then matches the simple representatives <span class="math" data-tex="\(n_\alpha\)">\(n_\alpha\)</span>, their squares <span class="math" data-tex="\(\alpha^\vee(-1)\)">\(\alpha^\vee(-1)\)</span>, and their action on the torus.</p>
+<p>Let <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> be the sheaf of groups presented by the torus and these representatives, with the torus conjugation rule, the square rule, and the rank-two power relations <span class="math" data-tex="\(3.2\)">\(3.2\)</span>. Modulo the torus this is the Coxeter presentation proved in AG-RG-04 Theorem 3.4, so <span class="math" data-tex="\(\mathcal N/T=\underline W\)">\(\mathcal N/T=\underline W\)</span>. The natural map <span class="math" data-tex="\(\mathcal N\to N_G(T)\)">\(\mathcal N\to N_G(T)\)</span> is surjective as a sheaf: the representatives lift the simple reflections and every remaining normalizer element differs from one of their products by a torus element. The torus maps identically to the actual torus, hence has no collapse in the presentation. Any element in the kernel is trivial modulo <span class="math" data-tex="\(T\)">\(T\)</span>, since the quotient map is the Weyl-group identity, and is then trivial in <span class="math" data-tex="\(T\)">\(T\)</span>. Therefore <span class="math" data-tex="\(\mathcal N\simeq N_G(T)\)">\(\mathcal N\simeq N_G(T)\)</span>. The same presentation holds for the target, giving an actual normalizer isomorphism.</p>
+<p>To define a parameter map at an arbitrary root, transport a pinned simple parameter by a normalizer word. Two transports differ by a root transport that fixes a simple root or carries it to another simple root. AG-RG-05 Lemma 2.2 decomposes this transport into the standard rank-two operations. Each operation intertwines the root parameter maps by the displayed conjugation table; the residual torus multiplies the parameter by the same root character in both groups. The square rule gives the negative parameter. This proves independence of every transport choice. In particular the resulting maps match all normalizer conjugations and all positive and negative rank-two multiplication relations.</p>
+<p>Use any ordered root-product coordinates to define the isomorphism of big cells. The reordering formulas prove that the maps on <span class="math" data-tex="\(U^+\)">\(U^+\)</span> and <span class="math" data-tex="\(U^-\)">\(U^-\)</span> are homomorphisms and independent of the order. Left multiplication by <span class="math" data-tex="\(B^-\)">\(B^-\)</span> and right multiplication by <span class="math" data-tex="\(B^+\)">\(B^+\)</span> consequently intertwine the cell map. For a simple <span class="math" data-tex="\(n_\alpha\)">\(n_\alpha\)</span>, separate the two root factors <span class="math" data-tex="\(U_{\pm\alpha}\)">\(U_{\pm\alpha}\)</span> from the remaining factors. The reflection permutes the remaining positive roots amongst positive roots and the remaining negative roots amongst negative roots. On <span class="math" data-tex="\(U_{-\alpha}TU_\alpha\)">\(U_{-\alpha}TU_\alpha\)</span> the explicit Gauss formula proves equivariance. This proves cell equivariance under each <span class="math" data-tex="\(n_\alpha\)">\(n_\alpha\)</span> on its common domain.</p>
+<p>For a word of simple representatives impose that all intermediate conjugates stay in the cell. This open contains the identity section. Induction gives equivariance there. The following coordinate argument extends the identity to the entire common domain and includes nilpotent bases.</p>
+<p><strong>Cell density lemma.</strong> Put <span class="math" data-tex="\(A=R[q_1,\ldots,q_N,z_1^{\pm1},\ldots,z_r^{\pm1}]\)">\(A=R[q_1,\ldots,q_N,z_1^{\pm1},\ldots,z_r^{\pm1}]\)</span>, with section <span class="math" data-tex="\(e\)">\(e\)</span> given by <span class="math" data-tex="\(q_i=0,z_j=1\)">\(q_i=0,z_j=1\)</span>. If <span class="math" data-tex="\(d\in A\)">\(d\in A\)</span> has <span class="math" data-tex="\(d(e)\in R^\times\)">\(d(e)\in R^\times\)</span>, then <span class="math" data-tex="\(D(d)\)">\(D(d)\)</span> is universally schematically dense in <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span>, and in every open subscheme of it. Consequently two maps from an open <span class="math" data-tex="\(V\)">\(V\)</span> containing <span class="math" data-tex="\(e\)">\(e\)</span> to a separated scheme which agree on a smaller open containing <span class="math" data-tex="\(e\)">\(e\)</span> agree throughout <span class="math" data-tex="\(V\)">\(V\)</span>, locally on <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span>.</p>
+<p><strong>Proof.</strong> Substitution <span class="math" data-tex="\(z_j=1+w_j\)">\(z_j=1+w_j\)</span> embeds <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(R[[q_1,\ldots,q_N,w_1,\ldots,w_r]]\)">\(R[[q_1,\ldots,q_N,w_1,\ldots,w_r]]\)</span>. To verify injectivity, multiply a Laurent polynomial by a monomial in the <span class="math" data-tex="\(z_j\)">\(z_j\)</span>'s. Its image then differs by an invertible formal series from the image of an ordinary polynomial. The translation of variables <span class="math" data-tex="\(z_j=1+w_j\)">\(z_j=1+w_j\)</span> is an automorphism of the polynomial algebra, so that ordinary polynomial is zero only when it was zero. The image of <span class="math" data-tex="\(d\)">\(d\)</span> is a unit in the formal power-series ring, since its constant term is <span class="math" data-tex="\(d(e)\)">\(d(e)\)</span>. Multiplication by <span class="math" data-tex="\(d\)">\(d\)</span> is therefore injective on <span class="math" data-tex="\(A\)">\(A\)</span>. It remains injective after any localization, and the same proof applies after every change of <span class="math" data-tex="\(R\)">\(R\)</span>. Hence <span class="math" data-tex="\(A_q\to(A_q)_d\)">\(A_q\to(A_q)_d\)</span> is injective on every principal chart <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span>. This proves universal schematic density in every open.</p>
+<p>If an open <span class="math" data-tex="\(U\subset V\)">\(U\subset V\)</span> contains the identity, choose for each point of the base a principal open <span class="math" data-tex="\(D(d)\subset U\)">\(D(d)\subset U\)</span> about that identity point. Shrinking the base to make <span class="math" data-tex="\(d(e)\)">\(d(e)\)</span> invertible gives the preceding density statement. The equalizer of the two maps to the separated target is closed in <span class="math" data-tex="\(V\)">\(V\)</span>. Its ideal vanishes after restriction to <span class="math" data-tex="\(D(d)\)">\(D(d)\)</span>, and injectivity on each principal chart makes that ideal zero on <span class="math" data-tex="\(V\)">\(V\)</span>. The maps are equal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply the lemma to the root-product coordinates of <span class="math" data-tex="\(\Omega=U^-TU^+\)">\(\Omega=U^-TU^+\)</span>. Both the full common domain and the intermediate-conjugate domain are opens in this cell containing the identity. Thus the equivariance identity extends to the full common domain without an external schematic-density theorem.</p>
+<p>Choose a genuine reduced word for the longest Weyl element, allowing repetitions. Its representative interchanges <span class="math" data-tex="\(U^+\)">\(U^+\)</span> and <span class="math" data-tex="\(U^-\)">\(U^-\)</span>. If <span class="math" data-tex="\(u\in U^+\)">\(u\in U^+\)</span>, <span class="math" data-tex="\(v\in U^-\)">\(v\in U^-\)</span> and <span class="math" data-tex="\(uv\)">\(uv\)</span> is in the cell, conjugation turns <span class="math" data-tex="\(uv\)">\(uv\)</span> into a negative-positive product, whose image is already a product of the images of its factors. The equivariance just proved then gives <span class="math" data-tex="\(f(uv)=f(u)f(v)\)">\(f(uv)=f(u)f(v)\)</span>. For general cell points <span class="math" data-tex="\(x=vtu\)">\(x=vtu\)</span>, <span class="math" data-tex="\(x&#x27;=v&#x27;t&#x27;u&#x27;\)">\(x&#x27;=v&#x27;t&#x27;u&#x27;\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+xx&#x27;=vt(uv&#x27;)t&#x27;u&#x27;
+\]">\[
+xx&#x27;=vt(uv&#x27;)t&#x27;u&#x27;
+\]</span>
+<p>and the left/right triangular equivariance to obtain partial multiplicativity. the preceding rank-one lesson, Lemma 8.B extends the cell map to the entire group. Constructing the inverse from the inverse datum and using that lemma's uniqueness gives a group isomorphism. The same uniqueness proves that no second pinning-preserving isomorphism induces the chosen datum map. Because character maps, root parameters, scheme identities and fppf descent commute with base change, the construction does too. On disconnected bases the datum map is locally constant, and the construction is applied to its open-and-closed fibres. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The pinning is essential for uniqueness. Conjugation by an element of <span class="math" data-tex="\(T\)">\(T\)</span> preserves the torus and positive system and scales <span class="math" data-tex="\(E_\alpha\)">\(E_\alpha\)</span> by <span class="math" data-tex="\(\alpha(t)\)">\(\alpha(t)\)</span>. It preserves every frame precisely when it belongs to the centre.</p>
+<h2 id="6-constructing-the-simply-connected-group-in-characteristic-zero">6. Constructing the simply connected group in characteristic zero</h2>
+<p>The preceding lesson <a href="AG-RG-S06.html">Lie proofs for the characteristic-zero group construction</a> supplies the entire Lie argument. Its Theorem 1.A proves the ordered-word basis and the relation-ideal assertion; Theorem 6.2 constructs the rational split semisimple algebra by the Serre relations; Section 7 proves the nonzero finite highest-weight presentation (7.6); and Section 8 proves the rational rank-one integration and faithful action used here. These proofs precede this construction and do not assume a group existence theorem.</p>
+<p>Let <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> be a reduced semisimple root system, <span class="math" data-tex="\(Q=\mathbf Z\Phi\)">\(Q=\mathbf Z\Phi\)</span> its root lattice and <span class="math" data-tex="\(P\)">\(P\)</span> its weight lattice. Theorem 6.2 gives <span class="math" data-tex="\(\mathfrak g/\mathbf Q\)">\(\mathfrak g/\mathbf Q\)</span> with exactly those roots. For a dominant integral <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, Section 7 forms the cyclic quotient with relations <span class="math" data-tex="\(e_jv=0\)">\(e_jv=0\)</span>, <span class="math" data-tex="\(h_jv=\langle\lambda,\alpha_j^\vee\rangle v\)">\(h_jv=\langle\lambda,\alpha_j^\vee\rangle v\)</span>, and <span class="math" data-tex="\(f_j^{\langle\lambda,\alpha_j^\vee\rangle+1}v=0\)">\(f_j^{\langle\lambda,\alpha_j^\vee\rangle+1}v=0\)</span>. The ordered-word basis proves that its top vector survives. Local nilpotence of the simple root operators gives Weyl-invariant weights. Every occurring weight <span class="math" data-tex="\(\mu\)">\(\mu\)</span> satisfies both <span class="math" data-tex="\(\lambda-\mu\in Q^+\)">\(\lambda-\mu\in Q^+\)</span> and <span class="math" data-tex="\(\mu-w_0\lambda\in Q^+\)">\(\mu-w_0\lambda\in Q^+\)</span>; hence it lies in a finite integral box, with finite-dimensional weight spaces. Only after this proves finite dimension does Theorem 4.2 give complete reducibility and the cyclic, one-dimensional top imply irreducibility. Exact base change of this rational presentation proves absolute irreducibility over every characteristic-zero extension. Apply this to the fundamental weights and put <span class="math" data-tex="\(V_i=L_{\mathbf Q}(\omega_i)\)">\(V_i=L_{\mathbf Q}(\omega_i)\)</span> and <span class="math" data-tex="\(V=\bigoplus_iV_i\)">\(V=\bigoplus_iV_i\)</span>.</p>
+<p>For every root vector <span class="math" data-tex="\(e_\alpha\)">\(e_\alpha\)</span>, its action on <span class="math" data-tex="\(V\)">\(V\)</span> is nilpotent. Define the polynomial matrix</p>
+<span class="math math-display" data-tex="$$
+x_\alpha(u)=\exp(u e_\alpha)
+=\sum_{j\geq0}\frac{u^j e_\alpha^j}{j!}
+\quad(u\in\mathbf G_{a,\mathbf Q}).
+$$">$$
+x_\alpha(u)=\exp(u e_\alpha)
+=\sum_{j\geq0}\frac{u^j e_\alpha^j}{j!}
+\quad(u\in\mathbf G_{a,\mathbf Q}).
+$$</span>
+<p id="ag-rg-05-l61"><strong>Lemma 6.1 (polynomial rank-one actions).</strong> The irreducible finite-dimensional complex <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>-modules are <span class="math" data-tex="\(\operatorname{Sym}^n(\mathbf C^2)\)">\(\operatorname{Sym}^n(\mathbf C^2)\)</span>, for <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, with weights <span class="math" data-tex="\(n,n-2,\ldots,-n\)">\(n,n-2,\ldots,-n\)</span>; every finite-dimensional module is their direct sum. Every finite-dimensional rational representation of <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> integrates to a polynomial representation of <span class="math" data-tex="\(\operatorname{SL}_{2,\mathbf Q}\)">\(\operatorname{SL}_{2,\mathbf Q}\)</span>. On its summands of highest weight <span class="math" data-tex="\(n\)">\(n\)</span>, the upper and lower root groups act by <span class="math" data-tex="\(\exp(xe)\)">\(\exp(xe)\)</span> and <span class="math" data-tex="\(\exp(xf)\)">\(\exp(xf)\)</span>, and the diagonal torus acts on weight <span class="math" data-tex="\(m\)">\(m\)</span> by <span class="math" data-tex="\(z^m\)">\(z^m\)</span>.</p>
+<p><strong>Proof.</strong> Begin with <span class="math" data-tex="\(W_n=\operatorname{Sym}^n(\mathbf Q^2)\)">\(W_n=\operatorname{Sym}^n(\mathbf Q^2)\)</span>, written as the degree-<span class="math" data-tex="\(n\)">\(n\)</span> polynomials in the basis vectors <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. For every <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, a matrix <span class="math" data-tex="\(g=\left(\begin{smallmatrix}a&amp;b\\c&amp;d\end{smallmatrix}\right)\in\operatorname{SL}_2(A)\)">\(g=\left(\begin{smallmatrix}a&amp;b\\c&amp;d\end{smallmatrix}\right)\in\operatorname{SL}_2(A)\)</span> acts by</p>
+<span class="math math-display" data-tex="$$
+u\longmapsto au+cv,\qquad v\longmapsto bu+dv.
+$$">$$
+u\longmapsto au+cv,\qquad v\longmapsto bu+dv.
+$$</span>
+<p>The coefficients on the monomial basis <span class="math" data-tex="\(u^{n-j}v^j\)">\(u^{n-j}v^j\)</span> are polynomials in <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span>. Acting successively by <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> sends each basis vector to its image under <span class="math" data-tex="\(gh\)">\(gh\)</span>; hence these substitutions define a group-scheme representation. The identity acts identically, and the substitution for <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> is its inverse. Differentiating gives</p>
+<span class="math math-display" data-tex="$$
+e=u\frac{\partial}{\partial v},\qquad
+f=v\frac{\partial}{\partial u},\qquad
+h=u\frac{\partial}{\partial u}-v\frac{\partial}{\partial v}.
+$$">$$
+e=u\frac{\partial}{\partial v},\qquad
+f=v\frac{\partial}{\partial u},\qquad
+h=u\frac{\partial}{\partial u}-v\frac{\partial}{\partial v}.
+$$</span>
+<p>An upper unipotent matrix fixes <span class="math" data-tex="\(u\)">\(u\)</span> and replaces <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(v+xu\)">\(v+xu\)</span>; the finite Taylor formula is exactly <span class="math" data-tex="\(\exp(xe)\)">\(\exp(xe)\)</span>. A lower unipotent matrix similarly gives <span class="math" data-tex="\(\exp(xf)\)">\(\exp(xf)\)</span>. The diagonal matrix <span class="math" data-tex="\(\operatorname{diag}(z,z^{-1})\)">\(\operatorname{diag}(z,z^{-1})\)</span> multiplies <span class="math" data-tex="\(u^{n-j}v^j\)">\(u^{n-j}v^j\)</span> by <span class="math" data-tex="\(z^{n-2j}\)">\(z^{n-2j}\)</span>. These identities hold over every <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-algebra.</p>
+<p>Here is the finite-dimensional weight argument. In an irreducible complex module, choose an eigenvector of <span class="math" data-tex="\(h\)">\(h\)</span>. Applying <span class="math" data-tex="\(e\)">\(e\)</span> raises its eigenvalue by two; the finite set of eigenvalues makes this process end at a nonzero <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(ew=0\)">\(ew=0\)</span>, <span class="math" data-tex="\(hw=\lambda w\)">\(hw=\lambda w\)</span>. The commutator relations give, by induction,</p>
+<span class="math math-display" data-tex="$$
+hf^jw=(\lambda-2j)f^jw,\qquad
+ef^jw=j(\lambda-j+1)f^{j-1}w.
+$$">$$
+hf^jw=(\lambda-2j)f^jw,\qquad
+ef^jw=j(\lambda-j+1)f^{j-1}w.
+$$</span>
+<p>The first identity follows from <span class="math" data-tex="\([h,f]=-2f\)">\([h,f]=-2f\)</span>. For the second, commute <span class="math" data-tex="\(e\)">\(e\)</span> past one more <span class="math" data-tex="\(f\)">\(f\)</span>: the new coefficient is <span class="math" data-tex="\((\lambda-2j)+j(\lambda-j+1)=(j+1)(\lambda-j)\)">\((\lambda-2j)+j(\lambda-j+1)=(j+1)(\lambda-j)\)</span>. There is a last nonzero vector <span class="math" data-tex="\(f^nw\)">\(f^nw\)</span>, again because the eigenvalues are distinct and the module is finite. Applying the second identity at <span class="math" data-tex="\(j=n+1\)">\(j=n+1\)</span> gives <span class="math" data-tex="\((n+1)(\lambda-n)f^nw=0\)">\((n+1)(\lambda-n)f^nw=0\)</span>, hence <span class="math" data-tex="\(\lambda=n\)">\(\lambda=n\)</span>. The string spans a nonzero submodule, so is the entire irreducible module. Its operators agree with those on <span class="math" data-tex="\(W_n\)">\(W_n\)</span> by the map <span class="math" data-tex="\(f^ju^n\mapsto f^jw\)">\(f^ju^n\mapsto f^jw\)</span>. Conversely <span class="math" data-tex="\(W_n\)">\(W_n\)</span> is irreducible: its distinct one-dimensional <span class="math" data-tex="\(h\)">\(h\)</span>-weight spaces split every invariant subspace, and repeated <span class="math" data-tex="\(e\)">\(e\)</span> carries any nonzero weight vector to <span class="math" data-tex="\(u^n\)">\(u^n\)</span>; repeated <span class="math" data-tex="\(f\)">\(f\)</span> then gives all of <span class="math" data-tex="\(W_n\)">\(W_n\)</span>. Weyl complete reducibility, proved in the preceding Lie lesson, Theorem 4.2, now gives the assertion for every finite-dimensional complex module.</p>
+<p>For a general rational module <span class="math" data-tex="\(M\)">\(M\)</span>, that argument after extension to <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> gives a direct sum of these modules. The rational highest-vector spaces</p>
+<span class="math math-display" data-tex="$$
+K_n=\ker(e:M\to M)\cap\ker(h-n:M\to M)
+$$">$$
+K_n=\ker(e:M\to M)\cap\ker(h-n:M\to M)
+$$</span>
+<p>commute with field extension because they are kernels of rational linear maps. For <span class="math" data-tex="\(w\in K_n\)">\(w\in K_n\)</span>, send <span class="math" data-tex="\(f^ju^n\)">\(f^ju^n\)</span> to <span class="math" data-tex="\(f^jw\)">\(f^jw\)</span>, for <span class="math" data-tex="\(0\leq j\leq n\)">\(0\leq j\leq n\)</span>. The identity <span class="math" data-tex="\(ef^jw=j(n-j+1)f^{j-1}w\)">\(ef^jw=j(n-j+1)f^{j-1}w\)</span> and <span class="math" data-tex="\(hf^jw=(n-2j)f^jw\)">\(hf^jw=(n-2j)f^jw\)</span> prove equivariance. The relation <span class="math" data-tex="\(f^{n+1}w=0\)">\(f^{n+1}w=0\)</span> follows over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> from the weight theorem and therefore over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. These maps give</p>
+<span class="math math-display" data-tex="$$
+\bigoplus_{n\geq0}W_n\otimes_{\mathbf Q}K_n\longrightarrow M.
+$$">$$
+\bigoplus_{n\geq0}W_n\otimes_{\mathbf Q}K_n\longrightarrow M.
+$$</span>
+<p>Only finitely many summands occur. After extension to <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, the highest-vector classification makes this map an isomorphism; faithful flatness makes it an isomorphism over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Transport the displayed polynomial actions through it. Their differentials and root and torus formulas are the prescribed ones. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(T=D_\mathbf Q(P)\)">\(T=D_\mathbf Q(P)\)</span> act on <span class="math" data-tex="\(V_\mu\)">\(V_\mu\)</span> through the character <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. The highest-weight vectors have characters <span class="math" data-tex="\(\omega_i\)">\(\omega_i\)</span>; these generate <span class="math" data-tex="\(P\)">\(P\)</span>, so this torus representation is faithful. Let <span class="math" data-tex="\(G\)">\(G\)</span> be the reduced algebraic closure of the subgroup of <span class="math" data-tex="\(\operatorname{GL}(V)\)">\(\operatorname{GL}(V)\)</span> generated by <span class="math" data-tex="\(T\)">\(T\)</span> and all <span class="math" data-tex="\(x_\alpha\)">\(x_\alpha\)</span>. It is an algebraic group: multiplication and inversion preserve the closure, as can be checked first with one argument in the generating subgroup and then by density with both arguments. It is connected because the generating torus and additive groups are connected. Theorem G.3.4 of <a href="AG-RG-S08.html">Supporting group-scheme proofs</a> proves that this finite-type characteristic-zero group is smooth.</p>
+<p>We prove its Lie algebra is exactly <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. The representation <span class="math" data-tex="\(\rho:\mathfrak g\to\operatorname{End}(V)\)">\(\rho:\mathfrak g\to\operatorname{End}(V)\)</span> is faithful: its kernel is an ideal, and each simple factor acts nontrivially in one of its fundamental modules. The torus and root exponentials normalize <span class="math" data-tex="\(\rho(\mathfrak g)\)">\(\rho(\mathfrak g)\)</span>. Hence <span class="math" data-tex="\(G\)">\(G\)</span> lies in its linear normalizer, whose Lie algebra is</p>
+<span class="math math-display" data-tex="$$
+\{A:[A,\rho(\mathfrak g)]\subset\rho(\mathfrak g)\}.
+$$">$$
+\{A:[A,\rho(\mathfrak g)]\subset\rho(\mathfrak g)\}.
+$$</span>
+<p>For such an <span class="math" data-tex="\(A\)">\(A\)</span>, commutation defines a derivation of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. The preceding Lie lesson, Proposition 3.1, proves nondegeneracy of the Killing form; Proposition 3.3 proves the needed inner-derivation assertion. Its short calculation is repeated here. For a derivation <span class="math" data-tex="$D$">$D$</span>, nondegeneracy of the Killing form <span class="math" data-tex="$\kappa$">$\kappa$</span> gives <span class="math" data-tex="$z$">$z$</span> with <span class="math" data-tex="$\kappa(z,x)=\operatorname{tr}(D\operatorname{ad}x)$">$\kappa(z,x)=\operatorname{tr}(D\operatorname{ad}x)$</span> for all <span class="math" data-tex="$x$">$x$</span>. Set <span class="math" data-tex="$E=D-\operatorname{ad}z$">$E=D-\operatorname{ad}z$</span>. Then <span class="math" data-tex="$\operatorname{tr}(E\operatorname{ad}x)=0$">$\operatorname{tr}(E\operatorname{ad}x)=0$</span>, and</p>
+<span class="math math-display" data-tex="$$
+0=\operatorname{tr}(E\operatorname{ad}[x,y])
+=\operatorname{tr}([E,\operatorname{ad}x]\operatorname{ad}y)
+=\kappa(Ex,y).
+$$">$$
+0=\operatorname{tr}(E\operatorname{ad}[x,y])
+=\operatorname{tr}([E,\operatorname{ad}x]\operatorname{ad}y)
+=\kappa(Ex,y).
+$$</span>
+<p>Nondegeneracy makes <span class="math" data-tex="$E=0$">$E=0$</span>. This proof applies directly over <span class="math" data-tex="$\mathbf Q$">$\mathbf Q$</span>. Thus</p>
+<span class="math math-display" data-tex="$$
+A\in\rho(\mathfrak g)+\operatorname{End}_{\mathfrak g}(V).
+\tag{6.1}
+$$">$$
+A\in\rho(\mathfrak g)+\operatorname{End}_{\mathfrak g}(V).
+\tag{6.1}
+$$</span>
+<p>After algebraic closure, the distinct irreducible <span class="math" data-tex="\(V_i\)">\(V_i\)</span> have commutant consisting of one scalar on each summand. On the other hand every generator of <span class="math" data-tex="\(G\)">\(G\)</span> has determinant one on each <span class="math" data-tex="\(V_i\)">\(V_i\)</span>. For exponentials this follows from nilpotence. For <span class="math" data-tex="\(T\)">\(T\)</span>, the determinant character is the sum of the weights with multiplicity; its differential is the trace of <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> on <span class="math" data-tex="\(V_i\)">\(V_i\)</span>, which is zero because <span class="math" data-tex="\(\mathfrak g=[\mathfrak g,\mathfrak g]\)">\(\mathfrak g=[\mathfrak g,\mathfrak g]\)</span>. In characteristic zero a character with zero differential is zero. Therefore</p>
+<span class="math math-display" data-tex="$$
+G\subset\prod_i\operatorname{SL}(V_i).
+$$">$$
+G\subset\prod_i\operatorname{SL}(V_i).
+$$</span>
+<p>In (6.1) a scalar on <span class="math" data-tex="\(V_i\)">\(V_i\)</span> has trace <span class="math" data-tex="\((\dim V_i)c_i\)">\((\dim V_i)c_i\)</span>. The trace condition makes every <span class="math" data-tex="\(c_i=0\)">\(c_i=0\)</span>. It follows that <span class="math" data-tex="\(\operatorname{Lie}(G)\subset\rho(\mathfrak g)\)">\(\operatorname{Lie}(G)\subset\rho(\mathfrak g)\)</span>. The reverse inclusion follows from the torus and root-group tangent vectors, which span <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. We have equality.</p>
+<p>We check reductivity and semisimplicity over an algebraic closure <span class="math" data-tex="$k$">$k$</span> of <span class="math" data-tex="$\mathbf Q$">$\mathbf Q$</span>. Let <span class="math" data-tex="$N\subset G_k$">$N\subset G_k$</span> be any smooth connected normal unipotent subgroup. In the unitriangular characterization of unipotent groups used in AG-RG-01 Lemma 2.A, its Lie algebra embeds in the strictly upper triangular matrices and is nilpotent: a bracket of <span class="math" data-tex="$j$">$j$</span> such matrices lies in the <span class="math" data-tex="$j$">$j$</span>th power of that strictly upper triangular algebra, which is zero for large <span class="math" data-tex="$j$">$j$</span>. Normality makes <span class="math" data-tex="$\operatorname{Lie}N$">$\operatorname{Lie}N$</span> an ideal in <span class="math" data-tex="$\operatorname{Lie}G_k=\mathfrak g_k$">$\operatorname{Lie}G_k=\mathfrak g_k$</span>; this follows by differentiating conjugation, as in <em>Lie algebras and smoothness</em>, Theorem 2.9. Semisimplicity of <span class="math" data-tex="$\mathfrak g_k$">$\mathfrak g_k$</span> gives <span class="math" data-tex="$\operatorname{Lie}N=0$">$\operatorname{Lie}N=0$</span>. Since <span class="math" data-tex="$N$">$N$</span> is smooth, its dimension is zero; over the algebraically closed field a connected smooth zero-dimensional group is the identity. The geometric reductivity criterion of AG-RG-01 Section 1 therefore makes <span class="math" data-tex="$G$">$G$</span> reductive.</p>
+<p>The closed centre is represented by the coefficient proof in <em>Group schemes over a field</em>, Proposition 5.3. Its Lie algebra is contained in the centre of <span class="math" data-tex="$\mathfrak g_k$">$\mathfrak g_k$</span>, by the centralizer tangent calculation in Theorem 2.9, and is therefore zero. The characteristic-zero Cartier theorem, <a href="AG-RG-S08.html">AG-RG-S08 Theorem G.3.4</a>, makes this finite-type closed subgroup smooth; hence it is zero-dimensional. A zero-dimensional affine finite-type <span class="math" data-tex="$k$">$k$</span>-algebra is finite-dimensional by the written proof in <span class="unlinked">AG-RG-S04 Lemma P0.9</span>: it has finitely many local Artinian factors, and the finite nilradical filtrations have finite-dimensional layers over residue fields that are finite over <span class="math" data-tex="$k$">$k$</span>. Thus the centre of <span class="math" data-tex="$G_k$">$G_k$</span> is finite, and finite-dimensionality descends over the field extension: independent vectors stay independent after tensoring with <span class="math" data-tex="$k$">$k$</span>. A reductive group with finite centre has trivial radical, by the character-lattice definition in AG-RG-03 Section 1, so <span class="math" data-tex="$G$">$G$</span> is semisimple.</p>
+<p>The torus <span class="math" data-tex="$T$">$T$</span> is geometrically maximal. Indeed, its Lie algebra is <span class="math" data-tex="$\mathfrak h_k$">$\mathfrak h_k$</span>, and the root decomposition gives <span class="math" data-tex="$C_{\mathfrak g_k}(\mathfrak h_k)=\mathfrak h_k$">$C_{\mathfrak g_k}(\mathfrak h_k)=\mathfrak h_k$</span>: each root is a nonzero linear functional in characteristic zero. A torus <span class="math" data-tex="$T&#x27;\supset T_k$">$T&#x27;\supset T_k$</span> would have its Lie algebra in this centralizer, so its dimension would equal that of <span class="math" data-tex="$T_k$">$T_k$</span>. The closed inclusion of these split tori corresponds to a surjection of free character lattices of that same rank, hence an isomorphism. Thus <span class="math" data-tex="$T&#x27;=T_k$">$T&#x27;=T_k$</span>. Its adjoint root spaces and their <span class="math" data-tex="$T$">$T$</span>-characters are exactly the prescribed <span class="math" data-tex="$\Phi$">$\Phi$</span>.</p>
+<p>The Lie algebra for each simple root is an <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>. On each finite-dimensional module its exponential matrices and diagonal weight matrices give the usual algebraic <span class="math" data-tex="\(\operatorname{SL}_2\)">\(\operatorname{SL}_2\)</span> action, by Lemma 6.1. Its diagonal torus is the cocharacter of <span class="math" data-tex="\(D(P)\)">\(D(P)\)</span> pairing with <span class="math" data-tex="\(\mu\)">\(\mu\)</span> by <span class="math" data-tex="\(\langle\mu,\alpha^\vee\rangle\)">\(\langle\mu,\alpha^\vee\rangle\)</span>. The rank-one Gauss characterization identifies it with the group coroot. Hence</p>
+<span class="math math-display" data-tex="$$
+\mathcal R(G,T)=(P,\Phi,P^*,\Phi^\vee).
+\tag{6.2}
+$$">$$
+\mathcal R(G,T)=(P,\Phi,P^*,\Phi^\vee).
+\tag{6.2}
+$$</span>
+<p>This is the simply connected datum: its cocharacter lattice <span class="math" data-tex="\(P^*\)">\(P^*\)</span> is the coroot lattice. The construction is over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, which will let us check integral polynomial identities in one characteristic-zero fibre.</p>
+<h2 id="7-integral-coordinates-and-a-partial-group-law">7. Integral coordinates and a partial group law</h2>
+<p>Continue with the simply connected group of Section 6. Choose its simple-root pinning. Choose a frame in every other root line by transporting a simple frame with a word in the <span class="math" data-tex="\(n_\alpha\)">\(n_\alpha\)</span>, and use the dual frame in the negative line. Such frames form a <strong>Chevalley system</strong>: a simple representative carries each chosen root frame to the chosen frame of the reflected root, up to a sign.</p>
+<p>Here is why the signs really are integral and independent of the field. Compare two transport words. Lemma 2.2 reduces their comparison to the conjugation tables in Section 3 and torus factors arising from (1.2) and (3.2). Those tables have coefficients <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. The torus factors lie in <span class="math" data-tex="\(T[2]\)">\(T[2]\)</span>; the representatives normalize <span class="math" data-tex="\(T[2]\)">\(T[2]\)</span>, and every root has value <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span> on it. Moving such factors through a word changes only these signs. There is no assertion that <span class="math" data-tex="\(T[2]\)">\(T[2]\)</span> centralizes the representatives.</p>
+<p>It follows that all root reordering polynomials have integer coefficients. Indeed, Lemma 2.1 moves a pair into a standard rank-two system; the chosen frames there differ from those of Section 3 only by signs. Its commutator formulas are (3.1). Repeatedly apply these formulas in an order refining root height. A new factor has greater height than the factors it corrects, so reordering terminates. For the negative roots use negative height. Thus the positive and negative unipotent groups extend to groups <span class="math" data-tex="\(U^+_{\mathbf Z},U^-_{\mathbf Z}\)">\(U^+_{\mathbf Z},U^-_{\mathbf Z}\)</span>, each an affine space in its ordered root coordinates. Their multiplication and inverse are triangular integral polynomials. Associativity holds because it is a polynomial identity true over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<p>Changing the root order still gives a polynomial isomorphism: reorder using the same relations, and reorder back. Both compositions are the identity over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, hence over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. Let</p>
+<span class="math math-display" data-tex="$$
+T_{\mathbf Z}=D_{\mathbf Z}(P),\qquad
+X=U^-_{\mathbf Z}\times T_{\mathbf Z}\times U^+_{\mathbf Z}.
+\tag{7.1}
+$$">$$
+T_{\mathbf Z}=D_{\mathbf Z}(P),\qquad
+X=U^-_{\mathbf Z}\times T_{\mathbf Z}\times U^+_{\mathbf Z}.
+\tag{7.1}
+$$</span>
+<p>This smooth affine scheme has geometrically irreducible fibres. The torus acts on each root coordinate through the prescribed character. We write <span class="math" data-tex="\(e=(1,1,1)\)">\(e=(1,1,1)\)</span>.</p>
+<p>We next give the partial conjugations on <span class="math" data-tex="\(X\)">\(X\)</span>. For a simple root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, reorder the coordinates as</p>
+<span class="math math-display" data-tex="$$
+\left(\prod_{\gamma\in\Phi^+\setminus\{\alpha\}}x_{-\gamma}(v_\gamma)\right)
+x_{-\alpha}(v)\,t\,x_\alpha(u)
+\left(\prod_{\gamma\in\Phi^+\setminus\{\alpha\}}x_\gamma(u_\gamma)\right).
+$$">$$
+\left(\prod_{\gamma\in\Phi^+\setminus\{\alpha\}}x_{-\gamma}(v_\gamma)\right)
+x_{-\alpha}(v)\,t\,x_\alpha(u)
+\left(\prod_{\gamma\in\Phi^+\setminus\{\alpha\}}x_\gamma(u_\gamma)\right).
+$$</span>
+<p>Put <span class="math" data-tex="\(a=\alpha(t)\)">\(a=\alpha(t)\)</span> and <span class="math" data-tex="\(D=1+auv\)">\(D=1+auv\)</span>. On the principal open <span class="math" data-tex="\(D\ne0\)">\(D\ne0\)</span>, conjugation by <span class="math" data-tex="\(n_\alpha\)">\(n_\alpha\)</span> has the integral cell formula obtained by reflecting and changing signs in the outer root factors, and replacing the middle three factors by</p>
+<span class="math math-display" data-tex="$$
+x_{-\alpha}\!\left(\frac{-au}{D}\right)
+\alpha^\vee(D)s_\alpha(t)
+x_\alpha\!\left(\frac{-av}{D}\right).
+\tag{7.2}
+$$">$$
+x_{-\alpha}\!\left(\frac{-au}{D}\right)
+\alpha^\vee(D)s_\alpha(t)
+x_\alpha\!\left(\frac{-av}{D}\right).
+\tag{7.2}
+$$</span>
+<p>This is exactly the rank-one Gauss identity applied after conjugation. It fixes the identity, acts by <span class="math" data-tex="\(s_\alpha\)">\(s_\alpha\)</span> on the torus, and is defined on each individual root group.</p>
+<p>One can check the torus and denominator directly for <span class="math" data-tex="\(\operatorname{SL}_2\)">\(\operatorname{SL}_2\)</span>. Conjugating <span class="math" data-tex="\(y(v)h(z)x(u)\)">\(y(v)h(z)x(u)\)</span> by <span class="math" data-tex="\(\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)</span> gives an upper-left entry <span class="math" data-tex="\(z^{-1}(1+z^2uv)\)">\(z^{-1}(1+z^2uv)\)</span>. Thus the torus factor is <span class="math" data-tex="\(h(z^{-1}(1+z^2uv))\)">\(h(z^{-1}(1+z^2uv))\)</span>, as in (7.2).</p>
+<p>Choose a reduced word for the longest Weyl element <span class="math" data-tex="\(w_0\)">\(w_0\)</span>, and compose these partial conjugations along that word. Call the resulting map <span class="math" data-tex="\(h:V\to X\)">\(h:V\to X\)</span>. Reverse the word and use inverse representatives to obtain <span class="math" data-tex="\(h&#x27;:V&#x27;\to X\)">\(h&#x27;:V&#x27;\to X\)</span>. These are inverse rational maps, and</p>
+<span class="math math-display" data-tex="$$
+U^-,T,U^+\subset V\cap V&#x27;,\qquad
+h(U^\pm)=U^\mp,\quad h(T)=T.
+\tag{7.3}
+$$">$$
+U^-,T,U^+\subset V\cap V&#x27;,\qquad
+h(U^\pm)=U^\mp,\quad h(T)=T.
+\tag{7.3}
+$$</span>
+<p>To justify that the whole unipotent subgroups, and not just the separate root axes, are in the domains, consider an intermediate conjugate of <span class="math" data-tex="\(U^+\)">\(U^+\)</span>. Its roots form a positive system. Reordering its root factors into negative and positive order never uses opposite roots: every root created by a commutator is still positive in that system. It therefore needs only the integral reordering polynomials, with torus component one. In (7.2) at most one of the two opposite-root coordinates is nonzero, so the denominator is one. The same argument applies to <span class="math" data-tex="\(U^-\)">\(U^-\)</span> and the inverse word. This proves (7.3). Equality <span class="math" data-tex="\(h&#x27;h=1\)">\(h&#x27;h=1\)</span> on its common domain follows over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> and then over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, because that domain is flat.</p>
+<p>For <span class="math" data-tex="\(x=(v,t,u)\)">\(x=(v,t,u)\)</span> and <span class="math" data-tex="\(x&#x27;=(v&#x27;,t&#x27;,u&#x27;)\)">\(x&#x27;=(v&#x27;,t&#x27;,u&#x27;)\)</span>, impose the open condition</p>
+<span class="math math-display" data-tex="$$
+(h(u),1,h(v&#x27;))\in V&#x27;.
+$$">$$
+(h(u),1,h(v&#x27;))\in V&#x27;.
+$$</span>
+<p>Write <span class="math" data-tex="\(h&#x27;(h(u),1,h(v&#x27;))=(v&#x27;&#x27;,t&#x27;&#x27;,u&#x27;&#x27;)\)">\(h&#x27;(h(u),1,h(v&#x27;))=(v&#x27;&#x27;,t&#x27;&#x27;,u&#x27;&#x27;)\)</span>. Define</p>
+<span class="math math-display" data-tex="$$
+m(x,x&#x27;)=
+\bigl(v(t v&#x27;&#x27;t^{-1}),\ tt&#x27;&#x27;t&#x27;,\ (t&#x27;^{-1}u&#x27;&#x27;t&#x27;)u&#x27;\bigr).
+\tag{7.4}
+$$">$$
+m(x,x&#x27;)=
+\bigl(v(t v&#x27;&#x27;t^{-1}),\ tt&#x27;&#x27;t&#x27;,\ (t&#x27;^{-1}u&#x27;&#x27;t&#x27;)u&#x27;\bigr).
+\tag{7.4}
+$$</span>
+<p>The condition and formula are integral; over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> they say precisely that <span class="math" data-tex="\(ux&#x27;_{-}=uv&#x27;\)">\(ux&#x27;_{-}=uv&#x27;\)</span> has been rewritten in the cell before multiplying the outer factors. The domain contains <span class="math" data-tex="\(e\times X\)">\(e\times X\)</span>, <span class="math" data-tex="\(X\times e\)">\(X\times e\)</span>, <span class="math" data-tex="\(B^-\times X\)">\(B^-\times X\)</span>, <span class="math" data-tex="\(X\times B^+\)">\(X\times B^+\)</span>, and the pairs within <span class="math" data-tex="\(U^\pm\)">\(U^\pm\)</span> or <span class="math" data-tex="\(T\)">\(T\)</span>. Here <span class="math" data-tex="\(B^-=U^-T\)">\(B^-=U^-T\)</span> and <span class="math" data-tex="\(B^+=TU^+\)">\(B^+=TU^+\)</span>. Partial inversion is obtained on the open where the following expression exists:</p>
+<span class="math math-display" data-tex="$$
+\iota(v,t,u)=h&#x27;\bigl(h(u^{-1}),h(t^{-1}),h(v^{-1})\bigr).
+\tag{7.5}
+$$">$$
+\iota(v,t,u)=h&#x27;\bigl(h(u^{-1}),h(t^{-1}),h(v^{-1})\bigr).
+\tag{7.5}
+$$</span>
+<p>This domain contains <span class="math" data-tex="\(T,U^-,U^+\)">\(T,U^-,U^+\)</span>. Associativity on common domains, the identity rule, and the inverse rule hold as integral identities: they hold in the characteristic-zero group, and the domains in question are flat open subschemes of products of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>For the next construction we need the partial translations to be open isomorphisms with dense domains and images in every fibre. This can be arranged without a characteristic restriction. For either universal translation map</p>
+<span class="math math-display" data-tex="$$
+(x,y)\longmapsto(x,m(x,y)),\qquad
+(x,y)\longmapsto(m(x,y),y),
+\tag{7.6}
+$$">$$
+(x,y)\longmapsto(x,m(x,y)),\qquad
+(x,y)\longmapsto(m(x,y),y),
+\tag{7.6}
+$$</span>
+<p>the differential is an isomorphism along both identity axes. Here is a way to check the potentially nontrivial differential. Factor an arbitrary <span class="math" data-tex="\(x\)">\(x\)</span> into its ordered negative root factors, its torus factor, and its ordered positive root factors. Left translation by these successive factors is defined at the successive suffixes of this factorization: a negative or torus factor uses <span class="math" data-tex="\(B^-\times X\)">\(B^-\times X\)</span>, and a positive factor encounters a suffix in <span class="math" data-tex="\(U^+\)">\(U^+\)</span>. Translation by its inverse is defined at the resulting point by the same conditions. The inverse identity, checked over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, makes these local maps mutually inverse on neighborhoods. Their composition is left translation by <span class="math" data-tex="\(x\)">\(x\)</span> near <span class="math" data-tex="\(e\)">\(e\)</span>, so that translation is a local isomorphism there. Ordered prefixes give the corresponding assertion for right translation. The argument works with the universal coordinates and therefore after every base change.</p>
+<p>Restrict (7.6) to the open on which both maps are étale. It contains both identity axes. Each map is separated, quasi-finite and birational between integral normal Noetherian schemes smooth over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, so <span class="unlinked">the preceding Zariski Main supporting lesson</span>, Corollary D7.4, makes it an open immersion. Its images, and the domain, are dense relative to both projections: each slice contains the corresponding identity-axis point and is a nonempty open in an irreducible geometric fibre. The graph of this restricted multiplication consequently has all three pair projections open, with dense slices. This is a <strong>strict partial group law</strong> on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<h2 id="8-completing-a-strict-partial-group-law">8. Completing a strict partial group law</h2>
+<p>We give the construction rather than assuming a group already exists. This is the translation method of Weil and Artin; the algebraic-space quotient in the final step is the exact bootstrap prerequisite identified below.</p>
+<p><strong>Lemma 8.1.</strong> Suppose <span class="math" data-tex="\(X/S\)">\(X/S\)</span> is smooth, separated and of finite presentation, with geometrically irreducible nonempty fibres. Suppose <span class="math" data-tex="\(X\)">\(X\)</span> has a strict associative partial group law, an identity section, and partial inversion, with the translation maps defined and invertible locally along both identity axes. Then there is a unique smooth separated group algebraic space <span class="math" data-tex="\(K/S\)">\(K/S\)</span> of finite presentation containing <span class="math" data-tex="\(X\)">\(X\)</span> as a fibrewise dense open and extending its partial group law. Formation of <span class="math" data-tex="\(K\)">\(K\)</span> commutes with base change.</p>
+<p><strong>Proof.</strong> On each <span class="math" data-tex="\(S\)">\(S\)</span>-scheme <span class="math" data-tex="\(R\)">\(R\)</span>, consider germs of isomorphisms between fibrewise dense open subschemes of <span class="math" data-tex="\(X_R\)">\(X_R\)</span>; two representatives agree if they agree on such an open. Finite intersections of dense opens remain dense, and composition and inversion make these germs a group. Apply <a href="AG-RG-S08.html#universal-schematic-density">AG-RG-S08 Lemma G.3.5</a> on every common open domain. Its fibres are nonempty opens of the geometrically irreducible smooth fibres of <span class="math" data-tex="$X_R$">$X_R$</span>, so they are geometrically irreducible. Consequently two representatives equal as germs agree on their entire common domain, since <span class="math" data-tex="$X_R$">$X_R$</span> is separated. Their domains and their inverse domains can therefore be united and their maps glued to a largest representative isomorphism.</p>
+<p>Here is effectiveness of fppf descent without assuming that this largest domain commutes with a flat pullback. Let <span class="math" data-tex="$R&#x27;\to R$">$R&#x27;\to R$</span> be an fppf cover, and let a descent datum of germs be represented by an isomorphism <span class="math" data-tex="$h&#x27;:D&#x27;\xrightarrow{\sim}E&#x27;$">$h&#x27;:D&#x27;\xrightarrow{\sim}E&#x27;$</span> of fibrewise dense opens of <span class="math" data-tex="$X_{R&#x27;}$">$X_{R&#x27;}$</span>. An fppf covering family is handled by the disjoint union of its members and the same argument. Let <span class="math" data-tex="$O,P\subset X_R$">$O,P\subset X_R$</span> be the open images of <span class="math" data-tex="$D&#x27;,E&#x27;$">$D&#x27;,E&#x27;$</span> respectively; they are open by the arbitrary-base openness proof in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-FSE/flat-morphisms.html#3-what-flatness-does-to-the-topology"><em>Flat morphisms</em>, Theorem 3.2</a>: flatness lifts generizations, the finite-presentation image is constructible by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-MO/quasi-finite-morphisms-and-chevalley.html#5-chevalley-by-noetherian-approximation"><em>Quasi-finite morphisms and Chevalley</em>, Theorem 5.1</a>, and constructibly compact specialization-stable complements are closed. The maps <span class="math" data-tex="$D&#x27;\to O$">$D&#x27;\to O$</span> and <span class="math" data-tex="$E&#x27;\to P$">$E&#x27;\to P$</span> are faithfully flat covering maps. On <span class="math" data-tex="$D&#x27;\times_O D&#x27;=D&#x27;\times_{X_R}D&#x27;$">$D&#x27;\times_O D&#x27;=D&#x27;\times_{X_R}D&#x27;$</span>, the two maps <span class="math" data-tex="$h&#x27;$">$h&#x27;$</span> to <span class="math" data-tex="$X_R$">$X_R$</span> agree. Indeed this overlap is the intersection of the two pulled-back dense domains inside <span class="math" data-tex="$X_{R&#x27;\times_RR&#x27;}$">$X_{R&#x27;\times_RR&#x27;}$</span>; the cocycle says that the two germs agree there, and Lemma G.3.5 makes their representatives equal on that entire intersection. Morphism descent from <span class="unlinked">AG-RG-S04 Lemma A1.5</span> descends <span class="math" data-tex="$h&#x27;$">$h&#x27;$</span> to a map <span class="math" data-tex="$h:O\to X_R$">$h:O\to X_R$</span>. It factors through <span class="math" data-tex="$P$">$P$</span>, because this can be checked on the faithfully flat cover <span class="math" data-tex="$D&#x27;\to O$">$D&#x27;\to O$</span>. Descend <span class="math" data-tex="$(h&#x27;)^{-1}$">$(h&#x27;)^{-1}$</span> in the same way to <span class="math" data-tex="$P\to O$">$P\to O$</span>. Their composites are the identities, as is checked on <span class="math" data-tex="$D&#x27;$">$D&#x27;$</span> and <span class="math" data-tex="$E&#x27;$">$E&#x27;$</span>. Thus <span class="math" data-tex="$h:O\xrightarrow{\sim}P$">$h:O\xrightarrow{\sim}P$</span> is an isomorphism. Both <span class="math" data-tex="$O$">$O$</span> and <span class="math" data-tex="$P$">$P$</span> are fibrewise dense: after a field extension supplied by a point of the covering base, their fibres contain the images of the dense fibres of <span class="math" data-tex="$D&#x27;$">$D&#x27;$</span> and <span class="math" data-tex="$E&#x27;$">$E&#x27;$</span>. The descended isomorphism represents the required germ, and its pullback agrees with the initial germ on <span class="math" data-tex="$D&#x27;$">$D&#x27;$</span>. Uniqueness follows from the same common-domain equality and faithfully flat morphism descent. The germs therefore form an fppf sheaf. Write <span class="math" data-tex="\(\operatorname{Bir}(X)\)">\(\operatorname{Bir}(X)\)</span> for this sheaf.</p>
+<p>For <span class="math" data-tex="\(a\in X(R)\)">\(a\in X(R)\)</span>, partial left translation defines a germ <span class="math" data-tex="\(L_a\)">\(L_a\)</span>, and right translation defines a germ <span class="math" data-tex="\(R_a\)">\(R_a\)</span>. Strictness supplies their dense isomorphic domains and images. Associativity implies that the left translations commute with all right translations, and <span class="math" data-tex="\(L_aL_b=L_{ab}\)">\(L_aL_b=L_{ab}\)</span> whenever the partial product exists. Let <span class="math" data-tex="\(K\)">\(K\)</span> be the subgroup sheaf generated by the <span class="math" data-tex="\(L_a\)">\(L_a\)</span>.</p>
+<p>A germ <span class="math" data-tex="\(g\in K(R)\)">\(g\in K(R)\)</span> that is defined at one section <span class="math" data-tex="\(x\)">\(x\)</span> and fixes it is the identity. Indeed, <span class="math" data-tex="\(g\)">\(g\)</span> fixes every partial product <span class="math" data-tex="\(xb\)">\(xb\)</span> where that product and <span class="math" data-tex="\(g\)">\(g\)</span> are defined, since it commutes with <span class="math" data-tex="\(R_b\)">\(R_b\)</span>. These points form a fibrewise dense open, by strictness. This proves the claim. Likewise <span class="math" data-tex="\(a\mapsto L_a\)">\(a\mapsto L_a\)</span> is injective: if <span class="math" data-tex="\(L_a=L_b\)">\(L_a=L_b\)</span>, choose a section <span class="math" data-tex="\(z\)">\(z\)</span> in their common dense domains fppf locally. The two partial products <span class="math" data-tex="\(az=bz\)">\(az=bz\)</span> and the injectivity of partial right translation give <span class="math" data-tex="\(a=b\)">\(a=b\)</span>.</p>
+<p>The injection <span class="math" data-tex="\(X\to K\)">\(X\to K\)</span> is an open immersion. To check it, take <span class="math" data-tex="\(g\in K(R)\)">\(g\in K(R)\)</span>, let <span class="math" data-tex="\(D_g\subset X_R\)">\(D_g\subset X_R\)</span> be a representative domain, and retain points <span class="math" data-tex="\(z\)">\(z\)</span> for which the partial division of <span class="math" data-tex="\(g(z)\)">\(g(z)\)</span> by <span class="math" data-tex="\(z\)">\(z\)</span> exists. This is an open <span class="math" data-tex="\(E\subset D_g\)">\(E\subset D_g\)</span>, whose image <span class="math" data-tex="\(O\subset R\)">\(O\subset R\)</span> is open because <span class="math" data-tex="\(X_R\to R\)">\(X_R\to R\)</span> is smooth. On <span class="math" data-tex="\(E\)">\(E\)</span>, that division gives <span class="math" data-tex="\(a\in X(E)\)">\(a\in X(E)\)</span> with <span class="math" data-tex="\(L_a=g\)">\(L_a=g\)</span>: their quotient fixes <span class="math" data-tex="\(z\)">\(z\)</span>, so the preceding claim applies. The injectivity just proved makes these local <span class="math" data-tex="\(a\)">\(a\)</span>'s agree on <span class="math" data-tex="\(E\times_OE\)">\(E\times_OE\)</span>, and they descend to <span class="math" data-tex="\(a\in X(O)\)">\(a\in X(O)\)</span>. Conversely, if <span class="math" data-tex="\(g=L_a\)">\(g=L_a\)</span> after a base change, the dense slice conditions provide such <span class="math" data-tex="\(z\)">\(z\)</span> locally. This is precisely the universal property of <span class="math" data-tex="\(R\times_KX=O\)">\(R\times_KX=O\)</span>.</p>
+<p>Every germ <span class="math" data-tex="\(g\in K(R)\)">\(g\in K(R)\)</span> can fppf locally be written</p>
+<span class="math math-display" data-tex="$$
+g=L_aL_b^{-1}\quad(a,b\in X).
+\tag{8.1}
+$$">$$
+g=L_aL_b^{-1}\quad(a,b\in X).
+\tag{8.1}
+$$</span>
+<p>Choose <span class="math" data-tex="\(b\)">\(b\)</span> in its representative dense domain and put <span class="math" data-tex="\(a=g(b)\)">\(a=g(b)\)</span>. The germs <span class="math" data-tex="\(L_b,L_a\)">\(L_b,L_a\)</span> are invertible on neighborhoods of <span class="math" data-tex="\(e\)">\(e\)</span>, taking <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(b,a\)">\(b,a\)</span>. Thus <span class="math" data-tex="\(L_a^{-1}gL_b\)">\(L_a^{-1}gL_b\)</span> is defined at <span class="math" data-tex="\(e\)">\(e\)</span> and fixes it, so it is the identity. The choices of <span class="math" data-tex="\(b\)">\(b\)</span> form a smooth surjective open of <span class="math" data-tex="\(X_R\)">\(X_R\)</span>.</p>
+<p>More precisely, the fibre of</p>
+<span class="math math-display" data-tex="$$
+\delta:X\times_SX\longrightarrow K,\qquad
+(a,b)\longmapsto L_aL_b^{-1}
+\tag{8.2}
+$$">$$
+\delta:X\times_SX\longrightarrow K,\qquad
+(a,b)\longmapsto L_aL_b^{-1}
+\tag{8.2}
+$$</span>
+<p>over a germ <span class="math" data-tex="\(g\)">\(g\)</span> is the graph <span class="math" data-tex="\(a=g(b)\)">\(a=g(b)\)</span> on the intersection of the translated <span class="math" data-tex="\(X\)">\(X\)</span>-charts. This is an open in <span class="math" data-tex="\(X_R\)">\(X_R\)</span>, and is fibrewise dense by the preceding construction. Hence <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is representable, smooth and surjective. Its equivalence relation is a scheme explicitly: write a related pair as <span class="math" data-tex="\(((a,b),(c,d))\)">\(((a,b),(c,d))\)</span>. The equality <span class="math" data-tex="\(L_aL_b^{-1}=L_cL_d^{-1}\)">\(L_aL_b^{-1}=L_cL_d^{-1}\)</span> says that <span class="math" data-tex="\(b\)">\(b\)</span> belongs to the translated-chart domain of the universal germ <span class="math" data-tex="\(L_cL_d^{-1}\)">\(L_cL_d^{-1}\)</span>, and that <span class="math" data-tex="\(a=(L_cL_d^{-1})(b)\)">\(a=(L_cL_d^{-1})(b)\)</span>. Thus the relation is the graph of that evaluation, parametrized by an open subscheme of <span class="math" data-tex="\(X^3\)">\(X^3\)</span> with coordinates <span class="math" data-tex="\((c,d,b)\)">\((c,d,b)\)</span>. The domain is open because representative domains of the universal germ are open and their union is its maximal domain. Both projections are smooth, being base changes of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Theorem 8.2 of <span class="unlinked">Flat quotient bootstrap</span> applies to this explicit relation: its endpoint map is a monomorphism on all test schemes, and its smooth projections are flat and locally finitely presented. Its fppf quotient is therefore an algebraic space, with this relation as its equality relation. The sheaf quotient is precisely <span class="math" data-tex="\(K\)">\(K\)</span>, by (8.1). Smoothness of <span class="math" data-tex="$K/S$">$K/S$</span> follows from the representable smooth surjection (8.2), whose source <span class="math" data-tex="$X\times_SX$">$X\times_SX$</span> is smooth over <span class="math" data-tex="$S$">$S$</span>. In particular <span class="math" data-tex="$K/S$">$K/S$</span> is locally of finite presentation. Over each affine open of <span class="math" data-tex="$S$">$S$</span>, the source of (8.2) is quasi-compact, so surjectivity makes <span class="math" data-tex="$K$">$K$</span> quasi-compact over that open. The separation argument in the next paragraph makes <span class="math" data-tex="$K/S$">$K/S$</span> separated and hence quasi-separated. Thus <span class="math" data-tex="$K/S$">$K/S$</span> is locally of finite presentation, quasi-compact and quasi-separated, which proves finite presentation. This argument works over the given base and does not require the open relation in <span class="math" data-tex="$X^3$">$X^3$</span> to be quasi-compact in advance. Each geometric fibre of <span class="math" data-tex="$K$">$K$</span> is irreducible, since it is the surjective image of the irreducible fibre of <span class="math" data-tex="$X\times_SX$">$X\times_SX$</span>.</p>
+<p>For completeness, separation can be checked on every scheme test <span class="math" data-tex="$R\to K\times_SK$">$R\to K\times_SK$</span>. Write its two sections as <span class="math" data-tex="$a,b\in K(R)$">$a,b\in K(R)$</span> and consider the open
+<span class="math math-display" data-tex="\[
+E=a^{-1}X_R\cap b^{-1}X_R\subset K_R.
+\]">\[
+E=a^{-1}X_R\cap b^{-1}X_R\subset K_R.
+\]</span>
+Each geometric fibre of <span class="math" data-tex="$K_R$">$K_R$</span> is irreducible by (8.2), and each translate of <span class="math" data-tex="$X_R$">$X_R$</span> is a nonempty open in that fibre. Their intersection is therefore nonempty, so <span class="math" data-tex="$E\to R$">$E\to R$</span> is smooth and surjective. A scheme atlas of <span class="math" data-tex="$E$">$E$</span> supplies an fppf scheme covering <span class="math" data-tex="$R_i\to R$">$R_i\to R$</span> and sections <span class="math" data-tex="$t_i\in E(R_i)$">$t_i\in E(R_i)$</span>. Right multiplication by <span class="math" data-tex="$t_i$">$t_i$</span> puts both <span class="math" data-tex="$a$">$a$</span> and <span class="math" data-tex="$b$">$b$</span> in <span class="math" data-tex="$X_{R_i}$">$X_{R_i}$</span>. The equalizer of <span class="math" data-tex="$a$">$a$</span> and <span class="math" data-tex="$b$">$b$</span> over <span class="math" data-tex="$R_i$">$R_i$</span> is exactly the equalizer of <span class="math" data-tex="$at_i$">$at_i$</span> and <span class="math" data-tex="$bt_i$">$bt_i$</span>, by cancellation in the group sheaf. The latter is a closed subscheme because <span class="math" data-tex="$X/S$">$X/S$</span> is separated. This is an equality of functors on every further test scheme, so the pullback of the diagonal of <span class="math" data-tex="$K/S$">$K/S$</span> is a closed immersion after the fppf covering. Closed immersions descend by AG-RG-S04 Corollary A3.2; thus the tested diagonal is a closed immersion over <span class="math" data-tex="$R$">$R$</span>. Since the test was arbitrary, the diagonal of <span class="math" data-tex="$K/S$">$K/S$</span> is closed. This proves separation over the given base, including nonreduced bases.</p>
+<p>In each geometric fibre, the open <span class="math" data-tex="\(X\)">\(X\)</span> and all its translates have dense pairwise intersections. They cover <span class="math" data-tex="\(K\)">\(K\)</span> by (8.2), so <span class="math" data-tex="\(X\)">\(X\)</span> is dense and the fibre is irreducible. A second extension acts on <span class="math" data-tex="\(X\)">\(X\)</span> by the same translation germs and, by (8.2), is generated by them. This gives the unique isomorphism between two extensions. The construction uses sheaves, dense-slice conditions and open immersions, all preserved by base change, proving the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply this lemma to (7.1). We obtain a smooth separated group algebraic space <span class="math" data-tex="\(G_{\mathbf Z}\)">\(G_{\mathbf Z}\)</span>, containing <span class="math" data-tex="\(X\)">\(X\)</span>, with generic fibre the characteristic-zero group already constructed. The torus and root subgroups embed in it and have their prescribed multiplication. Conjugation identities between their morphisms hold over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, because their sources are flat and they hold over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<h2 id="9-why-the-completed-integral-group-is-affine-and-reductive">9. Why the completed integral group is affine and reductive</h2>
+<p>There are two separate issues: an algebraic space must be shown to be an affine scheme, and its positive-characteristic fibres must be reductive.</p>
+<p>First work over an algebraically closed field <span class="math" data-tex="$k$">$k$</span>. Every <span class="math" data-tex="$g\in G_k(k)$">$g\in G_k(k)$</span> lifts through the smooth surjection (8.2): its nonempty fibre is an open subscheme of <span class="math" data-tex="$X_k$">$X_k$</span>, and hence has a <span class="math" data-tex="$k$">$k$</span>-point. Thus <span class="math" data-tex="$g=ab^{-1}$">$g=ab^{-1}$</span> for some <span class="math" data-tex="$a,b\in X_k(k)$">$a,b\in X_k(k)$</span>, and <span class="math" data-tex="$g$">$g$</span> lies in the right translate <span class="math" data-tex="$X_kb^{-1}$">$X_kb^{-1}$</span>. These translates are open schemes. Let <span class="math" data-tex="$O$">$O$</span> be their union. If its closed complement were nonempty, its inverse image under the surjection <span class="math" data-tex="$X_k\times_kX_k\to G_k$">$X_k\times_kX_k\to G_k$</span> would be a nonempty closed subscheme of a finite-type <span class="math" data-tex="$k$">$k$</span>-scheme. It would have a <span class="math" data-tex="$k$">$k$</span>-point, whose image would be a rational point outside <span class="math" data-tex="$O$">$O$</span>, a contradiction. Therefore these scheme opens cover every point of <span class="math" data-tex="$G_k$">$G_k$</span>, and the fibre is a smooth separated group scheme.</p>
+<p>The conjugation action of <span class="math" data-tex="\(T_k\)">\(T_k\)</span> on the identity cell has the decomposition</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Lie}(G_k)
+=\operatorname{Lie}(T_k)\oplus
+\bigoplus_{\alpha\in\Phi}kE_\alpha.
+\tag{9.1}
+$$">$$
+\operatorname{Lie}(G_k)
+=\operatorname{Lie}(T_k)\oplus
+\bigoplus_{\alpha\in\Phi}kE_\alpha.
+\tag{9.1}
+$$</span>
+<p>The Gauss relation differentiated in the two root parameters gives</p>
+<span class="math math-display" data-tex="$$
+[E_\alpha,E_{-\alpha}]=d\alpha^\vee(1).
+\tag{9.2}
+$$">$$
+[E_\alpha,E_{-\alpha}]=d\alpha^\vee(1).
+\tag{9.2}
+$$</span>
+<p>For the simply connected datum the coroot is primitive in <span class="math" data-tex="\(P^*\)">\(P^*\)</span>, so this vector is nonzero even in characteristics two and three.</p>
+<p>Consider the kernel <span class="math" data-tex="\(J_k\)">\(J_k\)</span> of the adjoint representation. Its Lie algebra is stable under <span class="math" data-tex="\(T_k\)">\(T_k\)</span>. Equation (9.2) rules out every root line, so its Lie algebra has only torus-weight zero. Its reduced identity component <span class="math" data-tex="\(J_k^0\)">\(J_k^0\)</span> is smooth over the perfect field <span class="math" data-tex="\(k\)">\(k\)</span>. The fixed locus of <span class="math" data-tex="\(T_k\)">\(T_k\)</span> in a neighborhood of its identity is smooth, with tangent space the invariant vectors: split equivariant formal coordinates, as in the torus fixed-point argument of the earlier lessons. Thus the fixed locus has the full dimension of <span class="math" data-tex="\(J_k^0\)">\(J_k^0\)</span>, and connectedness makes <span class="math" data-tex="\(T_k\)">\(T_k\)</span> centralize <span class="math" data-tex="\(J_k^0\)">\(J_k^0\)</span>. The fixed locus of <span class="math" data-tex="\(T_k\)">\(T_k\)</span> in the identity cell <span class="math" data-tex="\(X_k\)">\(X_k\)</span> is exactly <span class="math" data-tex="\(T_k\)">\(T_k\)</span>, by its distinct nonzero root characters. Consequently an open neighborhood of the identity of <span class="math" data-tex="\(J_k^0\)">\(J_k^0\)</span> lies in <span class="math" data-tex="\(T_k\)">\(T_k\)</span>, and hence <span class="math" data-tex="\(J_k^0\subset T_k\)">\(J_k^0\subset T_k\)</span>. Here <span class="math" data-tex="\(T_k\)">\(T_k\)</span> is closed in <span class="math" data-tex="\(G_k\)">\(G_k\)</span>: a locally closed subgroup of an algebraic group is closed, since its dense open in its closure and translations make it open and closed in that closure.</p>
+<p>The adjoint kernel on <span class="math" data-tex="\(T_k\)">\(T_k\)</span> is <span class="math" data-tex="\(D_k(P/Q)\)">\(D_k(P/Q)\)</span>, which is finite. Therefore <span class="math" data-tex="\(J_k\)">\(J_k\)</span> is zero-dimensional. It follows that the adjoint homomorphism of the group algebraic space over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Ad}:G_{\mathbf Z}\longrightarrow
+\operatorname{GL}(\operatorname{Lie}(G_{\mathbf Z})),
+\tag{9.3}
+$$">$$
+\operatorname{Ad}:G_{\mathbf Z}\longrightarrow
+\operatorname{GL}(\operatorname{Lie}(G_{\mathbf Z})),
+\tag{9.3}
+$$</span>
+<p>is quasi-finite and separated. The algebraic-space normalization lemma, with its complete proof in <em>Roots and reductive groups of rank one</em>, Section 5, makes it representable and quasi-affine. Thus <span class="math" data-tex="\(G_{\mathbf Z}\)">\(G_{\mathbf Z}\)</span> is a scheme.</p>
+<p>We can already prove affineness of each geometric fibre. Apply the earlier <em>Group schemes over a field</em>, Proposition 5.8, to its adjoint homomorphism. Here the source has just been proved to be a smooth finite-type scheme, so the map is quasi-compact and its source is reduced. The proposition constructs the closed schematic image <span class="math" data-tex="$I\subset\operatorname{GL}(\operatorname{Lie}G_k)$">$I\subset\operatorname{GL}(\operatorname{Lie}G_k)$</span> and proves that <span class="math" data-tex="$q:G_k\to I$">$q:G_k\to I$</span> is faithfully flat. Concretely its defining ideal is the kernel of the structure-sheaf map into <span class="math" data-tex="$q_*\mathcal O_{G_k}$">$q_*\mathcal O_{G_k}$</span>; flat base change makes <span class="math" data-tex="$q\times q$">$q\times q$</span> schematically dominant, so multiplication and inversion preserve that ideal. Reducedness of the source makes the ideal radical. The complete closed-image and flatness arguments are the preceding provider's Propositions 5.6 and 5.8. The group <span class="math" data-tex="$I$">$I$</span> is affine because it is closed in the general linear group. The scheme-theoretic kernel of <span class="math" data-tex="$q$">$q$</span> is the zero-dimensional finite group <span class="math" data-tex="$J_k$">$J_k$</span> computed above, and multiplication gives an isomorphism
+<span class="math math-display" data-tex="\[
+G_k\times_kJ_k\xrightarrow{\sim}G_k\times_I G_k,
+\qquad(g,j)\longmapsto(g,gj).
+\]">\[
+G_k\times_kJ_k\xrightarrow{\sim}G_k\times_I G_k,
+\qquad(g,j)\longmapsto(g,gj).
+\]</span>
+Its inverse is <span class="math" data-tex="$(g,g&#x27;)\mapsto(g,g^{-1}g&#x27;)$">$(g,g&#x27;)\mapsto(g,g^{-1}g&#x27;)$</span>. Thus <span class="math" data-tex="$q$">$q$</span> is an fppf <span class="math" data-tex="$J_k$">$J_k$</span>-torsor. After the faithfully flat base change <span class="math" data-tex="$G_k\to I$">$G_k\to I$</span> it is finite, since the displayed projection is the base change of the finite <span class="math" data-tex="$J_k\to\operatorname{Spec}k$">$J_k\to\operatorname{Spec}k$</span>. Finiteness descends by the earlier affine and finite-module descent proofs in AG-RG-S04, Lemmas A1.2–A1.3 and Corollary A3.2. Consequently <span class="math" data-tex="$q$">$q$</span> is finite and its source is affine. This proves affineness of <span class="math" data-tex="$G_k$">$G_k$</span> before its reductivity is used.</p>
+<p>Now let <span class="math" data-tex="\(N=R_u(G_k)\)">\(N=R_u(G_k)\)</span>. Lemma 2.A of <a href="AG-RG-01.html">lesson one</a> proves that a subgroup scheme of a unitriangular group has no nontrivial characters, including nonreduced subgroup schemes. A multiplicative-type subgroup has a representation decomposed into characters; applying that lemma to its faithful unitriangular representation makes it trivial. Thus a unipotent group meets a torus trivially as a group scheme. Hence <span class="math" data-tex="\(\operatorname{Lie}(N)\cap\operatorname{Lie}(T_k)=0\)">\(\operatorname{Lie}(N)\cap\operatorname{Lie}(T_k)=0\)</span>. If <span class="math" data-tex="\(N\ne1\)">\(N\ne1\)</span>, its torus-stable Lie algebra contains one of the one-dimensional root lines, say <span class="math" data-tex="\(kE_\alpha\)">\(kE_\alpha\)</span>. Let <span class="math" data-tex="\(T_\alpha=(\ker\alpha)^0_{\mathrm{red}}\)">\(T_\alpha=(\ker\alpha)^0_{\mathrm{red}}\)</span>. Its centralizer in <span class="math" data-tex="\(N\)">\(N\)</span> is smooth, and the positive limit subgroup for <span class="math" data-tex="\(\alpha^\vee\)">\(\alpha^\vee\)</span> in that centralizer is smooth with tangent line <span class="math" data-tex="\(kE_\alpha\)">\(kE_\alpha\)</span>. In <span class="math" data-tex="\(G_k\)">\(G_k\)</span> the corresponding limit subgroup is <span class="math" data-tex="\(U_\alpha\)">\(U_\alpha\)</span>, since the only nonzero weights trivial on <span class="math" data-tex="\(T_\alpha\)">\(T_\alpha\)</span> are <span class="math" data-tex="\(\pm\alpha\)">\(\pm\alpha\)</span>. Inclusion and equality of dimension force <span class="math" data-tex="\(U_\alpha\subset N\)">\(U_\alpha\subset N\)</span>. Normality and conjugation by <span class="math" data-tex="\(n_\alpha\)">\(n_\alpha\)</span> then give <span class="math" data-tex="\(U_{-\alpha}\subset N\)">\(U_{-\alpha}\subset N\)</span>. Their Gauss relation in AG-RG-03 Theorem 7.1 forces <span class="math" data-tex="$\alpha^\vee(\mathbf G_m)\subset N$">$\alpha^\vee(\mathbf G_m)\subset N$</span>: for any unit <span class="math" data-tex="$d$">$d$</span>, put <span class="math" data-tex="$u=d-1$">$u=d-1$</span> and <span class="math" data-tex="$v=1$">$v=1$</span>, so <span class="math" data-tex="$1+uv=d$">$1+uv=d$</span>, and solve that relation for the coroot factor. All the other factors belong to the two opposite root groups. This is a nontrivial torus, a contradiction. Thus <span class="math" data-tex="\(N=1\)">\(N=1\)</span>. The centre has character group <span class="math" data-tex="\(P/Q\)">\(P/Q\)</span>, which is finite, so the reductive fibre is semisimple.</p>
+<p>To finish, we prove affineness over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, rather than just in its fibres. We need the following small geometric fact, included with its complete openly licensed proof.</p>
+<h3 id="flat-base-change-and-localization-of-quasi-coherent-cohomology">Flat base change and localization of quasi-coherent cohomology</h3>
+<p><strong>Statement.</strong> Let <span class="math" data-tex="$X$">$X$</span> be a quasi-compact quasi-separated scheme over <span class="math" data-tex="$\operatorname{Spec}A$">$\operatorname{Spec}A$</span>, let <span class="math" data-tex="$\mathcal F$">$\mathcal F$</span> be quasi-coherent, and let <span class="math" data-tex="$B$">$B$</span> be any flat <span class="math" data-tex="$A$">$A$</span>-algebra. Write <span class="math" data-tex="$g:X_B\to X$">$g:X_B\to X$</span> for the projection and <span class="math" data-tex="$\mathcal F_B=g^*\mathcal F$">$\mathcal F_B=g^*\mathcal F$</span>. For every <span class="math" data-tex="$q\geq0$">$q\geq0$</span>, the canonical map is an isomorphism</p>
+<span class="math math-display" data-tex="$$
+H^q(X,\mathcal F)\otimes_A B
+\longrightarrow H^q(X_B,\mathcal F_B).
+$$">$$
+H^q(X,\mathcal F)\otimes_A B
+\longrightarrow H^q(X_B,\mathcal F_B).
+$$</span>
+<p>The declared geometric input is <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/AG-QC--affine-cohomology-and-serres-criterion.html">affine vanishing, AG-QC-03, Theorem 2.2</a>: for every ring <span class="math" data-tex="$R$">$R$</span> and every <span class="math" data-tex="$R$">$R$</span>-module <span class="math" data-tex="$M$">$M$</span>, <span class="math" data-tex="$H^q(\operatorname{Spec}R,\widetilde M)=0$">$H^q(\operatorname{Spec}R,\widetilde M)=0$</span> for <span class="math" data-tex="$q&gt;0$">$q&gt;0$</span>. We also use the affine module–sheaf correspondence and the derived-functor definition of sheaf cohomology. No finite generation, Noetherianity or finite presentation is assumed for <span class="math" data-tex="$A$">$A$</span>, <span class="math" data-tex="$B$">$B$</span> or <span class="math" data-tex="$\mathcal F$">$\mathcal F$</span>.</p>
+<p><strong>The separated case and the ordered cover construction.</strong></p>
+<p>First suppose that <span class="math" data-tex="$X$">$X$</span> is separated over the affine base. Choose a finite affine open cover <span class="math" data-tex="$U_1,\ldots,U_r$">$U_1,\ldots,U_r$</span>. For a strictly increasing tuple <span class="math" data-tex="$I=(i_0&lt;\cdots&lt;i_p)$">$I=(i_0&lt;\cdots&lt;i_p)$</span> put <span class="math" data-tex="$U_I=U_{i_0}\cap\cdots\cap U_{i_p}$">$U_I=U_{i_0}\cap\cdots\cap U_{i_p}$</span>, and let <span class="math" data-tex="$j_I:U_I\hookrightarrow X$">$j_I:U_I\hookrightarrow X$</span>. Empty intersections contribute zero. Every <span class="math" data-tex="$U_I$">$U_I$</span> is affine: the intersection of two affine opens is the inverse image of their affine product under the closed diagonal, and induction gives the assertion for finite intersections.</p>
+<p>We construct the cohomological comparison rather than assume that a section complex computes it. For any sheaf of modules <span class="math" data-tex="$\mathcal G$">$\mathcal G$</span>, form the augmented alternating sheaf complex</p>
+<span class="math math-display" data-tex="$$
+0\longrightarrow\mathcal G\longrightarrow
+\mathcal C^0(\mathcal G)\longrightarrow\cdots\longrightarrow
+\mathcal C^{r-1}(\mathcal G)\longrightarrow0,
+\qquad
+\mathcal C^p(\mathcal G)=\prod_{i_0&lt;\cdots&lt;i_p}(j_I)_*(\mathcal G|_{U_I}).
+$$">$$
+0\longrightarrow\mathcal G\longrightarrow
+\mathcal C^0(\mathcal G)\longrightarrow\cdots\longrightarrow
+\mathcal C^{r-1}(\mathcal G)\longrightarrow0,
+\qquad
+\mathcal C^p(\mathcal G)=\prod_{i_0&lt;\cdots&lt;i_p}(j_I)_*(\mathcal G|_{U_I}).
+$$</span>
+<p>The differential is the alternating sum of restriction maps. This complex is exact on stalks. Indeed, near a point <span class="math" data-tex="$x$">$x$</span> choose <span class="math" data-tex="$a$">$a$</span> with <span class="math" data-tex="$x\in U_a$">$x\in U_a$</span> and restrict to a neighbourhood <span class="math" data-tex="$V\subset U_a$">$V\subset U_a$</span>. Regard an ordered cochain as alternating in all its indices, with repeated-index components zero. The map lowering the degree is</p>
+<span class="math math-display" data-tex="$$
+(hc)_{i_0\ldots i_{p-1}}=c_{a i_0\ldots i_{p-1}}.
+$$">$$
+(hc)_{i_0\ldots i_{p-1}}=c_{a i_0\ldots i_{p-1}}.
+$$</span>
+<p>It is well defined because <span class="math" data-tex="$V\cap U_I\cap U_a=V\cap U_I$">$V\cap U_I\cap U_a=V\cap U_I$</span>. In degree zero it takes <span class="math" data-tex="$c_a$">$c_a$</span> to a section on <span class="math" data-tex="$V$">$V$</span>, the augmented term. Expanding the alternating differential cancels all terms except <span class="math" data-tex="$c$">$c$</span>, so <span class="math" data-tex="$dh+hd=1$">$dh+hd=1$</span>, including the augmented degree. This proves exactness even when a direct-image stalk at a boundary point is nonzero.</p>
+<p>Take an injective resolution <span class="math" data-tex="$\mathcal F\to\mathcal I^\bullet$">$\mathcal F\to\mathcal I^\bullet$</span> in sheaves of <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>-modules. Restriction to an open preserves injectives: its left adjoint, extension by zero, is exact, as one checks on stalks. Direct image under an open immersion also preserves injectives because it is right adjoint to exact restriction. Thus each term of the augmented sheaf complex for <span class="math" data-tex="$\mathcal I^q$">$\mathcal I^q$</span> is injective. Its first injection splits, and successive cokernels are injective direct summands; inductively the whole finite exact row splits. Applying global sections therefore leaves it exact.</p>
+<p>Consequently the augmentation from <span class="math" data-tex="$\Gamma(X,\mathcal I^\bullet)$">$\Gamma(X,\mathcal I^\bullet)$</span> to the total complex of</p>
+<span class="math math-display" data-tex="$$
+C^{p,q}=\prod_{i_0&lt;\cdots&lt;i_p}\Gamma(U_I,\mathcal I^q|_{U_I}),
+\qquad 0\leq p&lt;r,\quad q\geq0,
+$$">$$
+C^{p,q}=\prod_{i_0&lt;\cdots&lt;i_p}\Gamma(U_I,\mathcal I^q|_{U_I}),
+\qquad 0\leq p&lt;r,\quad q\geq0,
+$$</span>
+<p>is a quasi-isomorphism. Here the total differential is <span class="math" data-tex="$d_{\mathrm{cover}}+(-1)^p d_{\mathrm{resolution}}$">$d_{\mathrm{cover}}+(-1)^p d_{\mathrm{resolution}}$</span>. Exactness of the augmented horizontal rows proves the assertion by the row filtration. Each total degree contains finitely many terms.</p>
+<p>The column filtration <span class="math" data-tex="$F^p\operatorname{Tot}^n=\bigoplus_{a\geq p}C^{a,n-a}$">$F^p\operatorname{Tot}^n=\bigoplus_{a\geq p}C^{a,n-a}$</span> gives the ordered-cover spectral sequence</p>
+<span class="math math-display" data-tex="$$
+E_1^{p,q}=\prod_{i_0&lt;\cdots&lt;i_p}H^q(U_I,\mathcal F|_{U_I})
+\quad\Longrightarrow\quad H^{p+q}(X,\mathcal F),
+$$">$$
+E_1^{p,q}=\prod_{i_0&lt;\cdots&lt;i_p}H^q(U_I,\mathcal F|_{U_I})
+\quad\Longrightarrow\quad H^{p+q}(X,\mathcal F),
+$$</span>
+<p>with <span class="math" data-tex="$d_1$">$d_1$</span> the alternating restriction differential. Explicitly, for <span class="math" data-tex="$s\geq1$">$s\geq1$</span> set</p>
+<span class="math math-display" data-tex="$$
+Z_s^{p,q}=\{z\in F^p\operatorname{Tot}^{p+q}:dz\in F^{p+s}\operatorname{Tot}^{p+q+1}\},
+\qquad
+E_s^{p,q}=\frac{Z_s^{p,q}}
+{Z_{s-1}^{p+1,q-1}+dZ_{s-1}^{p-s+1,q+s-2}},
+$$">$$
+Z_s^{p,q}=\{z\in F^p\operatorname{Tot}^{p+q}:dz\in F^{p+s}\operatorname{Tot}^{p+q+1}\},
+\qquad
+E_s^{p,q}=\frac{Z_s^{p,q}}
+{Z_{s-1}^{p+1,q-1}+dZ_{s-1}^{p-s+1,q+s-2}},
+$$</span>
+<p>where <span class="math" data-tex="$Z_0^{p,q}=F^p\operatorname{Tot}^{p+q}$">$Z_0^{p,q}=F^p\operatorname{Tot}^{p+q}$</span>. The total differential induces <span class="math" data-tex="$d_s:E_s^{p,q}\to E_s^{p+s,q-s+1}$">$d_s:E_s^{p,q}\to E_s^{p+s,q-s+1}$</span>, and taking its cohomology gives the next page. Extend the filtration by <span class="math" data-tex="$F^p=\operatorname{Tot}$">$F^p=\operatorname{Tot}$</span> for <span class="math" data-tex="$p\leq0$">$p\leq0$</span> and <span class="math" data-tex="$F^p=0$">$F^p=0$</span> for <span class="math" data-tex="$p\geq r$">$p\geq r$</span>. For sufficiently large <span class="math" data-tex="$s$">$s$</span>, the cycle condition is <span class="math" data-tex="$dz=0$">$dz=0$</span> and the denominator accounts for the next filtration piece and all boundaries lying in <span class="math" data-tex="$F^p$">$F^p$</span>. Thus the stable terms are the associated graded pieces of cohomology. There are only <span class="math" data-tex="$r$">$r$</span> columns, so each abutment has a finite filtration and convergence involves no infinite-product or completion issue. This construction works for any finite open cover, including covers with non-affine intersections.</p>
+<p>For our separated affine cover, affine vanishing makes every row with <span class="math" data-tex="$q&gt;0$">$q&gt;0$</span> on <span class="math" data-tex="$E_1$">$E_1$</span> zero. The augmentation therefore canonically identifies cohomology with that of the finite section complex</p>
+<span class="math math-display" data-tex="$$
+\check C^p(\mathcal U,\mathcal F)=\prod_{i_0&lt;\cdots&lt;i_p}\Gamma(U_I,\mathcal F).
+$$">$$
+\check C^p(\mathcal U,\mathcal F)=\prod_{i_0&lt;\cdots&lt;i_p}\Gamma(U_I,\mathcal F).
+$$</span>
+<p>If <span class="math" data-tex="$U_I=\operatorname{Spec}R$">$U_I=\operatorname{Spec}R$</span> and <span class="math" data-tex="$\mathcal F|_{U_I}=\widetilde M$">$\mathcal F|_{U_I}=\widetilde M$</span>, its base change has sections</p>
+<span class="math math-display" data-tex="$$
+M\otimes_R(R\otimes_A B)=M\otimes_A B.
+$$">$$
+M\otimes_R(R\otimes_A B)=M\otimes_A B.
+$$</span>
+<p>These identifications commute with restriction. Tensor also commutes with the finite products, so the section complex on <span class="math" data-tex="$X_B$">$X_B$</span> is the section complex on <span class="math" data-tex="$X$">$X$</span> tensored with <span class="math" data-tex="$B$">$B$</span>. Flat tensor preserves kernels and images and hence cohomology. This proves the claimed isomorphism in the separated case.</p>
+<p><strong>Canonical comparison and nonseparated intersections.</strong></p>
+<p>To identify the preceding calculation with the canonical map and compare the general cover spectral sequences, choose an injective resolution <span class="math" data-tex="$\mathcal F_B\to\mathcal J^\bullet$">$\mathcal F_B\to\mathcal J^\bullet$</span> on <span class="math" data-tex="$X_B$">$X_B$</span>. The projection <span class="math" data-tex="$g$">$g$</span> is flat, so <span class="math" data-tex="$g^*\mathcal I^\bullet$">$g^*\mathcal I^\bullet$</span> is a resolution of <span class="math" data-tex="$\mathcal F_B$">$\mathcal F_B$</span>. Target injectivity extends its identity on <span class="math" data-tex="$\mathcal F_B$">$\mathcal F_B$</span> degree by degree to a chain map <span class="math" data-tex="$g^*\mathcal I^\bullet\to\mathcal J^\bullet$">$g^*\mathcal I^\bullet\to\mathcal J^\bullet$</span>. The same extension argument makes any two choices chain homotopic. Pulling back sections and multiplying by elements of <span class="math" data-tex="$B$">$B$</span> gives a map of augmented double complexes</p>
+<span class="math math-display" data-tex="$$
+C^{p,q}(X,\mathcal I)\otimes_A B
+\longrightarrow C^{p,q}(X_B,\mathcal J).
+$$">$$
+C^{p,q}(X,\mathcal I)\otimes_A B
+\longrightarrow C^{p,q}(X_B,\mathcal J).
+$$</span>
+<p>Its augmentation is the usual cohomology base-change map; its column maps are the canonical comparisons on the intersections. It is independent of the resolution choices and compatible with restriction and successive base changes. Since <span class="math" data-tex="$B$">$B$</span> is flat, the source total complex has cohomology <span class="math" data-tex="$H^n(X,\mathcal F)\otimes_A B$">$H^n(X,\mathcal F)\otimes_A B$</span>. Flat tensor also commutes with the cycles, boundaries and finite sums defining every spectral-sequence page.</p>
+<p>Now let <span class="math" data-tex="$X$">$X$</span> be merely quasi-compact and quasi-separated. Choose a finite affine cover as before. Each <span class="math" data-tex="$U_I$">$U_I$</span> is quasi-compact, by quasi-separatedness and finite intersection, and is separated over <span class="math" data-tex="$\operatorname{Spec}A$">$\operatorname{Spec}A$</span>, since it is an open subscheme of the affine <span class="math" data-tex="$U_{i_0}$">$U_{i_0}$</span>. It need not be affine. Apply the separated result to each <span class="math" data-tex="$U_I$">$U_I$</span>. It shows that every term of the comparison on <span class="math" data-tex="$E_1$">$E_1$</span> is an isomorphism, for all <span class="math" data-tex="$q\geq0$">$q\geq0$</span>. Therefore every subsequent page and every associated graded piece of the abutment is an isomorphism. Induction through the finite filtrations gives an isomorphism of the abutments themselves. This proves the statement for every flat <span class="math" data-tex="$A$">$A$</span>-algebra <span class="math" data-tex="$B$">$B$</span>.</p>
+<p><strong>Localization and higher direct images.</strong></p>
+<p>Taking <span class="math" data-tex="$B=S^{-1}A$">$B=S^{-1}A$</span> for any multiplicative set gives, canonically,</p>
+<span class="math math-display" data-tex="$$
+S^{-1}H^q(X,\mathcal F)\cong
+H^q(X\times_A\operatorname{Spec}S^{-1}A,\mathcal F_{S^{-1}A}).
+$$">$$
+S^{-1}H^q(X,\mathcal F)\cong
+H^q(X\times_A\operatorname{Spec}S^{-1}A,\mathcal F_{S^{-1}A}).
+$$</span>
+<p>This includes <span class="math" data-tex="$A\to A_a$">$A\to A_a$</span> and <span class="math" data-tex="$A\to A_{\mathfrak p}$">$A\to A_{\mathfrak p}$</span>.</p>
+<p>For completeness, let <span class="math" data-tex="$f:X\to Y$">$f:X\to Y$</span> be a quasi-compact quasi-separated morphism and let <span class="math" data-tex="$\mathcal F$">$\mathcal F$</span> be quasi-coherent. The sheaf <span class="math" data-tex="$R^qf_*\mathcal F$">$R^qf_*\mathcal F$</span> is the sheafification of <span class="math" data-tex="$V\mapsto H^q(f^{-1}V,\mathcal F)$">$V\mapsto H^q(f^{-1}V,\mathcal F)$</span>. Indeed, use an injective resolution on <span class="math" data-tex="$X$">$X$</span>, restrict it to <span class="math" data-tex="$f^{-1}V$">$f^{-1}V$</span>, and take stalks of <span class="math" data-tex="$f_*\mathcal I^\bullet$">$f_*\mathcal I^\bullet$</span>; filtered colimits of modules are exact, so taking cohomology commutes with that stalk limit. On an affine <span class="math" data-tex="$V=\operatorname{Spec}A$">$V=\operatorname{Spec}A$</span>, put <span class="math" data-tex="$M=H^q(f^{-1}V,\mathcal F)$">$M=H^q(f^{-1}V,\mathcal F)$</span>. The localization result identifies the presheaf on every distinguished <span class="math" data-tex="$D(a)\subset V$">$D(a)\subset V$</span> with <span class="math" data-tex="$M_a$">$M_a$</span>, compatibly with restriction. Its sheafification is therefore <span class="math" data-tex="$\widetilde M$">$\widetilde M$</span>. This proves quasi-coherence of <span class="math" data-tex="$R^qf_*\mathcal F$">$R^qf_*\mathcal F$</span> and supplies the canonical identification of its sections on <span class="math" data-tex="$V$">$V$</span> with <span class="math" data-tex="$M$">$M$</span>.</p>
+<p>If <span class="math" data-tex="$h:Y&#x27;\to Y$">$h:Y&#x27;\to Y$</span> is flat, cover <span class="math" data-tex="$Y&#x27;$">$Y&#x27;$</span> by affines <span class="math" data-tex="$W=\operatorname{Spec}B$">$W=\operatorname{Spec}B$</span> mapping into affines <span class="math" data-tex="$V=\operatorname{Spec}A$">$V=\operatorname{Spec}A$</span> of <span class="math" data-tex="$Y$">$Y$</span>. Here <span class="math" data-tex="$B$">$B$</span> is flat over <span class="math" data-tex="$A$">$A$</span>. For the Cartesian base change <span class="math" data-tex="$f&#x27;:X\times_Y Y&#x27;\to Y&#x27;$">$f&#x27;:X\times_Y Y&#x27;\to Y&#x27;$</span>, the theorem identifies the modules describing both sides of</p>
+<span class="math math-display" data-tex="$$
+h^*R^qf_*\mathcal F\longrightarrow R^qf&#x27;_*\mathcal F_{Y&#x27;}.
+$$">$$
+h^*R^qf_*\mathcal F\longrightarrow R^qf&#x27;_*\mathcal F_{Y&#x27;}.
+$$</span>
+<p>Naturality makes these identifications agree on overlaps, so this is an isomorphism of sheaves. In particular, at <span class="math" data-tex="$y\in V$">$y\in V$</span> corresponding to <span class="math" data-tex="$\mathfrak p$">$\mathfrak p$</span>,</p>
+<span class="math math-display" data-tex="$$
+(R^qf_*\mathcal F)_y\cong
+H^q(f^{-1}V\times_A\operatorname{Spec}A_{\mathfrak p},\mathcal F_{A_{\mathfrak p}}).
+$$">$$
+(R^qf_*\mathcal F)_y\cong
+H^q(f^{-1}V\times_A\operatorname{Spec}A_{\mathfrak p},\mathcal F_{A_{\mathfrak p}}).
+$$</span>
+<p>This is the flat-localization identity needed for the stalk calculation in AG-RG-05, §9. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>One-dimensional affine-open lemma (Stacks, Tag 09N9).</strong> If <span class="math" data-tex="\(Y\)">\(Y\)</span> is affine and all its local rings are Noetherian of dimension at most one, then every quasi-compact open <span class="math" data-tex="\(O\subset Y\)">\(O\subset Y\)</span> is affine.</p>
+<p><strong>Proof, with the Stacks statement retained and the cohomological steps written out.</strong> Write <span class="math" data-tex="\(Y=\operatorname{Spec}A\)">\(Y=\operatorname{Spec}A\)</span> and let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be quasi-coherent on <span class="math" data-tex="\(O\)">\(O\)</span>. The open <span class="math" data-tex="\(O\)">\(O\)</span> is quasi-compact and separated. The full flat-localization proof in the earlier supporting lesson <em>Algebra and sheaf cohomology before reductive groups</em>, Section 6, gives, for every prime <span class="math" data-tex="\(\mathfrak p\subset A\)">\(\mathfrak p\subset A\)</span>,
+<span class="math math-display" data-tex="\[
+H^i(O,\mathcal F)_{\mathfrak p}
+=H^i(O\times_Y\operatorname{Spec}A_{\mathfrak p},\mathcal F_{A_{\mathfrak p}}).
+\]">\[
+H^i(O,\mathcal F)_{\mathfrak p}
+=H^i(O\times_Y\operatorname{Spec}A_{\mathfrak p},\mathcal F_{A_{\mathfrak p}}).
+\]</span>
+An open in the spectrum of the Noetherian local ring <span class="math" data-tex="\(A_{\mathfrak p}\)">\(A_{\mathfrak p}\)</span> either contains its closed point, and is the whole spectrum, or contains only generic points. There are finitely many generic points: in a Noetherian topological space every closed subset has finitely many irreducible components, by induction on closed subsets (a reducible counterexample splits into two strictly smaller counterexamples). In dimension at most one no distinct nonclosed primes can specialize to one another. Thus the latter open is a finite discrete space. Each of its singleton components has an affine neighbourhood contained in that component, so it is affine; their finite disjoint union is the spectrum of the product of their rings. Both possibilities are affine. The affine-vanishing proof of that supporting lesson, Theorem 5.1, therefore makes the displayed localization zero for <span class="math" data-tex="\(i&gt;0\)">\(i&gt;0\)</span>.</p>
+<p>A module with zero prime localizations is zero: a nonzero element has a proper annihilator contained in a maximal ideal, at which its localization remains nonzero. Consequently <span class="math" data-tex="\(H^i(O,\mathcal F)=0\)">\(H^i(O,\mathcal F)=0\)</span> for every <span class="math" data-tex="\(i&gt;0\)">\(i&gt;0\)</span> and every quasi-coherent <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. The full ideal-sheaf affine criterion in the supporting lesson, Theorem 9.2, now proves that <span class="math" data-tex="\(O\)">\(O\)</span> is affine. This argument uses no separate Leray or higher-direct-image theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 9.1.</strong> A quasi-finite separated homomorphism <span class="math" data-tex="\(f:K\to H\)">\(f:K\to H\)</span> of finite-type group schemes over a Dedekind base is affine if <span class="math" data-tex="\(K\)">\(K\)</span> is smooth with geometrically connected fibres of constant dimension.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="$d$">$d$</span> for the constant fibre dimension of <span class="math" data-tex="$K$">$K$</span>. We first justify the local base change, its dimension assertion and the translating lifts. Affineness of a scheme morphism is local on its target and descends faithfully flatly by AG-RG-S04 Corollary A3.2. Finite-presentation limit descent in AG-MO-03 Theorem 4.2 then permits localization on the Dedekind base. The generic field case is included below. At a closed point its local ring is a discrete valuation ring <span class="math" data-tex="$R_0$">$R_0$</span>, with uniformizer <span class="math" data-tex="$\pi$">$\pi$</span>.</p>
+<p>Use the actual strict-henselization construction of <em>Henselian local rings and henselization</em>, Theorem 5.1. Its residue field is the separable closure <span class="math" data-tex="$k$">$k$</span> of the residue field of <span class="math" data-tex="$R_0$">$R_0$</span>; we do not assume that <span class="math" data-tex="$k$">$k$</span> is perfect. We record the needed discrete valuation property directly. The current henselization lesson also proves general Noetherianity and dimension in Theorems 6.3--6.4; the following argument uses only its actual strict-henselization construction and the earlier Krull-intersection proof. A localized pointed etale neighborhood <span class="math" data-tex="$A$">$A$</span> of <span class="math" data-tex="$R_0$">$R_0$</span> is Noetherian and flat, has maximal ideal <span class="math" data-tex="$\pi A$">$\pi A$</span> and has field residue ring. The element <span class="math" data-tex="$\pi$">$\pi$</span> is regular. Krull intersection, AG-RG-S02 Section 1.1, shows that every nonzero <span class="math" data-tex="$a\in A$">$a\in A$</span> is <span class="math" data-tex="$\pi^n u$">$\pi^n u$</span> for a unique <span class="math" data-tex="$n\geq0$">$n\geq0$</span> and a unit <span class="math" data-tex="$u$">$u$</span>. Thus <span class="math" data-tex="$A$">$A$</span> is a discrete valuation ring. Local transition maps preserve <span class="math" data-tex="$\pi$">$\pi$</span> and units and are injective; their colimit has the same description of each nonzero element. Every nonzero ideal of that colimit is generated by the element of smallest valuation, so this strict henselization is itself Noetherian and a discrete valuation ring. Its faithfully flat completion <span class="math" data-tex="$R$">$R$</span> is a complete discrete valuation ring with the same residue field <span class="math" data-tex="$k$">$k$</span>, by the written completion proof of AG-RG-S02 Lemma 1.3 and the same regular-uniformizer and Krull-intersection argument. Consequently <span class="math" data-tex="$R_0\to R$">$R_0\to R$</span> is faithfully flat. All hypotheses on <span class="math" data-tex="$f$">$f$</span> and <span class="math" data-tex="$K$">$K$</span> survive this change.</p>
+<p>Let <span class="math" data-tex="$I_\eta$">$I_\eta$</span> be the closed schematic image of <span class="math" data-tex="$K_\eta\to H_\eta$">$K_\eta\to H_\eta$</span>. The actual image proof in <em>Group schemes over a field</em>, Proposition 5.8, makes <span class="math" data-tex="$K_\eta\to I_\eta$">$K_\eta\to I_\eta$</span> faithfully flat and makes formation of this reduced image commute with field extension. After every algebraic closure of the generic field, smoothness makes the local rings of <span class="math" data-tex="$K_\eta$">$K_\eta$</span> regular domains, by the actual regularity proofs in AG-CA-18 Theorem 2.1 and AG-CA-14 Theorem 1.1. Distinct irreducible components therefore cannot meet: on an affine chart at an intersection they would give distinct minimal primes in that local domain. There are finitely many components since the scheme is of finite type over a field, so they are disjoint open and closed subsets. Geometric connectedness leaves one component, and the local domains make the scheme reduced: every nilpotent section has zero germ at every point. Thus <span class="math" data-tex="$K_\eta$">$K_\eta$</span> is geometrically integral. This is the local component argument of AG-RG-S02 Lemma 4.1 on affine charts; it does not require the whole group to be affine. Thus <span class="math" data-tex="$I_\eta$">$I_\eta$</span> is geometrically integral. Its dimension is <span class="math" data-tex="$d$">$d$</span>: the image-dimension proof of Theorem 5.10 has zero-dimensional kernel here, since <span class="math" data-tex="$f$">$f$</span> is quasi-finite. That kernel is a separated finite-type zero-dimensional scheme over a field. It has finitely many points, by the Noetherian component argument, and each singleton is open. Each singleton has an affine neighborhood contained in that open, so is the spectrum of a zero-dimensional local Artinian finite-type field algebra. Lemma P0.9 of AG-RG-S04 makes each such algebra finite-dimensional, including its nilpotents. The finite disjoint union is affine with the product of these finite-dimensional algebras, hence the kernel is finite even before any affineness of <span class="math" data-tex="$K_\eta$">$K_\eta$</span> has been proved. The identity
+<span class="math math-display" data-tex="\[
+ K_\eta\times\ker f_\eta
+   =K_\eta\times_{I_\eta}K_\eta
+\]">\[
+ K_\eta\times\ker f_\eta
+   =K_\eta\times_{I_\eta}K_\eta
+\]</span>
+on all tests makes the faithfully flat map a torsor under this finite group. Finiteness descends from its trivialization, by the finite module/algebra descent proof of AG-RG-S04 Lemmas A1.2--A1.3. Hence the generic map is finite.</p>
+<p>Replace <span class="math" data-tex="$H$">$H$</span> by the schematic closure of <span class="math" data-tex="$I_\eta$">$I_\eta$</span> in <span class="math" data-tex="$H$">$H$</span>. This is a finite-type closed subgroup. On an affine chart its ring injects into its localization at <span class="math" data-tex="$\pi$">$\pi$</span> by the definition of schematic closure, so it is <span class="math" data-tex="$R$">$R$</span>-flat by the valuation-domain flatness proof in <em>Tor and flat modules</em>, Theorem 4.1. These same injections show that each nonempty affine chart is a domain, since its generic chart is an open of the integral <span class="math" data-tex="$I_\eta$">$I_\eta$</span>. The subgroup equations hold on the closure: multiplication is checked on the flat product of two copies of the closure, inversion on one copy, and the generic equations then hold everywhere by injectivity into localization at <span class="math" data-tex="$\pi$">$\pi$</span>. The map from <span class="math" data-tex="$K$">$K$</span> factors through it for the same reason, since <span class="math" data-tex="$K$">$K$</span> is flat. Proving affineness with this target suffices, as its inclusion into the original target is a closed immersion. We now use <span class="math" data-tex="$H$">$H$</span> for the closure.</p>
+<p>Here is the needed special-fibre dimension calculation. Over an algebraic closure of <span class="math" data-tex="$k$">$k$</span>, all components of the finite-type group <span class="math" data-tex="$H_s$">$H_s$</span> have one common dimension <span class="math" data-tex="$r$">$r$</span>, by the actual homogeneous-dimension proof in <em>Lie algebras and smoothness</em>, Lemma 3.1. Their reduced connected components are translates of the identity component by the component proof in <em>Group schemes over a field</em>, Proposition 2.4. Field-extension invariance of dimension is AG-RG-S08 Lemma G.1.2. Choose an affine chart <span class="math" data-tex="$\operatorname{Spec}A$">$\operatorname{Spec}A$</span> of <span class="math" data-tex="$H$">$H$</span> meeting the special fibre. Its nonzero special algebra <span class="math" data-tex="$A/\pi A$">$A/\pi A$</span> has dimension <span class="math" data-tex="$r$">$r$</span>. The actual Noether-normalization proof in <em>Krull dimension and Noether normalization</em>, Corollary 3.2, gives a finite inclusion
+<span class="math math-display" data-tex="\[
+ k[t_1,\ldots,t_r]\lhook\joinrel\longrightarrow A/\pi A.
+\]">\[
+ k[t_1,\ldots,t_r]\lhook\joinrel\longrightarrow A/\pi A.
+\]</span>
+Lift the <span class="math" data-tex="$t_i$">$t_i$</span> to <span class="math" data-tex="$A$">$A$</span>. The resulting map <span class="math" data-tex="$R[t_1,\ldots,t_r]\to A$">$R[t_1,\ldots,t_r]\to A$</span> is injective: a nonzero polynomial relation can be divided by the largest common power of <span class="math" data-tex="$\pi$">$\pi$</span> in its finitely many coefficients; regularity of <span class="math" data-tex="$\pi$">$\pi$</span> then gives a primitive relation whose reduction contradicts that inclusion. The induced map to affine <span class="math" data-tex="$r$">$r$</span>-space is quasi-finite at every point of this chart's special fibre, because its special-fibre map is finite. Its quasi-finite locus is open by the fully proved AG-RG-S04 Theorem C5.1. It is nonempty and has a nonempty generic fibre, since every affine chart of the flat closure injects into its generic chart. Its generic map is dominant, by the polynomial-ring injection, and quasi-finite. The function-field dimension calculation in <em>Krull dimension and Noether normalization</em>, Theorem 4.2, therefore gives <span class="math" data-tex="$r=d$">$r=d$</span>. This proves the asserted dimension of every geometric special component without a separate discrete-valuation dimension formula.</p>
+<p>Let <span class="math" data-tex="$z_i$">$z_i$</span> be the generic points of the finitely many special-fibre components. In a domain affine chart of <span class="math" data-tex="$H$">$H$</span> their primes are minimal over <span class="math" data-tex="$(\pi)$">$(\pi)$</span>. The principal-ideal height theorem in <em>Dimension theory of Noetherian local rings</em>, Theorem 3.1, gives height at most one; regularity and nonvanishing of <span class="math" data-tex="$\pi$">$\pi$</span> give height at least one. Thus <span class="math" data-tex="$\mathcal O_{H,z_i}$">$\mathcal O_{H,z_i}$</span> has dimension one. Apply AG-RG-S04 Theorem D7.1 to the quasi-finite separated base change of <span class="math" data-tex="$K$">$K$</span> to this local spectrum. It is a quasi-compact open in a finite scheme. Integral prime lifting and incomparability, AG-RG-S04 Lemma P0.4, make that finite scheme's local rings Noetherian of dimension at most one. The preceding affine-open lemma proves that the open is affine. The actual eventual-affineness proof in AG-MO-03 Theorem 4.2, using Lemma 2.3, spreads this affineness to an open neighborhood of <span class="math" data-tex="$z_i$">$z_i$</span> in <span class="math" data-tex="$H$">$H$</span>.</p>
+<p>Let <span class="math" data-tex="$V\subset H$">$V\subset H$</span> be the union of the opens on which <span class="math" data-tex="$f$">$f$</span> is affine. Affineness is local on the target, so <span class="math" data-tex="$f$">$f$</span> is affine over <span class="math" data-tex="$V$">$V$</span>. The finite generic map gives <span class="math" data-tex="$H_\eta\subset V$">$H_\eta\subset V$</span>, and the preceding paragraph puts every <span class="math" data-tex="$z_i$">$z_i$</span> in <span class="math" data-tex="$V$">$V$</span>. The closed reduced image of <span class="math" data-tex="$K_s\to H_s$">$K_s\to H_s$</span> commutes with field extension by Proposition 5.8 and has dimension <span class="math" data-tex="$d$">$d$</span> by Theorem 5.10. Over an algebraic closure <span class="math" data-tex="$\bar k$">$\bar k$</span>, this image is connected and reduced, so it equals <span class="math" data-tex="$(H_{\bar s})^0_{\mathrm{red}}$">$(H_{\bar s})^0_{\mathrm{red}}$</span>: it is a closed connected subgroup of that irreducible component with the same dimension. Translation by it is transitive on the closed points of each component. Since <span class="math" data-tex="$V_{\bar s}$">$V_{\bar s}$</span> meets each component, for every geometric closed point <span class="math" data-tex="$y$">$y$</span> of <span class="math" data-tex="$H_s$">$H_s$</span> the set of elements of <span class="math" data-tex="$K_{\bar s}$">$K_{\bar s}$</span> whose translation sends <span class="math" data-tex="$y$">$y$</span> into <span class="math" data-tex="$V_{\bar s}$">$V_{\bar s}$</span> is a nonempty open.</p>
+<p>We must choose a translator that lifts over <span class="math" data-tex="$R$">$R$</span>. The set <span class="math" data-tex="$K_s(k)$">$K_s(k)$</span> is dense in <span class="math" data-tex="$K_{\bar s}$">$K_{\bar s}$</span>. First, every nonempty open in the smooth <span class="math" data-tex="$k$">$k$</span>-scheme <span class="math" data-tex="$K_s$">$K_s$</span> has a <span class="math" data-tex="$k$">$k$</span>-point: take a nonempty standard smooth chart with an etale map to affine space. The map is open by <em>Flat morphisms</em>, Theorem 3.2. A nonempty open in affine space over the infinite separably closed field <span class="math" data-tex="$k$">$k$</span> has a <span class="math" data-tex="$k$">$k$</span>-point by successive avoidance of the finitely many polynomial zeros. Its nonempty etale fibre has a finite separable residue extension, which equals <span class="math" data-tex="$k$">$k$</span>. Next, <span class="math" data-tex="$\bar k/k$">$\bar k/k$</span> is purely inseparable. A principal open over <span class="math" data-tex="$\bar k$">$\bar k$</span> uses only finitely many coefficients; in positive characteristic a sufficiently large <span class="math" data-tex="$p$">$p$</span>-power of its defining function belongs to the original <span class="math" data-tex="$k$">$k$</span>-algebra and defines the same open after base change. In characteristic zero <span class="math" data-tex="$k=\bar k$">$k=\bar k$</span>. Thus every nonempty geometric open contains a point of <span class="math" data-tex="$K_s(k)$">$K_s(k)$</span>, proving the density assertion.</p>
+<p>Every <span class="math" data-tex="$a\in K_s(k)$">$a\in K_s(k)$</span> lifts to <span class="math" data-tex="$K(R)$">$K(R)$</span>. Take a smooth affine chart of <span class="math" data-tex="$K$">$K$</span> containing <span class="math" data-tex="$a$">$a$</span>. The formally smooth lifting property, written in <em>Formally smooth, unramified and etale ring maps</em>, Theorems 3.1 and 4.1, lifts its point compatibly through <span class="math" data-tex="$R/\pi^n$">$R/\pi^n$</span> for all <span class="math" data-tex="$n$">$n$</span>. A finite presentation of the chart and completeness of <span class="math" data-tex="$R$">$R$</span> turn the compatible coordinate values into an <span class="math" data-tex="$R$">$R$</span>-point: its finitely many polynomial equations vanish because they vanish modulo every <span class="math" data-tex="$\pi^n$">$\pi^n$</span>, and its inverted coordinates stay units. This supplies the required lift without any assumption that an arbitrary geometric point is rational over the residue field.</p>
+<p>Choose such a rational translator in the nonempty open associated to <span class="math" data-tex="$y$">$y$</span> and lift it to <span class="math" data-tex="$K(R)$">$K(R)$</span>. The commuting translations by this lift on <span class="math" data-tex="$K$">$K$</span> and by its image on <span class="math" data-tex="$H$">$H$</span> preserve the property that <span class="math" data-tex="$f$">$f$</span> is affine; hence they preserve <span class="math" data-tex="$V$">$V$</span>. They send <span class="math" data-tex="$y$">$y$</span> into <span class="math" data-tex="$V$">$V$</span>, so <span class="math" data-tex="$y$">$y$</span> already belongs to <span class="math" data-tex="$V$">$V$</span>. All geometric closed points of <span class="math" data-tex="$H_s$">$H_s$</span> lie in <span class="math" data-tex="$V$">$V$</span>. A nonempty closed subset of a finite-type field scheme has a geometric closed point, by the earlier Nullstellensatz proof. Therefore <span class="math" data-tex="$H_s\subset V$">$H_s\subset V$</span>. Together with <span class="math" data-tex="$H_\eta\subset V$">$H_\eta\subset V$</span> this gives <span class="math" data-tex="$H=V$">$H=V$</span>. The map <span class="math" data-tex="$f$">$f$</span> is affine over <span class="math" data-tex="$R$">$R$</span>, and faithfully flat descent and the initial localization prove the statement over the Dedekind base. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Apply Lemma 9.1 to (9.3). Its target is affine, so <span class="math" data-tex="\(G_{\mathbf Z}\)">\(G_{\mathbf Z}\)</span> is affine. The torus factor <span class="math" data-tex="\(T\)">\(T\)</span> of its cell is now a closed subgroup, by the closed-immersion result for multiplicative-type homomorphisms in the first lesson. The zero-weight computation shows it is maximal in every fibre. Equations (9.1), (9.2) and the Gauss formula identify its roots and coroots with the original simply connected datum. Its root lines have the chosen integral frames. We have constructed the pinned split semisimple group over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> for that datum.</p>
+<h2 id="10-the-existence-theorem-for-every-reduced-datum">10. The existence theorem for every reduced datum</h2>
+<p id="ag-rg-05-t101"><strong>Theorem 10.1.</strong> Every reduced root datum is the datum of a pinned split reductive group over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. For every nonempty scheme <span class="math" data-tex="\(S\)">\(S\)</span>, pinned split groups of a specified constant datum over <span class="math" data-tex="\(S\)">\(S\)</span> are obtained by base change from this integral group, up to a unique pinning-preserving isomorphism.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathcal R=(X,\Phi,X^*,\Phi^\vee)\)">\(\mathcal R=(X,\Phi,X^*,\Phi^\vee)\)</span> be reduced. The reflection calculation in AG-RG-04 §1 gives</p>
+<span class="math math-display" data-tex="\[
+X_{\mathbf Q}=V\oplus C,
+\quad V=\mathbf Q\Phi,
+\quad C=\{x:\langle x,\alpha^\vee\rangle=0\ (\alpha\in\Phi)\}.
+\]">\[
+X_{\mathbf Q}=V\oplus C,
+\quad V=\mathbf Q\Phi,
+\quad C=\{x:\langle x,\alpha^\vee\rangle=0\ (\alpha\in\Phi)\}.
+\]</span>
+<p>Let <span class="math" data-tex="\(P\subset V\)">\(P\subset V\)</span> be the weight lattice, <span class="math" data-tex="\(\pi,c\)">\(\pi,c\)</span> the two projections, and <span class="math" data-tex="\(L=c(X)\)">\(L=c(X)\)</span>. This image is finitely generated and torsion-free, hence free. It has rank <span class="math" data-tex="\(\dim C\)">\(\dim C\)</span>, since <span class="math" data-tex="\(X\)">\(X\)</span> spans <span class="math" data-tex="\(X_{\mathbf Q}\)">\(X_{\mathbf Q}\)</span>. The map</p>
+<span class="math math-display" data-tex="\[
+j:X\longrightarrow P\oplus L,\qquad x\longmapsto(\pi(x),c(x))
+\]">\[
+j:X\longrightarrow P\oplus L,\qquad x\longmapsto(\pi(x),c(x))
+\]</span>
+<p>is well-defined because the coroot pairings of <span class="math" data-tex="\(\pi(x)\)">\(\pi(x)\)</span> are those of <span class="math" data-tex="\(x\)">\(x\)</span>, hence integral. It is injective because its two coordinates recover <span class="math" data-tex="\(x\)">\(x\)</span>. Both lattices have the same rank and their rational spaces coincide, so its cokernel is finite. Each root maps to <span class="math" data-tex="\((\alpha,0)\)">\((\alpha,0)\)</span>, and the dual map sends each <span class="math" data-tex="\((\alpha^\vee,0)\)">\((\alpha^\vee,0)\)</span> to the prescribed coroot.</p>
+<p>Once the simply connected integral group <span class="math" data-tex="\(G_{\mathrm{sc}}\)">\(G_{\mathrm{sc}}\)</span> has actually been constructed, form <span class="math" data-tex="\(G_{\mathrm{sc}}\times D(L)\)">\(G_{\mathrm{sc}}\times D(L)\)</span>. The torus map <span class="math" data-tex="\(D(P\oplus L)\to D(X)\)">\(D(P\oplus L)\to D(X)\)</span> has finite flat kernel <span class="math" data-tex="\(H=D(\operatorname{coker}j)\)">\(H=D(\operatorname{coker}j)\)</span>. Every root vanishes on <span class="math" data-tex="\(H\)">\(H\)</span>, so the already proved centre calculation makes <span class="math" data-tex="\(H\)">\(H\)</span> central. AG-RG-04 Theorem 7.1 constructs its fppf quotient as an affine reductive group. Its torus has character lattice <span class="math" data-tex="\(j(X)\)">\(j(X)\)</span>, its root subgroups are unchanged, and its coroots are their images under the quotient. The resulting datum is therefore <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>; the simple frames give its pinning. The empty-root case is <span class="math" data-tex="\(D(X)\)">\(D(X)\)</span> directly.</p>
+<p>Base change preserves the group, datum and pinning. Theorem 5.1 gives the unique pinning-preserving isomorphism to any other group with that constant datum. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Without a pinning, two globally split groups with isomorphic constant data are still isomorphic: choose their simple-root frames and apply Theorem 5.1. If the type varies on a disconnected base, apply the result to each constant-type part. Such a family need not be the base change of one integral group.</p>
+<h3 id="the-derived-group">The derived group</h3>
+<p>Use the split presentation <span class="math" data-tex="$G=(G_{\mathrm{sc}}\times D(L))/H$">$G=(G_{\mathrm{sc}}\times D(L))/H$</span> constructed in Theorem 10.1, and put <span class="math" data-tex="$H_{\mathrm{sc}}=H\cap(G_{\mathrm{sc}}\times1)$">$H_{\mathrm{sc}}=H\cap(G_{\mathrm{sc}}\times1)$</span>. The central quotient theorem gives a semisimple group
+<span class="math math-display" data-tex="\[
+D=(G_{\mathrm{sc}}\times1)/H_{\mathrm{sc}}.
+\tag{10.2}
+\]">\[
+D=(G_{\mathrm{sc}}\times1)/H_{\mathrm{sc}}.
+\tag{10.2}
+\]</span>
+Its map to <span class="math" data-tex="$G$">$G$</span> is a closed normal immersion. Indeed its inverse image in the faithfully flat cover <span class="math" data-tex="$G_{\mathrm{sc}}\times D(L)\to G$">$G_{\mathrm{sc}}\times D(L)\to G$</span> is <span class="math" data-tex="$(G_{\mathrm{sc}}\times1)H$">$(G_{\mathrm{sc}}\times1)H$</span>, the inverse image of the finite subgroup <span class="math" data-tex="$\operatorname{pr}_L(H)$">$\operatorname{pr}_L(H)$</span> under the projection to <span class="math" data-tex="$D(L)$">$D(L)$</span>; this is closed. The quotient of this inverse image by <span class="math" data-tex="$H$">$H$</span> is exactly (10.2), and affine closed-subgroup descent identifies it with the indicated closed subgroup of <span class="math" data-tex="$G$">$G$</span>. Its quotient is the torus
+<span class="math math-display" data-tex="\[
+G/D\simeq D(L)/\operatorname{pr}_L(H).
+\]">\[
+G/D\simeq D(L)/\operatorname{pr}_L(H).
+\]</span>
+The subgroup <span class="math" data-tex="$\operatorname{pr}_L(H)$">$\operatorname{pr}_L(H)$</span> is a finite subgroup of multiplicative type; the diagonalizable quotient calculation proves that this quotient is a torus over every base.</p>
+<p>The simply connected group is perfect as an fppf sheaf. To see this directly, work over an arbitrary test ring <span class="math" data-tex="$A$">$A$</span>. The algebra
+<span class="math math-display" data-tex="\[
+B=A[t,t^{-1},(t^2-1)^{-1}]
+\]">\[
+B=A[t,t^{-1},(t^2-1)^{-1}]
+\]</span>
+is smooth and faithfully flat over <span class="math" data-tex="$A$">$A$</span>: every fibre is the nonempty open of the affine line on which <span class="math" data-tex="$t$">$t$</span> and <span class="math" data-tex="$t^2-1$">$t^2-1$</span> are invertible. In <span class="math" data-tex="$G_{\mathrm{sc}}(B)$">$G_{\mathrm{sc}}(B)$</span>, the torus action gives
+<span class="math math-display" data-tex="\[
+[\alpha^\vee(t),x_\alpha(v)]
+=x_\alpha((t^2-1)v).
+\]">\[
+[\alpha^\vee(t),x_\alpha(v)]
+=x_\alpha((t^2-1)v).
+\]</span>
+Thus any <span class="math" data-tex="$x_\alpha(u)$">$x_\alpha(u)$</span> becomes a commutator on this fppf cover, by taking <span class="math" data-tex="$v=u/(t^2-1)$">$v=u/(t^2-1)$</span>. The same argument applies to every root. The rank-one Gauss relation expresses <span class="math" data-tex="$\alpha^\vee(d)$">$\alpha^\vee(d)$</span> as a product in <span class="math" data-tex="$U_\alpha$">$U_\alpha$</span> and <span class="math" data-tex="$U_{-\alpha}$">$U_{-\alpha}$</span> for any unit <span class="math" data-tex="$d$">$d$</span>, using <span class="math" data-tex="$u=d-1,v=1$">$u=d-1,v=1$</span>. The simple coroots form a basis of the simply connected cocharacter lattice, so the root groups generate the whole torus and hence the big cell. The word-generation argument of Lemma 4.1 proves that the big cell generates the group fppf locally. Therefore the fppf subgroup generated by commutators is the whole <span class="math" data-tex="$G_{\mathrm{sc}}$">$G_{\mathrm{sc}}$</span>.</p>
+<p>A faithfully flat quotient of a perfect sheaf is perfect: lift a section locally, write its lift locally as a product of commutators, and take the images. Thus <span class="math" data-tex="$D$">$D$</span> is perfect. Since <span class="math" data-tex="$G/D$">$G/D$</span> is commutative, every commutator of <span class="math" data-tex="$G$">$G$</span> lies in <span class="math" data-tex="$D$">$D$</span>. Conversely, perfection of <span class="math" data-tex="$D$">$D$</span> expresses each of its sections locally as a product of commutators of its own sections, and these are commutators in <span class="math" data-tex="$G$">$G$</span>. Hence <span class="math" data-tex="$D$">$D$</span> is exactly the fppf derived subgroup of <span class="math" data-tex="$G$">$G$</span>.</p>
+<p>Here is the maximal central torus and its isogeny without an implicit lattice assertion. Put
+<span class="math math-display" data-tex="\[
+Q=\mathbf Z\Phi,
+\qquad Q_{\mathrm{sat}}=X\cap\mathbf Q\Phi.
+\]">\[
+Q=\mathbf Z\Phi,
+\qquad Q_{\mathrm{sat}}=X\cap\mathbf Q\Phi.
+\]</span>
+The centre calculation in AG-RG-03 Section 1 gives <span class="math" data-tex="$Z(G)=D_S(X/Q)$">$Z(G)=D_S(X/Q)$</span>. The torsion subgroup of <span class="math" data-tex="$X/Q$">$X/Q$</span> is <span class="math" data-tex="$Q_{\mathrm{sat}}/Q$">$Q_{\mathrm{sat}}/Q$</span>, so
+<span class="math math-display" data-tex="\[
+Z=D_S(X/Q_{\mathrm{sat}})\hookrightarrow Z(G)
+\]">\[
+Z=D_S(X/Q_{\mathrm{sat}})\hookrightarrow Z(G)
+\]</span>
+is a torus. Any homomorphism from a torus to <span class="math" data-tex="$D_S(X/Q)$">$D_S(X/Q)$</span> kills the torsion of <span class="math" data-tex="$X/Q$">$X/Q$</span> on character groups, because the character lattice of a torus is torsion-free. It therefore factors through <span class="math" data-tex="$Z$">$Z$</span>; thus <span class="math" data-tex="$Z$">$Z$</span> is the maximal central torus. This argument is a statement about diagonalizable sheaves, so it includes nonreduced centres and arbitrary base change.</p>
+<p>Let <span class="math" data-tex="$\pi:X\to\mathbf Q\Phi$">$\pi:X\to\mathbf Q\Phi$</span> be the root-space projection of Theorem 10.1. Restriction to the torus of <span class="math" data-tex="$D$">$D$</span> identifies its character lattice with <span class="math" data-tex="$\pi(X)$">$\pi(X)$</span>. One can verify the latter equality directly in the presentation: the exact sequence for the projection of the finite diagonalizable <span class="math" data-tex="$H$">$H$</span> onto <span class="math" data-tex="$D(L)$">$D(L)$</span> shows that a character <span class="math" data-tex="$p\in P$">$p\in P$</span> trivial on <span class="math" data-tex="$H_{\mathrm{sc}}$">$H_{\mathrm{sc}}$</span> becomes trivial on <span class="math" data-tex="$H$">$H$</span> after adding a suitable <span class="math" data-tex="$l\in L$">$l\in L$</span>; equivalently <span class="math" data-tex="$(p,l)\in j(X)$">$(p,l)\in j(X)$</span>. These are precisely <span class="math" data-tex="$p\in\pi(X)$">$p\in\pi(X)$</span>. The torus part of multiplication <span class="math" data-tex="$Z\times D\to G$">$Z\times D\to G$</span> consequently has character map
+<span class="math math-display" data-tex="\[
+X\longrightarrow (X/Q_{\mathrm{sat}})\oplus\pi(X),
+\qquad x\longmapsto([x],\pi(x)).
+\]">\[
+X\longrightarrow (X/Q_{\mathrm{sat}})\oplus\pi(X),
+\qquad x\longmapsto([x],\pi(x)).
+\]</span>
+This map is injective: its kernel is contained in both the root span and its complementary central span. Its source and target have equal rank, so its cokernel is finite. The diagonalizable calculation makes the corresponding torus map a finite faithfully flat isogeny. Multiplication is the identity on each root subgroup. Its image therefore contains the big cell fppf locally and, by Lemma 4.1's word-generation argument, every section of <span class="math" data-tex="$G$">$G$</span> fppf locally. Its kernel lies in <span class="math" data-tex="$Z\times Z(D)$">$Z\times Z(D)$</span>: a kernel pair has its <span class="math" data-tex="$D$">$D$</span>-coordinate equal to the inverse of a central element. The centre of the semisimple group <span class="math" data-tex="$D$">$D$</span> is finite of multiplicative type, and the same torus character map identifies this kernel with its finite diagonalizable kernel. Hence multiplication <span class="math" data-tex="$Z\times D\to G$">$Z\times D\to G$</span> is a central isogeny.</p>
+<p>For an arbitrary reductive <span class="math" data-tex="$G/S$">$G/S$</span>, perform these constructions on the étale local splittings of AG-RG-04 Section 8. The derived subgroup is intrinsically the fppf subgroup generated by commutators, and the central torus is intrinsically the maximal torus in the centre. These characterizations identify the local constructions on overlaps and satisfy the triple cocycle. Effective affine and closed-subgroup descent glues them to a smooth closed semisimple subgroup <span class="math" data-tex="$D$">$D$</span> and a closed central torus <span class="math" data-tex="$Z$">$Z$</span>. The same local formulas identify their pullbacks with the corresponding constructions after every base change. The central isogenies also descend. Thus the earlier assertions about the derived group and the central torus hold over all bases, including nonreduced ones. The radical is this central torus: its geometric fibres are the maximal connected solvable normal subgroups of the reductive fibres, and the local split central-torus construction supplies their smooth relative model.</p>
+<h2 id="11-the-dual-group">11. The dual group</h2>
+<p>Interchanging roots with coroots gives</p>
+<span class="math math-display" data-tex="$$
+\mathcal R^\vee=(X^\vee,\Phi^\vee,X,\Phi).
+$$">$$
+\mathcal R^\vee=(X^\vee,\Phi^\vee,X,\Phi).
+$$</span>
+<p>It is again a reduced root datum. Its integral group from Theorem 10.1, base changed to <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, is the <strong>dual group</strong>. A dual base determines its pinning up to the unique isomorphism of Theorem 5.1. The construction reverses simply connected and adjoint semisimple data.</p>
+<p>For <span class="math" data-tex="\(\operatorname{SL}_n\)">\(\operatorname{SL}_n\)</span>, <span class="math" data-tex="\(X=\mathbf Z^n/\mathbf Z(1,\ldots,1)\)">\(X=\mathbf Z^n/\mathbf Z(1,\ldots,1)\)</span> and <span class="math" data-tex="\(X^\vee=\{(a_i):\sum a_i=0\}\)">\(X^\vee=\{(a_i):\sum a_i=0\}\)</span>, with roots <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span> and the matching coroots. For <span class="math" data-tex="\(\operatorname{PGL}_n\)">\(\operatorname{PGL}_n\)</span>, those two lattices are interchanged. Their complex groups are therefore dual.</p>
+<p>For type <span class="math" data-tex="\(C_n\)">\(C_n\)</span>, the simply connected symplectic group has character lattice <span class="math" data-tex="\(\mathbf Z^n\)">\(\mathbf Z^n\)</span>, roots <span class="math" data-tex="\(\pm e_i\pm e_j,\pm2e_i\)">\(\pm e_i\pm e_j,\pm2e_i\)</span>, and coroots <span class="math" data-tex="\(\pm e_i\pm e_j,\pm e_i\)">\(\pm e_i\pm e_j,\pm e_i\)</span>. Its dual datum is the adjoint datum of type <span class="math" data-tex="\(B_n\)">\(B_n\)</span>, the split odd orthogonal group. In characteristic two this notation means the smooth split reductive group of that datum; a naive odd-dimensional bilinear-form stabilizer need not be the correct smooth group scheme. Both assertions about dual groups concern their characteristic-zero complex groups.</p>
+<h2 id="12-exercises-and-solutions">12. Exercises and solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Write the pinning, coroot and simple Weyl representative of <span class="math" data-tex="\(\operatorname{SL}_2\)">\(\operatorname{SL}_2\)</span>, and check its square.</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(T=\{\operatorname{diag}(z,z^{-1})\}\)">\(T=\{\operatorname{diag}(z,z^{-1})\}\)</span>, the upper triangular Borel, and <span class="math" data-tex="\(E_\alpha=E_{12}\)">\(E_\alpha=E_{12}\)</span>. Its paired negative frame is <span class="math" data-tex="\(E_{21}\)">\(E_{21}\)</span>, its coroot is <span class="math" data-tex="\(z\mapsto\operatorname{diag}(z,z^{-1})\)">\(z\mapsto\operatorname{diag}(z,z^{-1})\)</span>, and (1.1) gives <span class="math" data-tex="\(n_\alpha=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)">\(n_\alpha=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)</span>. The square is <span class="math" data-tex="\(-I=\alpha^\vee(-1)\)">\(-I=\alpha^\vee(-1)\)</span>. The same matrix identity holds over any ring.</p>
+<p><strong>Exercise 2 (medium).</strong> Verify that the data of <span class="math" data-tex="\(\operatorname{SL}_n\)">\(\operatorname{SL}_n\)</span> and <span class="math" data-tex="\(\operatorname{PGL}_n\)">\(\operatorname{PGL}_n\)</span> are dual.</p>
+<p><strong>Solution.</strong> A character of the determinant-one diagonal torus is a monomial modulo the relation <span class="math" data-tex="\(\prod t_i=1\)">\(\prod t_i=1\)</span>, giving <span class="math" data-tex="\(X_{\mathrm{SL}}=\mathbf Z^n/\mathbf Z(1,\ldots,1)\)">\(X_{\mathrm{SL}}=\mathbf Z^n/\mathbf Z(1,\ldots,1)\)</span>. A cocharacter must have <span class="math" data-tex="\(\sum a_i=0\)">\(\sum a_i=0\)</span>. In the scalar quotient torus, a character is a monomial trivial on scalars, so has exponent sum zero, and its cocharacter lattice is the quotient by the scalar vector. The roots and coroots in both descriptions are the differences of the corresponding basis vectors. Exchanging the two lattices therefore exchanges the full data, not just their common <span class="math" data-tex="\(A_{n-1}\)">\(A_{n-1}\)</span> root system.</p>
+<p><strong>Exercise 3 (medium).</strong> Verify the duality between the symplectic and adjoint odd orthogonal data, and explain which root becomes long.</p>
+<p><strong>Solution.</strong> The symplectic torus is <span class="math" data-tex="\(\operatorname{diag}(t_1,\ldots,t_n,t_1^{-1},\ldots,t_n^{-1})\)">\(\operatorname{diag}(t_1,\ldots,t_n,t_1^{-1},\ldots,t_n^{-1})\)</span>, with character lattice <span class="math" data-tex="\(\mathbf Z^n\)">\(\mathbf Z^n\)</span>. Its long root <span class="math" data-tex="\(2e_i\)">\(2e_i\)</span> has coroot <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, while <span class="math" data-tex="\(e_i\pm e_j\)">\(e_i\pm e_j\)</span> has the same-coordinate coroot <span class="math" data-tex="\(e_i\pm e_j\)">\(e_i\pm e_j\)</span>. The dual roots are therefore the <span class="math" data-tex="\(B_n\)">\(B_n\)</span> roots <span class="math" data-tex="\(e_i,e_i\pm e_j\)">\(e_i,e_i\pm e_j\)</span>. Its coroot corresponding to <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is <span class="math" data-tex="\(2e_i\)">\(2e_i\)</span>. The lattice is the root lattice of <span class="math" data-tex="\(B_n\)">\(B_n\)</span>, so the dual group is adjoint. A long <span class="math" data-tex="\(C_n\)">\(C_n\)</span> root becomes a short <span class="math" data-tex="\(B_n\)">\(B_n\)</span> root; duality reverses the length ratio. The rank-two roots-and-coroots figure in the preceding lesson shows this metric reversal explicitly.</p>
+<p><strong>Exercise 4 (hard).</strong> Deduce that two globally split reductive groups of the same constant root datum over a nonempty scheme are isomorphic. Is the isomorphism canonical without pinnings?</p>
+<p><strong>Solution.</strong> Choose positive systems corresponding under the datum isomorphism, and choose frames in their globally trivial simple root lines. Theorem 5.1 gives a unique isomorphism preserving these pinnings. Forgetting the chosen frames gives an isomorphism of the original groups. It need not be unique: conjugation by an element of the adjoint torus can scale the frames while preserving the datum. For example <span class="math" data-tex="\(\operatorname{SL}_2\)">\(\operatorname{SL}_2\)</span> admits nontrivial diagonal conjugations.</p>
+<p><strong>Exercise 5 (medium).</strong> In <span class="math" data-tex="\(\operatorname{SL}_3\)">\(\operatorname{SL}_3\)</span>, show that a product using each simple reflection once need not be the longest element, and that <span class="math" data-tex="\(T[2]\)">\(T[2]\)</span> need not commute with a simple representative.</p>
+<p><strong>Solution.</strong> The Weyl group is <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, with <span class="math" data-tex="\(s_1=(12),s_2=(23)\)">\(s_1=(12),s_2=(23)\)</span>. The product <span class="math" data-tex="\(s_1s_2\)">\(s_1s_2\)</span> is a three-cycle and has length two, whereas <span class="math" data-tex="\(w_0=s_1s_2s_1\)">\(w_0=s_1s_2s_1\)</span> reverses the three positions and has length three. Over a field of characteristic different from two, take <span class="math" data-tex="\(t=\operatorname{diag}(-1,-1,1)\)">\(t=\operatorname{diag}(-1,-1,1)\)</span>. It belongs to <span class="math" data-tex="\(T[2]\)">\(T[2]\)</span>. Conjugation by the representative swapping positions two and three sends it to <span class="math" data-tex="\(\operatorname{diag}(-1,1,-1)\)">\(\operatorname{diag}(-1,1,-1)\)</span>, which is different. The representative does normalize <span class="math" data-tex="\(T[2]\)">\(T[2]\)</span>, since it acts on the torus by the corresponding permutation.</p>
+<p>The <span class="unlinked">course prerequisite guide</span> records the exact supporting statements and their exact statements and full proof routes.</p>
+<h2 id="references-and-exact-prerequisite-proofs">References and exact prerequisite proofs</h2>
+<ul>
+<li>Michel Demazure, <em>Schémas en groupes</em>, freely accessible Gille–Polo re-edition of 13 October 2024: <a href="https://webusers.imj-prg.fr/~patrick.polo/SGA3/Exp21-13oct24.pdf">Exposé XXI</a>, §§3.5 and 5; <a href="https://webusers.imj-prg.fr/~patrick.polo/SGA3/Exp23-13oct24.pdf">Exposé XXIII</a>, §§1–3; <a href="https://webusers.imj-prg.fr/~patrick.polo/SGA3/Exp25-13oct24.pdf">Exposé XXV</a>. These editions provide comparison material for the root transport, rank-two relations and base classification proved here.</li>
+<li>Brian Conrad, <a href="https://math.stanford.edu/~conrad/papers/luminysga3.pdf"><em>Reductive group schemes</em></a>, §§6.2–6.3 and Appendix D. The argument here gives the rank-two calculations and uses a direct matrix construction in characteristic zero.</li>
+<li>Bas Edixhoven and Matthieu Romagny, <a href="https://imag.umontpellier.fr/~romagny/articles/artin_birational_law.pdf"><em>Group schemes out of birational group laws, Néron models</em></a>, §3, for the translation-sheaf construction behind Section 8. The construction and proof are written out here.</li>
+<li>The Stacks authors, <em>Varieties</em>, <a href="https://stacks.math.columbia.edu/tag/09N9">Tag 09N9</a>, read in the AI Integrated Stacks Project English source edition, for the one-dimensional affine-open lemma and its proof.</li>
+<li><a href="https://www.jmilne.org/math/CourseNotes/iAG200.pdf">Milne’s freely accessible <em>Algebraic Groups</em>, version 2.00 (2015)</a>. This exact free author edition provides comparison material; its citations do not replace the programme proofs.</li>
+</ul>
+<p>The complete Lie proof route is <a href="AG-RG-S06.html">the preceding Lie lesson</a>: Theorem 1.A (ordered words), Section 5 (root geometry), Theorem 6.2 (rational Serre construction), Section 7 (finite absolutely irreducible highest-weight presentations), Theorem 4.2 (complete reducibility), and Proposition 3.3 (inner derivations). Lemma 6.1 above also gives the polynomial rank-one actions explicitly. The Weyl-group presentation for Sections 2 and 5 is proved in the preceding root-data lesson, Section 3. The group isomorphism theorem is proved in this lesson.</p>
+<p>The geometric prerequisites are likewise exact supporting lessons: <span class="unlinked">Flat quotient bootstrap</span>, Theorem 8.2, proving the algebraic-space quotient of an arbitrary-base flat locally finitely presented equivalence relation; <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-MO/AG-MO-12.html">Zariski's Main Theorem</a>, the open-into-finite factorization and the normal birational open-immersion consequence, proved in <span class="unlinked">Affine descent, Zariski Main and recognition of spaces</span>, Theorem D7.1 and Corollary D7.4; <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-MO/AG-MO-03.html">Limits of schemes and Noetherian approximation</a>, spreading finite-presentation constructions and their affineness; <em>Cohomology of sheaves on ringed spaces</em>, the Leray spectral sequence; and <em>Cohomology of affine schemes and Serre's criterion</em>, affine vanishing and its converse. The algebraic-space normalization proof used in Section 9 is present in the preceding rank-one lesson. These are supporting results, not substitutes for the integral group construction in Sections 7–10.</p>
+<h2 id="history">History</h2>
+<p>This lesson's new exposition, group constructions, calculations, examples and solutions were written by GPT-6.1 Sol (OpenAI), Ultra setting, in October 2026, and are dedicated to the public domain under CC0.</p>
+<p>The one-dimensional affine-open lemma and its full proof are adapted from the Stacks authors, <em>The Stacks Project</em>, <em>Varieties</em>, Tag 09N9, through the AI Integrated Stacks Project English source edition read on 1 October 2026. The Stacks authors retain copyright in that material. The source is the <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/varieties.tex">versioned transparent source</a>. Its proof is included and explained for use in the integral affineness argument.</p>
+<p>This collected lesson, <em>Pinnings and the classification of split reductive groups</em> (2026), is published by Open Mathematics Courses. The Stacks authors are the authors of its imported proof; GPT-6.1 Sol (OpenAI) is responsible for the new contributions and adaptation. Permission is granted to copy, distribute and modify this collected lesson under the GNU Free Documentation License, Version 1.2, with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. An unaltered copy of the licence is supplied as <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/assets/GFDL-1.2.txt">GNU Free Documentation License 1.2</a>. This additional licence for the collected lesson does not withdraw the CC0 dedication of its original contributions.</p>
+</main><footer><nav><span class="unlinked">Rights and credits</span><span class="unlinked">Human sources</span><span class="unlinked">Editable source archive</span></nav><p>GPT-6.1 Sol (OpenAI), Codex, Ultra setting. October 2026. Written and self-checked by the writing AI.</p></footer></body></html>

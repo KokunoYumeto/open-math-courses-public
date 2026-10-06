@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Discriminants and integral bases · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="discriminants-and-integral-bases">Discriminants and integral bases</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>A generator of a number field gives a convenient rational basis. It need not give every algebraic integer. For example, the powers of <span class="math" data-tex="\(\sqrt5\)">\(\sqrt5\)</span> generate <span class="math" data-tex="\(\mathbf Q(\sqrt5)\)">\(\mathbf Q(\sqrt5)\)</span>, but their integer span misses <span class="math" data-tex="\((1+\sqrt5)/2\)">\((1+\sqrt5)/2\)</span>. We need a way to measure this defect and then decide whether any integers remain missing.</p>
+<p>The discriminant does both jobs. It is a determinant built from traces. Changing a lattice multiplies its discriminant by the square of its index. Consequently, a single computation confines the possible defect to finitely many primes. Dedekind's criterion then tests those primes individually. Along the way we prove the existence of integral bases and explain why every field discriminant has a prescribed sign and a restricted residue modulo <span class="math" data-tex="\(4\)">\(4\)</span>.</p>
+<p>We assume the results of <em>Algebraic integers and rings of integers</em>, together with elementary module notation. We prove the subgroup and integer-matrix facts needed for integral bases below. In particular, sums and products of algebraic integers are integral, integral elements have integral traces and norms, and every algebraic number has a nonzero integer multiple that is integral. Precise links to the preceding proofs and the remaining algebraic context appear below.</p>
+<p>Basic references are [Milne ANT], [Stacks] and [Hecke 1923]. The proofs and computations here form a complete path through the topic. For a number field <span class="math" data-tex="\(K\)">\(K\)</span>, put <span class="math" data-tex="\(n=[K:\mathbf Q]\)">\(n=[K:\mathbf Q]\)</span> and write <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> for its ring of integers. All polynomial discriminants in this lesson concern monic polynomials.</p>
+<h2 id="a-determinant-that-measures-a-basis">A determinant that measures a basis</h2>
+<p>For a finite extension <span class="math" data-tex="\(L/k\)">\(L/k\)</span>, the trace <span class="math" data-tex="\(\operatorname{Tr}_{L/k}(x)\)">\(\operatorname{Tr}_{L/k}(x)\)</span> is the trace of multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> on the <span class="math" data-tex="\(k\)">\(k\)</span>-vector space <span class="math" data-tex="\(L\)">\(L\)</span>. The symmetric bilinear form</p>
+<span class="math math-display" data-tex="\[
+B(x,y)=\operatorname{Tr}_{L/k}(xy)
+\]">\[
+B(x,y)=\operatorname{Tr}_{L/k}(xy)
+\]</span>
+<p>is the <strong>trace form</strong>. For an ordered <span class="math" data-tex="\(k\)">\(k\)</span>-basis <span class="math" data-tex="\(\boldsymbol\alpha=(\alpha_1,\ldots,\alpha_n)\)">\(\boldsymbol\alpha=(\alpha_1,\ldots,\alpha_n)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+d(\boldsymbol\alpha)=\det\bigl(\operatorname{Tr}_{L/k}(\alpha_i\alpha_j)\bigr).
+\]">\[
+d(\boldsymbol\alpha)=\det\bigl(\operatorname{Tr}_{L/k}(\alpha_i\alpha_j)\bigr).
+\]</span>
+<p><strong>Proposition 2.1.</strong> Suppose <span class="math" data-tex="\(L/k\)">\(L/k\)</span> is finite and separable. Let <span class="math" data-tex="\(\sigma_1,\ldots,\sigma_n\)">\(\sigma_1,\ldots,\sigma_n\)</span> be its embeddings into an algebraic closure of <span class="math" data-tex="\(k\)">\(k\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+d(\boldsymbol\alpha)=\det\bigl(\sigma_i(\alpha_j)\bigr)^2\ne0.
+\]">\[
+d(\boldsymbol\alpha)=\det\bigl(\sigma_i(\alpha_j)\bigr)^2\ne0.
+\]</span>
+<p>In particular, the trace form is nondegenerate.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(S=(\sigma_i(\alpha_j))\)">\(S=(\sigma_i(\alpha_j))\)</span>. The formula for trace as a sum over embeddings gives the Gram matrix <span class="math" data-tex="\(S^{\mathsf T}S\)">\(S^{\mathsf T}S\)</span>, whose determinant is <span class="math" data-tex="\((\det S)^2\)">\((\det S)^2\)</span>.</p>
+<p>Choose a primitive element <span class="math" data-tex="\(\theta\)">\(\theta\)</span> for <span class="math" data-tex="\(L/k\)">\(L/k\)</span>. Its conjugates <span class="math" data-tex="\(\theta_1,\ldots,\theta_n\)">\(\theta_1,\ldots,\theta_n\)</span> are distinct. For the basis <span class="math" data-tex="\(1,\theta,\ldots,\theta^{n-1}\)">\(1,\theta,\ldots,\theta^{n-1}\)</span>, the embedding matrix is Vandermonde. Its determinant is</p>
+<span class="math math-display" data-tex="\[
+\prod_{i&lt;j}(\theta_j-\theta_i)\ne0.
+\]">\[
+\prod_{i&lt;j}(\theta_j-\theta_i)\ne0.
+\]</span>
+<p>Indeed, that determinant is alternating in the <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span>, so each displayed difference divides it; comparison of degrees and the leading term gives the formula. An arbitrary basis is obtained from this one by an invertible matrix over <span class="math" data-tex="\(k\)">\(k\)</span>. Its embedding matrix is therefore also invertible. The Gram matrix is invertible, which is exactly nondegeneracy. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same calculation gives the basic change of basis rule. If</p>
+<span class="math math-display" data-tex="\[
+\beta_j=\sum_i\alpha_i c_{ij},\qquad C=(c_{ij}),
+\]">\[
+\beta_j=\sum_i\alpha_i c_{ij},\qquad C=(c_{ij}),
+\]</span>
+<p>then the new Gram matrix is <span class="math" data-tex="\(C^{\mathsf T}GC\)">\(C^{\mathsf T}GC\)</span>, and hence</p>
+<span class="math math-display" data-tex="\[
+d(\boldsymbol\beta)=(\det C)^2d(\boldsymbol\alpha). \tag{1}
+\]">\[
+d(\boldsymbol\beta)=(\det C)^2d(\boldsymbol\alpha). \tag{1}
+\]</span>
+<p><strong>Proposition 2.2.</strong> Suppose <span class="math" data-tex="\(L=k(\theta)\)">\(L=k(\theta)\)</span> is separable of degree <span class="math" data-tex="\(n\)">\(n\)</span>, with monic minimal polynomial <span class="math" data-tex="\(f\)">\(f\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d(1,\theta,\ldots,\theta^{n-1})
+&amp;=\prod_{i&lt;j}(\theta_i-\theta_j)^2\\
+&amp;=(-1)^{n(n-1)/2}N_{L/k}(f&#x27;(\theta)).
+\end{aligned}
+\]">\[
+\begin{aligned}
+d(1,\theta,\ldots,\theta^{n-1})
+&amp;=\prod_{i&lt;j}(\theta_i-\theta_j)^2\\
+&amp;=(-1)^{n(n-1)/2}N_{L/k}(f&#x27;(\theta)).
+\end{aligned}
+\]</span>
+<p><strong>Proof.</strong> The first equality is the squared Vandermonde determinant. Since</p>
+<span class="math math-display" data-tex="\[
+f&#x27;(\theta_i)=\prod_{j\ne i}(\theta_i-\theta_j),
+\]">\[
+f&#x27;(\theta_i)=\prod_{j\ne i}(\theta_i-\theta_j),
+\]</span>
+<p>the product of these derivatives pairs one factor <span class="math" data-tex="\(\theta_i-\theta_j\)">\(\theta_i-\theta_j\)</span> with its negative for each unordered pair. Thus</p>
+<span class="math math-display" data-tex="\[
+\prod_i f&#x27;(\theta_i)=(-1)^{n(n-1)/2}\prod_{i&lt;j}(\theta_i-\theta_j)^2.
+\]">\[
+\prod_i f&#x27;(\theta_i)=(-1)^{n(n-1)/2}\prod_{i&lt;j}(\theta_i-\theta_j)^2.
+\]</span>
+<p>The left side is the norm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For any monic polynomial with roots <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span>, counted with multiplicity, we define <span class="math" data-tex="\(\operatorname{disc}(f)\)">\(\operatorname{disc}(f)\)</span> by the product in Proposition 2.2. It vanishes exactly when two roots coincide. For an integral primitive element, it is the discriminant of its power basis. With the convention <span class="math" data-tex="\(\operatorname{Res}(f,g)=\prod_i g(\theta_i)\)">\(\operatorname{Res}(f,g)=\prod_i g(\theta_i)\)</span> for monic <span class="math" data-tex="\(f\)">\(f\)</span>, the precise relation is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{disc}(f)=(-1)^{n(n-1)/2}\operatorname{Res}(f,f&#x27;).
+\]">\[
+\operatorname{disc}(f)=(-1)^{n(n-1)/2}\operatorname{Res}(f,f&#x27;).
+\]</span>
+<p>The sign factor matters already for a quadratic polynomial.</p>
+<h3 id="integer-subgroups-and-lattice-indices">Integer subgroups and lattice indices</h3>
+<p>Every subgroup <span class="math" data-tex="\(H\subseteq\mathbf Z^n\)">\(H\subseteq\mathbf Z^n\)</span> is free on at most <span class="math" data-tex="\(n\)">\(n\)</span> generators. Induct on <span class="math" data-tex="\(n\)">\(n\)</span>, projecting to the first coordinate. The image is <span class="math" data-tex="\(d\mathbf Z\)">\(d\mathbf Z\)</span>: if it is nonzero, its least positive element generates it by Euclidean division. Its kernel is a subgroup of <span class="math" data-tex="\(\mathbf Z^{n-1}\)">\(\mathbf Z^{n-1}\)</span>, free and finite by induction. If the image is zero, that kernel is all of <span class="math" data-tex="\(H\)">\(H\)</span>. Otherwise choose a lift <span class="math" data-tex="\(h\)">\(h\)</span> of <span class="math" data-tex="\(d\)">\(d\)</span>. Subtracting an integer multiple of <span class="math" data-tex="\(h\)">\(h\)</span> expresses every element in the kernel plus <span class="math" data-tex="\(\mathbf Zh\)">\(\mathbf Zh\)</span>, and projection proves the sum direct. This proves the assertion, including <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<p>We also prove the integer-matrix reduction needed for the index formula. Swap rows and columns to move a nonzero entry to the upper left, and change its sign to make it positive. Euclidean row and column operations divide the other entries in its column and row by that pivot. A nonzero remainder supplies a strictly smaller positive pivot; repeat. When the pivot divides its row and column, clear both. If it fails to divide an entry of the remaining block, add that entry's row to the first row and repeat Euclidean column division, again obtaining a smaller pivot. Positive integers cannot decrease forever. Eventually the pivot divides every entry of the remaining block. Apply the same argument recursively to that block. These operations are invertible over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>; they produce diagonal entries <span class="math" data-tex="\(d_1,\ldots,d_r&gt;0\)">\(d_1,\ldots,d_r&gt;0\)</span>, with each dividing the next. This is Smith normal form, including rectangular and rank-deficient matrices. Zeros occupy the remaining positions.</p>
+<p>For a square matrix of full rank, the row operations change coordinates in the ambient lattice and the column operations change its generating basis. Both preserve the quotient cardinality and absolute determinant. On the diagonal, the quotient is <span class="math" data-tex="\(\bigoplus_i\mathbf Z/d_i\mathbf Z\)">\(\bigoplus_i\mathbf Z/d_i\mathbf Z\)</span>; its cardinality is <span class="math" data-tex="\(\prod_i d_i=|\det C|\)">\(\prod_i d_i=|\det C|\)</span>. Thus the lattice-index calculation below has a supplied integer proof.</p>
+<h2 id="from-rational-bases-to-integral-bases">From rational bases to integral bases</h2>
+<p>An <strong>integral basis</strong> is a <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-basis of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. Its existence requires proof: knowing that all its elements are integral does not by itself bound their denominators in a rational basis.</p>
+<p><strong>Theorem 2.3.</strong> The additive group <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> is free of rank <span class="math" data-tex="\(n\)">\(n\)</span>. The integer</p>
+<span class="math math-display" data-tex="\[
+d_K=d(\omega_1,\ldots,\omega_n)
+\]">\[
+d_K=d(\omega_1,\ldots,\omega_n)
+\]</span>
+<p>is independent of the integral basis. If <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\in\mathcal O_K\)">\(\alpha_1,\ldots,\alpha_n\in\mathcal O_K\)</span> form a rational basis and <span class="math" data-tex="\(M=\bigoplus_i\mathbf Z\alpha_i\)">\(M=\bigoplus_i\mathbf Z\alpha_i\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+d(\alpha_1,\ldots,\alpha_n)=[\mathcal O_K:M]^2d_K. \tag{2}
+\]">\[
+d(\alpha_1,\ldots,\alpha_n)=[\mathcal O_K:M]^2d_K. \tag{2}
+\]</span>
+<p><strong>Proof.</strong> Start with any rational basis and multiply its elements by suitable positive integers to make them integral. Let <span class="math" data-tex="\(M\)">\(M\)</span> be their integer span and define its trace dual by</p>
+<span class="math math-display" data-tex="\[
+M^\vee=\{x\in K:\operatorname{Tr}_{K/\mathbf Q}(xM)\subseteq\mathbf Z\}.
+\]">\[
+M^\vee=\{x\in K:\operatorname{Tr}_{K/\mathbf Q}(xM)\subseteq\mathbf Z\}.
+\]</span>
+<p>The nondegenerate trace form gives a rational dual basis <span class="math" data-tex="\(\alpha_1^\vee,\ldots,\alpha_n^\vee\)">\(\alpha_1^\vee,\ldots,\alpha_n^\vee\)</span>, characterized by <span class="math" data-tex="\(\operatorname{Tr}(\alpha_i\alpha_j^\vee)=\delta_{ij}\)">\(\operatorname{Tr}(\alpha_i\alpha_j^\vee)=\delta_{ij}\)</span>. Writing <span class="math" data-tex="\(x\)">\(x\)</span> in this dual basis shows directly that</p>
+<span class="math math-display" data-tex="\[
+M^\vee=\bigoplus_j\mathbf Z\alpha_j^\vee.
+\]">\[
+M^\vee=\bigoplus_j\mathbf Z\alpha_j^\vee.
+\]</span>
+<p>Products of integral elements have integer traces, so</p>
+<span class="math math-display" data-tex="\[
+M\subseteq\mathcal O_K\subseteq M^\vee.
+\]">\[
+M\subseteq\mathcal O_K\subseteq M^\vee.
+\]</span>
+<p>A subgroup of the finite free abelian group <span class="math" data-tex="\(M^\vee\)">\(M^\vee\)</span> is free of rank at most <span class="math" data-tex="\(n\)">\(n\)</span>. The contained rational basis forces its rank to be at least <span class="math" data-tex="\(n\)">\(n\)</span>. This proves the first assertion.</p>
+<p>Between two integral bases the change of basis matrix and its inverse have integer entries. Its determinant is therefore <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, and (1) proves independence. Entries of the trace matrix are integers, so <span class="math" data-tex="\(d_K\)">\(d_K\)</span> is a nonzero integer.</p>
+<p>Write <span class="math" data-tex="\(\alpha_j=\sum_i\omega_i c_{ij}\)">\(\alpha_j=\sum_i\omega_i c_{ij}\)</span>. The integer matrix <span class="math" data-tex="\(C\)">\(C\)</span> has nonzero determinant. By Smith normal form, multiplication by integer invertible matrices reduces it to a diagonal matrix with nonzero diagonal entries <span class="math" data-tex="\(s_i\)">\(s_i\)</span>. These operations preserve both the absolute determinant and the size of the quotient of the two lattices. For the diagonal matrix the quotient is <span class="math" data-tex="\(\bigoplus_i\mathbf Z/s_i\mathbf Z\)">\(\bigoplus_i\mathbf Z/s_i\mathbf Z\)</span>, so its size is <span class="math" data-tex="\(\prod_i|s_i|=|\det C|\)">\(\prod_i|s_i|=|\det C|\)</span>. Combining this equality with (1) proves (2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(K=\mathbf Q(\alpha)\)">\(K=\mathbf Q(\alpha)\)</span>, with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> integral and minimal polynomial <span class="math" data-tex="\(f\)">\(f\)</span>, the power basis spans <span class="math" data-tex="\(A=\mathbf Z[\alpha]\)">\(A=\mathbf Z[\alpha]\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\operatorname{disc}(f)=[\mathcal O_K:A]^2d_K. \tag{3}
+\]">\[
+\operatorname{disc}(f)=[\mathcal O_K:A]^2d_K. \tag{3}
+\]</span>
+<p>A squarefree polynomial discriminant forces the index to be <span class="math" data-tex="\(1\)">\(1\)</span>. The converse fails: <span class="math" data-tex="\(\mathbf Z[\sqrt2]=\mathcal O_{\mathbf Q(\sqrt2)}\)">\(\mathbf Z[\sqrt2]=\mathcal O_{\mathbf Q(\sqrt2)}\)</span>, although its discriminant is <span class="math" data-tex="\(8\)">\(8\)</span>. More generally, only primes whose squares divide <span class="math" data-tex="\(\operatorname{disc}(f)\)">\(\operatorname{disc}(f)\)</span> can divide the index.</p>
+<p>There is even a finite search procedure. In coordinates relative to an integral rational basis, the condition defining <span class="math" data-tex="\(M^\vee\)">\(M^\vee\)</span> is <span class="math" data-tex="\(Gx\in\mathbf Z^n\)">\(Gx\in\mathbf Z^n\)</span>. Since <span class="math" data-tex="\(G^{-1}=\operatorname{adj}(G)/\det G\)">\(G^{-1}=\operatorname{adj}(G)/\det G\)</span>,</p>
+<span class="math math-display" data-tex="\[
+M\subseteq\mathcal O_K\subseteq M^\vee\subseteq d(M)^{-1}M.
+\]">\[
+M\subseteq\mathcal O_K\subseteq M^\vee\subseteq d(M)^{-1}M.
+\]</span>
+<p>One can test the finitely many cosets of <span class="math" data-tex="\(M\)">\(M\)</span> in the last lattice for integrality. All representatives of one coset have the same integrality status, because they differ by an integral element. Exact minimal polynomials provide the test. This proves termination, although checking one prime at a time is much more efficient in the examples below.</p>
+<h3 id="symmetric-polynomial-expressions">Symmetric polynomial expressions</h3>
+<p>We need one algebraic fact about conjugates. Over any commutative coefficient ring, every symmetric polynomial is a polynomial in the elementary symmetric functions. Here is the finite elimination proof. Order monomials lexicographically. If the leading monomial is <span class="math" data-tex="\(X_1^{a_1}\cdots X_n^{a_n}\)">\(X_1^{a_1}\cdots X_n^{a_n}\)</span>, symmetry forces <span class="math" data-tex="\(a_1\geq\cdots\geq a_n\)">\(a_1\geq\cdots\geq a_n\)</span>: otherwise swapping the offending exponents produces a larger monomial with the same nonzero coefficient. The product
+<span class="math math-display" data-tex="\[
+e_1^{a_1-a_2}e_2^{a_2-a_3}\cdots e_{n-1}^{a_{n-1}-a_n}e_n^{a_n}
+\]">\[
+e_1^{a_1-a_2}e_2^{a_2-a_3}\cdots e_{n-1}^{a_{n-1}-a_n}e_n^{a_n}
+\]</span>
+has that leading monomial with coefficient one. Subtract its multiple by the leading coefficient. The result remains symmetric and has a smaller leading monomial. Its degree does not exceed the original degree bound, so only finitely many monomials can occur. Repeating terminates and gives the required expression, without division by any coefficient. The next proof uses this over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<h2 id="two-restrictions-on-discriminants">Two restrictions on discriminants</h2>
+<p>Let <span class="math" data-tex="\((r_1,r_2)\)">\((r_1,r_2)\)</span> be the signature of <span class="math" data-tex="\(K\)">\(K\)</span>: there are <span class="math" data-tex="\(r_1\)">\(r_1\)</span> real embeddings and <span class="math" data-tex="\(r_2\)">\(r_2\)</span> conjugate pairs of nonreal embeddings, with <span class="math" data-tex="\(n=r_1+2r_2\)">\(n=r_1+2r_2\)</span>.</p>
+<p><strong>Theorem 2.4.</strong> The field discriminant satisfies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{sign}(d_K)=(-1)^{r_2},\qquad d_K\equiv0\text{ or }1\pmod4.
+\]">\[
+\operatorname{sign}(d_K)=(-1)^{r_2},\qquad d_K\equiv0\text{ or }1\pmod4.
+\]</span>
+<p>Both assertions also hold for the discriminant of any full lattice generated by integral elements of <span class="math" data-tex="\(K\)">\(K\)</span>, including any order in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be its embedding matrix, ordered with the real embeddings first and conjugate pairs adjacent. Complex conjugation exchanges exactly <span class="math" data-tex="\(r_2\)">\(r_2\)</span> pairs of rows, so</p>
+<span class="math math-display" data-tex="\[
+\overline{\det S}=(-1)^{r_2}\det S.
+\]">\[
+\overline{\det S}=(-1)^{r_2}\det S.
+\]</span>
+<p>The determinant is nonzero. It is real when <span class="math" data-tex="\(r_2\)">\(r_2\)</span> is even and purely imaginary when <span class="math" data-tex="\(r_2\)">\(r_2\)</span> is odd. Its square has the asserted sign.</p>
+<p>For the congruence, write the determinant as <span class="math" data-tex="\(P-N\)">\(P-N\)</span>, where <span class="math" data-tex="\(P\)">\(P\)</span> is the sum of the terms indexed by even permutations and <span class="math" data-tex="\(N\)">\(N\)</span> is the unsigned sum indexed by odd permutations. Permuting the rows either preserves <span class="math" data-tex="\(P,N\)">\(P,N\)</span> or exchanges them. Thus <span class="math" data-tex="\(P+N\)">\(P+N\)</span> and <span class="math" data-tex="\(PN\)">\(PN\)</span> are invariant under every row permutation.</p>
+<p>To see that they are rational, choose a primitive element <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>, and express each basis element as a polynomial in <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with rational coefficients. The rows are obtained by substituting the distinct conjugates of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Hence <span class="math" data-tex="\(P+N\)">\(P+N\)</span> and <span class="math" data-tex="\(PN\)">\(PN\)</span> are symmetric polynomials with rational coefficients in those conjugates. The symmetric polynomial theorem puts both in <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Their terms are products of algebraic integers, so both are algebraic integers and therefore belong to <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. Consequently,</p>
+<span class="math math-display" data-tex="\[
+d=(P-N)^2=(P+N)^2-4PN\equiv(P+N)^2\equiv0\text{ or }1\pmod4.
+\]">\[
+d=(P-N)^2=(P+N)^2-4PN\equiv(P+N)^2\equiv0\text{ or }1\pmod4.
+\]</span>
+<p>This is Stickelberger's congruence. The argument uses integrality of the basis elements, and does not require a maximal order. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="testing-one-prime-at-a-time">Testing one prime at a time</h2>
+<p>Fix an integral primitive element <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, its monic minimal polynomial <span class="math" data-tex="\(f\in\mathbf Z[x]\)">\(f\in\mathbf Z[x]\)</span>, and a rational prime <span class="math" data-tex="\(p\)">\(p\)</span>. We call <span class="math" data-tex="\(\mathbf Z[\alpha]\)">\(\mathbf Z[\alpha]\)</span> <strong><span class="math" data-tex="\(p\)">\(p\)</span>-maximal</strong> if</p>
+<span class="math math-display" data-tex="\[
+p\nmid[\mathcal O_K:\mathbf Z[\alpha]].
+\]">\[
+p\nmid[\mathcal O_K:\mathbf Z[\alpha]].
+\]</span>
+<p>Factor the reduction of <span class="math" data-tex="\(f\)">\(f\)</span> as</p>
+<span class="math math-display" data-tex="\[
+\bar f=\prod_{i=1}^s\bar g_i^{e_i}
+\]">\[
+\bar f=\prod_{i=1}^s\bar g_i^{e_i}
+\]</span>
+<p>with distinct monic irreducible <span class="math" data-tex="\(\bar g_i\in\mathbf F_p[x]\)">\(\bar g_i\in\mathbf F_p[x]\)</span>. Choose monic integer lifts <span class="math" data-tex="\(g_i\)">\(g_i\)</span> of the same degrees, and set</p>
+<span class="math math-display" data-tex="\[
+h=\prod_i g_i,\qquad q=\prod_i g_i^{e_i-1},\qquad f=hq+pF. \tag{4}
+\]">\[
+h=\prod_i g_i,\qquad q=\prod_i g_i^{e_i-1},\qquad f=hq+pF. \tag{4}
+\]</span>
+<p>The polynomial <span class="math" data-tex="\(F\)">\(F\)</span> has integer coefficients. Its definition includes the sign in (4).</p>
+<p><strong>Proposition 2.5 (Eisenstein).</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is Eisenstein at <span class="math" data-tex="\(p\)">\(p\)</span>, then <span class="math" data-tex="\(\mathbf Z[\alpha]\)">\(\mathbf Z[\alpha]\)</span> is <span class="math" data-tex="\(p\)">\(p\)</span>-maximal.</p>
+<p>We will deduce this proposition immediately after proving the following more general test. Eisenstein at one prime makes a claim about that prime only.</p>
+<p><strong>Theorem 2.6 (Dedekind's criterion).</strong> With (4),</p>
+<span class="math math-display" data-tex="\[
+p\nmid[\mathcal O_K:\mathbf Z[\alpha]]
+\quad\Longleftrightarrow\quad
+\bar g_i\nmid\bar F\text{ for every }i\text{ with }e_i\ge2.
+\]">\[
+p\nmid[\mathcal O_K:\mathbf Z[\alpha]]
+\quad\Longleftrightarrow\quad
+\bar g_i\nmid\bar F\text{ for every }i\text{ with }e_i\ge2.
+\]</span>
+<p>Here <span class="math" data-tex="\(\bar F\)">\(\bar F\)</span> is a polynomial over <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>; the test concerns divisibility by each repeated irreducible factor, rather than the multiplicity of that factor alone.</p>
+<p><strong>Proof.</strong> We first turn a missing integer into an element preserving a specific ideal. Put</p>
+<span class="math math-display" data-tex="\[
+R=\mathbf Z_{(p)}=\{a/b\in\mathbf Q\mid p\nmid b\},\quad
+A=R[\alpha],\quad B=R\mathcal O_K.
+\]">\[
+R=\mathbf Z_{(p)}=\{a/b\in\mathbf Q\mid p\nmid b\},\quad
+A=R[\alpha],\quad B=R\mathcal O_K.
+\]</span>
+<p>In Smith normal form, each diagonal entry is a unit of <span class="math" data-tex="\(R\)">\(R\)</span> times a power of <span class="math" data-tex="\(p\)">\(p\)</span>. Thus the finite quotient <span class="math" data-tex="\(\mathcal O_K/\mathbf Z[\alpha]\)">\(\mathcal O_K/\mathbf Z[\alpha]\)</span> gives <span class="math" data-tex="\(A=B\)">\(A=B\)</span> exactly when the desired index is prime to <span class="math" data-tex="\(p\)">\(p\)</span>. It also gives <span class="math" data-tex="\(p^kB\subseteq A\)">\(p^kB\subseteq A\)</span> for some <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>.</p>
+<p>The ring <span class="math" data-tex="\(B\)">\(B\)</span> is the integral closure of <span class="math" data-tex="\(R\)">\(R\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>. Indeed, its elements are integral over <span class="math" data-tex="\(R\)">\(R\)</span>. Conversely, if <span class="math" data-tex="\(b\)">\(b\)</span> satisfies a monic equation over <span class="math" data-tex="\(R\)">\(R\)</span>, choose an integer <span class="math" data-tex="\(m\)">\(m\)</span> prime to <span class="math" data-tex="\(p\)">\(p\)</span> clearing its coefficients' denominators. If the coefficients are <span class="math" data-tex="\(c_j\)">\(c_j\)</span>, the equation for <span class="math" data-tex="\(mb\)">\(mb\)</span> has coefficients <span class="math" data-tex="\(m^jc_j\in\mathbf Z\)">\(m^jc_j\in\mathbf Z\)</span>. Thus <span class="math" data-tex="\(mb\in\mathcal O_K\)">\(mb\in\mathcal O_K\)</span>, so <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>.</p>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+J=(p,h(\alpha))\subset A,\qquad
+E=\{b\in K:bJ\subseteq J\}.
+\]">\[
+J=(p,h(\alpha))\subset A,\qquad
+E=\{b\in K:bJ\subseteq J\}.
+\]</span>
+<p>Monic polynomial division and minimality of <span class="math" data-tex="\(f\)">\(f\)</span> identify <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(R[x]/(f)\)">\(R[x]/(f)\)</span>. Thus <span class="math" data-tex="\(A/pA=\mathbf F_p[x]/(\bar f)\)">\(A/pA=\mathbf F_p[x]/(\bar f)\)</span>, and the elements nilpotent modulo <span class="math" data-tex="\(pA\)">\(pA\)</span> are exactly <span class="math" data-tex="\(J\)">\(J\)</span>: a power of a polynomial is divisible by <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span> if and only if each <span class="math" data-tex="\(\bar g_i\)">\(\bar g_i\)</span> divides that polynomial. In particular, <span class="math" data-tex="\(J^N\subseteq pA\)">\(J^N\subseteq pA\)</span> for some <span class="math" data-tex="\(N\)">\(N\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+A/J=\mathbf F_p[x]/(\bar h)
+\]">\[
+A/J=\mathbf F_p[x]/(\bar h)
+\]</span>
+<p>has no nonzero nilpotents: <span class="math" data-tex="\(\bar h\)">\(\bar h\)</span> is a product of distinct irreducibles.</p>
+<p>We claim that <span class="math" data-tex="\(A=B\)">\(A=B\)</span> if and only if <span class="math" data-tex="\(E=A\)">\(E=A\)</span>. The ideal <span class="math" data-tex="\(J\)">\(J\)</span> is a free <span class="math" data-tex="\(R\)">\(R\)</span>-module of rank <span class="math" data-tex="\(n\)">\(n\)</span>: it is obtained by localizing the subgroup <span class="math" data-tex="\((p,h(\alpha))\)">\((p,h(\alpha))\)</span> of <span class="math" data-tex="\(\mathbf Z[\alpha]\)">\(\mathbf Z[\alpha]\)</span>, which contains <span class="math" data-tex="\(p\mathbf Z[\alpha]\)">\(p\mathbf Z[\alpha]\)</span>. If <span class="math" data-tex="\(b\in E\)">\(b\in E\)</span>, multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> has a matrix <span class="math" data-tex="\(C\)">\(C\)</span> over <span class="math" data-tex="\(R\)">\(R\)</span> in a basis <span class="math" data-tex="\(\boldsymbol e\)">\(\boldsymbol e\)</span> of <span class="math" data-tex="\(J\)">\(J\)</span>. The equation <span class="math" data-tex="\(\boldsymbol e(bI-C)=0\)">\(\boldsymbol e(bI-C)=0\)</span>, multiplied by the adjugate matrix, gives <span class="math" data-tex="\(\det(bI-C)\boldsymbol e=0\)">\(\det(bI-C)\boldsymbol e=0\)</span>. A basis element is nonzero in the field <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(b\)">\(b\)</span> is a root of the monic polynomial <span class="math" data-tex="\(\det(TI-C)\in R[T]\)">\(\det(TI-C)\in R[T]\)</span>. Thus <span class="math" data-tex="\(A\subseteq E\subseteq B\)">\(A\subseteq E\subseteq B\)</span>. In particular, <span class="math" data-tex="\(A=B\)">\(A=B\)</span> implies <span class="math" data-tex="\(E=A\)">\(E=A\)</span>.</p>
+<p>Conversely suppose <span class="math" data-tex="\(A\ne B\)">\(A\ne B\)</span>. The inclusions above give <span class="math" data-tex="\(J^{Nk}B\subseteq A\)">\(J^{Nk}B\subseteq A\)</span>. Choose the smallest positive <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(J^tB\subseteq A\)">\(J^tB\subseteq A\)</span>, and an element <span class="math" data-tex="\(b\in J^{t-1}B\setminus A\)">\(b\in J^{t-1}B\setminus A\)</span>. Then <span class="math" data-tex="\(bJ\subseteq A\)">\(bJ\subseteq A\)</span>. For <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span>, set <span class="math" data-tex="\(y=bx\in A\)">\(y=bx\in A\)</span>. A monic integral equation for <span class="math" data-tex="\(b\)">\(b\)</span> over <span class="math" data-tex="\(R\)">\(R\)</span>, multiplied by a power of <span class="math" data-tex="\(x\)">\(x\)</span>, reduces modulo <span class="math" data-tex="\(J\)">\(J\)</span> to <span class="math" data-tex="\(y^m=0\)">\(y^m=0\)</span>. Since <span class="math" data-tex="\(A/J\)">\(A/J\)</span> has no nonzero nilpotents, <span class="math" data-tex="\(y\in J\)">\(y\in J\)</span>. Therefore <span class="math" data-tex="\(b\in E\setminus A\)">\(b\in E\setminus A\)</span>, proving the claim.</p>
+<p>It remains to compute when <span class="math" data-tex="\(E\ne A\)">\(E\ne A\)</span>. For <span class="math" data-tex="\(b\in E\)">\(b\in E\)</span>, the condition <span class="math" data-tex="\(pb\in J\)">\(pb\in J\)</span> allows us to subtract an element of <span class="math" data-tex="\(A\)">\(A\)</span> and write</p>
+<span class="math math-display" data-tex="\[
+b=\frac{h(\alpha)t(\alpha)}p,\qquad t\in R[x].
+\]">\[
+b=\frac{h(\alpha)t(\alpha)}p,\qquad t\in R[x].
+\]</span>
+<p>Its other required condition is <span class="math" data-tex="\(bh(\alpha)\in J\)">\(bh(\alpha)\in J\)</span>. In <span class="math" data-tex="\(R[x]\)">\(R[x]\)</span>, this is equivalent to</p>
+<span class="math math-display" data-tex="\[
+h^2t\in(p^2,ph,f).
+\]">\[
+h^2t\in(p^2,ph,f).
+\]</span>
+<p>Thus for some polynomials <span class="math" data-tex="\(v,w,z\)">\(v,w,z\)</span> we have <span class="math" data-tex="\(h^2t=p^2v+phw+fz\)">\(h^2t=p^2v+phw+fz\)</span>. Reducing modulo <span class="math" data-tex="\(p\)">\(p\)</span> and cancelling <span class="math" data-tex="\(\bar h\)">\(\bar h\)</span> in <span class="math" data-tex="\(\mathbf F_p[x]\)">\(\mathbf F_p[x]\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\bar h\bar t=\bar q\bar z.
+\]">\[
+\bar h\bar t=\bar q\bar z.
+\]</span>
+<p>Write <span class="math" data-tex="\(ht=qz+py\)">\(ht=qz+py\)</span> with <span class="math" data-tex="\(y\in R[x]\)">\(y\in R[x]\)</span>. Evaluating at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and using (4), now gives</p>
+<span class="math math-display" data-tex="\[
+bh(\alpha)=-F(\alpha)z(\alpha)+h(\alpha)y(\alpha).
+\]">\[
+bh(\alpha)=-F(\alpha)z(\alpha)+h(\alpha)y(\alpha).
+\]</span>
+<p>Its membership in <span class="math" data-tex="\(J\)">\(J\)</span> says <span class="math" data-tex="\(\bar h\mid\bar F\bar z\)">\(\bar h\mid\bar F\bar z\)</span>. Also <span class="math" data-tex="\(b\notin A\)">\(b\notin A\)</span> exactly when <span class="math" data-tex="\(\bar f\nmid\bar h\bar t=\bar q\bar z\)">\(\bar f\nmid\bar h\bar t=\bar q\bar z\)</span>, or equivalently <span class="math" data-tex="\(\bar h\nmid\bar z\)">\(\bar h\nmid\bar z\)</span>. We have obtained the three conditions</p>
+<span class="math math-display" data-tex="\[
+\bar h\mid\bar q\bar z,\qquad
+\bar h\mid\bar F\bar z,\qquad
+\bar h\nmid\bar z. \tag{5}
+\]">\[
+\bar h\mid\bar q\bar z,\qquad
+\bar h\mid\bar F\bar z,\qquad
+\bar h\nmid\bar z. \tag{5}
+\]</span>
+<p>Conversely, given a polynomial <span class="math" data-tex="\(\bar z\)">\(\bar z\)</span> satisfying (5), take <span class="math" data-tex="\(\bar t=\bar q\bar z/\bar h\)">\(\bar t=\bar q\bar z/\bar h\)</span>, lift <span class="math" data-tex="\(z,t\)">\(z,t\)</span>, and use the displayed identity to construct <span class="math" data-tex="\(b\in E\setminus A\)">\(b\in E\setminus A\)</span>. Thus (5) is an exact test for failure of maximality.</p>
+<p>Because <span class="math" data-tex="\(\bar h\)">\(\bar h\)</span> is squarefree, (5) has a solution precisely when some <span class="math" data-tex="\(\bar g_i\)">\(\bar g_i\)</span> divides both <span class="math" data-tex="\(\bar q\)">\(\bar q\)</span> and <span class="math" data-tex="\(\bar F\)">\(\bar F\)</span>. If such a factor exists, take <span class="math" data-tex="\(\bar z=\bar h/\bar g_i\)">\(\bar z=\bar h/\bar g_i\)</span>. If none exists, each factor of <span class="math" data-tex="\(\bar h\)">\(\bar h\)</span> must divide <span class="math" data-tex="\(\bar z\)">\(\bar z\)</span> by one of the first two conditions, contradicting the third. Finally, <span class="math" data-tex="\(\bar g_i\mid\bar q\)">\(\bar g_i\mid\bar q\)</span> means exactly <span class="math" data-tex="\(e_i\ge2\)">\(e_i\ge2\)</span>. Together with the claim about <span class="math" data-tex="\(E\)">\(E\)</span>, this proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of Proposition 2.5.</strong> For an Eisenstein polynomial of degree at least <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(\bar f=x^n\)">\(\bar f=x^n\)</span>. Take <span class="math" data-tex="\(g=x\)">\(g=x\)</span> and <span class="math" data-tex="\(F=(f-x^n)/p\)">\(F=(f-x^n)/p\)</span>. Its constant coefficient is not divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, because the constant coefficient of <span class="math" data-tex="\(f\)">\(f\)</span> is not divisible by <span class="math" data-tex="\(p^2\)">\(p^2\)</span>. Hence <span class="math" data-tex="\(x\nmid\bar F\)">\(x\nmid\bar F\)</span>, and Theorem 2.6 applies. In degree <span class="math" data-tex="\(1\)">\(1\)</span>, the field and its ring of integers are <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> and <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, so the assertion is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The choice of lifts does not affect the answer. Replacing <span class="math" data-tex="\(g_i\)">\(g_i\)</span> by <span class="math" data-tex="\(g_i+pu_i\)">\(g_i+pu_i\)</span> changes <span class="math" data-tex="\(F\)">\(F\)</span>, modulo <span class="math" data-tex="\(p\)">\(p\)</span>, by a sum of terms</p>
+<span class="math math-display" data-tex="\[
+-e_i\bar u_i\bar g_i^{e_i-1}\prod_{j\ne i}\bar g_j^{e_j}.
+\]">\[
+-e_i\bar u_i\bar g_i^{e_i-1}\prod_{j\ne i}\bar g_j^{e_j}.
+\]</span>
+<p>Every such term is divisible by any fixed repeated factor <span class="math" data-tex="\(\bar g_k\)">\(\bar g_k\)</span>. Thus the tests <span class="math" data-tex="\(\bar g_k\mid\bar F\)">\(\bar g_k\mid\bar F\)</span> for <span class="math" data-tex="\(e_k\ge2\)">\(e_k\ge2\)</span> remain unchanged.</p>
+<h2 id="four-computations">Four computations</h2>
+<h3 id="quadratic-fields">Quadratic fields</h3>
+<p>Let <span class="math" data-tex="\(d\ne0,1\)">\(d\ne0,1\)</span> be a squarefree integer, including negative integers. The quadratic integer theorem gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_{\mathbf Q(\sqrt d)}=
+\begin{cases}
+\mathbf Z[(1+\sqrt d)/2],&amp;d\equiv1\pmod4,\\
+\mathbf Z[\sqrt d],&amp;d\equiv2,3\pmod4.
+\end{cases}
+\]">\[
+\mathcal O_{\mathbf Q(\sqrt d)}=
+\begin{cases}
+\mathbf Z[(1+\sqrt d)/2],&amp;d\equiv1\pmod4,\\
+\mathbf Z[\sqrt d],&amp;d\equiv2,3\pmod4.
+\end{cases}
+\]</span>
+<p>For any quadratic basis <span class="math" data-tex="\((1,\omega)\)">\((1,\omega)\)</span>, Proposition 2.2 gives <span class="math" data-tex="\(d(1,\omega)=(\omega-\omega&#x27;)^2\)">\(d(1,\omega)=(\omega-\omega&#x27;)^2\)</span>. The differences are <span class="math" data-tex="\(\sqrt d\)">\(\sqrt d\)</span> and <span class="math" data-tex="\(2\sqrt d\)">\(2\sqrt d\)</span>, respectively. Therefore</p>
+<span class="math math-display" data-tex="\[
+d_{\mathbf Q(\sqrt d)}=
+\begin{cases}
+d,&amp;d\equiv1\pmod4,\\
+4d,&amp;d\equiv2,3\pmod4.
+\end{cases}
+\]">\[
+d_{\mathbf Q(\sqrt d)}=
+\begin{cases}
+d,&amp;d\equiv1\pmod4,\\
+4d,&amp;d\equiv2,3\pmod4.
+\end{cases}
+\]</span>
+<p>The power order <span class="math" data-tex="\(\mathbf Z[\sqrt d]\)">\(\mathbf Z[\sqrt d]\)</span> has discriminant <span class="math" data-tex="\(4d\)">\(4d\)</span> in both cases. In the first case it has index <span class="math" data-tex="\(2\)">\(2\)</span>; in the second it has index <span class="math" data-tex="\(1\)">\(1\)</span>. The sign agrees with the presence or absence of a complex pair. For example, the discriminants for <span class="math" data-tex="\(d=5,2,-3\)">\(d=5,2,-3\)</span> are <span class="math" data-tex="\(5,8,-3\)">\(5,8,-3\)</span>.</p>
+<h3 id="a-useful-cubic-formula">A useful cubic formula</h3>
+<p>For <span class="math" data-tex="\(f(x)=x^3+ax+b\)">\(f(x)=x^3+ax+b\)</span>, multiplication by <span class="math" data-tex="\(3\alpha^2+a\)">\(3\alpha^2+a\)</span> in the basis <span class="math" data-tex="\(1,\alpha,\alpha^2\)">\(1,\alpha,\alpha^2\)</span> has matrix</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+a&amp;-3b&amp;0\\
+0&amp;-2a&amp;-3b\\
+3&amp;0&amp;-2a
+\end{pmatrix}.
+\]">\[
+\begin{pmatrix}
+a&amp;-3b&amp;0\\
+0&amp;-2a&amp;-3b\\
+3&amp;0&amp;-2a
+\end{pmatrix}.
+\]</span>
+<p>Its determinant is <span class="math" data-tex="\(4a^3+27b^2\)">\(4a^3+27b^2\)</span>, so Proposition 2.2 yields</p>
+<span class="math math-display" data-tex="\[
+\operatorname{disc}(x^3+ax+b)=-4a^3-27b^2. \tag{6}
+\]">\[
+\operatorname{disc}(x^3+ax+b)=-4a^3-27b^2. \tag{6}
+\]</span>
+<p>The computation can be made in the quotient algebra by <span class="math" data-tex="\(f\)">\(f\)</span> even when <span class="math" data-tex="\(f\)">\(f\)</span> is reducible. For distinct roots its multiplication matrix is diagonalized by evaluation at the roots, so the same formula holds. Both expressions are polynomial functions of <span class="math" data-tex="\(a,b\)">\(a,b\)</span>; hence the identity holds for repeated roots as well.</p>
+<h3 id="two-cubic-integral-bases">Two cubic integral bases</h3>
+<p>For <span class="math" data-tex="\(\alpha=\sqrt[3]2\)">\(\alpha=\sqrt[3]2\)</span>, the polynomial <span class="math" data-tex="\(x^3-2\)">\(x^3-2\)</span> has no rational root: such a root would be an integer whose cube is <span class="math" data-tex="\(2\)">\(2\)</span>. It is therefore irreducible, and it is Eisenstein at <span class="math" data-tex="\(2\)">\(2\)</span>. Formula (6) gives discriminant <span class="math" data-tex="\(-108=-2^2\cdot3^3\)">\(-108=-2^2\cdot3^3\)</span>. Only <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span> can divide the index. The prime <span class="math" data-tex="\(2\)">\(2\)</span> is excluded by Proposition 2.5. Put <span class="math" data-tex="\(\beta=\alpha+1\)">\(\beta=\alpha+1\)</span>; then</p>
+<span class="math math-display" data-tex="\[
+(x-1)^3-2=x^3-3x^2+3x-3
+\]">\[
+(x-1)^3-2=x^3-3x^2+3x-3
+\]</span>
+<p>is its Eisenstein polynomial at <span class="math" data-tex="\(3\)">\(3\)</span>. Since <span class="math" data-tex="\(\mathbf Z[\beta]=\mathbf Z[\alpha]\)">\(\mathbf Z[\beta]=\mathbf Z[\alpha]\)</span>, that prime is excluded too. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_{\mathbf Q(\sqrt[3]2)}=\mathbf Z[\sqrt[3]2],\qquad d_K=-108.
+\]">\[
+\mathcal O_{\mathbf Q(\sqrt[3]2)}=\mathbf Z[\sqrt[3]2],\qquad d_K=-108.
+\]</span>
+<p>For <span class="math" data-tex="\(f=x^3-x-1\)">\(f=x^3-x-1\)</span>, a rational root would be <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, and neither is a root. A cubic without a rational root is irreducible. Formula (6) gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{disc}(f)=4-27=-23.
+\]">\[
+\operatorname{disc}(f)=4-27=-23.
+\]</span>
+<p>This is squarefree. Hence its root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> gives the integral basis <span class="math" data-tex="\(1,\alpha,\alpha^2\)">\(1,\alpha,\alpha^2\)</span>, and <span class="math" data-tex="\(d_K=-23\)">\(d_K=-23\)</span>. Notice that the two examples reach maximality by different tests.</p>
+<h3 id="a-biquadratic-basis-with-a-denominator">A biquadratic basis with a denominator</h3>
+<p>Put <span class="math" data-tex="\(u=\sqrt2\)">\(u=\sqrt2\)</span>, <span class="math" data-tex="\(v=\sqrt3\)">\(v=\sqrt3\)</span>, and <span class="math" data-tex="\(K=\mathbf Q(u,v)\)">\(K=\mathbf Q(u,v)\)</span>. The complete proof in <a href="algebraic-integers-and-rings-of-integers.html#a-biquadratic-integral-basis"><em>Algebraic integers and rings of integers</em>, Exercise 6</a> establishes that</p>
+<span class="math math-display" data-tex="\[
+\left(1,u,v,w\right),\qquad w=\frac{u+uv}{2},
+\]">\[
+\left(1,u,v,w\right),\qquad w=\frac{u+uv}{2},
+\]</span>
+<p>is an integral basis. Its notation there is <span class="math" data-tex="\(s=u\)">\(s=u\)</span>, <span class="math" data-tex="\(t=v\)">\(t=v\)</span>, <span class="math" data-tex="\(u_{\mathrm{there}}=uv\)">\(u_{\mathrm{there}}=uv\)</span>, and <span class="math" data-tex="\(v_{\mathrm{there}}=w\)">\(v_{\mathrm{there}}=w\)</span>. We now apply the discriminant and index formulas to this established basis.</p>
+<p>The four embeddings independently change the signs of <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. Summing their values gives the trace Gram matrix</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+4&amp;0&amp;0&amp;0\\
+0&amp;8&amp;0&amp;4\\
+0&amp;0&amp;12&amp;0\\
+0&amp;4&amp;0&amp;8
+\end{pmatrix}.
+\]">\[
+\begin{pmatrix}
+4&amp;0&amp;0&amp;0\\
+0&amp;8&amp;0&amp;4\\
+0&amp;0&amp;12&amp;0\\
+0&amp;4&amp;0&amp;8
+\end{pmatrix}.
+\]</span>
+<p>Its determinant is <span class="math" data-tex="\(4\cdot12\cdot(64-16)=2304=2^8\cdot3^2\)">\(4\cdot12\cdot(64-16)=2304=2^8\cdot3^2\)</span>. Thus <span class="math" data-tex="\(d_K=2304\)">\(d_K=2304\)</span>. As a separate index check, the basis <span class="math" data-tex="\((1,u,v,uv)\)">\((1,u,v,uv)\)</span> has diagonal trace matrix <span class="math" data-tex="\(\operatorname{diag}(4,8,12,24)\)">\(\operatorname{diag}(4,8,12,24)\)</span>, of determinant <span class="math" data-tex="\(9216\)">\(9216\)</span>. Its span has index <span class="math" data-tex="\(2\)">\(2\)</span>, exactly as (2) predicts.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The preceding lesson supplies full proofs of the primitive element and embedding theorems (Section 1), the finite-module integrality criterion, ring property and transitivity (Section 2), the minimal-polynomial and denominator-clearing tests (Proposition 1.1), trace and norm over every number-field extension (Proposition 1.2), and the complete quadratic integer theorem (Theorem 1.4). These are the exact arithmetic providers used here.</p>
+<p>The subgroup theorem, Smith reduction and determinant–index identity were proved in “Integer subgroups and lattice indices” above. “Symmetric polynomial expressions” supplies the full symmetric-function argument. Thus the integral-basis and discriminant proofs do not leave those algebraic steps to external citations. Matrix determinants, tensors and elementary vector-space notation are the linear-algebra prerequisites.</p>
+<p>The general discriminant theorem for orders over Dedekind domains is developed in <em>Orders and the discriminant theorem</em>. The present lesson establishes the lattice formula and computational tests needed there. Ramification and the different are developed later in <em>Decomposition of primes in extensions</em> and <em>The different and the discriminant</em>.</p>
+<h2 id="exercises-and-complete-solutions">Exercises and complete solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Compute <span class="math" data-tex="\(\operatorname{disc}(x^3+ax+b)\)">\(\operatorname{disc}(x^3+ax+b)\)</span> directly from a trace matrix, obtaining (6).</p>
+<p><strong>Solution.</strong> Let the three roots be <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span>, with multiplicity, and put <span class="math" data-tex="\(s_m=\sum_i\theta_i^m\)">\(s_m=\sum_i\theta_i^m\)</span>. The coefficient identities and the equation <span class="math" data-tex="\(\theta_i^3=-a\theta_i-b\)">\(\theta_i^3=-a\theta_i-b\)</span> give</p>
+<span class="math math-display" data-tex="\[
+s_0=3,\quad s_1=0,\quad s_2=-2a,\quad s_3=-3b,\quad s_4=2a^2.
+\]">\[
+s_0=3,\quad s_1=0,\quad s_2=-2a,\quad s_3=-3b,\quad s_4=2a^2.
+\]</span>
+<p>For example, <span class="math" data-tex="\(s_2=s_1^2-2\sum_{i&lt;j}\theta_i\theta_j=-2a\)">\(s_2=s_1^2-2\sum_{i&lt;j}\theta_i\theta_j=-2a\)</span>, and multiplying the root equation by <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span> gives <span class="math" data-tex="\(s_4=-as_2-bs_1\)">\(s_4=-as_2-bs_1\)</span>. The matrix <span class="math" data-tex="\((s_{i+j})_{0\le i,j\le2}\)">\((s_{i+j})_{0\le i,j\le2}\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+3&amp;0&amp;-2a\\
+0&amp;-2a&amp;-3b\\
+-2a&amp;-3b&amp;2a^2
+\end{pmatrix}.
+\]">\[
+\begin{pmatrix}
+3&amp;0&amp;-2a\\
+0&amp;-2a&amp;-3b\\
+-2a&amp;-3b&amp;2a^2
+\end{pmatrix}.
+\]</span>
+<p>It is the product of the transpose of the root evaluation matrix with that matrix, even when roots repeat. Its determinant is therefore the squared Vandermonde product. Expanding gives <span class="math" data-tex="\(3(-4a^3-9b^2)+8a^3=-4a^3-27b^2\)">\(3(-4a^3-9b^2)+8a^3=-4a^3-27b^2\)</span>.</p>
+<p><strong>Exercise 2 (medium).</strong> Prove the sign rule by finding the signature of the trace form over <span class="math" data-tex="\(\mathbf R\)">\(\mathbf R\)</span>.</p>
+<p><strong>Solution.</strong> Send an element to its real embeddings and to one embedding from each complex pair, splitting the latter into real and imaginary parts. On real linear combinations of a rational basis this is an isomorphism to <span class="math" data-tex="\(\mathbf R^{r_1}\times\mathbf C^{r_2}\)">\(\mathbf R^{r_1}\times\mathbf C^{r_2}\)</span>: after recombining each pair of real coordinates into conjugate complex coordinates, its matrix is the invertible embedding matrix from Proposition 2.1. In these coordinates,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(xy)=\sum_{i=1}^{r_1}x_i y_i+
+2\sum_{j=1}^{r_2}\operatorname{Re}(z_jt_j).
+\]">\[
+\operatorname{Tr}(xy)=\sum_{i=1}^{r_1}x_i y_i+
+2\sum_{j=1}^{r_2}\operatorname{Re}(z_jt_j).
+\]</span>
+<p>Writing <span class="math" data-tex="\(z=a+ib\)">\(z=a+ib\)</span>, <span class="math" data-tex="\(t=c+id\)">\(t=c+id\)</span> gives <span class="math" data-tex="\(2\operatorname{Re}(zt)=2ac-2bd\)">\(2\operatorname{Re}(zt)=2ac-2bd\)</span>. Each complex factor therefore contributes one positive and one negative diagonal entry; each real factor contributes one positive entry. The signature is <span class="math" data-tex="\((r_1+r_2,r_2)\)">\((r_1+r_2,r_2)\)</span>. Changing a real basis changes the determinant by a positive square, so every basis discriminant has sign <span class="math" data-tex="\((-1)^{r_2}\)">\((-1)^{r_2}\)</span>.</p>
+<p><strong>Exercise 3 (medium).</strong> Show that <span class="math" data-tex="\(\mathbf Z[\sqrt[3]2]\)">\(\mathbf Z[\sqrt[3]2]\)</span> is the full ring of integers using Eisenstein tests at <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<p><strong>Solution.</strong> The polynomial <span class="math" data-tex="\(x^3-2\)">\(x^3-2\)</span> is Eisenstein at <span class="math" data-tex="\(2\)">\(2\)</span>. Its discriminant is <span class="math" data-tex="\(-27\cdot2^2=-108\)">\(-27\cdot2^2=-108\)</span>, so (3) restricts possible index primes to <span class="math" data-tex="\(2,3\)">\(2,3\)</span>. At <span class="math" data-tex="\(3\)">\(3\)</span>, use <span class="math" data-tex="\(\beta=1+\sqrt[3]2\)">\(\beta=1+\sqrt[3]2\)</span>, whose minimal polynomial is <span class="math" data-tex="\(x^3-3x^2+3x-3\)">\(x^3-3x^2+3x-3\)</span>. All its nonleading coefficients are divisible by <span class="math" data-tex="\(3\)">\(3\)</span>, and its constant coefficient is not divisible by <span class="math" data-tex="\(9\)">\(9\)</span>. Proposition 2.5 excludes <span class="math" data-tex="\(3\)">\(3\)</span> from the index of <span class="math" data-tex="\(\mathbf Z[\beta]\)">\(\mathbf Z[\beta]\)</span>; this order equals <span class="math" data-tex="\(\mathbf Z[\sqrt[3]2]\)">\(\mathbf Z[\sqrt[3]2]\)</span>. The same proposition excludes <span class="math" data-tex="\(2\)">\(2\)</span>. Hence the index is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Exercise 4 (medium).</strong> Use Dedekind's criterion to show that <span class="math" data-tex="\(\mathbf Z[\sqrt7]\)">\(\mathbf Z[\sqrt7]\)</span> is <span class="math" data-tex="\(2\)">\(2\)</span>-maximal, while <span class="math" data-tex="\(\mathbf Z[\sqrt5]\)">\(\mathbf Z[\sqrt5]\)</span> is not.</p>
+<p><strong>Solution.</strong> In both cases <span class="math" data-tex="\(x^2-d\equiv(x-1)^2\pmod2\)">\(x^2-d\equiv(x-1)^2\pmod2\)</span>. Choose <span class="math" data-tex="\(g=x-1\)">\(g=x-1\)</span>; then</p>
+<span class="math math-display" data-tex="\[
+F=\frac{x^2-d-(x-1)^2}{2}=x-\frac{d+1}{2}.
+\]">\[
+F=\frac{x^2-d-(x-1)^2}{2}=x-\frac{d+1}{2}.
+\]</span>
+<p>For <span class="math" data-tex="\(d=7\)">\(d=7\)</span>, <span class="math" data-tex="\(F=x-4\)">\(F=x-4\)</span>, whose reduction at <span class="math" data-tex="\(x=1\)">\(x=1\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. Thus <span class="math" data-tex="\(x-1\nmid\bar F\)">\(x-1\nmid\bar F\)</span>, giving <span class="math" data-tex="\(2\)">\(2\)</span>-maximality. For <span class="math" data-tex="\(d=5\)">\(d=5\)</span>, <span class="math" data-tex="\(F=x-3\)">\(F=x-3\)</span>, and <span class="math" data-tex="\(\bar F=x-1\)">\(\bar F=x-1\)</span>. The test fails. The missing integer is <span class="math" data-tex="\((1+\sqrt5)/2\)">\((1+\sqrt5)/2\)</span>, and the quadratic example shows that the index is exactly <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p><strong>Exercise 5 (hard).</strong> Let <span class="math" data-tex="\(d\)">\(d\)</span> be a nonzero squarefree integer with <span class="math" data-tex="\(|d|&gt;1\)">\(|d|&gt;1\)</span>, and let <span class="math" data-tex="\(\alpha=\sqrt[3]d\)">\(\alpha=\sqrt[3]d\)</span>. Prove</p>
+<span class="math math-display" data-tex="\[
+\mathbf Z[\alpha]=\mathcal O_{\mathbf Q(\alpha)}
+\quad\Longleftrightarrow\quad d\not\equiv\pm1\pmod9.
+\]">\[
+\mathbf Z[\alpha]=\mathcal O_{\mathbf Q(\alpha)}
+\quad\Longleftrightarrow\quad d\not\equiv\pm1\pmod9.
+\]</span>
+<p>In the exceptional cases, determine an integral basis as well.</p>
+<p><strong>Solution.</strong> A rational root of <span class="math" data-tex="\(x^3-d\)">\(x^3-d\)</span> would be an integer whose cube is <span class="math" data-tex="\(d\)">\(d\)</span>, which is impossible for squarefree <span class="math" data-tex="\(|d|&gt;1\)">\(|d|&gt;1\)</span>. Thus the polynomial is irreducible and its discriminant is <span class="math" data-tex="\(-27d^2\)">\(-27d^2\)</span>. The only possible index primes are <span class="math" data-tex="\(3\)">\(3\)</span> and primes dividing <span class="math" data-tex="\(d\)">\(d\)</span>. For every prime dividing <span class="math" data-tex="\(d\)">\(d\)</span>, squarefreeness makes <span class="math" data-tex="\(x^3-d\)">\(x^3-d\)</span> Eisenstein, so that prime does not divide the index. If <span class="math" data-tex="\(3\mid d\)">\(3\mid d\)</span>, this already finishes the proof.</p>
+<p>Suppose <span class="math" data-tex="\(3\nmid d\)">\(3\nmid d\)</span>, and choose <span class="math" data-tex="\(r\in\{1,-1\}\)">\(r\in\{1,-1\}\)</span> with <span class="math" data-tex="\(d\equiv r\pmod3\)">\(d\equiv r\pmod3\)</span>. Then <span class="math" data-tex="\(\bar f=(x-r)^3\)">\(\bar f=(x-r)^3\)</span>. With <span class="math" data-tex="\(g=x-r\)">\(g=x-r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+F=rx^2-r^2x+\frac{r^3-d}{3},\qquad
+F(r)=\frac{r^3-d}{3}.
+\]">\[
+F=rx^2-r^2x+\frac{r^3-d}{3},\qquad
+F(r)=\frac{r^3-d}{3}.
+\]</span>
+<p>The sole repeated factor divides <span class="math" data-tex="\(\bar F\)">\(\bar F\)</span> exactly when <span class="math" data-tex="\(9\mid d-r^3\)">\(9\mid d-r^3\)</span>. Since <span class="math" data-tex="\(r^3=r\)">\(r^3=r\)</span>, Dedekind's criterion excludes <span class="math" data-tex="\(3\)">\(3\)</span> from the index exactly when <span class="math" data-tex="\(d\not\equiv\pm1\pmod9\)">\(d\not\equiv\pm1\pmod9\)</span>. Every possible index prime has now been tested, proving the equivalence for positive and negative <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>For completeness suppose <span class="math" data-tex="\(d\equiv r\pmod9\)">\(d\equiv r\pmod9\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\omega=\frac{1+r\alpha+\alpha^2}{3}.
+\]">\[
+\omega=\frac{1+r\alpha+\alpha^2}{3}.
+\]</span>
+<p>The trace, second elementary symmetric function, and norm of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> are</p>
+<span class="math math-display" data-tex="\[
+1,\qquad \frac{1-rd}{3},\qquad \frac{(d-r)^2}{27}.
+\]">\[
+1,\qquad \frac{1-rd}{3},\qquad \frac{(d-r)^2}{27}.
+\]</span>
+<p>To obtain the middle quantity, expand <span class="math" data-tex="\(\omega^2\)">\(\omega^2\)</span> and use <span class="math" data-tex="\(\operatorname{Tr}(\alpha)=\operatorname{Tr}(\alpha^2)=0\)">\(\operatorname{Tr}(\alpha)=\operatorname{Tr}(\alpha^2)=0\)</span>: its trace is <span class="math" data-tex="\((1+2rd)/3\)">\((1+2rd)/3\)</span>, and the second symmetric function is <span class="math" data-tex="\((\operatorname{Tr}(\omega)^2-\operatorname{Tr}(\omega^2))/2\)">\((\operatorname{Tr}(\omega)^2-\operatorname{Tr}(\omega^2))/2\)</span>. The norm follows by multiplying the three conjugates; equivalently, expansion gives</p>
+<span class="math math-display" data-tex="\[
+N(a+b\alpha+c\alpha^2)=a^3+b^3d+c^3d^2-3abcd.
+\]">\[
+N(a+b\alpha+c\alpha^2)=a^3+b^3d+c^3d^2-3abcd.
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\omega\)">\(\omega\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+T^3-T^2+\frac{1-rd}{3}T-\frac{(d-r)^2}{27}=0.
+\]">\[
+T^3-T^2+\frac{1-rd}{3}T-\frac{(d-r)^2}{27}=0.
+\]</span>
+<p>Its coefficients are integers: <span class="math" data-tex="\(d-r\)">\(d-r\)</span> is divisible by <span class="math" data-tex="\(9\)">\(9\)</span>. Thus <span class="math" data-tex="\(M=\mathbf Z+\mathbf Z\alpha+\mathbf Z\omega\)">\(M=\mathbf Z+\mathbf Z\alpha+\mathbf Z\omega\)</span> is a full integral lattice. It contains the power order with index <span class="math" data-tex="\(3\)">\(3\)</span>, and has discriminant <span class="math" data-tex="\(-3d^2\)">\(-3d^2\)</span> by (1). If <span class="math" data-tex="\(\mathcal O_K/M\)">\(\mathcal O_K/M\)</span> had nontrivial index, its primes would divide the index of the contained power order. All primes except <span class="math" data-tex="\(3\)">\(3\)</span> have already been excluded. But <span class="math" data-tex="\(-3d^2\)">\(-3d^2\)</span> has exactly one factor of <span class="math" data-tex="\(3\)">\(3\)</span>, so (2) excludes <span class="math" data-tex="\(3\)">\(3\)</span> as well. Therefore <span class="math" data-tex="\((1,\alpha,\omega)\)">\((1,\alpha,\omega)\)</span> is an integral basis. In these exceptional cases the power order has index exactly <span class="math" data-tex="\(3\)">\(3\)</span> and the field discriminant is <span class="math" data-tex="\(-3d^2\)">\(-3d^2\)</span>; in all other cases the field discriminant is <span class="math" data-tex="\(-27d^2\)">\(-27d^2\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne ANT]</strong> J. S. Milne, <em>Algebraic Number Theory</em>, version 3.08, 2020, Chapter II. <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Author's lecture notes</a>.</li>
+<li><strong>[Hecke 1923]</strong> Erich Hecke, <a href="https://archive.org/details/vorlesungenber00heckuoft"><em>Vorlesungen über die Theorie der algebraischen Zahlen</em></a>, 1923, Chapter V, §22, pp. 80–83, especially Satz 64, for the historical integral-basis context. The complete arguments are supplied here.</li>
+<li><strong>[Stacks]</strong> <em>The Stacks Project</em>, “Discriminants and Differents,” especially <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/discriminant.html#discriminant-section-discriminant">Tag 0BVH</a>, with the algebra and field-theory tags cited above. The <a href="https://stacks.math.columbia.edu/">official Stacks project</a> is the upstream work. The AI Integrated Stacks Project is an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks project's maintainers; the tag links lead to its English reader. The determinant construction in Tag 0BVH extends to finite locally free algebras over general bases.</li>
+</ul>
+</article><nav><a href="src/discriminants-and-integral-bases.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

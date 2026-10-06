@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Norms of ideals, the ideal class group, and modules over Dedekind domains · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="norms-of-ideals-the-ideal-class-group-and-modules-over-dedekind-domains">Norms of ideals, the ideal class group, and modules over Dedekind domains</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>An ideal has two kinds of information: the size of its quotient and its obstruction to being principal. These become the ideal norm and the ideal class. The same ideal class also measures whether a module that has a basis at every prime has one basis over the whole ring.</p>
+<h2 id="what-this-lesson-assumes">What this lesson assumes</h2>
+<p>We use the finite freeness of the ring of integers over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, the determinant definition of the field norm, and the lattice index formula from <a href="discriminants-and-integral-bases.html"><em>Discriminants and integral bases</em></a>. We use unique factorization and invertibility of nonzero fractional ideals, localization at a prime, and the Chinese remainder theorem from <a href="discrete-valuation-rings-and-dedekind-domains.html"><em>Discrete valuation rings and Dedekind domains</em></a>. In particular, localization at a nonzero prime is a discrete valuation ring.</p>
+<p>For the general module statements, <span class="math" data-tex="\(A\)">\(A\)</span> is a Dedekind domain and <span class="math" data-tex="\(F=\operatorname{Frac}(A)\)">\(F=\operatorname{Frac}(A)\)</span>. A fractional ideal always means a nonzero finitely generated <span class="math" data-tex="\(A\)">\(A\)</span>-submodule of <span class="math" data-tex="\(F\)">\(F\)</span> with a nonzero common denominator. Our preceding lesson excludes fields from the name Dedekind domain. If that name is taken to include fields, all statements below still hold: the only fractional ideal is <span class="math" data-tex="\(A\)">\(A\)</span>, the class group is trivial, and finitely generated modules are finite dimensional vector spaces. We treat rank zero explicitly.</p>
+<p>The freely accessible sources are [Milne ANT] and [Stacks]. We give full proofs of the module results, including the torsion classification.</p>
+<h2 id="counting-residue-classes">Counting residue classes</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field and <span class="math" data-tex="\(A=\mathcal O_K\)">\(A=\mathcal O_K\)</span>. For a nonzero integral ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span>, its <strong>absolute norm</strong> is
+<span class="math math-display" data-tex="\[
+N\mathfrak a=\#(A/\mathfrak a).
+\]">\[
+N\mathfrak a=\#(A/\mathfrak a).
+\]</span>
+This is finite. Indeed, choose <span class="math" data-tex="\(0\ne x\in\mathfrak a\)">\(0\ne x\in\mathfrak a\)</span>. Its monic minimal polynomial over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> has coefficients in <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> and a nonzero constant term <span class="math" data-tex="\(c\)">\(c\)</span>. The equation shows that <span class="math" data-tex="\(c\in xA\subseteq\mathfrak a\)">\(c\in xA\subseteq\mathfrak a\)</span>. Thus <span class="math" data-tex="\(A/\mathfrak a\)">\(A/\mathfrak a\)</span> is a quotient of the finite abelian group <span class="math" data-tex="\(A/cA\)">\(A/cA\)</span>.</p>
+<p>The norm of the unit ideal is <span class="math" data-tex="\(1\)">\(1\)</span>. For integral ideals, <span class="math" data-tex="\(N\mathfrak a=1\)">\(N\mathfrak a=1\)</span> therefore holds exactly when <span class="math" data-tex="\(\mathfrak a=A\)">\(\mathfrak a=A\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> For nonzero integral ideals <span class="math" data-tex="\(\mathfrak a,\mathfrak b\)">\(\mathfrak a,\mathfrak b\)</span> of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>,
+<span class="math math-display" data-tex="\[
+N(\mathfrak a\mathfrak b)=N\mathfrak a\,N\mathfrak b.
+\]">\[
+N(\mathfrak a\mathfrak b)=N\mathfrak a\,N\mathfrak b.
+\]</span>
+For every <span class="math" data-tex="\(0\ne\alpha\in\mathcal O_K\)">\(0\ne\alpha\in\mathcal O_K\)</span>,
+<span class="math math-display" data-tex="\[
+N(\alpha\mathcal O_K)=|N_{K/\mathbf Q}(\alpha)|.
+\]">\[
+N(\alpha\mathcal O_K)=|N_{K/\mathbf Q}(\alpha)|.
+\]</span>
+There is a unique multiplicative extension of the ideal norm to all nonzero fractional ideals, with values in <span class="math" data-tex="\(\mathbf Q_{&gt;0}\)">\(\mathbf Q_{&gt;0}\)</span>. The principal-ideal formula then holds for every <span class="math" data-tex="\(0\ne\alpha\in K\)">\(0\ne\alpha\in K\)</span>.</p>
+<p><strong>Proof.</strong> Fix a nonzero prime ideal <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. For <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, the module
+<span class="math math-display" data-tex="\[
+\mathfrak p^j/\mathfrak p^{j+1}
+\]">\[
+\mathfrak p^j/\mathfrak p^{j+1}
+\]</span>
+is killed by <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, so it is an <span class="math" data-tex="\(A/\mathfrak p\)">\(A/\mathfrak p\)</span>-vector space. Every element of <span class="math" data-tex="\(A\setminus\mathfrak p\)">\(A\setminus\mathfrak p\)</span> acts invertibly on it: its residue in <span class="math" data-tex="\(A/\mathfrak p\)">\(A/\mathfrak p\)</span> is nonzero. Hence localizing this module at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> does not change it. In the discrete valuation ring <span class="math" data-tex="\(R=A_{\mathfrak p}\)">\(R=A_{\mathfrak p}\)</span>, with a uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, its localization is
+<span class="math math-display" data-tex="\[
+\pi^jR/\pi^{j+1}R\cong R/\pi R\cong A/\mathfrak p.
+\]">\[
+\pi^jR/\pi^{j+1}R\cong R/\pi R\cong A/\mathfrak p.
+\]</span>
+Consequently each successive quotient has exactly <span class="math" data-tex="\(N\mathfrak p\)">\(N\mathfrak p\)</span> elements. The filtration of <span class="math" data-tex="\(A/\mathfrak p^e\)">\(A/\mathfrak p^e\)</span> by these <span class="math" data-tex="\(e\)">\(e\)</span> quotients gives
+<span class="math math-display" data-tex="\[
+N(\mathfrak p^e)=(N\mathfrak p)^e.
+\]">\[
+N(\mathfrak p^e)=(N\mathfrak p)^e.
+\]</span>
+For <span class="math" data-tex="\(\mathfrak a=\prod_{\mathfrak p}\mathfrak p^{e_{\mathfrak p}}\)">\(\mathfrak a=\prod_{\mathfrak p}\mathfrak p^{e_{\mathfrak p}}\)</span>, the Chinese remainder theorem gives a product of the quotients <span class="math" data-tex="\(A/\mathfrak p^{e_{\mathfrak p}}\)">\(A/\mathfrak p^{e_{\mathfrak p}}\)</span>. Thus
+<span class="math math-display" data-tex="\[
+N\mathfrak a=\prod_{\mathfrak p}(N\mathfrak p)^{e_{\mathfrak p}}. \tag{1}
+\]">\[
+N\mathfrak a=\prod_{\mathfrak p}(N\mathfrak p)^{e_{\mathfrak p}}. \tag{1}
+\]</span>
+Adding prime exponents proves multiplicativity.</p>
+<p>Choose an integral basis of <span class="math" data-tex="\(A\)">\(A\)</span> over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. Multiplication by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has an integer matrix in that basis; its image is <span class="math" data-tex="\(\alpha A\)">\(\alpha A\)</span>. Since <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, the matrix is nonsingular over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. The lattice index formula says that its image has index equal to the absolute value of its determinant. This determinant is <span class="math" data-tex="\(N_{K/\mathbf Q}(\alpha)\)">\(N_{K/\mathbf Q}(\alpha)\)</span>, proving the second assertion.</p>
+<p>Every fractional ideal has a unique factorization with integer, possibly negative, exponents. Formula (1) with these exponents defines the claimed extension. Any multiplicative extension must take these values, since inverses have reciprocal norms. Alternatively, if <span class="math" data-tex="\(0\ne d\in A\)">\(0\ne d\in A\)</span> and <span class="math" data-tex="\(d\mathfrak a\subseteq A\)">\(d\mathfrak a\subseteq A\)</span>, then
+<span class="math math-display" data-tex="\[
+N\mathfrak a=\frac{N(d\mathfrak a)}{|N_{K/\mathbf Q}(d)|}.
+\]">\[
+N\mathfrak a=\frac{N(d\mathfrak a)}{|N_{K/\mathbf Q}(d)|}.
+\]</span>
+For <span class="math" data-tex="\(\alpha\in K^\times\)">\(\alpha\in K^\times\)</span>, choose a nonzero rational integer <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(d\alpha\in A\)">\(d\alpha\in A\)</span>. Applying the integral formula to <span class="math" data-tex="\(d\alpha\)">\(d\alpha\)</span> and <span class="math" data-tex="\(d\)">\(d\)</span>, and using multiplicativity of the field norm, proves the fractional principal-ideal formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(\mathfrak b\subseteq\mathfrak a\)">\(\mathfrak b\subseteq\mathfrak a\)</span> are fractional ideals, then their additive index is finite and
+<span class="math math-display" data-tex="\[
+[\mathfrak a:\mathfrak b]
+=\frac{N\mathfrak b}{N\mathfrak a}
+=N(\mathfrak a^{-1}\mathfrak b). \tag{2}
+\]">\[
+[\mathfrak a:\mathfrak b]
+=\frac{N\mathfrak b}{N\mathfrak a}
+=N(\mathfrak a^{-1}\mathfrak b). \tag{2}
+\]</span>
+To prove this, multiply both ideals by a common nonzero integer so they are integral. Indices are unchanged by this multiplication. Now use
+<span class="math" data-tex="\([A:\mathfrak b]=[A:\mathfrak a][\mathfrak a:\mathfrak b]\)">\([A:\mathfrak b]=[A:\mathfrak a][\mathfrak a:\mathfrak b]\)</span> and Proposition 4.1.</p>
+<p>In particular, if <span class="math" data-tex="\(0\ne\alpha\in\mathfrak a\)">\(0\ne\alpha\in\mathfrak a\)</span>, then
+<span class="math math-display" data-tex="\[
+\mathfrak a=(\alpha)
+\quad\Longleftrightarrow\quad
+N\mathfrak a=|N_{K/\mathbf Q}(\alpha)|. \tag{3}
+\]">\[
+\mathfrak a=(\alpha)
+\quad\Longleftrightarrow\quad
+N\mathfrak a=|N_{K/\mathbf Q}(\alpha)|. \tag{3}
+\]</span>
+Here membership is essential: the equality of two numbers alone does not identify their ideals.</p>
+<p>Fractional ideals of norm <span class="math" data-tex="\(1\)">\(1\)</span> need not be the unit ideal. In <span class="math" data-tex="\(K=\mathbf Q(\sqrt{-5})\)">\(K=\mathbf Q(\sqrt{-5})\)</span>, the element <span class="math" data-tex="\((2+\sqrt{-5})/3\)">\((2+\sqrt{-5})/3\)</span> has field norm <span class="math" data-tex="\(1\)">\(1\)</span> and is not integral. Its principal fractional ideal has norm <span class="math" data-tex="\(1\)">\(1\)</span>, but is not <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="the-class-of-an-ideal">The class of an ideal</h2>
+<p>The nonzero fractional ideals of a Dedekind domain <span class="math" data-tex="\(A\)">\(A\)</span> form an abelian group <span class="math" data-tex="\(\mathcal I(A)\)">\(\mathcal I(A)\)</span> under multiplication. Its identity is <span class="math" data-tex="\(A\)">\(A\)</span>; its inverses are the ideal inverses established in the previous lesson. The principal fractional ideals form a subgroup
+<span class="math math-display" data-tex="\[
+\mathcal P(A)=\{aA\mid a\in F^\times\}.
+\]">\[
+\mathcal P(A)=\{aA\mid a\in F^\times\}.
+\]</span>
+The <strong>ideal class group</strong> is
+<span class="math math-display" data-tex="\[
+\operatorname{Cl}(A)=\mathcal I(A)/\mathcal P(A).
+\]">\[
+\operatorname{Cl}(A)=\mathcal I(A)/\mathcal P(A).
+\]</span>
+We write <span class="math" data-tex="\([I]\)">\([I]\)</span> for the class of <span class="math" data-tex="\(I\)">\(I\)</span>, so <span class="math" data-tex="\([I][J]=[IJ]\)">\([I][J]=[IJ]\)</span>. For <span class="math" data-tex="\(A=\mathcal O_K\)">\(A=\mathcal O_K\)</span>, write <span class="math" data-tex="\(\operatorname{Cl}_K\)">\(\operatorname{Cl}_K\)</span>. Its order, when finite, is the <strong>class number</strong> <span class="math" data-tex="\(h_K\)">\(h_K\)</span>. Its finiteness will be proved in <em>Finiteness of the class number</em>.</p>
+<p>The class group is trivial exactly when every fractional ideal is principal, equivalently when <span class="math" data-tex="\(A\)">\(A\)</span> is a principal ideal domain. This follows directly from the quotient definition and from clearing denominators of fractional ideals. The preceding lesson also proves the equivalence with unique factorization of elements.</p>
+<p>The numerical norm does not give a function on ideal classes. Multiplying <span class="math" data-tex="\(I\)">\(I\)</span> by <span class="math" data-tex="\(aA\)">\(aA\)</span> keeps its class and multiplies its norm by <span class="math" data-tex="\(|N_{K/\mathbf Q}(a)|\)">\(|N_{K/\mathbf Q}(a)|\)</span>.</p>
+<h3 id="an-ideal-with-no-generator-of-the-required-norm">An ideal with no generator of the required norm</h3>
+<p>Put <span class="math" data-tex="\(s=\sqrt{-5}\)">\(s=\sqrt{-5}\)</span> and <span class="math" data-tex="\(A=\mathbf Z[s]\)">\(A=\mathbf Z[s]\)</span>. The map
+<span class="math math-display" data-tex="\[
+A\longrightarrow\mathbf F_2,\qquad a+bs\longmapsto a+b
+\]">\[
+A\longrightarrow\mathbf F_2,\qquad a+bs\longmapsto a+b
+\]</span>
+has kernel <span class="math" data-tex="\(\mathfrak p=(2,1+s)\)">\(\mathfrak p=(2,1+s)\)</span>, so <span class="math" data-tex="\(N\mathfrak p=2\)">\(N\mathfrak p=2\)</span>. A generator <span class="math" data-tex="\(\alpha=a+bs\)">\(\alpha=a+bs\)</span> would have norm <span class="math" data-tex="\(a^2+5b^2=2\)">\(a^2+5b^2=2\)</span>. If <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, that norm is at least <span class="math" data-tex="\(5\)">\(5\)</span>; if <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, it is a square. No such generator exists.</p>
+<p>We know from the previous lesson that <span class="math" data-tex="\(\mathfrak p^2=(2)\)">\(\mathfrak p^2=(2)\)</span>. Thus <span class="math" data-tex="\([\mathfrak p]\)">\([\mathfrak p]\)</span> has order exactly <span class="math" data-tex="\(2\)">\(2\)</span>. This does not yet determine the order of the entire class group.</p>
+<h2 id="why-ideals-are-projective">Why ideals are projective</h2>
+<p>We will use a finiteness consequence of Noetherianity. Every submodule of <span class="math" data-tex="\(A^m\)">\(A^m\)</span> is finitely generated: induct on <span class="math" data-tex="\(m\)">\(m\)</span>, project a submodule to the last coordinate, choose finitely many lifts of generators of the resulting ideal, and combine them with generators of the kernel, a submodule of <span class="math" data-tex="\(A^{m-1}\)">\(A^{m-1}\)</span>. Every finitely generated module is a quotient of some <span class="math" data-tex="\(A^m\)">\(A^m\)</span>. The inverse image of a submodule is therefore finitely generated, and its image generates the submodule. Thus submodules of finitely generated <span class="math" data-tex="\(A\)">\(A\)</span>-modules are finitely generated.</p>
+<p>An <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(P\)">\(P\)</span> is <strong>projective</strong> if a map from <span class="math" data-tex="\(P\)">\(P\)</span> to a quotient module can always be lifted to the module being quotiented. A direct summand of a free module is projective: lift the map on the free module by lifting each basis vector, and then restrict to the summand. Conversely, for a finitely generated projective module, a surjection from a finite free module splits by lifting its identity. Thus, in the finitely generated case, projective means a direct summand of a finite free module.</p>
+<p>Every fractional ideal <span class="math" data-tex="\(I\)">\(I\)</span> is projective. To see this without a local-to-global projectivity theorem, use <span class="math" data-tex="\(II^{-1}=A\)">\(II^{-1}=A\)</span>. There are finitely many <span class="math" data-tex="\(x_i\in I\)">\(x_i\in I\)</span>, <span class="math" data-tex="\(y_i\in I^{-1}\)">\(y_i\in I^{-1}\)</span> such that
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^m x_i y_i=1.
+\]">\[
+\sum_{i=1}^m x_i y_i=1.
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+q:A^m\longrightarrow I,\quad (a_i)\longmapsto\sum_i a_i x_i,
+\qquad
+j:I\longrightarrow A^m,\quad z\longmapsto(y_i z)_i.
+\]">\[
+q:A^m\longrightarrow I,\quad (a_i)\longmapsto\sum_i a_i x_i,
+\qquad
+j:I\longrightarrow A^m,\quad z\longmapsto(y_i z)_i.
+\]</span>
+All <span class="math" data-tex="\(y_i z\)">\(y_i z\)</span> belong to <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(qj=\operatorname{id}_I\)">\(qj=\operatorname{id}_I\)</span>. Hence <span class="math" data-tex="\(I\)">\(I\)</span> is a direct summand of <span class="math" data-tex="\(A^m\)">\(A^m\)</span>.</p>
+<p>For a finitely generated module <span class="math" data-tex="\(M\)">\(M\)</span>, its <strong>rank</strong> is
+<span class="math math-display" data-tex="\[
+\operatorname{rank}_A M=\dim_F(F\otimes_A M).
+\]">\[
+\operatorname{rank}_A M=\dim_F(F\otimes_A M).
+\]</span>
+If <span class="math" data-tex="\(M\)">\(M\)</span> is torsion-free, the map <span class="math" data-tex="\(M\to F\otimes_A M\)">\(M\to F\otimes_A M\)</span> is injective: an element that becomes zero is annihilated by some nonzero element of <span class="math" data-tex="\(A\)">\(A\)</span>. A torsion-free module of rank zero is therefore zero.</p>
+<p><strong>Lemma.</strong> Every finitely generated torsion-free <span class="math" data-tex="\(A\)">\(A\)</span>-module of positive rank is a direct sum of fractional ideals. In particular, it is projective.</p>
+<p><strong>Proof.</strong> View <span class="math" data-tex="\(M\)">\(M\)</span> inside its finite dimensional <span class="math" data-tex="\(F\)">\(F\)</span>-vector space. Choose an <span class="math" data-tex="\(F\)">\(F\)</span>-linear functional <span class="math" data-tex="\(\ell:F\otimes_A M\to F\)">\(\ell:F\otimes_A M\to F\)</span> that is nonzero on <span class="math" data-tex="\(M\)">\(M\)</span>. Its image <span class="math" data-tex="\(I=\ell(M)\)">\(I=\ell(M)\)</span> is a fractional ideal: it is nonzero and finitely generated, and finitely many elements of <span class="math" data-tex="\(F\)">\(F\)</span> have a common denominator. The exact sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow M_1\longrightarrow M\overset{\ell}{\longrightarrow}I\longrightarrow0
+\]">\[
+0\longrightarrow M_1\longrightarrow M\overset{\ell}{\longrightarrow}I\longrightarrow0
+\]</span>
+splits because <span class="math" data-tex="\(I\)">\(I\)</span> is projective. The kernel <span class="math" data-tex="\(M_1\)">\(M_1\)</span> is finitely generated because <span class="math" data-tex="\(A\)">\(A\)</span> is Noetherian, and is torsion-free. After tensoring with <span class="math" data-tex="\(F\)">\(F\)</span>, the functional is surjective, so its kernel has rank one less than <span class="math" data-tex="\(M\)">\(M\)</span>. Induction on rank, with the rank-zero case just proved, gives
+<span class="math math-display" data-tex="\[
+M\cong I_1\oplus\cdots\oplus I_r.
+\]">\[
+M\cong I_1\oplus\cdots\oplus I_r.
+\]</span>
+A finite direct sum of projective modules is projective, by lifting the maps on each summand. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof uses the decreasing rank to terminate. It does not require a principal ideal domain or an assumed global basis.</p>
+<h2 id="combining-two-ideal-summands">Combining two ideal summands</h2>
+<p><strong>Proposition 4.2.</strong> For fractional ideals <span class="math" data-tex="\(I,J\)">\(I,J\)</span> of a Dedekind domain,
+<span class="math math-display" data-tex="\[
+I\oplus J\cong A\oplus IJ
+\]">\[
+I\oplus J\cong A\oplus IJ
+\]</span>
+as <span class="math" data-tex="\(A\)">\(A\)</span>-modules.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(I,J\)">\(I,J\)</span> are integral and <span class="math" data-tex="\(I+J=A\)">\(I+J=A\)</span>. Choose <span class="math" data-tex="\(u\in I\)">\(u\in I\)</span>, <span class="math" data-tex="\(v\in J\)">\(v\in J\)</span> with <span class="math" data-tex="\(u+v=1\)">\(u+v=1\)</span>. Comaximality gives <span class="math" data-tex="\(I\cap J=IJ\)">\(I\cap J=IJ\)</span>. The following formulas are inverse <span class="math" data-tex="\(A\)">\(A\)</span>-linear maps:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I\oplus J&amp;\longrightarrow A\oplus IJ,
+&amp; (x,y)&amp;\longmapsto(x+y,vx-uy),\\
+A\oplus IJ&amp;\longrightarrow I\oplus J,
+&amp; (a,z)&amp;\longmapsto(ua+z,va-z).
+\end{aligned} \tag{4}
+\]">\[
+\begin{aligned}
+I\oplus J&amp;\longrightarrow A\oplus IJ,
+&amp; (x,y)&amp;\longmapsto(x+y,vx-uy),\\
+A\oplus IJ&amp;\longrightarrow I\oplus J,
+&amp; (a,z)&amp;\longmapsto(ua+z,va-z).
+\end{aligned} \tag{4}
+\]</span>
+The second coordinates and both components of the inverse lie in the stated ideals. Substitution, using <span class="math" data-tex="\(u+v=1\)">\(u+v=1\)</span>, verifies both compositions.</p>
+<p>We next reduce arbitrary <span class="math" data-tex="\(I,J\)">\(I,J\)</span> to this case. Multiplying <span class="math" data-tex="\(I\)">\(I\)</span> by a nonzero scalar makes it integral. Let <span class="math" data-tex="\(S\)">\(S\)</span> be its finite set of prime divisors. We can multiply <span class="math" data-tex="\(J\)">\(J\)</span> by a scalar <span class="math" data-tex="\(t\in F^\times\)">\(t\in F^\times\)</span> so that <span class="math" data-tex="\(tJ\)">\(tJ\)</span> is integral and is contained in none of the primes of <span class="math" data-tex="\(S\)">\(S\)</span>. Here is the construction.</p>
+<p>For each <span class="math" data-tex="\(\mathfrak p\in S\)">\(\mathfrak p\in S\)</span>, choose a nonzero class in <span class="math" data-tex="\(J^{-1}/\mathfrak pJ^{-1}\)">\(J^{-1}/\mathfrak pJ^{-1}\)</span>. Such a class exists: after localization this quotient is a one dimensional <span class="math" data-tex="\(A/\mathfrak p\)">\(A/\mathfrak p\)</span>-vector space. The module version of the Chinese remainder theorem allows one <span class="math" data-tex="\(t\in J^{-1}\)">\(t\in J^{-1}\)</span> having all these prescribed classes. Indeed, the congruence idempotents used for rings also give, by multiplication, surjectivity for any module. If <span class="math" data-tex="\(S\)">\(S\)</span> is empty, choose any nonzero <span class="math" data-tex="\(t\in J^{-1}\)">\(t\in J^{-1}\)</span>. Otherwise the nonzero prescribed classes ensure <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>.</p>
+<p>We have <span class="math" data-tex="\(tJ\subseteq A\)">\(tJ\subseteq A\)</span>. Moreover,
+<span class="math math-display" data-tex="\[
+tJ\subseteq\mathfrak p
+\quad\Longleftrightarrow\quad
+t\in\mathfrak pJ^{-1},
+\]">\[
+tJ\subseteq\mathfrak p
+\quad\Longleftrightarrow\quad
+t\in\mathfrak pJ^{-1},
+\]</span>
+by multiplying either inclusion by the inverse ideal. Our choice excludes this for all <span class="math" data-tex="\(\mathfrak p\in S\)">\(\mathfrak p\in S\)</span>. A maximal ideal containing both <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(tJ\)">\(tJ\)</span> would lie in <span class="math" data-tex="\(S\)">\(S\)</span>, which is impossible. Thus <span class="math" data-tex="\(I+tJ=A\)">\(I+tJ=A\)</span>.</p>
+<p>Apply (4) to the scaled ideals. Multiplication by any nonzero scalar gives an isomorphism from an ideal to its scaled ideal, and scales their product by the product of the scalars. Undoing these isomorphisms proves the assertion for the original <span class="math" data-tex="\(I,J\)">\(I,J\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This reduction only chooses representatives of ideal classes. It does not assert that the original <span class="math" data-tex="\(I,J\)">\(I,J\)</span> are comaximal.</p>
+<h2 id="the-steinitz-class-and-the-complete-module-classification">The Steinitz class and the complete module classification</h2>
+<p><strong>Theorem 4.3.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a finitely generated torsion-free module over a Dedekind domain <span class="math" data-tex="\(A\)">\(A\)</span>. If its rank is zero, then <span class="math" data-tex="\(M=0\)">\(M=0\)</span>. If its rank is <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, then
+<span class="math math-display" data-tex="\[
+M\cong A^{r-1}\oplus I \tag{5}
+\]">\[
+M\cong A^{r-1}\oplus I \tag{5}
+\]</span>
+for a fractional ideal <span class="math" data-tex="\(I\)">\(I\)</span>. The class <span class="math" data-tex="\([I]\in\operatorname{Cl}(A)\)">\([I]\in\operatorname{Cl}(A)\)</span> depends only on the isomorphism class of <span class="math" data-tex="\(M\)">\(M\)</span>. Two such modules of positive rank are isomorphic exactly when their ranks and these ideal classes agree. The module in (5) is free exactly when <span class="math" data-tex="\([I]=1\)">\([I]=1\)</span>.</p>
+<p><strong>Proof.</strong> The preceding lemma writes <span class="math" data-tex="\(M\cong I_1\oplus\cdots\oplus I_r\)">\(M\cong I_1\oplus\cdots\oplus I_r\)</span>. Repeated application of Proposition 4.2 gives (5) with <span class="math" data-tex="\(I=I_1\cdots I_r\)">\(I=I_1\cdots I_r\)</span>. It remains to prove invariance, rather than infer it from a chosen decomposition.</p>
+<p>For any module <span class="math" data-tex="\(P\)">\(P\)</span>, define its <span class="math" data-tex="\(r\)">\(r\)</span>-th exterior power <span class="math" data-tex="\(\bigwedge^r_A P\)">\(\bigwedge^r_A P\)</span> as the quotient of <span class="math" data-tex="\(P^{\otimes r}\)">\(P^{\otimes r}\)</span> imposing the alternating multilinear relations. Isomorphisms induce isomorphisms of exterior powers, and localization commutes with this construction, since it commutes with tensors and quotients.</p>
+<p>Multiplication induces an isomorphism <span class="math" data-tex="\(I_1\otimes_A\cdots\otimes_A I_r\to I_1\cdots I_r\)">\(I_1\otimes_A\cdots\otimes_A I_r\to I_1\cdots I_r\)</span>. To justify injectivity as well as surjectivity, localize at every maximal ideal. Each fractional ideal is then generated by one nonzero element, so multiplication becomes an isomorphism between free modules of rank one. A module whose localizations at all maximal ideals vanish is zero: for a nonzero element <span class="math" data-tex="\(x\)">\(x\)</span>, its proper annihilator lies in a maximal ideal <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, and <span class="math" data-tex="\(x/1=0\)">\(x/1=0\)</span> there would give an element outside <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> annihilating <span class="math" data-tex="\(x\)">\(x\)</span>, a contradiction. Apply this observation to the kernel and cokernel.</p>
+<p>The alternating map taking one element from each summand likewise gives
+<span class="math math-display" data-tex="\[
+\bigwedge^r_A(I_1\oplus\cdots\oplus I_r)
+\cong I_1\otimes_A\cdots\otimes_A I_r
+\cong I_1\cdots I_r. \tag{6}
+\]">\[
+\bigwedge^r_A(I_1\oplus\cdots\oplus I_r)
+\cong I_1\otimes_A\cdots\otimes_A I_r
+\cong I_1\cdots I_r. \tag{6}
+\]</span>
+The first map is an isomorphism locally, where it is the usual determinant map for a free module of rank <span class="math" data-tex="\(r\)">\(r\)</span>; the same kernel-and-cokernel argument proves it globally.</p>
+<p>The localization argument uses exactness, which can be checked directly with fractions. If <span class="math" data-tex="\(f(x)/s=0\)">\(f(x)/s=0\)</span>, some allowed denominator <span class="math" data-tex="\(t\)">\(t\)</span> satisfies <span class="math" data-tex="\(tf(x)=0\)">\(tf(x)=0\)</span>; then <span class="math" data-tex="\(tx\)">\(tx\)</span> is in the kernel and <span class="math" data-tex="\(x/s=(tx)/(ts)\)">\(x/s=(tx)/(ts)\)</span>. This identifies the localized kernel with the kernel of the localized map. The localized cokernel is the quotient by the localized image, again directly from fractions.</p>
+<p>Finally, two fractional ideals are isomorphic as <span class="math" data-tex="\(A\)">\(A\)</span>-modules exactly when they differ by a nonzero scalar. An isomorphism <span class="math" data-tex="\(I\to J\)">\(I\to J\)</span>, after tensoring with <span class="math" data-tex="\(F\)">\(F\)</span>, is an <span class="math" data-tex="\(F\)">\(F\)</span>-linear automorphism of the one dimensional vector space <span class="math" data-tex="\(F\)">\(F\)</span>, hence multiplication by a scalar <span class="math" data-tex="\(a\in F^\times\)">\(a\in F^\times\)</span>. Its restriction has image <span class="math" data-tex="\(aI=J\)">\(aI=J\)</span>. The converse is immediate.</p>
+<p>Thus <span class="math" data-tex="\(\bigwedge^r M\)">\(\bigwedge^r M\)</span> determines the class of the product ideal in (6), and hence the class in (5). Equal rank and equal class give isomorphisms of the displayed modules; unequal ranks or classes cannot. For a free rank-<span class="math" data-tex="\(r\)">\(r\)</span> module, the exterior power is <span class="math" data-tex="\(A\)">\(A\)</span>, so freeness forces <span class="math" data-tex="\([I]=1\)">\([I]=1\)</span>. Conversely a principal <span class="math" data-tex="\(I\)">\(I\)</span> is isomorphic to <span class="math" data-tex="\(A\)">\(A\)</span>, making (5) free. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The class in this theorem is the <strong>Steinitz class</strong> of <span class="math" data-tex="\(M\)">\(M\)</span>. For rank zero, we may assign the trivial class by the convention <span class="math" data-tex="\(\bigwedge^0 0=A\)">\(\bigwedge^0 0=A\)</span>; formula (5) is only used for positive rank.</p>
+<h3 id="torsion-modules">Torsion modules</h3>
+<p><strong>Torsion classification.</strong> Every finitely generated torsion <span class="math" data-tex="\(A\)">\(A\)</span>-module is a finite direct sum of modules
+<span class="math math-display" data-tex="\[
+A/\mathfrak p^e,\qquad \mathfrak p\ne(0),\quad e\geq1.
+\]">\[
+A/\mathfrak p^e,\qquad \mathfrak p\ne(0),\quad e\geq1.
+\]</span>
+For each prime, the multiset of exponents is uniquely determined.</p>
+<p><strong>Proof.</strong> A nonzero element <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> kills the module <span class="math" data-tex="\(T\)">\(T\)</span>: take a product of annihilators of a finite generating set. Factor <span class="math" data-tex="\((a)=\prod_{\mathfrak p\in S}\mathfrak p^{n_{\mathfrak p}}\)">\((a)=\prod_{\mathfrak p\in S}\mathfrak p^{n_{\mathfrak p}}\)</span>. The Chinese remainder idempotents split
+<span class="math math-display" data-tex="\[
+T=\bigoplus_{\mathfrak p\in S}T_{\mathfrak p},
+\]">\[
+T=\bigoplus_{\mathfrak p\in S}T_{\mathfrak p},
+\]</span>
+where the indicated summand is killed by <span class="math" data-tex="\(\mathfrak p^{n_{\mathfrak p}}\)">\(\mathfrak p^{n_{\mathfrak p}}\)</span>. This summand is unchanged by localization at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. For <span class="math" data-tex="\(s\notin\mathfrak p\)">\(s\notin\mathfrak p\)</span>, the ideals <span class="math" data-tex="\((s)\)">\((s)\)</span> and <span class="math" data-tex="\(\mathfrak p^{n_{\mathfrak p}}\)">\(\mathfrak p^{n_{\mathfrak p}}\)</span> are comaximal, so some <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span> satisfies <span class="math" data-tex="\(bs\equiv1\)">\(bs\equiv1\)</span> modulo that prime power; multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> is the inverse of multiplication by <span class="math" data-tex="\(s\)">\(s\)</span> on the summand.</p>
+<p>Write <span class="math" data-tex="\(R=A_{\mathfrak p}\)">\(R=A_{\mathfrak p}\)</span>, a discrete valuation ring with uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. A finitely generated <span class="math" data-tex="\(R\)">\(R\)</span>-module has a finite presentation because <span class="math" data-tex="\(R\)">\(R\)</span> is Noetherian. Diagonalize its presentation matrix as follows. If the matrix is nonzero, move an entry of least valuation to its upper left corner. That entry divides every other entry. Elementary row operations clear its column, and elementary column operations clear its row. These operations are invertible over <span class="math" data-tex="\(R\)">\(R\)</span>; the remaining submatrix is treated in the same way. Induction on the matrix dimensions leaves a diagonal matrix. Its nonzero diagonal entries, up to units, are powers of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Since our module is torsion, there are no free summands; unit diagonal entries contribute zero summands. Its nonzero summands are therefore <span class="math" data-tex="\(R/\pi^eR\)">\(R/\pi^eR\)</span>.</p>
+<p>The localization isomorphism <span class="math" data-tex="\(A/\mathfrak p^e\cong R/\pi^eR\)">\(A/\mathfrak p^e\cong R/\pi^eR\)</span>, proved in the preceding lesson, identifies these with the required <span class="math" data-tex="\(A\)">\(A\)</span>-modules.</p>
+<p>To see uniqueness, for each <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span> compute
+<span class="math math-display" data-tex="\[
+d_{\mathfrak p,k}
+=\dim_{A/\mathfrak p}\!
+ \left(\mathfrak p^{k-1}T_{\mathfrak p}/\mathfrak p^kT_{\mathfrak p}\right).
+\]">\[
+d_{\mathfrak p,k}
+=\dim_{A/\mathfrak p}\!
+ \left(\mathfrak p^{k-1}T_{\mathfrak p}/\mathfrak p^kT_{\mathfrak p}\right).
+\]</span>
+A summand <span class="math" data-tex="\(A/\mathfrak p^e\)">\(A/\mathfrak p^e\)</span> contributes <span class="math" data-tex="\(1\)">\(1\)</span> exactly when <span class="math" data-tex="\(e\geq k\)">\(e\geq k\)</span>. Hence the number of summands with exponent exactly <span class="math" data-tex="\(k\)">\(k\)</span> is
+<span class="math" data-tex="\(d_{\mathfrak p,k}-d_{\mathfrak p,k+1}\)">\(d_{\mathfrak p,k}-d_{\mathfrak p,k+1}\)</span>, an invariant of <span class="math" data-tex="\(T\)">\(T\)</span>. The primary summands themselves are intrinsic: they consist of the elements killed by some power of the corresponding prime. This proves uniqueness across primes as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an arbitrary finitely generated <span class="math" data-tex="\(M\)">\(M\)</span>, its torsion submodule <span class="math" data-tex="\(T\)">\(T\)</span> is finitely generated, and <span class="math" data-tex="\(M/T\)">\(M/T\)</span> is torsion-free. Indeed, if <span class="math" data-tex="\(ax\in T\)">\(ax\in T\)</span> with <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, then some nonzero <span class="math" data-tex="\(b\)">\(b\)</span> kills <span class="math" data-tex="\(ax\)">\(ax\)</span>, so <span class="math" data-tex="\(x\in T\)">\(x\in T\)</span>. The quotient is projective by Theorem 4.3, and the exact sequence splits:
+<span class="math math-display" data-tex="\[
+M\cong T\oplus(M/T).
+\]">\[
+M\cong T\oplus(M/T).
+\]</span>
+Thus the primary exponents of <span class="math" data-tex="\(T\)">\(T\)</span>, the rank of <span class="math" data-tex="\(M/T\)">\(M/T\)</span>, and its Steinitz class give the complete classification. The splitting need not be canonical, but the torsion submodule and the quotient are intrinsic.</p>
+<h3 id="determinants-and-the-index-of-a-submodule">Determinants and the index of a submodule</h3>
+<p>Let <span class="math" data-tex="\(N\subseteq M\)">\(N\subseteq M\)</span> be torsion-free finite <span class="math" data-tex="\(A\)">\(A\)</span>-modules of the same rank <span class="math" data-tex="\(r\)">\(r\)</span>. No global bases are assumed. The quotient <span class="math" data-tex="\(T=M/N\)">\(T=M/N\)</span> is finite as a module and torsion, since its localization over <span class="math" data-tex="\(F\)">\(F\)</span> vanishes. Retain its complete primary decomposition
+<span class="math math-display" data-tex="\[
+T\cong\bigoplus_{\mathfrak p}\bigoplus_j
+A/\mathfrak p^{e_{\mathfrak p,j}},\qquad e_{\mathfrak p,j}\geq1,
+\]">\[
+T\cong\bigoplus_{\mathfrak p}\bigoplus_j
+A/\mathfrak p^{e_{\mathfrak p,j}},\qquad e_{\mathfrak p,j}\geq1,
+\]</span>
+and define the <strong>determinant ideal</strong>
+<span class="math math-display" data-tex="\[
+\mathfrak d(T)=\prod_{\mathfrak p}
+\mathfrak p^{\sum_j e_{\mathfrak p,j}}.
+\]">\[
+\mathfrak d(T)=\prod_{\mathfrak p}
+\mathfrak p^{\sum_j e_{\mathfrak p,j}}.
+\]</span>
+For <span class="math" data-tex="\(T=0\)">\(T=0\)</span> the empty product is <span class="math" data-tex="\(A\)">\(A\)</span>. In the common determinant line
+<span class="math" data-tex="\(\bigwedge_F^r(F\otimes_A M)\)">\(\bigwedge_F^r(F\otimes_A M)\)</span>, one has
+<span class="math math-display" data-tex="\[
+\operatorname{im}\bigl(\bigwedge_A^r N\longrightarrow\bigwedge_A^r M\bigr)
+=\mathfrak d(T)\bigwedge_A^r M,
+\qquad
+\operatorname{St}(N)=\operatorname{St}(M)[\mathfrak d(T)].
+\]">\[
+\operatorname{im}\bigl(\bigwedge_A^r N\longrightarrow\bigwedge_A^r M\bigr)
+=\mathfrak d(T)\bigwedge_A^r M,
+\qquad
+\operatorname{St}(N)=\operatorname{St}(M)[\mathfrak d(T)].
+\]</span>
+If <span class="math" data-tex="\(A=\mathcal O_K\)">\(A=\mathcal O_K\)</span>, this also gives
+<span class="math math-display" data-tex="\[
+[M:N]=N\mathfrak d(T).
+\]">\[
+[M:N]=N\mathfrak d(T).
+\]</span>
+The cardinality assertion is specific to number rings; the determinant identity holds for arbitrary Dedekind domains.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, both modules are zero and the exterior degree-zero map is the identity of <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(A\)">\(A\)</span> is a field, equal finite dimensions imply <span class="math" data-tex="\(N=M\)">\(N=M\)</span>, and all assertions follow with <span class="math" data-tex="\(T=0\)">\(T=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> and each nonzero prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, the ideal decomposition in Theorem 4.3 makes <span class="math" data-tex="\(N_{\mathfrak p}\)">\(N_{\mathfrak p}\)</span> and <span class="math" data-tex="\(M_{\mathfrak p}\)">\(M_{\mathfrak p}\)</span> free of rank <span class="math" data-tex="\(r\)">\(r\)</span> over the DVR <span class="math" data-tex="\(A_{\mathfrak p}\)">\(A_{\mathfrak p}\)</span>. The inclusion is a square matrix invertible over <span class="math" data-tex="\(F\)">\(F\)</span>. The least-valuation elimination just proved reduces it by invertible row and column operations to diagonal entries <span class="math" data-tex="\(u_i\pi^{a_i}\)">\(u_i\pi^{a_i}\)</span>, with <span class="math" data-tex="\(u_i\)">\(u_i\)</span> units and <span class="math" data-tex="\(a_i\geq0\)">\(a_i\geq0\)</span>. No diagonal entry vanishes. Its cokernel is the sum of <span class="math" data-tex="\(A_{\mathfrak p}/\pi^{a_i}A_{\mathfrak p}\)">\(A_{\mathfrak p}/\pi^{a_i}A_{\mathfrak p}\)</span>, omitting the zero exponents. Uniqueness in the torsion classification identifies the positive <span class="math" data-tex="\(a_i\)">\(a_i\)</span> with the <span class="math" data-tex="\(e_{\mathfrak p,j}\)">\(e_{\mathfrak p,j}\)</span>.</p>
+<p>The determinant of the inclusion therefore generates
+<span class="math" data-tex="\(\pi^{\sum_j e_{\mathfrak p,j}}A_{\mathfrak p}\)">\(\pi^{\sum_j e_{\mathfrak p,j}}A_{\mathfrak p}\)</span>. Its exterior-power image is this ideal times <span class="math" data-tex="\((\bigwedge^r M)_{\mathfrak p}\)">\((\bigwedge^r M)_{\mathfrak p}\)</span>. The exterior powers embed in the common <span class="math" data-tex="\(F\)">\(F\)</span>-line: the kernel is zero after every localization, hence globally by the zero-detection argument above. Identify that line with <span class="math" data-tex="\(F\)">\(F\)</span>; equality at every maximal ideal is now the fractional-ideal equality criterion from the preceding lesson. This proves the determinant identity, with the displayed direction of the ideal class. Finally Proposition 4.1 gives
+<span class="math" data-tex="\(\#(A/\mathfrak p^e)=(N\mathfrak p)^e\)">\(\#(A/\mathfrak p^e)=(N\mathfrak p)^e\)</span> for <span class="math" data-tex="\(A=\mathcal O_K\)">\(A=\mathcal O_K\)</span>. Multiplying the sizes of every retained summand proves the index formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For rank one, <span class="math" data-tex="\(M=\mathfrak a\)">\(M=\mathfrak a\)</span>, <span class="math" data-tex="\(N=\mathfrak b\subseteq\mathfrak a\)">\(N=\mathfrak b\subseteq\mathfrak a\)</span>, the determinant ideal is <span class="math" data-tex="\(\mathfrak a^{-1}\mathfrak b\)">\(\mathfrak a^{-1}\mathfrak b\)</span>, recovering (2). For <span class="math" data-tex="\(N=cM\)">\(N=cM\)</span> with <span class="math" data-tex="\(0\ne c\in A\)">\(0\ne c\in A\)</span>, it is <span class="math" data-tex="\((c)^r\)">\((c)^r\)</span>; the number-ring index is <span class="math" data-tex="\(|N_{K/\mathbf Q}(c)|^r\)">\(|N_{K/\mathbf Q}(c)|^r\)</span>.</p>
+<p>In <span class="math" data-tex="\(A=\mathbf Z[\sqrt{-5}]\)">\(A=\mathbf Z[\sqrt{-5}]\)</span>, let <span class="math" data-tex="\(\mathfrak p=(2,1+\sqrt{-5})\)">\(\mathfrak p=(2,1+\sqrt{-5})\)</span>. For <span class="math" data-tex="\(M=A^2\)">\(M=A^2\)</span> and <span class="math" data-tex="\(N=\mathfrak p\oplus A\)">\(N=\mathfrak p\oplus A\)</span>, the quotient is <span class="math" data-tex="\(A/\mathfrak p\)">\(A/\mathfrak p\)</span>, the index is <span class="math" data-tex="\(2\)">\(2\)</span>, and the Steinitz class is the nontrivial <span class="math" data-tex="\([\mathfrak p]\)">\([\mathfrak p]\)</span>. For <span class="math" data-tex="\(N=\mathfrak p\oplus\mathfrak p\)">\(N=\mathfrak p\oplus\mathfrak p\)</span>, the quotient is <span class="math" data-tex="\((A/\mathfrak p)^2\)">\((A/\mathfrak p)^2\)</span>, the index is <span class="math" data-tex="\(4\)">\(4\)</span>, and <span class="math" data-tex="\(\mathfrak d(T)=\mathfrak p^2=(2)\)">\(\mathfrak d(T)=\mathfrak p^2=(2)\)</span>; this module is free, as the explicit isomorphism below confirms.</p>
+<p>The determinant ideal records the sum of the exponents, not their multiset. The modules <span class="math" data-tex="\(A/\mathfrak p^2\)">\(A/\mathfrak p^2\)</span> and <span class="math" data-tex="\((A/\mathfrak p)^2\)">\((A/\mathfrak p)^2\)</span> both have determinant ideal <span class="math" data-tex="\(\mathfrak p^2\)">\(\mathfrak p^2\)</span> and cardinality <span class="math" data-tex="\(4\)">\(4\)</span>, but their first residue-filtration dimensions are respectively <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>. They are not isomorphic. The complete primary exponents remain necessary.</p>
+<h3 id="projective-without-a-global-basis">Projective without a global basis</h3>
+<p>Return to <span class="math" data-tex="\(A=\mathbf Z[s]\)">\(A=\mathbf Z[s]\)</span>, <span class="math" data-tex="\(s^2=-5\)">\(s^2=-5\)</span>, and <span class="math" data-tex="\(\mathfrak p=(2,1+s)\)">\(\mathfrak p=(2,1+s)\)</span>. It is projective, but is not free. A free fractional ideal must have rank one and hence be principal.</p>
+<p>Nevertheless,
+<span class="math math-display" data-tex="\[
+\mathfrak p\oplus\mathfrak p
+\cong A\oplus\mathfrak p^2
+=A\oplus(2)
+\cong A^2.
+\]">\[
+\mathfrak p\oplus\mathfrak p
+\cong A\oplus\mathfrak p^2
+=A\oplus(2)
+\cong A^2.
+\]</span>
+Here is an explicit isomorphism, making the cancellation of the two obstructions visible:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F:\mathfrak p\oplus\mathfrak p&amp;\longrightarrow A^2,\\
+(x,y)&amp;\longmapsto
+\left(x+\frac{1+s}{2}y,\frac{1-s}{2}x+y\right),\\
+G:A^2&amp;\longrightarrow\mathfrak p\oplus\mathfrak p,\\
+(a,b)&amp;\longmapsto\bigl(-2a+(1+s)b,(1-s)a-2b\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+F:\mathfrak p\oplus\mathfrak p&amp;\longrightarrow A^2,\\
+(x,y)&amp;\longmapsto
+\left(x+\frac{1+s}{2}y,\frac{1-s}{2}x+y\right),\\
+G:A^2&amp;\longrightarrow\mathfrak p\oplus\mathfrak p,\\
+(a,b)&amp;\longmapsto\bigl(-2a+(1+s)b,(1-s)a-2b\bigr).
+\end{aligned}
+\]</span>
+The fractional coefficients in <span class="math" data-tex="\(F\)">\(F\)</span> send <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> into <span class="math" data-tex="\(A\)">\(A\)</span>: it suffices to apply them to <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(1+s\)">\(1+s\)</span>, obtaining integral elements. Both components of <span class="math" data-tex="\(G\)">\(G\)</span> lie in <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, since <span class="math" data-tex="\(1-s=(1+s)-2s\in\mathfrak p\)">\(1-s=(1+s)-2s\in\mathfrak p\)</span>. The identity <span class="math" data-tex="\((1+s)(1-s)=6\)">\((1+s)(1-s)=6\)</span> verifies <span class="math" data-tex="\(FG=GF=\operatorname{id}\)">\(FG=GF=\operatorname{id}\)</span>.</p>
+<h2 id="relative-integral-bases">Relative integral bases</h2>
+<p>Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be an extension of number fields of degree <span class="math" data-tex="\(n\)">\(n\)</span>, and put <span class="math" data-tex="\(A=\mathcal O_K\)">\(A=\mathcal O_K\)</span>, <span class="math" data-tex="\(B=\mathcal O_L\)">\(B=\mathcal O_L\)</span>. A <strong>relative integral basis</strong> is an <span class="math" data-tex="\(A\)">\(A\)</span>-basis of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Corollary 4.4.</strong> The module <span class="math" data-tex="\(B\)">\(B\)</span> is projective of rank <span class="math" data-tex="\(n\)">\(n\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>, and
+<span class="math math-display" data-tex="\[
+\mathcal O_L\cong\mathcal O_K^{\,n-1}\oplus I
+\]">\[
+\mathcal O_L\cong\mathcal O_K^{\,n-1}\oplus I
+\]</span>
+for a fractional ideal <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>. A relative integral basis exists exactly when <span class="math" data-tex="\([I]=1\)">\([I]=1\)</span> in <span class="math" data-tex="\(\operatorname{Cl}_K\)">\(\operatorname{Cl}_K\)</span>. In particular it exists if <span class="math" data-tex="\(h_K=1\)">\(h_K=1\)</span>.</p>
+<p><strong>Proof.</strong> An absolute integral basis of <span class="math" data-tex="\(B\)">\(B\)</span> generates <span class="math" data-tex="\(B\)">\(B\)</span> over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, and therefore over <span class="math" data-tex="\(A\)">\(A\)</span>: its <span class="math" data-tex="\(A\)">\(A\)</span>-span contains its <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-span and is contained in <span class="math" data-tex="\(B\)">\(B\)</span>. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is finitely generated over <span class="math" data-tex="\(A\)">\(A\)</span>. It is torsion-free because it lies in the field <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>Localizing at all nonzero elements of <span class="math" data-tex="\(A\)">\(A\)</span> identifies <span class="math" data-tex="\(K\otimes_A B\)">\(K\otimes_A B\)</span> with <span class="math" data-tex="\(L\)">\(L\)</span>. Injectivity follows from torsion-freeness. For surjectivity, every <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span> becomes an algebraic integer after multiplication by a nonzero rational integer, as in the first lesson; this integer lies in <span class="math" data-tex="\(A\)">\(A\)</span>. The rank is consequently <span class="math" data-tex="\([L:K]=n\)">\([L:K]=n\)</span>. Theorem 4.3 now proves all assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Steinitz class here is a class of the base ring <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, not of <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>. If the base class group is nontrivial, some modules have no basis; this does not assert that every extension has a nontrivial Steinitz class. When <span class="math" data-tex="\(K=\mathbf Q\)">\(K=\mathbf Q\)</span>, the result agrees with the absolute integral basis theorem.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> In <span class="math" data-tex="\(A=\mathbf Z[\sqrt{-5}]\)">\(A=\mathbf Z[\sqrt{-5}]\)</span>, compute the norm of <span class="math" data-tex="\(\mathfrak q=(3,1+\sqrt{-5})\)">\(\mathfrak q=(3,1+\sqrt{-5})\)</span>. Show that <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> is not principal.</li>
+<li><strong>Medium.</strong> Prove that a nonzero integral ideal of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> whose absolute norm is a rational prime is a prime ideal. Explain why the converse need not hold.</li>
+<li><strong>Medium.</strong> Give a splitting from a finite free module that proves a fractional ideal is projective. Use it to prove that every finitely generated torsion-free module over a Dedekind domain is projective. For <span class="math" data-tex="\(\mathfrak p=(2,1+\sqrt{-5})\)">\(\mathfrak p=(2,1+\sqrt{-5})\)</span>, give the splitting with just two generators.</li>
+<li><strong>Hard.</strong> Starting from the surjection <span class="math" data-tex="\(I\oplus J\to I+J\)">\(I\oplus J\to I+J\)</span>, construct Proposition 4.2 when <span class="math" data-tex="\(I+J=A\)">\(I+J=A\)</span>, and justify the reduction of arbitrary fractional ideals to comaximal integral ideals. State precisely how the product ideal changes when representatives are scaled.</li>
+</ol>
+<h2 id="complete-solutions">Complete solutions</h2>
+<p><strong>1.</strong> The map <span class="math" data-tex="\(a+bs\mapsto a-b\)">\(a+bs\mapsto a-b\)</span> from <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\(\mathbf F_3\)">\(\mathbf F_3\)</span> is well-defined because <span class="math" data-tex="\((-1)^2+5=6\equiv0\)">\((-1)^2+5=6\equiv0\)</span>. If <span class="math" data-tex="\(a-b\)">\(a-b\)</span> is divisible by <span class="math" data-tex="\(3\)">\(3\)</span>, then
+<span class="math math-display" data-tex="\[
+a+bs=3\frac{a-b}{3}+b(1+s),
+\]">\[
+a+bs=3\frac{a-b}{3}+b(1+s),
+\]</span>
+so its kernel is exactly <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>. It is surjective, giving <span class="math" data-tex="\(N\mathfrak q=3\)">\(N\mathfrak q=3\)</span>. A generator would solve <span class="math" data-tex="\(a^2+5b^2=3\)">\(a^2+5b^2=3\)</span>, which is impossible: <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span> gives at least <span class="math" data-tex="\(5\)">\(5\)</span>, and <span class="math" data-tex="\(b=0\)">\(b=0\)</span> gives a square.</p>
+<p><strong>2.</strong> A quotient ring <span class="math" data-tex="\(R=\mathcal O_K/\mathfrak a\)">\(R=\mathcal O_K/\mathfrak a\)</span> with <span class="math" data-tex="\(p\)">\(p\)</span> elements has additive group of order <span class="math" data-tex="\(p\)">\(p\)</span>. Its identity is nonzero, since <span class="math" data-tex="\(p&gt;1\)">\(p&gt;1\)</span>, so it additively generates <span class="math" data-tex="\(R\)">\(R\)</span>. The map <span class="math" data-tex="\(\mathbf Z\to R\)">\(\mathbf Z\to R\)</span> therefore identifies <span class="math" data-tex="\(R\)">\(R\)</span> with <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span> as a ring. Hence <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> is maximal and prime. Conversely, the residue field at a prime ideal may have <span class="math" data-tex="\(p^f\)">\(p^f\)</span> elements with <span class="math" data-tex="\(f&gt;1\)">\(f&gt;1\)</span>. For example, <span class="math" data-tex="\((3)\)">\((3)\)</span> in <span class="math" data-tex="\(\mathbf Z[i]\)">\(\mathbf Z[i]\)</span> is prime: its quotient is <span class="math" data-tex="\(\mathbf F_3[X]/(X^2+1)\)">\(\mathbf F_3[X]/(X^2+1)\)</span>, and that polynomial has no root in <span class="math" data-tex="\(\mathbf F_3\)">\(\mathbf F_3\)</span>. The quotient is a field of order <span class="math" data-tex="\(9\)">\(9\)</span>.</p>
+<p><strong>3.</strong> Choose <span class="math" data-tex="\(x_i\in I\)">\(x_i\in I\)</span>, <span class="math" data-tex="\(y_i\in I^{-1}\)">\(y_i\in I^{-1}\)</span> with <span class="math" data-tex="\(\sum x_i y_i=1\)">\(\sum x_i y_i=1\)</span>. The maps <span class="math" data-tex="\(q(a_i)=\sum a_i x_i\)">\(q(a_i)=\sum a_i x_i\)</span> and <span class="math" data-tex="\(j(z)=(y_i z)_i\)">\(j(z)=(y_i z)_i\)</span> satisfy <span class="math" data-tex="\(qj=1\)">\(qj=1\)</span>, so <span class="math" data-tex="\(I\)">\(I\)</span> is a summand of <span class="math" data-tex="\(A^m\)">\(A^m\)</span>. The torsion-free decomposition lemma expresses any finitely generated torsion-free module as a finite direct sum of such ideals; combining their finite free splittings proves projectivity.</p>
+<p>For <span class="math" data-tex="\(\mathfrak p=(2,1+s)\)">\(\mathfrak p=(2,1+s)\)</span>, take
+<span class="math math-display" data-tex="\[
+q:A^2\to\mathfrak p,\quad q(a,b)=2a+(1+s)b,
+\qquad
+j(z)=\left(-z,\frac{1-s}{2}z\right).
+\]">\[
+q:A^2\to\mathfrak p,\quad q(a,b)=2a+(1+s)b,
+\qquad
+j(z)=\left(-z,\frac{1-s}{2}z\right).
+\]</span>
+The second coordinate lies in <span class="math" data-tex="\(A\)">\(A\)</span>, as can be checked on <span class="math" data-tex="\(z=2\)">\(z=2\)</span> and <span class="math" data-tex="\(z=1+s\)">\(z=1+s\)</span>. Also
+<span class="math math-display" data-tex="\[
+qj(z)=\left(-2+\frac{(1+s)(1-s)}2\right)z=z.
+\]">\[
+qj(z)=\left(-2+\frac{(1+s)(1-s)}2\right)z=z.
+\]</span>
+This proves projectivity directly while the norm obstruction above proves that the ideal is not free.</p>
+<p><strong>4.</strong> The addition map has kernel <span class="math" data-tex="\(\{(z,-z)\mid z\in I\cap J\}\)">\(\{(z,-z)\mid z\in I\cap J\}\)</span>. When <span class="math" data-tex="\(I+J=A\)">\(I+J=A\)</span>, its target is <span class="math" data-tex="\(A\)">\(A\)</span>, the kernel is <span class="math" data-tex="\(IJ\)">\(IJ\)</span>, and a section is <span class="math" data-tex="\(a\mapsto(ua,va)\)">\(a\mapsto(ua,va)\)</span> for <span class="math" data-tex="\(u+v=1\)">\(u+v=1\)</span>, <span class="math" data-tex="\(u\in I\)">\(u\in I\)</span>, <span class="math" data-tex="\(v\in J\)">\(v\in J\)</span>. Subtracting the section from <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> gives
+<span class="math math-display" data-tex="\[
+(x,y)-(u(x+y),v(x+y))
+=(vx-uy,-(vx-uy)).
+\]">\[
+(x,y)-(u(x+y),v(x+y))
+=(vx-uy,-(vx-uy)).
+\]</span>
+This gives exactly the mutually inverse maps (4).</p>
+<p>For the reduction, choose <span class="math" data-tex="\(c\in F^\times\)">\(c\in F^\times\)</span> making <span class="math" data-tex="\(cI\)">\(cI\)</span> integral. At each of its finitely many prime divisors, choose a nonzero class in <span class="math" data-tex="\(J^{-1}/\mathfrak pJ^{-1}\)">\(J^{-1}/\mathfrak pJ^{-1}\)</span>; module Chinese remainders give <span class="math" data-tex="\(t\in J^{-1}\)">\(t\in J^{-1}\)</span> representing them all. Then <span class="math" data-tex="\(tJ\)">\(tJ\)</span> is integral and comaximal with <span class="math" data-tex="\(cI\)">\(cI\)</span>, as shown in the proof. The scaled product is <span class="math" data-tex="\((cI)(tJ)=ct\,IJ\)">\((cI)(tJ)=ct\,IJ\)</span>. Multiplication by <span class="math" data-tex="\(c\)">\(c\)</span>, <span class="math" data-tex="\(t\)">\(t\)</span>, and <span class="math" data-tex="\(ct\)">\(ct\)</span> gives the respective isomorphisms needed to transport the constructed map back to <span class="math" data-tex="\(I\oplus J\)">\(I\oplus J\)</span> and <span class="math" data-tex="\(A\oplus IJ\)">\(A\oplus IJ\)</span>.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The absolute integral basis theorem and the integer matrix index formula are imported from <em>Discriminants and integral bases</em>. Unique factorization, invertibility and the local discrete valuation description of ideals are imported from <em>Discrete valuation rings and Dedekind domains</em>. Their precise statements and proofs are in those lessons. The general algebra characterization [Stacks, Tag 034X] was stated and its conventions explained there.</p>
+<p>The finiteness of <span class="math" data-tex="\(\operatorname{Cl}_K\)">\(\operatorname{Cl}_K\)</span> is reserved for <em>Finiteness of the class number</em>. Relative ideal norms, including compatibility with norms of elements in extensions, are introduced in <em>Decomposition of primes in extensions</em>. No relative ideal norm is assumed in the proof of Proposition 4.1.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne ANT]</strong> J. S. Milne, <em>Algebraic Number Theory</em>, version 3.08 (2020), Chapter 3, “Modules over Dedekind domains (sketch),” Theorem 3.31, pp. 57–58; Chapter 4, “Norms of ideals,” Proposition 4.2, pp. 69–70. <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Lecture notes</a>.</li>
+<li><strong>[Stacks]</strong> The Stacks project, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-characterize-Dedekind">Tag 034X</a>, characterization of Dedekind domains.</li>
+</ul>
+</article><nav><a href="src/norms-class-groups-and-modules-over-dedekind-domains.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

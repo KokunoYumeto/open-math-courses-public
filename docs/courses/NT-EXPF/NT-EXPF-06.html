@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Li&#x27;s criterion · Explicit formulas and positivity</title>
+<meta name="description" content="A lesson of the course Explicit formulas and positivity. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-EXPF/NT-EXPF-06.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Explicit formulas and positivity</a> <span aria-hidden="true">›</span> <span>Lesson 6 of 8</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="li-s-criterion">Li's criterion</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Li's criterion encodes the location of every nontrivial zeta zero in a sequence of real numbers. The change of variable <span class="math" data-tex="\(z=1-1/\rho\)">\(z=1-1/\rho\)</span> sends the critical line to the unit circle. Powers of points on that circle give nonnegative real contributions; a point outside it eventually produces negative coefficients of exponential size.</p>
+<p>We prove the criterion in two ways. A generating-function argument uses positivity of power-series coefficients. A second argument works for general zero multisets and explains the exponential behavior when RH fails. We also derive the arithmetic formula, the asymptotic under RH, and the relation to the zero form of the explicit formula.</p>
+<p>The analytic inputs about zeta are its functional equation, its order-one Hadamard product, and its zero count. Their internal providers are, respectively, <em>Poisson summation, theta, and the functional equation</em>, <em>Entire functions of order one and the Hadamard product of <span class="math" data-tex="\(\xi\)">\(\xi\)</span></em>, and <em>The Riemann–von Mangoldt formula</em> in <em>The Riemann zeta function</em>. For the prime expression we use <em>The prime number theorem with the classical error term</em> in that course; for a compact-test limit we use its <em>Nonvanishing on the line <span class="math" data-tex="\(\sigma=1\)">\(\sigma=1\)</span> and the zero-free region</em>. The exact inputs will be specified where used.</p>
+<h2 id="1-two-definitions-of-the-coefficients">1. Two definitions of the coefficients</h2>
+<p>Use</p>
+<span class="math math-display" data-tex="\[
+\xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s),
+\qquad \xi(s)=\xi(1-s),\qquad \xi(0)=\xi(1)=\frac12.
+\tag{1.1}
+\]">\[
+\xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s),
+\qquad \xi(s)=\xi(1-s),\qquad \xi(0)=\xi(1)=\frac12.
+\tag{1.1}
+\]</span>
+<p>Write <span class="math" data-tex="\(\rho=\beta+i\gamma\)">\(\rho=\beta+i\gamma\)</span> for its zeros, with multiplicity. They satisfy <span class="math" data-tex="\(0&lt;\beta&lt;1\)">\(0&lt;\beta&lt;1\)</span>, have no real members, and are invariant under conjugation and <span class="math" data-tex="\(s\mapsto1-s\)">\(s\mapsto1-s\)</span>. The zero count implies <span class="math" data-tex="\(\sum_\rho|\rho|^{-2}&lt;\infty\)">\(\sum_\rho|\rho|^{-2}&lt;\infty\)</span>. The absence of a real zero follows, for <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>, from the positive alternating series for <span class="math" data-tex="\((1-2^{1-s})\zeta(s)\)">\((1-2^{1-s})\zeta(s)\)</span>; the denominator is negative and cannot vanish in this interval.</p>
+<p>Define, for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\lambda_n=\lim_{T\to\infty}
+\sum_{|\gamma|\leq T}\left[1-\left(1-\frac1\rho\right)^n\right].
+\tag{1.2}
+\]">\[
+\lambda_n=\lim_{T\to\infty}
+\sum_{|\gamma|\leq T}\left[1-\left(1-\frac1\rho\right)^n\right].
+\tag{1.2}
+\]</span>
+<p>The symmetric convention is essential. The binomial expansion has leading term <span class="math" data-tex="\(n/\rho\)">\(n/\rho\)</span>; its remaining terms are <span class="math" data-tex="\(O_n(|\rho|^{-2})\)">\(O_n(|\rho|^{-2})\)</span>. Pairing a zero with its conjugate changes the leading term into
+<span class="math" data-tex="\(2n\beta/|\rho|^2\)">\(2n\beta/|\rho|^2\)</span>, which is summable. Thus (1.2) exists and is real. All subsequent zero sums with a possible <span class="math" data-tex="\(1/\rho\)">\(1/\rho\)</span> term use this same convention.</p>
+<p><strong>Proposition 1.1.</strong> If <span class="math" data-tex="\(L(s)\)">\(L(s)\)</span> is an analytic logarithm of <span class="math" data-tex="\(\xi(s)\)">\(\xi(s)\)</span> near <span class="math" data-tex="\(1\)">\(1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\lambda_n=\frac1{(n-1)!}
+\left.\frac{d^n}{ds^n}\bigl[s^{n-1}L(s)\bigr]\right|_{s=1}.
+\tag{1.3}
+\]">\[
+\lambda_n=\frac1{(n-1)!}
+\left.\frac{d^n}{ds^n}\bigl[s^{n-1}L(s)\bigr]\right|_{s=1}.
+\tag{1.3}
+\]</span>
+<p>Equivalently,</p>
+<span class="math math-display" data-tex="\[
+L\!\left(\frac1{1-w}\right)-L(1)
+=\sum_{n=1}^\infty\frac{\lambda_n}{n}w^n
+\quad\text{near }w=0.
+\tag{1.4}
+\]">\[
+L\!\left(\frac1{1-w}\right)-L(1)
+=\sum_{n=1}^\infty\frac{\lambda_n}{n}w^n
+\quad\text{near }w=0.
+\tag{1.4}
+\]</span>
+<p><em>Proof.</em> The symmetric logarithmic derivative of the Hadamard product is
+<span class="math" data-tex="\(\xi&#x27;/\xi(s)=\lim_T\sum_{|\gamma|\leq T}(s-\rho)^{-1}\)">\(\xi&#x27;/\xi(s)=\lim_T\sum_{|\gamma|\leq T}(s-\rho)^{-1}\)</span>.
+Integrating it on a small disk about <span class="math" data-tex="\(1\)">\(1\)</span> gives the locally uniformly convergent sum of logarithms of
+<span class="math" data-tex="\((1-s/\rho)/(1-1/\rho)\)">\((1-s/\rho)/(1-1/\rho)\)</span>.
+Put <span class="math" data-tex="\(s=(1-w)^{-1}\)">\(s=(1-w)^{-1}\)</span>, and <span class="math" data-tex="\(z_\rho=1-1/\rho\)">\(z_\rho=1-1/\rho\)</span>. Each ratio becomes
+<span class="math math-display" data-tex="\[
+\frac{1-z_\rho^{-1}w}{1-w}.
+\]">\[
+\frac{1-z_\rho^{-1}w}{1-w}.
+\]</span>
+Its logarithm has <span class="math" data-tex="\(w^n\)">\(w^n\)</span>-coefficient <span class="math" data-tex="\((1-z_\rho^{-n})/n\)">\((1-z_\rho^{-n})/n\)</span>. The symmetry <span class="math" data-tex="\(\rho\mapsto1-\rho\)">\(\rho\mapsto1-\rho\)</span> replaces <span class="math" data-tex="\(z_\rho\)">\(z_\rho\)</span> by <span class="math" data-tex="\(z_\rho^{-1}\)">\(z_\rho^{-1}\)</span>, preserving the cutoff <span class="math" data-tex="\(|\gamma|\leq T\)">\(|\gamma|\leq T\)</span>. This proves (1.4). Uniform convergence follows either from the logarithmic derivative or from conjugate pairing and its <span class="math" data-tex="\(O(|\rho|^{-2})\)">\(O(|\rho|^{-2})\)</span> remainder on a sufficiently small disk.</p>
+<p>To compare derivatives directly, expand <span class="math" data-tex="\(L(1+t)\)">\(L(1+t)\)</span> and put <span class="math" data-tex="\(t=w/(1-w)\)">\(t=w/(1-w)\)</span>. Since
+<span class="math" data-tex="\([w^n](w/(1-w))^j=\binom{n-1}{j-1}\)">\([w^n](w/(1-w))^j=\binom{n-1}{j-1}\)</span>, multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\lambda_n=\sum_{j=1}^n
+\binom nj\,\frac{L^{(j)}(1)}{(j-1)!}.
+\tag{1.5}
+\]">\[
+\lambda_n=\sum_{j=1}^n
+\binom nj\,\frac{L^{(j)}(1)}{(j-1)!}.
+\tag{1.5}
+\]</span>
+<p>Leibniz's rule applied to (1.3) gives the same expression: the derivative of order <span class="math" data-tex="\(n-j\)">\(n-j\)</span> of <span class="math" data-tex="\(s^{n-1}\)">\(s^{n-1}\)</span> at <span class="math" data-tex="\(1\)">\(1\)</span> is <span class="math" data-tex="\((n-1)!/(j-1)!\)">\((n-1)!/(j-1)!\)</span>. The <span class="math" data-tex="\(j=0\)">\(j=0\)</span> term vanishes. ∎</p>
+<p>Keiper's coefficients in the expansion (1.4) are <span class="math" data-tex="\(\lambda_n/n\)">\(\lambda_n/n\)</span>. This factor matters when comparing numerical tables.</p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, use
+<span class="math" data-tex="\((s-1)\zeta(s)=1+\gamma(s-1)+O((s-1)^2)\)">\((s-1)\zeta(s)=1+\gamma(s-1)+O((s-1)^2)\)</span>.
+Differentiating the logarithm of (1.1) at <span class="math" data-tex="\(1\)">\(1\)</span>, with
+<span class="math" data-tex="\(\psi_\Gamma(1/2)=-\gamma-2\log2\)">\(\psi_\Gamma(1/2)=-\gamma-2\log2\)</span>, yields</p>
+<span class="math math-display" data-tex="\[
+\lambda_1=1+\frac\gamma2-\frac12\log(4\pi)
+=0.0230957089661210338\ldots.
+\tag{1.6}
+\]">\[
+\lambda_1=1+\frac\gamma2-\frac12\log(4\pi)
+=0.0230957089661210338\ldots.
+\tag{1.6}
+\]</span>
+<p>Using the next two Laurent coefficients in (1.5) gives:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th style="text-align:right">Li coefficient <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span></th>
+<th style="text-align:right">Keiper coefficient <span class="math" data-tex="\(\lambda_n/n\)">\(\lambda_n/n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right"><span class="math" data-tex="\(0.0230957089661210\)">\(0.0230957089661210\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0.0230957089661210\)">\(0.0230957089661210\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right"><span class="math" data-tex="\(0.0923457352280467\)">\(0.0923457352280467\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0.0461728676140233\)">\(0.0461728676140233\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right"><span class="math" data-tex="\(0.207638920554325\)">\(0.207638920554325\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0.0692129735181083\)">\(0.0692129735181083\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These computations use the derivatives, not a truncated sum over zeros.</p>
+<h2 id="2-the-critical-line-becomes-a-circle">2. The critical line becomes a circle</h2>
+<p>For <span class="math" data-tex="\(\rho\ne0\)">\(\rho\ne0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|z_\rho|^2-1
+=\frac{1-2\operatorname{Re}\rho}{|\rho|^2}.
+\tag{2.1}
+\]">\[
+|z_\rho|^2-1
+=\frac{1-2\operatorname{Re}\rho}{|\rho|^2}.
+\tag{2.1}
+\]</span>
+<p>Hence <span class="math" data-tex="\(|z_\rho|=1\)">\(|z_\rho|=1\)</span> exactly on the critical line; the left half of the critical strip gives <span class="math" data-tex="\(|z_\rho|&gt;1\)">\(|z_\rho|&gt;1\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+z_{1-\rho}=z_\rho^{-1},
+\qquad
+z_{1-\bar\rho}=\overline{z_\rho}^{\,-1}.
+\tag{2.2}
+\]">\[
+z_{1-\rho}=z_\rho^{-1},
+\qquad
+z_{1-\bar\rho}=\overline{z_\rho}^{\,-1}.
+\tag{2.2}
+\]</span>
+<p>Under RH write <span class="math" data-tex="\(z_\rho=e^{i\vartheta_\rho}\)">\(z_\rho=e^{i\vartheta_\rho}\)</span>. A conjugate pair contributes</p>
+<span class="math math-display" data-tex="\[
+2\bigl(1-\cos(n\vartheta_\rho)\bigr)\geq0
+\tag{2.3}
+\]">\[
+2\bigl(1-\cos(n\vartheta_\rho)\bigr)\geq0
+\tag{2.3}
+\]</span>
+<p>to (1.2). This proves the forward implication in Li's theorem. The converse requires controlling the whole multiset, since the negative effect of a single point can be hidden for many initial values of <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<figure><img src="figures/li-circle.png" alt="The map from the critical line to the unit circle" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. Exact sample points <span class="math" data-tex="\(\rho=0.3+i,\ 0.5+i,\ 0.7+i\)">\(\rho=0.3+i,\ 0.5+i,\ 0.7+i\)</span> and their images under <span class="math" data-tex="\(z=1-1/\rho\)">\(z=1-1/\rho\)</span>. The second panel shows a portion of the unit circle. The reflected off-line samples have reciprocal moduli; the middle sample lies on the circle. These illustrative points are not asserted to be zeta zeros. Equations (2.1)–(2.2) prove the geometry. The plot is independently drawn.</em></p>
+<h2 id="3-the-generating-function-and-li-s-theorem">3. The generating function and Li's theorem</h2>
+<p>Differentiate (1.4):</p>
+<span class="math math-display" data-tex="\[
+\mathcal L(w):=\sum_{n=1}^\infty\lambda_nw^n
+=\frac{w}{(1-w)^2}\,
+\frac{\xi&#x27;}{\xi}\!\left(\frac1{1-w}\right).
+\tag{3.1}
+\]">\[
+\mathcal L(w):=\sum_{n=1}^\infty\lambda_nw^n
+=\frac{w}{(1-w)^2}\,
+\frac{\xi&#x27;}{\xi}\!\left(\frac1{1-w}\right).
+\tag{3.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(M=\sup_\rho|z_\rho|\)">\(M=\sup_\rho|z_\rho|\)</span>. Since <span class="math" data-tex="\(z_\rho\to1\)">\(z_\rho\to1\)</span> as <span class="math" data-tex="\(|\rho|\to\infty\)">\(|\rho|\to\infty\)</span>, any value <span class="math" data-tex="\(M&gt;1\)">\(M&gt;1\)</span> is a maximum attained at finitely many distinct zeros. The poles of the right side of (3.1) away from <span class="math" data-tex="\(w=1\)">\(w=1\)</span> occur at</p>
+<span class="math math-display" data-tex="\[
+w_\rho=1-\frac1\rho=z_\rho,
+\tag{3.2}
+\]">\[
+w_\rho=1-\frac1\rho=z_\rho,
+\tag{3.2}
+\]</span>
+<p>because <span class="math" data-tex="\((1-w)^{-1}=\rho\)">\((1-w)^{-1}=\rho\)</span>. Their minimum modulus is <span class="math" data-tex="\(1/M\)">\(1/M\)</span>: the reciprocal symmetry (2.2) makes the multisets <span class="math" data-tex="\(\{z_\rho\}\)">\(\{z_\rho\}\)</span> and <span class="math" data-tex="\(\{z_\rho^{-1}\}\)">\(\{z_\rho^{-1}\}\)</span> identical.
+A zero of multiplicity <span class="math" data-tex="\(m\)">\(m\)</span> contributes a nonzero residue; different zeros have different images, so no cancellation removes such a pole.
+If <span class="math" data-tex="\(M&gt;1\)">\(M&gt;1\)</span>, the power series therefore has radius <span class="math" data-tex="\(R=1/M&lt;1\)">\(R=1/M&lt;1\)</span>.</p>
+<p>If RH holds, all these poles lie on <span class="math" data-tex="\(|w|=1\)">\(|w|=1\)</span>, and there is no singularity inside the disk. The radius is still exactly <span class="math" data-tex="\(1\)">\(1\)</span>. Indeed, as <span class="math" data-tex="\(w\to1^-\)">\(w\to1^-\)</span>, <span class="math" data-tex="\(s=(1-w)^{-1}\to+\infty\)">\(s=(1-w)^{-1}\to+\infty\)</span>, and Stirling and the absolutely convergent Euler product give
+<span class="math math-display" data-tex="\[
+\frac{\xi&#x27;}{\xi}(s)=\frac12\log\frac{s}{2\pi}+O(s^{-1}).
+\]">\[
+\frac{\xi&#x27;}{\xi}(s)=\frac12\log\frac{s}{2\pi}+O(s^{-1}).
+\]</span>
+The expression (3.1) is consequently unbounded at <span class="math" data-tex="\(w=1\)">\(w=1\)</span>. Thus in all cases</p>
+<span class="math math-display" data-tex="\[
+R=\frac1{\max(1,\sup_\rho|1-1/\rho|)}.
+\tag{3.3}
+\]">\[
+R=\frac1{\max(1,\sup_\rho|1-1/\rho|)}.
+\tag{3.3}
+\]</span>
+<p>One can also obtain (3.1) as a symmetrically summed series
+<span class="math" data-tex="\(\sum_\rho[w/(1-w)-z_\rho w/(1-z_\rho w)]\)">\(\sum_\rho[w/(1-w)-z_\rho w/(1-z_\rho w)]\)</span>.
+Its poles are <span class="math" data-tex="\(z_\rho^{-1}\)">\(z_\rho^{-1}\)</span>, the same multiset. On compact sets avoiding <span class="math" data-tex="\(1\)">\(1\)</span> and these poles, conjugate pairing again gives locally uniform convergence.</p>
+<h3 id="positivity-of-coefficients-forces-a-positive-real-singularity">Positivity of coefficients forces a positive real singularity</h3>
+<p><strong>Lemma 3.1 (Pringsheim's theorem).</strong> A power series <span class="math" data-tex="\(\sum a_nw^n\)">\(\sum a_nw^n\)</span> with <span class="math" data-tex="\(a_n\geq0\)">\(a_n\geq0\)</span> and finite positive radius <span class="math" data-tex="\(R\)">\(R\)</span> cannot be analytic at <span class="math" data-tex="\(w=R\)">\(w=R\)</span>.</p>
+<p><em>Proof.</em> Suppose it is analytic in a neighborhood of <span class="math" data-tex="\(R\)">\(R\)</span>. For <span class="math" data-tex="\(0&lt;r&lt;R\)">\(0&lt;r&lt;R\)</span>, differentiate the series <span class="math" data-tex="\(k\)">\(k\)</span> times. Letting <span class="math" data-tex="\(r\uparrow R\)">\(r\uparrow R\)</span>, monotone convergence and analytic continuity give
+<span class="math math-display" data-tex="\[
+\frac{f^{(k)}(R)}{k!}
+=\sum_{n\geq k}a_n\binom nkR^{n-k}.
+\]">\[
+\frac{f^{(k)}(R)}{k!}
+=\sum_{n\geq k}a_n\binom nkR^{n-k}.
+\]</span>
+Choose a positive <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> within the Taylor radius at <span class="math" data-tex="\(R\)">\(R\)</span>. Summing these identities with weights <span class="math" data-tex="\(\epsilon^k\)">\(\epsilon^k\)</span>, all terms are nonnegative, so their order may be exchanged. The Taylor series is finite at <span class="math" data-tex="\(R+\epsilon\)">\(R+\epsilon\)</span>, but its sum is
+<span class="math" data-tex="\(\sum_n a_n(R+\epsilon)^n\)">\(\sum_n a_n(R+\epsilon)^n\)</span> by the binomial theorem. This contradicts the radius <span class="math" data-tex="\(R\)">\(R\)</span>. ∎</p>
+<p><strong>Theorem 3.2 (Li).</strong> RH holds if and only if <span class="math" data-tex="\(\lambda_n\geq0\)">\(\lambda_n\geq0\)</span> for every <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>.</p>
+<p><em>Proof.</em> The forward direction is (2.3). If RH fails, (2.1) and reflection give <span class="math" data-tex="\(M&gt;1\)">\(M&gt;1\)</span>, so the radius in (3.3) is less than <span class="math" data-tex="\(1\)">\(1\)</span>. If all coefficients were nonnegative, Lemma 3.1 would force a singularity at its positive real radius <span class="math" data-tex="\(R\)">\(R\)</span>. Formula (3.1) is analytic there: <span class="math" data-tex="\(s=(1-R)^{-1}&gt;1\)">\(s=(1-R)^{-1}&gt;1\)</span>, where <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is nonzero. This is a contradiction. ∎</p>
+<p>The proof uses nonnegativity of <strong>all</strong> coefficients. Any finite initial list supplies no such implication.</p>
+<h2 id="4-a-multiset-theorem-and-exponential-oscillation">4. A multiset theorem and exponential oscillation</h2>
+<p>The circle argument has a version that does not require conjugate symmetry or the absence of real zeros.</p>
+<p><strong>Theorem 4.1 (Bombieri–Lagarias, symmetric form).</strong> Let <span class="math" data-tex="\(\mathcal Z\)">\(\mathcal Z\)</span> be a multiset with <span class="math" data-tex="\(0,1\notin\mathcal Z\)">\(0,1\notin\mathcal Z\)</span>, invariant with multiplicity under
+<span class="math" data-tex="\(\rho\mapsto1-\bar\rho\)">\(\rho\mapsto1-\bar\rho\)</span>, and suppose</p>
+<span class="math math-display" data-tex="\[
+\sum_{\rho\in\mathcal Z}
+\frac{1+|\operatorname{Re}\rho|}{(1+|\rho|)^2}&lt;\infty.
+\tag{4.1}
+\]">\[
+\sum_{\rho\in\mathcal Z}
+\frac{1+|\operatorname{Re}\rho|}{(1+|\rho|)^2}&lt;\infty.
+\tag{4.1}
+\]</span>
+<p>Then the real sums</p>
+<span class="math math-display" data-tex="\[
+A_n=\sum_{\rho\in\mathcal Z}
+\operatorname{Re}\left[1-\left(1-\frac1\rho\right)^n\right]
+\tag{4.2}
+\]">\[
+A_n=\sum_{\rho\in\mathcal Z}
+\operatorname{Re}\left[1-\left(1-\frac1\rho\right)^n\right]
+\tag{4.2}
+\]</span>
+<p>are absolutely convergent. Every member of <span class="math" data-tex="\(\mathcal Z\)">\(\mathcal Z\)</span> lies on <span class="math" data-tex="\(\operatorname{Re}s=1/2\)">\(\operatorname{Re}s=1/2\)</span> if and only if <span class="math" data-tex="\(A_n\geq0\)">\(A_n\geq0\)</span> for every <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>.</p>
+<p><em>Proof.</em> Condition (4.1) implies that only finitely many members, including multiplicity, lie in a compact set. In particular the denominators in (4.2) stay away from zero near <span class="math" data-tex="\(0\)">\(0\)</span>. For large <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, the real part of the linear term is bounded by <span class="math" data-tex="\(n|\operatorname{Re}\rho|/|\rho|^2\)">\(n|\operatorname{Re}\rho|/|\rho|^2\)</span>; the remaining terms are <span class="math" data-tex="\(O_n(|\rho|^{-2})\)">\(O_n(|\rho|^{-2})\)</span>. This proves absolute convergence.</p>
+<p>The forward implication follows term by term from <span class="math" data-tex="\(|z_\rho|=1\)">\(|z_\rho|=1\)</span>.
+For the converse, an off-line member and its reflection give a member with <span class="math" data-tex="\(|z_\rho|&gt;1\)">\(|z_\rho|&gt;1\)</span>. Since <span class="math" data-tex="\(z_\rho\to1\)">\(z_\rho\to1\)</span>, choose the maximum <span class="math" data-tex="\(M&gt;1\)">\(M&gt;1\)</span>, and let <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> be its finite multiset of maximizers. Choose <span class="math" data-tex="\(1&lt;r&lt;M\)">\(1&lt;r&lt;M\)</span> exceeding every modulus outside <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Such an <span class="math" data-tex="\(r\)">\(r\)</span> exists because the only possible accumulation of these moduli is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>For a complex <span class="math" data-tex="\(a\)">\(a\)</span>, Taylor's formula along the segment from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\left|1-(1-a)^n-na\right|
+\leq \frac{n(n-1)}2|a|^2
+\max(1,|1-a|)^{n-2}.
+\tag{4.3}
+\]">\[
+\left|1-(1-a)^n-na\right|
+\leq \frac{n(n-1)}2|a|^2
+\max(1,|1-a|)^{n-2}.
+\tag{4.3}
+\]</span>
+<p>The bound follows since <span class="math" data-tex="\(|1-ta|\leq\max(1,|1-a|)\)">\(|1-ta|\leq\max(1,|1-a|)\)</span> for <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>.
+Apply it with <span class="math" data-tex="\(a=1/\rho\)">\(a=1/\rho\)</span> outside <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, and sum using (4.1). The real linear terms are summable. We obtain</p>
+<span class="math math-display" data-tex="\[
+A_n=-M^n\sum_{\rho\in\mathcal J}
+\cos(n\arg z_\rho)+O(n^2r^n).
+\tag{4.4}
+\]">\[
+A_n=-M^n\sum_{\rho\in\mathcal J}
+\cos(n\arg z_\rho)+O(n^2r^n).
+\tag{4.4}
+\]</span>
+<p>The finitely many phases return simultaneously arbitrarily close to <span class="math" data-tex="\(1\)">\(1\)</span> for an unbounded sequence of positive powers. Here is a direct justification. Partition the product of their unit circles into sufficiently small boxes. Among sufficiently many consecutive powers, two lie in one box; their quotient is a positive power close to the identity. Repeat with shrinking boxes. If the resulting exponents are unbounded, they give the required sequence. If they remain bounded along a subsequence, a fixed positive power is exactly the identity; its multiples then give an unbounded sequence.
+Along this sequence the cosine sum tends to <span class="math" data-tex="\(|\mathcal J|&gt;0\)">\(|\mathcal J|&gt;0\)</span>. Equation (4.4) makes <span class="math" data-tex="\(A_n&lt;0\)">\(A_n&lt;0\)</span> eventually, contradicting the assumed sign. ∎</p>
+<p>Without the reflection hypothesis the same argument characterizes the half-plane <span class="math" data-tex="\(\operatorname{Re}\rho\geq1/2\)">\(\operatorname{Re}\rho\geq1/2\)</span> for the convention (4.2). Reflection then turns that half-plane conclusion into equality with the critical line. The reciprocal convention <span class="math" data-tex="\(\rho/(\rho-1)\)">\(\rho/(\rho-1)\)</span> reverses the half-plane.</p>
+<p>For zeta, conjugate pairing identifies <span class="math" data-tex="\(A_n\)">\(A_n\)</span> with <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span>. If RH fails, (4.4) gives the more precise description</p>
+<span class="math math-display" data-tex="\[
+\lambda_n=-\sum_{\rho\in\mathcal J}z_\rho^n+O(n^2r^n),
+\qquad 1&lt;r&lt;M.
+\tag{4.5}
+\]">\[
+\lambda_n=-\sum_{\rho\in\mathcal J}z_\rho^n+O(n^2r^n),
+\qquad 1&lt;r&lt;M.
+\tag{4.5}
+\]</span>
+<p>It has both signs of exponential size on infinite subsequences. To see both signs, let
+<span class="math" data-tex="\(S_n=\sum_{\mathcal J}\cos(n\arg z_\rho)\)">\(S_n=\sum_{\mathcal J}\cos(n\arg z_\rho)\)</span>.
+No phase is <span class="math" data-tex="\(0\)">\(0\)</span> modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, since that would give a real zero. Finite geometric sums show that the Cesàro mean of <span class="math" data-tex="\(S_n\)">\(S_n\)</span> is zero. Its mean square is positive: expanding the square into exponentials, the constant-frequency terms have positive coefficients, and all other frequencies average to zero. If a bounded real sequence of zero mean and positive mean square were eventually at least <span class="math" data-tex="\(-\epsilon\)">\(-\epsilon\)</span>, then
+<span class="math" data-tex="\(S_n^2\leq B(S_n+\epsilon)+\epsilon^2\)">\(S_n^2\leq B(S_n+\epsilon)+\epsilon^2\)</span>, with <span class="math" data-tex="\(B\)">\(B\)</span> an upper bound for <span class="math" data-tex="\(|S_n|\)">\(|S_n|\)</span>; averaging and taking small <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> gives a contradiction. Apply the same argument to <span class="math" data-tex="\(-S_n\)">\(-S_n\)</span>. Thus <span class="math" data-tex="\(S_n\)">\(S_n\)</span> exceeds a fixed positive constant and is less than a fixed negative constant infinitely often. The error in (4.5) is smaller than <span class="math" data-tex="\(M^n\)">\(M^n\)</span> on both subsequences.</p>
+<p>In particular, a lower bound <span class="math" data-tex="\(\lambda_n\geq-C_\epsilon e^{\epsilon n}\)">\(\lambda_n\geq-C_\epsilon e^{\epsilon n}\)</span> for every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> already forces RH: choose <span class="math" data-tex="\(\epsilon&lt;\log M\)">\(\epsilon&lt;\log M\)</span> and use the negative subsequence. This is the one-sided growth form of the criterion. Together with the next section it proves the polynomial-versus-exponential dichotomy attributed to Voros.</p>
+<h2 id="5-the-asymptotic-under-rh">5. The asymptotic under RH</h2>
+<p><strong>Theorem 5.1.</strong> Under RH,</p>
+<span class="math math-display" data-tex="\[
+\lambda_n=\frac n2\log n+
+\frac{\gamma-1-\log(2\pi)}2\,n
++O(\sqrt n\log n).
+\tag{5.1}
+\]">\[
+\lambda_n=\frac n2\log n+
+\frac{\gamma-1-\log(2\pi)}2\,n
++O(\sqrt n\log n).
+\tag{5.1}
+\]</span>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(N(t)\)">\(N(t)\)</span> count positive ordinates with multiplicity. The internal Riemann–von Mangoldt theorem supplies</p>
+<span class="math math-display" data-tex="\[
+N(t)=M(t)+O(\log(t+2)),\qquad
+M(t)=\frac{t}{2\pi}\log\frac{t}{2\pi}
+-\frac{t}{2\pi}
+\tag{5.2}
+\]">\[
+N(t)=M(t)+O(\log(t+2)),\qquad
+M(t)=\frac{t}{2\pi}\log\frac{t}{2\pi}
+-\frac{t}{2\pi}
+\tag{5.2}
+\]</span>
+<p>for large <span class="math" data-tex="\(t\)">\(t\)</span>; the constant term may be absorbed into the error.
+For <span class="math" data-tex="\(\rho=1/2+it\)">\(\rho=1/2+it\)</span>, (2.1) gives
+<span class="math" data-tex="\(z_\rho=\exp(i\vartheta(t))\)">\(z_\rho=\exp(i\vartheta(t))\)</span>, with
+<span class="math" data-tex="\(\vartheta(t)=2\arctan(1/(2t))=t^{-1}+O(t^{-3})\)">\(\vartheta(t)=2\arctan(1/(2t))=t^{-1}+O(t^{-3})\)</span>.
+Consequently</p>
+<span class="math math-display" data-tex="\[
+\lambda_n=2\int_0^\infty
+\bigl(1-\cos(n\vartheta(t))\bigr)\,dN(t).
+\tag{5.3}
+\]">\[
+\lambda_n=2\int_0^\infty
+\bigl(1-\cos(n\vartheta(t))\bigr)\,dN(t).
+\tag{5.3}
+\]</span>
+<p>Choose <span class="math" data-tex="\(T\)">\(T\)</span> between <span class="math" data-tex="\(\sqrt n\)">\(\sqrt n\)</span> and <span class="math" data-tex="\(\sqrt n+1\)">\(\sqrt n+1\)</span>, away from zero ordinates. The portion below <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(O(N(T))=O(\sqrt n\log n)\)">\(O(N(T))=O(\sqrt n\log n)\)</span>, because its summands are at most <span class="math" data-tex="\(4\)">\(4\)</span>. Above <span class="math" data-tex="\(T\)">\(T\)</span>, replacing <span class="math" data-tex="\(\vartheta(t)\)">\(\vartheta(t)\)</span> by <span class="math" data-tex="\(1/t\)">\(1/t\)</span> changes the integral by
+<span class="math math-display" data-tex="\[
+O\!\left(n\int_T^\infty t^{-3}\,dN(t)\right)
+=O(\log n).
+\]">\[
+O\!\left(n\int_T^\infty t^{-3}\,dN(t)\right)
+=O(\log n).
+\]</span>
+The last bound follows from (5.2) and integration by parts; dyadic intervals also give it directly.</p>
+<p>Put <span class="math" data-tex="\(E=N-M\)">\(E=N-M\)</span>. Integrating <span class="math" data-tex="\(1-\cos(n/t)\)">\(1-\cos(n/t)\)</span> against <span class="math" data-tex="\(dE\)">\(dE\)</span>, its boundary term at <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(O(\log T)\)">\(O(\log T)\)</span>, the term at infinity is zero, and its derivative has magnitude at most <span class="math" data-tex="\(n/t^2\)">\(n/t^2\)</span>. Thus the error is at most
+<span class="math math-display" data-tex="\[
+O(\log T)+O\!\left(n\int_T^\infty\frac{\log(t+2)}{t^2}\,dt\right)
+=O(\sqrt n\log n).
+\]">\[
+O(\log T)+O\!\left(n\int_T^\infty\frac{\log(t+2)}{t^2}\,dt\right)
+=O(\sqrt n\log n).
+\]</span>
+Finally, extending the integral with <span class="math" data-tex="\(dM=M&#x27;(t)\,dt\)">\(dM=M&#x27;(t)\,dt\)</span> from <span class="math" data-tex="\(T\)">\(T\)</span> down to <span class="math" data-tex="\(0\)">\(0\)</span> costs <span class="math" data-tex="\(O(T\log(T+2))\)">\(O(T\log(T+2))\)</span>, since its integrand is bounded by a constant times <span class="math" data-tex="\(|\log(t/(2\pi))|\)">\(|\log(t/(2\pi))|\)</span>. We have proved</p>
+<span class="math math-display" data-tex="\[
+\lambda_n=\frac1\pi\int_0^\infty
+(1-\cos(n/t))\log\frac{t}{2\pi}\,dt
++O(\sqrt n\log n).
+\tag{5.4}
+\]">\[
+\lambda_n=\frac1\pi\int_0^\infty
+(1-\cos(n/t))\log\frac{t}{2\pi}\,dt
++O(\sqrt n\log n).
+\tag{5.4}
+\]</span>
+<p>With <span class="math" data-tex="\(v=n/t\)">\(v=n/t\)</span>, the main integral becomes
+<span class="math math-display" data-tex="\[
+\frac n\pi\left[
+\log\frac{n}{2\pi}\int_0^\infty\frac{1-\cos v}{v^2}\,dv
+-\int_0^\infty\frac{(1-\cos v)\log v}{v^2}\,dv
+\right].
+\]">\[
+\frac n\pi\left[
+\log\frac{n}{2\pi}\int_0^\infty\frac{1-\cos v}{v^2}\,dv
+-\int_0^\infty\frac{(1-\cos v)\log v}{v^2}\,dv
+\right].
+\]</span>
+To compute both constants, for <span class="math" data-tex="\(-1&lt;\operatorname{Re}\alpha&lt;1\)">\(-1&lt;\operatorname{Re}\alpha&lt;1\)</span> near zero integrate by parts:
+<span class="math math-display" data-tex="\[
+I(\alpha)=\int_0^\infty(1-\cos v)v^{\alpha-2}\,dv
+=\frac{\Gamma(\alpha)\sin(\pi\alpha/2)}{1-\alpha}.
+\tag{5.5}
+\]">\[
+I(\alpha)=\int_0^\infty(1-\cos v)v^{\alpha-2}\,dv
+=\frac{\Gamma(\alpha)\sin(\pi\alpha/2)}{1-\alpha}.
+\tag{5.5}
+\]</span>
+For the sine integral, first insert <span class="math" data-tex="\(e^{-\epsilon v}\)">\(e^{-\epsilon v}\)</span>, evaluate the gamma integral when <span class="math" data-tex="\(0&lt;\operatorname{Re}\alpha&lt;1\)">\(0&lt;\operatorname{Re}\alpha&lt;1\)</span>, and let <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>. Integration by parts controls the tail uniformly on compact sub-strips. Analytic continuation gives the displayed equality around zero. The integral defining <span class="math" data-tex="\(I\)">\(I\)</span> and its derivative are absolutely convergent there. Using
+<span class="math" data-tex="\(\Gamma(\alpha)=\alpha^{-1}-\gamma+O(\alpha)\)">\(\Gamma(\alpha)=\alpha^{-1}-\gamma+O(\alpha)\)</span>, we obtain
+<span class="math math-display" data-tex="\[
+I(0)=\frac\pi2,\qquad
+I&#x27;(0)=\frac\pi2(1-\gamma).
+\]">\[
+I(0)=\frac\pi2,\qquad
+I&#x27;(0)=\frac\pi2(1-\gamma).
+\]</span>
+Substitution in (5.4) proves (5.1). ∎</p>
+<p>The factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> multiplies the entire linear constant <span class="math" data-tex="\(\gamma-1-\log(2\pi)\)">\(\gamma-1-\log(2\pi)\)</span>. In Keiper's normalization, (5.1) becomes
+<span class="math" data-tex="\(\lambda_n/n=\frac12(\log n+\gamma-1-\log(2\pi))+O(n^{-1/2}\log n)\)">\(\lambda_n/n=\frac12(\log n+\gamma-1-\log(2\pi))+O(n^{-1/2}\log n)\)</span>.</p>
+<h2 id="6-the-arithmetic-formula">6. The arithmetic formula</h2>
+<p>Define the Laurent coefficients <span class="math" data-tex="\(\eta_k\)">\(\eta_k\)</span> by</p>
+<span class="math math-display" data-tex="\[
+-\frac{\zeta&#x27;}{\zeta}(1+t)
+=\frac1t+\sum_{k=0}^\infty\eta_kt^k.
+\tag{6.1}
+\]">\[
+-\frac{\zeta&#x27;}{\zeta}(1+t)
+=\frac1t+\sum_{k=0}^\infty\eta_kt^k.
+\tag{6.1}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\eta_0=-\gamma\)">\(\eta_0=-\gamma\)</span>. They can be expressed using prime powers:</p>
+<span class="math math-display" data-tex="\[
+\eta_k=\frac{(-1)^k}{k!}
+\lim_{X\to\infty}
+\left[
+\sum_{m\leq X}\frac{\Lambda(m)(\log m)^k}{m}
+-\frac{(\log X)^{k+1}}{k+1}
+\right].
+\tag{6.2}
+\]">\[
+\eta_k=\frac{(-1)^k}{k!}
+\lim_{X\to\infty}
+\left[
+\sum_{m\leq X}\frac{\Lambda(m)(\log m)^k}{m}
+-\frac{(\log X)^{k+1}}{k+1}
+\right].
+\tag{6.2}
+\]</span>
+<p>For completeness, the exact prime-counting input here is
+<span class="math" data-tex="\(\psi(x)=x+O(xe^{-c\sqrt{\log x}})\)">\(\psi(x)=x+O(xe^{-c\sqrt{\log x}})\)</span> for some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, proved in the twelfth lesson of <em>The Riemann zeta function</em>. Put <span class="math" data-tex="\(E(x)=\psi(x)-x\)">\(E(x)=\psi(x)-x\)</span>. Partial summation rewrites the bracket in (6.2) as boundary terms and the integral of
+<span class="math" data-tex="\(-E(x)\,d[(\log x)^k/x]\)">\(-E(x)\,d[(\log x)^k/x]\)</span>.
+The upper boundary tends to zero, and this last integral converges absolutely: after <span class="math" data-tex="\(u=\log x\)">\(u=\log x\)</span>, its tail is bounded by a polynomial in <span class="math" data-tex="\(u\)">\(u\)</span> times <span class="math" data-tex="\(e^{-c\sqrt u}\)">\(e^{-c\sqrt u}\)</span>. Hence the limit exists.
+For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the Dirichlet series gives
+<span class="math" data-tex="\(-\zeta&#x27;/\zeta(1+t)-1/t=\int_{1^-}^\infty x^{-1-t}\,dE(x)\)">\(-\zeta&#x27;/\zeta(1+t)-1/t=\int_{1^-}^\infty x^{-1-t}\,dE(x)\)</span>.
+Partial summation before differentiation makes the same error bound integrable after any fixed number of derivatives at <span class="math" data-tex="\(t=0^+\)">\(t=0^+\)</span>. The <span class="math" data-tex="\(k\)">\(k\)</span>-th derivative is <span class="math" data-tex="\((-1)^k\)">\((-1)^k\)</span> times the limit in (6.2). The analytic Laurent expansion (6.1) identifies this derivative with <span class="math" data-tex="\(k!\eta_k\)">\(k!\eta_k\)</span>, proving the formula.</p>
+<p><strong>Proposition 6.1 (arithmetic Li formula).</strong> For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\lambda_n={}&amp;1-\frac n2\bigl(\gamma+\log(4\pi)\bigr)\\
+&amp;+\sum_{j=2}^n(-1)^j\binom nj(1-2^{-j})\zeta(j)
+-\sum_{j=1}^n\binom nj\,\eta_{j-1}.
+\end{aligned}
+\tag{6.3}
+\]">\[
+\begin{aligned}
+\lambda_n={}&amp;1-\frac n2\bigl(\gamma+\log(4\pi)\bigr)\\
+&amp;+\sum_{j=2}^n(-1)^j\binom nj(1-2^{-j})\zeta(j)
+-\sum_{j=1}^n\binom nj\,\eta_{j-1}.
+\end{aligned}
+\tag{6.3}
+\]</span>
+<p><em>Proof.</em> Near <span class="math" data-tex="\(1\)">\(1\)</span>, split
+<span class="math math-display" data-tex="\[
+L(s)=\log s+\log[(s-1)\zeta(s)]
+-\frac s2\log\pi+\log\Gamma(s/2)-\log2.
+\]">\[
+L(s)=\log s+\log[(s-1)\zeta(s)]
+-\frac s2\log\pi+\log\Gamma(s/2)-\log2.
+\]</span>
+In (1.5), the <span class="math" data-tex="\(\log s\)">\(\log s\)</span> terms sum to
+<span class="math" data-tex="\(\sum_{j=1}^n(-1)^{j-1}\binom nj=1\)">\(\sum_{j=1}^n(-1)^{j-1}\binom nj=1\)</span>.
+The regular zeta term has derivative
+<span class="math" data-tex="\(-\sum_{k\geq0}\eta_k(s-1)^k\)">\(-\sum_{k\geq0}\eta_k(s-1)^k\)</span>; its contribution is the last sum of (6.3).
+The linear gamma and pi terms contribute
+<span class="math" data-tex="\(-\frac n2(\gamma+\log(4\pi))\)">\(-\frac n2(\gamma+\log(4\pi))\)</span>.
+For <span class="math" data-tex="\(j\geq2\)">\(j\geq2\)</span>, the polygamma series at <span class="math" data-tex="\(1/2\)">\(1/2\)</span> gives
+<span class="math math-display" data-tex="\[
+\frac{2^{-j}\psi_\Gamma^{(j-1)}(1/2)}{(j-1)!}
+=(-1)^j(1-2^{-j})\zeta(j).
+\]">\[
+\frac{2^{-j}\psi_\Gamma^{(j-1)}(1/2)}{(j-1)!}
+=(-1)^j(1-2^{-j})\zeta(j).
+\]</span>
+This yields the remaining sum. ∎</p>
+<p>Combining (6.2) and (6.3) expresses every coefficient through a regularized prime-power sum and explicit gamma constants. The subtraction in (6.2) is part of the formula, not an optional numerical correction; the unsubtracted prime sum diverges.</p>
+<h2 id="7-special-tests-for-the-zero-form">7. Special tests for the zero form</h2>
+<p>The relation with Weil's form can be made precise without pretending these tests have compact support at both ends. Put</p>
+<span class="math math-display" data-tex="\[
+G_n(s)=1-\left(1-\frac1s\right)^n
+=\sum_{j=1}^n(-1)^{j-1}\binom nj s^{-j}.
+\tag{7.1}
+\]">\[
+G_n(s)=1-\left(1-\frac1s\right)^n
+=\sum_{j=1}^n(-1)^{j-1}\binom nj s^{-j}.
+\tag{7.1}
+\]</span>
+<p>For <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, this is the Mellin transform of</p>
+<span class="math math-display" data-tex="\[
+g_n(x)=
+\begin{cases}
+\displaystyle\sum_{j=1}^n(-1)^{j-1}\binom nj
+\frac{(-\log x)^{j-1}}{(j-1)!},&amp;0&lt;x&lt;1,\\
+0,&amp;x&gt;1.
+\end{cases}
+\tag{7.2}
+\]">\[
+g_n(x)=
+\begin{cases}
+\displaystyle\sum_{j=1}^n(-1)^{j-1}\binom nj
+\frac{(-\log x)^{j-1}}{(j-1)!},&amp;0&lt;x&lt;1,\\
+0,&amp;x&gt;1.
+\end{cases}
+\tag{7.2}
+\]</span>
+<p>Indeed, putting <span class="math" data-tex="\(v=-\log x\)">\(v=-\log x\)</span> reduces each term to the elementary Laplace integral
+<span class="math" data-tex="\(\int_0^\infty e^{-sv}v^{j-1}\,dv/(j-1)!=s^{-j}\)">\(\int_0^\infty e^{-sv}v^{j-1}\,dv/(j-1)!=s^{-j}\)</span>.
+The polynomial in (7.2) is <span class="math" data-tex="\(L_{n-1}^{(1)}(-\log x)\)">\(L_{n-1}^{(1)}(-\log x)\)</span>, with this equation specifying the Laguerre normalization.</p>
+<p>At a zero <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, the reflection factor is
+<span class="math" data-tex="\(\overline{G_n(1-\bar\rho)}=1-z_\rho^{-n}\)">\(\overline{G_n(1-\bar\rho)}=1-z_\rho^{-n}\)</span>, since the coefficients of <span class="math" data-tex="\(G_n\)">\(G_n\)</span> are real. Therefore</p>
+<span class="math math-display" data-tex="\[
+\sum_\rho G_n(\rho)\overline{G_n(1-\bar\rho)}
+=\sum_\rho(2-z_\rho^n-z_\rho^{-n})
+=2\lambda_n.
+\tag{7.3}
+\]">\[
+\sum_\rho G_n(\rho)\overline{G_n(1-\bar\rho)}
+=\sum_\rho(2-z_\rho^n-z_\rho^{-n})
+=2\lambda_n.
+\tag{7.3}
+\]</span>
+<p>The product is <span class="math" data-tex="\(O_n(|\rho|^{-2})\)">\(O_n(|\rho|^{-2})\)</span>, so its sum is absolutely convergent. Under RH it is a sum of <span class="math" data-tex="\(|1-z_\rho^n|^2\)">\(|1-z_\rho^n|^2\)</span>, and (7.3) becomes another explanation of positivity.</p>
+<p>There is also a legitimate compact-test interpretation of (7.3). Smoothly cut the polynomial <span class="math" data-tex="\(g_n(e^{-v})\)">\(g_n(e^{-v})\)</span> off near <span class="math" data-tex="\(v=0\)">\(v=0\)</span> and beyond <span class="math" data-tex="\(v=R\)">\(v=R\)</span>. The resulting <span class="math" data-tex="\(g_{n,R,\epsilon}\)">\(g_{n,R,\epsilon}\)</span> is in <span class="math" data-tex="\(C_c^\infty(\mathbb R_+^\times)\)">\(C_c^\infty(\mathbb R_+^\times)\)</span>; its Mellin transform tends pointwise to <span class="math" data-tex="\(G_n\)">\(G_n\)</span> as <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span> and <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>.
+The classical zero-free region and reflection give
+<span class="math" data-tex="\(\beta\geq c/\log(|\gamma|+2)\)">\(\beta\geq c/\log(|\gamma|+2)\)</span> for large <span class="math" data-tex="\(|\gamma|\)">\(|\gamma|\)</span>.
+One integration by parts in <span class="math" data-tex="\(v\)">\(v\)</span>, including the two cutoff derivative terms, bounds these transforms uniformly in <span class="math" data-tex="\(R,\epsilon\)">\(R,\epsilon\)</span> by</p>
+<span class="math math-display" data-tex="\[
+|G_{n,R,\epsilon}(\rho)|
+\leq C_n\frac{1+\log^{n-1}(|\gamma|+2)}{1+|\gamma|}.
+\tag{7.4}
+\]">\[
+|G_{n,R,\epsilon}(\rho)|
+\leq C_n\frac{1+\log^{n-1}(|\gamma|+2)}{1+|\gamma|}.
+\tag{7.4}
+\]</span>
+<p>Here the near-zero derivative has uniformly bounded <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm, since its interval has length <span class="math" data-tex="\(O(\epsilon)\)">\(O(\epsilon)\)</span> and its size is <span class="math" data-tex="\(O(\epsilon^{-1})\)">\(O(\epsilon^{-1})\)</span>. For the far cutoff use <span class="math" data-tex="\(R^{-1}v^{n-1}\)">\(R^{-1}v^{n-1}\)</span> on <span class="math" data-tex="\(R\leq v\leq2R\)">\(R\leq v\leq2R\)</span>, bounded by a constant times <span class="math" data-tex="\(1+v^{n-2}\)">\(1+v^{n-2}\)</span> when <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>; for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> its weighted integral is uniformly bounded. The remaining derivative of the polynomial has Laplace integral <span class="math" data-tex="\(O(1+\beta^{-(n-1)})\)">\(O(1+\beta^{-(n-1)})\)</span>. These observations prove (7.4).
+Its square is summable over the zero multiset by the zero count. Dominated convergence hence gives convergence in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> of the evaluations at zeros. Cauchy–Schwarz and the reflection permutation then give
+<span class="math math-display" data-tex="\[
+\lim_{R\to\infty,\ \epsilon\downarrow0}
+Q(g_{n,R,\epsilon})=2\lambda_n,
+\quad
+Q(g)=\sum_\rho G(\rho)\overline{G(1-\bar\rho)}.
+\tag{7.5}
+\]">\[
+\lim_{R\to\infty,\ \epsilon\downarrow0}
+Q(g_{n,R,\epsilon})=2\lambda_n,
+\quad
+Q(g)=\sum_\rho G(\rho)\overline{G(1-\bar\rho)}.
+\tag{7.5}
+\]</span></p>
+<p>For every compact test the first lesson identifies <span class="math" data-tex="\(Q(g)\)">\(Q(g)\)</span> as the two pole products minus <span class="math" data-tex="\(\sum_vW_v(g*\bar g^\sharp)\)">\(\sum_vW_v(g*\bar g^\sharp)\)</span>. Thus Li's coefficients are limits of values of the zero form. Their limiting tests have a pole at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, so the separate pole products and local terms should not be passed to the limit without their cancellations. In particular, (7.5) does not assert that (7.2) satisfies the compact criterion's vanishing conditions.</p>
+<h2 id="8-dirichlet-functions-and-the-selberg-class">8. Dirichlet functions and the Selberg class</h2>
+<p>For a primitive Dirichlet character, use the completed function and its zero multiset from the second lesson. Its zeros are invariant under <span class="math" data-tex="\(\rho\mapsto1-\bar\rho\)">\(\rho\mapsto1-\bar\rho\)</span>, are confined to <span class="math" data-tex="\(0\leq\beta\leq1\)">\(0\leq\beta\leq1\)</span>, and satisfy the <span class="math" data-tex="\(O(T\log(T+2))\)">\(O(T\log(T+2))\)</span> zero count. Nonvanishing of the completed function at <span class="math" data-tex="\(0,1\)">\(0,1\)</span> follows from <span class="math" data-tex="\(L(1,\chi)\ne0\)">\(L(1,\chi)\ne0\)</span> and the functional equation. The internal providers for these facts are <em>Dirichlet's theorem on primes in arithmetic progressions</em> and <em>The functional equation of Dirichlet L-functions</em>, the second and fifth lessons of <em>Dirichlet L-functions and primes in progressions</em>.
+Define the real coefficients</p>
+<span class="math math-display" data-tex="\[
+A_{\chi,n}=\sum_\rho
+\operatorname{Re}[1-(1-1/\rho)^n].
+\tag{8.1}
+\]">\[
+A_{\chi,n}=\sum_\rho
+\operatorname{Re}[1-(1-1/\rho)^n].
+\tag{8.1}
+\]</span>
+<p>Theorem 4.1 applies: GRH for this primitive function is equivalent to <span class="math" data-tex="\(A_{\chi,n}\geq0\)">\(A_{\chi,n}\geq0\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. Complex characters need real parts here; their individual zero multisets need not be invariant under conjugation. For a real character, symmetric conjugate pairing makes the coefficients themselves real. The principal conductor-<span class="math" data-tex="\(1\)">\(1\)</span> case is Li's theorem for zeta. Missing Euler factors of an imprimitive character are treated separately, rather than added to the primitive nontrivial zero multiset.</p>
+<h3 id="why-the-multiset-hypotheses-hold-for-selberg-functions">Why the multiset hypotheses hold for Selberg functions</h3>
+<p>Use the standard Selberg axioms: an absolutely convergent Dirichlet series for <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>; finite-order entire continuation after removal of a pole at <span class="math" data-tex="\(1\)">\(1\)</span>; an absolutely convergent logarithmic Euler series in that half-plane; and a functional equation for</p>
+<span class="math math-display" data-tex="\[
+\Phi(s)=Q^s\prod_{j=1}^r\Gamma(\alpha_js+\mu_j)\,L(s),
+\quad Q&gt;0,\quad\alpha_j&gt;0,\quad\operatorname{Re}\mu_j\geq0,
+\quad
+\Phi(s)=\omega\,\overline{\Phi(1-\bar s)},\quad|\omega|=1.
+\tag{8.2}
+\]">\[
+\Phi(s)=Q^s\prod_{j=1}^r\Gamma(\alpha_js+\mu_j)\,L(s),
+\quad Q&gt;0,\quad\alpha_j&gt;0,\quad\operatorname{Re}\mu_j\geq0,
+\quad
+\Phi(s)=\omega\,\overline{\Phi(1-\bar s)},\quad|\omega|=1.
+\tag{8.2}
+\]</span>
+<p>The additional Ramanujan and prime-power coefficient bounds in the Selberg class are compatible with these axioms, but are not needed for the circle argument. Let <span class="math" data-tex="\(m\)">\(m\)</span> be the pole order at <span class="math" data-tex="\(1\)">\(1\)</span>, and put
+<span class="math" data-tex="\(\Xi(s)=s^m(s-1)^m\Phi(s)\)">\(\Xi(s)=s^m(s-1)^m\Phi(s)\)</span>.
+Assume <span class="math" data-tex="\(\Xi(0)\Xi(1)\ne0\)">\(\Xi(0)\Xi(1)\ne0\)</span>, as required to define these Li coefficients.</p>
+<p>Here are the analytic details needed for applying Theorem 4.1. The Euler logarithm makes <span class="math" data-tex="\(L\)">\(L\)</span> nonzero in <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>; all its gamma factors are holomorphic and nonzero there. Reflection gives the same assertion for <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> in <span class="math" data-tex="\(\operatorname{Re}s&lt;0\)">\(\operatorname{Re}s&lt;0\)</span>. In <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, the only possible pole is at <span class="math" data-tex="\(1\)">\(1\)</span>: gamma poles on the boundary <span class="math" data-tex="\(\operatorname{Re}s=0\)">\(\operatorname{Re}s=0\)</span> are dealt with by reflection from the regular line <span class="math" data-tex="\(\operatorname{Re}s=1\)">\(\operatorname{Re}s=1\)</span>. Reflection also pairs the pole at <span class="math" data-tex="\(1\)">\(1\)</span> with that at <span class="math" data-tex="\(0\)">\(0\)</span>, with the same order. Thus <span class="math" data-tex="\(\Xi\)">\(\Xi\)</span> is entire, its zeros lie in <span class="math" data-tex="\(0\leq\operatorname{Re}s\leq1\)">\(0\leq\operatorname{Re}s\leq1\)</span>, and their multiplicities are reflection invariant.</p>
+<p>We also need summability, not merely the location of zeros. On a fixed line <span class="math" data-tex="\(\sigma=1+\epsilon\)">\(\sigma=1+\epsilon\)</span>, the Dirichlet series bounds <span class="math" data-tex="\(L\)">\(L\)</span>; the functional equation and Stirling give polynomial growth on <span class="math" data-tex="\(\sigma=-\epsilon\)">\(\sigma=-\epsilon\)</span>. Between these lines the finite-order assumption and the maximum principle give a polynomial bound as well. To justify this version of the strip principle, divide out a sufficiently large power of <span class="math" data-tex="\(s+A\)">\(s+A\)</span>, with its zero outside the strip, and multiply by
+<span class="math" data-tex="\(\exp[-\delta\cos(a(s-\sigma_c))]\)">\(\exp[-\delta\cos(a(s-\sigma_c))]\)</span>, where <span class="math" data-tex="\(\sigma_c\)">\(\sigma_c\)</span> is the strip's midpoint and <span class="math" data-tex="\(a\)">\(a\)</span> is chosen so its cosine has positive real part on the whole strip. On the horizontal sides this factor decays as <span class="math" data-tex="\(\exp[-c\delta e^{a|t|}]\)">\(\exp[-c\delta e^{a|t|}]\)</span>, faster than the finite-order growth. On the vertical sides its modulus is at most one. The maximum principle on rectangles, followed by height tending to infinity and then <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>, proves the polynomial bound.
+Combining it with Stirling, and using reflection for the left half-plane, gives
+<span class="math math-display" data-tex="\[
+|\Xi(s)|\leq\exp[C|s|\log(|s|+2)].
+\tag{8.3}
+\]">\[
+|\Xi(s)|\leq\exp[C|s|\log(|s|+2)].
+\tag{8.3}
+\]</span>
+Jensen's formula on disks centered at a fixed nonzero value, comparing radii <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(2R\)">\(2R\)</span>, now gives <span class="math" data-tex="\(O(R\log(R+2))\)">\(O(R\log(R+2))\)</span> zeros in <span class="math" data-tex="\(|s|\leq R\)">\(|s|\leq R\)</span>. Summing by dyadic annuli proves <span class="math" data-tex="\(\sum_\rho(1+|\rho|)^{-2}&lt;\infty\)">\(\sum_\rho(1+|\rho|)^{-2}&lt;\infty\)</span>. The bounded strip then proves (4.1).</p>
+<p><strong>Corollary 8.1.</strong> For a Selberg function satisfying the endpoint condition above, RH for its completed zero multiset is equivalent to
+<span class="math math-display" data-tex="\[
+\sum_\rho\operatorname{Re}[1-(1-1/\rho)^n]\geq0
+\quad\text{for all }n\geq1.
+\tag{8.4}
+\]">\[
+\sum_\rho\operatorname{Re}[1-(1-1/\rho)^n]\geq0
+\quad\text{for all }n\geq1.
+\tag{8.4}
+\]</span></p>
+<p>This follows directly from the proved multiset theorem. If an endpoint is a zero, the endpoint condition fails and these coefficients are not defined there; one must specify a different parameter rather than use (8.4) with a zero denominator. For a function with a different symmetry line, translate and rescale its zeros before applying Theorem 4.1.</p>
+<p>The derivative version has a useful real formulation. For any entire completion of order at most one with the reflection symmetry and no endpoint zeros, let
+<span class="math math-display" data-tex="\[
+\ell_n=\frac1{(n-1)!}
+\left.\frac{d^n}{ds^n}[s^{n-1}\log\Xi(s)]\right|_{s=1}.
+\]">\[
+\ell_n=\frac1{(n-1)!}
+\left.\frac{d^n}{ds^n}[s^{n-1}\log\Xi(s)]\right|_{s=1}.
+\]</span>
+Then <span class="math" data-tex="\(\operatorname{Re}\ell_n=A_n\)">\(\operatorname{Re}\ell_n=A_n\)</span>.
+For <span class="math" data-tex="\(j\geq2\)">\(j\geq2\)</span>, differentiate its genus-one product to obtain
+<span class="math" data-tex="\((\log\Xi)^{(j)}(1)/(j-1)!=-\sum_\rho(\rho-1)^{-j}\)">\((\log\Xi)^{(j)}(1)/(j-1)!=-\sum_\rho(\rho-1)^{-j}\)</span>.
+For <span class="math" data-tex="\(j=1\)">\(j=1\)</span>, the Hadamard constant satisfies
+<span class="math" data-tex="\(\operatorname{Re}B=-\sum_\rho\operatorname{Re}(1/\rho)\)">\(\operatorname{Re}B=-\sum_\rho\operatorname{Re}(1/\rho)\)</span>:
+evaluate the logarithmic derivative at <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, use reflection to negate their real parts, and use
+<span class="math" data-tex="\(\operatorname{Re}\sum(1-\rho)^{-1}=\operatorname{Re}\sum\rho^{-1}\)">\(\operatorname{Re}\sum(1-\rho)^{-1}=\operatorname{Re}\sum\rho^{-1}\)</span>.
+It follows that
+<span class="math" data-tex="\(\operatorname{Re}(\Xi&#x27;/\Xi)(1)=\sum_\rho\operatorname{Re}(1/(1-\rho))\)">\(\operatorname{Re}(\Xi&#x27;/\Xi)(1)=\sum_\rho\operatorname{Re}(1/(1-\rho))\)</span>.
+Substitute these identities in (1.5), expand
+<span class="math" data-tex="\(1-[1+1/(\rho-1)]^n\)">\(1-[1+1/(\rho-1)]^n\)</span>, and use reflection to exchange the real sums of reciprocal powers of <span class="math" data-tex="\(z_\rho\)">\(z_\rho\)</span> with those of <span class="math" data-tex="\(z_\rho\)">\(z_\rho\)</span>. This proves the claim.
+Taking real parts is what removes a possible purely imaginary exponential normalization of the completion.</p>
+<h2 id="9-the-effect-of-an-off-line-quartet">9. The effect of an off-line quartet</h2>
+<p>Add the quartet
+<span class="math math-display" data-tex="\[
+\rho=\frac12\pm\delta\pm3i
+\tag{9.1}
+\]">\[
+\rho=\frac12\pm\delta\pm3i
+\tag{9.1}
+\]</span></p>
+<p>to the zeta zero multiset. This gives a hypothetical multiset different from the zeros of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Both reflection and conjugation are preserved; adding only two upper-half-plane points would not preserve conjugation.
+If <span class="math" data-tex="\(z_{1/2-\delta+3i}=r e^{i\vartheta}\)">\(z_{1/2-\delta+3i}=r e^{i\vartheta}\)</span>, the quartet contributes exactly</p>
+<span class="math math-display" data-tex="\[
+4-2(r^n+r^{-n})\cos(n\vartheta)
+\tag{9.2}
+\]">\[
+4-2(r^n+r^{-n})\cos(n\vartheta)
+\tag{9.2}
+\]</span>
+<p>to its Li sum. Thus its coefficients are the actual <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> plus (9.2).
+The following computation uses (1.4) to evaluate the zeta contribution, and iterates the four added powers:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(\delta\)">\(\delta\)</span></th>
+<th style="text-align:right">First negative index found</th>
+<th style="text-align:right">Zeta contribution</th>
+<th style="text-align:right">Value after adding the quartet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(0.05\)">\(0.05\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1389\)">\(1389\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3461.07523917\)">\(3461.07523917\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-173.09809118\)">\(-173.09809118\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(0.10\)">\(0.10\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(608\)">\(608\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1261.15289159\)">\(1261.15289159\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-12.04710267\)">\(-12.04710267\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(0.20\)">\(0.20\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(248\)">\(248\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(403.81098353\)">\(403.81098353\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-6.47234708\)">\(-6.47234708\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For each row every preceding index was evaluated. The zeta coefficients were computed by the Cauchy integral of (1.4), using 4096 samples on <span class="math" data-tex="\(|w|=0.9\)">\(|w|=0.9\)</span> at 135 decimal digits, and checked on <span class="math" data-tex="\(|w|=0.88\)">\(|w|=0.88\)</span> at 160 digits. Both evaluations agree in the displayed digits; the first three coefficients also agree with (1.6) and the derivative calculation. The minimum preceding value in each row was greater than <span class="math" data-tex="\(0.23\)">\(0.23\)</span>. These are numerical evaluations, rather than interval certificates for the first index.
+Theorem 4.1 proves eventual failure of the sign for this hypothetical multiset regardless of the numerical table. Under RH the zeta contribution has the asymptotic (5.1), while the quartet's exponential contribution eventually dominates it along the return sequence. This explains why a quartet close to the line may remain undetected by many initial coefficients.</p>
+<h2 id="10-exercises-with-solutions">10. Exercises with solutions</h2>
+<h3 id="1-the-unit-circle-equation">1. The unit-circle equation</h3>
+<p>Show that <span class="math" data-tex="\(|1-1/\rho|=1\)">\(|1-1/\rho|=1\)</span> exactly when <span class="math" data-tex="\(\operatorname{Re}\rho=1/2\)">\(\operatorname{Re}\rho=1/2\)</span>.</p>
+<p><strong>Solution.</strong> Square the modulus and subtract one:
+<span class="math" data-tex="\((|\rho-1|^2-|\rho|^2)/|\rho|^2=(1-2\operatorname{Re}\rho)/|\rho|^2\)">\((|\rho-1|^2-|\rho|^2)/|\rho|^2=(1-2\operatorname{Re}\rho)/|\rho|^2\)</span>.
+The denominator is positive for <span class="math" data-tex="\(\rho\ne0\)">\(\rho\ne0\)</span>, so equality holds precisely as claimed.</p>
+<h3 id="2-reflection-and-reciprocals">2. Reflection and reciprocals</h3>
+<p>Compute <span class="math" data-tex="\(z_{1-\rho}\)">\(z_{1-\rho}\)</span> and <span class="math" data-tex="\(z_{1-\bar\rho}\)">\(z_{1-\bar\rho}\)</span>.</p>
+<p><strong>Solution.</strong> Since
+<span class="math" data-tex="\(1-1/(1-\rho)=\rho/(\rho-1)=(1-1/\rho)^{-1}\)">\(1-1/(1-\rho)=\rho/(\rho-1)=(1-1/\rho)^{-1}\)</span>, the first reflection gives the reciprocal. Conjugating this identity gives the second in (2.2). The points <span class="math" data-tex="\(0,1\)">\(0,1\)</span> are excluded so both expressions exist.</p>
+<h3 id="3-the-derivative-definition">3. The derivative definition</h3>
+<p>Derive (1.3) from the product.</p>
+<p><strong>Solution.</strong> Integrate the symmetrically summed logarithmic derivative around <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, then substitute <span class="math" data-tex="\(s=(1-w)^{-1}\)">\(s=(1-w)^{-1}\)</span>. Each zero contributes
+<span class="math" data-tex="\(\log(1-z_\rho^{-1}w)-\log(1-w)\)">\(\log(1-z_\rho^{-1}w)-\log(1-w)\)</span>.
+Reflection exchanges <span class="math" data-tex="\(z_\rho^{-1}\)">\(z_\rho^{-1}\)</span> with <span class="math" data-tex="\(z_\rho\)">\(z_\rho\)</span>, proving coefficient <span class="math" data-tex="\(\lambda_n/n\)">\(\lambda_n/n\)</span>. Expanding <span class="math" data-tex="\(L(1+w/(1-w))\)">\(L(1+w/(1-w))\)</span> gives (1.5), because
+<span class="math" data-tex="\(n\binom{n-1}{j-1}/j!=\binom nj/(j-1)!\)">\(n\binom{n-1}{j-1}/j!=\binom nj/(j-1)!\)</span>.
+Leibniz's rule for <span class="math" data-tex="\(s^{n-1}L(s)\)">\(s^{n-1}L(s)\)</span> gives the same finite sum, proving (1.3). Conjugate pairing supplies the local uniform convergence needed before differentiation.</p>
+<h3 id="4-the-first-coefficient">4. The first coefficient</h3>
+<p>Compute <span class="math" data-tex="\(\lambda_1\)">\(\lambda_1\)</span> without summing numerical zeros.</p>
+<p><strong>Solution.</strong> The four nonconstant factors in
+<span class="math" data-tex="\(\xi(s)=\frac12s[(s-1)\zeta(s)]\pi^{-s/2}\Gamma(s/2)\)">\(\xi(s)=\frac12s[(s-1)\zeta(s)]\pi^{-s/2}\Gamma(s/2)\)</span>
+contribute at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, respectively,
+<span class="math" data-tex="\(1,\gamma,-\frac12\log\pi,\frac12(-\gamma-2\log2)\)">\(1,\gamma,-\frac12\log\pi,\frac12(-\gamma-2\log2)\)</span>.
+Their sum is (1.6). The constant <span class="math" data-tex="\(1/2\)">\(1/2\)</span> has zero logarithmic derivative.</p>
+<h3 id="5-the-general-multiset">5. The general multiset</h3>
+<p>Prove the criterion under (4.1), including the infinite-tail estimate.</p>
+<p><strong>Solution.</strong> The real linear term <span class="math" data-tex="\(n\operatorname{Re}(1/\rho)\)">\(n\operatorname{Re}(1/\rho)\)</span> and the higher-power remainder are summable by (4.1). If a member is off the line, reflection gives <span class="math" data-tex="\(M=\max|z_\rho|&gt;1\)">\(M=\max|z_\rho|&gt;1\)</span>; the maximizers form a finite multiset and the remaining moduli are bounded by some <span class="math" data-tex="\(r&lt;M\)">\(r&lt;M\)</span>, with <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>. Taylor's remainder (4.3) makes their entire real contribution <span class="math" data-tex="\(O(n^2r^n)\)">\(O(n^2r^n)\)</span>. Simultaneous returns of the finitely many maximal phases make their cosine sum approach the positive total multiplicity on an unbounded sequence. Their contribution is <span class="math" data-tex="\(-M^n\)">\(-M^n\)</span> times that sum, which overwhelms the tail and makes (4.2) negative. On the line every individual real summand is <span class="math" data-tex="\(1-\cos(n\vartheta)\geq0\)">\(1-\cos(n\vartheta)\geq0\)</span>, giving the converse implication.</p>
+<h2 id="sources-and-credit">Sources and credit</h2>
+<p>The criterion is due to Xian-Jin Li, with the earlier power-series normalization of J. B. Keiper. The multiset and one-sided-growth viewpoints are due to E. Bombieri and J. C. Lagarias. A. Voros identified the contrasting large-index behaviors; the remainder in (5.1) is the Lagarias form. These attributions and their original references are discussed in Ernvall-Hytönen, Odžak, Smajlović and Zubača, <em>Variants of the Li-type criteria for the generalized Riemann hypothesis</em>, Sections 1.1–1.2 and 2–4. The arguments in this lesson supply the proofs with the conventions used here.</p>
+<p>Voros, <em>More zeta functions for the Riemann zeros</em>, Section 3.3, equation (22), gives the triangular relation between Li coefficients and sums of inverse powers of zeros; expanding (1.2) gives that relation directly. Its note after (22) also distinguishes Li's and Keiper's normalizations. Connes, <em>The Riemann Hypothesis: Past, Present and a Letter Through Time</em>, subsection “Li's criterion”, places this criterion among the explicit-formula approaches.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-EXPF-05.html">← The archimedean place: W_∞ and positivity for small support</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-EXPF-08.html">Pair correlation of zeros: Montgomery&#x27;s theorem →</a></span></nav>
+<p class="small source-link"><a href="src/NT-EXPF-06.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-EXPF">Repository</a></nav>
+</footer>
+</body>
+</html>

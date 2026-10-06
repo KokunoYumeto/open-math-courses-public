@@ -1,0 +1,400 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Extended positive elements and composition with operator-valued weights · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-EW.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-EP.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original reconstruction and complete extended-positive matrix example by GPT-6 Astra (OpenAI), Ultra; reader integration by GPT-6.1 Sol (OpenAI), Ultra. Independently owner reviewed at earlier written programme proofs. Arbitrary Hilbert/algebra scope, every normal scalar weight and infinite-value qualifications are preserved; composition adds faithfulness and semifiniteness only under their explicitly stated hypotheses. Human review and formal verification are not asserted.</p><h1 id="OA-FLOW.EP.1">Extended positive elements and composition with operator-valued weights</h1>
+<p><em>Fresh local reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.</em></p>
+<p>This provider constructs the extended positive cone of an arbitrary concrete von Neumann algebra <span class="math" data-tex="\(M\subseteq B(K)\)">\(M\subseteq B(K)\)</span>, including the projection carrying its infinite values. It then extends every normal scalar weight to that cone and proves the basic composition theorem for normal operator-valued weights. No separability, faithfulness or semifiniteness is assumed for the extended-positive construction or the scalar extension.</p>
+<p>Actual earlier written proofs are <span class="unlinked">OA-FLOW.CF.6</span>, <span class="unlinked">OA-FLOW.CF.7</span>, <span class="unlinked">OA-FLOW.CF.8</span>, <span class="unlinked">OA-FLOW.CF.10</span>, <a href="OA-FLOW-GNS.html#gns-lemma-2-1">OA-FLOW.GNS.2.1</a>, <a href="OA-FLOW-GNS.html#gns-lemma-2-2">OA-FLOW.GNS.2.2</a>, <a href="OA-FLOW-GNS.html#gns-theorem-4-1">OA-FLOW.GNS.4.1</a>, <a href="OA-FLOW-GNS.html#gns-lemma-7-1">OA-FLOW.GNS.7.1</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.1">OA-FLOW.CP.1</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.2">OA-FLOW.CP.2</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.3">OA-FLOW.CP.3</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.4">OA-FLOW.CP.4</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.5">OA-FLOW.CP.5</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.6">OA-FLOW.CP.6</a>, <a href="OA-FLOW-SF.html#oa-flow.sf.sf0">OA-FLOW.SF.SF0</a>, <a href="OA-FLOW-SF.html#oa-flow.sf.sb0">OA-FLOW.SF.SB0</a>, <a href="OA-FLOW-SF.html#oa-flow.sf.sb1">OA-FLOW.SF.SB1</a>, <a href="OA-FLOW-SF.html#oa-flow.sf.sb2">OA-FLOW.SF.SB2</a>, <a href="OA-FLOW-SF.html#oa-flow.sf.sb3">OA-FLOW.SF.SB3</a>, <a href="OA-FLOW-SF.html#oa-flow.sf.sb4">OA-FLOW.SF.SB4</a>, <a href="OA-FLOW-SF.html#oa-flow.sf.sb5">OA-FLOW.SF.SB5</a>, <a href="OA-FLOW-SF.html#oa-flow.sf.sb6">OA-FLOW.SF.SB6</a>, <span class="unlinked">OA-FLOW.FF.5</span>, <span class="unlinked">OA-FLOW.FF.6</span>, <a href="OA-FLOW-SC.html#sc-04">OA-FLOW.SC.4</a>, <a href="OA-FLOW-SC.html#sc-05">OA-FLOW.SC.5</a>, <a href="OA-FLOW-GW.html#oa-flow.gw.1">OA-FLOW.GW.1</a>, <a href="OA-FLOW-GW.html#oa-flow.gw.2">OA-FLOW.GW.2</a>, <a href="OA-FLOW-GW.html#oa-flow.gw.3">OA-FLOW.GW.3</a>, <a href="OA-FLOW-GW.html#oa-flow.gw.4">OA-FLOW.GW.4</a>, <a href="OA-FLOW-EW.html#oa-flow.ew.5">OA-FLOW.EW.5</a>. GNS Lemmas 2.1–2.2 give positive-functional Cauchy–Schwarz, GNS 4.1 gives its unital norm identity, and GNS 7.1 constructs the countable Hilbert sum. CF Sections 6–8 and 10 supply bounded calculus, positivity, Hilbert–Riesz and completion. The closed-form input is FF-4 with the opening form-invariance paragraph of FF-5 (current <span class="unlinked">FF</span> lines 169–213); its later paragraphs are unnecessary here. CP01–06 supplies predual completeness/duality; EP-1 itself proves the positive vector-series representation. EW-5 is the current reviewed normal-minorant formula, including every infinite value.</p>
+<p>Free author context is <a href="https://arxiv.org/pdf/2004.02383v1#page=68">Hiai, §8.1 and Proposition 8.6, printed pp.68–71</a>. The scalar-weight extension below uses <a href="OA-FLOW-EW.html#oa-flow.ew.5">EW</a>'s actual normal-minorant formula and two interchangeable suprema; it does not import the general decomposition of a normal weight as a sum of normal functionals used in that reference. That separate decomposition theorem remains open in the present reconstruction.</p>
+<p><a id="oa-flow.ep.1"></a><a id="ep-1"></a></p>
+<h2 id="ep-1-every-positive-normal-functional-has-a-positive-vector-series">EP-1. Every positive normal functional has a positive vector series</h2>
+<p>Let <span class="math" data-tex="\(f\in M_*^+\)">\(f\in M_*^+\)</span>. CP01–06 gives square-summable vector sequences <span class="math" data-tex="\((\xi_n),(\eta_n)\)">\((\xi_n),(\eta_n)\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span> such that
+<span class="math math-display" data-tex="\[
+f(a)=\sum_n\langle a\xi_n,\eta_n\rangle.
+\]">\[
+f(a)=\sum_n\langle a\xi_n,\eta_n\rangle.
+\]</span>
+For <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>, Cauchy–Schwarz for <span class="math" data-tex="\(a^{1/2}\)">\(a^{1/2}\)</span> and <span class="math" data-tex="\(2rs\leq r^2+s^2\)">\(2rs\leq r^2+s^2\)</span> show
+<span class="math math-display" data-tex="\[
+0\leq f(a)\leq
+g(a):=\frac12\sum_n
+  \bigl(\langle a\xi_n,\xi_n\rangle+\langle a\eta_n,\eta_n\rangle\bigr).
+\tag{EP1}
+\]">\[
+0\leq f(a)\leq
+g(a):=\frac12\sum_n
+  \bigl(\langle a\xi_n,\xi_n\rangle+\langle a\eta_n,\eta_n\rangle\bigr).
+\tag{EP1}
+\]</span>
+The right side is a norm-convergent series of positive vector functionals and hence belongs to <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span>, by <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP</a>'s completeness and isometric inclusion. Write it as
+<span class="math" data-tex="\(g(a)=\langle a^{(\infty)}v,v\rangle\)">\(g(a)=\langle a^{(\infty)}v,v\rangle\)</span>
+on the countable Hilbert sum <span class="math" data-tex="\(K^{(\infty)}\)">\(K^{(\infty)}\)</span>, by putting all <span class="math" data-tex="\(\xi_n/\sqrt2,\eta_n/\sqrt2\)">\(\xi_n/\sqrt2,\eta_n/\sqrt2\)</span> among the coordinates of <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>Let <span class="math" data-tex="\(K_0=\overline{\{a^{(\infty)}v:a\in M\}}\)">\(K_0=\overline{\{a^{(\infty)}v:a\in M\}}\)</span>. This is a reducing subspace for the amplified representation, and <span class="math" data-tex="\(v\in K_0\)">\(v\in K_0\)</span>. On its dense cyclic subspace the form
+<span class="math math-display" data-tex="\[
+F(a^{(\infty)}v,b^{(\infty)}v)=f(b^*a)
+\]">\[
+F(a^{(\infty)}v,b^{(\infty)}v)=f(b^*a)
+\]</span>
+is well defined and bounded. Indeed the positive-functional Cauchy–Schwarz inequality proved in <a href="OA-FLOW-GNS.html#gns-lemma-2-1">GNS Lemma2.1</a> and <a href="OA-FLOW-GNS.html#gns-lemma-2-2">Lemma2.2</a> and (EP1) give
+<span class="math math-display" data-tex="\[
+|f(b^*a)|^2\leq f(a^*a)f(b^*b)
+\leq\|a^{(\infty)}v\|^2\|b^{(\infty)}v\|^2.
+\]">\[
+|f(b^*a)|^2\leq f(a^*a)f(b^*b)
+\leq\|a^{(\infty)}v\|^2\|b^{(\infty)}v\|^2.
+\]</span>
+<span class="unlinked">CF8 Hilbert–Riesz theorem</span> supplies a positive contraction <span class="math" data-tex="\(T\)">\(T\)</span> on <span class="math" data-tex="\(K_0\)">\(K_0\)</span> representing this form. For <span class="math" data-tex="\(c\in M\)">\(c\in M\)</span>,
+<span class="math math-display" data-tex="\[
+\langle T c^{(\infty)}a^{(\infty)}v,b^{(\infty)}v\rangle
+=f(b^*ca)
+=\langle T a^{(\infty)}v,c^{*(\infty)}b^{(\infty)}v\rangle.
+\]">\[
+\langle T c^{(\infty)}a^{(\infty)}v,b^{(\infty)}v\rangle
+=f(b^*ca)
+=\langle T a^{(\infty)}v,c^{*(\infty)}b^{(\infty)}v\rangle.
+\]</span>
+Thus <span class="math" data-tex="\(T\)">\(T\)</span> commutes with the restricted representation, as does its bounded positive square root. Set <span class="math" data-tex="\(\zeta=T^{1/2}v\in K_0\subseteq K^{(\infty)}\)">\(\zeta=T^{1/2}v\in K_0\subseteq K^{(\infty)}\)</span>. Then
+<span class="math math-display" data-tex="\[
+f(a)=\langle a^{(\infty)}\zeta,\zeta\rangle
+=\sum_n\langle a\zeta_n,\zeta_n\rangle,\qquad
+\sum_n\|\zeta_n\|^2=f(1)=\|f\|.
+\tag{EP2}
+\]">\[
+f(a)=\langle a^{(\infty)}\zeta,\zeta\rangle
+=\sum_n\langle a\zeta_n,\zeta_n\rangle,\qquad
+\sum_n\|\zeta_n\|^2=f(1)=\|f\|.
+\tag{EP2}
+\]</span>
+The series converges in functional norm. Zero functionals and zero Hilbert spaces are included. The same series on <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span> is a normal positive extension of <span class="math" data-tex="\(f\)">\(f\)</span> of the same norm, so this extension assertion has also been proved locally.</p>
+<p><a id="oa-flow.ep.2"></a><a id="ep-2"></a></p>
+<h2 id="OA-FLOW.EP.2">EP-2. From a predual-cone functional to its complete closed form</h2>
+<p>Define <span class="math" data-tex="\(\widehat M_+\)">\(\widehat M_+\)</span> to consist of maps <span class="math" data-tex="\(m:M_*^+\to[0,\infty]\)">\(m:M_*^+\to[0,\infty]\)</span> which are additive, positively homogeneous with <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>, and lower semicontinuous for the norm topology on <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span>. Additivity gives monotonicity in the positive-functional order. A bounded positive <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> is embedded as <span class="math" data-tex="\(m_a(f)=f(a)\)">\(m_a(f)=f(a)\)</span>.</p>
+<p>For <span class="math" data-tex="\(m\in\widehat M_+\)">\(m\in\widehat M_+\)</span>, put <span class="math" data-tex="\(q(\xi)=m(\omega_\xi)\)">\(q(\xi)=m(\omega_\xi)\)</span>, where
+<span class="math" data-tex="\(\omega_\xi(a)=\langle a\xi,\xi\rangle\)">\(\omega_\xi(a)=\langle a\xi,\xi\rangle\)</span>.
+The functional norm estimate
+<span class="math math-display" data-tex="\[
+\|\omega_\xi-\omega_\eta\|
+\leq(\|\xi\|+\|\eta\|)\|\xi-\eta\|
+\tag{EP3}
+\]">\[
+\|\omega_\xi-\omega_\eta\|
+\leq(\|\xi\|+\|\eta\|)\|\xi-\eta\|
+\tag{EP3}
+\]</span>
+follows by expanding the difference at every <span class="math" data-tex="\(\|a\|\leq1\)">\(\|a\|\leq1\)</span>. Consequently <span class="math" data-tex="\(q\)">\(q\)</span> is norm lower semicontinuous. Also
+<span class="math math-display" data-tex="\[
+q(c\xi)=|c|^2q(\xi),\qquad
+q(\xi+\eta)+q(\xi-\eta)=2q(\xi)+2q(\eta).
+\tag{EP4}
+\]">\[
+q(c\xi)=|c|^2q(\xi),\qquad
+q(\xi+\eta)+q(\xi-\eta)=2q(\xi)+2q(\eta).
+\tag{EP4}
+\]</span>
+The latter is the parallelogram identity for vector functionals followed by additivity; it is valid with infinite values.</p>
+<p>The finite domain <span class="math" data-tex="\(D=\{\xi:q(\xi)&lt;\infty\}\)">\(D=\{\xi:q(\xi)&lt;\infty\}\)</span> is a complex linear space. For addition use
+<span class="math" data-tex="\(\omega_{\xi+\eta}\leq2\omega_\xi+2\omega_\eta\)">\(\omega_{\xi+\eta}\leq2\omega_\xi+2\omega_\eta\)</span>
+and monotonicity of <span class="math" data-tex="\(m\)">\(m\)</span>. On <span class="math" data-tex="\(D\)">\(D\)</span>, polarization gives a nonnegative sesquilinear form with diagonal <span class="math" data-tex="\(q\)">\(q\)</span>:
+<span class="math math-display" data-tex="\[
+q(\xi,\eta)=\frac14\bigl(q(\xi+\eta)-q(\xi-\eta)
+ +i q(\xi+i\eta)-i q(\xi-i\eta)\bigr).
+\tag{EP5}
+\]">\[
+q(\xi,\eta)=\frac14\bigl(q(\xi+\eta)-q(\xi-\eta)
+ +i q(\xi+i\eta)-i q(\xi-i\eta)\bigr).
+\tag{EP5}
+\]</span>
+Here is the elementary algebra behind this use. The real expression
+<span class="math" data-tex="\(B(\xi,\eta)=(q(\xi+\eta)-q(\xi-\eta))/4\)">\(B(\xi,\eta)=(q(\xi+\eta)-q(\xi-\eta))/4\)</span>
+is symmetric and satisfies
+<span class="math" data-tex="\(B(\xi+\zeta,\eta)+B(\xi-\zeta,\eta)=2B(\xi,\eta)\)">\(B(\xi+\zeta,\eta)+B(\xi-\zeta,\eta)=2B(\xi,\eta)\)</span>
+by two applications of the parallelogram identity. Its value at zero is zero; putting <span class="math" data-tex="\(\zeta=\xi\)">\(\zeta=\xi\)</span> gives doubling, and substituting <span class="math" data-tex="\(\xi=(u+v)/2,\zeta=(u-v)/2\)">\(\xi=(u+v)/2,\zeta=(u-v)/2\)</span> gives additivity. It is therefore rational linear. Positivity of <span class="math" data-tex="\(q(u+t v)\)">\(q(u+t v)\)</span> for rational <span class="math" data-tex="\(t\)">\(t\)</span> gives <span class="math" data-tex="\(|B(u,v)|^2\leq q(u)q(v)\)">\(|B(u,v)|^2\leq q(u)q(v)\)</span>. Homogeneity of <span class="math" data-tex="\(q\)">\(q\)</span> makes <span class="math" data-tex="\(B((t-r)u,v)\)">\(B((t-r)u,v)\)</span> tend to zero as rational <span class="math" data-tex="\(r\to t\)">\(r\to t\)</span>, proving real linearity. The identities <span class="math" data-tex="\(B(iu,iv)=B(u,v)\)">\(B(iu,iv)=B(u,v)\)</span> and <span class="math" data-tex="\(B(iu,v)=-B(u,iv)\)">\(B(iu,v)=-B(u,iv)\)</span>, directly from (EP4), make <span class="math" data-tex="\(B(u,v)+iB(u,iv)\)">\(B(u,v)+iB(u,iv)\)</span> complex linear in the first entry and conjugate linear in the second. This is exactly (EP5).</p>
+<p>This form is closed, even if <span class="math" data-tex="\(D\)">\(D\)</span> is not dense in <span class="math" data-tex="\(K\)">\(K\)</span>. If <span class="math" data-tex="\((\xi_n)\)">\((\xi_n)\)</span> is Cauchy for <span class="math" data-tex="\(\|\xi\|_q^2=\|\xi\|^2+q(\xi)\)">\(\|\xi\|_q^2=\|\xi\|^2+q(\xi)\)</span>, it converges in <span class="math" data-tex="\(K\)">\(K\)</span> to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. For each <span class="math" data-tex="\(n\)">\(n\)</span>, lower semicontinuity gives
+<span class="math math-display" data-tex="\[
+q(\xi_n-\xi)\leq\liminf_m q(\xi_n-\xi_m).
+\]">\[
+q(\xi_n-\xi)\leq\liminf_m q(\xi_n-\xi_m).
+\]</span>
+The right side becomes arbitrarily small for large <span class="math" data-tex="\(n\)">\(n\)</span>; it is finite for such <span class="math" data-tex="\(n\)">\(n\)</span>, so <span class="math" data-tex="\(\xi\in D\)">\(\xi\in D\)</span>, and the sequence converges in form norm.</p>
+<p><span class="unlinked">FF-4</span> now supplies a unique orthogonal projection <span class="math" data-tex="\(e\)">\(e\)</span>, with <span class="math" data-tex="\(eK=\overline D\)">\(eK=\overline D\)</span>, and a unique positive self-adjoint operator <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(eK\)">\(eK\)</span>, such that
+<span class="math math-display" data-tex="\[
+D=D(A^{1/2}),\qquad
+q(\xi)=\|A^{1/2}\xi\|^2\ \ (\xi\in D),\qquad
+q(\xi)=\infty\ \ (\xi\notin D).
+\tag{EP6}
+\]">\[
+D=D(A^{1/2}),\qquad
+q(\xi)=\|A^{1/2}\xi\|^2\ \ (\xi\in D),\qquad
+q(\xi)=\infty\ \ (\xi\notin D).
+\tag{EP6}
+\]</span>
+Let <span class="math" data-tex="\(p=1-e\)">\(p=1-e\)</span>. This is the infinite part, not the zero-eigenspace projection.</p>
+<p>For a unitary <span class="math" data-tex="\(u'\in M'\)">\(u'\in M'\)</span>, <span class="math" data-tex="\(\omega_{u'\xi}=\omega_\xi\)">\(\omega_{u'\xi}=\omega_\xi\)</span>, so <span class="math" data-tex="\(q(u'\xi)=q(\xi)\)">\(q(u'\xi)=q(\xi)\)</span>. Thus <span class="math" data-tex="\(D\)">\(D\)</span>, its closure <span class="math" data-tex="\(eK\)">\(eK\)</span>, and the form are invariant in both directions. The projection <span class="math" data-tex="\(e\)">\(e\)</span> commutes with <span class="math" data-tex="\(M'\)">\(M'\)</span>; the <span class="unlinked">FF</span> resolvent variational argument makes the resolvent and spectral projections of <span class="math" data-tex="\(A\)">\(A\)</span> commute with its restricted unitaries. The unitary test for commutants and the bicommutant property therefore give
+<span class="math math-display" data-tex="\[
+e,p\in M,\qquad 1_B(A)\text{ extended by zero belongs to }M.
+\tag{EP7}
+\]">\[
+e,p\in M,\qquad 1_B(A)\text{ extended by zero belongs to }M.
+\tag{EP7}
+\]</span>
+Thus <span class="math" data-tex="\(A\)">\(A\)</span> is affiliated with <span class="math" data-tex="\(eMe\)">\(eMe\)</span>, with its full spectral domains. Define, by bounded spectral calculus,
+<span class="math math-display" data-tex="\[
+a_n=(A\wedge n)e+np\in M_+,\qquad n\geq1.
+\tag{EP8}
+\]">\[
+a_n=(A\wedge n)e+np\in M_+,\qquad n\geq1.
+\tag{EP8}
+\]</span>
+These operators increase, satisfy <span class="math" data-tex="\(\|a_n\|\leq n\)">\(\|a_n\|\leq n\)</span>, and have
+<span class="math" data-tex="\(\langle a_n\xi,\xi\rangle\uparrow q(\xi)\)">\(\langle a_n\xi,\xi\rangle\uparrow q(\xi)\)</span>
+on every <span class="math" data-tex="\(\xi\in K\)">\(\xi\in K\)</span>, including vectors with nonzero <span class="math" data-tex="\(p\)">\(p\)</span>-component.</p>
+<p><a id="oa-flow.ep.3"></a><a id="ep-3"></a></p>
+<h2 id="OA-FLOW.EP.3">EP-3. Recovery on all normal functionals, uniqueness and finite-domain tests</h2>
+<p>Let <span class="math" data-tex="\(f=\sum_j\omega_{\zeta_j}\)">\(f=\sum_j\omega_{\zeta_j}\)</span> be the norm-convergent positive series from <a href="OA-FLOW-EP.html#oa-flow.ep.1">EP-1</a>. Additivity gives
+<span class="math" data-tex="\(m(\sum_{j\leq r}\omega_{\zeta_j})=\sum_{j\leq r}q(\zeta_j)\)">\(m(\sum_{j\leq r}\omega_{\zeta_j})=\sum_{j\leq r}q(\zeta_j)\)</span>.
+Monotonicity bounds every partial sum by <span class="math" data-tex="\(m(f)\)">\(m(f)\)</span>; lower semicontinuity at the norm limit gives the reverse bound. Hence
+<span class="math math-display" data-tex="\[
+m(f)=\sum_j q(\zeta_j)
+=\sup_n\sum_j\langle a_n\zeta_j,\zeta_j\rangle
+=\sup_n f(a_n).
+\tag{EP9}
+\]">\[
+m(f)=\sum_j q(\zeta_j)
+=\sup_n\sum_j\langle a_n\zeta_j,\zeta_j\rangle
+=\sup_n f(a_n).
+\tag{EP9}
+\]</span>
+The interchange of the nonnegative countable sum and increasing limit is the <a href="OA-FLOW-SC.html#sc-04">earlier monotone-convergence proof</a>. Formula (EP9) is valid when either side is infinite. It also proves that the resulting value is independent of the vector-series representation.</p>
+<p>Conversely, for any projection <span class="math" data-tex="\(e\in M\)">\(e\in M\)</span> and any positive self-adjoint <span class="math" data-tex="\(A\)">\(A\)</span> affiliated with <span class="math" data-tex="\(eMe\)">\(eMe\)</span>, (EP8)–(EP9) define an element of <span class="math" data-tex="\(\widehat M_+\)">\(\widehat M_+\)</span>. The functions <span class="math" data-tex="\(f\mapsto f(a_n)\)">\(f\mapsto f(a_n)\)</span> are continuous; their supremum is lower semicontinuous. For <span class="math" data-tex="\(f,g\geq0\)">\(f,g\geq0\)</span>, the two increasing numerical sequences give
+<span class="math" data-tex="\(\sup_n(f(a_n)+g(a_n))=\sup_n f(a_n)+\sup_n g(a_n)\)">\(\sup_n(f(a_n)+g(a_n))=\sup_n f(a_n)+\sup_n g(a_n)\)</span>,
+including infinity; this proves additivity. Homogeneity, including the zero convention, follows directly.</p>
+<p>The pair <span class="math" data-tex="\((e,A)\)">\((e,A)\)</span> is unique: evaluating on all vector functionals recovers <span class="math" data-tex="\(q\)">\(q\)</span>, its complete finite domain, its closure <span class="math" data-tex="\(eK\)">\(eK\)</span>, and the unique <span class="unlinked">FF-4</span> operator. Equivalently, if <span class="math" data-tex="\(E_\lambda=1_{[0,\lambda]}(A)\)">\(E_\lambda=1_{[0,\lambda]}(A)\)</span> extended by zero, then
+<span class="math math-display" data-tex="\[
+m(f)=\int_{[0,\infty)}\lambda\,d f(E_\lambda)+\infty\,f(p).
+\tag{EP10}
+\]">\[
+m(f)=\int_{[0,\infty)}\lambda\,d f(E_\lambda)+\infty\,f(p).
+\tag{EP10}
+\]</span>
+The integral denotes the scalar spectral integral from the proved spectral calculus; <span class="math" data-tex="\(\infty\cdot0=0\)">\(\infty\cdot0=0\)</span>. It follows from (EP8) by monotone convergence. The projections <span class="math" data-tex="\(E_\lambda\)">\(E_\lambda\)</span> are strongly right continuous and increase to <span class="math" data-tex="\(e\)">\(e\)</span>, so the infinite projection is exactly their complementary limiting projection.</p>
+<p>Two useful full-generality tests follow. First <span class="math" data-tex="\(m(f)&gt;0\)">\(m(f)&gt;0\)</span> for every nonzero <span class="math" data-tex="\(f\in M_*^+\)">\(f\in M_*^+\)</span> if and only if <span class="math" data-tex="\(1_{\{0\}}(A)=0\)">\(1_{\{0\}}(A)=0\)</span>. If this kernel vanishes, (EP6) has no nonzero zero vector, and (EP9) gives the claim; a nonzero kernel vector disproves it in the other direction.</p>
+<p>Second,
+<span class="math math-display" data-tex="\[
+p=0\quad\Longleftrightarrow\quad
+\{f\in M_*^+:m(f)&lt;\infty\}\text{ is norm dense in }M_*^+.
+\tag{EP11}
+\]">\[
+p=0\quad\Longleftrightarrow\quad
+\{f\in M_*^+:m(f)&lt;\infty\}\text{ is norm dense in }M_*^+.
+\tag{EP11}
+\]</span>
+If <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, <span class="math" data-tex="\(D(A^{1/2})\)">\(D(A^{1/2})\)</span> is dense in <span class="math" data-tex="\(K\)">\(K\)</span>. Truncate the positive vector series of <span class="math" data-tex="\(f\)">\(f\)</span>, then approximate its finitely many vectors by vectors in this domain. Formula (EP3) proves norm convergence of the resulting finite-functional sums, whose <span class="math" data-tex="\(m\)">\(m\)</span>-values are finite. If <span class="math" data-tex="\(p\ne0\)">\(p\ne0\)</span>, every finite-<span class="math" data-tex="\(m\)">\(m\)</span> functional has all vectors of any positive representation in <span class="math" data-tex="\(D\subseteq eK\)">\(D\subseteq eK\)</span>, by (EP9), so it vanishes at <span class="math" data-tex="\(p\)">\(p\)</span>. A unit vector in <span class="math" data-tex="\(pK\)">\(pK\)</span> defines a normal state at distance at least one from that finite cone, by evaluation at <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(m(f)\leq C\|f\|\)">\(m(f)\leq C\|f\|\)</span> for every <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span> if and only if <span class="math" data-tex="\(m=m_a\)">\(m=m_a\)</span> for a bounded positive <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, <span class="math" data-tex="\(\|a\|\leq C\)">\(\|a\|\leq C\)</span>. The forward inequality gives <span class="math" data-tex="\(q(\xi)\leq C\|\xi\|^2\)">\(q(\xi)\leq C\|\xi\|^2\)</span> for every vector, hence <span class="math" data-tex="\(e=1\)">\(e=1\)</span> and the form operator is bounded with <span class="math" data-tex="\(0\leq A\leq C\)">\(0\leq A\leq C\)</span>; (EP9) identifies <span class="math" data-tex="\(m\)">\(m\)</span>. The converse is the functional norm inequality.</p>
+<p><a id="oa-flow.ep.4"></a><a id="ep-4"></a></p>
+<h2 id="OA-FLOW.EP.4">EP-4. Order, sums and bounded conjugation in the extended cone</h2>
+<p>Order in <span class="math" data-tex="\(\widehat M_+\)">\(\widehat M_+\)</span> means pointwise order on <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span>. Addition and positive scaling are pointwise. They preserve lower semicontinuity because the summands are nonnegative; for addition, a strict finite lower bound at one point persists on the intersection of two neighborhoods giving corresponding lower bounds for the summands. Infinite values are handled by choosing arbitrarily large finite bounds.</p>
+<p>If <span class="math" data-tex="\((m_\alpha)\)">\((m_\alpha)\)</span> is an increasing net, its pointwise supremum <span class="math" data-tex="\(m\)">\(m\)</span> is in <span class="math" data-tex="\(\widehat M_+\)">\(\widehat M_+\)</span>. Supremum preserves lower semicontinuity. Additivity follows because the supremum of
+<span class="math" data-tex="\(m_\alpha(f)+m_\alpha(g)\)">\(m_\alpha(f)+m_\alpha(g)\)</span>
+equals the sum of the two suprema, using a common upper index for two approximating indices. The same proof covers infinite values. In particular any family has a sum, defined by the increasing net of finite partial sums; no common bound on that family is required.</p>
+<p>For <span class="math" data-tex="\(b\in M\)">\(b\in M\)</span>, define
+<span class="math math-display" data-tex="\[
+(b^*mb)(f)=m(f_b),\qquad f_b(x)=f(b^*xb).
+\tag{EP12}
+\]">\[
+(b^*mb)(f)=m(f_b),\qquad f_b(x)=f(b^*xb).
+\tag{EP12}
+\]</span>
+<a href="OA-FLOW-EP.html#oa-flow.ep.1">EP-1</a> or <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP</a>'s vector series proves <span class="math" data-tex="\(f_b\in M_*^+\)">\(f_b\in M_*^+\)</span> and
+<span class="math" data-tex="\(\|f_b-g_b\|\leq\|b\|^2\|f-g\|\)">\(\|f_b-g_b\|\leq\|b\|^2\|f-g\|\)</span>.
+Thus (EP12) is again additive, homogeneous and norm lower semicontinuous. Its closed quadratic form is precisely <span class="math" data-tex="\(\xi\mapsto q(b\xi)\)">\(\xi\mapsto q(b\xi)\)</span>, with finite domain <span class="math" data-tex="\(\{\xi:b\xi\in D\}\)">\(\{\xi:b\xi\in D\}\)</span>. This describes the full domain even for singular <span class="math" data-tex="\(b\)">\(b\)</span>; no formal unbounded product <span class="math" data-tex="\(b^*Ab\)">\(b^*Ab\)</span> is presumed to be self-adjoint. The definition agrees with ordinary multiplication for bounded positive <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>These operations and increasing suprema are intrinsic: a normal *-isomorphism with normal inverse transports them through its predual map. No particular faithful representation occurs in their definition.</p>
+<p><a id="oa-flow.ep.5"></a><a id="ep-5"></a></p>
+<h2 id="OA-FLOW.EP.5">EP-5. Every normal scalar weight extends, without a normal-weight sum theorem</h2>
+<p>Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be any normal weight on <span class="math" data-tex="\(M\)">\(M\)</span>. <a href="OA-FLOW-EW.html#oa-flow.ew.5">EW</a> proves, with no faithfulness or semifiniteness hypothesis,
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sup_{f\in\mathcal F_\varphi}f(a),\qquad
+\mathcal F_\varphi=\{f\in M_*^+:f\leq\varphi\},\quad a\in M_+.
+\tag{EP13}
+\]">\[
+\varphi(a)=\sup_{f\in\mathcal F_\varphi}f(a),\qquad
+\mathcal F_\varphi=\{f\in M_*^+:f\leq\varphi\},\quad a\in M_+.
+\tag{EP13}
+\]</span>
+For <span class="math" data-tex="\(m\in\widehat M_+\)">\(m\in\widehat M_+\)</span>, define
+<span class="math math-display" data-tex="\[
+\widehat\varphi(m)=\sup_{f\in\mathcal F_\varphi}m(f).
+\tag{EP14}
+\]">\[
+\widehat\varphi(m)=\sup_{f\in\mathcal F_\varphi}m(f).
+\tag{EP14}
+\]</span>
+It agrees with <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(M_+\)">\(M_+\)</span>. If <span class="math" data-tex="\(a_n\uparrow m\)">\(a_n\uparrow m\)</span> is the canonical bounded sequence (EP8), two independent suprema give
+<span class="math math-display" data-tex="\[
+\widehat\varphi(m)
+=\sup_f\sup_n f(a_n)
+=\sup_n\sup_f f(a_n)
+=\sup_n\varphi(a_n).
+\tag{EP15}
+\]">\[
+\widehat\varphi(m)
+=\sup_f\sup_n f(a_n)
+=\sup_n\sup_f f(a_n)
+=\sup_n\varphi(a_n).
+\tag{EP15}
+\]</span>
+No directedness or additive closure of <span class="math" data-tex="\(\mathcal F_\varphi\)">\(\mathcal F_\varphi\)</span> is asserted or needed.</p>
+<p>More generally (EP15) holds for any increasing net <span class="math" data-tex="\(b_\alpha\in M_+\)">\(b_\alpha\in M_+\)</span> representing <span class="math" data-tex="\(m\)">\(m\)</span> pointwise on normal positive functionals: the same interchange of suprema proves it. For <span class="math" data-tex="\(m,n\in\widehat M_+\)">\(m,n\in\widehat M_+\)</span>, take their canonical sequences <span class="math" data-tex="\(a_j,b_j\)">\(a_j,b_j\)</span>. The increasing sequence <span class="math" data-tex="\(a_j+b_j\)">\(a_j+b_j\)</span> represents <span class="math" data-tex="\(m+n\)">\(m+n\)</span> pointwise, by the increasing numerical sum identity. Therefore
+<span class="math math-display" data-tex="\[
+\widehat\varphi(m+n)
+=\sup_j\varphi(a_j+b_j)
+=\sup_j(\varphi(a_j)+\varphi(b_j))
+=\widehat\varphi(m)+\widehat\varphi(n).
+\tag{EP16}
+\]">\[
+\widehat\varphi(m+n)
+=\sup_j\varphi(a_j+b_j)
+=\sup_j(\varphi(a_j)+\varphi(b_j))
+=\widehat\varphi(m)+\widehat\varphi(n).
+\tag{EP16}
+\]</span>
+Positive homogeneity follows directly, including zero. For an arbitrary increasing net <span class="math" data-tex="\(m_\alpha\uparrow m\)">\(m_\alpha\uparrow m\)</span> in the extended cone, (EP14) gives
+<span class="math math-display" data-tex="\[
+\widehat\varphi(m)
+=\sup_f\sup_\alpha m_\alpha(f)
+=\sup_\alpha\widehat\varphi(m_\alpha).
+\tag{EP17}
+\]">\[
+\widehat\varphi(m)
+=\sup_f\sup_\alpha m_\alpha(f)
+=\sup_\alpha\widehat\varphi(m_\alpha).
+\tag{EP17}
+\]</span>
+Thus the extension is additive, homogeneous and order normal on the entire extended cone. It is unique with these properties, because every <span class="math" data-tex="\(m\)">\(m\)</span> has the increasing bounded approximation (EP8).</p>
+<p>If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is faithful, so is this extension: zero value in (EP15) makes <span class="math" data-tex="\(\varphi(a_n)=0\)">\(\varphi(a_n)=0\)</span>, hence <span class="math" data-tex="\(a_n=0\)">\(a_n=0\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, and then <span class="math" data-tex="\(m=0\)">\(m=0\)</span>. If <span class="math" data-tex="\(f\in M_*^+\)">\(f\in M_*^+\)</span> is itself the weight, its extension is simply <span class="math" data-tex="\(\widehat f(m)=m(f)\)">\(\widehat f(m)=m(f)\)</span>: the supremum in (EP14) includes <span class="math" data-tex="\(f\)">\(f\)</span>, and every smaller functional gives a smaller value by monotonicity of <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><a id="oa-flow.ep.6"></a><a id="ep-6"></a></p>
+<h2 id="OA-FLOW.EP.6">EP-6. Operator-valued finite domains and composition</h2>
+<p>Let <span class="math" data-tex="\(N\subseteq M\)">\(N\subseteq M\)</span> be a unital von Neumann subalgebra. An operator-valued weight is an additive, positively homogeneous map <span class="math" data-tex="\(T:M_+\to\widehat N_+\)">\(T:M_+\to\widehat N_+\)</span> satisfying
+<span class="math math-display" data-tex="\[
+T(b^*xb)=b^*T(x)b\qquad(x\in M_+,\ b\in N).
+\tag{EP18}
+\]">\[
+T(b^*xb)=b^*T(x)b\qquad(x\in M_+,\ b\in N).
+\tag{EP18}
+\]</span>
+It is normal if bounded increasing positive nets are sent to pointwise increasing suprema in <span class="math" data-tex="\(\widehat N_+\)">\(\widehat N_+\)</span>. Define
+<span class="math math-display" data-tex="\[
+F_T=\{x\in M_+:T(x)\in N_+\},\quad
+N_T=\{x:T(x^*x)\in N_+\},\quad
+m_T=\operatorname{span}N_T^*N_T.
+\tag{EP19}
+\]">\[
+F_T=\{x\in M_+:T(x)\in N_+\},\quad
+N_T=\{x:T(x^*x)\in N_+\},\quad
+m_T=\operatorname{span}N_T^*N_T.
+\tag{EP19}
+\]</span>
+Here membership in <span class="math" data-tex="\(N_+\)">\(N_+\)</span> means the bounded-element criterion in <a href="OA-FLOW-EP.html#oa-flow.ep.3">EP-3</a>, not merely that one scalar evaluation is finite.</p>
+<p>The cone <span class="math" data-tex="\(F_T\)">\(F_T\)</span> is hereditary and additive: if <span class="math" data-tex="\(0\leq a\leq b\)">\(0\leq a\leq b\)</span> and <span class="math" data-tex="\(T(b)\)">\(T(b)\)</span> is bounded, then <span class="math" data-tex="\(0\leq T(a)\leq T(b)\leq\|T(b)\|1\)">\(0\leq T(a)\leq T(b)\leq\|T(b)\|1\)</span>, so <a href="OA-FLOW-EP.html#oa-flow.ep.3">EP-3</a> makes <span class="math" data-tex="\(T(a)\)">\(T(a)\)</span> bounded. The usual left-ideal estimate
+<span class="math" data-tex="\(x^*c^*cx\leq\|c\|^2x^*x\)">\(x^*c^*cx\leq\|c\|^2x^*x\)</span>
+proves <span class="math" data-tex="\(N_T\)">\(N_T\)</span> is a left ideal of <span class="math" data-tex="\(M\)">\(M\)</span>; its linearity follows from
+<span class="math" data-tex="\((x+y)^*(x+y)\leq2x^*x+2y^*y\)">\((x+y)^*(x+y)\leq2x^*x+2y^*y\)</span>.
+Equation (EP18) also makes it a right <span class="math" data-tex="\(N\)">\(N\)</span>-module.</p>
+<p>The purely hereditary-cone and polarization proof of <a href="OA-FLOW-GW.html#oa-flow.gw.1">GW-1</a> applies verbatim to this finite cone: it uses only those two displayed inequalities, square roots of finite positive elements, and finite sums. Thus
+<span class="math math-display" data-tex="\[
+m_T=\operatorname{span}F_T,\qquad
+(m_T)_+=F_T.
+\tag{EP20}
+\]">\[
+m_T=\operatorname{span}F_T,\qquad
+(m_T)_+=F_T.
+\tag{EP20}
+\]</span>
+Both <span class="math" data-tex="\(N_T\)">\(N_T\)</span> and <span class="math" data-tex="\(m_T\)">\(m_T\)</span> are <span class="math" data-tex="\(N\)">\(N\)</span>-bimodules. On <span class="math" data-tex="\(m_T\)">\(m_T\)</span> there is a unique linear extension <span class="math" data-tex="\(T_0:m_T\to N\)">\(T_0:m_T\to N\)</span> of the finite values. Explicitly extend on differences of finite positives, then complexify. If <span class="math" data-tex="\(a-b=c-d\)">\(a-b=c-d\)</span>, then <span class="math" data-tex="\(a+d=b+c\)">\(a+d=b+c\)</span>, so additivity of the finite bounded values gives
+<span class="math" data-tex="\(T(a)-T(b)=T(c)-T(d)\)">\(T(a)-T(b)=T(c)-T(d)\)</span>;
+this proves well-definedness and linearity. Polarization of (EP18), followed by linearity in the finite argument, gives
+<span class="math math-display" data-tex="\[
+T_0(b_1xb_2)=b_1T_0(x)b_2
+\quad(x\in m_T,\ b_1,b_2\in N).
+\tag{EP21}
+\]">\[
+T_0(b_1xb_2)=b_1T_0(x)b_2
+\quad(x\in m_T,\ b_1,b_2\in N).
+\tag{EP21}
+\]</span></p>
+<p>For any normal scalar weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>, define
+<span class="math" data-tex="\(\Phi(x)=\widehat\varphi(T(x))\)">\(\Phi(x)=\widehat\varphi(T(x))\)</span>.
+<a href="OA-FLOW-EP.html#oa-flow.ep.5">EP-5</a> proves that this is a normal weight on <span class="math" data-tex="\(M\)">\(M\)</span> whenever <span class="math" data-tex="\(T\)">\(T\)</span> is normal: additivity, homogeneity and arbitrary increasing limits compose. In particular normality of <span class="math" data-tex="\(T\)">\(T\)</span> is equivalent to normality of every scalar weight <span class="math" data-tex="\(x\mapsto T(x)(f)\)">\(x\mapsto T(x)(f)\)</span>, <span class="math" data-tex="\(f\in N_*^+\)">\(f\in N_*^+\)</span>, since order and suprema in <span class="math" data-tex="\(\widehat N_+\)">\(\widehat N_+\)</span> are pointwise and <span class="math" data-tex="\(\widehat f(m)=m(f)\)">\(\widehat f(m)=m(f)\)</span>.</p>
+<p>Suppose additionally that <span class="math" data-tex="\(T\)">\(T\)</span> is faithful, <span class="math" data-tex="\(N_T\)">\(N_T\)</span> is weak-operator dense in <span class="math" data-tex="\(M\)">\(M\)</span> (semifiniteness), and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is faithful normal semifinite on <span class="math" data-tex="\(N\)">\(N\)</span>. Then <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is faithful normal semifinite. Faithfulness follows from <a href="OA-FLOW-EP.html#oa-flow.ep.5">EP-5</a>: if <span class="math" data-tex="\(\Phi(x^*x)=0\)">\(\Phi(x^*x)=0\)</span>, then <span class="math" data-tex="\(T(x^*x)=0\)">\(T(x^*x)=0\)</span>, and faithfulness of <span class="math" data-tex="\(T\)">\(T\)</span> gives <span class="math" data-tex="\(x=0\)">\(x=0\)</span>.</p>
+<p>For semifiniteness choose <a href="OA-FLOW-GW.html#oa-flow.gw.4">GW</a>'s finite positive contractions <span class="math" data-tex="\(u_i\in N\)">\(u_i\in N\)</span> with <span class="math" data-tex="\(u_i\uparrow1\)">\(u_i\uparrow1\)</span> and <span class="math" data-tex="\(\varphi(u_i)&lt;\infty\)">\(\varphi(u_i)&lt;\infty\)</span>. For <span class="math" data-tex="\(x\in N_T\)">\(x\in N_T\)</span>, (EP18) and boundedness of <span class="math" data-tex="\(T(x^*x)\)">\(T(x^*x)\)</span> give
+<span class="math math-display" data-tex="\[
+\Phi((xu_i)^*(xu_i))
+=\varphi(u_i T(x^*x)u_i)
+\leq\|T(x^*x)\|\varphi(u_i^2)&lt;\infty.
+\tag{EP22}
+\]">\[
+\Phi((xu_i)^*(xu_i))
+=\varphi(u_i T(x^*x)u_i)
+\leq\|T(x^*x)\|\varphi(u_i^2)&lt;\infty.
+\tag{EP22}
+\]</span>
+Thus <span class="math" data-tex="\(xu_i\in N_\Phi\)">\(xu_i\in N_\Phi\)</span> and <span class="math" data-tex="\(xu_i\to x\)">\(xu_i\to x\)</span> strongly. The weak-operator closure of <span class="math" data-tex="\(N_\Phi\)">\(N_\Phi\)</span> contains <span class="math" data-tex="\(N_T\)">\(N_T\)</span>, hence all of <span class="math" data-tex="\(M\)">\(M\)</span>. <a href="OA-FLOW-GW.html#oa-flow.gw.4">GW</a>'s scalar semifiniteness criterion now proves semifiniteness of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p>The complete conclusions are the extended-positive spectral representation with its infinite part, positive normal-functional vector series, the unique normal scalar-weight extension, and the full basic normal/faithful/semifinite composition theorem. Modular restriction and cocycle preservation for an operator-valued weight, existence/classification of such weights, standard form and the general sum decomposition of normal scalar weights are not proved here.</p>
+<p><a id="oa-flow.ep.7"></a><a id="ep-7"></a></p>
+<h2 id="OA-FLOW.EP.7">EP-7. The infinite-value part is visible in every positive normal test</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="A finite-domain plane and its infinite perpendicular direction, followed by bounded truncations on vectors and on normal states" src="assets/extended-positive/assets/extended-positive.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>The figure illustrates <a href="OA-FLOW-EP.html#oa-flow.ep.2">EP-2</a> and <a href="OA-FLOW-EP.html#oa-flow.ep.3">EP-3, equations EP6–EP11</a>. The scalar extension retaining the same infinite values is proved in <a href="OA-FLOW-EP.html#oa-flow.ep.5">EP-5</a>. The <a href="assets/extended-positive/render_extended_positive.py">reproducible source</a> and <a href="assets/extended-positive/extended-positive-numerics.json">exact parameters</a> accompany it.</p>
+<p>Work in <span class="math" data-tex="\(M_3(\mathbb C)\)">\(M_3(\mathbb C)\)</span> on <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span>. Put
+<span class="math math-display" data-tex="\[
+e=\operatorname{diag}(1,1,0),\qquad p=1-e,\qquad
+A=\operatorname{diag}(1,4)\text{ on }e\mathbb C^3.
+\]">\[
+e=\operatorname{diag}(1,1,0),\qquad p=1-e,\qquad
+A=\operatorname{diag}(1,4)\text{ on }e\mathbb C^3.
+\]</span>
+The associated closed form, with its whole finite domain, is
+<span class="math math-display" data-tex="\[
+q(\xi)=
+\begin{cases}
+|\xi_1|^2+4|\xi_2|^2,&amp;\xi_3=0,\\
+\infty,&amp;\xi_3\ne0.
+\end{cases}
+\]">\[
+q(\xi)=
+\begin{cases}
+|\xi_1|^2+4|\xi_2|^2,&amp;\xi_3=0,\\
+\infty,&amp;\xi_3\ne0.
+\end{cases}
+\]</span>
+Its canonical bounded positive approximants are exactly
+<span class="math math-display" data-tex="\[
+a_n=\operatorname{diag}(1,\min(4,n),n),\qquad n=1,2,\ldots.
+\]">\[
+a_n=\operatorname{diag}(1,\min(4,n),n),\qquad n=1,2,\ldots.
+\]</span>
+They increase, and <span class="math" data-tex="\(\langle a_n\xi,\xi\rangle\uparrow q(\xi)\)">\(\langle a_n\xi,\xi\rangle\uparrow q(\xi)\)</span> for every complex vector. The extended positive element is <span class="math" data-tex="\(m(f)=\sup_n f(a_n)\)">\(m(f)=\sup_n f(a_n)\)</span>. By <a href="OA-FLOW-EP.html#oa-flow.ep.3">EP-3</a> this is independent of the chosen positive vector series for <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>The first panel shows only the real coordinate slice of <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span>: <span class="math" data-tex="\(x_j=\operatorname{Re}\xi_j\)">\(x_j=\operatorname{Re}\xi_j\)</span> and all imaginary parts are set to zero. The shaded plane is its finite-domain slice <span class="math" data-tex="\(x_3=0\)">\(x_3=0\)</span>, and the ellipse is exactly <span class="math" data-tex="\(x_1^2+4x_2^2=1\)">\(x_1^2+4x_2^2=1\)</span>, parameterized by <span class="math" data-tex="\((\cos t,\frac12\sin t,0)\)">\((\cos t,\frac12\sin t,0)\)</span>. The point <span class="math" data-tex="\(e_3\)">\(e_3\)</span> lies outside the finite domain and has <span class="math" data-tex="\(q(e_3)=\infty\)">\(q(e_3)=\infty\)</span>. Neither the plane nor the ellipse is a picture of the full complex Hilbert space.</p>
+<p>For the unit-vector path <span class="math" data-tex="\(v_\theta=\cos\theta\,e_1+\sin\theta\,e_3\)">\(v_\theta=\cos\theta\,e_1+\sin\theta\,e_3\)</span>, <span class="math" data-tex="\(0\leq\theta\leq\pi/2\)">\(0\leq\theta\leq\pi/2\)</span>,
+<span class="math math-display" data-tex="\[
+\langle a_n v_\theta,v_\theta\rangle
+=\cos^2\theta+n\sin^2\theta.
+\]">\[
+\langle a_n v_\theta,v_\theta\rangle
+=\cos^2\theta+n\sin^2\theta.
+\]</span>
+At <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span> its value is always one. At each fixed <span class="math" data-tex="\(\theta&gt;0\)">\(\theta&gt;0\)</span> it tends to infinity. The middle panel plots the exact first, second, fourth, eighth and sixteenth cutoffs; the infinite limit is the formula just proved, not an extrapolation from the plotted samples.</p>
+<p>For the normal-state path <span class="math" data-tex="\(f_\delta=(1-\delta)\omega_{e_2}+\delta\omega_{e_3}\)">\(f_\delta=(1-\delta)\omega_{e_2}+\delta\omega_{e_3}\)</span>, <span class="math" data-tex="\(0\leq\delta\leq1\)">\(0\leq\delta\leq1\)</span>, and <span class="math" data-tex="\(n\geq4\)">\(n\geq4\)</span>,
+<span class="math math-display" data-tex="\[
+f_\delta(a_n)=4(1-\delta)+n\delta.
+\]">\[
+f_\delta(a_n)=4(1-\delta)+n\delta.
+\]</span>
+Hence <span class="math" data-tex="\(m(f_0)=4\)">\(m(f_0)=4\)</span>, while <span class="math" data-tex="\(m(f_\delta)=\infty\)">\(m(f_\delta)=\infty\)</span> for every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, however small. The right panel plots three bounded approximants, with the finite endpoint marked. Omitting <span class="math" data-tex="\(np\)">\(np\)</span> from the approximants would instead give the finite value <span class="math" data-tex="\(4(1-\delta)\)">\(4(1-\delta)\)</span>, so it would describe a different extended positive element.</p>
+<p>More generally, in this example <span class="math" data-tex="\(m(f)&lt;\infty\)">\(m(f)&lt;\infty\)</span> if and only if <span class="math" data-tex="\(f(p)=0\)">\(f(p)=0\)</span>. If <span class="math" data-tex="\(f(p)&gt;0\)">\(f(p)&gt;0\)</span>, then <span class="math" data-tex="\(f(a_n)\geq n f(p)\to\infty\)">\(f(a_n)\geq n f(p)\to\infty\)</span>. If <span class="math" data-tex="\(f(p)=0\)">\(f(p)=0\)</span>, the term <span class="math" data-tex="\(np\)">\(np\)</span> evaluates to zero and the remaining part is bounded by <span class="math" data-tex="\(4e\)">\(4e\)</span>. Thus every finite-<span class="math" data-tex="\(m\)">\(m\)</span> functional vanishes on <span class="math" data-tex="\(p\)">\(p\)</span>, and the normal state <span class="math" data-tex="\(\omega_{e_3}\)">\(\omega_{e_3}\)</span> is at functional-norm distance at least one from that cone. This is the obstruction in EP11.</p>
+<p>All statements in the caption are exact matrix and scalar computations. For free author context see <a href="https://arxiv.org/pdf/2004.02383v1#page=68">Hiai, §8.1, printed pp.68–69</a>. This independent example, figure and reproducible source are CC0-1.0 to the extent of rights held.</p>
+<p><a href="assets/extended-positive/assets/extended-positive.svg">Editable original SVG</a>.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-EW.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-EP.md">Lesson source</a></nav></main></body></html>

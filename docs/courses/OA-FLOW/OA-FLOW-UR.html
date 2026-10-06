@@ -1,0 +1,774 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recovering a weight from a unitary modular cocycle · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-DA.html">Previous lesson</a><a href="OA-FLOW-FR.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-UR.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Independent proof and integration preparation by GPT-6 Astra (OpenAI), Ultra; separate complete independent agent and owner review at exact inputs. Human review and formal verification are not asserted.</p><p><a id="ur-statement-context"></a></p>
+<h1 id="recovering-a-weight-from-a-unitary-modular-cocycle">Recovering a weight from a unitary modular cocycle</h1>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be any von Neumann algebra, let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be faithful, normal and semifinite, and let <span class="math" data-tex="\(u:\mathbb R\to\mathcal U(M)\)">\(u:\mathbb R\to\mathcal U(M)\)</span> be strongly* continuous and satisfy</p>
+<p><a id="equation-ur1"></a></p>
+<p><span class="math math-display" data-tex="\[
+u_{t+r}=u_t\sigma_t^\varphi(u_r).
+\tag{UR1}
+\]">\[
+u_{t+r}=u_t\sigma_t^\varphi(u_r).
+\tag{UR1}
+\]</span>
+Then there is a unique faithful normal semifinite weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span> such that</p>
+<p><a id="equation-ur2"></a></p>
+<p><span class="math math-display" data-tex="\[
+(D\psi:D\varphi)_t=u_t\qquad(t\in\mathbb R).
+\tag{UR2}
+\]">\[
+(D\psi:D\varphi)_t=u_t\qquad(t\in\mathbb R).
+\tag{UR2}
+\]</span>
+The derivative here is the balanced-matrix derivative defined and proved in <a href="OA-FLOW-BC.html#oa-flow.bc.4">BC4</a>. No realization assertion is included in that earlier definition. We prove (UR2), its normalization and the complete relative operator domains below. Neither the algebra nor its Hilbert spaces need be separable; neither weight need be finite.</p>
+<p>The mathematical development uses <a href="https://doi.org/10.1007/978-3-662-10451-4">Takesaki, <em>Theory of Operator Algebras II</em>, VIII.3.8 and its proof through Lemma 3.13, printed pp.115–121</a>, read in the exact approved edition. The mixed analytic multiplication construction is shared with that proof. The organization here starts with closed spectral domains, constructs the finite algebra with explicit norm-entire GNS curves, and then proves its natural-cone alignment before identifying the normalized derivative. The latter alignment and the complete Gaussian graph-core argument are written out. The previously constructed free-source Hilbert-algebra, weight and standard-form routes remain actual inputs, not replacements by a book citation.</p>
+<p>The direct analytic inputs are <a href="OA-FLOW-RF.html#oa-flow.rf.5">RF5</a>'s full self-adjoint generator construction, <a href="OA-FLOW-SF.html#oa-flow.sf.sb0">SF's spectral calculus</a>, <span class="unlinked">FF1</span>'s Gaussian transform, and <a href="OA-FLOW-SF.html#oa-flow.sf.sf4">SF4</a>'s scalar identity theorem. For weights we use <a href="OA-FLOW-GW.html#oa-flow.gw.4">GW4–5</a>, <span class="unlinked">WR4</span>, <span class="unlinked">MW1/4</span>, <a href="OA-FLOW-KT.html#oa-flow.kt.3">KT3–4</a>, and the full analytic right multiplication proved in <a href="OA-FLOW-MA.html#oa-flow.ma.2">MA2</a>, equivalently <a href="OA-FLOW-WS.html#oa-flow.weight-sum.gf1">GF1</a>. Fullification and recovery use <a href="OA-FLOW-WH04.html#oa-flow.wh04.2">WH04, Sections 2–4</a>, <a href="OA-FLOW-WF.html#oa-flow.wf.1">WF1–6</a>, and <a href="OA-FLOW-BD.html#oa-flow.bd.3">BD3</a>. Cone identification uses <a href="OA-FLOW-NC.html#oa-flow.nc.2">NC2–4</a>, <a href="OA-FLOW-CR.html#oa-flow.cr.8">CR8</a>, and <a href="OA-FLOW-MC.html#oa-flow.mc.1">MC1/5</a>. The full balanced relative graphs are <a href="OA-FLOW-BC.html#oa-flow.bc.1">BC1–3</a>; uniqueness uses <a href="OA-FLOW-MA.html#oa-flow.ma.4">MA4</a>. Concrete predual integration and representation transport use <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4–6</a>, <a href="OA-FLOW-NF.html#oa-flow.nf.5">NF5</a> and <span class="unlinked">ST2</span>. None of these inputs assumes arbitrary-cocycle realization, dual-weight recognition or an operator-valued-weight existence theorem.</p>
+<p><a id="ur-0"></a></p>
+<p><a id="oa-flow.ur.0"></a></p>
+<h2 id="OA-FLOW.UR.0">UR0. Two unitary groups and their complete spectral domains</h2>
+<p>Use the faithful normal GNS representation of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, identifying <span class="math" data-tex="\(M\)">\(M\)</span> with its image by NF5/ST2. Write <span class="math" data-tex="\(N=\mathfrak n_\varphi\)">\(N=\mathfrak n_\varphi\)</span>, <span class="math" data-tex="\(\Lambda=\Lambda_\varphi\)">\(\Lambda=\Lambda_\varphi\)</span>, <span class="math" data-tex="\(S_\varphi=J\Delta^{1/2}\)">\(S_\varphi=J\Delta^{1/2}\)</span>, and <span class="math" data-tex="\(\sigma=\sigma^\varphi\)">\(\sigma=\sigma^\varphi\)</span>. Inner products are linear in the first variable. The assumed bounded strong* continuity transports through this identification by ST2. The cocycle law gives <span class="math" data-tex="\(u_0=1\)">\(u_0=1\)</span> and <span class="math" data-tex="\(u_{-t}=\sigma_{-t}(u_t^*)\)">\(u_{-t}=\sigma_{-t}(u_t^*)\)</span>.</p>
+<p>Define, for real <span class="math" data-tex="\(t\)">\(t\)</span>,</p>
+<p><a id="equation-ur3"></a></p>
+<p><span class="math math-display" data-tex="\[
+\alpha_t(x)=u_t\sigma_t(x)u_t^*,\quad
+\rho_t(x)=u_t\sigma_t(x),\quad
+V_t=u_t\Delta^{it},\quad
+U_t=u_tJu_tJ\Delta^{it}.
+\tag{UR3}
+\]">\[
+\alpha_t(x)=u_t\sigma_t(x)u_t^*,\quad
+\rho_t(x)=u_t\sigma_t(x),\quad
+V_t=u_t\Delta^{it},\quad
+U_t=u_tJu_tJ\Delta^{it}.
+\tag{UR3}
+\]</span>
+The cocycle law proves that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a group of normal automorphisms, <span class="math" data-tex="\(\rho\)">\(\rho\)</span> a group of normal linear isometries, and <span class="math" data-tex="\(V\)">\(V\)</span> a unitary group. They are pointwise strongly* continuous, or strongly continuous on vectors, respectively. Products of uniformly bounded strongly* convergent operators converge strongly*: expand a product difference on a fixed vector and do the same for adjoints. This justifies all these continuity statements without an operator-norm-continuity hypothesis.</p>
+<p>MW gives <span class="math" data-tex="\(J\Delta^{it}=\Delta^{it}J\)">\(J\Delta^{it}=\Delta^{it}J\)</span> and <span class="math" data-tex="\(JMJ=M'\)">\(JMJ=M'\)</span>. Consequently the left and right factors in <span class="math" data-tex="\(u_tJu_tJ\)">\(u_tJu_tJ\)</span> commute, and the cocycle law also gives <span class="math" data-tex="\(U_{t+r}=U_tU_r\)">\(U_{t+r}=U_tU_r\)</span>. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is a strongly continuous unitary group, <span class="math" data-tex="\(JU_tJ=U_t\)">\(JU_tJ=U_t\)</span>, and</p>
+<p><a id="equation-ur4"></a></p>
+<p><span class="math math-display" data-tex="\[
+U_txU_t^*=\alpha_t(x),\qquad U_tP_\varphi=P_\varphi.
+\tag{UR4}
+\]">\[
+U_txU_t^*=\alpha_t(x),\qquad U_tP_\varphi=P_\varphi.
+\tag{UR4}
+\]</span>
+The cone assertion follows from NC4 for <span class="math" data-tex="\(u_tJu_tJ\)">\(u_tJu_tJ\)</span>, using <span class="math" data-tex="\(u_t^*\)">\(u_t^*\)</span> for the reverse inclusion, and from NC3 for <span class="math" data-tex="\(\Delta^{it}\)">\(\Delta^{it}\)</span>.</p>
+<p>Apply RF5 on this arbitrary Hilbert space to obtain unique self-adjoint generators <span class="math" data-tex="\(H,K\)">\(H,K\)</span>:</p>
+<p><a id="equation-ur5"></a></p>
+<p><span class="math math-display" data-tex="\[
+V_t=e^{itH},\quad U_t=e^{itK},\quad T=e^{H/2},\quad D=e^K.
+\tag{UR5}
+\]">\[
+V_t=e^{itH},\quad U_t=e^{itK},\quad T=e^{H/2},\quad D=e^K.
+\tag{UR5}
+\]</span>
+All exponentials here have SF's full spectral domains. In particular <span class="math" data-tex="\(T,D\)">\(T,D\)</span> are positive, injective, densely defined, with dense range. Antiunitary spectral transport and RF5 uniqueness applied to <span class="math" data-tex="\(JU_tJ=U_t\)">\(JU_tJ=U_t\)</span> give <span class="math" data-tex="\(JKJ=-K\)">\(JKJ=-K\)</span>; hence <span class="math" data-tex="\(JD^rJ=D^{-r}\)">\(JD^rJ=D^{-r}\)</span>, with equality of domains. Thus <span class="math" data-tex="\(JD^{1/2}\)">\(JD^{1/2}\)</span> is a closed conjugate-linear involution on <span class="math" data-tex="\(D(D^{1/2})\)">\(D(D^{1/2})\)</span>, and its adjoint is <span class="math" data-tex="\(JD^{-1/2}\)">\(JD^{-1/2}\)</span>, by CI's proved adjoint convention.</p>
+<p>We record a graph-core fact used twice. For a self-adjoint <span class="math" data-tex="\(L\)">\(L\)</span>, if an entire <span class="math" data-tex="\(H\)">\(H\)</span>-valued function <span class="math" data-tex="\(F\)">\(F\)</span> satisfies <span class="math" data-tex="\(F(t)=e^{itL}\xi\)">\(F(t)=e^{itL}\xi\)</span> for real <span class="math" data-tex="\(t\)">\(t\)</span>, then</p>
+<p><a id="equation-ur6"></a></p>
+<p><span class="math math-display" data-tex="\[
+\xi\in D(e^{izL}),\qquad F(z)=e^{izL}\xi\quad(z\in\mathbb C).
+\tag{UR6}
+\]">\[
+\xi\in D(e^{izL}),\qquad F(z)=e^{izL}\xi\quad(z\in\mathbb C).
+\tag{UR6}
+\]</span>
+Indeed, on <span class="math" data-tex="\(p_m=1_{[-m,m]}(L)\)">\(p_m=1_{[-m,m]}(L)\)</span>, the scalar identity theorem gives <span class="math" data-tex="\(p_mF(z)=e^{izL}p_m\xi\)">\(p_mF(z)=e^{izL}p_m\xi\)</span>. The squared norms on the right increase to the spectral domain integral and are bounded by <span class="math" data-tex="\(\|F(z)\|^2\)">\(\|F(z)\|^2\)</span>. SF's domain criterion and spectral convergence prove (UR6).</p>
+<p>Suppose now that a dense linear subspace <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> consists of such entire vectors and is invariant under every <span class="math" data-tex="\(e^{izL}\)">\(e^{izL}\)</span>. It is a graph core for every <span class="math" data-tex="\(e^{izL}\)">\(e^{izL}\)</span>. To see this without assuming norm-closedness of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, let <span class="math" data-tex="\(g_n(t)=\sqrt{n/\pi}e^{-nt^2}\)">\(g_n(t)=\sqrt{n/\pi}e^{-nt^2}\)</span>. For <span class="math" data-tex="\(\xi\in\mathcal E\)">\(\xi\in\mathcal E\)</span>, finite Riemann sums for <span class="math" data-tex="\(\int g_n(t)e^{itL}\xi\,dt\)">\(\int g_n(t)e^{itL}\xi\,dt\)</span> belong to <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> and converge in the graph norm of <span class="math" data-tex="\(e^{izL}\)">\(e^{izL}\)</span>: the second coordinates integrate <span class="math" data-tex="\(g_n(t)e^{itL}e^{izL}\xi\)">\(g_n(t)e^{itL}e^{izL}\xi\)</span>. Tails are bounded by the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> tails times the two vector norms. Hence</p>
+<p><a id="equation-ur7"></a></p>
+<p><span class="math math-display" data-tex="\[
+G_n\xi\in\overline{\mathcal E}^{\,\mathrm{graph}(e^{izL})},
+\qquad G_n=e^{-L^2/(4n)}.
+\tag{UR7}
+\]">\[
+G_n\xi\in\overline{\mathcal E}^{\,\mathrm{graph}(e^{izL})},
+\qquad G_n=e^{-L^2/(4n)}.
+\tag{UR7}
+\]</span>
+Both <span class="math" data-tex="\(G_n\)">\(G_n\)</span> and <span class="math" data-tex="\(e^{izL}G_n\)">\(e^{izL}G_n\)</span> are bounded. Approximate any vector in Hilbert norm by <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> to deduce the same graph-closure membership for <span class="math" data-tex="\(G_n\xi\)">\(G_n\xi\)</span>, for every <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>. Finally, if <span class="math" data-tex="\(\xi\in D(e^{izL})\)">\(\xi\in D(e^{izL})\)</span>, spectral dominated convergence gives <span class="math" data-tex="\(G_n\xi\to\xi\)">\(G_n\xi\to\xi\)</span> in that graph norm. This proves the asserted core property for every complex <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><a id="ur-1"></a></p>
+<p><a id="oa-flow.ur.1"></a></p>
+<h2 id="OA-FLOW.UR.1">UR1. A dense mixed analytic space with its GNS curve included</h2>
+<p>We first spell out the closed-graph property used for integrals. WR4 identifies <span class="math" data-tex="\(\Lambda(N)\)">\(\Lambda(N)\)</span> with the entire left-bounded vector space of the full Hilbert algebra. If <span class="math" data-tex="\(a_i\in N\)">\(a_i\in N\)</span>, <span class="math" data-tex="\(a_i\to a\)">\(a_i\to a\)</span> weakly as bounded operators, and <span class="math" data-tex="\(\Lambda(a_i)\to\xi\)">\(\Lambda(a_i)\to\xi\)</span> weakly in <span class="math" data-tex="\(H\)">\(H\)</span>, then, for every vector <span class="math" data-tex="\(d\)">\(d\)</span> in its complete first right algebra,</p>
+<p><a id="equation-ur8"></a></p>
+<p><span class="math math-display" data-tex="\[
+a_id=R_d\Lambda(a_i)\ \longrightarrow\ R_d\xi=ad
+\tag{UR8}
+\]">\[
+a_id=R_d\Lambda(a_i)\ \longrightarrow\ R_d\xi=ad
+\tag{UR8}
+\]</span>
+weakly. The last equality is exactly the left-boundedness test with multiplier <span class="math" data-tex="\(a\)">\(a\)</span>. WR4 gives <span class="math" data-tex="\(a\in N\)">\(a\in N\)</span> and <span class="math" data-tex="\(\Lambda(a)=\xi\)">\(\Lambda(a)=\xi\)</span>. This is WF1's graph proof applied to the given weight. In particular it applies to bounded ultraweak limits and norm-convergent GNS vectors. No norm bound for <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> on the operator unit ball is asserted.</p>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be the unital algebras of bounded elements with norm-entire <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>- and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-orbits. Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> consist of those <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> for which the <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-orbit has a norm-entire extension <span class="math" data-tex="\(z\mapsto\rho_z(x)\)">\(z\mapsto\rho_z(x)\)</span>, all its values belong to <span class="math" data-tex="\(N\)">\(N\)</span>, and</p>
+<p><a id="equation-ur9"></a></p>
+<p><span class="math math-display" data-tex="\[
+z\longmapsto\Lambda(\rho_z(x))
+\quad\hbox{is an entire \(H\)-valued function.}
+\tag{UR9}
+\]">\[
+z\longmapsto\Lambda(\rho_z(x))
+\quad\hbox{is an entire \(H\)-valued function.}
+\tag{UR9}
+\]</span>
+Including the last condition makes the analytic GNS passage explicit. It will not narrow the final theorem.</p>
+<p>For <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, modular covariance and the left-ideal property give</p>
+<p><a id="equation-ur10"></a></p>
+<p><span class="math math-display" data-tex="\[
+\rho_t(x)\in N,\qquad
+\Lambda(\rho_t(x))=V_t\Lambda(x).
+\tag{UR10}
+\]">\[
+\rho_t(x)\in N,\qquad
+\Lambda(\rho_t(x))=V_t\Lambda(x).
+\tag{UR10}
+\]</span>
+Define</p>
+<p><a id="equation-ur11"></a></p>
+<p><span class="math math-display" data-tex="\[
+x_n(z)=\int_{\mathbb R}g_n(t-z)\rho_t(x)\,dt.
+\tag{UR11}
+\]">\[
+x_n(z)=\int_{\mathbb R}g_n(t-z)\rho_t(x)\,dt.
+\tag{UR11}
+\]</span>
+The operator integral is ultraweak: scalar testing gives a bounded functional on <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, of norm at most <span class="math" data-tex="\(e^{n(\operatorname{Im}z)^2}\|x\|\)">\(e^{n(\operatorname{Im}z)^2}\|x\|\)</span>, and CP supplies its unique value in <span class="math" data-tex="\(M\)">\(M\)</span>. Derivatives of the Gaussian converge in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, locally uniformly in <span class="math" data-tex="\(z\)">\(z\)</span>, so (UR11) is norm entire. Translation under the normal map <span class="math" data-tex="\(\rho_s\)">\(\rho_s\)</span> gives <span class="math" data-tex="\(\rho_s(x_n(z))=x_n(z+s)\)">\(\rho_s(x_n(z))=x_n(z+s)\)</span>.</p>
+<p>Take simultaneous compact-interval Riemann sums for (UR11) and for <span class="math" data-tex="\(\int g_n(t-z)V_t\Lambda(x)\,dt\)">\(\int g_n(t-z)V_t\Lambda(x)\,dt\)</span>. The coefficient sums have a common operator-norm bound, the scalar normal evaluations converge to (UR11), and the vector sums converge in norm. The graph argument (UR8) proves</p>
+<p><a id="equation-ur12"></a></p>
+<p><span class="math math-display" data-tex="\[
+x_n(z)\in N,\qquad
+\Lambda(x_n(z))=\int_{\mathbb R}g_n(t-z)V_t\Lambda(x)\,dt
+                 =e^{-H^2/(4n)}e^{izH}\Lambda(x).
+\tag{UR12}
+\]">\[
+x_n(z)\in N,\qquad
+\Lambda(x_n(z))=\int_{\mathbb R}g_n(t-z)V_t\Lambda(x)\,dt
+                 =e^{-H^2/(4n)}e^{izH}\Lambda(x).
+\tag{UR12}
+\]</span>
+The last expression is the single bounded multiplier, not a prior application of an undefined exponential. Its identity follows from FF1 on compact spectral bands and spectral dominated convergence. It is entire, with all complex shifts. Thus <span class="math" data-tex="\(x_n(0)\in\mathcal C\)">\(x_n(0)\in\mathcal C\)</span>.</p>
+<p>The probability Gaussian approximate-identity estimate gives <span class="math" data-tex="\(x_n(0)\to x\)">\(x_n(0)\to x\)</span> strongly*, <span class="math" data-tex="\(\|x_n(0)\|\leq\|x\|\)">\(\|x_n(0)\|\leq\|x\|\)</span>, and <span class="math" data-tex="\(\Lambda(x_n(0))\to\Lambda(x)\)">\(\Lambda(x_n(0))\to\Lambda(x)\)</span> in norm. For strong* convergence, test each orbit against a vector, split into a small interval and its Gaussian tail, and use bounded strong* continuity. GW4 supplies positive contractions <span class="math" data-tex="\(e_i\in N\)">\(e_i\in N\)</span> increasing to <span class="math" data-tex="\(1\)">\(1\)</span>; applying this smoothing to <span class="math" data-tex="\(e_i\)">\(e_i\)</span> gives a neighborhood-directed net</p>
+<p><a id="equation-ur13"></a></p>
+<p><span class="math math-display" data-tex="\[
+c_j\in\mathcal C,\qquad \|c_j\|\leq1,\qquad c_j\longrightarrow1
+\quad\hbox{strongly*.}
+\tag{UR13}
+\]">\[
+c_j\in\mathcal C,\qquad \|c_j\|\leq1,\qquad c_j\longrightarrow1
+\quad\hbox{strongly*.}
+\tag{UR13}
+\]</span>
+Thus <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is ultraweakly dense in <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(\Lambda(\mathcal C)\)">\(\Lambda(\mathcal C)\)</span> is dense in <span class="math" data-tex="\(H\)">\(H\)</span>. Uniqueness of entire extensions gives invariance of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> under every <span class="math" data-tex="\(\rho_z\)">\(\rho_z\)</span>. Equations (UR6), (UR10) show</p>
+<p><a id="equation-ur14"></a></p>
+<p><span class="math math-display" data-tex="\[
+\Lambda(\rho_z(x))=e^{izH}\Lambda(x)\quad(x\in\mathcal C).
+\tag{UR14}
+\]">\[
+\Lambda(\rho_z(x))=e^{izH}\Lambda(x)\quad(x\in\mathcal C).
+\tag{UR14}
+\]</span>
+Hence (UR7) makes <span class="math" data-tex="\(\Lambda(\mathcal C)\)">\(\Lambda(\mathcal C)\)</span> a graph core for every <span class="math" data-tex="\(e^{izH}\)">\(e^{izH}\)</span>, particularly for <span class="math" data-tex="\(T\)">\(T\)</span>. Since <span class="math" data-tex="\(T\)">\(T\)</span> has dense range, <span class="math" data-tex="\(T\Lambda(\mathcal C)\)">\(T\Lambda(\mathcal C)\)</span> is dense in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>The analogous Gaussian construction for <span class="math" data-tex="\(\sigma,\alpha\)">\(\sigma,\alpha\)</span>, without the GNS condition, proves that <span class="math" data-tex="\(\mathcal A,\mathcal B\)">\(\mathcal A,\mathcal B\)</span> are ultraweakly dense. Entire continuation of real multiplication and adjoints gives</p>
+<p><a id="equation-ur15"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{split}
+\rho_z(bxa)&amp;=\alpha_z(b)\rho_z(x)\sigma_z(a),\\
+\sigma_z(x^*y)&amp;=\rho_{\bar z}(x)^*\rho_z(y),\\
+\alpha_z(xy^*)&amp;=\rho_z(x)\rho_{\bar z}(y)^*.
+\end{split}
+\tag{UR15}
+\]">\[
+\begin{split}
+\rho_z(bxa)&amp;=\alpha_z(b)\rho_z(x)\sigma_z(a),\\
+\sigma_z(x^*y)&amp;=\rho_{\bar z}(x)^*\rho_z(y),\\
+\alpha_z(xy^*)&amp;=\rho_z(x)\rho_{\bar z}(y)^*.
+\end{split}
+\tag{UR15}
+\]</span>
+Here <span class="math" data-tex="\(a\in\mathcal A,b\in\mathcal B,x,y\in\mathcal C\)">\(a\in\mathcal A,b\in\mathcal B,x,y\in\mathcal C\)</span>. MA2/GF1 gives the exact entire right-multiplier formula</p>
+<p><a id="equation-ur16"></a></p>
+<p><span class="math math-display" data-tex="\[
+\Lambda(va)=J\sigma_{-i/2}(a^*)J\Lambda(v)
+\quad(v\in N,\ a\in\mathcal A).
+\tag{UR16}
+\]">\[
+\Lambda(va)=J\sigma_{-i/2}(a^*)J\Lambda(v)
+\quad(v\in N,\ a\in\mathcal A).
+\tag{UR16}
+\]</span>
+It proves both finite-ideal membership and the entire GNS curve in the first line of (UR15): right multiplication by <span class="math" data-tex="\(\sigma_z(a)\)">\(\sigma_z(a)\)</span> has GNS operator <span class="math" data-tex="\(J\sigma_{\bar z-i/2}(a^*)J\)">\(J\sigma_{\bar z-i/2}(a^*)J\)</span>, a norm-entire function of <span class="math" data-tex="\(z\)">\(z\)</span>. Left multiplication by <span class="math" data-tex="\(\alpha_z(b)\)">\(\alpha_z(b)\)</span> is bounded and norm entire. Consequently</p>
+<p><a id="equation-ur17"></a></p>
+<p><span class="math math-display" data-tex="\[
+\mathcal B\mathcal C\mathcal A\subseteq\mathcal C,\qquad
+\mathcal C^*\mathcal C\subseteq\mathcal A,\qquad
+\mathcal C\mathcal C^*\subseteq\mathcal B.
+\tag{UR17}
+\]">\[
+\mathcal B\mathcal C\mathcal A\subseteq\mathcal C,\qquad
+\mathcal C^*\mathcal C\subseteq\mathcal A,\qquad
+\mathcal C\mathcal C^*\subseteq\mathcal B.
+\tag{UR17}
+\]</span>
+These are statements on the whole specified finite ideal, not just on the original finite-star algebra.</p>
+<p><a id="ur-2"></a></p>
+<p><a id="oa-flow.ur.2"></a></p>
+<h2 id="OA-FLOW.UR.2">UR2. The recovered finite algebra and its closed involution</h2>
+<p>Put <span class="math" data-tex="\(\mathcal B_0=\operatorname{span}\{xy^*:x,y\in\mathcal C\}\)">\(\mathcal B_0=\operatorname{span}\{xy^*:x,y\in\mathcal C\}\)</span>. Equations (UR17) show that it is a star algebra and a two-sided ideal of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, invariant under all complex <span class="math" data-tex="\(\alpha_z\)">\(\alpha_z\)</span>. It is ultraweakly dense: with <span class="math" data-tex="\(y\in\mathcal C\)">\(y\in\mathcal C\)</span> fixed, (UR13) makes <span class="math" data-tex="\(c_jy^*\to y^*\)">\(c_jy^*\to y^*\)</span>; the ultraweak closure therefore contains <span class="math" data-tex="\(\mathcal C^*\)">\(\mathcal C^*\)</span>, and then <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Define</p>
+<p><a id="equation-ur18"></a></p>
+<p><span class="math math-display" data-tex="\[
+\eta\left(\sum_i x_i y_i^*\right)=\sum_i x_iJT\Lambda(y_i).
+\tag{UR18}
+\]">\[
+\eta\left(\sum_i x_i y_i^*\right)=\sum_i x_iJT\Lambda(y_i).
+\tag{UR18}
+\]</span>
+We verify well-definedness. Put <span class="math" data-tex="\(w_i=\Lambda(\rho_{-i/2}(y_i))=T\Lambda(y_i)\)">\(w_i=\Lambda(\rho_{-i/2}(y_i))=T\Lambda(y_i)\)</span>, and suppose <span class="math" data-tex="\(z=\sum_i x_i y_i^*=0\)">\(z=\sum_i x_i y_i^*=0\)</span>. The linear-first antiunitary identity and (UR16) give</p>
+<p><a id="equation-ur19"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{split}
+\left\|\sum_i x_iJw_i\right\|^2
+&amp;=\sum_{i,j}\langle J(x_i^*x_j)Jw_j,w_i\rangle\\
+&amp;=\sum_{i,j}
+ \langle\Lambda(\rho_{-i/2}(y_j)\sigma_{-i/2}(x_j^*x_i)),w_i\rangle\\
+&amp;=\sum_i\langle\Lambda(\rho_{-i/2}(z^*x_i)),w_i\rangle=0.
+\end{split}
+\tag{UR19}
+\]">\[
+\begin{split}
+\left\|\sum_i x_iJw_i\right\|^2
+&amp;=\sum_{i,j}\langle J(x_i^*x_j)Jw_j,w_i\rangle\\
+&amp;=\sum_{i,j}
+ \langle\Lambda(\rho_{-i/2}(y_j)\sigma_{-i/2}(x_j^*x_i)),w_i\rangle\\
+&amp;=\sum_i\langle\Lambda(\rho_{-i/2}(z^*x_i)),w_i\rangle=0.
+\end{split}
+\tag{UR19}
+\]</span>
+Every vector is defined: <span class="math" data-tex="\(x_j^*x_i\in\mathcal A\)">\(x_j^*x_i\in\mathcal A\)</span>, <span class="math" data-tex="\(y_j(x_j^*x_i)\in\mathcal C\)">\(y_j(x_j^*x_i)\in\mathcal C\)</span>, and (UR16) applies on <span class="math" data-tex="\(N\)">\(N\)</span>. The formula is linear in <span class="math" data-tex="\(z\)">\(z\)</span>, since <span class="math" data-tex="\(J\Lambda\)">\(J\Lambda\)</span> is conjugate-linear in <span class="math" data-tex="\(y_i\)">\(y_i\)</span>, just like <span class="math" data-tex="\(y_i^*\)">\(y_i^*\)</span>.</p>
+<p>For <span class="math" data-tex="\(b\in\mathcal B,z\in\mathcal B_0\)">\(b\in\mathcal B,z\in\mathcal B_0\)</span>, direct multiplication in (UR18) proves</p>
+<p><a id="equation-ur20"></a></p>
+<p><span class="math math-display" data-tex="\[
+\eta(bz)=b\eta(z),\qquad
+\eta(zb)=J\alpha_{-i/2}(b^*)J\eta(z).
+\tag{UR20}
+\]">\[
+\eta(bz)=b\eta(z),\qquad
+\eta(zb)=J\alpha_{-i/2}(b^*)J\eta(z).
+\tag{UR20}
+\]</span>
+For the second identity write <span class="math" data-tex="\(xy^*b=x(b^*y)^*\)">\(xy^*b=x(b^*y)^*\)</span>, use the first line of (UR15), and commute <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> with <span class="math" data-tex="\(J\alpha_{-i/2}(b^*)J\in M'\)">\(J\alpha_{-i/2}(b^*)J\in M'\)</span>.</p>
+<p>The range of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is dense. If <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is orthogonal to every <span class="math" data-tex="\(xJT\Lambda(y)\)">\(xJT\Lambda(y)\)</span>, then <span class="math" data-tex="\(x^*\xi=0\)">\(x^*\xi=0\)</span> for each <span class="math" data-tex="\(x\in\mathcal C\)">\(x\in\mathcal C\)</span>, since <span class="math" data-tex="\(JT\Lambda(\mathcal C)\)">\(JT\Lambda(\mathcal C)\)</span> is dense. Equation (UR13) implies <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>. Also <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is injective: if <span class="math" data-tex="\(\eta(z)=0\)">\(\eta(z)=0\)</span>, (UR20) gives <span class="math" data-tex="\(z\eta(b)=\eta(zb)=0\)">\(z\eta(b)=\eta(zb)=0\)</span> for <span class="math" data-tex="\(b\in\mathcal B_0\)">\(b\in\mathcal B_0\)</span>; density forces <span class="math" data-tex="\(z=0\)">\(z=0\)</span>.</p>
+<p>Transport multiplication and star to <span class="math" data-tex="\(\eta(\mathcal B_0)\)">\(\eta(\mathcal B_0)\)</span>. Left multiplication by <span class="math" data-tex="\(\eta(z)\)">\(\eta(z)\)</span> is the bounded operator <span class="math" data-tex="\(z\)">\(z\)</span>, and</p>
+<p><a id="equation-ur21"></a></p>
+<p><span class="math math-display" data-tex="\[
+\langle\eta(zy),\eta(w)\rangle
+=\langle\eta(y),\eta(z^*w)\rangle .
+\tag{UR21}
+\]">\[
+\langle\eta(zy),\eta(w)\rangle
+=\langle\eta(y),\eta(z^*w)\rangle .
+\tag{UR21}
+\]</span>
+Its product span is dense: BD3 supplies positive contractions <span class="math" data-tex="\(b_j\in\mathcal B_0\)">\(b_j\in\mathcal B_0\)</span> tending strongly to <span class="math" data-tex="\(1\)">\(1\)</span>, since this represented star algebra is nondegenerate and generates <span class="math" data-tex="\(M\)">\(M\)</span>. Then <span class="math" data-tex="\(\eta(b_jz)=b_j\eta(z)\to\eta(z)\)">\(\eta(b_jz)=b_j\eta(z)\to\eta(z)\)</span>. This uses no increasing or finite-weight assertion about that BD net.</p>
+<p>There is a useful whole-domain mixed identity, already implied by MW1 and WH04 Section 3:</p>
+<p><a id="equation-ur22"></a></p>
+<p><span class="math math-display" data-tex="\[
+JaJ\Lambda(b)=bJ\Lambda(a)\qquad(a,b\in N).
+\tag{UR22}
+\]">\[
+JaJ\Lambda(b)=bJ\Lambda(a)\qquad(a,b\in N).
+\tag{UR22}
+\]</span>
+Indeed <span class="math" data-tex="\(J\Lambda(a)\)">\(J\Lambda(a)\)</span> is right bounded with multiplier <span class="math" data-tex="\(JaJ\)">\(JaJ\)</span>, while <span class="math" data-tex="\(\Lambda(b)\)">\(\Lambda(b)\)</span> is left bounded with multiplier <span class="math" data-tex="\(b\)">\(b\)</span>. Apply their proved mixed-product equality. No entire-vector assumption is needed in (UR22).</p>
+<p>For real <span class="math" data-tex="\(t\)">\(t\)</span>, (UR3), (UR14) and <span class="math" data-tex="\(J\Delta^{it}=\Delta^{it}J\)">\(J\Delta^{it}=\Delta^{it}J\)</span> give</p>
+<p><a id="equation-ur23"></a></p>
+<p><span class="math math-display" data-tex="\[
+\eta(\alpha_t(z))=U_t\eta(z).
+\tag{UR23}
+\]">\[
+\eta(\alpha_t(z))=U_t\eta(z).
+\tag{UR23}
+\]</span>
+For <span class="math" data-tex="\(z=xy^*\)">\(z=xy^*\)</span>, the entire extension on the left is explicitly</p>
+<p><a id="equation-ur24"></a></p>
+<p><span class="math math-display" data-tex="\[
+F_{x,y}(w)=\rho_w(x)J\Lambda(\rho_{\bar w-i/2}(y)).
+\tag{UR24}
+\]">\[
+F_{x,y}(w)=\rho_w(x)J\Lambda(\rho_{\bar w-i/2}(y)).
+\tag{UR24}
+\]</span>
+The second curve before <span class="math" data-tex="\(J\)">\(J\)</span> is anti-entire, so this is an entire vector function. Finite sums and well-definedness extend it to <span class="math" data-tex="\(\mathcal B_0\)">\(\mathcal B_0\)</span>. Equation (UR6) identifies it with <span class="math" data-tex="\(e^{iwK}\eta(xy^*)\)">\(e^{iwK}\eta(xy^*)\)</span>. The space <span class="math" data-tex="\(\eta(\mathcal B_0)\)">\(\eta(\mathcal B_0)\)</span> is dense and invariant under all these operators, so (UR7) makes it a graph core for every <span class="math" data-tex="\(e^{iwK}\)">\(e^{iwK}\)</span>.</p>
+<p>At <span class="math" data-tex="\(w=-i/2\)">\(w=-i/2\)</span>, (UR22) now gives</p>
+<p><a id="equation-ur25"></a></p>
+<p><span class="math math-display" data-tex="\[
+JD^{1/2}\eta(xy^*)
+=J\rho_{-i/2}(x)J\Lambda(y)
+=yJ\Lambda(\rho_{-i/2}(x))
+=\eta(yx^*).
+\tag{UR25}
+\]">\[
+JD^{1/2}\eta(xy^*)
+=J\rho_{-i/2}(x)J\Lambda(y)
+=yJ\Lambda(\rho_{-i/2}(x))
+=\eta(yx^*).
+\tag{UR25}
+\]</span>
+Thus the involution <span class="math" data-tex="\(\eta(z)\mapsto\eta(z^*)\)">\(\eta(z)\mapsto\eta(z^*)\)</span> is closable and has exactly the closure</p>
+<p><a id="equation-ur26"></a></p>
+<p><span class="math math-display" data-tex="\[
+S=JD^{1/2},\qquad D(S)=D(D^{1/2}),\qquad
+S^*=JD^{-1/2},\qquad D(S^*)=D(D^{-1/2}).
+\tag{UR26}
+\]">\[
+S=JD^{1/2},\qquad D(S)=D(D^{1/2}),\qquad
+S^*=JD^{-1/2},\qquad D(S^*)=D(D^{-1/2}).
+\tag{UR26}
+\]</span>
+The graph-core argument proves equality, not merely inclusion. We have proved all left-Hilbert-algebra axioms, including dense products and the Hilbert adjoint identity; its represented von Neumann algebra is <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><a id="ur-3"></a></p>
+<p><a id="oa-flow.ur.3"></a></p>
+<h2 id="OA-FLOW.UR.3">UR3. A weight on the whole positive cone</h2>
+<p>Apply the pure fullification theorem WH04 Sections 2–4 to <span class="math" data-tex="\(\eta(\mathcal B_0)\)">\(\eta(\mathcal B_0)\)</span>. It leaves the full closed involution (UR26) unchanged. Let <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> be the complete first right algebra and define</p>
+<p><a id="equation-ur27"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal L&amp;=\{\xi\in H:
+       d\mapsto R_d\xi\text{ is bounded in }\|d\|_H
+       \text{ on all }d\in\mathcal R\},\\
+I&amp;=\{\lambda_\xi:\xi\in\mathcal L\}\subseteq M,\qquad
+\theta(\lambda_\xi)=\xi.
+\end{split}
+\tag{UR27}
+\]">\[
+\begin{split}
+\mathcal L&amp;=\{\xi\in H:
+       d\mapsto R_d\xi\text{ is bounded in }\|d\|_H
+       \text{ on all }d\in\mathcal R\},\\
+I&amp;=\{\lambda_\xi:\xi\in\mathcal L\}\subseteq M,\qquad
+\theta(\lambda_\xi)=\xi.
+\end{split}
+\tag{UR27}
+\]</span>
+Here <span class="math" data-tex="\(\lambda_\xi\)">\(\lambda_\xi\)</span> denotes the bounded extension of that map. The fullification theorem and WF1 prove that the multiplier is injective, <span class="math" data-tex="\(I\)">\(I\)</span> is a left ideal, <span class="math" data-tex="\(\theta(a b)=a\theta(b)\)">\(\theta(a b)=a\theta(b)\)</span>, and <span class="math" data-tex="\(I\cap I^*\)">\(I\cap I^*\)</span> is the represented full Hilbert algebra. There is no boundedness test on just <span class="math" data-tex="\(\mathcal B_0\)">\(\mathcal B_0\)</span> in (UR27).</p>
+<p>The complete forward weight construction WF defines</p>
+<p><a id="equation-ur28"></a></p>
+<p><span class="math math-display" data-tex="\[
+\psi(a)=
+\begin{cases}
+\|\theta(a^{1/2})\|^2,&amp;a^{1/2}\in I,\\
+\infty,&amp;a^{1/2}\notin I
+\end{cases}
+\qquad(a\in M_+).
+\tag{UR28}
+\]">\[
+\psi(a)=
+\begin{cases}
+\|\theta(a^{1/2})\|^2,&amp;a^{1/2}\in I,\\
+\infty,&amp;a^{1/2}\notin I
+\end{cases}
+\qquad(a\in M_+).
+\tag{UR28}
+\]</span>
+WF3–5 prove additivity, positive homogeneity, faithfulness, normality for arbitrary increasing nets and semifiniteness. WF4/6 identify all domains and the onto GNS realization:</p>
+<p><a id="equation-ur29"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathfrak n_\psi=I,\quad
+\mathfrak m_\psi=\operatorname{span}I^*I,\quad
+\mathfrak n_\psi\cap\mathfrak n_\psi^*=\lambda(\mathcal L\cap D(S)),\\
+\Lambda_\psi(b)=\theta(b)\ (b\in I),\quad
+\Lambda_\psi(z)=\eta(z)\ (z\in\mathcal B_0),\\
+S_\psi=S,\quad J_\psi=J,\quad\Delta_\psi=D,\quad
+\sigma_t^\psi=\alpha_t .
+\end{gathered}
+\tag{UR29}
+\]">\[
+\begin{gathered}
+\mathfrak n_\psi=I,\quad
+\mathfrak m_\psi=\operatorname{span}I^*I,\quad
+\mathfrak n_\psi\cap\mathfrak n_\psi^*=\lambda(\mathcal L\cap D(S)),\\
+\Lambda_\psi(b)=\theta(b)\ (b\in I),\quad
+\Lambda_\psi(z)=\eta(z)\ (z\in\mathcal B_0),\\
+S_\psi=S,\quad J_\psi=J,\quad\Delta_\psi=D,\quad
+\sigma_t^\psi=\alpha_t .
+\end{gathered}
+\tag{UR29}
+\]</span>
+The last line uses the already proved polar decomposition (UR26), its uniqueness, and MW4. All positive and reciprocal powers of <span class="math" data-tex="\(D\)">\(D\)</span> have their SF spectral domains. Formula (UR28), rather than a finite-only equality, determines every infinite value of the recovered weight.</p>
+<p><a id="ur-4"></a></p>
+<p><a id="oa-flow.ur.4"></a></p>
+<h2 id="OA-FLOW.UR.4">UR4. Why the original and recovered natural cones agree</h2>
+<p>For every <span class="math" data-tex="\(a\in N\)">\(a\in N\)</span>,</p>
+<p><a id="equation-ur30"></a></p>
+<p><span class="math math-display" data-tex="\[
+aJ\Lambda(a)\in P_\varphi.
+\tag{UR30}
+\]">\[
+aJ\Lambda(a)\in P_\varphi.
+\tag{UR30}
+\]</span>
+First let <span class="math" data-tex="\(a\)">\(a\)</span> lie in KT4's finite-star analytic algebra and put <span class="math" data-tex="\(b=\sigma_{i/4}(a)\)">\(b=\sigma_{i/4}(a)\)</span>. Then <span class="math" data-tex="\(bb^*\)">\(bb^*\)</span> is positive of finite <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-value, and KT4 plus the entire formula for <span class="math" data-tex="\(J\)">\(J\)</span> give</p>
+<p><a id="equation-ur31"></a></p>
+<p><span class="math math-display" data-tex="\[
+\Delta^{1/4}\Lambda(bb^*)
+=\Lambda(a\sigma_{-i/2}(a^*))
+=aJ\Lambda(a)\in P_\varphi .
+\tag{UR31}
+\]">\[
+\Delta^{1/4}\Lambda(bb^*)
+=\Lambda(a\sigma_{-i/2}(a^*))
+=aJ\Lambda(a)\in P_\varphi .
+\tag{UR31}
+\]</span>
+For general <span class="math" data-tex="\(a\in N\)">\(a\in N\)</span>, take GW4's finite positive contractions <span class="math" data-tex="\(e_i\uparrow1\)">\(e_i\uparrow1\)</span>. The element <span class="math" data-tex="\(e_i a\)">\(e_i a\)</span> is finite-star: its adjoint has squared GNS norm <span class="math" data-tex="\(\varphi(e_i aa^*e_i)\leq\|a\|^2\varphi(e_i^2)&lt;\infty\)">\(\varphi(e_i aa^*e_i)\leq\|a\|^2\varphi(e_i^2)&lt;\infty\)</span>, while it itself belongs to <span class="math" data-tex="\(N\)">\(N\)</span>. GW5 gives <span class="math" data-tex="\(\Lambda(e_i a)\to\Lambda(a)\)">\(\Lambda(e_i a)\to\Lambda(a)\)</span>. Apply KT3's positive Gaussian smoothing to each <span class="math" data-tex="\(e_i a\)">\(e_i a\)</span>; KT3–4 give a neighborhood-directed net <span class="math" data-tex="\(a_j\)">\(a_j\)</span> in the analytic algebra, with <span class="math" data-tex="\(\|a_j\|\leq\|a\|\)">\(\|a_j\|\leq\|a\|\)</span>, <span class="math" data-tex="\(a_j\to a\)">\(a_j\to a\)</span> strongly*, and <span class="math" data-tex="\(\Lambda(a_j)\to\Lambda(a)\)">\(\Lambda(a_j)\to\Lambda(a)\)</span> in norm. It follows that <span class="math" data-tex="\(a_jJ\Lambda(a_j)\to aJ\Lambda(a)\)">\(a_jJ\Lambda(a_j)\to aJ\Lambda(a)\)</span> in norm. Closedness of the cone proves (UR30).</p>
+<p>For <span class="math" data-tex="\(x\in\mathcal C\)">\(x\in\mathcal C\)</span>, put</p>
+<p><a id="equation-ur32"></a></p>
+<p><span class="math math-display" data-tex="\[
+\zeta_x=D^{1/4}\eta(xx^*)
+=\rho_{-i/4}(x)J\Lambda(\rho_{-i/4}(x)).
+\tag{UR32}
+\]">\[
+\zeta_x=D^{1/4}\eta(xx^*)
+=\rho_{-i/4}(x)J\Lambda(\rho_{-i/4}(x)).
+\tag{UR32}
+\]</span>
+Equation (UR24) proves the equality and its domain. The right side belongs to <span class="math" data-tex="\(P_\varphi\)">\(P_\varphi\)</span> by (UR30). The left side belongs to <span class="math" data-tex="\(P_\psi\)">\(P_\psi\)</span>: <span class="math" data-tex="\(\eta(xx^*)\)">\(\eta(xx^*)\)</span> is a positive left-bounded vector for the recovered full algebra, and NC2–3 put its quarter-power image in the natural cone. This argument does not assert that <span class="math" data-tex="\(\psi(xx^*)\)">\(\psi(xx^*)\)</span> is finite.</p>
+<p>The complex span of the <span class="math" data-tex="\(\zeta_x\)">\(\zeta_x\)</span> is dense in <span class="math" data-tex="\(H\)">\(H\)</span>. Indeed the polarization formula</p>
+<p><a id="equation-ur33"></a></p>
+<p><span class="math math-display" data-tex="\[
+xy^*=\frac14\sum_{k=0}^3 i^k(x+i^k y)(x+i^k y)^*
+\tag{UR33}
+\]">\[
+xy^*=\frac14\sum_{k=0}^3 i^k(x+i^k y)(x+i^k y)^*
+\tag{UR33}
+\]</span>
+shows that it is <span class="math" data-tex="\(D^{1/4}\eta(\mathcal B_0)\)">\(D^{1/4}\eta(\mathcal B_0)\)</span>. The latter has dense range because <span class="math" data-tex="\(\eta(\mathcal B_0)\)">\(\eta(\mathcal B_0)\)</span> is a graph core for <span class="math" data-tex="\(D^{1/4}\)">\(D^{1/4}\)</span>, whose range is dense.</p>
+<p>MC1 supplies the canonical unitary <span class="math" data-tex="\(W:(M,H,J,P_\psi)\to(M,H,J,P_\varphi)\)">\(W:(M,H,J,P_\psi)\to(M,H,J,P_\varphi)\)</span> intertwining the represented algebra. Both <span class="math" data-tex="\(W\zeta_x\)">\(W\zeta_x\)</span> and <span class="math" data-tex="\(\zeta_x\)">\(\zeta_x\)</span> belong to <span class="math" data-tex="\(P_\varphi\)">\(P_\varphi\)</span> and represent the same normal positive functional on <span class="math" data-tex="\(M\)">\(M\)</span>, because <span class="math" data-tex="\(W\)">\(W\)</span> intertwines <span class="math" data-tex="\(M\)">\(M\)</span>. CR8's uniqueness of cone representatives gives <span class="math" data-tex="\(W\zeta_x=\zeta_x\)">\(W\zeta_x=\zeta_x\)</span>. Density proves</p>
+<p><a id="equation-ur34"></a></p>
+<p><span class="math math-display" data-tex="\[
+W=1,\qquad P_\psi=P_\varphi.
+\tag{UR34}
+\]">\[
+W=1,\qquad P_\psi=P_\varphi.
+\tag{UR34}
+\]</span>
+This step is needed: equality of the represented algebra and conjugation alone was not substituted for equality of cones.</p>
+<p><a id="ur-5"></a></p>
+<p><a id="oa-flow.ur.5"></a></p>
+<h2 id="OA-FLOW.UR.5">UR5. Relative graphs and the normalized derivative</h2>
+<p>For <span class="math" data-tex="\(y\in\mathcal C\)">\(y\in\mathcal C\)</span>, use (UR13) and (UR18):
+<span class="math math-display" data-tex="\[
+c_jy^*\longrightarrow y^*\text{ strongly*},\qquad
+\Lambda_\psi(c_jy^*)=c_jJT\Lambda(y)\longrightarrow JT\Lambda(y).
+\]">\[
+c_jy^*\longrightarrow y^*\text{ strongly*},\qquad
+\Lambda_\psi(c_jy^*)=c_jJT\Lambda(y)\longrightarrow JT\Lambda(y).
+\]</span>
+The coefficient net is uniformly bounded. WF1's full weak graph property, or (UR8) for <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, yields</p>
+<p><a id="equation-ur35"></a></p>
+<p><span class="math math-display" data-tex="\[
+\mathcal C^*\subseteq\mathfrak n_\psi,\qquad
+\Lambda_\psi(y^*)=JT\Lambda(y)\quad(y\in\mathcal C).
+\tag{UR35}
+\]">\[
+\mathcal C^*\subseteq\mathfrak n_\psi,\qquad
+\Lambda_\psi(y^*)=JT\Lambda(y)\quad(y\in\mathcal C).
+\tag{UR35}
+\]</span></p>
+<p>BC2 constructs the full closed relative operator <span class="math" data-tex="\(S_{\psi,\varphi}:H_\varphi\to H_\psi\)">\(S_{\psi,\varphi}:H_\varphi\to H_\psi\)</span> as the graph closure of</p>
+<p><a id="equation-ur36"></a></p>
+<p><span class="math math-display" data-tex="\[
+\Lambda(y)\longmapsto\Lambda_\psi(y^*),
+\qquad y\in N\cap\mathfrak n_\psi^* .
+\tag{UR36}
+\]">\[
+\Lambda(y)\longmapsto\Lambda_\psi(y^*),
+\qquad y\in N\cap\mathfrak n_\psi^* .
+\tag{UR36}
+\]</span>
+By (UR34), the canonical standard-form identifications of both Hilbert spaces with <span class="math" data-tex="\(H\)">\(H\)</span> are the identity. MC5's complete balanced-matrix conjugation formula therefore says that the antiunitary polar factor in (UR36) is exactly <span class="math" data-tex="\(J\)">\(J\)</span>. Write
+<span class="math math-display" data-tex="\[
+S_{\psi,\varphi}=J\Delta_{\psi,\varphi}^{1/2}.
+\]">\[
+S_{\psi,\varphi}=J\Delta_{\psi,\varphi}^{1/2}.
+\]</span>
+Equations (UR35) and (UR14), together with the graph-core property for <span class="math" data-tex="\(T\)">\(T\)</span>, imply <span class="math" data-tex="\(JT\subseteq S_{\psi,\varphi}\)">\(JT\subseteq S_{\psi,\varphi}\)</span>, hence <span class="math" data-tex="\(T\subseteq\Delta_{\psi,\varphi}^{1/2}\)">\(T\subseteq\Delta_{\psi,\varphi}^{1/2}\)</span>. Both are positive self-adjoint operators. Taking adjoints reverses inclusion, so</p>
+<p><a id="equation-ur37"></a></p>
+<p><span class="math math-display" data-tex="\[
+\Delta_{\psi,\varphi}^{1/2}=T,\qquad
+\Delta_{\psi,\varphi}=e^H,\qquad
+S_{\psi,\varphi}=Je^{H/2}.
+\tag{UR37}
+\]">\[
+\Delta_{\psi,\varphi}^{1/2}=T,\qquad
+\Delta_{\psi,\varphi}=e^H,\qquad
+S_{\psi,\varphi}=Je^{H/2}.
+\tag{UR37}
+\]</span>
+All are equalities of complete operators and domains.</p>
+<p>BC3, applied to the <span class="math" data-tex="\((\psi,\varphi)\)">\((\psi,\varphi)\)</span> relative component of the balanced two-weight representation, gives</p>
+<p><a id="equation-ur38"></a></p>
+<p><span class="math math-display" data-tex="\[
+\Delta_{\psi,\varphi}^{it}
+=(D\psi:D\varphi)_t\Delta^{it}.
+\tag{UR38}
+\]">\[
+\Delta_{\psi,\varphi}^{it}
+=(D\psi:D\varphi)_t\Delta^{it}.
+\tag{UR38}
+\]</span>
+By (UR5), the left side is <span class="math" data-tex="\(e^{itH}=V_t=u_t\Delta^{it}\)">\(e^{itH}=V_t=u_t\Delta^{it}\)</span>. Cancellation of the unitary <span class="math" data-tex="\(\Delta^{it}\)">\(\Delta^{it}\)</span> proves (UR2), with no undetermined scalar character.</p>
+<p>Here are further exact domain consequences, useful in applications:</p>
+<p><a id="equation-ur39"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{split}
+N\cap\mathfrak n_\psi^*
+ &amp;=\{y\in N:\Lambda(y)\in D(e^{H/2})\},\\
+\Lambda_\psi(y^*)&amp;=Je^{H/2}\Lambda(y),\\
+\psi(yy^*)&amp;=
+ \begin{cases}
+ \|e^{H/2}\Lambda(y)\|^2,&amp;\Lambda(y)\in D(e^{H/2}),\\
+ \infty,&amp;\Lambda(y)\notin D(e^{H/2})
+ \end{cases}\qquad(y\in N).
+\end{split}
+\tag{UR39}
+\]">\[
+\begin{split}
+N\cap\mathfrak n_\psi^*
+ &amp;=\{y\in N:\Lambda(y)\in D(e^{H/2})\},\\
+\Lambda_\psi(y^*)&amp;=Je^{H/2}\Lambda(y),\\
+\psi(yy^*)&amp;=
+ \begin{cases}
+ \|e^{H/2}\Lambda(y)\|^2,&amp;\Lambda(y)\in D(e^{H/2}),\\
+ \infty,&amp;\Lambda(y)\notin D(e^{H/2})
+ \end{cases}\qquad(y\in N).
+\end{split}
+\tag{UR39}
+\]</span>
+For the only direction not immediate from the closed operator (UR36)–(UR37), let <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span> with <span class="math" data-tex="\(\Lambda(y)\in D(T)\)">\(\Lambda(y)\in D(T)\)</span>. Its Gaussian approximants <span class="math" data-tex="\(y_n=x_n(0)\)">\(y_n=x_n(0)\)</span> from (UR11) converge boundedly strongly* to <span class="math" data-tex="\(y\)">\(y\)</span>, and <span class="math" data-tex="\(\Lambda(y_n)=e^{-H^2/(4n)}\Lambda(y)\to\Lambda(y)\)">\(\Lambda(y_n)=e^{-H^2/(4n)}\Lambda(y)\to\Lambda(y)\)</span> in the <span class="math" data-tex="\(T\)">\(T\)</span>-graph norm. Apply (UR35) and the closed GNS graph of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> to <span class="math" data-tex="\(y_n^*\)">\(y_n^*\)</span>. This proves the reverse membership and the vector identity.</p>
+<p>If <span class="math" data-tex="\(E_H\)">\(E_H\)</span> is the spectral measure of <span class="math" data-tex="\(H\)">\(H\)</span>, all real powers have precisely</p>
+<p><a id="equation-ur40"></a></p>
+<p><span class="math math-display" data-tex="\[
+D(\Delta_{\psi,\varphi}^{\,r})
+=\left\{\xi:\int_{\mathbb R}e^{2rs}\,d\langle E_H(s)\xi,\xi\rangle&lt;\infty\right\},
+\qquad \Delta_{\psi,\varphi}^{\,r}=e^{rH}.
+\tag{UR40}
+\]">\[
+D(\Delta_{\psi,\varphi}^{\,r})
+=\left\{\xi:\int_{\mathbb R}e^{2rs}\,d\langle E_H(s)\xi,\xi\rangle&lt;\infty\right\},
+\qquad \Delta_{\psi,\varphi}^{\,r}=e^{rH}.
+\tag{UR40}
+\]</span>
+Likewise <span class="math" data-tex="\(D(\Delta_\psi^{\,r})\)">\(D(\Delta_\psi^{\,r})\)</span> is the same formula with <span class="math" data-tex="\(K\)">\(K\)</span>. The adjoint relative operator has full domain <span class="math" data-tex="\(J D(T)\)">\(J D(T)\)</span> and value <span class="math" data-tex="\(TJ\)">\(TJ\)</span>; the inverse relative operator is the opposite BC component with domain <span class="math" data-tex="\(J D(T^{-1})\)">\(J D(T^{-1})\)</span> and value <span class="math" data-tex="\(T^{-1}J\)">\(T^{-1}J\)</span>. These follow respectively by taking the adjoint and the inverse of the closed bijection between <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> and <span class="math" data-tex="\(J\operatorname{ran}T\)">\(J\operatorname{ran}T\)</span>. They do not assert <span class="math" data-tex="\(JHJ=-H\)">\(JHJ=-H\)</span>, which need not hold for the relative generator.</p>
+<p>Uniqueness is on the whole positive cone. If another faithful n.s.f. <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has the same derivative relative to <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, BC4's chain and adjoint identities give <span class="math" data-tex="\((D\chi:D\psi)_t=1\)">\((D\chi:D\psi)_t=1\)</span>. The mixed orbit of <span class="math" data-tex="\(1\)">\(1\)</span> is then the constant norm-entire function <span class="math" data-tex="\(1\)">\(1\)</span>. MA4, equation MA11 with <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, gives <span class="math" data-tex="\(\chi(a)\leq\psi(a)\)">\(\chi(a)\leq\psi(a)\)</span> and <span class="math" data-tex="\(\psi(a)\leq\chi(a)\)">\(\psi(a)\leq\chi(a)\)</span> for every <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>, including infinite values. Thus <span class="math" data-tex="\(\chi=\psi\)">\(\chi=\psi\)</span>. This uses the proved finite-domain comparison, not just equality of modular automorphism groups.</p>
+<p><a id="ur-6"></a></p>
+<p><a id="oa-flow.ur.6"></a></p>
+<h2 id="OA-FLOW.UR.6">UR6. Two models and checked exercises</h2>
+<p><strong>A noncommuting matrix model.</strong> On <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, take</p>
+<p><a id="equation-ur41"></a></p>
+<p><span class="math math-display" data-tex="\[
+Q=\begin{pmatrix}1&amp;0\\0&amp;4\end{pmatrix},\qquad
+R=\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix},\qquad
+\varphi(x)=\operatorname{Tr}(Qx),\quad
+u_t=R^{it}Q^{-it}.
+\tag{UR41}
+\]">\[
+Q=\begin{pmatrix}1&amp;0\\0&amp;4\end{pmatrix},\qquad
+R=\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix},\qquad
+\varphi(x)=\operatorname{Tr}(Qx),\quad
+u_t=R^{it}Q^{-it}.
+\tag{UR41}
+\]</span>
+Then <span class="math" data-tex="\(u_t\sigma_t^\varphi(u_r)=R^{i(t+r)}Q^{-i(t+r)}\)">\(u_t\sigma_t^\varphi(u_r)=R^{i(t+r)}Q^{-i(t+r)}\)</span> by direct multiplication; no commutation of <span class="math" data-tex="\(Q,R\)">\(Q,R\)</span> is used. In Hilbert–Schmidt coordinates <span class="math" data-tex="\(\Lambda_\varphi(x)=xQ^{1/2}\)">\(\Lambda_\varphi(x)=xQ^{1/2}\)</span>, <span class="math" data-tex="\(J\xi=\xi^*\)">\(J\xi=\xi^*\)</span>, the preceding constructions are</p>
+<p><a id="equation-ur42"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+V_t\xi=R^{it}\xi Q^{-it},\qquad
+T\xi=R^{1/2}\xi Q^{-1/2},\\
+U_t\xi=R^{it}\xi R^{-it},\qquad
+D\xi=R\xi R^{-1},\qquad
+\Lambda_\psi(x)=xR^{1/2}.
+\end{gathered}
+\tag{UR42}
+\]">\[
+\begin{gathered}
+V_t\xi=R^{it}\xi Q^{-it},\qquad
+T\xi=R^{1/2}\xi Q^{-1/2},\\
+U_t\xi=R^{it}\xi R^{-it},\qquad
+D\xi=R\xi R^{-1},\qquad
+\Lambda_\psi(x)=xR^{1/2}.
+\end{gathered}
+\tag{UR42}
+\]</span>
+For verification, substitute <span class="math" data-tex="\(\rho_z(y)=R^{iz}yQ^{-iz}\)">\(\rho_z(y)=R^{iz}yQ^{-iz}\)</span> into (UR18); it gives <span class="math" data-tex="\(\eta(xy^*)=xy^*R^{1/2}\)">\(\eta(xy^*)=xy^*R^{1/2}\)</span>. Thus <span class="math" data-tex="\(\psi(x)=\operatorname{Tr}(Rx)\)">\(\psi(x)=\operatorname{Tr}(Rx)\)</span>, including its normalization <span class="math" data-tex="\(\psi(1)=10\)">\(\psi(1)=10\)</span>, whereas <span class="math" data-tex="\(\varphi(1)=5\)">\(\varphi(1)=5\)</span>. In the orthonormal Hilbert–Schmidt basis with row vectors diagonalizing <span class="math" data-tex="\(R\)">\(R\)</span> and column vectors diagonalizing <span class="math" data-tex="\(Q\)">\(Q\)</span>, the four eigenvalues of <span class="math" data-tex="\(T\)">\(T\)</span> are <span class="math" data-tex="\(3,3/2,1,1/2\)">\(3,3/2,1,1/2\)</span>. The relative operator <span class="math" data-tex="\(e^H\)">\(e^H\)</span> and the modular operator <span class="math" data-tex="\(D\)">\(D\)</span> are different.</p>
+<p><strong>An arbitrary-index infinite-domain model.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be any nonempty set, <span class="math" data-tex="\(M=\ell^\infty(I)\)">\(M=\ell^\infty(I)\)</span>, <span class="math" data-tex="\(\varphi(a)=\sup_{F\subset I,\ F\text{ finite}}\sum_{i\in F}a_i\)">\(\varphi(a)=\sup_{F\subset I,\ F\text{ finite}}\sum_{i\in F}a_i\)</span> for <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>, and choose finite numbers <span class="math" data-tex="\(h_i&gt;0\)">\(h_i&gt;0\)</span>, with no common upper or positive lower bound required. Put <span class="math" data-tex="\(u_t(i)=h_i^{it}\)">\(u_t(i)=h_i^{it}\)</span>. The action <span class="math" data-tex="\(\sigma^\varphi\)">\(\sigma^\varphi\)</span> is trivial and <span class="math" data-tex="\(u\)">\(u\)</span> is a strongly* continuous unitary group on <span class="math" data-tex="\(\ell^2(I)\)">\(\ell^2(I)\)</span>: approximate each vector by a finite-support vector and use the uniform unitary bound on the tail. The theorem gives</p>
+<p><a id="equation-ur43"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+\psi(a)=\sup_{F\subset I,\ F\text{ finite}}\sum_{i\in F}h_i a_i,\qquad
+\mathfrak n_\psi=\{x\in\ell^\infty(I):\sum_i h_i|x_i|^2&lt;\infty\},\\
+H_\varphi=\ell^2(I),\quad
+T\xi=(\sqrt{h_i}\xi_i)_i,\quad
+D(T)=\{\xi\in\ell^2(I):\sum_i h_i|\xi_i|^2&lt;\infty\},\\
+\Lambda_\psi(x)=(\sqrt{h_i}x_i)_i,\qquad U_t=1,\quad D=1.
+\end{gathered}
+\tag{UR43}
+\]">\[
+\begin{gathered}
+\psi(a)=\sup_{F\subset I,\ F\text{ finite}}\sum_{i\in F}h_i a_i,\qquad
+\mathfrak n_\psi=\{x\in\ell^\infty(I):\sum_i h_i|x_i|^2&lt;\infty\},\\
+H_\varphi=\ell^2(I),\quad
+T\xi=(\sqrt{h_i}\xi_i)_i,\quad
+D(T)=\{\xi\in\ell^2(I):\sum_i h_i|\xi_i|^2&lt;\infty\},\\
+\Lambda_\psi(x)=(\sqrt{h_i}x_i)_i,\qquad U_t=1,\quad D=1.
+\end{gathered}
+\tag{UR43}
+\]</span>
+The displayed weight is faithful. Additivity and arbitrary-net normality follow by interchanging the finite-subset supremum with the relevant increasing supremum; finite-support projections give semifiniteness. Its GNS map is onto after completion because its range contains every finite-support vector. Direct conjugation and multiplication verify (UR43), so uniqueness identifies it with (UR28). For uncountable <span class="math" data-tex="\(I\)">\(I\)</span>, no countability reduction of the algebra has been made.</p>
+<p><strong>Exercise 1: scalar normalization.</strong> Determine the weight for <span class="math" data-tex="\(u_t=e^{iat}1\)">\(u_t=e^{iat}1\)</span>, <span class="math" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span>.</p>
+<p><strong>Solution.</strong> BC5 gives <span class="math" data-tex="\((D(e^a\varphi):D\varphi)_t=e^{iat}1\)">\((D(e^a\varphi):D\varphi)_t=e^{iat}1\)</span>; uniqueness yields <span class="math" data-tex="\(\psi=e^a\varphi\)">\(\psi=e^a\varphi\)</span>. Its finite ideal equals <span class="math" data-tex="\(N\)">\(N\)</span>, but its GNS norm is multiplied by <span class="math" data-tex="\(e^{a/2}\)">\(e^{a/2}\)</span>. Its modular automorphism group still equals <span class="math" data-tex="\(\sigma^\varphi\)">\(\sigma^\varphi\)</span>. Thus that group alone cannot recover the required scalar.</p>
+<p><strong>Exercise 2: a genuine relative domain.</strong> In (UR43), let <span class="math" data-tex="\(I=\mathbb N\)">\(I=\mathbb N\)</span>, <span class="math" data-tex="\(h_i=i^2\)">\(h_i=i^2\)</span>, and <span class="math" data-tex="\(\xi_i=1/i\)">\(\xi_i=1/i\)</span>. Is <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span>? Give a vector in <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> which is not finitely supported.</p>
+<p><strong>Solution.</strong> <span class="math" data-tex="\(\sum_i|\xi_i|^2&lt;\infty\)">\(\sum_i|\xi_i|^2&lt;\infty\)</span>, but <span class="math" data-tex="\(\sum_i h_i|\xi_i|^2=\sum_i1=\infty\)">\(\sum_i h_i|\xi_i|^2=\sum_i1=\infty\)</span>; hence <span class="math" data-tex="\(\xi\notin D(T)\)">\(\xi\notin D(T)\)</span>. The vector <span class="math" data-tex="\(\eta_i=1/i^2\)">\(\eta_i=1/i^2\)</span> is in <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span>, because <span class="math" data-tex="\(\sum_i h_i|\eta_i|^2=\sum_i1/i^2&lt;\infty\)">\(\sum_i h_i|\eta_i|^2=\sum_i1/i^2&lt;\infty\)</span>. These are full spectral domains, not an analytic-core convention.</p>
+<p><strong>Exercise 3: a cocycle need not be an ordinary group.</strong> Prove that the path in (UR41) is not a one-parameter unitary group.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(A=\log R\)">\(A=\log R\)</span>, <span class="math" data-tex="\(B=\log Q\)">\(B=\log Q\)</span>. If <span class="math" data-tex="\(e^{itA}e^{-itB}\)">\(e^{itA}e^{-itB}\)</span> were a group, its derivative at zero would make it <span class="math" data-tex="\(e^{it(A-B)}\)">\(e^{it(A-B)}\)</span>: this follows by differentiating the group law and solving the bounded matrix differential equation. The second derivatives at zero would therefore agree. Their difference is <span class="math" data-tex="\([A,B]\)">\([A,B]\)</span>. But</p>
+<p><a id="equation-ur44"></a></p>
+<p><span class="math math-display" data-tex="\[
+A=\frac{\log9}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},
+\quad B=\begin{pmatrix}0&amp;0\\0&amp;\log4\end{pmatrix},
+\quad
+[A,B]=\frac{\log9\,\log4}{2}
+       \begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}\ne0.
+\tag{UR44}
+\]">\[
+A=\frac{\log9}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},
+\quad B=\begin{pmatrix}0&amp;0\\0&amp;\log4\end{pmatrix},
+\quad
+[A,B]=\frac{\log9\,\log4}{2}
+       \begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}\ne0.
+\tag{UR44}
+\]</span>
+This contradicts equality of the second derivatives. The ordinary unitary group used in the proof is <span class="math" data-tex="\(V_t=u_t\Delta^{it}\)">\(V_t=u_t\Delta^{it}\)</span> on the GNS Hilbert space, not generally <span class="math" data-tex="\(u_t\)">\(u_t\)</span> on the original algebra.</p>
+<p><strong>Exercise 4: a coboundary and its standard-form factor.</strong> For a unitary <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span>, determine the weight for <span class="math" data-tex="\(u_t=v\sigma_t^\varphi(v^*)\)">\(u_t=v\sigma_t^\varphi(v^*)\)</span>, and specify its cone-aligned GNS realization.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(\chi(x)=\varphi(v^*xv)\)">\(\chi(x)=\varphi(v^*xv)\)</span> on <span class="math" data-tex="\(M_+\)">\(M_+\)</span>, including infinite values. The normal automorphism <span class="math" data-tex="\(x\mapsto v^*xv\)">\(x\mapsto v^*xv\)</span> proves faithfulness, normality and semifiniteness. Its finite ideal is
+<span class="math" data-tex="\(\mathfrak n_\chi=\{x:v^*xv\in N\}=\{x:xv\in N\}\)">\(\mathfrak n_\chi=\{x:v^*xv\in N\}=\{x:xv\in N\}\)</span>.
+Pulling back the original GNS representation through that automorphism first gives <span class="math" data-tex="\(\Lambda(x)=\Lambda_\varphi(v^*xv)\)">\(\Lambda(x)=\Lambda_\varphi(v^*xv)\)</span>, represented action <span class="math" data-tex="\(a\mapsto v^*av\)">\(a\mapsto v^*av\)</span>, and the original closed graph and cone. The unitary <span class="math" data-tex="\(w=vJvJ\)">\(w=vJvJ\)</span> intertwines this represented action with <span class="math" data-tex="\(a\mapsto a\)">\(a\mapsto a\)</span>, commutes with <span class="math" data-tex="\(J\)">\(J\)</span>, and preserves <span class="math" data-tex="\(P_\varphi\)">\(P_\varphi\)</span> by NC4. Thus the cone-aligned realization is</p>
+<p><a id="equation-ur45"></a></p>
+<p><span class="math math-display" data-tex="\[
+\Lambda_\chi(x)=vJvJ\Lambda_\varphi(v^*xv)
+               =JvJ\Lambda_\varphi(xv)\quad(x\in\mathfrak n_\chi).
+\tag{UR45}
+\]">\[
+\Lambda_\chi(x)=vJvJ\Lambda_\varphi(v^*xv)
+               =JvJ\Lambda_\varphi(xv)\quad(x\in\mathfrak n_\chi).
+\tag{UR45}
+\]</span>
+It is isometric for <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, has dense range, and has the same natural cone and conjugation as the reference standard form.</p>
+<p>For <span class="math" data-tex="\(y\in\mathcal C\)">\(y\in\mathcal C\)</span>, write <span class="math" data-tex="\(a=v^*y\)">\(a=v^*y\)</span>. Here
+<span class="math" data-tex="\(\rho_z(y)=v\sigma_z(a)\)">\(\rho_z(y)=v\sigma_z(a)\)</span>; all <span class="math" data-tex="\(\sigma_z(a)\)">\(\sigma_z(a)\)</span> belong to <span class="math" data-tex="\(N\)">\(N\)</span>, with entire GNS curve. Equations (UR6) and KT4's spectral identification give <span class="math" data-tex="\(\Lambda_\varphi(a)\in D(\Delta^{1/2})\)">\(\Lambda_\varphi(a)\in D(\Delta^{1/2})\)</span>. It is also left bounded, so WR4 puts <span class="math" data-tex="\(a\)">\(a\)</span> in the full finite-star algebra. Therefore <span class="math" data-tex="\(y^*v=a^*\in N\)">\(y^*v=a^*\in N\)</span>, <span class="math" data-tex="\(y^*\in\mathfrak n_\chi\)">\(y^*\in\mathfrak n_\chi\)</span>, and</p>
+<p><a id="equation-ur46"></a></p>
+<p><span class="math math-display" data-tex="\[
+\begin{split}
+\Lambda_\chi(y^*)
+&amp;=JvJ\Lambda_\varphi(a^*)\\
+&amp;=JvJ\,J\Lambda_\varphi(\sigma_{-i/2}(a))
+ =J\Lambda_\varphi(\rho_{-i/2}(y))
+ =JT\Lambda_\varphi(y).
+\end{split}
+\tag{UR46}
+\]">\[
+\begin{split}
+\Lambda_\chi(y^*)
+&amp;=JvJ\Lambda_\varphi(a^*)\\
+&amp;=JvJ\,J\Lambda_\varphi(\sigma_{-i/2}(a))
+ =J\Lambda_\varphi(\rho_{-i/2}(y))
+ =JT\Lambda_\varphi(y).
+\end{split}
+\tag{UR46}
+\]</span>
+The canonical relative polar factor is <span class="math" data-tex="\(J\)">\(J\)</span>, by MC5. The same graph-core and self-adjoint-inclusion argument as in (UR35)–(UR38) proves <span class="math" data-tex="\((D\chi:D\varphi)_t=u_t\)">\((D\chi:D\varphi)_t=u_t\)</span>, so uniqueness gives <span class="math" data-tex="\(\psi=\chi\)">\(\psi=\chi\)</span>. In particular
+<span class="math" data-tex="\(\eta(z)=vJvJ\Lambda_\varphi(v^*zv)\)">\(\eta(z)=vJvJ\Lambda_\varphi(v^*zv)\)</span> for <span class="math" data-tex="\(z\in\mathcal B_0\)">\(z\in\mathcal B_0\)</span>.
+In Hilbert–Schmidt coordinates for <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(Qx)\)">\(\varphi(x)=\operatorname{Tr}(Qx)\)</span>, (UR45) is <span class="math" data-tex="\(xvQ^{1/2}v^*\)">\(xvQ^{1/2}v^*\)</span>. Both standard-form factors are necessary; the expression <span class="math" data-tex="\(v\Lambda_\varphi(v^*xv)\)">\(v\Lambda_\varphi(v^*xv)\)</span> alone would not be the cone-aligned realization.</p>
+<p>The result settles arbitrary faithful n.s.f. unitary-cocycle realization, with exact normalization. It makes no assertion that nonunitary cocycles have faithful realizations, or that an arbitrary action is modular. Dual-weight recognition may now use this theorem together with its separately proved comparison and averaging premises.</p>
+<p><a id="oa-flow.ur.figure"></a></p>
+<h2 id="OA-FLOW.UR.FIGURE">Two generators, one recovered weight</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Two generators and the recovered weight" src="assets/unitary-modular-cocycle/assets/cocycle-realization.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>The top diagram records the proof mechanism of <a href="OA-FLOW-UR.html#ur-0">UR0–5</a>, not a finite-dimensional approximation to the theorem. Starting with <span class="math" data-tex="\(u_{t+r}=u_t\sigma_t^\varphi(u_r)\)">\(u_{t+r}=u_t\sigma_t^\varphi(u_r)\)</span>, the two strongly continuous unitary groups are
+<span class="math math-display" data-tex="\[
+V_t=u_t\Delta_\varphi^{it}=e^{itH},
+\qquad
+U_t=u_tJu_tJ\Delta_\varphi^{it}=e^{itK}.
+\]">\[
+V_t=u_t\Delta_\varphi^{it}=e^{itH},
+\qquad
+U_t=u_tJu_tJ\Delta_\varphi^{it}=e^{itK}.
+\]</span>
+Their positive operators have different roles:
+<span class="math math-display" data-tex="\[
+T=e^{H/2}=\Delta_{\psi,\varphi}^{1/2},
+\qquad D=e^K=\Delta_\psi.
+\]">\[
+T=e^{H/2}=\Delta_{\psi,\varphi}^{1/2},
+\qquad D=e^K=\Delta_\psi.
+\]</span>
+The Gaussian mixed space <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has its entire GNS curve included in its definition. Equations UR11–14 and UR7 show that <span class="math" data-tex="\(\Lambda_\varphi(\mathcal C)\)">\(\Lambda_\varphi(\mathcal C)\)</span> is a graph core for <span class="math" data-tex="\(T\)">\(T\)</span>. Equations UR18–26 construct the dense algebra and its full closed involution:
+<span class="math math-display" data-tex="\[
+\eta(xy^*)=xJT\Lambda_\varphi(y),\qquad
+S_\psi=JD^{1/2}.
+\]">\[
+\eta(xy^*)=xJT\Lambda_\varphi(y),\qquad
+S_\psi=JD^{1/2}.
+\]</span>
+The whole-domain fullification and weight formula are UR27–29. The common cone vectors
+<span class="math math-display" data-tex="\[
+D^{1/4}\eta(xx^*)
+=\rho_{-i/4}(x)J\Lambda_\varphi(\rho_{-i/4}(x))
+\in P_\psi\cap P_\varphi
+\]">\[
+D^{1/4}\eta(xx^*)
+=\rho_{-i/4}(x)J\Lambda_\varphi(\rho_{-i/4}(x))
+\in P_\psi\cap P_\varphi
+\]</span>
+have dense complex span, by UR30–34. Thus the canonical standard-form unitary is the identity. The relative polar factor is <span class="math" data-tex="\(J\)">\(J\)</span>, and the graph core identifies the full relative positive operator, giving UR37–38 and exact <span class="math" data-tex="\((D\psi:D\varphi)_t=u_t\)">\((D\psi:D\varphi)_t=u_t\)</span>. The diagram's arrows stand for these proved operations, not inclusions between the two unrelated generator spectra.</p>
+<p>The lower panels are the exact two-dimensional model in UR41–42:
+<span class="math math-display" data-tex="\[
+Q=\begin{pmatrix}1&amp;0\\0&amp;4\end{pmatrix},\qquad
+R=\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix},\qquad
+u_t=R^{it}Q^{-it}.
+\]">\[
+Q=\begin{pmatrix}1&amp;0\\0&amp;4\end{pmatrix},\qquad
+R=\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix},\qquad
+u_t=R^{it}Q^{-it}.
+\]</span>
+Here <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(Qx)\)">\(\varphi(x)=\operatorname{Tr}(Qx)\)</span> and the recovered weight is <span class="math" data-tex="\(\psi(x)=\operatorname{Tr}(Rx)\)">\(\psi(x)=\operatorname{Tr}(Rx)\)</span>. In Hilbert–Schmidt coordinates,
+<span class="math math-display" data-tex="\[
+T\xi=R^{1/2}\xi Q^{-1/2},\qquad
+D\xi=R\xi R^{-1}.
+\]">\[
+T\xi=R^{1/2}\xi Q^{-1/2},\qquad
+D\xi=R\xi R^{-1}.
+\]</span>
+For <span class="math" data-tex="\(T\)">\(T\)</span>, use the orthonormal rank-one basis whose row vectors diagonalize <span class="math" data-tex="\(R\)">\(R\)</span>, with eigenvalues <span class="math" data-tex="\(9,1\)">\(9,1\)</span>, and whose column vectors diagonalize <span class="math" data-tex="\(Q\)">\(Q\)</span>, with eigenvalues <span class="math" data-tex="\(1,4\)">\(1,4\)</span>. The four positive eigenvalues are exactly
+<span class="math math-display" data-tex="\[
+\left(\sqrt{r_i/q_j}\right)_{i,j}
+=\begin{pmatrix}3&amp;3/2\\1&amp;1/2\end{pmatrix}.
+\]">\[
+\left(\sqrt{r_i/q_j}\right)_{i,j}
+=\begin{pmatrix}3&amp;3/2\\1&amp;1/2\end{pmatrix}.
+\]</span>
+For <span class="math" data-tex="\(D\)">\(D\)</span>, both row and column vectors diagonalize <span class="math" data-tex="\(R\)">\(R\)</span>, in the order <span class="math" data-tex="\(9,1\)">\(9,1\)</span>, giving
+<span class="math math-display" data-tex="\[
+\left(r_i/r_j\right)_{i,j}
+=\begin{pmatrix}1&amp;9\\1/9&amp;1\end{pmatrix}.
+\]">\[
+\left(r_i/r_j\right)_{i,j}
+=\begin{pmatrix}1&amp;9\\1/9&amp;1\end{pmatrix}.
+\]</span>
+The panels explicitly use different rank-one bases. Their cell colors only distinguish values above, equal to, or below one; the displayed rational numbers are the exact data. They are not spectral measures for the general theorem.</p>
+<p>The weight totals are <span class="math" data-tex="\(\varphi(1)=5\)">\(\varphi(1)=5\)</span>, <span class="math" data-tex="\(\psi(1)=10\)">\(\psi(1)=10\)</span>. No state normalization has been imposed. UR6's infinite-domain model separately shows why <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> cannot be replaced by the whole GNS Hilbert space: for <span class="math" data-tex="\(h_i=i^2\)">\(h_i=i^2\)</span> on <span class="math" data-tex="\(\ell^\infty(\mathbb N)\)">\(\ell^\infty(\mathbb N)\)</span>, <span class="math" data-tex="\((1/i)_i\in\ell^2\)">\((1/i)_i\in\ell^2\)</span> but not in <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span>.</p>
+<p>Human mathematical source: <a href="https://doi.org/10.1007/978-3-662-10451-4">Takesaki II, VIII.3.8 and its complete proof, printed 115–121</a>, together with the exact earlier locally proved fullification and standard-form providers identified in the proof. This diagram, finite example layout, exact-data file and renderer are original to this packet. <a href="assets/unitary-modular-cocycle/render_figure.py">render_figure.py</a> reproduces the PNG, SVG and JSON; their native visual inspection and repeated-render identities are recorded separately.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-DA.html">Previous lesson</a><a href="OA-FLOW-FR.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-UR.md">Lesson source</a></nav></main></body></html>

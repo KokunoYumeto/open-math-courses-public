@@ -1,0 +1,500 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Two cokernels, controlled rows and abelian completion</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="two-cokernels-controlled-rows-and-abelian-completion"><span id="ind-abelian-categories-and-controlled-exact-sequences"></span>Two cokernels, controlled rows and abelian completion</h1>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original text: CC0. The reconstructed version has no independent review.</em></p>
+<p>An arrow of represented presheaves can have two different cokernels. A growing exact row can keep its kernel constant while its middle terms change. These two computational problems organize the lesson. The first leads to recognition and stagewise abelian structure; the second leads to controlled presentations, lifting covers and one-sided exact functors. Completion and extension closure then become reusable consequences with their own hypotheses.</p>
+<p>Fix a Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, containing the natural numbers. Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be an abelian category whose Hom sets are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Its objects need not form a <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small set. Every formal index category, sum and colimit called small below is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. A larger universe houses functor categories when necessary. Write <span class="math" data-tex="\(\iota X\)">\(\iota X\)</span> for the represented ind-object and</p>
+<span class="math math-display" data-tex="\[
+h_X(Z)=\operatorname{Hom}_{\mathcal C}(Z,X).
+\tag{0.1}
+\]">\[
+h_X(Z)=\operatorname{Hom}_{\mathcal C}(Z,X).
+\tag{0.1}
+\]</span>
+<p>We use the recognition and Hom formulas from <a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a>, finite diagram strictification and the full-subcategory criterion from <a href="finite-diagrams-and-comma-objects.html">Finite diagrams and comma objects</a>, and the colimit and limit constructions from <a href="limits-and-colimits-of-formal-objects.html">Limits and colimits of formal objects</a>. In particular, a map between ind-objects has a common small filtered stage model, and represented objects are finitely presentable for small filtered colimits in the ind-category.</p>
+<p>For universal objects in an arbitrary diagram category, retain the separate <a href="pointwise-abelian-structure-and-natural-splittings.html#1-assemble-the-pointwise-universal-objects">Pointwise abelian structure and natural splittings</a>. That lesson is adapted from Tom Leinster and remains <strong>CC BY-NC-SA 4.0</strong>; following this link does not place its expression under the CC0 terms of this lesson. The additional additive-presheaf and ind-recognition arguments needed here are proved in Section 2.</p>
+<h2 id="1-two-cokernels-for-the-same-arrow">1. Two cokernels for the same arrow</h2>
+<p><strong>First problem.</strong> In <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span>, compare the cokernel of <span class="math" data-tex="\(h_{\mathbb Z}\xrightarrow{2}h_{\mathbb Z}\)">\(h_{\mathbb Z}\xrightarrow{2}h_{\mathbb Z}\)</span> taken in additive presheaves with the one taken in ind-objects. Is evaluation at a single free group enough to tell them apart?</p>
+<p>In <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span> the cokernel is <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>. By Theorem 2.2 the ind-cokernel is <span class="math" data-tex="\(h_{\mathbb Z/2}\)">\(h_{\mathbb Z/2}\)</span>. The pointwise presheaf cokernel <span class="math" data-tex="\(Q\)">\(Q\)</span> has</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q(Z)\\
+{}=\operatorname{Hom}(Z,\mathbb Z)/
+2\operatorname{Hom}(Z,\mathbb Z).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+Q(Z)\\
+{}=\operatorname{Hom}(Z,\mathbb Z)/
+2\operatorname{Hom}(Z,\mathbb Z).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>At <span class="math" data-tex="\(Z=\mathbb Z\)">\(Z=\mathbb Z\)</span>, both <span class="math" data-tex="\(Q(Z)\)">\(Q(Z)\)</span> and <span class="math" data-tex="\(h_{\mathbb Z/2}(Z)\)">\(h_{\mathbb Z/2}(Z)\)</span> are <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>; the induced comparison is the identity on the residue of a generator. At <span class="math" data-tex="\(Z=\mathbb Z/2\)">\(Z=\mathbb Z/2\)</span>, one has <span class="math" data-tex="\(\operatorname{Hom}(Z,\mathbb Z)=0\)">\(\operatorname{Hom}(Z,\mathbb Z)=0\)</span>, so <span class="math" data-tex="\(Q(Z)=0\)">\(Q(Z)=0\)</span>, whereas <span class="math" data-tex="\(h_{\mathbb Z/2}(Z)\simeq\mathbb Z/2\)">\(h_{\mathbb Z/2}(Z)\simeq\mathbb Z/2\)</span>. The two presheaves are therefore different. The last arrow of</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow h_{\mathbb Z}\xrightarrow{2}h_{\mathbb Z}
+\longrightarrow h_{\mathbb Z/2}\longrightarrow0
+\tag{1.2}
+\]">\[
+0\longrightarrow h_{\mathbb Z}\xrightarrow{2}h_{\mathbb Z}
+\longrightarrow h_{\mathbb Z/2}\longrightarrow0
+\tag{1.2}
+\]</span>
+<p>is epic in the ind-category, but its value at <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> is <span class="math" data-tex="\(0\to\mathbb Z/2\)">\(0\to\mathbb Z/2\)</span>, which is not surjective. Kernels agree in the two categories; their cokernel universal properties test different collections of target presheaves. Formula (2.8) tests only the left exact ind-presheaves, so it gives precisely the internal cokernel claimed in (1.2).</p>
+<p>This computation poses two proof obligations. Why are ind-presheaves precisely the allowed left exact targets, with a size qualification when the base is large? And why is the stagewise quotient their universal cokernel? The next section supplies both providers, rather than treating the pointwise quotient as an ind-object by default.</p>
+<h2 id="2-recognition-and-universal-stage-computations"><span id="1-additive-presheaves-left-exactness-and-sums"></span><span id="2-kernels-and-cokernels-at-common-stages"></span>2. Recognition and universal stage computations</h2>
+<p>Let <span class="math" data-tex="\(\widehat{\mathcal C}_{\mathrm{add}}\)">\(\widehat{\mathcal C}_{\mathrm{add}}\)</span> be the category of additive functors <span class="math" data-tex="\(\mathcal C^{\mathrm{op}}\to\mathsf{Ab}_{\mathcal U}\)">\(\mathcal C^{\mathrm{op}}\to\mathsf{Ab}_{\mathcal U}\)</span> and additive natural transformations. This category is abelian, with all kernels and cokernels computed at each object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. For example, the groups <span class="math" data-tex="\(\ker(P(Z)\to Q(Z))\)">\(\ker(P(Z)\to Q(Z))\)</span> and <span class="math" data-tex="\(\operatorname{coker}(P(Z)\to Q(Z))\)">\(\operatorname{coker}(P(Z)\to Q(Z))\)</span> carry induced maps for every arrow in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Their additivity follows by restricting, or descending, the additive maps of <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>. The pointwise universal properties give their natural universal properties. Finite biproducts and the coimage-to-image isomorphism are pointwise too. This argument takes place in the larger universe; it does not say that all Hom sets of this presheaf category are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small.</p>
+<p>Passing to underlying set-valued presheaves is fully faithful. To see the part that needs checking, let <span class="math" data-tex="\(v\)">\(v\)</span> be a natural transformation of the underlying set functors of two additive presheaves <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>. An additive functor carries a zero object to a zero group, so naturality for <span class="math" data-tex="\(Z\to0\)">\(Z\to0\)</span> gives <span class="math" data-tex="\(v_Z(0)=0\)">\(v_Z(0)=0\)</span>. The two inclusions <span class="math" data-tex="\(Z\to Z\oplus Z\)">\(Z\to Z\oplus Z\)</span> show that, under the biproduct identifications, <span class="math" data-tex="\(v_{Z\oplus Z}\)">\(v_{Z\oplus Z}\)</span> acts on a pair componentwise. Naturality for the diagonal <span class="math" data-tex="\(Z\to Z\oplus Z\)">\(Z\to Z\oplus Z\)</span> then gives</p>
+<span class="math math-display" data-tex="\[
+v_Z(a+b)=v_Z(a)+v_Z(b).
+\tag{2.1}
+\]">\[
+v_Z(a+b)=v_Z(a)+v_Z(b).
+\tag{2.1}
+\]</span>
+<p>Thus every component is a group homomorphism.</p>
+<p>Filtered colimits of represented presheaves are additive. They identify <span class="math" data-tex="\(\operatorname{Ind}_{\mathcal U}(\mathcal C)\)">\(\operatorname{Ind}_{\mathcal U}(\mathcal C)\)</span> with a full subcategory of <span class="math" data-tex="\(\widehat{\mathcal C}_{\mathrm{add}}\)">\(\widehat{\mathcal C}_{\mathrm{add}}\)</span>. Its Hom groups are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, even when those of the ambient presheaf category need not be: for two small filtered presentations the formula is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=\mathop{\mathrm{colim}}_i^{\rm form}\iota X_i,\\
+B=\mathop{\mathrm{colim}}_j^{\rm form}\iota Y_j,\\
+\operatorname{Hom}(A,B)\\
+{}\simeq\lim_i\mathop{\mathrm{colim}}_j
+\operatorname{Hom}_{\mathcal C}(X_i,Y_j).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+A=\mathop{\mathrm{colim}}_i^{\rm form}\iota X_i,\\
+B=\mathop{\mathrm{colim}}_j^{\rm form}\iota Y_j,\\
+\operatorname{Hom}(A,B)\\
+{}\simeq\lim_i\mathop{\mathrm{colim}}_j
+\operatorname{Hom}_{\mathcal C}(X_i,Y_j).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>This is a small limit of small filtered colimits of small groups. Composition is bilinear, as it is on representatives at a common stage.</p>
+<p><strong>Proposition 2.1.</strong> An additive presheaf <span class="math" data-tex="\(P\)">\(P\)</span> is an ind-object precisely when it is left exact and its category of elements is cofinally small. If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is small, the second condition is automatic, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(\mathcal C)
+\simeq\operatorname{Lex}(\mathcal C^{\mathrm{op}},\mathsf{Ab}_{\mathcal U}).
+\tag{2.3}
+\]">\[
+\operatorname{Ind}(\mathcal C)
+\simeq\operatorname{Lex}(\mathcal C^{\mathrm{op}},\mathsf{Ab}_{\mathcal U}).
+\tag{2.3}
+\]</span>
+<p>Here the category of elements is formed from the underlying set presheaf. Cofinal smallness means that it has a small cofinal category; it is not an extra assertion that the whole element category is small.</p>
+<p><strong>Proof.</strong> Proposition 1.1 of <a href="limits-and-colimits-of-formal-objects.html#1-finite-colimits-are-tested-contravariantly">Limits and colimits of formal objects</a> says that, for a category with finite colimits, a set-valued presheaf is an ind-object exactly when it carries finite colimits to finite limits and has a cofinally small element category. Additive functors preserve finite biproducts. In an additive category a coequalizer of <span class="math" data-tex="\(f,g\)">\(f,g\)</span> is a cokernel of <span class="math" data-tex="\(f-g\)">\(f-g\)</span>, so the finite-colimit condition is exactly left exactness on <span class="math" data-tex="\(\mathcal C^{\mathrm{op}}\)">\(\mathcal C^{\mathrm{op}}\)</span>. Equivalently, every right exact sequence in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X\to Y\to Z\to0\\
+\Downarrow\\
+0\to P(Z)\to P(Y)\to P(X).
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+X\to Y\to Z\to0\\
+\Downarrow\\
+0\to P(Z)\to P(Y)\to P(X).
+\end{gathered}
+\tag{2.4}
+\]</span>
+<p>exact. The underlying-set fullness proved above identifies the resulting morphisms with the additive ones. If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is small, its element category is small, since each value of <span class="math" data-tex="\(P\)">\(P\)</span> is small. This proves (2.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The additive Yoneda embedding is fully faithful and left exact: <span class="math" data-tex="\(\operatorname{Hom}(Z,-)\)">\(\operatorname{Hom}(Z,-)\)</span> preserves finite limits. It generally fails to be right exact as a functor to additive presheaves. Section 1 gives an explicit failure. Its embedding into the ind-category will nevertheless be exact.</p>
+<p>For a small family <span class="math" data-tex="\((X_s)_{s\in S}\)">\((X_s)_{s\in S}\)</span> of objects of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, define the formal sum using the directed poset of finite subsets of <span class="math" data-tex="\(S\)">\(S\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\mathop{\bigoplus}_{s\in S}^{\rm form}\iota X_s
+=\mathop{\mathrm{colim}}_{F\subset S,\ F\text{ finite}}^{\rm form}
+\iota\bigl(\bigoplus_{s\in F}X_s\bigr).
+\tag{2.5}
+\]">\[
+\mathop{\bigoplus}_{s\in S}^{\rm form}\iota X_s
+=\mathop{\mathrm{colim}}_{F\subset S,\ F\text{ finite}}^{\rm form}
+\iota\bigl(\bigoplus_{s\in F}X_s\bigr).
+\tag{2.5}
+\]</span>
+<p>Evaluation at <span class="math" data-tex="\(Z\)">\(Z\)</span> gives <span class="math" data-tex="\(\bigoplus_{s\in S}\operatorname{Hom}(Z,X_s)\)">\(\bigoplus_{s\in S}\operatorname{Hom}(Z,X_s)\)</span>: every element has finite support. This is a coproduct in the ind-category. Indeed, for an ind-presheaf <span class="math" data-tex="\(L\)">\(L\)</span>, the Hom formula identifies maps from (2.5) to <span class="math" data-tex="\(L\)">\(L\)</span> with compatible choices of an element of <span class="math" data-tex="\(L(\bigoplus_{s\in F}X_s)\)">\(L(\bigoplus_{s\in F}X_s)\)</span> for each finite <span class="math" data-tex="\(F\)">\(F\)</span>. Additivity identifies this group with the finite product of the <span class="math" data-tex="\(L(X_s)\)">\(L(X_s)\)</span>, and compatibility is exactly an arbitrary family of maps <span class="math" data-tex="\(\iota X_s\to L\)">\(\iota X_s\to L\)</span>. The finite version proves that finite coproducts are biproducts; the zero object is <span class="math" data-tex="\(\iota0\)">\(\iota0\)</span>.</p>
+<p><strong>Theorem 2.2.</strong> Suppose a morphism <span class="math" data-tex="\(f: A\to B\)">\(f: A\to B\)</span> has a common small filtered presentation <span class="math" data-tex="\((f_i: X_i\to Y_i)_{i\in I}\)">\((f_i: X_i\to Y_i)_{i\in I}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\ker f\simeq\mathop{\mathrm{colim}}_i^{\rm form}\iota(\ker f_i),\\
+\operatorname{coker}f\simeq
+\mathop{\mathrm{colim}}_i^{\rm form}\iota(\operatorname{coker}f_i).
+\end{gathered}
+\tag{2.6}
+\]">\[
+\begin{gathered}
+\ker f\simeq\mathop{\mathrm{colim}}_i^{\rm form}\iota(\ker f_i),\\
+\operatorname{coker}f\simeq
+\mathop{\mathrm{colim}}_i^{\rm form}\iota(\operatorname{coker}f_i).
+\end{gathered}
+\tag{2.6}
+\]</span>
+<p>The first kernel agrees with the kernel in additive presheaves. The second cokernel is the cokernel in the ind-category, and need not be the pointwise presheaf cokernel. These constructions are natural in commutative squares of stage maps.</p>
+<p><strong>Proof.</strong> Kernel and cokernel universal properties in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> supply the transition arrows, with composition and identities forced by uniqueness. On evaluating the first formal object at <span class="math" data-tex="\(Z\)">\(Z\)</span>, we obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathop{\mathrm{colim}}_i\operatorname{Hom}(Z,\ker f_i)\\
+{}\simeq\mathop{\mathrm{colim}}_i
+\ker\bigl(h_{X_i}(Z)\to h_{Y_i}(Z)\bigr)\\
+{}\simeq\ker\bigl(A(Z)\to B(Z)\bigr).
+\end{gathered}
+\tag{2.7}
+\]">\[
+\begin{gathered}
+\mathop{\mathrm{colim}}_i\operatorname{Hom}(Z,\ker f_i)\\
+{}\simeq\mathop{\mathrm{colim}}_i
+\ker\bigl(h_{X_i}(Z)\to h_{Y_i}(Z)\bigr)\\
+{}\simeq\ker\bigl(A(Z)\to B(Z)\bigr).
+\end{gathered}
+\tag{2.7}
+\]</span>
+<p>Filtered colimits commute with finite limits of groups; the needed underlying-set result is <a href="https://stacks.math.columbia.edu/tag/04AX">Stacks, Tag 04AX</a>. The resulting identification is natural in <span class="math" data-tex="\(Z\)">\(Z\)</span>, so it proves the ambient and internal kernel claims.</p>
+<p>Put <span class="math" data-tex="\(Q_i=\operatorname{coker}f_i\)">\(Q_i=\operatorname{coker}f_i\)</span> and <span class="math" data-tex="\(Q=\mathop{\mathrm{colim}}_i^{\rm form}\iota Q_i\)">\(Q=\mathop{\mathrm{colim}}_i^{\rm form}\iota Q_i\)</span>. For any ind-presheaf <span class="math" data-tex="\(L\)">\(L\)</span>, write <span class="math" data-tex="\(f^*\)">\(f^*\)</span> for precomposition by <span class="math" data-tex="\(f\)">\(f\)</span>. Proposition 2.1 and the Hom formula give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}(Q,L)\simeq\lim_i L(Q_i)\\
+{}\simeq\lim_i\ker\bigl(L(Y_i)\to L(X_i)\bigr)\\
+{}\simeq\ker f^*.
+\end{gathered}
+\tag{2.8}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}(Q,L)\simeq\lim_i L(Q_i)\\
+{}\simeq\lim_i\ker\bigl(L(Y_i)\to L(X_i)\bigr)\\
+{}\simeq\ker f^*.
+\end{gathered}
+\tag{2.8}
+\]</span>
+<p>Limits commute with limits, so the last equality holds for this small diagram without an exactness assumption on <span class="math" data-tex="\(\lim\)">\(\lim\)</span>. These are natural bijections, with the prescribed map <span class="math" data-tex="\(B\to Q\)">\(B\to Q\)</span>; they prove the cokernel universal property. Every construction respects a square by its universal property, which proves naturality. Independence of a stage model follows from uniqueness of kernels and cokernels, rather than a choice of a preferred model. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We have now shown that the ind-category is additive with all kernels and cokernels. The Yoneda embedding into it preserves both, by applying (2.6) to a constant arrow. The inclusion into additive presheaves preserves kernels and finite biproducts, hence is left exact.</p>
+<h2 id="3-abelianity-from-a-small-model-of-each-arrow"><span id="3-abelianity-without-an-essential-smallness-hypothesis"></span>3. Abelianity from a small model of each arrow</h2>
+<p>The kernel and cokernel computations also determine the canonical comparison from coimage to image. First consider a small abelian category <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Present any ind-morphism by a small filtered family <span class="math" data-tex="\(f_i:X_i\to Y_i\)">\(f_i:X_i\to Y_i\)</span>. Write <span class="math" data-tex="\(k_i:\ker f_i\to X_i\)">\(k_i:\ker f_i\to X_i\)</span> and <span class="math" data-tex="\(q_i:Y_i\to\operatorname{coker}f_i\)">\(q_i:Y_i\to\operatorname{coker}f_i\)</span>. Their natural transition maps give stage models for the kernel inclusion and cokernel projection, by Theorem 2.2. Applying that theorem to these two models gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{coim}f
+&amp;\simeq\mathop{\mathrm{colim}}_i^{\rm form}
+\iota\bigl(\operatorname{coker}k_i\bigr),\\
+\operatorname{im}f
+&amp;\simeq\mathop{\mathrm{colim}}_i^{\rm form}
+\iota\bigl(\ker q_i\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{coim}f
+&amp;\simeq\mathop{\mathrm{colim}}_i^{\rm form}
+\iota\bigl(\operatorname{coker}k_i\bigr),\\
+\operatorname{im}f
+&amp;\simeq\mathop{\mathrm{colim}}_i^{\rm form}
+\iota\bigl(\ker q_i\bigr).
+\end{aligned}
+\]</span>
+<p>For each stage, the factorization of <span class="math" data-tex="\(f_i\)">\(f_i\)</span> through these objects is the coimage-to-image comparison in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, hence an isomorphism. Its naturality follows from the kernel and cokernel universal properties: a commuting square of the <span class="math" data-tex="\(f_i\)">\(f_i\)</span> induces both factorizations, and uniqueness makes the resulting square commute. Taking their formal colimit therefore gives an isomorphism. It is the canonical comparison for <span class="math" data-tex="\(f\)">\(f\)</span>, since its composite with the coimage projection and image inclusion is <span class="math" data-tex="\(f\)">\(f\)</span>; the same universal properties characterize that comparison uniquely. Thus <span class="math" data-tex="\(\operatorname{Ind}(\mathcal D)\)">\(\operatorname{Ind}(\mathcal D)\)</span> is abelian. This argument uses the proved stage formulas, without a sheafification or representability theorem from outside the course.</p>
+<p>The following reduction supplies the size generality that this application needs.</p>
+<p><strong>Lemma 3.1.</strong> Every small family of objects of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> lies in a small full abelian subcategory <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> whose inclusion into <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is exact.</p>
+<p><strong>Proof.</strong> Begin with the given objects and a zero object. At step <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, add chosen finite biproducts of the objects at step <span class="math" data-tex="\(n\)">\(n\)</span>, and chosen kernels and cokernels of every morphism between objects at that step. Each new family is small: there are a small family of finite tuples and, by local smallness, a small family of those morphisms. The union over <span class="math" data-tex="\(n\in\mathbb N\)">\(n\in\mathbb N\)</span> remains small. Take the full subcategory on this union. Any finite tuple or morphism appears at some step, and the requested construction appears at the next step. Thus <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is additive and has the kernels and cokernels computed in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Its coimage-to-image maps are isomorphisms, since they are those in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, and fullness includes their inverses. It is therefore abelian, and its inclusion preserves short exact sequences. Its objects and arrows both form small sets. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (abelian structure).</strong> For every locally small abelian <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> with the universe convention above, <span class="math" data-tex="\(\operatorname{Ind}_{\mathcal U}(\mathcal C)\)">\(\operatorname{Ind}_{\mathcal U}(\mathcal C)\)</span> is abelian and locally small. The constant embedding is exact and fully faithful. Essential smallness of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is not required.</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(f\)">\(f\)</span>, choose its small common stage model. Lemma 3.1 places all its stage objects in a small full abelian <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. The functor</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(\mathcal D)\longrightarrow\operatorname{Ind}(\mathcal C)
+\tag{3.1}
+\]">\[
+\operatorname{Ind}(\mathcal D)\longrightarrow\operatorname{Ind}(\mathcal C)
+\tag{3.1}
+\]</span>
+<p>is fully faithful, by (2.2), and preserves kernels and cokernels, by (2.6) and the exact inclusion of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. The canonical coimage-to-image map for <span class="math" data-tex="\(f\)">\(f\)</span> is therefore the image under (3.1) of that map in <span class="math" data-tex="\(\operatorname{Ind}(\mathcal D)\)">\(\operatorname{Ind}(\mathcal D)\)</span>. The stage comparison just proved makes it an isomorphism. This proves abelianity for every <span class="math" data-tex="\(f\)">\(f\)</span>, including when <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is not essentially small. The exact Yoneda claim follows from Section 2 and full faithfulness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Smallness was imposed on the chosen family presenting an arrow, not on the collection of all objects of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. The separate completion theorem in Section 6 proves the colimit, AB5, limit and generator conclusions.</p>
+<h2 id="4-a-constant-kernel-inside-a-growing-exact-row"><span id="4-short-exact-sequences-with-controlled-terms"></span><span id="6-testing-epimorphisms-and-exactness-by-epimorphic-covers"></span>4. A constant kernel inside a growing exact row</h2>
+<p><strong>Second problem.</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be prime and, for this example, let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be the category of finitely generated abelian groups. Can the row <span class="math" data-tex="\(0\to\mathbb Z\to\mathbb Z[1/p]\to P_p\to0\)">\(0\to\mathbb Z\to\mathbb Z[1/p]\to P_p\to0\)</span> be built while retaining exactly the constant kernel? Can a map from <span class="math" data-tex="\(\mathbb Z/p\)">\(\mathbb Z/p\)</span> to <span class="math" data-tex="\(P_p\)">\(P_p\)</span> lift to the middle group? Use the stage rows
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\longrightarrow\mathbb Z\xrightarrow{p^n}\mathbb Z
+\longrightarrow\mathbb Z/p^n\longrightarrow0,\\
+n\geq1,
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+0\longrightarrow\mathbb Z\xrightarrow{p^n}\mathbb Z
+\longrightarrow\mathbb Z/p^n\longrightarrow0,\\
+n\geq1,
+\end{gathered}
+\tag{4.1}
+\]</span>
+with identity transitions on kernels and multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> on middle and quotient terms.</p>
+<p>The first square commutes because <span class="math" data-tex="\(p\cdot p^n=p^{n+1}\)">\(p\cdot p^n=p^{n+1}\)</span>. The quotient transition sends the class of <span class="math" data-tex="\(z\)">\(z\)</span> modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span> to the class of <span class="math" data-tex="\(pz\)">\(pz\)</span> modulo <span class="math" data-tex="\(p^{n+1}\)">\(p^{n+1}\)</span>; this is well defined, and commutes with the middle transition. Thus these are actual short exact stage rows with the prescribed constant kernel.</p>
+<p>The category of finitely generated abelian groups is the category of finitely presented <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-modules. Here is the needed finiteness fact: a subgroup of <span class="math" data-tex="\(\mathbb Z^m\)">\(\mathbb Z^m\)</span> is finitely generated, by induction on <span class="math" data-tex="\(m\)">\(m\)</span>. Project to the last coordinate; its image is <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span>, with one chosen lift if <span class="math" data-tex="\(d\ne0\)">\(d\ne0\)</span>. The subgroup in the first <span class="math" data-tex="\(m-1\)">\(m-1\)</span> coordinates is finitely generated by induction, and those generators together with the lift generate the original subgroup. Taking a finite free surjection onto a finitely generated group now gives a finite presentation. Kernels and cokernels stay finitely generated by the same fact, so this <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is abelian. <a href="formal-colimits-and-compact-presentations.html">Formal colimits and compact presentations, Theorem 4.1</a> identifies <span class="math" data-tex="\(\operatorname{Ind}(\mathcal C)\)">\(\operatorname{Ind}(\mathcal C)\)</span> with <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span>, naturally by ordinary filtered colimit.</p>
+<p>Map the <span class="math" data-tex="\(n\)">\(n\)</span>-th middle term to <span class="math" data-tex="\(\mathbb Z[1/p]\)">\(\mathbb Z[1/p]\)</span> by <span class="math" data-tex="\(z\mapsto z/p^n\)">\(z\mapsto z/p^n\)</span>. These maps respect the multiplication-by-<span class="math" data-tex="\(p\)">\(p\)</span> transitions, are injective, and their images have union <span class="math" data-tex="\(\mathbb Z[1/p]\)">\(\mathbb Z[1/p]\)</span>. Map the quotient stage by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb Z/p^n\longrightarrow\mathbb Z[1/p]/\mathbb Z,\\
+\overline z\longmapsto z/p^n+\mathbb Z.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\mathbb Z/p^n\longrightarrow\mathbb Z[1/p]/\mathbb Z,\\
+\overline z\longmapsto z/p^n+\mathbb Z.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>It is well defined and injective, respects the transitions, and its images exhaust the quotient. The kernel map in the colimit sends <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(p^nz/p^n=z\)">\(p^nz/p^n=z\)</span>. Writing <span class="math" data-tex="\(P_p=\mathbb Z[1/p]/\mathbb Z\)">\(P_p=\mathbb Z[1/p]/\mathbb Z\)</span>, the sequence is</p>
+<span class="math math-display" data-tex="\[
+0\to\mathbb Z\to\mathbb Z[1/p]\to P_p\to0.
+\tag{4.3}
+\]">\[
+0\to\mathbb Z\to\mathbb Z[1/p]\to P_p\to0.
+\tag{4.3}
+\]</span>
+<p>The last group is the Prüfer <span class="math" data-tex="\(p\)">\(p\)</span>-group. Define <span class="math" data-tex="\(y: \mathbb Z/p\to\mathbb Z[1/p]/\mathbb Z\)">\(y: \mathbb Z/p\to\mathbb Z[1/p]/\mathbb Z\)</span> by <span class="math" data-tex="\(\overline1\mapsto1/p+\mathbb Z\)">\(\overline1\mapsto1/p+\mathbb Z\)</span>. Every map <span class="math" data-tex="\(\mathbb Z/p\to\mathbb Z[1/p]\)">\(\mathbb Z/p\to\mathbb Z[1/p]\)</span> is zero, since the latter is torsion free; therefore <span class="math" data-tex="\(y\)">\(y\)</span> has no lift with the identity cover. The quotient epimorphism <span class="math" data-tex="\(e: \mathbb Z\to\mathbb Z/p\)">\(e: \mathbb Z\to\mathbb Z/p\)</span>, together with <span class="math" data-tex="\(x: \mathbb Z\to\mathbb Z[1/p]\)">\(x: \mathbb Z\to\mathbb Z[1/p]\)</span> sending <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1/p\)">\(1/p\)</span>, satisfies the actual equation <span class="math" data-tex="\(fx=y\iota(e)\)">\(fx=y\iota(e)\)</span>. Its source and target are in the stated <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p>The identity kernel transitions and multiplication-by-<span class="math" data-tex="\(p\)">\(p\)</span> middle transitions are different controls on the same row. We now prove how to make such choices in any abelian base. The two control theorems prescribe one term at a time; they do not promise simultaneous control by unrelated subcategories.</p>
+<p><strong>Theorem 4.1.</strong> Every short exact sequence of ind-objects has a small filtered presentation by short exact sequences in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. If its middle term belongs to <span class="math" data-tex="\(\operatorname{Ind}(\mathcal J)\)">\(\operatorname{Ind}(\mathcal J)\)</span>, for a full additive subcategory <span class="math" data-tex="\(\mathcal J\subset\mathcal C\)">\(\mathcal J\subset\mathcal C\)</span>, the middle stages may be chosen in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>.</p>
+<p><strong>Proof.</strong> Present the epimorphism <span class="math" data-tex="\(A\to A&#x27;&#x27;\)">\(A\to A&#x27;&#x27;\)</span> by arrows <span class="math" data-tex="\(a_i: E_i\to F_i\)">\(a_i: E_i\to F_i\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+K_i=\ker a_i,\qquad H_i=\operatorname{im}a_i.
+\tag{4.4}
+\]">\[
+K_i=\ker a_i,\qquad H_i=\operatorname{im}a_i.
+\tag{4.4}
+\]</span>
+<p>Their transition maps give a functor of short exact rows</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow K_i\longrightarrow E_i\longrightarrow H_i\longrightarrow0.
+\tag{4.5}
+\]">\[
+0\longrightarrow K_i\longrightarrow E_i\longrightarrow H_i\longrightarrow0.
+\tag{4.5}
+\]</span>
+<p>The kernel formula identifies the formal colimit of the first term with <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>. The cokernel formula, applied to <span class="math" data-tex="\(K_i\to E_i\)">\(K_i\to E_i\)</span>, identifies the last formal term with <span class="math" data-tex="\(\operatorname{coker}(A&#x27;\to A)\)">\(\operatorname{coker}(A&#x27;\to A)\)</span>, hence with <span class="math" data-tex="\(A&#x27;&#x27;\)">\(A&#x27;&#x27;\)</span>. These identifications commute with the original maps. This is a presentation of the whole sequence, not merely of its three objects.</p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> has a presentation with stages in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, use it as the specified source presentation of <span class="math" data-tex="\(A\to A&#x27;&#x27;\)">\(A\to A&#x27;&#x27;\)</span>. The finite arrow strictification theorem supplies a common index with a cofinal projection to that specified index. Its source stages remain in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. Construction (4.4) retains those middle stages; it requires no kernel closure of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a stronger statement about a prescribed source of a monomorphism.</p>
+<p><strong>Theorem 4.2.</strong> Let <span class="math" data-tex="\(m: A\to B\)">\(m: A\to B\)</span> be a monomorphism, with a specified presentation <span class="math" data-tex="\(A=\mathop{\mathrm{colim}}_{i\in I}^{\rm form}\iota\alpha(i)\)">\(A=\mathop{\mathrm{colim}}_{i\in I}^{\rm form}\iota\alpha(i)\)</span>. There are a small filtered category <span class="math" data-tex="\(K\)">\(K\)</span>, a cofinal functor <span class="math" data-tex="\(p: K\to I\)">\(p: K\to I\)</span>, a functor <span class="math" data-tex="\(\beta: K\to\mathcal C\)">\(\beta: K\to\mathcal C\)</span>, and a natural transformation</p>
+<span class="math math-display" data-tex="\[
+\alpha p\longrightarrow\beta
+\tag{4.6}
+\]">\[
+\alpha p\longrightarrow\beta
+\tag{4.6}
+\]</span>
+<p>whose components are monomorphisms and whose formal colimit is the given <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Proof.</strong> Apply Theorem 4.1 to the short exact sequence of <span class="math" data-tex="\(m\)">\(m\)</span>. It first gives some stage monomorphisms <span class="math" data-tex="\(u_j: D_j\to E_j\)">\(u_j: D_j\to E_j\)</span> presenting <span class="math" data-tex="\(m\)">\(m\)</span>. Strictify the identity of <span class="math" data-tex="\(A\)">\(A\)</span>, viewed as a map from this kernel presentation <span class="math" data-tex="\(D\)">\(D\)</span> to the specified presentation <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The common-arrow theorem gives small filtered <span class="math" data-tex="\(K\)">\(K\)</span>, cofinal projections <span class="math" data-tex="\(q: K\to J\)">\(q: K\to J\)</span>, <span class="math" data-tex="\(p: K\to I\)">\(p: K\to I\)</span>, and a stage transformation <span class="math" data-tex="\(t: Dq\to\alpha p\)">\(t: Dq\to\alpha p\)</span> presenting that identity.</p>
+<p>For each <span class="math" data-tex="\(k\)">\(k\)</span>, form the pushout in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span></p>
+<span class="math math-display" data-tex="\[
+\beta(k)=E(qk)\mathbin{\oplus_{D(qk)}}\alpha(pk).
+\tag{4.7}
+\]">\[
+\beta(k)=E(qk)\mathbin{\oplus_{D(qk)}}\alpha(pk).
+\tag{4.7}
+\]</span>
+<p>The map <span class="math" data-tex="\(\alpha(pk)\to\beta(k)\)">\(\alpha(pk)\to\beta(k)\)</span> is monic. Here is a direct check of the abelian pushout fact: the pushout is the cokernel of <span class="math" data-tex="\((u,-t): D\to E\oplus\alpha\)">\((u,-t): D\to E\oplus\alpha\)</span>. If a map <span class="math" data-tex="\((0,x)\)">\((0,x)\)</span> into <span class="math" data-tex="\(E\oplus\alpha\)">\(E\oplus\alpha\)</span> vanishes in that cokernel, it factors through <span class="math" data-tex="\((u,-t)\)">\((u,-t)\)</span>, because <span class="math" data-tex="\((u,-t)\)">\((u,-t)\)</span> is monic and is its cokernel's kernel. Its <span class="math" data-tex="\(E\)">\(E\)</span>-component gives <span class="math" data-tex="\(uz=0\)">\(uz=0\)</span>, hence <span class="math" data-tex="\(z=0\)">\(z=0\)</span> and <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Thus the map from <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is monic.</p>
+<p>Every arrow in <span class="math" data-tex="\(K\)">\(K\)</span> induces a unique map between the chosen pushouts; uniqueness proves functoriality and naturality of (4.6). Finite colimits in the ind-category agree with these stage constructions, and colimits commute with colimits. Hence the formal colimit of (4.7) is the pushout of</p>
+<span class="math math-display" data-tex="\[
+A\xrightarrow{m}B,\qquad A\xrightarrow{1_A}A.
+\tag{4.8}
+\]">\[
+A\xrightarrow{m}B,\qquad A\xrightarrow{1_A}A.
+\tag{4.8}
+\]</span>
+<p>It is <span class="math" data-tex="\(B\)">\(B\)</span>, with its given map from <span class="math" data-tex="\(A\)">\(A\)</span>. The projection <span class="math" data-tex="\(p\)">\(p\)</span> is the actual cofinal functor supplied by strictification, so the specified source system has been retained by cofinal reindexing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.3.</strong> If the kernel term <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> of a short exact ind-sequence lies in <span class="math" data-tex="\(\operatorname{Ind}(\mathcal J)\)">\(\operatorname{Ind}(\mathcal J)\)</span>, its short exact stage presentation can be chosen with kernel stages in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>.</p>
+<p><strong>Proof.</strong> Choose a presentation of <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, apply Theorem 4.2 to <span class="math" data-tex="\(A&#x27;\to A\)">\(A&#x27;\to A\)</span>, and take each stage cokernel. Formula (2.6) identifies their formal colimit with <span class="math" data-tex="\(A&#x27;&#x27;\)">\(A&#x27;&#x27;\)</span>. No closure of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> under cokernels is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The middle-term and kernel-term controls are separate conclusions. They do not prescribe both terms simultaneously under arbitrary unrelated choices of subcategories.</p>
+<p>The failed torsion lift in the worked row suggests the correct test: allow a cover of the represented test object. The construction is a pullback, so the lifted square is an actual square of maps.</p>
+<p><strong>Theorem 4.4.</strong> A morphism <span class="math" data-tex="\(f: A\to B\)">\(f: A\to B\)</span> of ind-objects is epic precisely when, for every <span class="math" data-tex="\(Y\in\mathcal C\)">\(Y\in\mathcal C\)</span> and every <span class="math" data-tex="\(y: \iota Y\to B\)">\(y: \iota Y\to B\)</span>, there exist <span class="math" data-tex="\(X\in\mathcal C\)">\(X\in\mathcal C\)</span>, an epimorphism <span class="math" data-tex="\(e: X\to Y\)">\(e: X\to Y\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, and <span class="math" data-tex="\(x: \iota X\to A\)">\(x: \iota X\to A\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+f x=y\,\iota(e).
+\tag{4.9}
+\]">\[
+f x=y\,\iota(e).
+\tag{4.9}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is epic, Theorem 4.1 presents it by stage epimorphisms <span class="math" data-tex="\(E_i\to H_i\)">\(E_i\to H_i\)</span>. Finite presentability of <span class="math" data-tex="\(\iota Y\)">\(\iota Y\)</span> factors <span class="math" data-tex="\(y\)">\(y\)</span> through some <span class="math" data-tex="\(\iota H_i\)">\(\iota H_i\)</span>, by an actual <span class="math" data-tex="\(Y\to H_i\)">\(Y\to H_i\)</span>. In <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, form <span class="math" data-tex="\(X=Y\times_{H_i}E_i\)">\(X=Y\times_{H_i}E_i\)</span>. Its map to <span class="math" data-tex="\(Y\)">\(Y\)</span> is epic, and the other projection followed by <span class="math" data-tex="\(\iota E_i\to A\)">\(\iota E_i\to A\)</span> is the desired lift. We used the abelian pullback fact: a pullback of an epimorphism is epic. It also follows by dualizing the pushout-of-monomorphism proof in Section 4 inside the opposite abelian category.</p>
+<p>Conversely present <span class="math" data-tex="\(B\)">\(B\)</span> by <span class="math" data-tex="\((Y_i)\)">\((Y_i)\)</span> and form <span class="math" data-tex="\(P_i=A\times_B\iota Y_i\)">\(P_i=A\times_B\iota Y_i\)</span> in the ind-category. The assumed factorization for its structure map <span class="math" data-tex="\(\iota Y_i\to B\)">\(\iota Y_i\to B\)</span> gives a map <span class="math" data-tex="\(\iota X_i\to P_i\)">\(\iota X_i\to P_i\)</span> whose composite to <span class="math" data-tex="\(\iota Y_i\)">\(\iota Y_i\)</span> is epic. Thus <span class="math" data-tex="\(P_i\to\iota Y_i\)">\(P_i\to\iota Y_i\)</span> is epic. The commutation of filtered colimits with finite limits gives</p>
+<span class="math math-display" data-tex="\[
+\mathop{\mathrm{colim}}_i P_i\simeq A\times_B B\simeq A.
+\tag{4.10}
+\]">\[
+\mathop{\mathrm{colim}}_i P_i\simeq A\times_B B\simeq A.
+\tag{4.10}
+\]</span>
+<p>Colimits preserve cokernels, so the colimit of this natural transformation of epimorphisms is epic. Under (4.10) that colimit map is <span class="math" data-tex="\(f\)">\(f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.5.</strong> A complex <span class="math" data-tex="\(A\xrightarrow{f}B\xrightarrow{g}D\)">\(A\xrightarrow{f}B\xrightarrow{g}D\)</span>, with <span class="math" data-tex="\(gf=0\)">\(gf=0\)</span>, is exact at <span class="math" data-tex="\(B\)">\(B\)</span> precisely when every <span class="math" data-tex="\(y: \iota Y\to B\)">\(y: \iota Y\to B\)</span> killed by <span class="math" data-tex="\(g\)">\(g\)</span> admits a lift as in (4.9) after an epimorphism <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p><strong>Proof.</strong> Such <span class="math" data-tex="\(y\)">\(y\)</span> factors uniquely through <span class="math" data-tex="\(\ker g\)">\(\ker g\)</span>. The complex is exact at <span class="math" data-tex="\(B\)">\(B\)</span> exactly when the induced <span class="math" data-tex="\(A\to\ker g\)">\(A\to\ker g\)</span> is epic. Apply Theorem 4.4 to that map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The worked row proves that the cover is essential: it need not be possible to take <span class="math" data-tex="\(X=Y\)">\(X=Y\)</span> and <span class="math" data-tex="\(e=1_Y\)">\(e=1_Y\)</span>. Its torsion test map already exhibits this obstruction.</p>
+<h2 id="5-test-one-sided-functors-on-that-same-row"><span id="5-extending-additive-and-one-sided-exact-functors"></span>5. Test one-sided functors on that same row</h2>
+<p>The controlled row is also a test of which exactness property a functor preserves. On its finitely generated abelian-group category, set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H(M)=\operatorname{Hom}_{\mathbb Z}(\mathbb Z/p,M),\\
+T(M)=M\otimes_{\mathbb Z}\mathbb F_p.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+H(M)=\operatorname{Hom}_{\mathbb Z}(\mathbb Z/p,M),\\
+T(M)=M\otimes_{\mathbb Z}\mathbb F_p.
+\end{gathered}
+\tag{5.1}
+\]</span>
+First prove the extension result using kernels and cokernels; then compute every stage map for these two functors.</p>
+<p>Let <span class="math" data-tex="\(F: \mathcal C\to\mathcal C&#x27;\)">\(F: \mathcal C\to\mathcal C&#x27;\)</span> be additive between abelian categories with the same universe convention. Applying <span class="math" data-tex="\(F\)">\(F\)</span> to a formal system defines <span class="math" data-tex="\(\operatorname{Ind}(F)\)">\(\operatorname{Ind}(F)\)</span> on objects and maps; the Hom formula and common stage models give its independence of representatives.</p>
+<p><strong>Proposition 5.1.</strong> <span class="math" data-tex="\(\operatorname{Ind}(F)\)">\(\operatorname{Ind}(F)\)</span> is additive. If <span class="math" data-tex="\(F\)">\(F\)</span> is left exact, so is <span class="math" data-tex="\(\operatorname{Ind}(F)\)">\(\operatorname{Ind}(F)\)</span>. If <span class="math" data-tex="\(F\)">\(F\)</span> is right exact, so is <span class="math" data-tex="\(\operatorname{Ind}(F)\)">\(\operatorname{Ind}(F)\)</span>.</p>
+<p><strong>Proof.</strong> Addition of two maps is computed after strictifying the finite diagram of their sources and targets. Additivity of <span class="math" data-tex="\(F\)">\(F\)</span> respects that addition and zero, and hence the Hom group structures. If <span class="math" data-tex="\(F\)">\(F\)</span> preserves kernels, a common arrow model for <span class="math" data-tex="\(f\)">\(f\)</span> gives natural isomorphisms</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Ind}(F)(\ker f)
+&amp;\simeq\mathop{\mathrm{colim}}_i^{\rm form}\iota F(\ker f_i)\\
+&amp;\simeq\mathop{\mathrm{colim}}_i^{\rm form}\iota\ker F(f_i)\\
+&amp;\simeq\ker\bigl(\operatorname{Ind}(F)(f)\bigr).
+\end{aligned}
+\tag{5.2}
+\]">\[
+\begin{aligned}
+\operatorname{Ind}(F)(\ker f)
+&amp;\simeq\mathop{\mathrm{colim}}_i^{\rm form}\iota F(\ker f_i)\\
+&amp;\simeq\mathop{\mathrm{colim}}_i^{\rm form}\iota\ker F(f_i)\\
+&amp;\simeq\ker\bigl(\operatorname{Ind}(F)(f)\bigr).
+\end{aligned}
+\tag{5.2}
+\]</span>
+<p>Theorem 2.2 in the two categories proves these identifications and identifies their kernel maps. Together with additivity this is left exactness. If <span class="math" data-tex="\(F\)">\(F\)</span> preserves cokernels, the identical argument using the second formula in (2.6) proves right exactness. Both conclusions hold for all ind-arrows, without assuming that a stage presentation already has short exact rows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>the worked calculation below shows that either one-sided hypothesis may hold without the other.</p>
+<p><strong>Worked calculation.</strong></p>
+<p><span class="math" data-tex="\(H\)">\(H\)</span> is additive and left exact, since Hom into a kernel is its kernel of Hom maps. <span class="math" data-tex="\(T\)">\(T\)</span> is additive and right exact: the tensor universal property identifies maps from a tensor of a cokernel with bilinear maps vanishing on its image, which is the cokernel property after tensoring. Finitely generated groups give finitely generated, hence finite dimensional, values of both functors. The ind-category of finite dimensional vector spaces is the category of all small vector spaces by the finite-basis case of the same compact-presentation theorem.</p>
+<p>For <span class="math" data-tex="\(H\)">\(H\)</span>, both copies of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> have value zero. On <span class="math" data-tex="\(\mathbb Z/p^n\)">\(\mathbb Z/p^n\)</span>, the value is a one dimensional vector space with chosen generator the map</p>
+<span class="math math-display" data-tex="\[
+\overline1\longmapsto p^{n-1}\pmod {p^n}.
+\tag{5.3}
+\]">\[
+\overline1\longmapsto p^{n-1}\pmod {p^n}.
+\tag{5.3}
+\]</span>
+<p>Postcomposition with the quotient transition sends this generator to <span class="math" data-tex="\(p^n\)">\(p^n\)</span> modulo <span class="math" data-tex="\(p^{n+1}\)">\(p^{n+1}\)</span>, the next chosen generator. Thus the transition is the identity in these coordinates, and the quotient's ind-value is <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>. Applying the extension to (4.3) gives the three terms</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow0\longrightarrow\mathbb F_p.
+\tag{5.4}
+\]">\[
+0\longrightarrow0\longrightarrow\mathbb F_p.
+\tag{5.4}
+\]</span>
+<p>The first map has the correct kernel, while the second is not epic. Thus left exactness survives, and right exactness fails.</p>
+<p>For <span class="math" data-tex="\(T\)">\(T\)</span>, the kernel stages form the constant system <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> with identity transitions. Each middle stage is <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>, but its transition is multiplication by <span class="math" data-tex="\(p\)">\(p\)</span>, hence zero. Its filtered colimit is zero: every element is killed at the next stage. Each quotient stage is also <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>; the same multiplication-by-<span class="math" data-tex="\(p\)">\(p\)</span> transition is zero, so its colimit is zero too. The first stage arrow <span class="math" data-tex="\(p^n\)">\(p^n\)</span> tensors to zero for every <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. The three resulting terms and maps are</p>
+<span class="math math-display" data-tex="\[
+\mathbb F_p\xrightarrow{0}0\longrightarrow0.
+\tag{5.5}
+\]">\[
+\mathbb F_p\xrightarrow{0}0\longrightarrow0.
+\tag{5.5}
+\]</span>
+<p>This is right exact and the first arrow is not monic. Thus right exactness survives, and left exactness fails. These computations concern the actual induced functors on the ind-presentations; they do not assume a functor is exact merely because each original row was short exact.</p>
+<h2 id="6-completion-with-its-size-conditions">6. Completion with its size conditions</h2>
+<p><strong>Theorem 6.1 (completion).</strong> Under the locally small abelian hypotheses of Theorem 3.2, the ind-category has all small colimits and its small filtered colimits are exact. If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has all small limits, so does its ind-category. If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is essentially small, the ind-category has a small generating family, hence a generator, and is Grothendieck abelian. The first two conclusions do not require essential smallness.</p>
+<p><strong>Proof.</strong> Theorem 3.1 of the cited formal limits and colimits lesson gives all small colimits because <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has finite colimits. Theorem 4.1 there gives commutation of filtered colimits with finite limits. Filtered colimit, as a left adjoint to the constant-diagram functor, also preserves cokernels. It thus preserves short exact sequences in the abelian ind-category: this is AB5. If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has small limits, <a href="limits-and-colimits-of-formal-objects.html#2-independent-product-indices">Corollary 2.3</a> of that lesson gives small limits in its ind-category, with its stated universe convention.</p>
+<p>Finally suppose <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is essentially small. Choose a small representative family <span class="math" data-tex="\((C_s)_{s\in S}\)">\((C_s)_{s\in S}\)</span>. Its represented objects jointly detect maps: two different transformations between ind-presheaves differ at some <span class="math" data-tex="\(C_s\)">\(C_s\)</span> and some element there, which is a map from <span class="math" data-tex="\(\iota C_s\)">\(\iota C_s\)</span>. The formal coproduct (2.5) is a single generator. Indeed, a detecting map from one summand extends to the whole coproduct by taking zero maps on the other summands. AB5, all small colimits and this generator give the asserted Grothendieck property. We have used essential smallness only for this final conclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular (2.5) is the actual coproduct of the represented family. Small coproducts of arbitrary ind-objects are supplied by the general colimit theorem. The theorem does not assert a small generating family for an arbitrary large <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<h2 id="7-extension-closure-and-the-subobjects-it-does-not-cover"><span id="7-thickness-and-extension-closure"></span>7. Extension closure and the subobjects it does not cover</h2>
+<p>For this lesson a full subcategory of an abelian category is <strong>thick</strong> when it is closed, up to isomorphism, under kernels and cokernels of maps between its own objects and under extensions. Closure under every subobject or quotient of an object in the subcategory is the stronger Serre condition.</p>
+<p><strong>Final application.</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field, <span class="math" data-tex="\(R=\prod_{r\in\mathbb N}k\)">\(R=\prod_{r\in\mathbb N}k\)</span>, and, for this application, let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be the full category of finitely generated projective <span class="math" data-tex="\(R\)">\(R\)</span>-modules. It is abelian and its ind-completion is all modules. The ideal of finite-support sequences is a subobject of a represented object but is not itself represented. We verify the category and the actual subobject, then prove the closure theorem it does satisfy.</p>
+<p>Every object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is the image of an idempotent finite matrix: write <span class="math" data-tex="\(P=eR^m\)">\(P=eR^m\)</span> and <span class="math" data-tex="\(Q=fR^n\)">\(Q=fR^n\)</span>. A map <span class="math" data-tex="\(A: P\to Q\)">\(A: P\to Q\)</span> extends to a finite matrix <span class="math" data-tex="\(A: R^m\to R^n\)">\(A: R^m\to R^n\)</span> with <span class="math" data-tex="\(A=fAe\)">\(A=fAe\)</span>. At coordinate <span class="math" data-tex="\(r\)">\(r\)</span>, it is a map from <span class="math" data-tex="\(\operatorname{im}e_r\)">\(\operatorname{im}e_r\)</span> to <span class="math" data-tex="\(\operatorname{im}f_r\)">\(\operatorname{im}f_r\)</span>, both finite dimensional vector spaces.</p>
+<p>Choose a projection <span class="math" data-tex="\(a_r\)">\(a_r\)</span> onto the kernel of this restricted map inside <span class="math" data-tex="\(\operatorname{im}e_r\)">\(\operatorname{im}e_r\)</span>, extending it by zero on <span class="math" data-tex="\(\ker e_r\)">\(\ker e_r\)</span>. Then <span class="math" data-tex="\(a_r^2=a_r\)">\(a_r^2=a_r\)</span>, <span class="math" data-tex="\(a_re_r=e_ra_r=a_r\)">\(a_re_r=e_ra_r=a_r\)</span>. Similarly choose <span class="math" data-tex="\(b_r\)">\(b_r\)</span> projecting <span class="math" data-tex="\(\operatorname{im}f_r\)">\(\operatorname{im}f_r\)</span> onto the image of the restricted map, extended by zero on <span class="math" data-tex="\(\ker f_r\)">\(\ker f_r\)</span>. Choose a section <span class="math" data-tex="\(t_r\)">\(t_r\)</span> of the map onto its image, composed with <span class="math" data-tex="\(b_r\)">\(b_r\)</span>, with values in <span class="math" data-tex="\(\operatorname{im}e_r\)">\(\operatorname{im}e_r\)</span>. Assemble all their entries into matrices over <span class="math" data-tex="\(R\)">\(R\)</span>. This is possible because a finite matrix over <span class="math" data-tex="\(R\)">\(R\)</span> is exactly a sequence of finite matrices over <span class="math" data-tex="\(k\)">\(k\)</span>, with no boundedness condition on its coordinate entries. We obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a^2=a,\quad ae=ea=a,\\
+b^2=b,\quad bf=fb=b,\\
+At=b,\qquad et=t.
+\end{gathered}
+\tag{7.1}
+\]">\[
+\begin{gathered}
+a^2=a,\quad ae=ea=a,\\
+b^2=b,\quad bf=fb=b,\\
+At=b,\qquad et=t.
+\end{gathered}
+\tag{7.1}
+\]</span>
+<p>As modules, <span class="math" data-tex="\(eR^m\)">\(eR^m\)</span> identifies with <span class="math" data-tex="\(\prod_r\operatorname{im}e_r\)">\(\prod_r\operatorname{im}e_r\)</span>: choose the coordinate vectors freely and group their finitely many components into elements of <span class="math" data-tex="\(R\)">\(R\)</span>. Consequently the kernel is <span class="math" data-tex="\(aR^m\)">\(aR^m\)</span>. The image is <span class="math" data-tex="\(bR^n\)">\(bR^n\)</span>: the inclusion in it is coordinatewise, and <span class="math" data-tex="\(At=b\)">\(At=b\)</span> gives the opposite inclusion with an actual preimage in <span class="math" data-tex="\(P\)">\(P\)</span>. Since <span class="math" data-tex="\(f-b\)">\(f-b\)</span> is idempotent and complementary to <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span>, the cokernel is <span class="math" data-tex="\((f-b)R^n\)">\((f-b)R^n\)</span>. All three are finitely generated projective. Finite biproducts and zero stay in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, and it is full. Thus it is abelian, with these actual kernels and cokernels and the ordinary coimage-to-image isomorphism.</p>
+<p>For a map between finite free modules take <span class="math" data-tex="\(e,f\)">\(e,f\)</span> to be identities. The same argument shows that every cokernel of a finite matrix is finitely generated projective. Every finitely presented module is such a cokernel, so it belongs to <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Conversely a finitely generated projective module is a retract of a finite free module; the summand argument in Theorem 4.1 of the compact-presentation lesson proves it finitely presented. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal C=\mathsf{Mod}_{\mathrm{fp}}(R),\\
+\operatorname{Ind}(\mathcal C)\simeq\mathsf{Mod}(R).
+\end{gathered}
+\tag{7.2}
+\]">\[
+\begin{gathered}
+\mathcal C=\mathsf{Mod}_{\mathrm{fp}}(R),\\
+\operatorname{Ind}(\mathcal C)\simeq\mathsf{Mod}(R).
+\end{gathered}
+\tag{7.2}
+\]</span>
+<p>The equality is of full subcategories of modules, and the equivalence takes a formal filtered system to its module colimit.</p>
+<p>Let <span class="math" data-tex="\(e_r\in R\)">\(e_r\in R\)</span> be the coordinate idempotents and let <span class="math" data-tex="\(I\)">\(I\)</span> be the ideal of sequences with finite support. For a finite <span class="math" data-tex="\(F\subset\mathbb N\)">\(F\subset\mathbb N\)</span>, put <span class="math" data-tex="\(e_F=\sum_{r\in F}e_r\)">\(e_F=\sum_{r\in F}e_r\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+I=\bigcup_{F\subset\mathbb N,\ F\text{ finite}} e_FR.
+\tag{7.3}
+\]">\[
+I=\bigcup_{F\subset\mathbb N,\ F\text{ finite}} e_FR.
+\tag{7.3}
+\]</span>
+<p>Each <span class="math" data-tex="\(e_FR\)">\(e_FR\)</span> is a represented finitely generated projective module. The displayed directed union presents <span class="math" data-tex="\(I\)">\(I\)</span> as an ind-object, and its inclusion into <span class="math" data-tex="\(R\)">\(R\)</span> is monic under (7.2). But <span class="math" data-tex="\(I\)">\(I\)</span> is not finitely generated: finitely many elements have supports contained in one finite <span class="math" data-tex="\(F\)">\(F\)</span>, and their <span class="math" data-tex="\(R\)">\(R\)</span>-linear combinations cannot produce <span class="math" data-tex="\(e_r\)">\(e_r\)</span> for <span class="math" data-tex="\(r\notin F\)">\(r\notin F\)</span>. Thus <span class="math" data-tex="\(I\)">\(I\)</span> cannot be isomorphic to an object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Proposition 7.1 only closes kernels and cokernels of maps between represented objects and extensions with represented ends. The map <span class="math" data-tex="\(I\to R\)">\(I\to R\)</span> has an unrepresented source, so it witnesses failure of the stronger Serre subobject condition without contradicting thickness.</p>
+<p><strong>Proposition 7.1.</strong> The represented copy of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is thick in <span class="math" data-tex="\(\operatorname{Ind}(\mathcal C)\)">\(\operatorname{Ind}(\mathcal C)\)</span>.</p>
+<p><strong>Proof.</strong> Its kernels and cokernels stay represented by exactness of <span class="math" data-tex="\(\iota\)">\(\iota\)</span>. For extension closure take a short exact sequence with ends <span class="math" data-tex="\(\iota X,\iota Y\)">\(\iota X,\iota Y\)</span>. Apply Theorem 4.2 to its kernel inclusion using the constant presentation of <span class="math" data-tex="\(X\)">\(X\)</span>. Complete it by stage cokernels. We get a small filtered short exact presentation</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow X\longrightarrow E_i\longrightarrow Y_i\longrightarrow0,
+\tag{7.4}
+\]">\[
+0\longrightarrow X\longrightarrow E_i\longrightarrow Y_i\longrightarrow0,
+\tag{7.4}
+\]</span>
+<p>with identity transitions on the first term. The identity of <span class="math" data-tex="\(\iota Y\)">\(\iota Y\)</span> factors through some quotient stage <span class="math" data-tex="\(\iota Y_i\)">\(\iota Y_i\)</span>. This factorization comes from a map <span class="math" data-tex="\(s: Y\to Y_i\)">\(s: Y\to Y_i\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, by full faithfulness. Pull back (7.4) along <span class="math" data-tex="\(s\)">\(s\)</span>. Its middle term <span class="math" data-tex="\(E\)">\(E\)</span> lies in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, and the resulting row maps to the original ind-row with identity end maps.</p>
+<p>The induced middle map <span class="math" data-tex="\(\iota E\to A\)">\(\iota E\to A\)</span> is an isomorphism. For completeness, a map into its kernel has zero quotient component, hence factors through <span class="math" data-tex="\(\iota X\)">\(\iota X\)</span>; the identity on that end forces it to vanish. A map from its cokernel is a map <span class="math" data-tex="\(A\to T\)">\(A\to T\)</span> vanishing on <span class="math" data-tex="\(\iota E\)">\(\iota E\)</span>. It vanishes on <span class="math" data-tex="\(\iota X\)">\(\iota X\)</span>, so factors through <span class="math" data-tex="\(\iota Y\)">\(\iota Y\)</span>. The epimorphism <span class="math" data-tex="\(\iota E\to\iota Y\)">\(\iota E\to\iota Y\)</span> forces that factor to vanish too. Thus the middle map has zero kernel and cokernel and is an isomorphism in the abelian ind-category. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7.2.</strong> If a full additive <span class="math" data-tex="\(\mathcal J\subset\mathcal C\)">\(\mathcal J\subset\mathcal C\)</span> is closed under extensions in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, then <span class="math" data-tex="\(\operatorname{Ind}(\mathcal J)\)">\(\operatorname{Ind}(\mathcal J)\)</span> is closed under extensions in <span class="math" data-tex="\(\operatorname{Ind}(\mathcal C)\)">\(\operatorname{Ind}(\mathcal C)\)</span>.</p>
+<p><strong>Proof.</strong> Take <span class="math" data-tex="\(0\to A&#x27;\to A\to A&#x27;&#x27;\to0\)">\(0\to A&#x27;\to A\to A&#x27;&#x27;\to0\)</span> with both ends in <span class="math" data-tex="\(\operatorname{Ind}(\mathcal J)\)">\(\operatorname{Ind}(\mathcal J)\)</span>. The allowed-piece criterion in Section 4 of the cited finite diagrams lesson says that it suffices to factor every map <span class="math" data-tex="\(v: \iota X\to A\)">\(v: \iota X\to A\)</span>, for <span class="math" data-tex="\(X\in\mathcal C\)">\(X\in\mathcal C\)</span>, through a represented object of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>.</p>
+<p>Factor its quotient component through <span class="math" data-tex="\(\iota Y&#x27;&#x27;\)">\(\iota Y&#x27;&#x27;\)</span>, with <span class="math" data-tex="\(Y&#x27;&#x27;\in\mathcal J\)">\(Y&#x27;&#x27;\in\mathcal J\)</span>. Write its first factor as the actual <span class="math" data-tex="\(a: X\to Y&#x27;&#x27;\)">\(a: X\to Y&#x27;&#x27;\)</span>. By Theorem 4.4 applied to <span class="math" data-tex="\(A\to A&#x27;&#x27;\)">\(A\to A&#x27;&#x27;\)</span> and the map <span class="math" data-tex="\(\iota Y&#x27;&#x27;\to A&#x27;&#x27;\)">\(\iota Y&#x27;&#x27;\to A&#x27;&#x27;\)</span>, there is an epimorphism <span class="math" data-tex="\(e: X_1\to Y&#x27;&#x27;\)">\(e: X_1\to Y&#x27;&#x27;\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> with a lift <span class="math" data-tex="\(\iota X_1\to A\)">\(\iota X_1\to A\)</span>. Form</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d=[a,e]\colon X\oplus X_1\longrightarrow Y&#x27;&#x27;,\\
+N=\ker d.
+\end{gathered}
+\tag{7.5}
+\]">\[
+\begin{gathered}
+d=[a,e]\colon X\oplus X_1\longrightarrow Y&#x27;&#x27;,\\
+N=\ker d.
+\end{gathered}
+\tag{7.5}
+\]</span>
+<p>The map <span class="math" data-tex="\(d\)">\(d\)</span> is epic because <span class="math" data-tex="\(e\)">\(e\)</span> is. The map from <span class="math" data-tex="\(\iota(X\oplus X_1)\)">\(\iota(X\oplus X_1)\)</span> to <span class="math" data-tex="\(A\)">\(A\)</span>, given by <span class="math" data-tex="\(v\)">\(v\)</span> and the chosen lift, has on <span class="math" data-tex="\(\iota N\)">\(\iota N\)</span> a map into <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>. Factor the latter through <span class="math" data-tex="\(\iota Y&#x27;\)">\(\iota Y&#x27;\)</span>, with <span class="math" data-tex="\(Y&#x27;\in\mathcal J\)">\(Y&#x27;\in\mathcal J\)</span>, using the same allowed-piece criterion. Its first factor is an actual map <span class="math" data-tex="\(N\to Y&#x27;\)">\(N\to Y&#x27;\)</span>. Push out</p>
+<span class="math math-display" data-tex="\[
+0\to N\to X\oplus X_1\to Y&#x27;&#x27;\to0.
+\tag{7.6}
+\]">\[
+0\to N\to X\oplus X_1\to Y&#x27;&#x27;\to0.
+\tag{7.6}
+\]</span>
+<p>along that map. The resulting short exact row has ends <span class="math" data-tex="\(Y&#x27;,Y&#x27;&#x27;\)">\(Y&#x27;,Y&#x27;&#x27;\)</span> and middle</p>
+<span class="math math-display" data-tex="\[
+P=Y&#x27;\mathbin{\oplus_N}(X\oplus X_1).
+\tag{7.7}
+\]">\[
+P=Y&#x27;\mathbin{\oplus_N}(X\oplus X_1).
+\tag{7.7}
+\]</span>
+<p>Extension closure puts <span class="math" data-tex="\(P\)">\(P\)</span>, up to isomorphism, in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. The two maps into <span class="math" data-tex="\(A\)">\(A\)</span> agree on <span class="math" data-tex="\(\iota N\)">\(\iota N\)</span>, by construction. Since <span class="math" data-tex="\(\iota\)">\(\iota\)</span> preserves this pushout, they induce <span class="math" data-tex="\(\iota P\to A\)">\(\iota P\to A\)</span>. Composing with <span class="math" data-tex="\(X\to X\oplus X_1\to P\)">\(X\to X\oplus X_1\to P\)</span> recovers <span class="math" data-tex="\(v\)">\(v\)</span>. Every represented test map now factors through <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, proving the claim. Fullness makes all the stage maps used in the allowed-piece criterion morphisms of the stated subcategory; no smallness or kernel closure of <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> was assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-graded-exercises-with-full-solutions"><span id="8-four-graded-exercises-with-full-solutions"></span>8. Graded exercises with full solutions</h2>
+<p><strong>Exercise 1 (foundation: detect failure of left exactness).</strong> Replace <span class="math" data-tex="\(2\)">\(2\)</span> in the first problem by an integer <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>. Evaluate both cokernels at <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span>, and prove directly that the pointwise cokernel is not left exact.</p>
+<p><strong>Solution.</strong> The ind-cokernel is <span class="math" data-tex="\(h_{\mathbb Z/m}\)">\(h_{\mathbb Z/m}\)</span>, by the universal stage formula. The pointwise cokernel is <span class="math" data-tex="\(Q_m(Z)=\operatorname{Hom}(Z,\mathbb Z)/m\operatorname{Hom}(Z,\mathbb Z)\)">\(Q_m(Z)=\operatorname{Hom}(Z,\mathbb Z)/m\operatorname{Hom}(Z,\mathbb Z)\)</span>. Both values at <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> are <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span>, but <span class="math" data-tex="\(Q_m(\mathbb Z/m)=0\)">\(Q_m(\mathbb Z/m)=0\)</span>, while <span class="math" data-tex="\(h_{\mathbb Z/m}(\mathbb Z/m)=\mathbb Z/m\)">\(h_{\mathbb Z/m}(\mathbb Z/m)=\mathbb Z/m\)</span>. Apply <span class="math" data-tex="\(Q_m\)">\(Q_m\)</span> contravariantly to <span class="math" data-tex="\(\mathbb Z\xrightarrow{m}\mathbb Z\to\mathbb Z/m\to0\)">\(\mathbb Z\xrightarrow{m}\mathbb Z\to\mathbb Z/m\to0\)</span>. Left exactness would require <span class="math" data-tex="\(0\to0\to\mathbb Z/m\xrightarrow{m}\mathbb Z/m\)">\(0\to0\to\mathbb Z/m\xrightarrow{m}\mathbb Z/m\)</span> to be exact. The last map is zero, so its kernel is the nonzero whole group and the preceding image is zero. This proves the failure explicitly.</p>
+<p><strong>Exercise 2 (intermediate: a composite denominator).</strong> Build the controlled row for any integer <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>, using <span class="math" data-tex="\(q^n\)">\(q^n\)</span> in place of <span class="math" data-tex="\(p^n\)">\(p^n\)</span>. Identify the transition maps and colimit, and give a test object whose map to the quotient needs a nonidentity cover.</p>
+<p><strong>Solution.</strong> Use <span class="math" data-tex="\(0\to\mathbb Z\xrightarrow{q^n}\mathbb Z\to\mathbb Z/q^n\to0\)">\(0\to\mathbb Z\xrightarrow{q^n}\mathbb Z\to\mathbb Z/q^n\to0\)</span> with identity, multiplication by <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(\overline z\mapsto\overline{qz}\)">\(\overline z\mapsto\overline{qz}\)</span> as the three transitions. The first square commutes since <span class="math" data-tex="\(qq^n=q^{n+1}\)">\(qq^n=q^{n+1}\)</span>; the quotient square commutes by the same equality. Maps from the middle stages send <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(z/q^n\)">\(z/q^n\)</span>, and maps from the quotient stages send <span class="math" data-tex="\(\overline z\)">\(\overline z\)</span> to <span class="math" data-tex="\(z/q^n+\mathbb Z\)">\(z/q^n+\mathbb Z\)</span>. They are compatible and injective, with unions <span class="math" data-tex="\(\mathbb Z[1/q]\)">\(\mathbb Z[1/q]\)</span> and <span class="math" data-tex="\(\mathbb Z[1/q]/\mathbb Z\)">\(\mathbb Z[1/q]/\mathbb Z\)</span>. The kernel arrow sends <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(q^nz/q^n=z\)">\(q^nz/q^n=z\)</span>, giving the stated exact row. The quotient has the nonzero element <span class="math" data-tex="\(1/q+\mathbb Z\)">\(1/q+\mathbb Z\)</span>, of exact order <span class="math" data-tex="\(q\)">\(q\)</span>. Thus <span class="math" data-tex="\(y:\mathbb Z/q\to\mathbb Z[1/q]/\mathbb Z\)">\(y:\mathbb Z/q\to\mathbb Z[1/q]/\mathbb Z\)</span>, <span class="math" data-tex="\(\overline1\mapsto1/q+\mathbb Z\)">\(\overline1\mapsto1/q+\mathbb Z\)</span>, has no lift to the torsion-free middle group. The quotient cover <span class="math" data-tex="\(\mathbb Z\to\mathbb Z/q\)">\(\mathbb Z\to\mathbb Z/q\)</span> and the map <span class="math" data-tex="\(1\mapsto1/q\)">\(1\mapsto1/q\)</span> lift it and satisfy the required square. Primality was needed to name a Prüfer group in the first example, not for the controlled-stage construction.</p>
+<p><strong>Exercise 3 (advanced: separate stage maps from their colimits).</strong> For the prime-<span class="math" data-tex="\(p\)">\(p\)</span> row, compute all arrows after <span class="math" data-tex="\(H=\operatorname{Hom}(\mathbb Z/p,-)\)">\(H=\operatorname{Hom}(\mathbb Z/p,-)\)</span> and after <span class="math" data-tex="\(T=-\otimes\mathbb F_p\)">\(T=-\otimes\mathbb F_p\)</span> at a fixed stage <span class="math" data-tex="\(n\)">\(n\)</span>. Then compute each transition to stage <span class="math" data-tex="\(n+r\)">\(n+r\)</span>, for <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, and compare with the formal colimit maps in Section 5.</p>
+<p><strong>Solution.</strong> At every stage the <span class="math" data-tex="\(H\)">\(H\)</span>-terms are <span class="math" data-tex="\(0,0,\mathbb F_p\)">\(0,0,\mathbb F_p\)</span>, so both row arrows are zero. The last group's generator is the map <span class="math" data-tex="\(\overline1\mapsto p^{n-1}\)">\(\overline1\mapsto p^{n-1}\)</span>; the transition to <span class="math" data-tex="\(n+r\)">\(n+r\)</span> multiplies its image by <span class="math" data-tex="\(p^r\)">\(p^r\)</span>, taking it to the chosen generator <span class="math" data-tex="\(p^{n+r-1}\)">\(p^{n+r-1}\)</span>. Thus this coordinate transition is the identity. Its colimit is <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>, while the other two colimits vanish.</p>
+<p>The <span class="math" data-tex="\(T\)">\(T\)</span>-terms at a fixed stage are all <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>. The first arrow <span class="math" data-tex="\(p^n\)">\(p^n\)</span> becomes zero, and the quotient arrow becomes the identity on the residue of <span class="math" data-tex="\(1\)">\(1\)</span>. Their transitions are respectively the identity on the kernel term and zero on both other terms, since <span class="math" data-tex="\(p^r=0\)">\(p^r=0\)</span> in <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>. These transitions commute with both row arrows: for the first arrow both composites are zero, and for the second both are zero. The colimit row is consequently <span class="math" data-tex="\(\mathbb F_p\to0\to0\)">\(\mathbb F_p\to0\to0\)</span>, with zero first arrow. The middle and quotient stage terms were nonzero; their transition maps, rather than their dimensions, cause their colimits to vanish. The <span class="math" data-tex="\(H\)">\(H\)</span>-row retains left exactness and loses epimorphicity; the <span class="math" data-tex="\(T\)">\(T\)</span>-row retains right exactness and loses monicity.</p>
+<p><strong>Exercise 4 (expert: the quotient also escapes).</strong> For the product ring of Section 7, prove that <span class="math" data-tex="\(R/I\)">\(R/I\)</span>, where <span class="math" data-tex="\(I\)">\(I\)</span> is the finite-support ideal, is nonzero and unrepresented in <span class="math" data-tex="\(\operatorname{Ind}(\mathcal C)\)">\(\operatorname{Ind}(\mathcal C)\)</span>. Explain precisely why thickness permits this quotient.</p>
+<p><strong>Solution.</strong> The sequence constantly equal to <span class="math" data-tex="\(1\)">\(1\)</span> is not in <span class="math" data-tex="\(I\)">\(I\)</span>, so <span class="math" data-tex="\(R/I\ne0\)">\(R/I\ne0\)</span>. If <span class="math" data-tex="\(R/I\)">\(R/I\)</span> were represented, it would be finitely generated projective by the module identification in Section 7. The module epimorphism <span class="math" data-tex="\(R\to R/I\)">\(R\to R/I\)</span> would split. Its kernel <span class="math" data-tex="\(I\)">\(I\)</span> would then be a direct summand of the cyclic module <span class="math" data-tex="\(R\)">\(R\)</span>, hence finitely generated: apply its summand projection to the generator <span class="math" data-tex="\(1\)">\(1\)</span>. But finitely many finite-support elements generate only elements supported on the union of their supports, whereas <span class="math" data-tex="\(I\)">\(I\)</span> contains every coordinate idempotent. This contradiction proves that <span class="math" data-tex="\(R/I\)">\(R/I\)</span> is unrepresented. Thickness controls cokernels of arrows whose source and target are both represented. The source of <span class="math" data-tex="\(I\to R\)">\(I\to R\)</span> is unrepresented, so that closure property makes no claim about this quotient. Both subobject and quotient Serre conditions fail in this model.</p>
+<h2 id="9-references"><span id="9-references-and-scope"></span>9. References</h2>
+<p>Ind-objects of an abelian category again form an abelian category; see Masaki Kashiwara and Pierre Schapira, <a href="https://www.numdam.org/item/AST_2001__271__R1_0/"><em>Ind-sheaves</em></a>, Astérisque 271 (2001). Ind-objects in general are treated in Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Section 2.7.</p>
+<p>Daniel Schäppi, <a href="https://arxiv.org/abs/1211.3678"><em>Ind-abelian categories and quasi-coherent sheaves</em>, arXiv:1211.3678v1</a>, Theorem 1.3, gives a broader finitely cocomplete setting. Its abelian case is a comparison; no Tannakian result is a prerequisite here.</p>
+<p>The primary Mathlib sources <a href="https://github.com/leanprover-community/mathlib4/blob/master/Mathlib/CategoryTheory/Preadditive/Indization.lean">preadditive indization</a>, <a href="https://github.com/leanprover-community/mathlib4/blob/master/Mathlib/CategoryTheory/Abelian/Indization.lean">abelian indization</a>, and <a href="https://github.com/leanprover-community/mathlib4/blob/master/Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Indization.lean">Grothendieck axioms for indization</a> provide comparisons. Their small-base instances do not replace the large-base reduction of Theorem 3.2. This lesson has not been compiler verified.</p>
+<p>The filtered-limit interface uses <a href="https://stacks.math.columbia.edu/tag/04AX">Stacks, Tag 04AX</a>; ordinary colimits are discussed in <a href="https://stacks.math.columbia.edu/tag/002P">Stacks, Tag 002P</a>. The exact internal formal-object providers linked above retain the proof dependencies. All results here concern ordinary abelian categories and ordinary ind-objects.</p>
+</main></body></html>

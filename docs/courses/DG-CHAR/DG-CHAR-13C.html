@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rational homotopy and the Hurewicz range · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-13C.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="rational-homotopy-and-the-hurewicz-range">Rational homotopy and the Hurewicz range</h1>
+<p>Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Independently authored text dedicated under CC0.</p>
+<p>The rational Thom computation needs a homotopy estimate with finite integral error groups. We prove its prerequisites here: one-group spaces and their finite-type homology, finite generation of homotopy, Hurewicz modulo finite groups, the complete higher product rule for the Serre cohomology spectral sequence, rational Eilenberg–MacLane rings, Serre sphere finiteness, and the Hurewicz range with its finite Thom-space consequence.</p>
+<p>The exact earlier proofs are <a href="DG-CHAR-03.html">Classifying maps</a>, <a href="DG-CHAR-06.html">Thom and Euler classes</a>, <a href="DG-CHAR-08B.html">Frame fields and primary obstructions</a>, <a href="DG-CHAR-13.html">The geometric Thom construction</a>, and <a href="DG-CHAR-13B.html">Homotopy fibres and the Serre spectral sequence</a>. SectionsF–I continue the latter chapter's SectionsA–E. Six exercises have complete solutions. The <a href="DG-CHAR-13D.html">rational-bordism continuation</a> proves the oriented cobordism rank, polynomial ring and torsion criterion.</p>
+<h2 id="f-spaces-with-one-homotopy-group">F. Spaces with one homotopy group</h2>
+<p>Write <span class="math" data-tex="\(K(A,r)\)">\(K(A,r)\)</span> for a based, path-connected CW complex whose only nonzero positive-dimensional homotopy group is <span class="math" data-tex="\(\pi_r=A\)">\(\pi_r=A\)</span>. For <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>, the group <span class="math" data-tex="\(A\)">\(A\)</span> must be abelian. The models used here have <span class="math" data-tex="\(A\)">\(A\)</span> finitely generated. We construct them, prove the homology finiteness that is needed below, and realize the particular maps used to remove successive homotopy groups. None of these steps presupposes the rational cohomology ring of an Eilenberg–MacLane space.</p>
+<p>References to Sections A–E in this section mean the <a href="DG-CHAR-13B.html">homotopy foundation companion</a>. Its Theorems B.4–B.5 give homology comparison and CW models, its Theorem C.2 gives the homotopy sequence, and its Theorem D.1 and Exercise E.6 give the homology spectral sequence and all three finite-generation cases. The first Hurewicz theorem used here is the full proof in the frame-obstruction chapter, Lemma E.1.</p>
+<h3 id="f-1-the-integral-algebra">F.1. The integral algebra</h3>
+<p><span id="DG-CHAR-13C.lemma-F.1"></span><strong>Lemma F.1.</strong> A finitely generated abelian group is a direct sum
+<span class="math math-display" data-tex="\[
+A\cong\mathbb Z^s\oplus G,\qquad G\text{ finite}.
+\tag{F.1}
+\]">\[
+A\cong\mathbb Z^s\oplus G,\qquad G\text{ finite}.
+\tag{F.1}
+\]</span>
+Its tensor product with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is <span class="math" data-tex="\(\mathbb Q^s\)">\(\mathbb Q^s\)</span>. In particular such a group is finite if and only if its rational tensor product is zero.</p>
+<p><strong>Proof.</strong> A surjection <span class="math" data-tex="\(\mathbb Z^m\to A\)">\(\mathbb Z^m\to A\)</span> has a free, finite-rank kernel, by the subgroup proof in the Thom-class chapter, Lemma 5.1. Choose its basis. The resulting integer matrix of relations can be diagonalized using integral row and column operations with integral inverses.</p>
+<p>Here is the terminating procedure. Move a nonzero entry to the upper-left position and make it positive, say <span class="math" data-tex="\(d\)">\(d\)</span>. Divide every other entry of its column and row by <span class="math" data-tex="\(d\)">\(d\)</span>, subtracting the appropriate multiples of the pivot row or column. A nonzero remainder, moved to the pivot position, strictly decreases the positive pivot. Repeat. When all entries in the pivot row and column are multiples of <span class="math" data-tex="\(d\)">\(d\)</span>, clear that column and then that row. If some remaining block entry <span class="math" data-tex="\(b\)">\(b\)</span> is not divisible by <span class="math" data-tex="\(d\)">\(d\)</span>, add its row to the first row. The pivot is still <span class="math" data-tex="\(d\)">\(d\)</span>, while the first row now contains <span class="math" data-tex="\(b\)">\(b\)</span>. Division followed by a column interchange produces a positive pivot smaller than <span class="math" data-tex="\(d\)">\(d\)</span>. Thus this also forces a strict decrease. Eventually the first row and column are cleared and <span class="math" data-tex="\(d\)">\(d\)</span> divides every entry in the remaining block. Apply the same procedure to the smaller block. The number of rows and columns decreases at each completed stage, so the procedure ends.</p>
+<p>Every operation is a change of an integral basis and preserves the presented quotient. The diagonal entries contribute cyclic groups <span class="math" data-tex="\(\mathbb Z/d\)">\(\mathbb Z/d\)</span>; the unpaired zero rows contribute copies of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Entries <span class="math" data-tex="\(d=1\)">\(d=1\)</span> contribute zero. Their finite direct sum gives (F.1). In a rational tensor product a finite-order element vanishes, whereas <span class="math" data-tex="\(\mathbb Z\otimes\mathbb Q=\mathbb Q\)">\(\mathbb Z\otimes\mathbb Q=\mathbb Q\)</span>, which proves the remaining assertions. ∎</p>
+<p>We also make explicit why rational homology is integral homology tensored with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. A rational tensor product can be described by fractions <span class="math" data-tex="\(a/m\)">\(a/m\)</span>, <span class="math" data-tex="\(m\)">\(m\)</span> a positive integer, with the usual common-denominator equivalence. If <span class="math" data-tex="\(A&#x27;\to A\to A&#x27;&#x27;\)">\(A&#x27;\to A\to A&#x27;&#x27;\)</span> is exact, an element <span class="math" data-tex="\(a/m\)">\(a/m\)</span> mapping to zero has some positive multiple of <span class="math" data-tex="\(a\)">\(a\)</span> in the integral kernel. Replacing its denominator by that same multiple shows that it comes from <span class="math" data-tex="\(A&#x27;\otimes\mathbb Q\)">\(A&#x27;\otimes\mathbb Q\)</span>. An integral injection stays injective by this fraction test, and a surjection stays surjective by lifting numerators. Thus tensoring with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is exact. Applying this to cycles, boundaries and their quotient gives, naturally,
+<span class="math math-display" data-tex="\[
+H_j(X;\mathbb Q)=H_j(X;\mathbb Z)\otimes\mathbb Q.
+\tag{F.2}
+\]">\[
+H_j(X;\mathbb Q)=H_j(X;\mathbb Z)\otimes\mathbb Q.
+\tag{F.2}
+\]</span>
+Tensoring vector spaces over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is likewise exact: choose a basis of a quotient and lift it, obtaining a splitting. These observations will also justify constant rational coefficients in the spectral sequence.</p>
+<h3 id="f-2-general-path-covers-and-lifted-cells">F.2. General path covers and lifted cells</h3>
+<p><span id="DG-CHAR-13C.lemma-F.2"></span><strong>Lemma F.2.</strong> A connected CW complex has a simply connected covering. Coverings of CW complexes have the lifted-cell CW structure, and covering projection induces isomorphisms on <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span> for <span class="math" data-tex="\(i\geq2\)">\(i\geq2\)</span>.</p>
+<p><strong>Proof.</strong> Apply <a href="DG-CHAR-03.html#8b-general-coverings-and-lifted-cw-cells">Classifying maps, Theorem8.3</a>. It constructs endpoint-fixed path classes, sheet charts on the explicitly proved simply connected neighbourhoods, interval/square and convex-cube lifts, and proves simple connectivity and the higher-group comparison. Its last part proves the actual weak topology and closure finiteness of lifted cells, using the characteristic quotient restricted to a sheet and compact attaching spheres. All coverings, rather than only double covers, occur in that proof.</p>
+<p>The same theorem proves that prepending loop classes gives a free transitive deck action on each fibre of the path cover. These are the general covering facts used in the earlier local-coefficient cellular comparison and in the finite-group construction below. ∎</p>
+<h3 id="f-3-a-finite-group-model-in-degree-one">F.3. A finite-group model in degree one</h3>
+<p><span id="DG-CHAR-13C.lemma-F.3"></span><strong>Lemma F.3.</strong> For a finite group <span class="math" data-tex="\(G\)">\(G\)</span>, there is a one-vertex <span class="math" data-tex="\(K(G,1)\)">\(K(G,1)\)</span> with <span class="math" data-tex="\(|G|^j\)">\(|G|^j\)</span> cells in dimension <span class="math" data-tex="\(j\)">\(j\)</span>. Its integral homology is finitely generated in every degree, and its positive-dimensional rational homology is zero.</p>
+<p><strong>Proof.</strong> Form a cell complex <span class="math" data-tex="\(EG\)">\(EG\)</span> with a simplex for every tuple
+<span class="math math-display" data-tex="\[
+(g_0,\ldots,g_j)\in G^{j+1}.
+\]">\[
+(g_0,\ldots,g_j)\in G^{j+1}.
+\]</span>
+Attach each face to the tuple obtained by deleting the corresponding entry. Keep repeated entries and their cells; no degeneracy identification is imposed. Face deletions satisfy the simplicial face identities, so all attaching identifications agree on intersections. Gluing disks in increasing dimensions gives the closure-finite Hausdorff CW complex with these open simplices and its weak topology.</p>
+<p>There is a contraction, given in barycentric coordinates by
+<span class="math math-display" data-tex="\[
+[(g_0,\ldots,g_j);(t_0,\ldots,t_j)]
+\longmapsto
+[(1,g_0,\ldots,g_j);(u,(1-u)t_0,\ldots,(1-u)t_j)].
+\tag{F.3}
+\]">\[
+[(g_0,\ldots,g_j);(t_0,\ldots,t_j)]
+\longmapsto
+[(1,g_0,\ldots,g_j);(u,(1-u)t_0,\ldots,(1-u)t_j)].
+\tag{F.3}
+\]</span>
+It agrees under face deletion. At <span class="math" data-tex="\(u=0\)">\(u=0\)</span> it is the original point, and at <span class="math" data-tex="\(u=1\)">\(u=1\)</span> it is the vertex labelled <span class="math" data-tex="\(1\)">\(1\)</span>. Continuity on each characteristic simplex times <span class="math" data-tex="\(I\)">\(I\)</span>, followed by the quotient-product lemma, proves continuity on <span class="math" data-tex="\(EG\times I\)">\(EG\times I\)</span>. The vertex <span class="math" data-tex="\(1\)">\(1\)</span> may move along the cell <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> during this contraction; a deformation retraction fixing that vertex is not being asserted.</p>
+<p>Left multiplication by <span class="math" data-tex="\(G\)">\(G\)</span> acts on every entry of a tuple. Every point lies in a unique open simplex, and a nonidentity element preserves no such tuple, so the action on points is free. A finite free action on a Hausdorff space gives a covering quotient here, as follows. For <span class="math" data-tex="\(x\)">\(x\)</span> and each <span class="math" data-tex="\(g\ne1\)">\(g\ne1\)</span>, separate <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(gx\)">\(gx\)</span> by disjoint open sets <span class="math" data-tex="\(O_g,V_g\)">\(O_g,V_g\)</span>. The intersection
+<span class="math math-display" data-tex="\[
+U=\bigcap_{g\ne1}(O_g\cap g^{-1}V_g)
+\]">\[
+U=\bigcap_{g\ne1}(O_g\cap g^{-1}V_g)
+\]</span>
+is a neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span> satisfying <span class="math" data-tex="\(U\cap gU=\varnothing\)">\(U\cap gU=\varnothing\)</span> for every <span class="math" data-tex="\(g\ne1\)">\(g\ne1\)</span>. Its translates are pairwise disjoint. The quotient map is open, since the saturation of an open set is the union of its translates. It consequently maps each translate homeomorphically onto the same open set in the quotient. This is an evenly covered neighbourhood.</p>
+<p>Set <span class="math" data-tex="\(BG=EG/G\)">\(BG=EG/G\)</span>. Cells in the quotient are tuple orbits, and each orbit has the unique representative with <span class="math" data-tex="\(g_0=1\)">\(g_0=1\)</span>. Thus there is one vertex and <span class="math" data-tex="\(|G|^j\)">\(|G|^j\)</span> cells in dimension <span class="math" data-tex="\(j\)">\(j\)</span>; the quotient weak topology is exactly that of these characteristic cells. The contractible cover shows that higher homotopy groups vanish, by Lemma F.2. A loop based at the quotient of <span class="math" data-tex="\(1\)">\(1\)</span> lifts from <span class="math" data-tex="\(1\)">\(1\)</span> and ends at a vertex <span class="math" data-tex="\(g\)">\(g\)</span>. Every <span class="math" data-tex="\(g\)">\(g\)</span> occurs because <span class="math" data-tex="\(EG\)">\(EG\)</span> is path connected. A lift ending at <span class="math" data-tex="\(1\)">\(1\)</span> contracts upstairs. Concatenation uses a translate of the second lift, so endpoints multiply in <span class="math" data-tex="\(G\)">\(G\)</span>. The interval and square lifting proofs therefore give <span class="math" data-tex="\(\pi_1(BG)=G\)">\(\pi_1(BG)=G\)</span>.</p>
+<p>Its cellular chain groups are finite-rank free in each degree. The ordinary cellular-chain proof is the annular excision and skeleton-filtration argument already supplied in the frame-obstruction chapter, Lemma G.1 before applying <span class="math" data-tex="\(\operatorname{Hom}\)">\(\operatorname{Hom}\)</span>. Kernels and quotients of these finite-rank groups are finitely generated, proving the integral assertion.</p>
+<p>For rational homology, define a transfer on a singular simplex by summing all its <span class="math" data-tex="\(|G|\)">\(|G|\)</span> lifts. A simplex lifts uniquely from any selected vertex, by Lemma F.2; restricting its lifts to a face enumerates exactly all the lifts of that face. The transfer is therefore a chain map, and its composition with projection is multiplication by <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. In positive degrees its target homology is zero because <span class="math" data-tex="\(EG\)">\(EG\)</span> is contractible. Multiplication by the nonzero integer <span class="math" data-tex="\(|G|\)">\(|G|\)</span> is invertible over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>; consequently <span class="math" data-tex="\(H_j(BG;\mathbb Q)=0\)">\(H_j(BG;\mathbb Q)=0\)</span> for <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>. ∎</p>
+<p>For a finitely generated abelian <span class="math" data-tex="\(A=\mathbb Z^s\oplus G\)">\(A=\mathbb Z^s\oplus G\)</span>, take
+<span class="math math-display" data-tex="\[
+K(A,1)=(S^1)^s\times BG.
+\tag{F.4}
+\]">\[
+K(A,1)=(S^1)^s\times BG.
+\tag{F.4}
+\]</span>
+The covering <span class="math" data-tex="\(\mathbb R^s\to(S^1)^s\)">\(\mathbb R^s\to(S^1)^s\)</span> and its convex contraction give <span class="math" data-tex="\(\pi_1=\mathbb Z^s\)">\(\pi_1=\mathbb Z^s\)</span> and higher homotopy groups zero, by the same lifting argument. Maps and homotopies into a product are coordinatewise, so (F.4) has precisely the claimed homotopy groups.</p>
+<p>We justify its CW and finiteness assertions. The finite torus has finitely many cells. A quotient map remains quotient after multiplication by a locally compact Hausdorff space: the compact-neighbourhood and tube argument in the earlier quotient-times-interval proof works with a compact neighbourhood of the chosen point in place of a compact subinterval. Thus the characteristic quotient for <span class="math" data-tex="\(BG\)">\(BG\)</span>, multiplied by the torus, is quotient. The finite characteristic quotient onto the torus is a continuous map from a compact space to a Hausdorff space and has compact fibres; its product with any space is closed. Indeed, if a closed set misses a fibre over a given pair, cover that compact fibre by finitely many product neighbourhoods missing the closed set, and intersect their neighbourhoods in the other factor. Then use closedness of the original map to shrink the neighbourhood downstairs. This proves product closedness and hence the quotient assertion for that second map. Combining the two quotients shows that the topology is the weak topology of the product characteristic disks. Their products are disks, and their faces are in preceding cells. Only finitely many cells occur in every dimension. Hence <span class="math" data-tex="\(K(A,1)\)">\(K(A,1)\)</span> is a one-vertex CW complex and has finitely generated integral homology in all degrees.</p>
+<h3 id="f-4-higher-models-and-comparison-with-any-one-group-space">F.4. Higher models and comparison with any one-group space</h3>
+<p><span id="DG-CHAR-13C.lemma-F.4"></span><strong>Lemma F.4.</strong> For every finitely generated abelian group <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>, there is an <span class="math" data-tex="\((r-1)\)">\((r-1)\)</span>-connected one-vertex CW complex <span class="math" data-tex="\(K(A,r)\)">\(K(A,r)\)</span>.</p>
+<p><strong>Proof.</strong> Choose a finite free presentation
+<span class="math math-display" data-tex="\[
+0\longrightarrow R\longrightarrow\mathbb Z^m\longrightarrow A\longrightarrow0.
+\tag{F.5}
+\]">\[
+0\longrightarrow R\longrightarrow\mathbb Z^m\longrightarrow A\longrightarrow0.
+\tag{F.5}
+\]</span>
+Start with a wedge of <span class="math" data-tex="\(m\)">\(m\)</span> positively oriented <span class="math" data-tex="\(r\)">\(r\)</span>-spheres. Its lower homotopy groups vanish by the proved cell-dimension connectivity statement. The first Hurewicz theorem identifies its <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span> with its free cellular homology <span class="math" data-tex="\(\mathbb Z^m\)">\(\mathbb Z^m\)</span>. For every basis element of the free, finite-rank group <span class="math" data-tex="\(R\)">\(R\)</span>, attach an <span class="math" data-tex="\((r+1)\)">\((r+1)\)</span>-cell along a sphere map representing that relation. The cellular boundary is the inclusion of <span class="math" data-tex="\(R\)">\(R\)</span>: this is the Hurewicz class of its attaching sphere, expressed in the oriented <span class="math" data-tex="\(r\)">\(r\)</span>-cell basis. The resulting complex is still <span class="math" data-tex="\((r-1)\)">\((r-1)\)</span>-connected and has <span class="math" data-tex="\(H_r=A\)">\(H_r=A\)</span>, so its <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span> is <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>For <span class="math" data-tex="\(j=r+1,r+2,\ldots\)">\(j=r+1,r+2,\ldots\)</span>, attach a <span class="math" data-tex="\((j+1)\)">\((j+1)\)</span>-cell for every element of the current <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span>. Choose cellular attaching representatives. Adjoining these cells preserves <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> and maps the old <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span> onto the new one, by the cell-dimension assertion in Section B.2. Every old element bounds one of the attached disks, so the new <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span> is zero. The same assertion preserves all lower groups already fixed.</p>
+<p>Every attaching sphere has a finite cell carrier, and each attachment is therefore closure finite. At the union, every sphere map and every homotopy has a finite carrier, so lies in a finite construction stage. In each fixed degree the group has already been fixed at such a stage and subsequent higher-dimensional attachments preserve it. The union has the required homotopy groups. For <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, the point is also a permissible model. ∎</p>
+<p><span id="DG-CHAR-13C.lemma-F.5"></span><strong>Lemma F.5 — Comparison.</strong> If <span class="math" data-tex="\(Y\)">\(Y\)</span> is path connected and has only the homotopy group <span class="math" data-tex="\(\pi_r(Y)=A\)">\(\pi_r(Y)=A\)</span>, with <span class="math" data-tex="\(A\)">\(A\)</span> finitely generated and abelian, the models above admit a map
+<span class="math math-display" data-tex="\[
+K(A,r)\longrightarrow Y
+\tag{F.6}
+\]">\[
+K(A,r)\longrightarrow Y
+\tag{F.6}
+\]</span>
+inducing any prescribed identification of that homotopy group. It is a weak homotopy equivalence and induces isomorphisms on all homology groups, with every abelian coefficient group.</p>
+<p><strong>Proof.</strong></p>
+<p><strong>Proof for <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>.</strong> Map the <span class="math" data-tex="\(r\)">\(r\)</span>-sphere generators in the finite starting wedge to representatives of their images in <span class="math" data-tex="\(A\)">\(A\)</span>. Each relation in (F.5) then maps to zero in <span class="math" data-tex="\(\pi_r(Y)\)">\(\pi_r(Y)\)</span>, so its <span class="math" data-tex="\((r+1)\)">\((r+1)\)</span>-cell extends. Every subsequently attached cell has boundary dimension greater than <span class="math" data-tex="\(r\)">\(r\)</span>, where <span class="math" data-tex="\(Y\)">\(Y\)</span>'s homotopy group is zero; extend it as well. The characteristic weak topology gives a continuous based map. It is an isomorphism on <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span> by its construction, and on all other groups because both sides have zero groups there. The homology assertion is Theorem B.4.</p>
+<p><strong>Proof for <span class="math" data-tex="\(r=1\)">\(r=1\)</span>.</strong> We use the following elementary map construction. If <span class="math" data-tex="\(C\)">\(C\)</span> is a one-vertex connected CW complex, <span class="math" data-tex="\(Y\)">\(Y\)</span> has <span class="math" data-tex="\(\pi_i(Y)=0\)">\(\pi_i(Y)=0\)</span> for <span class="math" data-tex="\(i&gt;1\)">\(i&gt;1\)</span>, and <span class="math" data-tex="\(\alpha:\pi_1(C)\to\pi_1(Y)\)">\(\alpha:\pi_1(C)\to\pi_1(Y)\)</span> is a homomorphism, map each edge loop to a representative of its image under <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p>Every loop in the one-skeleton is a product of its edge loops and their inverses. To verify the assertion for continuous loops, first place the compact image in a finite graph. Cover that graph by small vertex stars and interior edge intervals, each a tree. A finite subdivision of the parameter interval makes each subpath lie in one such tree. Replace it, fixing its endpoints, by the unique reduced arc in that tree; contracting a tree gives the requisite path homotopy. These finitely many arcs form a finite piecewise edge path. When the endpoints are the vertex, reduction of adjacent partial segments gives an edge word. This proves the generation assertion without assuming a presentation theorem.</p>
+<p>For the attaching loop of a two-cell, the edge map therefore induces <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> composed with the map of the one-skeleton into <span class="math" data-tex="\(C\)">\(C\)</span>. That attaching loop is zero in <span class="math" data-tex="\(\pi_1(C)\)">\(\pi_1(C)\)</span>, so its image is zero in <span class="math" data-tex="\(\pi_1(Y)\)">\(\pi_1(Y)\)</span>; fill the disk. All later boundaries have dimension greater than one and fill because the corresponding homotopy group of <span class="math" data-tex="\(Y\)">\(Y\)</span> is zero. The resulting map induces <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on every loop: cellular approximation moves a based loop of <span class="math" data-tex="\(C\)">\(C\)</span> into the one-skeleton, with its basepoint fixed. Apply this construction to the one-vertex model (F.4) and the prescribed isomorphism to <span class="math" data-tex="\(\pi_1(Y)\)">\(\pi_1(Y)\)</span>. It gives (F.6), and Theorem B.4 again proves the homology assertion. ∎</p>
+<p>There is no claim here of a full classification of maps from every CW complex by cohomology. The particular existence statement just proved will suffice for comparing loopspaces; the next realization lemma supplies the maps needed for connected covers.</p>
+<h3 id="f-5-finite-type-homology-of-the-models">F.5. Finite-type homology of the models</h3>
+<p><span id="DG-CHAR-13C.theorem-F.6"></span><strong>Theorem F.6.</strong> For every finitely generated abelian group <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, all groups <span class="math" data-tex="\(H_j(K(A,r);\mathbb Z)\)">\(H_j(K(A,r);\mathbb Z)\)</span> are finitely generated. If <span class="math" data-tex="\(A\)">\(A\)</span> is finite, then
+<span class="math math-display" data-tex="\[
+H_j(K(A,r);\mathbb Q)=0\quad(j&gt;0).
+\tag{F.7}
+\]">\[
+H_j(K(A,r);\mathbb Q)=0\quad(j&gt;0).
+\tag{F.7}
+\]</span></p>
+<p><strong>Proof.</strong> The integral assertion for <span class="math" data-tex="\(r=1\)">\(r=1\)</span> was proved after (F.4). Induct on <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>. The based path fibration has fibre <span class="math" data-tex="\(\Omega K(A,r)\)">\(\Omega K(A,r)\)</span>, total space the contractible space of paths starting at the basepoint, and simply connected CW base <span class="math" data-tex="\(K(A,r)\)">\(K(A,r)\)</span>. Currying cubes, as in Section C.1, identifies
+<span class="math math-display" data-tex="\[
+\pi_i(\Omega K(A,r))=\pi_{i+1}(K(A,r)),
+\]">\[
+\pi_i(\Omega K(A,r))=\pi_{i+1}(K(A,r)),
+\]</span>
+including the component statement <span class="math" data-tex="\(\pi_0\Omega K(A,r)=\pi_1K(A,r)=0\)">\(\pi_0\Omega K(A,r)=\pi_1K(A,r)=0\)</span>. Thus the loopspace is path connected and has only <span class="math" data-tex="\(\pi_{r-1}=A\)">\(\pi_{r-1}=A\)</span>. Lemma F.5 compares its homology with that of <span class="math" data-tex="\(K(A,r-1)\)">\(K(A,r-1)\)</span>. The induction hypothesis gives finite generation for the fibre, and the contractible total space has finitely generated homology. The missing-base case of Exercise E.6 now proves finite generation for <span class="math" data-tex="\(K(A,r)\)">\(K(A,r)\)</span>. This argument makes no assertion that the many cells in Lemma F.4 are finite in number.</p>
+<p>For finite <span class="math" data-tex="\(A\)">\(A\)</span>, the case <span class="math" data-tex="\(r=1\)">\(r=1\)</span> is Lemma F.3. Suppose the fibre in the same path fibration has rational homology only in degree zero, where it is <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Its Serre second page is then only the bottom row <span class="math" data-tex="\(H_p(K(A,r);\mathbb Q)\)">\(H_p(K(A,r);\mathbb Q)\)</span>. Every higher differential is zero for degree reasons. Convergence to the contractible total space forces that row to be zero in every positive degree, proving (F.7) by induction. Together with (F.2), Lemma F.1 and the integral finite generation, it also proves that the integral homology groups in positive degrees are finite when <span class="math" data-tex="\(A\)">\(A\)</span> is finite. ∎</p>
+<h3 id="f-6-realizing-a-first-homology-homomorphism">F.6. Realizing a first homology homomorphism</h3>
+<p><span id="DG-CHAR-13C.lemma-F.7"></span><strong>Lemma F.7.</strong> Suppose <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span> is an <span class="math" data-tex="\((r-1)\)">\((r-1)\)</span>-connected CW complex, <span class="math" data-tex="\(A\)">\(A\)</span> is finitely generated abelian, and <span class="math" data-tex="\(\alpha:H_r(X;\mathbb Z)\to A\)">\(\alpha:H_r(X;\mathbb Z)\to A\)</span> is a homomorphism. There is a based map
+<span class="math math-display" data-tex="\[
+g:X\longrightarrow K(A,r)
+\tag{F.8}
+\]">\[
+g:X\longrightarrow K(A,r)
+\tag{F.8}
+\]</span>
+whose homology map in degree <span class="math" data-tex="\(r\)">\(r\)</span>, followed by the inverse first Hurewicz identification <span class="math" data-tex="\(H_r(K(A,r))=A\)">\(H_r(K(A,r))=A\)</span>, is <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p><strong>Proof.</strong> In the CW-model construction of Theorem B.5, all stages below <span class="math" data-tex="\(r\)">\(r\)</span> can be omitted because their target homotopy groups are zero. At stage <span class="math" data-tex="\(r\)">\(r\)</span>, attach spheres representing <span class="math" data-tex="\(\pi_r(X)\)">\(\pi_r(X)\)</span>, and proceed with the kernel-killing and representative steps of that construction. This yields a CW complex <span class="math" data-tex="\(C\)">\(C\)</span>, with one vertex and no cells in dimensions <span class="math" data-tex="\(1,\ldots,r-1\)">\(1,\ldots,r-1\)</span>, and a weak equivalence <span class="math" data-tex="\(f:C\to X\)">\(f:C\to X\)</span>. The CW Whitehead proof at the end of Section B.4 supplies a homotopy inverse. A basepoint path can be corrected using homotopy extension at the vertex; since the spaces are simply connected, the associated change on <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span> is unique. We may use a based inverse.</p>
+<p>The <span class="math" data-tex="\(r\)">\(r\)</span>-skeleton of <span class="math" data-tex="\(C\)">\(C\)</span> is a wedge of <span class="math" data-tex="\(r\)">\(r\)</span>-spheres. Map each of its positively oriented generators into <span class="math" data-tex="\(K(A,r)\)">\(K(A,r)\)</span> with first Hurewicz class equal to its image under <span class="math" data-tex="\(\alpha f_*\)">\(\alpha f_*\)</span>. For every <span class="math" data-tex="\((r+1)\)">\((r+1)\)</span>-cell, its attaching sphere's Hurewicz class is its cellular boundary in this free <span class="math" data-tex="\(r\)">\(r\)</span>-cell group. That boundary vanishes in <span class="math" data-tex="\(H_r(C)\)">\(H_r(C)\)</span>. By naturality of the first Hurewicz isomorphism, its image in <span class="math" data-tex="\(\pi_r(K(A,r))\)">\(\pi_r(K(A,r))\)</span> is therefore zero, and the map extends over the cell. All higher attaching spheres map to zero because the target has no higher homotopy groups. Extend cell by cell, using the weak topology.</p>
+<p>In degree <span class="math" data-tex="\(r\)">\(r\)</span>, cellular homology is the free group on the <span class="math" data-tex="\(r\)">\(r\)</span>-cells modulo these <span class="math" data-tex="\((r+1)\)">\((r+1)\)</span>-cell boundaries. The constructed map has exactly the required value on every generator and hence on that quotient. Compose it with the based homotopy inverse <span class="math" data-tex="\(X\to C\)">\(X\to C\)</span>. Its induced map is <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, as asserted. ∎</p>
+<p>In particular, for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> equal to the inverse first Hurewicz isomorphism <span class="math" data-tex="\(H_r(X)\to\pi_r(X)\)">\(H_r(X)\to\pi_r(X)\)</span>, whenever this group is finitely generated, (F.8) induces the identity on <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span>. The homotopy fibre is <span class="math" data-tex="\(r\)">\(r\)</span>-connected and retains every homotopy group in dimensions greater than <span class="math" data-tex="\(r\)">\(r\)</span>, by Theorem C.2. Passing to a CW model of that fibre preserves its homology and homotopy. Only finitely many such replacements will ever be made at a time.</p>
+<h3 id="f-7-finite-generation-of-homotopy-and-hurewicz-modulo-finite-groups">F.7. Finite generation of homotopy and Hurewicz modulo finite groups</h3>
+<p><span id="DG-CHAR-13C.theorem-F.8"></span><strong>Theorem F.8.</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> is a simply connected CW complex and <span class="math" data-tex="\(H_j(X;\mathbb Z)\)">\(H_j(X;\mathbb Z)\)</span> is finitely generated for every <span class="math" data-tex="\(j\)">\(j\)</span>, then <span class="math" data-tex="\(\pi_j(X)\)">\(\pi_j(X)\)</span> is finitely generated for every <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>.</p>
+<p><strong>Proof.</strong> Its first group is zero, and the first Hurewicz theorem gives <span class="math" data-tex="\(\pi_2(X)=H_2(X)\)">\(\pi_2(X)=H_2(X)\)</span>, which is finitely generated. More generally, let <span class="math" data-tex="\(C\)">\(C\)</span> be an <span class="math" data-tex="\((r-1)\)">\((r-1)\)</span>-connected CW complex reached by the previous steps, with finitely generated integral homology and the same homotopy groups as <span class="math" data-tex="\(X\)">\(X\)</span> in dimensions at least <span class="math" data-tex="\(r\)">\(r\)</span>. Its first Hurewicz isomorphism gives
+<span class="math math-display" data-tex="\[
+A=\pi_r(C)=H_r(C),
+\]">\[
+A=\pi_r(C)=H_r(C),
+\]</span>
+so <span class="math" data-tex="\(A\)">\(A\)</span> is finitely generated. Use Lemma F.7 to choose <span class="math" data-tex="\(g:C\to K(A,r)\)">\(g:C\to K(A,r)\)</span> inducing the identity on <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span>. Its path-space replacement has total space homotopy equivalent to <span class="math" data-tex="\(C\)">\(C\)</span>, simply connected CW base <span class="math" data-tex="\(K(A,r)\)">\(K(A,r)\)</span>, and <span class="math" data-tex="\(r\)">\(r\)</span>-connected homotopy fibre <span class="math" data-tex="\(Y\)">\(Y\)</span>, by Theorem C.2. The base has finitely generated homology by Theorem F.6. The missing-fibre case of Exercise E.6 consequently gives finitely generated homology for <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>Take a CW model <span class="math" data-tex="\(C&#x27;\to Y\)">\(C&#x27;\to Y\)</span>. Theorems B.4–B.5 preserve this homology and all homotopy groups, and <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> is <span class="math" data-tex="\(r\)">\(r\)</span>-connected. The homotopy sequence identifies its homotopy groups in dimensions greater than <span class="math" data-tex="\(r\)">\(r\)</span> with those of <span class="math" data-tex="\(C\)">\(C\)</span>, hence of <span class="math" data-tex="\(X\)">\(X\)</span>. This is the next induction step. After finitely many steps, the first Hurewicz isomorphism computes any fixed <span class="math" data-tex="\(\pi_j(X)\)">\(\pi_j(X)\)</span> as a finitely generated homology group. No limit of an infinite tower is needed. ∎</p>
+<p><span id="DG-CHAR-13C.theorem-F.9"></span><strong>Theorem F.9 — Hurewicz modulo finite groups in finite type.</strong> Under Theorem F.8's hypotheses, let <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> and suppose that <span class="math" data-tex="\(\pi_i(X)\)">\(\pi_i(X)\)</span> is finite for <span class="math" data-tex="\(2\leq i&lt;n\)">\(2\leq i&lt;n\)</span>. Then the ordinary Hurewicz map has finite kernel and finite cokernel:
+<span class="math math-display" data-tex="\[
+h:\pi_n(X)\longrightarrow H_n(X;\mathbb Z).
+\tag{F.9}
+\]">\[
+h:\pi_n(X)\longrightarrow H_n(X;\mathbb Z).
+\tag{F.9}
+\]</span>
+Equivalently, <span class="math" data-tex="\(h\otimes\mathbb Q\)">\(h\otimes\mathbb Q\)</span> is an isomorphism. Also <span class="math" data-tex="\(H_i(X;\mathbb Q)=0\)">\(H_i(X;\mathbb Q)=0\)</span> for <span class="math" data-tex="\(0&lt;i&lt;n\)">\(0&lt;i&lt;n\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> this is the first Hurewicz theorem. Otherwise perform the connected-cover construction in Theorem F.8 through dimensions <span class="math" data-tex="\(2,\ldots,n-1\)">\(2,\ldots,n-1\)</span>. Each group removed is the corresponding finite group of <span class="math" data-tex="\(X\)">\(X\)</span>, because previous removals preserve the higher homotopy groups. Its base <span class="math" data-tex="\(K(A,r)\)">\(K(A,r)\)</span> is rationally acyclic in positive degrees, by (F.7).</p>
+<p>In such a step, for any rational vector space <span class="math" data-tex="\(V\)">\(V\)</span>, the singular chain complex gives
+<span class="math math-display" data-tex="\[
+H_p(K(A,r);V)=H_p(K(A,r);\mathbb Q)\otimes_{\mathbb Q}V.
+\]">\[
+H_p(K(A,r);V)=H_p(K(A,r);\mathbb Q)\otimes_{\mathbb Q}V.
+\]</span>
+Exactness of tensoring vector spaces, proved after (F.2), justifies this formula even for infinite-dimensional <span class="math" data-tex="\(V\)">\(V\)</span>. Thus the path-replacement fibration has a Serre second page with only column zero, containing the rational homology of its fibre. There can be no differentials, and its finite filtration has a single nonzero quotient in each degree. The actual fibre edge in Section D.3 shows that fibre inclusion, followed by the total-space retraction to <span class="math" data-tex="\(C\)">\(C\)</span>, is an isomorphism on rational homology in every degree.</p>
+<p>At the end there is an <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-connected CW complex <span class="math" data-tex="\(C\)">\(C\)</span> and a composite map <span class="math" data-tex="\(u:C\to X\)">\(u:C\to X\)</span>. The homotopy sequence makes <span class="math" data-tex="\(u_*\)">\(u_*\)</span> an isomorphism on <span class="math" data-tex="\(\pi_n\)">\(\pi_n\)</span>; the preceding edge argument makes it an isomorphism on all rational homology. Naturality of Hurewicz gives the commuting square
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+\pi_n(C)\otimes\mathbb Q&amp;\xrightarrow{\,h_C\otimes\mathbb Q\,}&amp;H_n(C;\mathbb Q)\\
+\downarrow u_*&amp;&amp;\downarrow u_*\\
+\pi_n(X)\otimes\mathbb Q&amp;\xrightarrow{\,h_X\otimes\mathbb Q\,}&amp;H_n(X;\mathbb Q).
+\end{array}
+\tag{F.10}
+\]">\[
+\begin{array}{ccc}
+\pi_n(C)\otimes\mathbb Q&amp;\xrightarrow{\,h_C\otimes\mathbb Q\,}&amp;H_n(C;\mathbb Q)\\
+\downarrow u_*&amp;&amp;\downarrow u_*\\
+\pi_n(X)\otimes\mathbb Q&amp;\xrightarrow{\,h_X\otimes\mathbb Q\,}&amp;H_n(X;\mathbb Q).
+\end{array}
+\tag{F.10}
+\]</span>
+The top and both vertical arrows are isomorphisms, so the bottom arrow is an isomorphism. The first Hurewicz theorem also makes <span class="math" data-tex="\(H_i(C;\mathbb Z)=0\)">\(H_i(C;\mathbb Z)=0\)</span> for <span class="math" data-tex="\(0&lt;i&lt;n\)">\(0&lt;i&lt;n\)</span>; its rational comparison with <span class="math" data-tex="\(X\)">\(X\)</span> gives the asserted lower vanishing.</p>
+<p>Both groups in (F.9) are finitely generated, by the hypotheses and Theorem F.8. Their kernel and cokernel are finitely generated by the subgroup and quotient assertions in Exercise E.6. Tensoring the exact kernel-image-cokernel sequences with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> shows that these two groups have zero rational tensor product. Lemma F.1 therefore makes them finite. ∎</p>
+<p>This is the precise form of the modulo-finite Hurewicz principle now proved. It still does not assert a stable Hurewicz range for every highly connected finite complex: establishing that range requires the rational calculation of <span class="math" data-tex="\(K(A,r)\)">\(K(A,r)\)</span> for <span class="math" data-tex="\(A\)">\(A\)</span> with a free summand. That calculation, and the Serre sphere theorem used in the rational Thom argument, follow later.</p>
+<p><strong>References.</strong> Allen Hatcher's <a href="https://pi.math.cornell.edu/~hatcher/AT/AT.pdf"><em>Algebraic Topology</em></a> develops the tuple model and cell-by-cell maps to <span class="math" data-tex="\(K(G,1)\)">\(K(G,1)\)</span>. His <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch5.pdf"><em>Spectral Sequences</em></a> treats finite generation and Hurewicz modulo Serre classes. The proofs here use the covering theorem, the full three-case finite-generation argument of Exercise E.6, and the cell-level realization in Lemma F.7.</p>
+<h2 id="g-the-cohomology-product-and-every-higher-differential">G. The cohomology product and every higher differential</h2>
+<p>This section supplies the multiplicative step in the rational calculation. Its exact scope is a Hurewicz fibration <span class="math" data-tex="\(p:E\to B\)">\(p:E\to B\)</span>, with simply connected CW base <span class="math" data-tex="\(B\)">\(B\)</span>, path-connected fibre <span class="math" data-tex="\(F\)">\(F\)</span>, and finite-dimensional <span class="math" data-tex="\(H_j(B;\mathbb Q)\)">\(H_j(B;\mathbb Q)\)</span> and <span class="math" data-tex="\(H_j(F;\mathbb Q)\)">\(H_j(F;\mathbb Q)\)</span> in each degree. All chains and cochains in this section have coefficients in <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The homology construction is Theorem D.1 of the foundation companion.</p>
+<p><span id="DG-CHAR-13C.theorem-G.1"></span><strong>Theorem G.1.</strong> There is a cohomological spectral sequence
+<span class="math math-display" data-tex="\[
+E_2^{a,b}=H^a(B;\mathbb Q)\otimes H^b(F;\mathbb Q),
+\qquad
+d_r:E_r^{a,b}\longrightarrow E_r^{a+r,b-r+1},
+\tag{G.1}
+\]">\[
+E_2^{a,b}=H^a(B;\mathbb Q)\otimes H^b(F;\mathbb Q),
+\qquad
+d_r:E_r^{a,b}\longrightarrow E_r^{a+r,b-r+1},
+\tag{G.1}
+\]</span>
+converging to a finite filtration of <span class="math" data-tex="\(H^{a+b}(E;\mathbb Q)\)">\(H^{a+b}(E;\mathbb Q)\)</span>. From page two onward its product is associative, unital and graded commutative by total degree. On the second page it is
+<span class="math math-display" data-tex="\[
+(u\otimes v)(u&#x27;\otimes v&#x27;)
+=(-1)^{b a&#x27;}(u\smile u&#x27;)\otimes(v\smile v&#x27;).
+\tag{G.2}
+\]">\[
+(u\otimes v)(u&#x27;\otimes v&#x27;)
+=(-1)^{b a&#x27;}(u\smile u&#x27;)\otimes(v\smile v&#x27;).
+\tag{G.2}
+\]</span>
+Every differential satisfies
+<span class="math math-display" data-tex="\[
+d_r(xy)=d_r(x)y+(-1)^{a+b}x\,d_r(y),
+\qquad x\in E_r^{a,b}.
+\tag{G.3}
+\]">\[
+d_r(xy)=d_r(x)y+(-1)^{a+b}x\,d_r(y),
+\qquad x\in E_r^{a,b}.
+\tag{G.3}
+\]</span>
+The final product is the associated graded product of the ordinary cup product on <span class="math" data-tex="\(H^*(E;\mathbb Q)\)">\(H^*(E;\mathbb Q)\)</span>. Maps of fibrations give the usual maps on page two, after cellular approximation of the base map if necessary.</p>
+<p><strong>Proof.</strong></p>
+<h3 id="g-1-dual-filtration-and-convergence">G.1. Dual filtration and convergence</h3>
+<p>Put <span class="math" data-tex="\(E_a=p^{-1}(B^a)\)">\(E_a=p^{-1}(B^a)\)</span>, <span class="math" data-tex="\(E_{-1}=\varnothing\)">\(E_{-1}=\varnothing\)</span>, and
+<span class="math math-display" data-tex="\[
+C=C_*(E;\mathbb Q),\qquad F_aC=C_*(E_a;\mathbb Q).
+\]">\[
+C=C_*(E;\mathbb Q),\qquad F_aC=C_*(E_a;\mathbb Q).
+\]</span>
+The filtration is exhaustive by the projected compact-cell-carrier argument in Section D.1. On <span class="math" data-tex="\(C^*=\operatorname{Hom}_{\mathbb Q}(C,\mathbb Q)\)">\(C^*=\operatorname{Hom}_{\mathbb Q}(C,\mathbb Q)\)</span> use the decreasing filtration
+<span class="math math-display" data-tex="\[
+\mathcal F^a C^*=\{c:c|_{F_{a-1}C}=0\},
+\quad
+\mathcal F^a C^*=C^*\text{ for }a\leq0.
+\tag{G.4}
+\]">\[
+\mathcal F^a C^*=\{c:c|_{F_{a-1}C}=0\},
+\quad
+\mathcal F^a C^*=C^*\text{ for }a\leq0.
+\tag{G.4}
+\]</span>
+Linear maps on a vector subspace extend to the ambient space by extending a basis. Hence the associated quotient of (G.4) is the dual of <span class="math" data-tex="\(F_aC/F_{a-1}C\)">\(F_aC/F_{a-1}C\)</span>, and taking cohomology of that dual is the dual of its homology. The latter assertion also follows by splitting a chain complex into its homology and two-term contractible summands, using complements of boundaries in cycles and cycles in chains.</p>
+<p>The actual relative groups computed in Section D.1 consequently give
+<span class="math math-display" data-tex="\[
+E_1^{a,b}
+=\prod_{\text{\(a\)-cells of }B}H^b(F;\mathbb Q).
+\tag{G.5}
+\]">\[
+E_1^{a,b}
+=\prod_{\text{\(a\)-cells of }B}H^b(F;\mathbb Q).
+\tag{G.5}
+\]</span>
+Transposing the signed cellular boundary of Section D.2 gives the cellular cochain differential with that constant coefficient vector space. The cellular comparison, including its passage to infinitely many cells, was proved in the frame-obstruction chapter, Lemma G.1. It follows that the second page is <span class="math" data-tex="\(H^a(B;H^b(F;\mathbb Q))\)">\(H^a(B;H^b(F;\mathbb Q))\)</span>. Since <span class="math" data-tex="\(H^b(F;\mathbb Q)\)">\(H^b(F;\mathbb Q)\)</span> is finite dimensional, a basis identifies its coefficient cochain complex with a finite direct sum of the rational cochain complex of <span class="math" data-tex="\(B\)">\(B\)</span>. Thus it is the tensor product in (G.1); this identification is natural in the coefficient vector space.</p>
+<p>Here is the representative algebra and the convergence assertion. For a decreasing filtration define
+<span class="math math-display" data-tex="\[
+\begin{split}
+Z_r^{a,n}&amp;=\{x\in\mathcal F^a C^n:\delta x\in\mathcal F^{a+r}C^{n+1}\},\\
+T_r^{a,n}&amp;=\mathcal F^a C^n\cap\delta(\mathcal F^{a-r}C^{n-1}).
+\end{split}
+\]">\[
+\begin{split}
+Z_r^{a,n}&amp;=\{x\in\mathcal F^a C^n:\delta x\in\mathcal F^{a+r}C^{n+1}\},\\
+T_r^{a,n}&amp;=\mathcal F^a C^n\cap\delta(\mathcal F^{a-r}C^{n-1}).
+\end{split}
+\]</span>
+For <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, its page is
+<span class="math math-display" data-tex="\[
+E_r^{a,n-a}
+=Z_r^{a,n}/\bigl(Z_{r-1}^{a+1,n}+T_{r-1}^{a,n}\bigr).
+\tag{G.6}
+\]">\[
+E_r^{a,n-a}
+=Z_r^{a,n}/\bigl(Z_{r-1}^{a+1,n}+T_{r-1}^{a,n}\bigr).
+\tag{G.6}
+\]</span>
+The same kernel-and-image calculation as Theorem A.1, with the direction of the filtration reversed, defines <span class="math" data-tex="\(d_r[x]=[\delta x]\)">\(d_r[x]=[\delta x]\)</span> and gives <span class="math" data-tex="\(E_{r+1}=H(E_r,d_r)\)">\(E_{r+1}=H(E_r,d_r)\)</span>. Explicitly, if <span class="math" data-tex="\(\delta x=w+\delta v\)">\(\delta x=w+\delta v\)</span> is zero on its target page, then <span class="math" data-tex="\(v\in\mathcal F^{a+1}\)">\(v\in\mathcal F^{a+1}\)</span> and <span class="math" data-tex="\(w\in\mathcal F^{a+r+1}\)">\(w\in\mathcal F^{a+r+1}\)</span>. Subtracting <span class="math" data-tex="\(v\)">\(v\)</span> gives a representative in <span class="math" data-tex="\(Z_{r+1}^{a,n}\)">\(Z_{r+1}^{a,n}\)</span>. The incoming images enlarge the boundary subgroup from <span class="math" data-tex="\(T_{r-1}\)">\(T_{r-1}\)</span> to <span class="math" data-tex="\(T_r\)">\(T_r\)</span>; the remaining denominator is <span class="math" data-tex="\(Z_r^{a+1,n}\)">\(Z_r^{a+1,n}\)</span>. This is exactly (G.6) for the next page.</p>
+<p>Relative groups in (G.5) vanish below total degree <span class="math" data-tex="\(a\)">\(a\)</span>. Therefore, for fixed <span class="math" data-tex="\(n\)">\(n\)</span>, the pair cohomology sequences show that <span class="math" data-tex="\(H^n(E_a)\)">\(H^n(E_a)\)</span> stabilizes once <span class="math" data-tex="\(a\geq n+1\)">\(a\geq n+1\)</span>, and restriction to <span class="math" data-tex="\(E_n\)">\(E_n\)</span> is injective on that stable value. There is no assumed inverse-limit formula here. Singular chains are the union of the <span class="math" data-tex="\(C_*(E_a)\)">\(C_*(E_a)\)</span>, so cochains are their inverse limit, and restrictions of cochains are degreewise onto. The short exact sequence of complexes
+<span class="math math-display" data-tex="\[
+0\longrightarrow C^*(E)
+\longrightarrow\prod_a C^*(E_a)
+\xrightarrow{\,D\,}\prod_a C^*(E_a)
+\longrightarrow0,\qquad
+D(c)_a=c_a-\operatorname{res}c_{a+1},
+\tag{G.7}
+\]">\[
+0\longrightarrow C^*(E)
+\longrightarrow\prod_a C^*(E_a)
+\xrightarrow{\,D\,}\prod_a C^*(E_a)
+\longrightarrow0,\qquad
+D(c)_a=c_a-\operatorname{res}c_{a+1},
+\tag{G.7}
+\]</span>
+is exact: lift the coordinates successively to prove surjectivity. Cohomology of a product is the product of cohomology, since kernels, images and choices of preimages are coordinatewise. On the stabilized cohomology towers, <span class="math" data-tex="\(D\)">\(D\)</span> is onto: solve in the isomorphic tail and then solve backward through the finitely many earlier coordinates. The long exact sequence of (G.7) therefore identifies <span class="math" data-tex="\(H^n(E)\)">\(H^n(E)\)</span> with the stabilized <span class="math" data-tex="\(H^n(E_a)\)">\(H^n(E_a)\)</span>.</p>
+<p>The resulting filtration is
+<span class="math math-display" data-tex="\[
+\mathcal F^a H^n(E)
+=\ker\bigl(H^n(E)\to H^n(E_{a-1})\bigr),
+\quad
+\mathcal F^0H^n(E)=H^n(E),\quad
+\mathcal F^{n+1}H^n(E)=0.
+\tag{G.8}
+\]">\[
+\mathcal F^a H^n(E)
+=\ker\bigl(H^n(E)\to H^n(E_{a-1})\bigr),
+\quad
+\mathcal F^0H^n(E)=H^n(E),\quad
+\mathcal F^{n+1}H^n(E)=0.
+\tag{G.8}
+\]</span>
+Exactness of the cochain pair sequences identifies this kernel with the image of filtered cocycles. The first-quadrant page calculation on the finite skeleton <span class="math" data-tex="\(E_{n+1}\)">\(E_{n+1}\)</span>, followed by that stabilized identification, gives
+<span class="math math-display" data-tex="\[
+E_\infty^{a,n-a}=\mathcal F^aH^n(E)/\mathcal F^{a+1}H^n(E).
+\]">\[
+E_\infty^{a,n-a}=\mathcal F^aH^n(E)/\mathcal F^{a+1}H^n(E).
+\]</span>
+This is the asserted finite convergence. Naturality follows by transposing the filtered homology maps in Section D.3.</p>
+<h3 id="g-2-a-filtered-inverse-to-the-cross-product">G.2. A filtered inverse to the cross product</h3>
+<p>The ordinary Alexander–Whitney diagonal need not preserve the total base-cell filtration. We construct a chain diagonal which does preserve it.</p>
+<p>First use the <strong>weak product</strong> <span class="math" data-tex="\(P=B\mathbin{\boxtimes}B\)">\(P=B\mathbin{\boxtimes}B\)</span>: it has cells <span class="math" data-tex="\(e^i\times e^j\)">\(e^i\times e^j\)</span>, with the weak topology of their product characteristic disks, and skeleton
+<span class="math math-display" data-tex="\[
+P^a=\bigcup_{i+j\leq a}B^i\times B^j.
+\]">\[
+P^a=\bigcup_{i+j\leq a}B^i\times B^j.
+\]</span>
+Its cell closures are finite, so it is a CW complex. Its identity map to the ordinary product <span class="math" data-tex="\(B\times B\)">\(B\times B\)</span> is continuous on every characteristic disk and hence continuous. A map from a compact space into the ordinary product has each coordinate in a finite subcomplex. The product of those two finite subcomplexes has its ordinary compact CW topology and is a finite subcomplex of <span class="math" data-tex="\(P\)">\(P\)</span>. Hence that map is continuous into <span class="math" data-tex="\(P\)">\(P\)</span> as well. In particular singular simplices, cube maps and their homotopies are the same in these two products. This proves that <span class="math" data-tex="\(P\)">\(P\)</span> is simply connected. The diagonal <span class="math" data-tex="\(B\to P\)">\(B\to P\)</span> is continuous: on each characteristic disk its image is in such a finite product, and the CW weak topology tests continuity there.</p>
+<p>Pull the product fibration back along <span class="math" data-tex="\(P\to B\times B\)">\(P\to B\times B\)</span>, and call its total space <span class="math" data-tex="\(E^{(2)}\)">\(E^{(2)}\)</span>. Its underlying points are those of <span class="math" data-tex="\(E\times E\)">\(E\times E\)</span>, together with their base point in <span class="math" data-tex="\(P\)">\(P\)</span>. The same compact-carrier observation shows that
+<span class="math math-display" data-tex="\[
+C_*(E^{(2)})=C_*(E\times E)
+\tag{G.9}
+\]">\[
+C_*(E^{(2)})=C_*(E\times E)
+\tag{G.9}
+\]</span>
+as singular complexes: a singular simplex in the ordinary product lifts continuously to the pullback because its projected base map is continuous into <span class="math" data-tex="\(P\)">\(P\)</span>. Filter the left side by the inverse images of <span class="math" data-tex="\(P^a\)">\(P^a\)</span>.</p>
+<p>On <span class="math" data-tex="\(C\otimes C\)">\(C\otimes C\)</span> use
+<span class="math math-display" data-tex="\[
+F_a(C\otimes C)=\sum_{i+j\leq a}F_iC\otimes F_jC.
+\]">\[
+F_a(C\otimes C)=\sum_{i+j\leq a}F_iC\otimes F_jC.
+\]</span>
+The lattice-path cross product proved in the Thom-class chapter, Lemma 4.1, is a filtered chain map
+<span class="math math-display" data-tex="\[
+\kappa:C\otimes C\longrightarrow C_*(E^{(2)}).
+\tag{G.10}
+\]">\[
+\kappa:C\otimes C\longrightarrow C_*(E^{(2)}).
+\tag{G.10}
+\]</span>
+Indeed the cross product of a simplex over <span class="math" data-tex="\(B^i\)">\(B^i\)</span> and one over <span class="math" data-tex="\(B^j\)">\(B^j\)</span> lies over <span class="math" data-tex="\(P^{i+j}\)">\(P^{i+j}\)</span>. Its relative first-page map is an isomorphism. To see this explicitly, over a product cell its map is the cross product of the two positive disk generators and the two fibre homology classes. Moving the first fibre factor of degree <span class="math" data-tex="\(b\)">\(b\)</span> past the second disk of degree <span class="math" data-tex="\(j\)">\(j\)</span> contributes <span class="math" data-tex="\((-1)^{bj}\)">\((-1)^{bj}\)</span>. The rational cross product
+<span class="math math-display" data-tex="\[
+H_*(F;\mathbb Q)\otimes H_*(F;\mathbb Q)
+\longrightarrow H_*(F\times F;\mathbb Q)
+\]">\[
+H_*(F;\mathbb Q)\otimes H_*(F;\mathbb Q)
+\longrightarrow H_*(F\times F;\mathbb Q)
+\]</span>
+is an isomorphism: split each rational chain complex into homology and contractible pairs, tensor the splittings, and use the two natural chain homotopies between cross product and Alexander–Whitney from the Thom-class chapter. This proves the isomorphism on every relative cell summand. The same splitting argument computes the associated graded of <span class="math" data-tex="\(C\otimes C\)">\(C\otimes C\)</span> as the tensor product of the associated graded complexes. Thus the associated graded of the mapping cone of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is acyclic.</p>
+<p>Here is why this yields an actual <strong>filtered chain homotopy inverse</strong>, rather than merely a map of pages. For any exhaustively, nonnegatively filtered rational chain complex <span class="math" data-tex="\(L\)">\(L\)</span> with acyclic associated graded, choose vector-space splittings of its filtration. In those coordinates its differential is <span class="math" data-tex="\(d=d_0+\epsilon\)">\(d=d_0+\epsilon\)</span>, where <span class="math" data-tex="\(d_0\)">\(d_0\)</span> preserves the filtration degree and <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> lowers it. Contract each acyclic associated graded complex, and let <span class="math" data-tex="\(h_0\)">\(h_0\)</span> be the direct sum of those contractions. Then
+<span class="math math-display" data-tex="\[
+dh_0+h_0d=1+N,\qquad
+N=\epsilon h_0+h_0\epsilon
+\tag{G.11}
+\]">\[
+dh_0+h_0d=1+N,\qquad
+N=\epsilon h_0+h_0\epsilon
+\tag{G.11}
+\]</span>
+lowers filtration by at least one. On every chain the finite series
+<span class="math math-display" data-tex="\[
+(1+N)^{-1}=1-N+N^2-\cdots
+\]">\[
+(1+N)^{-1}=1-N+N^2-\cdots
+\]</span>
+terminates. Moreover <span class="math" data-tex="\(1+N\)">\(1+N\)</span> commutes with <span class="math" data-tex="\(d\)">\(d\)</span>, directly from <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+h=h_0(1+N)^{-1}
+\quad\text{satisfies}\quad dh+hd=1
+\tag{G.12}
+\]">\[
+h=h_0(1+N)^{-1}
+\quad\text{satisfies}\quad dh+hd=1
+\tag{G.12}
+\]</span>
+and preserves the filtration. This proves a filtered contraction.</p>
+<p>Apply it to the cone of (G.10), with differential
+<span class="math math-display" data-tex="\[
+(v,u)\longmapsto(dv+\kappa u,-du).
+\]">\[
+(v,u)\longmapsto(dv+\kappa u,-du).
+\]</span>
+The lower-left block of its contraction is a filtered chain map
+<span class="math math-display" data-tex="\[
+\lambda:C_*(E^{(2)})\longrightarrow C\otimes C.
+\tag{G.13}
+\]">\[
+\lambda:C_*(E^{(2)})\longrightarrow C\otimes C.
+\tag{G.13}
+\]</span>
+The upper-left block of <span class="math" data-tex="\(dh+hd=1\)">\(dh+hd=1\)</span> says that <span class="math" data-tex="\(\kappa\lambda\)">\(\kappa\lambda\)</span> is homotopic to the identity by a filtered homotopy. The lower-right block says the same for <span class="math" data-tex="\(\lambda\kappa\)">\(\lambda\kappa\)</span>, with the corresponding sign in its homotopy. Thus (G.13) is the required filtered inverse. All series are finite on individual chains; no completion of chains or uniform filtration bound in each chain degree has been assumed.</p>
+<h3 id="g-3-a-filtered-diagonal-and-the-cup-product">G.3. A filtered diagonal and the cup product</h3>
+<p>Use the full cellular approximation theorem in the geometric Thom chapter to deform the diagonal <span class="math" data-tex="\(B\to P\)">\(B\to P\)</span> to a cellular map <span class="math" data-tex="\(\delta:B\to P\)">\(\delta:B\to P\)</span>, fixing the reference vertex. Lift this base homotopy into <span class="math" data-tex="\(E^{(2)}\)">\(E^{(2)}\)</span>, with parameter space <span class="math" data-tex="\(E\)">\(E\)</span>, starting with its ordinary diagonal. The endpoint is a map
+<span class="math math-display" data-tex="\[
+D:E\longrightarrow E^{(2)}
+\quad\text{over }\delta.
+\]">\[
+D:E\longrightarrow E^{(2)}
+\quad\text{over }\delta.
+\]</span>
+It sends <span class="math" data-tex="\(E_a\)">\(E_a\)</span> to the inverse image of <span class="math" data-tex="\(P^a\)">\(P^a\)</span>, so its singular chain map is filtered. The composite
+<span class="math math-display" data-tex="\[
+\Delta_f=\lambda D_\#:C\longrightarrow C\otimes C
+\tag{G.14}
+\]">\[
+\Delta_f=\lambda D_\#:C\longrightarrow C\otimes C
+\tag{G.14}
+\]</span>
+is therefore a filtered chain map. For cochains define
+<span class="math math-display" data-tex="\[
+\mu(c,c&#x27;)=(c\otimes c&#x27;)\Delta_f.
+\]">\[
+\mu(c,c&#x27;)=(c\otimes c&#x27;)\Delta_f.
+\]</span>
+Here a tensor cochain is evaluated directly on the matching two chain degrees, with the usual total tensor differential. Consequently
+<span class="math math-display" data-tex="\[
+\delta\mu(c,c&#x27;)=\mu(\delta c,c&#x27;)+(-1)^{|c|}\mu(c,\delta c&#x27;),
+\qquad
+\mu(\mathcal F^a,\mathcal F^{a&#x27;})\subset\mathcal F^{a+a&#x27;}.
+\tag{G.15}
+\]">\[
+\delta\mu(c,c&#x27;)=\mu(\delta c,c&#x27;)+(-1)^{|c|}\mu(c,\delta c&#x27;),
+\qquad
+\mu(\mathcal F^a,\mathcal F^{a&#x27;})\subset\mathcal F^{a+a&#x27;}.
+\tag{G.15}
+\]</span>
+The filtration assertion follows term by term: in filtration degree less than <span class="math" data-tex="\(a+a&#x27;\)">\(a+a&#x27;\)</span>, every tensor term has either its first degree less than <span class="math" data-tex="\(a\)">\(a\)</span> or its second degree less than <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>, so one cochain vanishes on it.</p>
+<p>On ordinary cohomology, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the usual cup product. The unfiltered Alexander–Whitney map <span class="math" data-tex="\(A:C_*(E\times E)\to C\otimes C\)">\(A:C_*(E\times E)\to C\otimes C\)</span> is a chain homotopy inverse to <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, by the two proved homotopies in the Thom-class chapter. It is chain homotopic to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>: composing the homotopy <span class="math" data-tex="\(\kappa\lambda\simeq1\)">\(\kappa\lambda\simeq1\)</span> with <span class="math" data-tex="\(A\)">\(A\)</span>, and then using <span class="math" data-tex="\(A\kappa\simeq1\)">\(A\kappa\simeq1\)</span>, gives that comparison. The map <span class="math" data-tex="\(D\)">\(D\)</span> is homotopic to the ordinary diagonal by its defining lift. Thus (G.14) is chain homotopic to the ordinary Alexander–Whitney diagonal. Evaluating cocycles on a chain homotopy changes their product by a coboundary. This proves the assertion about ordinary cohomology.</p>
+<p>We identify its second-page product as well. Naturality of the relative disk calculation in Section D.3 says that <span class="math" data-tex="\(D\)">\(D\)</span>'s first-page map is the cellular chain map of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, with the fibre diagonal on homology. Over the fixed vertex the lifted homotopy stays in <span class="math" data-tex="\(F\times F\)">\(F\times F\)</span>, so its fibre map is homotopic to that diagonal. Over a source disk, trivialize both pullbacks; contracting the source disk makes the fibre part constant while retaining the base part, exactly as in Section D.2's signed local-degree proof. Hence each product-cell coefficient is its cellular degree times this fibre diagonal. The inverse (G.13) reverses the disk-first cross product and its sign <span class="math" data-tex="\((-1)^{bj}\)">\((-1)^{bj}\)</span>.</p>
+<p>After dualizing and taking cellular cohomology, the base diagonal is ordinary cup product on <span class="math" data-tex="\(H^*(B)\)">\(H^*(B)\)</span>. This follows also by applying (G.10)–(G.14) to the identity fibration of <span class="math" data-tex="\(B\)">\(B\)</span>: its cellular diagonal is homotopic to the ordinary diagonal and its cross product has the same unfiltered inverse comparison just proved. The fibre factor is ordinary cup product on <span class="math" data-tex="\(H^*(F)\)">\(H^*(F)\)</span>, by the original cross-product/Alexander–Whitney comparison. Moving the fibre class of degree <span class="math" data-tex="\(b\)">\(b\)</span> past the second base class of degree <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> gives precisely (G.2).</p>
+<h3 id="g-4-the-product-descends-to-all-pages">G.4. The product descends to all pages</h3>
+<p>We verify the point that cannot be inferred solely from a picture of an exact couple. If <span class="math" data-tex="\(x\in Z_r^{a,n}\)">\(x\in Z_r^{a,n}\)</span> and <span class="math" data-tex="\(y\in Z_r^{a&#x27;,n&#x27;}\)">\(y\in Z_r^{a&#x27;,n&#x27;}\)</span>, (G.15) makes their product an element of <span class="math" data-tex="\(Z_r^{a+a&#x27;,n+n&#x27;}\)">\(Z_r^{a+a&#x27;,n+n&#x27;}\)</span>. A denominator change <span class="math" data-tex="\(x\mapsto x+z\)">\(x\mapsto x+z\)</span>, with <span class="math" data-tex="\(z\in Z_{r-1}^{a+1,n}\)">\(z\in Z_{r-1}^{a+1,n}\)</span>, changes the product by an element of <span class="math" data-tex="\(Z_{r-1}^{a+a&#x27;+1,n+n&#x27;}\)">\(Z_{r-1}^{a+a&#x27;+1,n+n&#x27;}\)</span>: its filtration is one higher, and (G.15) puts its derivative in <span class="math" data-tex="\(\mathcal F^{a+a&#x27;+r}\)">\(\mathcal F^{a+a&#x27;+r}\)</span>.</p>
+<p>For a boundary denominator write <span class="math" data-tex="\(z=\delta v\in\mathcal F^a\)">\(z=\delta v\in\mathcal F^a\)</span>, where <span class="math" data-tex="\(v\in\mathcal F^{a-r+1}\)">\(v\in\mathcal F^{a-r+1}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\mu(\delta v,y)
+=\delta\mu(v,y)-(-1)^{n-1}\mu(v,\delta y).
+\tag{G.16}
+\]">\[
+\mu(\delta v,y)
+=\delta\mu(v,y)-(-1)^{n-1}\mu(v,\delta y).
+\tag{G.16}
+\]</span>
+The first term is in <span class="math" data-tex="\(T_{r-1}^{a+a&#x27;,n+n&#x27;}\)">\(T_{r-1}^{a+a&#x27;,n+n&#x27;}\)</span>: its primitive has filtration <span class="math" data-tex="\(a+a&#x27;-r+1\)">\(a+a&#x27;-r+1\)</span>, and its derivative has filtration at least <span class="math" data-tex="\(a+a&#x27;\)">\(a+a&#x27;\)</span>. The second term has filtration at least <span class="math" data-tex="\(a+a&#x27;+1\)">\(a+a&#x27;+1\)</span>, and its derivative has filtration at least <span class="math" data-tex="\(a+a&#x27;+r\)">\(a+a&#x27;+r\)</span>. It is therefore in <span class="math" data-tex="\(Z_{r-1}^{a+a&#x27;+1,n+n&#x27;}\)">\(Z_{r-1}^{a+a&#x27;+1,n+n&#x27;}\)</span>. Changes of the right factor obey the same calculation with the tensor sign. Thus the product is well-defined on (G.6).</p>
+<p>Applying (G.15) to representatives now gives (G.3) exactly, with sign by total degree. The product on the next page is its induced product on the homology of the preceding page. Since the second-page product (G.2) is associative, unital and graded commutative, these properties pass successively to every later page. Strict associativity of the chosen chain map (G.14) is unnecessary. Its ordinary cohomology comparison, together with (G.8) and the filtration assertion in (G.15), proves that the limiting product is the associated graded of ordinary cup product.</p>
+<p>Choices of cellular diagonal, lift and filtered inverse all give (G.2). Since every subsequent page product is induced from its predecessor, these choices give the same product on the naturally identified pages from page two onward. Naturality of the additive second-page maps is Section D.3, and there they are the actual base and fibre cohomology maps. They preserve (G.2); induction on pages therefore proves multiplicative naturality in the stated scope. This completes Theorem G.1. ∎</p>
+<p><strong>Reference.</strong> Allen Hatcher's <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch5.pdf"><em>Spectral Sequences</em></a> discusses the cohomology sequence and its products. The construction above gives the filtered inverse, diagonal and representative-level product formulas used below.</p>
+<h2 id="h-rational-one-group-spaces-spheres-and-the-hurewicz-range">H. Rational one-group spaces, spheres and the Hurewicz range</h2>
+<p>We now use the complete multiplicative construction in Section G. All Eilenberg–MacLane groups in this section are finitely generated. Their finite-type homology, the required first-degree map realization and Hurewicz modulo finite groups were proved in Section F.</p>
+<h3 id="h-1-rational-cohomology-of-k-a-n">H.1. Rational cohomology of <span class="math" data-tex="\(K(A,n)\)">\(K(A,n)\)</span></h3>
+<p>For a graded rational vector space concentrated in degree <span class="math" data-tex="\(n\)">\(n\)</span>, its free graded-commutative algebra is a polynomial algebra when <span class="math" data-tex="\(n\)">\(n\)</span> is even and an exterior algebra when <span class="math" data-tex="\(n\)">\(n\)</span> is odd. In the odd case the square of a generator is zero because <span class="math" data-tex="\(x^2=-x^2\)">\(x^2=-x^2\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span> is invertible in <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>.</p>
+<p><span id="DG-CHAR-13C.theorem-H.1"></span><strong>Theorem H.1.</strong> If <span class="math" data-tex="\(A\cong\mathbb Z^s\oplus G\)">\(A\cong\mathbb Z^s\oplus G\)</span>, with <span class="math" data-tex="\(G\)">\(G\)</span> finite, then
+<span class="math math-display" data-tex="\[
+H^*(K(A,n);\mathbb Q)
+\cong
+\begin{cases}
+\mathbb Q[x_1,\ldots,x_s],&amp;n\text{ even},\\
+\Lambda_{\mathbb Q}(x_1,\ldots,x_s),&amp;n\text{ odd},
+\end{cases}
+\qquad |x_i|=n.
+\tag{H.1}
+\]">\[
+H^*(K(A,n);\mathbb Q)
+\cong
+\begin{cases}
+\mathbb Q[x_1,\ldots,x_s],&amp;n\text{ even},\\
+\Lambda_{\mathbb Q}(x_1,\ldots,x_s),&amp;n\text{ odd},
+\end{cases}
+\qquad |x_i|=n.
+\tag{H.1}
+\]</span>
+More precisely the cup-product map from the free graded-commutative algebra on <span class="math" data-tex="\(H^n(K(A,n);\mathbb Q)=(A\otimes\mathbb Q)^*\)">\(H^n(K(A,n);\mathbb Q)=(A\otimes\mathbb Q)^*\)</span> is an isomorphism. Consequently
+<span class="math math-display" data-tex="\[
+H_j(K(A,n);\mathbb Q)=0\quad(0&lt;j&lt;n\text{ or }n&lt;j&lt;2n),
+\qquad H_n(K(A,n);\mathbb Q)=A\otimes\mathbb Q.
+\tag{H.2}
+\]">\[
+H_j(K(A,n);\mathbb Q)=0\quad(0&lt;j&lt;n\text{ or }n&lt;j&lt;2n),
+\qquad H_n(K(A,n);\mathbb Q)=A\otimes\mathbb Q.
+\tag{H.2}
+\]</span></p>
+<p><strong>Proof.</strong></p>
+<p><strong>Proof: the first degree and induction setup.</strong> For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, use the model <span class="math" data-tex="\((S^1)^s\times BG\)">\((S^1)^s\times BG\)</span>. The rational homology of <span class="math" data-tex="\(BG\)">\(BG\)</span> is concentrated in degree zero, by the transfer proof in Lemma F.3. The rational cross-product chain equivalence and vector-space splitting proof in Section G.2 give the tensor-product cohomology ring of this finite product. A circle has one generator in degree one and no positive cohomology in higher degrees; multiplying circle generators gives the exterior algebra. Graded commutativity gives its signs. This proves (H.1) for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. If <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, the rational acyclicity of Theorem F.6 proves the assertion in every degree.</p>
+<p>Induct on <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, with <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>. Set
+<span class="math math-display" data-tex="\[
+R=H^*(K(A,n);\mathbb Q),\qquad
+S=H^*(\Omega K(A,n);\mathbb Q).
+\]">\[
+R=H^*(K(A,n);\mathbb Q),\qquad
+S=H^*(\Omega K(A,n);\mathbb Q).
+\]</span>
+Lemma F.5 compares the loopspace with <span class="math" data-tex="\(K(A,n-1)\)">\(K(A,n-1)\)</span>, so the induction hypothesis says that <span class="math" data-tex="\(S\)">\(S\)</span> is the free graded-commutative algebra on <span class="math" data-tex="\(s\)">\(s\)</span> generators <span class="math" data-tex="\(y_i\)">\(y_i\)</span> of degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. The based path fibration has contractible total space. Its second page is <span class="math" data-tex="\(R\otimes S\)">\(R\otimes S\)</span>, with its actual tensor-product ring and every higher Leibniz identity from Theorem G.1.</p>
+<p>The base is <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-connected, so <span class="math" data-tex="\(R^a=0\)">\(R^a=0\)</span> for <span class="math" data-tex="\(0&lt;a&lt;n\)">\(0&lt;a&lt;n\)</span> and <span class="math" data-tex="\(R^n=(A\otimes\mathbb Q)^*\)">\(R^n=(A\otimes\mathbb Q)^*\)</span>, by the first Hurewicz theorem and rational duality. No differential before page <span class="math" data-tex="\(n\)">\(n\)</span> can leave a <span class="math" data-tex="\(y_i\)">\(y_i\)</span>: its target base degree is between one and <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. Nor can a differential leave the bottom-row ring <span class="math" data-tex="\(R\)">\(R\)</span>. Since these elements generate <span class="math" data-tex="\(R\otimes S\)">\(R\otimes S\)</span>, the Leibniz identity shows that all differentials before <span class="math" data-tex="\(d_n\)">\(d_n\)</span> vanish.</p>
+<p>The map
+<span class="math math-display" data-tex="\[
+d_n:E_n^{0,n-1}\longrightarrow E_n^{n,0}
+\tag{H.3}
+\]">\[
+d_n:E_n^{0,n-1}\longrightarrow E_n^{n,0}
+\tag{H.3}
+\]</span>
+is an isomorphism. Its source has no incoming differential and no possible later outgoing differential; its target has no outgoing differential, and no other incoming one. A kernel or cokernel would therefore survive to positive-degree cohomology of the contractible total space. Choose the generators so that
+<span class="math math-display" data-tex="\[
+d_n y_i=x_i,\qquad (x_1,\ldots,x_s)\text{ a basis of }R^n.
+\tag{H.4}
+\]">\[
+d_n y_i=x_i,\qquad (x_1,\ldots,x_s)\text{ a basis of }R^n.
+\tag{H.4}
+\]</span>
+The entire <span class="math" data-tex="\(d_n\)">\(d_n\)</span> is then the derivation prescribed by (H.4).</p>
+<p><strong>Proof: ruling out hidden generators and relations.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be the free graded-commutative algebra on these <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, all of degree <span class="math" data-tex="\(n\)">\(n\)</span>, and let <span class="math" data-tex="\(\varphi:P\to R\)">\(\varphi:P\to R\)</span> be cup product. Give <span class="math" data-tex="\(P\otimes S\)">\(P\otimes S\)</span> the differential <span class="math" data-tex="\(d y_i=x_i\)">\(d y_i=x_i\)</span>, <span class="math" data-tex="\(d x_i=0\)">\(d x_i=0\)</span>. This complex has homology <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> in bidegree <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> and zero elsewhere.</p>
+<p>Here is the algebra proof. When <span class="math" data-tex="\(n\)">\(n\)</span> is even, a single factor is
+<span class="math" data-tex="\(\mathbb Q[x]\otimes\Lambda(y)\)">\(\mathbb Q[x]\otimes\Lambda(y)\)</span>, with <span class="math" data-tex="\(d(f(x)y)=f(x)x\)">\(d(f(x)y)=f(x)x\)</span>; multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> is injective and its quotient is <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. When <span class="math" data-tex="\(n\)">\(n\)</span> is odd, a single factor is
+<span class="math" data-tex="\(\Lambda(x)\otimes\mathbb Q[y]\)">\(\Lambda(x)\otimes\mathbb Q[y]\)</span>, with
+<span class="math math-display" data-tex="\[
+d(y^j)=jxy^{j-1},\qquad d(xy^j)=0.
+\tag{H.5}
+\]">\[
+d(y^j)=jxy^{j-1},\qquad d(xy^j)=0.
+\tag{H.5}
+\]</span>
+The derivative map on rational polynomials is onto, and its kernel is the constants. Again the homology is just <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The many-generator complex is the tensor product of these factors, with the graded tensor differential. Splitting vector complexes into homology and contractible pairs, as in Section G.2, proves the same assertion for that tensor product.</p>
+<p>Suppose <span class="math" data-tex="\(m&gt;n\)">\(m&gt;n\)</span> is the first degree in which <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is not an isomorphism. The coefficient groups of <span class="math" data-tex="\(P\otimes S\to R\otimes S\)">\(P\otimes S\to R\otimes S\)</span> are then isomorphic whenever their base degree is less than <span class="math" data-tex="\(m\)">\(m\)</span>. In particular, at every positive-total-degree bidegree with base degree <span class="math" data-tex="\(a\)">\(a\)</span> satisfying <span class="math" data-tex="\(a+n&lt;m\)">\(a+n&lt;m\)</span>, the kernel and image calculation for <span class="math" data-tex="\(d_n\)">\(d_n\)</span> is identical to that of the free complex. Thus its <span class="math" data-tex="\(E_{n+1}\)">\(E_{n+1}\)</span> entry is zero.</p>
+<p>First suppose <span class="math" data-tex="\(0\ne f\in P^m\)">\(0\ne f\in P^m\)</span> is a relation, so <span class="math" data-tex="\(\varphi(f)=0\)">\(\varphi(f)=0\)</span>. Since <span class="math" data-tex="\(f\)">\(f\)</span> has no constant term, write <span class="math" data-tex="\(f=\sum_i f_i x_i\)">\(f=\sum_i f_i x_i\)</span>, with <span class="math" data-tex="\(f_i\in P^{m-n}\)">\(f_i\in P^{m-n}\)</span>, keeping the graded signs in this chosen order. There is an element <span class="math" data-tex="\(z\)">\(z\)</span> of bidegree <span class="math" data-tex="\((m-n,n-1)\)">\((m-n,n-1)\)</span> with <span class="math" data-tex="\(dz=f\)">\(dz=f\)</span>: explicitly take
+<span class="math math-display" data-tex="\[
+z=\sum_i(-1)^{m-n}f_i y_i.
+\]">\[
+z=\sum_i(-1)^{m-n}f_i y_i.
+\]</span>
+Its image in <span class="math" data-tex="\(R\otimes S\)">\(R\otimes S\)</span> is a <span class="math" data-tex="\(d_n\)">\(d_n\)</span>-cycle. It cannot be a boundary. A boundary primitive would have base degree <span class="math" data-tex="\(m-2n\)">\(m-2n\)</span>; all its coefficients, and all coefficients of <span class="math" data-tex="\(z\)">\(z\)</span>, have degree less than <span class="math" data-tex="\(m\)">\(m\)</span>. Lift that primitive to <span class="math" data-tex="\(P\otimes S\)">\(P\otimes S\)</span> using the earlier isomorphisms. Equality with <span class="math" data-tex="\(z\)">\(z\)</span> lifts too, so differentiating would give <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, a contradiction.</p>
+<p>This nonzero <span class="math" data-tex="\(E_{n+1}^{m-n,n-1}\)">\(E_{n+1}^{m-n,n-1}\)</span> class has no later outgoing differential, since <span class="math" data-tex="\(r&gt;n\)">\(r&gt;n\)</span> gives negative target fibre degree. A possible later incoming differential has source base degree <span class="math" data-tex="\(m-n-r\)">\(m-n-r\)</span>, and that source satisfies <span class="math" data-tex="\((m-n-r)+n=m-r&lt;m\)">\((m-n-r)+n=m-r&lt;m\)</span>. Its <span class="math" data-tex="\(E_{n+1}\)">\(E_{n+1}\)</span> entry is already zero by the free-complex calculation; later pages remain zero there. Hence the class survives to <span class="math" data-tex="\(E_\infty\)">\(E_\infty\)</span> in positive total degree <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, a contradiction. There is therefore no relation in the first failure degree.</p>
+<p>The remaining possibility is failure of surjectivity in degree <span class="math" data-tex="\(m\)">\(m\)</span>. On the bottom row,
+<span class="math math-display" data-tex="\[
+E_{n+1}^{m,0}
+=R^m/\sum_i x_iR^{m-n}.
+\tag{H.6}
+\]">\[
+E_{n+1}^{m,0}
+=R^m/\sum_i x_iR^{m-n}.
+\tag{H.6}
+\]</span>
+The denominator is exactly the image of <span class="math" data-tex="\(P^m\)">\(P^m\)</span>, because the lower-degree maps are isomorphisms and every positive monomial in <span class="math" data-tex="\(P\)">\(P\)</span> is divisible by one of its generators. The quotient is therefore nonzero. It has no outgoing differential. Every later incoming source has base degree <span class="math" data-tex="\(m-r\)">\(m-r\)</span>, <span class="math" data-tex="\(r&gt;n\)">\(r&gt;n\)</span>, again satisfying <span class="math" data-tex="\((m-r)+n&lt;m\)">\((m-r)+n&lt;m\)</span>; its entry is zero. This gives another nonzero positive-degree limiting class, a contradiction.</p>
+<p>There is no first failure degree, so <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is an isomorphism. This proves (H.1), including more than one generator and possible simultaneous first relations and missing classes. The constant identification with <span class="math" data-tex="\(H^n\)">\(H^n\)</span> was the first Hurewicz identification, so the formulation independent of a basis also follows. Since integral homology is finitely generated by Theorem F.6, rational homology and its dual cohomology have finite dimension in each degree. Dualizing (H.1) gives (H.2). ∎</p>
+<p>The first-failure argument matters: simply finding a transgressive generator would not exclude an extra later cohomology class or an extra relation among its products.</p>
+<h3 id="h-2-rationally-acyclic-spaces-and-serre-s-sphere-theorem">H.2. Rationally acyclic spaces and Serre's sphere theorem</h3>
+<p>We will repeatedly use this consequence of Section F:</p>
+<p><span id="DG-CHAR-13C.lemma-H.2"></span><strong>Lemma H.2.</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> is a simply connected CW complex with finitely generated integral homology in every degree, and <span class="math" data-tex="\(H_j(X;\mathbb Q)=0\)">\(H_j(X;\mathbb Q)=0\)</span> for every <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>, then every <span class="math" data-tex="\(\pi_j(X)\)">\(\pi_j(X)\)</span>, <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>, is finite.</p>
+<p><strong>Proof.</strong> The groups are finitely generated by Theorem F.8. The first Hurewicz theorem and (F.2) make <span class="math" data-tex="\(\pi_2(X)\)">\(\pi_2(X)\)</span> finite. If its groups below <span class="math" data-tex="\(j\)">\(j\)</span> have already been shown finite, Theorem F.9 makes <span class="math" data-tex="\(h:\pi_j(X)\to H_j(X;\mathbb Z)\)">\(h:\pi_j(X)\to H_j(X;\mathbb Z)\)</span> a rational isomorphism. Its target is rationally zero, so <span class="math" data-tex="\(\pi_j(X)\)">\(\pi_j(X)\)</span> is a finitely generated group with zero rational tensor product. It is finite by Lemma F.1. Induction proves the result. ∎</p>
+<p><span id="DG-CHAR-13C.theorem-H.3"></span><strong>Theorem H.3 — Serre finiteness for spheres.</strong> For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> and <span class="math" data-tex="\(i&gt;n\)">\(i&gt;n\)</span>, the group <span class="math" data-tex="\(\pi_i(S^n)\)">\(\pi_i(S^n)\)</span> is finite, except when <span class="math" data-tex="\(n\)">\(n\)</span> is even and <span class="math" data-tex="\(i=2n-1\)">\(i=2n-1\)</span>. In that exception,
+<span class="math math-display" data-tex="\[
+\pi_{2n-1}(S^n)\cong\mathbb Z\oplus T,\qquad T\text{ finite}.
+\tag{H.7}
+\]">\[
+\pi_{2n-1}(S^n)\cong\mathbb Z\oplus T,\qquad T\text{ finite}.
+\tag{H.7}
+\]</span></p>
+<p><strong>Proof.</strong></p>
+<p><strong>Proof: the first fibre.</strong> The sphere's first Hurewicz group is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, with its positive degree normalization proved in the frame-obstruction chapter. Lemma F.7 gives a map <span class="math" data-tex="\(g:S^n\to K(\mathbb Z,n)\)">\(g:S^n\to K(\mathbb Z,n)\)</span> inducing that identification. Its homotopy fibre <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\(n\)">\(n\)</span>-connected, and
+<span class="math math-display" data-tex="\[
+\pi_i(Y)=\pi_i(S^n)\quad(i&gt;n),
+\tag{H.8}
+\]">\[
+\pi_i(Y)=\pi_i(S^n)\quad(i&gt;n),
+\tag{H.8}
+\]</span>
+by the homotopy sequence in Theorem C.2.</p>
+<p>There is also a Hurewicz fibration
+<span class="math math-display" data-tex="\[
+\Omega K(\mathbb Z,n)\longrightarrow Y\longrightarrow S^n.
+\tag{H.9}
+\]">\[
+\Omega K(\mathbb Z,n)\longrightarrow Y\longrightarrow S^n.
+\tag{H.9}
+\]</span>
+Indeed write points of <span class="math" data-tex="\(Y\)">\(Y\)</span> as a sphere point together with a path from <span class="math" data-tex="\(g(x)\)">\(g(x)\)</span> to the chosen basepoint, reverse that path, and identify (H.9) with the pullback of the based path fibration along <span class="math" data-tex="\(g\)">\(g\)</span>. Its fibre has the homology of <span class="math" data-tex="\(K(\mathbb Z,n-1)\)">\(K(\mathbb Z,n-1)\)</span>, by Lemma F.5, hence finitely generated homology in each degree. Exercise E.6 gives the same property for <span class="math" data-tex="\(Y\)">\(Y\)</span>. We may take its CW model whenever applying Section F.</p>
+<p>The rational cohomology second page of (H.9) has base generator <span class="math" data-tex="\(a\)">\(a\)</span> in degree <span class="math" data-tex="\(n\)">\(n\)</span>, with <span class="math" data-tex="\(a^2=0\)">\(a^2=0\)</span>. Its fibre generator <span class="math" data-tex="\(y\)">\(y\)</span> has degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span>; its algebra is polynomial if <span class="math" data-tex="\(n\)">\(n\)</span> is odd, exterior if <span class="math" data-tex="\(n\)">\(n\)</span> is even. Naturality with the based path fibration and <span class="math" data-tex="\(g^*:H^n(K(\mathbb Z,n))\to H^n(S^n)\)">\(g^*:H^n(K(\mathbb Z,n))\to H^n(S^n)\)</span> gives
+<span class="math math-display" data-tex="\[
+d_n y=a
+\tag{H.10}
+\]">\[
+d_n y=a
+\tag{H.10}
+\]</span>
+after fixing the sign of the generator. All earlier differentials vanish by generation and the two-column base.</p>
+<p>If <span class="math" data-tex="\(n\)">\(n\)</span> is odd, the page is
+<span class="math" data-tex="\(\Lambda(a)\otimes\mathbb Q[y]\)">\(\Lambda(a)\otimes\mathbb Q[y]\)</span>. Formula (G.3) gives
+<span class="math math-display" data-tex="\[
+d_n(y^j)=j a y^{j-1},\qquad d_n(a y^j)=0.
+\]">\[
+d_n(y^j)=j a y^{j-1},\qquad d_n(a y^j)=0.
+\]</span>
+Every positive-degree <span class="math" data-tex="\(a y^j\)">\(a y^j\)</span> is a boundary and every positive power <span class="math" data-tex="\(y^j\)">\(y^j\)</span> has nonzero differential. The next page is only <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> at <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>. Thus <span class="math" data-tex="\(Y\)">\(Y\)</span> is rationally acyclic. Its CW model satisfies Lemma H.2, which, with (H.8), proves finiteness for every <span class="math" data-tex="\(i&gt;n\)">\(i&gt;n\)</span>.</p>
+<p>If <span class="math" data-tex="\(n\)">\(n\)</span> is even, the page has just four entries <span class="math" data-tex="\(1,a,y,ay\)">\(1,a,y,ay\)</span>. The differential sends <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span>; the product <span class="math" data-tex="\(ay\)">\(ay\)</span> is a cycle since <span class="math" data-tex="\(a^2=0\)">\(a^2=0\)</span>. There is no other entry to hit it or receive a differential from it. It follows that
+<span class="math math-display" data-tex="\[
+H^*(Y;\mathbb Q)=\Lambda_{\mathbb Q}(b),\qquad |b|=m=2n-1.
+\tag{H.11}
+\]">\[
+H^*(Y;\mathbb Q)=\Lambda_{\mathbb Q}(b),\qquad |b|=m=2n-1.
+\tag{H.11}
+\]</span>
+There is a single associated graded summand in that degree, so no additive extension has been suppressed.</p>
+<p><strong>Proof: the even-sphere exception and all later groups.</strong> Take a CW model <span class="math" data-tex="\(C\to Y\)">\(C\to Y\)</span>, preserving integral homology and homotopy. Its groups are finitely generated by Theorem F.8. Since <span class="math" data-tex="\(H_i(C;\mathbb Q)=0\)">\(H_i(C;\mathbb Q)=0\)</span> for <span class="math" data-tex="\(0&lt;i&lt;m\)">\(0&lt;i&lt;m\)</span>, induction using Theorem F.9 proves that <span class="math" data-tex="\(\pi_i(C)\)">\(\pi_i(C)\)</span> is finite in those degrees: the first group is zero, and each next Hurewicz map is a rational isomorphism once the lower groups are finite. At degree <span class="math" data-tex="\(m\)">\(m\)</span>, that theorem gives
+<span class="math math-display" data-tex="\[
+\pi_m(C)\otimes\mathbb Q=H_m(C;\mathbb Q)=\mathbb Q.
+\]">\[
+\pi_m(C)\otimes\mathbb Q=H_m(C;\mathbb Q)=\mathbb Q.
+\]</span>
+Lemma F.1 makes <span class="math" data-tex="\(\pi_m(C)\)">\(\pi_m(C)\)</span> a direct sum of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and a finite group. By (H.8), this is the group in (H.7).</p>
+<p>Remove the finite groups below <span class="math" data-tex="\(m\)">\(m\)</span> by the connected-cover construction in Theorem F.9's proof. The result is an <span class="math" data-tex="\((m-1)\)">\((m-1)\)</span>-connected CW complex <span class="math" data-tex="\(Z\)">\(Z\)</span>, with finitely generated integral homology, rational homology isomorphic to that of <span class="math" data-tex="\(C\)">\(C\)</span>, and the same homotopy groups as <span class="math" data-tex="\(C\)">\(C\)</span> in dimensions at least <span class="math" data-tex="\(m\)">\(m\)</span>. Set <span class="math" data-tex="\(A=\pi_m(Z)\)">\(A=\pi_m(Z)\)</span>, a rank-one finitely generated abelian group. Lemma F.7 gives <span class="math" data-tex="\(f:Z\to K(A,m)\)">\(f:Z\to K(A,m)\)</span> inducing the identity on <span class="math" data-tex="\(\pi_m\)">\(\pi_m\)</span>. Both spaces have rational cohomology exterior on one degree-<span class="math" data-tex="\(m\)">\(m\)</span> generator, by (H.11) and Theorem H.1, and <span class="math" data-tex="\(f^*\)">\(f^*\)</span> is an isomorphism on that generator.</p>
+<p>Its homotopy fibre <span class="math" data-tex="\(W\)">\(W\)</span> is <span class="math" data-tex="\(m\)">\(m\)</span>-connected and has finitely generated integral homology. The latter follows from Exercise E.6, using its path replacement with total space equivalent to <span class="math" data-tex="\(Z\)">\(Z\)</span> and base <span class="math" data-tex="\(K(A,m)\)">\(K(A,m)\)</span>. Its other fibration
+<span class="math math-display" data-tex="\[
+\Omega K(A,m)\longrightarrow W\longrightarrow Z
+\]">\[
+\Omega K(A,m)\longrightarrow W\longrightarrow Z
+\]</span>
+has the same rational calculation as the odd-<span class="math" data-tex="\(n\)">\(n\)</span> case of (H.9), with <span class="math" data-tex="\(m\)">\(m\)</span> in place of <span class="math" data-tex="\(n\)">\(n\)</span>. The fibre has a polynomial generator of degree <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, the base has an exterior generator of degree <span class="math" data-tex="\(m\)">\(m\)</span>, and naturality of the path transgression gives <span class="math" data-tex="\(d_m y=a\)">\(d_m y=a\)</span>. All positive-degree classes cancel by the displayed derivative formula. Thus <span class="math" data-tex="\(W\)">\(W\)</span> is rationally acyclic. Apply Lemma H.2 to its CW model.</p>
+<p>The homotopy sequence gives <span class="math" data-tex="\(\pi_i(W)=\pi_i(Z)\)">\(\pi_i(W)=\pi_i(Z)\)</span> for <span class="math" data-tex="\(i&gt;m\)">\(i&gt;m\)</span>, and the connected-cover construction gives <span class="math" data-tex="\(\pi_i(Z)=\pi_i(C)\)">\(\pi_i(Z)=\pi_i(C)\)</span> for <span class="math" data-tex="\(i\geq m\)">\(i\geq m\)</span>. Equation (H.8) therefore makes all sphere groups above <span class="math" data-tex="\(m\)">\(m\)</span> finite. The groups between <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> were already proved finite by the earlier induction, completing the proof. ∎</p>
+<p>This proof gives the group structure in the exception; it does not identify a specific integral generator with a Hopf-invariant normalization.</p>
+<h3 id="h-3-the-hurewicz-range-required-by-the-thom-theorem">H.3. The Hurewicz range required by the Thom theorem</h3>
+<p><span id="DG-CHAR-13C.theorem-H.4"></span><strong>Theorem H.4 — Hurewicz modulo finite groups in the stable range.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be a finite <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-connected CW complex, with <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>. For
+<span class="math math-display" data-tex="\[
+k\leq r&lt;2k-1
+\tag{H.12}
+\]">\[
+k\leq r&lt;2k-1
+\tag{H.12}
+\]</span>
+the ordinary Hurewicz map
+<span class="math math-display" data-tex="\[
+h:\pi_r(X)\longrightarrow H_r(X;\mathbb Z)
+\tag{H.13}
+\]">\[
+h:\pi_r(X)\longrightarrow H_r(X;\mathbb Z)
+\tag{H.13}
+\]</span>
+has finite kernel and cokernel. Thus it becomes an isomorphism after tensoring with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The same conclusion holds for a <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-connected CW complex whose integral homology is finitely generated in every degree.</p>
+<p><strong>Proof.</strong></p>
+<p><strong>Proof: one removal step.</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be <span class="math" data-tex="\((s-1)\)">\((s-1)\)</span>-connected, <span class="math" data-tex="\(s\geq3\)">\(s\geq3\)</span>, with finitely generated integral homology. Put <span class="math" data-tex="\(A=\pi_s(C)=H_s(C)\)">\(A=\pi_s(C)=H_s(C)\)</span>; it is finitely generated. Choose <span class="math" data-tex="\(g:C\to K(A,s)\)">\(g:C\to K(A,s)\)</span> inducing the identity on <span class="math" data-tex="\(\pi_s\)">\(\pi_s\)</span>, and let <span class="math" data-tex="\(F\)">\(F\)</span> be its homotopy fibre. It is <span class="math" data-tex="\(s\)">\(s\)</span>-connected. The path replacement has total space homotopy equivalent to <span class="math" data-tex="\(C\)">\(C\)</span>, and Exercise E.6 gives finite generation of its fibre homology.</p>
+<p>We claim that fibre inclusion followed by the total-space retraction gives
+<span class="math math-display" data-tex="\[
+H_j(F;\mathbb Q)\xrightarrow{\cong}H_j(C;\mathbb Q)
+\quad\text{for }s&lt;j\leq2s-2.
+\tag{H.14}
+\]">\[
+H_j(F;\mathbb Q)\xrightarrow{\cong}H_j(C;\mathbb Q)
+\quad\text{for }s&lt;j\leq2s-2.
+\tag{H.14}
+\]</span>
+In its homology spectral sequence, (H.2) says that below base degree <span class="math" data-tex="\(2s\)">\(2s\)</span> only degrees <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> can be nonzero. The fibre has <span class="math" data-tex="\(H_q(F;\mathbb Q)=0\)">\(H_q(F;\mathbb Q)=0\)</span> for <span class="math" data-tex="\(0&lt;q\leq s\)">\(0&lt;q\leq s\)</span>, by its connectivity and the first Hurewicz theorem. Thus on a total-degree-<span class="math" data-tex="\(j\)">\(j\)</span> diagonal in this range the only possible term is <span class="math" data-tex="\(E_2^{0,j}=H_j(F;\mathbb Q)\)">\(E_2^{0,j}=H_j(F;\mathbb Q)\)</span>: the potential term with base degree <span class="math" data-tex="\(s\)">\(s\)</span> has fibre degree <span class="math" data-tex="\(j-s\leq s-2\)">\(j-s\leq s-2\)</span> and is zero.</p>
+<p>There are no outgoing differentials from column zero. An incoming source on page <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(E_t^{t,j-t+1}\)">\(E_t^{t,j-t+1}\)</span>, with <span class="math" data-tex="\(2\leq t\leq j+1\leq2s-1\)">\(2\leq t\leq j+1\leq2s-1\)</span>. For <span class="math" data-tex="\(t\ne s\)">\(t\ne s\)</span> its base coefficient homology is zero by (H.2) and exact rational tensoring. For <span class="math" data-tex="\(t=s\)">\(t=s\)</span> its fibre degree is <span class="math" data-tex="\(j-s+1\leq s-1\)">\(j-s+1\leq s-1\)</span>, again zero. Hence the column-zero term survives unchanged. The finite filtration has only that term, and its actual fibre edge is the map in (H.14), by Section D.3. This proves the claim as a statement about the induced map, rather than only a vector-space rank.</p>
+<p><strong>Proof: iteration and the integral conclusion.</strong> A finite CW complex has finite-rank cellular chain groups, hence finitely generated homology; Theorem F.8 gives finite generation of all its homotopy groups. The same applies to the more general hypothesis in the statement.</p>
+<p>For <span class="math" data-tex="\(r=k\)">\(r=k\)</span>, the first Hurewicz theorem already gives an integral isomorphism. For <span class="math" data-tex="\(k&lt;r\leq2k-2\)">\(k&lt;r\leq2k-2\)</span>, remove the successive first groups in dimensions <span class="math" data-tex="\(s=k,k+1,\ldots,r-1\)">\(s=k,k+1,\ldots,r-1\)</span>, each time taking a CW model of the fibre. Exercise E.6 and Theorems B.4–B.5 preserve finite generation of homology at every step. The homotopy sequence preserves <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span> because <span class="math" data-tex="\(r&gt;s\)">\(r&gt;s\)</span>.</p>
+<p>At every step, <span class="math" data-tex="\(r\leq2k-2\leq2s-2\)">\(r\leq2k-2\leq2s-2\)</span>, so (H.14) preserves <span class="math" data-tex="\(H_r(-;\mathbb Q)\)">\(H_r(-;\mathbb Q)\)</span> as well. At the end the model is <span class="math" data-tex="\((r-1)\)">\((r-1)\)</span>-connected; its first Hurewicz map is an integral isomorphism in dimension <span class="math" data-tex="\(r\)">\(r\)</span>. The natural square for its composite map into <span class="math" data-tex="\(X\)">\(X\)</span>, exactly as in (F.10), makes (H.13) a rational isomorphism.</p>
+<p>Its source and target are finitely generated. Tensor exactness and Lemma F.1 therefore make its integral kernel and cokernel finite. This proves (H.12)–(H.13). ∎</p>
+<p><strong>Rational connectivity and the endpoint.</strong> Suppose that <span class="math" data-tex="\(X\)">\(X\)</span> is a simply connected CW complex with finitely generated integral homology in every degree, <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, and <span class="math" data-tex="\(\pi_i(X)\otimes\mathbb Q=0\)">\(\pi_i(X)\otimes\mathbb Q=0\)</span> for <span class="math" data-tex="\(2\leq i&lt;k\)">\(2\leq i&lt;k\)</span>. Then the ordinary Hurewicz map has finite kernel and cokernel for <span class="math" data-tex="\(1\leq r&lt;2k-1\)">\(1\leq r&lt;2k-1\)</span>, and finite cokernel for <span class="math" data-tex="\(r=2k-1\)">\(r=2k-1\)</span>. Its rationalization is therefore an isomorphism below the endpoint and a surjection at the endpoint.</p>
+<p><strong>Proof.</strong> First consider an actually <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-connected complex. In the removal step of Theorem H.4, also take <span class="math" data-tex="\(j=2s-1\)">\(j=2s-1\)</span>. On that total-degree diagonal the second page still has only column zero: a term with base degree <span class="math" data-tex="\(s\)">\(s\)</span> would have fibre degree <span class="math" data-tex="\(s-1\)">\(s-1\)</span>, and all other positive base degrees below <span class="math" data-tex="\(2s\)">\(2s\)</span> vanish by (H.2). Thus the finite filtration has only its column-zero quotient. By the actual fibre-edge calculation, the map
+<span class="math math-display" data-tex="\[
+H_{2s-1}(F;\mathbb Q)\longrightarrow H_{2s-1}(C;\mathbb Q)
+\]">\[
+H_{2s-1}(F;\mathbb Q)\longrightarrow H_{2s-1}(C;\mathbb Q)
+\]</span>
+is onto. Injectivity need not hold: an incoming differential from bidegree <span class="math" data-tex="\((2s,0)\)">\((2s,0)\)</span> is possible on page <span class="math" data-tex="\(2s\)">\(2s\)</span>. This is precisely why the earlier isomorphism estimate stops one degree sooner.</p>
+<p>Fix <span class="math" data-tex="\(r=2k-1\)">\(r=2k-1\)</span> and remove the first homotopy groups in dimensions <span class="math" data-tex="\(s=k,\ldots,r-1\)">\(s=k,\ldots,r-1\)</span>. The first removal gives the surjection just proved in degree <span class="math" data-tex="\(r\)">\(r\)</span>; every later removal gives an isomorphism there, since <span class="math" data-tex="\(r\leq2s-2\)">\(r\leq2s-2\)</span>. All maps preserve <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span>, by their homotopy sequences. The final complex is <span class="math" data-tex="\((r-1)\)">\((r-1)\)</span>-connected, so its first Hurewicz map is an integral isomorphism. The natural Hurewicz square then makes the original map onto after rationalization. Its integral cokernel is finitely generated and has zero rational tensor product, hence is finite by Lemma F.1.</p>
+<p>These arguments also apply when <span class="math" data-tex="\(k=2\)">\(k=2\)</span>: Lemma F.7 and the path-fibre construction require only <span class="math" data-tex="\(s\geq2\)">\(s\geq2\)</span>; the vanishing and incoming-differential estimates in (H.14) have the same bounds for <span class="math" data-tex="\(s=2\)">\(s=2\)</span>. The below-endpoint case is then just degree two, where the first Hurewicz theorem is integral. Degree one is zero on both sides because the space is simply connected.</p>
+<p>For the stated rational-connectivity hypothesis, Theorem F.8 makes every homotopy group finitely generated. Lemma F.1 consequently makes the groups in dimensions <span class="math" data-tex="\(2,\ldots,k-1\)">\(2,\ldots,k-1\)</span> finite. Remove them using the finite connected-cover steps in Theorem F.9's proof. Each removed one-group base is rationally acyclic, so the actual fibre edge makes the composite map <span class="math" data-tex="\(u:C\to X\)">\(u:C\to X\)</span> an isomorphism on rational homology in every degree. Its homotopy sequence makes it an isomorphism on <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span> for <span class="math" data-tex="\(r\geq k\)">\(r\geq k\)</span>. The resulting CW complex <span class="math" data-tex="\(C\)">\(C\)</span> is <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-connected and still has finitely generated integral homology. Apply the preceding argument and the natural Hurewicz square to transfer both conclusions to <span class="math" data-tex="\(X\)">\(X\)</span> in those degrees.</p>
+<p>Below degree <span class="math" data-tex="\(k\)">\(k\)</span>, Theorem F.9, applied at degree <span class="math" data-tex="\(k\)">\(k\)</span>, gives zero rational homology; the homotopy groups there are already finite. Integral homology is finitely generated and rationally zero, so is finite too. Every map between those finite groups has finite kernel and cokernel. At degree one both groups vanish. Finally, finite generation of the source and target and exactness of rational tensoring convert the rational isomorphisms and surjection into the asserted integral finiteness conclusions. For <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, no preliminary removal is needed. ∎</p>
+<p><span id="DG-CHAR-13C.corollary-H.5"></span><strong>Corollary H.5 — The finite Thom comparison (MS18.4).</strong> If <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is an oriented rank-<span class="math" data-tex="\(k\)">\(k\)</span> real bundle over a finite CW complex <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>, and <span class="math" data-tex="\(0\leq n&lt;k-1\)">\(0\leq n&lt;k-1\)</span>, the composite
+<span class="math math-display" data-tex="\[
+\pi_{n+k}(T(\xi))
+\xrightarrow{\,h\,}H_{n+k}(T(\xi);\mathbb Z)
+\xrightarrow{\,\operatorname{Th}^{-1}\,}H_n(B;\mathbb Z)
+\tag{H.15}
+\]">\[
+\pi_{n+k}(T(\xi))
+\xrightarrow{\,h\,}H_{n+k}(T(\xi);\mathbb Z)
+\xrightarrow{\,\operatorname{Th}^{-1}\,}H_n(B;\mathbb Z)
+\tag{H.15}
+\]</span>
+has finite kernel and cokernel. Its rationalization is an isomorphism.</p>
+<p><strong>Proof.</strong> The geometric Thom chapter's Theorem C.1 gives a finite <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-connected CW complex <span class="math" data-tex="\(T(\xi)\)">\(T(\xi)\)</span>. The inequality <span class="math" data-tex="\(n&lt;k-1\)">\(n&lt;k-1\)</span> says <span class="math" data-tex="\(n+k&lt;2k-1\)">\(n+k&lt;2k-1\)</span>, so Theorem H.4 applies. Since <span class="math" data-tex="\(n+k&gt;0\)">\(n+k&gt;0\)</span>, absolute homology agrees with homology relative to its basepoint. The full homological Thom isomorphism in that chapter, Theorem C.2, identifies it with <span class="math" data-tex="\(H_n(B;\mathbb Z)\)">\(H_n(B;\mathbb Z)\)</span>, using the stated orientation. Composing that integral isomorphism with the Hurewicz comparison preserves its finite kernel and cokernel. ∎</p>
+<p>For the highly connected finite Thom complexes used in the next lesson continuation, (H.15) is the exact comparison required with <span class="math" data-tex="\(k&gt;n+1\)">\(k&gt;n+1\)</span>. Both the finite-generation theorem and the sphere finiteness theorem have now been proved, including their prerequisites. The proof of Theorem H.4 uses the rational one-group calculation directly; it does not assume an unproved suspension theorem or a homology-theory uniqueness theorem.</p>
+<p><strong>References.</strong> Allen Hatcher's <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch5.pdf"><em>Spectral Sequences</em></a> treats rational <span class="math" data-tex="\(K(\mathbb Z,n)\)">\(K(\mathbb Z,n)\)</span> cohomology and Serre's sphere theorem. Its Proposition 5.23 shows that the stable Hurewicz map is a rational isomorphism; together with the Freudenthal suspension theorem, Corollary 4.24 of Hatcher's <a href="https://pi.math.cornell.edu/~hatcher/AT/AT.pdf"><em>Algebraic Topology</em></a>, this gives an alternative approach to the rational comparison for a <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-connected CW complex below degree <span class="math" data-tex="\(2k-1\)">\(2k-1\)</span>, including surjectivity at the endpoint. The one-group calculations here use finitely generated <span class="math" data-tex="\(A\)">\(A\)</span> and cohomology with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> coefficients. The finite-generation hypotheses supply the additional integral finiteness conclusions.</p>
+<h2 id="i-exercises-with-complete-solutions">I. Exercises with complete solutions</h2>
+<p><span id="DG-CHAR-13C.exercise-I.1"></span><strong>Exercise I.1 — Easy: a presentation and its rational models.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be generated by <span class="math" data-tex="\(e_1,e_2,e_3\)">\(e_1,e_2,e_3\)</span>, with relations <span class="math" data-tex="\(2e_1=0\)">\(2e_1=0\)</span> and <span class="math" data-tex="\(e_1+3e_2=0\)">\(e_1+3e_2=0\)</span>. Determine <span class="math" data-tex="\(A\)">\(A\)</span>, and compute the rational cohomology rings of <span class="math" data-tex="\(K(A,2)\)">\(K(A,2)\)</span> and <span class="math" data-tex="\(K(A,3)\)">\(K(A,3)\)</span>.</p>
+<p><strong>Solution.</strong> The second relation gives <span class="math" data-tex="\(e_1=-3e_2\)">\(e_1=-3e_2\)</span>, and the first then gives <span class="math" data-tex="\(6e_2=0\)">\(6e_2=0\)</span>. No relation involves <span class="math" data-tex="\(e_3\)">\(e_3\)</span>. The map to <span class="math" data-tex="\(\mathbb Z/6\oplus\mathbb Z\)">\(\mathbb Z/6\oplus\mathbb Z\)</span> taking <span class="math" data-tex="\(e_2\)">\(e_2\)</span> to <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, <span class="math" data-tex="\(e_1\)">\(e_1\)</span> to <span class="math" data-tex="\((-3,0)\)">\((-3,0)\)</span> and <span class="math" data-tex="\(e_3\)">\(e_3\)</span> to <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> respects both relations. In the other direction use the classes of <span class="math" data-tex="\(e_2,e_3\)">\(e_2,e_3\)</span>; the preceding calculation respects the order-six relation and the composites are the identity on generators. Thus
+<span class="math math-display" data-tex="\[
+A=\mathbb Z/6\oplus\mathbb Z.
+\]">\[
+A=\mathbb Z/6\oplus\mathbb Z.
+\]</span>
+Its rational rank is one. Theorem H.1 gives
+<span class="math math-display" data-tex="\[
+H^*(K(A,2);\mathbb Q)=\mathbb Q[t],\quad |t|=2,
+\qquad
+H^*(K(A,3);\mathbb Q)=\Lambda_{\mathbb Q}(u),\quad |u|=3.
+\]">\[
+H^*(K(A,2);\mathbb Q)=\mathbb Q[t],\quad |t|=2,
+\qquad
+H^*(K(A,3);\mathbb Q)=\Lambda_{\mathbb Q}(u),\quad |u|=3.
+\]</span>
+The finite direct summand has not been discarded integrally: its model is only rationally acyclic, and its positive integral homology is finite by Theorem F.6. These are rational rings, not an integral computation. ∎</p>
+<p><span id="DG-CHAR-13C.exercise-I.2"></span><strong>Exercise I.2 — Medium: the rational derivative and its signs.</strong> Let <span class="math" data-tex="\(x_1,x_2\)">\(x_1,x_2\)</span> have degree three and <span class="math" data-tex="\(y_1,y_2\)">\(y_1,y_2\)</span> degree two. In
+<span class="math" data-tex="\(\Lambda(x_1,x_2)\otimes\mathbb Q[y_1,y_2]\)">\(\Lambda(x_1,x_2)\otimes\mathbb Q[y_1,y_2]\)</span>, use the degree-one derivation <span class="math" data-tex="\(d y_i=x_i\)">\(d y_i=x_i\)</span>, <span class="math" data-tex="\(d x_i=0\)">\(d x_i=0\)</span>. Compute <span class="math" data-tex="\(d(y_1y_2)\)">\(d(y_1y_2)\)</span>, <span class="math" data-tex="\(d(x_1y_2)\)">\(d(x_1y_2)\)</span>, and <span class="math" data-tex="\(d(x_2y_1)\)">\(d(x_2y_1)\)</span>. Prove that the entire complex has only constant cohomology. Explain why the proof requires rational coefficients.</p>
+<p><strong>Solution.</strong> The even degrees of the <span class="math" data-tex="\(y_i\)">\(y_i\)</span> and odd degrees of the <span class="math" data-tex="\(x_i\)">\(x_i\)</span> give
+<span class="math math-display" data-tex="\[
+d(y_1y_2)=x_1y_2+x_2y_1,\quad
+d(x_1y_2)=-x_1x_2,\quad
+d(x_2y_1)=x_1x_2.
+\]">\[
+d(y_1y_2)=x_1y_2+x_2y_1,\quad
+d(x_1y_2)=-x_1x_2,\quad
+d(x_2y_1)=x_1x_2.
+\]</span>
+In particular <span class="math" data-tex="\(x_1y_2+x_2y_1\)">\(x_1y_2+x_2y_1\)</span> is a cycle, and the first formula exhibits its primitive.</p>
+<p>For a single pair set
+<span class="math math-display" data-tex="\[
+h(xy^j)=\frac{y^{j+1}}{j+1},\qquad h(y^j)=0.
+\]">\[
+h(xy^j)=\frac{y^{j+1}}{j+1},\qquad h(y^j)=0.
+\]</span>
+Then <span class="math" data-tex="\(dh+hd=1-\epsilon\)">\(dh+hd=1-\epsilon\)</span>, where <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> retains just the constant term. On <span class="math" data-tex="\(y^j\)">\(y^j\)</span>, <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>, this follows from <span class="math" data-tex="\(d(y^j)=jxy^{j-1}\)">\(d(y^j)=jxy^{j-1}\)</span>; on <span class="math" data-tex="\(xy^j\)">\(xy^j\)</span>, it follows by differentiating the displayed primitive. On constants both sides are zero. Tensor the two contractions, using
+<span class="math math-display" data-tex="\[
+h_{\mathrm{tot}}=h_1\otimes1+\epsilon_1\otimes h_2
+\]">\[
+h_{\mathrm{tot}}=h_1\otimes1+\epsilon_1\otimes h_2
+\]</span>
+and the tensor homotopy sign <span class="math" data-tex="\((-1)^{\deg c}\)">\((-1)^{\deg c}\)</span> in the second term on <span class="math" data-tex="\(c\otimes c&#x27;\)">\(c\otimes c&#x27;\)</span>. Its boundary sum is <span class="math" data-tex="\(1-\epsilon_1\otimes\epsilon_2\)">\(1-\epsilon_1\otimes\epsilon_2\)</span>, by direct expansion. Thus all positive-degree cohomology vanishes.</p>
+<p>The denominators <span class="math" data-tex="\(j+1\)">\(j+1\)</span> are invertible in <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, already <span class="math" data-tex="\(d(y_i^2)=2x_i y_i=0\)">\(d(y_i^2)=2x_i y_i=0\)</span>, and no derivative has a pure polynomial term, so <span class="math" data-tex="\(y_i^2\)">\(y_i^2\)</span> is not a boundary in this algebraic complex. The same rational cancellation argument therefore cannot be used in that characteristic. This last observation concerns the displayed algebraic complex, without asserting that it is the actual mod-two second page of the preceding fibrations. ∎</p>
+<p><span id="DG-CHAR-13C.exercise-I.3"></span><strong>Exercise I.3 — Hard: a locally finite inverse.</strong> In the filtered contraction construction (G.11), prove that the series for <span class="math" data-tex="\((1+N)^{-1}\)">\((1+N)^{-1}\)</span> defines a linear map on the whole chain complex even if the filtration degrees of its generators are unbounded. Check both the contraction identity and the need to retain the inverse factor.</p>
+<p><strong>Solution.</strong> Each chain <span class="math" data-tex="\(c\)">\(c\)</span> lies in some <span class="math" data-tex="\(F_p\)">\(F_p\)</span> because the filtration is exhaustive. Since <span class="math" data-tex="\(N\)">\(N\)</span> lowers filtration, <span class="math" data-tex="\(N^{p+1}c=0\)">\(N^{p+1}c=0\)</span>; take <span class="math" data-tex="\(F_{-1}=0\)">\(F_{-1}=0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+S(c)=\sum_{j=0}^{p}(-N)^j c
+\]">\[
+S(c)=\sum_{j=0}^{p}(-N)^j c
+\]</span>
+is finite and independent of a larger choice of <span class="math" data-tex="\(p\)">\(p\)</span>. For a sum of two chains take the larger of their two filtration bounds, so the same finite sum proves linearity. Multiplying the finite geometric series gives <span class="math" data-tex="\((1+N)S(c)=c=S(1+N)c\)">\((1+N)S(c)=c=S(1+N)c\)</span>.</p>
+<p>The map <span class="math" data-tex="\(A=dh_0+h_0d=1+N\)">\(A=dh_0+h_0d=1+N\)</span> commutes with <span class="math" data-tex="\(d\)">\(d\)</span>, since both <span class="math" data-tex="\(dA\)">\(dA\)</span> and <span class="math" data-tex="\(Ad\)">\(Ad\)</span> are <span class="math" data-tex="\(dh_0d\)">\(dh_0d\)</span>. Thus so does its inverse <span class="math" data-tex="\(S\)">\(S\)</span>, and
+<span class="math math-display" data-tex="\[
+d(h_0S)+(h_0S)d=(dh_0+h_0d)S=1.
+\]">\[
+d(h_0S)+(h_0S)d=(dh_0+h_0d)S=1.
+\]</span>
+This proves the contraction while preserving the filtration.</p>
+<p>The inverse factor can be necessary. Use <span class="math" data-tex="\(C_1=\mathbb Q e_1\oplus\mathbb Q e_2\)">\(C_1=\mathbb Q e_1\oplus\mathbb Q e_2\)</span>, <span class="math" data-tex="\(C_0=\mathbb Q f_1\oplus\mathbb Q f_2\)">\(C_0=\mathbb Q f_1\oplus\mathbb Q f_2\)</span>, with <span class="math" data-tex="\(e_i,f_i\)">\(e_i,f_i\)</span> in filtration <span class="math" data-tex="\(i-1\)">\(i-1\)</span>, and
+<span class="math math-display" data-tex="\[
+d e_1=f_1,\qquad d e_2=f_2+f_1.
+\]">\[
+d e_1=f_1,\qquad d e_2=f_2+f_1.
+\]</span>
+Its associated graded has the contraction <span class="math" data-tex="\(h_0 f_i=e_i\)">\(h_0 f_i=e_i\)</span>. But <span class="math" data-tex="\(dh_0 f_2=f_2+f_1\ne f_2\)">\(dh_0 f_2=f_2+f_1\ne f_2\)</span>. Here <span class="math" data-tex="\(Nf_2=f_1\)">\(Nf_2=f_1\)</span>, <span class="math" data-tex="\(Nf_1=0\)">\(Nf_1=0\)</span>, and <span class="math" data-tex="\(S=1-N\)">\(S=1-N\)</span>; consequently the corrected contraction has <span class="math" data-tex="\(h f_2=e_2-e_1\)">\(h f_2=e_2-e_1\)</span>, whose derivative is exactly <span class="math" data-tex="\(f_2\)">\(f_2\)</span>. ∎</p>
+<p><span id="DG-CHAR-13C.exercise-I.4"></span><strong>Exercise I.4 — Medium: the strict endpoint.</strong> For <span class="math" data-tex="\(S^4\)">\(S^4\)</span>, determine which conclusions about <span class="math" data-tex="\(\pi_4,\pi_5,\pi_6,\pi_7\)">\(\pi_4,\pi_5,\pi_6,\pi_7\)</span> follow from the proved theorems, without calculating any finite group orders. Show why the upper endpoint of (H.12) is strict.</p>
+<p><strong>Solution.</strong> The sphere is three-connected and finite, so take <span class="math" data-tex="\(k=4\)">\(k=4\)</span>. Its first Hurewicz map gives <span class="math" data-tex="\(\pi_4(S^4)=\mathbb Z\)">\(\pi_4(S^4)=\mathbb Z\)</span>. The range <span class="math" data-tex="\(4\leq r&lt;7\)">\(4\leq r&lt;7\)</span> and the zero homology in degrees five and six give finite <span class="math" data-tex="\(\pi_5(S^4)\)">\(\pi_5(S^4)\)</span> and <span class="math" data-tex="\(\pi_6(S^4)\)">\(\pi_6(S^4)\)</span>. The even-sphere exception in Theorem H.3 gives
+<span class="math math-display" data-tex="\[
+\pi_7(S^4)=\mathbb Z\oplus T,\qquad T\text{ finite}.
+\]">\[
+\pi_7(S^4)=\mathbb Z\oplus T,\qquad T\text{ finite}.
+\]</span>
+But <span class="math" data-tex="\(H_7(S^4;\mathbb Z)=0\)">\(H_7(S^4;\mathbb Z)=0\)</span>. Its degree-seven Hurewicz map has an infinite kernel, and its rationalization is not an isomorphism. It is onto the zero target, consistently with the separately proved endpoint surjectivity. Thus the bound cannot in general be extended from <span class="math" data-tex="\(r&lt;2k-1\)">\(r&lt;2k-1\)</span> to <span class="math" data-tex="\(r\leq2k-1\)">\(r\leq2k-1\)</span>. No value of <span class="math" data-tex="\(T\)">\(T\)</span>, or of the two earlier finite groups, is determined by this reasoning. ∎</p>
+<p><span id="DG-CHAR-13C.exercise-I.5"></span><strong>Exercise I.5 — Easy: finite generation is essential.</strong> Explain why a rational isomorphism between abelian groups need not have finite kernel and cokernel. Contrast this with multiplication by a nonzero integer on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p><strong>Solution.</strong> Every element of <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span> has finite order, so its tensor product with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is zero. The map
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathbb Q/\mathbb Z
+\]">\[
+0\longrightarrow\mathbb Q/\mathbb Z
+\]</span>
+is therefore an isomorphism after rational tensoring, but its cokernel is infinite. This group is not finitely generated: finitely many rational classes have a common denominator, and the subgroup they generate is finite. Thus Lemma F.1 is inapplicable, exactly at the necessary hypothesis.</p>
+<p>For multiplication by <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span> on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, the kernel is zero and the cokernel is <span class="math" data-tex="\(\mathbb Z/|m|\)">\(\mathbb Z/|m|\)</span>, both finite. Its rationalization is invertible. For <span class="math" data-tex="\(|m|&gt;1\)">\(|m|&gt;1\)</span> it is not an integral isomorphism, so the conclusion of finite kernel and cokernel must also not be strengthened to an integral isomorphism. ∎</p>
+<p><span id="DG-CHAR-13C.exercise-I.6"></span><strong>Exercise I.6 — Hard: a mixed-dimensional finite complex.</strong> Let <span class="math" data-tex="\(X=S^4\vee S^6\)">\(X=S^4\vee S^6\)</span>. Determine <span class="math" data-tex="\(\pi_4(X)\)">\(\pi_4(X)\)</span>, whether <span class="math" data-tex="\(\pi_5(X)\)">\(\pi_5(X)\)</span> is finite, and the rank and torsion form of <span class="math" data-tex="\(\pi_6(X)\)">\(\pi_6(X)\)</span>. Exhibit a rational kernel for its degree-seven Hurewicz map.</p>
+<p><strong>Solution.</strong> Its CW structure has one vertex and cells only in dimensions four and six. The proved cell-dimension connectivity makes it three-connected. Its reduced cellular homology is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in degrees four and six and zero otherwise. The first Hurewicz theorem gives <span class="math" data-tex="\(\pi_4(X)=\mathbb Z\)">\(\pi_4(X)=\mathbb Z\)</span>. Theorem H.4, with <span class="math" data-tex="\(k=4\)">\(k=4\)</span>, makes <span class="math" data-tex="\(\pi_5(X)\)">\(\pi_5(X)\)</span> finite and gives
+<span class="math math-display" data-tex="\[
+\pi_6(X)\otimes\mathbb Q=\mathbb Q.
+\]">\[
+\pi_6(X)\otimes\mathbb Q=\mathbb Q.
+\]</span>
+The group <span class="math" data-tex="\(\pi_6(X)\)">\(\pi_6(X)\)</span> is finitely generated, by Theorem F.8, hence <span class="math" data-tex="\(\mathbb Z\oplus T\)">\(\mathbb Z\oplus T\)</span> with finite <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>In fact its degree-six Hurewicz map is onto: the inclusion of the <span class="math" data-tex="\(S^6\)">\(S^6\)</span> summand sends its positive degree-one homotopy class to the cellular generator of <span class="math" data-tex="\(H_6(X)\)">\(H_6(X)\)</span>. The collapse onto that summand splits the induced homotopy inclusion. It follows also that the finite subgroup <span class="math" data-tex="\(T\)">\(T\)</span> is the kernel of this Hurewicz map, with the positive sphere class providing a splitting.</p>
+<p>Finally the inclusion <span class="math" data-tex="\(S^4\hookrightarrow X\)">\(S^4\hookrightarrow X\)</span> has the collapse <span class="math" data-tex="\(X\to S^4\)">\(X\to S^4\)</span> as a left inverse. Its map on <span class="math" data-tex="\(\pi_7\)">\(\pi_7\)</span> is consequently injective and remains injective after rationalization. By Theorem H.3 the source has rational rank one. Thus a nonzero rational homotopy class from <span class="math" data-tex="\(\pi_7(S^4)\)">\(\pi_7(S^4)\)</span> survives in <span class="math" data-tex="\(\pi_7(X)\)">\(\pi_7(X)\)</span>, while <span class="math" data-tex="\(H_7(X)=0\)">\(H_7(X)=0\)</span>. It lies in the rational kernel. This argument makes no claim to compute all of <span class="math" data-tex="\(\pi_7(X)\)">\(\pi_7(X)\)</span>. ∎</p>
+<p>The next chapter applies this rational-homotopy calculation. The <a href="DG-CHAR-13D.html">rational-bordism continuation</a> applies these proofs to the finite oriented Thom complexes and proves the rank, rational polynomial ring and torsion criterion, completing the Thom-space lesson.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-13B.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-13D.html">Next chapter</a></nav><p><a href="rational-homotopy-and-the-hurewicz-range.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

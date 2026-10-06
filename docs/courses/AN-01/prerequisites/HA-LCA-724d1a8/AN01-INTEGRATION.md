@@ -1,0 +1,11 @@
+# The HA-LCA route supplied with AN-01
+
+This private prerequisite bundle preserves the HA-LCA edition at commit 724d1a8dd6e33982a18e71a7735cc02ccb10b812. Its 17 lessons and ten prerequisite readings are included to keep all internal proof links available. The mathematical Markdown sources retain their original bytes, authorship and component licences. Only collection navigation outside this bundle is changed to exact private repository links.
+
+For AN-01 U056, 192 required proof blocks across 21 readings were actually read and compared: finite Radon representation and products, Haar measure and integration, Hilbert and Banach tools, positive type and Bochner, Fourier inversion and Plancherel, Pontryagin duality, quotient integration and lattice summation. The exact checked blocks and source identities are in [AN01-CHECKED-PROOFS.json](AN01-CHECKED-PROOFS.json). Other sections retain their original author-check status. No independent review of the entire provider is claimed.
+
+The general formula retains its representative, continuity, integrability and measure-normalization hypotheses. The one-dimensional proof and all solved problems in AN-01 U056 remain independent.
+
+[Read Poisson summation](src/the-poisson-summation-formula.html#ha-lca-11-theorem-1-1) · Provider contents · [Component licences](LICENCES.html)
+
+The Design Science License, original Fremlin source packages, editable lesson sources and MathJax software/font notices are retained. The CC0 dedication of original AN-01 exposition does not relicense these components. The bundle grants no public-release authorization.

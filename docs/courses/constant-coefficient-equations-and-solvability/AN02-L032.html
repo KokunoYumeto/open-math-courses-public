@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Petrowsky parabolicity and semielliptic regularity</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="petrowsky-parabolicity-and-semielliptic-regularity">Petrowsky parabolicity and semielliptic regularity</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Parabolicity can be expressed through the roots of a polynomial in the time-growth rate. The roots describe what happens to a spatial Fourier mode as time increases. A strict half-plane condition also prevents the full real Fourier symbol from vanishing away from the origin. This connects parabolic evolution to semiellipticity and gives precise local derivative bounds, even when the equation has several time derivatives.</p>
+<p>Read <a href="AN02-L023.html">Algebraic families of hypoelliptic operators</a> for semielliptic symbols and their derivative-ratio estimates. <a href="AN02-L030.html">Directional growth and complex-zero geometry</a> proves their optimal directional exponents, and <a href="AN02-L031.html">Anisotropic derivative classes and analyticity</a> turns those exponents into mixed derivative bounds. Hile [Hile] supplies a higher time-order convention for the parabolic root condition. We give the inclusion proof and the applications below.</p>
+<h2 id="a-polynomial-in-the-time-growth-rate">A polynomial in the time-growth rate</h2>
+<p>Let <span class="math" data-tex="\(x\in\mathbb R^d\)">\(x\in\mathbb R^d\)</span>, <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, with <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>. Choose positive integers <span class="math" data-tex="\(p,q\)">\(p,q\)</span>. We consider the scalar constant-coefficient operator
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L&amp;=c_0\partial_t^q+
+ \sum_{j=1}^q\ \sum_{|\alpha|\leq pj}
+ a_{j,\alpha}\partial_x^\alpha\partial_t^{q-j},\\
+c_0&amp;\in\mathbb C\setminus\{0\},\qquad a_{j,\alpha}\in\mathbb C.
+\end{aligned}
+\tag{1}
+\]">\[
+\begin{aligned}
+L&amp;=c_0\partial_t^q+
+ \sum_{j=1}^q\ \sum_{|\alpha|\leq pj}
+ a_{j,\alpha}\partial_x^\alpha\partial_t^{q-j},\\
+c_0&amp;\in\mathbb C\setminus\{0\},\qquad a_{j,\alpha}\in\mathbb C.
+\end{aligned}
+\tag{1}
+\]</span>
+The original leading coefficient <span class="math" data-tex="\(c_0\)">\(c_0\)</span> is retained. If we compare with the monic operator <span class="math" data-tex="\(\widehat L=c_0^{-1}L\)">\(\widehat L=c_0^{-1}L\)</span>, the full equation transforms as
+<span class="math math-display" data-tex="\[
+Lu=g\quad\Longleftrightarrow\quad
+\widehat Lu=c_0^{-1}g.
+\tag{1a}
+\]">\[
+Lu=g\quad\Longleftrightarrow\quad
+\widehat Lu=c_0^{-1}g.
+\tag{1a}
+\]</span>
+The homogeneous solutions agree, and the source acquires the same reciprocal factor as the operator.</p>
+<p>Retain the terms of maximal anisotropic degree and define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b_j(\xi)&amp;=\sum_{|\alpha|=pj}a_{j,\alpha}(i\xi)^\alpha,\\
+F(\lambda,\xi)&amp;=c_0\lambda^q+
+ \sum_{j=1}^q b_j(\xi)\lambda^{q-j}.
+\end{aligned}
+\tag{2}
+\]">\[
+\begin{aligned}
+b_j(\xi)&amp;=\sum_{|\alpha|=pj}a_{j,\alpha}(i\xi)^\alpha,\\
+F(\lambda,\xi)&amp;=c_0\lambda^q+
+ \sum_{j=1}^q b_j(\xi)\lambda^{q-j}.
+\end{aligned}
+\tag{2}
+\]</span>
+For a spatial mode <span class="math" data-tex="\(e^{ix\cdot\xi}\)">\(e^{ix\cdot\xi}\)</span>, the principal equation becomes the ordinary differential equation obtained by replacing <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with <span class="math" data-tex="\(\partial_t\)">\(\partial_t\)</span>. Thus <span class="math" data-tex="\(F(\lambda,\xi)=0\)">\(F(\lambda,\xi)=0\)</span> identifies exponential time factors <span class="math" data-tex="\(e^{\lambda t}\)">\(e^{\lambda t}\)</span>; repeated roots can also produce polynomial factors in <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><strong>Definition 1.</strong> We say that (1) is <strong>strictly <span class="math" data-tex="\(p\)">\(p\)</span>-parabolic in the forward time direction</strong> if there is <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(\lambda,\omega)=0,\quad
+\omega\in\mathbb R^d,\quad |\omega|=1\\
+\Longrightarrow\quad \operatorname{Re}\lambda\leq-c.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+F(\lambda,\omega)=0,\quad
+\omega\in\mathbb R^d,\quad |\omega|=1\\
+\Longrightarrow\quad \operatorname{Re}\lambda\leq-c.
+\end{gathered}
+\tag{3}
+\]</span>
+This is a condition on the principal polynomial (2). Terms with <span class="math" data-tex="\(|\alpha|&lt;pj\)">\(|\alpha|&lt;pj\)</span> do not enter it.</p>
+<p>To compare Fourier conventions, put
+<span class="math math-display" data-tex="\[
+f(\tau,\xi)=\frac{i^{-q}}{c_0}F(i\tau,\xi).
+\tag{4}
+\]">\[
+f(\tau,\xi)=\frac{i^{-q}}{c_0}F(i\tau,\xi).
+\tag{4}
+\]</span>
+The polynomial <span class="math" data-tex="\(f\)">\(f\)</span> is monic in <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Its roots correspond to the roots of <span class="math" data-tex="\(F\)">\(F\)</span> through <span class="math" data-tex="\(\lambda=i\tau\)">\(\lambda=i\tau\)</span>, and
+<span class="math math-display" data-tex="\[
+\operatorname{Re}\lambda=-\operatorname{Im}\tau.
+\tag{5}
+\]">\[
+\operatorname{Re}\lambda=-\operatorname{Im}\tau.
+\tag{5}
+\]</span>
+Consequently (3) says that the roots of <span class="math" data-tex="\(f(\,\cdot\,,\omega)\)">\(f(\,\cdot\,,\omega)\)</span> satisfy <span class="math" data-tex="\(\operatorname{Im}\tau\geq c\)">\(\operatorname{Im}\tau\geq c\)</span>. For the precise operator comparison with [Hile, Example 8.3], let <span class="math" data-tex="\(L^\circ\)">\(L^\circ\)</span> retain only the terms with <span class="math" data-tex="\(|\alpha|=pj\)">\(|\alpha|=pj\)</span>, together with the leading temporal term. Hile's scalar principal convention is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_H&amp;=\frac{i^{-q}}{c_0}L^\circ,\\
+A^H_{0,q}&amp;=i^{-q},\\
+A^H_{\alpha,q-j}&amp;=\frac{i^{-q}}{c_0}a_{j,\alpha},
+\qquad |\alpha|=pj.
+\end{aligned}
+\tag{5a}
+\]">\[
+\begin{aligned}
+L_H&amp;=\frac{i^{-q}}{c_0}L^\circ,\\
+A^H_{0,q}&amp;=i^{-q},\\
+A^H_{\alpha,q-j}&amp;=\frac{i^{-q}}{c_0}a_{j,\alpha},
+\qquad |\alpha|=pj.
+\end{aligned}
+\tag{5a}
+\]</span>
+Its Fourier polynomial is exactly (4). This comparison concerns the anisotropic principal operator; the full <span class="math" data-tex="\(L\)">\(L\)</span> still contains every lower term in (1). The signs agree with the decaying factors of the forward heat equation.</p>
+<p><strong>Lemma 1.1.</strong> Condition (3) is equivalent to requiring that every root have strictly negative real part for each real unit <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Moreover,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(\lambda,\xi)=0,\quad \xi\in\mathbb R^d\setminus\{0\}\\
+\Longrightarrow\quad
+\operatorname{Re}\lambda\leq-c|\xi|^p
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+F(\lambda,\xi)=0,\quad \xi\in\mathbb R^d\setminus\{0\}\\
+\Longrightarrow\quad
+\operatorname{Re}\lambda\leq-c|\xi|^p
+\end{gathered}
+\tag{6}
+\]</span>
+with the same <span class="math" data-tex="\(c\)">\(c\)</span> as in (3).</p>
+<p><strong>Proof.</strong> The coefficients <span class="math" data-tex="\(b_j\)">\(b_j\)</span> are bounded on the unit sphere. Set
+<span class="math math-display" data-tex="\[
+B=\max_{|\omega|=1}\sum_{j=1}^q\frac{|b_j(\omega)|}{|c_0|}.
+\]">\[
+B=\max_{|\omega|=1}\sum_{j=1}^q\frac{|b_j(\omega)|}{|c_0|}.
+\]</span>
+If <span class="math" data-tex="\(|\lambda|&gt;\max(1,B)\)">\(|\lambda|&gt;\max(1,B)\)</span>, then
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^q|b_j(\omega)\lambda^{q-j}|
+\leq |c_0|B|\lambda|^{q-1}&lt;|c_0||\lambda|^q.
+\]">\[
+\sum_{j=1}^q|b_j(\omega)\lambda^{q-j}|
+\leq |c_0|B|\lambda|^{q-1}&lt;|c_0||\lambda|^q.
+\]</span>
+Such a <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> cannot be a root. All roots on the unit sphere therefore lie in a fixed compact disk.</p>
+<p>Suppose every one of these roots has negative real part, but there is no uniform <span class="math" data-tex="\(c\)">\(c\)</span>. Choose unit vectors <span class="math" data-tex="\(\omega_\nu\)">\(\omega_\nu\)</span> and roots <span class="math" data-tex="\(\lambda_\nu\)">\(\lambda_\nu\)</span> with <span class="math" data-tex="\(\operatorname{Re}\lambda_\nu\to0\)">\(\operatorname{Re}\lambda_\nu\to0\)</span>. Pass to convergent subsequences of both. Continuity gives a root <span class="math" data-tex="\(F(\lambda,\omega)=0\)">\(F(\lambda,\omega)=0\)</span> with <span class="math" data-tex="\(|\omega|=1\)">\(|\omega|=1\)</span> and <span class="math" data-tex="\(\operatorname{Re}\lambda=0\)">\(\operatorname{Re}\lambda=0\)</span>, a contradiction. This proves the uniform condition. Its converse is immediate.</p>
+<p>Each <span class="math" data-tex="\(b_j\)">\(b_j\)</span> is homogeneous of spatial degree <span class="math" data-tex="\(pj\)">\(pj\)</span>, so
+<span class="math math-display" data-tex="\[
+F(s^p\lambda,s\xi)=s^{pq}F(\lambda,\xi),
+\qquad s&gt;0.
+\tag{7}
+\]">\[
+F(s^p\lambda,s\xi)=s^{pq}F(\lambda,\xi),
+\qquad s&gt;0.
+\tag{7}
+\]</span>
+For <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, take <span class="math" data-tex="\(s=|\xi|\)">\(s=|\xi|\)</span> and <span class="math" data-tex="\(\omega=\xi/s\)">\(\omega=\xi/s\)</span>. A root <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> at <span class="math" data-tex="\(\xi\)">\(\xi\)</span> becomes the root <span class="math" data-tex="\(\lambda/s^p\)">\(\lambda/s^p\)</span> at <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Applying (3) proves (6). No labeling or simplicity of the roots is required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The uniform root gap concerns high spatial frequencies through (7). For example, the lower term <span class="math" data-tex="\(-1\)">\(-1\)</span> in <span class="math" data-tex="\(\partial_t-\Delta_x-1\)">\(\partial_t-\Delta_x-1\)</span> permits growth at low frequencies, while its principal polynomial still satisfies (3).</p>
+<h2 id="why-the-root-condition-gives-semiellipticity">Why the root condition gives semiellipticity</h2>
+<p>We use <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> and order the real Fourier variables as <span class="math" data-tex="\((\tau,\xi)\)">\((\tau,\xi)\)</span>, with time first. Then <span class="math" data-tex="\(L=P(D_t,D_x)\)">\(L=P(D_t,D_x)\)</span>, where
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P(\tau,\xi)&amp;=c_0(i\tau)^q\\
+&amp;+\sum_{j=1}^q\ \sum_{|\alpha|\leq pj}
+ a_{j,\alpha}(i\xi)^\alpha(i\tau)^{q-j}.
+\end{aligned}
+\tag{8}
+\]">\[
+\begin{aligned}
+P(\tau,\xi)&amp;=c_0(i\tau)^q\\
+&amp;+\sum_{j=1}^q\ \sum_{|\alpha|\leq pj}
+ a_{j,\alpha}(i\xi)^\alpha(i\tau)^{q-j}.
+\end{aligned}
+\tag{8}
+\]</span>
+Choose the semielliptic weights
+<span class="math math-display" data-tex="\[
+\mathbf m=(q,pq,\ldots,pq).
+\tag{9}
+\]">\[
+\mathbf m=(q,pq,\ldots,pq).
+\tag{9}
+\]</span>
+A monomial in (8) has anisotropic degree
+<span class="math math-display" data-tex="\[
+\frac{q-j}{q}+\frac{|\alpha|}{pq}\leq1,
+\tag{10}
+\]">\[
+\frac{q-j}{q}+\frac{|\alpha|}{pq}\leq1,
+\tag{10}
+\]</span>
+with equality precisely when <span class="math" data-tex="\(|\alpha|=pj\)">\(|\alpha|=pj\)</span>. Thus the anisotropic principal part is
+<span class="math math-display" data-tex="\[
+P^\circ(\tau,\xi)=F(i\tau,\xi).
+\tag{11}
+\]">\[
+P^\circ(\tau,\xi)=F(i\tau,\xi).
+\tag{11}
+\]</span></p>
+<p><strong>Theorem 2.1.</strong> Every operator satisfying (3) is semielliptic with weights (9), and hence hypoelliptic. Arbitrary lower anisotropic degree terms allowed in (1) preserve this conclusion. Its ordinary differential order is exactly <span class="math" data-tex="\(pq\)">\(pq\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\((\tau,\xi)\)">\((\tau,\xi)\)</span> be a nonzero real vector. If <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span> and <span class="math" data-tex="\(P^\circ(\tau,\xi)=0\)">\(P^\circ(\tau,\xi)=0\)</span>, then <span class="math" data-tex="\(i\tau\)">\(i\tau\)</span> is a root of <span class="math" data-tex="\(F(\,\cdot\,,\xi)\)">\(F(\,\cdot\,,\xi)\)</span>. Its real part is zero, contradicting (6). If <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, every <span class="math" data-tex="\(b_j(0)\)">\(b_j(0)\)</span> vanishes and
+<span class="math math-display" data-tex="\[
+P^\circ(\tau,0)=c_0(i\tau)^q.
+\]">\[
+P^\circ(\tau,0)=c_0(i\tau)^q.
+\]</span>
+This is nonzero when <span class="math" data-tex="\(\tau\ne0\)">\(\tau\ne0\)</span>, since <span class="math" data-tex="\(c_0\ne0\)">\(c_0\ne0\)</span>. We have proved nonvanishing on every nonzero real vector, exactly the definition of semiellipticity for (9).</p>
+<p>For completeness, the regularity mechanism can be seen directly. Define
+<span class="math math-display" data-tex="\[
+R(\tau,\xi)=|\tau|^q+\sum_{\ell=1}^d|\xi_\ell|^{pq}.
+\tag{12}
+\]">\[
+R(\tau,\xi)=|\tau|^q+\sum_{\ell=1}^d|\xi_\ell|^{pq}.
+\tag{12}
+\]</span>
+Its unit level set is compact and avoids zero. The anisotropic dilation
+<span class="math math-display" data-tex="\[
+\delta_s(\tau,\xi)
+=(s^{1/q}\tau,s^{1/(pq)}\xi)
+\tag{13}
+\]">\[
+\delta_s(\tau,\xi)
+=(s^{1/q}\tau,s^{1/(pq)}\xi)
+\tag{13}
+\]</span>
+makes both <span class="math" data-tex="\(P^\circ\)">\(P^\circ\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> homogeneous of degree one. Retain the constant for the original operator,
+<span class="math math-display" data-tex="\[
+a_L=\min_{R(\tau,\xi)=1}|P^\circ(\tau,\xi)|&gt;0.
+\tag{13a}
+\]">\[
+a_L=\min_{R(\tau,\xi)=1}|P^\circ(\tau,\xi)|&gt;0.
+\tag{13a}
+\]</span>
+This gives
+<span class="math math-display" data-tex="\[
+|P^\circ(\tau,\xi)|\geq a_LR(\tau,\xi)
+\tag{14}
+\]">\[
+|P^\circ(\tau,\xi)|\geq a_LR(\tau,\xi)
+\tag{14}
+\]</span>
+A lower monomial of anisotropic degree <span class="math" data-tex="\(\theta&lt;1\)">\(\theta&lt;1\)</span>, with its original coefficient <span class="math" data-tex="\(a_{j,\alpha}\)">\(a_{j,\alpha}\)</span>, is bounded by <span class="math" data-tex="\(|a_{j,\alpha}|R^\theta\)">\(|a_{j,\alpha}|R^\theta\)</span>. The finite sum of those bounds is at most <span class="math" data-tex="\(a_LR/2\)">\(a_LR/2\)</span> for sufficiently large <span class="math" data-tex="\(R\)">\(R\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+|P(\tau,\xi)|\geq \frac {a_L}2 R(\tau,\xi).
+\tag{15}
+\]">\[
+|P(\tau,\xi)|\geq \frac {a_L}2 R(\tau,\xi).
+\tag{15}
+\]</span>
+If <span class="math" data-tex="\(a_0\)">\(a_0\)</span> is a nonnegative integer and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is a spatial multi-index, put
+<span class="math math-display" data-tex="\[
+\theta(a_0,\beta)=\frac{a_0}{q}+\frac{|\beta|}{pq}.
+\]">\[
+\theta(a_0,\beta)=\frac{a_0}{q}+\frac{|\beta|}{pq}.
+\]</span>
+Differentiating a surviving monomial retains its original coefficient and reduces its anisotropic degree by <span class="math" data-tex="\(\theta(a_0,\beta)\)">\(\theta(a_0,\beta)\)</span>. Hence, when <span class="math" data-tex="\(\theta\leq1\)">\(\theta\leq1\)</span>,
+<span class="math math-display" data-tex="\[
+\left|\frac{\partial_\tau^{a_0}\partial_\xi^\beta P}{P}\right|
+\leq C_{a_0,\beta}R^{-\theta(a_0,\beta)}
+\tag{16}
+\]">\[
+\left|\frac{\partial_\tau^{a_0}\partial_\xi^\beta P}{P}\right|
+\leq C_{a_0,\beta}R^{-\theta(a_0,\beta)}
+\tag{16}
+\]</span>
+for large <span class="math" data-tex="\(R\)">\(R\)</span>. When <span class="math" data-tex="\(\theta&gt;1\)">\(\theta&gt;1\)</span>, that derivative is zero. Every positive derivative ratio therefore tends to zero as <span class="math" data-tex="\(|(\tau,\xi)|\to\infty\)">\(|(\tau,\xi)|\to\infty\)</span>. The complex-zero criterion proved in <a href="AN02-L021.html">Hypoellipticity and complex zeros</a> gives hypoellipticity. This also explains why all lower anisotropic terms are allowed.</p>
+<p>Each monomial in (8) has ordinary degree at most
+<span class="math math-display" data-tex="\[
+|\alpha|+q-j\leq pj+q-j\leq pq.
+\]">\[
+|\alpha|+q-j\leq pj+q-j\leq pq.
+\]</span>
+For any spatial coordinate vector <span class="math" data-tex="\(e_\ell\)">\(e_\ell\)</span>, semiellipticity gives
+<span class="math math-display" data-tex="\[
+P^\circ(0,e_\ell)=b_q(e_\ell)\ne0.
+\]">\[
+P^\circ(0,e_\ell)=b_q(e_\ell)\ne0.
+\]</span>
+This requires a nonzero pure spatial term of degree <span class="math" data-tex="\(pq\)">\(pq\)</span>. The ordinary order is therefore exactly <span class="math" data-tex="\(pq\)">\(pq\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Hypoellipticity means that <span class="math" data-tex="\(Lu\)">\(Lu\)</span> smooth on an open set forces the distribution <span class="math" data-tex="\(u\)">\(u\)</span> to be smooth there. The theorem concerns this local regularity; the root orientation records additional information about time evolution.</p>
+<h2 id="the-scalar-condition-forces-an-even-spatial-scale">The scalar condition forces an even spatial scale</h2>
+<p>Complex coefficients are allowed, but the scalar root condition still constrains <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Proposition 3.1.</strong> If <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span> and (3) holds, then <span class="math" data-tex="\(p\)">\(p\)</span> is even. In particular, <span class="math" data-tex="\(p\geq2\)">\(p\geq2\)</span>.</p>
+<p><strong>Proof.</strong> For a real unit vector <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, list the <span class="math" data-tex="\(q\)">\(q\)</span> roots with multiplicity as <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_q\)">\(\lambda_1,\ldots,\lambda_q\)</span>. The coefficient of <span class="math" data-tex="\(\lambda^{q-1}\)">\(\lambda^{q-1}\)</span> in (2) and Viète's formula give
+<span class="math math-display" data-tex="\[
+\lambda_1+\cdots+\lambda_q=-\frac{b_1(\omega)}{c_0}.
+\]">\[
+\lambda_1+\cdots+\lambda_q=-\frac{b_1(\omega)}{c_0}.
+\]</span>
+Taking real parts and using (3) yields
+<span class="math math-display" data-tex="\[
+\operatorname{Re}\frac{b_1(\omega)}{c_0}\geq qc&gt;0.
+\tag{17}
+\]">\[
+\operatorname{Re}\frac{b_1(\omega)}{c_0}\geq qc&gt;0.
+\tag{17}
+\]</span>
+But <span class="math" data-tex="\(b_1\)">\(b_1\)</span> is homogeneous of degree <span class="math" data-tex="\(p\)">\(p\)</span>, so
+<span class="math math-display" data-tex="\[
+b_1(-\omega)=(-1)^p b_1(\omega).
+\]">\[
+b_1(-\omega)=(-1)^p b_1(\omega).
+\]</span>
+If <span class="math" data-tex="\(p\)">\(p\)</span> were odd, (17) at <span class="math" data-tex="\(\omega\)">\(\omega\)</span> and <span class="math" data-tex="\(-\omega\)">\(-\omega\)</span> would demand positive real parts for a number and its negative. This is impossible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument uses a scalar polynomial with nonzero leading coefficient and counts all temporal roots. It also shows that a strictly parabolic scalar principal polynomial must have a nonzero coefficient of <span class="math" data-tex="\(\lambda^{q-1}\)">\(\lambda^{q-1}\)</span>.</p>
+<h2 id="exact-time-and-space-derivative-classes">Exact time and space derivative classes</h2>
+<p>Let <span class="math" data-tex="\(X\subset\mathbb R^{d+1}\)">\(X\subset\mathbb R^{d+1}\)</span> be open and let <span class="math" data-tex="\(Lu=0\)">\(Lu=0\)</span> in <span class="math" data-tex="\(\mathcal D&#x27;(X)\)">\(\mathcal D&#x27;(X)\)</span>. Theorem 2.1 first makes <span class="math" data-tex="\(u\)">\(u\)</span> smooth. The semielliptic exponents and mixed derivative theorem then give the following more precise conclusion.</p>
+<p><strong>Corollary 4.1.</strong> For every compact <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span>, there is <span class="math" data-tex="\(C_K\geq1\)">\(C_K\geq1\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_K|\partial_t^a\partial_x^\beta u|
+\leq C_K^{a+|\beta|+1}(a!)^p\beta!,\\
+a\geq0,\qquad
+\beta!=\prod_{\ell=1}^d\beta_\ell!.
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+\sup_K|\partial_t^a\partial_x^\beta u|
+\leq C_K^{a+|\beta|+1}(a!)^p\beta!,\\
+a\geq0,\qquad
+\beta!=\prod_{\ell=1}^d\beta_\ell!.
+\end{gathered}
+\tag{18}
+\]</span>
+The optimal directional growth exponents are
+<span class="math math-display" data-tex="\[
+\rho_P(y)=
+\begin{cases}
+p,&amp;y_t\ne0,\\
+1,&amp;y_t=0,\ y_x\ne0,\\
+0,&amp;y=0.
+\end{cases}
+\tag{19}
+\]">\[
+\rho_P(y)=
+\begin{cases}
+p,&amp;y_t\ne0,\\
+1,&amp;y_t=0,\ y_x\ne0,\\
+0,&amp;y=0.
+\end{cases}
+\tag{19}
+\]</span>
+In particular, all coordinate exponents in (18) are sharp in the universal homogeneous-solution sense.</p>
+<p><strong>Proof.</strong> The ordinary order is <span class="math" data-tex="\(m=pq\)">\(m=pq\)</span>, and the weights are (9). The exact semielliptic result in <a href="AN02-L030.html">Directional growth and complex-zero geometry</a>, Theorem 4.1, gives the coordinate exponents
+<span class="math math-display" data-tex="\[
+\rho_t=\frac{pq}{q}=p,\qquad
+\rho_{x_\ell}=\frac{pq}{pq}=1.
+\]">\[
+\rho_t=\frac{pq}{q}=p,\qquad
+\rho_{x_\ell}=\frac{pq}{pq}=1.
+\]</span>
+For a nonzero direction it gives the maximum of the exponents among its nonzero coordinates, proving (19). The total dimension <span class="math" data-tex="\(d+1\)">\(d+1\)</span> is at least two, so the universal sharp lower bounds in that lesson apply.</p>
+<p>Apply the mixed derivative theorem in <a href="AN02-L031.html">Anisotropic derivative classes and analyticity</a>, Theorem 1.1, and its factorial formulation. Replacing <span class="math" data-tex="\(D\)">\(D\)</span> by ordinary derivatives only changes factors of modulus one. This proves (18). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For each fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the restriction of a homogeneous solution to a spatial slice is real analytic. Indeed, take a small compact product neighborhood inside <span class="math" data-tex="\(X\)">\(X\)</span>, set <span class="math" data-tex="\(a=0\)">\(a=0\)</span> in (18), and apply the Taylor remainder argument for exponent one. In time, (18) gives a Gevrey bound of order <span class="math" data-tex="\(p\)">\(p\)</span>. Sharpness is a statement about a bound for all local homogeneous solutions, with constants that may depend on the individual solution. Individual solutions, including exponentials and polynomials, can have better bounds.</p>
+<p>The full operator is not elliptic in the ordinary sense. Since <span class="math" data-tex="\(p\geq2\)">\(p\geq2\)</span>, its ordinary degree is <span class="math" data-tex="\(pq&gt;q\)">\(pq&gt;q\)</span>. All terms of ordinary degree <span class="math" data-tex="\(pq\)">\(pq\)</span> in (8) have <span class="math" data-tex="\(j=q\)">\(j=q\)</span> and are purely spatial. The ordinary principal part therefore vanishes at <span class="math" data-tex="\((\tau,\xi)=(1,0)\)">\((\tau,\xi)=(1,0)\)</span>. By the analyticity criterion proved in the preceding lesson, some local homogeneous solutions fail to be jointly real analytic, despite their spatial analyticity.</p>
+<h2 id="repeated-roots-and-the-direction-of-time">Repeated roots and the direction of time</h2>
+<p>For <span class="math" data-tex="\(r,q\geq1\)">\(r,q\geq1\)</span>, consider the monic specialization <span class="math" data-tex="\(c_0=1\)">\(c_0=1\)</span>,
+<span class="math math-display" data-tex="\[
+L=\bigl(\partial_t+(-\Delta_x)^r\bigr)^q.
+\tag{20}
+\]">\[
+L=\bigl(\partial_t+(-\Delta_x)^r\bigr)^q.
+\tag{20}
+\]</span>
+Here <span class="math" data-tex="\(p=2r\)">\(p=2r\)</span> and
+<span class="math math-display" data-tex="\[
+F(\lambda,\xi)=\bigl(\lambda+|\xi|^{2r}\bigr)^q.
+\]">\[
+F(\lambda,\xi)=\bigl(\lambda+|\xi|^{2r}\bigr)^q.
+\]</span>
+All <span class="math" data-tex="\(q\)">\(q\)</span> roots equal <span class="math" data-tex="\(-|\xi|^{2r}\)">\(-|\xi|^{2r}\)</span>. On the unit sphere the strict condition holds with <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, even though the roots have multiplicity <span class="math" data-tex="\(q\)">\(q\)</span>. The weights are <span class="math" data-tex="\(q\)">\(q\)</span> in time and <span class="math" data-tex="\(2rq\)">\(2rq\)</span> in space; the derivative exponents are <span class="math" data-tex="\(2r\)">\(2r\)</span> in time and one in space. The temporal multiplicity changes the weights and ordinary order, but their ratios stay the same.</p>
+<p>Semiellipticity does not by itself choose a forward time direction. The backward heat operator
+<span class="math math-display" data-tex="\[
+L_{\mathrm b}=\partial_t+\Delta_x
+\tag{21}
+\]">\[
+L_{\mathrm b}=\partial_t+\Delta_x
+\tag{21}
+\]</span>
+has <span class="math" data-tex="\(F_{\mathrm b}(\lambda,\xi)=\lambda-|\xi|^2\)">\(F_{\mathrm b}(\lambda,\xi)=\lambda-|\xi|^2\)</span>, whose root is positive when <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>. It fails (3). Yet its Fourier symbol <span class="math" data-tex="\(i\tau-|\xi|^2\)">\(i\tau-|\xi|^2\)</span> has no nonzero real zero and is semielliptic with weights <span class="math" data-tex="\((1,2,\ldots,2)\)">\((1,2,\ldots,2)\)</span>. Thus the inclusion in Theorem 2.1 is strict.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic: Fourier signs).</strong> For <span class="math" data-tex="\(L=\partial_t-\Delta_x\)">\(L=\partial_t-\Delta_x\)</span>, compute <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(P\)">\(P\)</span>, and the normalized <span class="math" data-tex="\(f\)">\(f\)</span> in (4). Locate the roots in the <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>- and <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-planes and identify a decaying spatial Fourier mode.</p>
+<p><strong>Solution.</strong> We have
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F(\lambda,\xi)&amp;=\lambda+|\xi|^2,\\
+P(\tau,\xi)&amp;=i\tau+|\xi|^2,\\
+f(\tau,\xi)&amp;=\tau-i|\xi|^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+F(\lambda,\xi)&amp;=\lambda+|\xi|^2,\\
+P(\tau,\xi)&amp;=i\tau+|\xi|^2,\\
+f(\tau,\xi)&amp;=\tau-i|\xi|^2.
+\end{aligned}
+\]</span>
+The roots are <span class="math" data-tex="\(\lambda=-|\xi|^2\)">\(\lambda=-|\xi|^2\)</span> and <span class="math" data-tex="\(\tau=i|\xi|^2\)">\(\tau=i|\xi|^2\)</span>. Their signs agree with <span class="math" data-tex="\(\lambda=i\tau\)">\(\lambda=i\tau\)</span>. The function
+<span class="math math-display" data-tex="\[
+e^{ix\cdot\xi-t|\xi|^2}
+\]">\[
+e^{ix\cdot\xi-t|\xi|^2}
+\]</span>
+solves the equation and decays for increasing <span class="math" data-tex="\(t\)">\(t\)</span> when <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>. Here <span class="math" data-tex="\(p=2,q=1\)">\(p=2,q=1\)</span>.</p>
+<p><strong>Exercise 2 (intermediate: uniformity without simple roots).</strong> Retain any <span class="math" data-tex="\(c_0\ne0\)">\(c_0\ne0\)</span>. Suppose the coefficients <span class="math" data-tex="\(b_j\)">\(b_j\)</span> in (2) are continuous on the real unit sphere, and every temporal root there has strictly negative real part. Prove the existence of one positive gap <span class="math" data-tex="\(c\)">\(c\)</span> without choosing continuous root branches.</p>
+<p><strong>Solution.</strong> Compactness of the sphere bounds <span class="math" data-tex="\(\sum_j|b_j|/|c_0|\)">\(\sum_j|b_j|/|c_0|\)</span> by <span class="math" data-tex="\(B\)">\(B\)</span>. The leading-term comparison in Lemma 1.1 bounds every root by <span class="math" data-tex="\(\max(1,B)\)">\(\max(1,B)\)</span>. If no gap existed, for each integer <span class="math" data-tex="\(\nu\)">\(\nu\)</span> there would be a unit <span class="math" data-tex="\(\omega_\nu\)">\(\omega_\nu\)</span> and a root <span class="math" data-tex="\(\lambda_\nu\)">\(\lambda_\nu\)</span> with
+<span class="math math-display" data-tex="\[
+-1/\nu&lt;\operatorname{Re}\lambda_\nu&lt;0.
+\]">\[
+-1/\nu&lt;\operatorname{Re}\lambda_\nu&lt;0.
+\]</span>
+Extract convergent subsequences in the sphere and disk. Continuity of the polynomial gives a root at the limit with real part zero, contradicting the hypothesis. This proof accommodates multiple roots.</p>
+<p><strong>Exercise 3 (intermediate: lower terms and ordinary order).</strong> In two spatial dimensions, take
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L&amp;=(\partial_t-\Delta_x)^2\\
+&amp;+3\partial_{x_1}\partial_t+7\partial_{x_2}^3+5.
+\end{aligned}
+\tag{22}
+\]">\[
+\begin{aligned}
+L&amp;=(\partial_t-\Delta_x)^2\\
+&amp;+3\partial_{x_1}\partial_t+7\partial_{x_2}^3+5.
+\end{aligned}
+\tag{22}
+\]</span>
+Identify <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, all anisotropic degrees of the added terms, the ordinary order, and the mixed factorial bound for homogeneous solutions.</p>
+<p><strong>Solution.</strong> The principal factor has <span class="math" data-tex="\(p=2,q=2\)">\(p=2,q=2\)</span>, so the weights are <span class="math" data-tex="\((2,4,4)\)">\((2,4,4)\)</span>. The added terms have degrees <span class="math" data-tex="\(1/2+1/4=3/4\)">\(1/2+1/4=3/4\)</span>, <span class="math" data-tex="\(3/4\)">\(3/4\)</span>, and zero. They are all below one. The principal temporal polynomial is
+<span class="math math-display" data-tex="\[
+F(\lambda,\xi)=(\lambda+|\xi|^2)^2.
+\]">\[
+F(\lambda,\xi)=(\lambda+|\xi|^2)^2.
+\]</span>
+Its unit-frequency roots are both <span class="math" data-tex="\(-1\)">\(-1\)</span>, so the equation is strictly <span class="math" data-tex="\(2\)">\(2\)</span>-parabolic. Its ordinary order is four, from the <span class="math" data-tex="\(\Delta_x^2\)">\(\Delta_x^2\)</span> term. For <span class="math" data-tex="\(K\)">\(K\)</span> compactly contained in the open domain,
+<span class="math math-display" data-tex="\[
+\sup_K|\partial_t^a\partial_{x_1}^b\partial_{x_2}^c u|
+\leq C_K^{a+b+c+1}(a!)^2b!c!.
+\]">\[
+\sup_K|\partial_t^a\partial_{x_1}^b\partial_{x_2}^c u|
+\leq C_K^{a+b+c+1}(a!)^2b!c!.
+\]</span>
+The arbitrary signs of the displayed lower terms have no effect on this local conclusion.</p>
+<p><strong>Exercise 4 (advanced: an excluded temporal polynomial).</strong> Show that
+<span class="math math-display" data-tex="\[
+F(\lambda,\xi)=\lambda^2+|\xi|^4
+\]">\[
+F(\lambda,\xi)=\lambda^2+|\xi|^4
+\]</span>
+does not satisfy the strict root condition. Find nonzero real zeros of <span class="math" data-tex="\(F(i\tau,\xi)\)">\(F(i\tau,\xi)\)</span>. Explain why the missing coefficient of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> already rules out strict parabolicity.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, the roots are
+<span class="math math-display" data-tex="\[
+\lambda=\pm i|\xi|^2,
+\]">\[
+\lambda=\pm i|\xi|^2,
+\]</span>
+both with real part zero. Also
+<span class="math math-display" data-tex="\[
+F(i\tau,\xi)=-\tau^2+|\xi|^4
+\]">\[
+F(i\tau,\xi)=-\tau^2+|\xi|^4
+\]</span>
+vanishes when <span class="math" data-tex="\(\tau=\pm|\xi|^2\)">\(\tau=\pm|\xi|^2\)</span>, so the proposed weights do not give a semielliptic principal part. Viète's formula says the two roots sum to zero because <span class="math" data-tex="\(b_1=0\)">\(b_1=0\)</span>. Two roots with strictly negative real parts cannot have sum zero. Thus the trace-of-roots argument detects failure before solving the quadratic.</p>
+<p><strong>Exercise 5 (advanced: time reversal).</strong> Let <span class="math" data-tex="\(L\)">\(L\)</span> satisfy (3), and let <span class="math" data-tex="\(L^{\mathrm r}\)">\(L^{\mathrm r}\)</span> be the operator acting on <span class="math" data-tex="\(v(t,x)=u(-t,x)\)">\(v(t,x)=u(-t,x)\)</span> obtained by replacing <span class="math" data-tex="\(\partial_t\)">\(\partial_t\)</span> with <span class="math" data-tex="\(-\partial_t\)">\(-\partial_t\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span> and then multiplying by <span class="math" data-tex="\((-1)^q\)">\((-1)^q\)</span> to restore the original leading coefficient <span class="math" data-tex="\(c_0\)">\(c_0\)</span>. Determine its principal temporal roots. Prove that it remains semielliptic but fails the forward strict condition.</p>
+<p><strong>Solution.</strong> Reflection alone gives <span class="math" data-tex="\(F(-\lambda,\xi)\)">\(F(-\lambda,\xi)\)</span> with leading coefficient <span class="math" data-tex="\((-1)^qc_0\)">\((-1)^qc_0\)</span>. The additional factor restores <span class="math" data-tex="\(c_0\)">\(c_0\)</span>, so the principal temporal polynomial is
+<span class="math math-display" data-tex="\[
+F^{\mathrm r}(\lambda,\xi)=(-1)^q F(-\lambda,\xi).
+\]">\[
+F^{\mathrm r}(\lambda,\xi)=(-1)^q F(-\lambda,\xi).
+\]</span>
+Its roots are the negatives of those of <span class="math" data-tex="\(F\)">\(F\)</span>, including multiplicities. On the unit sphere they have real parts at least <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, so they fail (3). The corresponding anisotropic principal Fourier part is
+<span class="math math-display" data-tex="\[
+P^{\mathrm r,\circ}(\tau,\xi)=(-1)^qP^\circ(-\tau,\xi).
+\]">\[
+P^{\mathrm r,\circ}(\tau,\xi)=(-1)^qP^\circ(-\tau,\xi).
+\]</span>
+Reflection in the real <span class="math" data-tex="\(\tau\)">\(\tau\)</span> coordinate and multiplication by a nonzero constant preserve nonvanishing on nonzero real vectors. It is therefore semielliptic with the same weights. The derivative classes depend on these weights and remain the same. If <span class="math" data-tex="\(Lu=g\)">\(Lu=g\)</span> and <span class="math" data-tex="\(v(t,x)=u(-t,x)\)">\(v(t,x)=u(-t,x)\)</span>, then
+<span class="math math-display" data-tex="\[
+L^{\mathrm r}v(t,x)=(-1)^q g(-t,x).
+\]">\[
+L^{\mathrm r}v(t,x)=(-1)^q g(-t,x).
+\]</span>
+An additional monic comparison would divide both this operator and this source by <span class="math" data-tex="\(c_0\)">\(c_0\)</span>.</p>
+<p><strong>Exercise 6 (advanced: sharpness despite temporal multiplicity).</strong> In one spatial dimension, let
+<span class="math math-display" data-tex="\[
+L=(\partial_t+\partial_x^4)^3.
+\]">\[
+L=(\partial_t+\partial_x^4)^3.
+\]</span>
+Compute the principal polynomial, the weights, and every directional exponent. Show that a proposed bound
+<span class="math math-display" data-tex="\[
+\sup_K|\partial_t^j u|\leq C_u^{j+1}(j!)^s
+\]">\[
+\sup_K|\partial_t^j u|\leq C_u^{j+1}(j!)^s
+\]</span>
+for all local homogeneous solutions requires <span class="math" data-tex="\(s\geq4\)">\(s\geq4\)</span>. Identify a homogeneous solution that has better growth.</p>
+<p><strong>Solution.</strong> Since the Fourier symbol of <span class="math" data-tex="\(\partial_x^4\)">\(\partial_x^4\)</span> is <span class="math" data-tex="\(\xi^4\)">\(\xi^4\)</span>,
+<span class="math math-display" data-tex="\[
+F(\lambda,\xi)=(\lambda+\xi^4)^3.
+\]">\[
+F(\lambda,\xi)=(\lambda+\xi^4)^3.
+\]</span>
+We have <span class="math" data-tex="\(p=4,q=3\)">\(p=4,q=3\)</span>, weights <span class="math" data-tex="\((3,12)\)">\((3,12)\)</span>, and ordinary order twelve. The exponents are four for any direction with nonzero time component, one for a nonzero purely spatial direction, and zero for the zero direction.</p>
+<p>The sharp universal lower bound from the directional-growth theorem says that a valid positive sequence <span class="math" data-tex="\(M_j\)">\(M_j\)</span> in a bound <span class="math" data-tex="\(C_u^{j+1}M_j\)">\(C_u^{j+1}M_j\)</span> must satisfy
+<span class="math math-display" data-tex="\[
+M_j\geq a^j j^{4j}
+\]">\[
+M_j\geq a^j j^{4j}
+\]</span>
+for some <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. If <span class="math" data-tex="\(M_j=(j!)^s\)">\(M_j=(j!)^s\)</span> with <span class="math" data-tex="\(0\leq s&lt;4\)">\(0\leq s&lt;4\)</span>, then <span class="math" data-tex="\(j!\leq j^j\)">\(j!\leq j^j\)</span> would imply
+<span class="math math-display" data-tex="\[
+j^{(4-s)j}\leq a^{-j},
+\]">\[
+j^{(4-s)j}\leq a^{-j},
+\]</span>
+which fails for large <span class="math" data-tex="\(j\)">\(j\)</span>. If <span class="math" data-tex="\(s&lt;0\)">\(s&lt;0\)</span>, use <span class="math" data-tex="\((j!)^s\leq1\)">\((j!)^s\leq1\)</span>, and the same lower bound again fails. Therefore <span class="math" data-tex="\(s\geq4\)">\(s\geq4\)</span>. The individual solution <span class="math" data-tex="\(u=1\)">\(u=1\)</span> has all positive derivatives zero; it satisfies much stronger estimates. Universal sharpness does not assign the worst growth to every solution.</p>
+<h2 id="references">References</h2>
+<p>[Hile] G. N. Hile, <em>Fundamental Solutions and Mapping Properties of Semielliptic Operators</em> (2004), <a href="https://arxiv.org/abs/math/0406202">primary paper</a>, Example 8.3 for the higher time-order parabolic convention.</p>
+</main></body></html>

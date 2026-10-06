@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-functions and the Siegel–Shidlovsky theorem · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-14.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="e-functions-and-the-siegel-shidlovsky-theorem">E-functions and the Siegel–Shidlovsky theorem</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Codex, Ultra setting, October 2026. Original exposition is CC0. No human or independent review is claimed. Prerequisites are identified where used.</em></p>
+<p>The exponential function and the Bessel function arise from quite different differential equations. Their Taylor coefficients nevertheless have a shared arithmetic property: after multiplication by a modest common denominator, their conjugates remain small compared with a factorial. Siegel's E-functions isolate this property. Shidlovsky's theorem then transfers algebraic independence of the functions to algebraic independence of their values at an ordinary, nonzero algebraic point.</p>
+<p>We use the number-field Siegel lemma, Lemma 5.2 of <a href="TR-TRANS-05.html">Siegel's lemma and analytic estimates</a>, and the integral-norm argument of <a href="TR-TRANS-04.html">Hermite and Lindemann</a>. The number-field hypotheses and norm normalization are specified in those lessons. The coefficient constructions, the rank argument and the Bessel functional-independence argument are supplied below. In particular, a reference to a differential equation alone will not establish independence of its solutions.</p>
+<h2 id="1-the-original-definition-of-an-e-function">1. The original definition of an E-function</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field, with a chosen embedding into <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The house <span class="math" data-tex="\(\overline a\)">\(\overline a\)</span> is the maximum of <span class="math" data-tex="\(|\sigma(a)|\)">\(|\sigma(a)|\)</span> over its embeddings. An <strong>E-function in Siegel's original sense</strong> is a series</p>
+<span class="math math-display" data-tex="\[
+E(z)=\sum_{n\ge0}a_n\frac{z^n}{n!},\qquad a_n\in K,
+\tag{14.1}
+\]">\[
+E(z)=\sum_{n\ge0}a_n\frac{z^n}{n!},\qquad a_n\in K,
+\tag{14.1}
+\]</span>
+<p>with the following properties. For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is a constant <span class="math" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\overline{a_n}\le C_\varepsilon n^{\varepsilon n},\qquad
+d_n\le C_\varepsilon n^{\varepsilon n},\qquad
+d_na_j\in\mathcal O_K\quad(0\le j\le n)
+\tag{14.2}
+\]">\[
+\overline{a_n}\le C_\varepsilon n^{\varepsilon n},\qquad
+d_n\le C_\varepsilon n^{\varepsilon n},\qquad
+d_na_j\in\mathcal O_K\quad(0\le j\le n)
+\tag{14.2}
+\]</span>
+<p>for suitable positive integers <span class="math" data-tex="\(d_n\)">\(d_n\)</span>. At <span class="math" data-tex="\(n=0\)">\(n=0\)</span> replace the right-hand power by one. The chosen denominator sequence may depend on the function; the inequalities must hold for every positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. This definition is equivalent to bounding both <span class="math" data-tex="\(d_n\)">\(d_n\)</span> and the houses of <span class="math" data-tex="\(d_na_0,\ldots,d_na_n\)">\(d_na_0,\ldots,d_na_n\)</span> by <span class="math" data-tex="\(C_\varepsilon n^{\varepsilon n}\)">\(C_\varepsilon n^{\varepsilon n}\)</span>: use <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> in the separate bounds. Later treatments often impose exponential bounds <span class="math" data-tex="\(C^{n+1}\)">\(C^{n+1}\)</span>, and sometimes incorporate a differential-equation requirement in the definition. Here the growth condition is the original weaker one; a rational differential system will be an explicit hypothesis of the theorem.</p>
+<p>The series is entire. For example, with <span class="math" data-tex="\(\varepsilon=1/2\)">\(\varepsilon=1/2\)</span>, the inequality <span class="math" data-tex="\(n!\ge(n/e)^n\)">\(n!\ge(n/e)^n\)</span> makes its terms on a disk <span class="math" data-tex="\(|z|\le R\)">\(|z|\le R\)</span> at most <span class="math" data-tex="\(C(eR)^n n^{-n/2}\)">\(C(eR)^n n^{-n/2}\)</span>. The same conclusion holds for every conjugate coefficient sequence.</p>
+<h3 id="proposition-14-1-examples-and-closure">Proposition 14.1. Examples and closure</h3>
+<p>Algebraic constant functions, <span class="math" data-tex="\(e^{\beta z}\)">\(e^{\beta z}\)</span> for algebraic <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+J_0(z)=\sum_{k\ge0}\frac{(-1)^k(z/2)^{2k}}{(k!)^2}
+\tag{14.3}
+\]">\[
+J_0(z)=\sum_{k\ge0}\frac{(-1)^k(z/2)^{2k}}{(k!)^2}
+\tag{14.3}
+\]</span>
+<p>are E-functions. Sums, products, derivatives and primitives with algebraic integration constant are E-functions, after passing to a common number field.</p>
+<p><strong>Proof.</strong> Choose a positive integer <span class="math" data-tex="\(D\)">\(D\)</span> such that <span class="math" data-tex="\(D\beta\)">\(D\beta\)</span> is integral. The exponential coefficients <span class="math" data-tex="\(a_n=\beta^n\)">\(a_n=\beta^n\)</span> have houses bounded by <span class="math" data-tex="\(\max(1,\overline\beta)^n\)">\(\max(1,\overline\beta)^n\)</span>; <span class="math" data-tex="\(D^n\)">\(D^n\)</span> clears all coefficients through index <span class="math" data-tex="\(n\)">\(n\)</span>. Any fixed exponential bound is <span class="math" data-tex="\(O(n^{\varepsilon n})\)">\(O(n^{\varepsilon n})\)</span>.</p>
+<p>For (14.3), the coefficients in normalization (14.1) are</p>
+<span class="math math-display" data-tex="\[
+a_{2k}=(-1)^k\binom{2k}{k}4^{-k},\qquad a_{2k+1}=0.
+\tag{14.4}
+\]">\[
+a_{2k}=(-1)^k\binom{2k}{k}4^{-k},\qquad a_{2k+1}=0.
+\tag{14.4}
+\]</span>
+<p>Their absolute values are at most one, and <span class="math" data-tex="\(2^n\)">\(2^n\)</span> clears those through index <span class="math" data-tex="\(n\)">\(n\)</span>. The assertion for constants is immediate.</p>
+<p>For a sum use the product of the two common denominators. For a product, its normalized coefficient is</p>
+<span class="math math-display" data-tex="\[
+c_n=\sum_{j=0}^n\binom nj a_jb_{n-j}.
+\tag{14.5}
+\]">\[
+c_n=\sum_{j=0}^n\binom nj a_jb_{n-j}.
+\tag{14.5}
+\]</span>
+<p>The integer <span class="math" data-tex="\(d_ne_n\)">\(d_ne_n\)</span> clears all <span class="math" data-tex="\(c_0,\ldots,c_n\)">\(c_0,\ldots,c_n\)</span>, and the houses are bounded by <span class="math" data-tex="\(2^n\max_{j\le n}\overline{a_j}\max_{j\le n}\overline{b_j}\)">\(2^n\max_{j\le n}\overline{a_j}\max_{j\le n}\overline{b_j}\)</span>. Apply the input estimates with, say, <span class="math" data-tex="\(\varepsilon/4\)">\(\varepsilon/4\)</span>, absorbing fixed constants and <span class="math" data-tex="\(2^n\)">\(2^n\)</span> into the remaining power. The coefficients for a derivative are <span class="math" data-tex="\(a_{n+1}\)">\(a_{n+1}\)</span>, and those for a primitive are an algebraic initial constant followed by <span class="math" data-tex="\(a_0,a_1,\ldots\)">\(a_0,a_1,\ldots\)</span>. Bounds at <span class="math" data-tex="\(n+1\)">\(n+1\)</span> with a smaller positive exponent give (14.2) at <span class="math" data-tex="\(n\)">\(n\)</span>. The corresponding denominator at <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, together with a fixed denominator for the constant, suffices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The formal series <span class="math" data-tex="\(\sum_{n\ge0}n!z^n\)">\(\sum_{n\ge0}n!z^n\)</span> has radius of convergence zero. It is consequently not an E-function; in normalization (14.1) its coefficients would be <span class="math" data-tex="\((n!)^2\)">\((n!)^2\)</span>, which also violate (14.2).</p>
+<h2 id="2-rational-differential-systems-and-the-statement">2. Rational differential systems and the statement</h2>
+<p>Write functions as a column <span class="math" data-tex="\(\mathbf E=(E_1,\ldots,E_n)^{\mathsf T}\)">\(\mathbf E=(E_1,\ldots,E_n)^{\mathsf T}\)</span>. A homogeneous rational system means</p>
+<span class="math math-display" data-tex="\[
+\mathbf E&#x27;=A(z)\mathbf E,\qquad A(z)\in K(z)^{n\times n}.
+\tag{14.6}
+\]">\[
+\mathbf E&#x27;=A(z)\mathbf E,\qquad A(z)\in K(z)^{n\times n}.
+\tag{14.6}
+\]</span>
+<p>A point <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is <strong>ordinary</strong> if every entry of <span class="math" data-tex="\(A\)">\(A\)</span> is regular there. Choose a nonzero polynomial <span class="math" data-tex="\(f\in\mathcal O_K[z]\)">\(f\in\mathcal O_K[z]\)</span> clearing its denominators, so <span class="math" data-tex="\(fA\)">\(fA\)</span> has integral polynomial entries. At a specified ordinary point it can and will be chosen with <span class="math" data-tex="\(f(\alpha)\ne0\)">\(f(\alpha)\ne0\)</span>: a common denominator in reduced form has zeros only at poles, and a constant integer clears its coefficient denominators.</p>
+<p>Products of solutions of bounded total degree satisfy another such system. Indeed, for a multi-index <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span>, the product rule gives</p>
+<span class="math math-display" data-tex="\[
+(\mathbf E^{\mathbf a})&#x27;
+=\sum_{i,j}a_i A_{ij}(z)
+\mathbf E^{\mathbf a-\mathbf e_i+\mathbf e_j},
+\tag{14.7}
+\]">\[
+(\mathbf E^{\mathbf a})&#x27;
+=\sum_{i,j}a_i A_{ij}(z)
+\mathbf E^{\mathbf a-\mathbf e_i+\mathbf e_j},
+\tag{14.7}
+\]</span>
+<p>where terms with <span class="math" data-tex="\(a_i=0\)">\(a_i=0\)</span> are omitted. Include the constant monomial one. Thus all monomials of total degree at most <span class="math" data-tex="\(s\)">\(s\)</span> form a system whose poles are among those of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>We also need a constant-field observation. If finitely many power series have coefficients in <span class="math" data-tex="\(K\)">\(K\)</span>, their linear independence over <span class="math" data-tex="\(K(z)\)">\(K(z)\)</span> implies their independence over <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>. A putative complex rational relation, after clearing denominators, uses finitely many unknown polynomial coefficients. Equating Taylor coefficients gives an infinite matrix over <span class="math" data-tex="\(K\)">\(K\)</span> with finitely many columns. Its rank is attained by finitely many rows and is unchanged on extending the field. A nonzero complex kernel therefore yields a nonzero <span class="math" data-tex="\(K\)">\(K\)</span>-kernel. Applying this argument to monomials gives the analogous implication for algebraic independence.</p>
+<h3 id="theorem-14-2-siegel-shidlovsky">Theorem 14.2. Siegel–Shidlovsky</h3>
+<p>Suppose the E-functions <span class="math" data-tex="\(E_1,\ldots,E_n\)">\(E_1,\ldots,E_n\)</span> in the original sense satisfy (14.6) and are algebraically independent over <span class="math" data-tex="\(K(z)\)">\(K(z)\)</span>. If <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span> is algebraic and ordinary for (14.6), then</p>
+<span class="math math-display" data-tex="\[
+E_1(\alpha),\ldots,E_n(\alpha)
+\quad\text{are algebraically independent over }\overline{\mathbb Q}.
+\tag{14.8}
+\]">\[
+E_1(\alpha),\ldots,E_n(\alpha)
+\quad\text{are algebraically independent over }\overline{\mathbb Q}.
+\tag{14.8}
+\]</span>
+<p>Section 3 gives the determinant contradiction; Sections 4–6 prove the small-form and rank estimates it uses. The exclusion of zero is essential: the E-functions' values there are their algebraic constant coefficients. The ordinary-point condition ensures that derived coefficient rows can be evaluated without losing the rank information carried by the system.</p>
+<p>The rank condition used in earlier proofs is often called <strong>normality</strong>. Its precise form needed here is that the first <span class="math" data-tex="\(N\)">\(N\)</span> derived coefficient rows of the auxiliary function in Section 4 have nonzero determinant. We impose no separate normality assumption: Section 5 proves this property for any fixed, linearly independent family satisfying a rational system. Applying it to the monomial systems (14.7) supplies the rank conditions at every degree required for algebraic independence. This is the extension that makes Shidlovsky's argument work beyond the low-order cases treated by Siegel.</p>
+<p><strong>Check specialization on a familiar system.</strong> The functions <span class="math" data-tex="\(e^z,e^{\sqrt2 z}\)">\(e^z,e^{\sqrt2 z}\)</span> satisfy a diagonal constant system and are algebraically independent by Lemma 14.7. At zero they both have value one, so functional independence alone cannot preserve independence at every point. At any nonzero algebraic point Theorem 14.2 does apply. By contrast, <span class="math" data-tex="\(e^z,e^{2z}\)">\(e^z,e^{2z}\)</span> satisfy an equally regular system but already have the functional relation <span class="math" data-tex="\(E_2-E_1^2=0\)">\(E_2-E_1^2=0\)</span>. The differential equation and the arithmetic coefficient bounds are not substitutes for checking independence.</p>
+<h2 id="3-what-a-numerical-relation-would-force">3. What a numerical relation would force</h2>
+<p>The input we need is Lemma 14.6: for every fixed independent family of <span class="math" data-tex="\(k\)">\(k\)</span> E-functions and every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, an invertible integral coefficient matrix has houses at most <span class="math" data-tex="\((r!)^{1+\delta}\)">\((r!)^{1+\delta}\)</span> and its scalar products with the value vector at most <span class="math" data-tex="\((r!)^{-k+1+\delta}\)">\((r!)^{-k+1+\delta}\)</span>. Its proof comes in Sections 4–6. First use it to see why one relation, multiplied by many monomials, is impossible.</p>
+<p>For one variable and a relation of degree <span class="math" data-tex="\(c\)">\(c\)</span>, the numbers in (14.24) are simply <span class="math" data-tex="\(l=m+1\)">\(l=m+1\)</span> and <span class="math" data-tex="\(k=m+c+1\)">\(k=m+c+1\)</span>. Increasing <span class="math" data-tex="\(m\)">\(m\)</span> leaves only <span class="math" data-tex="\(c\)">\(c\)</span> coefficient rows to pay for, while it supplies <span class="math" data-tex="\(m+1\)">\(m+1\)</span> exact zeros after the column operation. In several variables the same imbalance is expressed by <span class="math" data-tex="\(k/l\to1\)">\(k/l\to1\)</span>. This is why we amplify a putative relation before choosing the auxiliary functions.</p>
+<p>Suppose there is a nonzero algebraic-coefficient relation</p>
+<span class="math math-display" data-tex="\[
+R(E_1(\alpha),\ldots,E_n(\alpha))=0,
+\qquad \deg R=c\ge1.
+\tag{14.23}
+\]">\[
+R(E_1(\alpha),\ldots,E_n(\alpha))=0,
+\qquad \deg R=c\ge1.
+\tag{14.23}
+\]</span>
+<p>Enlarge <span class="math" data-tex="\(K\)">\(K\)</span> to contain <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and the coefficients of <span class="math" data-tex="\(R\)">\(R\)</span>, and clear their fixed denominators. This does not change the E-function growth bounds. Write <span class="math" data-tex="\(d=[K:\mathbb Q]\)">\(d=[K:\mathbb Q]\)</span>.</p>
+<p>For an integer <span class="math" data-tex="\(m\)">\(m\)</span>, the polynomials <span class="math" data-tex="\(X^{\mathbf a}R(X)\)">\(X^{\mathbf a}R(X)\)</span>, <span class="math" data-tex="\(|\mathbf a|\le m\)">\(|\mathbf a|\le m\)</span>, are linearly independent: multiplication by a nonzero polynomial is injective. Their number, and the number of all monomials of total degree at most <span class="math" data-tex="\(m+c\)">\(m+c\)</span>, are respectively</p>
+<span class="math math-display" data-tex="\[
+l=\binom{m+n}{n},\qquad k=\binom{m+c+n}{n}.
+\tag{14.24}
+\]">\[
+l=\binom{m+n}{n},\qquad k=\binom{m+c+n}{n}.
+\tag{14.24}
+\]</span>
+<p>Since <span class="math" data-tex="\(k/l\to1\)">\(k/l\to1\)</span>, fix <span class="math" data-tex="\(m\)">\(m\)</span> so large that</p>
+<span class="math math-display" data-tex="\[
+k-l&lt;\frac{l}{2d}.
+\tag{14.25}
+\]">\[
+k-l&lt;\frac{l}{2d}.
+\tag{14.25}
+\]</span>
+<p>List the <span class="math" data-tex="\(k\)">\(k\)</span> monomial functions as <span class="math" data-tex="\(F_1=1,F_2,\ldots,F_k\)">\(F_1=1,F_2,\ldots,F_k\)</span>. They are E-functions by Proposition 14.1, satisfy (14.7), and are linearly independent over <span class="math" data-tex="\(K(z)\)">\(K(z)\)</span>, by the assumed algebraic independence of the <span class="math" data-tex="\(E_i\)">\(E_i\)</span>. They remain independent after the field enlargement: the Taylor-coefficient kernel argument in Section 2 applies to the original coefficient field. The point <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is still ordinary for their system.</p>
+<p>Let <span class="math" data-tex="\(p_1,\ldots,p_l\in\mathcal O_K^k\)">\(p_1,\ldots,p_l\in\mathcal O_K^k\)</span> be the coefficient rows of the relation multiples. They have rank <span class="math" data-tex="\(l\)">\(l\)</span>, and each has zero scalar product with the value vector <span class="math" data-tex="\(v=(F_1(\alpha),\ldots,F_k(\alpha))^{\mathsf T}\)">\(v=(F_1(\alpha),\ldots,F_k(\alpha))^{\mathsf T}\)</span>. Apply Lemma 14.6 to these <span class="math" data-tex="\(k\)">\(k\)</span> functions. From its invertible coefficient matrix choose <span class="math" data-tex="\(k-l\)">\(k-l\)</span> rows completing the <span class="math" data-tex="\(p_i\)">\(p_i\)</span> to a basis. Their combined determinant <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is a nonzero algebraic integer. Put</p>
+<span class="math math-display" data-tex="\[
+H=(r!)^{1+\delta},\qquad
+S=(r!)^{-k+1+\delta}.
+\]">\[
+H=(r!)^{1+\delta},\qquad
+S=(r!)^{-k+1+\delta}.
+\]</span>
+<p>The relation rows are fixed, so every conjugate of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> has absolute value at most <span class="math" data-tex="\(C H^{k-l}\)">\(C H^{k-l}\)</span>. The nonzero integral norm yields</p>
+<span class="math math-display" data-tex="\[
+|\mathcal D|\ge C&#x27; H^{-(d-1)(k-l)}.
+\tag{14.26}
+\]">\[
+|\mathcal D|\ge C&#x27; H^{-(d-1)(k-l)}.
+\tag{14.26}
+\]</span>
+<p>For the opposite bound, add <span class="math" data-tex="\(v_i\)">\(v_i\)</span> times column <span class="math" data-tex="\(i\)">\(i\)</span> to the first column, for <span class="math" data-tex="\(i=2,\ldots,k\)">\(i=2,\ldots,k\)</span>. Since <span class="math" data-tex="\(v_1=1\)">\(v_1=1\)</span>, the first column becomes the scalar products of the rows with <span class="math" data-tex="\(v\)">\(v\)</span>, while the determinant is unchanged. Its first <span class="math" data-tex="\(l\)">\(l\)</span> entries vanish. The other entries have absolute value at most <span class="math" data-tex="\(S\)">\(S\)</span>. Expanding in this column, each nonzero cofactor contains only <span class="math" data-tex="\(k-l-1\)">\(k-l-1\)</span> large coefficient rows. Consequently</p>
+<span class="math math-display" data-tex="\[
+|\mathcal D|\le C&#x27;&#x27; S H^{k-l-1}
+=C&#x27;&#x27;(r!)^{-l+\delta(k-l)}.
+\tag{14.27}
+\]">\[
+|\mathcal D|\le C&#x27;&#x27; S H^{k-l-1}
+=C&#x27;&#x27;(r!)^{-l+\delta(k-l)}.
+\tag{14.27}
+\]</span>
+<p>Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> so small that</p>
+<span class="math math-display" data-tex="\[
+((d-1)(1+\delta)+\delta)(k-l)&lt;l;
+\]">\[
+((d-1)(1+\delta)+\delta)(k-l)&lt;l;
+\]</span>
+<p>(14.25) permits this choice. The exponent in the upper bound (14.27) is then strictly smaller than that in the lower bound (14.26). Letting <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span> contradicts the two bounds. Thus (14.23) is impossible, proving Theorem 14.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof uses linear independence for the auxiliary monomial family, not an assumed algebraic independence of its values. The many relation multiples provide the <span class="math" data-tex="\(l\)">\(l\)</span> zero entries in the determinant; the near equality <span class="math" data-tex="\(k\sim l\)">\(k\sim l\)</span> keeps the arithmetic cost of the other rows smaller than that analytic gain.</p>
+<h2 id="4-construct-the-small-forms-from-taylor-coefficients">4. Construct the small forms from Taylor coefficients</h2>
+<p>Fix <span class="math" data-tex="\(N\)">\(N\)</span> linearly independent E-functions <span class="math" data-tex="\(F_1,\ldots,F_N\)">\(F_1,\ldots,F_N\)</span> satisfying a fixed system. Constants in the next three sections may depend on this family, its system and fixed positive parameters; they never depend on the integer <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><strong>A complete two-row calculation.</strong> Let <span class="math" data-tex="\(F=(1,e^z)^{\mathsf T}\)">\(F=(1,e^z)^{\mathsf T}\)</span>, with system matrix <span class="math" data-tex="\(A=\operatorname{diag}(0,1)\)">\(A=\operatorname{diag}(0,1)\)</span> and denominator <span class="math" data-tex="\(f=1\)">\(f=1\)</span>. Choose</p>
+<span class="math math-display" data-tex="\[
+P_0=(-2-2z-z^2,2),\qquad \Phi_0=P_0F=2(e^z-1-z-z^2/2).
+\]">\[
+P_0=(-2-2z-z^2,2),\qquad \Phi_0=P_0F=2(e^z-1-z-z^2/2).
+\]</span>
+<p>The function has order three at zero. Differentiating the row by the connection gives</p>
+<span class="math math-display" data-tex="\[
+P_1=P_0&#x27;+P_0A=(-2-2z,2),\qquad
+\det\begin{pmatrix}P_0\\P_1\end{pmatrix}=-2z^2.
+\]">\[
+P_1=P_0&#x27;+P_0A=(-2-2z,2),\qquad
+\det\begin{pmatrix}P_0\\P_1\end{pmatrix}=-2z^2.
+\]</span>
+<p>At zero the two coefficient rows lose rank; at <span class="math" data-tex="\(z=1\)">\(z=1\)</span> their determinant is <span class="math" data-tex="\(-2\)">\(-2\)</span>. The high-order zero of the function has left a visible vanishing reserve in the determinant. This example explains the need to move away from zero. It illustrates the construction and the derived rows, but does not claim the asymptotically near-maximal order in Lemma 14.3. To obtain that order with small coefficients, all the low Taylor coefficients must be imposed at once.</p>
+<h3 id="lemma-14-3-arithmetic-construction">Lemma 14.3. Arithmetic construction</h3>
+<p>For <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span> and <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, all sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span> admit nonzero polynomials <span class="math" data-tex="\(P_i\in\mathcal O_K[z]\)">\(P_i\in\mathcal O_K[z]\)</span>, of degree at most <span class="math" data-tex="\(r\)">\(r\)</span>, with coefficient houses at most <span class="math" data-tex="\((r!)^{1+\eta}\)">\((r!)^{1+\eta}\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+\Phi(z)=\sum_{i=1}^N P_i(z)F_i(z)=\sum_{m\ge M}c_mz^m,
+\qquad M=N(r+1)-1-\lfloor\varepsilon r\rfloor,
+\tag{14.9}
+\]">\[
+\Phi(z)=\sum_{i=1}^N P_i(z)F_i(z)=\sum_{m\ge M}c_mz^m,
+\qquad M=N(r+1)-1-\lfloor\varepsilon r\rfloor,
+\tag{14.9}
+\]</span>
+<p>and <span class="math" data-tex="\(|c_m|\le r!(m!)^{-1+\eta}\)">\(|c_m|\le r!(m!)^{-1+\eta}\)</span> for every <span class="math" data-tex="\(m\ge M\)">\(m\ge M\)</span>. The function <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is nonzero.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(F_i=\sum a_{i,m}z^m/m!\)">\(F_i=\sum a_{i,m}z^m/m!\)</span>, and seek</p>
+<span class="math math-display" data-tex="\[
+P_i(z)=r!\sum_{j=0}^r p_{ij}\frac{z^j}{j!}.
+\tag{14.10}
+\]">\[
+P_i(z)=r!\sum_{j=0}^r p_{ij}\frac{z^j}{j!}.
+\tag{14.10}
+\]</span>
+<p>The first <span class="math" data-tex="\(M\)">\(M\)</span> zero conditions are</p>
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^N\sum_{j=0}^{\min(r,m)}
+\binom mj a_{i,m-j}p_{ij}=0\qquad(0\le m&lt;M).
+\tag{14.11}
+\]">\[
+\sum_{i=1}^N\sum_{j=0}^{\min(r,m)}
+\binom mj a_{i,m-j}p_{ij}=0\qquad(0\le m&lt;M).
+\tag{14.11}
+\]</span>
+<p>There are <span class="math" data-tex="\(T=N(r+1)\)">\(T=N(r+1)\)</span> unknowns, and <span class="math" data-tex="\(T-M&gt;\varepsilon r\)">\(T-M&gt;\varepsilon r\)</span>. For any small fixed <span class="math" data-tex="\(\mu&gt;0\)">\(\mu&gt;0\)</span>, the product of the <span class="math" data-tex="\(N\)">\(N\)</span> common denominators through index <span class="math" data-tex="\(M\)">\(M\)</span> clears every equation. Its size and the houses of the resulting entries have logarithms at most</p>
+<span class="math math-display" data-tex="\[
+C_N\mu M\log M+O_\mu(M).
+\tag{14.12}
+\]">\[
+C_N\mu M\log M+O_\mu(M).
+\tag{14.12}
+\]</span>
+<p>Here <span class="math" data-tex="\(\binom mj\le2^m\)">\(\binom mj\le2^m\)</span>, and (14.2) was used with a suitably smaller exponent. Lemma 5.2 gives a nonzero integral vector <span class="math" data-tex="\(p_{ij}\)">\(p_{ij}\)</span>, whose logarithmic house is at most</p>
+<span class="math math-display" data-tex="\[
+\frac{M}{T-M}\bigl(C_N\mu M\log M+O_\mu(M+\log T)\bigr)+O_K(1).
+\]">\[
+\frac{M}{T-M}\bigl(C_N\mu M\log M+O_\mu(M+\log T)\bigr)+O_K(1).
+\]</span>
+<p>Since <span class="math" data-tex="\(M=O_N(r)\)">\(M=O_N(r)\)</span> and <span class="math" data-tex="\(M/(T-M)=O_N(1/\varepsilon)\)">\(M/(T-M)=O_N(1/\varepsilon)\)</span>, choosing <span class="math" data-tex="\(\mu\)">\(\mu\)</span> sufficiently small makes this at most <span class="math" data-tex="\(\eta_0\log(r!)\)">\(\eta_0\log(r!)\)</span>, for any prescribed <span class="math" data-tex="\(\eta_0&gt;0\)">\(\eta_0&gt;0\)</span> and large <span class="math" data-tex="\(r\)">\(r\)</span>. Formula (14.10) has integral coefficients because <span class="math" data-tex="\(r!/j!\)">\(r!/j!\)</span> is integral.</p>
+<p>For <span class="math" data-tex="\(m\ge M\)">\(m\ge M\)</span>, its coefficient is <span class="math" data-tex="\(c_m=(r!/m!)u_m\)">\(c_m=(r!/m!)u_m\)</span>, where <span class="math" data-tex="\(u_m\)">\(u_m\)</span> is the left side of (14.11). Choose the coefficient-vector bound with <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> much smaller than <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, and use (14.2) with another sufficiently small exponent. Then</p>
+<span class="math math-display" data-tex="\[
+|u_m|\le T\,2^m (r!)^{\eta_0} C(m!)^{\eta_0}.
+\]">\[
+|u_m|\le T\,2^m (r!)^{\eta_0} C(m!)^{\eta_0}.
+\]</span>
+<p>Uniformly for <span class="math" data-tex="\(m\ge M\)">\(m\ge M\)</span>, one has <span class="math" data-tex="\(\log(r!)\le C_{N,\varepsilon}\log(m!)\)">\(\log(r!)\le C_{N,\varepsilon}\log(m!)\)</span>, while <span class="math" data-tex="\(m+\log T=o(\log(m!))\)">\(m+\log T=o(\log(m!))\)</span>. Taking <span class="math" data-tex="\(\eta_0&lt;\eta/(2C_{N,\varepsilon}+4)\)">\(\eta_0&lt;\eta/(2C_{N,\varepsilon}+4)\)</span>, and then increasing <span class="math" data-tex="\(r\)">\(r\)</span>, gives <span class="math" data-tex="\(|u_m|\le(m!)^\eta\)">\(|u_m|\le(m!)^\eta\)</span>. The same small coefficient-vector bound gives the asserted polynomial houses. Finally, linear independence over <span class="math" data-tex="\(K(z)\)">\(K(z)\)</span> prevents a nonzero polynomial vector from making <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> identically zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-recover-rank-before-and-after-evaluation">5. Recover rank before and after evaluation</h2>
+<p>For a polynomial row <span class="math" data-tex="\(P_0=(P_1,\ldots,P_N)\)">\(P_0=(P_1,\ldots,P_N)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+P_{j+1}=f(P_j&#x27;+P_j A),\qquad \Phi_j=P_j\mathbf F.
+\tag{14.13}
+\]">\[
+P_{j+1}=f(P_j&#x27;+P_j A),\qquad \Phi_j=P_j\mathbf F.
+\tag{14.13}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\Phi_0=\Phi\)">\(\Phi_0=\Phi\)</span>, <span class="math" data-tex="\(\Phi_{j+1}=f\Phi_j&#x27;\)">\(\Phi_{j+1}=f\Phi_j&#x27;\)</span>, and <span class="math" data-tex="\(\deg P_j\le r+Cj\)">\(\deg P_j\le r+Cj\)</span> for a fixed <span class="math" data-tex="\(C\)">\(C\)</span>. All coefficients remain integral.</p>
+<p>We first make explicit a finite-dimensional fact about rational functions. If <span class="math" data-tex="\(V\)">\(V\)</span> is a fixed finite-dimensional complex vector space of meromorphic functions, the rational functions <span class="math" data-tex="\(u/v\)">\(u/v\)</span> with <span class="math" data-tex="\(u,v\in V\)">\(u,v\in V\)</span>, <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, have bounded numerator and denominator degrees. To prove this, choose a basis <span class="math" data-tex="\(b_1,\ldots,b_t\)">\(b_1,\ldots,b_t\)</span> of the <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>-span of <span class="math" data-tex="\(V\)">\(V\)</span>. A fixed complex basis <span class="math" data-tex="\(v_i\)">\(v_i\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span> has expressions <span class="math" data-tex="\(v_i=\sum_j a_{ij}(z)b_j\)">\(v_i=\sum_j a_{ij}(z)b_j\)</span> with fixed rational functions <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>. If <span class="math" data-tex="\(u=qv\)">\(u=qv\)</span> with rational <span class="math" data-tex="\(q\)">\(q\)</span>, comparison in this basis gives <span class="math" data-tex="\(q=u_j/v_j\)">\(q=u_j/v_j\)</span> for an index with <span class="math" data-tex="\(v_j\ne0\)">\(v_j\ne0\)</span>. Each <span class="math" data-tex="\(u_j,v_j\)">\(u_j,v_j\)</span> is a constant linear combination of the fixed <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>. A common denominator bounds their polynomial degrees uniformly and proves the assertion, including any cancellations.</p>
+<h3 id="lemma-14-4-shidlovsky-s-rank-lemma">Lemma 14.4. Shidlovsky's rank lemma</h3>
+<p>For the auxiliary vector of Lemma 14.3, with <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>, the determinant</p>
+<span class="math math-display" data-tex="\[
+\Delta(z)=\det\begin{pmatrix}P_0(z)\\ \vdots\\P_{N-1}(z)\end{pmatrix}
+\tag{14.14}
+\]">\[
+\Delta(z)=\det\begin{pmatrix}P_0(z)\\ \vdots\\P_{N-1}(z)\end{pmatrix}
+\tag{14.14}
+\]</span>
+<p>is nonzero for all sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><strong>Proof.</strong> Suppose the first dependent row is <span class="math" data-tex="\(P_k\)">\(P_k\)</span>, where <span class="math" data-tex="\(k&lt;N\)">\(k&lt;N\)</span>. The preceding <span class="math" data-tex="\(k\)">\(k\)</span> rows are independent, and their rational row span is stable under the connection <span class="math" data-tex="\(P\mapsto P&#x27;+PA\)">\(P\mapsto P&#x27;+PA\)</span>: differentiating any rational linear combination and using (14.13) shows that every later row remains in the span.</p>
+<p>Transpose these <span class="math" data-tex="\(k\)">\(k\)</span> rows to a matrix <span class="math" data-tex="\(Q\)">\(Q\)</span> of size <span class="math" data-tex="\(N\times k\)">\(N\times k\)</span>, and permute the functions so that its top <span class="math" data-tex="\(k\times k\)">\(k\times k\)</span> block <span class="math" data-tex="\(R\)">\(R\)</span> is invertible. Write the lower block as <span class="math" data-tex="\(S\)">\(S\)</span>. We claim that all entries of <span class="math" data-tex="\(SR^{-1}\)">\(SR^{-1}\)</span> have rational numerator and denominator degrees bounded solely in terms of the fixed system.</p>
+<p>To see this, take a fixed analytic fundamental matrix <span class="math" data-tex="\(W\)">\(W\)</span>, with rows solving the transposed system, on a disk about an ordinary point. For completeness, the local solution matrix is obtained by successive substitution in its integral equation, starting from the identity initial value. If the coefficient matrix is bounded by <span class="math" data-tex="\(B\)">\(B\)</span> on a disk of radius <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, the <span class="math" data-tex="\(j\)">\(j\)</span>-fold integral term is bounded by <span class="math" data-tex="\((B\rho)^j/j!\)">\((B\rho)^j/j!\)</span>; the series converges uniformly on smaller disks and can be differentiated there. The same estimate applied to a zero initial value proves uniqueness. Its determinant satisfies <span class="math" data-tex="\((\det W)&#x27;=(\operatorname{tr}A)\det W\)">\((\det W)&#x27;=(\operatorname{tr}A)\det W\)</span>, by the product rule for determinants, so it stays invertible. The row-span stability just established means that every row of <span class="math" data-tex="\(WQ\)">\(WQ\)</span> solves a common <span class="math" data-tex="\(k\)">\(k\)</span>-dimensional system <span class="math" data-tex="\(Y&#x27;=YB_1\)">\(Y&#x27;=YB_1\)</span>, with rational <span class="math" data-tex="\(B_1\)">\(B_1\)</span>. On a smaller disk avoiding its poles, the same existence and uniqueness argument makes its solution space <span class="math" data-tex="\(k\)">\(k\)</span>-dimensional over constants. Hence a constant matrix <span class="math" data-tex="\(L\)">\(L\)</span> of size <span class="math" data-tex="\((N-k)\times N\)">\((N-k)\times N\)</span> and rank <span class="math" data-tex="\(N-k\)">\(N-k\)</span> satisfies <span class="math" data-tex="\(LWQ=0\)">\(LWQ=0\)</span>.</p>
+<p>Write <span class="math" data-tex="\(LW=(U,V)\)">\(LW=(U,V)\)</span> in the same column blocks. Then <span class="math" data-tex="\(UR+VS=0\)">\(UR+VS=0\)</span>. Since <span class="math" data-tex="\(LW\)">\(LW\)</span> has rank <span class="math" data-tex="\(N-k\)">\(N-k\)</span> and its kernel is the column space of <span class="math" data-tex="\(Q\)">\(Q\)</span>, this kernel is the graph <span class="math" data-tex="\(x\mapsto SR^{-1}x\)">\(x\mapsto SR^{-1}x\)</span>. It follows that <span class="math" data-tex="\(V\)">\(V\)</span> is invertible and</p>
+<span class="math math-display" data-tex="\[
+SR^{-1}=-V^{-1}U.
+\tag{14.15}
+\]">\[
+SR^{-1}=-V^{-1}U.
+\tag{14.15}
+\]</span>
+<p>Each entry on the right is a quotient of constant linear combinations of finitely many monomials of degree at most <span class="math" data-tex="\(N-k\)">\(N-k\)</span> in the entries of the fixed <span class="math" data-tex="\(W\)">\(W\)</span>. These monomials span a fixed finite-dimensional space. The entries on the left are rational. The finite-dimensional fact preceding the lemma therefore gives the claimed uniform degree bound. Allowing complex constants in <span class="math" data-tex="\(L\)">\(L\)</span> causes no difficulty; the rational degree bound and the ensuing order bound are over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(\mathcal L=(\Phi_0,\ldots,\Phi_{k-1})\)">\(\mathcal L=(\Phi_0,\ldots,\Phi_{k-1})\)</span>. With <span class="math" data-tex="\(\mathbf F^{\mathsf T}=(a,b)\)">\(\mathbf F^{\mathsf T}=(a,b)\)</span> in matching blocks,</p>
+<span class="math math-display" data-tex="\[
+\mathcal L R^{-1}=a+bSR^{-1}.
+\tag{14.16}
+\]">\[
+\mathcal L R^{-1}=a+bSR^{-1}.
+\tag{14.16}
+\]</span>
+<p>Every component on the left has order at zero at least <span class="math" data-tex="\(M-kr-C&#x27;\)">\(M-kr-C&#x27;\)</span>: the <span class="math" data-tex="\(\Phi_j\)">\(\Phi_j\)</span> have order at least <span class="math" data-tex="\(M-j\)">\(M-j\)</span>, and <span class="math" data-tex="\(\det R\)">\(\det R\)</span> has degree at most <span class="math" data-tex="\(kr+C&#x27;\)">\(kr+C&#x27;\)</span>. On the right every component is nonzero, by independence of the <span class="math" data-tex="\(F_i\)">\(F_i\)</span> over <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>. Clear its uniformly bounded-degree rational denominators. The resulting function belongs to a fixed space spanned by finitely many <span class="math" data-tex="\(z^aF_i\)">\(z^aF_i\)</span>, with <span class="math" data-tex="\(a\)">\(a\)</span> uniformly bounded. In any finite-dimensional space of analytic functions, the orders of nonzero functions at zero are bounded: otherwise the descending kernels of the successive Taylor-coefficient maps would stabilize at a nonzero vector with all coefficients zero. Thus the right side has a uniform upper bound on its order. But</p>
+<span class="math math-display" data-tex="\[
+M-kr=(N-k-\varepsilon)r+O_N(1)\longrightarrow\infty.
+\]">\[
+M-kr=(N-k-\varepsilon)r+O_N(1)\longrightarrow\infty.
+\]</span>
+<p>This contradiction proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-14-5-rank-at-an-ordinary-nonzero-point">Lemma 14.5. Rank at an ordinary nonzero point</h3>
+<p>For a fixed ordinary <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, the rows <span class="math" data-tex="\(P_j(\alpha)\)">\(P_j(\alpha)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+0\le j\le\varepsilon r+C
+\tag{14.17}
+\]">\[
+0\le j\le\varepsilon r+C
+\tag{14.17}
+\]</span>
+<p>span <span class="math" data-tex="\(K(\alpha)^N\)">\(K(\alpha)^N\)</span>, where <span class="math" data-tex="\(C\)">\(C\)</span> is independent of <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><strong>Proof.</strong> The determinant in (14.14) has degree at most <span class="math" data-tex="\(Nr+C_1\)">\(Nr+C_1\)</span>. Replace column <span class="math" data-tex="\(i\)">\(i\)</span> by the column <span class="math" data-tex="\((\Phi_0,\ldots,\Phi_{N-1})^{\mathsf T}\)">\((\Phi_0,\ldots,\Phi_{N-1})^{\mathsf T}\)</span>. Multilinearity makes the replaced determinant equal to <span class="math" data-tex="\(F_i\Delta\)">\(F_i\Delta\)</span>. Expand along this column and choose any fixed <span class="math" data-tex="\(F_i\)">\(F_i\)</span> not identically zero. Since its entries have orders at least <span class="math" data-tex="\(M-j\)">\(M-j\)</span>, this gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ord}_0\Delta\ge M-C_2.
+\]">\[
+\operatorname{ord}_0\Delta\ge M-C_2.
+\]</span>
+<p>Here we subtract only the fixed order of <span class="math" data-tex="\(F_i\)">\(F_i\)</span> at zero and the indices <span class="math" data-tex="\(j&lt;N\)">\(j&lt;N\)</span>. Since <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, the order <span class="math" data-tex="\(T\)">\(T\)</span> of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is at most</p>
+<span class="math math-display" data-tex="\[
+Nr+C_1-(M-C_2)\le\varepsilon r+C_3.
+\]">\[
+Nr+C_1-(M-C_2)\le\varepsilon r+C_3.
+\]</span>
+<p>Use a local fundamental matrix <span class="math" data-tex="\(W\)">\(W\)</span> at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, now in column convention, so <span class="math" data-tex="\(W&#x27;=AW\)">\(W&#x27;=AW\)</span>. The rows <span class="math" data-tex="\(P_jW\)">\(P_jW\)</span> satisfy <span class="math" data-tex="\((P_jW)&#x27;=f^{-1}P_{j+1}W\)">\((P_jW)&#x27;=f^{-1}P_{j+1}W\)</span>. Differentiate their first <span class="math" data-tex="\(N\)">\(N\)</span>-row determinant <span class="math" data-tex="\(T\)">\(T\)</span> times. By the product rule every resulting determinant uses row indices at most <span class="math" data-tex="\(N-1+T\)">\(N-1+T\)</span>; derivatives of <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span> introduce only regular scalar factors. If the evaluated rows through that index had rank less than <span class="math" data-tex="\(N\)">\(N\)</span>, all these determinants would vanish at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. But the determinant is <span class="math" data-tex="\(\Delta\det W\)">\(\Delta\det W\)</span>, of exact zero order <span class="math" data-tex="\(T\)">\(T\)</span>, and its <span class="math" data-tex="\(T\)">\(T\)</span>-th derivative there is nonzero. This proves full rank and (14.17). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-balance-the-factorial-gain-and-arithmetic-cost">6. Balance the factorial gain and arithmetic cost</h2>
+<p>There are two bounds to prove for the same coefficient rows. Their houses must grow no faster than <span class="math" data-tex="\((r!)^{1+\delta}\)">\((r!)^{1+\delta}\)</span>, while their values against <span class="math" data-tex="\(F(\alpha)\)">\(F(\alpha)\)</span> must decay like <span class="math" data-tex="\((r!)^{-N+1+\delta}\)">\((r!)^{-N+1+\delta}\)</span>. The rank argument only selects independent rows; it does not supply either size bound. Conversely the auxiliary zero only supplies small values; it does not make the matrix invertible. The following estimate joins these two pieces with the same free loss <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<h3 id="lemma-14-6-the-factorial-estimates">Lemma 14.6. The factorial estimates</h3>
+<p>Let <span class="math" data-tex="\(F_1,\ldots,F_N\)">\(F_1,\ldots,F_N\)</span> be linearly independent E-functions satisfying a rational system, and let <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span> be algebraic and ordinary. Enlarge <span class="math" data-tex="\(K\)">\(K\)</span> to contain <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. For every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and all sufficiently large integers <span class="math" data-tex="\(r\)">\(r\)</span>, there are <span class="math" data-tex="\(N\)">\(N\)</span> rows <span class="math" data-tex="\(q_j\in\mathcal O_K^N\)">\(q_j\in\mathcal O_K^N\)</span>, forming an invertible matrix, such that</p>
+<span class="math math-display" data-tex="\[
+\max_{i,j}\overline{q_{j,i}}\le(r!)^{1+\delta},\qquad
+\left|\sum_iq_{j,i}F_i(\alpha)\right|
+\le(r!)^{-N+1+\delta}.
+\tag{14.18}
+\]">\[
+\max_{i,j}\overline{q_{j,i}}\le(r!)^{1+\delta},\qquad
+\left|\sum_iq_{j,i}F_i(\alpha)\right|
+\le(r!)^{-N+1+\delta}.
+\tag{14.18}
+\]</span>
+<p><strong>Proof.</strong> We give the estimates that permit an arbitrarily small loss <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Apply Lemma 14.3 with positive <span class="math" data-tex="\(\varepsilon,\eta\)">\(\varepsilon,\eta\)</span> to be chosen. Lemma 14.5 selects independent rows among indices <span class="math" data-tex="\(j\le J=\lfloor\varepsilon r\rfloor+C\)">\(j\le J=\lfloor\varepsilon r\rfloor+C\)</span>.</p>
+<p>For a polynomial row, use the maximum house of its coefficients. The recurrence (14.13), with its fixed polynomial multipliers, gives</p>
+<span class="math math-display" data-tex="\[
+\|P_j\|\le(r!)^{1+\eta}
+\bigl(C_1(r+C_2J+1)\bigr)^j,
+\qquad\deg P_j\le r+C_2j.
+\tag{14.19}
+\]">\[
+\|P_j\|\le(r!)^{1+\eta}
+\bigl(C_1(r+C_2J+1)\bigr)^j,
+\qquad\deg P_j\le r+C_2j.
+\tag{14.19}
+\]</span>
+<p>Indeed, differentiation costs at most the current degree, and multiplication by a fixed polynomial costs a fixed sum of coefficient houses. Thus</p>
+<span class="math math-display" data-tex="\[
+\log\|P_j\|\le(1+\eta+C_3\varepsilon+o(1))\log(r!)
+\quad(j\le J).
+\tag{14.20}
+\]">\[
+\log\|P_j\|\le(1+\eta+C_3\varepsilon+o(1))\log(r!)
+\quad(j\le J).
+\tag{14.20}
+\]</span>
+<p>If <span class="math" data-tex="\(D\alpha\)">\(D\alpha\)</span> is integral, multiply every selected row <span class="math" data-tex="\(P_j(\alpha)\)">\(P_j(\alpha)\)</span> by <span class="math" data-tex="\(D^{r+C_2J}\)">\(D^{r+C_2J}\)</span>. They become integral; evaluation under each embedding and this multiplier cost only <span class="math" data-tex="\(\exp(O(r+J))\)">\(\exp(O(r+J))\)</span>. They therefore have the first bound in (14.18) once <span class="math" data-tex="\(\eta,\varepsilon\)">\(\eta,\varepsilon\)</span> are small enough.</p>
+<p>For the values, expand the operator <span class="math" data-tex="\((f\,d/dz)^j\)">\((f\,d/dz)^j\)</span>. The product rule shows that its coefficients, evaluated at the fixed <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, have sum of absolute values at most <span class="math" data-tex="\(\exp(C_4J\log(J+2))\)">\(\exp(C_4J\log(J+2))\)</span> for <span class="math" data-tex="\(j\le J\)">\(j\le J\)</span>. One direct induction obtains this bound: at a new step differentiate each coefficient polynomial and multiply by fixed <span class="math" data-tex="\(f\)">\(f\)</span>; its degree is <span class="math" data-tex="\(O(j)\)">\(O(j)\)</span>, so the sum grows by at most <span class="math" data-tex="\(C(j+1)\)">\(C(j+1)\)</span>. A weaker bound with <span class="math" data-tex="\((C(j+1)^2)^j\)">\((C(j+1)^2)^j\)</span> also suffices.</p>
+<p>Let <span class="math" data-tex="\(R=\max(1,|\alpha|)\)">\(R=\max(1,|\alpha|)\)</span>. For <span class="math" data-tex="\(s\le J\)">\(s\le J\)</span>, (14.9) gives</p>
+<span class="math math-display" data-tex="\[
+|\Phi^{(s)}(\alpha)|
+\le r!\sum_{m\ge M}(m!)^{-1+\eta}m^J R^m
+\le 2r!(M!)^{-1+\eta}M^J R^M
+\tag{14.21}
+\]">\[
+|\Phi^{(s)}(\alpha)|
+\le r!\sum_{m\ge M}(m!)^{-1+\eta}m^J R^m
+\le 2r!(M!)^{-1+\eta}M^J R^M
+\tag{14.21}
+\]</span>
+<p>for large <span class="math" data-tex="\(r\)">\(r\)</span>. To verify the last inequality, the ratio of consecutive majorants is</p>
+<span class="math math-display" data-tex="\[
+R(m+1)^{-1+\eta}(1+1/m)^J\le\tfrac12
+\quad(m\ge M)
+\]">\[
+R(m+1)^{-1+\eta}(1+1/m)^J\le\tfrac12
+\quad(m\ge M)
+\]</span>
+<p>eventually, provided <span class="math" data-tex="\(\eta&lt;1\)">\(\eta&lt;1\)</span>; <span class="math" data-tex="\(J/M\)">\(J/M\)</span> is bounded and <span class="math" data-tex="\(M\)">\(M\)</span> grows linearly with <span class="math" data-tex="\(r\)">\(r\)</span>. The displayed derivative bound also covers <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, though that point is not used in the rank lemma. After the operator bound and the denominator multiplier, we have</p>
+<span class="math math-display" data-tex="\[
+\log|D^{r+C_2J}\Phi_j(\alpha)|
+\le\log(r!)-(1-\eta)\log(M!)+J\log M
++O(J\log(J+2)+M+r).
+\tag{14.22}
+\]">\[
+\log|D^{r+C_2J}\Phi_j(\alpha)|
+\le\log(r!)-(1-\eta)\log(M!)+J\log M
++O(J\log(J+2)+M+r).
+\tag{14.22}
+\]</span>
+<p>Since <span class="math" data-tex="\(M=(N-\varepsilon)r+O(1)\)">\(M=(N-\varepsilon)r+O(1)\)</span>, division by <span class="math" data-tex="\(\log(r!)\)">\(\log(r!)\)</span> gives an upper bound</p>
+<span class="math math-display" data-tex="\[
+-N+1+N\eta+C_5\varepsilon+o(1).
+\]">\[
+-N+1+N\eta+C_5\varepsilon+o(1).
+\]</span>
+<p>Choose <span class="math" data-tex="\(\eta,\varepsilon&gt;0\)">\(\eta,\varepsilon&gt;0\)</span> with <span class="math" data-tex="\(\eta+C_3\varepsilon&lt;\delta/2\)">\(\eta+C_3\varepsilon&lt;\delta/2\)</span> and <span class="math" data-tex="\(N\eta+C_5\varepsilon&lt;\delta/2\)">\(N\eta+C_5\varepsilon&lt;\delta/2\)</span>, and then increase <span class="math" data-tex="\(r\)">\(r\)</span>. This proves both estimates. The selected rows are independent, and their common nonzero multiplier preserves independence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-exponentials-and-a-second-proof-of-lindemann-weierstrass">7. Exponentials and a second proof of Lindemann–Weierstrass</h2>
+<h3 id="lemma-14-7-independence-of-distinct-exponential-functions">Lemma 14.7. Independence of distinct exponential functions</h3>
+<p>For distinct complex <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_s\)">\(\lambda_1,\ldots,\lambda_s\)</span>, the functions <span class="math" data-tex="\(e^{\lambda_j z}\)">\(e^{\lambda_j z}\)</span> are linearly independent over <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>.</p>
+<p><strong>Proof.</strong> Choose a relation with the smallest number of nonzero rational coefficients, and divide by its first coefficient to make that coefficient one. Differentiate the relation and subtract <span class="math" data-tex="\(\lambda_1\)">\(\lambda_1\)</span> times the relation. The first term disappears. Minimality forces every remaining coefficient <span class="math" data-tex="\(q_j\)">\(q_j\)</span> to satisfy</p>
+<span class="math math-display" data-tex="\[
+q_j&#x27;+(\lambda_j-\lambda_1)q_j=0.
+\]">\[
+q_j&#x27;+(\lambda_j-\lambda_1)q_j=0.
+\]</span>
+<p>A nonzero rational function has <span class="math" data-tex="\(q_j&#x27;/q_j=O(1/z)\)">\(q_j&#x27;/q_j=O(1/z)\)</span> at infinity, whereas this equation requires that logarithmic derivative to be the nonzero constant <span class="math" data-tex="\(\lambda_1-\lambda_j\)">\(\lambda_1-\lambda_j\)</span>. This is impossible. A relation with a single nonzero term was already impossible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If algebraic <span class="math" data-tex="\(\beta_1,\ldots,\beta_s\)">\(\beta_1,\ldots,\beta_s\)</span> are linearly independent over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, distinct monomials in <span class="math" data-tex="\(e^{\beta_1z},\ldots,e^{\beta_sz}\)">\(e^{\beta_1z},\ldots,e^{\beta_sz}\)</span> have distinct exponents <span class="math" data-tex="\(\sum a_i\beta_i\)">\(\sum a_i\beta_i\)</span>. Lemma 14.7 proves their algebraic independence over <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>. Their diagonal system has constant entries <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span>, so every nonzero point is ordinary. Theorem 14.2 therefore proves that</p>
+<span class="math math-display" data-tex="\[
+e^{\alpha\beta_1},\ldots,e^{\alpha\beta_s}
+\quad\text{are algebraically independent}
+\tag{14.28}
+\]">\[
+e^{\alpha\beta_1},\ldots,e^{\alpha\beta_s}
+\quad\text{are algebraically independent}
+\tag{14.28}
+\]</span>
+<p>for every nonzero algebraic <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<h3 id="corollary-14-8-lindemann-weierstrass">Corollary 14.8. Lindemann–Weierstrass</h3>
+<p>For distinct algebraic <span class="math" data-tex="\(\gamma_1,\ldots,\gamma_t\)">\(\gamma_1,\ldots,\gamma_t\)</span>, the numbers <span class="math" data-tex="\(e^{\gamma_j}\)">\(e^{\gamma_j}\)</span> are linearly independent over <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>.</p>
+<p><strong>Proof.</strong> Choose a <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-basis of the span of the <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span>, and divide its elements by a common integer so that each <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span> is an integer combination of the resulting basis <span class="math" data-tex="\(\beta_1,\ldots,\beta_s\)">\(\beta_1,\ldots,\beta_s\)</span>. If the span is zero there is only the single exponent zero, and the assertion is immediate. Otherwise (14.28) at <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span> makes the <span class="math" data-tex="\(e^{\beta_i}\)">\(e^{\beta_i}\)</span> algebraically independent. The <span class="math" data-tex="\(e^{\gamma_j}\)">\(e^{\gamma_j}\)</span> are distinct Laurent monomials in them. Any algebraic-coefficient linear relation among these Laurent monomials becomes a nonzero polynomial relation after multiplication by a sufficiently large monomial, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For instance <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(e^{\sqrt2}\)">\(e^{\sqrt2}\)</span> are algebraically independent. The algebraicity of the evaluation point is part of the argument; the theorem does not apply by replacing it with <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<h2 id="8-the-bessel-example-independence-before-specialization">8. The Bessel example: independence before specialization</h2>
+<p>Termwise differentiation of the entire series (14.3) gives</p>
+<span class="math math-display" data-tex="\[
+zJ_0&#x27;&#x27;+J_0&#x27;+zJ_0=0,
+\qquad
+\begin{pmatrix}J_0\\J_0&#x27;\end{pmatrix}&#x27;
+=\begin{pmatrix}0&amp;1\\-1&amp;-1/z\end{pmatrix}
+\begin{pmatrix}J_0\\J_0&#x27;\end{pmatrix}.
+\tag{14.29}
+\]">\[
+zJ_0&#x27;&#x27;+J_0&#x27;+zJ_0=0,
+\qquad
+\begin{pmatrix}J_0\\J_0&#x27;\end{pmatrix}&#x27;
+=\begin{pmatrix}0&amp;1\\-1&amp;-1/z\end{pmatrix}
+\begin{pmatrix}J_0\\J_0&#x27;\end{pmatrix}.
+\tag{14.29}
+\]</span>
+<p>For example, the coefficient of <span class="math" data-tex="\(z^{2k+1}\)">\(z^{2k+1}\)</span> in the scalar equation is
+<span class="math" data-tex="\(4(k+1)^2 b_{k+1}+b_k=0\)">\(4(k+1)^2 b_{k+1}+b_k=0\)</span>, where <span class="math" data-tex="\(b_k=(-1)^k/(4^k(k!)^2)\)">\(b_k=(-1)^k/(4^k(k!)^2)\)</span>. The only pole of the displayed system is zero. Both functions are E-functions by Proposition 14.1. We now prove the separate functional-independence input.</p>
+<p>We will use a local fact about algebraic functions, with its analytic justification. A branch of a function algebraic over <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>, near any fixed point <span class="math" data-tex="\(a\)">\(a\)</span>, has a convergent Laurent expansion in <span class="math" data-tex="\((z-a)^{1/m}\)">\((z-a)^{1/m}\)</span> for some positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, with only finitely many negative powers. Indeed, its squarefree polynomial equation has nonzero discriminant. On a sufficiently small punctured disk about <span class="math" data-tex="\(a\)">\(a\)</span>, its roots continue analytically, by the implicit function theorem, and continuation around the puncture permutes finitely many roots. The substitution <span class="math" data-tex="\(z-a=t^m\)">\(z-a=t^m\)</span>, with <span class="math" data-tex="\(m\)">\(m\)</span> a multiple of the permutation's order, makes each branch single-valued on a punctured <span class="math" data-tex="\(t\)">\(t\)</span>-disk. The elementary root bound</p>
+<span class="math math-display" data-tex="\[
+|w|\le1+\max_{j&lt;d}|b_j(z)/b_d(z)|
+\quad\text{for }\sum_{j=0}^d b_j(z)w^j=0
+\]">\[
+|w|\le1+\max_{j&lt;d}|b_j(z)/b_d(z)|
+\quad\text{for }\sum_{j=0}^d b_j(z)w^j=0
+\]</span>
+<p>bounds this branch by <span class="math" data-tex="\(C|t|^{-B}\)">\(C|t|^{-B}\)</span>. Multiplication by a sufficiently large power of <span class="math" data-tex="\(t\)">\(t\)</span> gives a bounded holomorphic function, which extends over zero by its Cauchy integral formula. Its Laurent expansion is the asserted convergent expansion. This argument supplies the local expansions used below without requiring a classification of algebraic curves.</p>
+<h3 id="lemma-14-9-a-riccati-obstruction">Lemma 14.9. A Riccati obstruction</h3>
+<p>The equation</p>
+<span class="math math-display" data-tex="\[
+r&#x27;+r^2+r/z+1=0
+\tag{14.30}
+\]">\[
+r&#x27;+r^2+r/z+1=0
+\tag{14.30}
+\]</span>
+<p>has no solution algebraic over <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(r\)">\(r\)</span> is algebraic. The derivation on <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span> extends uniquely to its finite algebraic extensions: differentiating a separable minimal polynomial gives <span class="math" data-tex="\(r&#x27;=-P_z(z,r)/P_T(z,r)\)">\(r&#x27;=-P_z(z,r)/P_T(z,r)\)</span>. Hence every conjugate branch of <span class="math" data-tex="\(r\)">\(r\)</span> also satisfies (14.30).</p>
+<p>At zero, consider a branch with leading term <span class="math" data-tex="\(az^t\)">\(az^t\)</span>, where <span class="math" data-tex="\(t\)">\(t\)</span> is rational and <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. A negative exponent is impossible. If <span class="math" data-tex="\(t&lt;-1\)">\(t&lt;-1\)</span>, the term <span class="math" data-tex="\(r^2\)">\(r^2\)</span> alone has the smallest exponent. If <span class="math" data-tex="\(-1&lt;t&lt;0\)">\(-1&lt;t&lt;0\)</span>, the smallest term is <span class="math" data-tex="\((r&#x27;+r/z)\sim(t+1)az^{t-1}\)">\((r&#x27;+r/z)\sim(t+1)az^{t-1}\)</span>. At <span class="math" data-tex="\(t=-1\)">\(t=-1\)</span>, the leading terms in <span class="math" data-tex="\(r&#x27;+r/z\)">\(r&#x27;+r/z\)</span> cancel, but <span class="math" data-tex="\(a^2z^{-2}\)">\(a^2z^{-2}\)</span> from <span class="math" data-tex="\(r^2\)">\(r^2\)</span> cannot cancel with any remaining term. Each case contradicts the equation. Thus every branch is bounded at zero. Its constant term must be zero, since otherwise <span class="math" data-tex="\(r/z\)">\(r/z\)</span> has an uncancelled <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span> term.</p>
+<p>If two such branches <span class="math" data-tex="\(r_1,r_2\)">\(r_1,r_2\)</span> differed, their difference would have a leading Puiseux term <span class="math" data-tex="\(az^t\)">\(az^t\)</span> with <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Subtract their equations:</p>
+<span class="math math-display" data-tex="\[
+(r_1-r_2)&#x27;+(r_1+r_2+1/z)(r_1-r_2)=0.
+\]">\[
+(r_1-r_2)&#x27;+(r_1+r_2+1/z)(r_1-r_2)=0.
+\]</span>
+<p>Since <span class="math" data-tex="\(r_1,r_2\to0\)">\(r_1,r_2\to0\)</span>, the leading coefficient on the left is <span class="math" data-tex="\((t+1)a\)">\((t+1)a\)</span> at exponent <span class="math" data-tex="\(t-1\)">\(t-1\)</span>, and it is nonzero. Therefore all conjugate branches coincide. Separability forces the minimal polynomial to have degree one: <span class="math" data-tex="\(r\)">\(r\)</span> is rational.</p>
+<p>At a finite pole <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span> of a rational solution, dominant terms in (14.30) force a simple pole with residue one: if <span class="math" data-tex="\(r\sim c/(z-a)\)">\(r\sim c/(z-a)\)</span>, then <span class="math" data-tex="\(c^2-c=0\)">\(c^2-c=0\)</span>. There is no pole at zero, as already proved. At infinity the polynomial part cannot have positive degree, since its square would dominate every other term. Nor can <span class="math" data-tex="\(r\)">\(r\)</span> tend to zero, because of the constant one in (14.30). Thus</p>
+<span class="math math-display" data-tex="\[
+r=c+b/z+O(z^{-2}),\qquad c^2=-1.
+\]">\[
+r=c+b/z+O(z^{-2}),\qquad c^2=-1.
+\]</span>
+<p>Comparing the <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span> terms gives <span class="math" data-tex="\(2cb+c=0\)">\(2cb+c=0\)</span>, hence <span class="math" data-tex="\(b=-1/2\)">\(b=-1/2\)</span>. But a rational function with constant polynomial part and only simple finite poles of residue one has <span class="math" data-tex="\(b\)">\(b\)</span> equal to the number of those poles, a nonnegative integer. This contradiction proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="proposition-14-10-algebraic-independence-of-the-bessel-functions">Proposition 14.10. Algebraic independence of the Bessel functions</h3>
+<p>The functions <span class="math" data-tex="\(J_0\)">\(J_0\)</span> and <span class="math" data-tex="\(J_0&#x27;\)">\(J_0&#x27;\)</span> are algebraically independent over <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>.</p>
+<p><strong>Proof.</strong> First, <span class="math" data-tex="\(J_0\)">\(J_0\)</span> is transcendental over <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>. Any entire algebraic function is a polynomial: a polynomial equation and the same root bound used above give <span class="math" data-tex="\(|y(z)|\le C(1+|z|)^B\)">\(|y(z)|\le C(1+|z|)^B\)</span> outside a disk, and Cauchy's derivative estimates make its Taylor coefficients of degree greater than <span class="math" data-tex="\(B\)">\(B\)</span> vanish. The series (14.3) has infinitely many nonzero coefficients, so it is not a polynomial.</p>
+<p>Put <span class="math" data-tex="\(U=J_0,V=J_0&#x27;\)">\(U=J_0,V=J_0&#x27;\)</span>, and suppose they satisfy a polynomial relation over <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>. Choose an irreducible relation <span class="math" data-tex="\(P(z,U,V)\)">\(P(z,U,V)\)</span>. Because <span class="math" data-tex="\(U\)">\(U\)</span> is transcendental, the kernel of evaluation in <span class="math" data-tex="\(\mathbb C(z)[U,V]\)">\(\mathbb C(z)[U,V]\)</span> is generated by <span class="math" data-tex="\(P\)">\(P\)</span>. Explicitly, over the field <span class="math" data-tex="\(\mathbb C(z,U)\)">\(\mathbb C(z,U)\)</span> this is the minimal-polynomial divisibility statement for <span class="math" data-tex="\(V\)">\(V\)</span>; clearing primitive polynomial contents gives divisibility in <span class="math" data-tex="\(\mathbb C(z)[U,V]\)">\(\mathbb C(z)[U,V]\)</span>. The latter step is Gauss's lemma over the Euclidean ring <span class="math" data-tex="\(\mathbb C(z)[U]\)">\(\mathbb C(z)[U]\)</span>: reduction modulo each irreducible factor shows that a product of primitive polynomials is primitive, so denominators cannot remain in the quotient.</p>
+<p>On this polynomial ring define</p>
+<span class="math math-display" data-tex="\[
+\mathcal D=\frac{\partial}{\partial z}
++V\frac{\partial}{\partial U}
+-(U+V/z)\frac{\partial}{\partial V}.
+\tag{14.31}
+\]">\[
+\mathcal D=\frac{\partial}{\partial z}
++V\frac{\partial}{\partial U}
+-(U+V/z)\frac{\partial}{\partial V}.
+\tag{14.31}
+\]</span>
+<p>Equation (14.29) makes evaluation commute with differentiation. Thus <span class="math" data-tex="\(\mathcal DP\)">\(\mathcal DP\)</span> belongs to the same kernel, so <span class="math" data-tex="\(\mathcal DP=QP\)">\(\mathcal DP=QP\)</span>. The derivation preserves total degree in <span class="math" data-tex="\(U,V\)">\(U,V\)</span>; consequently <span class="math" data-tex="\(Q\in\mathbb C(z)\)">\(Q\in\mathbb C(z)\)</span>, including the possibility <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>.</p>
+<p>Take a nonzero homogeneous part <span class="math" data-tex="\(P_h\)">\(P_h\)</span> of positive degree. It satisfies <span class="math" data-tex="\(\mathcal DP_h=QP_h\)">\(\mathcal DP_h=QP_h\)</span>. Over an algebraic extension of <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>, factor this binary homogeneous polynomial into linear factors. Every such factor <span class="math" data-tex="\(g\)">\(g\)</span> satisfies <span class="math" data-tex="\(g\mid\mathcal Dg\)">\(g\mid\mathcal Dg\)</span>. To check multiplicities, write <span class="math" data-tex="\(P_h=g^eG\)">\(P_h=g^eG\)</span>, with <span class="math" data-tex="\(g\nmid G\)">\(g\nmid G\)</span>, and divide <span class="math" data-tex="\(\mathcal DP_h\)">\(\mathcal DP_h\)</span> by <span class="math" data-tex="\(g^{e-1}\)">\(g^{e-1}\)</span>; reduction modulo <span class="math" data-tex="\(g\)">\(g\)</span> gives <span class="math" data-tex="\(e(\mathcal Dg)G=0\)">\(e(\mathcal Dg)G=0\)</span>, so divisibility follows in characteristic zero.</p>
+<p>A factor <span class="math" data-tex="\(g=U\)">\(g=U\)</span> is impossible because <span class="math" data-tex="\(\mathcal DU=V\)">\(\mathcal DU=V\)</span>. Any other factor can be scaled to <span class="math" data-tex="\(g=V-r(z)U\)">\(g=V-r(z)U\)</span>, with algebraic <span class="math" data-tex="\(r\)">\(r\)</span>. Direct calculation gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal D(V-rU)=-(r+1/z)(V-rU)
+-(r&#x27;+r^2+r/z+1)U.
+\tag{14.32}
+\]">\[
+\mathcal D(V-rU)=-(r+1/z)(V-rU)
+-(r&#x27;+r^2+r/z+1)U.
+\tag{14.32}
+\]</span>
+<p>Divisibility by <span class="math" data-tex="\(V-rU\)">\(V-rU\)</span> forces (14.30), contradicting Lemma 14.9. Hence no original relation exists. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-14-11-bessel-values">Corollary 14.11. Bessel values</h3>
+<p>For every nonzero algebraic <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the numbers <span class="math" data-tex="\(J_0(\alpha)\)">\(J_0(\alpha)\)</span> and <span class="math" data-tex="\(J_0&#x27;(\alpha)\)">\(J_0&#x27;(\alpha)\)</span> are algebraically independent over <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>.</p>
+<p><strong>Proof.</strong> The functions are E-functions, Proposition 14.10 supplies their functional independence, and (14.29) is ordinary at every <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>. Theorem 14.2 applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular each value is transcendental and neither is zero. Their quotient is transcendental as well: an algebraic quotient would give an algebraic-coefficient linear relation between the two values.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy — test the hypotheses.</strong> Verify the original E-function conditions for <span class="math" data-tex="\(e^{\beta z}\)">\(e^{\beta z}\)</span> with arbitrary algebraic <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, including a denominator clearing every coefficient through <span class="math" data-tex="\(n\)">\(n\)</span>. Compare <span class="math" data-tex="\((e^z,e^{\sqrt2z})\)">\((e^z,e^{\sqrt2z})\)</span> at zero and at a nonzero algebraic point with <span class="math" data-tex="\((e^z,e^{2z})\)">\((e^z,e^{2z})\)</span>. State exactly which hypothesis fails in each excluded case.</p>
+</li>
+<li>
+<p><strong>Medium — products and the Bessel system.</strong> Derive (14.5) and check the product house and common-denominator bounds. Then derive (14.29) directly from the Bessel series and identify its ordinary points. Explain why entire solutions may still have a rational system with a pole.</p>
+</li>
+<li>
+<p><strong>Medium — follow the derived rows.</strong> Verify <span class="math" data-tex="\(P_0,P_1,\Phi_0\)">\(P_0,P_1,\Phi_0\)</span> and their determinant in the two-row calculation. Calculate <span class="math" data-tex="\(P_2\)">\(P_2\)</span>, and find the rank of the first three rows at zero. Explain how this models the extra rows in Lemma 14.5. For one function variable and a putative relation of degree <span class="math" data-tex="\(c\)">\(c\)</span>, compute <span class="math" data-tex="\(k-l\)">\(k-l\)</span> in (14.24) and choose <span class="math" data-tex="\(m\)">\(m\)</span> satisfying (14.25).</p>
+</li>
+<li>
+<p><strong>Hard — specialize only after independence.</strong> Prove functional algebraic independence of exponentials with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-independent algebraic exponents, starting from rational-function linear independence. Deduce the full Lindemann–Weierstrass linear-independence statement for distinct algebraic exponents, handling the constant monomial and negative powers.</p>
+</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<ol>
+<li>
+<p>The normalized coefficient is <span class="math" data-tex="\(a_n=\beta^n\)">\(a_n=\beta^n\)</span>. Choose <span class="math" data-tex="\(D\in\mathbb Z_{&gt;0}\)">\(D\in\mathbb Z_{&gt;0}\)</span> with <span class="math" data-tex="\(D\beta\in\mathcal O_K\)">\(D\beta\in\mathcal O_K\)</span>. For <span class="math" data-tex="\(j\le n\)">\(j\le n\)</span>, <span class="math" data-tex="\(D^n\beta^j=D^{n-j}(D\beta)^j\)">\(D^n\beta^j=D^{n-j}(D\beta)^j\)</span> is integral, so <span class="math" data-tex="\(d_n=D^n\)">\(d_n=D^n\)</span> is a simultaneous denominator. Houses are at most <span class="math" data-tex="\(\max(1,\overline\beta)^n\)">\(\max(1,\overline\beta)^n\)</span>. For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, <span class="math" data-tex="\(C^n\le n^{\varepsilon n}\)">\(C^n\le n^{\varepsilon n}\)</span> for all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, and a fixed constant covers the remaining indices. This includes <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>. The exponents <span class="math" data-tex="\(1,\sqrt2\)">\(1,\sqrt2\)</span> are rationally independent, so Lemma 14.7 gives functional algebraic independence; their constant diagonal system is ordinary everywhere. At zero the nonzero-point hypothesis fails and both values are one. At a nonzero algebraic point every hypothesis holds. The pair with exponents <span class="math" data-tex="\(1,2\)">\(1,2\)</span> instead fails functional algebraic independence through <span class="math" data-tex="\(E_2=E_1^2\)">\(E_2=E_1^2\)</span>, regardless of the evaluation point.</p>
+</li>
+<li>
+<p>Multiply the two exponential-normalized series. The coefficient of <span class="math" data-tex="\(z^n/n!\)">\(z^n/n!\)</span> is <span class="math" data-tex="\(\sum_{j=0}^n\binom nj a_jb_{n-j}\)">\(\sum_{j=0}^n\binom nj a_jb_{n-j}\)</span>. Since <span class="math" data-tex="\(d_n\)">\(d_n\)</span> and <span class="math" data-tex="\(e_n\)">\(e_n\)</span> clear all input coefficients through <span class="math" data-tex="\(n\)">\(n\)</span>, their product clears every output coefficient through <span class="math" data-tex="\(n\)">\(n\)</span>, not merely <span class="math" data-tex="\(c_n\)">\(c_n\)</span>. For houses, use <span class="math" data-tex="\(j^{\eta j}\le n^{\eta n}\)">\(j^{\eta j}\le n^{\eta n}\)</span>, the input estimates at exponent <span class="math" data-tex="\(\eta=\varepsilon/4\)">\(\eta=\varepsilon/4\)</span>, and <span class="math" data-tex="\(\sum_j\binom nj=2^n\)">\(\sum_j\binom nj=2^n\)</span>. Then <span class="math" data-tex="\(\overline{c_n}\le C2^n n^{\varepsilon n/2}=O(n^{\varepsilon n})\)">\(\overline{c_n}\le C2^n n^{\varepsilon n/2}=O(n^{\varepsilon n})\)</span>. The denominator product has the same required bound. Merely choosing a denominator for each isolated <span class="math" data-tex="\(c_n\)">\(c_n\)</span> would not establish the simultaneous-denominator clause in (14.2).</p>
+<p>With <span class="math" data-tex="\(J_0=\sum b_kz^{2k}\)">\(J_0=\sum b_kz^{2k}\)</span>, the coefficient of <span class="math" data-tex="\(z^{2k+1}\)">\(z^{2k+1}\)</span> in <span class="math" data-tex="\(zJ_0&#x27;&#x27;+J_0&#x27;+zJ_0\)">\(zJ_0&#x27;&#x27;+J_0&#x27;+zJ_0\)</span> is <span class="math" data-tex="\(4(k+1)^2b_{k+1}+b_k\)">\(4(k+1)^2b_{k+1}+b_k\)</span>, which vanishes for <span class="math" data-tex="\(b_k=(-1)^k/(4^k(k!)^2)\)">\(b_k=(-1)^k/(4^k(k!)^2)\)</span>. All other coefficients vanish by parity. Set <span class="math" data-tex="\(y_1=J_0,y_2=J_0&#x27;\)">\(y_1=J_0,y_2=J_0&#x27;\)</span>; then <span class="math" data-tex="\(y_1&#x27;=y_2\)">\(y_1&#x27;=y_2\)</span> and <span class="math" data-tex="\(y_2&#x27;=-y_1-y_2/z\)">\(y_2&#x27;=-y_1-y_2/z\)</span>. The functions themselves are entire, with <span class="math" data-tex="\(J_0(0)=1,J_0&#x27;(0)=0\)">\(J_0(0)=1,J_0&#x27;(0)=0\)</span>, while this rational matrix has a pole at zero. Its ordinary points are exactly <span class="math" data-tex="\(\mathbb C\setminus\{0\}\)">\(\mathbb C\setminus\{0\}\)</span>; the theorem concerns their nonzero algebraic subset. The pole belongs to the chosen system coefficients, not to the entire solutions. Cancellation in a particular solution does not make the coefficient matrix ordinary; one must check the matrix itself when applying the theorem.</p>
+</li>
+<li>
+<p>Direct multiplication gives <span class="math" data-tex="\(\Phi_0=2e^z-2-2z-z^2\)">\(\Phi_0=2e^z-2-2z-z^2\)</span>; its Taylor expansion begins <span class="math" data-tex="\(z^3/3\)">\(z^3/3\)</span>, so its order is three. The derived rows are <span class="math" data-tex="\(P_1=(-2-2z,2)\)">\(P_1=(-2-2z,2)\)</span> and <span class="math" data-tex="\(P_2=(-2,2)\)">\(P_2=(-2,2)\)</span>. At zero both first rows equal <span class="math" data-tex="\((-2,2)\)">\((-2,2)\)</span>, and so does the third: their rank is one. One more derivative gives <span class="math" data-tex="\(P_3=(0,2)\)">\(P_3=(0,2)\)</span>, raising the rank to two. Thus generic rank does not prescribe how many rows suffice at a point; additional derivatives can recover it. Lemma 14.5 bounds their number by the vanishing reserve of the determinant. In one variable <span class="math" data-tex="\(l=m+1\)">\(l=m+1\)</span>, <span class="math" data-tex="\(k=m+c+1\)">\(k=m+c+1\)</span>, and <span class="math" data-tex="\(k-l=c\)">\(k-l=c\)</span>; (14.25) becomes <span class="math" data-tex="\(m+1&gt;2dc\)">\(m+1&gt;2dc\)</span>, achievable by taking <span class="math" data-tex="\(m\ge2dc\)">\(m\ge2dc\)</span>. This keeps the field degree in the arithmetic estimate, rather than replacing it by the function count.</p>
+</li>
+<li>
+<p>A polynomial relation among <span class="math" data-tex="\(e^{\beta_i z}\)">\(e^{\beta_i z}\)</span> is a linear relation among exponentials with exponents <span class="math" data-tex="\(\sum a_i\beta_i\)">\(\sum a_i\beta_i\)</span>. These are distinct when the <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> are <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-independent. For a shortest rational-function linear relation, normalize one coefficient to one and apply <span class="math" data-tex="\(d/dz-\lambda_1\)">\(d/dz-\lambda_1\)</span>. This gives a shorter relation unless every remaining rational coefficient satisfies <span class="math" data-tex="\(q&#x27;/q=\lambda_1-\lambda_j\)">\(q&#x27;/q=\lambda_1-\lambda_j\)</span>. The latter cannot hold because a rational logarithmic derivative tends to zero at infinity. Functional algebraic independence follows. The diagonal constant system and Theorem 14.2 at <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span> give algebraic independence of their values. Choose a rational basis for the span of the distinct <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span>, rescaling it to make their coordinates integral. The target exponentials are distinct Laurent monomials in the independent values. Clearing their negative powers turns a putative algebraic-coefficient linear relation into a nonzero polynomial relation. If that span is zero, there is only one exponent and the assertion is immediate.</p>
+</li>
+</ol>
+<h2 id="sources-and-attribution">Sources and attribution</h2>
+<ul>
+<li>Frits Beukers, <a href="https://annals.math.princeton.edu/wp-content/uploads/annals-v163-n1-p08.pdf"><em>A refined version of the Siegel–Shidlovskii theorem</em></a>, <em>Annals of Mathematics</em> 163 (2006), 369–379, §1: E-functions, Siegel's original definition and the Siegel–Shidlovskii theorem. Boris Adamczewski and Colin Faverjon, <a href="https://arxiv.org/abs/2502.09999v1"><em>Algebraic independence measures for values of E-functions and M-functions</em></a>, arXiv:2502.09999v1, 2025, §3.2: the classical method of Siegel and Shidlovskii, with linear forms obtained from multiples of the functional relations, Siegel's auxiliary forms and Shidlovskii's lemma on the rank of the derived forms.</li>
+<li>Stéphane Fischler, <a href="https://arxiv.org/abs/1609.09770v1">“Shidlovsky’s multiplicity estimate and Irrationality of zeta values”</a>, 2016: Theorems 1–2, proved in Sections 3.1–3.2, treat derived-row rank for rational differential systems and its recovery at a point. The rank mechanism is independent of E-function coefficient growth. Sections 4–6 above supply the arithmetic estimates for Siegel’s original definition.</li>
+<li>Siegel's 1929 E-function work and Shidlovsky's extension, announced in 1954 and published in 1959, are described in Beukers's paper above, §1, and in Michel Waldschmidt, <a href="https://arxiv.org/abs/0908.4024"><em>Auxiliary functions in transcendence proofs</em></a>, arXiv:0908.4024, 2009, §3.1.1.</li>
+<li>J.-H. Evertse, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-4.pdf"><em>Diophantine Approximation</em>, Chapter 4: Transcendence results</a>, Leiden course notes, Exercise 4.7: the polynomial version of the Lindemann–Weierstrass theorem for real exponential polynomials, a functional independence statement of the kind proved in Lemma 14.7.</li>
+<li>The first course proof of Lindemann–Weierstrass is in <a href="TR-TRANS-04.html">Hermite and Lindemann</a>; its exact earlier arithmetic prerequisites and the number-field Siegel lemma in <a href="TR-TRANS-05.html">Siegel's lemma and analytic estimates</a> are the inputs used here.</li>
+</ul>
+<p>The next lesson distinguishes consequences proved by these methods from implications that remain conditional on Schanuel's conjecture.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="TR-TRANS-13.html">← Mahler&#x27;s classification of transcendental numbers</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-TRANS-15.html">Algebraic independence and Schanuel&#x27;s conjecture →</a></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-14.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

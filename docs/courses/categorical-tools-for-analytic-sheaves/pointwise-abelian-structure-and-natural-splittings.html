@@ -1,0 +1,213 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pointwise abelian structure and natural splittings</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="pointwise-abelian-structure-and-natural-splittings">Pointwise abelian structure and natural splittings</h1>
+<p><em>Adapted and extended by GPT-6.1 Sol (OpenAI), October 2026; self-checked by the writing AI at Ultra. This lesson, including the adaptation and added teaching, is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</em></p>
+<p>A diagram has objects and transition maps. A kernel must respect both. Taking a kernel at each object gives the correct underlying objects; its universal property then supplies the transition maps and proves their compatibility. This explains why diagrams in an abelian category form another abelian category. Splittings behave differently: unrelated splittings at individual objects need not assemble to a splitting of diagrams.</p>
+<p>Work in a fixed universe with small indexing categories and locally small coefficient categories. We use the complete kernel, cokernel and exactness tests in <a href="testing-exactness-with-doubled-objects.html#1-witnesses-for-a-kernel-or-a-quotient">Testing exactness with doubled objects, Sections 1 and 3</a>, the compatible splitting maps in <a href="extending-maps-splittings-and-exact-functors.html#2-a-splitting-survives-every-additive-functor">Extending maps, splittings and exact functors, Section 2</a>, and the cohomology descriptions in <a href="exact-complexes-signs-and-lifting-covers.html#2-one-cohomology-object-with-several-universal-descriptions">Exact complexes, signs and lifting covers, Section 2</a>.</p>
+<h2 id="1-assemble-the-pointwise-universal-objects">1. Assemble the pointwise universal objects</h2>
+<p>This section adapts Tom Leinster's <em>Basic Category Theory</em>, Theorem 6.2.5 and its dual, <a href="https://arxiv.org/abs/1612.09375v2">arXiv version 2</a>, 26 August 2025, pp. 148–150. Source copyright © Tom Leinster 2014, 2016. The AI changes notation and expands the functor and naturality checks. The source and this adaptation retain <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en">CC BY-NC-SA 4.0</a>, including its warranty disclaimer. No endorsement is implied.</p>
+<p><strong>Pointwise limit theorem.</strong> Let <span class="math" data-tex="\(I,J\)">\(I,J\)</span> be small, <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> locally small, and <span class="math" data-tex="\(D:J\to\operatorname{Fun}(I,\mathcal C)\)">\(D:J\to\operatorname{Fun}(I,\mathcal C)\)</span>. Chosen limits <span class="math" data-tex="\(L_i=\lim_jD_j(i)\)">\(L_i=\lim_jD_j(i)\)</span>, with projections <span class="math" data-tex="\(p_{j,i}\)">\(p_{j,i}\)</span>, assemble to a limit of <span class="math" data-tex="\(D\)">\(D\)</span>. Every cone that evaluates to these limits is universal.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(D_b:D_j\to D_{j&#x27;}\)">\(D_b:D_j\to D_{j&#x27;}\)</span> for an arrow <span class="math" data-tex="\(b:j\to j&#x27;\)">\(b:j\to j&#x27;\)</span> of the diagram. For <span class="math" data-tex="\(a:i\to i&#x27;\)">\(a:i\to i&#x27;\)</span>, naturality gives <span class="math" data-tex="\(D_{b,i&#x27;}D_j(a)p_{j,i}=D_{j&#x27;}(a)D_{b,i}p_{j,i}=D_{j&#x27;}(a)p_{j&#x27;,i}\)">\(D_{b,i&#x27;}D_j(a)p_{j,i}=D_{j&#x27;}(a)D_{b,i}p_{j,i}=D_{j&#x27;}(a)p_{j&#x27;,i}\)</span>. Thus <span class="math" data-tex="\(D_j(a)p_{j,i}\)">\(D_j(a)p_{j,i}\)</span> is a cone, and determines a unique <span class="math" data-tex="\(L(a)\)">\(L(a)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+p_{j,i&#x27;}L(a)=D_j(a)p_{j,i}.
+\tag{1.1}
+\]">\[
+p_{j,i&#x27;}L(a)=D_j(a)p_{j,i}.
+\tag{1.1}
+\]</span>
+For an identity arrow, both <span class="math" data-tex="\(L(1_i)\)">\(L(1_i)\)</span> and <span class="math" data-tex="\(1_{L_i}\)">\(1_{L_i}\)</span> have projection <span class="math" data-tex="\(p_{j,i}\)">\(p_{j,i}\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>, so uniqueness makes them equal. For composable <span class="math" data-tex="\(a:i\to i&#x27;\)">\(a:i\to i&#x27;\)</span> and <span class="math" data-tex="\(a&#x27;:i&#x27;\to i&#x27;&#x27;\)">\(a&#x27;:i&#x27;\to i&#x27;&#x27;\)</span>, the projection of <span class="math" data-tex="\(L(a&#x27;)L(a)\)">\(L(a&#x27;)L(a)\)</span> is <span class="math" data-tex="\(D_j(a&#x27;)D_j(a)p_{j,i}=D_j(a&#x27;a)p_{j,i}\)">\(D_j(a&#x27;)D_j(a)p_{j,i}=D_j(a&#x27;a)p_{j,i}\)</span>, which is also the projection of <span class="math" data-tex="\(L(a&#x27;a)\)">\(L(a&#x27;a)\)</span>. Uniqueness proves the composition equation. Equation (1.1) makes each <span class="math" data-tex="\(p_j\)">\(p_j\)</span> natural. The pointwise equations <span class="math" data-tex="\(D_{b,i}p_{j,i}=p_{j&#x27;,i}\)">\(D_{b,i}p_{j,i}=p_{j&#x27;,i}\)</span> say precisely that <span class="math" data-tex="\((p_j)_j\)">\((p_j)_j\)</span> is a cone of natural transformations. These arguments include empty <span class="math" data-tex="\(J\)">\(J\)</span>: its limit objects are terminal, and uniqueness still supplies all the equations.</p>
+<p>For another cone <span class="math" data-tex="\(q_j:X\to D_j\)">\(q_j:X\to D_j\)</span>, let <span class="math" data-tex="\(v_i\)">\(v_i\)</span> be its unique pointwise factor. Naturality follows by testing against every projection:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p_{j,i&#x27;}L(a)v_i
+ &amp;=D_j(a)q_{j,i}\\
+ &amp;=q_{j,i&#x27;}X(a)\\
+ &amp;=p_{j,i&#x27;}v_{i&#x27;}X(a).
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+p_{j,i&#x27;}L(a)v_i
+ &amp;=D_j(a)q_{j,i}\\
+ &amp;=q_{j,i&#x27;}X(a)\\
+ &amp;=p_{j,i&#x27;}v_{i&#x27;}X(a).
+\end{aligned}
+\tag{1.2}
+\]</span>
+Thus <span class="math" data-tex="\(v\)">\(v\)</span> is natural and <span class="math" data-tex="\(p_jv=q_j\)">\(p_jv=q_j\)</span>. Componentwise uniqueness proves uniqueness of <span class="math" data-tex="\(v\)">\(v\)</span>, and also the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For colimits apply this argument to <span class="math" data-tex="\(J^{op}\)">\(J^{op}\)</span> and <span class="math" data-tex="\(\mathcal C^{op}\)">\(\mathcal C^{op}\)</span>, using
+<span class="math math-display" data-tex="\[
+\operatorname{Fun}(I,\mathcal C)^{op}
+\simeq\operatorname{Fun}(I^{op},\mathcal C^{op}).
+\tag{1.3}
+\]">\[
+\operatorname{Fun}(I,\mathcal C)^{op}
+\simeq\operatorname{Fun}(I^{op},\mathcal C^{op}).
+\tag{1.3}
+\]</span>
+This equivalence reverses natural transformations and both source and target arrows. Hence chosen pointwise colimits are colimits of diagrams of functors too.</p>
+<p>The hypothesis concerns the evaluated diagrams actually being used. It does not assert that an arbitrary coefficient category has all small limits, or that every existing limit in a functor category must be pointwise when the requisite coefficient limits are absent.</p>
+<h2 id="2-why-all-diagrams-form-an-abelian-category">2. Why all diagrams form an abelian category</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be abelian and <span class="math" data-tex="\(I\)">\(I\)</span> small. The objects of <span class="math" data-tex="\(\mathcal A^I\)">\(\mathcal A^I\)</span> are all functors <span class="math" data-tex="\(I\to\mathcal A\)">\(I\to\mathcal A\)</span>, and its maps are natural transformations. No additivity assumption is imposed on <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>The natural transformations from <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(G\)">\(G\)</span> form a subgroup of
+<span class="math math-display" data-tex="\[
+\prod_{i\in\operatorname{Ob}I}
+\operatorname{Hom}_{\mathcal A}(F_i,G_i).
+\tag{2.1}
+\]">\[
+\prod_{i\in\operatorname{Ob}I}
+\operatorname{Hom}_{\mathcal A}(F_i,G_i).
+\tag{2.1}
+\]</span>
+Indeed, the equations <span class="math" data-tex="\(G(a)\alpha_i=\alpha_{i&#x27;}F(a)\)">\(G(a)\alpha_i=\alpha_{i&#x27;}F(a)\)</span> are preserved under addition, negatives and zero because composition in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is bilinear. Composition of transformations is bilinear componentwise. The constant zero diagram is a zero object. Finite biproducts are formed objectwise, with transition maps <span class="math" data-tex="\(F(a)\oplus G(a)\)">\(F(a)\oplus G(a)\)</span>; their injections and projections are natural and satisfy the biproduct identities. Alternatively, their product and coproduct universal properties are the two applications of §1. This gives the additive structure, including the empty biproduct.</p>
+<p>Now let <span class="math" data-tex="\(\alpha:F\to G\)">\(\alpha:F\to G\)</span>. Choose <span class="math" data-tex="\(k_i:K_i\to F_i\)">\(k_i:K_i\to F_i\)</span> to be its component kernel. For <span class="math" data-tex="\(a:i\to i&#x27;\)">\(a:i\to i&#x27;\)</span>, naturality gives
+<span class="math math-display" data-tex="\[
+\alpha_{i&#x27;}F(a)k_i=G(a)\alpha_i k_i=0.
+\tag{2.2}
+\]">\[
+\alpha_{i&#x27;}F(a)k_i=G(a)\alpha_i k_i=0.
+\tag{2.2}
+\]</span>
+The kernel property therefore defines a unique <span class="math" data-tex="\(K(a):K_i\to K_{i&#x27;}\)">\(K(a):K_i\to K_{i&#x27;}\)</span> with <span class="math" data-tex="\(k_{i&#x27;}K(a)=F(a)k_i\)">\(k_{i&#x27;}K(a)=F(a)k_i\)</span>. Testing against the monomorphism <span class="math" data-tex="\(k\)">\(k\)</span> proves the identity and composition equations. Thus <span class="math" data-tex="\(K\)">\(K\)</span> is a functor and <span class="math" data-tex="\(k:K\to F\)">\(k:K\to F\)</span> natural.</p>
+<p>For a natural <span class="math" data-tex="\(t:T\to F\)">\(t:T\to F\)</span> with <span class="math" data-tex="\(\alpha t=0\)">\(\alpha t=0\)</span>, each <span class="math" data-tex="\(t_i\)">\(t_i\)</span> factors uniquely as <span class="math" data-tex="\(k_iv_i\)">\(k_iv_i\)</span>. For <span class="math" data-tex="\(a:i\to i&#x27;\)">\(a:i\to i&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+k_{i&#x27;}K(a)v_i
+ &amp;=F(a)t_i\\
+ &amp;=t_{i&#x27;}T(a)\\
+ &amp;=k_{i&#x27;}v_{i&#x27;}T(a).
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+k_{i&#x27;}K(a)v_i
+ &amp;=F(a)t_i\\
+ &amp;=t_{i&#x27;}T(a)\\
+ &amp;=k_{i&#x27;}v_{i&#x27;}T(a).
+\end{aligned}
+\tag{2.3}
+\]</span>
+Cancel <span class="math" data-tex="\(k_{i&#x27;}\)">\(k_{i&#x27;}\)</span> to obtain naturality of <span class="math" data-tex="\(v\)">\(v\)</span>. Its componentwise uniqueness gives uniqueness as a natural transformation. Hence <span class="math" data-tex="\(k\)">\(k\)</span> is the kernel in <span class="math" data-tex="\(\mathcal A^I\)">\(\mathcal A^I\)</span>; this proves its full universal property.</p>
+<p>Choose <span class="math" data-tex="\(q_i:G_i\to Q_i\)">\(q_i:G_i\to Q_i\)</span> as component cokernels. The equality <span class="math" data-tex="\(q_{i&#x27;}G(a)\alpha_i=0\)">\(q_{i&#x27;}G(a)\alpha_i=0\)</span> defines a unique <span class="math" data-tex="\(Q(a)\)">\(Q(a)\)</span> with
+<span class="math math-display" data-tex="\[
+Q(a)q_i=q_{i&#x27;}G(a).
+\tag{2.4}
+\]">\[
+Q(a)q_i=q_{i&#x27;}G(a).
+\tag{2.4}
+\]</span>
+Cancel the epimorphisms <span class="math" data-tex="\(q_i\)">\(q_i\)</span> to prove identities and composition. A natural <span class="math" data-tex="\(t:G\to T\)">\(t:G\to T\)</span> with <span class="math" data-tex="\(t\alpha=0\)">\(t\alpha=0\)</span> factors uniquely componentwise as <span class="math" data-tex="\(v_iq_i\)">\(v_iq_i\)</span>. Comparing <span class="math" data-tex="\(T(a)v_iq_i=t_{i&#x27;}G(a)=v_{i&#x27;}Q(a)q_i\)">\(T(a)v_iq_i=t_{i&#x27;}G(a)=v_{i&#x27;}Q(a)q_i\)</span> and canceling <span class="math" data-tex="\(q_i\)">\(q_i\)</span> proves naturality. Thus <span class="math" data-tex="\(q\)">\(q\)</span> is the cokernel in the diagram category.</p>
+<p>Consequently the functors <span class="math" data-tex="\(\operatorname{Coim}\alpha=\operatorname{coker}(\ker\alpha)\)">\(\operatorname{Coim}\alpha=\operatorname{coker}(\ker\alpha)\)</span> and <span class="math" data-tex="\(\operatorname{Im}\alpha=\ker(\operatorname{coker}\alpha)\)">\(\operatorname{Im}\alpha=\ker(\operatorname{coker}\alpha)\)</span> are computed componentwise, and their canonical comparison has components
+<span class="math math-display" data-tex="\[
+u_i:\operatorname{Coim}\alpha_i
+\longrightarrow\operatorname{Im}\alpha_i.
+\tag{2.5}
+\]">\[
+u_i:\operatorname{Coim}\alpha_i
+\longrightarrow\operatorname{Im}\alpha_i.
+\tag{2.5}
+\]</span>
+Its naturality follows from the kernel and cokernel constructions just proved. Every <span class="math" data-tex="\(u_i\)">\(u_i\)</span> is invertible because <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is abelian. The inverses are natural: from <span class="math" data-tex="\(\operatorname{Im}(a)u_i=u_{i&#x27;}\operatorname{Coim}(a)\)">\(\operatorname{Im}(a)u_i=u_{i&#x27;}\operatorname{Coim}(a)\)</span>, multiply by <span class="math" data-tex="\(u_{i&#x27;}^{-1}\)">\(u_{i&#x27;}^{-1}\)</span> on the left and <span class="math" data-tex="\(u_i^{-1}\)">\(u_i^{-1}\)</span> on the right. Hence the comparison is an isomorphism of functors. This proves that <span class="math" data-tex="\(\mathcal A^I\)">\(\mathcal A^I\)</span> is abelian.</p>
+<p>Each evaluation <span class="math" data-tex="\(\mathrm{ev}_i:\mathcal A^I\to\mathcal A\)">\(\mathrm{ev}_i:\mathcal A^I\to\mathcal A\)</span> is additive and preserves kernels and cokernels, so is exact by the retained complete tests. A complex of diagrams is exact at a position exactly when every evaluated complex is exact there: its kernel, image and their comparison are pointwise. Monomorphisms, epimorphisms and isomorphisms are likewise detected by all evaluations. For monomorphisms and epimorphisms use the zero-kernel and zero-cokernel criteria; for isomorphisms use the natural inverses above. These assertions include empty <span class="math" data-tex="\(I\)">\(I\)</span>: its functor category has one object and one map and is the zero abelian category.</p>
+<h2 id="3-products-of-categories-and-reversal-of-arrows">3. Products of categories and reversal of arrows</h2>
+<p>For a small family <span class="math" data-tex="\((\mathcal A_s)_{s\in S}\)">\((\mathcal A_s)_{s\in S}\)</span> of abelian categories, an object of <span class="math" data-tex="\(\prod_s\mathcal A_s\)">\(\prod_s\mathcal A_s\)</span> is a tuple <span class="math" data-tex="\((X_s)_s\)">\((X_s)_s\)</span>; its maps are tuples of component maps. Hom groups, bilinear composition, zero objects and finite biproducts are obtained coordinatewise. The universal property of a kernel, or a cokernel, reduces to the separate universal properties in each coordinate: a tuple of maps annihilated by the given morphism has exactly one tuple of factors. The canonical coimage–image comparison is the tuple of the component comparisons, and its inverse is the tuple of their inverses. Therefore the product category is abelian, even when <span class="math" data-tex="\(S\)">\(S\)</span> is infinite. For empty <span class="math" data-tex="\(S\)">\(S\)</span>, it is the category with one object and one map, again the zero abelian category.</p>
+<p>This product of <em>categories</em> does not require an infinite product of objects inside any <span class="math" data-tex="\(\mathcal A_s\)">\(\mathcal A_s\)</span>. Exercise 3 separates the two constructions.</p>
+<p>The opposite <span class="math" data-tex="\(\mathcal A^{op}\)">\(\mathcal A^{op}\)</span> is also abelian. Its Hom groups have the same addition, composition remains bilinear after reversal, and the zero object remains zero. A biproduct has its injections and projections exchanged. The defining kernel and cokernel universal properties exchange under reversal. For <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, this gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\ker(f^{op})=(\operatorname{coker}f)^{op},\\
+\operatorname{coker}(f^{op})=(\ker f)^{op},\\
+\operatorname{Coim}(f^{op})=(\operatorname{Im}f)^{op},\\
+\operatorname{Im}(f^{op})=(\operatorname{Coim}f)^{op}.
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+\ker(f^{op})=(\operatorname{coker}f)^{op},\\
+\operatorname{coker}(f^{op})=(\ker f)^{op},\\
+\operatorname{Coim}(f^{op})=(\operatorname{Im}f)^{op},\\
+\operatorname{Im}(f^{op})=(\operatorname{Coim}f)^{op}.
+\end{gathered}
+\tag{3.1}
+\]</span>
+Here equality means the canonical identifications given by those universal properties. The canonical coimage–image comparison for <span class="math" data-tex="\(f^{op}\)">\(f^{op}\)</span> is the opposite of the comparison for <span class="math" data-tex="\(f\)">\(f\)</span>, with these identifications. It is invertible. This checks every abelian axiom and every variance in (3.1).</p>
+<h2 id="4-pointwise-splittings-need-an-extra-compatibility">4. Pointwise splittings need an extra compatibility</h2>
+<p>A short exact sequence of diagrams is short exact at every object. A splitting is a <em>natural</em> section, or equivalently a natural retraction with the compatible maps of the retained splitting theorem. It therefore gives a splitting at every object. The converse requires the chosen component sections to commute with all diagram arrows.</p>
+<p>For example, a one-object category associated to a group <span class="math" data-tex="\(H\)">\(H\)</span> gives <span class="math" data-tex="\(H\)">\(H\)</span>-actions in the coefficient category. A section of underlying vector spaces is a splitting in <span class="math" data-tex="\(\operatorname{Fun}(H,\operatorname{Vect}_k)\)">\(\operatorname{Fun}(H,\operatorname{Vect}_k)\)</span> only if it commutes with every group operator. Exercise 2 exhibits the obstruction and proves the precise averaging repair when <span class="math" data-tex="\(|H|\)">\(|H|\)</span> is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<h2 id="5-four-graded-exercises-with-full-solutions">5. Four graded exercises with full solutions</h2>
+<p><strong>Exercise 1 (introductory: an idempotent diagram).</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> have one object and two endomorphisms <span class="math" data-tex="\(1,e\)">\(1,e\)</span>, with <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>. Describe <span class="math" data-tex="\(\operatorname{Fun}(I,\operatorname{Vect}_k)\)">\(\operatorname{Fun}(I,\operatorname{Vect}_k)\)</span>, including its maps, and prove it is equivalent as an abelian category to <span class="math" data-tex="\(\operatorname{Vect}_k\times\operatorname{Vect}_k\)">\(\operatorname{Vect}_k\times\operatorname{Vect}_k\)</span>.</p>
+<p><strong>Solution.</strong> A functor is a vector space <span class="math" data-tex="\(V\)">\(V\)</span> with an idempotent <span class="math" data-tex="\(p:V\to V\)">\(p:V\to V\)</span>. Each vector decomposes as <span class="math" data-tex="\(v=pv+(v-pv)\)">\(v=pv+(v-pv)\)</span>, where the terms lie in <span class="math" data-tex="\(\operatorname{Im}p\)">\(\operatorname{Im}p\)</span> and <span class="math" data-tex="\(\ker p\)">\(\ker p\)</span>, respectively. Their intersection is zero because <span class="math" data-tex="\(p\)">\(p\)</span> is the identity on its image and zero on its kernel. Thus <span class="math" data-tex="\(V=\operatorname{Im}p\oplus\ker p\)">\(V=\operatorname{Im}p\oplus\ker p\)</span>. A natural map <span class="math" data-tex="\((V,p)\to(W,q)\)">\((V,p)\to(W,q)\)</span> is a linear map <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(ap=qa\)">\(ap=qa\)</span>; this sends each summand to the corresponding summand. Conversely a pair of maps on those summands has a unique direct-sum map and satisfies that equation. This defines a fully faithful functor to the product category. The pair <span class="math" data-tex="\((U,W)\)">\((U,W)\)</span> is obtained from <span class="math" data-tex="\(U\oplus W\)">\(U\oplus W\)</span> with projector onto <span class="math" data-tex="\(U\)">\(U\)</span>, proving essential surjectivity. The decompositions commute with all natural maps, so provide the natural inverse equivalences. Kernels and cokernels are those of the two summand maps, either by §2 or directly by this block description. Hence the equivalence is exact.</p>
+<p><strong>Exercise 2 (intermediate: a component section may fail).</strong> Suppose <span class="math" data-tex="\(k\)">\(k\)</span> has characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span> and <span class="math" data-tex="\(H=C_p\)">\(H=C_p\)</span>. On <span class="math" data-tex="\(V=ke_1\oplus ke_2\)">\(V=ke_1\oplus ke_2\)</span>, let a generator act by <span class="math" data-tex="\(T=1+N\)">\(T=1+N\)</span>, where <span class="math" data-tex="\(Ne_2=e_1\)">\(Ne_2=e_1\)</span> and <span class="math" data-tex="\(Ne_1=0\)">\(Ne_1=0\)</span>. Show that the short exact sequence of <span class="math" data-tex="\(H\)">\(H\)</span>-representations
+<span class="math math-display" data-tex="\[
+0\to ke_1\to V\to V/ke_1\to0
+\tag{5.1}
+\]">\[
+0\to ke_1\to V\to V/ke_1\to0
+\tag{5.1}
+\]</span>
+splits after evaluation but does not split naturally. Then prove that every underlying split short exact sequence of representations of a finite group <span class="math" data-tex="\(H\)">\(H\)</span> splits naturally if <span class="math" data-tex="\(|H|\)">\(|H|\)</span> is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>, <span class="math" data-tex="\((1+N)^p=1+pN=1\)">\((1+N)^p=1+pN=1\)</span>; thus this is an <span class="math" data-tex="\(H\)">\(H\)</span>-action, also for <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. Both end terms have trivial action. The underlying vector-space section sends the quotient basis to <span class="math" data-tex="\(e_2\)">\(e_2\)</span>. Every possible section sends it to <span class="math" data-tex="\(e_2+ae_1\)">\(e_2+ae_1\)</span>, but
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T(e_2+ae_1)&amp;=e_2+(a+1)e_1\\
+&amp;\ne e_2+ae_1.
+\end{aligned}
+\tag{5.2}
+\]">\[
+\begin{aligned}
+T(e_2+ae_1)&amp;=e_2+(a+1)e_1\\
+&amp;\ne e_2+ae_1.
+\end{aligned}
+\tag{5.2}
+\]</span>
+There is no invariant lift and hence no natural section. A natural retraction would give a natural section by the retained compatible-splitting theorem, so none exists either.</p>
+<p>For the positive assertion, write the quotient as <span class="math" data-tex="\(q:V\to W\)">\(q:V\to W\)</span> and choose an underlying section <span class="math" data-tex="\(s\)">\(s\)</span>. Use the two specified actions to define
+<span class="math math-display" data-tex="\[
+\bar s=\frac1{|H|}\sum_{h\in H}h_V s h_W^{-1}.
+\tag{5.3}
+\]">\[
+\bar s=\frac1{|H|}\sum_{h\in H}h_V s h_W^{-1}.
+\tag{5.3}
+\]</span>
+Equivariance of <span class="math" data-tex="\(q\)">\(q\)</span> gives <span class="math" data-tex="\(q h_Vs h_W^{-1}=h_Wqsh_W^{-1}=1_W\)">\(q h_Vs h_W^{-1}=h_Wqsh_W^{-1}=1_W\)</span>, so <span class="math" data-tex="\(q\bar s=1_W\)">\(q\bar s=1_W\)</span>. For <span class="math" data-tex="\(g\in H\)">\(g\in H\)</span>, conjugating each summand sends its index <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\(gh\)">\(gh\)</span>. This permutes the finite sum, giving <span class="math" data-tex="\(g_V\bar s g_W^{-1}=\bar s\)">\(g_V\bar s g_W^{-1}=\bar s\)</span>. Thus <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span> is natural and is a section. The two hypotheses are used exactly in forming the finite sum and dividing by <span class="math" data-tex="\(|H|\)">\(|H|\)</span>. No finiteness of the vector-space dimensions is needed.</p>
+<p><strong>Exercise 3 (intermediate: two meanings of product).</strong> Let <span class="math" data-tex="\(\mathcal A_n=\operatorname{Vect}^{fin}_k\)">\(\mathcal A_n=\operatorname{Vect}^{fin}_k\)</span> for each <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>. Explain why <span class="math" data-tex="\(\prod_n\mathcal A_n\)">\(\prod_n\mathcal A_n\)</span> is abelian and contains the object <span class="math" data-tex="\((k)_n\)">\((k)_n\)</span>, although a countable product of copies of <span class="math" data-tex="\(k\)">\(k\)</span> does not exist in <span class="math" data-tex="\(\operatorname{Vect}^{fin}_k\)">\(\operatorname{Vect}^{fin}_k\)</span>.</p>
+<p><strong>Solution.</strong> Each finite-dimensional vector-space category is abelian. Its finite direct sums and zero space give the additive structure. A kernel is a subspace of a finite-dimensional domain, hence finite-dimensional; the images of a finite spanning family of the target span any quotient, so a cokernel is finite-dimensional too. For a linear map <span class="math" data-tex="\(f\)">\(f\)</span>, the comparison <span class="math" data-tex="\(V/\ker f\to\operatorname{Im}f\)">\(V/\ker f\to\operatorname{Im}f\)</span> sends the class of <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(f(v)\)">\(f(v)\)</span>: it is well-defined, surjective by the definition of image, and injective by the definition of kernel. Thus it is invertible. Section 3 applies to the small family; the tuple <span class="math" data-tex="\((k)_n\)">\((k)_n\)</span> is an object by its definition.</p>
+<p>If an internal product <span class="math" data-tex="\(P\)">\(P\)</span> existed in <span class="math" data-tex="\(\operatorname{Vect}^{fin}_k\)">\(\operatorname{Vect}^{fin}_k\)</span>, its projections would give a bijection
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(k,P)\longrightarrow
+\prod_{n\ge0}\operatorname{Hom}(k,k).
+\tag{5.4}
+\]">\[
+\operatorname{Hom}(k,P)\longrightarrow
+\prod_{n\ge0}\operatorname{Hom}(k,k).
+\tag{5.4}
+\]</span>
+The map is linear because each projection is linear, so its inverse is linear as well. The right side has the linearly independent coordinate vectors <span class="math" data-tex="\(\delta_n\)">\(\delta_n\)</span>: each finite linear relation is zero only when all coefficients vanish, as its coordinates show. The left side is isomorphic to <span class="math" data-tex="\(P\)">\(P\)</span>, hence finite-dimensional. This contradiction applies to finite and infinite fields alike. Coordinatewise structure in a product of categories and an internal product in one coefficient category have different universal problems.</p>
+<p><strong>Exercise 4 (hard: exact evaluation and cohomology).</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be small and let <span class="math" data-tex="\(F^\bullet\)">\(F^\bullet\)</span> be a complex in <span class="math" data-tex="\(\mathcal A^I\)">\(\mathcal A^I\)</span>. Prove that
+<span class="math math-display" data-tex="\[
+\mathrm{ev}_i H^n(F^\bullet)
+\simeq H^n(\mathrm{ev}_i F^\bullet)
+\tag{5.5}
+\]">\[
+\mathrm{ev}_i H^n(F^\bullet)
+\simeq H^n(\mathrm{ev}_i F^\bullet)
+\tag{5.5}
+\]</span>
+canonically and compatibly with arrows of <span class="math" data-tex="\(I\)">\(I\)</span> and maps of complexes. Show by an explicit degreewise short exact sequence of complexes of vector spaces that <span class="math" data-tex="\(H^0\)">\(H^0\)</span> itself need not be exact.</p>
+<p><strong>Solution.</strong> The cohomology construction retained in <em>Exact complexes, signs and lifting covers</em>, §2, uses the kernel of <span class="math" data-tex="\(d^n\)">\(d^n\)</span> modulo the image of <span class="math" data-tex="\(d^{n-1}\)">\(d^{n-1}\)</span>, with its specified universal comparison maps. Section 2 here proves that these kernels, images and the final cokernel in <span class="math" data-tex="\(\mathcal A^I\)">\(\mathcal A^I\)</span> are all pointwise. Evaluation therefore identifies exactly the same objects and structure maps with those of the evaluated complex, proving (5.5). The transitions of <span class="math" data-tex="\(F^\bullet\)">\(F^\bullet\)</span> and a map of complexes give commuting squares for the differentials. The uniqueness in the retained kernel and quotient constructions identifies their induced maps too; hence these comparisons are natural in <span class="math" data-tex="\(i\)">\(i\)</span> and in the complex, including empty <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>For the counterexample use degrees <span class="math" data-tex="\(0,1\)">\(0,1\)</span>. Let <span class="math" data-tex="\(B^\bullet\)">\(B^\bullet\)</span> be <span class="math" data-tex="\(k\xrightarrow{1}k\)">\(k\xrightarrow{1}k\)</span>, let <span class="math" data-tex="\(A^\bullet\)">\(A^\bullet\)</span> be <span class="math" data-tex="\(0\to k\)">\(0\to k\)</span>, and let <span class="math" data-tex="\(C^\bullet\)">\(C^\bullet\)</span> be <span class="math" data-tex="\(k\to0\)">\(k\to0\)</span>. Include <span class="math" data-tex="\(A^\bullet\)">\(A^\bullet\)</span> in <span class="math" data-tex="\(B^\bullet\)">\(B^\bullet\)</span> by zero in degree 0 and identity in degree 1. Quotient to <span class="math" data-tex="\(C^\bullet\)">\(C^\bullet\)</span> by identity in degree 0 and zero in degree 1. These are maps of complexes and
+<span class="math math-display" data-tex="\[
+0\longrightarrow A^\bullet\longrightarrow B^\bullet
+\longrightarrow C^\bullet\longrightarrow0
+\tag{5.6}
+\]">\[
+0\longrightarrow A^\bullet\longrightarrow B^\bullet
+\longrightarrow C^\bullet\longrightarrow0
+\tag{5.6}
+\]</span>
+is short exact in each degree. But <span class="math" data-tex="\(H^0(A)=0\)">\(H^0(A)=0\)</span>, <span class="math" data-tex="\(H^0(B)=0\)">\(H^0(B)=0\)</span>, and <span class="math" data-tex="\(H^0(C)=k\)">\(H^0(C)=k\)</span>. The resulting sequence ends in <span class="math" data-tex="\(0\to k\to0\)">\(0\to k\to0\)</span>, which is not exact at <span class="math" data-tex="\(k\)">\(k\)</span>. Exactness of evaluation does not turn the cohomology functor into an exact functor on complexes.</p>
+<h2 id="6-references-and-adaptation-notice">6. References and adaptation notice</h2>
+<ul>
+<li>Tom Leinster, <em>Basic Category Theory</em>, Cambridge Studies in Advanced Mathematics 143, Cambridge University Press, 2014; <a href="https://arxiv.org/abs/1612.09375v2">arXiv:1612.09375v2</a>, 26 August 2025. Theorem 6.2.5 and its dual supply the adapted full pointwise argument in §1; the AI spells out the checks from Lemma 6.1.3. The author identifies the corrected, editable edition and licence on his <a href="https://webhomes.maths.ed.ac.uk/~tl/bct/">book page</a>. The adaptation and this lesson's additions remain CC BY-NC-SA 4.0; earlier course lessons retain their stated licences.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Example 5.1.4(iii) and Proposition 5.1.5, for opposite categories and functor categories of abelian categories.</li>
+<li><em>Open mathematics courses</em>: the three prerequisite lessons linked in the introduction contain the exact full kernel, cokernel, splitting and cohomology arguments used here.</li>
+</ul>
+</main></body></html>

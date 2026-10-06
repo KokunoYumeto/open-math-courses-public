@@ -1,0 +1,633 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Proof companion: bounded topology and faithful states · Open Mathematics Courses</title><meta name="description" content="Proof companion: bounded topology and faithful states: programme proof companion."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><aside class="draft-notice" aria-label="Prerequisite scope"><p>Complete selected earlier programme arguments for the bounded representation and faithful-state branch, at the stated scalar, Hilbert and set-theoretic entry assumptions. General weights, modular theory and the whole course are not certified.</p></aside><article class="lesson"><h1 id="proof-companion-bounded-topology-and-faithful-states">Proof companion: bounded topology and faithful states</h1>
+<p><em>Original programme proof excerpts from the OA-MOD course project, with their original CC0 attribution. Selection, integration and checking by GPT-6 Astra (OpenAI), Ultra, October 2026. Cited human texts retain their own rights.</em></p>
+<p>This companion supplies the complete earlier arguments used by <a href="bounded-topology-and-tracial-representations.html">Bounded topology and tracial representations</a> for its bounded representation and faithful-state results. It contains the Hilbert, norm-extension, compactness, bounded calculus, predual and density proofs used there, with arbitrary Hilbert dimensions and arbitrary directed nets. The entry assumptions are complete real and complex scalars, inner-product axioms, elementary algebra and topology, and the maximal principle of set theory.</p>
+<p>These are copies of existing independently written programme proofs, not extracts from the cited human books or articles. Source locations and exact original-file and excerpt hashes are recorded in <a href="foundations/bounded-topology-foundations.provenance.json">the provenance manifest</a>. Mathematical statements and proofs are retained; local cross-references point within this companion. References in the copied context to later modular or general-weight results do not import those results here.</p>
+<p>The source module for the finite-vector commutant argument credits Jacob Lurie's <a href="https://people.math.harvard.edu/~lurie/261ynotes/lecture5.pdf">Math 261y, Lecture 5, Theorem 4 and Proposition 5</a>. The norm-extension module credits Yury Kudryashov and Heather Macbeth's <a href="https://github.com/leanprover-community/mathlib4/blob/71a80585ee495fc24472fd0eaffc89d94e4fd8d6/Mathlib/Analysis/Normed/Module/HahnBanach.lean#L44">mathlib Hahn–Banach formulations</a>. The Kaplansky module compares Jesse Peterson's <a href="https://math.vanderbilt.edu/peters10/teaching/spring2013/vonNeumannAlgebras.pdf">Notes on von Neumann algebras, Theorem 2.6.4</a>. The exact arguments needed below are written in full.</p>
+<ul>
+<li><a href="#foundation-a-real-hilbert-geometry">Foundation A: Real Hilbert geometry</a></li>
+<li><a href="#foundation-b-norm-extension-and-convex-separation">Foundation B: Norm extension and convex separation</a></li>
+<li><a href="#foundation-c-compact-products-and-dual-balls">Foundation C: Compact products and dual balls</a></li>
+<li><a href="#foundation-d-bernstein-continuous-calculus">Foundation D: Bernstein continuous calculus</a></li>
+<li><a href="#foundation-e-bounded-operators-and-topology">Foundation E: Bounded operators and topology</a></li>
+<li><a href="#foundation-f-concrete-preduals">Foundation F: Concrete preduals</a></li>
+<li><a href="#foundation-g-nonunital-bicommutant-density">Foundation G: Nonunital bicommutant density</a></li>
+<li><a href="#foundation-h-kaplansky-density">Foundation H: Kaplansky density</a></li>
+</ul>
+<h2 id="foundation-a-real-hilbert-geometry">Foundation A: Real Hilbert geometry</h2>
+
+<p>A closed real subspace is complete for this real inner product. No complex-linearity, finite dimension, or countability assumption is imposed on it.</p>
+<h2 id="the-real-hilbert-tools-used-below">The real Hilbert tools used below</h2>
+<p><strong>The inner-product inequalities.</strong> Positivity and definiteness are inner-product axioms. If <span class="math">\(y\ne0\)</span>, expansion using the linear-first convention gives</p>
+<div class="equation"><div class="math math-display">\[
+0\leq\left\|x-\frac{\langle x,y\rangle}{\|y\|^2}y\right\|^2
+=\|x\|^2-\frac{|\langle x,y\rangle|^2}{\|y\|^2}.
+\]</div></div>
+<p>Hence <span class="math">\(|\langle x,y\rangle|\leq\|x\|\|y\|\)</span>; the case <span class="math">\(y=0\)</span> is immediate. For a real inner product the same computation uses the real scalar <span class="math">\((x,y)_{\mathbb R}/\|y\|^2\)</span>. Expansion and this inequality give</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+\|x+y\|^2
+&amp;=\|x\|^2+2\operatorname{Re}\langle x,y\rangle+\|y\|^2\\
+&amp;\leq(\|x\|+\|y\|)^2,
+\end{aligned}
+\]</div></div>
+<p>so the induced norm satisfies the triangle inequality. Expanding both squares and cancelling the mixed terms also gives the parallelogram identity</p>
+<div class="equation"><div class="math math-display">\[
+\|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2.
+\]</div></div>
+<p>These computations apply in arbitrary dimension and to the underlying real Hilbert space.</p>
+<p>Let <span class="math">\(E\)</span> be a closed real subspace of a Hilbert space regarded as real. Every <span class="math">\(x\)</span> has a unique closest point <span class="math">\(P_E x\)</span> in <span class="math">\(E\)</span>. Indeed, if <span class="math">\(d=\inf_{e\in E}\|x-e\|\)</span> and <span class="math">\(e_n\)</span> is a minimizing sequence, the parallelogram identity gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;\|e_n-e_m\|^2\\
+&amp;\leq 2\|x-e_n\|^2+2\|x-e_m\|^2-4d^2\longrightarrow0.
+\end{aligned}
+\]</div></div>
+<p>Completeness and closedness give a minimizing limit. Varying that limit by <span class="math">\(t e\)</span>, for real <span class="math">\(t\)</span> and <span class="math">\(e\in E\)</span>, shows that the residual is real-orthogonal to <span class="math">\(E\)</span>. This orthogonality proves uniqueness, real-linearity of <span class="math">\(P_E\)</span>, and <span class="math">\(\|P_E x\|\leq\|x\|\)</span>.</p>
+<p>Every bounded real-linear functional <span class="math">\(\ell\)</span> on a real Hilbert space has a unique vector <span class="math">\(v\)</span> such that <span class="math">\(\ell(z)=(v,z)_{\mathbb R}\)</span>, with <span class="math">\(\|v\|=\|\ell\|\)</span>. To see this without an additional representation theorem, suppose <span class="math">\(\ell\ne0\)</span>, put <span class="math">\(N=\ker\ell\)</span>, and choose <span class="math">\(x_0\notin N\)</span>. The preceding projection construction gives <span class="math">\(u=x_0-P_Nx_0\ne0\)</span>, with <span class="math">\(u\perp_{\mathbb R}N\)</span> and <span class="math">\(\ell(u)=\ell(x_0)\ne0\)</span>. Since</p>
+<div class="equation"><div class="math math-display">\[
+z-\frac{\ell(z)}{\ell(u)}u\in N,
+\]</div></div>
+<p>one may take <span class="math">\(v=\ell(u)u/\|u\|^2\)</span>. The case <span class="math">\(\ell=0\)</span> uses <span class="math">\(v=0\)</span>. The norm equality follows from Cauchy–Schwarz and testing at <span class="math">\(v/\|v\|\)</span> when <span class="math">\(v\ne0\)</span>. Uniqueness follows by testing the difference of two representing vectors against itself.</p>
+<h2 id="foundation-b-norm-extension-and-convex-separation">Foundation B: Norm extension and convex separation</h2>
+
+<p><strong>Original mathematical exposition by GPT-6 Astra / Ultra. Owner proof draft; native CP integration and separate review remain pending.</strong></p>
+<p>These proofs supply the elementary functional-analysis inputs used in the concrete predual construction. We assume the complete real and complex scalar fields, the inner-product axioms and the set-theoretic maximal principle. Hilbert spaces have arbitrary dimension. Locally convex spaces below need not be Hausdorff or complete, and operator limits may be arbitrary directed nets.</p>
+<p>For the norm-extension formulation, the free human source is Yury Kudryashov and Heather Macbeth's <a href="https://github.com/leanprover-community/mathlib4/blob/71a80585ee495fc24472fd0eaffc89d94e4fd8d6/Mathlib/Analysis/Normed/Module/HahnBanach.lean#L44">mathlib Hahn–Banach module, <code>exists_extension_norm_eq</code> and <code>exists_dual_vector</code></a>. NP1 writes the real extension argument and its complex conversion in full. No theorem is supplied by that citation in place of a proof. The bounded operator inputs are the written <a href="#foundation-e-bounded-operators-and-topology">BK01, BK03, BK04 and BK06</a>; their free-source reconstruction is separate from this note.</p>
+<h2 id="np1-norm-preserving-extension-and-the-norming-identity">NP1 — Norm-preserving extension and the norming identity</h2>
+<p>Let <span class="math">\(p\)</span> be a finite sublinear function on a real vector space <span class="math">\(X\)</span>, and let <span class="math">\(f:D\to\mathbb R\)</span> be linear on a subspace with <span class="math">\(f\le p\)</span>. For <span class="math">\(x\notin D\)</span>, a linear extension assigning value <span class="math">\(a\)</span> to <span class="math">\(x\)</span> is dominated by <span class="math">\(p\)</span> exactly when</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;\sup_{d\in D}\{f(d)-p(d-x)\}\le a\\
+&amp;\quad\le\inf_{e\in D}\{p(e+x)-f(e)\}.
+\end{aligned}
+
+\]</div><span class="equation-tag">(NP.1)</span></div>
+<p>Each expression on the left is at most each expression on the right, because
+<span class="math">\(f(d+e)\le p(d+e)\le p(d-x)+p(e+x)\)</span>.
+Taking <span class="math">\(d=0\)</span> and <span class="math">\(e=0\)</span> shows that both endpoints of this interval are finite. Real completeness supplies a choice of <span class="math">\(a\)</span>. The positive and negative coefficients of <span class="math">\(x\)</span>, divided by their absolute values, give precisely the two inequalities in (NP.1); hence the extension is dominated on all of <span class="math">\(D+\mathbb Rx\)</span>. The union of a chain of dominated extensions is a dominated extension. The maximal principle and the one-dimensional step therefore give an extension to <span class="math">\(X\)</span>.</p>
+<p>For a bounded real functional on a subspace of a normed space, apply this with <span class="math">\(p(x)=C\|x\|\)</span>, where <span class="math">\(C\)</span> is its norm. Domination at <span class="math">\(x\)</span> and <span class="math">\(-x\)</span> gives an extension bounded by <span class="math">\(C\)</span>, and restriction gives the reverse norm inequality.</p>
+<p>For a complex-linear functional <span class="math">\(h\)</span> on a complex subspace, extend <span class="math">\(\operatorname{Re}h\)</span> as a real functional <span class="math">\(f\)</span>, dominated by <span class="math">\(\|h\|\|x\|\)</span>, and set</p>
+<div class="equation"><div class="math math-display">\[
+L(x)=f(x)-if(ix).
+
+\]</div><span class="equation-tag">(NP.2)</span></div>
+<p>Real linearity and <span class="math">\(L(ix)=iL(x)\)</span> prove complex linearity. On the original subspace, <span class="math">\(f(ix)=\operatorname{Re}(ih(x))=-\operatorname{Im}h(x)\)</span>, so <span class="math">\(L=h\)</span>. For each <span class="math">\(x\)</span>, rotate by a scalar <span class="math">\(\lambda\)</span> of modulus one making <span class="math">\(\lambda L(x)\)</span> nonnegative real. Then
+<span class="math">\(|L(x)|=f(\lambda x)\le\|h\|\|x\|\)</span>.
+Restriction again gives equality of norms. This includes the zero functional and does not require the subspace to be closed.</p>
+<p>If <span class="math">\(z\ne0\)</span>, the functional <span class="math">\(\lambda z\mapsto\lambda\|z\|\)</span> on its real or complex span has norm one. Extend it by the corresponding result. Testing <span class="math">\(z\)</span>, together with the defining bound for a functional, proves</p>
+<div class="equation"><div class="math math-display">\[
+\|z\|=\sup\{|L(z)|:L\in X^*,\ \|L\|\le1\}.
+
+\]</div><span class="equation-tag">(NP.3)</span></div>
+<p>For <span class="math">\(z=0\)</span> both sides vanish. This is the exact norming identity needed for the quotient predual norm.</p>
+<p>Two elementary finite-dimensional steps in that construction can also be made explicit. Given a finite spanning list of Hilbert vectors, successively subtract its projections on the orthonormal vectors already chosen. Skip a zero remainder and normalize a nonzero remainder. Inner-product expansion proves orthogonality at each step, and each discarded or normalized vector remains in the span accumulated so far. After finitely many steps this gives an orthonormal basis of the original span. For a subspace <span class="math">\(W\subset\mathbb C^n\)</span> and <span class="math">\(v\notin W\)</span>, successively adding vectors outside the current span constructs a basis of <span class="math">\(W\)</span>, then a basis of <span class="math">\(\mathbb C^n\)</span> starting with that basis and <span class="math">\(v\)</span>. Assigning values zero on the former basis, one on <span class="math">\(v\)</span>, and zero on the remaining basis vectors gives a linear functional annihilating <span class="math">\(W\)</span> but not <span class="math">\(v\)</span>. These are the finite coefficient and annihilator tests in CP02 and CP05.</p>
+<h2 id="np2-point-separation-and-equality-of-convex-closures">NP2 — Point separation and equality of convex closures</h2>
+<p>Let <span class="math">\(X\)</span> be a real locally convex topological vector space, <span class="math">\(C\subset X\)</span> a nonempty closed convex set, and <span class="math">\(x_0\notin C\)</span>. The definition of a locally convex topology gives a symmetric open convex neighborhood <span class="math">\(V\)</span> of zero such that <span class="math">\((x_0+V)\cap C=\varnothing\)</span>. Symmetry implies <span class="math">\(x_0\notin C+V\)</span>. Choose <span class="math">\(c_0\in C\)</span> and put</p>
+<div class="equation"><div class="math math-display">\[
+A=C+V-c_0,\qquad y=x_0-c_0.
+\]</div></div>
+<p>The set <span class="math">\(A\)</span> is open and convex, contains zero, and does not contain <span class="math">\(y\)</span>. It is absorbing: continuity of <span class="math">\(t\mapsto tx\)</span> at zero places a sufficiently small positive multiple of every <span class="math">\(x\)</span> in <span class="math">\(A\)</span>. Its gauge is consequently finite:</p>
+<div class="equation"><div class="math math-display">\[
+p_A(x)=\inf\{t&gt;0:x\in tA\}.
+
+\]</div><span class="equation-tag">(NP.4)</span></div>
+<p>It is nonnegative and positively homogeneous. If <span class="math">\(s&gt;p_A(x)\)</span> and <span class="math">\(t&gt;p_A(z)\)</span>, then <span class="math">\(x\in sA\)</span> and <span class="math">\(z\in tA\)</span>. To see the first assertion, choose a smaller admissible dilation and use convexity with zero to enlarge it to <span class="math">\(sA\)</span>; the second is identical. Convexity now gives <span class="math">\(x+z\in(s+t)A\)</span>. Letting <span class="math">\(s,t\)</span> decrease to their infima proves subadditivity.</p>
+<p>Moreover <span class="math">\(A=\{x:p_A(x)&lt;1\}\)</span>. An admissible dilation smaller than one lies in <span class="math">\(A\)</span> by convexity. Conversely, if <span class="math">\(x\in A\)</span>, openness and continuity of <span class="math">\(t\mapsto tx\)</span> allow a scalar <span class="math">\(t&gt;1\)</span> with <span class="math">\(tx\in A\)</span>; then <span class="math">\(p_A(x)\le1/t&lt;1\)</span>. Thus <span class="math">\(p_A(y)\ge1\)</span>.</p>
+<p>On <span class="math">\(\mathbb Ry\)</span>, define <span class="math">\(f(ty)=t p_A(y)\)</span>. For positive <span class="math">\(t\)</span> this is <span class="math">\(p_A(ty)\)</span>; for negative <span class="math">\(t\)</span>, domination follows from <span class="math">\(-p_A(y)\le p_A(-y)\)</span>, a consequence of subadditivity at zero. NP1 extends <span class="math">\(f\)</span> to a real linear <span class="math">\(\ell\le p_A\)</span>. On the open neighborhood <span class="math">\(A\cap(-A)\)</span> we have <span class="math">\(|\ell|&lt;1\)</span>, so <span class="math">\(\ell\)</span> is continuous: scaling this neighborhood by any positive <span class="math">\(\varepsilon\)</span> makes <span class="math">\(|\ell|&lt;\varepsilon\)</span>.</p>
+<p>We have <span class="math">\(\ell(y)=p_A(y)\ge1\)</span>. A sufficiently small positive multiple <span class="math">\(v_0\)</span> of <span class="math">\(y\)</span> belongs to <span class="math">\(V\)</span>; set <span class="math">\(\delta=\ell(v_0)&gt;0\)</span>. For every <span class="math">\(c\in C\)</span>, the vector <span class="math">\(c+v_0-c_0\)</span> belongs to <span class="math">\(A\)</span>. Therefore</p>
+<div class="equation"><div class="math math-display">\[
+\ell(c)&lt;\ell(c_0)+1-\delta
+\le\ell(x_0)-\delta.
+
+\]</div><span class="equation-tag">(NP.5)</span></div>
+<p>This proves strict point separation with a common positive margin. No Hausdorff assumption entered the proof.</p>
+<p>For completeness, the closure of a convex set is convex. If <span class="math">\(a,b\)</span> lie in that closure and <span class="math">\(0\le t\le1\)</span>, continuity of <span class="math">\((u,v)\mapsto tu+(1-t)v\)</span> lets points of the original set approximate <span class="math">\(ta+(1-t)b\)</span> in every neighborhood; each approximating convex combination belongs to the set. Applying (NP.5) to its closure shows that the closure of a nonempty convex set is the intersection of all closed half-spaces, defined by continuous real linear functionals, that contain it. The empty set is closed separately. Thus two locally convex topologies with the same continuous real dual have exactly the same closures of convex sets. There is no boundedness, completeness or sequential-closure restriction. CP09–CP10 establish the requisite dual equality for the operator topologies before using this conclusion.</p>
+<h2 id="foundation-c-compact-products-and-dual-balls">Foundation C: Compact products and dual balls</h2>
+<p><em>Programme source: OA-MOD, <code>public/src/banach-second-adjoint.md</code>, lines 62–98; 128–145.</em></p>
+<h2 id="oa-mod-ab-04-filters-and-compact-products">OA-MOD-AB-04 — Filters and compact products</h2>
+<p>A <strong>proper filter</strong> <span class="math">\(\mathcal F\)</span> on a nonempty set <span class="math">\(S\)</span> is a family of subsets containing <span class="math">\(S\)</span>, excluding the empty set, closed under finite intersections and under passage to supersets. An <strong>ultrafilter</strong> is a proper filter maximal for inclusion.</p>
+<p><strong>Extension lemma.</strong> Every proper filter lies in an ultrafilter. An ultrafilter <span class="math">\(\mathcal U\)</span> contains exactly one of <span class="math">\(A,S\setminus A\)</span> for each <span class="math">\(A\subset S\)</span>.</p>
+<p><strong>Proof.</strong> Order the proper filters containing <span class="math">\(\mathcal F\)</span> by inclusion. The union of a chain is a proper filter: finitely many chosen members lie in one filter of the chain. Zorn gives a maximal element. If <span class="math">\(A\notin\mathcal U\)</span> and every <span class="math">\(U\in\mathcal U\)</span> met <span class="math">\(A\)</span>, the supersets of the sets <span class="math">\(U\cap A\)</span> would generate a larger proper filter. Hence some <span class="math">\(U\)</span> misses <span class="math">\(A\)</span>, and <span class="math">\(S\setminus A\in\mathcal U\)</span>. Both complementary sets cannot belong to a proper filter. <span class="math">\(\square\)</span></p>
+<p>A filter on a topological space <strong>converges to <span class="math">\(s\)</span></strong> if it contains every neighborhood of <span class="math">\(s\)</span>.</p>
+<p><strong>Compactness criterion.</strong> A space <span class="math">\(S\)</span> is compact if and only if every ultrafilter on <span class="math">\(S\)</span> converges to at least one point. In a Hausdorff space its limit is unique.</p>
+<p><strong>Proof.</strong> The empty space satisfies both assertions. On a nonempty compact space, the closed sets <span class="math">\(\overline U\)</span>, <span class="math">\(U\in\mathcal U\)</span>, have the finite-intersection property, since their finite intersections contain the corresponding nonempty filter intersections. They therefore have a common point <span class="math">\(s\)</span>: otherwise their open complements would cover <span class="math">\(S\)</span> and have a finite subcover. If an open neighborhood <span class="math">\(V\)</span> of <span class="math">\(s\)</span> were absent from <span class="math">\(\mathcal U\)</span>, then <span class="math">\(S\setminus V\in\mathcal U\)</span>. This closed set would contain <span class="math">\(s\)</span>, a contradiction. Thus the filter converges.</p>
+<p>Conversely, if an open cover has no finite subcover, its closed complements have the finite-intersection property and generate a proper filter. Extend it to <span class="math">\(\mathcal U\)</span>, and suppose <span class="math">\(\mathcal U\to s\)</span>. One member <span class="math">\(V\)</span> of the cover contains <span class="math">\(s\)</span>, so both <span class="math">\(V\)</span> and its complement belong to <span class="math">\(\mathcal U\)</span>, a contradiction. Finally, disjoint neighborhoods of two distinct Hausdorff points cannot both lie in a proper filter. <span class="math">\(\square\)</span></p>
+<p><strong>Compact product theorem.</strong> An arbitrary product of compact spaces is compact in its product topology.</p>
+<p><strong>Proof.</strong> A product with an empty factor is empty and compact; an empty product is a singleton. Otherwise let <span class="math">\(P=\prod_{i\in I}S_i\)</span>, and let <span class="math">\(\mathcal U\)</span> be an ultrafilter on <span class="math">\(P\)</span>. For each coordinate projection <span class="math">\(\pi_i\)</span>, the family</p>
+<div class="equation"><div class="math math-display">\[
+ \mathcal U_i=\{A\subset S_i:\pi_i^{-1}(A)\in\mathcal U\}
+ 
+\]</div><span class="equation-tag">(AB.6)</span></div>
+<p>is an ultrafilter, as follows directly from inverse images, finite intersections and the complement criterion. Compactness supplies a limit <span class="math">\(s_i\in S_i\)</span>. Choose these limits; the same choice principle underlying Zorn is in force. Every basic neighborhood of <span class="math">\(s=(s_i)_{i\in I}\)</span> is a finite intersection of inverse images of coordinate neighborhoods, hence belongs to <span class="math">\(\mathcal U\)</span>. Thus <span class="math">\(\mathcal U\to s\)</span>, and the criterion proves compactness. No countability of <span class="math">\(I\)</span> has been introduced. <span class="math">\(\square\)</span></p>
+<p>Two elementary consequences will be used below. A closed subset of a compact space is compact: add its open complement to any cover and use a finite subcover. A compact subset of a Hausdorff space is closed: for an outside point, disjoint neighborhoods separating it from each compact-set point have a finite subfamily on the compact side; the intersection of the corresponding outside neighborhoods misses the set. A continuous image of a compact space is compact, by pulling back open covers.</p>
+<p><strong>Scalar and finite-dimensional compactness.</strong> A closed interval <span class="math">\([a,b]\)</span> is compact. For a proof, let <span class="math">\(\mathcal U\)</span> be an ultrafilter on it. Bisect the interval; at least one closed half belongs to <span class="math">\(\mathcal U\)</span>, since a finite union in an ultrafilter has a member in the ultrafilter. Repeat within the chosen half. This gives nested intervals <span class="math">\([a_n,b_n]\in\mathcal U\)</span> of lengths at most <span class="math">\(2^{-n}(b-a)\)</span>. The supremum <span class="math">\(s=\sup_n a_n\)</span> satisfies <span class="math">\(a_n\le s\le b_n\)</span> for every <span class="math">\(n\)</span>. Each neighborhood of <span class="math">\(s\)</span> contains a sufficiently short interval <span class="math">\([a_n,b_n]\)</span>, so belongs to <span class="math">\(\mathcal U\)</span>. The ultrafilter criterion proves compactness. The degenerate interval is a singleton. The lengths tend to zero because the complete ordered real field is Archimedean: if the integers had a finite supremum <span class="math">\(M\)</span>, an integer exceeding <span class="math">\(M-1\)</span> would have its successor exceeding <span class="math">\(M\)</span>; and <span class="math">\(2^n\ge n+1\)</span>.</p>
+<p>Finite real coordinate boxes are compact by the product theorem. The ordinary topology of <span class="math">\(\mathbb C^d\)</span> is the real coordinate topology on <span class="math">\(\mathbb R^{2d}\)</span>; the inequalities</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+\max(|\operatorname{Re}z|,|\operatorname{Im}z|)&amp;\le |z|\\
+ &amp;\le |\operatorname{Re}z|+|\operatorname{Im}z|
+\end{aligned}
+\]</div></div>
+<p>give both neighborhood comparisons. A closed scalar disk is a closed subset of a sufficiently large real box, so is compact. More generally, every closed bounded subset of <span class="math">\(\mathbb F^d\)</span>, in the maximum-coordinate norm <span class="math">\(|\alpha|_\infty=\max_j|\alpha_j|\)</span>, is compact: it is closed inside such a box.</p>
+<h2 id="oa-mod-ab-05-dual-ball-compactness-and-the-bidual-criterion">OA-MOD-AB-05 — Dual-ball compactness and the bidual criterion</h2>
+<p><strong>Banach–Alaoglu theorem.</strong> For any real or complex normed space <span class="math">\(X\)</span> and any <span class="math">\(R\geq0\)</span>, the closed ball <span class="math">\(RB_{X^*}\)</span> is compact in <span class="math">\(\sigma(X^*,X)\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math">\(R&gt;0\)</span>, consider the product of closed scalar disks</p>
+<div class="equation"><div class="math math-display">\[
+ P_R=\prod_{x\in X}\{z\in\mathbb F:|z|\leq R\|x\|\}.
+ 
+\]</div><span class="equation-tag">(AB.7)</span></div>
+<p>Each disk is compact by the scalar-disk proof in AB-04, and the preceding product theorem makes <span class="math">\(P_R\)</span> compact for arbitrary <span class="math">\(X\)</span>. Within this product impose the equations</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+z_{ax+by}=az_x+bz_y\\
+(x,y\in X,\ a,b\in\mathbb F).
+\end{gathered}
+
+\]</div><span class="equation-tag">(AB.8)</span></div>
+<p>Each equation is closed because it involves only three continuous coordinate evaluations and scalar operations. Their simultaneous solution set is closed and compact. A solution defines a linear functional <span class="math">\(f(x)=z_x\)</span> with <span class="math">\(|f(x)|\leq R\|x\|\)</span>, hence <span class="math">\(\|f\|\leq R\)</span>. Conversely every functional in the ball gives a solution. This identification is a homeomorphism, since both topologies are pointwise convergence on <span class="math">\(X\)</span>. If <span class="math">\(R=0\)</span>, the ball is the compact singleton <span class="math">\(\{0\}\)</span>. <span class="math">\(\square\)</span></p>
+<p>The weak-star topology is Hausdorff, since distinct functionals differ on some vector. Dual balls are also weak-star closed, being the intersections of <span class="math">\(\{|f(x)|\leq R\|x\|\}\)</span>.</p>
+<h2 id="foundation-d-bernstein-continuous-calculus">Foundation D: Bernstein continuous calculus</h2>
+
+<h2 id="gp0-the-bounded-calculus-used-in-the-proof">GP0. The bounded calculus used in the proof</h2>
+<p>Norm limits of bounded operators exist whenever the operator sequence is Cauchy: for each vector <span class="math">\(x\)</span>, completeness of <span class="math">\(H\)</span> gives <span class="math">\(Tx=\lim_n T_nx\)</span>. Passing to the limit proves linearity and boundedness; a uniform Cauchy estimate <span class="math">\(\|(T_n-T_m)x\|\leq\varepsilon\|x\|\)</span> then proves operator-norm convergence as <span class="math">\(m\to\infty\)</span>. In particular an operator series whose norms have finite sum converges in operator norm. This justifies the calculus limits and the geometric inverse below.</p>
+<p>We record the tools so that the later cutoff is an actual proof step. Cauchy–Schwarz follows by applying positivity to <span class="math">\(x-ty\)</span> and minimizing over the complex scalar <span class="math">\(t\)</span>; the same argument applies to any positive semidefinite sesquilinear form. For a bounded positive operator <span class="math">\(A\)</span>, put</p>
+<div class="equation"><div class="math math-display">\[
+m=\sup_{\|x\|=1}\langle Ax,x\rangle.
+\]</div></div>
+<p>Form Cauchy–Schwarz and the identity <span class="math">\(\|v\|=\sup_{\|y\|=1}|\langle v,y\rangle|\)</span> give</p>
+<div class="equation"><div class="math math-display">\[
+\|Ax\|^2\leq m\langle Ax,x\rangle\leq m^2\|x\|^2.
+
+\]</div><span class="equation-tag">(GP0.1)</span></div>
+<p>Thus <span class="math">\(\|A\|=m\)</span>. In particular, if <span class="math">\(0\leq A\leq I\)</span>, then <span class="math">\(A-A^2\geq0\)</span>.</p>
+<p>Bounded adjoints require no extra representation theorem here. The real Riesz proof gives a vector representing the real part of a bounded complex-linear functional. Testing also at <span class="math">\(ix\)</span> recovers its imaginary part, and hence its representation as <span class="math">\(x\mapsto\langle x,v\rangle\)</span>. Applying this to <span class="math">\(x\mapsto\langle Tx,y\rangle\)</span> defines <span class="math">\(T^*y\)</span>; the defining equality proves linearity, the product rule, and <span class="math">\(\|T^*\|=\|T\|\)</span>. It also gives <span class="math">\(\|T^*T\|=\|T\|^2\)</span>: one inequality is the operator norm bound, and the other follows from <span class="math">\(\|Tx\|^2=\langle T^*Tx,x\rangle\)</span>.</p>
+<p>Here is continuous calculus for a positive contraction <span class="math">\(A\)</span>, in precisely the form we need. For a continuous real function <span class="math">\(f\)</span> on <span class="math">\([0,1]\)</span>, its Bernstein polynomial is</p>
+<div class="equation"><div class="math math-display">\[
+B_n f(t)=\sum_{k=0}^n f(k/n){n\choose k}t^k(1-t)^{n-k}.
+
+\]</div><span class="equation-tag">(GP0.2)</span></div>
+<p>These polynomials converge uniformly to <span class="math">\(f\)</span>. Indeed the nonnegative binomial weights sum to one, have mean <span class="math">\(t\)</span>, and have variance <span class="math">\(t(1-t)/n\leq1/(4n)\)</span>; the mean and variance follow by differentiating <span class="math">\((s+t)^n\)</span> once and twice and then setting <span class="math">\(s=1-t\)</span>. Uniform continuity gives, for every <span class="math">\(\varepsilon&gt;0\)</span>, a <span class="math">\(\delta&gt;0\)</span> on which the oscillation of <span class="math">\(f\)</span> is at most <span class="math">\(\varepsilon\)</span>. The sum of the weights with <span class="math">\(|k/n-t|\geq\delta\)</span> is at most <span class="math">\(1/(4n\delta^2)\)</span>, by multiplying each of those weights by the lower bound for its squared deviation. Consequently</p>
+<div class="equation"><div class="math math-display">\[
+|B_nf(t)-f(t)|\leq\varepsilon+\frac{2\|f\|_\infty}{4n\delta^2}.
+
+\]</div><span class="equation-tag">(GP0.3)</span></div>
+<p>The uniform continuity used here follows from interval compactness: otherwise pairs at distance tending to zero with a fixed positive oscillation have a common convergent subsequence, contradicting continuity. Interval compactness follows by nested bisection and completeness of the real numbers.</p>
+<p>Each operator <span class="math">\(A^k(I-A)^{n-k}\)</span> is positive. Remove the even powers as the same polynomial factor on both sides of a quadratic form; the remaining factor is one of <span class="math">\(I,A,I-A,A(I-A)\)</span>, all positive by (GP0.1). The operator binomial weights therefore are positive and sum to <span class="math">\(I\)</span>. It follows that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+-\|f\|_\infty I\leq B_nf(A)\leq\|f\|_\infty I,\\
+\|B_nf(A)\|\leq\|f\|_\infty.
+\end{gathered}
+
+\]</div><span class="equation-tag">(GP0.4)</span></div>
+<p>For the last norm estimate, a self-adjoint <span class="math">\(T\)</span> with <span class="math">\(-cI\leq T\leq cI\)</span> has norm at most <span class="math">\(c\)</span>: for <span class="math">\(c&gt;0\)</span>, apply (GP0.1) to <span class="math">\((T+cI)/(2c)\)</span> to obtain <span class="math">\(T^2\leq c^2I\)</span>; the case <span class="math">\(c=0\)</span> follows by polarization.</p>
+<p>For a fixed polynomial <span class="math">\(p\)</span>, the coefficients of <span class="math">\(B_np\)</span> converge to those of <span class="math">\(p\)</span>. One elementary verification for the monomial <span class="math">\(t^j\)</span> is to express <span class="math">\(k^j\)</span> as a linear combination of the falling products <span class="math">\(k(k-1)\cdots(k-r+1)\)</span>, <span class="math">\(0\leq r\leq j\)</span>, whose highest coefficient is one. Binomial differentiation gives the expectation of that product as <span class="math">\(n(n-1)\cdots(n-r+1)t^r\)</span>. After division by <span class="math">\(n^j\)</span>, only <span class="math">\(r=j\)</span> survives in the limit. Linearity proves the assertion. Thus (GP0.4) implies <span class="math">\(\|p(A)\|\leq\|p\|_\infty\)</span> for real polynomials. For a complex polynomial use <span class="math">\(p(A)^*p(A)=(\overline p p)(A)\)</span> and the adjoint norm identity.</p>
+<p>Uniform polynomial approximation now defines <span class="math">\(f(A)\)</span> for every continuous complex <span class="math">\(f\)</span>. The limit is independent of the approximating sequence, preserves sums, products and conjugation, and has norm at most <span class="math">\(\|f\|_\infty\)</span>. Positivity follows by using the nonnegative Bernstein weights when <span class="math">\(f\geq0\)</span>; hence scalar inequalities are preserved. An operator commuting with <span class="math">\(A\)</span> commutes with every <span class="math">\(f(A)\)</span>, by polynomial approximation. In particular square roots of positive contractions are available, and</p>
+<div class="equation"><div class="math math-display">\[
+\langle Ax,x\rangle=\|A^{1/2}x\|^2.
+
+\]</div><span class="equation-tag">(GP0.5)</span></div>
+<p>Positive operators of arbitrary finite norm are reduced to contractions by scaling. This proves all the continuous calculus needed below. It makes no Borel or unbounded calculus assertion.</p>
+<h2 id="foundation-e-bounded-operators-and-topology">Foundation E: Bounded operators and topology</h2>
+<p><em>Programme source: OA-MOD, <code>public/src/bounded-operator-kernel.md</code>, lines 9–81; 87–136; 137–160.</em></p>
+<h2 id="oa-mod-bk-01-the-bounded-prerequisite-boundary">OA-MOD-BK-01 — The bounded prerequisite boundary</h2>
+<p>Inner products are linear in the first variable. A Hilbert space is a complete complex inner-product space; scalar completeness and the inner-product axioms are entry assumptions. For a bounded self-adjoint operator <span class="math">\(a\)</span>, write <span class="math">\(a\geq0\)</span> when <span class="math">\(\langle a\xi,\xi\rangle\geq0\)</span> for all <span class="math">\(\xi\)</span>. All operators in this lesson have full Hilbert-space domains.</p>
+<p>We first discharge the two bounded contracts used in later sections: Hilbert projection, representation and adjoints; and the full continuous calculus for a bounded self-adjoint element in a unital norm-closed *-algebra. The zero Hilbert space satisfies all ensuing operator statements trivially; statements about nonempty spectra below concern nonzero spaces.</p>
+<p><strong>Hilbert representation and bounded operators.</strong> The preceding real Hilbert proof constructs orthogonal projections by a minimizing sequence and the parallelogram identity, and proves the real Riesz representation theorem. Apply it to the real Hilbert space with inner product <span class="math">\(\operatorname{Re}\langle\cdot,\cdot\rangle\)</span>. For a complex closed subspace, testing orthogonality against <span class="math">\(\eta\)</span> and <span class="math">\(i\eta\)</span> makes its real projection the complex orthogonal projection. For a bounded complex-linear functional <span class="math">\(L\)</span>, represent <span class="math">\(\operatorname{Re}L(\xi)\)</span> as <span class="math">\(\operatorname{Re}\langle\xi,v\rangle\)</span>. Evaluation at <span class="math">\(i\xi\)</span> identifies the imaginary parts as well, so <span class="math">\(L(\xi)=\langle\xi,v\rangle\)</span>, with the same norm.</p>
+<p>If a bounded form <span class="math">\(b(\xi,\eta)\)</span> is linear in <span class="math">\(\xi\)</span> and conjugate-linear in <span class="math">\(\eta\)</span>, apply this result to <span class="math">\(\eta\mapsto\overline{b(\xi,\eta)}\)</span>, at each fixed <span class="math">\(\xi\)</span>. Its representing vector <span class="math">\(T\xi\)</span> satisfies
+<span class="math">\(b(\xi,\eta)=\langle T\xi,\eta\rangle\)</span> and <span class="math">\(\|T\xi\|\leq C\|\xi\|\)</span>. Uniqueness proves linearity and uniqueness of <span class="math">\(T\)</span>. The same argument applied to <span class="math">\(\langle T\xi,\eta\rangle\)</span>, for <span class="math">\(T:H\to K\)</span>, constructs <span class="math">\(T^*:K\to H\)</span>. Testing pairings proves the adjoint sum and product rules and <span class="math">\(\|T^*\|=\|T\|\)</span>. Also
+<span class="math">\(\|T^*T\|=\|T\|^2\)</span>, by <span class="math">\(\|T\xi\|^2=\langle T^*T\xi,\xi\rangle\)</span> and the reverse operator-norm inequality.</p>
+<p>Bounded maps on a dense subspace extend uniquely by norm limits: the bound makes images of a Cauchy sequence Cauchy and makes the limit independent of the approximating sequence. If a pre-Hilbert space is initially given, its completion is constructed from Cauchy sequences modulo sequences tending to zero. Termwise addition and scalar multiplication descend; the inner product is the limit of the original pairings, which exists and is representative-independent by Cauchy–Schwarz. Constant sequences embed isometrically and densely. For a Cauchy sequence of classes, choose representatives within <span class="math">\(2^{-n}\)</span> at the <span class="math">\(n\)</span>-th step after taking a subsequence with successive class errors at most <span class="math">\(2^{-n}\)</span>; the chosen representative points are Cauchy and give its limit. The original Cauchy sequence converges to that limit as well. This proves completeness.</p>
+<p>For later nets, sequential completeness also gives a limit for every Cauchy net: choose increasing indices whose subsequent pairwise errors are at most <span class="math">\(2^{-n}\)</span>. Their values form a Cauchy sequence with a limit, and the same tail estimates prove convergence of the original net to that limit. GP0 also proves completeness of <span class="math">\(B(H)\)</span> in operator norm, by taking limits on each vector, and proves Cauchy–Schwarz for positive semidefinite forms. In particular, for bounded positive <span class="math">\(a\)</span>,
+<span class="math">\(\|a\|=\sup_{\|\xi\|=1}\langle a\xi,\xi\rangle\)</span>, and</p>
+<div class="equation"><div class="math math-display">\[
+\|d\xi\|^2\leq C\langle d\xi,\xi\rangle
+\quad\hbox{if }0\leq d\leq CI.
+
+\]</div><span class="equation-tag">(BK.1)</span></div>
+<p>For <span class="math">\(C&gt;0\)</span>, this follows from GP0 applied to <span class="math">\(d/C\)</span>; for <span class="math">\(C=0\)</span>, polarization gives <span class="math">\(d=0\)</span>.</p>
+<p><strong>The interval calculus.</strong> GP0 constructs the calculus for a positive contraction from Bernstein polynomials. Its polynomial norm bound, uniform approximation, positivity and commutation proofs are all given there. For self-adjoint <span class="math">\(T\)</span>, take <span class="math">\(C=\|T\|&gt;0\)</span> and apply that construction to <span class="math">\((T+CI)/(2C)\)</span>. We obtain a unital *-homomorphism
+<span class="math">\(f\mapsto f(T)\)</span> from <span class="math">\(C([-C,C])\)</span>, with
+<span class="math">\(\|f(T)\|\leq\|f\|_\infty\)</span>, preservation of order, and polynomial approximation in operator norm. If <span class="math">\(C=0\)</span>, use <span class="math">\(f(T)=f(0)I\)</span>. Thus every resulting operator belongs to any unital norm-closed *-algebra containing <span class="math">\(T\)</span>, and commutes with every operator commuting with <span class="math">\(T\)</span>.</p>
+<p>For completeness, we now pass from the containing interval to the actual spectrum, rather than assume its norm and inverse properties. Define <span class="math">\(\sigma(T)\)</span> as the complex numbers <span class="math">\(\lambda\)</span> for which <span class="math">\(T-\lambda I\)</span> has no bounded two-sided inverse on <span class="math">\(H\)</span>. Norm completeness and the geometric series prove that the resolvent set is open: perturb an invertible operator by an error smaller than the reciprocal inverse norm. The same series excludes <span class="math">\(|\lambda|&gt;C\)</span>. For <span class="math">\(\operatorname{Im}\lambda\ne0\)</span>, the imaginary part of the quadratic pairing gives
+<span class="math">\(\|(T-\lambda)\xi\|\geq|\operatorname{Im}\lambda|\|\xi\|\)</span>.
+Its range is closed, and its orthogonal complement is
+<span class="math">\(\ker(T-\overline\lambda)=0\)</span>; hence it is onto and has bounded inverse. Consequently <span class="math">\(\sigma(T)\)</span> is a compact subset of <span class="math">\([-C,C]\)</span>.</p>
+<p>It is nonempty. Set <span class="math">\(B=T+CI\geq0\)</span> and <span class="math">\(m=\|B\|\)</span>. If <span class="math">\(m=0\)</span>, <span class="math">\(T=-CI\)</span>, whose spectrum is <span class="math">\(\{-C\}\)</span>. Otherwise take unit <span class="math">\(\xi_n\)</span> with <span class="math">\(\langle B\xi_n,\xi_n\rangle\to m\)</span>. The inequality <span class="math">\(B^2\leq mB\)</span>, proved in GP0, gives
+<span class="math">\(\|(B-mI)\xi_n\|^2\leq m(m-\langle B\xi_n,\xi_n\rangle)\to0\)</span>.
+A bounded inverse is therefore impossible, so <span class="math">\(m-C\in\sigma(T)\)</span>.
+More generally, each real <span class="math">\(\lambda\in\sigma(T)\)</span> has unit approximate eigenvectors. Otherwise <span class="math">\(T-\lambda\)</span> is bounded below, hence injective with closed range; the range-kernel identity for its self-adjoint adjoint makes that range dense, so it would have a bounded inverse.</p>
+<p><strong>Restriction to the spectrum.</strong> If <span class="math">\(h\in C([-C,C])\)</span> vanishes on <span class="math">\(\sigma(T)\)</span>, then <span class="math">\(h(T)=0\)</span>. First suppose its support is a compact subset of the complement of the spectrum. Around each point <span class="math">\(\lambda\)</span> of that support choose an interval of radius <span class="math">\(\delta\)</span> with
+<span class="math">\(\delta\|(T-\lambda)^{-1}\|&lt;1\)</span>.
+A finite such cover splits <span class="math">\(h\)</span> into finitely many continuous functions <span class="math">\(h_j\)</span> supported in those intervals. Explicitly, choose slightly smaller intervals still covering the support, use their distance-to-complement functions, divide by their positive sum on the support, and multiply by <span class="math">\(h\)</span>, extending by zero elsewhere. The extension is continuous because the compact support lies inside the set where the denominator is positive.</p>
+<p>For the center <span class="math">\(\lambda_j\)</span> and radius <span class="math">\(\delta_j\)</span>, multiplicativity and the interval norm bound give
+<br>
+\begin{aligned}
+|h_j(T)|
+&amp;\leq|(T-\lambda_j)^{-1}|^n
+|[(t-\lambda_j)^nh_j(t) (outside these selected proof passages)|\
+&amp;\leq\bigl(\delta_j|(T-\lambda_j)^{-1}|\bigr)^n
+|h_j|_\infty .
+\end{aligned}
+]
+Let <span class="math">\(n\to\infty\)</span>; each <span class="math">\(h_j(T)\)</span> is zero. For a general <span class="math">\(h\)</span> vanishing on the spectrum, multiply it by continuous distance cutoffs which vanish within distance <span class="math">\(1/n\)</span> of the spectrum and equal one beyond distance <span class="math">\(2/n\)</span>. The products converge uniformly to <span class="math">\(h\)</span>, since <span class="math">\(h\)</span> vanishes on that compact set. The preceding case and the norm bound prove <span class="math">\(h(T)=0\)</span>.</p>
+<p>Every continuous complex <span class="math">\(f\)</span> on <span class="math">\(\sigma(T)\)</span> extends continuously to <span class="math">\([-C,C]\)</span>, with the same supremum norm: interpolate linearly across each complementary interval and keep the value constant beyond the extreme spectral points. To check continuity at the spectral set, small complementary intervals have both endpoints close, so uniform continuity of <span class="math">\(f\)</span> controls their interpolates. For intervals longer than a fixed positive length there are only finitely many, and the interpolation is continuous at each endpoint. These two observations give continuity everywhere. Convexity of a closed complex disc gives the norm bound, and a real nonnegative <span class="math">\(f\)</span> has a real nonnegative extension.</p>
+<p>The vanishing result makes the value of <span class="math">\(f(T)\)</span> independent of that extension. It yields a unital *-homomorphism on <span class="math">\(C(\sigma(T))\)</span>, positive and contractive. For <span class="math">\(\lambda\in\sigma(T)\)</span>, let <span class="math">\(\xi_n\)</span> be its unit approximate eigenvectors. Factoring <span class="math">\(p(t)-p(\lambda)\)</span> proves
+<span class="math">\(\|(p(T)-p(\lambda))\xi_n\|\to0\)</span> for polynomials. Uniform approximation on the containing interval proves the same assertion for continuous <span class="math">\(f\)</span>. Hence
+<span class="math">\(\|f(T)\|\geq|f(\lambda)|\)</span>, and therefore</p>
+<div class="equation"><div class="math math-display">\[
+\|f(T)\|=\max_{\lambda\in\sigma(T)}|f(\lambda)|.
+\]</div></div>
+<p>If <span class="math">\(\mu\notin f(\sigma(T))\)</span>, applying the calculus to <span class="math">\(1/(f-\mu)\)</span> gives an inverse for <span class="math">\(f(T)-\mu I\)</span>. If <span class="math">\(\mu=f(\lambda)\)</span>, the approximate eigenvectors rule out such an inverse. Thus spectral mapping, including complex-valued <span class="math">\(f\)</span>, is proved. Inverses produced by the calculus belong to every unital norm-closed *-algebra containing <span class="math">\(T\)</span>.</p>
+<p><strong>Positivity, square roots and lower bounds.</strong> A bounded positive <span class="math">\(a\)</span> has no negative spectral value: for <span class="math">\(\lambda&lt;0\)</span>,
+<span class="math">\(\|(a-\lambda)\xi\|\geq-\lambda\|\xi\|\)</span>, and the same closed-range and adjoint argument proves invertibility. Hence <span class="math">\(\sigma(a)\subset[0,\|a\|]\)</span>, and the calculus gives <span class="math">\(c=\sqrt a\geq0\)</span>, <span class="math">\(c^2=a\)</span>.
+If another positive <span class="math">\(b\)</span> satisfies <span class="math">\(b^2=a\)</span>, it commutes with <span class="math">\(a\)</span>, hence with <span class="math">\(c\)</span> by polynomial approximation. Then <span class="math">\((b-c)(b+c)=0\)</span>. Positivity and (BK.1) show
+<span class="math">\(\ker(b+c)=\ker b\cap\ker c=\ker a\)</span>.
+The range of the self-adjoint <span class="math">\(b+c\)</span> is dense in <span class="math">\((\ker a)^\perp\)</span>, so <span class="math">\(b-c\)</span> vanishes there and also on <span class="math">\(\ker a\)</span>. Thus <span class="math">\(b=c\)</span>. This proves uniqueness without an unbounded spectral or polar theorem.</p>
+<p>The identity <span class="math">\(\langle a\xi,\xi\rangle=\|a^{1/2}\xi\|^2\)</span> gives
+<span class="math">\(\ker a=\ker a^{1/2}\)</span>. If <span class="math">\(a\geq mI\)</span>, <span class="math">\(m&gt;0\)</span>, applying the negative-value argument to <span class="math">\(a-mI\)</span> gives <span class="math">\(\sigma(a)\subset[m,\|a\|]\)</span>; its continuous inverse and inverse square root are consequently available in the algebra. Finally, for any bounded map <span class="math">\(T:H\to K\)</span>,
+<span class="math">\(\overline{\operatorname{ran}T}=(\ker T^*)^\perp\)</span>:
+orthogonality to every <span class="math">\(T\xi\)</span> is equivalent to <span class="math">\(T^*\eta=0\)</span>. This is the range-kernel identity used above and below.</p>
+<h2 id="oa-mod-bk-02-finite-vector-approximation-and-the-bicommutant">OA-MOD-BK-02 — Finite-vector approximation and the bicommutant</h2>
+<p>For <span class="math">\(S\subset B(H)\)</span>, let <span class="math">\(S&#39;=\{r:rs=sr\ \text{for all }s\in S\}\)</span>.
+Strong convergence means norm convergence on each fixed Hilbert vector; weak operator convergence means convergence of every matrix coefficient. Cauchy–Schwarz gives strong implies weak. Fixed left and right multiplication are continuous for both topologies: for strong convergence test
+<span class="math">\(r(x_i-x)\xi\)</span> and <span class="math">\((x_i-x)r\xi\)</span>; for weak convergence move <span class="math">\(r\)</span> to <span class="math">\(r^*\eta\)</span> in the first coefficient and to <span class="math">\(r\xi\)</span> in the second. Thus a commutant is weakly closed. If <span class="math">\(S\)</span> is *-closed, taking adjoints of its commutation equations also makes <span class="math">\(S&#39;\)</span> a unital *-algebra.</p>
+<p><strong>Theorem.</strong> Every unital *-subalgebra <span class="math">\(\mathcal B\subset B(H)\)</span>, whether or not norm closed, satisfies</p>
+<div class="equation"><div class="math math-display">\[
+\overline{\mathcal B}^{\mathrm{SOT}}
+=\overline{\mathcal B}^{\mathrm{WOT}}=\mathcal B&#39;&#39;.
+
+\]</div><span class="equation-tag">(BK.2)</span></div>
+<p>Only the inclusion from right to left needs proof. Fix <span class="math">\(T\in\mathcal B&#39;&#39;\)</span>, a finite list <span class="math">\(\xi_1,\ldots,\xi_n\)</span>, and an error <span class="math">\(\varepsilon&gt;0\)</span>. On <span class="math">\(H^n\)</span>, let <span class="math">\(D(b)\)</span> act diagonally and put</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\Xi=(\xi_1,\ldots,\xi_n),\\
+L=\overline{\{D(b)\Xi:b\in\mathcal B\}}.
+\end{gathered}
+\]</div></div>
+<p>This is a closed linear subspace invariant under <span class="math">\(D(\mathcal B)\)</span> and their adjoints. Its orthogonal complement is also invariant, by the adjoint pairing; hence its orthogonal projection <span class="math">\(P\)</span> commutes with every <span class="math">\(D(b)\)</span>. In block matrix entries this says <span class="math">\(P_{jk}\in\mathcal B&#39;\)</span>.
+Consequently <span class="math">\(D(T)P=PD(T)\)</span>. Unitality puts <span class="math">\(\Xi\)</span> in <span class="math">\(L\)</span>, so
+<span class="math">\(PD(T)\Xi=D(T)\Xi\)</span>. Membership of <span class="math">\(D(T)\Xi\)</span> in <span class="math">\(L\)</span> supplies one <span class="math">\(b\in\mathcal B\)</span> with
+<span class="math">\(\sum_j\|(b-T)\xi_j\|^2&lt;\varepsilon^2\)</span>.
+These simultaneous finite-vector conditions are exactly a neighborhood basis for the strong topology, proving <span class="math">\(T\)</span> belongs to the strong closure. The other inclusions follow from weak closedness of <span class="math">\(\mathcal B&#39;&#39;\)</span>.</p>
+<p>Selecting approximants with finite sets increasing and error decreasing gives a directed net; this argument supplies no uniform norm bound and requires no countable cofinal set. We have explicitly used <span class="math">\(I\in\mathcal B\)</span>. Without it, the zero algebra on a nonzero space is already a counterexample to (BK.2).</p>
+<p>A concrete von Neumann algebra is therefore equivalently a unital *-algebra <span class="math">\(M=M&#39;&#39;\)</span>, a strongly closed unital *-algebra, or a weakly closed one. It is norm closed, and the calculus constructed in BK-01 stays inside it.</p>
+<h2 id="oa-mod-bk-03-the-ultraweak-convergence-needed-by-finite-cutoffs">OA-MOD-BK-03 — The ultraweak convergence needed by finite cutoffs</h2>
+<p>The ultraweak topology is defined by the coefficient sums</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\omega_{\xi,\eta}(x)=\sum_{n=1}^{\infty}\langle x\xi_n,\eta_n\rangle,\\
+\sum_n\|\xi_n\|^2&lt;\infty,\quad
+\sum_n\|\eta_n\|^2&lt;\infty .
+\end{gathered}
+
+\]</div><span class="equation-tag">(BK.3)</span></div>
+<p>They converge absolutely by Cauchy–Schwarz, with norm bound
+<span class="math">\(\|x\|(\sum\|\xi_n\|^2)^{1/2}(\sum\|\eta_n\|^2)^{1/2}\)</span>.
+This definition permits nonseparable <span class="math">\(H\)</span>; the sequences belong to each individual test, not to a chosen basis.</p>
+<p>If <span class="math">\(x_i\to x\)</span> weakly and <span class="math">\(\sup_i\|x_i\|&lt;\infty\)</span>, then <span class="math">\(x_i\to x\)</span> ultraweakly. Indeed set <span class="math">\(D=\sup_i\|x_i\|+\|x\|\)</span>. The coefficient tail after <span class="math">\(N\)</span>, evaluated at <span class="math">\(x_i-x\)</span>, is bounded uniformly by</p>
+<div class="equation"><div class="math math-display">\[
+D\left(\sum_{n&gt;N}\|\xi_n\|^2\right)^{1/2}
+ \left(\sum_{n&gt;N}\|\eta_n\|^2\right)^{1/2}.
+\]</div></div>
+<p>Choose <span class="math">\(N\)</span> for the tail, then a common directed tail for the finitely many leading coefficients. This proves convergence of the whole sum. Bounded strong convergence is a special case.</p>
+<p>Fixed multiplication is ultraweakly continuous without a bound on the varying net: testing <span class="math">\(rx\)</span> replaces <span class="math">\(\eta_n\)</span> by <span class="math">\(r^*\eta_n\)</span>, while testing <span class="math">\(xr\)</span> replaces <span class="math">\(\xi_n\)</span> by <span class="math">\(r\xi_n\)</span>; both replacement sequences are square summable. Single-term sequences show that ultraweak convergence implies weak operator convergence. In particular a weakly closed <span class="math">\(M\)</span> is ultraweakly closed. These arguments do not identify the topologies on unbounded sets or prove a general characterization of normal maps.</p>
+<h2 id="oa-mod-bk-04-bounded-increasing-positive-nets-have-strong-suprema">OA-MOD-BK-04 — Bounded increasing positive nets have strong suprema</h2>
+<p>Let <span class="math">\(a_i\in M_+\)</span> be increasing on a nonempty directed set and <span class="math">\(a_i\leq CI\)</span>, <span class="math">\(C&lt;\infty\)</span>. Then there is <span class="math">\(a\in M_+\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\langle a\xi,\xi\rangle=\sup_i\langle a_i\xi,\xi\rangle,\\
+a_i\longrightarrow a\quad\text{strongly and ultraweakly}.
+\end{gathered}
+
+\]</div><span class="equation-tag">(BK.4)</span></div>
+<p>It is the least upper bound even in <span class="math">\(B(H)_{\rm sa}\)</span>.</p>
+<p>Here is a construction avoiding a representation theorem for an unverified quadratic supremum. The case <span class="math">\(C=0\)</span> is immediate. For <span class="math">\(C&gt;0\)</span>, if <span class="math">\(j\geq i\)</span>, apply (BK.1) to <span class="math">\(a_j-a_i\)</span>:</p>
+<div class="equation"><div class="math math-display">\[
+\|(a_j-a_i)\xi\|^2
+ \leq C\bigl(\langle a_j\xi,\xi\rangle-\langle a_i\xi,\xi\rangle\bigr).
+\]</div></div>
+<p>The scalar increasing bounded net has a supremum. Given two sufficiently late indices, choose a common upper index and use the displayed estimate twice and the triangle inequality. This proves that <span class="math">\(a_i\xi\)</span> is Cauchy for every <span class="math">\(\xi\)</span>. Completeness yields a limit <span class="math">\(a\xi\)</span>. Passing to limits proves linearity and <span class="math">\(\|a\|\leq C\)</span>; passing to adjoint pairings proves self-adjointness. Its diagonal is the stated supremum, so <span class="math">\(0\leq a\leq CI\)</span> and <span class="math">\(a\geq a_i\)</span>. Any self-adjoint upper bound dominates this diagonal, hence dominates <span class="math">\(a\)</span>. Strong closedness gives <span class="math">\(a\in M\)</span>, and BK-03 gives ultraweak convergence.</p>
+<p>If the original upper bound is <span class="math">\(b\in M_+\)</span>, use <span class="math">\(C=\|b\|\)</span>; leastness gives <span class="math">\(a\leq b\)</span>. Applying the result to <span class="math">\(CI-a_i\)</span> proves the decreasing-net version. Also, for fixed <span class="math">\(x\in M\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+a_i\uparrow a\quad\Longrightarrow\quad x^*a_ix\uparrow x^*ax.
+
+\]</div><span class="equation-tag">(BK.5)</span></div>
+<p>The congruences are positive and increasing, and fixed multiplication preserves their strong limit. The theorem then identifies that limit with their supremum. No commutation between <span class="math">\(x\)</span> and the net is required.</p>
+<h2 id="foundation-f-concrete-preduals">Foundation F: Concrete preduals</h2>
+<p><em>Programme source: OA-MOD, <code>public/src/concrete-preduals.md</code>, lines 8–247.</em></p>
+<h2 id="oa-mod-cp-01-conventions-and-the-precise-foundations">OA-MOD-CP-01 — Conventions and the precise foundations</h2>
+<p>Inner products are linear in their first variable. Thus the vector coefficient of <span class="math">\(T\in B(H)\)</span> is <span class="math">\(\langle T\xi,\eta\rangle\)</span>. The conjugate complex vector space <span class="math">\(\overline H\)</span> has vectors <span class="math">\(\overline\eta\)</span> and scalar action <span class="math">\(\lambda\overline\eta=\overline{\overline\lambda\eta}\)</span>. Its inner product is <span class="math">\(\langle\overline\xi,\overline\eta\rangle_{\overline H}=\overline{\langle\xi,\eta\rangle_H}\)</span>, and its norm is <span class="math">\(\|\overline\eta\|=\|\eta\|\)</span>.</p>
+<p>The Hilbert inputs are proved in <a href="#foundation-e-bounded-operators-and-topology">BK-01: Hilbert representation and bounded operators</a>. Every bounded sesquilinear form <span class="math">\(b\)</span>, linear in its first variable, has a unique representation <span class="math">\(b(\xi,\eta)=\langle T\xi,\eta\rangle\)</span>, and its least bound is <span class="math">\(\|T\|\)</span>. These written results apply to arbitrary complex Hilbert spaces, including zero spaces. Its real-to-complex Riesz conversion, bounded-form construction, adjoints and completion proof supply all of these results. The finite orthonormal-basis and linear-annihilator steps used in CP-02 and CP-05 are written at the end of <a href="#foundation-b-norm-extension-and-convex-separation">NP1</a>.</p>
+<p>We also use <strong>CP-DEP-HB</strong>, real and complex norm-preserving Hahn–Banach extension, whose full dominated-extension argument, complex conversion and norming consequence are proved in <a href="#foundation-b-norm-extension-and-convex-separation">NP1</a>. For <span class="math">\(z\ne0\)</span>, extend the functional <span class="math">\(\lambda z\mapsto\lambda\|z\|\)</span>. This gives</p>
+<div class="equation"><div class="math math-display">\[
+\|z\|=\sup_{\|f\|\le1}|f(z)|,\qquad f\in X^*,
+
+\]</div><span class="equation-tag">(CP.1)</span></div>
+<p>for every real or complex normed space <span class="math">\(X\)</span>; for <span class="math">\(z=0\)</span> it is immediate. The one-dimensional extension just proved in NP1 gives this norming identity directly.</p>
+<p>Here are the completion facts used below, so no trace-class or tensor-completion theorem is hidden in the construction. For a normed space <span class="math">\(X\)</span>, take Cauchy sequences in <span class="math">\(X\)</span>, identify two when the norm of their difference tends to zero, and set <span class="math">\(\|[x_n]\|=\lim_n\|x_n\|\)</span>. The reverse triangle inequality makes this well-defined, and the finite norm identities pass to limits. Constant sequences embed <span class="math">\(X\)</span> isometrically and densely: <span class="math">\([x_n]\)</span> is approximated by the constant sequences <span class="math">\(x_n\)</span>. The resulting space is complete. Indeed, from a Cauchy sequence of classes select a subsequence whose successive distances are at most <span class="math">\(2^{-k}\)</span>, and choose a vector of <span class="math">\(X\)</span> within <span class="math">\(2^{-k}\)</span> of its <span class="math">\(k\)</span>-th class. These vectors form a Cauchy sequence in <span class="math">\(X\)</span>; its class is the limit of that subsequence, hence of the original Cauchy sequence. A bounded linear map from <span class="math">\(X\)</span> to a Banach space extends uniquely to the completion by taking limits; density preserves its norm.</p>
+<p>For reference, <span class="math">\(\ell^2(H)\)</span> consists of sequences <span class="math">\(\xi=(\xi_n)\)</span> with <span class="math">\(\sum_n\|\xi_n\|^2&lt;\infty\)</span>, with the sum inner product. Cauchy–Schwarz for finite sums, followed by limits, proves convergence of the inner product and its usual identities. This is a Hilbert space. For a Cauchy sequence in it, take the coordinatewise limits in <span class="math">\(H\)</span>. The Cauchy estimates on every finite partial sum pass to those limits and then to their supremum, proving that the limit sequence is square summable and that convergence holds in the sum norm. No basis of <span class="math">\(H\)</span> is used.</p>
+<p>Bounded functional calculus and concrete operator topology are proved in <strong>OA-MOD-BK-01</strong>, <strong>OA-MOD-BK-03</strong> and <strong>OA-MOD-BK-04</strong>. The convex-closure corollary uses <a href="#foundation-b-norm-extension-and-convex-separation">NP2: point separation in arbitrary real locally convex spaces</a>; the bounded support theorem uses NP3 and its written BK prerequisites. Weak-star compactness and Krein–Smulian are not assumed or proved in the predual construction.</p>
+<h2 id="oa-mod-cp-02-the-projective-norm-is-a-genuine-norm">OA-MOD-CP-02 — The projective norm is a genuine norm</h2>
+<p>Let <span class="math">\(V=H\otimes_{\mathbb C}\overline H\)</span> be the algebraic tensor product: the free complex vector space on pairs <span class="math">\((\xi,\overline\eta)\)</span>, divided by the bilinearity relations. A bilinear function of those two variables therefore defines a unique linear function on <span class="math">\(V\)</span>.</p>
+<p>Define</p>
+<div class="equation"><div class="math math-display">\[
+\pi(u)=\inf\left\{\begin{gathered}
+ \sum_{j=1}^m\|\xi_j\|\|\eta_j\|:\\
+ u=\sum_{j=1}^m\xi_j\otimes\overline{\eta_j}
+\end{gathered}\right\}.
+
+\]</div><span class="equation-tag">(CP.2)</span></div>
+<p>The zero sum is allowed. Every tensor has a finite representation, so this is finite. Rescaling representations proves absolute homogeneity; concatenating representations within any prescribed error of the two infima proves the triangle inequality.</p>
+<p>For nondegeneracy, write a given tensor using finite-dimensional spans of its first and second vectors, and choose orthonormal bases <span class="math">\(e_1,\ldots,e_r\)</span> and <span class="math">\(f_1,\ldots,f_s\)</span> for those spans. Expansion gives</p>
+<div class="equation"><div class="math math-display">\[
+u=\sum_{i,j}c_{ij}\,e_i\otimes\overline{f_j}.
+\]</div></div>
+<p>The bilinear coefficient test</p>
+<div class="equation"><div class="math math-display">\[
+L_{ij}(\xi\otimes\overline\eta)
+  =\langle\xi,e_i\rangle\langle f_j,\eta\rangle
+\]</div></div>
+<p>has <span class="math">\(|L_{ij}(u)|\le\pi(u)\)</span>, since its value on a pure tensor is at most <span class="math">\(\|\xi\|\|\eta\|\)</span>. It reads off <span class="math">\(c_{ij}\)</span>. If <span class="math">\(u\ne0\)</span>, some coefficient is nonzero: an expansion with all coefficients zero is the zero tensor. Thus <span class="math">\(\pi(u)&gt;0\)</span>.</p>
+<p>The same test with <span class="math">\(e=\xi/\|\xi\|\)</span> and <span class="math">\(f=\eta/\|\eta\|\)</span>, when neither vector is zero, proves</p>
+<div class="equation"><div class="math math-display">\[
+\pi(\xi\otimes\overline\eta)=\|\xi\|\|\eta\|.
+
+\]</div><span class="equation-tag">(CP.3)</span></div>
+<p>If a factor is zero, both sides vanish. Only finite-dimensional orthonormal bases were used.</p>
+<p>Let <span class="math">\(E_H\)</span> be the Banach completion of <span class="math">\((V,\pi)\)</span> constructed in CP-01. We do not identify this completion with a space of trace-class operators.</p>
+<h2 id="oa-mod-cp-03-its-dual-is-exactly-bh">OA-MOD-CP-03 — Its dual is exactly <span class="math">\(B(H)\)</span></h2>
+<p>For <span class="math">\(T\in B(H)\)</span>, define on algebraic tensors</p>
+<div class="equation"><div class="math math-display">\[
+\Phi_T\left(\sum_j\xi_j\otimes\overline{\eta_j}\right)
+ =\sum_j\langle T\xi_j,\eta_j\rangle.
+\]</div></div>
+<p>Bilinearity makes this independent of the representation. Taking the infimum of the bound over all representations gives
+<span class="math">\(|\Phi_T(u)|\le\|T\|\pi(u)\)</span>, so <span class="math">\(\Phi_T\)</span> extends to <span class="math">\(E_H\)</span>.</p>
+<p>Conversely, <span class="math">\(F\in E_H^*\)</span> defines
+<span class="math">\(b(\xi,\eta)=F(\xi\otimes\overline\eta)\)</span>.
+This is sesquilinear with
+<span class="math">\(|b(\xi,\eta)|\le\|F\|\|\xi\|\|\eta\|\)</span>.
+The bounded-form proof in BK-01 supplies a unique <span class="math">\(T\in B(H)\)</span> representing <span class="math">\(b\)</span>. Equality on algebraic tensors and density give <span class="math">\(F=\Phi_T\)</span>. Finally,</p>
+<div class="equation"><div class="math math-display">\[
+\|\Phi_T\|
+\ge\sup_{\|\xi\|\le1,\ \|\eta\|\le1}
+ |\langle T\xi,\eta\rangle|
+=\|T\|.
+\]</div></div>
+<p>Here (CP.3) justifies the test tensors; no norm-attaining vector for <span class="math">\(T\)</span> is presumed. Together with the upper bound this proves a complex-linear onto isometry</p>
+<div class="equation"><div class="math math-display">\[
+B(H)\cong E_H^*,\qquad T\longmapsto\Phi_T.
+
+\]</div><span class="equation-tag">(CP.4)</span></div>
+<p>All assertions include <span class="math">\(H=\{0\}\)</span>. Injectivity of a completed map from <span class="math">\(E_H\)</span> into an operator space is neither assumed nor needed.</p>
+<h2 id="oa-mod-cp-04-every-tensor-vector-is-a-summable-vector-series">OA-MOD-CP-04 — Every tensor vector is a summable vector series</h2>
+<p><strong>Lemma.</strong> Every <span class="math">\(u\in E_H\)</span> has a norm-convergent representation</p>
+<div class="equation"><div class="math math-display">\[
+u=\sum_{n=1}^\infty\xi_n\otimes\overline{\eta_n},
+\qquad
+\sum_n\|\xi_n\|\|\eta_n\|&lt;\infty.
+
+\]</div><span class="equation-tag">(CP.5)</span></div>
+<p>The factors can be chosen so that both sequences lie in <span class="math">\(\ell^2(H)\)</span>.</p>
+<p><strong>Proof.</strong> Choose algebraic <span class="math">\(v_k\)</span> with <span class="math">\(\|u-v_k\|\le2^{-k}\)</span>. Put <span class="math">\(d_1=v_1\)</span> and <span class="math">\(d_k=v_k-v_{k-1}\)</span> for <span class="math">\(k\ge2\)</span>. Then <span class="math">\(\sum_k\pi(d_k)&lt;\infty\)</span>, since
+<span class="math">\(\pi(d_k)\le2^{-k}+2^{-(k-1)}\)</span> for <span class="math">\(k\ge2\)</span>.
+Represent each <span class="math">\(d_k\)</span> as a finite sum with total cost at most <span class="math">\(\pi(d_k)+2^{-k}\)</span>. List those finite sums consecutively. Their total cost is finite; (CP.3) and completeness imply absolute convergence. The partial sums at the block ends are <span class="math">\(v_k\)</span>, so the sum is <span class="math">\(u\)</span>.</p>
+<p>Discard zero terms and replace each remaining pair by</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\xi&#39;_n=\left(\frac{\|\eta_n\|}{\|\xi_n\|}\right)^{1/2}\xi_n,\\
+\eta&#39;_n=\left(\frac{\|\xi_n\|}{\|\eta_n\|}\right)^{1/2}\eta_n.
+\end{gathered}
+\]</div></div>
+<p>The positive real multipliers are reciprocal, so the tensor is unchanged. Both new squared norms equal the original product <span class="math">\(\|\xi_n\|\|\eta_n\|\)</span>. The two new sequences are square summable. ∎</p>
+<p>Conversely, <span class="math">\(\xi,\eta\in\ell^2(H)\)</span> define a vector of <span class="math">\(E_H\)</span> by (CP.5), since scalar Cauchy–Schwarz bounds the sum of the products. Evaluation gives</p>
+<div class="equation"><div class="math math-display">\[
+\Phi_T(u)=\sum_n\langle T\xi_n,\eta_n\rangle.
+
+\]</div><span class="equation-tag">(CP.6)</span></div>
+<p>Thus <span class="math">\(\sigma(B(H),E_H)\)</span> is exactly the ultraweak topology defined by the vector-series tests in OA-MOD-BK-03. This equality holds on all of <span class="math">\(B(H)\)</span>, without a norm-bound restriction.</p>
+<h2 id="oa-mod-cp-05-quotients-and-annihilators-with-the-norm-checks">OA-MOD-CP-05 — Quotients and annihilators, with the norm checks</h2>
+<p>Let <span class="math">\(E\)</span> be a Banach space and <span class="math">\(F\subseteq E\)</span> a closed linear subspace. The quotient norm on <span class="math">\(Q=E/F\)</span> is</p>
+<div class="equation"><div class="math math-display">\[
+\|e+F\|_Q=\inf_{f\in F}\|e+f\|.
+\]</div></div>
+<p>Norm zero means <span class="math">\(e\)</span> belongs to the closure of <span class="math">\(F\)</span>, hence to <span class="math">\(F\)</span>; its other norm properties follow by adding and rescaling representatives.</p>
+<p>The quotient is complete. Given a Cauchy sequence in <span class="math">\(Q\)</span>, select a subsequence <span class="math">\(z_k\)</span> with
+<span class="math">\(\|z_{k+1}-z_k\|_Q\le2^{-k}\)</span>.
+Choose representatives <span class="math">\(d_k\in E\)</span> of those differences with
+<span class="math">\(\|d_k\|\le2^{1-k}\)</span>, and a representative <span class="math">\(e_1\)</span> of <span class="math">\(z_1\)</span>.
+The convergent series <span class="math">\(e_1+\sum_kd_k\)</span> represents the limit of the subsequence. The Cauchy property gives convergence of the full sequence.</p>
+<p>For the quotient map <span class="math">\(q:E\to Q\)</span>, composition gives an onto isometry</p>
+<div class="equation"><div class="math math-display">\[
+q^*:Q^*\longrightarrow F^\perp
+ =\{T\in E^*:T|_F=0\}.
+
+\]</div><span class="equation-tag">(CP.7)</span></div>
+<p>Indeed, a functional annihilating <span class="math">\(F\)</span> defines a functional on <span class="math">\(Q\)</span>. Taking the infimum over representatives bounds its quotient norm by its norm on <span class="math">\(E\)</span>. The reverse bound follows because <span class="math">\(q\)</span> is contractive. The same bounds prove that composition is isometric.</p>
+<p>If a linear subspace <span class="math">\(M\subseteq E^*\)</span> is weak-star closed, then</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+M=(M_\perp)^\perp,\\
+M_\perp=\{e\in E:T(e)=0\ \text{for all }T\in M\}.
+\end{gathered}
+
+\]</div><span class="equation-tag">(CP.8)</span></div>
+<p>For the nontrivial inclusion, take <span class="math">\(T_0\notin M\)</span>. A basic weak-star neighborhood disjoint from <span class="math">\(M\)</span> tests finitely many vectors <span class="math">\(e_1,\ldots,e_n\)</span>. Let
+<span class="math">\(L(T)=(T(e_1),\ldots,T(e_n))\)</span>.
+Then <span class="math">\(L(T_0)\notin L(M)\)</span>, since equality would put an element of <span class="math">\(M\)</span> in that neighborhood. Finite-dimensional linear algebra supplies <span class="math">\(\lambda\)</span> on <span class="math">\(\mathbb C^n\)</span> vanishing on <span class="math">\(L(M)\)</span> but not at <span class="math">\(L(T_0)\)</span>. Write <span class="math">\(\lambda(z)=\sum_jc_jz_j\)</span>. The vector <span class="math">\(e=\sum_jc_je_j\)</span> belongs to <span class="math">\(M_\perp\)</span>, but <span class="math">\(T_0(e)\ne0\)</span>. This proves (CP.8) without locally convex separation.</p>
+<h2 id="oa-mod-cp-06-the-concrete-predual-and-its-intrinsic-norm">OA-MOD-CP-06 — The concrete predual and its intrinsic norm</h2>
+<p>Let <span class="math">\(M\subseteq B(H)\)</span> be a weak operator closed unital *-subalgebra. It is ultraweakly closed by OA-MOD-BK-03. Under (CP.4), define</p>
+<div class="equation"><div class="math math-display">\[
+F=M_\perp\subseteq E_H,\qquad M_*=E_H/F.
+
+\]</div><span class="equation-tag">(CP.9)</span></div>
+<p>The subspace <span class="math">\(F\)</span> is norm closed, being an intersection of kernels of bounded functionals. Equations (CP.7)–(CP.8) prove that canonical evaluation is an onto isometry</p>
+<div class="equation"><div class="math math-display">\[
+M\cong(M_*)^*.
+
+\]</div><span class="equation-tag">(CP.10)</span></div>
+<p>Identify <span class="math">\(u+F\)</span> with <span class="math">\(x\mapsto\Phi_x(u)\)</span> on <span class="math">\(M\)</span>. This is injective by the definition of <span class="math">\(F\)</span>. Its operator norm is exactly the quotient norm: apply the norming identity (CP.1) to <span class="math">\(M_*\)</span>, and identify its dual unit ball with the unit ball of <span class="math">\(M\)</span> by (CP.10). Thus <span class="math">\(M_*\)</span> is an isometric Banach subspace of <span class="math">\(M^*\)</span>, and is norm closed there.</p>
+<p>By CP-04 its elements are exactly the restricted vector-series functionals</p>
+<div class="equation"><div class="math math-display">\[
+f(x)=\sum_n\langle x\xi_n,\eta_n\rangle,\qquad
+\xi,\eta\in\ell^2(H).
+
+\]</div><span class="equation-tag">(CP.11)</span></div>
+<p>The weak-star topology from this pairing is therefore the inherited ultraweak topology.</p>
+<p>Moreover <span class="math">\(M_*\)</span> is exactly the space of ultraweakly continuous complex-linear functionals. One inclusion is immediate. For the other, continuity of a linear <span class="math">\(f\)</span> implies that it vanishes whenever finitely many controlling vector-series functionals <span class="math">\(f_1,\ldots,f_r\)</span> all vanish: rescale such a vector and use continuity at zero. Hence <span class="math">\(f\)</span> factors through
+<span class="math">\(x\mapsto(f_1(x),\ldots,f_r(x))\)</span>.
+A linear functional on this finite-dimensional image extends algebraically to <span class="math">\(\mathbb C^r\)</span>, so <span class="math">\(f\)</span> is a finite linear combination of the <span class="math">\(f_j\)</span>. It belongs to <span class="math">\(M_*\)</span>.</p>
+<p>This establishes a concrete predual and its topology. It does not prove uniqueness among arbitrary abstract Banach preduals or construct the bidual W* algebra of a general C*-algebra.</p>
+<h2 id="oa-mod-cp-07-positive-functionals-closed-cones-and-norm-closure">OA-MOD-CP-07 — Positive functionals, closed cones and norm closure</h2>
+<p>Write <span class="math">\(M_*^+\)</span> for the positive functionals in <span class="math">\(M_*\)</span>. For <span class="math">\(\xi\in\ell^2(H)\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\omega_\xi(x)=\sum_n\langle x\xi_n,\xi_n\rangle
+\]</div></div>
+<p>belongs to <span class="math">\(M_*^+\)</span>. These functionals separate <span class="math">\(M_+\)</span>: if <span class="math">\(a\ge0\)</span> is nonzero, some <span class="math">\(\xi\in H\)</span> satisfies
+<span class="math">\(\langle a\xi,\xi\rangle=\|a^{1/2}\xi\|^2&gt;0\)</span>.
+Single-vector tests also detect positivity of arbitrary operators: nonnegative real diagonal coefficients imply self-adjointness by polarization and then positivity.</p>
+<p>Every <span class="math">\(f\in M_*\)</span> is a linear combination of four positive members. Use (CP.11) and put</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\omega_k(x)=\sum_n
+ \langle x(\xi_n+i^k\eta_n),\,\xi_n+i^k\eta_n\rangle,\\
+k=0,1,2,3.
+\end{gathered}
+\]</div></div>
+<p>Each sequence is square summable. Expansion gives</p>
+<div class="equation"><div class="math math-display">\[
+f=\frac14\sum_{k=0}^3 i^k\omega_k.
+
+\]</div><span class="equation-tag">(CP.12)</span></div>
+<p>The identity holds for any sesquilinear form; no self-adjointness of <span class="math">\(x\)</span> is required.</p>
+<p>For a positive linear functional <span class="math">\(\omega\)</span>, positive/negative parts show that it is real on self-adjoint elements and preserves adjoints. Applying positivity to
+<span class="math">\(\omega((x+\lambda y)^*(x+\lambda y))\)</span> for every complex <span class="math">\(\lambda\)</span> gives</p>
+<div class="equation"><div class="math math-display">\[
+|\omega(y^*x)|^2\le\omega(x^*x)\omega(y^*y).
+
+\]</div><span class="equation-tag">(CP.13)</span></div>
+<p>If the second diagonal value is positive, minimize the scalar quadratic polynomial in <span class="math">\(\lambda\)</span>; if it is zero, varying the magnitude and argument of <span class="math">\(\lambda\)</span> forces the mixed coefficient to vanish. With <span class="math">\(y=1\)</span> and <span class="math">\(x^*x\le\|x\|^2 1\)</span>, this proves boundedness and</p>
+<div class="equation"><div class="math math-display">\[
+|\omega(x)|\le\omega(1)\|x\|,\qquad
+\|\omega\|=\omega(1).
+
+\]</div><span class="equation-tag">(CP.14)</span></div>
+<p>The reverse norm inequality tests <span class="math">\(1\)</span>; the zero algebra is immediate. In particular, for <span class="math">\(0\le\psi\le\omega\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\|\omega-\psi\|=\omega(1)-\psi(1).
+
+\]</div><span class="equation-tag">(CP.15)</span></div>
+<p>The positive cone of <span class="math">\(M\)</span> is ultraweakly closed, as the intersection of the conditions
+<span class="math">\(\langle x\xi,\xi\rangle\in[0,\infty)\)</span>.
+Every closed norm ball is ultraweakly closed, since</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\|x\|\le R
+\quad\Longleftrightarrow\\
+|\langle x\xi,\eta\rangle|\le R\|\xi\|\|\eta\|\\
+(\xi,\eta\in H).
+\end{gathered}
+\]</div></div>
+<p>The adjoint is conjugate-linear and ultraweakly continuous:</p>
+<div class="equation"><div class="math math-display">\[
+\sum_n\langle x^*\xi_n,\eta_n\rangle
+=\overline{\sum_n\langle x\eta_n,\xi_n\rangle}.
+\]</div></div>
+<p>Fixed multiplication is ultraweakly continuous by BK-03.</p>
+<p>Norm closure of <span class="math">\(M_*\)</span> in CP-06 has a useful concrete interpretation: a norm-Cauchy sequence in the isometric quotient has a limit there; the associated functionals converge in operator norm. Any operator-norm limit in <span class="math">\(M^*\)</span> must be that same predual functional. Positivity survives norm limits by evaluation on each positive element, so <span class="math">\(M_*^+\)</span> is norm closed.</p>
+<p>Finally, every <span class="math">\(\omega\in M_*^+\)</span> preserves bounded increasing positive suprema. If <span class="math">\(a_\alpha\uparrow a\)</span>, BK-04 supplies ultraweak convergence, whence
+<span class="math">\(\omega(a_\alpha)\uparrow\omega(a)\)</span>.
+This proves the ultraweak-to-order direction without a theorem about weights. The converse is not an input to this unit.</p>
+<h2 id="foundation-g-nonunital-bicommutant-density">Foundation G: Nonunital bicommutant density</h2>
+<p><em>Programme source: OA-MOD, <code>public/src/hilbert-algebra-kernel.md</code>, lines 102–125.</em></p>
+<p><strong>Nonunital density lemma.</strong> If a *-subalgebra <span class="math">\(\mathcal C\subseteq B(H)\)</span> is nondegenerate, then</p>
+<div class="equation"><div class="math math-display">\[
+\overline{\mathcal C}^{\mathrm{SOT}}
+=\overline{\mathcal C}^{\mathrm{WOT}}
+=\mathcal C&#39;&#39;.
+
+\]</div><span class="equation-tag">(HA.9)</span></div>
+<p>No norm bound is asserted for the approximating nets.</p>
+<p><strong>Proof.</strong> Fix <span class="math">\(T\in\mathcal C&#39;&#39;\)</span> and finitely many vectors <span class="math">\(\xi_1,\ldots,\xi_n\)</span>. On <span class="math">\(H^n\)</span>, write <span class="math">\(D(c)=\operatorname{diag}(c,\ldots,c)\)</span>, <span class="math">\(\Xi=(\xi_1,\ldots,\xi_n)\)</span>, and let <span class="math">\(P\)</span> project onto</p>
+<div class="equation"><div class="math math-display">\[
+K=\overline{\{D(c)\Xi:c\in\mathcal C\}}.
+\]</div></div>
+<p>The set inside closure is linear. Since <span class="math">\(\mathcal C\)</span> is an algebra closed under adjoints, <span class="math">\(K\)</span> is invariant under <span class="math">\(D(c)\)</span> and <span class="math">\(D(c)^*\)</span>. Thus <span class="math">\(P\)</span> commutes with every <span class="math">\(D(c)\)</span>. For all <span class="math">\(c\in\mathcal C\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+D(c)(I-P)\Xi=(I-P)D(c)\Xi=0.
+\]</div></div>
+<p>Nondegeneracy of <span class="math">\(\mathcal C\)</span>, applied to each coordinate, gives <span class="math">\((I-P)\Xi=0\)</span>. This is the step that replaces a unit.</p>
+<p>Every matrix entry <span class="math">\(P_{jk}\)</span> commutes with <span class="math">\(\mathcal C\)</span>, so it commutes with <span class="math">\(T\)</span>. Consequently <span class="math">\(D(T)P=PD(T)\)</span>, and <span class="math">\(D(T)\Xi\in K\)</span>. Given <span class="math">\(\varepsilon&gt;0\)</span>, the definition of <span class="math">\(K\)</span> therefore supplies <span class="math">\(c\in\mathcal C\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+\sum_{j=1}^n\|(c-T)\xi_j\|^2&lt;\varepsilon^2.
+\]</div></div>
+<p>These conditions characterize membership of <span class="math">\(T\)</span> in the strong closure. The reverse inclusions follow because strong convergence implies weak operator convergence, and <span class="math">\(\mathcal C&#39;&#39;\)</span> is weak operator closed by OA-MOD-BK-02. <span class="math">\(\square\)</span></p>
+<h2 id="foundation-h-kaplansky-density">Foundation H: Kaplansky density</h2>
+<p><em>Programme source: OA-MOD, <code>public/src/hilbert-algebra-approximation.md</code>, lines 127–220.</em></p>
+<h2 id="oa-mod-hap-04-why-self-adjoint-weak-density-gives-strong-density">OA-MOD-HAP-04 — Why self-adjoint weak density gives strong density</h2>
+<p>We need an approximation theorem for the original multiplication algebra, which need not contain an identity or be norm closed. We first prove its topological ingredient.</p>
+<p>Let <span class="math">\(\mathcal C\subseteq B(K)\)</span> be a nondegenerate *-subalgebra, and write <span class="math">\(N=\mathcal C&#39;&#39;\)</span>. <a href="#foundation-g-nonunital-bicommutant-density">HA03, the nonunital proof</a>, gives</p>
+<div class="equation"><div class="math math-display">\[
+\overline{\mathcal C}^{\,\mathrm{WOT}}
+=\overline{\mathcal C}^{\,\mathrm{SOT}}=N.
+
+\]</div><span class="equation-tag">(HAP.12)</span></div>
+<p>Its proof uses nondegeneracy in place of a unit. In particular, it does not put an unproved bound on its approximants.</p>
+<p><strong>Lemma.</strong> The self-adjoint part <span class="math">\(\mathcal C_{\mathrm{sa}}\)</span> is strongly dense in <span class="math">\(N_{\mathrm{sa}}\)</span>.</p>
+<p><strong>Proof.</strong> Regard <span class="math">\(V=N_{\mathrm{sa}}\)</span> as a real vector space. A strongly continuous real-linear functional <span class="math">\(\ell\)</span> on <span class="math">\(V\)</span> is bounded by finitely many strong seminorms. More explicitly, continuity at zero and homogeneity give <span class="math">\(\xi_1,\ldots,\xi_n\in K\)</span> and <span class="math">\(C&lt;\infty\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+|\ell(a)|\leq C\left(\sum_{j=1}^n\|a\xi_j\|^2\right)^{1/2}
+\quad(a\in V).
+
+\]</div><span class="equation-tag">(HAP.13)</span></div>
+<p>If the seminorm on the right vanishes, homogeneity forces <span class="math">\(\ell(a)=0\)</span>. Thus <span class="math">\(\ell\)</span> factors through the real-linear map</p>
+<div class="equation"><div class="math math-display">\[
+a\longmapsto(a\xi_1,\ldots,a\xi_n)\in K^n.
+\]</div></div>
+<p>The induced bounded real functional on its range extends to the underlying real Hilbert space <span class="math">\(K^n_{\mathbb R}\)</span>, by real Hahn–Banach. Real Riesz representation supplies <span class="math">\(\eta_1,\ldots,\eta_n\in K\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+\ell(a)=\operatorname{Re}\sum_{j=1}^n\langle a\xi_j,\eta_j\rangle.
+
+\]</div><span class="equation-tag">(HAP.14)</span></div>
+<p>This is weak-operator continuous. Conversely every weak-operator continuous functional is strongly continuous, since the strong topology is finer.</p>
+<p>It follows directly from real locally convex separation that a convex subset of <span class="math">\(V\)</span> has the same strong and weak-operator closures. Indeed, a point outside its strong closed convex closure is separated from that closure by a strongly continuous real functional, which by (HAP.14) is weak-operator continuous. Such a point is also outside its weak closure; the opposite closure inclusion follows from the relative strength of the topologies.</p>
+<p>Finally, if <span class="math">\(a=a^*\in N\)</span>, (HAP.12) supplies <span class="math">\(c_i\in\mathcal C\)</span> with <span class="math">\(c_i\to a\)</span> weakly. Adjoint is weak-operator continuous, so
+<span class="math">\((c_i+c_i^*)/2\to a\)</span> weakly. Hence <span class="math">\(\mathcal C_{\mathrm{sa}}\)</span> is weakly dense in <span class="math">\(V\)</span>. It is convex, and the preceding paragraph proves strong density. <span class="math">\(\square\)</span></p>
+<h2 id="oa-mod-hap-05-contractive-approximation-from-a-nonunital-algebra">OA-MOD-HAP-05 — Contractive approximation from a nonunital algebra</h2>
+<p><strong>Foundation theorem and alternative proof.</strong> The canonical programme statement is Theorem 7.1(1)–(2) of <em>Kaplansky’s density theorem and its consequences</em>, in <em>Foundations of von Neumann algebras</em>. It allows degenerate as well as nondegenerate subalgebras and does not require norm closure. That foundation lesson retains statement ownership. HAP04 identifies the weak closure in the present nondegenerate setting; the complete proof below is an alternative for that setting. Peterson’s free Theorem 2.6.4 provides a comparison. The proof explicitly returns from the norm closure to the original algebra, which need not contain an identity.</p>
+<p><strong>Theorem.</strong> For the algebra <span class="math">\(\mathcal C\)</span> in HAP-04, every contraction <span class="math">\(x\in N\)</span> is the strong* limit of a net of contractions from <span class="math">\(\mathcal C\)</span>. If <span class="math">\(x=x^*\)</span>, the approximants may also be chosen self-adjoint.</p>
+<p><strong>Alternative proof for self-adjoint contractions.</strong> Define by bounded continuous functional calculus</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+y=x\bigl(I+(I-x^2)^{1/2}\bigr)^{-1},\\
+f(t)=\frac{2t}{1+t^2}\quad(t\in\mathbb R).
+\end{gathered}
+
+\]</div><span class="equation-tag">(HAP.15)</span></div>
+<p>The inverse exists because its positive denominator is at least <span class="math">\(I\)</span>. The operator <span class="math">\(y\)</span> is self-adjoint. The scalar identity</p>
+<div class="equation"><div class="math math-display">\[
+f\left(\frac{t}{1+\sqrt{1-t^2}}\right)=t
+\quad(-1\leq t\leq1)
+\]</div></div>
+<p>gives <span class="math">\(f(y)=x\)</span>. Also <span class="math">\(|f(t)|\leq1\)</span> for every real <span class="math">\(t\)</span>.</p>
+<p>Choose <span class="math">\(c_i\in\mathcal C_{\mathrm{sa}}\)</span> with <span class="math">\(c_i\to y\)</span> strongly, by HAP-04. For <span class="math">\(z=i\)</span> and <span class="math">\(z=-i\)</span>, the resolvent identity is</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;(c_i-zI)^{-1}-(y-zI)^{-1}\\
+&amp;\quad=(c_i-zI)^{-1}(y-c_i)(y-zI)^{-1}.
+\end{aligned}
+
+\]</div><span class="equation-tag">(HAP.16)</span></div>
+<p>The first factor has norm at most one, by the continuous calculus of the bounded self-adjoint <span class="math">\(c_i\)</span>. Applying strong convergence to the fixed vector <span class="math">\((y-zI)^{-1}\xi\)</span> proves strong convergence of these resolvents. Consequently</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+f(c_i)=(c_i-iI)^{-1}+(c_i+iI)^{-1}\\
+\longrightarrow f(y)=x
+\quad\hbox{strongly}.
+\end{gathered}
+
+\]</div><span class="equation-tag">(HAP.17)</span></div>
+<p>This argument has not assumed uniform bounds on the <span class="math">\(c_i\)</span>.</p>
+<p>Each <span class="math">\(d_i=f(c_i)\)</span> is a self-adjoint contraction in the norm closure of <span class="math">\(\mathcal C\)</span>. To check the last assertion in the nonunital case, approximate <span class="math">\(f\)</span> by real polynomials <span class="math">\(p_k\)</span> on a compact interval containing <span class="math">\(\sigma(c_i)\)</span> and <span class="math">\(0\)</span>. Since <span class="math">\(f(0)=0\)</span>, the polynomials <span class="math">\(p_k(t)-p_k(0)\)</span> still approximate <span class="math">\(f\)</span> uniformly and have zero constant term. Their values at <span class="math">\(c_i\)</span> belong to <span class="math">\(\mathcal C_{\mathrm{sa}}\)</span>.</p>
+<p>For <span class="math">\(0&lt;\varepsilon&lt;1\)</span>, choose <span class="math">\(b_{i,\varepsilon}\in\mathcal C_{\mathrm{sa}}\)</span> with
+<span class="math">\(\|b_{i,\varepsilon}-d_i\|&lt;\varepsilon\)</span>, and set</p>
+<div class="equation"><div class="math math-display">\[
+a_{i,\varepsilon}=(1+\varepsilon)^{-1}b_{i,\varepsilon}.
+
+\]</div><span class="equation-tag">(HAP.18)</span></div>
+<p>Then <span class="math">\(\|a_{i,\varepsilon}\|\leq1\)</span>, and
+<span class="math">\(\|a_{i,\varepsilon}-d_i\|&lt;2\varepsilon\)</span>.
+The product net, directed by increasing <span class="math">\(i\)</span> and decreasing <span class="math">\(\varepsilon\)</span>, converges strongly to <span class="math">\(x\)</span>. All its terms and its limit are self-adjoint, so it also converges strongly*.</p>
+<p><strong>Alternative proof for arbitrary contractions.</strong> The algebra <span class="math">\(M_2(\mathcal C)\)</span> is nondegenerate on <span class="math">\(K\oplus K\)</span>. Its weak closure is <span class="math">\(M_2(N)\)</span>: weak operator convergence of these finite matrices is exactly entrywise weak convergence, and (HAP.12) approximates each entry, with the finite product of the indexing sets handling simultaneous approximation. Thus its generated von Neumann algebra is <span class="math">\(M_2(N)\)</span>.</p>
+<p>Apply the self-adjoint result to</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+X=\begin{pmatrix}0&amp;x\\x^*&amp;0\end{pmatrix}\in M_2(N),\\
+\|X\|=\|x\|\leq1.
+\end{gathered}
+
+\]</div><span class="equation-tag">(HAP.19)</span></div>
+<p>Let <span class="math">\(A_i\in M_2(\mathcal C)\)</span> be self-adjoint contractions converging strongly to <span class="math">\(X\)</span>. If <span class="math">\(b_i=(A_i)_{12}\)</span>, then <span class="math">\(b_i\in\mathcal C\)</span>, <span class="math">\(\|b_i\|\leq1\)</span>, and <span class="math">\((A_i)_{21}=b_i^*\)</span>. Coordinate-vector tests give both <span class="math">\(b_i\to x\)</span> and <span class="math">\(b_i^*\to x^*\)</span> strongly. <span class="math">\(\square\)</span></p>
+<p>This alternative proves the canonical Kaplansky statement in the present nondegenerate case by bounded functional calculus and real separation. It applies to <span class="math">\(\mathcal C=L(\mathcal A)\)</span>, not merely to its norm closure. It requires neither SK-09 nor modular theory. Scaling gives the corresponding approximation bound <span class="math">\(\|b_i\|\leq\|x\|\)</span> for every <span class="math">\(x\in N\)</span>, with the zero case handled by the constant zero net.</p>
+</article><nav class="lesson-nav" aria-label="Sources"><a href="foundations/bounded-topology-foundations.md">Editable Markdown</a> · <a href="foundations/bounded-topology-foundations.provenance.json">Sources and authorship</a> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

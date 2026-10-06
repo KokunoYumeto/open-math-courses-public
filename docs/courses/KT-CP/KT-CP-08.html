@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="642F10BB51173962784DDC00E780C7F9C494281C91030CDBAE390799468E74DC">
+<title>Takai duality — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Course contents</a><span aria-hidden="true"> / </span><span>KT-CP-08</span></nav>
+<article id="lesson" class="lesson"><h1 id="takai-duality">Takai duality</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Crossing by an abelian group introduces a dual action. Crossing again restores the coefficient algebra, with a compact-operator factor. We prove this by identifying the covariant representations, removing a diagonal action, and applying the translation theorem of Lesson 7. Tracking the generators will also determine the double dual action and the invariant ideals.</p>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact Hausdorff abelian group, <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(A)\)">\(\alpha:G\to\operatorname{Aut}(A)\)</span> strongly continuous, and <span class="math" data-tex="\(A\)">\(A\)</span> an arbitrary C*-algebra. Fix Haar measure on <span class="math" data-tex="\(G\)">\(G\)</span> and its Plancherel dual Haar measure on <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>. No separability or unitality hypothesis is imposed. Write</p>
+<span id="equation-8-1"></span><span class="math math-display" data-tex="\[
+B=A\rtimes_\alpha G,\qquad C=B\rtimes_{\widehat\alpha}\widehat G.
+\tag{8.1}
+\]">\[
+B=A\rtimes_\alpha G,\qquad C=B\rtimes_{\widehat\alpha}\widehat G.
+\tag{8.1}
+\]</span>
+<p>The dual convention from Lesson 6 is positive:</p>
+<span id="equation-8-2"></span><span class="math math-display" data-tex="\[
+\widehat\alpha_\chi(f)(s)=\chi(s)f(s),\qquad
+\mathcal F_+g(x)=\int_{\widehat G}g(\chi)\chi(x)\,d\chi.
+\tag{8.2}
+\]">\[
+\widehat\alpha_\chi(f)(s)=\chi(s)f(s),\qquad
+\mathcal F_+g(x)=\int_{\widehat G}g(\chi)\chi(x)\,d\chi.
+\tag{8.2}
+\]</span>
+<p>Pontryagin duality identifies <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span> with the character <span class="math" data-tex="\(\chi\mapsto\chi(x)\)">\(\chi\mapsto\chi(x)\)</span>. Denote the canonical multiplier maps for the iterated product by <span class="math" data-tex="\(j_A,j_G,j_{\widehat G}\)">\(j_A,j_G,j_{\widehat G}\)</span>. They are multiplier maps, and are not generally maps into <span class="math" data-tex="\(C\)">\(C\)</span> itself.</p>
+<h2 id="two-tensor-product-facts">Two tensor-product facts</h2>
+<p>The tensor norm in a full universal construction is initially maximal. We give the two precise facts needed to pass to ordinary function algebras and compact operators.</p>
+<p><span id="lemma-8-1"></span><strong>Lemma 8.1.</strong> For any locally compact Hausdorff space <span class="math" data-tex="\(Y\)">\(Y\)</span>, pointwise multiplication identifies</p>
+<span id="equation-8-3"></span><span class="math math-display" data-tex="\[
+A\otimes_{\max}C_0(Y)=A\otimes_{\min}C_0(Y)=C_0(Y,A).
+\tag{8.3}
+\]">\[
+A\otimes_{\max}C_0(Y)=A\otimes_{\min}C_0(Y)=C_0(Y,A).
+\tag{8.3}
+\]</span>
+<p>Also, for any nonzero Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>,</p>
+<span id="equation-8-4"></span><span class="math math-display" data-tex="\[
+A\otimes_{\max}\mathcal K(H)=A\otimes_{\min}\mathcal K(H).
+\tag{8.4}
+\]">\[
+A\otimes_{\max}\mathcal K(H)=A\otimes_{\min}\mathcal K(H).
+\tag{8.4}
+\]</span>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> are commuting nondegenerate representations of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(C_0(Y)\)">\(C_0(Y)\)</span>. On an algebraic tensor <span class="math" data-tex="\(F(y)=\sum_i f_i(y)a_i\)">\(F(y)=\sum_i f_i(y)a_i\)</span>, their product representation is <span class="math" data-tex="\(\sum_i\pi(a_i)\rho(f_i)\)">\(\sum_i\pi(a_i)\rho(f_i)\)</span>. Approximate the finite family <span class="math" data-tex="\(f_i\)">\(f_i\)</span> uniformly by a common finite partition of unity on a compact neighborhood of their essential supports. More explicitly, choose compactly supported nonnegative functions <span class="math" data-tex="\(\psi_j\)">\(\psi_j\)</span> with <span class="math" data-tex="\(\sum_j\psi_j\le1\)">\(\sum_j\psi_j\le1\)</span>, points <span class="math" data-tex="\(y_j\)">\(y_j\)</span>, and
+<span class="math" data-tex="\(\|f_i-\sum_j f_i(y_j)\psi_j\|_\infty&lt;\varepsilon\)">\(\|f_i-\sum_j f_i(y_j)\psi_j\|_\infty&lt;\varepsilon\)</span>. Such functions are obtained by covering the compact set where some <span class="math" data-tex="\(|f_i|\ge\varepsilon/3\)">\(|f_i|\ge\varepsilon/3\)</span> by finitely many neighborhoods on which every <span class="math" data-tex="\(f_i\)">\(f_i\)</span> varies by less than <span class="math" data-tex="\(\varepsilon/3\)">\(\varepsilon/3\)</span>, and cutting off in their union. The error in the represented tensor is at most <span class="math" data-tex="\(\varepsilon\sum_i\|a_i\|\)">\(\varepsilon\sum_i\|a_i\|\)</span>.</p>
+<p>Put <span class="math" data-tex="\(b_j=F(y_j)\)">\(b_j=F(y_j)\)</span>. The map <span class="math" data-tex="\(V\xi=(\rho(\psi_j)^{1/2}\xi)_j\)">\(V\xi=(\rho(\psi_j)^{1/2}\xi)_j\)</span> is a contraction. Commutation gives</p>
+<span class="math math-display" data-tex="\[
+\sum_j\pi(b_j)\rho(\psi_j)
+=V^*\operatorname{diag}(\pi(b_j))V,
+\]">\[
+\sum_j\pi(b_j)\rho(\psi_j)
+=V^*\operatorname{diag}(\pi(b_j))V,
+\]</span>
+<p>so its norm is at most <span class="math" data-tex="\(\max_j\|b_j\|\le\|F\|_\infty\)">\(\max_j\|b_j\|\le\|F\|_\infty\)</span>. Let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. This bounds the maximal norm by the supremum norm. Evaluation at points, followed by a faithful representation of <span class="math" data-tex="\(A\)">\(A\)</span>, gives the reverse bound; these are spatial representations, so the minimal norm has the same lower bound. Finite partitions of unity also approximate any compactly supported <span class="math" data-tex="\(A\)">\(A\)</span>-valued continuous function by algebraic tensors. Scalar cutoffs then give density in <span class="math" data-tex="\(C_0(Y,A)\)">\(C_0(Y,A)\)</span>. Isometric images are closed, proving (8.3).</p>
+<p>For (8.4), a nondegenerate representation of <span class="math" data-tex="\(\mathcal K(H)\)">\(\mathcal K(H)\)</span> is an amplification of its defining representation, by the matrix-unit proof in Lesson 7. After that unitary identification, an operator commuting with all its rank-one matrix units has the form <span class="math" data-tex="\(1_H\otimes T\)">\(1_H\otimes T\)</span>: the diagonal matrix units force it to preserve each coordinate, and the off-diagonal units make every coordinate operator identical. Thus every commuting representation of <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(1_H\otimes\sigma\)">\(1_H\otimes\sigma\)</span> on the multiplicity space. The resulting tensor representation is spatial and is bounded by the minimal norm. Taking the supremum gives (8.4); the reverse inequality always holds. ∎</p>
+<p><span id="lemma-8-2"></span><strong>Lemma 8.2 (An inactive tensor factor).</strong> If <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is an action of a locally compact group <span class="math" data-tex="\(L\)">\(L\)</span> on a C*-algebra <span class="math" data-tex="\(D\)">\(D\)</span>, then</p>
+<span id="equation-8-5"></span><span class="math math-display" data-tex="\[
+(A\otimes_{\max}D)\rtimes_{\operatorname{id}\otimes\beta}L
+\cong A\otimes_{\max}(D\rtimes_\beta L).
+\tag{8.5}
+\]">\[
+(A\otimes_{\max}D)\rtimes_{\operatorname{id}\otimes\beta}L
+\cong A\otimes_{\max}(D\rtimes_\beta L).
+\tag{8.5}
+\]</span>
+<p>On dense elementary functions the map sends <span class="math" data-tex="\(t\mapsto a\otimes f(t)\)">\(t\mapsto a\otimes f(t)\)</span> to <span class="math" data-tex="\(a\otimes f\)">\(a\otimes f\)</span>.</p>
+<p><strong>Proof.</strong> A nondegenerate representation of the maximal tensor product consists of commuting nondegenerate coefficient representations <span class="math" data-tex="\(\pi_A,\pi_D\)">\(\pi_A,\pi_D\)</span>. They are recovered even for nonunital algebras from the strict canonical multiplier maps; approximate identities in both factors show nondegeneracy of each. A covariant group representation <span class="math" data-tex="\(U\)">\(U\)</span> for <span class="math" data-tex="\(\operatorname{id}\otimes\beta\)">\(\operatorname{id}\otimes\beta\)</span> commutes with <span class="math" data-tex="\(\pi_A\)">\(\pi_A\)</span> and is covariant for <span class="math" data-tex="\(\pi_D\)">\(\pi_D\)</span>. These assertions follow first on products <span class="math" data-tex="\(\pi_A(a)\pi_D(d)\)">\(\pi_A(a)\pi_D(d)\)</span>, and then for the separate multiplier maps by nondegeneracy. Hence <span class="math" data-tex="\(\pi_D\rtimes U\)">\(\pi_D\rtimes U\)</span> commutes with <span class="math" data-tex="\(\pi_A\)">\(\pi_A\)</span>. Conversely a commuting pair consisting of <span class="math" data-tex="\(\pi_A\)">\(\pi_A\)</span> and a nondegenerate representation of <span class="math" data-tex="\(D\rtimes L\)">\(D\rtimes L\)</span> recovers precisely these coefficient and group representations. This is a bijection of the universal representation families.</p>
+<p>The two integrated forms have the same value on every <span class="math" data-tex="\(a\otimes f\)">\(a\otimes f\)</span>. Consequently their universal norms agree on the dense span of such functions. This span is dense on the left by compact-support partitions of unity and the density of <span class="math" data-tex="\(A\odot D\)">\(A\odot D\)</span> in the coefficient algebra; it is dense on the right by the density of <span class="math" data-tex="\(C_c(L,D)\)">\(C_c(L,D)\)</span>. The isometry therefore extends to an onto C*-isomorphism. This also proves the indicated map preserves products and adjoints, since all its represented values do. ∎</p>
+<p>The maximal tensor products in (8.5) are part of its statement. Replacing only the left tensor product by a minimal one is not justified for arbitrary <span class="math" data-tex="\(A,D\)">\(A,D\)</span>; even <span class="math" data-tex="\(L=\{e\}\)">\(L=\{e\}\)</span> would require an additional equality of tensor norms. In our application both (8.3) and (8.4) supply that equality.</p>
+<h2 id="the-three-steps">The three steps</h2>
+<p><span id="theorem-8-3"></span><strong>Theorem 8.3 (Takai duality).</strong> There is an isomorphism</p>
+<span id="equation-8-6"></span><span class="math math-display" data-tex="\[
+\Theta:(A\rtimes_\alpha G)\rtimes_{\widehat\alpha}\widehat G
+\longrightarrow A\otimes_{\min}\mathcal K(L^2(G)).
+\tag{8.6}
+\]">\[
+\Theta:(A\rtimes_\alpha G)\rtimes_{\widehat\alpha}\widehat G
+\longrightarrow A\otimes_{\min}\mathcal K(L^2(G)).
+\tag{8.6}
+\]</span>
+<p>We choose the version for which the double dual action becomes
+<span class="math" data-tex="\(\alpha_t\otimes\operatorname{Ad}\lambda_t\)">\(\alpha_t\otimes\operatorname{Ad}\lambda_t\)</span>, where
+<span class="math" data-tex="\((\lambda_t\xi)(x)=\xi(t^{-1}x)\)">\((\lambda_t\xi)(x)=\xi(t^{-1}x)\)</span>.</p>
+<p><strong>Proof.</strong> First identify the covariant representations of the left side. By the two integrated-form correspondences of Lesson 1, they are triples <span class="math" data-tex="\((\pi,U,V)\)">\((\pi,U,V)\)</span>, with <span class="math" data-tex="\(\pi\)">\(\pi\)</span> a nondegenerate representation of <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> a strongly continuous unitary representation of <span class="math" data-tex="\(G\)">\(G\)</span>, <span class="math" data-tex="\(V\)">\(V\)</span> one of <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>, and</p>
+<span id="equation-8-7"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+U_s\pi(a)U_s^*=\pi(\alpha_s(a)),\qquad
+V_\chi\pi(a)=\pi(a)V_\chi,\\
+V_\chi U_s V_\chi^*=\chi(s)U_s.
+\end{gathered}
+\tag{8.7}
+\]">\[
+\begin{gathered}
+U_s\pi(a)U_s^*=\pi(\alpha_s(a)),\qquad
+V_\chi\pi(a)=\pi(a)V_\chi,\\
+V_\chi U_s V_\chi^*=\chi(s)U_s.
+\end{gathered}
+\tag{8.7}
+\]</span>
+<p>Recovering these relations from the second crossed product is legitimate on strict multipliers: the dual action fixes <span class="math" data-tex="\(j_A(a)\)">\(j_A(a)\)</span> and multiplies <span class="math" data-tex="\(j_G(s)\)">\(j_G(s)\)</span> by <span class="math" data-tex="\(\chi(s)\)">\(\chi(s)\)</span>, as proved in Lesson 6. Conversely (8.7) makes <span class="math" data-tex="\((\pi\rtimes U,V)\)">\((\pi\rtimes U,V)\)</span> covariant, first on compactly supported integrals and then by density.</p>
+<p>The integrated representation of <span class="math" data-tex="\(V\)">\(V\)</span>, followed by (8.2), is a nondegenerate representation <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>, with its strict multiplier value on <span class="math" data-tex="\(x\mapsto\chi(x)\)">\(x\mapsto\chi(x)\)</span> equal to <span class="math" data-tex="\(V_\chi\)">\(V_\chi\)</span>. The last relation in (8.7) says
+<span class="math" data-tex="\(U_sV_\chi U_s^*=\chi(s)^{-1}V_\chi\)">\(U_sV_\chi U_s^*=\chi(s)^{-1}V_\chi\)</span>.
+For <span class="math" data-tex="\(g\in C_c(\widehat G)\)">\(g\in C_c(\widehat G)\)</span>, integration gives</p>
+<span id="equation-8-8"></span><span class="math math-display" data-tex="\[
+U_s\rho(\mathcal F_+g)U_s^*
+=\rho\bigl((\mathcal F_+g)(s^{-1}\,\cdot\,)\bigr).
+\tag{8.8}
+\]">\[
+U_s\rho(\mathcal F_+g)U_s^*
+=\rho\bigl((\mathcal F_+g)(s^{-1}\,\cdot\,)\bigr).
+\tag{8.8}
+\]</span>
+<p>Density proves covariance for every scalar function. Commutation with <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and (8.3), give a coefficient representation of <span class="math" data-tex="\(C_0(G,A)\)">\(C_0(G,A)\)</span>, covariant for</p>
+<span id="equation-8-9"></span><span class="math math-display" data-tex="\[
+(\gamma_sF)(x)=\alpha_s(F(s^{-1}x)).
+\tag{8.9}
+\]">\[
+(\gamma_sF)(x)=\alpha_s(F(s^{-1}x)).
+\tag{8.9}
+\]</span>
+<p>Conversely such a covariant representation recovers its commuting <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span> multiplier representations, the latter recovers <span class="math" data-tex="\(V\)">\(V\)</span>, and its covariance yields (8.7). Thus the universal families coincide. On the dense double core <span class="math" data-tex="\(F\in C_c(\widehat G\times G,A)\)">\(F\in C_c(\widehat G\times G,A)\)</span>, the integrated operator is
+<span class="math" data-tex="\(\int_{\widehat G}\int_G\pi(F(\chi,s))U_sV_\chi\,ds\,d\chi\)">\(\int_{\widehat G}\int_G\pi(F(\chi,s))U_sV_\chi\,ds\,d\chi\)</span>.
+Reordering <span class="math" data-tex="\(U_sV_\chi=\chi(s)^{-1}V_\chi U_s\)">\(U_sV_\chi=\chi(s)^{-1}V_\chi U_s\)</span> gives the coefficient function</p>
+<span id="equation-8-10"></span><span class="math math-display" data-tex="\[
+(\Psi F)(s,x)=\int_{\widehat G}F(\chi,s)\chi(s^{-1}x)\,d\chi.
+\tag{8.10}
+\]">\[
+(\Psi F)(s,x)=\int_{\widehat G}F(\chi,s)\chi(s^{-1}x)\,d\chi.
+\tag{8.10}
+\]</span>
+<p>It belongs to <span class="math" data-tex="\(C_c(G,C_0(G,A))\)">\(C_c(G,C_0(G,A))\)</span>, by the Fourier isomorphism and finite-product approximations on compact supports. In every corresponding pair of representations, <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(\Psi F\)">\(\Psi F\)</span> have the same integrated value, so their universal norms agree. Representations separate the target algebra, which also shows that <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> preserves products and adjoints. Its range has dense span: Fourier transforms of <span class="math" data-tex="\(C_c(\widehat G)\)">\(C_c(\widehat G)\)</span> are dense in <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>, scalar functions times elements of <span class="math" data-tex="\(A\)">\(A\)</span> are dense in <span class="math" data-tex="\(C_0(G,A)\)">\(C_0(G,A)\)</span>, and the coordinate change <span class="math" data-tex="\((s,x)\mapsto(s,s^{-1}x)\)">\((s,x)\mapsto(s,s^{-1}x)\)</span> is an invertible isometry on <span class="math" data-tex="\(C_c(G,C_0(G,A))\)">\(C_c(G,C_0(G,A))\)</span>, preserving compact supports in <span class="math" data-tex="\(s\)">\(s\)</span>. Thus <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> extends to the first isomorphism <span class="math" data-tex="\(C\cong C_0(G,A)\rtimes_\gamma G\)">\(C\cong C_0(G,A)\rtimes_\gamma G\)</span>.</p>
+<p>For the second step define</p>
+<span id="equation-8-11"></span><span class="math math-display" data-tex="\[
+(\Phi F)(x)=\alpha_x^{-1}(F(x)),\qquad
+(\Phi^{-1}F)(x)=\alpha_x(F(x)).
+\tag{8.11}
+\]">\[
+(\Phi F)(x)=\alpha_x^{-1}(F(x)),\qquad
+(\Phi^{-1}F)(x)=\alpha_x(F(x)).
+\tag{8.11}
+\]</span>
+<p>These are pointwise *-isomorphisms, preserve the supremum norm, and preserve vanishing at infinity. Norm continuity follows from strong continuity of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and continuity of <span class="math" data-tex="\(F\)">\(F\)</span>. Moreover,</p>
+<span id="equation-8-12"></span><span class="math math-display" data-tex="\[
+\Phi(\gamma_sF)(x)
+=\alpha_{x^{-1}s}(F(s^{-1}x))
+=(\Phi F)(s^{-1}x).
+\tag{8.12}
+\]">\[
+\Phi(\gamma_sF)(x)
+=\alpha_{x^{-1}s}(F(s^{-1}x))
+=(\Phi F)(s^{-1}x).
+\tag{8.12}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is equivariant from the diagonal action to ordinary left translation with inactive <span class="math" data-tex="\(A\)">\(A\)</span>. The full universal property gives the second isomorphism, applying <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to each coefficient value in <span class="math" data-tex="\(C_c(G,C_0(G,A))\)">\(C_c(G,C_0(G,A))\)</span>.</p>
+<p>The third step is</p>
+<span id="equation-8-13"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+C_0(G,A)\rtimes_{\operatorname{lt}}G
+&amp;\cong A\otimes_{\max}(C_0(G)\rtimes_{\operatorname{lt}}G)\\
+&amp;\cong A\otimes_{\min}\mathcal K(L^2(G)).
+\end{aligned}
+\tag{8.13}
+\]">\[
+\begin{aligned}
+C_0(G,A)\rtimes_{\operatorname{lt}}G
+&amp;\cong A\otimes_{\max}(C_0(G)\rtimes_{\operatorname{lt}}G)\\
+&amp;\cong A\otimes_{\min}\mathcal K(L^2(G)).
+\end{aligned}
+\tag{8.13}
+\]</span>
+<p>Here (8.3), Lemma 8.2, the scalar translation theorem of Lesson 7, and (8.4) justify every tensor norm and completion. Equivalently this is the coefficient version (7.40) of that translation theorem. Its dense action on the Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(L^2(G)\boxtimes A\)">\(L^2(G)\boxtimes A\)</span> is multiplication by coefficient functions and left translation.</p>
+<p>This composition already gives an isomorphism, which we temporarily call <span class="math" data-tex="\(\Theta_0\)">\(\Theta_0\)</span>. Finally conjugate its compact factor by the unitary inversion</p>
+<span id="equation-8-14"></span><span class="math math-display" data-tex="\[
+(J\xi)(x)=\xi(x^{-1}),\qquad
+\Theta=(\operatorname{id}_A\otimes\operatorname{Ad}J)\Theta_0.
+\tag{8.14}
+\]">\[
+(J\xi)(x)=\xi(x^{-1}),\qquad
+\Theta=(\operatorname{id}_A\otimes\operatorname{Ad}J)\Theta_0.
+\tag{8.14}
+\]</span>
+<p>Abelian groups are unimodular, so Haar inversion makes <span class="math" data-tex="\(J\)">\(J\)</span> unitary. This last choice fixes the double-dual convention in the statement, as the following computation proves. ∎</p>
+<h2 id="the-surviving-action-and-the-generator-formulas">The surviving action and the generator formulas</h2>
+<p><span id="proposition-8-4"></span><strong>Proposition 8.4.</strong> Under <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>, the strict multiplier actions on <span class="math" data-tex="\(L^2(G)\boxtimes A\)">\(L^2(G)\boxtimes A\)</span> are</p>
+<span id="equation-8-15"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+(\Theta(j_A(a))\xi)(x)&amp;=\alpha_x(a)\xi(x),\\
+(\Theta(j_G(s))\xi)(x)&amp;=\xi(xs),\\
+(\Theta(j_{\widehat G}(\chi))\xi)(x)&amp;=\overline{\chi(x)}\xi(x).
+\end{aligned}
+\tag{8.15}
+\]">\[
+\begin{aligned}
+(\Theta(j_A(a))\xi)(x)&amp;=\alpha_x(a)\xi(x),\\
+(\Theta(j_G(s))\xi)(x)&amp;=\xi(xs),\\
+(\Theta(j_{\widehat G}(\chi))\xi)(x)&amp;=\overline{\chi(x)}\xi(x).
+\end{aligned}
+\tag{8.15}
+\]</span>
+<p>The double dual action satisfies</p>
+<span id="equation-8-16"></span><span class="math math-display" data-tex="\[
+\Theta\widehat{\widehat\alpha}_t\Theta^{-1}
+=\alpha_t\otimes\operatorname{Ad}\lambda_t.
+\tag{8.16}
+\]">\[
+\Theta\widehat{\widehat\alpha}_t\Theta^{-1}
+=\alpha_t\otimes\operatorname{Ad}\lambda_t.
+\tag{8.16}
+\]</span>
+<p>This action is exterior equivalent to <span class="math" data-tex="\(\alpha\otimes\operatorname{id}\)">\(\alpha\otimes\operatorname{id}\)</span>.</p>
+<p><strong>Proof.</strong> Before the final inversion, the first step sends <span class="math" data-tex="\(j_A(a)\)">\(j_A(a)\)</span> to the constant coefficient multiplier, <span class="math" data-tex="\(j_G(s)\)">\(j_G(s)\)</span> to the group unitary, and <span class="math" data-tex="\(j_{\widehat G}(\chi)\)">\(j_{\widehat G}(\chi)\)</span> to multiplication by <span class="math" data-tex="\(\chi(x)\)">\(\chi(x)\)</span>. Twisting by (8.11) changes the first to <span class="math" data-tex="\(\alpha_x^{-1}(a)\)">\(\alpha_x^{-1}(a)\)</span>; the translation representation sends the group unitary to <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span>. Conjugating by <span class="math" data-tex="\(J\)">\(J\)</span> changes these to the three formulas (8.15), since <span class="math" data-tex="\(J\lambda_sJ=\lambda_{s^{-1}}\)">\(J\lambda_sJ=\lambda_{s^{-1}}\)</span> and <span class="math" data-tex="\(J M_\chi J=M_{\bar\chi}\)">\(J M_\chi J=M_{\bar\chi}\)</span>.</p>
+<p>The double dual action fixes <span class="math" data-tex="\(j_A,j_G\)">\(j_A,j_G\)</span> and sends <span class="math" data-tex="\(j_{\widehat G}(\chi)\)">\(j_{\widehat G}(\chi)\)</span> to <span class="math" data-tex="\(\chi(t)j_{\widehat G}(\chi)\)">\(\chi(t)j_{\widehat G}(\chi)\)</span>. At the first step it therefore acts on the scalar function factor by <span class="math" data-tex="\(f(x)\mapsto f(tx)\)">\(f(x)\mapsto f(tx)\)</span>. After (8.11), it acts on coefficients by</p>
+<span id="equation-8-17"></span><span class="math math-display" data-tex="\[
+F(x)\longmapsto\alpha_t(F(tx)),
+\tag{8.17}
+\]">\[
+F(x)\longmapsto\alpha_t(F(tx)),
+\tag{8.17}
+\]</span>
+<p>and fixes the translation group unitaries. On the compact-operator model before inversion this is <span class="math" data-tex="\(\alpha_t\otimes\operatorname{Ad}\lambda_{t^{-1}}\)">\(\alpha_t\otimes\operatorname{Ad}\lambda_{t^{-1}}\)</span>. Conjugating by <span class="math" data-tex="\(J\)">\(J\)</span> gives (8.16).</p>
+<p>One can check (8.16) directly in the final model without representing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by inner automorphisms. Define the semilinear isometry on the Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module</p>
+<span id="equation-8-18"></span><span class="math math-display" data-tex="\[
+(Q_t\xi)(x)=\alpha_t(\xi(t^{-1}x)).
+\tag{8.18}
+\]">\[
+(Q_t\xi)(x)=\alpha_t(\xi(t^{-1}x)).
+\tag{8.18}
+\]</span>
+<p>It sends <span class="math" data-tex="\(\xi a\)">\(\xi a\)</span> to <span class="math" data-tex="\((Q_t\xi)\alpha_t(a)\)">\((Q_t\xi)\alpha_t(a)\)</span>, and sends the inner product to its <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span>-image. Thus it sends <span class="math" data-tex="\(\theta_{\xi,\eta}\)">\(\theta_{\xi,\eta}\)</span> to <span class="math" data-tex="\(\theta_{Q_t\xi,Q_t\eta}\)">\(\theta_{Q_t\xi,Q_t\eta}\)</span>. On elementary vectors it is <span class="math" data-tex="\(\lambda_t\otimes\alpha_t\)">\(\lambda_t\otimes\alpha_t\)</span>, so its compact-operator action is <span class="math" data-tex="\(\alpha_t\otimes\operatorname{Ad}\lambda_t\)">\(\alpha_t\otimes\operatorname{Ad}\lambda_t\)</span>. Applied to (8.15), it fixes the first two multipliers and multiplies the third by <span class="math" data-tex="\(\chi(t)\)">\(\chi(t)\)</span>. The dense integrated products determine the action on the whole algebra. Strong continuity follows first on rank-one tensors and then by density.</p>
+<p>For later naturality checks, the final map has an explicit kernel on the double core <span class="math" data-tex="\(F\in C_c(\widehat G\times G,A)\)">\(F\in C_c(\widehat G\times G,A)\)</span>:</p>
+<span id="equation-8-19"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+K_F(x,y)&amp;=\int_{\widehat G}
+\alpha_x(F(\chi,x^{-1}y))\overline{\chi(y)}\,d\chi,\\
+(\Theta(F)\xi)(x)&amp;=\int_G K_F(x,y)\xi(y)\,dy.
+\end{aligned}
+\tag{8.19}
+\]">\[
+\begin{aligned}
+K_F(x,y)&amp;=\int_{\widehat G}
+\alpha_x(F(\chi,x^{-1}y))\overline{\chi(y)}\,d\chi,\\
+(\Theta(F)\xi)(x)&amp;=\int_G K_F(x,y)\xi(y)\,dy.
+\end{aligned}
+\tag{8.19}
+\]</span>
+<p>Indeed, (8.15) sends the integrated product to
+<span class="math" data-tex="\(\int\int\alpha_x(F(\chi,s))\overline{\chi(xs)}\xi(xs)ds\,d\chi\)">\(\int\int\alpha_x(F(\chi,s))\overline{\chi(xs)}\xi(xs)ds\,d\chi\)</span>; set <span class="math" data-tex="\(y=xs\)">\(y=xs\)</span>. For compactly supported <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, Fubini is justified by the compact supports in the original integration variables. The compactness and C*-norm assertion for this operator follow from the three established isomorphisms; a Fourier-transformed kernel need not have compact support. Formula (8.19) also shows that the isomorphism commutes with equivariant coefficient homomorphisms on the dense core, in particular with invariant-ideal inclusions and quotients.</p>
+<p>Finally set <span class="math" data-tex="\(\eta_t=\alpha_t\otimes\operatorname{id}\)">\(\eta_t=\alpha_t\otimes\operatorname{id}\)</span> and</p>
+<span id="equation-8-20"></span><span class="math math-display" data-tex="\[
+w_t=1_{M(A)}\otimes\lambda_t
+\in\mathcal U(M(A\otimes\mathcal K(L^2(G)))).
+\tag{8.20}
+\]">\[
+w_t=1_{M(A)}\otimes\lambda_t
+\in\mathcal U(M(A\otimes\mathcal K(L^2(G)))).
+\tag{8.20}
+\]</span>
+<p>These multipliers are strictly continuous: on finite sums of <span class="math" data-tex="\(a\otimes\theta_{\xi,\zeta}\)">\(a\otimes\theta_{\xi,\zeta}\)</span>, continuity on the left uses strong continuity of <span class="math" data-tex="\(\lambda_t\xi\)">\(\lambda_t\xi\)</span>, and on the right uses strong continuity of <span class="math" data-tex="\(\lambda_t^*\zeta\)">\(\lambda_t^*\zeta\)</span>. Density proves both strict seminorm limits on all compact tensors. Since <span class="math" data-tex="\(\eta_s\)">\(\eta_s\)</span> fixes <span class="math" data-tex="\(w_t\)">\(w_t\)</span>,
+<span class="math" data-tex="\(w_{st}=w_s\eta_s(w_t)\)">\(w_{st}=w_s\eta_s(w_t)\)</span>. Moreover
+<span class="math" data-tex="\(\alpha_t\otimes\operatorname{Ad}\lambda_t=\operatorname{Ad}w_t\circ\eta_t\)">\(\alpha_t\otimes\operatorname{Ad}\lambda_t=\operatorname{Ad}w_t\circ\eta_t\)</span>.
+This is exactly exterior equivalence, with a strictly continuous unitary cocycle. ∎</p>
+<h2 id="the-invariant-ideal-correspondence">The invariant-ideal correspondence</h2>
+<p>We need the compact-ideal prerequisite and a crossed-product recovery fact to prove the converse promised in Lesson 6.</p>
+<p><span id="lemma-8-5"></span><strong>Lemma 8.5 (Ideals in a compact amplification).</strong> For nonzero <span class="math" data-tex="\(H\)">\(H\)</span>, every closed two-sided ideal <span class="math" data-tex="\(L\subseteq A\otimes\mathcal K(H)\)">\(L\subseteq A\otimes\mathcal K(H)\)</span> is <span class="math" data-tex="\(I\otimes\mathcal K(H)\)">\(I\otimes\mathcal K(H)\)</span> for a unique closed two-sided ideal <span class="math" data-tex="\(I\subseteq A\)">\(I\subseteq A\)</span>.</p>
+<p><strong>Proof.</strong> Choose an orthonormal basis and its matrix units <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span>, fixing one index <span class="math" data-tex="\(o\)">\(o\)</span>. Define</p>
+<span id="equation-8-21"></span><span class="math math-display" data-tex="\[
+I=\{a\in A:a\otimes e_{oo}\in L\}.
+\tag{8.21}
+\]">\[
+I=\{a\in A:a\otimes e_{oo}\in L\}.
+\tag{8.21}
+\]</span>
+<p>The finite-matrix ideal result in <a href="prerequisites/hilbert-c-star-modules-and-morita-equivalence/the-rieffel-correspondence-and-induced-representations.html">The Rieffel correspondence and induced representations, Example 5.1</a> supplies the coefficient recovery, including preservation of ideals by multiplier matrix units. Example 5.3 proves the stabilization statement when <span class="math" data-tex="\(H\)">\(H\)</span> is separable. We extend its compression argument to arbitrary nonzero <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Direct the finite subsets <span class="math" data-tex="\(F\)">\(F\)</span> of the chosen basis that contain <span class="math" data-tex="\(o\)">\(o\)</span> by inclusion, and let <span class="math" data-tex="\(P_F\)">\(P_F\)</span> be their orthogonal projections. Example 5.1 identifies each compressed ideal
+<span class="math" data-tex="\((1\otimes P_F)L(1\otimes P_F)\)">\((1\otimes P_F)L(1\otimes P_F)\)</span> with <span class="math" data-tex="\(M_F(I)\)">\(M_F(I)\)</span>, using the same corner (8.21). For every <span class="math" data-tex="\(l\in A\otimes\mathcal K(H)\)">\(l\in A\otimes\mathcal K(H)\)</span>,
+<span class="math" data-tex="\((1\otimes P_F)l(1\otimes P_F)\to l\)">\((1\otimes P_F)l(1\otimes P_F)\to l\)</span> in norm. Indeed <span class="math" data-tex="\(P_F\)">\(P_F\)</span> converges strongly to <span class="math" data-tex="\(1\)">\(1\)</span>; on a rank-one operator this gives norm convergence of both compressed vectors. Finite-rank approximation proves the assertion for compact operators, and finite tensor approximation proves it for <span class="math" data-tex="\(l\)">\(l\)</span>. Thus every element of <span class="math" data-tex="\(L\)">\(L\)</span> is a norm limit of elements of <span class="math" data-tex="\(I\otimes\mathcal K(H)\)">\(I\otimes\mathcal K(H)\)</span>. Conversely Example 5.1 puts every <span class="math" data-tex="\(a\otimes e_{ij}\)">\(a\otimes e_{ij}\)</span>, <span class="math" data-tex="\(a\in I\)">\(a\in I\)</span>, in <span class="math" data-tex="\(L\)">\(L\)</span>; their closed span is <span class="math" data-tex="\(I\otimes\mathcal K(H)\)">\(I\otimes\mathcal K(H)\)</span>, by the same compression argument. Formula (8.21) gives uniqueness and proves that inclusion is both preserved and reflected. This uses a net of finite subsets, rather than a countable sequence of projections. ∎</p>
+<p><span id="lemma-8-6"></span><strong>Lemma 8.6 (Full crossed products reflect ideal inclusion).</strong> For an action of a locally compact group <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span>, and invariant ideals <span class="math" data-tex="\(I_1,I_2\subseteq D\)">\(I_1,I_2\subseteq D\)</span>,</p>
+<span id="equation-8-22"></span><span class="math math-display" data-tex="\[
+I_1\rtimes L\subseteq I_2\rtimes L
+\quad\Longrightarrow\quad I_1\subseteq I_2.
+\tag{8.22}
+\]">\[
+I_1\rtimes L\subseteq I_2\rtimes L
+\quad\Longrightarrow\quad I_1\subseteq I_2.
+\tag{8.22}
+\]</span>
+<p><strong>Proof.</strong> By full ideal exactness from Lesson 1, quotienting by <span class="math" data-tex="\(I_2\rtimes L\)">\(I_2\rtimes L\)</span> gives <span class="math" data-tex="\((D/I_2)\rtimes L\)">\((D/I_2)\rtimes L\)</span>. For <span class="math" data-tex="\(d\in I_1\)">\(d\in I_1\)</span> and <span class="math" data-tex="\(g\in C_c(L)\)">\(g\in C_c(L)\)</span>, the function <span class="math" data-tex="\(s\mapsto g(s)d\)">\(s\mapsto g(s)d\)</span> maps to zero. Its image is the product of the faithful canonical coefficient multiplier <span class="math" data-tex="\(i_{D/I_2}(d+I_2)\)">\(i_{D/I_2}(d+I_2)\)</span> with the integrated group multiplier <span class="math" data-tex="\(i_L(g)\)">\(i_L(g)\)</span>. The latter representation of <span class="math" data-tex="\(C^*(L)\)">\(C^*(L)\)</span> is nondegenerate, as in Lesson 1. An approximate identity in <span class="math" data-tex="\(C^*(L)\)">\(C^*(L)\)</span> therefore converges strictly to the identity after applying this multiplier representation. Since the product with every <span class="math" data-tex="\(i_L(g)\)">\(i_L(g)\)</span> is zero, density and this strict limit give <span class="math" data-tex="\(i_{D/I_2}(d+I_2)=0\)">\(i_{D/I_2}(d+I_2)=0\)</span>. Faithfulness gives <span class="math" data-tex="\(d\in I_2\)">\(d\in I_2\)</span>. This proof recovers coefficient multipliers and does not require them to be elements of the crossed product. ∎</p>
+<p><span id="theorem-8-7"></span><strong>Theorem 8.7.</strong> The map</p>
+<span id="equation-8-23"></span><span class="math math-display" data-tex="\[
+I\longmapsto I\rtimes_\alpha G
+\tag{8.23}
+\]">\[
+I\longmapsto I\rtimes_\alpha G
+\tag{8.23}
+\]</span>
+<p>is an inclusion-preserving bijection from the <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-invariant closed ideals of <span class="math" data-tex="\(A\)">\(A\)</span> to the <span class="math" data-tex="\(\widehat\alpha\)">\(\widehat\alpha\)</span>-invariant closed ideals of <span class="math" data-tex="\(B=A\rtimes_\alpha G\)">\(B=A\rtimes_\alpha G\)</span>.</p>
+<p><strong>Proof.</strong> The forward assertion is Lesson 6: full ideal embedding identifies <span class="math" data-tex="\(I\rtimes G\)">\(I\rtimes G\)</span> with an ideal, and character multiplication preserves its dense core. For the converse take a dual-invariant ideal <span class="math" data-tex="\(J\subseteq B\)">\(J\subseteq B\)</span>. The full ideal
+<span class="math" data-tex="\(J\rtimes\widehat G\subseteq C\)">\(J\rtimes\widehat G\subseteq C\)</span> is invariant under the double dual action, since that action multiplies its compactly supported coefficient function at <span class="math" data-tex="\(\chi\)">\(\chi\)</span> by <span class="math" data-tex="\(\chi(t)\)">\(\chi(t)\)</span>. By Lemma 8.5 there is a unique <span class="math" data-tex="\(I\subseteq A\)">\(I\subseteq A\)</span> with</p>
+<span id="equation-8-24"></span><span class="math math-display" data-tex="\[
+\Theta(J\rtimes\widehat G)=I\otimes\mathcal K(L^2(G)).
+\tag{8.24}
+\]">\[
+\Theta(J\rtimes\widehat G)=I\otimes\mathcal K(L^2(G)).
+\tag{8.24}
+\]</span>
+<p>By (8.16), this ideal is carried to <span class="math" data-tex="\(\alpha_t(I)\otimes\mathcal K(L^2(G))\)">\(\alpha_t(I)\otimes\mathcal K(L^2(G))\)</span>. Inner conjugation on the compact factor preserves every ideal of this form. Uniqueness in Lemma 8.5 therefore gives <span class="math" data-tex="\(\alpha_t(I)=I\)">\(\alpha_t(I)=I\)</span>.</p>
+<p>Apply Takai duality to the system <span class="math" data-tex="\((I,G,\alpha|_I)\)">\((I,G,\alpha|_I)\)</span>. Its isomorphism is the restriction of <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>: the constructions commute with the actual dense coefficient maps, or directly with the kernel (8.19). The two full ideal embeddings from Lesson 1 then give</p>
+<span id="equation-8-25"></span><span class="math math-display" data-tex="\[
+\Theta((I\rtimes G)\rtimes\widehat G)
+=I\otimes\mathcal K(L^2(G)).
+\tag{8.25}
+\]">\[
+\Theta((I\rtimes G)\rtimes\widehat G)
+=I\otimes\mathcal K(L^2(G)).
+\tag{8.25}
+\]</span>
+<p>Thus <span class="math" data-tex="\(J\rtimes\widehat G=(I\rtimes G)\rtimes\widehat G\)">\(J\rtimes\widehat G=(I\rtimes G)\rtimes\widehat G\)</span>. Apply Lemma 8.6 to the <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>-action on <span class="math" data-tex="\(B\)">\(B\)</span> to obtain <span class="math" data-tex="\(J=I\rtimes G\)">\(J=I\rtimes G\)</span>. Lemma 8.6 also proves injectivity of (8.23). The forward map preserves inclusion by its compactly supported cores, and the inverse preserves inclusion by (8.24) and Lemma 8.5. ∎</p>
+<p>In particular, this is an order isomorphism of the invariant-ideal lattices, so it preserves intersections and closed joins. It concerns dual-invariant ideals, rather than asserting that every ideal of <span class="math" data-tex="\(B\)">\(B\)</span> is dual invariant.</p>
+<h2 id="finite-groups-integer-and-circle-actions-and-stability">Finite groups, integer and circle actions, and stability</h2>
+<p>For <span class="math" data-tex="\(G=\mathbb Z_2\)">\(G=\mathbb Z_2\)</span>, write <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> for the involutive automorphism. In the two coordinates <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, (8.15) gives</p>
+<span id="equation-8-26"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+j_A(a)&amp;\longmapsto\begin{pmatrix}a&amp;0\\0&amp;\alpha(a)\end{pmatrix},\\
+j_G(1)&amp;\longmapsto S=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\quad
+j_{\widehat G}(-1)\longmapsto D=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\end{aligned}
+\tag{8.26}
+\]">\[
+\begin{aligned}
+j_A(a)&amp;\longmapsto\begin{pmatrix}a&amp;0\\0&amp;\alpha(a)\end{pmatrix},\\
+j_G(1)&amp;\longmapsto S=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\quad
+j_{\widehat G}(-1)\longmapsto D=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\end{aligned}
+\tag{8.26}
+\]</span>
+<p>The entries <span class="math" data-tex="\(1\)">\(1\)</span> belong to <span class="math" data-tex="\(M(A)\)">\(M(A)\)</span> when necessary. The two group unitaries anticommute, <span class="math" data-tex="\(DSD=-S\)">\(DSD=-S\)</span>, exactly as (8.7) requires. The target is <span class="math" data-tex="\(M_2(A)\)">\(M_2(A)\)</span>, with double dual action <span class="math" data-tex="\(\alpha\otimes\operatorname{Ad}S\)">\(\alpha\otimes\operatorname{Ad}S\)</span>.</p>
+<p>For an automorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(G=\mathbb Z\)">\(G=\mathbb Z\)</span>, the theorem is</p>
+<span id="equation-8-27"></span><span class="math math-display" data-tex="\[
+(A\rtimes_\alpha\mathbb Z)\rtimes_{\widehat\alpha}\mathbb T
+\cong A\otimes\mathcal K(\ell^2(\mathbb Z)).
+\tag{8.27}
+\]">\[
+(A\rtimes_\alpha\mathbb Z)\rtimes_{\widehat\alpha}\mathbb T
+\cong A\otimes\mathcal K(\ell^2(\mathbb Z)).
+\tag{8.27}
+\]</span>
+<p>In (8.15), <span class="math" data-tex="\(j_A(a)\)">\(j_A(a)\)</span> has diagonal entries <span class="math" data-tex="\(\alpha^n(a)\)">\(\alpha^n(a)\)</span>, the integer unitary sends <span class="math" data-tex="\(\xi(n)\)">\(\xi(n)\)</span> to <span class="math" data-tex="\(\xi(n+k)\)">\(\xi(n+k)\)</span>, and <span class="math" data-tex="\(j_{\mathbb T}(z)\)">\(j_{\mathbb T}(z)\)</span> multiplies the <span class="math" data-tex="\(n\)">\(n\)</span>-th coordinate by <span class="math" data-tex="\(z^{-n}\)">\(z^{-n}\)</span>. Let <span class="math" data-tex="\(P_n=\int_{\mathbb T}z^n j_{\mathbb T}(z)dz\)">\(P_n=\int_{\mathbb T}z^n j_{\mathbb T}(z)dz\)</span>, with normalized Haar measure. Character orthogonality makes it the coordinate projection. Then</p>
+<span id="equation-8-28"></span><span class="math math-display" data-tex="\[
+j_A(\alpha^{-m}(a))P_mj_{\mathbb Z}(n-m)P_n
+\longmapsto a\otimes e_{mn}.
+\tag{8.28}
+\]">\[
+j_A(\alpha^{-m}(a))P_mj_{\mathbb Z}(n-m)P_n
+\longmapsto a\otimes e_{mn}.
+\tag{8.28}
+\]</span>
+<p>Although <span class="math" data-tex="\(P_n\)">\(P_n\)</span> can be only a multiplier for nonunital coefficients, the displayed product is in the double crossed product: <span class="math" data-tex="\(j_A(a)\)">\(j_A(a)\)</span> belongs to the first crossed product for discrete <span class="math" data-tex="\(G\)">\(G\)</span>, and its product with the integrated second group multiplier is an actual compactly supported crossed-product integral. These formulas exhibit the finite matrix corners directly.</p>
+<p>For a circle action,</p>
+<span id="equation-8-29"></span><span class="math math-display" data-tex="\[
+(A\rtimes_\alpha\mathbb T)\rtimes_{\widehat\alpha}\mathbb Z
+\cong A\otimes\mathcal K(L^2(\mathbb T)).
+\tag{8.29}
+\]">\[
+(A\rtimes_\alpha\mathbb T)\rtimes_{\widehat\alpha}\mathbb Z
+\cong A\otimes\mathcal K(L^2(\mathbb T)).
+\tag{8.29}
+\]</span>
+<p>Using the basis <span class="math" data-tex="\(e_n(z)=z^n\)">\(e_n(z)=z^n\)</span> identifies the compact factor with <span class="math" data-tex="\(\mathcal K(\ell^2(\mathbb Z))\)">\(\mathcal K(\ell^2(\mathbb Z))\)</span>. Left translation sends <span class="math" data-tex="\(e_n\)">\(e_n\)</span> to <span class="math" data-tex="\(t^{-n}e_n\)">\(t^{-n}e_n\)</span>, so the surviving circle action is
+<span class="math" data-tex="\(\alpha_t\otimes\operatorname{Ad}\operatorname{diag}(t^{-n})\)">\(\alpha_t\otimes\operatorname{Ad}\operatorname{diag}(t^{-n})\)</span>.
+This is the double crossed-product statement used, for example, with gauge actions; no additional assertion about a particular algebra is needed for it.</p>
+<p>For a real action and the character <span class="math" data-tex="\(\chi_u(x)=e^{2\pi iux}\)">\(\chi_u(x)=e^{2\pi iux}\)</span>, the canonical operators in (8.15) are</p>
+<span id="equation-8-30"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+j_A(a)\xi(x)&amp;=\alpha_x(a)\xi(x),\\
+j_{\mathbb R}(s)\xi(x)&amp;=\xi(x+s),\\
+j_{\widehat{\mathbb R}}(u)\xi(x)&amp;=e^{-2\pi iux}\xi(x).
+\end{aligned}
+\tag{8.30}
+\]">\[
+\begin{aligned}
+j_A(a)\xi(x)&amp;=\alpha_x(a)\xi(x),\\
+j_{\mathbb R}(s)\xi(x)&amp;=\xi(x+s),\\
+j_{\widehat{\mathbb R}}(u)\xi(x)&amp;=e^{-2\pi iux}\xi(x).
+\end{aligned}
+\tag{8.30}
+\]</span>
+<p>The double crossed product is <span class="math" data-tex="\(A\otimes\mathcal K(L^2(\mathbb R))\)">\(A\otimes\mathcal K(L^2(\mathbb R))\)</span>, and its double dual action is <span class="math" data-tex="\(\alpha_s\otimes\operatorname{Ad}\lambda_s\)">\(\alpha_s\otimes\operatorname{Ad}\lambda_s\)</span>. The opposing translation signs in (8.30) and in the surviving <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> follow from the inversion choice (8.14).</p>
+<p><span id="proposition-8-8"></span><strong>Proposition 8.8 (When the double product is stable).</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is infinite, then <span class="math" data-tex="\(C\)">\(C\)</span> is stable, meaning <span class="math" data-tex="\(C\otimes\mathcal K(\ell^2(\mathbb N))\cong C\)">\(C\otimes\mathcal K(\ell^2(\mathbb N))\cong C\)</span>. For a finite group of order <span class="math" data-tex="\(n\)">\(n\)</span>, the conclusion of Takai duality is <span class="math" data-tex="\(C\cong M_n(A)\)">\(C\cong M_n(A)\)</span>; stability does not follow in general.</p>
+<p><strong>Proof.</strong> For every positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, an infinite locally compact Hausdorff group has <span class="math" data-tex="\(m\)">\(m\)</span> pairwise disjoint relatively compact nonempty open sets. Their indicators have finite positive Haar norm and are pairwise orthogonal. Thus <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span> is infinite-dimensional. Any infinite Hilbert basis has the same cardinality after product with <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, so <span class="math" data-tex="\(L^2(G)\otimes\ell^2(\mathbb N)\cong L^2(G)\)">\(L^2(G)\otimes\ell^2(\mathbb N)\cong L^2(G)\)</span>, without a separability assumption. The compact-operator tensor theorem, or its rank-one formula in the Hilbert-module prerequisite used in Lesson 7, gives
+<span class="math" data-tex="\(\mathcal K(H)\otimes\mathcal K(\ell^2)\cong\mathcal K(H\otimes\ell^2)\)">\(\mathcal K(H)\otimes\mathcal K(\ell^2)\cong\mathcal K(H\otimes\ell^2)\)</span>.
+Together with (8.6) and associativity of the minimal tensor product this proves stability. For finite <span class="math" data-tex="\(G\)">\(G\)</span>, its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space has dimension <span class="math" data-tex="\(n\)">\(n\)</span>. Taking <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span> gives the nonzero unital algebra <span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span>, which cannot be stable: its tensor product with the infinite compact algebra has no identity. ∎</p>
+<p>For every <span class="math" data-tex="\(G\)">\(G\)</span>, finite or infinite, (8.6) gives a Morita equivalence between <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span>, using the full module <span class="math" data-tex="\(L^2(G)\boxtimes A\)">\(L^2(G)\boxtimes A\)</span> of Lesson 7. This is the ordinary-action consequence corresponding to the Morita form in [Green 1978, Corollary 31, p. 236]. That paper also treats twisted covariance algebras; no twisted extension is claimed here. Since both <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> are amenable, Lesson 4 identifies the full and reduced crossed products at both steps, so the same Takai isomorphism also holds for the iterated reduced product.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 (A flip in two-by-two matrices).</strong> Let <span class="math" data-tex="\(A=\mathbb C\oplus\mathbb C\)">\(A=\mathbb C\oplus\mathbb C\)</span>, and let <span class="math" data-tex="\(\mathbb Z_2\)">\(\mathbb Z_2\)</span> exchange its two coordinates. Describe both crossed products, the Takai generators, and the double dual action explicitly.</p>
+<p><strong>Solution.</strong> In the first crossed product, represent <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> by <span class="math" data-tex="\(\operatorname{diag}(a,b)\)">\(\operatorname{diag}(a,b)\)</span> and the group generator by <span class="math" data-tex="\(S\)">\(S\)</span>. These give all four matrix units, so the image is <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>. The crossed-product vector space is the four-dimensional span of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(Au\)">\(Au\)</span>, with faithful coefficient map and independent group coefficients (Lesson 3). The onto map to <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> is therefore injective. The dual action fixes the diagonal and sends <span class="math" data-tex="\(S\)">\(S\)</span> to <span class="math" data-tex="\(-S\)">\(-S\)</span>, hence is <span class="math" data-tex="\(\operatorname{Ad}D\)">\(\operatorname{Ad}D\)</span>.</p>
+<p>In the double product let <span class="math" data-tex="\(v\)">\(v\)</span> be the second involutive unitary. It commutes with <span class="math" data-tex="\(D\)">\(D\)</span>, and <span class="math" data-tex="\(v b v=DbD\)">\(v b v=DbD\)</span> for <span class="math" data-tex="\(b\in M_2(\mathbb C)\)">\(b\in M_2(\mathbb C)\)</span>. Thus <span class="math" data-tex="\(z=Dv\)">\(z=Dv\)</span> is a central self-adjoint unitary, and <span class="math" data-tex="\(v=Dz\)">\(v=Dz\)</span>. Conversely any commuting representation of <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> and such a <span class="math" data-tex="\(z\)">\(z\)</span> defines <span class="math" data-tex="\(v\)">\(v\)</span> with these relations. The universal property identifies the double product with
+<span class="math" data-tex="\(M_2(\mathbb C)\otimes C^*(\mathbb Z_2)\cong M_2(\mathbb C)\oplus M_2(\mathbb C)\)">\(M_2(\mathbb C)\otimes C^*(\mathbb Z_2)\cong M_2(\mathbb C)\oplus M_2(\mathbb C)\)</span>.</p>
+<p>The version <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> in (8.15) is</p>
+<span id="equation-8-31"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+(a,b)&amp;\longmapsto
+\bigl(\operatorname{diag}(a,b),\operatorname{diag}(b,a)\bigr),\\
+u&amp;\longmapsto(S,S),\qquad v\longmapsto(D,D).
+\end{aligned}
+\tag{8.31}
+\]">\[
+\begin{aligned}
+(a,b)&amp;\longmapsto
+\bigl(\operatorname{diag}(a,b),\operatorname{diag}(b,a)\bigr),\\
+u&amp;\longmapsto(S,S),\qquad v\longmapsto(D,D).
+\end{aligned}
+\tag{8.31}
+\]</span>
+<p>Here the copy of <span class="math" data-tex="\(D\)">\(D\)</span> from the first crossed product maps to <span class="math" data-tex="\((D,-D)\)">\((D,-D)\)</span>, so <span class="math" data-tex="\(z=Dv\)">\(z=Dv\)</span> maps to <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span>. Its central projections split the two full matrix blocks, confirming surjectivity directly. The double dual action fixes the first crossed product and negates <span class="math" data-tex="\(v\)">\(v\)</span>, so on the target it is</p>
+<span id="equation-8-32"></span><span class="math math-display" data-tex="\[
+(X,Y)\longmapsto(SYS,SXS).
+\tag{8.32}
+\]">\[
+(X,Y)\longmapsto(SYS,SXS).
+\tag{8.32}
+\]</span>
+<p>This is precisely the flip on <span class="math" data-tex="\(A\)">\(A\)</span> together with conjugation by <span class="math" data-tex="\(S\)">\(S\)</span> on the compact factor. ∎</p>
+<p><strong>Exercise 2 (Removing the diagonal action).</strong> Verify the equivariance of (8.11), including continuity and vanishing at infinity. Track the double dual translation through this change of coordinates.</p>
+<p><strong>Solution.</strong> The function <span class="math" data-tex="\(x\mapsto\alpha_x^{-1}(F(x))\)">\(x\mapsto\alpha_x^{-1}(F(x))\)</span> is continuous: near a fixed <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, its difference from <span class="math" data-tex="\(\alpha_{x_0}^{-1}(F(x_0))\)">\(\alpha_{x_0}^{-1}(F(x_0))\)</span> is bounded by
+<span class="math" data-tex="\(\|F(x)-F(x_0)\|+\|\alpha_x^{-1}(F(x_0))-\alpha_{x_0}^{-1}(F(x_0))\|\)">\(\|F(x)-F(x_0)\|+\|\alpha_x^{-1}(F(x_0))-\alpha_{x_0}^{-1}(F(x_0))\|\)</span>.
+Both terms tend to zero. Its norm at <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(\|F(x)\|\)">\(\|F(x)\|\)</span>, so it vanishes at infinity. The inverse has the analogous properties, and both maps preserve pointwise multiplication and star. For diagonal covariance,
+<span class="math" data-tex="\(\alpha_x^{-1}\alpha_s(F(s^{-1}x))
+ =\alpha_{(s^{-1}x)^{-1}}(F(s^{-1}x))\)">\(\alpha_x^{-1}\alpha_s(F(s^{-1}x))
+ =\alpha_{(s^{-1}x)^{-1}}(F(s^{-1}x))\)</span>, which is exactly the left translation of <span class="math" data-tex="\(\Phi F\)">\(\Phi F\)</span>.</p>
+<p>Before this change, the double dual action is <span class="math" data-tex="\(R_tF(x)=F(tx)\)">\(R_tF(x)=F(tx)\)</span>. Hence</p>
+<span id="equation-8-33"></span><span class="math math-display" data-tex="\[
+(\Phi R_t\Phi^{-1}K)(x)
+=\alpha_x^{-1}(\alpha_{tx}(K(tx)))=\alpha_t(K(tx)).
+\tag{8.33}
+\]">\[
+(\Phi R_t\Phi^{-1}K)(x)
+=\alpha_x^{-1}(\alpha_{tx}(K(tx)))=\alpha_t(K(tx)).
+\tag{8.33}
+\]</span>
+<p>The right-translation factor becomes <span class="math" data-tex="\(\operatorname{Ad}\lambda_{t^{-1}}\)">\(\operatorname{Ad}\lambda_{t^{-1}}\)</span> under the translation compact model. Inversion (8.14) carries that to <span class="math" data-tex="\(\operatorname{Ad}\lambda_t\)">\(\operatorname{Ad}\lambda_t\)</span>. The coefficient action remains <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span>. ∎</p>
+<p><strong>Exercise 3 (The tensor norm in a full crossed product).</strong> Prove (8.5) for arbitrary, possibly nonunital <span class="math" data-tex="\(A,D\)">\(A,D\)</span>. Explain exactly why the tensor norms can be minimal in step three of Takai duality.</p>
+<p><strong>Solution.</strong> A covariant representation of <span class="math" data-tex="\(A\otimes_{\max}D\)">\(A\otimes_{\max}D\)</span> for the action trivial on <span class="math" data-tex="\(A\)">\(A\)</span> recovers commuting nondegenerate <span class="math" data-tex="\(\pi_A,\pi_D\)">\(\pi_A,\pi_D\)</span> and a group representation <span class="math" data-tex="\(U\)">\(U\)</span>. Covariance extends to the strict multiplier representations, so <span class="math" data-tex="\(U\)">\(U\)</span> commutes with <span class="math" data-tex="\(\pi_A\)">\(\pi_A\)</span>, and <span class="math" data-tex="\((\pi_D,U)\)">\((\pi_D,U)\)</span> is covariant for <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Integrating gives a commuting pair <span class="math" data-tex="\(\pi_A,\pi_D\rtimes U\)">\(\pi_A,\pi_D\rtimes U\)</span>, hence a representation of <span class="math" data-tex="\(A\otimes_{\max}(D\rtimes L)\)">\(A\otimes_{\max}(D\rtimes L)\)</span>. Conversely every nondegenerate representation of that maximal tensor product recovers exactly such a commuting pair; the integrated-form correspondence then recovers <span class="math" data-tex="\(\pi_D,U\)">\(\pi_D,U\)</span>. These operations are inverse and preserve <span class="math" data-tex="\(a\otimes f\)">\(a\otimes f\)</span> on the dense compactly supported tensor core. Universal norm suprema agree there, proving the completed isomorphism. This is the representation proof of Lemma 8.2, and accounts for the nonunital multiplier step.</p>
+<p>In Takai's third step <span class="math" data-tex="\(D=C_0(G)\)">\(D=C_0(G)\)</span>. Lemma 8.1 first identifies its maximal tensor product with the coefficient function algebra, while the translation theorem gives <span class="math" data-tex="\(D\rtimes G=\mathcal K(L^2(G))\)">\(D\rtimes G=\mathcal K(L^2(G))\)</span>. The second part of Lemma 8.1 makes the final maximal tensor norm equal to the minimal norm. For general <span class="math" data-tex="\(D\)">\(D\)</span>, the maximal notation in (8.5) must be retained unless an additional equality of tensor norms is established. ∎</p>
+<p><strong>Exercise 4 (Double dual equivariance and its cocycle).</strong> Starting from (8.15), identify the double dual action and prove its exterior equivalence to <span class="math" data-tex="\(\alpha\otimes\operatorname{id}\)">\(\alpha\otimes\operatorname{id}\)</span>, with the required continuity of the cocycle.</p>
+<p><strong>Solution.</strong> The action <span class="math" data-tex="\(\delta_t=\alpha_t\otimes\operatorname{Ad}\lambda_t\)">\(\delta_t=\alpha_t\otimes\operatorname{Ad}\lambda_t\)</span> fixes the first multiplier in (8.15), because its coefficient at <span class="math" data-tex="\(x\)">\(x\)</span> becomes
+<span class="math" data-tex="\(\alpha_t(\alpha_{t^{-1}x}(a))=\alpha_x(a)\)">\(\alpha_t(\alpha_{t^{-1}x}(a))=\alpha_x(a)\)</span>.
+It fixes the second because translations commute in an abelian group. For the third,
+<span class="math" data-tex="\(\overline{\chi(t^{-1}x)}=\chi(t)\overline{\chi(x)}\)">\(\overline{\chi(t^{-1}x)}=\chi(t)\overline{\chi(x)}\)</span>, so it multiplies that generator by <span class="math" data-tex="\(\chi(t)\)">\(\chi(t)\)</span>. These are exactly the double dual multiplier relations. The compactly supported integrated products are dense, hence the actions coincide on the whole algebra.</p>
+<p>Set <span class="math" data-tex="\(w_t=1\otimes\lambda_t\)">\(w_t=1\otimes\lambda_t\)</span> and <span class="math" data-tex="\(\eta_t=\alpha_t\otimes\operatorname{id}\)">\(\eta_t=\alpha_t\otimes\operatorname{id}\)</span>. Then
+<span class="math" data-tex="\(w_{st}=w_s\eta_s(w_t)\)">\(w_{st}=w_s\eta_s(w_t)\)</span> because <span class="math" data-tex="\(\eta_s\)">\(\eta_s\)</span> fixes the second-factor unitary, and
+<span class="math" data-tex="\(\delta_t=\operatorname{Ad}w_t\circ\eta_t\)">\(\delta_t=\operatorname{Ad}w_t\circ\eta_t\)</span>.
+For a rank-one tensor <span class="math" data-tex="\(a\otimes\theta_{\xi,\zeta}\)">\(a\otimes\theta_{\xi,\zeta}\)</span>, the left strict difference has norm at most
+<span class="math" data-tex="\(\|a\|\|(\lambda_t-\lambda_s)\xi\|\|\zeta\|\)">\(\|a\|\|(\lambda_t-\lambda_s)\xi\|\|\zeta\|\)</span>, and the right strict difference has norm at most
+<span class="math" data-tex="\(\|a\|\|\xi\|\|(\lambda_t^*-\lambda_s^*)\zeta\|\)">\(\|a\|\|\xi\|\|(\lambda_t^*-\lambda_s^*)\zeta\|\)</span>.
+Strong continuity of translation makes both tend to zero. Finite sums and norm approximation establish strict continuity on every algebra element. This proves the cocycle assertion without requiring operator-norm continuity of the translation unitaries. ∎</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The finite-matrix and separable stabilization ideal facts are prerequisites from <a href="prerequisites/hilbert-c-star-modules-and-morita-equivalence/the-rieffel-correspondence-and-induced-representations.html">The Rieffel correspondence and induced representations, Examples 5.1 and 5.3</a>. Lemma 8.5 adds the finite-subset net needed for an arbitrary Hilbert space. Lemmas 8.6 and Theorem 8.7 retain the crossed-product recovery argument and the Takai-specific invariant-ideal converse.</p>
+<p>We use the full integrated-form correspondence, strict canonical multipliers and full ideal exactness from Lesson 1; amenability and full/reduced equality from Lesson 4; and the positive C*-Fourier isomorphism, Pontryagin identification and dual action from Lesson 6. The translation compact-operator theorem and classification of representations of compact operators are proved in Lesson 7. General existence of Haar measure, compact-support partitions of unity, Hilbert tensor products, minimal tensor-product associativity and ordinary C*-algebra functional calculus are foundational prerequisites. The compact tensor formula used in the stability argument is the exterior compact-algebra theorem <a href="prerequisites/hilbert-c-star-modules-and-morita-equivalence/tensor-products-and-c-star-correspondences.html">Tensor products and C*-correspondences, Theorem 5.1</a>, also used precisely in Lesson 7. This lesson proves both tensor-norm identifications needed here, the inactive-factor crossed-product identity, all three Takai steps, its explicit surviving action and cocycle, and the invariant-ideal converse. No Takai or invariant-ideal theorem is imported in place of these proofs.</p>
+<p>[Blackadar 2006] B. Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Theorem II.10.5.2 and Theorem II.10.5.4, p. 226. These are the duality and invariant-ideal statement locators. <a href="https://bruceblackadar.com/Mathematics/Cycr.pdf">Author's revised edition, 2017</a>.</p>
+<p>[Williams] D. P. Williams, <em>Crossed Products of C*-Algebras</em>, §7.1, Theorem 7.1 and Lemmas 7.2–7.6, pp. 190–197. <a href="https://math.dartmouth.edu/~dana/cpcsa/draft3.1.pdf">Author's draft, version 3.1</a>. That formulation ends with right regular translation; the inversion in (8.14) gives our left regular formulation.</p>
+<p>[Connes 1994] A. Connes, <em>Noncommutative Geometry</em>, Chapter II, Appendix C, Definition 5 and Theorem 6, p. 178. <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">Author's electronic edition</a>. It states the double dual action up to exterior equivalence, called outer equivalence there. The explicit cocycle is proved in (8.20).</p>
+<p>[Green 1978] P. Green, <em>The local structure of twisted covariance algebras</em>, Acta Mathematica 140 (1978), 191–250, §7, Corollary 31 and its following remark, p. 236. The ordinary-action Morita consequence above is a specialization of the stronger twisted context in that paper.</p>
+<p>[Blackadar 1998] B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Theorem 10.1.2, p. 72. It distinguishes infinite-group stability from finite matrix amplification. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's second edition</a>.</p>
+<p><a href="prerequisites/hilbert-c-star-modules-and-morita-equivalence/the-rieffel-correspondence-and-induced-representations.html">The Rieffel correspondence and induced representations</a> <a href="prerequisites/hilbert-c-star-modules-and-morita-equivalence/the-rieffel-correspondence-and-induced-representations.html">Hilbert C*-modules and Morita equivalence, Lesson 12</a>, Examples 5.1 and 5.3. The former proves finite-matrix coefficient recovery for nonunital algebras; the latter gives the separable compact-amplification ideal correspondence.</p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="pager-prev" rel="prev" href="KT-CP-07.html">← Previous lesson</a> <a href="index.html">Course contents</a> <a class="pager-next" rel="next" href="KT-CP-09.html">Next lesson →</a></nav>
+<p class="source-link"><a href="src/KT-CP-08.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

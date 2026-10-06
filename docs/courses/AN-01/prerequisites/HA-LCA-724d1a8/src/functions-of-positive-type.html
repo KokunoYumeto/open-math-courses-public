@@ -1,0 +1,727 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="b62bb6b90538a7baabd9a3f66e01906dde1d40094a07588d9cc29a6198928c2a"><title>Functions of positive type</title><link rel="stylesheet" href="../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="functions-of-positive-type.md">Editable source</a> · <a href="../LICENCES.html">Licences</a></nav><article><h1 id="functions-of-positive-type">Functions of positive type</h1>
+<p><strong>Lesson HA-LCA-04.</strong> Self-checked by the writing AI.</p>
+<p>A positive-type function records all the inner products among translates of one vector. Conversely, positivity of those inner products constructs the vector and its representation. We will prove this both for continuous functions and for bounded measurable classes, then identify which normalized functions cannot be decomposed into two others.</p>
+<p>Here <span class="math" data-tex="\(G\)">\(G\)</span> is an arbitrary locally compact Hausdorff group, not necessarily abelian or unimodular. We use the complete locally determined left Haar domain <span class="math" data-tex="\((G,\Sigma,\mu)\)">\((G,\Sigma,\mu)\)</span> proved in <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-3-1">the general Haar reading</a>. Equality almost everywhere means equality on that domain; equivalently, its exceptional set is null on every compact set. There is no sigma-finiteness or separability assumption.</p>
+<p>Our freely accessible source is B. Bekka, P. de la Harpe and A. Valette's <a href="https://perso.univ-rennes1.fr/bachir.bekka/KazhdanTotal.pdf">author draft dated 23 February 2007</a>: C.1.1–C.1.4, C.4.1–C.4.16, C.5.1–C.5.5, Exercises C.6.1, C.6.4, C.6.7 and C.6.10, and the integrated-representation discussion in F.4. Its external proof references are not used. In particular, the integral-class construction and representation correspondence are proved below from exact earlier programme results.</p>
+<p>The freely sourced prerequisite components retain their stated licences. This lesson's new exposition is CC0; it reproduces no source prose or figures.</p>
+<h2 id="1-representations-and-the-convolution-algebra">1. Representations and the convolution algebra</h2>
+<p>Inner products are linear in the first variable. A <strong>unitary representation</strong> is a homomorphism <span class="math" data-tex="\(a\mapsto\pi(a)\)">\(a\mapsto\pi(a)\)</span> into the unitary operators on a Hilbert space <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, such that <span class="math" data-tex="\(a\mapsto\pi(a)v\)">\(a\mapsto\pi(a)v\)</span> is norm-continuous for every <span class="math" data-tex="\(v\)">\(v\)</span>. It is <strong>cyclic</strong> with vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> if the span of <span class="math" data-tex="\(\{\pi(a)\xi:a\in G\}\)">\(\{\pi(a)\xi:a\in G\}\)</span> is dense. It is <strong>irreducible</strong> if <span class="math" data-tex="\(\mathcal H\ne\{0\}\)">\(\mathcal H\ne\{0\}\)</span> and its only closed invariant subspaces are <span class="math" data-tex="\(0,\mathcal H\)">\(0,\mathcal H\)</span>.</p>
+<p>The modular convention and algebra operations are
+<span class="math math-display" data-tex="\[
+ \mu(Ea)=\Delta(a)\mu(E),\qquad
+ (f*g)(x)=\int_G f(y)g(y^{-1}x)\,d\mu(y),\qquad
+ f^*(x)=\Delta(x)^{-1}\overline{f(x^{-1})}.              \tag{1}
+\]">\[
+ \mu(Ea)=\Delta(a)\mu(E),\qquad
+ (f*g)(x)=\int_G f(y)g(y^{-1}x)\,d\mu(y),\qquad
+ f^*(x)=\Delta(x)^{-1}\overline{f(x^{-1})}.              \tag{1}
+\]</span>
+The full-domain substitutions, associativity, isometric involution and bound
+<span class="math" data-tex="\(\|f*g\|_1\le\|f\|_1\|g\|_1\)">\(\|f*g\|_1\le\|f\|_1\|g\|_1\)</span> were proved in the earlier <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-4-1">modular theorem</a> and <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-6-1">Banach-star algebra theorem</a>. Write <span class="math" data-tex="\(L_af(x)=f(a^{-1}x)\)">\(L_af(x)=f(a^{-1}x)\)</span>.</p>
+<p>We use the earlier <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-corollary-6-2">two-sided approximate identity</a>: nonnegative <span class="math" data-tex="\(u_U\in C_c(G)\)">\(u_U\in C_c(G)\)</span>, indexed by shrinking symmetric neighbourhoods of <span class="math" data-tex="\(e\)">\(e\)</span>, with
+<span class="math math-display" data-tex="\[
+ u_U=u_U^*,\quad \int u_U=1,\quad
+ \operatorname{supp}u_U\subset U,\quad
+ u_U*f\to f,\quad f*u_U\to f\quad\hbox{in }L^1.          \tag{2}
+\]">\[
+ u_U=u_U^*,\quad \int u_U=1,\quad
+ \operatorname{supp}u_U\subset U,\quad
+ u_U*f\to f,\quad f*u_U\to f\quad\hbox{in }L^1.          \tag{2}
+\]</span></p>
+<a id="ha-lca-04-proposition-1-1"></a>
+<h3 id="proposition-1-1-hilbert-space-structure-of-unitary-representations">Proposition 1.1. Hilbert-space structure of unitary representations</h3>
+<p>Every unitary representation is an orthogonal Hilbert sum of cyclic representations. For a nonzero representation, irreducibility is equivalent to its bounded commutant being exactly <span class="math" data-tex="\(\mathbb C I\)">\(\mathbb C I\)</span>. In the abelian case every irreducible unitary representation is one-dimensional and is given by a continuous character <span class="math" data-tex="\(G\to\mathbb T\)">\(G\to\mathbb T\)</span>.</p>
+<p><strong>Proof.</strong> These statements have complete earlier proofs in <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-proposition-7-1">the cyclic-decomposition proposition</a> and <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-7-2">the Schur theorem</a>. Their hypotheses are exactly the strong continuity and arbitrary Hilbert dimension used here. To specify the mechanisms, an invariant closed subspace has invariant orthogonal complement, since all <span class="math" data-tex="\(\pi(a)^{-1}\)">\(\pi(a)^{-1}\)</span> also belong to the representation. A maximal orthogonal family of cyclic subspaces exhausts the space; otherwise any nonzero vector in its orthogonal complement supplies a further member. The Hilbert sum and maximal-family argument are proved in the cited proposition. For Schur's theorem, the cited proof constructs nontrivial invariant closed ranges from a nonscalar self-adjoint operator by its continuous positive and negative parts, using the fully proved <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-3-2">continuous calculus and square-root results</a>. It uses no unproved spectral decomposition. Finally, if <span class="math" data-tex="\(G\)">\(G\)</span> is abelian, each <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span> belongs to the commutant and hence is scalar; every subspace is then invariant, forcing dimension one. Strong continuity makes the resulting scalar homomorphism continuous. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-lemma-1-2"></a>
+<h3 id="lemma-1-2-the-full-l-1-representation-correspondence">Lemma 1.2. The full <span class="math" data-tex="\(L^1\)">\(L^1\)</span> representation correspondence</h3>
+<p>For a unitary representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the operators determined by
+<span class="math math-display" data-tex="\[
+ \langle\pi(f)v,w\rangle=\int_G f(a)\langle\pi(a)v,w\rangle\,d\mu(a) \tag{3}
+\]">\[
+ \langle\pi(f)v,w\rangle=\int_G f(a)\langle\pi(a)v,w\rangle\,d\mu(a) \tag{3}
+\]</span>
+form a contractive nondegenerate star representation of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>. Conversely, every nondegenerate algebraic star homomorphism
+<span class="math" data-tex="\(\rho:L^1(G)\to\mathcal B(\mathcal H)\)">\(\rho:L^1(G)\to\mathcal B(\mathcal H)\)</span> arises in this way from a unique strongly continuous unitary representation. Here nondegenerate means that the span of <span class="math" data-tex="\(\rho(L^1)\mathcal H\)">\(\rho(L^1)\mathcal H\)</span> is dense, and an algebraic star homomorphism is complex linear and preserves products and adjoints. Its contractivity need not be assumed.</p>
+<p>The forward correspondence preserves commutants and the closed cyclic spans of individual vectors.</p>
+<p><strong>Proof.</strong> The complete <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-7-2">integrated-representation theorem</a> proves all the forward assertions, including construction of (3) by bounded forms, the star identity with the modular convention (1), nondegeneracy, commutants and cyclic spans.</p>
+<p>We supply the converse. First <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is contractive. Use the earlier <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-theorem-3-4">unitization</a> <span class="math" data-tex="\(A^+=L^1(G)\oplus\mathbb C1\)">\(A^+=L^1(G)\oplus\mathbb C1\)</span>, with norm <span class="math" data-tex="\(\|f+z1\|=\|f\|_1+|z|\)">\(\|f+z1\|=\|f\|_1+|z|\)</span>, and extend <span class="math" data-tex="\(\rho\)">\(\rho\)</span> algebraically to the unital map
+<span class="math" data-tex="\(\rho^+(f+z1)=\rho(f)+zI\)">\(\rho^+(f+z1)=\rho(f)+zI\)</span>. Unital algebra homomorphisms preserve inverses, so
+<span class="math" data-tex="\(\sigma_{\mathcal B(\mathcal H)}(\rho^+(b))\subseteq\sigma_{A^+}(b)\)">\(\sigma_{\mathcal B(\mathcal H)}(\rho^+(b))\subseteq\sigma_{A^+}(b)\)</span>: if <span class="math" data-tex="\(b-z1\)">\(b-z1\)</span> has inverse <span class="math" data-tex="\(c\)">\(c\)</span>, then <span class="math" data-tex="\(\rho^+(c)\)">\(\rho^+(c)\)</span> is the inverse of <span class="math" data-tex="\(\rho^+(b)-zI\)">\(\rho^+(b)-zI\)</span>. For <span class="math" data-tex="\(\mathcal H\ne0\)">\(\mathcal H\ne0\)</span>, the earlier <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-proposition-3-1">operator norm and self-adjoint radius theorem</a> and <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-theorem-2-2">Banach spectral bound</a> imply
+<span class="math math-display" data-tex="\[
+ \|\rho(f)\|^2
+ =r\big(\rho(f)^*\rho(f)\big)
+ =r\big(\rho^+(f^**f)\big)
+ \le r_{A^+}(f^**f)\le\|f^**f\|_1\le\|f\|_1^2.         \tag{4}
+\]">\[
+ \|\rho(f)\|^2
+ =r\big(\rho(f)^*\rho(f)\big)
+ =r\big(\rho^+(f^**f)\big)
+ \le r_{A^+}(f^**f)\le\|f^**f\|_1\le\|f\|_1^2.         \tag{4}
+\]</span>
+For the zero Hilbert space contractivity and the claimed correspondence are immediate. Thus we may assume <span class="math" data-tex="\(\mathcal H\ne0\)">\(\mathcal H\ne0\)</span>.</p>
+<p>For <span class="math" data-tex="\(f,g\in L^1\)">\(f,g\in L^1\)</span> and <span class="math" data-tex="\(a\in G\)">\(a\in G\)</span>,
+<span class="math math-display" data-tex="\[
+ (L_ag)^**(L_af)=g^**f.                                \tag{5}
+\]">\[
+ (L_ag)^**(L_af)=g^**f.                                \tag{5}
+\]</span>
+For <span class="math" data-tex="\(C_c\)">\(C_c\)</span> functions, <span class="math" data-tex="\((L_ag)^*(y)=\Delta(a)g^*(ya)\)">\((L_ag)^*(y)=\Delta(a)g^*(ya)\)</span>. Substitute <span class="math" data-tex="\(t=ya\)">\(t=ya\)</span> into its convolution with <span class="math" data-tex="\(L_af\)">\(L_af\)</span>; the measure multiplier is <span class="math" data-tex="\(\Delta(a)^{-1}\)">\(\Delta(a)^{-1}\)</span>, and <span class="math" data-tex="\(a^{-1}y^{-1}x=t^{-1}x\)">\(a^{-1}y^{-1}x=t^{-1}x\)</span>. The factors cancel, proving (5). The <span class="math" data-tex="\(C_c\)">\(C_c\)</span> density, translation continuity and bounded algebra operations proved in <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-proposition-5-2">the general Haar reading</a> extend this identity to <span class="math" data-tex="\(L^1\)">\(L^1\)</span>.</p>
+<p>On the dense linear subspace <span class="math" data-tex="\(D=\operatorname{span}\rho(L^1)\mathcal H\)">\(D=\operatorname{span}\rho(L^1)\mathcal H\)</span>, define
+<span class="math math-display" data-tex="\[
+ U_a\left(\sum_{j=1}^n\rho(f_j)v_j\right)
+       =\sum_{j=1}^n\rho(L_af_j)v_j.                    \tag{6}
+\]">\[
+ U_a\left(\sum_{j=1}^n\rho(f_j)v_j\right)
+       =\sum_{j=1}^n\rho(L_af_j)v_j.                    \tag{6}
+\]</span>
+Its squared norm is
+<span class="math math-display" data-tex="\[
+ \sum_{i,j}\left\langle
+   \rho\big((L_af_j)^**(L_af_i)\big)v_i,v_j\right\rangle
+ =\sum_{i,j}\langle\rho(f_j^**f_i)v_i,v_j\rangle
+ =\left\|\sum_i\rho(f_i)v_i\right\|^2.
+\]">\[
+ \sum_{i,j}\left\langle
+   \rho\big((L_af_j)^**(L_af_i)\big)v_i,v_j\right\rangle
+ =\sum_{i,j}\langle\rho(f_j^**f_i)v_i,v_j\rangle
+ =\left\|\sum_i\rho(f_i)v_i\right\|^2.
+\]</span>
+This proves that the value of (6) is independent of the chosen expression, and that it is an isometry. The maps <span class="math" data-tex="\(U_{a^{-1}}\)">\(U_{a^{-1}}\)</span> and <span class="math" data-tex="\(U_a\)">\(U_a\)</span> are inverse on <span class="math" data-tex="\(D\)">\(D\)</span>, so the earlier <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-1-2">extension theorem</a> extends them to mutually inverse unitaries. The identities <span class="math" data-tex="\(L_aL_b=L_{ab}\)">\(L_aL_b=L_{ab}\)</span> give <span class="math" data-tex="\(U_aU_b=U_{ab}\)">\(U_aU_b=U_{ab}\)</span>. By (4) and <span class="math" data-tex="\(L^1\)">\(L^1\)</span> translation continuity, <span class="math" data-tex="\(U_a v\to v\)">\(U_a v\to v\)</span> as <span class="math" data-tex="\(a\to e\)">\(a\to e\)</span> for <span class="math" data-tex="\(v\in D\)">\(v\in D\)</span>. Approximating any vector by a vector in <span class="math" data-tex="\(D\)">\(D\)</span>, and using <span class="math" data-tex="\(\|U_a\|=1\)">\(\|U_a\|=1\)</span>, extends continuity to all vectors. The group law then gives continuity at every <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>It remains to verify that integration of <span class="math" data-tex="\(U\)">\(U\)</span> returns <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. We will use the following scalar consequence of the earlier <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-6-1">full-domain convolution pairing</a>. For any bounded functional <span class="math" data-tex="\(\ell\)">\(\ell\)</span> on <span class="math" data-tex="\(L^1\)">\(L^1\)</span>,
+<span class="math math-display" data-tex="\[
+ \int_G g(a)\ell(L_af)\,d\mu(a)=\ell(g*f).               \tag{7}
+\]">\[
+ \int_G g(a)\ell(L_af)\,d\mu(a)=\ell(g*f).               \tag{7}
+\]</span>
+Indeed, the proved <a href="../prerequisites/src/dual-balls-and-compact-convexity.html#ha-lca-pre-dual-convex-theorem-1-2"><span class="math" data-tex="\(L^1\)">\(L^1\)</span> dual representation</a> writes <span class="math" data-tex="\(\ell(h)=\int hq\)">\(\ell(h)=\int hq\)</span>, with <span class="math" data-tex="\(q\in L^\infty\)">\(q\in L^\infty\)</span>. Left substitution gives
+<span class="math" data-tex="\(\ell(L_af)=\int f(b)q(ab)\,d\mu(b)\)">\(\ell(L_af)=\int f(b)q(ab)\,d\mu(b)\)</span>. The cited convolution pairing gives (7); its absolute bound is <span class="math" data-tex="\(\|q\|_\infty\|g\|_1\|f\|_1\)">\(\|q\|_\infty\|g\|_1\|f\|_1\)</span>, and its proof includes the full measurable domain.</p>
+<p>For <span class="math" data-tex="\(v,w\in\mathcal H\)">\(v,w\in\mathcal H\)</span>, take <span class="math" data-tex="\(\ell(h)=\langle\rho(h)v,w\rangle\)">\(\ell(h)=\langle\rho(h)v,w\rangle\)</span>, bounded by (4). Formula (6), then (7), shows
+<span class="math math-display" data-tex="\[
+ \left\langle U(g)\rho(f)v,w\right\rangle
+ =\int g(a)\langle\rho(L_af)v,w\rangle\,d\mu(a)
+ =\langle\rho(g*f)v,w\rangle
+ =\langle\rho(g)\rho(f)v,w\rangle.
+\]">\[
+ \left\langle U(g)\rho(f)v,w\right\rangle
+ =\int g(a)\langle\rho(L_af)v,w\rangle\,d\mu(a)
+ =\langle\rho(g*f)v,w\rangle
+ =\langle\rho(g)\rho(f)v,w\rangle.
+\]</span>
+Thus <span class="math" data-tex="\(U(g)=\rho(g)\)">\(U(g)=\rho(g)\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span> and hence on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. Finally, any unitary representation integrating to <span class="math" data-tex="\(\rho\)">\(\rho\)</span> satisfies
+<span class="math" data-tex="\(U_a\rho(f)=\rho(L_af)\)">\(U_a\rho(f)=\rho(L_af)\)</span> by the covariance assertion in the forward theorem. This determines it on the dense subspace <span class="math" data-tex="\(D\)">\(D\)</span>, proving uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-two-forms-of-positivity">2. Two forms of positivity</h2>
+<p>A function <span class="math" data-tex="\(\varphi:G\to\mathbb C\)">\(\varphi:G\to\mathbb C\)</span> is <strong>matrix positive</strong> if
+<span class="math math-display" data-tex="\[
+ \sum_{i,j=1}^n c_i\overline{c_j}\,
+                \varphi(x_j^{-1}x_i)\ \ge0             \tag{8}
+\]">\[
+ \sum_{i,j=1}^n c_i\overline{c_j}\,
+                \varphi(x_j^{-1}x_i)\ \ge0             \tag{8}
+\]</span>
+for every finite family <span class="math" data-tex="\(x_i\in G,\ c_i\in\mathbb C\)">\(x_i\in G,\ c_i\in\mathbb C\)</span>. The inequality asserts that the sum is real and nonnegative. A class <span class="math" data-tex="\(q\in L^\infty(G)\)">\(q\in L^\infty(G)\)</span> is <strong>integral positive</strong> if
+<span class="math" data-tex="\(\int(f^**f)q\,d\mu\ge0\)">\(\int(f^**f)q\,d\mu\ge0\)</span> for every <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>.</p>
+<a id="ha-lca-04-lemma-2-0"></a>
+<h3 id="lemma-2-0-the-continuous-kernel-construction">Lemma 2.0. The continuous kernel construction</h3>
+<p>Every continuous matrix-positive function has a cyclic unitary realization
+<span class="math" data-tex="\(\varphi(a)=\langle\pi(a)\xi,\xi\rangle\)">\(\varphi(a)=\langle\pi(a)\xi,\xi\rangle\)</span>. It satisfies
+<span class="math" data-tex="\(\varphi(e)=\|\xi\|^2\)">\(\varphi(e)=\|\xi\|^2\)</span>, <span class="math" data-tex="\(|\varphi(a)|\le\varphi(e)\)">\(|\varphi(a)|\le\varphi(e)\)</span>, and
+<span class="math" data-tex="\(\varphi(a^{-1})=\overline{\varphi(a)}\)">\(\varphi(a^{-1})=\overline{\varphi(a)}\)</span>. The realization is unique up to the unique unitary that carries the cyclic vector to the cyclic vector and intertwines the representations.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be the vector space of finite formal sums <span class="math" data-tex="\(\sum_i c_i\delta_{x_i}\)">\(\sum_i c_i\delta_{x_i}\)</span>, and define
+<span class="math math-display" data-tex="\[
+ B\left(\sum_i c_i\delta_{x_i},\sum_j d_j\delta_{y_j}\right)
+    =\sum_{i,j}c_i\overline{d_j}\varphi(y_j^{-1}x_i).
+\]">\[
+ B\left(\sum_i c_i\delta_{x_i},\sum_j d_j\delta_{y_j}\right)
+    =\sum_{i,j}c_i\overline{d_j}\varphi(y_j^{-1}x_i).
+\]</span>
+This is well-defined on finite-support functions by combining repeated indices. It is sesquilinear and nonnegative on the diagonal by (8). The earlier <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-lemma-1-1">positive-form lemma</a> proves its Hermitian symmetry, Cauchy–Schwarz inequality, and the fact that its zero-length vectors form a subspace orthogonal to all of <span class="math" data-tex="\(V\)">\(V\)</span>. Quotient by that subspace and take the <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-1-2">Hilbert completion</a>.</p>
+<p>The maps <span class="math" data-tex="\(\delta_x\mapsto\delta_{ax}\)">\(\delta_x\mapsto\delta_{ax}\)</span> preserve <span class="math" data-tex="\(B\)">\(B\)</span>, since <span class="math" data-tex="\((ay)^{-1}(ax)=y^{-1}x\)">\((ay)^{-1}(ax)=y^{-1}x\)</span>, and have inverses with <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>. They descend and extend to unitaries <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span>, with the group law. Put <span class="math" data-tex="\(\xi=[\delta_e]\)">\(\xi=[\delta_e]\)</span>. Its translates are all the <span class="math" data-tex="\([\delta_x]\)">\([\delta_x]\)</span>, so it is cyclic, and
+<span class="math" data-tex="\(\langle\pi(a)\xi,\xi\rangle=\varphi(a)\)">\(\langle\pi(a)\xi,\xi\rangle=\varphi(a)\)</span>. Unitarity and Cauchy–Schwarz give the stated bound and Hermitian symmetry.</p>
+<p>For any <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span>,
+<span class="math math-display" data-tex="\[
+ \|\pi(a)[\delta_x]-[\delta_x]\|^2
+       =2\varphi(e)-2\operatorname{Re}\varphi(x^{-1}ax)\longrightarrow0
+                      \quad(a\to e),
+\]">\[
+ \|\pi(a)[\delta_x]-[\delta_x]\|^2
+       =2\varphi(e)-2\operatorname{Re}\varphi(x^{-1}ax)\longrightarrow0
+                      \quad(a\to e),
+\]</span>
+by continuity of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. Finite linear combinations have the same continuity, and approximation with the common unitary bound extends it to the entire completion. Thus <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is strongly continuous.</p>
+<p>If <span class="math" data-tex="\((\rho,\mathcal K,\eta)\)">\((\rho,\mathcal K,\eta)\)</span> is another cyclic realization, then
+<span class="math" data-tex="\(\langle\rho(x)\eta,\rho(y)\eta\rangle=\varphi(y^{-1}x)\)">\(\langle\rho(x)\eta,\rho(y)\eta\rangle=\varphi(y^{-1}x)\)</span>.
+Consequently <span class="math" data-tex="\(\sum c_i\pi(x_i)\xi\mapsto\sum c_i\rho(x_i)\eta\)">\(\sum c_i\pi(x_i)\xi\mapsto\sum c_i\rho(x_i)\eta\)</span> preserves squared norms and inner products. It is well-defined, extends to an isometry and is onto because its image contains a dense cyclic span and the range of an isometry from a complete space is closed. On the dense span it intertwines each group operator and sends <span class="math" data-tex="\(\xi\)">\(\xi\)</span> to <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, so it does so everywhere. These same prescribed values force uniqueness. If <span class="math" data-tex="\(\varphi=0\)">\(\varphi=0\)</span>, both cyclic spaces are the zero space and the argument still applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-lemma-2-1"></a>
+<h3 id="lemma-2-1-integral-pairing-and-continuous-positivity">Lemma 2.1. Integral pairing and continuous positivity</h3>
+<p>For <span class="math" data-tex="\(q\in L^\infty\)">\(q\in L^\infty\)</span>, put <span class="math" data-tex="\(\Lambda_q(h)=\int hq\)">\(\Lambda_q(h)=\int hq\)</span>. Then, for <span class="math" data-tex="\(f,g\in L^1\)">\(f,g\in L^1\)</span>,
+<span class="math math-display" data-tex="\[
+ \Lambda_q(g^**f)
+   =\int_G\int_G f(x)\overline{g(y)}q(y^{-1}x)\,d\mu(x)d\mu(y). \tag{9}
+\]">\[
+ \Lambda_q(g^**f)
+   =\int_G\int_G f(x)\overline{g(y)}q(y^{-1}x)\,d\mu(x)d\mu(y). \tag{9}
+\]</span>
+The double integral is well-defined on classes, is absolutely convergent, and has absolute value at most <span class="math" data-tex="\(\|q\|_\infty\|f\|_1\|g\|_1\)">\(\|q\|_\infty\|f\|_1\|g\|_1\)</span>.</p>
+<p>A bounded continuous function is integral positive if and only if it is matrix positive. Matrix positivity itself forces a continuous function to be bounded.</p>
+<p><strong>Proof.</strong> The earlier <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-6-1">convolution pairing theorem</a> gives
+<span class="math math-display" data-tex="\[
+ \Lambda_q(g^**f)=\iint g^*(t)f(x)q(tx)\,d\mu(t)d\mu(x).
+\]">\[
+ \Lambda_q(g^**f)=\iint g^*(t)f(x)q(tx)\,d\mu(t)d\mu(x).
+\]</span>
+Set <span class="math" data-tex="\(t=y^{-1}\)">\(t=y^{-1}\)</span>. The <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-4-1">inversion substitution</a> multiplies <span class="math" data-tex="\(d\mu(y)\)">\(d\mu(y)\)</span> by <span class="math" data-tex="\(\Delta(y)^{-1}\)">\(\Delta(y)^{-1}\)</span>, while
+<span class="math" data-tex="\(g^*(y^{-1})=\Delta(y)\overline{g(y)}\)">\(g^*(y^{-1})=\Delta(y)\overline{g(y)}\)</span>. Their cancellation gives (9).
+For full precision on the domain, choose Borel representatives of <span class="math" data-tex="\(f,g\)">\(f,g\)</span> supported in a common open sigma-compact subgroup, as proved in <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-5-1">the localization lemma</a>. On this subgroup <span class="math" data-tex="\(q\)">\(q\)</span> has a Borel representative off a Borel null envelope. The same lemma proves that the inverse-product map <span class="math" data-tex="\((y,x)\mapsto y^{-1}x\)">\((y,x)\mapsto y^{-1}x\)</span> pulls such an envelope back to a product-null set. The earlier full-Borel Fubini theorem therefore applies; the absolute majorant is <span class="math" data-tex="\(\|q\|_\infty|f(x)||g(y)|\)">\(\|q\|_\infty|f(x)||g(y)|\)</span>. This also proves independence from every choice of representative.</p>
+<p>If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is continuous and matrix positive, Lemma 2.0 bounds it and constructs <span class="math" data-tex="\((\pi,\xi)\)">\((\pi,\xi)\)</span>. Equation (3) and the star identity give
+<span class="math math-display" data-tex="\[
+ \Lambda_\varphi(f^**f)
+ =\langle\pi(f)^*\pi(f)\xi,\xi\rangle
+ =\|\pi(f)\xi\|^2\ge0.
+\]">\[
+ \Lambda_\varphi(f^**f)
+ =\langle\pi(f)^*\pi(f)\xi,\xi\rangle
+ =\|\pi(f)\xi\|^2\ge0.
+\]</span>
+Conversely suppose <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is bounded, continuous and integral positive. For the finite data of (8), put <span class="math" data-tex="\(f_U=\sum_i c_iL_{x_i}u_U\)">\(f_U=\sum_i c_iL_{x_i}u_U\)</span>. Formula (9), followed by the left substitutions <span class="math" data-tex="\(x=x_i a,\ y=x_j b\)">\(x=x_i a,\ y=x_j b\)</span>, gives
+<span class="math math-display" data-tex="\[
+ 0\le\Lambda_\varphi(f_U^**f_U)
+ =\sum_{i,j}c_i\overline{c_j}
+     \iint u_U(a)u_U(b)\varphi(b^{-1}x_j^{-1}x_i a)\,d\mu(a)d\mu(b).
+\]">\[
+ 0\le\Lambda_\varphi(f_U^**f_U)
+ =\sum_{i,j}c_i\overline{c_j}
+     \iint u_U(a)u_U(b)\varphi(b^{-1}x_j^{-1}x_i a)\,d\mu(a)d\mu(b).
+\]</span>
+For each of the finitely many pairs <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, continuity at <span class="math" data-tex="\((a,b)=(e,e)\)">\((a,b)=(e,e)\)</span> makes the last function uniformly within any prescribed error of
+<span class="math" data-tex="\(\varphi(x_j^{-1}x_i)\)">\(\varphi(x_j^{-1}x_i)\)</span> when both <span class="math" data-tex="\(a,b\)">\(a,b\)</span> lie in a sufficiently small neighbourhood. The nonnegative product weights have total mass one and are supported there for small <span class="math" data-tex="\(U\)">\(U\)</span>. Therefore the displayed sum tends to the sum in (8), which must be real and nonnegative. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-proposition-2-2"></a>
+<h3 id="proposition-2-2-coefficients-and-l-2-autocorrelations">Proposition 2.2. Coefficients and <span class="math" data-tex="\(L^2\)">\(L^2\)</span> autocorrelations</h3>
+<p>Every diagonal coefficient <span class="math" data-tex="\(a\mapsto\langle\pi(a)v,v\rangle\)">\(a\mapsto\langle\pi(a)v,v\rangle\)</span> of a unitary representation is continuous and matrix positive. For <span class="math" data-tex="\(f\in L^2(G)\)">\(f\in L^2(G)\)</span>, put <span class="math" data-tex="\(\widetilde f(x)=\overline{f(x^{-1})}\)">\(\widetilde f(x)=\overline{f(x^{-1})}\)</span>. Then the pointwise absolutely convergent integral
+<span class="math math-display" data-tex="\[
+ (f*\widetilde f)(a)=\int_G f(y)\overline{f(a^{-1}y)}\,d\mu(y) \tag{10}
+\]">\[
+ (f*\widetilde f)(a)=\int_G f(y)\overline{f(a^{-1}y)}\,d\mu(y) \tag{10}
+\]</span>
+is continuous, positive type, vanishes at infinity, and has value <span class="math" data-tex="\(\|f\|_2^2\)">\(\|f\|_2^2\)</span> at <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p><strong>Proof.</strong> Strong continuity gives continuity of a coefficient. The sum in (8) is
+<span class="math" data-tex="\(\|\sum_i c_i\pi(x_i)v\|^2\)">\(\|\sum_i c_i\pi(x_i)v\|^2\)</span>, by unitarity, and is nonnegative.</p>
+<p>Let <span class="math" data-tex="\(\lambda(a)h(y)=h(a^{-1}y)\)">\(\lambda(a)h(y)=h(a^{-1}y)\)</span> be the strongly continuous left regular representation, proved in <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-proposition-7-1">the regular-representation proposition</a>. Cauchy–Schwarz makes (10) absolutely convergent for every <span class="math" data-tex="\(a\)">\(a\)</span>, bounded by <span class="math" data-tex="\(\|f\|_2^2\)">\(\|f\|_2^2\)</span>, and identifies it as
+<span class="math math-display" data-tex="\[
+ (f*\widetilde f)(a)
+       =\langle\lambda(a)\overline f,\overline f\rangle.  \tag{11}
+\]">\[
+ (f*\widetilde f)(a)
+       =\langle\lambda(a)\overline f,\overline f\rangle.  \tag{11}
+\]</span>
+The conjugated vector in this formula fixes the linear-first inner-product convention. Thus continuity, positivity and the value at <span class="math" data-tex="\(e\)">\(e\)</span> follow.</p>
+<p>Choose <span class="math" data-tex="\(f_n\in C_c(G)\)">\(f_n\in C_c(G)\)</span> with <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, using the proved <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-5-1">density theorem</a>. The coefficient difference in (11) is bounded uniformly in <span class="math" data-tex="\(a\)">\(a\)</span> by
+<span class="math math-display" data-tex="\[
+ \|f_n-f\|_2(\|f_n\|_2+\|f\|_2).
+\]">\[
+ \|f_n-f\|_2(\|f_n\|_2+\|f\|_2).
+\]</span>
+For <span class="math" data-tex="\(f_n\)">\(f_n\)</span> its support is contained in the compact set
+<span class="math" data-tex="\(\operatorname{supp}f_n(\operatorname{supp}f_n)^{-1}\)">\(\operatorname{supp}f_n(\operatorname{supp}f_n)^{-1}\)</span>, and it is continuous by (11). Thus these approximants lie in <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>. Their uniform limit belongs to <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span> by the earlier <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-5">uniform completeness result</a>, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-gns-construction-for-a-measurable-class">3. The GNS construction for a measurable class</h2>
+<a id="ha-lca-04-theorem-3-1"></a>
+<h3 id="theorem-3-1-integral-positive-gns">Theorem 3.1. Integral-positive GNS</h3>
+<p>Let <span class="math" data-tex="\(q\in L^\infty(G)\)">\(q\in L^\infty(G)\)</span> be integral positive. There is a cyclic strongly continuous unitary representation <span class="math" data-tex="\((\pi_q,\mathcal H_q,\xi_q)\)">\((\pi_q,\mathcal H_q,\xi_q)\)</span> such that
+<span class="math math-display" data-tex="\[
+ q(a)=\langle\pi_q(a)\xi_q,\xi_q\rangle
+                         \quad\hbox{almost everywhere}. \tag{12}
+\]">\[
+ q(a)=\langle\pi_q(a)\xi_q,\xi_q\rangle
+                         \quad\hbox{almost everywhere}. \tag{12}
+\]</span>
+It is unique in the cyclic-vector-preserving intertwining sense of Lemma 2.0.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\Lambda=\Lambda_q\)">\(\Lambda=\Lambda_q\)</span>, <span class="math" data-tex="\(M=\|q\|_\infty\)">\(M=\|q\|_\infty\)</span>, and define on <span class="math" data-tex="\(L^1\)">\(L^1\)</span>
+<span class="math math-display" data-tex="\[
+ B(f,g)=\Lambda(g^**f).
+\]">\[
+ B(f,g)=\Lambda(g^**f).
+\]</span>
+It is a positive sesquilinear form by the hypothesis. By the earlier <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-lemma-1-1">positive-form and completion theorems</a>, its null quotient completes to a Hilbert space <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>; denote the dense quotient vectors by <span class="math" data-tex="\([f]\)">\([f]\)</span>. The algebra norm bound gives
+<span class="math math-display" data-tex="\[
+ \|[f]\|^2=B(f,f)\le M\|f\|_1^2.                       \tag{13}
+\]">\[
+ \|[f]\|^2=B(f,f)\le M\|f\|_1^2.                       \tag{13}
+\]</span></p>
+<p>Formula (9) and left substitution in both variables show
+<span class="math" data-tex="\(B(L_af,L_ag)=B(f,g)\)">\(B(L_af,L_ag)=B(f,g)\)</span>. Hence <span class="math" data-tex="\([f]\mapsto[L_af]\)">\([f]\mapsto[L_af]\)</span> defines isometries with inverses on the quotient, extending to unitaries <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span> on the completion. The identities for translations give the group law. By (13) and <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-proposition-5-2"><span class="math" data-tex="\(L^1\)">\(L^1\)</span> translation continuity</a>,
+<span class="math math-display" data-tex="\[
+ \|\pi(a)[f]-[f]\|\le\sqrt M\,\|L_af-f\|_1\longrightarrow0.
+\]">\[
+ \|\pi(a)[f]-[f]\|\le\sqrt M\,\|L_af-f\|_1\longrightarrow0.
+\]</span>
+Density and the unitary norm bound extend this to all vectors, proving strong continuity.</p>
+<p>We next construct the cyclic vector, rather than assuming a unit for <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. From (2),
+<span class="math math-display" data-tex="\[
+ \langle[f],[u_U]\rangle=\Lambda(u_U*f)\longrightarrow\Lambda(f),
+ \qquad \|[u_U]\|^2\le M.
+\]">\[
+ \langle[f],[u_U]\rangle=\Lambda(u_U*f)\longrightarrow\Lambda(f),
+ \qquad \|[u_U]\|^2\le M.
+\]</span>
+Cauchy–Schwarz and passage to the limit give
+<span class="math math-display" data-tex="\[
+ |\Lambda(f)|\le\sqrt M\,\|[f]\|.                        \tag{14}
+\]">\[
+ |\Lambda(f)|\le\sqrt M\,\|[f]\|.                        \tag{14}
+\]</span>
+Thus <span class="math" data-tex="\([f]\mapsto\Lambda(f)\)">\([f]\mapsto\Lambda(f)\)</span> is well-defined, linear and bounded, and extends to the completion. The earlier <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-2-3">Hilbert representation theorem</a> gives a unique <span class="math" data-tex="\(\xi\in\mathcal H\)">\(\xi\in\mathcal H\)</span> with
+<span class="math math-display" data-tex="\[
+ \Lambda(f)=\langle[f],\xi\rangle,\qquad \|\xi\|\le\sqrt M. \tag{15}
+\]">\[
+ \Lambda(f)=\langle[f],\xi\rangle,\qquad \|\xi\|\le\sqrt M. \tag{15}
+\]</span>
+The same displayed limit shows <span class="math" data-tex="\([u_U]\to\xi\)">\([u_U]\to\xi\)</span> weakly. Indeed, it gives all inner products against the dense quotient subspace; for any other test vector, its norm distance to that subspace, multiplied by the common bound <span class="math" data-tex="\(\sqrt M+\|\xi\|\)">\(\sqrt M+\|\xi\|\)</span>, controls the error.</p>
+<p>Integrate the already constructed <span class="math" data-tex="\(\pi\)">\(\pi\)</span> as in (3). We claim that
+<span class="math math-display" data-tex="\[
+ \pi(h)[g]=[h*g]\qquad(h,g\in L^1).                     \tag{16}
+\]">\[
+ \pi(h)[g]=[h*g]\qquad(h,g\in L^1).                     \tag{16}
+\]</span>
+For a quotient test vector <span class="math" data-tex="\([k]\)">\([k]\)</span>, the left side paired with <span class="math" data-tex="\([k]\)">\([k]\)</span> is
+<span class="math" data-tex="\(\int h(a)B(L_ag,k)\,d\mu(a)\)">\(\int h(a)B(L_ag,k)\,d\mu(a)\)</span>. Formula (9) and the substitution <span class="math" data-tex="\(x=ay\)">\(x=ay\)</span> turn this into
+<span class="math math-display" data-tex="\[
+ \iiint h(a)g(y)\overline{k(z)}q(z^{-1}ay)\,
+                          d\mu(a)d\mu(y)d\mu(z).
+\]">\[
+ \iiint h(a)g(y)\overline{k(z)}q(z^{-1}ay)\,
+                          d\mu(a)d\mu(y)d\mu(z).
+\]</span>
+Expanding <span class="math" data-tex="\(B(h*g,k)\)">\(B(h*g,k)\)</span> by (9) and then the convolution formula yields exactly the same integral. Here all three <span class="math" data-tex="\(L^1\)">\(L^1\)</span> functions have Borel representatives supported in one open sigma-compact subgroup by the earlier localization lemma. On that subgroup replace <span class="math" data-tex="\(q\)">\(q\)</span> by a bounded Borel representative off a Borel null envelope <span class="math" data-tex="\(N\)">\(N\)</span>. For fixed <span class="math" data-tex="\(y,z\)">\(y,z\)</span>, the set of <span class="math" data-tex="\(a\)">\(a\)</span> for which <span class="math" data-tex="\(z^{-1}ay\in N\)">\(z^{-1}ay\in N\)</span> is <span class="math" data-tex="\(zNy^{-1}\)">\(zNy^{-1}\)</span>, which is Haar null by the proved left and right null-set invariance. The full-Borel Tonelli theorem, applied successively on the subgroup, shows that this change affects a product-null set only. The absolute integral is at most
+<span class="math" data-tex="\(M\|h\|_1\|g\|_1\|k\|_1\)">\(M\|h\|_1\|g\|_1\|k\|_1\)</span>.
+Thus every exchange and substitution above is justified. Equality of pairings with the dense quotient subspace proves (16).</p>
+<p>For fixed <span class="math" data-tex="\(f\)">\(f\)</span>, (16) and (2) give
+<span class="math math-display" data-tex="\[
+ \pi(f)[u_U]=[f*u_U]\longrightarrow[f]\quad\hbox{in norm},
+\]">\[
+ \pi(f)[u_U]=[f*u_U]\longrightarrow[f]\quad\hbox{in norm},
+\]</span>
+using (13). On the other hand bounded operators preserve weak convergence: pairing <span class="math" data-tex="\(\pi(f)[u_U]\)">\(\pi(f)[u_U]\)</span> with <span class="math" data-tex="\(v\)">\(v\)</span> is pairing <span class="math" data-tex="\([u_U]\)">\([u_U]\)</span> with <span class="math" data-tex="\(\pi(f)^*v\)">\(\pi(f)^*v\)</span>. Hence the same net converges weakly to <span class="math" data-tex="\(\pi(f)\xi\)">\(\pi(f)\xi\)</span>. Norm convergence implies weak convergence by Cauchy–Schwarz, and equality of all inner products makes weak limits unique. Therefore
+<span class="math math-display" data-tex="\[
+                    \pi(f)\xi=[f].                    \tag{17}
+\]">\[
+                    \pi(f)\xi=[f].                    \tag{17}
+\]</span>
+The vectors on the right are dense. The equality of group and integrated cyclic spans in the earlier <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-7-2">integrated-representation theorem</a> therefore proves that <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is cyclic for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>Set <span class="math" data-tex="\(\varphi(a)=\langle\pi(a)\xi,\xi\rangle\)">\(\varphi(a)=\langle\pi(a)\xi,\xi\rangle\)</span>. It is bounded, continuous and matrix positive by Proposition 2.2. Equations (3), (15) and (17) give
+<span class="math math-display" data-tex="\[
+ \int f\varphi\,d\mu=\langle\pi(f)\xi,\xi\rangle
+                   =\Lambda(f)=\int fq\,d\mu
+                         \quad(f\in L^1).
+\]">\[
+ \int f\varphi\,d\mu=\langle\pi(f)\xi,\xi\rangle
+                   =\Lambda(f)=\int fq\,d\mu
+                         \quad(f\in L^1).
+\]</span>
+Uniqueness in the earlier <a href="../prerequisites/src/dual-balls-and-compact-convexity.html#ha-lca-pre-dual-convex-theorem-1-2"><span class="math" data-tex="\(L^1\)">\(L^1\)</span> dual theorem</a> gives <span class="math" data-tex="\(\varphi=q\)">\(\varphi=q\)</span> as <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> classes, proving (12).</p>
+<p>Two continuous functions agreeing almost everywhere are identical by the earlier <a href="../prerequisites/src/dual-balls-and-compact-convexity.html#ha-lca-pre-dual-convex-corollary-1-3">continuous-representative lemma</a>. Therefore any two cyclic realizations of the class have exactly the same continuous coefficient; Lemma 2.0 supplies their unique prescribed unitary equivalence. When <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, (13) makes the quotient and its completion zero, and the argument yields the zero realization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-corollary-3-2"></a>
+<h3 id="corollary-3-2-the-canonical-continuous-representative">Corollary 3.2. The canonical continuous representative</h3>
+<p>Every integral-positive class has exactly one continuous representative <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and that representative is matrix positive. Conversely, every continuous matrix-positive function defines an integral-positive class. For this representative,
+<span class="math math-display" data-tex="\[
+ \|\varphi\|_{\mathrm{ess}\,\infty}
+ =\|\varphi\|_\infty=\varphi(e)=\|\xi_\varphi\|^2,\qquad
+ \varphi(a^{-1})=\overline{\varphi(a)}.                  \tag{18}
+\]">\[
+ \|\varphi\|_{\mathrm{ess}\,\infty}
+ =\|\varphi\|_\infty=\varphi(e)=\|\xi_\varphi\|^2,\qquad
+ \varphi(a^{-1})=\overline{\varphi(a)}.                  \tag{18}
+\]</span>
+In particular <span class="math" data-tex="\(\varphi(e)=0\)">\(\varphi(e)=0\)</span> implies <span class="math" data-tex="\(\varphi=0\)">\(\varphi=0\)</span>.</p>
+<p><strong>Proof.</strong> Theorem 3.1 gives existence and Lemma 2.1 gives the converse. The full-support continuous-representative lemma gives uniqueness and equality of essential and uniform norms. Lemma 2.0 gives <span class="math" data-tex="\(|\varphi(a)|\le\varphi(e)=\|\xi_\varphi\|^2\)">\(|\varphi(a)|\le\varphi(e)=\|\xi_\varphi\|^2\)</span>, with equality of the bound attained at <span class="math" data-tex="\(e\)">\(e\)</span>, and also gives the Hermitian identity. These prove every equality in (18) and its zero case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We now call either the class or its canonical representative a <strong>function of positive type</strong>, explicitly using the continuous representative whenever a point value is taken.</p>
+<a id="ha-lca-04-lemma-3-3"></a>
+<h3 id="lemma-3-3-both-difference-inequalities">Lemma 3.3. Both difference inequalities</h3>
+<p>Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be of positive type and <span class="math" data-tex="\(c=\varphi(e)\)">\(c=\varphi(e)\)</span>. For <span class="math" data-tex="\(x,y\in G\)">\(x,y\in G\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ |\varphi(x)-\varphi(y)|^2
+    &amp;\le2c\big(c-\operatorname{Re}\varphi(y^{-1}x)\big),\\
+ |\varphi(x)-\varphi(y)|^2
+    &amp;\le2c\big(c-\operatorname{Re}\varphi(yx^{-1})\big).
+ \end{split}                                           \tag{19}
+\]">\[
+ \begin{split}
+ |\varphi(x)-\varphi(y)|^2
+    &amp;\le2c\big(c-\operatorname{Re}\varphi(y^{-1}x)\big),\\
+ |\varphi(x)-\varphi(y)|^2
+    &amp;\le2c\big(c-\operatorname{Re}\varphi(yx^{-1})\big).
+ \end{split}                                           \tag{19}
+\]</span>
+Consequently <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is uniformly continuous under both left and right translation.</p>
+<p><strong>Proof.</strong> In the GNS realization, Cauchy–Schwarz gives
+<span class="math math-display" data-tex="\[
+ |\langle(\pi(x)-\pi(y))\xi,\xi\rangle|^2
+ \le c\,\|(\pi(x)-\pi(y))\xi\|^2
+ =2c\big(c-\operatorname{Re}\varphi(y^{-1}x)\big).
+\]">\[
+ |\langle(\pi(x)-\pi(y))\xi,\xi\rangle|^2
+ \le c\,\|(\pi(x)-\pi(y))\xi\|^2
+ =2c\big(c-\operatorname{Re}\varphi(y^{-1}x)\big).
+\]</span>
+Also <span class="math" data-tex="\(\varphi(x)=\langle\xi,\pi(x^{-1})\xi\rangle\)">\(\varphi(x)=\langle\xi,\pi(x^{-1})\xi\rangle\)</span>. Apply Cauchy–Schwarz to the difference of these expressions; the squared vector difference is
+<span class="math" data-tex="\(2c-2\operatorname{Re}\varphi(yx^{-1})\)">\(2c-2\operatorname{Re}\varphi(yx^{-1})\)</span>, giving the second inequality. No factors have been interchanged.</p>
+<p>Set <span class="math" data-tex="\(y=xa\)">\(y=xa\)</span> in the first inequality. Its right side tends to zero as <span class="math" data-tex="\(a\to e\)">\(a\to e\)</span>, independently of <span class="math" data-tex="\(x\)">\(x\)</span>. Set <span class="math" data-tex="\(y=ax\)">\(y=ax\)</span> in the second for the analogous left-translation assertion. Hermitian symmetry makes the real part at <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> equal to that at <span class="math" data-tex="\(a\)">\(a\)</span>. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, the function is zero and all assertions still hold. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-convexity-and-irreducibility">4. Convexity and irreducibility</h2>
+<p>Let <span class="math" data-tex="\(P(G)\)">\(P(G)\)</span> be the cone of positive-type functions, and put
+<span class="math math-display" data-tex="\[
+ P_1(G)=\{\varphi\in P(G):\varphi(e)=1\},\qquad
+ P_0(G)=\{\varphi\in P(G):\varphi(e)\le1\}.              \tag{20}
+\]">\[
+ P_1(G)=\{\varphi\in P(G):\varphi(e)=1\},\qquad
+ P_0(G)=\{\varphi\in P(G):\varphi(e)\le1\}.              \tag{20}
+\]</span>
+Nonnegative sums preserve each matrix inequality, so these are convex where applicable. Their weak-star topology is the topology of the pairings
+<span class="math" data-tex="\(\varphi\mapsto\int f\varphi\)">\(\varphi\mapsto\int f\varphi\)</span>, <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>, under the proved identification <span class="math" data-tex="\(L^\infty=(L^1)^*\)">\(L^\infty=(L^1)^*\)</span>. A point of a convex set is extreme when it has no expression as a strict convex combination of two different points of that set.</p>
+<a id="ha-lca-04-theorem-4-1"></a>
+<h3 id="theorem-4-1-extreme-normalized-functions">Theorem 4.1. Extreme normalized functions</h3>
+<p>A function <span class="math" data-tex="\(\varphi\in P_1(G)\)">\(\varphi\in P_1(G)\)</span> is extreme in <span class="math" data-tex="\(P_1(G)\)">\(P_1(G)\)</span> if and only if its cyclic GNS representation is irreducible.</p>
+<p><strong>Proof.</strong> We first construct the operator associated to a positive summand. Suppose <span class="math" data-tex="\(\psi\in P(G)\)">\(\psi\in P(G)\)</span> and <span class="math" data-tex="\(\varphi-\psi\in P(G)\)">\(\varphi-\psi\in P(G)\)</span>. On the dense cyclic span
+<span class="math math-display" data-tex="\[
+ D_\varphi=\operatorname{span}\{\pi_\varphi(x)\xi_\varphi:x\in G\}
+\]">\[
+ D_\varphi=\operatorname{span}\{\pi_\varphi(x)\xi_\varphi:x\in G\}
+\]</span>
+define the candidate form
+<span class="math math-display" data-tex="\[
+ B_\psi\left(\sum_i c_i\pi_\varphi(x_i)\xi_\varphi,
+             \sum_j d_j\pi_\varphi(y_j)\xi_\varphi\right)
+        =\sum_{i,j}c_i\overline{d_j}\psi(y_j^{-1}x_i).   \tag{21}
+\]">\[
+ B_\psi\left(\sum_i c_i\pi_\varphi(x_i)\xi_\varphi,
+             \sum_j d_j\pi_\varphi(y_j)\xi_\varphi\right)
+        =\sum_{i,j}c_i\overline{d_j}\psi(y_j^{-1}x_i).   \tag{21}
+\]</span>
+Initially view it as a form on formal sums. Matrix positivity of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and of <span class="math" data-tex="\(\varphi-\psi\)">\(\varphi-\psi\)</span> gives
+<span class="math math-display" data-tex="\[
+ 0\le B_\psi(v,v)\le\|v\|^2.
+\]">\[
+ 0\le B_\psi(v,v)\le\|v\|^2.
+\]</span>
+If a formal sum represents the zero vector in <span class="math" data-tex="\(D_\varphi\)">\(D_\varphi\)</span>, its <span class="math" data-tex="\(B_\psi\)">\(B_\psi\)</span> length is zero; the positive-form Cauchy–Schwarz inequality makes its pairing with every formal sum zero. Thus (21) is well-defined on <span class="math" data-tex="\(D_\varphi\)">\(D_\varphi\)</span>, and
+<span class="math" data-tex="\(|B_\psi(v,w)|\le\|v\|\|w\|\)">\(|B_\psi(v,w)|\le\|v\|\|w\|\)</span>. It extends continuously to all pairs of vectors in <span class="math" data-tex="\(\mathcal H_\varphi\)">\(\mathcal H_\varphi\)</span>. The earlier <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-proposition-2-4">bounded-form theorem</a> supplies a bounded positive operator <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(0\le T\le I\)">\(0\le T\le I\)</span> and
+<span class="math math-display" data-tex="\[
+ B_\psi(v,w)=\langle Tv,w\rangle.
+\]">\[
+ B_\psi(v,w)=\langle Tv,w\rangle.
+\]</span>
+Replacing all <span class="math" data-tex="\(x_i,y_j\)">\(x_i,y_j\)</span> in (21) by <span class="math" data-tex="\(ax_i,ay_j\)">\(ax_i,ay_j\)</span> leaves it unchanged. By density this gives
+<span class="math" data-tex="\(\pi_\varphi(a)^*T\pi_\varphi(a)=T\)">\(\pi_\varphi(a)^*T\pi_\varphi(a)=T\)</span>, so <span class="math" data-tex="\(T\)">\(T\)</span> belongs to the commutant. Taking <span class="math" data-tex="\(v=\pi_\varphi(a)\xi_\varphi,\ w=\xi_\varphi\)">\(v=\pi_\varphi(a)\xi_\varphi,\ w=\xi_\varphi\)</span> gives
+<span class="math math-display" data-tex="\[
+ \psi(a)=\langle T\pi_\varphi(a)\xi_\varphi,\xi_\varphi\rangle. \tag{22}
+\]">\[
+ \psi(a)=\langle T\pi_\varphi(a)\xi_\varphi,\xi_\varphi\rangle. \tag{22}
+\]</span></p>
+<p>If <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span> is irreducible, Proposition 1.1 gives <span class="math" data-tex="\(T=sI\)">\(T=sI\)</span>, with <span class="math" data-tex="\(0\le s\le1\)">\(0\le s\le1\)</span>. Thus every such summand <span class="math" data-tex="\(\psi\)">\(\psi\)</span> equals <span class="math" data-tex="\(s\varphi\)">\(s\varphi\)</span>. In a strict convex decomposition
+<span class="math" data-tex="\(\varphi=t\varphi_1+(1-t)\varphi_2\)">\(\varphi=t\varphi_1+(1-t)\varphi_2\)</span>, with <span class="math" data-tex="\(\varphi_i\in P_1\)">\(\varphi_i\in P_1\)</span> and <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, apply this to <span class="math" data-tex="\(\psi=t\varphi_1\)">\(\psi=t\varphi_1\)</span>. Evaluation at <span class="math" data-tex="\(e\)">\(e\)</span> gives <span class="math" data-tex="\(s=t\)">\(s=t\)</span>, so <span class="math" data-tex="\(\varphi_1=\varphi\)">\(\varphi_1=\varphi\)</span>, and then <span class="math" data-tex="\(\varphi_2=\varphi\)">\(\varphi_2=\varphi\)</span>. Hence <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is extreme.</p>
+<p>Conversely, if <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span> is reducible, let <span class="math" data-tex="\(W\)">\(W\)</span> be a nonzero proper closed invariant subspace and <span class="math" data-tex="\(P\)">\(P\)</span> its orthogonal projection. The orthogonal-complement and projection results in <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-corollary-2-2">the Hilbert reading</a> show that both <span class="math" data-tex="\(W,W^\perp\)">\(W,W^\perp\)</span> are invariant and <span class="math" data-tex="\(P\)">\(P\)</span> commutes with every <span class="math" data-tex="\(\pi_\varphi(a)\)">\(\pi_\varphi(a)\)</span>. Write <span class="math" data-tex="\(\xi_\varphi=v+w\)">\(\xi_\varphi=v+w\)</span>, where <span class="math" data-tex="\(v=P\xi_\varphi\)">\(v=P\xi_\varphi\)</span>, <span class="math" data-tex="\(w=(I-P)\xi_\varphi\)">\(w=(I-P)\xi_\varphi\)</span>. Both vectors are nonzero: if one vanished, the cyclic span would lie in the other proper subspace. Set <span class="math" data-tex="\(s=\|v\|^2\)">\(s=\|v\|^2\)</span>; then <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span> and <span class="math" data-tex="\(\|w\|^2=1-s\)">\(\|w\|^2=1-s\)</span>. The functions
+<span class="math math-display" data-tex="\[
+ \varphi_1(a)=s^{-1}\langle\pi_\varphi(a)v,v\rangle,\qquad
+ \varphi_2(a)=(1-s)^{-1}\langle\pi_\varphi(a)w,w\rangle
+\]">\[
+ \varphi_1(a)=s^{-1}\langle\pi_\varphi(a)v,v\rangle,\qquad
+ \varphi_2(a)=(1-s)^{-1}\langle\pi_\varphi(a)w,w\rangle
+\]</span>
+belong to <span class="math" data-tex="\(P_1\)">\(P_1\)</span> by Proposition 2.2, and orthogonality gives
+<span class="math" data-tex="\(\varphi=s\varphi_1+(1-s)\varphi_2\)">\(\varphi=s\varphi_1+(1-s)\varphi_2\)</span>.</p>
+<p>This decomposition is nontrivial. If <span class="math" data-tex="\(\varphi_1=\varphi\)">\(\varphi_1=\varphi\)</span>, then for every <span class="math" data-tex="\(a\)">\(a\)</span>,
+<span class="math math-display" data-tex="\[
+ \langle\pi_\varphi(a)\xi_\varphi,v\rangle
+ =\langle\pi_\varphi(a)v,v\rangle
+ =s\langle\pi_\varphi(a)\xi_\varphi,\xi_\varphi\rangle.
+\]">\[
+ \langle\pi_\varphi(a)\xi_\varphi,v\rangle
+ =\langle\pi_\varphi(a)v,v\rangle
+ =s\langle\pi_\varphi(a)\xi_\varphi,\xi_\varphi\rangle.
+\]</span>
+Density of the cyclic span implies <span class="math" data-tex="\(v=s\xi_\varphi\)">\(v=s\xi_\varphi\)</span>. Applying <span class="math" data-tex="\(P\)">\(P\)</span> gives <span class="math" data-tex="\(v=sv\)">\(v=sv\)</span>, contrary to <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> and <span class="math" data-tex="\(s&lt;1\)">\(s&lt;1\)</span>. Thus <span class="math" data-tex="\(\varphi_1\ne\varphi\)">\(\varphi_1\ne\varphi\)</span>; the displayed strict convex decomposition disproves extremality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-lemma-4-2"></a>
+<h3 id="lemma-4-2-the-compact-convex-theorem-used-here">Lemma 4.2. The compact-convex theorem used here</h3>
+<p>Every nonempty weak-star compact convex subset <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\((L^1(G))^*\)">\((L^1(G))^*\)</span> has extreme points and is their weak-star closed convex hull. If <span class="math" data-tex="\(K\subseteq B_1\)">\(K\subseteq B_1\)</span>, <span class="math" data-tex="\(0\in K\)">\(0\in K\)</span>, and its nonzero extreme points all have norm one, then every norm-one member of <span class="math" data-tex="\(K\)">\(K\)</span> is a weak-star limit of convex combinations of those nonzero extreme points.</p>
+<p>The set <span class="math" data-tex="\(P_1(G)\)">\(P_1(G)\)</span> need not itself be weak-star closed or compact.</p>
+<p><strong>Proof.</strong> The first two assertions are the exact conclusions of the earlier <a href="../prerequisites/src/dual-balls-and-compact-convexity.html#ha-lca-pre-dual-convex-lemma-3-1">compact-face theorem and extreme-point theorem</a>, whose complete proof continues in <a href="../prerequisites/src/dual-balls-and-compact-convexity.html#ha-lca-pre-dual-convex-theorem-3-2">Theorem 3.2</a>. The normalized assertion is <a href="../prerequisites/src/dual-balls-and-compact-convexity.html#ha-lca-pre-dual-convex-corollary-3-3">Corollary 3.3</a>. Its proof divides finite extreme combinations by their total nonzero mass; weak-star lower semicontinuity of the norm proves that this mass tends to one. These proofs apply to arbitrary nets and require no separability.</p>
+<p>For the final assertion take <span class="math" data-tex="\(G=\mathbb T\)">\(G=\mathbb T\)</span>. Its characters <span class="math" data-tex="\(\varphi_n(z)=z^n\)">\(\varphi_n(z)=z^n\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, belong to <span class="math" data-tex="\(P_1\)">\(P_1\)</span>, as coefficients of one-dimensional unitary representations. The earlier <a href="characters-and-the-dual-group.html#ha-lca-02-corollary-3-2">circle dual calculation</a> identifies the dual with the discrete group <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The earlier <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-corollary-2-2">Fourier <span class="math" data-tex="\(C_0\)">\(C_0\)</span> theorem</a> says that, for every <span class="math" data-tex="\(f\in L^1(\mathbb T)\)">\(f\in L^1(\mathbb T)\)</span>, its Fourier transform vanishes at infinity on this dual. Compact subsets of a discrete space are finite, since the singleton open cover has a finite subcover precisely for finite sets. Thus
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb T} f(z)z^n\,d\mu(z)
+      =\widehat f(\varphi_{-n})\longrightarrow0.
+\]">\[
+ \int_{\mathbb T} f(z)z^n\,d\mu(z)
+      =\widehat f(\varphi_{-n})\longrightarrow0.
+\]</span>
+Hence <span class="math" data-tex="\(\varphi_n\to0\)">\(\varphi_n\to0\)</span> weak-star, while <span class="math" data-tex="\(0\notin P_1\)">\(0\notin P_1\)</span>. This shows that <span class="math" data-tex="\(P_1\)">\(P_1\)</span> is not always closed. A compact subset of the Hausdorff weak-star dual is closed, so it is not always compact either. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-theorem-4-3"></a>
+<h3 id="theorem-4-3-the-compact-positive-ball-and-its-boundary">Theorem 4.3. The compact positive ball and its boundary</h3>
+<p>The set <span class="math" data-tex="\(P_0(G)\)">\(P_0(G)\)</span> is weak-star compact and convex, and
+<span class="math math-display" data-tex="\[
+ \operatorname{Ext}P_0(G)=\operatorname{Ext}P_1(G)\cup\{0\}. \tag{23}
+\]">\[
+ \operatorname{Ext}P_0(G)=\operatorname{Ext}P_1(G)\cup\{0\}. \tag{23}
+\]</span>
+Every point of <span class="math" data-tex="\(P_1(G)\)">\(P_1(G)\)</span> is a weak-star limit of finite convex combinations of points of <span class="math" data-tex="\(\operatorname{Ext}P_1(G)\)">\(\operatorname{Ext}P_1(G)\)</span>.</p>
+<p><strong>Proof.</strong> By Theorem 3.1, Lemma 2.1 and Corollary 3.2, the set of classes represented by <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is exactly
+<span class="math math-display" data-tex="\[
+ \{q\in L^\infty:\|q\|_\infty\le1,\ 
+                         \Lambda_q(f^**f)\in[0,\infty)\ \text{for every }f\in L^1\}.
+                                                               \tag{24}
+\]">\[
+ \{q\in L^\infty:\|q\|_\infty\le1,\ 
+                         \Lambda_q(f^**f)\in[0,\infty)\ \text{for every }f\in L^1\}.
+                                                               \tag{24}
+\]</span>
+For each <span class="math" data-tex="\(f\)">\(f\)</span>, the map <span class="math" data-tex="\(q\mapsto\Lambda_q(f^**f)\)">\(q\mapsto\Lambda_q(f^**f)\)</span> is a weak-star continuous evaluation, since <span class="math" data-tex="\(f^**f\in L^1\)">\(f^**f\in L^1\)</span>. The real half-line <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> is a closed subset of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Therefore (24) is closed in the weak-star compact dual ball proved in <a href="../prerequisites/src/dual-balls-and-compact-convexity.html#ha-lca-pre-dual-convex-theorem-2-1">the dual-ball theorem</a>, and is compact. Convexity follows either from (24) or from addition of the matrix inequalities.</p>
+<p>If <span class="math" data-tex="\(0=t\varphi+(1-t)\psi\)">\(0=t\varphi+(1-t)\psi\)</span> with <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span> and <span class="math" data-tex="\(\varphi,\psi\in P_0\)">\(\varphi,\psi\in P_0\)</span>, equality of classes is equality of the continuous representatives. Evaluation at <span class="math" data-tex="\(e\)">\(e\)</span> is a sum of nonnegative terms and forces <span class="math" data-tex="\(\varphi(e)=\psi(e)=0\)">\(\varphi(e)=\psi(e)=0\)</span>, whence <span class="math" data-tex="\(\varphi=\psi=0\)">\(\varphi=\psi=0\)</span> by Corollary 3.2. Thus zero is extreme.</p>
+<p>If <span class="math" data-tex="\(\varphi\in\operatorname{Ext}P_1\)">\(\varphi\in\operatorname{Ext}P_1\)</span> and <span class="math" data-tex="\(\varphi=t\psi+(1-t)\eta\)">\(\varphi=t\psi+(1-t)\eta\)</span> is a strict convex decomposition in <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, then
+<span class="math math-display" data-tex="\[
+ 1=t\psi(e)+(1-t)\eta(e),\qquad 0\le\psi(e),\eta(e)\le1.
+\]">\[
+ 1=t\psi(e)+(1-t)\eta(e),\qquad 0\le\psi(e),\eta(e)\le1.
+\]</span>
+Both values must equal one. The decomposition therefore lies in <span class="math" data-tex="\(P_1\)">\(P_1\)</span>, where extremality forces <span class="math" data-tex="\(\psi=\eta=\varphi\)">\(\psi=\eta=\varphi\)</span>. This proves
+<span class="math" data-tex="\(\operatorname{Ext}P_1\subseteq\operatorname{Ext}P_0\)">\(\operatorname{Ext}P_1\subseteq\operatorname{Ext}P_0\)</span>.</p>
+<p>For a nonzero <span class="math" data-tex="\(\varphi\in P_0\)">\(\varphi\in P_0\)</span> with <span class="math" data-tex="\(a=\varphi(e)&lt;1\)">\(a=\varphi(e)&lt;1\)</span>, the number <span class="math" data-tex="\(a\)">\(a\)</span> is positive, <span class="math" data-tex="\(\varphi/a\in P_1\)">\(\varphi/a\in P_1\)</span>, and
+<span class="math math-display" data-tex="\[
+ \varphi=a(\varphi/a)+(1-a)0
+\]">\[
+ \varphi=a(\varphi/a)+(1-a)0
+\]</span>
+is a nontrivial strict convex decomposition in <span class="math" data-tex="\(P_0\)">\(P_0\)</span>. Hence any nonzero extreme point of <span class="math" data-tex="\(P_0\)">\(P_0\)</span> belongs to <span class="math" data-tex="\(P_1\)">\(P_1\)</span>. It must be extreme there, since any decomposition in <span class="math" data-tex="\(P_1\)">\(P_1\)</span> is also one in <span class="math" data-tex="\(P_0\)">\(P_0\)</span>. This proves (23).</p>
+<p>By (18), every nonzero extreme point of <span class="math" data-tex="\(P_0\)">\(P_0\)</span> has norm one. Apply the normalized conclusion of Lemma 4.2 to the compact convex set <span class="math" data-tex="\(K=P_0\)">\(K=P_0\)</span>. Its norm-one members are precisely <span class="math" data-tex="\(P_1\)">\(P_1\)</span>, and its nonzero extreme points are precisely <span class="math" data-tex="\(\operatorname{Ext}P_1\)">\(\operatorname{Ext}P_1\)</span>. This gives the asserted density. The argument takes compactness in <span class="math" data-tex="\(P_0\)">\(P_0\)</span> before normalization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-abelian-groups">5. Abelian groups</h2>
+<a id="ha-lca-04-corollary-5-1"></a>
+<h3 id="corollary-5-1-the-extreme-points-are-the-characters">Corollary 5.1. The extreme points are the characters</h3>
+<p>If <span class="math" data-tex="\(G\)">\(G\)</span> is abelian, then
+<span class="math math-display" data-tex="\[
+ \operatorname{Ext}P_1(G)=\widehat G,\qquad
+ \operatorname{Ext}P_0(G)=\widehat G\cup\{0\}.           \tag{25}
+\]">\[
+ \operatorname{Ext}P_1(G)=\widehat G,\qquad
+ \operatorname{Ext}P_0(G)=\widehat G\cup\{0\}.           \tag{25}
+\]</span>
+Every normalized positive-type function is consequently a weak-star limit of finite convex combinations of characters.</p>
+<p><strong>Proof.</strong> Theorem 4.1 identifies extreme normalized functions with coefficients of their irreducible cyclic representations. By Proposition 1.1 those representations are one-dimensional, with
+<span class="math" data-tex="\(\pi(a)z=\chi(a)z\)">\(\pi(a)z=\chi(a)z\)</span> for a continuous character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Their cyclic vectors have norm one, so the coefficient is exactly <span class="math" data-tex="\(\chi(a)\)">\(\chi(a)\)</span>. Conversely a one-dimensional character representation is irreducible because its only vector subspaces are <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and its unit vector is cyclic. Theorem 4.1 makes its coefficient extreme. Equation (23) gives the second equality in (25), and Theorem 4.3 gives the final approximation assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-examples">6. Examples</h2>
+<a id="ha-lca-04-example-6-1"></a>
+<h3 id="example-6-1-four-functions-on-the-real-line">Example 6.1. Four functions on the real line</h3>
+<p>For <span class="math" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span>, all of
+<span class="math math-display" data-tex="\[
+ e^{-|x|},\qquad e^{-x^2},\qquad \cos(ax),\qquad
+                      (1-|x|)_+
+\]">\[
+ e^{-|x|},\qquad e^{-x^2},\qquad \cos(ax),\qquad
+                      (1-|x|)_+
+\]</span>
+belong to <span class="math" data-tex="\(P_1(\mathbb R)\)">\(P_1(\mathbb R)\)</span>.</p>
+<p><strong>Proof.</strong> Use the earlier <a href="characters-and-the-dual-group.html#ha-lca-02-lemma-3-3">Lebesgue normalization of Haar measure on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span></a>. Let
+<span class="math" data-tex="\(u(t)=\sqrt2\,e^{-t}1_{[0,\infty)}(t)\)">\(u(t)=\sqrt2\,e^{-t}1_{[0,\infty)}(t)\)</span>.
+The <a href="../prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-lemma-1-3">elementary exponential integral and substitution rules</a>, followed by monotone convergence over bounded intervals, give <span class="math" data-tex="\(\|u\|_2^2=2\int_0^\infty e^{-2t}\,dt=1\)">\(\|u\|_2^2=2\int_0^\infty e^{-2t}\,dt=1\)</span>. For every real <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+ (u*\widetilde u)(x)
+   =2e^x\int_{\max(0,x)}^\infty e^{-2t}\,dt
+   =e^{x-2\max(0,x)}=e^{-|x|}.
+\]">\[
+ (u*\widetilde u)(x)
+   =2e^x\int_{\max(0,x)}^\infty e^{-2t}\,dt
+   =e^{x-2\max(0,x)}=e^{-|x|}.
+\]</span>
+Thus Proposition 2.2 proves the first example.</p>
+<p>For the Gaussian, put <span class="math" data-tex="\(v(t)=(4/\pi)^{1/4}e^{-2t^2}\)">\(v(t)=(4/\pi)^{1/4}e^{-2t^2}\)</span>. The earlier <a href="../prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-theorem-2-1">Gaussian integral</a> gives
+<span class="math" data-tex="\(\int_{\mathbb R}e^{-4t^2}\,dt=\sqrt\pi/2\)">\(\int_{\mathbb R}e^{-4t^2}\,dt=\sqrt\pi/2\)</span>, so <span class="math" data-tex="\(\|v\|_2=1\)">\(\|v\|_2=1\)</span>. Completing the square and using translation invariance,
+<span class="math math-display" data-tex="\[
+ (v*\widetilde v)(x)
+ =\frac{2}{\sqrt\pi}\int_{\mathbb R}
+                   e^{-2t^2-2(t-x)^2}\,dt
+ =\frac{2}{\sqrt\pi}e^{-x^2}
+                   \int_{\mathbb R}e^{-4(t-x/2)^2}\,dt
+ =e^{-x^2}.
+\]">\[
+ (v*\widetilde v)(x)
+ =\frac{2}{\sqrt\pi}\int_{\mathbb R}
+                   e^{-2t^2-2(t-x)^2}\,dt
+ =\frac{2}{\sqrt\pi}e^{-x^2}
+                   \int_{\mathbb R}e^{-4(t-x/2)^2}\,dt
+ =e^{-x^2}.
+\]</span>
+This is again Proposition 2.2.</p>
+<p>The functions <span class="math" data-tex="\(x\mapsto e^{iax}\)">\(x\mapsto e^{iax}\)</span> and <span class="math" data-tex="\(x\mapsto e^{-iax}\)">\(x\mapsto e^{-iax}\)</span> are continuous characters by the earlier <a href="characters-and-the-dual-group.html#ha-lca-02-theorem-3-1">real-line character calculation</a>. Their equal-weight average is <span class="math" data-tex="\(\cos(ax)\)">\(\cos(ax)\)</span>, by the proved exponential and trigonometric identities in <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-lemma-1-3">the elementary calculus reading</a>. Positive-type functions form a convex cone, so this average lies in <span class="math" data-tex="\(P_1\)">\(P_1\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(w=1_{[-1/2,1/2]}\)">\(w=1_{[-1/2,1/2]}\)</span> has <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm one, and
+<span class="math math-display" data-tex="\[
+ (w*\widetilde w)(x)
+   =\mu\big([-1/2,1/2]\cap[x-1/2,x+1/2]\big)
+   =(1-|x|)_+.
+\]">\[
+ (w*\widetilde w)(x)
+   =\mu\big([-1/2,1/2]\cap[x-1/2,x+1/2]\big)
+   =(1-|x|)_+.
+\]</span>
+The interval measure formula gives the last equality, including endpoints, which have measure zero. Proposition 2.2 finishes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-example-6-2"></a>
+<h3 id="example-6-2-a-geometric-coefficient-on-mathbb-z">Example 6.2. A geometric coefficient on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span></h3>
+<p>If <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>, the function <span class="math" data-tex="\(n\mapsto r^{|n|}\)">\(n\mapsto r^{|n|}\)</span> belongs to <span class="math" data-tex="\(P_1(\mathbb Z)\)">\(P_1(\mathbb Z)\)</span>.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb Z)\)">\(\ell^2(\mathbb Z)\)</span> let <span class="math" data-tex="\(U(k)u(n)=u(n-k)\)">\(U(k)u(n)=u(n-k)\)</span>, the left regular representation for <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-lemma-5-1">counting Haar measure</a>. Define
+<span class="math math-display" data-tex="\[
+ u(n)=
+ \begin{cases}
+ \sqrt{1-r^2}\,r^n,&amp; n\ge0,\\
+ 0,&amp; n&lt;0.
+ \end{cases}
+\]">\[
+ u(n)=
+ \begin{cases}
+ \sqrt{1-r^2}\,r^n,&amp; n\ge0,\\
+ 0,&amp; n&lt;0.
+ \end{cases}
+\]</span>
+The finite identity
+<span class="math" data-tex="\((1-r^2)\sum_{n=0}^N r^{2n}=1-r^{2N+2}\)">\((1-r^2)\sum_{n=0}^N r^{2n}=1-r^{2N+2}\)</span>
+and <span class="math" data-tex="\(r^{2N+2}\to0\)">\(r^{2N+2}\to0\)</span> give <span class="math" data-tex="\(\|u\|_2=1\)">\(\|u\|_2=1\)</span>. The limit follows, for example, by writing <span class="math" data-tex="\(r^m=e^{m\log r}\)">\(r^m=e^{m\log r}\)</span> with <span class="math" data-tex="\(\log r&lt;0\)">\(\log r&lt;0\)</span>, using the earlier <a href="../prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-lemma-1-2">exponential and logarithm results</a>.
+For <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+ \langle U(k)u,u\rangle
+ =(1-r^2)\sum_{n\ge k}r^{n-k+n}
+ =r^k.
+\]">\[
+ \langle U(k)u,u\rangle
+ =(1-r^2)\sum_{n\ge k}r^{n-k+n}
+ =r^k.
+\]</span>
+For negative <span class="math" data-tex="\(k\)">\(k\)</span>, unitarity makes the coefficient the complex conjugate of the one at <span class="math" data-tex="\(-k\)">\(-k\)</span>; these values are real, so it is <span class="math" data-tex="\(r^{|k|}\)">\(r^{|k|}\)</span>. Proposition 2.2 proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-example-6-3"></a>
+<h3 id="example-6-3-an-open-subgroup-without-normality">Example 6.3. An open subgroup, without normality</h3>
+<p>If <span class="math" data-tex="\(H\)">\(H\)</span> is an open subgroup of <span class="math" data-tex="\(G\)">\(G\)</span>, its indicator <span class="math" data-tex="\(1_H\)">\(1_H\)</span> belongs to <span class="math" data-tex="\(P_1(G)\)">\(P_1(G)\)</span>.</p>
+<p><strong>Proof.</strong> The coset space <span class="math" data-tex="\(G/H\)">\(G/H\)</span> is discrete, since every left coset is open. Form <span class="math" data-tex="\(\ell^2(G/H)\)">\(\ell^2(G/H)\)</span>, with the arbitrary-index Hilbert sum constructed in <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-4-3">the direct-sum theorem</a>. Its unit vectors are <span class="math" data-tex="\(\delta_{xH}\)">\(\delta_{xH}\)</span>. The rule
+<span class="math math-display" data-tex="\[
+ \pi(a)\delta_{xH}=\delta_{axH}
+\]">\[
+ \pi(a)\delta_{xH}=\delta_{axH}
+\]</span>
+permutes this orthonormal family, preserves finite-sum norms, and extends to a unitary with inverse <span class="math" data-tex="\(\pi(a^{-1})\)">\(\pi(a^{-1})\)</span>. Its group law holds on the basis and hence on the completion. The stabilizer of <span class="math" data-tex="\(\delta_{xH}\)">\(\delta_{xH}\)</span> is <span class="math" data-tex="\(xHx^{-1}\)">\(xHx^{-1}\)</span>, which is open. Thus its orbit is constant for <span class="math" data-tex="\(a\)">\(a\)</span> near <span class="math" data-tex="\(e\)">\(e\)</span>. The same is true for a finite sum after intersecting finitely many such neighbourhoods. Finite sums are dense in the Hilbert sum, so the common unitary norm bound proves strong continuity for every vector. Finally,
+<span class="math math-display" data-tex="\[
+ \langle\pi(a)\delta_H,\delta_H\rangle
+       =\begin{cases}1,&amp;a\in H,\\0,&amp;a\notin H.\end{cases}
+\]">\[
+ \langle\pi(a)\delta_H,\delta_H\rangle
+       =\begin{cases}1,&amp;a\in H,\\0,&amp;a\notin H.\end{cases}
+\]</span>
+The vector <span class="math" data-tex="\(\delta_H\)">\(\delta_H\)</span> has norm one and is cyclic, because all coset basis vectors are its translates. Proposition 2.2 proves the claim. No quotient group structure or normality of <span class="math" data-tex="\(H\)">\(H\)</span> is used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-example-6-4"></a>
+<h3 id="example-6-4-an-interval-indicator-fails-positivity">Example 6.4. An interval indicator fails positivity</h3>
+<p>The bounded class <span class="math" data-tex="\(1_{[-1,1]}\)">\(1_{[-1,1]}\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> is not integral positive.</p>
+<p><strong>Proof.</strong> If it had a continuous representative <span class="math" data-tex="\(h\)">\(h\)</span>, then <span class="math" data-tex="\(h=1\)">\(h=1\)</span> throughout <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> and <span class="math" data-tex="\(h=0\)">\(h=0\)</span> throughout <span class="math" data-tex="\((1,\infty)\)">\((1,\infty)\)</span>. To justify either assertion, if it failed at an interior point, continuity would give a nonempty open interval on which <span class="math" data-tex="\(h\)">\(h\)</span> differs from the asserted constant by a fixed positive amount; that interval has positive Lebesgue measure, contradicting almost-everywhere equality. The two one-sided values at <span class="math" data-tex="\(1\)">\(1\)</span> contradict continuity. Corollary 3.2 therefore excludes integral positivity.</p>
+<p>There is also an explicit negative test. Choose <span class="math" data-tex="\(u\in C_c(\mathbb R)\)">\(u\in C_c(\mathbb R)\)</span>, <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>, supported in <span class="math" data-tex="\((-1/16,1/16)\)">\((-1/16,1/16)\)</span> with <span class="math" data-tex="\(\int u=1\)">\(\int u=1\)</span>, using the earlier compact-cutoff and full-support results. Put
+<span class="math math-display" data-tex="\[
+ f=L_0u-\sqrt2\,L_{3/4}u+L_{3/2}u.
+\]">\[
+ f=L_0u-\sqrt2\,L_{3/4}u+L_{3/2}u.
+\]</span>
+In (9), whenever the two translated bumps have the same centre or adjacent centres, their argument difference has absolute value less than <span class="math" data-tex="\(1\)">\(1\)</span>; for the pair of centres <span class="math" data-tex="\(0,3/2\)">\(0,3/2\)</span> its absolute value is greater than <span class="math" data-tex="\(1\)">\(1\)</span>. Thus the nine terms of the double integral have the matrix
+<span class="math math-display" data-tex="\[
+ A=\begin{pmatrix}1&amp;1&amp;0\\1&amp;1&amp;1\\0&amp;1&amp;1\end{pmatrix}
+\]">\[
+ A=\begin{pmatrix}1&amp;1&amp;0\\1&amp;1&amp;1\\0&amp;1&amp;1\end{pmatrix}
+\]</span>
+and coefficient vector <span class="math" data-tex="\((1,-\sqrt2,1)\)">\((1,-\sqrt2,1)\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}(f^**f)(x)1_{[-1,1]}(x)\,dx
+          =4-4\sqrt2&lt;0.
+\]">\[
+ \int_{\mathbb R}(f^**f)(x)1_{[-1,1]}(x)\,dx
+          =4-4\sqrt2&lt;0.
+\]</span>
+This directly violates integral positivity and does not depend on how the interval's endpoints are represented. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<a id="ha-lca-04-exercise-7-1"></a>
+<h3 id="exercise-7-1-products">Exercise 7.1. Products</h3>
+<p>Show that the pointwise product of two positive-type functions is of positive type.</p>
+<p><strong>Proof.</strong> Use the canonical continuous representatives
+<span class="math" data-tex="\(\varphi(a)=\langle\pi(a)\xi,\xi\rangle\)">\(\varphi(a)=\langle\pi(a)\xi,\xi\rangle\)</span> and
+<span class="math" data-tex="\(\psi(a)=\langle\rho(a)\eta,\eta\rangle\)">\(\psi(a)=\langle\rho(a)\eta,\eta\rangle\)</span>. The earlier <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-proposition-7-3">Hilbert tensor-product construction</a> proves that <span class="math" data-tex="\(\pi\otimes\rho\)">\(\pi\otimes\rho\)</span> is strongly continuous on the completed tensor space and that
+<span class="math math-display" data-tex="\[
+ \langle(\pi\otimes\rho)(a)(\xi\otimes\eta),\xi\otimes\eta\rangle
+       =\varphi(a)\psi(a).
+\]">\[
+ \langle(\pi\otimes\rho)(a)(\xi\otimes\eta),\xi\otimes\eta\rangle
+       =\varphi(a)\psi(a).
+\]</span>
+Proposition 2.2 proves positivity, and Lemma 2.1 gives the integral formulation as well. The value at <span class="math" data-tex="\(e\)">\(e\)</span> is <span class="math" data-tex="\(\varphi(e)\psi(e)\)">\(\varphi(e)\psi(e)\)</span>, so a product of two members of <span class="math" data-tex="\(P_1\)">\(P_1\)</span> again belongs to <span class="math" data-tex="\(P_1\)">\(P_1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-exercise-7-2"></a>
+<h3 id="exercise-7-2-the-right-difference-inequality">Exercise 7.2. The right difference inequality</h3>
+<p>For <span class="math" data-tex="\(\varphi\in P_1(G)\)">\(\varphi\in P_1(G)\)</span>, prove
+<span class="math math-display" data-tex="\[
+ |\varphi(x)-\varphi(y)|^2
+                       \le2-2\operatorname{Re}\varphi(yx^{-1}).
+\]">\[
+ |\varphi(x)-\varphi(y)|^2
+                       \le2-2\operatorname{Re}\varphi(yx^{-1}).
+\]</span>
+Explain why the order of the factors is valid without commutativity.</p>
+<p><strong>Proof.</strong> Take its GNS vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, with <span class="math" data-tex="\(\|\xi\|=1\)">\(\|\xi\|=1\)</span>. Unitarity rewrites the difference as
+<span class="math" data-tex="\(\langle\xi,\pi(x^{-1})\xi-\pi(y^{-1})\xi\rangle\)">\(\langle\xi,\pi(x^{-1})\xi-\pi(y^{-1})\xi\rangle\)</span>.
+Cauchy–Schwarz bounds its squared modulus by the squared norm of the second argument. Expanding that norm gives
+<span class="math math-display" data-tex="\[
+ 2-2\operatorname{Re}\langle\pi(x^{-1})\xi,\pi(y^{-1})\xi\rangle
+ =2-2\operatorname{Re}\langle\pi(yx^{-1})\xi,\xi\rangle.
+\]">\[
+ 2-2\operatorname{Re}\langle\pi(x^{-1})\xi,\pi(y^{-1})\xi\rangle
+ =2-2\operatorname{Re}\langle\pi(yx^{-1})\xi,\xi\rangle.
+\]</span>
+The last equality moves <span class="math" data-tex="\(\pi(y^{-1})\)">\(\pi(y^{-1})\)</span> from the second argument by its adjoint <span class="math" data-tex="\(\pi(y)\)">\(\pi(y)\)</span>, producing the ordered product <span class="math" data-tex="\(yx^{-1}\)">\(yx^{-1}\)</span> exactly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-exercise-7-3"></a>
+<h3 id="exercise-7-3-sums-and-limits">Exercise 7.3. Sums and limits</h3>
+<p>Show that nonnegative finite linear combinations of positive-type functions are positive type. Show that a pointwise limit which is continuous is positive type; in particular this holds for a limit uniform on each compact set.</p>
+<p><strong>Proof.</strong> For a finite sum <span class="math" data-tex="\(\sum_k t_k\varphi_k\)">\(\sum_k t_k\varphi_k\)</span>, <span class="math" data-tex="\(t_k\ge0\)">\(t_k\ge0\)</span>, each matrix sum in (8) is the same nonnegative combination of nonnegative real sums. The function is continuous, so Lemma 2.0 bounds it and Lemma 2.1 gives integral positivity.</p>
+<p>If <span class="math" data-tex="\(\varphi_d(x)\to\varphi(x)\)">\(\varphi_d(x)\to\varphi(x)\)</span> at every point, the finite sum in (8) converges to the corresponding sum for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. The closed set <span class="math" data-tex="\([0,\infty)\subset\mathbb C\)">\([0,\infty)\subset\mathbb C\)</span> contains the limit, so <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is matrix positive. If the limit is continuous, Lemmas 2.0–2.1 give the desired conclusion.</p>
+<p>To verify the continuity assertion under compact uniform convergence, fix <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span> and a compact neighbourhood <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, whose existence is proved by the earlier <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-3">locally compact shrinking lemma</a>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose one <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(\sup_K|\varphi-\varphi_d|&lt;\varepsilon/3\)">\(\sup_K|\varphi-\varphi_d|&lt;\varepsilon/3\)</span>. Continuity of <span class="math" data-tex="\(\varphi_d\)">\(\varphi_d\)</span> gives a neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span> inside <span class="math" data-tex="\(K\)">\(K\)</span> on which
+<span class="math" data-tex="\(|\varphi_d(y)-\varphi_d(x)|&lt;\varepsilon/3\)">\(|\varphi_d(y)-\varphi_d(x)|&lt;\varepsilon/3\)</span>. The three-term triangle inequality yields <span class="math" data-tex="\(|\varphi(y)-\varphi(x)|&lt;\varepsilon\)">\(|\varphi(y)-\varphi(x)|&lt;\varepsilon\)</span> there. Thus the limit is continuous, as required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-exercise-7-4"></a>
+<h3 id="exercise-7-4-a-representation-for-r-n">Exercise 7.4. A representation for <span class="math" data-tex="\(r^{|n|}\)">\(r^{|n|}\)</span></h3>
+<p>Exhibit a representation and unit vector giving the coefficient <span class="math" data-tex="\(n\mapsto r^{|n|}\)">\(n\mapsto r^{|n|}\)</span>, <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>, and compute the coefficient.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathcal H=\ell^2(\mathbb Z)\)">\(\mathcal H=\ell^2(\mathbb Z)\)</span>, let <span class="math" data-tex="\(S\)">\(S\)</span> be the bilateral shift <span class="math" data-tex="\((Su)(j)=u(j-1)\)">\((Su)(j)=u(j-1)\)</span>, and set
+<span class="math" data-tex="\(\pi(n)=S^n\)">\(\pi(n)=S^n\)</span>. The change of integer index in the sum of squared moduli proves that <span class="math" data-tex="\(S\)">\(S\)</span> is unitary, with inverse <span class="math" data-tex="\((S^{-1}u)(j)=u(j+1)\)">\((S^{-1}u)(j)=u(j+1)\)</span>. The group is discrete, so every orbit map is continuous.</p>
+<p>Choose <span class="math" data-tex="\(u(j)=\sqrt{1-r^2}\,r^j\)">\(u(j)=\sqrt{1-r^2}\,r^j\)</span> for <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> and zero otherwise. The geometric sum gives <span class="math" data-tex="\(\|u\|^2=1\)">\(\|u\|^2=1\)</span>. For <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+ \langle S^nu,u\rangle
+ =(1-r^2)\sum_{j=n}^{\infty}r^{j-n}r^j
+ =(1-r^2)r^n\sum_{m=0}^{\infty}r^{2m}=r^n.
+\]">\[
+ \langle S^nu,u\rangle
+ =(1-r^2)\sum_{j=n}^{\infty}r^{j-n}r^j
+ =(1-r^2)r^n\sum_{m=0}^{\infty}r^{2m}=r^n.
+\]</span>
+For <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>, the identity
+<span class="math" data-tex="\(\langle S^nu,u\rangle=\overline{\langle S^{-n}u,u\rangle}\)">\(\langle S^nu,u\rangle=\overline{\langle S^{-n}u,u\rangle}\)</span>
+gives <span class="math" data-tex="\(r^{-n}\)">\(r^{-n}\)</span>. Thus the coefficient is <span class="math" data-tex="\(r^{|n|}\)">\(r^{|n|}\)</span> for every integer, and Proposition 2.2 proves positive type. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-04-exercise-7-5"></a>
+<h3 id="exercise-7-5-equality-at-the-identity-forces-periods">Exercise 7.5. Equality at the identity forces periods</h3>
+<p>For an LCA group written additively, show that <span class="math" data-tex="\(\varphi(a)=\varphi(0)\)">\(\varphi(a)=\varphi(0)\)</span> implies <span class="math" data-tex="\(\varphi(x+a)=\varphi(x)\)">\(\varphi(x+a)=\varphi(x)\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. More generally, on any locally compact group, describe
+<span class="math math-display" data-tex="\[
+ H_\varphi=\{a:\varphi(a)=\varphi(e)\}.
+\]">\[
+ H_\varphi=\{a:\varphi(a)=\varphi(e)\}.
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\varphi(a)=\langle\pi(a)\xi,\xi\rangle\)">\(\varphi(a)=\langle\pi(a)\xi,\xi\rangle\)</span>, with <span class="math" data-tex="\(c=\|\xi\|^2=\varphi(e)\)">\(c=\|\xi\|^2=\varphi(e)\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \|\pi(a)\xi-\xi\|^2=2c-2\operatorname{Re}\varphi(a).
+\]">\[
+ \|\pi(a)\xi-\xi\|^2=2c-2\operatorname{Re}\varphi(a).
+\]</span>
+If <span class="math" data-tex="\(\varphi(a)=c\)">\(\varphi(a)=c\)</span>, the right side is zero, so <span class="math" data-tex="\(\pi(a)\xi=\xi\)">\(\pi(a)\xi=\xi\)</span>. Conversely, that fixed-vector identity implies <span class="math" data-tex="\(\varphi(a)=c\)">\(\varphi(a)=c\)</span>. Thus <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span> is exactly the stabilizer of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. It contains the identity and is closed under products and inverses by the representation law; it is closed topologically as the inverse image of <span class="math" data-tex="\(\{\xi\}\)">\(\{\xi\}\)</span> under the continuous orbit map. For <span class="math" data-tex="\(h,k\in H_\varphi\)">\(h,k\in H_\varphi\)</span>,
+<span class="math math-display" data-tex="\[
+ \varphi(hxk)
+ =\langle\pi(h)\pi(x)\pi(k)\xi,\xi\rangle
+ =\langle\pi(x)\xi,\pi(h^{-1})\xi\rangle
+ =\varphi(x).
+\]">\[
+ \varphi(hxk)
+ =\langle\pi(h)\pi(x)\pi(k)\xi,\xi\rangle
+ =\langle\pi(x)\xi,\pi(h^{-1})\xi\rangle
+ =\varphi(x).
+\]</span>
+Hence <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is constant on every double coset <span class="math" data-tex="\(H_\varphi xH_\varphi\)">\(H_\varphi xH_\varphi\)</span>. In the abelian additive notation, take <span class="math" data-tex="\(h=0,k=a\)">\(h=0,k=a\)</span> to obtain the asserted period. If <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, the function is zero and its stabilizer is all of <span class="math" data-tex="\(G\)">\(G\)</span>, consistent with the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exact-proof-dependencies">Exact proof dependencies</h2>
+<p>This lesson uses the full earlier proofs of Hilbert completion, bounded forms, adjoints, continuous self-adjoint calculus, arbitrary Hilbert sums, Schur's lemma and tensor products in <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html">the Hilbert reading</a>. It uses the full Haar domain, modular substitutions, sigma-compact localization, convolution and approximate identities in <a href="../prerequisites/src/nonabelian-haar-integration.html">the general Haar reading</a>. The <a href="../prerequisites/src/dual-balls-and-compact-convexity.html">duality and convexity reading</a> supplies <span class="math" data-tex="\(L^1\)">\(L^1\)</span> duality, weak-star compactness and the extreme-point theorem. The exact result locators are placed at their uses above. All representation, GNS and positive-type conclusions asserted here are proved here or in those exact earlier results.</p>
+<p>The free author draft's kernel and continuous GNS proofs inform Lemma 2.0; its C.5.1–C.5.2 inform the dominated-form and irreducibility argument; its C.5.4–C.5.5 inform compactness and normalization. Its integral-positivity lemma C.5.3 and the converse assertion in F.4 are proved here without importing their external references. The real-line and geometric examples are computed directly from the checked earlier integration results and the coefficient construction.</p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local factors of pairs and the rank-two converse theorem · The local Langlands correspondence for GL_n</title>
+<meta name="description" content="A lesson of the course The local Langlands correspondence for GL_n. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-LLC/LG-LLC-03.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The local Langlands correspondence for GL_n</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="local-factors-of-pairs-and-the-rank-two-converse-theorem">Local factors of pairs and the rank-two converse theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A representation is more readily recognized by its response to twists than by its matrix entries. Rankin–Selberg factors record that response. In rank two, all character twists determine the Weyl operator in the Kirillov model, and that operator completes the representation. Before proving this converse theorem, we calculate spherical factors explicitly and keep track of the determinant twist in their functional equations.</p>
+<p>We assume normalized induction, Whittaker and Kirillov models, and Tate's one-dimensional local factors. The general theory of Rankin–Selberg integrals is stated with its sources. Our proofs concern spherical computations in ranks two and one, the identification of a character pair with a determinant twist, and the rank-two converse theorem. Basic references are [Getz–Hahn 2022], [Jacquet–Langlands 1970] and [Jacquet–Piatetski-Shapiro–Shalika 1983].</p>
+<h2 id="1-what-the-integrals-define">1. What the integrals define</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a nonarchimedean local field with residue cardinality <span class="math" data-tex="\(q\)">\(q\)</span>, and let <span class="math" data-tex="\(X=q^{-s}\)">\(X=q^{-s}\)</span>. Fix a nontrivial additive character <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. In <span class="math" data-tex="\(\mathrm{GL}_n(F)\)">\(\mathrm{GL}_n(F)\)</span>, put
+<span class="math math-display" data-tex="\[
+\psi_N(u)=\psi(u_{12}+\cdots+u_{n-1,n}).
+\]">\[
+\psi_N(u)=\psi(u_{12}+\cdots+u_{n-1,n}).
+\]</span>
+A generic representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has a Whittaker model <span class="math" data-tex="\(\mathcal W(\pi,\psi)\)">\(\mathcal W(\pi,\psi)\)</span>, consisting of functions satisfying <span class="math" data-tex="\(W(ug)=\psi_N(u)W(g)\)">\(W(ug)=\psi_N(u)W(g)\)</span>; the model is unique. We take the model for the second representation with <span class="math" data-tex="\(\psi^{-1}\)">\(\psi^{-1}\)</span>, so products of Whittaker functions descend to a unipotent quotient.</p>
+<p>For <span class="math" data-tex="\(n&gt;m\)">\(n&gt;m\)</span>, one basic integral is
+<span class="math math-display" data-tex="\[
+Z(s,W,W&#x27;)=\int_{N_m\backslash G_m}
+ W\!\begin{pmatrix}g&amp;0\\0&amp;1_{n-m}\end{pmatrix}
+ W&#x27;(g)|\det g|^{s-(n-m)/2}\,dg.
+\tag{1.1}
+\]">\[
+Z(s,W,W&#x27;)=\int_{N_m\backslash G_m}
+ W\!\begin{pmatrix}g&amp;0\\0&amp;1_{n-m}\end{pmatrix}
+ W&#x27;(g)|\det g|^{s-(n-m)/2}\,dg.
+\tag{1.1}
+\]</span>
+For <span class="math" data-tex="\(n=m\)">\(n=m\)</span>, a Schwartz function <span class="math" data-tex="\(\Phi\in\mathcal S(F^n)\)">\(\Phi\in\mathcal S(F^n)\)</span> enters:
+<span class="math math-display" data-tex="\[
+Z(s,W,W&#x27;,\Phi)=
+\int_{N_n\backslash G_n}
+ W(g)W&#x27;(g)\Phi(e_n g)|\det g|^s\,dg.
+\tag{1.2}
+\]">\[
+Z(s,W,W&#x27;,\Phi)=
+\int_{N_n\backslash G_n}
+ W(g)W&#x27;(g)\Phi(e_n g)|\det g|^s\,dg.
+\tag{1.2}
+\]</span>
+Here <span class="math" data-tex="\(e_n=(0,\ldots,0,1)\)">\(e_n=(0,\ldots,0,1)\)</span>. Haar measures are fixed once; rescaling them multiplies integrals by nonzero constants and does not change their normalized ideal generator.</p>
+<p><strong>Theorem 1.1 (Rankin–Selberg theory, stated).</strong> These integrals converge in a right half-plane and continue as rational functions of <span class="math" data-tex="\(X\)">\(X\)</span>. Their span over <span class="math" data-tex="\(\mathbb C[X,X^{-1}]\)">\(\mathbb C[X,X^{-1}]\)</span> is a fractional principal ideal with a unique generator
+<span class="math math-display" data-tex="\[
+L(s,\pi\times\pi&#x27;)=P_{\pi,\pi&#x27;}(X)^{-1},
+\qquad P_{\pi,\pi&#x27;}(0)=1.
+\tag{1.3}
+\]">\[
+L(s,\pi\times\pi&#x27;)=P_{\pi,\pi&#x27;}(X)^{-1},
+\qquad P_{\pi,\pi&#x27;}(0)=1.
+\tag{1.3}
+\]</span>
+The local functional equation gives a rational function <span class="math" data-tex="\(\gamma(s,\pi\times\pi&#x27;,\psi)\)">\(\gamma(s,\pi\times\pi&#x27;,\psi)\)</span>. Define
+<span class="math math-display" data-tex="\[
+\epsilon(s,\pi\times\pi&#x27;,\psi)
+=\gamma(s,\pi\times\pi&#x27;,\psi)
+\frac{L(s,\pi\times\pi&#x27;)}{L(1-s,\pi^\vee\times\pi&#x27;^\vee)}.
+\tag{1.4}
+\]">\[
+\epsilon(s,\pi\times\pi&#x27;,\psi)
+=\gamma(s,\pi\times\pi&#x27;,\psi)
+\frac{L(s,\pi\times\pi&#x27;)}{L(1-s,\pi^\vee\times\pi&#x27;^\vee)}.
+\tag{1.4}
+\]</span>
+It is a nonzero constant times a power of <span class="math" data-tex="\(X\)">\(X\)</span>. With self-dual additive measure and an additive character of conductor zero, write it as
+<span class="math math-display" data-tex="\[
+\epsilon(s,\pi\times\pi&#x27;,\psi)
+=\epsilon(1/2,\pi\times\pi&#x27;,\psi)\,
+q^{-a(\pi\times\pi&#x27;)(s-1/2)}.
+\tag{1.5}
+\]">\[
+\epsilon(s,\pi\times\pi&#x27;,\psi)
+=\epsilon(1/2,\pi\times\pi&#x27;,\psi)\,
+q^{-a(\pi\times\pi&#x27;)(s-1/2)}.
+\tag{1.5}
+\]</span>
+For <span class="math" data-tex="\(\psi_b(x)=\psi(bx)\)">\(\psi_b(x)=\psi(bx)\)</span>, of arbitrary conductor, the change is
+<span class="math math-display" data-tex="\[
+\epsilon(s,\pi\times\pi&#x27;,\psi_b)
+=\omega_\pi(b)^m\omega_{\pi&#x27;}(b)^n
+|b|^{nm(s-1/2)}\epsilon(s,\pi\times\pi&#x27;,\psi).
+\tag{1.6}
+\]">\[
+\epsilon(s,\pi\times\pi&#x27;,\psi_b)
+=\omega_\pi(b)^m\omega_{\pi&#x27;}(b)^n
+|b|^{nm(s-1/2)}\epsilon(s,\pi\times\pi&#x27;,\psi).
+\tag{1.6}
+\]</span></p>
+<p>For a pair of tempered representations, every integral converges and is holomorphic for <span class="math" data-tex="\(\operatorname{Re}(s)&gt;0\)">\(\operatorname{Re}(s)&gt;0\)</span>. Since the ideal generator is a finite Laurent-polynomial combination of those integrals, its <span class="math" data-tex="\(L\)">\(L\)</span>-factor is holomorphic there too. The rationality, principal ideal, tempered convergence and functional equation assertions are [Getz–Hahn 2022, Proposition 11.5.1, Theorem 11.5.4 and Proposition 11.5.5], from [Jacquet–Piatetski-Shapiro–Shalika 1983]. The conventions in a functional equation also include the chosen Weyl representative and its explicit central-character sign; this sign is retained in Section 3.</p>
+<p>For arbitrary irreducible representations, use their Langlands quotients. If <span class="math" data-tex="\(\pi=L(\Delta_1,\ldots,\Delta_t)\)">\(\pi=L(\Delta_1,\ldots,\Delta_t)\)</span> and <span class="math" data-tex="\(\pi&#x27;=L(\Delta&#x27;_1,\ldots,\Delta&#x27;_u)\)">\(\pi&#x27;=L(\Delta&#x27;_1,\ldots,\Delta&#x27;_u)\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(s,\pi\times\pi&#x27;)&amp;=\prod_{i,j}L(s,Q(\Delta_i)\times Q(\Delta&#x27;_j)),\\
+\epsilon(s,\pi\times\pi&#x27;,\psi)&amp;=\prod_{i,j}\epsilon(s,Q(\Delta_i)\times Q(\Delta&#x27;_j),\psi).
+\end{aligned}
+\tag{1.7}
+\]">\[
+\begin{aligned}
+L(s,\pi\times\pi&#x27;)&amp;=\prod_{i,j}L(s,Q(\Delta_i)\times Q(\Delta&#x27;_j)),\\
+\epsilon(s,\pi\times\pi&#x27;,\psi)&amp;=\prod_{i,j}\epsilon(s,Q(\Delta_i)\times Q(\Delta&#x27;_j),\psi).
+\end{aligned}
+\tag{1.7}
+\]</span>
+The analogous product holds for <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The consistency of (1.7) with the integral definition whenever the quotient is generic is another general theorem input, [Getz–Hahn 2022, §11.8]. Gamma factors are also multiplicative for arbitrary parabolic inductions with their corresponding generic constituents. For the special representations used below, the precise formula is [Jacquet–Piatetski-Shapiro–Shalika 1983, Theorems 3.1 and 8.2, equation (14) in §8.2]. In contrast, one cannot obtain the Steinberg <span class="math" data-tex="\(L\)">\(L\)</span>-factor merely by multiplying the <span class="math" data-tex="\(L\)">\(L\)</span>-factors of its character support: grouping into a segment matters.</p>
+<p>The conductor <span class="math" data-tex="\(a(\pi)=a(\pi\times\mathbf1)\)">\(a(\pi)=a(\pi\times\mathbf1)\)</span> in (1.5) is the epsilon-factor conductor. For generic <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, it equals the smallest <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span> with a <span class="math" data-tex="\(K_1(\varpi^r)\)">\(K_1(\varpi^r)\)</span>-fixed vector, whose space at that first level is one-dimensional [Getz–Hahn 2022, Theorem 11.5.6]. This newvector theorem belongs to the generic setting. The extension (1.7) defines factors for nongeneric representations as well, without making the newvector assertion for them.</p>
+<h2 id="2-computing-the-spherical-factors">2. Computing the spherical factors</h2>
+<p>Assume in this section that <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is trivial on <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> and nontrivial on <span class="math" data-tex="\(\varpi^{-1}\mathcal O\)">\(\varpi^{-1}\mathcal O\)</span>. Normalize <span class="math" data-tex="\(\operatorname{vol}(G_r(\mathcal O))=\operatorname{vol}(N_r(\mathcal O))=1\)">\(\operatorname{vol}(G_r(\mathcal O))=\operatorname{vol}(N_r(\mathcal O))=1\)</span>. Let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be an unramified generic representation of <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, with unitary-normalized Satake parameters <span class="math" data-tex="\(\alpha_1,\alpha_2\)">\(\alpha_1,\alpha_2\)</span>, and let <span class="math" data-tex="\(W(1)=1\)">\(W(1)=1\)</span> be its spherical Whittaker function. Put <span class="math" data-tex="\(A=\alpha_1\alpha_2=\omega_\pi(\varpi)\)">\(A=\alpha_1\alpha_2=\omega_\pi(\varpi)\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> If <span class="math" data-tex="\(a_r=\operatorname{diag}(\varpi^r,1)\)">\(a_r=\operatorname{diag}(\varpi^r,1)\)</span>, then
+<span class="math math-display" data-tex="\[
+W(a_r)=
+\begin{cases}
+q^{-r/2}h_r(\alpha_1,\alpha_2),&amp;r\ge0,\\
+0,&amp;r&lt;0,
+\end{cases}
+\qquad
+h_r(x,y)=\sum_{j=0}^r x^{r-j}y^j.
+\tag{2.1}
+\]">\[
+W(a_r)=
+\begin{cases}
+q^{-r/2}h_r(\alpha_1,\alpha_2),&amp;r\ge0,\\
+0,&amp;r&lt;0,
+\end{cases}
+\qquad
+h_r(x,y)=\sum_{j=0}^r x^{r-j}y^j.
+\tag{2.1}
+\]</span></p>
+<p><strong>Proof.</strong> Right invariance by <span class="math" data-tex="\(n(u)\)">\(n(u)\)</span>, <span class="math" data-tex="\(u\in\mathcal O\)">\(u\in\mathcal O\)</span>, implies
+<span class="math" data-tex="\(W(a_r)=\psi(\varpi^r u)W(a_r)\)">\(W(a_r)=\psi(\varpi^r u)W(a_r)\)</span>. For <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>, some <span class="math" data-tex="\(u\)">\(u\)</span> makes this scalar different from one, so the value vanishes.</p>
+<p>The double coset <span class="math" data-tex="\(K\operatorname{diag}(\varpi,1)K\)">\(K\operatorname{diag}(\varpi,1)K\)</span> has right coset representatives
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}\varpi&amp;u\\0&amp;1\end{pmatrix}
+\quad(u\in\mathcal O/\varpi\mathcal O),\qquad
+\begin{pmatrix}1&amp;0\\0&amp;\varpi\end{pmatrix}.
+\]">\[
+\begin{pmatrix}\varpi&amp;u\\0&amp;1\end{pmatrix}
+\quad(u\in\mathcal O/\varpi\mathcal O),\qquad
+\begin{pmatrix}1&amp;0\\0&amp;\varpi\end{pmatrix}.
+\]</span>
+Its Hecke eigenvalue is <span class="math" data-tex="\(q^{1/2}(\alpha_1+\alpha_2)\)">\(q^{1/2}(\alpha_1+\alpha_2)\)</span>, by the normalized Satake convention. Evaluating the Hecke action at <span class="math" data-tex="\(a_r\)">\(a_r\)</span>, for <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>, gives
+<span class="math math-display" data-tex="\[
+q^{1/2}(\alpha_1+\alpha_2)W(a_r)
+=qW(a_{r+1})+A W(a_{r-1}).
+\]">\[
+q^{1/2}(\alpha_1+\alpha_2)W(a_r)
+=qW(a_{r+1})+A W(a_{r-1}).
+\]</span>
+The initial values are <span class="math" data-tex="\(W(a_0)=1\)">\(W(a_0)=1\)</span>, <span class="math" data-tex="\(W(a_{-1})=0\)">\(W(a_{-1})=0\)</span>. Multiplying the <span class="math" data-tex="\(r\)">\(r\)</span>-th value by <span class="math" data-tex="\(q^{r/2}\)">\(q^{r/2}\)</span> gives the recurrence
+<span class="math" data-tex="\(h_{r+1}=(\alpha_1+\alpha_2)h_r-Ah_{r-1}\)">\(h_{r+1}=(\alpha_1+\alpha_2)h_r-Ah_{r-1}\)</span>, which the displayed finite sum satisfies. This proves the formula, including the coincident-parameter case. ∎</p>
+<p>The Hecke eigenvalue convention is [Getz–Hahn 2022, Proposition 7.6.8]; the formula also agrees with the general Shintani formula, Corollary 11.4.2. We have proved its rank-two instance directly.</p>
+<p><strong>Theorem 2.2.</strong> For an unramified character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, put <span class="math" data-tex="\(\beta=\chi(\varpi)\)">\(\beta=\chi(\varpi)\)</span>. Then
+<span class="math math-display" data-tex="\[
+L(s,\pi\times\chi)=
+\frac1{(1-\alpha_1\beta X)(1-\alpha_2\beta X)}.
+\tag{2.2}
+\]">\[
+L(s,\pi\times\chi)=
+\frac1{(1-\alpha_1\beta X)(1-\alpha_2\beta X)}.
+\tag{2.2}
+\]</span>
+If <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span> is an unramified generic representation of <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, with parameters <span class="math" data-tex="\(\beta_1,\beta_2\)">\(\beta_1,\beta_2\)</span>, then
+<span class="math math-display" data-tex="\[
+L(s,\pi\times\pi&#x27;)=\prod_{i,j=1}^2(1-\alpha_i\beta_jX)^{-1}.
+\tag{2.3}
+\]">\[
+L(s,\pi\times\pi&#x27;)=\prod_{i,j=1}^2(1-\alpha_i\beta_jX)^{-1}.
+\tag{2.3}
+\]</span></p>
+<p><strong>Proof.</strong> In the first case (1.1), the integral is a sum over <span class="math" data-tex="\(F^\times/\mathcal O^\times\)">\(F^\times/\mathcal O^\times\)</span>. Lemma 2.1 gives
+<span class="math math-display" data-tex="\[
+Z(s,W,\chi)=\sum_{r\ge0}h_r(\alpha_1,\alpha_2)(\beta X)^r.
+\]">\[
+Z(s,W,\chi)=\sum_{r\ge0}h_r(\alpha_1,\alpha_2)(\beta X)^r.
+\]</span>
+The sum defining <span class="math" data-tex="\(h_r\)">\(h_r\)</span>, reindexed by two independent nonnegative integers, gives (2.2).</p>
+<p>For (2.3), take <span class="math" data-tex="\(\Phi=1_{\mathcal O^2}\)">\(\Phi=1_{\mathcal O^2}\)</span>. Iwasawa decomposition writes the integral as a sum over diagonal matrices
+<span class="math" data-tex="\(\operatorname{diag}(\varpi^{r+m},\varpi^m)\)">\(\operatorname{diag}(\varpi^{r+m},\varpi^m)\)</span>. Whittaker support requires <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>. Since <span class="math" data-tex="\(e_2k\)">\(e_2k\)</span> is a primitive integral row for every <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>, the Schwartz condition requires <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span>. The two <span class="math" data-tex="\(q^{-r/2}\)">\(q^{-r/2}\)</span> factors cancel <span class="math" data-tex="\(\delta_B^{-1}=q^r\)">\(\delta_B^{-1}=q^r\)</span>. Consequently, with <span class="math" data-tex="\(B=\beta_1\beta_2\)">\(B=\beta_1\beta_2\)</span> and <span class="math" data-tex="\(C=AB\)">\(C=AB\)</span>,
+<span class="math math-display" data-tex="\[
+Z(s,W,W&#x27;,1_{\mathcal O^2})
+=\frac1{1-CX^2}\sum_{r\ge0}
+h_r(\alpha_1,\alpha_2)h_r(\beta_1,\beta_2)X^r.
+\tag{2.4}
+\]">\[
+Z(s,W,W&#x27;,1_{\mathcal O^2})
+=\frac1{1-CX^2}\sum_{r\ge0}
+h_r(\alpha_1,\alpha_2)h_r(\beta_1,\beta_2)X^r.
+\tag{2.4}
+\]</span>
+The elementary two-variable Cauchy identity is
+<span class="math math-display" data-tex="\[
+\sum_{r\ge0}h_r(\alpha)h_r(\beta)X^r
+=\frac{1-CX^2}{\prod_{i,j}(1-\alpha_i\beta_jX)}.
+\tag{2.5}
+\]">\[
+\sum_{r\ge0}h_r(\alpha)h_r(\beta)X^r
+=\frac{1-CX^2}{\prod_{i,j}(1-\alpha_i\beta_jX)}.
+\tag{2.5}
+\]</span>
+To verify it, first suppose each pair of parameters is distinct. Substitute
+<span class="math" data-tex="\(h_r(x,y)=(x^{r+1}-y^{r+1})/(x-y)\)">\(h_r(x,y)=(x^{r+1}-y^{r+1})/(x-y)\)</span>, and sum the four geometric series. Their numerator, over the common denominator, is
+<span class="math" data-tex="\((\alpha_1-\alpha_2)(\beta_1-\beta_2)(1-CX^2)\)">\((\alpha_1-\alpha_2)(\beta_1-\beta_2)(1-CX^2)\)</span>.
+Cancellation gives (2.5). Multiplying through by the polynomial denominators extends the identity to coincident parameters. Equation (2.4) is therefore the right side of (2.3).</p>
+<p>For identification with the normalized ideal generator, we also need the general consistency statement in (1.7): an irreducible unramified generic principal series has Langlands blocks the two unramified characters. Their rank-one pair factors are Tate's factors. Thus (1.7) gives the same product as the computed integral. This supplies the reverse divisibility that an evaluation of one integral alone would not establish. ∎</p>
+<p>For an unramified nongeneric representation of <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, the only possibility is a determinant character. Its Langlands blocks are also two unramified characters, with exponents differing by one, so (1.7) gives the same Satake product. There is no spherical Whittaker vector in that nongeneric representation; the integral calculation above was for generic representations.</p>
+<h2 id="3-a-character-pair-is-a-determinant-twist">3. A character pair is a determinant twist</h2>
+<p><strong>Proposition 3.1.</strong> For an infinite-dimensional irreducible <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(G_2\)">\(G_2\)</span> and any character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(s,\pi\times\chi)&amp;=L(s,\pi\otimes(\chi\circ\det)),\\
+\epsilon(s,\pi\times\chi,\psi)&amp;=\epsilon(s,\pi\otimes(\chi\circ\det),\psi).
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+L(s,\pi\times\chi)&amp;=L(s,\pi\otimes(\chi\circ\det)),\\
+\epsilon(s,\pi\times\chi,\psi)&amp;=\epsilon(s,\pi\otimes(\chi\circ\det),\psi).
+\end{aligned}
+\tag{3.1}
+\]</span>
+Here the standard factor on the right means the pair with the trivial character.</p>
+<p><strong>Proof.</strong> The map <span class="math" data-tex="\(W(g)\mapsto W_\chi(g)=\chi(\det g)W(g)\)">\(W(g)\mapsto W_\chi(g)=\chi(\det g)W(g)\)</span> is a bijection between the two Whittaker models. On <span class="math" data-tex="\(\operatorname{diag}(x,1)\)">\(\operatorname{diag}(x,1)\)</span>, it multiplies by <span class="math" data-tex="\(\chi(x)\)">\(\chi(x)\)</span>. Hence the entire families of integrals defining the two <span class="math" data-tex="\(L\)">\(L\)</span>-factors are identical, so their normalized ideal generators agree. The same argument applies to the duals.</p>
+<p>For the gamma factor, retain the sign in the functional equation. Let
+<span class="math" data-tex="\(w_2=\left(\begin{smallmatrix}0&amp;1\\1&amp;0\end{smallmatrix}\right)\)">\(w_2=\left(\begin{smallmatrix}0&amp;1\\1&amp;0\end{smallmatrix}\right)\)</span> and
+<span class="math" data-tex="\(\widetilde W(g)=W(w_2\,{}^tg^{-1})\)">\(\widetilde W(g)=W(w_2\,{}^tg^{-1})\)</span>. The rank-two pair equation in this convention is
+<span class="math math-display" data-tex="\[
+Z(1-s,\widetilde W,\chi^{-1})
+=\chi(-1)\gamma(s,\pi\times\chi,\psi)Z(s,W,\chi).
+\]">\[
+Z(1-s,\widetilde W,\chi^{-1})
+=\chi(-1)\gamma(s,\pi\times\chi,\psi)Z(s,W,\chi).
+\]</span>
+But <span class="math" data-tex="\(\widetilde{W_\chi}(g)=\chi(-1)\chi^{-1}(\det g)\widetilde W(g)\)">\(\widetilde{W_\chi}(g)=\chi(-1)\chi^{-1}(\det g)\widetilde W(g)\)</span>. Thus the standard dual integral for <span class="math" data-tex="\(W_\chi\)">\(W_\chi\)</span> is <span class="math" data-tex="\(\chi(-1)\)">\(\chi(-1)\)</span> times the left side. Since <span class="math" data-tex="\(\chi(-1)^2=1\)">\(\chi(-1)^2=1\)</span>, the standard equation has exactly the same gamma factor. Equations (1.4) and the two <span class="math" data-tex="\(L\)">\(L\)</span>-factor equalities give the epsilon-factor equality. ∎</p>
+<p>For a determinant character, the identities extend by (1.7) and Tate's twist identity on each of its two character blocks. This covers all irreducible representations of <span class="math" data-tex="\(G_2\)">\(G_2\)</span>.</p>
+<h2 id="4-character-twists-recover-the-weyl-action">4. Character twists recover the Weyl action</h2>
+<p>The Kirillov-model prerequisite says that every infinite-dimensional irreducible representation of <span class="math" data-tex="\(G_2\)">\(G_2\)</span> is generic and has a faithful model <span class="math" data-tex="\(V_\pi\)">\(V_\pi\)</span> of locally constant functions on <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>. It contains
+<span class="math" data-tex="\(S=C_c^\infty(F^\times)\)">\(S=C_c^\infty(F^\times)\)</span>. If its central character is <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, the upper triangular action is
+<span class="math math-display" data-tex="\[
+(\pi(\begin{pmatrix}a&amp;b\\0&amp;d\end{pmatrix})f)(x)
+=\omega(d)\psi(bx/d)f(ax/d).
+\tag{4.1}
+\]">\[
+(\pi(\begin{pmatrix}a&amp;b\\0&amp;d\end{pmatrix})f)(x)
+=\omega(d)\psi(bx/d)f(ax/d).
+\tag{4.1}
+\]</span>
+Each Kirillov function vanishes for <span class="math" data-tex="\(|x|\)">\(|x|\)</span> sufficiently large: a compact open subgroup of upper unipotents fixes its vector, and (4.1) forces this bound. Its Mellin transforms have the rational continuation supplied by local factor theory.</p>
+<p>Put <span class="math" data-tex="\(w=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)">\(w=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)</span>, so <span class="math" data-tex="\(w^2=-1\)">\(w^2=-1\)</span>. In this determinant-one convention the standard rank-two functional equation, applied after a character twist, reads
+<span class="math math-display" data-tex="\[
+\int_{F^\times}(\pi(w)f)(x)\omega(x)^{-1}\chi(x)^{-1}
+ |x|^{1/2-s}\,d^\times x
+=\gamma(s,\pi\times\chi,\psi)
+\int_{F^\times}f(x)\chi(x)|x|^{s-1/2}\,d^\times x.
+\tag{4.2}
+\]">\[
+\int_{F^\times}(\pi(w)f)(x)\omega(x)^{-1}\chi(x)^{-1}
+ |x|^{1/2-s}\,d^\times x
+=\gamma(s,\pi\times\chi,\psi)
+\int_{F^\times}f(x)\chi(x)|x|^{s-1/2}\,d^\times x.
+\tag{4.2}
+\]</span>
+This is [Jacquet–Langlands 1970, Theorem 2.18 and equation (2.18.1)], translated through (3.1). The symmetric Weyl convention of Section 3 has its explicit <span class="math" data-tex="\(\chi(-1)\)">\(\chi(-1)\)</span> sign instead; both give (4.2) after the indicated change of representative.</p>
+<p><strong>Lemma 4.1 (Mellin inversion in the needed form).</strong> A locally constant Kirillov function <span class="math" data-tex="\(g\)">\(g\)</span>, bounded in support toward <span class="math" data-tex="\(|x|=\infty\)">\(|x|=\infty\)</span> and with rational Mellin transforms, is determined by those transforms against all characters.</p>
+<p><strong>Proof.</strong> Decompose <span class="math" data-tex="\(x=\varpi^r u\)">\(x=\varpi^r u\)</span>, with <span class="math" data-tex="\(u\in\mathcal O^\times\)">\(u\in\mathcal O^\times\)</span>, and normalize unit volume to one. For each character <span class="math" data-tex="\(\eta\)">\(\eta\)</span> of <span class="math" data-tex="\(\mathcal O^\times\)">\(\mathcal O^\times\)</span>, its Mellin transform is a Laurent series
+<span class="math math-display" data-tex="\[
+\sum_{r\ge R}
+\left(\int_{\mathcal O^\times}g(\varpi^r u)\eta(u)\,d^\times u\right)z^r.
+\tag{4.3}
+\]">\[
+\sum_{r\ge R}
+\left(\int_{\mathcal O^\times}g(\varpi^r u)\eta(u)\,d^\times u\right)z^r.
+\tag{4.3}
+\]</span>
+In its domain of convergence near <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, this is the Laurent expansion of the rational continuation; the coefficients are unique. Allowing arbitrary unramified twists varies <span class="math" data-tex="\(z\)">\(z\)</span>, so the meromorphic transform determines each coefficient. For a fixed <span class="math" data-tex="\(r\)">\(r\)</span>, the function of <span class="math" data-tex="\(u\)">\(u\)</span> factors through a finite quotient of <span class="math" data-tex="\(\mathcal O^\times\)">\(\mathcal O^\times\)</span>. Finite Fourier inversion over its characters reconstructs it from all the coefficients in (4.3). Doing this for each <span class="math" data-tex="\(r\)">\(r\)</span> determines <span class="math" data-tex="\(g\)">\(g\)</span>. ∎</p>
+<p><strong>Theorem 4.2 (rank-two local converse).</strong> Suppose <span class="math" data-tex="\(\pi_1,\pi_2\)">\(\pi_1,\pi_2\)</span> are infinite-dimensional irreducible representations of <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, have the same central character, and satisfy
+<span class="math math-display" data-tex="\[
+\gamma(s,\pi_1\times\chi,\psi)
+=\gamma(s,\pi_2\times\chi,\psi)
+\quad\text{for every character }\chi.
+\tag{4.4}
+\]">\[
+\gamma(s,\pi_1\times\chi,\psi)
+=\gamma(s,\pi_2\times\chi,\psi)
+\quad\text{for every character }\chi.
+\tag{4.4}
+\]</span>
+Then <span class="math" data-tex="\(\pi_1\simeq\pi_2\)">\(\pi_1\simeq\pi_2\)</span>.</p>
+<p><strong>Proof.</strong> Realize both in their Kirillov models with the same <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Their copies of <span class="math" data-tex="\(S\)">\(S\)</span> have the same upper triangular action by (4.1). For <span class="math" data-tex="\(f\in S\)">\(f\in S\)</span>, the right sides of (4.2) agree. Mellin inversion therefore shows
+<span class="math" data-tex="\(\pi_1(w)f=\pi_2(w)f\)">\(\pi_1(w)f=\pi_2(w)f\)</span>, as actual functions on <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>.</p>
+<p>We check that this equality controls the whole model. In either model put <span class="math" data-tex="\(U=S+\pi(w)S\)">\(U=S+\pi(w)S\)</span>. It is stable under diagonal matrices and the center, by (4.1) and the relation between a diagonal matrix and <span class="math" data-tex="\(w\)">\(w\)</span>. If <span class="math" data-tex="\(g=\pi(w)f\)">\(g=\pi(w)f\)</span>, then
+<span class="math math-display" data-tex="\[
+(\pi(n(b))-1)g(x)=(\psi(bx)-1)g(x)
+\]">\[
+(\pi(n(b))-1)g(x)=(\psi(bx)-1)g(x)
+\]</span>
+belongs to <span class="math" data-tex="\(S\)">\(S\)</span>: it vanishes near zero because <span class="math" data-tex="\(\psi(bx)=1\)">\(\psi(bx)=1\)</span> there, and it vanishes for large <span class="math" data-tex="\(|x|\)">\(|x|\)</span> because <span class="math" data-tex="\(g\)">\(g\)</span> does. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is stable under the upper unipotents as well. It is stable under <span class="math" data-tex="\(w\)">\(w\)</span>, since <span class="math" data-tex="\(w^2=-1\)">\(w^2=-1\)</span> acts by the scalar <span class="math" data-tex="\(\omega(-1)\)">\(\omega(-1)\)</span>. Upper triangular matrices and <span class="math" data-tex="\(w\)">\(w\)</span> generate <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, so irreducibility implies <span class="math" data-tex="\(U=V_\pi\)">\(U=V_\pi\)</span>.</p>
+<p>The two spaces <span class="math" data-tex="\(S+\pi_i(w)S\)">\(S+\pi_i(w)S\)</span> coincide. The upper triangular actions on this common function space agree. The Weyl actions agree on <span class="math" data-tex="\(S\)">\(S\)</span>, and on their common <span class="math" data-tex="\(\pi(w)S\)">\(\pi(w)S\)</span> they agree because both square to <span class="math" data-tex="\(\omega(-1)\)">\(\omega(-1)\)</span>. Hence the identity on the common function space intertwines every element of <span class="math" data-tex="\(G_2\)">\(G_2\)</span>. ∎</p>
+<p>This proof explains the central-character hypothesis: it fixes the common upper triangular action and the square of the Weyl operator. A later bounded-twist argument will also recover that character from suitable twist data.</p>
+<h2 id="5-steinberg-times-steinberg-a-parameter-and-an-integral">5. Steinberg times Steinberg: a parameter and an integral</h2>
+<p>Use the centered special parameter <span class="math" data-tex="\(S_2\)">\(S_2\)</span>, with basis <span class="math" data-tex="\(e_-,e_+\)">\(e_-,e_+\)</span>, Weil characters <span class="math" data-tex="\(\lVert\cdot\rVert^{-1/2},\lVert\cdot\rVert^{1/2}\)">\(\lVert\cdot\rVert^{-1/2},\lVert\cdot\rVert^{1/2}\)</span>, and <span class="math" data-tex="\(Ne_-=e_+\)">\(Ne_-=e_+\)</span>, <span class="math" data-tex="\(Ne_+=0\)">\(Ne_+=0\)</span>. On its tensor square, <span class="math" data-tex="\(N\)">\(N\)</span> is <span class="math" data-tex="\(N\otimes1+1\otimes N\)">\(N\otimes1+1\otimes N\)</span>. The three vectors
+<span class="math math-display" data-tex="\[
+a=e_-\otimes e_-,\quad
+b=e_+\otimes e_-+e_-\otimes e_+,\quad
+c=2e_+\otimes e_+
+\]">\[
+a=e_-\otimes e_-,\quad
+b=e_+\otimes e_-+e_-\otimes e_+,\quad
+c=2e_+\otimes e_+
+\]</span>
+have exponents <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span> and satisfy <span class="math" data-tex="\(Na=b,\ Nb=c,\ Nc=0\)">\(Na=b,\ Nb=c,\ Nc=0\)</span>. The remaining vector
+<span class="math" data-tex="\(d=e_+\otimes e_--e_-\otimes e_+\)">\(d=e_+\otimes e_--e_-\otimes e_+\)</span> has exponent zero and is killed by <span class="math" data-tex="\(N\)">\(N\)</span>. Thus
+<span class="math math-display" data-tex="\[
+S_2\otimes S_2\simeq S_3\oplus\mathbf1,\qquad
+L(s,S_2\otimes S_2)=\frac1{(1-q^{-1}X)(1-X)}.
+\tag{5.1}
+\]">\[
+S_2\otimes S_2\simeq S_3\oplus\mathbf1,\qquad
+L(s,S_2\otimes S_2)=\frac1{(1-q^{-1}X)(1-X)}.
+\tag{5.1}
+\]</span>
+Its conductor is two, and its epsilon factor for conductor-zero <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is <span class="math" data-tex="\(q^{1-2s}\)">\(q^{1-2s}\)</span>, from the two-dimensional monodromy quotient of <span class="math" data-tex="\(S_3\)">\(S_3\)</span>.</p>
+<p>We now identify the analytic factor independently. Multiplicativity of gamma factors at the two generic Steinberg constituents gives
+<span class="math math-display" data-tex="\[
+\gamma(s,\mathrm{St}_2\times\mathrm{St}_2,\psi)
+=\gamma(s,|\cdot|^{-1},\psi)\gamma(s,1,\psi)^2
+ \gamma(s,|\cdot|,\psi)
+=qX^2\frac{(1-X)(1-q^{-1}X)}
+ {(1-q^{s-1})(1-q^{s-2})}.
+\tag{5.2}
+\]">\[
+\gamma(s,\mathrm{St}_2\times\mathrm{St}_2,\psi)
+=\gamma(s,|\cdot|^{-1},\psi)\gamma(s,1,\psi)^2
+ \gamma(s,|\cdot|,\psi)
+=qX^2\frac{(1-X)(1-q^{-1}X)}
+ {(1-q^{s-1})(1-q^{s-2})}.
+\tag{5.2}
+\]</span>
+The last equality follows by substituting Tate's unramified factors and cancelling one factor at each of <span class="math" data-tex="\(X=q^{-1}\)">\(X=q^{-1}\)</span> and <span class="math" data-tex="\(X=1\)">\(X=1\)</span>.</p>
+<p>Both Steinberg representations are tempered, by the square-integrability proof in the classification lesson. For any tempered pair and its dual, write the factor equation as
+<span class="math" data-tex="\(\gamma=\epsilon P(q^{-s})/P^\vee(q^{s-1})\)">\(\gamma=\epsilon P(q^{-s})/P^\vee(q^{s-1})\)</span>. All roots of <span class="math" data-tex="\(P(q^{-s})\)">\(P(q^{-s})\)</span> have <span class="math" data-tex="\(\operatorname{Re}(s)\le0\)">\(\operatorname{Re}(s)\le0\)</span>, by tempered convergence. In that half-plane <span class="math" data-tex="\(P^\vee(q^{s-1})\)">\(P^\vee(q^{s-1})\)</span> is nonzero, since its argument represents <span class="math" data-tex="\(L(1-s)\)">\(L(1-s)\)</span> in <span class="math" data-tex="\(\operatorname{Re}(1-s)\ge1\)">\(\operatorname{Re}(1-s)\ge1\)</span>. The epsilon monomial is also nonzero. Thus the zeros of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> in <span class="math" data-tex="\(\operatorname{Re}(s)\le0\)">\(\operatorname{Re}(s)\le0\)</span>, with multiplicity, are exactly the roots of <span class="math" data-tex="\(P(q^{-s})\)">\(P(q^{-s})\)</span>. They determine <span class="math" data-tex="\(P\)">\(P\)</span>, whose constant coefficient is one.</p>
+<p>Equation (5.2) has exactly the roots <span class="math" data-tex="\(X=1,q\)">\(X=1,q\)</span> in that half-plane. Hence
+<span class="math math-display" data-tex="\[
+L(s,\mathrm{St}_2\times\mathrm{St}_2)
+=\frac1{(1-X)(1-q^{-1}X)},\qquad
+\epsilon(s,\mathrm{St}_2\times\mathrm{St}_2,\psi)=q^{1-2s}.
+\tag{5.3}
+\]">\[
+L(s,\mathrm{St}_2\times\mathrm{St}_2)
+=\frac1{(1-X)(1-q^{-1}X)},\qquad
+\epsilon(s,\mathrm{St}_2\times\mathrm{St}_2,\psi)=q^{1-2s}.
+\tag{5.3}
+\]</span>
+This proves agreement with the parameter calculation, including its conductor two and root number one. We can also realize its precise denominator in a single integral.</p>
+<p>In the boundary model <span class="math" data-tex="\(C^\infty(\mathbb P^1(F))/\mathbb C\)">\(C^\infty(\mathbb P^1(F))/\mathbb C\)</span>, use the open coordinate <span class="math" data-tex="\(wn(x)\)">\(wn(x)\)</span>, and let <span class="math" data-tex="\(v\)">\(v\)</span> be the class of <span class="math" data-tex="\(1_{\mathcal O}(x)\)">\(1_{\mathcal O}(x)\)</span>. For a boundary function <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, the integral
+<span class="math math-display" data-tex="\[
+\Lambda(\phi)=\int_F\phi(x)\psi(-x)\,dx
+\]">\[
+\Lambda(\phi)=\int_F\phi(x)\psi(-x)\,dx
+\]</span>
+means the stabilized integral over increasing compact balls. It stabilizes because <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is constant outside a ball, and those constant tails have zero integral against <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. It vanishes on constants, is a <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-Whittaker functional, and satisfies <span class="math" data-tex="\(\Lambda(v)=1\)">\(\Lambda(v)=1\)</span>. Its Whittaker function is Iwahori-fixed. Directly applying the fractional linear transformations gives
+<span class="math math-display" data-tex="\[
+W(a_r)=
+\begin{cases}q^{-r}&amp;r\ge0,\\0&amp;r&lt;0,\end{cases}
+\qquad
+W(a_r w)=
+\begin{cases}-q^{-r-1}&amp;r\ge-1,\\0&amp;r&lt;-1.\end{cases}
+\tag{5.4}
+\]">\[
+W(a_r)=
+\begin{cases}q^{-r}&amp;r\ge0,\\0&amp;r&lt;0,\end{cases}
+\qquad
+W(a_r w)=
+\begin{cases}-q^{-r-1}&amp;r\ge-1,\\0&amp;r&lt;-1.\end{cases}
+\tag{5.4}
+\]</span>
+For example, <span class="math" data-tex="\(a_r\)">\(a_r\)</span> sends the boundary function to <span class="math" data-tex="\(1_{\varpi^r\mathcal O}\)">\(1_{\varpi^r\mathcal O}\)</span>; <span class="math" data-tex="\(a_rw\)">\(a_rw\)</span> sends it, modulo a constant, to <span class="math" data-tex="\(-1_{\varpi^{r+1}\mathcal O}\)">\(-1_{\varpi^{r+1}\mathcal O}\)</span>. This proves both formulas by additive integration. The <span class="math" data-tex="\(\psi^{-1}\)">\(\psi^{-1}\)</span>-Whittaker function <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> has the same values.</p>
+<p>The <span class="math" data-tex="\(q+1\)">\(q+1\)</span> right Iwahori cosets in <span class="math" data-tex="\(K\)">\(K\)</span> have representatives <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(n(u)w\)">\(n(u)w\)</span>, <span class="math" data-tex="\(u\in\mathcal O/\varpi\mathcal O\)">\(u\in\mathcal O/\varpi\mathcal O\)</span>. Their opposite Whittaker phases cancel in <span class="math" data-tex="\(WW&#x27;\)">\(WW&#x27;\)</span>. Consequently the <span class="math" data-tex="\(K\)">\(K\)</span>-average at <span class="math" data-tex="\(a_r\)">\(a_r\)</span> is <span class="math" data-tex="\(q^{-2r}/q\)">\(q^{-2r}/q\)</span> for <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>, <span class="math" data-tex="\(q/(q+1)\)">\(q/(q+1)\)</span> for <span class="math" data-tex="\(r=-1\)">\(r=-1\)</span>, and zero otherwise. In (1.2), <span class="math" data-tex="\(\Phi=1_{\mathcal O^2}\)">\(\Phi=1_{\mathcal O^2}\)</span> imposes only that the central exponent <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span>; the Steinberg central characters are trivial. Iwasawa integration therefore gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z(s,W,W&#x27;,1_{\mathcal O^2})
+&amp;=\frac1{1-X^2}
+ \left(\frac{X^{-1}}{q+1}+\frac{q^{-1}}{1-q^{-1}X}\right)\\
+&amp;=\frac{X^{-1}}{(q+1)(1-X)(1-q^{-1}X)}.
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+Z(s,W,W&#x27;,1_{\mathcal O^2})
+&amp;=\frac1{1-X^2}
+ \left(\frac{X^{-1}}{q+1}+\frac{q^{-1}}{1-q^{-1}X}\right)\\
+&amp;=\frac{X^{-1}}{(q+1)(1-X)(1-q^{-1}X)}.
+\end{aligned}
+\tag{5.5}
+\]</span>
+Thus this integral is (5.1) times a unit of <span class="math" data-tex="\(\mathbb C[X,X^{-1}]\)">\(\mathbb C[X,X^{-1}]\)</span>. Its factor at <span class="math" data-tex="\(1-X\)">\(1-X\)</span> would be missed by treating the two Whittaker functions as spherical; Steinberg has an Iwahori-fixed vector and no <span class="math" data-tex="\(K\)">\(K\)</span>-fixed vector.</p>
+<h2 id="6-higher-rank-converse-theorems">6. Higher-rank converse theorems</h2>
+<p>The following results are statements, not consequences of the rank-two proof.</p>
+<p><strong>Theorem 6.1 (Henniart, stated).</strong> Two irreducible generic representations of <span class="math" data-tex="\(G_n\)">\(G_n\)</span>, with the same central character, are isomorphic if their gamma factors agree after twisting by every irreducible generic representation of every <span class="math" data-tex="\(G_r\)">\(G_r\)</span>, <span class="math" data-tex="\(1\le r\le n-1\)">\(1\le r\le n-1\)</span>.</p>
+<p><strong>Theorem 6.2 (Jacquet–Liu and Chai, stated).</strong> The same conclusion holds with <span class="math" data-tex="\(1\le r\le\lfloor n/2\rfloor\)">\(1\le r\le\lfloor n/2\rfloor\)</span>.</p>
+<p>The first is the <span class="math" data-tex="\(J(n,n-1)\)">\(J(n,n-1)\)</span> theorem recalled in [Jacquet–Liu 2017, Introduction], referring to [Henniart 1993]. The second is [Jacquet–Liu 2017, Theorem 1.3] over nonarchimedean local fields; [Chai 2016, Theorem 1.1] gives an independent proof over p-adic fields. The hypotheses concern generic representations. Arbitrary nongeneric Langlands quotients require their segment data as well; these converse theorems do not state that every irreducible representation is determined by the same generic integral argument.</p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<p><strong>Exercise 7.1 (easy).</strong> If <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has unramified parameters <span class="math" data-tex="\(\alpha_1,\alpha_2\)">\(\alpha_1,\alpha_2\)</span> and <span class="math" data-tex="\(\chi(\varpi)=\beta\)">\(\chi(\varpi)=\beta\)</span>, calculate the twisted factor and the first three coefficients of its power series.</p>
+<p><strong>Solution.</strong> Proposition 3.1 and (2.2) give <span class="math" data-tex="\(((1-\alpha_1\beta X)(1-\alpha_2\beta X))^{-1}\)">\(((1-\alpha_1\beta X)(1-\alpha_2\beta X))^{-1}\)</span>. Its constant coefficient is one, its <span class="math" data-tex="\(X\)">\(X\)</span>-coefficient is <span class="math" data-tex="\((\alpha_1+\alpha_2)\beta\)">\((\alpha_1+\alpha_2)\beta\)</span>, and its <span class="math" data-tex="\(X^2\)">\(X^2\)</span>-coefficient is <span class="math" data-tex="\((\alpha_1^2+\alpha_1\alpha_2+\alpha_2^2)\beta^2\)">\((\alpha_1^2+\alpha_1\alpha_2+\alpha_2^2)\beta^2\)</span>. These are the three spherical Whittaker coefficients after their modular-character factors have been cancelled in the zeta integral.</p>
+<p><strong>Exercise 7.2 (medium).</strong> Calculate <span class="math" data-tex="\(L(s,\mathrm{St}_2\times\mathrm{St}_2)\)">\(L(s,\mathrm{St}_2\times\mathrm{St}_2)\)</span> on the parameter side, and compare it with a local integral.</p>
+<p><strong>Solution.</strong> The four explicit tensor vectors in Section 5 split the parameter as <span class="math" data-tex="\(S_3\oplus\mathbf1\)">\(S_3\oplus\mathbf1\)</span>. The two vectors in its monodromy kernel have Frobenius eigenvalues <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span> and one, respectively. This gives <span class="math" data-tex="\(((1-q^{-1}X)(1-X))^{-1}\)">\(((1-q^{-1}X)(1-X))^{-1}\)</span>. The integral (5.5), with opposite Iwahori Whittaker functions and <span class="math" data-tex="\(1_{\mathcal O^2}\)">\(1_{\mathcal O^2}\)</span>, is this expression times <span class="math" data-tex="\(X^{-1}/(q+1)\)">\(X^{-1}/(q+1)\)</span>. Multiplicativity gives (5.2), and tempered convergence identifies its left-half-plane zeros with the roots of the inverse <span class="math" data-tex="\(L\)">\(L\)</span>-polynomial, proving the same factor analytically. The exponent shift is one in the <span class="math" data-tex="\(S_3\)">\(S_3\)</span> block; there is no shift in the trivial block. The two epsilon factors are both <span class="math" data-tex="\(q^{1-2s}\)">\(q^{1-2s}\)</span>.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Derive the rank-two converse theorem from the Kirillov model and its functional equation.</p>
+<p><strong>Solution.</strong> For every <span class="math" data-tex="\(f\in C_c^\infty(F^\times)\)">\(f\in C_c^\infty(F^\times)\)</span>, equality of gamma factors makes the right sides of (4.2) equal, hence all Mellin transforms of the two Weyl images equal. Laurent coefficient uniqueness and finite Fourier inversion give equality of the Weyl images as functions. The upper triangular actions agree because the central characters agree. The subspace <span class="math" data-tex="\(S+\pi(w)S\)">\(S+\pi(w)S\)</span> is stable under that subgroup and <span class="math" data-tex="\(w\)">\(w\)</span>, using <span class="math" data-tex="\((\psi(bx)-1)\pi(w)f\in S\)">\((\psi(bx)-1)\pi(w)f\in S\)</span> and <span class="math" data-tex="\(w^2=-1\)">\(w^2=-1\)</span>, so is the full irreducible model. The common actions on this space give the required isomorphism. This reproduces every step of Theorem 4.2.</p>
+<p><strong>Exercise 7.4 (hard).</strong> Give explicit integers <span class="math" data-tex="\(c,c&#x27;\)">\(c,c&#x27;\)</span> for a bounded-twist converse: among infinite-dimensional irreducible representations with <span class="math" data-tex="\(a(\pi)\le c&#x27;\)">\(a(\pi)\le c&#x27;\)</span>, show that the gamma factors for all characters of conductor at most <span class="math" data-tex="\(c\)">\(c\)</span> determine <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The central character should also be recovered from those factors.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(c&#x27;\ge0\)">\(c&#x27;\ge0\)</span> be any prescribed integer. A valid, nonoptimal choice is
+<span class="math math-display" data-tex="\[
+c=2c&#x27;+4.
+\tag{7.1}
+\]">\[
+c=2c&#x27;+4.
+\tag{7.1}
+\]</span>
+This solution uses the existence and pair-factor compatibility of the correspondence theorem stated in <em>The statement of the local Langlands correspondence</em>, and the precise stability theorem [Deligne–Henniart 1981, Theorem 4.6 and Lemma 4.7]. The converse theorem of Section 4 was proved independently of these inputs.</p>
+<p>Let <span class="math" data-tex="\((r_i,N_i)\)">\((r_i,N_i)\)</span> be the two parameters, <span class="math" data-tex="\(a(r_i,N_i)\le c&#x27;\)">\(a(r_i,N_i)\le c&#x27;\)</span>. Their Weil parts are semisimple. Every irreducible ramified constituent of upper break <span class="math" data-tex="\(b\)">\(b\)</span> has conductor <span class="math" data-tex="\(\dim(\rho)(1+b)\)">\(\dim(\rho)(1+b)\)</span>; unramified constituents have break zero for this estimate. Thus the largest break of either <span class="math" data-tex="\(r_i\)">\(r_i\)</span> is at most <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span>. Also <span class="math" data-tex="\(a(\det r_i)\le a(r_i)\le c&#x27;\)">\(a(\det r_i)\le a(r_i)\le c&#x27;\)</span>: in the Artin conductor formula, the codimension of invariants of a determinant is at most that of the original representation for each ramification group, and the Swan integral preserves this inequality.</p>
+<p>The cited stability theorem has the following precise consequence. If a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has conductor <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span> and the largest break of a virtual Weil representation <span class="math" data-tex="\(V\)">\(V\)</span> of dimension zero is <span class="math" data-tex="\(&lt;(m-1)/2\)">\(&lt;(m-1)/2\)</span>, then
+<span class="math math-display" data-tex="\[
+\epsilon(s,V\otimes\chi,\psi)=\det V(c_\chi),
+\tag{7.2}
+\]">\[
+\epsilon(s,V\otimes\chi,\psi)=\det V(c_\chi),
+\tag{7.2}
+\]</span>
+where <span class="math" data-tex="\(v(c_\chi)=m+n(\psi)\)">\(v(c_\chi)=m+n(\psi)\)</span> and
+<span class="math" data-tex="\(\chi(1+y)=\psi(c_\chi^{-1}y)\)">\(\chi(1+y)=\psi(c_\chi^{-1}y)\)</span> for <span class="math" data-tex="\(v(y)&gt;(m-1)/2\)">\(v(y)&gt;(m-1)/2\)</span>. The determinant evaluation includes its Weil-character interpretation through geometric reciprocity. For <span class="math" data-tex="\(m&gt;c&#x27;+1\)">\(m&gt;c&#x27;+1\)</span>, both <span class="math" data-tex="\(r_i\otimes\chi\)">\(r_i\otimes\chi\)</span> have zero inertia invariants: on a ramification group beyond all the breaks of <span class="math" data-tex="\(r_i\)">\(r_i\)</span>, the nontrivial character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> acts by a scalar. Therefore both their <span class="math" data-tex="\(L\)">\(L\)</span>-factors, and those of their duals, equal one; their monodromy determinant corrections also equal one. Equations (1.4) and (7.2) then give
+<span class="math math-display" data-tex="\[
+\frac{\gamma(s,\pi_1\times\chi,\psi)}
+{\gamma(s,\pi_2\times\chi,\psi)}
+=\eta(c_\chi),\qquad
+\eta=\det r_1/\det r_2=\omega_{\pi_1}/\omega_{\pi_2}.
+\tag{7.3}
+\]">\[
+\frac{\gamma(s,\pi_1\times\chi,\psi)}
+{\gamma(s,\pi_2\times\chi,\psi)}
+=\eta(c_\chi),\qquad
+\eta=\det r_1/\det r_2=\omega_{\pi_1}/\omega_{\pi_2}.
+\tag{7.3}
+\]</span></p>
+<p>Use (7.3) first at <span class="math" data-tex="\(m=c\)">\(m=c\)</span> and then at <span class="math" data-tex="\(m=c-1\)">\(m=c-1\)</span>, both covered by the assumed twist data. Its strict break inequality holds at both levels. For every <span class="math" data-tex="\(u\in\mathcal O^\times\)">\(u\in\mathcal O^\times\)</span>, one can choose <span class="math" data-tex="\(\chi\)">\(\chi\)</span> with <span class="math" data-tex="\(c_\chi=\varpi^{m+n(\psi)}u\)">\(c_\chi=\varpi^{m+n(\psi)}u\)</span> in the determinant evaluation. Here is the required existence check. Set <span class="math" data-tex="\(h=\lceil m/2\rceil\)">\(h=\lceil m/2\rceil\)</span>, <span class="math" data-tex="\(t=(\varpi^{m+n(\psi)}u)^{-1}\)">\(t=(\varpi^{m+n(\psi)}u)^{-1}\)</span>, and prescribe
+<span class="math" data-tex="\(\chi(1+y)=\psi(ty)\)">\(\chi(1+y)=\psi(ty)\)</span> on <span class="math" data-tex="\(1+\varpi^h\mathcal O\)">\(1+\varpi^h\mathcal O\)</span>. It is multiplicative because <span class="math" data-tex="\(2h\ge m\)">\(2h\ge m\)</span>, so the product error <span class="math" data-tex="\(tyz\)">\(tyz\)</span> lies in the additive-character kernel. It is nontrivial on <span class="math" data-tex="\(1+\varpi^{m-1}\mathcal O\)">\(1+\varpi^{m-1}\mathcal O\)</span> and trivial on <span class="math" data-tex="\(1+\varpi^m\mathcal O\)">\(1+\varpi^m\mathcal O\)</span>. A character of this subgroup of the finite abelian unit quotient extends to the whole quotient; extend further to <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> by an arbitrary value at <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>. Its conductor is exactly <span class="math" data-tex="\(m\)">\(m\)</span>, and its prescribed linearization supplies this <span class="math" data-tex="\(c_\chi\)">\(c_\chi\)</span>. The linearization determines <span class="math" data-tex="\(c_\chi\)">\(c_\chi\)</span> modulo multiplication by <span class="math" data-tex="\(1+\mathfrak p^{\lfloor m/2\rfloor}\)">\(1+\mathfrak p^{\lfloor m/2\rfloor}\)</span>: the annihilator of <span class="math" data-tex="\(\mathfrak p^h\)">\(\mathfrak p^h\)</span> under <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is <span class="math" data-tex="\(\mathfrak p^{-n(\psi)-h}\)">\(\mathfrak p^{-n(\psi)-h}\)</span>, so replacing <span class="math" data-tex="\(c_\chi\)">\(c_\chi\)</span> by <span class="math" data-tex="\(c_\chi u\)">\(c_\chi u\)</span> preserves the restriction exactly when <span class="math" data-tex="\(v(u-1)\ge m-h=\lfloor m/2\rfloor\)">\(v(u-1)\ge m-h=\lfloor m/2\rfloor\)</span>. This ambiguity is invisible to <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, since <span class="math" data-tex="\(a(\eta)\le c&#x27;\)">\(a(\eta)\le c&#x27;\)</span> and <span class="math" data-tex="\(\lfloor m/2\rfloor\ge c&#x27;+1\)">\(\lfloor m/2\rfloor\ge c&#x27;+1\)</span> at both chosen levels.</p>
+<p>Equality of the bounded twist factors now gives
+<span class="math" data-tex="\(\eta(\varpi^{m+n(\psi)}u)=1\)">\(\eta(\varpi^{m+n(\psi)}u)=1\)</span> for every unit <span class="math" data-tex="\(u\)">\(u\)</span>, at two consecutive values of <span class="math" data-tex="\(m\)">\(m\)</span>. Taking <span class="math" data-tex="\(u=1\)">\(u=1\)</span> and dividing the two equalities gives <span class="math" data-tex="\(\eta(\varpi)=1\)">\(\eta(\varpi)=1\)</span>; dividing the equality for general <span class="math" data-tex="\(u\)">\(u\)</span> by that for <span class="math" data-tex="\(u=1\)">\(u=1\)</span> gives <span class="math" data-tex="\(\eta(u)=1\)">\(\eta(u)=1\)</span>. Thus the central characters agree.</p>
+<p>For any remaining character of conductor <span class="math" data-tex="\(m&gt;c\)">\(m&gt;c\)</span>, the same stability formula applies, and its ratio is now one because <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span>. Together with the assumed factors at <span class="math" data-tex="\(m\le c\)">\(m\le c\)</span>, this gives all character-twist factors. Theorem 4.2 proves <span class="math" data-tex="\(\pi_1\simeq\pi_2\)">\(\pi_1\simeq\pi_2\)</span>. This proves (7.1), including central-character recovery. The hypothesis supplies functions of <span class="math" data-tex="\(s\)">\(s\)</span>, and all unramified values of the twist characters, rather than only finitely many numerical values of gamma factors. ∎</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The general Rankin–Selberg rationality, ideal, functional equation, multiplicativity and Langlands-quotient consistency theorems are inputs from [Getz–Hahn 2022, §§11.5 and 11.8] and [Jacquet–Piatetski-Shapiro–Shalika 1983]. The Hecke eigenvalue convention used in the spherical recurrence is [Getz–Hahn 2022, Proposition 7.6.8]. The rank-two Kirillov model and its functional equation are the assigned prerequisites, with [Jacquet–Langlands 1970, §2, Theorem 2.18 and equation (2.18.1)] as locators. Mellin inversion and the consequent converse argument were proved here.</p>
+<p>The two higher-rank converse theorems are only stated, with their exact locators in Section 6. The bounded-twist exercise uses the correspondence existence and pair compatibility theorem [Wedhorn 2000, (1.2.2)], which is stated in the next lesson and proved in [Scholze 2013, Theorem 1.2]. The Steinberg pair calculation uses only the stated general gamma multiplicativity and tempered convergence, together with our explicit computations. The stability input for the explicit bound is [Deligne–Henniart 1981, Theorem 4.6 and Lemma 4.7], whose strict upper-break inequality was displayed in (7.2). This is stronger information than a qualitative sufficiently-ramified assertion.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Getz–Hahn 2022] Jayce R. Getz and Heekyoung Hahn, <em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em>, draft of 22 April 2022, §§7.6 and 11.2–11.8; published as Graduate Texts in Mathematics 300, Springer, 2024. The <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf">author version</a> uses the numbering cited here.</li>
+<li>[Jacquet–Langlands 1970] Hervé Jacquet and Robert P. Langlands, <a href="https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf"><em>Automorphic Forms on GL(2)</em></a>, Lecture Notes in Mathematics 114, Springer, 1970, §2. The IAS re-typeset edition retains its theorem numbering.</li>
+<li>[Jacquet–Piatetski-Shapiro–Shalika 1983] Hervé Jacquet, Ilya I. Piatetski-Shapiro and Joseph A. Shalika, “<a href="https://www.math.columbia.edu/~hj/Rankin%20Selberg%20convolutions.pdf">Rankin–Selberg convolutions</a>,” <em>American Journal of Mathematics</em> 105 (1983), 367–464. The general integral theory is cited through the precise exposition in [Getz–Hahn 2022].</li>
+<li>[Henniart 1993] Guy Henniart, “<a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0113/LOG_0039.pdf">Caractérisation de la correspondance de Langlands locale par les facteurs <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> de paires</a>,” <em>Inventiones mathematicae</em> 113 (1993), 339–350. The <span class="math" data-tex="\(J(n,n-1)\)">\(J(n,n-1)\)</span> statement is recalled in [Jacquet–Liu 2017, Introduction].</li>
+<li>[Jacquet–Liu 2017] Hervé Jacquet and Baiying Liu, <em>On the local converse theorem for p-adic GL_n</em>, version of 14 March 2017, <a href="https://arxiv.org/abs/1601.03656">arXiv:1601.03656</a>, Theorem 1.3; published in <em>American Journal of Mathematics</em> 140 (2018), 1399–1422.</li>
+<li>[Chai 2016] Jingsong Chai, <em>Bessel functions and local converse conjecture of Jacquet</em>, version of 29 November 2016, <a href="https://arxiv.org/abs/1601.05450">arXiv:1601.05450</a>, Theorem 1.1.</li>
+<li>[Deligne–Henniart 1981] Pierre Deligne and Guy Henniart, “<a href="https://publications.ias.edu/sites/default/files/Number43.pdf">Sur la variation, par torsion, des constantes locales d'équations fonctionnelles de fonctions L</a>,” <em>Inventiones mathematicae</em> 64 (1981), 89–118, §0.6, Theorem 4.6 and Lemma 4.7.</li>
+<li>[Wedhorn 2000] Torsten Wedhorn, <a href="https://arxiv.org/abs/math/0011210v2"><em>The local Langlands correspondence for GL(n) over p-adic fields</em></a>, lectures at the School on Automorphic Forms on GL(n), ICTP Trieste, 2000, §1.2.</li>
+<li>[Scholze 2013] Peter Scholze, <a href="https://arxiv.org/abs/1010.1540v1"><em>The Local Langlands Correspondence for GL_n over p-adic fields</em></a>, <em>Inventiones mathematicae</em> 192 (2013), 663–715, Theorem 1.2.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-LLC-02.html">← Irreducible representations of general linear groups over a local field</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-LLC-04.html">The statement of the local Langlands correspondence →</a></span></nav>
+<p class="small source-link"><a href="src/LG-LLC-03.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-LLC">Repository</a></nav>
+</footer>
+</body>
+</html>

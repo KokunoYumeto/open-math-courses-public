@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Phase space and generating families</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="phase-space-and-generating-families">Phase space and generating families</h1>
+<p>An oscillatory kernel carries information about position and frequency together. Its phase determines a geometric relation between those variables; changing a phase can leave that relation unchanged. This lesson develops the geometry needed to recognize the relation, to find useful phase coordinates, and to tell a clean family from a singular one.</p>
+<p>We assume differential forms, smooth flows, the inverse and implicit function theorems, and finite-dimensional linear algebra. <a href="stationary-phase-and-critical-manifolds.html">Stationary phase and critical manifolds</a> explains why normal rank and signature matter analytically. Basic references are [Guillemin–Sternberg] and [Hörmander III]. All the local arguments used here are proved below.</p>
+<h2 id="signs-fixed-by-the-cotangent-pairing"><span id="1-signs-fixed-by-the-cotangent-pairing"></span><span id="section-1"></span>1. Signs fixed by the cotangent pairing</h2>
+<p>On a cotangent bundle <span class="math" data-tex="\(T^*X\)">\(T^*X\)</span>, the canonical one-form is</p>
+<span class="math math-display" data-tex="\[
+\alpha_{(x,\xi)}(v)=\xi(d\pi(v)).
+\]">\[
+\alpha_{(x,\xi)}(v)=\xi(d\pi(v)).
+\]</span>
+<p>In local coordinates, <span class="math" data-tex="\(\alpha=\sum_j\xi_jdx_j\)">\(\alpha=\sum_j\xi_jdx_j\)</span>. We use</p>
+<span class="math math-display" data-tex="\[
+\omega=d\alpha=\sum_jd\xi_j\wedge dx_j.
+\tag{1.1}
+\]">\[
+\omega=d\alpha=\sum_jd\xi_j\wedge dx_j.
+\tag{1.1}
+\]</span>
+<p>A symplectic manifold is a smooth manifold with a closed, nondegenerate two-form <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. A symplectomorphism <span class="math" data-tex="\(F\)">\(F\)</span> satisfies <span class="math" data-tex="\(F^*\omega_2=\omega_1\)">\(F^*\omega_2=\omega_1\)</span>. For a function <span class="math" data-tex="\(p\)">\(p\)</span>, our Hamiltonian vector field and Poisson bracket are defined by</p>
+<span class="math math-display" data-tex="\[
+\iota_{H_p}\omega=-dp,
+\qquad \{p,q\}=H_pq.
+\tag{1.2}
+\]">\[
+\iota_{H_p}\omega=-dp,
+\qquad \{p,q\}=H_pq.
+\tag{1.2}
+\]</span>
+<p>Thus on <span class="math" data-tex="\(T^*X\)">\(T^*X\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H_p=\sum_j\left(
+\partial_{\xi_j}p\,\partial_{x_j}
+-\partial_{x_j}p\,\partial_{\xi_j}\right),
+\qquad
+\{p,q\}=\sum_j
+\left(\partial_{\xi_j}p\partial_{x_j}q
+-\partial_{x_j}p\partial_{\xi_j}q\right).
+\tag{1.3}
+\]">\[
+H_p=\sum_j\left(
+\partial_{\xi_j}p\,\partial_{x_j}
+-\partial_{x_j}p\,\partial_{\xi_j}\right),
+\qquad
+\{p,q\}=\sum_j
+\left(\partial_{\xi_j}p\partial_{x_j}q
+-\partial_{x_j}p\partial_{\xi_j}q\right).
+\tag{1.3}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\{\xi_j,x_k\}=\delta_{jk}\)">\(\{\xi_j,x_k\}=\delta_{jk}\)</span>.</p>
+<p><strong>Proposition 1.1 (Hamiltonian identities).</strong> Hamiltonian flows preserve <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+[H_p,H_q]=H_{\{p,q\}},
+\qquad
+\{p,\{q,r\}\}+\{q,\{r,p\}\}+\{r,\{p,q\}\}=0.
+\tag{1.4}
+\]">\[
+[H_p,H_q]=H_{\{p,q\}},
+\qquad
+\{p,\{q,r\}\}+\{q,\{r,p\}\}+\{r,\{p,q\}\}=0.
+\tag{1.4}
+\]</span>
+<p><strong>Proof.</strong> Cartan's formula gives <span class="math" data-tex="\(\mathcal L_{H_p}\omega=d\iota_{H_p}\omega+\iota_{H_p}d\omega=-d^2p=0\)">\(\mathcal L_{H_p}\omega=d\iota_{H_p}\omega+\iota_{H_p}d\omega=-d^2p=0\)</span>. Differentiating the pullback by the flow proves preservation. Also,</p>
+<span class="math math-display" data-tex="\[
+\iota_{[H_p,H_q]}\omega
+=\mathcal L_{H_p}\iota_{H_q}\omega
+-\iota_{H_q}\mathcal L_{H_p}\omega
+=-d(H_pq).
+\]">\[
+\iota_{[H_p,H_q]}\omega
+=\mathcal L_{H_p}\iota_{H_q}\omega
+-\iota_{H_q}\mathcal L_{H_p}\omega
+=-d(H_pq).
+\]</span>
+<p>Nondegeneracy proves the commutator identity. Apply it to <span class="math" data-tex="\(r\)">\(r\)</span>, expand the commutator, and use antisymmetry of the bracket to obtain the Jacobi identity. ∎</p>
+<p>For a diffeomorphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, its cotangent lift is</p>
+<span class="math math-display" data-tex="\[
+(x,\xi)\longmapsto
+\left(f(x),(df_x)^{-T}\xi\right).
+\tag{1.5}
+\]">\[
+(x,\xi)\longmapsto
+\left(f(x),(df_x)^{-T}\xi\right).
+\tag{1.5}
+\]</span>
+<p>It preserves <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, because <span class="math" data-tex="\(((df_x)^{-T}\xi)(df_xv)=\xi(v)\)">\(((df_x)^{-T}\xi)(df_xv)=\xi(v)\)</span>, and hence preserves <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. This fixes the transpose and inverse in the frequency transformation.</p>
+<h2 id="linear-geometry-and-reduction"><span id="2-linear-geometry-and-reduction"></span><span id="section-2"></span>2. Linear geometry and reduction</h2>
+<p>For a subspace <span class="math" data-tex="\(W\)">\(W\)</span> of a symplectic vector space <span class="math" data-tex="\(V\)">\(V\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+W^\omega=\{v\in V:\omega(v,w)=0\text{ for every }w\in W\}.
+\]">\[
+W^\omega=\{v\in V:\omega(v,w)=0\text{ for every }w\in W\}.
+\]</span>
+<p>Nondegeneracy identifies <span class="math" data-tex="\(V\)">\(V\)</span> with its dual. Restriction to <span class="math" data-tex="\(W\)">\(W\)</span> is onto <span class="math" data-tex="\(W^*\)">\(W^*\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\dim W^\omega=\dim V-\dim W,
+\qquad (W^\omega)^\omega=W.
+\tag{2.1}
+\]">\[
+\dim W^\omega=\dim V-\dim W,
+\qquad (W^\omega)^\omega=W.
+\tag{2.1}
+\]</span>
+<p>The subspace is isotropic if <span class="math" data-tex="\(W\subset W^\omega\)">\(W\subset W^\omega\)</span>, coisotropic if <span class="math" data-tex="\(W^\omega\subset W\)">\(W^\omega\subset W\)</span>, and Lagrangian if <span class="math" data-tex="\(W=W^\omega\)">\(W=W^\omega\)</span>. An isotropic subspace in dimension <span class="math" data-tex="\(2n\)">\(2n\)</span> has dimension at most <span class="math" data-tex="\(n\)">\(n\)</span>; a Lagrangian has dimension exactly <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Lemma 2.1 (symplectic basis).</strong> Every finite-dimensional symplectic vector space has even dimension and a basis <span class="math" data-tex="\(e_1,\ldots,e_n,f_1,\ldots,f_n\)">\(e_1,\ldots,e_n,f_1,\ldots,f_n\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\omega(f_j,e_k)=\delta_{jk},
+\qquad\omega(e_j,e_k)=\omega(f_j,f_k)=0.
+\tag{2.2}
+\]">\[
+\omega(f_j,e_k)=\delta_{jk},
+\qquad\omega(e_j,e_k)=\omega(f_j,f_k)=0.
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(e_1\neq0\)">\(e_1\neq0\)</span>. Nondegeneracy gives <span class="math" data-tex="\(f_1\)">\(f_1\)</span> with <span class="math" data-tex="\(\omega(f_1,e_1)=1\)">\(\omega(f_1,e_1)=1\)</span>. Their span is a symplectic plane. Its symplectic orthogonal is a complementary subspace, and the form is nondegenerate there: a vector orthogonal to both summands is orthogonal to all of <span class="math" data-tex="\(V\)">\(V\)</span>. Induct on the dimension. ∎</p>
+<p><strong>Lemma 2.2 (a common Lagrangian complement).</strong> Any two Lagrangian subspaces have a Lagrangian subspace transverse to both.</p>
+<p><strong>Proof.</strong> Choose symplectic coordinates with the first subspace vertical. Here is the basis-extension step explicitly. For its basis <span class="math" data-tex="\(e_j\)">\(e_j\)</span>, choose <span class="math" data-tex="\(g_i\)">\(g_i\)</span> with <span class="math" data-tex="\(\omega(g_i,e_j)=\delta_{ij}\)">\(\omega(g_i,e_j)=\delta_{ij}\)</span>, possible by nondegeneracy and independence. Set <span class="math" data-tex="\(C_{ij}=\omega(g_i,g_j)\)">\(C_{ij}=\omega(g_i,g_j)\)</span> and <span class="math" data-tex="\(f_i=g_i+\tfrac12\sum_jC_{ij}e_j\)">\(f_i=g_i+\tfrac12\sum_jC_{ij}e_j\)</span>. Then <span class="math" data-tex="\(\omega(f_i,e_j)=\delta_{ij}\)">\(\omega(f_i,e_j)=\delta_{ij}\)</span> and <span class="math" data-tex="\(\omega(f_i,f_j)=C_{ij}+C_{ji}/2-C_{ij}/2=0\)">\(\omega(f_i,f_j)=C_{ij}+C_{ji}/2-C_{ij}/2=0\)</span>. These vectors give the required symplectic coordinates. Represent a basis of the second subspace by columns of <span class="math" data-tex="\(\binom QP\)">\(\binom QP\)</span>, where <span class="math" data-tex="\(Q,P\)">\(Q,P\)</span> are real <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> matrices. The Lagrangian condition is <span class="math" data-tex="\(Q^TP=P^TQ\)">\(Q^TP=P^TQ\)</span>, and the stacked matrix has full rank.</p>
+<p>The graph <span class="math" data-tex="\(p=tq\)">\(p=tq\)</span> is Lagrangian and transverse to the vertical subspace. It is transverse to the second subspace exactly when <span class="math" data-tex="\(P-tQ\)">\(P-tQ\)</span> is invertible. This determinant is a polynomial in <span class="math" data-tex="\(t\)">\(t\)</span> that is not identically zero: at <span class="math" data-tex="\(t=i\)">\(t=i\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(P-iQ)^*(P-iQ)=P^TP+Q^TQ
+\]">\[
+(P-iQ)^*(P-iQ)=P^TP+Q^TQ
+\]</span>
+<p>is positive definite. The equality uses <span class="math" data-tex="\(Q^TP=P^TQ\)">\(Q^TP=P^TQ\)</span>; positivity uses full rank of <span class="math" data-tex="\(\binom QP\)">\(\binom QP\)</span>. Choose a real <span class="math" data-tex="\(t\)">\(t\)</span> outside the finitely many zeros. ∎</p>
+<p><strong>Proposition 2.3 (linear symplectic reduction).</strong> If <span class="math" data-tex="\(A\subset V\)">\(A\subset V\)</span> is isotropic, the form on <span class="math" data-tex="\(A^\omega\)">\(A^\omega\)</span> descends to a symplectic form on <span class="math" data-tex="\(A^\omega/A\)">\(A^\omega/A\)</span>. For every Lagrangian <span class="math" data-tex="\(L\subset V\)">\(L\subset V\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L_{\mathrm{red}}=
+\bigl((L\cap A^\omega)+A\bigr)/A
+\tag{2.3}
+\]">\[
+L_{\mathrm{red}}=
+\bigl((L\cap A^\omega)+A\bigr)/A
+\tag{2.3}
+\]</span>
+<p>is Lagrangian in that quotient.</p>
+<p><strong>Proof.</strong> The radical of <span class="math" data-tex="\(\omega|_{A^\omega}\)">\(\omega|_{A^\omega}\)</span> is <span class="math" data-tex="\(A^\omega\cap(A^\omega)^\omega=A\)">\(A^\omega\cap(A^\omega)^\omega=A\)</span>. This proves the first claim.</p>
+<p>Write <span class="math" data-tex="\(\dim V=2n\)">\(\dim V=2n\)</span>, <span class="math" data-tex="\(\dim A=a\)">\(\dim A=a\)</span>, and <span class="math" data-tex="\(k=\dim(L\cap A)\)">\(k=\dim(L\cap A)\)</span>. The map <span class="math" data-tex="\(L\to A^*\)">\(L\to A^*\)</span>, <span class="math" data-tex="\(v\mapsto\omega(v,\cdot)|_A\)">\(v\mapsto\omega(v,\cdot)|_A\)</span>, has rank <span class="math" data-tex="\(a-k\)">\(a-k\)</span>: its transpose has kernel <span class="math" data-tex="\(A\cap L^\omega=A\cap L\)">\(A\cap L^\omega=A\cap L\)</span>. Hence <span class="math" data-tex="\(\dim(L\cap A^\omega)=n-a+k\)">\(\dim(L\cap A^\omega)=n-a+k\)</span>. Passing to the quotient removes its kernel <span class="math" data-tex="\(L\cap A\)">\(L\cap A\)</span>, of dimension <span class="math" data-tex="\(k\)">\(k\)</span>, so <span class="math" data-tex="\(\dim L_{\mathrm{red}}=n-a\)">\(\dim L_{\mathrm{red}}=n-a\)</span>, half the quotient dimension. The form vanishes on this image because it vanishes on <span class="math" data-tex="\(L\)">\(L\)</span>. ∎</p>
+<h2 id="local-coordinates-from-closedness"><span id="3-local-coordinates-from-closedness"></span><span id="section-3"></span>3. Local coordinates from closedness</h2>
+<p><strong>Theorem 3.1 (Darboux).</strong> Near every point of a symplectic manifold of dimension <span class="math" data-tex="\(2n\)">\(2n\)</span>, there are coordinates <span class="math" data-tex="\((x,\xi)\)">\((x,\xi)\)</span> in which <span class="math" data-tex="\(\omega=\sum_jd\xi_j\wedge dx_j\)">\(\omega=\sum_jd\xi_j\wedge dx_j\)</span>.</p>
+<p><strong>Proof.</strong> Lemma 2.1 gives initial coordinates making the form at the origin equal to the constant form <span class="math" data-tex="\(\omega_0\)">\(\omega_0\)</span>. Put <span class="math" data-tex="\(\beta=\omega-\omega_0\)">\(\beta=\omega-\omega_0\)</span>. On a small star-shaped neighborhood define a one-form</p>
+<span class="math math-display" data-tex="\[
+\gamma_x(v)=\int_0^1t\,\beta_{tx}(x,v)\,dt.
+\]">\[
+\gamma_x(v)=\int_0^1t\,\beta_{tx}(x,v)\,dt.
+\]</span>
+<p>The radial homotopy formula gives <span class="math" data-tex="\(d\gamma=\beta\)">\(d\gamma=\beta\)</span>. To verify it, differentiate the pullbacks of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> by <span class="math" data-tex="\(x\mapsto tx\)">\(x\mapsto tx\)</span>, use Cartan's formula, and integrate from zero to one; the pullback at zero vanishes for a two-form and <span class="math" data-tex="\(d\beta=0\)">\(d\beta=0\)</span>. Since <span class="math" data-tex="\(\beta(0)=0\)">\(\beta(0)=0\)</span>, <span class="math" data-tex="\(\gamma=O(|x|^2)\)">\(\gamma=O(|x|^2)\)</span>.</p>
+<p>All forms <span class="math" data-tex="\(\omega_t=\omega_0+t\beta\)">\(\omega_t=\omega_0+t\beta\)</span>, <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>, are nondegenerate on a sufficiently small common neighborhood. Define <span class="math" data-tex="\(V_t\)">\(V_t\)</span> by <span class="math" data-tex="\(\iota_{V_t}\omega_t=-\gamma\)">\(\iota_{V_t}\omega_t=-\gamma\)</span>. Its local flow <span class="math" data-tex="\(\Psi_t\)">\(\Psi_t\)</span> exists through time one after shrinking the neighborhood, and fixes the origin. Then</p>
+<span class="math math-display" data-tex="\[
+\frac d{dt}\Psi_t^*\omega_t
+=\Psi_t^*(\beta+d\iota_{V_t}\omega_t)=0.
+\]">\[
+\frac d{dt}\Psi_t^*\omega_t
+=\Psi_t^*(\beta+d\iota_{V_t}\omega_t)=0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\Psi_1^*\omega=\omega_0\)">\(\Psi_1^*\omega=\omega_0\)</span>, giving the desired coordinates. ∎</p>
+<p>The volume form <span class="math" data-tex="\(\omega^n/n!\)">\(\omega^n/n!\)</span> fixes an orientation and is preserved by symplectomorphisms. Its associated density, rather than a coordinate orientation chosen separately, has Jacobian one in symplectic coordinates.</p>
+<p>A smooth submanifold is isotropic, coisotropic or Lagrangian when its tangent spaces have that property. A section <span class="math" data-tex="\(\xi=g(x)\)">\(\xi=g(x)\)</span> of a cotangent bundle is Lagrangian precisely when the one-form <span class="math" data-tex="\(\sum_jg_jdx_j\)">\(\sum_jg_jdx_j\)</span> is closed. Locally it is <span class="math" data-tex="\(df\)">\(df\)</span>, by the degree-one radial homotopy formula. Thus the graph is <span class="math" data-tex="\(\xi=df(x)\)">\(\xi=df(x)\)</span>.</p>
+<p>More generally, any Lagrangian can locally be made the zero section by a symplectomorphism. First use Darboux coordinates and a linear symplectic change making its tangent plane horizontal. The inverse function theorem makes it a local graph <span class="math" data-tex="\(df\)">\(df\)</span>; the canonical translation <span class="math" data-tex="\((x,\xi)\mapsto(x,\xi-df(x))\)">\((x,\xi)\mapsto(x,\xi-df(x))\)</span> takes it to the zero section. This is a statement near a point; it does not assert a global neighborhood identification along an arbitrary submanifold.</p>
+<h2 id="homogeneity-and-the-contact-slice"><span id="4-homogeneity-and-the-contact-slice"></span><span id="section-4"></span>4. Homogeneity and the contact slice</h2>
+<p>Suppose a free smooth dilation action <span class="math" data-tex="\(m_t\)">\(m_t\)</span>, <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, satisfies <span class="math" data-tex="\(m_t^*\omega=t\omega\)">\(m_t^*\omega=t\omega\)</span>. Let <span class="math" data-tex="\(E\)">\(E\)</span> be its infinitesimal radial vector field, using the parameter <span class="math" data-tex="\(\log t\)">\(\log t\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\alpha=\iota_E\omega,
+\qquad d\alpha=\omega,
+\qquad\alpha(E)=0.
+\tag{4.1}
+\]">\[
+\alpha=\iota_E\omega,
+\qquad d\alpha=\omega,
+\qquad\alpha(E)=0.
+\tag{4.1}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(\mathcal L_E\omega=\omega\)">\(\mathcal L_E\omega=\omega\)</span>, and Cartan's formula proves the middle identity. On a cotangent bundle, <span class="math" data-tex="\(E=\sum\xi_j\partial_{\xi_j}\)">\(E=\sum\xi_j\partial_{\xi_j}\)</span>, so this recovers <span class="math" data-tex="\(\alpha=\sum\xi_jdx_j\)">\(\alpha=\sum\xi_jdx_j\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> If <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is conic and Lagrangian, then <span class="math" data-tex="\(\alpha|_\Lambda=0\)">\(\alpha|_\Lambda=0\)</span>. On a local slice <span class="math" data-tex="\(Y\)">\(Y\)</span> transverse to the dilation orbits, <span class="math" data-tex="\(\beta=\alpha|_Y\)">\(\beta=\alpha|_Y\)</span> is a contact form:</p>
+<span class="math math-display" data-tex="\[
+\beta\wedge(d\beta)^{n-1}\neq0.
+\tag{4.2}
+\]">\[
+\beta\wedge(d\beta)^{n-1}\neq0.
+\tag{4.2}
+\]</span>
+<p><strong>Proof.</strong> The radial vector <span class="math" data-tex="\(E\)">\(E\)</span> is tangent to <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, so <span class="math" data-tex="\(\alpha(v)=\omega(E,v)=0\)">\(\alpha(v)=\omega(E,v)=0\)</span> for its tangent vectors. Near a transverse slice use coordinates <span class="math" data-tex="\((u,y)\)">\((u,y)\)</span>, where dilations translate <span class="math" data-tex="\(u\)">\(u\)</span>. Homogeneity gives <span class="math" data-tex="\(\alpha=e^u\beta\)">\(\alpha=e^u\beta\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\omega=e^u(du\wedge\beta+d\beta),
+\qquad
+\omega^n=ne^{nu}du\wedge\beta\wedge(d\beta)^{n-1}.
+\]">\[
+\omega=e^u(du\wedge\beta+d\beta),
+\qquad
+\omega^n=ne^{nu}du\wedge\beta\wedge(d\beta)^{n-1}.
+\]</span>
+<p>Nondegeneracy proves (4.2). ∎</p>
+<p>Changing the slice multiplies the contact form by a positive smooth function. The resulting contact hyperplanes are intrinsic. Global quotient assertions additionally require a well-behaved orbit space; the local slice calculation needs only transversality.</p>
+<h2 id="phases-and-the-critical-map"><span id="5-phases-and-the-critical-map"></span><span id="section-5"></span>5. Phases and the critical map</h2>
+<p>Let <span class="math" data-tex="\(\Gamma\subset X\times(\mathbb R^N\setminus0)\)">\(\Gamma\subset X\times(\mathbb R^N\setminus0)\)</span> be an open cone in the second variable. A real smooth function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is a homogeneous phase if it is homogeneous of degree one in <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(d\phi\neq0\)">\(d\phi\neq0\)</span>. Its critical set in the phase variables is</p>
+<span class="math math-display" data-tex="\[
+C_\phi=\{(x,\theta):\partial_\theta\phi=0\}.
+\]">\[
+C_\phi=\{(x,\theta):\partial_\theta\phi=0\}.
+\]</span>
+<p>It is nondegenerate if the <span class="math" data-tex="\(N\)">\(N\)</span> covectors <span class="math" data-tex="\(d(\partial_{\theta_j}\phi)\)">\(d(\partial_{\theta_j}\phi)\)</span> are independent on <span class="math" data-tex="\(C_\phi\)">\(C_\phi\)</span>. It is clean of excess <span class="math" data-tex="\(e\)">\(e\)</span> if <span class="math" data-tex="\(C_\phi\)">\(C_\phi\)</span> is a smooth manifold,</p>
+<span class="math math-display" data-tex="\[
+T C_\phi=\ker d(\partial_\theta\phi),
+\qquad \dim C_\phi=\dim X+e.
+\tag{5.1}
+\]">\[
+T C_\phi=\ker d(\partial_\theta\phi),
+\qquad \dim C_\phi=\dim X+e.
+\tag{5.1}
+\]</span>
+<p>Thus the rank is <span class="math" data-tex="\(N-e\)">\(N-e\)</span>. Smoothness of the set alone is not this condition.</p>
+<p><strong>Theorem 5.1 (the geometric content of a clean phase).</strong> For a clean phase, the map</p>
+<span class="math math-display" data-tex="\[
+\kappa_\phi:C_\phi\longrightarrow T^*X\setminus0,
+\qquad (x,\theta)\longmapsto(x,\partial_x\phi)
+\tag{5.2}
+\]">\[
+\kappa_\phi:C_\phi\longrightarrow T^*X\setminus0,
+\qquad (x,\theta)\longmapsto(x,\partial_x\phi)
+\tag{5.2}
+\]</span>
+<p>has constant rank <span class="math" data-tex="\(n=\dim X\)">\(n=\dim X\)</span>, with fibers locally of dimension <span class="math" data-tex="\(e\)">\(e\)</span>. Each local image is a conic Lagrangian submanifold. In the nondegenerate case it is a local diffeomorphism onto that image.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(C_\phi\)">\(C_\phi\)</span>, nonvanishing of <span class="math" data-tex="\(d\phi\)">\(d\phi\)</span> means <span class="math" data-tex="\(\partial_x\phi\neq0\)">\(\partial_x\phi\neq0\)</span>. A tangent vector in the kernel of <span class="math" data-tex="\(d\kappa_\phi\)">\(d\kappa_\phi\)</span> has <span class="math" data-tex="\(\delta x=0\)">\(\delta x=0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\phi_{x\theta}&#x27;&#x27;\delta\theta=0,
+\qquad\phi_{\theta\theta}&#x27;&#x27;\delta\theta=0.
+\]">\[
+\phi_{x\theta}&#x27;&#x27;\delta\theta=0,
+\qquad\phi_{\theta\theta}&#x27;&#x27;\delta\theta=0.
+\]</span>
+<p>The stacked matrix in these equations is the transpose of <span class="math" data-tex="\(d(\phi_\theta&#x27;)\)">\(d(\phi_\theta&#x27;)\)</span>; symmetry of the Hessian is essential here. It has rank <span class="math" data-tex="\(N-e\)">\(N-e\)</span>, so its kernel has dimension <span class="math" data-tex="\(e\)">\(e\)</span>. The clean tangent condition shows that these are exactly the kernel vectors in <span class="math" data-tex="\(TC_\phi\)">\(TC_\phi\)</span>. Thus the critical map has rank <span class="math" data-tex="\((n+e)-e=n\)">\((n+e)-e=n\)</span>.</p>
+<p>The constant-rank theorem gives a local smooth image. On the critical set,</p>
+<span class="math math-display" data-tex="\[
+\kappa_\phi^*\alpha=d\phi|_{C_\phi},
+\qquad\kappa_\phi^*\omega=0.
+\]">\[
+\kappa_\phi^*\alpha=d\phi|_{C_\phi},
+\qquad\kappa_\phi^*\omega=0.
+\]</span>
+<p>Surjectivity onto its image tangent space shows that the image is isotropic; dimension <span class="math" data-tex="\(n\)">\(n\)</span> makes it Lagrangian. Homogeneity makes the image conic. For <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, the kernel is zero, proving the last assertion. ∎</p>
+<p>Euler's identity gives <span class="math" data-tex="\(\phi=\theta\cdot\phi_\theta&#x27;=0\)">\(\phi=\theta\cdot\phi_\theta&#x27;=0\)</span> on the critical set. Consequently the pullback of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> in this homogeneous case is zero, consistently with Proposition 4.1.</p>
+<h2 id="constructing-phases-with-as-few-variables-as-possible"><span id="6-constructing-phases-with-as-few-variables-as-possible"></span><span id="section-6"></span>6. Constructing phases with as few variables as possible</h2>
+<p><strong>Theorem 6.1 (mixed generating function).</strong> Let <span class="math" data-tex="\(\Lambda\subset T^*X\setminus0\)">\(\Lambda\subset T^*X\setminus0\)</span> be a smooth conic Lagrangian. At <span class="math" data-tex="\(\rho\in\Lambda\)">\(\rho\in\Lambda\)</span>, let <span class="math" data-tex="\(k\)">\(k\)</span> be the dimension of the vertical tangent space <span class="math" data-tex="\(T_\rho\Lambda\cap\ker d\pi\)">\(T_\rho\Lambda\cap\ker d\pi\)</span>. After a linear choice of base coordinates <span class="math" data-tex="\(x=(x_I,x_J)\)">\(x=(x_I,x_J)\)</span>, with <span class="math" data-tex="\(|J|=k\)">\(|J|=k\)</span>, the variables <span class="math" data-tex="\((x_I,\xi_J)\)">\((x_I,\xi_J)\)</span> are coordinates on <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> near <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. There is a degree-one homogeneous function <span class="math" data-tex="\(S(x_I,\theta)\)">\(S(x_I,\theta)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\phi(x,\theta)=S(x_I,\theta)+x_J\cdot\theta,
+\qquad \theta\in\mathbb R^k\setminus0,
+\tag{6.1}
+\]">\[
+\phi(x,\theta)=S(x_I,\theta)+x_J\cdot\theta,
+\qquad \theta\in\mathbb R^k\setminus0,
+\tag{6.1}
+\]</span>
+<p>is a nondegenerate phase parametrizing <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> there. No nondegenerate phase with fewer than <span class="math" data-tex="\(k\)">\(k\)</span> variables can do so.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(P=d\pi(T_\rho\Lambda)\)">\(P=d\pi(T_\rho\Lambda)\)</span>, of dimension <span class="math" data-tex="\(n-k\)">\(n-k\)</span>. The vertical tangent space is the annihilator <span class="math" data-tex="\(P^\perp\)">\(P^\perp\)</span>. To see this, pair a vertical tangent <span class="math" data-tex="\((0,\eta)\)">\((0,\eta)\)</span> with any tangent <span class="math" data-tex="\((v,\zeta)\)">\((v,\zeta)\)</span> using <span class="math" data-tex="\(\omega\)">\(\omega\)</span>: it gives <span class="math" data-tex="\(\eta(v)=0\)">\(\eta(v)=0\)</span>. This yields inclusion in <span class="math" data-tex="\(P^\perp\)">\(P^\perp\)</span>, and both spaces have dimension <span class="math" data-tex="\(k\)">\(k\)</span>. Choose base coordinates making <span class="math" data-tex="\(P\)">\(P\)</span> the <span class="math" data-tex="\(x_I\)">\(x_I\)</span> plane. Then the vertical tangent is the <span class="math" data-tex="\(\xi_J\)">\(\xi_J\)</span> plane.</p>
+<p>The differential of <span class="math" data-tex="\((x_I,\xi_J)\)">\((x_I,\xi_J)\)</span> on <span class="math" data-tex="\(T_\rho\Lambda\)">\(T_\rho\Lambda\)</span> is injective: a kernel vector has zero base component, hence is vertical, and its <span class="math" data-tex="\(\xi_J\)">\(\xi_J\)</span> component is also zero. It is an isomorphism by dimension. The inverse function theorem gives the claimed coordinates. The radial tangent is a nonzero vertical vector, so <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span> and <span class="math" data-tex="\(\xi_J\neq0\)">\(\xi_J\neq0\)</span> at <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Shrink to a conic neighborhood where that remains true.</p>
+<p>On <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+0=\xi_I\,dx_I+\theta\,dx_J
+=d(x_J\cdot\theta)+\xi_I\,dx_I-x_J\,d\theta.
+\]">\[
+0=\xi_I\,dx_I+\theta\,dx_J
+=d(x_J\cdot\theta)+\xi_I\,dx_I-x_J\,d\theta.
+\]</span>
+<p>Set <span class="math" data-tex="\(S=-x_J\cdot\theta\)">\(S=-x_J\cdot\theta\)</span>, regarding <span class="math" data-tex="\(x_J\)">\(x_J\)</span> as a function of <span class="math" data-tex="\((x_I,\theta)\)">\((x_I,\theta)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+dS=\xi_I\,dx_I-x_J\,d\theta,
+\qquad S_{x_I}&#x27;=\xi_I,
+\qquad S_\theta&#x27;=-x_J.
+\]">\[
+dS=\xi_I\,dx_I-x_J\,d\theta,
+\qquad S_{x_I}&#x27;=\xi_I,
+\qquad S_\theta&#x27;=-x_J.
+\]</span>
+<p>Conicity makes <span class="math" data-tex="\(x_J\)">\(x_J\)</span> degree zero, so <span class="math" data-tex="\(S\)">\(S\)</span> is degree one. The phase equations in (6.1) are <span class="math" data-tex="\(S_\theta&#x27;+x_J=0\)">\(S_\theta&#x27;+x_J=0\)</span>, and their differentials are independent because their <span class="math" data-tex="\(x_J\)">\(x_J\)</span> derivative is the identity. The critical map recovers exactly <span class="math" data-tex="\(\xi_I=S_{x_I}&#x27;\)">\(\xi_I=S_{x_I}&#x27;\)</span>, <span class="math" data-tex="\(\xi_J=\theta\)">\(\xi_J=\theta\)</span>, and <span class="math" data-tex="\(x_J=-S_\theta&#x27;\)">\(x_J=-S_\theta&#x27;\)</span>.</p>
+<p>If a nondegenerate phase with <span class="math" data-tex="\(N\)">\(N\)</span> variables parametrizes the same Lagrangian, its critical map is a tangent isomorphism. Every vertical tangent is therefore the image of a critical tangent with <span class="math" data-tex="\(\delta x=0\)">\(\delta x=0\)</span>, a subspace of the <span class="math" data-tex="\(N\)">\(N\)</span>-dimensional phase-variable space. Thus <span class="math" data-tex="\(k\leq N\)">\(k\leq N\)</span>. ∎</p>
+<p><strong>Theorem 6.2 (a frequency generating function after a base change).</strong> Base coordinates can also be chosen so that <span class="math" data-tex="\(\xi\)">\(\xi\)</span> alone parametrizes <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> near <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. In those coordinates,</p>
+<span class="math math-display" data-tex="\[
+\Lambda=\{(H&#x27;(\xi),\xi)\},
+\qquad
+\phi(x,\theta)=x\cdot\theta-H(\theta),
+\tag{6.2}
+\]">\[
+\Lambda=\{(H&#x27;(\xi),\xi)\},
+\qquad
+\phi(x,\theta)=x\cdot\theta-H(\theta),
+\tag{6.2}
+\]</span>
+<p>where <span class="math" data-tex="\(H\)">\(H\)</span> is smooth and homogeneous of degree one. For the fixed coordinates and Lagrangian, <span class="math" data-tex="\(H\)">\(H\)</span> is unique.</p>
+<p><strong>Proof.</strong> Choose coordinates <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(y(\pi\rho)=0\)">\(y(\pi\rho)=0\)</span> and <span class="math" data-tex="\(\rho=(0,dy_1)\)">\(\rho=(0,dy_1)\)</span>. Lemma 2.2 supplies a Lagrangian plane transverse to both <span class="math" data-tex="\(T_\rho\Lambda\)">\(T_\rho\Lambda\)</span> and the vertical plane. Such a plane is the tangent graph <span class="math" data-tex="\(\delta\eta=A\delta y\)">\(\delta\eta=A\delta y\)</span> of a symmetric matrix <span class="math" data-tex="\(A\)">\(A\)</span>: symmetry is exactly its Lagrangian condition.</p>
+<p>Use new base coordinates <span class="math" data-tex="\(x_1=y_1+y^TAy/2\)">\(x_1=y_1+y^TAy/2\)</span> and <span class="math" data-tex="\(x_j=y_j\)">\(x_j=y_j\)</span>, <span class="math" data-tex="\(j&gt;1\)">\(j&gt;1\)</span>. Their Jacobian at zero is the identity. The graph of <span class="math" data-tex="\(dx_1\)">\(dx_1\)</span>, passing through <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, has precisely the chosen tangent plane. In the induced cotangent coordinates, this graph is the constant-frequency section <span class="math" data-tex="\(\xi=(1,0,\ldots,0)\)">\(\xi=(1,0,\ldots,0)\)</span>. Transversality says that <span class="math" data-tex="\(d\xi:T_\rho\Lambda\to\mathbb R^n\)">\(d\xi:T_\rho\Lambda\to\mathbb R^n\)</span> is invertible.</p>
+<p>Write <span class="math" data-tex="\(x=g(\xi)\)">\(x=g(\xi)\)</span> using the inverse function theorem and conicity. Define <span class="math" data-tex="\(H(\xi)=g(\xi)\cdot\xi\)">\(H(\xi)=g(\xi)\cdot\xi\)</span>. Since <span class="math" data-tex="\(\alpha|_\Lambda=\xi\cdot dg=0\)">\(\alpha|_\Lambda=\xi\cdot dg=0\)</span>, differentiation gives <span class="math" data-tex="\(dH=g\cdot d\xi\)">\(dH=g\cdot d\xi\)</span>, so <span class="math" data-tex="\(H&#x27;=g\)">\(H&#x27;=g\)</span>. Conicity makes <span class="math" data-tex="\(g\)">\(g\)</span> degree zero and <span class="math" data-tex="\(H\)">\(H\)</span> degree one. The critical equations for (6.2) are <span class="math" data-tex="\(x=H&#x27;(\theta)\)">\(x=H&#x27;(\theta)\)</span>, whose differentials are independent in <span class="math" data-tex="\(x\)">\(x\)</span>. Finally, any degree-one function with derivative <span class="math" data-tex="\(g\)">\(g\)</span> satisfies Euler's identity <span class="math" data-tex="\(H=\xi\cdot g\)">\(H=\xi\cdot g\)</span>, proving uniqueness. ∎</p>
+<p>The coordinate change in this theorem is induced by a base diffeomorphism. This is useful when a distribution is being expressed in ordinary position coordinates, rather than after an arbitrary symplectic transformation.</p>
+<h2 id="kernel-relations-and-clean-composition"><span id="7-kernel-relations-and-clean-composition"></span><span id="section-7"></span>7. Kernel relations and clean composition</h2>
+<p>A canonical relation from a symplectic manifold <span class="math" data-tex="\(S_2\)">\(S_2\)</span> to <span class="math" data-tex="\(S_1\)">\(S_1\)</span> is a Lagrangian submanifold of <span class="math" data-tex="\(S_1\times S_2\)">\(S_1\times S_2\)</span> for the form <span class="math" data-tex="\(\omega_1-\omega_2\)">\(\omega_1-\omega_2\)</span>. A symplectomorphism has such a graph: pulling back this form to its graph gives <span class="math" data-tex="\(F^*\omega_1-\omega_2=0\)">\(F^*\omega_1-\omega_2=0\)</span>, and the dimensions agree.</p>
+<p>A kernel phase <span class="math" data-tex="\(\phi(x,y,\theta)\)">\(\phi(x,y,\theta)\)</span> determines the relation</p>
+<span class="math math-display" data-tex="\[
+C=\{(x,\phi_x&#x27;;y,-\phi_y&#x27;):\phi_\theta&#x27;=0\}.
+\tag{7.1}
+\]">\[
+C=\{(x,\phi_x&#x27;;y,-\phi_y&#x27;):\phi_\theta&#x27;=0\}.
+\tag{7.1}
+\]</span>
+<p>The minus sign comes from the negative form on the input cotangent bundle. Equivalently, the kernel Lagrangian in <span class="math" data-tex="\(T^*(X\times Y)\)">\(T^*(X\times Y)\)</span> has covectors <span class="math" data-tex="\((\phi_x&#x27;,\phi_y&#x27;)\)">\((\phi_x&#x27;,\phi_y&#x27;)\)</span>, and the input covector is then reflected. To obtain a relation in <span class="math" data-tex="\((T^*X\setminus0)\times(T^*Y\setminus0)\)">\((T^*X\setminus0)\times(T^*Y\setminus0)\)</span>, both <span class="math" data-tex="\(\phi_x&#x27;\)">\(\phi_x&#x27;\)</span> and <span class="math" data-tex="\(\phi_y&#x27;\)">\(\phi_y&#x27;\)</span> must be nonzero on the part of the critical set in question.</p>
+<p><strong>Theorem 7.1 (local clean composition).</strong> Let <span class="math" data-tex="\(C_{12}\subset S_1\times S_2\)">\(C_{12}\subset S_1\times S_2\)</span> and <span class="math" data-tex="\(C_{23}\subset S_2\times S_3\)">\(C_{23}\subset S_2\times S_3\)</span> be canonical relations. Suppose</p>
+<span class="math math-display" data-tex="\[
+F=(C_{12}\times C_{23})\cap
+(S_1\times\operatorname{diag}S_2\times S_3)
+\]">\[
+F=(C_{12}\times C_{23})\cap
+(S_1\times\operatorname{diag}S_2\times S_3)
+\]</span>
+<p>is a clean intersection, meaning that it is a smooth submanifold and its tangent space is the intersection of the two tangent spaces. The projection <span class="math" data-tex="\(F\to S_1\times S_3\)">\(F\to S_1\times S_3\)</span> has rank <span class="math" data-tex="\((\dim S_1+\dim S_3)/2\)">\((\dim S_1+\dim S_3)/2\)</span>. Each local image is Lagrangian for <span class="math" data-tex="\(\omega_1-\omega_3\)">\(\omega_1-\omega_3\)</span>. Its fiber dimension is the excess</p>
+<span class="math math-display" data-tex="\[
+e=\dim F-\tfrac12(\dim S_1+\dim S_3).
+\tag{7.2}
+\]">\[
+e=\dim F-\tfrac12(\dim S_1+\dim S_3).
+\tag{7.2}
+\]</span>
+<p><strong>Proof.</strong> At a point of the fiber product take the symplectic vector space with form <span class="math" data-tex="\(\omega_1-\omega_2+\omega_2-\omega_3\)">\(\omega_1-\omega_2+\omega_2-\omega_3\)</span>. The product tangent <span class="math" data-tex="\(L=TC_{12}\times TC_{23}\)">\(L=TC_{12}\times TC_{23}\)</span> is Lagrangian. The middle diagonal</p>
+<span class="math math-display" data-tex="\[
+A=\{0\}\times\operatorname{diag}(TS_2)\times\{0\}
+\]">\[
+A=\{0\}\times\operatorname{diag}(TS_2)\times\{0\}
+\]</span>
+<p>is isotropic. Its symplectic orthogonal imposes equality of the two middle tangent vectors. Clean intersection says that <span class="math" data-tex="\(TF=L\cap A^\omega\)">\(TF=L\cap A^\omega\)</span>. The projection is the quotient by <span class="math" data-tex="\(A\)">\(A\)</span>, so Proposition 2.3 identifies its differential image as a Lagrangian in <span class="math" data-tex="\(TS_1\times TS_3\)">\(TS_1\times TS_3\)</span>. This gives the stated constant rank. The constant-rank theorem gives a local smooth image, and (7.2) follows from rank-nullity. ∎</p>
+<p>This theorem is local. Different local images can be different branches. Proper projection makes fibers compact and the image closed, but a global embedded relation still requires an embedded-image hypothesis or a separate branch description.</p>
+<p><strong>Proposition 7.2 (adding phases).</strong> Suppose nondegenerate phases <span class="math" data-tex="\(\phi(x,y,\theta)\)">\(\phi(x,y,\theta)\)</span> and <span class="math" data-tex="\(\psi(y,z,\tau)\)">\(\psi(y,z,\tau)\)</span> parametrize the two relations in punctured cotangent bundles, with both output and input covectors nonzero, and their fiber product is clean. Then</p>
+<span class="math math-display" data-tex="\[
+\Phi(x,z;y,\theta,\tau)=
+\phi(x,y,\theta)+\psi(y,z,\tau)
+\tag{7.3}
+\]">\[
+\Phi(x,z;y,\theta,\tau)=
+\phi(x,y,\theta)+\psi(y,z,\tau)
+\tag{7.3}
+\]</span>
+<p>is a clean generating family for the local composition, with the same excess. Here dilations scale <span class="math" data-tex="\(\theta,\tau\)">\(\theta,\tau\)</span> and leave <span class="math" data-tex="\(y\)">\(y\)</span> fixed.</p>
+<p><strong>Proof.</strong> The phase-critical equations are</p>
+<span class="math math-display" data-tex="\[
+\phi_\theta&#x27;=0,\qquad\psi_\tau&#x27;=0,
+\qquad\phi_y&#x27;+\psi_y&#x27;=0.
+\]">\[
+\phi_\theta&#x27;=0,\qquad\psi_\tau&#x27;=0,
+\qquad\phi_y&#x27;+\psi_y&#x27;=0.
+\]</span>
+<p>The first two identify the phase-critical manifolds with their canonical relations. The third matches the output frequency of the second with the input frequency of the first. Thus their solution set identifies with <span class="math" data-tex="\(F\)">\(F\)</span>. Clean intersection identifies its tangent space with the kernel of the differentiated equations. The critical map sends it to the composed relation. The dimension definition of excess gives (7.2).</p>
+<p>If one wants ordinary homogeneous coordinates for all the integration parameters, set <span class="math" data-tex="\(r=(|\theta|^2+|\tau|^2)^{1/2}\)">\(r=(|\theta|^2+|\tau|^2)^{1/2}\)</span>, and replace <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(v=ry\)">\(v=ry\)</span>. The variables <span class="math" data-tex="\((v,\theta,\tau)\)">\((v,\theta,\tau)\)</span> all scale with degree one; (7.3), with <span class="math" data-tex="\(y=v/r\)">\(y=v/r\)</span>, is homogeneous of degree one. This change has invertible differential for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, so clean rank and excess are preserved. ∎</p>
+<h2 id="models-and-exercises-with-solutions"><span id="8-models-and-exercises-with-solutions"></span><span id="section-8"></span>8. Models and exercises with solutions</h2>
+<p><strong>A conormal phase.</strong> For <span class="math" data-tex="\(Y=\{x_J=0\}\)">\(Y=\{x_J=0\}\)</span>, the phase <span class="math" data-tex="\(x_J\cdot\theta\)">\(x_J\cdot\theta\)</span> has independent critical equations <span class="math" data-tex="\(x_J=0\)">\(x_J=0\)</span>. Its image is <span class="math" data-tex="\(N^*Y\setminus0\)">\(N^*Y\setminus0\)</span>: the base lies on <span class="math" data-tex="\(Y\)">\(Y\)</span>, the tangential frequencies vanish, and the normal frequencies are <span class="math" data-tex="\(\theta\neq0\)">\(\theta\neq0\)</span>. It uses exactly <span class="math" data-tex="\(\operatorname{codim}Y\)">\(\operatorname{codim}Y\)</span> variables, the minimum in Theorem 6.1.</p>
+<p><strong>A redundant clean phase.</strong> On <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span>, take <span class="math" data-tex="\(\phi(x,\theta_1,\theta_2)=x\theta_1\)">\(\phi(x,\theta_1,\theta_2)=x\theta_1\)</span> on a cone where <span class="math" data-tex="\(\theta_1\neq0\)">\(\theta_1\neq0\)</span>. The critical equations are <span class="math" data-tex="\((x,0)=0\)">\((x,0)=0\)</span>, of rank one. The critical manifold has dimension two, so the excess is one. Its image is the nonzero cotangent fiber at zero; its fibers vary in <span class="math" data-tex="\(\theta_2\)">\(\theta_2\)</span>. The redundant direction is a geometric excess, not another output frequency.</p>
+<p><strong>Exercise 8.1 (input sign; introductory).</strong> Find the canonical relation of <span class="math" data-tex="\(\phi(x,y,\theta)=(x-y)\cdot\theta\)">\(\phi(x,y,\theta)=(x-y)\cdot\theta\)</span>, with <span class="math" data-tex="\(\theta\neq0\)">\(\theta\neq0\)</span>.</p>
+<p><strong>Solution.</strong> The critical equation is <span class="math" data-tex="\(x=y\)">\(x=y\)</span>. The output covector is <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, and the input covector is <span class="math" data-tex="\(-(-\theta)=\theta\)">\(-(-\theta)=\theta\)</span>. The relation is <span class="math" data-tex="\(\{(x,\theta;x,\theta)\}\)">\(\{(x,\theta;x,\theta)\}\)</span>, the identity. Omitting the input reflection would give the wrong relation.</p>
+<p><strong>Exercise 8.2 (a smooth zero set that is not clean; intermediate).</strong> On <span class="math" data-tex="\(X=\mathbb R^2\)">\(X=\mathbb R^2\)</span>, consider</p>
+<span class="math math-display" data-tex="\[
+\phi(x,y,\theta_1,\theta_2)=x^2\theta_1+y\theta_2
+\]">\[
+\phi(x,y,\theta_1,\theta_2)=x^2\theta_1+y\theta_2
+\]</span>
+<p>on a cone where <span class="math" data-tex="\(\theta_2\neq0\)">\(\theta_2\neq0\)</span>. Is it a clean phase?</p>
+<p><strong>Solution.</strong> Its full differential never vanishes there, since <span class="math" data-tex="\(\phi_y&#x27;=\theta_2\neq0\)">\(\phi_y&#x27;=\theta_2\neq0\)</span>. The phase-critical set is <span class="math" data-tex="\(x=y=0\)">\(x=y=0\)</span>, a smooth manifold of dimension two. But <span class="math" data-tex="\(d(\phi_\theta&#x27;)=(d(x^2),dy)\)">\(d(\phi_\theta&#x27;)=(d(x^2),dy)\)</span> has rank one there. Its kernel allows arbitrary <span class="math" data-tex="\(\delta x\)">\(\delta x\)</span>, whereas the tangent space of the critical set has <span class="math" data-tex="\(\delta x=\delta y=0\)">\(\delta x=\delta y=0\)</span>. Thus (5.1) fails. The critical image has <span class="math" data-tex="\(x=y=0\)">\(x=y=0\)</span>, <span class="math" data-tex="\(\xi_x=0\)">\(\xi_x=0\)</span>, <span class="math" data-tex="\(\xi_y=\theta_2\)">\(\xi_y=\theta_2\)</span>, only one dimension, so it cannot be Lagrangian in <span class="math" data-tex="\(T^*\mathbb R^2\)">\(T^*\mathbb R^2\)</span>.</p>
+<p><strong>Exercise 8.3 (a coordinate-independent graph; intermediate).</strong> Verify directly that the cotangent lift (1.5) has a canonical graph, and explain why replacing <span class="math" data-tex="\((df)^{-T}\)">\((df)^{-T}\)</span> by <span class="math" data-tex="\((df)^T\)">\((df)^T\)</span> fails in general.</p>
+<p><strong>Solution.</strong> Preservation of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> was proved by the dual pairing. Differentiation gives preservation of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, hence its graph is canonical. For the one-dimensional map <span class="math" data-tex="\(f(x)=2x\)">\(f(x)=2x\)</span>, the incorrect frequency formula would be <span class="math" data-tex="\(\eta=2\xi\)">\(\eta=2\xi\)</span>; then <span class="math" data-tex="\(d\eta\wedge d(2x)=4d\xi\wedge dx\)">\(d\eta\wedge d(2x)=4d\xi\wedge dx\)</span>. The correct formula is <span class="math" data-tex="\(\eta=\xi/2\)">\(\eta=\xi/2\)</span>, which preserves the form.</p>
+<p><strong>Exercise 8.4 (a composition with excess; advanced).</strong> Let <span class="math" data-tex="\(L_1\subset S_1\)">\(L_1\subset S_1\)</span>, <span class="math" data-tex="\(L_2\subset S_2\)">\(L_2\subset S_2\)</span>, and <span class="math" data-tex="\(L_3\subset S_3\)">\(L_3\subset S_3\)</span> be Lagrangian submanifolds. Compose <span class="math" data-tex="\(C_{12}=L_1\times L_2\)">\(C_{12}=L_1\times L_2\)</span> with <span class="math" data-tex="\(C_{23}=L_2\times L_3\)">\(C_{23}=L_2\times L_3\)</span>. Compute the local fiber and excess.</p>
+<p><strong>Solution.</strong> The fiber product is <span class="math" data-tex="\(L_1\times L_2\times L_3\)">\(L_1\times L_2\times L_3\)</span>, with projection to <span class="math" data-tex="\(L_1\times L_3\)">\(L_1\times L_3\)</span>. Its tangent space is exactly the matching-middle tangent intersection, so it is clean. The fiber is <span class="math" data-tex="\(L_2\)">\(L_2\)</span>, and the excess is <span class="math" data-tex="\(\dim L_2=\dim S_2/2\)">\(\dim L_2=\dim S_2/2\)</span>. The image is Lagrangian for <span class="math" data-tex="\(\omega_1-\omega_3\)">\(\omega_1-\omega_3\)</span>. Compactness of these fibers requires a further condition on <span class="math" data-tex="\(L_2\)">\(L_2\)</span>; clean rank alone supplies none.</p>
+<p><strong>Exercise 8.5 (frequency generating function; advanced).</strong> For <span class="math" data-tex="\(H(\theta)=|\theta|\)">\(H(\theta)=|\theta|\)</span>, compute the Lagrangian generated by <span class="math" data-tex="\(x\cdot\theta-H(\theta)\)">\(x\cdot\theta-H(\theta)\)</span>. Describe its base projection and vertical tangent dimension.</p>
+<p><strong>Solution.</strong> The critical equation is <span class="math" data-tex="\(x=\theta/|\theta|\)">\(x=\theta/|\theta|\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\Lambda=\{(x,r x):|x|=1,\ r&gt;0\}.
+\]">\[
+\Lambda=\{(x,r x):|x|=1,\ r&gt;0\}.
+\]</span>
+<p>The base image is the unit sphere. The derivative of <span class="math" data-tex="\(\theta\mapsto\theta/|\theta|\)">\(\theta\mapsto\theta/|\theta|\)</span> has kernel the radial line, so the vertical tangent dimension is one. A local phase using one variable therefore exists by Theorem 6.1, although the displayed phase uses <span class="math" data-tex="\(n\)">\(n\)</span> variables. This is one component of the conormal bundle of the sphere.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Guillemin–Sternberg] Victor Guillemin and Shlomo Sternberg, <em>Semi-classical Analysis</em>, January 13, 2010. <a href="https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf">Online reading</a>.</li>
+<li>[Hörmander III] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators</em>, corrected second printing, Springer, 1994.</li>
+</ul>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).</em></p>
+<footer><p>Original text: CC0.</p><p><a href="src/phase-space-and-generating-families.md">Editable original Markdown</a>. Source commit 39ee5c0c073550633578b12a80111fc27c86d250.</p></footer></main></body></html>

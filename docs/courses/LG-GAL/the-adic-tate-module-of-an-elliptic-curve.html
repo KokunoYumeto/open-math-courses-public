@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The ℓ-adic Tate module of an elliptic curve · Galois representations</title>
+<meta name="description" content="A lesson of the course Galois representations. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/the-adic-tate-module-of-an-elliptic-curve.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Galois representations</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-ℓ-adic-tate-module-of-an-elliptic-curve">The ℓ-adic Tate module of an elliptic curve</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Point counts on an elliptic curve become traces of a two-dimensional representation. The determinant comes from a pairing; the trace comes from the kernel of a geometric endomorphism. The positivity of its degree then bounds the point count. This chapter develops those three connections, so that the passage from geometry to a Galois representation has a concrete meaning.</p>
+<p>We assume <a href="frobenius-elements-and-determination-by-traces.html">Frobenius elements and determination by traces</a>. The algebraic foundations are the existing programme lesson <em>Abelian varieties</em>: Lemma 9.11 proves curve Riemann–Roch and duality, Example 9.12 constructs a pointed Weierstrass cubic in every characteristic, Lemma 9.0a and Theorem 9.0 construct its group law, and Proposition 6.3 proves finite translation quotients. Section 1 gives the elliptic arguments needed here, including algebraic construction of the dual isogeny and every property of the pairing used below. These proofs apply in positive characteristic. Freely accessible author notes and the Stacks Project, listed below, are source material for comparison; none takes the place of a proof. The Tate module is covariant, and Frobenius is arithmetic. In particular its cyclotomic determinant at a good prime is <span class="math" data-tex="\(p\)">\(p\)</span>, not <span class="math" data-tex="\(p^{-1}\)">\(p^{-1}\)</span>.</p>
+<h2 id="1-algebraic-geometry-before-the-representation">1. Algebraic geometry before the representation</h2>
+<p>An elliptic curve over <span class="math" data-tex="\(K\)">\(K\)</span> is a smooth projective geometrically integral curve of genus one with a specified <span class="math" data-tex="\(K\)">\(K\)</span>-point <span class="math" data-tex="\(O\)">\(O\)</span>. Genus here means <span class="math" data-tex="\(\dim_K H^1(E,\mathcal O_E)\)">\(\dim_K H^1(E,\mathcal O_E)\)</span>. In the arguments about geometric points we extend scalars to <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span>; descent of the constructions will be stated separately.</p>
+<h3 id="1-1-the-group-law-and-divisor-classes">1.1. The group law and divisor classes</h3>
+<p>The earlier curve theorem cited in the introduction gives <span class="math" data-tex="\(\Omega_E^1\simeq\mathcal O_E\)">\(\Omega_E^1\simeq\mathcal O_E\)</span> and
+<span class="math math-display" data-tex="\[
+h^0(E,L)=\deg L,\qquad H^1(E,L)=0\quad(\deg L&gt;0).
+\]">\[
+h^0(E,L)=\deg L,\qquad H^1(E,L)=0\quad(\deg L&gt;0).
+\]</span>
+Indeed duality identifies the latter group with the sections of <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span>, which has negative degree, and Riemann–Roch then gives the former. The same calculation after removing a length-two subscheme shows that <span class="math" data-tex="\(3O\)">\(3O\)</span> separates points and tangent vectors. Thus its three sections embed the curve as a smooth plane cubic. Choosing functions with exact pole orders two and three gives
+<span class="math math-display" data-tex="\[
+y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6,
+\qquad O=[0:1:0].
+\tag{G1}
+\]">\[
+y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6,
+\qquad O=[0:1:0].
+\tag{G1}
+\]</span>
+For completeness, the seven functions <span class="math" data-tex="\(1,x,y,x^2,xy,x^3,y^2\)">\(1,x,y,x^2,xy,x^3,y^2\)</span> lie in the six-dimensional space <span class="math" data-tex="\(H^0(6O)\)">\(H^0(6O)\)</span>; their relation has nonzero <span class="math" data-tex="\(x^3\)">\(x^3\)</span> and <span class="math" data-tex="\(y^2\)">\(y^2\)</span> coefficients, since all smaller pole orders are distinct. Rescaling gives (G1). The line at infinity cuts out <span class="math" data-tex="\(3O\)">\(3O\)</span>. This construction never divides by two or three.</p>
+<p>The chord construction of the earlier Theorem 9.0 has the following algebraic explanation. The line through <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>, with the tangent used when <span class="math" data-tex="\(P=Q\)">\(P=Q\)</span>, meets the cubic in a third point <span class="math" data-tex="\(R\)">\(R\)</span>, counted with multiplicity. Define <span class="math" data-tex="\(P+Q\)">\(P+Q\)</span> as the third point of the line through <span class="math" data-tex="\(R,O\)">\(R,O\)</span>. The quotient of these two line equations has divisor
+<span class="math math-display" data-tex="\[
+(P)+(Q)-(P+Q)-(O).
+\tag{G2}
+\]">\[
+(P)+(Q)-(P+Q)-(O).
+\tag{G2}
+\]</span>
+These operations are morphisms, including at tangents. In the universal family over <span class="math" data-tex="\(E^2\)">\(E^2\)</span>, the three coefficients of a secant generate the ideal of the diagonal. That diagonal is Cartier; dividing by its local equation gives the tangent on the diagonal and a regular map to the dual projective plane. Remove the two graph divisors from the line's intersection divisor. In an étale curve parameter their equations are <span class="math" data-tex="\(t-u,t-v\)">\(t-u,t-v\)</span>, and divisibility by each implies divisibility by their product, also on the diagonal. The residual divisor has fibre length one. Its local equation consequently has unit derivative in the curve parameter, so it is étale of degree one over <span class="math" data-tex="\(E^2\)">\(E^2\)</span>, hence the graph of a morphism. Reflection through <span class="math" data-tex="\(O\)">\(O\)</span> is constructed in the same way. This is the family argument in the earlier theorem; it applies in characteristics two and three as well.</p>
+<p>The map
+<span class="math math-display" data-tex="\[
+j:E(\bar K)\longrightarrow\operatorname{Pic}^0(E_{\bar K}),
+\qquad P\longmapsto[(P)-(O)]
+\tag{G3}
+\]">\[
+j:E(\bar K)\longrightarrow\operatorname{Pic}^0(E_{\bar K}),
+\qquad P\longmapsto[(P)-(O)]
+\tag{G3}
+\]</span>
+is bijective. A degree-zero divisor class, after adding <span class="math" data-tex="\(O\)">\(O\)</span>, has degree one, hence has a unique effective representative by the displayed dimension formula. This gives surjectivity and uniqueness. Equivalently, two distinct points cannot be linearly equivalent: their quotient function would give a degree-one map to <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>, whereas a smooth genus-one curve has a nonzero regular differential and <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> has none. Equation (G2) says that <span class="math" data-tex="\(j\)">\(j\)</span> carries addition to addition of classes. Associativity, commutativity, identity and inverse follow by injectivity. Equality on geometric points proves equality of the resulting morphisms, because their sources <span class="math" data-tex="\(E,E^2,E^3\)">\(E,E^2,E^3\)</span> are geometrically reduced and their target is separated. This proves the group identities as scheme identities, so they persist under every base change.</p>
+<p>In particular, over <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span> a divisor <span class="math" data-tex="\(\sum n_P(P)\)">\(\sum n_P(P)\)</span> is principal exactly when
+<span class="math math-display" data-tex="\[
+\sum n_P=0\quad\text{and}\quad\sum n_PP=O.
+\tag{G4}
+\]">\[
+\sum n_P=0\quad\text{and}\quad\sum n_PP=O.
+\tag{G4}
+\]</span></p>
+<h3 id="1-2-degree-and-multiplication-in-every-characteristic">1.2. Degree and multiplication in every characteristic</h3>
+<p>A nonzero group homomorphism <span class="math" data-tex="\(u:E\to E&#x27;\)">\(u:E\to E&#x27;\)</span> is nonconstant: a constant homomorphism has value <span class="math" data-tex="\(O\)">\(O\)</span>. A nonconstant map of smooth projective integral curves has finite fibres and is finite and surjective. Here we use the direct projective-curve proof in the earlier Lemma 9.0a: choose a hyperplane missing a finite target fibre and remove the closed image of its intersection with the source. The inverse image of the remaining affine target neighbourhood is affine; the proof there shows, using valuation rings, that its coordinate algebra is integral and of finite type over the target, hence finite. That argument applies to any projective target curve, since it only uses these affine neighbourhoods. At a target DVR the finite module is torsion-free, hence free. Consequently the map is finite flat, and
+<span class="math math-display" data-tex="\[
+\deg u=[K(E):u^*K(E&#x27;)]
+=\operatorname{length}u^{-1}(O).
+\tag{G5}
+\]">\[
+\deg u=[K(E):u^*K(E&#x27;)]
+=\operatorname{length}u^{-1}(O).
+\tag{G5}
+\]</span>
+Translation identifies every geometric fibre with the schematic kernel. The degree is positive, degrees multiply under composition by the tower formula, and the zero homomorphism has degree zero. Pulling back the degree-one bundle <span class="math" data-tex="\(\mathcal O_{E&#x27;}(O)\)">\(\mathcal O_{E&#x27;}(O)\)</span> has degree <span class="math" data-tex="\(\deg u\)">\(\deg u\)</span>; this includes nonreduced fibres and inseparable maps.</p>
+<p><strong>Lemma 1.1 (multiplication degree).</strong> For every integer <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span>, <span class="math" data-tex="\([m]\)">\([m]\)</span> is an isogeny of degree <span class="math" data-tex="\(m^2\)">\(m^2\)</span>, in every characteristic.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(L=\mathcal O_E(O)\)">\(L=\mathcal O_E(O)\)</span>. On <span class="math" data-tex="\(E\times E\)">\(E\times E\)</span>, the rational function <span class="math" data-tex="\(x(P)-x(Q)\)">\(x(P)-x(Q)\)</span> from (G1) has divisor
+<span class="math math-display" data-tex="\[
+\Delta+\Delta^- -2(E\times\{O\})-2(\{O\}\times E),
+\]">\[
+\Delta+\Delta^- -2(E\times\{O\})-2(\{O\}\times E),
+\]</span>
+where <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is <span class="math" data-tex="\(P=Q\)">\(P=Q\)</span> and <span class="math" data-tex="\(\Delta^-\)">\(\Delta^-\)</span> is <span class="math" data-tex="\(P=-Q\)">\(P=-Q\)</span>. Its poles have order two in each variable. Generically its zeros are precisely the two points with a given <span class="math" data-tex="\(x\)">\(x\)</span>-coordinate, and each has order one. Inversion is <span class="math" data-tex="\((x,y)\mapsto(x,-y-a_1x-a_3)\)">\((x,y)\mapsto(x,-y-a_1x-a_3)\)</span>; it is nontrivial even in characteristic two. If both <span class="math" data-tex="\(a_1,a_3\)">\(a_1,a_3\)</span> vanished there, the affine equation would have a singular geometric point, since its <span class="math" data-tex="\(y\)">\(y\)</span>-derivative would vanish identically. Thus the generic quadratic <span class="math" data-tex="\(x\)">\(x\)</span>-map is separable, justifying the two multiplicities in all characteristics. Divisors are determined in codimension one, so their possible intersections cause no extra term.</p>
+<p>In line bundles this identity is
+<span class="math math-display" data-tex="\[
+s^*L\otimes d^*L\simeq p_1^*L^{\otimes2}\otimes p_2^*L^{\otimes2},
+\quad s(P,Q)=P+Q, d(P,Q)=P-Q.
+\tag{G6}
+\]">\[
+s^*L\otimes d^*L\simeq p_1^*L^{\otimes2}\otimes p_2^*L^{\otimes2},
+\quad s(P,Q)=P+Q, d(P,Q)=P-Q.
+\tag{G6}
+\]</span>
+Unlike substituting into the rational function, pulling back this bundle identity is valid even for a map contained in a diagonal. Pull it back along <span class="math" data-tex="\(P\mapsto([a]P,[b]P)\)">\(P\mapsto([a]P,[b]P)\)</span> and take degrees. With <span class="math" data-tex="\(d_m=\deg([m]^*L)\)">\(d_m=\deg([m]^*L)\)</span>, including <span class="math" data-tex="\(d_0=0\)">\(d_0=0\)</span>, it gives
+<span class="math math-display" data-tex="\[
+d_{a+b}+d_{a-b}=2d_a+2d_b.
+\]">\[
+d_{a+b}+d_{a-b}=2d_a+2d_b.
+\]</span>
+Now <span class="math" data-tex="\(d_1=1\)">\(d_1=1\)</span>, inversion preserves <span class="math" data-tex="\(L\)">\(L\)</span>, and the recurrence with <span class="math" data-tex="\(b=1\)">\(b=1\)</span> gives <span class="math" data-tex="\(d_m=m^2\)">\(d_m=m^2\)</span> by induction for all integers. Its positivity for <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span> excludes a constant map. Formula (G5) identifies this bundle degree with the isogeny degree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="1-3-separability-and-torsion">1.3. Separability and torsion</h3>
+<p>For a group homomorphism, translation identifies its differential at every geometric point with its differential at <span class="math" data-tex="\(O\)">\(O\)</span>. A finite map between smooth curves is separable exactly when this differential is nonzero: at function fields a finite extension has vanishing relative differentials exactly when it is separable, and a nonzero differential on curves detects that condition. A separable isogeny is therefore unramified everywhere. Its finite flatness makes it étale. Its geometric kernel is then reduced, so (G5) gives
+<span class="math math-display" data-tex="\[
+\#\ker u(\bar K)=\deg u\quad(u\text{ separable}).
+\tag{G7}
+\]">\[
+\#\ker u(\bar K)=\deg u\quad(u\text{ separable}).
+\tag{G7}
+\]</span>
+These equivalences are also the dimension-one case of the earlier <em>Abelian varieties</em>, Theorem 6.8. For multiplication the tangent group law gives <span class="math" data-tex="\(d[m]=m\,\mathrm{id}\)">\(d[m]=m\,\mathrm{id}\)</span>, by induction and inversion.</p>
+<p><strong>Lemma 1.2 (prime-to-characteristic torsion).</strong> If <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> is invertible in <span class="math" data-tex="\(K\)">\(K\)</span>, then
+<span class="math math-display" data-tex="\[
+E[m](\bar K)\simeq(\mathbb Z/m\mathbb Z)^2.
+\]">\[
+E[m](\bar K)\simeq(\mathbb Z/m\mathbb Z)^2.
+\]</span>
+If <span class="math" data-tex="\(\ell\ne\operatorname{char}K\)">\(\ell\ne\operatorname{char}K\)</span>, multiplication by <span class="math" data-tex="\(\ell\)">\(\ell\)</span> maps <span class="math" data-tex="\(E[\ell^{a+1}]\)">\(E[\ell^{a+1}]\)</span> onto <span class="math" data-tex="\(E[\ell^a]\)">\(E[\ell^a]\)</span>.</p>
+<p><strong>Proof.</strong> Lemma 1.1 and the differential calculation make <span class="math" data-tex="\([m]\)">\([m]\)</span> finite étale of degree <span class="math" data-tex="\(m^2\)">\(m^2\)</span>. Thus its kernel has exactly <span class="math" data-tex="\(m^2\)">\(m^2\)</span> geometric points, all separable over <span class="math" data-tex="\(K\)">\(K\)</span>. For <span class="math" data-tex="\(m=\ell^a\)">\(m=\ell^a\)</span>, write the finite abelian group as <span class="math" data-tex="\(\bigoplus_{i=1}^r\mathbb Z/\ell^{b_i}\)">\(\bigoplus_{i=1}^r\mathbb Z/\ell^{b_i}\)</span>, with <span class="math" data-tex="\(1\le b_i\le a\)">\(1\le b_i\le a\)</span>. Its subgroup killed by <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is <span class="math" data-tex="\(E[\ell]\)">\(E[\ell]\)</span>, of size <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, so <span class="math" data-tex="\(r=2\)">\(r=2\)</span>. Its total size gives <span class="math" data-tex="\(b_1+b_2=2a\)">\(b_1+b_2=2a\)</span>; therefore both exponents are <span class="math" data-tex="\(a\)">\(a\)</span>. The primary decomposition gives the general statement for <span class="math" data-tex="\(m\)">\(m\)</span>. Finally, surjectivity of <span class="math" data-tex="\([\ell]\)">\([\ell]\)</span> gives a point <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(\ell Q=P\)">\(\ell Q=P\)</span> for any <span class="math" data-tex="\(P\in E[\ell^a]\)">\(P\in E[\ell^a]\)</span>; it satisfies <span class="math" data-tex="\(\ell^{a+1}Q=O\)">\(\ell^{a+1}Q=O\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="1-4-dual-isogenies-including-inseparable-ones">1.4. Dual isogenies, including inseparable ones</h3>
+<p><strong>Lemma 1.3 (the dual).</strong> An isogeny <span class="math" data-tex="\(u:E\to E&#x27;\)">\(u:E\to E&#x27;\)</span>, of degree <span class="math" data-tex="\(d\)">\(d\)</span>, has a unique dual <span class="math" data-tex="\(\widehat u:E&#x27;\to E\)">\(\widehat u:E&#x27;\to E\)</span>, defined over the same field, such that
+<span class="math math-display" data-tex="\[
+\widehat u u=[d],\qquad u\widehat u=[d].
+\tag{G8}
+\]">\[
+\widehat u u=[d],\qquad u\widehat u=[d].
+\tag{G8}
+\]</span>
+On degree-zero divisor classes it is pullback under (G3), and <span class="math" data-tex="\(\widehat{[m]}=[m]\)">\(\widehat{[m]}=[m]\)</span>.</p>
+<p><strong>Proof.</strong> We construct a morphism realizing pullback of classes. Put <span class="math" data-tex="\(F=K(E&#x27;)\)">\(F=K(E&#x27;)\)</span>, and let <span class="math" data-tex="\(Q\in E&#x27;(F)\)">\(Q\in E&#x27;(F)\)</span> be its generic point. The divisor <span class="math" data-tex="\(D=u^*((Q)-(O))\)">\(D=u^*((Q)-(O))\)</span> on <span class="math" data-tex="\(E_F\)">\(E_F\)</span> has degree zero. Riemann–Roch makes <span class="math" data-tex="\(D+(O)\)">\(D+(O)\)</span> linearly equivalent to a unique effective degree-one divisor; that divisor is a point <span class="math" data-tex="\(R\in E(F)\)">\(R\in E(F)\)</span>. Thus <span class="math" data-tex="\(R\)">\(R\)</span> gives a rational map <span class="math" data-tex="\(E&#x27;\dashrightarrow E\)">\(E&#x27;\dashrightarrow E\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>. It extends to a morphism <span class="math" data-tex="\(\widehat u:E&#x27;\to E\)">\(\widehat u:E&#x27;\to E\)</span>. Indeed embed <span class="math" data-tex="\(E\)">\(E\)</span> in projective space. At any closed point of <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span>, its smooth local ring is a DVR; scale the rational homogeneous coordinates so that they all lie in this ring and one is a unit. The equations of <span class="math" data-tex="\(E\)">\(E\)</span> continue to hold, giving the extension there. The finitely many coordinate expressions spread it to a neighbourhood, and separatedness makes these extensions agree. This proves the curve extension directly.</p>
+<p>Its value at every geometric point still represents the pulled-back class. To check this specialization, on the regular surface <span class="math" data-tex="\(E\times E&#x27;\)">\(E\times E&#x27;\)</span> take the relative divisor <span class="math" data-tex="\(D\)">\(D\)</span> obtained by pulling back the diagonal under <span class="math" data-tex="\(u\times\mathrm{id}\)">\(u\times\mathrm{id}\)</span>, minus the fixed fibre divisor <span class="math" data-tex="\(u^*(O)\times E&#x27;\)">\(u^*(O)\times E&#x27;\)</span>. The line bundle of <span class="math" data-tex="\(D+\{O\}\times E&#x27;-\Gamma_{\widehat u}\)">\(D+\{O\}\times E&#x27;-\Gamma_{\widehat u}\)</span> is trivial on the generic fibre over <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span>. A rational trivializing section consequently has a divisor supported on vertical prime divisors. Each such prime divisor is an entire fibre <span class="math" data-tex="\(E\times\{Q_0\}\)">\(E\times\{Q_0\}\)</span>, since the curve is geometrically integral; hence the bundle is pulled back from a divisor on <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span>. Its restriction to every fibre is trivial. This proves the class assertion on every fibre, including after extension to <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span>. Pullback adds divisor classes, so (G3) makes <span class="math" data-tex="\(\widehat u\)">\(\widehat u\)</span> a group homomorphism and gives <span class="math" data-tex="\(\widehat u(O)=O\)">\(\widehat u(O)=O\)</span>.</p>
+<p>Now work over <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span> and write the kernel divisor as <span class="math" data-tex="\(\sum_R e_R(R)\)">\(\sum_R e_R(R)\)</span>. Its length is <span class="math" data-tex="\(\sum_R e_R=d\)">\(\sum_R e_R=d\)</span>, and the fibre at <span class="math" data-tex="\(u(P)\)">\(u(P)\)</span> is its translate <span class="math" data-tex="\(\sum_R e_R(P+R)\)">\(\sum_R e_R(P+R)\)</span>. Thus the sum of the points in the difference of the two fibres is
+<span class="math math-display" data-tex="\[
+\sum_R e_R(P+R)-\sum_R e_RR=dP.
+\]">\[
+\sum_R e_R(P+R)-\sum_R e_RR=dP.
+\]</span>
+Equations (G3)–(G4) give <span class="math" data-tex="\(\widehat u u(P)=[d]P\)">\(\widehat u u(P)=[d]P\)</span>. This calculation keeps the fibre multiplicities, so it includes inseparable isogenies. Equality on geometric points is equality of morphisms as above. Since <span class="math" data-tex="\(u\)">\(u\)</span> is surjective,
+<span class="math" data-tex="\(u\widehat u u=u[d]=[d]u\)">\(u\widehat u u=u[d]=[d]u\)</span> gives the other identity. The first makes <span class="math" data-tex="\(\widehat u\)">\(\widehat u\)</span> nonzero and hence an isogeny. It also gives uniqueness by cancelling the surjective <span class="math" data-tex="\(u\)">\(u\)</span>. For <span class="math" data-tex="\(u=[m]\)">\(u=[m]\)</span>, Lemma 1.1 says <span class="math" data-tex="\(d=m^2\)">\(d=m^2\)</span>, and <span class="math" data-tex="\([m][m]=[m^2]\)">\([m][m]=[m^2]\)</span>; uniqueness gives the last assertion. The construction and the unique extension were over <span class="math" data-tex="\(K\)">\(K\)</span>, so no descent of a chosen geometric kernel point is required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="1-5-constructing-and-proving-the-pairing">1.5. Constructing and proving the pairing</h3>
+<p>Fix <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> prime to <span class="math" data-tex="\(\operatorname{char}K\)">\(\operatorname{char}K\)</span>, and first work over <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span>. For <span class="math" data-tex="\(Q\in E[m]\)">\(Q\in E[m]\)</span>, choose a degree-zero divisor <span class="math" data-tex="\(D_Q\)">\(D_Q\)</span> in its class (G3). By Lemma 1.3 the class of <span class="math" data-tex="\([m]^*D_Q\)">\([m]^*D_Q\)</span> is <span class="math" data-tex="\([m]Q=O\)">\([m]Q=O\)</span>, so there is a rational function <span class="math" data-tex="\(g_Q\)">\(g_Q\)</span> with
+<span class="math math-display" data-tex="\[
+\operatorname{div}g_Q=[m]^*D_Q.
+\]">\[
+\operatorname{div}g_Q=[m]^*D_Q.
+\]</span>
+For <span class="math" data-tex="\(P\in E[m]\)">\(P\in E[m]\)</span>, translation by <span class="math" data-tex="\(P\)">\(P\)</span> preserves this divisor. The quotient <span class="math" data-tex="\(g_Q(X)/g_Q(X+P)\)">\(g_Q(X)/g_Q(X+P)\)</span> has no zeros or poles and is therefore constant. Define
+<span class="math math-display" data-tex="\[
+e_m(P,Q)=\frac{g_Q(X)}{g_Q(X+P)}.
+\tag{G9}
+\]">\[
+e_m(P,Q)=\frac{g_Q(X)}{g_Q(X+P)}.
+\tag{G9}
+\]</span>
+The displayed choice is the reciprocal-translation convention in the freely accessible <a href="https://www.jmilne.org/math/CourseNotes/AV.pdf">Milne notes, I §13, pp.57–58</a>. Reversing all pairing values would give the same determinant statements.</p>
+<p><strong>Lemma 1.4 (pairing properties).</strong> Formula (G9) is independent of all choices and gives a perfect, bilinear, alternating and Galois-equivariant pairing
+<span class="math" data-tex="\(E[m]\times E[m]\to\mu_m\)">\(E[m]\times E[m]\to\mu_m\)</span>. For <span class="math" data-tex="\(u:E\to E&#x27;\)">\(u:E\to E&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+e_m^{E&#x27;}(uP,Q)=e_m^E(P,\widehat uQ).
+\tag{1}
+\]">\[
+e_m^{E&#x27;}(uP,Q)=e_m^E(P,\widehat uQ).
+\tag{1}
+\]</span>
+For <span class="math" data-tex="\(r,n\)">\(r,n\)</span> prime to the characteristic and <span class="math" data-tex="\(P,Q\in E[rn]\)">\(P,Q\in E[rn]\)</span>,
+<span class="math math-display" data-tex="\[
+e_{rn}(P,Q)^r=e_n(rP,rQ).
+\tag{G10}
+\]">\[
+e_{rn}(P,Q)^r=e_n(rP,rQ).
+\tag{G10}
+\]</span></p>
+<p><strong>Proof.</strong> A constant multiplier of <span class="math" data-tex="\(g_Q\)">\(g_Q\)</span> cancels in (G9). Replacing <span class="math" data-tex="\(D_Q\)">\(D_Q\)</span> by <span class="math" data-tex="\(D_Q+\operatorname{div}h\)">\(D_Q+\operatorname{div}h\)</span> replaces <span class="math" data-tex="\(g_Q\)">\(g_Q\)</span>, up to a scalar, by <span class="math" data-tex="\(g_Q(h\circ[m])\)">\(g_Q(h\circ[m])\)</span>. Its extra factor is invariant under translation by <span class="math" data-tex="\(P\)">\(P\)</span>, so it cancels too. The value is consequently independent of the representative. Translating repeatedly proves additivity in <span class="math" data-tex="\(P\)">\(P\)</span>; translating <span class="math" data-tex="\(m\)">\(m\)</span> times proves its value has <span class="math" data-tex="\(m\)">\(m\)</span>-th power one. Since <span class="math" data-tex="\(D_{Q+Q&#x27;}\)">\(D_{Q+Q&#x27;}\)</span> can be represented by <span class="math" data-tex="\(D_Q+D_{Q&#x27;}\)">\(D_Q+D_{Q&#x27;}\)</span>, the function <span class="math" data-tex="\(g_Qg_{Q&#x27;}\)">\(g_Qg_{Q&#x27;}\)</span> proves additivity in <span class="math" data-tex="\(Q\)">\(Q\)</span>. These arguments include the zero point.</p>
+<p>For nondegeneracy, suppose <span class="math" data-tex="\(e_m(P,Q)=1\)">\(e_m(P,Q)=1\)</span> for every <span class="math" data-tex="\(P\in E[m]\)">\(P\in E[m]\)</span>. Then <span class="math" data-tex="\(g_Q\)">\(g_Q\)</span> is invariant under all deck translations of <span class="math" data-tex="\([m]\)">\([m]\)</span>. They are <span class="math" data-tex="\(m^2\)">\(m^2\)</span> distinct automorphisms, and <span class="math" data-tex="\([m]\)">\([m]\)</span> has degree <span class="math" data-tex="\(m^2\)">\(m^2\)</span>. Put <span class="math" data-tex="\(F=\bar K(E)\)">\(F=\bar K(E)\)</span> and <span class="math" data-tex="\(F_0=[m]^*F\)">\(F_0=[m]^*F\)</span>. Every invariant element <span class="math" data-tex="\(g\)">\(g\)</span> has these same <span class="math" data-tex="\(m^2\)">\(m^2\)</span> automorphisms fixing <span class="math" data-tex="\(F_0(g)\)">\(F_0(g)\)</span>. A finite extension has at most its degree many embeddings: in a tower of simple generators each next image is a root of its minimal polynomial, so the root bounds multiply to the tower degree. Hence <span class="math" data-tex="\([F:F_0(g)]\ge m^2=[F:F_0]\)">\([F:F_0(g)]\ge m^2=[F:F_0]\)</span>, forcing <span class="math" data-tex="\(g\in F_0\)">\(g\in F_0\)</span>. Applied to <span class="math" data-tex="\(g_Q\)">\(g_Q\)</span>, this gives <span class="math" data-tex="\(g_Q=h\circ[m]\)">\(g_Q=h\circ[m]\)</span>. Now
+<span class="math" data-tex="\([m]^*D_Q=[m]^*\operatorname{div}h\)">\([m]^*D_Q=[m]^*\operatorname{div}h\)</span>. Pullback of divisors is injective, since every target point has a nonempty fibre and positive multiplicities. Hence <span class="math" data-tex="\(D_Q\)">\(D_Q\)</span> is principal and <span class="math" data-tex="\(Q=O\)">\(Q=O\)</span>. This gives an injection of the second factor into <span class="math" data-tex="\(\operatorname{Hom}(E[m],\mu_m)\)">\(\operatorname{Hom}(E[m],\mu_m)\)</span>. Both groups have size <span class="math" data-tex="\(m^2\)">\(m^2\)</span>, by Lemma 1.2, so the injection is an isomorphism: the pairing is perfect.</p>
+<p>We prove actual alternation, including even <span class="math" data-tex="\(m\)">\(m\)</span>, rather than infer it from skew symmetry. Take <span class="math" data-tex="\(P\)">\(P\)</span> of order <span class="math" data-tex="\(s\mid m\)">\(s\mid m\)</span>, and quotient by its cyclic subgroup:
+<span class="math math-display" data-tex="\[
+\beta:E\longrightarrow B=E/\langle P\rangle.
+\]">\[
+\beta:E\longrightarrow B=E/\langle P\rangle.
+\]</span>
+The earlier finite-translation-quotient Proposition 6.3 constructs the smooth proper group curve <span class="math" data-tex="\(B\)">\(B\)</span>, its group law and the finite flat map <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of degree <span class="math" data-tex="\(s\)">\(s\)</span>. The map is étale: its base change along itself is the projection <span class="math" data-tex="\(\langle P\rangle\times E\to E\)">\(\langle P\rangle\times E\to E\)</span>, whose relative differentials vanish, since <span class="math" data-tex="\(\langle P\rangle\)">\(\langle P\rangle\)</span> is a constant finite group. Faithful flatness therefore makes <span class="math" data-tex="\(\Omega_{E/B}=0\)">\(\Omega_{E/B}=0\)</span>; the finite flat differential criterion gives étaleness. It has genus one: <span class="math" data-tex="\(\beta^*\Omega_B^1\simeq\Omega_E^1\)">\(\beta^*\Omega_B^1\simeq\Omega_E^1\)</span>, so <span class="math" data-tex="\(s\deg\Omega_B^1=0\)">\(s\deg\Omega_B^1=0\)</span>; the earlier curve duality formula <span class="math" data-tex="\(\deg\Omega_B^1=2g_B-2\)">\(\deg\Omega_B^1=2g_B-2\)</span> gives <span class="math" data-tex="\(g_B=1\)">\(g_B=1\)</span>. Its quotient group law agrees with the pointed cubic law: Corollary 2.3 of that lesson makes the identity map between these two pointed abelian varieties a homomorphism. Multiplication factors as <span class="math" data-tex="\([m]=v\beta\)">\([m]=v\beta\)</span>, where <span class="math" data-tex="\(v:B\to E\)">\(v:B\to E\)</span> is separable of degree <span class="math" data-tex="\(m^2/s\)">\(m^2/s\)</span>; separability follows either from the tower of function fields or from the nonzero differential of the composite. Choose <span class="math" data-tex="\(R\)">\(R\)</span> with <span class="math" data-tex="\(mR=P\)">\(mR=P\)</span>. The two fibres of <span class="math" data-tex="\(v\)">\(v\)</span> over <span class="math" data-tex="\(P,O\)">\(P,O\)</span> are respectively <span class="math" data-tex="\(\beta R+\ker v\)">\(\beta R+\ker v\)</span> and <span class="math" data-tex="\(\ker v\)">\(\ker v\)</span>. Thus the point sum of
+<span class="math" data-tex="\(D=v^*((P)-(O))\)">\(D=v^*((P)-(O))\)</span>, on <span class="math" data-tex="\(B\)">\(B\)</span>, is
+<span class="math math-display" data-tex="\[
+\frac{m^2}{s}\beta R
+=\beta\left(\frac ms P\right)=O.
+\]">\[
+\frac{m^2}{s}\beta R
+=\beta\left(\frac ms P\right)=O.
+\]</span>
+It also has degree zero. Formula (G4) on the elliptic curve <span class="math" data-tex="\(B\)">\(B\)</span> makes it principal, say <span class="math" data-tex="\(D=\operatorname{div}h\)">\(D=\operatorname{div}h\)</span>. Therefore
+<span class="math" data-tex="\(\operatorname{div}g_P=\beta^*D=\operatorname{div}(h\circ\beta)\)">\(\operatorname{div}g_P=\beta^*D=\operatorname{div}(h\circ\beta)\)</span>. Up to a scalar <span class="math" data-tex="\(g_P=h\circ\beta\)">\(g_P=h\circ\beta\)</span>, which is invariant under translation by <span class="math" data-tex="\(P\)">\(P\)</span>. Formula (G9) gives <span class="math" data-tex="\(e_m(P,P)=1\)">\(e_m(P,P)=1\)</span>. Bilinearity applied to <span class="math" data-tex="\(P+Q\)">\(P+Q\)</span> now gives <span class="math" data-tex="\(e_m(P,Q)e_m(Q,P)=1\)">\(e_m(P,Q)e_m(Q,P)=1\)</span>, and perfection holds in both variables. This cyclic-quotient proof uses no reciprocity theorem as an unstated input.</p>
+<p>For (1), represent <span class="math" data-tex="\(Q\)">\(Q\)</span> by <span class="math" data-tex="\(D\)">\(D\)</span> on <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span>. Pullback represents <span class="math" data-tex="\(\widehat uQ\)">\(\widehat uQ\)</span>, and <span class="math" data-tex="\(g_Q\circ u\)">\(g_Q\circ u\)</span> has divisor
+<span class="math" data-tex="\(u^*[m]^*D=[m]^*u^*D\)">\(u^*[m]^*D=[m]^*u^*D\)</span>. Translating <span class="math" data-tex="\(X\)">\(X\)</span> by <span class="math" data-tex="\(P\)">\(P\)</span> in this function is translating <span class="math" data-tex="\(uX\)">\(uX\)</span> by <span class="math" data-tex="\(uP\)">\(uP\)</span>. Substitution into (G9) proves (1), without any separability assumption on <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>For compatibility, if <span class="math" data-tex="\(P\in E[rn]\)">\(P\in E[rn]\)</span> and <span class="math" data-tex="\(Q\in E[n]\)">\(Q\in E[n]\)</span>, use <span class="math" data-tex="\(g_Q\circ[r]\)">\(g_Q\circ[r]\)</span> at level <span class="math" data-tex="\(rn\)">\(rn\)</span>, where <span class="math" data-tex="\(g_Q\)">\(g_Q\)</span> is chosen at level <span class="math" data-tex="\(n\)">\(n\)</span>. Its divisor is <span class="math" data-tex="\([rn]^*D_Q\)">\([rn]^*D_Q\)</span>. Formula (G9) gives
+<span class="math" data-tex="\(e_{rn}(P,Q)=e_n(rP,Q)\)">\(e_{rn}(P,Q)=e_n(rP,Q)\)</span>. Replace <span class="math" data-tex="\(Q\)">\(Q\)</span> by <span class="math" data-tex="\(rQ\)">\(rQ\)</span> and use bilinearity to obtain (G10). In particular
+<span class="math math-display" data-tex="\[
+e_{\ell^{a+1}}(P,Q)^\ell
+=e_{\ell^a}(\ell P,\ell Q),
+\]">\[
+e_{\ell^{a+1}}(P,Q)^\ell
+=e_{\ell^a}(\ell P,\ell Q),
+\]</span>
+which is exactly the inverse-limit compatibility required later. Finally a field automorphism sends a function and its divisor to their conjugates and respects translation. Applying it to (G9) gives <span class="math" data-tex="\(e_m(\sigma P,\sigma Q)=\sigma(e_m(P,Q))\)">\(e_m(\sigma P,\sigma Q)=\sigma(e_m(P,Q))\)</span>. The torsion points lie in the separable closure by Lemma 1.2, so this is the asserted Galois action over an arbitrary field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="1-6-frobenius-and-rational-points">1.6. Frobenius and rational points</h3>
+<p><strong>Lemma 1.5 (Frobenius morphism degree).</strong> On an elliptic curve over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, the coordinate map <span class="math" data-tex="\(\varphi:(x,y)\mapsto(x^q,y^q)\)">\(\varphi:(x,y)\mapsto(x^q,y^q)\)</span> is a purely inseparable isogeny of degree <span class="math" data-tex="\(q\)">\(q\)</span>. The map <span class="math" data-tex="\(1-\varphi\)">\(1-\varphi\)</span> is separable and
+<span class="math math-display" data-tex="\[
+\deg(1-\varphi)=\#E(\mathbb F_q).
+\tag{G11}
+\]">\[
+\deg(1-\varphi)=\#E(\mathbb F_q).
+\tag{G11}
+\]</span></p>
+<p><strong>Proof.</strong> Frobenius respects every polynomial group-law identity over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, hence is a homomorphism. Put <span class="math" data-tex="\(F=\overline{\mathbb F}_q(E)\)">\(F=\overline{\mathbb F}_q(E)\)</span>. Smoothness provides a separating parameter <span class="math" data-tex="\(t\)">\(t\)</span>, so <span class="math" data-tex="\(F\)">\(F\)</span> is a finite separable extension of <span class="math" data-tex="\(\overline{\mathbb F}_q(t)\)">\(\overline{\mathbb F}_q(t)\)</span>, of some degree <span class="math" data-tex="\(h\)">\(h\)</span>. Frobenius carries a basis to a basis and gives
+<span class="math" data-tex="\([F^q:\overline{\mathbb F}_q(t^q)]=h\)">\([F^q:\overline{\mathbb F}_q(t^q)]=h\)</span>, whereas
+<span class="math" data-tex="\([\overline{\mathbb F}_q(t):\overline{\mathbb F}_q(t^q)]=q\)">\([\overline{\mathbb F}_q(t):\overline{\mathbb F}_q(t^q)]=q\)</span>. The tower formula yields <span class="math" data-tex="\([F:F^q]=q\)">\([F:F^q]=q\)</span>. Because the constants are perfect, the image of <span class="math" data-tex="\(\varphi^*\)">\(\varphi^*\)</span> is <span class="math" data-tex="\(F^q\)">\(F^q\)</span>. Its extension is purely inseparable: every <span class="math" data-tex="\(z\in F\)">\(z\in F\)</span> has <span class="math" data-tex="\(z^q\in F^q\)">\(z^q\in F^q\)</span>. Thus the degree is <span class="math" data-tex="\(q\)">\(q\)</span>, and its geometric fibres have one point. The separating parameter used here is supplied by the smooth curve's étale-coordinate chart; the earlier Kähler-differential and smoothness lessons prove that coordinate criterion.</p>
+<p>The differential of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is zero, so the differential of <span class="math" data-tex="\(1-\varphi\)">\(1-\varphi\)</span> is the identity. It is consequently a nonzero separable isogeny. Its geometric kernel is exactly the points whose coordinates are fixed by the <span class="math" data-tex="\(q\)">\(q\)</span>-power map, namely <span class="math" data-tex="\(E(\mathbb F_q)\)">\(E(\mathbb F_q)\)</span>. Formula (G7) proves (G11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The smooth proper model and finite étale lifting needed for good reduction will be proved in Section 3 before their arithmetic application. The preceding arguments already supply every elliptic-curve input for the two determinant theorems.</p>
+<h2 id="2-a-representation-from-all-ℓ-power-torsion">2. A representation from all ℓ-power torsion</h2>
+<p>Assume <span class="math" data-tex="\(\ell\ne\operatorname{char}K\)">\(\ell\ne\operatorname{char}K\)</span>. Define
+<span class="math math-display" data-tex="\[
+ T_\ell E=\varprojlim_a E[\ell^a](\bar K),
+ \qquad V_\ell E=T_\ell E\otimes_{\mathbb Z_\ell}\mathbb Q_\ell,
+\]">\[
+ T_\ell E=\varprojlim_a E[\ell^a](\bar K),
+ \qquad V_\ell E=T_\ell E\otimes_{\mathbb Z_\ell}\mathbb Q_\ell,
+\]</span>
+with transition map multiplication by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Choosing a basis at level <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, lift it successively to bases at every higher level. A lift is a basis because its reduction is a basis and each torsion group is free of rank two over <span class="math" data-tex="\(\mathbb Z/\ell^a\mathbb Z\)">\(\mathbb Z/\ell^a\mathbb Z\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ T_\ell E\simeq\mathbb Z_\ell^2,
+ \qquad V_\ell E\simeq\mathbb Q_\ell^2.
+\]">\[
+ T_\ell E\simeq\mathbb Z_\ell^2,
+ \qquad V_\ell E\simeq\mathbb Q_\ell^2.
+\]</span>
+Galois acts on every torsion group and respects the transition maps. The resulting homomorphism
+<span class="math math-display" data-tex="\[
+ \rho_{E,\ell}:G_K\longrightarrow\operatorname{GL}(T_\ell E)
+\]">\[
+ \rho_{E,\ell}:G_K\longrightarrow\operatorname{GL}(T_\ell E)
+\]</span>
+is continuous: prescribing the matrix modulo <span class="math" data-tex="\(\ell^a\)">\(\ell^a\)</span> prescribes its action on a finite set of algebraic points and hence is an open condition.</p>
+<p>The compatible Weil pairings give a perfect alternating pairing
+<span class="math math-display" data-tex="\[
+ T_\ell E\times T_\ell E\longrightarrow\mathbb Z_\ell(1).
+ \tag{2}
+\]">\[
+ T_\ell E\times T_\ell E\longrightarrow\mathbb Z_\ell(1).
+ \tag{2}
+\]</span>
+Here <span class="math" data-tex="\(\mathbb Z_\ell(1)=\varprojlim_a\mu_{\ell^a}\)">\(\mathbb Z_\ell(1)=\varprojlim_a\mu_{\ell^a}\)</span>, with the Galois action of the cyclotomic character.</p>
+<p><strong>Theorem 2.1 (cyclotomic determinant).</strong> For an elliptic curve over any field <span class="math" data-tex="\(K\)">\(K\)</span>, with <span class="math" data-tex="\(\ell\ne\operatorname{char}K\)">\(\ell\ne\operatorname{char}K\)</span>,
+<span class="math math-display" data-tex="\[
+ \det\rho_{E,\ell}=\chi_\ell|_{G_K}.
+\]">\[
+ \det\rho_{E,\ell}=\chi_\ell|_{G_K}.
+\]</span></p>
+<p><strong>Proof.</strong> A perfect alternating pairing on a rank-two module identifies its exterior square with the target of the pairing. Thus (2) identifies <span class="math" data-tex="\(\bigwedge^2T_\ell E\)">\(\bigwedge^2T_\ell E\)</span> with <span class="math" data-tex="\(\mathbb Z_\ell(1)\)">\(\mathbb Z_\ell(1)\)</span>. On the exterior square a matrix acts by its determinant; on the target Galois acts by <span class="math" data-tex="\(\chi_\ell\)">\(\chi_\ell\)</span>. Equivariance gives their equality. Equivalently, in a basis <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> modulo <span class="math" data-tex="\(\ell^a\)">\(\ell^a\)</span>, bilinearity and alternation give <span class="math" data-tex="\(e_{\ell^a}(gP,gQ)=e_{\ell^a}(P,Q)^{\det g}\)">\(e_{\ell^a}(gP,gQ)=e_{\ell^a}(P,Q)^{\det g}\)</span>, whereas Galois equivariance gives exponent <span class="math" data-tex="\(\chi_\ell(g)\)">\(\chi_\ell(g)\)</span>. Perfection makes the pairing value primitive, so the exponents agree modulo <span class="math" data-tex="\(\ell^a\)">\(\ell^a\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same argument applied to an endomorphism gives a second interpretation of determinant.</p>
+<p><strong>Theorem 2.2 (degree as determinant).</strong> For every endomorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of an elliptic curve and every <span class="math" data-tex="\(\ell\)">\(\ell\)</span> different from the field characteristic,
+<span class="math math-display" data-tex="\[
+ \det(\alpha\mid T_\ell E)=\deg\alpha
+ \quad\text{in }\mathbb Z_\ell.
+ \tag{3}
+\]">\[
+ \det(\alpha\mid T_\ell E)=\deg\alpha
+ \quad\text{in }\mathbb Z_\ell.
+ \tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> The zero endomorphism satisfies (3). Otherwise it is an isogeny. Substitute <span class="math" data-tex="\(Q=\alpha Q&#x27;\)">\(Q=\alpha Q&#x27;\)</span> into (1). The dual-isogeny identity gives
+<span class="math math-display" data-tex="\[
+ e_{\ell^a}(\alpha P,\alpha Q&#x27;)
+ =e_{\ell^a}(P,\widehat\alpha\alpha Q&#x27;)
+ =e_{\ell^a}(P,Q&#x27;)^{\deg\alpha}.
+\]">\[
+ e_{\ell^a}(\alpha P,\alpha Q&#x27;)
+ =e_{\ell^a}(P,\widehat\alpha\alpha Q&#x27;)
+ =e_{\ell^a}(P,Q&#x27;)^{\deg\alpha}.
+\]</span>
+In a torsion basis the left side is also <span class="math" data-tex="\(e_{\ell^a}(P,Q&#x27;)^{\det\alpha}\)">\(e_{\ell^a}(P,Q&#x27;)^{\det\alpha}\)</span>. Its primitive order gives <span class="math" data-tex="\(\det\alpha\equiv\deg\alpha\pmod{\ell^a}\)">\(\det\alpha\equiv\deg\alpha\pmod{\ell^a}\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>. Taking the inverse limit proves equality, including for an inseparable isogeny. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The action of <span class="math" data-tex="\(\operatorname{End}(E)\)">\(\operatorname{End}(E)\)</span> on <span class="math" data-tex="\(T_\ell E\)">\(T_\ell E\)</span> is faithful. Indeed an endomorphism with zero action kills every <span class="math" data-tex="\(E[\ell^a]\)">\(E[\ell^a]\)</span>, since the projections from the inverse limit are surjective. A nonzero endomorphism is an isogeny and has a finite geometric kernel, which cannot contain these groups of unbounded size. Consequently a polynomial identity on the Tate module is also an identity of elliptic-curve endomorphisms.</p>
+<h2 id="3-good-reduction-makes-frobenius-visible">3. Good reduction makes Frobenius visible</h2>
+<p>Let <span class="math" data-tex="\(K_v\)">\(K_v\)</span> be a complete discretely valued field with residue field <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, and let <span class="math" data-tex="\(E/K_v\)">\(E/K_v\)</span> have good reduction <span class="math" data-tex="\(\widetilde E\)">\(\widetilde E\)</span>. Assume <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>.</p>
+<p>Good reduction means that <span class="math" data-tex="\(E\)">\(E\)</span> extends to a smooth proper group curve <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> over the valuation ring <span class="math" data-tex="\(R\)">\(R\)</span>, with geometrically integral genus-one fibres and its origin section. We need the following relative and local arguments.</p>
+<p><strong>Relative finiteness lemma.</strong> A proper étale morphism with Noetherian target is finite étale.</p>
+<p><strong>Proof.</strong> We give the proof needed for our model, without importing the general proper quasi-finite theorem. At a point <span class="math" data-tex="\(y\)">\(y\)</span> of the target, put <span class="math" data-tex="\(A=\mathcal O_{Y,y}\)">\(A=\mathcal O_{Y,y}\)</span>, choose a separable closure of its residue field <span class="math" data-tex="\(k\)">\(k\)</span>, and form <span class="math" data-tex="\(H\)">\(H\)</span>, the filtered colimit of marked affine étale neighbourhoods. A marking embeds the selected point's residue field in <span class="math" data-tex="\(k^{\mathrm{sep}}\)">\(k^{\mathrm{sep}}\)</span>. Products give common refinements, and the open diagonal of an étale map equalizes two arrows with the same marking. Thus the system is filtered. Principal refinements invert every element outside the selected prime. Isolating its factor in the finite étale closed fibre shows that <span class="math" data-tex="\(H\)">\(H\)</span> is local, with maximal ideal <span class="math" data-tex="\(\mathfrak m_AH\)">\(\mathfrak m_AH\)</span>. Its residue field is <span class="math" data-tex="\(k^{\mathrm{sep}}\)">\(k^{\mathrm{sep}}\)</span>: any finite separable residue extension occurs by lifting its monic defining polynomial and inverting its derivative. These are the explicit constructions in the earlier <em>Étale neighbourhoods, henselization and quasi-finite morphisms</em>, Sections 1 and 3.</p>
+<p>Every point of the closed fibre of an étale <span class="math" data-tex="\(H\)">\(H\)</span>-scheme has a section through it. Indeed choose an affine chart through that point. Its finite presentation and its invertible square Jacobian descend to an étale stage <span class="math" data-tex="\(B\)">\(B\)</span> of the colimit. The chart, as an étale <span class="math" data-tex="\(B\)">\(B\)</span>-algebra, is itself an allowed marked étale <span class="math" data-tex="\(A\)">\(A\)</span>-stage. Its canonical map to <span class="math" data-tex="\(H\)">\(H\)</span> gives the section. The residue marking exists because <span class="math" data-tex="\(k^{\mathrm{sep}}\)">\(k^{\mathrm{sep}}\)</span> has no proper finite separable extensions. This proves the section assertion directly from the colimit; it does not use a general quasi-finite factorization theorem.</p>
+<p>Apply this to the proper étale map after base change to <span class="math" data-tex="\(H\)">\(H\)</span>. Its closed fibre has finitely many points, since it is quasi-compact and étale over a field. Their sections are open immersions because the map is étale, and closed immersions because it is separated. Distinct sections are disjoint: their equalizer is open and closed in the connected local spectrum and misses its closed point. The complement of their union is therefore proper over <span class="math" data-tex="\(H\)">\(H\)</span>. Its closed image misses the closed point, so is empty, since every nonempty closed subset of a local spectrum contains that point. The base change is a finite disjoint union of copies of <span class="math" data-tex="\(\operatorname{Spec}H\)">\(\operatorname{Spec}H\)</span>.</p>
+<p>This splitting holds over an étale neighbourhood <span class="math" data-tex="\(U\to Y\)">\(U\to Y\)</span> of <span class="math" data-tex="\(y\)">\(y\)</span>, rather than only over the colimit. The finitely many sections descend to one common stage: their affine coordinate images and their finitely many relations involve only finitely many coefficients. These are finite presentations because the target is Noetherian. Remove the closed equalizers of distinct descended sections. Their images are then disjoint open-and-closed sections. The complement is proper; remove its closed image, which misses the selected point. After this shrinking the entire source is the disjoint union of those sections over <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>Finally descend finiteness from this étale cover. The fully proved module and affine descent in the opening section of the earlier <em>Quotients and torsors</em> makes the original morphism affine locally on the target. Its coordinate algebra <span class="math" data-tex="\(C\)">\(C\)</span> becomes finite over a faithfully flat coordinate extension <span class="math" data-tex="\(B/A\)">\(B/A\)</span>. Choose finitely many elements of <span class="math" data-tex="\(C\)">\(C\)</span> spanning after that extension by collecting the coefficients of finite <span class="math" data-tex="\(B\)">\(B\)</span>-module generators. Their <span class="math" data-tex="\(A\)">\(A\)</span>-span <span class="math" data-tex="\(N\)">\(N\)</span> has <span class="math" data-tex="\((C/N)\otimes_AB=0\)">\((C/N)\otimes_AB=0\)</span>, so faithful flatness gives <span class="math" data-tex="\(C=N\)">\(C=N\)</span>. Thus <span class="math" data-tex="\(C\)">\(C\)</span> is finite over <span class="math" data-tex="\(A\)">\(A\)</span>. Affine target opens have finite étale covers of this kind, by quasi-compactness and openness of étale maps. This proves finiteness everywhere. Étaleness was already assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.0 (étale multiplication and lifting).</strong> If <span class="math" data-tex="\(m\)">\(m\)</span> is a unit of <span class="math" data-tex="\(R\)">\(R\)</span>, then <span class="math" data-tex="\([m]:\mathcal E\to\mathcal E\)">\([m]:\mathcal E\to\mathcal E\)</span> and its kernel are finite étale, of degree and rank <span class="math" data-tex="\(m^2\)">\(m^2\)</span>, respectively. Over the henselian unramified valuation ring with residue field <span class="math" data-tex="\(\overline{\mathbb F}_q\)">\(\overline{\mathbb F}_q\)</span>, that kernel is a disjoint union of <span class="math" data-tex="\(m^2\)">\(m^2\)</span> sections. Its generic and special points correspond bijectively.</p>
+<p><strong>Proof.</strong> The tangent group law over <span class="math" data-tex="\(R\)">\(R\)</span> gives <span class="math" data-tex="\(d[m]=m\,\mathrm{id}\)">\(d[m]=m\,\mathrm{id}\)</span> at the origin; translations give this at every point. Both source and target are smooth of relative dimension one. In local smooth coordinates their relative Jacobian is therefore invertible, so the map is étale. The coordinate criterion is proved in the programme's <em>Smooth morphisms</em>, Theorem 4.1, together with <em>Étale morphisms and their local structure</em>, Sections 1–2. One can check the lifting criterion directly: smoothness first lifts a source point across a square-zero ideal; the resulting error in its image is a tangent vector, and the inverse differential corrects it uniquely. This proves formal étaleness, and the finite-presentation criterion in those earlier lessons makes it étale. The map is proper: its graph is closed and the projection is a base change of the proper structure map. The preceding relative finiteness lemma makes it finite. A finite étale map is locally free; its rank, calculated on either elliptic fibre by Lemma 1.1, is <span class="math" data-tex="\(m^2\)">\(m^2\)</span>. The target is connected: any nonempty open-and-closed component meets the generic fibre because a smooth map is open, and that fibre is connected. Thus there is one rank. Pulling back along the origin gives the asserted kernel.</p>
+<p>Here is the lifting argument in this local-field setting, including its algebra. For every finite extension of <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, lift a monic separable irreducible defining polynomial to <span class="math" data-tex="\(R[T]\)">\(R[T]\)</span>. Its quotient is a finite free complete local <span class="math" data-tex="\(R\)">\(R\)</span>-algebra whose reduction is that field; its derivative is a unit. Its maximal ideal is generated by the original uniformizer, and division by successive powers of that uniformizer shows it is a DVR. Its fraction field is the corresponding unramified extension. Compatible such rings inside an algebraic closure have a union <span class="math" data-tex="\(R^{\mathrm{nr}}\)">\(R^{\mathrm{nr}}\)</span> with residue field <span class="math" data-tex="\(\overline{\mathbb F}_q\)">\(\overline{\mathbb F}_q\)</span>. The unramified extension and residue-field correspondence is also proved in the earlier <em>Unramified and totally ramified extensions</em>, Theorem 2.1.</p>
+<p>This union is henselian. A polynomial, a simple residue root and their finitely many coefficients belong to some finite stage after enlarging its residue field. There Newton iteration
+<span class="math math-display" data-tex="\[
+b_{j+1}=b_j-\frac{f(b_j)}{f&#x27;(b_j)}
+\]">\[
+b_{j+1}=b_j-\frac{f(b_j)}{f&#x27;(b_j)}
+\]</span>
+converges in that complete DVR: <span class="math" data-tex="\(f&#x27;(b_j)\)">\(f&#x27;(b_j)\)</span> remains a unit, and Taylor's formula shows the error valuation at least doubles at each step. Two roots with the same residue are equal, since their difference times a unit is zero by the same Taylor identity. Thus every simple residue root lifts uniquely to <span class="math" data-tex="\(R^{\mathrm{nr}}\)">\(R^{\mathrm{nr}}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(B\)">\(B\)</span> be the coordinate algebra of the kernel over <span class="math" data-tex="\(R^{\mathrm{nr}}\)">\(R^{\mathrm{nr}}\)</span>. It is finite locally free, hence free over this local ring, and its reduction is <span class="math" data-tex="\(\overline{\mathbb F}_q^{\,m^2}\)">\(\overline{\mathbb F}_q^{\,m^2}\)</span>, since a finite étale algebra over an algebraically closed field is a product of that field. Choose <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> with distinct coordinates in this reduction; the residue field is infinite. Its multiplication characteristic polynomial <span class="math" data-tex="\(F(T)\)">\(F(T)\)</span> reduces to a product of <span class="math" data-tex="\(m^2\)">\(m^2\)</span> distinct linear factors. Hensel's argument lifts these to roots <span class="math" data-tex="\(a_i\in R^{\mathrm{nr}}\)">\(a_i\in R^{\mathrm{nr}}\)</span>, with all <span class="math" data-tex="\(a_i-a_j\)">\(a_i-a_j\)</span> units, and polynomial division gives <span class="math" data-tex="\(F=\prod_i(T-a_i)\)">\(F=\prod_i(T-a_i)\)</span>. Cayley–Hamilton and the interpolation polynomials
+<span class="math math-display" data-tex="\[
+e_i=\prod_{j\ne i}\frac{b-a_j}{a_i-a_j}
+\]">\[
+e_i=\prod_{j\ne i}\frac{b-a_j}{a_i-a_j}
+\]</span>
+give orthogonal idempotents with sum one. Consequently <span class="math" data-tex="\(B=\prod_i e_iB\)">\(B=\prod_i e_iB\)</span>. Each summand is a finite projective module of residue dimension one, hence free of rank one by Nakayama. Its unit generates it, so its algebra is the base ring itself. We obtain <span class="math" data-tex="\(B\simeq(R^{\mathrm{nr}})^{m^2}\)">\(B\simeq(R^{\mathrm{nr}})^{m^2}\)</span>. This proves the section decomposition and the point bijection, rather than importing them from an external reference. The argument is the special case of the freely accessible Stacks lemma <a href="https://stacks.math.columbia.edu/tag/04GK">Tag 04GK</a> needed here. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.1 (unramified torsion).</strong> Reduction identifies the prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> torsion groups equivariantly:
+<span class="math math-display" data-tex="\[
+ E[\ell^a](\overline{K_v})\simeq
+ \widetilde E[\ell^a](\overline{\mathbb F}_q).
+\]">\[
+ E[\ell^a](\overline{K_v})\simeq
+ \widetilde E[\ell^a](\overline{\mathbb F}_q).
+\]</span>
+Inertia acts trivially on <span class="math" data-tex="\(T_\ell E\)">\(T_\ell E\)</span>, and arithmetic Frobenius acts through the endomorphism <span class="math" data-tex="\(\varphi:(x,y)\mapsto(x^q,y^q)\)">\(\varphi:(x,y)\mapsto(x^q,y^q)\)</span> of <span class="math" data-tex="\(\widetilde E\)">\(\widetilde E\)</span>.</p>
+<p><strong>Proof.</strong> Apply Lemma 3.0 with <span class="math" data-tex="\(m=\ell^a\)">\(m=\ell^a\)</span>. Its <span class="math" data-tex="\(\ell^{2a}\)">\(\ell^{2a}\)</span> sections over <span class="math" data-tex="\(R^{\mathrm{nr}}\)">\(R^{\mathrm{nr}}\)</span> give all generic torsion points: they already have the number <span class="math" data-tex="\(\ell^{2a}\)">\(\ell^{2a}\)</span> proved in Lemma 1.2. Their generic points are defined over the maximal unramified extension, so inertia fixes every one of them. Reduction bijects them with the special-fibre torsion points and respects addition and the residue-field Galois action. On that residue field arithmetic Frobenius is the <span class="math" data-tex="\(q\)">\(q\)</span>-power map, acting on coordinates as <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. The identifications commute with multiplication by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, so they pass to the Tate module. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>To compute the trace we work entirely on the special fibre. Lemma 1.5 proves that its <span class="math" data-tex="\(q\)">\(q\)</span>-power Frobenius has degree <span class="math" data-tex="\(q\)">\(q\)</span>, and that <span class="math" data-tex="\(1-\varphi\)">\(1-\varphi\)</span> is separable with the rational points as its kernel. Thus
+<span class="math math-display" data-tex="\[
+ \#\widetilde E(\mathbb F_q)=\deg(1-\varphi).
+ \tag{4}
+\]">\[
+ \#\widetilde E(\mathbb F_q)=\deg(1-\varphi).
+ \tag{4}
+\]</span></p>
+<p><strong>Theorem 3.2 (Frobenius polynomial).</strong> Put <span class="math" data-tex="\(a_q=q+1-\#\widetilde E(\mathbb F_q)\)">\(a_q=q+1-\#\widetilde E(\mathbb F_q)\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \det(X-\varphi\mid V_\ell\widetilde E)=X^2-a_qX+q.
+ \tag{5}
+\]">\[
+ \det(X-\varphi\mid V_\ell\widetilde E)=X^2-a_qX+q.
+ \tag{5}
+\]</span>
+For <span class="math" data-tex="\(E/\mathbb Q\)">\(E/\mathbb Q\)</span> and a prime <span class="math" data-tex="\(p\ne\ell\)">\(p\ne\ell\)</span> of good reduction, this is the arithmetic-Frobenius polynomial of <span class="math" data-tex="\(\rho_{E,\ell}\)">\(\rho_{E,\ell}\)</span>. It is independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(t=\operatorname{tr}(\varphi\mid V_\ell\widetilde E)\)">\(t=\operatorname{tr}(\varphi\mid V_\ell\widetilde E)\)</span>. Formula (3) gives <span class="math" data-tex="\(\det\varphi=q\)">\(\det\varphi=q\)</span>. Since the space has dimension two,
+<span class="math math-display" data-tex="\[
+ \det(1-\varphi)=1-t+q.
+\]">\[
+ \det(1-\varphi)=1-t+q.
+\]</span>
+Equations (3) and (4) give <span class="math" data-tex="\(\#\widetilde E(\mathbb F_q)=1-t+q\)">\(\#\widetilde E(\mathbb F_q)=1-t+q\)</span>, so <span class="math" data-tex="\(t=a_q\)">\(t=a_q\)</span>. This proves (5). Theorem 3.1 identifies this operator with arithmetic Frobenius on the original Tate module. Both coefficients of (5) are integer point-counting data, so no choice of <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span> affects them. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This establishes more than the determinant assertion alone. In particular, it identifies the trace as an integer without needing to show separately that an endomorphism has an integral trace.</p>
+<h2 id="4-positivity-gives-the-hasse-bound">4. Positivity gives the Hasse bound</h2>
+<p><strong>Theorem 4.1 (Hasse).</strong> Every elliptic curve over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ |q+1-\#E(\mathbb F_q)|\le2\sqrt q.
+\]">\[
+ |q+1-\#E(\mathbb F_q)|\le2\sqrt q.
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(a=q+1-\#E(\mathbb F_q)\)">\(a=q+1-\#E(\mathbb F_q)\)</span>. For integers <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, the endomorphism <span class="math" data-tex="\([m]+[n]\varphi\)">\([m]+[n]\varphi\)</span> has nonnegative degree. By Theorem 2.2 and the trace and determinant in (5),
+<span class="math math-display" data-tex="\[
+ 0\le\deg([m]+[n]\varphi)
+ =\det(m+n\varphi)=m^2+amn+qn^2.
+ \tag{6}
+\]">\[
+ 0\le\deg([m]+[n]\varphi)
+ =\det(m+n\varphi)=m^2+amn+qn^2.
+ \tag{6}
+\]</span>
+If <span class="math" data-tex="\(a^2&gt;4q\)">\(a^2&gt;4q\)</span>, the real polynomial <span class="math" data-tex="\(z^2+az+q\)">\(z^2+az+q\)</span> is negative on a nonempty open interval around <span class="math" data-tex="\(-a/2\)">\(-a/2\)</span>. That interval contains a rational number <span class="math" data-tex="\(m/n\)">\(m/n\)</span>, with <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>. Multiplying its negative value by <span class="math" data-tex="\(n^2\)">\(n^2\)</span> contradicts (6). Hence <span class="math" data-tex="\(a^2\le4q\)">\(a^2\le4q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The two roots <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> of (5) have complex absolute value <span class="math" data-tex="\(\sqrt q\)">\(\sqrt q\)</span>. If the discriminant is negative, they are complex conjugates with product <span class="math" data-tex="\(q\)">\(q\)</span>. If it is zero, both are <span class="math" data-tex="\(\pm\sqrt q\)">\(\pm\sqrt q\)</span>. The bound excludes a positive discriminant. This observation will control convergence of the elliptic-curve Euler product.</p>
+<p>The cohomological normalization deserves care. There are natural identifications
+<span class="math math-display" data-tex="\[
+ H^1_{\mathrm{et}}(E_{\bar K},\mathbb Q_\ell)
+ \simeq(V_\ell E)^\vee\simeq V_\ell E(-1).
+\]">\[
+ H^1_{\mathrm{et}}(E_{\bar K},\mathbb Q_\ell)
+ \simeq(V_\ell E)^\vee\simeq V_\ell E(-1).
+\]</span>
+Here is a proof of the first identification as well as the normalization. Over <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span>, adjoining an <span class="math" data-tex="\(m\)">\(m\)</span>-th root of a unit is étale when <span class="math" data-tex="\(m\)">\(m\)</span> is prime to the characteristic: its polynomial derivative is a unit at the root. Hence the Kummer sequence
+<span class="math math-display" data-tex="\[
+1\longrightarrow\mu_m\longrightarrow\mathbf G_m
+\xrightarrow{\,m\,}\mathbf G_m\longrightarrow1
+\]">\[
+1\longrightarrow\mu_m\longrightarrow\mathbf G_m
+\xrightarrow{\,m\,}\mathbf G_m\longrightarrow1
+\]</span>
+is exact on the étale site. Its degree-one calculation says
+<span class="math" data-tex="\(H^1_{\mathrm{et}}(E_{\bar K},\mu_m)\simeq\operatorname{Pic}(E_{\bar K})[m]\)">\(H^1_{\mathrm{et}}(E_{\bar K},\mu_m)\simeq\operatorname{Pic}(E_{\bar K})[m]\)</span>, since every nonzero constant has an <span class="math" data-tex="\(m\)">\(m\)</span>-th root. One may see this directly: a <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>-torsor supplies transition functions of a line bundle with a trivialized <span class="math" data-tex="\(m\)">\(m\)</span>-th power. Conversely, choose an étale cover on which the trivialization has an <span class="math" data-tex="\(m\)">\(m\)</span>-th root; the line-bundle transitions then become <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>-valued. Changes of frames give exactly the coboundaries, and divisibility of the constants removes the trivialization ambiguity. A torsion line bundle has degree zero, so (G3) identifies this Picard torsion with <span class="math" data-tex="\(E[m]\)">\(E[m]\)</span>. These constructions are natural under Galois and multiplication in <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>Taking the inverse limit for <span class="math" data-tex="\(m=\ell^a\)">\(m=\ell^a\)</span> therefore gives <span class="math" data-tex="\(H^1_{\mathrm{et}}(E_{\bar K},\mathbb Z_\ell(1))\simeq T_\ell E\)">\(H^1_{\mathrm{et}}(E_{\bar K},\mathbb Z_\ell(1))\simeq T_\ell E\)</span>. In the continuous-cohomology convention the only possible degree-one correction is <span class="math" data-tex="\(\varprojlim{}^1 H^0(E_{\bar K},\mu_{\ell^a})\)">\(\varprojlim{}^1 H^0(E_{\bar K},\mu_{\ell^a})\)</span>. This correction vanishes explicitly: for a system with surjective maps <span class="math" data-tex="\(u_a:A_{a+1}\to A_a\)">\(u_a:A_{a+1}\to A_a\)</span>, the map <span class="math" data-tex="\((b_a)\mapsto(b_a-u_ab_{a+1})\)">\((b_a)\mapsto(b_a-u_ab_{a+1})\)</span> on <span class="math" data-tex="\(\prod A_a\)">\(\prod A_a\)</span> is onto, by choosing <span class="math" data-tex="\(b_1\)">\(b_1\)</span> and then successively lifting <span class="math" data-tex="\(b_a-c_a\)">\(b_a-c_a\)</span> for any prescribed <span class="math" data-tex="\((c_a)\)">\((c_a)\)</span>; its cokernel is the defining <span class="math" data-tex="\(\varprojlim{}^1\)">\(\varprojlim{}^1\)</span>. Here <span class="math" data-tex="\(A_a=\mu_{\ell^a}\)">\(A_a=\mu_{\ell^a}\)</span> and <span class="math" data-tex="\(u_a\)">\(u_a\)</span> is the surjective power map. Tensoring with <span class="math" data-tex="\(\mathbb Q_\ell\)">\(\mathbb Q_\ell\)</span> and untwisting gives <span class="math" data-tex="\(H^1_{\mathrm{et}}(E_{\bar K},\mathbb Q_\ell)\simeq V_\ell E(-1)\)">\(H^1_{\mathrm{et}}(E_{\bar K},\mathbb Q_\ell)\simeq V_\ell E(-1)\)</span>. Lemma 1.4 identifies this last module with <span class="math" data-tex="\((V_\ell E)^\vee\)">\((V_\ell E)^\vee\)</span>, via its perfect pairing. Arithmetic Frobenius on the dual has the inverses of the eigenvalues in (5). Geometric Frobenius on the dual has the original eigenvalues. This proves the degree-one cohomological interpretation while retaining our covariant arithmetic convention.</p>
+<h2 id="5-two-point-counting-examples">5. Two point-counting examples</h2>
+<p>For a nonsingular projective Weierstrass cubic there is one point at infinity. Count the affine points one <span class="math" data-tex="\(x\)">\(x\)</span>-coordinate at a time.</p>
+<p><strong>Example 5.1.</strong> Let <span class="math" data-tex="\(E:y^2+y=x^3-x^2\)">\(E:y^2+y=x^3-x^2\)</span>. Its integral discriminant is <span class="math" data-tex="\(-11\)">\(-11\)</span>. To specify and check the arithmetic convention, for (G1) put
+<span class="math math-display" data-tex="\[
+b_2=a_1^2+4a_2,\quad b_4=a_1a_3+2a_4,\quad b_6=a_3^2+4a_6,
+\]">\[
+b_2=a_1^2+4a_2,\quad b_4=a_1a_3+2a_4,\quad b_6=a_3^2+4a_6,
+\]</span>
+<span class="math math-display" data-tex="\[
+b_8=a_1^2a_6+4a_2a_6-a_1a_3a_4+a_2a_3^2-a_4^2,
+\quad\Delta=-b_2^2b_8-8b_4^3-27b_6^2+9b_2b_4b_6.
+\]">\[
+b_8=a_1^2a_6+4a_2a_6-a_1a_3a_4+a_2a_3^2-a_4^2,
+\quad\Delta=-b_2^2b_8-8b_4^3-27b_6^2+9b_2b_4b_6.
+\]</span>
+Here <span class="math" data-tex="\((b_2,b_4,b_6,b_8)=(-4,0,1,-1)\)">\((b_2,b_4,b_6,b_8)=(-4,0,1,-1)\)</span>, so <span class="math" data-tex="\(\Delta=16-27=-11\)">\(\Delta=16-27=-11\)</span>. We check smoothness directly. The point at infinity is smooth because the homogeneous equation's <span class="math" data-tex="\(Z\)">\(Z\)</span>-derivative there is one. For the affine equation <span class="math" data-tex="\(f=y^2+y-x^3+x^2\)">\(f=y^2+y-x^3+x^2\)</span>, its <span class="math" data-tex="\(y\)">\(y\)</span>-derivative is one in characteristic two. In odd characteristic a singular point must have <span class="math" data-tex="\(y=-1/2\)">\(y=-1/2\)</span> and <span class="math" data-tex="\(x(2-3x)=0\)">\(x(2-3x)=0\)</span>. In characteristic three this forces <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, where <span class="math" data-tex="\(f=-1/4\ne0\)">\(f=-1/4\ne0\)</span>. In every other odd characteristic the possibilities are <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, again impossible, and <span class="math" data-tex="\(x=2/3\)">\(x=2/3\)</span>, where <span class="math" data-tex="\(f=-11/108\)">\(f=-11/108\)</span>. Thus the equation is nonsingular at exactly the primes other than <span class="math" data-tex="\(11\)">\(11\)</span>. In increasing order <span class="math" data-tex="\(x=0,1,\dots,p-1\)">\(x=0,1,\dots,p-1\)</span>, the numbers of <span class="math" data-tex="\(y\)">\(y\)</span>-solutions are:</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(p\)">\(p\)</span></th>
+<th>Numbers of solutions for successive <span class="math" data-tex="\(x\)">\(x\)</span></th>
+<th><span class="math" data-tex="\(\#E(\mathbb F_p)\)">\(\#E(\mathbb F_p)\)</span></th>
+<th><span class="math" data-tex="\(a_p\)">\(a_p\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2, 2</td>
+<td>5</td>
+<td>−2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2, 2, 0</td>
+<td>5</td>
+<td>−1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2, 2, 0, 0, 0</td>
+<td>5</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2, 2, 0, 0, 2, 2, 1</td>
+<td>10</td>
+<td>−2</td>
+</tr>
+<tr>
+<td>13</td>
+<td>2, 2, 2, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0</td>
+<td>10</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>For odd <span class="math" data-tex="\(p\)">\(p\)</span>, these entries are obtained by setting <span class="math" data-tex="\(u=2y+1\)">\(u=2y+1\)</span>: one solves <span class="math" data-tex="\(u^2=1+4x^3-4x^2\)">\(u^2=1+4x^3-4x^2\)</span>. A zero right side gives one solution, a nonzero square gives two, and a nonsquare gives none. At <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the left side <span class="math" data-tex="\(y^2+y\)">\(y^2+y\)</span> is zero for both elements and so is <span class="math" data-tex="\(x^3-x^2\)">\(x^3-x^2\)</span>.</p>
+<p>The good-prime traces just computed coincide with the corresponding coefficients of <span class="math" data-tex="\(f=\eta(z)^2\eta(11z)^2\)">\(f=\eta(z)^2\eta(11z)^2\)</span>. Indeed
+<span class="math math-display" data-tex="\[
+ f=q\prod_{n\ge1}(1-q^n)^2(1-q^{11n})^2.
+\]">\[
+ f=q\prod_{n\ge1}(1-q^n)^2(1-q^{11n})^2.
+\]</span>
+Multiplying only factors with exponent at most <span class="math" data-tex="\(12\)">\(12\)</span> gives
+<span class="math math-display" data-tex="\[
+ f=q-2q^2-q^3+2q^4+q^5+2q^6-2q^7
+ -2q^9-2q^{10}+q^{11}-2q^{12}+4q^{13}+O(q^{14}).
+\]">\[
+ f=q-2q^2-q^3+2q^4+q^5+2q^6-2q^7
+ -2q^9-2q^{10}+q^{11}-2q^{12}+4q^{13}+O(q^{14}).
+\]</span>
+Thus the prime coefficients through <span class="math" data-tex="\(13\)">\(13\)</span> agree with the counts. The absence of a <span class="math" data-tex="\(q^8\)">\(q^8\)</span> term means its coefficient is zero. Identification with a modular form is treated in <em>Galois representations of weight-two newforms</em>; this calculation itself only multiplies a finite product.</p>
+<p>At <span class="math" data-tex="\(11\)">\(11\)</span> the cubic is singular, so Theorem 3.2 does not apply. Its projective point count is <span class="math" data-tex="\(11\)">\(11\)</span>, computed from the affine counts <span class="math" data-tex="\(2,2,0,0,0,2,0,1,1,0,2\)">\(2,2,0,0,0,2,0,1,1,0,2\)</span> and the point at infinity. Its singular point is <span class="math" data-tex="\((8,5)\)">\((8,5)\)</span>; putting <span class="math" data-tex="\(u=x-8,v=y-5\)">\(u=x-8,v=y-5\)</span> gives <span class="math" data-tex="\(v^2=u^2+u^3\)">\(v^2=u^2+u^3\)</span>. The two tangent lines <span class="math" data-tex="\(v=u\)">\(v=u\)</span> and <span class="math" data-tex="\(v=-u\)">\(v=-u\)</span> are distinct and defined over <span class="math" data-tex="\(\mathbb F_{11}\)">\(\mathbb F_{11}\)</span>. It is therefore a split node. Under the multiplicative local-factor convention, which assigns coefficient <span class="math" data-tex="\(+1\)">\(+1\)</span> to a split node and <span class="math" data-tex="\(-1\)">\(-1\)</span> to a nonsplit node, its bad-prime coefficient is <span class="math" data-tex="\(1\)">\(1\)</span> and its factor has degree one. The general comparison of this convention with the Galois local factor belongs to the bad-reduction lesson. Counting this singular cubic must not be presented as good reduction.</p>
+<p><strong>Example 5.2.</strong> Let <span class="math" data-tex="\(E&#x27;:y^2=x^3-x\)">\(E&#x27;:y^2=x^3-x\)</span>. The displayed discriminant formula gives <span class="math" data-tex="\((b_2,b_4,b_6,b_8)=(0,-2,0,-1)\)">\((b_2,b_4,b_6,b_8)=(0,-2,0,-1)\)</span>, hence <span class="math" data-tex="\(\Delta=64\)">\(\Delta=64\)</span>. The point at infinity is smooth as before. At an odd prime an affine singular point would have <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, hence <span class="math" data-tex="\(x=0,1,-1\)">\(x=0,1,-1\)</span>, but the <span class="math" data-tex="\(x\)">\(x\)</span>-derivative <span class="math" data-tex="\(1-3x^2\)">\(1-3x^2\)</span> is respectively <span class="math" data-tex="\(1,-2,-2\)">\(1,-2,-2\)</span>, all nonzero. In characteristic two, <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> is singular. This verifies the good and bad primes directly. At odd primes,
+<span class="math math-display" data-tex="\[
+ \#E&#x27;(\mathbb F_p)=p+1+\sum_{x\in\mathbb F_p}
+ \left(\frac{x^3-x}{p}\right),
+\]">\[
+ \#E&#x27;(\mathbb F_p)=p+1+\sum_{x\in\mathbb F_p}
+ \left(\frac{x^3-x}{p}\right),
+\]</span>
+where the Legendre symbol is zero at zero. The square map on <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span> has kernel <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>, so the nonzero squares form an index-two subgroup; this proves multiplicativity of the symbol. If <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span>, a square root of <span class="math" data-tex="\(-1\)">\(-1\)</span> would have order four, contradicting Lagrange's theorem in the group of order <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. Thus <span class="math" data-tex="\(\left(\frac{-1}{p}\right)=-1\)">\(\left(\frac{-1}{p}\right)=-1\)</span>. The substitution <span class="math" data-tex="\(x\mapsto-x\)">\(x\mapsto-x\)</span> negates the symbol, since <span class="math" data-tex="\((-x)^3-(-x)=-(x^3-x)\)">\((-x)^3-(-x)=-(x^3-x)\)</span>. The sum is therefore zero, and <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span> for every such prime, not just the small examples. In particular <span class="math" data-tex="\(\#E&#x27;(\mathbb F_p)=p+1\)">\(\#E&#x27;(\mathbb F_p)=p+1\)</span> at <span class="math" data-tex="\(p=3,7,11,19,23\)">\(p=3,7,11,19,23\)</span>.</p>
+<p>At <span class="math" data-tex="\(5\)">\(5\)</span> the successive affine counts are <span class="math" data-tex="\(1,1,2,2,1\)">\(1,1,2,2,1\)</span>, giving <span class="math" data-tex="\(\#E&#x27;=8\)">\(\#E&#x27;=8\)</span> and <span class="math" data-tex="\(a_5=-2\)">\(a_5=-2\)</span>. At <span class="math" data-tex="\(13\)">\(13\)</span> they are <span class="math" data-tex="\(1,1,0,0,0,2,0,0,2,0,0,0,1\)">\(1,1,0,0,0,2,0,0,2,0,0,0,1\)</span>, giving <span class="math" data-tex="\(\#E&#x27;=8\)">\(\#E&#x27;=8\)</span> and <span class="math" data-tex="\(a_{13}=6\)">\(a_{13}=6\)</span>. Each satisfies the Hasse bound. The curve has bad reduction at <span class="math" data-tex="\(2\)">\(2\)</span>, which is excluded from these statements.</p>
+<h2 id="6-exercises-and-complete-solutions">6. Exercises and complete solutions</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Count the points of <span class="math" data-tex="\(y^2+y=x^3-x^2\)">\(y^2+y=x^3-x^2\)</span> at every prime at most <span class="math" data-tex="\(13\)">\(13\)</span>, distinguishing the bad prime.</p>
+<p><strong>Solution.</strong> Use the six lists in Example 5.1. Their affine totals at <span class="math" data-tex="\(2,3,5,7,11,13\)">\(2,3,5,7,11,13\)</span> are <span class="math" data-tex="\(4,4,4,9,10,9\)">\(4,4,4,9,10,9\)</span>; adding the unique point at infinity gives <span class="math" data-tex="\(5,5,5,10,11,10\)">\(5,5,5,10,11,10\)</span>. The good-prime traces are respectively <span class="math" data-tex="\(-2,-1,1,-2,4\)">\(-2,-1,1,-2,4\)</span> with <span class="math" data-tex="\(11\)">\(11\)</span> omitted. The partial-derivative calculation in that example verifies the bad prime indicated by <span class="math" data-tex="\(\Delta=-11\)">\(\Delta=-11\)</span>. Its singular cubic has <span class="math" data-tex="\(11\)">\(11\)</span> projective points and a split node, so the multiplicative convention assigns coefficient <span class="math" data-tex="\(1\)">\(1\)</span> and a degree-one factor rather than the degree-two good factor.</p>
+<p><strong>Exercise 6.2 (medium).</strong> Derive <span class="math" data-tex="\(\deg\alpha=\det(\alpha\mid T_\ell E)\)">\(\deg\alpha=\det(\alpha\mid T_\ell E)\)</span> from the Weil pairing, allowing an inseparable endomorphism.</p>
+<p><strong>Solution.</strong> A nonzero endomorphism is an isogeny and has a dual. Equation (1) applied to <span class="math" data-tex="\(\alpha P,\alpha Q\)">\(\alpha P,\alpha Q\)</span> gives exponent <span class="math" data-tex="\(\deg\alpha\)">\(\deg\alpha\)</span>; the rank-two determinant identity gives exponent <span class="math" data-tex="\(\det\alpha\)">\(\det\alpha\)</span>. Since a torsion basis has primitive Weil-pairing value, the two exponents agree modulo every <span class="math" data-tex="\(\ell^a\)">\(\ell^a\)</span>. The inverse limit gives equality in <span class="math" data-tex="\(\mathbb Z_\ell\)">\(\mathbb Z_\ell\)</span>. The dual-isogeny identity applies to inseparable isogenies as well, so no separability condition has entered. The zero map has zero degree and zero determinant.</p>
+<p><strong>Exercise 6.3 (medium).</strong> Prove the Hasse bound from nonnegativity of degree, and justify the passage from integer pairs to a real discriminant inequality.</p>
+<p><strong>Solution.</strong> Equation (6) holds for all integer pairs. A negative value of <span class="math" data-tex="\(z^2+az+q\)">\(z^2+az+q\)</span> would persist on an open interval, and rational density supplies an integer pair <span class="math" data-tex="\((m,n)\)">\((m,n)\)</span>, <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, making (6) negative. Thus the polynomial is nonnegative on the real line. Its minimum at <span class="math" data-tex="\(-a/2\)">\(-a/2\)</span> is <span class="math" data-tex="\(q-a^2/4\)">\(q-a^2/4\)</span>, so <span class="math" data-tex="\(a^2\le4q\)">\(a^2\le4q\)</span>.</p>
+<p><strong>Exercise 6.4 (hard).</strong> Prove <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span> for <span class="math" data-tex="\(y^2=x^3-x\)">\(y^2=x^3-x\)</span> when <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span>, and explain the supersingular conclusion.</p>
+<p><strong>Solution.</strong> The character sum in Example 5.2 changes sign under the bijection <span class="math" data-tex="\(x\mapsto-x\)">\(x\mapsto-x\)</span>, so it equals its negative as an integer and is zero. With <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span>, Theorem 3.2 and Cayley–Hamilton give <span class="math" data-tex="\(\varphi^2+[p]=0\)">\(\varphi^2+[p]=0\)</span> on the Tate module. Faithfulness, proved after Theorem 2.2, gives the same identity in <span class="math" data-tex="\(\operatorname{End}(E&#x27;)\)">\(\operatorname{End}(E&#x27;)\)</span>. Thus <span class="math" data-tex="\([p]=-\varphi^2\)">\([p]=-\varphi^2\)</span> is purely inseparable: Lemma 1.5 proves this for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and multiplication by <span class="math" data-tex="\(-1\)">\(-1\)</span> is an automorphism. Its geometric kernel has only one point. This is exactly the definition of a supersingular elliptic curve, <span class="math" data-tex="\(E&#x27;[p](\overline{\mathbb F}_p)=\{O\}\)">\(E&#x27;[p](\overline{\mathbb F}_p)=\{O\}\)</span>. The argument includes <span class="math" data-tex="\(p=3\)">\(p=3\)</span>.</p>
+<h2 id="proof-dependencies-and-further-study">Proof dependencies and further study</h2>
+<p>The general curve foundations used here have actual earlier programme proofs: <em>Abelian varieties</em>, Lemma 9.11 and Example 9.12, for Riemann–Roch, curve duality and pointed cubic embedding; Lemma 9.0a and Theorem 9.0 for point classes, projective-curve finiteness and the group law; Proposition 6.3 for finite translation quotients. The earlier morphism lessons supply the smooth-coordinate criterion and the étale-neighbourhood colimit construction; the opening module and affine descent proofs of <em>Quotients and torsors</em> are used in the relative finiteness lemma. The local-field lesson supplies the unramified extension correspondence. Section 1 proves the elliptic multiplication degrees, torsion structure and transitions, the dual identities including inseparable isogenies, every property of the Weil pairing used here, and the Frobenius degree and kernel formula. Section 3 proves the needed relative finiteness and finite étale lifting calculations. The five arithmetic theorems and the degree-one Kummer comparison are then proved in this lesson.</p>
+<p>The displayed eta-product computation compares finitely many coefficients. Its identification as the modular form attached to the curve and the general bad-reduction local-factor theorem belong to the subsequent lessons; they are not inputs to the determinant or Hasse proofs. General higher-dimensional abelian-variety theory and higher-degree étale cohomology are not needed here.</p>
+<h2 id="freely-accessible-primary-material">Freely accessible primary material</h2>
+<ul>
+<li>J. S. Milne, <em>Abelian Varieties</em>, author’s course notes, version 2.0 (2008), I §§7–9 and §13, especially printed pp.57–58 for the rational-function pairing construction and its normalization. <a href="https://www.jmilne.org/math/CourseNotes/AV.pdf">Author’s PDF</a>. Its deferred proofs of pairing properties are supplied by Lemma 1.4 above.</li>
+<li>Andrew V. Sutherland, <em>Elliptic Curves</em>, MIT 18.783 author’s lecture notes (2023): <a href="https://math.mit.edu/classes/18.783/2023/LectureNotes5.pdf">Lecture 5, §§5.1 and 5.6</a>, <a href="https://math.mit.edu/classes/18.783/2023/LectureNotes6.pdf">Lecture 6, §6.3</a>, and <a href="https://math.mit.edu/classes/18.783/2023/LectureNotes23.pdf">Lecture 23, §§23.4–23.5</a>. These provide comparisons for isogenies, torsion and pairings. The all-characteristic proofs and the proofs deferred in those notes are written above or have the exact earlier programme providers named above.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/04GK">Lemma 10.153.7, Tag 04GK</a>, for comparison with the finite étale splitting argument in Lemma 3.0.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="frobenius-elements-and-determination-by-traces.html">← Frobenius elements and determination by traces</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="representations-of-weil-groups.html">Representations of Weil groups →</a></span></nav>
+<p class="small source-link"><a href="src/the-adic-tate-module-of-an-elliptic-curve.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GAL">Repository</a></nav>
+</footer>
+</body>
+</html>

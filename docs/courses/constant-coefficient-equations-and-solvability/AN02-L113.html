@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fundamental solutions in shrinking cones</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="fundamental-solutions-in-shrinking-cones">Fundamental solutions in shrinking cones</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI (GPT-6.1 Sol). Original exposition: public domain (CC0).</em></p>
+<p>A differential equation may have a fundamental solution in every cone of a decreasing sequence and have none in the intersection. The solutions chosen for successive cones need not approach one another. This lesson constructs an example and identifies the precise obstruction at the limit.</p>
+<p>The construction uses distributions and elementary real and complex calculus, including Cauchy’s formula. For Fourier inversion, Plancherel and the complete <span class="math" data-tex="\(L^2\)">\(L^2\)</span> transform, use <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a>, Sections 1, 2 and 7. Our unitary transform in <span class="math" data-tex="\(d\)">\(d\)</span> variables is <span class="math" data-tex="\((2\pi)^{-d/2}\)">\((2\pi)^{-d/2}\)</span> times the transform used there. For dual completeness, complex Hahn–Banach, seminorm separation, Minkowski, dominated convergence, Sobolev completeness and smooth approximation, use <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Sections 3, 5, 14.7 and 15.1–15.5. Distributional differentiation and convolution with a compactly supported smooth function are assumed in their defining test-function form. The analytic uniqueness argument needed for gluing is proved in Section 7. No growth condition is imposed at infinity. The source attribution is Arne Enqvist’s work on cone-supported fundamental solutions [E]. Romain Crétier’s notes [C] give a freely readable account of analytic Cauchy problems and distributional uniqueness. These references supply historical context; every specialized proof needed below is included.</p>
+<h2 id="1-the-cones-and-the-equation">1. The cones and the equation</h2>
+<p>Use coordinates <span class="math" data-tex="\((x,y,t)\)">\((x,y,t)\)</span> in <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, and put <span class="math" data-tex="\(D_z=-i\partial_z\)">\(D_z=-i\partial_z\)</span>. Our operator and its transpose are</p>
+<span class="math math-display" data-tex="\[
+ P(D)=D_xD_y+D_t=-\partial_x\partial_y-i\partial_t,
+ \qquad Q(D)=P(-D)=D_xD_y-D_t. \tag{DC1}
+\]">\[
+ P(D)=D_xD_y+D_t=-\partial_x\partial_y-i\partial_t,
+ \qquad Q(D)=P(-D)=D_xD_y-D_t. \tag{DC1}
+\]</span>
+<p>The transpose is bilinear, without complex conjugation. Thus <span class="math" data-tex="\((P(D)E)(\phi)=E(Q(D)\phi)\)">\((P(D)E)(\phi)=E(Q(D)\phi)\)</span>. A fundamental solution is a distribution <span class="math" data-tex="\(E\in\mathcal D&#x27;(\mathbb R^3)\)">\(E\in\mathcal D&#x27;(\mathbb R^3)\)</span> with <span class="math" data-tex="\(P(D)E=\delta_0\)">\(P(D)E=\delta_0\)</span>.</p>
+<p>For an integer <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+ \Gamma_j=\{(x,y,t):y\ge j|t|\}
+ =\mathbb R_x\times\{(y,t):y-jt\ge0,\ y+jt\ge0\}. \tag{DC2}
+\]">\[
+ \Gamma_j=\{(x,y,t):y\ge j|t|\}
+ =\mathbb R_x\times\{(y,t):y-jt\ge0,\ y+jt\ge0\}. \tag{DC2}
+\]</span>
+<p>These are <strong>closed</strong> convex cones. Their interiors are <span class="math" data-tex="\(y&gt;j|t|\)">\(y&gt;j|t|\)</span>, and their common edge, meaning their largest contained vector subspace, is <span class="math" data-tex="\(\{(x,0,0):x\in\mathbb R\}\)">\(\{(x,0,0):x\in\mathbb R\}\)</span>. They contain both boundary rays in the transverse <span class="math" data-tex="\((t,y)\)">\((t,y)\)</span>-plane. They have nonempty three-dimensional interiors but are not pointed.</p>
+<span class="math math-display" data-tex="\[
+ \Gamma_{j+1}\subset\Gamma_j,
+ \qquad \Gamma_\infty:=\bigcap_{j\ge1}\Gamma_j
+ =\{(x,y,t):y\ge0,\ t=0\}. \tag{DC3}
+\]">\[
+ \Gamma_{j+1}\subset\Gamma_j,
+ \qquad \Gamma_\infty:=\bigcap_{j\ge1}\Gamma_j
+ =\{(x,y,t):y\ge0,\ t=0\}. \tag{DC3}
+\]</span>
+<p>Indeed, if <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, the inequality fails as soon as <span class="math" data-tex="\(j&gt;y/|t|\)">\(j&gt;y/|t|\)</span>. If <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, all inequalities reduce to <span class="math" data-tex="\(y\ge0\)">\(y\ge0\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> For every integer <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, there is a distribution <span class="math" data-tex="\(E_j\in H^{-2}_{\mathrm{loc}}(\mathbb R^3)\)">\(E_j\in H^{-2}_{\mathrm{loc}}(\mathbb R^3)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+ P(D)E_j=\delta_0,
+ \qquad \operatorname{supp}E_j\subset\Gamma_j. \tag{DC4}
+\]">\[
+ P(D)E_j=\delta_0,
+ \qquad \operatorname{supp}E_j\subset\Gamma_j. \tag{DC4}
+\]</span>
+<p>There is no distribution <span class="math" data-tex="\(E\in\mathcal D&#x27;(\mathbb R^3)\)">\(E\in\mathcal D&#x27;(\mathbb R^3)\)</span> satisfying <span class="math" data-tex="\(P(D)E=\delta_0\)">\(P(D)E=\delta_0\)</span> and <span class="math" data-tex="\(\operatorname{supp}E\subset\Gamma_\infty\)">\(\operatorname{supp}E\subset\Gamma_\infty\)</span>.</p>
+<p>Here <span class="math" data-tex="\(H^{-2}_{\mathrm{loc}}\)">\(H^{-2}_{\mathrm{loc}}\)</span> is a local Sobolev condition. It supplies no uniform bound at spatial infinity and does not assert that <span class="math" data-tex="\(E_j\)">\(E_j\)</span> is tempered. The construction makes choices for each fixed <span class="math" data-tex="\(j\)">\(j\)</span>; it makes no compatibility claim between different <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><a href="reproduce/L113/assets/shrinking-cones.png" title="Open full-size figure"><img src="reproduce/L113/assets/shrinking-cones.png" alt="Transverse sections of four closed cones and their limiting ray. The x direction is unrestricted." class="course-figure" width="1168" height="880" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="shrinking-cones" data-asset-sha256="E033F79F5BE41FD388926316F8DBB9A677D0BECF1F27DA2CD44D0E66A49CE6DD"></a><br><a href="reproduce/L113/assets/shrinking-cones.png">Open full-size figure</a></p>
+<p><em>Figure 1.</em> The displayed sections are <span class="math" data-tex="\(\Gamma_j\cap\{x=0\}\)">\(\Gamma_j\cap\{x=0\}\)</span> for <span class="math" data-tex="\(j=1,2,4,8\)">\(j=1,2,4,8\)</span>, clipped at <span class="math" data-tex="\(y=4\)">\(y=4\)</span>. Both sloping boundaries belong to each cone. The black vertical ray is the section of the intersection. Extruding every section through all real <span class="math" data-tex="\(x\)">\(x\)</span> gives the actual three-dimensional sets. This is a support enclosure, not a claim that the constructed solutions have support equal to the colored cones. Editable source: <a href="reproduce/L113/assets/render_decreasing_cones.py">cone renderer</a>.</p>
+<h2 id="2-why-the-limiting-plane-cannot-carry-the-point-source">2. Why the limiting plane cannot carry the point source</h2>
+<p>We first prove the nonexistence part. It holds even if the entire plane <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, rather than its half-plane <span class="math" data-tex="\(y\ge0\)">\(y\ge0\)</span>, is allowed.</p>
+<p><strong>Lemma 2.1 (finite normal jets).</strong> Let a distribution <span class="math" data-tex="\(T\)">\(T\)</span> be supported by <span class="math" data-tex="\(t=0\)">\(t=0\)</span> near a compact box in the <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>-plane. On a smaller product neighborhood there are an integer <span class="math" data-tex="\(M\)">\(M\)</span> and distributions <span class="math" data-tex="\(T_0,\ldots,T_M\)">\(T_0,\ldots,T_M\)</span> in <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+ T=\sum_{k=0}^M T_k(x,y)\otimes\partial_t^k\delta(t). \tag{DC5}
+\]">\[
+ T=\sum_{k=0}^M T_k(x,y)\otimes\partial_t^k\delta(t). \tag{DC5}
+\]</span>
+<p><strong>Proof.</strong> A distribution has finite order on a compact neighborhood: its value is bounded by a constant times the maximum of derivatives through some order <span class="math" data-tex="\(M\)">\(M\)</span>. This follows directly from continuity on the test functions supported in that compact set; a basic neighborhood is specified by finitely many derivative seminorms.</p>
+<p>Suppose a test function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> has its first <span class="math" data-tex="\(M+1\)">\(M+1\)</span> normal jets zero at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Taylor’s formula gives <span class="math" data-tex="\(\phi=t^{M+1}g\)">\(\phi=t^{M+1}g\)</span>. Let <span class="math" data-tex="\(\chi(t/\varepsilon)\)">\(\chi(t/\varepsilon)\)</span> be a cutoff equal to one near zero. Support on the plane gives <span class="math" data-tex="\(T(\phi)=T(\chi(t/\varepsilon)\phi)\)">\(T(\phi)=T(\chi(t/\varepsilon)\phi)\)</span>. Each derivative through order <span class="math" data-tex="\(M\)">\(M\)</span> of this last test function is <span class="math" data-tex="\(O(\varepsilon)\)">\(O(\varepsilon)\)</span>, including mixed tangential derivatives. The finite-order bound gives <span class="math" data-tex="\(T(\phi)=0\)">\(T(\phi)=0\)</span>.</p>
+<p>Choose a normal cutoff <span class="math" data-tex="\(\theta\)">\(\theta\)</span> equal to one near zero. Subtract
+<span class="math" data-tex="\(\theta(t)\sum_{k=0}^M t^k\partial_t^k\phi(x,y,0)/k!\)">\(\theta(t)\sum_{k=0}^M t^k\partial_t^k\phi(x,y,0)/k!\)</span> from <span class="math" data-tex="\(\phi\)">\(\phi\)</span>; the difference has all those jets zero. Therefore <span class="math" data-tex="\(T\)">\(T\)</span> depends only on these finitely many jets. Define the coefficient distributions by applying <span class="math" data-tex="\(T\)">\(T\)</span> to <span class="math" data-tex="\((-1)^k\theta(t)t^k\psi(x,y)/k!\)">\((-1)^k\theta(t)t^k\psi(x,y)/k!\)</span>. This gives (DC5), with the signs required by <span class="math" data-tex="\(\partial_t^k\delta(\phi)=(-1)^k\partial_t^k\phi(0)\)">\(\partial_t^k\delta(\phi)=(-1)^k\partial_t^k\phi(0)\)</span>. Shrinking the tangential box keeps every cutoff inside the original neighborhood. ∎</p>
+<p>Assume <span class="math" data-tex="\(E\)">\(E\)</span> is a fundamental solution supported in <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Apply Lemma 2.1 in a neighborhood of the origin. Equation (DC1) gives</p>
+<span class="math math-display" data-tex="\[
+ P(D)E=\sum_{k=0}^M(-\partial_x\partial_y E_k)\otimes\partial_t^k\delta
+       -i\sum_{k=0}^M E_k\otimes\partial_t^{k+1}\delta. \tag{DC6}
+\]">\[
+ P(D)E=\sum_{k=0}^M(-\partial_x\partial_y E_k)\otimes\partial_t^k\delta
+       -i\sum_{k=0}^M E_k\otimes\partial_t^{k+1}\delta. \tag{DC6}
+\]</span>
+<p>Normal derivatives of <span class="math" data-tex="\(\delta\)">\(\delta\)</span> are linearly independent over tangential distributions: testing against a cutoff times a prescribed normal monomial extracts each coefficient. The coefficient of <span class="math" data-tex="\(\partial_t^{M+1}\delta\)">\(\partial_t^{M+1}\delta\)</span> in (DC6) must vanish, since the right side <span class="math" data-tex="\(\delta(x,y)\delta(t)\)">\(\delta(x,y)\delta(t)\)</span> has normal order zero. Hence <span class="math" data-tex="\(E_M=0\)">\(E_M=0\)</span>. Descending through the remaining coefficients gives <span class="math" data-tex="\(E_{M-1}=\cdots=E_0=0\)">\(E_{M-1}=\cdots=E_0=0\)</span>. The normal-order-zero coefficient then says <span class="math" data-tex="\(0=\delta(x,y)\)">\(0=\delta(x,y)\)</span>, a contradiction.</p>
+<p>This argument uses local finite order, which every distribution has. It does not require a global finite order or a Fourier transform of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Example 2.2.</strong> The lower order term <span class="math" data-tex="\(D_t\)">\(D_t\)</span> is essential. If it is removed, the operator <span class="math" data-tex="\(D_xD_y=-\partial_x\partial_y\)">\(D_xD_y=-\partial_x\partial_y\)</span> has the fundamental solution</p>
+<span class="math math-display" data-tex="\[
+ E^{\flat}=-H(x)H(y)\delta(t),
+ \qquad D_xD_yE^{\flat}=\delta(x)\delta(y)\delta(t). \tag{DC7}
+\]">\[
+ E^{\flat}=-H(x)H(y)\delta(t),
+ \qquad D_xD_yE^{\flat}=\delta(x)\delta(y)\delta(t). \tag{DC7}
+\]</span>
+<p>Its support lies in <span class="math" data-tex="\(\Gamma_\infty\)">\(\Gamma_\infty\)</span>. Adding a first order term has destroyed a support possibility that the principal part alone permits.</p>
+<h2 id="3-fast-frequencies-stay-inside-a-cone">3. Fast frequencies stay inside a cone</h2>
+<p>Fix <span class="math" data-tex="\(j\)">\(j\)</span>. We prove an estimate on the same <strong>positive</strong> cone <span class="math" data-tex="\(\Gamma=\Gamma_j\)">\(\Gamma=\Gamma_j\)</span>, which will produce local fundamental solutions supported there.</p>
+<p>For a compact set <span class="math" data-tex="\(K\)">\(K\)</span>, choose <span class="math" data-tex="\(H,R&gt;0\)">\(H,R&gt;0\)</span> so that its <span class="math" data-tex="\(x\)">\(x\)</span>-projection lies in <span class="math" data-tex="\([-H,H]\)">\([-H,H]\)</span> and its <span class="math" data-tex="\(y\)">\(y\)</span>-projection lies in <span class="math" data-tex="\([-R,R]\)">\([-R,R]\)</span>. Take the unitary Fourier transform in <span class="math" data-tex="\(x\)">\(x\)</span> alone. A hat in this section denotes that partial transform. For <span class="math" data-tex="\(f=Q(D)u\)">\(f=Q(D)u\)</span>, with <span class="math" data-tex="\(u\in C_c^\infty(K)\)">\(u\in C_c^\infty(K)\)</span>, we have</p>
+<span class="math math-display" data-tex="\[
+ -i(\xi\partial_y-\partial_t)\widehat u=\widehat f.
+ \tag{DC8}
+\]">\[
+ -i(\xi\partial_y-\partial_t)\widehat u=\widehat f.
+ \tag{DC8}
+\]</span>
+<p>For <span class="math" data-tex="\(|\xi|\ge j\)">\(|\xi|\ge j\)</span>, integrate towards increasing <span class="math" data-tex="\(y\)">\(y\)</span>. Compact support makes the endpoint value zero, and gives</p>
+<span class="math math-display" data-tex="\[
+ \widehat u(\xi,y,t)
+ =-\frac{i}{\xi}\int_0^{\infty}
+       \widehat f(\xi,y+s,t-s/\xi)\,ds. \tag{DC9}
+\]">\[
+ \widehat u(\xi,y,t)
+ =-\frac{i}{\xi}\int_0^{\infty}
+       \widehat f(\xi,y+s,t-s/\xi)\,ds. \tag{DC9}
+\]</span>
+<p>The signs follow by differentiating along <span class="math" data-tex="\(s\)">\(s\)</span>:
+<span class="math" data-tex="\(d\widehat u(y+s,t-s/\xi)/ds=i\widehat f/\xi\)">\(d\widehat u(y+s,t-s/\xi)/ds=i\widehat f/\xi\)</span>.
+The displacement <span class="math" data-tex="\((s,-s/\xi)\)">\((s,-s/\xi)\)</span> belongs to the transverse cone because <span class="math" data-tex="\(s\ge j|s/\xi|\)">\(s\ge j|s/\xi|\)</span>. Thus a point of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> stays in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> under this translation. For points of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, <span class="math" data-tex="\(y\ge0\)">\(y\ge0\)</span>, and the integrand vanishes when <span class="math" data-tex="\(s&gt;R\)">\(s&gt;R\)</span>. Minkowski’s inequality, this translation property and Plancherel give</p>
+<span class="math math-display" data-tex="\[
+ \|\mathbf1_{|\xi|\ge j}\widehat u\|_{L^2(\mathbb R_\xi\timesV_j)}
+ \le \frac Rj
+       \|\mathbf1_{|\xi|\ge j}\widehat f\|_{L^2(\mathbb R_\xi\timesV_j)}
+ \le \frac Rj\|f\|_{L^2(\Gamma)}. \tag{DC10}
+\]" data-render-tex="\[
+ \|\mathbf1_{|\xi|\ge j}\widehat u\|_{L^2(\mathbb R_\xi\times V_j)}
+ \le \frac Rj
+       \|\mathbf1_{|\xi|\ge j}\widehat f\|_{L^2(\mathbb R_\xi\times V_j)}
+ \le \frac Rj\|f\|_{L^2(\Gamma)}. \tag{DC10}
+\]" data-render-adaptation="separate-times-command-from-V-v1" title="Display-only TeX command boundary: the two products use times followed by V; original TeX is retained exactly in data-tex.">\[
+ \|\mathbf1_{|\xi|\ge j}\widehat u\|_{L^2(\mathbb R_\xi\times V_j)}
+ \le \frac Rj
+       \|\mathbf1_{|\xi|\ge j}\widehat f\|_{L^2(\mathbb R_\xi\times V_j)}
+ \le \frac Rj\|f\|_{L^2(\Gamma)}. \tag{DC10}
+\]</span>
+<p>Here <span class="math" data-tex="\(V_j=\{(y,t):y\ge j|t|\}\)">\(V_j=\{(y,t):y\ge j|t|\}\)</span> denotes the transverse section. The integration is over real <span class="math" data-tex="\(\xi,y,t\)">\(\xi,y,t\)</span>. For each fixed <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, translating the section into itself can only decrease the restricted <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm; integrating in <span class="math" data-tex="\(\xi\)">\(\xi\)</span> preserves that inequality.</p>
+<p><a href="reproduce/L113/assets/cone-transport.png" title="Open full-size figure"><img src="reproduce/L113/assets/cone-transport.png" alt="Transport rays for the transpose operator lie inside the cone when the edge frequency is large enough." class="course-figure" width="1168" height="912" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="cone-transport" data-asset-sha256="2983B0E67ABF4BDFC3766E74BB9D3A1A3506EA07F89A73C773C525359142EF20"></a><br><a href="reproduce/L113/assets/cone-transport.png">Open full-size figure</a></p>
+<p><em>Figure 2.</em> For <span class="math" data-tex="\(j=2\)">\(j=2\)</span>, the arrows are exact displacements <span class="math" data-tex="\((\Delta t,\Delta y)=(-s/\xi,s)\)">\((\Delta t,\Delta y)=(-s/\xi,s)\)</span>, starting at <span class="math" data-tex="\((t,y)=(0,0.8)\)">\((t,y)=(0,0.8)\)</span>, for <span class="math" data-tex="\(\xi=\pm2,\pm4\)">\(\xi=\pm2,\pm4\)</span>. The boundary case <span class="math" data-tex="\(|\xi|=2\)">\(|\xi|=2\)</span> is included. The dashed red displacement has <span class="math" data-tex="\(\xi=1\)">\(\xi=1\)</span> and eventually leaves the cone. The arrows show the local inverse mechanism in (DC9); they are not the support of <span class="math" data-tex="\(E_j\)">\(E_j\)</span>. Editable source: <a href="reproduce/L113/assets/render_decreasing_cones.py">cone renderer</a>.</p>
+<p>The estimate only sees large edge frequencies. Compact support in <span class="math" data-tex="\(x\)">\(x\)</span> lets us recover the omitted frequencies.</p>
+<p><strong>Lemma 3.1 (compact support cannot hide in a bounded frequency band).</strong> For <span class="math" data-tex="\(H,j&gt;0\)">\(H,j&gt;0\)</span>, there is <span class="math" data-tex="\(A_{H,j}&lt;\infty\)">\(A_{H,j}&lt;\infty\)</span> such that every <span class="math" data-tex="\(v\in L^2(\mathbb R)\)">\(v\in L^2(\mathbb R)\)</span> supported in <span class="math" data-tex="\([-H,H]\)">\([-H,H]\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+ \|v\|_2\le A_{H,j}\|\mathbf1_{|\xi|\ge j}\widehat v\|_2. \tag{DC11}
+\]">\[
+ \|v\|_2\le A_{H,j}\|\mathbf1_{|\xi|\ge j}\widehat v\|_2. \tag{DC11}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> send <span class="math" data-tex="\(v\in L^2([-H,H])\)">\(v\in L^2([-H,H])\)</span>, extended by zero, to its Fourier transform restricted to <span class="math" data-tex="\([-j,j]\)">\([-j,j]\)</span>. Its kernel is <span class="math" data-tex="\((2\pi)^{-1/2}e^{-ix\xi}\)">\((2\pi)^{-1/2}e^{-ix\xi}\)</span> on a finite rectangle, so it is a norm limit of finite rank operators: approximate that continuous kernel uniformly by finite sums of products. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is compact. Plancherel gives <span class="math" data-tex="\(\|B\|\le1\)">\(\|B\|\le1\)</span>.</p>
+<p>If <span class="math" data-tex="\(\|B\|=1\)">\(\|B\|=1\)</span>, choose unit vectors <span class="math" data-tex="\(v_n\)">\(v_n\)</span> with <span class="math" data-tex="\(\|Bv_n\|\to1\)">\(\|Bv_n\|\to1\)</span>. An orthonormal basis is obtained by Gram–Schmidt from a countable dense family of step functions. Expanding in that basis and taking a diagonal subsequence gives weak convergence to some <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(\|v\|\le1\)">\(\|v\|\le1\)</span>. Compactness gives <span class="math" data-tex="\(Bv_n\to Bv\)">\(Bv_n\to Bv\)</span> in norm, so <span class="math" data-tex="\(\|Bv\|=1\)">\(\|Bv\|=1\)</span>, forcing <span class="math" data-tex="\(\|v\|=1\)">\(\|v\|=1\)</span>. Equality in Plancherel says <span class="math" data-tex="\(\widehat v=0\)">\(\widehat v=0\)</span> outside <span class="math" data-tex="\([-j,j]\)">\([-j,j]\)</span>.</p>
+<p>But <span class="math" data-tex="\(v\)">\(v\)</span> has compact support, hence is integrable, and <span class="math" data-tex="\(\int_{-H}^H v(x)e^{-ixz}\,dx\)">\(\int_{-H}^H v(x)e^{-ixz}\,dx\)</span> is an entire function of <span class="math" data-tex="\(z\)">\(z\)</span>. Differentiation under the integral is justified by compact support. Its zeros on a real open interval force it to vanish everywhere, by its convergent complex Taylor series and the identity theorem. Fourier injectivity gives <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, a contradiction. Hence <span class="math" data-tex="\(b:=\|B\|&lt;1\)">\(b:=\|B\|&lt;1\)</span>, and (DC11) holds with <span class="math" data-tex="\(A_{H,j}=(1-b^2)^{-1/2}\)">\(A_{H,j}=(1-b^2)^{-1/2}\)</span>. ∎</p>
+<p>Apply (DC11) at each <span class="math" data-tex="\((y,t)\)">\((y,t)\)</span>, then integrate over the transverse section. Combine it with (DC10). Apply the same argument to every physical derivative <span class="math" data-tex="\(\partial^\alpha u\)">\(\partial^\alpha u\)</span>, <span class="math" data-tex="\(|\alpha|\le2\)">\(|\alpha|\le2\)</span>. These derivatives have the same compact support, and constant coefficient operators commute with them. We obtain</p>
+<span class="math math-display" data-tex="\[
+ \|u\|_{H^2(\Gamma)}\le C_{K,j}\|Q(D)u\|_{H^2(\Gamma)},
+ \qquad u\in C_c^\infty(K). \tag{DC12}
+\]">\[
+ \|u\|_{H^2(\Gamma)}\le C_{K,j}\|Q(D)u\|_{H^2(\Gamma)},
+ \qquad u\in C_c^\infty(K). \tag{DC12}
+\]</span>
+<p>The norm here is the square sum of the restricted <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norms of derivatives through order two. Its constant depends on <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span>. No estimate uniform in expanding <span class="math" data-tex="\(K\)">\(K\)</span>, or in <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>, has been claimed. Replacing <span class="math" data-tex="\(Q\)">\(Q\)</span> by <span class="math" data-tex="\(P\)">\(P\)</span> merely reverses the sign of the transverse transport slope, so the same estimate holds for <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<h2 id="4-constructing-a-fundamental-solution-on-each-bounded-region">4. Constructing a fundamental solution on each bounded region</h2>
+<p>We need to control the value <span class="math" data-tex="\(u(0)\)">\(u(0)\)</span> by the cone norm in (DC12). Here is an explicit extension argument.</p>
+<p>In transverse coordinates <span class="math" data-tex="\(r=y+jt\)">\(r=y+jt\)</span>, <span class="math" data-tex="\(s=y-jt\)">\(s=y-jt\)</span>, the cone is the quadrant <span class="math" data-tex="\(r,s\ge0\)">\(r,s\ge0\)</span>. Extend across <span class="math" data-tex="\(r=0\)">\(r=0\)</span> by</p>
+<span class="math math-display" data-tex="\[
+ (\mathcal R_r u)(r,s)=
+ \begin{cases}u(r,s),&amp;r\ge0,\\
+ 3u(-r,s)-2u(-2r,s),&amp;r&lt;0.
+ \end{cases} \tag{DC13}
+\]">\[
+ (\mathcal R_r u)(r,s)=
+ \begin{cases}u(r,s),&amp;r\ge0,\\
+ 3u(-r,s)-2u(-2r,s),&amp;r&lt;0.
+ \end{cases} \tag{DC13}
+\]</span>
+<p>The value and the first normal derivative agree at zero because <span class="math" data-tex="\(3-2=1\)">\(3-2=1\)</span> and <span class="math" data-tex="\(-3+4=1\)">\(-3+4=1\)</span>. Extend across <span class="math" data-tex="\(s=0\)">\(s=0\)</span> by the identical formula. Changes of variables in the reflected integrals bound every derivative through order two. Since the function and its first derivatives match, its distributional second derivatives have no boundary delta term. The resulting extension <span class="math" data-tex="\(U\)">\(U\)</span> therefore belongs to <span class="math" data-tex="\(H^2(\mathbb R^3)\)">\(H^2(\mathbb R^3)\)</span>, agrees with <span class="math" data-tex="\(u\)">\(u\)</span> on the cone, and satisfies</p>
+<span class="math math-display" data-tex="\[
+ \|U\|_{H^2(\mathbb R^3)}\le C_j\|u\|_{H^2(\Gamma)}. \tag{DC14}
+\]">\[
+ \|U\|_{H^2(\mathbb R^3)}\le C_j\|u\|_{H^2(\Gamma)}. \tag{DC14}
+\]</span>
+<p>The invertible linear change of transverse coordinates only changes the finite constant. For smooth compactly supported <span class="math" data-tex="\(u\)">\(u\)</span>, this extension is continuous at zero.</p>
+<p>Fourier inversion and Cauchy–Schwarz give a continuous representative for every <span class="math" data-tex="\(H^2(\mathbb R^3)\)">\(H^2(\mathbb R^3)\)</span> function, since</p>
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R^3}(1+|\zeta|^2)^{-2}\,d\zeta&lt;\infty,
+ \qquad |U(0)|\le C\|U\|_{H^2}. \tag{DC15}
+\]">\[
+ \int_{\mathbb R^3}(1+|\zeta|^2)^{-2}\,d\zeta&lt;\infty,
+ \qquad |U(0)|\le C\|U\|_{H^2}. \tag{DC15}
+\]</span>
+<p>For completeness, approximate <span class="math" data-tex="\(U\)">\(U\)</span> in <span class="math" data-tex="\(H^2\)">\(H^2\)</span> by Fourier cutoffs. Their Fourier transforms converge in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by the displayed inequality, so the inverse transforms converge uniformly. This proves both the representative assertion and the evaluation bound. The derivative norm used above is equivalent to the Fourier norm <span class="math" data-tex="\(\|(1+|\zeta|^2)\widehat U\|_2\)">\(\|(1+|\zeta|^2)\widehat U\|_2\)</span>, by expanding the polynomials and applying Plancherel.</p>
+<p>We use <span class="math" data-tex="\(H^{-2}\)">\(H^{-2}\)</span> as the continuous bilinear dual of this Hilbert space <span class="math" data-tex="\(H^2\)">\(H^2\)</span>, identified with the usual weighted Fourier space. The Hilbert representation needed for this identification has a short proof. For a nonzero continuous functional, its kernel is a closed subspace. The parallelogram identity makes a sequence minimizing distance from a point outside that kernel Cauchy: the midpoint belongs to the kernel, so the squared difference of two residual vectors tends to zero. Completeness supplies a minimizing residual <span class="math" data-tex="\(z\)">\(z\)</span>. Differentiating its squared distance along every real and imaginary multiple of a kernel vector shows that <span class="math" data-tex="\(z\)">\(z\)</span> is orthogonal to the kernel. The kernel has codimension one, so the functional is a scalar multiple of the inner product with <span class="math" data-tex="\(z\)">\(z\)</span>. The zero functional is immediate. Applying this to the isometry <span class="math" data-tex="\(u\mapsto(1+|\zeta|^2)\widehat u\)">\(u\mapsto(1+|\zeta|^2)\widehat u\)</span> identifies the dual with distributions satisfying <span class="math" data-tex="\((1+|\zeta|^2)^{-1}\widehat E\in L^2\)">\((1+|\zeta|^2)^{-1}\widehat E\in L^2\)</span>. It also proves completeness of the dual and the Fourier translation rule used later.</p>
+<p>Now let <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> be any bounded open region, and take a compact <span class="math" data-tex="\(K\)">\(K\)</span> containing its closure. Equations (DC12)–(DC15) imply</p>
+<span class="math math-display" data-tex="\[
+ |u(0)|\le C_{K,j}\|Q(D)u\|_{H^2(\Gamma)},
+ \qquad u\in C_c^\infty(\Omega). \tag{DC16}
+\]">\[
+ |u(0)|\le C_{K,j}\|Q(D)u\|_{H^2(\Gamma)},
+ \qquad u\in C_c^\infty(\Omega). \tag{DC16}
+\]</span>
+<p>On the subspace of restrictions <span class="math" data-tex="\(Q(D)u|_\Gamma\)">\(Q(D)u|_\Gamma\)</span> of such tests, define a functional by</p>
+<span class="math math-display" data-tex="\[
+ \ell_\Omega(Q(D)u|_\Gamma)=u(0). \tag{DC17}
+\]">\[
+ \ell_\Omega(Q(D)u|_\Gamma)=u(0). \tag{DC17}
+\]</span>
+<p>The estimate shows that this is well defined and bounded for the restricted derivative norm. Take the completion of restrictions of all global test functions in that norm. Hahn–Banach extends <span class="math" data-tex="\(\ell_\Omega\)">\(\ell_\Omega\)</span> to this completion with the same bound. Set</p>
+<span class="math math-display" data-tex="\[
+ F_\Omega(\phi)=\ell_\Omega(\phi|_\Gamma),
+ \qquad \phi\in C_c^\infty(\mathbb R^3). \tag{DC18}
+\]">\[
+ F_\Omega(\phi)=\ell_\Omega(\phi|_\Gamma),
+ \qquad \phi\in C_c^\infty(\mathbb R^3). \tag{DC18}
+\]</span>
+<p>This is a distribution. In fact, its absolute value is bounded by a constant times the global <span class="math" data-tex="\(H^2\)">\(H^2\)</span> norm of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, so it extends to an element of <span class="math" data-tex="\(H^{-2}(\mathbb R^3)\)">\(H^{-2}(\mathbb R^3)\)</span>. Tests supported off <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> have zero restriction and derivatives there, so <span class="math" data-tex="\(\operatorname{supp}F_\Omega\subset\Gamma\)">\(\operatorname{supp}F_\Omega\subset\Gamma\)</span>. Equations (DC17)–(DC18) give</p>
+<span class="math math-display" data-tex="\[
+ P(D)F_\Omega=\delta_0\quad\hbox{in }\Omega,
+ \qquad F_\Omega\in H^{-2}(\mathbb R^3),
+ \qquad \operatorname{supp}F_\Omega\subset\Gamma. \tag{DC19}
+\]">\[
+ P(D)F_\Omega=\delta_0\quad\hbox{in }\Omega,
+ \qquad F_\Omega\in H^{-2}(\mathbb R^3),
+ \qquad \operatorname{supp}F_\Omega\subset\Gamma. \tag{DC19}
+\]</span>
+<p>This is a complete construction of a <strong>local</strong> fundamental solution: the only choice is a bounded Hahn–Banach extension. It does not say that <span class="math" data-tex="\(P(D)F_\Omega=\delta_0\)">\(P(D)F_\Omega=\delta_0\)</span> outside <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Its bound may increase when <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> expands. Section 6 will make compatible local choices and take their limit.</p>
+<p>The same argument, with <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> interchanged, constructs local fundamental solutions for <span class="math" data-tex="\(Q\)">\(Q\)</span>. Reflection of <span class="math" data-tex="\(F_\Omega\)">\(F_\Omega\)</span> through the origin is also a local fundamental solution for <span class="math" data-tex="\(Q\)">\(Q\)</span>, on <span class="math" data-tex="\(-\Omega\)">\(-\Omega\)</span>, with support in <span class="math" data-tex="\(-\Gamma\)">\(-\Gamma\)</span>.</p>
+<h2 id="5-a-barrier-and-an-approximation-lemma">5. A barrier and an approximation lemma</h2>
+<p>Local fundamental solutions must be glued. We first control compactly supported distributions in the part of the cone beyond an oblique plane. The only uniqueness input is the following statement, proved in Section 7:</p>
+<p><strong>Analytic uniqueness statement.</strong> If a distribution solves a differential equation of order two with analytic coefficients near an analytic graph hypersurface <span class="math" data-tex="\(x=g(y,t)\)">\(x=g(y,t)\)</span>, the hypersurface is noncharacteristic, and the distribution vanishes on one side, it vanishes in a neighborhood of the hypersurface.</p>
+<p>For <span class="math" data-tex="\(P\)">\(P\)</span> or <span class="math" data-tex="\(Q\)">\(Q\)</span>, the principal symbol is <span class="math" data-tex="\(\xi\eta\)">\(\xi\eta\)</span>, so a normal <span class="math" data-tex="\(N\)">\(N\)</span> is noncharacteristic exactly when <span class="math" data-tex="\(N_xN_y\ne0\)">\(N_xN_y\ne0\)</span>.</p>
+<p>Write <span class="math" data-tex="\(r=y-jt\)">\(r=y-jt\)</span>, <span class="math" data-tex="\(s=y+jt\)">\(s=y+jt\)</span>. Fix <span class="math" data-tex="\(\sigma,\varepsilon_0\in\{-1,1\}\)">\(\sigma,\varepsilon_0\in\{-1,1\}\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+ L=\sigma x+2y+\varepsilon_0t,
+ \qquad O_a=\{r&gt;0,\ s&gt;0,\ L&gt;a\}. \tag{DC20}
+\]">\[
+ L=\sigma x+2y+\varepsilon_0t,
+ \qquad O_a=\{r&gt;0,\ s&gt;0,\ L&gt;a\}. \tag{DC20}
+\]</span>
+<p><strong>Lemma 5.1.</strong> If <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is a compactly supported distribution and <span class="math" data-tex="\(Q(D)\mu=0\)">\(Q(D)\mu=0\)</span> in <span class="math" data-tex="\(O_a\)">\(O_a\)</span>, then <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span> there.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(z_0\in O_a\cap\operatorname{supp}\mu\)">\(z_0\in O_a\cap\operatorname{supp}\mu\)</span>. For a sufficiently small positive <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>,</p>
+<span class="math math-display" data-tex="\[
+ B_\epsilon=L-\frac\epsilon r-\frac\epsilon s,
+ \qquad B_\epsilon(z_0)&gt;a. \tag{DC21}
+\]">\[
+ B_\epsilon=L-\frac\epsilon r-\frac\epsilon s,
+ \qquad B_\epsilon(z_0)&gt;a. \tag{DC21}
+\]</span>
+<p>On the compact support of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, the superlevel set <span class="math" data-tex="\(B_\epsilon\ge B_\epsilon(z_0)\)">\(B_\epsilon\ge B_\epsilon(z_0)\)</span> stays a positive distance from <span class="math" data-tex="\(r=0\)">\(r=0\)</span> and <span class="math" data-tex="\(s=0\)">\(s=0\)</span>: approaching either boundary makes the corresponding negative term tend to <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>, while <span class="math" data-tex="\(L\)">\(L\)</span> stays bounded. Thus <span class="math" data-tex="\(B_\epsilon\)">\(B_\epsilon\)</span> attains a maximum <span class="math" data-tex="\(M&gt;a\)">\(M&gt;a\)</span> on the support within the interior of the cone. At a maximizing point, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> vanishes on the side <span class="math" data-tex="\(B_\epsilon&gt;M\)">\(B_\epsilon&gt;M\)</span>. But</p>
+<span class="math math-display" data-tex="\[
+ \partial_xB_\epsilon=\sigma,
+ \qquad \partial_yB_\epsilon=2+\epsilon/r^2+\epsilon/s^2,
+ \qquad (\partial_xB_\epsilon)(\partial_yB_\epsilon)\ne0. \tag{DC22}
+\]">\[
+ \partial_xB_\epsilon=\sigma,
+ \qquad \partial_yB_\epsilon=2+\epsilon/r^2+\epsilon/s^2,
+ \qquad (\partial_xB_\epsilon)(\partial_yB_\epsilon)\ne0. \tag{DC22}
+\]</span>
+<p>The level surface is an analytic graph in <span class="math" data-tex="\(x\)">\(x\)</span>, since (DC21) is affine in <span class="math" data-tex="\(x\)">\(x\)</span> with nonzero coefficient <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. By (DC22), this graph is noncharacteristic. Analytic uniqueness forces <span class="math" data-tex="\(\mu\)">\(\mu\)</span> to vanish in a neighborhood of the point, contradicting its membership in the support. ∎</p>
+<p>This barrier prevents contact with the characteristic boundaries <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. It avoids a general theorem about propagation across characteristic planes.</p>
+<p>Choose the bounded polyhedra</p>
+<span class="math math-display" data-tex="\[
+ \Omega_n=\{y&gt;-n,\quad \sigma x+2y+\varepsilon_0t&lt;n
+       \text{ for all }\sigma,\varepsilon_0\in\{-1,1\}\},
+ \qquad n=1,2,\ldots. \tag{DC23}
+\]">\[
+ \Omega_n=\{y&gt;-n,\quad \sigma x+2y+\varepsilon_0t&lt;n
+       \text{ for all }\sigma,\varepsilon_0\in\{-1,1\}\},
+ \qquad n=1,2,\ldots. \tag{DC23}
+\]</span>
+<p>Equivalently, <span class="math" data-tex="\(y&gt;-n\)">\(y&gt;-n\)</span> and <span class="math" data-tex="\(|x|+|t|+2y&lt;n\)">\(|x|+|t|+2y&lt;n\)</span>. Consequently <span class="math" data-tex="\(-n&lt;y&lt;n/2\)">\(-n&lt;y&lt;n/2\)</span> and <span class="math" data-tex="\(|x|+|t|&lt;3n\)">\(|x|+|t|&lt;3n\)</span>. Each is a neighborhood of zero, <span class="math" data-tex="\(\overline{\Omega_n}\subset\Omega_{n+1}\)">\(\overline{\Omega_n}\subset\Omega_{n+1}\)</span>, and their union is all of <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>.</p>
+<p>A useful consequence of Lemma 5.1 is</p>
+<span class="math math-display" data-tex="\[
+ \operatorname{int}\Gamma\cap\operatorname{supp}Q(D)\mu\subset K\Subset\Omega_n
+ \quad\Longrightarrow\quad
+ \overline{\operatorname{int}\Gamma\cap\operatorname{supp}\mu}\Subset\Omega_n
+ \quad(\mu\text{ compactly supported}). \tag{DC24}
+\]">\[
+ \operatorname{int}\Gamma\cap\operatorname{supp}Q(D)\mu\subset K\Subset\Omega_n
+ \quad\Longrightarrow\quad
+ \overline{\operatorname{int}\Gamma\cap\operatorname{supp}\mu}\Subset\Omega_n
+ \quad(\mu\text{ compactly supported}). \tag{DC24}
+\]</span>
+<p>To verify it, choose <span class="math" data-tex="\(a&lt;n\)">\(a&lt;n\)</span> larger than all four values <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. Lemma 5.1 excludes support in every <span class="math" data-tex="\(O_a\)">\(O_a\)</span>. Hence the closure on the right satisfies all four inequalities <span class="math" data-tex="\(L\le a&lt;n\)">\(L\le a&lt;n\)</span>, as well as <span class="math" data-tex="\(y\ge0&gt;-n\)">\(y\ge0&gt;-n\)</span>. Intersecting these closed constraints with the compact support of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> gives the asserted compact containment. If <span class="math" data-tex="\(K\)">\(K\)</span> is empty, any <span class="math" data-tex="\(a&lt;n\)">\(a&lt;n\)</span> can be used and the same conclusion follows.</p>
+<p>Let <span class="math" data-tex="\(\mathcal N(\Omega_n)\)">\(\mathcal N(\Omega_n)\)</span> be the space of smooth solutions of <span class="math" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span> in <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span> whose relative support is contained in <span class="math" data-tex="\(\Gamma\cap\Omega_n\)">\(\Gamma\cap\Omega_n\)</span>, with its usual topology of uniform convergence of all derivatives on compact subsets.</p>
+<p><strong>Lemma 5.2 (approximation inside a larger polyhedron).</strong> If <span class="math" data-tex="\(m&gt;n\)">\(m&gt;n\)</span>, restrictions of <span class="math" data-tex="\(\mathcal N(\Omega_m)\)">\(\mathcal N(\Omega_m)\)</span> are dense in <span class="math" data-tex="\(\mathcal N(\Omega_n)\)">\(\mathcal N(\Omega_n)\)</span>.</p>
+<p><strong>Proof.</strong> It suffices to test continuous linear functionals. A functional on <span class="math" data-tex="\(\mathcal N(\Omega_n)\)">\(\mathcal N(\Omega_n)\)</span> that annihilates the restrictions from <span class="math" data-tex="\(\Omega_m\)">\(\Omega_m\)</span> extends by Hahn–Banach to <span class="math" data-tex="\(C^\infty(\Omega_n)\)">\(C^\infty(\Omega_n)\)</span>. Such an extension is a distribution <span class="math" data-tex="\(v\)">\(v\)</span> with compact support in <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span>: its continuity bounds it by finitely many derivative seminorms on one compact subset. We show that <span class="math" data-tex="\(v\)">\(v\)</span> annihilates all of <span class="math" data-tex="\(\mathcal N(\Omega_n)\)">\(\mathcal N(\Omega_n)\)</span>.</p>
+<p>Take bounded neighborhoods <span class="math" data-tex="\(U_3\Subset U_4\)">\(U_3\Subset U_4\)</span> of <span class="math" data-tex="\(\overline{\Omega_m}\)">\(\overline{\Omega_m}\)</span>. Choose a local fundamental solution <span class="math" data-tex="\(F\)">\(F\)</span> for <span class="math" data-tex="\(P\)">\(P\)</span>, supported in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, which is valid on a ball large enough to contain all differences of points of <span class="math" data-tex="\(\overline{U_4}\)">\(\overline{U_4}\)</span>. This is possible by Section 4. Set <span class="math" data-tex="\(\check F(z)=F(-z)\)">\(\check F(z)=F(-z)\)</span> and <span class="math" data-tex="\(\mu=\check F*v\)">\(\mu=\check F*v\)</span>. Convolution is defined because <span class="math" data-tex="\(v\)">\(v\)</span> has compact support. For <span class="math" data-tex="\(\phi\in C_c^\infty(\operatorname{int}\Gamma\cap(U_3\setminus\overline{\Omega_m}))\)">\(\phi\in C_c^\infty(\operatorname{int}\Gamma\cap(U_3\setminus\overline{\Omega_m}))\)</span>, the smooth function <span class="math" data-tex="\(F*\phi\)">\(F*\phi\)</span> is supported in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and <span class="math" data-tex="\(P(D)(F*\phi)=\phi\)">\(P(D)(F*\phi)=\phi\)</span> in <span class="math" data-tex="\(\Omega_m\)">\(\Omega_m\)</span>. Thus it belongs to <span class="math" data-tex="\(\mathcal N(\Omega_m)\)">\(\mathcal N(\Omega_m)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+ \mu(\phi)=v(F*\phi)=0.
+ \qquad Q(D)\mu=v\text{ in }U_3. \tag{DC25}
+\]">\[
+ \mu(\phi)=v(F*\phi)=0.
+ \qquad Q(D)\mu=v\text{ in }U_3. \tag{DC25}
+\]</span>
+<p>Take <span class="math" data-tex="\(\chi\in C_c^\infty(U_3)\)">\(\chi\in C_c^\infty(U_3)\)</span> equal to one near <span class="math" data-tex="\(\overline{\Omega_m}\)">\(\overline{\Omega_m}\)</span>, and put <span class="math" data-tex="\(\mu&#x27;=\chi\mu\)">\(\mu&#x27;=\chi\mu\)</span>. It is compactly supported. In the interior of the cone, the commutator <span class="math" data-tex="\([Q,\chi]\mu\)">\([Q,\chi]\mu\)</span> vanishes: its support is outside <span class="math" data-tex="\(\overline{\Omega_m}\)">\(\overline{\Omega_m}\)</span>, where (DC25) says <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span>. Therefore
+<span class="math" data-tex="\(Q\mu&#x27;=v\)">\(Q\mu&#x27;=v\)</span> in <span class="math" data-tex="\(\operatorname{int}\Gamma\)">\(\operatorname{int}\Gamma\)</span>, and (DC24) gives
+<span class="math" data-tex="\(\overline{\operatorname{int}\Gamma\cap\operatorname{supp}\mu&#x27;}\Subset\Omega_n\)">\(\overline{\operatorname{int}\Gamma\cap\operatorname{supp}\mu&#x27;}\Subset\Omega_n\)</span>.
+Choose <span class="math" data-tex="\(\psi\in C_c^\infty(\Omega_n)\)">\(\psi\in C_c^\infty(\Omega_n)\)</span> equal to one near that compact set. Put <span class="math" data-tex="\(\mu&#x27;&#x27;=\psi\mu&#x27;\)">\(\mu&#x27;&#x27;=\psi\mu&#x27;\)</span>. Then <span class="math" data-tex="\(Q\mu&#x27;&#x27;=v\)">\(Q\mu&#x27;&#x27;=v\)</span> throughout <span class="math" data-tex="\(\operatorname{int}\Gamma\)">\(\operatorname{int}\Gamma\)</span>, while <span class="math" data-tex="\(\mu&#x27;&#x27;\)">\(\mu&#x27;&#x27;\)</span> has compact support in <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span>.</p>
+<p>For <span class="math" data-tex="\(u\in\mathcal N(\Omega_n)\)">\(u\in\mathcal N(\Omega_n)\)</span>, every derivative of <span class="math" data-tex="\(u\)">\(u\)</span> vanishes on the complement of <span class="math" data-tex="\(\operatorname{int}\Gamma\)">\(\operatorname{int}\Gamma\)</span>. Off the closed cone this follows from its support; on its boundary it follows by smoothness and approach from the open complement. A distribution supported on that complement therefore annihilates <span class="math" data-tex="\(u\)">\(u\)</span>. Here is the needed elementary fact: on a compact set where a smooth function has every derivative zero, multiplying it by a cutoff supported in a shrinking neighborhood of that set tends to zero in every fixed derivative seminorm. Such cutoffs are obtained by convolving the indicator of an <span class="math" data-tex="\(\epsilon/2\)">\(\epsilon/2\)</span>-neighborhood with a mollifier of radius <span class="math" data-tex="\(\epsilon/4\)">\(\epsilon/4\)</span>, and multiplying by a fixed outer cutoff. Their derivatives of order <span class="math" data-tex="\(r\)">\(r\)</span> are <span class="math" data-tex="\(O(\epsilon^{-r})\)">\(O(\epsilon^{-r})\)</span>. Taylor’s formula at a nearest point of the closed set gives arbitrary powers of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> for the smooth function and all its derivatives, which absorb those losses. Finite distributional order then gives zero pairing.</p>
+<p>Apply this to <span class="math" data-tex="\(v-Q\mu&#x27;&#x27;\)">\(v-Q\mu&#x27;&#x27;\)</span>, supported off <span class="math" data-tex="\(\operatorname{int}\Gamma\)">\(\operatorname{int}\Gamma\)</span>. We obtain</p>
+<span class="math math-display" data-tex="\[
+ v(u)=(Q\mu&#x27;&#x27;)(u)=\mu&#x27;&#x27;(P(D)u)=0. \tag{DC26}
+\]">\[
+ v(u)=(Q\mu&#x27;&#x27;)(u)=\mu&#x27;&#x27;(P(D)u)=0. \tag{DC26}
+\]</span>
+<p>The Hahn–Banach separation criterion for closure now proves density. In detail, if the closure were a proper closed subspace, a point outside it could be separated by a continuous linear functional, contradicting the conclusion just proved. ∎</p>
+<h2 id="6-constructing-a-global-solution-for-each-cone">6. Constructing a global solution for each cone</h2>
+<p>The following recursion specifies <span class="math" data-tex="\(E_j\)">\(E_j\)</span> completely up to its bounded functional extensions and dense approximation choices. All of those choices have been proved possible.</p>
+<p>For each <span class="math" data-tex="\(n\)">\(n\)</span>, fix <span class="math" data-tex="\(\chi_n\in C_c^\infty(\Omega_{n+1})\)">\(\chi_n\in C_c^\infty(\Omega_{n+1})\)</span> equal to one near <span class="math" data-tex="\(\overline{\Omega_n}\)">\(\overline{\Omega_n}\)</span>. Begin with the solution <span class="math" data-tex="\(u_1=F_{\Omega_3}\)">\(u_1=F_{\Omega_3}\)</span> from (DC19). We recursively arrange</p>
+<span class="math math-display" data-tex="\[
+ u_n\in H^{-2}(\mathbb R^3),\quad
+ \operatorname{supp}u_n\subset\Gamma,\quad
+ P(D)u_n=\delta_0\text{ in }\Omega_{n+2},
+ \tag{DC27}
+\]">\[
+ u_n\in H^{-2}(\mathbb R^3),\quad
+ \operatorname{supp}u_n\subset\Gamma,\quad
+ P(D)u_n=\delta_0\text{ in }\Omega_{n+2},
+ \tag{DC27}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+ \|\chi_k(u_{n+1}-u_n)\|_{H^{-2}}\le2^{-n},
+ \qquad k\le n. \tag{DC28}
+\]">\[
+ \|\chi_k(u_{n+1}-u_n)\|_{H^{-2}}\le2^{-n},
+ \qquad k\le n. \tag{DC28}
+\]</span>
+<p>Suppose <span class="math" data-tex="\(u_n\)">\(u_n\)</span> has been constructed. First take <span class="math" data-tex="\(v_0=F_{\Omega_{n+4}}\)">\(v_0=F_{\Omega_{n+4}}\)</span>, and let <span class="math" data-tex="\(v=v_0-u_n\)">\(v=v_0-u_n\)</span>. Then <span class="math" data-tex="\(P(D)v=0\)">\(P(D)v=0\)</span> in <span class="math" data-tex="\(\Omega_{n+2}\)">\(\Omega_{n+2}\)</span>, and <span class="math" data-tex="\(v\)">\(v\)</span> is supported in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p>Choose a nonnegative smooth mollifier of integral one supported in a small ball strictly inside <span class="math" data-tex="\(\operatorname{int}\Gamma\)">\(\operatorname{int}\Gamma\)</span>. Dilate it towards zero to obtain <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with arbitrarily small support. Then <span class="math" data-tex="\(\rho*v\)">\(\rho*v\)</span> is smooth and supported in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>: the sum of the closed cone and the compact support of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a closed subset of the cone. If its support radius is smaller than the distance from <span class="math" data-tex="\(\overline{\Omega_{n+1}}\)">\(\overline{\Omega_{n+1}}\)</span> to the complement of <span class="math" data-tex="\(\Omega_{n+2}\)">\(\Omega_{n+2}\)</span>, it solves the homogeneous equation in <span class="math" data-tex="\(\Omega_{n+1}\)">\(\Omega_{n+1}\)</span>.</p>
+<p>Furthermore, translations are continuous in <span class="math" data-tex="\(H^{-2}\)">\(H^{-2}\)</span>. This follows by dominated convergence in its Fourier norm, since translation multiplies the transform by a unit-modulus exponential. The triangle inequality under the mollifier integral therefore gives <span class="math" data-tex="\(\rho*v\to v\)">\(\rho*v\to v\)</span> in <span class="math" data-tex="\(H^{-2}\)">\(H^{-2}\)</span>. Multiplication by a fixed smooth compactly supported <span class="math" data-tex="\(\chi_k\)">\(\chi_k\)</span> is bounded in <span class="math" data-tex="\(H^{-2}\)">\(H^{-2}\)</span>, by duality from the product rule in <span class="math" data-tex="\(H^2\)">\(H^2\)</span>. We may choose <span class="math" data-tex="\(\rho\)">\(\rho\)</span> so that</p>
+<span class="math math-display" data-tex="\[
+ \|\chi_k(\rho*v-v)\|_{H^{-2}}&lt;2^{-n-1},\qquad k\le n. \tag{DC29}
+\]">\[
+ \|\chi_k(\rho*v-v)\|_{H^{-2}}&lt;2^{-n-1},\qquad k\le n. \tag{DC29}
+\]</span>
+<p>By Lemma 5.2 choose <span class="math" data-tex="\(w\in\mathcal N(\Omega_{n+4})\)">\(w\in\mathcal N(\Omega_{n+4})\)</span> approximating <span class="math" data-tex="\(\rho*v\)">\(\rho*v\)</span> on the finite union of the compact supports of <span class="math" data-tex="\(\chi_1,\ldots,\chi_n\)">\(\chi_1,\ldots,\chi_n\)</span>, all lying in <span class="math" data-tex="\(\Omega_{n+1}\)">\(\Omega_{n+1}\)</span>, closely enough that</p>
+<span class="math math-display" data-tex="\[
+ \|\chi_k(w-\rho*v)\|_{H^{-2}}&lt;2^{-n-1},\qquad k\le n. \tag{DC30}
+\]">\[
+ \|\chi_k(w-\rho*v)\|_{H^{-2}}&lt;2^{-n-1},\qquad k\le n. \tag{DC30}
+\]</span>
+<p>Uniform approximation suffices: on a fixed compact set its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> error tends to zero, and <span class="math" data-tex="\(\|h\|_{H^{-2}}\le\|h\|_2\)">\(\|h\|_{H^{-2}}\le\|h\|_2\)</span>. Choose <span class="math" data-tex="\(\eta\in C_c^\infty(\Omega_{n+4})\)">\(\eta\in C_c^\infty(\Omega_{n+4})\)</span> equal to one near <span class="math" data-tex="\(\overline{\Omega_{n+3}}\)">\(\overline{\Omega_{n+3}}\)</span>, extend <span class="math" data-tex="\(\eta w\)">\(\eta w\)</span> by zero to all space, and define</p>
+<span class="math math-display" data-tex="\[
+ u_{n+1}=v_0-\eta w. \tag{DC31}
+\]">\[
+ u_{n+1}=v_0-\eta w. \tag{DC31}
+\]</span>
+<p>The extension is smooth, compactly supported and supported in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Hence (DC27) holds with <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, and (DC29)–(DC30) imply (DC28).</p>
+<p>For fixed <span class="math" data-tex="\(k\)">\(k\)</span>, the tail <span class="math" data-tex="\(\chi_k u_n\)">\(\chi_k u_n\)</span> is a Cauchy sequence in the complete space <span class="math" data-tex="\(H^{-2}\)">\(H^{-2}\)</span>, because <span class="math" data-tex="\(\sum_n2^{-n}&lt;\infty\)">\(\sum_n2^{-n}&lt;\infty\)</span>. The local limits agree on overlaps: they all come from the same sequence <span class="math" data-tex="\(u_n\)">\(u_n\)</span>. More explicitly, for any test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, choose <span class="math" data-tex="\(k\)">\(k\)</span> such that <span class="math" data-tex="\(\chi_k=1\)">\(\chi_k=1\)</span> near its support, and set</p>
+<span class="math math-display" data-tex="\[
+ E_j(\phi)=\lim_{n\to\infty}u_n(\phi). \tag{DC32}
+\]">\[
+ E_j(\phi)=\lim_{n\to\infty}u_n(\phi). \tag{DC32}
+\]</span>
+<p>On a fixed compact support the <span class="math" data-tex="\(H^{-2}\)">\(H^{-2}\)</span> convergence bounds this limit by the <span class="math" data-tex="\(H^2\)">\(H^2\)</span> norm of the test, so it is continuous in the test-function topology. It is therefore a distribution, locally in <span class="math" data-tex="\(H^{-2}\)">\(H^{-2}\)</span>. A test supported off <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is annihilated by every <span class="math" data-tex="\(u_n\)">\(u_n\)</span>, hence by <span class="math" data-tex="\(E_j\)">\(E_j\)</span>. For a fixed test, <span class="math" data-tex="\(P(D)u_n=\delta_0\)">\(P(D)u_n=\delta_0\)</span> on its support for all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>; continuity of distributional differentiation yields</p>
+<span class="math math-display" data-tex="\[
+ \operatorname{supp}E_j\subset\Gamma_j,
+ \qquad P(D)E_j=\delta_0\quad\text{on }\mathbb R^3. \tag{DC33}
+\]">\[
+ \operatorname{supp}E_j\subset\Gamma_j,
+ \qquad P(D)E_j=\delta_0\quad\text{on }\mathbb R^3. \tag{DC33}
+\]</span>
+<p>This completes the existence part of Theorem 1.1 for every <span class="math" data-tex="\(j\)">\(j\)</span>. The global <span class="math" data-tex="\(H^{-2}\)">\(H^{-2}\)</span> norms of the approximants were never bounded uniformly. The conclusion is local <span class="math" data-tex="\(H^{-2}\)">\(H^{-2}\)</span>, with unrestricted behavior at infinity.</p>
+<p><strong>Example 6.1 (summable errors really do matter).</strong> If the bound <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span> in (DC28) were replaced by <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, the displayed estimates alone would not establish convergence: the scalar sequence <span class="math" data-tex="\(s_n=\sum_{r=1}^{n-1}1/r\)">\(s_n=\sum_{r=1}^{n-1}1/r\)</span> has increments at most <span class="math" data-tex="\(1/n\)">\(1/n\)</span> and diverges. Any positive summable sequence can replace <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>, provided both approximation errors use half of that allowance.</p>
+<p><strong>Example 6.2 (a transformed family).</strong> Let <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Under <span class="math" data-tex="\(X=x\)">\(X=x\)</span>, <span class="math" data-tex="\(Y=y\)">\(Y=y\)</span>, <span class="math" data-tex="\(T=t/a\)">\(T=t/a\)</span>, the operator <span class="math" data-tex="\(D_xD_y+aD_t\)">\(D_xD_y+aD_t\)</span> becomes <span class="math" data-tex="\(D_XD_Y+D_T\)">\(D_XD_Y+D_T\)</span>. If <span class="math" data-tex="\(E_j\)">\(E_j\)</span> is the distribution constructed above, define the pullback-scaled distribution <span class="math" data-tex="\(\widetilde E_j(x,y,t)=a^{-1}E_j(x,y,t/a)\)">\(\widetilde E_j(x,y,t)=a^{-1}E_j(x,y,t/a)\)</span>, with pullback understood distributionally. Then</p>
+<span class="math math-display" data-tex="\[
+ (D_xD_y+aD_t)\widetilde E_j=\delta_0,
+ \qquad \operatorname{supp}\widetilde E_j
+ \subset\{y\ge (j/a)|t|\}. \tag{DC34}
+\]">\[
+ (D_xD_y+aD_t)\widetilde E_j=\delta_0,
+ \qquad \operatorname{supp}\widetilde E_j
+ \subset\{y\ge (j/a)|t|\}. \tag{DC34}
+\]</span>
+<p>The factor <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> compensates for the Jacobian: <span class="math" data-tex="\(\delta(t/a)=a\delta(t)\)">\(\delta(t/a)=a\delta(t)\)</span>. The intersection is still <span class="math" data-tex="\(y\ge0,t=0\)">\(y\ge0,t=0\)</span>, and the same highest-normal-jet argument excludes a fundamental solution there.</p>
+<h2 id="7-the-analytic-uniqueness-argument-used-by-the-barrier">7. The analytic uniqueness argument used by the barrier</h2>
+<p>We prove the exact analytic uniqueness statement used in Lemma 5.1. Only analytic graphs are needed there. This is the analytic-graph, order-two form of Holmgren’s theorem. The argument uses an adjoint analytic Cauchy problem, with estimates included below.</p>
+<h3 id="7-1-a-uniform-analytic-cauchy-construction">7.1. A uniform analytic Cauchy construction</h3>
+<p>Let <span class="math" data-tex="\(z\in\mathbb C^d\)">\(z\in\mathbb C^d\)</span>, and let <span class="math" data-tex="\(V_0\Subset V_1\)">\(V_0\Subset V_1\)</span> be concentric polydisks. Insert intermediate polydisks <span class="math" data-tex="\(V_s\)">\(V_s\)</span>, <span class="math" data-tex="\(0\le s\le1\)">\(0\le s\le1\)</span>, whose radii grow linearly with <span class="math" data-tex="\(s\)">\(s\)</span>. Let <span class="math" data-tex="\(\mathcal H_s\)">\(\mathcal H_s\)</span> be the Banach space of continuous vector-valued functions on <span class="math" data-tex="\(\overline{V_s}\)">\(\overline{V_s}\)</span>, holomorphic inside, with its supremum norm. Uniform limits remain holomorphic by Cauchy’s formula, so these spaces are complete. Suppose</p>
+<span class="math math-display" data-tex="\[
+ A(q)=\sum_{r=1}^d A_r(z,q)\partial_{z_r}+A_0(z,q) \tag{DC35}
+\]">\[
+ A(q)=\sum_{r=1}^d A_r(z,q)\partial_{z_r}+A_0(z,q) \tag{DC35}
+\]</span>
+<p>has coefficients holomorphic on a neighborhood of <span class="math" data-tex="\(\overline{V_1}\)">\(\overline{V_1}\)</span>, smooth for the real parameter <span class="math" data-tex="\(q\)">\(q\)</span> in a fixed short interval, with all needed derivatives bounded there. Cauchy’s integral formula on a disk of radius proportional to <span class="math" data-tex="\(s-s&#x27;\)">\(s-s&#x27;\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+ \|A(q)h\|_{\mathcal H_{s&#x27;}}\le \frac C{s-s&#x27;}\|h\|_{\mathcal H_s},
+ \qquad 0\le s&#x27;&lt;s\le1, \tag{DC36}
+\]">\[
+ \|A(q)h\|_{\mathcal H_{s&#x27;}}\le \frac C{s-s&#x27;}\|h\|_{\mathcal H_s},
+ \qquad 0\le s&#x27;&lt;s\le1, \tag{DC36}
+\]</span>
+<p>with <span class="math" data-tex="\(C\)">\(C\)</span> independent of <span class="math" data-tex="\(h,q,s,s&#x27;\)">\(h,q,s,s&#x27;\)</span>. A bounded zeroth order term is absorbed because <span class="math" data-tex="\(s-s&#x27;\le1\)">\(s-s&#x27;\le1\)</span>. The same estimate holds for the formal spatial transpose and for each fixed parameter derivative, with its own constant.</p>
+<p>The equation <span class="math" data-tex="\(\partial_q h=A(q)h+f(q)\)">\(\partial_q h=A(q)h+f(q)\)</span>, with zero value at <span class="math" data-tex="\(q=b\)">\(q=b\)</span>, has a solution on a short interval whose length depends on <span class="math" data-tex="\(C,V_0,V_1\)">\(C,V_0,V_1\)</span>, <strong>not on the size of</strong> <span class="math" data-tex="\(f\)">\(f\)</span>. Here <span class="math" data-tex="\(f\)">\(f\)</span> is smooth in <span class="math" data-tex="\(q\)">\(q\)</span> with values in <span class="math" data-tex="\(\mathcal H_1\)">\(\mathcal H_1\)</span>. To see this, write</p>
+<span class="math math-display" data-tex="\[
+ h_0(q)=\int_b^q f(v)\,dv,
+ \qquad h_{k+1}(q)=\int_b^q A(v)h_k(v)\,dv,
+ \qquad h=\sum_{k\ge0}h_k. \tag{DC37}
+\]">\[
+ h_0(q)=\int_b^q f(v)\,dv,
+ \qquad h_{k+1}(q)=\int_b^q A(v)h_k(v)\,dv,
+ \qquad h=\sum_{k\ge0}h_k. \tag{DC37}
+\]</span>
+<p>The integrals can be defined pointwise in <span class="math" data-tex="\(z\)">\(z\)</span>; uniform Riemann sums and completeness give the same elements of the indicated spaces. For a product of <span class="math" data-tex="\(k\)">\(k\)</span> operators choose <span class="math" data-tex="\(k\)">\(k\)</span> equal radius losses between <span class="math" data-tex="\(V_1\)">\(V_1\)</span> and <span class="math" data-tex="\(V_s\)">\(V_s\)</span>. Its norm is at most <span class="math" data-tex="\((Ck/(1-s))^k\)">\((Ck/(1-s))^k\)</span>. The ordered time integrals have volume <span class="math" data-tex="\(|q-b|^k/k!\)">\(|q-b|^k/k!\)</span>. Since <span class="math" data-tex="\(k!\ge(k/e)^k\)">\(k!\ge(k/e)^k\)</span> (integrate <span class="math" data-tex="\(\log r\)">\(\log r\)</span> from 1 to <span class="math" data-tex="\(k\)">\(k\)</span>), if <span class="math" data-tex="\(M\)">\(M\)</span> bounds <span class="math" data-tex="\(\|h_0(q)\|_{\mathcal H_1}\)">\(\|h_0(q)\|_{\mathcal H_1}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+ \|h_k(q)\|_{\mathcal H_s}
+ \le M\left(\frac{Ce|q-b|}{1-s}\right)^k. \tag{DC38}
+\]">\[
+ \|h_k(q)\|_{\mathcal H_s}
+ \le M\left(\frac{Ce|q-b|}{1-s}\right)^k. \tag{DC38}
+\]</span>
+<p>Choose the time interval so that the factor is less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span> for a fixed <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>. The series converges uniformly in that space. Applying <span class="math" data-tex="\(A\)">\(A\)</span> with a further fixed radius loss permits termwise integration and gives the equation. Differentiating the equation repeatedly, with smaller polydisks at each of the finitely many differentiation steps, gives smoothness in <span class="math" data-tex="\(q\)">\(q\)</span>. Any finite number of steps fits within a fixed remaining positive radius gap. Spatial derivatives are controlled by Cauchy’s formula. Thus the solution is jointly smooth on the real slice of a smaller polydisk.</p>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> vanishes near <span class="math" data-tex="\(b\)">\(b\)</span>, every term in (DC37) vanishes there, so <span class="math" data-tex="\(h\)">\(h\)</span> does too. The construction applies equally when integrating backwards. This endpoint property will make the solution a valid test function in the normal variable.</p>
+<h3 id="7-2-uniqueness-for-a-first-order-system">7.2. Uniqueness for a first order system</h3>
+<p>Consider a distribution-valued vector <span class="math" data-tex="\(U\)">\(U\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+ \partial_qU=A(q)U \tag{DC39}
+\]">\[
+ \partial_qU=A(q)U \tag{DC39}
+\]</span>
+<p>near <span class="math" data-tex="\((z,q)=(0,0)\)">\((z,q)=(0,0)\)</span> on the real slice, with analytic coefficients. Suppose <span class="math" data-tex="\(U=0\)">\(U=0\)</span> for <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>. First reduce to compact tangential support by the analytic change</p>
+<span class="math math-display" data-tex="\[
+ z&#x27;=z,\qquad q&#x27;=q+|z|^2. \tag{DC40}
+\]">\[
+ z&#x27;=z,\qquad q&#x27;=q+|z|^2. \tag{DC40}
+\]</span>
+<p>In real coordinates the old <span class="math" data-tex="\(\partial_{z_r}\)">\(\partial_{z_r}\)</span> becomes <span class="math" data-tex="\(\partial_{z&#x27;_r}+2z&#x27;_r\partial_{q&#x27;}\)">\(\partial_{z&#x27;_r}+2z&#x27;_r\partial_{q&#x27;}\)</span>. Thus the coefficient of <span class="math" data-tex="\(\partial_{q&#x27;}U\)">\(\partial_{q&#x27;}U\)</span> is
+<span class="math" data-tex="\(I-2\sum_r z&#x27;_r A_r\)">\(I-2\sum_r z&#x27;_r A_r\)</span>, which is invertible near zero. Its inverse is analytic, by the determinant formula. We obtain another system of the form (DC39). Its solution vanishes where <span class="math" data-tex="\(q&#x27;&lt;|z&#x27;|^2\)">\(q&#x27;&lt;|z&#x27;|^2\)</span>.</p>
+<p>Choose a small tangential ball of radius <span class="math" data-tex="\(r\)">\(r\)</span> where the transformed coefficients are analytic. Then choose <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span> much smaller than <span class="math" data-tex="\(r^2\)">\(r^2\)</span>. For <span class="math" data-tex="\(|q&#x27;|&lt;T\)">\(|q&#x27;|&lt;T\)</span>, the support of <span class="math" data-tex="\(U\)">\(U\)</span> lies in <span class="math" data-tex="\(|z&#x27;|\le\sqrt T&lt;r/2\)">\(|z&#x27;|\le\sqrt T&lt;r/2\)</span>; hence it stays in a fixed compact set strictly inside that ball. Multiplying by a spatial cutoff equal to one near this compact set and extending by zero adds no commutator term. We may now work on a fixed polydisk with <span class="math" data-tex="\(U\)">\(U\)</span> compactly supported in its real interior for all these parameter values. Drop the primes.</p>
+<p>Let <span class="math" data-tex="\(A^{\mathrm t}\)">\(A^{\mathrm t}\)</span> be the formal spatial transpose in the bilinear pairing. For any vector polynomial <span class="math" data-tex="\(h(z)\)">\(h(z)\)</span> and any <span class="math" data-tex="\(\psi\in C_c^\infty((-T/4,T/4))\)">\(\psi\in C_c^\infty((-T/4,T/4))\)</span>, use Section 7.1 to solve</p>
+<span class="math math-display" data-tex="\[
+ -\partial_q v-A(q)^{\mathrm t}v=h(z)\psi(q),
+ \qquad v(z,b)=0,\quad b=T/2. \tag{DC41}
+\]">\[
+ -\partial_q v-A(q)^{\mathrm t}v=h(z)\psi(q),
+ \qquad v(z,b)=0,\quad b=T/2. \tag{DC41}
+\]</span>
+<p>Shrinking <span class="math" data-tex="\(T\)">\(T\)</span> once ensures that the whole interval <span class="math" data-tex="\([-T/2,T/2]\)">\([-T/2,T/2]\)</span> has the required small length. This choice is independent of <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, because (DC38) only uses their norm as a multiplying constant. The solution is smooth and holomorphic in <span class="math" data-tex="\(z\)">\(z\)</span>, and is zero near <span class="math" data-tex="\(b\)">\(b\)</span>, since the forcing is zero there.</p>
+<p>Multiply <span class="math" data-tex="\(v\)">\(v\)</span> by a tangential cutoff equal to one near the compact support of <span class="math" data-tex="\(U\)">\(U\)</span>, and by a normal cutoff that changes only near the negative endpoint and near <span class="math" data-tex="\(b\)">\(b\)</span>. The negative transition pairs with <span class="math" data-tex="\(U=0\)">\(U=0\)</span>; the positive transition pairs with <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Thus the distributional equation (DC39), tested against this compactly supported smooth function, gives</p>
+<span class="math math-display" data-tex="\[
+ \langle U,h(z)\psi(q)\rangle=0. \tag{DC42}
+\]">\[
+ \langle U,h(z)\psi(q)\rangle=0. \tag{DC42}
+\]</span>
+<p>This entails <span class="math" data-tex="\(U=0\)">\(U=0\)</span> in the smaller cylinder. To justify the density step without assuming analyticity of a test, convolve its spatial variables with a Gaussian. The result is entire in the spatial variables, smooth in <span class="math" data-tex="\(q\)">\(q\)</span>, and tends to the test in every derivative seminorm on the compact support of <span class="math" data-tex="\(U\)">\(U\)</span>. Its Taylor polynomials in <span class="math" data-tex="\(z\)">\(z\)</span> converge there together with every fixed number of spatial and normal derivatives, uniformly on compact parameter intervals. The coefficients are smooth functions of <span class="math" data-tex="\(q\)">\(q\)</span> with the same compact parameter support. Hence finite sums of the products tested in (DC42) approximate any such test to the finite order required by <span class="math" data-tex="\(U\)">\(U\)</span>. The pairing with every test vanishes. No normal trace of <span class="math" data-tex="\(U\)">\(U\)</span> was assumed. ∎</p>
+<h3 id="7-3-from-second-order-equations-to-the-system">7.3. From second order equations to the system</h3>
+<p>The barrier only needs a scalar equation of order two with analytic coefficients. For an analytic noncharacteristic graph <span class="math" data-tex="\(x=g(z)\)">\(x=g(z)\)</span>, use the explicit coordinates <span class="math" data-tex="\((z,q)=(z,\pm(x-g(z)))\)">\((z,q)=(z,\pm(x-g(z)))\)</span>, with inverse <span class="math" data-tex="\(x=g(z)\pm q\)">\(x=g(z)\pm q\)</span>. Both maps are analytic. No implicit function theorem is required. Orient the new normal coordinate <span class="math" data-tex="\(q\)">\(q\)</span> so that the known zero side is <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>. The scalar operator takes the form</p>
+<span class="math math-display" data-tex="\[
+ a\partial_q^2+\sum_r b_r\partial_{z_r}\partial_q
+ +\sum_{r,s}c_{rs}\partial_{z_r}\partial_{z_s}
+ +d\partial_q+\sum_r e_r\partial_{z_r}+f,
+ \qquad a\ne0. \tag{DC43}
+\]">\[
+ a\partial_q^2+\sum_r b_r\partial_{z_r}\partial_q
+ +\sum_{r,s}c_{rs}\partial_{z_r}\partial_{z_s}
+ +d\partial_q+\sum_r e_r\partial_{z_r}+f,
+ \qquad a\ne0. \tag{DC43}
+\]</span>
+<p>Noncharacteristic means exactly <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>; shrink the neighborhood so it never vanishes. For a scalar distribution <span class="math" data-tex="\(u\)">\(u\)</span>, set
+<span class="math" data-tex="\(U=(u,\partial_{z_1}u,\ldots,\partial_{z_d}u,\partial_qu)\)">\(U=(u,\partial_{z_1}u,\ldots,\partial_{z_d}u,\partial_qu)\)</span>.
+Then
+<span class="math" data-tex="\(\partial_qu=U_{d+1}\)">\(\partial_qu=U_{d+1}\)</span>,
+<span class="math" data-tex="\(\partial_qU_r=\partial_{z_r}U_{d+1}\)">\(\partial_qU_r=\partial_{z_r}U_{d+1}\)</span>, and the scalar equation expresses <span class="math" data-tex="\(\partial_qU_{d+1}\)">\(\partial_qU_{d+1}\)</span> as a first order tangential differential expression in <span class="math" data-tex="\(U\)">\(U\)</span>, with analytic coefficients obtained by dividing by <span class="math" data-tex="\(a\)">\(a\)</span>. Thus <span class="math" data-tex="\(U\)">\(U\)</span> satisfies a system (DC39). All its components vanish on the known zero side, and Section 7.2 gives <span class="math" data-tex="\(U=0\)">\(U=0\)</span> near the hypersurface. In particular <span class="math" data-tex="\(u=0\)">\(u=0\)</span>.</p>
+<p>This proves precisely the uniqueness used in (DC22), for arbitrary distributions and complex coefficients. It does not invoke analyticity of the solution or an analytic wave front set.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<h3 id="exercise-1-change-the-narrowing-rate">Exercise 1. Change the narrowing rate</h3>
+<p>Let <span class="math" data-tex="\(a_n&gt;0\)">\(a_n&gt;0\)</span> be increasing with <span class="math" data-tex="\(a_n\to\infty\)">\(a_n\to\infty\)</span>. Replace <span class="math" data-tex="\(j\)">\(j\)</span> in (DC2) by <span class="math" data-tex="\(a_n\)">\(a_n\)</span>. Find the intersection and decide whether Theorem 1.1 remains valid.</p>
+<p><strong>Solution.</strong> The intersection is still <span class="math" data-tex="\(\{y\ge0,t=0\}\)">\(\{y\ge0,t=0\}\)</span>: for <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, choose <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(a_n&gt;y/|t|\)">\(a_n&gt;y/|t|\)</span>. The local transport proof uses the threshold <span class="math" data-tex="\(|\xi|\ge a_n\)">\(|\xi|\ge a_n\)</span>, and Lemma 3.1 works for every positive threshold. In the barrier one may replace the coefficient 2 in <span class="math" data-tex="\(L\)">\(L\)</span> by any positive constant; its <span class="math" data-tex="\(y\)">\(y\)</span>-derivative stays positive. In the exhaustion one may retain 2, since no dual-cone estimate is required by the barrier. Every cone therefore has a fundamental solution, while the finite-jet proof excludes one in the intersection. Integrality of the narrowing parameter was never needed.</p>
+<h3 id="exercise-2-why-an-open-cone-is-the-wrong-support-convention">Exercise 2. Why an open cone is the wrong support convention</h3>
+<p>Can a fundamental solution have support contained in <span class="math" data-tex="\(\{y&gt;j|t|\}\)">\(\{y&gt;j|t|\}\)</span>? Explain why adding the vertex alone does not make the closed-cone theorem a proof for that smaller set.</p>
+<p><strong>Solution.</strong> Distributional differentiation does not increase support, so <span class="math" data-tex="\(0\in\operatorname{supp}\delta_0\subset\operatorname{supp}E\)">\(0\in\operatorname{supp}\delta_0\subset\operatorname{supp}E\)</span>. The strict cone excludes zero, making the first proposal impossible.</p>
+<p>Adding the vertex admits zero but still excludes the whole edge and the sloping faces away from zero. The theorem proved here supplies a solution in the <strong>closed</strong> cone and makes no assertion about this smaller set. One cannot infer the stronger support statement from a closed-cone enclosure. Indeed, the support is closed, so any accumulation on an excluded face would violate it. Whether another fundamental solution has that stronger support is a separate question, left unasserted. The exact established convention is (DC2), including its edge and both faces.</p>
+<h3 id="exercise-3-check-the-transport-signs-and-endpoints">Exercise 3. Check the transport signs and endpoints</h3>
+<p>Derive (DC9) directly. Then give the corresponding formula for <span class="math" data-tex="\(f=P(D)u\)">\(f=P(D)u\)</span>, and explain why equality <span class="math" data-tex="\(|\xi|=j\)">\(|\xi|=j\)</span> is allowed.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(Q\)">\(Q\)</span>, partial Fourier transformation in <span class="math" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-tex="\(-i(\xi\partial_y-\partial_t)\widehat u=\widehat f\)">\(-i(\xi\partial_y-\partial_t)\widehat u=\widehat f\)</span>. Along <span class="math" data-tex="\((y+s,t-s/\xi)\)">\((y+s,t-s/\xi)\)</span>, differentiation yields <span class="math" data-tex="\(i\widehat f/\xi\)">\(i\widehat f/\xi\)</span>. Its integral from zero to infinity is <span class="math" data-tex="\(0-\widehat u\)">\(0-\widehat u\)</span>, since compact support in <span class="math" data-tex="\(y\)">\(y\)</span> kills the terminal value. Therefore <span class="math" data-tex="\(\widehat u=-i\xi^{-1}\int_0^\infty\widehat f(y+s,t-s/\xi)\,ds\)">\(\widehat u=-i\xi^{-1}\int_0^\infty\widehat f(y+s,t-s/\xi)\,ds\)</span>.</p>
+<p>For <span class="math" data-tex="\(P\)">\(P\)</span>, replace the minus sign before <span class="math" data-tex="\(\partial_t\)">\(\partial_t\)</span> by a plus sign. The formula is <span class="math" data-tex="\(-i\xi^{-1}\int_0^\infty\widehat f(y+s,t+s/\xi)\,ds\)">\(-i\xi^{-1}\int_0^\infty\widehat f(y+s,t+s/\xi)\,ds\)</span>. In either case the displacement has <span class="math" data-tex="\(\Delta y=s\)">\(\Delta y=s\)</span> and <span class="math" data-tex="\(|\Delta t|=s/|\xi|\)">\(|\Delta t|=s/|\xi|\)</span>, so it belongs to the closed cone exactly when <span class="math" data-tex="\(|\xi|\ge j\)">\(|\xi|\ge j\)</span>. Equality is a boundary direction and is included. The zero frequency is excluded because division by <span class="math" data-tex="\(\xi\)">\(\xi\)</span> would be invalid; Lemma 3.1 recovers it through compact spatial support.</p>
+<h3 id="exercise-4-a-local-finite-jet-obstruction-in-general-form">Exercise 4. A local finite-jet obstruction in general form</h3>
+<p>Let <span class="math" data-tex="\(A(D_x,D_y)\)">\(A(D_x,D_y)\)</span> be any constant coefficient tangential operator, and <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>. Prove that <span class="math" data-tex="\(A(D_x,D_y)+cD_t\)">\(A(D_x,D_y)+cD_t\)</span> has no fundamental solution supported in <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Explain why <span class="math" data-tex="\(c=0\)">\(c=0\)</span> is different.</p>
+<p><strong>Solution.</strong> Near zero write a hypothetical solution as <span class="math" data-tex="\(\sum_{k=0}^M E_k\partial_t^k\delta\)">\(\sum_{k=0}^M E_k\partial_t^k\delta\)</span>, by Lemma 2.1. Since <span class="math" data-tex="\(D_t=-i\partial_t\)">\(D_t=-i\partial_t\)</span>, its highest normal coefficient after applying the operator is <span class="math" data-tex="\(-icE_M\)">\(-icE_M\)</span> at order <span class="math" data-tex="\(M+1\)">\(M+1\)</span>. It must be zero, so <span class="math" data-tex="\(E_M=0\)">\(E_M=0\)</span>. Descending yields all coefficients zero, contradicting the nonzero point source. This proof is local and applies to all distributions. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, no highest normal coefficient is created; a tangential fundamental solution <span class="math" data-tex="\(G\)">\(G\)</span>, when available, gives <span class="math" data-tex="\(G(x,y)\delta(t)\)">\(G(x,y)\delta(t)\)</span>. Example 2.2 gives one concrete instance.</p>
+<h3 id="exercise-5-what-a-compatible-limit-would-force">Exercise 5. What a compatible limit would force</h3>
+<p>Suppose one could choose the fundamental solutions of Theorem 1.1 so that <span class="math" data-tex="\(E_j\to E\)">\(E_j\to E\)</span> in <span class="math" data-tex="\(\mathcal D&#x27;(\mathbb R^3)\)">\(\mathcal D&#x27;(\mathbb R^3)\)</span>. Derive a contradiction. State precisely what this says about the construction.</p>
+<p><strong>Solution.</strong> Fix <span class="math" data-tex="\(k\)">\(k\)</span>. For all <span class="math" data-tex="\(j\ge k\)">\(j\ge k\)</span>, <span class="math" data-tex="\(\operatorname{supp}E_j\subset\Gamma_j\subset\Gamma_k\)">\(\operatorname{supp}E_j\subset\Gamma_j\subset\Gamma_k\)</span>. A test supported in the open complement of <span class="math" data-tex="\(\Gamma_k\)">\(\Gamma_k\)</span> is eventually annihilated; passage to the limit gives <span class="math" data-tex="\(\operatorname{supp}E\subset\Gamma_k\)">\(\operatorname{supp}E\subset\Gamma_k\)</span>. Since this holds for every <span class="math" data-tex="\(k\)">\(k\)</span>, the support lies in <span class="math" data-tex="\(\Gamma_\infty\)">\(\Gamma_\infty\)</span>. Differentiation is continuous in <span class="math" data-tex="\(\mathcal D&#x27;\)">\(\mathcal D&#x27;\)</span>, so <span class="math" data-tex="\(P(D)E=\lim_jP(D)E_j=\delta_0\)">\(P(D)E=\lim_jP(D)E_j=\delta_0\)</span>. Section 2 rules this out.</p>
+<p>Thus no choice of one fundamental solution in each shrinking cone can converge distributionally as <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>. The recursion in Section 6 converges in its exhaustion index <span class="math" data-tex="\(n\)">\(n\)</span> for each <strong>fixed</strong> <span class="math" data-tex="\(j\)">\(j\)</span>. It does not converge in the cone index <span class="math" data-tex="\(j\)">\(j\)</span>, and no such claim was made.</p>
+<h2 id="references">References</h2>
+<p>[E] Arne Enqvist, <em>On fundamental solutions supported by a convex cone</em>, Arkiv för Matematik <strong>12</strong> (1974), 1–40. <a href="https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02384744">Original paper</a>. The quadratic classification is Theorems 7.1–7.3, case (iv); the hyperplane criterion is Theorem 2.11. The cone approximation method is developed in Section 4. The particular decreasing sequence and the specialized estimates and barrier above are presented explicitly here.</p>
+<p>[C] Romain Crétier, <em>Cauchy-Kovalevska Theorem, Characteristics and Holmgren Theorem</em>, undated notes. <a href="https://www.imo.universite-paris-saclay.fr/media/filer_public/2f/54/2f545d60-a80b-41b4-ae17-58f05160651c/notes_ck.pdf">Freely readable human exposition</a>, Sections 2 and 5. The adjoint analytic-Cauchy method is classical; Section 7 supplies the analytic-graph, order-two distributional form needed in this lesson.</p>
+<p><a href="reproduce-AN02-L113.html">Reproduction guide and six named source downloads</a> · <a href="src/fundamental-solutions-in-shrinking-cones.md">Download the complete lesson source</a>.</p>
+</main></body></html>

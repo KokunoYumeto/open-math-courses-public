@@ -1,0 +1,276 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite ideals and GNS spaces for arbitrary weights · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-STC.html">Previous lesson</a><a href="OA-FLOW-NF.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-GW.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original reconstruction by GPT-6 Astra (OpenAI), Ultra; full independent owner mathematical review at actual earlier bounded inputs. Null cases and arbitrary weights retained. Human review and formal verification are not asserted.</p><h1 id="finite-ideals-and-gns-spaces-for-arbitrary-weights">Finite ideals and GNS spaces for arbitrary weights</h1>
+<p><em>Fresh local proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held. No faithfulness, normality, semifiniteness or countability is imposed unless explicitly stated.</em></p>
+<p>Let <span class="math" data-tex="\(M\subseteq B(K)\)">\(M\subseteq B(K)\)</span> be a von Neumann algebra acting nondegenerately on an arbitrary Hilbert space. A weight is an additive positively homogeneous map <span class="math" data-tex="\(\varphi:M_+\to[0,\infty]\)">\(\varphi:M_+\to[0,\infty]\)</span>, with <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. In particular <span class="math" data-tex="\(\varphi(0)=0\)">\(\varphi(0)=0\)</span>. Normality here means preservation of bounded increasing positive suprema; semifiniteness initially means ultraweak density of the linear span of the finite positive cone. We prove the alternative density and cutoff characterizations below. The zero algebra and zero GNS Hilbert space are allowed.</p>
+<p>The proof inputs are <span class="unlinked">CF-1</span>, <span class="unlinked">CF-6–8</span>, <span class="unlinked">CF-10</span>, <a href="OA-FLOW-SF.html#oa-flow.shared-foundations.sf-0">SF-0</a>/<a href="OA-FLOW-SF.html#OA-FLOW.SF.SB0">SB-0</a> with <a href="OA-FLOW-SF.html#OA-FLOW.SF.SB1">SB-1–SB-6</a>, and <a href="OA-FLOW-BD.html#oa-flow.bd.5">BD, (BD7)</a> for bounded strong convergence implying concrete ultraweak convergence. The purely bounded-operator proof that a bounded increasing positive net converges strongly to its supremum is <a href="OA-FLOW-WF.html#oa-flow.wf.2">WF-2, (WF5)</a>; it does not depend on a weight or on another WF section. No previous WG, NW, OW or NP proof is a premise.</p>
+<p>For free human context see <a href="https://arxiv.org/pdf/2004.02383v1#page=63">Hiai, <em>Lectures on von Neumann algebras</em>, §7.1, Definition 7.1 and the GNS discussion on printed pp.63–64</a>. The supplied finite-weight statements and general conventions motivated the scope check; all arguments required here are written below, including the quotient for nonfaithful weights and the increasing cutoff construction. Hiai's subsequently cited normality-equivalence and modular theorems are not imported.</p>
+<p><a id="oa-flow.gw.1"></a></p>
+<h2 id="OA-FLOW.GW.1">GW-1. The finite cone, ideal and algebra</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+P=\{a\in M_+:\varphi(a)&lt;\infty\},\qquad
+N=\{x\in M:x^*x\in P\},\qquad
+\mathfrak m=\operatorname{span}_{\mathbb C}P.
+\]">\[
+P=\{a\in M_+:\varphi(a)&lt;\infty\},\qquad
+N=\{x\in M:x^*x\in P\},\qquad
+\mathfrak m=\operatorname{span}_{\mathbb C}P.
+\]</span>
+If <span class="math" data-tex="\(0\leq a\leq b\)">\(0\leq a\leq b\)</span>, then <span class="math" data-tex="\(b=a+(b-a)\)">\(b=a+(b-a)\)</span>, and additivity shows <span class="math" data-tex="\(\varphi(a)\leq\varphi(b)\)">\(\varphi(a)\leq\varphi(b)\)</span>. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is hereditary. It is closed under addition and nonnegative scalar multiplication.</p>
+<p>For <span class="math" data-tex="\(x,y\in N\)">\(x,y\in N\)</span>, positivity of <span class="math" data-tex="\((x-y)^*(x-y)\)">\((x-y)^*(x-y)\)</span> gives
+<span class="math math-display" data-tex="\[
+(x+y)^*(x+y)\leq2x^*x+2y^*y.
+\tag{GW1}
+\]">\[
+(x+y)^*(x+y)\leq2x^*x+2y^*y.
+\tag{GW1}
+\]</span>
+Heredity proves <span class="math" data-tex="\(x+y\in N\)">\(x+y\in N\)</span>. Scalar closure is immediate. For <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>,
+<span class="math math-display" data-tex="\[
+(ax)^*(ax)=x^*a^*ax\leq\|a\|^2x^*x,
+\tag{GW2}
+\]">\[
+(ax)^*(ax)=x^*a^*ax\leq\|a\|^2x^*x,
+\tag{GW2}
+\]</span>
+so <span class="math" data-tex="\(N\)">\(N\)</span> is a linear left ideal. Every <span class="math" data-tex="\(p\in P\)">\(p\in P\)</span> belongs to <span class="math" data-tex="\(N\)">\(N\)</span>: <span class="math" data-tex="\(p^2\leq\|p\|p\)">\(p^2\leq\|p\|p\)</span>. Since it is self-adjoint, <span class="math" data-tex="\(p\in N\cap N^*\)">\(p\in N\cap N^*\)</span>.</p>
+<p>For <span class="math" data-tex="\(x,y\in N\)">\(x,y\in N\)</span>, direct expansion gives
+<span class="math math-display" data-tex="\[
+y^*x=\frac14\sum_{k=0}^3 i^k(x+i^k y)^*(x+i^k y).
+\tag{GW3}
+\]">\[
+y^*x=\frac14\sum_{k=0}^3 i^k(x+i^k y)^*(x+i^k y).
+\tag{GW3}
+\]</span>
+All four square terms are in <span class="math" data-tex="\(P\)">\(P\)</span>. Conversely <span class="math" data-tex="\(p\in P\)">\(p\in P\)</span> equals <span class="math" data-tex="\((p^{1/2})^*p^{1/2}\)">\((p^{1/2})^*p^{1/2}\)</span>, where <span class="math" data-tex="\(p^{1/2}\in N\)">\(p^{1/2}\in N\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\mathfrak m=\operatorname{span}N^*N.
+\tag{GW4}
+\]">\[
+\mathfrak m=\operatorname{span}N^*N.
+\tag{GW4}
+\]</span>
+Adjoints preserve this space. Also
+<span class="math" data-tex="\((x^*y)(z^*w)=x^*((yz^*)w)\)">\((x^*y)(z^*w)=x^*((yz^*)w)\)</span>, where <span class="math" data-tex="\((yz^*)w\in N\)">\((yz^*)w\in N\)</span>, so <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is a *-algebra. The left-ideal property gives <span class="math" data-tex="\(x^*y\in N\)">\(x^*y\in N\)</span>, and its adjoint belongs to <span class="math" data-tex="\(N\)">\(N\)</span>; hence <span class="math" data-tex="\(\mathfrak m\subseteq N\cap N^*\)">\(\mathfrak m\subseteq N\cap N^*\)</span>. The latter intersection is also a *-algebra: for <span class="math" data-tex="\(u,v\)">\(u,v\)</span> in it, <span class="math" data-tex="\(uv\in N\)">\(uv\in N\)</span> and <span class="math" data-tex="\((uv)^*=v^*u^*\in N\)">\((uv)^*=v^*u^*\in N\)</span>.</p>
+<p>Every self-adjoint element of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is <span class="math" data-tex="\(p-q\)">\(p-q\)</span>, <span class="math" data-tex="\(p,q\in P\)">\(p,q\in P\)</span>. Indeed, take real parts of the coefficients in any finite representation by elements of <span class="math" data-tex="\(P\)">\(P\)</span>, then collect positive and negative coefficients. If <span class="math" data-tex="\(p-q\geq0\)">\(p-q\geq0\)</span>, it is at most <span class="math" data-tex="\(p\)">\(p\)</span>, so heredity gives <span class="math" data-tex="\(p-q\in P\)">\(p-q\in P\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\mathfrak m\cap M_+=P.
+\tag{GW5}
+\]">\[
+\mathfrak m\cap M_+=P.
+\tag{GW5}
+\]</span>
+For <span class="math" data-tex="\(z\in N\)">\(z\in N\)</span>, <span class="math" data-tex="\(|z|\in N\cap N^*\)">\(|z|\in N\cap N^*\)</span> since <span class="math" data-tex="\(|z|^2=z^*z\in P\)">\(|z|^2=z^*z\in P\)</span>. Thus <span class="math" data-tex="\(z^*z=|z|^2\)">\(z^*z=|z|^2\)</span> is a product from this intersection. Using (GW3), and the reverse containment <span class="math" data-tex="\(uv=(u^*)^*v\)">\(uv=(u^*)^*v\)</span>, proves
+<span class="math math-display" data-tex="\[
+\mathfrak m=(N\cap N^*)^2,
+\tag{GW6}
+\]">\[
+\mathfrak m=(N\cap N^*)^2,
+\tag{GW6}
+\]</span>
+where the square means the linear span of products.</p>
+<p><a id="oa-flow.gw.2"></a></p>
+<h2 id="OA-FLOW.GW.2">GW-2. The unique linear extension and its Cauchy–Schwarz inequality</h2>
+<p>On the self-adjoint part of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> set
+<span class="math" data-tex="\(\varphi_0(p-q)=\varphi(p)-\varphi(q)\)">\(\varphi_0(p-q)=\varphi(p)-\varphi(q)\)</span>, <span class="math" data-tex="\(p,q\in P\)">\(p,q\in P\)</span>.
+If <span class="math" data-tex="\(p-q=r-s\)">\(p-q=r-s\)</span>, then <span class="math" data-tex="\(p+s=r+q\)">\(p+s=r+q\)</span>; finite additivity gives the same value for both differences. Addition and real scalar multiplication follow by collecting those differences. Complexification defines the unique complex-linear extension to <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. The extension is positive by (GW5), and <span class="math" data-tex="\(\varphi_0(a^*)=\overline{\varphi_0(a)}\)">\(\varphi_0(a^*)=\overline{\varphi_0(a)}\)</span>, since it is real on self-adjoint elements.</p>
+<p>For <span class="math" data-tex="\(x,y\in N\)">\(x,y\in N\)</span> define
+<span class="math math-display" data-tex="\[
+[x,y]_\varphi=\varphi_0(y^*x),\qquad q_\varphi(x)=[x,x]_\varphi.
+\tag{GW7}
+\]">\[
+[x,y]_\varphi=\varphi_0(y^*x),\qquad q_\varphi(x)=[x,x]_\varphi.
+\tag{GW7}
+\]</span>
+All terms are finite by (GW4). This is sesquilinear, linear in the first variable, conjugate-symmetric, and nonnegative on the diagonal. Expanding <span class="math" data-tex="\(q_\varphi(x+t y)\geq0\)">\(q_\varphi(x+t y)\geq0\)</span> for arbitrary complex <span class="math" data-tex="\(t\)">\(t\)</span> proves
+<span class="math math-display" data-tex="\[
+|[x,y]_\varphi|^2\leq q_\varphi(x)q_\varphi(y).
+\tag{GW8}
+\]">\[
+|[x,y]_\varphi|^2\leq q_\varphi(x)q_\varphi(y).
+\tag{GW8}
+\]</span>
+Explicitly, if <span class="math" data-tex="\(q_\varphi(y)&gt;0\)">\(q_\varphi(y)&gt;0\)</span>, use <span class="math" data-tex="\(t=-[x,y]_\varphi/q_\varphi(y)\)">\(t=-[x,y]_\varphi/q_\varphi(y)\)</span>. If <span class="math" data-tex="\(q_\varphi(y)=0\)">\(q_\varphi(y)=0\)</span>, an arbitrarily large <span class="math" data-tex="\(t\)">\(t\)</span> with the phase making the mixed term negative forces <span class="math" data-tex="\([x,y]_\varphi=0\)">\([x,y]_\varphi=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(Z=\{x\in N:q_\varphi(x)=0\}\)">\(Z=\{x\in N:q_\varphi(x)=0\}\)</span>. The inequality shows that these vectors pair to zero with every vector, hence <span class="math" data-tex="\(Z\)">\(Z\)</span> is a linear subspace. Equation (GW2) gives
+<span class="math math-display" data-tex="\[
+q_\varphi(ax)\leq\|a\|^2q_\varphi(x),
+\tag{GW9}
+\]">\[
+q_\varphi(ax)\leq\|a\|^2q_\varphi(x),
+\tag{GW9}
+\]</span>
+so <span class="math" data-tex="\(Z\)">\(Z\)</span> is also a left ideal of <span class="math" data-tex="\(M\)">\(M\)</span>. The inner product on <span class="math" data-tex="\(N/Z\)">\(N/Z\)</span> is well defined and positive definite. All these statements hold for an arbitrary weight, without normality or semifiniteness.</p>
+<p><a id="oa-flow.gw.3"></a></p>
+<h2 id="OA-FLOW.GW.3">GW-3. The GNS representation, including null and zero cases</h2>
+<p>Use CF Section 10 to complete <span class="math" data-tex="\(N/Z\)">\(N/Z\)</span> to a Hilbert space <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>. Write <span class="math" data-tex="\(\Lambda_\varphi(x)\)">\(\Lambda_\varphi(x)\)</span> for the image of <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+=\varphi_0(y^*x),\qquad
+\overline{\Lambda_\varphi(N)}=H_\varphi.
+\tag{GW10}
+\]">\[
+\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+=\varphi_0(y^*x),\qquad
+\overline{\Lambda_\varphi(N)}=H_\varphi.
+\tag{GW10}
+\]</span>
+Left multiplication preserves <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span>, and (GW9) makes it bounded on the quotient. It extends uniquely to an operator <span class="math" data-tex="\(\pi_\varphi(a)\)">\(\pi_\varphi(a)\)</span> with
+<span class="math math-display" data-tex="\[
+\pi_\varphi(a)\Lambda_\varphi(x)=\Lambda_\varphi(ax),
+\qquad \|\pi_\varphi(a)\|\leq\|a\|.
+\tag{GW11}
+\]">\[
+\pi_\varphi(a)\Lambda_\varphi(x)=\Lambda_\varphi(ax),
+\qquad \|\pi_\varphi(a)\|\leq\|a\|.
+\tag{GW11}
+\]</span>
+Linearity, multiplicativity and <span class="math" data-tex="\(\pi_\varphi(1)=1_{H_\varphi}\)">\(\pi_\varphi(1)=1_{H_\varphi}\)</span> hold first on the dense quotient and then everywhere. The adjoint follows on that quotient from
+<span class="math math-display" data-tex="\[
+\langle\Lambda_\varphi(ax),\Lambda_\varphi(y)\rangle
+=\varphi_0(y^*ax)
+=\langle\Lambda_\varphi(x),\Lambda_\varphi(a^*y)\rangle.
+\tag{GW12}
+\]">\[
+\langle\Lambda_\varphi(ax),\Lambda_\varphi(y)\rangle
+=\varphi_0(y^*ax)
+=\langle\Lambda_\varphi(x),\Lambda_\varphi(a^*y)\rangle.
+\tag{GW12}
+\]</span>
+Every expression is in <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, since <span class="math" data-tex="\(ax,a^*y\in N\)">\(ax,a^*y\in N\)</span>. Thus <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span> is a unital *-representation. On the zero Hilbert space the identity is the zero operator, so this statement also covers <span class="math" data-tex="\(N=Z\)">\(N=Z\)</span>. If another Hilbert completion has a dense map with (GW10) and (GW11), the map sending one <span class="math" data-tex="\(\Lambda(x)\)">\(\Lambda(x)\)</span> to the other preserves all inner products, vanishes on exactly <span class="math" data-tex="\(Z\)">\(Z\)</span>, and extends to the unique unitary intertwiner.</p>
+<p>If <span class="math" data-tex="\(\varphi(1)&lt;\infty\)">\(\varphi(1)&lt;\infty\)</span>, then <span class="math" data-tex="\(N=M\)">\(N=M\)</span>, since <span class="math" data-tex="\(x^*x\leq\|x\|^2 1\)">\(x^*x\leq\|x\|^2 1\)</span>. In this case and only when <span class="math" data-tex="\(1\in N\)">\(1\in N\)</span>, the vector <span class="math" data-tex="\(\Omega=\Lambda_\varphi(1)\)">\(\Omega=\Lambda_\varphi(1)\)</span> is available. It is cyclic and implements the bounded positive functional <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span>:
+<span class="math math-display" data-tex="\[
+\varphi_0(a)=\langle\pi_\varphi(a)\Omega,\Omega\rangle,\qquad
+\|\Omega\|^2=\varphi(1).
+\tag{GW13}
+\]">\[
+\varphi_0(a)=\langle\pi_\varphi(a)\Omega,\Omega\rangle,\qquad
+\|\Omega\|^2=\varphi(1).
+\tag{GW13}
+\]</span>
+No vector <span class="math" data-tex="\(\Lambda_\varphi(1)\)">\(\Lambda_\varphi(1)\)</span> is used for an infinite weight.</p>
+<p><a id="oa-flow.gw.4"></a></p>
+<h2 id="OA-FLOW.GW.4">GW-4. Semifiniteness and an increasing finite positive contraction net</h2>
+<p>The following conditions are equivalent, without normality or faithfulness:</p>
+<ol>
+<li><span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is ultraweakly dense in <span class="math" data-tex="\(M\)">\(M\)</span>.</li>
+<li><span class="math" data-tex="\(N\)">\(N\)</span> is weak-operator dense in <span class="math" data-tex="\(M\)">\(M\)</span>.</li>
+<li>The supremum of all projections <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span> with <span class="math" data-tex="\(\varphi(p)&lt;\infty\)">\(\varphi(p)&lt;\infty\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>.</li>
+<li>There is an increasing net <span class="math" data-tex="\(e_i\in P\)">\(e_i\in P\)</span>, <span class="math" data-tex="\(0\leq e_i\leq1\)">\(0\leq e_i\leq1\)</span>, with supremum <span class="math" data-tex="\(1\)">\(1\)</span>.</li>
+</ol>
+<p>First, (1) implies (2), since <span class="math" data-tex="\(\mathfrak m\subseteq N\)">\(\mathfrak m\subseteq N\)</span> and the ultraweak topology contains the weak operator topology.</p>
+<p>To prove (2) implies (3), let <span class="math" data-tex="\(q\)">\(q\)</span> be the projection onto the closed span of the ranges of all finite-weight projections. Each unitary of <span class="math" data-tex="\(M'\)">\(M'\)</span> preserves these ranges and their orthogonal complements; it therefore commutes with <span class="math" data-tex="\(q\)">\(q\)</span>. The commutant-unitary test gives <span class="math" data-tex="\(q\in M\)">\(q\in M\)</span>, and this projection is exactly their supremum. For <span class="math" data-tex="\(a\in P\)">\(a\in P\)</span>, the spectral projection
+<span class="math math-display" data-tex="\[
+p_\epsilon=1_{[\epsilon,\infty)}(a)\leq\epsilon^{-1}a
+\tag{GW14}
+\]">\[
+p_\epsilon=1_{[\epsilon,\infty)}(a)\leq\epsilon^{-1}a
+\tag{GW14}
+\]</span>
+has finite weight. These projections increase, as <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>, to the support <span class="math" data-tex="\(s(a)\)">\(s(a)\)</span>. Hence <span class="math" data-tex="\(s(a)\leq q\)">\(s(a)\leq q\)</span>. If <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, apply this to <span class="math" data-tex="\(a=x^*x\)">\(a=x^*x\)</span>. It follows that <span class="math" data-tex="\(x(1-q)=0\)">\(x(1-q)=0\)</span>, since
+<span class="math" data-tex="\(\|x(1-q)v\|^2=\langle x^*x(1-q)v,(1-q)v\rangle=0\)">\(\|x(1-q)v\|^2=\langle x^*x(1-q)v,(1-q)v\rangle=0\)</span>.
+The space <span class="math" data-tex="\(\{x\in M:x(1-q)=0\}\)">\(\{x\in M:x(1-q)=0\}\)</span> is weak-operator closed, by its vector coefficients. If <span class="math" data-tex="\(N\)">\(N\)</span> is weak-operator dense it contains <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(q=1\)">\(q=1\)</span>.</p>
+<p>For (3) implies (4), direct the entire finite cone <span class="math" data-tex="\(P\)">\(P\)</span> by operator order. This is directed: <span class="math" data-tex="\(a+b\in P\)">\(a+b\in P\)</span> is an upper bound for <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Define
+<span class="math math-display" data-tex="\[
+e_a=a(1+a)^{-1}=1-(1+a)^{-1}\qquad(a\in P).
+\tag{GW15}
+\]">\[
+e_a=a(1+a)^{-1}=1-(1+a)^{-1}\qquad(a\in P).
+\tag{GW15}
+\]</span>
+Functional calculus gives <span class="math" data-tex="\(0\leq e_a\leq1\)">\(0\leq e_a\leq1\)</span> and <span class="math" data-tex="\(e_a\leq a\)">\(e_a\leq a\)</span>, so <span class="math" data-tex="\(e_a\in P\)">\(e_a\in P\)</span>.
+We justify its monotonicity without an operator-monotone-function theorem. For <span class="math" data-tex="\(0&lt;A\leq B\)">\(0&lt;A\leq B\)</span> positive and invertible, put <span class="math" data-tex="\(C=A^{-1/2}BA^{-1/2}\geq1\)">\(C=A^{-1/2}BA^{-1/2}\geq1\)</span>. Functional calculus gives <span class="math" data-tex="\(C^{-1}\leq1\)">\(C^{-1}\leq1\)</span>, and
+<span class="math" data-tex="\(B^{-1}=A^{-1/2}C^{-1}A^{-1/2}\leq A^{-1}\)">\(B^{-1}=A^{-1/2}C^{-1}A^{-1/2}\leq A^{-1}\)</span>.
+Taking <span class="math" data-tex="\(A=1+a,B=1+b\)">\(A=1+a,B=1+b\)</span> proves <span class="math" data-tex="\(e_a\leq e_b\)">\(e_a\leq e_b\)</span> whenever <span class="math" data-tex="\(a\leq b\)">\(a\leq b\)</span>.</p>
+<p>Let <span class="math" data-tex="\(E\leq1\)">\(E\leq1\)</span> be the supremum of this bounded increasing net; existence and strong convergence follow from the bounded-operator lemma cited above. If <span class="math" data-tex="\(p\)">\(p\)</span> is a finite-weight projection, then <span class="math" data-tex="\(np\in P\)">\(np\in P\)</span> and
+<span class="math" data-tex="\(e_{np}=n(1+n)^{-1}p\)">\(e_{np}=n(1+n)^{-1}p\)</span>.
+Thus <span class="math" data-tex="\(E\geq p\)">\(E\geq p\)</span>. For <span class="math" data-tex="\(v\in pK\)">\(v\in pK\)</span>, <span class="math" data-tex="\(0\leq\langle(1-E)v,v\rangle\leq0\)">\(0\leq\langle(1-E)v,v\rangle\leq0\)</span>; positivity implies <span class="math" data-tex="\(Ev=v\)">\(Ev=v\)</span>. Condition (3) says these ranges span a dense subspace, so <span class="math" data-tex="\(E=1\)">\(E=1\)</span>.</p>
+<p>Finally suppose (4). The bounded-operator lemma gives <span class="math" data-tex="\(e_i\to1\)">\(e_i\to1\)</span> strongly. For <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, the left-ideal property and <span class="math" data-tex="\(e_i\in P\subseteq N\)">\(e_i\in P\subseteq N\)</span> give
+<span class="math math-display" data-tex="\[
+e_i x e_i=e_i^*(xe_i)\in\mathfrak m,\qquad
+\|e_i x e_i\|\leq\|x\|,\qquad
+e_i x e_i\longrightarrow x\text{ strongly}.
+\tag{GW16}
+\]">\[
+e_i x e_i=e_i^*(xe_i)\in\mathfrak m,\qquad
+\|e_i x e_i\|\leq\|x\|,\qquad
+e_i x e_i\longrightarrow x\text{ strongly}.
+\tag{GW16}
+\]</span>
+BD7 gives ultraweak convergence, proving (1). This completes every implication. In particular a semifinite weight has the explicitly constructed increasing finite positive contractions (GW15), even if it is not normal. No increasing net of finite-weight projections is asserted.</p>
+<p>If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is faithful and semifinite, then <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span> is faithful. Indeed, <span class="math" data-tex="\(\pi_\varphi(a)=0\)">\(\pi_\varphi(a)=0\)</span> implies <span class="math" data-tex="\(\varphi((ax)^*(ax))=0\)">\(\varphi((ax)^*(ax))=0\)</span> for every <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, hence <span class="math" data-tex="\(ax=0\)">\(ax=0\)</span> by faithfulness. Taking the finite contractions <span class="math" data-tex="\(x=e_i\)">\(x=e_i\)</span> above and passing to their strong limit gives <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Normality is not required for this conclusion.</p>
+<p><a id="oa-flow.gw.5"></a></p>
+<h2 id="OA-FLOW.GW.5">GW-5. Normality gives the required GNS density</h2>
+<p>Now assume <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is normal and semifinite, and use the increasing finite contractions <span class="math" data-tex="\(e_i\uparrow1\)">\(e_i\uparrow1\)</span> just constructed. For <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, one has
+<span class="math math-display" data-tex="\[
+e_i x=(e_i^{1/2})^*(e_i^{1/2}x)\in\mathfrak m,
+\tag{GW17}
+\]">\[
+e_i x=(e_i^{1/2})^*(e_i^{1/2}x)\in\mathfrak m,
+\tag{GW17}
+\]</span>
+because <span class="math" data-tex="\(e_i^{1/2}\in N\)">\(e_i^{1/2}\in N\)</span> and <span class="math" data-tex="\(e_i^{1/2}x\in N\)">\(e_i^{1/2}x\in N\)</span>. Moreover,
+<span class="math math-display" data-tex="\[
+0\leq x^*(1-e_i)^2x\leq x^*(1-e_i)x\leq x^*x.
+\]">\[
+0\leq x^*(1-e_i)^2x\leq x^*(1-e_i)x\leq x^*x.
+\]</span>
+The net <span class="math" data-tex="\(x^*e_i x\)">\(x^*e_i x\)</span> increases strongly to <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span>, so it has that order supremum. Its weights tend to the finite number <span class="math" data-tex="\(\varphi(x^*x)\)">\(\varphi(x^*x)\)</span>, by normality. Finite additivity therefore gives
+<span class="math math-display" data-tex="\[
+\|\Lambda_\varphi(x)-\Lambda_\varphi(e_i x)\|^2
+\leq\varphi(x^*x)-\varphi(x^*e_i x)\longrightarrow0.
+\tag{GW18}
+\]">\[
+\|\Lambda_\varphi(x)-\Lambda_\varphi(e_i x)\|^2
+\leq\varphi(x^*x)-\varphi(x^*e_i x)\longrightarrow0.
+\tag{GW18}
+\]</span>
+No subtraction of infinities occurs. Since <span class="math" data-tex="\(\Lambda_\varphi(N)\)">\(\Lambda_\varphi(N)\)</span> is dense,
+<span class="math math-display" data-tex="\[
+\overline{\Lambda_\varphi(\mathfrak m)}
+=\overline{\Lambda_\varphi(N\cap N^*)}
+=H_\varphi.
+\tag{GW19}
+\]">\[
+\overline{\Lambda_\varphi(\mathfrak m)}
+=\overline{\Lambda_\varphi(N\cap N^*)}
+=H_\varphi.
+\tag{GW19}
+\]</span>
+This argument uses no cyclic vector for <span class="math" data-tex="\(1\)">\(1\)</span> and works with arbitrary nets.</p>
+<p>Normality alone, without semifiniteness, also implies that the GNS representation preserves bounded increasing positive suprema. If <span class="math" data-tex="\(0\leq a_i\uparrow a\)">\(0\leq a_i\uparrow a\)</span>, then for <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span> the elements <span class="math" data-tex="\(x^*a_i x\)">\(x^*a_i x\)</span> increase to <span class="math" data-tex="\(x^*ax\)">\(x^*ax\)</span>, all with finite weight. Consequently
+<span class="math math-display" data-tex="\[
+\langle(\pi_\varphi(a)-\pi_\varphi(a_i))\Lambda_\varphi(x),
+              \Lambda_\varphi(x)\rangle
+=\varphi(x^*ax)-\varphi(x^*a_i x)\longrightarrow0.
+\tag{GW20}
+\]">\[
+\langle(\pi_\varphi(a)-\pi_\varphi(a_i))\Lambda_\varphi(x),
+              \Lambda_\varphi(x)\rangle
+=\varphi(x^*ax)-\varphi(x^*a_i x)\longrightarrow0.
+\tag{GW20}
+\]</span>
+The positive differences have a common bound <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>, so the same squared-norm inequality as (WF5) yields strong convergence on <span class="math" data-tex="\(\Lambda_\varphi(N)\)">\(\Lambda_\varphi(N)\)</span>; approximation extends it to all <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>. Thus <span class="math" data-tex="\(\pi_\varphi(a_i)\uparrow\pi_\varphi(a)\)">\(\pi_\varphi(a_i)\uparrow\pi_\varphi(a)\)</span>. This is precisely an order-continuity statement. The subsequent <a href="OA-FLOW-NF.html#oa-flow.nf.5">order-normal functional bridge</a> supplies an independent proof of ultraweak continuity from the finite-functional case, without importing the arbitrary-weight normality equivalence.</p>
+<p><a id="oa-flow.gw.6"></a></p>
+<h2 id="OA-FLOW.GW.6">GW-6. The exact remaining weight-to-Hilbert-algebra step</h2>
+<p>For a faithful normal semifinite weight, <span class="math" data-tex="\(\Lambda_\varphi\)">\(\Lambda_\varphi\)</span> is injective, so the dense space <span class="math" data-tex="\(\Lambda_\varphi(N\cap N^*)\)">\(\Lambda_\varphi(N\cap N^*)\)</span> has an unambiguous product and conjugate-linear involution
+<span class="math math-display" data-tex="\[
+\Lambda_\varphi(x)\Lambda_\varphi(y)=\Lambda_\varphi(xy),
+\qquad
+\Lambda_\varphi(x)^\sharp=\Lambda_\varphi(x^*).
+\tag{GW21}
+\]">\[
+\Lambda_\varphi(x)\Lambda_\varphi(y)=\Lambda_\varphi(xy),
+\qquad
+\Lambda_\varphi(x)^\sharp=\Lambda_\varphi(x^*).
+\tag{GW21}
+\]</span>
+The finite-star *-algebra is closed under these operations by GW-1, left multiplication is bounded by (GW11), and its Hilbert adjoint identity is (GW12). Its product span is dense by (GW6) and (GW19). The additional axiom is <strong>closability of the involution</strong> on this whole finite-star domain. Its complete later proof is <span class="unlinked">WR-3</span>; ordinary norm continuity of multiplication or the density just established does not supply it.</p>
+<p>After that axiom, the fresh CI/HA-R/WH04 theory applies to its fullification. The later <span class="unlinked">full algebra identification</span>, <span class="unlinked">original-weight recovery</span> and <span class="unlinked">canonical opposite finite-cone</span> proofs cover faithful n.s.f. weights; <span class="unlinked">the modular opposite formula and implementing vector</span> follows after MF-06. The later <a href="OA-FLOW-EW.html#ew-5">normality equivalence and whole-cone normal-minorant formula</a> covers every extended-valued weight. These separate proofs are not premises of the present elementary finite-ideal/GNS construction. The later <a href="OA-FLOW-NO.html#no-1">general normal opposite-weight construction</a> proves the extension separately for every normal input: its supported-functional bijection uses the finite-domain projection, its unrestricted value is the functional evaluated at the finite-domain projection, and its GNS range may be a proper subspace. These later results are not inputs of GW.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-STC.html">Previous lesson</a><a href="OA-FLOW-NF.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-GW.md">Lesson source</a></nav></main></body></html>

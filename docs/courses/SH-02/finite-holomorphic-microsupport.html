@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SH02-FH-UNIT — Directional information under a finite holomorphic map · Microlocal sheaves</title>
+<meta name="description" content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/finite-holomorphic-microsupport.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <span class="unlinked">Microlocal sheaves</span> <span aria-hidden="true">›</span> <span>SH02-FH-UNIT — Directional information under a finite holomorphic map</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by AI in Codex.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="sh02-fh-unit-directional-information-under-a-finite-holomorphic-map">SH02-FH-UNIT — Directional information under a finite holomorphic map</h1>
+<p>Status: independently authored English proof draft, not admitted. The finite-map proof below works at the full coefficient-ring and constructibility scope of FH1. It uses an explicit finite conormal-image argument, actual supported tests, the integer Morse filtration and residue-field detection. The analytic, normal-Morse, field-perverse and controlled-Morse inputs are stated in <a href="#">the geometric prerequisites</a> and developed in the four lessons linked there, relative to their exact external theorem statements. This supplies the primary finite-map argument for <code>SH02-MO-HOLOMORPHIC-IMPORT</code> in <a href="../sheaf-proof-readings/SH02-microsupport-operations.html">microsupport operations</a>.</p>
+<p>Let <span class="math" data-tex="$k$">$k$</span> be a commutative ring with identity and finite global dimension. A complex-constructible complex means a bounded complex whose cohomology is locally constant on a locally finite complex analytic stratification and whose stalks are perfect over <span class="math" data-tex="$k$">$k$</span>. Perfection means representability by a bounded complex of finite projective modules. It does not mean that those modules are free, or that their cohomology is a vector space. Complex manifolds have finite dimension and are Hausdorff and countable at infinity.</p>
+<p>For a complex <span class="math" data-tex="$A$">$A$</span>, write <span class="math" data-tex="$s(A)=\{z:A_z\not\simeq0\}$">$s(A)=\{z:A_z\not\simeq0\}$</span> and <span class="math" data-tex="$\operatorname{Supp}(A)=\overline{s(A)}$">$\operatorname{Supp}(A)=\overline{s(A)}$</span>. Keeping these two sets distinct matters in the argument. A nonzero vanishing-cycle germ need not occur at every point of its closed support.</p>
+<p>The target is the equality</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(Rf_*G)=f_\pi f_d^{-1}\operatorname{SS}(G)
+\tag{FH1}
+$$">$$
+\operatorname{SS}(Rf_*G)=f_\pi f_d^{-1}\operatorname{SS}(G)
+\tag{FH1}
+$$</span>
+<p>for a finite holomorphic map <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> and a complex-constructible <span class="math" data-tex="$G$">$G$</span>. Here finite means proper with finite fibres, including maps whose image has positive codimension. On underlying real cotangent bundles,</p>
+<span class="math math-display" data-tex="$$
+f_d(y,\eta)=(y,df_y^t\eta),\qquad
+f_\pi(y,\eta)=(f(y),\eta).
+$$">$$
+f_d(y,\eta)=(y,df_y^t\eta),\qquad
+f_\pi(y,\eta)=(f(y),\eta).
+$$</span>
+<p>The general proper-image theorem proves the inclusion from left to right. Finiteness prevents cancellation between different points of a fibre. Holomorphic geometry is needed to detect a covector when its pullback lies at a branch point.</p>
+<h2 id="sh02-fh-fibre-separating-the-sheets-near-one-fibre">SH02-FH-FIBRE — Separating the sheets near one fibre</h2>
+<p>Let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be a proper continuous map of locally compact Hausdorff spaces with finite fibres. Fix <span class="math" data-tex="$x\in X$">$x\in X$</span> and write <span class="math" data-tex="$f^{-1}(x)=\{y_1,\ldots,y_r\}$">$f^{-1}(x)=\{y_1,\ldots,y_r\}$</span>. Given pairwise disjoint open neighborhoods <span class="math" data-tex="$W_i$">$W_i$</span> of these points, there is an open neighborhood <span class="math" data-tex="$U$">$U$</span> of <span class="math" data-tex="$x$">$x$</span> such that</p>
+<span class="math math-display" data-tex="$$
+f^{-1}(U)\subset\bigcup_i W_i.
+\tag{FH2}
+$$">$$
+f^{-1}(U)\subset\bigcup_i W_i.
+\tag{FH2}
+$$</span>
+<p>Consequently the sets <span class="math" data-tex="$W_i\cap f^{-1}(U)$">$W_i\cap f^{-1}(U)$</span> are both open and closed in <span class="math" data-tex="$f^{-1}(U)$">$f^{-1}(U)$</span>. For an empty fibre one can choose <span class="math" data-tex="$U$">$U$</span> with empty inverse image.</p>
+<p><strong>Proof.</strong> A proper map between these spaces is closed. The closed set <span class="math" data-tex="$C=Y\setminus\bigcup_iW_i$">$C=Y\setminus\bigcup_iW_i$</span> misses the fibre, so <span class="math" data-tex="$U=X\setminus f(C)$">$U=X\setminus f(C)$</span> has the required property. For each <span class="math" data-tex="$i$">$i$</span>, the complement of <span class="math" data-tex="$W_i\cap f^{-1}(U)$">$W_i\cap f^{-1}(U)$</span> in <span class="math" data-tex="$f^{-1}(U)$">$f^{-1}(U)$</span> is the union of the other pieces. For an empty fibre take <span class="math" data-tex="$C=Y$">$C=Y$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This conclusion says nothing about unramifiedness. A piece can contain several points of a nearby fibre that merge at <span class="math" data-tex="$y_i$">$y_i$</span>.</p>
+<h2 id="sh02-fh-stalks-exactness-and-the-actual-base-change-map">SH02-FH-STALKS — Exactness and the actual base-change map</h2>
+<p>Under the preceding hypotheses, for any sheaf <span class="math" data-tex="$A$">$A$</span> of <span class="math" data-tex="$k$">$k$</span>-modules the germ restriction map is an isomorphism</p>
+<span class="math math-display" data-tex="$$
+(f_*A)_x\xrightarrow{\sim}\bigoplus_{y\in f^{-1}(x)}A_y.
+\tag{FH3}
+$$">$$
+(f_*A)_x\xrightarrow{\sim}\bigoplus_{y\in f^{-1}(x)}A_y.
+\tag{FH3}
+$$</span>
+<p>In particular <span class="math" data-tex="$f_*$">$f_*$</span> is exact, <span class="math" data-tex="$Rf_*=f_*$">$Rf_*=f_*$</span> on bounded complexes, and</p>
+<span class="math math-display" data-tex="$$
+(Rf_*A)_x\simeq\bigoplus_{y\in f^{-1}(x)}A_y,
+\qquad
+\operatorname{Supp}(Rf_*A)=f\bigl(\operatorname{Supp}(A)\bigr).
+\tag{FH4}
+$$">$$
+(Rf_*A)_x\simeq\bigoplus_{y\in f^{-1}(x)}A_y,
+\qquad
+\operatorname{Supp}(Rf_*A)=f\bigl(\operatorname{Supp}(A)\bigr).
+\tag{FH4}
+$$</span>
+<p>These assertions require no finiteness assumption on the modules and no finite global dimension assumption on <span class="math" data-tex="$k$">$k$</span>.</p>
+<p><strong>Proof.</strong> Represent a tuple of germs by sections on disjoint neighborhoods of the finitely many <span class="math" data-tex="$y_i$">$y_i$</span>. Apply FH2 and restrict these sections to its pieces. They glue to a section over <span class="math" data-tex="$f^{-1}(U)$">$f^{-1}(U)$</span>, proving surjectivity of FH3. If a section over <span class="math" data-tex="$f^{-1}(U)$">$f^{-1}(U)$</span> has zero germ at every <span class="math" data-tex="$y_i$">$y_i$</span>, choose smaller disjoint neighborhoods on which it is zero and apply FH2 again. Its germ at <span class="math" data-tex="$x$">$x$</span> is zero, proving injectivity. A stalkwise short exact sequence stays exact after a finite direct sum, so <span class="math" data-tex="$f_*$">$f_*$</span> is exact. Applying the resulting natural isomorphism term by term gives the derived assertion; no splitting of a cohomology spectral sequence is involved.</p>
+<p>A finite direct sum of complexes is zero exactly when every summand is zero. Thus <span class="math" data-tex="$s(Rf_*A)=f(s(A))$">$s(Rf_*A)=f(s(A))$</span>. For every subset <span class="math" data-tex="$S\subset Y$">$S\subset Y$</span>, continuity gives <span class="math" data-tex="$f(\overline S)\subset\overline{f(S)}$">$f(\overline S)\subset\overline{f(S)}$</span>, and closedness of <span class="math" data-tex="$f$">$f$</span> gives the reverse inclusion. Apply this to <span class="math" data-tex="$S=s(A)$">$S=s(A)$</span> to obtain the support equality. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For a cartesian square</p>
+<span class="math math-display" data-tex="$$
+\begin{array}{ccc}
+Y&#x27;&amp;\xrightarrow{g&#x27;}&amp;Y\\
+\scriptstyle f&#x27;\downarrow&amp;&amp;\downarrow\scriptstyle f\\
+X&#x27;&amp;\xrightarrow{g}&amp;X,
+\end{array}
+$$">$$
+\begin{array}{ccc}
+Y&#x27;&amp;\xrightarrow{g&#x27;}&amp;Y\\
+\scriptstyle f&#x27;\downarrow&amp;&amp;\downarrow\scriptstyle f\\
+X&#x27;&amp;\xrightarrow{g}&amp;X,
+\end{array}
+$$</span>
+<p>with locally compact Hausdorff spaces, properness and finite fibres pass to <span class="math" data-tex="$f&#x27;$">$f&#x27;$</span>. The adjunction base-change map</p>
+<span class="math math-display" data-tex="$$
+g^{-1}Rf_*A\longrightarrow Rf&#x27;_*g&#x27;^{-1}A
+\tag{FH5}
+$$">$$
+g^{-1}Rf_*A\longrightarrow Rf&#x27;_*g&#x27;^{-1}A
+\tag{FH5}
+$$</span>
+<p>is an isomorphism. Indeed, at <span class="math" data-tex="$x&#x27;$">$x&#x27;$</span>, FH3 identifies both sides with <span class="math" data-tex="$\bigoplus_{f(y)=g(x&#x27;)}A_y$">$\bigoplus_{f(y)=g(x&#x27;)}A_y$</span>. The map restricts a representative germ to that same tuple and is the identity under these identifications. This also proves its compatibility with successive changes of base and with identity squares. Exactness of inverse image to constant-ring spaces is the coefficient convention in <a href="../sheaf-proof-readings/SH02-open-prerequisite-proofs.html">the prerequisite proofs</a>.</p>
+<h2 id="sh02-fh-local-support-a-support-test-splits-over-the-fibre">SH02-FH-LOCAL-SUPPORT — A support test splits over the fibre</h2>
+<p>Let <span class="math" data-tex="$Z\subset X$">$Z\subset X$</span> be closed, <span class="math" data-tex="$j:X\setminus Z\hookrightarrow X$">$j:X\setminus Z\hookrightarrow X$</span>, and <span class="math" data-tex="$j&#x27;:Y\setminus f^{-1}(Z)\hookrightarrow Y$">$j&#x27;:Y\setminus f^{-1}(Z)\hookrightarrow Y$</span>. There is a natural isomorphism</p>
+<span class="math math-display" data-tex="$$
+R\Gamma_Z Rf_*A\simeq Rf_*R\Gamma_{f^{-1}(Z)}A.
+\tag{FH6}
+$$">$$
+R\Gamma_Z Rf_*A\simeq Rf_*R\Gamma_{f^{-1}(Z)}A.
+\tag{FH6}
+$$</span>
+<p>Its stalk at <span class="math" data-tex="$x$">$x$</span> is the finite direct sum of the supported stalks on the right.</p>
+<p><strong>Proof.</strong> Restriction to <span class="math" data-tex="$X\setminus Z$">$X\setminus Z$</span> is an instance of FH5. Direct images compose, giving</p>
+<span class="math math-display" data-tex="$$
+Rj_*j^{-1}Rf_*A\simeq Rf_*Rj&#x27;_*j&#x27;^{-1}A.
+$$">$$
+Rj_*j^{-1}Rf_*A\simeq Rf_*Rj&#x27;_*j&#x27;^{-1}A.
+$$</span>
+<p>The maps from <span class="math" data-tex="$Rf_*A$">$Rf_*A$</span> to these objects correspond: both restrict a section to the inverse image of <span class="math" data-tex="$X\setminus Z$">$X\setminus Z$</span>. Taking fibres in the two localization triangles proves FH6. Its stalk form is FH4. This argument compares the actual restriction maps, not just the outer objects of the triangles. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For a real test function <span class="math" data-tex="$u$">$u$</span> on <span class="math" data-tex="$X$">$X$</span>, take <span class="math" data-tex="$Z=\{u\geq u(x)\}$">$Z=\{u\geq u(x)\}$</span>. FH6 becomes</p>
+<span class="math math-display" data-tex="$$
+\bigl(R\Gamma_{\{u\geq u(x)\}}Rf_*A\bigr)_x
+\simeq
+\bigoplus_{f(y)=x}
+\bigl(R\Gamma_{\{u\circ f\geq u(x)\}}A\bigr)_y.
+\tag{FH7}
+$$">$$
+\bigl(R\Gamma_{\{u\geq u(x)\}}Rf_*A\bigr)_x
+\simeq
+\bigoplus_{f(y)=x}
+\bigl(R\Gamma_{\{u\circ f\geq u(x)\}}A\bigr)_y.
+\tag{FH7}
+$$</span>
+<p>One cannot infer FH1 from FH7 alone. The functions pulled back from the target may fail to detect a covector in the source microsupport.</p>
+<h2 id="sh02-fh-cycles-nearby-and-vanishing-cycles-also-split">SH02-FH-CYCLES — Nearby and vanishing cycles also split</h2>
+<p>Here is a definition and comparison that fix all maps and shifts used below. For a continuous <span class="math" data-tex="$h:X\to\mathbb C$">$h:X\to\mathbb C$</span>, let <span class="math" data-tex="$X_0=h^{-1}(0)$">$X_0=h^{-1}(0)$</span> with inclusion <span class="math" data-tex="$i$">$i$</span>, and put</p>
+<span class="math math-display" data-tex="$$
+\widetilde X^*=X\times_{\mathbb C}\widetilde{\mathbb C^*},
+\qquad q:\widetilde X^*\longrightarrow X,
+$$">$$
+\widetilde X^*=X\times_{\mathbb C}\widetilde{\mathbb C^*},
+\qquad q:\widetilde X^*\longrightarrow X,
+$$</span>
+<p>where <span class="math" data-tex="$\widetilde{\mathbb C^*}\to\mathbb C^*\hookrightarrow\mathbb C$">$\widetilde{\mathbb C^*}\to\mathbb C^*\hookrightarrow\mathbb C$</span> is a universal covering followed by the open inclusion. Define</p>
+<span class="math math-display" data-tex="$$
+\psi_hA=i^{-1}Rq_*q^{-1}A,
+\qquad
+\Phi_hA=\operatorname{Cone}\bigl(i^{-1}A\longrightarrow\psi_hA\bigr).
+\tag{FH8}
+$$">$$
+\psi_hA=i^{-1}Rq_*q^{-1}A,
+\qquad
+\Phi_hA=\operatorname{Cone}\bigl(i^{-1}A\longrightarrow\psi_hA\bigr).
+\tag{FH8}
+$$</span>
+<p>The arrow is induced by the unit <span class="math" data-tex="$A\to Rq_*q^{-1}A$">$A\to Rq_*q^{-1}A$</span>. We use this unshifted cone throughout; replacing every <span class="math" data-tex="$\Phi$">$\Phi$</span> by <span class="math" data-tex="$\Phi[-1]$">$\Phi[-1]$</span> would leave all support assertions unchanged. These constructions and the following comparison can be performed in the bounded-below derived category. Boundedness and perfect local data in the constructible analytic situation are included in the explicit geometric contract below.</p>
+<p>Let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be as in FH2 and let <span class="math" data-tex="$f_0:(h\circ f)^{-1}(0)\to h^{-1}(0)$">$f_0:(h\circ f)^{-1}(0)\to h^{-1}(0)$</span> be the induced finite proper map. Then</p>
+<span class="math math-display" data-tex="$$
+\psi_h Rf_*A\simeq Rf_{0*}\psi_{h\circ f}A,
+\qquad
+\Phi_h Rf_*A\simeq Rf_{0*}\Phi_{h\circ f}A.
+\tag{FH9}
+$$">$$
+\psi_h Rf_*A\simeq Rf_{0*}\psi_{h\circ f}A,
+\qquad
+\Phi_h Rf_*A\simeq Rf_{0*}\Phi_{h\circ f}A.
+\tag{FH9}
+$$</span>
+<p><strong>Proof.</strong> The space <span class="math" data-tex="$\widetilde Y^*$">$\widetilde Y^*$</span> obtained from <span class="math" data-tex="$h\circ f$">$h\circ f$</span> is <span class="math" data-tex="$Y\times_X\widetilde X^*$">$Y\times_X\widetilde X^*$</span>. Write <span class="math" data-tex="$\widetilde f:\widetilde Y^*\to\widetilde X^*$">$\widetilde f:\widetilde Y^*\to\widetilde X^*$</span> and <span class="math" data-tex="$q_Y:\widetilde Y^*\to Y$">$q_Y:\widetilde Y^*\to Y$</span>. Both <span class="math" data-tex="$\widetilde f$">$\widetilde f$</span> and <span class="math" data-tex="$f_0$">$f_0$</span> are proper with finite fibres. Applying FH5 first over <span class="math" data-tex="$\widetilde X^*$">$\widetilde X^*$</span> and then over <span class="math" data-tex="$X_0$">$X_0$</span>, and composing direct images, gives</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+i^{-1}Rq_*q^{-1}Rf_*A
+&amp;\simeq i^{-1}Rq_*R\widetilde f_*q_Y^{-1}A\\
+&amp;\simeq i^{-1}Rf_*Rq_{Y*}q_Y^{-1}A\\
+&amp;\simeq Rf_{0*}i_Y^{-1}Rq_{Y*}q_Y^{-1}A.
+\end{aligned}
+$$">$$
+\begin{aligned}
+i^{-1}Rq_*q^{-1}Rf_*A
+&amp;\simeq i^{-1}Rq_*R\widetilde f_*q_Y^{-1}A\\
+&amp;\simeq i^{-1}Rf_*Rq_{Y*}q_Y^{-1}A\\
+&amp;\simeq Rf_{0*}i_Y^{-1}Rq_{Y*}q_Y^{-1}A.
+\end{aligned}
+$$</span>
+<p>This is the nearby-cycle comparison. To check the specialization arrow, start with the unit <span class="math" data-tex="$A\to Rq_{Y*}q_Y^{-1}A$">$A\to Rq_{Y*}q_Y^{-1}A$</span> and use the same two cartesian squares. The mate description of FH5, or its germ description in FH3, identifies its image with the unit for <span class="math" data-tex="$q$">$q$</span>. The specialization arrows therefore form a commutative square. Taking its cones in the derived enhancement proves the second comparison. This construction commutes with the deck transformation as well, since all base-change maps are natural. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>In particular</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Supp}\bigl(\Phi_hRf_*A\bigr)
+=f_0\operatorname{Supp}\bigl(\Phi_{h\circ f}A\bigr).
+\tag{FH10}
+$$">$$
+\operatorname{Supp}\bigl(\Phi_hRf_*A\bigr)
+=f_0\operatorname{Supp}\bigl(\Phi_{h\circ f}A\bigr).
+\tag{FH10}
+$$</span>
+<p>There is no decomposition-theorem or semisimplicity argument here: FH10 follows from the exact finite direct sum on stalks and closedness of <span class="math" data-tex="$f_0$">$f_0$</span>.</p>
+<h2 id="sh02-fh-perfect-detection-residue-fields-detect-a-perfect-complex">SH02-FH-PERFECT-DETECTION — Residue fields detect a perfect complex</h2>
+<p>For any commutative ring <span class="math" data-tex="$k$">$k$</span> and any perfect complex <span class="math" data-tex="$P$">$P$</span>,</p>
+<span class="math math-display" data-tex="$$
+P\simeq0\quad\Longleftrightarrow\quad
+P\otimes_k^L\kappa(\mathfrak p)\simeq0
+\text{ for every prime }\mathfrak p\subset k.
+\tag{FH11}
+$$">$$
+P\simeq0\quad\Longleftrightarrow\quad
+P\otimes_k^L\kappa(\mathfrak p)\simeq0
+\text{ for every prime }\mathfrak p\subset k.
+\tag{FH11}
+$$</span>
+<p><strong>Proof.</strong> Only the reverse implication needs proof. Localize a bounded finite-projective representative at a maximal ideal <span class="math" data-tex="$\mathfrak m$">$\mathfrak m$</span>. Finite projective modules over a local ring are finite free. If an entry of a differential is a unit, row and column operations isolate a two-term summand <span class="math" data-tex="$k_{\mathfrak m}\xrightarrow{1}k_{\mathfrak m}$">$k_{\mathfrak m}\xrightarrow{1}k_{\mathfrak m}$</span>. The identities <span class="math" data-tex="$d^2=0$">$d^2=0$</span> make the adjacent maps into and out of this summand zero. Remove this contractible summand. The total number of basis vectors is finite, so the process stops with every differential entry in <span class="math" data-tex="$\mathfrak m k_{\mathfrak m}$">$\mathfrak m k_{\mathfrak m}$</span>. After tensoring with <span class="math" data-tex="$\kappa(\mathfrak m)$">$\kappa(\mathfrak m)$</span>, the remaining differentials are zero. Acyclicity over that field forces every remaining term to be zero. Thus <span class="math" data-tex="$P_{\mathfrak m}$">$P_{\mathfrak m}$</span> is contractible for every maximal ideal.</p>
+<p>If a cohomology module of <span class="math" data-tex="$P$">$P$</span> contained a nonzero element <span class="math" data-tex="$a$">$a$</span>, choose a maximal ideal containing its annihilator. No element outside that ideal kills <span class="math" data-tex="$a$">$a$</span>, so <span class="math" data-tex="$a$">$a$</span> survives localization, a contradiction. Hence <span class="math" data-tex="$P$">$P$</span> is acyclic. No noetherian hypothesis was used. The statement also covers the zero ring, when every module is zero. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>A second elementary fact controls change of coefficients. Suppose a local cohomology datum is expressed by a finite diagram of perfect complexes using finite sums, shifts, cones and direct summands. Its value is perfect, and its construction commutes with <span class="math" data-tex="$-\otimes_k^L L$">$-\otimes_k^L L$</span> for every <span class="math" data-tex="$k$">$k$</span>-complex <span class="math" data-tex="$L$">$L$</span>. Each operation in this list has that property, so induction on the finite construction proves the assertion. Finite homotopy limits are included, since in a stable category they are made from finite sums and fibres.</p>
+<h2 id="sh02-fh-finite-pair-coefficients-in-an-actual-finite-local-model">SH02-FH-FINITE-PAIR — Coefficients in an actual finite local model</h2>
+<p>Let <span class="math" data-tex="$(K,L)$">$(K,L)$</span> be a compact pair with a finite triangulation in which <span class="math" data-tex="$L$">$L$</span> is a subcomplex. Suppose a bounded complex <span class="math" data-tex="$A$">$A$</span> restricts on every open simplex to a constant perfect complex. Then <span class="math" data-tex="$R\Gamma(K,L;A)$">$R\Gamma(K,L;A)$</span> is perfect and the natural comparison</p>
+<span class="math math-display" data-tex="$$
+R\Gamma(K,L;A)\otimes_k^L B
+\longrightarrow R\Gamma(K,L;A\otimes_k^L B)
+\tag{FH16}
+$$">$$
+R\Gamma(K,L;A)\otimes_k^L B
+\longrightarrow R\Gamma(K,L;A\otimes_k^L B)
+\tag{FH16}
+$$</span>
+<p>is an isomorphism for every coefficient <span class="math" data-tex="$k$">$k$</span>-algebra <span class="math" data-tex="$B$">$B$</span>.</p>
+<p><strong>Proof.</strong> Filter <span class="math" data-tex="$K$">$K$</span> by its closed skeleta. The difference between consecutive skeleta is a finite disjoint union of open simplices. After orienting a <span class="math" data-tex="$d$">$d$</span>-simplex <span class="math" data-tex="$\sigma$">$\sigma$</span>, compactly supported cohomology of its constant complex <span class="math" data-tex="$P$">$P$</span> is</p>
+<span class="math math-display" data-tex="$$
+R\Gamma_c(\sigma;P)\simeq P[-d].
+$$">$$
+R\Gamma_c(\sigma;P)\simeq P[-d].
+$$</span>
+<p>This is the compactly supported orientation calculation for <span class="math" data-tex="$\mathbb R^d$">$\mathbb R^d$</span> in <a href="../sheaf-proof-readings/SH02-manifold-duality.html">manifold duality</a>; its comparison with coefficients is induced by tensoring the same orientation generator. Thus the assertion holds on each open simplex. The open-closed localization triangle at every skeletal step gives a triangle of compactly supported cohomology complexes. The projection comparison with coefficients is natural for its three maps. Finite sums and cones preserve perfection, and derived tensor preserves these triangles, so induction proves perfection and the comparison for <span class="math" data-tex="$R\Gamma_c(K;A)$">$R\Gamma_c(K;A)$</span>. Compactness identifies this with ordinary cohomology. Repeat the argument for <span class="math" data-tex="$L$">$L$</span> and take the fibre of the restriction <span class="math" data-tex="$R\Gamma(K;A)\to R\Gamma(L;A)$">$R\Gamma(K;A)\to R\Gamma(L;A)$</span>. This gives FH16 with its actual restriction map. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>No triangulation-existence theorem is hidden in this lemma: the compatible finite triangulation is a hypothesis. Applying it to a normal slice or a Milnor pair still requires that such a pair exists and computes the desired sheaf-theoretic datum. In particular it does not justify interchanging tensor with an arbitrary infinite nearby-cycle limit.</p>
+<h2 id="sh02-fh-inputs-the-geometric-prerequisites-of-the-finite-map-proof">SH02-FH-INPUTS — The geometric prerequisites of the finite-map proof</h2>
+<p>The main proof below uses supported real tests and finite sums. The stronger critical-support argument later in the lesson is retained as an alternative; its full vanishing-cycle comparison and nonisolated analytic theorem are not prerequisites of the main proof. The four inputs below are supplied by these lessons, with their exact external theorem statements and coefficient ranges kept visible:</p>
+<ul>
+<li><span class="unlinked">Analytic geometry for finite maps</span> supplies compatible strata, finite analytic images and closed conormals.</li>
+<li><a href="normal-morse-coefficients.html">Normal Morse data and change of coefficients</a> supplies the finite normal pairs, their stabilization and the coefficient comparison.</li>
+<li><span class="unlinked">Perverse degrees and normal Morse complexes</span> supplies the field-perverse degree and normal-Morse exactness.</li>
+<li><span class="unlinked">An isolated holomorphic test and its Morse filtration</span> supplies the controlled cluster, actual relative filtration and positive integer count.</li>
+</ul>
+<p>For the primary proof, use these inputs with the <a href="#">finite conormal-image argument</a>, <a href="#">quadratic test construction</a>, <a href="#">field argument</a> and <a href="#">coefficient recovery</a>. The <a href="#">full critical-support route</a> is a separate, stronger direction; its FH13 and FH14 remain open and are not needed for FH30.</p>
+<h3 id="sh02-fh-analytic-input-analytic-sets-and-adapted-finite-maps">SH02-FH-ANALYTIC-INPUT — Analytic sets and adapted finite maps</h3>
+<p>The required analytic facts are the local dimension bound for finitely many holomorphic equations, analyticity and dimension preservation under a finite proper holomorphic map, dense smooth loci and compatible Whitney stratifications. Locally near a finite fibre, the source stratification may be chosen adapted to the sheaf and compatible with a target stratification so that each source stratum maps locally biholomorphically to its target stratum. Conormal closures for this complex stratification are complex analytic. The strata and their refinements are geometric and independent of the coefficient ring. Only locally finite stratifications are assumed globally. Their local finite form, not a global finite decomposition, is used below.</p>
+<h3 id="sh02-fh-normal-morse-input-coefficient-compatible-visible-conormals">SH02-FH-NORMAL-MORSE-INPUT — Coefficient-compatible visible conormals</h3>
+<p>The normal Morse part of FH12 is required: every generic connected conormal component has a normal Morse object, the microsupport is the union of closures of the components with nonzero objects, and these objects are computed by actual finite normal pairs compatible with the coefficient stratification. FH16 then proves perfection and derived change of coefficients for these models. This input includes the existence and stabilization of the normal pairs and the assertion that they compute microsupport. It does not assert that all nearby-cycle limits commute with tensor.</p>
+<h3 id="sh02-fh-perverse-input-field-coefficients-and-normal-morse-degree">SH02-FH-PERVERSE-INPUT — Field coefficients and normal Morse degree</h3>
+<p>Over every field, bounded complex-constructible complexes have the bounded middle-perverse t-structure described by the stalk/costalk conditions FH17. With the dimension normalization in the Morse argument below, the normal Morse functors are t-exact. These are the only perverse inputs. Finite direct-image t-exactness and the microsupport union over perverse cohomology are deduced below, and no perverse construction is applied over the original ring.</p>
+<h3 id="sh02-fh-controlled-morse-input-an-isolated-cluster-and-its-finite-filtration">SH02-FH-CONTROLLED-MORSE-INPUT — An isolated cluster and its finite filtration</h3>
+<p>For a holomorphic germ with an isolated critical point for a finite adapted complex Whitney stratification, a sufficiently small relative pair computes its supported local test. A small generic holomorphic perturbation can be chosen with controlled noncharacteristic boundary, finitely many stratified Morse points, and distinct critical values. The relative complex remains identified with the original local test while those points are separated by a finite Morse filtration. At a point on a stratum of complex dimension <span class="math" data-tex="$d$">$d$</span>, the quotient is its normal Morse object shifted by <span class="math" data-tex="$[-d]$">$[-d]$</span>. The number of points on each generic conormal is the local complex analytic intersection number; these numbers are positive at a nonempty isolated intersection and are preserved by this perturbation. The boundary control, relative-pair continuation and local analytic intersection theorem are substantive geometric inputs. The integer index and nonvanishing consequence are proved from them below.</p>
+<p>The linked lessons give the four prerequisite deductions relative to their exact external theorem statements. The cited analytic and constructible foundations retain their other-course owners.</p>
+<h2 id="sh02-fh-constructible-image-constructibility-from-an-adapted-finite-covering">SH02-FH-CONSTRUCTIBLE-IMAGE — Constructibility from an adapted finite covering</h2>
+<p>Use a compatible pair of complex analytic stratifications <span class="math" data-tex="$\mathcal S$">$\mathcal S$</span> of <span class="math" data-tex="$Y$">$Y$</span> and <span class="math" data-tex="$\mathcal T$">$\mathcal T$</span> of <span class="math" data-tex="$X$">$X$</span> for the finite holomorphic map <span class="math" data-tex="$f$">$f$</span>, adapted to <span class="math" data-tex="$G$">$G$</span>, such that every <span class="math" data-tex="$f^{-1}(T)$">$f^{-1}(T)$</span> is a disjoint union of source strata and each source stratum maps locally biholomorphically to <span class="math" data-tex="$T$">$T$</span>. Such compatible analytic stratifications are the exact geometric input here. We prove the sheaf consequence, rather than invoke a general proper-image constructibility theorem in addition.</p>
+<p>For any <span class="math" data-tex="$T\in\mathcal T$">$T\in\mathcal T$</span>, all the source strata in <span class="math" data-tex="$f^{-1}(T)$">$f^{-1}(T)$</span> have dimension <span class="math" data-tex="$\dim T$">$\dim T$</span>. The frontier condition and local finiteness imply that each is open and closed in <span class="math" data-tex="$f^{-1}(T)$">$f^{-1}(T)$</span>: an incident distinct boundary stratum would have smaller dimension. Thus <span class="math" data-tex="$f_T:f^{-1}(T)\to T$">$f_T:f^{-1}(T)\to T$</span> is a local homeomorphism. It is proper with finite fibres, by change of base from <span class="math" data-tex="$f$">$f$</span>.</p>
+<p>A proper local homeomorphism with finite fibres is a finite covering. Indeed choose disjoint neighborhoods of the finitely many points of a fibre on which the map is a homeomorphism to an open target neighborhood. Intersect those target neighborhoods and then use FH2 to ensure that their inverse images exhaust the inverse image of a still smaller neighborhood. These are precisely its sheets. An empty fibre gives the empty covering on a neighborhood.</p>
+<p>The restriction of <span class="math" data-tex="$R f_*G$">$R f_*G$</span> to <span class="math" data-tex="$T$">$T$</span> is <span class="math" data-tex="$f_{T*}(G|_{f^{-1}(T)})$">$f_{T*}(G|_{f^{-1}(T)})$</span> by FH5. On a sufficiently small open set in <span class="math" data-tex="$T$">$T$</span>, the covering is a finite disjoint union of copies of that set. Consequently its cohomology sheaves are finite direct sums of the local systems obtained from the cohomology sheaves of <span class="math" data-tex="$G$">$G$</span> on those sheets. They are locally constant. This proves weak complex constructibility of <span class="math" data-tex="$Rf_*G$">$Rf_*G$</span>. Boundedness and perfection of its stalks follow separately from the actual finite sum FH4. The proof holds for the original ring <span class="math" data-tex="$k$">$k$</span>; it uses no field condition or finite-rank replacement for perfect stalks.</p>
+<p>The same argument applies after extending coefficients to a residue field, since scalar extension preserves local constancy on the fixed source strata. Hence one compatible geometric stratification works for every coefficient change needed in FH28.</p>
+<h2 id="sh02-fh-conormal-image-the-geometry-of-a-finite-cotangent-image">SH02-FH-CONORMAL-IMAGE — The geometry of a finite cotangent image</h2>
+<p>Here is the geometric reason isolated tests suffice for a finite map. We use three local facts about complex analytic sets: the dimension bound for the zero set of a finite list of holomorphic functions; the analyticity and dimension preservation of a finite holomorphic image; and compatible locally finite analytic stratifications with dense smooth strata. These are analytic prerequisites. The argument below does not deduce them from the sheaf statement being proved.</p>
+<p>Let <span class="math" data-tex="$Y$">$Y$</span> and <span class="math" data-tex="$X$">$X$</span> have complex dimensions <span class="math" data-tex="$d$">$d$</span> and <span class="math" data-tex="$n$">$n$</span>, and let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be finite holomorphic. On complex cotangent bundles put</p>
+<span class="math math-display" data-tex="$$
+E=Y\times_XT^*X,\qquad
+a(y,\eta)=(y,df_y^t\eta),\qquad
+b(y,\eta)=(f(y),\eta).
+\tag{FH40}
+$$">$$
+E=Y\times_XT^*X,\qquad
+a(y,\eta)=(y,df_y^t\eta),\qquad
+b(y,\eta)=(f(y),\eta).
+\tag{FH40}
+$$</span>
+<p>Thus <span class="math" data-tex="$a=f_d$">$a=f_d$</span>, <span class="math" data-tex="$b=f_\pi$">$b=f_\pi$</span>, and <span class="math" data-tex="$E$">$E$</span> is a vector bundle of rank <span class="math" data-tex="$n$">$n$</span> over <span class="math" data-tex="$Y$">$Y$</span>. The map <span class="math" data-tex="$b$">$b$</span> is the base change of <span class="math" data-tex="$f$">$f$</span>, so it is proper and finite.</p>
+<p>Suppose <span class="math" data-tex="$\Lambda\subset T^*Y$">$\Lambda\subset T^*Y$</span> is a closed complex analytic conic set, empty or pure of dimension <span class="math" data-tex="$d$">$d$</span>. Assume there is a locally finite complex analytic Whitney stratification of <span class="math" data-tex="$Y$">$Y$</span> such that</p>
+<span class="math math-display" data-tex="$$
+\Lambda_y\subset\operatorname{Ann}(T_yS)
+\quad\text{whenever }y\in S.
+\tag{FH41}
+$$">$$
+\Lambda_y\subset\operatorname{Ann}(T_yS)
+\quad\text{whenever }y\in S.
+\tag{FH41}
+$$</span>
+<p>The union of closed conormals occurring in the normal-Morse description of a complex-constructible sheaf satisfies FH41. To see the point at a boundary stratum, take covectors based on the original stratum that converge to a covector at the boundary. Pass to a convergent subsequence of tangent spaces in a Grassmannian. Whitney condition (a) places the tangent of the boundary stratum inside their limit. The limiting covector annihilates that limit and hence the boundary tangent. This proves FH41 for every closed conormal in the union.</p>
+<p>Define the reduced analytic set <span class="math" data-tex="$B$">$B$</span> and its image <span class="math" data-tex="$A$">$A$</span> by</p>
+<span class="math math-display" data-tex="$$
+B=a^{-1}(\Lambda),\qquad A=b(B).
+\tag{FH42}
+$$">$$
+B=a^{-1}(\Lambda),\qquad A=b(B).
+\tag{FH42}
+$$</span>
+<p>If nonempty, both <span class="math" data-tex="$B$">$B$</span> and <span class="math" data-tex="$A$">$A$</span> are pure of complex dimension <span class="math" data-tex="$n$">$n$</span>. The set <span class="math" data-tex="$A$">$A$</span> is closed, analytic and conic, and its smooth tangent spaces are Lagrangian in <span class="math" data-tex="$T^*X$">$T^*X$</span>.</p>
+<p><strong>Proof.</strong> First observe that a holomorphic map with finite fibres from a smooth complex manifold of dimension <span class="math" data-tex="$s$">$s$</span> has differential rank <span class="math" data-tex="$s$">$s$</span> on a dense open subset. On an open set of maximum rank <span class="math" data-tex="$t$">$t$</span>, the holomorphic constant-rank theorem gives local fibres of dimension <span class="math" data-tex="$s-t$">$s-t$</span>. Finiteness forces <span class="math" data-tex="$t=s$">$t=s$</span>. The rank-drop locus is a proper analytic subset. This observation applies to any local smooth piece of the source; it makes no claim of immersion at every point.</p>
+<p>For the lower dimension bound on <span class="math" data-tex="$B$">$B$</span>, work in coordinates on <span class="math" data-tex="$Y$">$Y$</span>. The product <span class="math" data-tex="$E\times\Lambda$">$E\times\Lambda$</span> is pure of dimension <span class="math" data-tex="$2d+n$">$2d+n$</span>. Inside <span class="math" data-tex="$E\times T^*Y$">$E\times T^*Y$</span>, the graph of <span class="math" data-tex="$a$">$a$</span> is given by <span class="math" data-tex="$2d$">$2d$</span> holomorphic equations, matching the base and covector coordinates of the second factor with those of <span class="math" data-tex="$a$">$a$</span>. Its intersection with <span class="math" data-tex="$E\times\Lambda$">$E\times\Lambda$</span> is <span class="math" data-tex="$B$">$B$</span>. Thus the analytic dimension bound gives</p>
+<span class="math math-display" data-tex="$$
+\dim C\geq n
+\tag{FH43}
+$$">$$
+\dim C\geq n
+\tag{FH43}
+$$</span>
+<p>for every local irreducible component <span class="math" data-tex="$C$">$C$</span> of <span class="math" data-tex="$B$">$B$</span>. Neither smoothness of <span class="math" data-tex="$\Lambda$">$\Lambda$</span> nor transversality of <span class="math" data-tex="$a$">$a$</span> is assumed.</p>
+<p>For the upper bound, let <span class="math" data-tex="$e=\dim C$">$e=\dim C$</span>. Let <span class="math" data-tex="$r:E\to Y$">$r:E\to Y$</span> be the bundle projection. Choose a dense smooth piece of <span class="math" data-tex="$C$">$C$</span> on which <span class="math" data-tex="$r$">$r$</span> has constant rank <span class="math" data-tex="$s$">$s$</span> and whose image lies in one stratum <span class="math" data-tex="$S$">$S$</span> of FH41. A compatible analytic stratification of <span class="math" data-tex="$C$">$C$</span>, the map <span class="math" data-tex="$r$">$r$</span>, and the finitely many source strata near the point supplies such a piece of full dimension. The constant-rank theorem identifies the local image with a smooth complex submanifold <span class="math" data-tex="$V\subset S$">$V\subset S$</span> of dimension <span class="math" data-tex="$s$">$s$</span>. By the finite-fibre observation, we may choose the point and shrink this piece so that <span class="math" data-tex="$df$">$df$</span> is injective on <span class="math" data-tex="$TV$">$TV$</span>.</p>
+<p>For a fixed such <span class="math" data-tex="$y$">$y$</span>, the fibre <span class="math" data-tex="$B_y$">$B_y$</span> lies in the linear subspace of <span class="math" data-tex="$T^*_{f(y)}X$">$T^*_{f(y)}X$</span> that annihilates <span class="math" data-tex="$df_y(T_yS)$">$df_y(T_yS)$</span>. This subspace has dimension at most <span class="math" data-tex="$n-s$">$n-s$</span>, since it also annihilates the <span class="math" data-tex="$s$">$s$</span>-dimensional space <span class="math" data-tex="$df_y(T_yV)$">$df_y(T_yV)$</span>. The local fibre of <span class="math" data-tex="$C\to V$">$C\to V$</span> has dimension <span class="math" data-tex="$e-s$">$e-s$</span>. Consequently</p>
+<span class="math math-display" data-tex="$$
+e-s\leq n-s,
+\tag{FH44}
+$$">$$
+e-s\leq n-s,
+\tag{FH44}
+$$</span>
+<p>which gives <span class="math" data-tex="$e\leq n$">$e\leq n$</span>. Together with FH43 this proves purity of <span class="math" data-tex="$B$">$B$</span>.</p>
+<p>The restriction of <span class="math" data-tex="$b$">$b$</span> to <span class="math" data-tex="$B$">$B$</span> is finite and proper. Its image is therefore closed and analytic, and the image of each irreducible component has the same dimension <span class="math" data-tex="$n$">$n$</span>. Locally these images form a finite union, so <span class="math" data-tex="$A$">$A$</span> is pure of dimension <span class="math" data-tex="$n$">$n$</span>. Scalar multiplication commutes with <span class="math" data-tex="$a$">$a$</span> and <span class="math" data-tex="$b$">$b$</span>, giving conicity.</p>
+<p>Write <span class="math" data-tex="$\theta_Y$">$\theta_Y$</span> and <span class="math" data-tex="$\theta_X$">$\theta_X$</span> for the tautological one-forms. Their pullbacks satisfy</p>
+<span class="math math-display" data-tex="$$
+b^*\theta_X=a^*\theta_Y.
+\tag{FH45}
+$$">$$
+b^*\theta_X=a^*\theta_Y.
+\tag{FH45}
+$$</span>
+<p>Indeed both sides, evaluated on a tangent vector <span class="math" data-tex="$v$">$v$</span> at <span class="math" data-tex="$(y,\eta)$">$(y,\eta)$</span>, are <span class="math" data-tex="$\eta(df_y(dr(v)))$">$\eta(df_y(dr(v)))$</span>. On a dense smooth piece of an irreducible component <span class="math" data-tex="$C\subset B$">$C\subset B$</span>, tangent vectors project into the tangent of a single stratum <span class="math" data-tex="$S$">$S$</span>. The covector <span class="math" data-tex="$df_y^t\eta$">$df_y^t\eta$</span> annihilates that tangent by FH41. Hence FH45 vanishes on that piece. Its restriction to the smooth locus of <span class="math" data-tex="$C$">$C$</span> is a holomorphic form and therefore vanishes everywhere there.</p>
+<p>Choose an irreducible component <span class="math" data-tex="$A_0$">$A_0$</span> of <span class="math" data-tex="$A$">$A$</span> and a component <span class="math" data-tex="$C$">$C$</span> mapping onto it. On dense smooth open subsets the finite map <span class="math" data-tex="$C\to A_0$">$C\to A_0$</span> has full rank <span class="math" data-tex="$n$">$n$</span>: a smaller maximum rank would give a positive-dimensional local fibre. At such points its tangent map is an isomorphism, so the vanishing of <span class="math" data-tex="$b^*\theta_X$">$b^*\theta_X$</span> gives <span class="math" data-tex="$\theta_X|_{T A_0}=0$">$\theta_X|_{T A_0}=0$</span>. Holomorphic continuation extends this to the smooth locus of <span class="math" data-tex="$A_0$">$A_0$</span>. Differentiating gives <span class="math" data-tex="$d\theta_X|_{T A_0}=0$">$d\theta_X|_{T A_0}=0$</span>. Since its dimension is half the ambient symplectic dimension, this tangent space is Lagrangian. The same conclusion holds at every smooth point of the full reduced set <span class="math" data-tex="$A$">$A$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This proof includes components over branch loci and lower-dimensional support strata. It allows <span class="math" data-tex="$d&lt;n$">$d&lt;n$</span>, and it also allows <span class="math" data-tex="$df_y=0$">$df_y=0$</span> at an individual point. A source stratum consisting of a point can contribute an entire target cotangent fibre of dimension <span class="math" data-tex="$n$">$n$</span>.</p>
+<h2 id="sh02-fh-holomorphic-test-choosing-a-test-and-isolating-its-source-points">SH02-FH-HOLOMORPHIC-TEST — Choosing a test and isolating its source points</h2>
+<p>Let <span class="math" data-tex="$A\subset T^*X$">$A\subset T^*X$</span> be a complex analytic Lagrangian set and let <span class="math" data-tex="$q=(x,\eta)$">$q=(x,\eta)$</span> be a smooth point. In holomorphic coordinates centered at <span class="math" data-tex="$x$">$x$</span>, there is a quadratic polynomial <span class="math" data-tex="$h$">$h$</span> such that</p>
+<span class="math math-display" data-tex="$$
+h(x)=0,\qquad dh_x=\eta,\qquad
+T_q\operatorname{graph}(dh)\cap T_qA=0.
+\tag{FH46}
+$$">$$
+h(x)=0,\qquad dh_x=\eta,\qquad
+T_q\operatorname{graph}(dh)\cap T_qA=0.
+\tag{FH46}
+$$</span>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="$V=T_xX$">$V=T_xX$</span>. Coordinates identify <span class="math" data-tex="$T_q(T^*X)$">$T_q(T^*X)$</span> with <span class="math" data-tex="$V\oplus V^*$">$V\oplus V^*$</span>. Let <span class="math" data-tex="$L=T_qA$">$L=T_qA$</span> and let <span class="math" data-tex="$W\subset V$">$W\subset V$</span> be its projected image. The vertical subspace of <span class="math" data-tex="$L$">$L$</span> equals <span class="math" data-tex="$\operatorname{Ann}(W)$">$\operatorname{Ann}(W)$</span>: isotropy gives containment, and both have dimension <span class="math" data-tex="$n-\dim W$">$n-\dim W$</span>. Thus for <span class="math" data-tex="$w\in W$">$w\in W$</span>, the restriction to <span class="math" data-tex="$W$">$W$</span> of a covector component of any lift of <span class="math" data-tex="$w$">$w$</span> to <span class="math" data-tex="$L$">$L$</span> is well-defined. It gives a linear map <span class="math" data-tex="$C:W\to W^*$">$C:W\to W^*$</span>. The Lagrangian condition says that <span class="math" data-tex="$C$">$C$</span> is symmetric.</p>
+<p>Choose a nondegenerate complex symmetric form <span class="math" data-tex="$D$">$D$</span> on <span class="math" data-tex="$W$">$W$</span> and extend <span class="math" data-tex="$C+D$">$C+D$</span> to a symmetric form <span class="math" data-tex="$H$">$H$</span> on <span class="math" data-tex="$V$">$V$</span>. A vector <span class="math" data-tex="$(v,Hv)$">$(v,Hv)$</span> in <span class="math" data-tex="$L$">$L$</span> must have <span class="math" data-tex="$v\in W$">$v\in W$</span> and satisfy <span class="math" data-tex="$D(v)=0$">$D(v)=0$</span>, so <span class="math" data-tex="$v=0$">$v=0$</span>. Hence <span class="math" data-tex="$\operatorname{graph}(H)$">$\operatorname{graph}(H)$</span> is transverse to <span class="math" data-tex="$L$">$L$</span>. The polynomial</p>
+<span class="math math-display" data-tex="$$
+h(z)=\eta(z)+\tfrac12 H(z,z)
+\tag{FH47}
+$$">$$
+h(z)=\eta(z)+\tfrac12 H(z,z)
+\tag{FH47}
+$$</span>
+<p>has the requested first derivative and Hessian. Its differential graph has tangent space <span class="math" data-tex="$\operatorname{graph}(H)$">$\operatorname{graph}(H)$</span> at <span class="math" data-tex="$q$">$q$</span>, proving FH46. The inverse-function theorem then shows that the graph and <span class="math" data-tex="$A$">$A$</span> intersect locally only at the reduced point <span class="math" data-tex="$q$">$q$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This construction works when <span class="math" data-tex="$\eta=0$">$\eta=0$</span>. For a zero-section component of <span class="math" data-tex="$A$">$A$</span>, take a nondegenerate Hessian. If <span class="math" data-tex="$W=0$">$W=0$</span>, every Hessian is transverse to <span class="math" data-tex="$L$">$L$</span>; the form on the zero vector space is nondegenerate in the usual convention.</p>
+<p>Now take <span class="math" data-tex="$A$">$A$</span> and <span class="math" data-tex="$B$">$B$</span> from FH42 and choose such an <span class="math" data-tex="$h$">$h$</span> at a smooth point <span class="math" data-tex="$q\in A$">$q\in A$</span>. Shrink the target neighborhood <span class="math" data-tex="$U$">$U$</span> of <span class="math" data-tex="$x$">$x$</span> so that</p>
+<span class="math math-display" data-tex="$$
+\operatorname{graph}(dh)\cap A\cap T^*U=\{q\}.
+\tag{FH48}
+$$">$$
+\operatorname{graph}(dh)\cap A\cap T^*U=\{q\}.
+\tag{FH48}
+$$</span>
+<p>This is possible because <span class="math" data-tex="$dh$">$dh$</span> is continuous: after taking a cotangent neighborhood where the intersection is isolated, the whole graph over a sufficiently small <span class="math" data-tex="$U$">$U$</span> lies in that neighborhood. For <span class="math" data-tex="$z\in f^{-1}(U)$">$z\in f^{-1}(U)$</span> the chain rule gives</p>
+<span class="math math-display" data-tex="$$
+(z,d(h\circ f)_z)\in\Lambda
+\quad\Longleftrightarrow\quad
+(z,dh_{f(z)})\in B.
+\tag{FH49}
+$$">$$
+(z,d(h\circ f)_z)\in\Lambda
+\quad\Longleftrightarrow\quad
+(z,dh_{f(z)})\in B.
+\tag{FH49}
+$$</span>
+<p>The image of such a point under <span class="math" data-tex="$b$">$b$</span> lies in the intersection FH48. Therefore all source points in FH49 lie in the finite set</p>
+<span class="math math-display" data-tex="$$
+C_q=\{y\in f^{-1}(x):(y,df_y^t\eta)\in\Lambda\}.
+\tag{FH50}
+$$">$$
+C_q=\{y\in f^{-1}(x):(y,df_y^t\eta)\in\Lambda\}.
+\tag{FH50}
+$$</span>
+<p>This set is nonempty because <span class="math" data-tex="$q\in A$">$q\in A$</span>. The graph of <span class="math" data-tex="$d(h\circ f)$">$d(h\circ f)$</span> consequently has an isolated intersection with <span class="math" data-tex="$\Lambda$">$\Lambda$</span> at every corresponding source cotangent point. No nonzero condition on <span class="math" data-tex="$df_y^t\eta$">$df_y^t\eta$</span> is imposed. These intersections may have multiplicity greater than one; the argument does not require source transversality.</p>
+<p>Small disjoint neighborhoods separate the finitely many points of the fibre. By the finite-fibre neighborhood lemma, the target can be shrunk again so that its full inverse image is contained in those neighborhoods. Thus the local tests obtained here apply to the same finite direct-sum comparison FH7, with no missing branch.</p>
+<p>Finally, the smooth locus of every irreducible component of <span class="math" data-tex="$A$">$A$</span> is dense. Once a sheaf's closed microsupport contains all these smooth points, it contains all of <span class="math" data-tex="$A$">$A$</span>. Singular points of the cotangent image therefore follow by closure after using these isolated tests. In target dimension zero all spaces and tangent spaces in this argument have their zero-dimensional meanings; the empty and zero-section cases remain valid.</p>
+<p>For the sheaf argument one may strengthen the choice so that every source stratum has isolated critical points. Fix a locally finite complex analytic Whitney stratification adapted to the sheaf and put</p>
+<span class="math math-display" data-tex="$$
+\Sigma=\bigcup_S\overline{T^*_SY},\qquad
+A_{\mathrm{all}}=b\bigl(a^{-1}(\Sigma)\bigr).
+\tag{FH51}
+$$">$$
+\Sigma=\bigcup_S\overline{T^*_SY},\qquad
+A_{\mathrm{all}}=b\bigl(a^{-1}(\Sigma)\bigr).
+\tag{FH51}
+$$</span>
+<p>The union here includes every stratum, including those with zero normal-Morse complex. Locally it is a finite union of closed analytic conormals, each pure of dimension <span class="math" data-tex="$d$">$d$</span>. The Whitney argument preceding FH42 proves FH41 for <span class="math" data-tex="$\Sigma$">$\Sigma$</span>. Thus <span class="math" data-tex="$A_{\mathrm{all}}$">$A_{\mathrm{all}}$</span> is a closed analytic Lagrangian set, pure of dimension <span class="math" data-tex="$n$">$n$</span>. If <span class="math" data-tex="$\Lambda\subset\Sigma$">$\Lambda\subset\Sigma$</span> is the microsupport, then <span class="math" data-tex="$A\subset A_{\mathrm{all}}$">$A\subset A_{\mathrm{all}}$</span>. Both are pure of dimension <span class="math" data-tex="$n$">$n$</span>, and <span class="math" data-tex="$A$">$A$</span> is closed analytic. It follows that every local irreducible component of <span class="math" data-tex="$A$">$A$</span> is a component of <span class="math" data-tex="$A_{\mathrm{all}}$">$A_{\mathrm{all}}$</span>: a proper analytic subset of an irreducible component of dimension <span class="math" data-tex="$n$">$n$</span> has smaller dimension. Conversely <span class="math" data-tex="$A$">$A$</span> is the union of the components so obtained.</p>
+<p>In a dense open subset of each such component choose <span class="math" data-tex="$q$">$q$</span> smooth in the full set <span class="math" data-tex="$A_{\mathrm{all}}$">$A_{\mathrm{all}}$</span>, excluding its intersections with other components. Apply FH46 to <span class="math" data-tex="$A_{\mathrm{all}}$">$A_{\mathrm{all}}$</span> at <span class="math" data-tex="$q$">$q$</span>. After shrinking <span class="math" data-tex="$U$">$U$</span>, this gives</p>
+<span class="math math-display" data-tex="$$
+\operatorname{graph}(dh)\cap A_{\mathrm{all}}\cap T^*U=\{q\}.
+\tag{FH52}
+$$">$$
+\operatorname{graph}(dh)\cap A_{\mathrm{all}}\cap T^*U=\{q\}.
+\tag{FH52}
+$$</span>
+<p>If <span class="math" data-tex="$z\in S\cap f^{-1}(U)$">$z\in S\cap f^{-1}(U)$</span> is a critical point of <span class="math" data-tex="$(h\circ f)|_S$">$(h\circ f)|_S$</span>, then</p>
+<span class="math math-display" data-tex="$$
+d(h\circ f)_z\in T^*_SY\subset\Sigma,
+\tag{FH53}
+$$">$$
+d(h\circ f)_z\in T^*_SY\subset\Sigma,
+\tag{FH53}
+$$</span>
+<p>where the first membership means the covector based at <span class="math" data-tex="$z$">$z$</span>. The argument of FH49 now places <span class="math" data-tex="$z$">$z$</span> in <span class="math" data-tex="$f^{-1}(x)$">$f^{-1}(x)$</span>. Thus the critical points on all source strata form a finite set, and each is isolated locally. At every point of <span class="math" data-tex="$C_q$">$C_q$</span> in FH50, the Whitney tangency property makes the covector annihilate the tangent of its actual stratum, so it is one of these stratified critical points. This permits the local stratified Morse calculation to use the full adapted stratification. It needs no assertion that strata with zero normal-Morse data can be discarded before choosing a neighborhood or perturbing the test.</p>
+<h2 id="sh02-fh-perverse-finite-finite-direct-image-and-the-perverse-degree">SH02-FH-PERVERSE-FINITE — Finite direct image and the perverse degree</h2>
+<p>This section uses the bounded middle-perverse t-structure on complex-constructible sheaves over a field <span class="math" data-tex="$K$">$K$</span>. Its existence, and the normal Morse description below, are geometric prerequisites from the constructible and perverse course. No perverse truncation over the original coefficient ring <span class="math" data-tex="$k$">$k$</span> is used.</p>
+<p>Locally, fix a finite complex stratification on which all the sheaves in question are constructible. For a stratum <span class="math" data-tex="$S$">$S$</span> of complex dimension <span class="math" data-tex="$d$">$d$</span>, the middle-perverse conditions on a complex <span class="math" data-tex="$P$">$P$</span> are</p>
+<span class="math math-display" data-tex="$$
+P_y\in D^{\leq-d}(K),\qquad
+(i_y^!P)\in D^{\geq d}(K)\quad(y\in S).
+\tag{FH17}
+$$">$$
+P_y\in D^{\leq-d}(K),\qquad
+(i_y^!P)\in D^{\geq d}(K)\quad(y\in S).
+\tag{FH17}
+$$</span>
+<p>The first condition describes the nonpositive half of the t-structure and the second the nonnegative half. Here <span class="math" data-tex="$i_y$">$i_y$</span> is the inclusion of a point; its exceptional inverse image is a complex of <span class="math" data-tex="$K$">$K$</span>-vector spaces. A common refinement does not change these conditions: they express the intrinsic stalk-support and costalk-support dimension conditions.</p>
+<p><strong>Finite perverse exactness.</strong> If <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> is finite holomorphic, then <span class="math" data-tex="$Rf_*$">$Rf_*$</span> preserves both halves of this t-structure. Consequently it commutes with all perverse cohomology functors.</p>
+<p><strong>Proof.</strong> Choose compatible complex stratifications for <span class="math" data-tex="$f$">$f$</span> and <span class="math" data-tex="$P$">$P$</span> such that every source stratum <span class="math" data-tex="$S$">$S$</span> maps to a target stratum <span class="math" data-tex="$T$">$T$</span> by a local biholomorphism. Some target strata have empty inverse image; on them the direct image is zero. Finiteness makes the dimensions of nonempty corresponding strata equal. The existence of this compatible analytic refinement is the same finite-map stratification input used below, and is not a consequence of the stalk calculation alone.</p>
+<p>For <span class="math" data-tex="$x\in T$">$x\in T$</span>, FH4 gives</p>
+<span class="math math-display" data-tex="$$
+(Rf_*P)_x\simeq\bigoplus_{f(y)=x}P_y.
+\tag{FH18}
+$$">$$
+(Rf_*P)_x\simeq\bigoplus_{f(y)=x}P_y.
+\tag{FH18}
+$$</span>
+<p>All source strata through these points have complex dimension <span class="math" data-tex="$\dim T$">$\dim T$</span>. Thus the nonpositive condition in FH17 is preserved. To check the other half, apply FH6 to the closed subset <span class="math" data-tex="$\{x\}$">$\{x\}$</span> and then take its stalk. On a neighborhood of any <span class="math" data-tex="$y\in f^{-1}(x)$">$y\in f^{-1}(x)$</span> disjoint from the other points, support in the finite fibre is support at <span class="math" data-tex="$y$">$y$</span>. Therefore the actual localization comparison gives</p>
+<span class="math math-display" data-tex="$$
+i_x^!Rf_*P\simeq\bigoplus_{f(y)=x}i_y^!P.
+\tag{FH19}
+$$">$$
+i_x^!Rf_*P\simeq\bigoplus_{f(y)=x}i_y^!P.
+\tag{FH19}
+$$</span>
+<p>This proves the required nonnegative bound. Both sums are finite and exact, so no spectral-sequence degeneration is being asserted. The preceding adapted-covering proof supplies membership in the constructible category; its boundedness and finite-dimensional stalks already follow from FH18.</p>
+<p>An exact functor preserving the two halves carries the defining truncation triangle to a truncation triangle. Uniqueness of that triangle gives natural comparisons with perverse truncation and hence</p>
+<span class="math math-display" data-tex="$$
+{}^pH^j(Rf_*P)\simeq Rf_*\,{}^pH^j(P).
+\tag{FH20}
+$$">$$
+{}^pH^j(Rf_*P)\simeq Rf_*\,{}^pH^j(P).
+\tag{FH20}
+$$</span>
+<p>This proves the last assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For later use record precisely the Morse input to perverse support. At a generic point of each connected conormal component, let <span class="math" data-tex="$\mu_\alpha$">$\mu_\alpha$</span> be the normal Morse functor with the perverse normalization. The input says that <span class="math" data-tex="$\mu_\alpha$">$\mu_\alpha$</span> is exact for the perverse and ordinary t-structures, and that a component belongs to the microsupport exactly when its Morse complex is nonzero. It follows that</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(B)=\bigcup_j\operatorname{SS}({}^pH^jB)
+\tag{FH21}
+$$">$$
+\operatorname{SS}(B)=\bigcup_j\operatorname{SS}({}^pH^jB)
+\tag{FH21}
+$$</span>
+<p>for every bounded complex-constructible <span class="math" data-tex="$B$">$B$</span> over <span class="math" data-tex="$K$">$K$</span>. Indeed exactness gives <span class="math" data-tex="$\mu_\alpha({}^pH^jB)\simeq H^j(\mu_\alpha B)$">$\mu_\alpha({}^pH^jB)\simeq H^j(\mu_\alpha B)$</span>; a bounded complex of vector spaces is zero if and only if all its cohomology groups vanish. Apply the conormal description to each side. The bounded perverse t-structure makes the union finite locally. This argument neither splits <span class="math" data-tex="$B$">$B$</span> into its perverse cohomology objects nor assumes that the perverse category is semisimple.</p>
+<h2 id="sh02-fh-positive-index-what-isolated-holomorphic-detection-requires">SH02-FH-POSITIVE-INDEX — What isolated holomorphic detection requires</h2>
+<p>For a perverse sheaf <span class="math" data-tex="$P$">$P$</span> over an arbitrary field <span class="math" data-tex="$K$">$K$</span>, use integer multiplicities</p>
+<span class="math math-display" data-tex="$$
+\operatorname{CC}(P)=\sum_\alpha
+\dim_K\mu_\alpha(P)\,[\Lambda_\alpha].
+\tag{FH22}
+$$">$$
+\operatorname{CC}(P)=\sum_\alpha
+\dim_K\mu_\alpha(P)\,[\Lambda_\alpha].
+\tag{FH22}
+$$</span>
+<p>The complex conormal components carry their complex orientations. The nonzero coefficients are positive integers, and the support of this cycle is <span class="math" data-tex="$\operatorname{SS}(P)$">$\operatorname{SS}(P)$</span> by the normal Morse description. The integers in FH22 are not reduced modulo the characteristic of <span class="math" data-tex="$K$">$K$</span>.</p>
+<p>For a holomorphic <span class="math" data-tex="$g$">$g$</span>, denote its supported local test by</p>
+<span class="math math-display" data-tex="$$
+M_g(P)_y=
+\bigl(R\Gamma_{\{\operatorname{Re}g\geq\operatorname{Re}g(y)\}}P\bigr)_y.
+$$">$$
+M_g(P)_y=
+\bigl(R\Gamma_{\{\operatorname{Re}g\geq\operatorname{Re}g(y)\}}P\bigr)_y.
+$$</span>
+<p>Let <span class="math" data-tex="$\Lambda_{\mathcal S}$">$\Lambda_{\mathcal S}$</span> be the union of all closed conormals of a finite local adapted complex Whitney stratification, including invisible strata. We need the following specialization of the isolated local index theorem. If <span class="math" data-tex="$dg$">$dg$</span> meets <span class="math" data-tex="$\Lambda_{\mathcal S}$">$\Lambda_{\mathcal S}$</span> only at an isolated point over <span class="math" data-tex="$y$">$y$</span> after shrinking, then</p>
+<span class="math math-display" data-tex="$$
+\chi_K(M_g(P)_y)
+=\sum_\alpha \dim_K\mu_\alpha(P)\,
+I_{(y,dg_y)}(\Lambda_\alpha,\operatorname{graph}(dg)).
+\tag{FH23}
+$$">$$
+\chi_K(M_g(P)_y)
+=\sum_\alpha \dim_K\mu_\alpha(P)\,
+I_{(y,dg_y)}(\Lambda_\alpha,\operatorname{graph}(dg)).
+\tag{FH23}
+$$</span>
+<p>Here <span class="math" data-tex="$\chi_K$">$\chi_K$</span> is the alternating sum of finite vector-space dimensions, with value in <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>. Each local intersection multiplicity on the right is a strictly positive integer when that component passes through the isolated intersection. Consequently</p>
+<span class="math math-display" data-tex="$$
+(y,dg_y)\in\operatorname{SS}(P),\quad
+\operatorname{graph}(dg)\cap\Lambda_{\mathcal S}
+\text{ isolated at }(y,dg_y)
+\quad\Longrightarrow\quad
+M_g(P)_y\not\simeq0.
+\tag{FH24}
+$$">$$
+(y,dg_y)\in\operatorname{SS}(P),\quad
+\operatorname{graph}(dg)\cap\Lambda_{\mathcal S}
+\text{ isolated at }(y,dg_y)
+\quad\Longrightarrow\quad
+M_g(P)_y\not\simeq0.
+\tag{FH24}
+$$</span>
+<p>The implication is proved by FH22--FH23: at least one positive term occurs and no negative term occurs. A zero complex has zero integer Euler characteristic. This also covers <span class="math" data-tex="$dg_y=0$">$dg_y=0$</span>. If <span class="math" data-tex="$g$">$g$</span> is locally constant on the support, isolation forces that support to be zero-dimensional near <span class="math" data-tex="$y$">$y$</span>, and its supported local test is <span class="math" data-tex="$P_y$">$P_y$</span>, which gives the same conclusion.</p>
+<p>Equation FH23 is a geometric input, not proved by positivity alone. It is the integer-dimensional local-supported index formula. Its scope is substantially smaller than FH14: only an isolated intersection is required, but it must hold over every field. The local-supported index belongs to the index theory of M. Kashiwara, <a href="https://www.numdam.org/item/AST_1985__130__193_0/"><em>Index theorem for constructible sheaves</em></a>, Astérisque 130 (1985), whose coefficient-valued trace must be strengthened to this integer formula by the Morse filtration argument. A related all-field integer antecedent is Massey's <em>A Little Microlocal Morse Theory</em>, Theorem 2.1 and Remark 2.2. Reducing a positive integer modulo the characteristic would destroy the argument. The following finite filtration explains exactly which geometric content makes the integer refinement valid.</p>
+<h3 id="sh02-fh-morse-filtration-the-integer-index-from-the-actual-filtration">SH02-FH-MORSE-FILTRATION — The integer index from the actual filtration</h3>
+<p>Here is the deduction from the controlled Morse input, including its degree and integer normalization. Work near a point <span class="math" data-tex="$y$">$y$</span> with no other stratified critical point of <span class="math" data-tex="$g$">$g$</span>. For a stratum <span class="math" data-tex="$S_\alpha$">$S_\alpha$</span> of complex dimension <span class="math" data-tex="$d_\alpha$">$d_\alpha$</span>, write <span class="math" data-tex="$N_\alpha(P)$">$N_\alpha(P)$</span> for its normal Morse complex and</p>
+<span class="math math-display" data-tex="$$
+\mu_\alpha(P)=N_\alpha(P)[-d_\alpha].
+\tag{FH54}
+$$">$$
+\mu_\alpha(P)=N_\alpha(P)[-d_\alpha].
+\tag{FH54}
+$$</span>
+<p>It is a finite-dimensional vector space in degree zero by the perverse normal-Morse input. At a stratified holomorphic Morse point on a stratum of dimension <span class="math" data-tex="$d$">$d$</span>, holomorphic Morse coordinates express the tangential function as a nondegenerate sum of complex squares. Its real part has <span class="math" data-tex="$d$">$d$</span> negative and <span class="math" data-tex="$d$">$d$</span> positive real squares. The tangential relative handle therefore shifts the normal complex by <span class="math" data-tex="$[-d]$">$[-d]$</span>, exactly as in FH54; there is no further shift depending on the ambient dimension.</p>
+<p>Choose the controlled perturbation and its relative pair. The pair includes the whole small cluster of perturbed critical points, between regular levels below and above their critical values. Its complex is identified with the original <span class="math" data-tex="$M_g(P)_y$">$M_g(P)_y$</span> by the stipulated boundary continuation; it is not the stalk of the perturbed test at the old point. The finite relative Morse filtration supplies distinguished triangles</p>
+<span class="math math-display" data-tex="$$
+F_{r-1}\longrightarrow F_r\longrightarrow V_r
+\longrightarrow F_{r-1}[1],
+\qquad F_0=0,\quad F_N=M_g(P)_y,
+\tag{FH55}
+$$">$$
+F_{r-1}\longrightarrow F_r\longrightarrow V_r
+\longrightarrow F_{r-1}[1],
+\qquad F_0=0,\quad F_N=M_g(P)_y,
+\tag{FH55}
+$$</span>
+<p>where <span class="math" data-tex="$V_r$">$V_r$</span> is the normalized Morse vector space at the <span class="math" data-tex="$r$">$r$</span>th point. The cohomology long exact sequence proves by induction that every <span class="math" data-tex="$F_r$">$F_r$</span> is concentrated in degree zero, and gives</p>
+<span class="math math-display" data-tex="$$
+0\longrightarrow H^0(F_{r-1})\longrightarrow H^0(F_r)
+\longrightarrow V_r\longrightarrow0.
+\tag{FH56}
+$$">$$
+0\longrightarrow H^0(F_{r-1})\longrightarrow H^0(F_r)
+\longrightarrow V_r\longrightarrow0.
+\tag{FH56}
+$$</span>
+<p>Taking dimensions gives <span class="math" data-tex="$\dim_K H^0(M_g(P)_y)=\sum_r\dim_KV_r$">$\dim_K H^0(M_g(P)_y)=\sum_r\dim_KV_r$</span>. The local analytic conservation of intersection number groups these points by their conormal components. If <span class="math" data-tex="$n_\alpha$">$n_\alpha$</span> is their number on the generic conormal of <span class="math" data-tex="$S_\alpha$">$S_\alpha$</span>, the result is</p>
+<span class="math math-display" data-tex="$$
+\dim_K H^0(M_g(P)_y)
+=\sum_\alpha n_\alpha\dim_K\mu_\alpha(P)
+=\sum_\alpha I_{(y,dg_y)}
+(\Lambda_\alpha,\operatorname{graph}(dg))\,
+\dim_K\mu_\alpha(P).
+$$">$$
+\dim_K H^0(M_g(P)_y)
+=\sum_\alpha n_\alpha\dim_K\mu_\alpha(P)
+=\sum_\alpha I_{(y,dg_y)}
+(\Lambda_\alpha,\operatorname{graph}(dg))\,
+\dim_K\mu_\alpha(P).
+$$</span>
+<p>This is FH23 with values in <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>, and proves more than its Euler-characteristic version. No splitting of FH56 is chosen. An invisible stratum has <span class="math" data-tex="$V_r=0$">$V_r=0$</span> and contributes zero. If a visible conormal passes through the isolated intersection, both its Morse dimension and its intersection multiplicity are positive, so the local test is nonzero in every characteristic.</p>
+<p>For a sign check take <span class="math" data-tex="$P=K_{\mathbb C}[1]$">$P=K_{\mathbb C}[1]$</span> and <span class="math" data-tex="$g(z)=z^2$">$g(z)=z^2$</span>. The negative region of <span class="math" data-tex="$\operatorname{Re}g$">$\operatorname{Re}g$</span> has two local components. Its relative complex with the disc is <span class="math" data-tex="$K[-1]$">$K[-1]$</span>, and the shift <span class="math" data-tex="$[1]$">$[1]$</span> gives the local test <span class="math" data-tex="$K$">$K$</span> in degree zero. The complex intersection with the zero section has multiplicity one. A point sheaf with a constant test also gives a degree-zero vector space and intersection multiplicity one. These checks include a zero pulled-back covector and agree with the stated normalization.</p>
+<p>The construction of the controlled pair and perturbation is supplied by <span class="unlinked">the isolated-test lesson</span> at the precise scope stated above. A genericity statement alone would not prove FH55, and a field-valued trace would not prove the integer equality. This deduction explicitly records both distinctions.</p>
+<h2 id="sh02-fh-field-finite-reverse-inclusion-from-isolated-source-tests">SH02-FH-FIELD-FINITE — Reverse inclusion from isolated source tests</h2>
+<p>Assume the explicit normal Morse and isolated index inputs above, together with the analytic stratification input in the finite conormal-image lemma. Then FH1 holds for every field <span class="math" data-tex="$K$">$K$</span> and every bounded complex-constructible <span class="math" data-tex="$B$">$B$</span> of <span class="math" data-tex="$K$">$K$</span>-sheaves.</p>
+<p><strong>Proof for a perverse sheaf.</strong> Put <span class="math" data-tex="$\Lambda=\operatorname{SS}(P)$">$\Lambda=\operatorname{SS}(P)$</span> and</p>
+<span class="math math-display" data-tex="$$
+A=f_\pi f_d^{-1}\Lambda.
+\tag{FH25}
+$$">$$
+A=f_\pi f_d^{-1}\Lambda.
+\tag{FH25}
+$$</span>
+<p>The geometric lemma makes <span class="math" data-tex="$A$">$A$</span> a closed complex analytic conic Lagrangian subset of <span class="math" data-tex="$T^*X$">$T^*X$</span>. For a finite adapted complex Whitney stratification <span class="math" data-tex="$\mathcal S$">$\mathcal S$</span> of the source neighborhood, also put</p>
+<span class="math math-display" data-tex="$$
+\Lambda_{\mathcal S}=\bigcup_{S\in\mathcal S}\overline{T^*_S Y},
+\qquad A_{\mathcal S}=f_\pi f_d^{-1}\Lambda_{\mathcal S}.
+$$">$$
+\Lambda_{\mathcal S}=\bigcup_{S\in\mathcal S}\overline{T^*_S Y},
+\qquad A_{\mathcal S}=f_\pi f_d^{-1}\Lambda_{\mathcal S}.
+$$</span>
+<p>Apply the same geometric lemma to <span class="math" data-tex="$\Lambda_{\mathcal S}$">$\Lambda_{\mathcal S}$</span>. Thus <span class="math" data-tex="$A_{\mathcal S}$">$A_{\mathcal S}$</span> is a finite union of complex Lagrangian components and contains <span class="math" data-tex="$A$">$A$</span>. Since both sets are pure of the target dimension, every local irreducible component of <span class="math" data-tex="$A$">$A$</span> is an irreducible component of <span class="math" data-tex="$A_{\mathcal S}$">$A_{\mathcal S}$</span>. Indeed a proper analytic subset of an irreducible analytic set has smaller dimension. It is enough to prove the desired inclusion on a dense subset of each component of <span class="math" data-tex="$A$">$A$</span>, because microsupport is closed.</p>
+<p>Choose <span class="math" data-tex="$a=(x,\eta)$">$a=(x,\eta)$</span> on such a component, smooth on <span class="math" data-tex="$A_{\mathcal S}$">$A_{\mathcal S}$</span> and disjoint from its other local components. The holomorphic-test lemma supplies a holomorphic quadratic germ <span class="math" data-tex="$h$">$h$</span> at <span class="math" data-tex="$x$">$x$</span> with <span class="math" data-tex="$dh_x=\eta$">$dh_x=\eta$</span> and with its differential graph meeting <span class="math" data-tex="$A_{\mathcal S}$">$A_{\mathcal S}$</span> only at <span class="math" data-tex="$a$">$a$</span> on a sufficiently small cotangent neighborhood. This stronger choice will make the source critical points isolated for the entire adapted stratification, including its invisible strata.</p>
+<p>There is a useful further shrinking here. A covector <span class="math" data-tex="$dh_z$">$dh_z$</span> tends to <span class="math" data-tex="$\eta$">$\eta$</span> as <span class="math" data-tex="$z$">$z$</span> tends to <span class="math" data-tex="$x$">$x$</span>. Thus, after shrinking the base, its graph stays in the chosen cotangent neighborhood. FH2 separates the finitely many points over <span class="math" data-tex="$x$">$x$</span>, and properness ensures that the inverse image of the smaller base is contained in their union. For any such point <span class="math" data-tex="$y$">$y$</span>, a source stratified critical point of <span class="math" data-tex="$h\circ f$">$h\circ f$</span> in its neighborhood maps to an intersection of <span class="math" data-tex="$\operatorname{graph}(dh)$">$\operatorname{graph}(dh)$</span> with <span class="math" data-tex="$A_{\mathcal S}$">$A_{\mathcal S}$</span>. The target intersection is only <span class="math" data-tex="$a$">$a$</span>; the finite fibre has no accumulation points. Hence every source stratified critical point over <span class="math" data-tex="$x$">$x$</span> is isolated, and there are finitely many of them. At least one is characteristic for <span class="math" data-tex="$P$">$P$</span> because <span class="math" data-tex="$a\in A$">$a\in A$</span>.</p>
+<p>Choose one such <span class="math" data-tex="$y$">$y$</span>. FH24 gives a nonzero supported local test <span class="math" data-tex="$M_{h\circ f}(P)_y$">$M_{h\circ f}(P)_y$</span>. The actual localization comparison FH7 identifies</p>
+<span class="math math-display" data-tex="$$
+\bigl(R\Gamma_{\{\operatorname{Re}h\geq\operatorname{Re}h(x)\}}Rf_*P\bigr)_x
+\simeq\bigoplus_{f(y&#x27;)=x}M_{h\circ f}(P)_{y&#x27;}.
+\tag{FH26}
+$$">$$
+\bigl(R\Gamma_{\{\operatorname{Re}h\geq\operatorname{Re}h(x)\}}Rf_*P\bigr)_x
+\simeq\bigoplus_{f(y&#x27;)=x}M_{h\circ f}(P)_{y&#x27;}.
+\tag{FH26}
+$$</span>
+<p>Its summand at <span class="math" data-tex="$y$">$y$</span> is nonzero, so the left side is nonzero. This is one of the actual real tests in the definition of microsupport, with differential <span class="math" data-tex="$\operatorname{Re}\eta$">$\operatorname{Re}\eta$</span> at <span class="math" data-tex="$x$">$x$</span>. Consequently <span class="math" data-tex="$(x,\operatorname{Re}\eta)\in\operatorname{SS}(Rf_*P)$">$(x,\operatorname{Re}\eta)\in\operatorname{SS}(Rf_*P)$</span>. The real-part identification is FH15 and commutes with <span class="math" data-tex="$df$">$df$</span>. No nearby-cycle or vanishing-cycle comparison is used in this step.</p>
+<p>This proves the reverse inclusion on the stated dense subset. Closedness extends it to all of <span class="math" data-tex="$A$">$A$</span>. The other inclusion is the proper direct-image estimate. Empty microsupport gives the zero object and no components. Zero covectors also follow immediately from the support equality FH4, independently of the generic argument.</p>
+<p><strong>Passage to a bounded complex.</strong> By FH20--FH21,</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\operatorname{SS}(Rf_*B)
+&amp;=\bigcup_j\operatorname{SS}(Rf_*\,{}^pH^jB)\\
+&amp;=\bigcup_j f_\pi f_d^{-1}\operatorname{SS}({}^pH^jB)\\
+&amp;=f_\pi f_d^{-1}\operatorname{SS}(B).
+\end{aligned}
+\tag{FH27}
+$$">$$
+\begin{aligned}
+\operatorname{SS}(Rf_*B)
+&amp;=\bigcup_j\operatorname{SS}(Rf_*\,{}^pH^jB)\\
+&amp;=\bigcup_j f_\pi f_d^{-1}\operatorname{SS}({}^pH^jB)\\
+&amp;=f_\pi f_d^{-1}\operatorname{SS}(B).
+\end{aligned}
+\tag{FH27}
+$$</span>
+<p>Images and inverse images commute with these unions. There is no cancellation between degrees in this argument, because FH21 detects the individual normal Morse cohomology groups before the image is taken. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-fh-ring-finite-recovering-every-original-coefficient-ring">SH02-FH-RING-FINITE — Recovering every original coefficient ring</h2>
+<p>We can now prove the original-ring statement using only the normal Morse part of FH12; the coefficient comparison for arbitrary vanishing-cycle limits in FH13 is unnecessary for this route.</p>
+<p>First, for every bounded complex-constructible <span class="math" data-tex="$G$">$G$</span>, the finite normal Morse models and FH11 give the pointwise equality</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}_k(G)=\bigcup_{\mathfrak p\in\operatorname{Spec}k}
+\operatorname{SS}_{\kappa(\mathfrak p)}
+\bigl(G\otimes_k^L\kappa(\mathfrak p)\bigr).
+\tag{FH28}
+$$">$$
+\operatorname{SS}_k(G)=\bigcup_{\mathfrak p\in\operatorname{Spec}k}
+\operatorname{SS}_{\kappa(\mathfrak p)}
+\bigl(G\otimes_k^L\kappa(\mathfrak p)\bigr).
+\tag{FH28}
+$$</span>
+<p>To prove it, choose a local finite adapted stratification. A covector in the left side belongs to the closure of one visible conormal component. Its perfect Morse object is detected by one residue field, by FH11, and the finite model from FH16 identifies the resulting Morse object with the coefficient-changed one. That same entire conormal closure therefore occurs on the right. Conversely tensoring a zero Morse object gives zero, so no new component is introduced. This proves equality at boundary covectors as well as generic ones. It does not take the closure of an infinite union.</p>
+<p>Second, the natural projection comparison is an isomorphism</p>
+<span class="math math-display" data-tex="$$
+(Rf_*G)\otimes_k^L L\xrightarrow{\sim}
+Rf_*(G\otimes_k^L L)
+\tag{FH29}
+$$">$$
+(Rf_*G)\otimes_k^L L\xrightarrow{\sim}
+Rf_*(G\otimes_k^L L)
+\tag{FH29}
+$$</span>
+<p>for a finite proper <span class="math" data-tex="$f$">$f$</span> and a coefficient complex <span class="math" data-tex="$L$">$L$</span>. On a stalk it is the canonical map</p>
+<span class="math math-display" data-tex="$$
+\left(\bigoplus_{f(y)=x}G_y\right)\otimes_k^L L
+\longrightarrow\bigoplus_{f(y)=x}(G_y\otimes_k^L L),
+$$">$$
+\left(\bigoplus_{f(y)=x}G_y\right)\otimes_k^L L
+\longrightarrow\bigoplus_{f(y)=x}(G_y\otimes_k^L L),
+$$</span>
+<p>which is an isomorphism. This identifies the actual comparison: the adjunction map restricts a section to each germ and then tensors it, exactly as FH3 does. A K-flat coefficient resolution computes the displayed map if a complex representative is desired. Thus FH29 uses a finite sum, and no general commutation of tensor with an infinite direct image is needed.</p>
+<p><strong>Proof of FH1 over <span class="math" data-tex="$k$">$k$</span>.</strong> Write <span class="math" data-tex="$G_{\mathfrak p}=G\otimes_k^L\kappa(\mathfrak p)$">$G_{\mathfrak p}=G\otimes_k^L\kappa(\mathfrak p)$</span>. Its stalks are bounded finite-dimensional complexes over the residue field. The finite global dimension of <span class="math" data-tex="$k$">$k$</span> keeps the sheaf complex bounded. Apply FH28 on <span class="math" data-tex="$X$">$X$</span>, then FH29, the field theorem FH27, and FH28 on <span class="math" data-tex="$Y$">$Y$</span>:</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\operatorname{SS}_k(Rf_*G)
+&amp;=\bigcup_{\mathfrak p}
+\operatorname{SS}_{\kappa(\mathfrak p)}(Rf_*G_{\mathfrak p})\\
+&amp;=\bigcup_{\mathfrak p}
+f_\pi f_d^{-1}\operatorname{SS}_{\kappa(\mathfrak p)}(G_{\mathfrak p})\\
+&amp;=f_\pi f_d^{-1}\operatorname{SS}_k(G).
+\end{aligned}
+\tag{FH30}
+$$">$$
+\begin{aligned}
+\operatorname{SS}_k(Rf_*G)
+&amp;=\bigcup_{\mathfrak p}
+\operatorname{SS}_{\kappa(\mathfrak p)}(Rf_*G_{\mathfrak p})\\
+&amp;=\bigcup_{\mathfrak p}
+f_\pi f_d^{-1}\operatorname{SS}_{\kappa(\mathfrak p)}(G_{\mathfrak p})\\
+&amp;=f_\pi f_d^{-1}\operatorname{SS}_k(G).
+\end{aligned}
+\tag{FH30}
+$$</span>
+<p>Finite direct image is bounded and has perfect stalks by FH4; weak complex constructibility is proved in <code>SH02-FH-CONSTRUCTIBLE-IMAGE</code> from the same compatible analytic stratification input already used for FH17. Thus every application of FH28 is legitimate. The zero ring gives empty microsupports on both sides. There is no original-ring perverse t-structure, rank cancellation, division by the finite degree, flatness assumption on <span class="math" data-tex="$f$">$f$</span>, or characteristic-zero coefficient assumption in the proof. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This route uses the four prerequisite lessons linked in <a href="#">the geometric inputs</a>, with their exact external theorem statements retained. It does not require the full critical-support equivalence FH14, the general Milnor coefficient comparison FH13, or any nearby-cycle/vanishing-cycle comparison. Those are useful stronger statements, but their remaining proofs do not lie on the dependency chain of FH30.</p>
+<h2 id="sh02-fh-monomial-curve-a-full-cotangent-fibre-created-by-a-finite-parametrization">SH02-FH-MONOMIAL-CURVE — A full cotangent fibre created by a finite parametrization</h2>
+<p>Take relatively prime integers <span class="math" data-tex="$2\leq a&lt;b$">$2\leq a&lt;b$</span> and the map</p>
+<span class="math math-display" data-tex="$$
+f:\mathbb C\longrightarrow\mathbb C^2,\qquad
+f(t)=(t^a,t^b).
+\tag{FH31}
+$$">$$
+f:\mathbb C\longrightarrow\mathbb C^2,\qquad
+f(t)=(t^a,t^b).
+\tag{FH31}
+$$</span>
+<p>It is proper because a bound on <span class="math" data-tex="$|t^a|$">$|t^a|$</span> bounds <span class="math" data-tex="$|t|$">$|t|$</span>. It is injective: if two nonzero parameters have the same image, their quotient is both an <span class="math" data-tex="$a$">$a$</span>th and a <span class="math" data-tex="$b$">$b$</span>th root of unity, and hence is one; the fibre over zero is also a singleton. Thus <span class="math" data-tex="$f$">$f$</span> is finite. Away from zero it is an immersion and gives a smooth embedded curve locally. Denote its image by <span class="math" data-tex="$C$">$C$</span> and its smooth part by <span class="math" data-tex="$C^\circ$">$C^\circ$</span>.</p>
+<p>For any nonzero commutative coefficient ring <span class="math" data-tex="$k$">$k$</span>, put <span class="math" data-tex="$A=f_*k_{\mathbb C}$">$A=f_*k_{\mathbb C}$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(A)=
+\overline{T^*_{C^\circ}\mathbb C^2}\ \cup\ T^*_{\{0\}}\mathbb C^2.
+\tag{FH32}
+$$">$$
+\operatorname{SS}(A)=
+\overline{T^*_{C^\circ}\mathbb C^2}\ \cup\ T^*_{\{0\}}\mathbb C^2.
+\tag{FH32}
+$$</span>
+<p>The real and complex conormals are identified by FH15. This example has an original direct proof using supported tests, without invoking the general finite holomorphic equality.</p>
+<p><strong>Proof.</strong> Away from zero the closed-embedding formula computes microsupport as the conormal of the smooth image; outside <span class="math" data-tex="$C$">$C$</span> the sheaf vanishes. Its microsupport is closed, so it contains the conormal closure. It remains to show that every nonzero covector at the origin occurs. Write its holomorphic representative as <span class="math" data-tex="$\eta=\alpha\,dz_1+\beta\,dz_2$">$\eta=\alpha\,dz_1+\beta\,dz_2$</span> and test with the real part of <span class="math" data-tex="$h(z_1,z_2)=\alpha z_1+\beta z_2$">$h(z_1,z_2)=\alpha z_1+\beta z_2$</span>.</p>
+<p>The pullback is <span class="math" data-tex="$g(t)=\alpha t^a+\beta t^b$">$g(t)=\alpha t^a+\beta t^b$</span>. If <span class="math" data-tex="$\alpha\ne0$">$\alpha\ne0$</span>, its vanishing order is <span class="math" data-tex="$a$">$a$</span>; if <span class="math" data-tex="$\alpha=0$">$\alpha=0$</span>, then <span class="math" data-tex="$\beta\ne0$">$\beta\ne0$</span> and the order is <span class="math" data-tex="$b$">$b$</span>. Write that order as <span class="math" data-tex="$m\geq2$">$m\geq2$</span>. A holomorphic unit has a holomorphic <span class="math" data-tex="$m$">$m$</span>th root on a sufficiently small disc. The resulting coordinate <span class="math" data-tex="$s=t\,u(t)^{1/m}$">$s=t\,u(t)^{1/m}$</span> is a local biholomorphism and changes <span class="math" data-tex="$g$">$g$</span> into <span class="math" data-tex="$s^m$">$s^m$</span>.</p>
+<p>In a sufficiently small round <span class="math" data-tex="$s$">$s$</span>-disc, the open set <span class="math" data-tex="$\operatorname{Re}(s^m)&lt;0$">$\operatorname{Re}(s^m)&lt;0$</span> consists of <span class="math" data-tex="$m$">$m$</span> disjoint contractible sectors. The restriction map on cohomology from the disc to that set is the diagonal <span class="math" data-tex="$k\to k^m$">$k\to k^m$</span>. The support triangle therefore gives</p>
+<span class="math math-display" data-tex="$$
+\bigl(R\Gamma_{\{\operatorname{Re}g\geq0\}}k_{\mathbb C}\bigr)_0
+\simeq\operatorname{Cone}(k\xrightarrow{\mathrm{diag}}k^m)[-1]
+\simeq k^{m-1}[-1].
+\tag{FH33}
+$$">$$
+\bigl(R\Gamma_{\{\operatorname{Re}g\geq0\}}k_{\mathbb C}\bigr)_0
+\simeq\operatorname{Cone}(k\xrightarrow{\mathrm{diag}}k^m)[-1]
+\simeq k^{m-1}[-1].
+\tag{FH33}
+$$</span>
+<p>The isomorphism is stable under smaller such discs, so it computes the stated stalk. The last complex is nonzero over every nonzero <span class="math" data-tex="$k$">$k$</span>. FH7, whose proof used finite properness and localization alone, identifies it with the test complex for <span class="math" data-tex="$A$">$A$</span> and <span class="math" data-tex="$\operatorname{Re}h$">$\operatorname{Re}h$</span> at zero. Thus this actual test does not vanish, and the defining microsupport criterion puts <span class="math" data-tex="$\operatorname{Re}\eta$">$\operatorname{Re}\eta$</span> in <span class="math" data-tex="$\operatorname{SS}(A)$">$\operatorname{SS}(A)$</span>. The zero covector belongs by the nonzero stalk. This proves the reverse containment in FH32. The forward containment follows from the already computed smooth points and the fact that the only point of <span class="math" data-tex="$C\setminus C^\circ$">$C\setminus C^\circ$</span> is zero. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For comparison the cotangent correspondence of the source zero section is given before projection by</p>
+<span class="math math-display" data-tex="$$
+t^{a-1}\bigl(a\eta_1+b\eta_2t^{b-a}\bigr)=0.
+\tag{FH34}
+$$">$$
+t^{a-1}\bigl(a\eta_1+b\eta_2t^{b-a}\bigr)=0.
+\tag{FH34}
+$$</span>
+<p>Its component at <span class="math" data-tex="$t=0$">$t=0$</span> is the whole target covector plane. Its other component closes the conormal relation along the smooth image. Thus the two components in FH32 are also exactly what the finite conormal-image construction predicts. The point component cannot be dropped by computing only at unramified parameters.</p>
+<p><strong>Exercise.</strong> At <span class="math" data-tex="$\eta=dz_2$">$\eta=dz_2$</span>, compare the rank of the supported test in FH33 with its rank at <span class="math" data-tex="$\eta=dz_1$">$\eta=dz_1$</span>. Does the larger rank force an additional irreducible component of the set in FH32?</p>
+<p><strong>Solution.</strong> The ranks are respectively <span class="math" data-tex="$b-1$">$b-1$</span> and <span class="math" data-tex="$a-1$">$a-1$</span>. Both covectors already lie in the same full cotangent fibre at zero. Microsupport records nonvanishing and its closed set of directions, so a change in the dimension of a particular test does not itself force a new set component. The calculation also shows why an integer multiplicity contains more information than the underlying microsupport set.</p>
+<h2 id="sh02-fh-geometric-contract-an-alternative-through-full-critical-support">SH02-FH-GEOMETRIC-CONTRACT — An alternative through full critical support</h2>
+<p>This alternative route uses stronger analytic inputs than FH30. They are retained as precise dependency contracts for the critical-support theorem itself. They are not required by the finite-map proof above and are not established by its algebraic lemmas.</p>
+<p><strong>Finite local data.</strong> A complex-constructible <span class="math" data-tex="$A$">$A$</span> has, locally, a finite complex Whitney stratification with connected strata <span class="math" data-tex="$S_\alpha$">$S_\alpha$</span> and normal Morse complexes <span class="math" data-tex="$M_\alpha(A)$">$M_\alpha(A)$</span>. These complexes are perfect and have finite cellular models compatible with derived change of coefficients. They give the precise description</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(A)=
+\bigcup_{M_\alpha(A)\not\simeq0}\overline{T^*_{S_\alpha}X}.
+\tag{FH12}
+$$">$$
+\operatorname{SS}(A)=
+\bigcup_{M_\alpha(A)\not\simeq0}\overline{T^*_{S_\alpha}X}.
+\tag{FH12}
+$$</span>
+<p>Here the conormals are identified with real covectors as below. For each fixed local holomorphic function <span class="math" data-tex="$h$">$h$</span>, its vanishing cycles are constructible with perfect stalks and finite local models satisfying</p>
+<span class="math math-display" data-tex="$$
+\Phi_h(A)\otimes_k^L L\simeq\Phi_h(A\otimes_k^L L)
+\tag{FH13}
+$$">$$
+\Phi_h(A)\otimes_k^L L\simeq\Phi_h(A\otimes_k^L L)
+\tag{FH13}
+$$</span>
+<p>for <span class="math" data-tex="$L=\kappa(\mathfrak p)$">$L=\kappa(\mathfrak p)$</span>. The models must compute the specialization morphism as well as its source and target. The comparison must be local on the zero fibre. Proper holomorphic direct image preserves weak complex constructibility; in the finite case perfection of its stalks is already proved by FH4. These are exact constructible-geometry prerequisites, not consequences of properness alone.</p>
+<p><strong>Field critical support.</strong> For every field <span class="math" data-tex="$K$">$K$</span>, every bounded complex-constructible complex <span class="math" data-tex="$B$">$B$</span> of <span class="math" data-tex="$K$">$K$</span>-sheaves, every holomorphic function <span class="math" data-tex="$h$">$h$</span> on a complex manifold, and every <span class="math" data-tex="$z$">$z$</span>,</p>
+<span class="math math-display" data-tex="$$
+(z,d\operatorname{Re}h_z)\in\operatorname{SS}(B)
+\quad\Longleftrightarrow\quad
+z\in\operatorname{Supp}\bigl(\Phi_{h-h(z)}B\bigr).
+\tag{FH14}
+$$">$$
+(z,d\operatorname{Re}h_z)\in\operatorname{SS}(B)
+\quad\Longleftrightarrow\quad
+z\in\operatorname{Supp}\bigl(\Phi_{h-h(z)}B\bigr).
+\tag{FH14}
+$$</span>
+<p>This assertion concerns closed support. It includes singular critical loci, nonisolated critical points, and functions constant on a component. It cannot be replaced by an isolated Morse-point calculation or by vanishing of the single stalk at <span class="math" data-tex="$z$">$z$</span>.</p>
+<p>The exact field statement is available as a mathematical antecedent in Massey's Corollary 4.15; its proof passes through the critical-support theorem for perverse sheaves and a description by visible conormals. Those results use characteristic-cycle positivity and the vanishing-cycle cycle formula. Establishing their required scope and proof is still necessary; a generic reference to perverse sheaves does not supply that verification.</p>
+<h2 id="sh02-fh-ring-extension-why-the-field-criterion-suffices-for-the-source-ring">SH02-FH-RING-EXTENSION — Why the field criterion suffices for the source ring</h2>
+<p>Assuming FH12–FH14 at their exact stated scopes, FH14 holds with the original ring <span class="math" data-tex="$k$">$k$</span> in place of <span class="math" data-tex="$K$">$K$</span>.</p>
+<p><strong>Proof.</strong> Work in a neighborhood having the finite stratification in FH12. Suppose <span class="math" data-tex="$(z,d\operatorname{Re}h_z)\in\operatorname{SS}(A)$">$(z,d\operatorname{Re}h_z)\in\operatorname{SS}(A)$</span>. Some stratum <span class="math" data-tex="$S_\alpha$">$S_\alpha$</span> has this covector in its closed conormal and has <span class="math" data-tex="$M_\alpha(A)\not\simeq0$">$M_\alpha(A)\not\simeq0$</span>. By FH11 choose one prime <span class="math" data-tex="$\mathfrak p$">$\mathfrak p$</span> for which</p>
+<span class="math math-display" data-tex="$$
+M_\alpha(A)\otimes_k^L\kappa(\mathfrak p)\not\simeq0.
+$$">$$
+M_\alpha(A)\otimes_k^L\kappa(\mathfrak p)\not\simeq0.
+$$</span>
+<p>The coefficient-compatible normal model and FH12 over <span class="math" data-tex="$\kappa(\mathfrak p)$">$\kappa(\mathfrak p)$</span> put that same covector in <span class="math" data-tex="$\operatorname{SS}(A\otimes_k^L\kappa(\mathfrak p))$">$\operatorname{SS}(A\otimes_k^L\kappa(\mathfrak p))$</span>. FH14 over this single field puts <span class="math" data-tex="$z$">$z$</span> in the closed support of its vanishing cycles. By FH13 this closed support is contained in <span class="math" data-tex="$\operatorname{Supp}(\Phi_{h-h(z)}A)$">$\operatorname{Supp}(\Phi_{h-h(z)}A)$</span>: a zero stalk remains zero on tensoring, and taking closures preserves containment.</p>
+<p>Conversely, suppose <span class="math" data-tex="$z\in\operatorname{Supp}(\Phi_{h-h(z)}A)$">$z\in\operatorname{Supp}(\Phi_{h-h(z)}A)$</span>. Choose points <span class="math" data-tex="$z_n\to z$">$z_n\to z$</span> where these vanishing cycles have nonzero stalks. Their stalks are perfect by the finite local-data contract. FH11 gives primes <span class="math" data-tex="$\mathfrak p_n$">$\mathfrak p_n$</span> detecting them. FH13 and the field implication in FH14 show</p>
+<span class="math math-display" data-tex="$$
+(z_n,d\operatorname{Re}h_{z_n})\in
+\operatorname{SS}(A\otimes_k^L\kappa(\mathfrak p_n))
+\subset\operatorname{SS}(A).
+$$">$$
+(z_n,d\operatorname{Re}h_{z_n})\in
+\operatorname{SS}(A\otimes_k^L\kappa(\mathfrak p_n))
+\subset\operatorname{SS}(A).
+$$</span>
+<p>The last inclusion follows from FH12: a normal Morse complex that was zero stays zero after tensoring. Closedness of microsupport and continuity of <span class="math" data-tex="$dh$">$dh$</span> give the required covector at <span class="math" data-tex="$z$">$z$</span>. If <span class="math" data-tex="$z$">$z$</span> itself has a nonzero stalk, one may take the constant sequence. No single prime is chosen uniformly over all points or all tests, and no interchange of an infinite union with closure is used. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The role of perfection is explicit. Neither ranks nor Euler characteristics detect an arbitrary torsion complex, whereas FH11 does. Finite global dimension keeps <span class="math" data-tex="$A\otimes_k^L\kappa(\mathfrak p)$">$A\otimes_k^L\kappa(\mathfrak p)$</span> bounded uniformly; its stalks become bounded finite-dimensional vector-space complexes because the original stalks are perfect.</p>
+<h2 id="sh02-fh-equality-the-finite-map-argument">SH02-FH-EQUALITY — The finite-map argument</h2>
+<p>Assume the analytic contracts in <code>SH02-FH-GEOMETRIC-CONTRACT</code>. Then FH1 holds at the full coefficient and constructibility generality stated at the beginning.</p>
+<p><strong>Proof.</strong> Identify a holomorphic covector <span class="math" data-tex="$\theta$">$\theta$</span> with the real covector <span class="math" data-tex="$\operatorname{Re}\theta$">$\operatorname{Re}\theta$</span>. The inverse identification sends a real covector <span class="math" data-tex="$\eta$">$\eta$</span> to</p>
+<span class="math math-display" data-tex="$$
+\theta(v)=\eta(v)-i\eta(Jv),
+\tag{FH15}
+$$">$$
+\theta(v)=\eta(v)-i\eta(Jv),
+\tag{FH15}
+$$</span>
+<p>where <span class="math" data-tex="$J$">$J$</span> is the complex structure. This is complex linear, has real part <span class="math" data-tex="$\eta$">$\eta$</span>, and commutes with pullback by a holomorphic differential. There is no sign reversal in this identification.</p>
+<p>The proper-image estimate in <a href="../sheaf-proof-readings/SH02-microsupport-operations.html">microsupport operations</a> gives the inclusion from left to right in FH1. For the other inclusion take <span class="math" data-tex="$(x,\eta)$">$(x,\eta)$</span> on its right side and choose <span class="math" data-tex="$y\in f^{-1}(x)$">$y\in f^{-1}(x)$</span> with <span class="math" data-tex="$(y,df_y^t\eta)\in\operatorname{SS}(G)$">$(y,df_y^t\eta)\in\operatorname{SS}(G)$</span>. Choose holomorphic coordinates near <span class="math" data-tex="$x$">$x$</span> and the affine holomorphic function <span class="math" data-tex="$\ell$">$\ell$</span> with <span class="math" data-tex="$d\ell_x=\theta$">$d\ell_x=\theta$</span> from FH15. Shrink the target neighborhood and restrict <span class="math" data-tex="$f$">$f$</span> to its full inverse image; this is still finite and proper.</p>
+<p>The ring version of FH14 applied to <span class="math" data-tex="$\ell\circ f$">$\ell\circ f$</span> gives</p>
+<span class="math math-display" data-tex="$$
+y\in\operatorname{Supp}\bigl(\Phi_{\ell\circ f-\ell(x)}G\bigr).
+$$">$$
+y\in\operatorname{Supp}\bigl(\Phi_{\ell\circ f-\ell(x)}G\bigr).
+$$</span>
+<p>Equation FH10 therefore gives</p>
+<span class="math math-display" data-tex="$$
+x\in\operatorname{Supp}\bigl(\Phi_{\ell-\ell(x)}Rf_*G\bigr).
+$$">$$
+x\in\operatorname{Supp}\bigl(\Phi_{\ell-\ell(x)}Rf_*G\bigr).
+$$</span>
+<p>The weak constructibility part of the geometric contract and the perfect-stalk formula FH4 show that <span class="math" data-tex="$Rf_*G$">$Rf_*G$</span> is complex-constructible. Apply the converse direction of the ring criterion to obtain <span class="math" data-tex="$(x,\eta)\in\operatorname{SS}(Rf_*G)$">$(x,\eta)\in\operatorname{SS}(Rf_*G)$</span>.</p>
+<p>The argument also permits <span class="math" data-tex="$df_y^t\eta=0$">$df_y^t\eta=0$</span>. If <span class="math" data-tex="$\eta=0$">$\eta=0$</span>, the result follows even without the analytic criterion: the zero section of microsupport is closed support, and FH4 identifies those supports. The empty fibre contributes nothing. No hypothesis that <span class="math" data-tex="$f$">$f$</span> is a covering, flat, surjective, or equidimensional was imposed. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-fh-checks-examples-and-exercises">SH02-FH-CHECKS — Examples and exercises</h2>
+<p><strong>Branching over arbitrary coefficients.</strong> Let <span class="math" data-tex="$f:\mathbb C\to\mathbb C$">$f:\mathbb C\to\mathbb C$</span> be <span class="math" data-tex="$z\mapsto z^m$">$z\mapsto z^m$</span>, <span class="math" data-tex="$m\geq2$">$m\geq2$</span>, and take <span class="math" data-tex="$G=k_{\mathbb C}$">$G=k_{\mathbb C}$</span>. At zero the source stalk is <span class="math" data-tex="$k$">$k$</span> and a nearby fibre has <span class="math" data-tex="$m$">$m$</span> points, so the specialization map for the target coordinate is the diagonal</p>
+<span class="math math-display" data-tex="$$
+k\longrightarrow k^m.
+$$">$$
+k\longrightarrow k^m.
+$$</span>
+<p>Its cone is <span class="math" data-tex="$k^{m-1}$">$k^{m-1}$</span> in degree zero with the convention FH8: subtract the first coordinate from the others to identify its cokernel, and note that its kernel is zero. For <span class="math" data-tex="$k\neq0$">$k\neq0$</span> this detects every nonzero target direction at zero by rotating the coordinate. Away from zero the pushforward is a local system. The resulting microsupport is the zero section together with the full cotangent fibre at zero. This calculation works in characteristics dividing <span class="math" data-tex="$m$">$m$</span> and does not use the trace divided by <span class="math" data-tex="$m$">$m$</span>.</p>
+<p><strong>Why the real calculation differs.</strong> For the proper homeomorphism <span class="math" data-tex="$t\mapsto t^3$">$t\mapsto t^3$</span> of the real line and <span class="math" data-tex="$G=k_{\mathbb R}$">$G=k_{\mathbb R}$</span>, the pushforward is constant. At zero the differential vanishes, so the right side of FH1 would contain the full cotangent fibre, while the left side is only the zero section for <span class="math" data-tex="$k\neq0$">$k\neq0$</span>. FH7 still holds; the analytic critical-support theorem is the step unavailable in this example.</p>
+<p><strong>Exercise 1.</strong> Show that a finite proper map detects zero objects: <span class="math" data-tex="$Rf_*A\simeq0$">$Rf_*A\simeq0$</span> implies <span class="math" data-tex="$A\simeq0$">$A\simeq0$</span>. Explain why this statement for an arbitrary proper map fails.</p>
+<p><strong>Solution.</strong> Each <span class="math" data-tex="$A_y$">$A_y$</span> is a direct summand of <span class="math" data-tex="$(Rf_*A)_{f(y)}$">$(Rf_*A)_{f(y)}$</span> by FH4, so every stalk is zero. A proper projection can instead have nonzero fibre sheaves with zero total cohomology. For example, on a circle a rank-one local system over a field with monodromy <span class="math" data-tex="$a\neq1$">$a\neq1$</span> has cochain complex <span class="math" data-tex="$K\xrightarrow{a-1}K$">$K\xrightarrow{a-1}K$</span>, which is acyclic; push it to a point.</p>
+<p><strong>Exercise 2.</strong> If <span class="math" data-tex="$h$">$h$</span> is constant, compute <span class="math" data-tex="$\psi_{h-h(z)}A$">$\psi_{h-h(z)}A$</span> and <span class="math" data-tex="$\Phi_{h-h(z)}A$">$\Phi_{h-h(z)}A$</span>. What does FH14 say in this case?</p>
+<p><strong>Solution.</strong> The punctured inverse image is empty, so nearby cycles are zero and FH8 gives <span class="math" data-tex="$\Phi_{h-h(z)}A=A[1]$">$\Phi_{h-h(z)}A=A[1]$</span>. Its closed support is <span class="math" data-tex="$\operatorname{Supp}(A)$">$\operatorname{Supp}(A)$</span>. Since <span class="math" data-tex="$dh=0$">$dh=0$</span>, the criterion reduces to the zero-section support identity. This case must be treated directly if one proves the analytic criterion using projectivized characteristic cycles: projectivization discards the zero section.</p>
+<p><strong>Exercise 3.</strong> In FH11, why does checking only the fraction field of an integral domain fail?</p>
+<p><strong>Solution.</strong> The perfect complex <span class="math" data-tex="$[\mathbb Z\xrightarrow{2}\mathbb Z]$">$[\mathbb Z\xrightarrow{2}\mathbb Z]$</span> is nonzero, while its tensor with <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span> is acyclic. Tensoring with <span class="math" data-tex="$\mathbb F_2$">$\mathbb F_2$</span> detects it. The argument uses residue fields at all primes, with a prime chosen for the particular perfect datum.</p>
+<h2 id="sh02-fh-antecedents-attribution-and-unresolved-proof-boundary">SH02-FH-ANTECEDENTS — Attribution and unresolved proof boundary</h2>
+<p>The finite holomorphic equality goes back to Kashiwara's work on systems of microdifferential equations; the micro-support form used here belongs to the theory of M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985). The finite-fibre, localization, cycle-comparison and coefficient-reduction arguments are proved here.</p>
+<p>The analytic antecedent used to locate the remaining precise theorem is David B. Massey, <a href="https://arxiv.org/abs/math/0006185v2"><em>A Little Microlocal Morse Theory</em>, arXiv:math/0006185v2</a>, Corollary 4.15. It is stated over a principal ideal domain, so its field specialization has the required coefficient scope for FH14. Its proof depends on a perverse critical-support theorem and a visible-conormal description. The paper's <a href="https://arxiv.org/licenses/assumed-1991-2003/license.html">arXiv license</a> supplies a distribution license to arXiv; it does not supply a GFDL-compatible license for adapting the exposition. No text, figures, or source proof have been imported into this lesson under that license.</p>
+<p>The primary finite-map proof is FH30. Its analytic, normal-Morse, field-perverse and controlled stratified Morse inputs are supplied by the four lessons linked in <a href="#">the geometric prerequisites</a>, relative to their exact external theorem statements. The finite image geometry, symmetric-Hessian test, finite constructibility and perverse exactness, integer filtration deduction, direct support comparison and residue-field recovery are supplied explicitly. The earlier FH14 route remains an alternative with stronger unproved dependencies; FH13–FH14 do not lie on the primary proof chain.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><span class="unlinked">Course contents</span><span></span></nav>
+<p class="small source-link"><a href="src/finite-holomorphic-microsupport.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-02">Repository</a></nav>
+</footer>
+</body>
+</html>

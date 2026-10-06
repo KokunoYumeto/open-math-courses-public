@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Wave kernels with complex coefficients</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="wave-kernels-with-complex-coefficients">Wave kernels with complex coefficients</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A constant potential can change the tail behind a wave front without changing its speed. First-order terms can also be removed by an exponential change of the unknown. We will make both observations precise for arbitrary complex coefficients, construct causal solutions, and prove that every point of the light cone belongs to the support of a suitable homogeneous solution. That last assertion will supply the witness in the next lesson on domain geometry.</p>
+<p>Basic references are Bär, Ginoux and Pfäffle's book on wave equations and the flat-kernel construction in <em>Causal kernels, initial data, and short-time geometry</em>, cited below.</p>
+<p>Write <span class="math" data-tex="\(x=(t,z)\in\mathbb R\times\mathbb R^d\)">\(x=(t,z)\in\mathbb R\times\mathbb R^d\)</span>, where <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_\kappa&amp;=\partial_t^2-\Delta_z+\kappa,\quad \kappa\in\mathbb C,\\
+C_+&amp;=\{(t,z):t\geq|z|\},\\
+C_-&amp;=-C_+.
+\end{aligned}
+\tag{1}
+\]">\[
+\begin{aligned}
+L_\kappa&amp;=\partial_t^2-\Delta_z+\kappa,\quad \kappa\in\mathbb C,\\
+C_+&amp;=\{(t,z):t\geq|z|\},\\
+C_-&amp;=-C_+.
+\end{aligned}
+\tag{1}
+\]</span>
+Our spatial Fourier transform has negative exponential and no prefactor; its inverse has prefactor <span class="math" data-tex="\((2\pi)^{-d}\)">\((2\pi)^{-d}\)</span>. Pairings of distributions with tests are complex bilinear. Smooth distribution-valued dependence below uses the strong topology, meaning uniform convergence on bounded families of tests.</p>
+<h2 id="the-flat-kernels-we-use">The flat kernels we use</h2>
+<p>The flat wave construction gives distributions <span class="math" data-tex="\(R_j\)">\(R_j\)</span>, <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_0=\delta_{(0,0)},\qquad L_0R_{j+1}=R_j,\\
+\operatorname{supp}R_j\subset C_+.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+R_0=\delta_{(0,0)},\qquad L_0R_{j+1}=R_j,\\
+\operatorname{supp}R_j\subset C_+.
+\end{gathered}
+\tag{2}
+\]</span>
+For <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, <span class="math" data-tex="\(R_{j+1}\)">\(R_{j+1}\)</span> is a smooth one-sided function with values in spatial distributions. Its spatial Fourier transform is
+<span class="math math-display" data-tex="\[
+g_j(t,\xi)=\underbrace{S_\omega*\cdots*S_\omega}_{j+1},
+\qquad \omega=|\xi|,
+\tag{3}
+\]">\[
+g_j(t,\xi)=\underbrace{S_\omega*\cdots*S_\omega}_{j+1},
+\qquad \omega=|\xi|,
+\tag{3}
+\]</span>
+where convolution here is in nonnegative time, and
+<span class="math math-display" data-tex="\[
+S_\omega(t)=\frac{\sin(t\omega)}{\omega},\qquad
+S_0(t)=t.
+\tag{4}
+\]">\[
+S_\omega(t)=\frac{\sin(t\omega)}{\omega},\qquad
+S_0(t)=t.
+\tag{4}
+\]</span>
+In particular <span class="math" data-tex="\(R_1(0+)=0\)">\(R_1(0+)=0\)</span>, <span class="math" data-tex="\(\partial_tR_1(0+)=\delta_z\)">\(\partial_tR_1(0+)=\delta_z\)</span>, and the corresponding two traces of <span class="math" data-tex="\(R_{j+1}\)">\(R_{j+1}\)</span> vanish for <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>. These are exactly the normalization and Volterra formula from the cited flat-kernel lesson; its notation is <span class="math" data-tex="\(E_j=j!R_{j+1}\)">\(E_j=j!R_{j+1}\)</span>.</p>
+<p>We also use Fourier inversion on Schwartz functions and distributions, smooth multiplication and tensor products of distributions, and convolution when addition is proper on the two supports. The specific properness needed for causal data will be checked below. No wave evolution theorem is needed in addition to (2)–(4).</p>
+<h2 id="adding-a-complex-potential">Adding a complex potential</h2>
+<p><strong>Theorem 2.1.</strong> The series
+<span class="math math-display" data-tex="\[
+E_\kappa^+=\sum_{j=0}^{\infty}(-\kappa)^jR_{j+1}
+\tag{5}
+\]">\[
+E_\kappa^+=\sum_{j=0}^{\infty}(-\kappa)^jR_{j+1}
+\tag{5}
+\]</span>
+converges strongly in distributions, locally uniformly for <span class="math" data-tex="\(\kappa\in\mathbb C\)">\(\kappa\in\mathbb C\)</span>. Its restriction to nonnegative time converges with every time derivative in spatial tempered distributions on bounded time intervals. It is entire in <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, is supported in <span class="math" data-tex="\(C_+\)">\(C_+\)</span>, and satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_\kappa E_\kappa^+=\delta_{(0,0)},\\
+E_\kappa^+(0+)=0,\qquad
+\partial_tE_\kappa^+(0+)=\delta_z.
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+L_\kappa E_\kappa^+=\delta_{(0,0)},\\
+E_\kappa^+(0+)=0,\qquad
+\partial_tE_\kappa^+(0+)=\delta_z.
+\end{gathered}
+\tag{6}
+\]</span></p>
+<p><strong>Proof.</strong> Change the time variables in (3) to <span class="math" data-tex="\(tu_i\)">\(tu_i\)</span>. On the simplex <span class="math" data-tex="\(u_i\geq0\)">\(u_i\geq0\)</span>, <span class="math" data-tex="\(\sum_{i=1}^{j+1}u_i=1\)">\(\sum_{i=1}^{j+1}u_i=1\)</span>, this gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_j(t,\xi)\\
+{}=t^{2j+1}\int_{\Sigma_j}
+\prod_{i=1}^{j+1}u_i\operatorname{sinc}(t\omega u_i)\,du.
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+g_j(t,\xi)\\
+{}=t^{2j+1}\int_{\Sigma_j}
+\prod_{i=1}^{j+1}u_i\operatorname{sinc}(t\omega u_i)\,du.
+\end{gathered}
+\tag{7}
+\]</span>
+with the single-factor interpretation when <span class="math" data-tex="\(j=0\)">\(j=0\)</span>. Here <span class="math" data-tex="\(\operatorname{sinc}v=\sin v/v=\int_0^1\cos(sv)\,ds\)">\(\operatorname{sinc}v=\sin v/v=\int_0^1\cos(sv)\,ds\)</span>, including at zero. The elementary simplex integral is
+<span class="math math-display" data-tex="\[
+\int_{\Sigma_j}\prod_{i=1}^{j+1}u_i\,du
+=\frac1{(2j+1)!}.
+\tag{8}
+\]">\[
+\int_{\Sigma_j}\prod_{i=1}^{j+1}u_i\,du
+=\frac1{(2j+1)!}.
+\tag{8}
+\]</span>
+Consequently <span class="math" data-tex="\(|g_j(t,\xi)|\leq t^{2j+1}/(2j+1)!\)">\(|g_j(t,\xi)|\leq t^{2j+1}/(2j+1)!\)</span> for real <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>.</p>
+<p>We need the same factorial for derivatives. Fix an integer <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span> and <span class="math" data-tex="\(0\leq t\leq T\)">\(0\leq t\leq T\)</span>, and set <span class="math" data-tex="\(T_*=\max(1,T)\)">\(T_*=\max(1,T)\)</span>. A derivative of a sinc factor is bounded by <span class="math" data-tex="\(\omega^\ell u_i^\ell\)">\(\omega^\ell u_i^\ell\)</span> at order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, using its cosine integral. Differentiating <span class="math" data-tex="\(t^{2j+1}\)">\(t^{2j+1}\)</span> costs at most <span class="math" data-tex="\((2j+1)^kT_*^{2j+1}\)">\((2j+1)^kT_*^{2j+1}\)</span>; when a derivative order exceeds this integer power the term is zero. The product rule has at most a constant depending on <span class="math" data-tex="\(k\)">\(k\)</span> times <span class="math" data-tex="\((j+1)^k\)">\((j+1)^k\)</span> choices of factors. Keeping the factors <span class="math" data-tex="\(u_i\)">\(u_i\)</span>, and bounding all additional powers of them by one, proves
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\partial_t^kg_j(t,\xi)|\\
+{}\leq\frac{C_k(j+1)^{2k}T_*^{2j+1}}
+{(2j+1)!}(1+|\xi|)^k.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+|\partial_t^kg_j(t,\xi)|\\
+{}\leq\frac{C_k(j+1)^{2k}T_*^{2j+1}}
+{(2j+1)!}(1+|\xi|)^k.
+\end{gathered}
+\tag{9}
+\]</span>
+Increasing <span class="math" data-tex="\(C_k\)">\(C_k\)</span> handles <span class="math" data-tex="\(j=0\)">\(j=0\)</span>. On a bounded family of Schwartz tests, their Fourier transforms have a common integrable bound after multiplication by <span class="math" data-tex="\((1+|\xi|)^k\)">\((1+|\xi|)^k\)</span>. Formula (9) therefore proves convergence of (5) after spatial inversion, uniformly on such families, with every time derivative and uniformly for <span class="math" data-tex="\(|\kappa|\leq M\)">\(|\kappa|\leq M\)</span>. The same factorial proves convergence after any fixed number of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> derivatives. Thus the sum is entire and has the asserted strong smoothness for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>.</p>
+<p>To obtain a spacetime distribution, integrate these spatial pairings in <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. For a bounded family of spacetime tests on one compact support, the spatial Fourier decay estimates are uniform in <span class="math" data-tex="\(t\)">\(t\)</span>; (9) proves strong convergence of that integral. Each summand has support in <span class="math" data-tex="\(C_+\)">\(C_+\)</span>, so the limit has the same support inclusion.</p>
+<p>For the finite sum <span class="math" data-tex="\(E_{\kappa,N}^+\)">\(E_{\kappa,N}^+\)</span>, the recursion (2) gives
+<span class="math math-display" data-tex="\[
+L_\kappa E_{\kappa,N}^+
+=\delta+\kappa(-\kappa)^N R_{N+1}.
+\tag{10}
+\]">\[
+L_\kappa E_{\kappa,N}^+
+=\delta+\kappa(-\kappa)^N R_{N+1}.
+\tag{10}
+\]</span>
+The remainder tends strongly to zero by the estimate just proved. Distributional differentiation is continuous, which proves the equation in (6). The convergent time-derivative series and the traces after (4) give its two initial data. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The spatial multiplier of the sum can now be written in a form that does not choose a square-root branch. Define the entire function of <span class="math" data-tex="\(q\)">\(q\)</span>
+<span class="math math-display" data-tex="\[
+s(t,q)=\sum_{\ell=0}^{\infty}
+\frac{(-q)^\ell t^{2\ell+1}}{(2\ell+1)!}.
+\tag{11}
+\]">\[
+s(t,q)=\sum_{\ell=0}^{\infty}
+\frac{(-q)^\ell t^{2\ell+1}}{(2\ell+1)!}.
+\tag{11}
+\]</span>
+For fixed real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the convergent series in (5) solves the scalar equation <span class="math" data-tex="\(v&#x27;&#x27;+(|\xi|^2+\kappa)v=0\)">\(v&#x27;&#x27;+(|\xi|^2+\kappa)v=0\)</span>, <span class="math" data-tex="\(v(0)=0\)">\(v(0)=0\)</span>, <span class="math" data-tex="\(v&#x27;(0)=1\)">\(v&#x27;(0)=1\)</span>. The power series (11) has those properties too. Uniqueness follows, for example, by writing the difference as a two-component first-order integral equation and iterating its zero-data estimate. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal F_z E_\kappa^+(t,\xi)
+=s(t,|\xi|^2+\kappa),\\
+t\geq0.
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+\mathcal F_z E_\kappa^+(t,\xi)
+=s(t,|\xi|^2+\kappa),\\
+t\geq0.
+\end{gathered}
+\tag{12}
+\]</span>
+If <span class="math" data-tex="\(w^2=q\)">\(w^2=q\)</span>, this is <span class="math" data-tex="\(\sin(tw)/w\)">\(\sin(tw)/w\)</span>, with its removable value at <span class="math" data-tex="\(w=0\)">\(w=0\)</span>. Changing the sign of <span class="math" data-tex="\(w\)">\(w\)</span> makes no change.</p>
+<h2 id="a-homogeneous-kernel-and-its-exact-light-front">A homogeneous kernel and its exact light front</h2>
+<p>Reflect time and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_\kappa^-(t,z)=E_\kappa^+(-t,z),\\
+F_\kappa=E_\kappa^+-E_\kappa^-.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+E_\kappa^-(t,z)=E_\kappa^+(-t,z),\\
+F_\kappa=E_\kappa^+-E_\kappa^-.
+\end{gathered}
+\tag{13}
+\]</span>
+Time reflection commutes with <span class="math" data-tex="\(L_\kappa\)">\(L_\kappa\)</span>; therefore both <span class="math" data-tex="\(E_\kappa^\pm\)">\(E_\kappa^\pm\)</span> have image <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The function of time underlying <span class="math" data-tex="\(F_\kappa\)">\(F_\kappa\)</span> is the odd extension of the one-sided kernel. It is smooth with values in spatial tempered distributions across zero: the scalar equation and the initial data show that all even time derivatives at zero vanish. The bounds in (9), or the equation differentiated repeatedly, give this assertion in the strong topology.</p>
+<p><strong>Theorem 3.1.</strong> We have
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_\kappa F_\kappa=0,\\
+\operatorname{supp}F_\kappa\subset C_+\cup C_-.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+L_\kappa F_\kappa=0,\\
+\operatorname{supp}F_\kappa\subset C_+\cup C_-.
+\end{gathered}
+\tag{14}
+\]</span>
+Every point of the light cone <span class="math" data-tex="\(\{(t,z):t^2=|z|^2\}\)">\(\{(t,z):t^2=|z|^2\}\)</span>, including its vertex, belongs to <span class="math" data-tex="\(\operatorname{supp}F_\kappa\)">\(\operatorname{supp}F_\kappa\)</span>.</p>
+<p><strong>Proof.</strong> The equation and inclusion follow from (6) and (13). Write <span class="math" data-tex="\(S_\kappa(t)\)">\(S_\kappa(t)\)</span> for the spatial distribution at time <span class="math" data-tex="\(t\)">\(t\)</span>. It is supported in the closed ball <span class="math" data-tex="\(|z|\leq |t|\)">\(|z|\leq |t|\)</span>, and its Fourier transform is <span class="math" data-tex="\(s(t,|\xi|^2+\kappa)\)">\(s(t,|\xi|^2+\kappa)\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>. Spatial rotations preserve this multiplier, so Fourier injectivity makes <span class="math" data-tex="\(S_\kappa(t)\)">\(S_\kappa(t)\)</span>, and hence its support, invariant under all orthogonal transformations. Suppose its support lay in a ball of radius <span class="math" data-tex="\(r&lt;|t|\)">\(r&lt;|t|\)</span>. The elementary compact-distribution Fourier estimate would imply, for some <span class="math" data-tex="\(N,C\)">\(N,C\)</span> and <span class="math" data-tex="\(r&lt;r&#x27;&lt;|t|\)">\(r&lt;r&#x27;&lt;|t|\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\widehat{S_\kappa(t)}(i\rho e_1)|
+\leq C(1+\rho)^N e^{r&#x27;\rho},\\
+\rho\geq1.
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+|\widehat{S_\kappa(t)}(i\rho e_1)|
+\leq C(1+\rho)^N e^{r&#x27;\rho},\\
+\rho\geq1.
+\end{gathered}
+\tag{15}
+\]</span>
+To recall the estimate, choose a smooth cutoff equal to one near the support and supported in the ball of radius <span class="math" data-tex="\(r&#x27;\)">\(r&#x27;\)</span>. Apply the finite-order estimate for the compact distribution to that cutoff times <span class="math" data-tex="\(e^{\rho z_1}\)">\(e^{\rho z_1}\)</span>. Every derivative is bounded by a fixed polynomial in <span class="math" data-tex="\(\rho\)">\(\rho\)</span> times <span class="math" data-tex="\(e^{r&#x27;\rho}\)">\(e^{r&#x27;\rho}\)</span>, which gives (15).</p>
+<p>Its compactly supported Fourier transform is entire in the complex spatial frequency. The right side of (12) is entire there too, with <span class="math" data-tex="\(|\xi|^2\)">\(|\xi|^2\)</span> replaced by <span class="math" data-tex="\(\xi\cdot\xi\)">\(\xi\cdot\xi\)</span>. Equality on real frequency space extends by successive one-variable identity theorems. At <span class="math" data-tex="\(\xi=i\rho e_1\)">\(\xi=i\rho e_1\)</span>, choose
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_\rho=(\rho^2-\kappa)^{1/2}
+=\rho+O(\rho^{-1}),\\
+\operatorname{Re}a_\rho&gt;0.
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+a_\rho=(\rho^2-\kappa)^{1/2}
+=\rho+O(\rho^{-1}),\\
+\operatorname{Re}a_\rho&gt;0.
+\end{gathered}
+\tag{16}
+\]</span>
+The binomial series near one justifies this choice for large <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, even when <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is complex. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|s(t,-\rho^2+\kappa)|
+&amp;=\left|\frac{\sinh(ta_\rho)}{a_\rho}\right|\\
+&amp;\sim\frac{e^{|t|\rho}}{2\rho}.
+\end{aligned}
+\tag{17}
+\]">\[
+\begin{aligned}
+|s(t,-\rho^2+\kappa)|
+&amp;=\left|\frac{\sinh(ta_\rho)}{a_\rho}\right|\\
+&amp;\sim\frac{e^{|t|\rho}}{2\rho}.
+\end{aligned}
+\tag{17}
+\]</span>
+Indeed the exponentially decreasing term in the hyperbolic sine is negligible, <span class="math" data-tex="\(\operatorname{Re}a_\rho=\rho+O(\rho^{-1})\)">\(\operatorname{Re}a_\rho=\rho+O(\rho^{-1})\)</span>, and <span class="math" data-tex="\(|a_\rho|/\rho\to1\)">\(|a_\rho|/\rho\to1\)</span>. This contradicts (15).</p>
+<p>The spatial support is compact. It therefore attains the maximal radius <span class="math" data-tex="\(|t|\)">\(|t|\)</span>; if that radius were smaller, the preceding argument would apply. Rotation invariance now puts the entire sphere <span class="math" data-tex="\(|z|=|t|\)">\(|z|=|t|\)</span> in that support.</p>
+<p>Finally suppose <span class="math" data-tex="\(F_\kappa\)">\(F_\kappa\)</span> vanished in a spacetime neighborhood of <span class="math" data-tex="\((t_0,z_0)\)">\((t_0,z_0)\)</span> with <span class="math" data-tex="\(t_0\ne0\)">\(t_0\ne0\)</span> and <span class="math" data-tex="\(|z_0|=|t_0|\)">\(|z_0|=|t_0|\)</span>. For each spatial test supported in a sufficiently small neighborhood of <span class="math" data-tex="\(z_0\)">\(z_0\)</span>, its smooth pairing with <span class="math" data-tex="\(S_\kappa(t)\)">\(S_\kappa(t)\)</span> would be zero on an interval about <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, by testing also in time. Its value at <span class="math" data-tex="\(t_0\)">\(t_0\)</span> would be zero, contradicting the sphere statement. The vertex belongs to the spacetime support by closure. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem asserts nonvanishing at the front, not at every point of the cone's interior. For example, in three spatial dimensions the zero-potential kernel is supported only on the front.</p>
+<h2 id="removing-first-order-terms">Removing first-order terms</h2>
+<p>Let <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, <span class="math" data-tex="\(G=\operatorname{diag}(-1,1,\ldots,1)\)">\(G=\operatorname{diag}(-1,1,\ldots,1)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q(\zeta)=\zeta^TG\zeta,\\
+P(\zeta)=q(\zeta)+b^T\zeta+c.
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+q(\zeta)=\zeta^TG\zeta,\\
+P(\zeta)=q(\zeta)+b^T\zeta+c.
+\end{gathered}
+\tag{18}
+\]</span>
+where <span class="math" data-tex="\(b\in\mathbb C^{d+1}\)">\(b\in\mathbb C^{d+1}\)</span>, <span class="math" data-tex="\(c\in\mathbb C\)">\(c\in\mathbb C\)</span>. The transpose is algebraic, with no complex conjugation. Thus <span class="math" data-tex="\(q(D)=\partial_t^2-\Delta_z\)">\(q(D)=\partial_t^2-\Delta_z\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> Set
+<span class="math math-display" data-tex="\[
+\alpha=-\tfrac12Gb,\qquad
+\kappa=c-\tfrac14b^TGb.
+\tag{19}
+\]">\[
+\alpha=-\tfrac12Gb,\qquad
+\kappa=c-\tfrac14b^TGb.
+\tag{19}
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+E_P^\pm=e^{ix\cdot\alpha}E_\kappa^\pm,\qquad
+F_P=e^{ix\cdot\alpha}F_\kappa
+\tag{20}
+\]">\[
+E_P^\pm=e^{ix\cdot\alpha}E_\kappa^\pm,\qquad
+F_P=e^{ix\cdot\alpha}F_\kappa
+\tag{20}
+\]</span>
+satisfy <span class="math" data-tex="\(P(D)E_P^\pm=\delta\)">\(P(D)E_P^\pm=\delta\)</span>, <span class="math" data-tex="\(P(D)F_P=0\)">\(P(D)F_P=0\)</span>. Their supports equal the respective supports before multiplication. In particular <span class="math" data-tex="\(F_P\)">\(F_P\)</span> is supported in the double cone and contains the entire light cone in its support.</p>
+<p><strong>Proof.</strong> Distributional differentiation obeys
+<span class="math math-display" data-tex="\[
+D(e^{ix\cdot\alpha}v)
+=e^{ix\cdot\alpha}(D+\alpha)v.
+\]">\[
+D(e^{ix\cdot\alpha}v)
+=e^{ix\cdot\alpha}(D+\alpha)v.
+\]</span>
+Expanding <span class="math" data-tex="\(P(\zeta+\alpha)\)">\(P(\zeta+\alpha)\)</span>, its linear term is <span class="math" data-tex="\(2G\alpha+b=0\)">\(2G\alpha+b=0\)</span>, and its constant term is precisely <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+P(D)(e^{ix\cdot\alpha}v)
+=e^{ix\cdot\alpha}L_\kappa v.
+\tag{21}
+\]">\[
+P(D)(e^{ix\cdot\alpha}v)
+=e^{ix\cdot\alpha}L_\kappa v.
+\tag{21}
+\]</span>
+The multiplying function equals one at the origin and never vanishes anywhere. It preserves support, since its reciprocal is smooth. Equations (6), (14) and Theorem 3.1 prove all claims. Complex exponential growth causes no difficulty for distributions on compact test supports. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The formal transpose <span class="math" data-tex="\(P^t=P(-D)\)">\(P^t=P(-D)\)</span> has linear coefficient <span class="math" data-tex="\(-b\)">\(-b\)</span>, the same constant <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, and gauge vector <span class="math" data-tex="\(-\alpha\)">\(-\alpha\)</span>. Thus every assertion applies to the transpose as well.</p>
+<h2 id="causal-distribution-data">Causal distribution data</h2>
+<p><strong>Theorem 5.1.</strong> For each <span class="math" data-tex="\(f\in\mathcal D&#x27;(\mathbb R^{d+1})\)">\(f\in\mathcal D&#x27;(\mathbb R^{d+1})\)</span> supported in <span class="math" data-tex="\(H_+=\{t\geq0\}\)">\(H_+=\{t\geq0\}\)</span>, there is a unique solution <span class="math" data-tex="\(u\)">\(u\)</span> supported in <span class="math" data-tex="\(H_+\)">\(H_+\)</span> of <span class="math" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span>. It is
+<span class="math math-display" data-tex="\[
+u=E_P^+*f.
+\tag{22}
+\]">\[
+u=E_P^+*f.
+\tag{22}
+\]</span></p>
+<p><strong>Proof.</strong> Addition is proper on <span class="math" data-tex="\(C_+\times H_+\)">\(C_+\times H_+\)</span>. To check it, let the sum lie in a compact set whose time coordinate is at most <span class="math" data-tex="\(T\)">\(T\)</span>. If the first point is <span class="math" data-tex="\((s,y)\in C_+\)">\((s,y)\in C_+\)</span>, then <span class="math" data-tex="\(0\leq s\leq T\)">\(0\leq s\leq T\)</span>, <span class="math" data-tex="\(|y|\leq s\leq T\)">\(|y|\leq s\leq T\)</span>. The first point is bounded, and the second is bounded by subtracting it from the compact sum. The inverse image is closed, so it is compact. This proves that the convolution in (22) exists. Its support lies in <span class="math" data-tex="\(H_+\)">\(H_+\)</span>, and differentiation under the distributional convolution gives <span class="math" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span>.</p>
+<p>If <span class="math" data-tex="\(P(D)v=0\)">\(P(D)v=0\)</span> and <span class="math" data-tex="\(\operatorname{supp}v\subset H_+\)">\(\operatorname{supp}v\subset H_+\)</span>, the same properness permits <span class="math" data-tex="\(E_P^+*v\)">\(E_P^+*v\)</span>. Commuting a constant differential operator with this convolution gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v&amp;=(P(D)E_P^+)*v\\
+&amp;=E_P^+*(P(D)v)=0.
+\end{aligned}
+\tag{23}
+\]">\[
+\begin{aligned}
+v&amp;=(P(D)E_P^+)*v\\
+&amp;=E_P^+*(P(D)v)=0.
+\end{aligned}
+\tag{23}
+\]</span>
+For clarity, this differentiation rule follows by applying the tensor product to a test of the sum variable, with a cutoff equal to one near the compact part of the two supports over that test. Integration by parts differentiates the test in either variable; derivatives of the cutoff are supported away from that part and pair to zero. This also shows why properness was essential. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This construction concerns the Lorentz quadratic principal symbol in (18). A lower order series for a general hyperbolic polynomial requires its own estimates; the factorial argument here uses the flat wave Volterra kernels.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 — Elementary level: the one-dimensional constant.</strong> For <span class="math" data-tex="\(d=1\)">\(d=1\)</span> and <span class="math" data-tex="\(\kappa=0\)">\(\kappa=0\)</span>, show that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E_0^+(t,z)&amp;=\tfrac12\boldsymbol1_{\{t&gt;|z|\}},\\
+S_0(t,z)&amp;=\tfrac12\operatorname{sgn}(t)
+\boldsymbol1_{\{|z|&lt;|t|\}}.
+\end{aligned}
+\tag{24}
+\]">\[
+\begin{aligned}
+E_0^+(t,z)&amp;=\tfrac12\boldsymbol1_{\{t&gt;|z|\}},\\
+S_0(t,z)&amp;=\tfrac12\operatorname{sgn}(t)
+\boldsymbol1_{\{|z|&lt;|t|\}}.
+\end{aligned}
+\tag{24}
+\]</span>
+Check the point-source coefficient using characteristic coordinates.</p>
+<p><strong>Solution.</strong> At <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the Fourier transform in <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(\tfrac12\boldsymbol1_{(-t,t)}\)">\(\tfrac12\boldsymbol1_{(-t,t)}\)</span> is <span class="math" data-tex="\(\sin(t\xi)/\xi\)">\(\sin(t\xi)/\xi\)</span>, including its value <span class="math" data-tex="\(t\)">\(t\)</span> at zero. This identifies the positive-time kernel by (12); odd extension gives the second formula. Set <span class="math" data-tex="\(r=t+z\)">\(r=t+z\)</span>, <span class="math" data-tex="\(s=t-z\)">\(s=t-z\)</span>. Then <span class="math" data-tex="\(L_0=4\partial_r\partial_s\)">\(L_0=4\partial_r\partial_s\)</span>, and the first kernel is <span class="math" data-tex="\(\tfrac12H(r)H(s)\)">\(\tfrac12H(r)H(s)\)</span>. Its image is <span class="math" data-tex="\(2\delta(r)\delta(s)\)">\(2\delta(r)\delta(s)\)</span>. The Jacobian of <span class="math" data-tex="\((t,z)\mapsto(r,s)\)">\((t,z)\mapsto(r,s)\)</span> has absolute determinant two, so <span class="math" data-tex="\(\delta(r)\delta(s)=\tfrac12\delta(t,z)\)">\(\delta(r)\delta(s)=\tfrac12\delta(t,z)\)</span>. Thus the image is exactly <span class="math" data-tex="\(\delta(t,z)\)">\(\delta(t,z)\)</span>.</p>
+<p><strong>Exercise 2 — Intermediate level: a complex gauge.</strong> In two spacetime coordinates take <span class="math" data-tex="\(b=(2i,2)\)">\(b=(2i,2)\)</span>, <span class="math" data-tex="\(c=3\)">\(c=3\)</span> in (18). Compute the gauge and the potential. Determine what happens to the support.</p>
+<p><strong>Solution.</strong> We have <span class="math" data-tex="\(Gb=(-2i,2)\)">\(Gb=(-2i,2)\)</span>, hence <span class="math" data-tex="\(\alpha=(i,-1)\)">\(\alpha=(i,-1)\)</span>. Also <span class="math" data-tex="\(b^TGb=-(2i)^2+2^2=8\)">\(b^TGb=-(2i)^2+2^2=8\)</span>, so <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>. The multiplier is <span class="math" data-tex="\(e^{-t-iz}\)">\(e^{-t-iz}\)</span>. Thus <span class="math" data-tex="\(E_P^+=e^{-t-iz}E_1^+\)">\(E_P^+=e^{-t-iz}E_1^+\)</span> and <span class="math" data-tex="\(F_P=e^{-t-iz}F_1\)">\(F_P=e^{-t-iz}F_1\)</span>. The smooth reciprocal <span class="math" data-tex="\(e^{t+iz}\)">\(e^{t+iz}\)</span> exists everywhere, so both support sets are unchanged. Replacing the bilinear square by a Hermitian square would give the wrong potential.</p>
+<p><strong>Exercise 3 — Intermediate level: which supports permit convolution?</strong> Explain why addition is proper on <span class="math" data-tex="\(C_+\times H_+\)">\(C_+\times H_+\)</span> but fails to be proper on <span class="math" data-tex="\(H_+\times H_+\)">\(H_+\times H_+\)</span> when <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>.</p>
+<p><strong>Solution.</strong> The proof of Theorem 5.1 bounds the first spatial coordinate by its time coordinate; that is the extra information in <span class="math" data-tex="\(C_+\)">\(C_+\)</span>. In contrast the pairs <span class="math" data-tex="\(((0,je_1),(0,-je_1))\)">\(((0,je_1),(0,-je_1))\)</span> lie in <span class="math" data-tex="\(H_+\times H_+\)">\(H_+\times H_+\)</span>, all have sum zero, and escape every compact subset of the product. The inverse image of the compact singleton <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> is therefore not compact. Merely having nonnegative time support does not guarantee that two distributions can be convolved.</p>
+<p><strong>Exercise 4 — Advanced level: support on the surface.</strong> For <span class="math" data-tex="\(d=3\)">\(d=3\)</span>, <span class="math" data-tex="\(\kappa=0\)">\(\kappa=0\)</span>, prove the spatial identity
+<span class="math math-display" data-tex="\[
+\langle S_0(t),\psi\rangle
+=\frac{t}{4\pi}\int_{\mathbb S^2}\psi(t\omega)\,d\omega.
+\tag{25}
+\]">\[
+\langle S_0(t),\psi\rangle
+=\frac{t}{4\pi}\int_{\mathbb S^2}\psi(t\omega)\,d\omega.
+\tag{25}
+\]</span>
+Identify the spacetime support of <span class="math" data-tex="\(F_0\)">\(F_0\)</span>, and compare it with (24).</p>
+<p><strong>Solution.</strong> Rotation of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> to the polar axis gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac1{4\pi}\int_{\mathbb S^2}
+e^{-it\omega\cdot\xi}\,d\omega
+&amp;=\frac12\int_{-1}^1e^{-it|\xi|s}\,ds\\
+&amp;=\operatorname{sinc}(t|\xi|).
+\end{aligned}
+\tag{26}
+\]">\[
+\begin{aligned}
+\frac1{4\pi}\int_{\mathbb S^2}
+e^{-it\omega\cdot\xi}\,d\omega
+&amp;=\frac12\int_{-1}^1e^{-it|\xi|s}\,ds\\
+&amp;=\operatorname{sinc}(t|\xi|).
+\end{aligned}
+\tag{26}
+\]</span>
+The Fourier transform of (25) is consequently <span class="math" data-tex="\(\sin(t|\xi|)/|\xi|\)">\(\sin(t|\xi|)/|\xi|\)</span>, so Fourier injectivity proves the identity. It is smooth in <span class="math" data-tex="\(t\)">\(t\)</span> as a spatial distribution, has value zero and first derivative <span class="math" data-tex="\(\delta_z\)">\(\delta_z\)</span> at zero, and is supported on the sphere at each nonzero time. Its spacetime support is exactly the light cone, including the vertex by closure. Theorem 3.1 proves that no front point is missing. In (24), by contrast, every interior point of either half cone is also in the support. These two dimensions show why front nonvanishing and interior nonvanishing are different assertions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><em>Causal kernels, initial data, and short-time geometry</em>, <a href="prerequisites/wave-hadamard-kernels.html">flat wave construction</a>, sections “A Laplace calculation that constructs the whole family” and “Initial traces from a Volterra problem”. These give (2)–(4), with <span class="math" data-tex="\(E_j=j!R_{j+1}\)">\(E_j=j!R_{j+1}\)</span>. The present potential series and light-front argument use those results.</li>
+<li>Christian Bär, Nicolas Ginoux and Frank Pfäffle, <a href="https://arxiv.org/abs/0806.1036"><em>Wave Equations on Lorentzian Manifolds and Quantization</em></a>, European Mathematical Society, 2007, §§1.2 and 2.1–2.4. Their Riesz parameter is twice the parameter used for the flat family above. Their discussion also treats geometric wave operators and vector bundles.</li>
+</ul>
+</main></body></html>

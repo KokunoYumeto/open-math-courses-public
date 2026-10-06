@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Lebesgue duality and the functionals on Fourier spaces</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="lebesgue-duality-and-the-functionals-on-fourier-spaces">Lebesgue duality and the functionals on Fourier spaces</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Hölder's inequality turns an <span class="math" data-tex="\(L^{p&#x27;}\)">\(L^{p&#x27;}\)</span> density into a functional on <span class="math" data-tex="\(L^p\)">\(L^p\)</span>. To prove that these are all the functionals, we construct the density from the functional itself. The proof includes <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, keeps the exact norm, and then identifies the reciprocal and reflected weights in Fourier space.</p>
+<p><a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Sections 15.0–15.3, proves the integration and completeness results used here. Its generic measure-space proofs apply to the finite auxiliary measure we construct. Read <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a> for the moderate-weight isometry.</p>
+<p>Grubb provides distribution background. The integration and completeness input used here is supplied by the linked internal Lebesgue foundation. The density construction below proves finite-exponent duality before applying it to the weighted Fourier spaces.</p>
+<h2 id="a-representing-vector-in-hilbert-space">A representing vector in Hilbert space</h2>
+<p><strong>Lemma 1.1.</strong> In a complex Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span> with inner product linear in its first argument, every continuous complex-linear <span class="math" data-tex="\(L\)">\(L\)</span> has a unique <span class="math" data-tex="\(g\in H\)">\(g\in H\)</span> with <span class="math" data-tex="\(L(v)=\langle v,g\rangle\)">\(L(v)=\langle v,g\rangle\)</span>, and <span class="math" data-tex="\(\|L\|=\|g\|\)">\(\|L\|=\|g\|\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(L=0\)">\(L=0\)</span>, take <span class="math" data-tex="\(g=0\)">\(g=0\)</span>; uniqueness follows by testing the difference of two representing vectors against itself. Otherwise choose <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(L(x)=1\)">\(L(x)=1\)</span>. The subspace <span class="math" data-tex="\(M=\ker L\)">\(M=\ker L\)</span> is closed by continuity. Let <span class="math" data-tex="\(d=\inf_{m\in M}\|x-m\|\)">\(d=\inf_{m\in M}\|x-m\|\)</span>, and choose <span class="math" data-tex="\(m_j\in M\)">\(m_j\in M\)</span> with <span class="math" data-tex="\(\|x-m_j\|\to d\)">\(\|x-m_j\|\to d\)</span>. The parallelogram identity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|m_j-m_k\|^2
+\\
+=2\|x-m_j\|^2+2\|x-m_k\|^2
+\\
+-4\left\|x-\frac{m_j+m_k}{2}\right\|^2
+\\
+\le 2\|x-m_j\|^2+2\|x-m_k\|^2-4d^2.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+\|m_j-m_k\|^2
+\\
+=2\|x-m_j\|^2+2\|x-m_k\|^2
+\\
+-4\left\|x-\frac{m_j+m_k}{2}\right\|^2
+\\
+\le 2\|x-m_j\|^2+2\|x-m_k\|^2-4d^2.
+\end{gathered}
+\tag{1}
+\]</span>
+<p>The right side tends to zero as <span class="math" data-tex="\(j,k\to\infty\)">\(j,k\to\infty\)</span>. Completeness and closedness give <span class="math" data-tex="\(m_j\to m\in M\)">\(m_j\to m\in M\)</span>. Put <span class="math" data-tex="\(y=x-m\)">\(y=x-m\)</span>. It minimizes the distance, has <span class="math" data-tex="\(L(y)=1\)">\(L(y)=1\)</span>, and hence is nonzero. For any <span class="math" data-tex="\(h\in M\)">\(h\in M\)</span>, <span class="math" data-tex="\(\|y-th\|^2\ge\|y\|^2\)">\(\|y-th\|^2\ge\|y\|^2\)</span> for every complex <span class="math" data-tex="\(t\)">\(t\)</span>. Expanding the square, first with real <span class="math" data-tex="\(t\)">\(t\)</span> and then with purely imaginary <span class="math" data-tex="\(t\)">\(t\)</span>, gives <span class="math" data-tex="\(\langle y,h\rangle=0\)">\(\langle y,h\rangle=0\)</span>. Every <span class="math" data-tex="\(v\)">\(v\)</span> has <span class="math" data-tex="\(v-L(v)y\in M\)">\(v-L(v)y\in M\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\langle v,y\rangle=L(v)\|y\|^2,\qquad
+g=\frac{y}{\|y\|^2}.
+\tag{2}
+\]">\[
+\langle v,y\rangle=L(v)\|y\|^2,\qquad
+g=\frac{y}{\|y\|^2}.
+\tag{2}
+\]</span>
+<p>The denominator is real and positive; therefore <span class="math" data-tex="\(\langle v,g\rangle=L(v)\)">\(\langle v,g\rangle=L(v)\)</span>. The Hilbert Cauchy–Schwarz bound follows directly by expanding <span class="math" data-tex="\(\|u-tv\|^2\ge0\)">\(\|u-tv\|^2\ge0\)</span> and taking <span class="math" data-tex="\(t=\langle u,v\rangle/\|v\|^2\)">\(t=\langle u,v\rangle/\|v\|^2\)</span> when <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>; its zero case is immediate. It gives <span class="math" data-tex="\(\|L\|\le\|g\|\)">\(\|L\|\le\|g\|\)</span>. Testing at <span class="math" data-tex="\(g/\|g\|\)">\(g/\|g\|\)</span> gives equality when <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span>. This proves all assertions without an orthonormal basis or separability. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For any positive measure <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, <span class="math" data-tex="\(L^2(\lambda)\)">\(L^2(\lambda)\)</span> is such a Hilbert space. Its completeness is the general measure-space proof in <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> Section 15.3. The inner product <span class="math" data-tex="\(\int u\bar v\,d\lambda\)">\(\int u\bar v\,d\lambda\)</span> is defined by Hölder and has the parallelogram identity by pointwise algebra and integral linearity. This identifies precisely the Hilbert space used below.</p>
+<h2 id="constructing-a-density-on-a-finite-set">Constructing a density on a finite set</h2>
+<p>Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be a Lebesgue measurable set of finite measure, let <span class="math" data-tex="\(1\le p&lt;\infty\)">\(1\le p&lt;\infty\)</span>, and let <span class="math" data-tex="\(L:L^p(Q)\to\mathbb C\)">\(L:L^p(Q)\to\mathbb C\)</span> be continuous with <span class="math" data-tex="\(C=\|L\|\)">\(C=\|L\|\)</span>. Null sets are always factored out.</p>
+<p><strong>Lemma 2.1.</strong> There is <span class="math" data-tex="\(g\in L^1(Q)\)">\(g\in L^1(Q)\)</span> such that <span class="math" data-tex="\(L(a)=\int_Q a\bar g\,d\mu\)">\(L(a)=\int_Q a\bar g\,d\mu\)</span> for every bounded measurable <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><strong>Proof.</strong> Define <span class="math" data-tex="\(\nu(E)=L(1_E)\)">\(\nu(E)=L(1_E)\)</span> for measurable <span class="math" data-tex="\(E\subset Q\)">\(E\subset Q\)</span>. It is finitely additive by linearity. If <span class="math" data-tex="\(E_j\)">\(E_j\)</span> are disjoint with union <span class="math" data-tex="\(E\)">\(E\)</span>, the indicators of their finite unions tend to <span class="math" data-tex="\(1_E\)">\(1_E\)</span> in <span class="math" data-tex="\(L^p\)">\(L^p\)</span>, since the measure of the omitted tail tends to zero by countable additivity and <span class="math" data-tex="\(\mu(Q)&lt;\infty\)">\(\mu(Q)&lt;\infty\)</span>. Continuity gives countable additivity of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>Define its variation by finite measurable partitions:</p>
+<span class="math math-display" data-tex="\[
+\eta(E)=\sup_{E=\bigsqcup_{\ell=1}^r E_\ell}
+\sum_{\ell=1}^r|\nu(E_\ell)|.
+\tag{3}
+\]">\[
+\eta(E)=\sup_{E=\bigsqcup_{\ell=1}^r E_\ell}
+\sum_{\ell=1}^r|\nu(E_\ell)|.
+\tag{3}
+\]</span>
+<p>For any such partition, choose unit scalars <span class="math" data-tex="\(c_\ell\)">\(c_\ell\)</span> with <span class="math" data-tex="\(c_\ell\nu(E_\ell)=|\nu(E_\ell)|\)">\(c_\ell\nu(E_\ell)=|\nu(E_\ell)|\)</span>; when the value is zero choose <span class="math" data-tex="\(c_\ell=1\)">\(c_\ell=1\)</span>. The simple function <span class="math" data-tex="\(a=\sum c_\ell1_{E_\ell}\)">\(a=\sum c_\ell1_{E_\ell}\)</span> has modulus <span class="math" data-tex="\(1_E\)">\(1_E\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_\ell|\nu(E_\ell)|=L(a)
+\le C\mu(E)^{1/p},\\
+\qquad
+0\le\eta(E)\le C\mu(E)^{1/p}.
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+\sum_\ell|\nu(E_\ell)|=L(a)
+\le C\mu(E)^{1/p},\\
+\qquad
+0\le\eta(E)\le C\mu(E)^{1/p}.
+\end{gathered}
+\tag{4}
+\]</span>
+<p>Here <span class="math" data-tex="\(L(a)\)">\(L(a)\)</span> is the nonnegative real displayed sum, so the norm inequality applies to its modulus. In particular <span class="math" data-tex="\(\eta(Q)&lt;\infty\)">\(\eta(Q)&lt;\infty\)</span>, and <span class="math" data-tex="\(\eta\)">\(\eta\)</span> vanishes on every Lebesgue null set.</p>
+<p>We verify countable additivity, rather than assuming a variation theorem. For disjoint <span class="math" data-tex="\(A_j\)">\(A_j\)</span> with union <span class="math" data-tex="\(A\)">\(A\)</span>, partitions approximating <span class="math" data-tex="\(\eta(A_j)\)">\(\eta(A_j)\)</span> for any finite list can be combined and supplemented by its remaining complement in <span class="math" data-tex="\(A\)">\(A\)</span>. Taking the suprema gives <span class="math" data-tex="\(\eta(A)\ge\sum_{j=1}^N\eta(A_j)\)">\(\eta(A)\ge\sum_{j=1}^N\eta(A_j)\)</span> for every <span class="math" data-tex="\(N\)">\(N\)</span>. Conversely take any finite partition <span class="math" data-tex="\(A=\bigsqcup_\ell B_\ell\)">\(A=\bigsqcup_\ell B_\ell\)</span>. Countable additivity gives <span class="math" data-tex="\(\nu(B_\ell)=\sum_j\nu(B_\ell\cap A_j)\)">\(\nu(B_\ell)=\sum_j\nu(B_\ell\cap A_j)\)</span>. These sums are absolutely convergent: all finite partial sums of their absolute values are bounded by <span class="math" data-tex="\(\eta(B_\ell)\)">\(\eta(B_\ell)\)</span>, using the partition by those finitely many intersections and the remaining set. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_\ell|\nu(B_\ell)|
+\\
+\le\sum_j\sum_\ell|\nu(B_\ell\cap A_j)|
+\\
+\le\sum_j\eta(A_j).
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+\sum_\ell|\nu(B_\ell)|
+\\
+\le\sum_j\sum_\ell|\nu(B_\ell\cap A_j)|
+\\
+\le\sum_j\eta(A_j).
+\end{gathered}
+\tag{5}
+\]</span>
+<p>Take the supremum over the finite partitions. The two inequalities prove countable additivity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Set <span class="math" data-tex="\(\lambda=\mu|_Q+\eta\)">\(\lambda=\mu|_Q+\eta\)</span>, a finite positive measure on the same measurable sets.</p>
+<p>For measurable simple <span class="math" data-tex="\(a=\sum a_\ell1_{E_\ell}\)">\(a=\sum a_\ell1_{E_\ell}\)</span> on a disjoint partition, the preceding variation definition gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|L(a)|\le\sum_\ell|a_\ell|\eta(E_\ell)
+\\
+=\int_Q|a|\,d\eta
+\\
+\le\lambda(Q)^{1/2}\|a\|_{L^2(\lambda)}.
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+|L(a)|\le\sum_\ell|a_\ell|\eta(E_\ell)
+\\
+=\int_Q|a|\,d\eta
+\\
+\le\lambda(Q)^{1/2}\|a\|_{L^2(\lambda)}.
+\end{gathered}
+\tag{6}
+\]</span>
+<p>This is independent of representatives modulo <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-null sets because both <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\eta\)">\(\eta\)</span> then vanish on the altered sets. Simple functions are dense in <span class="math" data-tex="\(L^2(\lambda)\)">\(L^2(\lambda)\)</span>: truncate a function's modulus, then round its bounded real and imaginary parts on a finite grid; dominated convergence gives the truncation limit, and the grid error is bounded by its mesh times <span class="math" data-tex="\(\lambda(Q)^{1/2}\)">\(\lambda(Q)^{1/2}\)</span>. Therefore (6) extends uniquely to a continuous functional on <span class="math" data-tex="\(L^2(\lambda)\)">\(L^2(\lambda)\)</span>. Lemma 1.1 supplies <span class="math" data-tex="\(v\in L^2(\lambda)\)">\(v\in L^2(\lambda)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\nu(E)=\int_E\bar v\,d\lambda.
+\tag{7}
+\]">\[
+\nu(E)=\int_E\bar v\,d\lambda.
+\tag{7}
+\]</span>
+<p>Likewise <span class="math" data-tex="\(a\mapsto\int_Q a\,d\mu\)">\(a\mapsto\int_Q a\,d\mu\)</span> on simple functions has bound <span class="math" data-tex="\(\lambda(Q)^{1/2}\|a\|_{L^2(\lambda)}\)">\(\lambda(Q)^{1/2}\|a\|_{L^2(\lambda)}\)</span>, since <span class="math" data-tex="\(\mu\le\lambda\)">\(\mu\le\lambda\)</span>. It extends and is represented by a <span class="math" data-tex="\(w\in L^2(\lambda)\)">\(w\in L^2(\lambda)\)</span>. Indicators give <span class="math" data-tex="\(\mu(E)=\int_E\bar w\,d\lambda\)">\(\mu(E)=\int_E\bar w\,d\lambda\)</span>. The imaginary part of <span class="math" data-tex="\(w\)">\(w\)</span> has integral zero over every measurable set; taking its positive and negative level sets shows it vanishes almost everywhere. Positivity and <span class="math" data-tex="\(\mu(E)\le\lambda(E)\)">\(\mu(E)\le\lambda(E)\)</span>, again tested on level sets, give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mu(E)=\int_E w\,d\lambda,\\
+\qquad
+0\le w\le1\quad\lambda\text{-almost everywhere}.
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+\mu(E)=\int_E w\,d\lambda,\\
+\qquad
+0\le w\le1\quad\lambda\text{-almost everywhere}.
+\end{gathered}
+\tag{8}
+\]</span>
+<p>All these level-set integrals exist because <span class="math" data-tex="\(v,w\in L^1(\lambda)\)">\(v,w\in L^1(\lambda)\)</span> by finite-measure Hölder. For example, a set where <span class="math" data-tex="\(w&lt;-\varepsilon\)">\(w&lt;-\varepsilon\)</span> would have a negative integral if its measure were positive, contradicting <span class="math" data-tex="\(\mu(E)\ge0\)">\(\mu(E)\ge0\)</span>; use a countable union over positive rational <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> to obtain <span class="math" data-tex="\(w\ge0\)">\(w\ge0\)</span>. The other two assertions have the same explicit argument.</p>
+<p>Let <span class="math" data-tex="\(Z=\{w=0\}\)">\(Z=\{w=0\}\)</span>. Equation (8) gives <span class="math" data-tex="\(\mu(Z)=0\)">\(\mu(Z)=0\)</span>, and (4) gives <span class="math" data-tex="\(\eta(Z)=0\)">\(\eta(Z)=0\)</span>. Thus <span class="math" data-tex="\(\lambda(Z)=0\)">\(\lambda(Z)=0\)</span>. Define <span class="math" data-tex="\(g=v/w\)">\(g=v/w\)</span> on <span class="math" data-tex="\(\{w&gt;0\}\)">\(\{w&gt;0\}\)</span>, and <span class="math" data-tex="\(g=0\)">\(g=0\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span>. The identity <span class="math" data-tex="\(\int b\,d\mu=\int bw\,d\lambda\)">\(\int b\,d\mu=\int bw\,d\lambda\)</span> for nonnegative measurable <span class="math" data-tex="\(b\)">\(b\)</span> follows first for simple functions from (8), then by increasing simple approximation and monotone convergence. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_Q|g|\,d\mu=\int_{\{w&gt;0\}}|v|\,d\lambda&lt;\infty,\\
+\qquad
+\nu(E)=\int_E\bar g\,d\mu.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+\int_Q|g|\,d\mu=\int_{\{w&gt;0\}}|v|\,d\lambda&lt;\infty,\\
+\qquad
+\nu(E)=\int_E\bar g\,d\mu.
+\end{gathered}
+\tag{9}
+\]</span>
+<p>The equality for indicators extends by finite linear combinations to simple <span class="math" data-tex="\(a\)">\(a\)</span>. Every bounded measurable <span class="math" data-tex="\(a\)">\(a\)</span> has uniformly convergent finite-grid simple approximants. Their <span class="math" data-tex="\(L^p(\mu)\)">\(L^p(\mu)\)</span> differences tend to zero, while their representing integrals converge by the finite <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bound in (9). This proves the stated representation for all bounded <span class="math" data-tex="\(a\)">\(a\)</span>. If <span class="math" data-tex="\(\mu(Q)=0\)">\(\mu(Q)=0\)</span>, <span class="math" data-tex="\(L^p(Q)\)">\(L^p(Q)\)</span> is the zero space, (4) gives <span class="math" data-tex="\(\lambda(Q)=0\)">\(\lambda(Q)=0\)</span>, and take <span class="math" data-tex="\(g=0\)">\(g=0\)</span> directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2.</strong> The density in 2.1 belongs to <span class="math" data-tex="\(L^{p&#x27;}(Q)\)">\(L^{p&#x27;}(Q)\)</span> and has <span class="math" data-tex="\(\|g\|_{p&#x27;}\le C\)">\(\|g\|_{p&#x27;}\le C\)</span>, including <span class="math" data-tex="\(p&#x27;=\infty\)">\(p&#x27;=\infty\)</span> when <span class="math" data-tex="\(p=1\)">\(p=1\)</span>.</p>
+<p><strong>Proof.</strong> Suppose first <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>. Define the bounded measurable test</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_M=1_{\{|g|\le M\}}\,g|g|^{p&#x27;-2},\\
+\qquad
+A_M=\int_{\{|g|\le M\}}|g|^{p&#x27;}\,d\mu,
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+a_M=1_{\{|g|\le M\}}\,g|g|^{p&#x27;-2},\\
+\qquad
+A_M=\int_{\{|g|\le M\}}|g|^{p&#x27;}\,d\mu,
+\end{gathered}
+\tag{10}
+\]</span>
+<p>assigning value zero when <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. Its modulus is <span class="math" data-tex="\(|g|^{p&#x27;-1}\)">\(|g|^{p&#x27;-1}\)</span> on the indicated set, so it is bounded even when the displayed exponent <span class="math" data-tex="\(p&#x27;-2\)">\(p&#x27;-2\)</span> is negative. The identity <span class="math" data-tex="\((p&#x27;-1)p=p&#x27;\)">\((p&#x27;-1)p=p&#x27;\)</span> gives <span class="math" data-tex="\(\|a_M\|_p=A_M^{1/p}\)">\(\|a_M\|_p=A_M^{1/p}\)</span>. 2.1 and the functional bound yield <span class="math" data-tex="\(A_M\le C A_M^{1/p}\)">\(A_M\le C A_M^{1/p}\)</span>. If <span class="math" data-tex="\(A_M=0\)">\(A_M=0\)</span> the conclusion is immediate; otherwise division gives <span class="math" data-tex="\(A_M^{1/p&#x27;}\le C\)">\(A_M^{1/p&#x27;}\le C\)</span>. Monotone convergence as <span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span> proves <span class="math" data-tex="\(\|g\|_{p&#x27;}\le C\)">\(\|g\|_{p&#x27;}\le C\)</span>.</p>
+<p>For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, use <span class="math" data-tex="\(a=1_E g/|g|\)">\(a=1_E g/|g|\)</span>, assigning zero on <span class="math" data-tex="\(g=0\)">\(g=0\)</span>, for any measurable <span class="math" data-tex="\(E\subset Q\)">\(E\subset Q\)</span>. 2.1 gives <span class="math" data-tex="\(\int_E|g|\,d\mu=L(a)\le C\mu(E)\)">\(\int_E|g|\,d\mu=L(a)\le C\mu(E)\)</span>. If <span class="math" data-tex="\(E=\{|g|&gt;C+\varepsilon\}\)">\(E=\{|g|&gt;C+\varepsilon\}\)</span> had positive measure, the left side would exceed the right side. Hence all such sets are null, and <span class="math" data-tex="\(\|g\|_\infty\le C\)">\(\|g\|_\infty\le C\)</span>. This proof establishes the density bound, rather than inferring representation from Hölder. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-full-domain-exact-norm-and-uniqueness">The full domain, exact norm and uniqueness</h2>
+<p><strong>Theorem 3.1.</strong> For <span class="math" data-tex="\(1\le p&lt;\infty\)">\(1\le p&lt;\infty\)</span>, every continuous complex-linear <span class="math" data-tex="\(L:L^p(\mathbb R^n)\to\mathbb C\)">\(L:L^p(\mathbb R^n)\to\mathbb C\)</span> has a unique <span class="math" data-tex="\(g\in L^{p&#x27;}(\mathbb R^n)\)">\(g\in L^{p&#x27;}(\mathbb R^n)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+L(f)=\int_{\mathbb R^n}f\bar g\,d\mu,\qquad
+\|L\|=\|g\|_{p&#x27;}.
+\tag{11}
+\]">\[
+L(f)=\int_{\mathbb R^n}f\bar g\,d\mu,\qquad
+\|L\|=\|g\|_{p&#x27;}.
+\tag{11}
+\]</span>
+<p>For a bilinear integral convention, write <span class="math" data-tex="\(h=\bar g\)">\(h=\bar g\)</span>; then <span class="math" data-tex="\(L(f)=\int fh\)">\(L(f)=\int fh\)</span> with the same norm.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, let <span class="math" data-tex="\(Q_j=[-j,j]^n\)">\(Q_j=[-j,j]^n\)</span>. Restrict <span class="math" data-tex="\(L\)">\(L\)</span> by extending <span class="math" data-tex="\(L^p(Q_j)\)">\(L^p(Q_j)\)</span> functions by zero; the extension is isometric, so each restricted norm is at most <span class="math" data-tex="\(C=\|L\|\)">\(C=\|L\|\)</span>. The preceding lemmas give <span class="math" data-tex="\(g_j\in L^{p&#x27;}(Q_j)\)">\(g_j\in L^{p&#x27;}(Q_j)\)</span> with norm at most <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>Two such densities agree almost everywhere on their common box. Their difference <span class="math" data-tex="\(b\)">\(b\)</span> is integrable there and has <span class="math" data-tex="\(\int_E\bar b=0\)">\(\int_E\bar b=0\)</span> for every measurable <span class="math" data-tex="\(E\)">\(E\)</span> in the common box, by testing indicators. Real and imaginary level sets show <span class="math" data-tex="\(b=0\)">\(b=0\)</span> almost everywhere. Removing the countable union of these pairwise exceptional null sets gives a measurable global <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(g|_{Q_j}=g_j\)">\(g|_{Q_j}=g_j\)</span> almost everywhere. For finite <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>, monotone convergence of the integrals over the boxes gives <span class="math" data-tex="\(\|g\|_{p&#x27;}\le C\)">\(\|g\|_{p&#x27;}\le C\)</span>. For <span class="math" data-tex="\(p&#x27;=\infty\)">\(p&#x27;=\infty\)</span>, remove the countably many exceptional sets for <span class="math" data-tex="\(|g_j|\le C\)">\(|g_j|\le C\)</span>; their boxes cover space, giving the same global bound.</p>
+<p>Bounded measurable functions with support in some <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> are dense in <span class="math" data-tex="\(L^p(\mathbb R^n)\)">\(L^p(\mathbb R^n)\)</span>: truncate the spatial support and then the modulus; dominated convergence applied to <span class="math" data-tex="\(|f|^p\)">\(|f|^p\)</span> proves the norm limit. On these bounded functions the representation is already proved. Hölder with the global <span class="math" data-tex="\(g\)">\(g\)</span> and continuity of <span class="math" data-tex="\(L\)">\(L\)</span> extend it to every <span class="math" data-tex="\(f\)">\(f\)</span>. They also give <span class="math" data-tex="\(\|L\|\le\|g\|_{p&#x27;}\)">\(\|L\|\le\|g\|_{p&#x27;}\)</span>. Together with the previous bound this proves equality; no separate attainment argument is necessary. Uniqueness follows on every <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> from the indicator test just given, and hence on their union. In dimension zero, the Lebesgue convention is unit mass on the one-point space: every function is a scalar, <span class="math" data-tex="\(L(z)=az\)">\(L(z)=az\)</span>, and <span class="math" data-tex="\(g=\bar a\)">\(g=\bar a\)</span> proves (11) for every displayed exponent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem covers the zero functional, a density vanishing on any subset, and <span class="math" data-tex="\(p=1\)">\(p=1\)</span>. It makes no assertion that every functional on <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> has an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> density.</p>
+<h2 id="the-weighted-fourier-map">The weighted Fourier map</h2>
+<p>Use <a href="AN02-L002.html">the weighted Fourier lesson</a> Fourier convention <span class="math" data-tex="\(\widehat u(\xi)=\int e^{-ix\cdot\xi}u(x)\,dx\)">\(\widehat u(\xi)=\int e^{-ix\cdot\xi}u(x)\,dx\)</span>, with inverse factor <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>. Its already proved weighted-space isomorphism is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J_{p,k}u=(2\pi)^{-n/p}k\widehat u,\\
+\qquad
+\|J_{p,k}u\|_p=\|u\|_{p,k}.
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+J_{p,k}u=(2\pi)^{-n/p}k\widehat u,\\
+\qquad
+\|J_{p,k}u\|_p=\|u\|_{p,k}.
+\end{gathered}
+\tag{12}
+\]</span>
+<p>The moderate weight and its reciprocal have polynomial bounds, so the inverse of this map defines the same tempered-distribution space proved in that lesson. Apply Theorem 3.1 to a functional composed with <span class="math" data-tex="\(J_{p,k}^{-1}\)">\(J_{p,k}^{-1}\)</span>. For its unique representing <span class="math" data-tex="\(g\)">\(g\)</span>, define <span class="math" data-tex="\(v\)">\(v\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat v=(2\pi)^{n/p&#x27;}k g,\\
+\qquad
+L_v(u)=(2\pi)^{-n}\int\widehat u\,\overline{\widehat v}.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+\widehat v=(2\pi)^{n/p&#x27;}k g,\\
+\qquad
+L_v(u)=(2\pi)^{-n}\int\widehat u\,\overline{\widehat v}.
+\end{gathered}
+\tag{13}
+\]</span>
+<p>When <span class="math" data-tex="\(p&#x27;=\infty\)">\(p&#x27;=\infty\)</span>, interpret <span class="math" data-tex="\(n/p&#x27;=0\)">\(n/p&#x27;=0\)</span>. Substitution into (13) gives exactly <span class="math" data-tex="\(\int J_{p,k}u\,\bar g\)">\(\int J_{p,k}u\,\bar g\)</span>, because <span class="math" data-tex="\(n/p+n/p&#x27;=n\)">\(n/p+n/p&#x27;=n\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|v\|_{p&#x27;,1/k}
+=(2\pi)^{-n/p&#x27;}\|\widehat v/k\|_{p&#x27;}\\
+=\|g\|_{p&#x27;}=\|L_v\|.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+\|v\|_{p&#x27;,1/k}
+=(2\pi)^{-n/p&#x27;}\|\widehat v/k\|_{p&#x27;}\\
+=\|g\|_{p&#x27;}=\|L_v\|.
+\end{gathered}
+\tag{14}
+\]</span>
+<p>Polynomial bounds make the displayed <span class="math" data-tex="\(\widehat v\)">\(\widehat v\)</span> a tempered function, including the <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> endpoint. Thus every functional has the full claimed <span class="math" data-tex="\(v\)">\(v\)</span>, with uniqueness and the exact norm. For the complex-linear distribution pairing set <span class="math" data-tex="\(\widehat w(-\xi)=\overline{\widehat v(\xi)}\)">\(\widehat w(-\xi)=\overline{\widehat v(\xi)}\)</span>. If <span class="math" data-tex="\(k^\vee(\xi)=k(-\xi)\)">\(k^\vee(\xi)=k(-\xi)\)</span>, the density transformation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_v(u)=\langle w,u\rangle,\\
+\qquad
+\|w\|_{p&#x27;,1/k^\vee}=\|v\|_{p&#x27;,1/k}.
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+L_v(u)=\langle w,u\rangle,\\
+\qquad
+\|w\|_{p&#x27;,1/k^\vee}=\|v\|_{p&#x27;,1/k}.
+\end{gathered}
+\tag{15}
+\]</span>
+<p>These are the precise normalization, conjugation and reflection in <a href="AN02-L002.html">the weighted Fourier lesson</a> Theorem 5.1. No symmetric-weight hypothesis is added.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (intermediate).</strong> In the finite-set proof, can one divide the density <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(w\)">\(w\)</span> merely because <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is absolutely continuous with respect to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>? Identify the extra argument actually used.</p>
+<p><strong>Solution 1.</strong> Absolute continuity alone permits <span class="math" data-tex="\(w=0\)">\(w=0\)</span> on a set of positive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-measure. Here (4) gives <span class="math" data-tex="\(\eta(E)=0\)">\(\eta(E)=0\)</span> whenever <span class="math" data-tex="\(\mu(E)=0\)">\(\mu(E)=0\)</span>. For <span class="math" data-tex="\(Z=\{w=0\}\)">\(Z=\{w=0\}\)</span>, (8) gives <span class="math" data-tex="\(\mu(Z)=0\)">\(\mu(Z)=0\)</span>, so <span class="math" data-tex="\(\eta(Z)=0\)">\(\eta(Z)=0\)</span> too. Since <span class="math" data-tex="\(\lambda=\mu+\eta\)">\(\lambda=\mu+\eta\)</span>, <span class="math" data-tex="\(\lambda(Z)=0\)">\(\lambda(Z)=0\)</span>. Hence <span class="math" data-tex="\(w&gt;0\)">\(w&gt;0\)</span> almost everywhere for the very measure used in the Hilbert representations, and <span class="math" data-tex="\(g=v/w\)">\(g=v/w\)</span> is valid after its explicit zero definition on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Its <span class="math" data-tex="\(L^1(\mu)\)">\(L^1(\mu)\)</span> bound is the full change-of-density identity (9).</p>
+<p><strong>Exercise 2 (advanced).</strong> Take <span class="math" data-tex="\(p=1\)">\(p=1\)</span> and a moderate nonsymmetric weight <span class="math" data-tex="\(k\)">\(k\)</span>. State the unique representing weighted-space norm and the weight in the bilinear distribution form.</p>
+<p><strong>Solution 2.</strong> Here <span class="math" data-tex="\(p&#x27;=\infty\)">\(p&#x27;=\infty\)</span>, and <span class="math" data-tex="\(\widehat v=kg\)">\(\widehat v=kg\)</span> with <span class="math" data-tex="\(g\in L^\infty\)">\(g\in L^\infty\)</span>. The norm is <span class="math" data-tex="\(\|v\|_{\infty,1/k}=\|\widehat v/k\|_\infty=\|g\|_\infty\)">\(\|v\|_{\infty,1/k}=\|\widehat v/k\|_\infty=\|g\|_\infty\)</span>; the factors with <span class="math" data-tex="\(n/p&#x27;\)">\(n/p&#x27;\)</span> are one. The bilinear density has <span class="math" data-tex="\(\widehat w(\eta)=\overline{\widehat v(-\eta)}\)">\(\widehat w(\eta)=\overline{\widehat v(-\eta)}\)</span>, so its reciprocal weight is <span class="math" data-tex="\(1/k^\vee(\eta)=1/k(-\eta)\)">\(1/k^\vee(\eta)=1/k(-\eta)\)</span>. Reflection preserves the essential supremum and gives <span class="math" data-tex="\(\|w\|_{\infty,1/k^\vee}=\|v\|_{\infty,1/k}\)">\(\|w\|_{\infty,1/k^\vee}=\|v\|_{\infty,1/k}\)</span>. Replacing <span class="math" data-tex="\(k^\vee\)">\(k^\vee\)</span> by <span class="math" data-tex="\(k\)">\(k\)</span> would require a symmetry hypothesis absent from the theorem.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Internal norm inequalities: <a href="prerequisites/banach-foundation-bridges.html#section-15-2">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 15.2, including finite-measure Hölder.</li>
+<li>Internal completeness: <a href="prerequisites/banach-foundation-bridges.html#section-15-3">the same foundation</a>, Section 15.3, proves completeness on a general measure space, including the finite auxiliary measure used here.</li>
+<li>The representing-vector, finite-set density and global finite-exponent duality proofs are in this lesson, Lemmas 1.1 and 2.1–2.2 and Theorem 3.1; the final section applies the weighted isometry proved in the weighted Fourier lesson.</li>
+</ul>
+</main></body></html>

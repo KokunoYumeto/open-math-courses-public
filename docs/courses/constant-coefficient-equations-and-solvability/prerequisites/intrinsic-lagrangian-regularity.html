@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Recognizing a Lagrangian distribution intrinsically</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="recognizing-a-lagrangian-distribution-intrinsically">Recognizing a Lagrangian distribution intrinsically</h1>
+<p>A phase representation tells us how to produce a singular distribution. An intrinsic definition tells us how to recognize the same object without first choosing a phase. The link is an endpoint regularity condition: applying any sequence of first-order operators whose principal symbols vanish on the Lagrangian leaves the distribution in one fixed Besov space. Near a frequency graph, those operators become frequency derivatives of a symbol.</p>
+<p>We use the ordinary pseudodifferential calculus, its properly supported versions, and its Sobolev and Besov mapping theorems from <a href="euclidean-symbol-calculus.html">Symbols, operators and Sobolev scales</a>. Coordinate and bundle invariance, conic parametrices and pseudolocality are supplied by <a href="geometric-microlocal-calculus.html">Detecting regularity without choosing coordinates</a>. The dyadic endpoint and local frequency Sobolev estimate are also developed in <a href="conormal-transmission.html">Singularities along a submanifold and smooth boundary passage</a>. Our local geometry and Fourier reduction are in <a href="phase-space-and-generating-families.html">Phase space and generating families</a> and <a href="oscillatory-distributions-and-order.html">Oscillatory distributions and their order</a>. The authority for the intrinsic results is [Hörmander IV, §25.1].</p>
+<p>Throughout, <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, <span class="math" data-tex="\(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\)">\(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\)</span>, and inverse Fourier transformation has factor <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>. Symbols are ordinary <span class="math" data-tex="\(S^r=S^r_{1,0}\)">\(S^r=S^r_{1,0}\)</span>; a homogeneous expansion is required only when stated.</p>
+<h2 id="the-endpoint-and-the-vanishing-ideal"><span id="1-the-endpoint-and-the-vanishing-ideal"></span><span id="section-1"></span>1. The endpoint and the vanishing ideal</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a smooth <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional manifold and <span class="math" data-tex="\(E\to X\)">\(E\to X\)</span> a smooth finite-rank complex vector bundle. Write</p>
+<span class="math math-display" data-tex="\[
+\mathcal B^s(X;E)=B^s_{2,\infty,\mathrm{loc}}(X;E).
+\]">\[
+\mathcal B^s(X;E)=B^s_{2,\infty,\mathrm{loc}}(X;E).
+\]</span>
+<p>At the entry base we use completeness of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and density of <span class="math" data-tex="\(C_c^\infty\)">\(C_c^\infty\)</span> in it. The imported Schwartz Plancherel identity then extends <span class="math" data-tex="\((2\pi)^{-n/2}\mathcal F\)">\((2\pi)^{-n/2}\mathcal F\)</span> uniquely to an isometry on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>: approximate an input by compact smooth functions and take the complete-space limit. The image is closed and contains Schwartz space by Fourier inversion, so it is all of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Pairing those approximants with Schwartz tests and using Cauchy–Schwarz shows that this extension agrees with the tempered-distribution Fourier transform. Thus the block norms below have their exact Fourier meaning, including for nonsmooth <span class="math" data-tex="\(L^2\)">\(L^2\)</span> functions.</p>
+<p>In each compactly localized chart and frame, its norm is the supremum of <span class="math" data-tex="\(2^{js}\|\Pi_j u\|_2\)">\(2^{js}\|\Pi_j u\|_2\)</span> over dyadic Fourier blocks. Changing charts, frames, cutoffs or dyadic partitions gives equivalent local seminorms by the imported mapping results. In particular, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^s_{\mathrm{loc}}\subset\mathcal B^s
+\subset H^{s-\varepsilon}_{\mathrm{loc}}.
+\tag{1.1}
+\]">\[
+H^s_{\mathrm{loc}}\subset\mathcal B^s
+\subset H^{s-\varepsilon}_{\mathrm{loc}}.
+\tag{1.1}
+\]</span>
+<p>The second inclusion follows by summing the squared block estimates multiplied by <span class="math" data-tex="\(2^{-2j\varepsilon}\)">\(2^{-2j\varepsilon}\)</span>. It does not identify either endpoint with the intersection of the lower Sobolev spaces.</p>
+<p>Let <span class="math" data-tex="\(\Lambda\subset T^*X\setminus0\)">\(\Lambda\subset T^*X\setminus0\)</span> be a smooth closed conic Lagrangian. Denote by <span class="math" data-tex="\(\mathcal J_\Lambda\)">\(\mathcal J_\Lambda\)</span> the properly supported operators in <span class="math" data-tex="\(\Psi^1(X;E,E)\)">\(\Psi^1(X;E,E)\)</span> whose order-one principal symbols vanish on <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. If a degree-one homogeneous principal representative <span class="math" data-tex="\(l_1\)">\(l_1\)</span> is used, this means <span class="math" data-tex="\(l_1|_\Lambda=0\)">\(l_1|_\Lambda=0\)</span>. More generally, for ordinary symbols the condition means that restriction of a full order-one symbol to <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> has order zero; this is unchanged by an order-zero change of representative. Every order-zero operator belongs to <span class="math" data-tex="\(\mathcal J_\Lambda\)">\(\mathcal J_\Lambda\)</span>.</p>
+<p><strong>Definition 1.1.</strong> A section <span class="math" data-tex="\(u\in\mathcal D&#x27;(X;E)\)">\(u\in\mathcal D&#x27;(X;E)\)</span> lies in <span class="math" data-tex="\(I^m(X,\Lambda;E)\)">\(I^m(X,\Lambda;E)\)</span> if</p>
+<span class="math math-display" data-tex="\[
+L_1\cdots L_Nu\in\mathcal B^{-m-n/4}(X;E)
+\quad\text{for every }N\geq0
+\text{ and every }L_j\in\mathcal J_\Lambda.
+\tag{1.2}
+\]">\[
+L_1\cdots L_Nu\in\mathcal B^{-m-n/4}(X;E)
+\quad\text{for every }N\geq0
+\text{ and every }L_j\in\mathcal J_\Lambda.
+\tag{1.2}
+\]</span>
+<p>The case <span class="math" data-tex="\(N=0\)">\(N=0\)</span> is part of the definition. The constants may depend on the chosen operators and localized compact set. Equation (1.2) requires membership for each finite word; it does not assert one uniform bound for words of all lengths.</p>
+<p>The definition is invariant under charts and bundle frames because the imported operator calculus preserves principal symbols and the local Besov scale. Taking <span class="math" data-tex="\(E\)">\(E\)</span> to be the half-density bundle gives the half-density version used in the preceding lesson. Locally, the smooth nonzero frame <span class="math" data-tex="\(|dx|^{1/2}\)">\(|dx|^{1/2}\)</span> leaves the displayed estimates unchanged.</p>
+<h2 id="localization-and-matrix-valued-tests"><span id="2-localization-and-matrix-valued-tests"></span><span id="section-2"></span>2. Localization and matrix-valued tests</h2>
+<p><strong>Theorem 2.1.</strong> The intrinsic class has the following properties.</p>
+<ol>
+<li><span class="math" data-tex="\(\operatorname{WF}(u)\subset\Lambda\)">\(\operatorname{WF}(u)\subset\Lambda\)</span> for <span class="math" data-tex="\(u\in I^m(X,\Lambda;E)\)">\(u\in I^m(X,\Lambda;E)\)</span>.</li>
+<li>A properly supported <span class="math" data-tex="\(A\in\Psi^0(X;E,E)\)">\(A\in\Psi^0(X;E,E)\)</span> takes <span class="math" data-tex="\(I^m\)">\(I^m\)</span> to itself.</li>
+<li>Conversely, if for every nonzero covector <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> there is such an <span class="math" data-tex="\(A\)">\(A\)</span>, elliptic at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, with <span class="math" data-tex="\(Au\in I^m\)">\(Au\in I^m\)</span>, then <span class="math" data-tex="\(u\in I^m\)">\(u\in I^m\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> For the first assertion, fix <span class="math" data-tex="\(\gamma\notin\Lambda\)">\(\gamma\notin\Lambda\)</span>. Choose a scalar homogeneous cutoff <span class="math" data-tex="\(q\)">\(q\)</span>, supported in a cone disjoint from <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, equal to one near <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. An operator with principal symbol <span class="math" data-tex="\(q(x,\xi)|\xi|I_E\)">\(q(x,\xi)|\xi|I_E\)</span> belongs to <span class="math" data-tex="\(\mathcal J_\Lambda\)">\(\mathcal J_\Lambda\)</span> and is elliptic near <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Its <span class="math" data-tex="\(N\)">\(N\)</span>-th power has order <span class="math" data-tex="\(N\)">\(N\)</span>, is elliptic there, and sends <span class="math" data-tex="\(u\)">\(u\)</span> into <span class="math" data-tex="\(\mathcal B^s\)">\(\mathcal B^s\)</span>, where <span class="math" data-tex="\(s=-m-n/4\)">\(s=-m-n/4\)</span>. By (1.1) and a conic parametrix, <span class="math" data-tex="\(u\)">\(u\)</span> has microlocal Sobolev regularity <span class="math" data-tex="\(s+N-\varepsilon\)">\(s+N-\varepsilon\)</span>. Letting <span class="math" data-tex="\(N\)">\(N\)</span> increase proves that <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is absent from the wavefront set.</p>
+<p>For the second assertion, the order-one principal symbol of <span class="math" data-tex="\([L,A]\)">\([L,A]\)</span> is <span class="math" data-tex="\([l_1,a_0]\)">\([l_1,a_0]\)</span>. It vanishes on <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, since <span class="math" data-tex="\(l_1\)">\(l_1\)</span> does. Thus <span class="math" data-tex="\([L,A]\in\mathcal J_\Lambda\)">\([L,A]\in\mathcal J_\Lambda\)</span>, even for matrices. Repeatedly moving <span class="math" data-tex="\(A\)">\(A\)</span> to the left gives the exact finite identity</p>
+<span class="math math-display" data-tex="\[
+L_1\cdots L_N Au
+=A L_1\cdots L_Nu
++\sum_{j=1}^N
+L_1\cdots L_{j-1}[L_j,A]L_{j+1}\cdots L_Nu.
+\tag{2.1}
+\]">\[
+L_1\cdots L_N Au
+=A L_1\cdots L_Nu
++\sum_{j=1}^N
+L_1\cdots L_{j-1}[L_j,A]L_{j+1}\cdots L_Nu.
+\tag{2.1}
+\]</span>
+<p>The first term belongs to <span class="math" data-tex="\(\mathcal B^s\)">\(\mathcal B^s\)</span> by order-zero mapping. Every summand is an admissible word of length <span class="math" data-tex="\(N\)">\(N\)</span> applied to <span class="math" data-tex="\(u\)">\(u\)</span>. This proves the assertion. Matrix factors have remained in their original order. In the scalar case the commutator has order zero, which is a special case of the same argument.</p>
+<p>For the converse, choose a proper conic parametrix <span class="math" data-tex="\(B\in\Psi^0\)">\(B\in\Psi^0\)</span> for the given <span class="math" data-tex="\(A\)">\(A\)</span> near <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The preceding assertion gives <span class="math" data-tex="\(BAu\in I^m\)">\(BAu\in I^m\)</span>, and <span class="math" data-tex="\(u-BAu\)">\(u-BAu\)</span> is microlocally smooth there. Consequently each fixed word <span class="math" data-tex="\(L_1\cdots L_Nu\)">\(L_1\cdots L_Nu\)</span> is microlocally in <span class="math" data-tex="\(\mathcal B^s\)">\(\mathcal B^s\)</span> at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>.</p>
+<p>This local conclusion gives the actual local Besov membership required in (1.2). To see it, fix an output compact set and the word. A finite cover of its cosphere supplies finitely many elliptic tests on which that word has the stated regularity. A conic partition and the order-zero calculus reconstruct its compact localization from those regular pieces, plus a smoothing remainder. Each piece is in <span class="math" data-tex="\(\mathcal B^s\)">\(\mathcal B^s\)</span>; a smooth compact remainder belongs to every such space. The finite sum is therefore in <span class="math" data-tex="\(\mathcal B^s\)">\(\mathcal B^s\)</span>. This proves (1.2). ∎</p>
+<p>One may consequently work with a Lagrangian defined only in an open cotangent cone. Membership at a point means that a properly supported order-zero cutoff, elliptic there and with sufficiently small microsupport in that cone, produces a section satisfying (1.2) for the local Lagrangian. The parametrix argument proves independence of the test cutoff. Smooth remainders do not affect this definition.</p>
+<h2 id="a-frequency-graph-turns-tests-into-derivatives"><span id="3-a-frequency-graph-turns-tests-into-derivatives"></span><span id="section-3"></span>3. A frequency graph turns tests into derivatives</h2>
+<p>Base coordinates can be chosen so that, near a given point,</p>
+<span class="math math-display" data-tex="\[
+\Lambda=\{(H&#x27;(\xi),\xi):\xi\ne0\},
+\tag{3.1}
+\]">\[
+\Lambda=\{(H&#x27;(\xi),\xi):\xi\ne0\},
+\tag{3.1}
+\]</span>
+<p>with <span class="math" data-tex="\(H\)">\(H\)</span> real, smooth and homogeneous of degree one. For the next theorem take such an <span class="math" data-tex="\(H\)">\(H\)</span> on all directions of <span class="math" data-tex="\(\mathbb R^n\setminus0\)">\(\mathbb R^n\setminus0\)</span>. The conic local version follows by extending <span class="math" data-tex="\(H\)">\(H\)</span> from a smaller angular cone and using Theorem 2.1. Extend <span class="math" data-tex="\(H\)">\(H\)</span> smoothly through low frequencies when an inverse Fourier transform is written; the resulting change has a smooth inverse transform.</p>
+<p><strong>Theorem 3.1 (frequency-graph criterion).</strong> If <span class="math" data-tex="\(u\)">\(u\)</span> is compactly supported, then</p>
+<span class="math math-display" data-tex="\[
+u\in I^m(\mathbb R^n,\Lambda;\mathbb C^d)
+\quad\Longleftrightarrow\quad
+v(\xi)=e^{iH(\xi)}\widehat u(\xi)
+\in S^{m-n/4},\qquad |\xi|&gt;1.
+\tag{3.2}
+\]">\[
+u\in I^m(\mathbb R^n,\Lambda;\mathbb C^d)
+\quad\Longleftrightarrow\quad
+v(\xi)=e^{iH(\xi)}\widehat u(\xi)
+\in S^{m-n/4},\qquad |\xi|&gt;1.
+\tag{3.2}
+\]</span>
+<p>Conversely, the inverse Fourier transform of <span class="math" data-tex="\(e^{-iH}v\)">\(e^{-iH}v\)</span>, for any <span class="math" data-tex="\(v\in S^{m-n/4}\)">\(v\in S^{m-n/4}\)</span>, belongs locally to this intrinsic class, without a compact-support assertion for that inverse transform.</p>
+<p><strong>Proof of the forward implication.</strong> Proper support must be kept when choosing test operators. We first replace <span class="math" data-tex="\(H\)">\(H\)</span>, modulo a rapidly decreasing symbol, by a real <span class="math" data-tex="\(h\in S^1\)">\(h\in S^1\)</span> whose inverse Fourier transform has compact support. Let <span class="math" data-tex="\(H_0\)">\(H_0\)</span> equal <span class="math" data-tex="\(H\)">\(H\)</span> above frequency two and be smooth everywhere. Its inverse Fourier transform <span class="math" data-tex="\(K\)">\(K\)</span> is smooth away from zero, and all its derivatives decrease rapidly outside any fixed neighborhood of zero. Indeed, repeated frequency integrations by parts differentiate the ordinary symbol until it is integrable, and give arbitrary spatial decay. Choose a real even compact cutoff <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, equal to one near zero, and set <span class="math" data-tex="\(h=\mathcal F(\kappa K)\)">\(h=\mathcal F(\kappa K)\)</span>. The removed function <span class="math" data-tex="\((1-\kappa)K\)">\((1-\kappa)K\)</span> is Schwartz. Thus <span class="math" data-tex="\(h-H_0\in S^{-\infty}\)">\(h-H_0\in S^{-\infty}\)</span>; the symmetry of <span class="math" data-tex="\(K\)">\(K\)</span> makes <span class="math" data-tex="\(h\)">\(h\)</span> real.</p>
+<p>Set <span class="math" data-tex="\(h_j=\partial_{\xi_j}h\)">\(h_j=\partial_{\xi_j}h\)</span> and</p>
+<span class="math math-display" data-tex="\[
+Q_j=x_j-h_j(D).
+\tag{3.3}
+\]">\[
+Q_j=x_j-h_j(D).
+\tag{3.3}
+\]</span>
+<p>The convolution kernel of <span class="math" data-tex="\(h_j(D)\)">\(h_j(D)\)</span> has compact support, so <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> is properly supported. It is locally order zero. Each <span class="math" data-tex="\(Q_jD_k\)">\(Q_jD_k\)</span> is a first-order admissible operator, because its principal symbol is <span class="math" data-tex="\((x_j-H_j(\xi))\xi_k I_d\)">\((x_j-H_j(\xi))\xi_k I_d\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+[Q_j,Q_k]=0,\qquad [Q_j,D_k]=i\delta_{jk}I_d.
+\tag{3.4}
+\]">\[
+[Q_j,Q_k]=0,\qquad [Q_j,D_k]=i\delta_{jk}I_d.
+\tag{3.4}
+\]</span>
+<p>The first identity uses symmetry of the Hessian of <span class="math" data-tex="\(h\)">\(h\)</span>. By reordering with the second identity, <span class="math" data-tex="\(D^\beta Q^\alpha\)">\(D^\beta Q^\alpha\)</span>, for <span class="math" data-tex="\(|\alpha|=|\beta|=k\)">\(|\alpha|=|\beta|=k\)</span>, is a finite linear combination of products of at most <span class="math" data-tex="\(k\)">\(k\)</span> operators <span class="math" data-tex="\(Q_jD_l\)">\(Q_jD_l\)</span>, including the empty product. An induction pairs one derivative with one <span class="math" data-tex="\(Q\)">\(Q\)</span>; every commutation term removes that pair and leaves the same equality of the two remaining counts. Definition (1.2) therefore gives</p>
+<span class="math math-display" data-tex="\[
+D^\beta Q^\alpha u\in B^{-m-n/4}_{2,\infty}.
+\tag{3.5}
+\]">\[
+D^\beta Q^\alpha u\in B^{-m-n/4}_{2,\infty}.
+\tag{3.5}
+\]</span>
+<p>These outputs have compact support, because <span class="math" data-tex="\(u\)">\(u\)</span> does and the operators are proper. Hence their local Besov membership is global membership.</p>
+<p>With <span class="math" data-tex="\(v_h=e^{ih}\widehat u\)">\(v_h=e^{ih}\widehat u\)</span>, Fourier transformation gives the exact gauge identity</p>
+<span class="math math-display" data-tex="\[
+\widehat{Q^\alpha u}
+=e^{-ih}i^{|\alpha|}\partial_\xi^\alpha v_h.
+\tag{3.6}
+\]">\[
+\widehat{Q^\alpha u}
+=e^{-ih}i^{|\alpha|}\partial_\xi^\alpha v_h.
+\tag{3.6}
+\]</span>
+<p>Applying the dyadic bound in (3.5), summing over all <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of length <span class="math" data-tex="\(k\)">\(k\)</span>, and using <span class="math" data-tex="\(\sum_{|\beta|=k}|\xi^\beta|^2\asymp|\xi|^{2k}\)">\(\sum_{|\beta|=k}|\xi^\beta|^2\asymp|\xi|^{2k}\)</span>, gives, on any fixed enlarged annulus,</p>
+<span class="math math-display" data-tex="\[
+\int_{R/2&lt;|\xi|&lt;2R}|\partial_\xi^\alpha v_h|^2\,d\xi
+\leq C_\alpha R^{2(m+n/4)-2|\alpha|},\qquad R\geq2.
+\tag{3.7}
+\]">\[
+\int_{R/2&lt;|\xi|&lt;2R}|\partial_\xi^\alpha v_h|^2\,d\xi
+\leq C_\alpha R^{2(m+n/4)-2|\alpha|},\qquad R\geq2.
+\tag{3.7}
+\]</span>
+<p>Put <span class="math" data-tex="\(r=m-n/4\)">\(r=m-n/4\)</span> and <span class="math" data-tex="\(v_R(\eta)=R^{-r}v_h(R\eta)\)">\(v_R(\eta)=R^{-r}v_h(R\eta)\)</span>. A change of variables turns (3.7) into uniform <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bounds for every derivative of <span class="math" data-tex="\(v_R\)">\(v_R\)</span> on a fixed annulus. The local frequency Sobolev estimate from the prerequisites now bounds every derivative uniformly on a smaller annulus. Rescaling gives</p>
+<span class="math math-display" data-tex="\[
+|\partial_\xi^\alpha v_h(\xi)|
+\leq C_\alpha\langle\xi\rangle^{r-|\alpha|}.
+\tag{3.8}
+\]">\[
+|\partial_\xi^\alpha v_h(\xi)|
+\leq C_\alpha\langle\xi\rangle^{r-|\alpha|}.
+\tag{3.8}
+\]</span>
+<p>Since <span class="math" data-tex="\(H-h\)">\(H-h\)</span> is rapidly decreasing at high frequency, multiplication by <span class="math" data-tex="\(e^{i(H-h)}\)">\(e^{i(H-h)}\)</span> preserves these bounds. This proves the forward implication for <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Proof of the converse.</strong> Let <span class="math" data-tex="\(w=\mathcal F^{-1}(e^{-iH}v)\)">\(w=\mathcal F^{-1}(e^{-iH}v)\)</span>, <span class="math" data-tex="\(v\in S^r\)">\(v\in S^r\)</span>. Compactly localizing in <span class="math" data-tex="\(x\)">\(x\)</span> gives an oscillatory amplitude of order <span class="math" data-tex="\(r\)">\(r\)</span> with phase <span class="math" data-tex="\(x\cdot\xi-H(\xi)\)">\(x\cdot\xi-H(\xi)\)</span>. The Fourier reduction of the preceding lesson, with <span class="math" data-tex="\(N=n\)">\(N=n\)</span>, says that every such compact localization again has the form <span class="math" data-tex="\(\widehat w=e^{-iH}v_0\)">\(\widehat w=e^{-iH}v_0\)</span>, with <span class="math" data-tex="\(v_0\in S^r\)">\(v_0\in S^r\)</span>. Constants in the normalization do not change symbol membership.</p>
+<p>We show that any admissible first-order <span class="math" data-tex="\(L\)">\(L\)</span> preserves this local class. Properness allows a compact input cutoff for any output compact set; the omitted input contributes a smooth output. In left quantization the localized input has amplitude <span class="math" data-tex="\(p(x,\xi)v_0(\xi)\)">\(p(x,\xi)v_0(\xi)\)</span>. The vanishing condition and the fundamental theorem of calculus give, on the working base set,</p>
+<span class="math math-display" data-tex="\[
+p(x,\xi)=p_0(x,\xi)
++\sum_{j=1}^n (x_j-H_j(\xi))b_j(x,\xi),
+\quad p_0\in S^0,\quad b_j\in S^1.
+\tag{3.9}
+\]">\[
+p(x,\xi)=p_0(x,\xi)
++\sum_{j=1}^n (x_j-H_j(\xi))b_j(x,\xi),
+\quad p_0\in S^0,\quad b_j\in S^1.
+\tag{3.9}
+\]</span>
+<p>For example, <span class="math" data-tex="\(b_j\)">\(b_j\)</span> is the integral of <span class="math" data-tex="\(\partial_{x_j}p\)">\(\partial_{x_j}p\)</span> on the straight segment from <span class="math" data-tex="\(H&#x27;(\xi)\)">\(H&#x27;(\xi)\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>. Extend the localized symbol over that segment first. Derivatives of <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> lose one frequency order, so the chain rule gives precisely <span class="math" data-tex="\(S^1\)">\(S^1\)</span> bounds for <span class="math" data-tex="\(b_j\)">\(b_j\)</span>. The value <span class="math" data-tex="\(p(H&#x27;(\xi),\xi)\)">\(p(H&#x27;(\xi),\xi)\)</span> is order zero by the principal vanishing condition and supplies <span class="math" data-tex="\(p_0\)">\(p_0\)</span>.</p>
+<p>For the phase <span class="math" data-tex="\(\Phi=x\cdot\xi-H(\xi)\)">\(\Phi=x\cdot\xi-H(\xi)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(x_j-H_j(\xi))e^{i\Phi}
+=\frac1i\partial_{\xi_j}e^{i\Phi}.
+\]">\[
+(x_j-H_j(\xi))e^{i\Phi}
+=\frac1i\partial_{\xi_j}e^{i\Phi}.
+\]</span>
+<p>Integrating by parts converts the amplitude in (3.9) to</p>
+<span class="math math-display" data-tex="\[
+p_0v_0+i\sum_j\partial_{\xi_j}(b_jv_0),
+\tag{3.10}
+\]">\[
+p_0v_0+i\sum_j\partial_{\xi_j}(b_jv_0),
+\tag{3.10}
+\]</span>
+<p>which is an ordinary amplitude of order <span class="math" data-tex="\(r\)">\(r\)</span>. All identities hold as oscillatory integrals by frequency cutoffs and the defining integration-by-parts estimate. After a compact output cutoff, Fourier reduction again gives a reduced symbol of order <span class="math" data-tex="\(r\)">\(r\)</span>. Thus the same argument can be repeated for every finite admissible word. It works componentwise for vectors and with matrix coefficients in their stated order.</p>
+<p>A compact output with reduced symbol in <span class="math" data-tex="\(S^r\)">\(S^r\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\int_{R/2&lt;|\xi|&lt;2R}|\widehat w(\xi)|^2\,d\xi
+\leq C R^{2r+n}=C R^{2(m+n/4)}.
+\tag{3.11}
+\]">\[
+\int_{R/2&lt;|\xi|&lt;2R}|\widehat w(\xi)|^2\,d\xi
+\leq C R^{2r+n}=C R^{2(m+n/4)}.
+\tag{3.11}
+\]</span>
+<p>This is its <span class="math" data-tex="\(B^{-m-n/4}_{2,\infty}\)">\(B^{-m-n/4}_{2,\infty}\)</span> bound. Low frequencies are harmless for a compact distribution, and smooth localized outputs have every Besov order. Hence every word satisfies (1.2). This proves the converse and the noncompact local assertion. ∎</p>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+\bigcap_{m\in\mathbb R}I^m(X,\Lambda;E)=C^\infty(X;E).
+\tag{3.12}
+\]">\[
+\bigcap_{m\in\mathbb R}I^m(X,\Lambda;E)=C^\infty(X;E).
+\tag{3.12}
+\]</span>
+<p>Locally, the intersection makes the reduced symbol rapidly decreasing, and Fourier inversion gives smoothness. A smooth section satisfies every localized word estimate, proving the reverse inclusion.</p>
+<h2 id="every-local-phase-gives-the-intrinsic-class"><span id="4-every-local-phase-gives-the-intrinsic-class"></span><span id="section-4"></span>4. Every local phase gives the intrinsic class</h2>
+<p>The order in the preceding lesson can now be interpreted intrinsically. Suppose <span class="math" data-tex="\(\phi(x,\theta)\)">\(\phi(x,\theta)\)</span> is a nondegenerate phase with <span class="math" data-tex="\(N\)">\(N\)</span> variables parametrizing a small part of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+(2\pi)^{-(n+2N)/4}
+\int e^{i\phi(x,\theta)}a(x,\theta)\,d\theta
+\in I^m(X,\Lambda)
+\quad\text{if }a\in S^{m+(n-2N)/4}
+\tag{4.1}
+\]">\[
+(2\pi)^{-(n+2N)/4}
+\int e^{i\phi(x,\theta)}a(x,\theta)\,d\theta
+\in I^m(X,\Lambda)
+\quad\text{if }a\in S^{m+(n-2N)/4}
+\tag{4.1}
+\]</span>
+<p>and the amplitude is supported inside a sufficiently small compact-base cone. For a clean phase of excess <span class="math" data-tex="\(e\)">\(e\)</span>, the corresponding statement is</p>
+<span class="math math-display" data-tex="\[
+(2\pi)^{-(n+2N-2e)/4}
+\int e^{i\phi(x,\theta)}a(x,\theta)\,d\theta
+\in I^m(X,\Lambda),
+\qquad a\in S^{m+(n-2N-2e)/4}.
+\tag{4.2}
+\]">\[
+(2\pi)^{-(n+2N-2e)/4}
+\int e^{i\phi(x,\theta)}a(x,\theta)\,d\theta
+\in I^m(X,\Lambda),
+\qquad a\in S^{m+(n-2N-2e)/4}.
+\tag{4.2}
+\]</span>
+<p>Both assertions follow from the Fourier-symbol reduction and Theorem 3.1, after the base change making <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> a frequency graph. Theorem 2.1 and coordinate invariance then remove that choice.</p>
+<p>The extension of amplitudes uses the following symbol fact, also useful for changing the number of base or phase variables.</p>
+<p><strong>Lemma 4.1 (homogeneous pullback).</strong> Let <span class="math" data-tex="\(\Gamma_j\subset\mathbb R^{n_j}\times(\mathbb R^{N_j}\setminus0)\)">\(\Gamma_j\subset\mathbb R^{n_j}\times(\mathbb R^{N_j}\setminus0)\)</span> be open cones, and let <span class="math" data-tex="\(F:\Gamma_1\to\Gamma_2\)">\(F:\Gamma_1\to\Gamma_2\)</span> be smooth and proper. Suppose
+<span class="math math-display" data-tex="\[
+F(x,t\theta)=(y,t\eta)\quad\text{whenever }F(x,\theta)=(y,\eta),\quad t&gt;0.
+\]">\[
+F(x,t\theta)=(y,t\eta)\quad\text{whenever }F(x,\theta)=(y,\eta),\quad t&gt;0.
+\]</span>
+If <span class="math" data-tex="\(a\in S^q\)">\(a\in S^q\)</span> has its support inside a cone whose normalized base and frequency directions form a compact subset of <span class="math" data-tex="\(\Gamma_2\)">\(\Gamma_2\)</span>, then <span class="math" data-tex="\(a\circ F\)">\(a\circ F\)</span>, extended by zero outside <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span>, is in <span class="math" data-tex="\(S^q\)">\(S^q\)</span>. Here its closed ambient support is contained in <span class="math" data-tex="\(\Gamma_2\)">\(\Gamma_2\)</span>; in particular it is separated from zero frequency on the compact base set.</p>
+<p><strong>Proof.</strong> Intersect the supporting cone with <span class="math" data-tex="\(|\eta|=1\)">\(|\eta|=1\)</span>; this is a compact subset of <span class="math" data-tex="\(\Gamma_2\)">\(\Gamma_2\)</span>. Its inverse image is compact by properness. On this inverse image the input frequency radius is bounded above and below by positive constants, and the input base points range over a compact set. Dilation therefore gives <span class="math" data-tex="\(|\theta|\asymp|\eta|\)">\(|\theta|\asymp|\eta|\)</span> wherever <span class="math" data-tex="\(a\circ F\)">\(a\circ F\)</span> can be nonzero, with input directions in a fixed interior compact set.</p>
+<p>On a fixed normalized input annulus, all derivatives of <span class="math" data-tex="\(F\)">\(F\)</span> are bounded. The functions <span class="math" data-tex="\((y,\eta)\mapsto a(y,t\eta)\)">\((y,\eta)\mapsto a(y,t\eta)\)</span> and every fixed derivative in these normalized variables are bounded by <span class="math" data-tex="\(C t^q\)">\(C t^q\)</span>, for <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span> and <span class="math" data-tex="\(|\eta|\)">\(|\eta|\)</span> in the fixed comparison annulus. The chain rule and homogeneity give the same bounds for <span class="math" data-tex="\(a(F(x,t\theta))\)">\(a(F(x,t\theta))\)</span> differentiated in normalized <span class="math" data-tex="\((x,\theta)\)">\((x,\theta)\)</span>. Returning to physical frequency derivatives divides by <span class="math" data-tex="\(t\)">\(t\)</span> for each frequency derivative and gives the <span class="math" data-tex="\(S^q\)">\(S^q\)</span> estimates. Bounded frequencies are covered by smoothness on the compact inverse image. Its normalized support lies strictly inside <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span>, so zero extension is smooth and satisfies the same estimates. ∎</p>
+<p><strong>Theorem 4.2 (local converse for a prescribed phase).</strong> Every section of <span class="math" data-tex="\(I^m\)">\(I^m\)</span>, microlocally supported in a sufficiently small part of the Lagrangian parametrized by <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, has a representation (4.1), or (4.2) for a clean phase, modulo a smooth section. This holds in any fixed local bundle frame.</p>
+<p><strong>Proof for a nondegenerate phase.</strong> Use Theorem 3.1 to write the reduced Fourier symbol as <span class="math" data-tex="\(v\in S^r\)">\(v\in S^r\)</span>, <span class="math" data-tex="\(r=m-n/4\)">\(r=m-n/4\)</span>, supported in a small angular cone modulo a rapidly decreasing symbol. At the phase-critical point mapping to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, let <span class="math" data-tex="\(G\)">\(G\)</span> be the invertible full Hessian in <span class="math" data-tex="\((x,\theta)\)">\((x,\theta)\)</span> used in Fourier reduction. Its signature is constant after shrinking the working cone. The leading reduction map is</p>
+<span class="math math-display" data-tex="\[
+a\longmapsto(2\pi)^{n/4}
+e^{i\pi\operatorname{sgn}G/4}
+\frac{a|_{C_\phi}}{|\det G|^{1/2}}.
+\tag{4.3}
+\]">\[
+a\longmapsto(2\pi)^{n/4}
+e^{i\pi\operatorname{sgn}G/4}
+\frac{a|_{C_\phi}}{|\det G|^{1/2}}.
+\tag{4.3}
+\]</span>
+<p>Choose an amplitude whose restriction to <span class="math" data-tex="\(C_\phi\)">\(C_\phi\)</span> is</p>
+<span class="math math-display" data-tex="\[
+a_0|_{C_\phi}=(2\pi)^{-n/4}
+e^{-i\pi\operatorname{sgn}G/4}
+|\det G|^{1/2}v(\phi_x&#x27;).
+\tag{4.4}
+\]">\[
+a_0|_{C_\phi}=(2\pi)^{-n/4}
+e^{-i\pi\operatorname{sgn}G/4}
+|\det G|^{1/2}v(\phi_x&#x27;).
+\tag{4.4}
+\]</span>
+<p>Homogeneous coordinates on a neighborhood of the critical set extend this to an ordinary symbol supported in the chosen compact-base cone. More explicitly, normalize the frequency radius, extend smoothly in transverse coordinates on the resulting compact set, then restore the homogeneous determinant factor and the symbol argument. The chain rule preserves the order. Since <span class="math" data-tex="\(|\det G|^{1/2}\)">\(|\det G|^{1/2}\)</span> has degree <span class="math" data-tex="\((n-N)/2\)">\((n-N)/2\)</span>, that order is</p>
+<span class="math math-display" data-tex="\[
+r+(n-N)/2=m+(n-2N)/4.
+\]">\[
+r+(n-N)/2=m+(n-2N)/4.
+\]</span>
+<p>The full stationary-phase expansion makes the reduced symbol of <span class="math" data-tex="\(a_0\)">\(a_0\)</span> equal to <span class="math" data-tex="\(v\)">\(v\)</span> modulo <span class="math" data-tex="\(S^{r-1}\)">\(S^{r-1}\)</span>. Apply (4.4) to that residual, obtaining <span class="math" data-tex="\(a_1\)">\(a_1\)</span> of one lower order. Inductively obtain <span class="math" data-tex="\(a_j\)">\(a_j\)</span> of order <span class="math" data-tex="\(m+(n-2N)/4-j\)">\(m+(n-2N)/4-j\)</span>, with the residual after <span class="math" data-tex="\(j\)">\(j\)</span> corrections one order lower again.</p>
+<p>All amplitudes can have their support in one common compact-base cone: choose nested cutoffs equal to one near the smaller critical directions carrying <span class="math" data-tex="\(v\)">\(v\)</span>. Residuals outside those directions are rapidly decreasing by nonstationarity and may be discarded. The imported support-preserving asymptotic summation gives <span class="math" data-tex="\(a\sim\sum_j a_j\)">\(a\sim\sum_j a_j\)</span>. Fourier reduction has remainder estimates in each lower symbol order, so its reduced symbol differs from <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(S^{-\infty}\)">\(S^{-\infty}\)</span>. Inverse Fourier transformation makes the distributional error smooth. This proves (4.1) modulo a smooth section.</p>
+<p><strong>Proof for a clean phase.</strong> On the critical set choose local fiber variables <span class="math" data-tex="\(t=\theta&#x27;&#x27;/|\xi|\)">\(t=\theta&#x27;&#x27;/|\xi|\)</span>, of dimension <span class="math" data-tex="\(e\)">\(e\)</span>. They parametrize a small compact portion of each fiber <span class="math" data-tex="\(C_\xi\)">\(C_\xi\)</span>. Let <span class="math" data-tex="\(w(t)\)">\(w(t)\)</span> be smooth, compactly supported in this portion, with <span class="math" data-tex="\(\int w(t)\,dt=1\)">\(\int w(t)\,dt=1\)</span>. In physical fiber variables set</p>
+<span class="math math-display" data-tex="\[
+b(\xi,\theta&#x27;&#x27;)=|\xi|^{-e}w(\theta&#x27;&#x27;/|\xi|),
+\qquad\int b(\xi,\theta&#x27;&#x27;)\,d\theta&#x27;&#x27;=1.
+\tag{4.5}
+\]">\[
+b(\xi,\theta&#x27;&#x27;)=|\xi|^{-e}w(\theta&#x27;&#x27;/|\xi|),
+\qquad\int b(\xi,\theta&#x27;&#x27;)\,d\theta&#x27;&#x27;=1.
+\tag{4.5}
+\]</span>
+<p>Local fiber charts are obtained from a degree-zero transverse slice and dilation, so this formula is smooth in <span class="math" data-tex="\(\xi\)">\(\xi\)</span> on the cone. Let <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span> be the reduced normal Hessian. Choose the critical restriction</p>
+<span class="math math-display" data-tex="\[
+a_0|_{C_\phi}=(2\pi)^{-n/4}
+e^{-i\pi\operatorname{sgn}G&#x27;/4}
+|\det G&#x27;|^{1/2}v(\xi)b(\xi,\theta&#x27;&#x27;),
+\qquad \xi=\phi_x&#x27;.
+\tag{4.6}
+\]">\[
+a_0|_{C_\phi}=(2\pi)^{-n/4}
+e^{-i\pi\operatorname{sgn}G&#x27;/4}
+|\det G&#x27;|^{1/2}v(\xi)b(\xi,\theta&#x27;&#x27;),
+\qquad \xi=\phi_x&#x27;.
+\tag{4.6}
+\]</span>
+<p>The leading fiber integral in Fourier reduction is then exactly <span class="math" data-tex="\(v\)">\(v\)</span>. The determinant factor has degree <span class="math" data-tex="\((n-N+e)/2\)">\((n-N+e)/2\)</span>, while <span class="math" data-tex="\(b\)">\(b\)</span> has degree <span class="math" data-tex="\(-e\)">\(-e\)</span>. Thus the amplitude order is</p>
+<span class="math math-display" data-tex="\[
+r+(n-N+e)/2-e=m+(n-2N-2e)/4.
+\]">\[
+r+(n-N+e)/2-e=m+(n-2N-2e)/4.
+\]</span>
+<p>Extend off the critical set in homogeneous coordinates as before. The smooth compact fiber support keeps all parameter estimates uniform. Correct residuals successively with this same right inverse of the leading fiber integral and asymptotically sum. The full clean expansion again makes the remaining error rapidly decreasing. This proves (4.2) modulo a smooth section. ∎</p>
+<p>This theorem identifies the distributional class for all local parametrizing phases. It does not yet identify their principal amplitudes as sections of a globally patched density and Maslov bundle; that requires tracking the transition factors between phases.</p>
+<h2 id="sobolev-information-improves-the-symbol-order"><span id="5-sobolev-information-improves-the-symbol-order"></span><span id="section-5"></span>5. Sobolev information improves the symbol order</h2>
+<p><strong>Theorem 5.1.</strong> Suppose <span class="math" data-tex="\(u\in I^m(X,\Lambda;E)\)">\(u\in I^m(X,\Lambda;E)\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> is microlocally in <span class="math" data-tex="\(H^{s_0}\)">\(H^{s_0}\)</span> at <span class="math" data-tex="\(\gamma\in\Lambda\)">\(\gamma\in\Lambda\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+u\in I^\mu\text{ at }\gamma
+\quad\text{for every }\mu+s_0+n/4&gt;0.
+\tag{5.1}
+\]">\[
+u\in I^\mu\text{ at }\gamma
+\quad\text{for every }\mu+s_0+n/4&gt;0.
+\tag{5.1}
+\]</span>
+<p>The inequality is strict. No conclusion at <span class="math" data-tex="\(\mu=-s_0-n/4\)">\(\mu=-s_0-n/4\)</span> is made.</p>
+<p><strong>Proof.</strong> Choose a proper order-zero cutoff elliptic at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> so its output is compactly supported in a chart, has wavefront in a small cone, and belongs to <span class="math" data-tex="\(H^{s_0}\)">\(H^{s_0}\)</span>. Theorem 2.1 preserves its intrinsic class. Change base coordinates to the frequency graph and use Theorem 3.1. Smooth errors and the portions outside a slightly larger frequency cone are harmless. With <span class="math" data-tex="\(r=m-n/4\)">\(r=m-n/4\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+v_R(\eta)=R^{-r}v(R\eta),\qquad
+t=s_0+m+n/4.
+\]">\[
+v_R(\eta)=R^{-r}v(R\eta),\qquad
+t=s_0+m+n/4.
+\]</span>
+<p>The symbol estimates give uniformly bounded derivatives of <span class="math" data-tex="\(v_R\)">\(v_R\)</span> on each fixed annulus. The Sobolev hypothesis and <span class="math" data-tex="\(|e^{-iH}|=1\)">\(|e^{-iH}|=1\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\|v_R\|_{L^2(\text{annulus})}\leq C R^{-t}.
+\tag{5.2}
+\]">\[
+\|v_R\|_{L^2(\text{annulus})}\leq C R^{-t}.
+\tag{5.2}
+\]</span>
+<p>If <span class="math" data-tex="\(t\leq0\)">\(t\leq0\)</span>, condition (5.1) implies <span class="math" data-tex="\(\mu&gt;m\)">\(\mu&gt;m\)</span>, so symbol inclusion already proves the result. Assume <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>.</p>
+<p>Multiply <span class="math" data-tex="\(v_R\)">\(v_R\)</span> by a fixed smooth annular cutoff, equal to one on the region under examination, and call the result <span class="math" data-tex="\(F_R\)">\(F_R\)</span>. It has <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm at most <span class="math" data-tex="\(CR^{-t}\)">\(CR^{-t}\)</span>, and every fixed derivative has bounded <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm. For an integer <span class="math" data-tex="\(K&gt;|\beta|+n/2\)">\(K&gt;|\beta|+n/2\)</span>, Fourier inversion in the <span class="math" data-tex="\(\eta\)">\(\eta\)</span> variable, split at a radius <span class="math" data-tex="\(T\geq1\)">\(T\geq1\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+|\partial^\beta F_R(\eta)|
+\leq C_{\beta,K}\left(
+T^{|\beta|+n/2}\|F_R\|_2
++T^{|\beta|+n/2-K}
+\sum_{|\alpha|=K}\|\partial^\alpha F_R\|_2\right).
+\tag{5.3}
+\]">\[
+|\partial^\beta F_R(\eta)|
+\leq C_{\beta,K}\left(
+T^{|\beta|+n/2}\|F_R\|_2
++T^{|\beta|+n/2-K}
+\sum_{|\alpha|=K}\|\partial^\alpha F_R\|_2\right).
+\tag{5.3}
+\]</span>
+<p>For the low-frequency part, Cauchy–Schwarz integrates <span class="math" data-tex="\(|\zeta|^{2|\beta|}\)">\(|\zeta|^{2|\beta|}\)</span> over the ball. For the tail, insert <span class="math" data-tex="\(|\zeta|^K\widehat F_R\)">\(|\zeta|^K\widehat F_R\)</span> and integrate <span class="math" data-tex="\(|\zeta|^{2|\beta|-2K}\)">\(|\zeta|^{2|\beta|-2K}\)</span> outside the ball; its integral converges by the choice of <span class="math" data-tex="\(K\)">\(K\)</span>. Plancherel bounds the weighted transform by the displayed derivative norms. This proves (5.3).</p>
+<p>Taking <span class="math" data-tex="\(T=R^{t/K}\)">\(T=R^{t/K}\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+|\partial^\beta v_R|
+\leq C R^{-t+t(|\beta|+n/2)/K}.
+\]">\[
+|\partial^\beta v_R|
+\leq C R^{-t+t(|\beta|+n/2)/K}.
+\]</span>
+<p>Given any <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(K\)">\(K\)</span> large enough for the last positive exponent to be less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Rescaling gives</p>
+<span class="math math-display" data-tex="\[
+|\partial_\xi^\beta v(\xi)|
+\leq C_{\beta,\varepsilon}
+\langle\xi\rangle^{-s_0-n/2-|\beta|+\varepsilon}.
+\tag{5.4}
+\]">\[
+|\partial_\xi^\beta v(\xi)|
+\leq C_{\beta,\varepsilon}
+\langle\xi\rangle^{-s_0-n/2-|\beta|+\varepsilon}.
+\tag{5.4}
+\]</span>
+<p>For a fixed <span class="math" data-tex="\(\mu\)">\(\mu\)</span> satisfying (5.1), choose <span class="math" data-tex="\(\varepsilon&lt;\mu+s_0+n/4\)">\(\varepsilon&lt;\mu+s_0+n/4\)</span>. The bounds for every <span class="math" data-tex="\(\beta\)">\(\beta\)</span> place <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(S^{\mu-n/4}\)">\(S^{\mu-n/4}\)</span>. Theorem 3.1 proves the desired intrinsic membership, and localization returns it to <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. ∎</p>
+<h2 id="examples-and-exercises-with-complete-solutions"><span id="6-examples-and-exercises-with-complete-solutions"></span><span id="section-6"></span>6. Examples and exercises with complete solutions</h2>
+<p><strong>The point mass.</strong> On <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, take <span class="math" data-tex="\(H=0\)">\(H=0\)</span>. The graph is <span class="math" data-tex="\(T^*_0\mathbb R^n\setminus0\)">\(T^*_0\mathbb R^n\setminus0\)</span>, and <span class="math" data-tex="\(\widehat{\delta_0}=1\)">\(\widehat{\delta_0}=1\)</span>. Theorem 3.1 gives <span class="math" data-tex="\(\delta_0\in I^{n/4}\)">\(\delta_0\in I^{n/4}\)</span>. It is not in any smaller order because a nonzero constant is not a negative-order symbol. Its limiting Besov regularity is <span class="math" data-tex="\(-n/2\)">\(-n/2\)</span>, while its Sobolev regularity is strictly below <span class="math" data-tex="\(-n/2\)">\(-n/2\)</span>.</p>
+<p><strong>Exercise 6.1 (the dimension shift; introductory).</strong> If <span class="math" data-tex="\(v(\xi)=\langle\xi\rangle^r\)">\(v(\xi)=\langle\xi\rangle^r\)</span>, what is the intrinsic order of <span class="math" data-tex="\(\mathcal F^{-1}(e^{-iH}v)\)">\(\mathcal F^{-1}(e^{-iH}v)\)</span>? What regularity bound follows immediately?</p>
+<p><strong>Solution.</strong> The order is <span class="math" data-tex="\(m=r+n/4\)">\(m=r+n/4\)</span>. The dyadic integral of <span class="math" data-tex="\(|v|^2\)">\(|v|^2\)</span> is bounded by <span class="math" data-tex="\(CR^{2r+n}\)">\(CR^{2r+n}\)</span>; its endpoint is <span class="math" data-tex="\(B^{-r-n/2}_{2,\infty}\)">\(B^{-r-n/2}_{2,\infty}\)</span>. Hence every localized admissible word has this Besov order, and has Sobolev order <span class="math" data-tex="\(-r-n/2-\varepsilon\)">\(-r-n/2-\varepsilon\)</span> for every positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The phase factor has modulus one, but spatial localization and all iterated tests are justified by the converse proof, rather than just that modulus calculation.</p>
+<p><strong>Exercise 6.2 (matrix commutators; intermediate).</strong> On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, let <span class="math" data-tex="\(\Lambda=T^*_0\mathbb R\setminus0\)">\(\Lambda=T^*_0\mathbb R\setminus0\)</span>, <span class="math" data-tex="\(L=xMD_x\)">\(L=xMD_x\)</span>, and let <span class="math" data-tex="\(A=N\)">\(A=N\)</span> be a constant order-zero matrix. Choose <span class="math" data-tex="\(M,N\)">\(M,N\)</span> so that <span class="math" data-tex="\([L,A]\)">\([L,A]\)</span> has order one. Why does Theorem 2.1 still apply?</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(M=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)">\(M=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span> and <span class="math" data-tex="\(N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)">\(N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span>. Then <span class="math" data-tex="\([M,N]=N\)">\([M,N]=N\)</span> and <span class="math" data-tex="\([L,A]=xND_x\)">\([L,A]=xND_x\)</span>, an operator of order one. Its principal symbol <span class="math" data-tex="\(xN\xi\)">\(xN\xi\)</span> vanishes on <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, so it is itself admissible. Identity (2.1) therefore consists only of allowed words and the order-zero image of an allowed word. There is no scalar commutator assumption.</p>
+<p><strong>Exercise 6.3 (why two counts agree; intermediate).</strong> In one dimension, show that <span class="math" data-tex="\(D Q=Q D-i\)">\(D Q=Q D-i\)</span>, and express <span class="math" data-tex="\(D^2Q^2\)">\(D^2Q^2\)</span> as a polynomial in <span class="math" data-tex="\(QD\)">\(QD\)</span>, using <span class="math" data-tex="\([Q,D]=i\)">\([Q,D]=i\)</span>.</p>
+<p><strong>Solution.</strong> The first identity is immediate. Put <span class="math" data-tex="\(T=QD\)">\(T=QD\)</span>. Then <span class="math" data-tex="\(Q^2D^2=T^2+iT\)">\(Q^2D^2=T^2+iT\)</span>, since <span class="math" data-tex="\(T^2=Q(DQ)D=Q^2D^2-iQD\)">\(T^2=Q(DQ)D=Q^2D^2-iQD\)</span>. Also <span class="math" data-tex="\(D^2Q^2=Q^2D^2-4iQD-2\)">\(D^2Q^2=Q^2D^2-4iQD-2\)</span>, by commuting both derivatives through both <span class="math" data-tex="\(Q\)">\(Q\)</span>'s. Consequently <span class="math" data-tex="\(D^2Q^2=T^2-3iT-2\)">\(D^2Q^2=T^2-3iT-2\)</span>. Each term is a word in the first-order admissible operator <span class="math" data-tex="\(T\)">\(T\)</span>, or the empty word. The same pair-removal mechanism proves the multi-index assertion in (3.5).</p>
+<p><strong>Exercise 6.4 (a clean right inverse; intermediate).</strong> For the redundant phase <span class="math" data-tex="\(\phi(x,\theta_1,\theta_2)=x\theta_1\)">\(\phi(x,\theta_1,\theta_2)=x\theta_1\)</span> in dimension one, restricted to <span class="math" data-tex="\(\theta_1&gt;0\)">\(\theta_1&gt;0\)</span> and <span class="math" data-tex="\(|\theta_2|&lt;c\theta_1\)">\(|\theta_2|&lt;c\theta_1\)</span>, compute the amplitude order required for excess one. Construct a leading amplitude whose fiber reduction is a prescribed <span class="math" data-tex="\(v(\xi)\in S^{m-1/4}\)">\(v(\xi)\in S^{m-1/4}\)</span>, <span class="math" data-tex="\(\xi&gt;0\)">\(\xi&gt;0\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(n=1,N=2,e=1\)">\(n=1,N=2,e=1\)</span>, so the amplitude order is <span class="math" data-tex="\(m-5/4\)">\(m-5/4\)</span>. The normal Hessian in <span class="math" data-tex="\((x,\theta_1)\)">\((x,\theta_1)\)</span> is <span class="math" data-tex="\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span>, with determinant <span class="math" data-tex="\(-1\)">\(-1\)</span> and signature zero. For <span class="math" data-tex="\(w\in C_c^\infty((-c,c))\)">\(w\in C_c^\infty((-c,c))\)</span>, <span class="math" data-tex="\(\int w=1\)">\(\int w=1\)</span>, take on the critical set
+<span class="math math-display" data-tex="\[
+a_0=(2\pi)^{-1/4}v(\theta_1)\theta_1^{-1}
+w(\theta_2/\theta_1).
+\]">\[
+a_0=(2\pi)^{-1/4}v(\theta_1)\theta_1^{-1}
+w(\theta_2/\theta_1).
+\]</span>
+Its order is <span class="math" data-tex="\(m-1/4-1=m-5/4\)">\(m-1/4-1=m-5/4\)</span>, and <span class="math" data-tex="\((2\pi)^{1/4}\int a_0\,d\theta_2=v(\theta_1)\)">\((2\pi)^{1/4}\int a_0\,d\theta_2=v(\theta_1)\)</span>. A base cutoff equal to one at zero extends the amplitude. The normalized factor in (4.2) is <span class="math" data-tex="\((2\pi)^{-3/4}\)">\((2\pi)^{-3/4}\)</span>, so integrating out <span class="math" data-tex="\(\theta_2\)">\(\theta_2\)</span> gives the inverse Fourier coefficient <span class="math" data-tex="\((2\pi)^{-1}\)">\((2\pi)^{-1}\)</span>, as required.</p>
+<p><strong>Exercise 6.5 (the strict inequality; advanced).</strong> Construct a symbol <span class="math" data-tex="\(v\)">\(v\)</span> such that <span class="math" data-tex="\(\mathcal F^{-1}v\in H^{s_0}\)">\(\mathcal F^{-1}v\in H^{s_0}\)</span> and <span class="math" data-tex="\(v\in S^{-s_0-n/2+\varepsilon}\)">\(v\in S^{-s_0-n/2+\varepsilon}\)</span> for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, but <span class="math" data-tex="\(v\notin S^{-s_0-n/2}\)">\(v\notin S^{-s_0-n/2}\)</span>. Explain why this prevents replacing the strict inequality in Theorem 5.1 by equality.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(q=-s_0-n/2\)">\(q=-s_0-n/2\)</span>, choose a nonzero smooth bump <span class="math" data-tex="\(b\)">\(b\)</span>, supported in the unit ball with <span class="math" data-tex="\(b(0)=1\)">\(b(0)=1\)</span>, and choose <span class="math" data-tex="\(a&gt;3/n\)">\(a&gt;3/n\)</span>. For sufficiently large integers <span class="math" data-tex="\(j\)">\(j\)</span>, set <span class="math" data-tex="\(R_j=2^{j^2}\)">\(R_j=2^{j^2}\)</span>, <span class="math" data-tex="\(\xi_j=R_je_1\)">\(\xi_j=R_je_1\)</span>, and define disjoint bumps
+<span class="math math-display" data-tex="\[
+v(\xi)=\sum_j R_j^q j\,
+b\left(\frac{j^a(\xi-\xi_j)}{R_j}\right).
+\tag{6.1}
+\]">\[
+v(\xi)=\sum_j R_j^q j\,
+b\left(\frac{j^a(\xi-\xi_j)}{R_j}\right).
+\tag{6.1}
+\]</span>
+Their widths are <span class="math" data-tex="\(R_j/j^a\)">\(R_j/j^a\)</span>, much smaller than <span class="math" data-tex="\(R_j\)">\(R_j\)</span>, and the series is locally finite. A derivative of order <span class="math" data-tex="\(k\)">\(k\)</span> is bounded on the <span class="math" data-tex="\(j\)">\(j\)</span>-th bump by <span class="math" data-tex="\(C_kR_j^{q-k}j^{1+ak}\)">\(C_kR_j^{q-k}j^{1+ak}\)</span>. For each fixed <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the polynomial in <span class="math" data-tex="\(j\)">\(j\)</span> is bounded by <span class="math" data-tex="\(C_{k,\varepsilon}R_j^\varepsilon\)">\(C_{k,\varepsilon}R_j^\varepsilon\)</span>. Thus all ordinary symbol estimates of order <span class="math" data-tex="\(q+\varepsilon\)">\(q+\varepsilon\)</span> hold. At the centers, <span class="math" data-tex="\(R_j^{-q}v(\xi_j)=j\)">\(R_j^{-q}v(\xi_j)=j\)</span>, so the order-<span class="math" data-tex="\(q\)">\(q\)</span> estimate fails.</p>
+<p>The weighted Fourier energy of the <span class="math" data-tex="\(j\)">\(j\)</span>-th bump is bounded by a constant times
+<span class="math math-display" data-tex="\[
+R_j^{2s_0}R_j^{2q}j^2(R_j/j^a)^n=j^{2-an}.
+\]">\[
+R_j^{2s_0}R_j^{2q}j^2(R_j/j^a)^n=j^{2-an}.
+\]</span>
+The series converges because <span class="math" data-tex="\(an&gt;3\)">\(an&gt;3\)</span>. Plancherel gives <span class="math" data-tex="\(\mathcal F^{-1}v\in H^{s_0}\)">\(\mathcal F^{-1}v\in H^{s_0}\)</span>.</p>
+<p>For <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, Theorem 3.1 gives membership in <span class="math" data-tex="\(I^{-s_0-n/4+\varepsilon}\)">\(I^{-s_0-n/4+\varepsilon}\)</span> for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. To locate the failure, multiply the inverse transform by a compact cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, equal to one near zero. Fourier reduction for the phase <span class="math" data-tex="\(x\cdot\xi\)">\(x\cdot\xi\)</span> gives
+<span class="math math-display" data-tex="\[
+\widehat{\chi\mathcal F^{-1}v}-v\in S^{q+\varepsilon-1}.
+\]">\[
+\widehat{\chi\mathcal F^{-1}v}-v\in S^{q+\varepsilon-1}.
+\]</span>
+Choose <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>. That remainder is of strictly lower order than <span class="math" data-tex="\(q\)">\(q\)</span> and cannot cancel the values <span class="math" data-tex="\(R_j^q j\)">\(R_j^q j\)</span> at the centers. The compact localization is therefore not in <span class="math" data-tex="\(I^{-s_0-n/4}\)">\(I^{-s_0-n/4}\)</span> by Theorem 3.1. Its singular directions lie on the cotangent fiber at zero; thus the asserted endpoint improvement would fail there. Multiplication preserves its <span class="math" data-tex="\(H^{s_0}\)">\(H^{s_0}\)</span> membership. This proves the need for the strict range.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Hörmander IV, §25.1] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators</em>, Springer, 1985, §25.1.</li>
+</ul>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).</em></p>
+<footer><p>Original text: CC0.</p><p><a href="src/intrinsic-lagrangian-regularity.md">Editable original Markdown</a>. Source commit 39ee5c0c073550633578b12a80111fc27c86d250.</p></footer></main></body></html>

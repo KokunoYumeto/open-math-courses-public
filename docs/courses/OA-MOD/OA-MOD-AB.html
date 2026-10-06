@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weak compactness and second adjoints · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-AB.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 103 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="weak-compactness-and-second-adjoints">Weak compactness and second adjoints</h1>
+<p><em>Original exposition by the OA-MOD course project; CC0-1.0. The sequence proof retains its original programme authorship and CC0 attribution.</em></p>
+<p>Compactness in a predual is compactness in the weak topology of a Banach space. A bounded family always has weak-star accumulation points in its bidual, but those points need not belong to the original space. The Banach–Alaoglu theorem supplies the first assertion. The Eberlein–Šmulian theorem explains why testing sequences is sufficient to prove the second assertion. We prove the dual-ball theorem and its missing foundations, import the programme's full sequence proof for arbitrary real or complex Banach spaces, and then return to the second adjoint and the range of an inclusion.</p>
+<p>The entry assumptions are elementary set and linear algebra, the complete ordered real field, the definitions of metric and product topologies, and Zorn's maximality principle. <a href="notes/real-coercivity/predual-prerequisites.html#np1-norm-preserving-extension-and-the-norming-identity">Norm-preserving extension and the norming identity, NP1</a> proves real and complex Hahn–Banach extension and scalar norm detection in full. The compactness of scalar disks, finite-dimensional norm equivalence and the elementary sequence-topology facts are proved in AB-04 below. No separability, reflexivity or global faithful state is assumed.</p>
+<h2 id="dual-pairs-and-the-canonical-embedding"><span id="OA-MOD-AB-02"></span><span id="oa-mod-ab-02"></span>Dual pairs and the canonical embedding</h2>
+<p>Let <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span> be <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and let <span class="math" data-tex="\(X\)">\(X\)</span> be a normed space over <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>. Its continuous dual <span class="math" data-tex="\(X^*\)">\(X^*\)</span> consists of bounded linear functionals with norm</p>
+<span class="math math-display" data-tex="\[
+\|f\|=\sup_{\|x\|\leq1}|f(x)|.
+\tag{AB.1}
+\]">\[
+\|f\|=\sup_{\|x\|\leq1}|f(x)|.
+\tag{AB.1}
+\]</span>
+<p>It is a Banach space even when <span class="math" data-tex="\(X\)">\(X\)</span> is incomplete. Indeed, for a norm-Cauchy sequence <span class="math" data-tex="\((f_n)\)">\((f_n)\)</span>, each scalar sequence <span class="math" data-tex="\(f_n(x)\)">\(f_n(x)\)</span> is Cauchy. Set <span class="math" data-tex="\(f(x)=\lim_n f_n(x)\)">\(f(x)=\lim_n f_n(x)\)</span>. Linearity passes to the limit. The sequence of norms is bounded, so <span class="math" data-tex="\(|f(x)|\leq C\|x\|\)">\(|f(x)|\leq C\|x\|\)</span> for some finite <span class="math" data-tex="\(C\)">\(C\)</span>. If <span class="math" data-tex="\(\|f_n-f_m\|\leq\varepsilon\)">\(\|f_n-f_m\|\leq\varepsilon\)</span> for all sufficiently large <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, passage to the scalar limit gives <span class="math" data-tex="\(|f_n(x)-f(x)|\leq\varepsilon\|x\|\)">\(|f_n(x)-f(x)|\leq\varepsilon\|x\|\)</span>, hence <span class="math" data-tex="\(\|f_n-f\|\leq\varepsilon\)">\(\|f_n-f\|\leq\varepsilon\)</span>.</p>
+<p>The weak topology <span class="math" data-tex="\(\sigma(X,X^*)\)">\(\sigma(X,X^*)\)</span> is the topology generated by all evaluations <span class="math" data-tex="\(x\mapsto f(x)\)">\(x\mapsto f(x)\)</span>. A basic neighborhood imposes finitely many scalar inequalities. The weak-star topology <span class="math" data-tex="\(\sigma(X^*,X)\)">\(\sigma(X^*,X)\)</span> is similarly pointwise convergence on <span class="math" data-tex="\(X\)">\(X\)</span>. These are different dual pairs.</p>
+<p>The canonical map <span class="math" data-tex="\(J:X\to X^{**}\)">\(J:X\to X^{**}\)</span> is</p>
+<span class="math math-display" data-tex="\[
+(Jx)(f)=f(x).
+\tag{AB.2}
+\]">\[
+(Jx)(f)=f(x).
+\tag{AB.2}
+\]</span>
+<p>The programme's Hahn–Banach norm identity gives <span class="math" data-tex="\(\|Jx\|=\|x\|\)">\(\|Jx\|=\|x\|\)</span>, including <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. It also makes the weak topology Hausdorff: a nonzero difference is detected by a continuous functional. On <span class="math" data-tex="\(J(X)\)">\(J(X)\)</span>, the weak-star topology <span class="math" data-tex="\(\sigma(X^{**},X^*)\)">\(\sigma(X^{**},X^*)\)</span> is exactly the transported weak topology of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>We shall need norm-closed linear subspaces to be weakly closed. If <span class="math" data-tex="\(Y\subset X\)">\(Y\subset X\)</span> is norm closed and <span class="math" data-tex="\(x\notin Y\)">\(x\notin Y\)</span>, put <span class="math" data-tex="\(d=\operatorname{dist}(x,Y)&gt;0\)">\(d=\operatorname{dist}(x,Y)&gt;0\)</span>. On <span class="math" data-tex="\(Y+\mathbb F x\)">\(Y+\mathbb F x\)</span>, define <span class="math" data-tex="\(g(y+tx)=t\)">\(g(y+tx)=t\)</span>. This is well-defined and</p>
+<span class="math math-display" data-tex="\[
+|g(y+tx)|=|t|\leq d^{-1}\|y+tx\|.
+\tag{AB.3}
+\]">\[
+|g(y+tx)|=|t|\leq d^{-1}\|y+tx\|.
+\tag{AB.3}
+\]</span>
+<p>For <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, this follows by dividing by <span class="math" data-tex="\(t\)">\(t\)</span> in the distance estimate; the case <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is immediate. Hahn–Banach extends <span class="math" data-tex="\(g\)">\(g\)</span> continuously to <span class="math" data-tex="\(X\)">\(X\)</span>. It vanishes on <span class="math" data-tex="\(Y\)">\(Y\)</span> and takes value <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>, so a weak neighborhood of <span class="math" data-tex="\(x\)">\(x\)</span> misses <span class="math" data-tex="\(Y\)">\(Y\)</span>. Thus <span class="math" data-tex="\(Y\)">\(Y\)</span> is weakly closed.</p>
+<p>For a set <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span>, <strong>relative weak compactness</strong> means compactness of its weak closure in <span class="math" data-tex="\(X\)">\(X\)</span>. A <strong>weak accumulation point of a sequence</strong> is a point every weak neighborhood of which contains terms with infinitely many indices. The point need not belong to <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<h2 id="baire-category-and-uniform-boundedness"><span id="OA-MOD-AB-03"></span><span id="oa-mod-ab-03"></span>Baire category and uniform boundedness</h2>
+<p><strong>Baire theorem.</strong> A nonempty complete metric space is not a countable union of closed sets with empty interior.</p>
+<p><strong>Proof.</strong> Suppose the closed sets <span class="math" data-tex="\(F_n\)">\(F_n\)</span> have empty interior. Starting in any nonempty open set, choose a closed ball of positive radius at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span> lying in that open set and missing <span class="math" data-tex="\(F_1\)">\(F_1\)</span>. This is possible because the complement of <span class="math" data-tex="\(F_1\)">\(F_1\)</span> is open and dense. Inside the preceding ball's open concentric ball, choose a closed ball of positive radius at most <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span> missing <span class="math" data-tex="\(F_n\)">\(F_n\)</span>. The same argument constructs nested closed balls. Their centers are Cauchy: two later centers lie in a ball of diameter at most <span class="math" data-tex="\(2^{1-n}\)">\(2^{1-n}\)</span>. Completeness supplies a limit, and closedness puts it in every ball. It lies outside every <span class="math" data-tex="\(F_n\)">\(F_n\)</span>, contradicting a covering. If a chosen open set contains an isolated point, a sufficiently small positive-radius ball is its singleton and the construction still works. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Uniform boundedness theorem.</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a Banach space and let <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> be a family of bounded linear maps from <span class="math" data-tex="\(E\)">\(E\)</span> to a normed space <span class="math" data-tex="\(F\)">\(F\)</span>. If <span class="math" data-tex="\(\sup_{T\in\mathcal T}\|Tx\|&lt;\infty\)">\(\sup_{T\in\mathcal T}\|Tx\|&lt;\infty\)</span> for every <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, then <span class="math" data-tex="\(\sup_{T\in\mathcal T}\|T\|&lt;\infty\)">\(\sup_{T\in\mathcal T}\|T\|&lt;\infty\)</span>.</p>
+<p><strong>Proof.</strong> For positive integers <span class="math" data-tex="\(m\)">\(m\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+E_m=\{x\in E:\|Tx\|\leq m\text{ for every }T\in\mathcal T\}.
+\tag{AB.4}
+\]">\[
+E_m=\{x\in E:\|Tx\|\leq m\text{ for every }T\in\mathcal T\}.
+\tag{AB.4}
+\]</span>
+<p>Each <span class="math" data-tex="\(E_m\)">\(E_m\)</span> is closed, and the pointwise bound makes their union <span class="math" data-tex="\(E\)">\(E\)</span>. Baire supplies <span class="math" data-tex="\(m,x_0,r&gt;0\)">\(m,x_0,r&gt;0\)</span> with the open ball <span class="math" data-tex="\(B(x_0,r)\subset E_m\)">\(B(x_0,r)\subset E_m\)</span>. For <span class="math" data-tex="\(\|y\|\leq1\)">\(\|y\|\leq1\)</span>, both <span class="math" data-tex="\(x_0\)">\(x_0\)</span> and <span class="math" data-tex="\(x_0+(r/2)y\)">\(x_0+(r/2)y\)</span> belong to <span class="math" data-tex="\(E_m\)">\(E_m\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|Ty\|\leq \frac{2}{r}
+\bigl(\|T(x_0+(r/2)y)\|+\|Tx_0\|\bigr)
+\leq \frac{4m}{r}.
+\tag{AB.5}
+\]">\[
+\|Ty\|\leq \frac{2}{r}
+\bigl(\|T(x_0+(r/2)y)\|+\|Tx_0\|\bigr)
+\leq \frac{4m}{r}.
+\tag{AB.5}
+\]</span>
+<p>This is a uniform operator bound. The empty family and zero space satisfy the conclusion directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, a weakly bounded set <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> is norm bounded even if <span class="math" data-tex="\(X\)">\(X\)</span> is merely normed. Apply uniform boundedness to <span class="math" data-tex="\(J(K)\subset (X^*)^*\)">\(J(K)\subset (X^*)^*\)</span>, whose domain <span class="math" data-tex="\(X^*\)">\(X^*\)</span> is Banach by the preceding proof. Weak boundedness is exactly pointwise boundedness of that family.</p>
+<p>A weakly relatively compact set is weakly bounded because the continuous scalar image of a compact set is compact and bounded. For the last elementary assertion, the open disks of integral radius cover any scalar compact set, and a finite subcover gives a bound.</p>
+<h2 id="filters-and-compact-products"><span id="OA-MOD-AB-04"></span><span id="oa-mod-ab-04"></span>Filters and compact products</h2>
+<p>A <strong>proper filter</strong> <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> on a nonempty set <span class="math" data-tex="\(S\)">\(S\)</span> is a family of subsets containing <span class="math" data-tex="\(S\)">\(S\)</span>, excluding the empty set, closed under finite intersections and under passage to supersets. An <strong>ultrafilter</strong> is a proper filter maximal for inclusion.</p>
+<p><strong>Extension lemma.</strong> Every proper filter lies in an ultrafilter. An ultrafilter <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> contains exactly one of <span class="math" data-tex="\(A,S\setminus A\)">\(A,S\setminus A\)</span> for each <span class="math" data-tex="\(A\subset S\)">\(A\subset S\)</span>.</p>
+<p><strong>Proof.</strong> Order the proper filters containing <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> by inclusion. The union of a chain is a proper filter: finitely many chosen members lie in one filter of the chain. Zorn gives a maximal element. If <span class="math" data-tex="\(A\notin\mathcal U\)">\(A\notin\mathcal U\)</span> and every <span class="math" data-tex="\(U\in\mathcal U\)">\(U\in\mathcal U\)</span> met <span class="math" data-tex="\(A\)">\(A\)</span>, the supersets of the sets <span class="math" data-tex="\(U\cap A\)">\(U\cap A\)</span> would generate a larger proper filter. Hence some <span class="math" data-tex="\(U\)">\(U\)</span> misses <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(S\setminus A\in\mathcal U\)">\(S\setminus A\in\mathcal U\)</span>. Both complementary sets cannot belong to a proper filter. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A filter on a topological space <strong>converges to <span class="math" data-tex="\(s\)">\(s\)</span></strong> if it contains every neighborhood of <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>Compactness criterion.</strong> A space <span class="math" data-tex="\(S\)">\(S\)</span> is compact if and only if every ultrafilter on <span class="math" data-tex="\(S\)">\(S\)</span> converges to at least one point. In a Hausdorff space its limit is unique.</p>
+<p><strong>Proof.</strong> The empty space satisfies both assertions. On a nonempty compact space, the closed sets <span class="math" data-tex="\(\overline U\)">\(\overline U\)</span>, <span class="math" data-tex="\(U\in\mathcal U\)">\(U\in\mathcal U\)</span>, have the finite-intersection property, since their finite intersections contain the corresponding nonempty filter intersections. They therefore have a common point <span class="math" data-tex="\(s\)">\(s\)</span>: otherwise their open complements would cover <span class="math" data-tex="\(S\)">\(S\)</span> and have a finite subcover. If an open neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(s\)">\(s\)</span> were absent from <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, then <span class="math" data-tex="\(S\setminus V\in\mathcal U\)">\(S\setminus V\in\mathcal U\)</span>. This closed set would contain <span class="math" data-tex="\(s\)">\(s\)</span>, a contradiction. Thus the filter converges.</p>
+<p>Conversely, if an open cover has no finite subcover, its closed complements have the finite-intersection property and generate a proper filter. Extend it to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, and suppose <span class="math" data-tex="\(\mathcal U\to s\)">\(\mathcal U\to s\)</span>. One member <span class="math" data-tex="\(V\)">\(V\)</span> of the cover contains <span class="math" data-tex="\(s\)">\(s\)</span>, so both <span class="math" data-tex="\(V\)">\(V\)</span> and its complement belong to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, a contradiction. Finally, disjoint neighborhoods of two distinct Hausdorff points cannot both lie in a proper filter. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Compact product theorem.</strong> An arbitrary product of compact spaces is compact in its product topology.</p>
+<p><strong>Proof.</strong> A product with an empty factor is empty and compact; an empty product is a singleton. Otherwise let <span class="math" data-tex="\(P=\prod_{i\in I}S_i\)">\(P=\prod_{i\in I}S_i\)</span>, and let <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> be an ultrafilter on <span class="math" data-tex="\(P\)">\(P\)</span>. For each coordinate projection <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span>, the family</p>
+<span class="math math-display" data-tex="\[
+\mathcal U_i=\{A\subset S_i:\pi_i^{-1}(A)\in\mathcal U\}
+\tag{AB.6}
+\]">\[
+\mathcal U_i=\{A\subset S_i:\pi_i^{-1}(A)\in\mathcal U\}
+\tag{AB.6}
+\]</span>
+<p>is an ultrafilter, as follows directly from inverse images, finite intersections and the complement criterion. Compactness supplies a limit <span class="math" data-tex="\(s_i\in S_i\)">\(s_i\in S_i\)</span>. Choose these limits; the same choice principle underlying Zorn is in force. Every basic neighborhood of <span class="math" data-tex="\(s=(s_i)_{i\in I}\)">\(s=(s_i)_{i\in I}\)</span> is a finite intersection of inverse images of coordinate neighborhoods, hence belongs to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Thus <span class="math" data-tex="\(\mathcal U\to s\)">\(\mathcal U\to s\)</span>, and the criterion proves compactness. No countability of <span class="math" data-tex="\(I\)">\(I\)</span> has been introduced. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Two elementary consequences will be used below. A closed subset of a compact space is compact: add its open complement to any cover and use a finite subcover. A compact subset of a Hausdorff space is closed: for an outside point, disjoint neighborhoods separating it from each compact-set point have a finite subfamily on the compact side; the intersection of the corresponding outside neighborhoods misses the set. A continuous image of a compact space is compact, by pulling back open covers.</p>
+<p><strong>Scalar and finite-dimensional compactness.</strong> A closed interval <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> is compact. For a proof, let <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> be an ultrafilter on it. Bisect the interval; at least one closed half belongs to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, since a finite union in an ultrafilter has a member in the ultrafilter. Repeat within the chosen half. This gives nested intervals <span class="math" data-tex="\([a_n,b_n]\in\mathcal U\)">\([a_n,b_n]\in\mathcal U\)</span> of lengths at most <span class="math" data-tex="\(2^{-n}(b-a)\)">\(2^{-n}(b-a)\)</span>. The supremum <span class="math" data-tex="\(s=\sup_n a_n\)">\(s=\sup_n a_n\)</span> satisfies <span class="math" data-tex="\(a_n\le s\le b_n\)">\(a_n\le s\le b_n\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. Each neighborhood of <span class="math" data-tex="\(s\)">\(s\)</span> contains a sufficiently short interval <span class="math" data-tex="\([a_n,b_n]\)">\([a_n,b_n]\)</span>, so belongs to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. The ultrafilter criterion proves compactness. The degenerate interval is a singleton. The lengths tend to zero because the complete ordered real field is Archimedean: if the integers had a finite supremum <span class="math" data-tex="\(M\)">\(M\)</span>, an integer exceeding <span class="math" data-tex="\(M-1\)">\(M-1\)</span> would have its successor exceeding <span class="math" data-tex="\(M\)">\(M\)</span>; and <span class="math" data-tex="\(2^n\ge n+1\)">\(2^n\ge n+1\)</span>.</p>
+<p>Finite real coordinate boxes are compact by the product theorem. The ordinary topology of <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> is the real coordinate topology on <span class="math" data-tex="\(\mathbb R^{2d}\)">\(\mathbb R^{2d}\)</span>; the inequalities</p>
+<span class="math math-display" data-tex="\[
+\max(|\operatorname{Re}z|,|\operatorname{Im}z|)\le |z|
+\le |\operatorname{Re}z|+|\operatorname{Im}z|
+\]">\[
+\max(|\operatorname{Re}z|,|\operatorname{Im}z|)\le |z|
+\le |\operatorname{Re}z|+|\operatorname{Im}z|
+\]</span>
+<p>give both neighborhood comparisons. A closed scalar disk is a closed subset of a sufficiently large real box, so is compact. More generally, every closed bounded subset of <span class="math" data-tex="\(\mathbb F^d\)">\(\mathbb F^d\)</span>, in the maximum-coordinate norm <span class="math" data-tex="\(|\alpha|_\infty=\max_j|\alpha_j|\)">\(|\alpha|_\infty=\max_j|\alpha_j|\)</span>, is compact: it is closed inside such a box.</p>
+<p>Let <span class="math" data-tex="\(e_1,\ldots,e_d\)">\(e_1,\ldots,e_d\)</span> be a basis of a nonzero finite-dimensional normed space <span class="math" data-tex="\(V\)">\(V\)</span>, and put <span class="math" data-tex="\(N(\alpha)=\|\sum_j\alpha_j e_j\|\)">\(N(\alpha)=\|\sum_j\alpha_j e_j\|\)</span>. With <span class="math" data-tex="\(C=\sum_j\|e_j\|\)">\(C=\sum_j\|e_j\|\)</span>, the triangle inequality gives</p>
+<span class="math math-display" data-tex="\[
+|N(\alpha)-N(\beta)|\le C|\alpha-\beta|_\infty.
+\tag{AB.F1}
+\]">\[
+|N(\alpha)-N(\beta)|\le C|\alpha-\beta|_\infty.
+\tag{AB.F1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(N\)">\(N\)</span> is continuous. On the compact coordinate sphere <span class="math" data-tex="\(S=\{\alpha:|\alpha|_\infty=1\}\)">\(S=\{\alpha:|\alpha|_\infty=1\}\)</span>, its values are strictly positive by linear independence. There is a uniform positive lower bound: the open sets <span class="math" data-tex="\(\{\alpha\in S:N(\alpha)&gt;1/m\}\)">\(\{\alpha\in S:N(\alpha)&gt;1/m\}\)</span>, for positive integers <span class="math" data-tex="\(m\)">\(m\)</span>, form an increasing cover, and finitely many cover <span class="math" data-tex="\(S\)">\(S\)</span>. Taking their largest index gives <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> with <span class="math" data-tex="\(N\ge c\)">\(N\ge c\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>. Homogeneity now proves</p>
+<span class="math math-display" data-tex="\[
+c|\alpha|_\infty\le \Big\|\sum_j\alpha_j e_j\Big\|
+\le C|\alpha|_\infty.
+\tag{AB.F2}
+\]">\[
+c|\alpha|_\infty\le \Big\|\sum_j\alpha_j e_j\Big\|
+\le C|\alpha|_\infty.
+\tag{AB.F2}
+\]</span>
+<p>The coordinate isomorphism and its inverse are continuous. A norm-closed bounded subset of <span class="math" data-tex="\(V\)">\(V\)</span> consequently pulls back to a closed bounded coordinate set and is compact. Comparing two norms through (AB.F2) proves norm equivalence. For <span class="math" data-tex="\(V=\{0\}\)">\(V=\{0\}\)</span>, the only subsets are empty or singleton and the conclusions are immediate. This proves the compact unit-sphere input for every finite-dimensional subspace of a bidual, without any completeness assumption on the ambient normed space.</p>
+<p><strong>The two metric facts used by the sequence proof.</strong> In a compact metric space, every sequence has a convergent subsequence. For each positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, finitely many balls of radius <span class="math" data-tex="\(2^{-m}\)">\(2^{-m}\)</span> cover the space. At least one contains infinitely many of the currently retained indices; retain those indices and continue. Choose increasing indices <span class="math" data-tex="\(n_m\)">\(n_m\)</span> from the nested infinite sets. The selected sequence is Cauchy, because its sufficiently late terms lie in one ball of arbitrarily small diameter. Its closed tail sets have the finite-intersection property in the compact space, hence a common point <span class="math" data-tex="\(x\)">\(x\)</span>. A Cauchy sequence with this tail-closure point converges to <span class="math" data-tex="\(x\)">\(x\)</span>: first choose a tail of diameter less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>, then a member of that tail at distance less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> from <span class="math" data-tex="\(x\)">\(x\)</span>. No completeness of an ambient space is required.</p>
+<p>The closed linear span of a sequence in a normed space is separable. Finite linear combinations with rational coefficients in the real case, or coefficients in <span class="math" data-tex="\(\mathbb Q+i\mathbb Q\)">\(\mathbb Q+i\mathbb Q\)</span> in the complex case, form a countable dense set in the span: approximate the finitely many coefficients and bound the error by the sum of their errors times the vector norms. Rational approximation follows from the Archimedean property by choosing an integer denominator with reciprocal below the prescribed error. Closure preserves this dense set. In a nonzero separable normed space, normalizing the nonzero members of a countable dense set gives a dense set in the unit sphere, since for a unit vector <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left\|\frac z{\|z\|}-y\right\|\le 2\|z-y\|.
+\tag{AB.F3}
+\]">\[
+\left\|\frac z{\|z\|}-y\right\|\le 2\|z-y\|.
+\tag{AB.F3}
+\]</span>
+<p>Indeed, insert <span class="math" data-tex="\(z\)">\(z\)</span> between the two vectors and use <span class="math" data-tex="\(|\|z\|-1|\le\|z-y\|\)">\(|\|z\|-1|\le\|z-y\|\)</span>. These facts supply the compact-metric and separable-sphere steps in Lemma 1.1 and Theorem 2.1 below.</p>
+<h2 id="dual-ball-compactness-and-the-bidual-criterion"><span id="OA-MOD-AB-05"></span><span id="oa-mod-ab-05"></span>Dual-ball compactness and the bidual criterion</h2>
+<p><strong>Banach–Alaoglu theorem.</strong> For any real or complex normed space <span class="math" data-tex="\(X\)">\(X\)</span> and any <span class="math" data-tex="\(R\geq0\)">\(R\geq0\)</span>, the closed ball <span class="math" data-tex="\(RB_{X^*}\)">\(RB_{X^*}\)</span> is compact in <span class="math" data-tex="\(\sigma(X^*,X)\)">\(\sigma(X^*,X)\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, consider the product of closed scalar disks</p>
+<span class="math math-display" data-tex="\[
+P_R=\prod_{x\in X}\{z\in\mathbb F:|z|\leq R\|x\|\}.
+\tag{AB.7}
+\]">\[
+P_R=\prod_{x\in X}\{z\in\mathbb F:|z|\leq R\|x\|\}.
+\tag{AB.7}
+\]</span>
+<p>Each disk is compact by the scalar-disk proof in AB-04, and the preceding product theorem makes <span class="math" data-tex="\(P_R\)">\(P_R\)</span> compact for arbitrary <span class="math" data-tex="\(X\)">\(X\)</span>. Within this product impose the equations</p>
+<span class="math math-display" data-tex="\[
+z_{ax+by}=az_x+bz_y
+\qquad(x,y\in X,\ a,b\in\mathbb F).
+\tag{AB.8}
+\]">\[
+z_{ax+by}=az_x+bz_y
+\qquad(x,y\in X,\ a,b\in\mathbb F).
+\tag{AB.8}
+\]</span>
+<p>Each equation is closed because it involves only three continuous coordinate evaluations and scalar operations. Their simultaneous solution set is closed and compact. A solution defines a linear functional <span class="math" data-tex="\(f(x)=z_x\)">\(f(x)=z_x\)</span> with <span class="math" data-tex="\(|f(x)|\leq R\|x\|\)">\(|f(x)|\leq R\|x\|\)</span>, hence <span class="math" data-tex="\(\|f\|\leq R\)">\(\|f\|\leq R\)</span>. Conversely every functional in the ball gives a solution. This identification is a homeomorphism, since both topologies are pointwise convergence on <span class="math" data-tex="\(X\)">\(X\)</span>. If <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, the ball is the compact singleton <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The weak-star topology is Hausdorff, since distinct functionals differ on some vector. Dual balls are also weak-star closed, being the intersections of <span class="math" data-tex="\(\{|f(x)|\leq R\|x\|\}\)">\(\{|f(x)|\leq R\|x\|\}\)</span>.</p>
+<p>For completeness, <strong>every net in a compact space has an accumulation point</strong>. If <span class="math" data-tex="\((z_d)_{d\in D}\)">\((z_d)_{d\in D}\)</span> is a net, its tail sets have the finite-intersection property. Compactness of the closures of those tails supplies a point belonging to every tail closure. Each neighborhood of that point then meets each tail. Equivalently, there is a convergent subnet: index triples <span class="math" data-tex="\((d,V,e)\)">\((d,V,e)\)</span> with <span class="math" data-tex="\(e\geq d\)">\(e\geq d\)</span> and <span class="math" data-tex="\(z_e\in V\)">\(z_e\in V\)</span>, where <span class="math" data-tex="\(V\)">\(V\)</span> is a neighborhood of the accumulation point. Order them by increasing <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span>, and decreasing <span class="math" data-tex="\(V\)">\(V\)</span>. Given two triples, choose a common upper bound of their indices and then a point in the intersected neighborhood in a tail beyond that bound. This makes the triples directed; projection to <span class="math" data-tex="\(e\)">\(e\)</span> is order-preserving and cofinal, and the projected net converges. For a sequence, the tail-closure point has infinitely many terms in each neighborhood, counted by indices.</p>
+<p><strong>Bidual criterion.</strong> If <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> is bounded, where <span class="math" data-tex="\(X\)">\(X\)</span> is normed, then <span class="math" data-tex="\(K\)">\(K\)</span> is relatively weakly compact exactly when</p>
+<span class="math math-display" data-tex="\[
+\overline{J(K)}^{\,\sigma(X^{**},X^*)}\subset J(X).
+\tag{AB.9}
+\]">\[
+\overline{J(K)}^{\,\sigma(X^{**},X^*)}\subset J(X).
+\tag{AB.9}
+\]</span>
+<p><strong>Proof.</strong> The weak-star closure <span class="math" data-tex="\(L\)">\(L\)</span> of <span class="math" data-tex="\(J(K)\)">\(J(K)\)</span> lies in a closed bidual ball, hence is compact by Banach–Alaoglu. If <span class="math" data-tex="\(L\subset J(X)\)">\(L\subset J(X)\)</span>, transport it through the homeomorphism of dual pairs in the first section: <span class="math" data-tex="\(J^{-1}(L)\)">\(J^{-1}(L)\)</span> is exactly the weak closure of <span class="math" data-tex="\(K\)">\(K\)</span>, and is compact. Conversely, the image under <span class="math" data-tex="\(J\)">\(J\)</span> of a compact weak closure is weak-star compact, hence closed in the Hausdorff bidual. It contains <span class="math" data-tex="\(J(K)\)">\(J(K)\)</span>, so contains <span class="math" data-tex="\(L\)">\(L\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The conclusion is stronger than mere boundedness: Alaoglu puts the accumulation points in <span class="math" data-tex="\(X^{**}\)">\(X^{**}\)</span>, whereas (AB.9) requires that they remain in <span class="math" data-tex="\(J(X)\)">\(J(X)\)</span>.</p>
+<h2 id="the-programme-sequence-criterion-and-its-use-here"><span id="oa-mod-ab-06"></span><span id="OA-MOD-AB-06"></span>The programme sequence criterion and its use here</h2>
+<p>The following Lemma 1.1 and Theorem 2.1 are reproduced from <em>Weak sequences and compact convex hulls</em>, in the programme's <em>Operator-algebra foundations: tensor products, disintegration and semicontinuity</em>, written by GPT-6.1 Sol (OpenAI), Ultra, September 2026, under CC0. Their statement and proof paragraphs are unchanged. The norm-extension input is proved in NP1; AB-02 proves the canonical isometry and weak closedness; AB-03 proves uniform boundedness; AB-04 supplies finite-dimensional compactness and the metric and separability facts; and AB-05 proves Banach–Alaoglu. The countable-product metric is verified after the reproduced proof. No later barycenter, measure or convex-hull theorem from that programme text is used.</p>
+<p><strong>Exact CC0 programme proof.</strong></p>
+<h3 id="1-countably-many-tests-on-a-separable-part">1. Countably many tests on a separable part</h3>
+<p><strong>Lemma 1.1.</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> is a finite-dimensional subspace of <span class="math" data-tex="\(X^{**}\)">\(X^{**}\)</span>, there is a finite set <span class="math" data-tex="\(F\subseteq B_{X^*}\)">\(F\subseteq B_{X^*}\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\|v\|\leq2\max_{f\in F}|v(f)|\qquad(v\in V).
+\]">\[
+\|v\|\leq2\max_{f\in F}|v(f)|\qquad(v\in V).
+\]</span>
+<p>If <span class="math" data-tex="\(Y\)">\(Y\)</span> is a separable normed space, a countable set of functionals in <span class="math" data-tex="\(B_{Y^*}\)">\(B_{Y^*}\)</span> separates its points. Every weakly compact subset of <span class="math" data-tex="\(Y\)">\(Y\)</span> is metrizable for its weak topology.</p>
+<p><strong>Proof.</strong> For each unit vector <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>, the definition of the bidual norm gives <span class="math" data-tex="\(f_v\in B_{X^*}\)">\(f_v\in B_{X^*}\)</span> with <span class="math" data-tex="\(|v(f_v)|&gt;3/4\)">\(|v(f_v)|&gt;3/4\)</span>. The same value exceeds <span class="math" data-tex="\(1/2\)">\(1/2\)</span> on a sufficiently small norm neighborhood of <span class="math" data-tex="\(v\)">\(v\)</span> in the unit sphere. That sphere is compact, so finitely many of these neighborhoods cover it. Their functionals give the inequality by homogeneity. When <span class="math" data-tex="\(V=\{0\}\)">\(V=\{0\}\)</span>, a single zero functional suffices.</p>
+<p>For nonzero separable <span class="math" data-tex="\(Y\)">\(Y\)</span>, choose a dense sequence <span class="math" data-tex="\((y_j)\)">\((y_j)\)</span> in its unit sphere and <span class="math" data-tex="\(f_j\in B_{Y^*}\)">\(f_j\in B_{Y^*}\)</span> with <span class="math" data-tex="\(f_j(y_j)=1\)">\(f_j(y_j)=1\)</span>, using Hahn–Banach. If <span class="math" data-tex="\(\|y\|=1\)">\(\|y\|=1\)</span>, choose <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(\|y-y_j\|&lt;1/2\)">\(\|y-y_j\|&lt;1/2\)</span>; then <span class="math" data-tex="\(|f_j(y)|&gt;1/2\)">\(|f_j(y)|&gt;1/2\)</span>. Thus the <span class="math" data-tex="\(f_j\)">\(f_j\)</span> separate points. The map</p>
+<span class="math math-display" data-tex="\[
+y\longmapsto(f_1(y),f_2(y),\ldots)
+\]">\[
+y\longmapsto(f_1(y),f_2(y),\ldots)
+\]</span>
+<p>is a continuous injection from a weakly compact set into a countable product of scalar spaces. A continuous bijection from a compact space to a Hausdorff image is a homeomorphism: images of closed sets are compact and hence closed. The product is metrizable, so the compact set is metrizable. The zero space is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The relative weak topology on a norm-closed subspace <span class="math" data-tex="\(Y\subseteq X\)">\(Y\subseteq X\)</span> is its own weak topology. Every functional in <span class="math" data-tex="\(Y^*\)">\(Y^*\)</span> extends to <span class="math" data-tex="\(X^*\)">\(X^*\)</span>, and every restriction from <span class="math" data-tex="\(X^*\)">\(X^*\)</span> belongs to <span class="math" data-tex="\(Y^*\)">\(Y^*\)</span>.</p>
+<h3 id="2-the-sequence-criterion">2. The sequence criterion</h3>
+<p><strong>Theorem 2.1 (Eberlein–Šmulian).</strong> For <span class="math" data-tex="\(A\subseteq X\)">\(A\subseteq X\)</span>, where <span class="math" data-tex="\(X\)">\(X\)</span> is Banach, the following are equivalent:</p>
+<ol>
+<li>The weak closure of <span class="math" data-tex="\(A\)">\(A\)</span> is weakly compact.</li>
+<li>Every sequence in <span class="math" data-tex="\(A\)">\(A\)</span> has a subsequence converging weakly to an element of <span class="math" data-tex="\(X\)">\(X\)</span>.</li>
+<li>Every sequence in <span class="math" data-tex="\(A\)">\(A\)</span> has a weak cluster point in <span class="math" data-tex="\(X\)">\(X\)</span>: each neighborhood of that point meets arbitrarily late terms.</li>
+</ol>
+<p>The limit in assertion 2 need not belong to <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Proof of 1 implies 2.</strong> For a sequence <span class="math" data-tex="\((a_n)\subseteq A\)">\((a_n)\subseteq A\)</span>, let <span class="math" data-tex="\(Y\)">\(Y\)</span> be its norm-closed linear span. It is separable and weakly closed. The intersection of <span class="math" data-tex="\(Y\)">\(Y\)</span> with the compact weak closure of <span class="math" data-tex="\(A\)">\(A\)</span> is therefore weakly compact, and its topology agrees with the weak topology of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Lemma 1.1 makes it a compact metric space. Every sequence in a compact metric space has a convergent subsequence: successive finite covers by balls of radii <span class="math" data-tex="\(2^{-m}\)">\(2^{-m}\)</span> select nested infinite sets of indices, and a diagonal selection is Cauchy and has a limit. Its convergence here is weak convergence in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Proof of 2 implies 3.</strong> The limit of a convergent subsequence is a cluster point in the stated sense.</p>
+<p><strong>Proof of 3 implies 1.</strong> For every <span class="math" data-tex="\(f\in X^*\)">\(f\in X^*\)</span>, its values on <span class="math" data-tex="\(A\)">\(A\)</span> are bounded. Otherwise choose <span class="math" data-tex="\(a_n\in A\)">\(a_n\in A\)</span> with <span class="math" data-tex="\(|f(a_n)|&gt;n\)">\(|f(a_n)|&gt;n\)</span>; continuity of <span class="math" data-tex="\(f\)">\(f\)</span> makes a weak cluster point impossible. Uniform boundedness, applied to <span class="math" data-tex="\(J(A)\)">\(J(A)\)</span> on the Banach space <span class="math" data-tex="\(X^*\)">\(X^*\)</span>, makes <span class="math" data-tex="\(A\)">\(A\)</span> norm bounded. Banach–Alaoglu now makes</p>
+<span class="math math-display" data-tex="\[
+L=\overline{J(A)}^{\,\sigma(X^{**},X^*)}
+\]">\[
+L=\overline{J(A)}^{\,\sigma(X^{**},X^*)}
+\]</span>
+<p>compact: it is closed inside a bounded weak-star compact ball. We show <span class="math" data-tex="\(L\subseteq J(X)\)">\(L\subseteq J(X)\)</span>. Empty <span class="math" data-tex="\(A\)">\(A\)</span> is harmless; suppose <span class="math" data-tex="\(z\in L\)">\(z\in L\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(a_1\in A\)">\(a_1\in A\)</span>. Inductively let</p>
+<span class="math math-display" data-tex="\[
+V_n=\operatorname{span}\{z,Ja_1,\ldots,Ja_n\}
+\]">\[
+V_n=\operatorname{span}\{z,Ja_1,\ldots,Ja_n\}
+\]</span>
+<p>and choose a finite norming set for <span class="math" data-tex="\(V_n\)">\(V_n\)</span> by Lemma 1.1. Let <span class="math" data-tex="\(F_n\)">\(F_n\)</span> be the union of that set with all previously chosen sets. Since <span class="math" data-tex="\(z\in L\)">\(z\in L\)</span>, choose <span class="math" data-tex="\(a_{n+1}\in A\)">\(a_{n+1}\in A\)</span> with</p>
+<span class="math math-display" data-tex="\[
+|f(a_{n+1})-z(f)|&lt;\frac1{n+1}\qquad(f\in F_n).
+\]">\[
+|f(a_{n+1})-z(f)|&lt;\frac1{n+1}\qquad(f\in F_n).
+\]</span>
+<p>Put <span class="math" data-tex="\(F=\bigcup_nF_n\)">\(F=\bigcup_nF_n\)</span> and <span class="math" data-tex="\(V=\overline{\bigcup_nV_n}^{\|\cdot\|}\)">\(V=\overline{\bigcup_nV_n}^{\|\cdot\|}\)</span>. Passing to norm limits in the finite-dimensional estimates gives</p>
+<span class="math math-display" data-tex="\[
+\|v\|\leq2\sup_{f\in F}|v(f)|\qquad(v\in V).
+\]">\[
+\|v\|\leq2\sup_{f\in F}|v(f)|\qquad(v\in V).
+\]</span>
+<p>For each fixed <span class="math" data-tex="\(f\in F\)">\(f\in F\)</span>, the chosen scalar values satisfy <span class="math" data-tex="\(f(a_n)\to z(f)\)">\(f(a_n)\to z(f)\)</span>. Assertion 3 supplies a weak cluster point <span class="math" data-tex="\(a\in X\)">\(a\in X\)</span>. It belongs to the norm-closed span of <span class="math" data-tex="\((a_n)\)">\((a_n)\)</span>, because that subspace is weakly closed. The scalar convergence and continuity of <span class="math" data-tex="\(f\)">\(f\)</span> force <span class="math" data-tex="\(f(a)=z(f)\)">\(f(a)=z(f)\)</span>: if these values differed, a neighborhood of <span class="math" data-tex="\(a\)">\(a\)</span> defined by <span class="math" data-tex="\(f\)">\(f\)</span> would miss all sufficiently late terms. Hence <span class="math" data-tex="\(Ja\in V\)">\(Ja\in V\)</span>. Applying the norming estimate to <span class="math" data-tex="\(Ja-z\)">\(Ja-z\)</span> gives <span class="math" data-tex="\(Ja=z\)">\(Ja=z\)</span>.</p>
+<p>Thus <span class="math" data-tex="\(L\subseteq J(X)\)">\(L\subseteq J(X)\)</span>. On <span class="math" data-tex="\(J(X)\)">\(J(X)\)</span> the relative weak-star topology is exactly the weak topology of <span class="math" data-tex="\(X\)">\(X\)</span>, so <span class="math" data-tex="\(J^{-1}(L)\)">\(J^{-1}(L)\)</span> is a weakly compact set containing <span class="math" data-tex="\(A\)">\(A\)</span>. Its closed subset <span class="math" data-tex="\(\overline A^{\rm weak}\)">\(\overline A^{\rm weak}\)</span> is compact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction makes countably many tests for one prescribed bidual point. It does not assert that the weak topology of the whole Banach space is metrizable.</p>
+<p><strong>Using the provider's notation in this course.</strong> Its three conditions are
+relative weak compactness, weakly convergent subsequences with limits in the
+original space, and weak cluster points there. “Arbitrarily late terms” is
+equivalent to infinitely many indices in every neighborhood. A compact dual
+ball alone is insufficient: its cluster point may lie outside the original
+space's canonical image.</p>
+<p>For the diagram and examples below, write the provider's countable test map as</p>
+<span class="math math-display" data-tex="\[
+C\longrightarrow\mathbb F^{\mathbb N},\qquad
+x\longmapsto(f_m(x))_m.
+\tag{AB.10}
+\]">\[
+C\longrightarrow\mathbb F^{\mathbb N},\qquad
+x\longmapsto(f_m(x))_m.
+\tag{AB.10}
+\]</span>
+<p>Here <span class="math" data-tex="\(C\)">\(C\)</span> is the weakly compact part in the closed separable span of the
+chosen sequence. The metric <span class="math" data-tex="\(\sum_m2^{-m}\min(1,|z_m-w_m|)\)">\(\sum_m2^{-m}\min(1,|z_m-w_m|)\)</span> gives the
+product topology: any finitely many coordinate restrictions contain a small
+metric ball; conversely, make the geometric tail small and then bound the
+finitely many remaining coordinates. Compactness and the separating map
+give the homeomorphism used in the quoted lemma.</p>
+<p>For a proposed <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> outside <span class="math" data-tex="\(J(X)\)">\(J(X)\)</span>, rename its finite-dimensional
+space <span class="math" data-tex="\(V_n\)">\(V_n\)</span> as</p>
+<span class="math math-display" data-tex="\[
+E_n=\operatorname{span}\{\zeta,Jx_1,\ldots,Jx_n\}.
+\tag{AB.11}
+\]">\[
+E_n=\operatorname{span}\{\zeta,Jx_1,\ldots,Jx_n\}.
+\tag{AB.11}
+\]</span>
+<p>If <span class="math" data-tex="\(F_n\)">\(F_n\)</span> denotes just the new finite norming family chosen at stage <span class="math" data-tex="\(n\)">\(n\)</span>,
+the quoted lemma says</p>
+<span class="math math-display" data-tex="\[
+\max_{f\in F_n}|y(f)|\ge\tfrac12\|y\|
+\qquad(y\in E_n).
+\tag{AB.12}
+\]">\[
+\max_{f\in F_n}|y(f)|\ge\tfrac12\|y\|
+\qquad(y\in E_n).
+\tag{AB.12}
+\]</span>
+<p>The provider instead uses the union of all families up to that stage as its
+<span class="math" data-tex="\(F_n\)">\(F_n\)</span>. With the noncumulative notation used in our picture, its selection is</p>
+<span class="math math-display" data-tex="\[
+|f(x_{n+1})-\zeta(f)|&lt;1/(n+1)
+\quad(f\in F_1\cup\cdots\cup F_n).
+\tag{AB.13}
+\]">\[
+|f(x_{n+1})-\zeta(f)|&lt;1/(n+1)
+\quad(f\in F_1\cup\cdots\cup F_n).
+\tag{AB.13}
+\]</span>
+<p>Thus the pictured constants and domains are exactly the imported
+construction. The union separates only the norm-closed span generated after
+this particular alleged external bidual point; it is not a countable total
+set on the whole dual or bidual. The two notations describe the same tests.</p>
+<h2 id="naturality-norm-and-the-range-of-an-inclusion"><span id="oa-mod-ab-01"></span><span id="OA-MOD-AB-01"></span>Naturality, norm and the range of an inclusion</h2>
+<p>Let <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> be complex Banach spaces and <span class="math" data-tex="\(T:X\to Y\)">\(T:X\to Y\)</span> a bounded linear map. Write <span class="math" data-tex="\(j_X:X\to X^{**}\)">\(j_X:X\to X^{**}\)</span> for evaluation, <span class="math" data-tex="\(j_X(x)(f)=f(x)\)">\(j_X(x)(f)=f(x)\)</span>. The adjoint and second adjoint are</p>
+<span class="math math-display" data-tex="\[
+T^*f=f\circ T,\qquad (T^{**}F)(f)=F(T^*f)
+\quad(f\in Y^*,\ F\in X^{**}).
+\]">\[
+T^*f=f\circ T,\qquad (T^{**}F)(f)=F(T^*f)
+\quad(f\in Y^*,\ F\in X^{**}).
+\]</span>
+<p>The definitions give <span class="math" data-tex="\(\|T^{**}\|\leq\|T^*\|\leq\|T\|\)">\(\|T^{**}\|\leq\|T^*\|\leq\|T\|\)</span>. For <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> and <span class="math" data-tex="\(f\in Y^*\)">\(f\in Y^*\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(T^{**}j_Xx)(f)=j_Xx(T^*f)=f(Tx)=(j_YTx)(f).
+\]">\[
+(T^{**}j_Xx)(f)=j_Xx(T^*f)=f(Tx)=(j_YTx)(f).
+\]</span>
+<p>Thus <span class="math" data-tex="\(T^{**}j_X=j_YT\)">\(T^{**}j_X=j_YT\)</span>. Since both evaluation maps are isometries, this identity supplies the reverse norm inequality, so</p>
+<span class="math math-display" data-tex="\[
+\|T^{**}\|=\|T^*\|=\|T\|.
+\]">\[
+\|T^{**}\|=\|T^*\|=\|T\|.
+\]</span>
+<p>The equality includes zero spaces and the zero map. If <span class="math" data-tex="\(F_\lambda\to F\)">\(F_\lambda\to F\)</span> in <span class="math" data-tex="\(\sigma(X^{**},X^*)\)">\(\sigma(X^{**},X^*)\)</span>, then for each <span class="math" data-tex="\(f\in Y^*\)">\(f\in Y^*\)</span>,
+<span class="math" data-tex="\((T^{**}F_\lambda)(f)=F_\lambda(T^*f)\to F(T^*f)\)">\((T^{**}F_\lambda)(f)=F_\lambda(T^*f)\to F(T^*f)\)</span>.
+This is precisely weak-star continuity of <span class="math" data-tex="\(T^{**}\)">\(T^{**}\)</span>. Pairing with each functional also proves
+<span class="math" data-tex="\((ST)^{**}=S^{**}T^{**}\)">\((ST)^{**}=S^{**}T^{**}\)</span> whenever <span class="math" data-tex="\(ST\)">\(ST\)</span> is defined, and <span class="math" data-tex="\((1_X)^{**}=1_{X^{**}}\)">\((1_X)^{**}=1_{X^{**}}\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(i:B\hookrightarrow A\)">\(i:B\hookrightarrow A\)</span> be an isometric linear inclusion of Banach spaces. Hahn–Banach extends every <span class="math" data-tex="\(f\in B^*\)">\(f\in B^*\)</span> to some <span class="math" data-tex="\(g\in A^*\)">\(g\in A^*\)</span> of the same norm. Hence <span class="math" data-tex="\(i^*\)">\(i^*\)</span> sends the closed unit ball of <span class="math" data-tex="\(A^*\)">\(A^*\)</span> <em>onto</em> that of <span class="math" data-tex="\(B^*\)">\(B^*\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\|i^{**}F\|
+=\sup_{\|g\|\leq1}|F(i^*g)|
+=\sup_{\|f\|\leq1}|F(f)|
+=\|F\|.
+\]">\[
+\|i^{**}F\|
+=\sup_{\|g\|\leq1}|F(i^*g)|
+=\sup_{\|f\|\leq1}|F(f)|
+=\|F\|.
+\]</span>
+<p>To identify the range, write
+<span class="math" data-tex="\((\ker i^*)^\perp=\{G\in A^{**}:G(g)=0\text{ for all }g\in\ker i^*\}\)">\((\ker i^*)^\perp=\{G\in A^{**}:G(g)=0\text{ for all }g\in\ker i^*\}\)</span>.
+Every <span class="math" data-tex="\(i^{**}F\)">\(i^{**}F\)</span> belongs to this annihilator. Conversely, for <span class="math" data-tex="\(G\)">\(G\)</span> in the annihilator define <span class="math" data-tex="\(F(f)=G(g)\)">\(F(f)=G(g)\)</span>, where <span class="math" data-tex="\(g\)">\(g\)</span> is any extension of <span class="math" data-tex="\(f\)">\(f\)</span>. Two such extensions differ by an element of <span class="math" data-tex="\(\ker i^*\)">\(\ker i^*\)</span>, so this is well-defined. Choosing a norm-preserving extension shows <span class="math" data-tex="\(|F(f)|\leq\|G\|\|f\|\)">\(|F(f)|\leq\|G\|\|f\|\)</span>; thus <span class="math" data-tex="\(F\in B^{**}\)">\(F\in B^{**}\)</span> and <span class="math" data-tex="\(i^{**}F=G\)">\(i^{**}F=G\)</span>. We have proved</p>
+<span class="math math-display" data-tex="\[
+i^{**}(B^{**})=(\ker i^*)^\perp.
+\]">\[
+i^{**}(B^{**})=(\ker i^*)^\perp.
+\]</span>
+<p>This range is weak-star closed: it is the intersection, over <span class="math" data-tex="\(g\in\ker i^*\)">\(g\in\ker i^*\)</span>, of the kernels of the weak-star continuous evaluations <span class="math" data-tex="\(G\mapsto G(g)\)">\(G\mapsto G(g)\)</span>.</p>
+<p><strong>Example.</strong> Include <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> in <span class="math" data-tex="\((\mathbb C^2,\|\cdot\|_\infty)\)">\((\mathbb C^2,\|\cdot\|_\infty)\)</span> by <span class="math" data-tex="\(i(z)=(z,0)\)">\(i(z)=(z,0)\)</span>. Its adjoint is <span class="math" data-tex="\(i^*(a,b)=a\)">\(i^*(a,b)=a\)</span> on the dual <span class="math" data-tex="\((\mathbb C^2,\|\cdot\|_1)\)">\((\mathbb C^2,\|\cdot\|_1)\)</span>. The annihilator of <span class="math" data-tex="\(\ker i^*=\{(0,b)\}\)">\(\ker i^*=\{(0,b)\}\)</span> is <span class="math" data-tex="\(\{(z,0)\}\)">\(\{(z,0)\}\)</span>, exactly the range of <span class="math" data-tex="\(i^{**}=i\)">\(i^{**}=i\)</span> under the finite-dimensional bidual identifications.</p>
+<h2 id="exact-models-and-the-limits-of-sequence-tests">Exact models and the limits of sequence tests</h2>
+<p>Take <span class="math" data-tex="\(X=(\mathbb R^2,\|\cdot\|_\infty)\)">\(X=(\mathbb R^2,\|\cdot\|_\infty)\)</span>. Write a functional as
+<span class="math" data-tex="\(f_{a,b}(x,y)=ax+by\)">\(f_{a,b}(x,y)=ax+by\)</span>. Its norm is</p>
+<span class="math math-display" data-tex="\[
+\|f_{a,b}\|=|a|+|b|.
+\tag{AB.14}
+\]">\[
+\|f_{a,b}\|=|a|+|b|.
+\tag{AB.14}
+\]</span>
+<p>The upper bound follows from the triangle inequality on the unit square. For equality choose <span class="math" data-tex="\(x=\operatorname{sgn}(a)\)">\(x=\operatorname{sgn}(a)\)</span> and <span class="math" data-tex="\(y=\operatorname{sgn}(b)\)">\(y=\operatorname{sgn}(b)\)</span>, allowing either coordinate to be zero if its coefficient is zero. Thus the dual ball is the diamond with vertices <span class="math" data-tex="\((1,0),(0,1),(-1,0),(0,-1)\)">\((1,0),(0,1),(-1,0),(0,-1)\)</span>. The separate tests on the two coordinate vectors give only the square <span class="math" data-tex="\(|a|\leq1,|b|\leq1\)">\(|a|\leq1,|b|\leq1\)</span>. The point <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> passes those two tests but has functional norm <span class="math" data-tex="\(2\)">\(2\)</span>, since <span class="math" data-tex="\(f_{1,1}(1,1)=2\)">\(f_{1,1}(1,1)=2\)</span>. The full Alaoglu construction imposes bounds at every vector and the linearity equations, not just separate bounds at two selected vectors.</p>
+<figure><img src="assets/banach-compactness-mechanism.png" alt="The exact dual ball and the finite-test mechanism for weak compactness" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><strong>Figure.</strong> In the upper panel the blue diamond is the exact ball in (AB.14); the surrounding dashed square records only the two coordinate bounds. The marked point <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> fails the full norm bound. The lower panel is a typed schematic of the contradiction in the sequence theorem: <span class="math" data-tex="\(E_n\subset X^{**}\)">\(E_n\subset X^{**}\)</span>, the finite test set <span class="math" data-tex="\(F_n\subset B_{X^*}\)">\(F_n\subset B_{X^*}\)</span>, and the selected <span class="math" data-tex="\(x_{n+1}\in K\)">\(x_{n+1}\in K\)</span> have exactly the domains and constants of (AB.11)–(AB.13). It is not a picture of an infinite-dimensional Banach space embedded in the plane. The countable tests depend on the alleged <span class="math" data-tex="\(\zeta\notin J(X)\)">\(\zeta\notin J(X)\)</span> and the constructed sequence; they do not separate all of <span class="math" data-tex="\(X^{**}\)">\(X^{**}\)</span>. The original reproducible drawing source is assets/render_banach_compactness.py.</p>
+<p><strong>Problem 1: a bounded set need not be relatively weakly compact.</strong> In <span class="math" data-tex="\(X=\ell^1(\mathbb N)\)">\(X=\ell^1(\mathbb N)\)</span>, let <span class="math" data-tex="\(e_n\)">\(e_n\)</span> be the coordinate unit vectors. Prove that <span class="math" data-tex="\((e_n)\)">\((e_n)\)</span> has no weak accumulation point in <span class="math" data-tex="\(X\)">\(X\)</span>, although every term has norm <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Solution.</strong> Each coordinate evaluation belongs to <span class="math" data-tex="\(X^*\)">\(X^*\)</span>. If <span class="math" data-tex="\(x\)">\(x\)</span> were a weak accumulation point, a coordinate with <span class="math" data-tex="\(x_j\ne0\)">\(x_j\ne0\)</span> would give a neighborhood containing at most the single term <span class="math" data-tex="\(e_j\)">\(e_j\)</span>; hence every coordinate of <span class="math" data-tex="\(x\)">\(x\)</span> is zero. But <span class="math" data-tex="\(f(x)=\sum_jx_j\)">\(f(x)=\sum_jx_j\)</span> defines a bounded linear functional of norm <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(f(e_n)=1\)">\(f(e_n)=1\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, whereas <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>. A weak neighborhood determined by <span class="math" data-tex="\(f\)">\(f\)</span> excludes the entire sequence. Therefore there is no weak accumulation point. The sequence theorem proves failure of relative weak compactness; the bidual criterion puts some weak-star accumulation point outside <span class="math" data-tex="\(J(X)\)">\(J(X)\)</span>.</p>
+<p><strong>Problem 2: a weak-star compact dual ball need not be sequentially compact.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be the set of all subsets of <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, take <span class="math" data-tex="\(X=\ell^1(I)\)">\(X=\ell^1(I)\)</span>, and regard <span class="math" data-tex="\(X^*\)">\(X^*\)</span> as <span class="math" data-tex="\(\ell^\infty(I)\)">\(\ell^\infty(I)\)</span>. For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+u_n(A)=\mathbf1_A(n)\qquad(A\in I).
+\tag{AB.15}
+\]">\[
+u_n(A)=\mathbf1_A(n)\qquad(A\in I).
+\tag{AB.15}
+\]</span>
+<p>Show that this sequence in the dual unit ball has no weak-star convergent subsequence.</p>
+<p><strong>Solution.</strong> If a subsequence has indices <span class="math" data-tex="\(n_1&lt;n_2&lt;\cdots\)">\(n_1&lt;n_2&lt;\cdots\)</span>, take <span class="math" data-tex="\(A=\{n_2,n_4,n_6,\ldots\}\in I\)">\(A=\{n_2,n_4,n_6,\ldots\}\in I\)</span>. Evaluation on the coordinate vector <span class="math" data-tex="\(\delta_A\in\ell^1(I)\)">\(\delta_A\in\ell^1(I)\)</span> gives the alternating scalar sequence <span class="math" data-tex="\(u_{n_j}(A)\)">\(u_{n_j}(A)\)</span>, which does not converge. Thus this subsequence is not weak-star convergent. Alaoglu is not contradicted: compactness gives a convergent subnet, and the Banach sequence theorem concerns the weak topology of a Banach space, not an arbitrary weak-star topology.</p>
+<p>To justify the dual identification for arbitrary <span class="math" data-tex="\(I\)">\(I\)</span>, define <span class="math" data-tex="\(\ell^1(I)\)">\(\ell^1(I)\)</span> using
+<span class="math" data-tex="\(\sum_i|x_i|=\sup_{F\subset I\text{ finite}}\sum_{i\in F}|x_i|\)">\(\sum_i|x_i|=\sup_{F\subset I\text{ finite}}\sum_{i\in F}|x_i|\)</span>.
+Every such vector has countable support: for each positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, only finitely many coordinates have modulus at least <span class="math" data-tex="\(1/m\)">\(1/m\)</span>. Finite-support vectors are norm dense. A bounded family <span class="math" data-tex="\(v\in\ell^\infty(I)\)">\(v\in\ell^\infty(I)\)</span> therefore defines
+<span class="math" data-tex="\(f_v(x)=\sum_i v_i x_i\)">\(f_v(x)=\sum_i v_i x_i\)</span>, with norm <span class="math" data-tex="\(\sup_i|v_i|\)">\(\sup_i|v_i|\)</span>; testing <span class="math" data-tex="\(\delta_i\)">\(\delta_i\)</span> proves the reverse inequality even if the supremum is not attained. Conversely a bounded functional is determined by the numbers <span class="math" data-tex="\(f(\delta_i)\)">\(f(\delta_i)\)</span>, which form a bounded family, and density proves this formula on all of <span class="math" data-tex="\(\ell^1(I)\)">\(\ell^1(I)\)</span>.</p>
+<p>This <span class="math" data-tex="\(\ell^1(I)\)">\(\ell^1(I)\)</span> is Banach. For a norm-Cauchy sequence <span class="math" data-tex="\(x_n\)">\(x_n\)</span>, coordinate limits give <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. If <span class="math" data-tex="\(\|x_n\|_1\leq C\)">\(\|x_n\|_1\leq C\)</span>, every finite coordinate sum of the limit is at most <span class="math" data-tex="\(C\)">\(C\)</span>, so <span class="math" data-tex="\(x\in\ell^1(I)\)">\(x\in\ell^1(I)\)</span>. For fixed sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, the Cauchy bound <span class="math" data-tex="\(\|x_n-x_m\|_1\leq\varepsilon\)">\(\|x_n-x_m\|_1\leq\varepsilon\)</span> passes to every finite sum as <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span>. Taking its supremum yields <span class="math" data-tex="\(\|x_n-x\|_1\leq\varepsilon\)">\(\|x_n-x\|_1\leq\varepsilon\)</span>.</p>
+<p><strong>Problem 3: where is completeness actually used?</strong> Locate the complete metric space used for boundedness, and decide whether the proof of the sequence theorem requires completeness of the original <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Solution.</strong> Uniform boundedness is applied on <span class="math" data-tex="\(X^*\)">\(X^*\)</span>, which is complete even if <span class="math" data-tex="\(X\)">\(X\)</span> is merely normed. Alaoglu requires no completeness of <span class="math" data-tex="\(X\)">\(X\)</span>. The two directions of the sequence proof use only a closed separable normed subspace, its weak closedness from Hahn–Banach, finite-dimensional compactness and the Banach dual <span class="math" data-tex="\(X^*\)">\(X^*\)</span>. They never take an arbitrary norm-Cauchy limit in <span class="math" data-tex="\(X\)">\(X\)</span>. Consequently the displayed proof also establishes the three equivalences for normed spaces, with accumulation points and subsequence limits required to lie in that original normed space. The Banach-space statement is the one needed by the predual application. Countability is confined to the span of a particular sequence and to the finite families chosen after one alleged external bidual point; no countable total set on the whole space or its dual is assumed.</p>
+<h2 id="references-and-proof-provenance">References and proof provenance</h2>
+<p>The dual-ball and sequence theorems are the classical Banach–Alaoglu and Eberlein–Šmulian theorems. The proofs used here are written above and in NP1; the sequence proof retains its original programme attribution.</p>
+<ul>
+<li>Wha Suck Lee, <a href="https://arxiv.org/pdf/math/0504592v1"><em>Extension of the Erberlein-Smulian Theorem to Normed Spaces</em>, arXiv:math/0504592v1</a>, Sections 3–4 and the appendix. This freely accessible paper treats the normed-space extension in Problem 3. Its finite-test construction is relevant to the sequence theorem; the proof above passes estimates through a <strong>norm-closed</strong> span and does not assume that weak-star convergence implies norm convergence.</li>
+<li>Tomasz Kochanek, <a href="https://www.impan.pl/~tkoch/COMB_lecturenotes/cbst_lecture_4.pdf"><em>Combinatorics in Banach space theory</em>, Lecture 4</a>, Lemma 4.3, p. 2. This freely accessible lecture treats the naturality of the second adjoint. AB-01 proves naturality directly and also proves the norm and annihilator-range assertions needed here.</li>
+<li>Yury Kudryashov and Heather Macbeth, <a href="https://github.com/leanprover-community/mathlib4/blob/71a80585ee495fc24472fd0eaffc89d94e4fd8d6/Mathlib/Analysis/Normed/Module/HahnBanach.lean#L44">mathlib's Hahn–Banach module</a>, exists_extension_norm_eq and exists_dual_vector. NP1 supplies the real extension, complex conversion and norming proofs used in this lesson.</li>
+</ul>
+<p>The finite-dimensional and metric additions in AB-04 are original exposition by GPT-6 Astra (OpenAI), Ultra, October 2026, under CC0. The existing programme sequence proof remains attributed to its original author. These Banach-space results apply to preduals after the relevant operator-algebra identification has been proved; they do not by themselves prove an operator-algebra compactness criterion.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-ST.html">← States and the positive spanning family</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-UB.html">The universal C*-bidual →</a></span></nav>
+<p class="small source-link"><a href="src/banach-second-adjoint.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

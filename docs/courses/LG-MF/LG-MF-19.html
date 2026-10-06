@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rankin–Selberg method · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-19.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 19 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-rankin-selberg-method">The Rankin–Selberg method</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The Petersson product pairs two cusp forms over a modular surface. Inserting an Eisenstein series turns that pairing into a Dirichlet series of products of Fourier coefficients. The geometry supplies continuation and a functional equation; the Hecke recurrences supply its Euler factors. The residue then measures the average size of the coefficients.</p>
+<p>We work at full level and use unnormalized Fourier coefficients. The distinction between the coefficient series, its zeta multiple and its completion is essential: their pole statements are different. All three functions will have separate names.</p>
+<h2 id="1-unfolding-with-absolute-convergence">1. Unfolding with absolute convergence</h2>
+<p>Let <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> be even and write
+<span class="math math-display" data-tex="\[
+ f(z)=\sum_{n\ge1}a_nq^n,\qquad
+ g(z)=\sum_{n\ge1}b_nq^n,\qquad q=e^{2\pi iz},
+ \qquad f,g\in S_k(SL_2(\mathbb Z)).
+\]">\[
+ f(z)=\sum_{n\ge1}a_nq^n,\qquad
+ g(z)=\sum_{n\ge1}b_nq^n,\qquad q=e^{2\pi iz},
+ \qquad f,g\in S_k(SL_2(\mathbb Z)).
+\]</span>
+The zero space in a small weight causes no exception: every assertion then holds with zero forms. Put
+<span class="math math-display" data-tex="\[
+ H(z)=f(z)\overline{g(z)}y^k,\quad
+ \langle f,g\rangle=\int_{\mathcal F}H(z)\,d\mu(z),\quad
+ d\mu=\frac{dx\,dy}{y^2},
+\tag{1.1}
+\]">\[
+ H(z)=f(z)\overline{g(z)}y^k,\quad
+ \langle f,g\rangle=\int_{\mathcal F}H(z)\,d\mu(z),\quad
+ d\mu=\frac{dx\,dy}{y^2},
+\tag{1.1}
+\]</span>
+where <span class="math" data-tex="\(\mathcal F=\{|x|\le1/2,\ |z|\ge1\}\)">\(\mathcal F=\{|x|\le1/2,\ |z|\ge1\}\)</span>, with its boundary counted once. The product is linear in its first argument. Since <span class="math" data-tex="\(\operatorname{Im}(\gamma z)=y/|cz+d|^2\)">\(\operatorname{Im}(\gamma z)=y/|cz+d|^2\)</span>, the weight laws make <span class="math" data-tex="\(H\)">\(H\)</span> invariant. Moreover, <a href="LG-MF-07.html">the Petersson lesson</a>, Theorem 2.1, gives
+<span class="math math-display" data-tex="\[
+ |H(z)|\le C_{f,g}\quad(z\in\mathfrak H).
+\tag{1.2}
+\]">\[
+ |H(z)|\le C_{f,g}\quad(z\in\mathfrak H).
+\tag{1.2}
+\]</span>
+On a period strip at height <span class="math" data-tex="\(y\ge1\)">\(y\ge1\)</span>, the cusp expansions give <span class="math" data-tex="\(|H(z)|\le C y^ke^{-4\pi y}\)">\(|H(z)|\le C y^ke^{-4\pi y}\)</span>.</p>
+<p>Use <a href="LG-MF-18.html">the preceding lesson</a>, (1.4), with exactly its sign convention:
+<span class="math math-display" data-tex="\[
+ E(z,t)=\sum_{\Gamma_\infty\backslash\Gamma}
+              \operatorname{Im}(\gamma z)^t,
+ \qquad \Gamma=SL_2(\mathbb Z),\quad
+ \Gamma_\infty=\{\pm T^j:j\in\mathbb Z\}.
+\]">\[
+ E(z,t)=\sum_{\Gamma_\infty\backslash\Gamma}
+              \operatorname{Im}(\gamma z)^t,
+ \qquad \Gamma=SL_2(\mathbb Z),\quad
+ \Gamma_\infty=\{\pm T^j:j\in\mathbb Z\}.
+\]</span>
+Here <span class="math" data-tex="\(\operatorname{Re}t&gt;1\)">\(\operatorname{Re}t&gt;1\)</span>; the primitive-row expression includes the factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Set
+<span class="math math-display" data-tex="\[
+ D_{f,g}(u)=\sum_{n\ge1}a_n\overline{b_n}n^{-u},
+ \qquad u=t+k-1.
+\tag{1.3}
+\]">\[
+ D_{f,g}(u)=\sum_{n\ge1}a_n\overline{b_n}n^{-u},
+ \qquad u=t+k-1.
+\tag{1.3}
+\]</span></p>
+<p><strong>Lemma 1.1.</strong> The series <span class="math" data-tex="\(D_{f,g}\)">\(D_{f,g}\)</span> converges absolutely and locally uniformly for <span class="math" data-tex="\(\operatorname{Re}u&gt;k\)">\(\operatorname{Re}u&gt;k\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, (1.2) and cusp decay show
+<span class="math math-display" data-tex="\[
+ \int_0^\infty\int_0^1|f(x+iy)|^2y^{k+\sigma-2}\,dx\,dy&lt;\infty:
+\]">\[
+ \int_0^\infty\int_0^1|f(x+iy)|^2y^{k+\sigma-2}\,dx\,dy&lt;\infty:
+\]</span>
+at zero the integrand after the <span class="math" data-tex="\(x\)">\(x\)</span>-integration is bounded by <span class="math" data-tex="\(Cy^{\sigma-2}\)">\(Cy^{\sigma-2}\)</span>, and at infinity it decays exponentially times a power. The Fourier series converges absolutely at every fixed positive height, so integrating its square over <span class="math" data-tex="\(x\)">\(x\)</span> gives
+<span class="math math-display" data-tex="\[
+ \int_0^1|f(x+iy)|^2dx
+       =\sum_{n\ge1}|a_n|^2e^{-4\pi ny}.
+\]">\[
+ \int_0^1|f(x+iy)|^2dx
+       =\sum_{n\ge1}|a_n|^2e^{-4\pi ny}.
+\]</span>
+Tonelli, followed by <span class="math" data-tex="\(v=4\pi ny\)">\(v=4\pi ny\)</span>, therefore yields
+<span class="math math-display" data-tex="\[
+ \int_0^\infty\int_0^1|f(x+iy)|^2y^{k+\sigma-2}dx\,dy
+ =\frac{\Gamma(k+\sigma-1)}{(4\pi)^{k+\sigma-1}}
+       \sum_{n\ge1}\frac{|a_n|^2}{n^{k+\sigma-1}}.
+\tag{1.4}
+\]">\[
+ \int_0^\infty\int_0^1|f(x+iy)|^2y^{k+\sigma-2}dx\,dy
+ =\frac{\Gamma(k+\sigma-1)}{(4\pi)^{k+\sigma-1}}
+       \sum_{n\ge1}\frac{|a_n|^2}{n^{k+\sigma-1}}.
+\tag{1.4}
+\]</span>
+In particular the series on the right is finite. Apply the same argument to <span class="math" data-tex="\(g\)">\(g\)</span> and use weighted Cauchy–Schwarz:
+<span class="math math-display" data-tex="\[
+ \sum_{n\ge1}|a_n b_n|n^{-v}
+ \le\left(\sum|a_n|^2n^{-v}\right)^{1/2}
+     \left(\sum|b_n|^2n^{-v}\right)^{1/2}&lt;\infty
+ \quad(v&gt;k).
+\]">\[
+ \sum_{n\ge1}|a_n b_n|n^{-v}
+ \le\left(\sum|a_n|^2n^{-v}\right)^{1/2}
+     \left(\sum|b_n|^2n^{-v}\right)^{1/2}&lt;\infty
+ \quad(v&gt;k).
+\]</span>
+For a compact subset of <span class="math" data-tex="\(\operatorname{Re}u&gt;k\)">\(\operatorname{Re}u&gt;k\)</span>, take its minimum real part as <span class="math" data-tex="\(v\)">\(v\)</span>. This gives a summable uniform majorant. ∎</p>
+<p>This domain is better than the one obtained by separately inserting Hecke's coefficient bound. It requires no Ramanujan–Petersson theorem.</p>
+<p><strong>Theorem 1.2 (the unfolding identity).</strong> For <span class="math" data-tex="\(\operatorname{Re}t&gt;1\)">\(\operatorname{Re}t&gt;1\)</span>,
+<span class="math math-display" data-tex="\[
+ I_{f,g}(t):=\int_{\mathcal F}H(z)E(z,t)d\mu(z)
+ =\frac{\Gamma(t+k-1)}{(4\pi)^{t+k-1}}
+                  D_{f,g}(t+k-1).
+\tag{1.5}
+\]">\[
+ I_{f,g}(t):=\int_{\mathcal F}H(z)E(z,t)d\mu(z)
+ =\frac{\Gamma(t+k-1)}{(4\pi)^{t+k-1}}
+                  D_{f,g}(t+k-1).
+\tag{1.5}
+\]</span></p>
+<p><strong>Proof.</strong> First unfold the absolute values with the nonnegative series <span class="math" data-tex="\(E(z,\sigma)\)">\(E(z,\sigma)\)</span>, <span class="math" data-tex="\(\sigma=\operatorname{Re}t\)">\(\sigma=\operatorname{Re}t\)</span>. Invariance of <span class="math" data-tex="\(H\)">\(H\)</span> and of <span class="math" data-tex="\(d\mu\)">\(d\mu\)</span>, and the fundamental-set tiling, give by Tonelli
+<span class="math math-display" data-tex="\[
+ \int_{\mathcal F}|H(z)|E(z,\sigma)d\mu
+ =\int_0^\infty\int_0^1|H(x+iy)|y^{\sigma-2}dx\,dy&lt;\infty.
+\tag{1.6}
+\]">\[
+ \int_{\mathcal F}|H(z)|E(z,\sigma)d\mu
+ =\int_0^\infty\int_0^1|H(x+iy)|y^{\sigma-2}dx\,dy&lt;\infty.
+\tag{1.6}
+\]</span>
+The last inequality follows from (1.2) near zero and cusp decay near infinity. The sets <span class="math" data-tex="\(\gamma\mathcal F\)">\(\gamma\mathcal F\)</span> for representatives of <span class="math" data-tex="\(\Gamma_\infty\backslash\Gamma\)">\(\Gamma_\infty\backslash\Gamma\)</span> cover a fundamental set for translations, up to measure-zero boundaries. Both groups contain <span class="math" data-tex="\(-I\)">\(-I\)</span>, which acts trivially, so there is no additional factor of two.</p>
+<p>Absolute convergence now permits unfolding the complex integral:
+<span class="math math-display" data-tex="\[
+ I_{f,g}(t)=\int_0^\infty\int_0^1
+                 f(x+iy)\overline{g(x+iy)}y^{t+k-2}dx\,dy.
+\tag{1.7}
+\]">\[
+ I_{f,g}(t)=\int_0^\infty\int_0^1
+                 f(x+iy)\overline{g(x+iy)}y^{t+k-2}dx\,dy.
+\tag{1.7}
+\]</span>
+At a fixed height, termwise Fourier integration gives
+<span class="math math-display" data-tex="\[
+ \int_0^1 f(x+iy)\overline{g(x+iy)}dx
+                  =\sum_{n\ge1}a_n\overline{b_n}e^{-4\pi ny}.
+\tag{1.8}
+\]">\[
+ \int_0^1 f(x+iy)\overline{g(x+iy)}dx
+                  =\sum_{n\ge1}a_n\overline{b_n}e^{-4\pi ny}.
+\tag{1.8}
+\]</span>
+For <span class="math" data-tex="\(u=t+k-1\)">\(u=t+k-1\)</span>, Lemma 1.1 shows that the integrals of the absolute values of these diagonal terms sum to
+<span class="math math-display" data-tex="\[
+ \frac{\Gamma(\operatorname{Re}u)}{(4\pi)^{\operatorname{Re}u}}
+               \sum_{n\ge1}|a_n b_n|n^{-\operatorname{Re}u}&lt;\infty.
+\]">\[
+ \frac{\Gamma(\operatorname{Re}u)}{(4\pi)^{\operatorname{Re}u}}
+               \sum_{n\ge1}|a_n b_n|n^{-\operatorname{Re}u}&lt;\infty.
+\]</span>
+Fubini thus permits the final Mellin integration. Its individual term is
+<span class="math" data-tex="\(\int_0^\infty e^{-4\pi ny}y^{u-1}dy=(4\pi n)^{-u}\Gamma(u)\)">\(\int_0^\infty e^{-4\pi ny}y^{u-1}dy=(4\pi n)^{-u}\Gamma(u)\)</span>, proving (1.5). ∎</p>
+<h2 id="2-the-completed-function-and-its-residue">2. The completed function and its residue</h2>
+<p>The preceding lesson proved
+<span class="math math-display" data-tex="\[
+ E^*(z,t)=\pi^{-t}\Gamma(t)\zeta(2t)E(z,t),\qquad
+ E^*(z,t)=E^*(z,1-t),
+\tag{2.1}
+\]">\[
+ E^*(z,t)=\pi^{-t}\Gamma(t)\zeta(2t)E(z,t),\qquad
+ E^*(z,t)=E^*(z,1-t),
+\tag{2.1}
+\]</span>
+with only possible simple poles at <span class="math" data-tex="\(t=0,1\)">\(t=0,1\)</span> and constant residues <span class="math" data-tex="\(-1/2,+1/2\)">\(-1/2,+1/2\)</span>. Define
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ R_{f,g}(u)&amp;=\zeta(2u-2k+2)D_{f,g}(u),\\
+ \Lambda_{f,g}(u)&amp;=(2\pi)^{-2u}\Gamma(u)\Gamma(u-k+1)R_{f,g}(u).
+ \end{aligned}
+\tag{2.2}
+\]">\[
+ \begin{aligned}
+ R_{f,g}(u)&amp;=\zeta(2u-2k+2)D_{f,g}(u),\\
+ \Lambda_{f,g}(u)&amp;=(2\pi)^{-2u}\Gamma(u)\Gamma(u-k+1)R_{f,g}(u).
+ \end{aligned}
+\tag{2.2}
+\]</span>
+Initially these are defined for <span class="math" data-tex="\(\operatorname{Re}u&gt;k\)">\(\operatorname{Re}u&gt;k\)</span>. Multiplying (1.5) by the completion factor, with <span class="math" data-tex="\(t=u-k+1\)">\(t=u-k+1\)</span>, gives the exact comparison
+<span class="math math-display" data-tex="\[
+ J_{f,g}(t):=\int_{\mathcal F}H(z)E^*(z,t)d\mu(z)
+           =\pi^{k-1}\Lambda_{f,g}(u).
+\tag{2.3}
+\]">\[
+ J_{f,g}(t):=\int_{\mathcal F}H(z)E^*(z,t)d\mu(z)
+           =\pi^{k-1}\Lambda_{f,g}(u).
+\tag{2.3}
+\]</span>
+Indeed <span class="math" data-tex="\(\pi^{-t}(4\pi)^{-u}=\pi^{k-1}(2\pi)^{-2u}\)">\(\pi^{-t}(4\pi)^{-u}=\pi^{k-1}(2\pi)^{-2u}\)</span>. This constant controls every residue below.</p>
+<p><strong>Lemma 2.1 (integration after continuation).</strong> The integral defining <span class="math" data-tex="\(J\)">\(J\)</span> has meromorphic continuation with only possible simple poles at <span class="math" data-tex="\(0,1\)">\(0,1\)</span>; its residues are <span class="math" data-tex="\(-\langle f,g\rangle/2\)">\(-\langle f,g\rangle/2\)</span> and <span class="math" data-tex="\(+\langle f,g\rangle/2\)">\(+\langle f,g\rangle/2\)</span>. It satisfies <span class="math" data-tex="\(J(t)=J(1-t)\)">\(J(t)=J(1-t)\)</span>.</p>
+<p><strong>Proof.</strong> We derive an integrable bound directly from the proved theta integral, rather than assume a spectral continuation theorem. In the notation of the preceding lesson, its equation (3.7) says
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E^*(z,t)=\frac1{2(t-1)}-\frac1{2t}\\
++\frac12\int_1^\infty\left[\begin{gathered}
+(\Theta_z(v)-1)\\
+\cdot(v^{t-1}+v^{-t})\end{gathered}\right]dv.
+\end{gathered}
+\tag{2.4a}
+\]">\[
+\begin{gathered}
+E^*(z,t)=\frac1{2(t-1)}-\frac1{2t}\\
++\frac12\int_1^\infty\left[\begin{gathered}
+(\Theta_z(v)-1)\\
+\cdot(v^{t-1}+v^{-t})\end{gathered}\right]dv.
+\end{gathered}
+\tag{2.4a}
+\]</span>
+The last integral is entire for fixed <span class="math" data-tex="\(z\)">\(z\)</span>. We now bound it uniformly in the cusp when <span class="math" data-tex="\(t\)">\(t\)</span> ranges over a compact set.</p>
+<p>For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and any real shift <span class="math" data-tex="\(b\)">\(b\)</span>, counting integers by their distance from <span class="math" data-tex="\(-b\)">\(-b\)</span> and comparing a decreasing Gaussian with its integral gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{n\in\mathbb Z}e^{-\pi a(n+b)^2}\le2+a^{-1/2},\\
+\sum_{n\ne0}e^{-\pi an^2}
+\le\sqrt{2/a}\,e^{-\pi a/2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{n\in\mathbb Z}e^{-\pi a(n+b)^2}\le2+a^{-1/2},\\
+\sum_{n\ne0}e^{-\pi an^2}
+\le\sqrt{2/a}\,e^{-\pi a/2}.
+\end{gathered}
+\]</span>
+For the first bound, split the integers into the two rays on either side of <span class="math" data-tex="\(-b\)">\(-b\)</span>. On each ray, their distances have the form <span class="math" data-tex="\(\delta+j\)">\(\delta+j\)</span>, with <span class="math" data-tex="\(\delta\ge0\)">\(\delta\ge0\)</span> and <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>. A decreasing nonnegative function has <span class="math" data-tex="\(\sum_{j\ge0}f(\delta+j)\le f(\delta)+\int_\delta^\infty f(t)dt\)">\(\sum_{j\ge0}f(\delta+j)\le f(\delta)+\int_\delta^\infty f(t)dt\)</span>; each ray is therefore bounded by <span class="math" data-tex="\(1+\int_0^\infty e^{-\pi at^2}dt\)">\(1+\int_0^\infty e^{-\pi at^2}dt\)</span>. For the second, split off <span class="math" data-tex="\(e^{-\pi a/2}\)">\(e^{-\pi a/2}\)</span> using <span class="math" data-tex="\(n^2\ge1\)">\(n^2\ge1\)</span>, then bound the remaining positive sum by the Gaussian integral on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Since
+<span class="math" data-tex="\(Q_z(m,n)=m^2y+(mx+n)^2/y\)">\(Q_z(m,n)=m^2y+(mx+n)^2/y\)</span>, separating <span class="math" data-tex="\(m=0\)">\(m=0\)</span> from <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span> yields, for <span class="math" data-tex="\(v,y\ge1\)">\(v,y\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Theta_z(v)-1\\
+\le\sqrt{2y/v}\,e^{-\pi v/(2y)}\\
++\sqrt{2/(vy)}(2+\sqrt{y/v})e^{-\pi vy/2}\\
+\le C\sqrt y\,e^{-\pi v/(2y)}.
+\end{gathered}
+\tag{2.4b}
+\]">\[
+\begin{gathered}
+\Theta_z(v)-1\\
+\le\sqrt{2y/v}\,e^{-\pi v/(2y)}\\
++\sqrt{2/(vy)}(2+\sqrt{y/v})e^{-\pi vy/2}\\
+\le C\sqrt y\,e^{-\pi v/(2y)}.
+\end{gathered}
+\tag{2.4b}
+\]</span>
+The constant is absolute and the estimate is uniform in <span class="math" data-tex="\(x\)">\(x\)</span>. If <span class="math" data-tex="\(|\operatorname{Re}t|\le A\)">\(|\operatorname{Re}t|\le A\)</span>, with <span class="math" data-tex="\(A\ge0\)">\(A\ge0\)</span>, then <span class="math" data-tex="\(|v^{t-1}+v^{-t}|\le2v^A\)">\(|v^{t-1}+v^{-t}|\le2v^A\)</span>. Substituting <span class="math" data-tex="\(v=yw\)">\(v=yw\)</span> bounds the entire part of (2.4a) by
+<span class="math" data-tex="\(C_A y^{A+3/2}\)">\(C_A y^{A+3/2}\)</span>, since <span class="math" data-tex="\(\int_0^\infty e^{-\pi w/2}w^A dw\)">\(\int_0^\infty e^{-\pi w/2}w^A dw\)</span> is finite. Multiplication by <span class="math" data-tex="\(|H(z)|\le C y^ke^{-4\pi y}\)">\(|H(z)|\le C y^ke^{-4\pi y}\)</span> and by the measure factor <span class="math" data-tex="\(y^{-2}\)">\(y^{-2}\)</span> gives an integrable majorant for every compact parameter set. On the compact remainder of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, the preceding lesson's Gaussian bound supplies the same domination. Cauchy's formula on a small parameter circle, followed by dominated integration, proves that integrating this entire part gives an entire function.</p>
+<p>Thus the only meromorphic terms in the integrated formula are
+<span class="math" data-tex="\(\langle f,g\rangle/(2(t-1))-\langle f,g\rangle/(2t)\)">\(\langle f,g\rangle/(2(t-1))-\langle f,g\rangle/(2t)\)</span>. This proves both residues, including the case of a zero inner product. Both the rational expression and the two integral powers in (2.4a) are unchanged under <span class="math" data-tex="\(t\mapsto1-t\)">\(t\mapsto1-t\)</span>, which proves the reflection after integration. No continuous-spectrum theorem is used. For comparison, writing <span class="math" data-tex="\(\Xi(w)=\pi^{-w/2}\Gamma(w/2)\zeta(w)\)">\(\Xi(w)=\pi^{-w/2}\Gamma(w/2)\zeta(w)\)</span>, the preceding lesson's Fourier expansion has constant term
+<span class="math math-display" data-tex="\[
+ \Xi(2t)y^t+\Xi(2t-1)y^{1-t}.
+\tag{2.4}
+\]">\[
+ \Xi(2t)y^t+\Xi(2t-1)y^{1-t}.
+\tag{2.4}
+\]</span>
+The apparent poles of the two individual <span class="math" data-tex="\(\Xi\)">\(\Xi\)</span>-terms at <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span> cancel by (2.4a); treating them separately would conceal that cancellation. ∎</p>
+<p><strong>Theorem 2.2 (continuation, functional equation and poles).</strong> The function <span class="math" data-tex="\(\Lambda_{f,g}\)">\(\Lambda_{f,g}\)</span> is meromorphic on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, holomorphic except for possible simple poles at <span class="math" data-tex="\(u=k,k-1\)">\(u=k,k-1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ \Lambda_{f,g}(u)&amp;=\Lambda_{f,g}(2k-1-u),\\
+ \operatorname*{Res}_{u=k}\Lambda_{f,g}(u)&amp;=\frac{\langle f,g\rangle}{2\pi^{k-1}},\\
+ \operatorname*{Res}_{u=k-1}\Lambda_{f,g}(u)&amp;=-\frac{\langle f,g\rangle}{2\pi^{k-1}}.
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+ \Lambda_{f,g}(u)&amp;=\Lambda_{f,g}(2k-1-u),\\
+ \operatorname*{Res}_{u=k}\Lambda_{f,g}(u)&amp;=\frac{\langle f,g\rangle}{2\pi^{k-1}},\\
+ \operatorname*{Res}_{u=k-1}\Lambda_{f,g}(u)&amp;=-\frac{\langle f,g\rangle}{2\pi^{k-1}}.
+\end{aligned}
+\tag{2.5}
+\]</span>
+The series <span class="math" data-tex="\(D\)">\(D\)</span> has meromorphic continuation to <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. In the half-plane <span class="math" data-tex="\(\operatorname{Re}u&gt;k-1/2\)">\(\operatorname{Re}u&gt;k-1/2\)</span> it is holomorphic except for a possible simple pole at <span class="math" data-tex="\(k\)">\(k\)</span>, with
+<span class="math math-display" data-tex="\[
+ \operatorname*{Res}_{u=k}D_{f,g}(u)
+          =\frac{3(4\pi)^k}{\pi\Gamma(k)}\langle f,g\rangle.
+\tag{2.6}
+\]">\[
+ \operatorname*{Res}_{u=k}D_{f,g}(u)
+          =\frac{3(4\pi)^k}{\pi\Gamma(k)}\langle f,g\rangle.
+\tag{2.6}
+\]</span></p>
+<p><strong>Proof.</strong> Equation (2.3) and Lemma 2.1 give continuation, residues and reflection for <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, since <span class="math" data-tex="\(t\mapsto u=t+k-1\)">\(t\mapsto u=t+k-1\)</span> has derivative one. Define the continuation of the original series by
+<span class="math math-display" data-tex="\[
+ D_{f,g}(u)=
+ \frac{(2\pi)^{2u}\Lambda_{f,g}(u)}
+ {\Gamma(u)\Gamma(u-k+1)\zeta(2u-2k+2)}.
+\tag{2.7}
+\]">\[
+ D_{f,g}(u)=
+ \frac{(2\pi)^{2u}\Lambda_{f,g}(u)}
+ {\Gamma(u)\Gamma(u-k+1)\zeta(2u-2k+2)}.
+\tag{2.7}
+\]</span>
+The reciprocal gamma functions are entire, and the reciprocal of a nonzero meromorphic function is meromorphic. Thus this gives a global meromorphic function agreeing with Lemma 1.1's series. If <span class="math" data-tex="\(\operatorname{Re}u&gt;k-1/2\)">\(\operatorname{Re}u&gt;k-1/2\)</span>, then <span class="math" data-tex="\(\operatorname{Re}(2u-2k+2)&gt;1\)">\(\operatorname{Re}(2u-2k+2)&gt;1\)</span>; the absolutely convergent zeta Euler product has no zero there. The second possible pole <span class="math" data-tex="\(k-1\)">\(k-1\)</span> is outside this half-plane. At <span class="math" data-tex="\(u=k\)">\(u=k\)</span>, the denominator in (2.7) is <span class="math" data-tex="\(\Gamma(k)\Gamma(1)\zeta(2)=\Gamma(k)\pi^2/6\)">\(\Gamma(k)\Gamma(1)\zeta(2)=\Gamma(k)\pi^2/6\)</span>. Combining it with the first residue in (2.5) gives (2.6). ∎</p>
+<p>Outside this half-plane, zeros of <span class="math" data-tex="\(\zeta(2u-2k+2)\)">\(\zeta(2u-2k+2)\)</span> in (2.7) require a separate cancellation analysis. The completed function's two-pole theorem does not by itself give a global one-pole theorem for <span class="math" data-tex="\(D\)">\(D\)</span>. Nor does <span class="math" data-tex="\(D(u)=D(2k-1-u)\)">\(D(u)=D(2k-1-u)\)</span> hold without the factors in (2.2). An uncompleted form of the functional equation is the equality of those two completed expressions, interpreted meromorphically.</p>
+<p>For the zeta multiple, (2.6) gives
+<span class="math math-display" data-tex="\[
+ \operatorname*{Res}_{u=k}R_{f,g}(u)
+             =\frac{\pi(4\pi)^k}{2\Gamma(k)}\langle f,g\rangle.
+\tag{2.8}
+\]">\[
+ \operatorname*{Res}_{u=k}R_{f,g}(u)
+             =\frac{\pi(4\pi)^k}{2\Gamma(k)}\langle f,g\rangle.
+\tag{2.8}
+\]</span>
+In the unitary variable <span class="math" data-tex="\(v=u-k+1\)">\(v=u-k+1\)</span>, put <span class="math" data-tex="\(\lambda_f(n)=a_nn^{-(k-1)/2}\)">\(\lambda_f(n)=a_nn^{-(k-1)/2}\)</span>, and similarly for <span class="math" data-tex="\(g\)">\(g\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ D_{f,g}(v+k-1)&amp;=\sum_{n\ge1}\lambda_f(n)\overline{\lambda_g(n)}n^{-v},\\
+ R_{f,g}(v+k-1)&amp;=\zeta(2v)\sum_{n\ge1}\lambda_f(n)\overline{\lambda_g(n)}n^{-v}.
+ \end{aligned}
+\tag{2.9}
+\]">\[
+ \begin{aligned}
+ D_{f,g}(v+k-1)&amp;=\sum_{n\ge1}\lambda_f(n)\overline{\lambda_g(n)}n^{-v},\\
+ R_{f,g}(v+k-1)&amp;=\zeta(2v)\sum_{n\ge1}\lambda_f(n)\overline{\lambda_g(n)}n^{-v}.
+ \end{aligned}
+\tag{2.9}
+\]</span>
+The completed reflection is <span class="math" data-tex="\(v\leftrightarrow1-v\)">\(v\leftrightarrow1-v\)</span>, and the rightmost possible pole is <span class="math" data-tex="\(v=1\)">\(v=1\)</span>. The coefficients have changed along with the variable.</p>
+<p><strong>Corollary 2.3 (the global poles of the zeta multiple).</strong> The function <span class="math" data-tex="\(R_{f,g}\)">\(R_{f,g}\)</span> is holomorphic on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> except for a possible simple pole at <span class="math" data-tex="\(u=k\)">\(u=k\)</span>, whose residue is (2.8). At the other pole of the completion it has the finite value
+<span class="math math-display" data-tex="\[
+ R_{f,g}(k-1)
+ =-\frac{(2\pi)^{2k-2}}{2\pi^{k-1}\Gamma(k-1)}
+                         \langle f,g\rangle.
+\tag{2.10}
+\]">\[
+ R_{f,g}(k-1)
+ =-\frac{(2\pi)^{2k-2}}{2\pi^{k-1}\Gamma(k-1)}
+                         \langle f,g\rangle.
+\tag{2.10}
+\]</span></p>
+<p><strong>Proof.</strong> Removing the gamma factors in (2.2) gives
+<span class="math math-display" data-tex="\[
+ R_{f,g}(u)=(2\pi)^{2u}
+           \frac{\Lambda_{f,g}(u)}{\Gamma(u)\Gamma(u-k+1)}.
+\tag{2.11}
+\]">\[
+ R_{f,g}(u)=(2\pi)^{2u}
+           \frac{\Lambda_{f,g}(u)}{\Gamma(u)\Gamma(u-k+1)}.
+\tag{2.11}
+\]</span>
+The reciprocal gamma functions are entire, so Theorem 2.2 leaves only <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(k-1\)">\(k-1\)</span> as candidates for poles. Write <span class="math" data-tex="\(u=k-1+\epsilon\)">\(u=k-1+\epsilon\)</span>. Since <span class="math" data-tex="\(\Gamma(1+\epsilon)=\epsilon\Gamma(\epsilon)\)">\(\Gamma(1+\epsilon)=\epsilon\Gamma(\epsilon)\)</span> and <span class="math" data-tex="\(\Gamma(1)=1\)">\(\Gamma(1)=1\)</span>, we have <span class="math" data-tex="\(1/\Gamma(\epsilon)=\epsilon+O(\epsilon^2)\)">\(1/\Gamma(\epsilon)=\epsilon+O(\epsilon^2)\)</span>. Also <span class="math" data-tex="\(1/\Gamma(k-1+\epsilon)=1/\Gamma(k-1)+O(\epsilon)\)">\(1/\Gamma(k-1+\epsilon)=1/\Gamma(k-1)+O(\epsilon)\)</span>, because <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. The Laurent expansion (2.5) is
+<span class="math math-display" data-tex="\[
+ \Lambda_{f,g}(k-1+\epsilon)
+ =-\frac{\langle f,g\rangle}{2\pi^{k-1}\epsilon}+O(1).
+\tag{2.12}
+\]">\[
+ \Lambda_{f,g}(k-1+\epsilon)
+ =-\frac{\langle f,g\rangle}{2\pi^{k-1}\epsilon}+O(1).
+\tag{2.12}
+\]</span>
+Multiplying these three expansions in (2.11) cancels the lower pole and gives (2.10). This includes <span class="math" data-tex="\(\langle f,g\rangle=0\)">\(\langle f,g\rangle=0\)</span>, when the resulting value is zero. At <span class="math" data-tex="\(k\)">\(k\)</span> the gamma factors are finite and nonzero, giving (2.8). The possible zeros of the zeta denominator in (2.7) still govern the separate question of additional poles of <span class="math" data-tex="\(D\)">\(D\)</span>. ∎</p>
+<h2 id="3-four-local-roots">3. Four local roots</h2>
+<p>Suppose now that <span class="math" data-tex="\(f,g\)">\(f,g\)</span> are normalized simultaneous cusp eigenforms: <span class="math" data-tex="\(a_1=b_1=1\)">\(a_1=b_1=1\)</span>. <a href="LG-MF-08.html">The level-one Hecke lesson</a>, Theorems 4.2–4.3, proves multiplicativity and the prime-power recurrences. Factor
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ 1-a_pX+p^{k-1}X^2&amp;=(1-\alpha_1X)(1-\alpha_2X),\\
+ 1-b_pX+p^{k-1}X^2&amp;=(1-\beta_1X)(1-\beta_2X).
+ \end{aligned}
+\tag{3.1}
+\]">\[
+ \begin{aligned}
+ 1-a_pX+p^{k-1}X^2&amp;=(1-\alpha_1X)(1-\alpha_2X),\\
+ 1-b_pX+p^{k-1}X^2&amp;=(1-\beta_1X)(1-\beta_2X).
+ \end{aligned}
+\tag{3.1}
+\]</span>
+The roots are labeled without choosing an order. In particular <span class="math" data-tex="\(\alpha_1\alpha_2=\beta_1\beta_2=p^{k-1}\)">\(\alpha_1\alpha_2=\beta_1\beta_2=p^{k-1}\)</span>. The local series of <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\(\sum_r a_{p^r}X^r=((1-\alpha_1X)(1-\alpha_2X))^{-1}\)">\(\sum_r a_{p^r}X^r=((1-\alpha_1X)(1-\alpha_2X))^{-1}\)</span>, and conjugating the second recurrence gives roots <span class="math" data-tex="\(\overline{\beta_j}\)">\(\overline{\beta_j}\)</span>.</p>
+<p><strong>Lemma 3.1 (the local identity).</strong> For arbitrary complex numbers <span class="math" data-tex="\(A,B,C,D\)">\(A,B,C,D\)</span>, let <span class="math" data-tex="\(h_r(A,B)=\sum_{j=0}^r A^{r-j}B^j\)">\(h_r(A,B)=\sum_{j=0}^r A^{r-j}B^j\)</span>. As a formal power series,
+<span class="math math-display" data-tex="\[
+ \sum_{r\ge0}h_r(A,B)h_r(C,D)X^r
+ =\frac{1-ABCDX^2}
+ {(1-ACX)(1-ADX)(1-BCX)(1-BDX)}.
+\tag{3.2}
+\]">\[
+ \sum_{r\ge0}h_r(A,B)h_r(C,D)X^r
+ =\frac{1-ABCDX^2}
+ {(1-ACX)(1-ADX)(1-BCX)(1-BDX)}.
+\tag{3.2}
+\]</span>
+This includes coincident roots and zero roots.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(A\ne B\)">\(A\ne B\)</span> and <span class="math" data-tex="\(C\ne D\)">\(C\ne D\)</span>, sum the four geometric series in
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ &amp;\sum_{r\ge0}h_r(A,B)h_r(C,D)X^r\\
+ &amp;=\frac{1}{(A-B)(C-D)}
+ \left(\begin{aligned}
+ &amp;\frac{AC}{1-ACX}-\frac{AD}{1-ADX}\\
+ &amp;\quad-\frac{BC}{1-BCX}+\frac{BD}{1-BDX}
+ \end{aligned}\right).
+\end{aligned}
+\tag{3.3}
+\]">\[
+\begin{aligned}
+ &amp;\sum_{r\ge0}h_r(A,B)h_r(C,D)X^r\\
+ &amp;=\frac{1}{(A-B)(C-D)}
+ \left(\begin{aligned}
+ &amp;\frac{AC}{1-ACX}-\frac{AD}{1-ADX}\\
+ &amp;\quad-\frac{BC}{1-BCX}+\frac{BD}{1-BDX}
+ \end{aligned}\right).
+\end{aligned}
+\tag{3.3}
+\]</span>
+Indeed <span class="math" data-tex="\(h_r(A,B)=(A^{r+1}-B^{r+1})/(A-B)\)">\(h_r(A,B)=(A^{r+1}-B^{r+1})/(A-B)\)</span>, and the same holds for <span class="math" data-tex="\(C,D\)">\(C,D\)</span>. On multiplying the expression in parentheses by the four denominators, its coefficients in degrees <span class="math" data-tex="\(0,1,2,3\)">\(0,1,2,3\)</span> are, respectively,
+<span class="math math-display" data-tex="\[
+ (A-B)(C-D),\quad0,\quad-ABCD(A-B)(C-D),\quad0.
+\]">\[
+ (A-B)(C-D),\quad0,\quad-ABCD(A-B)(C-D),\quad0.
+\]</span>
+For example its degree-zero coefficient is <span class="math" data-tex="\(AC-AD-BC+BD\)">\(AC-AD-BC+BD\)</span>; to verify the other three, put <span class="math" data-tex="\(S_1=(A+B)(C+D)\)">\(S_1=(A+B)(C+D)\)</span> and let <span class="math" data-tex="\(S_2\)">\(S_2\)</span> be the sum of pairwise products of <span class="math" data-tex="\(AC,AD,BC,BD\)">\(AC,AD,BC,BD\)</span>. The signed sum of their squares is <span class="math" data-tex="\((A^2-B^2)(C^2-D^2)=S_1(A-B)(C-D)\)">\((A^2-B^2)(C^2-D^2)=S_1(A-B)(C-D)\)</span>, so the linear coefficient is zero. The signed sum of their cubes is <span class="math" data-tex="\((A-B)(C-D)(A^2+AB+B^2)(C^2+CD+D^2)\)">\((A-B)(C-D)(A^2+AB+B^2)(C^2+CD+D^2)\)</span>. Thus the quadratic coefficient, divided by <span class="math" data-tex="\((A-B)(C-D)\)">\((A-B)(C-D)\)</span>, is
+<span class="math math-display" data-tex="\[
+ S_2-S_1^2+(A^2+AB+B^2)(C^2+CD+D^2)=-ABCD,
+\]">\[
+ S_2-S_1^2+(A^2+AB+B^2)(C^2+CD+D^2)=-ABCD,
+\]</span>
+using <span class="math" data-tex="\(S_2=(A^2+B^2)CD+AB(C^2+D^2)+2ABCD\)">\(S_2=(A^2+B^2)CD+AB(C^2+D^2)+2ABCD\)</span>. The cubic coefficient is minus the product of all four pair products times <span class="math" data-tex="\(1-1-1+1\)">\(1-1-1+1\)</span>, hence zero. This proves (3.2) in the distinct-root case. After multiplying (3.2) by its denominator, every coefficient is a polynomial in <span class="math" data-tex="\(A,B,C,D\)">\(A,B,C,D\)</span>. It vanishes on the dense set of distinct pairs, hence identically. The denominator has constant one, so it is invertible as a formal series even when roots coincide or vanish. ∎</p>
+<p><strong>Theorem 3.2 (the Euler product).</strong> For <span class="math" data-tex="\(\operatorname{Re}u&gt;k\)">\(\operatorname{Re}u&gt;k\)</span>,
+<span class="math math-display" data-tex="\[
+ D_{f,g}(u)=\prod_p
+ \frac{1-p^{2k-2-2u}}
+ {\prod_{i,j=1}^2(1-\alpha_i(p)\overline{\beta_j(p)}p^{-u})},
+\tag{3.4}
+\]">\[
+ D_{f,g}(u)=\prod_p
+ \frac{1-p^{2k-2-2u}}
+ {\prod_{i,j=1}^2(1-\alpha_i(p)\overline{\beta_j(p)}p^{-u})},
+\tag{3.4}
+\]</span>
+and therefore
+<span class="math math-display" data-tex="\[
+ R_{f,g}(u)=\prod_p\prod_{i,j=1}^2
+              (1-\alpha_i(p)\overline{\beta_j(p)}p^{-u})^{-1}.
+\tag{3.5}
+\]">\[
+ R_{f,g}(u)=\prod_p\prod_{i,j=1}^2
+              (1-\alpha_i(p)\overline{\beta_j(p)}p^{-u})^{-1}.
+\tag{3.5}
+\]</span>
+Both Euler products converge absolutely and locally uniformly in this half-plane.</p>
+<p><strong>Proof.</strong> Substitute <span class="math" data-tex="\((A,B,C,D)=(\alpha_1,\alpha_2,\overline{\beta_1},\overline{\beta_2})\)">\((A,B,C,D)=(\alpha_1,\alpha_2,\overline{\beta_1},\overline{\beta_2})\)</span> into Lemma 3.1. The numerator is <span class="math" data-tex="\(1-p^{2k-2}X^2\)">\(1-p^{2k-2}X^2\)</span>. Multiplicativity of both coefficient sequences shows that a finite product of the local series expands into <span class="math" data-tex="\(\sum a_n\overline{b_n}n^{-u}\)">\(\sum a_n\overline{b_n}n^{-u}\)</span> over integers supported on the corresponding finite prime set. Lemma 1.1 permits passing to all primes, and bounds the sum of absolute values of all nonconstant local coefficients by <span class="math" data-tex="\(\sum_{n\ge2}|a_n b_n|n^{-\operatorname{Re}u}\)">\(\sum_{n\ge2}|a_n b_n|n^{-\operatorname{Re}u}\)</span>. Thus the product of local series converges absolutely, uniformly on compact subsets.</p>
+<p>For completeness the rational denominators in (3.4) do not create an undefined expression in this domain. The diagonal version of Lemma 1.1 gives convergence of <span class="math" data-tex="\(\sum_r|a_{p^r}|^2p^{-rv}\)">\(\sum_r|a_{p^r}|^2p^{-rv}\)</span> for every <span class="math" data-tex="\(v&gt;k\)">\(v&gt;k\)</span>. Its terms tend to zero. Hence the radius of convergence of <span class="math" data-tex="\(\sum_r a_{p^r}X^r\)">\(\sum_r a_{p^r}X^r\)</span> is at least <span class="math" data-tex="\(p^{-k/2}\)">\(p^{-k/2}\)</span>. The identity with the reciprocal quadratic, whose numerator is one, implies <span class="math" data-tex="\(|\alpha_i|\le p^{k/2}\)">\(|\alpha_i|\le p^{k/2}\)</span>. The same argument applies to <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span>. Thus <span class="math" data-tex="\(|\alpha_i\overline{\beta_j}p^{-u}|&lt;1\)">\(|\alpha_i\overline{\beta_j}p^{-u}|&lt;1\)</span> when <span class="math" data-tex="\(\operatorname{Re}u&gt;k\)">\(\operatorname{Re}u&gt;k\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(\zeta(2u-2k+2)=\prod_p(1-p^{2k-2-2u})^{-1}\)">\(\zeta(2u-2k+2)=\prod_p(1-p^{2k-2-2u})^{-1}\)</span> is absolutely convergent there. Multiplying it by (3.4) cancels the numerators and gives (3.5), with the same absolute-product meaning. ∎</p>
+<p>The coefficients in <span class="math" data-tex="\(D\)">\(D\)</span> are products of two coefficients. The extra zeta factor inserts further divisor terms; it is part of the degree-four Euler product rather than an optional normalization.</p>
+<p><strong>Corollary 3.3 (the pole detects equality).</strong> For normalized full-level eigenforms <span class="math" data-tex="\(f,g\)">\(f,g\)</span> of the same weight, <span class="math" data-tex="\(\Lambda_{f,g}\)">\(\Lambda_{f,g}\)</span> has a pole at <span class="math" data-tex="\(k\)">\(k\)</span> if and only if <span class="math" data-tex="\(f=g\)">\(f=g\)</span>. If they are distinct, <span class="math" data-tex="\(\Lambda_{f,g}\)">\(\Lambda_{f,g}\)</span> is entire.</p>
+<p><strong>Proof.</strong> Distinct normalized eigenforms differ in some Hecke eigenvalue by the level-one multiplicity-one proof. Each <span class="math" data-tex="\(T_n\)">\(T_n\)</span> is self-adjoint, so its eigenvalues are real and the two eigenvectors are orthogonal. Equations (2.5) therefore remove both possible poles. If <span class="math" data-tex="\(f=g\)">\(f=g\)</span>, positivity of the Petersson norm makes the residue at <span class="math" data-tex="\(k\)">\(k\)</span> strictly positive. ∎</p>
+<p>The equality criterion refers here to <span class="math" data-tex="\(R\)">\(R\)</span> and its completion, or to <span class="math" data-tex="\(D\)">\(D\)</span> at its rightmost pole. It asserts no cancellation at other possible singularities of (2.7).</p>
+<h2 id="4-mean-squares-mixed-averages-and-a-computed-discriminant-example">4. Mean squares, mixed averages and a computed discriminant example</h2>
+<p>We state the following precise form of <strong>Wiener–Ikehara</strong>. Suppose <span class="math" data-tex="\(c_n\ge0\)">\(c_n\ge0\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and <span class="math" data-tex="\(F(u)=\sum c_nn^{-u}\)">\(F(u)=\sum c_nn^{-u}\)</span> converges for <span class="math" data-tex="\(\operatorname{Re}u&gt;a\)">\(\operatorname{Re}u&gt;a\)</span>. If, for some <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, <span class="math" data-tex="\(F(u)-r/(u-a)\)">\(F(u)-r/(u-a)\)</span> extends continuously to the closed half-plane <span class="math" data-tex="\(\operatorname{Re}u\ge a\)">\(\operatorname{Re}u\ge a\)</span>, then
+<span class="math math-display" data-tex="\[
+ \sum_{n\le x}c_n\sim \frac r a x^a.
+\tag{4.1}
+\]">\[
+ \sum_{n\le x}c_n\sim \frac r a x^a.
+\tag{4.1}
+\]</span>
+This general theorem is stated for comparison: Gillet–Grayson, Appendix A, Theorem A.4, pp. 443–444. Their theorem allows increasing real exponents <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> and includes the present choice <span class="math" data-tex="\(\lambda_n=n\)">\(\lambda_n=n\)</span>. For our cusp forms, the Petersson bound gives an additional elementary estimate. It lets us prove the mean-square limit below using the bounded-function analytic theorem already proved in <a href="../NT-ZETA/NT-ZETA-09.html#5-newman-s-analytic-theorem">The prime number theorem</a>, Theorem 5.1.</p>
+<p>For a nonzero <span class="math" data-tex="\(f\)">\(f\)</span>, Theorem 2.2 makes <span class="math" data-tex="\(D_{f,f}(u)-r_f/(u-k)\)">\(D_{f,f}(u)-r_f/(u-k)\)</span> holomorphic on the open half-plane <span class="math" data-tex="\(\operatorname{Re}u&gt;k-1/2\)">\(\operatorname{Re}u&gt;k-1/2\)</span>, where
+<span class="math math-display" data-tex="\[
+ r_f=\frac{3(4\pi)^k}{\pi\Gamma(k)}\|f\|^2&gt;0.
+\]">\[
+ r_f=\frac{3(4\pi)^k}{\pi\Gamma(k)}\|f\|^2&gt;0.
+\]</span>
+In particular it satisfies the entire boundary condition in (4.1), not merely a limit along the real axis. The mean-square conclusion, with its exact constant, is
+<span class="math math-display" data-tex="\[
+ \sum_{n\le x}|a_n|^2\sim c_fx^k,\qquad
+ c_f=\frac{3(4\pi)^k}{\pi\Gamma(k+1)}\|f\|^2.
+\tag{4.2}
+\]">\[
+ \sum_{n\le x}|a_n|^2\sim c_fx^k,\qquad
+ c_f=\frac{3(4\pi)^k}{\pi\Gamma(k+1)}\|f\|^2.
+\tag{4.2}
+\]</span>
+<strong>Proof of (4.2).</strong> Put <span class="math" data-tex="\(A_f(x)=\sum_{n\le x}|a_n|^2\)">\(A_f(x)=\sum_{n\le x}|a_n|^2\)</span>, for real <span class="math" data-tex="\(x\ge1\)">\(x\ge1\)</span>. The Petersson lesson, Theorem 2.1, supplies a constant <span class="math" data-tex="\(M_f\)">\(M_f\)</span> with
+<span class="math" data-tex="\(y^{k/2}|f(t+iy)|\le M_f\)">\(y^{k/2}|f(t+iy)|\le M_f\)</span> for all <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>. At each positive height the Fourier series converges absolutely and uniformly over a period. We may multiply it by its conjugate and integrate; orthogonality gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_0^1|f(t+iy)|^2\,dt\\
+=\sum_{n\ge1}|a_n|^2e^{-4\pi ny}\\
+\le M_f^2y^{-k}.
+\end{gathered}
+\tag{4.2a}
+\]">\[
+\begin{gathered}
+\int_0^1|f(t+iy)|^2\,dt\\
+=\sum_{n\ge1}|a_n|^2e^{-4\pi ny}\\
+\le M_f^2y^{-k}.
+\end{gathered}
+\tag{4.2a}
+\]</span>
+Take <span class="math" data-tex="\(y=1/x\)">\(y=1/x\)</span>. For <span class="math" data-tex="\(n\le x\)">\(n\le x\)</span>, the exponential in (4.2a) is at least <span class="math" data-tex="\(e^{-4\pi}\)">\(e^{-4\pi}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+0\le A_f(x)\le e^{4\pi}M_f^2x^k.
+\tag{4.2b}
+\]">\[
+0\le A_f(x)\le e^{4\pi}M_f^2x^k.
+\tag{4.2b}
+\]</span>
+This estimate uses the elementary invariant bound and holds for every cusp form, without an eigenform or optimal coefficient hypothesis.</p>
+<p>Let <span class="math" data-tex="\(c_f=r_f/k\)">\(c_f=r_f/k\)</span>, and for <span class="math" data-tex="\(v\ge0\)">\(v\ge0\)</span> define
+<span class="math math-display" data-tex="\[
+Q_f(v)=e^{-kv}A_f(e^v),\qquad h_f(v)=Q_f(v)-c_f.
+\]">\[
+Q_f(v)=e^{-kv}A_f(e^v),\qquad h_f(v)=Q_f(v)-c_f.
+\]</span>
+The functions are bounded and locally integrable; the finitely many jumps on a compact interval cause no problem. For <span class="math" data-tex="\(\operatorname{Re}z&gt;0\)">\(\operatorname{Re}z&gt;0\)</span>, the positive real majorant and Lemma 1.1 justify the sum–integral interchange in
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^\infty Q_f(v)e^{-zv}\,dv\\
+&amp;=\sum_{n\ge1}|a_n|^2
+  \int_{\log n}^\infty e^{-(k+z)v}\,dv\\
+&amp;=\frac{D_{f,f}(k+z)}{k+z}.
+\end{aligned}
+\tag{4.2c}
+\]">\[
+\begin{aligned}
+&amp;\int_0^\infty Q_f(v)e^{-zv}\,dv\\
+&amp;=\sum_{n\ge1}|a_n|^2
+  \int_{\log n}^\infty e^{-(k+z)v}\,dv\\
+&amp;=\frac{D_{f,f}(k+z)}{k+z}.
+\end{aligned}
+\tag{4.2c}
+\]</span>
+For example, the sum of the absolute integrals is
+<span class="math" data-tex="\(D_{f,f}(k+\operatorname{Re}z)/(k+\operatorname{Re}z)&lt;\infty\)">\(D_{f,f}(k+\operatorname{Re}z)/(k+\operatorname{Re}z)&lt;\infty\)</span>. Thus the Laplace transform of <span class="math" data-tex="\(h_f\)">\(h_f\)</span> is
+<span class="math math-display" data-tex="\[
+G_f(z)=\frac{D_{f,f}(k+z)}{k+z}-\frac{c_f}{z}.
+\]">\[
+G_f(z)=\frac{D_{f,f}(k+z)}{k+z}-\frac{c_f}{z}.
+\]</span>
+Write <span class="math" data-tex="\(B_f(z)=D_{f,f}(k+z)-r_f/z\)">\(B_f(z)=D_{f,f}(k+z)-r_f/z\)</span>. Theorem 2.2 makes <span class="math" data-tex="\(B_f\)">\(B_f\)</span> holomorphic on <span class="math" data-tex="\(\operatorname{Re}z&gt;-1/2\)">\(\operatorname{Re}z&gt;-1/2\)</span>, with its value at zero obtained by removing the pole. Since <span class="math" data-tex="\(r_f=kc_f\)">\(r_f=kc_f\)</span>,
+<span class="math math-display" data-tex="\[
+G_f(z)=\frac{B_f(z)-c_f}{k+z}.
+\tag{4.2d}
+\]">\[
+G_f(z)=\frac{B_f(z)-c_f}{k+z}.
+\tag{4.2d}
+\]</span>
+The denominator has no zero on this half-plane because <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. Hence <span class="math" data-tex="\(G_f\)">\(G_f\)</span> extends holomorphically to an open set containing <span class="math" data-tex="\(\operatorname{Re}z\ge0\)">\(\operatorname{Re}z\ge0\)</span>, including zero and every point of the imaginary axis.</p>
+<p>Newman's analytic theorem, with its complete contour proof in the programme lesson cited above, now applies to the bounded locally integrable function <span class="math" data-tex="\(h_f\)">\(h_f\)</span>. It gives convergence of <span class="math" data-tex="\(\int_0^T h_f(v)\,dv\)">\(\int_0^T h_f(v)\,dv\)</span> as <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>. In particular, for every fixed <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_v^{v+b}Q_f(w)\,dw&amp;\longrightarrow c_fb,\\
+\int_{v-b}^{v}Q_f(w)\,dw&amp;\longrightarrow c_fb.
+\end{aligned}
+\tag{4.2e}
+\]">\[
+\begin{aligned}
+\int_v^{v+b}Q_f(w)\,dw&amp;\longrightarrow c_fb,\\
+\int_{v-b}^{v}Q_f(w)\,dw&amp;\longrightarrow c_fb.
+\end{aligned}
+\tag{4.2e}
+\]</span>
+The second limit is taken with <span class="math" data-tex="\(v\ge b\)">\(v\ge b\)</span>.</p>
+<p>We remove the average using monotonicity of <span class="math" data-tex="\(A_f\)">\(A_f\)</span>. For <span class="math" data-tex="\(0\le t\le b\)">\(0\le t\le b\)</span> and <span class="math" data-tex="\(v\ge b\)">\(v\ge b\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q_f(v+t)&amp;\ge e^{-kt}Q_f(v),\\
+Q_f(v-t)&amp;\le e^{kt}Q_f(v).
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q_f(v+t)&amp;\ge e^{-kt}Q_f(v),\\
+Q_f(v-t)&amp;\le e^{kt}Q_f(v).
+\end{aligned}
+\]</span>
+Integrate these inequalities and use (4.2e). They imply
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\limsup_{v\to\infty}Q_f(v)&amp;\le\frac{c_fkb}{1-e^{-kb}},\\
+\liminf_{v\to\infty}Q_f(v)&amp;\ge\frac{c_fkb}{e^{kb}-1}.
+\end{aligned}
+\tag{4.2f}
+\]">\[
+\begin{aligned}
+\limsup_{v\to\infty}Q_f(v)&amp;\le\frac{c_fkb}{1-e^{-kb}},\\
+\liminf_{v\to\infty}Q_f(v)&amp;\ge\frac{c_fkb}{e^{kb}-1}.
+\end{aligned}
+\tag{4.2f}
+\]</span>
+First <span class="math" data-tex="\(v\to\infty\)">\(v\to\infty\)</span> with <span class="math" data-tex="\(b\)">\(b\)</span> fixed, then <span class="math" data-tex="\(b\downarrow0\)">\(b\downarrow0\)</span>, makes both bounds tend to <span class="math" data-tex="\(c_f\)">\(c_f\)</span>. Thus <span class="math" data-tex="\(Q_f(v)\to c_f\)">\(Q_f(v)\to c_f\)</span>, or <span class="math" data-tex="\(A_f(x)/x^k\to r_f/k\)">\(A_f(x)/x^k\to r_f/k\)</span>. The Gamma recurrence identifies this constant with the one in (4.2). This proves the mean-square asymptotic. ∎</p>
+<p>For <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, the summatory function is zero instead of a positive asymptotic. Positivity supplied the monotone count used in this proof; arbitrary mixed coefficients are handled by polarization below. Also (4.2) remains an asymptotic without a quantitative remainder: the analytic theorem supplies convergence without a rate, and the fixed-interval argument does not supply one.</p>
+<h3 id="4-1-the-function-delta">4.1. The function <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span></h3>
+<p>The ring lesson gives <span class="math" data-tex="\(\Delta=q\prod_{n\ge1}(1-q^n)^{24}\)">\(\Delta=q\prod_{n\ge1}(1-q^n)^{24}\)</span>, the normalized basis of <span class="math" data-tex="\(S_{12}\)">\(S_{12}\)</span>. Thus it is an eigenform, and
+<span class="math math-display" data-tex="\[
+ \tau(2)=-24,\quad
+ \tau(4)=(-24)^2-2^{11}=-1472,\quad
+ \tau(8)=(-24)(-1472)-2^{11}(-24)=84480.
+\]">\[
+ \tau(2)=-24,\quad
+ \tau(4)=(-24)^2-2^{11}=-1472,\quad
+ \tau(8)=(-24)(-1472)-2^{11}(-24)=84480.
+\]</span>
+If <span class="math" data-tex="\(A+B=-24\)">\(A+B=-24\)</span> and <span class="math" data-tex="\(AB=2048\)">\(AB=2048\)</span>, its local coefficient-square series is
+<span class="math math-display" data-tex="\[
+ \sum_{r\ge0}\tau(2^r)^2X^r
+ =\frac{1-2^{22}X^2}{(1-A^2X)(1-2048X)^2(1-B^2X)}.
+\tag{4.3}
+\]">\[
+ \sum_{r\ge0}\tau(2^r)^2X^r
+ =\frac{1-2^{22}X^2}{(1-A^2X)(1-2048X)^2(1-B^2X)}.
+\tag{4.3}
+\]</span>
+Here <span class="math" data-tex="\(A^2+B^2=576-4096=-3520\)">\(A^2+B^2=576-4096=-3520\)</span>. Multiplying the factors therefore gives the entirely rational expression
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ &amp;\frac{1-4194304X^2}
+ {1-576X-6029312X^2-2415919104X^3+17592186044416X^4}\\
+ &amp;=1+576X+2166784X^2+7136870400X^3+\cdots.
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+ &amp;\frac{1-4194304X^2}
+ {1-576X-6029312X^2-2415919104X^3+17592186044416X^4}\\
+ &amp;=1+576X+2166784X^2+7136870400X^3+\cdots.
+\end{aligned}
+\tag{4.4}
+\]</span>
+The first three nonconstant terms are exactly <span class="math" data-tex="\((-24)^2,(-1472)^2,84480^2\)">\((-24)^2,(-1472)^2,84480^2\)</span>.</p>
+<p>Let <span class="math" data-tex="\(P=\langle\Delta,\Delta\rangle\)">\(P=\langle\Delta,\Delta\rangle\)</span>. All residue constants are now explicit:
+<span class="math math-display" data-tex="\[
+ \operatorname*{Res}_{u=12}D_{\Delta,\Delta}
+      =\frac{3(4\pi)^{12}}{\pi\,11!}P,\qquad
+ \operatorname*{Res}_{u=12}R_{\Delta,\Delta}
+      =\frac{\pi(4\pi)^{12}}{2\,11!}P,\qquad
+ \operatorname*{Res}_{u=12}\Lambda_{\Delta,\Delta}
+      =\frac{P}{2\pi^{11}}.
+\tag{4.5}
+\]">\[
+ \operatorname*{Res}_{u=12}D_{\Delta,\Delta}
+      =\frac{3(4\pi)^{12}}{\pi\,11!}P,\qquad
+ \operatorname*{Res}_{u=12}R_{\Delta,\Delta}
+      =\frac{\pi(4\pi)^{12}}{2\,11!}P,\qquad
+ \operatorname*{Res}_{u=12}\Lambda_{\Delta,\Delta}
+      =\frac{P}{2\pi^{11}}.
+\tag{4.5}
+\]</span>
+To compute <span class="math" data-tex="\(P\)">\(P\)</span> directly, set <span class="math" data-tex="\(Y(x)=\sqrt{1-x^2}\)">\(Y(x)=\sqrt{1-x^2}\)</span>, <span class="math" data-tex="\(\rho=\sqrt3/2\)">\(\rho=\sqrt3/2\)</span> and
+<span class="math math-display" data-tex="\[
+ J_a(Y)=\int_Y^\infty y^{10}e^{-ay}dy
+       =\frac{10!e^{-aY}}{a^{11}}\sum_{j=0}^{10}\frac{(aY)^j}{j!}.
+\tag{4.6}
+\]">\[
+ J_a(Y)=\int_Y^\infty y^{10}e^{-ay}dy
+       =\frac{10!e^{-aY}}{a^{11}}\sum_{j=0}^{10}\frac{(aY)^j}{j!}.
+\tag{4.6}
+\]</span>
+Expanding the absolutely convergent Fourier product and doing the <span class="math" data-tex="\(y\)">\(y\)</span>-integral gives the exact, rapidly convergent expression
+<span class="math math-display" data-tex="\[
+ P=\sum_{m,n\ge1}\tau(m)\tau(n)
+       \int_{-1/2}^{1/2}\cos(2\pi(m-n)x)
+                  J_{2\pi(m+n)}(Y(x))dx.
+\tag{4.7}
+\]">\[
+ P=\sum_{m,n\ge1}\tau(m)\tau(n)
+       \int_{-1/2}^{1/2}\cos(2\pi(m-n)x)
+                  J_{2\pi(m+n)}(Y(x))dx.
+\tag{4.7}
+\]</span>
+Imaginary terms cancel between <span class="math" data-tex="\((m,n)\)">\((m,n)\)</span> and <span class="math" data-tex="\((n,m)\)">\((n,m)\)</span>. The convergence can be checked quantitatively using only the discriminant product and its weight. Write <span class="math" data-tex="\(r=e^{-2\pi\rho}\)">\(r=e^{-2\pi\rho}\)</span>. On the modular fundamental region, <span class="math" data-tex="\(y\ge\rho\)">\(y\ge\rho\)</span>, and the product formula gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\Delta(x+iy)|
+&amp;\le e^{-2\pi y}\prod_{j\ge1}(1+e^{-2\pi jy})^{24}\\
+&amp;\le e^{-2\pi y}\exp\!\left(\frac{24r}{1-r}\right).
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\Delta(x+iy)|
+&amp;\le e^{-2\pi y}\prod_{j\ge1}(1+e^{-2\pi jy})^{24}\\
+&amp;\le e^{-2\pi y}\exp\!\left(\frac{24r}{1-r}\right).
+\end{aligned}
+\]</span>
+The second inequality uses <span class="math" data-tex="\(\log(1+t)\le t\)">\(\log(1+t)\le t\)</span>, obtained by integrating <span class="math" data-tex="\((1+t)^{-1}\le1\)">\((1+t)^{-1}\le1\)</span>. The invariant quantity <span class="math" data-tex="\(y^6|\Delta(z)|\)">\(y^6|\Delta(z)|\)</span> is therefore at most
+<span class="math math-display" data-tex="\[
+ M_\Delta=\exp\!\left(\frac{24r}{1-r}\right)
+                 \left(\frac{3}{\pi e}\right)^6,
+ \tag{4.7a}
+\]">\[
+ M_\Delta=\exp\!\left(\frac{24r}{1-r}\right)
+                 \left(\frac{3}{\pi e}\right)^6,
+ \tag{4.7a}
+\]</span>
+because the maximum of <span class="math" data-tex="\(y^6e^{-2\pi y}\)">\(y^6e^{-2\pi y}\)</span> occurs at <span class="math" data-tex="\(y=3/\pi\)">\(y=3/\pi\)</span>. Reduction to the fundamental region extends this bound to the whole half-plane. Fourier orthogonality at height <span class="math" data-tex="\(y=1/n\)">\(y=1/n\)</span> now gives
+<span class="math math-display" data-tex="\[
+ |\tau(n)|\le e^{2\pi}M_\Delta n^6&lt;2n^6.
+ \tag{4.7b}
+\]">\[
+ |\tau(n)|\le e^{2\pi}M_\Delta n^6&lt;2n^6.
+ \tag{4.7b}
+\]</span>
+Indeed <span class="math" data-tex="\(\rho&gt;0.86\)">\(\rho&gt;0.86\)</span> and <span class="math" data-tex="\(\pi&gt;3.14\)">\(\pi&gt;3.14\)</span> imply <span class="math" data-tex="\(r&lt;1/200\)">\(r&lt;1/200\)</span>; <span class="math" data-tex="\(3&lt;\pi&lt;22/7\)">\(3&lt;\pi&lt;22/7\)</span> then gives
+<span class="math" data-tex="\(2\pi-6+24r/(1-r)&lt;2/7+24/199&lt;1/2\)">\(2\pi-6+24r/(1-r)&lt;2/7+24/199&lt;1/2\)</span>, while <span class="math" data-tex="\((3/\pi)^6&lt;1\)">\((3/\pi)^6&lt;1\)</span> and <span class="math" data-tex="\(e^{1/2}&lt;2\)">\(e^{1/2}&lt;2\)</span>. These elementary inequalities can also be checked from the exponential series. Thus (4.7b) has no purity or holomorphic Ramanujan–Petersson input. For <span class="math" data-tex="\(y\ge\rho\)">\(y\ge\rho\)</span>,
+<span class="math math-display" data-tex="\[
+ |\Delta(x+iy)|,|\Delta_N(x+iy)|\le C_1e^{-2\pi y},\quad
+ |\Delta-\Delta_N|\le C_Ne^{-2\pi(N+1)y},
+\]">\[
+ |\Delta(x+iy)|,|\Delta_N(x+iy)|\le C_1e^{-2\pi y},\quad
+ |\Delta-\Delta_N|\le C_Ne^{-2\pi(N+1)y},
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+ C_1=\frac2{1-64r},\qquad
+ C_N=\frac{2(N+1)^6}{1-((N+2)/(N+1))^6r},\quad
+ \Delta_N=\sum_{n=1}^N\tau(n)q^n.
+\tag{4.8}
+\]">\[
+ C_1=\frac2{1-64r},\qquad
+ C_N=\frac{2(N+1)^6}{1-((N+2)/(N+1))^6r},\quad
+ \Delta_N=\sum_{n=1}^N\tau(n)q^n.
+\tag{4.8}
+\]</span>
+Indeed the ratios of consecutive terms <span class="math" data-tex="\(n^6e^{-2\pi ny}\)">\(n^6e^{-2\pi ny}\)</span> are at most <span class="math" data-tex="\(64r\)">\(64r\)</span>, and in the tail at most <span class="math" data-tex="\(((N+2)/(N+1))^6r\)">\(((N+2)/(N+1))^6r\)</span>, both less than one. Since
+<span class="math" data-tex="\(\bigl||\Delta|^2-|\Delta_N|^2\bigr|\le(|\Delta|+|\Delta_N|)|\Delta-\Delta_N|\)">\(\bigl||\Delta|^2-|\Delta_N|^2\bigr|\le(|\Delta|+|\Delta_N|)|\Delta-\Delta_N|\)</span>, truncating both indices in (4.7) at <span class="math" data-tex="\(N\)">\(N\)</span> has error at most
+<span class="math math-display" data-tex="\[
+ 2C_1C_N J_{2\pi(N+2)}(\rho).
+\tag{4.9}
+\]">\[
+ 2C_1C_N J_{2\pi(N+2)}(\rho).
+\tag{4.9}
+\]</span>
+The ten coefficients used are
+<span class="math math-display" data-tex="\[
+ (\tau(1),\ldots,\tau(10))=
+ (1,-24,252,-1472,4830,-6048,-16744,84480,-113643,-115920).
+\]">\[
+ (\tau(1),\ldots,\tau(10))=
+ (1,-24,252,-1472,4830,-6048,-16744,84480,-113643,-115920).
+\]</span>
+They follow by multiplying the discriminant product through <span class="math" data-tex="\(q^{10}\)">\(q^{10}\)</span>; factors with index greater than nine cannot affect these coefficients. The coefficient product through <span class="math" data-tex="\(N=10\)">\(N=10\)</span>, followed by quadrature of its finite sum in (4.7), gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ P&amp;\approx 1.03536206\times10^{-6},\\
+ \operatorname*{Res}_{u=12}D_{\Delta,\Delta}&amp;\approx0.38408405,\\
+ c_\Delta&amp;\approx0.03200700.
+\end{aligned}
+\tag{4.10}
+\]">\[
+\begin{aligned}
+ P&amp;\approx 1.03536206\times10^{-6},\\
+ \operatorname*{Res}_{u=12}D_{\Delta,\Delta}&amp;\approx0.38408405,\\
+ c_\Delta&amp;\approx0.03200700.
+\end{aligned}
+\tag{4.10}
+\]</span>
+These are numerical evaluations of the exact formulas (4.5)–(4.7). The analytic truncation bound (4.9) is below <span class="math" data-tex="\(3.21\times10^{-24}\)">\(3.21\times10^{-24}\)</span>. For reproducibility, the finite integral was evaluated by composite Simpson on 2048 equal subintervals and by independent adaptive quadrature. A fourth-derivative bound for its integrand gives Simpson error below <span class="math" data-tex="\(2.02\times10^{-16}\)">\(2.02\times10^{-16}\)</span>; the displayed approximations are rounded more coarsely. The derivative bound follows by differentiating (4.6): on <span class="math" data-tex="\([-1/2,1/2]\)">\([-1/2,1/2]\)</span>, <span class="math" data-tex="\(|Y&#x27;|\le1\)">\(|Y&#x27;|\le1\)</span>, <span class="math" data-tex="\(|Y&#x27;&#x27;|\le2\)">\(|Y&#x27;&#x27;|\le2\)</span>, <span class="math" data-tex="\(|Y&#x27;&#x27;&#x27;|\le4\)">\(|Y&#x27;&#x27;&#x27;|\le4\)</span>, <span class="math" data-tex="\(|Y&#x27;&#x27;&#x27;&#x27;|\le20\)">\(|Y&#x27;&#x27;&#x27;&#x27;|\le20\)</span>, and each derivative of <span class="math" data-tex="\(J_a\)">\(J_a\)</span> is an exponential times the indicated finite polynomial. Summing these elementary derivative bounds for the 100 terms gives <span class="math" data-tex="\(\sup|F_{10}^{(4)}|&lt;0.639\)">\(\sup|F_{10}^{(4)}|&lt;0.639\)</span>; hence the Simpson estimate is <span class="math" data-tex="\(0.639/(180\cdot2048^4)\)">\(0.639/(180\cdot2048^4)\)</span>. Numerical arithmetic used 35 decimal digits; the analytic quadrature bounds refer to exact arithmetic. This supplies both an error estimate and a direct numerical computation of the norm, rather than treating <span class="math" data-tex="\(P\)">\(P\)</span> as an unspecified normalization.</p>
+<p>The Simpson error bound used in this check also has an elementary proof. On <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, let <span class="math" data-tex="\(L(F)=\int_{-1}^1F(x)dx-(F(-1)+4F(0)+F(1))/3\)">\(L(F)=\int_{-1}^1F(x)dx-(F(-1)+4F(0)+F(1))/3\)</span>. Direct integration shows that <span class="math" data-tex="\(L\)">\(L\)</span> annihilates every cubic. Taylor's formula with integral remainder therefore gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L(F)\\
+=\int_{-1}^1 K F^{(4)}\,dt,\\
+K(t)=-\frac{(1-|t|)^3}{72}\\
+\cdot(1+3|t|).
+\end{gathered}
+\tag{4.10a}
+\]">\[
+\begin{gathered}
+L(F)\\
+=\int_{-1}^1 K F^{(4)}\,dt,\\
+K(t)=-\frac{(1-|t|)^3}{72}\\
+\cdot(1+3|t|).
+\end{gathered}
+\tag{4.10a}
+\]</span>
+Here the integrand is the pointwise product of <span class="math" data-tex="\(K(t)\)">\(K(t)\)</span> and <span class="math" data-tex="\(F^{(4)}(t)\)">\(F^{(4)}(t)\)</span>. Indeed apply <span class="math" data-tex="\(L\)">\(L\)</span> to <span class="math" data-tex="\((x-t)_+^3/6\)">\((x-t)_+^3/6\)</span>: for <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> its integral is <span class="math" data-tex="\((1-t)^4/24\)">\((1-t)^4/24\)</span> and its Simpson value is <span class="math" data-tex="\((1-t)^3/18\)">\((1-t)^3/18\)</span>; reflection gives the other half. The kernel is nonpositive and <span class="math" data-tex="\(\int_{-1}^1|K|dt=1/90\)">\(\int_{-1}^1|K|dt=1/90\)</span>. Rescaling to a panel of length <span class="math" data-tex="\(2h\)">\(2h\)</span> gives error at most <span class="math" data-tex="\(h^5\sup|F^{(4)}|/90\)">\(h^5\sup|F^{(4)}|/90\)</span>. Adding the <span class="math" data-tex="\(M/2\)">\(M/2\)</span> panels with <span class="math" data-tex="\(h=(b-a)/M\)">\(h=(b-a)/M\)</span> proves exactly <span class="math" data-tex="\((b-a)^5\sup|F^{(4)}|/(180M^4)\)">\((b-a)^5\sup|F^{(4)}|/(180M^4)\)</span>, for even <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h3 id="4-2-mixed-averages-and-petersson-gram-matrices">4.2. Mixed averages and Petersson Gram matrices</h3>
+<p><strong>Corollary 4.1 (mixed coefficient averages).</strong> For any <span class="math" data-tex="\(f,g\in S_k(SL_2(\mathbb Z))\)">\(f,g\in S_k(SL_2(\mathbb Z))\)</span>, put
+<span class="math math-display" data-tex="\[
+ C_k=\frac{3(4\pi)^k}{\pi\Gamma(k+1)}.
+\tag{4.11}
+\]">\[
+ C_k=\frac{3(4\pi)^k}{\pi\Gamma(k+1)}.
+\tag{4.11}
+\]</span>
+Then, with the original unnormalized coefficients,
+<span class="math math-display" data-tex="\[
+ \sum_{n\le x}a_n\overline{b_n}
+ =C_k\langle f,g\rangle x^k+o(x^k).
+\tag{4.12}
+\]">\[
+ \sum_{n\le x}a_n\overline{b_n}
+ =C_k\langle f,g\rangle x^k+o(x^k).
+\tag{4.12}
+\]</span>
+In particular, distinct normalized eigenforms of the same weight have mixed sum <span class="math" data-tex="\(o(x^k)\)">\(o(x^k)\)</span>.</p>
+<p><strong>Proof.</strong> For a cusp form <span class="math" data-tex="\(h\)">\(h\)</span>, let <span class="math" data-tex="\(Q_x(h)=\sum_{n\le x}|a_n(h)|^2\)">\(Q_x(h)=\sum_{n\le x}|a_n(h)|^2\)</span>. Equation (4.2) and the zero-form case together give <span class="math" data-tex="\(x^{-k}Q_x(h)\to C_k\|h\|^2\)">\(x^{-k}Q_x(h)\to C_k\|h\|^2\)</span> for every <span class="math" data-tex="\(h\)">\(h\)</span>. Expanding each square gives the exact polarization identity
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ 4\sum_{n\le x}a_n\overline{b_n}
+ &amp;=Q_x(f+g)-Q_x(f-g)\\
+ &amp;\quad+iQ_x(f+ig)-iQ_x(f-ig).
+\end{aligned}
+\tag{4.13}
+\]">\[
+\begin{aligned}
+ 4\sum_{n\le x}a_n\overline{b_n}
+ &amp;=Q_x(f+g)-Q_x(f-g)\\
+ &amp;\quad+iQ_x(f+ig)-iQ_x(f-ig).
+\end{aligned}
+\tag{4.13}
+\]</span>
+For example the last difference before multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> is four times the imaginary part of <span class="math" data-tex="\(\sum a_n\overline{b_n}\)">\(\sum a_n\overline{b_n}\)</span>; this checks the sign for a product linear in its first variable. Divide (4.13) by <span class="math" data-tex="\(x^k\)">\(x^k\)</span> and use the four diagonal limits. The same polarization identity for the Petersson product makes the limit <span class="math" data-tex="\(4C_k\langle f,g\rangle\)">\(4C_k\langle f,g\rangle\)</span>, proving (4.12). Orthogonality from Corollary 3.3 gives the eigenform assertion. When the inner product vanishes the conclusion is <span class="math" data-tex="\(o(x^k)\)">\(o(x^k)\)</span>, rather than an asymptotic equivalent to zero. The diagonal mean-square proof was used only for the nonnegative square coefficients of the four forms. ∎</p>
+<p>For any fixed finite list <span class="math" data-tex="\(f_1,\ldots,f_d\)">\(f_1,\ldots,f_d\)</span>, this also identifies the Petersson Gram matrix as a coefficient limit:
+<span class="math math-display" data-tex="\[
+ x^{-k}\left(\sum_{n\le x}a_n(f_i)\overline{a_n(f_j)}\right)_{i,j=1}^d
+ \longrightarrow C_k\bigl(\langle f_i,f_j\rangle\bigr)_{i,j=1}^d.
+\tag{4.14}
+\]">\[
+ x^{-k}\left(\sum_{n\le x}a_n(f_i)\overline{a_n(f_j)}\right)_{i,j=1}^d
+ \longrightarrow C_k\bigl(\langle f_i,f_j\rangle\bigr)_{i,j=1}^d.
+\tag{4.14}
+\]</span>
+The convergence holds entrywise and in operator norm. Indeed (4.12) gives every entrywise limit. For an error matrix <span class="math" data-tex="\(E\)">\(E\)</span>, if <span class="math" data-tex="\(m=\max_{i,j}|E_{ij}|\)">\(m=\max_{i,j}|E_{ij}|\)</span>, then <span class="math" data-tex="\(|(Ev)_i|\le m\sum_j|v_j|\le m\sqrt d\|v\|_2\)">\(|(Ev)_i|\le m\sum_j|v_j|\le m\sqrt d\|v\|_2\)</span>. Summing the <span class="math" data-tex="\(d\)">\(d\)</span> squared component bounds gives <span class="math" data-tex="\(\|E\|_{\mathrm{op}}\le dm\)">\(\|E\|_{\mathrm{op}}\le dm\)</span>, which tends to zero. This assertion supplies no quantitative rate.</p>
+<h2 id="5-symmetric-squares-and-the-higher-rank-outlook">5. Symmetric squares and the higher-rank outlook</h2>
+<p>At full level the normalized coefficients are real, by self-adjointness. For one eigenform with local roots <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>, define initially for <span class="math" data-tex="\(\operatorname{Re}u&gt;k\)">\(\operatorname{Re}u&gt;k\)</span>
+<span class="math math-display" data-tex="\[
+ L(\operatorname{Sym}^2f,u)=\prod_p
+ \bigl((1-\alpha^2p^{-u})(1-p^{k-1-u})(1-\beta^2p^{-u})\bigr)^{-1}.
+\tag{5.1}
+\]">\[
+ L(\operatorname{Sym}^2f,u)=\prod_p
+ \bigl((1-\alpha^2p^{-u})(1-p^{k-1-u})(1-\beta^2p^{-u})\bigr)^{-1}.
+\tag{5.1}
+\]</span>
+There are two copies of <span class="math" data-tex="\(\alpha\beta=p^{k-1}\)">\(\alpha\beta=p^{k-1}\)</span> in (3.5), so
+<span class="math math-display" data-tex="\[
+ R_{f,f}(u)=\zeta(u-k+1)L(\operatorname{Sym}^2f,u).
+\tag{5.2}
+\]">\[
+ R_{f,f}(u)=\zeta(u-k+1)L(\operatorname{Sym}^2f,u).
+\tag{5.2}
+\]</span>
+This equality also follows by comparing each local factor. Near <span class="math" data-tex="\(u=k\)">\(u=k\)</span>, divide the already continued <span class="math" data-tex="\(R\)">\(R\)</span> by <span class="math" data-tex="\(\zeta(u-k+1)\)">\(\zeta(u-k+1)\)</span>. Their simple poles give a holomorphic continuation of the quotient there and the value
+<span class="math math-display" data-tex="\[
+ L(\operatorname{Sym}^2f,k)
+ =\operatorname*{Res}_{u=k}R_{f,f}(u),\qquad
+ \|f\|^2=\frac{2\Gamma(k)}{\pi(4\pi)^k}
+                         L(\operatorname{Sym}^2f,k).
+\tag{5.3}
+\]">\[
+ L(\operatorname{Sym}^2f,k)
+ =\operatorname*{Res}_{u=k}R_{f,f}(u),\qquad
+ \|f\|^2=\frac{2\Gamma(k)}{\pi(4\pi)^k}
+                         L(\operatorname{Sym}^2f,k).
+\tag{5.3}
+\]</span>
+For <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, this is <span class="math" data-tex="\(P=2\cdot11!\,L(\operatorname{Sym}^2\Delta,12)/(\pi(4\pi)^{12})\)">\(P=2\cdot11!\,L(\operatorname{Sym}^2\Delta,12)/(\pi(4\pi)^{12})\)</span>. Equation (4.10) therefore also evaluates this special value via (4.5). The three normalized roots <span class="math" data-tex="\(\alpha^2/p^{k-1},1,\beta^2/p^{k-1}\)">\(\alpha^2/p^{k-1},1,\beta^2/p^{k-1}\)</span> describe the adjoint factor after the shift <span class="math" data-tex="\(v=u-k+1\)">\(v=u-k+1\)</span>. This explains why an adjoint value at <span class="math" data-tex="\(v=1\)">\(v=1\)</span> governs the Petersson norm. A general symmetric-square lifting theorem is outside this calculation.</p>
+<p>The tensor-factor algebra extends directly to arbitrary ranks. If <span class="math" data-tex="\(A=\operatorname{diag}(\alpha_1,\ldots,\alpha_n)\)">\(A=\operatorname{diag}(\alpha_1,\ldots,\alpha_n)\)</span> and <span class="math" data-tex="\(B=\operatorname{diag}(\beta_1,\ldots,\beta_m)\)">\(B=\operatorname{diag}(\beta_1,\ldots,\beta_m)\)</span>, then <span class="math" data-tex="\(e_i\otimes e_j\)">\(e_i\otimes e_j\)</span> is an eigenvector of <span class="math" data-tex="\(A\otimes B\)">\(A\otimes B\)</span> with eigenvalue <span class="math" data-tex="\(\alpha_i\beta_j\)">\(\alpha_i\beta_j\)</span>. These vectors form a basis, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\det(1-XA\otimes B)^{-1}\\
+=\prod_{i=1}^n\prod_{j=1}^m(1-\alpha_i\beta_jX)^{-1}.
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+\det(1-XA\otimes B)^{-1}\\
+=\prod_{i=1}^n\prod_{j=1}^m(1-\alpha_i\beta_jX)^{-1}.
+\end{gathered}
+\tag{5.4}
+\]</span>
+This proves the formal <span class="math" data-tex="\(nm\)">\(nm\)</span>-root identity, including repeated roots. In an unramified automorphic application the two root lists are called Satake roots. Identifying (5.4) with a local integral is a separate theorem, formulated in the free Getz–Hahn draft, Theorem 11.6.1. Its Sections 11.5 and 11.7 also formulate the global completed function, including archimedean factors, and its possible poles at 0 and 1 under the stated central-character normalization. Their analytic construction and general functional equation remain programme proof tasks; the elementary tensor identity does not prove them. The further development is <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GLOB/index.html">Rankin–Selberg for GLₙ</a>. Miller's free notes after Shahidi, arXiv:math/0204148v2, explain the corresponding Eisenstein-series construction as a further direction.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Carry out the unfolding in (1.5), starting from the coset sum. Identify the absolute-convergence condition, the Fourier orthogonality step and the gamma factor.</li>
+<li><strong>Medium.</strong> Prove the local Euler identity (3.2) and apply it to the Hecke polynomials (3.1). Include the case of a repeated root, and explain the zeta factor in (3.5).</li>
+<li><strong>Medium.</strong> Assuming precisely the Tauberian theorem (4.1), prove (4.2) with its exact constant. Explain why knowing a real-axis residue alone would leave a hypothesis unverified. Then give the unconditional proof from the Petersson bound and Newman's analytic theorem, including the monotonicity argument that removes the average.</li>
+<li><strong>Hard.</strong> Prove the bound bearing Rankin's exponent
+<span class="math math-display" data-tex="\[
+a_n=O_f\left(n^{(k-1)/2+3/10}\right)
+\qquad(f\in S_k(SL_2(\mathbb Z))).
+\tag{6.1}
+\]">\[
+a_n=O_f\left(n^{(k-1)/2+3/10}\right)
+\qquad(f\in S_k(SL_2(\mathbb Z))).
+\tag{6.1}
+\]</span>
+Give a complete argument for arbitrary cusp forms and for the divisor estimate needed to remove the divisor factor. The modern route described in Solution 4 is conditional on the holomorphic Ramanujan–Petersson root theorem: its purity proof is still required in the programme and cannot be treated as established merely because the L-function lesson states it. A direct historical Rankin–Selberg route instead needs a quantitative mean-square remainder, which (4.1)–(4.2) do not supply. The bound (6.1) remains a required proof task until one of those dependencies is proved.</li>
+</ol>
+<h2 id="7-full-solutions">7. Full solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>For <span class="math" data-tex="\(\sigma=\operatorname{Re}t&gt;1\)">\(\sigma=\operatorname{Re}t&gt;1\)</span>, boundedness of <span class="math" data-tex="\(H\)">\(H\)</span> gives integrability of <span class="math" data-tex="\(|H|y^{\sigma-2}\)">\(|H|y^{\sigma-2}\)</span> on the part of the strip with <span class="math" data-tex="\(0&lt;y&lt;1\)">\(0&lt;y&lt;1\)</span>; cusp decay gives it on <span class="math" data-tex="\(y\ge1\)">\(y\ge1\)</span>. Tonelli applied to the positive coset sum shows that the integral over <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> of <span class="math" data-tex="\(|H|E(z,\sigma)\)">\(|H|E(z,\sigma)\)</span> is this finite strip integral. Thus Fubini is available for the complex coset sum. Change variables <span class="math" data-tex="\(w=\gamma z\)">\(w=\gamma z\)</span> in each summand. Invariance of <span class="math" data-tex="\(H\)">\(H\)</span> and of <span class="math" data-tex="\(d\mu\)">\(d\mu\)</span> makes its contribution <span class="math" data-tex="\(\int_{\gamma\mathcal F}H(w)\operatorname{Im}(w)^t d\mu(w)\)">\(\int_{\gamma\mathcal F}H(w)\operatorname{Im}(w)^t d\mu(w)\)</span>. The coset translates form a translation fundamental set, giving (1.7).</p>
+<p>Expand the two Fourier series at a fixed positive height. The elementary integral
+<span class="math" data-tex="\(\int_0^1e^{2\pi i(n-m)x}dx\)">\(\int_0^1e^{2\pi i(n-m)x}dx\)</span> is one for <span class="math" data-tex="\(n=m\)">\(n=m\)</span> and zero otherwise, so only <span class="math" data-tex="\(a_n\overline{b_n}e^{-4\pi ny}\)">\(a_n\overline{b_n}e^{-4\pi ny}\)</span> remains. The diagonal-square computation (1.4) and Cauchy–Schwarz show that the sum of its absolute Mellin integrals is finite for <span class="math" data-tex="\(\operatorname{Re}(t+k-1)&gt;k\)">\(\operatorname{Re}(t+k-1)&gt;k\)</span>. It is therefore legitimate to integrate each diagonal term. With <span class="math" data-tex="\(v=4\pi ny\)">\(v=4\pi ny\)</span>,
+<span class="math math-display" data-tex="\[
+ \int_0^\infty y^{t+k-2}e^{-4\pi ny}dy
+  =(4\pi n)^{-t-k+1}\int_0^\infty v^{t+k-2}e^{-v}dv.
+\]">\[
+ \int_0^\infty y^{t+k-2}e^{-4\pi ny}dy
+  =(4\pi n)^{-t-k+1}\int_0^\infty v^{t+k-2}e^{-v}dv.
+\]</span>
+The remaining integral is <span class="math" data-tex="\(\Gamma(t+k-1)\)">\(\Gamma(t+k-1)\)</span>, yielding (1.5). The simultaneous sign in <span class="math" data-tex="\(\Gamma_\infty\)">\(\Gamma_\infty\)</span> and <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> was already quotiented; inserting another factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> would give the wrong residue.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>For distinct roots, write <span class="math" data-tex="\(h_r(A,B)=(A^{r+1}-B^{r+1})/(A-B)\)">\(h_r(A,B)=(A^{r+1}-B^{r+1})/(A-B)\)</span>. Multiplying the corresponding formula for <span class="math" data-tex="\(C,D\)">\(C,D\)</span>, and summing each of its four terms in <span class="math" data-tex="\(r\)">\(r\)</span>, gives (3.3). Clearing its denominators produces a polynomial of degree at most three. Its constant coefficient is <span class="math" data-tex="\((A-B)(C-D)\)">\((A-B)(C-D)\)</span>, its coefficient of <span class="math" data-tex="\(X\)">\(X\)</span> vanishes, its coefficient of <span class="math" data-tex="\(X^2\)">\(X^2\)</span> is <span class="math" data-tex="\(-ABCD(A-B)(C-D)\)">\(-ABCD(A-B)(C-D)\)</span>, and its coefficient of <span class="math" data-tex="\(X^3\)">\(X^3\)</span> vanishes. This proves (3.2). Since the cleared coefficients are polynomial identities in the roots, the formula extends to repeated roots. In particular, if <span class="math" data-tex="\(A=B\)">\(A=B\)</span>, then <span class="math" data-tex="\(h_r(A,A)=(r+1)A^r\)">\(h_r(A,A)=(r+1)A^r\)</span>; this is already included, without division by zero.</p>
+<p>For the Hecke polynomials, the recurrence identifies <span class="math" data-tex="\(a_{p^r}=h_r(\alpha_1,\alpha_2)\)">\(a_{p^r}=h_r(\alpha_1,\alpha_2)\)</span> and <span class="math" data-tex="\(\overline{b_{p^r}}=h_r(\overline{\beta_1},\overline{\beta_2})\)">\(\overline{b_{p^r}}=h_r(\overline{\beta_1},\overline{\beta_2})\)</span>. The product of all four roots is <span class="math" data-tex="\(p^{2k-2}\)">\(p^{2k-2}\)</span>, giving the numerator <span class="math" data-tex="\(1-p^{2k-2}X^2\)">\(1-p^{2k-2}X^2\)</span>. Set <span class="math" data-tex="\(X=p^{-u}\)">\(X=p^{-u}\)</span>; multiplicativity and absolute convergence as in Theorem 3.2 produce (3.4). Its numerator product is <span class="math" data-tex="\(\zeta(2u-2k+2)^{-1}\)">\(\zeta(2u-2k+2)^{-1}\)</span>, so multiplying by that zeta function gives precisely the four reciprocal local factors. This also shows why multiplying the two separate degree-two Euler products would be incorrect: it would form a convolution of coefficients rather than their pointwise products.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>Assume <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>. The coefficients <span class="math" data-tex="\(c_n=|a_n|^2\)">\(c_n=|a_n|^2\)</span> are nonnegative. Lemma 1.1 proves convergence for <span class="math" data-tex="\(\operatorname{Re}u&gt;k\)">\(\operatorname{Re}u&gt;k\)</span>. Equation (2.6) gives the positive residue
+<span class="math" data-tex="\(r_f=3(4\pi)^k\|f\|^2/(\pi\Gamma(k))\)">\(r_f=3(4\pi)^k\|f\|^2/(\pi\Gamma(k))\)</span>. Theorem 2.2 proves that subtracting <span class="math" data-tex="\(r_f/(u-k)\)">\(r_f/(u-k)\)</span> leaves a holomorphic function throughout <span class="math" data-tex="\(\operatorname{Re}u&gt;k-1/2\)">\(\operatorname{Re}u&gt;k-1/2\)</span>, including every point of the boundary line <span class="math" data-tex="\(\operatorname{Re}u=k\)">\(\operatorname{Re}u=k\)</span>. It therefore has the continuous closed-half-plane extension required by (4.1). Apply that theorem with <span class="math" data-tex="\(a=k\)">\(a=k\)</span>:
+<span class="math math-display" data-tex="\[
+ \sum_{n\le x}|a_n|^2\sim\frac{r_f}{k}x^k
+       =\frac{3(4\pi)^k}{\pi\Gamma(k+1)}\|f\|^2x^k,
+\]">\[
+ \sum_{n\le x}|a_n|^2\sim\frac{r_f}{k}x^k
+       =\frac{3(4\pi)^k}{\pi\Gamma(k+1)}\|f\|^2x^k,
+\]</span>
+where <span class="math" data-tex="\(\Gamma(k+1)=k\Gamma(k)\)">\(\Gamma(k+1)=k\Gamma(k)\)</span>. A real-axis limit <span class="math" data-tex="\((u-k)D(u)\to r_f\)">\((u-k)D(u)\to r_f\)</span> supplies no continuity along the rest of the vertical boundary. It does not replace that hypothesis. The zero form has all coefficients zero and is treated separately.</p>
+<p>For the unconditional proof, use the invariant Petersson bound and Fourier orthogonality at height <span class="math" data-tex="\(1/x\)">\(1/x\)</span> to obtain
+<span class="math" data-tex="\(A_f(x)\le e^{4\pi}M_f^2x^k\)">\(A_f(x)\le e^{4\pi}M_f^2x^k\)</span>. Thus
+<span class="math" data-tex="\(h_f(v)=e^{-kv}A_f(e^v)-r_f/k\)">\(h_f(v)=e^{-kv}A_f(e^v)-r_f/k\)</span> is bounded and locally integrable. Its Laplace transform, initially for <span class="math" data-tex="\(\operatorname{Re}z&gt;0\)">\(\operatorname{Re}z&gt;0\)</span>, is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G_f(z)&amp;=\frac{D_{f,f}(k+z)}{k+z}-\frac{r_f}{kz}\\
+&amp;=\frac{D_{f,f}(k+z)-r_f/z-r_f/k}{k+z}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+G_f(z)&amp;=\frac{D_{f,f}(k+z)}{k+z}-\frac{r_f}{kz}\\
+&amp;=\frac{D_{f,f}(k+z)-r_f/z-r_f/k}{k+z}.
+\end{aligned}
+\]</span>
+Theorem 2.2 makes the numerator holomorphic on <span class="math" data-tex="\(\operatorname{Re}z&gt;-1/2\)">\(\operatorname{Re}z&gt;-1/2\)</span>; the denominator is nonzero there. Apply the bounded-function analytic theorem from <em>The prime number theorem</em>, Theorem 5.1. It gives convergence of <span class="math" data-tex="\(\int_0^T h_f(v)\,dv\)">\(\int_0^T h_f(v)\,dv\)</span>, so the integrals of <span class="math" data-tex="\(Q_f(v)=e^{-kv}A_f(e^v)\)">\(Q_f(v)=e^{-kv}A_f(e^v)\)</span> over both <span class="math" data-tex="\([v,v+b]\)">\([v,v+b]\)</span> and <span class="math" data-tex="\([v-b,v]\)">\([v-b,v]\)</span> tend to <span class="math" data-tex="\(r_fb/k\)">\(r_fb/k\)</span>, for each fixed <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>.</p>
+<p>Monotonicity of <span class="math" data-tex="\(A_f\)">\(A_f\)</span> gives <span class="math" data-tex="\(Q_f(v+t)\ge e^{-kt}Q_f(v)\)">\(Q_f(v+t)\ge e^{-kt}Q_f(v)\)</span> and <span class="math" data-tex="\(Q_f(v-t)\le e^{kt}Q_f(v)\)">\(Q_f(v-t)\le e^{kt}Q_f(v)\)</span> for <span class="math" data-tex="\(0\le t\le b\)">\(0\le t\le b\)</span>, <span class="math" data-tex="\(v\ge b\)">\(v\ge b\)</span>. Integrating yields
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\limsup_{v\to\infty}Q_f(v)&amp;\le\frac{r_fb}{1-e^{-kb}},\\
+\liminf_{v\to\infty}Q_f(v)&amp;\ge\frac{r_fb}{e^{kb}-1}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\limsup_{v\to\infty}Q_f(v)&amp;\le\frac{r_fb}{1-e^{-kb}},\\
+\liminf_{v\to\infty}Q_f(v)&amp;\ge\frac{r_fb}{e^{kb}-1}.
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(b\downarrow0\)">\(b\downarrow0\)</span>. Both bounds tend to <span class="math" data-tex="\(r_f/k\)">\(r_f/k\)</span>, so <span class="math" data-tex="\(A_f(x)/x^k\to r_f/k\)">\(A_f(x)/x^k\to r_f/k\)</span>, exactly (4.2). The fixed-interval limit followed by this monotonicity step is essential: convergence of the integrals alone does not give pointwise convergence for arbitrary bounded functions.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>This is a conditional derivation: assume the holomorphic Ramanujan–Petersson root theorem, whose programme proof remains required. The normalized full-level eigenbasis from the Hecke lesson, Theorem 4.2, writes any <span class="math" data-tex="\(f\)">\(f\)</span> as a finite sum <span class="math" data-tex="\(\sum_j c_j f_j\)">\(\sum_j c_j f_j\)</span>. Every <span class="math" data-tex="\(f_j\)">\(f_j\)</span> is primitive at level one, so the assumed theorem applies at every prime: both roots of <span class="math" data-tex="\(X^2-a_p(f_j)X+p^{k-1}\)">\(X^2-a_p(f_j)X+p^{k-1}\)</span> have modulus <span class="math" data-tex="\(p^{(k-1)/2}\)">\(p^{(k-1)/2}\)</span>. The prime-power generating function consequently gives
+<span class="math math-display" data-tex="\[
+ |a_{p^r}(f_j)|
+ =\left|\sum_{h=0}^r\alpha_1^{r-h}\alpha_2^h\right|
+ \le(r+1)p^{r(k-1)/2}.
+\]">\[
+ |a_{p^r}(f_j)|
+ =\left|\sum_{h=0}^r\alpha_1^{r-h}\alpha_2^h\right|
+ \le(r+1)p^{r(k-1)/2}.
+\]</span>
+This also handles a repeated root. Multiplicativity yields
+<span class="math math-display" data-tex="\[
+ |a_n(f_j)|\le\prod_{p^r\parallel n}(r+1)n^{(k-1)/2}
+          =d(n)n^{(k-1)/2}.
+\tag{7.1}
+\]">\[
+ |a_n(f_j)|\le\prod_{p^r\parallel n}(r+1)n^{(k-1)/2}
+          =d(n)n^{(k-1)/2}.
+\tag{7.1}
+\]</span></p>
+<p>Here is the needed divisor bound, including a uniform constant. Fix <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>. For every prime <span class="math" data-tex="\(p\ge2^{1/\epsilon}\)">\(p\ge2^{1/\epsilon}\)</span> and every integer <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, induction gives <span class="math" data-tex="\(r+1\le2^r\le p^{\epsilon r}\)">\(r+1\le2^r\le p^{\epsilon r}\)</span>. For one of the finitely many smaller primes define
+<span class="math math-display" data-tex="\[
+ C_p=\sup_{r\ge0}(r+1)p^{-\epsilon r}&lt;\infty.
+\]">\[
+ C_p=\sup_{r\ge0}(r+1)p^{-\epsilon r}&lt;\infty.
+\]</span>
+Finiteness follows because this sequence tends to zero; more explicitly it is bounded by the convergent sum <span class="math" data-tex="\(\sum_{r\ge0}(r+1)p^{-\epsilon r}=(1-p^{-\epsilon})^{-2}\)">\(\sum_{r\ge0}(r+1)p^{-\epsilon r}=(1-p^{-\epsilon})^{-2}\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ d(n)=\prod_{p^r\parallel n}(r+1)
+       \le \left(\prod_{p&lt;2^{1/\epsilon}}C_p\right)n^\epsilon
+       =C_\epsilon n^\epsilon
+\tag{7.2}
+\]">\[
+ d(n)=\prod_{p^r\parallel n}(r+1)
+       \le \left(\prod_{p&lt;2^{1/\epsilon}}C_p\right)n^\epsilon
+       =C_\epsilon n^\epsilon
+\tag{7.2}
+\]</span>
+for every <span class="math" data-tex="\(n\)">\(n\)</span>. Combining (7.1)–(7.2) and the finite basis expansion gives
+<span class="math math-display" data-tex="\[
+ |a_n(f)|\le\left(\sum_j|c_j|\right)C_\epsilon
+                 n^{(k-1)/2+\epsilon}.
+\]">\[
+ |a_n(f)|\le\left(\sum_j|c_j|\right)C_\epsilon
+                 n^{(k-1)/2+\epsilon}.
+\]</span>
+Choosing <span class="math" data-tex="\(\epsilon=3/10\)">\(\epsilon=3/10\)</span> proves (6.1), with a constant depending on <span class="math" data-tex="\(f\)">\(f\)</span>, conditional on the deep root theorem used at the start of this solution. That theorem's proof remains unresolved. This is not a derivation of the historical mean-square remainder from (4.2); an asymptotic without a rate cannot supply that remainder. Consequently (6.1) is preserved as a required result, with a conditional derivation and an explicit outstanding proof dependency. ∎</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The general continuous-boundary Wiener–Ikehara theorem is stated before (4.1), with the exact free reference Gillet–Grayson, Appendix A, Theorem A.4, pp. 443–444. Its assumed implication is checked in Solution 3; the general theorem's proof is still required if that route is used. Section 4 independently gives the complete mean-square argument from the elementary Petersson bound and <a href="../NT-ZETA/NT-ZETA-09.html#5-newman-s-analytic-theorem">The prime number theorem</a>, Theorem 5.1. That earlier programme theorem has the full contour identity, both arc bounds and the narrow-path estimate in its equations (5.2)–(5.4); these are the exact analytic proof input, with no prime-counting conclusion or large-height growth estimate needed. The numerical norm estimate now uses only the locally proved discriminant bound (4.7a)–(4.7b). Solution 4 remains conditional on the holomorphic Ramanujan–Petersson root theorem stated in <a href="LG-MF-11.html">The L-function of a cusp form</a>, Section 5: Deligne's freely accessible original paper, Theorem (8.2), p. 302. Its purity proof is not supplied here, so the required coefficient bound (6.1) is not counted as closed.</p>
+<p>The inherited results are precisely: the Petersson lesson, Theorems 1.1 and 2.1, for integrability, positivity and the invariant bound; the level-one Hecke lesson, Theorems 4.2–4.3, for the normalized orthogonal eigenbasis, multiplicity one and coefficient recurrences; the ring lesson, Theorem 2.2 and Theorem 4.1, for the discriminant product and <span class="math" data-tex="\(S_{12}=\mathbb C\Delta\)">\(S_{12}=\mathbb C\Delta\)</span>; and the preceding Eisenstein lesson, Theorem 2.2, Theorem 3.2 and Corollary 3.3, for the Fourier expansion, completed continuation, reflection and residue. Its Section 3 and Solution 3 supply the zeta continuation and <span class="math" data-tex="\(\zeta(2)=\pi^2/6\)">\(\zeta(2)=\pi^2/6\)</span>. No Maass spectral existence theorem is needed for the integral proof.</p>
+<p>The Gamma integral, recurrence, meromorphic continuation and entire reciprocal have programme proofs in <a href="../NT-ZETA/NT-ZETA-03.html#from-an-integral-to-an-entire-reciprocal">The Gamma function and Stirling's formula</a>, Theorems 1.1–1.2. We use Tonelli, Fubini, dominated integration, Fourier orthogonality and Cauchy–Schwarz as in the Petersson and Eisenstein lessons. The holomorphic-parameter step in Lemma 2.1 follows from Cauchy's formula and its explicit Gaussian majorant. The polynomial root argument in Lemma 3.1 is proved there. The composite-Simpson error estimate is proved from its explicit remainder kernel in (4.10a); it affects the numerical approximation, while (4.5)–(4.7) are exact identities.</p>
+<p>The higher-rank tensor-factor algebra is proved in (5.4). Its identification with local integrals and the general completed continuation, Getz–Hahn, Theorems 11.6.1 and 11.7.1, remain required proofs for the higher-rank extension. A general symmetric-square lifting theorem, the Langlands–Shahidi method, and the historical quantitative Rankin–Selberg mean-square remainder are likewise not proved here. The full-level unfolding, continuation, residues, functional equation and local algebra above are independently derived from the explicit Eisenstein formulas and proved earlier analytic inputs.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>Zagier 1981.</strong> D. Zagier, <em>The Rankin–Selberg method for automorphic functions which are not of rapid decay</em>, original research article, pp. 415–437. <a href="https://people.mpim-bonn.mpg.de/zagier/files/rankin-selberg/fulltext.pdf">Author's freely accessible article</a>. Our rapid-decay unfolding and its normalization are independently derived in Sections 1–2.</li>
+<li><strong>Getz–Hahn 2022.</strong> J. R. Getz and H. Hahn, <em>An Introduction to Automorphic Representations: With a View toward Trace Formulae</em>, author's freely distributed draft dated April 22, 2022, Sections 11.5–11.7, pp. 265–272. <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf">Exact free draft</a>.</li>
+<li><strong>Miller after Shahidi 2002.</strong> S. D. Miller, <em>A Summary of the Langlands–Shahidi Method of Constructing L-functions</em>, notes after discussions with F. Shahidi, arXiv:math/0204148v2. <a href="https://arxiv.org/abs/math/0204148v2">Free original notes</a>.</li>
+<li><strong>Zagier 1997.</strong> D. Zagier, “Newman's Short Proof of the Prime Number Theorem,” <em>American Mathematical Monthly</em> 104, 705–708, analytic theorem and proof, pp. 707–708. The bounded-function theorem used in Section 4 has a complete programme proof in <em>The prime number theorem</em>, Theorem 5.1. <a href="https://people.mpim-bonn.mpg.de/zagier/files/doi/10.2307/2975232/fulltext.pdf">Author's article</a>.</li>
+<li><strong>Gillet–Grayson 2006.</strong> H. Gillet and D. R. Grayson, “Volumes of Symmetric Spaces via Lattice Points,” <em>Documenta Mathematica</em> 11, 425–447, Appendix A, Theorem A.4, pp. 443–444. <a href="https://ems.press/content/serial-article-files/25997">Publisher's open article</a>.</li>
+<li><strong>Deligne 1974.</strong> P. Deligne, “La conjecture de Weil I,” <em>Publications Mathématiques de l'IHÉS</em> 43, 273–307, Theorem (8.2), p. 302. The exact good-prime root theorem is stated in the L-function lesson, Section 5. <a href="https://numdam.org/articles/10.1007/BF02684373/">Original article</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-18.html">← Non-holomorphic Eisenstein series and Maass forms</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/the-rankin-selberg-method.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

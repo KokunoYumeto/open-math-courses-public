@@ -1,0 +1,309 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sections with support and the localization triangle</title><link rel="stylesheet" href="../../assets/site.css"><style>.lesson{max-width:58rem;margin:auto;padding:1.2rem}body{overflow-wrap:break-word}.math-display,mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main class="lesson"><nav><a href="../../">Open Mathematics Courses</a> · <a href="./">Derived categories of sheaves</a></nav><h1 id="sections-with-support-and-the-localization-triangle">Sections with support and the localization triangle</h1>
+<p><em>Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the <a href="licence.html">course notice</a>.</em></p>
+<p>A section can vanish away from a closed subset while carrying information on that subset. Derived sections with support also detect classes which cannot be represented by a degree-zero section. Localization compares this information with what remains on the open complement. The point of the triangle is to include the boundary map: it measures the obstruction to extending a class across the missing subset.</p>
+<p>The prerequisites are <a href="sheaves-of-modules-on-a-ringed-space.html">Sheaves of modules on a ringed space</a>, Theorems 2.1 and 4.4; <a href="injective-modules-and-bounded-below-derived-functors.html">Injective modules and bounded-below derived functors</a>, Lemma 1.1, Proposition 1.3 and Theorem 4.1(4), for injective flasqueness and acyclic resolutions; <a href="k-injective-resolutions-in-grothendieck-categories.html">K-injective resolutions in Grothendieck categories</a>, Theorems 4.1 and 5.1; and <a href="derived-pullback-and-pushforward.html">Derived pullback and pushforward</a>, Proposition 3.2 and Theorem 4.1. The cone construction and exact-sequence triangle are Theorem 3.1 and Proposition 5.2 of the common reading. For cup products we use the tensor lesson's Theorem 2.2 and the internal-Hom lesson's Theorem 3.1.</p>
+<p>Sections 1–3 work for any sheaf of unital rings, including noncommutative rings, and unbounded complexes of left modules. Section 5's tensor and cup products assume commutativity. For a closed inclusion <span class="math" data-tex="\(i:Z\hookrightarrow X\)">\(i:Z\hookrightarrow X\)</span>, use the unchanged coefficient sheaf <span class="math" data-tex="\(\mathcal O_Z=i^{-1}\mathcal O_X\)">\(\mathcal O_Z=i^{-1}\mathcal O_X\)</span>; this is distinct from taking a quotient coefficient ring on a closed geometric subspace. Put <span class="math" data-tex="\(j:U=X\setminus Z\hookrightarrow X\)">\(j:U=X\setminus Z\hookrightarrow X\)</span>.</p>
+<p>The construction follows the Stacks project authors’ <em>Cohomology of Sheaves</em>, “Cohomology with support in a closed subset, II”, Tags 0G6Z–0G79, and <em>Sheaves of Modules</em>, in the <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790">AI Integrated Stacks Project edition</a>. We develop the support adjunction, localization triangle and canonical product and pullback maps. The Euclidean example includes the singular-cochain comparison it uses. Source attribution and the licence for adapted passages appear in the <a href="licence.html">course notice</a>.</p>
+<h2 id="1-closed-supports-and-their-adjunction">1. Closed supports and their adjunction</h2>
+<p>The support of a section <span class="math" data-tex="\(s\in F(V)\)">\(s\in F(V)\)</span> is the set of points where its germ is nonzero. It is closed in <span class="math" data-tex="\(V\)">\(V\)</span>: a zero germ means the section vanishes on a neighborhood. Define the ambient support subsheaf by</p>
+<span class="math math-display" data-tex="\[
+\mathcal S_Z^0F=\ker(F\longrightarrow j_*F|_U).
+\tag{1.1}
+\]">\[
+\mathcal S_Z^0F=\ker(F\longrightarrow j_*F|_U).
+\tag{1.1}
+\]</span>
+<p>Its sections are exactly those supported in <span class="math" data-tex="\(Z\cap V\)">\(Z\cap V\)</span>. It is a module subsheaf, since scalar multiplication cannot create a nonzero germ where the section vanished. Kernels show that this additive functor is left exact. Its stalks vanish off <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p>A sheaf with zero stalks off a closed set is canonically the direct image of its restriction to that set. Indeed <span class="math" data-tex="\(i_*G\)">\(i_*G\)</span> has stalk <span class="math" data-tex="\(G_z\)">\(G_z\)</span> at <span class="math" data-tex="\(z\in Z\)">\(z\in Z\)</span> and zero off <span class="math" data-tex="\(Z\)">\(Z\)</span>: neighborhoods intersected with <span class="math" data-tex="\(Z\)">\(Z\)</span> are cofinal neighborhoods in <span class="math" data-tex="\(Z\)">\(Z\)</span>, and a point outside <span class="math" data-tex="\(Z\)">\(Z\)</span> has a neighborhood disjoint from it. Thus the unit <span class="math" data-tex="\(F\to i_*i^{-1}F\)">\(F\to i_*i^{-1}F\)</span> is an isomorphism for such <span class="math" data-tex="\(F\)">\(F\)</span>. The same stalk description proves that <span class="math" data-tex="\(i_*\)">\(i_*\)</span> is exact, <span class="math" data-tex="\(i^{-1}i_*\)">\(i^{-1}i_*\)</span> is the identity, and <span class="math" data-tex="\(i_*\)">\(i_*\)</span> is fully faithful. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal H_ZF=i^{-1}\mathcal S_Z^0F,\\
+i_*\mathcal H_ZF=\mathcal S_Z^0F.
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\mathcal H_ZF=i^{-1}\mathcal S_Z^0F,\\
+i_*\mathcal H_ZF=\mathcal S_Z^0F.
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p><strong>Proposition 1.1.</strong> The functor <span class="math" data-tex="\(\mathcal H_Z\)">\(\mathcal H_Z\)</span> is right adjoint to the exact functor <span class="math" data-tex="\(i_*\)">\(i_*\)</span>. It preserves injective objects and K-injective complexes. There is a derived adjunction
+<span class="math" data-tex="\(i_*\dashv R\mathcal H_Z\)">\(i_*\dashv R\mathcal H_Z\)</span>, and <span class="math" data-tex="\(R\mathcal H_Z(i_*N)=N\)">\(R\mathcal H_Z(i_*N)=N\)</span>.</p>
+<p><strong>Proof.</strong> A map <span class="math" data-tex="\(i_*G\to F\)">\(i_*G\to F\)</span> has image with zero stalks off <span class="math" data-tex="\(Z\)">\(Z\)</span>, so it factors uniquely through (1.1). Full faithfulness of <span class="math" data-tex="\(i_*\)">\(i_*\)</span> then identifies it with a unique map <span class="math" data-tex="\(G\to\mathcal H_ZF\)">\(G\to\mathcal H_ZF\)</span>. Conversely such a map pushes forward and includes into <span class="math" data-tex="\(F\)">\(F\)</span>; these operations are inverse and natural. Since <span class="math" data-tex="\(i_*\)">\(i_*\)</span> is exact, Hom into <span class="math" data-tex="\(\mathcal H_ZI\)">\(\mathcal H_ZI\)</span> is exact if Hom into <span class="math" data-tex="\(I\)">\(I\)</span> is exact, proving injectivity preservation. If <span class="math" data-tex="\(A\)">\(A\)</span> is an acyclic complex on <span class="math" data-tex="\(Z\)">\(Z\)</span>, chain adjunction identifies maps and homotopies
+<span class="math" data-tex="\(A\to\mathcal H_ZI\)">\(A\to\mathcal H_ZI\)</span> with those <span class="math" data-tex="\(i_*A\to I\)">\(i_*A\to I\)</span>. The latter source is acyclic, so these maps are null-homotopic for K-injective <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>Choose K-injective models in this same adjunction. The map test into K-injectives gives the derived adjunction. Also <span class="math" data-tex="\(i_*\)">\(i_*\)</span> preserves K-injectives, because its left adjoint <span class="math" data-tex="\(i^{-1}\)">\(i^{-1}\)</span> is exact; the identical acyclic-source argument proves this. Resolving <span class="math" data-tex="\(N\)">\(N\)</span> by <span class="math" data-tex="\(J\)">\(J\)</span> therefore computes <span class="math" data-tex="\(R\mathcal H_Z(i_*N)\)">\(R\mathcal H_Z(i_*N)\)</span> by <span class="math" data-tex="\(\mathcal H_Z(i_*J)=J\)">\(\mathcal H_Z(i_*J)=J\)</span>, proving the final assertion. All arguments use left module maps only. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(D_Z(\mathcal O_X)\)">\(D_Z(\mathcal O_X)\)</span> for objects whose cohomology sheaves vanish off <span class="math" data-tex="\(Z\)">\(Z\)</span>. Exact restriction shows this condition is equivalent to <span class="math" data-tex="\(K|_U=0\)">\(K|_U=0\)</span>; cone long exact sequences show it defines a triangulated subcategory. The stalk argument for the unit applies to every cohomology sheaf, so
+<span class="math" data-tex="\(i_*:D(\mathcal O_Z)\to D_Z(\mathcal O_X)\)">\(i_*:D(\mathcal O_Z)\to D_Z(\mathcal O_X)\)</span> is an equivalence with inverse <span class="math" data-tex="\(i^{-1}\)">\(i^{-1}\)</span>. Proposition 1.1 then says</p>
+<span class="math math-display" data-tex="\[
+\mathcal S_ZK:=i_*R\mathcal H_ZK
+\tag{1.3}
+\]">\[
+\mathcal S_ZK:=i_*R\mathcal H_ZK
+\tag{1.3}
+\]</span>
+<p>is right adjoint to the inclusion of <span class="math" data-tex="\(D_Z\)">\(D_Z\)</span>. Its counit <span class="math" data-tex="\(\mathcal S_ZK\to K\)">\(\mathcal S_ZK\to K\)</span> is universal among maps from objects supported on <span class="math" data-tex="\(Z\)">\(Z\)</span>. In particular it is an isomorphism if <span class="math" data-tex="\(K\in D_Z\)">\(K\in D_Z\)</span>.</p>
+<p>Define <span class="math" data-tex="\(\Gamma_Z(X,F)=\Gamma(X,\mathcal S_Z^0F)\)">\(\Gamma_Z(X,F)=\Gamma(X,\mathcal S_Z^0F)\)</span> and derive it with K-injectives. Because <span class="math" data-tex="\(\mathcal H_ZI\)">\(\mathcal H_ZI\)</span> is K-injective, (1.2) gives the full local-to-global identity</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_Z(X,K)=R\Gamma(Z,R\mathcal H_ZK).
+\tag{1.4}
+\]">\[
+R\Gamma_Z(X,K)=R\Gamma(Z,R\mathcal H_ZK).
+\tag{1.4}
+\]</span>
+<p>On the right we restrict the scalar action from <span class="math" data-tex="\(\Gamma(Z,\mathcal O_Z)\)">\(\Gamma(Z,\mathcal O_Z)\)</span> through the map from <span class="math" data-tex="\(\Gamma(X,\mathcal O_X)\)">\(\Gamma(X,\mathcal O_X)\)</span>. This also proves that taking derived sections of (1.3) gives the left side. These identities hold for all unbounded complexes.</p>
+<h3 id="derived-costalks-and-changes-of-closed-coefficients">Derived costalks and changes of closed coefficients</h3>
+<p>The costalk adjunction in Proposition 5.3 of the first lesson extends to all unbounded complexes:
+<span class="math math-display" data-tex="\[
+x_*:D(\mathcal O_x)\rightleftarrows D(\mathcal O_X):Rc_x,
+\qquad Rc_xF=c_xI
+\]">\[
+x_*:D(\mathcal O_x)\rightleftarrows D(\mathcal O_X):Rc_x,
+\qquad Rc_xF=c_xI
+\]</span>
+for a K-injective resolution <span class="math" data-tex="\(F\to I\)">\(F\to I\)</span>. Indeed <span class="math" data-tex="\(x_*\)">\(x_*\)</span> is exact, and the complex adjunction identifies <span class="math" data-tex="\(\operatorname{Hom}^\bullet(A,c_xI)\)">\(\operatorname{Hom}^\bullet(A,c_xI)\)</span> with <span class="math" data-tex="\(\operatorname{Hom}^\bullet(x_*A,I)\)">\(\operatorname{Hom}^\bullet(x_*A,I)\)</span>. Thus <span class="math" data-tex="\(c_xI\)">\(c_xI\)</span> is K-injective and the Hom comparison proves the derived adjunction. For a closed point, uniqueness of right adjoints and Proposition 1.1 identify <span class="math" data-tex="\(Rc_x\)">\(Rc_x\)</span> with <span class="math" data-tex="\(R\mathcal H_{\{x\}}\)">\(R\mathcal H_{\{x\}}\)</span>. The Euclidean calculation in Section 4 consequently says that, for a field <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+(k_{\mathbb R^n})_0=k,
+\qquad Rc_0(k_{\mathbb R^n})=k[-n].
+\]">\[
+(k_{\mathbb R^n})_0=k,
+\qquad Rc_0(k_{\mathbb R^n})=k[-n].
+\]</span>
+The ordinary costalk is zero here; the degree-<span class="math" data-tex="\(n\)">\(n\)</span> derived costalk detects the class surrounding the missing point.</p>
+<p><strong>Proposition 1.2 (closed embeddings with changed coefficients).</strong> Let <span class="math" data-tex="\(i:(Z,\mathcal B)\to(X,\mathcal O)\)">\(i:(Z,\mathcal B)\to(X,\mathcal O)\)</span> be a morphism of commutative ringed spaces whose underlying map is a closed embedding. Its exact direct image has a left-exact right adjoint
+<span class="math math-display" data-tex="\[
+i_0^!F=i^{-1}\mathcal Hom_{\mathcal O}(i_*\mathcal B,F),
+\]">\[
+i_0^!F=i^{-1}\mathcal Hom_{\mathcal O}(i_*\mathcal B,F),
+\]</span>
+where <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> acts by precomposition with multiplication on <span class="math" data-tex="\(i_*\mathcal B\)">\(i_*\mathcal B\)</span>. Its derived functor is right adjoint to <span class="math" data-tex="\(i_*\)">\(i_*\)</span> on unbounded derived categories. If <span class="math" data-tex="\(\mathcal B=i^{-1}\mathcal O\)">\(\mathcal B=i^{-1}\mathcal O\)</span>, this is <span class="math" data-tex="\(R\mathcal H_Z\)">\(R\mathcal H_Z\)</span>. In general it also includes derived coinduction of coefficients.</p>
+<p><strong>Proof.</strong> The sheaf <span class="math" data-tex="\(H=\mathcal Hom_{\mathcal O}(i_*\mathcal B,F)\)">\(H=\mathcal Hom_{\mathcal O}(i_*\mathcal B,F)\)</span> vanishes off <span class="math" data-tex="\(Z\)">\(Z\)</span>, since its source does, so the supported-sheaf argument above gives <span class="math" data-tex="\(i_*i^{-1}H=H\)">\(i_*i^{-1}H=H\)</span>. A sheaf map <span class="math" data-tex="\(v:i_*M\to F\)">\(v:i_*M\to F\)</span> determines a <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>-linear map <span class="math" data-tex="\(M\to i_0^!F\)">\(M\to i_0^!F\)</span>: a local element <span class="math" data-tex="\(m\)">\(m\)</span> defines the map <span class="math" data-tex="\(b\mapsto v(bm)\)">\(b\mapsto v(bm)\)</span>. Conversely a map <span class="math" data-tex="\(M\to i_0^!F\)">\(M\to i_0^!F\)</span> is pushed forward to <span class="math" data-tex="\(i_*M\to H\)">\(i_*M\to H\)</span> and followed by evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(F\)">\(F\)</span>. Evaluation is compatible with restrictions; on an open disjoint from <span class="math" data-tex="\(Z\)">\(Z\)</span>, the source and <span class="math" data-tex="\(H\)">\(H\)</span> are both zero. The two constructions are inverse because <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>-linearity gives <span class="math" data-tex="\(a(bm)(1)=a(m)(b)\)">\(a(bm)(1)=a(m)(b)\)</span>. This proves the adjunction and left exactness. Exactness of <span class="math" data-tex="\(i_*\)">\(i_*\)</span> follows from its closed-embedding stalk formula, irrespective of the coefficient map. The complex adjunction now shows that <span class="math" data-tex="\(i_0^!\)">\(i_0^!\)</span> preserves K-injectives, exactly as for the costalk. Apply the K-injective Hom comparison to obtain <span class="math" data-tex="\(i_*\dashv Ri_0^!\)">\(i_*\dashv Ri_0^!\)</span>. With unchanged coefficients both functors are right adjoints of the same <span class="math" data-tex="\(i_*\)">\(i_*\)</span>, so they agree naturally. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This construction is discussed by Daniel Murfet in <a href="https://therisingsea.org/notes/RingedSpaceModules.pdf"><em>Modules over a Ringed Space</em>, §1.13, Propositions 96–97</a>; the proof here includes its unbounded derived extension. Even at a one-point space, a coefficient map <span class="math" data-tex="\(R\to S\)">\(R\to S\)</span> has right adjoint <span class="math" data-tex="\(\operatorname{Hom}_R(S,-)\)">\(\operatorname{Hom}_R(S,-)\)</span>, derived to <span class="math" data-tex="\(\operatorname{RHom}_R(S,-)\)">\(\operatorname{RHom}_R(S,-)\)</span>. For <span class="math" data-tex="\(\mathbb Z\to\mathbb F_p\)">\(\mathbb Z\to\mathbb F_p\)</span>, the free resolution <span class="math" data-tex="\(\mathbb Z\xrightarrow{p}\mathbb Z\)">\(\mathbb Z\xrightarrow{p}\mathbb Z\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span> gives
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathbb Z}(\mathbb F_p,\mathbb Z)=0,
+\qquad \operatorname{RHom}_{\mathbb Z}(\mathbb F_p,\mathbb Z)
+\simeq\mathbb F_p[-1].
+\]">\[
+\operatorname{Hom}_{\mathbb Z}(\mathbb F_p,\mathbb Z)=0,
+\qquad \operatorname{RHom}_{\mathbb Z}(\mathbb F_p,\mathbb Z)
+\simeq\mathbb F_p[-1].
+\]</span>
+Support in the whole one-point space would instead return <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Thus a closed geometric subspace with quotient coefficients requires the coefficient adjoint as well as support.</p>
+<h2 id="2-localization-and-its-connecting-sign">2. Localization and its connecting sign</h2>
+<p><strong>Theorem 2.1.</strong> There are triangles natural in <span class="math" data-tex="\(K\)">\(K\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal S_ZK\longrightarrow K\longrightarrow Rj_*(K|_U)\\
+\longrightarrow\mathcal S_ZK[1],
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\mathcal S_ZK\longrightarrow K\longrightarrow Rj_*(K|_U)\\
+\longrightarrow\mathcal S_ZK[1],
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R\Gamma_Z(X,K)\longrightarrow R\Gamma(X,K)\\
+\longrightarrow R\Gamma(U,K|_U)\\
+\longrightarrow R\Gamma_Z(X,K)[1].
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+R\Gamma_Z(X,K)\longrightarrow R\Gamma(X,K)\\
+\longrightarrow R\Gamma(U,K|_U)\\
+\longrightarrow R\Gamma_Z(X,K)[1].
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(K\to I\)">\(K\to I\)</span> K-injective with injective terms. Every term is flasque, and its restriction to <span class="math" data-tex="\(U\)">\(U\)</span> is K-injective. On every open <span class="math" data-tex="\(V\)">\(V\)</span>, flasqueness makes <span class="math" data-tex="\(I^n(V)\to I^n(V\cap U)\)">\(I^n(V)\to I^n(V\cap U)\)</span> surjective. The kernel is precisely supported sections. Thus there are termwise short exact sequences</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to i_*\mathcal H_ZI\to I\\
+\to j_*(I|_U)\to0,\\[4pt]
+0\to\Gamma_Z(X,I)\to\Gamma(X,I)\\
+\to\Gamma(U,I)\to0.
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+0\to i_*\mathcal H_ZI\to I\\
+\to j_*(I|_U)\to0,\\[4pt]
+0\to\Gamma_Z(X,I)\to\Gamma(X,I)\\
+\to\Gamma(U,I)\to0.
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>Each term is the indicated derived-functor model by Proposition 1.1 and open restriction. The common reading's exact-sequence triangle proves (2.1) and (2.2). A derived map is a unique homotopy class between the K-injective models. Applying the functors gives a map of exact sequences; the cone and quotient construction is natural for that map. Homotopic maps give homotopic maps on each term and identical maps of derived triangles. Resolution comparisons are homotopy equivalences, proving natural independence of the models. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The sign calculation is as follows. For <span class="math" data-tex="\(0\to A\xrightarrow{a}B\xrightarrow{b}C\to0\)">\(0\to A\xrightarrow{a}B\xrightarrow{b}C\to0\)</span>, the cone has differential <span class="math" data-tex="\(d(y,x)=(dy+a(x),-dx)\)">\(d(y,x)=(dy+a(x),-dx)\)</span>, projection <span class="math" data-tex="\(p(y,x)=x\)">\(p(y,x)=x\)</span>, and quasi-isomorphism <span class="math" data-tex="\(q(y,x)=b(y)\)">\(q(y,x)=b(y)\)</span> to <span class="math" data-tex="\(C\)">\(C\)</span>. A cycle <span class="math" data-tex="\(z\in C^n\)">\(z\in C^n\)</span> lifts to <span class="math" data-tex="\(y\in B^n\)">\(y\in B^n\)</span>; write <span class="math" data-tex="\(dy=a(x)\)">\(dy=a(x)\)</span>. Injectivity of <span class="math" data-tex="\(a\)">\(a\)</span> gives <span class="math" data-tex="\(dx=0\)">\(dx=0\)</span>. The cone cycle <span class="math" data-tex="\((y,-x)\)">\((y,-x)\)</span> maps to <span class="math" data-tex="\(z\)">\(z\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+H^n(p)H^n(q)^{-1}[z]=-[x].
+\tag{2.4}
+\]">\[
+H^n(p)H^n(q)^{-1}[z]=-[x].
+\tag{2.4}
+\]</span>
+<p>Our triangle's last map is <span class="math" data-tex="\(-p q^{-1}\)">\(-p q^{-1}\)</span>, hence induces the positive lift boundary <span class="math" data-tex="\([z]\mapsto[x]\)">\([z]\mapsto[x]\)</span>. A convention using the positive cone projection has the opposite boundary. Negating two arrows gives an isomorphic triangle: multiply one of its three objects by minus one. Thus one must track the third-arrow convention when transporting a formula from another source, rather than change one boundary informally.</p>
+<p><strong>Proposition 2.2.</strong> If an open <span class="math" data-tex="\(V\)">\(V\)</span> is disjoint from <span class="math" data-tex="\(Z\)">\(Z\)</span>, then
+<span class="math" data-tex="\(R\mathcal H_Z(Rv_*N)=0\)">\(R\mathcal H_Z(Rv_*N)=0\)</span> for <span class="math" data-tex="\(v:V\hookrightarrow X\)">\(v:V\hookrightarrow X\)</span>. Module and underlying-abelian supported cohomology agree canonically, both globally and as support sheaves.</p>
+<p><strong>Proof.</strong> A K-injective <span class="math" data-tex="\(J\)">\(J\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> has K-injective <span class="math" data-tex="\(v_*J\)">\(v_*J\)</span>, since restriction is exact. Its sections over <span class="math" data-tex="\(W\)">\(W\)</span> and <span class="math" data-tex="\(W\setminus Z\)">\(W\setminus Z\)</span> are both <span class="math" data-tex="\(J(W\cap V)\)">\(J(W\cap V)\)</span>, so its support kernel is zero. This proves the first assertion. For coefficient comparison, resolve a module complex by <span class="math" data-tex="\(I\)">\(I\)</span>, and its underlying abelian complex further by an abelian K-injective <span class="math" data-tex="\(J\)">\(J\)</span>. Their support kernels and restrictions give a map of the exact-sequence triangles (2.3), with injective terms used for both resolutions. The middle and open-complement maps on derived global sections are isomorphisms by Theorem 4.1 of the preceding lesson. The long exact sequences, or the Five Lemma on consecutive five terms, make the support map an isomorphism. Apply this argument on every open and sheafify to obtain the local support comparison; restriction of both coefficient models to opens is K-injective. Finally restrict the ambient comparison to <span class="math" data-tex="\(Z\)">\(Z\)</span> to get <span class="math" data-tex="\(R\mathcal H_Z\)">\(R\mathcal H_Z\)</span>. This supplies the source's omitted local verification. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-locally-closed-pairs">3. Locally closed pairs</h2>
+<p>The construction also applies to a locally closed <span class="math" data-tex="\(W\)">\(W\)</span>. Choose an open <span class="math" data-tex="\(V\)">\(V\)</span> in which <span class="math" data-tex="\(W\)">\(W\)</span> is closed, and define the ambient support functor by direct image from <span class="math" data-tex="\(V\)">\(V\)</span> of its closed-support subsheaf. It is independent of this choice. For another such open <span class="math" data-tex="\(V&#x27;\subset V\)">\(V&#x27;\subset V\)</span>, a supported section on <span class="math" data-tex="\(T\cap V&#x27;\)">\(T\cap V&#x27;\)</span> glues with zero on <span class="math" data-tex="\(T\cap(V\setminus W)\)">\(T\cap(V\setminus W)\)</span>: their overlap is outside its support, and these two opens cover <span class="math" data-tex="\(T\cap V\)">\(T\cap V\)</span>. This is the inverse to restriction of supported sections. Compare arbitrary choices through their intersection. These inverse maps commute with restrictions, differentials and scalars. For an open <span class="math" data-tex="\(W\)">\(W\)</span>, this functor is <span class="math" data-tex="\(w_*F|_W\)">\(w_*F|_W\)</span>, not a subsheaf of sections of <span class="math" data-tex="\(F\)">\(F\)</span> extended by zero.</p>
+<p><strong>Proposition 3.1.</strong> If <span class="math" data-tex="\(W\)">\(W\)</span> is locally closed and <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> is closed in <span class="math" data-tex="\(W\)">\(W\)</span>, there is a natural triangle</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R\Gamma_{W&#x27;}^{\mathrm{sh}}K\longrightarrow R\Gamma_W^{\mathrm{sh}}K\\
+\longrightarrow R\Gamma_{W\setminus W&#x27;}^{\mathrm{sh}}K
+\longrightarrow R\Gamma_{W&#x27;}^{\mathrm{sh}}K[1].
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+R\Gamma_{W&#x27;}^{\mathrm{sh}}K\longrightarrow R\Gamma_W^{\mathrm{sh}}K\\
+\longrightarrow R\Gamma_{W\setminus W&#x27;}^{\mathrm{sh}}K
+\longrightarrow R\Gamma_{W&#x27;}^{\mathrm{sh}}K[1].
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>Here the superscript distinguishes these ambient sheaf functors from global sections.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(W\)">\(W\)</span> closed in <span class="math" data-tex="\(V\)">\(V\)</span>; then <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> is also closed in <span class="math" data-tex="\(V\)">\(V\)</span>, and <span class="math" data-tex="\(W\setminus W&#x27;\)">\(W\setminus W&#x27;\)</span> is closed in <span class="math" data-tex="\(V\setminus W&#x27;\)">\(V\setminus W&#x27;\)</span>. For a flasque <span class="math" data-tex="\(F\)">\(F\)</span>, a supported section on <span class="math" data-tex="\((T\cap V)\setminus W&#x27;\)">\((T\cap V)\setminus W&#x27;\)</span> extends to <span class="math" data-tex="\(T\cap V\)">\(T\cap V\)</span>. Outside <span class="math" data-tex="\(W\)">\(W\)</span> the extension is still zero, since that open subset lies inside its original domain. The extension therefore has support in <span class="math" data-tex="\(W\)">\(W\)</span>. Its kernel under restriction consists exactly of sections supported in <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>. This proves a short exact sequence of the three support sheaves on every open <span class="math" data-tex="\(T\)">\(T\)</span>, even though direct image from <span class="math" data-tex="\(V\)">\(V\)</span> need not generally be exact. Apply it termwise to a K-injective resolution with injective, hence flasque, terms. The cone argument of Theorem 2.1 proves the triangle and its functoriality, with the same positive lift boundary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-integer-coefficients-near-a-euclidean-point">4. Integer coefficients near a Euclidean point</h2>
+<p>We prove the comparison needed for this example, rather than assume homotopy invariance for arbitrary sheaf cohomology. Let <span class="math" data-tex="\(V\)">\(V\)</span> be any open subset of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> any abelian group. Let <span class="math" data-tex="\(S_q(V)\)">\(S_q(V)\)</span> be the free abelian group on continuous singular simplices <span class="math" data-tex="\(\Delta^q\to V\)">\(\Delta^q\to V\)</span>, with boundary the alternating sum of faces. Its cochains are <span class="math" data-tex="\(C^q(V;A)=\operatorname{Hom}_{\mathbb Z}(S_q(V),A)\)">\(C^q(V;A)=\operatorname{Hom}_{\mathbb Z}(S_q(V),A)\)</span>, with differential <span class="math" data-tex="\(c\mapsto c\partial\)">\(c\mapsto c\partial\)</span>. Let <span class="math" data-tex="\(\mathcal C^q\)">\(\mathcal C^q\)</span> be the sheafification of this cochain presheaf.</p>
+<p><strong>Lemma 4.1 (cochain comparison).</strong> The augmented complex <span class="math" data-tex="\(A_V\to\mathcal C^\bullet\)">\(A_V\to\mathcal C^\bullet\)</span> is a flasque resolution, and</p>
+<span class="math math-display" data-tex="\[
+H^q(V,A_V)=H^q(C^\bullet(V;A)).
+\tag{4.1}
+\]">\[
+H^q(V,A_V)=H^q(C^\bullet(V;A)).
+\tag{4.1}
+\]</span>
+<p>The comparison is natural under restrictions to smaller opens.</p>
+<p><strong>Proof.</strong> We supply the three required steps. First, a cover of an open Euclidean set has a locally finite open refinement <span class="math" data-tex="\((V_a)\)">\((V_a)\)</span> whose closures lie in members of the original cover. Here is an explicit compactness argument. Exhaust the open set by compact sets
+<span class="math" data-tex="\(K_m=\{x:|x|\leq m,\ \operatorname{dist}(x,\mathbb R^n\setminus V)\geq1/m\}\)">\(K_m=\{x:|x|\leq m,\ \operatorname{dist}(x,\mathbb R^n\setminus V)\geq1/m\}\)</span> for <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>; omit the distance condition when the complement is empty. They satisfy <span class="math" data-tex="\(K_m\subset\operatorname{int}K_{m+1}\)">\(K_m\subset\operatorname{int}K_{m+1}\)</span> and exhaust <span class="math" data-tex="\(V\)">\(V\)</span>. Cover each compact layer <span class="math" data-tex="\(K_m\setminus\operatorname{int}K_{m-1}\)">\(K_m\setminus\operatorname{int}K_{m-1}\)</span> by finitely many balls with closures in cover members and in <span class="math" data-tex="\(\operatorname{int}K_{m+1}\setminus K_{m-2}\)">\(\operatorname{int}K_{m+1}\setminus K_{m-2}\)</span>. Set <span class="math" data-tex="\(K_m=\varnothing\)">\(K_m=\varnothing\)</span> for every <span class="math" data-tex="\(m\leq0\)">\(m\leq0\)</span>. The balls cover <span class="math" data-tex="\(V\)">\(V\)</span>; every point has a neighborhood in some <span class="math" data-tex="\(K_m\)">\(K_m\)</span>, which meets only finitely many subsequent layers, so they are locally finite.</p>
+<p>A section of <span class="math" data-tex="\(\mathcal C^q\)">\(\mathcal C^q\)</span> is represented by cochains <span class="math" data-tex="\(c_a\)">\(c_a\)</span> on cover members. Using this refinement, assign to each singular simplex contained in some <span class="math" data-tex="\(V_a\)">\(V_a\)</span> the value given by one such <span class="math" data-tex="\(c_a\)">\(c_a\)</span>; assign zero if it is contained in none. This is a global cochain representing the section. To verify the assertion, fix a point <span class="math" data-tex="\(x\)">\(x\)</span>. Only finitely many refinement members meet a sufficiently small neighborhood. Remove those whose closures do not contain <span class="math" data-tex="\(x\)">\(x\)</span>. For the remaining finite list, their representing cochains are defined near <span class="math" data-tex="\(x\)">\(x\)</span>, and their germs agree. Shrink the neighborhood so all these cochains agree on every simplex in it, and so it is contained in one refinement member containing <span class="math" data-tex="\(x\)">\(x\)</span>. The global assignment then agrees with that representative there, irrespective of the choices for simplices. This proves surjectivity of <span class="math" data-tex="\(C^q(V;A)\to\Gamma(V,\mathcal C^q)\)">\(C^q(V;A)\to\Gamma(V,\mathcal C^q)\)</span>. The same proof works on every smaller open. Extend a representing cochain by zero on simplices not contained in that smaller open; this proves flasqueness of <span class="math" data-tex="\(\mathcal C^q\)">\(\mathcal C^q\)</span>.</p>
+<p>Second, on a convex ball straight-line contraction proves that singular cohomology is <span class="math" data-tex="\(A\)">\(A\)</span> in degree zero and zero in positive degrees. The chain verification is the prism identity: a homotopy <span class="math" data-tex="\(H\)">\(H\)</span> from <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(g\)">\(g\)</span> assigns to a <span class="math" data-tex="\(q\)">\(q\)</span>-simplex the alternating sum, with signs <span class="math" data-tex="\((-1)^i\)">\((-1)^i\)</span>, of the <span class="math" data-tex="\(q+1\)">\(q+1\)</span> simplices with vertices
+<span class="math" data-tex="\((v_0,0),\ldots,(v_i,0),(v_i,1),\ldots,(v_q,1)\)">\((v_0,0),\ldots,(v_i,0),(v_i,1),\ldots,(v_q,1)\)</span> in <span class="math" data-tex="\(\Delta^q\times[0,1]\)">\(\Delta^q\times[0,1]\)</span>, followed by <span class="math" data-tex="\(H\)">\(H\)</span>. Interior faces cancel in pairs, the two horizontal faces give <span class="math" data-tex="\(g-f\)">\(g-f\)</span>, and the other faces give the negative prism of the boundary. Thus <span class="math" data-tex="\(\partial P+P\partial=g_*-f_*\)">\(\partial P+P\partial=g_*-f_*\)</span>. A constant map factors through the point's chain complex; its augmented homology contracts (insert the unique vertex), and dually its cohomology is as stated. Taking the exact filtered colimit over convex-ball neighborhoods proves that <span class="math" data-tex="\(A_V\to\mathcal C^\bullet\)">\(A_V\to\mathcal C^\bullet\)</span> is exact on stalks.</p>
+<p>Third, the kernel of global cochains mapping to sheaf sections is the complex <span class="math" data-tex="\(N^\bullet\)">\(N^\bullet\)</span> of cochains locally zero: each point has a neighborhood on all of whose singular simplices the cochain vanishes. We prove that this kernel is acyclic. For an open cover <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, let <span class="math" data-tex="\(S_*^{\mathcal U}\)">\(S_*^{\mathcal U}\)</span> be the subcomplex generated by simplices contained in one cover member, and let <span class="math" data-tex="\(N_{\mathcal U}^\bullet\)">\(N_{\mathcal U}^\bullet\)</span> be its annihilator. The small-chain inclusion has a retraction <span class="math" data-tex="\(r\)">\(r\)</span> and homotopy <span class="math" data-tex="\(h\)">\(h\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+1-jr=\partial h+h\partial,\\
+rj=1,\qquad hj=0.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+1-jr=\partial h+h\partial,\\
+rj=1,\qquad hj=0.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>Here is the full construction. Barycentric subdivision <span class="math" data-tex="\(s\)">\(s\)</span> replaces a simplex by its oriented barycentric triangulation. Internal faces cancel, and boundary faces are subdivided faces, so it is a chain map. There is a homotopy <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(s-1=\partial T+T\partial\)">\(s-1=\partial T+T\partial\)</span>, supported inside each simplex image. To construct it without another theorem, work first in the standard simplex. In dimension zero take <span class="math" data-tex="\(T=0\)">\(T=0\)</span>. In dimension <span class="math" data-tex="\(q\)">\(q\)</span>, subtract the already constructed homotopies on its faces from <span class="math" data-tex="\(s\iota_q-\iota_q\)">\(s\iota_q-\iota_q\)</span>. The result is a cycle by the lower-dimensional identity. Cone that cycle to the barycenter inside the convex simplex, then push it forward by the singular simplex. The cone boundary formula <span class="math" data-tex="\(\partial(b*c)=c-b*\partial c\)">\(\partial(b*c)=c-b*\partial c\)</span> proves the identity. Write <span class="math" data-tex="\(T_m\)">\(T_m\)</span> for the sum of iterated homotopies, so <span class="math" data-tex="\(s^m-1=\partial T_m+T_m\partial\)">\(s^m-1=\partial T_m+T_m\partial\)</span>; it has the same support control.</p>
+<p>Induct on simplex dimension to construct (4.2). Once <span class="math" data-tex="\(r,h\)">\(r,h\)</span> are constructed on faces of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, put <span class="math" data-tex="\(z=\sigma-h\partial\sigma\)">\(z=\sigma-h\partial\sigma\)</span>. The induction identity gives <span class="math" data-tex="\(\partial z=jr\partial\sigma\)">\(\partial z=jr\partial\sigma\)</span>. Choose <span class="math" data-tex="\(m\)">\(m\)</span> so that every simplex in <span class="math" data-tex="\(s^m z\)">\(s^m z\)</span> is small, and define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+jr\sigma&amp;=s^mz-T_mjr\partial\sigma,\\
+h\sigma&amp;=-T_mz.
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+jr\sigma&amp;=s^mz-T_mjr\partial\sigma,\\
+h\sigma&amp;=-T_mz.
+\end{aligned}
+\tag{4.3}
+\]</span>
+<p>The correction is small: <span class="math" data-tex="\(r\partial\sigma\)">\(r\partial\sigma\)</span> is small, and <span class="math" data-tex="\(T_m\)">\(T_m\)</span> keeps each simplex inside its image. The boundary of the first line is <span class="math" data-tex="\(jr\partial\sigma\)">\(jr\partial\sigma\)</span>; subtracting it from <span class="math" data-tex="\(z\)">\(z\)</span> gives <span class="math" data-tex="\(-\partial T_mz\)">\(-\partial T_mz\)</span>, proving the homotopy identity. For a small <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, its faces have <span class="math" data-tex="\(h=0\)">\(h=0\)</span>; choose <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, obtaining <span class="math" data-tex="\(r\sigma=\sigma\)">\(r\sigma=\sigma\)</span> and <span class="math" data-tex="\(h\sigma=0\)">\(h\sigma=0\)</span>. The required <span class="math" data-tex="\(m\)">\(m\)</span> always exists: barycentric subdivision reduces mesh in dimension <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> by at most <span class="math" data-tex="\(q/(q+1)\)">\(q/(q+1)\)</span>. Indeed two vertices of a subdivided simplex are barycenters of nested faces, and their distance is bounded by that fraction of the original diameter. Uniform continuity on the compact standard simplex and a finite subcover of its inverse-image cover then make repeated subdivisions small. The finitely many simplices in <span class="math" data-tex="\(z\)">\(z\)</span> can use a common <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>Dualizing (4.2) contracts <span class="math" data-tex="\(N_{\mathcal U}^\bullet\)">\(N_{\mathcal U}^\bullet\)</span>: <span class="math" data-tex="\(cjr=0\)">\(cjr=0\)</span>, and <span class="math" data-tex="\(ch\)">\(ch\)</span> still vanishes on small chains because <span class="math" data-tex="\(hj=0\)">\(hj=0\)</span>. Every locally zero cochain belongs to some <span class="math" data-tex="\(N_{\mathcal U}\)">\(N_{\mathcal U}\)</span>, and common refinement orders these complexes as a filtered union. Exact filtered colimits make <span class="math" data-tex="\(N^\bullet\)">\(N^\bullet\)</span> acyclic. Our first step identifies the section complex of <span class="math" data-tex="\(\mathcal C^\bullet\)">\(\mathcal C^\bullet\)</span> with <span class="math" data-tex="\(C^\bullet/N^\bullet\)">\(C^\bullet/N^\bullet\)</span>; the quotient is therefore quasi-isomorphic to singular cochains. Finally flasque acyclicity and the bounded-below acyclic-resolution theorem from the bounded-derived lesson compute sheaf cohomology by this section complex. All maps used in the quotient comparison are restriction maps, giving its naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.2.</strong> For <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_{\{0\}}(\mathbb R^n,\mathbb Z)
+\cong\mathbb Z[-n].
+\tag{4.4}
+\]">\[
+R\Gamma_{\{0\}}(\mathbb R^n,\mathbb Z)
+\cong\mathbb Z[-n].
+\tag{4.4}
+\]</span>
+<p><strong>Proof.</strong> The comparison proves <span class="math" data-tex="\(H^q(\mathbb R^n,\mathbb Z)=\mathbb Z\)">\(H^q(\mathbb R^n,\mathbb Z)=\mathbb Z\)</span> for <span class="math" data-tex="\(q=0\)">\(q=0\)</span> and zero otherwise, by straight-line contraction. For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, the punctured space deformation retracts onto <span class="math" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span> by radial rescaling; the prism identity proves invariance of singular cohomology under this homotopy.</p>
+<p>We recall and prove the sphere calculation needed here. For a cover by two opens, its small-chain complex is the sum of the two singular chain subcomplexes; their intersection is the chain complex of their intersection. Cochains therefore have the short exact sequence with middle term <span class="math" data-tex="\(C^\bullet(U;\mathbb Z)\oplus C^\bullet(V;\mathbb Z)\)">\(C^\bullet(U;\mathbb Z)\oplus C^\bullet(V;\mathbb Z)\)</span>, last term <span class="math" data-tex="\(C^\bullet(U\cap V;\mathbb Z)\)">\(C^\bullet(U\cap V;\mathbb Z)\)</span>, and map the difference of restrictions. Surjectivity follows by extending any cochain on the intersection by zero to either open. The small-chain equivalence just proved gives the usual long exact Mayer–Vietoris sequence, with no sheaf comparison required on the sphere itself. Cover <span class="math" data-tex="\(S^m\)">\(S^m\)</span> by complements of its two poles. Each is homeomorphic to <span class="math" data-tex="\(\mathbb R^m\)">\(\mathbb R^m\)</span>, and their intersection retracts to <span class="math" data-tex="\(S^{m-1}\)">\(S^{m-1}\)</span>. Starting with <span class="math" data-tex="\(S^0\)">\(S^0\)</span>, whose two points have <span class="math" data-tex="\(H^0=\mathbb Z^2\)">\(H^0=\mathbb Z^2\)</span>, the sequence proves inductively that the reduced cohomology of <span class="math" data-tex="\(S^m\)">\(S^m\)</span> is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in degree <span class="math" data-tex="\(m\)">\(m\)</span> and zero elsewhere.</p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the restriction from the line to its two complementary rays is the diagonal <span class="math" data-tex="\(\mathbb Z\to\mathbb Z^2\)">\(\mathbb Z\to\mathbb Z^2\)</span>. Its cokernel is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. For <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span> the degree-zero restriction is an isomorphism, and the sole reduced punctured-space class has degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. The long exact sequence of (2.2) puts the sole supported class in degree <span class="math" data-tex="\(n\)">\(n\)</span>. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the support is the entire one-point space and the result is immediate. A complex with just this cohomology is isomorphic to that cohomology module in its degree: the good-truncation inclusion and quotient give the requisite quasi-isomorphisms, as in the common reading's Proposition 5.2. This proves (4.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same computation on balls centered at zero gives <span class="math" data-tex="\(\mathcal S_{\{0\}}\mathbb Z=\mathbb Z_{\{0\}}[-n]\)">\(\mathcal S_{\{0\}}\mathbb Z=\mathbb Z_{\{0\}}[-n]\)</span>. The transition isomorphisms follow from the natural comparison and radial rescaling of punctured balls. This is supported cohomology, rather than ordinary sections of the constant sheaf supported at the point; those ordinary sections are zero when <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>.</p>
+<h2 id="5-cup-products-and-support-pullback">5. Cup products and support pullback</h2>
+<p>Assume commutative coefficients in this section. Tensoring an object supported on <span class="math" data-tex="\(Z\)">\(Z\)</span> with any derived object keeps that support: a K-flat model makes its restriction to the complement acyclic. The universal counit in (1.3) therefore gives a unique factorization of
+<span class="math" data-tex="\(K\otimes^{\mathbf L}\mathcal S_ZM\to K\otimes^{\mathbf L}M\)">\(K\otimes^{\mathbf L}\mathcal S_ZM\to K\otimes^{\mathbf L}M\)</span> through <span class="math" data-tex="\(\mathcal S_Z(K\otimes^{\mathbf L}M)\)">\(\mathcal S_Z(K\otimes^{\mathbf L}M)\)</span>. On closed-set coefficients it is the canonical map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+i^{-1}K\otimes^{\mathbf L}R\mathcal H_ZM\\
+\longrightarrow R\mathcal H_Z(K\otimes^{\mathbf L}M).
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+i^{-1}K\otimes^{\mathbf L}R\mathcal H_ZM\\
+\longrightarrow R\mathcal H_Z(K\otimes^{\mathbf L}M).
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(K\otimes^{\mathbf L}i_*N=i_*(i^{-1}K\otimes^{\mathbf L}N)\)">\(K\otimes^{\mathbf L}i_*N=i_*(i^{-1}K\otimes^{\mathbf L}N)\)</span>: take a K-flat model for <span class="math" data-tex="\(K\)">\(K\)</span>, and check the ordinary tensor comparison on stalks, identical over <span class="math" data-tex="\(\mathcal O_z\)">\(\mathcal O_z\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span> and zero off it. This proves the identity without a projection-formula assumption. The universal factorization proves naturality and coherence under successive tensor products, because the composites have the same image under the counit.</p>
+<p>The internal-Hom lesson identifies cohomology classes with maps from <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> to shifted objects. Tensoring such maps defines cup products. Apply the factorization above to get</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H^p(X,K)\times H_Z^q(X,M)\\
+\longrightarrow H_Z^{p+q}(X,K\otimes^{\mathbf L}M).
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+H^p(X,K)\times H_Z^q(X,M)\\
+\longrightarrow H_Z^{p+q}(X,K\otimes^{\mathbf L}M).
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>Forgetting supports commutes with cup product, since composing the factorization with its counit is precisely the ordinary tensor map. This proves the omitted compatibility in Tag 0G77. On homogeneous cycles the product is their tensor, whose differential is <span class="math" data-tex="\(da\otimes b+(-1)^pa\otimes db\)">\(da\otimes b+(-1)^pa\otimes db\)</span>; changing either cycle by a boundary changes it by a boundary. The coherent shift identification gives exactly these signs.</p>
+<p>For a morphism <span class="math" data-tex="\(f:X&#x27;\to X\)">\(f:X&#x27;\to X\)</span>, set <span class="math" data-tex="\(Z&#x27;=f^{-1}Z\)">\(Z&#x27;=f^{-1}Z\)</span>. Derived pullback carries supported objects to objects supported on <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span>: off that set, a K-flat acyclic stalk remains acyclic after arbitrary scalar extension, by the tensor lesson's Lemma 1.1. Pulling back the support counit therefore factors uniquely through</p>
+<span class="math math-display" data-tex="\[
+Lf^*\mathcal S_ZK\longrightarrow\mathcal S_{Z&#x27;}Lf^*K.
+\tag{5.3}
+\]">\[
+Lf^*\mathcal S_ZK\longrightarrow\mathcal S_{Z&#x27;}Lf^*K.
+\tag{5.3}
+\]</span>
+<p>For <span class="math" data-tex="\(g:Z&#x27;\to Z\)">\(g:Z&#x27;\to Z\)</span> it equivalently gives <span class="math" data-tex="\(Lg^*R\mathcal H_ZK\to R\mathcal H_{Z&#x27;}Lf^*K\)">\(Lg^*R\mathcal H_ZK\to R\mathcal H_{Z&#x27;}Lf^*K\)</span>. To justify the equivalence directly, a K-flat model <span class="math" data-tex="\(P\)">\(P\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span> has K-flat <span class="math" data-tex="\(i_*P\)">\(i_*P\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, by the stalk test. The canonical ordinary closed-set comparison <span class="math" data-tex="\(f^*i_*P\to i&#x27;_*g^*P\)">\(f^*i_*P\to i&#x27;_*g^*P\)</span> is an isomorphism on each stalk, proving the derived identity. Universal uniqueness proves that (5.3) commutes with forgetting supports and composes for two pullbacks. On cohomology, pullback uses the unit of <span class="math" data-tex="\(Lf^*\dashv Rf_*\)">\(Lf^*\dashv Rf_*\)</span> and the global Leray identity from lesson six; its naturality and the counit factorization prove the supported/ordinary pullback square commutes. This is a canonical map, without a general assertion that it is invertible.</p>
+<h2 id="6-a-two-point-calculation-and-exercises">6. A two-point calculation and exercises</h2>
+<p>Let <span class="math" data-tex="\(X=\{c,\eta\}\)">\(X=\{c,\eta\}\)</span> have opens <span class="math" data-tex="\(\varnothing,\{\eta\},X\)">\(\varnothing,\{\eta\},X\)</span>; its closed point is <span class="math" data-tex="\(c\)">\(c\)</span>. With a constant ring sheaf, a module sheaf is exactly an arrow <span class="math" data-tex="\(r:M\to N\)">\(r:M\to N\)</span>. Its global sections are <span class="math" data-tex="\(M\)">\(M\)</span>, its sections on the open point are <span class="math" data-tex="\(N\)">\(N\)</span>, and exactness is exactness at both entries. Thus global sections on this space and on its open point are exact functors. Also <span class="math" data-tex="\(j_*N=(N\xrightarrow{1}N)\)">\(j_*N=(N\xrightarrow{1}N)\)</span> is exact. The localization triangle gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0_c(X,F)&amp;=\ker r,\\
+H^1_c(X,F)&amp;=\operatorname{coker}r,\\
+H^q_c(X,F)&amp;=0\quad(q\ne0,1).
+\end{aligned}
+\tag{6.1}
+\]">\[
+\begin{aligned}
+H^0_c(X,F)&amp;=\ker r,\\
+H^1_c(X,F)&amp;=\operatorname{coker}r,\\
+H^q_c(X,F)&amp;=0\quad(q\ne0,1).
+\end{aligned}
+\tag{6.1}
+\]</span>
+<p>The corresponding ambient cohomology sheaves are these modules at <span class="math" data-tex="\(c\)">\(c\)</span>, zero at <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Ordinary supported sections only see the kernel, while the degree-one group measures the failed extension of a section from <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. The first exercise shows that failure before any resolutions are chosen.</p>
+<p><strong>Exercise 1 (easy: left exactness and its limit).</strong> Prove left exactness of closed supported sections directly from their definition. On the two-point space give an exact sequence for which they fail to be right exact.</p>
+<p><strong>Solution.</strong> In an exact sequence <span class="math" data-tex="\(0\to F\to G\to H\)">\(0\to F\to G\to H\)</span>, a supported section of <span class="math" data-tex="\(G\)">\(G\)</span> mapping to zero in <span class="math" data-tex="\(H\)">\(H\)</span> lifts uniquely to <span class="math" data-tex="\(F\)">\(F\)</span>, by left exactness of ordinary sections. Its restriction off the closed set vanishes because its image in <span class="math" data-tex="\(G\)">\(G\)</span> does, and <span class="math" data-tex="\(F\to G\)">\(F\to G\)</span> is injective. Thus it is supported. This proves exactness at the first two terms, globally and on every open. On the two-point space the exact sequence of arrows
+<span class="math" data-tex="\(0\to(0\to k)\to(k\xrightarrow{1}k)\to(k\to0)\to0\)">\(0\to(0\to k)\to(k\xrightarrow{1}k)\to(k\to0)\to0\)</span>
+is exact at each entry. Its closed supported sections are respectively <span class="math" data-tex="\(0,0,k\)">\(0,0,k\)</span>, so the last map is not surjective. All the maps used are module maps over the same ring, and the counterexample works with noncommutative coefficients too.</p>
+<p><strong>Exercise 2 (medium: the localization fibre).</strong> For an arrow <span class="math" data-tex="\(r:M\to N\)">\(r:M\to N\)</span>, give a complex computing the global supported object, including the connecting map <span class="math" data-tex="\(N\to H^1_c(X,F)\)">\(N\to H^1_c(X,F)\)</span>.</p>
+<p><strong>Solution.</strong> Since the other two global terms are <span class="math" data-tex="\(M[0]\)">\(M[0]\)</span> and <span class="math" data-tex="\(N[0]\)">\(N[0]\)</span>, the supported object is the shifted cone <span class="math" data-tex="\(C(r)[-1]\)">\(C(r)[-1]\)</span>. It has <span class="math" data-tex="\(M\)">\(M\)</span> in degree zero, <span class="math" data-tex="\(N\)">\(N\)</span> in degree one, and differential <span class="math" data-tex="\(-r\)">\(-r\)</span>. Its map to <span class="math" data-tex="\(M[0]\)">\(M[0]\)</span> is the identity in degree zero. Rotating the cone triangle with last map <span class="math" data-tex="\(-p\)">\(-p\)</span> gives the next map <span class="math" data-tex="\(r\)">\(r\)</span> and the final map <span class="math" data-tex="\(N[0]\to C(r)\)">\(N[0]\to C(r)\)</span> as the positive cone inclusion. Thus its boundary on cohomology is the positive quotient <span class="math" data-tex="\(N\to N/r(M)\)">\(N\to N/r(M)\)</span>. The degree-minus-one shift is why the fibre differential is <span class="math" data-tex="\(-r\)">\(-r\)</span>. Replacing it by <span class="math" data-tex="\(+r\)">\(+r\)</span> by negating its <span class="math" data-tex="\(N\)">\(N\)</span> term would also negate the coordinate description of the boundary; one cannot make that replacement while leaving the boundary description unchanged. This proves (6.1) and checks the sign convention in a fully explicit sheaf model.</p>
+<p><strong>Exercise 3 (medium: the Euclidean group and its sign).</strong> Compute all <span class="math" data-tex="\(H^q_{\{0\}}(\mathbb R^n,\mathbb Z)\)">\(H^q_{\{0\}}(\mathbb R^n,\mathbb Z)\)</span>. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, label the complementary rays in negative, positive order and determine the boundary of their locally constant section <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>.</p>
+<p><strong>Solution.</strong> Proposition 4.2 gives <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in degree <span class="math" data-tex="\(n\)">\(n\)</span> and zero in all other degrees, including the whole-support case <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. In dimension one the degree-zero restriction is diagonal, so the boundary factors through <span class="math" data-tex="\(\mathbb Z^2/\mathbb Z(1,1)\)">\(\mathbb Z^2/\mathbb Z(1,1)\)</span>. Its positive coordinate is <span class="math" data-tex="\(b-a\)">\(b-a\)</span>. To check the sign with actual cochains, extend the function on the two rays arbitrarily to a zero-cochain on the line. Its differential on an oriented interval crossing zero is its value at the positive endpoint minus its value at the negative endpoint, namely <span class="math" data-tex="\(b-a\)">\(b-a\)</span>. This differential vanishes on chains contained in either ray and represents the relative degree-one class.</p>
+<p>The flasque resolution in Lemma 4.1 also computes supported cohomology: each of its terms is acyclic for sections on the line and on the complement, and its restriction is onto, so Theorem 2.1 makes it acyclic for supported sections. The bounded-below acyclic-term theorem therefore applies. Naturality of the singular comparison identifies its cone with the relative cochain cone. Equation (2.4) says the triangle's negative projection gives precisely this positive lift differential. Thus the increasing orientation of the real line gives <span class="math" data-tex="\(\delta(a,b)=b-a\)">\(\delta(a,b)=b-a\)</span>, rather than its negative. In higher dimensions the boundary takes a chosen linking-sphere class to the corresponding supported class with this same positive lift convention; changing the orientation negates both chosen generators.</p>
+<p><strong>Exercise 4 (hard: cup products with support).</strong> Prove that forgetting supports in (5.2) gives the ordinary cup product. Prove also that first multiplying two ordinary classes and then a supported class agrees, after association, with the successive supported cup products.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(S=\mathcal S_ZM\)">\(S=\mathcal S_ZM\)</span>. The source <span class="math" data-tex="\(K\otimes^{\mathbf L}S\)">\(K\otimes^{\mathbf L}S\)</span> lies in <span class="math" data-tex="\(D_Z\)">\(D_Z\)</span>, so the right adjunction identifies maps from it to <span class="math" data-tex="\(\mathcal S_Z(K\otimes^{\mathbf L}M)\)">\(\mathcal S_Z(K\otimes^{\mathbf L}M)\)</span> with maps from it to <span class="math" data-tex="\(K\otimes^{\mathbf L}M\)">\(K\otimes^{\mathbf L}M\)</span>. The defining transpose is <span class="math" data-tex="\(1_K\)">\(1_K\)</span> tensor the support counit. Composing the supported map with the new counit therefore gives exactly that tensor map. A class is a map from the tensor unit to a shifted object; tensoring the two class maps and composing these equal morphisms proves compatibility with forgetting supports on cohomology, in every pair of degrees.</p>
+<p>For objects <span class="math" data-tex="\(K,L,M\)">\(K,L,M\)</span>, both successive support products are maps from <span class="math" data-tex="\(K\otimes^{\mathbf L}L\otimes^{\mathbf L}\mathcal S_ZM\)">\(K\otimes^{\mathbf L}L\otimes^{\mathbf L}\mathcal S_ZM\)</span>, an object of <span class="math" data-tex="\(D_Z\)">\(D_Z\)</span>, to <span class="math" data-tex="\(\mathcal S_Z(K\otimes^{\mathbf L}L\otimes^{\mathbf L}M)\)">\(\mathcal S_Z(K\otimes^{\mathbf L}L\otimes^{\mathbf L}M)\)</span>. Under the adjunction both are <span class="math" data-tex="\(1_K\otimes1_L\)">\(1_K\otimes1_L\)</span> tensor the counit. Its uniqueness proves equality; the tensor associator identifies their sources and targets. Applying this to shifted class maps proves the assertion for classes. No exactness of global sections, flatness of the classes' sheaves, or finiteness of their degrees is used. K-flat models and the proved tensor coherence justify the entire construction.</p>
+<p><strong>Exercise 5 (hard: pullback is a map, not always an isomorphism).</strong> Explain why (5.3) composes for two ringed-space morphisms and give a case where it is not an isomorphism.</p>
+<p><strong>Solution.</strong> Pulling back the original counit through two maps gives the same morphism as pulling it back through their composite, by lesson six's coherent pullback composition. Every source involved is supported on the inverse-image closed subset. The universal factorization into its support right adjoint is unique, so the two resulting maps agree after the canonical composition identification.</p>
+<p>For failure, take <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span>, <span class="math" data-tex="\(Z=\{0\}\)">\(Z=\{0\}\)</span>, constant coefficients <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and <span class="math" data-tex="\(f\)">\(f\)</span> the inclusion of that point with the unchanged stalk coefficient ring. Pullback is the exact stalk functor. Proposition 4.2 and its ball calculation give <span class="math" data-tex="\(Lf^*\mathcal S_Z\mathbb Z=\mathbb Z[-1]\)">\(Lf^*\mathcal S_Z\mathbb Z=\mathbb Z[-1]\)</span>. The inverse-image support is the entire point, so <span class="math" data-tex="\(\mathcal S_{Z&#x27;}Lf^*\mathbb Z=\mathbb Z[0]\)">\(\mathcal S_{Z&#x27;}Lf^*\mathbb Z=\mathbb Z[0]\)</span>. Their cohomology groups occur in different degrees, and the canonical map cannot be an isomorphism. All coefficient maps are identity maps; this failure concerns the support operation, not nonflat change of coefficient rings.</p>
+<footer><a href="src/sections-with-support-and-the-localization-triangle.md">Editable Markdown source</a> · <span class="unlinked">Sources and authorship</span></footer></main></body></html>

@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smooth subalgebras and the density theorem · K-theory of C*-algebras</title>
+<meta name="description" content="A lesson of the course K-theory of C*-algebras. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../index.html">Courses</a>
+<a href="sources.html">Licensing</a>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">K-theory of C*-algebras</a> <span aria-hidden="true">›</span> <span>Lesson 15 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by the writing AI.</p>
+<p class="small">English only for now · CC0 1.0</p>
+<p class="small">Some separate prerequisite proof readings are not yet available in this public collection. See the <a href="preparation.html">preparation and proof-dependency notes</a> for this lesson’s exact assumptions.</p></aside>
+<details class="assumed"><summary>What this lesson assumes (7)</summary><ul><li><a href="idempotents-projections-and-their-equivalences.html">Idempotents, projections and their equivalences</a></li><li><a href="the-grothendieck-group-and-k0-of-a-unital-algebra.html">The Grothendieck group and <span class="math" data-tex="\(K_0\)">\(K_0\)</span> of a unital algebra</a></li><li><a href="invertibles-unitaries-and-k1.html">Invertibles, unitaries and <span class="math" data-tex="\(K_1\)">\(K_1\)</span></a></li><li><a href="nonunital-algebras-unitization-relative-classes-and-half-exactness.html">Nonunital algebras: unitization, relative classes and half-exactness</a></li><li><a href="bott-periodicity.html">Bott periodicity</a></li><li><a href="determinants-of-traces-and-the-pairing-with-k1.html">Determinants of traces and the pairing with K_1</a></li><li><a href="topological-k-theory-of-spaces-pairs-and-vector-bundles.html">Topological K-theory of spaces, pairs and vector bundles</a></li></ul></details>
+<article class="lesson">
+<h1 id="smooth-subalgebras-and-the-density-theorem">Smooth subalgebras and the density theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><em>Independently authored CC0 lesson; self-checked by the writing AI.</em></p>
+<p>A differential formula requires derivatives of its coefficients. A projection or invertible supplied by a C*-algebra need not have those derivatives. The density theorem explains when one can replace it by a smooth representative without changing its K-class, and when equivalences between smooth representatives can themselves be made smooth.</p>
+<p>The decisive properties concern inverses, spectral projections and matrices. Norm density supplies approximations. Functional calculus turns those approximations into exact representatives. We will keep these two operations separate, including the completeness assumption needed when contour integration is used inside a finer topology.</p>
+<p>We use stable idempotent equivalence from <a href="idempotents-projections-and-their-equivalences.html">Idempotents, projections and their equivalences</a>, the Grothendieck construction from <a href="the-grothendieck-group-and-k0-of-a-unital-algebra.html">K_0 of a unital algebra</a>, and stable invertible homotopy from <a href="invertibles-unitaries-and-k1.html">Invertibles, unitaries and K_1</a>. The contour calculus, its algebra property and spectral mapping are <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#6-the-holomorphic-functional-calculus">Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory, §6, Definition 6.4 and Theorems 6.7 and 6.10</a>.</p>
+<h2 id="1-what-stability-means">1. What stability means</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a complex C*-algebra and <span class="math" data-tex="\(B\subset A\)">\(B\subset A\)</span> a norm-dense complex subalgebra. Unless another topology is specified, <span class="math" data-tex="\(B\)">\(B\)</span> carries the norm inherited from <span class="math" data-tex="\(A\)">\(A\)</span>; it need not be complete. Use the external unitizations <span class="math" data-tex="\(B^+=B\oplus\mathbb C\)">\(B^+=B\oplus\mathbb C\)</span> and <span class="math" data-tex="\(A^+=A\oplus\mathbb C\)">\(A^+=A\oplus\mathbb C\)</span>, even when <span class="math" data-tex="\(A\)">\(A\)</span> already has a unit.</p>
+<p><strong>Definition 1.1.</strong> Scalar holomorphic stability means that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a\in B^+,\\
+f\text{ holomorphic near }\sigma_{A^+}(a)\\
+\Longrightarrow\quad f(a)\in B^+.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+a\in B^+,\\
+f\text{ holomorphic near }\sigma_{A^+}(a)\\
+\Longrightarrow\quad f(a)\in B^+.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>Matrix holomorphic stability means the corresponding assertion for every <span class="math" data-tex="\(M_n(B^+)\subset M_n(A^+)\)">\(M_n(B^+)\subset M_n(A^+)\)</span>. For an element of <span class="math" data-tex="\(B\)">\(B\)</span> and a function vanishing at zero, the scalar quotient shows that <span class="math" data-tex="\(f(a)\in B\)">\(f(a)\in B\)</span>. In a matrix unitization with scalar part <span class="math" data-tex="\(C\in M_n(\mathbb C)\)">\(C\in M_n(\mathbb C)\)</span>, the scalar part of <span class="math" data-tex="\(f(a)\)">\(f(a)\)</span> is <span class="math" data-tex="\(f(C)\)">\(f(C)\)</span>.</p>
+<p>An inclusion is <strong>inverse closed</strong>, or <strong>spectrally invariant</strong>, if an element of the smaller unital algebra invertible in the larger one has its inverse in the smaller one. Holomorphic stability implies this by taking <span class="math" data-tex="\(f(z)=z^{-1}\)">\(f(z)=z^{-1}\)</span>. Inverse closure says the two spectra agree.</p>
+<p>A <strong>local Banach algebra</strong>, in the sense of Blackadar, Definition 3.1.1, is a normed algebra with holomorphic stability also required at every matrix level. A local C*-algebra additionally has an involution and an inherited C*-norm. This terminology permits incomplete algebras.</p>
+<p>Here is the precise scalar-to-matrix result we will prove. A Fréchet algebra is a complete metrizable locally convex algebra with continuous multiplication. A <strong>continuous inverse algebra</strong> has an open set of units and continuous inversion. These are separate hypotheses in the following theorem.</p>
+<p><strong>Theorem 1.2 (matrix inheritance).</strong> Suppose <span class="math" data-tex="\(B\)">\(B\)</span> is dense in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<ol>
+<li>Scalar inverse closure of <span class="math" data-tex="\(B^+\)">\(B^+\)</span> implies inverse closure at every matrix level, without a completeness assumption.</li>
+<li>If <span class="math" data-tex="\(B^+\)">\(B^+\)</span> is also a Fréchet continuous inverse algebra whose inclusion into <span class="math" data-tex="\(A^+\)">\(A^+\)</span> is continuous, scalar holomorphic stability implies matrix holomorphic stability. In fact scalar inverse closure suffices under these additional hypotheses.</li>
+</ol>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(D=B^+\)">\(D=B^+\)</span>, <span class="math" data-tex="\(E=A^+\)">\(E=A^+\)</span>. Suppose <span class="math" data-tex="\(M\in M_n(D)\)">\(M\in M_n(D)\)</span> is invertible in <span class="math" data-tex="\(M_n(E)\)">\(M_n(E)\)</span>. Choose <span class="math" data-tex="\(N\in M_n(D)\)">\(N\in M_n(D)\)</span> so close to <span class="math" data-tex="\(M^{-1}\)">\(M^{-1}\)</span> that <span class="math" data-tex="\(T=NM\)">\(T=NM\)</span> is near the identity. We prove by induction that such a <span class="math" data-tex="\(T\)">\(T\)</span> has inverse in <span class="math" data-tex="\(M_n(D)\)">\(M_n(D)\)</span>. The case <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is scalar inverse closure.</p>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix},\\
+S=d-ca^{-1}b.
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+T=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix},\\
+S=d-ca^{-1}b.
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>The scalar entry <span class="math" data-tex="\(a\)">\(a\)</span> is near <span class="math" data-tex="\(1\)">\(1\)</span>, so is invertible in <span class="math" data-tex="\(E\)">\(E\)</span>, with <span class="math" data-tex="\(a^{-1}\in D\)">\(a^{-1}\in D\)</span>. Multiplication gives the factorization</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T=L\operatorname{diag}(a,S)U,\\
+L=\begin{pmatrix}1&amp;0\\ca^{-1}&amp;1\end{pmatrix},\\
+U=\begin{pmatrix}1&amp;a^{-1}b\\0&amp;1\end{pmatrix}.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+T=L\operatorname{diag}(a,S)U,\\
+L=\begin{pmatrix}1&amp;0\\ca^{-1}&amp;1\end{pmatrix},\\
+U=\begin{pmatrix}1&amp;a^{-1}b\\0&amp;1\end{pmatrix}.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>The outer factors are invertible. Since <span class="math" data-tex="\(T\)">\(T\)</span> is invertible, <span class="math" data-tex="\(S\)">\(S\)</span> is invertible in <span class="math" data-tex="\(M_{n-1}(E)\)">\(M_{n-1}(E)\)</span>. Its entries belong to <span class="math" data-tex="\(D\)">\(D\)</span>, so induction gives <span class="math" data-tex="\(S^{-1}\in M_{n-1}(D)\)">\(S^{-1}\in M_{n-1}(D)\)</span>. Reversing the factors produces <span class="math" data-tex="\(T^{-1}\in M_n(D)\)">\(T^{-1}\in M_n(D)\)</span>. Now</p>
+<span class="math math-display" data-tex="\[
+M^{-1}=T^{-1}N\in M_n(D).
+\tag{1.4}
+\]">\[
+M^{-1}=T^{-1}N\in M_n(D).
+\tag{1.4}
+\]</span>
+<p>For the second assertion, <span class="math" data-tex="\(GL_n(D)=M_n(D)\cap GL_n(E)\)">\(GL_n(D)=M_n(D)\cap GL_n(E)\)</span> is open in the Fréchet topology. Matrix inversion is continuous there. To see this, near any fixed matrix <span class="math" data-tex="\(M\)">\(M\)</span>, retain a fixed <span class="math" data-tex="\(N\)">\(N\)</span> chosen above. The scalar pivot stays invertible, and the Schur formula and induction express the inverse by continuous operations. These neighborhoods cover the group.</p>
+<p>For <span class="math" data-tex="\(X\in M_n(D)\)">\(X\in M_n(D)\)</span> and a suitable surrounding cycle <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, the function <span class="math" data-tex="\(z\mapsto(z-X)^{-1}\)">\(z\mapsto(z-X)^{-1}\)</span> is continuous with values in <span class="math" data-tex="\(M_n(D)\)">\(M_n(D)\)</span>. Its contour integral exists in this complete Fréchet space: Riemann sums are Cauchy for every continuous seminorm, and completeness gives their limit. The continuous inclusion takes that limit to the ambient contour integral. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(X)=\int_\Gamma\frac{f(z)}{2\pi i}(z-X)^{-1}\,dz,\\
+f(X)\in M_n(D).
+\end{gathered}
+\tag{1.5}
+\]">\[
+\begin{gathered}
+f(X)=\int_\Gamma\frac{f(z)}{2\pi i}(z-X)^{-1}\,dz,\\
+f(X)\in M_n(D).
+\end{gathered}
+\tag{1.5}
+\]</span>
+<p>This proves holomorphic stability at every level. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Schur formula alone proves inverse closure. It does not justify taking the limit of Riemann sums in an incomplete subalgebra. The Fréchet form above is the matrix-calculus theorem of Schweitzer, §§1–2, with the integration hypotheses made explicit. For an arbitrary normed algebra we will assume matrix holomorphic stability, as in Blackadar's definition, or prove it directly for the particular algebra.</p>
+<p><strong>Lemma 1.3 (Complete metrizability forces continuous inversion).</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be a group with a completely metrizable topology and jointly continuous multiplication. Then inversion is continuous.</p>
+<p><em>Proof.</em> Choose a compatible complete metric <span class="math" data-tex="\(d\)">\(d\)</span>, and denote the identity by <span class="math" data-tex="\(e\)">\(e\)</span>. Every fixed left or right translation is a homeomorphism: its inverse function is another fixed translation. This uses algebraic inverses of constants, without assuming continuity of the variable inverse map. It suffices to prove inversion continuous at <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p>Suppose there is an open identity neighbourhood <span class="math" data-tex="\(U_0\)">\(U_0\)</span> such that every identity neighbourhood contains an <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(x^{-1}\notin U_0\)">\(x^{-1}\notin U_0\)</span>. Construct nested open identity neighbourhoods of shrinking diameter with</p>
+<span class="math math-display" data-tex="\[
+\overline{U_{j+1}}\ \overline{U_{j+1}}\subset U_j.
+\tag{1.6}
+\]">\[
+\overline{U_{j+1}}\ \overline{U_{j+1}}\subset U_j.
+\tag{1.6}
+\]</span>
+<p>Indeed multiplication continuity gives an open <span class="math" data-tex="\(W\ni e\)">\(W\ni e\)</span> with <span class="math" data-tex="\(WW\subset U_j\)">\(WW\subset U_j\)</span>. A sufficiently small open metric ball has closure in <span class="math" data-tex="\(W\cap U_j\)">\(W\cap U_j\)</span>; make its diameter at most <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>. No symmetry of these neighbourhoods is required. Choose <span class="math" data-tex="\(x_j\in U_j\)">\(x_j\in U_j\)</span> with <span class="math" data-tex="\(x_j^{-1}\notin U_0\)">\(x_j^{-1}\notin U_0\)</span>. Then <span class="math" data-tex="\(x_j\to e\)">\(x_j\to e\)</span>.</p>
+<p>Choose successively an increasing subsequence <span class="math" data-tex="\(z_k=x_{m_k}\)">\(z_k=x_{m_k}\)</span>, with <span class="math" data-tex="\(m_k\geq k\)">\(m_k\geq k\)</span>, so that, for <span class="math" data-tex="\(y_0=e\)">\(y_0=e\)</span> and <span class="math" data-tex="\(y_k=y_{k-1}z_k\)">\(y_k=y_{k-1}z_k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+d(y_k,y_{k-1})&lt;2^{-k}.
+\tag{1.7}
+\]">\[
+d(y_k,y_{k-1})&lt;2^{-k}.
+\tag{1.7}
+\]</span>
+<p>Each choice is possible because the fixed translation by <span class="math" data-tex="\(y_{k-1}\)">\(y_{k-1}\)</span> is continuous and <span class="math" data-tex="\(x_j\to e\)">\(x_j\to e\)</span>. The products form a Cauchy sequence, so <span class="math" data-tex="\(y_k\to y\in G\)">\(y_k\to y\in G\)</span>. The metric need not be invariant under translations.</p>
+<p>For <span class="math" data-tex="\(j&gt;k\)">\(j&gt;k\)</span>, the ordered tail <span class="math" data-tex="\(z_{k+1}\cdots z_j\)">\(z_{k+1}\cdots z_j\)</span> belongs to <span class="math" data-tex="\(U_k\)">\(U_k\)</span>. To verify this, start with <span class="math" data-tex="\(z_j\in U_j\subset U_{j-1}\)">\(z_j\in U_j\subset U_{j-1}\)</span>. If <span class="math" data-tex="\(z_{l+1}\cdots z_j\in U_l\)">\(z_{l+1}\cdots z_j\in U_l\)</span>, then <span class="math" data-tex="\(z_l\in U_l\)">\(z_l\in U_l\)</span>, so their product is in <span class="math" data-tex="\(U_lU_l\subset U_{l-1}\)">\(U_lU_l\subset U_{l-1}\)</span>. Induction backwards proves the assertion, without commuting any factors. For each fixed <span class="math" data-tex="\(k\)">\(k\)</span>, translation by <span class="math" data-tex="\(y_k^{-1}\)">\(y_k^{-1}\)</span> now gives</p>
+<span class="math math-display" data-tex="\[
+y_k^{-1}y\in\overline{U_k}\subset U_1,
+\qquad k\geq2.
+\tag{1.8}
+\]">\[
+y_k^{-1}y\in\overline{U_k}\subset U_1,
+\qquad k\geq2.
+\tag{1.8}
+\]</span>
+<p>Here <span class="math" data-tex="\(\overline{U_k}\subset U_{k-1}\)">\(\overline{U_k}\subset U_{k-1}\)</span> follows from (1.6) and <span class="math" data-tex="\(e\in\overline{U_k}\)">\(e\in\overline{U_k}\)</span>. Since <span class="math" data-tex="\(y_{k-1}\to y\)">\(y_{k-1}\to y\)</span>, eventually <span class="math" data-tex="\(y_{k-1}\in yU_1\)">\(y_{k-1}\in yU_1\)</span>. For such <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+z_k^{-1}=y_k^{-1}y_{k-1}\\
+=(y_k^{-1}y)(y^{-1}y_{k-1})\in U_1U_1\subset U_0.
+\end{gathered}
+\tag{1.9}
+\]">\[
+\begin{gathered}
+z_k^{-1}=y_k^{-1}y_{k-1}\\
+=(y_k^{-1}y)(y^{-1}y_{k-1})\in U_1U_1\subset U_0.
+\end{gathered}
+\tag{1.9}
+\]</span>
+<p>This contradicts the choice of <span class="math" data-tex="\(z_k\)">\(z_k\)</span>. Inversion is continuous at the identity. At a general <span class="math" data-tex="\(g\)">\(g\)</span>, write <span class="math" data-tex="\(x=gh\)">\(x=gh\)</span>; fixed translations and <span class="math" data-tex="\(x^{-1}=h^{-1}g^{-1}\)">\(x^{-1}=h^{-1}g^{-1}\)</span> give continuity there as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.4 (Fréchet density from inverse closure).</strong> Suppose <span class="math" data-tex="\(B\subset A\)">\(B\subset A\)</span> is a dense complex subalgebra, <span class="math" data-tex="\(B\)">\(B\)</span> is a Fréchet algebra, its inclusion in the C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> is continuous, and <span class="math" data-tex="\(B^+\)">\(B^+\)</span> is inverse closed in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. Then <span class="math" data-tex="\(B^+\)">\(B^+\)</span> is a continuous inverse algebra, matrix holomorphically stable in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>, and Theorem 2.1 gives both K-isomorphisms. Its finer Fréchet topology gives the same <span class="math" data-tex="\(K_1\)">\(K_1\)</span> group. No involution on <span class="math" data-tex="\(B\)">\(B\)</span> is required.</p>
+<p><em>Proof.</em> The external unitization is again a complete metrizable locally convex algebra with continuous multiplication. Inverse closure gives the exact equality</p>
+<span class="math math-display" data-tex="\[
+GL_1(B^+)=\iota^{-1}(GL_1(A^+)),
+\tag{1.10}
+\]">\[
+GL_1(B^+)=\iota^{-1}(GL_1(A^+)),
+\tag{1.10}
+\]</span>
+<p>so the unit group is open in <span class="math" data-tex="\(B^+\)">\(B^+\)</span>. It is completely metrizable, although the restriction of the original complete metric need not be complete. To check this explicitly, let <span class="math" data-tex="\(d\)">\(d\)</span> be a compatible complete metric on <span class="math" data-tex="\(B^+\)">\(B^+\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> the closed complement of its unit group. If <span class="math" data-tex="\(F\ne\varnothing\)">\(F\ne\varnothing\)</span>, use on the unit group</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d&#x27;(x,y)=d(x,y)\\
+\quad+\left|d(x,F)^{-1}-d(y,F)^{-1}\right|.
+\end{gathered}
+\tag{1.11}
+\]">\[
+\begin{gathered}
+d&#x27;(x,y)=d(x,y)\\
+\quad+\left|d(x,F)^{-1}-d(y,F)^{-1}\right|.
+\end{gathered}
+\tag{1.11}
+\]</span>
+<p>Distance to <span class="math" data-tex="\(F\)">\(F\)</span> is positive there and continuous. Thus <span class="math" data-tex="\(d&#x27;\)">\(d&#x27;\)</span> is a metric with the same topology. A <span class="math" data-tex="\(d&#x27;\)">\(d&#x27;\)</span>-Cauchy sequence is <span class="math" data-tex="\(d\)">\(d\)</span>-Cauchy and has bounded reciprocal distance to <span class="math" data-tex="\(F\)">\(F\)</span>. Its ambient limit therefore stays a positive distance from <span class="math" data-tex="\(F\)">\(F\)</span>, hence is a unit. Continuity of that reciprocal distance at the limit proves <span class="math" data-tex="\(d&#x27;\)">\(d&#x27;\)</span>-convergence. If <span class="math" data-tex="\(F\)">\(F\)</span> is empty, use <span class="math" data-tex="\(d\)">\(d\)</span> itself.</p>
+<p>Lemma 1.3 supplies continuous scalar inversion. Theorem 1.2's actual Schur-complement proof gives matrix inverse closure and continuous matrix inversion. Complete Fréchet contour integration then gives matrix holomorphic stability. Theorem 2.1 applies. Its finitely many affine path segments are continuous in the finer locally convex topology; conversely that topology's continuous paths are ambient norm continuous. Its two injectivity and surjectivity arguments therefore also identify the finer-topology <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus the additional continuous-inverse condition in Theorem 1.2 is automatic in this complete Fréchet setting. Density alone remains insufficient, and the incomplete-algebra contour limitation stated above remains in force. The group argument is the proof attributed to Pfister in [Roe, Proposition 16.5 and Remark 16.7, pp. 77–78], with the limiting tail kept in its closure. The matrix step uses our proved Schur formula rather than the module argument of that source.</p>
+<h2 id="2-the-density-theorem-including-injectivity">2. The density theorem, including injectivity</h2>
+<p>Define <span class="math" data-tex="\(K_0(B^+)\)">\(K_0(B^+)\)</span> from stable algebraic equivalence classes of idempotents, and <span class="math" data-tex="\(K_1(B^+)\)">\(K_1(B^+)\)</span> from stable norm homotopy classes of invertibles. As in <a href="nonunital-algebras-unitization-relative-classes-and-half-exactness.html">Nonunital algebras</a>, <span class="math" data-tex="\(K_0(B)\)">\(K_0(B)\)</span> is the kernel of the scalar map to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>; scalar normalization gives the relative description of <span class="math" data-tex="\(K_1(B)\)">\(K_1(B)\)</span>.</p>
+<p><strong>Theorem 2.1 (density).</strong> If <span class="math" data-tex="\(B\subset A\)">\(B\subset A\)</span> is dense and matrix holomorphically stable, then inclusion induces isomorphisms</p>
+<span class="math math-display" data-tex="\[
+K_j(B)\ \xrightarrow{\ \cong\ }\ K_j(A),
+\qquad j=0,1.
+\tag{2.1}
+\]">\[
+K_j(B)\ \xrightarrow{\ \cong\ }\ K_j(A),
+\qquad j=0,1.
+\tag{2.1}
+\]</span>
+<p><em>Proof for <span class="math" data-tex="\(K_0\)">\(K_0\)</span>.</em> First treat <span class="math" data-tex="\(D=B^+\subset E=A^+\)">\(D=B^+\subset E=A^+\)</span>. Let <span class="math" data-tex="\(e\in M_n(E)\)">\(e\in M_n(E)\)</span> be an idempotent. On <span class="math" data-tex="\(\Gamma=\{|z-1|=1/2\}\)">\(\Gamma=\{|z-1|=1/2\}\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+R=\max_{z\in\Gamma}\|(z-e)^{-1}\|.
+\]">\[
+R=\max_{z\in\Gamma}\|(z-e)^{-1}\|.
+\]</span>
+<p>Choose <span class="math" data-tex="\(b\in M_n(D)\)">\(b\in M_n(D)\)</span> with <span class="math" data-tex="\(\|b-e\|=\varepsilon\)">\(\|b-e\|=\varepsilon\)</span> small enough that <span class="math" data-tex="\(R\varepsilon&lt;1\)">\(R\varepsilon&lt;1\)</span>, and that the spectrum of <span class="math" data-tex="\(b\)">\(b\)</span> remains in the disjoint disks around <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. Bound the resolvent of <span class="math" data-tex="\(e\)">\(e\)</span> uniformly on the compact set outside those disks inside a sufficiently large circle; the Neumann estimate preserves invertibility there. The large-<span class="math" data-tex="\(|z|\)">\(|z|\)</span> resolvent estimate handles the remaining exterior. Matrix holomorphic stability gives an idempotent</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q=\frac{1}{2\pi i}\int_\Gamma(z-b)^{-1}\,dz,\\
+q\in M_n(D).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+q=\frac{1}{2\pi i}\int_\Gamma(z-b)^{-1}\,dz,\\
+q\in M_n(D).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>Indeed this is the calculus of the function equal to zero on the component near zero and one on the component near one. The resolvent identity gives</p>
+<span class="math math-display" data-tex="\[
+\|q-e\|
+\leq\frac{R^2\varepsilon}{2(1-R\varepsilon)}.
+\tag{2.3}
+\]">\[
+\|q-e\|
+\leq\frac{R^2\varepsilon}{2(1-R\varepsilon)}.
+\tag{2.3}
+\]</span>
+<p>Thus <span class="math" data-tex="\(q\)">\(q\)</span> can be arbitrarily close to <span class="math" data-tex="\(e\)">\(e\)</span>. For close idempotents define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+w&amp;=qe+(1-q)(1-e)\\
+&amp;=1+(q-e)(2e-1),\\
+we&amp;=qw.
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+w&amp;=qe+(1-q)(1-e)\\
+&amp;=1+(q-e)(2e-1),\\
+we&amp;=qw.
+\end{aligned}
+\tag{2.4}
+\]</span>
+<p>If <span class="math" data-tex="\(\|q-e\|\|2e-1\|&lt;1\)">\(\|q-e\|\|2e-1\|&lt;1\)</span>, <span class="math" data-tex="\(w\)">\(w\)</span> is invertible by the ambient Neumann estimate. Hence <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> represent the same stable class. This proves surjectivity on the semigroup of idempotent classes.</p>
+<p>For injectivity, suppose two idempotents <span class="math" data-tex="\(h,k\)">\(h,k\)</span> over <span class="math" data-tex="\(D\)">\(D\)</span> become stably equivalent over <span class="math" data-tex="\(E\)">\(E\)</span>. After adding zero blocks, the equivalence results of Lesson 1 give an invertible <span class="math" data-tex="\(w\)">\(w\)</span> over <span class="math" data-tex="\(E\)">\(E\)</span> with <span class="math" data-tex="\(whw^{-1}=k\)">\(whw^{-1}=k\)</span>. Approximate <span class="math" data-tex="\(w\)">\(w\)</span> by <span class="math" data-tex="\(v\)">\(v\)</span> over <span class="math" data-tex="\(D\)">\(D\)</span>. For a sufficiently close approximation, <span class="math" data-tex="\(v\)">\(v\)</span> is invertible in <span class="math" data-tex="\(E\)">\(E\)</span>, hence has its inverse in <span class="math" data-tex="\(D\)">\(D\)</span>. Then <span class="math" data-tex="\(k&#x27;=vhv^{-1}\)">\(k&#x27;=vhv^{-1}\)</span> is arbitrarily close to <span class="math" data-tex="\(k\)">\(k\)</span>. Formula (2.4), applied to <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span>, gives an invertible <span class="math" data-tex="\(z\)">\(z\)</span> over <span class="math" data-tex="\(D\)">\(D\)</span> with <span class="math" data-tex="\(zk&#x27;z^{-1}=k\)">\(zk&#x27;z^{-1}=k\)</span>. Therefore <span class="math" data-tex="\(zv\)">\(zv\)</span> implements the equivalence already over <span class="math" data-tex="\(D\)">\(D\)</span>. The idempotent semigroups are isomorphic, so their Grothendieck groups are isomorphic.</p>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> is a *-subalgebra, <span class="math" data-tex="\(b\)">\(b\)</span> can be chosen selfadjoint when <span class="math" data-tex="\(e\)">\(e\)</span> is a projection. Then (2.2) is an orthogonal projection. For example <span class="math" data-tex="\(\varepsilon&lt;1/8\)">\(\varepsilon&lt;1/8\)</span> gives <span class="math" data-tex="\(R=2\)">\(R=2\)</span> and <span class="math" data-tex="\(\|q-e\|\leq(8/3)\varepsilon&lt;1/3\)">\(\|q-e\|\leq(8/3)\varepsilon&lt;1/3\)</span>. This is the smooth-projection mechanism used for projective modules.</p>
+<p><em>Proof for <span class="math" data-tex="\(K_1\)">\(K_1\)</span>.</em> Given an invertible <span class="math" data-tex="\(u\)">\(u\)</span> over <span class="math" data-tex="\(E\)">\(E\)</span>, approximate it by <span class="math" data-tex="\(v\)">\(v\)</span> over <span class="math" data-tex="\(D\)">\(D\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\|u^{-1}\|\|v-u\|&lt;1.
+\tag{2.5}
+\]">\[
+\|u^{-1}\|\|v-u\|&lt;1.
+\tag{2.5}
+\]</span>
+<p>The straight segment from <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(v\)">\(v\)</span> is invertible in <span class="math" data-tex="\(E\)">\(E\)</span>, and <span class="math" data-tex="\(v^{-1}\)">\(v^{-1}\)</span> belongs to <span class="math" data-tex="\(D\)">\(D\)</span>. Thus every class has a representative over <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>For injectivity, let an ambient path <span class="math" data-tex="\(u(t)\)">\(u(t)\)</span> join two stabilized invertibles over <span class="math" data-tex="\(D\)">\(D\)</span>. Its inverse norm has a finite maximum <span class="math" data-tex="\(L\)">\(L\)</span>. Subdivide the interval so that oscillations on each segment are small, approximate its finitely many vertex values in <span class="math" data-tex="\(D\)">\(D\)</span>, and keep the two endpoints exactly. The resulting affine polygonal path <span class="math" data-tex="\(v(t)\)">\(v(t)\)</span> can be chosen with</p>
+<span class="math math-display" data-tex="\[
+\sup_t\|v(t)-u(t)\|&lt;L^{-1}.
+\tag{2.6}
+\]">\[
+\sup_t\|v(t)-u(t)\|&lt;L^{-1}.
+\tag{2.6}
+\]</span>
+<p>Every <span class="math" data-tex="\(v(t)\)">\(v(t)\)</span> is ambient invertible, so matrix inverse closure makes it invertible over <span class="math" data-tex="\(D\)">\(D\)</span>. It is a norm-continuous path in <span class="math" data-tex="\(D\)">\(D\)</span> with the prescribed endpoints. Hence the original two classes agree over <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>The external scalar maps on <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> commute with inclusion and have the same scalar splitting. The <span class="math" data-tex="\(K_0\)">\(K_0\)</span> isomorphism therefore restricts to their kernels. The relative <span class="math" data-tex="\(K_1\)">\(K_1\)</span> identification from Lesson 6 likewise gives (2.1) for <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof also covers a finer Fréchet continuous-inverse topology on <span class="math" data-tex="\(B\)">\(B\)</span>. The polygonal path is continuous in that topology, and stable similarities implement the algebraic <span class="math" data-tex="\(K_0\)">\(K_0\)</span> equivalence. Conversely every path continuous in the finer topology is norm continuous. Thus the <span class="math" data-tex="\(K_1\)">\(K_1\)</span> group defined using that topology has the same answer.</p>
+<p>The same approximation method handles families with any finite number of parameters. This strengthens the component calculation to all homotopy groups, with the topology specified.</p>
+<p><strong>Theorem 2.2 (families of invertibles).</strong> Suppose <span class="math" data-tex="\(B\subset A\)">\(B\subset A\)</span> is dense and matrix inverse closed. With the induced norm topology, inclusion</p>
+<span class="math math-display" data-tex="\[
+GL_n(B^+)\longrightarrow GL_n(A^+)
+\tag{2.7}
+\]">\[
+GL_n(B^+)\longrightarrow GL_n(A^+)
+\tag{2.7}
+\]</span>
+<p>induces a bijection of components and isomorphisms on every higher homotopy group, based at any invertible over <span class="math" data-tex="\(B^+\)">\(B^+\)</span>. The same holds for the unions under identity padding, equipped with their matrix operator norm topology.</p>
+<p><em>Proof.</em> Translate the base point to the identity by multiplication by its inverse, which belongs to <span class="math" data-tex="\(M_n(B^+)\)">\(M_n(B^+)\)</span>. Represent a based sphere map by a map <span class="math" data-tex="\(F\)">\(F\)</span> on the cube <span class="math" data-tex="\(I^k\)">\(I^k\)</span> that equals the identity on its boundary. Compactness and continuity of inversion give a finite bound <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(\|F(x)^{-1}\|\)">\(\|F(x)^{-1}\|\)</span>.</p>
+<p>Subdivide the cube into small cubes, then divide each small cube into simplices according to the ordering of its coordinates. Uniform continuity makes the oscillation of <span class="math" data-tex="\(F\)">\(F\)</span> on each simplex arbitrarily small. Approximate its finitely many vertex values by matrices over <span class="math" data-tex="\(B^+\)">\(B^+\)</span>, keeping boundary vertices equal to the identity. Affine interpolation gives a continuous piecewise affine map <span class="math" data-tex="\(V\)">\(V\)</span> over <span class="math" data-tex="\(B^+\)">\(B^+\)</span>, equal to the identity on the boundary. Choose the oscillation and vertex errors so that</p>
+<span class="math math-display" data-tex="\[
+\sup_x\|V(x)-F(x)\|&lt;L^{-1}.
+\tag{2.8}
+\]">\[
+\sup_x\|V(x)-F(x)\|&lt;L^{-1}.
+\tag{2.8}
+\]</span>
+<p>The Neumann estimate makes every point of the straight homotopy from <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(V\)">\(V\)</span> invertible in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. Matrix inverse closure makes <span class="math" data-tex="\(V\)">\(V\)</span> invertible over <span class="math" data-tex="\(B^+\)">\(B^+\)</span>. This proves surjectivity on every higher homotopy group. The component assertion is the same argument with one point and with an interval for a path.</p>
+<p>For injectivity, start with a based map <span class="math" data-tex="\(f\)">\(f\)</span> over <span class="math" data-tex="\(B^+\)">\(B^+\)</span> that has an ambient nullhomotopy. First replace <span class="math" data-tex="\(f\)">\(f\)</span>, by the construction above, with a piecewise affine map <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> over <span class="math" data-tex="\(B^+\)">\(B^+\)</span>. Both endpoints and their straight homotopy have entries in <span class="math" data-tex="\(B^+\)">\(B^+\)</span>; inverse closure makes that homotopy invertible there. Follow the reversed homotopy from <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> to <span class="math" data-tex="\(f\)">\(f\)</span> by the given nullhomotopy. This produces an ambient cube homotopy with bottom face <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span>, top face the identity and all side faces the identity. Its boundary is piecewise affine over <span class="math" data-tex="\(B^+\)">\(B^+\)</span>.</p>
+<p>Use a sufficiently fine product subdivision extending the bottom-face subdivision, and interpolate vertex approximations on its simplices. Keep every boundary vertex exactly. The interpolation then agrees with the given piecewise affine map on the whole boundary. The uniform inverse bound for the ambient homotopy makes the interpolated homotopy invertible everywhere, by the same estimate (2.8). Inverse closure puts it in <span class="math" data-tex="\(GL_n(B^+)\)">\(GL_n(B^+)\)</span>. Thus <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span>, and hence <span class="math" data-tex="\(f\)">\(f\)</span>, is nullhomotopic there. For <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, the induced maps are homomorphisms, so this kernel calculation proves injectivity.</p>
+<p>For the norm topology on the stable union, realize its matrices as finite blocks acting on the standard stabilized module, with identity on the remaining coordinates. Inversion is continuous in the unital completion of these finite blocks. Consequently compact parameter sets still have the uniform inverse bounds used above. Each vertex approximation has finite size, and the finitely many vertices fit in one common size. Affine interpolation therefore has a common finite size. A straight segment between an original finite block and such an approximation lies in a finite matrix algebra at each parameter value; the ambient invertibility estimate makes it invertible in that algebra. The homotopy is norm continuous even if the original map does not factor through one fixed size. After its piecewise affine replacement the boundary has a common finite size, so the relative nullhomotopy argument also applies. This proves the stable assertion without assuming that every compact family originally lies at a finite stage. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the higher homotopy conclusion recorded in Connes, III, Appendix C, Proposition 3(b). Matrix holomorphic stability implies the inverse-closure hypothesis; the proof uses only inverse closure for this particular conclusion. The statement concerns the induced norm topology, rather than an unspecified finer topology.</p>
+<h3 id="2-3-the-final-topology-of-the-stable-stages">2.3. The final topology of the stable stages</h3>
+<p>Connes, III, Appendix C, Proposition 3(b), p.292, phrases the stable density result using an inductive limit. We now specify a final topology of spaces and give the finite-stage argument for that topology. It also proves that changing from the stable norm topology to this final topology preserves the homotopy groups.</p>
+<p><strong>Theorem 2.3 (two stable topologies).</strong> Assume the matrix inverse-closure and density hypotheses of Theorem 2.2. Every finite invertible group with its induced norm topology is locally contractible. For either <span class="math" data-tex="\(B\)">\(B\)</span> or <span class="math" data-tex="\(A\)">\(A\)</span>, the final union and the stable norm union both have homotopy groups equal to the colimits of those of their finite stages. The continuous identity from the final union to the norm union induces a component bijection and all higher homotopy isomorphisms. Inclusion from <span class="math" data-tex="\(B\)">\(B\)</span> to <span class="math" data-tex="\(A\)">\(A\)</span> has the same property for either stable topology. Higher homotopy groups are based at the identity; the component statement is a statement about sets.</p>
+<p>Let <span class="math" data-tex="\(B\subset A\)">\(B\subset A\)</span> be a dense complex subalgebra of a C*-algebra, as in Lesson 15, and suppose that <span class="math" data-tex="\(M_n(B^+)\subset M_n(A^+)\)">\(M_n(B^+)\subset M_n(A^+)\)</span> is inverse closed for every <span class="math" data-tex="\(n\)">\(n\)</span>. Give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_n(B)=GL_n(B^+),
+\\ G_n(A)=GL_n(A^+).
+\end{gathered}
+\tag{2.9}
+\]">\[
+\begin{gathered}
+G_n(B)=GL_n(B^+),
+\\ G_n(A)=GL_n(A^+).
+\end{gathered}
+\tag{2.9}
+\]</span>
+<p>their induced norm topologies and embed them by <span class="math" data-tex="\(X\mapsto\operatorname{diag}(X,1)\)">\(X\mapsto\operatorname{diag}(X,1)\)</span>. Their unions have two relevant topologies. The <strong>stable norm topology</strong> uses the matrix operator norm after identity padding. The <strong>final topology of the stages</strong> declares <span class="math" data-tex="\(U\)">\(U\)</span> open exactly when <span class="math" data-tex="\(U\cap G_n\)">\(U\cap G_n\)</span> is open in <span class="math" data-tex="\(G_n\)">\(G_n\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. In this paragraph and the following proof, “final” refers to this explicit topology of spaces.</p>
+<p><em>Proof.</em> First, every <span class="math" data-tex="\(G_n(B)\)">\(G_n(B)\)</span> is a locally contractible topological group. Inversion is the restriction of continuous ambient inversion, since inverse closure puts its values in <span class="math" data-tex="\(M_n(B^+)\)">\(M_n(B^+)\)</span>. For <span class="math" data-tex="\(X\in G_n(B)\)">\(X\in G_n(B)\)</span>, choose <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with <span class="math" data-tex="\(r\|X^{-1}\|&lt;1\)">\(r\|X^{-1}\|&lt;1\)</span>. The relative ball</p>
+<span class="math math-display" data-tex="\[
+V_r(X)=\{Y\in M_n(B^+):\|Y-X\|&lt;r\}
+\]">\[
+V_r(X)=\{Y\in M_n(B^+):\|Y-X\|&lt;r\}
+\]</span>
+<p>consists entirely of invertibles: apply the ambient Neumann estimate, then inverse closure. The contraction</p>
+<span class="math math-display" data-tex="\[
+H(Y,t)=X+(1-t)(Y-X)
+\tag{2.10}
+\]">\[
+H(Y,t)=X+(1-t)(Y-X)
+\tag{2.10}
+\]</span>
+<p>stays in that ball. Such balls give a contractible neighborhood basis.</p>
+<p>For either algebra, a compact subset of the union with the final topology lies in one finite stage. To prove this, suppose a compact set <span class="math" data-tex="\(K\)">\(K\)</span> did not. Choose distinct <span class="math" data-tex="\(x_j\in K\)">\(x_j\in K\)</span> and increasing integers <span class="math" data-tex="\(n_j\geq j\)">\(n_j\geq j\)</span> so that every previously chosen point lies in <span class="math" data-tex="\(G_{n_j}\)">\(G_{n_j}\)</span> and <span class="math" data-tex="\(x_j\notin G_{n_j}\)">\(x_j\notin G_{n_j}\)</span>. This is possible because finitely many points fit in one stage and <span class="math" data-tex="\(K\)">\(K\)</span> does not. For each fixed <span class="math" data-tex="\(m\)">\(m\)</span>, the set <span class="math" data-tex="\(S=\{x_j:j\geq1\}\)">\(S=\{x_j:j\geq1\}\)</span> meets <span class="math" data-tex="\(G_m\)">\(G_m\)</span> in a finite set. Every subset <span class="math" data-tex="\(C\subset S\)">\(C\subset S\)</span> therefore has <span class="math" data-tex="\(C\cap G_m\)">\(C\cap G_m\)</span> closed in <span class="math" data-tex="\(G_m\)">\(G_m\)</span>. The definition of the final topology makes every such <span class="math" data-tex="\(C\)">\(C\)</span> closed in the union. Thus <span class="math" data-tex="\(S\)">\(S\)</span> is closed in <span class="math" data-tex="\(K\)">\(K\)</span> and is an infinite discrete space. It would be compact as a closed subset of <span class="math" data-tex="\(K\)">\(K\)</span>, whereas its singleton open cover has no finite subcover. This contradiction proves the claim.</p>
+<p>Each stage retains its original topology inside the final union. Indeed each identity-padding inclusion is a closed topological embedding. Starting with an open set in <span class="math" data-tex="\(G_n\)">\(G_n\)</span>, extend it successively to open sets in <span class="math" data-tex="\(G_{n+1},G_{n+2},\ldots\)">\(G_{n+1},G_{n+2},\ldots\)</span> with the prescribed intersections, using the subspace topology at each step; on earlier stages take its intersections. The union of these compatible sets is final-open and restricts to the original open set. Consequently a continuous map from a compact space to the final union, whose image lies in <span class="math" data-tex="\(G_n\)">\(G_n\)</span>, is continuous as a map to <span class="math" data-tex="\(G_n\)">\(G_n\)</span>.</p>
+<p>It follows for every <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span> that</p>
+<span class="math math-display" data-tex="\[
+\pi_k(G_\infty^{\mathrm{final}})
+=\underset{n}{\operatorname{colim}}\ \pi_k(G_n).
+\tag{2.11}
+\]">\[
+\pi_k(G_\infty^{\mathrm{final}})
+=\underset{n}{\operatorname{colim}}\ \pi_k(G_n).
+\tag{2.11}
+\]</span>
+<p>Every sphere map and every homotopy has compact image and hence factors continuously through a finite stage. These two facts give respectively surjectivity and injectivity of the canonical map in (2.11). For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, use points and paths and interpret the formula as the corresponding statement about components.</p>
+<p>The same colimit formula holds for the stable norm union, although its compact subsets need not lie in a finite stage. To see the distinction explicitly, let <span class="math" data-tex="\(e_{jj}\)">\(e_{jj}\)</span> be the <span class="math" data-tex="\(j\)">\(j\)</span>-th diagonal matrix unit and consider the identity-padded invertibles</p>
+<span class="math math-display" data-tex="\[
+X_j=I+j^{-1}e_{jj}\otimes1_{A^+}.
+\tag{2.12}
+\]">\[
+X_j=I+j^{-1}e_{jj}\otimes1_{A^+}.
+\tag{2.12}
+\]</span>
+<p>They converge in norm to <span class="math" data-tex="\(I\)">\(I\)</span>, so <span class="math" data-tex="\(\{I,X_1,X_2,\ldots\}\)">\(\{I,X_1,X_2,\ldots\}\)</span> is norm compact. They do not all belong to any one stage, so the proved compact-stage property prevents this set from being compact in the final topology.
+Here is the necessary replacement argument. For a based sphere map, use a cube with constant boundary. Its compact image has a uniform inverse bound <span class="math" data-tex="\(L\)">\(L\)</span>. Triangulate the cube finely enough that its oscillation on each simplex is less than <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span>. The finitely many vertex values have a common matrix size. Interpolate them affinely, keeping boundary values the identity. The resulting map has that common size and is uniformly within <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span> of the original map. The straight homotopy is ambient invertible by the Neumann estimate. For <span class="math" data-tex="\(B\)">\(B\)</span>, every point of this homotopy lies in a finite matrix algebra over <span class="math" data-tex="\(B^+\)">\(B^+\)</span>: an original value and the affine replacement each have finite size, although a common size for all original values has not been assumed. The ambient inverse estimate makes that finite block invertible, and inverse closure puts its inverse over <span class="math" data-tex="\(B^+\)">\(B^+\)</span>. It is continuous in the stable norm topology. This gives a finite-stage representative.</p>
+<p>For a nullhomotopy of a finite-stage map, first replace the boundary map by a piecewise affine one in that same stage. Follow the straight homotopy from this replacement back to the original map by the given nullhomotopy. Triangulate the resulting cube compatibly with its piecewise affine boundary, keep all boundary vertex values, and interpolate the remaining vertices. The same uniform inverse bound puts the interpolated nullhomotopy in one finite stage and fixes its entire boundary. Combining with the first boundary replacement proves the finite-stage injectivity assertion. The component case uses the identical argument for an interval. This proves the stable norm analogue of (2.11).</p>
+<p>The identity from the final union to the norm union is continuous, since every stage inclusion into the norm union is continuous. The two colimit calculations show that it induces bijections on components and isomorphisms on every higher homotopy group.</p>
+<p>Finally, the finite-stage density argument of Lesson 15, Theorem 2.2, applies to <span class="math" data-tex="\(G_n(B)\to G_n(A)\)">\(G_n(B)\to G_n(A)\)</span>. It uses finite affine approximations with error less than a uniform inverse bound, and requires only matrix inverse closure. Its finite-stage isomorphisms pass to the colimits in (2.11). Hence inclusion induces the same homotopy-group isomorphisms for both stable topologies. This supplies the explicit final-topology version of Connes's density conclusion without identifying the two topological spaces or asserting a result for an unspecified finer topology on <span class="math" data-tex="\(B\)">\(B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-closed-derivations-supply-complete-calculus-domains">3. Closed derivations supply complete calculus domains</h2>
+<p>Let <span class="math" data-tex="\(\delta:\mathcal D\to A\)">\(\delta:\mathcal D\to A\)</span> be a densely defined closed derivation, where <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is a subalgebra and</p>
+<span class="math math-display" data-tex="\[
+\delta(ab)=\delta(a)b+a\delta(b).
+\tag{3.1}
+\]">\[
+\delta(ab)=\delta(a)b+a\delta(b).
+\tag{3.1}
+\]</span>
+<p>For a *-derivation also assume <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is *-closed and <span class="math" data-tex="\(\delta(a^*)=\delta(a)^*\)">\(\delta(a^*)=\delta(a)^*\)</span>. Adjoin an external unit with <span class="math" data-tex="\(\delta(1)=0\)">\(\delta(1)=0\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> The graph domain <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, with norm</p>
+<span class="math math-display" data-tex="\[
+\|a\|_\delta=\|a\|+\|\delta(a)\|,
+\tag{3.2}
+\]">\[
+\|a\|_\delta=\|a\|+\|\delta(a)\|,
+\tag{3.2}
+\]</span>
+<p>is a Banach algebra, and is holomorphically stable in every matrix algebra over <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><em>Proof.</em> A graph-norm Cauchy sequence gives norm limits for both <span class="math" data-tex="\(a_j\)">\(a_j\)</span> and <span class="math" data-tex="\(\delta(a_j)\)">\(\delta(a_j)\)</span>; closedness puts the limit in the graph. The product rule gives</p>
+<span class="math math-display" data-tex="\[
+\|ab\|_\delta\leq\|a\|_\delta\|b\|_\delta.
+\]">\[
+\|ab\|_\delta\leq\|a\|_\delta\|b\|_\delta.
+\]</span>
+<p>Completeness does not yet prove ambient inverse closure. For that, if <span class="math" data-tex="\(x\in\mathcal D^+\)">\(x\in\mathcal D^+\)</span> satisfies <span class="math" data-tex="\(\|x\|&lt;1\)">\(\|x\|&lt;1\)</span>, the Neumann series belongs to the graph domain, since</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\delta(x^m)&amp;=\sum_{r=0}^{m-1}x^r\delta(x)x^{m-1-r},\\
+\|\delta(x^m)\|&amp;\leq m\|x\|^{m-1}\|\delta(x)\|.
+\end{aligned}
+\tag{3.3}
+\]">\[
+\begin{aligned}
+\delta(x^m)&amp;=\sum_{r=0}^{m-1}x^r\delta(x)x^{m-1-r},\\
+\|\delta(x^m)\|&amp;\leq m\|x\|^{m-1}\|\delta(x)\|.
+\end{aligned}
+\tag{3.3}
+\]</span>
+<p>The right-hand bound is summable in <span class="math" data-tex="\(m\)">\(m\)</span>. Thus <span class="math" data-tex="\((1-x)^{-1}\in\mathcal D^+\)">\((1-x)^{-1}\in\mathcal D^+\)</span>.</p>
+<p>Now take <span class="math" data-tex="\(a\in\mathcal D^+\)">\(a\in\mathcal D^+\)</span> invertible in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>, and approximate <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> in norm by <span class="math" data-tex="\(b\in\mathcal D^+\)">\(b\in\mathcal D^+\)</span> so that <span class="math" data-tex="\(\|1-ab\|&lt;1\)">\(\|1-ab\|&lt;1\)</span>. The preceding argument gives <span class="math" data-tex="\((ab)^{-1}\in\mathcal D^+\)">\((ab)^{-1}\in\mathcal D^+\)</span>, hence <span class="math" data-tex="\(a^{-1}=b(ab)^{-1}\in\mathcal D^+\)">\(a^{-1}=b(ab)^{-1}\in\mathcal D^+\)</span>. Differentiating <span class="math" data-tex="\(aa^{-1}=1\)">\(aa^{-1}=1\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+\delta(a^{-1})=-a^{-1}\delta(a)a^{-1}.
+\tag{3.4}
+\]">\[
+\delta(a^{-1})=-a^{-1}\delta(a)a^{-1}.
+\tag{3.4}
+\]</span>
+<p>For the resolvent <span class="math" data-tex="\(R(z)=(z-a)^{-1}\)">\(R(z)=(z-a)^{-1}\)</span>, this becomes</p>
+<span class="math math-display" data-tex="\[
+\delta(R(z))=R(z)\delta(a)R(z).
+\tag{3.5}
+\]">\[
+\delta(R(z))=R(z)\delta(a)R(z).
+\tag{3.5}
+\]</span>
+<p>Both expressions are norm continuous on a surrounding cycle. The resolvent is therefore graph-norm continuous there, and its contour integral belongs to the complete graph domain. This proves holomorphic stability. Entrywise amplification is a closed derivation on each matrix algebra: convergence of a matrix and its derivative is convergence in each of finitely many entries. The same argument proves every matrix assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This theorem also holds for a derivation with values in a Banach algebra containing <span class="math" data-tex="\(A\)">\(A\)</span>, using the inherited left and right multiplication, provided its graph is closed. The preceding estimates and the graph integral are unchanged.</p>
+<p>For example <span class="math" data-tex="\(C^1[0,1]\)">\(C^1[0,1]\)</span>, with derivative and graph norm, has the same K-theory as <span class="math" data-tex="\(C[0,1]\)">\(C[0,1]\)</span>. Completeness of the derivative graph follows by integrating the limiting derivative; polynomial approximation makes the domain norm dense.</p>
+<h3 id="a-differential-norm-gives-a-checkable-criterion">A differential norm gives a checkable criterion</h3>
+<p>The graph-domain argument above is a special case of a useful Banach-algebra test. It converts an estimate on products into matrix holomorphic stability; compare [Roe, Corollary 14.7].</p>
+<p><strong>Proposition 3.2 (differential norm criterion).</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be a norm-dense *-subalgebra of a C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>. Suppose <span class="math" data-tex="\(B\)">\(B\)</span> has a complete submultiplicative norm <span class="math" data-tex="\(N\)">\(N\)</span>, with continuous involution and <span class="math" data-tex="\(N(b)\geq\|b\|_A\)">\(N(b)\geq\|b\|_A\)</span>, and for some <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N(bc)&amp;\leq C\bigl(\|b\|_A N(c)\\
+&amp;\hspace{4em}+N(b)\|c\|_A\bigr).
+\end{aligned}
+\tag{3.6}
+\]">\[
+\begin{aligned}
+N(bc)&amp;\leq C\bigl(\|b\|_A N(c)\\
+&amp;\hspace{4em}+N(b)\|c\|_A\bigr).
+\end{aligned}
+\tag{3.6}
+\]</span>
+<p>Then <span class="math" data-tex="\(B\)">\(B\)</span> is inverse closed and holomorphically stable at every matrix level, with external unitizations when needed. Inclusion induces both K-isomorphisms of Theorem 2.1, also when <span class="math" data-tex="\(K_1(B)\)">\(K_1(B)\)</span> uses its Banach norm topology.</p>
+<p><em>Proof.</em> First suppose the two algebras have the same identity. Write <span class="math" data-tex="\(\rho_B,\rho_A\)">\(\rho_B,\rho_A\)</span> for their spectral radii. Applying (3.6) to <span class="math" data-tex="\(b^m,b^m\)">\(b^m,b^m\)</span>, taking <span class="math" data-tex="\(m\)">\(m\)</span>-th roots, and using the Banach spectral-radius formula gives</p>
+<span class="math math-display" data-tex="\[
+\rho_B(b)^2\leq\rho_B(b)\rho_A(b).
+\tag{3.7}
+\]">\[
+\rho_B(b)^2\leq\rho_B(b)\rho_A(b).
+\tag{3.7}
+\]</span>
+<p>Indeed the constant <span class="math" data-tex="\(2C\)">\(2C\)</span> has <span class="math" data-tex="\(m\)">\(m\)</span>-th root tending to one, and <span class="math" data-tex="\(N(b^{2m})^{1/m}\)">\(N(b^{2m})^{1/m}\)</span> tends to <span class="math" data-tex="\(\rho_B(b)^2\)">\(\rho_B(b)^2\)</span>. If <span class="math" data-tex="\(\rho_B(b)&gt;0\)">\(\rho_B(b)&gt;0\)</span>, divide by it; if it is zero the resulting inequality already holds. The reverse inequality follows from <span class="math" data-tex="\(\|b^m\|_A\leq N(b^m)\)">\(\|b^m\|_A\leq N(b^m)\)</span>. Thus the two radii agree for every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>.</p>
+<p>Equality of radii alone is not used as an assertion of equality of spectra. Let <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> be invertible in <span class="math" data-tex="\(A\)">\(A\)</span>. Positivity and invertibility of <span class="math" data-tex="\(b^*b\)">\(b^*b\)</span> give, for <span class="math" data-tex="\(\lambda&gt;\|b^*b\|_A\)">\(\lambda&gt;\|b^*b\|_A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h=1-\lambda^{-1}b^*b,\\
+\rho_B(h)=\rho_A(h)&lt;1.
+\end{gathered}
+\tag{3.8}
+\]">\[
+\begin{gathered}
+h=1-\lambda^{-1}b^*b,\\
+\rho_B(h)=\rho_A(h)&lt;1.
+\end{gathered}
+\tag{3.8}
+\]</span>
+<p>Choose <span class="math" data-tex="\(q\)">\(q\)</span> strictly between this radius and one. The spectral-radius formula gives <span class="math" data-tex="\(N(h^k)\leq q^k\)">\(N(h^k)\leq q^k\)</span> for all sufficiently large <span class="math" data-tex="\(k\)">\(k\)</span>. Consequently <span class="math" data-tex="\(\lambda^{-1}\sum_{k\geq0}h^k\)">\(\lambda^{-1}\sum_{k\geq0}h^k\)</span> converges in the complete algebra <span class="math" data-tex="\(B\)">\(B\)</span> and, by multiplication of its partial sums, is the inverse of <span class="math" data-tex="\(b^*b\)">\(b^*b\)</span>. It gives a left inverse for <span class="math" data-tex="\(b\)">\(b\)</span>. The same argument for <span class="math" data-tex="\(bb^*\)">\(bb^*\)</span> gives a right inverse. A left and a right inverse coincide, since <span class="math" data-tex="\(l=l(br)=(lb)r=r\)">\(l=l(br)=(lb)r=r\)</span>; hence <span class="math" data-tex="\(b^{-1}\in B\)">\(b^{-1}\in B\)</span>.</p>
+<p>For an algebra without a common identity, pass to the forced unitizations. Put <span class="math" data-tex="\(N^+(b+\mu1)=N(b)+|\mu|\)">\(N^+(b+\mu1)=N(b)+|\mu|\)</span>. This is a complete submultiplicative norm dominating the ambient unitized C*-norm. The scalar quotient gives <span class="math" data-tex="\(|\mu|\leq\|b+\mu1\|\)">\(|\mu|\leq\|b+\mu1\|\)</span>, and therefore <span class="math" data-tex="\(\|b\|\leq2\|b+\mu1\|\)">\(\|b\|\leq2\|b+\mu1\|\)</span>. Expanding the product, applying (3.6) to its <span class="math" data-tex="\(bc\)">\(bc\)</span> term, and bounding the other three terms yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N^+(xy)&amp;\leq(2C+2)\bigl(\|x\|N^+(y)\\
+&amp;\quad+N^+(x)\|y\|\bigr).
+\end{aligned}
+\tag{3.9}
+\]">\[
+\begin{aligned}
+N^+(xy)&amp;\leq(2C+2)\bigl(\|x\|N^+(y)\\
+&amp;\quad+N^+(x)\|y\|\bigr).
+\end{aligned}
+\tag{3.9}
+\]</span>
+<p>This also applies if <span class="math" data-tex="\(B\)">\(B\)</span> was already unital but its identity was not the ambient one. The preceding inverse argument now applies to the unitizations, with no missing scalar normalization.</p>
+<p>For matrices set <span class="math" data-tex="\(N_k(X)=\sum_{i,j}N^+(x_{ij})\)">\(N_k(X)=\sum_{i,j}N^+(x_{ij})\)</span>. This is a complete submultiplicative norm and dominates the ambient matrix norm. Each entry satisfies <span class="math" data-tex="\(\|x_{ij}\|\leq\|X\|\)">\(\|x_{ij}\|\leq\|X\|\)</span>. Summing (3.9) over the matrix product entries gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N_k(XY)&amp;\leq k(2C+2)\\
+&amp;\quad\cdot\bigl(\|X\|N_k(Y)\\
+&amp;\qquad+N_k(X)\|Y\|\bigr).
+\end{aligned}
+\tag{3.10}
+\]">\[
+\begin{aligned}
+N_k(XY)&amp;\leq k(2C+2)\\
+&amp;\quad\cdot\bigl(\|X\|N_k(Y)\\
+&amp;\qquad+N_k(X)\|Y\|\bigr).
+\end{aligned}
+\tag{3.10}
+\]</span>
+<p>The factor <span class="math" data-tex="\(k\)">\(k\)</span> comes from summing over a row or column of the other matrix. Applying the same spectral-radius and positive-product argument proves inverse closure at every matrix level.</p>
+<p>Inversion in each complete Banach matrix algebra is continuous: near an invertible <span class="math" data-tex="\(X\)">\(X\)</span>, the series for <span class="math" data-tex="\((1+X^{-1}H)^{-1}X^{-1}\)">\((1+X^{-1}H)^{-1}X^{-1}\)</span> converges in its Banach norm. On a compact contour outside the common spectrum, the resolvent is therefore continuous in that norm and can be integrated there. Its ambient image is precisely the ambient holomorphic functional calculus. Subtracting its scalar part leaves a matrix over <span class="math" data-tex="\(B\)">\(B\)</span>, so this proves matrix holomorphic stability. Theorem 2.1 supplies the K-isomorphisms. Its finite polygonal paths are continuous also for <span class="math" data-tex="\(N\)">\(N\)</span>, while an <span class="math" data-tex="\(N\)">\(N\)</span>-continuous path is ambient continuous; this proves the final topology assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a closed *-derivation, the graph norm <span class="math" data-tex="\(N(b)=\|b\|+\|\delta(b)\|\)">\(N(b)=\|b\|+\|\delta(b)\|\)</span> satisfies (3.6) with <span class="math" data-tex="\(C=1\)">\(C=1\)</span>, directly from the Leibniz rule and the product norm bound. More generally the same test applies to any complete normed *-subalgebra for which the displayed estimate has been proved. Completeness and that estimate are actual hypotheses; a dense algebra supplied only with the ambient norm acquires neither from density.</p>
+<h2 id="4-smooth-actions-and-regular-spectral-triples">4. Smooth actions and regular spectral triples</h2>
+<p>Let a finite-dimensional Lie group <span class="math" data-tex="\(G\)">\(G\)</span> act on <span class="math" data-tex="\(A\)">\(A\)</span> by automorphisms, continuously in norm on each element. Its smooth algebra <span class="math" data-tex="\(A^\infty\)">\(A^\infty\)</span> consists of the elements <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> whose orbit map is smooth in norm:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal O_a:G\longrightarrow A,\\
+\mathcal O_a(g)=\alpha_g(a).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+\mathcal O_a:G\longrightarrow A,\\
+\mathcal O_a(g)=\alpha_g(a).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p><strong>Theorem 4.1.</strong> <span class="math" data-tex="\(A^\infty\)">\(A^\infty\)</span> is norm dense and holomorphically stable at every matrix level. Its inclusion induces the two K-theory isomorphisms of Theorem 2.1.</p>
+<p><em>Proof.</em> For nonnegative <span class="math" data-tex="\(f\in C_c^\infty(G)\)">\(f\in C_c^\infty(G)\)</span> with Haar integral one, set <span class="math" data-tex="\(a_f=\int f(g)\alpha_g(a)\,dg\)">\(a_f=\int f(g)\alpha_g(a)\,dg\)</span>. Applying <span class="math" data-tex="\(\alpha_h\)">\(\alpha_h\)</span> changes the coefficient to <span class="math" data-tex="\(f(h^{-1}g)\)">\(f(h^{-1}g)\)</span>. All derivatives in <span class="math" data-tex="\(h\)">\(h\)</span>, on a fixed small neighborhood, are supported in one compact set and uniformly bounded there. Differentiation under the norm integral proves <span class="math" data-tex="\(a_f\in A^\infty\)">\(a_f\in A^\infty\)</span>. Concentrating the support at the identity gives <span class="math" data-tex="\(a_f\to a\)">\(a_f\to a\)</span>.</p>
+<p>If a smooth <span class="math" data-tex="\(a\)">\(a\)</span> is ambient invertible, <span class="math" data-tex="\(\alpha_g(a^{-1})=\alpha_g(a)^{-1}\)">\(\alpha_g(a^{-1})=\alpha_g(a)^{-1}\)</span> is smooth. Indeed Banach-algebra inversion is smooth by its local Neumann expansion, with first derivative <span class="math" data-tex="\(h\mapsto-a^{-1}ha^{-1}\)">\(h\mapsto-a^{-1}ha^{-1}\)</span>. For holomorphic <span class="math" data-tex="\(f\)">\(f\)</span>, apply the contour formula to <span class="math" data-tex="\(\alpha_g(a)\)">\(\alpha_g(a)\)</span> on a fixed surrounding cycle. Its resolvents and every derivative in <span class="math" data-tex="\(g\)">\(g\)</span> are uniformly bounded on that cycle locally in <span class="math" data-tex="\(g\)">\(g\)</span>. Differentiating the integral proves that <span class="math" data-tex="\(f(a)\)">\(f(a)\)</span> is smooth. The entrywise action on matrices proves matrix stability; external unitization treats a nonunital algebra. Theorem 2.1 now applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a basis <span class="math" data-tex="\(X_1,\ldots,X_d\)">\(X_1,\ldots,X_d\)</span> of the Lie algebra, the seminorms</p>
+<span class="math math-display" data-tex="\[
+p_m(a)=\sum_{r=0}^m
+\sum_{i_1,\ldots,i_r}
+\|\delta_{X_{i_1}}\cdots\delta_{X_{i_r}}a\|
+\tag{4.2}
+\]">\[
+p_m(a)=\sum_{r=0}^m
+\sum_{i_1,\ldots,i_r}
+\|\delta_{X_{i_1}}\cdots\delta_{X_{i_r}}a\|
+\tag{4.2}
+\]</span>
+<p>give the usual smooth Fréchet topology. Completeness follows by closedness of the infinitesimal generators and induction on derivative order; convergence of orbit maps and their derivatives in local coordinates then recovers smoothness. The Leibniz rule bounds each product seminorm by a finite sum of products of lower seminorms. The inverse formulas just proved give continuous inversion in this topology. The finer-topology conclusion following Theorem 2.1 therefore applies.</p>
+<p>For the rotation algebra <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span>, generated by unitaries with <span class="math" data-tex="\(VU=e^{2\pi i\theta}UV\)">\(VU=e^{2\pi i\theta}UV\)</span>, the action</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha_{s,t}(U)=e^{is}U,\\
+\alpha_{s,t}(V)=e^{it}V.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+\alpha_{s,t}(U)=e^{is}U,\\
+\alpha_{s,t}(V)=e^{it}V.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>defines <span class="math" data-tex="\(A_\theta^\infty\)">\(A_\theta^\infty\)</span> by (4.1), with <span class="math" data-tex="\(G=\mathbb T^2\)">\(G=\mathbb T^2\)</span>. The relations are preserved, and the inverse action is <span class="math" data-tex="\(\alpha_{-s,-t}\)">\(\alpha_{-s,-t}\)</span>. Continuity holds first on finite words in the generators and then on their norm closure. Theorem 4.1 applies for rational and irrational <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. We need no K-group computation of <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> to conclude that its smooth algebra has the same groups. This is the algebra used in <a href="../NCG-CYCLIC/public/reader/connections-and-curvature.html#1-smooth-elements-retain-projective-modules">Connections and curvature from symmetries of an algebra, §1</a>.</p>
+<p>For a compact smooth manifold <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(C^\infty(M)\subset C(M)\)">\(C^\infty(M)\subset C(M)\)</span> is another example. In a finite coordinate cover, multiply a continuous function by a smooth partition of unity, approximate each compactly supported coordinate function by convolution, and sum; this proves uniform density. For a matrix of smooth functions, pointwise inversion is smooth wherever the determinant is nonzero. The contour formula then preserves smoothness, by differentiating under its compact integral. Thus Theorem 2.1 applies.</p>
+<p>Here is a careful spectral-triple version. Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be selfadjoint on <span class="math" data-tex="\(H\)">\(H\)</span>, and let <span class="math" data-tex="\(\delta(T)=[\Lambda,T]\)">\(\delta(T)=[\Lambda,T]\)</span> on bounded operators preserving <span class="math" data-tex="\(\operatorname{Dom}\Lambda\)">\(\operatorname{Dom}\Lambda\)</span> with bounded commutator. This derivation has the adjoint rule <span class="math" data-tex="\(\delta(T^*)=-\delta(T)^*\)">\(\delta(T^*)=-\delta(T)^*\)</span>. It is closed: if <span class="math" data-tex="\(T_j\to T\)">\(T_j\to T\)</span> and <span class="math" data-tex="\(\delta(T_j)\to C\)">\(\delta(T_j)\to C\)</span>, then for <span class="math" data-tex="\(\xi\in\operatorname{Dom}\Lambda\)">\(\xi\in\operatorname{Dom}\Lambda\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda T_j\xi&amp;=T_j\Lambda\xi+\delta(T_j)\xi\\
+&amp;\longrightarrow\ T\Lambda\xi+C\xi.
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+\Lambda T_j\xi&amp;=T_j\Lambda\xi+\delta(T_j)\xi\\
+&amp;\longrightarrow\ T\Lambda\xi+C\xi.
+\end{aligned}
+\tag{4.4}
+\]</span>
+<p>Closedness of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> proves <span class="math" data-tex="\(T\xi\in\operatorname{Dom}\Lambda\)">\(T\xi\in\operatorname{Dom}\Lambda\)</span> and the desired commutator identity. Taking adjoints in its sesquilinear form proves preservation of the domain by <span class="math" data-tex="\(T^*\)">\(T^*\)</span> and the stated adjoint rule.</p>
+<p>Suppose a unital C*-algebra <span class="math" data-tex="\(A\subset B(H)\)">\(A\subset B(H)\)</span> contains a norm-dense *-algebra <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> lying in every <span class="math" data-tex="\(\operatorname{Dom}\delta^k\)">\(\operatorname{Dom}\delta^k\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\mathcal A_\Lambda=A\cap\bigcap_{k\geq0}\operatorname{Dom}\delta^k
+\tag{4.5}
+\]">\[
+\mathcal A_\Lambda=A\cap\bigcap_{k\geq0}\operatorname{Dom}\delta^k
+\tag{4.5}
+\]</span>
+<p>is a dense Fréchet *-algebra with seminorms <span class="math" data-tex="\(\sum_{j\leq k}\|\delta^j(a)\|\)">\(\sum_{j\leq k}\|\delta^j(a)\|\)</span>. Completeness follows successively from closedness of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. For <span class="math" data-tex="\(a\)">\(a\)</span> invertible in <span class="math" data-tex="\(A\)">\(A\)</span>, approximate <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> by <span class="math" data-tex="\(b\in\mathcal A_0\)">\(b\in\mathcal A_0\)</span>; the derivative-summable Neumann argument (3.3) puts <span class="math" data-tex="\(b(ab)^{-1}=a^{-1}\)">\(b(ab)^{-1}=a^{-1}\)</span> in the first commutator domain. No norm density in all of <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span> is needed. Formula (3.4) and the Leibniz rule then inductively put that inverse in every iterated domain. The same formulas give (3.5) and its higher derivatives. Repeated differentiation of the contour formula, in these complete graph seminorms, proves matrix holomorphic stability.</p>
+<p>For a <strong>regular</strong> spectral triple take <span class="math" data-tex="\(\Lambda=|D|\)">\(\Lambda=|D|\)</span>. The required dense algebra is the represented spectral-triple algebra; regularity places both its elements and their <span class="math" data-tex="\(D\)">\(D\)</span>-commutators in all these domains. These are exactly the hypotheses in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-f1d9b2ae7966">Spectral triples and dimension spectrum, §1</a>. A spectral triple without regularity does not supply this conclusion automatically. Derivatives may take values in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>, rather than in <span class="math" data-tex="\(A\)">\(A\)</span>, which is why the containing-algebra version of Theorem 3.1 matters.</p>
+<h2 id="5-incomplete-ideals-still-admit-matrix-calculus">5. Incomplete ideals still admit matrix calculus</h2>
+<p>Not every useful smooth or local algebra carries the Fréchet topology of Theorem 1.2.</p>
+<p><strong>Proposition 5.1.</strong> Any algebraic two-sided ideal <span class="math" data-tex="\(I\)">\(I\)</span> of a C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> is holomorphically stable in all matrix unitizations.</p>
+<p><em>Proof.</em> Work in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>, in which <span class="math" data-tex="\(I\)">\(I\)</span> is still an ideal. Let <span class="math" data-tex="\(X\in M_n(I^+)\)">\(X\in M_n(I^+)\)</span> have scalar part <span class="math" data-tex="\(C\in M_n(\mathbb C)\)">\(C\in M_n(\mathbb C)\)</span>. The scalar quotient implies <span class="math" data-tex="\(\sigma(C)\subseteq\sigma(X)\)">\(\sigma(C)\subseteq\sigma(X)\)</span>. Let <span class="math" data-tex="\(m_C\)">\(m_C\)</span> be the minimal polynomial of <span class="math" data-tex="\(C\)">\(C\)</span>. Choose a polynomial <span class="math" data-tex="\(r\)">\(r\)</span> having the same derivatives as <span class="math" data-tex="\(f\)">\(f\)</span> at each root of <span class="math" data-tex="\(m_C\)">\(m_C\)</span>, through one less than its multiplicity. Such an <span class="math" data-tex="\(r\)">\(r\)</span> exists by the polynomial Chinese remainder theorem for the pairwise coprime powers of <span class="math" data-tex="\(z-\lambda\)">\(z-\lambda\)</span>.</p>
+<p>The function <span class="math" data-tex="\(g=(f-r)/m_C\)">\(g=(f-r)/m_C\)</span> has removable singularities at these roots and is holomorphic near <span class="math" data-tex="\(\sigma(X)\)">\(\sigma(X)\)</span>. Since <span class="math" data-tex="\(m_C(C)=0\)">\(m_C(C)=0\)</span>, <span class="math" data-tex="\(m_C(X)\in M_n(I)\)">\(m_C(X)\in M_n(I)\)</span>. Moreover <span class="math" data-tex="\(r(X)-r(C)\in M_n(I)\)">\(r(X)-r(C)\in M_n(I)\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(X)-f(C)
+&amp;=r(X)-r(C)\\
+&amp;\quad +m_C(X)g(X)\\
+&amp;\in M_n(I).
+\end{aligned}
+\tag{5.1}
+\]">\[
+\begin{aligned}
+f(X)-f(C)
+&amp;=r(X)-r(C)\\
+&amp;\quad +m_C(X)g(X)\\
+&amp;\in M_n(I).
+\end{aligned}
+\tag{5.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(r(C)=f(C)\)">\(r(C)=f(C)\)</span> by the finite-dimensional holomorphic calculus, and the ideal property permits multiplication by the ambient <span class="math" data-tex="\(g(X)\)">\(g(X)\)</span>. This proves the assertion without completing <span class="math" data-tex="\(I\)">\(I\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a canonical smallest dense ideal to which this proposition applies. Its construction needs only positive functional calculus and the Neumann criterion.</p>
+<p><strong>Theorem 5.2 (the Pedersen ideal).</strong> Let <span class="math" data-tex="\(K(A)\)">\(K(A)\)</span> be the algebraic two-sided ideal generated by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(a-\varepsilon)_+,\\
+a\in A_+,\quad\varepsilon&gt;0.
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+(a-\varepsilon)_+,\\
+a\in A_+,\quad\varepsilon&gt;0.
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>Then <span class="math" data-tex="\(K(A)\)">\(K(A)\)</span> is a dense *-ideal contained in every dense algebraic two-sided ideal of <span class="math" data-tex="\(A\)">\(A\)</span>. In particular it is the unique smallest dense ideal.</p>
+<p><em>Proof.</em> Positive functional calculus puts each generator in <span class="math" data-tex="\(A\)">\(A\)</span>, since the scalar function vanishes at zero. The generators are selfadjoint, so the two-sided ideal they generate is invariant under adjoints. Moreover</p>
+<span class="math math-display" data-tex="\[
+\|a-(a-\varepsilon)_+\|\leq\varepsilon.
+\tag{5.3}
+\]">\[
+\|a-(a-\varepsilon)_+\|\leq\varepsilon.
+\tag{5.3}
+\]</span>
+<p>Thus its closure contains every positive element. A selfadjoint element is the difference of its positive and negative parts, and every element is the sum of a selfadjoint element and <span class="math" data-tex="\(i\)">\(i\)</span> times one. Hence the ideal is dense.</p>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be any dense algebraic two-sided ideal, with no closure or adjoint assumption. Fix <span class="math" data-tex="\(c=(a-\varepsilon)_+\)">\(c=(a-\varepsilon)_+\)</span>, and set <span class="math" data-tex="\(e=h(a)\)">\(e=h(a)\)</span>, where <span class="math" data-tex="\(h(t)=\min(1,t/\varepsilon)\)">\(h(t)=\min(1,t/\varepsilon)\)</span> for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. Then <span class="math" data-tex="\(e\in A\)">\(e\in A\)</span> and <span class="math" data-tex="\(ce=c\)">\(ce=c\)</span>. Choose <span class="math" data-tex="\(y\in I\)">\(y\in I\)</span> with <span class="math" data-tex="\(\|y-e\|&lt;1\)">\(\|y-e\|&lt;1\)</span>. In the external unitization,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x=1-e+y=1+(y-e),\\
+cx=cy,\qquad c=cyx^{-1}.
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+x=1-e+y=1+(y-e),\\
+cx=cy,\qquad c=cyx^{-1}.
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>The Neumann criterion supplies <span class="math" data-tex="\(x^{-1}\)">\(x^{-1}\)</span>. Since an ideal of <span class="math" data-tex="\(A\)">\(A\)</span> is also an ideal under multiplication by <span class="math" data-tex="\(A^+\)">\(A^+\)</span>, the last expression belongs to <span class="math" data-tex="\(I\)">\(I\)</span>. Every generator of <span class="math" data-tex="\(K(A)\)">\(K(A)\)</span> therefore lies in <span class="math" data-tex="\(I\)">\(I\)</span>, proving minimality and uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the Pedersen ideal described in Blackadar, Example 3.1.2(a), with the reference there to Pedersen, §5.6. Its existence, density and defining minimality have now been proved, and Proposition 5.1 supplies its matrix calculus. Theorem 2.1 therefore identifies its K-theory with that of <span class="math" data-tex="\(A\)">\(A\)</span>. Likewise <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> is a dense ideal of <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> for locally compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span>; Exercise 15.5 proves its density and support checks explicitly.</p>
+<h2 id="6-why-density-alone-is-insufficient">6. Why density alone is insufficient</h2>
+<p>Analytic polynomials <span class="math" data-tex="\(\mathbb C[z]\)">\(\mathbb C[z]\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> are <strong>not</strong> norm dense in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. The continuous functional</p>
+<span class="math math-display" data-tex="\[
+\ell(f)=\frac{1}{2\pi}\int_0^{2\pi}
+f(e^{it})e^{it}\,dt
+\tag{6.1}
+\]">\[
+\ell(f)=\frac{1}{2\pi}\int_0^{2\pi}
+f(e^{it})e^{it}\,dt
+\tag{6.1}
+\]</span>
+<p>vanishes on every analytic polynomial but takes value <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>. Also <span class="math" data-tex="\(z\)">\(z\)</span> is ambient invertible but has no inverse in that polynomial algebra. This example illustrates failed inverse closure, but cannot demonstrate failure of a theorem whose density hypothesis it does not satisfy.</p>
+<p>A genuine dense example is <span class="math" data-tex="\(B=\mathbb C[x,y]\subset C(\mathbb T)\)">\(B=\mathbb C[x,y]\subset C(\mathbb T)\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+x(e^{it})&amp;=\cos t,\\
+y(e^{it})&amp;=\sin t\,e^{\cos t}.
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+x(e^{it})&amp;=\cos t,\\
+y(e^{it})&amp;=\sin t\,e^{\cos t}.
+\end{aligned}
+\tag{6.2}
+\]</span>
+<p>Both generators are real, so <span class="math" data-tex="\(B\)">\(B\)</span> is a *-algebra. Polynomials in <span class="math" data-tex="\(x\)">\(x\)</span> approximate <span class="math" data-tex="\(e^{-x}\)">\(e^{-x}\)</span> uniformly by the exponential series. Their products with <span class="math" data-tex="\(y\)">\(y\)</span> therefore approximate <span class="math" data-tex="\(\sin t\)">\(\sin t\)</span>. The closure of <span class="math" data-tex="\(B\)">\(B\)</span> contains <span class="math" data-tex="\(\cos t,\sin t\)">\(\cos t,\sin t\)</span>, hence <span class="math" data-tex="\(z,z^{-1}\)">\(z,z^{-1}\)</span>. Laurent polynomials are uniformly dense by the Fejér approximation proved in <a href="bott-periodicity.html#5-the-polynomial-loop-route-an-outline-with-explicit-reductions">Bott periodicity, §5</a>; thus <span class="math" data-tex="\(B\)">\(B\)</span> is dense.</p>
+<p>These two functions are algebraically independent. Write a hypothetical relation as <span class="math" data-tex="\(P(X,Y)=\sum_jp_j(X)Y^j\)">\(P(X,Y)=\sum_jp_j(X)Y^j\)</span>. On the upper and lower semicircles, <span class="math" data-tex="\(X=u\in(-1,1)\)">\(X=u\in(-1,1)\)</span> and <span class="math" data-tex="\(Y=\pm\sqrt{1-u^2}e^u\)">\(Y=\pm\sqrt{1-u^2}e^u\)</span>. Adding and subtracting the two relations, and dividing the odd relation by <span class="math" data-tex="\(Y\)">\(Y\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_k p_{2k}(u)(1-u^2)^ke^{2ku}&amp;=0,\\
+\sum_k p_{2k+1}(u)(1-u^2)^ke^{2ku}&amp;=0.
+\end{aligned}
+\tag{6.3}
+\]">\[
+\begin{aligned}
+\sum_k p_{2k}(u)(1-u^2)^ke^{2ku}&amp;=0,\\
+\sum_k p_{2k+1}(u)(1-u^2)^ke^{2ku}&amp;=0.
+\end{aligned}
+\tag{6.3}
+\]</span>
+<p>Each left side is an entire exponential polynomial, so vanishing on the interval makes it identically zero. For the largest exponent, divide by its exponential and let real <span class="math" data-tex="\(u\to+\infty\)">\(u\to+\infty\)</span>. Its polynomial coefficient tends to zero because every lower exponential dominates its polynomial factor in decay. A polynomial tending to zero there is zero. Induction proves all coefficients zero, and hence every <span class="math" data-tex="\(p_j=0\)">\(p_j=0\)</span>.</p>
+<p>Thus <span class="math" data-tex="\(B\)">\(B\)</span> is isomorphic to <span class="math" data-tex="\(\mathbb C[X,Y]\)">\(\mathbb C[X,Y]\)</span>. The only units of this polynomial ring are nonzero constants: total degrees add in a product of nonzero polynomials. Every matrix invertible over <span class="math" data-tex="\(B\)">\(B\)</span> consequently has constant determinant. Its circle winding pairing</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{1}{2\pi i}\int_0^{2\pi}
+\operatorname{Tr}(v(t)^{-1}v&#x27;(t))\,dt\\
+&amp;\hspace{1em}=\operatorname{wind}(\det v)
+\end{aligned}
+\tag{6.4}
+\]">\[
+\begin{aligned}
+&amp;\frac{1}{2\pi i}\int_0^{2\pi}
+\operatorname{Tr}(v(t)^{-1}v&#x27;(t))\,dt\\
+&amp;\hspace{1em}=\operatorname{wind}(\det v)
+\end{aligned}
+\tag{6.4}
+\]</span>
+<p>is zero, by the determinant derivative formula. This pairing is invariant under ambient stable homotopy by <a href="determinants-of-traces-and-the-pairing-with-k1.html#5-an-invariant-derivation-gives-an-odd-pairing">Determinants of traces and the pairing with K_1, §5</a>. For the scalar <span class="math" data-tex="\(z=e^{it}\)">\(z=e^{it}\)</span> it equals <span class="math" data-tex="\(1\)">\(1\)</span>. Therefore <span class="math" data-tex="\([z]\)">\([z]\)</span> is not in the image of <span class="math" data-tex="\(K_1(B)\to K_1(C(\mathbb T))\)">\(K_1(B)\to K_1(C(\mathbb T))\)</span>, despite norm density and smooth generators.</p>
+<p>In this example <span class="math" data-tex="\(x-2\)">\(x-2\)</span> is ambient invertible but is not a unit of <span class="math" data-tex="\(B\)">\(B\)</span>. The inverse-closure step in the density proof fails precisely.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 15.1.</strong> Prove spectral invariance and holomorphic stability of <span class="math" data-tex="\(C^1[0,1]\subset C[0,1]\)">\(C^1[0,1]\subset C[0,1]\)</span>.</p>
+<p><em>Solution.</em> If <span class="math" data-tex="\(f\)">\(f\)</span> has no zero, compactness gives <span class="math" data-tex="\(\min|f|&gt;0\)">\(\min|f|&gt;0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+(f^{-1})&#x27;=-f^{-2}f&#x27;
+\]">\[
+(f^{-1})&#x27;=-f^{-2}f&#x27;
+\]</span>
+<p>is continuous. Thus its inverse is <span class="math" data-tex="\(C^1\)">\(C^1\)</span>. The norm <span class="math" data-tex="\(\|f\|_\infty+\|f&#x27;\|_\infty\)">\(\|f\|_\infty+\|f&#x27;\|_\infty\)</span> is complete: for graph limits <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, the identity <span class="math" data-tex="\(f_j(t)-f_j(0)=\int_0^tf&#x27;_j(s)\,ds\)">\(f_j(t)-f_j(0)=\int_0^tf&#x27;_j(s)\,ds\)</span> passes to the limit and gives <span class="math" data-tex="\(f&#x27;=g\)">\(f&#x27;=g\)</span>. Multiplication satisfies the graph-norm product estimate. If <span class="math" data-tex="\(F\)">\(F\)</span> is holomorphic near the range of <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(F(f)\)">\(F(f)\)</span> has derivative <span class="math" data-tex="\(F&#x27;(f)f&#x27;\)">\(F&#x27;(f)f&#x27;\)</span>, so is <span class="math" data-tex="\(C^1\)">\(C^1\)</span>. For a matrix function the inverse is <span class="math" data-tex="\(C^1\)">\(C^1\)</span> by differentiating the matrix product; the contour formula has a continuous derivative uniformly on its compact cycle. This proves matrix holomorphic stability as well. Polynomials are uniformly dense, so Theorem 2.1 applies.</p>
+<p><strong>Exercise 15.2.</strong> Prove the <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> Schur inverse formula and explain its precise inheritance consequence.</p>
+<p><em>Solution.</em> For <span class="math" data-tex="\(T\)">\(T\)</span> in (1.2) with scalar entries and invertible <span class="math" data-tex="\(a,S\)">\(a,S\)</span>, direct multiplication of (1.3) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(T^{-1})_{11}&amp;=a^{-1}+a^{-1}bS^{-1}ca^{-1},\\
+(T^{-1})_{12}&amp;=-a^{-1}bS^{-1},\\
+(T^{-1})_{21}&amp;=-S^{-1}ca^{-1},\\
+(T^{-1})_{22}&amp;=S^{-1}.
+\end{aligned}
+\tag{7.1}
+\]">\[
+\begin{aligned}
+(T^{-1})_{11}&amp;=a^{-1}+a^{-1}bS^{-1}ca^{-1},\\
+(T^{-1})_{12}&amp;=-a^{-1}bS^{-1},\\
+(T^{-1})_{21}&amp;=-S^{-1}ca^{-1},\\
+(T^{-1})_{22}&amp;=S^{-1}.
+\end{aligned}
+\tag{7.1}
+\]</span>
+<p>If <span class="math" data-tex="\(T\)">\(T\)</span> is near the identity, <span class="math" data-tex="\(a\)">\(a\)</span> is ambient invertible; (1.3) then forces <span class="math" data-tex="\(S\)">\(S\)</span> ambient invertible. Scalar inverse closure puts both inverses in the smaller algebra, so all four entries in (7.1) belong to it. For an arbitrary invertible matrix first replace <span class="math" data-tex="\(T\)">\(T\)</span> by <span class="math" data-tex="\(NM\)">\(NM\)</span> as in Theorem 1.2. This proves matrix inverse closure. With the complete continuous-inverse Fréchet hypotheses, these formulas also give continuous matrix inversion, and the Fréchet contour integral proves matrix holomorphic stability. Without those hypotheses the contour step needs a separate justification or a direct matrix-stability assumption.</p>
+<p><strong>Exercise 15.3.</strong> Prove the inverse and holomorphic-calculus assertions for a closed derivation, including the domain issue.</p>
+<p><em>Solution.</em> Approximate an ambient inverse <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> by <span class="math" data-tex="\(b\)">\(b\)</span> in the domain with <span class="math" data-tex="\(\|1-ab\|&lt;1\)">\(\|1-ab\|&lt;1\)</span>. Formula (3.3) shows convergence of the Neumann series for <span class="math" data-tex="\((ab)^{-1}\)">\((ab)^{-1}\)</span> in graph norm, rather than just ambient norm. Hence <span class="math" data-tex="\(a^{-1}=b(ab)^{-1}\)">\(a^{-1}=b(ab)^{-1}\)</span> is in the domain. Applying the derivation to <span class="math" data-tex="\(aa^{-1}=1\)">\(aa^{-1}=1\)</span> gives (3.4), and substituting <span class="math" data-tex="\(z-a\)">\(z-a\)</span> gives the positive sign in (3.5). The derivative of the resolvent is continuous on the contour by that formula. Completeness of the graph domain therefore permits integration there; its ambient image is <span class="math" data-tex="\(f(a)\)">\(f(a)\)</span>. Closedness entry by entry and the amplified product rule prove the same argument for every matrix. Each operation has been performed in its stated domain.</p>
+<p><strong>Exercise 15.4.</strong> Explain the analytic-polynomial example, give a genuinely dense counterexample, and identify the failed proof step.</p>
+<p><em>Solution.</em> Formula (6.1) separates <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span> from the closure of <span class="math" data-tex="\(\mathbb C[z]\)">\(\mathbb C[z]\)</span>, so the analytic-polynomial example lacks density. Its invertible matrices have nonzero constant polynomial determinant and hence cannot represent the winding-one class <span class="math" data-tex="\([z]\)">\([z]\)</span>. For the actual dense example use (6.2). Approximation of <span class="math" data-tex="\(e^{-x}\)">\(e^{-x}\)</span> gives <span class="math" data-tex="\(\sin t\)">\(\sin t\)</span>, then Laurent density gives all of <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. The even and odd decomposition (6.3), followed by the entire-function identity and largest-exponent argument, proves <span class="math" data-tex="\(B\cong\mathbb C[X,Y]\)">\(B\cong\mathbb C[X,Y]\)</span>. Its matrix determinants are constant units, so (6.4) vanishes for every class in the image, whereas it is one on <span class="math" data-tex="\(z\)">\(z\)</span>. Norm approximation can make a matrix ambient invertible without making it invertible over <span class="math" data-tex="\(B\)">\(B\)</span>. This invalidates (2.5)'s transfer of the inverse and is exactly the missing stability property.</p>
+<p><strong>Exercise 15.5.</strong> For locally compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span>, verify density and matrix holomorphic stability of <span class="math" data-tex="\(C_c(X)\subset C_0(X)\)">\(C_c(X)\subset C_0(X)\)</span>, including scalar parts.</p>
+<p><em>Solution.</em> Given <span class="math" data-tex="\(f\in C_0(X)\)">\(f\in C_0(X)\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the set where <span class="math" data-tex="\(|f|\geq\varepsilon\)">\(|f|\geq\varepsilon\)</span> is compact. A compactly supported continuous cutoff <span class="math" data-tex="\(0\leq h\leq1\)">\(0\leq h\leq1\)</span>, equal to one on this set, exists by the compact-cutoff construction in <a href="topological-k-theory-of-spaces-pairs-and-vector-bundles.html#1-compact-supports-and-the-exact-sequence-of-a-pair">Topological K-theory, §1</a>. Then <span class="math" data-tex="\(hf\in C_c(X)\)">\(hf\in C_c(X)\)</span> and <span class="math" data-tex="\(\|f-hf\|\leq\varepsilon\)">\(\|f-hf\|\leq\varepsilon\)</span>.</p>
+<p>For <span class="math" data-tex="\(F=C+G\in M_n(C_c(X)^+)\)">\(F=C+G\in M_n(C_c(X)^+)\)</span>, the support of all entries of <span class="math" data-tex="\(G\)">\(G\)</span> lies in one compact set <span class="math" data-tex="\(K\)">\(K\)</span>. Outside <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(F(x)=C\)">\(F(x)=C\)</span>, so <span class="math" data-tex="\(f(F(x))-f(C)=0\)">\(f(F(x))-f(C)=0\)</span>. The surrounding-cycle formula makes this matrix function continuous everywhere: the resolvents are continuous and uniformly bounded on the cycle. Thus <span class="math" data-tex="\(f(F)-f(C)\)">\(f(F)-f(C)\)</span> has compact support and belongs to <span class="math" data-tex="\(M_n(C_c(X))\)">\(M_n(C_c(X))\)</span>. Its scalar part is exactly <span class="math" data-tex="\(f(C)\)">\(f(C)\)</span>, as required. Theorem 2.1 gives both K-isomorphisms, with external-unitization kernels retained.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The ambient contour calculus and spectral mapping are imported from the foundation lesson, §6, at the precise locators given above. Stable idempotent equivalence, external-unitization K-theory, invertible homotopy, Fejér approximation and the circle winding pairing are imported from Lessons 1, 3, 4, 6, 10 and 14 at the stated sections. The two K-isomorphisms, all higher norm homotopy groups of invertibles, and the existence, density and minimality of the Pedersen ideal are proved here. No irrational-rotation K-group computation, local index formula or assertion of automatic spectral-triple regularity is used.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, 1998, complete §3.1, especially Definition 3.1.1 and Examples 3.1.2, and §4.5, especially Proposition 4.5.1. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</p>
+</li>
+<li>
+<p>A. Connes, <em>Noncommutative Geometry</em>, 1994, <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">III, Appendix C, Definitions and Propositions 1–3, pp. 291–292</a>. We distinguish the matrix-calculus integration hypothesis from matrix inverse closure.</p>
+</li>
+<li>
+<p>L. B. Schweitzer, <a href="https://arxiv.org/abs/funct-an/9211005"><em>A Short Proof that <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> is local if <span class="math" data-tex="\(A\)">\(A\)</span> is local and Fréchet</em></a>, <em>International Journal of Mathematics</em> 3 (1992), 581–589, §§1–2, especially Lemma 1.2, Theorem 2.1, Corollary 2.3 and Remark 2.4.</p>
+</li>
+<li>
+<p>J. Roe, <em>Lectures on K-Theory and Operator Algebras</em>, Math 582, Spring 2017, Corollary 14.7 and its proof, pp. 66–67. <a href="https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/1/4020/files/2017/12/KTheoryNotes-1uvuwyz.pdf#page=66">Freely readable author notes</a>. Proposition 3.2 supplies the complete norm criterion, including unitizations, matrix estimates and contour integration. No source expression is adapted.</p>
+</li>
+</ul>
+<p>[Connes1994, stable topology] A. Connes, <em>Noncommutative Geometry</em>, III, complete AppendixC, pp.291–292, especially Proposition3(b). <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">Freely readable author edition</a>. Theorem2.3 gives a full independent proof for the explicitly defined final topology of spaces, including compact-stage reduction, stage topology, relative finite approximation and comparison with the norm union. It does not assume that an unspecified categorical group-limit has this topology or that scalar contour integrals in an incomplete algebra automatically stay in that algebra.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="determinants-of-traces-and-the-pairing-with-k1.html">← Determinants of traces and the pairing with K_1</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="inductive-limits-and-the-k-theory-of-af-and-at-algebras.html">Inductive limits and the K-theory of AF and AT algebras →</a></span></nav>
+<p class="small source-link"><a href="src/KT-OPK-15.md">Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer"><p>This course’s original exposition and solutions use CC0 1.0. Human mathematical sources are credited in each lesson. See <a href="sources.html">sources, authorship and component terms</a>.</p><p><a href="../../index.html">Open Mathematics Courses</a> · <a href="preparation.html">Preparation</a></p></footer>
+</body>
+</html>

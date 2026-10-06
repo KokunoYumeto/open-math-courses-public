@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weights and the Hilbert spaces of multiplication · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-WH.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 25 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="weights-and-the-hilbert-spaces-of-multiplication">Weights and the Hilbert spaces of multiplication</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A faithful normal semifinite weight determines a Hilbert space, but the finite elements must also remember multiplication and adjoints. Conversely, a Hilbert algebra already contains enough information to measure positive operators: a positive operator has finite weight precisely when its square root is multiplication by a vector. We prove both directions, including the exact domains and the completion required on the algebra side.</p>
+<p>The argument proceeds through bounded multiplication vectors, polar factorization and weak compactness, with the free sources and exact preceding proofs specified below. It does not use the modular fundamental theorem, identify an algebra with its modular conjugate, or assume a faithful state. The predual-valued completely positive maps are established separately in WH-17 after the weight construction.</p>
+<p>The principal free comparison is François Combes, <a href="https://www.numdam.org/item/CM_1971__23_1_49_0.pdf"><em>Poids associé à une algèbre hilbertienne à gauche</em> (1971)</a>, Lemmas 2.2–2.4 and Theorems 2.11 and 2.13. The complete proofs of the two theorems inform this comparison. Their earlier bounded-vector and dominated-functional inputs are supplied here by HA, RD, WG, NW and OW. Combes's modular covariance and maximal modular algebra lemmas already use modular theory and are not inputs to this construction. Modular invariance is proved later in <a href="OA-MOD-MF.html#oa-mod-mf-06">MF06</a>. Theorem 2.13's hypothesis that a weight is the supremum of its dominated normal positive functionals is supplied by <a href="OA-MOD-NW.html#oa-mod-nw-11">NW11</a>; it is retained in the fullness argument.</p>
+<p>A second free comparison is Brent Nelson, <a href="https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf"><em>Tomita–Takesaki Theory</em>, pages 32–36, Lemmas 4.1–4.4 and Theorems 4.5–4.7</a>. WH05–07 prove additivity and normality directly, before the variational formula; this avoids the unproved directedness assertion in the notes' Lemma 4.4. WH10 supplies the totality argument needed for closability, and WH11 proves finite weight before applying the GNS map to the recovered element. WH17 proves the completely positive maps in full, with each open-ball image taken in its map's actual domain, correcting the interchanged subscripts in Lemma 4.2.</p>
+<h2 id="interfaces-and-analytic-prerequisites"><span id="oa-mod-wh-01"></span><span id="OA-MOD-WH-01"></span>Interfaces and analytic prerequisites</h2>
+<p>All Hilbert spaces and index sets are arbitrary. Inner products are linear in the first variable. A von Neumann algebra is concrete and unital; the zero algebra is allowed. A normal weight preserves bounded increasing positive suprema, and semifiniteness means ultraweak density of its finite definition algebra, as in WG-002.</p>
+<p>The proof uses the following preceding programme results. Each link leads to a written proof, not to a replacement citation.</p>
+<ul>
+<li><a href="OA-MOD-WG.html#oa-mod-wg-003">WG003–010</a> prove the finite ideals and their positive cone, the GNS construction, finite positive contraction nets, density of the finite-star domain, and faithfulness and normality of the representation.</li>
+<li><a href="OA-MOD-NW.html#oa-mod-nw-11">NW11</a> recovers a normal weight from dominated normal positive functionals. <a href="OA-MOD-OW.html#oa-mod-ow-02">OW02–03</a> construct their exact implementing vectors for a normal semifinite weight.</li>
+<li><a href="OA-MOD-HA.html#oa-mod-ha-05">HA05–08</a> and <a href="OA-MOD-RD.html#oa-mod-rd-02">RD02–07</a> prove bounded multiplication, right-algebra graph density, commutant generation, product cores and the adjoint intersection of the multiplication ideal. <a href="OA-MOD-FL.html#oa-mod-fl-01">FL01–04</a> give the opposite-algebra construction and full completion used in WH03–04.</li>
+<li><a href="OA-MOD-BK.html#oa-mod-bk-01">BK01–07</a> prove the continuous calculus, polynomial approximation, bicommutant theorem, operator topologies, monotone convergence, inverse order, supports and rectangular polar decomposition. <a href="OA-MOD-DW.html#oa-mod-dw-02">DW02</a> proves the needed Douglas factorization.</li>
+<li><a href="OA-MOD-CP.html#oa-mod-cp-06">CP06</a> and <a href="OA-MOD-CP.html#oa-mod-cp-11">CP11</a> construct the Banach preduals. <a href="OA-MOD-NP.html#oa-mod-np-04">NP04</a> and <a href="OA-MOD-NP.html#oa-mod-np-06">NP06</a> prove the continuity of normal positive maps and representations. WH02 then proves image closure.</li>
+<li><a href="OA-MOD-AB.html#oa-mod-ab-05">AB05</a> proves Banach–Alaoglu. <span class="unlinked">CV2 and CV3</span> prove weak compactness of Hilbert balls and the full convex Krein–Šmulian theorem for arbitrary Banach spaces.</li>
+</ul>
+<p>Krein–Šmulian is used only in WH02. The direct normality proof in WH07 uses Hilbert weak compactness with subnets. The unbounded spectral and graph arguments used by RD are written in <a href="OA-MOD-SK.html#oa-mod-sk-01">SK01–08</a> and <span class="unlinked">TC03–09</span>; the bounded calculus alone would not supply them.</p>
+<p>We shall use strong continuity of positive square roots on a uniformly bounded positive set. Here is the needed argument. If <span class="math" data-tex="\(0\leq a_i,a\leq C1\)">\(0\leq a_i,a\leq C1\)</span> and <span class="math" data-tex="\(a_i\to a\)">\(a_i\to a\)</span> strongly, fixed powers and therefore fixed polynomials converge strongly, by induction and the uniform operator bounds. Uniform polynomial approximation of <span class="math" data-tex="\(t^{1/2}\)">\(t^{1/2}\)</span> on <span class="math" data-tex="\([0,C]\)">\([0,C]\)</span>, followed by bounded continuous functional calculus, makes the errors in both square roots uniformly small in operator norm. Applying this to each vector proves <span class="math" data-tex="\(a_i^{1/2}\to a^{1/2}\)">\(a_i^{1/2}\to a^{1/2}\)</span> strongly. This works for arbitrary nets.</p>
+<h2 id="the-image-of-a-faithful-normal-representation"><span id="oa-mod-wh-02"></span><span id="OA-MOD-WH-02"></span>The image of a faithful normal representation</h2>
+<p><strong>Lemma.</strong> If <span class="math" data-tex="\(\pi:M\to B(H)\)">\(\pi:M\to B(H)\)</span> is a faithful normal *-representation of a von Neumann algebra, then <span class="math" data-tex="\(\pi(M)\)">\(\pi(M)\)</span> is an ultraweakly closed *-subalgebra with identity <span class="math" data-tex="\(p=\pi(1)\)">\(p=\pi(1)\)</span>. It acts as a von Neumann algebra on <span class="math" data-tex="\(pH\)">\(pH\)</span>, and as zero on <span class="math" data-tex="\((I-p)H\)">\((I-p)H\)</span>. The map <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is an ultraweak and sigma-strong* homeomorphism onto its image, with the inherited corner topologies. When <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is unital, <span class="math" data-tex="\(p=I_H\)">\(p=I_H\)</span>.</p>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is isometric. Contractivity follows from positivity and the C*-identity. To check the reverse inequality without assuming that its image is closed, let <span class="math" data-tex="\(b\in M_+\)">\(b\in M_+\)</span>. If <span class="math" data-tex="\(\|\pi(b)\|&lt;\|b\|\)">\(\|\pi(b)\|&lt;\|b\|\)</span>, choose a continuous function on <span class="math" data-tex="\([0,\|b\|]\)">\([0,\|b\|]\)</span> vanishing on <span class="math" data-tex="\([0,\|\pi(b)\|]\)">\([0,\|\pi(b)\|]\)</span> but nonzero at <span class="math" data-tex="\(\|b\|\)">\(\|b\|\)</span>. Continuous functional calculus gives <span class="math" data-tex="\(f(b)\ne0\)">\(f(b)\ne0\)</span>, since the norm of a positive element belongs to its spectrum, but
+<span class="math" data-tex="\(\pi(f(b))=f(\pi(b))=0\)">\(\pi(f(b))=f(\pi(b))=0\)</span>, contradicting faithfulness. Applying this to <span class="math" data-tex="\(b=x^*x\)">\(b=x^*x\)</span> proves isometry.</p>
+<p>For every <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, the closed ball <span class="math" data-tex="\(rB_M\)">\(rB_M\)</span> is compact for <span class="math" data-tex="\(\sigma(M,M_*)\)">\(\sigma(M,M_*)\)</span>, by <a href="OA-MOD-AB.html#oa-mod-ab-05">AB05</a> and <a href="OA-MOD-CP.html#oa-mod-cp-11">CP06, CP11</a>. Normality makes <span class="math" data-tex="\(\pi\)">\(\pi\)</span> ultraweakly continuous, by NP-04. Its image <span class="math" data-tex="\(\pi(rB_M)\)">\(\pi(rB_M)\)</span> is therefore ultraweakly compact and closed in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>. Isometry gives</p>
+<span class="math math-display" data-tex="\[
+\pi(rB_M)=\pi(M)\cap rB_{B(H)}.
+\tag{WH.1}
+\]">\[
+\pi(rB_M)=\pi(M)\cap rB_{B(H)}.
+\tag{WH.1}
+\]</span>
+<p>The linear subspace <span class="math" data-tex="\(\pi(M)\)">\(\pi(M)\)</span> is convex. Apply <span class="unlinked">CV3</span>, the convex Krein–Šmulian theorem, in the Banach dual <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span> to (WH.1): <span class="math" data-tex="\(\pi(M)\)">\(\pi(M)\)</span> is ultraweakly closed. Multiplicativity gives <span class="math" data-tex="\(\pi(x)=p\pi(x)p\)">\(\pi(x)=p\pi(x)p\)</span>, with identity <span class="math" data-tex="\(p=\pi(1)\)">\(p=\pi(1)\)</span>. Thus the image is a von Neumann algebra on <span class="math" data-tex="\(pH\)">\(pH\)</span>; the inherited ultraweak and sigma-strong* topologies are exactly the corner topologies, since compressing the test vectors by <span class="math" data-tex="\(p\)">\(p\)</span> gives the same seminorms and functionals. In the nonunital case the continuous function used above vanishes at zero, so its functional-calculus identity also holds in this corner.</p>
+<p>Both <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and its inverse are now positive *-isomorphisms between von Neumann algebras. They transport order bounds in both directions, so preserve existing bounded increasing positive suprema. NP-04 and NP-06 give ultraweak and sigma-strong* continuity in both directions. The identity assertion follows by evaluating <span class="math" data-tex="\(\pi(1)\)">\(\pi(1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The weak-star closed-ball argument is essential here. A merely bounded positive normal map can have a nonclosed image, as NP-08 shows.</p>
+<h2 id="completing-the-two-multiplication-domains"><span id="oa-mod-wh-03"></span><span id="OA-MOD-WH-03"></span>Completing the two multiplication domains</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\subseteq H\)">\(\mathcal A\subseteq H\)</span> be any left Hilbert algebra. Retain</p>
+<span class="math math-display" data-tex="\[
+M=L(\mathcal A)&#x27;&#x27;,\qquad S=\overline{\sharp},\qquad F=S^*,
+\]">\[
+M=L(\mathcal A)&#x27;&#x27;,\qquad S=\overline{\sharp},\qquad F=S^*,
+\]</span>
+<p>and the right-bounded space <span class="math" data-tex="\(\mathcal B_r\)">\(\mathcal B_r\)</span>, its operators <span class="math" data-tex="\(R_\eta\)">\(R_\eta\)</span>, and the right algebra</p>
+<span class="math math-display" data-tex="\[
+\mathcal A_r=\mathcal B_r\cap D(F).
+\tag{WH.2}
+\]">\[
+\mathcal A_r=\mathcal B_r\cap D(F).
+\tag{WH.2}
+\]</span>
+<p>By RD-04–05, <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> is a right Hilbert algebra, its closed involution is <span class="math" data-tex="\(F\)">\(F\)</span>, and <span class="math" data-tex="\(R(\mathcal A_r)&#x27;&#x27;=M&#x27;\)">\(R(\mathcal A_r)&#x27;&#x27;=M&#x27;\)</span>.</p>
+<p>Define the <strong>left-bounded space relative to this right algebra</strong> by</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_l=
+\left\{\xi\in H:\ \exists C&lt;\infty\
+\forall\eta\in\mathcal A_r,\ 
+\|R_\eta\xi\|\leq C\|\eta\|\right\}.
+\tag{WH.3}
+\]">\[
+\mathcal B_l=
+\left\{\xi\in H:\ \exists C&lt;\infty\
+\forall\eta\in\mathcal A_r,\ 
+\|R_\eta\xi\|\leq C\|\eta\|\right\}.
+\tag{WH.3}
+\]</span>
+<p>For <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span>, let <span class="math" data-tex="\(\lambda_\xi\)">\(\lambda_\xi\)</span> be the unique bounded operator satisfying</p>
+<span class="math math-display" data-tex="\[
+\lambda_\xi\eta=R_\eta\xi\qquad(\eta\in\mathcal A_r).
+\tag{WH.4}
+\]">\[
+\lambda_\xi\eta=R_\eta\xi\qquad(\eta\in\mathcal A_r).
+\tag{WH.4}
+\]</span>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_l=\{\lambda_\xi:\xi\in\mathcal B_l\},
+\qquad
+\mathcal A_l=\mathcal B_l\cap D(S).
+\tag{WH.5}
+\]">\[
+\mathfrak n_l=\{\lambda_\xi:\xi\in\mathcal B_l\},
+\qquad
+\mathcal A_l=\mathcal B_l\cap D(S).
+\tag{WH.5}
+\]</span>
+<p><strong>Theorem.</strong> The map <span class="math" data-tex="\(\lambda:\mathcal B_l\to M\)">\(\lambda:\mathcal B_l\to M\)</span> is linear and injective, and</p>
+<span class="math math-display" data-tex="\[
+x\xi\in\mathcal B_l,\qquad \lambda_{x\xi}=x\lambda_\xi
+\quad(x\in M,\ \xi\in\mathcal B_l).
+\tag{WH.6}
+\]">\[
+x\xi\in\mathcal B_l,\qquad \lambda_{x\xi}=x\lambda_\xi
+\quad(x\in M,\ \xi\in\mathcal B_l).
+\tag{WH.6}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\mathfrak n_l\)">\(\mathfrak n_l\)</span> is a left ideal in <span class="math" data-tex="\(M\)">\(M\)</span>. Moreover,</p>
+<span class="math math-display" data-tex="\[
+\mathcal A\subseteq\mathcal A_l,\qquad \lambda_a=L_a\quad(a\in\mathcal A).
+\tag{WH.7}
+\]">\[
+\mathcal A\subseteq\mathcal A_l,\qquad \lambda_a=L_a\quad(a\in\mathcal A).
+\tag{WH.7}
+\]</span>
+<p>The space <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> is a left Hilbert algebra with</p>
+<span class="math math-display" data-tex="\[
+\xi\zeta=\lambda_\xi\zeta,\qquad \xi^\sharp=S\xi,\qquad
+\lambda_{S\xi}=\lambda_\xi^*,
+\tag{WH.8}
+\]">\[
+\xi\zeta=\lambda_\xi\zeta,\qquad \xi^\sharp=S\xi,\qquad
+\lambda_{S\xi}=\lambda_\xi^*,
+\tag{WH.8}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\overline{S|_{\mathcal A_l}}=S,\qquad
+\lambda(\mathcal A_l)&#x27;&#x27;=M,\qquad
+\lambda(\mathcal A_l)=\mathfrak n_l\cap\mathfrak n_l^*.
+\tag{WH.9}
+\]">\[
+\overline{S|_{\mathcal A_l}}=S,\qquad
+\lambda(\mathcal A_l)&#x27;&#x27;=M,\qquad
+\lambda(\mathcal A_l)=\mathfrak n_l\cap\mathfrak n_l^*.
+\tag{WH.9}
+\]</span>
+<p><strong>Proof.</strong> The opposite-algebra axioms and the two dualizations are proved in <a href="OA-MOD-FL.html#oa-mod-fl-01">FL01–03</a>. Apply HA and RD to the opposite algebra of <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>, whose product is <span class="math" data-tex="\(\eta\circ\zeta=\zeta\eta\)">\(\eta\circ\zeta=\zeta\eta\)</span>. Its left multiplication is <span class="math" data-tex="\(R_\eta\)">\(R_\eta\)</span>, its generated algebra is <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, its closed involution is <span class="math" data-tex="\(F\)">\(F\)</span>, and the adjoint involution is <span class="math" data-tex="\(F^*=S\)">\(F^*=S\)</span>. The right-bounded-vector construction in that application is exactly (WH.3–4): the test operator for <span class="math" data-tex="\(\xi\)">\(\xi\)</span> sends <span class="math" data-tex="\(\eta\)">\(\eta\)</span> to <span class="math" data-tex="\(R_\eta\xi\)">\(R_\eta\xi\)</span>. HA-05 therefore proves linearity, injectivity, membership in <span class="math" data-tex="\((M&#x27;)&#x27;=M\)">\((M&#x27;)&#x27;=M\)</span>, and (WH.6).</p>
+<p>For <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span> and <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>,
+<span class="math" data-tex="\(R_\eta a=L_a\eta\)">\(R_\eta a=L_a\eta\)</span>, so <span class="math" data-tex="\(a\in\mathcal B_l\)">\(a\in\mathcal B_l\)</span> and <span class="math" data-tex="\(\lambda_a=L_a\)">\(\lambda_a=L_a\)</span>. Also <span class="math" data-tex="\(a\in D(S)\)">\(a\in D(S)\)</span>, proving (WH.7).</p>
+<p>The right algebra in the application to <span class="math" data-tex="\(\mathcal A_r^{\mathrm{op}}\)">\(\mathcal A_r^{\mathrm{op}}\)</span> has product <span class="math" data-tex="\(\xi\circ\zeta=\lambda_\zeta\xi\)">\(\xi\circ\zeta=\lambda_\zeta\xi\)</span>. Taking its opposite makes the product <span class="math" data-tex="\(\xi\zeta=\lambda_\xi\zeta\)">\(\xi\zeta=\lambda_\xi\zeta\)</span>, as asserted. HA-08 and RD-04 give the Hilbert algebra axioms and closed involution <span class="math" data-tex="\(S\)">\(S\)</span>. RD-05 gives the generated algebra <span class="math" data-tex="\((M&#x27;)&#x27;=M\)">\((M&#x27;)&#x27;=M\)</span>. RD-07 gives precisely the ideal intersection in (WH.9). These are applications to a fully established right Hilbert algebra, not an assumption that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> was already full. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="mixed-bounded-vectors-and-fullness"><span id="oa-mod-wh-04"></span><span id="OA-MOD-WH-04"></span>Mixed bounded vectors and fullness</h2>
+<p><strong>Mixed-product lemma.</strong> For every <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span> and every <span class="math" data-tex="\(\eta\in\mathcal B_r\)">\(\eta\in\mathcal B_r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\lambda_\xi\eta=R_\eta\xi.
+\tag{WH.10}
+\]">\[
+\lambda_\xi\eta=R_\eta\xi.
+\tag{WH.10}
+\]</span>
+<p>The right algebra obtained by dualizing <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> is exactly <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>, with the same products, involution and right operators.</p>
+<p><strong>Proof.</strong> Choose the positive contractions <span class="math" data-tex="\(e_i\in R(\mathcal A_r)\)">\(e_i\in R(\mathcal A_r)\)</span> of RD-05, with <span class="math" data-tex="\(e_i\to I\)">\(e_i\to I\)</span> strongly. Because each <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is self-adjoint, it has the form <span class="math" data-tex="\(R_{\alpha_i}^*\)">\(R_{\alpha_i}^*\)</span> with <span class="math" data-tex="\(\alpha_i\in\mathcal A_r\)">\(\alpha_i\in\mathcal A_r\)</span>. For <span class="math" data-tex="\(\eta\in\mathcal B_r\)">\(\eta\in\mathcal B_r\)</span>, HA-08 gives</p>
+<span class="math math-display" data-tex="\[
+\eta_i=e_i\eta\in\mathcal A_r,\qquad
+R_{\eta_i}=e_iR_\eta.
+\]">\[
+\eta_i=e_i\eta\in\mathcal A_r,\qquad
+R_{\eta_i}=e_iR_\eta.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\eta_i\to\eta\)">\(\eta_i\to\eta\)</span> in norm and <span class="math" data-tex="\(R_{\eta_i}\to R_\eta\)">\(R_{\eta_i}\to R_\eta\)</span> strongly. For <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span>, (WH.4) gives
+<span class="math" data-tex="\(\lambda_\xi\eta_i=R_{\eta_i}\xi\)">\(\lambda_\xi\eta_i=R_{\eta_i}\xi\)</span>; the limits prove (WH.10).</p>
+<p>The closed involution of <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> is <span class="math" data-tex="\(S\)">\(S\)</span>, so the adjoint-domain condition for its right algebra is membership in <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span>. If <span class="math" data-tex="\(\eta\)">\(\eta\)</span> belongs to that right algebra, restricting its right-boundedness inequality to <span class="math" data-tex="\(\mathcal A\subseteq\mathcal A_l\)">\(\mathcal A\subseteq\mathcal A_l\)</span> puts <span class="math" data-tex="\(\eta\)">\(\eta\)</span> in <span class="math" data-tex="\(\mathcal B_r\)">\(\mathcal B_r\)</span>. Therefore <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>. Conversely, if <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>, then for every <span class="math" data-tex="\(\xi\in\mathcal A_l\)">\(\xi\in\mathcal A_l\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\lambda_\xi\eta\|=\|R_\eta\xi\|
+\leq\|R_\eta\|\|\xi\|.
+\]">\[
+\|\lambda_\xi\eta\|=\|R_\eta\xi\|
+\leq\|R_\eta\|\|\xi\|.
+\]</span>
+<p>Hence it is right bounded for <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span>; it is already in <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span>, and its right operator is <span class="math" data-tex="\(R_\eta\)">\(R_\eta\)</span>. The involution and products consequently agree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We call a left Hilbert algebra <strong>full</strong> when it equals the left algebra obtained by this two-step dualization. Since the right algebra of <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> is <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>, its next left dual is again <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span>. Thus <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> is full. The original <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a graph core in this completion, because both closed involutions are <span class="math" data-tex="\(S\)">\(S\)</span>; equality need not hold.</p>
+<h2 id="measuring-square-roots-by-vectors"><span id="oa-mod-wh-05"></span><span id="OA-MOD-WH-05"></span>Measuring square roots by vectors</h2>
+<p>Keep an arbitrary <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and the completed multiplication spaces of WH-03. For <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\psi(a)=
+\begin{cases}
+\|\xi\|^2,&amp;a^{1/2}=\lambda_\xi\text{ for some }\xi\in\mathcal B_l,\\
++\infty,&amp;a^{1/2}\notin\mathfrak n_l.
+\end{cases}
+\tag{WH.11}
+\]">\[
+\psi(a)=
+\begin{cases}
+\|\xi\|^2,&amp;a^{1/2}=\lambda_\xi\text{ for some }\xi\in\mathcal B_l,\\
++\infty,&amp;a^{1/2}\notin\mathfrak n_l.
+\end{cases}
+\tag{WH.11}
+\]</span>
+<p>Injectivity of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> makes the finite value unambiguous. In the finite case, <span class="math" data-tex="\(\lambda_\xi\)">\(\lambda_\xi\)</span> is self-adjoint, so (WH.9) implies <span class="math" data-tex="\(\xi\in\mathcal A_l\)">\(\xi\in\mathcal A_l\)</span> and <span class="math" data-tex="\(S\xi=\xi\)">\(S\xi=\xi\)</span>.</p>
+<p><strong>Finite-cone theorem.</strong> The set</p>
+<span class="math math-display" data-tex="\[
+P=\{a\in M_+:a^{1/2}\in\mathfrak n_l\}
+\tag{WH.12}
+\]">\[
+P=\{a\in M_+:a^{1/2}\in\mathfrak n_l\}
+\tag{WH.12}
+\]</span>
+<p>is additive, positively homogeneous and hereditary. Its finite value in (WH.11) is additive and positively homogeneous, and is increasing for the positive order.</p>
+<p><strong>Proof of heredity.</strong> If <span class="math" data-tex="\(0\leq b\leq a\in P\)">\(0\leq b\leq a\in P\)</span>, Douglas factorization in <span class="math" data-tex="\(M\)">\(M\)</span> gives <span class="math" data-tex="\(c\in M\)">\(c\in M\)</span>, <span class="math" data-tex="\(\|c\|\leq1\)">\(\|c\|\leq1\)</span>, with <span class="math" data-tex="\(b^{1/2}=ca^{1/2}\)">\(b^{1/2}=ca^{1/2}\)</span>. If <span class="math" data-tex="\(a^{1/2}=\lambda_\xi\)">\(a^{1/2}=\lambda_\xi\)</span>, covariance gives
+<span class="math" data-tex="\(b^{1/2}=\lambda_{c\xi}\)">\(b^{1/2}=\lambda_{c\xi}\)</span>. Thus <span class="math" data-tex="\(b\in P\)">\(b\in P\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\psi(b)=\|c\xi\|^2\leq\|\xi\|^2=\psi(a).
+\tag{WH.13}
+\]">\[
+\psi(b)=\|c\xi\|^2\leq\|\xi\|^2=\psi(a).
+\tag{WH.13}
+\]</span>
+<p><strong>Proof of additivity.</strong> Suppose <span class="math" data-tex="\(a,b\in P\)">\(a,b\in P\)</span>, with square-root vectors <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>. Write <span class="math" data-tex="\(t=(a+b)^{1/2}\)">\(t=(a+b)^{1/2}\)</span>. The polar decomposition of the column operator</p>
+<span class="math math-display" data-tex="\[
+\binom{a^{1/2}}{b^{1/2}}=\binom{u}{v}t
+\tag{WH.14}
+\]">\[
+\binom{a^{1/2}}{b^{1/2}}=\binom{u}{v}t
+\tag{WH.14}
+\]</span>
+<p>lies in the rectangular matrix algebra over <span class="math" data-tex="\(M\)">\(M\)</span>. Its initial projection is <span class="math" data-tex="\(p=s(t)\)">\(p=s(t)\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+u^*u+v^*v=p,\qquad up=u,\quad vp=v,\qquad
+a^{1/2}=ut,\quad b^{1/2}=vt.
+\]">\[
+u^*u+v^*v=p,\qquad up=u,\quad vp=v,\qquad
+a^{1/2}=ut,\quad b^{1/2}=vt.
+\]</span>
+<p>In particular <span class="math" data-tex="\(u^*a^{1/2}+v^*b^{1/2}=pt=t\)">\(u^*a^{1/2}+v^*b^{1/2}=pt=t\)</span>.
+Define <span class="math" data-tex="\(\zeta=u^*\xi+v^*\eta\)">\(\zeta=u^*\xi+v^*\eta\)</span>. Covariance and linearity yield</p>
+<span class="math math-display" data-tex="\[
+\lambda_\zeta=t.
+\]">\[
+\lambda_\zeta=t.
+\]</span>
+<p>Thus <span class="math" data-tex="\(a+b\in P\)">\(a+b\in P\)</span>. Applying <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to <span class="math" data-tex="\(u\zeta\)">\(u\zeta\)</span>, <span class="math" data-tex="\(v\zeta\)">\(v\zeta\)</span> and <span class="math" data-tex="\(p\zeta\)">\(p\zeta\)</span>, then using injectivity, gives</p>
+<span class="math math-display" data-tex="\[
+u\zeta=\xi,\qquad v\zeta=\eta,\qquad p\zeta=\zeta.
+\]">\[
+u\zeta=\xi,\qquad v\zeta=\eta,\qquad p\zeta=\zeta.
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+\psi(a)+\psi(b)=\|u\zeta\|^2+\|v\zeta\|^2
+=\langle p\zeta,\zeta\rangle=\|\zeta\|^2
+=\psi(a+b).
+\tag{WH.15}
+\]">\[
+\psi(a)+\psi(b)=\|u\zeta\|^2+\|v\zeta\|^2
+=\langle p\zeta,\zeta\rangle=\|\zeta\|^2
+=\psi(a+b).
+\tag{WH.15}
+\]</span>
+<p>This norm identity uses the polar support; a generic pair of contractions would not suffice.</p>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, the square-root vector of <span class="math" data-tex="\(ra\)">\(ra\)</span> is <span class="math" data-tex="\(\sqrt r\,\xi\)">\(\sqrt r\,\xi\)</span>. This proves homogeneity and preservation of the finite cone under nonzero rescaling. The zero operator has the unique vector zero. Thus <span class="math" data-tex="\(\psi(0)=0\)">\(\psi(0)=0\)</span>, and homogeneity at zero uses <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If a positive sum belongs to <span class="math" data-tex="\(P\)">\(P\)</span>, heredity puts each summand in <span class="math" data-tex="\(P\)">\(P\)</span>. Therefore, if either summand has infinite value, the sum does also. The finite and infinite cases together prove that (WH.11) is a weight.</p>
+<h2 id="the-exact-finite-ideals-and-gns-norm"><span id="oa-mod-wh-06"></span><span id="OA-MOD-WH-06"></span>The exact finite ideals and GNS norm</h2>
+<p><strong>Theorem.</strong> The weight in (WH.11) satisfies</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_\psi=\mathfrak n_l,\qquad
+\psi(x^*x)=\|\xi\|^2\quad\text{when }x=\lambda_\xi.
+\tag{WH.16}
+\]">\[
+\mathfrak n_\psi=\mathfrak n_l,\qquad
+\psi(x^*x)=\|\xi\|^2\quad\text{when }x=\lambda_\xi.
+\tag{WH.16}
+\]</span>
+<p>Its definition algebra is</p>
+<span class="math math-display" data-tex="\[
+\mathfrak m_\psi=\operatorname{span}\mathfrak n_l^*\mathfrak n_l,
+\qquad
+(\mathfrak m_\psi)_+=P.
+\tag{WH.17}
+\]">\[
+\mathfrak m_\psi=\operatorname{span}\mathfrak n_l^*\mathfrak n_l,
+\qquad
+(\mathfrak m_\psi)_+=P.
+\tag{WH.17}
+\]</span>
+<p>For <span class="math" data-tex="\(x=\lambda_\xi\)">\(x=\lambda_\xi\)</span>, <span class="math" data-tex="\(y=\lambda_\eta\)">\(y=\lambda_\eta\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\widetilde\psi(y^*x)=\langle\xi,\eta\rangle.
+\tag{WH.18}
+\]">\[
+\widetilde\psi(y^*x)=\langle\xi,\eta\rangle.
+\tag{WH.18}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(x=\lambda_\xi\in\mathfrak n_l\)">\(x=\lambda_\xi\in\mathfrak n_l\)</span>, and write its bounded polar decomposition <span class="math" data-tex="\(x=w|x|\)">\(x=w|x|\)</span>. Covariance gives</p>
+<span class="math math-display" data-tex="\[
+|x|=w^*x=\lambda_{w^*\xi}.
+\]">\[
+|x|=w^*x=\lambda_{w^*\xi}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(x^*x\in P\)">\(x^*x\in P\)</span>, so <span class="math" data-tex="\(x\in\mathfrak n_\psi\)">\(x\in\mathfrak n_\psi\)</span>. The final support <span class="math" data-tex="\(q=ww^*\)">\(q=ww^*\)</span> satisfies <span class="math" data-tex="\(qx=x\)">\(qx=x\)</span>, and injectivity gives <span class="math" data-tex="\(q\xi=\xi\)">\(q\xi=\xi\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\psi(x^*x)=\|w^*\xi\|^2=\langle q\xi,\xi\rangle=\|\xi\|^2.
+\]">\[
+\psi(x^*x)=\|w^*\xi\|^2=\langle q\xi,\xi\rangle=\|\xi\|^2.
+\]</span>
+<p>Conversely, if <span class="math" data-tex="\(\psi(x^*x)&lt;\infty\)">\(\psi(x^*x)&lt;\infty\)</span>, then <span class="math" data-tex="\(|x|=\lambda_\zeta\)">\(|x|=\lambda_\zeta\)</span> for some <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. The same polar decomposition gives <span class="math" data-tex="\(x=\lambda_{w\zeta}\)">\(x=\lambda_{w\zeta}\)</span>, proving (WH.16).</p>
+<p>The algebra and positive-cone identities in (WH.17) are now precisely WG-003 applied to the weight already proved in WH-05. Polarization of (WH.16), using linearity of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, gives (WH.18). All evaluations of <span class="math" data-tex="\(\widetilde\psi\)">\(\widetilde\psi\)</span> lie in its finite algebra; no complex extension of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> to arbitrary elements of <span class="math" data-tex="\(M\)">\(M\)</span> is used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These statements give the hereditary-cone and ideal assertions compared with Combes, Lemma 2.10 and Theorem 2.11, and Nelson, Lemma 4.1. Applying the same construction to the opposite right algebra gives the corresponding right-ideal assertions.</p>
+<h2 id="arbitrary-net-normality-and-semifiniteness">Arbitrary-net normality and semifiniteness</h2>
+<p><strong>Theorem.</strong> The weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is faithful, normal and semifinite.</p>
+<p><strong>Proof of normality.</strong> Suppose <span class="math" data-tex="\(0\leq a_i\uparrow a\)">\(0\leq a_i\uparrow a\)</span> is a bounded increasing net in <span class="math" data-tex="\(M\)">\(M\)</span>. Set <span class="math" data-tex="\(L=\sup_i\psi(a_i)\)">\(L=\sup_i\psi(a_i)\)</span>. Monotonicity already gives <span class="math" data-tex="\(L\leq\psi(a)\)">\(L\leq\psi(a)\)</span>; if <span class="math" data-tex="\(L=\infty\)">\(L=\infty\)</span>, equality follows. Assume <span class="math" data-tex="\(L&lt;\infty\)">\(L&lt;\infty\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+a_i^{1/2}=\lambda_{\xi_i},\qquad \|\xi_i\|^2=\psi(a_i)\leq L.
+\]">\[
+a_i^{1/2}=\lambda_{\xi_i},\qquad \|\xi_i\|^2=\psi(a_i)\leq L.
+\]</span>
+<p>The closed Hilbert ball of radius <span class="math" data-tex="\(\sqrt L\)">\(\sqrt L\)</span> is weakly compact. Therefore this net has a subnet <span class="math" data-tex="\(\xi_{i(j)}\)">\(\xi_{i(j)}\)</span> converging weakly to some <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in the same ball. For each <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+a_{i(j)}^{1/2}\eta=R_\eta\xi_{i(j)}.
+\tag{WH.19}
+\]">\[
+a_{i(j)}^{1/2}\eta=R_\eta\xi_{i(j)}.
+\tag{WH.19}
+\]</span>
+<p>The left side converges in norm to <span class="math" data-tex="\(a^{1/2}\eta\)">\(a^{1/2}\eta\)</span>, by WH-01. The right side converges weakly to <span class="math" data-tex="\(R_\eta\xi\)">\(R_\eta\xi\)</span>, since <span class="math" data-tex="\(R_\eta\)">\(R_\eta\)</span> is bounded. Thus</p>
+<span class="math math-display" data-tex="\[
+R_\eta\xi=a^{1/2}\eta\qquad(\eta\in\mathcal A_r).
+\]">\[
+R_\eta\xi=a^{1/2}\eta\qquad(\eta\in\mathcal A_r).
+\]</span>
+<p>This is the boundedness criterion (WH.3), with constant <span class="math" data-tex="\(\|a^{1/2}\|\)">\(\|a^{1/2}\|\)</span>. Hence <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span>, <span class="math" data-tex="\(\lambda_\xi=a^{1/2}\)">\(\lambda_\xi=a^{1/2}\)</span>, and
+<span class="math" data-tex="\(\psi(a)=\|\xi\|^2\leq L\)">\(\psi(a)=\|\xi\|^2\leq L\)</span>. Combining with the opposite inequality proves normality. Compactness was used for the actual arbitrary net; no separability or countable exhaustion was inserted.</p>
+<p><strong>Proof of faithfulness.</strong> If <span class="math" data-tex="\(\psi(a)=0\)">\(\psi(a)=0\)</span>, its square-root vector is zero, so <span class="math" data-tex="\(a^{1/2}=\lambda_0=0\)">\(a^{1/2}=\lambda_0=0\)</span>. Thus <span class="math" data-tex="\(a=0\)">\(a=0\)</span>.</p>
+<p><strong>Proof of semifiniteness.</strong> Let <span class="math" data-tex="\(\mathcal C=L(\mathcal A)\)">\(\mathcal C=L(\mathcal A)\)</span>. It is a nondegenerate *-algebra by HA-02, and lies in <span class="math" data-tex="\(\mathfrak n_\psi\)">\(\mathfrak n_\psi\)</span> by WH-03 and WH-06. For a finite subset <span class="math" data-tex="\(E\subseteq\mathcal C\)">\(E\subseteq\mathcal C\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+b_E=\sum_{r\in E}r^*r,\qquad
+c_{E,\varepsilon}=b_E(b_E+\varepsilon I)^{-1}.
+\tag{WH.20}
+\]">\[
+b_E=\sum_{r\in E}r^*r,\qquad
+c_{E,\varepsilon}=b_E(b_E+\varepsilon I)^{-1}.
+\tag{WH.20}
+\]</span>
+<p>Finite additivity makes <span class="math" data-tex="\(\psi(b_E)&lt;\infty\)">\(\psi(b_E)&lt;\infty\)</span>. Since
+<span class="math" data-tex="\(0\leq c_{E,\varepsilon}\leq\varepsilon^{-1}b_E\)">\(0\leq c_{E,\varepsilon}\leq\varepsilon^{-1}b_E\)</span>, these are finite-weight positive contractions. Order the pairs by enlarging <span class="math" data-tex="\(E\)">\(E\)</span> and decreasing <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Inverse order proves that <span class="math" data-tex="\(c_{E,\varepsilon}\)">\(c_{E,\varepsilon}\)</span> increases.</p>
+<p>For fixed <span class="math" data-tex="\(E\)">\(E\)</span>, its limit as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> is <span class="math" data-tex="\(s(b_E)\)">\(s(b_E)\)</span>. The common kernel of the <span class="math" data-tex="\(b_E\)">\(b_E\)</span>'s is the common kernel of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, which is zero by nondegeneracy and *-closure. Their support ranges therefore span <span class="math" data-tex="\(H\)">\(H\)</span>. The strong supremum <span class="math" data-tex="\(c\leq I\)">\(c\leq I\)</span> of the contraction net dominates every <span class="math" data-tex="\(s(b_E)\)">\(s(b_E)\)</span>, so it acts as the identity on those ranges and hence equals <span class="math" data-tex="\(I\)">\(I\)</span>. We have obtained an increasing finite positive contraction net with supremum <span class="math" data-tex="\(I\)">\(I\)</span>. WG-008 proves semifiniteness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Normality was proved before invoking any normal-weight characterization for <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. In particular, the proof does not assume the source's predual-valued map or supremum formula in order to prove that <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a weight.</p>
+<h2 id="recovering-the-representation-and-the-full-algebra"><span id="oa-mod-wh-08"></span><span id="OA-MOD-WH-08"></span>Recovering the representation and the full algebra</h2>
+<p>Let <span class="math" data-tex="\((H_\psi,\pi_\psi,\Lambda_\psi)\)">\((H_\psi,\pi_\psi,\Lambda_\psi)\)</span> be the weight's GNS triple. Define on its dense range</p>
+<span class="math math-display" data-tex="\[
+U\Lambda_\psi(\lambda_\xi)=\xi\qquad(\xi\in\mathcal B_l).
+\tag{WH.21}
+\]">\[
+U\Lambda_\psi(\lambda_\xi)=\xi\qquad(\xi\in\mathcal B_l).
+\tag{WH.21}
+\]</span>
+<p><strong>Theorem.</strong> The map <span class="math" data-tex="\(U\)">\(U\)</span> extends uniquely to a unitary <span class="math" data-tex="\(H_\psi\to H\)">\(H_\psi\to H\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+U\pi_\psi(x)U^*=x\quad(x\in M).
+\tag{WH.22}
+\]">\[
+U\pi_\psi(x)U^*=x\quad(x\in M).
+\tag{WH.22}
+\]</span>
+<p>It identifies the finite-star algebra exactly:</p>
+<span class="math math-display" data-tex="\[
+U\Lambda_\psi(\mathfrak n_\psi\cap\mathfrak n_\psi^*)
+=\mathcal A_l.
+\tag{WH.23}
+\]">\[
+U\Lambda_\psi(\mathfrak n_\psi\cap\mathfrak n_\psi^*)
+=\mathcal A_l.
+\tag{WH.23}
+\]</span>
+<p>Under this identification its product is <span class="math" data-tex="\(\lambda_\xi\eta\)">\(\lambda_\xi\eta\)</span>, its involution is <span class="math" data-tex="\(S\)">\(S\)</span>, and its closed involution has domain <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span>.</p>
+<p><strong>Proof.</strong> Equation (WH.18) makes (WH.21) a well-defined isometry. Its range is <span class="math" data-tex="\(\mathcal B_l\)">\(\mathcal B_l\)</span>, which contains the dense space <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Thus it extends to a surjective isometry. For <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, covariance gives</p>
+<span class="math math-display" data-tex="\[
+U\pi_\psi(x)\Lambda_\psi(\lambda_\xi)
+=U\Lambda_\psi(x\lambda_\xi)=x\xi,
+\]">\[
+U\pi_\psi(x)\Lambda_\psi(\lambda_\xi)
+=U\Lambda_\psi(x\lambda_\xi)=x\xi,
+\]</span>
+<p>proving (WH.22) by density.</p>
+<p>By WH-06 and (WH.9),
+<span class="math" data-tex="\(\mathfrak n_\psi\cap\mathfrak n_\psi^*=\lambda(\mathcal A_l)\)">\(\mathfrak n_\psi\cap\mathfrak n_\psi^*=\lambda(\mathcal A_l)\)</span>.
+This proves (WH.23). If <span class="math" data-tex="\(\xi,\eta\in\mathcal A_l\)">\(\xi,\eta\in\mathcal A_l\)</span>, then
+<span class="math" data-tex="\(\lambda_\xi\lambda_\eta=\lambda_{\lambda_\xi\eta}\)">\(\lambda_\xi\lambda_\eta=\lambda_{\lambda_\xi\eta}\)</span>, by covariance; hence the product transports as stated. The equality
+<span class="math" data-tex="\(\lambda_\xi^*=\lambda_{S\xi}\)">\(\lambda_\xi^*=\lambda_{S\xi}\)</span> transports the involution. Its closure is <span class="math" data-tex="\(S\)">\(S\)</span>, by WH-03. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction recovers the full completion <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span>. It recovers the original algebra exactly when that algebra was full. A proper algebra core and its full completion can therefore determine the same weight.</p>
+<h2 id="from-a-faithful-normal-semifinite-weight-to-an-algebra"><span id="oa-mod-wh-09"></span><span id="OA-MOD-WH-09"></span>From a faithful normal semifinite weight to an algebra</h2>
+<p>Now start with a faithful normal semifinite weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>. Write its GNS triple as <span class="math" data-tex="\((H,\pi,\Lambda)\)">\((H,\pi,\Lambda)\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+\mathfrak a_\varphi=\mathfrak n_\varphi\cap\mathfrak n_\varphi^*,
+\qquad \mathcal A_\varphi=\Lambda(\mathfrak a_\varphi).
+\tag{WH.24}
+\]">\[
+\mathfrak a_\varphi=\mathfrak n_\varphi\cap\mathfrak n_\varphi^*,
+\qquad \mathcal A_\varphi=\Lambda(\mathfrak a_\varphi).
+\tag{WH.24}
+\]</span>
+<p>Faithfulness makes <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> injective. Consequently</p>
+<span class="math math-display" data-tex="\[
+\Lambda(x)\Lambda(y)=\Lambda(xy),\qquad
+\Lambda(x)^\sharp=\Lambda(x^*)
+\quad(x,y\in\mathfrak a_\varphi)
+\tag{WH.25}
+\]">\[
+\Lambda(x)\Lambda(y)=\Lambda(xy),\qquad
+\Lambda(x)^\sharp=\Lambda(x^*)
+\quad(x,y\in\mathfrak a_\varphi)
+\tag{WH.25}
+\]</span>
+<p>are well-defined algebra operations. The domain <span class="math" data-tex="\(\mathfrak a_\varphi\)">\(\mathfrak a_\varphi\)</span> is a *-algebra: it is closed under linear combinations and adjoints, and <span class="math" data-tex="\(xy\in\mathfrak n_\varphi\)">\(xy\in\mathfrak n_\varphi\)</span>, <span class="math" data-tex="\((xy)^*=y^*x^*\in\mathfrak n_\varphi\)">\((xy)^*=y^*x^*\in\mathfrak n_\varphi\)</span>, by the left-ideal property.</p>
+<p><strong>Proposition.</strong> The algebra <span class="math" data-tex="\(\mathcal A_\varphi\)">\(\mathcal A_\varphi\)</span> is dense in <span class="math" data-tex="\(H\)">\(H\)</span>, has bounded left multiplication</p>
+<span class="math math-display" data-tex="\[
+L_{\Lambda(x)}=\pi(x),
+\tag{WH.26}
+\]">\[
+L_{\Lambda(x)}=\pi(x),
+\tag{WH.26}
+\]</span>
+<p>satisfies the left adjoint identity, and has dense product span. Its generated von Neumann algebra is <span class="math" data-tex="\(\pi(M)\)">\(\pi(M)\)</span>.</p>
+<p><strong>Proof.</strong> Density is WG-009. The GNS module identity gives (WH.26) on the dense domain and the bound <span class="math" data-tex="\(\|L_{\Lambda(x)}\|\leq\|x\|\)">\(\|L_{\Lambda(x)}\|\leq\|x\|\)</span>. The adjoint identity follows from <span class="math" data-tex="\(\pi(x)^*=\pi(x^*)\)">\(\pi(x)^*=\pi(x^*)\)</span>.</p>
+<p>Choose the finite positive contractions <span class="math" data-tex="\(e_i\uparrow1\)">\(e_i\uparrow1\)</span> of WG-008. They belong to <span class="math" data-tex="\(\mathfrak a_\varphi\)">\(\mathfrak a_\varphi\)</span>, since <span class="math" data-tex="\(e_i^2\leq e_i\)">\(e_i^2\leq e_i\)</span>. Normality gives <span class="math" data-tex="\(\pi(e_i)\to I\)">\(\pi(e_i)\to I\)</span> strongly. For <span class="math" data-tex="\(x\in\mathfrak a_\varphi\)">\(x\in\mathfrak a_\varphi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Lambda(e_i)\Lambda(x)=\pi(e_i)\Lambda(x)\longrightarrow\Lambda(x).
+\]">\[
+\Lambda(e_i)\Lambda(x)=\pi(e_i)\Lambda(x)\longrightarrow\Lambda(x).
+\]</span>
+<p>Thus products are dense.</p>
+<p>WG-007 and WG-010 make <span class="math" data-tex="\(\pi\)">\(\pi\)</span> normal and faithful. WH-02 makes its image a von Neumann algebra. For any <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, <span class="math" data-tex="\(e_i a e_i\in\mathfrak m_\varphi\subseteq\mathfrak a_\varphi\)">\(e_i a e_i\in\mathfrak m_\varphi\subseteq\mathfrak a_\varphi\)</span> and <span class="math" data-tex="\(e_i a e_i\to a\)">\(e_i a e_i\to a\)</span> sigma-strong*, by bounded strong* convergence. NP-06 implies
+<span class="math" data-tex="\(\pi(e_i a e_i)\to\pi(a)\)">\(\pi(e_i a e_i)\to\pi(a)\)</span> strongly. Thus <span class="math" data-tex="\(\pi(\mathfrak a_\varphi)\)">\(\pi(\mathfrak a_\varphi)\)</span> generates <span class="math" data-tex="\(\pi(M)\)">\(\pi(M)\)</span>, proving the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only closability remains among the four Hilbert algebra axioms. It requires more than the normality of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<h2 id="closability-on-the-full-finite-star-domain"><span id="oa-mod-wh-10"></span><span id="OA-MOD-WH-10"></span>Closability on the full finite-star domain</h2>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+\Phi_\varphi=\{\omega\in M_*^+:\omega\leq\varphi\}.
+\]">\[
+\Phi_\varphi=\{\omega\in M_*^+:\omega\leq\varphi\}.
+\]</span>
+<p>For each <span class="math" data-tex="\(\omega\in\Phi_\varphi\)">\(\omega\in\Phi_\varphi\)</span>, OW-02–03 give</p>
+<span class="math math-display" data-tex="\[
+0\leq h_\omega\leq I,\quad h_\omega\in\pi(M)&#x27;,\quad
+h_\omega^{1/2}\Lambda(x)=\pi(x)\eta_\omega
+\quad(x\in\mathfrak n_\varphi),
+\tag{WH.27}
+\]">\[
+0\leq h_\omega\leq I,\quad h_\omega\in\pi(M)&#x27;,\quad
+h_\omega^{1/2}\Lambda(x)=\pi(x)\eta_\omega
+\quad(x\in\mathfrak n_\varphi),
+\tag{WH.27}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\omega(a)=\langle\pi(a)\eta_\omega,\eta_\omega\rangle
+\quad(a\in M).
+\tag{WH.28}
+\]">\[
+\omega(a)=\langle\pi(a)\eta_\omega,\eta_\omega\rangle
+\quad(a\in M).
+\tag{WH.28}
+\]</span>
+<p><strong>Two totality facts.</strong> One has</p>
+<span class="math math-display" data-tex="\[
+\sup_{\omega\in\Phi_\varphi}\|h_\omega^{1/2}\xi\|=\|\xi\|
+\quad(\xi\in H),
+\tag{WH.29}
+\]">\[
+\sup_{\omega\in\Phi_\varphi}\|h_\omega^{1/2}\xi\|=\|\xi\|
+\quad(\xi\in H),
+\tag{WH.29}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\overline{\operatorname{span}
+\{b\eta_\omega:b\in\pi(M)&#x27;,\ \omega\in\Phi_\varphi\}}=H.
+\tag{WH.30}
+\]">\[
+\overline{\operatorname{span}
+\{b\eta_\omega:b\in\pi(M)&#x27;,\ \omega\in\Phi_\varphi\}}=H.
+\tag{WH.30}
+\]</span>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(\xi=\Lambda(x)\)">\(\xi=\Lambda(x)\)</span>, NW-11 and (WH.27) give</p>
+<span class="math math-display" data-tex="\[
+\|\Lambda(x)\|^2=\varphi(x^*x)
+=\sup_\omega\omega(x^*x)
+=\sup_\omega\|h_\omega^{1/2}\Lambda(x)\|^2.
+\]">\[
+\|\Lambda(x)\|^2=\varphi(x^*x)
+=\sup_\omega\omega(x^*x)
+=\sup_\omega\|h_\omega^{1/2}\Lambda(x)\|^2.
+\]</span>
+<p>The supremum in (WH.29) is a 1-Lipschitz function of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, since every operator involved is a contraction. Density of the GNS range extends the equality to every vector. In particular, the <span class="math" data-tex="\(h_\omega^{1/2}\)">\(h_\omega^{1/2}\)</span>'s have common kernel zero.</p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be the closed subspace in (WH.30). It reduces <span class="math" data-tex="\(\pi(M)&#x27;\)">\(\pi(M)&#x27;\)</span>; its projection <span class="math" data-tex="\(P\)">\(P\)</span> lies in <span class="math" data-tex="\(\pi(M)&#x27;&#x27;=\pi(M)\)">\(\pi(M)&#x27;&#x27;=\pi(M)\)</span>. By WH-02 there is a projection <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span> with <span class="math" data-tex="\(P=\pi(p)\)">\(P=\pi(p)\)</span>. Each <span class="math" data-tex="\(\eta_\omega\)">\(\eta_\omega\)</span> belongs to <span class="math" data-tex="\(K\)">\(K\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\omega(1-p)=\|(I-P)\eta_\omega\|^2=0.
+\]">\[
+\omega(1-p)=\|(I-P)\eta_\omega\|^2=0.
+\]</span>
+<p>NW-11 gives <span class="math" data-tex="\(\varphi(1-p)=0\)">\(\varphi(1-p)=0\)</span>. Faithfulness implies <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, hence <span class="math" data-tex="\(K=H\)">\(K=H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Closability theorem.</strong> The conjugate-linear operator</p>
+<span class="math math-display" data-tex="\[
+s_0:\mathcal A_\varphi\to H,\qquad
+s_0\Lambda(x)=\Lambda(x^*)
+\tag{WH.31}
+\]">\[
+s_0:\mathcal A_\varphi\to H,\qquad
+s_0\Lambda(x)=\Lambda(x^*)
+\tag{WH.31}
+\]</span>
+<p>is closable. Therefore <span class="math" data-tex="\(\mathcal A_\varphi\)">\(\mathcal A_\varphi\)</span> is a left Hilbert algebra.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(x\in\mathfrak a_\varphi\)">\(x\in\mathfrak a_\varphi\)</span>, <span class="math" data-tex="\(b\in\pi(M)&#x27;\)">\(b\in\pi(M)&#x27;\)</span>, and <span class="math" data-tex="\(\omega,\rho\in\Phi_\varphi\)">\(\omega,\rho\in\Phi_\varphi\)</span>, equations (WH.27–28) give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle\Lambda(x^*),h_\omega^{1/2}b\eta_\rho\rangle
+&amp;=\langle\pi(x^*)\eta_\omega,b\eta_\rho\rangle\\
+&amp;=\langle\eta_\omega,b\pi(x)\eta_\rho\rangle\\
+&amp;=\langle h_\rho^{1/2}b^*\eta_\omega,\Lambda(x)\rangle.
+\end{aligned}
+\tag{WH.32}
+\]">\[
+\begin{aligned}
+\langle\Lambda(x^*),h_\omega^{1/2}b\eta_\rho\rangle
+&amp;=\langle\pi(x^*)\eta_\omega,b\eta_\rho\rangle\\
+&amp;=\langle\eta_\omega,b\pi(x)\eta_\rho\rangle\\
+&amp;=\langle h_\rho^{1/2}b^*\eta_\omega,\Lambda(x)\rangle.
+\end{aligned}
+\tag{WH.32}
+\]</span>
+<p>All operators in this calculation are bounded; the two appearances of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> are permitted because both <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(x^*\)">\(x^*\)</span> are in <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(\Lambda(x_n)\to0\)">\(\Lambda(x_n)\to0\)</span> and <span class="math" data-tex="\(\Lambda(x_n^*)\to\zeta\)">\(\Lambda(x_n^*)\to\zeta\)</span> in Hilbert norm. Equation (WH.32) implies</p>
+<span class="math math-display" data-tex="\[
+\langle\zeta,h_\omega^{1/2}b\eta_\rho\rangle=0
+\quad\text{for every }\omega,\rho,b.
+\]">\[
+\langle\zeta,h_\omega^{1/2}b\eta_\rho\rangle=0
+\quad\text{for every }\omega,\rho,b.
+\]</span>
+<p>Fix <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Totality (WH.30) implies <span class="math" data-tex="\(h_\omega^{1/2}\zeta=0\)">\(h_\omega^{1/2}\zeta=0\)</span>. The common-kernel consequence of (WH.29) then gives <span class="math" data-tex="\(\zeta=0\)">\(\zeta=0\)</span>. This is exactly the graph criterion for closability of a conjugate-linear operator on a Hilbert space. It uses sequences only to test closure in the metrizable Hilbert graph norm; it does not assume a separable Hilbert space. WH-09 supplies the other three axioms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(S_\varphi=\overline{s_0}\)">\(S_\varphi=\overline{s_0}\)</span>. Its domain is, exactly, the set of norm limits of <span class="math" data-tex="\(\Lambda(x_n)\)">\(\Lambda(x_n)\)</span> for which <span class="math" data-tex="\(\Lambda(x_n^*)\)">\(\Lambda(x_n^*)\)</span> also converges, and the latter limit is <span class="math" data-tex="\(S_\varphi\)">\(S_\varphi\)</span> of the former. <a href="OA-MOD-HA.html#oa-mod-ha-04">HA04, the closed-graph argument</a>, and <span class="unlinked">TC03–05</span> give its closed involution. Its polar data are constructed separately in <span class="unlinked">TC07–10</span>, using the written spectral calculus. The fundamental modular theorem remains separate.</p>
+<h2 id="fullness-and-recovery-of-the-original-weight"><span id="oa-mod-wh-11"></span><span id="OA-MOD-WH-11"></span>Fullness and recovery of the original weight</h2>
+<p>Apply WH-03 to <span class="math" data-tex="\(\mathcal A_\varphi\)">\(\mathcal A_\varphi\)</span>, identifying the generated algebra with <span class="math" data-tex="\(\pi(M)\)">\(\pi(M)\)</span>. Use its spaces <span class="math" data-tex="\(\mathcal B_l,\mathcal B_r,\mathcal A_r\)">\(\mathcal B_l,\mathcal B_r,\mathcal A_r\)</span> and its map <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p><strong>Theorem.</strong> One has the exact bijection</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_l=\Lambda(\mathfrak n_\varphi),\qquad
+\lambda_{\Lambda(x)}=\pi(x)\quad(x\in\mathfrak n_\varphi).
+\tag{WH.33}
+\]">\[
+\mathcal B_l=\Lambda(\mathfrak n_\varphi),\qquad
+\lambda_{\Lambda(x)}=\pi(x)\quad(x\in\mathfrak n_\varphi).
+\tag{WH.33}
+\]</span>
+<p>Moreover <span class="math" data-tex="\(\mathcal A_\varphi\)">\(\mathcal A_\varphi\)</span> is full, and the reconstructed weight satisfies</p>
+<span class="math math-display" data-tex="\[
+\psi(\pi(a))=\varphi(a)\qquad(a\in M_+),
+\tag{WH.34}
+\]">\[
+\psi(\pi(a))=\varphi(a)\qquad(a\in M_+),
+\tag{WH.34}
+\]</span>
+<p>including infinite values.</p>
+<p><strong>Proof.</strong> Equation (WH.27) implies that <span class="math" data-tex="\(\eta_\omega\)">\(\eta_\omega\)</span> is right bounded for <span class="math" data-tex="\(\mathcal A_\varphi\)">\(\mathcal A_\varphi\)</span>, with <span class="math" data-tex="\(R_{\eta_\omega}=h_\omega^{1/2}\)">\(R_{\eta_\omega}=h_\omega^{1/2}\)</span>. This operator is self-adjoint. RD-07, applied to the pair <span class="math" data-tex="\(\eta_\omega,\eta_\omega\)">\(\eta_\omega,\eta_\omega\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\eta_\omega\in\mathcal A_r,\qquad
+F\eta_\omega=\eta_\omega.
+\tag{WH.35}
+\]">\[
+\eta_\omega\in\mathcal A_r,\qquad
+F\eta_\omega=\eta_\omega.
+\tag{WH.35}
+\]</span>
+<p>Take <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span>. Since <span class="math" data-tex="\(\lambda_\xi\in\pi(M)\)">\(\lambda_\xi\in\pi(M)\)</span>, there is a unique <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> with <span class="math" data-tex="\(\lambda_\xi=\pi(x)\)">\(\lambda_\xi=\pi(x)\)</span>. Using NW-11, (WH.4), (WH.29) and (WH.35),</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varphi(x^*x)
+&amp;=\sup_{\omega\in\Phi_\varphi}\|\pi(x)\eta_\omega\|^2\\
+&amp;=\sup_{\omega\in\Phi_\varphi}\|R_{\eta_\omega}\xi\|^2
+=\|\xi\|^2&lt;\infty.
+\end{aligned}
+\tag{WH.36}
+\]">\[
+\begin{aligned}
+\varphi(x^*x)
+&amp;=\sup_{\omega\in\Phi_\varphi}\|\pi(x)\eta_\omega\|^2\\
+&amp;=\sup_{\omega\in\Phi_\varphi}\|R_{\eta_\omega}\xi\|^2
+=\|\xi\|^2&lt;\infty.
+\end{aligned}
+\tag{WH.36}
+\]</span>
+<p>Thus <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>. For each <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, (WH.27) and (WH.4) give</p>
+<span class="math math-display" data-tex="\[
+h_\omega^{1/2}\Lambda(x)
+=\pi(x)\eta_\omega
+=h_\omega^{1/2}\xi.
+\]">\[
+h_\omega^{1/2}\Lambda(x)
+=\pi(x)\eta_\omega
+=h_\omega^{1/2}\xi.
+\]</span>
+<p>Their common kernel is zero, so <span class="math" data-tex="\(\Lambda(x)=\xi\)">\(\Lambda(x)=\xi\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span> and write <span class="math" data-tex="\(x=u|x|\)">\(x=u|x|\)</span>. The self-adjoint element <span class="math" data-tex="\(|x|\)">\(|x|\)</span> lies in <span class="math" data-tex="\(\mathfrak a_\varphi\)">\(\mathfrak a_\varphi\)</span>, since
+<span class="math" data-tex="\(\varphi(|x|^2)=\varphi(x^*x)&lt;\infty\)">\(\varphi(|x|^2)=\varphi(x^*x)&lt;\infty\)</span>. Therefore
+<span class="math" data-tex="\(\Lambda(|x|)\in\mathcal A_\varphi\subseteq\mathcal B_l\)">\(\Lambda(|x|)\in\mathcal A_\varphi\subseteq\mathcal B_l\)</span>.
+Covariance under <span class="math" data-tex="\(\pi(u)\)">\(\pi(u)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\Lambda(x)=\pi(u)\Lambda(|x|)\in\mathcal B_l,\qquad
+\lambda_{\Lambda(x)}=\pi(u)\pi(|x|)=\pi(x).
+\]">\[
+\Lambda(x)=\pi(u)\Lambda(|x|)\in\mathcal B_l,\qquad
+\lambda_{\Lambda(x)}=\pi(u)\pi(|x|)=\pi(x).
+\]</span>
+<p>This proves (WH.33).</p>
+<p>The ideal intersection (WH.9) now reads</p>
+<span class="math math-display" data-tex="\[
+\lambda(\mathcal A_l)
+=\pi(\mathfrak n_\varphi)\cap\pi(\mathfrak n_\varphi)^*
+=\pi(\mathfrak a_\varphi)
+=\lambda(\mathcal A_\varphi).
+\]">\[
+\lambda(\mathcal A_l)
+=\pi(\mathfrak n_\varphi)\cap\pi(\mathfrak n_\varphi)^*
+=\pi(\mathfrak a_\varphi)
+=\lambda(\mathcal A_\varphi).
+\]</span>
+<p>Injectivity gives <span class="math" data-tex="\(\mathcal A_l=\mathcal A_\varphi\)">\(\mathcal A_l=\mathcal A_\varphi\)</span>, proving fullness.</p>
+<p>Finally, <span class="math" data-tex="\(\psi(\pi(a))&lt;\infty\)">\(\psi(\pi(a))&lt;\infty\)</span> if and only if
+<span class="math" data-tex="\(\pi(a^{1/2})\in\lambda(\mathcal B_l)=\pi(\mathfrak n_\varphi)\)">\(\pi(a^{1/2})\in\lambda(\mathcal B_l)=\pi(\mathfrak n_\varphi)\)</span>.
+Faithfulness of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> makes this equivalent to
+<span class="math" data-tex="\(a^{1/2}\in\mathfrak n_\varphi\)">\(a^{1/2}\in\mathfrak n_\varphi\)</span>, or <span class="math" data-tex="\(\varphi(a)&lt;\infty\)">\(\varphi(a)&lt;\infty\)</span>. In that case the square-root vector is <span class="math" data-tex="\(\Lambda(a^{1/2})\)">\(\Lambda(a^{1/2})\)</span>, whose squared norm is <span class="math" data-tex="\(\varphi(a)\)">\(\varphi(a)\)</span>. Otherwise both values are infinite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus the passage from a full left Hilbert algebra to its weight and back is inverse, up to the specified canonical unitary, to the passage from a faithful normal semifinite weight to its finite-star algebra.</p>
+<h2 id="the-right-weight-and-the-variational-formula"><span id="oa-mod-wh-12"></span><span id="OA-MOD-WH-12"></span>The right weight and the variational formula</h2>
+<p>Return to an arbitrary left Hilbert algebra <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, with full completion <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span>, right algebra <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>, and reconstructed weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>. The symmetric construction on <span class="math" data-tex="\(\mathcal A_r^{\mathrm{op}}\)">\(\mathcal A_r^{\mathrm{op}}\)</span> defines a faithful normal semifinite weight <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\chi(b)=
+\begin{cases}
+\|\eta\|^2,&amp;b^{1/2}=R_\eta,\ \eta\in\mathcal B_r,\\
++\infty,&amp;\text{otherwise},
+\end{cases}
+\qquad b\in(M&#x27;)_+.
+\tag{WH.37}
+\]">\[
+\chi(b)=
+\begin{cases}
+\|\eta\|^2,&amp;b^{1/2}=R_\eta,\ \eta\in\mathcal B_r,\\
++\infty,&amp;\text{otherwise},
+\end{cases}
+\qquad b\in(M&#x27;)_+.
+\tag{WH.37}
+\]</span>
+<p>Its finite ideal is <span class="math" data-tex="\(\mathfrak n_r=R(\mathcal B_r)\)">\(\mathfrak n_r=R(\mathcal B_r)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\widetilde\chi(R_\eta^*R_\zeta)=\langle\zeta,\eta\rangle.
+\tag{WH.38}
+\]">\[
+\widetilde\chi(R_\eta^*R_\zeta)=\langle\zeta,\eta\rangle.
+\tag{WH.38}
+\]</span>
+<p>These are WH-05–08 applied to the opposite right algebra. That application has the same right-bounded space on the other side: <span class="math" data-tex="\(\mathcal A\subseteq\mathcal A_l\)">\(\mathcal A\subseteq\mathcal A_l\)</span>, while (WH.10) proves boundedness on <span class="math" data-tex="\(\mathcal A_l\)">\(\mathcal A_l\)</span> for every original <span class="math" data-tex="\(\eta\in\mathcal B_r\)">\(\eta\in\mathcal B_r\)</span>; restriction gives the converse.</p>
+<p><strong>Theorem.</strong> Under the GNS unitary of WH-08, <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is the opposite weight <span class="math" data-tex="\(\psi^{\mathrm{opp}}\)">\(\psi^{\mathrm{opp}}\)</span> of OW. Furthermore, for every <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi(a)=
+\sup_{\substack{\eta\in\mathcal A_r\\\|R_\eta\|\leq1}}
+\langle a\eta,\eta\rangle
+=
+\sup_{\substack{\eta\in\mathcal A_r\\\|R_\eta\|&lt;1}}
+\langle a\eta,\eta\rangle.
+\tag{WH.39}
+\]">\[
+\psi(a)=
+\sup_{\substack{\eta\in\mathcal A_r\\\|R_\eta\|\leq1}}
+\langle a\eta,\eta\rangle
+=
+\sup_{\substack{\eta\in\mathcal A_r\\\|R_\eta\|&lt;1}}
+\langle a\eta,\eta\rangle.
+\tag{WH.39}
+\]</span>
+<p>The analogous formula for <span class="math" data-tex="\(\chi\)">\(\chi\)</span> uses <span class="math" data-tex="\(\xi\in\mathcal A_l\)">\(\xi\in\mathcal A_l\)</span> with <span class="math" data-tex="\(\|\lambda_\xi\|\leq1\)">\(\|\lambda_\xi\|\leq1\)</span> or <span class="math" data-tex="\(&lt;1\)">\(&lt;1\)</span>.</p>
+<p><strong>Proof of the opposite identification.</strong> Identify the GNS space of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with <span class="math" data-tex="\(H\)">\(H\)</span>, so
+<span class="math" data-tex="\(\Lambda_\psi(\lambda_\xi)=\xi\)">\(\Lambda_\psi(\lambda_\xi)=\xi\)</span> and <span class="math" data-tex="\(\pi_\psi(x)=x\)">\(\pi_\psi(x)=x\)</span>.
+For <span class="math" data-tex="\(\eta\in\mathcal B_r\)">\(\eta\in\mathcal B_r\)</span>, the vector functional
+<span class="math" data-tex="\(\omega_\eta(x)=\langle x\eta,\eta\rangle\)">\(\omega_\eta(x)=\langle x\eta,\eta\rangle\)</span> is normal and positive. If <span class="math" data-tex="\(x=\lambda_\xi\in\mathfrak n_\psi\)">\(x=\lambda_\xi\in\mathfrak n_\psi\)</span>, then (WH.10) gives</p>
+<span class="math math-display" data-tex="\[
+\omega_\eta(x^*x)=\|R_\eta\xi\|^2
+\leq\|R_\eta\|^2\psi(x^*x).
+\tag{WH.40}
+\]">\[
+\omega_\eta(x^*x)=\|R_\eta\xi\|^2
+\leq\|R_\eta\|^2\psi(x^*x).
+\tag{WH.40}
+\]</span>
+<p>Testing finite positive elements with their square roots, and using any strictly larger positive constant for infinite values if necessary, proves domination by a finite multiple of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Its comparison operator is</p>
+<span class="math math-display" data-tex="\[
+h_{\omega_\eta}=R_\eta^*R_\eta,
+\tag{WH.41}
+\]">\[
+h_{\omega_\eta}=R_\eta^*R_\eta,
+\tag{WH.41}
+\]</span>
+<p>by polarization on all <span class="math" data-tex="\(\xi=\Lambda_\psi(x)\)">\(\xi=\Lambda_\psi(x)\)</span>.</p>
+<p>If <span class="math" data-tex="\(\chi(b)&lt;\infty\)">\(\chi(b)&lt;\infty\)</span>, take <span class="math" data-tex="\(b^{1/2}=R_\eta\)">\(b^{1/2}=R_\eta\)</span>. Equation (WH.41) gives <span class="math" data-tex="\(h_{\omega_\eta}=b\)">\(h_{\omega_\eta}=b\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\psi^{\mathrm{opp}}(b)=\|\omega_\eta\|=\|\eta\|^2=\chi(b).
+\]">\[
+\psi^{\mathrm{opp}}(b)=\|\omega_\eta\|=\|\eta\|^2=\chi(b).
+\]</span>
+<p>Conversely, suppose <span class="math" data-tex="\(b=h_\omega\)">\(b=h_\omega\)</span> for a normal positive functional dominated by a finite multiple of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. OW-03 supplies <span class="math" data-tex="\(\eta_\omega\in H\)">\(\eta_\omega\in H\)</span> with</p>
+<span class="math math-display" data-tex="\[
+b^{1/2}\Lambda_\psi(x)=x\eta_\omega
+\quad(x\in\mathfrak n_\psi),\qquad
+\|\eta_\omega\|^2=\|\omega\|.
+\]">\[
+b^{1/2}\Lambda_\psi(x)=x\eta_\omega
+\quad(x\in\mathfrak n_\psi),\qquad
+\|\eta_\omega\|^2=\|\omega\|.
+\]</span>
+<p>Taking <span class="math" data-tex="\(x=L_a\)">\(x=L_a\)</span> with <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span> gives
+<span class="math" data-tex="\(b^{1/2}a=L_a\eta_\omega\)">\(b^{1/2}a=L_a\eta_\omega\)</span>.
+Thus <span class="math" data-tex="\(\eta_\omega\in\mathcal B_r\)">\(\eta_\omega\in\mathcal B_r\)</span>, <span class="math" data-tex="\(R_{\eta_\omega}=b^{1/2}\)">\(R_{\eta_\omega}=b^{1/2}\)</span>, and
+<span class="math" data-tex="\(\chi(b)=\|\omega\|=\psi^{\mathrm{opp}}(b)\)">\(\chi(b)=\|\omega\|=\psi^{\mathrm{opp}}(b)\)</span>.
+The finite cones and their values agree, so the infinite values agree as well.</p>
+<p><strong>Proof of the variational formula.</strong> Equation (WH.40) shows that every <span class="math" data-tex="\(\omega_\eta\)">\(\omega_\eta\)</span> with <span class="math" data-tex="\(\|R_\eta\|\leq1\)">\(\|R_\eta\|\leq1\)</span> is at most <span class="math" data-tex="\(\psi\)">\(\psi\)</span> on <span class="math" data-tex="\(M_+\)">\(M_+\)</span>. Conversely, if <span class="math" data-tex="\(0\leq\omega\leq\psi\)">\(0\leq\omega\leq\psi\)</span>, OW-02 gives <span class="math" data-tex="\(h_\omega\leq I\)">\(h_\omega\leq I\)</span>, and the implementing vector in the preceding paragraph has
+<span class="math" data-tex="\(R_{\eta_\omega}=h_\omega^{1/2}\)">\(R_{\eta_\omega}=h_\omega^{1/2}\)</span>.
+Because this operator is self-adjoint, RD-07 gives <span class="math" data-tex="\(\eta_\omega\in\mathcal A_r\)">\(\eta_\omega\in\mathcal A_r\)</span>. Thus every dominated normal positive functional is one of the displayed vector functionals with right norm at most one. NW-11, applied to the already proved normal weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, gives the first equality in (WH.39).</p>
+<p>For <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, the vector <span class="math" data-tex="\(t\eta\)">\(t\eta\)</span> has right norm <span class="math" data-tex="\(&lt;1\)">\(&lt;1\)</span> whenever <span class="math" data-tex="\(\|R_\eta\|\leq1\)">\(\|R_\eta\|\leq1\)</span>, and its functional is <span class="math" data-tex="\(t^2\omega_\eta\)">\(t^2\omega_\eta\)</span>. Letting <span class="math" data-tex="\(t\uparrow1\)">\(t\uparrow1\)</span> proves equality with the strict-norm supremum, including the case of an infinite supremum. Applying the same reasoning to the opposite right algebra proves the formula for <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same suprema in (WH.39) result if <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> is replaced by <span class="math" data-tex="\(\mathcal B_r\)">\(\mathcal B_r\)</span>: (WH.40) bounds all such vector functionals by <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, and <span class="math" data-tex="\(\mathcal A_r\subseteq\mathcal B_r\)">\(\mathcal A_r\subseteq\mathcal B_r\)</span> already attains the stated supremum. This also applies to the strict norm bound, and symmetrically to the left side.</p>
+<p>This proof also identifies the two relevant functional sets exactly:</p>
+<span class="math math-display" data-tex="\[
+\{\omega_\eta:\eta\in\mathcal A_r,\ \|R_\eta\|\leq1\}
+=\{\omega\in M_*^+:\omega\leq\psi\},
+\tag{WH.42}
+\]">\[
+\{\omega_\eta:\eta\in\mathcal A_r,\ \|R_\eta\|\leq1\}
+=\{\omega\in M_*^+:\omega\leq\psi\},
+\tag{WH.42}
+\]</span>
+<span class="math math-display" data-tex="\[
+\{\omega_\eta:\eta\in\mathcal A_r,\ \|R_\eta\|&lt;1\}
+=\bigcup_{0\leq c&lt;1}\{\omega\in M_*^+:\omega\leq c\psi\}.
+\tag{WH.43}
+\]">\[
+\{\omega_\eta:\eta\in\mathcal A_r,\ \|R_\eta\|&lt;1\}
+=\bigcup_{0\leq c&lt;1}\{\omega\in M_*^+:\omega\leq c\psi\}.
+\tag{WH.43}
+\]</span>
+<p>For the reverse inclusion in (WH.43), OW-02 gives <span class="math" data-tex="\(\|R_{\eta_\omega}\|\leq\sqrt c&lt;1\)">\(\|R_{\eta_\omega}\|\leq\sqrt c&lt;1\)</span>; the case <span class="math" data-tex="\(c=0\)">\(c=0\)</span> gives the zero vector. Both sets are hereditary and convex: domination is preserved when a positive functional is decreased, and for a convex combination in (WH.43) a common constant <span class="math" data-tex="\(c&lt;1\)">\(c&lt;1\)</span> is the maximum of the finitely many constants. This proves the hereditary convexity of the functional sets. WH17 supplies the separate completely positive maps; compare Nelson, Lemma 4.2 and Corollary 4.3.</p>
+<h2 id="every-von-neumann-algebra-has-such-a-weight"><span id="oa-mod-wh-13"></span><span id="OA-MOD-WH-13"></span>Every von Neumann algebra has such a weight</h2>
+<p><strong>Theorem.</strong> Every von Neumann algebra admits a faithful normal semifinite weight. No sigma-finiteness assumption is required.</p>
+<p><strong>Proof.</strong> In a faithful concrete representation, normal positive functionals separate nonzero positive elements: if <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, choose <span class="math" data-tex="\(\xi\)">\(\xi\)</span> with <span class="math" data-tex="\(\langle a\xi,\xi\rangle&gt;0\)">\(\langle a\xi,\xi\rangle&gt;0\)</span>. The vector functional is normal.</p>
+<p>For a nonzero normal positive functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, denote by <span class="math" data-tex="\(s(\omega)\)">\(s(\omega)\)</span> its support projection, using <a href="OA-MOD-WS.html#oa-mod-ws-04">WS04–06</a> in the bounded case. In particular,</p>
+<span class="math math-display" data-tex="\[
+\omega(x^*x)=0\quad\Longleftrightarrow\quad xs(\omega)=0.
+\tag{WH.44}
+\]">\[
+\omega(x^*x)=0\quad\Longleftrightarrow\quad xs(\omega)=0.
+\tag{WH.44}
+\]</span>
+<p>Choose, by Zorn's lemma, a maximal family of normal states <span class="math" data-tex="\((\omega_i)_{i\in I}\)">\((\omega_i)_{i\in I}\)</span> whose nonzero supports <span class="math" data-tex="\(p_i=s(\omega_i)\)">\(p_i=s(\omega_i)\)</span> are pairwise orthogonal. For a chain of such families, its union is again such a family, so the maximality argument applies.</p>
+<p>The strong sum <span class="math" data-tex="\(p=\sum_i p_i\)">\(p=\sum_i p_i\)</span> equals <span class="math" data-tex="\(1\)">\(1\)</span>. Otherwise choose a unit vector in <span class="math" data-tex="\((1-p)H\)">\((1-p)H\)</span>. Its vector state has a nonzero support below <span class="math" data-tex="\(1-p\)">\(1-p\)</span>, since it vanishes on <span class="math" data-tex="\(p\)">\(p\)</span>, contradicting maximality.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sum_{i\in I}\omega_i(a)
+=\sup_{F\subseteq I\text{ finite}}\sum_{i\in F}\omega_i(a),
+\qquad a\in M_+.
+\tag{WH.45}
+\]">\[
+\varphi(a)=\sum_{i\in I}\omega_i(a)
+=\sup_{F\subseteq I\text{ finite}}\sum_{i\in F}\omega_i(a),
+\qquad a\in M_+.
+\tag{WH.45}
+\]</span>
+<p>Suprema of finite nonnegative subsums commute with addition and nonnegative scalar multiplication; for addition, combine the two finite sets used to approximate the two separate suprema. Thus (WH.45) is a weight.</p>
+<p>If <span class="math" data-tex="\(a_j\uparrow a\)">\(a_j\uparrow a\)</span>, normality of each finite sum and commutation of the two suprema give</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sup_F\sup_j\sum_{i\in F}\omega_i(a_j)
+=\sup_j\varphi(a_j).
+\]">\[
+\varphi(a)=\sup_F\sup_j\sum_{i\in F}\omega_i(a_j)
+=\sup_j\varphi(a_j).
+\]</span>
+<p>This proves arbitrary-net normality.</p>
+<p>If <span class="math" data-tex="\(\varphi(a)=0\)">\(\varphi(a)=0\)</span>, then every <span class="math" data-tex="\(\omega_i(a)=0\)">\(\omega_i(a)=0\)</span>. Equation (WH.44) gives <span class="math" data-tex="\(a^{1/2}p_i=0\)">\(a^{1/2}p_i=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. Their finite sums converge strongly to <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(a^{1/2}=0\)">\(a^{1/2}=0\)</span>; the weight is faithful.</p>
+<p>For a finite <span class="math" data-tex="\(F\subseteq I\)">\(F\subseteq I\)</span>, let <span class="math" data-tex="\(p_F=\sum_{i\in F}p_i\)">\(p_F=\sum_{i\in F}p_i\)</span>. Supportedness and orthogonality give
+<span class="math" data-tex="\(\omega_i(p_F)=1\)">\(\omega_i(p_F)=1\)</span> for <span class="math" data-tex="\(i\in F\)">\(i\in F\)</span> and zero otherwise. Hence
+<span class="math" data-tex="\(\varphi(p_F)=|F|&lt;\infty\)">\(\varphi(p_F)=|F|&lt;\infty\)</span>. The projections <span class="math" data-tex="\(p_F\uparrow1\)">\(p_F\uparrow1\)</span>, so WG-008 proves semifiniteness. For the zero algebra, the zero weight has all three properties and the empty family suffices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The projections in this proof form a specially chosen orthogonal family. It does not assert that the set of all finite projections of an arbitrary weight is directed.</p>
+<h2 id="a-proper-core-and-a-non-state-example">A proper core and a non-state example</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be any set and let <span class="math" data-tex="\(w_i&gt;0\)">\(w_i&gt;0\)</span>. On the diagonal algebra <span class="math" data-tex="\(M=\ell^\infty(I)\)">\(M=\ell^\infty(I)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sum_{i\in I}w_i a_i\quad(a\geq0).
+\tag{WH.46}
+\]">\[
+\varphi(a)=\sum_{i\in I}w_i a_i\quad(a\geq0).
+\tag{WH.46}
+\]</span>
+<p>This is faithful. It is normal because finite sums preserve increasing suprema and the two suprema commute, as in WH-13. Finite-support projections have finite weight and increase to <span class="math" data-tex="\(1\)">\(1\)</span>, proving semifiniteness.</p>
+<p>Its exact domains are</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_\varphi
+=\left\{x\in\ell^\infty(I):\sum_iw_i|x_i|^2&lt;\infty\right\},
+\qquad
+\mathfrak n_\varphi^*=\mathfrak n_\varphi,
+\tag{WH.47}
+\]">\[
+\mathfrak n_\varphi
+=\left\{x\in\ell^\infty(I):\sum_iw_i|x_i|^2&lt;\infty\right\},
+\qquad
+\mathfrak n_\varphi^*=\mathfrak n_\varphi,
+\tag{WH.47}
+\]</span>
+<span class="math math-display" data-tex="\[
+H_\varphi=\ell^2(I,w),\qquad
+\Lambda(x)=x,\qquad
+\pi(a)\xi=(a_i\xi_i)_i.
+\]">\[
+H_\varphi=\ell^2(I,w),\qquad
+\Lambda(x)=x,\qquad
+\pi(a)\xi=(a_i\xi_i)_i.
+\]</span>
+<p>The arbitrary-coordinate completeness and finite-truncation density proofs are given in <a href="OA-MOD-OW.html#oa-mod-ow-09">OW09</a>. They prove that this is the completion of the stated GNS range. Its full Hilbert algebra is
+<span class="math" data-tex="\(\ell^2(I,w)\cap\ell^\infty(I)\)">\(\ell^2(I,w)\cap\ell^\infty(I)\)</span>, with pointwise multiplication and conjugation.</p>
+<p>For comparison start with the smaller Hilbert algebra <span class="math" data-tex="\(\mathcal A=c_{00}(I)\)">\(\mathcal A=c_{00}(I)\)</span>. RD-08 computes both bounded multiplication spaces as <span class="math" data-tex="\(\ell^2(I,w)\cap\ell^\infty(I)\)">\(\ell^2(I,w)\cap\ell^\infty(I)\)</span>. If <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span>, its square-root multiplier has vector <span class="math" data-tex="\((\sqrt{a_i})_i\)">\((\sqrt{a_i})_i\)</span> exactly when <span class="math" data-tex="\(\sum_iw_i a_i&lt;\infty\)">\(\sum_iw_i a_i&lt;\infty\)</span>. Therefore (WH.11) recovers (WH.46) from this smaller algebra. The recovered finite-star algebra is its full completion, not necessarily <span class="math" data-tex="\(c_{00}(I)\)">\(c_{00}(I)\)</span>.</p>
+<p>With <span class="math" data-tex="\(I=\mathbb N\)">\(I=\mathbb N\)</span>, <span class="math" data-tex="\(w_i=1\)">\(w_i=1\)</span>, the sequence <span class="math" data-tex="\(x_i=1/i\)">\(x_i=1/i\)</span> belongs to the full algebra but has infinite support, so the inclusion is proper. The finite square sum follows from the telescoping estimate in <a href="OA-MOD-HA.html#oa-mod-ha-10">HA10</a>. With uncountable <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(w_i=1\)">\(w_i=1\)</span>, the Hilbert space is nonseparable and the weight has no finite value at <span class="math" data-tex="\(1\)">\(1\)</span>. No sequence of finite-support projections converges strongly to <span class="math" data-tex="\(1\)">\(1\)</span>: a coordinate outside the countable union of the sequence's supports is annihilated by every member. The finite-subset net does converge strongly.</p>
+<h2 id="problems-with-worked-solutions">Problems with worked solutions</h2>
+<p><strong>Problem 1: a noncentral null space prevents the proposed involution.</strong> On <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, let <span class="math" data-tex="\(\varphi(a)=a_{11}\)">\(\varphi(a)=a_{11}\)</span>. Explain why the rule <span class="math" data-tex="\(\Lambda(x)\mapsto\Lambda(x^*)\)">\(\Lambda(x)\mapsto\Lambda(x^*)\)</span> is not well-defined on the GNS quotient, even though the representation is faithful.</p>
+<p><strong>Solution.</strong> The weight is bounded, so <span class="math" data-tex="\(\mathfrak n_\varphi=M_2(\mathbb C)\)">\(\mathfrak n_\varphi=M_2(\mathbb C)\)</span>, and its GNS space identifies with the first column: <span class="math" data-tex="\(\Lambda(x)=xe_1\)">\(\Lambda(x)=xe_1\)</span>. The representation is the usual matrix action, hence is faithful. But <span class="math" data-tex="\(E_{12}e_1=0\)">\(E_{12}e_1=0\)</span>, whereas <span class="math" data-tex="\(E_{12}^*e_1=E_{21}e_1=e_2\ne0\)">\(E_{12}^*e_1=E_{21}e_1=e_2\ne0\)</span>. Thus a zero GNS vector would have a nonzero proposed involution image. Faithfulness of the representation does not replace faithfulness of the weight in (WH.25). The faithful support corner is <span class="math" data-tex="\(\mathbb C E_{11}\)">\(\mathbb C E_{11}\)</span>, as WS-06 prescribes.</p>
+<p><strong>Problem 2: when is the finite-star algebra unital?</strong> For a faithful normal semifinite weight, prove that its full Hilbert algebra has an algebra identity if and only if <span class="math" data-tex="\(\varphi(1)&lt;\infty\)">\(\varphi(1)&lt;\infty\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(\varphi(1)&lt;\infty\)">\(\varphi(1)&lt;\infty\)</span>, then <span class="math" data-tex="\(1\in\mathfrak n_\varphi\)">\(1\in\mathfrak n_\varphi\)</span>, and <span class="math" data-tex="\(\Lambda(1)\)">\(\Lambda(1)\)</span> is a two-sided identity by (WH.25). Conversely suppose <span class="math" data-tex="\(v=\Lambda(x)\)">\(v=\Lambda(x)\)</span> is an algebra identity. Its left multiplier is the identity on the dense Hilbert algebra, hence is <span class="math" data-tex="\(I_H\)">\(I_H\)</span>. Equation (WH.26) gives <span class="math" data-tex="\(\pi(x)=I_H=\pi(1)\)">\(\pi(x)=I_H=\pi(1)\)</span>, and faithfulness of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> gives <span class="math" data-tex="\(x=1\)">\(x=1\)</span>. Since <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>, one has <span class="math" data-tex="\(\varphi(1)&lt;\infty\)">\(\varphi(1)&lt;\infty\)</span>. This also covers the zero algebra with its identity zero.</p>
+<p><strong>Problem 3: rescale the scalar product.</strong> Start with a left Hilbert algebra <span class="math" data-tex="\(\mathcal A\subseteq H\)">\(\mathcal A\subseteq H\)</span> and multiply its inner product by <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Under the natural identification of the two vector completions and their bounded multiplication algebras, determine the reconstructed weight.</p>
+<p><strong>Solution.</strong> All vector norms are multiplied by <span class="math" data-tex="\(\sqrt r\)">\(\sqrt r\)</span>, so the boundedness ratios defining <span class="math" data-tex="\(\mathcal B_l,\mathcal B_r\)">\(\mathcal B_l,\mathcal B_r\)</span> and their operator norms are unchanged. Graph closure is unchanged because the two graph norms differ by the same scalar; the adjoint pairing is multiplied by <span class="math" data-tex="\(r\)">\(r\)</span> on both sides, so the involution domains and actions are unchanged. The square-root vector for a positive operator is therefore the same vector, while its squared norm is multiplied by <span class="math" data-tex="\(r\)">\(r\)</span>. Finite cones agree and the new weight is <span class="math" data-tex="\(r\psi\)">\(r\psi\)</span>, with the same infinite values. The Hilbert-space unitary from the rescaled space to the original one multiplies vectors by <span class="math" data-tex="\(\sqrt r\)">\(\sqrt r\)</span>, which is compatible with this calculation.</p>
+<p><strong>Problem 4: a nontracial block and its square-root vector.</strong> Let <span class="math" data-tex="\(D=\operatorname{diag}(2,7)\)">\(D=\operatorname{diag}(2,7)\)</span>, and let <span class="math" data-tex="\(\varphi(a)=\operatorname{Tr}(Da)\)">\(\varphi(a)=\operatorname{Tr}(Da)\)</span> on <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>. Realize the GNS space as Hilbert–Schmidt matrices by <span class="math" data-tex="\(\Lambda(x)=xD^{1/2}\)">\(\Lambda(x)=xD^{1/2}\)</span>. For</p>
+<span class="math math-display" data-tex="\[
+a=\begin{pmatrix}1&amp;1/2\\1/2&amp;2\end{pmatrix},
+\]">\[
+a=\begin{pmatrix}1&amp;1/2\\1/2&amp;2\end{pmatrix},
+\]</span>
+<p>identify the vector whose left multiplier is <span class="math" data-tex="\(a^{1/2}\)">\(a^{1/2}\)</span>, and compute its squared norm. Explain why replacing it by <span class="math" data-tex="\(D^{1/2}a^{1/2}\)">\(D^{1/2}a^{1/2}\)</span> generally changes the left multiplier.</p>
+<p><strong>Solution.</strong> The trace identities, positivity and Hilbert–Schmidt completion are proved by finite sums in <a href="OA-MOD-OW.html#oa-mod-ow-10">OW10</a>. The displayed matrix is positive because its quadratic form is</p>
+<span class="math math-display" data-tex="\[
+|z_1+z_2/2|^2+\tfrac74|z_2|^2\geq0.
+\]">\[
+|z_1+z_2/2|^2+\tfrac74|z_2|^2\geq0.
+\]</span>
+<p>Every matrix is finite for this weight, and</p>
+<span class="math math-display" data-tex="\[
+\langle xD^{1/2},yD^{1/2}\rangle_{\mathrm{HS}}
+=\operatorname{Tr}(D y^*x).
+\]">\[
+\langle xD^{1/2},yD^{1/2}\rangle_{\mathrm{HS}}
+=\operatorname{Tr}(D y^*x).
+\]</span>
+<p>Left multiplication acts as <span class="math" data-tex="\(L_b(z)=bz\)">\(L_b(z)=bz\)</span>. By (WH.33), the vector attached to <span class="math" data-tex="\(L_{a^{1/2}}\)">\(L_{a^{1/2}}\)</span> is <span class="math" data-tex="\(a^{1/2}D^{1/2}\)">\(a^{1/2}D^{1/2}\)</span>. Its squared norm is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(D^{1/2}aD^{1/2})
+=\operatorname{Tr}(Da)=2+14=16.
+\]">\[
+\operatorname{Tr}(D^{1/2}aD^{1/2})
+=\operatorname{Tr}(Da)=2+14=16.
+\]</span>
+<p>Since <span class="math" data-tex="\(D\)">\(D\)</span> is invertible, the vector <span class="math" data-tex="\(D^{1/2}a^{1/2}\)">\(D^{1/2}a^{1/2}\)</span> equals <span class="math" data-tex="\(\Lambda(x)\)">\(\Lambda(x)\)</span> with
+<span class="math" data-tex="\(x=D^{1/2}a^{1/2}D^{-1/2}\)">\(x=D^{1/2}a^{1/2}D^{-1/2}\)</span>; its left multiplier is <span class="math" data-tex="\(L_x\)">\(L_x\)</span>. Equality with <span class="math" data-tex="\(L_{a^{1/2}}\)">\(L_{a^{1/2}}\)</span> would require <span class="math" data-tex="\(D\)">\(D\)</span> to commute with <span class="math" data-tex="\(a^{1/2}\)">\(a^{1/2}\)</span>, and hence with <span class="math" data-tex="\(a\)">\(a\)</span>, which fails because the off-diagonal entries of <span class="math" data-tex="\(a\)">\(a\)</span> are nonzero and the diagonal entries of <span class="math" data-tex="\(D\)">\(D\)</span> are distinct. The vector ordering is therefore part of the reconstruction formula.</p>
+<h2 id="exact-exports-and-the-remaining-boundary">Exact exports and the remaining boundary</h2>
+<p>The two constructions preserve all of the following data: the algebra representation, the finite left ideal, the finite definition algebra, the GNS norm and pairing, the finite-star algebra, its closed involution, and the weight's finite and infinite values. The Hilbert algebra is recovered as its full completion; for a faithful normal semifinite input weight that finite-star algebra is already full. The right reconstructed weight agrees with the opposite weight under the specified GNS unitary.</p>
+<p>The proofs cover nonunital Hilbert algebras, arbitrary von Neumann algebras, uncountable index sets, nonseparable Hilbert spaces and genuinely infinite weights. The only countable approximations used in the closability criterion are graph-norm sequences; all global operator approximation and normality statements retain their nets.</p>
+<p>Locally compact group and Plancherel examples, C*-weight variants, modular automorphisms, standard forms and relative weight theory are developed in their respective lessons. The variational formula proved in WH-12 is used after the direct normality theorem. The completely positive maps below are a further consequence of the constructed multiplication domains; they are not silently imported through the source's proof order.</p>
+<p>The correspondence includes all finite-domain identities and infinite values; it does not require a state or a countable family of approximation projections.</p>
+<h2 id="completely-positive-maps-from-the-finite-algebras"><span id="oa-mod-wh-17"></span><span id="OA-MOD-WH-17"></span>Completely positive maps from the finite algebras</h2>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+\mathfrak m_l=\operatorname{span}\mathfrak n_l^*\mathfrak n_l,
+\qquad
+\mathfrak m_r=\operatorname{span}\mathfrak n_r^*\mathfrak n_r.
+\]">\[
+\mathfrak m_l=\operatorname{span}\mathfrak n_l^*\mathfrak n_l,
+\qquad
+\mathfrak m_r=\operatorname{span}\mathfrak n_r^*\mathfrak n_r.
+\]</span>
+<p>Their matrix orders are inherited from <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. To make the codomain convention explicit, a matrix <span class="math" data-tex="\([f_{ij}]\)">\([f_{ij}]\)</span> of normal functionals on a von Neumann algebra <span class="math" data-tex="\(N\)">\(N\)</span> is positive in <span class="math" data-tex="\(M_n(N_*)\)">\(M_n(N_*)\)</span> when the map</p>
+<span class="math math-display" data-tex="\[
+N\longrightarrow M_n(\mathbb C),\qquad b\longmapsto[f_{ij}(b)]
+\]">\[
+N\longrightarrow M_n(\mathbb C),\qquad b\longmapsto[f_{ij}(b)]
+\]</span>
+<p>is completely positive. Concretely, for every positive <span class="math" data-tex="\([b_{kl}]\in M_m(N)\)">\([b_{kl}]\in M_m(N)\)</span>, the scalar matrix with entries <span class="math" data-tex="\(f_{ij}(b_{kl})\)">\(f_{ij}(b_{kl})\)</span>, indexed by the pairs <span class="math" data-tex="\((i,k),(j,l)\)">\((i,k),(j,l)\)</span>, must be positive. This is the dual matrix order used here; positivity of the individual diagonal functionals alone would not define it.</p>
+<p><strong>Theorem.</strong> There are well-defined completely positive linear maps</p>
+<span class="math math-display" data-tex="\[
+\Theta_l:\mathfrak m_l\longrightarrow(M&#x27;)_*,
+\qquad
+\Theta_r:\mathfrak m_r\longrightarrow M_*,
+\tag{WH.48}
+\]">\[
+\Theta_l:\mathfrak m_l\longrightarrow(M&#x27;)_*,
+\qquad
+\Theta_r:\mathfrak m_r\longrightarrow M_*,
+\tag{WH.48}
+\]</span>
+<p>given by</p>
+<span class="math math-display" data-tex="\[
+\Theta_l\!\left(\sum_{j=1}^q\lambda_{\xi_j}^*\lambda_{\eta_j}\right)(b)
+=\sum_{j=1}^q\langle b\eta_j,\xi_j\rangle,
+\quad b\in M&#x27;,\quad \xi_j,\eta_j\in\mathcal B_l,
+\tag{WH.49}
+\]">\[
+\Theta_l\!\left(\sum_{j=1}^q\lambda_{\xi_j}^*\lambda_{\eta_j}\right)(b)
+=\sum_{j=1}^q\langle b\eta_j,\xi_j\rangle,
+\quad b\in M&#x27;,\quad \xi_j,\eta_j\in\mathcal B_l,
+\tag{WH.49}
+\]</span>
+<span class="math math-display" data-tex="\[
+\Theta_r\!\left(\sum_{j=1}^qR_{\xi_j}^*R_{\eta_j}\right)(a)
+=\sum_{j=1}^q\langle a\eta_j,\xi_j\rangle,
+\quad a\in M,\quad \xi_j,\eta_j\in\mathcal B_r.
+\tag{WH.50}
+\]">\[
+\Theta_r\!\left(\sum_{j=1}^qR_{\xi_j}^*R_{\eta_j}\right)(a)
+=\sum_{j=1}^q\langle a\eta_j,\xi_j\rangle,
+\quad a\in M,\quad \xi_j,\eta_j\in\mathcal B_r.
+\tag{WH.50}
+\]</span>
+<p>In particular, these maps send the indicated squares to the corresponding vector functionals. Their images of the positive parts of the closed and open unit balls are exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Theta_l(\{x\in(\mathfrak m_l)_+:\|x\|\leq1\})
+&amp;=\{\omega_\xi|_{M&#x27;}:\xi\in\mathcal B_l,\ \|\lambda_\xi\|\leq1\},\\
+\Theta_l(\{x\in(\mathfrak m_l)_+:\|x\|&lt;1\})
+&amp;=\{\omega_\xi|_{M&#x27;}:\xi\in\mathcal B_l,\ \|\lambda_\xi\|&lt;1\},
+\end{aligned}
+\tag{WH.51}
+\]">\[
+\begin{aligned}
+\Theta_l(\{x\in(\mathfrak m_l)_+:\|x\|\leq1\})
+&amp;=\{\omega_\xi|_{M&#x27;}:\xi\in\mathcal B_l,\ \|\lambda_\xi\|\leq1\},\\
+\Theta_l(\{x\in(\mathfrak m_l)_+:\|x\|&lt;1\})
+&amp;=\{\omega_\xi|_{M&#x27;}:\xi\in\mathcal B_l,\ \|\lambda_\xi\|&lt;1\},
+\end{aligned}
+\tag{WH.51}
+\]</span>
+<p>with the analogous two equalities for <span class="math" data-tex="\(\Theta_r\)">\(\Theta_r\)</span>, using <span class="math" data-tex="\(\mathcal B_r\)">\(\mathcal B_r\)</span>, <span class="math" data-tex="\(R_\eta\)">\(R_\eta\)</span> and vector functionals on <span class="math" data-tex="\(M\)">\(M\)</span>. Here <span class="math" data-tex="\(\omega_\xi(b)=\langle b\xi,\xi\rangle\)">\(\omega_\xi(b)=\langle b\xi,\xi\rangle\)</span>.</p>
+<p><strong>Proof of well-definedness.</strong> For a displayed expression <span class="math" data-tex="\(x=\sum_j\lambda_{\xi_j}^*\lambda_{\eta_j}\)">\(x=\sum_j\lambda_{\xi_j}^*\lambda_{\eta_j}\)</span>, the right side of (WH.49) is a finite sum of vector coefficients, hence is a normal bounded functional <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. For <span class="math" data-tex="\(\zeta\in\mathcal B_r\)">\(\zeta\in\mathcal B_r\)</span>, the mixed-product identity (WH.10) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(R_\zeta^*R_\zeta)
+&amp;=\sum_j\langle R_\zeta\eta_j,R_\zeta\xi_j\rangle\\
+&amp;=\sum_j\langle\lambda_{\eta_j}\zeta,\lambda_{\xi_j}\zeta\rangle
+=\langle x\zeta,\zeta\rangle.
+\end{aligned}
+\tag{WH.52}
+\]">\[
+\begin{aligned}
+f(R_\zeta^*R_\zeta)
+&amp;=\sum_j\langle R_\zeta\eta_j,R_\zeta\xi_j\rangle\\
+&amp;=\sum_j\langle\lambda_{\eta_j}\zeta,\lambda_{\xi_j}\zeta\rangle
+=\langle x\zeta,\zeta\rangle.
+\end{aligned}
+\tag{WH.52}
+\]</span>
+<p>If the expression represents <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, this is zero for every <span class="math" data-tex="\(\zeta\in\mathcal B_r\)">\(\zeta\in\mathcal B_r\)</span>.</p>
+<p>Take the positive contractions <span class="math" data-tex="\(e_i\in R(\mathcal A_r)\)">\(e_i\in R(\mathcal A_r)\)</span> of RD-05, with <span class="math" data-tex="\(e_i\to I\)">\(e_i\to I\)</span> strongly. For any <span class="math" data-tex="\(b\in(M&#x27;)_+\)">\(b\in(M&#x27;)_+\)</span>, the left-ideal property gives <span class="math" data-tex="\(b^{1/2}e_i\in\mathfrak n_r\)">\(b^{1/2}e_i\in\mathfrak n_r\)</span>, so it equals <span class="math" data-tex="\(R_{\zeta_i}\)">\(R_{\zeta_i}\)</span> for some <span class="math" data-tex="\(\zeta_i\in\mathcal B_r\)">\(\zeta_i\in\mathcal B_r\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+e_i b e_i=R_{\zeta_i}^*R_{\zeta_i},\qquad f(e_i b e_i)=0.
+\]">\[
+e_i b e_i=R_{\zeta_i}^*R_{\zeta_i},\qquad f(e_i b e_i)=0.
+\]</span>
+<p>This net is norm bounded and converges strongly, hence ultraweakly, to <span class="math" data-tex="\(b\)">\(b\)</span>. Normality of <span class="math" data-tex="\(f\)">\(f\)</span> gives <span class="math" data-tex="\(f(b)=0\)">\(f(b)=0\)</span>. Every element of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> is a complex linear combination of positive elements, so <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. Thus (WH.49) is independent of the expression for <span class="math" data-tex="\(x\)">\(x\)</span>, and the formula proves linearity. If <span class="math" data-tex="\(x\in(\mathfrak m_l)_+\)">\(x\in(\mathfrak m_l)_+\)</span>, WH-06 supplies <span class="math" data-tex="\(x^{1/2}=\lambda_\xi\)">\(x^{1/2}=\lambda_\xi\)</span>, so
+<span class="math" data-tex="\(\Theta_l(x)=\omega_\xi|_{M&#x27;}\)">\(\Theta_l(x)=\omega_\xi|_{M&#x27;}\)</span>, proving positivity.</p>
+<p><strong>Proof of complete positivity.</strong> Write <span class="math" data-tex="\(e_i=R_{\alpha_i}\)">\(e_i=R_{\alpha_i}\)</span> with <span class="math" data-tex="\(\alpha_i\in\mathcal A_r\)">\(\alpha_i\in\mathcal A_r\)</span>; these operators are self-adjoint. For <span class="math" data-tex="\(x\in\mathfrak m_l\)">\(x\in\mathfrak m_l\)</span> and <span class="math" data-tex="\(b\in M&#x27;\)">\(b\in M&#x27;\)</span>, formula (WH.49) and (WH.10) give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Theta_l(x)(e_i b e_i)
+&amp;=\sum_j\langle b e_i\eta_j,e_i\xi_j\rangle\\
+&amp;=\sum_j\langle b\lambda_{\eta_j}\alpha_i,
+\lambda_{\xi_j}\alpha_i\rangle\\
+&amp;=\langle xb\alpha_i,\alpha_i\rangle.
+\end{aligned}
+\tag{WH.53}
+\]">\[
+\begin{aligned}
+\Theta_l(x)(e_i b e_i)
+&amp;=\sum_j\langle b e_i\eta_j,e_i\xi_j\rangle\\
+&amp;=\sum_j\langle b\lambda_{\eta_j}\alpha_i,
+\lambda_{\xi_j}\alpha_i\rangle\\
+&amp;=\langle xb\alpha_i,\alpha_i\rangle.
+\end{aligned}
+\tag{WH.53}
+\]</span>
+<p>For fixed <span class="math" data-tex="\(i\)">\(i\)</span>, define on all of <span class="math" data-tex="\(M\)">\(M\)</span></p>
+<span class="math math-display" data-tex="\[
+T_i(x)(b)=\langle xb\alpha_i,\alpha_i\rangle,\qquad b\in M&#x27;.
+\]">\[
+T_i(x)(b)=\langle xb\alpha_i,\alpha_i\rangle,\qquad b\in M&#x27;.
+\]</span>
+<p>This is a normal functional of <span class="math" data-tex="\(b\)">\(b\)</span>, since it equals
+<span class="math" data-tex="\(\langle b\alpha_i,x^*\alpha_i\rangle\)">\(\langle b\alpha_i,x^*\alpha_i\rangle\)</span>. We verify that <span class="math" data-tex="\(T_i\)">\(T_i\)</span> is completely positive with the stated matrix order.</p>
+<p>Let <span class="math" data-tex="\(X=[x_{jk}]\in M_n(M)_+\)">\(X=[x_{jk}]\in M_n(M)_+\)</span> and <span class="math" data-tex="\(B=[b_{uv}]\in M_m(M&#x27;)_+\)">\(B=[b_{uv}]\in M_m(M&#x27;)_+\)</span>. On the direct sum <span class="math" data-tex="\(H^{nm}\)">\(H^{nm}\)</span>, with coordinates labelled <span class="math" data-tex="\((j,u)\)">\((j,u)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(\mathsf X z)_{j,u}=\sum_k x_{jk}z_{k,u},
+\qquad
+(\mathsf B z)_{j,u}=\sum_v b_{uv}z_{j,v}.
+\]">\[
+(\mathsf X z)_{j,u}=\sum_k x_{jk}z_{k,u},
+\qquad
+(\mathsf B z)_{j,u}=\sum_v b_{uv}z_{j,v}.
+\]</span>
+<p>Both operators are positive: each is, after grouping coordinates, a direct sum of copies of a positive matrix operator. Their entries commute, so <span class="math" data-tex="\(\mathsf X\mathsf B=\mathsf B\mathsf X\)">\(\mathsf X\mathsf B=\mathsf B\mathsf X\)</span>, and their product is positive. For example,
+<span class="math" data-tex="\(\mathsf X\mathsf B=\mathsf X^{1/2}\mathsf B\mathsf X^{1/2}\geq0\)">\(\mathsf X\mathsf B=\mathsf X^{1/2}\mathsf B\mathsf X^{1/2}\geq0\)</span>, since commutation passes to the bounded square root.</p>
+<p>Compress this product by the bounded map</p>
+<span class="math math-display" data-tex="\[
+V_i:\mathbb C^{nm}\to H^{nm},\qquad
+(c_{j,u})\longmapsto(c_{j,u}\alpha_i).
+\]">\[
+V_i:\mathbb C^{nm}\to H^{nm},\qquad
+(c_{j,u})\longmapsto(c_{j,u}\alpha_i).
+\]</span>
+<p>The resulting positive scalar matrix has entry</p>
+<span class="math math-display" data-tex="\[
+\langle x_{jk}b_{uv}\alpha_i,\alpha_i\rangle
+=T_i(x_{jk})(b_{uv})
+\]">\[
+\langle x_{jk}b_{uv}\alpha_i,\alpha_i\rangle
+=T_i(x_{jk})(b_{uv})
+\]</span>
+<p>in position <span class="math" data-tex="\((j,u),(k,v)\)">\((j,u),(k,v)\)</span>. This is exactly the required matrix test. Thus <span class="math" data-tex="\(T_i\)">\(T_i\)</span> is completely positive.</p>
+<p>For fixed <span class="math" data-tex="\(x=\sum_j\lambda_{\xi_j}^*\lambda_{\eta_j}\)">\(x=\sum_j\lambda_{\xi_j}^*\lambda_{\eta_j}\)</span>, the first line of (WH.53) and <span class="math" data-tex="\(e_i\to I\)">\(e_i\to I\)</span> strongly give</p>
+<span class="math math-display" data-tex="\[
+\|\Theta_l(x)\circ(b\mapsto e_i b e_i)-\Theta_l(x)\|
+\longrightarrow0.
+\tag{WH.54}
+\]">\[
+\|\Theta_l(x)\circ(b\mapsto e_i b e_i)-\Theta_l(x)\|
+\longrightarrow0.
+\tag{WH.54}
+\]</span>
+<p>Indeed each summand's error, uniformly for <span class="math" data-tex="\(\|b\|\leq1\)">\(\|b\|\leq1\)</span>, is at most
+<span class="math" data-tex="\(\|e_i\eta_j-\eta_j\|\,\|\xi_j\|
++\|\eta_j\|\,\|e_i\xi_j-\xi_j\|\)">\(\|e_i\eta_j-\eta_j\|\,\|\xi_j\|
++\|\eta_j\|\,\|e_i\xi_j-\xi_j\|\)</span>, using <span class="math" data-tex="\(\|e_i\|\leq1\)">\(\|e_i\|\leq1\)</span>.
+Thus <span class="math" data-tex="\(T_i(x)\to\Theta_l(x)\)">\(T_i(x)\to\Theta_l(x)\)</span> in predual norm for every <span class="math" data-tex="\(x\in\mathfrak m_l\)">\(x\in\mathfrak m_l\)</span>. For each fixed positive matrix <span class="math" data-tex="\(X\)">\(X\)</span> with entries in <span class="math" data-tex="\(\mathfrak m_l\)">\(\mathfrak m_l\)</span> and each positive <span class="math" data-tex="\(B\)">\(B\)</span>, its finite scalar matrices in the preceding test converge entrywise to the test matrix for <span class="math" data-tex="\(\Theta_l\)">\(\Theta_l\)</span>. Positivity is closed in a finite-dimensional matrix space. This proves complete positivity of <span class="math" data-tex="\(\Theta_l\)">\(\Theta_l\)</span>.</p>
+<p><strong>Proof of the range identities.</strong> Every <span class="math" data-tex="\(x\in(\mathfrak m_l)_+\)">\(x\in(\mathfrak m_l)_+\)</span> has <span class="math" data-tex="\(x^{1/2}=\lambda_\xi\)">\(x^{1/2}=\lambda_\xi\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\Theta_l(x)=\omega_\xi|_{M&#x27;},\qquad
+\|x\|=\|\lambda_\xi\|^2.
+\]">\[
+\Theta_l(x)=\omega_\xi|_{M&#x27;},\qquad
+\|x\|=\|\lambda_\xi\|^2.
+\]</span>
+<p>Conversely, every <span class="math" data-tex="\(\xi\in\mathcal B_l\)">\(\xi\in\mathcal B_l\)</span> gives
+<span class="math" data-tex="\(x=\lambda_\xi^*\lambda_\xi\in(\mathfrak m_l)_+\)">\(x=\lambda_\xi^*\lambda_\xi\in(\mathfrak m_l)_+\)</span>, with the same functional and norm identity. This proves both equalities in (WH.51), including the strict inequalities.</p>
+<p>Finally apply the established proof to the opposite right Hilbert algebra <span class="math" data-tex="\(\mathcal A_r^{\mathrm{op}}\)">\(\mathcal A_r^{\mathrm{op}}\)</span>. Its generated algebra is <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, its completed left multiplication map is <span class="math" data-tex="\(R\)">\(R\)</span> on <span class="math" data-tex="\(\mathcal B_r\)">\(\mathcal B_r\)</span>, and its commutant is <span class="math" data-tex="\(M\)">\(M\)</span>, as established in WH-03–04 and WH-12. Therefore (WH.49) becomes exactly (WH.50); its positivity and matrix tests give <span class="math" data-tex="\(\Theta_r\)">\(\Theta_r\)</span>, and (WH.51) gives the two claimed right-hand range identities. This proves all assertions in (WH.48–51). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The domains <span class="math" data-tex="\(\mathfrak m_l,\mathfrak m_r\)">\(\mathfrak m_l,\mathfrak m_r\)</span> need not be norm closed, and no bounded extension of <span class="math" data-tex="\(\Theta_l,\Theta_r\)">\(\Theta_l,\Theta_r\)</span> to the entire algebras is asserted. Their complete positivity means exactly the finite matrix tests above. Together with WH12, this proves the predual-map and functional-cone statements compared with Nelson, Lemma 4.2 and Corollary 4.3. The construction of the weights precedes these maps.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-FL.html">← The full left Hilbert algebra obtained by dualizing twice</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-WT.html">Changing algebra coordinates and scaling a weight →</a></span></nav>
+<p class="small source-link"><a href="src/weight-hilbert-algebra.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

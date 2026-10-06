@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Isotropic cotangent transport and discrete critical values</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><h1 id="isotropic-cotangent-transport-and-discrete-critical-values">Isotropic
+cotangent transport and discrete critical values</h1>
+<p>Suppose a function has derivative constrained to an isotropic
+cotangent set. Why should its selected values be locally finite? There
+are two issues: selected points may escape to infinity, and selected
+values may accumulate near a point that stays in a compact set.
+Properness controls the first issue. An analytic curve and the canonical
+one-form settle the second.</p>
+<p>We first prove this directly on the source manifold. We then
+establish the two cotangent transports, including their singular-set
+form calculus and the variable-rank linear-image argument. This also
+recovers the critical-value conclusion through the cotangent bundle of
+the line. Manifolds are finite dimensional, real analytic, Hausdorff and
+countable at infinity. Conic means invariant under every strictly
+positive fibre scale. No coefficient ring or sheaf finiteness condition
+enters these geometric results.</p>
+<p>Kashiwara–Schapira’s <a href="https://www.numdam.org/item/AST_1985__128__1_0/"><em>Microlocal
+Study of Sheaves</em>, Astérisque 128 (1985)</a> uses canonical forms to
+establish proper cotangent transport. We give its compactness and
+singular-form steps below, alongside a direct critical-set proof using
+analytic curve selection.</p>
+<p><em>Programme exposition: CC0. AI contributors: GPT-6.1 Sol and GPT-6
+Astra (OpenAI), Ultra, October 2026.</em></p>
+<h2 id="geometric-inputs">Exact geometric inputs</h2>
+<p>We use the following foundational results as prerequisites:</p>
+<ol type="1">
+<li>Subanalytic sets are closed under finite Boolean operations, closure
+and analytic inverse image. Their regular loci are subanalytic and
+dense. A regular point has an ambient neighborhood in which the set is a
+closed analytic submanifold.</li>
+<li>If a point lies in the closure of a subanalytic set, an analytic
+curve through that point enters the set at every sufficiently small
+positive parameter. Squaring the parameter gives a two-sided version if
+needed. This applies to the auxiliary subanalytic sets used below.</li>
+<li>An analytic map proper on the closure of a subanalytic subset has
+subanalytic image of that subset. The subset itself need not be
+closed.</li>
+<li>Every closed subanalytic set admits a proper surjective analytic
+parametrization by a manifold. For the analytic map in (C9), we use the
+<a href="SH03-finite-conormal-closures-and-generic-base-directions.html#analytic-critical-values">analytic
+critical-value theorem</a>, (A1)–(A8). Its analytic Taylor,
+implicit-function and constant-rank inputs remain explicitly stated
+calculus prerequisites.</li>
+</ol>
+<p><a href="SH03-subanalytic-sets-and-limiting-tangent-directions.html#one-forms-on-a-singular-set">Subanalytic
+sets and limiting tangent directions</a> states the geometric
+prerequisites in their wider normal-cone setting. Its <a href="SH03-subanalytic-sets-and-limiting-tangent-directions.html#from-a-local-analytic-presentation-to-analytic-curve-selection">local
+curve-selection reduction</a> identifies the required analytic
+preparation and cell/Puiseux inputs. Here items 1–2 suffice for the
+direct critical-value proof, together with elementary compactness and
+one-variable calculus. Items 3–4 enter the general image theorems
+later.</p>
+<h2 id="singular-form-calculus">Testing a one-form along approaches to a
+singular set</h2>
+<p>For an analytic one-form
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>
+and subanalytic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>⊂</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">E\subset M</annotation></semantics></math>,
+write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>E</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta|_E=0</annotation></semantics></math>
+when the form kills every tangent vector at every regular point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>.
+It does not mean that the ambient covector is zero. In a coordinate
+chart define the point cone by</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>v</mi><mo>:</mo><mspace width="0.222em"></mspace><msub><mi>z</mi><mi>j</mi></msub><mo>∈</mo><mi>E</mi><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>z</mi><mi>j</mi></msub><mo>→</mo><mi>x</mi><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>c</mi><mi>j</mi></msub><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>c</mi><mi>j</mi></msub><mo>→</mo><mi>∞</mi><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>c</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>z</mi><mi>j</mi></msub><mo>−</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>v</mi><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C1)</mtext></mrow><annotation encoding="application/x-tex">
+C_x(E)=\{v:\ z_j\in E,\ z_j\to x,\ c_j&gt;0,\ c_j\to\infty,
+\ c_j(z_j-x)\to v\}.
+\qquad\text{(C1)}
+</annotation></semantics></math></p>
+<p>The definition also makes sense at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∉</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">x\notin E</annotation></semantics></math>.
+Coordinate changes carry the limiting vector by their derivative, by
+first-order Taylor expansion.</p>
+<p><strong>Form test.</strong> The condition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>E</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta|_E=0</annotation></semantics></math>
+is equivalent to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta_x(v)=0</annotation></semantics></math>
+for every ambient
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v\in C_x(E)</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> First, replacing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+by its regular locus does not change (C1). Given a representing
+sequence, density provides regular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mi>j</mi></msub><annotation encoding="application/x-tex">w_j</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>w</mi><mi>j</mi></msub><mo>−</mo><msub><mi>z</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">∥</mo><mo>&lt;</mo><mn>1</mn><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><msub><mi>c</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\|w_j-z_j\|&lt;1/(j c_j)</annotation></semantics></math>.
+The scaled error tends to zero. The same argument shows
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mover><mi>E</mi><mo accent="true">¯</mo></mover><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_x(E)=C_x(\overline E)</annotation></semantics></math>.</p>
+<p>Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v\ne0</annotation></semantics></math>
+is in (C1). In a chart around
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+the subanalytic set</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>,</mo><mi>r</mi><mo>,</mo><mi>w</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>z</mi><mo>∈</mo><msub><mi>E</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">g</mi></mrow></msub><mo>,</mo><mspace width="0.222em"></mspace><mi>r</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>z</mi><mo>−</mo><mi>x</mi><mo>=</mo><mi>r</mi><mi>w</mi><mo form="postfix" stretchy="false">}</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C2)</mtext></mrow><annotation encoding="application/x-tex">
+\{(z,r,w):z\in E_{\mathrm{reg}},\ r&gt;0,\ z-x=rw\}
+\qquad\text{(C2)}
+</annotation></semantics></math></p>
+<p>has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,0,v)</annotation></semantics></math>
+in its closure: take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>j</mi></msub><mo>=</mo><mn>1</mn><mi>/</mi><msub><mi>c</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">r_j=1/c_j</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>j</mi></msub><mo>=</mo><msub><mi>c</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>z</mi><mi>j</mi></msub><mo>−</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">w_j=c_j(z_j-x)</annotation></semantics></math>
+after the regular approximation. Curve selection gives analytic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>r</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>w</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">z(t),r(t),w(t)</annotation></semantics></math>,
+with that endpoint, lying in (C2) for positive
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
+There is a finite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k\ge1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b&gt;0</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>b</mi><msup><mi>t</mi><mi>k</mi></msup><mo>+</mo><mi>O</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>t</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r(t)=bt^k+O(t^{k+1})</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+is analytic, positive for positive
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+and zero at zero. Consequently</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mi>b</mi><msup><mi>t</mi><mi>k</mi></msup><mi>v</mi><mo>+</mo><mi>O</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>t</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mn>0</mn><mo>=</mo><msub><mi>θ</mi><mrow><mi>z</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>z</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>b</mi><mi>k</mi><msup><mi>t</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>θ</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>O</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>t</mi><mi>k</mi></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C3)</mtext></mrow><annotation encoding="application/x-tex">
+z(t)=x+bt^k v+O(t^{k+1}),\qquad
+0=\theta_{z(t)}(z'(t))=bk t^{k-1}\theta_x(v)+O(t^k).
+\qquad\text{(C3)}
+</annotation></semantics></math></p>
+<p>At each positive parameter the curve lies locally in the regular
+manifold, so the first equality to zero follows from the hypothesis.
+Divide by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>t</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">t^{k-1}</annotation></semantics></math>
+and take the limit. The zero vector needs no argument. Conversely any
+tangent vector at a regular point is obtained in (C1) from a smooth
+curve with that derivative. This proves the equivalence.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p><strong>Analytic pullback, closure and union.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>:</mo><msup><mi>M</mi><mo>′</mo></msup><mo>→</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">h:M'\to M</annotation></semantics></math>
+is analytic,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>E</mi><mo>′</mo></msup><mo>,</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">E',E</annotation></semantics></math>
+are subanalytic, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>E</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">h(E')\subset E</annotation></semantics></math>,
+then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>E</mi></msub><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mo>⟹</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><msup><mi>h</mi><mo>*</mo></msup><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="prefix" stretchy="false">|</mo><msup><mi>E</mi><mo>′</mo></msup></msub><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C4)</mtext></mrow><annotation encoding="application/x-tex">
+\theta|_E=0\quad\Longrightarrow\quad(h^*\theta)|_{E'}=0.
+\qquad\text{(C4)}
+</annotation></semantics></math></p>
+<p>Indeed, a sequence for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><msub><mi>C</mi><msup><mi>x</mi><mo>′</mo></msup></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>E</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v\in C_{x'}(E')</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>z</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>h</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>x</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>d</mi><msub><mi>h</mi><msup><mi>x</mi><mo>′</mo></msup></msub><mi>v</mi></mrow><annotation encoding="application/x-tex">c_j(h(z_j)-h(x'))\to dh_{x'}v</annotation></semantics></math>:
+the first-order remainder multiplied by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>j</mi></msub><annotation encoding="application/x-tex">c_j</annotation></semantics></math>
+tends to zero because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">∥</mo><msub><mi>z</mi><mi>j</mi></msub><mo>−</mo><msup><mi>x</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">∥</mo></mrow><annotation encoding="application/x-tex">c_j\|z_j-x'\|</annotation></semantics></math>
+is bounded. Apply the form test. Equality of the cones of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>E</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline E</annotation></semantics></math>
+proves that vanishing passes to the closure and back. For a locally
+finite union, every convergent sequence lies locally in finitely many
+members; a subsequence lies in one member. Thus its point cone is the
+union of their cones, and vanishing on the members implies vanishing on
+their union. In particular, (C4) applies to a subset wholly contained in
+the singular locus; regularity of its image points is not assumed.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">T^*X</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>X</mi></msub><annotation encoding="application/x-tex">\alpha_X</annotation></semantics></math>
+be the canonical one-form,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>ξ</mi><mo form="prefix" stretchy="false">(</mo><mi>d</mi><mi>π</mi><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\alpha_{(x,\xi)}(v)=\xi(d\pi(v))</annotation></semantics></math>.
+A conic subanalytic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math>
+is isotropic here when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>X</mi></msub><msub><mo form="prefix" stretchy="false">|</mo><mi mathvariant="normal">Λ</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha_X|_\Lambda=0</annotation></semantics></math>.
+This agrees with symplectic isotropy on its regular locus: in
+coordinates
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mo>∑</mo><msub><mi>ξ</mi><mi>i</mi></msub><mi>d</mi><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\alpha=\sum\xi_i dx_i</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>α</mi><mo>=</mo><mo>∑</mo><mi>d</mi><msub><mi>ξ</mi><mi>i</mi></msub><mo>∧</mo><mi>d</mi><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">d\alpha=\sum d\xi_i\wedge dx_i</annotation></semantics></math>;
+the radial vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mo>∑</mo><msub><mi>ξ</mi><mi>i</mi></msub><msub><mi>∂</mi><msub><mi>ξ</mi><mi>i</mi></msub></msub></mrow><annotation encoding="application/x-tex">R=\sum\xi_i\partial_{\xi_i}</annotation></semantics></math>
+is tangent to the regular locus and satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ι</mi><mi>R</mi></msub><mi>d</mi><mi>α</mi><mo>=</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">\iota_Rd\alpha=\alpha</annotation></semantics></math>.
+Hence vanishing of the two-form implies vanishing of the one-form, while
+differentiating the pulled-back one-form proves the converse.</p>
+<p><span id="the-microlocal-bertinisard-theorem"></span></p>
+<h2 id="direct-critical-set-proof">Critical values directly from
+analytic curves</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">\varphi:X\to\mathbb R</annotation></semantics></math>
+be analytic and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Λ</mi><mo>⊂</mo><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">\Lambda\subset T^*X</annotation></semantics></math>
+closed, conic, subanalytic and isotropic. Assume that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><msub><mo form="prefix" stretchy="false">|</mo><mrow><mi>π</mi><mo form="prefix" stretchy="false">(</mo><mi mathvariant="normal">Λ</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\varphi|_{\pi(\Lambda)}</annotation></semantics></math>
+is proper. The selected values are</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>φ</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>d</mi><msub><mi>φ</mi><mi>x</mi></msub><mo>∈</mo><mi mathvariant="normal">Λ</mi><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(9)</mtext></mrow><annotation encoding="application/x-tex">
+S_\varphi
+=\{\varphi(x):d\varphi_x\in\Lambda\}.
+\qquad\text{(9)}
+</annotation></semantics></math></p>
+<p><strong>Microlocal Bertini–Sard theorem.</strong> The set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>φ</mi></msub><annotation encoding="application/x-tex">S_\varphi</annotation></semantics></math>
+is closed and locally finite in the ambient line. Equivalently, every
+compact interval meets it in a finite set.</p>
+<p><strong>Proof.</strong> Introduce the analytic derivative section
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>d</mi><msub><mi>φ</mi><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">s(x)=(x,d\varphi_x)</annotation></semantics></math>.
+Its selected source set is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msup><mi>s</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi mathvariant="normal">Λ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>s</mi><mo>*</mo></msup><msub><mi>α</mi><mi>X</mi></msub><mo>=</mo><mi>d</mi><mi>φ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>d</mi><mi>φ</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>E</mi></msub><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C5)</mtext></mrow><annotation encoding="application/x-tex">
+E=s^{-1}(\Lambda),\qquad s^*\alpha_X=d\varphi,
+\qquad d\varphi|_E=0.
+\qquad\text{(C5)}
+</annotation></semantics></math></p>
+<p>The set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+is closed and subanalytic, and the final assertion follows from (C4). If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>∈</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">x_0\in E</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
+is constant on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+in some neighborhood of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>.
+Otherwise the subanalytic set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>\</mo><msup><mi>φ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E\setminus\varphi^{-1}(\varphi(x_0))</annotation></semantics></math>
+would have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>
+in its closure. Select an analytic curve
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>
+entering this set. Apply (C4) to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>:</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>ϵ</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">\gamma:(0,\epsilon)\to E</annotation></semantics></math>.
+Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>φ</mi><mo>∘</mo><mi>γ</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>′</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>&lt;</mo><mi>t</mi><mo>&lt;</mo><mi>ϵ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>γ</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C6)</mtext></mrow><annotation encoding="application/x-tex">
+(\varphi\circ\gamma)'(t)=0\quad(0&lt;t&lt;\epsilon),
+\qquad \varphi(\gamma(t))=\varphi(x_0).
+\qquad\text{(C6)}
+</annotation></semantics></math></p>
+<p>The second equality follows from the first by the mean value theorem
+and continuity at zero. It contradicts the chosen set. This argument
+needs no connected-component enumeration, uniformization or Sard
+theorem.</p>
+<p>For compact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>⊂</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">J\subset\mathbb R</annotation></semantics></math>,
+the set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo form="prefix" stretchy="false">(</mo><mi mathvariant="normal">Λ</mi><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msup><mi>φ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pi(\Lambda)\cap\varphi^{-1}(J)</annotation></semantics></math>
+is compact by the stated properness. The closed subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>∩</mo><msup><mi>φ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E\cap\varphi^{-1}(J)</annotation></semantics></math>
+is compact too. The neighborhoods on which
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">\varphi|_E</annotation></semantics></math>
+is constant cover it, so finitely many suffice. Its image
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>φ</mi></msub><mo>∩</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">S_\varphi\cap J</annotation></semantics></math>
+is therefore finite. A subset of the line finite on every compact
+interval is locally finite and closed: a convergent sequence of distinct
+points would lie in a single compact interval.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The support includes zero covectors. Positive conicity and closedness
+imply</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo form="prefix" stretchy="false">(</mo><mi mathvariant="normal">Λ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo>:</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mi mathvariant="normal">Λ</mi><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C7)</mtext></mrow><annotation encoding="application/x-tex">
+\pi(\Lambda)=\{x:(x,0)\in\Lambda\}.
+\qquad\text{(C7)}
+</annotation></semantics></math></p>
+<p>Indeed, scaling any member of a nonempty fibre to zero stays in the
+closed set; the reverse inclusion is immediate. Thus the support is
+itself closed and subanalytic. Properness is required only there, not on
+all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.</p>
+<p>The same proof applies to the negative test
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>d</mi><msub><mi>φ</mi><mi>x</mi></msub><mo>∈</mo><mi mathvariant="normal">Λ</mi></mrow><annotation encoding="application/x-tex">-d\varphi_x\in\Lambda</annotation></semantics></math>,
+using
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>−</mi><mi>d</mi><msub><mi>φ</mi><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">s_-(x)=(x,-d\varphi_x)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>s</mi><mo>−</mo><mo>*</mo></msubsup><mi>α</mi><mo>=</mo><mi>−</mi><mi>d</mi><mi>φ</mi></mrow><annotation encoding="application/x-tex">s_-^*\alpha=-d\varphi</annotation></semantics></math>.
+Each signed value set is closed and locally finite; so is their union.
+The hypotheses impose positive conicity, not invariance under the
+antipodal map.</p>
+<h2 id="surjective-form-detection">Detecting vanishing after a
+surjective analytic map</h2>
+<p>The transport theorems need the converse of (C4). Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>E</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">h(E')=E</annotation></semantics></math>,
+with both subsets subanalytic. Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>h</mi><mo>*</mo></msup><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="prefix" stretchy="false">|</mo><msup><mi>E</mi><mo>′</mo></msup></msub><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mo>⟹</mo><mspace width="1.0em"></mspace><mi>θ</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>E</mi></msub><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C8)</mtext></mrow><annotation encoding="application/x-tex">
+(h^*\theta)|_{E'}=0\quad\Longrightarrow\quad\theta|_E=0.
+\qquad\text{(C8)}
+</annotation></semantics></math></p>
+<p>To prove it, pass to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mover><msup><mi>E</mi><mo>′</mo></msup><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">T=\overline{E'}</annotation></semantics></math>
+using the closure argument above and choose a proper analytic
+uniformization
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>:</mo><mi>W</mi><mo>→</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">q:W\to T</annotation></semantics></math>.
+Pullback gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mi>q</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>*</mo></msup><mi>θ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(hq)^*\theta=0</annotation></semantics></math>
+on the manifold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>.
+Around a regular point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>,
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+such that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>∩</mo><mi>V</mi><mo>=</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">E\cap V=N</annotation></semantics></math>
+is a closed analytic submanifold of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>E</mi><mo accent="true">¯</mo></mover><mo>∩</mo><mi>V</mi><mo>=</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">\overline E\cap V=N</annotation></semantics></math>.
+Continuity and surjectivity give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>⊂</mo><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>T</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mover><mi>E</mi><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">E\subset h(T)\subset\overline E</annotation></semantics></math>,
+so</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mi>q</mi><mo>:</mo><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mi>q</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>N</mi><mspace width="1.0em"></mspace><mtext mathvariant="normal">is surjective.</mtext><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C9)</mtext></mrow><annotation encoding="application/x-tex">
+hq:(hq)^{-1}(V)\longrightarrow N
+\quad\text{is surjective.}
+\qquad\text{(C9)}
+</annotation></semantics></math></p>
+<p>The domain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mi>q</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(hq)^{-1}(V)</annotation></semantics></math>
+is an open analytic manifold and the map (C9) is analytic into the
+embedded analytic manifold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>.
+Both have countable atlases. For positive-dimensional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>,
+the <a href="SH03-finite-conormal-closures-and-generic-base-directions.html#analytic-critical-values">analytic
+critical-value theorem</a> makes regular values dense in each target
+chart: critical values have measure zero, and surjectivity ensures a
+lift at every value. This invokes only that theorem’s standalone
+calculus proof, not the later conormal or isotropic results in its host
+lesson. At a regular value, an onto differential lifts every tangent
+vector of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>;
+the zero pullback therefore kills every such vector. Continuity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">\theta|_N</annotation></semantics></math>
+extends this to all points of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>.
+When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">dim</mi><mo>⁡</mo></mrow><mi>N</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\dim N=0</annotation></semantics></math>,
+tangent spaces vanish. This proves (C8) at every regular point.
+Properness was used for the available uniformization; it was not imposed
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>,
+and we did not infer that an arbitrary analytic image is
+subanalytic.</p>
+<h2 id="the-two-maps-have-different-targets">The two cotangent maps</h2>
+<p>For an analytic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>Y</mi><mo>→</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">f:Y\to X</annotation></semantics></math>,
+set</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>f</mi></msub><mo>=</mo><mi>Y</mi><msub><mo>×</mo><mi>X</mi></msub><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>f</mi><mi>π</mi></msub><mo>:</mo><msub><mi>C</mi><mi>f</mi></msub><mo>→</mo><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>f</mi><mi>d</mi></msub><mo>:</mo><msub><mi>C</mi><mi>f</mi></msub><mo>→</mo><msup><mi>T</mi><mo>*</mo></msup><mi>Y</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1)</mtext></mrow><annotation encoding="application/x-tex">
+C_f=Y\times_XT^*X,
+\qquad
+f_\pi:C_f\to T^*X,
+\qquad
+f_d:C_f\to T^*Y.
+\qquad\text{(1)}
+</annotation></semantics></math></p>
+<p>Their action is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>π</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>;</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>;</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>f</mi><mi>d</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>;</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>;</mo><mi>d</mi><msubsup><mi>f</mi><mi>y</mi><mi>t</mi></msubsup><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2)</mtext></mrow><annotation encoding="application/x-tex">
+f_\pi(y;\xi)=(f(y);\xi),\qquad
+f_d(y;\xi)=(y;df_y^t\xi).
+\qquad\text{(2)}
+</annotation></semantics></math></p>
+<p>They commute with positive fibre scaling, and the second is linear
+over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>,
+with no constant-rank hypothesis. In local coordinates both pulled-back
+canonical forms are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>i</mi></msub><msub><mi>ξ</mi><mi>i</mi></msub><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>f</mi><mi>i</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sum_i\xi_i\,d f_i(y)</annotation></semantics></math>.
+Thus</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>f</mi><mi>d</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>Y</mi></msub><mo>=</mo><msubsup><mi>f</mi><mi>π</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>X</mi></msub><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">on </mtext><mspace width="0.333em"></mspace></mrow><msub><mi>C</mi><mi>f</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3)</mtext></mrow><annotation encoding="application/x-tex">
+f_d^*\alpha_Y=f_\pi^*\alpha_X
+\quad\text{on }C_f.
+\qquad\text{(3)}
+</annotation></semantics></math></p>
+<p>These conventions use the transpose differential with its displayed
+positive sign. No antipodal map enters this identity.</p>
+<h2 id="proper-direct-transport">Proper direct transport</h2>
+<p>Given conic subanalytic isotropic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Λ</mi><mi>Y</mi></msub><mo>⊂</mo><msup><mi>T</mi><mo>*</mo></msup><mi>Y</mi></mrow><annotation encoding="application/x-tex">\Lambda_Y\subset T^*Y</annotation></semantics></math>,
+define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><msubsup><mi>f</mi><mi>d</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Λ</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msub><mi>C</mi><mi>f</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>D</mi><mi>f</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Λ</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>f</mi><mi>π</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5)</mtext></mrow><annotation encoding="application/x-tex">
+A=f_d^{-1}(\Lambda_Y)\subset C_f,
+\qquad
+D_f(\Lambda_Y)=f_\pi(A).
+\qquad\text{(5)}
+</annotation></semantics></math></p>
+<p><strong>Direct-transport theorem.</strong> If the actual restriction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>π</mi></msub><msub><mo form="prefix" stretchy="false">|</mo><mi>A</mi></msub><mo>:</mo><mi>A</mi><mo>→</mo><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">f_\pi|_A:A\to T^*X</annotation></semantics></math>
+has compact inverse images of compact sets, then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>f</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Λ</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D_f(\Lambda_Y)</annotation></semantics></math>
+is closed, conic, subanalytic and isotropic. Closedness of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Λ</mi><mi>Y</mi></msub><annotation encoding="application/x-tex">\Lambda_Y</annotation></semantics></math>
+is not an additional hypothesis.</p>
+<p><strong>Proof.</strong> The set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is subanalytic and conic. Its stated properness forces it to be closed
+in the correspondence manifold: if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>j</mi></msub><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">a_j\in A</annotation></semantics></math>
+converges to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+the images and their limit form a compact target set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+The compact inverse image of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is also compact, hence closed, in the Hausdorff ambient manifold. It
+contains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+First countability turns this sequential argument into closedness. Now
+the map is proper on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>A</mi><mo accent="true">¯</mo></mover><mo>=</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\overline A=A</annotation></semantics></math>;
+foundational input 3 makes its image subanalytic.</p>
+<p>A converging sequence in the image has preimages in the compact
+inverse image of the sequence together with its limit. Compactness gives
+a convergent subsequence with the required limiting image, so the image
+is closed. Conicity follows from fibre scaling. Finally (C4) and (3)
+give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>f</mi><mi>π</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><msub><mo form="prefix" stretchy="false">|</mo><mi>A</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msubsup><mi>f</mi><mi>d</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><msub><mo form="prefix" stretchy="false">|</mo><mi>A</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(f_\pi^*\alpha_X)|_A=(f_d^*\alpha_Y)|_A=0</annotation></semantics></math>.
+Apply (C8) to the surjection from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+onto its now-known subanalytic image.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>There is also a distinct weaker image assertion. If only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>π</mi></msub><msub><mo form="prefix" stretchy="false">|</mo><mover><mi>A</mi><mo accent="true">¯</mo></mover></msub></mrow><annotation encoding="application/x-tex">f_\pi|_{\overline A}</annotation></semantics></math>
+is proper, input 3 and the same form argument still give a conic
+subanalytic isotropic image of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+They do not make that image closed. Neither version assumes global
+properness of the base map.</p>
+<h2 id="isotropic-inverse-transport">Variable-rank linear images and
+inverse transport</h2>
+<p>We supply the conic-image calculation used for the other direction.
+Work locally over a relatively compact base chart, using analytic bundle
+coordinates. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>:</mo><mi>E</mi><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">L:E\to F</annotation></semantics></math>
+be an analytic linear bundle map over the identity and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">H\subset E</annotation></semantics></math>
+a positive-conic subanalytic set. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+be the closed unit disk bundle and set</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>=</mo><mi>H</mi><mo>∩</mo><mi>D</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>B</mi><mo>=</mo><mi>L</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>L</mi><mo form="prefix" stretchy="false">(</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi mathvariant="double-struck">ℝ</mi><mrow><mo>&gt;</mo><mn>0</mn></mrow></msub><mi>B</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C10)</mtext></mrow><annotation encoding="application/x-tex">
+H_0=H\cap D,\qquad B=L(H_0),\qquad L(H)=\mathbb R_{&gt;0}B.
+\qquad\text{(C10)}
+</annotation></semantics></math></p>
+<p>Over every compact base set,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+is compact. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+is proper on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><msub><mi>H</mi><mn>0</mn></msub><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline{H_0}</annotation></semantics></math>,
+giving subanalytic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.
+Also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L(D)</annotation></semantics></math>
+is closed and proper over the base: for a convergent image sequence, its
+base points lie in a compact set and its disk preimages have a
+convergent subsequence. Compactness over a compact base follows directly
+from continuity. Therefore
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>B</mi><mo accent="true">¯</mo></mover><mo>⊂</mo><mi>L</mi><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\overline B\subset L(D)</annotation></semantics></math>
+is proper over the base.</p>
+<p>For any subanalytic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>⊂</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">B\subset F</annotation></semantics></math>
+whose closure is proper over the base, its strictly positive saturation
+is subanalytic. To see this put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>e</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>t</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">\mu(t,e)=te</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>e</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>e</mi></mrow><annotation encoding="application/x-tex">p(t,e)=e</annotation></semantics></math>,
+and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>e</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mn>0</mn><mo>&lt;</mo><mi>t</mi><mo>≤</mo><mn>1</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>t</mi><mi>e</mi><mo>∈</mo><mi>B</mi><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi mathvariant="double-struck">ℝ</mi><mrow><mo>&gt;</mo><mn>0</mn></mrow></msub><mi>B</mi><mo>=</mo><mi>μ</mi><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo>∪</mo><mi>p</mi><mo form="prefix" stretchy="false">(</mo><mi>Q</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(C11)</mtext></mrow><annotation encoding="application/x-tex">
+Q=\{(t,e):0&lt;t\le1,\ te\in B\},\qquad
+\mathbb R_{&gt;0}B=\mu((0,1]\times B)\cup p(Q).
+\qquad\text{(C11)}
+</annotation></semantics></math></p>
+<p>The first image covers scales at most one, the second scales at least
+one. On the closure of the first domain,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>μ</mi><annotation encoding="application/x-tex">\mu</annotation></semantics></math>
+is proper: a compact target set bounds the base, while
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>B</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline B</annotation></semantics></math>
+over that base and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math>
+are compact. For the second image,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">¯</mo></mover><mo>⊂</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">\overline Q\subset[0,1]\times F</annotation></semantics></math>,
+and its intersection with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">[0,1]\times K</annotation></semantics></math>
+is compact for every compact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>⊂</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">K\subset F</annotation></semantics></math>;
+hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+is proper on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>Q</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline Q</annotation></semantics></math>.
+Input 3 proves both images subanalytic. We image the original domains,
+so this calculation does not add zero vectors absent from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.
+In (C10), every nonzero member of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+can be positively scaled into the unit disk; any zero member is already
+there. This proves (C10), including kernel outputs, at variable
+rank.</p>
+<p><strong>Inverse-transport theorem.</strong> For conic subanalytic
+isotropic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Λ</mi><mi>X</mi></msub><mo>⊂</mo><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">\Lambda_X\subset T^*X</annotation></semantics></math>,
+the set</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>f</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Λ</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>f</mi><mi>d</mi></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msubsup><mi>f</mi><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Λ</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4)</mtext></mrow><annotation encoding="application/x-tex">
+I_f(\Lambda_X)=f_d\bigl(f_\pi^{-1}(\Lambda_X)\bigr)
+\qquad\text{(4)}
+</annotation></semantics></math></p>
+<p>is conic, subanalytic and isotropic, without a noncharacteristic or
+rank assumption. Indeed,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><msubsup><mi>f</mi><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Λ</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B=f_\pi^{-1}(\Lambda_X)</annotation></semantics></math>
+is a conic subanalytic subset of the bundle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>f</mi></msub><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">C_f\to Y</annotation></semantics></math>.
+The linear-image calculation applies to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>d</mi></msub><annotation encoding="application/x-tex">f_d</annotation></semantics></math>.
+Equations (C4) and (3) make
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>f</mi><mi>d</mi><mo>*</mo></msubsup><msub><mi>α</mi><mi>Y</mi></msub></mrow><annotation encoding="application/x-tex">f_d^*\alpha_Y</annotation></semantics></math>
+vanish on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>,
+and (C8) detects vanishing on its image. This is the ordinary
+transpose-differential image; it makes no claim to equal a limiting
+characteristic inverse.</p>
+<h2 id="why-a-one-dimensional-isotropic-image-has-isolated-covector-tests">A
+second proof using the cotangent line</h2>
+<p>For conic subanalytic isotropic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>⊂</mo><msup><mi>T</mi><mo>*</mo></msup><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">\Gamma\subset T^*\mathbb R</annotation></semantics></math>,
+consider</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>:</mo><mi mathvariant="double-struck">ℝ</mi><mo>→</mo><msup><mi>T</mi><mo>*</mo></msup><mi mathvariant="double-struck">ℝ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>i</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>;</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>S</mi><mo>=</mo><msup><mi>i</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi mathvariant="normal">Γ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6)</mtext></mrow><annotation encoding="application/x-tex">
+i:\mathbb R\to T^*\mathbb R,
+\qquad i(t)=(t;1),\qquad S=i^{-1}(\Gamma).
+\qquad\text{(6)}
+</annotation></semantics></math></p>
+<p>The section pulls
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">a\,dt</annotation></semantics></math>
+back to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">dt</annotation></semantics></math>,
+so (C4) gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>t</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>S</mi></msub><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7)</mtext></mrow><annotation encoding="application/x-tex">
+dt|_S=0.
+\qquad\text{(7)}
+</annotation></semantics></math></p>
+<p>If distinct
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>∈</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">t_j\in S</annotation></semantics></math>
+converged to any ambient
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mn>0</mn></msub><annotation encoding="application/x-tex">t_0</annotation></semantics></math>,
+pass to points on one side and set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>j</mi></msub><mo>=</mo><mn>1</mn><mi>/</mi><mo form="prefix" stretchy="false">|</mo><msub><mi>t</mi><mi>j</mi></msub><mo>−</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">c_j=1/|t_j-t_0|</annotation></semantics></math>.
+Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>t</mi><mi>j</mi></msub><mo>−</mo><msub><mi>t</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>1</mn><mspace width="1.0em"></mspace><mtext mathvariant="normal">or</mtext><mspace width="1.0em"></mspace><mo>−</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(8)</mtext></mrow><annotation encoding="application/x-tex">
+c_j(t_j-t_0)=1\quad\text{or}\quad-1.
+\qquad\text{(8)}
+</annotation></semantics></math></p>
+<p>The resulting nonzero cone vector contradicts the form test for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">dt</annotation></semantics></math>.
+This works even at a point outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+and does not assume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
+closed. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+is closed and locally finite.</p>
+<p>Apply this observation to the function theorem. Its cotangent
+correspondence is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>φ</mi></msub><mo>=</mo><mi>X</mi><mo>×</mo><msub><mi mathvariant="double-struck">ℝ</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_\varphi=X\times\mathbb R_a</annotation></semantics></math>,
+with</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>φ</mi><mi>d</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>;</mo><mi>a</mi><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>φ</mi><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>φ</mi><mi>π</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>;</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(10)</mtext></mrow><annotation encoding="application/x-tex">
+\varphi_d(x,a)=(x;a\,d\varphi_x),\qquad
+\varphi_\pi(x,a)=(\varphi(x);a).
+\qquad\text{(10)}
+</annotation></semantics></math></p>
+<p>The incidence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><msubsup><mi>φ</mi><mi>d</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><mi mathvariant="normal">Λ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A=\varphi_d^{-1}(\Lambda)</annotation></semantics></math>
+is closed. For compact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>⊂</mo><msup><mi>T</mi><mo>*</mo></msup><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">K\subset T^*\mathbb R</annotation></semantics></math>,
+denote its projections to the base and covector coordinates by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.
+The inverse image of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is a closed subset of</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>π</mi><mo form="prefix" stretchy="false">(</mo><mi mathvariant="normal">Λ</mi><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msup><mi>φ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo>×</mo><mi>B</mi><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(11)</mtext></mrow><annotation encoding="application/x-tex">
+\bigl(\pi(\Lambda)\cap\varphi^{-1}(J)\bigr)\times B,
+\qquad\text{(11)}
+</annotation></semantics></math></p>
+<p>which is compact by the support-properness assumption. This includes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a=0</annotation></semantics></math>:
+membership in the incidence still requires a base point in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo form="prefix" stretchy="false">(</mo><mi mathvariant="normal">Λ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pi(\Lambda)</annotation></semantics></math>.
+Proper direct transport therefore gives a closed conic subanalytic
+isotropic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>=</mo><msub><mi>φ</mi><mi>π</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Gamma=\varphi_\pi(A)</annotation></semantics></math>,
+and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>φ</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>t</mi><mo>:</mo><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>;</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mi mathvariant="normal">Γ</mi><mo form="postfix" stretchy="false">}</mo><mo>=</mo><msup><mi>i</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi mathvariant="normal">Γ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(12)</mtext></mrow><annotation encoding="application/x-tex">
+S_\varphi=\{t:(t;1)\in\Gamma\}=i^{-1}(\Gamma).
+\qquad\text{(12)}
+</annotation></semantics></math></p>
+<p>The cotangent-line calculation proves the same critical-value
+conclusion. Unlike the earlier direct proof, this route also uses proper
+subanalytic images and surjective form detection. Keeping the routes
+separate makes their actual prerequisite requirements visible.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<h3 id="escape-of-source-points-allows-accumulation-of-selected-values">Escape
+of source points allows accumulation of selected values</h3>
+<p><em>Difficulty: Advanced.</em> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Λ</mi><mo>⊂</mo><msup><mi>T</mi><mo>*</mo></msup><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">\Lambda\subset T^*\mathbb R</annotation></semantics></math>
+be the zero section together with every full fibre above a positive
+integer, and set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>1</mn><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\varphi(x)=1/(1+x^2)</annotation></semantics></math>.
+Determine the selected values and test the theorem’s properness
+hypothesis.</p>
+<p><strong>Solution.</strong> The integer fibres are locally finite in
+the cotangent ambient. Each is closed and analytic, and its canonical
+form vanishes since its base coordinate is fixed. The zero section also
+has zero canonical form. The local finite-union rule proves isotropy,
+while locality proves closedness and subanalyticity. All fibres scale
+positively. The support is the whole line. On the zero section the test
+requires
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>φ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mn>2</mn><mi>x</mi><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varphi'(x)=-2x/(1+x^2)^2=0</annotation></semantics></math>,
+hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>;
+each positive integer is selected because its whole fibre is present.
+Therefore</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>φ</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mn>1</mn><mo form="postfix" stretchy="false">}</mo><mo>∪</mo><mo form="prefix" stretchy="false">{</mo><mn>1</mn><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><msup><mi>m</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>m</mi><mo>≥</mo><mn>1</mn><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(14)</mtext></mrow><annotation encoding="application/x-tex">
+S_\varphi=\{1\}\cup\{1/(1+m^2):m\ge1\}.
+\qquad\text{(14)}
+</annotation></semantics></math></p>
+<p>Zero is an accumulation value but is not a value of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>.
+The selected points escape to infinity;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>φ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">\varphi^{-1}([0,1])=\mathbb R</annotation></semantics></math>
+is not compact. Thus properness on the support fails. Individual
+isolation of every existing selected value does not imply closed local
+finiteness in the ambient line.</p>
+<h3 id="ordinary-critical-values-on-a-closed-analytic-submanifold">Ordinary
+critical values on a closed analytic submanifold</h3>
+<p><em>Difficulty: Intermediate.</em> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>⊂</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">N\subset X</annotation></semantics></math>
+be a closed analytic submanifold with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">\varphi|_N</annotation></semantics></math>
+proper. Identify its critical values through the theorem, and compute
+the case
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>v</mi><mo>=</mo><msup><mi>u</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">N=\{(u,v):v=u^2\}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">\varphi(u,v)=v</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Λ</mi><mo>=</mo><msubsup><mi>T</mi><mi>N</mi><mo>*</mo></msubsup><mi>X</mi></mrow><annotation encoding="application/x-tex">\Lambda=T_N^*X</annotation></semantics></math>.
+This is closed and conic. In submanifold coordinates it is an analytic
+bundle; a tangent vector to its total space projects to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>x</mi></msub><mi>N</mi></mrow><annotation encoding="application/x-tex">T_xN</annotation></semantics></math>,
+which its covector kills, proving canonical-form isotropy. Its support
+is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>.
+The condition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi>φ</mi><mi>x</mi></msub><mo>∈</mo><msubsup><mi>T</mi><mi>N</mi><mo>*</mo></msubsup><mi>X</mi></mrow><annotation encoding="application/x-tex">d\varphi_x\in T_N^*X</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mi>φ</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>N</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d(\varphi|_N)_x=0</annotation></semantics></math>,
+so the selected values are precisely the ordinary critical values. Their
+closed local finiteness follows under the given properness. On the
+parabola the restriction is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>↦</mo><msup><mi>u</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">u\mapsto u^2</annotation></semantics></math>,
+a proper function with derivative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>u</mi></mrow><annotation encoding="application/x-tex">2u</annotation></semantics></math>.
+Its unique critical point is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,0)</annotation></semantics></math>
+and its unique critical value is zero; equivalently
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>v</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>u</mi></mrow><annotation encoding="application/x-tex">dv(1,2u)=2u</annotation></semantics></math>.</p>
+<h3 id="a-quadratic-function-and-two-source-strata">A quadratic function
+and two source strata</h3>
+<p><em>Difficulty: Intermediate.</em> Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\varphi(x)=x^2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math>
+equal to the zero section of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mo>*</mo></msup><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">T^*\mathbb R</annotation></semantics></math>
+together with its full fibre over zero. Compute the transported set and
+both signed selections.</p>
+<p><strong>Solution.</strong> The two conormals form a closed conic
+subanalytic isotropic union. The support is all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>,
+on which
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mn>2</mn></msup><annotation encoding="application/x-tex">x^2</annotation></semantics></math>
+is proper. In (10), membership of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>2</mn><mi>a</mi><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,2ax)</annotation></semantics></math>
+requires
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a=0</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x\ne0</annotation></semantics></math>,
+while every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+is admitted when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>.
+Consequently</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>;</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>t</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>∪</mo><msubsup><mi>T</mi><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><mo>*</mo></msubsup><msub><mi mathvariant="double-struck">ℝ</mi><mi>t</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13)</mtext></mrow><annotation encoding="application/x-tex">
+\Gamma=\{(t;0):t\ge0\}\cup T^*_{\{0\}}\mathbb R_t.
+\qquad\text{(13)}
+</annotation></semantics></math></p>
+<p>Both slices
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a=1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">a=-1</annotation></semantics></math>
+select only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>.
+Directly,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>±</mi><mn>2</mn><mi>x</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\pm2x\,dx</annotation></semantics></math>
+lies in the zero section only when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>,
+and the full fibre adds that same point. Hence both signed value sets
+are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{0\}</annotation></semantics></math>.</p>
+<h3 id="proper-incidence-for-a-nonproper-base-map">Proper incidence for
+a nonproper base map</h3>
+<p><em>Difficulty: Intermediate.</em> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">f(u,v)=u</annotation></semantics></math>,
+compute direct transport of the point conormal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>T</mi><mrow><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><mo>*</mo></msubsup><msup><mi mathvariant="double-struck">ℝ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">T^*_{\{(0,0)\}}\mathbb R^2</annotation></semantics></math>.
+Compare the properness condition with that for the source zero
+section.</p>
+<p><strong>Solution.</strong> In correspondence coordinates,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>d</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>;</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>;</mo><mi>ξ</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f_d(u,v;\xi)=(u,v;\xi,0)</annotation></semantics></math>.
+Point-conormal membership forces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u=v=0</annotation></semantics></math>;
+the incidence maps isomorphically to the closed target fibre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>T</mi><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><mo>*</mo></msubsup><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">T^*_{\{0\}}\mathbb R</annotation></semantics></math>.
+This map is proper, although the base projection has noncompact fibres.
+For the source zero section, incidence only forces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi=0</annotation></semantics></math>,
+and the inverse image of the single output
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>;</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0;0)</annotation></semantics></math>
+contains the entire line
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>v</mi><mo>;</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,v;0)</annotation></semantics></math>.
+The hypothesis fails. The resulting image nevertheless happens to be the
+target zero section, showing that the sufficient properness condition is
+not necessary for isotropy in each particular example.</p>
+<h3 id="a-critical-differential-can-collapse-an-ordinary-inverse-image">A
+critical differential can collapse an ordinary inverse image</h3>
+<p><em>Difficulty: Introductory.</em> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>y</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">f(y)=y^3</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Λ</mi><mi>X</mi></msub><mo>=</mo><msubsup><mi>T</mi><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><mo>*</mo></msubsup><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">\Lambda_X=T^*_{\{0\}}\mathbb R</annotation></semantics></math>,
+compare (4) with the conormal of the inverse-image point.</p>
+<p><strong>Solution.</strong> The base equation is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>y</mi><mn>3</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y^3=0</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>.
+Every input covector is allowed, but
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msubsup><mi>f</mi><mi>y</mi><mi>t</mi></msubsup><mi>ξ</mi><mo>=</mo><mn>3</mn><msup><mi>y</mi><mn>2</mn></msup><mi>ξ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">df_y^t\xi=3y^2\xi=0</annotation></semantics></math>.
+The ordinary inverse transport is the single zero covector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>;</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0;0)</annotation></semantics></math>,
+a zero-dimensional conic analytic isotropic set. The conormal of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">f^{-1}(0)=\{0\}</annotation></semantics></math>
+is the full fibre. The difference reflects the actual zero derivative;
+no noncharacteristic condition was available to identify these sets, and
+a limiting inverse construction is a different operation.</p>
+<h2 id="references-and-further-geometric-work">Sources and scope</h2>
+<p>Kashiwara and Schapira, <a href="https://www.numdam.org/item/AST_1985__128__1_0/"><em>Microlocal
+Study of Sheaves</em></a>, Astérisque 128 (1985), develops the
+isotropic-set setting and canonical-form transport for locally closed
+subanalytic sets. The transport statements here allow arbitrary
+subanalytic subsets: the form test (C1)–(C4), uniformization and the
+proper-closure image theorem supply the required arguments for that
+broader convention.</p>
+<p>The form test, pullback/closure/union rules, local constancy on the
+selected source set, compactness proof of finite values, surjective
+detection, conic linear-image calculation and cotangent-line comparison
+are proved above from the listed prerequisites. The subanalytic
+foundations and elementary analytic-calculus inputs remain
+prerequisites. The analytic critical-value theorem used in (C9) has its
+full argument in the linked section, independent of that lesson’s later
+conormal results. The constructibility criterion for sheaves
+additionally requires microsupport and stratification results; it is not
+a conclusion of this geometric lesson.</p>
+</main></body></html>

@@ -1,0 +1,234 @@
+# Hilbert's Theorem 90 and Kummer theory
+
+*Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).*
+
+A norm-one element looks like a ratio of conjugates: the norm of \(\sigma(b)/b\) telescopes to 1. Hilbert's Theorem 90 says that this observation accounts for every norm-one element in a cyclic extension. Its cocycle form works for any finite Galois group and supplies the existence step in Kummer theory. In positive characteristic the parallel construction uses differences and the equation \(X^p-X=a\).
+
+We assume finite Galois theory and the closed-subgroup and continuity results of [Profinite groups and infinite Galois theory](profinite-groups-and-infinite-galois-theory.md). The norm-one and cocycle arguments below are explicit; they can be read before the Tate-group language of [Cohomology of cyclic groups and the Herbrand quotient](cohomology-of-cyclic-groups-and-the-herbrand-quotient.md). Basic references are Milne’s freely available notes and the Stacks project. All extensions below lie in a chosen separable closure when a common ambient field is needed.
+
+## 1. Detecting a nonzero averaging operator
+
+If \(L/K\) is finite Galois, averaging \(x\) over its conjugates gives a trace. In characteristic dividing \([L:K]\), the trace of 1 is zero. That does not mean that the trace map is zero. The following independence argument will provide the nonzero averages we actually need.
+
+**Dedekind's independence lemma.** Distinct group homomorphisms \(\chi_1,\ldots,\chi_m:S\to F^\times\), where \(F\) is a field, are linearly independent over \(F\) as functions on \(S\). In particular, distinct field embeddings into \(F\) are linearly independent.
+
+**Proof.** Suppose a nonzero relation exists and choose one with as few nonzero coefficients as possible. A one-term relation is impossible because a character takes nonzero values. Relabel its terms so that all its coefficients are nonzero. Choose \(h\in S\) with \(\chi_1(h)\ne\chi_m(h)\). Evaluate the relation at \(hx\) and subtract \(\chi_m(h)\) times the relation at \(x\). The last term disappears while the first does not. This is a nonzero relation with fewer terms, a contradiction. For embeddings, apply the result to their restrictions to the multiplicative group of the domain field. \(\square\)
+
+Thus a linear combination \(\sum_{g\in G}a_g g\) of distinct Galois automorphisms is a nonzero operator whenever its coefficients are not all zero. This is stronger than asserting that a particular value, such as its value at 1, is nonzero.
+
+## 2. Ratios of conjugates
+
+### Theorem 3.1. Hilbert's Theorem 90
+
+For a finite Galois extension \(L/K\), with group \(G\),
+
+\[
+H^1(G,L^\times)=0.
+\]
+
+If \(G=\langle\sigma\rangle\) is cyclic, then
+
+\[
+N_{L/K}(a)=1
+\quad\Longleftrightarrow\quad
+a=\frac{\sigma(b)}b\text{ for some }b\in L^\times.
+\]
+
+**Proof.** Let \(c:G\to L^\times\) be a multiplicative cocycle, so \(c(gh)=c(g)g(c(h))\). Independence gives \(t\in L\) such that
+
+\[
+S=\sum_{h\in G}c(h)h(t)\ne0.
+\]
+
+For \(g\in G\), reindex the sum by \(gh\):
+
+\[
+g(S)=\sum_h g(c(h))gh(t)
+=c(g)^{-1}\sum_h c(gh)gh(t)
+=c(g)^{-1}S.
+\]
+
+Taking \(b=S^{-1}\) gives \(g(b)/b=c(g)\). Every cocycle is therefore a coboundary.
+
+For cyclic \(G\) of order \(n\), a norm-one element \(a\) defines the cocycle
+
+\[
+c(\sigma^j)=\prod_{i=0}^{j-1}\sigma^i(a).
+\]
+
+The norm-one condition makes this definition compatible with \(\sigma^n=1\). Apply the first part and evaluate at \(\sigma\). Conversely, the norm of \(\sigma(b)/b\) is 1 by telescoping. \(\square\)
+
+For example, in \(\mathbf Q(i)\), take \(\sigma(i)=-i\) and \(b=2-i\). Then
+
+\[
+\frac{\sigma(b)}b=\frac{2+i}{2-i}=\frac{3+4i}{5}.
+\]
+
+Any two nonzero choices of \(b\) for the same ratio differ by a factor in \(\mathbf Q^\times\): their quotient is fixed by \(\sigma\). The theorem produces an element, not a preferred element.
+
+## 3. Differences of conjugates
+
+### Proposition 3.2. Additive Hilbert 90
+
+For a finite Galois extension \(L/K\),
+
+\[
+H^1(G,L)=0.
+\]
+
+If \(G=\langle\sigma\rangle\) is cyclic, then \(\operatorname{Tr}_{L/K}(a)=0\) if and only if \(a=\sigma(b)-b\) for some \(b\in L\).
+
+**Proof.** Independence says that \(\sum_{g\in G}g\) is a nonzero operator. Its image lies in \(K\). Choose \(t\) with \(\operatorname{Tr}_{L/K}(t)=1\), by scaling a value with nonzero trace.
+
+Given an additive cocycle \(c(gh)=c(g)+g c(h)\), put \(S=\sum_h c(h)h(t)\). Reindexing gives
+
+\[
+g(S)=\sum_h(c(gh)-c(g))gh(t)=S-c(g).
+\]
+
+Thus \(b=-S\) satisfies \(g(b)-b=c(g)\). For a cyclic group of order \(n\), a trace-zero element \(a\) defines the cocycle \(c(\sigma^j)=\sum_{i=0}^{j-1}\sigma^i(a)\), with \(c(1)=0\). Trace zero makes this formula periodic modulo \(n\); splitting a sum at \(j\) verifies \(c(\sigma^{j+k})=c(\sigma^j)+\sigma^j c(\sigma^k)\), including when the indices wrap around. The coboundary formula at \(\sigma\) gives \(a=\sigma(b)-b\). Conversely that difference has trace zero by telescoping. \(\square\)
+
+This proof works even when the characteristic divides \(|G|\). Dividing by \(|G|\) would fail in that case; choosing a trace-one element avoids that division.
+
+**Finite character lemma.** If a finite abelian group \(B\) is killed by \(n\), and a field contains all \(n\) distinct \(n\)-th roots of unity, then
+\(\operatorname{Hom}(B,\mu_n)\) has \(|B|\) elements and its characters separate elements of \(B\).
+
+**Proof.** Write \(B\) additively. Every finite subgroup of a field's multiplicative group is cyclic, by the exponent and polynomial-root argument of lesson 1, section 0. In particular \(\mu_c\) is cyclic of order \(c\) for every \(c\mid n\). Suppose a character \(\chi\) is defined on a subgroup \(A\subset B\), and adjoin \(x\in B\). Let \(c\) be the order of \(x\), and \(d\) its order modulo \(A\); then \(d\mid c\) and \(dx\in A\). We have \(\chi(dx)^{c/d}=1\). In the cyclic group \(\mu_c\), the image of the \(d\)-th power map is exactly \(\mu_{c/d}\), so choose \(z\in\mu_c\) with \(z^d=\chi(dx)\). The formula
+\[
+\chi'(a+kx)=\chi(a)z^k
+\]
+defines an extension to \(A+\langle x\rangle\): changing a representation changes \(k\) by a multiple of \(d\), and the accompanying factor from \(A\) cancels by the equation for \(z\). There are exactly \(d\) choices for \(z\) in \(\mu_n\), since \(d\mid n\); all have \(z^c=(z^d)^{c/d}=1\), so each gives an extension. Starting at the trivial subgroup and adjoining generators therefore multiplies the character count by the same indices as the group order. The count is \(|B|\). To separate a nonzero \(x\), first assign to \(x\) a primitive root of its order on \(\langle x\rangle\), then extend this character through the remaining generators. Its value at \(x\) stays nontrivial. \(\square\)
+
+## 4. Radicals as characters
+
+Let \(n\geq1\) be prime to \(\operatorname{char}K\), and assume \(\mu_n\subset K\). Write \(G_K=\operatorname{Gal}(K^{\mathrm{sep}}/K)\). For \(a\in K^\times\), choose \(\alpha\) with \(\alpha^n=a\), and define
+
+\[
+\chi_a(g)=\frac{g(\alpha)}{\alpha}\in\mu_n.
+\]
+
+All \(n\)-th roots of \(a\) differ by an element of \(\mu_n\subset K\), so this character does not depend on the chosen root. It is a homomorphism because \(G_K\) acts trivially on \(\mu_n\), and it is continuous because \(\alpha\) lies in a finite extension. Multiplying \(a\) by an \(n\)-th power in \(K\) does not change it.
+
+The resulting map
+
+\[
+K^\times/K^{\times n}\longrightarrow
+\operatorname{Hom}_{\mathrm{cont}}(G_K,\mu_n)
+\]
+
+is an isomorphism. Injectivity holds because a root fixed by all of \(G_K\) belongs to \(K\). For surjectivity, a continuous character factors through the Galois group of some finite Galois \(E/K\): its open kernel contains an open normal subgroup. Regard the character as an \(E^\times\)-valued cocycle. Hilbert 90 gives \(\alpha\in E^\times\) with \(g(\alpha)/\alpha=\chi(g)\). Then \(\alpha^n\) is fixed by the finite group and belongs to \(K^\times\), giving the desired preimage.
+
+### Theorem 3.3. Kummer correspondence
+
+Under these hypotheses, the assignments
+
+\[
+\Delta\longmapsto K(\Delta^{1/n}),
+\qquad
+L\longmapsto\{a\in K^\times:a\text{ has an }n\text{-th root in }L\}
+\]
+
+are inverse inclusion-preserving bijections between subgroups
+\(K^{\times n}\subset\Delta\subset K^\times\) and abelian Galois extensions \(L/K\) of exponent dividing \(n\). They include infinite extensions. The pairing
+
+\[
+\langle g,a\rangle=\frac{g(\alpha)}\alpha,
+\qquad \alpha^n=a,
+\]
+
+identifies
+
+\[
+\operatorname{Gal}(K(\Delta^{1/n})/K)
+\simeq\operatorname{Hom}(\Delta/K^{\times n},\mu_n).
+\]
+
+Give \(\Delta/K^{\times n}\) the discrete topology and the Hom group the topology inherited from the product \(\mu_n^{\Delta/K^{\times n}}\). Finite subgroups correspond to finite extensions, with
+
+\[
+[K(\Delta^{1/n}):K]=|\Delta/K^{\times n}|.
+\]
+
+**Proof.** Start with a finite subgroup \(D=\Delta/K^{\times n}\). Choose finitely many representatives generating it. Their root fields are Galois because all the required roots of unity are in \(K\); their compositum \(L\) is finite Galois. Its Galois action injects into \(\operatorname{Hom}(D,\mu_n)\), since the roots generate \(L\). In particular its group \(G\) is abelian of exponent dividing \(n\).
+
+The pairing also injects \(D\) into \(\operatorname{Hom}(G,\mu_n)\): if every element of \(G\) fixes a chosen root, that root is in \(K\), so the represented class is zero. For every finite abelian group \(B\) killed by \(n\),
+
+\[
+|\operatorname{Hom}(B,\mu_n)|=|B|.
+\]
+
+This is the finite character lemma proved above. The two injections consequently force \(|G|=|D|\), and both pairing maps are isomorphisms. This proves the degree formula and perfectness.
+
+For a finite abelian extension \(L/K\) of exponent dividing \(n\), each character \(G\to\mu_n\) is an \(L^\times\)-valued cocycle. Hilbert 90 realizes it by a radical \(\alpha\in L\), with \(\alpha^n\in K\). The finite character lemma says these characters separate elements. Hence the common stabilizer of these radicals is trivial, and they generate \(L\). Moreover, \(D_L=(L^{\times n}\cap K^\times)/K^{\times n}\) maps bijectively to \(\operatorname{Hom}(G,\mu_n)\) by this same argument. For an extension originally constructed from \(D\), the subgroup \(D\subset D_L\) already has order \(|G|\), so it equals \(D_L\). The two assignments are inverse in the finite case.
+
+For arbitrary \(D\), take the union of its finitely generated subgroups. Each is finite, since its generators have order dividing \(n\). Their root fields have union \(K(\Delta^{1/n})\), and the inverse-limit description of its Galois group is exactly \(\operatorname{Hom}(D,\mu_n)\). Conversely, an infinite abelian extension of exponent dividing \(n\) is the union of its finite Galois subextensions. The finite correspondence applies to each. A root in the union lies in one finite subextension, so the inverse assignment introduces no additional classes. This proves both the infinite correspondence and the topology assertion. \(\square\)
+
+For finite \(D\), perfectness means that each side is the full dual of the other. For infinite \(D\), the second dual consists of the **continuous** characters of its compact Galois group: a continuous character factors through a finite stage. Omitting this continuity would give a larger and incorrect dual.
+
+If \(L/K\) is cyclic of degree \(n\), choose a faithful character \(G\to\mu_n\) and apply Hilbert 90. Its radical has trivial stabilizer and generates \(L\), proving \(L=K(a^{1/n})\). Conversely, \(K(a^{1/n})/K\) is cyclic of degree the order of the class of \(a\) in \(K^\times/K^{\times n}\); that order can be a proper divisor of \(n\).
+
+For example, the three independent square classes 2, 3 and 5 give
+
+\[
+\mathbf Q(\sqrt2,\sqrt3,\sqrt5)/\mathbf Q,
+\qquad G\simeq(\mathbf Z/2\mathbf Z)^3.
+\]
+
+Their independence follows from the valuations at 2, 3 and 5. The pairing records the three independent sign changes.
+
+## 5. The additive version in characteristic p
+
+Assume now \(\operatorname{char}K=p>0\), and put \(\wp(x)=x^p-x\). This is an additive map whose kernel is \(\mathbf F_p\). Every polynomial \(X^p-X-a\) is separable, since its derivative is \(-1\).
+
+For a root \(\alpha\), the function \(g\mapsto g(\alpha)-\alpha\) takes values in \(\mathbf F_p\) and is a continuous homomorphism. Changing the root adds a constant in \(\mathbf F_p\), and changing \(a\) by \(\wp(b)\), for \(b\in K\), replaces a root by \(\alpha+b\). Thus this construction depends only on \(a\bmod\wp(K)\).
+
+### Proposition 3.4. Artin–Schreier correspondence
+
+There is an isomorphism of \(\mathbf F_p\)-vector spaces
+
+\[
+K/\wp(K)\simeq\operatorname{Hom}_{\mathrm{cont}}(G_K,\mathbf F_p).
+\]
+
+Subspaces \(D\subset K/\wp(K)\) correspond, preserving inclusion, to abelian Galois extensions of exponent dividing \(p\), by adjoining roots of \(X^p-X-a\) for the classes \(a\in D\). Their Galois groups are
+
+\[
+\operatorname{Hom}_{\mathbf F_p}(D,\mathbf F_p),
+\]
+
+with the product topology. A finite-dimensional \(D\) gives degree \(p^{\dim D}\).
+
+**Proof.** A class maps to zero exactly when its root is fixed by \(G_K\), hence lies in \(K\); that is exactly \(a\in\wp(K)\). A continuous homomorphism to \(\mathbf F_p\) factors through some finite Galois \(E/K\). Additive Hilbert 90 realizes it as \(g(\alpha)-\alpha\), with \(\alpha\in E\). Then \(\wp(\alpha)\) is fixed and lies in \(K\), proving surjectivity.
+
+For a finite-dimensional subspace, its root field is finite Galois, and its action injects into the vector-space dual of \(D\). The translation pairing injects \(D\) into the dual of the Galois group, since a root fixed by that group lies in \(K\). Equal dimensions, or the two resulting cardinality inequalities, make both maps isomorphisms. Conversely, additive Hilbert 90 realizes all characters of a finite elementary abelian \(p\)-group by roots; they separate the group and therefore generate its field. This proves the finite correspondence and its inverse. Taking unions of finite-dimensional subspaces and inverse limits of their Galois groups proves the general case, exactly as in Theorem 3.3. \(\square\)
+
+For \(K=\mathbf F_p(t)\), the class of \(t^{-1}\) is nonzero in \(K/\wp(K)\). A pole of order \(m>0\) in \(b\) becomes a pole of order \(pm\) in \(b^p-b\); if \(b\) has no pole at \(t=0\), neither does \(b^p-b\). Neither possibility gives the pole of order 1 of \(t^{-1}\). Hence \(X^p-X=t^{-1}\) defines a cyclic extension of degree \(p\).
+
+## Exercises
+
+1. **Easy.** In \(\mathbf Q(i)\), find every \(b\ne0\) satisfying \(\sigma(b)/b=(3+4i)/5\), where \(\sigma(i)=-i\).
+2. **Medium.** Describe all quadratic and biquadratic extensions of \(\mathbf Q\) in terms of square classes. Apply the description to the two classes \(-2\) and 7.
+3. **Medium.** For a finite subgroup \(D\subset K^\times/K^{\times n}\), prove that the Kummer pairing of Theorem 3.3 is perfect without assuming a degree formula for radical extensions.
+4. **Hard.** Prove additive Hilbert 90 in arbitrary characteristic using a trace-one element. Use it to derive the Artin–Schreier character isomorphism and the correspondence for infinite elementary abelian extensions.
+
+## Solutions
+
+1. The element \(b_0=2-i\) satisfies the equation by direct multiplication. If \(b\) is another solution, then \(\sigma(b/b_0)=b/b_0\), so \(b/b_0\in\mathbf Q^\times\). All solutions are therefore \(b=r(2-i)\), with \(r\in\mathbf Q^\times\).
+2. A quadratic extension is determined by a one-dimensional subspace of \(\mathbf Q^\times/\mathbf Q^{\times2}\), and has the form \(\mathbf Q(\sqrt d)\), where \(d\) is a nontrivial square class. It has a unique squarefree integer representative. A biquadratic extension is determined by a two-dimensional subspace, generated by two independent classes \(a,b\); its field is \(\mathbf Q(\sqrt a,\sqrt b)\), and its three quadratic subfields correspond to \(a,b,ab\). Different bases of the same subspace give the same extension. The classes \(-2\) and 7 are independent by their valuations at 2 and 7. The resulting field has degree 4 and quadratic subfields \(\mathbf Q(\sqrt{-2})\), \(\mathbf Q(\sqrt7)\) and \(\mathbf Q(\sqrt{-14})\).
+3. Let \(L\) be the root field and \(G=\operatorname{Gal}(L/K)\). The map \(G\to\operatorname{Hom}(D,\mu_n)\) is injective because the roots generate \(L\). This also proves that \(G\) is abelian of exponent dividing \(n\). The map in the other direction is injective because a root fixed by all of \(G\) lies in \(K\). The finite character lemma above proves that each of these dual groups has the same order as its group. Thus \(|G|\leq|D|\leq|G|\), and both injections are surjective. This proves perfectness and simultaneously establishes the degree formula.
+4. Independence of the distinct embeddings makes the trace a nonzero \(K\)-linear map to \(K\), so choose \(t\) of trace 1. For an additive cocycle, \(S=\sum_h c(h)h(t)\) satisfies \(gS=S-c(g)\), and \(b=-S\) gives \(c(g)=gb-b\). No division by \(|G|\) occurs. Given a continuous character \(G_K\to\mathbf F_p\), factor it through finite Galois \(E/K\) and use this construction to obtain \(\alpha\) with \(g\alpha-\alpha=\chi(g)\). Then \(\alpha^p-\alpha\in K\). Its class maps to the character; the kernel consists exactly of \(\wp(K)\). The finite-dimensional translation pairing is perfect by the two injections and equality of dual dimensions. Any subspace is a union of finite-dimensional ones; their root fields have the corresponding union, and their Galois groups have the inverse limit. Conversely, every element of an infinite elementary abelian extension lies in a finite Galois subextension. Applying the finite inverse assignments there proves the infinite correspondence with no finiteness assumption on \(K/\wp(K)\).
+
+## Editable edition
+
+The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.
+
+## References
+
+Sections 1–3 prove independence and both forms of Hilbert 90 in every characteristic. The finite character lemma proves dual size and separation before the full finite and infinite Kummer and Artin–Schreier correspondences.
+
+- [J. S. Milne, Fields and Galois Theory, version 5.10](https://www.jmilne.org/math/CourseNotes/FT.pdf).
+- [The Stacks project, independence, Kummer and Artin–Schreier sections](https://stacks.math.columbia.edu/).
+
+The Stacks comparisons are Tags [0CKK](https://stacks.math.columbia.edu/tag/0CKK), [09I6](https://stacks.math.columbia.edu/tag/09I6) and [09I7](https://stacks.math.columbia.edu/tag/09I7). Related independently written programme material belongs to the AI Integrated Stacks Project; it has not been reviewed by the official Stacks maintainers.
+
+The [proof guide](../FREE_PROOFS.md) gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.

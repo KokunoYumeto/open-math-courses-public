@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Continuous calculus for a bounded normal operator · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/notes/real-coercivity/bounded-normal-calculus.html">
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="continuous-calculus-for-a-bounded-normal-operator">Continuous calculus for a bounded normal operator</h1>
+<p><strong>Original exposition and proof: OpenAI Codex (GPT-6 Astra, Ultra), October 2026. CC0-1.0.</strong></p>
+<p>The spectral lesson needs continuous functions of a normal operator before it constructs measurable functions. This note supplies that earlier step for every complex Hilbert space. It extends the written one-variable Bernstein construction in <a href="bounded-right-multiplier.html">GP0</a> and the Hilbert and self-adjoint tools in <a href="../../OA-MOD-BK.html#OA-MOD-BK-01">BK01</a>. The normal-calculus theorem is also treated in Jesse Peterson's freely available <a href="https://math.vanderbilt.edu/peters10/teaching/spring2015/OperatorAlgebras.pdf#page=16">Notes on operator algebras, Theorems 1.2.6 and 1.3.1, pages 16–17</a>. Here the construction and all extra approximation steps are proved directly from the two written prerequisites.</p>
+<p>Throughout, inner products are linear in the first variable. For a bounded operator, its spectrum is the set of complex numbers for which its difference from the corresponding scalar multiple of the identity has no bounded two-sided inverse. We use no measurable calculus, spectral measure, unbounded operator theorem or representation theorem for abstract algebras.</p>
+<h2 id="nc1-statement-and-commuting-real-coordinates">NC1. Statement and commuting real coordinates</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(T\in B(H)\)">\(T\in B(H)\)</span> be normal, with no dimension restriction on <span class="math" data-tex="\(H\)">\(H\)</span>. There is a unique isometric unital *-algebra isomorphism
+<span class="math math-display" data-tex="\[
+\Psi_T:C(\sigma(T))\longrightarrow C^*(I,T),\qquad
+\Psi_T(z\mapsto z)=T.
+\tag{NC.1}
+\]">\[
+\Psi_T:C(\sigma(T))\longrightarrow C^*(I,T),\qquad
+\Psi_T(z\mapsto z)=T.
+\tag{NC.1}
+\]</span>
+Here <span class="math" data-tex="\(C^*(I,T)\)">\(C^*(I,T)\)</span> means the operator-norm closure of the unital *-polynomials in <span class="math" data-tex="\(T,T^*\)">\(T,T^*\)</span>. For every continuous <span class="math" data-tex="\(f\)">\(f\)</span>,
+<span class="math math-display" data-tex="\[
+\|\Psi_T(f)\|=\max_{z\in\sigma(T)}|f(z)|,
+\qquad \sigma(\Psi_T(f))=f(\sigma(T)).
+\tag{NC.2}
+\]">\[
+\|\Psi_T(f)\|=\max_{z\in\sigma(T)}|f(z)|,
+\qquad \sigma(\Psi_T(f))=f(\sigma(T)).
+\tag{NC.2}
+\]</span>
+For <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, the spectrum is empty and both algebras are the zero algebra; the displayed maximum over the empty set is taken to be zero. In what follows <span class="math" data-tex="\(H\ne0\)">\(H\ne0\)</span>.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+A=\frac{T+T^*}{2},\qquad B=\frac{T-T^*}{2i},\qquad T=A+iB.
+\tag{NC.3}
+\]">\[
+A=\frac{T+T^*}{2},\qquad B=\frac{T-T^*}{2i},\qquad T=A+iB.
+\tag{NC.3}
+\]</span>
+Both <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are self-adjoint. Expansion of <span class="math" data-tex="\(TT^*-T^*T\)">\(TT^*-T^*T\)</span> shows that normality is exactly <span class="math" data-tex="\(AB=BA\)">\(AB=BA\)</span>. Choose <span class="math" data-tex="\(C\geq\max(1,\|A\|,\|B\|)\)">\(C\geq\max(1,\|A\|,\|B\|)\)</span>, and identify the square <span class="math" data-tex="\(Q=[-C,C]^2\)">\(Q=[-C,C]^2\)</span> with its image in the complex plane. The positive contractions
+<span class="math" data-tex="\(P=(A+CI)/(2C)\)">\(P=(A+CI)/(2C)\)</span> and <span class="math" data-tex="\(R=(B+CI)/(2C)\)">\(R=(B+CI)/(2C)\)</span> commute.</p>
+<p>If two bounded positive operators <span class="math" data-tex="\(D,E\)">\(D,E\)</span> commute, then their product is positive: the square root of <span class="math" data-tex="\(D\)">\(D\)</span> in BK01 is a norm limit of polynomials in <span class="math" data-tex="\(D\)">\(D\)</span>, so commutes with <span class="math" data-tex="\(E\)">\(E\)</span>, and
+<span class="math" data-tex="\(DE=D^{1/2}ED^{1/2}\geq0\)">\(DE=D^{1/2}ED^{1/2}\geq0\)</span>. This observation is the order argument needed for two-variable approximation.</p>
+<h2 id="nc2-a-calculus-on-the-enclosing-square">NC2. A calculus on the enclosing square</h2>
+<p>For a continuous function <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\([0,1]^2\)">\([0,1]^2\)</span>, form
+<span class="math math-display" data-tex="\[
+\mathcal B_nF(s,t)=\sum_{j,k=0}^n F(j/n,k/n)b_{n,j}(s)b_{n,k}(t),
+\quad b_{n,j}(s)={n\choose j}s^j(1-s)^{n-j}.
+\tag{NC.4}
+\]">\[
+\mathcal B_nF(s,t)=\sum_{j,k=0}^n F(j/n,k/n)b_{n,j}(s)b_{n,k}(t),
+\quad b_{n,j}(s)={n\choose j}s^j(1-s)^{n-j}.
+\tag{NC.4}
+\]</span>
+These polynomials converge uniformly to <span class="math" data-tex="\(F\)">\(F\)</span>. The scalar product weights are nonnegative and sum to one. Their mean squared distance from <span class="math" data-tex="\((s,t)\)">\((s,t)\)</span> is
+<span class="math" data-tex="\([s(1-s)+t(1-t)]/n\leq1/(2n)\)">\([s(1-s)+t(1-t)]/n\leq1/(2n)\)</span>, by the binomial identities proved in GP0. Thus their total weight at distance at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is at most <span class="math" data-tex="\(1/(2n\delta^2)\)">\(1/(2n\delta^2)\)</span>. Uniform continuity gives
+<span class="math math-display" data-tex="\[
+\|\mathcal B_nF-F\|_\infty
+\leq\varepsilon+\frac{2\|F\|_\infty}{2n\delta^2}
+\tag{NC.5}
+\]">\[
+\|\mathcal B_nF-F\|_\infty
+\leq\varepsilon+\frac{2\|F\|_\infty}{2n\delta^2}
+\tag{NC.5}
+\]</span>
+when oscillations over distances below <span class="math" data-tex="\(\delta\)">\(\delta\)</span> are at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Compactness and uniform continuity on a square follow by applying interval bisection successively to the two coordinates; any sequence then has a convergent subsequence, and the usual pairs-with-fixed-oscillation contradiction proves uniform continuity.</p>
+<p>The operators <span class="math" data-tex="\(b_{n,j}(P)\)">\(b_{n,j}(P)\)</span> and <span class="math" data-tex="\(b_{n,k}(R)\)">\(b_{n,k}(R)\)</span> are positive by GP0, commute, and each family sums to <span class="math" data-tex="\(I\)">\(I\)</span>. Their products are positive by NC1 and sum to <span class="math" data-tex="\(I\)">\(I\)</span>. Consequently, for real <span class="math" data-tex="\(F\)">\(F\)</span>,
+<span class="math math-display" data-tex="\[
+-\|F\|_\infty I\leq\mathcal B_nF(P,R)\leq\|F\|_\infty I,
+\qquad \|\mathcal B_nF(P,R)\|\leq\|F\|_\infty.
+\tag{NC.6}
+\]">\[
+-\|F\|_\infty I\leq\mathcal B_nF(P,R)\leq\|F\|_\infty I,
+\qquad \|\mathcal B_nF(P,R)\|\leq\|F\|_\infty.
+\tag{NC.6}
+\]</span>
+The second conclusion uses the self-adjoint norm estimate already proved in GP0/BK01.</p>
+<p>For a fixed real polynomial <span class="math" data-tex="\(p(s,t)\)">\(p(s,t)\)</span>, the coefficients of <span class="math" data-tex="\(\mathcal B_np\)">\(\mathcal B_np\)</span> converge to those of <span class="math" data-tex="\(p\)">\(p\)</span>: for <span class="math" data-tex="\(p=s^jt^k\)">\(p=s^jt^k\)</span> the polynomial is the product of the one-variable Bernstein approximations of these two monomials, whose coefficient limits were proved in GP0. Take finite linear combinations. Substituting <span class="math" data-tex="\(P,R\)">\(P,R\)</span> and passing to the limit in (NC.6) yields
+<span class="math" data-tex="\(\|p(P,R)\|\leq\|p\|_\infty\)">\(\|p(P,R)\|\leq\|p\|_\infty\)</span>. For a complex polynomial, apply this to the real polynomial <span class="math" data-tex="\(\overline p p\)">\(\overline p p\)</span> and use
+<span class="math" data-tex="\(p(P,R)^*p(P,R)=(\overline p p)(P,R)\)">\(p(P,R)^*p(P,R)=(\overline p p)(P,R)\)</span> and <span class="math" data-tex="\(\|X^*X\|=\|X\|^2\)">\(\|X^*X\|=\|X\|^2\)</span>.</p>
+<p>Uniform approximation and completeness of <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>, proved in GP0, therefore give a contractive unital *-homomorphism on all continuous functions on the unit square. Affine change of coordinates gives
+<span class="math math-display" data-tex="\[
+\Phi:C(Q)\longrightarrow C^*(I,T),\quad
+\Phi(x)=A,\quad\Phi(y)=B,\quad\Phi(z)=T,
+\quad\|\Phi(F)\|\leq\|F\|_{C(Q)}.
+\tag{NC.7}
+\]">\[
+\Phi:C(Q)\longrightarrow C^*(I,T),\quad
+\Phi(x)=A,\quad\Phi(y)=B,\quad\Phi(z)=T,
+\quad\|\Phi(F)\|\leq\|F\|_{C(Q)}.
+\tag{NC.7}
+\]</span>
+The multiplication and conjugation identities hold first for polynomials and then by uniform limits. Positive continuous functions have positive images by the nonnegative Bernstein weights. Polynomial limits also show that every operator commuting with both <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(T^*\)">\(T^*\)</span> commutes with every <span class="math" data-tex="\(\Phi(F)\)">\(\Phi(F)\)</span>. No joint spectral theorem has been used.</p>
+<h2 id="nc3-spectrum-and-localized-functions-in-the-resolvent">NC3. Spectrum and localized functions in the resolvent</h2>
+<p>The geometric inverse series from BK01 shows that the resolvent is open and that <span class="math" data-tex="\(T-\lambda I\)">\(T-\lambda I\)</span> is invertible for <span class="math" data-tex="\(|\lambda|&gt;\|T\|\)">\(|\lambda|&gt;\|T\|\)</span>. Thus <span class="math" data-tex="\(K=\sigma(T)\)">\(K=\sigma(T)\)</span> is closed and bounded, possibly empty at this stage.</p>
+<p>In fact <span class="math" data-tex="\(K\subset Q\)">\(K\subset Q\)</span>. For <span class="math" data-tex="\(\lambda=a+ib\)">\(\lambda=a+ib\)</span>, commutation of <span class="math" data-tex="\(A,B\)">\(A,B\)</span> gives
+<span class="math math-display" data-tex="\[
+\|(T-\lambda I)u\|^2
+=\|(A-aI)u\|^2+\|(B-bI)u\|^2
+=\|(T^*-\overline\lambda I)u\|^2.
+\tag{NC.8}
+\]">\[
+\|(T-\lambda I)u\|^2
+=\|(A-aI)u\|^2+\|(B-bI)u\|^2
+=\|(T^*-\overline\lambda I)u\|^2.
+\tag{NC.8}
+\]</span>
+If <span class="math" data-tex="\(|a|&gt;C\)">\(|a|&gt;C\)</span>, then <span class="math" data-tex="\(\|(A-aI)u\|\geq(|a|-C)\|u\|\)">\(\|(A-aI)u\|\geq(|a|-C)\|u\|\)</span>; the analogous statement holds for <span class="math" data-tex="\(|b|&gt;C\)">\(|b|&gt;C\)</span>. Outside <span class="math" data-tex="\(Q\)">\(Q\)</span>, both <span class="math" data-tex="\(T-\lambda I\)">\(T-\lambda I\)</span> and its adjoint therefore are bounded below. Its range is closed, since a convergent sequence of images has a Cauchy sequence of inverse images. Its range is dense, since the orthogonal complement is the kernel of its adjoint by BK01. Hence it is onto with bounded inverse. The closed subset <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span> is compact.</p>
+<p>Let <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> be a resolvent point, let <span class="math" data-tex="\(D_\lambda=(T-\lambda I)^{-1}\)">\(D_\lambda=(T-\lambda I)^{-1}\)</span>, and choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that <span class="math" data-tex="\(q=\delta\|D_\lambda\|&lt;1\)">\(q=\delta\|D_\lambda\|&lt;1\)</span>. If <span class="math" data-tex="\(h\in C(Q)\)">\(h\in C(Q)\)</span> has support in <span class="math" data-tex="\(\{|z-\lambda|\leq\delta\}\)">\(\{|z-\lambda|\leq\delta\}\)</span>, multiplicativity gives, for every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+\Phi(h)=D_\lambda^n\Phi((z-\lambda)^nh),
+\qquad \|\Phi(h)\|\leq q^n\|h\|_\infty.
+\tag{NC.9}
+\]">\[
+\Phi(h)=D_\lambda^n\Phi((z-\lambda)^nh),
+\qquad \|\Phi(h)\|\leq q^n\|h\|_\infty.
+\tag{NC.9}
+\]</span>
+Letting <span class="math" data-tex="\(n\)">\(n\)</span> tend to infinity proves <span class="math" data-tex="\(\Phi(h)=0\)">\(\Phi(h)=0\)</span>.</p>
+<p>The same conclusion holds whenever the compact support <span class="math" data-tex="\(L\)">\(L\)</span> of <span class="math" data-tex="\(h\)">\(h\)</span> misses <span class="math" data-tex="\(K\)">\(K\)</span>. For every point of <span class="math" data-tex="\(L\)">\(L\)</span>, choose a disk as above centered at that point, and choose finitely many whose interiors cover <span class="math" data-tex="\(L\)">\(L\)</span>. Write their centers and radii as <span class="math" data-tex="\(\lambda_j,\delta_j\)">\(\lambda_j,\delta_j\)</span>, and put
+<span class="math math-display" data-tex="\[
+\varphi_j(z)=\max(0,\delta_j-|z-\lambda_j|),\qquad
+h_j(z)=\frac{h(z)\varphi_j(z)}{d(z,L)+\sum_k\varphi_k(z)}.
+\tag{NC.10}
+\]">\[
+\varphi_j(z)=\max(0,\delta_j-|z-\lambda_j|),\qquad
+h_j(z)=\frac{h(z)\varphi_j(z)}{d(z,L)+\sum_k\varphi_k(z)}.
+\tag{NC.10}
+\]</span>
+When <span class="math" data-tex="\(L\ne\varnothing\)">\(L\ne\varnothing\)</span>, the denominator is positive everywhere: off <span class="math" data-tex="\(L\)">\(L\)</span> its first term is positive; on <span class="math" data-tex="\(L\)">\(L\)</span> the covering supplies a positive summand. Each <span class="math" data-tex="\(h_j\)">\(h_j\)</span> is continuous and supported in the closed <span class="math" data-tex="\(j\)">\(j\)</span>-th disk. Also <span class="math" data-tex="\(h=\sum_jh_j\)">\(h=\sum_jh_j\)</span>, since a point where <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span> belongs to <span class="math" data-tex="\(L\)">\(L\)</span>, and elsewhere both sides vanish. Apply (NC.9) to each term. When <span class="math" data-tex="\(L\)">\(L\)</span> is empty the conclusion is immediate. If <span class="math" data-tex="\(K\)">\(K\)</span> were empty this argument would apply to <span class="math" data-tex="\(h=1\)">\(h=1\)</span>, contradicting <span class="math" data-tex="\(\Phi(1)=I\ne0\)">\(\Phi(1)=I\ne0\)</span>. It proves nonemptiness as well as the localized vanishing assertion.</p>
+<p>Finally, if <span class="math" data-tex="\(h|_K=0\)">\(h|_K=0\)</span>, put
+<span class="math math-display" data-tex="\[
+h_\varepsilon(z)=h(z)\min\bigl(1,\max(0,2d(z,K)/\varepsilon-1)\bigr).
+\tag{NC.11}
+\]">\[
+h_\varepsilon(z)=h(z)\min\bigl(1,\max(0,2d(z,K)/\varepsilon-1)\bigr).
+\tag{NC.11}
+\]</span>
+Its support is a compact set disjoint from <span class="math" data-tex="\(K\)">\(K\)</span>. Further,
+<span class="math" data-tex="\(\|h-h_\varepsilon\|_\infty\leq\sup_{d(z,K)\leq\varepsilon}|h(z)|\to0\)">\(\|h-h_\varepsilon\|_\infty\leq\sup_{d(z,K)\leq\varepsilon}|h(z)|\to0\)</span>: otherwise a sequence of such points would have a limit in <span class="math" data-tex="\(K\)">\(K\)</span> with nonzero value. Contractivity now proves the full vanishing implication
+<span class="math math-display" data-tex="\[
+h|_K=0\quad\Longrightarrow\quad\Phi(h)=0.
+\tag{NC.12}
+\]">\[
+h|_K=0\quad\Longrightarrow\quad\Phi(h)=0.
+\tag{NC.12}
+\]</span></p>
+<h2 id="nc4-continuous-extension-from-the-compact-spectrum">NC4. Continuous extension from the compact spectrum</h2>
+<p>We supply the scalar extension step. For any nonempty closed <span class="math" data-tex="\(K\subset Q\)">\(K\subset Q\)</span>, every continuous complex <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span> has an extension <span class="math" data-tex="\(F\in C(Q)\)">\(F\in C(Q)\)</span> with <span class="math" data-tex="\(\|F\|_{C(Q)}=\|f\|_{C(K)}\)">\(\|F\|_{C(Q)}=\|f\|_{C(K)}\)</span>.</p>
+<p>First obtain an approximate extension. Given <span class="math" data-tex="\(g\in C(K)\)">\(g\in C(K)\)</span> and <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, choose <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> so that points of <span class="math" data-tex="\(K\)">\(K\)</span> at distance below <span class="math" data-tex="\(r\)">\(r\)</span> have <span class="math" data-tex="\(g\)">\(g\)</span>-values differing by at most <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Choose finitely many centers <span class="math" data-tex="\(k_j\in K\)">\(k_j\in K\)</span> whose balls of radius <span class="math" data-tex="\(r/2\)">\(r/2\)</span> cover <span class="math" data-tex="\(K\)">\(K\)</span>, and set
+<span class="math math-display" data-tex="\[
+u(z)=\frac{\sum_j\max(0,r-|z-k_j|)g(k_j)}
+{d(z,K)+\sum_j\max(0,r-|z-k_j|)}.
+\tag{NC.13}
+\]">\[
+u(z)=\frac{\sum_j\max(0,r-|z-k_j|)g(k_j)}
+{d(z,K)+\sum_j\max(0,r-|z-k_j|)}.
+\tag{NC.13}
+\]</span>
+Its denominator is everywhere positive. It is continuous, <span class="math" data-tex="\(\|u\|_{C(Q)}\leq\|g\|_{C(K)}\)">\(\|u\|_{C(Q)}\leq\|g\|_{C(K)}\)</span>, and <span class="math" data-tex="\(\|u|_K-g\|_{C(K)}\leq\eta\)">\(\|u|_K-g\|_{C(K)}\leq\eta\)</span>. Indeed, on <span class="math" data-tex="\(K\)">\(K\)</span> its normalized weights sum to one, and every nonzero weight has a center within distance <span class="math" data-tex="\(r\)">\(r\)</span>. Off <span class="math" data-tex="\(K\)">\(K\)</span>, the extra nonnegative denominator term only decreases the bound.</p>
+<p>Start with <span class="math" data-tex="\(g_0=f\)">\(g_0=f\)</span>. When <span class="math" data-tex="\(g_j\ne0\)">\(g_j\ne0\)</span>, take such an approximate extension <span class="math" data-tex="\(u_j\)">\(u_j\)</span> with error at most <span class="math" data-tex="\(\|g_j\|/2\)">\(\|g_j\|/2\)</span>, and set <span class="math" data-tex="\(g_{j+1}=g_j-u_j|_K\)">\(g_{j+1}=g_j-u_j|_K\)</span>. If a residual is zero, take all subsequent functions to be zero. Then
+<span class="math" data-tex="\(\|g_j\|\leq2^{-j}\|f\|\)">\(\|g_j\|\leq2^{-j}\|f\|\)</span> and <span class="math" data-tex="\(\|u_j\|\leq2^{-j}\|f\|\)">\(\|u_j\|\leq2^{-j}\|f\|\)</span>. The uniformly convergent series <span class="math" data-tex="\(F_0=\sum_{j\geq0}u_j\)">\(F_0=\sum_{j\geq0}u_j\)</span> is continuous and restricts to <span class="math" data-tex="\(f\)">\(f\)</span>, by the telescoping identity and <span class="math" data-tex="\(g_j\to0\)">\(g_j\to0\)</span>. Uniform convergence implies continuity directly by choosing one uniform tail bound and then using continuity of the finite initial sum.</p>
+<p>If <span class="math" data-tex="\(M=\|f\|&gt;0\)">\(M=\|f\|&gt;0\)</span>, replace <span class="math" data-tex="\(F_0\)">\(F_0\)</span> by
+<span class="math math-display" data-tex="\[
+F(z)=\frac{M F_0(z)}{\max(M,|F_0(z)|)}.
+\tag{NC.14}
+\]">\[
+F(z)=\frac{M F_0(z)}{\max(M,|F_0(z)|)}.
+\tag{NC.14}
+\]</span>
+This is continuous, agrees with <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, and has norm exactly <span class="math" data-tex="\(M\)">\(M\)</span>. For <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, use zero. For real-valued <span class="math" data-tex="\(f\)">\(f\)</span>, the preceding construction stays real; for nonnegative <span class="math" data-tex="\(f\)">\(f\)</span>, replacing a real extension by <span class="math" data-tex="\(\max(0,F)\)">\(\max(0,F)\)</span> preserves its boundary values and the norm bound. This proves the needed extension theorem, including the complex and positive versions, without importing a topological extension theorem.</p>
+<h2 id="nc5-restriction-approximate-eigenvectors-and-the-exact-norm">NC5. Restriction, approximate eigenvectors, and the exact norm</h2>
+<p>For <span class="math" data-tex="\(f\in C(K)\)">\(f\in C(K)\)</span>, choose the extension in NC4 and define
+<span class="math" data-tex="\(\Psi_T(f)=\Phi(F)\)">\(\Psi_T(f)=\Phi(F)\)</span>. Equation (NC.12) makes the definition independent of the extension. Sums, products, conjugation and the constant one can therefore be computed using any extensions and give the corresponding homomorphism identities. NC4 gives
+<span class="math" data-tex="\(\|\Psi_T(f)\|\leq\|f\|_{C(K)}\)">\(\|\Psi_T(f)\|\leq\|f\|_{C(K)}\)</span>. Its coordinate function gives <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For each <span class="math" data-tex="\(\lambda\in K\)">\(\lambda\in K\)</span>, there are unit vectors <span class="math" data-tex="\(u_m\)">\(u_m\)</span> with
+<span class="math" data-tex="\(\|(T-\lambda I)u_m\|\to0\)">\(\|(T-\lambda I)u_m\|\to0\)</span>. Otherwise <span class="math" data-tex="\(T-\lambda I\)">\(T-\lambda I\)</span> would be bounded below. By (NC.8), so would its adjoint, and the closed-range/dense-range argument in NC3 would give a bounded inverse, a contradiction. Also
+<span class="math" data-tex="\(\|(T^*-\overline\lambda I)u_m\|\to0\)">\(\|(T^*-\overline\lambda I)u_m\|\to0\)</span>, again by (NC.8).</p>
+<p>For each *-polynomial <span class="math" data-tex="\(p\)">\(p\)</span>, the factorization
+<span class="math" data-tex="\(X^j-a^jI=\sum_{k=0}^{j-1}a^kX^{j-1-k}(X-aI)\)">\(X^j-a^jI=\sum_{k=0}^{j-1}a^kX^{j-1-k}(X-aI)\)</span>
+and the identity
+<span class="math" data-tex="\(T^j(T^*)^k-\lambda^j(\overline\lambda)^kI
+=T^j((T^*)^k-(\overline\lambda)^kI)+(\overline\lambda)^k(T^j-\lambda^jI)\)">\(T^j(T^*)^k-\lambda^j(\overline\lambda)^kI
+=T^j((T^*)^k-(\overline\lambda)^kI)+(\overline\lambda)^k(T^j-\lambda^jI)\)</span>
+show that
+<span class="math math-display" data-tex="\[
+\|(p(T,T^*)-p(\lambda,\overline\lambda)I)u_m\|\longrightarrow0.
+\tag{NC.15}
+\]">\[
+\|(p(T,T^*)-p(\lambda,\overline\lambda)I)u_m\|\longrightarrow0.
+\tag{NC.15}
+\]</span>
+Approximate an extension of <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span> uniformly by NC2 polynomials. Since <span class="math" data-tex="\(x=(z+\bar z)/2\)">\(x=(z+\bar z)/2\)</span> and <span class="math" data-tex="\(y=(z-\bar z)/(2i)\)">\(y=(z-\bar z)/(2i)\)</span>, these are *-polynomials in <span class="math" data-tex="\(z,\bar z\)">\(z,\bar z\)</span>. Contractivity bounds both the operator error and the scalar error by the same uniform error. First choose that error, then let <span class="math" data-tex="\(m\)">\(m\)</span> tend to infinity in (NC.15). This gives
+<span class="math math-display" data-tex="\[
+\|(\Psi_T(f)-f(\lambda)I)u_m\|\longrightarrow0.
+\tag{NC.16}
+\]">\[
+\|(\Psi_T(f)-f(\lambda)I)u_m\|\longrightarrow0.
+\tag{NC.16}
+\]</span>
+It follows that <span class="math" data-tex="\(\|\Psi_T(f)\|\geq|f(\lambda)|\)">\(\|\Psi_T(f)\|\geq|f(\lambda)|\)</span>. Taking a maximum over <span class="math" data-tex="\(K\)">\(K\)</span> proves the norm equality in (NC.2).</p>
+<p>The same extension and approximation prove that *-polynomials restricted to <span class="math" data-tex="\(K\)">\(K\)</span> are uniformly dense in <span class="math" data-tex="\(C(K)\)">\(C(K)\)</span>. Thus the image of <span class="math" data-tex="\(\Psi_T\)">\(\Psi_T\)</span> contains the *-polynomials in <span class="math" data-tex="\(T,T^*\)">\(T,T^*\)</span>, is contained in their norm closure by construction, and is closed because <span class="math" data-tex="\(\Psi_T\)">\(\Psi_T\)</span> is isometric and <span class="math" data-tex="\(C(K)\)">\(C(K)\)</span> is complete. Completeness follows by uniform limits of Cauchy sequences of continuous scalar functions. This proves the range statement in (NC.1). Uniqueness among isometric unital *-isomorphisms sending the coordinate to <span class="math" data-tex="\(T\)">\(T\)</span> follows by agreement on the dense *-polynomials and continuity.</p>
+<figure><img src="figures/bounded-normal-calculus.svg" alt="The enclosing square, three spectral points and a resolvent disk" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><strong>Figure.</strong> The exact example is <span class="math" data-tex="\(T=\operatorname{diag}(-1,i,1)\)">\(T=\operatorname{diag}(-1,i,1)\)</span> on <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span>, displayed in <span class="math" data-tex="\(Q=[-2,2]^2\)">\(Q=[-2,2]^2\)</span>. Its spectrum is the three marked points. At <span class="math" data-tex="\(\lambda=-i\)">\(\lambda=-i\)</span>, the inverse norm is <span class="math" data-tex="\(1/\sqrt2\)">\(1/\sqrt2\)</span>. A continuous function supported in the disk of radius <span class="math" data-tex="\(1/4\)">\(1/4\)</span> about <span class="math" data-tex="\(-i\)">\(-i\)</span> has zero image by (NC.9), since its image norm is at most <span class="math" data-tex="\((1/(4\sqrt2))^n\|h\|_\infty\)">\((1/(4\sqrt2))^n\|h\|_\infty\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. The arrows describe the maps in (NC.7), (NC.12), and (NC.1). The colored disk is a region of vanishing, not additional spectrum. NC3 proves the same local argument for every bounded normal operator; NC4–NC5 identify the full quotient and its norm.</p>
+<h2 id="nc6-spectral-mapping-positivity-and-commutation">NC6. Spectral mapping, positivity, and commutation</h2>
+<p>If <span class="math" data-tex="\(w\notin f(K)\)">\(w\notin f(K)\)</span>, then <span class="math" data-tex="\(1/(f-w)\)">\(1/(f-w)\)</span> is continuous on <span class="math" data-tex="\(K\)">\(K\)</span>. Multiplicativity shows that its image is a bounded two-sided inverse of <span class="math" data-tex="\(\Psi_T(f)-wI\)">\(\Psi_T(f)-wI\)</span>. Thus
+<span class="math" data-tex="\(\sigma(\Psi_T(f))\subset f(K)\)">\(\sigma(\Psi_T(f))\subset f(K)\)</span>. Conversely, if <span class="math" data-tex="\(w=f(\lambda)\)">\(w=f(\lambda)\)</span> for <span class="math" data-tex="\(\lambda\in K\)">\(\lambda\in K\)</span>, (NC.16) gives unit approximate eigenvectors at <span class="math" data-tex="\(w\)">\(w\)</span>, precluding a bounded inverse. This proves the spectral mapping assertion in (NC.2).</p>
+<p>For <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>, its scalar continuous square root belongs to <span class="math" data-tex="\(C(K)\)">\(C(K)\)</span>, and
+<span class="math" data-tex="\(\Psi_T(f)=\Psi_T(\sqrt f)^*\Psi_T(\sqrt f)\geq0\)">\(\Psi_T(f)=\Psi_T(\sqrt f)^*\Psi_T(\sqrt f)\geq0\)</span>. Hence order is preserved for real functions. Conversely, if <span class="math" data-tex="\(\Psi_T(f)\geq0\)">\(\Psi_T(f)\geq0\)</span>, then <span class="math" data-tex="\(\Psi_T(f)=\Psi_T(\bar f)\)">\(\Psi_T(f)=\Psi_T(\bar f)\)</span> implies <span class="math" data-tex="\(f=\bar f\)">\(f=\bar f\)</span> by isometry, and (NC.16) gives
+<span class="math" data-tex="\(f(\lambda)=\lim_m\langle\Psi_T(f)u_m,u_m\rangle\geq0\)">\(f(\lambda)=\lim_m\langle\Psi_T(f)u_m,u_m\rangle\geq0\)</span>.</p>
+<p>Every bounded operator commuting with both <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(T^*\)">\(T^*\)</span> commutes with <span class="math" data-tex="\(\Psi_T(f)\)">\(\Psi_T(f)\)</span>, by polynomial approximation. For a unitary <span class="math" data-tex="\(V:H\to H&#x27;\)">\(V:H\to H&#x27;\)</span>, invertibility and norms are preserved under <span class="math" data-tex="\(X\mapsto VXV^*\)">\(X\mapsto VXV^*\)</span>. The spectra agree, and polynomial approximation gives
+<span class="math math-display" data-tex="\[
+\Psi_{VTV^*}(f)=V\Psi_T(f)V^*.
+\tag{NC.17}
+\]">\[
+\Psi_{VTV^*}(f)=V\Psi_T(f)V^*.
+\tag{NC.17}
+\]</span>
+Finally, if a norm-closed unital *-subalgebra <span class="math" data-tex="\(\mathcal D\subseteq B(H)\)">\(\mathcal D\subseteq B(H)\)</span> contains <span class="math" data-tex="\(T\)">\(T\)</span>, then every <span class="math" data-tex="\(\Psi_T(f)\)">\(\Psi_T(f)\)</span> belongs to <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. For <span class="math" data-tex="\(\lambda\notin K\)">\(\lambda\notin K\)</span>, the function <span class="math" data-tex="\((z-\lambda)^{-1}\)">\((z-\lambda)^{-1}\)</span> proves that the inverse also belongs to <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Invertibility in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> therefore gives exactly the same spectrum as in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>. This is the concrete spectral-invariance conclusion; no abstract representation theorem is required.</p>
+<h2 id="nc7-the-prerequisite-supplied-to-the-spectral-lesson">NC7. The prerequisite supplied to the spectral lesson</h2>
+<p>NC1–NC6 prove the full continuous-calculus input for a bounded normal operator on an arbitrary Hilbert space, including exact norm, full range, *-polynomial density, commutation and spectral mapping. For a self-adjoint operator the calculus agrees with BK01: the spectrum is real, and agreement on real-coordinate polynomials plus their uniform density gives equality. For a unitary operator this supplies the circle calculus needed before the Cayley transform in SK06 and the whole-circle polynomial approximation in SK09. All these results precede the construction of any Borel calculus.</p>
+<p>The older contract OA-MOD-OPEN-CSTAR-CFC also states a theorem for arbitrary abstract unital C*-algebras. This note does not certify that broader contract or its other consumers. It proves exactly its concrete operator case used in the spectral lesson; registration of that new proof route and the separate scalar prerequisites must be checked explicitly. Neither that registration nor this proof claims completion of the whole course.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

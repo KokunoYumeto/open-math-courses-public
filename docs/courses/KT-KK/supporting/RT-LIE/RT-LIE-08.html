@@ -1,0 +1,513 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Root systems and their Weyl groups</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><p><a href="../../index.html">Kasparov’s KK-theory</a> · <a href="index.html">Supporting Lie-algebra proofs</a> · <a href="RT-LIE-08.md">Exact structured source</a></p><article class="lesson">
+<h1 id="root-systems-and-their-weyl-groups">Root systems and their Weyl groups</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><em>KT–KK receiving revision, 5 October 2026: the proofs used by Lesson 18 are rewritten from the checked free author editions and bound to the local companion. Original authorship and CC0 remain as stated above. The proof/source audit distinguishes this used chain from retained comparisons and unused later dependencies.</em></p>
+<p>A root system encodes reflections together with an arithmetic constraint. The arithmetic produces a basis of simple roots. That basis describes the chambers, and the signs of roots track the length of a product of reflections. We will use those signs to prove exchange, then use two-dimensional subgroups to prove that the Coxeter relations are a complete presentation.</p>
+<p>Only finite-dimensional real linear algebra and elementary Euclidean geometry are assumed. The construction in <a href="RT-LIE-07.html">The root space decomposition of a semisimple Lie algebra</a> motivates the axioms, but none of its Lie-algebra results is needed below. Products of maps act from right to left.</p>
+<h2 id="1-arithmetic-and-reflection">1. Arithmetic and reflection</h2>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be a finite-dimensional real inner-product space. A <strong>root system</strong> in this lesson means a finite subset <span class="math" data-tex="\(\Phi\subset E\setminus\{0\}\)">\(\Phi\subset E\setminus\{0\}\)</span> such that:</p>
+<ul>
+<li><span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> spans <span class="math" data-tex="\(E\)">\(E\)</span>.</li>
+<li>For every <span class="math" data-tex="\(\alpha\in\Phi\)">\(\alpha\in\Phi\)</span>, its orthogonal reflection
+<span class="math math-display" data-tex="\[
+s_\alpha(x)=x-\langle x,\alpha^\vee\rangle\alpha,
+\qquad \alpha^\vee=\frac{2\alpha}{(\alpha,\alpha)},
+\qquad \langle x,\alpha^\vee\rangle=(x,\alpha^\vee)
+\tag{1.1}
+\]">\[
+s_\alpha(x)=x-\langle x,\alpha^\vee\rangle\alpha,
+\qquad \alpha^\vee=\frac{2\alpha}{(\alpha,\alpha)},
+\qquad \langle x,\alpha^\vee\rangle=(x,\alpha^\vee)
+\tag{1.1}
+\]</span>
+permutes <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</li>
+<li>All <span class="math" data-tex="\(\langle\beta,\alpha^\vee\rangle\)">\(\langle\beta,\alpha^\vee\rangle\)</span>, for roots <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>, are integers.</li>
+<li><span class="math" data-tex="\(\Phi\cap\mathbb R\alpha=\{\alpha,-\alpha\}\)">\(\Phi\cap\mathbb R\alpha=\{\alpha,-\alpha\}\)</span>.</li>
+</ul>
+<p>The third condition is <strong>crystallographic</strong>; the fourth is <strong>reduced</strong>. Thus the nonreduced set
+<span class="math math-display" data-tex="\[
+BC_n=\{\pm e_i,\ \pm2e_i,\ \pm e_i\pm e_j\ (i&lt;j)\}
+\]">\[
+BC_n=\{\pm e_i,\ \pm2e_i,\ \pm e_i\pm e_j\ (i&lt;j)\}
+\]</span>
+is excluded. Formula (1.1) fixes <span class="math" data-tex="\(\alpha^\perp\)">\(\alpha^\perp\)</span>, negates <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, is orthogonal, and squares to the identity: write <span class="math" data-tex="\(x=x_\perp+c\alpha\)">\(x=x_\perp+c\alpha\)</span> to verify every assertion.</p>
+<p>We allow the empty system in <span class="math" data-tex="\(E=0\)">\(E=0\)</span>. Its base is empty, its Weyl group is trivial, and its sole chamber is <span class="math" data-tex="\(E\)">\(E\)</span>. All subsequent arguments concerning roots apply to positive rank.</p>
+<span id="RTLIE08-P11"></span>
+<p><strong>Proposition 1.1 (angles and a difference).</strong> For <span class="math" data-tex="\(\alpha\ne\pm\beta\)">\(\alpha\ne\pm\beta\)</span>, put <span class="math" data-tex="\(p=\langle\alpha,\beta^\vee\rangle\)">\(p=\langle\alpha,\beta^\vee\rangle\)</span> and <span class="math" data-tex="\(q=\langle\beta,\alpha^\vee\rangle\)">\(q=\langle\beta,\alpha^\vee\rangle\)</span>. Then
+<span class="math math-display" data-tex="\[
+pq=4\cos^2\theta\in\{0,1,2,3\},
+\tag{1.2}
+\]">\[
+pq=4\cos^2\theta\in\{0,1,2,3\},
+\tag{1.2}
+\]</span>
+where <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is the angle between the roots. When the inner product is nonzero, the possible unordered squared-length ratios are <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(3\)">\(3\)</span>, or their reciprocals. The angles are respectively <span class="math" data-tex="\(60^\circ,120^\circ\)">\(60^\circ,120^\circ\)</span>; <span class="math" data-tex="\(45^\circ,135^\circ\)">\(45^\circ,135^\circ\)</span>; and <span class="math" data-tex="\(30^\circ,150^\circ\)">\(30^\circ,150^\circ\)</span>. Orthogonal roots have angle <span class="math" data-tex="\(90^\circ\)">\(90^\circ\)</span>, with no restriction on their relative lengths. If <span class="math" data-tex="\((\alpha,\beta)&gt;0\)">\((\alpha,\beta)&gt;0\)</span>, then <span class="math" data-tex="\(\alpha-\beta\)">\(\alpha-\beta\)</span> is a root; if <span class="math" data-tex="\((\alpha,\beta)&lt;0\)">\((\alpha,\beta)&lt;0\)</span>, then <span class="math" data-tex="\(\alpha+\beta\)">\(\alpha+\beta\)</span> is a root.</p>
+<p><strong>Proof.</strong> Because the system is reduced, two roots other than opposites or equals are linearly independent. Strict Cauchy–Schwarz gives
+<span class="math" data-tex="\(0\le4(\alpha,\beta)^2/((\alpha,\alpha)(\beta,\beta))&lt;4\)">\(0\le4(\alpha,\beta)^2/((\alpha,\alpha)(\beta,\beta))&lt;4\)</span>.
+This equals the integer pq, proving its four possible values. If nonzero, p and q have the same sign and their ratio is the squared-length ratio; the factor pairs of 1,2,3 give exactly the ratios and angles stated. Orthogonality gives p=q=0 and imposes no length relation.</p>
+<p>For positive inner product p,q are positive integers with product at most three. One of them equals one. Reflection in the corresponding root produces <span class="math" data-tex="\(\alpha-\beta\)">\(\alpha-\beta\)</span> or its negative; negation preserves roots because <span class="math" data-tex="\(s_\gamma\gamma=-\gamma\)">\(s_\gamma\gamma=-\gamma\)</span>. Thus the difference is a root. Replacing <span class="math" data-tex="\(\beta\)">\(\beta\)</span> by <span class="math" data-tex="\(-\beta\)">\(-\beta\)</span> proves the sum assertion for negative inner product. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The <strong>dual system</strong> is <span class="math" data-tex="\(\Phi^\vee=\{\alpha^\vee:\alpha\in\Phi\}\)">\(\Phi^\vee=\{\alpha^\vee:\alpha\in\Phi\}\)</span>, in the same Euclidean space. It is again a root system. Indeed, it has the same root lines, spans <span class="math" data-tex="\(E\)">\(E\)</span>, and is reduced. Orthogonality gives
+<span class="math math-display" data-tex="\[
+s_\alpha(\beta^\vee)=(s_\alpha\beta)^\vee,
+\qquad s_{\alpha^\vee}=s_\alpha,
+\qquad
+\frac{2(\beta^\vee,\alpha^\vee)}{(\alpha^\vee,\alpha^\vee)}
+=\frac{2(\alpha,\beta)}{(\beta,\beta)}\in\mathbb Z.
+\tag{1.3}
+\]">\[
+s_\alpha(\beta^\vee)=(s_\alpha\beta)^\vee,
+\qquad s_{\alpha^\vee}=s_\alpha,
+\qquad
+\frac{2(\beta^\vee,\alpha^\vee)}{(\alpha^\vee,\alpha^\vee)}
+=\frac{2(\alpha,\beta)}{(\beta,\beta)}\in\mathbb Z.
+\tag{1.3}
+\]</span>
+These prove reflection stability and integrality. Also <span class="math" data-tex="\((\alpha^\vee)^\vee=\alpha\)">\((\alpha^\vee)^\vee=\alpha\)</span>.</p>
+<p>For classification, an isomorphism of root systems is an invertible linear map taking roots to roots and preserving all Cartan integers <span class="math" data-tex="\(\langle\beta,\alpha^\vee\rangle\)">\(\langle\beta,\alpha^\vee\rangle\)</span>. Uniform scaling is allowed. Independent scaling of orthogonal components is also allowed, because their cross Cartan integers are zero. Such a map need not be a single similarity on a reducible system.</p>
+<h2 id="2-a-positive-halfspace-produces-a-base">2. A positive halfspace produces a base</h2>
+<p>A vector <span class="math" data-tex="\(\gamma\in E\)">\(\gamma\in E\)</span> is <strong>regular</strong> if <span class="math" data-tex="\((\gamma,\alpha)\ne0\)">\((\gamma,\alpha)\ne0\)</span> for every root. Regular vectors exist: in coordinates, the product of the finitely many nonzero linear polynomials <span class="math" data-tex="\((x,\alpha)\)">\((x,\alpha)\)</span> is a nonzero polynomial. A nonzero real polynomial cannot vanish everywhere, as follows by induction on the number of variables from the one-variable fact. Hence some <span class="math" data-tex="\(x\)">\(x\)</span> avoids every root hyperplane.</p>
+<p>Fix a regular <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, and set
+<span class="math math-display" data-tex="\[
+\Phi^+=\{\alpha\in\Phi:(\gamma,\alpha)&gt;0\},
+\qquad\Phi^-=-\Phi^+.
+\tag{2.1}
+\]">\[
+\Phi^+=\{\alpha\in\Phi:(\gamma,\alpha)&gt;0\},
+\qquad\Phi^-=-\Phi^+.
+\tag{2.1}
+\]</span>
+A positive root is <strong>indecomposable</strong> if it is not a sum of two positive roots. Let <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> be the set of these roots.</p>
+<span id="RTLIE08-T21"></span>
+<p><strong>Theorem 2.1 (existence of a base).</strong> The set <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is a basis of <span class="math" data-tex="\(E\)">\(E\)</span>. Every root has a unique integral expansion in <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, with coefficients either all nonnegative or all nonpositive. Distinct elements of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> have nonpositive inner product.</p>
+<p><strong>Proof.</strong> If a positive root is a sum of two positive roots, both have smaller positive pairing with the regular vector <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Induction through the finite ordered set of these pairings expresses every positive root as a sum of indecomposables, with nonnegative integer multiplicities. Negative roots have the opposite expansions. In particular the indecomposables span E.</p>
+<p>Distinct indecomposables cannot have positive inner product: Proposition 1.1 would make their difference a root. Its positive sign would split the first into two positive roots; its negative sign would split the second. Regularity rules out zero pairing of the difference with <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, so these exhaust the cases. Thus the distinct inner products are nonpositive.</p>
+<p>Suppose there is a linear relation among these roots. Move its negative terms to the right, obtaining <span class="math" data-tex="\(v=\sum_{a_i&gt;0}a_i\alpha_i=\sum_{a_j&lt;0}(-a_j)\alpha_j=u\)">\(v=\sum_{a_i&gt;0}a_i\alpha_i=\sum_{a_j&lt;0}(-a_j)\alpha_j=u\)</span> with disjoint supports. The cross inner products are nonpositive, so <span class="math" data-tex="\((v,u)\le0\)">\((v,u)\le0\)</span>. But v=u and the form is positive definite, forcing v=u=0. Any nonempty positive combination has strictly positive pairing with <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, hence neither support can be nonempty. The relation is zero. This proves the basis property, and therefore uniqueness of all previously constructed expansions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Any root basis with this same-sign integral property is called a <strong>base</strong>, and its elements <strong>simple roots</strong>. The construction above gives all bases. To see this, start with any such basis <span class="math" data-tex="\(D\)">\(D\)</span>. Distinct <span class="math" data-tex="\(a,b\in D\)">\(a,b\in D\)</span> have <span class="math" data-tex="\((a,b)\le0\)">\((a,b)\le0\)</span>, since otherwise Proposition 1.1 would give the forbidden mixed-sign root <span class="math" data-tex="\(a-b\)">\(a-b\)</span>. Choose <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> with <span class="math" data-tex="\((\gamma,a)=1\)">\((\gamma,a)=1\)</span> for every <span class="math" data-tex="\(a\in D\)">\(a\in D\)</span>, using the dual basis. Its positive roots are exactly those with nonnegative <span class="math" data-tex="\(D\)">\(D\)</span>-coefficients. Each member of <span class="math" data-tex="\(D\)">\(D\)</span> is indecomposable: its coefficient vector is a unit vector and cannot be a sum of two nonzero nonnegative integral vectors.</p>
+<p>Conversely, let <span class="math" data-tex="\(\beta=\sum n_a a\)">\(\beta=\sum n_a a\)</span> be positive and not simple. From
+<span class="math math-display" data-tex="\[
+(\beta,\beta)=\sum n_a(\beta,a)&gt;0
+\]">\[
+(\beta,\beta)=\sum n_a(\beta,a)&gt;0
+\]</span>
+some <span class="math" data-tex="\(a\)">\(a\)</span> satisfies <span class="math" data-tex="\((\beta,a)&gt;0\)">\((\beta,a)&gt;0\)</span>. Moreover <span class="math" data-tex="\(n_a&gt;0\)">\(n_a&gt;0\)</span>, since if <span class="math" data-tex="\(n_a=0\)">\(n_a=0\)</span> all terms in <span class="math" data-tex="\((\beta,a)=\sum n_b(b,a)\)">\((\beta,a)=\sum n_b(b,a)\)</span> would be nonpositive. The difference lemma gives <span class="math" data-tex="\(\beta-a\in\Phi\)">\(\beta-a\in\Phi\)</span>; its coefficients are nonnegative and it is nonzero. Hence <span class="math" data-tex="\(\beta=a+(\beta-a)\)">\(\beta=a+(\beta-a)\)</span> is decomposable. Thus the indecomposable positive roots are precisely <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<h2 id="3-the-chamber-and-its-walls">3. The chamber and its walls</h2>
+<p>Write <span class="math" data-tex="\(\Delta=\{\alpha_1,\ldots,\alpha_r\}\)">\(\Delta=\{\alpha_1,\ldots,\alpha_r\}\)</span>, and put <span class="math" data-tex="\(H_\alpha=\alpha^\perp\)">\(H_\alpha=\alpha^\perp\)</span>. A <strong>Weyl chamber</strong> is a connected component of
+<span class="math math-display" data-tex="\[
+E_{\mathrm{reg}}=E\setminus\bigcup_{\alpha\in\Phi}H_\alpha.
+\]">\[
+E_{\mathrm{reg}}=E\setminus\bigcup_{\alpha\in\Phi}H_\alpha.
+\]</span>
+For the positive roots in (2.1), the corresponding chamber is
+<span class="math math-display" data-tex="\[
+C=\{x:(x,\alpha_i)&gt;0\text{ for every }i\}
+=\{x:(x,\beta)&gt;0\text{ for every }\beta\in\Phi^+\}.
+\tag{3.1}
+\]">\[
+C=\{x:(x,\alpha_i)&gt;0\text{ for every }i\}
+=\{x:(x,\beta)&gt;0\text{ for every }\beta\in\Phi^+\}.
+\tag{3.1}
+\]</span>
+Equality follows from the nonnegative expansions. This nonempty open convex cone lies in <span class="math" data-tex="\(E_{\mathrm{reg}}\)">\(E_{\mathrm{reg}}\)</span>; signs cannot change in a connected subset of that complement. Thus it is exactly the component containing <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Conversely every chamber contains a regular vector and has this description. The indecomposability construction identifies its unique base. In particular bases and chambers correspond bijectively.</p>
+<p>Let <span class="math" data-tex="\(d_i\)">\(d_i\)</span> be the inner-product dual basis, so <span class="math" data-tex="\((d_i,\alpha_j)=\delta_{ij}\)">\((d_i,\alpha_j)=\delta_{ij}\)</span>. Formula (3.1) gives
+<span class="math math-display" data-tex="\[
+C=\left\{\sum t_i d_i:t_i&gt;0\right\},\qquad
+\overline C=\left\{\sum t_i d_i:t_i\ge0\right\}.
+\tag{3.2}
+\]">\[
+C=\left\{\sum t_i d_i:t_i&gt;0\right\},\qquad
+\overline C=\left\{\sum t_i d_i:t_i\ge0\right\}.
+\tag{3.2}
+\]</span>
+Its facets have exactly one coefficient zero. Hence its walls are precisely <span class="math" data-tex="\(H_{\alpha_i}\)">\(H_{\alpha_i}\)</span>, and it has <span class="math" data-tex="\(r\)">\(r\)</span> walls. At the point <span class="math" data-tex="\(\sum_{j\ne i}d_j\)">\(\sum_{j\ne i}d_j\)</span>, a positive root has zero pairing only when all its simple coefficients outside <span class="math" data-tex="\(i\)">\(i\)</span> vanish; reducedness then makes it <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>. Thus the relative interior of that facet meets no other root hyperplane. For rank one the facet is the origin and the same statement holds.</p>
+<p>The dual system has the same hyperplanes and chambers. Its base for <span class="math" data-tex="\(C\)">\(C\)</span> is <span class="math" data-tex="\(\Delta^\vee\)">\(\Delta^\vee\)</span>: its facet normals are on the rays <span class="math" data-tex="\(\mathbb R_{&gt;0}\alpha_i\)">\(\mathbb R_{&gt;0}\alpha_i\)</span>, and reducedness leaves exactly <span class="math" data-tex="\(\alpha_i^\vee\)">\(\alpha_i^\vee\)</span> on each ray. The already proved base theorem applied to <span class="math" data-tex="\(\Phi^\vee\)">\(\Phi^\vee\)</span> therefore gives integral same-sign expansions in <span class="math" data-tex="\(\Delta^\vee\)">\(\Delta^\vee\)</span> as well.</p>
+<h2 id="4-root-signs-measure-a-reflection-word">4. Root signs measure a reflection word</h2>
+<p>Define the <strong>Weyl group</strong>
+<span class="math math-display" data-tex="\[
+W=\langle s_\alpha:\alpha\in\Phi\rangle\subset O(E),
+\qquad s_i=s_{\alpha_i}.
+\]">\[
+W=\langle s_\alpha:\alpha\in\Phi\rangle\subset O(E),
+\qquad s_i=s_{\alpha_i}.
+\]</span>
+It is finite: it permutes the finite spanning set <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, and a linear map fixing every root is the identity. For <span class="math" data-tex="\(w\in W\)">\(w\in W\)</span>, orthogonality gives
+<span class="math math-display" data-tex="\[
+w s_\alpha w^{-1}=s_{w\alpha}.
+\tag{4.1}
+\]">\[
+w s_\alpha w^{-1}=s_{w\alpha}.
+\tag{4.1}
+\]</span></p>
+<span id="RTLIE08-L41"></span>
+<p><strong>Lemma 4.1.</strong> The map <span class="math" data-tex="\(s_i\)">\(s_i\)</span> permutes <span class="math" data-tex="\(\Phi^+\setminus\{\alpha_i\}\)">\(\Phi^+\setminus\{\alpha_i\}\)</span> and sends <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> to <span class="math" data-tex="\(-\alpha_i\)">\(-\alpha_i\)</span>. The simple reflections generate <span class="math" data-tex="\(W\)">\(W\)</span>, and every root is <span class="math" data-tex="\(W\)">\(W\)</span>-conjugate to a simple root.</p>
+<p><strong>Proof.</strong> A positive root <span class="math" data-tex="\(\beta\ne\alpha_i\)">\(\beta\ne\alpha_i\)</span> has a strictly positive coefficient outside i; otherwise reducedness would force <span class="math" data-tex="\(\beta=\alpha_i\)">\(\beta=\alpha_i\)</span>. Reflection changes only its i coefficient. The image is a root retaining that positive coefficient, so the same-sign expansion theorem makes it positive. Since the reflection is an involution, it permutes the indicated finite set; it sends <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> to its negative by definition.</p>
+<p>For a positive nonsimple <span class="math" data-tex="\(\beta=\sum n_j\alpha_j\)">\(\beta=\sum n_j\alpha_j\)</span>, positivity of <span class="math" data-tex="\((\beta,\beta)=\sum n_j(\beta,\alpha_j)\)">\((\beta,\beta)=\sum n_j(\beta,\alpha_j)\)</span> supplies an index i with <span class="math" data-tex="\(n_i&gt;0\)">\(n_i&gt;0\)</span> and positive inner product. The integer <span class="math" data-tex="\(m=\langle\beta,\alpha_i^\vee\rangle\)">\(m=\langle\beta,\alpha_i^\vee\rangle\)</span> is positive. The preceding paragraph shows that <span class="math" data-tex="\(s_i\beta\)">\(s_i\beta\)</span> is positive, and its height is smaller by m. Descending positive integral heights terminates at a simple root. A negative root also reaches a simple root, first negate it and use <span class="math" data-tex="\(s_i\alpha_i=-\alpha_i\)">\(s_i\alpha_i=-\alpha_i\)</span>. Thus all roots lie in orbits of the subgroup generated by simple reflections. The conjugation identity (4.1) writes every root reflection as a conjugate of a simple reflection inside that subgroup. Hence that subgroup is all W. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(\ell(w)\)">\(\ell(w)\)</span> be the minimum number of simple reflections in a word for <span class="math" data-tex="\(w\)">\(w\)</span>. A word attaining this minimum is <strong>reduced</strong>. Define
+<span class="math math-display" data-tex="\[
+N(w)=\#\{\beta\in\Phi^+:w\beta\in\Phi^-\}.
+\]">\[
+N(w)=\#\{\beta\in\Phi^+:w\beta\in\Phi^-\}.
+\]</span></p>
+<p><strong>Lemma 4.2 (strong exchange).</strong> If <span class="math" data-tex="\(\beta\in\Phi^+\)">\(\beta\in\Phi^+\)</span> and <span class="math" data-tex="\(w\beta\in\Phi^-\)">\(w\beta\in\Phi^-\)</span>, then for any expression <span class="math" data-tex="\(w=s_{i_1}\cdots s_{i_k}\)">\(w=s_{i_1}\cdots s_{i_k}\)</span> there is an index <span class="math" data-tex="\(j\)">\(j\)</span> such that
+<span class="math math-display" data-tex="\[
+w s_\beta=s_{i_1}\cdots\widehat{s_{i_j}}\cdots s_{i_k}.
+\tag{4.2}
+\]">\[
+w s_\beta=s_{i_1}\cdots\widehat{s_{i_j}}\cdots s_{i_k}.
+\tag{4.2}
+\]</span>
+In particular <span class="math" data-tex="\(\ell(w s_\beta)&lt;\ell(w)\)">\(\ell(w s_\beta)&lt;\ell(w)\)</span>. Conversely, this strict inequality implies <span class="math" data-tex="\(w\beta\in\Phi^-\)">\(w\beta\in\Phi^-\)</span>.</p>
+<p><strong>Proof.</strong> Follow <span class="math" data-tex="\(\beta\)">\(\beta\)</span> through the suffixes of the word, starting at the right. Its sign starts positive and ends negative, so at some step <span class="math" data-tex="\(s_{i_j}\)">\(s_{i_j}\)</span> changes a positive root into a negative one. Lemma 4.1 says that the root immediately before that step must be <span class="math" data-tex="\(\alpha_{i_j}\)">\(\alpha_{i_j}\)</span>. Thus, with <span class="math" data-tex="\(u=s_{i_{j+1}}\cdots s_{i_k}\)">\(u=s_{i_{j+1}}\cdots s_{i_k}\)</span>, we have <span class="math" data-tex="\(u\beta=\alpha_{i_j}\)">\(u\beta=\alpha_{i_j}\)</span>. Equation (4.1) gives <span class="math" data-tex="\(u s_\beta=s_{i_j}u\)">\(u s_\beta=s_{i_j}u\)</span>; substitute in <span class="math" data-tex="\(w s_\beta\)">\(w s_\beta\)</span> and cancel the two adjacent <span class="math" data-tex="\(s_{i_j}\)">\(s_{i_j}\)</span>'s. This proves (4.2). Using a reduced word gives the strict length inequality. If instead <span class="math" data-tex="\(w\beta\)">\(w\beta\)</span> were positive and <span class="math" data-tex="\(\ell(w s_\beta)&lt;\ell(w)\)">\(\ell(w s_\beta)&lt;\ell(w)\)</span>, the first implication applied to <span class="math" data-tex="\(w s_\beta\)">\(w s_\beta\)</span> would give <span class="math" data-tex="\(\ell(w)&lt;\ell(w s_\beta)\)">\(\ell(w)&lt;\ell(w s_\beta)\)</span>, since <span class="math" data-tex="\((w s_\beta)\beta=-w\beta\)">\((w s_\beta)\beta=-w\beta\)</span>. This is a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a simple reflection, appending or removing its letter changes minimum length by at most one. Exchange and its application to <span class="math" data-tex="\(w s_i\)">\(w s_i\)</span> therefore give
+<span class="math math-display" data-tex="\[
+\ell(w s_i)=
+\begin{cases}
+\ell(w)+1,&amp;w\alpha_i\in\Phi^+,\\
+\ell(w)-1,&amp;w\alpha_i\in\Phi^-.
+\end{cases}
+\tag{4.3}
+\]">\[
+\ell(w s_i)=
+\begin{cases}
+\ell(w)+1,&amp;w\alpha_i\in\Phi^+,\\
+\ell(w)-1,&amp;w\alpha_i\in\Phi^-.
+\end{cases}
+\tag{4.3}
+\]</span>
+Lemma 4.1 also gives
+<span class="math math-display" data-tex="\[
+N(w s_i)=
+\begin{cases}
+N(w)+1,&amp;w\alpha_i\in\Phi^+,\\
+N(w)-1,&amp;w\alpha_i\in\Phi^-.
+\end{cases}
+\tag{4.4}
+\]">\[
+N(w s_i)=
+\begin{cases}
+N(w)+1,&amp;w\alpha_i\in\Phi^+,\\
+N(w)-1,&amp;w\alpha_i\in\Phi^-.
+\end{cases}
+\tag{4.4}
+\]</span>
+Every prefix of a reduced word is reduced; otherwise shortening that prefix shortens the whole word. Starting with the identity and applying (4.3)–(4.4) along these prefixes proves
+<span class="math math-display" data-tex="\[
+\boxed{\ell(w)=N(w).}
+\tag{4.5}
+\]">\[
+\boxed{\ell(w)=N(w).}
+\tag{4.5}
+\]</span>
+Reversing words shows <span class="math" data-tex="\(\ell(w^{-1})=\ell(w)\)">\(\ell(w^{-1})=\ell(w)\)</span>, so left multiplication increases length exactly when <span class="math" data-tex="\(w^{-1}\alpha_i\)">\(w^{-1}\alpha_i\)</span> is positive.</p>
+<p>The <strong>deletion condition</strong> follows too. In a nonreduced word, take the first nonreduced prefix. Its preceding prefix is reduced; appending the last letter decreases length by (4.3). Exchange deletes a letter from the preceding prefix and the appended letter. Consequently two letters can be deleted from the original word without changing its value. Repeating gives a reduced word.</p>
+<h2 id="5-simple-transitivity-and-the-longest-element">5. Simple transitivity and the longest element</h2>
+<p><strong>Theorem 5.1.</strong> The Weyl group acts simply transitively on chambers and on bases. It has a unique longest element <span class="math" data-tex="\(w_0\)">\(w_0\)</span>, satisfying
+<span class="math math-display" data-tex="\[
+w_0\Phi^+=\Phi^-,\qquad
+\ell(w_0)=|\Phi^+|,\qquad w_0^2=1.
+\tag{5.1}
+\]">\[
+w_0\Phi^+=\Phi^-,\qquad
+\ell(w_0)=|\Phi^+|,\qquad w_0^2=1.
+\tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong> Any two chambers can be joined by a finite sequence of adjacent chambers. Here is an explicit justification. Fix <span class="math" data-tex="\(x\)">\(x\)</span> in the first chamber and choose <span class="math" data-tex="\(y\)">\(y\)</span> in the second. Choose <span class="math" data-tex="\(y\)">\(y\)</span> outside the finitely many hyperplanes
+<span class="math math-display" data-tex="\[
+(x,\alpha)(y,\beta)-(x,\beta)(y,\alpha)=0
+\]">\[
+(x,\alpha)(y,\beta)-(x,\beta)(y,\alpha)=0
+\]</span>
+for nonproportional roots <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>. Each is a proper hyperplane, since <span class="math" data-tex="\(x\)">\(x\)</span> is regular and the roots are independent; their union cannot contain the open second chamber. The segment from <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span> now crosses root hyperplanes at distinct times, hence one at a time. The successive chambers are adjacent.</p>
+<p>Reflection in a common wall interchanges its adjacent chambers: near a relative-interior point of their common facet, no other hyperplane occurs, and reflection interchanges the two local sides. It permutes the whole hyperplane arrangement, so it interchanges the full components. If the current chamber is <span class="math" data-tex="\(wC\)">\(wC\)</span>, its walls are <span class="math" data-tex="\(wH_{\alpha_i}\)">\(wH_{\alpha_i}\)</span>, and crossing such a wall gives
+<span class="math math-display" data-tex="\[
+s_{w\alpha_i}(wC)=w s_i C.
+\]">\[
+s_{w\alpha_i}(wC)=w s_i C.
+\]</span>
+Induction along the segment therefore proves transitivity. If <span class="math" data-tex="\(wC=C\)">\(wC=C\)</span>, the signs of all root pairings show that <span class="math" data-tex="\(w\Phi^+=\Phi^+\)">\(w\Phi^+=\Phi^+\)</span>. Then <span class="math" data-tex="\(N(w)=0\)">\(N(w)=0\)</span>, and (4.5) forces <span class="math" data-tex="\(w=1\)">\(w=1\)</span>. This proves freeness. The base–chamber correspondence is equivariant, giving simple transitivity on bases.</p>
+<p>Choose <span class="math" data-tex="\(w\)">\(w\)</span> of maximum length in the finite group. Every <span class="math" data-tex="\(w s_i\)">\(w s_i\)</span> is shorter, so <span class="math" data-tex="\(w\alpha_i\)">\(w\alpha_i\)</span> is negative by (4.3). A positive root is a nonnegative combination of simples; its image is therefore a nonzero nonpositive combination of simples, hence negative. Thus <span class="math" data-tex="\(N(w)=|\Phi^+|\)">\(N(w)=|\Phi^+|\)</span>. If <span class="math" data-tex="\(v,w\)">\(v,w\)</span> both send all positives to negatives, <span class="math" data-tex="\(v^{-1}w\)">\(v^{-1}w\)</span> preserves positives and hence is the identity. This proves uniqueness; its square preserves positives, so it is also the identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This theorem concerns open chambers. Points on their walls can have nontrivial stabilizers; the reflection in that wall already fixes its points.</p>
+<p>For later use, the vector <span class="math" data-tex="\(\rho=\frac12\sum_{\beta\in\Phi^+}\beta\)">\(\rho=\frac12\sum_{\beta\in\Phi^+}\beta\)</span> satisfies
+<span class="math math-display" data-tex="\[
+s_i\rho=\rho-\alpha_i,
+\qquad\langle\rho,\alpha_i^\vee\rangle=1.
+\tag{5.2}
+\]">\[
+s_i\rho=\rho-\alpha_i,
+\qquad\langle\rho,\alpha_i^\vee\rangle=1.
+\tag{5.2}
+\]</span>
+Indeed, Lemma 4.1 permutes every positive summand except <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>, which it negates; comparison with (1.1) proves both equalities.</p>
+<p>There is also a unique orthogonal decomposition into irreducible components. Make a graph on <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, joining roots with nonzero inner product. Different connected components are orthogonal, so their spans give an orthogonal direct sum of <span class="math" data-tex="\(E\)">\(E\)</span>. Each component is reflection-stable: if <span class="math" data-tex="\((\alpha,\beta)=0\)">\((\alpha,\beta)=0\)</span>, reflection fixes <span class="math" data-tex="\(\beta\)">\(\beta\)</span>; otherwise <span class="math" data-tex="\((\alpha,s_\alpha\beta)=-(\alpha,\beta)\ne0\)">\((\alpha,s_\alpha\beta)=-(\alpha,\beta)\ne0\)</span>, keeping it in the same component. Each component is therefore a root system. A further orthogonal decomposition would disconnect its graph, so it is irreducible. Conversely any orthogonal decomposition separates graph components, proving uniqueness. Reflections in one span fix all other spans; consequently <span class="math" data-tex="\(W\)">\(W\)</span> is the direct product of the component Weyl groups.</p>
+<h2 id="6-all-rank-two-systems">6. All rank-two systems</h2>
+<p>Take a base <span class="math" data-tex="\(\{\alpha,\beta\}\)">\(\{\alpha,\beta\}\)</span> of a rank-two system. Its inner product is nonpositive. If it is zero, Lemma 4.1 says every root is conjugate to one of these roots under their sign changes, so the system is exactly <span class="math" data-tex="\(\{\pm\alpha,\pm\beta\}\)">\(\{\pm\alpha,\pm\beta\}\)</span>: type <span class="math" data-tex="\(A_1\times A_1\)">\(A_1\times A_1\)</span>.</p>
+<p>If it is negative, interchange the roots so that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is shorter and scale its squared length to <span class="math" data-tex="\(1\)">\(1\)</span>. Proposition 1.1 gives
+<span class="math math-display" data-tex="\[
+(\alpha,\alpha)=1,\qquad
+(\beta,\beta)=k,\qquad(\alpha,\beta)=-k/2,
+\qquad k\in\{1,2,3\}.
+\tag{6.1}
+\]">\[
+(\alpha,\alpha)=1,\qquad
+(\beta,\beta)=k,\qquad(\alpha,\beta)=-k/2,
+\qquad k\in\{1,2,3\}.
+\tag{6.1}
+\]</span>
+The two positive halfplanes have wedge angle <span class="math" data-tex="\(\pi/m\)">\(\pi/m\)</span>, with <span class="math" data-tex="\(m=3,4,6\)">\(m=3,4,6\)</span>, respectively; in the orthogonal case <span class="math" data-tex="\(m=2\)">\(m=2\)</span>. The product of their wall reflections is a rotation through <span class="math" data-tex="\(2\pi/m\)">\(2\pi/m\)</span>, up to orientation. This follows by writing a reflection in a line of angle <span class="math" data-tex="\(a\)">\(a\)</span> as <span class="math" data-tex="\(z\mapsto e^{2ia}\overline z\)">\(z\mapsto e^{2ia}\overline z\)</span> in the complex plane and composing two such maps.</p>
+<p>Here are exact models. Coordinates use the usual dot product; every listed positive root is accompanied by its negative.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Simple roots <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span></th>
+<th>Positive roots</th>
+<th><span class="math" data-tex="\(m\)">\(m\)</span></th>
+<th><span class="math" data-tex="\(\lvert W\rvert\)">\(\lvert W\rvert\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(A_1\times A_1\)">\(A_1\times A_1\)</span></td>
+<td><span class="math" data-tex="\((1,0),(0,1)\)">\((1,0),(0,1)\)</span></td>
+<td><span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span></td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(A_2\)">\(A_2\)</span></td>
+<td><span class="math" data-tex="\((1,0),(-1/2,\sqrt3/2)\)">\((1,0),(-1/2,\sqrt3/2)\)</span></td>
+<td><span class="math" data-tex="\(\alpha,\beta,\alpha+\beta\)">\(\alpha,\beta,\alpha+\beta\)</span></td>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(B_2\)">\(B_2\)</span></td>
+<td><span class="math" data-tex="\((1,-1),(0,1)\)">\((1,-1),(0,1)\)</span></td>
+<td><span class="math" data-tex="\(\alpha,\beta,\alpha+\beta,\alpha+2\beta\)">\(\alpha,\beta,\alpha+\beta,\alpha+2\beta\)</span></td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(G_2\)">\(G_2\)</span></td>
+<td><span class="math" data-tex="\((1,0),(-3/2,\sqrt3/2)\)">\((1,0),(-3/2,\sqrt3/2)\)</span></td>
+<td><span class="math" data-tex="\(\alpha,\beta,\alpha+\beta,2\alpha+\beta,3\alpha+\beta,3\alpha+2\beta\)">\(\alpha,\beta,\alpha+\beta,2\alpha+\beta,3\alpha+\beta,3\alpha+2\beta\)</span></td>
+<td>6</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>We verify the models as well as their completeness. The orthogonal model has integer Cartan entries <span class="math" data-tex="\(0,\pm2\)">\(0,\pm2\)</span> and coordinate sign reflections. In <span class="math" data-tex="\(A_2\)">\(A_2\)</span>, write a root as <span class="math" data-tex="\(a\alpha+b\beta\)">\(a\alpha+b\beta\)</span>. The simple reflections send its coefficient pair to <span class="math" data-tex="\((-a+b,b)\)">\((-a+b,b)\)</span> and <span class="math" data-tex="\((a,a-b)\)">\((a,a-b)\)</span>, respectively. They permute the six displayed pairs and their orbits contain every pair. Pairings with the simple coroots are <span class="math" data-tex="\(2a-b\)">\(2a-b\)</span> and <span class="math" data-tex="\(-a+2b\)">\(-a+2b\)</span>, integers. Since every root is in an orbit of a simple root, conjugation (4.1) proves reflection stability for every root, and invariance of the pairing proves integrality for every root pair.</p>
+<p>The <span class="math" data-tex="\(B_2\)">\(B_2\)</span> model is <span class="math" data-tex="\(\{\pm e_1,\pm e_2,\pm e_1\pm e_2\}\)">\(\{\pm e_1,\pm e_2,\pm e_1\pm e_2\}\)</span>. A reflection in <span class="math" data-tex="\(e_i\)">\(e_i\)</span> changes one coordinate sign; reflections in <span class="math" data-tex="\(e_1-e_2\)">\(e_1-e_2\)</span> and <span class="math" data-tex="\(e_1+e_2\)">\(e_1+e_2\)</span> exchange the coordinates, respectively with no sign change and with both signs changed. These preserve the set. Short coroots are <span class="math" data-tex="\(2e_i\)">\(2e_i\)</span>, long coroots are <span class="math" data-tex="\(\pm e_1\pm e_2\)">\(\pm e_1\pm e_2\)</span>, so all pairings are integers. Its two simple-reflection orbits are precisely its short and long roots.</p>
+<p>For <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, its Gram matrix in the displayed simple basis is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}1&amp;-3/2\\-3/2&amp;3\end{pmatrix}.
+\]">\[
+\begin{pmatrix}1&amp;-3/2\\-3/2&amp;3\end{pmatrix}.
+\]</span>
+The simple reflections act by
+<span class="math math-display" data-tex="\[
+s_\alpha(a,b)=(-a+3b,b),\qquad
+s_\beta(a,b)=(a,a-b).
+\tag{6.2}
+\]">\[
+s_\alpha(a,b)=(-a+3b,b),\qquad
+s_\beta(a,b)=(a,a-b).
+\tag{6.2}
+\]</span>
+Their values on the positive roots are:</p>
+<table>
+<thead>
+<tr>
+<th>Root</th>
+<th><span class="math" data-tex="\(s_\alpha\)">\(s_\alpha\)</span></th>
+<th><span class="math" data-tex="\(s_\beta\)">\(s_\beta\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\alpha\)">\(\alpha\)</span></td>
+<td><span class="math" data-tex="\(-\alpha\)">\(-\alpha\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\beta\)">\(\alpha+\beta\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\beta\)">\(\beta\)</span></td>
+<td><span class="math" data-tex="\(3\alpha+\beta\)">\(3\alpha+\beta\)</span></td>
+<td><span class="math" data-tex="\(-\beta\)">\(-\beta\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\alpha+\beta\)">\(\alpha+\beta\)</span></td>
+<td><span class="math" data-tex="\(2\alpha+\beta\)">\(2\alpha+\beta\)</span></td>
+<td><span class="math" data-tex="\(\alpha\)">\(\alpha\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(2\alpha+\beta\)">\(2\alpha+\beta\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\beta\)">\(\alpha+\beta\)</span></td>
+<td><span class="math" data-tex="\(2\alpha+\beta\)">\(2\alpha+\beta\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\alpha+\beta\)">\(3\alpha+\beta\)</span></td>
+<td><span class="math" data-tex="\(\beta\)">\(\beta\)</span></td>
+<td><span class="math" data-tex="\(3\alpha+2\beta\)">\(3\alpha+2\beta\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\alpha+2\beta\)">\(3\alpha+2\beta\)</span></td>
+<td><span class="math" data-tex="\(3\alpha+2\beta\)">\(3\alpha+2\beta\)</span></td>
+<td><span class="math" data-tex="\(3\alpha+\beta\)">\(3\alpha+\beta\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Negating gives their values on negative roots. This verifies permutation and shows that every listed root is in an orbit of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> or <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Their coroot pairings are <span class="math" data-tex="\(2a-3b\)">\(2a-3b\)</span> and <span class="math" data-tex="\(-a+2b\)">\(-a+2b\)</span>, integers. Conjugation and invariance again verify the axioms for every root reflection and every pairing. The lists plainly span their planes, contain no zero, and have only opposite roots on each root line, so all remaining axioms hold.</p>
+<p>Any rank-two root system has, after the indicated scaling and possible interchange, the same simple Gram matrix as one of these models. The linear map between the simple bases therefore intertwines their reflections. Lemma 4.1 says that every root is in a simple-root orbit; the computed orbits in the models exhaust the displayed lists. Thus no additional roots can occur. This proves the classification: the irreducible types are exactly <span class="math" data-tex="\(A_2,B_2,G_2\)">\(A_2,B_2,G_2\)</span>, and <span class="math" data-tex="\(A_1\times A_1\)">\(A_1\times A_1\)</span> is reducible. In the orthogonal case the two component lengths may be scaled independently.</p>
+<p><img src="assets/RT-LIE-08/rank2-a1a1-F0C67FDECB00D1BCA7DDA6B585B09F5D7D0615AD66B96F69349A31D6D14FD5E5.png" alt="The four roots and perpendicular reflecting walls of A1 times A1, with the positive chamber shaded" class="course-figure" width="1350" height="1170" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="rank2-a1a1" data-asset-sha256="F0C67FDECB00D1BCA7DDA6B585B09F5D7D0615AD66B96F69349A31D6D14FD5E5"></p>
+<p><img src="assets/RT-LIE-08/rank2-a2-0F5B20D70F3DCE6635B6A6092F03FC9FE2D869D62C8C9C1FAF76B7C2F8E71372.png" alt="The six A2 roots and their perpendicular reflecting walls, with the sixty-degree positive chamber shaded" class="course-figure" width="1350" height="1170" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="rank2-a2" data-asset-sha256="0F5B20D70F3DCE6635B6A6092F03FC9FE2D869D62C8C9C1FAF76B7C2F8E71372"></p>
+<p><img src="assets/RT-LIE-08/rank2-b2-1F6F0D81E75A716842B6FC785E01E04FB2EB06F30F5C6024D6F76CEE4016BE24.png" alt="The eight B2 roots and their perpendicular reflecting walls, with the forty-five-degree positive chamber shaded" class="course-figure" width="1350" height="1170" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="rank2-b2" data-asset-sha256="1F6F0D81E75A716842B6FC785E01E04FB2EB06F30F5C6024D6F76CEE4016BE24"></p>
+<p><img src="assets/RT-LIE-08/rank2-g2-7DCB12D54617AEE8149F3A0F8880B87CE76AD93E782AF96DAD0C1795731D5B9A.png" alt="The twelve G2 roots and their perpendicular reflecting walls, with the thirty-degree positive chamber shaded" class="course-figure" width="1350" height="1170" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="rank2-g2" data-asset-sha256="7DCB12D54617AEE8149F3A0F8880B87CE76AD93E782AF96DAD0C1795731D5B9A"></p>
+<p><strong>Figure 6.1.</strong> Each arrow ends at an exact root from the coordinate table; the rendering uses numerical values of those coordinates. Orange arrows mark the chosen simple roots. Dashed lines are the perpendicular reflecting hyperplanes, and the shaded sector is <span class="math" data-tex="\((x,\alpha)&gt;0,(x,\beta)&gt;0\)">\((x,\alpha)&gt;0,(x,\beta)&gt;0\)</span>, truncated at a drawing radius. It contains no wall in its interior. The axes describe root coordinates, not Cartan integers. The diagrams depict the models just proved and do not assert that the unbounded chamber ends at that arc. <a href="figures/rt_lie_08_figures.py">Reproducible figure source</a>.</p>
+<p>Let <span class="math" data-tex="\(s=s_\alpha,t=s_\beta,R=st\)">\(s=s_\alpha,t=s_\beta,R=st\)</span>. Since <span class="math" data-tex="\(R\)">\(R\)</span> has order <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(sRs=R^{-1}\)">\(sRs=R^{-1}\)</span>, every word is of the form <span class="math" data-tex="\(R^a\)">\(R^a\)</span> or <span class="math" data-tex="\(R^a s\)">\(R^a s\)</span>. The <span class="math" data-tex="\(m\)">\(m\)</span> rotations are distinct, and the <span class="math" data-tex="\(m\)">\(m\)</span> reflections are distinct from them by determinant. Hence the group has exactly <span class="math" data-tex="\(2m\)">\(2m\)</span> elements. This proves the orders in the table, with dihedral convention <span class="math" data-tex="\(D_m\)">\(D_m\)</span> meaning order <span class="math" data-tex="\(2m\)">\(2m\)</span>.</p>
+<p>We will need the reduced words in this dihedral group. Cancel adjacent equal letters; the remaining word alternates. An alternating word of length <span class="math" data-tex="\(2a\)">\(2a\)</span> starting with <span class="math" data-tex="\(s\)">\(s\)</span> or <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(R^a\)">\(R^a\)</span> or <span class="math" data-tex="\(R^{-a}\)">\(R^{-a}\)</span>. One of length <span class="math" data-tex="\(2a+1\)">\(2a+1\)</span> is <span class="math" data-tex="\(R^a s\)">\(R^a s\)</span> or <span class="math" data-tex="\(R^{-a-1}s\)">\(R^{-a-1}s\)</span>. For lengths less than <span class="math" data-tex="\(m\)">\(m\)</span>, these exponents are distinct modulo <span class="math" data-tex="\(m\)">\(m\)</span>, including across different lengths of the same parity. At length <span class="math" data-tex="\(m\)">\(m\)</span>, the two alternating words coincide, and this is their first coincidence. To check exhaustion, if <span class="math" data-tex="\(m=2h\)">\(m=2h\)</span>, the even exponents run from <span class="math" data-tex="\(-h\)">\(-h\)</span> to <span class="math" data-tex="\(h\)">\(h\)</span>, with the two endpoints identified, and the odd exponents run from <span class="math" data-tex="\(-h\)">\(-h\)</span> to <span class="math" data-tex="\(h-1\)">\(h-1\)</span>. If <span class="math" data-tex="\(m=2h+1\)">\(m=2h+1\)</span>, the even exponents run from <span class="math" data-tex="\(-h\)">\(-h\)</span> to <span class="math" data-tex="\(h\)">\(h\)</span>, and the odd exponents from <span class="math" data-tex="\(-h-1\)">\(-h-1\)</span> to <span class="math" data-tex="\(h\)">\(h\)</span>, with the endpoints identified. In both cases these account for every rotation and reflection. Thus every alternating word of length less than <span class="math" data-tex="\(m\)">\(m\)</span> is uniquely reduced, the two alternating words of length <span class="math" data-tex="\(m\)">\(m\)</span> represent the unique longest element, and no shorter word represents it.</p>
+<h2 id="7-why-the-coxeter-relations-suffice">7. Why the Coxeter relations suffice</h2>
+<p>For distinct simple roots let <span class="math" data-tex="\(m_{ij}\)">\(m_{ij}\)</span> be <span class="math" data-tex="\(2,3,4,6\)">\(2,3,4,6\)</span> according as
+<span class="math math-display" data-tex="\[
+\langle\alpha_i,\alpha_j^\vee\rangle
+\langle\alpha_j,\alpha_i^\vee\rangle=0,1,2,3.
+\tag{7.1}
+\]">\[
+\langle\alpha_i,\alpha_j^\vee\rangle
+\langle\alpha_j,\alpha_i^\vee\rangle=0,1,2,3.
+\tag{7.1}
+\]</span>
+The subsystem <span class="math" data-tex="\(\Psi=\Phi\cap U\)">\(\Psi=\Phi\cap U\)</span>, where <span class="math" data-tex="\(U=\mathbb R\alpha_i+\mathbb R\alpha_j\)">\(U=\mathbb R\alpha_i+\mathbb R\alpha_j\)</span>, has base <span class="math" data-tex="\(\{\alpha_i,\alpha_j\}\)">\(\{\alpha_i,\alpha_j\}\)</span>. Indeed, it spans <span class="math" data-tex="\(U\)">\(U\)</span>, its axioms are inherited, and its simple-root expansions have zero coefficients outside <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. Its Weyl group is <span class="math" data-tex="\(W_{ij}=\langle s_i,s_j\rangle\)">\(W_{ij}=\langle s_i,s_j\rangle\)</span>, by Lemma 4.1 applied within <span class="math" data-tex="\(U\)">\(U\)</span>; these maps fix <span class="math" data-tex="\(U^\perp\)">\(U^\perp\)</span>. Section 6 proves that <span class="math" data-tex="\(s_i s_j\)">\(s_i s_j\)</span> has order <span class="math" data-tex="\(m_{ij}\)">\(m_{ij}\)</span>.</p>
+<p>A <strong>braid move</strong> replaces an alternating block of <span class="math" data-tex="\(s_i,s_j\)">\(s_i,s_j\)</span> of length <span class="math" data-tex="\(m_{ij}\)">\(m_{ij}\)</span> by the alternating block of that length starting with the other letter. With <span class="math" data-tex="\(s_i^2=s_j^2=1\)">\(s_i^2=s_j^2=1\)</span>, this equality is equivalent to <span class="math" data-tex="\((s_i s_j)^{m_{ij}}=1\)">\((s_i s_j)^{m_{ij}}=1\)</span>: multiply one alternating block by the inverse of the other to obtain the alternating word of length <span class="math" data-tex="\(2m_{ij}\)">\(2m_{ij}\)</span>.</p>
+<p><strong>Lemma 7.1 (a two-generator coset).</strong> Choose an element <span class="math" data-tex="\(u\)">\(u\)</span> of minimum length in the finite coset <span class="math" data-tex="\(W_{ij}w\)">\(W_{ij}w\)</span>, and write <span class="math" data-tex="\(w=vu\)">\(w=vu\)</span>, <span class="math" data-tex="\(v\in W_{ij}\)">\(v\in W_{ij}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\ell(vu)=\ell(v)+\ell(u).
+\tag{7.2}
+\]">\[
+\ell(vu)=\ell(v)+\ell(u).
+\tag{7.2}
+\]</span>
+If both <span class="math" data-tex="\(s_i,s_j\)">\(s_i,s_j\)</span> shorten <span class="math" data-tex="\(w\)">\(w\)</span> on the left, <span class="math" data-tex="\(v\)">\(v\)</span> is the longest element of <span class="math" data-tex="\(W_{ij}\)">\(W_{ij}\)</span>.</p>
+<p><strong>Proof.</strong> Minimality and (4.3) applied on the left say that <span class="math" data-tex="\(u^{-1}\alpha_i,u^{-1}\alpha_j\)">\(u^{-1}\alpha_i,u^{-1}\alpha_j\)</span> are positive. Every root in <span class="math" data-tex="\(\Psi^+\)">\(\Psi^+\)</span> is a nonnegative combination of these simples, so <span class="math" data-tex="\(u^{-1}\)">\(u^{-1}\)</span> sends it to a positive root; it sends <span class="math" data-tex="\(\Psi^-\)">\(\Psi^-\)</span> to negative roots.</p>
+<p>Every positive root outside <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> has a positive simple coefficient outside <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. Any word in <span class="math" data-tex="\(s_i,s_j\)">\(s_i,s_j\)</span> leaves that coefficient unchanged, so such roots remain positive. Consequently (4.5) computes the ambient length of <span class="math" data-tex="\(v\in W_{ij}\)">\(v\in W_{ij}\)</span> using exactly its inversions in <span class="math" data-tex="\(\Psi^+\)">\(\Psi^+\)</span>. It agrees with length in this rank-two Weyl group.</p>
+<p>Take a reduced word for <span class="math" data-tex="\(v\)">\(v\)</span> in these two generators and build <span class="math" data-tex="\(vu\)">\(vu\)</span> by prepending its letters from right to left. At each step, if the current suffix is <span class="math" data-tex="\(a\)">\(a\)</span> and the next letter is <span class="math" data-tex="\(s_k\)">\(s_k\)</span>, reducedness gives <span class="math" data-tex="\(a^{-1}\alpha_k\in\Psi^+\)">\(a^{-1}\alpha_k\in\Psi^+\)</span>. Therefore <span class="math" data-tex="\((au)^{-1}\alpha_k=u^{-1}a^{-1}\alpha_k\)">\((au)^{-1}\alpha_k=u^{-1}a^{-1}\alpha_k\)</span> is positive. The left version of (4.3) adds one to the ambient length. This proves (7.2).</p>
+<p>Finally, <span class="math" data-tex="\(w^{-1}\alpha_k=u^{-1}v^{-1}\alpha_k\)">\(w^{-1}\alpha_k=u^{-1}v^{-1}\alpha_k\)</span> has the same sign as <span class="math" data-tex="\(v^{-1}\alpha_k\)">\(v^{-1}\alpha_k\)</span> for <span class="math" data-tex="\(k=i,j\)">\(k=i,j\)</span>. Both left descents of <span class="math" data-tex="\(w\)">\(w\)</span> thus give both left descents of <span class="math" data-tex="\(v\)">\(v\)</span>. The two negative images under <span class="math" data-tex="\(v^{-1}\)">\(v^{-1}\)</span> make every positive root of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> negative, by its simple expansion. Theorem 5.1 in rank two makes <span class="math" data-tex="\(v\)">\(v\)</span> its unique longest element. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 7.2 (the word property).</strong> Any two reduced words for the same <span class="math" data-tex="\(w\)">\(w\)</span> are connected by braid moves.</p>
+<p><strong>Proof.</strong> Induct on <span class="math" data-tex="\(k=\ell(w)\)">\(k=\ell(w)\)</span>. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span> there is only the empty word. If the first letters agree, cancel them and apply induction to the two words of length <span class="math" data-tex="\(k-1\)">\(k-1\)</span>; restore the common first letter.</p>
+<p>Otherwise their first letters are <span class="math" data-tex="\(s_i\ne s_j\)">\(s_i\ne s_j\)</span>, both left descents of <span class="math" data-tex="\(w\)">\(w\)</span>. Lemma 7.1 gives <span class="math" data-tex="\(w=v_0u\)">\(w=v_0u\)</span>, where <span class="math" data-tex="\(v_0\)">\(v_0\)</span> is the rank-two longest element, of length <span class="math" data-tex="\(m=m_{ij}\)">\(m=m_{ij}\)</span>, and <span class="math" data-tex="\(\ell(w)=m+\ell(u)\)">\(\ell(w)=m+\ell(u)\)</span>. Fix a reduced word <span class="math" data-tex="\(U\)">\(U\)</span> for <span class="math" data-tex="\(u\)">\(u\)</span>. Prefixing <span class="math" data-tex="\(U\)">\(U\)</span> by either alternating length-<span class="math" data-tex="\(m\)">\(m\)</span> expression of <span class="math" data-tex="\(v_0\)">\(v_0\)</span> gives a reduced word for <span class="math" data-tex="\(w\)">\(w\)</span>, one starting with <span class="math" data-tex="\(s_i\)">\(s_i\)</span>, the other with <span class="math" data-tex="\(s_j\)">\(s_j\)</span>. After cancellation of the first <span class="math" data-tex="\(s_i\)">\(s_i\)</span>, induction connects the first given word to the first of these words, since both tails are reduced words for <span class="math" data-tex="\(s_iw\)">\(s_iw\)</span>. The same argument connects the second given word to the other word. One braid move connects the two alternating prefixes. Concatenating these moves finishes the induction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7.3 (Coxeter presentation).</strong> The Weyl group has the presentation
+<span class="math math-display" data-tex="\[
+W=\left\langle s_1,\ldots,s_r\ \middle|\
+s_i^2=1,\ (s_i s_j)^{m_{ij}}=1\ (i\ne j)\right\rangle.
+\tag{7.3}
+\]">\[
+W=\left\langle s_1,\ldots,s_r\ \middle|\
+s_i^2=1,\ (s_i s_j)^{m_{ij}}=1\ (i\ne j)\right\rangle.
+\tag{7.3}
+\]</span></p>
+<p><strong>Proof.</strong> These relations hold by (1.1) and the rank-two calculation, so the presented group surjects onto <span class="math" data-tex="\(W\)">\(W\)</span>. We prove injectivity by reducing words using only these relations.</p>
+<p>Induct on the number of letters of any word. Reduce its prefix to a reduced word for its value <span class="math" data-tex="\(a\)">\(a\)</span>. If appending its last letter <span class="math" data-tex="\(s_i\)">\(s_i\)</span> increases length, the resulting word is already reduced. If it decreases length, take any reduced word <span class="math" data-tex="\(A\)">\(A\)</span> for <span class="math" data-tex="\(a s_i\)">\(a s_i\)</span>. Then <span class="math" data-tex="\(A s_i\)">\(A s_i\)</span> is a reduced word for <span class="math" data-tex="\(a\)">\(a\)</span>, by (4.3). Lemma 7.2 transforms the reduced prefix into <span class="math" data-tex="\(A s_i\)">\(A s_i\)</span> by braid moves. The whole word becomes <span class="math" data-tex="\(A s_i s_i\)">\(A s_i s_i\)</span>, which reduces to <span class="math" data-tex="\(A\)">\(A\)</span> by an involution relation. Thus every word can be transformed, with the stated relations alone, into a reduced expression for its actual value in <span class="math" data-tex="\(W\)">\(W\)</span>. A word in the kernel has value <span class="math" data-tex="\(1\)">\(1\)</span>; its reduced expression is empty. The kernel is trivial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof establishes the complete presentation, rather than only the orders of pairwise products. It also explains the roles of exchange and deletion: exchange finds a shortening, while the word property converts it into braid moves followed by an adjacent cancellation.</p>
+<h2 id="8-permutations-and-signed-permutations">8. Permutations and signed permutations</h2>
+<p>For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, the roots of <span class="math" data-tex="\(A_{n-1}\)">\(A_{n-1}\)</span> are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E=\{x\in\mathbb R^n:\sum x_i=0\},\\
+\Phi=\{e_i-e_j:i\ne j\},\\
+\Delta=\{e_i-e_{i+1}:1\le i&lt;n\}.
+\end{gathered}
+\tag{8.1}
+\]">\[
+\begin{gathered}
+E=\{x\in\mathbb R^n:\sum x_i=0\},\\
+\Phi=\{e_i-e_j:i\ne j\},\\
+\Delta=\{e_i-e_{i+1}:1\le i&lt;n\}.
+\end{gathered}
+\tag{8.1}
+\]</span>
+The simples are an independent spanning set. Every <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span> with <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> is <span class="math" data-tex="\(\alpha_i+\cdots+\alpha_{j-1}\)">\(\alpha_i+\cdots+\alpha_{j-1}\)</span>, proving the base property. Root squared lengths are <span class="math" data-tex="\(2\)">\(2\)</span>, so Cartan integers are ordinary integer dot products. Reflection in <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span> exchanges coordinates <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, proving stability and all remaining axioms. The chamber is <span class="math" data-tex="\(x_1&gt;x_2&gt;\cdots&gt;x_n\)">\(x_1&gt;x_2&gt;\cdots&gt;x_n\)</span>.</p>
+<p>Thus <span class="math" data-tex="\(W=S_n\)">\(W=S_n\)</span>, acting faithfully on <span class="math" data-tex="\(E\)">\(E\)</span>: every root reflection is a transposition, and adjacent transpositions generate every permutation. For the latter claim, move the last desired entry to its place by adjacent swaps, then repeat on the preceding entries. If <span class="math" data-tex="\(w e_i=e_{w(i)}\)">\(w e_i=e_{w(i)}\)</span>, (4.5) gives
+<span class="math math-display" data-tex="\[
+\ell(w)=\#\{(i,j):i&lt;j,\ w(i)&gt;w(j)\},
+\tag{8.2}
+\]">\[
+\ell(w)=\#\{(i,j):i&lt;j,\ w(i)&gt;w(j)\},
+\tag{8.2}
+\]</span>
+the inversion number. The longest permutation reverses the order and has length <span class="math" data-tex="\(n(n-1)/2\)">\(n(n-1)/2\)</span>. The convention <span class="math" data-tex="\(n=1\)">\(n=1\)</span> gives the empty rank-zero system and the trivial group.</p>
+<p>For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, take
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_n:&amp;\quad\Phi=\{\pm e_i,\ \pm e_i\pm e_j:i&lt;j\},
+&amp;\quad\alpha_i=e_i-e_{i+1}\ (i&lt;n),\quad\alpha_n=e_n;\\
+C_n:&amp;\quad\Phi=\{\pm2e_i,\ \pm e_i\pm e_j:i&lt;j\},
+&amp;\quad\alpha_i=e_i-e_{i+1}\ (i&lt;n),\quad\alpha_n=2e_n.
+\end{aligned}
+\tag{8.3}
+\]">\[
+\begin{aligned}
+B_n:&amp;\quad\Phi=\{\pm e_i,\ \pm e_i\pm e_j:i&lt;j\},
+&amp;\quad\alpha_i=e_i-e_{i+1}\ (i&lt;n),\quad\alpha_n=e_n;\\
+C_n:&amp;\quad\Phi=\{\pm2e_i,\ \pm e_i\pm e_j:i&lt;j\},
+&amp;\quad\alpha_i=e_i-e_{i+1}\ (i&lt;n),\quad\alpha_n=2e_n.
+\end{aligned}
+\tag{8.3}
+\]</span>
+In either set, reflection in a difference root swaps two coordinates, reflection in a sum root swaps and negates them, and reflection in <span class="math" data-tex="\(e_i\)">\(e_i\)</span> or <span class="math" data-tex="\(2e_i\)">\(2e_i\)</span> flips one sign. These operations preserve both sets. Their coroot pairings are integral: for <span class="math" data-tex="\(B_n\)">\(B_n\)</span>, axial coroots are <span class="math" data-tex="\(2e_i\)">\(2e_i\)</span> and diagonal coroots are the diagonal roots themselves; for <span class="math" data-tex="\(C_n\)">\(C_n\)</span>, axial coroots are <span class="math" data-tex="\(e_i\)">\(e_i\)</span> and diagonal coroots are again the diagonal roots. All roots have integral coordinates. Spanning and reducedness are immediate from the displayed vectors.</p>
+<p>For the base assertion, difference roots expand as in (8.1). In <span class="math" data-tex="\(B_n\)">\(B_n\)</span>, <span class="math" data-tex="\(e_i=\sum_{k=i}^n\alpha_k\)">\(e_i=\sum_{k=i}^n\alpha_k\)</span>, and <span class="math" data-tex="\(e_i+e_j=(e_i-e_j)+2e_j\)">\(e_i+e_j=(e_i-e_j)+2e_j\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>. In <span class="math" data-tex="\(C_n\)">\(C_n\)</span>,
+<span class="math math-display" data-tex="\[
+2e_i=2\sum_{k=i}^{n-1}\alpha_k+\alpha_n,
+\qquad e_i+e_j=\sum_{k=i}^{j-1}\alpha_k
++2\sum_{k=j}^{n-1}\alpha_k+\alpha_n.
+\]">\[
+2e_i=2\sum_{k=i}^{n-1}\alpha_k+\alpha_n,
+\qquad e_i+e_j=\sum_{k=i}^{j-1}\alpha_k
++2\sum_{k=j}^{n-1}\alpha_k+\alpha_n.
+\]</span>
+These are all nonnegative expansions of the chosen positive roots, and their negatives exhaust the other roots. The simples are triangular independent bases. Both chambers are <span class="math" data-tex="\(x_1&gt;\cdots&gt;x_n&gt;0\)">\(x_1&gt;\cdots&gt;x_n&gt;0\)</span>.</p>
+<p>Their simple reflections swap adjacent coordinates, with the last reflection changing the last sign. Conjugating this sign change by coordinate permutations changes any chosen sign. All root reflections are signed permutation matrices, and these operations generate every such matrix. Therefore
+<span class="math math-display" data-tex="\[
+W(B_n)=W(C_n)=(\mathbb Z/2)^n\rtimes S_n,
+\qquad |W|=2^n n!,
+\tag{8.4}
+\]">\[
+W(B_n)=W(C_n)=(\mathbb Z/2)^n\rtimes S_n,
+\qquad |W|=2^n n!,
+\tag{8.4}
+\]</span>
+where permutations permute the sign-change factors. The pairwise orders are <span class="math" data-tex="\(3\)">\(3\)</span> along the adjacent-swap chain, <span class="math" data-tex="\(4\)">\(4\)</span> for the last swap and the sign change, and <span class="math" data-tex="\(2\)">\(2\)</span> for nonadjacent generators. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> only the single involution remains. The dual of the displayed <span class="math" data-tex="\(B_n\)">\(B_n\)</span> system is exactly the displayed <span class="math" data-tex="\(C_n\)">\(C_n\)</span> system, as the coroot lists show.</p>
+<h2 id="9-exercises-with-complete-solutions">9. Exercises with complete solutions</h2>
+<p><strong>Exercise 9.1 (easy).</strong> Draw the four rank-two systems in the coordinates of Section 6, include their reflecting lines, and compute their Weyl groups.</p>
+<p><strong>Solution.</strong> Figure 6.1 supplies the drawings; obtain each dashed line by rotating its root direction through <span class="math" data-tex="\(90^\circ\)">\(90^\circ\)</span>. For the orthogonal model the two lines give four quadrants. For <span class="math" data-tex="\(A_2,B_2,G_2\)">\(A_2,B_2,G_2\)</span> the wall rays have consecutive separations <span class="math" data-tex="\(60^\circ,45^\circ,30^\circ\)">\(60^\circ,45^\circ,30^\circ\)</span>, respectively, giving <span class="math" data-tex="\(6,8,12\)">\(6,8,12\)</span> chambers. The simple wedge angles are <span class="math" data-tex="\(\pi/m\)">\(\pi/m\)</span>, with <span class="math" data-tex="\(m=2,3,4,6\)">\(m=2,3,4,6\)</span>. If <span class="math" data-tex="\(s,t\)">\(s,t\)</span> are its wall reflections, <span class="math" data-tex="\(R=st\)">\(R=st\)</span> is a rotation of order <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(sRs=R^{-1}\)">\(sRs=R^{-1}\)</span>. The maps <span class="math" data-tex="\(R^a,R^a s\)">\(R^a,R^a s\)</span>, <span class="math" data-tex="\(0\le a&lt;m\)">\(0\le a&lt;m\)</span>, exhaust the group and are distinct, since rotations have determinant <span class="math" data-tex="\(1\)">\(1\)</span> and reflections determinant <span class="math" data-tex="\(-1\)">\(-1\)</span>. Hence the answers are <span class="math" data-tex="\(D_2,D_3,D_4,D_6\)">\(D_2,D_3,D_4,D_6\)</span>, of orders <span class="math" data-tex="\(4,6,8,12\)">\(4,6,8,12\)</span>; <span class="math" data-tex="\(D_2\cong(\mathbb Z/2)^2\)">\(D_2\cong(\mathbb Z/2)^2\)</span> and <span class="math" data-tex="\(D_3\cong S_3\)">\(D_3\cong S_3\)</span>. The latter isomorphism follows by permuting the three directions of a regular triangle, giving a faithful group of six permutations.</p>
+<p><strong>Exercise 9.2 (medium).</strong> Starting with a regular vector, prove that the indecomposable positive roots form a base. Identify where each of crystallographic integrality and the positive halfspace enters.</p>
+<p><strong>Solution.</strong> Induct on the finite set of positive values <span class="math" data-tex="\((\gamma,\beta)\)">\((\gamma,\beta)\)</span>: a decomposition <span class="math" data-tex="\(\beta=\delta+\epsilon\)">\(\beta=\delta+\epsilon\)</span> has two smaller values, so every positive root is a sum of indecomposables with integer multiplicities. For distinct indecomposables with positive inner product, the two positive Cartan integers have product at most <span class="math" data-tex="\(3\)">\(3\)</span>; one is <span class="math" data-tex="\(1\)">\(1\)</span>, making their difference a root by reflection. One sign of that difference decomposes one of them, a contradiction. This is precisely the use of crystallographic integrality.</p>
+<p>To prove independence, separate a linear relation into two positive combinations with disjoint supports, <span class="math" data-tex="\(v=u\)">\(v=u\)</span>. Pairwise nonpositive inner products give <span class="math" data-tex="\((v,u)\le0\)">\((v,u)\le0\)</span>, hence <span class="math" data-tex="\(v=u=0\)">\(v=u=0\)</span>. A nonempty positive combination cannot be zero because its pairing with <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is positive. This is precisely the positive-halfspace hypothesis; pairwise nonpositive inner products alone would not suffice, as <span class="math" data-tex="\(a,-a\)">\(a,-a\)</span> demonstrate. The indecomposables span because all roots are sums of them or negatives of such sums. They therefore form a basis; the previously obtained integral expansions and their negatives have the required signs.</p>
+<p><strong>Exercise 9.3 (medium).</strong> In <span class="math" data-tex="\(S_n=W(A_{n-1})\)">\(S_n=W(A_{n-1})\)</span>, prove that minimum adjacent-transposition length is inversion number, and give a permutation of <span class="math" data-tex="\(\{1,2,3,4\}\)">\(\{1,2,3,4\}\)</span> with length four.</p>
+<p><strong>Solution.</strong> A positive root <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span>, <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, becomes negative exactly when <span class="math" data-tex="\(w(i)&gt;w(j)\)">\(w(i)&gt;w(j)\)</span>. Thus (4.5) proves the equality. There is also a direct sorting proof: swapping two adjacent entries changes exactly their mutual inversion, so changes inversion number by <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Every word for <span class="math" data-tex="\(w\)">\(w\)</span> therefore needs at least its inversion number of swaps. If the list is not increasing, it has an adjacent descent; swapping it removes one inversion. Repetition sorts it in exactly its inversion number of steps, giving the reverse word for <span class="math" data-tex="\(w\)">\(w\)</span>. The list <span class="math" data-tex="\((3,4,1,2)\)">\((3,4,1,2)\)</span> has inversions <span class="math" data-tex="\((1,3),(1,4),(2,3),(2,4)\)">\((1,3),(1,4),(2,3),(2,4)\)</span>, hence length four. Sorting follows
+<span class="math math-display" data-tex="\[
+(3,4,1,2)\to(3,1,4,2)\to(1,3,4,2)
+\to(1,3,2,4)\to(1,2,3,4),
+\]">\[
+(3,4,1,2)\to(3,1,4,2)\to(1,3,4,2)
+\to(1,3,2,4)\to(1,2,3,4),
+\]</span>
+with each step an adjacent swap removing one inversion.</p>
+<p><strong>Exercise 9.4 (hard).</strong> Prove exchange and deletion, then show that the pairwise reflection orders give a complete presentation of <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(w=a_1\cdots a_k\)">\(w=a_1\cdots a_k\)</span> in simple reflections and suppose <span class="math" data-tex="\(w\beta&lt;0\)">\(w\beta&lt;0\)</span> for a positive root <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Read the suffix images of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> from right to left. At a sign-changing step <span class="math" data-tex="\(a_j=s_i\)">\(a_j=s_i\)</span>, the preceding positive root is <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>, because a simple reflection negates only its own simple positive root. With <span class="math" data-tex="\(u=a_{j+1}\cdots a_k\)">\(u=a_{j+1}\cdots a_k\)</span>, this says <span class="math" data-tex="\(u\beta=\alpha_i\)">\(u\beta=\alpha_i\)</span>. Hence <span class="math" data-tex="\(u s_\beta=a_j u\)">\(u s_\beta=a_j u\)</span> and
+<span class="math math-display" data-tex="\[
+w s_\beta=a_1\cdots a_{j-1}a_j u s_\beta
+=a_1\cdots a_{j-1}u,
+\]">\[
+w s_\beta=a_1\cdots a_{j-1}a_j u s_\beta
+=a_1\cdots a_{j-1}u,
+\]</span>
+which deletes <span class="math" data-tex="\(a_j\)">\(a_j\)</span>. For a simple appended reflection this shortens a reduced word by one; the opposite sign increases length by applying the same argument to the new word. A first nonreduced prefix consequently deletes an earlier letter and its last letter, proving deletion.</p>
+<p>For completeness of the relations, fix two distinct left descents <span class="math" data-tex="\(s_i,s_j\)">\(s_i,s_j\)</span> of an element <span class="math" data-tex="\(w\)">\(w\)</span>. Choose a minimum-length <span class="math" data-tex="\(u\in W_{ij}w\)">\(u\in W_{ij}w\)</span>. Its inverse sends the two simple roots, hence every positive root of the rank-two subsystem, to positive roots. Prepending a reduced rank-two word to <span class="math" data-tex="\(u\)">\(u\)</span> increases length at each step, so <span class="math" data-tex="\(w=v_0u\)">\(w=v_0u\)</span>, where <span class="math" data-tex="\(v_0\)">\(v_0\)</span> has both left descents and is the rank-two longest element. Its length is <span class="math" data-tex="\(m_{ij}\)">\(m_{ij}\)</span>, and it has the two alternating reduced expressions of that length, as computed in Section 6.</p>
+<p>Induct on <span class="math" data-tex="\(\ell(w)\)">\(\ell(w)\)</span> to connect any two reduced expressions. If their first letters agree, apply induction to their tails. If they differ, both first letters are left descents. The factorization just proved gives two reduced expressions consisting of the corresponding alternating prefix for <span class="math" data-tex="\(v_0\)">\(v_0\)</span> followed by one fixed reduced word for <span class="math" data-tex="\(u\)">\(u\)</span>. Induction on the tails connects each original expression to the one with its first letter; one braid move connects the two prefixes. Thus every pair of reduced expressions is connected by braid moves.</p>
+<p>Finally, reduce an arbitrary word from left to right. After reducing its prefix, either the last letter extends it to a reduced word, or it shortens its value. In the latter case the reduced prefix is braid-equivalent to a reduced word for the shortened value followed by that last letter. The resulting two adjacent equal letters cancel. Only the relations <span class="math" data-tex="\(s_i^2=1\)">\(s_i^2=1\)</span> and the length-<span class="math" data-tex="\(m_{ij}\)">\(m_{ij}\)</span> braid relations have been used. A word representing the identity reduces to the empty word. Therefore the presented group's kernel is zero, giving (7.3).</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Every root-system and finite Weyl-group result used above is proved here. The classification in ranks greater than two, realization of abstract root systems by Lie algebras, algebraic-group root data and the theory of infinite Coxeter groups are later or separate topics; none is imported into a proof here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>A. Kirillov, Jr., <a href="https://math.stonybrook.edu/~kirillov/liegroups/liegroups.pdf"><em>Introduction to Lie Groups and Lie Algebras</em>, author-hosted notes</a>, Chapter 7, for finite root-system arithmetic, bases and Weyl groups. The used arithmetic/base/descent proofs are given above.</li>
+<li>M. W. Davis, <a href="https://people.math.osu.edu/davis.12/davisbook.pdf"><em>The Geometry and Topology of Coxeter Groups</em>, author-hosted first-edition PDF</a>, Chapters 3–4 and §6.3; specifically Theorem 3.4.2 for the word property, Lemmas 4.3.1 and 4.3.3 for cosets, and Lemma 6.3.5 for independence in a positive halfspace. This citation is to the anonymously readable 600-page author PDF, whose relevant statements were checked, with its existing copyright retained. It is an eligible comparison for the retained finite Coxeter proofs.</li>
+</ul>
+</article></main></body></html>

@@ -1,0 +1,9 @@
+# Component terms
+
+The independently written exposition, proofs, solved exercises, generator source and original diagram expression for Proposition 6.8g are dedicated under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The mathematical objects and arguments are given completely in the lesson. No external human book expression, proof or figure is incorporated in this supplement.
+
+The bundled exact DejaVu font files and their rendered/outlined glyph components retain the full Bitstream Vera and Arev notices, with the DejaVu changes identified as public domain, in [FONT-NOTICE.txt](FONT-NOTICE.txt). The bundled STIX files and their rendered/outlined glyph components retain the complete STIX notice and SIL Open Font License 1.1 in that same file. The notice preserves the existing Matplotlib-supplied OTF-to-TTF conversion description. The supplied font binaries are unchanged. The whole complete notice is also embedded in the SVG's `font-notices` description. These glyph components are separately scoped from the original diagram expression.
+
+Matplotlib 3.10.9, NumPy 2.4.4 and Pillow 12.2.0 are external reproduction dependencies. Their actual full installed notice documents are retained as [MATPLOTLIB-LICENSE.txt](MATPLOTLIB-LICENSE.txt), [NUMPY-LICENSE.txt](NUMPY-LICENSE.txt) and [PILLOW-LICENSE.txt](PILLOW-LICENSE.txt). These notices include their supplied dependency notices. No library source, library binary, bundled dependency software or Python runtime is redistributed by this figure package, and the CC0 dedication does not apply to those external components.
+
+The historical chart and plaque-norm context is credited in the containing measured-foliation lesson and its references. The independently authored construction here retains the physical L2 input, the three distinct negative-output completions and the actual convolution-square proof; it makes no claim to settle an unstated historical boundary convention.

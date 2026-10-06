@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frobenius elements and determination by traces · Galois representations</title>
+<meta name="description" content="A lesson of the course Galois representations. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/frobenius-elements-and-determination-by-traces.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Galois representations</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="frobenius-elements-and-determination-by-traces">Frobenius elements and determination by traces</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An unramified prime supplies a conjugacy class in a Galois group. Chebotarev's theorem says that these classes test every finite quotient. Continuity then lets them test ℓ-adic representations, and semisimplicity turns equality of traces into an isomorphism. These are three separate steps: the construction of a local subgroup, the density argument, and the linear algebra of characters.</p>
+<p>We use arithmetic Frobenius throughout: it acts by <span class="math" data-tex="\(x\mapsto x^{q_v}\)">\(x\mapsto x^{q_v}\)</span> on the residue field. The inverse element is geometric Frobenius. All representations considered with a topology are continuous. The local construction, finite Chebotarev theorem, and trace comparison are proved below. The analytic and reciprocity inputs to the density proof have the following exact earlier programme proof locators; a theorem title alone is not an input.</p>
+<table>
+<thead>
+<tr>
+<th>Earlier written lesson</th>
+<th>Result used and its proof locator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="profinite-groups-and-adic-representations.html">LG-GAL 01, <em>Profinite groups and ℓ-adic representations</em></a></td>
+<td>Lemmas 0B.1–0B.2 for extension of embeddings and finite Galois correspondence; Proposition 0C.1 and its preceding compactness proof for infinite Galois theory; Lemma 0D.1 for simple-root Hensel; Proposition 0E.1 for unique extended valuation, completeness, integral closure and the norm formula; Lemma 0A.2 for composition factors; Proposition 3.1 for cyclotomic Frobenius.</td>
+</tr>
+<tr>
+<td>NT-ANT 05, <em>Decomposition of primes in extensions</em></td>
+<td>Theorems 5.1–5.2 for finite integral closures, prime norms and the fundamental identity; Theorem 5.4, including its proof's last paragraph, for finiteness of ramification.</td>
+</tr>
+<tr>
+<td>NT-ANT 06, <em>Hilbert's ramification theory in Galois extensions</em></td>
+<td>Theorems 6.1–6.2 and Proposition 6.3 for transitivity, residue exactness, and restriction in towers; “Subfields and double cosets,” equations (8)–(10), with their proofs, for prime orbits and relative Frobenius.</td>
+</tr>
+<tr>
+<td>NT-ANT 12, <em>Cyclotomic fields</em></td>
+<td>Theorem 12.1 and its proof for <span class="math" data-tex="\(\operatorname{Gal}(\mathbb Q(\zeta_N)/\mathbb Q)=(\mathbb Z/N\mathbb Z)^\times\)">\(\operatorname{Gal}(\mathbb Q(\zeta_N)/\mathbb Q)=(\mathbb Z/N\mathbb Z)^\times\)</span>.</td>
+</tr>
+<tr>
+<td>NT-ANT 16, <em>The Dedekind zeta function and the analytic class number formula</em></td>
+<td>Proposition 16.1 and Theorem 16.2, under “The series and its Euler product” and “Turning the counting error into continuation,” for the Euler product and positive simple pole at 1. Only that proved neighbourhood of 1 is used.</td>
+</tr>
+<tr>
+<td>NT-ADL 09–10, <em>Tate's global theory: continuation and functional equation</em>; <em>Hecke L-functions and the Dedekind zeta function</em></td>
+<td>Theorem 9.2, equation (19) and its proof; the standard test in lesson 10, equation (3), and Theorem 10.1 and its proof, for holomorphy at 1 of a nontrivial finite-order Hecke L-function.</td>
+</tr>
+<tr>
+<td>NT-CFT 06, <em>Local reciprocity and norm groups</em>; NT-CFT 16, <em>The global reciprocity law</em></td>
+<td>Theorem 6.3 and Proposition 6.4 with their proofs in §4 give the local norm quotient and arithmetic unramified formula. Lesson 16, §6, “Abstract reciprocity and its local comparison,” and Theorem 16.4 with its proof in §7 give the continuous surjective map on idèle classes and its local compatibility. The unit-image calculation is supplied in Lemma 3.0b below.</td>
+</tr>
+</tbody>
+</table>
+<p>The last three rows concern number fields of arbitrary degree, including the intermediate fields occurring in the proof. Section 3 gives the entire remaining density argument, rather than invoking a later or unwritten Chebotarev lesson. The freely available human sources consulted for this exposition are identified in the final section.</p>
+<h2 id="1-a-local-galois-group-inside-a-global-one">1. A local Galois group inside a global one</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field, <span class="math" data-tex="\(v\)">\(v\)</span> a finite place, and <span class="math" data-tex="\(K_v\)">\(K_v\)</span> its completion. Choose an embedding <span class="math" data-tex="\(\iota:\bar K\hookrightarrow\overline{K_v}\)">\(\iota:\bar K\hookrightarrow\overline{K_v}\)</span> extending the embedding of <span class="math" data-tex="\(K\)">\(K\)</span>. It selects a prolongation <span class="math" data-tex="\(\bar v\)">\(\bar v\)</span> of the valuation to <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span>. Define
+<span class="math math-display" data-tex="\[
+ D_{\bar v}=\{g\in G_K:g\bar v=\bar v\}.
+\]">\[
+ D_{\bar v}=\{g\in G_K:g\bar v=\bar v\}.
+\]</span>
+The inertia subgroup <span class="math" data-tex="\(I_{\bar v}\)">\(I_{\bar v}\)</span> consists of those elements of <span class="math" data-tex="\(D_{\bar v}\)">\(D_{\bar v}\)</span> which act trivially on the residue field of <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span> at <span class="math" data-tex="\(\bar v\)">\(\bar v\)</span>.</p>
+<p>We first supply the finite-level and approximation arguments needed to identify this subgroup. Write <span class="math" data-tex="\(F=K_v\)">\(F=K_v\)</span>. Its finite extensions are complete and have a unique extension of its absolute value, by Proposition 0E.1 of lesson 01. In particular, every <span class="math" data-tex="\(F\)">\(F\)</span>-embedding between finite extensions is an isometry. These facts apply to <span class="math" data-tex="\(F\)">\(F\)</span>: if <span class="math" data-tex="\(K=\mathbb Q(a)\)">\(K=\mathbb Q(a)\)</span>, its image lies densely in the finite complete field <span class="math" data-tex="\(\mathbb Q_p(a)\)">\(\mathbb Q_p(a)\)</span>, because rational approximations to coefficients approximate every linear combination of powers of <span class="math" data-tex="\(a\)">\(a\)</span>. Thus its completion is that finite extension of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>.</p>
+<p><strong>Lemma 1.0a (finite completion and decomposition).</strong> If <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is finite Galois and <span class="math" data-tex="\(w=\bar v|_L\)">\(w=\bar v|_L\)</span>, extension to the completion induces
+<span class="math math-display" data-tex="\[
+D_w\xrightarrow{\sim}\operatorname{Gal}(L_w/F).
+\tag{1}
+\]">\[
+D_w\xrightarrow{\sim}\operatorname{Gal}(L_w/F).
+\tag{1}
+\]</span>
+It identifies the global and local residue-field actions.</p>
+<p><strong>Proof.</strong> Choose a primitive element <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. The finite complete field <span class="math" data-tex="\(F(\iota(a))\)">\(F(\iota(a))\)</span> contains <span class="math" data-tex="\(\iota(L)\)">\(\iota(L)\)</span> densely, by coefficient approximation as above. It is therefore <span class="math" data-tex="\(L_w\)">\(L_w\)</span>. An element of <span class="math" data-tex="\(D_w\)">\(D_w\)</span> is an isometry on <span class="math" data-tex="\(L\)">\(L\)</span>, so extends uniquely to an <span class="math" data-tex="\(F\)">\(F\)</span>-automorphism of <span class="math" data-tex="\(L_w\)">\(L_w\)</span>. Conversely an <span class="math" data-tex="\(F\)">\(F\)</span>-automorphism of <span class="math" data-tex="\(L_w\)">\(L_w\)</span> takes every element of <span class="math" data-tex="\(\iota(L)\)">\(\iota(L)\)</span> to a root of its minimal polynomial over <span class="math" data-tex="\(K\)">\(K\)</span>. Normality of <span class="math" data-tex="\(L/K\)">\(L/K\)</span> puts every such root in <span class="math" data-tex="\(\iota(L)\)">\(\iota(L)\)</span>. Its restriction is a <span class="math" data-tex="\(K\)">\(K\)</span>-automorphism preserving <span class="math" data-tex="\(w\)">\(w\)</span>, since uniqueness of the extended absolute value makes it an isometry. These operations are inverse. The same argument for an embedding into an algebraic closure shows that <span class="math" data-tex="\(L_w/F\)">\(L_w/F\)</span> is normal; characteristic zero makes it separable.</p>
+<p>The residue field of a valued field and of its completion agree: approximate an integral element of the completion to distance less than 1 by an element of the original field. The approximant is integral and has the same residue. The injection follows from preservation of the absolute value. Applying this to <span class="math" data-tex="\(L\subset L_w\)">\(L\subset L_w\)</span> proves the assertion about residue actions. A primitive element exists here by finite Galois theory: in a finite normal closure the finitely many proper intermediate fields are proper <span class="math" data-tex="\(K\)">\(K\)</span>-linear subspaces, and an infinite field's vector space is not their finite union. One proof of the latter chooses, by induction, a point outside all but the last subspace, and a line through it with direction outside the last; this line is contained in none of the subspaces and meets each in at most one point. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.0b (Krasner and root approximation).</strong> Suppose <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> are algebraic over the complete field <span class="math" data-tex="\(F\)">\(F\)</span>, and
+<span class="math math-display" data-tex="\[
+|\alpha-\beta|&lt;|\alpha-\alpha&#x27;|
+\quad\text{for every distinct }F\text{-conjugate }\alpha&#x27;\text{ of }\alpha.
+\]">\[
+|\alpha-\beta|&lt;|\alpha-\alpha&#x27;|
+\quad\text{for every distinct }F\text{-conjugate }\alpha&#x27;\text{ of }\alpha.
+\]</span>
+Then <span class="math" data-tex="\(F(\alpha)\subseteq F(\beta)\)">\(F(\alpha)\subseteq F(\beta)\)</span>. Moreover, if <span class="math" data-tex="\(f\in F[X]\)">\(f\in F[X]\)</span> has a simple root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> in a finite extension <span class="math" data-tex="\(M/F\)">\(M/F\)</span>, every sufficiently close polynomial <span class="math" data-tex="\(h\)">\(h\)</span> of the same degree has a root in <span class="math" data-tex="\(M\)">\(M\)</span> arbitrarily close to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p><strong>Proof.</strong> Every embedding <span class="math" data-tex="\(\tau:F(\alpha,\beta)\to\overline F\)">\(\tau:F(\alpha,\beta)\to\overline F\)</span> fixing <span class="math" data-tex="\(F(\beta)\)">\(F(\beta)\)</span> is an isometry. Hence
+<span class="math math-display" data-tex="\[
+|\tau(\alpha)-\alpha|
+\leq\max(|\tau(\alpha)-\beta|,|\beta-\alpha|)
+=|\alpha-\beta|.
+\]">\[
+|\tau(\alpha)-\alpha|
+\leq\max(|\tau(\alpha)-\beta|,|\beta-\alpha|)
+=|\alpha-\beta|.
+\]</span>
+The separation hypothesis forces <span class="math" data-tex="\(\tau(\alpha)=\alpha\)">\(\tau(\alpha)=\alpha\)</span>. The extension is separable, so the embeddings detect its degree: <span class="math" data-tex="\(F(\alpha,\beta)=F(\beta)\)">\(F(\alpha,\beta)=F(\beta)\)</span>.</p>
+<p>For the second assertion write <span class="math" data-tex="\(h(\alpha+T)=\sum_j b_jT^j\)">\(h(\alpha+T)=\sum_j b_jT^j\)</span>. As the coefficients of <span class="math" data-tex="\(h\)">\(h\)</span> tend to those of <span class="math" data-tex="\(f\)">\(f\)</span>, one has <span class="math" data-tex="\(b_0\to0\)">\(b_0\to0\)</span>, <span class="math" data-tex="\(b_1\to f&#x27;(\alpha)\ne0\)">\(b_1\to f&#x27;(\alpha)\ne0\)</span>, and the other <span class="math" data-tex="\(b_j\)">\(b_j\)</span> remain bounded. Choose a nonzero <span class="math" data-tex="\(c\in M\)">\(c\in M\)</span> so small that the desired root distance exceeds <span class="math" data-tex="\(|c|\)">\(|c|\)</span>, and that <span class="math" data-tex="\(|b_jc^{j-1}/b_1|&lt;1\)">\(|b_jc^{j-1}/b_1|&lt;1\)</span> for every <span class="math" data-tex="\(j\geq2\)">\(j\geq2\)</span> throughout a fixed sufficiently small coefficient neighbourhood. After shrinking it further, <span class="math" data-tex="\(|b_0/(cb_1)|&lt;1\)">\(|b_0/(cb_1)|&lt;1\)</span>. Then
+<span class="math math-display" data-tex="\[
+H(Y)=\frac{h(\alpha+cY)}{cb_1}\in\mathcal O_M[Y],
+\qquad H(0)\in\mathfrak m_M,
+\qquad H&#x27;(0)=1.
+\]">\[
+H(Y)=\frac{h(\alpha+cY)}{cb_1}\in\mathcal O_M[Y],
+\qquad H(0)\in\mathfrak m_M,
+\qquad H&#x27;(0)=1.
+\]</span>
+Lemma 0D.1 of lesson 01 gives <span class="math" data-tex="\(y\in\mathfrak m_M\)">\(y\in\mathfrak m_M\)</span> with <span class="math" data-tex="\(H(y)=0\)">\(H(y)=0\)</span>. Consequently <span class="math" data-tex="\(\beta=\alpha+cy\)">\(\beta=\alpha+cy\)</span> is the required root and <span class="math" data-tex="\(|\beta-\alpha|&lt;|c|\)">\(|\beta-\alpha|&lt;|c|\)</span>. This also covers nonintegral <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and nonunit <span class="math" data-tex="\(f&#x27;(\alpha)\)">\(f&#x27;(\alpha)\)</span>; no stronger unproved version of Hensel is being invoked. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.1 (local cofinality).</strong> Every finite extension of <span class="math" data-tex="\(K_v\)">\(K_v\)</span> inside <span class="math" data-tex="\(\overline{K_v}\)">\(\overline{K_v}\)</span> is contained in the completion, at the chosen place, of a finite Galois extension of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(M=K_v\)">\(M=K_v\)</span>, take <span class="math" data-tex="\(L=K\)">\(L=K\)</span>. Otherwise characteristic zero makes <span class="math" data-tex="\(M/K_v\)">\(M/K_v\)</span> separable. Choose a primitive element <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, with minimal polynomial <span class="math" data-tex="\(f\in K_v[X]\)">\(f\in K_v[X]\)</span> of degree <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>. Approximate the coefficients of this monic polynomial by coefficients in the dense subfield <span class="math" data-tex="\(K\)">\(K\)</span>, obtaining <span class="math" data-tex="\(h\in K[X]\)">\(h\in K[X]\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Lemma 1.0b gives a root <span class="math" data-tex="\(\beta\in M\)">\(\beta\in M\)</span> of <span class="math" data-tex="\(h\)">\(h\)</span> arbitrarily close to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Choose it closer than the minimum distance to the finitely many other conjugates. The same lemma gives <span class="math" data-tex="\(K_v(\alpha)\subset K_v(\beta)\)">\(K_v(\alpha)\subset K_v(\beta)\)</span>. The reverse inclusion holds because <span class="math" data-tex="\(\beta\in M\)">\(\beta\in M\)</span>; thus <span class="math" data-tex="\(K_v(\beta)=M\)">\(K_v(\beta)=M\)</span>.</p>
+<p>The element <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is algebraic over <span class="math" data-tex="\(K\)">\(K\)</span>. Take the splitting field <span class="math" data-tex="\(L/K\)">\(L/K\)</span> of <span class="math" data-tex="\(h\)">\(h\)</span>, embedded in <span class="math" data-tex="\(\overline{K_v}\)">\(\overline{K_v}\)</span> so that it contains <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Its completion contains <span class="math" data-tex="\(K_v(\beta)=M\)">\(K_v(\beta)=M\)</span>. This proves cofinality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.1a (residue fields and unramified extensions).</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be a finite extension of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, with residue field <span class="math" data-tex="\(k=\mathbb F_q\)">\(k=\mathbb F_q\)</span>. In a chosen algebraic closure, there is a unique unramified extension <span class="math" data-tex="\(U_f/F\)">\(U_f/F\)</span> of each degree <span class="math" data-tex="\(f\)">\(f\)</span>. Its residue field is <span class="math" data-tex="\(\mathbb F_{q^f}\)">\(\mathbb F_{q^f}\)</span>, and reduction induces
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(U_f/F)\simeq
+\operatorname{Gal}(\mathbb F_{q^f}/\mathbb F_q)
+=\langle x\mapsto x^q\rangle.
+\tag{2}
+\]">\[
+\operatorname{Gal}(U_f/F)\simeq
+\operatorname{Gal}(\mathbb F_{q^f}/\mathbb F_q)
+=\langle x\mapsto x^q\rangle.
+\tag{2}
+\]</span>
+For finite Galois <span class="math" data-tex="\(M/F\)">\(M/F\)</span>, its maximal unramified subfield is <span class="math" data-tex="\(U_f\)">\(U_f\)</span>, where <span class="math" data-tex="\(f=[k_M:k]\)">\(f=[k_M:k]\)</span>; inertia is <span class="math" data-tex="\(\operatorname{Gal}(M/U_f)\)">\(\operatorname{Gal}(M/U_f)\)</span>. The residue field of <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span> is an algebraic closure of <span class="math" data-tex="\(k\)">\(k\)</span>, and
+<span class="math math-display" data-tex="\[
+G_F/I_F\simeq\varprojlim_f\mathbb Z/f\mathbb Z
+=\widehat{\mathbb Z}.
+\tag{3}
+\]">\[
+G_F/I_F\simeq\varprojlim_f\mathbb Z/f\mathbb Z
+=\widehat{\mathbb Z}.
+\tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> The roots of <span class="math" data-tex="\(X^{q^f}-X\)">\(X^{q^f}-X\)</span> in a splitting field form a field: they are closed under addition, multiplication, and inverses by the Frobenius identities. The derivative is <span class="math" data-tex="\(-1\)">\(-1\)</span>, so there are exactly <span class="math" data-tex="\(q^f\)">\(q^f\)</span> roots. They form <span class="math" data-tex="\(k_f=\mathbb F_{q^f}\)">\(k_f=\mathbb F_{q^f}\)</span>. Every finite extension of <span class="math" data-tex="\(k\)">\(k\)</span> of degree <span class="math" data-tex="\(f\)">\(f\)</span> has that cardinality and every nonzero element has <span class="math" data-tex="\((q^f-1)\)">\((q^f-1)\)</span>-st power 1; hence it is this root field. The map <span class="math" data-tex="\(x\mapsto x^q\)">\(x\mapsto x^q\)</span> has order <span class="math" data-tex="\(f\)">\(f\)</span>: a smaller order <span class="math" data-tex="\(d\)">\(d\)</span> would put <span class="math" data-tex="\(q^f\)">\(q^f\)</span> roots in the polynomial <span class="math" data-tex="\(X^{q^d}-X\)">\(X^{q^d}-X\)</span>. Thus it generates the Galois group. The field is generated by one element. Indeed a finite subgroup <span class="math" data-tex="\(A\)">\(A\)</span> of a field's multiplicative group is cyclic: for each prime dividing its exponent choose an element with the largest prime-power order, and multiply these commuting elements to obtain an element of order equal to the exponent <span class="math" data-tex="\(m\)">\(m\)</span>. Every member of <span class="math" data-tex="\(A\)">\(A\)</span> is a root of <span class="math" data-tex="\(X^m-1\)">\(X^m-1\)</span>; the root bound gives <span class="math" data-tex="\(|A|\leq m\)">\(|A|\leq m\)</span>, so this element generates <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Choose a monic lift <span class="math" data-tex="\(h\in\mathcal O_F[X]\)">\(h\in\mathcal O_F[X]\)</span> of the minimal polynomial of a generator of <span class="math" data-tex="\(k_f/k\)">\(k_f/k\)</span>, and let <span class="math" data-tex="\(\theta\)">\(\theta\)</span> be any root in <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span>. All roots of a monic integral polynomial are integral: a root of absolute value greater than 1 would make its leading term strictly larger than every other term. Isometry of conjugates consequently makes every monic factor integral as well. Reduction of such a factorization would factor the irreducible reduction of <span class="math" data-tex="\(h\)">\(h\)</span>, so <span class="math" data-tex="\(h\)">\(h\)</span> is irreducible. Its root field <span class="math" data-tex="\(U=F(\theta)\)">\(U=F(\theta)\)</span> has degree <span class="math" data-tex="\(f\)">\(f\)</span>, and its residue field contains <span class="math" data-tex="\(k_f\)">\(k_f\)</span>.</p>
+<p>For any finite local extension <span class="math" data-tex="\(N/F\)">\(N/F\)</span>, the equality <span class="math" data-tex="\([N:F]=ef\)">\([N:F]=ef\)</span> follows directly from the earlier complete-field integral-closure theorem. Its ring of integers is free of rank <span class="math" data-tex="\([N:F]\)">\([N:F]\)</span> over <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>; reducing modulo a base uniformizer gives that dimension over <span class="math" data-tex="\(k\)">\(k\)</span>. The same quotient has a filtration with <span class="math" data-tex="\(e\)">\(e\)</span> successive quotients equal to <span class="math" data-tex="\(k_N\)">\(k_N\)</span>, each of dimension <span class="math" data-tex="\([k_N:k]\)">\([k_N:k]\)</span>. Apply this equality to <span class="math" data-tex="\(U\)">\(U\)</span>. Its residue degree is at least <span class="math" data-tex="\(f=[U:F]\)">\(f=[U:F]\)</span>, so it is exactly <span class="math" data-tex="\(f\)">\(f\)</span> and its ramification index is 1.</p>
+<p>All the distinct roots of the reduction of <span class="math" data-tex="\(h\)">\(h\)</span> lie in <span class="math" data-tex="\(k_f\)">\(k_f\)</span>. Hensel lifting in <span class="math" data-tex="\(U\)">\(U\)</span> gives all its roots, so <span class="math" data-tex="\(U/F\)">\(U/F\)</span> is Galois. An automorphism with trivial residue action fixes <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, by uniqueness of the lift with its residue, and is the identity. The residue map is therefore injective between groups of the same order <span class="math" data-tex="\(f\)">\(f\)</span>, and is an isomorphism.</p>
+<p>If <span class="math" data-tex="\(N/F\)">\(N/F\)</span> is any unramified extension with residue field <span class="math" data-tex="\(k_f\)">\(k_f\)</span>, lift the same residue generator in <span class="math" data-tex="\(N\)">\(N\)</span> using <span class="math" data-tex="\(h\)">\(h\)</span>. Its root generates a subfield of degree <span class="math" data-tex="\(f=[N:F]\)">\(f=[N:F]\)</span>, so generates <span class="math" data-tex="\(N\)">\(N\)</span>. This proves uniqueness inside the chosen closure, since the preceding root field already contains every root of <span class="math" data-tex="\(h\)">\(h\)</span>. It also proves <span class="math" data-tex="\(U_f\subseteq U_g\)">\(U_f\subseteq U_g\)</span> when <span class="math" data-tex="\(f\mid g\)">\(f\mid g\)</span>.</p>
+<p>For a finite Galois extension <span class="math" data-tex="\(M/F\)">\(M/F\)</span>, lift a generator of <span class="math" data-tex="\(k_M/k\)">\(k_M/k\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>. Its root field is <span class="math" data-tex="\(U_f\subseteq M\)">\(U_f\subseteq M\)</span>. Restriction to <span class="math" data-tex="\(U_f\)">\(U_f\)</span> is onto by finite Galois theory, and reduction on that subfield is (2). An automorphism of <span class="math" data-tex="\(M\)">\(M\)</span> fixes every residue exactly when it fixes the lifted generator. Thus its inertia is <span class="math" data-tex="\(\operatorname{Gal}(M/U_f)\)">\(\operatorname{Gal}(M/U_f)\)</span>. Every unramified subextension has residue degree dividing <span class="math" data-tex="\(f\)">\(f\)</span> and lies in <span class="math" data-tex="\(U_f\)">\(U_f\)</span>, proving maximality.</p>
+<p>Finally the residue field of <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span> is the union of the residue fields of its finite subextensions. Each is finite and all <span class="math" data-tex="\(k_f\)">\(k_f\)</span> occur, so that union is <span class="math" data-tex="\(\overline k\)">\(\overline k\)</span>. The residue action maps <span class="math" data-tex="\(G_F\)">\(G_F\)</span> onto each finite group in (2). To lift a compatible system of residue automorphisms, take the closed sets of automorphisms with the prescribed action at each finite unramified level. They are nonempty and have the finite intersection property; compactness of <span class="math" data-tex="\(G_F\)">\(G_F\)</span>, proved in lesson 01, §0C, makes their intersection nonempty. Its kernel is precisely trivial residue action. The quotient is compact, and its target inverse limit is Hausdorff, so the induced bijection is a topological isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Combining Lemmas 1.0a and 1.1a gives, at each finite global level,
+<span class="math math-display" data-tex="\[
+D_w\simeq\operatorname{Gal}(L_w/K_v),\qquad
+I_w\simeq\operatorname{Gal}(L_w/L_w^{\mathrm{ur}}).
+\tag{4}
+\]">\[
+D_w\simeq\operatorname{Gal}(L_w/K_v),\qquad
+I_w\simeq\operatorname{Gal}(L_w/L_w^{\mathrm{ur}}).
+\tag{4}
+\]</span>
+Here <span class="math" data-tex="\(L_w^{\mathrm{ur}}\)">\(L_w^{\mathrm{ur}}\)</span> is the just-constructed maximal unramified subfield; the residue-field identification in Lemma 1.0a identifies the two kernels.</p>
+<p><strong>Theorem 1.2.</strong> Restriction along <span class="math" data-tex="\(\iota\)">\(\iota\)</span> gives an isomorphism of topological groups
+<span class="math math-display" data-tex="\[
+ G_{K_v}\simeq D_{\bar v}\subset G_K,
+ \qquad I_{K_v}\simeq I_{\bar v}.
+\]">\[
+ G_{K_v}\simeq D_{\bar v}\subset G_K,
+ \qquad I_{K_v}\simeq I_{\bar v}.
+\]</span>
+The subgroup <span class="math" data-tex="\(D_{\bar v}\)">\(D_{\bar v}\)</span> is closed. Changing <span class="math" data-tex="\(\iota\)">\(\iota\)</span> conjugates the pair <span class="math" data-tex="\((D_{\bar v},I_{\bar v})\)">\((D_{\bar v},I_{\bar v})\)</span> in <span class="math" data-tex="\(G_K\)">\(G_K\)</span>.</p>
+<p><strong>Proof.</strong> A <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-automorphism of <span class="math" data-tex="\(\overline{K_v}\)">\(\overline{K_v}\)</span> preserves the elements algebraic over <span class="math" data-tex="\(K\)">\(K\)</span>, hence preserves <span class="math" data-tex="\(\iota(\bar K)\)">\(\iota(\bar K)\)</span>, and preserves the valuation. This defines restriction into <span class="math" data-tex="\(D_{\bar v}\)">\(D_{\bar v}\)</span>. Formula (4) identifies the restrictions at every finite Galois level. By Lemma 1.1, the local completions in those levels are cofinal among finite local extensions. Consequently their finite Galois groups have inverse limit <span class="math" data-tex="\(G_{K_v}\)">\(G_{K_v}\)</span>. On the global side the inverse limit of the <span class="math" data-tex="\(D_w\)">\(D_w\)</span> is exactly the group preserving <span class="math" data-tex="\(\bar v\)">\(\bar v\)</span>: preserving a valuation can be tested on every finite subextension. The finite-level identifications therefore give the asserted isomorphism. They also identify inertia, because triviality of the residue-field action can be tested on every finite residue extension.</p>
+<p>Each <span class="math" data-tex="\(D_w\)">\(D_w\)</span> is closed in a finite discrete quotient. The inverse image conditions defining <span class="math" data-tex="\(D_{\bar v}\)">\(D_{\bar v}\)</span> show that it is closed in <span class="math" data-tex="\(G_K\)">\(G_K\)</span>. For conjugacy, prolongations of <span class="math" data-tex="\(v\)">\(v\)</span> in a finite Galois extension are conjugate. To arrange the conjugating element compatibly, for each finite Galois <span class="math" data-tex="\(L\)">\(L\)</span> consider the nonempty closed subset of <span class="math" data-tex="\(G_K\)">\(G_K\)</span> sending one selected place of <span class="math" data-tex="\(L\)">\(L\)</span> to the other. These subsets have the finite intersection property, by passing to a common finite Galois overfield. Compactness produces an element in their intersection. It conjugates both decomposition groups and both inertia groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a finite place the residue field is <span class="math" data-tex="\(\mathbb F_{q_v}\)">\(\mathbb F_{q_v}\)</span>. Lemma 1.1a and Theorem 1.2 prove that the quotient is
+<span class="math math-display" data-tex="\[
+ D_{\bar v}/I_{\bar v}\simeq
+ \operatorname{Gal}(\overline{\mathbb F}_{q_v}/\mathbb F_{q_v})
+ \simeq\widehat{\mathbb Z}.
+\]">\[
+ D_{\bar v}/I_{\bar v}\simeq
+ \operatorname{Gal}(\overline{\mathbb F}_{q_v}/\mathbb F_{q_v})
+ \simeq\widehat{\mathbb Z}.
+\]</span>
+The arithmetic Frobenius is the element corresponding to <span class="math" data-tex="\(1\)">\(1\)</span>, characterized by <span class="math" data-tex="\(x\mapsto x^{q_v}\)">\(x\mapsto x^{q_v}\)</span>. A <strong>Frobenius lift</strong> is any preimage of this element in <span class="math" data-tex="\(D_{\bar v}\)">\(D_{\bar v}\)</span>. There is generally no distinguished lift before one kills inertia.</p>
+<h2 id="2-frobenius-invariants-of-an-unramified-representation">2. Frobenius invariants of an unramified representation</h2>
+<p>A representation <span class="math" data-tex="\(\rho:G_K\to\operatorname{GL}(V)\)">\(\rho:G_K\to\operatorname{GL}(V)\)</span> is <strong>unramified at <span class="math" data-tex="\(v\)">\(v\)</span></strong> if it is trivial on <span class="math" data-tex="\(I_{\bar v}\)">\(I_{\bar v}\)</span>. Conjugacy makes this condition independent of the chosen embedding. In this case put
+<span class="math math-display" data-tex="\[
+ P_v(X)=\det(X-\rho(\operatorname{Frob}_v)).
+\]">\[
+ P_v(X)=\det(X-\rho(\operatorname{Frob}_v)).
+\]</span></p>
+<p><strong>Proposition 2.1.</strong> The polynomial <span class="math" data-tex="\(P_v\)">\(P_v\)</span>, and consequently its trace and determinant, are independent of both the Frobenius lift and the prolongation of <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Proof.</strong> Two lifts differ by an element of inertia, which acts as the identity. Changing the prolongation conjugates the local subgroup and the Frobenius coset. Their images under <span class="math" data-tex="\(\rho\)">\(\rho\)</span> are conjugate matrices. A characteristic polynomial is invariant under conjugation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 2.2 (quadratic splitting).</strong> In <span class="math" data-tex="\(\mathbb Q(\sqrt d)/\mathbb Q\)">\(\mathbb Q(\sqrt d)/\mathbb Q\)</span>, with <span class="math" data-tex="\(d\ne1\)">\(d\ne1\)</span> squarefree, an odd prime not dividing <span class="math" data-tex="\(d\)">\(d\)</span> has arithmetic Frobenius equal to <span class="math" data-tex="\(1\)">\(1\)</span> when <span class="math" data-tex="\(d\)">\(d\)</span> is a square modulo <span class="math" data-tex="\(p\)">\(p\)</span>, and equal to the nontrivial automorphism otherwise. To verify unramifiedness, <span class="math" data-tex="\(X^2-d\)">\(X^2-d\)</span> has distinct roots in <span class="math" data-tex="\(\mathbb F_{p^2}\)">\(\mathbb F_{p^2}\)</span>; Lemma 1.1a and Hensel lifting put both roots in an unramified local extension. In the square case they lift already in <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>. Otherwise Frobenius exchanges their two distinct residues and hence their unique lifts. The resulting sign is <span class="math" data-tex="\(\left(\frac dp\right)\)">\(\left(\frac dp\right)\)</span>. For <span class="math" data-tex="\(d=-1\)">\(d=-1\)</span>, this recovers the calculation in the preceding lesson: the traces are <span class="math" data-tex="\(1,-1,-1,1\)">\(1,-1,-1,1\)</span> at <span class="math" data-tex="\(p=5,3,7,13\)">\(p=5,3,7,13\)</span>, respectively.</p>
+<p><strong>Example 2.3 (a cyclotomic quotient).</strong> For <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>, arithmetic Frobenius in <span class="math" data-tex="\(\operatorname{Gal}(\mathbb Q(\zeta_N)/\mathbb Q)\simeq(\mathbb Z/N\mathbb Z)^\times\)">\(\operatorname{Gal}(\mathbb Q(\zeta_N)/\mathbb Q)\simeq(\mathbb Z/N\mathbb Z)^\times\)</span> is <span class="math" data-tex="\(p\bmod N\)">\(p\bmod N\)</span>. The group identification has its written proof in NT-ANT 12, Theorem 12.1. For the Frobenius calculation, <span class="math" data-tex="\(X^N-1\)">\(X^N-1\)</span> has distinct roots in a finite residue extension, and Lemma 1.1a lifts all of them uniquely to an unramified extension. Residue Frobenius takes a root to its <span class="math" data-tex="\(p\)">\(p\)</span>-th power; uniqueness makes its action on the lift the same power. This is the argument of Proposition 3.1 in the preceding lesson, now for arbitrary <span class="math" data-tex="\(N\)">\(N\)</span>. With <span class="math" data-tex="\(N=7\)">\(N=7\)</span>, Frobenius at <span class="math" data-tex="\(2\)">\(2\)</span> has order <span class="math" data-tex="\(3\)">\(3\)</span>, since <span class="math" data-tex="\(2,4,1\)">\(2,4,1\)</span> are its successive powers modulo <span class="math" data-tex="\(7\)">\(7\)</span>. Frobenius at <span class="math" data-tex="\(3\)">\(3\)</span> has order <span class="math" data-tex="\(6\)">\(6\)</span>: its successive powers are <span class="math" data-tex="\(3,2,6,4,5,1\)">\(3,2,6,4,5,1\)</span>.</p>
+<h2 id="3-what-chebotarev-makes-dense">3. What Chebotarev makes dense</h2>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be a finite set of finite places. Let <span class="math" data-tex="\(N_S\)">\(N_S\)</span> be the closed normal subgroup generated by the inertia groups outside <span class="math" data-tex="\(S\)">\(S\)</span>, and define
+<span class="math math-display" data-tex="\[
+K_S=\bar K^{N_S},\qquad G_{K,S}=G_K/N_S.
+\]">\[
+K_S=\bar K^{N_S},\qquad G_{K,S}=G_K/N_S.
+\]</span>
+Finite Galois correspondence identifies the finite Galois subextensions of <span class="math" data-tex="\(K_S/K\)">\(K_S/K\)</span> with the finite extensions unramified outside <span class="math" data-tex="\(S\)">\(S\)</span>: their inertia groups are the restriction images of the absolute ones by §1. Every finite subextension is contained in a finite Galois one. Conversely the normal closure of an unramified subextension remains unramified, because each inertia group fixes all its conjugates. Thus <span class="math" data-tex="\(K_S\)">\(K_S\)</span> is precisely their compositum. At <span class="math" data-tex="\(v\notin S\)">\(v\notin S\)</span>, the Frobenius image in <span class="math" data-tex="\(G_{K,S}\)">\(G_{K,S}\)</span> is a well-defined conjugacy class.</p>
+<h3 id="the-finite-density-theorem-with-its-analytic-inputs-exposed">The finite density theorem, with its analytic inputs exposed</h3>
+<p>For a set <span class="math" data-tex="\(A\)">\(A\)</span> of finite primes of a number field <span class="math" data-tex="\(F\)">\(F\)</span>, put
+<span class="math math-display" data-tex="\[
+\delta_F(A)=\lim_{s\downarrow1}
+\frac{\sum_{v\in A}(Nv)^{-s}}{\Lambda(s)},
+\qquad \Lambda(s)=\log\frac1{s-1},
+\tag{5}
+\]">\[
+\delta_F(A)=\lim_{s\downarrow1}
+\frac{\sum_{v\in A}(Nv)^{-s}}{\Lambda(s)},
+\qquad \Lambda(s)=\log\frac1{s-1},
+\tag{5}
+\]</span>
+when this limit exists. The parameter <span class="math" data-tex="\(s\)">\(s\)</span> is real. Every prime norm is at least 2.</p>
+<p><strong>Lemma 3.0a (the prime sum and negligible relative degrees).</strong> The full set of primes of <span class="math" data-tex="\(F\)">\(F\)</span> has Dirichlet density 1. Finite sets, and the primes of a finite extension <span class="math" data-tex="\(M/F\)">\(M/F\)</span> with relative residue degree greater than one, have density zero in the respective prime sums. Complements of density-one sets have density zero.</p>
+<p><strong>Proof.</strong> The proved Euler product and positive simple pole of NT-ANT 16 give
+<span class="math math-display" data-tex="\[
+\log\zeta_F(s)=\sum_v(Nv)^{-s}
+ +\sum_v\sum_{r\geq2}\frac{(Nv)^{-rs}}r
+=\sum_v(Nv)^{-s}+O(1).
+\]">\[
+\log\zeta_F(s)=\sum_v(Nv)^{-s}
+ +\sum_v\sum_{r\geq2}\frac{(Nv)^{-rs}}r
+=\sum_v(Nv)^{-s}+O(1).
+\]</span>
+The error is uniform near 1: its absolute value is at most <span class="math" data-tex="\(2\sum_v(Nv)^{-2}\leq2\zeta_F(2)\)">\(2\sum_v(Nv)^{-2}\leq2\zeta_F(2)\)</span>. Writing <span class="math" data-tex="\(\zeta_F(s)=c_F/(s-1)+O(1)\)">\(\zeta_F(s)=c_F/(s-1)+O(1)\)</span>, with <span class="math" data-tex="\(c_F&gt;0\)">\(c_F&gt;0\)</span>, proves
+<span class="math math-display" data-tex="\[
+\sum_v(Nv)^{-s}=\Lambda(s)+O(1).
+\tag{6}
+\]">\[
+\sum_v(Nv)^{-s}=\Lambda(s)+O(1).
+\tag{6}
+\]</span>
+Finite sums are bounded. For primes <span class="math" data-tex="\(u\)">\(u\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> over <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span>, the earlier prime-decomposition proof gives <span class="math" data-tex="\(Nu=(Nv)^{f(u/v)}\)">\(Nu=(Nv)^{f(u/v)}\)</span> and at most <span class="math" data-tex="\([M:F]\)">\([M:F]\)</span> primes over <span class="math" data-tex="\(v\)">\(v\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\sum_{f(u/v)&gt;1}(Nu)^{-s}
+\leq[M:F]\sum_v(Nv)^{-2s}
+\leq[M:F]\zeta_F(2)=O(1).
+\tag{7}
+\]">\[
+\sum_{f(u/v)&gt;1}(Nu)^{-s}
+\leq[M:F]\sum_v(Nv)^{-2s}
+\leq[M:F]\zeta_F(2)=O(1).
+\tag{7}
+\]</span>
+Division by <span class="math" data-tex="\(\Lambda(s)\to\infty\)">\(\Lambda(s)\to\infty\)</span> proves the assertions about zero density. Subtracting a set's weighted sum from (6) proves the complement assertion. The same nonnegative-sum calculation proves monotonicity and finite additivity when the indicated limits exist. In particular removal of a finite set changes no density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.0b (cyclic density).</strong> Let <span class="math" data-tex="\(L/F\)">\(L/F\)</span> be finite cyclic with group <span class="math" data-tex="\(B\)">\(B\)</span> of order <span class="math" data-tex="\(n\)">\(n\)</span>. For each <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, the primes unramified in <span class="math" data-tex="\(L\)">\(L\)</span> with arithmetic Frobenius <span class="math" data-tex="\(b\)">\(b\)</span> have Dirichlet density <span class="math" data-tex="\(1/n\)">\(1/n\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(B=\langle\sigma\rangle\)">\(B=\langle\sigma\rangle\)</span> and list its characters
+<span class="math" data-tex="\(\chi_j(\sigma)=\exp(2\pi i j/n)\)">\(\chi_j(\sigma)=\exp(2\pi i j/n)\)</span>, <span class="math" data-tex="\(0\leq j&lt;n\)">\(0\leq j&lt;n\)</span>.
+Theorem 16.4 of the earlier <em>The global reciprocity law</em> makes
+<span class="math" data-tex="\(\omega_j=\chi_j\circ\operatorname{rec}_{L/F}\)">\(\omega_j=\chi_j\circ\operatorname{rec}_{L/F}\)</span>
+a continuous finite-order Hecke character on the idèle class group <span class="math" data-tex="\(C_F\)">\(C_F\)</span>.</p>
+<p>We verify the local unit assertion needed for its Euler factors. At a place <span class="math" data-tex="\(v\)">\(v\)</span>, local reciprocity for the abelian extension <span class="math" data-tex="\(L_w/F_v\)">\(L_w/F_v\)</span> is onto its decomposition group <span class="math" data-tex="\(D_v\)">\(D_v\)</span>, with kernel <span class="math" data-tex="\(T=N_{L_w/F_v}L_w^\times\)">\(T=N_{L_w/F_v}L_w^\times\)</span>, by NT-CFT 06, Theorem 6.3. Its units map into inertia: restriction to the maximal unramified subfield has the valuation formula of Proposition 6.4. The norm formula of lesson 01, Proposition 0E.1, gives <span class="math" data-tex="\(v_{F_v}(Na)=f\,v_{L_w}(a)\)">\(v_{F_v}(Na)=f\,v_{L_w}(a)\)</span>, where <span class="math" data-tex="\(f\)">\(f\)</span> is the residue degree. Hence <span class="math" data-tex="\(v_{F_v}(T)=f\mathbb Z\)">\(v_{F_v}(T)=f\mathbb Z\)</span>, and
+<span class="math math-display" data-tex="\[
+D_v/\operatorname{rec}(\mathcal O_{F_v}^{\times})
+\simeq F_v^\times/(\mathcal O_{F_v}^{\times}T)
+\simeq\mathbb Z/f\mathbb Z.
+\]">\[
+D_v/\operatorname{rec}(\mathcal O_{F_v}^{\times})
+\simeq F_v^\times/(\mathcal O_{F_v}^{\times}T)
+\simeq\mathbb Z/f\mathbb Z.
+\]</span>
+Inertia also has index <span class="math" data-tex="\(f\)">\(f\)</span>, by Lemma 1.1a, so the unit image is exactly inertia. The uniformizer maps to arithmetic Frobenius modulo that inertia. Global–local compatibility in NT-CFT 16 now shows that <span class="math" data-tex="\(\omega_j\)">\(\omega_j\)</span>'s local unit character is trivial exactly when <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> kills local inertia, and at such a prime its uniformizer value is <span class="math" data-tex="\(\chi_j(\phi_v)\)">\(\chi_j(\phi_v)\)</span>, for an arithmetic Frobenius lift <span class="math" data-tex="\(\phi_v\)">\(\phi_v\)</span>. Therefore its primitive Euler product is
+<span class="math math-display" data-tex="\[
+L_j(s)=\prod_{v:\chi_j(I_v)=1}
+(1-\chi_j(\phi_v)(Nv)^{-s})^{-1}.
+\tag{8}
+\]">\[
+L_j(s)=\prod_{v:\chi_j(I_v)=1}
+(1-\chi_j(\phi_v)(Nv)^{-s})^{-1}.
+\tag{8}
+\]</span>
+This equality retains a prime ramified in <span class="math" data-tex="\(L\)">\(L\)</span> whenever the individual character is unramified there. Absolute convergence for <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span> follows by domination by the prime sum in the zeta Euler product.</p>
+<p>For <span class="math" data-tex="\(j\ne0\)">\(j\ne0\)</span>, surjectivity of reciprocity makes <span class="math" data-tex="\(\omega_j\)">\(\omega_j\)</span> nontrivial. It cannot be a nontrivial pure imaginary norm twist: the norm takes all positive real values, and a continuous map from that connected group to a finite group is constant. The actual Hecke continuation proof in NT-ADL 09, Theorem 9.2, and its standard-test identification in NT-ADL 10, equation (3) and Theorem 10.1, thus make <span class="math" data-tex="\(L_j\)">\(L_j\)</span> holomorphic at 1. Dividing off the archimedean factors causes no difficulty there. A finite-order character is trivial on the connected groups <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span> and <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span>; at a real place only its sign parity remains. Thus the real <span class="math" data-tex="\(\Gamma_{\mathbb R}\)">\(\Gamma_{\mathbb R}\)</span> arguments at 1 are 1 or 2, and each <span class="math" data-tex="\(\Gamma_{\mathbb C}\)">\(\Gamma_{\mathbb C}\)</span> argument is 1. The defining integral <span class="math" data-tex="\(\Gamma(z)=\int_0^\infty e^{-t}t^{z-1}\,dt\)">\(\Gamma(z)=\int_0^\infty e^{-t}t^{z-1}\,dt\)</span> is holomorphic for <span class="math" data-tex="\(\Re z&gt;0\)">\(\Re z&gt;0\)</span>, by domination on compact parameter sets, and is positive at positive real arguments. These factors are consequently regular and nonzero near 1. This is the only Hecke analytic theorem used below.</p>
+<p>We prove the required nonvanishing, including its Euler identity. At a prime <span class="math" data-tex="\(v\)">\(v\)</span>, let the inertia order be <span class="math" data-tex="\(e\)">\(e\)</span>, the residue degree <span class="math" data-tex="\(f\)">\(f\)</span>, and the number of primes of <span class="math" data-tex="\(L\)">\(L\)</span> above it <span class="math" data-tex="\(g=n/(ef)\)">\(g=n/(ef)\)</span>. Exactly <span class="math" data-tex="\(n/e\)">\(n/e\)</span> characters kill inertia. The Frobenius in <span class="math" data-tex="\(D_v/I_v\)">\(D_v/I_v\)</span> has order <span class="math" data-tex="\(f\)">\(f\)</span>. Evaluation of these characters on it takes each <span class="math" data-tex="\(f\)">\(f\)</span>-th root of unity exactly <span class="math" data-tex="\(g\)">\(g\)</span> times; this follows immediately by writing the characters of the cyclic quotient <span class="math" data-tex="\(B/I_v\)">\(B/I_v\)</span> as powers of its primitive root character. Consequently the product of their local factors is
+<span class="math math-display" data-tex="\[
+\prod_{\chi_j(I_v)=1}(1-\chi_j(\phi_v)T)^{-1}
+=(1-T^f)^{-g},\qquad T=(Nv)^{-s}.
+\]">\[
+\prod_{\chi_j(I_v)=1}(1-\chi_j(\phi_v)T)^{-1}
+=(1-T^f)^{-g},\qquad T=(Nv)^{-s}.
+\]</span>
+This is exactly the zeta factor of <span class="math" data-tex="\(L\)">\(L\)</span>, since its <span class="math" data-tex="\(g\)">\(g\)</span> prime norms are <span class="math" data-tex="\((Nv)^f\)">\((Nv)^f\)</span>. Multiplication over all primes proves
+<span class="math math-display" data-tex="\[
+\zeta_L(s)=\prod_{j=0}^{n-1}L_j(s)
+=\zeta_F(s)\prod_{j=1}^{n-1}L_j(s).
+\tag{9}
+\]">\[
+\zeta_L(s)=\prod_{j=0}^{n-1}L_j(s)
+=\zeta_F(s)\prod_{j=1}^{n-1}L_j(s).
+\tag{9}
+\]</span>
+The ratio <span class="math" data-tex="\(\zeta_L/\zeta_F\)">\(\zeta_L/\zeta_F\)</span> is holomorphic and has value <span class="math" data-tex="\(c_L/c_F&gt;0\)">\(c_L/c_F&gt;0\)</span> at 1 by the earlier proved simple poles. Every factor on the right is holomorphic there. None can vanish there, since otherwise their finite product would vanish. Thus <span class="math" data-tex="\(L_j(1)\ne0\)">\(L_j(1)\ne0\)</span> for all <span class="math" data-tex="\(j\ne0\)">\(j\ne0\)</span>.</p>
+<p>For real <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span>, let
+<span class="math math-display" data-tex="\[
+S_j(s)=\sum_{v\text{ unramified in }L}
+\chi_j(\operatorname{Frob}_v)(Nv)^{-s}.
+\]">\[
+S_j(s)=\sum_{v\text{ unramified in }L}
+\chi_j(\operatorname{Frob}_v)(Nv)^{-s}.
+\]</span>
+The Euler logarithm of <span class="math" data-tex="\(L_j\)">\(L_j\)</span> differs from <span class="math" data-tex="\(S_j\)">\(S_j\)</span> by <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>, uniformly as <span class="math" data-tex="\(s\downarrow1\)">\(s\downarrow1\)</span>. Terms of degree at least two are bounded by the calculation in Lemma 3.0a; finitely many omitted or retained ramified prime factors are also bounded. A nonzero holomorphic function in a sufficiently small disk around 1 has a holomorphic logarithm there: the power series of its logarithmic derivative has a termwise antiderivative, and differentiation shows that multiplying the original function by the exponential of the negative antiderivative gives a constant. Choose a logarithm of that nonzero constant. This logarithm on <span class="math" data-tex="\(1&lt;s&lt;1+\epsilon\)">\(1&lt;s&lt;1+\epsilon\)</span> differs from the Euler logarithm by a constant integral multiple of <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>. Hence
+<span class="math math-display" data-tex="\[
+S_j(s)=O(1)\quad(j\ne0),\qquad
+S_0(s)=\Lambda(s)+O(1).
+\tag{10}
+\]">\[
+S_j(s)=O(1)\quad(j\ne0),\qquad
+S_0(s)=\Lambda(s)+O(1).
+\tag{10}
+\]</span>
+The geometric-series identity for <span class="math" data-tex="\(n\)">\(n\)</span>-th roots of unity gives
+<span class="math math-display" data-tex="\[
+\mathbf1_{a=b}=\frac1n\sum_{j=0}^{n-1}
+\chi_j(b)^{-1}\chi_j(a)\qquad(a,b\in B).
+\]">\[
+\mathbf1_{a=b}=\frac1n\sum_{j=0}^{n-1}
+\chi_j(b)^{-1}\chi_j(a)\qquad(a,b\in B).
+\]</span>
+Multiplying by prime weights and summing, (10) gives
+<span class="math math-display" data-tex="\[
+\sum_{\operatorname{Frob}_v=b}(Nv)^{-s}
+=\frac1n\Lambda(s)+O(1).
+\tag{11}
+\]">\[
+\sum_{\operatorname{Frob}_v=b}(Nv)^{-s}
+=\frac1n\Lambda(s)+O(1).
+\tag{11}
+\]</span>
+This proves the cyclic density without assuming any prime-distribution theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.0c (finite Chebotarev).</strong> Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be finite Galois with group <span class="math" data-tex="\(H\)">\(H\)</span>, and let <span class="math" data-tex="\(C\)">\(C\)</span> be a conjugacy class in <span class="math" data-tex="\(H\)">\(H\)</span>. The unramified primes whose arithmetic Frobenius class is <span class="math" data-tex="\(C\)">\(C\)</span> have Dirichlet density
+<span class="math math-display" data-tex="\[
+\delta_K(\mathcal P_C)=\frac{|C|}{|H|}&gt;0.
+\tag{12}
+\]">\[
+\delta_K(\mathcal P_C)=\frac{|C|}{|H|}&gt;0.
+\tag{12}
+\]</span></p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(\sigma\in C\)">\(\sigma\in C\)</span>, let <span class="math" data-tex="\(m\)">\(m\)</span> be its order, and put <span class="math" data-tex="\(M=L^{\langle\sigma\rangle}\)">\(M=L^{\langle\sigma\rangle}\)</span>. The extension <span class="math" data-tex="\(L/M\)">\(L/M\)</span> is cyclic of degree <span class="math" data-tex="\(m\)">\(m\)</span>. By Lemma 3.0b, its primes <span class="math" data-tex="\(u\)">\(u\)</span> with Frobenius exactly <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> have weighted sum <span class="math" data-tex="\(m^{-1}\Lambda(s)+O(1)\)">\(m^{-1}\Lambda(s)+O(1)\)</span>. Discard primes over the finite ramification set of <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, and discard the primes with <span class="math" data-tex="\(f(u/v)&gt;1\)">\(f(u/v)&gt;1\)</span>, for <span class="math" data-tex="\(v\)">\(v\)</span> their contraction to <span class="math" data-tex="\(K\)">\(K\)</span>. The first omission is finite and the second is bounded by (7). For the remaining primes <span class="math" data-tex="\(Nu=Nv\)">\(Nu=Nv\)</span>.</p>
+<p>Consider the set of primes <span class="math" data-tex="\(w\)">\(w\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span> unramified over <span class="math" data-tex="\(K\)">\(K\)</span> whose Frobenius element is exactly <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Contraction <span class="math" data-tex="\(w\mapsto u=w|_M\)">\(w\mapsto u=w|_M\)</span> gives a bijection to those remaining primes. Indeed their decomposition group over <span class="math" data-tex="\(K\)">\(K\)</span> is <span class="math" data-tex="\(\langle\sigma\rangle\)">\(\langle\sigma\rangle\)</span>, their residue degree is <span class="math" data-tex="\(m\)">\(m\)</span>, and the decomposition group over <span class="math" data-tex="\(M\)">\(M\)</span> is its intersection with <span class="math" data-tex="\(\operatorname{Gal}(L/M)=\langle\sigma\rangle\)">\(\operatorname{Gal}(L/M)=\langle\sigma\rangle\)</span>, also the full group. Multiplicativity of residue degrees gives <span class="math" data-tex="\(f(u/v)=1\)">\(f(u/v)=1\)</span>; the full relative decomposition group makes <span class="math" data-tex="\(w\)">\(w\)</span> unique over <span class="math" data-tex="\(u\)">\(u\)</span>. Conversely, if <span class="math" data-tex="\(f(u/v)=1\)">\(f(u/v)=1\)</span> and the relative Frobenius is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, the relative Frobenius formula (10) in NT-ANT 06 identifies the global Frobenius with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. These facts prove both directions of the bijection, including uniqueness.</p>
+<p>Over a fixed <span class="math" data-tex="\(v\in\mathcal P_C\)">\(v\in\mathcal P_C\)</span>, choose <span class="math" data-tex="\(w_0\)">\(w_0\)</span> with Frobenius <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. All top primes are <span class="math" data-tex="\(h w_0\)">\(h w_0\)</span>, with stabilizer <span class="math" data-tex="\(D_{w_0}=\langle\sigma\rangle\)">\(D_{w_0}=\langle\sigma\rangle\)</span>. Their Frobenius is <span class="math" data-tex="\(h\sigma h^{-1}\)">\(h\sigma h^{-1}\)</span>, by the proved conjugacy formula. Thus the top primes with Frobenius exactly <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> are parametrized by
+<span class="math math-display" data-tex="\[
+Z_H(\sigma)/\langle\sigma\rangle,
+\]">\[
+Z_H(\sigma)/\langle\sigma\rangle,
+\]</span>
+where <span class="math" data-tex="\(Z_H(\sigma)\)">\(Z_H(\sigma)\)</span> is the centralizer. There are exactly <span class="math" data-tex="\(|Z_H(\sigma)|/m\)">\(|Z_H(\sigma)|/m\)</span> such primes, and hence that many contributing <span class="math" data-tex="\(u\)">\(u\)</span> over each <span class="math" data-tex="\(v\in\mathcal P_C\)">\(v\in\mathcal P_C\)</span>. If <span class="math" data-tex="\(v\notin\mathcal P_C\)">\(v\notin\mathcal P_C\)</span>, there are none. Equality of the degree-one norms now gives
+<span class="math math-display" data-tex="\[
+\frac1m\Lambda(s)+O(1)
+=\frac{|Z_H(\sigma)|}{m}
+\sum_{v\in\mathcal P_C}(Nv)^{-s}.
+\]">\[
+\frac1m\Lambda(s)+O(1)
+=\frac{|Z_H(\sigma)|}{m}
+\sum_{v\in\mathcal P_C}(Nv)^{-s}.
+\]</span>
+It follows that the density is <span class="math" data-tex="\(1/|Z_H(\sigma)|\)">\(1/|Z_H(\sigma)|\)</span>. Orbit–stabilizer for conjugation gives <span class="math" data-tex="\(|C|=|H|/|Z_H(\sigma)|\)">\(|C|=|H|/|Z_H(\sigma)|\)</span>, proving (12). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Finite additivity in Lemma 3.0a also proves the usual statement for every conjugation-stable subset <span class="math" data-tex="\(A\subseteq H\)">\(A\subseteq H\)</span>: its Frobenius primes have density <span class="math" data-tex="\(|A|/|H|\)">\(|A|/|H|\)</span>, by taking the union of its conjugacy classes. This proof reaches every conjugacy class in an arbitrary finite Galois group. The cyclic field <span class="math" data-tex="\(M\)">\(M\)</span> varies with the chosen element; it need not be Galois over <span class="math" data-tex="\(K\)">\(K\)</span>. The relative degree condition in (7) permits its prime sum to be compared to the prime sum over <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<h3 id="passing-from-finite-density-to-a-profinite-group">Passing from finite density to a profinite group</h3>
+<p><strong>Theorem 3.1 (density of Frobenius elements).</strong> Let <span class="math" data-tex="\(T\)">\(T\)</span> be a set of finite places of Dirichlet density one. The union of the Frobenius conjugacy classes at <span class="math" data-tex="\(v\in T\setminus S\)">\(v\in T\setminus S\)</span> is dense in <span class="math" data-tex="\(G_{K,S}\)">\(G_{K,S}\)</span>.</p>
+<p><strong>Proof.</strong> It suffices to meet every basic open set. Such a set is the inverse image of a particular element <span class="math" data-tex="\(h\)">\(h\)</span> in a finite quotient <span class="math" data-tex="\(H\)">\(H\)</span> of <span class="math" data-tex="\(G_{K,S}\)">\(G_{K,S}\)</span>. This quotient corresponds to a finite Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> unramified outside <span class="math" data-tex="\(S\)">\(S\)</span>. Theorem 3.0c gives positive density to the places whose Frobenius belongs to the conjugacy class of <span class="math" data-tex="\(h\)">\(h\)</span>. The complement of <span class="math" data-tex="\(T\)">\(T\)</span>, and the finite set <span class="math" data-tex="\(S\)">\(S\)</span>, cannot contain all these places. Choose one in <span class="math" data-tex="\(T\setminus S\)">\(T\setminus S\)</span>. Conjugating its Frobenius image gives an element mapping exactly to <span class="math" data-tex="\(h\)">\(h\)</span>. It therefore lies in the specified basic open set. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof explains why the conjugates are included. Choosing one Frobenius representative at each prime does not by itself guarantee a dense subset of a nonabelian group. It also explains why equality on an arbitrary positive-density set is insufficient. In a quadratic extension, the trivial character and its nontrivial quadratic character agree at the split primes, a set of density <span class="math" data-tex="\(1/2\)">\(1/2\)</span>.</p>
+<h2 id="4-the-linear-algebra-behind-trace-comparison">4. The linear algebra behind trace comparison</h2>
+<p>The following lemma is the characteristic-zero trace form of Brauer–Nesbitt. Its proof works for an arbitrary group, with no topology or finiteness assumption on that group.</p>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(V,W\)">\(V,W\)</span> be finite-dimensional semisimple representations of a group <span class="math" data-tex="\(G\)">\(G\)</span> over a characteristic-zero field <span class="math" data-tex="\(E\)">\(E\)</span>. If
+<span class="math math-display" data-tex="\[
+ \operatorname{tr}(g\mid V)=\operatorname{tr}(g\mid W)
+ \quad\text{for every }g\in G,
+\]">\[
+ \operatorname{tr}(g\mid V)=\operatorname{tr}(g\mid W)
+ \quad\text{for every }g\in G,
+\]</span>
+then <span class="math" data-tex="\(V\simeq W\)">\(V\simeq W\)</span> over <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(V\oplus W=0\)">\(V\oplus W=0\)</span>, the conclusion is immediate. Otherwise set <span class="math" data-tex="\(M=V\oplus W\)">\(M=V\oplus W\)</span>, and let <span class="math" data-tex="\(A\)">\(A\)</span> be the <span class="math" data-tex="\(E\)">\(E\)</span>-linear span of the image of <span class="math" data-tex="\(G\)">\(G\)</span> in <span class="math" data-tex="\(\operatorname{End}_E(M)\)">\(\operatorname{End}_E(M)\)</span>. Products of image elements are image elements, so <span class="math" data-tex="\(A\)">\(A\)</span> is a finite-dimensional algebra with identity. Its invariant subspaces are exactly the <span class="math" data-tex="\(G\)">\(G\)</span>-invariant subspaces. Hence <span class="math" data-tex="\(M\)">\(M\)</span> is a faithful semisimple <span class="math" data-tex="\(A\)">\(A\)</span>-module.</p>
+<p>We describe the central projectors needed in the argument. Choose an <span class="math" data-tex="\(E\)">\(E\)</span>-basis <span class="math" data-tex="\(m_1,\dots,m_d\)">\(m_1,\dots,m_d\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span>. The map
+<span class="math math-display" data-tex="\[
+ A\longrightarrow M^d,\qquad a\longmapsto(am_1,\dots,am_d)
+\]">\[
+ A\longrightarrow M^d,\qquad a\longmapsto(am_1,\dots,am_d)
+\]</span>
+is an injective map of left <span class="math" data-tex="\(A\)">\(A\)</span>-modules. We prove the module fact which makes its image semisimple. In a finite direct sum of simple modules every submodule has a complement, by induction on the number of summands. Write the ambient module as <span class="math" data-tex="\(Q=M&#x27;\oplus S\)">\(Q=M&#x27;\oplus S\)</span>, with <span class="math" data-tex="\(S\)">\(S\)</span> simple, and let <span class="math" data-tex="\(U\)">\(U\)</span> be a submodule. By induction <span class="math" data-tex="\(U_0=U\cap M&#x27;\)">\(U_0=U\cap M&#x27;\)</span> has a complement <span class="math" data-tex="\(C\)">\(C\)</span> in <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. In <span class="math" data-tex="\(Q/U_0=C\oplus S\)">\(Q/U_0=C\oplus S\)</span>, the image of <span class="math" data-tex="\(U\)">\(U\)</span> intersects <span class="math" data-tex="\(C\)">\(C\)</span> trivially. Its projection to <span class="math" data-tex="\(S\)">\(S\)</span> is therefore injective, with image either zero or all of <span class="math" data-tex="\(S\)">\(S\)</span>. In the latter case it is the graph of an <span class="math" data-tex="\(A\)">\(A\)</span>-linear map <span class="math" data-tex="\(S\to C\)">\(S\to C\)</span>; subtracting the <span class="math" data-tex="\(U_0\)">\(U_0\)</span>-component of a lift shows that this graph already lies in <span class="math" data-tex="\(U\subset U_0\oplus C\oplus S\)">\(U\subset U_0\oplus C\oplus S\)</span>. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is <span class="math" data-tex="\(U_0\)">\(U_0\)</span> plus a simple summand, and has complement <span class="math" data-tex="\(C\)">\(C\)</span>. In the zero case <span class="math" data-tex="\(U=U_0\)">\(U=U_0\)</span> has complement <span class="math" data-tex="\(C\oplus S\)">\(C\oplus S\)</span>. This proves both claims inductively. Apply it to the image of <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(M^d\)">\(M^d\)</span>; the left regular module <span class="math" data-tex="\(A\)">\(A\)</span> is semisimple.</p>
+<p>Decompose the regular module into its isotypic parts <span class="math" data-tex="\(A=\bigoplus_i A_i\)">\(A=\bigoplus_i A_i\)</span>, one for each isomorphism class of simple module occurring. A homomorphism between simple modules is zero or an isomorphism, by taking its kernel and image. Every right multiplication is a left-module homomorphism, so it preserves these isotypic parts. Thus each <span class="math" data-tex="\(A_i\)">\(A_i\)</span> is a two-sided ideal. The projection onto <span class="math" data-tex="\(A_i\)">\(A_i\)</span> commutes with left and right multiplication. If <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is the projection of <span class="math" data-tex="\(1\)">\(1\)</span>, its value at <span class="math" data-tex="\(a\)">\(a\)</span> is both <span class="math" data-tex="\(ae_i\)">\(ae_i\)</span> and <span class="math" data-tex="\(e_i a\)">\(e_i a\)</span>. Consequently the <span class="math" data-tex="\(e_i\)">\(e_i\)</span> are central orthogonal idempotents and their sum is <span class="math" data-tex="\(1\)">\(1\)</span>. Every simple module <span class="math" data-tex="\(S\)">\(S\)</span> is a quotient of <span class="math" data-tex="\(A\)">\(A\)</span>, by <span class="math" data-tex="\(a\mapsto as\)">\(a\mapsto as\)</span> for a nonzero <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>. If its type is <span class="math" data-tex="\(i\)">\(i\)</span>, each <span class="math" data-tex="\(A_j\)">\(A_j\)</span> with <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span> has zero image in this quotient, since its summands have different simple types. Thus <span class="math" data-tex="\(e_i\)">\(e_i\)</span> acts as the identity on <span class="math" data-tex="\(S\)">\(S\)</span>, and every other <span class="math" data-tex="\(e_j\)">\(e_j\)</span> acts as zero. In particular every simple type in <span class="math" data-tex="\(M\)">\(M\)</span> occurs in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Equality of traces on <span class="math" data-tex="\(G\)">\(G\)</span> implies equality on its linear span <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is the simple module of type <span class="math" data-tex="\(i\)">\(i\)</span>, evaluation at <span class="math" data-tex="\(e_i\)">\(e_i\)</span> gives
+<span class="math math-display" data-tex="\[
+ m_i(V)\dim_ES_i=m_i(W)\dim_ES_i.
+\]">\[
+ m_i(V)\dim_ES_i=m_i(W)\dim_ES_i.
+\]</span>
+Characteristic zero allows cancellation of the positive integer <span class="math" data-tex="\(\dim_ES_i\)">\(\dim_ES_i\)</span>. Thus all simple multiplicities agree, proving the isomorphism. The proof does not require <span class="math" data-tex="\(E\)">\(E\)</span> to be a splitting field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2 (determination by Frobenius traces).</strong> Let <span class="math" data-tex="\(E/\mathbb Q_\ell\)">\(E/\mathbb Q_\ell\)</span> be finite. Let <span class="math" data-tex="\(\rho_1,\rho_2\)">\(\rho_1,\rho_2\)</span> be semisimple continuous finite-dimensional representations of <span class="math" data-tex="\(G_K\)">\(G_K\)</span> over <span class="math" data-tex="\(E\)">\(E\)</span>, both unramified outside a finite set <span class="math" data-tex="\(S\)">\(S\)</span>. If their arithmetic-Frobenius traces agree at every prime in a Dirichlet-density-one set outside <span class="math" data-tex="\(S\)">\(S\)</span>, then <span class="math" data-tex="\(\rho_1\simeq\rho_2\)">\(\rho_1\simeq\rho_2\)</span>.</p>
+<p><strong>Proof.</strong> Both kernels are closed normal subgroups containing every inertia group outside <span class="math" data-tex="\(S\)">\(S\)</span>, hence containing their closed normal span <span class="math" data-tex="\(N_S\)">\(N_S\)</span>. Both representations therefore factor continuously through <span class="math" data-tex="\(G_{K,S}\)">\(G_{K,S}\)</span>. Their trace functions are continuous, because matrix trace is continuous, and are invariant under conjugation. The hypothesis and Theorem 3.1 make them equal on a dense subset. Their difference is a continuous function into the Hausdorff field <span class="math" data-tex="\(E\)">\(E\)</span>, with closed zero set. It therefore vanishes everywhere. Apply Lemma 4.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equality of characteristic polynomials implies equality of traces and hence the same conclusion. Conversely an isomorphism implies equality of all such polynomials. Two representations which are not assumed semisimple still have isomorphic semisimplifications under the trace hypothesis. A composition series exists and its simple factors are intrinsic by lesson 01, Lemma 0A.2. In a basis adapted to that series every group matrix is block upper triangular; its diagonal blocks give the factor actions. Those blocks are continuous functions of the original matrix, and their traces add and characteristic polynomials multiply. Their direct sum is therefore a continuous semisimplification with the same traces and polynomials, to which Theorem 4.2 applies. The unipotent representation of <span class="math" data-tex="\(\mathbb Z_\ell\)">\(\mathbb Z_\ell\)</span> in the preceding lesson and the two-dimensional trivial representation have identical traces and characteristic polynomials, but are not isomorphic. This exhibits the lost extension data.</p>
+<p>For a one-dimensional representation, semisimplicity is automatic. Thus two ℓ-adic characters that agree at a density-one set of Frobenius elements are equal. In particular, a finite-order character of <span class="math" data-tex="\(G_{\mathbb Q}\)">\(G_{\mathbb Q}\)</span> trivial at almost all Frobenius elements is trivial. Its image is finite, so each point is isolated in the induced Hausdorff topology, and continuity makes its kernel open. Proposition 0C.1 of lesson 01 makes that kernel correspond to a finite extension. The finite ramification set proved in NT-ANT 05, Theorem 5.4, supplies the required <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<h2 id="5-exercises-and-complete-solutions">5. Exercises and complete solutions</h2>
+<p><strong>Exercise 5.1 (easy).</strong> Prove that an unramified Frobenius characteristic polynomial is unaffected by changing the embedding or the lift.</p>
+<p><strong>Solution.</strong> A change of lift multiplies by an inertia element, which lies in the kernel of the representation. A change of embedding conjugates the decomposition and inertia groups and the chosen Frobenius class. The resulting matrices are conjugate. Taking <span class="math" data-tex="\(\det(X-A)\)">\(\det(X-A)\)</span> proves invariance, as in Proposition 2.1. If inertia acts nontrivially, the first argument fails and different lifts can have different characteristic polynomials.</p>
+<p><strong>Exercise 5.2 (medium).</strong> Deduce that a finite-order character of <span class="math" data-tex="\(G_{\mathbb Q}\)">\(G_{\mathbb Q}\)</span> which is trivial on almost all arithmetic Frobenius elements is trivial.</p>
+<p><strong>Solution.</strong> Its kernel cuts out a finite abelian extension <span class="math" data-tex="\(L/\mathbb Q\)">\(L/\mathbb Q\)</span>. Take any element <span class="math" data-tex="\(h\)">\(h\)</span> of its Galois group. Theorem 3.0c supplies positive density to the primes with Frobenius <span class="math" data-tex="\(h\)">\(h\)</span>. Removing the finite exceptional set leaves a prime at which the character value is both the value at <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. Thus the character is <span class="math" data-tex="\(1\)">\(1\)</span> on every element of the finite quotient, and consequently on <span class="math" data-tex="\(G_{\mathbb Q}\)">\(G_{\mathbb Q}\)</span>.</p>
+<p><strong>Exercise 5.3 (medium).</strong> Prove density of the Frobenius conjugacy classes in <span class="math" data-tex="\(G_{K,S}\)">\(G_{K,S}\)</span>, retaining only a density-one set of primes.</p>
+<p><strong>Solution.</strong> A basic open neighbourhood specifies an element in a finite Galois quotient. Theorem 3.0c supplies a positive-density set of primes for its conjugacy class. A zero-density complement cannot exhaust that set. Choose an allowed prime and conjugate its Frobenius representative to the specified element of the quotient. This meets the neighbourhood. This is exactly the finite-quotient argument of Theorem 3.1; no version of Chebotarev for an infinite extension is needed.</p>
+<p><strong>Exercise 5.4 (hard).</strong> Prove determination by traces for semisimple ℓ-adic representations over a finite extension of <span class="math" data-tex="\(\mathbb Q_\ell\)">\(\mathbb Q_\ell\)</span>. Explain why neither an algebraically closed coefficient field nor finite image is necessary.</p>
+<p><strong>Solution.</strong> Pass to the common unramified-outside-<span class="math" data-tex="\(S\)">\(S\)</span> quotient. Use Exercise 5.3, conjugacy invariance, and continuity to deduce trace equality at every group element. Form the finite-dimensional algebra spanned by the images on the direct sum of the two spaces. Its regular module embeds in a finite direct sum of the faithful semisimple representation. The central isotypic projectors constructed in Lemma 4.1 compare each simple multiplicity by trace. This proves an isomorphism over the original field. Finite dimensionality of the image algebra follows from its inclusion in a matrix algebra, even when the group image is infinite. The projector argument uses simple modules over <span class="math" data-tex="\(E\)">\(E\)</span> itself, so scalar extension to an algebraic closure is unnecessary.</p>
+<h2 id="proof-dependencies-and-free-sources">Proof dependencies and free sources</h2>
+<p>The opening table gives the precise written programme proofs used for local completeness and Hensel lifting, finite prime decomposition, cyclotomic irreducibility, the positive zeta pole, finite-order Hecke holomorphy, and global reciprocity. Those earlier proofs are inputs here. The finite completion identification, Krasner inequality, coefficient-approximation argument, finite-field and unramified-extension constructions, absolute residue exactness, cyclic Euler identity and nonvanishing, full finite Chebotarev theorem, profinite density deduction, and trace comparison are proved in this lesson. No assertion here depends on a promised later proof. Basic field, matrix and complex-function operations have their calculations displayed at the places they are used.</p>
+<p>The human references below are freely readable primary sources. The density argument was checked against Milne's free course notes. Taylor and Deligne–Serre identify the Galois-representation application; their citations do not replace the proofs above. Taylor uses geometric Frobenius, whereas Deligne–Serre's §3 footnote and this lesson use arithmetic Frobenius.</p>
+<ul>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em>, v3.08 (2020)</a>, Proposition 7.31, printed p.120 (simple-root lifting); Proposition 7.50 and its proof, pp.127–128 (unramified extensions and residues); Proposition 7.60 and its proof, pp.131–132 (Krasner); Proposition 8.10 and its proof, p.139 (completion and decomposition). These free locators concern the arguments proved in §1.</li>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf"><em>Class Field Theory</em>, v4.03 (2020)</a>, Chapter VI §4, especially Theorem 4.8 and Corollary 4.10, printed pp.197–199, and Chapter VIII §7, Theorems 7.1–7.4 and their proofs, pp.258–260. The latter gives the cyclic fixed-field reduction and its exact prime count. Section 3 above spells out the cyclic Euler-factor identity and nonvanishing before performing that count.</li>
+<li>Richard Taylor, <a href="https://www.numdam.org/item/AFST_2004_6_13_1_73_0/"><em>Galois representations</em></a>, Annales de la Faculté des sciences de Toulouse, series 6, 13 (2004), 73–119; §1, printed pp.74–75 and p.79, for local subgroups and Frobenius density. <a href="https://www.numdam.org/item/AFST_2004_6_13_1_73_0.pdf">Free full text</a>.</li>
+<li>Pierre Deligne and Jean-Pierre Serre, <a href="https://www.numdam.org/item/ASENS_1974_4_7_4_507_0/"><em>Formes modulaires de poids 1</em></a>, Annales scientifiques de l'École Normale Supérieure, series 4, 7 (1974), 507–530; §3, Lemma 3.2 and the Frobenius-convention footnote, printed p.513. <a href="https://www.numdam.org/article/ASENS_1974_4_7_4_507_0.pdf">Free full text</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="profinite-groups-and-adic-representations.html">← Profinite groups and ℓ-adic representations</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-adic-tate-module-of-an-elliptic-curve.html">The ℓ-adic Tate module of an elliptic curve →</a></span></nav>
+<p class="small source-link"><a href="src/frobenius-elements-and-determination-by-traces.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GAL">Repository</a></nav>
+</footer>
+</body>
+</html>

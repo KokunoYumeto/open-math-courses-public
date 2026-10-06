@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex tori, elliptic curves and the moduli interpretation of modular curves · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-17.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 17 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="complex-tori-elliptic-curves-and-the-moduli-interpretation-of-modular-curves">Complex tori, elliptic curves and the moduli interpretation of modular curves</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The upper half-plane can describe either a lattice shape or an elliptic curve. A congruence subgroup records a point, a cyclic subgroup, or an ordered torsion basis on that curve. This interpretation also explains why Hecke operators count isogenies.</p>
+<p>We use the surjectivity of <span class="math" data-tex="\(j\)">\(j\)</span> proved in <a href="LG-MF-05.html">The valence formula and the ring of modular forms of level one</a>, Theorem 3.1, and the lifting result of <a href="LG-MF-02.html">Congruence subgroups, cusps and elliptic points</a>, Lemma 1.1. Elementary complex analysis supplies Liouville's theorem, normally convergent series, the residue theorem and local holomorphic inverses. All uniformization and moduli arguments needed below are proved here.</p>
+<p>A lattice is <span class="math" data-tex="\(\Lambda=\mathbb Z\omega_1+\mathbb Z\omega_2\subset\mathbb C\)">\(\Lambda=\mathbb Z\omega_1+\mathbb Z\omega_2\subset\mathbb C\)</span>, where <span class="math" data-tex="\(\omega_1,\omega_2\)">\(\omega_1,\omega_2\)</span> are linearly independent over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Choose their order so that <span class="math" data-tex="\(\operatorname{Im}(\omega_2/\omega_1)&gt;0\)">\(\operatorname{Im}(\omega_2/\omega_1)&gt;0\)</span>. We write
+<span class="math math-display" data-tex="\[
+ \Lambda_\tau=\mathbb Z+\mathbb Z\tau,\qquad
+ E_\tau=\mathbb C/\Lambda_\tau,\qquad \tau\in\mathfrak H.
+ \tag{0.1}
+\]">\[
+ \Lambda_\tau=\mathbb Z+\mathbb Z\tau,\qquad
+ E_\tau=\mathbb C/\Lambda_\tau,\qquad \tau\in\mathfrak H.
+ \tag{0.1}
+\]</span>
+An elliptic curve in this lesson is a nonsingular projective Weierstrass cubic over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, with its point <span class="math" data-tex="\(O\)">\(O\)</span> at infinity. Isomorphisms preserve <span class="math" data-tex="\(O\)">\(O\)</span>. Our coordinate convention is
+<span class="math math-display" data-tex="\[
+ E_{a,b}:\quad y^2=4x^3-ax-b,\qquad a^3-27b^2\ne0.
+ \tag{0.2}
+\]">\[
+ E_{a,b}:\quad y^2=4x^3-ax-b,\qquad a^3-27b^2\ne0.
+ \tag{0.2}
+\]</span>
+The familiar equation <span class="math" data-tex="\(Y^2=x^3+Ax+B\)">\(Y^2=x^3+Ax+B\)</span> is obtained by <span class="math" data-tex="\(Y=y/2\)">\(Y=y/2\)</span>, <span class="math" data-tex="\(A=-a/4\)">\(A=-a/4\)</span>, <span class="math" data-tex="\(B=-b/4\)">\(B=-b/4\)</span>.</p>
+<h2 id="1-holomorphic-maps-between-tori">1. Holomorphic maps between tori</h2>
+<p>The quotient <span class="math" data-tex="\(\mathbb C/\Lambda\)">\(\mathbb C/\Lambda\)</span> has holomorphic charts obtained from sufficiently small disks in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, since different lattice translates of such a disk are disjoint. Addition descends from addition on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The differential <span class="math" data-tex="\(dz\)">\(dz\)</span> descends too, because the transition maps are translations.</p>
+<p><strong>Theorem 1.1.</strong> Every holomorphic map
+<span class="math math-display" data-tex="\[
+ h:\mathbb C/\Lambda\longrightarrow\mathbb C/\Lambda&#x27;
+\]">\[
+ h:\mathbb C/\Lambda\longrightarrow\mathbb C/\Lambda&#x27;
+\]</span>
+has the form
+<span class="math math-display" data-tex="\[
+ h(z+\Lambda)=\alpha z+\beta+\Lambda&#x27;,
+ \qquad \alpha\Lambda\subseteq\Lambda&#x27;.
+ \tag{1.1}
+\]">\[
+ h(z+\Lambda)=\alpha z+\beta+\Lambda&#x27;,
+ \qquad \alpha\Lambda\subseteq\Lambda&#x27;.
+ \tag{1.1}
+\]</span>
+If <span class="math" data-tex="\(h(0)=0\)">\(h(0)=0\)</span>, one may take <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>. It is an isomorphism precisely when <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span> and <span class="math" data-tex="\(\alpha\Lambda=\Lambda&#x27;\)">\(\alpha\Lambda=\Lambda&#x27;\)</span>.</p>
+<p><strong>Proof.</strong>
+Let <span class="math" data-tex="\(\pi,\pi&#x27;\)">\(\pi,\pi&#x27;\)</span> be the quotient maps, and pull back the differential <span class="math" data-tex="\(dw\)">\(dw\)</span> on the target:
+<span class="math math-display" data-tex="\[
+ (h\pi)^*dw=A(z)\,dz.
+\]">\[
+ (h\pi)^*dw=A(z)\,dz.
+\]</span>
+Here <span class="math" data-tex="\(A\)">\(A\)</span> is an entire function and is <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-periodic. On a closed fundamental parallelogram it is bounded; translating that parallelogram bounds it everywhere. Liouville's theorem gives <span class="math" data-tex="\(A(z)=\alpha\)">\(A(z)=\alpha\)</span>.</p>
+<p>Choose a representative <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of <span class="math" data-tex="\(h(0)\)">\(h(0)\)</span>, and put <span class="math" data-tex="\(H(z)=\alpha z+\beta\)">\(H(z)=\alpha z+\beta\)</span>. The maps <span class="math" data-tex="\(\pi&#x27;H\)">\(\pi&#x27;H\)</span> and <span class="math" data-tex="\(h\pi\)">\(h\pi\)</span> have the same derivative in every quotient chart. Their difference, using the target's additive group, is consequently locally constant. It is zero at <span class="math" data-tex="\(z=0\)">\(z=0\)</span>; connectedness of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> makes it zero everywhere. Thus (1.1) holds. Replacing <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(z+\lambda\)">\(z+\lambda\)</span> proves <span class="math" data-tex="\(\alpha\lambda\in\Lambda&#x27;\)">\(\alpha\lambda\in\Lambda&#x27;\)</span> for every <span class="math" data-tex="\(\lambda\in\Lambda\)">\(\lambda\in\Lambda\)</span>.</p>
+<p>Conversely that inclusion makes (1.1) well-defined and holomorphic. If <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, its kernel after translating the target origin is
+<span class="math math-display" data-tex="\[
+ \alpha^{-1}\Lambda&#x27;/\Lambda.
+\]">\[
+ \alpha^{-1}\Lambda&#x27;/\Lambda.
+\]</span>
+Surjectivity follows by representing a target point by <span class="math" data-tex="\(w\)">\(w\)</span> and choosing <span class="math" data-tex="\(z=(w-\beta)/\alpha\)">\(z=(w-\beta)/\alpha\)</span>. Bijectivity therefore means <span class="math" data-tex="\(\alpha^{-1}\Lambda&#x27;=\Lambda\)">\(\alpha^{-1}\Lambda&#x27;=\Lambda\)</span>. The inverse then descends from an affine holomorphic map. Finally, if <span class="math" data-tex="\(h(0)=0\)">\(h(0)=0\)</span>, its representative <span class="math" data-tex="\(\beta\)">\(\beta\)</span> lies in <span class="math" data-tex="\(\Lambda&#x27;\)">\(\Lambda&#x27;\)</span> and can be removed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A nonconstant map fixing zero is a group homomorphism, called an <em>isogeny</em>. Its degree is
+<span class="math math-display" data-tex="\[
+ \deg h=[\Lambda&#x27;:\alpha\Lambda].
+ \tag{1.2}
+\]">\[
+ \deg h=[\Lambda&#x27;:\alpha\Lambda].
+ \tag{1.2}
+\]</span>
+This index is finite: representatives can be chosen in a bounded fundamental parallelogram for <span class="math" data-tex="\(\alpha\Lambda\)">\(\alpha\Lambda\)</span>, which contains finitely many points of the discrete lattice <span class="math" data-tex="\(\Lambda&#x27;\)">\(\Lambda&#x27;\)</span>. Every fiber has this number of points, and the nonzero derivative <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> shows that no branching occurs.</p>
+<p>Two tori are thus isomorphic exactly when their lattices are <em>homothetic</em>, meaning <span class="math" data-tex="\(\Lambda&#x27;=\alpha\Lambda\)">\(\Lambda&#x27;=\alpha\Lambda\)</span> for <span class="math" data-tex="\(\alpha\in\mathbb C^\times\)">\(\alpha\in\mathbb C^\times\)</span>. Dividing an oriented basis by <span class="math" data-tex="\(\omega_1\)">\(\omega_1\)</span> produces (0.1). Changing the oriented basis gives
+<span class="math math-display" data-tex="\[
+ \tau&#x27;=\gamma\tau=\frac{a\tau+b}{c\tau+d},
+ \qquad
+ \Lambda_{\gamma\tau}=(c\tau+d)^{-1}\Lambda_\tau,
+ \quad \gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathrm{SL}_2(\mathbb Z).
+ \tag{1.3}
+\]">\[
+ \tau&#x27;=\gamma\tau=\frac{a\tau+b}{c\tau+d},
+ \qquad
+ \Lambda_{\gamma\tau}=(c\tau+d)^{-1}\Lambda_\tau,
+ \quad \gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathrm{SL}_2(\mathbb Z).
+ \tag{1.3}
+\]</span>
+For completeness, any homothety between two normalized lattices has this form. Write an oriented basis of <span class="math" data-tex="\(\Lambda_{\tau&#x27;}\)">\(\Lambda_{\tau&#x27;}\)</span> as
+<span class="math math-display" data-tex="\[
+ \tau&#x27;=\alpha(a\tau+b),\qquad 1=\alpha(c\tau+d).
+\]">\[
+ \tau&#x27;=\alpha(a\tau+b),\qquad 1=\alpha(c\tau+d).
+\]</span>
+The integral change of basis has determinant <span class="math" data-tex="\(1\)">\(1\)</span>, since both bases have the same positive orientation and the homothety preserves orientation. Eliminating <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> gives (1.3). Hence <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\backslash\mathfrak H\)">\(\mathrm{SL}_2(\mathbb Z)\backslash\mathfrak H\)</span> classifies complex tori.</p>
+<h2 id="2-constructing-the-cubic-from-a-lattice">2. Constructing the cubic from a lattice</h2>
+<p>Define
+<span class="math math-display" data-tex="\[
+ \wp_\Lambda(z)=\frac1{z^2}
+  +\sum_{\lambda\in\Lambda\setminus\{0\}}
+       \left(\frac1{(z-\lambda)^2}-\frac1{\lambda^2}\right).
+ \tag{2.1}
+\]">\[
+ \wp_\Lambda(z)=\frac1{z^2}
+  +\sum_{\lambda\in\Lambda\setminus\{0\}}
+       \left(\frac1{(z-\lambda)^2}-\frac1{\lambda^2}\right).
+ \tag{2.1}
+\]</span>
+The subtraction is essential. A sum of <span class="math" data-tex="\(|\lambda|^{-r}\)">\(|\lambda|^{-r}\)</span> converges for <span class="math" data-tex="\(r&gt;2\)">\(r&gt;2\)</span>: in lattice coordinates the number of points with
+<span class="math" data-tex="\(\max(|m|,|n|)=j\)">\(\max(|m|,|n|)=j\)</span> is <span class="math" data-tex="\(O(j)\)">\(O(j)\)</span>, and
+<span class="math" data-tex="\(|m\omega_1+n\omega_2|\ge c\max(|m|,|n|)\)">\(|m\omega_1+n\omega_2|\ge c\max(|m|,|n|)\)</span> for a fixed <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.
+For <span class="math" data-tex="\(|z|\le R\)">\(|z|\le R\)</span> and <span class="math" data-tex="\(|\lambda|&gt;2R\)">\(|\lambda|&gt;2R\)</span>, a summand in (2.1) has absolute value at most <span class="math" data-tex="\(10R|\lambda|^{-3}\)">\(10R|\lambda|^{-3}\)</span>. Its tails therefore converge normally on compact sets away from the lattice. At every lattice point <span class="math" data-tex="\(\wp\)">\(\wp\)</span> has a double pole with principal part <span class="math" data-tex="\((z-\lambda)^{-2}\)">\((z-\lambda)^{-2}\)</span>.</p>
+<p>Pairing <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with <span class="math" data-tex="\(-\lambda\)">\(-\lambda\)</span> shows that <span class="math" data-tex="\(\wp\)">\(\wp\)</span> is even. Termwise differentiation, justified by normal convergence, gives the absolutely normally convergent expression
+<span class="math math-display" data-tex="\[
+ \wp_\Lambda&#x27;(z)=-2\sum_{\lambda\in\Lambda}(z-\lambda)^{-3}.
+ \tag{2.2}
+\]">\[
+ \wp_\Lambda&#x27;(z)=-2\sum_{\lambda\in\Lambda}(z-\lambda)^{-3}.
+ \tag{2.2}
+\]</span>
+Reindexing this sum makes <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span> periodic. Thus
+<span class="math" data-tex="\(\wp(z+\omega_j)-\wp(z)\)">\(\wp(z+\omega_j)-\wp(z)\)</span> is constant. Evaluate at
+<span class="math" data-tex="\(z=-\omega_j/2\)">\(z=-\omega_j/2\)</span>, which is not a lattice point for either basis vector. Evenness makes the constant zero. Both basis periods, and therefore every lattice period, fix <span class="math" data-tex="\(\wp\)">\(\wp\)</span>.</p>
+<p>For <span class="math" data-tex="\(r\ge4\)">\(r\ge4\)</span> even, put
+<span class="math math-display" data-tex="\[
+ G_r(\Lambda)=\sum_{\lambda\in\Lambda\setminus\{0\}}\lambda^{-r},
+ \qquad g_2(\Lambda)=60G_4(\Lambda),\quad
+ g_3(\Lambda)=140G_6(\Lambda).
+ \tag{2.3}
+\]">\[
+ G_r(\Lambda)=\sum_{\lambda\in\Lambda\setminus\{0\}}\lambda^{-r},
+ \qquad g_2(\Lambda)=60G_4(\Lambda),\quad
+ g_3(\Lambda)=140G_6(\Lambda).
+ \tag{2.3}
+\]</span>
+Expanding the summands of (2.1) by the geometric series, absolutely on any disk smaller than the shortest lattice length, gives
+<span class="math math-display" data-tex="\[
+ \wp(z)=z^{-2}+
+   \sum_{n\ge1}(2n+1)G_{2n+2}(\Lambda)z^{2n}
+ =z^{-2}+3G_4z^2+5G_6z^4+O(z^6).
+ \tag{2.4}
+\]">\[
+ \wp(z)=z^{-2}+
+   \sum_{n\ge1}(2n+1)G_{2n+2}(\Lambda)z^{2n}
+ =z^{-2}+3G_4z^2+5G_6z^4+O(z^6).
+ \tag{2.4}
+\]</span>
+Odd powers cancel. The summation interchange is justified, for <span class="math" data-tex="\(|z|\le r&lt;\min_{\lambda\ne0}|\lambda|\)">\(|z|\le r&lt;\min_{\lambda\ne0}|\lambda|\)</span>, by summing
+<span class="math" data-tex="\((m+1)r^m|\lambda|^{-m-2}\)">\((m+1)r^m|\lambda|^{-m-2}\)</span>; its tail is bounded by a constant times <span class="math" data-tex="\(|\lambda|^{-3}\)">\(|\lambda|^{-3}\)</span>.</p>
+<p><strong>Theorem 2.1 (Weierstrass equation).</strong>
+<span class="math math-display" data-tex="\[
+ \wp&#x27;(z)^2=4\wp(z)^3-g_2\wp(z)-g_3,
+ \qquad
+ D(\Lambda):=g_2^3-27g_3^2\ne0.
+ \tag{2.5}
+\]">\[
+ \wp&#x27;(z)^2=4\wp(z)^3-g_2\wp(z)-g_3,
+ \qquad
+ D(\Lambda):=g_2^3-27g_3^2\ne0.
+ \tag{2.5}
+\]</span></p>
+<p><strong>Proof of the equation.</strong>
+At zero, (2.4) gives
+<span class="math math-display" data-tex="\[
+ \wp&#x27;^2=4z^{-6}-24G_4z^{-2}-80G_6+O(z^2),
+\]">\[
+ \wp&#x27;^2=4z^{-6}-24G_4z^{-2}-80G_6+O(z^2),
+\]</span>
+<span class="math math-display" data-tex="\[
+ 4\wp^3=4z^{-6}+36G_4z^{-2}+60G_6+O(z^2).
+\]">\[
+ 4\wp^3=4z^{-6}+36G_4z^{-2}+60G_6+O(z^2).
+\]</span>
+Consequently <span class="math" data-tex="\(\wp&#x27;^2-4\wp^3+60G_4\wp+140G_6\)">\(\wp&#x27;^2-4\wp^3+60G_4\wp+140G_6\)</span> is holomorphic at zero, with value zero. Periodicity removes its possible poles at all other lattice points. It is entire and periodic, hence bounded and constant; its value at zero makes it identically zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We prove the discriminant assertion rather than assume that the resulting cubic is nonsingular.</p>
+<p><strong>Lemma 2.2 (elliptic divisors).</strong> A nonzero meromorphic <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-periodic function has equally many zeros and poles on <span class="math" data-tex="\(\mathbb C/\Lambda\)">\(\mathbb C/\Lambda\)</span>, counted with multiplicity. Moreover, their sums differ by an element of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p><strong>Proof.</strong>
+Translate a fundamental parallelogram so that its boundary contains no zero or pole. For a function <span class="math" data-tex="\(u\)">\(u\)</span>, opposite-edge integrals of <span class="math" data-tex="\(u&#x27;/u\)">\(u&#x27;/u\)</span> cancel, so the argument principle gives equality of the two counts.</p>
+<p>The residue theorem applied to <span class="math" data-tex="\(z u&#x27;/u\)">\(z u&#x27;/u\)</span> gives the sum of zeros minus the sum of poles. Write <span class="math" data-tex="\(B_1,B_2\)">\(B_1,B_2\)</span> for the two edges starting at the chosen lower-left vertex and ending after translation by <span class="math" data-tex="\(\omega_1,\omega_2\)">\(\omega_1,\omega_2\)</span>. Comparing the opposite edges yields
+<span class="math math-display" data-tex="\[
+ \frac1{2\pi i}\int_{\partial B}z\frac{u&#x27;}u\,dz
+ =\frac{\omega_1}{2\pi i}\int_{B_2}\frac{u&#x27;}u\,dz
+  -\frac{\omega_2}{2\pi i}\int_{B_1}\frac{u&#x27;}u\,dz.
+ \tag{2.6}
+\]">\[
+ \frac1{2\pi i}\int_{\partial B}z\frac{u&#x27;}u\,dz
+ =\frac{\omega_1}{2\pi i}\int_{B_2}\frac{u&#x27;}u\,dz
+  -\frac{\omega_2}{2\pi i}\int_{B_1}\frac{u&#x27;}u\,dz.
+ \tag{2.6}
+\]</span>
+Each edge integral is <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span> times an integer: the endpoint values of <span class="math" data-tex="\(u\)">\(u\)</span> coincide, and the integral measures the winding of their nonzero image path. The right side belongs to <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Changing representatives of zeros and poles changes their sum only by lattice elements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof that <span class="math" data-tex="\(D(\Lambda)\ne0\)">\(D(\Lambda)\ne0\)</span>.</strong>
+The three nonzero points of order two are
+<span class="math" data-tex="\(\omega_1/2,\omega_2/2,(\omega_1+\omega_2)/2\)">\(\omega_1/2,\omega_2/2,(\omega_1+\omega_2)/2\)</span>.
+Periodicity and oddness of <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span> make it vanish at all three. Its only pole on the torus is a triple pole at zero. Lemma 2.2 implies that these are all its zeros and that each is simple.</p>
+<p>Write <span class="math" data-tex="\(e_1,e_2,e_3\)">\(e_1,e_2,e_3\)</span> for the corresponding values of <span class="math" data-tex="\(\wp\)">\(\wp\)</span>.
+They are distinct: if two were equal to <span class="math" data-tex="\(e\)">\(e\)</span>, the function <span class="math" data-tex="\(\wp-e\)">\(\wp-e\)</span>, whose sole pole has order two, would have zeros of order at least two at two distinct points. That contradicts Lemma 2.2. Equation (2.5) shows that the <span class="math" data-tex="\(e_j\)">\(e_j\)</span> are the three distinct roots of
+<span class="math" data-tex="\(4X^3-g_2X-g_3\)">\(4X^3-g_2X-g_3\)</span>. A repeated root of this polynomial occurs exactly when <span class="math" data-tex="\(g_2^3=27g_3^2\)">\(g_2^3=27g_3^2\)</span>, as follows either by eliminating <span class="math" data-tex="\(X\)">\(X\)</span> between it and <span class="math" data-tex="\(12X^2-g_2\)">\(12X^2-g_2\)</span>, or by factoring a cubic with a double root. Thus <span class="math" data-tex="\(D(\Lambda)\ne0\)">\(D(\Lambda)\ne0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.3 (the parametrization and group law).</strong> The map
+<span class="math math-display" data-tex="\[
+ \Phi_\Lambda:\mathbb C/\Lambda\longrightarrow E_\Lambda,
+ \qquad
+ z\longmapsto(\wp_\Lambda(z),\wp_\Lambda&#x27;(z)),\quad
+ 0\longmapsto O,
+ \tag{2.7}
+\]">\[
+ \Phi_\Lambda:\mathbb C/\Lambda\longrightarrow E_\Lambda,
+ \qquad
+ z\longmapsto(\wp_\Lambda(z),\wp_\Lambda&#x27;(z)),\quad
+ 0\longmapsto O,
+ \tag{2.7}
+\]</span>
+is a biholomorphic isomorphism and identifies addition on the torus with the chord-and-tangent group law of the cubic.</p>
+<p><strong>Proof.</strong>
+For any <span class="math" data-tex="\(x\in\mathbb C\)">\(x\in\mathbb C\)</span>, <span class="math" data-tex="\(\wp-x\)">\(\wp-x\)</span> has two zeros counted with multiplicity. Since <span class="math" data-tex="\(\wp\)">\(\wp\)</span> is even, these are <span class="math" data-tex="\(z,-z\)">\(z,-z\)</span>, unless they coincide at a point of order two. At a nonbranch value the derivatives have opposite nonzero values, which give the two possible <span class="math" data-tex="\(y\)">\(y\)</span>-coordinates in (2.5). At a branch value there is one double zero and <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. Thus (2.7) is bijective on affine points.</p>
+<p>It is holomorphic there. If <span class="math" data-tex="\(\wp&#x27;(z)\ne0\)">\(\wp&#x27;(z)\ne0\)</span>, the <span class="math" data-tex="\(x\)">\(x\)</span>-coordinate is locally invertible. At a zero of <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span>, its simplicity gives <span class="math" data-tex="\(\wp&#x27;&#x27;(z)\ne0\)">\(\wp&#x27;&#x27;(z)\ne0\)</span>, so the <span class="math" data-tex="\(y\)">\(y\)</span>-coordinate is locally invertible. At infinity use the projective chart <span class="math" data-tex="\(Y\ne0\)">\(Y\ne0\)</span>:
+<span class="math math-display" data-tex="\[
+ X/Y=\wp/\wp&#x27;=-z/2+O(z^5),\qquad
+ Z/Y=1/\wp&#x27;=-z^3/2+O(z^7).
+ \tag{2.8}
+\]">\[
+ X/Y=\wp/\wp&#x27;=-z/2+O(z^5),\qquad
+ Z/Y=1/\wp&#x27;=-z^3/2+O(z^7).
+ \tag{2.8}
+\]</span>
+This proves a holomorphic extension to <span class="math" data-tex="\(O=[0:1:0]\)">\(O=[0:1:0]\)</span>, with a local inverse from <span class="math" data-tex="\(X/Y\)">\(X/Y\)</span>. The projective equation
+<span class="math" data-tex="\(Y^2Z=4X^3-g_2XZ^2-g_3Z^3\)">\(Y^2Z=4X^3-g_2XZ^2-g_3Z^3\)</span> is smooth at <span class="math" data-tex="\(O\)">\(O\)</span>, since its derivative with respect to <span class="math" data-tex="\(Z\)">\(Z\)</span> is nonzero there. Hence the bijection and all its local inverses are holomorphic.</p>
+<p>For the group statement, an affine nonvertical line <span class="math" data-tex="\(y=mx+b\)">\(y=mx+b\)</span> cuts out the zeros of
+<span class="math" data-tex="\(\wp&#x27;-m\wp-b\)">\(\wp&#x27;-m\wp-b\)</span>. This elliptic function has a triple pole at zero. If its three intersection parameters, with multiplicities, are <span class="math" data-tex="\(u,v,w\)">\(u,v,w\)</span>, Lemma 2.2 gives <span class="math" data-tex="\(u+v+w=0\)">\(u+v+w=0\)</span> on the torus. Reflection in the <span class="math" data-tex="\(x\)">\(x\)</span>-axis corresponds to <span class="math" data-tex="\(z\mapsto-z\)">\(z\mapsto-z\)</span>. Therefore reflecting the third intersection point gives the parameter <span class="math" data-tex="\(u+v\)">\(u+v\)</span>, exactly the chord rule.</p>
+<p>A tangent contributes a repeated zero, so the same argument includes coincident points. For a vertical line, <span class="math" data-tex="\(\wp-x\)">\(\wp-x\)</span> gives the two parameters <span class="math" data-tex="\(u,-u\)">\(u,-u\)</span>, and its third projective intersection is <span class="math" data-tex="\(O\)">\(O\)</span>. The tangent at <span class="math" data-tex="\(O\)">\(O\)</span> is the line at infinity with triple intersection there. These cases also give the torus addition rule, including its identity and inverses. In particular, associativity follows from addition on the torus. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-every-complex-elliptic-curve-comes-from-a-lattice">3. Every complex elliptic curve comes from a lattice</h2>
+<p>Homothety gives
+<span class="math math-display" data-tex="\[
+ g_2(c\Lambda)=c^{-4}g_2(\Lambda),\qquad
+ g_3(c\Lambda)=c^{-6}g_3(\Lambda),\qquad
+ \wp_{c\Lambda}(cz)=c^{-2}\wp_\Lambda(z).
+ \tag{3.1}
+\]">\[
+ g_2(c\Lambda)=c^{-4}g_2(\Lambda),\qquad
+ g_3(c\Lambda)=c^{-6}g_3(\Lambda),\qquad
+ \wp_{c\Lambda}(cz)=c^{-2}\wp_\Lambda(z).
+ \tag{3.1}
+\]</span>
+These identities follow by reindexing absolutely convergent series; differentiation also gives <span class="math" data-tex="\(\wp&#x27;_{c\Lambda}(cz)=c^{-3}\wp&#x27;_\Lambda(z)\)">\(\wp&#x27;_{c\Lambda}(cz)=c^{-3}\wp&#x27;_\Lambda(z)\)</span>. Thus a homothety gives an algebraic isomorphism of the corresponding cubics, including their marked points. Define
+<span class="math math-display" data-tex="\[
+ j(\Lambda)=1728\,\frac{g_2(\Lambda)^3}{D(\Lambda)}.
+ \tag{3.2}
+\]">\[
+ j(\Lambda)=1728\,\frac{g_2(\Lambda)^3}{D(\Lambda)}.
+ \tag{3.2}
+\]</span>
+The normalizations from the Eisenstein expansions in the earlier course give
+<span class="math math-display" data-tex="\[
+ g_2(\Lambda_\tau)=\frac{4\pi^4}{3}E_4(\tau),\qquad
+ g_3(\Lambda_\tau)=\frac{8\pi^6}{27}E_6(\tau),
+\]">\[
+ g_2(\Lambda_\tau)=\frac{4\pi^4}{3}E_4(\tau),\qquad
+ g_3(\Lambda_\tau)=\frac{8\pi^6}{27}E_6(\tau),
+\]</span>
+<span class="math math-display" data-tex="\[
+ D(\Lambda_\tau)=(2\pi)^{12}\Delta(\tau),\qquad
+ j(\Lambda_\tau)=\frac{E_4(\tau)^3}{\Delta(\tau)}.
+ \tag{3.3}
+\]">\[
+ D(\Lambda_\tau)=(2\pi)^{12}\Delta(\tau),\qquad
+ j(\Lambda_\tau)=\frac{E_4(\tau)^3}{\Delta(\tau)}.
+ \tag{3.3}
+\]</span>
+Indeed <span class="math" data-tex="\(G_4=2\zeta(4)E_4\)">\(G_4=2\zeta(4)E_4\)</span>, <span class="math" data-tex="\(G_6=2\zeta(6)E_6\)">\(G_6=2\zeta(6)E_6\)</span>, and
+<span class="math" data-tex="\(E_4^3-E_6^2=1728\Delta\)">\(E_4^3-E_6^2=1728\Delta\)</span>. Thus (3.2) is exactly the previously proved modular <span class="math" data-tex="\(j\)">\(j\)</span>, with the positive sign.</p>
+<p><strong>Theorem 3.1 (uniformization).</strong> Every curve (0.2) is <span class="math" data-tex="\(E_\Lambda\)">\(E_\Lambda\)</span> for a suitable lattice <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Its isomorphism class determines <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> up to homothety. Accordingly,
+<span class="math math-display" data-tex="\[
+ \{\text{complex elliptic curves}\}/\cong
+ \ \longleftrightarrow\
+ \{\text{lattices}\}/\text{homothety}
+ \ \longleftrightarrow\
+ \mathrm{SL}_2(\mathbb Z)\backslash\mathfrak H
+ \ \xrightarrow{\ j\ }\mathbb C
+ \tag{3.4}
+\]">\[
+ \{\text{complex elliptic curves}\}/\cong
+ \ \longleftrightarrow\
+ \{\text{lattices}\}/\text{homothety}
+ \ \longleftrightarrow\
+ \mathrm{SL}_2(\mathbb Z)\backslash\mathfrak H
+ \ \xrightarrow{\ j\ }\mathbb C
+ \tag{3.4}
+\]</span>
+are bijections.</p>
+<p><strong>Proof.</strong>
+Given <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, choose <span class="math" data-tex="\(\tau\)">\(\tau\)</span> with
+<span class="math math-display" data-tex="\[
+ j(\Lambda_\tau)=1728\,\frac{a^3}{a^3-27b^2},
+\]">\[
+ j(\Lambda_\tau)=1728\,\frac{a^3}{a^3-27b^2},
+\]</span>
+using the already proved surjectivity of the modular <span class="math" data-tex="\(j\)">\(j\)</span>.
+First suppose <span class="math" data-tex="\(a,b\ne0\)">\(a,b\ne0\)</span>. Write <span class="math" data-tex="\(g_2,g_3\)">\(g_2,g_3\)</span> for the invariants of <span class="math" data-tex="\(\Lambda_\tau\)">\(\Lambda_\tau\)</span>. The chosen <span class="math" data-tex="\(j\)">\(j\)</span> is neither <span class="math" data-tex="\(0\)">\(0\)</span> nor <span class="math" data-tex="\(1728\)">\(1728\)</span>, so <span class="math" data-tex="\(g_2,g_3\ne0\)">\(g_2,g_3\ne0\)</span>, and cross-multiplication gives
+<span class="math math-display" data-tex="\[
+ \frac{g_3^2}{g_2^3}=\frac{b^2}{a^3}.
+\]">\[
+ \frac{g_3^2}{g_2^3}=\frac{b^2}{a^3}.
+\]</span>
+Choose <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c^4=g_2/a\)">\(c^4=g_2/a\)</span>. Then <span class="math" data-tex="\(g_2(c\Lambda_\tau)=a\)">\(g_2(c\Lambda_\tau)=a\)</span>, and the last equality makes <span class="math" data-tex="\(g_3(c\Lambda_\tau)=b\)">\(g_3(c\Lambda_\tau)=b\)</span> or <span class="math" data-tex="\(-b\)">\(-b\)</span>. Replacing <span class="math" data-tex="\(c\)">\(c\)</span> by <span class="math" data-tex="\(ic\)">\(ic\)</span> preserves its fourth power and reverses <span class="math" data-tex="\(c^{-6}\)">\(c^{-6}\)</span>. This supplies the desired sign.</p>
+<p>If <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, then <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, and <span class="math" data-tex="\(g_2=0\)">\(g_2=0\)</span>. Nonvanishing of <span class="math" data-tex="\(D\)">\(D\)</span> gives <span class="math" data-tex="\(g_3\ne0\)">\(g_3\ne0\)</span>; choose <span class="math" data-tex="\(c^6=g_3/b\)">\(c^6=g_3/b\)</span>. If <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, use <span class="math" data-tex="\(j=1728\)">\(j=1728\)</span>, <span class="math" data-tex="\(g_3=0\)">\(g_3=0\)</span>, and <span class="math" data-tex="\(c^4=g_2/a\)">\(c^4=g_2/a\)</span>. In every case the resulting lattice has precisely the coefficients <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, not just an unspecified curve with the same <span class="math" data-tex="\(j\)">\(j\)</span>. Theorem 2.3 uniformizes it.</p>
+<p>An isomorphism of elliptic curves, composed with their parametrizations, is a holomorphic isomorphism of tori fixing zero. Theorem 1.1 therefore makes their lattices homothetic. Conversely, (3.1) gives the algebraic pointed isomorphism
+<span class="math" data-tex="\((x,y)\mapsto(c^{-2}x,c^{-3}y)\)">\((x,y)\mapsto(c^{-2}x,c^{-3}y)\)</span> between <span class="math" data-tex="\(E_\Lambda\)">\(E_\Lambda\)</span> and <span class="math" data-tex="\(E_{c\Lambda}\)">\(E_{c\Lambda}\)</span>.
+Theorem 1.1 and (1.3) prove the first two bijections; the earlier coordinate theorem for <span class="math" data-tex="\(j\)">\(j\)</span> proves the last. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The analytic maps used above are also algebraic maps of the displayed cubics. We give the function-field argument, so that this assertion does not require an algebraic uniformization theorem.</p>
+<p><strong>Proposition 3.2 (the elliptic function field).</strong> Every meromorphic function on <span class="math" data-tex="\(\mathbb C/\Lambda\)">\(\mathbb C/\Lambda\)</span> has a unique expression
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h(z)&amp;=R(\wp_\Lambda(z))\\
+&amp;\quad+\wp&#x27;_\Lambda(z)S(\wp_\Lambda(z)),\\
+&amp;\qquad R,S\in\mathbb C(t).
+\end{aligned}
+\tag{3.4a}
+\]">\[
+\begin{aligned}
+h(z)&amp;=R(\wp_\Lambda(z))\\
+&amp;\quad+\wp&#x27;_\Lambda(z)S(\wp_\Lambda(z)),\\
+&amp;\qquad R,S\in\mathbb C(t).
+\end{aligned}
+\tag{3.4a}
+\]</span>
+Consequently the isogenies in Theorem 1.1 induce algebraic maps between the corresponding Weierstrass cubics.</p>
+<p><strong>Proof.</strong> Split <span class="math" data-tex="\(h\)">\(h\)</span> into its even and odd parts under <span class="math" data-tex="\(z\mapsto-z\)">\(z\mapsto-z\)</span>. An even meromorphic function has the same value on the two points in each fiber of <span class="math" data-tex="\(\wp\)">\(\wp\)</span>, by Theorem 2.3. It therefore defines a meromorphic function of <span class="math" data-tex="\(x=\wp(z)\)">\(x=\wp(z)\)</span> away from the branch values. At a nonzero point of order two, a local coordinate <span class="math" data-tex="\(t\)">\(t\)</span> changes sign under negation. The even Laurent expansion uses only powers of <span class="math" data-tex="\(t^2\)">\(t^2\)</span>, while <span class="math" data-tex="\(\wp(z)-e_j\)">\(\wp(z)-e_j\)</span> is <span class="math" data-tex="\(t^2\)">\(t^2\)</span> times a nonvanishing even holomorphic function. Taking its local square root shows that the expansion is meromorphic in <span class="math" data-tex="\(x-e_j\)">\(x-e_j\)</span>. At zero, <span class="math" data-tex="\(\wp^{-1}\)">\(\wp^{-1}\)</span> likewise is a local coordinate proportional to <span class="math" data-tex="\(z^2\)">\(z^2\)</span>, and the even expansion is meromorphic in <span class="math" data-tex="\(1/x\)">\(1/x\)</span>. Thus the descended function is meromorphic on the whole sphere.</p>
+<p>A meromorphic function on the sphere is rational: it has finitely many poles by compactness; subtract the finite principal parts at its finite poles and the polynomial principal part at infinity. The remaining function is entire and bounded and therefore constant by Liouville's theorem. This proves that the even part is <span class="math" data-tex="\(R(\wp)\)">\(R(\wp)\)</span>. The odd part divided by the odd meromorphic function <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span> is even, hence is <span class="math" data-tex="\(S(\wp)\)">\(S(\wp)\)</span>. This proves existence in (3.4a). Uniqueness follows by applying negation to an expression equal to zero: subtraction gives <span class="math" data-tex="\(2\wp&#x27;S(\wp)=0\)">\(2\wp&#x27;S(\wp)=0\)</span>, so <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, and then <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, since <span class="math" data-tex="\(\wp\)">\(\wp\)</span> is surjective.</p>
+<p>If <span class="math" data-tex="\(\alpha\Lambda\subseteq\Lambda&#x27;\)">\(\alpha\Lambda\subseteq\Lambda&#x27;\)</span>, the functions <span class="math" data-tex="\(\wp_{\Lambda&#x27;}(\alpha z)\)">\(\wp_{\Lambda&#x27;}(\alpha z)\)</span> and <span class="math" data-tex="\(\wp&#x27;_{\Lambda&#x27;}(\alpha z)\)">\(\wp&#x27;_{\Lambda&#x27;}(\alpha z)\)</span> are meromorphic and <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-periodic. Apply (3.4a) to express both as rational functions of <span class="math" data-tex="\(x=\wp_\Lambda(z)\)">\(x=\wp_\Lambda(z)\)</span> and <span class="math" data-tex="\(y=\wp&#x27;_\Lambda(z)\)">\(y=\wp&#x27;_\Lambda(z)\)</span>. They give the rational coordinate functions of the isogeny. The analytic map has a value at every point. To show that its rational coordinates extend algebraically, we prove the required local-ring assertion on the source cubic. Put <span class="math" data-tex="\(P(x)=4x^3-g_2x-g_3\)">\(P(x)=4x^3-g_2x-g_3\)</span>, so <span class="math" data-tex="\(y^2=P(x)\)">\(y^2=P(x)\)</span>, with distinct roots. At a finite point <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> with <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, its local ring has maximal ideal generated by <span class="math" data-tex="\(x-a\)">\(x-a\)</span>: the identity
+<span class="math" data-tex="\((y-b)(y+b)=(x-a)P_a(x)\)">\((y-b)(y+b)=(x-a)P_a(x)\)</span>, with <span class="math" data-tex="\(y+b\)">\(y+b\)</span> a unit, expresses <span class="math" data-tex="\(y-b\)">\(y-b\)</span> as a multiple of <span class="math" data-tex="\(x-a\)">\(x-a\)</span>. At <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span>, the identity <span class="math" data-tex="\(y^2=(x-a)P_a(x)\)">\(y^2=(x-a)P_a(x)\)</span>, with <span class="math" data-tex="\(P_a(a)=P&#x27;(a)\ne0\)">\(P_a(a)=P&#x27;(a)\ne0\)</span>, instead makes the maximal ideal generated by <span class="math" data-tex="\(y\)">\(y\)</span>. At infinity, use the chart <span class="math" data-tex="\(Y\ne0\)">\(Y\ne0\)</span>, <span class="math" data-tex="\(u=X/Y,v=Z/Y\)">\(u=X/Y,v=Z/Y\)</span>. The cubic equation is
+<span class="math math-display" data-tex="\[
+ v(1+g_2uv+g_3v^2)=4u^3.
+\]">\[
+ v(1+g_2uv+g_3v^2)=4u^3.
+\]</span>
+The factor in parentheses is a unit at <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>, so the maximal ideal is generated by <span class="math" data-tex="\(u\)">\(u\)</span>. Each named generator is also an analytic coordinate in the uniformization already proved. At a nonbranch point, <span class="math" data-tex="\(x&#x27;(z)=y(z)=b\ne0\)">\(x&#x27;(z)=y(z)=b\ne0\)</span>. At a branch point, <span class="math" data-tex="\(y&#x27;(z)=P&#x27;(a)/2\ne0\)">\(y&#x27;(z)=P&#x27;(a)/2\ne0\)</span>. At infinity, the Laurent expansions give <span class="math" data-tex="\(u=\wp/\wp&#x27;=-z/2+O(z^5)\)">\(u=\wp/\wp&#x27;=-z/2+O(z^5)\)</span>. The local inverse theorem from lesson 01 applies in each case.</p>
+<p>In any of these local rings, let <span class="math" data-tex="\(t\)">\(t\)</span> be its named generator. A nonzero ring element of positive analytic order lies in the maximal ideal, so it is <span class="math" data-tex="\(t\)">\(t\)</span> times another ring element. Repeating decreases its finite analytic order by one each time. Thus it is <span class="math" data-tex="\(t^r\)">\(t^r\)</span> times a unit. A rational function is a quotient of two such elements; if its analytic order is nonnegative, cancelling these powers expresses it as an element of the local ring. This proves the cancellation assertion algebraically. The rational functions here embed in meromorphic functions by the uniqueness in (3.4a), so a nonzero element cannot vanish identically in the analytic coordinate.</p>
+<p>At a source point choose the projective target chart containing its analytic image. The two coordinate ratios are rational functions with no analytic pole there, and therefore belong to the source local ring by the assertion just proved. Their denominators are units on a Zariski neighborhood of that point, so they define a regular map into that chart. These maps agree on overlaps because their rational functions agree. Hence the isogeny extends everywhere as an algebraic map. Its group law is the torus law by Theorem 2.3. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The invariant differential in the convention (0.2) is
+<span class="math math-display" data-tex="\[
+ \omega_E=dx/y,\qquad \Phi_\Lambda^*\omega_E=dz.
+ \tag{3.5}
+\]">\[
+ \omega_E=dx/y,\qquad \Phi_\Lambda^*\omega_E=dz.
+ \tag{3.5}
+\]</span>
+The equality follows away from <span class="math" data-tex="\(y=0\)">\(y=0\)</span> by differentiation and extends over the whole curve by (2.8) and the local branch coordinates. Thus it is a nonzero holomorphic differential without zeros. Every holomorphic differential on the torus is <span class="math" data-tex="\(A(z)\,dz\)">\(A(z)\,dz\)</span> with <span class="math" data-tex="\(A\)">\(A\)</span> entire and periodic, hence is a constant multiple of <span class="math" data-tex="\(dz\)">\(dz\)</span>. Translation fixes <span class="math" data-tex="\(dz\)">\(dz\)</span>, so (3.5) is invariant.</p>
+<p>A curve with a chosen nonzero invariant differential is consequently classified by an actual lattice: if its pullback under a uniformization is <span class="math" data-tex="\(c\,dz\)">\(c\,dz\)</span>, replace the lattice by <span class="math" data-tex="\(c\Lambda\)">\(c\Lambda\)</span>. A differential-preserving torus isomorphism has multiplier one, by Theorem 1.1, and therefore cannot change this lattice. Equivalently, it is the set of integrals of the differential along closed curves. A closed curve lifts locally through quotient charts to a path whose endpoints differ by a lattice element; integrating <span class="math" data-tex="\(dz\)">\(dz\)</span> gives that element, and the segments joining <span class="math" data-tex="\(0\)">\(0\)</span> to the two basis periods realize all lattice elements.</p>
+<h2 id="4-torsion-markings-and-the-congruence-groups">4. Torsion markings and the congruence groups</h2>
+<p>For <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+ E_\Lambda[N]=(N^{-1}\Lambda)/\Lambda
+       \cong(\mathbb Z/N\mathbb Z)^2.
+ \tag{4.1}
+\]">\[
+ E_\Lambda[N]=(N^{-1}\Lambda)/\Lambda
+       \cong(\mathbb Z/N\mathbb Z)^2.
+ \tag{4.1}
+\]</span>
+A point <span class="math" data-tex="\((r\omega_1+s\omega_2)/N\)">\((r\omega_1+s\omega_2)/N\)</span> has exact order <span class="math" data-tex="\(N\)">\(N\)</span> precisely when
+<span class="math" data-tex="\(\gcd(r,s,N)=1\)">\(\gcd(r,s,N)=1\)</span>. Its order is <span class="math" data-tex="\(N/\gcd(r,s,N)\)">\(N/\gcd(r,s,N)\)</span>, by checking the divisibility of both coordinates prime by prime.</p>
+<p>We use the following explicit analytic convention for the Weil pairing:
+<span class="math math-display" data-tex="\[
+ e_N\!\left(\frac{r\omega_1+s\omega_2}{N},
+            \frac{r&#x27;\omega_1+s&#x27;\omega_2}{N}\right)
+   =\exp\!\left(\frac{2\pi i(rs&#x27;-sr&#x27;)}{N}\right).
+ \tag{4.2}
+\]">\[
+ e_N\!\left(\frac{r\omega_1+s\omega_2}{N},
+            \frac{r&#x27;\omega_1+s&#x27;\omega_2}{N}\right)
+   =\exp\!\left(\frac{2\pi i(rs&#x27;-sr&#x27;)}{N}\right).
+ \tag{4.2}
+\]</span>
+The basis is positively oriented. Formula (4.2) is unchanged by adding lattice elements to either representative, by an oriented integral change of basis, or by homothety. It is therefore intrinsic to the complex elliptic curve. It is bilinear and alternating. It is nondegenerate because pairing with <span class="math" data-tex="\(\omega_1/N,\omega_2/N\)">\(\omega_1/N,\omega_2/N\)</span> detects both coordinates. This fixes the positive determinant convention used in Galbraith, <em>The Weil pairing on elliptic curves over C</em>, §3; a convention replacing the pairing by its inverse reverses the specified root of unity.</p>
+<p>Write <span class="math" data-tex="\(\zeta_N=e^{2\pi i/N}\)">\(\zeta_N=e^{2\pi i/N}\)</span>. In (0.1) the canonical point and ordered basis are
+<span class="math math-display" data-tex="\[
+ P_\tau=1/N+\Lambda_\tau,\qquad
+ Q_\tau=\tau/N+\Lambda_\tau,\qquad
+ e_N(P_\tau,Q_\tau)=\zeta_N.
+ \tag{4.3}
+\]">\[
+ P_\tau=1/N+\Lambda_\tau,\qquad
+ Q_\tau=\tau/N+\Lambda_\tau,\qquad
+ e_N(P_\tau,Q_\tau)=\zeta_N.
+ \tag{4.3}
+\]</span>
+For <span class="math" data-tex="\(N=1\)">\(N=1\)</span> these markings are trivial.</p>
+<p>Let <span class="math" data-tex="\(\mathcal E_1(N)\)">\(\mathcal E_1(N)\)</span> be the isomorphism classes of pairs <span class="math" data-tex="\((E,P)\)">\((E,P)\)</span> with <span class="math" data-tex="\(P\)">\(P\)</span> of exact order <span class="math" data-tex="\(N\)">\(N\)</span>, and let <span class="math" data-tex="\(\mathcal E_0(N)\)">\(\mathcal E_0(N)\)</span> be the isomorphism classes of pairs <span class="math" data-tex="\((E,C)\)">\((E,C)\)</span> with <span class="math" data-tex="\(C\)">\(C\)</span> cyclic of order <span class="math" data-tex="\(N\)">\(N\)</span>. Let <span class="math" data-tex="\(\mathcal E(N)\)">\(\mathcal E(N)\)</span> be the isomorphism classes of curves with an ordered basis <span class="math" data-tex="\((P,Q)\)">\((P,Q)\)</span> of <span class="math" data-tex="\(E[N]\)">\(E[N]\)</span> satisfying <span class="math" data-tex="\(e_N(P,Q)=\zeta_N\)">\(e_N(P,Q)=\zeta_N\)</span>.</p>
+<p><strong>Theorem 4.1 (the moduli bijections).</strong> The following maps are bijective:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ Y_1(N)=\Gamma_1(N)\backslash\mathfrak H
+    &amp;\longrightarrow\mathcal E_1(N),\\
+ [\tau]&amp;\longmapsto[E_\tau,P_\tau],\\
+ Y_0(N)=\Gamma_0(N)\backslash\mathfrak H
+    &amp;\longrightarrow\mathcal E_0(N),\\
+ [\tau]&amp;\longmapsto[E_\tau,\langle P_\tau\rangle],\\
+ Y(N)=\Gamma(N)\backslash\mathfrak H
+    &amp;\longrightarrow\mathcal E(N),\\
+ [\tau]&amp;\longmapsto[E_\tau,(P_\tau,Q_\tau)].
+ \end{aligned}
+ \tag{4.4}
+\]">\[
+ \begin{aligned}
+ Y_1(N)=\Gamma_1(N)\backslash\mathfrak H
+    &amp;\longrightarrow\mathcal E_1(N),\\
+ [\tau]&amp;\longmapsto[E_\tau,P_\tau],\\
+ Y_0(N)=\Gamma_0(N)\backslash\mathfrak H
+    &amp;\longrightarrow\mathcal E_0(N),\\
+ [\tau]&amp;\longmapsto[E_\tau,\langle P_\tau\rangle],\\
+ Y(N)=\Gamma(N)\backslash\mathfrak H
+    &amp;\longrightarrow\mathcal E(N),\\
+ [\tau]&amp;\longmapsto[E_\tau,(P_\tau,Q_\tau)].
+ \end{aligned}
+ \tag{4.4}
+\]</span></p>
+<p>An isomorphism on the right is a pointed elliptic-curve isomorphism preserving the indicated markings.</p>
+<p><strong>Proof: existence of presentations.</strong>
+Uniformization reduces everything to a lattice. A primitive vector of <span class="math" data-tex="\((\mathbb Z/N\mathbb Z)^2\)">\((\mathbb Z/N\mathbb Z)^2\)</span> can be completed to a determinant-one matrix: choose a Bezout combination of its coordinates. Lemma 1.1 of the congruence-group lesson lifts that matrix to <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span>. Its first column gives a primitive integral vector representing <span class="math" data-tex="\(NP\)">\(NP\)</span>, and the two columns give a positively oriented lattice basis <span class="math" data-tex="\(\omega&#x27;_1,\omega&#x27;_2\)">\(\omega&#x27;_1,\omega&#x27;_2\)</span> with
+<span class="math" data-tex="\(P=\omega&#x27;_1/N\)">\(P=\omega&#x27;_1/N\)</span> modulo <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.
+Dividing by <span class="math" data-tex="\(\omega&#x27;_1\)">\(\omega&#x27;_1\)</span> produces (4.3). This proves surjectivity for the point marking and, after choosing a generator of <span class="math" data-tex="\(C\)">\(C\)</span>, for the cyclic marking.</p>
+<p>For an ordered torsion basis, write its coordinate columns relative to <span class="math" data-tex="\(\omega_1,\omega_2\)">\(\omega_1,\omega_2\)</span>. Condition (4.2) says precisely that their determinant is <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>. Lift this matrix to <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span> again. Its columns produce an oriented lattice basis representing <span class="math" data-tex="\(NP,NQ\)">\(NP,NQ\)</span>, so normalization gives both canonical markings. This includes composite <span class="math" data-tex="\(N\)">\(N\)</span>; no field assumption on <span class="math" data-tex="\(\mathbb Z/N\mathbb Z\)">\(\mathbb Z/N\mathbb Z\)</span> is used.</p>
+<p><strong>Proof: equivalence of presentations.</strong>
+By Theorem 1.1, an isomorphism between normalized tori is multiplication by <span class="math" data-tex="\(\alpha=(c\tau+d)^{-1}\)">\(\alpha=(c\tau+d)^{-1}\)</span>, with <span class="math" data-tex="\(\tau&#x27;=\gamma\tau\)">\(\tau&#x27;=\gamma\tau\)</span> as in (1.3). Expressing its images in the target basis gives
+<span class="math math-display" data-tex="\[
+ \alpha=a-c\tau&#x27;,\qquad \alpha\tau=-b+d\tau&#x27;,
+\]">\[
+ \alpha=a-c\tau&#x27;,\qquad \alpha\tau=-b+d\tau&#x27;,
+\]</span>
+<span class="math math-display" data-tex="\[
+ \alpha P_\tau=aP_{\tau&#x27;}-cQ_{\tau&#x27;},\qquad
+ \alpha Q_\tau=-bP_{\tau&#x27;}+dQ_{\tau&#x27;}.
+ \tag{4.5}
+\]">\[
+ \alpha P_\tau=aP_{\tau&#x27;}-cQ_{\tau&#x27;},\qquad
+ \alpha Q_\tau=-bP_{\tau&#x27;}+dQ_{\tau&#x27;}.
+ \tag{4.5}
+\]</span>
+It preserves <span class="math" data-tex="\(P\)">\(P\)</span> exactly when <span class="math" data-tex="\(a\equiv1,c\equiv0\pmod N\)">\(a\equiv1,c\equiv0\pmod N\)</span>, which by the determinant also forces <span class="math" data-tex="\(d\equiv1\)">\(d\equiv1\)</span>. These are exactly the conditions for <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span>.</p>
+<p>It preserves the cyclic subgroup generated by <span class="math" data-tex="\(P\)">\(P\)</span> exactly when <span class="math" data-tex="\(c\equiv0\)">\(c\equiv0\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> is a unit modulo <span class="math" data-tex="\(N\)">\(N\)</span>. The latter follows from determinant one when <span class="math" data-tex="\(c\equiv0\)">\(c\equiv0\)</span>, so the group is <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>. It preserves the full ordered basis exactly when <span class="math" data-tex="\(a,d\equiv1\)">\(a,d\equiv1\)</span>, <span class="math" data-tex="\(b,c\equiv0\)">\(b,c\equiv0\)</span>, namely <span class="math" data-tex="\(\Gamma(N)\)">\(\Gamma(N)\)</span>. Thus the maps descend to the stated quotients and are injective. Together with the first part this proves (4.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are moduli sets of smooth curves; adding cusps gives the compact curves of the earlier course. The isomorphisms <span class="math" data-tex="\((E,P)\cong(E,-P)\)">\((E,P)\cong(E,-P)\)</span> and
+<span class="math" data-tex="\((E,(P,Q))\cong(E,(-P,-Q))\)">\((E,(P,Q))\cong(E,(-P,-Q))\)</span> are allowed, since negation acts on the curve too. They are already accounted for by the quotient, whose action on <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span> factors through the projective group. An automorphism preserving a given marking is the corresponding stabilizer; the proof does not assume its absence.</p>
+<p>If the Weil pairing value is left unspecified, the determinant of an ordered torsion basis can be any unit <span class="math" data-tex="\(u\)">\(u\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>. Its value is <span class="math" data-tex="\(\zeta_N^u\)">\(\zeta_N^u\)</span>, and isomorphisms preserve it. For each <span class="math" data-tex="\(u\)">\(u\)</span>, replacing <span class="math" data-tex="\(Q\)">\(Q\)</span> by <span class="math" data-tex="\(u^{-1}Q\)">\(u^{-1}Q\)</span> reduces the moduli problem to (4.4). There are therefore <span class="math" data-tex="\(\varphi(N)\)">\(\varphi(N)\)</span> disjoint copies of <span class="math" data-tex="\(Y(N)\)">\(Y(N)\)</span>, rather than one connected component.</p>
+<h2 id="5-hecke-correspondences-and-invariant-differentials">5. Hecke correspondences and invariant differentials</h2>
+<p>Let <span class="math" data-tex="\(p\)">\(p\)</span> be prime. A subgroup <span class="math" data-tex="\(D\subset\mathbb C/\Lambda\)">\(D\subset\mathbb C/\Lambda\)</span> of order <span class="math" data-tex="\(p\)">\(p\)</span> is the image of a lattice <span class="math" data-tex="\(\Lambda&#x27;\supset\Lambda\)">\(\Lambda&#x27;\supset\Lambda\)</span> with
+<span class="math" data-tex="\([\Lambda&#x27;:\Lambda]=p\)">\([\Lambda&#x27;:\Lambda]=p\)</span>. The quotient map is
+<span class="math math-display" data-tex="\[
+ q_D:E_\Lambda\longrightarrow E_\Lambda/D=E_{\Lambda&#x27;},
+ \qquad z+\Lambda\longmapsto z+\Lambda&#x27;.
+ \tag{5.1}
+\]">\[
+ q_D:E_\Lambda\longrightarrow E_\Lambda/D=E_{\Lambda&#x27;},
+ \qquad z+\Lambda\longmapsto z+\Lambda&#x27;.
+ \tag{5.1}
+\]</span>
+It is an isogeny of degree <span class="math" data-tex="\(p\)">\(p\)</span>, by (1.2). Its differential is the identity, so <span class="math" data-tex="\(q_D^*dz=dz\)">\(q_D^*dz=dz\)</span>.</p>
+<p>If <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span> has order <span class="math" data-tex="\(N\)">\(N\)</span>, its intersection with <span class="math" data-tex="\(D\)">\(D\)</span> is trivial. Therefore <span class="math" data-tex="\(q_D(C)\)">\(q_D(C)\)</span> is again cyclic of order <span class="math" data-tex="\(N\)">\(N\)</span>. The geometric correspondence sends
+<span class="math math-display" data-tex="\[
+ (E,C)\longmapsto\sum_{\substack{D\subset E\\|D|=p}}
+       (E/D,q_D(C)).
+ \tag{5.2}
+\]">\[
+ (E,C)\longmapsto\sum_{\substack{D\subset E\\|D|=p}}
+       (E/D,q_D(C)).
+ \tag{5.2}
+\]</span>
+Each subgroup is counted once. If <span class="math" data-tex="\(\omega\ne0\)">\(\omega\ne0\)</span> is invariant, there is a unique invariant differential <span class="math" data-tex="\(\omega_D\)">\(\omega_D\)</span> on <span class="math" data-tex="\(E/D\)">\(E/D\)</span> satisfying <span class="math" data-tex="\(q_D^*\omega_D=\omega\)">\(q_D^*\omega_D=\omega\)</span>; this follows directly from their one-dimensional differential spaces and the nonzero multiplier of the isogeny.</p>
+<p>For an integer <span class="math" data-tex="\(k\)">\(k\)</span>, a weight-<span class="math" data-tex="\(k\)">\(k\)</span> modular form can be expressed as a function on marked elliptic curves with a differential:
+<span class="math math-display" data-tex="\[
+ F(E,C,\lambda\omega)=\lambda^{-k}F(E,C,\omega).
+ \tag{5.3}
+\]">\[
+ F(E,C,\lambda\omega)=\lambda^{-k}F(E,C,\omega).
+ \tag{5.3}
+\]</span>
+Omit <span class="math" data-tex="\(C\)">\(C\)</span> at level one. Such a function is invariant under isomorphisms of its data; it must vary holomorphically when the data are parametrized by <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, and it must satisfy the usual holomorphy condition in every cusp coordinate. These analytic requirements are part of the definition, not consequences of the weight law alone.</p>
+<p>Here is the dictionary. A differential identifies <span class="math" data-tex="\((E,\omega)\)">\((E,\omega)\)</span> with
+<span class="math" data-tex="\((\mathbb C/\Lambda,dz)\)">\((\mathbb C/\Lambda,dz)\)</span> for an actual lattice, by Section 3. Scaling <span class="math" data-tex="\(\omega\)">\(\omega\)</span> scales the lattice, so (5.3) is precisely
+<span class="math" data-tex="\(F(c\Lambda,cC)=c^{-k}F(\Lambda,C)\)">\(F(c\Lambda,cC)=c^{-k}F(\Lambda,C)\)</span>.
+For the canonical cyclic marking, put
+<span class="math math-display" data-tex="\[
+ f(\tau)=F(E_\tau,\langle P_\tau\rangle,dz).
+ \tag{5.4}
+\]">\[
+ f(\tau)=F(E_\tau,\langle P_\tau\rangle,dz).
+ \tag{5.4}
+\]</span>
+Using (4.5) for <span class="math" data-tex="\(\gamma\in\Gamma_0(N)\)">\(\gamma\in\Gamma_0(N)\)</span>, and
+<span class="math" data-tex="\(\alpha^*dw=\alpha\,dz\)">\(\alpha^*dw=\alpha\,dz\)</span>, gives
+<span class="math" data-tex="\(f(\gamma\tau)=(c\tau+d)^kf(\tau)\)">\(f(\gamma\tau)=(c\tau+d)^kf(\tau)\)</span>.
+Conversely that transformation law makes the function defined from (5.4) independent of any presentation, since Theorem 4.1 describes all changes of presentation. The identical argument works for point and full-basis markings with their respective groups. Holomorphy and cusp conditions translate to those in the earlier analytic definition of modular forms.</p>
+<p><strong>Theorem 5.1 (the normalized correspondence).</strong> On level-one forms, and on forms for <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> with <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>, the earlier normalized Hecke operator is
+<span class="math math-display" data-tex="\[
+ (T_pF)(E,C,\omega)
+   =\frac1p\sum_{\substack{D\subset E\\|D|=p}}
+                    F(E/D,q_D(C),\omega_D).
+ \tag{5.5}
+\]">\[
+ (T_pF)(E,C,\omega)
+   =\frac1p\sum_{\substack{D\subset E\\|D|=p}}
+                    F(E/D,q_D(C),\omega_D).
+ \tag{5.5}
+\]</span>
+In canonical coordinates it gives
+<span class="math math-display" data-tex="\[
+ T_pf(\tau)=p^{k-1}f(p\tau)
+             +\frac1p\sum_{b=0}^{p-1}f((\tau+b)/p).
+ \tag{5.6}
+\]">\[
+ T_pf(\tau)=p^{k-1}f(p\tau)
+             +\frac1p\sum_{b=0}^{p-1}f((\tau+b)/p).
+ \tag{5.6}
+\]</span></p>
+<p><strong>Proof.</strong>
+The <span class="math" data-tex="\(p\)">\(p\)</span>-torsion is the two-dimensional vector space
+<span class="math" data-tex="\(p^{-1}\Lambda_\tau/\Lambda_\tau\)">\(p^{-1}\Lambda_\tau/\Lambda_\tau\)</span>. Its lines are
+<span class="math math-display" data-tex="\[
+ D_\infty=\langle1/p\rangle,\qquad
+ D_b=\langle(\tau+b)/p\rangle\quad(0\le b&lt;p).
+ \tag{5.7}
+\]">\[
+ D_\infty=\langle1/p\rangle,\qquad
+ D_b=\langle(\tau+b)/p\rangle\quad(0\le b&lt;p).
+ \tag{5.7}
+\]</span>
+For <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span>, the quotient lattice is
+<span class="math" data-tex="\(\mathbb Z/p+\mathbb Z\tau=p^{-1}\Lambda_{p\tau}\)">\(\mathbb Z/p+\mathbb Z\tau=p^{-1}\Lambda_{p\tau}\)</span>.
+Multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> identifies this quotient with <span class="math" data-tex="\(E_{p\tau}\)">\(E_{p\tau}\)</span>. It pulls the target differential back to <span class="math" data-tex="\(p\,dz\)">\(p\,dz\)</span>, so the differential <span class="math" data-tex="\(dz\)">\(dz\)</span> on the quotient corresponds to <span class="math" data-tex="\(dz/p\)">\(dz/p\)</span> on <span class="math" data-tex="\(E_{p\tau}\)">\(E_{p\tau}\)</span>. By (5.3) its value is <span class="math" data-tex="\(p^kf(p\tau)\)">\(p^kf(p\tau)\)</span>. The image cyclic marking is generated by <span class="math" data-tex="\(p/N\)">\(p/N\)</span> in <span class="math" data-tex="\(E_{p\tau}\)">\(E_{p\tau}\)</span>, which generates the same subgroup as <span class="math" data-tex="\(1/N\)">\(1/N\)</span> because <span class="math" data-tex="\(p\)">\(p\)</span> is invertible modulo <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>For <span class="math" data-tex="\(D_b\)">\(D_b\)</span>, the quotient lattice is exactly
+<span class="math" data-tex="\(\Lambda_{(\tau+b)/p}\)">\(\Lambda_{(\tau+b)/p}\)</span>: it contains <span class="math" data-tex="\(\tau=p((\tau+b)/p)-b\)">\(\tau=p((\tau+b)/p)-b\)</span>. Its differential and cyclic marking are already the canonical ones, so its value is <span class="math" data-tex="\(f((\tau+b)/p)\)">\(f((\tau+b)/p)\)</span>. Summing these values and dividing by <span class="math" data-tex="\(p\)">\(p\)</span> proves (5.6), the formula in the earlier Hecke lessons.</p>
+<p>To check the sublattice description independently, associate to <span class="math" data-tex="\(\Lambda&#x27;\)">\(\Lambda&#x27;\)</span> the lattice <span class="math" data-tex="\(M=p\Lambda&#x27;\subset\Lambda\)">\(M=p\Lambda&#x27;\subset\Lambda\)</span>. Since every element of <span class="math" data-tex="\(\Lambda&#x27;/\Lambda\)">\(\Lambda&#x27;/\Lambda\)</span> is killed by <span class="math" data-tex="\(p\)">\(p\)</span>, this is indeed a sublattice, and its index in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is <span class="math" data-tex="\(p\)">\(p\)</span>. Conversely an index-<span class="math" data-tex="\(p\)">\(p\)</span> sublattice contains <span class="math" data-tex="\(p\Lambda\)">\(p\Lambda\)</span>, so <span class="math" data-tex="\(\Lambda&#x27;=p^{-1}M\)">\(\Lambda&#x27;=p^{-1}M\)</span> is the inverse construction. Homogeneity gives
+<span class="math math-display" data-tex="\[
+ \frac1pF(\Lambda&#x27;,C&#x27;)=p^{k-1}F(p\Lambda&#x27;,pC&#x27;).
+ \tag{5.8}
+\]">\[
+ \frac1pF(\Lambda&#x27;,C&#x27;)=p^{k-1}F(p\Lambda&#x27;,pC&#x27;).
+ \tag{5.8}
+\]</span>
+Thus the quotient average equals <span class="math" data-tex="\(p^{k-1}\)">\(p^{k-1}\)</span> times the sum over index-<span class="math" data-tex="\(p\)">\(p\)</span> sublattices, with the transported level marking. This is exactly the normalization of the lattice operator in <a href="LG-MF-08.html">Hecke operators of level one</a>, equations (1.1)–(1.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a point marking, the first quotient term retains the point <span class="math" data-tex="\(p/N\)">\(p/N\)</span>, rather than replacing it by <span class="math" data-tex="\(1/N\)">\(1/N\)</span>. That change of generator is a diamond operator, as in the <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span> Hecke theory. For a cyclic marking it has no effect. At a prime dividing the level, injectivity on <span class="math" data-tex="\(C\)">\(C\)</span> fails for some subgroups; (5.2) and (5.5) have deliberately assumed <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>.</p>
+<h3 id="5-1-all-finite-kernels">5.1. All finite kernels</h3>
+<p><strong>Corollary 5.2 (all indices prime to the level).</strong> Let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(\gcd(n,N)=1\)">\(\gcd(n,N)=1\)</span>. On level-one forms, with the marking omitted, and on forms for <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ (T_nF)(E,C,\omega)
+ &amp;=\frac1n\sum_{\substack{D\subset E\\|D|=n}}
+                F(E/D,q_D(C),\omega_D),\\
+ q_D^*\omega_D&amp;=\omega.
+\end{aligned}
+ \tag{5.9}
+\]">\[
+\begin{aligned}
+ (T_nF)(E,C,\omega)
+ &amp;=\frac1n\sum_{\substack{D\subset E\\|D|=n}}
+                F(E/D,q_D(C),\omega_D),\\
+ q_D^*\omega_D&amp;=\omega.
+\end{aligned}
+ \tag{5.9}
+\]</span>
+Every actual subgroup of order <span class="math" data-tex="\(n\)">\(n\)</span> occurs once, including noncyclic subgroups. Subgroups with isomorphic quotient curves remain separate terms.</p>
+<p><strong>Proof.</strong> Use the differential to present <span class="math" data-tex="\((E,\omega)\)">\((E,\omega)\)</span> as <span class="math" data-tex="\((\mathbb C/\Lambda,dz)\)">\((\mathbb C/\Lambda,dz)\)</span>. The inverse image of <span class="math" data-tex="\(D\)">\(D\)</span> in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> is a lattice <span class="math" data-tex="\(\Lambda&#x27;\supset\Lambda\)">\(\Lambda&#x27;\supset\Lambda\)</span> of index <span class="math" data-tex="\(n\)">\(n\)</span>. To see that it is a lattice, it is a union of <span class="math" data-tex="\(n\)">\(n\)</span> translates of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, so it is discrete and contains a real basis. Conversely such a superlattice gives the subgroup <span class="math" data-tex="\(D=\Lambda&#x27;/\Lambda\)">\(D=\Lambda&#x27;/\Lambda\)</span>. The quotient map is induced by the identity of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, so its transported differential is <span class="math" data-tex="\(dz\)">\(dz\)</span>, uniquely. Since the order of <span class="math" data-tex="\(D\cap C\)">\(D\cap C\)</span> divides both <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span>, this intersection is trivial and <span class="math" data-tex="\(q_D(C)\)">\(q_D(C)\)</span> remains cyclic of order <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>The finite group <span class="math" data-tex="\(\Lambda&#x27;/\Lambda\)">\(\Lambda&#x27;/\Lambda\)</span> is killed by its order <span class="math" data-tex="\(n\)">\(n\)</span>. Hence <span class="math" data-tex="\(M=n\Lambda&#x27;\subset\Lambda\)">\(M=n\Lambda&#x27;\subset\Lambda\)</span>, and
+<span class="math math-display" data-tex="\[
+ [\Lambda:M]
+ =\frac{[\Lambda&#x27;:n\Lambda&#x27;]}{[\Lambda&#x27;:\Lambda]}
+ =\frac{n^2}{n}=n.
+ \tag{5.10}
+\]">\[
+ [\Lambda:M]
+ =\frac{[\Lambda&#x27;:n\Lambda&#x27;]}{[\Lambda&#x27;:\Lambda]}
+ =\frac{n^2}{n}=n.
+ \tag{5.10}
+\]</span>
+Conversely, an index-<span class="math" data-tex="\(n\)">\(n\)</span> sublattice <span class="math" data-tex="\(M\)">\(M\)</span> contains <span class="math" data-tex="\(n\Lambda\)">\(n\Lambda\)</span>, by the same finite-group argument. Then <span class="math" data-tex="\(\Lambda&#x27;=n^{-1}M\)">\(\Lambda&#x27;=n^{-1}M\)</span> contains <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and has index <span class="math" data-tex="\(n\)">\(n\)</span> over it. These constructions are inverse. Scaling the target lattice and its image marking gives, with <span class="math" data-tex="\(C&#x27;=q_D(C)\)">\(C&#x27;=q_D(C)\)</span>,
+<span class="math math-display" data-tex="\[
+ \frac1nF(\Lambda&#x27;,C&#x27;)
+       =n^{k-1}F(n\Lambda&#x27;,nC&#x27;).
+ \tag{5.11}
+\]">\[
+ \frac1nF(\Lambda&#x27;,C&#x27;)
+       =n^{k-1}F(n\Lambda&#x27;,nC&#x27;).
+ \tag{5.11}
+\]</span>
+This includes the differential scaling specified by (5.3).</p>
+<p>For <span class="math" data-tex="\(\Lambda=\Lambda_\tau\)">\(\Lambda=\Lambda_\tau\)</span>, every index-<span class="math" data-tex="\(n\)">\(n\)</span> sublattice has a unique basis
+<span class="math math-display" data-tex="\[
+ M=\langle d,a\tau+b\rangle,\qquad
+ ad=n,\quad a,d&gt;0,\quad0\le b&lt;d.
+ \tag{5.12}
+\]">\[
+ M=\langle d,a\tau+b\rangle,\qquad
+ ad=n,\quad a,d&gt;0,\quad0\le b&lt;d.
+ \tag{5.12}
+\]</span>
+Indeed its projection to the <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-coordinate is <span class="math" data-tex="\(a\mathbb Z\)">\(a\mathbb Z\)</span>, and its intersection with the integer axis is <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span>. Choose an element with <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-coordinate <span class="math" data-tex="\(a\)">\(a\)</span> and reduce its integer coordinate to <span class="math" data-tex="\(b\)">\(b\)</span> modulo <span class="math" data-tex="\(d\)">\(d\)</span>. Subtracting its multiples from any element of <span class="math" data-tex="\(M\)">\(M\)</span> leaves a multiple of <span class="math" data-tex="\(d\)">\(d\)</span>. Thus these two vectors generate <span class="math" data-tex="\(M\)">\(M\)</span>; their determinant is <span class="math" data-tex="\(ad=n\)">\(ad=n\)</span>, and the projection, intersection and reduced coordinate prove uniqueness.</p>
+<p>Put <span class="math" data-tex="\(w=(a\tau+b)/d\)">\(w=(a\tau+b)/d\)</span>. Then <span class="math" data-tex="\(M=d\Lambda_w\)">\(M=d\Lambda_w\)</span> and <span class="math" data-tex="\(\Lambda&#x27;=a^{-1}\Lambda_w\)">\(\Lambda&#x27;=a^{-1}\Lambda_w\)</span>. Multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> identifies the quotient with <span class="math" data-tex="\(E_w\)">\(E_w\)</span>, carries its differential <span class="math" data-tex="\(dz\)">\(dz\)</span> to <span class="math" data-tex="\(dz/a\)">\(dz/a\)</span>, and carries its image marking to <span class="math" data-tex="\(\langle a/N\rangle\)">\(\langle a/N\rangle\)</span>. Since <span class="math" data-tex="\(a\)">\(a\)</span> divides <span class="math" data-tex="\(n\)">\(n\)</span>, it is prime to <span class="math" data-tex="\(N\)">\(N\)</span>; this is precisely the canonical cyclic subgroup <span class="math" data-tex="\(\langle1/N\rangle\)">\(\langle1/N\rangle\)</span>. The corresponding value before averaging is therefore <span class="math" data-tex="\(a^kf(w)\)">\(a^kf(w)\)</span>. Formula (5.9) becomes
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ T_nf(\tau)
+ &amp;=\frac1n\sum_{ad=n}a^k\sum_{b=0}^{d-1}
+                      f\!\left(\frac{a\tau+b}{d}\right)\\
+ &amp;=n^{k-1}\sum_{ad=n}d^{-k}\sum_{b=0}^{d-1}
+                      f\!\left(\frac{a\tau+b}{d}\right).
+\end{aligned}
+ \tag{5.13}
+\]">\[
+\begin{aligned}
+ T_nf(\tau)
+ &amp;=\frac1n\sum_{ad=n}a^k\sum_{b=0}^{d-1}
+                      f\!\left(\frac{a\tau+b}{d}\right)\\
+ &amp;=n^{k-1}\sum_{ad=n}d^{-k}\sum_{b=0}^{d-1}
+                      f\!\left(\frac{a\tau+b}{d}\right).
+\end{aligned}
+ \tag{5.13}
+\]</span>
+The factors agree because <span class="math" data-tex="\(n=ad\)">\(n=ad\)</span>. At level one this is exactly the full-index lattice formula (1.3) of the Hecke lesson.</p>
+<p>For the level comparison, write <span class="math" data-tex="\(f=\sum_{r\ge0}c_rq^r\)">\(f=\sum_{r\ge0}c_rq^r\)</span>. In (5.13) the finite <span class="math" data-tex="\(b\)">\(b\)</span>-sum is zero unless <span class="math" data-tex="\(d\mid r\)">\(d\mid r\)</span>, when it equals <span class="math" data-tex="\(d\)">\(d\)</span>. A term contributing to <span class="math" data-tex="\(q^m\)">\(q^m\)</span> consequently has <span class="math" data-tex="\(r=d\ell\)">\(r=d\ell\)</span> and <span class="math" data-tex="\(a\ell=m\)">\(a\ell=m\)</span>; its factor is <span class="math" data-tex="\(a^k d/n=a^{k-1}\)">\(a^k d/n=a^{k-1}\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ c_m(T_nf)=\sum_{a\mid\gcd(m,n)}a^{k-1}c_{mn/a^2},
+ \qquad \gcd(0,n)=n.
+ \tag{5.14}
+\]">\[
+ c_m(T_nf)=\sum_{a\mid\gcd(m,n)}a^{k-1}c_{mn/a^2},
+ \qquad \gcd(0,n)=n.
+ \tag{5.14}
+\]</span>
+The Fourier expansions converge absolutely at positive height, justifying these finite regroupings. Formula (5.14), including its constant term, is Theorem 3.1 of the <span class="math" data-tex="\(\Gamma_0/\Gamma_1\)">\(\Gamma_0/\Gamma_1\)</span> Hecke lesson with trivial character and <span class="math" data-tex="\(n\)">\(n\)</span> prime to <span class="math" data-tex="\(N\)">\(N\)</span>. The expression (5.13) and that already defined operator therefore agree near infinity and, by holomorphy and the identity theorem, throughout <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>. This also supplies modularity and holomorphy at every cusp from that theorem. At level one they follow from the Hecke lesson's Lemma 1.1. ∎</p>
+<p>For a point marking the same normalization carries the image point to <span class="math" data-tex="\(a/N\)">\(a/N\)</span>. That point retains the diamond action; identifying its cyclic span with <span class="math" data-tex="\(\langle1/N\rangle\)">\(\langle1/N\rangle\)</span> does not identify the points. The coprimality assumption in (5.9) also ensures that the image level marking keeps its order.</p>
+<h3 id="5-2-the-noncyclic-kernel-at-a-prime-square">5.2. The noncyclic kernel at a prime square</h3>
+<p>Let <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>. Among order-<span class="math" data-tex="\(p^2\)">\(p^2\)</span> subgroups, one is
+<span class="math" data-tex="\(E[p]=p^{-1}\Lambda/\Lambda\)">\(E[p]=p^{-1}\Lambda/\Lambda\)</span>. Its quotient lattice is <span class="math" data-tex="\(p^{-1}\Lambda\)">\(p^{-1}\Lambda\)</span>. Multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> identifies the quotient with <span class="math" data-tex="\(E\)">\(E\)</span>, carries the quotient differential to <span class="math" data-tex="\(\omega/p\)">\(\omega/p\)</span>, and carries the image cyclic subgroup to <span class="math" data-tex="\(pC=C\)">\(pC=C\)</span>. Its term in (5.9) is therefore
+<span class="math math-display" data-tex="\[
+ \frac1{p^2}F(E,C,\omega/p)=p^{k-2}F(E,C,\omega).
+ \tag{5.15}
+\]">\[
+ \frac1{p^2}F(E,C,\omega/p)=p^{k-2}F(E,C,\omega).
+ \tag{5.15}
+\]</span>
+Every other subgroup of order <span class="math" data-tex="\(p^2\)">\(p^2\)</span> is cyclic: if it contains an element of order <span class="math" data-tex="\(p^2\)">\(p^2\)</span>, that element generates it; otherwise every element is killed by <span class="math" data-tex="\(p\)">\(p\)</span>, so the subgroup is contained in <span class="math" data-tex="\(E[p]\)">\(E[p]\)</span> and must equal it. Thus a sum restricted to cyclic kernels would omit exactly <span class="math" data-tex="\(p^{k-2}I\)">\(p^{k-2}I\)</span>.</p>
+<p>There are <span class="math" data-tex="\(1+p+p^2\)">\(1+p+p^2\)</span> order-<span class="math" data-tex="\(p^2\)">\(p^2\)</span> kernels, from (5.12) with <span class="math" data-tex="\((a,d)=(p^2,1),(p,p),(1,p^2)\)">\((a,d)=(p^2,1),(p,p),(1,p^2)\)</span>; the numbers of reduced choices of <span class="math" data-tex="\(b\)">\(b\)</span> are <span class="math" data-tex="\(1,p,p^2\)">\(1,p,p^2\)</span>. Exactly one is noncyclic, so there are <span class="math" data-tex="\(p^2+p\)">\(p^2+p\)</span> cyclic kernels. Each remains an actual subgroup regardless of target isomorphisms.</p>
+<p>A pair of successive order-<span class="math" data-tex="\(p\)">\(p\)</span> quotients determines a kernel <span class="math" data-tex="\(K\)">\(K\)</span> of order <span class="math" data-tex="\(p^2\)">\(p^2\)</span> and an intermediate subgroup <span class="math" data-tex="\(D\subset K\)">\(D\subset K\)</span> of order <span class="math" data-tex="\(p\)">\(p\)</span>. Conversely <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> determine the pair, using the order-<span class="math" data-tex="\(p\)">\(p\)</span> subgroup <span class="math" data-tex="\(K/D\)">\(K/D\)</span> of <span class="math" data-tex="\(E/D\)">\(E/D\)</span>. The final quotient differential is independent of <span class="math" data-tex="\(D\)">\(D\)</span>: its pullback to <span class="math" data-tex="\(E\)">\(E\)</span> is <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, which characterizes it uniquely. The image cyclic marking is also the same for every intermediate choice.</p>
+<p>A cyclic <span class="math" data-tex="\(K\)">\(K\)</span> has one subgroup of order <span class="math" data-tex="\(p\)">\(p\)</span>. For <span class="math" data-tex="\(K=E[p]\)">\(K=E[p]\)</span>, the choices are the <span class="math" data-tex="\(p+1\)">\(p+1\)</span> lines in the two-dimensional <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>-space. Each chain has averaging factor <span class="math" data-tex="\(1/p^2\)">\(1/p^2\)</span>. Compared with the once-per-kernel average for <span class="math" data-tex="\(T_{p^2}\)">\(T_{p^2}\)</span>, the composite <span class="math" data-tex="\(T_p^2\)">\(T_p^2\)</span> therefore has <span class="math" data-tex="\(p\)">\(p\)</span> extra copies of (5.15), giving
+<span class="math math-display" data-tex="\[
+ T_p^2=T_{p^2}+p^{k-1}I.
+ \tag{5.16}
+\]">\[
+ T_p^2=T_{p^2}+p^{k-1}I.
+ \tag{5.16}
+\]</span>
+This is the good-prime relation at full level and with a cyclic level marking. For a point marking the scalar comparison retains the diamond <span class="math" data-tex="\([p]\)">\([p]\)</span>, as in the earlier Hecke theory.</p>
+<p>As a numerical normalization check, take <span class="math" data-tex="\(k=4\)">\(k=4\)</span> and <span class="math" data-tex="\(E_4\)">\(E_4\)</span> at level one. The ring lesson's Theorem 2.2 gives <span class="math" data-tex="\(M_4=\mathbb C E_4\)">\(M_4=\mathbb C E_4\)</span>, and <span class="math" data-tex="\(E_4\)">\(E_4\)</span> has constant term one. Since <span class="math" data-tex="\(T_n\)">\(T_n\)</span> preserves <span class="math" data-tex="\(M_4\)">\(M_4\)</span>, its constant coefficient in (5.14) determines the eigenvalue:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ T_2E_4&amp;=(1+2^3)E_4=9E_4,\\
+ T_4E_4&amp;=(1+2^3+4^3)E_4=73E_4.
+\end{aligned}
+ \tag{5.17}
+\]">\[
+\begin{aligned}
+ T_2E_4&amp;=(1+2^3)E_4=9E_4,\\
+ T_4E_4&amp;=(1+2^3+4^3)E_4=73E_4.
+\end{aligned}
+ \tag{5.17}
+\]</span>
+Hence <span class="math" data-tex="\(9^2=73+8\)">\(9^2=73+8\)</span>, agreeing with (5.16). The unique noncyclic kernel contributes <span class="math" data-tex="\(2^{4-2}E_4=4E_4\)">\(2^{4-2}E_4=4E_4\)</span>, so the six cyclic kernels together contribute <span class="math" data-tex="\((73-4)E_4=69E_4\)">\((73-4)E_4=69E_4\)</span>. The two extra copies in the composite account for <span class="math" data-tex="\(2\cdot4E_4=8E_4\)">\(2\cdot4E_4=8E_4\)</span>.</p>
+<h2 id="6-two-explicit-families-of-examples">6. Two explicit families of examples</h2>
+<p>For the square lattice <span class="math" data-tex="\(\Lambda_i=\mathbb Z[i]\)">\(\Lambda_i=\mathbb Z[i]\)</span>, multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> permutes the nonzero lattice points. Hence
+<span class="math math-display" data-tex="\[
+ G_6(\Lambda_i)=i^{-6}G_6(\Lambda_i)=-G_6(\Lambda_i),
+\]">\[
+ G_6(\Lambda_i)=i^{-6}G_6(\Lambda_i)=-G_6(\Lambda_i),
+\]</span>
+so <span class="math" data-tex="\(g_3=0\)">\(g_3=0\)</span>. Nonvanishing of <span class="math" data-tex="\(D\)">\(D\)</span> forces <span class="math" data-tex="\(g_2\ne0\)">\(g_2\ne0\)</span>, and <span class="math" data-tex="\(j=1728\)">\(j=1728\)</span>.
+Choose <span class="math" data-tex="\(c^4=g_2(\Lambda_i)/4\)">\(c^4=g_2(\Lambda_i)/4\)</span>. The lattice <span class="math" data-tex="\(c\Lambda_i\)">\(c\Lambda_i\)</span> has invariants <span class="math" data-tex="\(g_2=4,g_3=0\)">\(g_2=4,g_3=0\)</span>, and
+<span class="math math-display" data-tex="\[
+ z\longmapsto\bigl(\wp_{c\Lambda_i}(z),
+                      \wp&#x27;_{c\Lambda_i}(z)/2\bigr)
+\]">\[
+ z\longmapsto\bigl(\wp_{c\Lambda_i}(z),
+                      \wp&#x27;_{c\Lambda_i}(z)/2\bigr)
+\]</span>
+identifies its torus with <span class="math" data-tex="\(Y^2=x^3-x\)">\(Y^2=x^3-x\)</span>. Scaling the torus identifies it with <span class="math" data-tex="\(\mathbb C/\mathbb Z[i]\)">\(\mathbb C/\mathbb Z[i]\)</span>. The curve's formula
+<span class="math" data-tex="\(j=1728\,4A^3/(4A^3+27B^2)\)">\(j=1728\,4A^3/(4A^3+27B^2)\)</span>, with <span class="math" data-tex="\(A=-1,B=0\)">\(A=-1,B=0\)</span>, also gives <span class="math" data-tex="\(1728\)">\(1728\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\rho=e^{2\pi i/3}\)">\(\rho=e^{2\pi i/3}\)</span>. Multiplication by <span class="math" data-tex="\(\rho\)">\(\rho\)</span> preserves
+<span class="math" data-tex="\(\Lambda_\rho=\mathbb Z+\mathbb Z\rho\)">\(\Lambda_\rho=\mathbb Z+\mathbb Z\rho\)</span>, since <span class="math" data-tex="\(\rho^2=-1-\rho\)">\(\rho^2=-1-\rho\)</span>. Now
+<span class="math math-display" data-tex="\[
+ G_4(\Lambda_\rho)=\rho^{-4}G_4(\Lambda_\rho)
+                 =\rho^2G_4(\Lambda_\rho),
+\]">\[
+ G_4(\Lambda_\rho)=\rho^{-4}G_4(\Lambda_\rho)
+                 =\rho^2G_4(\Lambda_\rho),
+\]</span>
+so <span class="math" data-tex="\(g_2=0\)">\(g_2=0\)</span>. Therefore <span class="math" data-tex="\(g_3\ne0\)">\(g_3\ne0\)</span> and <span class="math" data-tex="\(j=0\)">\(j=0\)</span>.
+Choose <span class="math" data-tex="\(c^6=g_3(\Lambda_\rho)/4\)">\(c^6=g_3(\Lambda_\rho)/4\)</span>. The corresponding parametrization with <span class="math" data-tex="\(Y=\wp&#x27;/2\)">\(Y=\wp&#x27;/2\)</span> gives <span class="math" data-tex="\(Y^2=x^3-1\)">\(Y^2=x^3-1\)</span>. It is isomorphic to
+<span class="math" data-tex="\(\mathbb C/\mathbb Z[\rho]\)">\(\mathbb C/\mathbb Z[\rho]\)</span>, and the short Weierstrass formula with <span class="math" data-tex="\(A=0,B=-1\)">\(A=0,B=-1\)</span> gives <span class="math" data-tex="\(j=0\)">\(j=0\)</span>. The choices of fourth or sixth roots change the homothety, not the isomorphism class.</p>
+<p>For the second example, (5.7) lists all <span class="math" data-tex="\(p+1\)">\(p+1\)</span> subgroups, not just some of them. A nonzero vector <span class="math" data-tex="\((r,s)\)">\((r,s)\)</span> over <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> either has <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, giving <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span>, or can be scaled to <span class="math" data-tex="\((b,1)\)">\((b,1)\)</span>, giving <span class="math" data-tex="\(D_b\)">\(D_b\)</span>. Distinct values of <span class="math" data-tex="\(b\)">\(b\)</span> give distinct lines. The associated index-<span class="math" data-tex="\(p\)">\(p\)</span> sublattices are
+<span class="math math-display" data-tex="\[
+ M_\infty=\mathbb Z+\mathbb Zp\tau,\qquad
+ M_b=\mathbb Zp+\mathbb Z(\tau+b).
+ \tag{6.1}
+\]">\[
+ M_\infty=\mathbb Z+\mathbb Zp\tau,\qquad
+ M_b=\mathbb Zp+\mathbb Z(\tau+b).
+ \tag{6.1}
+\]</span>
+In coordinates relative to <span class="math" data-tex="\((1,\tau)\)">\((1,\tau)\)</span>, the first has determinant <span class="math" data-tex="\(p\)">\(p\)</span>, as does each of the other lattices. The quotient-to-sublattice bijection in the proof of Theorem 5.1 proves completeness and uniqueness.</p>
+<p>For example, at <span class="math" data-tex="\(p=3\)">\(p=3\)</span> the four subgroups have generators
+<span class="math" data-tex="\(1/3,\tau/3,(\tau+1)/3,(\tau+2)/3\)">\(1/3,\tau/3,(\tau+1)/3,(\tau+2)/3\)</span>, and their four sublattices are
+<span class="math math-display" data-tex="\[
+ \langle1,3\tau\rangle,\quad
+ \langle3,\tau\rangle,\quad
+ \langle3,\tau+1\rangle,\quad
+ \langle3,\tau+2\rangle.
+\]">\[
+ \langle1,3\tau\rangle,\quad
+ \langle3,\tau\rangle,\quad
+ \langle3,\tau+1\rangle,\quad
+ \langle3,\tau+2\rangle.
+\]</span>
+At the square lattice the first two quotients happen to be isomorphic: the parameters <span class="math" data-tex="\(3i\)">\(3i\)</span> and <span class="math" data-tex="\(i/3\)">\(i/3\)</span> differ by <span class="math" data-tex="\(\tau\mapsto-1/\tau\)">\(\tau\mapsto-1/\tau\)</span>.
+They are still different subgroups and both contribute to the correspondence. Counting only distinct target isomorphism classes would lose this multiplicity.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Show that <span class="math" data-tex="\(j(\mathbb C/\mathbb Z[i])=1728\)">\(j(\mathbb C/\mathbb Z[i])=1728\)</span>.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Compute the Laurent expansion of <span class="math" data-tex="\(\wp_\Lambda\)">\(\wp_\Lambda\)</span> through <span class="math" data-tex="\(z^4\)">\(z^4\)</span>, and deduce the constants <span class="math" data-tex="\(g_2,g_3\)">\(g_2,g_3\)</span> in its differential equation.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Prove the bijection
+<span class="math" data-tex="\(\Gamma_1(N)\backslash\mathfrak H\leftrightarrow\{(E,P):\operatorname{ord}P=N\}/\cong\)">\(\Gamma_1(N)\backslash\mathfrak H\leftrightarrow\{(E,P):\operatorname{ord}P=N\}/\cong\)</span>.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Prove the analogous bijection for <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> and cyclic subgroups of order <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Show that the normalized <span class="math" data-tex="\(T_p\)">\(T_p\)</span> on modular forms is the correspondence on pairs <span class="math" data-tex="\((E,\omega)\)">\((E,\omega)\)</span>, keeping track of the differential and every factor of <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> For <span class="math" data-tex="\(E_\tau=\mathbb C/\Lambda_\tau\)">\(E_\tau=\mathbb C/\Lambda_\tau\)</span>, list all actual subgroups of order four, identify the noncyclic one, and compute its contribution to <span class="math" data-tex="\(T_4\)">\(T_4\)</span> for weight <span class="math" data-tex="\(k\)">\(k\)</span>. Use intermediate subgroups to deduce <span class="math" data-tex="\(T_2^2=T_4+2^{k-1}I\)">\(T_2^2=T_4+2^{k-1}I\)</span>. At cyclic level <span class="math" data-tex="\(N\)">\(N\)</span>, assume <span class="math" data-tex="\(N\)">\(N\)</span> odd and retain the transported marking and differential.</p>
+</li>
+</ol>
+<h2 id="8-complete-solutions">8. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>Reindex the absolutely convergent <span class="math" data-tex="\(G_6\)">\(G_6\)</span> sum by multiplication by <span class="math" data-tex="\(i\)">\(i\)</span>:
+<span class="math math-display" data-tex="\[
+ G_6(\mathbb Z[i])=\sum_{\lambda\ne0}(i\lambda)^{-6}
+                 =-G_6(\mathbb Z[i]).
+\]">\[
+ G_6(\mathbb Z[i])=\sum_{\lambda\ne0}(i\lambda)^{-6}
+                 =-G_6(\mathbb Z[i]).
+\]</span>
+It vanishes. Thus <span class="math" data-tex="\(g_3=0\)">\(g_3=0\)</span>; Theorem 2.1 makes <span class="math" data-tex="\(g_2^3=D\ne0\)">\(g_2^3=D\ne0\)</span>. Substituting in (3.2) gives <span class="math" data-tex="\(j=1728\)">\(j=1728\)</span>. This uses the geometric lattice discriminant; no normalization of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> changes the ratio.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>For <span class="math" data-tex="\(|z|&lt;|\lambda|\)">\(|z|&lt;|\lambda|\)</span>,
+<span class="math math-display" data-tex="\[
+ (z-\lambda)^{-2}-\lambda^{-2}
+    =\sum_{m\ge1}(m+1)\lambda^{-m-2}z^m.
+\]">\[
+ (z-\lambda)^{-2}-\lambda^{-2}
+    =\sum_{m\ge1}(m+1)\lambda^{-m-2}z^m.
+\]</span>
+On a smaller disk the double series converges absolutely, by the bound used for (2.4), so it can be summed over <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Odd <span class="math" data-tex="\(m\)">\(m\)</span> cancel between <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(-\lambda\)">\(-\lambda\)</span>. The <span class="math" data-tex="\(m=2,4\)">\(m=2,4\)</span> terms give
+<span class="math" data-tex="\(\wp=z^{-2}+3G_4z^2+5G_6z^4+O(z^6)\)">\(\wp=z^{-2}+3G_4z^2+5G_6z^4+O(z^6)\)</span>.
+Differentiation gives
+<span class="math" data-tex="\(\wp&#x27;=-2z^{-3}+6G_4z+20G_6z^3+O(z^5)\)">\(\wp&#x27;=-2z^{-3}+6G_4z+20G_6z^3+O(z^5)\)</span>.
+Subtracting <span class="math" data-tex="\(4\wp^3\)">\(4\wp^3\)</span> from <span class="math" data-tex="\(\wp&#x27;^2\)">\(\wp&#x27;^2\)</span> yields
+<span class="math math-display" data-tex="\[
+ \wp&#x27;^2-4\wp^3=-60G_4z^{-2}-140G_6+O(z^2).
+\]">\[
+ \wp&#x27;^2-4\wp^3=-60G_4z^{-2}-140G_6+O(z^2).
+\]</span>
+A relation <span class="math" data-tex="\(\wp&#x27;^2=4\wp^3-a\wp-b\)">\(\wp&#x27;^2=4\wp^3-a\wp-b\)</span> must therefore have <span class="math" data-tex="\(a=60G_4\)">\(a=60G_4\)</span>, <span class="math" data-tex="\(b=140G_6\)">\(b=140G_6\)</span>. With these choices its difference is an entire periodic function with value zero at zero, hence identically zero. This proves the relation as well as computing its constants.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>Uniformize <span class="math" data-tex="\(E\)">\(E\)</span> by <span class="math" data-tex="\(\mathbb C/\Lambda\)">\(\mathbb C/\Lambda\)</span>. In an oriented basis write <span class="math" data-tex="\(P=(r\omega_1+s\omega_2)/N\)">\(P=(r\omega_1+s\omega_2)/N\)</span> modulo <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Exact order <span class="math" data-tex="\(N\)">\(N\)</span> means that <span class="math" data-tex="\((r,s)\)">\((r,s)\)</span> is primitive modulo <span class="math" data-tex="\(N\)">\(N\)</span>. Choose <span class="math" data-tex="\(r&#x27;,s&#x27;\)">\(r&#x27;,s&#x27;\)</span> with <span class="math" data-tex="\(rs&#x27;-sr&#x27;=1\pmod N\)">\(rs&#x27;-sr&#x27;=1\pmod N\)</span>, and lift the resulting determinant-one matrix to <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span> by the owned congruence lifting lemma. Its first column defines an actual lattice basis vector <span class="math" data-tex="\(\omega&#x27;_1\)">\(\omega&#x27;_1\)</span> representing <span class="math" data-tex="\(NP\)">\(NP\)</span>; its second completes an oriented basis. With
+<span class="math" data-tex="\(\tau=\omega&#x27;_2/\omega&#x27;_1\)">\(\tau=\omega&#x27;_2/\omega&#x27;_1\)</span>, multiplication by <span class="math" data-tex="\(1/\omega&#x27;_1\)">\(1/\omega&#x27;_1\)</span> sends <span class="math" data-tex="\(P\)">\(P\)</span> to <span class="math" data-tex="\(1/N\)">\(1/N\)</span>. Thus every marked curve has a canonical presentation.</p>
+<p>If two canonical presentations are isomorphic, Theorem 1.1 and oriented basis change give <span class="math" data-tex="\(\tau&#x27;=\gamma\tau\)">\(\tau&#x27;=\gamma\tau\)</span> and multiplier <span class="math" data-tex="\((c\tau+d)^{-1}\)">\((c\tau+d)^{-1}\)</span>. Formula (4.5) says that <span class="math" data-tex="\(1/N\)">\(1/N\)</span> maps to
+<span class="math" data-tex="\((a-c\tau&#x27;)/N\)">\((a-c\tau&#x27;)/N\)</span>. Equality to <span class="math" data-tex="\(1/N\)">\(1/N\)</span> modulo <span class="math" data-tex="\(\Lambda_{\tau&#x27;}\)">\(\Lambda_{\tau&#x27;}\)</span> is equivalent to
+<span class="math" data-tex="\(a-1\equiv0,c\equiv0\pmod N\)">\(a-1\equiv0,c\equiv0\pmod N\)</span>, since <span class="math" data-tex="\(1,\tau&#x27;\)">\(1,\tau&#x27;\)</span> are a real basis and an integral lattice basis. The determinant then gives <span class="math" data-tex="\(d\equiv1\)">\(d\equiv1\)</span>.
+Consequently <span class="math" data-tex="\(\gamma\in\Gamma_1(N)\)">\(\gamma\in\Gamma_1(N)\)</span>. Conversely these congruences make the homothety preserve the marking. The canonical map is therefore well-defined, surjective and injective on the stated quotient.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>Choose a generator <span class="math" data-tex="\(P\)">\(P\)</span> of the given cyclic subgroup <span class="math" data-tex="\(C\)">\(C\)</span>; it has exact order <span class="math" data-tex="\(N\)">\(N\)</span>. The primitive-vector lifting construction in Solution 3 gives a normalized presentation with <span class="math" data-tex="\(C=\langle1/N\rangle\)">\(C=\langle1/N\rangle\)</span>.
+For two such presentations, a homothety is again described by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and sends the generator to
+<span class="math" data-tex="\(aP_{\tau&#x27;}-cQ_{\tau&#x27;}\)">\(aP_{\tau&#x27;}-cQ_{\tau&#x27;}\)</span>. It generates the target subgroup precisely when
+<span class="math" data-tex="\(c\equiv0\pmod N\)">\(c\equiv0\pmod N\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> is a unit modulo <span class="math" data-tex="\(N\)">\(N\)</span>. Indeed membership in that subgroup forces the second coordinate to vanish, and exact order forces the first coordinate to be a unit. Conversely those conditions send one cyclic subgroup onto the other. Determinant one makes <span class="math" data-tex="\(a\)">\(a\)</span> a unit automatically when <span class="math" data-tex="\(c\equiv0\)">\(c\equiv0\)</span>; hence the group is exactly <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>.</p>
+<p>Changing the chosen generator of <span class="math" data-tex="\(C\)">\(C\)</span> introduces no additional moduli points. It changes the primitive first column by multiplication by a unit modulo <span class="math" data-tex="\(N\)">\(N\)</span>, and the preceding criterion puts precisely these choices in one <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> orbit. This proves the cyclic-subgroup bijection for every positive integer <span class="math" data-tex="\(N\)">\(N\)</span>, including composite levels.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>Represent <span class="math" data-tex="\((E,\omega)\)">\((E,\omega)\)</span> as <span class="math" data-tex="\((\mathbb C/\Lambda,dz)\)">\((\mathbb C/\Lambda,dz)\)</span>. An order-<span class="math" data-tex="\(p\)">\(p\)</span> subgroup determines a superlattice <span class="math" data-tex="\(\Lambda&#x27;\)">\(\Lambda&#x27;\)</span>, with quotient differential <span class="math" data-tex="\(dz\)">\(dz\)</span>, because the quotient is induced by the identity on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Thus the normalized correspondence is
+<span class="math math-display" data-tex="\[
+ \frac1p\sum_{[\Lambda&#x27;:\Lambda]=p}F(\Lambda&#x27;).
+\]">\[
+ \frac1p\sum_{[\Lambda&#x27;:\Lambda]=p}F(\Lambda&#x27;).
+\]</span>
+Put <span class="math" data-tex="\(M=p\Lambda&#x27;\)">\(M=p\Lambda&#x27;\)</span>. Multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> has index <span class="math" data-tex="\(p^2\)">\(p^2\)</span> on a lattice, so <span class="math" data-tex="\(M\)">\(M\)</span> has index <span class="math" data-tex="\(p^2/p=p\)">\(p^2/p=p\)</span> in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. It is contained there because the quotient <span class="math" data-tex="\(\Lambda&#x27;/\Lambda\)">\(\Lambda&#x27;/\Lambda\)</span> is killed by <span class="math" data-tex="\(p\)">\(p\)</span>. Conversely every index-<span class="math" data-tex="\(p\)">\(p\)</span> sublattice contains <span class="math" data-tex="\(p\Lambda\)">\(p\Lambda\)</span>, producing the inverse superlattice <span class="math" data-tex="\(p^{-1}M\)">\(p^{-1}M\)</span>. Weight homogeneity gives
+<span class="math math-display" data-tex="\[
+ F(\Lambda&#x27;)=F(p^{-1}M)=p^kF(M).
+\]">\[
+ F(\Lambda&#x27;)=F(p^{-1}M)=p^kF(M).
+\]</span>
+The average is therefore <span class="math" data-tex="\(p^{k-1}\sum_{[\Lambda:M]=p}F(M)\)">\(p^{k-1}\sum_{[\Lambda:M]=p}F(M)\)</span>, exactly the normalized lattice Hecke sum.</p>
+<p>For <span class="math" data-tex="\(\Lambda=\Lambda_\tau\)">\(\Lambda=\Lambda_\tau\)</span>, the complete list (6.1) gives
+<span class="math math-display" data-tex="\[
+ F(M_\infty)=f(p\tau),\qquad
+ F(M_b)=p^{-k}f((\tau+b)/p).
+\]">\[
+ F(M_\infty)=f(p\tau),\qquad
+ F(M_b)=p^{-k}f((\tau+b)/p).
+\]</span>
+Multiplying by <span class="math" data-tex="\(p^{k-1}\)">\(p^{k-1}\)</span> yields (5.6).
+One can check the delicate first term directly: the quotient by
+<span class="math" data-tex="\(\langle1/p\rangle\)">\(\langle1/p\rangle\)</span> is <span class="math" data-tex="\(p^{-1}\Lambda_{p\tau}\)">\(p^{-1}\Lambda_{p\tau}\)</span>; its identification with <span class="math" data-tex="\(E_{p\tau}\)">\(E_{p\tau}\)</span> carries its differential to <span class="math" data-tex="\(dz/p\)">\(dz/p\)</span>, so its contribution before averaging is <span class="math" data-tex="\(p^kf(p\tau)\)">\(p^kf(p\tau)\)</span>. This verifies the differential factor independently. Both descriptions give the same operator.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>The sublattice parameters (5.12) for <span class="math" data-tex="\(n=4\)">\(n=4\)</span> are <span class="math" data-tex="\((a,d)=(4,1),(2,2),(1,4)\)">\((a,d)=(4,1),(2,2),(1,4)\)</span>. Dividing each sublattice by four gives its quotient superlattice. For <span class="math" data-tex="\((4,1)\)">\((4,1)\)</span> we obtain the cyclic subgroup <span class="math" data-tex="\(\langle1/4\rangle\)">\(\langle1/4\rangle\)</span>. For <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span>, the two choices <span class="math" data-tex="\(b=0,1\)">\(b=0,1\)</span> give respectively <span class="math" data-tex="\(E[2]=\langle1/2,\tau/2\rangle\)">\(E[2]=\langle1/2,\tau/2\rangle\)</span> and <span class="math" data-tex="\(\langle(1+2\tau)/4\rangle\)">\(\langle(1+2\tau)/4\rangle\)</span>. In the latter case the displayed element has order four and its double is <span class="math" data-tex="\(1/2\)">\(1/2\)</span> modulo <span class="math" data-tex="\(\Lambda_\tau\)">\(\Lambda_\tau\)</span>, so it generates the whole kernel. For <span class="math" data-tex="\((1,4)\)">\((1,4)\)</span> the four choices give <span class="math" data-tex="\(\langle(\tau+b)/4\rangle\)">\(\langle(\tau+b)/4\rangle\)</span>, <span class="math" data-tex="\(0\le b&lt;4\)">\(0\le b&lt;4\)</span>. Thus the complete list is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ &amp;\langle1/4\rangle,\quad
+   \langle(1+2\tau)/4\rangle,\\
+ &amp;\langle\tau/4\rangle,\quad
+   \langle(\tau+1)/4\rangle,\\
+ &amp;\langle(\tau+2)/4\rangle,\quad
+   \langle(\tau+3)/4\rangle,\\
+ &amp;E[2]=\langle1/2,\tau/2\rangle.
+\end{aligned}
+ \tag{8.1}
+\]">\[
+\begin{aligned}
+ &amp;\langle1/4\rangle,\quad
+   \langle(1+2\tau)/4\rangle,\\
+ &amp;\langle\tau/4\rangle,\quad
+   \langle(\tau+1)/4\rangle,\\
+ &amp;\langle(\tau+2)/4\rangle,\quad
+   \langle(\tau+3)/4\rangle,\\
+ &amp;E[2]=\langle1/2,\tau/2\rangle.
+\end{aligned}
+ \tag{8.1}
+\]</span>
+The six displayed cyclic generators have exact order four by their integral coordinates modulo four. Distinct sublattice parameters give distinct superlattices and hence distinct subgroups. This proves both completeness and distinctness. Only <span class="math" data-tex="\(E[2]\)">\(E[2]\)</span> is noncyclic, since its nonzero elements all have order two.</p>
+<p>For this kernel the quotient is <span class="math" data-tex="\(\mathbb C/(\Lambda_\tau/2)\)">\(\mathbb C/(\Lambda_\tau/2)\)</span>. The isomorphism to <span class="math" data-tex="\(E_\tau\)">\(E_\tau\)</span> given by multiplication by two carries its differential to <span class="math" data-tex="\(\omega/2\)">\(\omega/2\)</span>. With <span class="math" data-tex="\(N\)">\(N\)</span> odd it also carries the image cyclic marking to <span class="math" data-tex="\(2C=C\)">\(2C=C\)</span>. Weight homogeneity and the average <span class="math" data-tex="\(1/4\)">\(1/4\)</span> give the contribution <span class="math" data-tex="\(2^k/4=2^{k-2}\)">\(2^k/4=2^{k-2}\)</span> times <span class="math" data-tex="\(F(E,C,\omega)\)">\(F(E,C,\omega)\)</span>.</p>
+<p>For each cyclic order-four kernel there is a unique intermediate subgroup of order two. For <span class="math" data-tex="\(E[2]\)">\(E[2]\)</span> there are three, namely <span class="math" data-tex="\(\langle1/2\rangle\)">\(\langle1/2\rangle\)</span>, <span class="math" data-tex="\(\langle\tau/2\rangle\)">\(\langle\tau/2\rangle\)</span>, <span class="math" data-tex="\(\langle(1+\tau)/2\rangle\)">\(\langle(1+\tau)/2\rangle\)</span>. The two-step quotient count consequently contains <span class="math" data-tex="\(6+3=9\)">\(6+3=9\)</span> chains, while <span class="math" data-tex="\(T_4\)">\(T_4\)</span> counts seven final kernels once each. Both use the factor <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, and final differentials and image markings agree. The two additional occurrences of <span class="math" data-tex="\(E[2]\)">\(E[2]\)</span> contribute <span class="math" data-tex="\(2\cdot2^{k-2}=2^{k-1}\)">\(2\cdot2^{k-2}=2^{k-1}\)</span>, proving the required identity. Counting isomorphic targets only once would invalidate both counts.</p>
+<h2 id="9-what-this-lesson-does-not-prove">9. What this lesson does not prove</h2>
+<p>The analytic inputs used without reproving them are the modular coordinate theorem for <span class="math" data-tex="\(j\)">\(j\)</span>, <a href="LG-MF-05.html">The valence formula and the ring of modular forms of level one</a>, Theorem 3.1; reduction surjectivity for every <span class="math" data-tex="\(N\)">\(N\)</span>, <a href="LG-MF-02.html">Congruence subgroups, cusps and elliptic points</a>, Lemma 1.1; and the Eisenstein normalizations in <a href="LG-MF-04.html">Modular forms, lattice functions and Eisenstein series</a>, Theorem 4.2, together with the discriminant identity of the level-one lesson, Theorem 2.1. The comparison to the earlier Hecke operator uses <a href="LG-MF-08.html">Hecke operators of level one</a>, equations (1.1)–(1.3) and (1.8), Lemma 1.1 and Theorem 1.2, and <a href="LG-MF-09.html">Hecke operators for Gamma0 and Gamma1</a>, Theorems 2.3 and 3.1. The numerical weight-four check uses the ring lesson, Theorem 2.2, for <span class="math" data-tex="\(M_4=\mathbb C E_4\)">\(M_4=\mathbb C E_4\)</span>.</p>
+<p>Formula (4.2) defines and proves the analytic Weil pairing needed for the moduli proof. The orientation of the lattice basis fixes its sign, and Theorem 4.1 uses precisely that pairing and the specified primitive root. Comparison with a divisor-and-function pairing over arbitrary fields remains a separate proof task; the analytic argument does not assert that comparison. Galbraith's freely distributed note, §§3–5, provides an independent check of the analytic convention.</p>
+<p>Theorem 3.1 proves uniformization for the complex Weierstrass cubics defined in (0.2), and Proposition 3.2 proves algebraicity of their torus isogenies directly. An extension to all smooth genus-one algebraic curves with a point still requires the construction of Weierstrass coordinates. General fields, reduction, Tate modules and algebraic modular-curve models over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> also require additional proofs. These extensions are retained as arithmetic proof tasks, rather than used as prerequisites for the analytic moduli bijections. In particular those bijections classify marked complex curves; they do not prove a universal-family theorem on every coarse quotient. The original freely accessible Deligne–Rapoport paper, Chapters II–IV and VII, formulates the algebraic family and cusp questions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>Teleman 2003.</strong> C. Teleman, <em>Riemann Surfaces</em>, freely distributed lecture notes, Lectures 8–11: Theorem 8.5, Theorem 9.11, Lemma 10.3, Theorem 10.4 and the period discussion in Lecture 11. <a href="https://math.berkeley.edu/~teleman/math/Riemann.pdf">Author's notes</a>. The proof here obtains the converse from the already established modular <span class="math" data-tex="\(j\)">\(j\)</span>.</li>
+<li><strong>Voight 2021.</strong> J. Voight, <em>Quaternion Algebras</em>, §35.3 and §40.1.11. <a href="https://jvoight.github.io/quat.html">Author's open-access book page</a>.</li>
+<li><strong>Deligne–Rapoport 1973.</strong> P. Deligne and M. Rapoport, <em>Les schémas de modules de courbes elliptiques</em>, original paper, Chapters II–IV and VII. <a href="https://publications.ias.edu/sites/default/files/Number22.pdf">Author's freely accessible article</a>. This locates the arithmetic extensions, whose proofs are still required in the programme.</li>
+<li><strong>Rubin 1999.</strong> K. Rubin, <em>Elliptic Curves with Complex Multiplication and the Conjecture of Birch and Swinnerton-Dyer</em>, Arizona Winter School lecture notes, §2, especially Theorem 2.3 and Proposition 2.6. <a href="https://swc-math.github.io/aws/1999/99RubinCM.pdf">Free course notes</a>. Its short Weierstrass coordinates use <span class="math" data-tex="\(\wp&#x27;/2\)">\(\wp&#x27;/2\)</span>; our positive <span class="math" data-tex="\(j\)">\(j\)</span> normalization is derived in (3.3).</li>
+<li><strong>Galbraith 2011.</strong> S. D. Galbraith, <em>The Weil pairing on elliptic curves over C</em>, §§3–5, for the explicit analytic sign convention and the location of its algebraic comparison. <a href="https://www.math.auckland.ac.nz/~sgal018/pair-over-C.pdf">Author's note</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-16.html">← Modular symbols and the algebraicity of Hecke eigenvalues</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-18.html">Non-holomorphic Eisenstein series and Maass forms →</a></span></nav>
+<p class="small source-link"><a href="src/complex-tori-elliptic-curves-and-the-moduli-interpretation-of-modular-curves.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

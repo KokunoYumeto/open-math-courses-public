@@ -1,0 +1,455 @@
+# Frobenius lifts and abstract reciprocity
+
+*Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).*
+
+The quotient by norms is the arithmetic object we want to understand. For an unramified extension of degree \(n\), valuation already labels its classes by \(\mathbf Z/n\mathbf Z\), and Frobenius supplies the matching cyclic generator. A ramified extension asks for something more: how can an automorphism still produce a class when it is not itself a residue-field Frobenius?
+
+We answer that question by making the automorphism into Frobenius over a different finite field inside an enlarged unramified tower. The proposed class is then the norm of a prime element. The proof has three distinct jobs: calibrate that prescription on unramified extensions, show that choices and products change it only by norms, and establish the two different functorial operations. These jobs determine the order below.
+
+Only the closed-subgroup correspondence from [Profinite groups and infinite Galois theory](profinite-groups-and-infinite-galois-theory.md) and the cyclic Tate calculations from [Cohomology of cyclic groups and the Herbrand quotient](cohomology-of-cyclic-groups-and-the-herbrand-quotient.md) are required for the abstract proof. The local arithmetic module is verified in [Local reciprocity and norm groups](local-reciprocity-and-norm-groups.md), sections 1–3; those computations may be read first for motivation. Sections 4–5 of that lesson apply the abstract theorem after it has been proved. This separates the example from the proof it is meant to illustrate.
+
+## 1. What a reciprocity class must do
+
+Consider a cyclic unramified local extension \(L/K\) of degree \(n\). Unit norms are surjective and \(v_K(Nb)=n v_L(b)\). Therefore the valuation map gives
+\[
+K^\times/NL^\times\simeq\mathbf Z/n\mathbf Z,
+\qquad [\pi_K]\longmapsto1.
+\]
+For the kernel assertion, if \(v_K(a)=nm\), divide \(a\) by the norm of \(\pi_K^m\), viewed in \(L\). The remainder is a unit, hence a unit norm. This calculation uses only the unramified norm theorem, not reciprocity. It suggests the unique map taking arithmetic Frobenius to \([\pi_K]\).
+
+There are two different changes of field to track. Restricting an automorphism should correspond to taking a norm of the arithmetic element. Including an arithmetic element in a larger ground field should correspond to transfer of the automorphism. For example, in an unramified cyclic extension of degree six, the degree-three intermediate field has Frobenius equal to the third power of ground-field Frobenius. Transfer from the order-six group to its order-two subgroup sends a generator to that third power. On multiplicative groups a ground-field uniformizer stays a uniformizer, whereas its norm down a degree-three unramified extension has valuation three. Thus the two operations cannot be interchanged.
+
+We construct the map from automorphisms to norm classes. The next lesson proves that it is an isomorphism once the class field axiom holds; its inverse is the arithmetic Artin map. Throughout this lesson, neither existence of that inverse nor a reciprocity theorem is an assumption.
+
+## 2. A degree map supplies the unramified direction
+
+Let \(G\) be profinite and let
+
+\[
+d:G\longrightarrow\widehat{\mathbf Z}
+\]
+
+be a continuous surjection. We use field notation for its subgroup lattice: the ground field \(k\) means \(G_k=G\), a finite extension \(K/k\) means an open subgroup \(G_K\), and \(K\subset L\) means \(G_L\subset G_K\). Its degree is \([L:K]=[G_K:G_L]\). Composita mean intersections of closed subgroups. In applications these will be actual fields and Galois groups; all the arguments here use only the indicated subgroup operations.
+
+Put \(I=\ker d\) and let \(\widetilde k\) denote its fixed object. For finite \(K/k\), define
+
+\[
+f_K=[\widehat{\mathbf Z}:d(G_K)],\qquad
+I_K=G_K\cap I,\qquad
+d_K=f_K^{-1}d|_{G_K}.
+\]
+
+The image \(d(G_K)\) is the open subgroup \(f_K\widehat{\mathbf Z}\). Division by \(f_K\) therefore defines a continuous surjection onto \(\widehat{\mathbf Z}\), with kernel \(I_K\). The fixed object of \(I_K\) is \(\widetilde K=K\widetilde k\), and
+
+\[
+\operatorname{Gal}(\widetilde K/K)\simeq\widehat{\mathbf Z}.
+\]
+
+Its element of degree 1 is the **arithmetic Frobenius** \(\varphi_K\).
+
+For finite \(L/K\), set
+
+\[
+f_{L/K}=[d(G_K):d(G_L)],\qquad
+e_{L/K}=[I_K:I_L].
+\]
+
+Both are multiplicative in towers, and
+
+\[
+[L:K]=e_{L/K}f_{L/K},\qquad
+f_L=f_Kf_{L/K},\qquad
+d_K|_{G_L}=f_{L/K}d_L.
+\tag{1}
+\]
+
+Indeed, \(I_KG_L\) is a subgroup of \(G_K\), and its two successive indices are \(f_{L/K}\) and \(e_{L/K}\). This proves the first equality without assuming that \(L/K\) is Galois. The other two follow directly from the images of \(d\). Call \(L/K\) **unramified** when \(e_{L/K}=1\), equivalently \(L\subset\widetilde K\). It is then cyclic and \([L:K]=f_{L/K}\). Call it **totally ramified** when \(f_{L/K}=1\). The largest unramified subextension of \(L/K\) is \(L\cap\widetilde K\), of degree \(f_{L/K}\).
+
+Fix for now a finite Galois \(L/K\). Write
+
+\[
+\Gamma=\operatorname{Gal}(\widetilde L/K),\qquad
+J=\operatorname{Gal}(\widetilde L/\widetilde K).
+\]
+
+Here \(J\) is finite of order \(e_{L/K}\), and
+
+\[
+1\longrightarrow J\longrightarrow\Gamma
+\xrightarrow{d_K}\widehat{\mathbf Z}\longrightarrow1.
+\tag{2}
+\]
+
+Choose \(\phi\in\Gamma\) of degree 1. The map from \(\widehat{\mathbf Z}\) to the closure of its powers, sending 1 to \(\phi\), is an isomorphism: composing it with \(d_K\) gives the identity. Consequently every element of \(\Gamma\) has a unique expression \(j\phi^z\), with \(j\in J\), \(z\in\widehat{\mathbf Z}\). This splitting is a tool for the proof, not an extra datum in the final map.
+
+A **positive Frobenius lift** is \(s\in\Gamma\) with \(d_K(s)=n\) a positive ordinary integer. Its closed cyclic subgroup \(S=\overline{\langle s\rangle}\) is a copy of \(\widehat{\mathbf Z}\): the degree map on it is multiplication by \(n\), which is injective. In particular \(S\cap J=1\). If \(\Sigma\) is its fixed object, then
+
+\[
+[\Sigma:K]=n|J|,\qquad f_{\Sigma/K}=n,
+\qquad\widetilde\Sigma=\widetilde L,
+\qquad s=\varphi_\Sigma.
+\tag{3}
+\]
+
+For the degree, the cosets of \(S\) in \(\Gamma\) are represented by \(\phi^i j\), \(0\leq i<n\), \(j\in J\). Their distinctness follows by applying \(d_K\) and then using \(S\cap J=1\); their number is the index given by (2). Intersecting the stabilizers with \(J\) proves the unramified-compositum assertion. Finally \(d_\Sigma(s)=d_K(s)/f_{\Sigma/K}=1\).
+
+Every \(g\in\operatorname{Gal}(L/K)\) has a positive Frobenius lift. Choose any lift to \(\Gamma\), of degree \(a\in\widehat{\mathbf Z}\). Its residue modulo \(f_{L/K}\) is determined by \(g\)'s action on \(L\cap\widetilde K\). Choose a positive integer \(n\) with that residue. The kernel of \(\Gamma\to\operatorname{Gal}(L/K)\), namely \(\operatorname{Gal}(\widetilde L/L)\), has degree image \(f_{L/K}\widehat{\mathbf Z}\). An element of this kernel of degree \(n-a\) adjusts the chosen lift to degree \(n\).
+
+## 3. Norms and a valuation on a module
+
+Let \(A\) be a discrete abelian group with a continuous \(G\)-action. We write it **additively** in this lesson so that the operator calculations are readable. For a multiplicative arithmetic module, read a sum as a product, a difference as a quotient, and zero as 1. Put \(A_K=A^{G_K}\). For finite \(L/K\), define
+
+\[
+N_{L/K}(a)=\sum_{t\in G_K/G_L}t(a).
+\tag{4}
+\]
+
+Representatives in (4) are for left cosets. Since \(a\) is fixed by \(G_L\), their choices do not matter. Left multiplication permutes these cosets, so the sum belongs to \(A_K\). Decomposing cosets along a tower proves \(N_{M/K}=N_{L/K}N_{M/L}\). Conjugating the cosets proves
+
+\[
+N_{gL/gK}(ga)=gN_{L/K}(a).
+\tag{5}
+\]
+
+Here \(gK\) has stabilizer \(gG_Kg^{-1}\). These identities do not require intermediate fields to be Galois. For an infinite field object, \(A_E\) is the union of the invariants of its finite subobjects: an element has an open stabilizer by continuity.
+
+Choose a subgroup \(V\subset\widehat{\mathbf Z}\) containing the ordinary integers, such that the inclusion induces
+
+\[
+V/nV\simeq\widehat{\mathbf Z}/n\widehat{\mathbf Z}
+\quad(n\geq1).
+\tag{6}
+\]
+
+A **henselian valuation for the degree map** is a group homomorphism \(v:A_k\to\widehat{\mathbf Z}\) with
+
+\[
+v(A_k)=V,\qquad v(N_{K/k}A_K)=f_KV
+\quad\text{for every finite }K/k.
+\tag{7}
+\]
+
+This is a condition on an arithmetic module and its norms, not a field valuation. Allowing \(V\) to be larger than \(\mathbf Z\) matters: the local case will use \(V=\mathbf Z\), whereas the global number-field construction can use \(V=\widehat{\mathbf Z}\). All proofs here cover both. Requiring only integer values would unnecessarily exclude the latter application.
+
+For finite \(K/k\), put
+
+\[
+v_K=f_K^{-1}vN_{K/k}:A_K\longrightarrow V.
+\]
+
+Condition (7) makes this well defined and onto. Norm transitivity and (1) give
+
+\[
+v_K(N_{L/K}a)=f_{L/K}v_L(a).
+\tag{8}
+\]
+
+For \(a\in A_K\), equation (4) gives \(N_{L/K}a=[L:K]a\); cancellation in the torsion-free group \(\widehat{\mathbf Z}\) then yields
+
+\[
+v_L(a)=e_{L/K}v_K(a).
+\tag{9}
+\]
+
+Equation (5) also gives \(v_{gK}(ga)=v_K(a)\), since a norm to \(k\) is \(G\)-invariant. A **prime element** is any \(\pi_K\in A_K\) with \(v_K(\pi_K)=1\); it exists by surjectivity. Let \(U_K=\ker v_K\), the **unit module**. Units remain units under inclusion or norm. A prime element remains prime under unramified inclusion; its norm remains prime under a totally ramified norm.
+
+Our only cohomological hypothesis in this lesson is the **unramified unit axiom**:
+
+\[
+\widehat H^0(\operatorname{Gal}(E/F),U_E)=0,
+\qquad
+\widehat H^{-1}(\operatorname{Gal}(E/F),U_E)=0
+\tag{10}
+\]
+
+for every finite unramified \(E/F\). Thus every unit downstairs is a norm, and every norm-zero unit upstairs is a difference \((\tau-1)y\), where \(\tau\) generates the cyclic group. The cyclic Tate definitions in lesson 2 make these two meanings explicit. Later lessons verify (10) in the arithmetic applications; it is an explicit hypothesis of the present abstract theorem.
+
+## 4. Calibrating the unramified map
+
+Before treating ramification, check what the general hypotheses say about an unramified extension. If its degree is \(n\), the valuation of its norm image is \(nV\), and the unit axiom removes the remaining kernel. Thus a prime class has to be the Frobenius class. The following proposition gives the precise statement, including the value group \(V=\widehat{\mathbf Z}\) needed later for number fields.
+
+### Proposition 4.3. Unramified reciprocity
+
+If \(L/K\) is unramified of degree \(n\), define \(r_{L/K}\) by sending its arithmetic Frobenius generator to a prime class. This is independent of the prime, and
+
+\[
+r_{L/K}(\varphi_{L/K})=\pi_K\pmod{N_{L/K}A_L},
+\]
+
+and \(r_{L/K}\) is an isomorphism.
+
+**Proof.** Two primes differ by a unit, which is a norm by (10), so they define the same class. Its order divides \(n\), since \(n\pi_K=N_{L/K}(\pi_K)\); hence the generator prescription defines a homomorphism.
+
+The valuation induces a surjection \(A_K/N_{L/K}A_L\to V/nV\), by (8). It is injective as well. If \(v_K(a)=nb\), choose \(c\in A_L\) with \(v_L(c)=b\). Then \(a-N_{L/K}c\) is a unit in \(U_K\), hence a norm from \(U_L\) by (10); thus \(a\) is a norm. By (6), \(V/nV\simeq\mathbf Z/n\mathbf Z\), and the image of \(\pi_K\) is its generator 1. The cyclic Galois group is also generated by \(\varphi_{L/K}\) and has order \(n\). The map between them sending generator to generator is an isomorphism. \(\square\)
+
+The norm-of-prime construction in section 5 specializes to this map: here \(\widetilde L=\widetilde K\), and the degree-one lift \(\varphi_K\) has fixed field \(K\), so (12) gives \(\pi_K\).
+
+This argument does not assume that an arbitrary valuation is an ordinary integer, or that an element has an expression \(u+m\pi_K\) with \(m\in\mathbf Z\). Such an expression need not exist when \(V=\widehat{\mathbf Z}\). Lifting the divisible valuation by a norm is the step that treats both value groups uniformly.
+
+## 5. Building the candidate class
+
+Choose a positive lift of the desired finite automorphism. Its fixed field is finite by the degree calculation in section 2. The norm identity below tells us how to compare candidate classes without assuming that their prime elements belong to the same field.
+
+Every finite subextension of \(\widetilde L/L\) is unramified. Equation (9) therefore defines a consistent valuation \(w\) on \(A_{\widetilde L}\), by restricting to a finite subextension containing \(L\). Its kernel is \(U_{\widetilde L}\). The action of \(\Gamma\) preserves \(w\), by (5). Each prime \(\pi_\Sigma\) from (3) has \(w(\pi_\Sigma)=1\): both \(\Sigma\) and \(L\) have ramification index \(|J|\) over \(K\), so their compositum is unramified over each.
+
+Let \(N_J=\sum_{j\in J}j\), and put \(P_n(\phi)=1+\phi+\cdots+\phi^{n-1}\). Normality of \(J\) implies that \(N_J\) commutes with \(\phi\). The coset representatives used in (3) prove the **norm identity**
+
+\[
+N_{\Sigma/K}(a)=N_JP_n(\phi)a
+\quad(a\in A_\Sigma, d_K(s)=n).
+\tag{11}
+\]
+
+For a positive lift \(s\), let \(\Sigma\) be its fixed field and choose a prime \(\pi_\Sigma\). Define provisionally
+
+\[
+R(s)=N_{\Sigma/K}(\pi_\Sigma)\pmod{N_{L/K}A_L}.
+\tag{12}
+\]
+
+Changing the prime by \(u\in U_\Sigma\) does not change (12). Indeed, \(L\Sigma/\Sigma\) is unramified, so (10) gives \(u=N_{L\Sigma/\Sigma}b\) for a unit \(b\). Thus \(N_{\Sigma/K}u=N_{L/K}N_{L\Sigma/L}b\) is a norm from \(L\). This already handles the first choice.
+
+## 6. The unit defect and composition
+
+The unresolved issue is now a calculation about units. Two prime elements in the enlarged tower have equal valuation, so their difference in additive notation is a unit. For a product of lifts, the valuation contributions also cancel. What must be proved is that this residual unit becomes a norm after averaging over inertia. The next lemma is designed for exactly that defect; both halves of the unit axiom are used in its proof.
+
+We now prove the unit statement that controls composition. Write \(I_JU_{\widetilde L}\) for the subgroup generated by \((j-1)u\), with \(j\in J\), \(u\in U_{\widetilde L}\).
+
+**Unit descent lemma.** If \(u\in U_{\widetilde L}\) and \((\phi-1)u\in I_JU_{\widetilde L}\), then
+
+\[
+N_Ju\in N_{M/K}U_M
+\]
+
+for every finite \(M/K\) contained in \(\widetilde L\).
+
+**Proof.** Express \((\phi-1)u=\sum_i(j_i-1)u_i\), using finitely many units. Enlarge the given \(M\) to a finite Galois extension of \(K\) inside \(\widetilde L\) containing \(L\), \(u\), and all \(u_i\). Norm transitivity will imply the conclusion for the original \(M\), so retain the enlarged name. Put \(m=[M:K]\) and \(\psi=\phi^m\). This element fixes \(M\). It commutes with \(J\): conjugation by \(\psi\) is trivial on the restrictions to \(L\), and restriction embeds \(J\) in \(\operatorname{Gal}(L/K)\). It also commutes with \(\phi\), so it is central in \(\Gamma\).
+
+The closure of the powers of \(\phi\) maps isomorphically to \(\widehat{\mathbf Z}\) under \(d_K\). To justify this, the map \(a\mapsto\phi^a\) is defined in every finite quotient by compatible integer powers, and their inverse limit defines it on \(\widehat{\mathbf Z}\). Its composite with \(d_K\) is the identity. Its image is exactly that closure, since ordinary integers are dense. Thus it intersects \(J\) trivially. Every element of \(\Gamma\) is a product \(j\phi^a\), by first matching its degree. In particular the closed subgroup generated by \(\psi=\phi^m\) has index \(m|J|\), and the subgroup generated by \(\psi^m\) has index \(m^2|J|\).
+
+Let \(E\) and \(E_m\) be their fixed fields. Centrality makes both closed subgroups normal, so these are finite Galois extensions of \(K\). They contain \(M\), since \(\psi\) fixes \(M\). Their relative group is \(m\widehat{\mathbf Z}/m^2\widehat{\mathbf Z}\), generated by \(\psi\), and its intersection with inertia is trivial. Hence \(E_m/E\) is unramified cyclic of degree \(m\). Axiom (10) gives units \(b,b_i\in U_{E_m}\) with
+
+\[
+P_m(\psi)b=u,\qquad P_m(\psi)b_i=u_i.
+\]
+
+The norm of \((\phi-1)b-\sum_i(j_i-1)b_i\) is zero, since \(\psi\) commutes with \(\phi,J\). The second half of (10) therefore supplies \(y\in U_{E_m}\) such that
+
+\[
+(\phi-1)b-\sum_i(j_i-1)b_i
+=(\psi-1)y=(\phi-1)P_m(\phi)y.
+\]
+
+Apply \(N_J\). It kills the \(J\)-differences, giving
+
+\[
+(\phi-1)\bigl(N_Jb-P_m(\phi)N_Jy\bigr)=0.
+\]
+
+The parenthesized unit is fixed by \(J\) and by \(\phi\), hence by all of \(\Gamma\); call it \(z\in U_K\). Apply \(P_m(\psi)\) to \(N_Jb=P_m(\phi)N_Jy+z\), and put \(y'=P_m(\psi)y\in U_E\). We obtain
+
+\[
+N_Ju=N_JP_m(\phi)y'+mz
+=N_{E/K}(y')+N_{M/K}(z).
+\]
+
+The first equality in the last step uses (11), and the second uses \(z\in U_K\). Since \(M\subset E\), both terms are norms from \(U_M\). This proves the assertion. \(\square\)
+
+Both halves of the unit axiom were used: one lifts the units by norms, and the other lifts the relation by a difference. Surjectivity of unit norms alone would not prove this lemma.
+
+**Composition lemma.** For positive lifts \(s_1,s_2\),
+
+\[
+R(s_1s_2)=R(s_1)+R(s_2).
+\tag{13}
+\]
+
+**Proof.** Write \(s_3=s_1s_2\), \(n_i=d_K(s_i)\), so \(n_3=n_1+n_2\), and choose corresponding primes \(\pi_i\). Set
+
+\[
+s_4=\phi^{n_1}s_2\phi^{-n_1},\qquad
+\pi_4=\phi^{n_1}\pi_2,\qquad n_4=n_2.
+\]
+
+The norm-conjugation identity (5) gives \(R(s_4)=R(s_2)\), even before taking classes, since the resulting norm belongs to \(A_K\). Put
+
+\[
+t_i=\phi^{n_i}s_i^{-1}\in J.
+\]
+
+A direct multiplication gives \(t_3=t_4t_1\). Also \(s_i\pi_i=\pi_i\), so \((\phi^{n_i}-1)\pi_i=(t_i-1)\pi_i\). Consider
+
+\[
+u=P_{n_3}(\phi)\pi_3-P_{n_1}(\phi)\pi_1
+-P_{n_2}(\phi)\pi_4.
+\]
+
+It is a unit because its valuation is \(n_3-n_1-n_2=0\). Let \(a=\pi_3-\pi_4\) and \(b=\pi_1-\pi_4\), also units. The identity \((\phi-1)P_n(\phi)=\phi^n-1\) gives
+
+\[
+\begin{aligned}
+(\phi-1)u
+&=(t_3-1)\pi_3-(t_1-1)\pi_1-(t_4-1)\pi_4\\
+&=(t_3-1)a-(t_1-1)b+(t_4-1)(t_1-1)\pi_4.
+\end{aligned}
+\tag{14}
+\]
+
+The element \((t_1-1)\pi_4\) is a unit since \(t_1\) preserves valuation. Every term on the last line of (14) thus belongs to \(I_JU_{\widetilde L}\). The unit descent lemma makes \(N_Ju\) a norm from \(U_L\). By (11), its class is exactly \(R(s_3)-R(s_1)-R(s_4)\), proving (13). \(\square\)
+
+### Proposition 4.1. Independence of the choices
+
+The value (12) depends only on \(s|_L\). It is independent of the positive lift and of its prime element.
+
+**Proof.** Prime independence was proved just before the composition lemma. Suppose \(s,s'\) have the same restriction to \(L\). If their degrees are equal, they are equal: the actions on \(L\) and \(\widetilde K\) determine an action on their compositum \(\widetilde L\). If their degrees differ, interchange them if necessary so that \(d_K(s')>d_K(s)\), and set \(h=s^{-1}s'\). This is a positive lift restricting to the identity on \(L\). Its fixed field contains \(L\), so its defining norm belongs to \(N_{L/K}A_L\), and \(R(h)=0\). Equation (13) now gives \(R(s')=R(s)+R(h)=R(s)\). \(\square\)
+
+### Proposition 4.2. The reciprocity homomorphism
+
+The prescription
+
+\[
+r_{L/K}(g)=R(s),\qquad s|_L=g,
+\]
+
+defines a homomorphism
+
+\[
+r_{L/K}:\operatorname{Gal}(L/K)^{\mathrm{ab}}
+\longrightarrow A_K/N_{L/K}A_L.
+\tag{15}
+\]
+
+For a multiplicatively written \(A\), equation (13) says exactly that \(r\) is multiplicative.
+
+**Proof.** Positive lifts exist by section 2, and Proposition 4.1 makes the prescription independent of them. The product of lifts of \(g_1,g_2\) is a positive lift of \(g_1g_2\), so (13) proves the homomorphism property. The target is abelian, so the homomorphism kills commutators and factors through the finite group's abelianization. \(\square\)
+
+## 7. Norms, conjugation and transfer
+
+### Proposition 4.4. Functoriality
+
+The maps (15) have the following three compatibilities.
+
+1. If \(K\subset K'\), \(L\subset L'\), and both \(L/K\), \(L'/K'\) are finite Galois, then
+   \[
+   N_{K'/K}\,r_{L'/K'}(g')=r_{L/K}(g'|_L).
+   \tag{16}
+   \]
+   The norm on the left is taken on the corresponding quotient modules.
+2. For \(g\in G\),
+   \[
+   r_{gL/gK}(g\sigma g^{-1})=g\,r_{L/K}(\sigma).
+   \tag{17}
+   \]
+3. If \(K'\) is intermediate in a finite Galois \(L/K\), the inclusion of modules satisfies
+   \[
+   r_{L/K}(\sigma)\text{ viewed in }A_{K'}/N_{L/K'}A_L
+   =r_{L/K'}(\operatorname{Ver}\sigma).
+   \tag{18}
+   \]
+   Here \(\operatorname{Ver}:\operatorname{Gal}(L/K)^{\mathrm{ab}}\to
+   \operatorname{Gal}(L/K')^{\mathrm{ab}}\) is transfer.
+
+**Proof of (16).** Lift \(g'\) to a positive \(s'\in\operatorname{Gal}(\widetilde L'/K')\), of degree \(n'\). Its restriction \(s\) to \(\widetilde L\) is positive, of degree \(f_{K'/K}n'\). If \(\Sigma'\) and \(\Sigma\) are their fixed fields, then \(\Sigma=\Sigma'\cap\widetilde L\). Their absolute residue degrees are both \(f_{K'}n'\), so \(f_{\Sigma'/\Sigma}=1\). For a prime \(\pi'\in A_{\Sigma'}\), equation (8) makes \(\pi=N_{\Sigma'/\Sigma}\pi'\) a prime of \(\Sigma\). Norm transitivity gives the exact equality
+
+\[
+N_{\Sigma/K}\pi
+=N_{\Sigma'/K}\pi'
+=N_{K'/K}N_{\Sigma'/K'}\pi'.
+\]
+
+This gives (16). The quotient norm is well defined because \(N_{K'/K}N_{L'/K'}A_{L'}=N_{L'/K}A_{L'}\subset N_{L/K}A_L\).
+
+**Proof of (17).** A lift \(s\) with fixed field \(\Sigma\) becomes \(gsg^{-1}\) with fixed field \(g\Sigma\). Its degree remains the same, since the degree map has abelian target. The element \(g\pi_\Sigma\) is prime by the conjugation identity for valuations. Equation (5) gives (17) directly.
+
+For (18), we first establish the needed group-theoretic formula. Let \(T\) be finite and \(H\subset T\). Choose representatives \(R\) for left cosets \(T/H\). For \(\sigma\in T\), write
+
+\[
+\sigma r=r' h_r(\sigma),\qquad r'\in R,\ h_r(\sigma)\in H.
+\]
+
+Then \(\operatorname{Ver}(\sigma)=\prod_{r\in R}h_r(\sigma)\) in \(H^{\mathrm{ab}}\). Replacing \(r\) by \(rk_r\) replaces its factor by \(k_{r'}^{-1}h_r(\sigma)k_r\); the \(k_r\) cancel in the abelian product. Thus transfer does not depend on representatives. The factors for \(\sigma\tau\) are those for \(\sigma\) at the cosets permuted by \(\tau\), followed by those for \(\tau\). Their products prove that transfer is a homomorphism, hence factors through \(T^{\mathrm{ab}}\). On an orbit of \(\sigma\) in \(T/H\), choose representatives \(r,\sigma r,\ldots,\sigma^{a-1}r\). The contribution is \(r^{-1}\sigma^a r\), where \(a\) is that orbit's length. Therefore
+
+\[
+\operatorname{Ver}(\sigma)=\prod_r r^{-1}\sigma^{a_r}r
+\quad\text{in }H^{\mathrm{ab}},
+\tag{19}
+\]
+
+with one representative per orbit.
+
+Now take \(T=\operatorname{Gal}(L/K)\), \(H=\operatorname{Gal}(L/K')\). The inclusion in (18) is well defined: decomposing \(T\) into right cosets \(H t\) shows that \(N_{L/K}a=N_{L/K'}(\sum_t t a)\), so every norm from \(L/K\) is a norm from \(L/K'\).
+
+Choose a positive lift \(s\in\Gamma\) of \(\sigma\), with fixed field \(\Sigma\), and write \(S=\overline{\langle s\rangle}\), \(\Gamma'=\operatorname{Gal}(\widetilde L/K')\). The finite coset spaces \(\Gamma/\Gamma'\) and \(T/H\) agree. Representatives for the \(S\)-orbits may therefore be chosen to lift those in (19). For each, put
+
+\[
+s_r=r^{-1}s^{a_r}r,\qquad
+S_r=\Gamma'\cap r^{-1}Sr=\overline{\langle s_r\rangle}.
+\]
+
+The equality follows because the open subgroup of the procyclic group \(S\) stabilizing that coset has index \(a_r\). The element \(s_r\) is a positive lift over \(K'\): its degree is \(a_r d_K(s)/f_{K'/K}\), a positive integer since its restriction belongs to \(\Gamma'\). Let \(\Sigma_r\) be its fixed field. Then
+
+\[
+\Sigma_r=(r^{-1}\Sigma)K',
+\qquad \Sigma_r/(r^{-1}\Sigma)\text{ is unramified of degree }a_r.
+\]
+
+Thus \(\pi_r=r^{-1}\pi_\Sigma\) is still prime in \(\Sigma_r\). Finally, the double cosets \(\Gamma'\backslash\Gamma/S\) partition the cosets used in the norm from \(\Sigma\). The part represented by \(r^{-1}\) has stabilizer \(S_r\) in \(\Gamma'\), so summing it gives
+
+\[
+N_{\Sigma/K}\pi_\Sigma
+=\sum_r N_{\Sigma_r/K'}\pi_r
+\quad\text{in }A_{K'}.
+\tag{20}
+\]
+
+Each summand represents \(r_{L/K'}(r^{-1}\sigma^{a_r}r)\). Since reciprocity is a homomorphism, (19) and (20) prove (18). \(\square\)
+
+The arrows have different arithmetic meanings. Restricting a Galois automorphism corresponds to taking a norm. Transfer corresponds to including an arithmetic element in a larger field. Confusing those two operations reverses a reciprocity diagram.
+
+## 8. Two complete degree models
+
+The simplest complete model isolates the degree contribution. After checking it, compare it with the local-field application: the degree is still present, but units now carry additional information and the descent lemma controls that information.
+
+Take \(G=\operatorname{Gal}(\overline{\mathbf F}_q/\mathbf F_q)=\widehat{\mathbf Z}\), with \(d\) the identity. Let \(A=\mathbf Z\) have trivial action, and let \(v\) be the inclusion in \(\widehat{\mathbf Z}\). Every \(A_K\) is \(\mathbf Z\). For \(K=\mathbf F_{q^m}\), the norm to the ground field is multiplication by \(m\), so (7) holds with \(V=\mathbf Z\), and \(v_K\) is the identity. Every extension is unramified and every unit module is zero, so (10) holds.
+
+For \(L/K\) of degree \(n\), the quotient module is \(\mathbf Z/n\mathbf Z\), and reciprocity sends arithmetic Frobenius to 1. A positive lift of degree \(b\) has fixed field of degree \(b\) over \(K\); the norm of its prime element 1 is \(b\), as required. This is the degree formation associated with finite fields. It uses \(\mathbf Z\), not the multiplicative group of the finite field, whose norm is surjective and could not give this quotient.
+
+For local fields the arithmetic module will instead be the multiplicative group of a separable closure, and the degree direction will be the unramified tower. The local reciprocity lesson will verify the valuation and unit hypotheses. The construction above already identifies the map once those hypotheses are verified.
+
+The same model can be built with \(A=\widehat{\mathbf Z}\), still treated as a discrete module with trivial action, and \(v\) the identity. A degree-\(m\) norm is multiplication by \(m\), so its image is \(m\widehat{\mathbf Z}\). All normalized valuations are the identity, the unit modules are zero, and the quotient for degree \(n\) is again \(\mathbf Z/n\mathbf Z\). An element of \(\widehat{\mathbf Z}\) need not be an ordinary integral multiple of 1, but its class in this finite quotient is. This explains why the finite-quotient condition on \(V\), rather than an integer-valued hypothesis, is the correct input to the proof.
+
+
+## Exercises
+
+1. **Easy.** Work out the degree formation of section 8, including its normalized valuations, norm groups and reciprocity for every \(\mathbf F_{q^{mn}}/\mathbf F_{q^m}\).
+2. **Medium.** Prove that changing the prime of a positive lift's fixed field does not change its reciprocity class. Identify the unramified extension on which the unit axiom is applied.
+3. **Medium.** Prove conjugation compatibility (17) directly from the norm definition, including preservation of prime elements.
+4. **Hard.** Starting with the unit descent lemma, prove the composition formula (13). Check explicitly the identity \(t_3=t_4t_1\) and why every term of (14) is a difference of units.
+
+## Solutions
+
+1. The subgroup for \(\mathbf F_{q^m}\) is \(m\widehat{\mathbf Z}\), so \(f_K=m\), \(d_K=d/m\), and \(I_K=0\). Trivial action gives \(A_K=\mathbf Z\). A norm along a degree-\(n\) extension is multiplication by \(n\), hence its group is \(n\mathbf Z\). Since \(N_{K/k}\) is multiplication by \(m\), \(v_K=m^{-1}vN_{K/k}\) is the identity. The only prime element is 1, the unit module is zero, and both Tate groups in the unit axiom vanish. The cyclic Galois group of order \(n\) maps isomorphically to \(\mathbf Z/n\mathbf Z\), with Frobenius going to 1 and its \(b\)-th power to \(b\bmod n\).
+2. Two primes differ by \(u\in U_\Sigma\). Equation (3) puts \(L\Sigma\) inside \(\widetilde\Sigma\), so \(L\Sigma/\Sigma\) is finite unramified cyclic. The norm-surjectivity half of (10) gives \(u=N_{L\Sigma/\Sigma}b\), with \(b\) a unit. Taking its norm to \(K\) gives \(N_{\Sigma/K}u=N_{L/K}N_{L\Sigma/L}b\), which is zero in the quotient by norms from \(L\). The extension required is \(L\Sigma/\Sigma\), not a possibly ramified extension \(L/K\).
+3. Representatives \(t\) for \(G_K/G_\Sigma\) become \(gtg^{-1}\) for \(G_{gK}/G_{g\Sigma}\), so the norm of \(ga\) is \(gN_{\Sigma/K}a\). The same identity for the norm to \(k\), together with unchanged \(f_\Sigma\), yields \(v_{g\Sigma}(ga)=v_\Sigma(a)\). Thus \(g\pi_\Sigma\) is prime. A positive lift becomes \(gsg^{-1}\), of the same degree and with fixed field \(g\Sigma\). Applying its defining norm proves (17), and conjugation also carries the denominator norm subgroup to the corresponding denominator.
+4. Choose \(s_4=\phi^{n_1}s_2\phi^{-n_1}\), \(\pi_4=\phi^{n_1}\pi_2\). Then
+   \[
+   t_4t_1
+   =\phi^{n_2}\phi^{n_1}s_2^{-1}\phi^{-n_1}
+     \phi^{n_1}s_1^{-1}
+   =\phi^{n_1+n_2}(s_1s_2)^{-1}=t_3.
+   \]
+   Form \(u\) as in section 6. Each prime has valuation 1, so \(w(u)=0\). Applying \(\phi-1\) replaces \(P_{n_i}(\phi)\pi_i\) by \((t_i-1)\pi_i\). Substitute \(\pi_3=a+\pi_4\), \(\pi_1=b+\pi_4\). The remaining coefficient of \(\pi_4\) is \(t_3-t_1-t_4+1=(t_4-1)(t_1-1)\), giving (14). Here \(a,b\), and \((t_1-1)\pi_4\) all have valuation zero. Thus \((\phi-1)u\in I_JU_{\widetilde L}\). Unit descent makes \(N_Ju\) a norm from \(L\); (11) identifies its class with \(R(s_1s_2)-R(s_1)-R(s_4)\), and (5) identifies \(R(s_4)=R(s_2)\). This proves composition with the chosen left-action convention.
+
+## Editable edition
+
+The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.
+
+## References
+
+Sections 2–3 give the full abstract degree and valuation hypotheses, including the general permitted value group. Sections 5–7 prove unit descent, independence, composition and all three functorialities. The central finite unramified tower used in descent is constructed explicitly.
+
+- [Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition](https://kskedlaya.org/cft/sec_abstractcft1.html).
+
+The abstract hypotheses allow the full value group specified in section 3. The proof does not assume a splitting of that valuation sequence.
+
+The [proof guide](../FREE_PROOFS.md) gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.

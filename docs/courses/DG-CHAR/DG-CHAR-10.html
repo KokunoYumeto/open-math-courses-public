@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pontryagin classes and oriented universal cohomology · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-10.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="pontryagin-classes-and-oriented-universal-cohomology">Pontryagin classes and oriented universal cohomology</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored text dedicated under CC0.</em></p>
+<p>Complexification gives integral characteristic classes of real bundles in degrees divisible by four. We prove their torsion-qualified Whitney formula, compute the classes of projective tangent bundles, and identify the top class with the square of the Euler class. We then compute the universal oriented ring, both modulo two and with two inverted. The deleted-vector comparison needed for the latter computation is proved by an explicit homotopy.</p>
+<p>Our convention is <span class="math" data-tex="\(p_i(\xi)=(-1)^i c_{2i}(\xi\otimes_{\mathbb R}\mathbb C)\)">\(p_i(\xi)=(-1)^i c_{2i}(\xi\otimes_{\mathbb R}\mathbb C)\)</span>. The <a href="DG-CHAR-09.html">Chern chapter</a> provides the integral classes, their conjugation rule and their full Whitney formula on paracompact Hausdorff bases. The <a href="DG-CHAR-01.html">bundle</a>, <a href="DG-CHAR-03.html">classification</a>, <a href="DG-CHAR-06.html">Thom/Euler</a>, <a href="DG-CHAR-08.html">Gysin/projective</a> and <a href="DG-CHAR-04.html">Schubert</a> chapters provide the proved topology, exact sequences, orientations and universal real mod-two ring. We state precisely where paracompactness and coefficient assumptions enter.</p>
+<h2 id="1-complexification-and-the-two-torsion-terms">1. Complexification and the two-torsion terms</h2>
+<p>For a real rank-<span class="math" data-tex="\(n\)">\(n\)</span> bundle <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, its complexification <span class="math" data-tex="\(\xi_{\mathbb C}\)">\(\xi_{\mathbb C}\)</span> has complex rank <span class="math" data-tex="\(n\)">\(n\)</span>. Every fibre vector has a unique form <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span>, with <span class="math" data-tex="\(x,y\)">\(x,y\)</span> in the original real fibre. Thus its underlying real bundle is naturally <span class="math" data-tex="\(\xi\oplus\xi\)">\(\xi\oplus\xi\)</span>, and its complex structure on these coordinates is <span class="math" data-tex="\(J(x,y)=(-y,x)\)">\(J(x,y)=(-y,x)\)</span>. The real-linear map <span class="math" data-tex="\(x+iy\mapsto x-iy\)">\(x+iy\mapsto x-iy\)</span> is complex linear as a map into the conjugate bundle. Hence
+<span class="math math-display" data-tex="\[
+\xi_{\mathbb C}\cong\overline{\xi_{\mathbb C}},\qquad
+2c_{2j+1}(\xi_{\mathbb C})=0.
+\tag{1.1}
+\]">\[
+\xi_{\mathbb C}\cong\overline{\xi_{\mathbb C}},\qquad
+2c_{2j+1}(\xi_{\mathbb C})=0.
+\tag{1.1}
+\]</span>
+The second identity is the Chern conjugation rule; it means annihilation by two, including the possibility of zero.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+p_0(\xi)=1,\quad p_i(\xi)=(-1)^ic_{2i}(\xi_{\mathbb C}),\quad
+p_i(\xi)=0\text{ if }2i&gt;n.
+\tag{1.2}
+\]">\[
+p_0(\xi)=1,\quad p_i(\xi)=(-1)^ic_{2i}(\xi_{\mathbb C}),\quad
+p_i(\xi)=0\text{ if }2i&gt;n.
+\tag{1.2}
+\]</span>
+These definitions, naturality and stability under adding trivial real bundles work on every Hausdorff base: complexification respects pullbacks and sends a trivial real summand to a trivial complex summand. The orientation of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is irrelevant to <span class="math" data-tex="\(p_i\)">\(p_i\)</span>.</p>
+<p><span id="DG-CHAR-10.theorem-1.1"></span><strong>Theorem 1.1.</strong> For real bundles on a paracompact Hausdorff base,
+<span class="math math-display" data-tex="\[
+2\bigl(p_k(\xi\oplus\eta)-\sum_{i+j=k}p_i(\xi)p_j(\eta)\bigr)=0
+\quad\text{for every }k.
+\tag{1.3}
+\]">\[
+2\bigl(p_k(\xi\oplus\eta)-\sum_{i+j=k}p_i(\xi)p_j(\eta)\bigr)=0
+\quad\text{for every }k.
+\tag{1.3}
+\]</span></p>
+<p><strong>Proof.</strong> Complexification respects direct sums, so the Chern Whitney formula expresses <span class="math" data-tex="\(c_{2k}((\xi\oplus\eta)_{\mathbb C})\)">\(c_{2k}((\xi\oplus\eta)_{\mathbb C})\)</span> as the sum of products whose indices add to <span class="math" data-tex="\(2k\)">\(2k\)</span>. The even-even terms, multiplied by <span class="math" data-tex="\((-1)^k\)">\((-1)^k\)</span>, give exactly the displayed Pontryagin products. Every remaining term has two odd indices and is annihilated by two by (1.1). Thus the difference is annihilated by two. ∎</p>
+<p>This is an integral assertion, not a mod-two reduction assertion. After passing to coefficients in which two is invertible, the product formula holds exactly. Integrally it may fail. For an explicit failure, take the tautological real line <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(\mathbb {RP}^4\)">\(\mathbb {RP}^4\)</span>. Write <span class="math" data-tex="\(a=w_1(L)\)">\(a=w_1(L)\)</span> and <span class="math" data-tex="\(t=c_1(L_{\mathbb C})\)">\(t=c_1(L_{\mathbb C})\)</span>. By (1.1), <span class="math" data-tex="\(2t=0\)">\(2t=0\)</span>. The underlying real complexification is <span class="math" data-tex="\(L\oplus L\)">\(L\oplus L\)</span>, so the Chern-to-Stiefel–Whitney formula gives
+<span class="math math-display" data-tex="\[
+\rho_2t=w_2(L\oplus L)=a^2.
+\]">\[
+\rho_2t=w_2(L\oplus L)=a^2.
+\]</span>
+Consequently <span class="math" data-tex="\(\rho_2(t^2)=a^4\ne0\)">\(\rho_2(t^2)=a^4\ne0\)</span>. A line has <span class="math" data-tex="\(p(L)=1\)">\(p(L)=1\)</span>, whereas
+<span class="math math-display" data-tex="\[
+p_1(L\oplus L)=-c_2(L_{\mathbb C}\oplus L_{\mathbb C})=-t^2\ne0.
+\tag{1.4}
+\]">\[
+p_1(L\oplus L)=-c_2(L_{\mathbb C}\oplus L_{\mathbb C})=-t^2\ne0.
+\tag{1.4}
+\]</span>
+This nonzero difference is two-torsion, exactly as (1.3) requires.</p>
+<p>For every real bundle on a paracompact Hausdorff base, the same comparison gives
+<span class="math math-display" data-tex="\[
+\rho_2p_i(\xi)=w_{2i}(\xi)^2.
+\tag{1.5}
+\]">\[
+\rho_2p_i(\xi)=w_{2i}(\xi)^2.
+\tag{1.5}
+\]</span>
+Indeed <span class="math" data-tex="\(w((\xi_{\mathbb C})_{\mathbb R})=w(\xi)^2\)">\(w((\xi_{\mathbb C})_{\mathbb R})=w(\xi)^2\)</span>. In characteristic two its degree-<span class="math" data-tex="\(4i\)">\(4i\)</span> component is <span class="math" data-tex="\(w_{2i}(\xi)^2\)">\(w_{2i}(\xi)^2\)</span>; all distinct-index pairs cancel. It also equals <span class="math" data-tex="\(\rho_2c_{2i}(\xi_{\mathbb C})\)">\(\rho_2c_{2i}(\xi_{\mathbb C})\)</span>, and the integral sign disappears upon reduction.</p>
+<h2 id="2-complex-bundles-projective-spaces-and-the-top-euler-square">2. Complex bundles, projective spaces and the top Euler square</h2>
+<p>For a complex bundle <span class="math" data-tex="\(V\)">\(V\)</span>, complexifying its underlying real bundle gives
+<span class="math math-display" data-tex="\[
+(V_{\mathbb R})_{\mathbb C}\cong V\oplus\overline V.
+\tag{2.1}
+\]">\[
+(V_{\mathbb R})_{\mathbb C}\cong V\oplus\overline V.
+\tag{2.1}
+\]</span>
+Explicitly <span class="math" data-tex="\(x\otimes z\mapsto(zx,\overline z x)\)">\(x\otimes z\mapsto(zx,\overline z x)\)</span> defines a complex-linear map, with the second entry interpreted in <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>. In the real decomposition <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span>, it sends this vector to <span class="math" data-tex="\((x+iy,x-iy)\)">\((x+iy,x-iy)\)</span>, using the original complex structure on <span class="math" data-tex="\(V\)">\(V\)</span> for these two outputs. Its inverse takes <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> to <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span> with <span class="math" data-tex="\(x=(v+w)/2\)">\(x=(v+w)/2\)</span> and <span class="math" data-tex="\(y=(v-w)/(2i)\)">\(y=(v-w)/(2i)\)</span>. This verifies the isomorphism fibrewise and continuously.</p>
+<p>On a paracompact Hausdorff base, Chern Whitney and conjugation therefore give
+<span class="math math-display" data-tex="\[
+p_k(V_{\mathbb R})=(-1)^k\sum_{i+j=2k}(-1)^j c_i(V)c_j(V).
+\tag{2.2}
+\]">\[
+p_k(V_{\mathbb R})=(-1)^k\sum_{i+j=2k}(-1)^j c_i(V)c_j(V).
+\tag{2.2}
+\]</span>
+For instance
+<span class="math math-display" data-tex="\[
+p_1=c_1^2-2c_2,\qquad
+p_2=c_2^2-2c_1c_3+2c_4.
+\]">\[
+p_1=c_1^2-2c_2,\qquad
+p_2=c_2^2-2c_1c_3+2c_4.
+\]</span>
+On a flag space with Chern roots <span class="math" data-tex="\(t_1,\ldots,t_r\)">\(t_1,\ldots,t_r\)</span>, (2.1) has roots <span class="math" data-tex="\(t_j,-t_j\)">\(t_j,-t_j\)</span>; hence
+<span class="math math-display" data-tex="\[
+p(V_{\mathbb R})=\prod_{j=1}^r(1+t_j^2).
+\tag{2.3}
+\]">\[
+p(V_{\mathbb R})=\prod_{j=1}^r(1+t_j^2).
+\tag{2.3}
+\]</span>
+This equality in roots descends by the integral flag injection. In this complex-bundle case no two-torsion qualification is needed.</p>
+<p>With <span class="math" data-tex="\(x=c_1(\gamma^*)\)">\(x=c_1(\gamma^*)\)</span> on <span class="math" data-tex="\(\mathbb {CP}^n\)">\(\mathbb {CP}^n\)</span>, the proved stable complex tangent isomorphism gives
+<span class="math math-display" data-tex="\[
+p(T\mathbb {CP}^n)=(1+x^2)^{n+1}
+\quad\text{in }\mathbb Z[x]/(x^{n+1}).
+\tag{2.4}
+\]">\[
+p(T\mathbb {CP}^n)=(1+x^2)^{n+1}
+\quad\text{in }\mathbb Z[x]/(x^{n+1}).
+\tag{2.4}
+\]</span>
+Here tangent means its underlying real tangent bundle. Equivalently <span class="math" data-tex="\(p_i=\binom{n+1}{i}x^{2i}\)">\(p_i=\binom{n+1}{i}x^{2i}\)</span>, with only <span class="math" data-tex="\(4i\leq2n\)">\(4i\leq2n\)</span> surviving. Thus <span class="math" data-tex="\(p_1(\mathbb {CP}^2)=3x^2\)">\(p_1(\mathbb {CP}^2)=3x^2\)</span> and its number is three, using the positive top evaluation already proved. On <span class="math" data-tex="\(\mathbb {CP}^3\)">\(\mathbb {CP}^3\)</span>, <span class="math" data-tex="\(p=1+4x^2\)">\(p=1+4x^2\)</span>; on <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span>, <span class="math" data-tex="\(p=1+5x^2+10x^4\)">\(p=1+5x^2+10x^4\)</span>. A sphere has <span class="math" data-tex="\(TS^n\oplus\varepsilon^1\cong\varepsilon^{n+1}\)">\(TS^n\oplus\varepsilon^1\cong\varepsilon^{n+1}\)</span>, so all its positive-degree Pontryagin classes vanish by stability.</p>
+<p><span id="DG-CHAR-10.theorem-2.1"></span><strong>Theorem 2.1.</strong> For an oriented real rank-<span class="math" data-tex="\(2k\)">\(2k\)</span> bundle, <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, on any Hausdorff base,
+<span class="math math-display" data-tex="\[
+p_k(\xi)=e(\xi)^2\in H^{4k}(B;\mathbb Z).
+\tag{2.5}
+\]">\[
+p_k(\xi)=e(\xi)^2\in H^{4k}(B;\mathbb Z).
+\tag{2.5}
+\]</span></p>
+<p><strong>Proof.</strong> The real isomorphism <span class="math" data-tex="\((\xi_{\mathbb C})_{\mathbb R}\cong\xi\oplus\xi\)">\((\xi_{\mathbb C})_{\mathbb R}\cong\xi\oplus\xi\)</span> compares two orientations. If <span class="math" data-tex="\(v_1,\ldots,v_{2k}\)">\(v_1,\ldots,v_{2k}\)</span> is positive for <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the complex orientation orders <span class="math" data-tex="\(v_1,iv_1,\ldots,v_{2k},iv_{2k}\)">\(v_1,iv_1,\ldots,v_{2k},iv_{2k}\)</span>. The ordered real sum orientation orders all <span class="math" data-tex="\(v_j\)">\(v_j\)</span> first and all <span class="math" data-tex="\(iv_j\)">\(iv_j\)</span> second. The interleaving permutation has sign
+<span class="math math-display" data-tex="\[
+(-1)^{(2k)(2k-1)/2}=(-1)^k.
+\]">\[
+(-1)^{(2k)(2k-1)/2}=(-1)^k.
+\]</span>
+Euler orientation reversal and the ordered Euler product rule give
+<span class="math" data-tex="\(c_{2k}(\xi_{\mathbb C})=e((\xi_{\mathbb C})_{\mathbb R})=(-1)^ke(\xi)^2\)">\(c_{2k}(\xi_{\mathbb C})=e((\xi_{\mathbb C})_{\mathbb R})=(-1)^ke(\xi)^2\)</span>.
+Multiplying by the sign in (1.2) proves the integral equality. It used the metric-free top Chern definition and the full oriented Thom product, so paracompactness was not needed. ∎</p>
+<h2 id="3-oriented-grassmannians-and-their-mod-two-ring">3. Oriented Grassmannians and their mod-two ring</h2>
+<p>For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, let <span class="math" data-tex="\(BSO(n)\)">\(BSO(n)\)</span> be the oriented real <span class="math" data-tex="\(n\)">\(n\)</span>-planes in <span class="math" data-tex="\(\mathbb R^\infty\)">\(\mathbb R^\infty\)</span>, and <span class="math" data-tex="\(q:BSO(n)\to BO(n)\)">\(q:BSO(n)\to BO(n)\)</span> forget their orientation. The unit sphere of the determinant line <span class="math" data-tex="\(\det\gamma_n\)">\(\det\gamma_n\)</span> is precisely this double cover: a unit determinant vector chooses one of the two orientations. The total cover topology is the weak topology of its compact finite oriented Grassmannian stages. This follows from the compact-fibre local chart argument supplied for flags in the Chern chapter, now with fibre two points. It is Hausdorff and paracompact by the proved compact-limit lemmas. The pulled-back universal bundle <span class="math" data-tex="\(\widetilde\gamma_n\)">\(\widetilde\gamma_n\)</span> has the orientation recorded by the base point.</p>
+<p>These spaces are path connected. In ambient dimension <span class="math" data-tex="\(N&gt;n\)">\(N&gt;n\)</span>, extend an oriented orthonormal <span class="math" data-tex="\(n\)">\(n\)</span>-frame to a positively oriented basis of <span class="math" data-tex="\(\mathbb R^N\)">\(\mathbb R^N\)</span>, adjusting the complementary basis if necessary. The connected group <span class="math" data-tex="\(SO(N)\)">\(SO(N)\)</span> moves this basis to any other one. Its connectedness follows explicitly by successive plane rotations that move its first column to the first coordinate vector and then repeat on the orthogonal complement; in the final two-plane use an ordinary rotation. This is the same positive-linear-group path calculation used for fibre orientations earlier. Thus each such finite oriented Grassmannian, and the infinite union, is path connected. In rank one, the oriented line is its positive unit vector, so <span class="math" data-tex="\(BSO(1)=S^\infty\)">\(BSO(1)=S^\infty\)</span>; its contractibility was proved by the shift-and-rotation homotopy in the classification chapter. Define <span class="math" data-tex="\(BSO(0)\)">\(BSO(0)\)</span> to be a point.</p>
+<p><span id="DG-CHAR-10.theorem-3.1"></span><strong>Theorem 3.1.</strong>
+<span class="math math-display" data-tex="\[
+H^*(BSO(n);\mathbb F _2)=\mathbb F _2[w_2,\ldots,w_n].
+\tag{3.1}
+\]">\[
+H^*(BSO(n);\mathbb F _2)=\mathbb F _2[w_2,\ldots,w_n].
+\tag{3.1}
+\]</span>
+The indicated classes are those of <span class="math" data-tex="\(\widetilde\gamma_n\)">\(\widetilde\gamma_n\)</span>; for ranks zero and one the ring is just <span class="math" data-tex="\(\mathbb F _2\)">\(\mathbb F _2\)</span>.</p>
+<p><strong>Proof.</strong> The class of the determinant line is <span class="math" data-tex="\(w_1(\gamma_n)\)">\(w_1(\gamma_n)\)</span>, by the determinant identity proved in the squares chapter. The double-cover Gysin sequence is therefore multiplication by <span class="math" data-tex="\(w_1\)">\(w_1\)</span> on the polynomial ring <span class="math" data-tex="\(H^*(BO(n);\mathbb F _2)=\mathbb F _2[w_1,\ldots,w_n]\)">\(H^*(BO(n);\mathbb F _2)=\mathbb F _2[w_1,\ldots,w_n]\)</span>, with the cover cohomology between consecutive multiplication maps. Multiplication by <span class="math" data-tex="\(w_1\)">\(w_1\)</span> is injective, so exactness makes <span class="math" data-tex="\(q^*\)">\(q^*\)</span> surjective with kernel the ideal <span class="math" data-tex="\((w_1)\)">\((w_1)\)</span>. Its ring quotient is exactly (3.1). Rank zero uses a point; the rank-one quotient also agrees with the contractible sphere model. ∎</p>
+<h2 id="4-the-deleted-vector-comparison-with-an-actual-homotopy">4. The deleted-vector comparison, with an actual homotopy</h2>
+<p>For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, take the unit sphere bundle <span class="math" data-tex="\(E_n=S(\widetilde\gamma_n)\)">\(E_n=S(\widetilde\gamma_n)\)</span>. A point is an oriented <span class="math" data-tex="\(n\)">\(n\)</span>-plane <span class="math" data-tex="\(X\)">\(X\)</span> with a unit vector <span class="math" data-tex="\(v\in X\)">\(v\in X\)</span>. Put <span class="math" data-tex="\(Y=X\cap v^\perp\)">\(Y=X\cap v^\perp\)</span>, oriented so that <span class="math" data-tex="\(v\)">\(v\)</span> followed by a positive basis of <span class="math" data-tex="\(Y\)">\(Y\)</span> is positive in <span class="math" data-tex="\(X\)">\(X\)</span>. Then
+<span class="math math-display" data-tex="\[
+f:E_n\longrightarrow BSO(n-1),\qquad (X,v)\longmapsto Y
+\tag{4.1}
+\]">\[
+f:E_n\longrightarrow BSO(n-1),\qquad (X,v)\longmapsto Y
+\tag{4.1}
+\]</span>
+is continuous, and <span class="math" data-tex="\(\pi^*\widetilde\gamma_n\cong\varepsilon^1\oplus f^*\widetilde\gamma_{n-1}\)">\(\pi^*\widetilde\gamma_n\cong\varepsilon^1\oplus f^*\widetilde\gamma_{n-1}\)</span>. Here the unit-vector line comes first in the orientation. We may regard a point of <span class="math" data-tex="\(E_n\)">\(E_n\)</span> as the pair <span class="math" data-tex="\((Y,v)\)">\((Y,v)\)</span>, with <span class="math" data-tex="\(Y\)">\(Y\)</span> oriented and <span class="math" data-tex="\(v\)">\(v\)</span> a unit vector perpendicular to it. All these spaces have compact finite-dimensional stages and the compact-fibre/direct-limit topology verified in Section3.</p>
+<p><span id="DG-CHAR-10.lemma-4.1"></span><strong>Lemma 4.1.</strong> The map (4.1) is a homotopy equivalence.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(S_e(e_i)=e_{2i}\)">\(S_e(e_i)=e_{2i}\)</span>, <span class="math" data-tex="\(S_o(e_i)=e_{2i-1}\)">\(S_o(e_i)=e_{2i-1}\)</span>, and let <span class="math" data-tex="\(e_1\)">\(e_1\)</span> be the first coordinate vector. Define
+<span class="math math-display" data-tex="\[
+s(Y)=(S_eY,e_1).
+\]">\[
+s(Y)=(S_eY,e_1).
+\]</span>
+The vector is perpendicular to the even-coordinate plane. The composite <span class="math" data-tex="\(fs\)">\(fs\)</span> is the even shift of <span class="math" data-tex="\(Y\)">\(Y\)</span>; the injective operators <span class="math" data-tex="\(A_t=(1-t)I+tS_e\)">\(A_t=(1-t)I+tS_e\)</span>, with the largest-coordinate proof from the classification chapter, give a homotopy to the identity through oriented planes.</p>
+<p>Here is a homotopy from <span class="math" data-tex="\((Y,v)\)">\((Y,v)\)</span> to <span class="math" data-tex="\(sf(Y,v)\)">\(sf(Y,v)\)</span>. First send <span class="math" data-tex="\(Y\)">\(Y\)</span> to <span class="math" data-tex="\(A_tY\)">\(A_tY\)</span>, transporting its orientation, and send <span class="math" data-tex="\(v\)">\(v\)</span> to the normalized orthogonal projection of <span class="math" data-tex="\(A_tv\)">\(A_tv\)</span> off <span class="math" data-tex="\(A_tY\)">\(A_tY\)</span>. This projection never vanishes, because <span class="math" data-tex="\(A_t\)">\(A_t\)</span> is injective on <span class="math" data-tex="\(Y\oplus\mathbb Rv\)">\(Y\oplus\mathbb Rv\)</span>. Its matrix in a finite frame is the continuous Gram-matrix projection; at the endpoint the pair is <span class="math" data-tex="\((S_eY,S_ev)\)">\((S_eY,S_ev)\)</span>. Next keep <span class="math" data-tex="\(S_eY\)">\(S_eY\)</span> fixed and rotate the vector to <span class="math" data-tex="\(S_ov\)">\(S_ov\)</span> by <span class="math" data-tex="\(\cos(\pi t/2)S_ev+\sin(\pi t/2)S_ov\)">\(\cos(\pi t/2)S_ev+\sin(\pi t/2)S_ov\)</span>. Its two terms are orthogonal unit vectors, both perpendicular to <span class="math" data-tex="\(S_eY\)">\(S_eY\)</span>.</p>
+<p>On the odd-coordinate space let <span class="math" data-tex="\(T(e_{2i-1})=e_{2i+1}\)">\(T(e_{2i-1})=e_{2i+1}\)</span>. Move <span class="math" data-tex="\(S_ov\)">\(S_ov\)</span> to <span class="math" data-tex="\(TS_ov\)">\(TS_ov\)</span> using the normalized straight path <span class="math" data-tex="\(((1-t)I+tT)S_ov\)">\(((1-t)I+tT)S_ov\)</span>. The largest nonzero coordinate proves that this path never vanishes. It stays in odd coordinates, perpendicular to <span class="math" data-tex="\(S_eY\)">\(S_eY\)</span>. At its endpoint the first coordinate is zero. Finally rotate <span class="math" data-tex="\(TS_ov\)">\(TS_ov\)</span> to <span class="math" data-tex="\(e_1\)">\(e_1\)</span>, using their orthogonality. The final pair is <span class="math" data-tex="\((S_eY,e_1)\)">\((S_eY,e_1)\)</span>, as required.</p>
+<p>All formulas are continuous on finite stages, take each such stage times the compact interval into a finite stage, and therefore are jointly continuous by the compact-product lemma. The Gram normalization has positive factor and the transported orientation is continuous. This proves both homotopy identities. Rank one was deliberately handled separately: its sphere fibre consists of two points, so the corresponding total space has two components and is not the comparison in this lemma. ∎</p>
+<p>The nonzero-vector total space retracts radially onto <span class="math" data-tex="\(E_n\)">\(E_n\)</span>, so it has the same cohomology. The Gysin sequence can now be written, without an unproved limit step, using <span class="math" data-tex="\(H^*(BSO(n-1))\)">\(H^*(BSO(n-1))\)</span> in place of deleted total-space cohomology. Under this identification <span class="math" data-tex="\(\pi^*p_i=p_i(\widetilde\gamma_{n-1})\)">\(\pi^*p_i=p_i(\widetilde\gamma_{n-1})\)</span>, by the actual bundle decomposition preceding the lemma and Pontryagin stability.</p>
+<h2 id="5-the-universal-ring-with-two-inverted">5. The universal ring with two inverted</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a commutative ring with identity in which two is a unit, including <span class="math" data-tex="\(\mathbb Z[1/2]\)">\(\mathbb Z[1/2]\)</span>, <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and fields of odd characteristic. Characteristic classes in this section are the images of their integral classes under coefficient change.</p>
+<p><span id="DG-CHAR-10.theorem-5.1"></span><strong>Theorem 5.1.</strong> For <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+H^*(BSO(2m+1);A)=A[p_1,\ldots,p_m].
+\tag{5.1}
+\]">\[
+H^*(BSO(2m+1);A)=A[p_1,\ldots,p_m].
+\tag{5.1}
+\]</span>
+For <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+H^*(BSO(2m);A)=A[p_1,\ldots,p_{m-1},e],
+\quad |p_i|=4i,\quad |e|=2m,
+\tag{5.2}
+\]">\[
+H^*(BSO(2m);A)=A[p_1,\ldots,p_{m-1},e],
+\quad |p_i|=4i,\quad |e|=2m,
+\tag{5.2}
+\]</span>
+with <span class="math" data-tex="\(p_m=e^2\)">\(p_m=e^2\)</span>. In odd rank the Euler class is zero with these coefficients. There are no further polynomial relations.</p>
+<p><strong>Proof.</strong> Induct in rank. Rank zero is a point and rank one is the contractible sphere model, so its cohomology is <span class="math" data-tex="\(A\)">\(A\)</span> in degree zero. The earlier Thom/Euler theorem proves <span class="math" data-tex="\(2e=0\)">\(2e=0\)</span> in odd rank; coefficient change makes <span class="math" data-tex="\(e=0\)">\(e=0\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(n=2m\)">\(n=2m\)</span>. By induction the cohomology of <span class="math" data-tex="\(BSO(n-1)\)">\(BSO(n-1)\)</span> is <span class="math" data-tex="\(A[p_1,\ldots,p_{m-1}]\)">\(A[p_1,\ldots,p_{m-1}]\)</span>. Every generator lifts under <span class="math" data-tex="\(\pi^*\)">\(\pi^*\)</span>, by the comparison lemma, so this map is surjective in every degree. Its Gysin sequence therefore gives short exact sequences
+<span class="math math-display" data-tex="\[
+0\longrightarrow H^{q-n}(BSO(n);A)
+\xrightarrow{\ \smile e\ }H^q(BSO(n);A)
+\xrightarrow{\ \pi^*\ }H^q(BSO(n-1);A)\longrightarrow0.
+\tag{5.3}
+\]">\[
+0\longrightarrow H^{q-n}(BSO(n);A)
+\xrightarrow{\ \smile e\ }H^q(BSO(n);A)
+\xrightarrow{\ \pi^*\ }H^q(BSO(n-1);A)\longrightarrow0.
+\tag{5.3}
+\]</span>
+Given a class in degree <span class="math" data-tex="\(q\)">\(q\)</span>, lift its image by its unique polynomial in the lower Pontryagin classes. The difference is <span class="math" data-tex="\(e\)">\(e\)</span> times a unique class of degree <span class="math" data-tex="\(q-n\)">\(q-n\)</span>. Repeating in that smaller degree expresses it as a polynomial in the claimed generators; the procedure terminates in negative degree. For independence, a zero polynomial first restricts to its constant-in-<span class="math" data-tex="\(e\)">\(e\)</span> term on <span class="math" data-tex="\(BSO(n-1)\)">\(BSO(n-1)\)</span>, which must be zero by induction. Divide the remaining relation by <span class="math" data-tex="\(e\)">\(e\)</span> using the injection in (5.3), and repeat. Thus no polynomial relation exists. The integral identity (2.5) gives <span class="math" data-tex="\(p_m=e^2\)">\(p_m=e^2\)</span>.</p>
+<p>Now suppose <span class="math" data-tex="\(n=2m+1\geq3\)">\(n=2m+1\geq3\)</span>. Since <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, Gysin makes <span class="math" data-tex="\(\pi^*\)">\(\pi^*\)</span> injective. The comparison identifies its target with
+<span class="math math-display" data-tex="\[
+A[p_1,\ldots,p_{m-1},e&#x27;],\qquad (e&#x27;)^2=p_m,
+\]">\[
+A[p_1,\ldots,p_{m-1},e&#x27;],\qquad (e&#x27;)^2=p_m,
+\]</span>
+the already computed even-rank ring. The sphere-bundle antipodal map covers the identity on <span class="math" data-tex="\(BSO(n)\)">\(BSO(n)\)</span>. In the pair description it sends <span class="math" data-tex="\((Y,v)\)">\((Y,v)\)</span> to <span class="math" data-tex="\((-Y,-v)\)">\((-Y,-v)\)</span>, where <span class="math" data-tex="\(-Y\)">\(-Y\)</span> means the opposite orientation: this compensates the sign of <span class="math" data-tex="\(-v\)">\(-v\)</span> to keep the total <span class="math" data-tex="\(n\)">\(n\)</span>-plane orientation fixed. On target cohomology it fixes the Pontryagin classes and sends <span class="math" data-tex="\(e&#x27;\)">\(e&#x27;\)</span> to <span class="math" data-tex="\(-e&#x27;\)">\(-e&#x27;\)</span>. Hence the image of <span class="math" data-tex="\(\pi^*\)">\(\pi^*\)</span> consists of invariant polynomials. Such polynomials contain only even powers of <span class="math" data-tex="\(e&#x27;\)">\(e&#x27;\)</span>, because an odd-power coefficient would satisfy <span class="math" data-tex="\(a=-a\)">\(a=-a\)</span>, forcing <span class="math" data-tex="\(a=0\)">\(a=0\)</span> when two is invertible. The invariant ring is therefore
+<span class="math" data-tex="\(A[p_1,\ldots,p_{m-1},(e&#x27;)^2]\)">\(A[p_1,\ldots,p_{m-1},(e&#x27;)^2]\)</span>.
+Every one of these generators lies in the image: <span class="math" data-tex="\(p_i\)">\(p_i\)</span> lifts by stability and <span class="math" data-tex="\((e&#x27;)^2\)">\((e&#x27;)^2\)</span> is the image of <span class="math" data-tex="\(p_m\)">\(p_m\)</span> by (2.5). The image is exactly that ring. Its generators are independent since their monomials are distinct monomials in the even-rank polynomial ring. This proves the odd case and completes the induction. ∎</p>
+<p>The odd-rank argument identifies the image using the antipodal action. It requires neither a rank-only comparison nor a cohomology inverse-limit assertion. The integral equality <span class="math" data-tex="\(p_m=e^2\)">\(p_m=e^2\)</span> survives before coefficients change; the polynomial presentations (5.1)–(5.2) are stated only with two inverted.</p>
+<p>The coefficient ring need not be an integral domain. In even rank, the Gysin injection supplies each division by <span class="math" data-tex="\(e\)">\(e\)</span> and the lower-rank polynomial ring supplies unique coefficients; neither step cancels a coefficient in <span class="math" data-tex="\(A\)">\(A\)</span>. In odd rank, the only coefficient cancellation is <span class="math" data-tex="\(2a=0\Rightarrow a=0\)">\(2a=0\Rightarrow a=0\)</span>, which follows because two is a unit. The proof therefore also covers rings with zero divisors, such as <span class="math" data-tex="\(\mathbb Z/9\mathbb Z\)">\(\mathbb Z/9\mathbb Z\)</span>.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><span id="DG-CHAR-10.exercise-6.1"></span><strong>Exercise 6.1 — Easy.</strong> Compute <span class="math" data-tex="\(p(T\mathbb {CP}^3)\)">\(p(T\mathbb {CP}^3)\)</span> and compare with <span class="math" data-tex="\(p(TS^6)\)">\(p(TS^6)\)</span>.</p>
+<p><strong>Solution.</strong> Equation (2.4), truncated at <span class="math" data-tex="\(x^4=0\)">\(x^4=0\)</span>, gives <span class="math" data-tex="\(1+4x^2\)">\(1+4x^2\)</span>. Its would-be next term has degree eight and vanishes on this real six-dimensional space. Sphere tangent stabilization gives <span class="math" data-tex="\(p(TS^6)=1\)">\(p(TS^6)=1\)</span>. The two tangent bundles therefore have different Pontryagin data on their respective bases, despite both having real rank six.</p>
+<p><span id="DG-CHAR-10.exercise-6.2"></span><strong>Exercise 6.2 — Medium.</strong> Prove the top Euler-square identity, keeping the orientation sign.</p>
+<p><strong>Solution.</strong> For real rank <span class="math" data-tex="\(2k\)">\(2k\)</span>, move the imaginary basis vectors from the second block into interleaved positions. The number of crossings is <span class="math" data-tex="\((2k)(2k-1)/2\)">\((2k)(2k-1)/2\)</span>, of parity <span class="math" data-tex="\(k\)">\(k\)</span>. Thus the complex orientation gives Euler class <span class="math" data-tex="\((-1)^ke(\xi\oplus\xi)=(-1)^ke(\xi)^2\)">\((-1)^ke(\xi\oplus\xi)=(-1)^ke(\xi)^2\)</span>. This is the top Chern class of the complexification. The Pontryagin sign <span class="math" data-tex="\((-1)^k\)">\((-1)^k\)</span> cancels it. This proves the integral equality over any Hausdorff base with the stated bundle orientation.</p>
+<p><span id="DG-CHAR-10.exercise-6.3"></span><strong>Exercise 6.3 — Medium.</strong> Prove the qualified Whitney formula and exhibit a nonzero two-torsion error.</p>
+<p><strong>Solution.</strong> Split the even-index Chern Whitney sum into its even-even and odd-odd terms. The former are exactly the signed Pontryagin products; multiplying each latter term by two gives zero by conjugation. For two copies of the tautological line on <span class="math" data-tex="\(\mathbb {RP}^4\)">\(\mathbb {RP}^4\)</span>, write <span class="math" data-tex="\(t=c_1(L_{\mathbb C})\)">\(t=c_1(L_{\mathbb C})\)</span>. Its mod-two reduction is <span class="math" data-tex="\(a^2\)">\(a^2\)</span>, so <span class="math" data-tex="\(t^2\)">\(t^2\)</span> has nonzero reduction <span class="math" data-tex="\(a^4\)">\(a^4\)</span>. Thus <span class="math" data-tex="\(p_1(2L)=-t^2\ne0\)">\(p_1(2L)=-t^2\ne0\)</span>, while each individual line has all positive Pontryagin classes zero. Since <span class="math" data-tex="\(2t=0\)">\(2t=0\)</span>, the difference is annihilated by two.</p>
+<p><span id="DG-CHAR-10.exercise-6.4"></span><strong>Exercise 6.4 — Hard.</strong> Prove the universal oriented ring theorem and list the degree-eight bases for <span class="math" data-tex="\(BSO(4)\)">\(BSO(4)\)</span> and <span class="math" data-tex="\(BSO(5)\)">\(BSO(5)\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Solution.</strong> Replace the sphere-bundle total space by <span class="math" data-tex="\(BSO(n-1)\)">\(BSO(n-1)\)</span> using the actual shift/projection/rotation homotopy of Lemma4.1. In even rank its lower Pontryagin generators lift, so Gysin gives (5.3); successive subtraction of the lower-rank polynomial and division by the injective Euler map proves generation and independence. In odd rank the Euler map is zero and pullback injects into the even-rank ring. Antipodal invariance removes its odd Euler powers, while the remaining Euler square is the pulled-back top Pontryagin class. This identifies the image exactly and proves the theorem, starting from the separately contractible rank-one model. For <span class="math" data-tex="\(BSO(4)\)">\(BSO(4)\)</span> the ring is <span class="math" data-tex="\(A[p_1,e]\)">\(A[p_1,e]\)</span>, with both generators of degree four, so the degree-eight basis is <span class="math" data-tex="\(p_1^2,p_1e,e^2\)">\(p_1^2,p_1e,e^2\)</span>. For <span class="math" data-tex="\(BSO(5)\)">\(BSO(5)\)</span> it is <span class="math" data-tex="\(A[p_1,p_2]\)">\(A[p_1,p_2]\)</span>, and the basis is <span class="math" data-tex="\(p_1^2,p_2\)">\(p_1^2,p_2\)</span>.</p>
+<p><span id="DG-CHAR-10.exercise-6.5"></span><strong>Exercise 6.5 — Medium.</strong> Compute the unoriented universal ring <span class="math" data-tex="\(H^*(BO(n);A)\)">\(H^*(BO(n);A)\)</span> with two inverted, supplying the double-cover transfer proof.</p>
+<p><strong>Solution.</strong> For a double cover <span class="math" data-tex="\(q:\widetilde X\to X\)">\(q:\widetilde X\to X\)</span> with deck map <span class="math" data-tex="\(t\)">\(t\)</span>, define <span class="math" data-tex="\(T\)">\(T\)</span> on singular chains by summing the two lifts of each simplex. Each lift exists by choosing its vertex lift and using path lifting on the contractible simplex; the homotopy-lifting proof in the classification chapter makes it continuous and unique. Restricting to a face gives exactly the two lifts of that face, so <span class="math" data-tex="\(T\partial=\partial T\)">\(T\partial=\partial T\)</span>. Moreover <span class="math" data-tex="\(q_*T=2\operatorname{id}\)">\(q_*T=2\operatorname{id}\)</span> and <span class="math" data-tex="\(Tq_*=\operatorname{id}+t_*\)">\(Tq_*=\operatorname{id}+t_*\)</span>. Dualizing gives a transfer <span class="math" data-tex="\(\tau\)">\(\tau\)</span> with <span class="math" data-tex="\(\tau q^*=2\operatorname{id}\)">\(\tau q^*=2\operatorname{id}\)</span> and <span class="math" data-tex="\(q^*\tau=\operatorname{id}+t^*\)">\(q^*\tau=\operatorname{id}+t^*\)</span>. Thus <span class="math" data-tex="\(q^*\)">\(q^*\)</span> is injective when two is a unit; its image consists precisely of the invariants, since an invariant <span class="math" data-tex="\(b\)">\(b\)</span> equals <span class="math" data-tex="\(q^*(\tau b/2)\)">\(q^*(\tau b/2)\)</span>.</p>
+<p>Apply this to the orientation cover. Orientation reversal fixes all Pontryagin classes and negates the even-rank Euler generator. The invariant rings computed from Theorem5.1 are
+<span class="math math-display" data-tex="\[
+H^*(BO(n);A)=A[p_1,\ldots,p_{\lfloor n/2\rfloor}].
+\]">\[
+H^*(BO(n);A)=A[p_1,\ldots,p_{\lfloor n/2\rfloor}].
+\]</span>
+In even rank the final generator pulls back to <span class="math" data-tex="\(e^2\)">\(e^2\)</span>. In rank one there are no positive generators and the ring is <span class="math" data-tex="\(A\)">\(A\)</span>; rank zero is a point. This proof computes an invariant image, rather than assuming a covering pullback surjective.</p>
+<p><span id="DG-CHAR-10.exercise-6.6"></span><strong>Exercise 6.6 — Medium.</strong> Verify the mod-two reduction formula and the rank-two oriented normalization.</p>
+<p><strong>Solution.</strong> Underlying real complexification is <span class="math" data-tex="\(\xi\oplus\xi\)">\(\xi\oplus\xi\)</span>. Its total mod-two class is <span class="math" data-tex="\(w(\xi)^2\)">\(w(\xi)^2\)</span>, whose component in degree <span class="math" data-tex="\(4i\)">\(4i\)</span> is exactly <span class="math" data-tex="\(w_{2i}(\xi)^2\)">\(w_{2i}(\xi)^2\)</span>. Chern reduction identifies this component with <span class="math" data-tex="\(\rho_2p_i\)">\(\rho_2p_i\)</span>. For an oriented two-plane, (2.5) gives <span class="math" data-tex="\(p_1=e^2\)">\(p_1=e^2\)</span>. Its integral universal ring is already <span class="math" data-tex="\(\mathbb Z[e]\)">\(\mathbb Z[e]\)</span>: Lemma4.1 identifies the unit sphere total space with the contractible <span class="math" data-tex="\(BSO(1)\)">\(BSO(1)\)</span>, and Gysin makes multiplication by <span class="math" data-tex="\(e\)">\(e\)</span> an isomorphism between consecutive positive even degrees and gives zero odd groups. Starting from <span class="math" data-tex="\(H^0=\mathbb Z\)">\(H^0=\mathbb Z\)</span>, these powers are the integral basis in every degree. This rank-two argument does not require two inverted, although the complete higher-rank polynomial theorem does.</p>
+<h2 id="sources-and-scope">Sources and scope</h2>
+<p>Freely accessible comparisons are Allen Hatcher, <em>Vector Bundles and K-Theory</em>, version 2.2 (2017), <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf">author PDF</a>, Section 3.2, and Haynes Miller, <em>Algebraic Topology II</em> (2020), <a href="https://ocw.mit.edu/courses/18-906-algebraic-topology-ii-spring-2020/d567d6a5a35a1553ad4984de13700cf8_MIT18_906S20_ch5.pdf">Chapter 5</a>, Lecture 36. Miller's Theorem 36.5 states the oriented polynomial presentations over every <span class="math" data-tex="\(\mathbb Z[1/2]\)">\(\mathbb Z[1/2]\)</span>-algebra. Sections 4–5 provide the complete homotopy and invariant-image proofs for that coefficient scope; Section 1 retains the integral two-torsion error before two is inverted.</p>
+<p>Sections 1–5 prove the Whitney formula with its integral two-torsion term, the projective calculation, the Euler-square identity and the oriented universal-ring presentation. The deleted-vector homotopy and coefficient-limit argument are explicit. Antipodal invariance determines the odd-rank image. The mod-two oriented-ring calculation uses the complete frame and Euler obstruction proofs in the earlier companion.</p>
+<p>Natural Pontryagin classes and the integral top Euler-square identity work on every Hausdorff base with the stated orientation. Whitney, complex-root and coefficient-reduction calculations use a paracompact Hausdorff base. The universal presentations have their explicit coefficient assumptions. The full frame-obstruction theory is supplied in <a href="DG-CHAR-08B.html">the frame-obstruction companion</a>. This version records only a check by the writing AI; independent review is separate. The complete assigned teaching and proof prerequisites are now supplied across the course.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-09.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-07.html">Next chapter</a></nav><p><a href="pontryagin-classes-and-oriented-universal-cohomology.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

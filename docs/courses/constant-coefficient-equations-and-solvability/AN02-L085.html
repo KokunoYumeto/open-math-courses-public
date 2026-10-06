@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Causal mixed solutions with distribution-valued data</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="causal-mixed-solutions-with-distribution-valued-data">Causal mixed solutions with distribution-valued data</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A boundary impulse is a natural datum even when it has no classical value at the initial corner. The appropriate class is smooth in the boundary-normal coordinate and distributional in the remaining variables. Causality replaces an initial trace that need not exist. We construct and characterize the unique solution in this class without a spatial growth condition.</p>
+<p>Read <a href="AN02-L084.html">Compatible smooth mixed data and the data that determine a solution</a>, <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies the Fourier convention and Gaussian formula; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies scalar calculus and cutoffs. <a href="prerequisites/stable-prerequisite-bridges.html">Polynomial and contour interfaces for stable boundary models</a> supplies finite scalar and polynomial algebra. <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 6, supplies the complete-metric Baire theorem. <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a> supplies compact parameter and tensor operations. <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a> supplies proper convolution.</p>
+<p>Existence uses the two planned cone and analytic zero-order theorems stated in <a href="AN02-L072.html">Incoming normal roots at a flat boundary</a>. Uniqueness also uses the three planned local Holmgren, analytic support-normal and analytic convolution-ellipticity theorems stated in <a href="AN02-L079.html">Uniqueness from the principal boundary symbol</a>. These uses remain conditional on the specified proofs.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's treatment of constant-coefficient equations. The linked lessons supply the prerequisite proofs used below.</p>
+<h2 id="the-exact-distribution-class">The exact distribution class</h2>
+<p>Keep the balanced hyperbolic polynomial system, coordinates <span class="math" data-tex="\(x=(a,x&#x27;)=(a,z,t)\)">\(x=(a,x&#x27;)=(a,z,t)\)</span>, cones C and S, and boundary operators <span class="math" data-tex="\(B_k\)">\(B_k\)</span> of <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a> and <a href="AN02-L084.html">Compatible smooth mixed data and the data that determine a solution</a>. In particular <span class="math" data-tex="\(C,S\subset\{t\ge b|x|\}\)">\(C,S\subset\{t\ge b|x|\}\)</span> for some positive b. Data consist of a right-normal smooth family <span class="math" data-tex="\(f(a)\in\mathcal D&#x27;(\mathbb R^{n-1}_{x&#x27;})\)">\(f(a)\in\mathcal D&#x27;(\mathbb R^{n-1}_{x&#x27;})\)</span>, <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, and distributions <span class="math" data-tex="\(g_k\)">\(g_k\)</span> on the boundary. Their supports lie in <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>.</p>
+<p><strong>Theorem.</strong> There is exactly one right-normal smooth distribution family u such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)u=f\\
+\quad(a&gt;0),\\
+\qquad
+ B_k(D)u|_{a=0}=g_k,\\
+\qquad
+ \operatorname{supp}u\subset\{t\ge0\},\\
+\qquad
+ u\in C^\infty([0,\infty)_a;\mathcal D&#x27;_{x&#x27;}).
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+P(D)u=f\\
+\quad(a&gt;0),\\
+\qquad
+ B_k(D)u|_{a=0}=g_k,\\
+\qquad
+ \operatorname{supp}u\subset\{t\ge0\},\\
+\qquad
+ u\in C^\infty([0,\infty)_a;\mathcal D&#x27;_{x&#x27;}).
+\end{gathered}
+\tag{1}
+\]</span>
+The equation holds for all tangent times as a distribution, including initial time. No classical time trace is asserted. This is the causal distribution version with zero Cauchy data, rather than a rule for multiplying a nonexistent initial trace. No separate formal corner compatibility is required for these causal boundary distributions.</p>
+<p>Here smoothness means that pairing with each fixed compact smooth tangent test is a smooth scalar function of a, with all one-sided derivatives at zero. Its derivatives are distributions and smooth weak families. The local boundedness argument below verifies this last assertion if smoothness is initially given only through scalar pairings.</p>
+<h2 id="uniform-orders-and-moving-tests">Uniform orders and moving tests</h2>
+<p>For a compact tangent set K let <span class="math" data-tex="\(\mathcal D_K\)">\(\mathcal D_K\)</span> be the space of smooth tests supported in K, with seminorms <span class="math" data-tex="\(p_{K,q}\)">\(p_{K,q}\)</span> given by all derivatives through order q. This space is complete: a seminorm-Cauchy sequence and all its derivatives converge uniformly; coordinate integral identities identify successive derivatives, and the limit vanishes outside K. The metric made from the countable seminorms is complete by the same limit argument.</p>
+<p>If T(a) is a weakly continuous distribution family on a compact parameter interval I, every fixed test pairing is bounded. The closed sets of tests on which <span class="math" data-tex="\(\sup_{a\in I}|T(a)(\phi)|\le l\)">\(\sup_{a\in I}|T(a)(\phi)|\le l\)</span>, <span class="math" data-tex="\(l=1,2,\ldots\)">\(l=1,2,\ldots\)</span>, cover <span class="math" data-tex="\(\mathcal D_K\)">\(\mathcal D_K\)</span>. <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 6 gives one set an interior point. Subtracting the estimate at that point from its estimate at nearby tests gives a uniform bound on a neighborhood of zero. Such a neighborhood contains a condition <span class="math" data-tex="\(p_{K,q}(\phi)&lt;\epsilon\)">\(p_{K,q}(\phi)&lt;\epsilon\)</span>; scaling yields
+<span class="math math-display" data-tex="\[
+ \sup_{a\in I}|T(a)(\phi)|\le A\,p_{K,q}(\phi).
+ \tag{2}
+\]">\[
+ \sup_{a\in I}|T(a)(\phi)|\le A\,p_{K,q}(\phi).
+ \tag{2}
+\]</span>
+If this seminorm is zero, scaling any multiple of the test in the neighborhood gives zero pairing. Thus no exceptional case is omitted. The same argument applies to any weakly continuous derivative family and to bounded families of difference quotients. Scalar convergence of difference quotients and 2 make their limits continuous linear test functionals; iterating proves that scalar weak smoothness has distribution-valued derivatives.</p>
+<p>Uniform bounds also make weak convergence uniform on compact sets of tests. A finite net in the controlling seminorm bounds the error off the net, while convergence controls the finite net itself. In particular, if <span class="math" data-tex="\(h(a,y)\)">\(h(a,y)\)</span> is a smooth test family with locally common compact support in y, then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{d^j}{da^j}\langle T(a),h(a,\cdot)\rangle
+   \\
+=\sum_{\ell=0}^j\binom j\ell
+       \langle T^{(\ell)}(a),\partial_a^{j-\ell}h(a,\cdot)\rangle .
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+\frac{d^j}{da^j}\langle T(a),h(a,\cdot)\rangle
+   \\
+=\sum_{\ell=0}^j\binom j\ell
+       \langle T^{(\ell)}(a),\partial_a^{j-\ell}h(a,\cdot)\rangle .
+\end{gathered}
+\tag{3}
+\]</span>
+For j=1, split the difference quotient into change of T against the fixed test and change of test against T at the new parameter. The first converges weakly; 2 bounds the Taylor remainder in the second. Compact-test uniform convergence gives continuity of both resulting pairings. Induction proves the full formula. The argument with several parameters proves the corresponding mixed derivatives and right endpoints. When only one factor varies, this is the compact-parameter lemma in <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a>; 2 supplies the additional moving-distribution step.</p>
+<h2 id="extending-an-existing-right-normal-family">Extending an existing right-normal family</h2>
+<p>An arbitrary sequence of distribution jets can have increasing orders, so <a href="AN02-L084.html">Compatible smooth mixed data and the data that determine a solution</a>'s scalar parameter Borel series cannot simply be applied to it with a single fixed distribution estimate. Instead use values of the existing family. Put <span class="math" data-tex="\(b_k=2^k\)">\(b_k=2^k\)</span>, <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>, and define real coefficients
+<span class="math math-display" data-tex="\[
+ c_k=\prod_{\substack{j\ge0\\j\ne k}}
+                \frac{-1-b_j}{b_k-b_j}.
+ \tag{4}
+\]">\[
+ c_k=\prod_{\substack{j\ge0\\j\ne k}}
+                \frac{-1-b_j}{b_k-b_j}.
+ \tag{4}
+\]</span>
+The factors with j&lt;k form a finite product. For j&gt;k the ratio is <span class="math" data-tex="\((1+2^{-j})/(1-2^{k-j})\)">\((1+2^{-j})/(1-2^{k-j})\)</span>; its infinite product converges to a nonzero finite value. Indeed the sums of the numerator increments and denominator decrements converge, and <span class="math" data-tex="\(-2x\le\log(1-x)\le0\)">\(-2x\le\log(1-x)\le0\)</span> for <span class="math" data-tex="\(0\le x\le1/2\)">\(0\le x\le1/2\)</span>, while <span class="math" data-tex="\(0\le\log(1+x)\le x\)">\(0\le\log(1+x)\le x\)</span>. These inequalities follow by differentiating the two scalar functions.</p>
+<p>The product truncated at N, denoted <span class="math" data-tex="\(c_{k,N}\)">\(c_{k,N}\)</span> for k≤N and zero otherwise, obeys a bound independent of N:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|c_{k,N}|,\ |c_k|
+       \le e^4\,2^{-k(k-3)/2},\\
+\qquad
+           \sum_{k\ge0}|c_k|b_k^q&lt;\infty\\
+\quad(q\ge0).
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+|c_{k,N}|,\ |c_k|
+       \le e^4\,2^{-k(k-3)/2},\\
+\qquad
+           \sum_{k\ge0}|c_k|b_k^q&lt;\infty\\
+\quad(q\ge0).
+\end{gathered}
+\tag{5}
+\]</span>
+For j&lt;k, <span class="math" data-tex="\((1+b_j)/(b_k-b_j)\le2^{j-k+2}\)">\((1+b_j)/(b_k-b_j)\le2^{j-k+2}\)</span>; multiplying gives the displayed power. The upper product is bounded by the exponential inequalities just given, with both geometric sums at most two. The resulting quadratic exponent beats any fixed linear exponent qk, proving the series statement, for example by comparing the ratio of late terms with 1/2.</p>
+<p>Finite Lagrange interpolation at the distinct nodes <span class="math" data-tex="\(b_0,\ldots,b_N\)">\(b_0,\ldots,b_N\)</span>, evaluated at -1, gives <span class="math" data-tex="\(\sum_{k=0}^Nc_{k,N}b_k^q=(-1)^q\)">\(\sum_{k=0}^Nc_{k,N}b_k^q=(-1)^q\)</span> whenever q≤N. For completeness, the interpolation polynomial agrees with <span class="math" data-tex="\(r^q\)">\(r^q\)</span> at every node; their difference has degree at most N and N+1 distinct roots, so is zero by finite factorization. 5 controls tails uniformly in N, while each fixed coefficient converges. Passing first the finite head and then its uniformly small tail gives
+<span class="math math-display" data-tex="\[
+                 \sum_{k\ge0}c_k(-b_k)^q=1
+                                      \quad(q=0,1,\ldots).
+ \tag{6}
+\]">\[
+                 \sum_{k\ge0}c_k(-b_k)^q=1
+                                      \quad(q=0,1,\ldots).
+ \tag{6}
+\]</span></p>
+<p>Choose a smooth scalar cutoff χ on the nonnegative line, one near zero and zero for arguments ≥1. For a right-normal smooth family F, define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widetilde F(a)\\
+=  \begin{cases}
+ F(a),&amp;a\ge0,\\
+ \displaystyle\sum_{k\ge0}c_k\,\chi(-b_ka)F(-b_ka),&amp;a&lt;0 .
+ \end{cases}
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+\widetilde F(a)\\
+=  \begin{cases}
+ F(a),&amp;a\ge0,\\
+ \displaystyle\sum_{k\ge0}c_k\,\chi(-b_ka)F(-b_ka),&amp;a&lt;0 .
+ \end{cases}
+\end{gathered}
+\tag{7}
+\]</span>
+The sum is locally finite at every negative a. For each derivative order q, the family <span class="math" data-tex="\((\chi F)^{(q)}(v)\)">\((\chi F)^{(q)}(v)\)</span>, <span class="math" data-tex="\(0\le v\le1\)">\(0\le v\le1\)</span>, is uniformly bounded by one finite test seminorm on each compact tangent support, by 2 and the finite product formula. 5 therefore bounds its differentiated series uniformly in that seminorm, including as a approaches zero from the left. It defines a distribution, not merely separate scalar limits. 6 gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lim_{a\uparrow0}\partial_a^q\widetilde F(a)
+   \\
+=\sum_{k\ge0}c_k(-b_k)^q F^{(q)}(0)
+   \\
+=F^{(q)}(0).
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+\lim_{a\uparrow0}\partial_a^q\widetilde F(a)
+   \\
+=\sum_{k\ge0}c_k(-b_k)^q F^{(q)}(0)
+   \\
+=F^{(q)}(0).
+\end{gathered}
+\tag{8}
+\]</span>
+All scalar derivatives match. The coordinate integral identities show that the joined scalar pairings are smooth, and 2 gives the required derivative distributions. This proves a smooth extension of every existing right-normal family. If F is supported in <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, the extension is too: the formula uses only scalar multiples of members of that same causal family. No common order across all q is assumed.</p>
+<h2 id="a-causal-cauchy-solution-smooth-in-the-normal-variable">A causal Cauchy solution smooth in the normal variable</h2>
+<p>Apply 7 to the given forcing and call its whole-normal extension F. It defines a full distribution by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle\mathcal F,\Psi\rangle
+          =\int_{\mathbb R}\langle F(a),\Psi(a,\cdot)\rangle\,da,
+                   \\
+\qquad \operatorname{supp}\mathcal F\subset\{t\ge0\}.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+\langle\mathcal F,\Psi\rangle
+          =\int_{\mathbb R}\langle F(a),\Psi(a,\cdot)\rangle\,da,
+                   \\
+\qquad \operatorname{supp}\mathcal F\subset\{t\ge0\}.
+\end{gathered}
+\tag{9}
+\]</span>
+2 on the compact normal interval and 3 for the varying test give continuity and ordinary integrability. Integration by parts in a identifies normal distribution derivatives with the integrated family derivatives.</p>
+<p><a href="AN02-L084.html">equation 6 in Compatible smooth mixed data and the data that determine a solution</a> constructs E with <span class="math" data-tex="\(P(D)E=\delta\)">\(P(D)E=\delta\)</span> and support in C. Addition is proper on <span class="math" data-tex="\(C\times\{t\ge0\}\)">\(C\times\{t\ge0\}\)</span>; <a href="AN02-L084.html">equation 7 in Compatible smooth mixed data and the data that determine a solution</a> consequently gives the full distribution <span class="math" data-tex="\(E*\mathcal F\)">\(E*\mathcal F\)</span> as a causal solution. It is also a whole-normal smooth family, which requires an argument rather than an unverified restriction of E to a slice.</p>
+<p>For a tangent test φ and a in a compact interval, use coordinates <span class="math" data-tex="\((b,y)\)">\((b,y)\)</span> for E. Choose one compact smooth θ in these coordinates, equal to one on all relevant support pairs. Such a cutoff exists: if <span class="math" data-tex="\(y+v\)">\(y+v\)</span> belongs to the compact support of φ, <span class="math" data-tex="\(v_t\ge0\)">\(v_t\ge0\)</span>, and <span class="math" data-tex="\((b,y)\in C\)">\((b,y)\in C\)</span>, then <span class="math" data-tex="\(0\le y_t\le\max_{\operatorname{supp}\phi}t\)">\(0\le y_t\le\max_{\operatorname{supp}\phi}t\)</span>; C's positive time bound controls both b and y, hence also v. If that maximum is negative there are no relevant pairs. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle u_0(a),\phi\rangle
+    \\
+=\left\langle E(b,y),
+        \\
+\begin{gathered}\theta(b,y)\\
+\left\langle F(a-b,v),\phi(y+v)\right\rangle\end{gathered}
+      \right\rangle .
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+\langle u_0(a),\phi\rangle
+    \\
+=\left\langle E(b,y),
+        \\
+\begin{gathered}\theta(b,y)\\
+\left\langle F(a-b,v),\phi(y+v)\right\rangle\end{gathered}
+      \right\rangle .
+\end{gathered}
+\tag{10}
+\]</span>
+The inner expression is jointly smooth in a,b,y by 3, with one compact set of v for bounded y. The outer fixed distribution pairing and <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a>, Lemma 1.1, then prove all normal derivatives. 2 gives a finite seminorm bound in φ, so each result is a distribution. Integrating in a and using the tensor pairing with the same proper cutoffs identifies this family with <span class="math" data-tex="\(E*\mathcal F\)">\(E*\mathcal F\)</span>; the two iterated pairings agree by <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a>'s tensor theorem. To commute the remaining scalar normal integral with the compact E pairing, approximate that integral by Riemann sums: every derivative through the finite order controlling E converges uniformly on the common compact product, by the already proved moving-test smoothness. Thus the distribution pairing commutes with the integral as well. Therefore
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)u_0=F,\\
+\qquad
+        u_0\in C^\infty(\mathbb R_a;\mathcal D&#x27;_{x&#x27;}),\\
+\qquad
+                    \operatorname{supp}u_0\subset\{t\ge0\}.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+P(D)u_0=F,\\
+\qquad
+        u_0\in C^\infty(\mathbb R_a;\mathcal D&#x27;_{x&#x27;}),\\
+\qquad
+                    \operatorname{supp}u_0\subset\{t\ge0\}.
+\end{gathered}
+\tag{11}
+\]</span>
+Equality of full distributions implies equality of these smooth families: pair a fixed tangent test, then every compact normal test; the resulting continuous scalar function must vanish. The construction covers characteristic boundary normals and operators independent of a. It never assumes that E itself has a classical normal trace.</p>
+<h2 id="correcting-the-boundary-distributions">Correcting the boundary distributions</h2>
+<p>Normal family derivatives and polynomial tangent derivatives give every trace of <span class="math" data-tex="\(B_ku_0\)">\(B_ku_0\)</span> at zero. Each is a causal distribution. Set
+<span class="math math-display" data-tex="\[
+                    \psi_k=g_k-B_k(D)u_0|_{a=0}.
+ \tag{12}
+\]">\[
+                    \psi_k=g_k-B_k(D)u_0|_{a=0}.
+ \tag{12}
+\]</span>
+These residuals are already distributions supported in nonnegative time. There is no operation of extending a time trace across zero and no flatness condition to impose.</p>
+<p><a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a> supplies a smooth right-normal distribution family <span class="math" data-tex="\(e_k(a)\)">\(e_k(a)\)</span>, with identity original boundary traces and joint support in S. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v(a)=\sum_{k=1}^h e_k(a)*\psi_k,\\
+\qquad
+                             u=u_0+v\\
+\quad(a\ge0),
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+v(a)=\sum_{k=1}^h e_k(a)*\psi_k,\\
+\qquad
+                             u=u_0+v\\
+\quad(a\ge0),
+\end{gathered}
+\tag{13}
+\]</span>
+where convolution is tangent only. It is proper uniformly on compact normal intervals: the S time bound controls each kernel displacement when its sum with a causal residual lies in a compact tangent output set. Derivatives of the kernel family have the same support bound. Indeed a point outside the closed joint support has a product neighborhood where every member vanishes, and all parameter derivatives vanish there too.</p>
+<p>Choose independent compact cutoffs in the two tangent input variables, equal to one on all relevant pairs for a fixed compact output set and compact normal interval. For a fixed output test the convolution pairing is then a tensor pairing of the cut-off family <span class="math" data-tex="\(e_k(a)\)">\(e_k(a)\)</span> and the fixed cut-off residual. Weak difference quotients of the first factor converge to its derivatives and are uniformly bounded by 2. <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a>, Theorem 3.1, on sequential tensor limits proves convergence of the paired difference quotients; its same argument proves continuity. Induct on derivative order. This establishes weak smoothness and commutation of all normal derivatives, with the tangent derivative identities supplied by <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a>.</p>
+<p>Consequently
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)v=0\\
+\quad(a&gt;0),\\
+\qquad
+ B_j(D)v|_0=\psi_j,\\
+\qquad
+        \operatorname{supp}v\subset\{t\ge0\}.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+P(D)v=0\\
+\quad(a&gt;0),\\
+\qquad
+ B_j(D)v|_0=\psi_j,\\
+\qquad
+        \operatorname{supp}v\subset\{t\ge0\}.
+\end{gathered}
+\tag{14}
+\]</span>
+Equations 11–14 prove existence. When h=0, the correction sum is empty. All data may have arbitrary spatial growth; each required pairing has been made proper by its actual causal support.</p>
+<h2 id="uniqueness-by-smoothing-into-positive-time">Uniqueness by smoothing into positive time</h2>
+<p>Let w be the difference of two solutions. It is a right-normal smooth causal distribution family with zero equation and zero boundary traces. Choose compact smooth tangent approximate identities of integral one, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{supp}\rho_\epsilon
+       \subset\{|z|\le\epsilon,\ \epsilon&lt;t&lt;2\epsilon\},
+                  \\
+\qquad w_\epsilon(a)=w(a)*\rho_\epsilon .
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+\operatorname{supp}\rho_\epsilon
+       \subset\{|z|\le\epsilon,\ \epsilon&lt;t&lt;2\epsilon\},
+                  \\
+\qquad w_\epsilon(a)=w(a)*\rho_\epsilon .
+\end{gathered}
+\tag{15}
+\]</span>
+For example scale a fixed product bump supported in the indicated unit box, choosing a slightly smaller box in its interior. Pairing w with the translated bump and applying 3 gives a jointly smooth function of a,z,t, including right normal derivatives. Proper convolution with the compact bump commutes with every polynomial differential operator and trace. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)w_\epsilon=0,\\
+\qquad
+ B_k(D)w_\epsilon|_0=0,\\
+\qquad
+            \operatorname{supp}w_\epsilon\subset\{t\ge\epsilon\}.
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+P(D)w_\epsilon=0,\\
+\qquad
+ B_k(D)w_\epsilon|_0=0,\\
+\qquad
+            \operatorname{supp}w_\epsilon\subset\{t\ge\epsilon\}.
+\end{gathered}
+\tag{16}
+\]</span>
+Every classical initial time jet is zero. <a href="AN02-L079.html">Uniqueness from the principal boundary symbol</a>'s smooth arbitrary-growth causal uniqueness theorem makes <span class="math" data-tex="\(w_\epsilon=0\)">\(w_\epsilon=0\)</span> on <span class="math" data-tex="\(a,t\ge0\)">\(a,t\ge0\)</span>, and its support makes it zero for negative time as well.</p>
+<p>For each fixed a and tangent test φ, the inverse-translated bump average converges to φ with every derivative on one compact support. Taylor's integral identity, or uniform continuity of each test derivative on that compact set, proves this directly. Continuity of the distribution <span class="math" data-tex="\(w(a)\)">\(w(a)\)</span> gives
+<span class="math math-display" data-tex="\[
+                 w_\epsilon(a)\longrightarrow w(a)
+                        \quad\hbox{weakly in }\mathcal D&#x27;_{x&#x27;}.
+ \tag{17}
+\]">\[
+                 w_\epsilon(a)\longrightarrow w(a)
+                        \quad\hbox{weakly in }\mathcal D&#x27;_{x&#x27;}.
+ \tag{17}
+\]</span>
+Hence w(a)=0 for every a. This proves uniqueness in exactly the claimed class. Only this uniqueness step uses <a href="AN02-L079.html">Uniqueness from the principal boundary symbol</a>'s three further planned analytic/Holmgren entries; existence retains the two <a href="AN02-L072.html">Incoming normal roots at a flat boundary</a> cone/order entries.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (entry: an incoming boundary impulse).</strong> For <span class="math" data-tex="\(P(w,s)=(s-i)^2-w^2\)">\(P(w,s)=(s-i)^2-w^2\)</span> and Dirichlet boundary datum <span class="math" data-tex="\(\delta_0(t)\)">\(\delta_0(t)\)</span>, with zero forcing, construct the causal normal-smooth solution. Explain why a smooth-data corner condition cannot be required of this datum.</p>
+<p><strong>Solution.</strong> <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>'s Dirichlet kernel gives
+<span class="math math-display" data-tex="\[
+                     u(a,t)=e^{-a}\delta(t-a),\qquad a\ge0 .
+ \tag{18}
+\]">\[
+                     u(a,t)=e^{-a}\delta(t-a),\qquad a\ge0 .
+ \tag{18}
+\]</span>
+Its test pairing is <span class="math" data-tex="\(e^{-a}\phi(a)\)">\(e^{-a}\phi(a)\)</span>, a smooth function of a, including zero. Differentiating the translated delta distribution yields
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_a^ju(a,t)=i^je^{-a}
+          \\
+\sum_{k=0}^j\binom jk\,\delta^{(k)}(t-a),\\
+\qquad j\ge0 .
+\end{gathered}
+\tag{19}
+\]">\[
+\begin{gathered}
+D_a^ju(a,t)=i^je^{-a}
+          \\
+\sum_{k=0}^j\binom jk\,\delta^{(k)}(t-a),\\
+\qquad j\ge0 .
+\end{gathered}
+\tag{19}
+\]</span>
+The j=1 formula follows by differentiating the damping and the translation; induction with the product rule gives the full binomial coefficients. Substitution of j=0,1,2 in the shifted wave operator, or the Fourier multiplier <span class="math" data-tex="\(e^{-a-ias}\)">\(e^{-a-ias}\)</span>, verifies the zero interior equation. The right boundary trace is <span class="math" data-tex="\(\delta(t)\)">\(\delta(t)\)</span>, and support is the causal ray <span class="math" data-tex="\(t=a\)">\(t=a\)</span>. The datum has no ordinary smooth Taylor series at t=0. Nevertheless it is a valid causal boundary distribution and has the unique solution 18. The theorem does not turn it into a classical smooth corner datum.</p>
+<p><strong>Exercise 2 (intermediate: causality with a characteristic spatial boundary).</strong> Take <span class="math" data-tex="\(P(D)=D_t\)">\(P(D)=D_t\)</span>, no boundary operators, and forcing <span class="math" data-tex="\(f(a,t)=\delta(t)\)">\(f(a,t)=\delta(t)\)</span>, independent of a. Find the causal solution and explain the sense of zero Cauchy data.</p>
+<p><strong>Solution.</strong> The time principal value is one and the normal polynomial has degree zero. Thus h=0, the empty determinant is one, and the mixed system is hyperbolic. Its causal interior inverse in <span class="math" data-tex="\((a,t)\)">\((a,t)\)</span> is
+<span class="math math-display" data-tex="\[
+                         E(a,t)=i\,\delta(a)H(t).
+ \tag{20}
+\]">\[
+                         E(a,t)=i\,\delta(a)H(t).
+ \tag{20}
+\]</span>
+Indeed <span class="math" data-tex="\(D_tH=-i\delta\)">\(D_tH=-i\delta\)</span>, so <span class="math" data-tex="\(D_tE=\delta(a)\delta(t)\)">\(D_tE=\delta(a)\delta(t)\)</span>. Its support is the positive time axis, the polar of the full time half-space with unrestricted normal covector. Proper convolution, or direct integration, gives
+<span class="math math-display" data-tex="\[
+                   u(a,t)=iH(t),\qquad D_tu=\delta(t).
+ \tag{21}
+\]">\[
+                   u(a,t)=iH(t),\qquad D_tu=\delta(t).
+ \tag{21}
+\]</span>
+This is a constant, hence smooth, normal family of tangent distributions and is causal. It has a jump in time and no canonical classical value at t=0. A homogeneous solution of <span class="math" data-tex="\(D_tu=0\)">\(D_tu=0\)</span> is constant in time, and causality forces that constant distribution to be zero; this also follows from the theorem. Zero Cauchy data here means the causal distribution problem. It does not require assigning a zero one-sided value to <span class="math" data-tex="\(iH\)">\(iH\)</span>. Notice that E itself contains a normal delta at zero; 10 constructs the smooth solution family without assuming a normal trace of E.</p>
+<p><strong>Exercise 3 (advanced: why finite extrapolation misses higher jets).</strong> Use only the nodes <span class="math" data-tex="\(1,2,4,8\)">\(1,2,4,8\)</span> in the Lagrange construction of 4. Compute its coefficients and moments. Apply this finite extension to the scalar function <span class="math" data-tex="\(F(a)=a^4\)">\(F(a)=a^4\)</span>.</p>
+<p><strong>Solution.</strong> Evaluating the four Lagrange polynomials at -1 gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(c_{0,3},c_{1,3},c_{2,3},c_{3,3})
+                       \\
+=(45/7,-15/2,9/4,-5/28).
+\end{gathered}
+\tag{22}
+\]">\[
+\begin{gathered}
+(c_{0,3},c_{1,3},c_{2,3},c_{3,3})
+                       \\
+=(45/7,-15/2,9/4,-5/28).
+\end{gathered}
+\tag{22}
+\]</span>
+For example the first coefficient is
+<span class="math" data-tex="\((-3)(-5)(-9)/[(-1)(-3)(-7)]=45/7\)">\((-3)(-5)(-9)/[(-1)(-3)(-7)]=45/7\)</span>; the other three follow from omitting their respective node factors. Exact summation gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{k=0}^3c_{k,3}(-2^k)^q=1\ (0\le q\le3),\\
+\qquad
+                   \sum_{k=0}^3c_{k,3}(-2^k)^4=-269 .
+\end{gathered}
+\tag{23}
+\]">\[
+\begin{gathered}
+\sum_{k=0}^3c_{k,3}(-2^k)^q=1\ (0\le q\le3),\\
+\qquad
+                   \sum_{k=0}^3c_{k,3}(-2^k)^4=-269 .
+\end{gathered}
+\tag{23}
+\]</span>
+For the fourth moment, the interpolation error for <span class="math" data-tex="\(r^4\)">\(r^4\)</span> is the monic nodal product. At r=-1 its value is <span class="math" data-tex="\((-2)(-3)(-5)(-9)=270\)">\((-2)(-3)(-5)(-9)=270\)</span>, so the interpolant has value <span class="math" data-tex="\(1-270=-269\)">\(1-270=-269\)</span>. This gives the same sum without a decimal computation. Choose the cutoff to be one near zero. The finite extension of <span class="math" data-tex="\(a^4\)">\(a^4\)</span> is <span class="math" data-tex="\(-269a^4\)">\(-269a^4\)</span> on a small negative interval and <span class="math" data-tex="\(a^4\)">\(a^4\)</span> on the positive interval. Its derivatives through order three match at zero, but its fourth derivatives are <span class="math" data-tex="\(-269\cdot24\)">\(-269\cdot24\)</span> and 24. It is not a smooth extension. The infinite construction passes every moment, not just a chosen finite number, while 5 permits all derivative limits.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Open lecture notes</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

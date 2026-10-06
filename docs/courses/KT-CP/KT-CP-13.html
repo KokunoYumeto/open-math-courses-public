@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="71D4107525CFCE692B5956058F9488336DAE512BEBB722A8427839FCD9C73D6D">
+<title>Locally compact groupoids and Haar systems — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Course contents</a><span aria-hidden="true"> / </span><span>KT-CP-13</span></nav>
+<article id="lesson" class="lesson"><h1 id="locally-compact-groupoids-and-haar-systems">Locally compact groupoids and Haar systems</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A crossed product remembers arrows supplied by a group action. A groupoid keeps the arrows, their sources and their targets, without requiring one group to describe every orbit. Integration is then a family of measures on the arrow fibres. Continuity of that family is an additional condition, and it has consequences for the topology.</p>
+<p>Our main convention is to integrate on range fibres with left-invariant measures. We first work with Hausdorff arrow spaces. We then explain the locally Hausdorff convention needed for holonomy groupoids, using an explicit group bundle with two inseparable arrows.</p>
+<h2 id="reversible-arrows">Reversible arrows</h2>
+<p>A groupoid <span class="math" data-tex="\(\mathcal G\rightrightarrows X\)">\(\mathcal G\rightrightarrows X\)</span> has a unit space <span class="math" data-tex="\(X=\mathcal G^{(0)}\)">\(X=\mathcal G^{(0)}\)</span>, range and source maps <span class="math" data-tex="\(r,s:\mathcal G\to X\)">\(r,s:\mathcal G\to X\)</span>, and a product on</p>
+<span id="equation-13-1"></span><span class="math math-display" data-tex="\[
+\mathcal G^{(2)}=\{(\gamma,\eta):s(\gamma)=r(\eta)\}.
+\tag{13.1}
+\]">\[
+\mathcal G^{(2)}=\{(\gamma,\eta):s(\gamma)=r(\eta)\}.
+\tag{13.1}
+\]</span>
+<p>An arrow <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> goes from <span class="math" data-tex="\(s(\gamma)\)">\(s(\gamma)\)</span> to <span class="math" data-tex="\(r(\gamma)\)">\(r(\gamma)\)</span>; <span class="math" data-tex="\(\gamma\eta\)">\(\gamma\eta\)</span> means first <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, then <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The product is associative when defined, has the units at each end, and every arrow has an inverse:</p>
+<span id="equation-13-2"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+r(\gamma)\gamma=\gamma=\gamma s(\gamma),\\
+\gamma\gamma^{-1}=r(\gamma),\qquad
+\gamma^{-1}\gamma=s(\gamma),\\
+r(\gamma\eta)=r(\gamma),\qquad
+s(\gamma\eta)=s(\eta).
+\end{gathered}
+\tag{13.2}
+\]">\[
+\begin{gathered}
+r(\gamma)\gamma=\gamma=\gamma s(\gamma),\\
+\gamma\gamma^{-1}=r(\gamma),\qquad
+\gamma^{-1}\gamma=s(\gamma),\\
+r(\gamma\eta)=r(\gamma),\qquad
+s(\gamma\eta)=s(\eta).
+\end{gathered}
+\tag{13.2}
+\]</span>
+<p>We identify a unit with its identity arrow. A topological groupoid has continuous unit inclusion, range, source, inverse and multiplication, the latter with the subspace topology on (13.1).</p>
+<p>The fibres and isotropy groups are</p>
+<span id="equation-13-3"></span><span class="math math-display" data-tex="\[
+\mathcal G^x=r^{-1}(x),\qquad
+\mathcal G_x=s^{-1}(x),\qquad
+\mathcal G_x^x=\mathcal G^x\cap\mathcal G_x.
+\tag{13.3}
+\]">\[
+\mathcal G^x=r^{-1}(x),\qquad
+\mathcal G_x=s^{-1}(x),\qquad
+\mathcal G_x^x=\mathcal G^x\cap\mathcal G_x.
+\tag{13.3}
+\]</span>
+<p>Two units lie in the same orbit if some arrow connects them. In particular</p>
+<span id="equation-13-4"></span><span class="math math-display" data-tex="\[
+\mathcal G\cdot x=r(\mathcal G_x).
+\tag{13.4}
+\]">\[
+\mathcal G\cdot x=r(\mathcal G_x).
+\tag{13.4}
+\]</span>
+<p>Isotropy is a group at one unit. An arrow from <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span> identifies the two isotropy groups by <span class="math" data-tex="\(h\mapsto\gamma h\gamma^{-1}\)">\(h\mapsto\gamma h\gamma^{-1}\)</span>; changing the arrow can change this identification by an inner automorphism.</p>
+<p>Except in the explicitly non-Hausdorff section, both <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> are locally compact Hausdorff. Second countability will be stated when a theorem requires it. A groupoid is <strong>principal</strong> if all its isotropy groups are trivial, equivalently if <span class="math" data-tex="\((r,s)\)">\((r,s)\)</span> is injective: two arrows with the same endpoints differ by an isotropy arrow. It is <strong>proper</strong> if <span class="math" data-tex="\((r,s):\mathcal G\to X\times X\)">\((r,s):\mathcal G\to X\times X\)</span> is proper. These are separate conditions.</p>
+<p>Basic examples fix the meaning of these definitions.</p>
+<ul>
+<li>A group <span class="math" data-tex="\(H\)">\(H\)</span> is a groupoid with one unit. A space <span class="math" data-tex="\(X\)">\(X\)</span> is a groupoid with only identity arrows.</li>
+<li>The pair groupoid <span class="math" data-tex="\(X\times X\)">\(X\times X\)</span> has <span class="math" data-tex="\(r(x,y)=x\)">\(r(x,y)=x\)</span>, <span class="math" data-tex="\(s(x,y)=y\)">\(s(x,y)=y\)</span>, inverse <span class="math" data-tex="\((y,x)\)">\((y,x)\)</span>, and <span class="math" data-tex="\((x,y)(y,z)=(x,z)\)">\((x,y)(y,z)=(x,z)\)</span>. It has one orbit when <span class="math" data-tex="\(X\)">\(X\)</span> is nonempty and has trivial isotropy.</li>
+<li>An equivalence relation <span class="math" data-tex="\(R\subseteq X\times X\)">\(R\subseteq X\times X\)</span> has those same operations. It is a topological groupoid in the subspace topology, but local compactness of <span class="math" data-tex="\(R\)">\(R\)</span> is an extra condition. The relation for the partition into singletons is the diagonal, not the empty set.</li>
+<li>For a continuous map <span class="math" data-tex="\(p:X\to B\)">\(p:X\to B\)</span>, the fibre-pair groupoid is <span class="math" data-tex="\(X\times_B X=\{(x,y):p(x)=p(y)\}\)">\(X\times_B X=\{(x,y):p(x)=p(y)\}\)</span>. If <span class="math" data-tex="\(X,B\)">\(X,B\)</span> are locally compact Hausdorff, this is closed in <span class="math" data-tex="\(X\times X\)">\(X\times X\)</span>, hence locally compact; its orbits are the fibres of <span class="math" data-tex="\(p\)">\(p\)</span>.</li>
+<li>A topological group bundle has <span class="math" data-tex="\(r=s:\mathcal G\to X\)">\(r=s:\mathcal G\to X\)</span>, with each fibre a group and with jointly continuous multiplication, inverse and unit inclusion. Giving a quotient map and separate topological group structures on its fibres does not by itself impose this joint continuity.</li>
+</ul>
+<h2 id="transformation-groupoids">Transformation groupoids</h2>
+<p>Let a locally compact group <span class="math" data-tex="\(H\)">\(H\)</span> act continuously on a locally compact Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span> on the left. We use coordinates with the target written first:</p>
+<span id="equation-13-5"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+X\rtimes H=X\times H,\qquad
+r(x,g)=x,\qquad s(x,g)=g^{-1}x,\\
+(x,g)(g^{-1}x,h)=(x,gh),\\
+(x,g)^{-1}=(g^{-1}x,g^{-1}).
+\end{gathered}
+\tag{13.5}
+\]">\[
+\begin{gathered}
+X\rtimes H=X\times H,\qquad
+r(x,g)=x,\qquad s(x,g)=g^{-1}x,\\
+(x,g)(g^{-1}x,h)=(x,gh),\\
+(x,g)^{-1}=(g^{-1}x,g^{-1}).
+\end{gathered}
+\tag{13.5}
+\]</span>
+<p>The units are <span class="math" data-tex="\((x,e)\)">\((x,e)\)</span>.</p>
+<p><span id="proposition-13-1"></span><strong>Proposition 13.1.</strong> These formulas make <span class="math" data-tex="\(X\rtimes H\)">\(X\rtimes H\)</span> a locally compact Hausdorff groupoid. Its orbits are the <span class="math" data-tex="\(H\)">\(H\)</span>-orbits in <span class="math" data-tex="\(X\)">\(X\)</span>, and its isotropy at <span class="math" data-tex="\(x\)">\(x\)</span> is the stabilizer <span class="math" data-tex="\(H_x\)">\(H_x\)</span>.</p>
+<p><strong>Proof.</strong> The arrow space is a product of locally compact Hausdorff spaces. The composable-pair space is parametrized by <span class="math" data-tex="\((x,g,h)\mapsto((x,g),(g^{-1}x,h))\)">\((x,g,h)\mapsto((x,g),(g^{-1}x,h))\)</span>, with continuous inverse given by the displayed coordinates. Product and inverse are therefore continuous. The action law verifies all identities (13.2), and associativity reduces to the group law.</p>
+<p>An arrow with source <span class="math" data-tex="\(y\)">\(y\)</span> and label <span class="math" data-tex="\(g\)">\(g\)</span> has target <span class="math" data-tex="\(gy\)">\(gy\)</span>, so (13.4) is <span class="math" data-tex="\(Hy\)">\(Hy\)</span>. An arrow <span class="math" data-tex="\((x,g)\)">\((x,g)\)</span> has both endpoints <span class="math" data-tex="\(x\)">\(x\)</span> exactly when <span class="math" data-tex="\(g^{-1}x=x\)">\(g^{-1}x=x\)</span>, that is, <span class="math" data-tex="\(g\in H_x\)">\(g\in H_x\)</span>; multiplication there is the stabilizer group law. ∎</p>
+<p>For a homeomorphism <span class="math" data-tex="\(T:X\to X\)">\(T:X\to X\)</span>, take <span class="math" data-tex="\(H=\mathbb Z\)">\(H=\mathbb Z\)</span>, <span class="math" data-tex="\(n\cdot x=T^n x\)">\(n\cdot x=T^n x\)</span>. Then</p>
+<span id="equation-13-6"></span><span class="math math-display" data-tex="\[
+s(x,n)=T^{-n}x,\qquad
+(x,n)(T^{-n}x,m)=(x,n+m).
+\tag{13.6}
+\]">\[
+s(x,n)=T^{-n}x,\qquad
+(x,n)(T^{-n}x,m)=(x,n+m).
+\tag{13.6}
+\]</span>
+<p>The isotropy is <span class="math" data-tex="\(\{n:T^n x=x\}\)">\(\{n:T^n x=x\}\)</span>: it vanishes at a nonperiodic point and is <span class="math" data-tex="\(q\mathbb Z\)">\(q\mathbb Z\)</span> at a point of least positive period <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<h2 id="local-homeomorphisms-and-counting-measures">Local homeomorphisms and counting measures</h2>
+<p>A topological groupoid is <strong>étale</strong> when <span class="math" data-tex="\(r:\mathcal G\to X\)">\(r:\mathcal G\to X\)</span> is a local homeomorphism. Inversion implies the same property for <span class="math" data-tex="\(s\)">\(s\)</span>. Both maps are open, since an arbitrary open set is a union of open chart pieces and each chart maps them to open subsets of <span class="math" data-tex="\(X\)">\(X\)</span>. Intersecting a range chart with a source chart gives an <strong>open bisection</strong>: an open set <span class="math" data-tex="\(U\subseteq\mathcal G\)">\(U\subseteq\mathcal G\)</span> on which both <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> are homeomorphisms onto open subsets of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>The unit space is open in an étale groupoid. To verify this without assuming it, choose a source chart <span class="math" data-tex="\(U\)">\(U\)</span> about the identity at <span class="math" data-tex="\(x\)">\(x\)</span>. The set
+<span class="math" data-tex="\(O=s(U)\cap e^{-1}(U)\)">\(O=s(U)\cap e^{-1}(U)\)</span> is open in <span class="math" data-tex="\(X\)">\(X\)</span>, where <span class="math" data-tex="\(e\)">\(e\)</span> is the unit inclusion. For <span class="math" data-tex="\(y\in O\)">\(y\in O\)</span>, both <span class="math" data-tex="\(e(y)\)">\(e(y)\)</span> and the chart inverse of <span class="math" data-tex="\(y\)">\(y\)</span> lie in <span class="math" data-tex="\(U\)">\(U\)</span> and have source <span class="math" data-tex="\(y\)">\(y\)</span>, so they coincide. Thus</p>
+<span id="equation-13-7"></span><span class="math math-display" data-tex="\[
+e(O)=(s|_U)^{-1}(O)
+\tag{13.7}
+\]">\[
+e(O)=(s|_U)^{-1}(O)
+\tag{13.7}
+\]</span>
+<p>is open in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, giving the claim. Each source or range fibre is discrete, because a bisection meets it in at most one point.</p>
+<p>A <strong>left Haar system</strong> is a family of positive Radon measures <span class="math" data-tex="\(\lambda^x\)">\(\lambda^x\)</span> on the fibres <span class="math" data-tex="\(\mathcal G^x\)">\(\mathcal G^x\)</span> such that each has full support, the function</p>
+<span id="equation-13-8"></span><span class="math math-display" data-tex="\[
+\lambda(f)(x)=\int_{\mathcal G^x} f(\eta)\,d\lambda^x(\eta)
+\tag{13.8}
+\]">\[
+\lambda(f)(x)=\int_{\mathcal G^x} f(\eta)\,d\lambda^x(\eta)
+\tag{13.8}
+\]</span>
+<p>is continuous for every <span class="math" data-tex="\(f\in C_c(\mathcal G)\)">\(f\in C_c(\mathcal G)\)</span>, and left multiplication preserves the measures:</p>
+<span id="equation-13-9"></span><span class="math math-display" data-tex="\[
+\int_{\mathcal G^{s(\gamma)}} f(\gamma\eta)\,d\lambda^{s(\gamma)}(\eta)
+=\int_{\mathcal G^{r(\gamma)}}f(\eta)\,d\lambda^{r(\gamma)}(\eta).
+\tag{13.9}
+\]">\[
+\int_{\mathcal G^{s(\gamma)}} f(\gamma\eta)\,d\lambda^{s(\gamma)}(\eta)
+=\int_{\mathcal G^{r(\gamma)}}f(\eta)\,d\lambda^{r(\gamma)}(\eta).
+\tag{13.9}
+\]</span>
+<p>The support of (13.8) lies in the compact set <span class="math" data-tex="\(r(\operatorname{supp}f)\)">\(r(\operatorname{supp}f)\)</span>, so it is also compactly supported. Full support is part of the definition; permitting zero fibre measures would invalidate the openness result below.</p>
+<p><span id="proposition-13-2"></span><strong>Proposition 13.2.</strong> Every locally compact Hausdorff étale groupoid has the counting Haar system</p>
+<span id="equation-13-10"></span><span class="math math-display" data-tex="\[
+\lambda^x(f)=\sum_{\eta\in\mathcal G^x}f(\eta).
+\tag{13.10}
+\]">\[
+\lambda^x(f)=\sum_{\eta\in\mathcal G^x}f(\eta).
+\tag{13.10}
+\]</span>
+<p><strong>Proof.</strong> Each fibre is closed and discrete. Its counting measure is Radon: a compact subset of a discrete space is finite. It has full support. Left multiplication is a bijection between the two fibres in (13.9), proving invariance.</p>
+<p>For continuity, cover the compact support of <span class="math" data-tex="\(f\)">\(f\)</span> by finitely many bisections and use a compact-support partition of unity to write <span class="math" data-tex="\(f=\sum_j f_j\)">\(f=\sum_j f_j\)</span>, with <span class="math" data-tex="\(\operatorname{supp}f_j\)">\(\operatorname{supp}f_j\)</span> compact inside a bisection <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. For one such term, (13.10) is <span class="math" data-tex="\(f_j((r|_{U_j})^{-1}(x))\)">\(f_j((r|_{U_j})^{-1}(x))\)</span> on <span class="math" data-tex="\(r(U_j)\)">\(r(U_j)\)</span> and zero elsewhere. Its support is compact inside that open set, so extension by zero is continuous on <span class="math" data-tex="\(X\)">\(X\)</span>. Summing proves (13.8). ∎</p>
+<p>The same proof applies to the patch-based function space in the locally Hausdorff étale case described below: decompose each compact Hausdorff-patch term into bisection terms inside that patch.</p>
+<h2 id="haar-systems-for-actions-and-pairs">Haar systems for actions and pairs</h2>
+<p><span id="proposition-13-3"></span><strong>Proposition 13.3.</strong> Fix a left Haar measure <span class="math" data-tex="\(dg\)">\(dg\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>. The transformation groupoid (13.5) has the Haar system</p>
+<span id="equation-13-11"></span><span class="math math-display" data-tex="\[
+\lambda^x(f)=\int_H f(x,g)\,dg.
+\tag{13.11}
+\]">\[
+\lambda^x(f)=\int_H f(x,g)\,dg.
+\tag{13.11}
+\]</span>
+<p><strong>Proof.</strong> The map <span class="math" data-tex="\(g\mapsto(x,g)\)">\(g\mapsto(x,g)\)</span> identifies the range fibre with <span class="math" data-tex="\(H\)">\(H\)</span>, so this is a full-support Radon measure. Left multiplication by <span class="math" data-tex="\((x,a)\)">\((x,a)\)</span> carries <span class="math" data-tex="\((a^{-1}x,g)\)">\((a^{-1}x,g)\)</span> to <span class="math" data-tex="\((x,ag)\)">\((x,ag)\)</span>, preserving it by left invariance of <span class="math" data-tex="\(dg\)">\(dg\)</span>.</p>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> has compact support, its group coordinates lie in a common compact set <span class="math" data-tex="\(K\subseteq H\)">\(K\subseteq H\)</span>. Near any fixed <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, restrict <span class="math" data-tex="\(x\)">\(x\)</span> to a compact neighborhood. Continuity of <span class="math" data-tex="\(f\)">\(f\)</span> on the resulting compact product gives uniform continuity in <span class="math" data-tex="\(x\)">\(x\)</span>, in the sense that <span class="math" data-tex="\(\sup_{g\in K}|f(x,g)-f(x_0,g)|\to0\)">\(\sup_{g\in K}|f(x,g)-f(x_0,g)|\to0\)</span>. One may prove this by finitely many product neighborhoods covering <span class="math" data-tex="\(\{x_0\}\times K\)">\(\{x_0\}\times K\)</span>. Multiplication by the finite Haar measure of <span class="math" data-tex="\(K\)">\(K\)</span> now bounds the difference between the two integrals. This proves continuity. ∎</p>
+<p>For the pair groupoid, a positive full-support Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> gives</p>
+<span id="equation-13-12"></span><span class="math math-display" data-tex="\[
+\lambda^x(f)=\int_X f(x,y)\,d\mu(y).
+\tag{13.12}
+\]">\[
+\lambda^x(f)=\int_X f(x,y)\,d\mu(y).
+\tag{13.12}
+\]</span>
+<p>The same compact-product continuity argument applies, while left multiplication changes only the first coordinate. For <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span> with Lebesgue measure, the range fibre at <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(\{x\}\times\mathbb R\)">\(\{x\}\times\mathbb R\)</span> with ordinary Lebesgue integration in its second coordinate. Its groupoid algebra will be the compact-operator example in Lesson 14.</p>
+<h2 id="a-haar-system-forces-open-range">A Haar system forces open range</h2>
+<p><span id="theorem-13-4"></span><strong>Theorem 13.4.</strong> A locally compact Hausdorff groupoid with a Haar system has open range and source maps.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(U\subseteq\mathcal G\)">\(U\subseteq\mathcal G\)</span> be open and <span class="math" data-tex="\(\gamma\in U\)">\(\gamma\in U\)</span>. Choose <span class="math" data-tex="\(f\in C_c(\mathcal G)\)">\(f\in C_c(\mathcal G)\)</span>, <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>, with <span class="math" data-tex="\(f(\gamma)&gt;0\)">\(f(\gamma)&gt;0\)</span> and support contained in <span class="math" data-tex="\(U\)">\(U\)</span>. Full support of <span class="math" data-tex="\(\lambda^{r(\gamma)}\)">\(\lambda^{r(\gamma)}\)</span> makes its integral positive: <span class="math" data-tex="\(f\)">\(f\)</span> is bounded below by a positive number on a nonempty relatively open piece of that fibre. By continuity,</p>
+<span id="equation-13-13"></span><span class="math math-display" data-tex="\[
+V=\{x:\lambda(f)(x)&gt;0\}
+\tag{13.13}
+\]">\[
+V=\{x:\lambda(f)(x)&gt;0\}
+\tag{13.13}
+\]</span>
+<p>is an open neighborhood of <span class="math" data-tex="\(r(\gamma)\)">\(r(\gamma)\)</span>. A positive integral requires the fibre to meet <span class="math" data-tex="\(U\)">\(U\)</span>, so <span class="math" data-tex="\(V\subseteq r(U)\)">\(V\subseteq r(U)\)</span>. This works for each arrow in <span class="math" data-tex="\(U\)">\(U\)</span>, proving that <span class="math" data-tex="\(r(U)\)">\(r(U)\)</span> is open. Inversion gives openness of <span class="math" data-tex="\(s\)">\(s\)</span>. ∎</p>
+<p>In a locally Hausdorff groupoid, choose the bump in a Hausdorff open patch contained in <span class="math" data-tex="\(U\)">\(U\)</span>, and extend it by zero. If (13.8) is required for patch functions, this same proof still works. Global continuity of that zero extension is unnecessary.</p>
+<h2 id="continuous-haar-measures-on-a-group-bundle">Continuous Haar measures on a group bundle</h2>
+<p>For a <strong>group bundle</strong>, range and source agree: every fibre <span class="math" data-tex="\(\mathcal G_x=r^{-1}(x)\)">\(\mathcal G_x=r^{-1}(x)\)</span> is a locally compact group, with identity <span class="math" data-tex="\(e_x\)">\(e_x\)</span>. Individual Haar measures always exist. The issue is their normalization across different fibres.</p>
+<p><strong>Theorem (Haar systems on group bundles).</strong> A second countable locally compact Hausdorff group bundle with open range map has a Haar system.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Choose <span class="math" data-tex="\(b\in C_c(\mathcal G)\)">\(b\in C_c(\mathcal G)\)</span>, <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span>, with <span class="math" data-tex="\(b(e_{x_0})&gt;0\)">\(b(e_{x_0})&gt;0\)</span>. On the open neighborhood</p>
+<span id="equation-13a-1"></span><span class="math math-display" data-tex="\[
+V=\{x:b(e_x)&gt;0\}
+\tag{13A.1}
+\]">\[
+V=\{x:b(e_x)&gt;0\}
+\tag{13A.1}
+\]</span>
+<p>choose the left Haar measure <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> of <span class="math" data-tex="\(\mathcal G_x\)">\(\mathcal G_x\)</span>, normalized by <span class="math" data-tex="\(\mu_x(b)=1\)">\(\mu_x(b)=1\)</span>. This is possible and unique: the integral is finite by compact support and positive because <span class="math" data-tex="\(b\)">\(b\)</span> is positive on a neighborhood of the identity. We first prove continuity of this normalized family on <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>We need a local bound. If <span class="math" data-tex="\(K\subset\mathcal G\)">\(K\subset\mathcal G\)</span> is compact, then</p>
+<span id="equation-13a-2"></span><span class="math math-display" data-tex="\[
+\sup_{x\in W}\mu_x(K\cap\mathcal G_x)&lt;\infty
+\tag{13A.2}
+\]">\[
+\sup_{x\in W}\mu_x(K\cap\mathcal G_x)&lt;\infty
+\tag{13A.2}
+\]</span>
+<p>for some neighborhood <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span> of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. If <span class="math" data-tex="\(K\cap\mathcal G_{x_0}\)">\(K\cap\mathcal G_{x_0}\)</span> is empty, compactness of <span class="math" data-tex="\(r(K)\)">\(r(K)\)</span> gives such a neighborhood with empty intersections. Otherwise choose finitely many open sets <span class="math" data-tex="\(O_1,\ldots,O_m\)">\(O_1,\ldots,O_m\)</span>, centered at points of that intersection, covering it, and small enough that</p>
+<span id="equation-13a-3"></span><span class="math math-display" data-tex="\[
+b(g^{-1}h)\geq c&gt;0
+\quad\text{whenever }g,h\in O_j\text{ belong to the same fibre}.
+\tag{13A.3}
+\]">\[
+b(g^{-1}h)\geq c&gt;0
+\quad\text{whenever }g,h\in O_j\text{ belong to the same fibre}.
+\tag{13A.3}
+\]</span>
+<p>To obtain them, use continuity of <span class="math" data-tex="\((g,h)\mapsto g^{-1}h\)">\((g,h)\mapsto g^{-1}h\)</span> at each pair <span class="math" data-tex="\((g_j,g_j)\)">\((g_j,g_j)\)</span>, where the value is <span class="math" data-tex="\(e_{x_0}\)">\(e_{x_0}\)</span>, and take a common positive lower bound for the finite family. Openness of <span class="math" data-tex="\(r\)">\(r\)</span> makes every <span class="math" data-tex="\(r(O_j)\)">\(r(O_j)\)</span> a neighborhood of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. The compact set <span class="math" data-tex="\(K\setminus\bigcup_jO_j\)">\(K\setminus\bigcup_jO_j\)</span> has range avoiding <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Shrinking <span class="math" data-tex="\(W\)">\(W\)</span>, therefore, makes <span class="math" data-tex="\(K\cap\mathcal G_x\subset\bigcup_jO_j\)">\(K\cap\mathcal G_x\subset\bigcup_jO_j\)</span> and makes each <span class="math" data-tex="\(O_j\cap\mathcal G_x\)">\(O_j\cap\mathcal G_x\)</span> nonempty for <span class="math" data-tex="\(x\in W\)">\(x\in W\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(g_j^x\in O_j\cap\mathcal G_x\)">\(g_j^x\in O_j\cap\mathcal G_x\)</span>; continuity of these choices is unnecessary. On <span class="math" data-tex="\(K\cap\mathcal G_x\)">\(K\cap\mathcal G_x\)</span>, the sum <span class="math" data-tex="\(\sum_j b((g_j^x)^{-1}h)\)">\(\sum_j b((g_j^x)^{-1}h)\)</span> is at least <span class="math" data-tex="\(c\)">\(c\)</span>. Each summand has integral one by left invariance. Hence <span class="math" data-tex="\(\mu_x(K\cap\mathcal G_x)\leq m/c\)">\(\mu_x(K\cap\mathcal G_x)\leq m/c\)</span>, proving (13A.2).</p>
+<p>Now let <span class="math" data-tex="\(x_n\to x_0\)">\(x_n\to x_0\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span>, and regard the measures as measures on <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, supported on their closed fibres. Bound (13A.2) gives a uniform bound on each compact set, including the finitely many initial terms. Such a sequence has a vaguely convergent subsequence. Here is the measure-compactness step explicitly. Exhaust the second countable locally compact space by compact sets whose interiors cover it. On each interior choose a countable dense subset of its compactly supported continuous test functions in the supremum norm, using compact subsets of a slightly larger exhaustion set. Successive subsequences and a diagonal choice make the integrals converge on all these test functions. The uniform compact-set bounds extend convergence to every <span class="math" data-tex="\(f\in C_c(\mathcal G)\)">\(f\in C_c(\mathcal G)\)</span>. The resulting positive linear functional is bounded on each compact-support space; the Riesz representation theorem gives its Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p>This limit is supported on <span class="math" data-tex="\(\mathcal G_{x_0}\)">\(\mathcal G_{x_0}\)</span>: a compact test support disjoint from that fibre has compact range avoiding <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, so its integrals eventually vanish. Moreover <span class="math" data-tex="\(\mu(b)=1\)">\(\mu(b)=1\)</span>. We show left invariance. Fix <span class="math" data-tex="\(g\in\mathcal G_{x_0}\)">\(g\in\mathcal G_{x_0}\)</span>. Openness of <span class="math" data-tex="\(r\)">\(r\)</span>, with a countable neighborhood basis at <span class="math" data-tex="\(g\)">\(g\)</span>, gives choices <span class="math" data-tex="\(g_n\in\mathcal G_{x_n}\)">\(g_n\in\mathcal G_{x_n}\)</span> tending to <span class="math" data-tex="\(g\)">\(g\)</span>. Indeed, eventually <span class="math" data-tex="\(x_n\)">\(x_n\)</span> belongs to the range of each basis neighborhood; choose in successively smaller neighborhoods.</p>
+<p>For <span class="math" data-tex="\(f\in C_c(\mathcal G)\)">\(f\in C_c(\mathcal G)\)</span>, extend the function <span class="math" data-tex="\(h\mapsto f(gh)\)">\(h\mapsto f(gh)\)</span> on the closed fibre <span class="math" data-tex="\(\mathcal G_{x_0}\)">\(\mathcal G_{x_0}\)</span> to some <span class="math" data-tex="\(F\in C_c(\mathcal G)\)">\(F\in C_c(\mathcal G)\)</span>. Such an extension follows by a compact-support bump and the Tietze extension theorem on the second countable locally compact Hausdorff space; the original fibre function has compact support. All supports involved in <span class="math" data-tex="\(f(g_nh)\)">\(f(g_nh)\)</span> and <span class="math" data-tex="\(F(h)\)">\(F(h)\)</span> lie in one compact set <span class="math" data-tex="\(Q\)">\(Q\)</span>: use compactness of <span class="math" data-tex="\(\{g,g_1,g_2,\ldots\}\)">\(\{g,g_1,g_2,\ldots\}\)</span>, compactness of <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>, and continuity of inversion and multiplication on the closed composable-pair set. We have</p>
+<span id="equation-13a-4"></span><span class="math math-display" data-tex="\[
+\sup_{h\in Q\cap\mathcal G_{x_n}}
+|f(g_nh)-F(h)|\longrightarrow0.
+\tag{13A.4}
+\]">\[
+\sup_{h\in Q\cap\mathcal G_{x_n}}
+|f(g_nh)-F(h)|\longrightarrow0.
+\tag{13A.4}
+\]</span>
+<p>Otherwise points witnessing a fixed positive error have a convergent subsequence in <span class="math" data-tex="\(Q\)">\(Q\)</span>. Its limit belongs to <span class="math" data-tex="\(\mathcal G_{x_0}\)">\(\mathcal G_{x_0}\)</span>, and multiplication continuity and the defining equality of <span class="math" data-tex="\(F\)">\(F\)</span> there contradict that error. Bound (13A.2) for <span class="math" data-tex="\(Q\)">\(Q\)</span> permits integration of (13A.4). Passing to the vague limit in</p>
+<span id="equation-13a-5"></span><span class="math math-display" data-tex="\[
+\int f(g_nh)\,d\mu_{x_n}(h)=\int f(h)\,d\mu_{x_n}(h)
+\tag{13A.5}
+\]">\[
+\int f(g_nh)\,d\mu_{x_n}(h)=\int f(h)\,d\mu_{x_n}(h)
+\tag{13A.5}
+\]</span>
+<p>therefore gives <span class="math" data-tex="\(\int f(gh)\,d\mu(h)=\int f(h)\,d\mu(h)\)">\(\int f(gh)\,d\mu(h)=\int f(h)\,d\mu(h)\)</span>. Restrictions of the ambient compactly supported functions include all compactly supported fibre functions by the same extension argument. Thus <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is a nonzero left invariant Radon measure of <span class="math" data-tex="\(\mathcal G_{x_0}\)">\(\mathcal G_{x_0}\)</span>. Haar uniqueness and <span class="math" data-tex="\(\mu(b)=1\)">\(\mu(b)=1\)</span> identify it with <span class="math" data-tex="\(\mu_{x_0}\)">\(\mu_{x_0}\)</span>.</p>
+<p>Every subsequence has a further vaguely convergent subsequence, and the preceding argument identifies every such limit. It follows that <span class="math" data-tex="\(\mu_{x_n}(f)\to\mu_{x_0}(f)\)">\(\mu_{x_n}(f)\to\mu_{x_0}(f)\)</span> for each test function. The same proof works at every point of <span class="math" data-tex="\(V\)">\(V\)</span>, with this fixed <span class="math" data-tex="\(b\)">\(b\)</span>. First countability of the unit space turns this sequential assertion into continuity. The use of sequences here is justified by the theorem's second countability hypothesis.</p>
+<p>Finally cover the unit space by neighborhoods <span class="math" data-tex="\(V_j\)">\(V_j\)</span> obtained from such functions <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, and take a locally finite partition of unity <span class="math" data-tex="\((\rho_j)\)">\((\rho_j)\)</span> subordinate to a shrinking of this cover, with <span class="math" data-tex="\(\operatorname{supp}\rho_j\subset V_j\)">\(\operatorname{supp}\rho_j\subset V_j\)</span>. This exists because a second countable locally compact Hausdorff space is paracompact. Put</p>
+<span id="equation-13a-6"></span><span class="math math-display" data-tex="\[
+\lambda^x=\sum_j\rho_j(x)\mu_x^j.
+\tag{13A.6}
+\]">\[
+\lambda^x=\sum_j\rho_j(x)\mu_x^j.
+\tag{13A.6}
+\]</span>
+<p>At a fixed <span class="math" data-tex="\(x\)">\(x\)</span> this is a finite positive combination of Haar measures of the same group. It is Radon, left invariant, nonzero, and has full support because the coefficients sum to one. For each <span class="math" data-tex="\(f\in C_c(\mathcal G)\)">\(f\in C_c(\mathcal G)\)</span>, local finiteness and the continuity proved above make <span class="math" data-tex="\(x\mapsto\lambda^x(f)\)">\(x\mapsto\lambda^x(f)\)</span> continuous; each summand extends by zero outside <span class="math" data-tex="\(V_j\)">\(V_j\)</span> because its coefficient has closed support inside <span class="math" data-tex="\(V_j\)">\(V_j\)</span>. This is the required Haar system. ∎</p>
+<p>The group-bundle existence theorem is recorded in Li, <em>Groupoid C*-algebras</em>, Theorem 9.8. Its proof here uses Haar uniqueness, uniform local mass bounds and compactness of measures; an open range map alone is not being asserted sufficient for an arbitrary groupoid.</p>
+<h2 id="lie-groupoids-and-density-conventions">Lie groupoids and density conventions</h2>
+<p>A Lie groupoid has smooth arrow and unit manifolds, smooth operations, and range and source submersions. The unit manifold is Hausdorff; the arrow manifold can be locally Hausdorff, with Hausdorff arrow fibres, as in the holonomy case. In the Hausdorff case a smooth Haar system can be constructed as follows.</p>
+<p>Choose a smooth strictly positive density on the vector bundle
+<span class="math" data-tex="\(E=\ker(dr)|_X\)">\(E=\ker(dr)|_X\)</span>. Such a density exists on a second countable unit manifold: choose a bundle metric using a smooth partition of unity, and take its volume density. For an arrow <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, the differential of</p>
+<span id="equation-13-14"></span><span class="math math-display" data-tex="\[
+L_\gamma:\mathcal G^{s(\gamma)}\longrightarrow
+\mathcal G^{r(\gamma)},\qquad \eta\mapsto\gamma\eta
+\tag{13.14}
+\]">\[
+L_\gamma:\mathcal G^{s(\gamma)}\longrightarrow
+\mathcal G^{r(\gamma)},\qquad \eta\mapsto\gamma\eta
+\tag{13.14}
+\]</span>
+<p>transports the density at the identity of <span class="math" data-tex="\(s(\gamma)\)">\(s(\gamma)\)</span> to a density at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Smooth multiplication makes these fibre densities smooth in groupoid charts. Associativity makes them left invariant. Their strict positivity gives full support.</p>
+<p>Their fibre integrals are continuous, and are smooth for smooth compactly supported test functions. Indeed a submersion chart has coordinates <span class="math" data-tex="\((x,z)\)">\((x,z)\)</span> in which <span class="math" data-tex="\(r(x,z)=x\)">\(r(x,z)=x\)</span>; integration there has a smooth positive density factor <span class="math" data-tex="\(a(x,z)\,dz\)">\(a(x,z)\,dz\)</span>. A compact-support partition of unity reduces the assertion to finitely many such charts. Continuity follows from uniform continuity and a common compact <span class="math" data-tex="\(z\)">\(z\)</span>-support, and derivatives pass under that same compact integral. Thus these densities give a Haar system. The same chart argument uses compact patch sections in the locally Hausdorff smooth case.</p>
+<p>The choice of density can be avoided in the convolution notation. Write</p>
+<span id="equation-13-15"></span><span class="math math-display" data-tex="\[
+\Omega^{1/2}_\gamma
+=|\Lambda^{\mathrm{top}}\ker(dr)_\gamma^*|^{1/2}
+\otimes|\Lambda^{\mathrm{top}}\ker(ds)_\gamma^*|^{1/2}.
+\tag{13.15}
+\]">\[
+\Omega^{1/2}_\gamma
+=|\Lambda^{\mathrm{top}}\ker(dr)_\gamma^*|^{1/2}
+\otimes|\Lambda^{\mathrm{top}}\ker(ds)_\gamma^*|^{1/2}.
+\tag{13.15}
+\]</span>
+<p>For a composable pair, groupoid translations identify the two middle half-density factors. Their product is a full density in the integration variable, while the two outer factors remain half-densities at the endpoints. This makes</p>
+<span id="equation-13-16"></span><span class="math math-display" data-tex="\[
+(a*b)(\gamma)=\int_{\eta\zeta=\gamma}a(\eta)b(\zeta)
+\tag{13.16}
+\]">\[
+(a*b)(\gamma)=\int_{\eta\zeta=\gamma}a(\eta)b(\zeta)
+\tag{13.16}
+\]</span>
+<p>intrinsic. Inversion exchanges the endpoint factors; the involution also complex conjugates the section. A positive density trivialization recovers scalar-valued kernels and a Haar measure. These are the conventions of [Connes 1994]. The C*-completion and its regular representations are developed in Lesson 14.</p>
+<h2 id="the-non-hausdorff-test-function-space">The non-Hausdorff test-function space</h2>
+<p>Suppose <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> is locally Hausdorff and locally compact, with locally compact Hausdorff unit space and Hausdorff fibres. The notation <span class="math" data-tex="\(C_c(\mathcal G)\)">\(C_c(\mathcal G)\)</span> now means the linear span of the zero extensions of elements of <span class="math" data-tex="\(C_c(U)\)">\(C_c(U)\)</span>, where <span class="math" data-tex="\(U\subseteq\mathcal G\)">\(U\subseteq\mathcal G\)</span> is Hausdorff and open. The compact support is taken inside <span class="math" data-tex="\(U\)">\(U\)</span>. Its image in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> is compact but need not be closed. Zero extension need not be globally continuous.</p>
+<p>This definition agrees with ordinary <span class="math" data-tex="\(C_c\)">\(C_c\)</span> for Hausdorff <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, by a finite compact-support partition of unity. In the locally Hausdorff case the same argument partitions an individual patch term into smaller Hausdorff patches; hence using a Hausdorff patch basis gives the same span. Haar continuity is required for these test functions. On a smooth groupoid use smooth patch sections of (13.15) in the same way.</p>
+<p>Here is a complete example. Start with two copies of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, identify their nonzero points, and leave the two origins distinct. Denote the origins by <span class="math" data-tex="\(e_0,\sigma_0\)">\(e_0,\sigma_0\)</span>, and the nonzero arrow at <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(e_x\)">\(e_x\)</span>. Let the ordinary line be the unit space, with unit arrow <span class="math" data-tex="\(e_x\)">\(e_x\)</span>, and set</p>
+<span id="equation-13-17"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+r=s:\mathcal G\to\mathbb R,\qquad r(e_x)=x,\quad r(\sigma_0)=0,\\
+\mathcal G_x^x=\{e_x\}\quad(x\ne0),\qquad
+\mathcal G_0^0=\{e_0,\sigma_0\}\cong\mathbb Z/2.
+\end{gathered}
+\tag{13.17}
+\]">\[
+\begin{gathered}
+r=s:\mathcal G\to\mathbb R,\qquad r(e_x)=x,\quad r(\sigma_0)=0,\\
+\mathcal G_x^x=\{e_x\}\quad(x\ne0),\qquad
+\mathcal G_0^0=\{e_0,\sigma_0\}\cong\mathbb Z/2.
+\end{gathered}
+\tag{13.17}
+\]</span>
+<p>All arrows are self-inverse, and <span class="math" data-tex="\(\sigma_0^2=e_0\)">\(\sigma_0^2=e_0\)</span>. The two open charts <span class="math" data-tex="\(U_+\)">\(U_+\)</span>, <span class="math" data-tex="\(U_-\)">\(U_-\)</span> contain, respectively, <span class="math" data-tex="\(e_0,\sigma_0\)">\(e_0,\sigma_0\)</span> and all the nonzero arrows. Each is homeomorphic to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> by <span class="math" data-tex="\(r\)">\(r\)</span>. They make this a locally compact locally Hausdorff étale groupoid. To check multiplication continuity, use a chart at each member of a composable pair. Both members have the same base coordinate <span class="math" data-tex="\(x\)">\(x\)</span>; the product lies in the plus chart when the two chart signs agree, and in the minus chart when they differ. In those coordinates multiplication is the identity map in <span class="math" data-tex="\(x\)">\(x\)</span>. These charts cover the composable-pair space, proving continuity. The unit section is <span class="math" data-tex="\(U_+\)">\(U_+\)</span>, which is open and not closed.</p>
+<p>A patch function is a sum of a plus-chart extension <span class="math" data-tex="\(\phi_+\)">\(\phi_+\)</span> and a minus-chart extension <span class="math" data-tex="\(\psi_-\)">\(\psi_-\)</span>, where <span class="math" data-tex="\(\phi,\psi\in C_c(\mathbb R)\)">\(\phi,\psi\in C_c(\mathbb R)\)</span>. All patch functions have this form: partition each original Hausdorff-patch term over its intersections with the two charts. If</p>
+<span id="equation-13-18"></span><span class="math math-display" data-tex="\[
+F=\phi+\psi,\qquad a=\phi(0),\qquad b=\psi(0),
+\tag{13.18}
+\]">\[
+F=\phi+\psi,\qquad a=\phi(0),\qquad b=\psi(0),
+\tag{13.18}
+\]</span>
+<p>the function has value <span class="math" data-tex="\(F(x)\)">\(F(x)\)</span> at <span class="math" data-tex="\(e_x\)">\(e_x\)</span> for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, value <span class="math" data-tex="\(a\)">\(a\)</span> at <span class="math" data-tex="\(e_0\)">\(e_0\)</span>, and value <span class="math" data-tex="\(b\)">\(b\)</span> at <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span>. Therefore the whole test-function space is exactly</p>
+<span id="equation-13-19"></span><span class="math math-display" data-tex="\[
+C_c(\mathcal G)\cong
+\{(F,a,b):F\in C_c(\mathbb R),\ a,b\in\mathbb C,\ F(0)=a+b\}.
+\tag{13.19}
+\]">\[
+C_c(\mathcal G)\cong
+\{(F,a,b):F\in C_c(\mathbb R),\ a,b\in\mathbb C,\ F(0)=a+b\}.
+\tag{13.19}
+\]</span>
+<p>For the converse, choose <span class="math" data-tex="\(\phi\in C_c(\mathbb R)\)">\(\phi\in C_c(\mathbb R)\)</span> with value <span class="math" data-tex="\(a\)">\(a\)</span> at zero and put <span class="math" data-tex="\(\psi=F-\phi\)">\(\psi=F-\phi\)</span>. The condition gives <span class="math" data-tex="\(\psi(0)=b\)">\(\psi(0)=b\)</span>, so this represents the prescribed triple.</p>
+<p>Counting measures on the fibres integrate this function to <span class="math" data-tex="\(F(x)\)">\(F(x)\)</span>: at zero their integral is <span class="math" data-tex="\(a+b=F(0)\)">\(a+b=F(0)\)</span>. Thus they are a continuous Haar system for the patch space.</p>
+<p>This example gives a precise meaning to the failure of naive continuous test functions. Global continuity forces both origin values and the limit of the nonzero values to be equal. If the function is also in (13.19), write that common value as <span class="math" data-tex="\(c\)">\(c\)</span>; the compatibility says <span class="math" data-tex="\(c=2c\)">\(c=2c\)</span>, so <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. A plus-chart bump with <span class="math" data-tex="\(\phi(0)=1\)">\(\phi(0)=1\)</span> is an allowed patch function with values <span class="math" data-tex="\(1,0\)">\(1,0\)</span> at the origins, and is discontinuous at the second one. Conversely a globally continuous compactly supported bump with both origin values <span class="math" data-tex="\(1\)">\(1\)</span> fails (13.19). Its counting integral has value <span class="math" data-tex="\(2\)">\(2\)</span> at zero and limit <span class="math" data-tex="\(1\)">\(1\)</span>, so it cannot be used as a Haar-continuity test.</p>
+<p>Consequently the naive space is not even a subspace of the intended patch space in this example. It misses necessary local functions and also admits functions with the wrong integration continuity. Moreover (13.19) is not closed under pointwise multiplication. Multiply equal plus and minus bumps of value one at zero: the product has nonzero-coordinate limit <span class="math" data-tex="\(1\)">\(1\)</span> and both origin values <span class="math" data-tex="\(0\)">\(0\)</span>, violating (13.19). The operation needed for groupoid algebras is convolution, as in Lesson 14.</p>
+<p>For foliations, a holonomy arrow is a leafwise path modulo agreement of endpoints and transverse holonomy germs. The holonomy groupoid has the manifold as its unit space, with range and source smooth submersions; its arrow space can be non-Hausdorff. The non-Hausdorff holonomy groupoid of the Reeb foliation of the three-sphere is a stated geometric example in [Connes 1982]. The exact written construction is <a href="prerequisites/NCG-FOLIATIONS/the-c-star-algebra-of-a-foliation.html"><em>The C*-algebra of a foliation</em>, Lemma 1.1, Lemma 2.1 and Theorem 2.2</a>: paths modulo transverse germs give the groupoid, its locally Hausdorff arrow charts, and the Hausdorff holonomy covering of each leaf. The Reeb leaf and germ facts, including the non-Hausdorff transverse model, are proved in Lesson 16. The patch-section convention above is what allows local holonomy charts to provide test kernels.</p>
+<h2 id="orbit-spaces-and-reductions">Orbit spaces and reductions</h2>
+<p>Give <span class="math" data-tex="\(X/\mathcal G\)">\(X/\mathcal G\)</span> the quotient topology for the orbit map <span class="math" data-tex="\(q:X\to X/\mathcal G\)">\(q:X\to X/\mathcal G\)</span>. If range and source are open, this quotient map is open: the saturation of an open <span class="math" data-tex="\(O\subseteq X\)">\(O\subseteq X\)</span> is</p>
+<span id="equation-13-20"></span><span class="math math-display" data-tex="\[
+q^{-1}(q(O))=r(s^{-1}(O)),
+\tag{13.20}
+\]">\[
+q^{-1}(q(O))=r(s^{-1}(O)),
+\tag{13.20}
+\]</span>
+<p>which is open. Properness also makes the orbit space Hausdorff. Indeed the orbit relation is the image of the proper map <span class="math" data-tex="\((r,s)\)">\((r,s)\)</span>, hence closed; if two units are unrelated, product neighborhoods avoiding this closed relation have disjoint images under the open quotient map. Local compactness follows by projecting a compact neighborhood of a lift. This repeats the topological argument for proper actions in Lesson 9, with arrows replacing group elements.</p>
+<h3 id="when-orbit-topology-is-manageable">When orbit topology is manageable</h3>
+<p>Here we require the arrow space to be Hausdorff. No Haar system is needed for the following result: open range and source maps suffice.</p>
+<p><strong>Theorem (Mackey–Glimm–Ramsay).</strong> Let <span class="math" data-tex="\(\mathcal G\rightrightarrows X\)">\(\mathcal G\rightrightarrows X\)</span> be a second countable locally compact Hausdorff groupoid with open range and source. The following conditions are equivalent:</p>
+<ol>
+<li>The orbit space <span class="math" data-tex="\(Q=X/\mathcal G\)">\(Q=X/\mathcal G\)</span> is <span class="math" data-tex="\(T_0\)">\(T_0\)</span>.</li>
+<li>Every nonempty closed subset of <span class="math" data-tex="\(Q\)">\(Q\)</span> contains a nonempty relatively open Hausdorff subspace.</li>
+<li>Every orbit is locally closed in <span class="math" data-tex="\(X\)">\(X\)</span>.</li>
+<li>Every orbit is a <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span> subset of <span class="math" data-tex="\(X\)">\(X\)</span>.</li>
+<li>For every <span class="math" data-tex="\(x\)">\(x\)</span>, the range map <span class="math" data-tex="\(\mathcal G_x\to\mathcal G\cdot x\)">\(\mathcal G_x\to\mathcal G\cdot x\)</span> is open, with the orbit given its subspace topology.</li>
+</ol>
+<p>Condition 2 is called <em>almost Hausdorff</em>. The result distinguishes a manageable orbit quotient from a quotient where even individual orbits have the wrong relative topology. It does not say that the entire quotient is Hausdorff. The statement appears in [Li 2024, Theorem 3.14, p. 17]; Ramsay's work supplies the groupoid version of the earlier Mackey–Glimm theory. We give the proof, including the step where open groupoid maps replace translations by group elements.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\([B]=r(s^{-1}(B))\)">\([B]=r(s^{-1}(B))\)</span> for saturation. Saturation is open for open <span class="math" data-tex="\(B\)">\(B\)</span>, and <span class="math" data-tex="\(q:X\to Q\)">\(q:X\to Q\)</span> is open by (13.20). The images of a countable base of <span class="math" data-tex="\(X\)">\(X\)</span> form a countable base of <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Orbit closures are invariant. To see this, suppose <span class="math" data-tex="\(s(\gamma)\in\overline O\)">\(s(\gamma)\in\overline O\)</span> and choose a neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(r(\gamma)\)">\(r(\gamma)\)</span>. There is an arrow neighborhood <span class="math" data-tex="\(N\)">\(N\)</span> of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> with <span class="math" data-tex="\(r(N)\subseteq W\)">\(r(N)\subseteq W\)</span>. Since <span class="math" data-tex="\(s(N)\)">\(s(N)\)</span> is a neighborhood of <span class="math" data-tex="\(s(\gamma)\)">\(s(\gamma)\)</span>, it meets <span class="math" data-tex="\(O\)">\(O\)</span>. Some arrow of <span class="math" data-tex="\(N\)">\(N\)</span> therefore has both endpoints in <span class="math" data-tex="\(O\)">\(O\)</span>, and its range belongs to <span class="math" data-tex="\(W\)">\(W\)</span>. Thus <span class="math" data-tex="\(r(\gamma)\in\overline O\)">\(r(\gamma)\in\overline O\)</span>. It follows that</p>
+<span id="equation-13b-1"></span><span class="math math-display" data-tex="\[
+q^{-1}\big(\overline{\{q(x)\}}\big)=\overline{\mathcal G\cdot x}.
+\tag{13B.1}
+\]">\[
+q^{-1}\big(\overline{\{q(x)\}}\big)=\overline{\mathcal G\cdot x}.
+\tag{13B.1}
+\]</span>
+<p>Indeed the right side is closed and invariant, so its image is closed in the quotient; conversely the preimage on the left is a closed set containing the orbit.</p>
+<h4 id="distinguishing-points-makes-each-orbit-a-countable-intersection">Distinguishing points makes each orbit a countable intersection</h4>
+<p>Assume condition 1. If <span class="math" data-tex="\(B_n\)">\(B_n\)</span> is a countable base of <span class="math" data-tex="\(X\)">\(X\)</span>, put <span class="math" data-tex="\(U_n=[B_n]\)">\(U_n=[B_n]\)</span>. Membership in the <span class="math" data-tex="\(U_n\)">\(U_n\)</span>'s distinguishes distinct orbits, because <span class="math" data-tex="\(q(B_n)\)">\(q(B_n)\)</span> is a base of the <span class="math" data-tex="\(T_0\)">\(T_0\)</span> quotient. Therefore</p>
+<span id="equation-13b-2"></span><span class="math math-display" data-tex="\[
+\mathcal G\cdot x=
+\bigcap_{x\in U_n}U_n
+\ \cap\ \left(X\setminus\bigcup_{x\notin U_n}U_n\right).
+\tag{13B.2}
+\]">\[
+\mathcal G\cdot x=
+\bigcap_{x\in U_n}U_n
+\ \cap\ \left(X\setminus\bigcup_{x\notin U_n}U_n\right).
+\tag{13B.2}
+\]</span>
+<p>A second countable locally compact Hausdorff space is metrizable. Every closed subset <span class="math" data-tex="\(C\)">\(C\)</span> of a metrizable space is a <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span>: for nonempty <span class="math" data-tex="\(C\)">\(C\)</span> take the open sets <span class="math" data-tex="\(\{y:d(y,C)&lt;1/n\}\)">\(\{y:d(y,C)&lt;1/n\}\)</span>, and handle the empty set directly. The second factor in (13B.2) is closed, while the first is a countable intersection of open sets. Thus condition 4 follows.</p>
+<p>We will use that such an orbit is Baire. Here is the relevant completeness fact. A second countable locally compact Hausdorff space has a compatible complete metric: metrize its one-point compactification and identify the original space with the closed graph of <span class="math" data-tex="\(y\mapsto 1/d(y,\infty)\)">\(y\mapsto 1/d(y,\infty)\)</span> in the product with <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>; the compact case is already complete. If <span class="math" data-tex="\(O=\bigcap V_n\)">\(O=\bigcap V_n\)</span> is a <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span>, the graph</p>
+<span id="equation-13b-3"></span><span class="math math-display" data-tex="\[
+y\longmapsto
+\left(y,\big(d(y,X\setminus V_n)^{-1}\big)_{n\geq1}\right)
+\tag{13B.3}
+\]">\[
+y\longmapsto
+\left(y,\big(d(y,X\setminus V_n)^{-1}\big)_{n\geq1}\right)
+\tag{13B.3}
+\]</span>
+<p>is closed in <span class="math" data-tex="\(X\times\mathbb R^{\mathbb N}\)">\(X\times\mathbb R^{\mathbb N}\)</span>. Use the value 1 when the complement is empty. A convergent graph sequence cannot approach any complement because its corresponding coordinate would diverge. The graph topology agrees with the topology of <span class="math" data-tex="\(O\)">\(O\)</span>, and the product has a complete metric. Hence <span class="math" data-tex="\(O\)">\(O\)</span> is completely metrizable and Baire.</p>
+<h4 id="a-baire-orbit-has-an-open-orbit-map">A Baire orbit has an open orbit map</h4>
+<p>Fix <span class="math" data-tex="\(x\)">\(x\)</span>, put <span class="math" data-tex="\(O=\mathcal G\cdot x\)">\(O=\mathcal G\cdot x\)</span>, and let <span class="math" data-tex="\(H=\mathcal G_x^x\)">\(H=\mathcal G_x^x\)</span>. Right multiplication makes <span class="math" data-tex="\(H\)">\(H\)</span> act freely and properly on <span class="math" data-tex="\(\mathcal G_x\)">\(\mathcal G_x\)</span>. In fact</p>
+<span id="equation-13b-4"></span><span class="math math-display" data-tex="\[
+(\alpha,h)\longmapsto(\alpha,\alpha h)
+\tag{13B.4}
+\]">\[
+(\alpha,h)\longmapsto(\alpha,\alpha h)
+\tag{13B.4}
+\]</span>
+<p>is a homeomorphism onto the closed relation
+<span class="math" data-tex="\(\{(\alpha,\beta):r(\alpha)=r(\beta)\}\)">\(\{(\alpha,\beta):r(\alpha)=r(\beta)\}\)</span>; its inverse uses <span class="math" data-tex="\(\alpha^{-1}\beta\)">\(\alpha^{-1}\beta\)</span>. The quotient <span class="math" data-tex="\(Y=\mathcal G_x/H\)">\(Y=\mathcal G_x/H\)</span> is consequently locally compact Hausdorff, by the proper-quotient argument above. Its quotient map <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is open since it is a group-action quotient. Thus <span class="math" data-tex="\(Y\)">\(Y\)</span> is second countable and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-compact. Range descends to a continuous bijection</p>
+<span id="equation-13b-5"></span><span class="math math-display" data-tex="\[
+b:Y\longrightarrow O,
+\qquad b([\alpha])=r(\alpha).
+\tag{13B.5}
+\]">\[
+b:Y\longrightarrow O,
+\qquad b([\alpha])=r(\alpha).
+\tag{13B.5}
+\]</span>
+<p>Injectivity follows because two arrows with the same range differ by the right isotropy element <span class="math" data-tex="\(\alpha^{-1}\beta\)">\(\alpha^{-1}\beta\)</span>.</p>
+<p>Suppose condition 4 holds. Exhaust <span class="math" data-tex="\(Y\)">\(Y\)</span> by compact sets <span class="math" data-tex="\(K_n\)">\(K_n\)</span>. Each <span class="math" data-tex="\(b(K_n)\)">\(b(K_n)\)</span> is compact and closed in the Hausdorff orbit <span class="math" data-tex="\(O\)">\(O\)</span>, and their union is <span class="math" data-tex="\(O\)">\(O\)</span>. The Baire property gives a nonempty open <span class="math" data-tex="\(J\subseteq O\)">\(J\subseteq O\)</span> contained in some <span class="math" data-tex="\(b(K_n)\)">\(b(K_n)\)</span>. A continuous bijection from a compact space to a Hausdorff space is a homeomorphism, so <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span> is continuous on <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>We must propagate this local information without assuming local bisections. The groupoid <span class="math" data-tex="\(\mathcal G|_O\)">\(\mathcal G|_O\)</span> acts continuously on <span class="math" data-tex="\(Y\)">\(Y\)</span> by
+<span class="math" data-tex="\(\gamma[\alpha]=[\gamma\alpha]\)">\(\gamma[\alpha]=[\gamma\alpha]\)</span>. This descends from multiplication: the pullback of the open quotient map <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is still open, as is checked on product neighborhoods, and hence is a quotient map. Also range and source on <span class="math" data-tex="\(\mathcal G|_O\)">\(\mathcal G|_O\)</span> are open relative to <span class="math" data-tex="\(O\)">\(O\)</span>. For example
+<span class="math" data-tex="\(r(N\cap\mathcal G|_O)=r(N)\cap O\)">\(r(N\cap\mathcal G|_O)=r(N)\cap O\)</span> for open <span class="math" data-tex="\(N\subseteq\mathcal G\)">\(N\subseteq\mathcal G\)</span>, since <span class="math" data-tex="\(O\)">\(O\)</span> is invariant.</p>
+<p>Let <span class="math" data-tex="\(A\subseteq Y\)">\(A\subseteq Y\)</span> be open and <span class="math" data-tex="\(y\in b(A)\)">\(y\in b(A)\)</span>. Choose <span class="math" data-tex="\(z\in J\)">\(z\in J\)</span> and an arrow <span class="math" data-tex="\(\gamma:z\to y\)">\(\gamma:z\to y\)</span>. The unique point <span class="math" data-tex="\(b^{-1}(z)\)">\(b^{-1}(z)\)</span> is carried to <span class="math" data-tex="\(b^{-1}(y)\in A\)">\(b^{-1}(y)\in A\)</span>. Continuity of the action supplies neighborhoods <span class="math" data-tex="\(N\)">\(N\)</span> of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(b^{-1}(z)\)">\(b^{-1}(z)\)</span> such that every composable pair in <span class="math" data-tex="\(N\times W\)">\(N\times W\)</span> acts into <span class="math" data-tex="\(A\)">\(A\)</span>. Continuity of <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span> on <span class="math" data-tex="\(J\)">\(J\)</span> supplies an open neighborhood <span class="math" data-tex="\(J&#x27;\subseteq J\)">\(J&#x27;\subseteq J\)</span> of <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\(b^{-1}(J&#x27;)\subseteq W\)">\(b^{-1}(J&#x27;)\subseteq W\)</span>. Now</p>
+<span id="equation-13b-6"></span><span class="math math-display" data-tex="\[
+r\big(N\cap s^{-1}(J&#x27;)\big)
+\quad\hbox{is an open neighborhood of }y\hbox{ in }O,
+\quad\hbox{contained in }b(A).
+\tag{13B.6}
+\]">\[
+r\big(N\cap s^{-1}(J&#x27;)\big)
+\quad\hbox{is an open neighborhood of }y\hbox{ in }O,
+\quad\hbox{contained in }b(A).
+\tag{13B.6}
+\]</span>
+<p>Every arrow used here acts on the unique point over its source. Thus <span class="math" data-tex="\(b\)">\(b\)</span> is open everywhere. Since <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is open, the original orbit map <span class="math" data-tex="\(b\pi\)">\(b\pi\)</span> is open. This proves <span class="math" data-tex="\(4\Rightarrow5\)">\(4\Rightarrow5\)</span>.</p>
+<p>If condition 5 holds, <span class="math" data-tex="\(b\)">\(b\)</span> is a homeomorphism, so the orbit is locally compact in its subspace topology. A locally compact subspace <span class="math" data-tex="\(O\)">\(O\)</span> of a Hausdorff space is locally closed: at any point choose an ambient open <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(O\cap W\)">\(O\cap W\)</span> contained in a compact neighborhood <span class="math" data-tex="\(C\subseteq O\)">\(C\subseteq O\)</span>. As <span class="math" data-tex="\(C\)">\(C\)</span> is closed in <span class="math" data-tex="\(X\)">\(X\)</span>,
+<span class="math" data-tex="\(W\cap\overline O\subseteq C\subseteq O\)">\(W\cap\overline O\subseteq C\subseteq O\)</span>. These neighborhoods show that <span class="math" data-tex="\(O\)">\(O\)</span> is open in <span class="math" data-tex="\(\overline O\)">\(\overline O\)</span>. This proves <span class="math" data-tex="\(5\Rightarrow3\)">\(5\Rightarrow3\)</span>. Conversely a locally closed subset of a metrizable space is a <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span>, so <span class="math" data-tex="\(3\Rightarrow4\)">\(3\Rightarrow4\)</span>.</p>
+<p>Condition 3 also implies condition 1. If two distinct orbits had the same closure <span class="math" data-tex="\(C\)">\(C\)</span>, each would be a nonempty open dense subset of <span class="math" data-tex="\(C\)">\(C\)</span>. They would intersect, contradicting their distinctness. Formula (13B.1) says exactly that distinct point closures distinguish points in <span class="math" data-tex="\(Q\)">\(Q\)</span>. We have now proved the equivalence of conditions 1, 3, 4 and 5.</p>
+<h4 id="finding-a-hausdorff-part-of-the-quotient">Finding a Hausdorff part of the quotient</h4>
+<p>Assume condition 5. We show that the quotient has a nonempty open Hausdorff part. Choose a relatively compact open arrow neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of some unit, put <span class="math" data-tex="\(N=\overline V\)">\(N=\overline V\)</span>, and choose a nonempty relatively compact open <span class="math" data-tex="\(P_0\subseteq X\)">\(P_0\subseteq X\)</span> with
+<span class="math" data-tex="\(e(P_0)\subseteq V\)">\(e(P_0)\subseteq V\)</span>. Thus <span class="math" data-tex="\(N\)">\(N\)</span> is compact and its interior contains every unit over <span class="math" data-tex="\(P_0\)">\(P_0\)</span>. We claim there is a nonempty open <span class="math" data-tex="\(P\subseteq P_0\)">\(P\subseteq P_0\)</span> such that</p>
+<span id="equation-13b-7"></span><span class="math math-display" data-tex="\[
+(r,s)(\mathcal G)\cap(P\times P)
+=(r,s)(N)\cap(P\times P).
+\tag{13B.7}
+\]">\[
+(r,s)(\mathcal G)\cap(P\times P)
+=(r,s)(N)\cap(P\times P).
+\tag{13B.7}
+\]</span>
+<p>In words, all related pairs in this neighborhood can be joined by arrows in one compact set.</p>
+<p>Suppose no such <span class="math" data-tex="\(P\)">\(P\)</span> exists. Use a compatible metric on <span class="math" data-tex="\(X\)">\(X\)</span>. Inductively choose nonempty open sets <span class="math" data-tex="\(P_n\)">\(P_n\)</span> with compact closures, <span class="math" data-tex="\(\overline{P_{n+1}}\subseteq P_n\)">\(\overline{P_{n+1}}\subseteq P_n\)</span>, and diameters tending to zero. Here is the additional property we arrange. Since (13B.7) fails on <span class="math" data-tex="\(P_n\)">\(P_n\)</span>, choose related <span class="math" data-tex="\(x_n,y_n\in P_n\)">\(x_n,y_n\in P_n\)</span> with <span class="math" data-tex="\((y_n,x_n)\notin(r,s)(N)\)">\((y_n,x_n)\notin(r,s)(N)\)</span>, and an arrow <span class="math" data-tex="\(\sigma_n:x_n\to y_n\)">\(\sigma_n:x_n\to y_n\)</span>. The compact image <span class="math" data-tex="\((r,s)(N)\)">\((r,s)(N)\)</span> is closed in <span class="math" data-tex="\(X\times X\)">\(X\times X\)</span>. We can therefore choose a compact neighborhood <span class="math" data-tex="\(M_n\subseteq P_n\)">\(M_n\subseteq P_n\)</span> of <span class="math" data-tex="\(x_n\)">\(x_n\)</span> and an open neighborhood <span class="math" data-tex="\(T_n\subseteq P_n\)">\(T_n\subseteq P_n\)</span> of <span class="math" data-tex="\(y_n\)">\(y_n\)</span> such that</p>
+<span id="equation-13b-8"></span><span class="math math-display" data-tex="\[
+(T_n\times M_n)\cap(r,s)(N)=\varnothing.
+\tag{13B.8}
+\]">\[
+(T_n\times M_n)\cap(r,s)(N)=\varnothing.
+\tag{13B.8}
+\]</span>
+<p>Choose an open arrow neighborhood <span class="math" data-tex="\(A_n\)">\(A_n\)</span> of <span class="math" data-tex="\(\sigma_n\)">\(\sigma_n\)</span> with
+<span class="math" data-tex="\(s(A_n)\subseteq\operatorname{int}M_n\)">\(s(A_n)\subseteq\operatorname{int}M_n\)</span> and <span class="math" data-tex="\(r(A_n)\subseteq T_n\)">\(r(A_n)\subseteq T_n\)</span>. Since source is open, <span class="math" data-tex="\(s(A_n)\)">\(s(A_n)\)</span> is an open neighborhood of <span class="math" data-tex="\(x_n\)">\(x_n\)</span>. Choose <span class="math" data-tex="\(P_{n+1}\)">\(P_{n+1}\)</span> with compact closure inside
+<span class="math" data-tex="\(P_n\cap\operatorname{int}M_n\cap s(A_n)\)">\(P_n\cap\operatorname{int}M_n\cap s(A_n)\)</span>, and diameter less than <span class="math" data-tex="\(1/(n+1)\)">\(1/(n+1)\)</span>. This completes the induction.</p>
+<p>The nested compact closures have a unique common point <span class="math" data-tex="\(x_\infty\)">\(x_\infty\)</span>; it belongs to every <span class="math" data-tex="\(P_n\)">\(P_n\)</span>. Since <span class="math" data-tex="\(x_\infty\in s(A_n)\)">\(x_\infty\in s(A_n)\)</span>, choose <span class="math" data-tex="\(\tau_n\in A_n\)">\(\tau_n\in A_n\)</span> with source <span class="math" data-tex="\(x_\infty\)">\(x_\infty\)</span>. Its range <span class="math" data-tex="\(z_n\)">\(z_n\)</span> lies in <span class="math" data-tex="\(T_n\subseteq P_n\)">\(T_n\subseteq P_n\)</span>, hence <span class="math" data-tex="\(z_n\to x_\infty\)">\(z_n\to x_\infty\)</span> in the same orbit. But (13B.8) and <span class="math" data-tex="\(x_\infty\in M_n\)">\(x_\infty\in M_n\)</span> say that no arrow in <span class="math" data-tex="\(N\)">\(N\)</span> joins <span class="math" data-tex="\(x_\infty\)">\(x_\infty\)</span> to <span class="math" data-tex="\(z_n\)">\(z_n\)</span>. This contradicts condition 5: the image of
+<span class="math" data-tex="\((\operatorname{int}N)\cap\mathcal G_{x_\infty}\)">\((\operatorname{int}N)\cap\mathcal G_{x_\infty}\)</span> is a relative orbit neighborhood of <span class="math" data-tex="\(x_\infty\)">\(x_\infty\)</span>, since that open set contains its unit. Eventually <span class="math" data-tex="\(z_n\)">\(z_n\)</span> must belong to that image. The claim follows.</p>
+<p>The relation in (13B.7) is closed in <span class="math" data-tex="\(P\times P\)">\(P\times P\)</span>, and <span class="math" data-tex="\(q|_P:P\to q(P)\)">\(q|_P:P\to q(P)\)</span> is an open quotient. Its quotient is Hausdorff: for an unrelated pair choose product neighborhoods avoiding the closed relation. Their images under the open quotient map are disjoint neighborhoods of the two classes. Thus <span class="math" data-tex="\(q(P)\)">\(q(P)\)</span> is a nonempty open Hausdorff subspace of <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>To obtain condition 2 for every nonempty closed <span class="math" data-tex="\(F\subseteq Q\)">\(F\subseteq Q\)</span>, apply the same argument to the invariant closed unit set <span class="math" data-tex="\(Y=q^{-1}(F)\)">\(Y=q^{-1}(F)\)</span>. Its reduction is still second countable locally compact Hausdorff and has open range and source relative to <span class="math" data-tex="\(Y\)">\(Y\)</span>; its source fibres and orbit topologies are the original ones. The restricted quotient <span class="math" data-tex="\(Y\to F\)">\(Y\to F\)</span> is open: the image of <span class="math" data-tex="\(Y\cap W\)">\(Y\cap W\)</span> is <span class="math" data-tex="\(F\cap q(W)\)">\(F\cap q(W)\)</span> for open <span class="math" data-tex="\(W\subseteq X\)">\(W\subseteq X\)</span>. The preceding construction gives the required relatively open Hausdorff part of <span class="math" data-tex="\(F\)">\(F\)</span>. This proves <span class="math" data-tex="\(5\Rightarrow2\)">\(5\Rightarrow2\)</span>.</p>
+<p>Finally condition 2 implies condition 1. If two distinct points had the same closure <span class="math" data-tex="\(C\)">\(C\)</span>, each would belong to every nonempty relatively open subset of <span class="math" data-tex="\(C\)">\(C\)</span>. A nonempty relatively open Hausdorff part of <span class="math" data-tex="\(C\)">\(C\)</span> would contain both points and would have to separate them. Its separating neighborhoods are also relatively open in <span class="math" data-tex="\(C\)">\(C\)</span>, which is impossible. All five conditions are equivalent. ∎</p>
+<p>For an action of <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> on a second countable locally compact Hausdorff space <span class="math" data-tex="\(Z\)">\(Z\)</span>, apply the theorem to the transformation groupoid <span class="math" data-tex="\(\mathcal G\ltimes Z\)">\(\mathcal G\ltimes Z\)</span>. Its source map is the pullback of the open map <span class="math" data-tex="\(s\)">\(s\)</span>, hence open; inversion gives openness of range. The arrow space is a closed fibre product in <span class="math" data-tex="\(\mathcal G\times Z\)">\(\mathcal G\times Z\)</span>, so is second countable locally compact Hausdorff. Its orbit map at <span class="math" data-tex="\(z\)">\(z\)</span> is precisely <span class="math" data-tex="\(\gamma\mapsto\gamma z\)">\(\gamma\mapsto\gamma z\)</span>. This proves the action version, with the second-countability hypothesis on <span class="math" data-tex="\(Z\)">\(Z\)</span> explicit.</p>
+<p>The nested-neighborhood argument is the groupoid counterpart of Effros's argument in the group case; compare [Williams 2007]. Open source provides arrows from the limiting unit, and open range propagates the first Baire neighborhood. Neither step assumes an étale groupoid or a continuous local choice of an arrow.</p>
+<p>For any subset <span class="math" data-tex="\(N\subseteq X\)">\(N\subseteq X\)</span>, its <strong>reduction</strong> is</p>
+<span id="equation-13-21"></span><span class="math math-display" data-tex="\[
+\mathcal G|_N=r^{-1}(N)\cap s^{-1}(N)\rightrightarrows N.
+\tag{13.21}
+\]">\[
+\mathcal G|_N=r^{-1}(N)\cap s^{-1}(N)\rightrightarrows N.
+\tag{13.21}
+\]</span>
+<p><span id="proposition-13-5"></span><strong>Proposition 13.5.</strong> The reduction is a topological groupoid in its induced topology. If <span class="math" data-tex="\(N\)">\(N\)</span> is open or closed, it retains local compactness in the Hausdorff setting, and local Hausdorff charts in the locally Hausdorff setting. Meeting every orbit makes it full.</p>
+<p><strong>Proof.</strong> The units at both endpoints of every retained arrow belong to <span class="math" data-tex="\(N\)">\(N\)</span>, so inverses and composable products stay in the reduction. Its composable-pair topology is the subspace topology inherited from <span class="math" data-tex="\(\mathcal G^{(2)}\)">\(\mathcal G^{(2)}\)</span>. Restrictions of the original continuous structure maps therefore give a topological groupoid. For open <span class="math" data-tex="\(N\)">\(N\)</span> the arrow space is open; for closed <span class="math" data-tex="\(N\)">\(N\)</span> it is closed. Open and closed subspaces of a locally compact Hausdorff space are locally compact Hausdorff; apply the same assertion in a Hausdorff chart for the locally Hausdorff case. Fullness means exactly that each original orbit meets <span class="math" data-tex="\(N\)">\(N\)</span>; then its intersections with <span class="math" data-tex="\(N\)">\(N\)</span> are precisely the reduction orbits. ∎</p>
+<p>Neither fullness nor closedness by itself supplies a Haar system by restriction. In the pair groupoid of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, <span class="math" data-tex="\(N=\{0\}\)">\(N=\{0\}\)</span> meets the single orbit, but restricting the Lebesgue range measure to the sole arrow <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> gives zero measure. The reduced one-point groupoid instead has a nonzero Dirac Haar measure.</p>
+<p>A full closed reduction can even fail to have any Haar system. Let <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> translate horizontally on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, and take</p>
+<span id="equation-13-22"></span><span class="math math-display" data-tex="\[
+N=\{(0,y):y\geq0\}\ \cup\ \{(1,y):y\leq0\}.
+\tag{13.22}
+\]">\[
+N=\{(0,y):y\geq0\}\ \cup\ \{(1,y):y\leq0\}.
+\tag{13.22}
+\]</span>
+<p>It is closed and meets every horizontal orbit. In the reduction, the arrow from <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> to <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> is isolated: restrict its target to the second half-line, its source to the first, and its translation coordinate to <span class="math" data-tex="\((1/2,3/2)\)">\((1/2,3/2)\)</span>. The common height must then be zero and the translation must be one. The range of this open singleton is <span class="math" data-tex="\(\{(1,0)\}\)">\(\{(1,0)\}\)</span>, which is not open in <span class="math" data-tex="\(N\)">\(N\)</span>. Theorem 13.4 forbids a Haar system. Transversal reductions used for foliations require their own local transversality and open-anchor arguments; Proposition 13.5 alone does not prove equivalence or a measure construction.</p>
+<h2 id="open-range-and-second-countability">Open range and second countability</h2>
+<p>Openness of range is necessary, and in general it is not sufficient without further hypotheses. To see this directly, let <span class="math" data-tex="\(X\)">\(X\)</span> be the one-point compactification of an uncountable discrete set <span class="math" data-tex="\(D\)">\(D\)</span>. The pair groupoid <span class="math" data-tex="\(X\times X\)">\(X\times X\)</span> has open range and source projections. Any Haar system on it would, by left invariance, use one common full-support Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on its second coordinate. This measure would be finite on compact <span class="math" data-tex="\(X\)">\(X\)</span>, while <span class="math" data-tex="\(\mu(\{d\})&gt;0\)">\(\mu(\{d\})&gt;0\)</span> for every <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>. For each positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, only finitely many such masses can be at least <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Their union is countable, contradicting uncountability of <span class="math" data-tex="\(D\)">\(D\)</span>. Thus no Haar system exists.</p>
+<h2 id="selecting-measures-on-open-fibres">Selecting measures on open fibres</h2>
+<p>We first establish the measure-selection result needed for transfer. A <strong>full continuous <span class="math" data-tex="\(p\)">\(p\)</span>-system</strong> for a map <span class="math" data-tex="\(p:Y\to B\)">\(p:Y\to B\)</span> is a family of positive Radon measures <span class="math" data-tex="\(\beta^b\)">\(\beta^b\)</span> supported on exactly <span class="math" data-tex="\(p^{-1}(b)\)">\(p^{-1}(b)\)</span>, such that <span class="math" data-tex="\(b\mapsto\beta^b(f)\)">\(b\mapsto\beta^b(f)\)</span> is continuous for every <span class="math" data-tex="\(f\in C_c(Y)\)">\(f\in C_c(Y)\)</span>.</p>
+<p><strong>Lemma (open-fibre selection).</strong> An open continuous surjection between second countable locally compact Hausdorff spaces admits a full continuous <span class="math" data-tex="\(p\)">\(p\)</span>-system.</p>
+<p><strong>Proof.</strong> We give the selection argument, including the convergence of the measures. Choose a complete compatible metric <span class="math" data-tex="\(d\leq1\)">\(d\leq1\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>. Such a metric is available here: countably many compactly supported separating functions give a compatible metric <span class="math" data-tex="\(d_0\)">\(d_0\)</span>; a compact exhaustion and compactly supported cutoffs give a proper continuous function <span class="math" data-tex="\(h:Y\to[0,\infty)\)">\(h:Y\to[0,\infty)\)</span>. The metric <span class="math" data-tex="\(d_0(y,z)+|h(y)-h(z)|\)">\(d_0(y,z)+|h(y)-h(z)|\)</span> is complete, since a Cauchy sequence stays in one compact sublevel set of <span class="math" data-tex="\(h\)">\(h\)</span>. Truncating it at one preserves completeness and topology.</p>
+<p>For finitely supported probability measures define</p>
+<span id="equation-13a-10"></span><span class="math math-display" data-tex="\[
+W(\mu,\nu)=\inf_{\gamma}\int d(y,z)\,d\gamma(y,z),
+\tag{13A.10}
+\]">\[
+W(\mu,\nu)=\inf_{\gamma}\int d(y,z)\,d\gamma(y,z),
+\tag{13A.10}
+\]</span>
+<p>where <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> ranges over couplings with the specified marginals. A coupling is just a finite nonnegative matrix with those row and column sums. Gluing two such matrices through their common marginal proves the triangle inequality. Mixing couplings with common weights proves convexity of the distance. We use the same formula for limits of these probabilities.</p>
+<p>Write <span class="math" data-tex="\(F_b\)">\(F_b\)</span> for the probabilities supported on the closed fibre <span class="math" data-tex="\(p^{-1}(b)\)">\(p^{-1}(b)\)</span>. If a finite probability <span class="math" data-tex="\(\mu=\sum a_j\delta_{y_j}\)">\(\mu=\sum a_j\delta_{y_j}\)</span> belongs to <span class="math" data-tex="\(F_b\)">\(F_b\)</span>, openness of <span class="math" data-tex="\(p\)">\(p\)</span> gives, for each <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, a neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(b\)">\(b\)</span> such that</p>
+<span id="equation-13a-11"></span><span class="math math-display" data-tex="\[
+\operatorname{dist}_W(\mu,F_c)&lt;\varepsilon\quad(c\in V).
+\tag{13A.11}
+\]">\[
+\operatorname{dist}_W(\mu,F_c)&lt;\varepsilon\quad(c\in V).
+\tag{13A.11}
+\]</span>
+<p>Indeed choose one point of <span class="math" data-tex="\(p^{-1}(c)\)">\(p^{-1}(c)\)</span> in each <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-ball about <span class="math" data-tex="\(y_j\)">\(y_j\)</span>, and transport the mass <span class="math" data-tex="\(a_j\)">\(a_j\)</span> there. Finite probabilities are dense among probabilities on a fibre: put all but a small mass in a compact set, partition that compact set into finitely many small-diameter Borel pieces, and choose a point in each nonempty piece. The omitted mass costs at most its mass because <span class="math" data-tex="\(d\leq1\)">\(d\leq1\)</span>.</p>
+<p>Choose numbers <span class="math" data-tex="\(\varepsilon_n=4^{-n}\varepsilon_0\)">\(\varepsilon_n=4^{-n}\varepsilon_0\)</span>. Using (13A.11), a locally finite partition of unity on <span class="math" data-tex="\(B\)">\(B\)</span> produces a continuous, pointwise finitely supported probability <span class="math" data-tex="\(\sigma_0(b)\)">\(\sigma_0(b)\)</span> with distance less than <span class="math" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span> from <span class="math" data-tex="\(F_b\)">\(F_b\)</span>. Here the measures being mixed are fixed finite probabilities at the centres of the covering neighborhoods. Continuity is in <span class="math" data-tex="\(W\)">\(W\)</span>; changes in finitely many weights cost at most the sum of their absolute changes.</p>
+<p>Suppose <span class="math" data-tex="\(\sigma_n\)">\(\sigma_n\)</span> has already been constructed. At each <span class="math" data-tex="\(b\)">\(b\)</span>, choose a finite <span class="math" data-tex="\(\mu_b\in F_b\)">\(\mu_b\in F_b\)</span> with <span class="math" data-tex="\(W(\mu_b,\sigma_n(b))&lt;\varepsilon_n\)">\(W(\mu_b,\sigma_n(b))&lt;\varepsilon_n\)</span>. Continuity of <span class="math" data-tex="\(\sigma_n\)">\(\sigma_n\)</span> and (13A.11) give a neighborhood on which</p>
+<span id="equation-13a-12"></span><span class="math math-display" data-tex="\[
+W(\mu_b,\sigma_n(c))&lt;2\varepsilon_n,
+\qquad \operatorname{dist}_W(\mu_b,F_c)&lt;\varepsilon_{n+1}.
+\tag{13A.12}
+\]">\[
+W(\mu_b,\sigma_n(c))&lt;2\varepsilon_n,
+\qquad \operatorname{dist}_W(\mu_b,F_c)&lt;\varepsilon_{n+1}.
+\tag{13A.12}
+\]</span>
+<p>Mix these <span class="math" data-tex="\(\mu_b\)">\(\mu_b\)</span>'s with a locally finite partition of unity. Convexity gives a continuous finite probability <span class="math" data-tex="\(\sigma_{n+1}\)">\(\sigma_{n+1}\)</span> satisfying</p>
+<span id="equation-13a-13"></span><span class="math math-display" data-tex="\[
+W(\sigma_{n+1}(c),\sigma_n(c))&lt;2\varepsilon_n,
+\qquad \operatorname{dist}_W(\sigma_{n+1}(c),F_c)&lt;\varepsilon_{n+1}.
+\tag{13A.13}
+\]">\[
+W(\sigma_{n+1}(c),\sigma_n(c))&lt;2\varepsilon_n,
+\qquad \operatorname{dist}_W(\sigma_{n+1}(c),F_c)&lt;\varepsilon_{n+1}.
+\tag{13A.13}
+\]</span>
+<p>The summable distances have an actual probability limit. At a fixed <span class="math" data-tex="\(c\)">\(c\)</span>, choose optimal successive finite couplings; a minimum exists on the compact polytope of coupling matrices, and their expected distances are less than <span class="math" data-tex="\(2\varepsilon_n\)">\(2\varepsilon_n\)</span>. Realize them as a chain of random variables using their finite conditional probabilities and independent uniform variables on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. The expected sum of successive distances is finite. Thus almost every chain is Cauchy and has a limit in the complete space <span class="math" data-tex="\(Y\)">\(Y\)</span>. Its distribution <span class="math" data-tex="\(\mu^c\)">\(\mu^c\)</span> is a Radon probability, and the coupling with each stage shows convergence in <span class="math" data-tex="\(W\)">\(W\)</span>, with the uniform bound <span class="math" data-tex="\(\sum_{k\geq n}2\varepsilon_k\)">\(\sum_{k\geq n}2\varepsilon_k\)</span>. This bound also shows that <span class="math" data-tex="\(c\mapsto\mu^c\)">\(c\mapsto\mu^c\)</span> is continuous in <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>The function <span class="math" data-tex="\(d(y,p^{-1}(c))\)">\(d(y,p^{-1}(c))\)</span> is bounded and 1-Lipschitz. Its integral against <span class="math" data-tex="\(\sigma_n(c)\)">\(\sigma_n(c)\)</span> is at most <span class="math" data-tex="\(\varepsilon_n\)">\(\varepsilon_n\)</span>, by the second inequality of (13A.13). Taking the limit proves that <span class="math" data-tex="\(\mu^c\)">\(\mu^c\)</span> is supported on the fibre. A continuous compactly supported function on <span class="math" data-tex="\(Y\)">\(Y\)</span> is uniformly continuous for <span class="math" data-tex="\(d\)">\(d\)</span>: a sequence contradicting uniform continuity would have one point tending into its compact support and the other at distance tending to zero. It can therefore be approximated uniformly by bounded Lipschitz functions, using infima of <span class="math" data-tex="\(f(z)+L d(y,z)\)">\(f(z)+L d(y,z)\)</span> for its real and imaginary parts. The coupling estimate for Lipschitz functions proves continuity of <span class="math" data-tex="\(c\mapsto\mu^c(f)\)">\(c\mapsto\mu^c(f)\)</span>.</p>
+<p>We still need full support; one selection alone need not have it. Take a countable base of precompact open subsets <span class="math" data-tex="\(U_i\subset Y\)">\(U_i\subset Y\)</span>. For <span class="math" data-tex="\(y\in U_i\)">\(y\in U_i\)</span>, choose <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with the <span class="math" data-tex="\(d\)">\(d\)</span>-ball of radius <span class="math" data-tex="\(r\)">\(r\)</span> about <span class="math" data-tex="\(y\)">\(y\)</span> contained in <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. On a neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(p(y)\)">\(p(y)\)</span>, (13A.11) permits us to start the same construction with <span class="math" data-tex="\(\sigma_0(c)=\delta_y\)">\(\sigma_0(c)=\delta_y\)</span> and <span class="math" data-tex="\(\varepsilon_0&lt;r/16\)">\(\varepsilon_0&lt;r/16\)</span>. Its limit stays within <span class="math" data-tex="\(\sum_n2\varepsilon_n&lt;r/2\)">\(\sum_n2\varepsilon_n&lt;r/2\)</span> of <span class="math" data-tex="\(\delta_y\)">\(\delta_y\)</span>, so <span class="math" data-tex="\(\mu^c(U_i)&gt;1/2\)">\(\mu^c(U_i)&gt;1/2\)</span> for every <span class="math" data-tex="\(c\in V\)">\(c\in V\)</span>.</p>
+<p>These neighborhoods cover <span class="math" data-tex="\(p(U_i)\)">\(p(U_i)\)</span>. Second countability and compactly supported base cutoffs give countably many functions <span class="math" data-tex="\(0\leq\theta_j\leq1\)">\(0\leq\theta_j\leq1\)</span>, each with closed support inside one such <span class="math" data-tex="\(V_j\)">\(V_j\)</span>, whose positivity sets cover each <span class="math" data-tex="\(p(U_i)\)">\(p(U_i)\)</span>. Include the corresponding local probability selections <span class="math" data-tex="\(\mu_j^c\)">\(\mu_j^c\)</span>, and enumerate all these choices in one sequence. Set</p>
+<span id="equation-13a-14"></span><span class="math math-display" data-tex="\[
+\beta^c=\sum_{j\geq1}2^{-j}\theta_j(c)\mu_j^c,
+\tag{13A.14}
+\]">\[
+\beta^c=\sum_{j\geq1}2^{-j}\theta_j(c)\mu_j^c,
+\tag{13A.14}
+\]</span>
+<p>interpreting a term as zero outside <span class="math" data-tex="\(V_j\)">\(V_j\)</span>. Every term is continuous on test functions, including across the boundary of <span class="math" data-tex="\(V_j\)">\(V_j\)</span>; the tail is bounded by <span class="math" data-tex="\(\|f\|_\infty\sum_{j&gt;N}2^{-j}\)">\(\|f\|_\infty\sum_{j&gt;N}2^{-j}\)</span>. Hence the test integrals are continuous. These are finite Radon measures supported on their fibres. Whenever the fibre meets <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, one positive term gives it positive mass in <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. The base then proves full support. ∎</p>
+<p>This supplies the result credited to Blanchard in [Williams 2016]. Second countability enters both the partitions and the countable full-support mixture.</p>
+<h2 id="averaging-and-haar-transfer">Averaging and Haar transfer</h2>
+<p>A <span class="math" data-tex="\((G,H)\)">\((G,H)\)</span>-<strong>equivalence</strong> is a locally compact Hausdorff space <span class="math" data-tex="\(Z\)">\(Z\)</span> with commuting free proper left <span class="math" data-tex="\(G\)">\(G\)</span>- and right <span class="math" data-tex="\(H\)">\(H\)</span>-actions. Its open surjective anchors are <span class="math" data-tex="\(p:Z\to G^{(0)}\)">\(p:Z\to G^{(0)}\)</span> and <span class="math" data-tex="\(q:Z\to H^{(0)}\)">\(q:Z\to H^{(0)}\)</span>, and the actions identify <span class="math" data-tex="\(Z/H\)">\(Z/H\)</span> with <span class="math" data-tex="\(G^{(0)}\)">\(G^{(0)}\)</span> and <span class="math" data-tex="\(G\backslash Z\)">\(G\backslash Z\)</span> with <span class="math" data-tex="\(H^{(0)}\)">\(H^{(0)}\)</span>. Equivalently, the action maps are homeomorphisms onto the corresponding equal-anchor relations. For example, for <span class="math" data-tex="\(p(z)=p(w)\)">\(p(z)=p(w)\)</span>, there is a unique arrow <span class="math" data-tex="\(h=[z,w]_H\)">\(h=[z,w]_H\)</span> with <span class="math" data-tex="\(zh=w\)">\(zh=w\)</span>, and this division map is continuous. These are precisely the equivalence data used in Lesson 15.</p>
+<p><strong>Theorem (Haar transfer).</strong> Let <span class="math" data-tex="\(G,H\)">\(G,H\)</span> be second countable locally compact Hausdorff groupoids, and let <span class="math" data-tex="\(Z\)">\(Z\)</span> be an equivalence between them. If <span class="math" data-tex="\(G\)">\(G\)</span> has a Haar system, then so does <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(Z\)">\(Z\)</span> is itself second countable; this does not have to be added as an assumption. Choose countably many precompact open subsets <span class="math" data-tex="\(U_j\subset Z\)">\(U_j\subset Z\)</span> whose <span class="math" data-tex="\(q\)">\(q\)</span>-images cover <span class="math" data-tex="\(H^{(0)}\)">\(H^{(0)}\)</span>, using openness of <span class="math" data-tex="\(q\)">\(q\)</span> and second countability of that unit space. Each point of <span class="math" data-tex="\(Z\)">\(Z\)</span> lies in <span class="math" data-tex="\(G\cdot\overline{U_j}\)">\(G\cdot\overline{U_j}\)</span> for some <span class="math" data-tex="\(j\)">\(j\)</span>. A compact exhaustion of <span class="math" data-tex="\(G\)">\(G\)</span>, together with these compact sets and the closed composability relation, expresses <span class="math" data-tex="\(Z\)">\(Z\)</span> as a countable union of compact continuous images. Thus <span class="math" data-tex="\(Z\)">\(Z\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-compact.</p>
+<p>The equal-<span class="math" data-tex="\(q\)">\(q\)</span> relation in <span class="math" data-tex="\(Z\times Z\)">\(Z\times Z\)</span> is a <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span>, since the diagonal of the metrizable space <span class="math" data-tex="\(H^{(0)}\)">\(H^{(0)}\)</span> is a <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span>. Its continuous division map to <span class="math" data-tex="\(G\)">\(G\)</span>, sending <span class="math" data-tex="\((z,w)\)">\((z,w)\)</span> to the unique <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(z=gw\)">\(z=gw\)</span>, has the diagonal of <span class="math" data-tex="\(Z\)">\(Z\)</span> as the inverse image of <span class="math" data-tex="\(G^{(0)}\)">\(G^{(0)}\)</span>. The unit space is closed in the metrizable arrow space <span class="math" data-tex="\(G\)">\(G\)</span>, hence is a <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span>. Consequently the diagonal of <span class="math" data-tex="\(Z\)">\(Z\)</span> is a <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span> in <span class="math" data-tex="\(Z\times Z\)">\(Z\times Z\)</span>.</p>
+<p>Every compact Hausdorff space <span class="math" data-tex="\(C\)">\(C\)</span> with a <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span> diagonal has a countable base. To check this directly, take decreasing open neighborhoods <span class="math" data-tex="\(O_n\)">\(O_n\)</span> of the diagonal with decreasing closed neighborhoods inside them and intersection equal to the diagonal. Compactness gives finite open covers <span class="math" data-tex="\(\mathcal U_n\)">\(\mathcal U_n\)</span> with <span class="math" data-tex="\(U\times U\subset O_n\)">\(U\times U\subset O_n\)</span> for every member. For <span class="math" data-tex="\(x\in O\subset C\)">\(x\in O\subset C\)</span> open, some star of <span class="math" data-tex="\(x\)">\(x\)</span> in these covers is contained in <span class="math" data-tex="\(O\)">\(O\)</span>. Otherwise points outside <span class="math" data-tex="\(O\)">\(O\)</span> paired with <span class="math" data-tex="\(x\)">\(x\)</span> in successively smaller <span class="math" data-tex="\(O_n\)">\(O_n\)</span>'s have a cluster point outside <span class="math" data-tex="\(O\)">\(O\)</span> on the diagonal, a contradiction. The countably many cover members therefore form a base. Apply this to compact subsets of <span class="math" data-tex="\(Z\)">\(Z\)</span>. Local compactness and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-compactness give a countable cover of <span class="math" data-tex="\(Z\)">\(Z\)</span> by open sets with compact closures, each having a countable base. Their bases together prove the assertion.</p>
+<p>Now apply the preceding lemma to <span class="math" data-tex="\(p\)">\(p\)</span>, obtaining a full system <span class="math" data-tex="\(\beta^u\)">\(\beta^u\)</span>. We first construct a nonnegative continuous function <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span>, positive somewhere on each <span class="math" data-tex="\(G\)">\(G\)</span>-orbit, with</p>
+<span id="equation-13a-15"></span><span class="math math-display" data-tex="\[
+\operatorname{supp}b\cap q^{-1}(K)\text{ compact whenever }K\subset H^{(0)}
+\text{ is compact}.
+\tag{13A.15}
+\]">\[
+\operatorname{supp}b\cap q^{-1}(K)\text{ compact whenever }K\subset H^{(0)}
+\text{ is compact}.
+\tag{13A.15}
+\]</span>
+<p>Choose a locally finite cover by precompact open sets <span class="math" data-tex="\(V_j\subset H^{(0)}\)">\(V_j\subset H^{(0)}\)</span> and a subordinate partition <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> with closed support inside <span class="math" data-tex="\(V_j\)">\(V_j\)</span>. Openness and surjectivity of <span class="math" data-tex="\(q\)">\(q\)</span> permit finitely many compactly supported nonnegative bumps on <span class="math" data-tex="\(Z\)">\(Z\)</span> whose positivity images cover <span class="math" data-tex="\(\overline{V_j}\)">\(\overline{V_j}\)</span>; let their sum be <span class="math" data-tex="\(b_j\)">\(b_j\)</span>. Then <span class="math" data-tex="\(b(z)=\sum_j\rho_j(q(z))b_j(z)\)">\(b(z)=\sum_j\rho_j(q(z))b_j(z)\)</span> is continuous and positive on every orbit. Over a compact <span class="math" data-tex="\(K\)">\(K\)</span>, local finiteness restricts its support to finitely many compact <span class="math" data-tex="\(\operatorname{supp}b_j\)">\(\operatorname{supp}b_j\)</span>'s. This proves (13A.15).</p>
+<p>Average the selected measures using <span class="math" data-tex="\(G\)">\(G\)</span>'s Haar system:</p>
+<span id="equation-13a-16"></span><span class="math math-display" data-tex="\[
+\nu^u(f)=\int_{G^u}\int_{p^{-1}(s(g))}
+f(gz)b(z)\,d\beta^{s(g)}(z)\,d\lambda^u(g).
+\tag{13A.16}
+\]">\[
+\nu^u(f)=\int_{G^u}\int_{p^{-1}(s(g))}
+f(gz)b(z)\,d\beta^{s(g)}(z)\,d\lambda^u(g).
+\tag{13A.16}
+\]</span>
+<p>We verify finiteness and continuity before claiming these are measures. Put <span class="math" data-tex="\(K=\operatorname{supp}f\)">\(K=\operatorname{supp}f\)</span> and <span class="math" data-tex="\(L=\operatorname{supp}b\cap q^{-1}(q(K))\)">\(L=\operatorname{supp}b\cap q^{-1}(q(K))\)</span>. The latter is compact by (13A.15). The nonzero integrand has <span class="math" data-tex="\(z\in L\)">\(z\in L\)</span> and <span class="math" data-tex="\(gz\in K\)">\(gz\in K\)</span>. Properness of the action makes the set of such composable pairs compact. Thus <span class="math" data-tex="\(F(g,z)=f(gz)b(z)\)">\(F(g,z)=f(gz)b(z)\)</span>, initially on the closed composable-pair space, has compact support there. Extend it to a compactly supported continuous function on <span class="math" data-tex="\(G\times Z\)">\(G\times Z\)</span>, by extending on a closed set and multiplying by a compact cutoff.</p>
+<p>Integration of such a function against <span class="math" data-tex="\(\beta^v\)">\(\beta^v\)</span> is continuous in <span class="math" data-tex="\((g,v)\)">\((g,v)\)</span>: on a compact rectangle approximate uniformly by finite sums <span class="math" data-tex="\(a(g)c(z)\)">\(a(g)c(z)\)</span>; continuity of the selected system and a compact positive envelope bound the integral errors uniformly. Restricting to <span class="math" data-tex="\(v=s(g)\)">\(v=s(g)\)</span> gives a function <span class="math" data-tex="\(\Psi_f\in C_c(G)\)">\(\Psi_f\in C_c(G)\)</span>. Its support is contained in the projection of the compact composable support above. Haar continuity now proves that (13A.16) is finite and continuous in <span class="math" data-tex="\(u\)">\(u\)</span>. Positivity and local boundedness on compact test supports make it a Radon measure by the Riesz representation theorem.</p>
+<p>Only points of <span class="math" data-tex="\(p^{-1}(u)\)">\(p^{-1}(u)\)</span> contribute. Conversely, if <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span> and <span class="math" data-tex="\(f(w)&gt;0\)">\(f(w)&gt;0\)</span>, choose <span class="math" data-tex="\(z\)">\(z\)</span> in the same <span class="math" data-tex="\(G\)">\(G\)</span>-orbit with <span class="math" data-tex="\(b(z)&gt;0\)">\(b(z)&gt;0\)</span>, and <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(gz=w\)">\(gz=w\)</span>. Full support of <span class="math" data-tex="\(\beta^{s(g)}\)">\(\beta^{s(g)}\)</span> gives <span class="math" data-tex="\(\Psi_f(g)&gt;0\)">\(\Psi_f(g)&gt;0\)</span>. Its continuity and full support of <span class="math" data-tex="\(\lambda^{p(w)}\)">\(\lambda^{p(w)}\)</span> give <span class="math" data-tex="\(\nu^{p(w)}(f)&gt;0\)">\(\nu^{p(w)}(f)&gt;0\)</span>. Thus <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is a full <span class="math" data-tex="\(p\)">\(p\)</span>-system. Left invariance of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, with the substitution <span class="math" data-tex="\(g\mapsto g_0g\)">\(g\mapsto g_0g\)</span>, proves</p>
+<span id="equation-13a-17"></span><span class="math math-display" data-tex="\[
+(g_0)_*\nu^{s(g_0)}=\nu^{r(g_0)}.
+\tag{13A.17}
+\]">\[
+(g_0)_*\nu^{s(g_0)}=\nu^{r(g_0)}.
+\tag{13A.17}
+\]</span>
+<p>For <span class="math" data-tex="\(v\in H^{(0)}\)">\(v\in H^{(0)}\)</span>, choose <span class="math" data-tex="\(z\in q^{-1}(v)\)">\(z\in q^{-1}(v)\)</span> and define</p>
+<span id="equation-13a-18"></span><span class="math math-display" data-tex="\[
+\kappa^v(a)=\int_{p^{-1}(p(z))}a([z,w]_H)\,d\nu^{p(z)}(w),
+\qquad a\in C_c(H).
+\tag{13A.18}
+\]">\[
+\kappa^v(a)=\int_{p^{-1}(p(z))}a([z,w]_H)\,d\nu^{p(z)}(w),
+\qquad a\in C_c(H).
+\tag{13A.18}
+\]</span>
+<p>The map <span class="math" data-tex="\(w\mapsto[z,w]_H\)">\(w\mapsto[z,w]_H\)</span> is a homeomorphism onto <span class="math" data-tex="\(H^v\)">\(H^v\)</span>, so this is a full-support Radon measure on that range fibre. If another choice is <span class="math" data-tex="\(z&#x27;=gz\)">\(z&#x27;=gz\)</span>, its equal-anchor fibre is obtained by <span class="math" data-tex="\(w&#x27;=gw\)">\(w&#x27;=gw\)</span>. Equation (13A.17) and commutation of the actions give <span class="math" data-tex="\([gz,gw]_H=[z,w]_H\)">\([gz,gw]_H=[z,w]_H\)</span>. Hence (13A.18) is independent of the choice.</p>
+<p>Its test integral is continuous as a function of <span class="math" data-tex="\(z\)">\(z\)</span>. Locally restrict <span class="math" data-tex="\(z\)">\(z\)</span> to a compact neighborhood <span class="math" data-tex="\(K_Z\)">\(K_Z\)</span>. A contributing <span class="math" data-tex="\(w\)">\(w\)</span> has the form <span class="math" data-tex="\(zh\)">\(zh\)</span> with <span class="math" data-tex="\(h\in\operatorname{supp}a\)">\(h\in\operatorname{supp}a\)</span>; these <span class="math" data-tex="\(w\)">\(w\)</span>'s lie in the compact image of the closed composable subset of <span class="math" data-tex="\(K_Z\times\operatorname{supp}a\)">\(K_Z\times\operatorname{supp}a\)</span>. A local compact cutoff, extension from the closed equal-anchor relation, and the same finite-sum integration argument prove continuity. This function is constant on the fibres of the open quotient <span class="math" data-tex="\(q\)">\(q\)</span>, so descends to a continuous function of <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>Finally, for <span class="math" data-tex="\(h_0\in H\)">\(h_0\in H\)</span> and <span class="math" data-tex="\(q(z)=r(h_0)\)">\(q(z)=r(h_0)\)</span>, use <span class="math" data-tex="\(zh_0\)">\(zh_0\)</span> to compute the measure at <span class="math" data-tex="\(s(h_0)\)">\(s(h_0)\)</span>. The identity</p>
+<span id="equation-13a-19"></span><span class="math math-display" data-tex="\[
+[zh_0,w]_H=h_0^{-1}[z,w]_H
+\tag{13A.19}
+\]">\[
+[zh_0,w]_H=h_0^{-1}[z,w]_H
+\tag{13A.19}
+\]</span>
+<p>shows directly that <span class="math" data-tex="\(\kappa^{s(h_0)}(a\circ L_{h_0})=\kappa^{r(h_0)}(a)\)">\(\kappa^{s(h_0)}(a\circ L_{h_0})=\kappa^{r(h_0)}(a)\)</span>. This is left invariance. Thus <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is the required Haar system. ∎</p>
+<p>The transfer theorem and averaging method are due to [Williams 2016]. The proof above includes the open-fibre selection and the passage from an equivariant system to the other groupoid's measures. It imposes neither étaleness nor a choice of transversal.</p>
+<h2 id="a-symbolic-groupoid">A symbolic groupoid</h2>
+<p>Finally fix <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, let <span class="math" data-tex="\(Y=\{1,\ldots,n\}^{\mathbb N}\)">\(Y=\{1,\ldots,n\}^{\mathbb N}\)</span> with its compact product topology, and let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> remove the first letter. The Cuntz groupoid is</p>
+<span id="equation-13-23"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal G_n=\{(x,k,y):k=p-q,\ p,q\geq0,\
+\sigma^p x=\sigma^q y\},\\
+r(x,k,y)=x,\quad s(x,k,y)=y,\quad
+(x,k,y)(y,l,z)=(x,k+l,z).
+\end{gathered}
+\tag{13.23}
+\]">\[
+\begin{gathered}
+\mathcal G_n=\{(x,k,y):k=p-q,\ p,q\geq0,\
+\sigma^p x=\sigma^q y\},\\
+r(x,k,y)=x,\quad s(x,k,y)=y,\quad
+(x,k,y)(y,l,z)=(x,k+l,z).
+\end{gathered}
+\tag{13.23}
+\]</span>
+<p>Its inverse is <span class="math" data-tex="\((y,-k,x)\)">\((y,-k,x)\)</span>. For finite words <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, including the empty word, the sets</p>
+<span id="equation-13-24"></span><span class="math math-display" data-tex="\[
+Z(a,b)=\{(az,|a|-|b|,bz):z\in Y\}
+\tag{13.24}
+\]">\[
+Z(a,b)=\{(az,|a|-|b|,bz):z\in Y\}
+\tag{13.24}
+\]</span>
+<p>are compact open bisections and define its topology. They cover the arrow space by the defining shift equality. For intersections at the same lag, matching longer prefixes either gives a smaller set of this form or an empty intersection; they therefore form a basis. Range and source identify each with the two prefix cylinders. Their prefix product rules make inversion and multiplication continuous. Distinct arrows with distinct lag are separated by the lag; with equal lag they can be separated by a differing coordinate in their source or range cylinders. Thus the groupoid is Hausdorff, locally compact and étale, and Proposition 13.2 supplies its Haar system.</p>
+<p><strong>Theorem (the Cuntz groupoid algebra).</strong> With the counting Haar system,</p>
+<span id="equation-13a-7"></span><span class="math math-display" data-tex="\[
+C^*(\mathcal G_n)\cong\mathcal O_n.
+\tag{13A.7}
+\]">\[
+C^*(\mathcal G_n)\cong\mathcal O_n.
+\tag{13A.7}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span> is the universal unital C*-algebra generated by isometries <span class="math" data-tex="\(s_1,\ldots,s_n\)">\(s_1,\ldots,s_n\)</span> with orthogonal ranges summing to the identity. We use the full completion constructed in Lesson 14.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(S_i=1_{Z(i,\varnothing)}\)">\(S_i=1_{Z(i,\varnothing)}\)</span>. Counting convolution and inversion of bisections give</p>
+<span id="equation-13a-8"></span><span class="math math-display" data-tex="\[
+S_i^*S_j=\delta_{ij}1_Y,\qquad
+\sum_{i=1}^n S_iS_i^*=1_Y,
+\qquad S_aS_b^*=1_{Z(a,b)}.
+\tag{13A.8}
+\]">\[
+S_i^*S_j=\delta_{ij}1_Y,\qquad
+\sum_{i=1}^n S_iS_i^*=1_Y,
+\qquad S_aS_b^*=1_{Z(a,b)}.
+\tag{13A.8}
+\]</span>
+<p>The first identities follow by cancelling equal first letters; the range cylinders partition <span class="math" data-tex="\(Y\)">\(Y\)</span>. The empty word gives <span class="math" data-tex="\(S_\varnothing=1_Y\)">\(S_\varnothing=1_Y\)</span>, which is the convolution identity because <span class="math" data-tex="\(Y\)">\(Y\)</span> is the compact unit space. Thus the universal property gives a homomorphism <span class="math" data-tex="\(\pi:\mathcal O_n\to C^*(\mathcal G_n)\)">\(\pi:\mathcal O_n\to C^*(\mathcal G_n)\)</span>. The identity is nonzero: any regular representation from Lesson 14 acts by the identity on its nonzero fibre Hilbert space.</p>
+<p>This homomorphism is onto. A compact-support partition of unity decomposes any test function into finitely many functions supported inside the bisections <span class="math" data-tex="\(Z(a,b)\)">\(Z(a,b)\)</span>. On a bisection, prefix-cylinder step functions approximate continuous functions uniformly, because finite-prefix cylinders form a clopen basis of the compact word space. Each step function is a finite linear combination of characteristic functions <span class="math" data-tex="\(1_{Z(ac,bc)}\)">\(1_{Z(ac,bc)}\)</span>. A function on one bisection has I-norm at most its supremum norm, since a bisection meets each range and source fibre at most once. Summing over the finite decomposition therefore gives approximation in I-norm, hence in the full C*-norm. Equation (13A.8) places every approximant in the image of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, proving surjectivity.</p>
+<p>To prove injectivity, use the circle actions. The universal action on <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span> is <span class="math" data-tex="\(\gamma_z(s_i)=zs_i\)">\(\gamma_z(s_i)=zs_i\)</span>. On the groupoid algebra multiply a kernel at <span class="math" data-tex="\((x,k,y)\)">\((x,k,y)\)</span> by <span class="math" data-tex="\(z^k\)">\(z^k\)</span>. Additivity of the integer lag makes this a star automorphism of the convolution algebra. It preserves the I-norm, and precomposition permutes the representations defining the full norm; thus it extends isometrically to the full completion. It is norm continuous in <span class="math" data-tex="\(z\)">\(z\)</span> on finite bisection sums, and then on the completion by density. The map <span class="math" data-tex="\(\pi\)">\(\pi\)</span> intertwines these two circle actions.</p>
+<p>The fixed algebra of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is the closure of the increasing finite matrix algebras</p>
+<span id="equation-13a-9"></span><span class="math math-display" data-tex="\[
+F_k=\operatorname{span}\{s_as_b^*:|a|=|b|=k\}
+\cong M_{n^k}(\mathbb C).
+\tag{13A.9}
+\]">\[
+F_k=\operatorname{span}\{s_as_b^*:|a|=|b|=k\}
+\cong M_{n^k}(\mathbb C).
+\tag{13A.9}
+\]</span>
+<p>Indeed the defining relations reduce every star polynomial to a sum of <span class="math" data-tex="\(s_as_b^*\)">\(s_as_b^*\)</span>. Circle averaging keeps exactly the terms of equal length. Also
+<span class="math" data-tex="\(s_as_b^*=\sum_i s_{ai}s_{bi}^*\)">\(s_as_b^*=\sum_i s_{ai}s_{bi}^*\)</span>, so these spans increase. Their matrix-unit relations follow from <span class="math" data-tex="\(s_a^*s_b=\delta_{ab}1\)">\(s_a^*s_b=\delta_{ab}1\)</span> for words of the same length. No coefficient relation can vanish: multiplying a proposed relation on the left by <span class="math" data-tex="\(s_c^*\)">\(s_c^*\)</span> and on the right by <span class="math" data-tex="\(s_d\)">\(s_d\)</span> isolates its coefficient times the nonzero identity. The same argument for the <span class="math" data-tex="\(S_a\)">\(S_a\)</span>'s proves that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is injective, hence isometric, on every <span class="math" data-tex="\(F_k\)">\(F_k\)</span>. It is therefore injective on their closed union.</p>
+<p>Circle averaging <span class="math" data-tex="\(E(a)=\int_{\mathbb T}\gamma_z(a)\,dz\)">\(E(a)=\int_{\mathbb T}\gamma_z(a)\,dz\)</span> is faithful. If <span class="math" data-tex="\(E(a^*a)=0\)">\(E(a^*a)=0\)</span>, then for every state <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, the continuous nonnegative function <span class="math" data-tex="\(z\mapsto\omega(\gamma_z(a^*a))\)">\(z\mapsto\omega(\gamma_z(a^*a))\)</span> has zero Haar integral. Haar full support makes it identically zero, so at <span class="math" data-tex="\(z=1\)">\(z=1\)</span> every state vanishes on <span class="math" data-tex="\(a^*a\)">\(a^*a\)</span>; hence <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. If <span class="math" data-tex="\(\pi(a)=0\)">\(\pi(a)=0\)</span>, equivariance gives <span class="math" data-tex="\(\pi(E(a^*a))=0\)">\(\pi(E(a^*a))=0\)</span>. The fixed-algebra injectivity gives <span class="math" data-tex="\(E(a^*a)=0\)">\(E(a^*a)=0\)</span>, and faithfulness gives <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. This proves (13A.7). ∎</p>
+<p>Sims, <em>Hausdorff étale groupoids and their C*-algebras</em>, Examples 2.4.7 and 3.2.7, describes this one-vertex graph model. The bisection generators, density argument and gauge injectivity required for the identification have been proved here.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 (basic).</strong> For a continuous action <span class="math" data-tex="\(H\curvearrowright X\)">\(H\curvearrowright X\)</span>, verify the transformation-groupoid operations, determine the orbit and isotropy at <span class="math" data-tex="\(x\)">\(x\)</span>, and specialize to a homeomorphism <span class="math" data-tex="\(T\)">\(T\)</span> acting by <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p><strong>Solution.</strong> An arrow <span class="math" data-tex="\((x,g)\)">\((x,g)\)</span> goes from <span class="math" data-tex="\(g^{-1}x\)">\(g^{-1}x\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>. The endpoint condition for its product with <span class="math" data-tex="\((y,h)\)">\((y,h)\)</span> is <span class="math" data-tex="\(y=g^{-1}x\)">\(y=g^{-1}x\)</span>. The product <span class="math" data-tex="\((x,gh)\)">\((x,gh)\)</span> has source <span class="math" data-tex="\(h^{-1}g^{-1}x\)">\(h^{-1}g^{-1}x\)</span>, the source of the second arrow. Inversion in (13.5) gives both products equal to the appropriate units. Three composable arrows multiply to <span class="math" data-tex="\((x,ghk)\)">\((x,ghk)\)</span> in either order, proving associativity. The action and group operations give continuity of inverse, and the <span class="math" data-tex="\((x,g,h)\)">\((x,g,h)\)</span> parametrization of composable pairs gives continuity of multiplication. Local compactness and the Hausdorff property follow from the product topology.</p>
+<p>An arrow with source <span class="math" data-tex="\(x\)">\(x\)</span> has the form <span class="math" data-tex="\((gx,g)\)">\((gx,g)\)</span>, so the orbit is <span class="math" data-tex="\(Hx\)">\(Hx\)</span>. Isotropy consists of <span class="math" data-tex="\((x,g)\)">\((x,g)\)</span> with <span class="math" data-tex="\(gx=x\)">\(gx=x\)</span>, and its group law is the law of <span class="math" data-tex="\(H_x\)">\(H_x\)</span>. For <span class="math" data-tex="\(T\)">\(T\)</span>, these become <span class="math" data-tex="\(T^{\mathbb Z}x\)">\(T^{\mathbb Z}x\)</span> and <span class="math" data-tex="\(\{m:T^m x=x\}\)">\(\{m:T^m x=x\}\)</span>. If the least positive period is <span class="math" data-tex="\(q\)">\(q\)</span>, division by <span class="math" data-tex="\(q\)">\(q\)</span> shows that every return time is a multiple of <span class="math" data-tex="\(q\)">\(q\)</span>; hence the isotropy is <span class="math" data-tex="\(q\mathbb Z\)">\(q\mathbb Z\)</span>. With no positive return time it is zero.</p>
+<p><strong>Exercise 2 (basic).</strong> Prove that range and source are open in an étale groupoid. Show also that its unit space is open.</p>
+<p><strong>Solution.</strong> Cover an open set <span class="math" data-tex="\(V\subseteq\mathcal G\)">\(V\subseteq\mathcal G\)</span> by range-chart pieces <span class="math" data-tex="\(V\cap U\)">\(V\cap U\)</span>. The image of each is open in the chart's open range image, hence open in <span class="math" data-tex="\(X\)">\(X\)</span>. Their union is <span class="math" data-tex="\(r(V)\)">\(r(V)\)</span>. Since <span class="math" data-tex="\(s=r\circ\mathrm{inv}\)">\(s=r\circ\mathrm{inv}\)</span>, inversion, a homeomorphism, gives the same assertion for source.</p>
+<p>For openness of units, choose a source chart <span class="math" data-tex="\(U\)">\(U\)</span> at <span class="math" data-tex="\(e(x)\)">\(e(x)\)</span> and set <span class="math" data-tex="\(O=s(U)\cap e^{-1}(U)\)">\(O=s(U)\cap e^{-1}(U)\)</span>. It is an open neighborhood of <span class="math" data-tex="\(x\)">\(x\)</span>. The unique arrow in <span class="math" data-tex="\(U\)">\(U\)</span> with source <span class="math" data-tex="\(y\in O\)">\(y\in O\)</span> is <span class="math" data-tex="\(e(y)\)">\(e(y)\)</span>, because this unit also belongs to <span class="math" data-tex="\(U\)">\(U\)</span>. Thus <span class="math" data-tex="\(e(O)=(s|_U)^{-1}(O)\)">\(e(O)=(s|_U)^{-1}(O)\)</span> is open in the arrow space. Such neighborhoods cover all the units. This proof permits the arrow space to be non-Hausdorff; only the local homeomorphism and continuous unit inclusion were used.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Prove that a full-support continuous Haar system forces the range map to be open. Explain why allowing zero fibre measures destroys the conclusion.</p>
+<p><strong>Solution.</strong> Given <span class="math" data-tex="\(\gamma\in U\)">\(\gamma\in U\)</span> with <span class="math" data-tex="\(U\)">\(U\)</span> open, take a nonnegative compact bump supported inside <span class="math" data-tex="\(U\)">\(U\)</span> and positive at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. In the locally Hausdorff case take a Hausdorff-patch bump and its zero extension. Positivity persists on a relatively open neighborhood in <span class="math" data-tex="\(\mathcal G^{r(\gamma)}\)">\(\mathcal G^{r(\gamma)}\)</span>, and full support makes its measure positive. Hence <span class="math" data-tex="\(\lambda(f)(r(\gamma))&gt;0\)">\(\lambda(f)(r(\gamma))&gt;0\)</span>. Haar continuity makes <span class="math" data-tex="\(\{\lambda(f)&gt;0\}\)">\(\{\lambda(f)&gt;0\}\)</span> an open neighborhood of <span class="math" data-tex="\(r(\gamma)\)">\(r(\gamma)\)</span>. Every fibre with positive integral meets <span class="math" data-tex="\(U\)">\(U\)</span>, so this neighborhood lies in <span class="math" data-tex="\(r(U)\)">\(r(U)\)</span>. Doing this at every <span class="math" data-tex="\(\gamma\in U\)">\(\gamma\in U\)</span> proves openness.</p>
+<p>The family of zero measures is invariant and its integrals are continuous on every topological groupoid. In particular it can be placed on the reduction (13.22), whose range map is not open. The full-support condition is precisely what rules it out.</p>
+<p><strong>Exercise 4 (advanced).</strong> For the doubled-origin group bundle (13.17), determine the entire patch test-function space and its counting integrals. Compare it carefully with globally continuous compactly supported functions, and test pointwise multiplication.</p>
+<p><strong>Solution.</strong> The plus and minus charts cover the arrow space. For a compactly supported function on any Hausdorff open patch, a finite partition of unity inside that patch splits it into terms supported in the intersections with these two charts. Zero extending these terms shows that every test function is <span class="math" data-tex="\(\phi_++\psi_-\)">\(\phi_++\psi_-\)</span> with <span class="math" data-tex="\(\phi,\psi\in C_c(\mathbb R)\)">\(\phi,\psi\in C_c(\mathbb R)\)</span>. It gives the triple <span class="math" data-tex="\(F=\phi+\psi\)">\(F=\phi+\psi\)</span>, <span class="math" data-tex="\(a=\phi(0)\)">\(a=\phi(0)\)</span>, <span class="math" data-tex="\(b=\psi(0)\)">\(b=\psi(0)\)</span>, satisfying <span class="math" data-tex="\(F(0)=a+b\)">\(F(0)=a+b\)</span>. Conversely a compact bump with prescribed value <span class="math" data-tex="\(a\)">\(a\)</span> at zero supplies <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and <span class="math" data-tex="\(\psi=F-\phi\)">\(\psi=F-\phi\)</span> supplies the rest. This proves (13.19), including surjectivity.</p>
+<p>The counting integral is <span class="math" data-tex="\(F(x)\)">\(F(x)\)</span> away from zero and <span class="math" data-tex="\(a+b=F(0)\)">\(a+b=F(0)\)</span> at zero, so it is continuous. Global continuity of an arrow function, restricted to each of the two charts, forces <span class="math" data-tex="\(a=b=F(0)\)">\(a=b=F(0)\)</span>. Combining this with the patch constraint gives <span class="math" data-tex="\(a=b=F(0)=0\)">\(a=b=F(0)=0\)</span>. Thus the intersection of the two function spaces consists exactly of the compactly supported functions which vanish at both origins.</p>
+<p>To see both failures outside their intersection, take a nonnegative compact bump <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on the ordinary line with <span class="math" data-tex="\(\rho(0)=1\)">\(\rho(0)=1\)</span>. Its plus-chart extension has triple <span class="math" data-tex="\((\rho,1,0)\)">\((\rho,1,0)\)</span>, is a test function, and is not globally continuous. The globally continuous function with nonzero values <span class="math" data-tex="\(\rho(x)\)">\(\rho(x)\)</span> and both origin values <span class="math" data-tex="\(1\)">\(1\)</span> has counting integral <span class="math" data-tex="\(2\)">\(2\)</span> at zero and limit <span class="math" data-tex="\(1\)">\(1\)</span>; it is not a patch test function. Accordingly, saying only that the naive globally continuous space is “too small” would conceal that it also contains inadmissible functions.</p>
+<p>Finally the pointwise product of the plus and minus extensions of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> has triple <span class="math" data-tex="\((\rho^2,0,0)\)">\((\rho^2,0,0)\)</span>. It violates <span class="math" data-tex="\(\rho^2(0)=0+0\)">\(\rho^2(0)=0+0\)</span>. The patch span is a vector space of integration kernels, not an algebra under pointwise multiplication.</p>
+<h2 id="proofs-and-prerequisites">Proofs and prerequisites</h2>
+<ul>
+<li>The Mackey–Glimm–Ramsay equivalences are proved in the orbit-space section, including the open-orbit-map and almost-Hausdorff implications. The transformation-groupoid argument proves the action version for a second countable locally compact Hausdorff acted-on space. No Haar system or local bisections enter this proof.</li>
+<li>Group-bundle Haar existence and Haar transfer under equivalence are proved above, including full continuous measure selection and second countability of an equivalence space. The measure argument uses the ordinary Riesz representation and probability-measure extension theorems.</li>
+<li>The holonomy construction is the exact written programme prerequisite <a href="prerequisites/NCG-FOLIATIONS/the-c-star-algebra-of-a-foliation.html"><em>The C*-algebra of a foliation</em>, Lemma 1.1, Lemma 2.1 and Theorem 2.2</a>, for second countable foliated manifolds, including locally Hausdorff arrow spaces and Hausdorff holonomy covers. The Reeb transverse model and leaf geometry are proved in Lesson 16. Their original attribution to Connes is retained.</li>
+<li>The Cuntz-algebra identification is proved by the bisection generators and circle averaging above. Its full groupoid norm and regular representation use the owned construction in Lesson 14; Morita equivalence is the subject of Lesson 15.</li>
+<li>Haar measure on locally compact groups, compact-support partitions of unity on locally compact Hausdorff spaces, and smooth partitions of unity on second countable manifolds are the general prerequisites used in the explicit constructions.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>Yuezhao Li, <a href="https://ncg-leiden.github.io/groupoid2022/groupoid_notes.pdf"><em>Groupoid C*-algebras</em></a>, Leiden seminar notes, revised 7 February 2024, §§1–3 and §9.</p>
+</li>
+<li>
+<p>Alain Connes, <a href="https://alainconnes.org/wp-content/uploads/foliationsfine.pdf"><em>A survey of foliations and operator algebras</em></a>, 1982, §6; locators here refer to the author's electronic edition.</p>
+</li>
+<li>
+<p>Alain Connes, <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf"><em>Noncommutative Geometry</em></a>, 1994, Chapter II, §§5 and 8.</p>
+</li>
+<li>
+<p>Dana P. Williams, <a href="https://arxiv.org/pdf/1501.04077"><em>Haar Systems on Equivalent Groupoids</em></a>, <em>Proceedings of the American Mathematical Society, Series B</em> <strong>3</strong> (2016), 1–8, Theorem 2.1.</p>
+</li>
+<li>
+<p>Aidan Sims, <a href="https://aidansims.com/papers/Sims2017.pdf"><em>Hausdorff étale groupoids and their C*-algebras</em></a>, 2017, Examples 2.4.7 and 3.2.7.</p>
+</li>
+<li>
+<p><a href="prerequisites/NCG-FOLIATIONS/the-c-star-algebra-of-a-foliation.html"><em>The C*-algebra of a foliation</em></a>, in <em>Foliations and their operator algebras</em>, Lemma 1.1, Lemma 2.1 and Theorem 2.2. This is a written programme proof; its source is available on GitHub.</p>
+</li>
+<li>
+<p>Arlan Ramsay, <em>The Mackey–Glimm dichotomy for foliations and other Polish groupoids</em>, <em>Journal of Functional Analysis</em> <strong>94</strong> (1990), 358–374, <a href="https://doi.org/10.1016/0022-1236(90)90018-G">original article</a>. Attribution for the groupoid dichotomy; the proof is supplied above.</p>
+</li>
+<li>
+<p>Dana P. Williams, <em>Crossed Products of C*-Algebras</em>, AMS, 2007, Theorem 6.2 and its proof, pp. 176–179, <a href="https://doi.org/10.1090/surv/134">book record</a>. The group case and Effros argument are credited; the groupoid proof uses open source and range maps as shown above.</p>
+</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="pager-prev" rel="prev" href="KT-CP-12.html">← Previous lesson</a> <a href="index.html">Course contents</a> <a class="pager-next" rel="next" href="KT-CP-14.html">Next lesson →</a></nav>
+<p class="source-link"><a href="src/KT-CP-13.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

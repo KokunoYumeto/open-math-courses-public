@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exponential sums and a subconvex bound · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-07.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="exponential-sums-and-a-subconvex-bound">Exponential sums and a subconvex bound</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The convexity estimate controls zeta by interpolating its boundary values. We can improve the exponent by examining the finite sum itself. Its terms are unit vectors with a changing direction; cancellation depends on how rapidly that direction changes and on whether consecutive directions nearly coincide. Derivative tests quantify this geometry. Differencing reduces a higher-order phase to lower-order phases, while a second transformation exchanges positions with frequencies.</p>
+<p>We use the truncation formula in <a href="NT-ZETA-06.html">Growth in the critical strip: convexity and the Lindelöf hypothesis</a>, Theorem 1.1, and the Fejér-kernel argument in <a href="NT-ZETA-04.html">Poisson summation, theta, and the functional equation</a>, Lemma 1.1. The hyperbola identity was introduced in <a href="NT-ZETA-02.html">Counting primes by elementary means: Chebyshev and Mertens</a>, Solution 6. We write <span class="math" data-tex="$e(u)=\exp(2\pi iu)$">$e(u)=\exp(2\pi iu)$</span>, <span class="math" data-tex="$\|u\|=\min_{j\in\mathbb Z}|u-j|$">$\|u\|=\min_{j\in\mathbb Z}|u-j|$</span>, and <span class="math" data-tex="$\tau=|t|+4$">$\tau=|t|+4$</span>. Free method comparisons are the exact author-hosted Montgomery–Vaughan II draft, Chapter 16 and Appendix E, and Koukoulopoulos’s preliminary version, Chapter 3, listed below.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-continuous-cancellation">1. Continuous cancellation</h2>
+<p><strong>Lemma 1.1 (first-derivative integral test).</strong> If <span class="math" data-tex="$f\in C^1[a,b]$">$f\in C^1[a,b]$</span>, <span class="math" data-tex="$f&#x27;$">$f&#x27;$</span> is monotone, and <span class="math" data-tex="$|f&#x27;|\ge\lambda&gt;0$">$|f&#x27;|\ge\lambda&gt;0$</span>, then
+<span class="math math-display" data-tex="$$
+\left|\int_a^b e(f(u))\,du\right|\ll\lambda^{-1}.
+\tag{1.1}
+$$">$$
+\left|\int_a^b e(f(u))\,du\right|\ll\lambda^{-1}.
+\tag{1.1}
+$$</span>
+More generally, for an amplitude <span class="math" data-tex="$r$">$r$</span> such that <span class="math" data-tex="$r/f&#x27;$">$r/f&#x27;$</span> has bounded variation, the integral is at most
+<span class="math math-display" data-tex="$$
+\frac1{2\pi}\left(
+ |r(a)/f&#x27;(a)|+|r(b)/f&#x27;(b)|+
+ \operatorname{Var}_{[a,b]}(r/f&#x27;)\right).
+\tag{1.2}
+$$">$$
+\frac1{2\pi}\left(
+ |r(a)/f&#x27;(a)|+|r(b)/f&#x27;(b)|+
+ \operatorname{Var}_{[a,b]}(r/f&#x27;)\right).
+\tag{1.2}
+$$</span></p>
+<p><em>Proof.</em> Since <span class="math" data-tex="$d(e(f))=2\pi i f&#x27;e(f)\,du$">$d(e(f))=2\pi i f&#x27;e(f)\,du$</span>, integration by parts gives
+<span class="math math-display" data-tex="$$
+\int_a^b r e(f)=
+\left[\frac{r e(f)}{2\pi i f&#x27;}\right]_a^b
+-\frac1{2\pi i}\int_a^b e(f)\,d(r/f&#x27;).
+$$">$$
+\int_a^b r e(f)=
+\left[\frac{r e(f)}{2\pi i f&#x27;}\right]_a^b
+-\frac1{2\pi i}\int_a^b e(f)\,d(r/f&#x27;).
+$$</span>
+Bound the last Stieltjes integral by the variation. For <span class="math" data-tex="$r=1$">$r=1$</span>, the reciprocal of the nonvanishing monotone derivative is monotone, bounded by <span class="math" data-tex="$1/\lambda$">$1/\lambda$</span>, and has variation at most <span class="math" data-tex="$2/\lambda$">$2/\lambda$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 1.2 (second-derivative integral test).</strong> If <span class="math" data-tex="$f\in C^2[a,b]$">$f\in C^2[a,b]$</span> and <span class="math" data-tex="$|f&#x27;&#x27;|\ge\lambda&gt;0$">$|f&#x27;&#x27;|\ge\lambda&gt;0$</span>, then
+<span class="math math-display" data-tex="$$
+\left|\int_a^b e(f(u))\,du\right|\ll\lambda^{-1/2}.
+\tag{1.3}
+$$">$$
+\left|\int_a^b e(f(u))\,du\right|\ll\lambda^{-1/2}.
+\tag{1.3}
+$$</span></p>
+<p><em>Proof.</em> Continuity makes the sign of <span class="math" data-tex="$f&#x27;&#x27;$">$f&#x27;&#x27;$</span> constant; conjugation reduces to <span class="math" data-tex="$f&#x27;&#x27;\ge\lambda$">$f&#x27;&#x27;\ge\lambda$</span>. Then <span class="math" data-tex="$f&#x27;$">$f&#x27;$</span> increases. The region <span class="math" data-tex="$|f&#x27;|\le\sqrt\lambda$">$|f&#x27;|\le\sqrt\lambda$</span> is an interval of length at most <span class="math" data-tex="$2/\sqrt\lambda$">$2/\sqrt\lambda$</span>. Estimate its integral by its length. Its complement has at most two intervals, each covered by Lemma 1.1 with lower derivative <span class="math" data-tex="$\sqrt\lambda$">$\sqrt\lambda$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="2-consecutive-terms-and-the-second-derivative-sum-test">2. Consecutive terms and the second-derivative sum test</h2>
+<p><strong>Theorem 2.1 (Kusmin–Landau).</strong> Let <span class="math" data-tex="$\alpha_1,\ldots,\alpha_L$">$\alpha_1,\ldots,\alpha_L$</span> be real. Suppose the increments <span class="math" data-tex="$\delta_n=\alpha_{n+1}-\alpha_n$">$\delta_n=\alpha_{n+1}-\alpha_n$</span>, after subtracting one common integer, are monotone and lie in <span class="math" data-tex="$[\Delta,1-\Delta]$">$[\Delta,1-\Delta]$</span>, where <span class="math" data-tex="$0&lt;\Delta\le1/2$">$0&lt;\Delta\le1/2$</span>. Then
+<span class="math math-display" data-tex="$$
+\left|\sum_{n=1}^L e(\alpha_n)\right|\ll\Delta^{-1}.
+\tag{2.1}
+$$">$$
+\left|\sum_{n=1}^L e(\alpha_n)\right|\ll\Delta^{-1}.
+\tag{2.1}
+$$</span>
+Monotonicity refers to representatives in that single interval; distance from an integer alone is not the hypothesis.</p>
+<p><em>Proof.</em> A common integer shift of the increments does not change the terms. The case <span class="math" data-tex="$L=1$">$L=1$</span> is immediate. Put <span class="math" data-tex="$z_n=e(\alpha_n)$">$z_n=e(\alpha_n)$</span> and
+<span class="math math-display" data-tex="$$
+\rho_n=\frac1{1-e(\delta_n)}
+=\frac12+\frac i2\cot(\pi\delta_n).
+$$">$$
+\rho_n=\frac1{1-e(\delta_n)}
+=\frac12+\frac i2\cot(\pi\delta_n).
+$$</span>
+Since <span class="math" data-tex="$z_n=\rho_n(z_n-z_{n+1})$">$z_n=\rho_n(z_n-z_{n+1})$</span>, telescoping yields
+<span class="math math-display" data-tex="$$
+\sum_{n=1}^L z_n
+=\rho_1z_1+
+\sum_{n=2}^{L-1}(\rho_n-\rho_{n-1})z_n
++(1-\rho_{L-1})z_L.
+\tag{2.2}
+$$">$$
+\sum_{n=1}^L z_n
+=\rho_1z_1+
+\sum_{n=2}^{L-1}(\rho_n-\rho_{n-1})z_n
++(1-\rho_{L-1})z_L.
+\tag{2.2}
+$$</span>
+The endpoint coefficients have modulus <span class="math" data-tex="$O(\Delta^{-1})$">$O(\Delta^{-1})$</span>. The real parts of the <span class="math" data-tex="$\rho_n$">$\rho_n$</span> are constant, and their imaginary parts are monotone, so their total variation is <span class="math" data-tex="$O(\Delta^{-1})$">$O(\Delta^{-1})$</span> as well. Equation (2.2) proves the estimate. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Consequently, if <span class="math" data-tex="$f&#x27;$">$f&#x27;$</span> is monotone and stays in <span class="math" data-tex="$[j+\Delta,j+1-\Delta]$">$[j+\Delta,j+1-\Delta]$</span> on an interval, its exponential sum is <span class="math" data-tex="$O(\Delta^{-1})$">$O(\Delta^{-1})$</span>: for adjacent integer points the increment is <span class="math" data-tex="$\int_n^{n+1}f&#x27;(u)\,du$">$\int_n^{n+1}f&#x27;(u)\,du$</span>, which remains in that interval and is monotone. This is the first-derivative test for sums.</p>
+<p><strong>Theorem 2.2 (second-derivative sum test).</strong> Let <span class="math" data-tex="$N\ge1$">$N\ge1$</span>, <span class="math" data-tex="$b-a\le N$">$b-a\le N$</span>, and <span class="math" data-tex="$f\in C^2[a,b]$">$f\in C^2[a,b]$</span>. If
+<span class="math math-display" data-tex="$$
+0&lt;M\le f&#x27;&#x27;(u)\le A M\qquad(a\le u\le b),\quad A\ge1,
+$$">$$
+0&lt;M\le f&#x27;&#x27;(u)\le A M\qquad(a\le u\le b),\quad A\ge1,
+$$</span>
+then
+<span class="math math-display" data-tex="$$
+\sum_{a&lt;n\le b}e(f(n))\ll A N\sqrt M+M^{-1/2}.
+\tag{2.3}
+$$">$$
+\sum_{a&lt;n\le b}e(f(n))\ll A N\sqrt M+M^{-1/2}.
+\tag{2.3}
+$$</span>
+The implied constant is absolute. The same estimate holds for <span class="math" data-tex="$-AM\le f&#x27;&#x27;\le-M$">$-AM\le f&#x27;&#x27;\le-M$</span>, and for either choice of including endpoints. An endpoint changes the sum by at most 1, which the right side absorbs.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="$M\ge1/16$">$M\ge1/16$</span>, the trivial bound <span class="math" data-tex="$N+1$">$N+1$</span> suffices. Otherwise put <span class="math" data-tex="$\Delta=\sqrt M&lt;1/4$">$\Delta=\sqrt M&lt;1/4$</span>. The derivative increases through a range of length at most <span class="math" data-tex="$AMN$">$AMN$</span>. The preimages of the neighborhoods <span class="math" data-tex="$[j-\Delta,j+\Delta]$">$[j-\Delta,j+\Delta]$</span> of integers therefore comprise <span class="math" data-tex="$O(AMN+1)$">$O(AMN+1)$</span> intervals. Each has length at most <span class="math" data-tex="$2\Delta/M$">$2\Delta/M$</span>, so their integer points contribute
+<span class="math" data-tex="$O((AMN+1)(\Delta/M+1))$">$O((AMN+1)(\Delta/M+1))$</span>. Between them lie <span class="math" data-tex="$O(AMN+1)$">$O(AMN+1)$</span> intervals with derivative in <span class="math" data-tex="$[j+\Delta,j+1-\Delta]$">$[j+\Delta,j+1-\Delta]$</span>. The first-derivative sum test bounds their contribution by <span class="math" data-tex="$O((AMN+1)/\Delta)$">$O((AMN+1)/\Delta)$</span>. Choose boundaries consistently so every integer point is counted once. Substitution of <span class="math" data-tex="$\Delta=\sqrt M$">$\Delta=\sqrt M$</span> gives <span class="math" data-tex="$O(AN\sqrt M+M^{-1/2})$">$O(AN\sqrt M+M^{-1/2})$</span>, with an absolute constant, since <span class="math" data-tex="$M&lt;1$">$M&lt;1$</span>. Conjugation treats the negative derivative case. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="3-differencing-and-a-third-derivative">3. Differencing and a third derivative</h2>
+<p><strong>Theorem 3.1 (van der Corput's inequality).</strong> For complex <span class="math" data-tex="$z_1,\ldots,z_L$">$z_1,\ldots,z_L$</span> and <span class="math" data-tex="$1\le H\le L$">$1\le H\le L$</span>,
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+H^2\left|\sum_{n=1}^Lz_n\right|^2
+\le (L+H-1)\bigg(&amp;H\sum_{n=1}^L|z_n|^2\\
+&amp;+2\sum_{h=1}^{H-1}(H-h)
+ \operatorname{Re}\sum_{n=1}^{L-h}z_{n+h}\overline{z_n}\bigg).
+\end{aligned}
+\tag{3.1}
+$$">$$
+\begin{aligned}
+H^2\left|\sum_{n=1}^Lz_n\right|^2
+\le (L+H-1)\bigg(&amp;H\sum_{n=1}^L|z_n|^2\\
+&amp;+2\sum_{h=1}^{H-1}(H-h)
+ \operatorname{Re}\sum_{n=1}^{L-h}z_{n+h}\overline{z_n}\bigg).
+\end{aligned}
+\tag{3.1}
+$$</span>
+Replacing each real part by the modulus also gives a valid upper bound.</p>
+<p><em>Proof.</em> Extend <span class="math" data-tex="$z_n$">$z_n$</span> by zero outside <span class="math" data-tex="$[1,L]$">$[1,L]$</span>. Then
+<span class="math math-display" data-tex="$$
+H\sum_{n=1}^Lz_n
+=\sum_{m=1}^{L+H-1}\sum_{r=0}^{H-1}z_{m-r}.
+$$">$$
+H\sum_{n=1}^Lz_n
+=\sum_{m=1}^{L+H-1}\sum_{r=0}^{H-1}z_{m-r}.
+$$</span>
+Cauchy's inequality bounds its squared modulus by <span class="math" data-tex="$(L+H-1)\sum_m|\sum_rz_{m-r}|^2$">$(L+H-1)\sum_m|\sum_rz_{m-r}|^2$</span>. Expand the square. Each displacement <span class="math" data-tex="$h$">$h$</span> occurs for <span class="math" data-tex="$H-|h|$">$H-|h|$</span> pairs of shifts; the diagonal gives <span class="math" data-tex="$H\sum|z_n|^2$">$H\sum|z_n|^2$</span>, and opposite displacements combine into twice a real part. This proves (3.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.2 (third-derivative sum test).</strong> Under <span class="math" data-tex="$b-a\le N$">$b-a\le N$</span>, <span class="math" data-tex="$N\ge1$">$N\ge1$</span>, <span class="math" data-tex="$f\in C^3[a,b]$">$f\in C^3[a,b]$</span>, and
+<span class="math" data-tex="$0&lt;M\le f&#x27;&#x27;&#x27;\le AM$">$0&lt;M\le f&#x27;&#x27;&#x27;\le AM$</span>,
+<span class="math math-display" data-tex="$$
+\sum_{a&lt;n\le b}e(f(n))
+\ll_A NM^{1/6}+N^{1/2}M^{-1/6}.
+\tag{3.2}
+$$">$$
+\sum_{a&lt;n\le b}e(f(n))
+\ll_A NM^{1/6}+N^{1/2}M^{-1/6}.
+\tag{3.2}
+$$</span>
+The negative-derivative version follows by conjugation.</p>
+<p><em>Proof.</em> Zero padding to an integer length at most <span class="math" data-tex="$N+1$">$N+1$</span> permits (3.1), even if the actual interval is shorter. For <span class="math" data-tex="$1\le H\le N$">$1\le H\le N$</span>, the correlation phase is <span class="math" data-tex="$f_h(u)=f(u+h)-f(u)$">$f_h(u)=f(u+h)-f(u)$</span> on the overlap. It has
+<span class="math math-display" data-tex="$$
+f_h&#x27;&#x27;(u)=\int_0^h f&#x27;&#x27;&#x27;(u+v)\,dv\in[hM,AhM].
+$$">$$
+f_h&#x27;&#x27;(u)=\int_0^h f&#x27;&#x27;&#x27;(u+v)\,dv\in[hM,AhM].
+$$</span>
+Theorem 2.2 and (3.1), with constants absorbing integer rounding, give
+<span class="math math-display" data-tex="$$
+|S|^2\ll_A\frac{N^2}{H}
++N^2 M^{1/2}H^{1/2}
++N M^{-1/2}H^{-1/2}.
+\tag{3.3}
+$$">$$
+|S|^2\ll_A\frac{N^2}{H}
++N^2 M^{1/2}H^{1/2}
++N M^{-1/2}H^{-1/2}.
+\tag{3.3}
+$$</span>
+Here we used <span class="math" data-tex="$\sum_{h\le H}h^{1/2}\ll H^{3/2}$">$\sum_{h\le H}h^{1/2}\ll H^{3/2}$</span> and <span class="math" data-tex="$\sum_{h\le H}h^{-1/2}\ll H^{1/2}$">$\sum_{h\le H}h^{-1/2}\ll H^{1/2}$</span>. If <span class="math" data-tex="$M\ge1$">$M\ge1$</span>, the first term of (3.2) gives the trivial bound; if <span class="math" data-tex="$M\le N^{-3}$">$M\le N^{-3}$</span>, its second term does. In between choose an integer <span class="math" data-tex="$H\asymp M^{-1/3}$">$H\asymp M^{-1/3}$</span> with <span class="math" data-tex="$1\le H\le N$">$1\le H\le N$</span>. Equation (3.3) becomes
+<span class="math" data-tex="$|S|^2\ll_A N^2M^{1/3}+NM^{-1/3}$">$|S|^2\ll_A N^2M^{1/3}+NM^{-1/3}$</span>. Taking a square root proves the theorem. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is the two-term form needed below. [Montgomery–Vaughan II, Theorem 16.11] further optimizes the choice of <span class="math" data-tex="$H$">$H$</span> in different ranges and obtains a stronger three-term estimate; the present bound follows directly from (3.3).</p>
+<h2 id="4-the-logarithmic-phase-and-the-weyl-bound">4. The logarithmic phase and the Weyl bound</h2>
+<p>For <span class="math" data-tex="$t&gt;0$">$t&gt;0$</span>, the terms <span class="math" data-tex="$n^{-it}$">$n^{-it}$</span> have phase
+<span class="math math-display" data-tex="$$
+f(u)=-\frac{t}{2\pi}\log u,\qquad
+f&#x27;(u)=-\frac{t}{2\pi u},\quad
+f&#x27;&#x27;(u)=\frac{t}{2\pi u^2},\quad
+f&#x27;&#x27;&#x27;(u)=-\frac{t}{\pi u^3}.
+\tag{4.1}
+$$">$$
+f(u)=-\frac{t}{2\pi}\log u,\qquad
+f&#x27;(u)=-\frac{t}{2\pi u},\quad
+f&#x27;&#x27;(u)=\frac{t}{2\pi u^2},\quad
+f&#x27;&#x27;&#x27;(u)=-\frac{t}{\pi u^3}.
+\tag{4.1}
+$$</span>
+On any subinterval of <span class="math" data-tex="$[N,2N]$">$[N,2N]$</span>, Theorem 2.2 gives
+<span class="math math-display" data-tex="$$
+\sum n^{-it}\ll \sqrt t+\frac{N}{\sqrt t}.
+\tag{4.2}
+$$">$$
+\sum n^{-it}\ll \sqrt t+\frac{N}{\sqrt t}.
+\tag{4.2}
+$$</span>
+The third-derivative test, applied to the negative phase, gives
+<span class="math math-display" data-tex="$$
+\sum n^{-it}\ll N^{1/2}t^{1/6}+Nt^{-1/6}.
+\tag{4.3}
+$$">$$
+\sum n^{-it}\ll N^{1/2}t^{1/6}+Nt^{-1/6}.
+\tag{4.3}
+$$</span>
+Both estimates hold for every initial portion of the block, with the same constants. This permits partial summation with the weight <span class="math" data-tex="$n^{-1/2}$">$n^{-1/2}$</span>.</p>
+<p><strong>Theorem 4.1 (Weyl's subconvex bound).</strong> For every real <span class="math" data-tex="$t$">$t$</span>,
+<span class="math math-display" data-tex="$$
+\boxed{\displaystyle
+\zeta(1/2+it)\ll\tau^{1/6}\log\tau.}
+\tag{4.4}
+$$">$$
+\boxed{\displaystyle
+\zeta(1/2+it)\ll\tau^{1/6}\log\tau.}
+\tag{4.4}
+$$</span>
+Consequently <span class="math" data-tex="$\mu(1/2)\le1/6$">$\mu(1/2)\le1/6$</span>.</p>
+<p><em>Proof.</em> Conjugation reduces to <span class="math" data-tex="$t\ge0$">$t\ge0$</span>, and bounded <span class="math" data-tex="$t$">$t$</span> is covered by continuity of zeta on the critical line. Assume <span class="math" data-tex="$t\ge4$">$t\ge4$</span>, so <span class="math" data-tex="$t\asymp\tau$">$t\asymp\tau$</span>. For <span class="math" data-tex="$1\le N\le\tau$">$1\le N\le\tau$</span>, split the blocks into three ranges. If <span class="math" data-tex="$N\le\tau^{1/3}$">$N\le\tau^{1/3}$</span>, the trivial bound <span class="math" data-tex="$O(N)$">$O(N)$</span> is at most <span class="math" data-tex="$O(\sqrt N\tau^{1/6})$">$O(\sqrt N\tau^{1/6})$</span>. If <span class="math" data-tex="$\tau^{1/3}&lt;N\le\tau^{2/3}$">$\tau^{1/3}&lt;N\le\tau^{2/3}$</span>, (4.3) gives this bound because
+<span class="math math-display" data-tex="$$
+N\tau^{-1/6}\le\sqrt N\tau^{1/6}
+\quad\Longleftrightarrow\quad N\le\tau^{2/3}.
+$$">$$
+N\tau^{-1/6}\le\sqrt N\tau^{1/6}
+\quad\Longleftrightarrow\quad N\le\tau^{2/3}.
+$$</span>
+If <span class="math" data-tex="$\tau^{2/3}&lt;N\le\tau$">$\tau^{2/3}&lt;N\le\tau$</span>, (4.2) is <span class="math" data-tex="$O(\sqrt\tau)$">$O(\sqrt\tau)$</span>, which is again at most <span class="math" data-tex="$O(\sqrt N\tau^{1/6})$">$O(\sqrt N\tau^{1/6})$</span>. Thus every partial block sum is <span class="math" data-tex="$O(\sqrt N\tau^{1/6})$">$O(\sqrt N\tau^{1/6})$</span>.</p>
+<p>Partial summation on a block <span class="math" data-tex="$N&lt;n\le b\le2N$">$N&lt;n\le b\le2N$</span> gives
+<span class="math math-display" data-tex="$$
+\sum_{N&lt;n\le b}n^{-1/2-it}
+=b^{-1/2}S(b)+\frac12\int_N^b S(u)u^{-3/2}\,du
+\ll\tau^{1/6},
+$$">$$
+\sum_{N&lt;n\le b}n^{-1/2-it}
+=b^{-1/2}S(b)+\frac12\int_N^b S(u)u^{-3/2}\,du
+\ll\tau^{1/6},
+$$</span>
+where <span class="math" data-tex="$S(u)=\sum_{N&lt;n\le u}n^{-it}$">$S(u)=\sum_{N&lt;n\le u}n^{-it}$</span>. Partition <span class="math" data-tex="$1\le n\le\tau$">$1\le n\le\tau$</span> into disjoint dyadic blocks and one possible terminal partial block. There are <span class="math" data-tex="$O(\log\tau)$">$O(\log\tau)$</span> blocks, so the weighted sum is <span class="math" data-tex="$O(\tau^{1/6}\log\tau)$">$O(\tau^{1/6}\log\tau)$</span>. The truncation formula at <span class="math" data-tex="$x=\tau$">$x=\tau$</span> contributes an error <span class="math" data-tex="$O(\tau^{-1/2})$">$O(\tau^{-1/2})$</span> and a pole term of modulus
+<span class="math math-display" data-tex="$$
+\frac{\tau^{1/2}}{|it-1/2|}\ll\tau^{-1/2}.
+$$">$$
+\frac{\tau^{1/2}}{|it-1/2|}\ll\tau^{-1/2}.
+$$</span>
+This proves (4.4). Since <span class="math" data-tex="$\log\tau\ll_\varepsilon\tau^\varepsilon$">$\log\tau\ll_\varepsilon\tau^\varepsilon$</span>, its exponent infimum is at most <span class="math" data-tex="$1/6$">$1/6$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The three ranges matter: neither derivative test is useful uniformly down to the first term of the sum. Splitting at the height, rather than beyond it, also keeps the truncation error under control.</p>
+<h2 id="5-a-trigonometric-approximation-of-the-sawtooth">5. A trigonometric approximation of the sawtooth</h2>
+<p>We will need a quantitative approximation at discontinuities for the divisor problem. Let <span class="math" data-tex="$b(u)=\{u\}-1/2$">$b(u)=\{u\}-1/2$</span>, including the value <span class="math" data-tex="$-1/2$">$-1/2$</span> at integers.</p>
+<p><strong>Lemma 5.1.</strong> For any real <span class="math" data-tex="$u_1,\ldots,u_L$">$u_1,\ldots,u_L$</span> and integer <span class="math" data-tex="$H\ge1$">$H\ge1$</span>,
+<span class="math math-display" data-tex="$$
+\left|\sum_{n=1}^L b(u_n)\right|
+\ll\frac{L}{H}
++\sum_{h=1}^{2H}\frac1h
+ \left|\sum_{n=1}^L e(hu_n)\right|.
+\tag{5.1}
+$$">$$
+\left|\sum_{n=1}^L b(u_n)\right|
+\ll\frac{L}{H}
++\sum_{h=1}^{2H}\frac1h
+ \left|\sum_{n=1}^L e(hu_n)\right|.
+\tag{5.1}
+$$</span>
+The implied constant is absolute, and integer arguments are allowed.</p>
+<p><em>Proof.</em> On the circle, with <span class="math" data-tex="$v$">$v$</span> represented in <span class="math" data-tex="$[-1/2,1/2]$">$[-1/2,1/2]$</span>, define
+<span class="math math-display" data-tex="$$
+D_H(v)=\frac{\sin(\pi H v)}{\sin(\pi v)},\qquad
+J_H(v)=\frac{D_H(v)^4}{\int_{-1/2}^{1/2}D_H(w)^4\,dw}.
+$$">$$
+D_H(v)=\frac{\sin(\pi H v)}{\sin(\pi v)},\qquad
+J_H(v)=\frac{D_H(v)^4}{\int_{-1/2}^{1/2}D_H(w)^4\,dw}.
+$$</span>
+Continuous values are used at removable singularities. The denominator is comparable with <span class="math" data-tex="$H^3$">$H^3$</span>: the bound <span class="math" data-tex="$|D_H(v)|\ll\min(H,\|v\|^{-1})$">$|D_H(v)|\ll\min(H,\|v\|^{-1})$</span> gives the upper estimate, while <span class="math" data-tex="$|v|\le1/(2H)$">$|v|\le1/(2H)$</span> gives <span class="math" data-tex="$|D_H(v)|\ge2H/\pi$">$|D_H(v)|\ge2H/\pi$</span> and the lower estimate. Thus <span class="math" data-tex="$J_H$">$J_H$</span> is an even, nonnegative trigonometric polynomial of degree <span class="math" data-tex="$2H-2$">$2H-2$</span>, of integral 1, with
+<span class="math math-display" data-tex="$$
+J_H(v)\ll H\min(1,(H\|v\|)^{-4}).
+\tag{5.2}
+$$">$$
+J_H(v)\ll H\min(1,(H\|v\|)^{-4}).
+\tag{5.2}
+$$</span>
+The convolution <span class="math" data-tex="$P_H=b*J_H$">$P_H=b*J_H$</span> is a trigonometric polynomial of mean zero. Direct integration gives the nonzero Fourier coefficients of <span class="math" data-tex="$b$">$b$</span> as <span class="math" data-tex="$-1/(2\pi ih)$">$-1/(2\pi ih)$</span>. Since <span class="math" data-tex="$|\widehat J_H(h)|\le1$">$|\widehat J_H(h)|\le1$</span>, the coefficients of <span class="math" data-tex="$P_H$">$P_H$</span> have modulus at most <span class="math" data-tex="$1/(2\pi|h|)$">$1/(2\pi|h|)$</span>.</p>
+<p>For <span class="math" data-tex="$u$">$u$</span> off the integers, <span class="math" data-tex="$b(u-v)-b(u)$">$b(u-v)-b(u)$</span> equals <span class="math" data-tex="$-v$">$-v$</span> except when <span class="math" data-tex="$u-v$">$u-v$</span> crosses an integer. Evenness of <span class="math" data-tex="$J_H$">$J_H$</span> cancels the integral of <span class="math" data-tex="$v$">$v$</span>. The remaining contribution has modulus at most the mass of <span class="math" data-tex="$J_H$">$J_H$</span> where <span class="math" data-tex="$|v|\ge\|u\|$">$|v|\ge\|u\|$</span>. By (5.2),
+<span class="math math-display" data-tex="$$
+|b(u)-P_H(u)|\ll\min(1,(H\|u\|)^{-3}).
+\tag{5.3}
+$$">$$
+|b(u)-P_H(u)|\ll\min(1,(H\|u\|)^{-3}).
+\tag{5.3}
+$$</span>
+At an integer <span class="math" data-tex="$P_H(u)=0$">$P_H(u)=0$</span>, by oddness of the sawtooth off its jumps, so (5.3) remains valid there.</p>
+<p>We majorize this error by a positive polynomial. Let
+<span class="math math-display" data-tex="$$
+K_H(u)=\frac1H\left(\frac{\sin(\pi Hu)}{\sin(\pi u)}\right)^2,
+\quad \delta=\frac1{2H},\quad
+A_H(u)=K_H(u)+\frac12K_H(u+\delta)+\frac12K_H(u-\delta).
+$$">$$
+K_H(u)=\frac1H\left(\frac{\sin(\pi Hu)}{\sin(\pi u)}\right)^2,
+\quad \delta=\frac1{2H},\quad
+A_H(u)=K_H(u)+\frac12K_H(u+\delta)+\frac12K_H(u-\delta).
+$$</span>
+The two shifted numerators are <span class="math" data-tex="$\cos^2(\pi Hu)$">$\cos^2(\pi Hu)$</span>. Each shifted denominator is at most <span class="math" data-tex="$(|\sin\pi u|+\pi/(2H))^2$">$(|\sin\pi u|+\pi/(2H))^2$</span>. Together with the unshifted numerator this proves
+<span class="math math-display" data-tex="$$
+A_H(u)\ge\frac{1}{H(|\sin\pi u|+\pi/(2H))^2}
+\gg\frac{H}{1+H^2\|u\|^2}.
+\tag{5.4}
+$$">$$
+A_H(u)\ge\frac{1}{H(|\sin\pi u|+\pi/(2H))^2}
+\gg\frac{H}{1+H^2\|u\|^2}.
+\tag{5.4}
+$$</span>
+The inequalities extend by continuity at removable singularities. Comparing (5.3) and (5.4) gives <span class="math" data-tex="$|b-P_H|\le C A_H/H$">$|b-P_H|\le C A_H/H$</span>. The polynomial <span class="math" data-tex="$A_H$">$A_H$</span> has constant coefficient 2, degree <span class="math" data-tex="$H-1$">$H-1$</span>, and every Fourier coefficient has modulus at most 2: this follows either from the Fejér expansion <span class="math" data-tex="$\widehat K_H(h)=(1-|h|/H)_+$">$\widehat K_H(h)=(1-|h|/H)_+$</span> or from positivity and integral 2. Sum this pointwise majorization at the <span class="math" data-tex="$u_n$">$u_n$</span>. The polynomial <span class="math" data-tex="$P_H$">$P_H$</span> contributes coefficients <span class="math" data-tex="$O(1/h)$">$O(1/h)$</span> for <span class="math" data-tex="$h\le2H$">$h\le2H$</span>, and the error contributes <span class="math" data-tex="$O(L/H)$">$O(L/H)$</span> plus coefficients <span class="math" data-tex="$O(1/H)$">$O(1/H)$</span> for <span class="math" data-tex="$h&lt;H$">$h&lt;H$</span>, which are also <span class="math" data-tex="$O(1/h)$">$O(1/h)$</span>. This is (5.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="6-exchanging-positions-and-frequencies">6. Exchanging positions and frequencies</h2>
+<p>To go beyond the third-derivative estimate, we need a transformation that retains cancellation between the stationary points of a Fourier integral. We prove the two analytic ingredients before introducing exponent pairs.</p>
+<p><strong>Lemma 6.1 (finite Poisson transformation).</strong> If <span class="math" data-tex="$f\in C^2[a,b]$">$f\in C^2[a,b]$</span> and <span class="math" data-tex="$f&#x27;$">$f&#x27;$</span> is monotone, put <span class="math" data-tex="$\alpha=\min(f&#x27;(a),f&#x27;(b))$">$\alpha=\min(f&#x27;(a),f&#x27;(b))$</span>, <span class="math" data-tex="$\beta=\max(f&#x27;(a),f&#x27;(b))$">$\beta=\max(f&#x27;(a),f&#x27;(b))$</span>. Then
+<span class="math math-display" data-tex="$$
+\sum_{a\le n\le b}e(f(n))
+=\sum_{\alpha-1\le\nu\le\beta+1}
+ \int_a^b e(f(u)-\nu u)\,du
++O(\log(2+\beta-\alpha)).
+\tag{6.1}
+$$">$$
+\sum_{a\le n\le b}e(f(n))
+=\sum_{\alpha-1\le\nu\le\beta+1}
+ \int_a^b e(f(u)-\nu u)\,du
++O(\log(2+\beta-\alpha)).
+\tag{6.1}
+$$</span>
+Changing endpoint conventions changes only the bounded error.</p>
+<p><em>Proof.</em> Conjugation handles a decreasing derivative. Subtract an integer multiple of <span class="math" data-tex="$u$">$u$</span> so that <span class="math" data-tex="$|\alpha+\beta|\le1$">$|\alpha+\beta|\le1$</span>; neither side changes except for its frequency indices. Extend <span class="math" data-tex="$F(u)=e(f(u))$">$F(u)=e(f(u))$</span> by zero outside <span class="math" data-tex="$[a,b]$">$[a,b]$</span> and periodize it. The resulting periodic function is piecewise continuously differentiable. Convolution with the even Fejér kernel at 0 converges to the average of its one-sided limits. To see this at a jump, subtract those two limits separately on the two sides: their error is small near 0, and the kernel mass away from 0 tends to zero; evenness assigns half the mass to each side. Its Fourier coefficients are <span class="math" data-tex="$I_\nu=\int_a^b e(f(u)-\nu u)\,du$">$I_\nu=\int_a^b e(f(u)-\nu u)\,du$</span>. Consequently
+<span class="math math-display" data-tex="$$
+\sum_{a\le n\le b}^{*}e(f(n))
+=\lim_{K\to\infty}\sum_{|\nu|&lt;K}
+ (1-|\nu|/K) I_\nu,
+\tag{6.2}
+$$">$$
+\sum_{a\le n\le b}^{*}e(f(n))
+=\lim_{K\to\infty}\sum_{|\nu|&lt;K}
+ (1-|\nu|/K) I_\nu,
+\tag{6.2}
+$$</span>
+where an integer endpoint has half weight. This proves the required Poisson identity without assuming absolute convergence of the Fourier integrals.</p>
+<p>For a frequency outside <span class="math" data-tex="$[\alpha-1,\beta+1]$">$[\alpha-1,\beta+1]$</span>, integration by parts gives
+<span class="math math-display" data-tex="$$
+I_\nu=\frac{e(f(a)-\nu a)-e(f(b)-\nu b)}{2\pi i\nu}
++\frac1\nu\int_a^b f&#x27;(u)e(f(u)-\nu u)\,du.
+\tag{6.3}
+$$">$$
+I_\nu=\frac{e(f(a)-\nu a)-e(f(b)-\nu b)}{2\pi i\nu}
++\frac1\nu\int_a^b f&#x27;(u)e(f(u)-\nu u)\,du.
+\tag{6.3}
+$$</span>
+The ratio <span class="math" data-tex="$f&#x27;(u)/(f&#x27;(u)-\nu)$">$f&#x27;(u)/(f&#x27;(u)-\nu)$</span> is monotone and has modulus at most <span class="math" data-tex="$\max(|\alpha|,|\beta|)/\operatorname{dist}(\nu,[\alpha,\beta])$">$\max(|\alpha|,|\beta|)/\operatorname{dist}(\nu,[\alpha,\beta])$</span>. Lemma 1.1 in its amplitude form bounds the last term by
+<span class="math math-display" data-tex="$$
+\ll\frac{1+\beta-\alpha}
+ {|\nu|\operatorname{dist}(\nu,[\alpha,\beta])}.
+$$">$$
+\ll\frac{1+\beta-\alpha}
+ {|\nu|\operatorname{dist}(\nu,[\alpha,\beta])}.
+$$</span>
+The sum of these bounds is <span class="math" data-tex="$O(\log(2+\beta-\alpha))$">$O(\log(2+\beta-\alpha))$</span>: up to twice the derivative range use the harmonic sum in the distance from its endpoint, and farther away sum <span class="math" data-tex="$O((1+\beta-\alpha)/\nu^2)$">$O((1+\beta-\alpha)/\nu^2)$</span>. The factor <span class="math" data-tex="$|\nu|$">$|\nu|$</span> near an endpoint is comparable with the derivative range when that range is large; when it is bounded all distances outside the enlarged interval are bounded below by 1.</p>
+<p>It remains to sum the endpoint terms of (6.3). Since <span class="math" data-tex="$|\alpha+\beta|\le1$">$|\alpha+\beta|\le1$</span>, outside frequencies can be paired as <span class="math" data-tex="$\nu,-\nu$">$\nu,-\nu$</span>, with at most two exceptions. Each paired sum is a constant times <span class="math" data-tex="$\sin(2\pi\nu a)/\nu$">$\sin(2\pi\nu a)/\nu$</span> or <span class="math" data-tex="$\sin(2\pi\nu b)/\nu$">$\sin(2\pi\nu b)/\nu$</span>. Every partial tail of these sine sums is bounded uniformly. Indeed, put <span class="math" data-tex="$d=\|a\|$">$d=\|a\|$</span>; for <span class="math" data-tex="$\nu\le1/d$">$\nu\le1/d$</span> use <span class="math" data-tex="$|\sin(2\pi\nu a)|\le2\pi\nu d$">$|\sin(2\pi\nu a)|\le2\pi\nu d$</span>, and for larger <span class="math" data-tex="$\nu$">$\nu$</span> use the geometric-sum bound <span class="math" data-tex="$O(1/d)$">$O(1/d)$</span> followed by partial summation against <span class="math" data-tex="$1/\nu$">$1/\nu$</span>. The case <span class="math" data-tex="$d=0$">$d=0$</span> is zero, and the same argument applies at <span class="math" data-tex="$b$">$b$</span>. Cesàro averaging of partial sums preserves this bound, so the weights in (6.2) cause no difficulty. The finitely many retained weights tend to 1. Absorb the endpoint half weights into <span class="math" data-tex="$O(1)$">$O(1)$</span> to obtain (6.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 6.2 (stationary phase on the scale of a block).</strong> Let <span class="math" data-tex="$N\ge1$">$N\ge1$</span>, <span class="math" data-tex="$Y&gt;0$">$Y&gt;0$</span>, and let <span class="math" data-tex="$g\in C^5[a,b]$">$g\in C^5[a,b]$</span>, where <span class="math" data-tex="$[a,b]\subset[N,2N]$">$[a,b]\subset[N,2N]$</span>. Suppose, with fixed positive comparison constants,
+<span class="math math-display" data-tex="$$
+g&#x27;&#x27;\asymp Y/N&gt;0,\qquad
+|g^{(j)}|\ll YN^{1-j}\quad(3\le j\le5).
+$$">$$
+g&#x27;&#x27;\asymp Y/N&gt;0,\qquad
+|g^{(j)}|\ll YN^{1-j}\quad(3\le j\le5).
+$$</span>
+If <span class="math" data-tex="$g&#x27;(u_0)=0$">$g&#x27;(u_0)=0$</span> at <span class="math" data-tex="$u_0\in[a,b]$">$u_0\in[a,b]$</span>, then
+<span class="math math-display" data-tex="$$
+\int_a^b e(g(u))\,du
+=\frac{e(g(u_0)+1/8)}{\sqrt{g&#x27;&#x27;(u_0)}}
++O\left(\frac1Y+E_a+E_b\right),
+\tag{6.4}
+$$">$$
+\int_a^b e(g(u))\,du
+=\frac{e(g(u_0)+1/8)}{\sqrt{g&#x27;&#x27;(u_0)}}
++O\left(\frac1Y+E_a+E_b\right),
+\tag{6.4}
+$$</span>
+where
+<span class="math math-display" data-tex="$$
+E_a=\min\left(\sqrt{N/Y},\frac{N}{Y(u_0-a)}\right),\quad
+E_b=\min\left(\sqrt{N/Y},\frac{N}{Y(b-u_0)}\right).
+$$">$$
+E_a=\min\left(\sqrt{N/Y},\frac{N}{Y(u_0-a)}\right),\quad
+E_b=\min\left(\sqrt{N/Y},\frac{N}{Y(b-u_0)}\right).
+$$</span>
+At a zero endpoint distance the minimum is interpreted as <span class="math" data-tex="$\sqrt{N/Y}$">$\sqrt{N/Y}$</span>. For negative <span class="math" data-tex="$g&#x27;&#x27;$">$g&#x27;&#x27;$</span>, conjugation changes <span class="math" data-tex="$+1/8$">$+1/8$</span> to <span class="math" data-tex="$-1/8$">$-1/8$</span> and replaces <span class="math" data-tex="$g&#x27;&#x27;$">$g&#x27;&#x27;$</span> by its modulus.</p>
+<p><em>Proof.</em> Scale <span class="math" data-tex="$u=Nv$">$u=Nv$</span> and put <span class="math" data-tex="$T=NY$">$T=NY$</span>, so <span class="math" data-tex="$g(Nv)-g(u_0)=T G(v)$">$g(Nv)-g(u_0)=T G(v)$</span> with <span class="math" data-tex="$G&#x27;&#x27;\asymp1$">$G&#x27;&#x27;\asymp1$</span>, <span class="math" data-tex="$G&#x27;(v_0)=G(v_0)=0$">$G&#x27;(v_0)=G(v_0)=0$</span>, and bounded derivatives through order 5. Define
+<span class="math math-display" data-tex="$$
+w=\operatorname{sgn}(v-v_0)\sqrt{2G(v)}
+=(v-v_0)\sqrt{2\int_0^1(1-r)G&#x27;&#x27;(v_0+r(v-v_0))\,dr}.
+$$">$$
+w=\operatorname{sgn}(v-v_0)\sqrt{2G(v)}
+=(v-v_0)\sqrt{2\int_0^1(1-r)G&#x27;&#x27;(v_0+r(v-v_0))\,dr}.
+$$</span>
+The square-root factor is bounded above and below with bounded first three derivatives. Also <span class="math" data-tex="$w&#x27;=G&#x27;(v)/w\asymp1$">$w&#x27;=G&#x27;(v)/w\asymp1$</span>, including its continuous value at <span class="math" data-tex="$v_0$">$v_0$</span>. Thus this is an increasing change of coordinates. Its inverse Jacobian <span class="math" data-tex="$h(w)=dv/dw$">$h(w)=dv/dw$</span> has bounded first two derivatives, and <span class="math" data-tex="$h(0)=G&#x27;&#x27;(v_0)^{-1/2}$">$h(0)=G&#x27;&#x27;(v_0)^{-1/2}$</span>. These assertions follow by differentiating the displayed factor and the inverse identities <span class="math" data-tex="$v&#x27;=1/w&#x27;$">$v&#x27;=1/w&#x27;$</span>, <span class="math" data-tex="$v&#x27;&#x27;=-w&#x27;&#x27;/(w&#x27;)^3$">$v&#x27;&#x27;=-w&#x27;&#x27;/(w&#x27;)^3$</span>, <span class="math" data-tex="$v&#x27;&#x27;&#x27;=3(w&#x27;&#x27;)^2/(w&#x27;)^5-w&#x27;&#x27;&#x27;/(w&#x27;)^4$">$v&#x27;&#x27;&#x27;=3(w&#x27;&#x27;)^2/(w&#x27;)^5-w&#x27;&#x27;&#x27;/(w&#x27;)^4$</span>.</p>
+<p>Write <span class="math" data-tex="$h(w)=h(0)+w h_1(w)$">$h(w)=h(0)+w h_1(w)$</span>; Taylor's integral formula gives bounded <span class="math" data-tex="$h_1$">$h_1$</span> and <span class="math" data-tex="$h_1&#x27;$">$h_1&#x27;$</span>. Integration by parts, using <span class="math" data-tex="$(e(Tw^2/2))&#x27;=2\pi i T w e(Tw^2/2)$">$(e(Tw^2/2))&#x27;=2\pi i T w e(Tw^2/2)$</span>, shows that the integral of <span class="math" data-tex="$w h_1(w)e(Tw^2/2)$">$w h_1(w)e(Tw^2/2)$</span> on the transformed interval is <span class="math" data-tex="$O(1/T)$">$O(1/T)$</span>. The constant-amplitude integral equals
+<span class="math math-display" data-tex="$$
+\int_{-\infty}^{\infty} e(Tw^2/2)\,dw
+=\frac{e(1/8)}{\sqrt T}
+$$">$$
+\int_{-\infty}^{\infty} e(Tw^2/2)\,dw
+=\frac{e(1/8)}{\sqrt T}
+$$</span>
+up to its two omitted tails. For completeness, insert <span class="math" data-tex="$e^{-\pi\varepsilon w^2}$">$e^{-\pi\varepsilon w^2}$</span>, evaluate the Gaussian as <span class="math" data-tex="$(\varepsilon-iT)^{-1/2}$">$(\varepsilon-iT)^{-1/2}$</span> by analytic continuation from the positive real Gaussian parameter, and let <span class="math" data-tex="$\varepsilon\downarrow0$">$\varepsilon\downarrow0$</span>. Integration by parts bounds each tail uniformly in <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> by <span class="math" data-tex="$O(1/(T|w|))$">$O(1/(T|w|))$</span>; the full quadratic integral and scaling also bound a tail by <span class="math" data-tex="$O(T^{-1/2})$">$O(T^{-1/2})$</span>. Hence a tail beginning at <span class="math" data-tex="$w$">$w$</span> is <span class="math" data-tex="$O(\min(T^{-1/2},(T|w|)^{-1}))$">$O(\min(T^{-1/2},(T|w|)^{-1}))$</span>. The transformed endpoint distances are comparable with <span class="math" data-tex="$(u_0-a)/N$">$(u_0-a)/N$</span> and <span class="math" data-tex="$(b-u_0)/N$">$(b-u_0)/N$</span>. Multiply by <span class="math" data-tex="$N e(g(u_0))$">$N e(g(u_0))$</span>: the main term is as stated, <span class="math" data-tex="$N/T=1/Y$">$N/T=1/Y$</span>, and the two tails are <span class="math" data-tex="$E_a,E_b$">$E_a,E_b$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Corollary 6.3 (the transformation for a smooth block).</strong> Under the corresponding derivative bounds for <span class="math" data-tex="$f$">$f$</span>, with <span class="math" data-tex="$|f&#x27;&#x27;|\asymp Y/N$">$|f&#x27;&#x27;|\asymp Y/N$</span> and fixed sign, put <span class="math" data-tex="$x_\nu=(f&#x27;)^{-1}(\nu)$">$x_\nu=(f&#x27;)^{-1}(\nu)$</span> for frequencies between the endpoint derivative values. Then
+<span class="math math-display" data-tex="$$
+\sum_{a\le n\le b}e(f(n))
+=\sum_{\alpha\le\nu\le\beta}
+ \frac{e(f(x_\nu)-\nu x_\nu+\operatorname{sgn}(f&#x27;&#x27;)/8)}
+ {\sqrt{|f&#x27;&#x27;(x_\nu)|}}
++O\left(\log(2+Y)+\sqrt{N/Y}+1/Y\right).
+\tag{6.5}
+$$">$$
+\sum_{a\le n\le b}e(f(n))
+=\sum_{\alpha\le\nu\le\beta}
+ \frac{e(f(x_\nu)-\nu x_\nu+\operatorname{sgn}(f&#x27;&#x27;)/8)}
+ {\sqrt{|f&#x27;&#x27;(x_\nu)|}}
++O\left(\log(2+Y)+\sqrt{N/Y}+1/Y\right).
+\tag{6.5}
+$$</span></p>
+<p><em>Proof.</em> Apply Lemma 6.1. The enlarged frequency interval adds at most four frequencies, each with integral <span class="math" data-tex="$O(\sqrt{N/Y})$">$O(\sqrt{N/Y})$</span> by Lemma 1.2. For the remaining frequencies apply Lemma 6.2 to <span class="math" data-tex="$g(u)=f(u)-\nu u$">$g(u)=f(u)-\nu u$</span>. There are <span class="math" data-tex="$O(Y+1)$">$O(Y+1)$</span> of them, so their <span class="math" data-tex="$1/Y$">$1/Y$</span> errors sum to <span class="math" data-tex="$O(1+1/Y)$">$O(1+1/Y)$</span>. For the left endpoint, the mean value theorem gives <span class="math" data-tex="$|\nu-f&#x27;(a)|\asymp (Y/N)|x_\nu-a|$">$|\nu-f&#x27;(a)|\asymp (Y/N)|x_\nu-a|$</span>. Thus its tail errors are bounded by
+<span class="math math-display" data-tex="$$
+\min\left(\sqrt{N/Y},\frac{C}{|\nu-f&#x27;(a)|}\right).
+$$">$$
+\min\left(\sqrt{N/Y},\frac{C}{|\nu-f&#x27;(a)|}\right).
+$$</span>
+At most one nearest frequency needs the first bound; the others sum to <span class="math" data-tex="$O(\log(2+Y))$">$O(\log(2+Y))$</span>. Treat the right endpoint identically. This proves (6.5), absorbing the constant into the logarithm. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="7-exponent-pairs-and-the-exponent-27-164">7. Exponent pairs and the exponent 27/164</h2>
+<p>The transformations must apply to a class of phases stable under their use, rather than just to one exact logarithm. For <span class="math" data-tex="$\theta,\lambda&gt;0$">$\theta,\lambda&gt;0$</span>, write
+<span class="math math-display" data-tex="$$
+\phi_{\lambda,\theta}(u)=
+\begin{cases}
+\lambda u^{1-\theta}/(1-\theta),&amp;\theta\ne1,\\
+\lambda\log u,&amp;\theta=1.
+\end{cases}
+$$">$$
+\phi_{\lambda,\theta}(u)=
+\begin{cases}
+\lambda u^{1-\theta}/(1-\theta),&amp;\theta\ne1,\\
+\lambda\log u,&amp;\theta=1.
+\end{cases}
+$$</span>
+On any interval <span class="math" data-tex="$I\subset[N,2N]$">$I\subset[N,2N]$</span>, <span class="math" data-tex="$N\ge1$">$N\ge1$</span>, call <span class="math" data-tex="$f$">$f$</span> a phase of precision <span class="math" data-tex="$(r,\varepsilon)$">$(r,\varepsilon)$</span> if <span class="math" data-tex="$f\in C^r(I)$">$f\in C^r(I)$</span> and
+<span class="math math-display" data-tex="$$
+|f^{(j)}(u)-\phi_{\lambda,\theta}^{(j)}(u)|
+\le\varepsilon|\phi_{\lambda,\theta}^{(j)}(u)|
+\quad(1\le j\le r),\qquad 0&lt;\varepsilon&lt;1/2.
+\tag{7.1}
+$$">$$
+|f^{(j)}(u)-\phi_{\lambda,\theta}^{(j)}(u)|
+\le\varepsilon|\phi_{\lambda,\theta}^{(j)}(u)|
+\quad(1\le j\le r),\qquad 0&lt;\varepsilon&lt;1/2.
+\tag{7.1}
+$$</span>
+An additive constant is immaterial. Put <span class="math" data-tex="$Y=\lambda N^{-\theta}$">$Y=\lambda N^{-\theta}$</span>. An <strong>exponent pair</strong> here is a pair <span class="math" data-tex="$(k,l)$">$(k,l)$</span> with <span class="math" data-tex="$0\le k\le1/2\le l\le1$">$0\le k\le1/2\le l\le1$</span> such that for every <span class="math" data-tex="$\theta&gt;0$">$\theta&gt;0$</span> some finite <span class="math" data-tex="$r$">$r$</span> and positive <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> make
+<span class="math math-display" data-tex="$$
+\sum_{n\in I}e(f(n))\ll_{k,l,\theta}Y^kN^l+Y^{-1}
+\tag{7.2}
+$$">$$
+\sum_{n\in I}e(f(n))\ll_{k,l,\theta}Y^kN^l+Y^{-1}
+\tag{7.2}
+$$</span>
+hold for all phases (7.1), uniformly in <span class="math" data-tex="$N,\lambda,I$">$N,\lambda,I$</span>. Conjugation gives the same bound for their negatives. Restricting to a subinterval retains every hypothesis, which will allow weighted sums.</p>
+<p>The trivial pair <span class="math" data-tex="$(0,1)$">$(0,1)$</span> follows by counting terms. We can establish (7.2) for any new pair by considering only <span class="math" data-tex="$Y\ge1$">$Y\ge1$</span>. Indeed, when <span class="math" data-tex="$Y\le1/4$">$Y\le1/4$</span>, <span class="math" data-tex="$f&#x27;$">$f&#x27;$</span> is positive, monotone, and lies between a positive constant times <span class="math" data-tex="$Y$">$Y$</span> and <span class="math" data-tex="$3Y/2&lt;1/2$">$3Y/2&lt;1/2$</span>. Kusmin–Landau gives <span class="math" data-tex="$O_\theta(1/Y)$">$O_\theta(1/Y)$</span>. When <span class="math" data-tex="$1/4&lt;Y&lt;1$">$1/4&lt;Y&lt;1$</span>, Theorem 2.2 with <span class="math" data-tex="$|f&#x27;&#x27;|\asymp_\theta Y/N$">$|f&#x27;&#x27;|\asymp_\theta Y/N$</span> gives <span class="math" data-tex="$O_\theta(\sqrt N)$">$O_\theta(\sqrt N)$</span>, absorbed by <span class="math" data-tex="$Y^kN^l$">$Y^kN^l$</span>. Precision with <span class="math" data-tex="$r\ge2$">$r\ge2$</span> ensures the needed derivative sign. Increase <span class="math" data-tex="$r$">$r$</span> and decrease <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> whenever another hypothesis is needed.</p>
+<p><strong>Theorem 7.1 (the A transformation).</strong> If <span class="math" data-tex="$(k,l)$">$(k,l)$</span> is an exponent pair, then so is
+<span class="math math-display" data-tex="$$
+A(k,l)=\left(\frac{k}{2k+2},\frac{k+l+1}{2k+2}\right).
+\tag{7.3}
+$$">$$
+A(k,l)=\left(\frac{k}{2k+2},\frac{k+l+1}{2k+2}\right).
+\tag{7.3}
+$$</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="$k&#x27;,l&#x27;$">$k&#x27;,l&#x27;$</span> denote these entries. For a displacement <span class="math" data-tex="$h\le\delta N$">$h\le\delta N$</span>, consider <span class="math" data-tex="$f_h(u)=f(u)-f(u+h)$">$f_h(u)=f(u)-f(u+h)$</span> on the overlap of <span class="math" data-tex="$I$">$I$</span> and <span class="math" data-tex="$I-h$">$I-h$</span>. For <span class="math" data-tex="$1\le j\le r-1$">$1\le j\le r-1$</span>,
+<span class="math math-display" data-tex="$$
+f_h^{(j)}(u)=-\int_0^h f^{(j+1)}(u+v)\,dv.
+$$">$$
+f_h^{(j)}(u)=-\int_0^h f^{(j+1)}(u+v)\,dv.
+$$</span>
+Replacing <span class="math" data-tex="$f$">$f$</span> by <span class="math" data-tex="$\phi$">$\phi$</span> incurs a relative <span class="math" data-tex="$O_{\theta,r}(\varepsilon)$">$O_{\theta,r}(\varepsilon)$</span> error; replacing the integral of <span class="math" data-tex="$\phi^{(j+1)}(u+v)$">$\phi^{(j+1)}(u+v)$</span> by <span class="math" data-tex="$h\phi^{(j+1)}(u)$">$h\phi^{(j+1)}(u)$</span> incurs a relative <span class="math" data-tex="$O_{\theta,r}(h/N)$">$O_{\theta,r}(h/N)$</span> error, by the explicit power derivative and the mean value theorem. The new model is
+<span class="math math-display" data-tex="$$
+-\lambda h u^{-\theta}
+=\phi_{\theta\lambda h,\theta+1}(u),
+\tag{7.4}
+$$">$$
+-\lambda h u^{-\theta}
+=\phi_{\theta\lambda h,\theta+1}(u),
+\tag{7.4}
+$$</span>
+whose scale is comparable with <span class="math" data-tex="$hY/N$">$hY/N$</span>. Choose <span class="math" data-tex="$r$">$r$</span> one larger than the precision required for <span class="math" data-tex="$(k,l)$">$(k,l)$</span> at <span class="math" data-tex="$\theta+1$">$\theta+1$</span>, then choose <span class="math" data-tex="$\delta$">$\delta$</span> and the original <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> small enough. The assumed pair therefore bounds each correlation by
+<span class="math math-display" data-tex="$$
+|S_h|\ll(hY/N)^kN^l+N/(hY).
+$$">$$
+|S_h|\ll(hY/N)^kN^l+N/(hY).
+$$</span>
+Pad the original sequence by zeros to the integer length of the whole block. Then (3.1) permits <span class="math" data-tex="$H\le\delta N$">$H\le\delta N$</span>, even for a shorter interval <span class="math" data-tex="$I$">$I$</span>; an empty correlation contributes zero. Summing the displayed estimate yields
+<span class="math math-display" data-tex="$$
+|S|^2\ll\frac{N^2}{H}
++Y^kN^{l+1-k}H^k
++\frac{N^2\log(2H)}{YH}.
+\tag{7.5}
+$$">$$
+|S|^2\ll\frac{N^2}{H}
++Y^kN^{l+1-k}H^k
++\frac{N^2\log(2H)}{YH}.
+\tag{7.5}
+$$</span>
+If <span class="math" data-tex="$1\le Y\le N^l$">$1\le Y\le N^l$</span>, the second-derivative estimate already gives the desired result: <span class="math" data-tex="$\sqrt{NY}\le Y^{k&#x27;}N^{l&#x27;}$">$\sqrt{NY}\le Y^{k&#x27;}N^{l&#x27;}$</span> is exactly <span class="math" data-tex="$Y\le N^l$">$Y\le N^l$</span>, and <span class="math" data-tex="$\sqrt{N/Y}$">$\sqrt{N/Y}$</span> is also absorbed. Otherwise <span class="math" data-tex="$Y&gt;N^l\ge\sqrt N$">$Y&gt;N^l\ge\sqrt N$</span>, so the last term in (7.5) is bounded by a constant times its first term.</p>
+<p>Balance the first two terms by
+<span class="math math-display" data-tex="$$
+H_0=(N^{k+1-l}Y^{-k})^{1/(k+1)}.
+$$">$$
+H_0=(N^{k+1-l}Y^{-k})^{1/(k+1)}.
+$$</span>
+If <span class="math" data-tex="$H_0&lt;2$">$H_0&lt;2$</span>, the desired bound <span class="math" data-tex="$Y^{k&#x27;}N^{l&#x27;}=N/\sqrt{H_0}$">$Y^{k&#x27;}N^{l&#x27;}=N/\sqrt{H_0}$</span> is already a constant times the trivial bound. Otherwise choose <span class="math" data-tex="$H\asymp H_0$">$H\asymp H_0$</span>. For sufficiently large <span class="math" data-tex="$N$">$N$</span> this satisfies <span class="math" data-tex="$H\le\delta N$">$H\le\delta N$</span>, since <span class="math" data-tex="$H_0/N\le N^{-l/(k+1)}$">$H_0/N\le N^{-l/(k+1)}$</span>; the bounded remaining range of <span class="math" data-tex="$N$">$N$</span> is handled trivially, with a fixed larger constant. Equation (7.5) now gives <span class="math" data-tex="$|S|\ll Y^{k&#x27;}N^{l&#x27;}$">$|S|\ll Y^{k&#x27;}N^{l&#x27;}$</span>. The inequalities <span class="math" data-tex="$0\le k&#x27;\le1/2\le l&#x27;\le1$">$0\le k&#x27;\le1/2\le l&#x27;\le1$</span> follow directly from the ranges of <span class="math" data-tex="$k,l$">$k,l$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 7.2 (the B transformation).</strong> If <span class="math" data-tex="$(k,l)$">$(k,l)$</span> is an exponent pair, then so is
+<span class="math math-display" data-tex="$$
+B(k,l)=(l-1/2,k+1/2).
+\tag{7.6}
+$$">$$
+B(k,l)=(l-1/2,k+1/2).
+\tag{7.6}
+$$</span></p>
+<p><em>Proof.</em> The derivative of a phase (7.1) is positive and decreasing. Set <span class="math" data-tex="$v=f&#x27;(x(v))$">$v=f&#x27;(x(v))$</span> and <span class="math" data-tex="$g(v)=vx(v)-f(x(v))$">$g(v)=vx(v)-f(x(v))$</span>. Direct differentiation gives
+<span class="math math-display" data-tex="$$
+g&#x27;(v)=x(v),\qquad g&#x27;&#x27;(v)=1/f&#x27;&#x27;(x(v)).
+\tag{7.7}
+$$">$$
+g&#x27;(v)=x(v),\qquad g&#x27;&#x27;(v)=1/f&#x27;&#x27;(x(v)).
+\tag{7.7}
+$$</span>
+For the exact model, <span class="math" data-tex="$x(v)=\lambda^{1/\theta}v^{-1/\theta}$">$x(v)=\lambda^{1/\theta}v^{-1/\theta}$</span>, so <span class="math" data-tex="$g$">$g$</span> agrees, up to a constant, with <span class="math" data-tex="$\phi_{\lambda^{1/\theta},1/\theta}(v)$">$\phi_{\lambda^{1/\theta},1/\theta}(v)$</span>. We check the same derivative precision for perturbed phases. The equation <span class="math" data-tex="$f&#x27;(x(v))=v$">$f&#x27;(x(v))=v$</span>, the relative bound for <span class="math" data-tex="$f&#x27;$">$f&#x27;$</span>, and the mean value theorem for <span class="math" data-tex="$\phi&#x27;$">$\phi&#x27;$</span> give
+<span class="math math-display" data-tex="$$
+x(v)=\lambda^{1/\theta}v^{-1/\theta}(1+O_\theta(\varepsilon)).
+$$">$$
+x(v)=\lambda^{1/\theta}v^{-1/\theta}(1+O_\theta(\varepsilon)).
+$$</span>
+Higher derivatives follow from the explicit recursion
+<span class="math math-display" data-tex="$$
+R_1(x)=x,\qquad R_{j+1}(x)=\frac{R_j&#x27;(x)}{f&#x27;&#x27;(x)},
+\qquad g^{(j)}(v)=R_j(x(v)).
+\tag{7.8}
+$$">$$
+R_1(x)=x,\qquad R_{j+1}(x)=\frac{R_j&#x27;(x)}{f&#x27;&#x27;(x)},
+\qquad g^{(j)}(v)=R_j(x(v)).
+\tag{7.8}
+$$</span>
+Every <span class="math" data-tex="$R_j$">$R_j$</span> is a finite sum of products of derivatives of <span class="math" data-tex="$f$">$f$</span> divided by powers of <span class="math" data-tex="$f&#x27;&#x27;$">$f&#x27;&#x27;$</span>. Normalize <span class="math" data-tex="$x$">$x$</span> by <span class="math" data-tex="$N$">$N$</span>, <span class="math" data-tex="$v$">$v$</span> by <span class="math" data-tex="$Y$">$Y$</span>, and <span class="math" data-tex="$g^{(j)}$">$g^{(j)}$</span> by <span class="math" data-tex="$NY^{1-j}$">$NY^{1-j}$</span>. On this compact normalized range the denominator <span class="math" data-tex="$f&#x27;&#x27;/(Y/N)$">$f&#x27;&#x27;/(Y/N)$</span> stays bounded away from zero. The rational expressions (7.8) consequently have bounded first derivatives in their finitely many jet variables. Replacing the normalized jets of <span class="math" data-tex="$f$">$f$</span> by those of <span class="math" data-tex="$\phi$">$\phi$</span>, and replacing <span class="math" data-tex="$x/N$">$x/N$</span> by its exact-model value, changes them by <span class="math" data-tex="$O_{\theta,r}(\varepsilon)$">$O_{\theta,r}(\varepsilon)$</span>. The exact-model <span class="math" data-tex="$j$">$j$</span>th derivative is a nonzero constant times <span class="math" data-tex="$NY^{1-j}$">$NY^{1-j}$</span>, uniformly on this range. Thus the relative error for each derivative through order <span class="math" data-tex="$r$">$r$</span> is <span class="math" data-tex="$O_{\theta,r}(\varepsilon)$">$O_{\theta,r}(\varepsilon)$</span>. This proves the claimed precision, with a suitably smaller original <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>.</p>
+<p>First take <span class="math" data-tex="$l&gt;1/2$">$l&gt;1/2$</span> and <span class="math" data-tex="$Y$">$Y$</span> larger than a fixed constant depending on <span class="math" data-tex="$\theta$">$\theta$</span>. The frequency interval has <span class="math" data-tex="$v\asymp_\theta Y\ge1$">$v\asymp_\theta Y\ge1$</span>, so it can be divided into a fixed number of dyadic intervals. Apply <span class="math" data-tex="$(k,l)$">$(k,l)$</span> to <span class="math" data-tex="$g$">$g$</span> on each; its first-derivative scale there is comparable with <span class="math" data-tex="$N$">$N$</span>. Every partial frequency sum is therefore
+<span class="math math-display" data-tex="$$
+\sum e(-g(\nu))\ll N^kY^l+N^{-1}.
+$$">$$
+\sum e(-g(\nu))\ll N^kY^l+N^{-1}.
+$$</span>
+Choose the original precision with at least five derivatives. Corollary 6.3 applies, and the amplitude <span class="math" data-tex="$|f&#x27;&#x27;(x(v))|^{-1/2}$">$|f&#x27;&#x27;(x(v))|^{-1/2}$</span> has supremum and total variation <span class="math" data-tex="$O_\theta(\sqrt{N/Y})$">$O_\theta(\sqrt{N/Y})$</span>. To check the variation, differentiate it: its derivative has modulus <span class="math" data-tex="$O(|f&#x27;&#x27;&#x27;|\,|f&#x27;&#x27;|^{-5/2})=O_\theta(\sqrt N Y^{-3/2})$">$O(|f&#x27;&#x27;&#x27;|\,|f&#x27;&#x27;|^{-5/2})=O_\theta(\sqrt N Y^{-3/2})$</span>, and the frequency interval has length <span class="math" data-tex="$O_\theta(Y)$">$O_\theta(Y)$</span>. Partial summation in (6.5) yields
+<span class="math math-display" data-tex="$$
+|S|\ll
+Y^{l-1/2}N^{k+1/2}
++\log(2+Y)+\sqrt{N/Y}+1/Y.
+\tag{7.9}
+$$">$$
+|S|\ll
+Y^{l-1/2}N^{k+1/2}
++\log(2+Y)+\sqrt{N/Y}+1/Y.
+\tag{7.9}
+$$</span>
+The last two errors are absorbed by the first term. The logarithm is too: if that term is at least <span class="math" data-tex="$N$">$N$</span>, use the trivial bound instead; otherwise <span class="math" data-tex="$Y^{l-1/2}&lt;N^{1/2-k}$">$Y^{l-1/2}&lt;N^{1/2-k}$</span>, whence <span class="math" data-tex="$\log(2+Y)\ll_{k,l}\log(2+N)\ll\sqrt N$">$\log(2+Y)\ll_{k,l}\log(2+N)\ll\sqrt N$</span>, again absorbed. Bounded <span class="math" data-tex="$1\le Y\ll_\theta1$">$1\le Y\ll_\theta1$</span> is covered by Theorem 2.2, and <span class="math" data-tex="$Y&lt;1$">$Y&lt;1$</span> was dealt with above.</p>
+<p>It remains to justify the edge case <span class="math" data-tex="$l=1/2$">$l=1/2$</span>. Any exponent pair on this edge must have <span class="math" data-tex="$k=1/2$">$k=1/2$</span>. Here is a direct test. For an integer <span class="math" data-tex="$Q\to\infty$">$Q\to\infty$</span>, let <span class="math" data-tex="$\lambda=Q!$">$\lambda=Q!$</span>, <span class="math" data-tex="$N=\lambda^2/Q^2$">$N=\lambda^2/Q^2$</span>, and <span class="math" data-tex="$f(x)=2\lambda\sqrt x$">$f(x)=2\lambda\sqrt x$</span>. This is an exact model with <span class="math" data-tex="$\theta=1/2$">$\theta=1/2$</span>, <span class="math" data-tex="$Y=Q$">$Y=Q$</span>. Its frequencies lie between <span class="math" data-tex="$Q/\sqrt2$">$Q/\sqrt2$</span> and <span class="math" data-tex="$Q$">$Q$</span>, and at <span class="math" data-tex="$x_\nu=\lambda^2/\nu^2$">$x_\nu=\lambda^2/\nu^2$</span>,
+<span class="math math-display" data-tex="$$
+f(x_\nu)-\nu x_\nu=\lambda^2/\nu\in\mathbb Z.
+$$">$$
+f(x_\nu)-\nu x_\nu=\lambda^2/\nu\in\mathbb Z.
+$$</span>
+Thus all the main terms in (6.5) point in the same direction, with total modulus comparable with <span class="math" data-tex="$\sqrt{NQ}$">$\sqrt{NQ}$</span>. Its error is <span class="math" data-tex="$O(\log(2+Q)+\sqrt{N/Q})$">$O(\log(2+Q)+\sqrt{N/Q})$</span>, which is smaller, because the factorial makes <span class="math" data-tex="$N$">$N$</span> grow rapidly. Bound (7.2) with <span class="math" data-tex="$l=1/2$">$l=1/2$</span> would imply <span class="math" data-tex="$\sqrt{NQ}\ll Q^k\sqrt N+1/Q$">$\sqrt{NQ}\ll Q^k\sqrt N+1/Q$</span>, forcing <span class="math" data-tex="$k\ge1/2$">$k\ge1/2$</span>. For the resulting pair <span class="math" data-tex="$(1/2,1/2)$">$(1/2,1/2)$</span>, (7.6) is the trivial pair <span class="math" data-tex="$(0,1)$">$(0,1)$</span> already proved. This completes all cases. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 7.3 (an exponent-pair improvement).</strong> For every real <span class="math" data-tex="$t$">$t$</span>,
+<span class="math math-display" data-tex="$$
+\zeta(1/2+it)\ll\tau^{27/164}\log\tau,
+\qquad \mu(1/2)\le27/164.
+\tag{7.10}
+$$">$$
+\zeta(1/2+it)\ll\tau^{27/164}\log\tau,
+\qquad \mu(1/2)\le27/164.
+\tag{7.10}
+$$</span></p>
+<p><em>Proof.</em> Starting from <span class="math" data-tex="$(0,1)$">$(0,1)$</span>, apply the proved operations in this order:
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+(0,1)&amp;\xrightarrow{B}(1/2,1/2)
+\xrightarrow{A}(1/6,2/3)
+\xrightarrow{A}(1/14,11/14)\\
+&amp;\xrightarrow{A}(1/30,13/15)
+\xrightarrow{B}(11/30,8/15)
+\xrightarrow{A}(11/82,57/82).
+\end{aligned}
+$$">$$
+\begin{aligned}
+(0,1)&amp;\xrightarrow{B}(1/2,1/2)
+\xrightarrow{A}(1/6,2/3)
+\xrightarrow{A}(1/14,11/14)\\
+&amp;\xrightarrow{A}(1/30,13/15)
+\xrightarrow{B}(11/30,8/15)
+\xrightarrow{A}(11/82,57/82).
+\end{aligned}
+$$</span>
+Take any resulting pair <span class="math" data-tex="$(k,l)$">$(k,l)$</span> and also its pair <span class="math" data-tex="$B(k,l)$">$B(k,l)$</span>. Apply them to the exact logarithmic phase on a subinterval of <span class="math" data-tex="$[N,2N]$">$[N,2N]$</span>, with <span class="math" data-tex="$1\le N\le\tau$">$1\le N\le\tau$</span> and <span class="math" data-tex="$|t|\ge4$">$|t|\ge4$</span>. Here <span class="math" data-tex="$\theta=1$">$\theta=1$</span>, <span class="math" data-tex="$\lambda=|t|/(2\pi)$">$\lambda=|t|/(2\pi)$</span>, so (7.2) gives
+<span class="math math-display" data-tex="$$
+\left|\sum n^{-it}\right|
+\ll\min\left(\tau^kN^{l-k},
+ \tau^{l-1/2}N^{k-l+1/2}\right)+N/\tau.
+$$">$$
+\left|\sum n^{-it}\right|
+\ll\min\left(\tau^kN^{l-k},
+ \tau^{l-1/2}N^{k-l+1/2}\right)+N/\tau.
+$$</span>
+The minimum is at most the geometric mean. Therefore every partial block sum is
+<span class="math math-display" data-tex="$$
+\ll\sqrt N\,\tau^{(k+l)/2-1/4}+1.
+$$">$$
+\ll\sqrt N\,\tau^{(k+l)/2-1/4}+1.
+$$</span>
+As in Theorem 4.1, weight by <span class="math" data-tex="$n^{-1/2}$">$n^{-1/2}$</span> and sum the <span class="math" data-tex="$O(\log\tau)$">$O(\log\tau)$</span> blocks up to <span class="math" data-tex="$\tau$">$\tau$</span>. The truncation remainder and pole term are smaller. For <span class="math" data-tex="$(k,l)=(11/82,57/82)$">$(k,l)=(11/82,57/82)$</span>, the exponent is
+<span class="math math-display" data-tex="$$
+\frac12\left(\frac{11+57}{82}\right)-\frac14
+=\frac{27}{164}&lt;\frac16.
+$$">$$
+\frac12\left(\frac{11+57}{82}\right)-\frac14
+=\frac{27}{164}&lt;\frac16.
+$$</span>
+Bounded heights follow by continuity, and taking exponent infima proves the assertion about <span class="math" data-tex="$\mu$">$\mu$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Thus the sharper exponent is a consequence of the two transformations with their phase hypotheses and analytic proofs. It does not follow by repeatedly applying the third-derivative test alone.</p>
+<h2 id="8-quadratic-phases-and-equidistribution">8. Quadratic phases and equidistribution</h2>
+<p><strong>Example 8.1.</strong> For <span class="math" data-tex="$f(n)=\alpha n^2$">$f(n)=\alpha n^2$</span>, a displacement <span class="math" data-tex="$h$">$h$</span> gives
+<span class="math math-display" data-tex="$$
+f(n+h)-f(n)=2h\alpha n+h^2\alpha.
+$$">$$
+f(n+h)-f(n)=2h\alpha n+h^2\alpha.
+$$</span>
+Thus the correlation in (3.1) is a geometric sum, with modulus at most
+<span class="math math-display" data-tex="$$
+\min\left(L-h,\frac1{2\|2h\alpha\|}\right).
+\tag{8.1}
+$$">$$
+\min\left(L-h,\frac1{2\|2h\alpha\|}\right).
+\tag{8.1}
+$$</span>
+This follows from the geometric-series formula and <span class="math" data-tex="$|\sin\pi u|\ge2\|u\|$">$|\sin\pi u|\ge2\|u\|$</span>. For <span class="math" data-tex="$\alpha=\sqrt2$">$\alpha=\sqrt2$</span>, each fixed nonzero displacement has a nonintegral frequency. The denominator can be small for some displacements; it is not legitimate to replace it by an absolute positive constant for all <span class="math" data-tex="$h$">$h$</span>.</p>
+<p>For example, at <span class="math" data-tex="$L=400$">$L=400$</span>, direct summation with <span class="math" data-tex="$\alpha=\sqrt2$">$\alpha=\sqrt2$</span> gives <span class="math" data-tex="$23.53251894+0.66803186i$">$23.53251894+0.66803186i$</span>, of modulus <span class="math" data-tex="$23.54199894$">$23.54199894$</span>. The following finite samples illustrate cancellation and distribution; the limiting assertion is proved in Theorem 8.2.</p>
+<figure><img src="figures/NT-ZETA-07/quadratic_phase.png" alt="A finite quadratic exponential-sum path and the fractional-part frequencies in twenty equal bins." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1.</em> The left panel joins the partial sums from 0 through 400; each segment is the next unit vector <span class="math" data-tex="$e(\sqrt2\,n^2)$">$e(\sqrt2\,n^2)$</span>. The right panel counts the first 8000 fractional parts in twenty bins. The dashed line at 0.05 is the limiting mass per bin supplied by equidistribution, not an asserted equality for this finite sample. These are numerical samples, rather than proofs of the bound or the limit.</p>
+<p><strong>Theorem 8.2 (Weyl's equidistribution theorem).</strong> If a real polynomial <span class="math" data-tex="$P$">$P$</span> has an irrational nonconstant coefficient, then the fractional parts of <span class="math" data-tex="$P(n)$">$P(n)$</span> are equidistributed in <span class="math" data-tex="$[0,1)$">$[0,1)$</span>: for each interval <span class="math" data-tex="$[a,b)\subset[0,1)$">$[a,b)\subset[0,1)$</span>,
+<span class="math math-display" data-tex="$$
+\frac1L\#\{1\le n\le L:\{P(n)\}\in[a,b)\}\longrightarrow b-a.
+\tag{8.2}
+$$">$$
+\frac1L\#\{1\le n\le L:\{P(n)\}\in[a,b)\}\longrightarrow b-a.
+\tag{8.2}
+$$</span></p>
+<p><em>Proof.</em> We first establish the Fourier criterion: a sequence <span class="math" data-tex="$u_n$">$u_n$</span> is equidistributed precisely when <span class="math" data-tex="$L^{-1}\sum_{n\le L}e(ku_n)\to0$">$L^{-1}\sum_{n\le L}e(ku_n)\to0$</span> for each nonzero integer <span class="math" data-tex="$k$">$k$</span>. Under these Fourier limits, the average of every trigonometric polynomial tends to its integral. Fejér approximation of continuous periodic functions, proved in the theta lesson, extends the assertion to every such continuous function by uniform approximation. Sandwich the indicator of <span class="math" data-tex="$[a,b)$">$[a,b)$</span> between continuous periodic upper and lower functions that agree with it outside neighborhoods of total length <span class="math" data-tex="$O(\delta)$">$O(\delta)$</span> at the endpoints. Piecewise linear ramps provide these functions, and their integrals differ by <span class="math" data-tex="$O(\delta)$">$O(\delta)$</span>. First let <span class="math" data-tex="$L\to\infty$">$L\to\infty$</span>, then <span class="math" data-tex="$\delta\to0$">$\delta\to0$</span>, to obtain (8.2). Conversely, equidistribution gives the integral limit for continuous functions by uniform step-function approximation on a fine partition, and in particular gives the stated Fourier limits.</p>
+<p>Suppose first that <span class="math" data-tex="$P$">$P$</span> has irrational leading coefficient. Induct on its degree. In degree 1, each nonzero Fourier sum is geometric with nonintegral frequency, so its average tends to zero. In larger degree, fix a nonzero integer <span class="math" data-tex="$k$">$k$</span> and a positive <span class="math" data-tex="$h$">$h$</span>. The difference <span class="math" data-tex="$k(P(n+h)-P(n))$">$k(P(n+h)-P(n))$</span> has one lower degree and irrational leading coefficient <span class="math" data-tex="$khd$">$khd$</span> times the old one. Its Fourier sum is <span class="math" data-tex="$o(L)$">$o(L)$</span> by induction. Apply (3.1) to <span class="math" data-tex="$z_n=e(kP(n))$">$z_n=e(kP(n))$</span> with fixed <span class="math" data-tex="$H$">$H$</span>, divide by <span class="math" data-tex="$L^2$">$L^2$</span>, and let <span class="math" data-tex="$L\to\infty$">$L\to\infty$</span>. The finitely many correlations contribute zero and the diagonal gives an upper limit at most <span class="math" data-tex="$1/H$">$1/H$</span>. Let <span class="math" data-tex="$H\to\infty$">$H\to\infty$</span> and apply the criterion.</p>
+<p>For the general case write <span class="math" data-tex="$P=P_i+R/Q$">$P=P_i+R/Q$</span>, where <span class="math" data-tex="$R$">$R$</span> has integer coefficients, <span class="math" data-tex="$Q$">$Q$</span> is a positive integer, and <span class="math" data-tex="$P_i$">$P_i$</span> consists of the terms with irrational coefficients. Its leading nonconstant coefficient is irrational. On the residue class <span class="math" data-tex="$n=Qm+c$">$n=Qm+c$</span>, <span class="math" data-tex="$R(n)/Q\equiv R(c)/Q\pmod1$">$R(n)/Q\equiv R(c)/Q\pmod1$</span>, while <span class="math" data-tex="$P_i(Qm+c)$">$P_i(Qm+c)$</span> has irrational leading coefficient. Thus each residue-class sequence is equidistributed by the case just proved. Combining the finitely many classes, each of asymptotic proportion <span class="math" data-tex="$1/Q$">$1/Q$</span>, proves (8.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="9-exercises">9. Exercises</h2>
+<ol>
+<li><strong>Telescoping the rotating vectors.</strong> Prove the Kusmin–Landau bound by partial summation with the coefficients <span class="math" data-tex="$1/(1-e(\delta_n))$">$1/(1-e(\delta_n))$</span>.</li>
+<li><strong>A dyadic logarithmic sum.</strong> For <span class="math" data-tex="$t\ge1$">$t\ge1$</span> and <span class="math" data-tex="$1\le N\le t$">$1\le N\le t$</span>, prove <span class="math" data-tex="$\sum_{N&lt;n\le2N}n^{-it}\ll N t^{-1/2}+t^{1/2}$">$\sum_{N&lt;n\le2N}n^{-it}\ll N t^{-1/2}+t^{1/2}$</span>.</li>
+<li><strong>Convexity from sums.</strong> Recover <span class="math" data-tex="$\zeta(1/2+it)\ll\tau^{1/4}\log\tau$">$\zeta(1/2+it)\ll\tau^{1/4}\log\tau$</span> using Exercise 2 and trivial estimates, without strip interpolation.</li>
+<li><strong>An irrational quadratic.</strong> Prove that <span class="math" data-tex="$\{\alpha n^2\}$">$\{\alpha n^2\}$</span> is equidistributed for irrational <span class="math" data-tex="$\alpha$">$\alpha$</span>, keeping the order of the two limits in the differencing argument explicit.</li>
+<li><strong>The three dyadic ranges.</strong> Write the full bookkeeping for (4.4), including a terminal partial block and the truncation remainder.</li>
+<li><strong>The divisor error.</strong> For real <span class="math" data-tex="$x\ge2$">$x\ge2$</span>, prove
+<span class="math math-display" data-tex="$$
+\sum_{n\le x}d(n)
+=x\log x+(2\gamma-1)x+O(x^{1/3}\log x).
+$$">$$
+\sum_{n\le x}d(n)
+=x\log x+(2\gamma-1)x+O(x^{1/3}\log x).
+$$</span>
+Express the error by the sawtooth at <span class="math" data-tex="$x/n$">$x/n$</span>, apply Lemma 5.1, and estimate the resulting exponential sums by their second derivative.</li>
+</ol>
+<h2 id="10-solutions">10. Solutions</h2>
+<p><strong>Solution 1.</strong> Subtract the common integer from the increments and put <span class="math" data-tex="$z_n=e(\alpha_n)$">$z_n=e(\alpha_n)$</span>, <span class="math" data-tex="$\rho_n=1/(1-e(\delta_n))$">$\rho_n=1/(1-e(\delta_n))$</span>. Then <span class="math" data-tex="$z_n=\rho_n(z_n-z_{n+1})$">$z_n=\rho_n(z_n-z_{n+1})$</span>, giving (2.2). On <span class="math" data-tex="$[\Delta,1-\Delta]$">$[\Delta,1-\Delta]$</span>, <span class="math" data-tex="$\rho(u)=1/2+(i/2)\cot\pi u$">$\rho(u)=1/2+(i/2)\cot\pi u$</span> has constant real part and monotone imaginary part. Therefore
+<span class="math math-display" data-tex="$$
+\sum_{n=2}^{L-1}|\rho_n-\rho_{n-1}|
+=\frac12|\cot(\pi\delta_{L-1})-\cot(\pi\delta_1)|
+\ll1/\Delta.
+$$">$$
+\sum_{n=2}^{L-1}|\rho_n-\rho_{n-1}|
+=\frac12|\cot(\pi\delta_{L-1})-\cot(\pi\delta_1)|
+\ll1/\Delta.
+$$</span>
+Also <span class="math" data-tex="$|\rho_1|,|1-\rho_{L-1}|\le1/(2\sin\pi\Delta)\ll1/\Delta$">$|\rho_1|,|1-\rho_{L-1}|\le1/(2\sin\pi\Delta)\ll1/\Delta$</span>. Bound the telescoped sum by these three quantities. The one-term case is trivial. Decreasing increments give the same total variation.</p>
+<p><strong>Solution 2.</strong> Use <span class="math" data-tex="$f(u)=-(t/(2\pi))\log u$">$f(u)=-(t/(2\pi))\log u$</span>. On <span class="math" data-tex="$[N,2N]$">$[N,2N]$</span>, <span class="math" data-tex="$t/(8\pi N^2)\le f&#x27;&#x27;(u)\le t/(2\pi N^2)$">$t/(8\pi N^2)\le f&#x27;&#x27;(u)\le t/(2\pi N^2)$</span>. Apply Theorem 2.2 with <span class="math" data-tex="$M=t/(8\pi N^2)$">$M=t/(8\pi N^2)$</span> and <span class="math" data-tex="$A=4$">$A=4$</span>: its terms are constant multiples of <span class="math" data-tex="$\sqrt t$">$\sqrt t$</span> and <span class="math" data-tex="$N/\sqrt t$">$N/\sqrt t$</span>. This also bounds any partial block. No first-derivative hypothesis is needed.</p>
+<p><strong>Solution 3.</strong> Bounded heights are handled by continuity; otherwise <span class="math" data-tex="$t\asymp\tau$">$t\asymp\tau$</span>. For <span class="math" data-tex="$N\le\sqrt\tau$">$N\le\sqrt\tau$</span>, the weighted trivial bound on a block is <span class="math" data-tex="$O(\sqrt N)\le O(\tau^{1/4})$">$O(\sqrt N)\le O(\tau^{1/4})$</span>. For <span class="math" data-tex="$\sqrt\tau&lt;N\le\tau$">$\sqrt\tau&lt;N\le\tau$</span>, Solution 2 and partial summation give the weighted bound
+<span class="math math-display" data-tex="$$
+\ll\sqrt{\tau/N}+\sqrt{N/\tau}
+\ll\tau^{1/4}.
+$$">$$
+\ll\sqrt{\tau/N}+\sqrt{N/\tau}
+\ll\tau^{1/4}.
+$$</span>
+There are <span class="math" data-tex="$O(\log\tau)$">$O(\log\tau)$</span> disjoint blocks up to <span class="math" data-tex="$\tau$">$\tau$</span>, including any shortened last block. The truncation formula contributes <span class="math" data-tex="$O(\tau^{-1/2})$">$O(\tau^{-1/2})$</span> for both its remainder and its pole term on the critical line. Sum the block bounds to obtain the estimate.</p>
+<p><strong>Solution 4.</strong> Fix <span class="math" data-tex="$k\ne0$">$k\ne0$</span> and then fix <span class="math" data-tex="$H$">$H$</span>. For each <span class="math" data-tex="$1\le h&lt;H$">$1\le h&lt;H$</span>, the correlation phase is <span class="math" data-tex="$2kh\alpha n+kh^2\alpha$">$2kh\alpha n+kh^2\alpha$</span>, so its sum is bounded independently of <span class="math" data-tex="$L$">$L$</span>, by (8.1) with <span class="math" data-tex="$\alpha$">$\alpha$</span> replaced by <span class="math" data-tex="$k\alpha$">$k\alpha$</span>. After division of (3.1) by <span class="math" data-tex="$H^2L^2$">$H^2L^2$</span> and the limit <span class="math" data-tex="$L\to\infty$">$L\to\infty$</span>, the upper limit of the squared Fourier average is at most <span class="math" data-tex="$1/H$">$1/H$</span>. Now send <span class="math" data-tex="$H\to\infty$">$H\to\infty$</span>. Thus all nonzero Fourier averages vanish, and the criterion proved in Theorem 8.2 gives equidistribution. Choosing <span class="math" data-tex="$H=L$">$H=L$</span> and treating all the small denominators as fixed would not be this argument.</p>
+<p><strong>Solution 5.</strong> Count <span class="math" data-tex="$n=1$">$n=1$</span> separately and use the disjoint blocks <span class="math" data-tex="$(2^j,2^{j+1}]$">$(2^j,2^{j+1}]$</span>, shortened at <span class="math" data-tex="$\lfloor\tau\rfloor$">$\lfloor\tau\rfloor$</span> for the final block. With <span class="math" data-tex="$N=2^j$">$N=2^j$</span>, the unweighted partial-block estimates are
+<span class="math math-display" data-tex="$$
+\begin{array}{c|c|c}
+\text{range}&amp;\text{estimate used}&amp;\text{upper bound}\\\hline
+N\le\tau^{1/3}&amp;N&amp;\sqrt N\tau^{1/6}\\
+\tau^{1/3}&lt;N\le\tau^{2/3}
+ &amp;\sqrt N\tau^{1/6}+N\tau^{-1/6}&amp;2\sqrt N\tau^{1/6}\\
+\tau^{2/3}&lt;N\le\tau
+ &amp;\sqrt\tau+N/\sqrt\tau&amp;2\sqrt N\tau^{1/6}.
+\end{array}
+$$">$$
+\begin{array}{c|c|c}
+\text{range}&amp;\text{estimate used}&amp;\text{upper bound}\\\hline
+N\le\tau^{1/3}&amp;N&amp;\sqrt N\tau^{1/6}\\
+\tau^{1/3}&lt;N\le\tau^{2/3}
+ &amp;\sqrt N\tau^{1/6}+N\tau^{-1/6}&amp;2\sqrt N\tau^{1/6}\\
+\tau^{2/3}&lt;N\le\tau
+ &amp;\sqrt\tau+N/\sqrt\tau&amp;2\sqrt N\tau^{1/6}.
+\end{array}
+$$</span>
+The last inequality uses <span class="math" data-tex="$N\le\tau$">$N\le\tau$</span> and <span class="math" data-tex="$N\ge\tau^{2/3}$">$N\ge\tau^{2/3}$</span>. Partial summation multiplies each row by <span class="math" data-tex="$O(N^{-1/2})$">$O(N^{-1/2})$</span>, including the endpoint and integral terms, so each weighted block is <span class="math" data-tex="$O(\tau^{1/6})$">$O(\tau^{1/6})$</span>. Their number is at most <span class="math" data-tex="$1+\log_2\tau$">$1+\log_2\tau$</span>. The pole term <span class="math" data-tex="$\tau^{1/2}/(it-1/2)$">$\tau^{1/2}/(it-1/2)$</span> and the remainder are <span class="math" data-tex="$O(\tau^{-1/2})$">$O(\tau^{-1/2})$</span> when <span class="math" data-tex="$|t|\ge4$">$|t|\ge4$</span>, and bounded heights are covered by continuity. This accounts for every summand and error.</p>
+<p><strong>Solution 6.</strong> Put <span class="math" data-tex="$m=\lfloor\sqrt x\rfloor$">$m=\lfloor\sqrt x\rfloor$</span>. The exact hyperbola identity is
+<span class="math math-display" data-tex="$$
+D(x)=2\sum_{n\le m}\lfloor x/n\rfloor-m^2
+=2xH_m-2\sum_{n\le m}b(x/n)-m-m^2.
+\tag{10.1}
+$$">$$
+D(x)=2\sum_{n\le m}\lfloor x/n\rfloor-m^2
+=2xH_m-2\sum_{n\le m}b(x/n)-m-m^2.
+\tag{10.1}
+$$</span>
+We require one more term of the harmonic-number expansion. From the definition of <span class="math" data-tex="$\gamma$">$\gamma$</span>,
+<span class="math math-display" data-tex="$$
+H_m-\log m-\gamma
+=\sum_{j=m}^\infty
+ \left(\log(1+1/j)-\frac1{j+1}\right)
+=\sum_{j=m}^\infty\left(\frac1{2j^2}+O(j^{-3})\right)
+=\frac1{2m}+O(m^{-2}).
+$$">$$
+H_m-\log m-\gamma
+=\sum_{j=m}^\infty
+ \left(\log(1+1/j)-\frac1{j+1}\right)
+=\sum_{j=m}^\infty\left(\frac1{2j^2}+O(j^{-3})\right)
+=\frac1{2m}+O(m^{-2}).
+$$</span>
+The last step follows by comparing <span class="math" data-tex="$\sum_{j\ge m}j^{-2}$">$\sum_{j\ge m}j^{-2}$</span> with its integral. For <span class="math" data-tex="$m\ge2$">$m\ge2$</span>, <span class="math" data-tex="$x-m^2=O(m)$">$x-m^2=O(m)$</span> and Taylor's estimate for <span class="math" data-tex="$\log(1+(x-m^2)/m^2)$">$\log(1+(x-m^2)/m^2)$</span> gives
+<span class="math math-display" data-tex="$$
+2x\log m-x\log x=-(x-m^2)+O(1),\qquad
+x/m-m=O(1).
+$$">$$
+2x\log m-x\log x=-(x-m^2)+O(1),\qquad
+x/m-m=O(1).
+$$</span>
+Substitute in (10.1), including <span class="math" data-tex="$xO(m^{-2})=O(1)$">$xO(m^{-2})=O(1)$</span>, to obtain
+<span class="math math-display" data-tex="$$
+D(x)-x\log x-(2\gamma-1)x
+=-2\sum_{n\le\sqrt x}b(x/n)+O(1).
+\tag{10.2}
+$$">$$
+D(x)-x\log x-(2\gamma-1)x
+=-2\sum_{n\le\sqrt x}b(x/n)+O(1).
+\tag{10.2}
+$$</span>
+Bounded <span class="math" data-tex="$x$">$x$</span> can be absorbed into a constant.</p>
+<p>Let <span class="math" data-tex="$K=x^{1/3}$">$K=x^{1/3}$</span>. The terms with <span class="math" data-tex="$n\le K$">$n\le K$</span> contribute <span class="math" data-tex="$O(K)$">$O(K)$</span>. Divide <span class="math" data-tex="$K&lt;n\le\sqrt x$">$K&lt;n\le\sqrt x$</span> into disjoint blocks <span class="math" data-tex="$N&lt;n\le b\le2N$">$N&lt;n\le b\le2N$</span>, with <span class="math" data-tex="$N\ge K$">$N\ge K$</span>. On one block take <span class="math" data-tex="$H=\lceil N/K\rceil$">$H=\lceil N/K\rceil$</span>, so <span class="math" data-tex="$N/H\le K$">$N/H\le K$</span> and <span class="math" data-tex="$H\le2N/K$">$H\le2N/K$</span>. The phase <span class="math" data-tex="$f_h(u)=hx/u$">$f_h(u)=hx/u$</span> has
+<span class="math math-display" data-tex="$$
+f_h&#x27;&#x27;(u)=2hx/u^3\asymp hx/N^3&gt;0.
+$$">$$
+f_h&#x27;&#x27;(u)=2hx/u^3\asymp hx/N^3&gt;0.
+$$</span>
+Theorem 2.2 therefore gives, uniformly in the shortened block,
+<span class="math math-display" data-tex="$$
+\sum e(hx/n)\ll \sqrt{hx/N}+\frac{N^{3/2}}{\sqrt{hx}}.
+$$">$$
+\sum e(hx/n)\ll \sqrt{hx/N}+\frac{N^{3/2}}{\sqrt{hx}}.
+$$</span>
+Using Lemma 5.1 and summing <span class="math" data-tex="$h^{-1/2}$">$h^{-1/2}$</span> and <span class="math" data-tex="$h^{-3/2}$">$h^{-3/2}$</span> up to <span class="math" data-tex="$2H$">$2H$</span> bounds the sawtooth sum on this block by
+<span class="math math-display" data-tex="$$
+\ll\frac NH+\sqrt{xH/N}+\frac{N^{3/2}}{\sqrt x}
+\ll K+x^{1/3}+x^{1/4}\ll x^{1/3}.
+$$">$$
+\ll\frac NH+\sqrt{xH/N}+\frac{N^{3/2}}{\sqrt x}
+\ll K+x^{1/3}+x^{1/4}\ll x^{1/3}.
+$$</span>
+There are <span class="math" data-tex="$O(\log x)$">$O(\log x)$</span> blocks. Together with the initial <span class="math" data-tex="$O(K)$">$O(K)$</span> segment, (10.2) proves the claimed error, including integer arguments of the sawtooth. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="freely-readable-sources">Freely readable sources</h2>
+<ul>
+<li>H. L. Montgomery and R. C. Vaughan, <a href="https://personal.science.psu.edu/rcv4/571s25/montgomery-vaughanII.pdf"><em>Multiplicative Number Theory II: Primes and Sieves</em></a>, freely readable author-hosted 472-page draft. Chapter 16, Theorems 16.1, 16.3, 16.5, 16.7, 16.11, 16.16, 16.18–16.26, Lemma 16.8 and Corollary 16.27; Appendix E. The positive-kernel construction is proved in Lemma 5.1 here.</li>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, freely readable author preliminary version, 367 pages. Chapter 3, Theorem 3.3.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-06.html">← Growth in the critical strip: convexity and the Lindelöf hypothesis</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-08.html">Nonvanishing on the line σ = 1 and the zero-free region →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-07.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

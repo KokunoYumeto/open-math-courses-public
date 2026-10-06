@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Primary ideals and isolated components · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="index.html">Ideal theory in rings</a><a href="NOE-IDL-01.html">Previous lesson</a><a href="NOE-IDL-03.html">Next lesson</a><a href="source-course/src/primary-ideals-and-isolated-components.md">Markdown source</a><a href="downloads/NOE-IDL-02.tex">LaTeX source</a></nav></header>
+
+<article class="math"><h1 id="primary-ideals-and-isolated-components">Primary ideals and
+isolated components</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra reasoning
+effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at
+Ultra. Public domain (CC0).</em></p>
+<p>An irreducible intersection decomposition need not be unique. We now
+ask what can still be recovered without choosing a decomposition.
+Localization singles out groups of primary components. A second
+construction groups associated primes by containment; a third groups the
+actual connected pieces of the spectrum. These are different kinds of
+separation.</p>
+<p>We assume a Noetherian commutative ring <span
+class="math inline">\(R\)</span> with identity. We use the finite
+irreducible decompositions proved in <a href="NOE-IDL-01.html">Chain
+conditions and irreducible decompositions</a>. The earlier lesson <a
+href="prerequisites/AG-CA/AG-CA-04.html">Associated primes and primary
+decomposition</a> contains actual proofs of associated-prime existence
+and zero divisors (Theorem 1.2), submodule and direct-sum inclusions
+(Proposition 2.1), finiteness (Theorem 2.2), localization and minimal
+support (Theorems 3.1–3.2), primary modules and ideals (Proposition 4.1
+and Theorem 4.2), primary-decomposition existence (Theorem 5.3), and
+uniqueness (Theorems 6.1–6.2). We use those results with their
+Noetherian and finite-module hypotheses. Finite prime avoidance and the
+Chinese remainder construction are proved below. <a
+href="prerequisites/AG-CA/AG-CA-01.html">Spectra of rings</a>, Theorem
+1.2, Proposition 2.1 and Theorems 4.1 and 4.3, proves the radical
+correspondence, closed-set operations and finite irreducible components;
+<a href="prerequisites/AG-CA/AG-CA-03.html">Noetherian and Artinian
+rings</a>, Proposition 2.2, proves nilradical nilpotence. Freely
+accessible references are Noether’s English working edition and the
+Stacks project.</p>
+<h2 id="the-chain-argument-that-makes-a-component-primary">1. The chain
+argument that makes a component primary</h2>
+<p>An ideal <span class="math inline">\(Q\ne R\)</span> is
+<strong>primary</strong> if <span class="math inline">\(ab\in Q\)</span>
+and <span class="math inline">\(b\notin Q\)</span> imply <span
+class="math inline">\(a^n\in Q\)</span> for some <span
+class="math inline">\(n\ge1\)</span>. Its radical is a prime. For a
+submodule <span class="math inline">\(N\ne M\)</span>, the corresponding
+condition is that <span class="math inline">\(av\in N\)</span>, <span
+class="math inline">\(v\notin N\)</span> imply <span
+class="math inline">\(a^nM\subset N\)</span>. Equivalently,
+multiplication by each scalar on <span
+class="math inline">\(M/N\)</span> is either injective or nilpotent.
+These conditions agree for ideals, using finite generation to pass from
+individual powers to a common power.</p>
+<p><strong>Theorem 1.1 (Noether’s primary lemma).</strong> An
+irreducible submodule of a Noetherian module over a commutative ring is
+primary.</p>
+<p><strong>Proof.</strong> Pass to <span
+class="math inline">\(U=M/N\)</span>, so zero is irreducible and <span
+class="math inline">\(U\)</span> is uniform. Fix <span
+class="math inline">\(a\in R\)</span> whose multiplication map has a
+nonzero kernel. The ascending chain <span class="math inline">\(0:_U
+a^j\)</span> stabilizes, say at <span
+class="math inline">\(j=h\ge1\)</span>. The submodules <span
+class="math inline">\(a^hU\)</span> and <span class="math inline">\(0:_U
+a^h\)</span> intersect trivially: if <span
+class="math inline">\(a^hu\)</span> lies in the latter, then <span
+class="math inline">\(a^{2h}u=0\)</span>, so stabilization implies <span
+class="math inline">\(a^hu=0\)</span>. The kernel submodule is nonzero.
+Uniformity therefore forces <span class="math inline">\(a^hU=0\)</span>.
+Thus every noninjective scalar is nilpotent on <span
+class="math inline">\(U\)</span>, as required. <span
+class="math inline">\(\square\)</span></p>
+<p>In the ideal version, if <span class="math inline">\(ab\in Q\)</span>
+with <span class="math inline">\(b\notin Q\)</span>, choose <span
+class="math inline">\(h\)</span> with <span
+class="math inline">\((Q:a^h)=(Q:a^{2h})\)</span>. Then</p>
+<p><span class="math display">\[
+Q=(Q+a^hR)\cap(Q+bR).
+\]</span></p>
+<p>For if <span class="math inline">\(z=q+a^hr=q&#39;+bs\)</span>,
+multiplication by <span class="math inline">\(a\)</span> gives <span
+class="math inline">\(a^{h+1}r\in Q\)</span>, since <span
+class="math inline">\(ab\in Q\)</span>. Stabilization gives <span
+class="math inline">\(a^hr\in Q\)</span>, so <span
+class="math inline">\(z\in Q\)</span>. Irreducibility and <span
+class="math inline">\(b\notin Q\)</span> force <span
+class="math inline">\(a^h\in Q\)</span>. This is the scalar form of the
+same proof.</p>
+<p>Together with finite irreducible decompositions this gives Noether’s
+existence route to primary decomposition. The associated-prime route and
+the classical uniqueness statements are the cited prerequisite theorems.
+We now prove the further uniqueness statements specific to this
+lesson.</p>
+<h2 id="selecting-an-entire-isolated-set">2. Selecting an entire
+isolated set</h2>
+<p><strong>Lemma 2.0 (finite prime avoidance).</strong> Let <span
+class="math inline">\(J,I_1,\ldots,I_r\)</span> be ideals of a
+commutative ring, with all but at most two of the <span
+class="math inline">\(I_i\)</span> prime. If <span
+class="math inline">\(J\not\subset I_i\)</span> for every <span
+class="math inline">\(i\)</span>, there is <span
+class="math inline">\(a\in J\setminus\bigcup_i I_i\)</span>. In
+particular, if an ideal is contained in a finite union of prime ideals,
+it is contained in one of them.</p>
+<p><strong>Proof.</strong> For <span class="math inline">\(r=0\)</span>,
+choose <span class="math inline">\(a=0\)</span>; for <span
+class="math inline">\(r=1\)</span>, the assertion is the hypothesis. For
+<span class="math inline">\(r=2\)</span>, choose <span
+class="math inline">\(x\in J\setminus I_1\)</span> and <span
+class="math inline">\(y\in J\setminus I_2\)</span>. If neither already
+avoids both, then <span class="math inline">\(x\in I_2\)</span> and
+<span class="math inline">\(y\in I_1\)</span>, and <span
+class="math inline">\(x+y\)</span> avoids both by subtraction.</p>
+<p>Induct on <span class="math inline">\(r\)</span>. Delete an ideal
+contained in another: this changes neither the union nor the desired
+conclusion. If deletion reduces the list, use induction. Otherwise there
+are no inclusions, and for <span class="math inline">\(r\ge3\)</span> we
+may put a prime ideal last. Induction gives <span
+class="math inline">\(x\in J\)</span> outside <span
+class="math inline">\(I_1,\ldots,I_{r-1}\)</span>. If <span
+class="math inline">\(x\notin I_r\)</span>, it works. Otherwise choose
+<span class="math inline">\(b\in J\setminus I_r\)</span> and, for each
+<span class="math inline">\(i&lt;r\)</span>, choose <span
+class="math inline">\(b_i\in I_i\setminus I_r\)</span>, using
+noncontainment. Set <span
+class="math inline">\(y=b\prod_{i&lt;r}b_i\)</span>. Then <span
+class="math inline">\(y\in J\cap\bigcap_{i&lt;r}I_i\)</span>, while
+primality gives <span class="math inline">\(y\notin I_r\)</span>. For
+<span class="math inline">\(i&lt;r\)</span>, membership of <span
+class="math inline">\(x+y\)</span> in <span
+class="math inline">\(I_i\)</span> would force <span
+class="math inline">\(x\in I_i\)</span>; membership in <span
+class="math inline">\(I_r\)</span> would force <span
+class="math inline">\(y\in I_r\)</span>. Thus <span
+class="math inline">\(x+y\)</span> avoids the entire list. The last
+assertion is the contrapositive for a list of prime ideals. <span
+class="math inline">\(\square\)</span></p>
+<p>Fix a primary decomposition</p>
+<p><span class="math display">\[
+I=\bigcap_{\mathfrak p\in P}Q_{\mathfrak p},
+\qquad P=\operatorname{Ass}(R/I),
+\]</span></p>
+<p>with distinct radicals and no redundant component. A subset <span
+class="math inline">\(S\subset P\)</span> is <strong>isolated</strong>
+if <span class="math inline">\(\mathfrak q\subset\mathfrak p\)</span>,
+<span class="math inline">\(\mathfrak q\in P\)</span>, <span
+class="math inline">\(\mathfrak p\in S\)</span> imply <span
+class="math inline">\(\mathfrak q\in S\)</span>. This is downward
+closure within the finite associated set; it does not ask that every
+prime of <span class="math inline">\(R\)</span> below <span
+class="math inline">\(\mathfrak p\)</span> belong to <span
+class="math inline">\(P\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> Put <span
+class="math inline">\(T=R\setminus\bigcup_{\mathfrak p\in S}\mathfrak
+p\)</span>. Then</p>
+<p><span class="math display">\[
+I_S:=\bigcap_{\mathfrak p\in S}Q_{\mathfrak p}
+=\{r\in R:r/1\in I R_T\}.
+\]</span></p>
+<p>In particular <span class="math inline">\(I_S\)</span> is independent
+of the chosen primary decomposition.</p>
+<p><strong>Proof.</strong> The set <span
+class="math inline">\(T\)</span> is multiplicatively closed. For a <span
+class="math inline">\(\mathfrak q\)</span>-primary ideal <span
+class="math inline">\(Q\)</span>, if <span
+class="math inline">\(T\cap\mathfrak q\ne\varnothing\)</span>, a power
+of an element of this intersection lies in <span
+class="math inline">\(Q\)</span>, so <span
+class="math inline">\(QR_T=R_T\)</span>. If <span
+class="math inline">\(T\cap\mathfrak q=\varnothing\)</span>, the
+contraction of <span class="math inline">\(QR_T\)</span> is exactly
+<span class="math inline">\(Q\)</span>: from <span
+class="math inline">\(tr\in Q\)</span> and <span
+class="math inline">\(t\notin\mathfrak q\)</span>, primaryness gives
+<span class="math inline">\(r\in Q\)</span>.</p>
+<p>The primes of <span class="math inline">\(P\)</span> disjoint from
+<span class="math inline">\(T\)</span> are exactly those in <span
+class="math inline">\(S\)</span>. One inclusion is immediate. For the
+other, disjointness says <span class="math inline">\(\mathfrak
+q\subset\bigcup_{\mathfrak p\in S}\mathfrak p\)</span>. Lemma 2.0 puts
+<span class="math inline">\(\mathfrak q\)</span> inside one of those
+primes, and isolation puts it in <span class="math inline">\(S\)</span>.
+Localization preserves finite intersections, so only the selected
+components survive, with their contractions unchanged. This proves the
+formula. If <span class="math inline">\(S=\varnothing\)</span>, take
+<span class="math inline">\(T=R\)</span>, which contains zero; the
+localization is zero and the contraction is <span
+class="math inline">\(R\)</span>, agreeing with the empty intersection.
+<span class="math inline">\(\square\)</span></p>
+<p>For <span class="math inline">\((x^2,xy)\)</span>, the associated
+primes are <span class="math inline">\((x)\subset(x,y)\)</span>. The set
+consisting of <span class="math inline">\((x)\)</span> is isolated, and
+localization gives <span class="math inline">\(I_{\{(x)\}}=(x)\)</span>.
+The singleton consisting of <span class="math inline">\((x,y)\)</span>
+is not isolated; the component <span
+class="math inline">\((x^2,y+ax)\)</span> can vary.</p>
+<h2 id="relative-primality-is-directional">3. Relative primality is
+directional</h2>
+<p>Define the ideal quotient <span
+class="math inline">\((B:A)=\{r:rA\subset B\}\)</span>. Say that <span
+class="math inline">\(A\)</span> is <strong>relatively prime to <span
+class="math inline">\(B\)</span></strong> if <span
+class="math inline">\((B:A)=B\)</span>. This means that the entire ideal
+<span class="math inline">\(A\)</span> kills no nonzero element of <span
+class="math inline">\(R/B\)</span>. Say <strong>mutually relatively
+prime</strong> when both directions hold. These words do not mean
+comaximal.</p>
+<p><strong>Theorem 3.1.</strong> For <span class="math inline">\(B\ne
+R\)</span>, the following are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\((B:A)=B\)</span>.</li>
+<li><span class="math inline">\(A\)</span> is contained in no prime of
+<span class="math inline">\(\operatorname{Ass}(R/B)\)</span>.</li>
+<li>No prime of <span
+class="math inline">\(\operatorname{Ass}(R/A)\)</span> is contained in a
+prime of <span
+class="math inline">\(\operatorname{Ass}(R/B)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> If <span
+class="math inline">\(A\subset\mathfrak p=\operatorname{Ann}(v)\)</span>
+for a nonzero <span class="math inline">\(v\in R/B\)</span>, then <span
+class="math inline">\(Av=0\)</span>, so the ideal quotient is larger
+than <span class="math inline">\(B\)</span>. Conversely, if <span
+class="math inline">\(K=0:_{R/B}A\ne0\)</span>, it has an associated
+prime <span class="math inline">\(\mathfrak p\)</span>, and an element
+of <span class="math inline">\(K\)</span> with that annihilator is also
+in <span class="math inline">\(R/B\)</span>. Necessarily <span
+class="math inline">\(A\subset\mathfrak p\)</span>. This proves
+equivalence of the first two conditions. For any prime <span
+class="math inline">\(\mathfrak p\)</span> containing <span
+class="math inline">\(A\)</span>, there is a minimal prime <span
+class="math inline">\(\mathfrak q\)</span> over <span
+class="math inline">\(A\)</span> contained in <span
+class="math inline">\(\mathfrak p\)</span> (Spectra of rings, Lemma
+4.2), and this <span class="math inline">\(\mathfrak q\)</span> is
+associated to <span class="math inline">\(R/A\)</span> (Associated
+primes and primary decomposition, Theorem 3.2). Conversely every
+associated prime of <span class="math inline">\(R/A\)</span> contains
+<span class="math inline">\(A\)</span>. These facts prove equivalence
+with the third condition, including <span
+class="math inline">\(A=R\)</span>, whose associated set is empty. <span
+class="math inline">\(\square\)</span></p>
+<p>Lemma 2.0 also provides a single element of <span
+class="math inline">\(A\)</span> outside all associated primes of <span
+class="math inline">\(R/B\)</span> when the conditions hold. Such an
+element acts injectively on <span
+class="math inline">\(R/B\)</span>.</p>
+<p>For <span class="math inline">\(A=(x^2,y)\)</span> and <span
+class="math inline">\(B=(x)\)</span>, the element <span
+class="math inline">\(y\in A\setminus(x)\)</span> proves relative
+primality to <span class="math inline">\(B\)</span>. The reverse fails:
+<span class="math inline">\(x\notin A\)</span>, but <span
+class="math inline">\(xB\subset A\)</span>. Equivalently the prime <span
+class="math inline">\((x)\)</span> associated to <span
+class="math inline">\(B\)</span> lies inside <span
+class="math inline">\((x,y)\)</span>, which is associated to <span
+class="math inline">\(A\)</span>.</p>
+<h2 id="a-graph-on-the-associated-primes">4. A graph on the associated
+primes</h2>
+<p>Form the finite <strong>comparability graph</strong> on <span
+class="math inline">\(P=\operatorname{Ass}(R/I)\)</span>: connect
+distinct primes when one contains the other. Let its connected
+components be <span class="math inline">\(S_1,\ldots,S_t\)</span>. Every
+<span class="math inline">\(S_i\)</span> is isolated, because any
+containment is an edge. Thus each <span
+class="math inline">\(I_{S_i}\)</span> in Theorem 2.1 is canonical.</p>
+<p><strong>Theorem 4.1 (Noether’s relative decomposition).</strong>
+Every proper ideal has a unique unordered decomposition</p>
+<p><span class="math display">\[
+I=I_{S_1}\cap\cdots\cap I_{S_t}
+\]</span></p>
+<p>into mutually relatively prime proper ideals which admit no further
+such decomposition. Its components are indexed by the connected
+components of the comparability graph.</p>
+<p><strong>Proof.</strong> Group a primary decomposition by the <span
+class="math inline">\(S_i\)</span>. Each grouped decomposition stays
+irredundant within its group, since deleting a primary component there
+would also delete it from the original decomposition. The first
+uniqueness theorem for primary decomposition therefore gives <span
+class="math inline">\(\operatorname{Ass}(R/I_{S_i})=S_i\)</span>. There
+are no containments between different <span
+class="math inline">\(S_i\)</span>, so Theorem 3.1 proves mutual
+relative primality.</p>
+<p>We verify that every mutually relatively prime decomposition comes
+from grouping in this fashion. Suppose <span
+class="math inline">\(I=\bigcap_i A_i\)</span>, with all <span
+class="math inline">\(A_i\ne R\)</span> and mutually relatively prime.
+Put <span class="math inline">\(B_i=\bigcap_{j\ne i}A_j\)</span>. For
+any <span class="math inline">\(\mathfrak
+p\in\operatorname{Ass}(R/A_i)\)</span>, every <span
+class="math inline">\(A_j\)</span>, <span class="math inline">\(j\ne
+i\)</span>, is not contained in <span class="math inline">\(\mathfrak
+p\)</span>. Choosing one element outside <span
+class="math inline">\(\mathfrak p\)</span> from each and multiplying
+shows <span class="math inline">\(B_i\not\subset\mathfrak p\)</span>. If
+<span class="math inline">\(v\in R/A_i\)</span> has annihilator <span
+class="math inline">\(\mathfrak p\)</span>, choose <span
+class="math inline">\(b\in B_i\setminus\mathfrak p\)</span>. Then <span
+class="math inline">\(bv\ne0\)</span>, still with annihilator <span
+class="math inline">\(\mathfrak p\)</span>. Its representative in <span
+class="math inline">\(B_i/I\subset R/I\)</span> proves <span
+class="math inline">\(\mathfrak p\in P\)</span>. The diagonal injection
+<span class="math inline">\(R/I\hookrightarrow\bigoplus R/A_i\)</span>
+proves the reverse inclusion for their union. Theorem 3.1 also says
+their associated sets are disjoint and have no containment between them.
+Hence those sets partition <span class="math inline">\(P\)</span> into
+unions of entire graph components; each is isolated.</p>
+<p>Let <span class="math inline">\(S=\operatorname{Ass}(R/A_i)\)</span>
+and localize at <span
+class="math inline">\(T=R\setminus\bigcup_{\mathfrak p\in S}\mathfrak
+p\)</span>. The other factors become the unit ideal: a minimal prime
+over any such factor cannot be contained in any member of <span
+class="math inline">\(S\)</span>; Lemma 2.0 gives an element of that
+factor in <span class="math inline">\(T\)</span>. The factor <span
+class="math inline">\(A_i\)</span> contracts unchanged, by its primary
+decomposition and Theorem 2.1 applied to the full set <span
+class="math inline">\(S\)</span>. Thus <span
+class="math inline">\(A_i=I_S\)</span>. A factor with two graph
+components splits further by the already constructed decomposition. A
+factor with one component cannot split, since the same argument would
+separate that connected graph. This proves both irreducibility and
+uniqueness. <span class="math inline">\(\square\)</span></p>
+<p>For an explicit pair of comparable pairs, use</p>
+<p><span class="math display">\[
+I=(x^2,xy)\cap((x-1)^2,(x-1)(y-1))\subset k[x,y].
+\]</span></p>
+<p>The first associated pair is <span
+class="math inline">\((x)\subset(x,y)\)</span>; the second is <span
+class="math inline">\((x-1)\subset(x-1,y-1)\)</span>. The two factors
+contain <span class="math inline">\(x^2\)</span> and <span
+class="math inline">\((x-1)^2\)</span>, respectively. These polynomials
+are coprime in <span class="math inline">\(k[x]\)</span>, so Bézout
+makes the factors comaximal. The quotient is their product, and its
+associated set is exactly the two indicated pairs. The relative
+decomposition has the two displayed factors.</p>
+<h2 id="separating-connected-spaces">5. Separating connected spaces</h2>
+<p><strong>Lemma 5.0 (Chinese remainders).</strong> Pairwise comaximal
+ideals <span class="math inline">\(J_1,\ldots,J_s\)</span> satisfy</p>
+<p><span class="math display">\[
+R/\bigcap_iJ_i\cong\prod_iR/J_i,
+\qquad \bigcap_iJ_i=\prod_iJ_i.
+\]</span></p>
+<p><strong>Proof.</strong> For two ideals <span
+class="math inline">\(A+B=R\)</span>, choose <span
+class="math inline">\(a\in A,b\in B\)</span> with <span
+class="math inline">\(a+b=1\)</span>. If <span
+class="math inline">\(z\in A\cap B\)</span>, then <span
+class="math inline">\(z=za+zb\in AB\)</span>, so <span
+class="math inline">\(A\cap B=AB\)</span>. Given residues represented by
+<span class="math inline">\(u,v\)</span>, the element <span
+class="math inline">\(ub+va\)</span> realizes them modulo <span
+class="math inline">\(A,B\)</span>; the map’s kernel is their
+intersection. For each <span class="math inline">\(i\)</span> in a
+finite pairwise comaximal list, choose <span
+class="math inline">\(b_{ij}\in J_j\)</span> congruent to <span
+class="math inline">\(1\)</span> modulo <span
+class="math inline">\(J_i\)</span>, for <span class="math inline">\(j\ne
+i\)</span>. Their product <span class="math inline">\(e_i\)</span> is
+<span class="math inline">\(1\)</span> modulo <span
+class="math inline">\(J_i\)</span> and <span
+class="math inline">\(0\)</span> modulo every other ideal. Thus <span
+class="math inline">\(\sum_i e_i u_i\)</span> realizes arbitrary
+residues. The same products show <span
+class="math inline">\(J_i+\prod_{j\ne i}J_j=R\)</span>, so the two-ideal
+intersection identity proves the product formula by induction. <span
+class="math inline">\(\square\)</span></p>
+<p>An idempotent <span class="math inline">\(e\)</span> is
+<strong>primitive</strong> if it is nonzero and cannot be written as
+<span class="math inline">\(f+g\)</span> with nonzero idempotents <span
+class="math inline">\(f,g\)</span> satisfying <span
+class="math inline">\(fg=0\)</span>.</p>
+<p><strong>Theorem 5.1 (Noether’s coprime decomposition).</strong> A
+proper ideal <span class="math inline">\(I\)</span> has a unique
+unordered decomposition as a product of pairwise comaximal proper ideals
+having no further such factorization. These factors correspond to the
+connected components of <span
+class="math inline">\(\operatorname{Spec}(R/I)\)</span> and to its
+primitive nonzero idempotents.</p>
+<p><strong>Proof.</strong> Write <span
+class="math inline">\(A=R/I\)</span>. A Noetherian spectrum has finitely
+many irreducible components, the sets <span
+class="math inline">\(V(\mathfrak p)\)</span> for its minimal primes.
+Form a graph on these components, with an edge when they intersect. The
+union in each graph component is connected: each irreducible space is
+connected, and adjoining a connected space meeting the preceding union
+preserves connectedness. These finitely many unions are mutually
+disjoint closed subsets, hence also open. They are exactly the connected
+components.</p>
+<p>We give the algebraic passage from a clopen partition <span
+class="math inline">\(\operatorname{Spec}(A)=V(J)\sqcup V(K)\)</span>.
+Disjointness yields <span class="math inline">\(J+K=A\)</span>, and
+covering yields <span class="math inline">\(JK\subset\sqrt0\)</span>.
+The nilradical of a Noetherian ring is nilpotent: it is finitely
+generated by nilpotents, and a sufficiently long product of its
+generators vanishes. Choose <span class="math inline">\(h\)</span> with
+<span class="math inline">\((JK)^h=0\)</span>. The ideals <span
+class="math inline">\(J^h,K^h\)</span> remain comaximal, since expand
+<span class="math inline">\((a+b)^{2h-1}=1\)</span> for <span
+class="math inline">\(a+b=1\)</span>, <span class="math inline">\(a\in
+J,b\in K\)</span>. Every term belongs to one of those powers. Their
+intersection is their product, which is zero. Chinese remainders
+therefore give <span class="math inline">\(A\cong A/J^h\times
+A/K^h\)</span>. The element corresponding to <span
+class="math inline">\((1,0)\)</span> is idempotent.</p>
+<p>Conversely an idempotent <span class="math inline">\(e\)</span> gives
+<span class="math inline">\(A\cong eA\times(1-e)A\)</span> and the
+clopen partition <span class="math inline">\(D(e)\sqcup D(1-e)\)</span>.
+The idempotent for a specified clopen subset is unique. If idempotents
+<span class="math inline">\(e,f\)</span> have the same values at every
+prime, then <span class="math inline">\(e(1-f)\)</span> and <span
+class="math inline">\(f(1-e)\)</span> are nilpotent idempotents and
+therefore zero, so <span class="math inline">\(e=f\)</span>. Thus
+connected components give unique orthogonal primitive idempotents <span
+class="math inline">\(e_i\)</span>, with sum one. Put <span
+class="math inline">\(J_i=\ker(A\to e_iA)=(1-e_i)A\)</span>, and take
+their inverse images in <span class="math inline">\(R\)</span>. They are
+pairwise comaximal, their intersection and product are <span
+class="math inline">\(I\)</span>, and their quotients are connected. Any
+other factorization gives another clopen partition and hence must group
+these components; irreducibility of its factors forbids grouping more
+than one. <span class="math inline">\(\square\)</span></p>
+<p>Relative irreducibility implies coprime irreducibility, because
+comaximal factors are mutually relatively prime. The reverse fails for
+<span class="math inline">\((xy)\)</span>. Its associated primes <span
+class="math inline">\((x),(y)\)</span> are incomparable, so <span
+class="math inline">\((xy)=(x)\cap(y)\)</span> is a relative
+decomposition. Yet its spectrum is connected: the two axes meet at the
+origin. Thus <span class="math inline">\((xy)\)</span> has no nontrivial
+comaximal factorization.</p>
+<p>For</p>
+<p><span class="math display">\[
+I=(x)\cap(y)\cap(x-1,y-1),
+\]</span></p>
+<p>the axes and the point <span class="math inline">\((1,1)\)</span> are
+separate connected components. The coprime decomposition is <span
+class="math inline">\(I=(xy)(x-1,y-1)\)</span>: modulo the point ideal,
+<span class="math inline">\(xy=1\)</span>, so the factors are comaximal.
+In <span class="math inline">\(R/I\)</span>, <span
+class="math inline">\(xy\)</span> is the idempotent equal to zero on the
+axes and one at the point; <span class="math inline">\(1-xy\)</span> is
+the other primitive idempotent. The relative decomposition has three
+factors, since its three associated primes are incomparable. The
+comaximal decomposition has two.</p>
+<p>For the Artinian ring <span
+class="math inline">\(k[\epsilon]/(\epsilon^2)\times
+k[\delta]/(\delta^3)\)</span>, the two primitive idempotents are <span
+class="math inline">\((1,0),(0,1)\)</span>. Its zero ideal is the
+intersection and product of the two projection kernels. Each factor
+quotient is local and therefore connected.</p>
+<figure>
+<img src="assets/two-kinds-of-separation.png"
+alt="A containment graph and two crossing axes with a separate point" />
+<figcaption aria-hidden="true">A containment graph and two crossing axes
+with a separate point</figcaption>
+</figure>
+<p><em>Figure 1.</em> Left: the comparability graph for <span
+class="math inline">\((x^2y,xy^2)=(x)\cap(y)\cap(x^2,y^2)\)</span>; the
+embedded origin joins the two minimal primes into one relative group.
+Right: the geometric example of the axes and <span
+class="math inline">\((1,1)\)</span> from Section 5 has two connected
+pieces. These depict different ideals and different tests. The graph
+edges mean prime containment; the crossing axes mean actual intersection
+of closed sets. The proofs are Theorems 4.1 and 5.1. Original diagram,
+CC0; rendered DejaVu glyphs retain their font licence.</p>
+<h2 id="exercises">6. Exercises</h2>
+<ol type="1">
+<li><strong>Basic.</strong> For <span
+class="math inline">\((x^2,xy)\)</span>, verify the family <span
+class="math inline">\((x)\cap(x^2,y+ax)\)</span>, identify its
+associated primes, and state which singleton set is isolated.</li>
+<li><strong>Intermediate.</strong> Derive Theorem 3.1 using the
+zero-divisor theorem and prime avoidance, rather than associated primes
+of <span class="math inline">\(0:_{R/B}A\)</span>.</li>
+<li><strong>Intermediate.</strong> Find the comaximal decomposition and
+primitive idempotents for the axes together with <span
+class="math inline">\((1,1)\)</span>.</li>
+<li><strong>Intermediate.</strong> Construct an ideal with exactly three
+associated primes <span class="math inline">\(\mathfrak
+p_1\subsetneq\mathfrak p_2\)</span> and <span
+class="math inline">\(\mathfrak p_3\)</span> incomparable with both;
+compute its relative decomposition.</li>
+<li><strong>Advanced.</strong> Prove that <span
+class="math inline">\(I\)</span> has no nontrivial comaximal
+factorization exactly when <span
+class="math inline">\(\operatorname{Spec}(R/I)\)</span> is connected.
+Explain why the same conclusion does not use the comparability graph
+alone.</li>
+</ol>
+<h2 id="solutions">7. Solutions</h2>
+<p><strong>1.</strong> The calculation in the preceding lesson gives
+equality and irredundancy. The first factor is prime, and the second
+quotient is <span class="math inline">\(k[x]/(x^2)\)</span>, so its
+unique associated prime is <span class="math inline">\((x,y)\)</span>.
+The first uniqueness theorem gives associated set <span
+class="math inline">\(\{(x),(x,y)\}\)</span>. Only <span
+class="math inline">\(\{(x)\}\)</span> is an isolated singleton. Its
+component is fixed; the other varies.</p>
+<p><strong>2.</strong> If <span class="math inline">\(A\)</span> is
+contained in none of the finitely many associated primes of <span
+class="math inline">\(R/B\)</span>, avoidance gives <span
+class="math inline">\(a\in A\)</span> outside their union. The
+zero-divisor theorem makes multiplication by <span
+class="math inline">\(a\)</span> injective. Thus any element killed by
+the whole ideal <span class="math inline">\(A\)</span> is zero. If <span
+class="math inline">\(A\subset\mathfrak p\)</span> for an associated
+prime, its witnessing element is killed by all of <span
+class="math inline">\(A\)</span>, giving the converse. Minimal primes
+over <span class="math inline">\(A\)</span> supply the third equivalent
+condition as in Theorem 3.1.</p>
+<p><strong>3.</strong> The factors are <span
+class="math inline">\((xy)\)</span> and <span
+class="math inline">\((x-1,y-1)\)</span>. Since <span
+class="math inline">\(1-xy\)</span> belongs to the point ideal, their
+sum is <span class="math inline">\(R\)</span>. Their quotients are
+connected (crossing axes and a point). Modulo <span
+class="math inline">\(I\)</span>, <span
+class="math inline">\((xy)^2-xy=xy(xy-1)\in I\)</span>, so <span
+class="math inline">\(xy\)</span> is idempotent; <span
+class="math inline">\(1-xy\)</span> is its complement. Both are nonzero
+and primitive because their factors have connected spectra.</p>
+<p><strong>4.</strong> Take <span
+class="math inline">\(I=(x^2,xy)\cap(x-1,y-1)\)</span>. The factors are
+comaximal because <span class="math inline">\(x^2\)</span> evaluates to
+one at <span class="math inline">\((1,1)\)</span>. The first quotient
+has associated primes <span
+class="math inline">\((x)\subset(x,y)\)</span>, and the second has <span
+class="math inline">\((x-1,y-1)\)</span>. No containment links the point
+prime to the first pair: <span class="math inline">\(x\)</span> does not
+vanish at the point, while <span class="math inline">\(x-1\)</span> is
+in neither prime of that pair. Thus Theorem 4.1 gives exactly the
+displayed two relative factors.</p>
+<p><strong>5.</strong> A comaximal factorization gives a nontrivial
+product of quotient rings and hence a clopen partition. A clopen
+partition gives a nontrivial idempotent by the explicit nilpotence and
+Chinese-remainder construction in Theorem 5.1. Its projection kernels
+lift to a nontrivial comaximal factorization. The comparability graph
+misses intersections of incomparable components: <span
+class="math inline">\((x)\)</span> and <span
+class="math inline">\((y)\)</span> are incomparable but their closed
+sets meet at <span class="math inline">\((x,y)\)</span>. Connectedness
+of the spectrum uses intersections of irreducible components, not only
+containments among associated primes.</p>
+<h2 id="in-noethers-words">In Noether’s words</h2>
+<p>Sections 4–8 of <a
+href="https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex">Ideal
+Theory in Ring Domains, work 19</a> distinguish primary components,
+directional relative primality and coprimality. Definition V and
+Theorems X–XII govern the relative decomposition; Section 7 treats
+isolated ideals; Section 8 treats coprime factors. The modern
+localization formulation above fixes which direction of prime
+containment is meant. <a
+href="https://doi.org/10.5281/zenodo.21908301">The German authority</a>
+accompanies the English edition.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Emmy Noether, <em>Idealtheorie in Ringbereichen</em>, 1921, Sections
+4–8. <a
+href="https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex">Free
+English working edition, work 19</a>, with the original bibliographic
+information and machine-assisted translation provenance.</li>
+<li>The Stacks project authors, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#section-ass">associated
+primes, Tag 00L9</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-silly">prime
+avoidance, Tag 00DS</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-product-local">Artinian
+decomposition, Tag 00JA</a>. These AI Integrated Stacks Project links
+use the edition described in the course introduction. No
+primary-decomposition theorem is attributed to a Stacks tag.</li>
+</ul>
+<h2 id="editable-sources">Editable sources</h2>
+<p><span class="unlinked">Complete source
+archive</span> · <a href="downloads/ideal-theory-in-rings.tex">Complete
+course in LaTeX</a> · <a href="downloads/NOE-IDL-02.tex">This lesson in
+LaTeX</a>. The archive includes all five lesson texts, the figures and
+their reproducible source.</p>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

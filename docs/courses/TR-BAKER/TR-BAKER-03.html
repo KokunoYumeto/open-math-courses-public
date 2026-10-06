@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baker&#x27;s theorem II: extrapolation and the end of the proof · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-03.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 10</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="baker-s-theorem-ii-extrapolation-and-the-end-of-the-proof">Baker's theorem II: extrapolation and the end of the proof</h1>
+<p><em>Draft. Public domain (CC0).</em></p>
+<p>The preceding lesson produced a nonzero integer coefficient array. To finish the proof, we must recover one of those integers from analytic data and show that its absolute value is below <span class="math" data-tex="\(1\)">\(1\)</span>. We begin by deriving that recovery problem. It determines how many small derivatives we need, why close frequencies matter, and how exact zeros must be extended before Cauchy's formula can help.</p>
+<p>We use Propositions 2.2–2.3 from <a href="TR-BAKER-02.html"><em>Baker's theorem I: building an auxiliary function</em></a> and the height lower bound from <a href="TR-BAKER-01.html"><em>Linear forms in logarithms: the problem, the trivial bounds, and effectivity</em></a>. Baker's auxiliary-function and extrapolation method is explained in the freely accessible [Waldschmidt 2003] lectures; the coefficient selectors and all parameter comparisons used here are proved below. The analytic inputs are the maximum-modulus principle, Cauchy's formula and the chain rule.</p>
+<p>After the proof, we examine how a logarithmic form arises from an arithmetic expression, and which hypothesis proves that it is nonzero. For the Dirichlet application, <a href="../NT-ANT/abelian-number-fields-and-dirichlet-l-functions-at-s-1.html"><em>Abelian number fields and Dirichlet L-functions at <span class="math" data-tex="\(s=1\)">\(s=1\)</span></em></a>, Theorem 17.3 and its imprimitive-character paragraph, proves <span class="math" data-tex="\(L(1,\chi)\ne0\)">\(L(1,\chi)\ne0\)</span>. A freely accessible proof at the same generality is [Sutherland 2021], Theorem 19.16, with its preceding class-number and cyclotomic arguments. The theorem, branches and proof methods retain the human attribution listed in the references.</p>
+<h2 id="1-start-with-the-integer-that-must-be-recovered">1. Start with the integer that must be recovered</h2>
+<p>The contradiction will concern one coefficient, rather than a claim that an entire function with small derivatives must vanish. After restricting the function of the preceding lesson to the diagonal, relation (2.1) gives a finite sum</p>
+<span class="math math-display" data-tex="\[
+\phi(z)=\sum_{i=1}^{R}\sum_{k=0}^{S-1}p_{k,i}z^ke^{\xi_i z},
+\qquad R=(L+1)^n,\quad S=L+1.
+\]">\[
+\phi(z)=\sum_{i=1}^{R}\sum_{k=0}^{S-1}p_{k,i}z^ke^{\xi_i z},
+\qquad R=(L+1)^n,\quad S=L+1.
+\]</span>
+<p>The coefficients are integers and at least one is nonzero. Rational independence of the original logarithms makes the frequencies distinct. We will justify their quantitative separation below.</p>
+<p>For a polynomial <span class="math" data-tex="\(W(z)=\sum_jw_jz^j\)">\(W(z)=\sum_jw_jz^j\)</span>, differentiation at the origin gives</p>
+<span class="math math-display" data-tex="\[
+\sum_jw_j\left.\frac{d^j}{dz^j}(z^ke^{\xi_i z})\right|_{z=0}
+=W^{(k)}(\xi_i).
+\]">\[
+\sum_jw_j\left.\frac{d^j}{dz^j}(z^ke^{\xi_i z})\right|_{z=0}
+=W^{(k)}(\xi_i).
+\]</span>
+<p>Indeed, for a monomial <span class="math" data-tex="\(W(z)=z^j\)">\(W(z)=z^j\)</span>, both sides are <span class="math" data-tex="\((j)_k\xi_i^{j-k}\)">\((j)_k\xi_i^{j-k}\)</span> if <span class="math" data-tex="\(j\ge k\)">\(j\ge k\)</span>, and zero otherwise; linearity proves the identity. If <span class="math" data-tex="\(W\)">\(W\)</span> has one prescribed derivative equal to <span class="math" data-tex="\(1\)">\(1\)</span> and all the other derivatives through order <span class="math" data-tex="\(S-1\)">\(S-1\)</span> equal to zero at these nodes, then the left side recovers exactly one <span class="math" data-tex="\(p_{k,i}\)">\(p_{k,i}\)</span>.</p>
+<p>This tells us what the analytic part has to deliver. With <span class="math" data-tex="\(N=RS\)">\(N=RS\)</span>, it is enough to bound the first <span class="math" data-tex="\(N\)">\(N\)</span> derivatives by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, construct a selector of degree below <span class="math" data-tex="\(N\)">\(N\)</span> with coefficients at most <span class="math" data-tex="\(M\)">\(M\)</span>, and arrange <span class="math" data-tex="\(NM\varepsilon&lt;1\)">\(NM\varepsilon&lt;1\)</span>. The nonzero recovered integer would then have absolute value below <span class="math" data-tex="\(1\)">\(1\)</span>. The next two sections construct and bound the selector; Sections 4–6 produce the required derivatives.</p>
+<h3 id="a-four-dimensional-selector-calculation">A four-dimensional selector calculation</h3>
+<p>Take two nodes <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, each with two prescribed derivatives. For</p>
+<span class="math math-display" data-tex="\[
+\psi(z)=p_{0,0}+p_{1,0}z+(p_{0,1}+p_{1,1}z)e^z,
+\]">\[
+\psi(z)=p_{0,0}+p_{1,0}z+(p_{0,1}+p_{1,1}z)e^z,
+\]</span>
+<p>the polynomial <span class="math" data-tex="\(W_0(z)=1-3z^2+2z^3\)">\(W_0(z)=1-3z^2+2z^3\)</span> has value <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span>, and has zero derivative there and zero value and derivative at <span class="math" data-tex="\(1\)">\(1\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+p_{0,0}=\psi(0)-3\psi&#x27;&#x27;(0)+2\psi&#x27;&#x27;&#x27;(0).
+\]">\[
+p_{0,0}=\psi(0)-3\psi&#x27;&#x27;(0)+2\psi&#x27;&#x27;&#x27;(0).
+\]</span>
+<p>Similarly <span class="math" data-tex="\(W_1(z)=z-2z^2+z^3\)">\(W_1(z)=z-2z^2+z^3\)</span> selects the first derivative at <span class="math" data-tex="\(0\)">\(0\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+p_{1,0}=\psi&#x27;(0)-2\psi&#x27;&#x27;(0)+\psi&#x27;&#x27;&#x27;(0).
+\]">\[
+p_{1,0}=\psi&#x27;(0)-2\psi&#x27;&#x27;(0)+\psi&#x27;&#x27;&#x27;(0).
+\]</span>
+<p>If <span class="math" data-tex="\(p_{0,0}\)">\(p_{0,0}\)</span> is a nonzero integer and these derivatives all have size below <span class="math" data-tex="\(1/6\)">\(1/6\)</span>, the first identity is impossible. This is an example of the interpolation calculation itself; the general Baker proof uses its actual logarithmic nodes and the uniform selector bound below. In particular, it must be able to select whichever coefficient is nonzero.</p>
+<h2 id="2-separate-the-frequencies">2. Separate the frequencies</h2>
+<p>On the diagonal, relation (2.1) turns the auxiliary function into</p>
+<span class="math math-display" data-tex="\[
+\phi(z)=\sum_{\lambda_1,\ldots,\lambda_n=0}^{L}
+\left(\sum_{s=0}^{L}p_{s,\lambda_1,\ldots,\lambda_n}z^s\right)e^{\xi_\lambda z},
+\qquad \xi_\lambda=\sum_{j=1}^n\lambda_j\ell_j. \tag{3.11}
+\]">\[
+\phi(z)=\sum_{\lambda_1,\ldots,\lambda_n=0}^{L}
+\left(\sum_{s=0}^{L}p_{s,\lambda_1,\ldots,\lambda_n}z^s\right)e^{\xi_\lambda z},
+\qquad \xi_\lambda=\sum_{j=1}^n\lambda_j\ell_j. \tag{3.11}
+\]</span>
+<p>Rational independence makes these <span class="math" data-tex="\((L+1)^n\)">\((L+1)^n\)</span> frequencies distinct. For coefficient recovery, very close frequencies would make the interpolation coefficients too large. Elementary arithmetic gives the needed separation.</p>
+<p><strong>Lemma 3.3 (frequency separation).</strong> There is a constant <span class="math" data-tex="\(c&gt;1\)">\(c&gt;1\)</span>, depending only on the fixed algebraic numbers and logarithms, such that, for every integer <span class="math" data-tex="\(T\ge1\)">\(T\ge1\)</span> and every nonzero integer vector <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(|t_j|\le T\)">\(|t_j|\le T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_jt_j\ell_j\right|&gt;c^{-T}. \tag{3.12}
+\]">\[
+\left|\sum_jt_j\ell_j\right|&gt;c^{-T}. \tag{3.12}
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\Omega=\sum_jt_j\ell_j\ne0\)">\(\Omega=\sum_jt_j\ell_j\ne0\)</span> and <span class="math" data-tex="\(P=e^\Omega\)">\(P=e^\Omega\)</span>. If <span class="math" data-tex="\(P=1\)">\(P=1\)</span>, then <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is a nonzero multiple of <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>, so <span class="math" data-tex="\(|\Omega|\ge2\pi\)">\(|\Omega|\ge2\pi\)</span>. This case must be kept: rational independence of arbitrary complex logarithms does not assert multiplicative independence of their bases.</p>
+<p>If <span class="math" data-tex="\(P\ne1\)">\(P\ne1\)</span>, Proposition 1.3 gives</p>
+<span class="math math-display" data-tex="\[
+|P-1|\ge\exp\left(-D\log2-DT\sum_jh(\alpha_j)\right),
+\qquad D=[\mathbb Q(\alpha_1,\ldots,\alpha_n):\mathbb Q].
+\]">\[
+|P-1|\ge\exp\left(-D\log2-DT\sum_jh(\alpha_j)\right),
+\qquad D=[\mathbb Q(\alpha_1,\ldots,\alpha_n):\mathbb Q].
+\]</span>
+<p>If <span class="math" data-tex="\(|\Omega|\le1/2\)">\(|\Omega|\le1/2\)</span>, Lemma 1.1 gives <span class="math" data-tex="\(|P-1|\le2|\Omega|\)">\(|P-1|\le2|\Omega|\)</span>, hence <span class="math" data-tex="\(|\Omega|\ge e^{-CT}\)">\(|\Omega|\ge e^{-CT}\)</span> for a fixed <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>. If <span class="math" data-tex="\(|\Omega|&gt;1/2\)">\(|\Omega|&gt;1/2\)</span>, enlarge <span class="math" data-tex="\(C\)">\(C\)</span> to get the same conclusion. Choose <span class="math" data-tex="\(c&gt;e^C\)">\(c&gt;e^C\)</span> to make the inequality strict in every case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the frequencies in (3.11), define</p>
+<span class="math math-display" data-tex="\[
+\sigma=\max(1,\max_\lambda|\xi_\lambda|),\qquad
+\rho=\min(1,\min_{\lambda\ne\mu}|\xi_\lambda-\xi_\mu|).
+\]">\[
+\sigma=\max(1,\max_\lambda|\xi_\lambda|),\qquad
+\rho=\min(1,\min_{\lambda\ne\mu}|\xi_\lambda-\xi_\mu|).
+\]</span>
+<p>Differences have integer coefficients bounded by <span class="math" data-tex="\(L\)">\(L\)</span>, so <span class="math" data-tex="\(\sigma\le C_4(L+1)\)">\(\sigma\le C_4(L+1)\)</span> and <span class="math" data-tex="\(\rho&gt;c^{-L}\)">\(\rho&gt;c^{-L}\)</span>. This exponentially small separation is sufficient.</p>
+<h2 id="3-build-and-bound-the-coefficient-selector">3. Build and bound the coefficient selector</h2>
+<p><strong>Lemma 3.4 (Hermite selector).</strong> Let <span class="math" data-tex="\(\xi_1,\ldots,\xi_R\)">\(\xi_1,\ldots,\xi_R\)</span> be distinct complex numbers, <span class="math" data-tex="\(S\ge1\)">\(S\ge1\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\sigma=\max(1,|\xi_1|,\ldots,|\xi_R|),\qquad
+\rho=\min(1,\min_{i\ne j}|\xi_i-\xi_j|).
+\]">\[
+\sigma=\max(1,|\xi_1|,\ldots,|\xi_R|),\qquad
+\rho=\min(1,\min_{i\ne j}|\xi_i-\xi_j|).
+\]</span>
+<p>For <span class="math" data-tex="\(R=1\)">\(R=1\)</span>, set <span class="math" data-tex="\(\rho=1\)">\(\rho=1\)</span>. Given <span class="math" data-tex="\(1\le t\le R\)">\(1\le t\le R\)</span>, <span class="math" data-tex="\(0\le s&lt;S\)">\(0\le s&lt;S\)</span>, there is a polynomial <span class="math" data-tex="\(W(z)=\sum_{j=0}^{RS-1}w_jz^j\)">\(W(z)=\sum_{j=0}^{RS-1}w_jz^j\)</span> with</p>
+<span class="math math-display" data-tex="\[
+W^{(k)}(\xi_i)=\begin{cases}1,&amp;(i,k)=(t,s),\\0,&amp;\text{otherwise},\end{cases}
+\quad 1\le i\le R,\quad 0\le k&lt;S,
+\]">\[
+W^{(k)}(\xi_i)=\begin{cases}1,&amp;(i,k)=(t,s),\\0,&amp;\text{otherwise},\end{cases}
+\quad 1\le i\le R,\quad 0\le k&lt;S,
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+|w_j|\le(8\sigma/\rho)^{RS}. \tag{3.13}
+\]">\[
+|w_j|\le(8\sigma/\rho)^{RS}. \tag{3.13}
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(R\ge2\)">\(R\ge2\)</span>, put <span class="math" data-tex="\(V(z)=\prod_{i\ne t}(z-\xi_i)^S\)">\(V(z)=\prod_{i\ne t}(z-\xi_i)^S\)</span>, <span class="math" data-tex="\(M=(R-1)S\)">\(M=(R-1)S\)</span>, and expand</p>
+<span class="math math-display" data-tex="\[
+\frac1{V(\xi_t+x)}=\sum_{j\ge0}c_jx^j.
+\]">\[
+\frac1{V(\xi_t+x)}=\sum_{j\ge0}c_jx^j.
+\]</span>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+W(z)=\frac{(z-\xi_t)^s}{s!}\,V(z)
+\sum_{j=0}^{S-1-s}c_j(z-\xi_t)^j. \tag{3.14}
+\]">\[
+W(z)=\frac{(z-\xi_t)^s}{s!}\,V(z)
+\sum_{j=0}^{S-1-s}c_j(z-\xi_t)^j. \tag{3.14}
+\]</span>
+<p>Its degree is at most <span class="math" data-tex="\(M+s+S-1-s=RS-1\)">\(M+s+S-1-s=RS-1\)</span>. The factor <span class="math" data-tex="\(V\)">\(V\)</span> forces order <span class="math" data-tex="\(S\)">\(S\)</span> at every other node. At <span class="math" data-tex="\(\xi_t\)">\(\xi_t\)</span>, reciprocal truncation gives <span class="math" data-tex="\(W(\xi_t+x)=x^s/s!+O(x^S)\)">\(W(\xi_t+x)=x^s/s!+O(x^S)\)</span>, proving the prescribed derivatives.</p>
+<p>For the size bound, regard <span class="math" data-tex="\(V(\xi_t+x)\)">\(V(\xi_t+x)\)</span> as a product of <span class="math" data-tex="\(M\)">\(M\)</span> linear factors, counting repetitions. Each constant term has size at least <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Multiplying their reciprocal geometric series gives</p>
+<span class="math math-display" data-tex="\[
+|c_j|\le\binom{M+j-1}{j}\rho^{-(M+j)}.
+\]">\[
+|c_j|\le\binom{M+j-1}{j}\rho^{-(M+j)}.
+\]</span>
+<p>For <span class="math" data-tex="\(j\le S-1-s\)">\(j\le S-1-s\)</span>, <span class="math" data-tex="\(M+j&lt;RS\)">\(M+j&lt;RS\)</span>, and <span class="math" data-tex="\(\binom{M+j-1}{j}\le2^{M+j}\)">\(\binom{M+j-1}{j}\le2^{M+j}\)</span>. Thus <span class="math" data-tex="\(|c_j|\le(2/\rho)^{RS}\)">\(|c_j|\le(2/\rho)^{RS}\)</span>. The sum of absolute values of the coefficients of <span class="math" data-tex="\(V(z)(z-\xi_t)^{s+j}\)">\(V(z)(z-\xi_t)^{s+j}\)</span> is at most</p>
+<span class="math math-display" data-tex="\[
+\prod_{i\ne t}(1+|\xi_i|)^S(1+|\xi_t|)^{s+j}\le(2\sigma)^{RS}.
+\]">\[
+\prod_{i\ne t}(1+|\xi_i|)^S(1+|\xi_t|)^{s+j}\le(2\sigma)^{RS}.
+\]</span>
+<p>There are at most <span class="math" data-tex="\(S\)">\(S\)</span> terms in (3.14), and <span class="math" data-tex="\(1/s!\le1\)">\(1/s!\le1\)</span>. Every coefficient is therefore at most <span class="math" data-tex="\(S(4\sigma/\rho)^{RS}\)">\(S(4\sigma/\rho)^{RS}\)</span>. Since <span class="math" data-tex="\(S\le2^{RS}\)">\(S\le2^{RS}\)</span>, this implies (3.13). For <span class="math" data-tex="\(R=1\)">\(R=1\)</span>, take <span class="math" data-tex="\(W(z)=(z-\xi_1)^s/s!\)">\(W(z)=(z-\xi_1)^s/s!\)</span>; its coefficient sum is at most <span class="math" data-tex="\((2\sigma)^S\)">\((2\sigma)^S\)</span>, also within the stated bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The normalization matters. A polynomial equal to <span class="math" data-tex="\((z-\xi_t)^s\)">\((z-\xi_t)^s\)</span> to order <span class="math" data-tex="\(S\)">\(S\)</span> would select <span class="math" data-tex="\(s!\)">\(s!\)</span> times the desired coefficient. The factor <span class="math" data-tex="\(1/s!\)">\(1/s!\)</span> selects the coefficient itself.</p>
+<h2 id="4-the-family-on-which-zeros-can-be-transferred">4. The family on which zeros can be transferred</h2>
+<p>Suppose that the algebraic logarithms <span class="math" data-tex="\(\ell_1,\ldots,\ell_n\)">\(\ell_1,\ldots,\ell_n\)</span> are rationally independent but that <span class="math" data-tex="\(1,\ell_1,\ldots,\ell_n\)">\(1,\ell_1,\ldots,\ell_n\)</span> satisfy an algebraic-coefficient relation. Use the normalization and the function <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> of the preceding lesson. Put</p>
+<span class="math math-display" data-tex="\[
+a=\frac1{8n},\qquad L=\lfloor h^{2-2a}\rfloor,\qquad
+f_m(z)=\partial^m\Phi(z,\ldots,z).
+\]">\[
+a=\frac1{8n},\qquad L=\lfloor h^{2-2a}\rfloor,\qquad
+f_m(z)=\partial^m\Phi(z,\ldots,z).
+\]</span>
+<p>For all sufficiently large integers <span class="math" data-tex="\(h\)">\(h\)</span>, its integer coefficients <span class="math" data-tex="\(p_\lambda\)">\(p_\lambda\)</span>, not all zero, satisfy <span class="math" data-tex="\(|p_\lambda|\le e^{h^3}\)">\(|p_\lambda|\le e^{h^3}\)</span>. We have</p>
+<span class="math math-display" data-tex="\[
+f_m(l)=0\quad(1\le l\le h,\ |m|\le h^2), \tag{3.1}
+\]">\[
+f_m(l)=0\quad(1\le l\le h,\ |m|\le h^2), \tag{3.1}
+\]</span>
+<p>and, for every <span class="math" data-tex="\(|m|\le h^2\)">\(|m|\le h^2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|f_m(z)|\le e^{C_2(h^3+L|z|)}. \tag{3.2}
+\]">\[
+|f_m(z)|\le e^{C_2(h^3+L|z|)}. \tag{3.2}
+\]</span>
+<p>At every positive integer <span class="math" data-tex="\(l\)">\(l\)</span>, either <span class="math" data-tex="\(f_m(l)=0\)">\(f_m(l)=0\)</span> or</p>
+<span class="math math-display" data-tex="\[
+|f_m(l)|\ge e^{-C_3(h^3+Ll)}. \tag{3.3}
+\]">\[
+|f_m(l)|\ge e^{-C_3(h^3+Ll)}. \tag{3.3}
+\]</span>
+<p>The same <span class="math" data-tex="\(C_2,C_3\)">\(C_2,C_3\)</span> work for every permitted derivative. They depend on the fixed algebraic relation and its logarithms, but never on <span class="math" data-tex="\(h,m,l,z\)">\(h,m,l,z\)</span>. This uniformity permits a finite sequence of extrapolations.</p>
+<p>When differentiating along the diagonal, we use</p>
+<span class="math math-display" data-tex="\[
+\frac{d^k}{dz^k}f_m(z)
+=\sum_{j_0+\cdots+j_{n-1}=k}
+\frac{k!}{j_0!\cdots j_{n-1}!}\,\partial^{m+j}\Phi(z,\ldots,z). \tag{3.4}
+\]">\[
+\frac{d^k}{dz^k}f_m(z)
+=\sum_{j_0+\cdots+j_{n-1}=k}
+\frac{k!}{j_0!\cdots j_{n-1}!}\,\partial^{m+j}\Phi(z,\ldots,z). \tag{3.4}
+\]</span>
+<p>This is the repeated chain rule for the operator <span class="math" data-tex="\(\partial_{z_0}+\cdots+\partial_{z_{n-1}}\)">\(\partial_{z_0}+\cdots+\partial_{z_{n-1}}\)</span>. Thus vanishing of multivariable derivatives through total order <span class="math" data-tex="\(S\)">\(S\)</span> implies that <span class="math" data-tex="\(f_m\)">\(f_m\)</span> has a zero of order at least <span class="math" data-tex="\(S-|m|+1\)">\(S-|m|+1\)</span> at the same diagonal point.</p>
+<h3 id="the-exact-zero-transfer-contract">The exact-zero transfer contract</h3>
+<p>The analytic and arithmetic estimates can be compared before choosing Baker's particular powers of <span class="math" data-tex="\(h\)">\(h\)</span>. The following elementary statement identifies the quantity that an extrapolation step needs to make positive.</p>
+<p><strong>Lemma (one extrapolation step).</strong> Let <span class="math" data-tex="\(R,S,Q\)">\(R,S,Q\)</span> be positive integers with <span class="math" data-tex="\(Q\ge R\)">\(Q\ge R\)</span>. Let <span class="math" data-tex="\(f\)">\(f\)</span> be entire and have a zero of order at least <span class="math" data-tex="\(S\)">\(S\)</span> at every integer <span class="math" data-tex="\(1,\ldots,R\)">\(1,\ldots,R\)</span>. Suppose that, for nonnegative constants <span class="math" data-tex="\(U,V,A,B\)">\(U,V,A,B\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|f(z)|\le e^{U+V|z|},
+\]">\[
+|f(z)|\le e^{U+V|z|},
+\]</span>
+<p>and at each integer <span class="math" data-tex="\(1\le l\le Q\)">\(1\le l\le Q\)</span> either <span class="math" data-tex="\(f(l)=0\)">\(f(l)=0\)</span> or <span class="math" data-tex="\(|f(l)|\ge e^{-A-Bl}\)">\(|f(l)|\ge e^{-A-Bl}\)</span>. If a radius <span class="math" data-tex="\(\mathcal R&gt;Q\)">\(\mathcal R&gt;Q\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+RS\log\frac{\mathcal R-R}{Q}
+&gt;U+V\mathcal R+A+BQ,
+\]">\[
+RS\log\frac{\mathcal R-R}{Q}
+&gt;U+V\mathcal R+A+BQ,
+\]</span>
+<p>then <span class="math" data-tex="\(f(l)=0\)">\(f(l)=0\)</span> for every integer <span class="math" data-tex="\(1\le l\le Q\)">\(1\le l\le Q\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(F(z)=\prod_{r=1}^{R}(z-r)^S\)">\(F(z)=\prod_{r=1}^{R}(z-r)^S\)</span>. The quotient <span class="math" data-tex="\(f/F\)">\(f/F\)</span> is entire because the prescribed zeros remove its apparent poles. On <span class="math" data-tex="\(|z|=\mathcal R\)">\(|z|=\mathcal R\)</span>, we have <span class="math" data-tex="\(|F(z)|\ge(\mathcal R-R)^{RS}\)">\(|F(z)|\ge(\mathcal R-R)^{RS}\)</span>. For a new integer <span class="math" data-tex="\(R&lt;l\le Q\)">\(R&lt;l\le Q\)</span>, we have <span class="math" data-tex="\(|F(l)|\le Q^{RS}\)">\(|F(l)|\le Q^{RS}\)</span>. The maximum-modulus principle consequently gives</p>
+<span class="math math-display" data-tex="\[
+\log|f(l)|\le U+V\mathcal R
+-RS\log\frac{\mathcal R-R}{Q}
+&lt;-A-BQ\le-A-Bl
+\]">\[
+\log|f(l)|\le U+V\mathcal R
+-RS\log\frac{\mathcal R-R}{Q}
+&lt;-A-BQ\le-A-Bl
+\]</span>
+<p>if <span class="math" data-tex="\(f(l)\ne0\)">\(f(l)\ne0\)</span>. This contradicts the arithmetic lower bound. The old integers already have zero values by hypothesis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The factor <span class="math" data-tex="\(RS\)">\(RS\)</span> measures how many exact zeros, counted with multiplicity, are available for division. The logarithm measures the gain from comparing the outer circle with the new interval. The two growth budgets on the right measure what that gain must defeat. Small initial values would not give an entire quotient, so they cannot replace the exact-zero hypothesis.</p>
+<p>For the family <span class="math" data-tex="\(f_m\)">\(f_m\)</span>, the chain rule (3.4) supplies the multiplicity. We keep derivative indices through <span class="math" data-tex="\(S_{J+1}\)">\(S_{J+1}\)</span> and spend another <span class="math" data-tex="\(S_{J+1}\)">\(S_{J+1}\)</span> orders on division. Thus <span class="math" data-tex="\(2S_{J+1}\le S_J\)">\(2S_{J+1}\le S_J\)</span> is a sufficient budget rule. In the next proposition use</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R=R_J,\quad S=S_{J+1},\quad Q=R_{J+1},\quad
+\mathcal R=R_{J+1}h^a,\\
+U=C_2h^3,\quad V=C_2L,\quad
+A=C_3h^3,\quad B=C_3L.
+\end{gathered}
+\]">\[
+\begin{gathered}
+R=R_J,\quad S=S_{J+1},\quad Q=R_{J+1},\quad
+\mathcal R=R_{J+1}h^a,\\
+U=C_2h^3,\quad V=C_2L,\quad
+A=C_3h^3,\quad B=C_3L.
+\end{gathered}
+\]</span>
+<p>The computations (3.7)–(3.8) verify this contract simultaneously for the fixed number of steps. They are what makes the particular schedule work; the schedule alone is not a proof that new zeros appear.</p>
+<h2 id="5-verify-the-transfer-schedule">5. Verify the transfer schedule</h2>
+<p>Define, for <span class="math" data-tex="\(0\le J\le J_*=(8n)^2\)">\(0\le J\le J_*=(8n)^2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R_J=\left\lfloor h^{1+Ja}\right\rfloor,\qquad
+S_J=\left\lfloor\frac{h^2}{2^J}\right\rfloor.
+\]">\[
+R_J=\left\lfloor h^{1+Ja}\right\rfloor,\qquad
+S_J=\left\lfloor\frac{h^2}{2^J}\right\rfloor.
+\]</span>
+<p>The number of points grows, while the derivative budget is halved at each step. The number of steps is fixed once <span class="math" data-tex="\(n\)">\(n\)</span> is fixed. We may therefore choose <span class="math" data-tex="\(h\)">\(h\)</span> large enough for every estimate at every step simultaneously.</p>
+<p><strong>Proposition 3.1 (extrapolation).</strong> For all sufficiently large integers <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\partial^m\Phi(l,\ldots,l)=0
+\quad(1\le l\le R_J,\ |m|\le S_J,\ 0\le J\le J_*). \tag{3.5}
+\]">\[
+\partial^m\Phi(l,\ldots,l)=0
+\quad(1\le l\le R_J,\ |m|\le S_J,\ 0\le J\le J_*). \tag{3.5}
+\]</span>
+<p><strong>Proof.</strong> The case <span class="math" data-tex="\(J=0\)">\(J=0\)</span> is (3.1). Suppose the assertion holds at <span class="math" data-tex="\(J&lt;J_*\)">\(J&lt;J_*\)</span>, and fix <span class="math" data-tex="\(|m|\le S_{J+1}\)">\(|m|\le S_{J+1}\)</span>. Formula (3.4) shows that the derivatives of <span class="math" data-tex="\(f_m\)">\(f_m\)</span> of orders <span class="math" data-tex="\(0,\ldots,S_{J+1}-1\)">\(0,\ldots,S_{J+1}-1\)</span> vanish at <span class="math" data-tex="\(1,\ldots,R_J\)">\(1,\ldots,R_J\)</span>. Their total multivariable orders are at most</p>
+<span class="math math-display" data-tex="\[
+|m|+S_{J+1}-1&lt;2S_{J+1}\le S_J;
+\]">\[
+|m|+S_{J+1}-1&lt;2S_{J+1}\le S_J;
+\]</span>
+<p>the last inequality follows from <span class="math" data-tex="\(2\lfloor x/2\rfloor\le\lfloor x\rfloor\)">\(2\lfloor x/2\rfloor\le\lfloor x\rfloor\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+F(z)=\prod_{r=1}^{R_J}(z-r)^{S_{J+1}}
+\]">\[
+F(z)=\prod_{r=1}^{R_J}(z-r)^{S_{J+1}}
+\]</span>
+<p>divides <span class="math" data-tex="\(f_m\)">\(f_m\)</span> as an entire function: all apparent poles of <span class="math" data-tex="\(f_m/F\)">\(f_m/F\)</span> are removable.</p>
+<p>Take the circle of radius <span class="math" data-tex="\(\mathcal R=R_{J+1}h^a\)">\(\mathcal R=R_{J+1}h^a\)</span>. For sufficiently large <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(h^a\ge2\)">\(h^a\ge2\)</span>, so <span class="math" data-tex="\(\mathcal R-R_J\ge\mathcal R/2\)">\(\mathcal R-R_J\ge\mathcal R/2\)</span>. On the circle,</p>
+<span class="math math-display" data-tex="\[
+|F(z)|\ge(\mathcal R/2)^{R_JS_{J+1}}.
+\]">\[
+|F(z)|\ge(\mathcal R/2)^{R_JS_{J+1}}.
+\]</span>
+<p>At a new integer <span class="math" data-tex="\(R_J&lt;l\le R_{J+1}\)">\(R_J&lt;l\le R_{J+1}\)</span>, every <span class="math" data-tex="\(|l-r|\le R_{J+1}\)">\(|l-r|\le R_{J+1}\)</span>, so <span class="math" data-tex="\(|F(l)|\le R_{J+1}^{R_JS_{J+1}}\)">\(|F(l)|\le R_{J+1}^{R_JS_{J+1}}\)</span>. Apply the maximum-modulus principle to <span class="math" data-tex="\(f_m/F\)">\(f_m/F\)</span>, and use (3.2). If <span class="math" data-tex="\(f_m(l)\ne0\)">\(f_m(l)\ne0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\log|f_m(l)|\le C_2(h^3+L\mathcal R)
+-R_JS_{J+1}(a\log h-\log2). \tag{3.6}
+\]">\[
+\log|f_m(l)|\le C_2(h^3+L\mathcal R)
+-R_JS_{J+1}(a\log h-\log2). \tag{3.6}
+\]</span>
+<p>We check the powers explicitly. Once the quantities being rounded are at least <span class="math" data-tex="\(2\)">\(2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R_JS_{J+1}\ge\frac{h^{3+Ja}}{2^{J+3}},\qquad
+L\mathcal R\le h^{2-2a}h^{1+(J+1)a}h^a=h^{3+Ja}.
+\]">\[
+R_JS_{J+1}\ge\frac{h^{3+Ja}}{2^{J+3}},\qquad
+L\mathcal R\le h^{2-2a}h^{1+(J+1)a}h^a=h^{3+Ja}.
+\]</span>
+<p>Also <span class="math" data-tex="\(h^3\le h^{3+Ja}\)">\(h^3\le h^{3+Ja}\)</span>, hence</p>
+<span class="math math-display" data-tex="\[
+h^3+L\mathcal R\le 2^{J+4}R_JS_{J+1}. \tag{3.7}
+\]">\[
+h^3+L\mathcal R\le 2^{J+4}R_JS_{J+1}. \tag{3.7}
+\]</span>
+<p>The arithmetic alternative (3.3) would require</p>
+<span class="math math-display" data-tex="\[
+\log|f_m(l)|\ge-C_3(h^3+Ll)\ge-C_3(h^3+L\mathcal R).
+\]">\[
+\log|f_m(l)|\ge-C_3(h^3+Ll)\ge-C_3(h^3+L\mathcal R).
+\]</span>
+<p>This contradicts (3.6)–(3.7) whenever</p>
+<span class="math math-display" data-tex="\[
+a\log h-\log2&gt;(C_2+C_3)2^{J+4}. \tag{3.8}
+\]">\[
+a\log h-\log2&gt;(C_2+C_3)2^{J+4}. \tag{3.8}
+\]</span>
+<p>There are only <span class="math" data-tex="\(J_*\)">\(J_*\)</span> induction steps. Choose <span class="math" data-tex="\(h\)">\(h\)</span> so that all the rounding bounds and (3.8) hold for every <span class="math" data-tex="\(J&lt;J_*\)">\(J&lt;J_*\)</span>. Every new integer value is then zero; the old ones vanish by the induction hypothesis. This proves (3.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof uses exact zeros twice. Multiplicity allows division by <span class="math" data-tex="\(F\)">\(F\)</span>; arithmetic converts the resulting small values into new exact zeros. Merely small initial derivatives would not justify the same division.</p>
+<p><img src="figures/extrapolation-budget.png" alt="The number of zero locations grows faster than the derivative budget decreases." class="course-figure" width="2070" height="827" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="extrapolation-budget" data-asset-sha256="6DFBB5359A8EC8A08843D00673CE198D33B7FB0AC1D2AC2A0F60E1320457431A"></p>
+<p><em>Figure 1. Exact parameter counts for <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(h=2^{256}\)">\(h=2^{256}\)</span> and <span class="math" data-tex="\(0\le J\le256\)">\(0\le J\le256\)</span>: <span class="math" data-tex="\(\log_2 R_J=256+16J\)">\(\log_2 R_J=256+16J\)</span>, <span class="math" data-tex="\(\log_2 S_J=512-J\)">\(\log_2 S_J=512-J\)</span>, and <span class="math" data-tex="\(\log_2(R_JS_J)=768+15J\)">\(\log_2(R_JS_J)=768+15J\)</span>. This displays the growth mechanism of Proposition 3.1. These values illustrate the counts; they are not a universal threshold for <span class="math" data-tex="\(C_2,C_3\)">\(C_2,C_3\)</span>. The reproducible source accompanies the lesson.</em></p>
+<h2 id="6-reach-the-derivative-budget-for-coefficient-recovery">6. Reach the derivative budget for coefficient recovery</h2>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+\phi(z)=\Phi(z,\ldots,z),\qquad
+X=h^{8n},\qquad Y=\left\lfloor\frac{h^2}{2^{J_*}}\right\rfloor.
+\]">\[
+\phi(z)=\Phi(z,\ldots,z),\qquad
+X=h^{8n},\qquad Y=\left\lfloor\frac{h^2}{2^{J_*}}\right\rfloor.
+\]</span>
+<p>Since <span class="math" data-tex="\(R_{J_*}=h^{1+8n}\ge X\)">\(R_{J_*}=h^{1+8n}\ge X\)</span>, Proposition 3.1 and (3.4) show that <span class="math" data-tex="\(\phi\)">\(\phi\)</span> vanishes to order at least <span class="math" data-tex="\(Y\)">\(Y\)</span> at each integer <span class="math" data-tex="\(1,\ldots,X\)">\(1,\ldots,X\)</span>. Here <span class="math" data-tex="\(X\)">\(X\)</span> is an integer. The fixed factor <span class="math" data-tex="\(2^{J_*}\)">\(2^{J_*}\)</span> may be enormous, but <span class="math" data-tex="\(Y\to\infty\)">\(Y\to\infty\)</span> as <span class="math" data-tex="\(h\to\infty\)">\(h\to\infty\)</span>.</p>
+<p><strong>Proposition 3.2 (derivatives at the origin).</strong> For all sufficiently large integers <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\phi^{(j)}(0)|&lt;e^{-h^{8n}}\qquad(0\le j\le h^{8n}). \tag{3.9}
+\]">\[
+|\phi^{(j)}(0)|&lt;e^{-h^{8n}}\qquad(0\le j\le h^{8n}). \tag{3.9}
+\]</span>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(E(z)=\prod_{r=1}^{X}(z-r)^Y\)">\(E(z)=\prod_{r=1}^{X}(z-r)^Y\)</span> and <span class="math" data-tex="\(\mathcal R=Xh^a\)">\(\mathcal R=Xh^a\)</span>. The quotient <span class="math" data-tex="\(\phi/E\)">\(\phi/E\)</span> is entire. On <span class="math" data-tex="\(|z|=\mathcal R\)">\(|z|=\mathcal R\)</span>, <span class="math" data-tex="\(|E(z)|\ge(\mathcal R/2)^{XY}\)">\(|E(z)|\ge(\mathcal R/2)^{XY}\)</span> for large <span class="math" data-tex="\(h\)">\(h\)</span>. On <span class="math" data-tex="\(|w|\le1\)">\(|w|\le1\)</span>, <span class="math" data-tex="\(|E(w)|\le(2X)^{XY}\)">\(|E(w)|\le(2X)^{XY}\)</span>. The growth bound and maximum-modulus principle give</p>
+<span class="math math-display" data-tex="\[
+\sup_{|w|\le1}|\phi(w)|\le
+\exp\!\left(C_2(h^3+L\mathcal R)-XY(a\log h-\log4)\right). \tag{3.10}
+\]">\[
+\sup_{|w|\le1}|\phi(w)|\le
+\exp\!\left(C_2(h^3+L\mathcal R)-XY(a\log h-\log4)\right). \tag{3.10}
+\]</span>
+<p>For large <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(Y\ge h^2/2^{J_*+1}\)">\(Y\ge h^2/2^{J_*+1}\)</span>, and therefore</p>
+<span class="math math-display" data-tex="\[
+\frac{L\mathcal R}{XY}\le 2^{J_*+1}h^{-a}\longrightarrow0,\qquad
+\frac{h^3}{XY}\le2^{J_*+1}h^{1-8n}\longrightarrow0.
+\]">\[
+\frac{L\mathcal R}{XY}\le 2^{J_*+1}h^{-a}\longrightarrow0,\qquad
+\frac{h^3}{XY}\le2^{J_*+1}h^{1-8n}\longrightarrow0.
+\]</span>
+<p>The positive term in (3.10), divided by <span class="math" data-tex="\(XY\)">\(XY\)</span>, tends to zero, whereas <span class="math" data-tex="\(a\log h-\log4\)">\(a\log h-\log4\)</span> tends to infinity. Thus the supremum is at most <span class="math" data-tex="\(e^{-XY}\)">\(e^{-XY}\)</span> eventually. Cauchy's formula on the unit circle yields <span class="math" data-tex="\(|\phi^{(j)}(0)|\le j!e^{-XY}\)">\(|\phi^{(j)}(0)|\le j!e^{-XY}\)</span>. For <span class="math" data-tex="\(j\le X\)">\(j\le X\)</span>, <span class="math" data-tex="\(\log(j!)\le X\log X\)">\(\log(j!)\le X\log X\)</span>. Since <span class="math" data-tex="\(Y&gt;\log X+1\)">\(Y&gt;\log X+1\)</span> eventually, this is strictly less than <span class="math" data-tex="\(e^{-X}\)">\(e^{-X}\)</span>, proving (3.9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Small derivatives alone do not imply that an entire function is zero. The number of frequencies and the degree of its polynomial coefficients must now enter the argument.</p>
+<h2 id="7-recover-the-integer-and-conclude">7. Recover the integer and conclude</h2>
+<p>Set <span class="math" data-tex="\(S=L+1\)">\(S=L+1\)</span>, <span class="math" data-tex="\(R=(L+1)^n\)">\(R=(L+1)^n\)</span> and <span class="math" data-tex="\(N=RS=(L+1)^{n+1}\)">\(N=RS=(L+1)^{n+1}\)</span>. Choose a nonzero integer coefficient <span class="math" data-tex="\(p_{s,t}\)">\(p_{s,t}\)</span> in (3.11), and let <span class="math" data-tex="\(W\)">\(W\)</span> be its selector. For <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left.\frac{d^j}{dz^j}(z^se^{\xi z})\right|_{z=0}
+=\frac{d^s}{d\xi^s}\xi^j.
+\]">\[
+\left.\frac{d^j}{dz^j}(z^se^{\xi z})\right|_{z=0}
+=\frac{d^s}{d\xi^s}\xi^j.
+\]</span>
+<p>Both sides are zero for <span class="math" data-tex="\(j&lt;s\)">\(j&lt;s\)</span>, and otherwise equal <span class="math" data-tex="\((j)_s\xi^{j-s}\)">\((j)_s\xi^{j-s}\)</span>. Multiply by <span class="math" data-tex="\(w_j\)">\(w_j\)</span> and sum. The selector conditions give the exact coefficient identity</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^{N-1}w_j\phi^{(j)}(0)
+=\sum_{i=1}^R\sum_{k=0}^{S-1}p_{k,i}W^{(k)}(\xi_i)
+=p_{s,t}. \tag{3.15}
+\]">\[
+\sum_{j=0}^{N-1}w_j\phi^{(j)}(0)
+=\sum_{i=1}^R\sum_{k=0}^{S-1}p_{k,i}W^{(k)}(\xi_i)
+=p_{s,t}. \tag{3.15}
+\]</span>
+<p>All needed derivative orders fit inside Proposition 3.2, since</p>
+<span class="math math-display" data-tex="\[
+N\le2^{n+1}h^{2n+2}=o(h^{8n})\qquad(n\ge1).
+\]">\[
+N\le2^{n+1}h^{2n+2}=o(h^{8n})\qquad(n\ge1).
+\]</span>
+<p>The frequency bounds and (3.13) yield</p>
+<span class="math math-display" data-tex="\[
+\log\max_j|w_j|
+\le N\bigl(\log(8C_4(L+1))+L\log c\bigr)\le C_5h^{2n+4}
+\]">\[
+\log\max_j|w_j|
+\le N\bigl(\log(8C_4(L+1))+L\log c\bigr)\le C_5h^{2n+4}
+\]</span>
+<p>for large <span class="math" data-tex="\(h\)">\(h\)</span>. In particular <span class="math" data-tex="\(2n+4&lt;8n\)">\(2n+4&lt;8n\)</span>, even for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Combining (3.9) and (3.15) gives</p>
+<span class="math math-display" data-tex="\[
+1\le|p_{s,t}|\le N\exp(C_5h^{2n+4}-h^{8n})&lt;1
+\]">\[
+1\le|p_{s,t}|\le N\exp(C_5h^{2n+4}-h^{8n})&lt;1
+\]</span>
+<p>eventually. The first inequality holds because the selected coefficient is a nonzero integer. This contradiction rules out the original relation.</p>
+<p>We have proved <strong>Baker's theorem</strong>: arbitrary rationally independent logarithms of nonzero algebraic numbers remain linearly independent over <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span> after adjoining <span class="math" data-tex="\(1\)">\(1\)</span>. The proof does not require multiplicative independence, positive bases, or principal branches.</p>
+<h2 id="8-additive-forms-find-the-source-of-nonvanishing">8. Additive forms: find the source of nonvanishing</h2>
+<p>The theorem about independent logarithms gives an especially useful rule for arbitrary, possibly dependent logarithms: first reduce to a rational basis, then ask whether the resulting form is zero. The zero case must be handled by the application, because Baker's theorem permits it.</p>
+<p><strong>Corollary 3.5.</strong> For nonzero algebraic <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span>, chosen logarithms <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span>, and algebraic <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span>, the homogeneous form <span class="math" data-tex="\(H=\sum_j\beta_j\ell_j\)">\(H=\sum_j\beta_j\ell_j\)</span> is either zero or transcendental.</p>
+<p><strong>Proof.</strong> Select a rational basis <span class="math" data-tex="\(\kappa_1,\ldots,\kappa_r\)">\(\kappa_1,\ldots,\kappa_r\)</span> from the logarithms spanning them, and rewrite <span class="math" data-tex="\(H=\sum_k\eta_k\kappa_k\)">\(H=\sum_k\eta_k\kappa_k\)</span>, with algebraic <span class="math" data-tex="\(\eta_k\)">\(\eta_k\)</span>. A nonzero algebraic <span class="math" data-tex="\(H\)">\(H\)</span> would give the nontrivial relation <span class="math" data-tex="\(-H+\sum_k\eta_k\kappa_k=0\)">\(-H+\sum_k\eta_k\kappa_k=0\)</span>, contradicting independence of <span class="math" data-tex="\(1,\kappa_1,\ldots,\kappa_r\)">\(1,\kappa_1,\ldots,\kappa_r\)</span>. If the span is zero, <span class="math" data-tex="\(H=0\)">\(H=0\)</span> directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus <span class="math" data-tex="\(\beta_0+H\)">\(\beta_0+H\)</span>, with algebraic <span class="math" data-tex="\(\beta_0\)">\(\beta_0\)</span>, is transcendental whenever <span class="math" data-tex="\(H\ne0\)">\(H\ne0\)</span>; if <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, its value is the algebraic number <span class="math" data-tex="\(\beta_0\)">\(\beta_0\)</span>. Nonvanishing of the entire inhomogeneous expression is insufficient: <span class="math" data-tex="\(\beta_0=1\)">\(\beta_0=1\)</span> with all logarithmic coefficients zero gives <span class="math" data-tex="\(1\)">\(1\)</span>. This qualification belongs in the statement.</p>
+<h3 id="dirichlet-l--values-as-logarithmic-forms">Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-values as logarithmic forms</h3>
+<p>Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be a nonprincipal Dirichlet character modulo <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>, extended by zero off the units. Put <span class="math" data-tex="\(\zeta=e^{2\pi i/q}\)">\(\zeta=e^{2\pi i/q}\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\widehat\chi(m)=\frac1q\sum_{r=1}^q\chi(r)\zeta^{-mr}\quad(0\le m&lt;q).
+\]">\[
+\widehat\chi(m)=\frac1q\sum_{r=1}^q\chi(r)\zeta^{-mr}\quad(0\le m&lt;q).
+\]</span>
+<p>Character values are zero or roots of unity, so these coefficients are algebraic. Multiplication of the residues by a unit on which <span class="math" data-tex="\(\chi\ne1\)">\(\chi\ne1\)</span> proves that its period sum is zero, hence <span class="math" data-tex="\(\widehat\chi(0)=0\)">\(\widehat\chi(0)=0\)</span>. Finite geometric sums give Fourier inversion:</p>
+<span class="math math-display" data-tex="\[
+\chi(n)=\sum_{m=1}^{q-1}\widehat\chi(m)\zeta^{mn}. \tag{3.16}
+\]">\[
+\chi(n)=\sum_{m=1}^{q-1}\widehat\chi(m)\zeta^{mn}. \tag{3.16}
+\]</span>
+<p>The partial sums of <span class="math" data-tex="\(\chi(n)\)">\(\chi(n)\)</span> are bounded by periodicity and the zero period sum. Summation by parts therefore proves convergence of <span class="math" data-tex="\(\sum_{n\ge1}\chi(n)/n\)">\(\sum_{n\ge1}\chi(n)/n\)</span>. To justify the logarithmic identity, first insert <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>. Absolute convergence and (3.16) give</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\ge1}\frac{\chi(n)t^n}{n}
+=-\sum_{m=1}^{q-1}\widehat\chi(m)\operatorname{Log}(1-t\zeta^m). \tag{3.17}
+\]">\[
+\sum_{n\ge1}\frac{\chi(n)t^n}{n}
+=-\sum_{m=1}^{q-1}\widehat\chi(m)\operatorname{Log}(1-t\zeta^m). \tag{3.17}
+\]</span>
+<p>The power series for <span class="math" data-tex="\(-\operatorname{Log}(1-z)\)">\(-\operatorname{Log}(1-z)\)</span> follows by integrating the geometric series. The path <span class="math" data-tex="\(1-t\zeta^m\)">\(1-t\zeta^m\)</span> stays in the right half-plane, so its logarithm is principal.</p>
+<p>We also supply the limiting argument. If <span class="math" data-tex="\(\sum a_n=S\)">\(\sum a_n=S\)</span> converges and <span class="math" data-tex="\(A_N=\sum_{n\le N}a_n\)">\(A_N=\sum_{n\le N}a_n\)</span>, summation by parts gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\ge1}a_nt^n=(1-t)\sum_{N\ge1}A_Nt^N\longrightarrow S\quad(t\uparrow1).
+\]">\[
+\sum_{n\ge1}a_nt^n=(1-t)\sum_{N\ge1}A_Nt^N\longrightarrow S\quad(t\uparrow1).
+\]</span>
+<p>Replace <span class="math" data-tex="\(A_N\)">\(A_N\)</span> by <span class="math" data-tex="\(S+(A_N-S)\)">\(S+(A_N-S)\)</span>. The constant part tends to <span class="math" data-tex="\(S\)">\(S\)</span>. Any fixed initial error segment tends to zero, while its tail is bounded by <span class="math" data-tex="\(\sup_{N\ge N_0}|A_N-S|\)">\(\sup_{N\ge N_0}|A_N-S|\)</span>. Apply this to <span class="math" data-tex="\(a_n=\chi(n)/n\)">\(a_n=\chi(n)/n\)</span>. For <span class="math" data-tex="\(1\le m&lt;q\)">\(1\le m&lt;q\)</span>, <span class="math" data-tex="\(1-\zeta^m\ne0\)">\(1-\zeta^m\ne0\)</span> has positive real part, so (3.17) tends to</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi)=-\sum_{m=1}^{q-1}\widehat\chi(m)\operatorname{Log}(1-\zeta^m). \tag{3.18}
+\]">\[
+L(1,\chi)=-\sum_{m=1}^{q-1}\widehat\chi(m)\operatorname{Log}(1-\zeta^m). \tag{3.18}
+\]</span>
+<p>Theorem 17.3 of the internal <em>Number fields</em> lesson cited in the introduction proves nonvanishing for primitive nontrivial characters. Its following paragraph covers imprimitive characters by the nonzero Euler factors <span class="math" data-tex="\(1-\chi^*(p)/p\)">\(1-\chi^*(p)/p\)</span>. Thus (3.18) is a nonzero homogeneous algebraic-coefficient logarithmic form. Corollary 3.5 proves:</p>
+<p><strong>Theorem 3.9.</strong> For every nonprincipal Dirichlet character modulo <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>, <span class="math" data-tex="\(L(1,\chi)\)">\(L(1,\chi)\)</span> is transcendental.</p>
+<p>For <span class="math" data-tex="\(\chi_4\)">\(\chi_4\)</span>, whose values at <span class="math" data-tex="\(1,3\pmod4\)">\(1,3\pmod4\)</span> are <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>, the only nonzero Fourier coefficients are <span class="math" data-tex="\(\widehat\chi_4(1)=-i/2\)">\(\widehat\chi_4(1)=-i/2\)</span>, <span class="math" data-tex="\(\widehat\chi_4(3)=i/2\)">\(\widehat\chi_4(3)=i/2\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_4)=\frac i2\bigl(\operatorname{Log}(1-i)-\operatorname{Log}(1+i)\bigr)=\frac\pi4.
+\]">\[
+L(1,\chi_4)=\frac i2\bigl(\operatorname{Log}(1-i)-\operatorname{Log}(1+i)\bigr)=\frac\pi4.
+\]</span>
+<p>The real parts cancel; the arguments are <span class="math" data-tex="\(-\pi/4\)">\(-\pi/4\)</span> and <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span>. This checks the Fourier sign and the branch convention.</p>
+<h3 id="a-modulus-and-its-induced-character">A modulus and its induced character</h3>
+<p>The Fourier identity also shows why one must preserve the nonvanishing input when passing to an imprimitive modulus. Let <span class="math" data-tex="\(\chi_3(1)=1\)">\(\chi_3(1)=1\)</span>, <span class="math" data-tex="\(\chi_3(2)=-1\)">\(\chi_3(2)=-1\)</span>, extended periodically and by zero at multiples of <span class="math" data-tex="\(3\)">\(3\)</span>. Its Fourier coefficients at <span class="math" data-tex="\(m=1,2\)">\(m=1,2\)</span> are <span class="math" data-tex="\(-i/\sqrt3,i/\sqrt3\)">\(-i/\sqrt3,i/\sqrt3\)</span>. If <span class="math" data-tex="\(\zeta=e^{2\pi i/3}\)">\(\zeta=e^{2\pi i/3}\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_3)=\frac{i}{\sqrt3}
+\bigl(\operatorname{Log}(1-\zeta)-\operatorname{Log}(1-\zeta^2)\bigr).
+\]">\[
+L(1,\chi_3)=\frac{i}{\sqrt3}
+\bigl(\operatorname{Log}(1-\zeta)-\operatorname{Log}(1-\zeta^2)\bigr).
+\]</span>
+<p>The two arguments are <span class="math" data-tex="\(-\pi/6\)">\(-\pi/6\)</span> and <span class="math" data-tex="\(\pi/6\)">\(\pi/6\)</span>, and both moduli equal <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span>. The real parts cancel, so <span class="math" data-tex="\(L(1,\chi_3)=\pi/(3\sqrt3)\)">\(L(1,\chi_3)=\pi/(3\sqrt3)\)</span>. This value is nonzero; it checks both the Fourier sign and the selected logarithmic branches.</p>
+<p>Now let <span class="math" data-tex="\(\chi_6\)">\(\chi_6\)</span> be the character modulo <span class="math" data-tex="\(6\)">\(6\)</span> induced by <span class="math" data-tex="\(\chi_3\)">\(\chi_3\)</span>. The terms removed from the <span class="math" data-tex="\(\chi_3\)">\(\chi_3\)</span>-series are exactly the even ones. For their convergent sum,</p>
+<span class="math math-display" data-tex="\[
+\sum_{k\ge1}\frac{\chi_3(2k)}{2k}
+=-\frac12L(1,\chi_3).
+\]">\[
+\sum_{k\ge1}\frac{\chi_3(2k)}{2k}
+=-\frac12L(1,\chi_3).
+\]</span>
+<p>Consequently <span class="math" data-tex="\(L(1,\chi_6)=\tfrac32L(1,\chi_3)=\pi/(2\sqrt3)\)">\(L(1,\chi_6)=\tfrac32L(1,\chi_3)=\pi/(2\sqrt3)\)</span>. This is the Euler factor <span class="math" data-tex="\(1-\chi_3(2)/2\)">\(1-\chi_3(2)/2\)</span> in a concrete instance. The general nonvanishing theorem, rather than this example, supplies the corresponding conclusion at every nonprincipal modulus.</p>
+<h2 id="9-products-and-branch-tests">9. Products and branch tests</h2>
+<p>A product of powers requires a different check from an additive form: an assumed algebraic product supplies one more algebraic base, whose logarithm can be chosen to be the entire exponent. There is no need to replace each original branch by a principal branch. Two hypotheses make this procedure useful: independence of the exponents, or a nonzero algebraic exponential factor. We treat those mechanisms separately.</p>
+<h3 id="independent-exponents">Independent exponents</h3>
+<p><strong>Corollary 3.7.</strong> Suppose all <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> are algebraic and different from <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, and <span class="math" data-tex="\(1,\beta_1,\ldots,\beta_n\)">\(1,\beta_1,\ldots,\beta_n\)</span> are rationally independent algebraic numbers. Then every chosen value of <span class="math" data-tex="\(\prod_j\alpha_j^{\beta_j}\)">\(\prod_j\alpha_j^{\beta_j}\)</span> is transcendental.</p>
+<p><strong>Proof.</strong> If its value <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> were algebraic, choose <span class="math" data-tex="\(\ell_\gamma=\sum_j\beta_j\ell_j\)">\(\ell_\gamma=\sum_j\beta_j\ell_j\)</span>. Select a rational basis <span class="math" data-tex="\(\kappa_k\)">\(\kappa_k\)</span> of the span of all these logarithms, and write</p>
+<span class="math math-display" data-tex="\[
+\ell_\gamma=\sum_kr_{0k}\kappa_k,\qquad
+\ell_j=\sum_kr_{jk}\kappa_k,\qquad r_{jk}\in\mathbb Q.
+\]">\[
+\ell_\gamma=\sum_kr_{0k}\kappa_k,\qquad
+\ell_j=\sum_kr_{jk}\kappa_k,\qquad r_{jk}\in\mathbb Q.
+\]</span>
+<p>Baker's theorem implies <span class="math" data-tex="\(r_{0k}-\sum_j\beta_jr_{jk}=0\)">\(r_{0k}-\sum_j\beta_jr_{jk}=0\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>. Independence of <span class="math" data-tex="\(1,\beta_1,\ldots,\beta_n\)">\(1,\beta_1,\ldots,\beta_n\)</span> forces all <span class="math" data-tex="\(r_{jk}\)">\(r_{jk}\)</span>, including <span class="math" data-tex="\(r_{0k}\)">\(r_{0k}\)</span>, to vanish. All <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span> would be zero, impossible since <span class="math" data-tex="\(\alpha_j\ne1\)">\(\alpha_j\ne1\)</span>. This also covers <span class="math" data-tex="\(\gamma=1\)">\(\gamma=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, <span class="math" data-tex="\(2^{\sqrt2}3^{\sqrt3}\)">\(2^{\sqrt2}3^{\sqrt3}\)</span> is transcendental. If <span class="math" data-tex="\(a+b\sqrt2+c\sqrt3=0\)">\(a+b\sqrt2+c\sqrt3=0\)</span> with rational coefficients and <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, squaring gives <span class="math" data-tex="\(ab=0\)">\(ab=0\)</span>; the resulting possibilities would make <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span> or <span class="math" data-tex="\(\sqrt{3/2}\)">\(\sqrt{3/2}\)</span> rational unless all coefficients vanish. Both are irrational by prime factorization. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, irrationality of <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> finishes the check.</p>
+<h3 id="a-nonzero-algebraic-exponential-factor">A nonzero algebraic exponential factor</h3>
+<p><strong>Corollary 3.6.</strong> If <span class="math" data-tex="\(\beta_0\ne0\)">\(\beta_0\ne0\)</span> is algebraic, every <span class="math" data-tex="\(\alpha_j\ne0\)">\(\alpha_j\ne0\)</span> and <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span> is algebraic, and powers are defined by chosen logarithms, then</p>
+<span class="math math-display" data-tex="\[
+e^{\beta_0}\alpha_1^{\beta_1}\cdots\alpha_n^{\beta_n}
+\]">\[
+e^{\beta_0}\alpha_1^{\beta_1}\cdots\alpha_n^{\beta_n}
+\]</span>
+<p>is transcendental.</p>
+<p><strong>Proof.</strong> If its value were algebraic <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, choose the logarithm <span class="math" data-tex="\(\ell_\gamma=\beta_0+\sum_j\beta_j\ell_j\)">\(\ell_\gamma=\beta_0+\sum_j\beta_j\ell_j\)</span>. Then <span class="math" data-tex="\(\ell_\gamma-\sum_j\beta_j\ell_j=\beta_0\)">\(\ell_\gamma-\sum_j\beta_j\ell_j=\beta_0\)</span> is a nonzero algebraic homogeneous form in logarithms of algebraic numbers, contradicting Corollary 3.5. This chosen logarithm handles the branches without a suppressed period term. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="keeping-a-period-in-the-nonvanishing-test">Keeping a period in the nonvanishing test</h3>
+<p><strong>Corollary 3.8.</strong> For every algebraic <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, every value of <span class="math" data-tex="\(\pi+\log\alpha\)">\(\pi+\log\alpha\)</span> is transcendental. If <span class="math" data-tex="\(u,v\)">\(u,v\)</span> are algebraic and <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, then <span class="math" data-tex="\(e^{u\pi+v}\)">\(e^{u\pi+v}\)</span> is transcendental.</p>
+<p><strong>Proof.</strong> Take <span class="math" data-tex="\(\log(-1)=i\pi\)">\(\log(-1)=i\pi\)</span>, so <span class="math" data-tex="\(\pi+\ell_\alpha=\ell_\alpha-i\log(-1)\)">\(\pi+\ell_\alpha=\ell_\alpha-i\log(-1)\)</span>. This form is nonzero. Otherwise <span class="math" data-tex="\(\ell_\alpha=-\pi\)">\(\ell_\alpha=-\pi\)</span>, and the nonzero real number <span class="math" data-tex="\(-\pi\)">\(-\pi\)</span> and imaginary number <span class="math" data-tex="\(i\pi\)">\(i\pi\)</span> would be rationally independent logarithms of algebraic numbers satisfying the displayed algebraic relation, contrary to Baker's theorem. Apply Corollary 3.5. For the second assertion, write <span class="math" data-tex="\(e^{u\pi+v}=e^v(-1)^{-iu}\)">\(e^{u\pi+v}=e^v(-1)^{-iu}\)</span> and apply Corollary 3.6. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here are two boundary checks for the product criteria. First,</p>
+<span class="math math-display" data-tex="\[
+2^{\sqrt2}4^{-\sqrt2/2}=1
+\]">\[
+2^{\sqrt2}4^{-\sqrt2/2}=1
+\]</span>
+<p>for the real logarithms. The exponents together with <span class="math" data-tex="\(1\)">\(1\)</span> are rationally dependent, so Corollary 3.7 does not apply. Second, setting <span class="math" data-tex="\(\beta_0=0\)">\(\beta_0=0\)</span> in Corollary 3.6 would allow the same value <span class="math" data-tex="\(1\)">\(1\)</span>; its nonzero-constant hypothesis is necessary for that conclusion. These checks explain the conditions without imposing multiplicative independence on the bases. The Gelfond–Schneider deduction in the preceding lesson is now unconditional.</p>
+<h2 id="10-exercises">10. Exercises</h2>
+<p><strong>Exercise 1 (easy).</strong> Prove Corollary 3.8 for arbitrary chosen logarithms, including <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span>. Explain why adding an algebraic constant to a homogeneous form requires a condition on its logarithmic part.</p>
+<p><strong>Exercise 2 (medium).</strong> Prove Lemma 3.3 by a norm argument. According to the sign of <span class="math" data-tex="\(t_j\)">\(t_j\)</span>, choose the positive leading coefficient <span class="math" data-tex="\(a_j\)">\(a_j\)</span> of the primitive minimal polynomial of <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> or <span class="math" data-tex="\(\alpha_j^{-1}\)">\(\alpha_j^{-1}\)</span>, and use</p>
+<span class="math math-display" data-tex="\[
+w=\left(\prod_ja_j^{|t_j|}\right)\left(\prod_j\alpha_j^{t_j}-1\right).
+\]">\[
+w=\left(\prod_ja_j^{|t_j|}\right)\left(\prod_j\alpha_j^{t_j}-1\right).
+\]</span>
+<p>Explain separately the case <span class="math" data-tex="\(w=0\)">\(w=0\)</span> and the role of rational independence there.</p>
+<p><strong>Exercise 3 (medium).</strong> Put <span class="math" data-tex="\(U(z)=\prod_i(z-\xi_i)^S\)">\(U(z)=\prod_i(z-\xi_i)^S\)</span>, and let <span class="math" data-tex="\(C_t\)">\(C_t\)</span> be a small positively oriented circle around <span class="math" data-tex="\(\xi_t\)">\(\xi_t\)</span> containing no other node. Show that, for <span class="math" data-tex="\(z\)">\(z\)</span> outside the circle,</p>
+<span class="math math-display" data-tex="\[
+W(z)=\frac{U(z)}{s!\,2\pi i}\int_{C_t}
+\frac{(\zeta-\xi_t)^s}{(z-\zeta)U(\zeta)}\,d\zeta
+\]">\[
+W(z)=\frac{U(z)}{s!\,2\pi i}\int_{C_t}
+\frac{(\zeta-\xi_t)^s}{(z-\zeta)U(\zeta)}\,d\zeta
+\]</span>
+<p>equals (3.14). Deduce its jets and bound (3.13).</p>
+<p><strong>Exercise 4 (medium).</strong> Prove (3.18), including convergence, branch choice and nonvanishing for an imprimitive nonprincipal character. Compute the Fourier coefficients for <span class="math" data-tex="\(\chi_4\)">\(\chi_4\)</span>.</p>
+<p><strong>Exercise 5 (hard).</strong> Prove Corollary 3.7 by induction. First prove that <span class="math" data-tex="\(\sum_j\beta_j\ell_j\ne0\)">\(\sum_j\beta_j\ell_j\ne0\)</span> if the algebraic <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span> are rationally independent and all <span class="math" data-tex="\(\alpha_j\ne0,1\)">\(\alpha_j\ne0,1\)</span>. Handle explicitly an assumed algebraic product value equal to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Exercise 6 (hard).</strong> Check every power and rounding bound in Propositions 3.1–3.2. Explain why <span class="math" data-tex="\(J_*\)">\(J_*\)</span> does not prevent <span class="math" data-tex="\(Y\to\infty\)">\(Y\to\infty\)</span>, and why coefficient recovery works for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+<h2 id="11-solutions">11. Solutions</h2>
+<p><strong>Solution 1.</strong> The expression <span class="math" data-tex="\(\ell_\alpha-i\log(-1)\)">\(\ell_\alpha-i\log(-1)\)</span> is homogeneous. If zero, its two logarithms would be <span class="math" data-tex="\(-\pi\)">\(-\pi\)</span> and <span class="math" data-tex="\(i\pi\)">\(i\pi\)</span>, which are rationally independent, contradicting Baker's theorem. Corollary 3.5 makes its nonzero value transcendental. For <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span>, a chosen logarithm is <span class="math" data-tex="\(2\pi ik\)">\(2\pi ik\)</span>, giving <span class="math" data-tex="\((1+2ik)\pi\ne0\)">\((1+2ik)\pi\ne0\)</span>, consistent with the proof. If <span class="math" data-tex="\(H\ne0\)">\(H\ne0\)</span>, an algebraic <span class="math" data-tex="\(\beta_0+H\)">\(\beta_0+H\)</span> would make <span class="math" data-tex="\(H\)">\(H\)</span> algebraic after subtraction. If <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, its value is simply <span class="math" data-tex="\(\beta_0\)">\(\beta_0\)</span>. The exponential assertion follows from <span class="math" data-tex="\(u\pi=-iu\log(-1)\)">\(u\pi=-iu\log(-1)\)</span> and the nonzero constant <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Solution 2.</strong> If <span class="math" data-tex="\(a\eta^d+A_1\eta^{d-1}+\cdots+A_d=0\)">\(a\eta^d+A_1\eta^{d-1}+\cdots+A_d=0\)</span>, then <span class="math" data-tex="\(a\eta\)">\(a\eta\)</span> satisfies the monic integer polynomial
+<span class="math math-display" data-tex="\[
+X^d+A_1X^{d-1}+aA_2X^{d-2}+\cdots+a^{d-1}A_d.
+\]">\[
+X^d+A_1X^{d-1}+aA_2X^{d-2}+\cdots+a^{d-1}A_d.
+\]</span>
+Thus every <span class="math" data-tex="\(a_j\alpha_j^{\operatorname{sgn}(t_j)}\)">\(a_j\alpha_j^{\operatorname{sgn}(t_j)}\)</span>, and therefore <span class="math" data-tex="\(w\)">\(w\)</span>, is an algebraic integer. Omit indices with <span class="math" data-tex="\(t_j=0\)">\(t_j=0\)</span>. Each conjugate of <span class="math" data-tex="\(w\)">\(w\)</span> has size at most <span class="math" data-tex="\(e^{CT}\)">\(e^{CT}\)</span>, because the conjugates of the fixed bases and inverses form a finite list. If <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span>, its integer norm gives <span class="math" data-tex="\(|w|\ge e^{-C(D-1)T}\)">\(|w|\ge e^{-C(D-1)T}\)</span>. Dividing by <span class="math" data-tex="\(\prod a_j^{|t_j|}\le e^{C&#x27;T}\)">\(\prod a_j^{|t_j|}\le e^{C&#x27;T}\)</span> bounds <span class="math" data-tex="\(|P-1|\)">\(|P-1|\)</span> below by <span class="math" data-tex="\(e^{-C&#x27;&#x27;T}\)">\(e^{-C&#x27;&#x27;T}\)</span>. If <span class="math" data-tex="\(|\Omega|\le1/2\)">\(|\Omega|\le1/2\)</span>, use <span class="math" data-tex="\(|P-1|\le2|\Omega|\)">\(|P-1|\le2|\Omega|\)</span>; otherwise <span class="math" data-tex="\(|\Omega|&gt;1/2\)">\(|\Omega|&gt;1/2\)</span> already suffices. If <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, <span class="math" data-tex="\(P=1\)">\(P=1\)</span> and <span class="math" data-tex="\(\Omega\in2\pi i\mathbb Z\)">\(\Omega\in2\pi i\mathbb Z\)</span>. Independence and <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span> exclude zero, leaving <span class="math" data-tex="\(|\Omega|\ge2\pi\)">\(|\Omega|\ge2\pi\)</span>. Without independence this last exclusion would fail.</p>
+<p><strong>Solution 3.</strong> Write <span class="math" data-tex="\(x=\zeta-\xi_t\)">\(x=\zeta-\xi_t\)</span>, <span class="math" data-tex="\(U(\zeta)=x^SV(\xi_t+x)\)">\(U(\zeta)=x^SV(\xi_t+x)\)</span>, and expand <span class="math" data-tex="\(1/V(\xi_t+x)=\sum c_jx^j\)">\(1/V(\xi_t+x)=\sum c_jx^j\)</span>. On a sufficiently small circle,
+<span class="math math-display" data-tex="\[
+\frac1{z-\zeta}=\sum_{k\ge0}\frac{x^k}{(z-\xi_t)^{k+1}}.
+\]">\[
+\frac1{z-\zeta}=\sum_{k\ge0}\frac{x^k}{(z-\xi_t)^{k+1}}.
+\]</span>
+The integral selects the coefficient of <span class="math" data-tex="\(x^{-1}\)">\(x^{-1}\)</span>, giving
+<span class="math math-display" data-tex="\[
+\frac{U(z)}{s!}\sum_{j=0}^{S-1-s}
+\frac{c_j}{(z-\xi_t)^{S-s-j}}
+=\frac{V(z)}{s!}\sum_{j=0}^{S-1-s}c_j(z-\xi_t)^{s+j}.
+\]">\[
+\frac{U(z)}{s!}\sum_{j=0}^{S-1-s}
+\frac{c_j}{(z-\xi_t)^{S-s-j}}
+=\frac{V(z)}{s!}\sum_{j=0}^{S-1-s}c_j(z-\xi_t)^{s+j}.
+\]</span>
+This is (3.14) and extends polynomially across all nodes. Its jets follow from the factors and reciprocal truncation. The coefficient estimate follows from <span class="math" data-tex="\(|c_j|\le\binom{M+j-1}{j}\rho^{-(M+j)}\)">\(|c_j|\le\binom{M+j-1}{j}\rho^{-(M+j)}\)</span> and the polynomial coefficient sums in Lemma 3.4. For <span class="math" data-tex="\(R=1\)">\(R=1\)</span>, the integral gives <span class="math" data-tex="\((z-\xi_1)^s/s!\)">\((z-\xi_1)^s/s!\)</span> directly.</p>
+<p><strong>Solution 4.</strong> The zero period sum bounds partial sums of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>; summation by parts gives convergence. Fourier inversion, inserted into the absolutely convergent <span class="math" data-tex="\(t\)">\(t\)</span>-series, gives (3.17). The Abel limit proved in Section 8 gives (3.18). The path is in the right half-plane, hence the limiting logarithm is principal. The written internal nonvanishing theorem covers <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span>, and the extra factors <span class="math" data-tex="\(1-\chi^*(p)/p\)">\(1-\chi^*(p)/p\)</span> for an imprimitive modulus cannot vanish since <span class="math" data-tex="\(|\chi^*(p)|\le1&lt;p\)">\(|\chi^*(p)|\le1&lt;p\)</span>. At modulus <span class="math" data-tex="\(4\)">\(4\)</span>, the Fourier sum gives <span class="math" data-tex="\(-i/2,0,i/2\)">\(-i/2,0,i/2\)</span> at <span class="math" data-tex="\(m=1,2,3\)">\(m=1,2,3\)</span>; substitution gives <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span>.</p>
+<p><strong>Solution 5.</strong> Induct on <span class="math" data-tex="\(n\)">\(n\)</span> for the auxiliary assertion. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, both factors are nonzero. If the logarithms are rationally independent, Baker's theorem applies. Otherwise take a nontrivial rational relation <span class="math" data-tex="\(\sum_jr_j\ell_j=0\)">\(\sum_jr_j\ell_j=0\)</span>, with <span class="math" data-tex="\(r_n\ne0\)">\(r_n\ne0\)</span>, and eliminate <span class="math" data-tex="\(\ell_n\)">\(\ell_n\)</span>. The shortened coefficients are <span class="math" data-tex="\(\beta&#x27;_j=\beta_j-(r_j/r_n)\beta_n\)">\(\beta&#x27;_j=\beta_j-(r_j/r_n)\beta_n\)</span>, <span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span>. They remain rationally independent: a relation among them rearranges to one among the original <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span>, forcing all its coefficients to vanish. The induction hypothesis rules out zero for the shortened form.</p>
+<p>Now assume the product has algebraic value <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. If <span class="math" data-tex="\(\gamma\ne1\)">\(\gamma\ne1\)</span>, choose <span class="math" data-tex="\(\ell_\gamma=\sum_j\beta_j\ell_j\)">\(\ell_\gamma=\sum_j\beta_j\ell_j\)</span>. Apply the auxiliary assertion to the bases <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n,\gamma\)">\(\alpha_1,\ldots,\alpha_n,\gamma\)</span> and the independent coefficients <span class="math" data-tex="\(\beta_1,\ldots,\beta_n,-1\)">\(\beta_1,\ldots,\beta_n,-1\)</span>, contradicting the resulting zero form. If <span class="math" data-tex="\(\gamma=1\)">\(\gamma=1\)</span>, the original form is <span class="math" data-tex="\(2\pi ik\)">\(2\pi ik\)</span>. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, the original auxiliary assertion is contradicted. For <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>, adjoin the base <span class="math" data-tex="\(-1\)">\(-1\)</span> with logarithm <span class="math" data-tex="\(i\pi\)">\(i\pi\)</span>. The coefficients <span class="math" data-tex="\(\beta_1,\ldots,\beta_n,-2k\)">\(\beta_1,\ldots,\beta_n,-2k\)</span> are independent because <span class="math" data-tex="\(1,\beta_1,\ldots,\beta_n\)">\(1,\beta_1,\ldots,\beta_n\)</span> are. The resulting form is zero, again impossible.</p>
+<p><strong>Solution 6.</strong> Each sufficiently large rounded quantity is at least half its unrounded value, giving <span class="math" data-tex="\(R_JS_{J+1}\ge h^{3+Ja}/2^{J+3}\)">\(R_JS_{J+1}\ge h^{3+Ja}/2^{J+3}\)</span>. Also <span class="math" data-tex="\(L\le h^{2-2a}\)">\(L\le h^{2-2a}\)</span>, <span class="math" data-tex="\(\mathcal R\le h^{1+(J+2)a}\)">\(\mathcal R\le h^{1+(J+2)a}\)</span>, hence <span class="math" data-tex="\(L\mathcal R\le h^{3+Ja}\)">\(L\mathcal R\le h^{3+Ja}\)</span>, proving (3.7). A single <span class="math" data-tex="\(h\)">\(h\)</span> meets (3.8) for the finite set of <span class="math" data-tex="\(J\)">\(J\)</span>. Finally <span class="math" data-tex="\(Y\ge h^2/2^{J_*+1}\)">\(Y\ge h^2/2^{J_*+1}\)</span>, so <span class="math" data-tex="\(L\mathcal R/(XY)\le2^{J_*+1}h^{-a}\to0\)">\(L\mathcal R/(XY)\le2^{J_*+1}h^{-a}\to0\)</span>, <span class="math" data-tex="\(h^3/(XY)\to0\)">\(h^3/(XY)\to0\)</span>, and <span class="math" data-tex="\(Y&gt;\log X+1\)">\(Y&gt;\log X+1\)</span> eventually. The denominator <span class="math" data-tex="\(2^{J_*}\)">\(2^{J_*}\)</span> is fixed. For coefficient recovery, <span class="math" data-tex="\(N=O(h^{2n+2})\)">\(N=O(h^{2n+2})\)</span> and <span class="math" data-tex="\(\log|w_j|=O(h^{2n+4})\)">\(\log|w_j|=O(h^{2n+4})\)</span>; at <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the exponents are <span class="math" data-tex="\(4,6,8\)">\(4,6,8\)</span>, so both comparisons with <span class="math" data-tex="\(h^{8n}\)">\(h^{8n}\)</span> remain strict.</p>
+<h2 id="prerequisites-and-continuation">Prerequisites and continuation</h2>
+<p>The height and Siegel-lemma dependencies are the exact written internal lessons specified in the first two lessons. The integral-basis and norm prerequisites are written in <em>Number fields</em>. The proofs here complete Baker's theorem across the auxiliary-function and extrapolation lessons, including separation and Hermite interpolation. The <span class="math" data-tex="\(L\)">\(L\)</span>-value application uses the written internal nonvanishing theorem at the exact generality specified above. The next lessons keep quantitative track of the algebraic data to obtain effective lower bounds.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Waldschmidt 2003] Michel Waldschmidt, “Linear Independence Measures for Logarithms of Algebraic Numbers,” in <em>Diophantine Approximation</em>, Lecture Notes in Mathematics 1819, Springer, 2003, 249–344. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/SpringerLN1819-2003.pdf">Author's full text</a>. Explains the normalized derivations, auxiliary-function construction and repeated extrapolation, including the algebraic constant and arbitrary logarithmic branches.</li>
+<li>[Waldschmidt 2000] Michel Waldschmidt, <em>Diophantine Approximation on Linear Algebraic Groups</em>, Springer, 2000. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/dalag.pdf">Author's full text</a>. Contains the height and pigeonhole arguments used by the construction, and complete proofs of the homogeneous and nonhomogeneous theorems.</li>
+<li>[Sutherland 2021] Andrew V. Sutherland, <em>Number Theory I</em>, MIT OpenCourseWare, Fall 2021. <a href="https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/mit18_785f21_lec18.pdf">Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-functions</a> and <a href="https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/mit18_785f21_lec19.pdf">the analytic class number formula and nonvanishing</a>. These lecture notes are credited to Sutherland and MIT; their own licence applies.</li>
+<li>[Serre 1969/1971] Jean-Pierre Serre, “Travaux de Baker,” <em>Séminaire Bourbaki</em>, exposé 368, 73–86. <a href="https://www.numdam.org/item/SB_1969-1970__12__73_0.pdf">Full text at Numdam</a>. Historical account of Baker's methods and transcendence consequences.</li>
+</ul>
+<h2 id="editable-sources"><span id="editable-source"></span>Editable source</h2>
+<p><a href="src/TR-BAKER-03.md">Markdown source</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-02.html">← Baker&#x27;s theorem I: building an auxiliary function</a><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-BAKER-04.html">Effective lower bounds I: Baker&#x27;s theorem and its arithmetic tools →</a></span></nav>
+<p class="small source-link"><a href="sources/TR-BAKER-03.tex" download>Editable LaTeX source of this lesson</a> · <a href="src/TR-BAKER-03.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

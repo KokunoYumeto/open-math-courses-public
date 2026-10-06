@@ -1,0 +1,221 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inverse limits and unbounded resolutions</title><link rel="stylesheet" href="../../assets/site.css"><style>.lesson{max-width:58rem;margin:auto;padding:1.2rem}body{overflow-wrap:break-word}.math-display,mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main class="lesson"><nav><a href="../../">Open Mathematics Courses</a> · <a href="./">Derived categories of sheaves</a></nav><h1 id="inverse-limits-and-unbounded-resolutions">Inverse limits and unbounded resolutions</h1>
+<p><em>Adapted and expanded by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026, from Dolors Herbera, Wolfgang Pitsch, Manuel Saorín and Simone Virili, <a href="https://arxiv.org/abs/2407.09741v3">A poisonous example to explicit resolutions of unbounded complexes, v3</a>, §§2, 4 and 8.7. This lesson is licensed separately under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Changes include direct lifting and K-injectivity proofs, an explicit truncation calculation, totalization details and worked exercises. Mathematical self-check is by the writing AI; there is no independent-review or formalization claim. See the <a href="licence.html">course notice</a>.</em></p>
+<p>The <a href="k-injective-resolutions-in-grothendieck-categories.html">Grothendieck-category lesson</a> constructs K-injective resolutions by exact filtered unions. Another method resolves successive lower truncations and takes their inverse limit. The second method needs a different exactness argument. Resolving each finite stage correctly does not by itself prove that its limit resolves the original complex.</p>
+<p>The prerequisites are the common reading's cone and short-exact-sequence triangles; bounded-below injective resolutions and the Hom test for K-injectivity from <a href="injective-modules-and-bounded-below-derived-functors.html">Injective modules and bounded-below derived functors</a>, Sections 2–4; and the product argument of Proposition 5.4 in the <a href="k-injective-resolutions-in-grothendieck-categories.html">Grothendieck-category lesson</a>. That product argument applies in any abelian category with the required products, because its Hom complexes are complexes of abelian groups.</p>
+<p>Throughout, <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a complete, locally small abelian category with enough injectives. A DG-injective complex is termwise injective and K-injective. Write <span class="math" data-tex="\(T_n=\tau^{\geq-n}X\)">\(T_n=\tau^{\geq-n}X\)</span> for the good lower truncation: its degree <span class="math" data-tex="\(-n\)">\(-n\)</span> term is <span class="math" data-tex="\(X^{-n}/B^{-n}X\)">\(X^{-n}/B^{-n}X\)</span>, lower terms are zero, and higher terms agree with <span class="math" data-tex="\(X\)">\(X\)</span>. The natural maps <span class="math" data-tex="\(T_{n+1}\to T_n\)">\(T_{n+1}\to T_n\)</span> are chain maps. Each fixed degree eventually agrees with <span class="math" data-tex="\(X\)">\(X\)</span>, so <span class="math" data-tex="\(X=\lim_nT_n\)">\(X=\lim_nT_n\)</span> in complexes.</p>
+<h2 id="1-building-a-compatible-tower">1. Building a compatible tower</h2>
+<p><strong>Lemma 1.1 (strict extension).</strong> If <span class="math" data-tex="\(A\hookrightarrow B\)">\(A\hookrightarrow B\)</span> is a monic quasi-isomorphism and <span class="math" data-tex="\(I\)">\(I\)</span> is DG-injective, every chain map <span class="math" data-tex="\(A\to I\)">\(A\to I\)</span> extends to a chain map <span class="math" data-tex="\(B\to I\)">\(B\to I\)</span>.</p>
+<p><strong>Proof.</strong> Termwise injectivity gives a graded extension <span class="math" data-tex="\(g\)">\(g\)</span>. Its defect <span class="math" data-tex="\(Dg=d_Ig-gd_B\)">\(Dg=d_Ig-gd_B\)</span> vanishes on <span class="math" data-tex="\(A\)">\(A\)</span>, hence factors through the acyclic quotient <span class="math" data-tex="\(C=B/A\)">\(C=B/A\)</span>. In the Hom complex this factor is a degree-one cycle, since <span class="math" data-tex="\(D^2g=0\)">\(D^2g=0\)</span>. K-injectivity makes <span class="math" data-tex="\(\operatorname{Hom}^{\bullet}(C,I)\)">\(\operatorname{Hom}^{\bullet}(C,I)\)</span> acyclic, so it is <span class="math" data-tex="\(Dh\)">\(Dh\)</span> for a degree-zero graded map <span class="math" data-tex="\(h:C\to I\)">\(h:C\to I\)</span>. Subtracting <span class="math" data-tex="\(h\pi\)">\(h\pi\)</span> from <span class="math" data-tex="\(g\)">\(g\)</span>, where <span class="math" data-tex="\(\pi:B\to C\)">\(\pi:B\to C\)</span>, kills the defect and retains the prescribed restriction to <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2 (resolution towers).</strong> There are monic quasi-isomorphisms <span class="math" data-tex="\(\lambda_n:T_n\to E_n\)">\(\lambda_n:T_n\to E_n\)</span> with <span class="math" data-tex="\(E_n\)">\(E_n\)</span> bounded below and termwise injective, and chain maps <span class="math" data-tex="\(t_n:E_{n+1}\to E_n\)">\(t_n:E_{n+1}\to E_n\)</span>, such that
+<span class="math math-display" data-tex="\[
+t_n\lambda_{n+1}=\lambda_n(T_{n+1}\to T_n).
+\]">\[
+t_n\lambda_{n+1}=\lambda_n(T_{n+1}\to T_n).
+\]</span></p>
+<p>Each <span class="math" data-tex="\(t_n\)">\(t_n\)</span> can be chosen degreewise split epic with bounded-below, termwise-injective kernel.</p>
+<p><strong>Proof.</strong> Choose a monic bounded-below injective resolution of <span class="math" data-tex="\(T_0\)">\(T_0\)</span>. Given <span class="math" data-tex="\(E_n\)">\(E_n\)</span>, choose one of <span class="math" data-tex="\(T_{n+1}\)">\(T_{n+1}\)</span>, say <span class="math" data-tex="\(T_{n+1}\hookrightarrow J\)">\(T_{n+1}\hookrightarrow J\)</span>. Lemma 1.1 extends the displayed map into <span class="math" data-tex="\(E_n\)">\(E_n\)</span> to a chain map <span class="math" data-tex="\(r:J\to E_n\)">\(r:J\to E_n\)</span>. Bounded-below complexes of injectives are K-injective by the preceding lesson.</p>
+<p>Put <span class="math" data-tex="\(D=\operatorname{Cone}(1_{E_n})[-1]\)">\(D=\operatorname{Cone}(1_{E_n})[-1]\)</span>, using the common reading's cone differential. Explicitly,
+<span class="math math-display" data-tex="\[
+D^q=E_n^{q-1}\oplus E_n^q,\qquad
+d_D(a,b)=(-d a-b,d b).
+\]">\[
+D^q=E_n^{q-1}\oplus E_n^q,\qquad
+d_D(a,b)=(-d a-b,d b).
+\]</span></p>
+<p>The chain projection <span class="math" data-tex="\(p:D\to E_n\)">\(p:D\to E_n\)</span>, <span class="math" data-tex="\(p(a,b)=b\)">\(p(a,b)=b\)</span>, is degreewise split epic; <span class="math" data-tex="\(D\)">\(D\)</span> is contractible. Replace <span class="math" data-tex="\(J\)">\(J\)</span> by <span class="math" data-tex="\(E_{n+1}=J\oplus D\)">\(E_{n+1}=J\oplus D\)</span>, its resolution map by <span class="math" data-tex="\((\lambda,0)\)">\((\lambda,0)\)</span>, and its map to <span class="math" data-tex="\(E_n\)">\(E_n\)</span> by <span class="math" data-tex="\((r,p)\)">\((r,p)\)</span>. A graded section is <span class="math" data-tex="\(b\mapsto(0,(0,b))\)">\(b\mapsto(0,(0,b))\)</span>. Boundedness below and termwise injectivity persist. Each kernel term is a direct summand of an injective term and hence injective; its complex is bounded below. Adding the contractible summand preserves the monic quasi-isomorphism and the compatibility square. Induction constructs the tower. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-what-the-limit-always-gives">2. What the limit always gives</h2>
+<p><strong>Lemma 2.1 (split towers).</strong> For a degreewise split-epic tower <span class="math" data-tex="\(K_{n+1}\xrightarrow{t_n}K_n\)">\(K_{n+1}\xrightarrow{t_n}K_n\)</span>, there is a degreewise split exact sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow\lim_nK_n\longrightarrow\prod_nK_n
+\xrightarrow{\,1-t\,}\prod_nK_n\longrightarrow0,
+\qquad
+(1-t)(b)_n=b_n-t_nb_{n+1}.
+\]">\[
+0\longrightarrow\lim_nK_n\longrightarrow\prod_nK_n
+\xrightarrow{\,1-t\,}\prod_nK_n\longrightarrow0,
+\qquad
+(1-t)(b)_n=b_n-t_nb_{n+1}.
+\]</span></p>
+<p><strong>Proof.</strong> The kernel is the limit by its universal property. Choose graded sections <span class="math" data-tex="\(s_n\)">\(s_n\)</span> of <span class="math" data-tex="\(t_n\)">\(t_n\)</span>. For a coordinate family <span class="math" data-tex="\(a\)">\(a\)</span>, define <span class="math" data-tex="\(b_0=0\)">\(b_0=0\)</span> and <span class="math" data-tex="\(b_{n+1}=s_n(b_n-a_n)\)">\(b_{n+1}=s_n(b_n-a_n)\)</span>. Each <span class="math" data-tex="\(b_n\)">\(b_n\)</span> uses only finitely many coordinates of <span class="math" data-tex="\(a\)">\(a\)</span>, so these formulas define morphisms from the categorical product, without a notion of infinite summation. They give <span class="math" data-tex="\(b_n-t_nb_{n+1}=a_n\)">\(b_n-t_nb_{n+1}=a_n\)</span>, proving that <span class="math" data-tex="\(1-t\)">\(1-t\)</span> has a graded right inverse. These sections need not be chain maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.2.</strong> The limit <span class="math" data-tex="\(E=\lim_nE_n\)">\(E=\lim_nE_n\)</span> of a resolution tower from Proposition 1.2 is DG-injective, without any exact-products hypothesis.</p>
+<p><strong>Proof.</strong> A product of K-injectives is K-injective: its Hom complex from an acyclic object is the product of acyclic complexes of abelian groups, and products in abelian groups are exact. K-injectives are closed under shifts and cones by that same Hom test. A degreewise split short exact sequence identifies its kernel in the homotopy category with the shifted cone of its epimorphism, as proved in the common reading. Apply this to Lemma 2.1 to prove K-injectivity of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Products of injective objects are injective: maps into the product are families of maps into its factors, and a map from a subobject extends coordinate by coordinate. Lemma 2.1 also makes every <span class="math" data-tex="\(E^q\)">\(E^q\)</span> a direct summand of a product of injectives. Hence every term of <span class="math" data-tex="\(E\)">\(E\)</span> is injective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves a property of the <em>target</em>. It has not proved that the natural map <span class="math" data-tex="\(X\to E\)">\(X\to E\)</span> is a quasi-isomorphism. Cohomology of products in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> need not be the product of the cohomology objects.</p>
+<h2 id="3-finite-higher-product-dimension">3. Finite higher-product dimension</h2>
+<p>For a set <span class="math" data-tex="\(J\)">\(J\)</span>, the category <span class="math" data-tex="\(\mathcal A^J\)">\(\mathcal A^J\)</span> has componentwise injective resolutions. Define <span class="math" data-tex="\(R^q\prod_J\)">\(R^q\prod_J\)</span> using these bounded-below resolutions. The condition <strong><span class="math" data-tex="\(\mathrm{AB4}^{*}\!-\!k\)">\(\mathrm{AB4}^{*}\!-\!k\)</span></strong>, for an integer <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, means
+<span class="math math-display" data-tex="\[
+R^q\prod_J(A_j)=0\quad(q&gt;k)
+\]">\[
+R^q\prod_J(A_j)=0\quad(q&gt;k)
+\]</span>
+for every set <span class="math" data-tex="\(J\)">\(J\)</span> and every family of objects. When <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, this says products are exact. This condition was introduced by Jan-Erik Roos; here we use the finite-dimensional form developed in the cited paper.</p>
+<p><strong>Lemma 3.1 (product bound).</strong> Suppose <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is <span class="math" data-tex="\(\mathrm{AB4}^{*}\!-\!k\)">\(\mathrm{AB4}^{*}\!-\!k\)</span>. Let <span class="math" data-tex="\(K_n\)">\(K_n\)</span> be bounded-below complexes of injectives with <span class="math" data-tex="\(H^q(K_n)=0\)">\(H^q(K_n)=0\)</span> for every <span class="math" data-tex="\(q\geq a\)">\(q\geq a\)</span>, uniformly in <span class="math" data-tex="\(n\)">\(n\)</span>. Then
+<span class="math math-display" data-tex="\[
+H^q\!\left(\prod_nK_n\right)=0\quad(q&gt;a+k+1).
+\]">\[
+H^q\!\left(\prod_nK_n\right)=0\quad(q&gt;a+k+1).
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L_n\)">\(L_n\)</span> be the brutal lower truncation of <span class="math" data-tex="\(K_n\)">\(K_n\)</span> in degree <span class="math" data-tex="\(a+1\)">\(a+1\)</span>: it has <span class="math" data-tex="\(K_n^q\)">\(K_n^q\)</span> for <span class="math" data-tex="\(q\geq a+1\)">\(q\geq a+1\)</span> and zero below. Its terms are injective. Its degree-<span class="math" data-tex="\((a+1)\)">\((a+1)\)</span> cohomology is <span class="math" data-tex="\(Z^{a+1}K_n\)">\(Z^{a+1}K_n\)</span>, and its higher cohomology is zero. Thus it is an injective resolution of <span class="math" data-tex="\(Z^{a+1}K_n\)">\(Z^{a+1}K_n\)</span>, placed in degree <span class="math" data-tex="\(a+1\)">\(a+1\)</span>. The finite-product-dimension hypothesis gives
+<span class="math math-display" data-tex="\[
+H^q\!\left(\prod_nL_n\right)=0\quad(q&gt;a+1+k).
+\]">\[
+H^q\!\left(\prod_nL_n\right)=0\quad(q&gt;a+1+k).
+\]</span></p>
+<p>The inclusions <span class="math" data-tex="\(L_n\to K_n\)">\(L_n\to K_n\)</span> are chain maps and are isomorphisms in all degrees at least <span class="math" data-tex="\(a+1\)">\(a+1\)</span>. Their product is therefore an isomorphism in those degrees. Cohomology in degree <span class="math" data-tex="\(q\)">\(q\)</span> uses terms <span class="math" data-tex="\(q-1,q,q+1\)">\(q-1,q,q+1\)</span>, so it induces a cohomology isomorphism for <span class="math" data-tex="\(q&gt;a+1\)">\(q&gt;a+1\)</span>. This gives the asserted bound, including <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. The brutal truncation is important: the boundary term of a good lower truncation need not be injective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2 (limit bound).</strong> If the <span class="math" data-tex="\(K_n\)">\(K_n\)</span> in Lemma 3.1 also form a degreewise split-epic tower, then
+<span class="math math-display" data-tex="\[
+H^q(\lim_nK_n)=0\quad(q&gt;a+k+2).
+\]">\[
+H^q(\lim_nK_n)=0\quad(q&gt;a+k+2).
+\]</span></p>
+<p><strong>Proof.</strong> The long exact sequence of Lemma 2.1 has <span class="math" data-tex="\(H^{q-1}(\prod K_n)\)">\(H^{q-1}(\prod K_n)\)</span> and <span class="math" data-tex="\(H^q(\prod K_n)\)">\(H^q(\prod K_n)\)</span> on either side of <span class="math" data-tex="\(H^q(\lim K_n)\)">\(H^q(\lim K_n)\)</span>. Both vanish in the stated range by Lemma 3.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.3 (the resolution theorem with its hypothesis).</strong> In a complete abelian category with enough injectives satisfying <span class="math" data-tex="\(\mathrm{AB4}^{*}\!-\!k\)">\(\mathrm{AB4}^{*}\!-\!k\)</span> for some finite <span class="math" data-tex="\(k\)">\(k\)</span>, the map <span class="math" data-tex="\(X\to\lim_nE_n\)">\(X\to\lim_nE_n\)</span> from Proposition 1.2 is a DG-injective resolution of every unbounded complex <span class="math" data-tex="\(X\)">\(X\)</span>. Neither exact filtered colimits nor a generator is required for this theorem.</p>
+<p><strong>Proof.</strong> Fix a stage <span class="math" data-tex="\(h\)">\(h\)</span>. For <span class="math" data-tex="\(n&gt;h\)">\(n&gt;h\)</span>, the composite <span class="math" data-tex="\(E_n\to E_h\)">\(E_n\to E_h\)</span> is degreewise split epic. Let its kernel be <span class="math" data-tex="\(K_n\)">\(K_n\)</span>. Its terms are injective and it is bounded below. The induced maps on cohomology are isomorphisms in degrees <span class="math" data-tex="\(q\geq-h\)">\(q\geq-h\)</span>, since the same is true for <span class="math" data-tex="\(T_n\to T_h\)">\(T_n\to T_h\)</span>, and <span class="math" data-tex="\(H^{-h-1}(E_h)=0\)">\(H^{-h-1}(E_h)=0\)</span>. The exact sequence
+<span class="math math-display" data-tex="\[
+H^{q-1}(E_n)\to H^{q-1}(E_h)\to H^q(K_n)
+\to H^q(E_n)\to H^q(E_h)
+\]">\[
+H^{q-1}(E_n)\to H^{q-1}(E_h)\to H^q(K_n)
+\to H^q(E_n)\to H^q(E_h)
+\]</span>
+then gives <span class="math" data-tex="\(H^q(K_n)=0\)">\(H^q(K_n)=0\)</span> for <span class="math" data-tex="\(q\geq-h\)">\(q\geq-h\)</span>. At <span class="math" data-tex="\(q=-h\)">\(q=-h\)</span>, the needed preceding surjection has zero target <span class="math" data-tex="\(H^{-h-1}(E_h)\)">\(H^{-h-1}(E_h)\)</span>; this verifies the endpoint separately. The maps of kernels remain degreewise split epic: a graded section of <span class="math" data-tex="\(E_{n+1}\to E_n\)">\(E_{n+1}\to E_n\)</span> sends <span class="math" data-tex="\(\ker(E_n\to E_h)\)">\(\ker(E_n\to E_h)\)</span> into <span class="math" data-tex="\(\ker(E_{n+1}\to E_h)\)">\(\ker(E_{n+1}\to E_h)\)</span>.</p>
+<p>In each degree a graded section of <span class="math" data-tex="\(E\to E_h\)">\(E\to E_h\)</span> can be constructed recursively, starting with an element at stage <span class="math" data-tex="\(h\)">\(h\)</span> and lifting it by the sections of the transitions. The coordinates are finite composites of morphisms from <span class="math" data-tex="\(E_h\)">\(E_h\)</span>. Thus there is a degreewise split exact sequence
+<span class="math math-display" data-tex="\[
+0\to\lim_{n&gt;h}K_n\to E\to E_h\to0.
+\]">\[
+0\to\lim_{n&gt;h}K_n\to E\to E_h\to0.
+\]</span></p>
+<p>Corollary 3.2, with <span class="math" data-tex="\(a=-h\)">\(a=-h\)</span>, implies that the kernel has zero cohomology for <span class="math" data-tex="\(q&gt;-h+k+2\)">\(q&gt;-h+k+2\)</span>. Its long exact sequence therefore gives
+<span class="math math-display" data-tex="\[
+H^q(E)\xrightarrow{\sim}H^q(E_h)
+\quad(q\geq-h+k+3).
+\]">\[
+H^q(E)\xrightarrow{\sim}H^q(E_h)
+\quad(q\geq-h+k+3).
+\]</span></p>
+<p>For any fixed <span class="math" data-tex="\(q\)">\(q\)</span>, choose <span class="math" data-tex="\(h\geq\max(0,k+3-q)\)">\(h\geq\max(0,k+3-q)\)</span>. The commuting resolution square identifies the composite <span class="math" data-tex="\(H^q(X)\to H^q(E)\to H^q(E_h)\)">\(H^q(X)\to H^q(E)\to H^q(E_h)\)</span> with the isomorphism furnished by <span class="math" data-tex="\(\lambda_h:T_h\to E_h\)">\(\lambda_h:T_h\to E_h\)</span>; also <span class="math" data-tex="\(q\geq-h\)">\(q\geq-h\)</span>. Hence <span class="math" data-tex="\(H^q(X)\to H^q(E)\)">\(H^q(X)\to H^q(E)\)</span> is an isomorphism. Proposition 2.2 gives DG-injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bounds used in this proof are sufficient bounds, not optimality claims.</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Uniform cohomology vanishing used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(K_n\)">\(K_n\)</span></td>
+<td><span class="math" data-tex="\(q\geq a\)">\(q\geq a\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\prod_nK_n\)">\(\prod_nK_n\)</span></td>
+<td><span class="math" data-tex="\(q&gt;a+k+1\)">\(q&gt;a+k+1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\lim_nK_n\)">\(\lim_nK_n\)</span></td>
+<td><span class="math" data-tex="\(q&gt;a+k+2\)">\(q&gt;a+k+2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(E\to E_h\)">\(E\to E_h\)</span></td>
+<td>isomorphism for <span class="math" data-tex="\(q\geq-h+k+3\)">\(q\geq-h+k+3\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-products-and-cartan-eilenberg-totalization">4. Products and Cartan–Eilenberg totalization</h2>
+<p>A Cartan–Eilenberg injective resolution of <span class="math" data-tex="\(F\)">\(F\)</span> is a bicomplex <span class="math" data-tex="\(C^{p,q}\)">\(C^{p,q}\)</span>, <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span>, with an augmentation <span class="math" data-tex="\(F^q\to C^{0,q}\)">\(F^q\to C^{0,q}\)</span>. Its vertical columns resolve the terms of <span class="math" data-tex="\(F\)">\(F\)</span>, and the vertical complexes of horizontal boundaries, cycles and cohomology resolve respectively <span class="math" data-tex="\(B^qF,Z^qF,H^qF\)">\(B^qF,Z^qF,H^qF\)</span>. These resolutions have injective terms. We use anticommuting horizontal and vertical differentials and the product totalization
+<span class="math math-display" data-tex="\[
+\operatorname{Tot}^{\,n}C=\prod_{p+q=n,\ p\geq0}C^{p,q},
+\qquad d_{\operatorname{Tot}}=d_h+d_v.
+\]">\[
+\operatorname{Tot}^{\,n}C=\prod_{p+q=n,\ p\geq0}C^{p,q},
+\qquad d_{\operatorname{Tot}}=d_h+d_v.
+\]</span>
+Each output coordinate of the differential uses two input coordinates, so the formula defines a map of products.</p>
+<p>Such a resolution exists. Here are the construction details needed for the totalization argument. For <span class="math" data-tex="\(0\to A\to B\to D\to0\)">\(0\to A\to B\to D\to0\)</span>, given injective resolutions of <span class="math" data-tex="\(A,D\)">\(A,D\)</span>, extend <span class="math" data-tex="\(A\to I_A^0\)">\(A\to I_A^0\)</span> to <span class="math" data-tex="\(B\to I_A^0\)">\(B\to I_A^0\)</span>, and combine it with <span class="math" data-tex="\(B\to D\to I_D^0\)">\(B\to D\to I_D^0\)</span>. The resulting <span class="math" data-tex="\(B\to I_A^0\oplus I_D^0\)">\(B\to I_A^0\oplus I_D^0\)</span> is monic: its kernel lies in <span class="math" data-tex="\(A\)">\(A\)</span>, where the first map is monic. The cokernels form a short exact sequence <span class="math" data-tex="\(0\to A_1\to B_1\to D_1\to0\)">\(0\to A_1\to B_1\to D_1\to0\)</span>, by the kernel–cokernel argument. Repeat on that sequence. Composing each quotient map with the next embedding defines the differentials. This proves the injective horseshoe construction with split columns.</p>
+<p>Choose resolutions of <span class="math" data-tex="\(B^qF\)">\(B^qF\)</span> and <span class="math" data-tex="\(H^qF\)">\(H^qF\)</span>. Apply the horseshoe first to <span class="math" data-tex="\(0\to B^qF\to Z^qF\to H^qF\to0\)">\(0\to B^qF\to Z^qF\to H^qF\to0\)</span>, then to <span class="math" data-tex="\(0\to Z^qF\to F^q\to B^{q+1}F\to0\)">\(0\to Z^qF\to F^q\to B^{q+1}F\to0\)</span>. The terms <span class="math" data-tex="\(C^{p,q}\)">\(C^{p,q}\)</span> have graded decompositions
+<span class="math math-display" data-tex="\[
+C^{p,q}=I_{B^q}^{p}\oplus I_{H^q}^{p}\oplus I_{B^{q+1}}^{p}.
+\]">\[
+C^{p,q}=I_{B^q}^{p}\oplus I_{H^q}^{p}\oplus I_{B^{q+1}}^{p}.
+\]</span>
+The horizontal differential projects to the last summand and includes it as the first summand in column <span class="math" data-tex="\(q+1\)">\(q+1\)</span>. Its square is zero; its boundary, cycle and cohomology objects are respectively the indicated <span class="math" data-tex="\(B\)">\(B\)</span>, <span class="math" data-tex="\(B\oplus H\)">\(B\oplus H\)</span>, and <span class="math" data-tex="\(H\)">\(H\)</span> summands, hence injective. The horseshoe differentials commute with those inclusions and projections. Multiplying the vertical differential in column <span class="math" data-tex="\(q\)">\(q\)</span> by <span class="math" data-tex="\((-1)^q\)">\((-1)^q\)</span> makes the two differentials anticommute. This verifies all resolution conditions.</p>
+<p><strong>Theorem 4.1 (valid product totalization).</strong> Under <span class="math" data-tex="\(\mathrm{AB4}^{*}\!-\!k\)">\(\mathrm{AB4}^{*}\!-\!k\)</span> for finite <span class="math" data-tex="\(k\)">\(k\)</span>, the augmentation <span class="math" data-tex="\(F\to\operatorname{Tot}C\)">\(F\to\operatorname{Tot}C\)</span> of any Cartan–Eilenberg injective resolution is a DG-injective resolution, even if <span class="math" data-tex="\(F\)">\(F\)</span> is unbounded.</p>
+<p><strong>Proof.</strong> For a lower bound <span class="math" data-tex="\(b\)">\(b\)</span>, replace the horizontal complex in each row by its good lower truncation at <span class="math" data-tex="\(b\)">\(b\)</span>: put zero in columns <span class="math" data-tex="\(q&lt;b\)">\(q&lt;b\)</span>, put <span class="math" data-tex="\(C^{p,b}/B^b(C^{p,\bullet})\)">\(C^{p,b}/B^b(C^{p,\bullet})\)</span> at <span class="math" data-tex="\(q=b\)">\(q=b\)</span>, and leave <span class="math" data-tex="\(q&gt;b\)">\(q&gt;b\)</span> unchanged. Call the resulting bicomplex <span class="math" data-tex="\(C_{\geq b}\)">\(C_{\geq b}\)</span>. Because the boundary, cycle and cohomology terms are injective, their row sequences split; the quotient terms at <span class="math" data-tex="\(b\)">\(b\)</span> are injective. The vertical quotient column resolves <span class="math" data-tex="\(F^b/B^bF\)">\(F^b/B^bF\)</span>, by the short exact sequences of vertical resolutions. The other columns retain their resolutions. This is a Cartan–Eilenberg resolution of <span class="math" data-tex="\(\tau^{\geq b}F\)">\(\tau^{\geq b}F\)</span>.</p>
+<p>In the region <span class="math" data-tex="\(p\geq0,q\geq b\)">\(p\geq0,q\geq b\)</span>, every total degree has finitely many terms. Exactness of its augmentation follows by finite elimination in the augmented columns. Specifically include <span class="math" data-tex="\(F^q\)">\(F^q\)</span> in vertical degree <span class="math" data-tex="\(p=-1\)">\(p=-1\)</span>. For a total cycle, its component in the least occupied <span class="math" data-tex="\(q\)">\(q\)</span> is a vertical cycle. Column exactness supplies a vertical preimage, whose total boundary removes that component and can only add a component in column <span class="math" data-tex="\(q+1\)">\(q+1\)</span>. Repeating terminates: in a fixed total degree, <span class="math" data-tex="\(p\geq-1\)">\(p\geq-1\)</span> bounds <span class="math" data-tex="\(q\)">\(q\)</span> above. Thus the augmented total complex is acyclic, proving the quasi-isomorphism. Its unaugmented total complex is bounded below with injective terms, so is DG-injective.</p>
+<p>The maps <span class="math" data-tex="\(\operatorname{Tot}C_{\geq-n-1}\to\operatorname{Tot}C_{\geq-n}\)">\(\operatorname{Tot}C_{\geq-n-1}\to\operatorname{Tot}C_{\geq-n}\)</span> are degreewise split epic. They discard the lowest column and quotient the new boundary column by its injective boundary summand; both operations have graded sections. The augmentations form a resolution tower of <span class="math" data-tex="\(\tau^{\geq-n}F\)">\(\tau^{\geq-n}F\)</span>. In each degree its inverse limit is the full product totalization: every fixed <span class="math" data-tex="\(C^{p,q}\)">\(C^{p,q}\)</span> is retained unchanged once the cut is below <span class="math" data-tex="\(q\)">\(q\)</span>, and compatible finite-coordinate tuples are precisely tuples in the product. Theorem 3.3 now proves the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The finite elimination just used cannot be applied directly to an unbounded horizontal complex: a correction could continue into infinitely many columns. The inverse-limit theorem supplies the missing justification under its stated hypothesis.</p>
+<h2 id="5-how-an-obstruction-survives">5. How an obstruction survives</h2>
+<p>Here is a conditional test for failure of a diagonal augmentation.</p>
+<p><strong>Proposition 5.1 (diagonal obstruction criterion).</strong> Let <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> be an abelian category embedded fully in <span class="math" data-tex="\(R\)">\(R\)</span>-modules, with exact quotient functor <span class="math" data-tex="\(Q:\operatorname{Mod}(R)\to\mathcal G\)">\(Q:\operatorname{Mod}(R)\to\mathcal G\)</span>, left adjoint to the embedding, and kernel a torsion class <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Suppose products in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> are <span class="math" data-tex="\(Q\)">\(Q\)</span> of module products. Let <span class="math" data-tex="\(M\hookrightarrow I^\bullet\)">\(M\hookrightarrow I^\bullet\)</span> be an injective resolution in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> with <span class="math" data-tex="\(I^q=0\)">\(I^q=0\)</span> for <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>, viewed in modules, with
+<span class="math math-display" data-tex="\[
+M\xrightarrow{\sim}H_R^0(I),\qquad H_R^j(I)=T_j\in\mathcal T\quad(j&gt;0),
+\]">\[
+M\xrightarrow{\sim}H_R^0(I),\qquad H_R^j(I)=T_j\in\mathcal T\quad(j&gt;0),
+\]</span>
+If <span class="math" data-tex="\(\prod_{j&gt;0}T_j\notin\mathcal T\)">\(\prod_{j&gt;0}T_j\notin\mathcal T\)</span>, then the diagonal map from the complex having <span class="math" data-tex="\(M\)">\(M\)</span> in every integer degree and zero differential to
+<span class="math" data-tex="\(\prod_{i\in\mathbb Z}I[-i]\)">\(\prod_{i\in\mathbb Z}I[-i]\)</span>, computed in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, is not a quasi-isomorphism. Nevertheless its target is K-injective, and it is the limit of valid bounded-below partial resolutions with split-epic transitions.</p>
+<p><strong>Proof.</strong> Module products are exact, so their cohomology is computed coordinatewise. In degree <span class="math" data-tex="\(n\)">\(n\)</span>, the module product <span class="math" data-tex="\(J=\prod_{i\in\mathbb Z}I[-i]\)">\(J=\prod_{i\in\mathbb Z}I[-i]\)</span> has
+<span class="math math-display" data-tex="\[
+H_R^n(J)=M\times\prod_{j&gt;0}T_j.
+\]">\[
+H_R^n(J)=M\times\prod_{j&gt;0}T_j.
+\]</span>
+The diagonal map induces inclusion of the <span class="math" data-tex="\(M\)">\(M\)</span> coordinate. Its module cone therefore has cohomology <span class="math" data-tex="\(\prod_{j&gt;0}T_j\)">\(\prod_{j&gt;0}T_j\)</span> in every degree. Exactness of <span class="math" data-tex="\(Q\)">\(Q\)</span> preserves kernels, cokernels and the cone, so its cone in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> has cohomology <span class="math" data-tex="\(Q(\prod_{j&gt;0}T_j)\ne0\)">\(Q(\prod_{j&gt;0}T_j)\ne0\)</span>. Thus it is not a quasi-isomorphism.</p>
+<p>The partial product <span class="math" data-tex="\(\prod_{i\geq-h}I[-i]\)">\(\prod_{i\geq-h}I[-i]\)</span> is locally finite in each degree, since <span class="math" data-tex="\(I\)">\(I\)</span> starts in degree zero. It is a bounded-below injective resolution of the corresponding lower truncation of the zero-differential complex. The transitions are projections, with kernel the additional shifted copy of <span class="math" data-tex="\(I\)">\(I\)</span>. Their inverse limit is the full product. The product Hom argument proves its K-injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Proposition 5.1 identifies a sufficient obstruction under its explicit hypotheses. The lesson has not constructed a category and resolution satisfying all those hypotheses. Sections 1–4 prove that a split resolution tower has a DG-injective limit target and that its augmentation is a quasi-isomorphism under the stated finite higher-product-dimension hypothesis. The exact-filtered-union proof in the earlier Grothendieck-category lesson establishes existence independently of that hypothesis.</p>
+<p>For further study of examples, see Herbera–Pitsch–Saorín–Virili, <a href="https://arxiv.org/html/2407.09741v3#S3">§3</a>, and Chachólski, Neeman, Pitsch and Scherer, <a href="https://arxiv.org/abs/1702.05357"><em>Relative homological algebra via truncations</em>, §8</a>. These are optional reading routes; their example calculations are not used as proved results here.</p>
+<h2 id="6-finite-coresolutions-as-a-source-of-the-hypothesis">6. Finite coresolutions as a source of the hypothesis</h2>
+<p>Read Proposition 6.1 now. Before Theorem 6.2, continue with Sections 1–2 of <a href="quasi-coherent-sheaves-and-concentrated-maps.html#1-affine-sheaves-and-localization">Quasi-coherent sheaves and concentrated scheme maps</a>, which prove its scheme prerequisites, then return here. The tower construction needed later in that lesson is already proved in Sections 1–2 above.</p>
+<h3 id="finite-coresolutions">Finite coresolutions</h3>
+<p><strong>Proposition 6.1.</strong> Suppose there is an objectwise exact sequence of endofunctors
+<span class="math math-display" data-tex="\[
+0\to1_{\mathcal A}\to F_1\to\cdots\to F_{n+1}\to0
+\]">\[
+0\to1_{\mathcal A}\to F_1\to\cdots\to F_{n+1}\to0
+\]</span>
+and every family <span class="math" data-tex="\((F_iA_j)_j\)">\((F_iA_j)_j\)</span> is product-acyclic, meaning its higher derived products vanish. Then <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> satisfies <span class="math" data-tex="\(\mathrm{AB4}^{*}\!-\!n\)">\(\mathrm{AB4}^{*}\!-\!n\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(K_1=1_{\mathcal A}\)">\(K_1=1_{\mathcal A}\)</span> and <span class="math" data-tex="\(K_{n+1}=F_{n+1}\)">\(K_{n+1}=F_{n+1}\)</span>; the intermediate kernels give <span class="math" data-tex="\(0\to K_i\to F_i\to K_{i+1}\to0\)">\(0\to K_i\to F_i\to K_{i+1}\to0\)</span>. Apply the long exact derived-product sequence to each family. For <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>, acyclicity of <span class="math" data-tex="\(F_i\)">\(F_i\)</span> identifies
+<span class="math math-display" data-tex="\[
+R^q\prod_J K_i(A_j)=R^{q-1}\prod_J K_{i+1}(A_j).
+\]">\[
+R^q\prod_J K_i(A_j)=R^{q-1}\prod_J K_{i+1}(A_j).
+\]</span>
+If <span class="math" data-tex="\(q&gt;n\)">\(q&gt;n\)</span>, repeat this <span class="math" data-tex="\(n\)">\(n\)</span> times to obtain <span class="math" data-tex="\(R^{q-n}\prod_J F_{n+1}(A_j)=0\)">\(R^{q-n}\prod_J F_{n+1}(A_j)=0\)</span>. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the given sequence identifies the identity with <span class="math" data-tex="\(F_1\)">\(F_1\)</span>, so acyclicity itself gives exact products. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the following geometric application use <a href="quasi-coherent-sheaves-and-concentrated-maps.html#1-affine-sheaves-and-localization">Quasi-coherent sheaves and concentrated scheme maps, Theorem 1.2 and Proposition 1.3</a> for the exact affine module equivalence, localization and restriction formulas. Its <a href="quasi-coherent-sheaves-and-concentrated-maps.html#2-small-submodules-and-enough-injectives">Theorem 2.1 and Lemma 2.2</a> prove Gabber's small-submodule construction, the Grothendieck-category consequence and the existence of quasi-coherent limits. These full scheme prerequisites are needed for Theorem 6.2; Sections 1–5 and Proposition 6.1 require none of them.</p>
+<h3 id="finite-affine-cover-bound">Finite affine-cover bound</h3>
+<p><strong>Theorem 6.2 (finite affine-cover bound).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be a quasi-compact semi-separated scheme with an affine open cover <span class="math" data-tex="\(V_1,\ldots,V_{n+1}\)">\(V_1,\ldots,V_{n+1}\)</span>, where <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. Then <span class="math" data-tex="\(\operatorname{QCoh}(X)\)">\(\operatorname{QCoh}(X)\)</span> satisfies <span class="math" data-tex="\(\mathrm{AB4}^{*}\!-\!n\)">\(\mathrm{AB4}^{*}\!-\!n\)</span>. Thus the tower and Cartan–Eilenberg resolution theorems apply to all unbounded complexes in this category.</p>
+<p><strong>Proof.</strong> The cited Theorem 2.1 and Lemma 2.2 make this category Grothendieck and supply all limits and enough injectives. Semi-separatedness says intersections of affine opens are affine. For any such intersection <span class="math" data-tex="\(V\)">\(V\)</span>, let <span class="math" data-tex="\(j_V:V\hookrightarrow X\)">\(j_V:V\hookrightarrow X\)</span>. Restriction <span class="math" data-tex="\(j_V^*\)">\(j_V^*\)</span> is exact and is left adjoint to <span class="math" data-tex="\(j_{V*}\)">\(j_{V*}\)</span> on quasi-coherent sheaves. The latter preserves quasi-coherence and is exact in this category: on an affine open <span class="math" data-tex="\(W\subset X\)">\(W\subset X\)</span>, its sections are sections of the original quasi-coherent sheaf on the affine <span class="math" data-tex="\(W\cap V\)">\(W\cap V\)</span>. On <span class="math" data-tex="\(D(f)\subset W\)">\(D(f)\subset W\)</span> these sections are the localization at <span class="math" data-tex="\(f\)">\(f\)</span>, verifying quasi-coherence, and the affine equivalence verifies exactness. This argument applies to every affine <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>Being a right adjoint to exact restriction, <span class="math" data-tex="\(j_{V*}\)">\(j_{V*}\)</span> preserves products and injectives. For a family <span class="math" data-tex="\(A_\lambda\)">\(A_\lambda\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>, resolve each by injectives in <span class="math" data-tex="\(\operatorname{QCoh}(V)\)">\(\operatorname{QCoh}(V)\)</span>. Pushing those resolutions forward still gives injective resolutions. Product preservation and exactness give
+<span class="math math-display" data-tex="\[
+R^q\prod_{\operatorname{QCoh}(X)}(j_{V*}A_\lambda)
+=j_{V*}R^q\prod_{\operatorname{QCoh}(V)}(A_\lambda)=0\quad(q&gt;0),
+\]">\[
+R^q\prod_{\operatorname{QCoh}(X)}(j_{V*}A_\lambda)
+=j_{V*}R^q\prod_{\operatorname{QCoh}(V)}(A_\lambda)=0\quad(q&gt;0),
+\]</span>
+since the affine equivalence identifies the latter products with exact module products.</p>
+<p>The ordered Čech sequence for the finite cover is
+<span class="math math-display" data-tex="\[
+0\to F\to
+\bigoplus_i j_{V_i*}F|_{V_i}\to
+\bigoplus_{i&lt;j}j_{V_i\cap V_j*}F|_{V_i\cap V_j}
+\to\cdots\to j_{V_1\cap\cdots\cap V_{n+1}*}F|_{V_1\cap\cdots\cap V_{n+1}}\to0.
+\]">\[
+0\to F\to
+\bigoplus_i j_{V_i*}F|_{V_i}\to
+\bigoplus_{i&lt;j}j_{V_i\cap V_j*}F|_{V_i\cap V_j}
+\to\cdots\to j_{V_1\cap\cdots\cap V_{n+1}*}F|_{V_1\cap\cdots\cap V_{n+1}}\to0.
+\]</span>
+The differentials are alternating restrictions. It is exact as a sequence of sheaves: restrict to a cover member <span class="math" data-tex="\(V_i\)">\(V_i\)</span>, and insertion of that index into a strictly ordered tuple, with the sign of its position, contracts the augmented Čech complex. Intersections with <span class="math" data-tex="\(V_i\)">\(V_i\)</span> identify the relevant restricted direct-image terms, so this contraction is a sheaf-map identity on that open. Exactness is local, hence holds globally. Empty intersections contribute zero. Every term is quasi-coherent.</p>
+<p>Let the <span class="math" data-tex="\(n+1\)">\(n+1\)</span> Čech endofunctors be <span class="math" data-tex="\(F_1,\ldots,F_{n+1}\)">\(F_1,\ldots,F_{n+1}\)</span>. Every family of their values is product-acyclic by the preceding calculation and finite additivity of derived products: there are only finitely many intersections in each term. Proposition 6.1 gives <span class="math" data-tex="\(\mathrm{AB4}^{*}\!-\!n\)">\(\mathrm{AB4}^{*}\!-\!n\)</span>, with the same value of <span class="math" data-tex="\(n\)">\(n\)</span> as the cover bound. Apply Theorems 3.3 and 4.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the bound proved by Herbera–Pitsch–Saorín–Virili in <a href="https://arxiv.org/html/2407.09741v3#S8.SS7">§8.7</a>. It concerns products and direct images <em>within</em> the quasi-coherent category. The same open direct image on all module sheaves need not be exact.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> In Theorem 3.3, give a sufficient stage for computing <span class="math" data-tex="\(H^{-10}(X)\)">\(H^{-10}(X)\)</span> when <span class="math" data-tex="\(k=2\)">\(k=2\)</span>. Why is stage <span class="math" data-tex="\(10\)">\(10\)</span> not justified by the displayed estimate?</p>
+<p><strong>Solution.</strong> The estimate is <span class="math" data-tex="\(q\geq-h+k+3\)">\(q\geq-h+k+3\)</span>. With <span class="math" data-tex="\(q=-10,k=2\)">\(q=-10,k=2\)</span>, it gives <span class="math" data-tex="\(h\geq15\)">\(h\geq15\)</span>. Stage <span class="math" data-tex="\(10\)">\(10\)</span> identifies the cohomology of its truncation with that of <span class="math" data-tex="\(X\)">\(X\)</span>, but the estimate comparing that stage with the inverse limit only starts in degree <span class="math" data-tex="\(-5\)">\(-5\)</span>. The distinction is between correct finite truncation and justified passage to the limit.</p>
+<p><strong>Exercise 2.</strong> Why does Lemma 2.1 not prove that inverse limits are exact in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>?</p>
+<p><strong>Solution.</strong> It describes one tower whose transitions have graded sections. In a short exact sequence of arbitrary towers, the products entering the three sequences need not preserve epimorphisms, and the corresponding map of kernels need not be epic. Neither the splitting of <span class="math" data-tex="\(1-t\)">\(1-t\)</span> for these particular complexes nor its generally non-chain sections establishes exactness of the inverse-limit functor.</p>
+<p><strong>Exercise 3.</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be any associative unital ring. Which existence proof applies to all unbounded complexes of left <span class="math" data-tex="\(R\)">\(R\)</span>-modules?</p>
+<p><strong>Solution.</strong> Module products are exact by coordinatewise lifting, so <span class="math" data-tex="\(\mathrm{AB4}^{*}\!-\!0\)">\(\mathrm{AB4}^{*}\!-\!0\)</span> holds; modules have enough injectives and all limits. Theorem 3.3 therefore gives the tower proof. Module categories are also Grothendieck, so the earlier filtered-union proof applies independently. The two proofs use different hypotheses, both satisfied here.</p>
+<p><strong>Exercise 4.</strong> Does the obstruction criterion imply that a product of K-injectives fails to be K-injective?</p>
+<p><strong>Solution.</strong> No. Its target is K-injective by Proposition 2.2 and the product Hom argument. The cone calculation proves that the chosen map into that target fails to be a quasi-isomorphism. A resolution requires both the target property and the quasi-isomorphism.</p>
+<footer><a href="src/inverse-limits-and-unbounded-resolutions.md">Editable Markdown source</a> · <span class="unlinked">Sources and authorship</span></footer></main></body></html>

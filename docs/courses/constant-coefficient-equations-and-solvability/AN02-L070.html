@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Evolution operators in a component of equal strength</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="evolution-operators-in-a-component-of-equal-strength">Evolution operators in a component of equal strength</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Equal strength measures how much regularity a symbol controls. It does not determine which time direction permits supported solutions. The forward and backward heat symbols have identical derivative norms but different supported-solvability behavior. We prove that this behavior is constant on each connected component of an equal-strength class. The proof needs a uniform small-perturbation estimate and both openness and closedness; openness alone would not suffice.</p>
+<p>Read <a href="AN02-L069.html">Analytic root barriers and supported solvability</a>, <a href="AN02-L064.html">Weighted control on the negative half-space</a>, <a href="AN02-L006.html">Rescaled symbols and stable strength</a>, <a href="AN02-L042.html">Continuous functionals, test families and compact limits</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz Fourier inversion; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies finite coordinates, scalar calculus and compact cutoffs; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the norm, extension and integration estimates.</p>
+<p>One prerequisite remains planned in <a href="prerequisites/planned-foundation-proofs.html">Distributions, kernels and analytic singularities</a>: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic <span class="math" data-tex="\(C^1\)">\(C^1\)</span> surface vanishes near that surface. The uses of this Holmgren theorem are conditional on that planned proof.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs use the linked prerequisite lessons and any stated planned theorem.</p>
+<h2 id="the-topology-of-an-equal-strength-class">The topology of an equal-strength class</h2>
+<p>Fix <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span>, of degree <span class="math" data-tex="\(m\)">\(m\)</span>, and a half-space <span class="math" data-tex="\(H=\{t\ge0\}\)">\(H=\{t\ge0\}\)</span>. Write <span class="math" data-tex="\(S_P\)">\(S_P\)</span> for the exact polynomial derivative norm. Let <span class="math" data-tex="\(W_P\)">\(W_P\)</span> be the vector space of polynomials weaker than <span class="math" data-tex="\(P\)">\(P\)</span>, and let <span class="math" data-tex="\(\mathcal E_P\)">\(\mathcal E_P\)</span> be the set of nonzero polynomials of equal strength to <span class="math" data-tex="\(P\)">\(P\)</span>. Define
+<span class="math math-display" data-tex="\[
+ \|R\|_P=\sup_{\xi\in\mathbb R^n}\frac{S_R(\xi)}{S_P(\xi)},
+                       \qquad R\in W_P.
+ \tag{1}
+\]">\[
+ \|R\|_P=\sup_{\xi\in\mathbb R^n}\frac{S_R(\xi)}{S_P(\xi)},
+                       \qquad R\in W_P.
+ \tag{1}
+\]</span>
+This is a norm. The derivative-vector triangle inequality proves its triangle inequality, and its zero value forces every coefficient of <span class="math" data-tex="\(R\)">\(R\)</span> to vanish. The written degree lemma puts <span class="math" data-tex="\(W_P\)">\(W_P\)</span> in the finite-dimensional space of degree at most <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>Its norm topology is exactly its coefficient topology. Evaluation of the full jet at zero gives <span class="math" data-tex="\(S_R(0)\le S_P(0)\|R\|_P\)">\(S_R(0)\le S_P(0)\|R\|_P\)</span>, which bounds every coefficient by a constant times this norm. Conversely choose a finite basis of <span class="math" data-tex="\(W_P\)">\(W_P\)</span>. The triangle inequality bounds the norm of a linear combination by the sum of the absolute coefficients times the fixed basis norms; finite-dimensional coordinate changes give the reverse topological implication. Give <span class="math" data-tex="\(\mathcal E_P\)">\(\mathcal E_P\)</span> the resulting relative topology. Every member has degree exactly <span class="math" data-tex="\(m\)">\(m\)</span>, by applying the degree lemma in both directions.</p>
+<p>Call a symbol an <strong>evolution symbol</strong> for <span class="math" data-tex="\(H\)">\(H\)</span> when it satisfies the five equivalent conditions already proved. For degree zero every nonzero constant is an evolution symbol, since its fundamental solution is its reciprocal times <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>; the theorem is immediate. Assume <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> below.</p>
+<h2 id="a-uniform-normalized-estimate">A uniform normalized estimate</h2>
+<p>Fix once and for all a bounded open neighborhood <span class="math" data-tex="\(X\)">\(X\)</span> of zero. We use the exact negative-half-space restriction norm with exponent <span class="math" data-tex="\(p=1\)">\(p=1\)</span>. This choice controls point evaluation by the Fourier <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm. Suppose a nonzero degree-at-most-<span class="math" data-tex="\(m\)">\(m\)</span> symbol <span class="math" data-tex="\(A(z,s)\)">\(A(z,s)\)</span> obeys
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau\text{ analytic on }B(c,1),\\
+\quad A(z,\tau(z))=0,\\
+\quad c\text{ real}
+             \\
+\quad\Longrightarrow\\
+\quad \sup_{B(c,1)}\operatorname{Im}\tau\ge2.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+\tau\text{ analytic on }B(c,1),\\
+\quad A(z,\tau(z))=0,\\
+\quad c\text{ real}
+             \\
+\quad\Longrightarrow\\
+\quad \sup_{B(c,1)}\operatorname{Im}\tau\ge2.
+\end{gathered}
+\tag{2}
+\]</span>
+For symbols satisfying this condition, the <a href="AN02-L064.html">Weighted control on the negative half-space</a> proof gives constants <span class="math" data-tex="\(C_*,\kappa_*\)">\(C_*,\kappa_*\)</span>, depending only on <span class="math" data-tex="\(n,m\)">\(n,m\)</span>, for which
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|v\|^-_{1,1}\le C_*e^{\kappa_*L}
+                   \|A(D)v\|^-_{1,1/S_A},
+        \\
+\qquad v\in C_c^\infty,\\
+\quad
+        |x|\le L\text{ on }\operatorname{supp}v\cap\{t&lt;0\}.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+\|v\|^-_{1,1}\le C_*e^{\kappa_*L}
+                   \|A(D)v\|^-_{1,1/S_A},
+        \\
+\qquad v\in C_c^\infty,\\
+\quad
+        |x|\le L\text{ on }\operatorname{supp}v\cap\{t&lt;0\}.
+\end{gathered}
+\tag{3}
+\]</span>
+Here uniformity means independence of the coefficients of <span class="math" data-tex="\(A\)">\(A\)</span>, including their sizes. We justify that strengthening of the earlier coefficient-dependent statement by tracing its proof.</p>
+<p>The finite jet-shift matrices depend only on <span class="math" data-tex="\(n,m\)">\(n,m\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{S_A(\xi+h)}{S_A(\xi)}
+       \le(1+C_{n,m}|h|)^m,\\
+\qquad
+ \frac{S_A(\xi)}{S_A(\xi+h)}
+       \le(1+C_{n,m}|h|)^m
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+\frac{S_A(\xi+h)}{S_A(\xi)}
+       \le(1+C_{n,m}|h|)^m,\\
+\qquad
+ \frac{S_A(\xi)}{S_A(\xi+h)}
+       \le(1+C_{n,m}|h|)^m
+\end{gathered}
+\tag{4}
+\]</span>
+also at complex base points. Thus every reciprocal symbol weight used in <a href="AN02-L064.html">Weighted control on the negative half-space</a> has uniform moderation constants. For products of factors, the reciprocal product has exponent at most <span class="math" data-tex="\(m\)">\(m\)</span> and a uniform constant, since the sum of factor degrees is at most <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>For an irreducible factor of positive normal degree, the nonzero exceptional polynomial used in <a href="AN02-L062.html">Weighted estimates from analytic root branches</a> has a degree bounded solely by <span class="math" data-tex="\(m\)">\(m\)</span>. For example, the monic rescaling in L054 has coefficient degrees at most <span class="math" data-tex="\(m^2\)">\(m^2\)</span>; its Sylvester determinant has at most <span class="math" data-tex="\(2m-1\)">\(2m-1\)</span> rows. Multiplying by the leading coefficient still gives degree at most <span class="math" data-tex="\(m+2m^3\)">\(m+2m^3\)</span>. The <a href="AN02-L057.html">Regular balls, moving roots and complex gauges</a> zero-free-subball proof therefore has one permissible radius ratio for this entire degree-bounded family: it obtains its minimum on a unit coefficient sphere and a fixed real half-ball, so it never uses the unnormalized coefficient size.</p>
+<p>All regular-ball radii in <a href="AN02-L062.html">Weighted estimates from analytic root branches</a> can now be fixed with <span class="math" data-tex="\(A=1\)">\(A=1\)</span>. <a href="AN02-L060.html">Uniform bounds for algebraic analytic branches</a>'s branch comparison and positive-imaginary ball depend only on degree and these fixed concentric domains. <a href="AN02-L061.html">Root factors and the full symbol norm</a>'s factor norm and zero-free leading-coefficient ratios depend only on degree and radius ratios. <a href="AN02-L058.html">Weighted inversion on a half-line</a>'s inverse identity has constant one for every positive moderate weight. <a href="AN02-L059.html">Analytic norms and propagation on complex balls</a>'s interpolation power depends only on the fixed ball radii. There are at most <span class="math" data-tex="\(m\)">\(m\)</span> root-shift removals. Thus the constants and the positive exponent canceled in <a href="AN02-L062.html">equation 19 in Weighted estimates from analytic root branches</a>–<a href="AN02-L062.html">equation 21 in Weighted estimates from analytic root branches</a> have common finite bounds and a common positive lower bound, respectively.</p>
+<p><a href="AN02-L064.html">Weighted control on the negative half-space</a>'s spatial cutoff is a fixed chosen function; its frequency jet comparison uses(4). Its modulated window has a fixed Schwartz transform. The later <span class="math" data-tex="\(L^1\)">\(L^1\)</span> kernel integral uses only the uniform moderation constants just described. The exact <a href="AN02-L063.html">Disintegrating half-space restriction norms</a> disintegration and Young's inequality introduce no symbol coefficients. The finite product-norm comparison depends only on the factor degree bounds, and at most <span class="math" data-tex="\(m\)">\(m\)</span> nonconstant factors occur. Scalars cancel exactly. Tangential-only factors are covered by <a href="AN02-L062.html">Weighted estimates from analytic root branches</a>'s coefficient-ratio argument; zero tangential dimension uses its direct scalar-root argument. This proves(3) with the claimed uniform constants for every factorization and multiplicity.</p>
+<p>We also need a uniform estimate when the radius-one root height is merely at least minus one. Set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B(z,s)=A(z,s-3i),\\
+\qquad w(y)=e^{-3t}v(y).
+           \\
+\quad B(D)w=e^{-3t}A(D)v.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+B(z,s)=A(z,s-3i),\\
+\qquad w(y)=e^{-3t}v(y).
+           \\
+\quad B(D)w=e^{-3t}A(D)v.
+\end{gathered}
+\tag{5}
+\]</span>
+Every analytic root of <span class="math" data-tex="\(B\)">\(B\)</span> is an analytic root of <span class="math" data-tex="\(A\)">\(A\)</span> plus <span class="math" data-tex="\(3i\)">\(3i\)</span>; the hypothesis therefore becomes(2). The derivative norms <span class="math" data-tex="\(S_B,S_A\)">\(S_B,S_A\)</span> are uniformly comparable by the complex jet shift of size three. Choose one compact smooth cutoff equal to one near <span class="math" data-tex="\(\overline X\)">\(\overline X\)</span>. On negative-time restrictions of <span class="math" data-tex="\(v,w,A(D)v\)">\(v,w,A(D)v\)</span>, multiplication by the cutoff times <span class="math" data-tex="\(e^{3t}\)">\(e^{3t}\)</span> or <span class="math" data-tex="\(e^{-3t}\)">\(e^{-3t}\)</span> implements the indicated gauge and its inverse. These are fixed compact multipliers. The weighted multiplier theorem and(4) bound their actions uniformly on weights <span class="math" data-tex="\(1,1/S_A,1/S_B\)">\(1,1/S_A,1/S_B\)</span>.</p>
+<p>Take the fixed spatial bound of <span class="math" data-tex="\(X\)">\(X\)</span> in(3) and combine these comparisons. There is <span class="math" data-tex="\(C_0=C_0(n,m,X)&lt;\infty\)">\(C_0=C_0(n,m,X)&lt;\infty\)</span>, independent of <span class="math" data-tex="\(A\)">\(A\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|v\|^-_{1,1}\le C_0\|A(D)v\|^-_{1,1/S_A},
+                   \\
+\qquad v\in C_c^\infty(X),
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+\|v\|^-_{1,1}\le C_0\|A(D)v\|^-_{1,1/S_A},
+                   \\
+\qquad v\in C_c^\infty(X),
+\end{gathered}
+\tag{6}
+\]</span>
+whenever every radius-one normal-root branch has imaginary supremum at least minus one. Compact multipliers are used only on the relevant supported restrictions; no unbounded exponential is asserted to act on a global weighted space.</p>
+<h2 id="dilating-an-evolution-symbol-and-absorbing-a-weaker-perturbation">Dilating an evolution symbol and absorbing a weaker perturbation</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> now be any evolution symbol of degree <span class="math" data-tex="\(m\)">\(m\)</span>. <a href="AN02-L069.html">Analytic root barriers and supported solvability</a> and the full-frequency/tangential adapter give a tangential root radius <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and height <span class="math" data-tex="\(b\in\mathbb R\)">\(b\in\mathbb R\)</span>. Put <span class="math" data-tex="\(A_\epsilon(\xi)=A(\xi/\epsilon)\)">\(A_\epsilon(\xi)=A(\xi/\epsilon)\)</span>. An analytic root <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of <span class="math" data-tex="\(A_\epsilon\)">\(A_\epsilon\)</span> on <span class="math" data-tex="\(B(c,1)\)">\(B(c,1)\)</span> corresponds to the root <span class="math" data-tex="\(\tau(\epsilon z)/\epsilon\)">\(\tau(\epsilon z)/\epsilon\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(B(c/\epsilon,1/\epsilon)\)">\(B(c/\epsilon,1/\epsilon)\)</span>. When <span class="math" data-tex="\(1/\epsilon\ge a\)">\(1/\epsilon\ge a\)</span>, restrict to the concentric radius-<span class="math" data-tex="\(a\)">\(a\)</span> ball. Its height bound gives <span class="math" data-tex="\(\sup\operatorname{Im}\tau\ge\epsilon b\)">\(\sup\operatorname{Im}\tau\ge\epsilon b\)</span>. Choose <span class="math" data-tex="\(0&lt;\epsilon\le1\)">\(0&lt;\epsilon\le1\)</span> sufficiently small that also <span class="math" data-tex="\(\epsilon b\ge-1\)">\(\epsilon b\ge-1\)</span>. Then(6) holds for <span class="math" data-tex="\(A_\epsilon\)">\(A_\epsilon\)</span> with the same <span class="math" data-tex="\(C_0\)">\(C_0\)</span>.</p>
+<p>If <span class="math" data-tex="\(R\in W_A\)">\(R\in W_A\)</span> and <span class="math" data-tex="\(M=\|R\|_A\)">\(M=\|R\|_A\)</span>, the rescaled strength comparison yields a constant <span class="math" data-tex="\(C_1=C_1(n,m)\)">\(C_1=C_1(n,m)\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_{R_\epsilon}(\xi)
+   \\
+=S_R(\xi/\epsilon,1/\epsilon)
+   \\
+\le C_1 M S_A(\xi/\epsilon,1/\epsilon)
+   \\
+=C_1 M S_{A_\epsilon}(\xi),\\0&lt;\epsilon\le1.
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+S_{R_\epsilon}(\xi)
+   \\
+=S_R(\xi/\epsilon,1/\epsilon)
+   \\
+\le C_1 M S_A(\xi/\epsilon,1/\epsilon)
+   \\
+=C_1 M S_{A_\epsilon}(\xi),\\0&lt;\epsilon\le1.
+\end{gathered}
+\tag{7}
+\]</span>
+The constant is independent of the coefficients and of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>: the proof of the rescaled comparison uses degree-bounded coefficient norms and radius ratios at most two. If <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, the same inequality holds with <span class="math" data-tex="\(M=0\)">\(M=0\)</span>.</p>
+<p>For any Schwartz extension of <span class="math" data-tex="\(v\)">\(v\)</span>'s negative-time restriction, applying <span class="math" data-tex="\(R_\epsilon(D)\)">\(R_\epsilon(D)\)</span> gives an extension of the corresponding differential expression by locality. The pointwise Fourier multiplier bound from(7), followed by the extension infimum, gives
+<span class="math math-display" data-tex="\[
+ \|R_\epsilon(D)v\|^-_{1,1/S_{A_\epsilon}}
+                  \le C_1M\|v\|^-_{1,1}.
+ \tag{8}
+\]">\[
+ \|R_\epsilon(D)v\|^-_{1,1/S_{A_\epsilon}}
+                  \le C_1M\|v\|^-_{1,1}.
+ \tag{8}
+\]</span>
+Use the triangle inequality in(6) and absorb this term. Choose
+<span class="math" data-tex="\(\eta_0=\min(1/2,1/(2C_0C_1))&gt;0\)">\(\eta_0=\min(1/2,1/(2C_0C_1))&gt;0\)</span>. For <span class="math" data-tex="\(M&lt;\eta_0\)">\(M&lt;\eta_0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|v\|^-_{1,1}\le
+       2C_0\|(A_\epsilon+R_\epsilon)(D)v\|^-_{1,1/S_{A_\epsilon}},
+                             \\
+\qquad v\in C_c^\infty(X).
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+\|v\|^-_{1,1}\le
+       2C_0\|(A_\epsilon+R_\epsilon)(D)v\|^-_{1,1/S_{A_\epsilon}},
+                             \\
+\qquad v\in C_c^\infty(X).
+\end{gathered}
+\tag{9}
+\]</span>
+The smallness threshold depends only on <span class="math" data-tex="\(n,m,X\)">\(n,m,X\)</span>. Although the dilation parameter can depend on <span class="math" data-tex="\(A\)">\(A\)</span>, this threshold does not.</p>
+<h2 id="extracting-the-exact-compact-test-estimate">Extracting the exact compact test estimate</h2>
+<p>Every Schwartz extension <span class="math" data-tex="\(\widetilde v\)">\(\widetilde v\)</span> agreeing with <span class="math" data-tex="\(v\)">\(v\)</span> for <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span> also agrees at zero by continuity. Fourier inversion with our exact normalization therefore gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|v(0)|\le(2\pi)^{-n}\int|\widehat{\widetilde v}(\xi)|\,d\xi
+            =\|\widetilde v\|_{1,1},
+                  \\
+\qquad |v(0)|\le\|v\|^-_{1,1}.
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+|v(0)|\le(2\pi)^{-n}\int|\widehat{\widetilde v}(\xi)|\,d\xi
+            =\|\widetilde v\|_{1,1},
+                  \\
+\qquad |v(0)|\le\|v\|^-_{1,1}.
+\end{gathered}
+\tag{10}
+\]</span>
+Put <span class="math" data-tex="\(T_\epsilon=A_\epsilon+R_\epsilon\)">\(T_\epsilon=A_\epsilon+R_\epsilon\)</span>. On the range of <span class="math" data-tex="\(v\mapsto[T_\epsilon(D)v]\)">\(v\mapsto[T_\epsilon(D)v]\)</span> in the negative-restriction normed space with weight <span class="math" data-tex="\(1/S_{A_\epsilon}\)">\(1/S_{A_\epsilon}\)</span>, define
+<span class="math math-display" data-tex="\[
+              F([T_\epsilon(D)v])=v(0).
+ \tag{11}
+\]">\[
+              F([T_\epsilon(D)v])=v(0).
+ \tag{11}
+\]</span>
+Equations(9)–(10) make this well-defined and bounded. If two images coincide their difference has restriction norm zero, forcing the difference of the origin values to vanish. The written complex Hahn–Banach theorem extends <span class="math" data-tex="\(F\)">\(F\)</span> to the entire restriction space with the same bound.</p>
+<p>Choose a compact neighborhood <span class="math" data-tex="\(K\)">\(K\)</span> of zero inside <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span> equal to one near <span class="math" data-tex="\(K\)">\(K\)</span>. For smooth tests define
+<span class="math math-display" data-tex="\[
+                        U(\phi)=F([\chi\phi]).
+ \tag{12}
+\]">\[
+                        U(\phi)=F([\chi\phi]).
+ \tag{12}
+\]</span>
+This is a compactly supported distribution. Indeed <span class="math" data-tex="\(S_{A_\epsilon}\)">\(S_{A_\epsilon}\)</span> has a positive global lower bound; the full <span class="math" data-tex="\(B_{1,1}\)">\(B_{1,1}\)</span> norm of <span class="math" data-tex="\(\chi\phi\)">\(\chi\phi\)</span> is bounded by finitely many suprema of its derivatives on the fixed compact support, using integration by parts of order <span class="math" data-tex="\(2a&gt;n\)">\(2a&gt;n\)</span>. The restriction norm is at most the full norm. This proves the required finite-order bound for <span class="math" data-tex="\(U\)">\(U\)</span>. Its support is in <span class="math" data-tex="\(\operatorname{supp}\chi\cap\{t\le0\}\)">\(\operatorname{supp}\chi\cap\{t\le0\}\)</span>, since every test supported in <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> has zero negative restriction.</p>
+<p>For <span class="math" data-tex="\(v\in C_c^\infty\)">\(v\in C_c^\infty\)</span> supported in <span class="math" data-tex="\(K\)">\(K\)</span>, locality gives <span class="math" data-tex="\(T_\epsilon(D)v\)">\(T_\epsilon(D)v\)</span> supported in <span class="math" data-tex="\(K\)">\(K\)</span>, hence <span class="math" data-tex="\(U(T_\epsilon(D)v)=v(0)\)">\(U(T_\epsilon(D)v)=v(0)\)</span>. Apply <a href="AN02-L068.html">Supported fundamental solutions and test estimates</a>'s already proved compact negative-support finite-order estimate to <span class="math" data-tex="\(U\)">\(U\)</span>. For some finite integer <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|v(0)|\le C\sum_{|\alpha|\le J}
+          \sup_{\{t\le0\}}|D^\alpha T_\epsilon(D)v|,
+                    \\
+\qquad\operatorname{supp}v\subset K.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+|v(0)|\le C\sum_{|\alpha|\le J}
+          \sup_{\{t\le0\}}|D^\alpha T_\epsilon(D)v|,
+                    \\
+\qquad\operatorname{supp}v\subset K.
+\end{gathered}
+\tag{13}
+\]</span>
+This is exactly clause(ii), including its negative-side derivative seminorms. The constants here may depend on the symbol; their uniformity is unnecessary for that clause. This extraction uses a compact negative distribution and the finite-order reflection estimate. It assumes neither an attained restriction infimum nor a general smooth extension with uniform bounds.</p>
+<p>By the full equivalence, <span class="math" data-tex="\(T_\epsilon\)">\(T_\epsilon\)</span> is an evolution symbol. Undoing dilation preserves clause(ii) directly. For a test <span class="math" data-tex="\(u\)">\(u\)</span>, set <span class="math" data-tex="\(v(y)=u(\epsilon y)\)">\(v(y)=u(\epsilon y)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_\epsilon(D_y)v(y)=(A+R)(D_x)u(\epsilon y),\\D_y^\alpha T_\epsilon(D_y)v
+       \\
+=\epsilon^{|\alpha|}(D_x^\alpha(A+R)(D_x)u)(\epsilon y).
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+T_\epsilon(D_y)v(y)=(A+R)(D_x)u(\epsilon y),\\D_y^\alpha T_\epsilon(D_y)v
+       \\
+=\epsilon^{|\alpha|}(D_x^\alpha(A+R)(D_x)u)(\epsilon y).
+\end{gathered}
+\tag{14}
+\]</span>
+The test support changes from <span class="math" data-tex="\(K\)">\(K\)</span> to <span class="math" data-tex="\(\epsilon K\)">\(\epsilon K\)</span>, still a compact neighborhood of zero, and positive dilation preserves the half-space. Thus <span class="math" data-tex="\(A+R\)">\(A+R\)</span> satisfies(ii) and is an evolution symbol. Smallness <span class="math" data-tex="\(M&lt;1/2\)">\(M&lt;1/2\)</span> also gives <span class="math" data-tex="\(S_{A+R}\ge(1-M)S_A\)">\(S_{A+R}\ge(1-M)S_A\)</span>, so this symbol is nonzero and has equal strength to <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>We have proved the uniform perturbation statement: any evolution symbol of degree <span class="math" data-tex="\(m\)">\(m\)</span> remains an evolution symbol after a weaker perturbation of relative strength norm less than <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span>.</p>
+<h2 id="both-openness-and-closedness">Both openness and closedness</h2>
+<p>Let <span class="math" data-tex="\(\mathcal V\subset\mathcal E_P\)">\(\mathcal V\subset\mathcal E_P\)</span> consist of the evolution symbols. It is open. At <span class="math" data-tex="\(A\in\mathcal V\)">\(A\in\mathcal V\)</span>, equal strength gives <span class="math" data-tex="\(S_P\le C_A S_A\)">\(S_P\le C_A S_A\)</span>, and therefore
+<span class="math math-display" data-tex="\[
+                      \|R\|_A\le C_A\|R\|_P.
+ \tag{15}
+\]">\[
+                      \|R\|_A\le C_A\|R\|_P.
+ \tag{15}
+\]</span>
+Every sufficiently small displacement in <span class="math" data-tex="\(W_P\)">\(W_P\)</span> is weaker than <span class="math" data-tex="\(A\)">\(A\)</span> with norm less than <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span>, so the uniform perturbation statement applies.</p>
+<p>It is also closed in <span class="math" data-tex="\(\mathcal E_P\)">\(\mathcal E_P\)</span>. Suppose <span class="math" data-tex="\(A_j\in\mathcal V\)">\(A_j\in\mathcal V\)</span> tends to <span class="math" data-tex="\(A\in\mathcal E_P\)">\(A\in\mathcal E_P\)</span> in coefficient topology. Equation(15), now for this fixed limiting <span class="math" data-tex="\(A\)">\(A\)</span>, gives <span class="math" data-tex="\(d_j=\|A_j-A\|_A\to0\)">\(d_j=\|A_j-A\|_A\to0\)</span>. For <span class="math" data-tex="\(d_j&lt;1\)">\(d_j&lt;1\)</span>, the derivative-vector reverse triangle inequality gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_{A_j}\ge(1-d_j)S_A,\\
+\qquad
+             \|A-A_j\|_{A_j}\le\frac{d_j}{1-d_j}.
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+S_{A_j}\ge(1-d_j)S_A,\\
+\qquad
+             \|A-A_j\|_{A_j}\le\frac{d_j}{1-d_j}.
+\end{gathered}
+\tag{16}
+\]</span>
+All these symbols have the same degree. Eventually the last ratio is less than the same <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span>, independent of <span class="math" data-tex="\(j\)">\(j\)</span>. Apply the perturbation statement to the known evolution symbol <span class="math" data-tex="\(A_j\)">\(A_j\)</span> with perturbation <span class="math" data-tex="\(A-A_j\)">\(A-A_j\)</span>; it makes <span class="math" data-tex="\(A\)">\(A\)</span> an evolution symbol. This proves closedness. Sequential closedness suffices because the coefficient topology is metrizable by finite coordinates.</p>
+<p>On a connected component, an open-and-closed subset is either empty or the entire component: otherwise its intersection and complement would separate that component into two nonempty relative open sets. Hence if <span class="math" data-tex="\(P\)">\(P\)</span> is an evolution symbol, every member of its component in <span class="math" data-tex="\(\mathcal E_P\)">\(\mathcal E_P\)</span> is one. This proves the full <a href="AN02-L069.html">the five-way theorem</a>7 theorem. The argument uses connectedness, without assuming that an arbitrary connected component has been described by paths.</p>
+<p>As a useful consequence, every dominated correction <span class="math" data-tex="\(R\ll P\)">\(R\ll P\)</span> preserves evolution solvability. For <span class="math" data-tex="\(0\le a\le1\)">\(0\le a\le1\)</span>, the polynomial <span class="math" data-tex="\(aR\)">\(aR\)</span> is still dominated by <span class="math" data-tex="\(P\)">\(P\)</span>; the strength lemma makes <span class="math" data-tex="\(P+aR\)">\(P+aR\)</span> equally strong to <span class="math" data-tex="\(P\)">\(P\)</span>. This continuous path is a connected subset of <span class="math" data-tex="\(\mathcal E_P\)">\(\mathcal E_P\)</span> containing <span class="math" data-tex="\(P\)">\(P\)</span>, so the component theorem applies at <span class="math" data-tex="\(a=1\)">\(a=1\)</span>. No small coefficient bound is needed for a dominated correction.</p>
+<p>Arbitrary nonzero half-space normals reduce to these coordinates by <a href="AN02-L069.html">equation 24 in Analytic root barriers and supported solvability</a>'s orthogonal jet comparisons. The linear coordinate map on the finite coefficient spaces preserves their topology and takes equal-strength classes and components to the corresponding classes and components.</p>
+<h2 id="examples-and-complete-exercises">Examples and complete exercises</h2>
+<p><strong>Exercise 1 (entry).</strong> Compare the two heat symbols <span class="math" data-tex="\(P(\xi,s)=\xi^2+is\)">\(P(\xi,s)=\xi^2+is\)</span> and <span class="math" data-tex="\(Q(\xi,s)=\xi^2-is\)">\(Q(\xi,s)=\xi^2-is\)</span> for <span class="math" data-tex="\(H=\{t\ge0\}\)">\(H=\{t\ge0\}\)</span>. Explain why equal strength does not settle the supported-solvability question.</p>
+<p><strong>Solution.</strong> On real frequencies,
+<span class="math math-display" data-tex="\[
+                         S_P^2=S_Q^2=\xi^4+s^2+4\xi^2+5.
+ \tag{17}
+\]">\[
+                         S_P^2=S_Q^2=\xi^4+s^2+4\xi^2+5.
+ \tag{17}
+\]</span>
+Their normal roots are respectively <span class="math" data-tex="\(\tau_P(z)=iz^2\)">\(\tau_P(z)=iz^2\)</span> and <span class="math" data-tex="\(\tau_Q(z)=-iz^2\)">\(\tau_Q(z)=-iz^2\)</span>. At every real center <span class="math" data-tex="\(c\)">\(c\)</span>, <span class="math" data-tex="\(\operatorname{Im}\tau_P(c)=c^2\ge0\)">\(\operatorname{Im}\tau_P(c)=c^2\ge0\)</span>, so <span class="math" data-tex="\(P\)">\(P\)</span> satisfies a fixed-radius tangential root barrier. The equivalence makes it an evolution symbol. For any proposed radius <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and real <span class="math" data-tex="\(c&gt;a\)">\(c&gt;a\)</span>, write <span class="math" data-tex="\(z=c+u+iv\)">\(z=c+u+iv\)</span>, <span class="math" data-tex="\(u^2+v^2&lt;a^2\)">\(u^2+v^2&lt;a^2\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Im}\tau_Q(z)\\
+=-(c+u)^2+v^2
+                         \\
+\le-(c-a)^2+a^2\\
+\longrightarrow-\infty.
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+\operatorname{Im}\tau_Q(z)\\
+=-(c+u)^2+v^2
+                         \\
+\le-(c-a)^2+a^2\\
+\longrightarrow-\infty.
+\end{gathered}
+\tag{18}
+\]</span>
+Its analytic branch therefore violates every uniform height bound, so <span class="math" data-tex="\(Q\)">\(Q\)</span> is not an evolution symbol. The component theorem implies these two equally strong symbols belong to different connected components. In physical variables they give the heat equation with opposite choices of time direction.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Suppose a sequence of known evolution symbols <span class="math" data-tex="\(A_j\)">\(A_j\)</span> converges to an equally strong <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(\|A_j-A\|_A\le1/10\)">\(\|A_j-A\|_A\le1/10\)</span> for one index. Bound the reverse perturbation size. Explain why a perturbation radius allowed to shrink arbitrarily with <span class="math" data-tex="\(j\)">\(j\)</span> would not prove closedness.</p>
+<p><strong>Solution.</strong> Equation(16) gives <span class="math" data-tex="\(\|A-A_j\|_{A_j}\le(1/10)/(9/10)=1/9\)">\(\|A-A_j\|_{A_j}\le(1/10)/(9/10)=1/9\)</span>. More generally this ratio tends to zero as the original displacement does. With the uniform threshold <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span>, eventually it is small enough to apply the perturbation theorem to some known evolution symbol <span class="math" data-tex="\(A_j\)">\(A_j\)</span>. A radius <span class="math" data-tex="\(\eta_j&gt;0\)">\(\eta_j&gt;0\)</span> depending on <span class="math" data-tex="\(j\)">\(j\)</span> could decay faster than the displacement; coefficient convergence alone would not ensure that any inequality <span class="math" data-tex="\(\|A-A_j\|_{A_j}&lt;\eta_j\)">\(\|A-A_j\|_{A_j}&lt;\eta_j\)</span> holds. The degree-only threshold is precisely what removes that gap.</p>
+<p><strong>Exercise 3 (advanced).</strong> In the family <span class="math" data-tex="\(R_b(\xi,s)=\xi^2+bs\)">\(R_b(\xi,s)=\xi^2+bs\)</span>, <span class="math" data-tex="\(b\in\mathbb C\)">\(b\in\mathbb C\)</span>, determine which members have equal strength to <span class="math" data-tex="\(R_i\)">\(R_i\)</span>, and which of those are evolution symbols for <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>. Relate the two regions to the component theorem without claiming a classification of the whole equal-strength space.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(\operatorname{Im}b\ne0\)">\(\operatorname{Im}b\ne0\)</span>, the real linear map <span class="math" data-tex="\((u,s)\mapsto u+bs\in\mathbb C\)">\((u,s)\mapsto u+bs\in\mathbb C\)</span> is invertible. Its fixed finite-dimensional norm comparison gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|u+bs|^2\asymp u^2+s^2,\\S_{R_b}(\xi,s)^2\\
+=|\xi^2+bs|^2+4\xi^2+|b|^2+4
+                         \\
+\asymp S_{R_i}(\xi,s)^2.
+\end{gathered}
+\tag{19}
+\]">\[
+\begin{gathered}
+|u+bs|^2\asymp u^2+s^2,\\S_{R_b}(\xi,s)^2\\
+=|\xi^2+bs|^2+4\xi^2+|b|^2+4
+                         \\
+\asymp S_{R_i}(\xi,s)^2.
+\end{gathered}
+\tag{19}
+\]</span>
+Take <span class="math" data-tex="\(u=\xi^2\)">\(u=\xi^2\)</span>. If <span class="math" data-tex="\(b\)">\(b\)</span> is nonzero and real, set <span class="math" data-tex="\(\xi=r,s=-r^2/b\)">\(\xi=r,s=-r^2/b\)</span>: the value of <span class="math" data-tex="\(R_b\)">\(R_b\)</span> is zero and <span class="math" data-tex="\(S_{R_b}=O(r)\)">\(S_{R_b}=O(r)\)</span>, whereas <span class="math" data-tex="\(S_{R_i}\)">\(S_{R_i}\)</span> grows like <span class="math" data-tex="\(r^2\)">\(r^2\)</span>. For <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, use <span class="math" data-tex="\(\xi=0,s\to\infty\)">\(\xi=0,s\to\infty\)</span>. Thus the equal-strength members of this family are exactly those with nonreal <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>Their root is <span class="math" data-tex="\(\tau_b(z)=-z^2/b\)">\(\tau_b(z)=-z^2/b\)</span>. The coefficient <span class="math" data-tex="\(a_b=-1/b\)">\(a_b=-1/b\)</span> has imaginary part <span class="math" data-tex="\(\operatorname{Im}b/|b|^2\)">\(\operatorname{Im}b/|b|^2\)</span>. If it is positive, evaluation at real centers gives the uniform height bound zero. If it is negative, on any fixed-radius ball about real <span class="math" data-tex="\(c\)">\(c\)</span> the imaginary part equals <span class="math" data-tex="\((\operatorname{Im}a_b)c^2+O(|c|+1)\)">\((\operatorname{Im}a_b)c^2+O(|c|+1)\)</span>, uniformly on the ball, and tends to minus infinity. The root criterion therefore makes exactly the upper-half-plane parameter members evolution symbols. The upper and lower parameter regions are separately connected; a continuous path within this family cannot cross between them without meeting a real parameter that loses equal strength. This family illustrates the component result, while the theorem itself also controls possible paths and connected subsets outside this family.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

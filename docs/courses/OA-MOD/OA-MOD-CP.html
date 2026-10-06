@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concrete preduals from Hilbert tensors · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-CP.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="concrete-preduals-from-hilbert-tensors">Concrete preduals from Hilbert tensors</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A predual turns the ultraweak topology into a weak-star topology. This unit constructs that Banach space directly from pairs of Hilbert-space vectors. It proves concrete duality, its positive-functional and corner consequences, and the continuous-dual statements needed for sigma-strong topologies. Every Hilbert space is arbitrary. Countable series describe individual functionals; they do not impose separability on the Hilbert space.</p>
+<h2 id="conventions-and-the-precise-foundations"><span id="oa-mod-cp-01"></span><span id="OA-MOD-CP-01"></span>Conventions and the precise foundations</h2>
+<p>Inner products are linear in their first variable. Thus the vector coefficient of <span class="math" data-tex="\(T\in B(H)\)">\(T\in B(H)\)</span> is <span class="math" data-tex="\(\langle T\xi,\eta\rangle\)">\(\langle T\xi,\eta\rangle\)</span>. The conjugate complex vector space <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span> has vectors <span class="math" data-tex="\(\overline\eta\)">\(\overline\eta\)</span> and scalar action <span class="math" data-tex="\(\lambda\overline\eta=\overline{\overline\lambda\eta}\)">\(\lambda\overline\eta=\overline{\overline\lambda\eta}\)</span>. Its inner product is <span class="math" data-tex="\(\langle\overline\xi,\overline\eta\rangle_{\overline H}=\overline{\langle\xi,\eta\rangle_H}\)">\(\langle\overline\xi,\overline\eta\rangle_{\overline H}=\overline{\langle\xi,\eta\rangle_H}\)</span>, and its norm is <span class="math" data-tex="\(\|\overline\eta\|=\|\eta\|\)">\(\|\overline\eta\|=\|\eta\|\)</span>.</p>
+<p>The Hilbert inputs are proved in <a href="OA-MOD-BK.html">The bounded prerequisite boundary: Hilbert representation and bounded operators</a>. Every bounded sesquilinear form <span class="math" data-tex="\(b\)">\(b\)</span>, linear in its first variable, has a unique representation <span class="math" data-tex="\(b(\xi,\eta)=\langle T\xi,\eta\rangle\)">\(b(\xi,\eta)=\langle T\xi,\eta\rangle\)</span>, and its least bound is <span class="math" data-tex="\(\|T\|\)">\(\|T\|\)</span>. These written results apply to arbitrary complex Hilbert spaces, including zero spaces. Its real-to-complex Riesz conversion, bounded-form construction, adjoints and completion proof supply all of these results. The finite orthonormal-basis and linear-annihilator steps used in CP-02 and CP-05 are written at the end of <a href="notes/real-coercivity/predual-prerequisites.html">NP1</a>.</p>
+<p>We also use <strong>CP-DEP-HB</strong>, real and complex norm-preserving Hahn–Banach extension, whose full dominated-extension argument, complex conversion and norming consequence are proved in <a href="notes/real-coercivity/predual-prerequisites.html">NP1</a>. For <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, extend the functional <span class="math" data-tex="\(\lambda z\mapsto\lambda\|z\|\)">\(\lambda z\mapsto\lambda\|z\|\)</span>. This gives</p>
+<span class="math math-display" data-tex="\[
+\|z\|=\sup_{\|f\|\le1}|f(z)|,\qquad f\in X^*,
+\tag{CP.1}
+\]">\[
+\|z\|=\sup_{\|f\|\le1}|f(z)|,\qquad f\in X^*,
+\tag{CP.1}
+\]</span>
+<p>for every real or complex normed space <span class="math" data-tex="\(X\)">\(X\)</span>; for <span class="math" data-tex="\(z=0\)">\(z=0\)</span> it is immediate. The one-dimensional extension just proved in NP1 gives this norming identity directly.</p>
+<p>Here are the completion facts used below, so no trace-class or tensor-completion theorem is hidden in the construction. For a normed space <span class="math" data-tex="\(X\)">\(X\)</span>, take Cauchy sequences in <span class="math" data-tex="\(X\)">\(X\)</span>, identify two when the norm of their difference tends to zero, and set <span class="math" data-tex="\(\|[x_n]\|=\lim_n\|x_n\|\)">\(\|[x_n]\|=\lim_n\|x_n\|\)</span>. The reverse triangle inequality makes this well-defined, and the finite norm identities pass to limits. Constant sequences embed <span class="math" data-tex="\(X\)">\(X\)</span> isometrically and densely: <span class="math" data-tex="\([x_n]\)">\([x_n]\)</span> is approximated by the constant sequences <span class="math" data-tex="\(x_n\)">\(x_n\)</span>. The resulting space is complete. Indeed, from a Cauchy sequence of classes select a subsequence whose successive distances are at most <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span>, and choose a vector of <span class="math" data-tex="\(X\)">\(X\)</span> within <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span> of its <span class="math" data-tex="\(k\)">\(k\)</span>-th class. These vectors form a Cauchy sequence in <span class="math" data-tex="\(X\)">\(X\)</span>; its class is the limit of that subsequence, hence of the original Cauchy sequence. A bounded linear map from <span class="math" data-tex="\(X\)">\(X\)</span> to a Banach space extends uniquely to the completion by taking limits; density preserves its norm.</p>
+<p>For reference, <span class="math" data-tex="\(\ell^2(H)\)">\(\ell^2(H)\)</span> consists of sequences <span class="math" data-tex="\(\xi=(\xi_n)\)">\(\xi=(\xi_n)\)</span> with <span class="math" data-tex="\(\sum_n\|\xi_n\|^2&lt;\infty\)">\(\sum_n\|\xi_n\|^2&lt;\infty\)</span>, with the sum inner product. Cauchy–Schwarz for finite sums, followed by limits, proves convergence of the inner product and its usual identities. This is a Hilbert space. For a Cauchy sequence in it, take the coordinatewise limits in <span class="math" data-tex="\(H\)">\(H\)</span>. The Cauchy estimates on every finite partial sum pass to those limits and then to their supremum, proving that the limit sequence is square summable and that convergence holds in the sum norm. No basis of <span class="math" data-tex="\(H\)">\(H\)</span> is used.</p>
+<p>Bounded functional calculus and concrete operator topology are proved in <strong>OA-MOD-BK-01</strong>, <strong>OA-MOD-BK-03</strong> and <strong>OA-MOD-BK-04</strong>. The convex-closure corollary uses <a href="notes/real-coercivity/predual-prerequisites.html">NP2: point separation in arbitrary real locally convex spaces</a>; the bounded support theorem uses NP3 and its written BK prerequisites. Weak-star compactness and Krein–Smulian are not assumed or proved in the predual construction.</p>
+<h2 id="the-projective-norm-is-a-genuine-norm">The projective norm is a genuine norm</h2>
+<p>Let <span class="math" data-tex="\(V=H\otimes_{\mathbb C}\overline H\)">\(V=H\otimes_{\mathbb C}\overline H\)</span> be the algebraic tensor product: the free complex vector space on pairs <span class="math" data-tex="\((\xi,\overline\eta)\)">\((\xi,\overline\eta)\)</span>, divided by the bilinearity relations. A bilinear function of those two variables therefore defines a unique linear function on <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\pi(u)=\inf\left\{
+\sum_{j=1}^m\|\xi_j\|\|\eta_j\|:
+u=\sum_{j=1}^m\xi_j\otimes\overline{\eta_j}
+\right\}.
+\tag{CP.2}
+\]">\[
+\pi(u)=\inf\left\{
+\sum_{j=1}^m\|\xi_j\|\|\eta_j\|:
+u=\sum_{j=1}^m\xi_j\otimes\overline{\eta_j}
+\right\}.
+\tag{CP.2}
+\]</span>
+<p>The zero sum is allowed. Every tensor has a finite representation, so this is finite. Rescaling representations proves absolute homogeneity; concatenating representations within any prescribed error of the two infima proves the triangle inequality.</p>
+<p>For nondegeneracy, write a given tensor using finite-dimensional spans of its first and second vectors, and choose orthonormal bases <span class="math" data-tex="\(e_1,\ldots,e_r\)">\(e_1,\ldots,e_r\)</span> and <span class="math" data-tex="\(f_1,\ldots,f_s\)">\(f_1,\ldots,f_s\)</span> for those spans. Expansion gives</p>
+<span class="math math-display" data-tex="\[
+u=\sum_{i,j}c_{ij}\,e_i\otimes\overline{f_j}.
+\]">\[
+u=\sum_{i,j}c_{ij}\,e_i\otimes\overline{f_j}.
+\]</span>
+<p>The bilinear coefficient test</p>
+<span class="math math-display" data-tex="\[
+L_{ij}(\xi\otimes\overline\eta)
+=\langle\xi,e_i\rangle\langle f_j,\eta\rangle
+\]">\[
+L_{ij}(\xi\otimes\overline\eta)
+=\langle\xi,e_i\rangle\langle f_j,\eta\rangle
+\]</span>
+<p>has <span class="math" data-tex="\(|L_{ij}(u)|\le\pi(u)\)">\(|L_{ij}(u)|\le\pi(u)\)</span>, since its value on a pure tensor is at most <span class="math" data-tex="\(\|\xi\|\|\eta\|\)">\(\|\xi\|\|\eta\|\)</span>. It reads off <span class="math" data-tex="\(c_{ij}\)">\(c_{ij}\)</span>. If <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>, some coefficient is nonzero: an expansion with all coefficients zero is the zero tensor. Thus <span class="math" data-tex="\(\pi(u)&gt;0\)">\(\pi(u)&gt;0\)</span>.</p>
+<p>The same test with <span class="math" data-tex="\(e=\xi/\|\xi\|\)">\(e=\xi/\|\xi\|\)</span> and <span class="math" data-tex="\(f=\eta/\|\eta\|\)">\(f=\eta/\|\eta\|\)</span>, when neither vector is zero, proves</p>
+<span class="math math-display" data-tex="\[
+\pi(\xi\otimes\overline\eta)=\|\xi\|\|\eta\|.
+\tag{CP.3}
+\]">\[
+\pi(\xi\otimes\overline\eta)=\|\xi\|\|\eta\|.
+\tag{CP.3}
+\]</span>
+<p>If a factor is zero, both sides vanish. Only finite-dimensional orthonormal bases were used.</p>
+<p>Let <span class="math" data-tex="\(E_H\)">\(E_H\)</span> be the Banach completion of <span class="math" data-tex="\((V,\pi)\)">\((V,\pi)\)</span> constructed in CP-01. We do not identify this completion with a space of trace-class operators.</p>
+<h2 id="its-dual-is-exactly-b-h"><span id="OA-MOD-CP-03"></span><span id="oa-mod-cp-03"></span>Its dual is exactly <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span></h2>
+<p>For <span class="math" data-tex="\(T\in B(H)\)">\(T\in B(H)\)</span>, define on algebraic tensors</p>
+<span class="math math-display" data-tex="\[
+\Phi_T\left(\sum_j\xi_j\otimes\overline{\eta_j}\right)
+=\sum_j\langle T\xi_j,\eta_j\rangle.
+\]">\[
+\Phi_T\left(\sum_j\xi_j\otimes\overline{\eta_j}\right)
+=\sum_j\langle T\xi_j,\eta_j\rangle.
+\]</span>
+<p>Bilinearity makes this independent of the representation. Taking the infimum of the bound over all representations gives
+<span class="math" data-tex="\(|\Phi_T(u)|\le\|T\|\pi(u)\)">\(|\Phi_T(u)|\le\|T\|\pi(u)\)</span>, so <span class="math" data-tex="\(\Phi_T\)">\(\Phi_T\)</span> extends to <span class="math" data-tex="\(E_H\)">\(E_H\)</span>.</p>
+<p>Conversely, <span class="math" data-tex="\(F\in E_H^*\)">\(F\in E_H^*\)</span> defines
+<span class="math" data-tex="\(b(\xi,\eta)=F(\xi\otimes\overline\eta)\)">\(b(\xi,\eta)=F(\xi\otimes\overline\eta)\)</span>.
+This is sesquilinear with
+<span class="math" data-tex="\(|b(\xi,\eta)|\le\|F\|\|\xi\|\|\eta\|\)">\(|b(\xi,\eta)|\le\|F\|\|\xi\|\|\eta\|\)</span>.
+The bounded-form proof in BK-01 supplies a unique <span class="math" data-tex="\(T\in B(H)\)">\(T\in B(H)\)</span> representing <span class="math" data-tex="\(b\)">\(b\)</span>. Equality on algebraic tensors and density give <span class="math" data-tex="\(F=\Phi_T\)">\(F=\Phi_T\)</span>. Finally,</p>
+<span class="math math-display" data-tex="\[
+\|\Phi_T\|
+\ge\sup_{\|\xi\|\le1,\ \|\eta\|\le1}
+|\langle T\xi,\eta\rangle|
+=\|T\|.
+\]">\[
+\|\Phi_T\|
+\ge\sup_{\|\xi\|\le1,\ \|\eta\|\le1}
+|\langle T\xi,\eta\rangle|
+=\|T\|.
+\]</span>
+<p>Here (CP.3) justifies the test tensors; no norm-attaining vector for <span class="math" data-tex="\(T\)">\(T\)</span> is presumed. Together with the upper bound this proves a complex-linear onto isometry</p>
+<span class="math math-display" data-tex="\[
+B(H)\cong E_H^*,\qquad T\longmapsto\Phi_T.
+\tag{CP.4}
+\]">\[
+B(H)\cong E_H^*,\qquad T\longmapsto\Phi_T.
+\tag{CP.4}
+\]</span>
+<p>All assertions include <span class="math" data-tex="\(H=\{0\}\)">\(H=\{0\}\)</span>. Injectivity of a completed map from <span class="math" data-tex="\(E_H\)">\(E_H\)</span> into an operator space is neither assumed nor needed.</p>
+<h2 id="every-tensor-vector-is-a-summable-vector-series"><span id="oa-mod-cp-04"></span><span id="OA-MOD-CP-04"></span>Every tensor vector is a summable vector series</h2>
+<p><strong>Lemma.</strong> Every <span class="math" data-tex="\(u\in E_H\)">\(u\in E_H\)</span> has a norm-convergent representation</p>
+<span class="math math-display" data-tex="\[
+u=\sum_{n=1}^\infty\xi_n\otimes\overline{\eta_n},
+\qquad
+\sum_n\|\xi_n\|\|\eta_n\|&lt;\infty.
+\tag{CP.5}
+\]">\[
+u=\sum_{n=1}^\infty\xi_n\otimes\overline{\eta_n},
+\qquad
+\sum_n\|\xi_n\|\|\eta_n\|&lt;\infty.
+\tag{CP.5}
+\]</span>
+<p>The factors can be chosen so that both sequences lie in <span class="math" data-tex="\(\ell^2(H)\)">\(\ell^2(H)\)</span>.</p>
+<p><strong>Proof.</strong> Choose algebraic <span class="math" data-tex="\(v_k\)">\(v_k\)</span> with <span class="math" data-tex="\(\|u-v_k\|\le2^{-k}\)">\(\|u-v_k\|\le2^{-k}\)</span>. Put <span class="math" data-tex="\(d_1=v_1\)">\(d_1=v_1\)</span> and <span class="math" data-tex="\(d_k=v_k-v_{k-1}\)">\(d_k=v_k-v_{k-1}\)</span> for <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. Then <span class="math" data-tex="\(\sum_k\pi(d_k)&lt;\infty\)">\(\sum_k\pi(d_k)&lt;\infty\)</span>, since
+<span class="math" data-tex="\(\pi(d_k)\le2^{-k}+2^{-(k-1)}\)">\(\pi(d_k)\le2^{-k}+2^{-(k-1)}\)</span> for <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>.
+Represent each <span class="math" data-tex="\(d_k\)">\(d_k\)</span> as a finite sum with total cost at most <span class="math" data-tex="\(\pi(d_k)+2^{-k}\)">\(\pi(d_k)+2^{-k}\)</span>. List those finite sums consecutively. Their total cost is finite; (CP.3) and completeness imply absolute convergence. The partial sums at the block ends are <span class="math" data-tex="\(v_k\)">\(v_k\)</span>, so the sum is <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>Discard zero terms and replace each remaining pair by</p>
+<span class="math math-display" data-tex="\[
+\xi&#x27;_n=\left(\frac{\|\eta_n\|}{\|\xi_n\|}\right)^{1/2}\xi_n,
+\qquad
+\eta&#x27;_n=\left(\frac{\|\xi_n\|}{\|\eta_n\|}\right)^{1/2}\eta_n.
+\]">\[
+\xi&#x27;_n=\left(\frac{\|\eta_n\|}{\|\xi_n\|}\right)^{1/2}\xi_n,
+\qquad
+\eta&#x27;_n=\left(\frac{\|\xi_n\|}{\|\eta_n\|}\right)^{1/2}\eta_n.
+\]</span>
+<p>The positive real multipliers are reciprocal, so the tensor is unchanged. Both new squared norms equal the original product <span class="math" data-tex="\(\|\xi_n\|\|\eta_n\|\)">\(\|\xi_n\|\|\eta_n\|\)</span>. The two new sequences are square summable. ∎</p>
+<p>Conversely, <span class="math" data-tex="\(\xi,\eta\in\ell^2(H)\)">\(\xi,\eta\in\ell^2(H)\)</span> define a vector of <span class="math" data-tex="\(E_H\)">\(E_H\)</span> by (CP.5), since scalar Cauchy–Schwarz bounds the sum of the products. Evaluation gives</p>
+<span class="math math-display" data-tex="\[
+\Phi_T(u)=\sum_n\langle T\xi_n,\eta_n\rangle.
+\tag{CP.6}
+\]">\[
+\Phi_T(u)=\sum_n\langle T\xi_n,\eta_n\rangle.
+\tag{CP.6}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\sigma(B(H),E_H)\)">\(\sigma(B(H),E_H)\)</span> is exactly the ultraweak topology defined by the vector-series tests in OA-MOD-BK-03. This equality holds on all of <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>, without a norm-bound restriction.</p>
+<h2 id="quotients-and-annihilators-with-the-norm-checks">Quotients and annihilators, with the norm checks</h2>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be a Banach space and <span class="math" data-tex="\(F\subseteq E\)">\(F\subseteq E\)</span> a closed linear subspace. The quotient norm on <span class="math" data-tex="\(Q=E/F\)">\(Q=E/F\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\|e+F\|_Q=\inf_{f\in F}\|e+f\|.
+\]">\[
+\|e+F\|_Q=\inf_{f\in F}\|e+f\|.
+\]</span>
+<p>Norm zero means <span class="math" data-tex="\(e\)">\(e\)</span> belongs to the closure of <span class="math" data-tex="\(F\)">\(F\)</span>, hence to <span class="math" data-tex="\(F\)">\(F\)</span>; its other norm properties follow by adding and rescaling representatives.</p>
+<p>The quotient is complete. Given a Cauchy sequence in <span class="math" data-tex="\(Q\)">\(Q\)</span>, select a subsequence <span class="math" data-tex="\(z_k\)">\(z_k\)</span> with
+<span class="math" data-tex="\(\|z_{k+1}-z_k\|_Q\le2^{-k}\)">\(\|z_{k+1}-z_k\|_Q\le2^{-k}\)</span>.
+Choose representatives <span class="math" data-tex="\(d_k\in E\)">\(d_k\in E\)</span> of those differences with
+<span class="math" data-tex="\(\|d_k\|\le2^{1-k}\)">\(\|d_k\|\le2^{1-k}\)</span>, and a representative <span class="math" data-tex="\(e_1\)">\(e_1\)</span> of <span class="math" data-tex="\(z_1\)">\(z_1\)</span>.
+The convergent series <span class="math" data-tex="\(e_1+\sum_kd_k\)">\(e_1+\sum_kd_k\)</span> represents the limit of the subsequence. The Cauchy property gives convergence of the full sequence.</p>
+<p>For the quotient map <span class="math" data-tex="\(q:E\to Q\)">\(q:E\to Q\)</span>, composition gives an onto isometry</p>
+<span class="math math-display" data-tex="\[
+q^*:Q^*\longrightarrow F^\perp
+=\{T\in E^*:T|_F=0\}.
+\tag{CP.7}
+\]">\[
+q^*:Q^*\longrightarrow F^\perp
+=\{T\in E^*:T|_F=0\}.
+\tag{CP.7}
+\]</span>
+<p>Indeed, a functional annihilating <span class="math" data-tex="\(F\)">\(F\)</span> defines a functional on <span class="math" data-tex="\(Q\)">\(Q\)</span>. Taking the infimum over representatives bounds its quotient norm by its norm on <span class="math" data-tex="\(E\)">\(E\)</span>. The reverse bound follows because <span class="math" data-tex="\(q\)">\(q\)</span> is contractive. The same bounds prove that composition is isometric.</p>
+<p>If a linear subspace <span class="math" data-tex="\(M\subseteq E^*\)">\(M\subseteq E^*\)</span> is weak-star closed, then</p>
+<span class="math math-display" data-tex="\[
+M=(M_\perp)^\perp,\qquad
+M_\perp=\{e\in E:T(e)=0\ \text{for all }T\in M\}.
+\tag{CP.8}
+\]">\[
+M=(M_\perp)^\perp,\qquad
+M_\perp=\{e\in E:T(e)=0\ \text{for all }T\in M\}.
+\tag{CP.8}
+\]</span>
+<p>For the nontrivial inclusion, take <span class="math" data-tex="\(T_0\notin M\)">\(T_0\notin M\)</span>. A basic weak-star neighborhood disjoint from <span class="math" data-tex="\(M\)">\(M\)</span> tests finitely many vectors <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span>. Let
+<span class="math" data-tex="\(L(T)=(T(e_1),\ldots,T(e_n))\)">\(L(T)=(T(e_1),\ldots,T(e_n))\)</span>.
+Then <span class="math" data-tex="\(L(T_0)\notin L(M)\)">\(L(T_0)\notin L(M)\)</span>, since equality would put an element of <span class="math" data-tex="\(M\)">\(M\)</span> in that neighborhood. Finite-dimensional linear algebra supplies <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> vanishing on <span class="math" data-tex="\(L(M)\)">\(L(M)\)</span> but not at <span class="math" data-tex="\(L(T_0)\)">\(L(T_0)\)</span>. Write <span class="math" data-tex="\(\lambda(z)=\sum_jc_jz_j\)">\(\lambda(z)=\sum_jc_jz_j\)</span>. The vector <span class="math" data-tex="\(e=\sum_jc_je_j\)">\(e=\sum_jc_je_j\)</span> belongs to <span class="math" data-tex="\(M_\perp\)">\(M_\perp\)</span>, but <span class="math" data-tex="\(T_0(e)\ne0\)">\(T_0(e)\ne0\)</span>. This proves (CP.8) without locally convex separation.</p>
+<h2 id="the-concrete-predual-and-its-intrinsic-norm"><span id="oa-mod-cp-06"></span><span id="OA-MOD-CP-06"></span>The concrete predual and its intrinsic norm</h2>
+<p>Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> be a weak operator closed unital *-subalgebra. It is ultraweakly closed by OA-MOD-BK-03. Under (CP.4), define</p>
+<span class="math math-display" data-tex="\[
+F=M_\perp\subseteq E_H,\qquad M_*=E_H/F.
+\tag{CP.9}
+\]">\[
+F=M_\perp\subseteq E_H,\qquad M_*=E_H/F.
+\tag{CP.9}
+\]</span>
+<p>The subspace <span class="math" data-tex="\(F\)">\(F\)</span> is norm closed, being an intersection of kernels of bounded functionals. Equations (CP.7)–(CP.8) prove that canonical evaluation is an onto isometry</p>
+<span class="math math-display" data-tex="\[
+M\cong(M_*)^*.
+\tag{CP.10}
+\]">\[
+M\cong(M_*)^*.
+\tag{CP.10}
+\]</span>
+<p>Identify <span class="math" data-tex="\(u+F\)">\(u+F\)</span> with <span class="math" data-tex="\(x\mapsto\Phi_x(u)\)">\(x\mapsto\Phi_x(u)\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>. This is injective by the definition of <span class="math" data-tex="\(F\)">\(F\)</span>. Its operator norm is exactly the quotient norm: apply the norming identity (CP.1) to <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, and identify its dual unit ball with the unit ball of <span class="math" data-tex="\(M\)">\(M\)</span> by (CP.10). Thus <span class="math" data-tex="\(M_*\)">\(M_*\)</span> is an isometric Banach subspace of <span class="math" data-tex="\(M^*\)">\(M^*\)</span>, and is norm closed there.</p>
+<p>By CP-04 its elements are exactly the restricted vector-series functionals</p>
+<span class="math math-display" data-tex="\[
+f(x)=\sum_n\langle x\xi_n,\eta_n\rangle,\qquad
+\xi,\eta\in\ell^2(H).
+\tag{CP.11}
+\]">\[
+f(x)=\sum_n\langle x\xi_n,\eta_n\rangle,\qquad
+\xi,\eta\in\ell^2(H).
+\tag{CP.11}
+\]</span>
+<p>The weak-star topology from this pairing is therefore the inherited ultraweak topology.</p>
+<p>Moreover <span class="math" data-tex="\(M_*\)">\(M_*\)</span> is exactly the space of ultraweakly continuous complex-linear functionals. One inclusion is immediate. For the other, continuity of a linear <span class="math" data-tex="\(f\)">\(f\)</span> implies that it vanishes whenever finitely many controlling vector-series functionals <span class="math" data-tex="\(f_1,\ldots,f_r\)">\(f_1,\ldots,f_r\)</span> all vanish: rescale such a vector and use continuity at zero. Hence <span class="math" data-tex="\(f\)">\(f\)</span> factors through
+<span class="math" data-tex="\(x\mapsto(f_1(x),\ldots,f_r(x))\)">\(x\mapsto(f_1(x),\ldots,f_r(x))\)</span>.
+A linear functional on this finite-dimensional image extends algebraically to <span class="math" data-tex="\(\mathbb C^r\)">\(\mathbb C^r\)</span>, so <span class="math" data-tex="\(f\)">\(f\)</span> is a finite linear combination of the <span class="math" data-tex="\(f_j\)">\(f_j\)</span>. It belongs to <span class="math" data-tex="\(M_*\)">\(M_*\)</span>.</p>
+<p>This establishes a concrete predual and its topology. It does not prove uniqueness among arbitrary abstract Banach preduals or construct the bidual W* algebra of a general C*-algebra.</p>
+<h2 id="positive-functionals-closed-cones-and-norm-closure"><span id="oa-mod-cp-07"></span><span id="OA-MOD-CP-07"></span>Positive functionals, closed cones and norm closure</h2>
+<p>Write <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span> for the positive functionals in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. For <span class="math" data-tex="\(\xi\in\ell^2(H)\)">\(\xi\in\ell^2(H)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\omega_\xi(x)=\sum_n\langle x\xi_n,\xi_n\rangle
+\]">\[
+\omega_\xi(x)=\sum_n\langle x\xi_n,\xi_n\rangle
+\]</span>
+<p>belongs to <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span>. These functionals separate <span class="math" data-tex="\(M_+\)">\(M_+\)</span>: if <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span> is nonzero, some <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span> satisfies
+<span class="math" data-tex="\(\langle a\xi,\xi\rangle=\|a^{1/2}\xi\|^2&gt;0\)">\(\langle a\xi,\xi\rangle=\|a^{1/2}\xi\|^2&gt;0\)</span>.
+Single-vector tests also detect positivity of arbitrary operators: nonnegative real diagonal coefficients imply self-adjointness by polarization and then positivity.</p>
+<p>Every <span class="math" data-tex="\(f\in M_*\)">\(f\in M_*\)</span> is a linear combination of four positive members. Use (CP.11) and put</p>
+<span class="math math-display" data-tex="\[
+\omega_k(x)=\sum_n
+\langle x(\xi_n+i^k\eta_n),\,\xi_n+i^k\eta_n\rangle,
+\qquad k=0,1,2,3.
+\]">\[
+\omega_k(x)=\sum_n
+\langle x(\xi_n+i^k\eta_n),\,\xi_n+i^k\eta_n\rangle,
+\qquad k=0,1,2,3.
+\]</span>
+<p>Each sequence is square summable. Expansion gives</p>
+<span class="math math-display" data-tex="\[
+f=\frac14\sum_{k=0}^3 i^k\omega_k.
+\tag{CP.12}
+\]">\[
+f=\frac14\sum_{k=0}^3 i^k\omega_k.
+\tag{CP.12}
+\]</span>
+<p>The identity holds for any sesquilinear form; no self-adjointness of <span class="math" data-tex="\(x\)">\(x\)</span> is required.</p>
+<p>For a positive linear functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, positive/negative parts show that it is real on self-adjoint elements and preserves adjoints. Applying positivity to
+<span class="math" data-tex="\(\omega((x+\lambda y)^*(x+\lambda y))\)">\(\omega((x+\lambda y)^*(x+\lambda y))\)</span> for every complex <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+|\omega(y^*x)|^2\le\omega(x^*x)\omega(y^*y).
+\tag{CP.13}
+\]">\[
+|\omega(y^*x)|^2\le\omega(x^*x)\omega(y^*y).
+\tag{CP.13}
+\]</span>
+<p>If the second diagonal value is positive, minimize the scalar quadratic polynomial in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>; if it is zero, varying the magnitude and argument of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> forces the mixed coefficient to vanish. With <span class="math" data-tex="\(y=1\)">\(y=1\)</span> and <span class="math" data-tex="\(x^*x\le\|x\|^2 1\)">\(x^*x\le\|x\|^2 1\)</span>, this proves boundedness and</p>
+<span class="math math-display" data-tex="\[
+|\omega(x)|\le\omega(1)\|x\|,\qquad
+\|\omega\|=\omega(1).
+\tag{CP.14}
+\]">\[
+|\omega(x)|\le\omega(1)\|x\|,\qquad
+\|\omega\|=\omega(1).
+\tag{CP.14}
+\]</span>
+<p>The reverse norm inequality tests <span class="math" data-tex="\(1\)">\(1\)</span>; the zero algebra is immediate. In particular, for <span class="math" data-tex="\(0\le\psi\le\omega\)">\(0\le\psi\le\omega\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\omega-\psi\|=\omega(1)-\psi(1).
+\tag{CP.15}
+\]">\[
+\|\omega-\psi\|=\omega(1)-\psi(1).
+\tag{CP.15}
+\]</span>
+<p>The positive cone of <span class="math" data-tex="\(M\)">\(M\)</span> is ultraweakly closed, as the intersection of the conditions
+<span class="math" data-tex="\(\langle x\xi,\xi\rangle\in[0,\infty)\)">\(\langle x\xi,\xi\rangle\in[0,\infty)\)</span>.
+Every closed norm ball is ultraweakly closed, since</p>
+<span class="math math-display" data-tex="\[
+\|x\|\le R
+\quad\Longleftrightarrow\quad
+|\langle x\xi,\eta\rangle|\le R\|\xi\|\|\eta\|
+\quad(\xi,\eta\in H).
+\]">\[
+\|x\|\le R
+\quad\Longleftrightarrow\quad
+|\langle x\xi,\eta\rangle|\le R\|\xi\|\|\eta\|
+\quad(\xi,\eta\in H).
+\]</span>
+<p>The adjoint is conjugate-linear and ultraweakly continuous:</p>
+<span class="math math-display" data-tex="\[
+\sum_n\langle x^*\xi_n,\eta_n\rangle
+=\overline{\sum_n\langle x\eta_n,\xi_n\rangle}.
+\]">\[
+\sum_n\langle x^*\xi_n,\eta_n\rangle
+=\overline{\sum_n\langle x\eta_n,\xi_n\rangle}.
+\]</span>
+<p>Fixed multiplication is ultraweakly continuous by BK-03.</p>
+<p>Norm closure of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> in CP-06 has a useful concrete interpretation: a norm-Cauchy sequence in the isometric quotient has a limit there; the associated functionals converge in operator norm. Any operator-norm limit in <span class="math" data-tex="\(M^*\)">\(M^*\)</span> must be that same predual functional. Positivity survives norm limits by evaluation on each positive element, so <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span> is norm closed.</p>
+<p>Finally, every <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span> preserves bounded increasing positive suprema. If <span class="math" data-tex="\(a_\alpha\uparrow a\)">\(a_\alpha\uparrow a\)</span>, BK-04 supplies ultraweak convergence, whence
+<span class="math" data-tex="\(\omega(a_\alpha)\uparrow\omega(a)\)">\(\omega(a_\alpha)\uparrow\omega(a)\)</span>.
+This proves the ultraweak-to-order direction without a theorem about weights. The converse is not an input to this unit.</p>
+<h2 id="the-sigma-strong-seminorms-are-vector-seminorms"><span id="oa-mod-cp-08"></span><span id="OA-MOD-CP-08"></span>The sigma-strong seminorms are vector seminorms</h2>
+<p>For <span class="math" data-tex="\(\xi\in\ell^2(H)\)">\(\xi\in\ell^2(H)\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+q_\xi(x)=\left(\sum_n\|x\xi_n\|^2\right)^{1/2}.
+\]">\[
+q_\xi(x)=\left(\sum_n\|x\xi_n\|^2\right)^{1/2}.
+\]</span>
+<p>This is a seminorm and
+<span class="math" data-tex="\(q_\xi(x)^2=\omega_\xi(x^*x)\)">\(q_\xi(x)^2=\omega_\xi(x^*x)\)</span>.
+Thus it is one of the seminorms</p>
+<span class="math math-display" data-tex="\[
+p_\omega(x)=\omega(x^*x)^{1/2},\qquad \omega\in M_*^+,
+\]">\[
+p_\omega(x)=\omega(x^*x)^{1/2},\qquad \omega\in M_*^+,
+\]</span>
+<p>which are seminorms by (CP.13).</p>
+<p>Conversely, choose a mixed series (CP.11) for <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span>. For <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, Cauchy–Schwarz for <span class="math" data-tex="\(a^{1/2}\)">\(a^{1/2}\)</span> and <span class="math" data-tex="\(2uv\le u^2+v^2\)">\(2uv\le u^2+v^2\)</span> give</p>
+<span class="math math-display" data-tex="\[
+0\le\omega(a)\le
+\frac12\sum_n\bigl(\langle a\xi_n,\xi_n\rangle+
+\langle a\eta_n,\eta_n\rangle\bigr)
+=:\theta(a).
+\tag{CP.16}
+\]">\[
+0\le\omega(a)\le
+\frac12\sum_n\bigl(\langle a\xi_n,\xi_n\rangle+
+\langle a\eta_n,\eta_n\rangle\bigr)
+=:\theta(a).
+\tag{CP.16}
+\]</span>
+<p>All sums converge absolutely and <span class="math" data-tex="\(\theta\in M_*^+\)">\(\theta\in M_*^+\)</span>. If <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> concatenates <span class="math" data-tex="\(\xi/\sqrt2\)">\(\xi/\sqrt2\)</span> and <span class="math" data-tex="\(\eta/\sqrt2\)">\(\eta/\sqrt2\)</span>, then
+<span class="math" data-tex="\(p_\omega(x)\le q_\zeta(x)\)">\(p_\omega(x)\le q_\zeta(x)\)</span>.
+Therefore the sigma-strong topology generated by the <span class="math" data-tex="\(p_\omega\)">\(p_\omega\)</span> is exactly the topology generated by the <span class="math" data-tex="\(q_\xi\)">\(q_\xi\)</span>. Adding the seminorms at <span class="math" data-tex="\(x^*\)">\(x^*\)</span> gives the sigma-strong* topology.</p>
+<p>This proof does not assume that a positive predual functional itself extends as a positive vector series on <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>. Domination by <span class="math" data-tex="\(\theta\)">\(\theta\)</span> suffices.</p>
+<p>On a norm-bounded set, strong operator convergence is equivalent to sigma-strong convergence. If <span class="math" data-tex="\(x_\alpha\to x\)">\(x_\alpha\to x\)</span> strongly and <span class="math" data-tex="\(\|x_\alpha\|,\|x\|\le R\)">\(\|x_\alpha\|,\|x\|\le R\)</span>, the tail of
+<span class="math" data-tex="\(\sum_n\|(x_\alpha-x)\xi_n\|^2\)">\(\sum_n\|(x_\alpha-x)\xi_n\|^2\)</span>
+is at most <span class="math" data-tex="\(4R^2\sum_{n&gt;N}\|\xi_n\|^2\)">\(4R^2\sum_{n&gt;N}\|\xi_n\|^2\)</span>; the finite initial sum tends to zero. This proves the forward implication, while single-vector tests prove the reverse. Applying the argument also to adjoints gives the analogous strong* and sigma-strong* statement.</p>
+<h2 id="the-two-continuous-complex-duals">The two continuous complex duals</h2>
+<p><strong>Theorem.</strong> The continuous complex-linear dual of each of the sigma-strong and sigma-strong* topologies is exactly <span class="math" data-tex="\(M_*\)">\(M_*\)</span>.</p>
+<p><strong>Proof for sigma-strong.</strong> The estimate</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_n\langle x\xi_n,\eta_n\rangle\right|
+\le q_\xi(x)\|\eta\|_{\ell^2}
+\]">\[
+\left|\sum_n\langle x\xi_n,\eta_n\rangle\right|
+\le q_\xi(x)\|\eta\|_{\ell^2}
+\]</span>
+<p>makes every member of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> continuous.</p>
+<p>Conversely, continuity at zero and homogeneity bound a continuous linear <span class="math" data-tex="\(f\)">\(f\)</span> by a constant times the maximum of finitely many defining seminorms. Concatenating their sequences gives
+<span class="math" data-tex="\(|f(x)|\le Cq_\xi(x)\)">\(|f(x)|\le Cq_\xi(x)\)</span>
+for some <span class="math" data-tex="\(\xi\in\ell^2(H)\)">\(\xi\in\ell^2(H)\)</span>. When the controlling seminorm vanishes, scaling forces <span class="math" data-tex="\(f(x)=0\)">\(f(x)=0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+(x\xi_n)_n\longmapsto f(x)
+\]">\[
+(x\xi_n)_n\longmapsto f(x)
+\]</span>
+<p>is well-defined and bounded on its linear image in <span class="math" data-tex="\(\ell^2(H)\)">\(\ell^2(H)\)</span>. Extend it continuously to the closure of that image. The Riesz representation proof in BK-01, applied to that closed Hilbert subspace, supplies <span class="math" data-tex="\(\eta\in\ell^2(H)\)">\(\eta\in\ell^2(H)\)</span> with
+<span class="math" data-tex="\(f(x)=\sum_n\langle x\xi_n,\eta_n\rangle\)">\(f(x)=\sum_n\langle x\xi_n,\eta_n\rangle\)</span>.
+Thus <span class="math" data-tex="\(f\in M_*\)">\(f\in M_*\)</span>.</p>
+<p><em><em>Proof for sigma-strong</em>.</em>* The forward inclusion remains true because this topology is finer. For the reverse, continuity and concatenation give</p>
+<span class="math math-display" data-tex="\[
+|f(x)|\le C\bigl(q_\xi(x)^2+q_\eta(x^*)^2\bigr)^{1/2}.
+\]">\[
+|f(x)|\le C\bigl(q_\xi(x)^2+q_\eta(x^*)^2\bigr)^{1/2}.
+\]</span>
+<p>Use the complex-linear map</p>
+<span class="math math-display" data-tex="\[
+J(x)=\bigl((x\xi_n)_n,\ \overline{(x^*\eta_n)_n}\bigr)
+\in\ell^2(H)\oplus\overline{\ell^2(H)}.
+\]">\[
+J(x)=\bigl((x\xi_n)_n,\ \overline{(x^*\eta_n)_n}\bigr)
+\in\ell^2(H)\oplus\overline{\ell^2(H)}.
+\]</span>
+<p>The conjugate space is essential: <span class="math" data-tex="\(x\mapsto x^*\eta_n\)">\(x\mapsto x^*\eta_n\)</span> alone is conjugate-linear. Factor <span class="math" data-tex="\(f\)">\(f\)</span> through the image of <span class="math" data-tex="\(J\)">\(J\)</span>, extend to its closure, and apply the Riesz proof in BK-01. There exist <span class="math" data-tex="\(u,v\in\ell^2(H)\)">\(u,v\in\ell^2(H)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(x)&amp;=\sum_n\langle x\xi_n,u_n\rangle
++\sum_n\langle v_n,x^*\eta_n\rangle\\
+&amp;=\sum_n\langle x\xi_n,u_n\rangle
++\sum_n\langle xv_n,\eta_n\rangle.
+\end{aligned}
+\]">\[
+\begin{aligned}
+f(x)&amp;=\sum_n\langle x\xi_n,u_n\rangle
++\sum_n\langle v_n,x^*\eta_n\rangle\\
+&amp;=\sum_n\langle x\xi_n,u_n\rangle
++\sum_n\langle xv_n,\eta_n\rangle.
+\end{aligned}
+\]</span>
+<p>Concatenation is a vector-series representation, so <span class="math" data-tex="\(f\in M_*\)">\(f\in M_*\)</span>. ∎</p>
+<p>Equal continuous duals do not mean that the topologies themselves are equal.</p>
+<h2 id="real-duals-and-the-convex-closure-consequence">Real duals and the convex-closure consequence</h2>
+<p>On the underlying real space of <span class="math" data-tex="\(M\)">\(M\)</span>, a continuous real-linear <span class="math" data-tex="\(r\)">\(r\)</span> has continuous complexification</p>
+<span class="math math-display" data-tex="\[
+f(x)=r(x)-i\,r(ix).
+\]">\[
+f(x)=r(x)-i\,r(ix).
+\]</span>
+<p>Thus the common continuous real dual for these three topologies is
+<span class="math" data-tex="\(\{\operatorname{Re}f:f\in M_*\}\)">\(\{\operatorname{Re}f:f\in M_*\}\)</span>.</p>
+<p>On <span class="math" data-tex="\(M_{\rm sa}\)">\(M_{\rm sa}\)</span>, sigma-strong and sigma-strong* coincide. Suppose <span class="math" data-tex="\(r\)">\(r\)</span> is continuous real linear there. After finite concatenation,
+<span class="math" data-tex="\(|r(a)|\le Cq_\xi(a)\)">\(|r(a)|\le Cq_\xi(a)\)</span> for self-adjoint <span class="math" data-tex="\(a\)">\(a\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+f(x)=r\left(\frac{x+x^*}{2}\right)
++i\,r\left(\frac{x-x^*}{2i}\right).
+\]">\[
+f(x)=r\left(\frac{x+x^*}{2}\right)
++i\,r\left(\frac{x-x^*}{2i}\right).
+\]</span>
+<p>It is complex linear and agrees with <span class="math" data-tex="\(r\)">\(r\)</span> on self-adjoint elements. The bound</p>
+<span class="math math-display" data-tex="\[
+|f(x)|\le C\bigl(q_\xi(x)+q_\xi(x^*)\bigr)
+\]">\[
+|f(x)|\le C\bigl(q_\xi(x)+q_\xi(x^*)\bigr)
+\]</span>
+<p>makes it sigma-strong* continuous, hence a member of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> by CP-09. It is hermitian. Conversely every hermitian predual functional restricts to a continuous real functional on <span class="math" data-tex="\(M_{\rm sa}\)">\(M_{\rm sa}\)</span> for all three topologies. Ultraweak continuity already implies sigma-strong continuity, so these exhaust the ultraweak real dual as well.</p>
+<p>The argument does not presume that <span class="math" data-tex="\(x\mapsto(x+x^*)/2\)">\(x\mapsto(x+x^*)/2\)</span> is sigma-strong continuous on the full algebra.</p>
+<p><strong>Convex-closure corollary.</strong> By <a href="notes/real-coercivity/predual-prerequisites.html">the full real locally convex separation and half-space proof in NP2</a>, a convex subset of <span class="math" data-tex="\(M\)">\(M\)</span> has the same closure for the ultraweak, sigma-strong and sigma-strong* topologies. The same holds for convex subsets of <span class="math" data-tex="\(M_{\rm sa}\)">\(M_{\rm sa}\)</span>. The empty convex set is closed for all three topologies. For a nonempty convex set, each closure is the intersection of closed half-spaces defined by its continuous real functionals; the dual identifications make those half-spaces identical. NP2 proves precisely this separation conclusion at arbitrary locally convex generality. There is no boundedness or sequential-closure restriction. Banach–Alaoglu and Krein–Smulian are different parts of that broader contract and are not needed for this conclusion.</p>
+<h2 id="corners-have-exactly-their-inherited-predual"><span id="oa-mod-cp-11"></span><span id="OA-MOD-CP-11"></span>Corners have exactly their inherited predual</h2>
+<p>Let <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span> be a projection and let <span class="math" data-tex="\(N=pMp\)">\(N=pMp\)</span> act on <span class="math" data-tex="\(pH\)">\(pH\)</span>. It is a concrete von Neumann algebra there. To verify closedness, extend a weak operator convergent net on <span class="math" data-tex="\(pH\)">\(pH\)</span> by zero on <span class="math" data-tex="\((1-p)H\)">\((1-p)H\)</span>. The extensions converge weakly on <span class="math" data-tex="\(H\)">\(H\)</span>, so a net from <span class="math" data-tex="\(pMp\)">\(pMp\)</span> has its limit in <span class="math" data-tex="\(M\)">\(M\)</span> and still satisfies <span class="math" data-tex="\(x=pxp\)">\(x=pxp\)</span>.</p>
+<p>Let <span class="math" data-tex="\(j:N\to M\)">\(j:N\to M\)</span> be this inclusion, and let <span class="math" data-tex="\(C:M\to N\)">\(C:M\to N\)</span> be <span class="math" data-tex="\(C(x)=pxp\)">\(C(x)=pxp\)</span>. Both are contractions and <span class="math" data-tex="\(Cj=\operatorname{id}_N\)">\(Cj=\operatorname{id}_N\)</span>. A vector-series functional on <span class="math" data-tex="\(N\)">\(N\)</span> extends through <span class="math" data-tex="\(C\)">\(C\)</span> using the same sequences in <span class="math" data-tex="\(H\)">\(H\)</span>. Restricting a series from <span class="math" data-tex="\(M\)">\(M\)</span> through <span class="math" data-tex="\(j\)">\(j\)</span> replaces both vector sequences by their images under <span class="math" data-tex="\(p\)">\(p\)</span>. Hence the ultraweak topology on <span class="math" data-tex="\(N\)">\(N\)</span> is exactly the inherited topology.</p>
+<p>The maps</p>
+<span class="math math-display" data-tex="\[
+r:M_*\to N_*,\quad r(f)=f\circ j,\qquad
+s:N_*\to M_*,\quad s(g)=g\circ C
+\]">\[
+r:M_*\to N_*,\quad r(f)=f\circ j,\qquad
+s:N_*\to M_*,\quad s(g)=g\circ C
+\]</span>
+<p>are contractions, <span class="math" data-tex="\(rs=1\)">\(rs=1\)</span>, and <span class="math" data-tex="\(s\)">\(s\)</span> is isometric: restriction gives the reverse norm inequality. They preserve positivity. Every <span class="math" data-tex="\(g\in N_*\)">\(g\in N_*\)</span> has an extension of exactly its norm, and therefore</p>
+<span class="math math-display" data-tex="\[
+N_*\cong M_*/\ker r
+\cong\operatorname{ran}P_*,
+\qquad P_*f(x)=f(pxp),
+\tag{CP.17}
+\]">\[
+N_*\cong M_*/\ker r
+\cong\operatorname{ran}P_*,
+\qquad P_*f(x)=f(pxp),
+\tag{CP.17}
+\]</span>
+<p>isometrically, where <span class="math" data-tex="\(P_*=sr\)">\(P_*=sr\)</span> is a contractive idempotent. The second identification uses <span class="math" data-tex="\(s\)">\(s\)</span>; a quotient is not identified with a subspace without a specified map.</p>
+<p>At tensor level, <span class="math" data-tex="\(p\otimes\overline p\)">\(p\otimes\overline p\)</span> is contractive by (CP.2), extends to the completions, and gives the compression formulas. The construction includes <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, requires no centrality, and uses no characterization of normal maps.</p>
+<h2 id="supports-and-the-direction-toward-normal-weights"><span id="oa-mod-cp-12"></span><span id="OA-MOD-CP-12"></span>Supports and the direction toward normal weights</h2>
+<p>Let <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span>. It is positive and ultraweakly continuous by CP-06, so the written <a href="notes/real-coercivity/predual-prerequisites.html">bounded positive-functional support proof NP3</a> applies. That proof constructs finite joins of null projections by BK-06 range supports, then uses BK-04 for their arbitrary increasing-net supremum and proves that the limit is a projection. It gives the largest null projection and faithful complementary corner directly. Its inputs are bounded Hilbert calculus, concrete operator topologies and bounded monotone nets. No predual duality, universal-bidual construction, general weight support or NW converse is an input. The word normal in NP3 means ultraweak continuity.</p>
+<p>The support proof supplies a largest projection <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(\omega(q)=0\)">\(\omega(q)=0\)</span>, and says that <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is faithful on <span class="math" data-tex="\(pMp\)">\(pMp\)</span>, where <span class="math" data-tex="\(p=1-q\)">\(p=1-q\)</span>. Here is the compression consequence with our conventions. Cauchy–Schwarz (CP.13) gives</p>
+<span class="math math-display" data-tex="\[
+|\omega(xq)|^2\le\omega(q)\,\omega(xx^*)=0,
+\qquad x\in M.
+\]">\[
+|\omega(xq)|^2\le\omega(q)\,\omega(xx^*)=0,
+\qquad x\in M.
+\]</span>
+<p>Since a positive functional preserves adjoints, <span class="math" data-tex="\(\omega(qx)=\overline{\omega(x^*q)}=0\)">\(\omega(qx)=\overline{\omega(x^*q)}=0\)</span>. Expanding <span class="math" data-tex="\(x=(p+q)x(p+q)\)">\(x=(p+q)x(p+q)\)</span> therefore proves</p>
+<span class="math math-display" data-tex="\[
+\omega(x)=\omega(pxp),\qquad x\in M.
+\]">\[
+\omega(x)=\omega(pxp),\qquad x\in M.
+\]</span>
+<p>This <span class="math" data-tex="\(p\)">\(p\)</span> is the least projection with that identity: if <span class="math" data-tex="\(\omega(x)=\omega(exe)\)">\(\omega(x)=\omega(exe)\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(\omega(1-e)=0\)">\(\omega(1-e)=0\)</span>, so <span class="math" data-tex="\(1-e\le q\)">\(1-e\le q\)</span> and <span class="math" data-tex="\(p\le e\)">\(p\le e\)</span>. The zero functional has support zero. A nonzero functional can be normalized on its support corner by (CP.14), and CP-11 supplies its exact corner predual and inherited topology. No centrality of <span class="math" data-tex="\(p\)">\(p\)</span> is assumed.</p>
+<p>CP-07 also proves order normality directly. As a finite-valued normal weight, <span class="math" data-tex="\(\omega\)">\(\omega\)</span> has all positive elements in its finite domain and finite-domain projection <span class="math" data-tex="\(1\)">\(1\)</span>. Its weight support is therefore the same <span class="math" data-tex="\(p\)">\(p\)</span>. The general, possibly infinite-valued null-projection and compression results WS-04–05 remain separate. They are not inputs to the bounded support proof or to the predual construction.</p>
+<p>There is a later consequence, <strong>conditional on the independent normal-weight characterization NW proving recovery from dominated normal positive functionals</strong>. If a bounded positive order-normal <span class="math" data-tex="\(\omega\)">\(\omega\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\omega(a)=\sup\{\psi(a):\psi\in M_*^+,\ \psi\le\omega\},
+\]">\[
+\omega(a)=\sup\{\psi(a):\psi\in M_*^+,\ \psi\le\omega\},
+\]</span>
+<p>choose <span class="math" data-tex="\(\psi_n\le\omega\)">\(\psi_n\le\omega\)</span> with <span class="math" data-tex="\(\psi_n(1)\to\omega(1)\)">\(\psi_n(1)\to\omega(1)\)</span>. Equation (CP.15) gives
+<span class="math" data-tex="\(\|\omega-\psi_n\|\to0\)">\(\|\omega-\psi_n\|\to0\)</span>, so norm closure of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> puts <span class="math" data-tex="\(\omega\)">\(\omega\)</span> in <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span>. If <span class="math" data-tex="\(\omega(1)=0\)">\(\omega(1)=0\)</span>, it is already zero. This is a route from the completed NW theorem to the scalar order-normal-to-ultraweak implication. It is not used to construct the predual, prove CP-08–11, or justify an input of NW.</p>
+<h2 id="examples-and-exercises-with-solutions">Examples and exercises with solutions</h2>
+<p><strong>Example: a vector state without separability.</strong> Let <span class="math" data-tex="\(H=\ell^2(I)\)">\(H=\ell^2(I)\)</span>, where <span class="math" data-tex="\(I\)">\(I\)</span> is any nonempty set, and choose <span class="math" data-tex="\(i_0\in I\)">\(i_0\in I\)</span>. The tensor
+<span class="math" data-tex="\(e_{i_0}\otimes\overline{e_{i_0}}\)">\(e_{i_0}\otimes\overline{e_{i_0}}\)</span>
+defines the positive norm-one functional
+<span class="math" data-tex="\(\omega(x)=\langle xe_{i_0},e_{i_0}\rangle\)">\(\omega(x)=\langle xe_{i_0},e_{i_0}\rangle\)</span>.
+Its support is the rank-one projection onto <span class="math" data-tex="\(\mathbb Ce_{i_0}\)">\(\mathbb Ce_{i_0}\)</span>. The corner is scalar even if <span class="math" data-tex="\(I\)">\(I\)</span> is uncountable. This one state does not imply existence of a faithful state on <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>.</p>
+<p><strong>Exercise 1: a pure tensor's functional norm.</strong> For <span class="math" data-tex="\(\xi,\eta\in H\)">\(\xi,\eta\in H\)</span>, prove that <span class="math" data-tex="\(f(x)=\langle x\xi,\eta\rangle\)">\(f(x)=\langle x\xi,\eta\rangle\)</span> on <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span> has norm <span class="math" data-tex="\(\|\xi\|\|\eta\|\)">\(\|\xi\|\|\eta\|\)</span>.</p>
+<p><strong>Solution.</strong> Cauchy–Schwarz gives the upper bound. If both vectors are nonzero, the norm-one rank-one operator</p>
+<span class="math math-display" data-tex="\[
+Tx=\left\langle x,\frac{\xi}{\|\xi\|}\right\rangle
+\frac{\eta}{\|\eta\|}
+\]">\[
+Tx=\left\langle x,\frac{\xi}{\|\xi\|}\right\rangle
+\frac{\eta}{\|\eta\|}
+\]</span>
+<p>gives <span class="math" data-tex="\(f(T)=\|\xi\|\|\eta\|\)">\(f(T)=\|\xi\|\|\eta\|\)</span>. If a vector is zero, the functional is zero.</p>
+<p><strong>Exercise 2: the inherited quotient norm.</strong> For <span class="math" data-tex="\(M=\mathbb CI_H\)">\(M=\mathbb CI_H\)</span>, <span class="math" data-tex="\(H\ne0\)">\(H\ne0\)</span>, identify <span class="math" data-tex="\(M_*\)">\(M_*\)</span> and its norm using the tensor quotient.</p>
+<p><strong>Solution.</strong> Restriction sends <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(c=\Phi_I(u)\)">\(c=\Phi_I(u)\)</span>, since its value at <span class="math" data-tex="\(\lambda I\)">\(\lambda I\)</span> is <span class="math" data-tex="\(\lambda c\)">\(\lambda c\)</span>. The kernel is <span class="math" data-tex="\(M_\perp\)">\(M_\perp\)</span>. The quotient norm is <span class="math" data-tex="\(|c|\)">\(|c|\)</span>: one inequality follows from <span class="math" data-tex="\(|\Phi_I(u)|\le\|u\|\)">\(|\Phi_I(u)|\le\|u\|\)</span>, and the other from the representative <span class="math" data-tex="\(c\,\xi\otimes\overline\xi\)">\(c\,\xi\otimes\overline\xi\)</span> for any unit vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Different tensors can therefore define the same restricted functional.</p>
+<p><strong>Exercise 3: closure versus compactness.</strong> Does the proof that norm balls are ultraweakly closed also prove they are compact?</p>
+<p><strong>Solution.</strong> CP-07 expresses the ball as an intersection of closed coefficient inequalities, proving closedness only. Weak-star compactness needs Banach–Alaoglu, a separately retained part of NW-DEP-CONVEX.</p>
+<p><strong>Exercise 4: compressing a mixed series.</strong> Give the extension and restriction formulas in CP-11.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(y=pyp\)">\(y=pyp\)</span>, restriction of <span class="math" data-tex="\(f(x)=\sum_n\langle x\xi_n,\eta_n\rangle\)">\(f(x)=\sum_n\langle x\xi_n,\eta_n\rangle\)</span> is
+<span class="math" data-tex="\(f(y)=\sum_n\langle y(p\xi_n),p\eta_n\rangle\)">\(f(y)=\sum_n\langle y(p\xi_n),p\eta_n\rangle\)</span>.
+A corner functional with vectors in <span class="math" data-tex="\(pH\)">\(pH\)</span> extends by the same expression in <span class="math" data-tex="\(x\)">\(x\)</span>, whose value is unchanged when <span class="math" data-tex="\(x\)">\(x\)</span> is replaced by <span class="math" data-tex="\(pxp\)">\(pxp\)</span>. These formulas give both topology directions.</p>
+<h2 id="exact-exports-and-remaining-boundaries">Exact exports and remaining boundaries</h2>
+<p>CP-02–06 supply the concrete part of <strong>OA-MOD-DEP-PREDUAL</strong>: a Banach predual, onto isometric evaluation duality, and the specified ultraweak topology. CP-07, CP-11 and the complete bounded support proof NP3 and compression argument in CP-12 supply the positive-functional, support and corner clauses of <strong>OA-MOD-NW-DEP-DUAL</strong>. CP-08–10 supply the continuous-dual assertions of <strong>OA-MOD-NW-DEP-TOPO</strong>; its convex-closure consequence uses the full real locally convex separation proof NP2 linked in CP-10.</p>
+<p>This unit does not prove uniqueness of arbitrary abstract preduals, Sakai's abstract representation theorem, the universal C*-bidual construction, Banach–Alaoglu or Krein–Smulian. It does not use the scalar order-normal-to-ultraweak converse. These distinctions keep the remaining BIDUAL and convex-analysis obligations visible.</p>
+<p>The projective-tensor argument is a written classical functional-analysis construction. BK-01 and NP1–NP3 now supply its Hilbert, norm-extension, convex-separation and bounded-support prerequisites in this package. The free <a href="https://github.com/leanprover-community/mathlib4/blob/71a80585ee495fc24472fd0eaffc89d94e4fd8d6/Mathlib/Analysis/Normed/Module/HahnBanach.lean#L44">mathlib norm-extension and norming formulations</a> retain their Apache-2.0 provenance; no Lean code, comments or source prose are copied. The needed proofs are written in NP1. The broader course remains incomplete; concrete predual duality does not supply the abstract-predual or universal-bidual theorems.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-WS.html">← Finite domains, null directions, and support corners</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-NW.html">Detecting normal weights by finite observations →</a></span></nav>
+<p class="small source-link"><a href="src/concrete-preduals.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

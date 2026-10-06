@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whittaker models, Kirillov models and the local classification · Automorphic forms and representations of GL(2)</title>
+<meta name="description" content="A lesson of the course Automorphic forms and representations of GL(2). Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/automorphic-forms-and-representations-of-gl2/whittaker-models-kirillov-models-and-the-local-classification.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Automorphic forms and representations of GL(2)</a> <span aria-hidden="true">›</span> <span>Lesson 6 of 14</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="whittaker-models-kirillov-models-and-the-local-classification">Whittaker models, Kirillov models and the local classification</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).</em></p>
+<p>A nontrivial additive character turns unipotent translation into scalar multiplication. Restricting the resulting Whittaker functions to a one-dimensional torus gives the Kirillov model. Compact functions form a common part of every infinite-dimensional irreducible model; the remaining germs at zero distinguish supercuspidal, special and principal-series representations. We will prove uniqueness, the compact-function inclusion and the local classification. Section 7 proves the unitary and tempered classifications through explicit invariant forms and coefficient estimates.</p>
+<p>Use the local field, smooth representations and countable Schur lemma of <a href="smooth-local-representations-and-the-hecke-module-dictionary.html">the smooth local lesson</a>, and normalized induction, exact Jacquet modules, reciprocity and the Steinberg construction from <a href="normalized-induction-and-jacquet-modules.html">the induction lesson</a>. Write
+<span class="math math-display" data-tex="\[
+G=\mathrm{GL}_2(F),\quad \nu(t)=|t|,\quad
+d(t)=\operatorname{diag}(t,1),\quad
+n(x)=\begin{pmatrix}1&amp;x\\ 0&amp;1\end{pmatrix}.
+\]">\[
+G=\mathrm{GL}_2(F),\quad \nu(t)=|t|,\quad
+d(t)=\operatorname{diag}(t,1),\quad
+n(x)=\begin{pmatrix}1&amp;x\\ 0&amp;1\end{pmatrix}.
+\]</span>
+Fix a nontrivial continuous additive character <span class="math" data-tex="\(\psi:F\to\mathbb C^\times\)">\(\psi:F\to\mathbb C^\times\)</span>. It is unitary. Let <span class="math" data-tex="\(\varpi^{-\ell}\mathcal O\)">\(\varpi^{-\ell}\mathcal O\)</span> be the largest fractional ideal on which it is trivial. We use
+<span class="math math-display" data-tex="\[
+w_0=\begin{pmatrix}0&amp;1\\ -1&amp;0\end{pmatrix}.
+\tag{0.1}
+\]">\[
+w_0=\begin{pmatrix}0&amp;1\\ -1&amp;0\end{pmatrix}.
+\tag{0.1}
+\]</span>
+This is the negative of the Weyl element in Lesson 6. Thus <span class="math" data-tex="\(w_0^2=-I\)">\(w_0^2=-I\)</span>, and its operator differs by <span class="math" data-tex="\(\omega(-1)\)">\(\omega(-1)\)</span> in a representation with central character <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Additive measure is self-dual for <span class="math" data-tex="\(\psi\)">\(\psi\)</span> when Fourier inversion is used; this gives <span class="math" data-tex="\(\operatorname{vol}(\mathcal O)=1\)">\(\operatorname{vol}(\mathcal O)=1\)</span> precisely when <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>. Normalized compact averages do not depend on this choice.</p>
+<h2 id="1-a-vector-valued-model-before-uniqueness">1. A vector-valued model before uniqueness</h2>
+<p>For a smooth representation <span class="math" data-tex="\(V\)">\(V\)</span>, put
+<span class="math math-display" data-tex="\[
+V(N,\psi)=\operatorname{span}\{\pi(n(x))v-\psi(x)v\},\qquad
+X=V/V(N,\psi).
+\]">\[
+V(N,\psi)=\operatorname{span}\{\pi(n(x))v-\psi(x)v\},\qquad
+X=V/V(N,\psi).
+\]</span>
+A Whittaker functional is a linear functional <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> satisfying
+<span class="math" data-tex="\(\lambda(\pi(n(x))v)=\psi(x)\lambda(v)\)">\(\lambda(\pi(n(x))v)=\psi(x)\lambda(v)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_N(V,\psi)=X^*.
+\tag{1.1}
+\]">\[
+\operatorname{Hom}_N(V,\psi)=X^*.
+\tag{1.1}
+\]</span>
+These are algebraic functionals; they need not belong to the smooth contragredient.</p>
+<p><strong>Lemma 1.1 — weighted averages and exactness.</strong> For a compact additive subgroup <span class="math" data-tex="\(D\subset F\)">\(D\subset F\)</span>, define
+<span class="math math-display" data-tex="\[
+E_D^\psi v=\frac1{\operatorname{vol}(D)}
+ \int_D\psi(-x)\pi(n(x))v\,dx.
+\]">\[
+E_D^\psi v=\frac1{\operatorname{vol}(D)}
+ \int_D\psi(-x)\pi(n(x))v\,dx.
+\]</span>
+A vector has zero class in <span class="math" data-tex="\(X\)">\(X\)</span> if and only if <span class="math" data-tex="\(E_D^\psi v=0\)">\(E_D^\psi v=0\)</span> for some sufficiently large <span class="math" data-tex="\(D\)">\(D\)</span>. Twisted coinvariants are exact on smooth representations.</p>
+<p><strong>Proof.</strong> The integral is a finite linear combination because its integrand is locally constant on a compact set. The difference <span class="math" data-tex="\(v-E_D^\psi v\)">\(v-E_D^\psi v\)</span> is a sum of twisted differences. If <span class="math" data-tex="\(D\)">\(D\)</span> contains <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, translation in the integral shows
+<span class="math" data-tex="\(E_D^\psi(\pi(n(x_0))v-\psi(x_0)v)=0\)">\(E_D^\psi(\pi(n(x_0))v-\psi(x_0)v)=0\)</span>. Any finite sum of differences is therefore killed by an average containing all its translation parameters. This proves the criterion. For a subrepresentation <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span>, the criterion proves <span class="math" data-tex="\(W\cap V(N,\psi)=W(N,\psi)\)">\(W\cap V(N,\psi)=W(N,\psi)\)</span>. The quotient assertion follows either by lifting a vector and averaging, or by the right exactness of a vector-space quotient. These two statements give exactness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define the function with values in <span class="math" data-tex="\(X\)">\(X\)</span>
+<span class="math math-display" data-tex="\[
+\Phi_v(t)=[\pi(d(t))v],\qquad t\in F^\times.
+\]">\[
+\Phi_v(t)=[\pi(d(t))v],\qquad t\in F^\times.
+\]</span>
+It is locally constant and obeys
+<span class="math math-display" data-tex="\[
+\Phi_{\pi(n(x))v}(t)=\psi(tx)\Phi_v(t),\qquad
+\Phi_{\pi(d(a))v}(t)=\Phi_v(ta).
+\tag{1.2}
+\]">\[
+\Phi_{\pi(n(x))v}(t)=\psi(tx)\Phi_v(t),\qquad
+\Phi_{\pi(d(a))v}(t)=\Phi_v(ta).
+\tag{1.2}
+\]</span>
+A sufficiently small open subgroup of <span class="math" data-tex="\(\mathcal O^\times\)">\(\mathcal O^\times\)</span> fixes each function under dilation. If <span class="math" data-tex="\(n(I)\)">\(n(I)\)</span> fixes <span class="math" data-tex="\(v\)">\(v\)</span>, where <span class="math" data-tex="\(I\)">\(I\)</span> is a fractional ideal, its nonzero values require <span class="math" data-tex="\(tI\subset\varpi^{-\ell}\mathcal O\)">\(tI\subset\varpi^{-\ell}\mathcal O\)</span>. Thus every <span class="math" data-tex="\(\Phi_v\)">\(\Phi_v\)</span> is supported in <span class="math" data-tex="\(|t|\le C_v\)">\(|t|\le C_v\)</span>.</p>
+<p><strong>Lemma 1.2 — the kernel and unipotent invariance.</strong> If <span class="math" data-tex="\(\Phi_v(t)=0\)">\(\Phi_v(t)=0\)</span> for every <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, then <span class="math" data-tex="\(v\)">\(v\)</span> is <span class="math" data-tex="\(N\)">\(N\)</span>-invariant. In any smooth <span class="math" data-tex="\(G\)">\(G\)</span>-representation, an <span class="math" data-tex="\(N\)">\(N\)</span>-invariant vector is <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span>-invariant.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(I\)">\(I\)</span> with <span class="math" data-tex="\(n(I)v=v\)">\(n(I)v=v\)</span>, and an open unit subgroup <span class="math" data-tex="\(H\)">\(H\)</span> with <span class="math" data-tex="\(\pi(d(h))v=v\)">\(\pi(d(h))v=v\)</span> for <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>. Write <span class="math" data-tex="\(I^\perp=\{a:\psi(aI)=1\}\)">\(I^\perp=\{a:\psi(aI)=1\}\)</span>. To enlarge the stabilizing ideal from <span class="math" data-tex="\(I\)">\(I\)</span> to <span class="math" data-tex="\(J=\varpi^{-1}I\)">\(J=\varpi^{-1}I\)</span>, consider the annulus <span class="math" data-tex="\(I^\perp\setminus J^\perp\)">\(I^\perp\setminus J^\perp\)</span>. It has finitely many <span class="math" data-tex="\(H\)">\(H\)</span>-orbits: its valuation is fixed, and <span class="math" data-tex="\(\mathcal O^\times/H\)">\(\mathcal O^\times/H\)</span> is finite.</p>
+<p>For each orbit representative <span class="math" data-tex="\(a\)">\(a\)</span>, the zero class of <span class="math" data-tex="\(\pi(d(a))v\)">\(\pi(d(a))v\)</span> and Lemma 1.1 give a compact average killing it. Conjugating by <span class="math" data-tex="\(d(a)\)">\(d(a)\)</span> gives
+<span class="math math-display" data-tex="\[
+E_D^{\psi(a\,\cdot)}v=0
+\]">\[
+E_D^{\psi(a\,\cdot)}v=0
+\]</span>
+for a sufficiently large additive ideal <span class="math" data-tex="\(D\)">\(D\)</span>. Increase <span class="math" data-tex="\(D\)">\(D\)</span> to work for all representatives and to contain <span class="math" data-tex="\(J\)">\(J\)</span>. Such ideals are stable under unit multiplication. Conjugation by <span class="math" data-tex="\(d(h)\)">\(d(h)\)</span>, using that <span class="math" data-tex="\(h\)">\(h\)</span> fixes <span class="math" data-tex="\(v\)">\(v\)</span>, makes the same assertion true for the entire annulus.</p>
+<p>The <span class="math" data-tex="\(n(D)\)">\(n(D)\)</span>-orbit of <span class="math" data-tex="\(v\)">\(v\)</span> factors through the finite abelian group <span class="math" data-tex="\(D/I\)">\(D/I\)</span>. Its character projections are exactly these weighted averages, with frequencies in <span class="math" data-tex="\(I^\perp/D^\perp\)">\(I^\perp/D^\perp\)</span>. All projections whose frequency is outside <span class="math" data-tex="\(J^\perp\)">\(J^\perp\)</span> vanish. Finite Fourier inversion therefore says that <span class="math" data-tex="\(J/I\)">\(J/I\)</span> acts trivially. Repeat this enlargement to obtain invariance under every <span class="math" data-tex="\(n(x)\)">\(n(x)\)</span>.</p>
+<p>For the second assertion, smoothness supplies a nonzero <span class="math" data-tex="\(c\)">\(c\)</span> with
+<span class="math" data-tex="\(\pi(\left(\begin{smallmatrix}1&amp;0\\ c&amp;1\end{smallmatrix}\right))v=v\)">\(\pi(\left(\begin{smallmatrix}1&amp;0\\ c&amp;1\end{smallmatrix}\right))v=v\)</span>. All upper unipotents fix <span class="math" data-tex="\(v\)">\(v\)</span>, so the product
+<span class="math math-display" data-tex="\[
+n(-c^{-1})
+\begin{pmatrix}1&amp;0\\ c&amp;1\end{pmatrix}
+n(-c^{-1})
+=\begin{pmatrix}0&amp;-c^{-1}\\ c&amp;0\end{pmatrix}
+\]">\[
+n(-c^{-1})
+\begin{pmatrix}1&amp;0\\ c&amp;1\end{pmatrix}
+n(-c^{-1})
+=\begin{pmatrix}0&amp;-c^{-1}\\ c&amp;0\end{pmatrix}
+\]</span>
+fixes it. Conjugating upper unipotents by this matrix supplies every lower unipotent. Upper and lower elementary matrices generate <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span>, so this group fixes <span class="math" data-tex="\(v\)">\(v\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Now assume <span class="math" data-tex="\(V\)">\(V\)</span> is infinite-dimensional and irreducible. Its <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span>-fixed space is a <span class="math" data-tex="\(G\)">\(G\)</span>-subrepresentation, since <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span> is normal. If it were nonzero, <span class="math" data-tex="\(V\)">\(V\)</span> would factor through determinant; countable Schur would make the irreducible representation one-dimensional. Lemma 1.2 consequently makes <span class="math" data-tex="\(v\mapsto\Phi_v\)">\(v\mapsto\Phi_v\)</span> injective. In particular <span class="math" data-tex="\(X\ne0\)">\(X\ne0\)</span>.</p>
+<p><strong>Proposition 1.3 — the compact part.</strong> In this injective model,
+<span class="math math-display" data-tex="\[
+V_0:=C_c^\infty(F^\times,X)\subset V,\qquad
+V(N)=V_0,\qquad V=V_0+\pi(w_0)V_0,
+\tag{1.3}
+\]">\[
+V_0:=C_c^\infty(F^\times,X)\subset V,\qquad
+V(N)=V_0,\qquad V=V_0+\pi(w_0)V_0,
+\tag{1.3}
+\]</span>
+where <span class="math" data-tex="\(V(N)\)">\(V(N)\)</span> denotes ordinary, untwisted unipotent differences.</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(u\in X\)">\(u\in X\)</span>, choose <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(\Phi_v(1)=u\)">\(\Phi_v(1)=u\)</span>. Formula (1.2) shows that <span class="math" data-tex="\(E_D^\psi\)">\(E_D^\psi\)</span> multiplies <span class="math" data-tex="\(\Phi_v(t)\)">\(\Phi_v(t)\)</span> by <span class="math" data-tex="\(1_{1+D^\perp}(t)\)">\(1_{1+D^\perp}(t)\)</span>. Choose <span class="math" data-tex="\(D\)">\(D\)</span> so large that this ball avoids zero and <span class="math" data-tex="\(\Phi_v\)">\(\Phi_v\)</span> is constantly <span class="math" data-tex="\(u\)">\(u\)</span> there. We have produced its characteristic function times <span class="math" data-tex="\(u\)">\(u\)</span>. Dilation and further weighted averages, now centered at any chosen frequency, refine this to arbitrary small balls away from zero. A compact locally constant <span class="math" data-tex="\(X\)">\(X\)</span>-valued function has finite image and can be partitioned into finitely many such balls. Thus it belongs to <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>An ordinary <span class="math" data-tex="\(N\)">\(N\)</span>-difference is <span class="math" data-tex="\((\psi(tx)-1)\Phi_v(t)\)">\((\psi(tx)-1)\Phi_v(t)\)</span>. It vanishes near zero and outside a bounded ball, hence belongs to <span class="math" data-tex="\(V_0\)">\(V_0\)</span>. Conversely partition a compact function into balls on each of which some <span class="math" data-tex="\(\psi(tx)-1\)">\(\psi(tx)-1\)</span> is a fixed nonzero number. Dividing there expresses it as an <span class="math" data-tex="\(N\)">\(N\)</span>-difference. This proves <span class="math" data-tex="\(V(N)=V_0\)">\(V(N)=V_0\)</span>.</p>
+<p>The space <span class="math" data-tex="\(V_0+\pi(w_0)V_0\)">\(V_0+\pi(w_0)V_0\)</span> is stable under the center and the torus, since
+<span class="math" data-tex="\(w_0d(a)=aI\,d(a^{-1})w_0\)">\(w_0d(a)=aI\,d(a^{-1})w_0\)</span>. It is stable under <span class="math" data-tex="\(N\)">\(N\)</span>: applying <span class="math" data-tex="\(n(x)-1\)">\(n(x)-1\)</span> to any vector gives an element of <span class="math" data-tex="\(V_0\)">\(V_0\)</span>. It is stable under <span class="math" data-tex="\(w_0\)">\(w_0\)</span>, since <span class="math" data-tex="\(w_0^2=-I\)">\(w_0^2=-I\)</span>. These matrices generate <span class="math" data-tex="\(G\)">\(G\)</span>. The space is nonzero, so irreducibility makes it all of <span class="math" data-tex="\(V\)">\(V\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-coefficient-calculation-that-makes-the-fiber-one-dimensional">2. The coefficient calculation that makes the fiber one-dimensional</h2>
+<p>Existence has already been proved: <span class="math" data-tex="\(X\ne0\)">\(X\ne0\)</span>. The remaining issue is that several independent values in <span class="math" data-tex="\(X\)">\(X\)</span> might survive. We now eliminate this possibility without assuming the Whittaker uniqueness theorem.</p>
+<p>Let <span class="math" data-tex="\(U=\mathcal O^\times\)">\(U=\mathcal O^\times\)</span>, with multiplicative measure <span class="math" data-tex="\(du\)">\(du\)</span> of total mass one. Put
+<span class="math" data-tex="\(\epsilon=\omega|_U\)">\(\epsilon=\omega|_U\)</span>, <span class="math" data-tex="\(z=\omega(\varpi)\)">\(z=\omega(\varpi)\)</span>, and
+<span class="math" data-tex="\(\widetilde\alpha=\alpha^{-1}\epsilon^{-1}\)">\(\widetilde\alpha=\alpha^{-1}\epsilon^{-1}\)</span> for a smooth unit character <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. For an <span class="math" data-tex="\(X\)">\(X\)</span>-valued function <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, write
+<span class="math math-display" data-tex="\[
+\phi_n^\alpha=\int_U\phi(\varpi^n u)\alpha(u)\,du,\qquad
+\widehat\phi^\alpha(Z)=\sum_n Z^n\phi_n^\alpha.
+\]">\[
+\phi_n^\alpha=\int_U\phi(\varpi^n u)\alpha(u)\,du,\qquad
+\widehat\phi^\alpha(Z)=\sum_n Z^n\phi_n^\alpha.
+\]</span>
+For a vector in <span class="math" data-tex="\(V\)">\(V\)</span>, this series is bounded below in its powers of <span class="math" data-tex="\(Z\)">\(Z\)</span>, and only finitely many unit characters occur. For a vector in <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, it is a Laurent polynomial.</p>
+<p>Define <span class="math" data-tex="\(C_n^\alpha\in\operatorname{End}(X)\)">\(C_n^\alpha\in\operatorname{End}(X)\)</span> as follows: apply <span class="math" data-tex="\(W=\pi(w_0)\)">\(W=\pi(w_0)\)</span> to the compact function <span class="math" data-tex="\(1_U(u)\alpha(u)\epsilon(u)x\)">\(1_U(u)\alpha(u)\epsilon(u)x\)</span>, and take its <span class="math" data-tex="\(n\)">\(n\)</span>-th <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-coefficient. Torus conjugation and unit Fourier inversion give, for compact <span class="math" data-tex="\(\phi\)">\(\phi\)</span>,
+<span class="math math-display" data-tex="\[
+(W\phi)_n^\alpha
+ =\sum_p z^{-p}C_{n+p}^\alpha\phi_p^{\widetilde\alpha}.
+\tag{2.1}
+\]">\[
+(W\phi)_n^\alpha
+ =\sum_p z^{-p}C_{n+p}^\alpha\phi_p^{\widetilde\alpha}.
+\tag{2.1}
+\]</span>
+For clarity, a function <span class="math" data-tex="\(1_U\alpha\epsilon\,x\)">\(1_U\alpha\epsilon\,x\)</span> has just the coefficient
+<span class="math" data-tex="\(\phi_0^{\widetilde\alpha}=x\)">\(\phi_0^{\widetilde\alpha}=x\)</span>. Dilation by <span class="math" data-tex="\(\varpi^j\)">\(\varpi^j\)</span> shifts its input index to <span class="math" data-tex="\(-j\)">\(-j\)</span>, while <span class="math" data-tex="\(W d(\varpi^j)=z^j d(\varpi^{-j})W\)">\(W d(\varpi^j)=z^j d(\varpi^{-j})W\)</span> shifts the output index by <span class="math" data-tex="\(j\)">\(j\)</span> and multiplies it by <span class="math" data-tex="\(z^j\)">\(z^j\)</span>. This proves (2.1) on generators and hence on all compact functions. For each fixed <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(C_n^\alpha x=0\)">\(C_n^\alpha x=0\)</span> when <span class="math" data-tex="\(n\)">\(n\)</span> is sufficiently negative.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+\eta(\chi,b)=\int_U\chi(u)\psi(bu)\,du.
+\]">\[
+\eta(\chi,b)=\int_U\chi(u)\psi(bu)\,du.
+\]</span>
+Finite Fourier inversion on <span class="math" data-tex="\(U\)">\(U\)</span> gives
+<span class="math math-display" data-tex="\[
+(\pi(n(y))\phi)_n^\alpha
+ =\sum_\beta\eta(\beta^{-1}\alpha,\varpi^n y)\phi_n^\beta.
+\tag{2.2}
+\]">\[
+(\pi(n(y))\phi)_n^\alpha
+ =\sum_\beta\eta(\beta^{-1}\alpha,\varpi^n y)\phi_n^\beta.
+\tag{2.2}
+\]</span></p>
+<p>We need two elementary Gauss-sum facts. If a nontrivial unit character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has conductor <span class="math" data-tex="\(\varpi^m\)">\(\varpi^m\)</span>, then
+<span class="math math-display" data-tex="\[
+\eta(\chi,\varpi^r)=0\quad(r\ne-m-\ell),\qquad
+\eta(\chi,\varpi^{-m-\ell})\ne0.
+\tag{2.3}
+\]">\[
+\eta(\chi,\varpi^r)=0\quad(r\ne-m-\ell),\qquad
+\eta(\chi,\varpi^{-m-\ell})\ne0.
+\tag{2.3}
+\]</span>
+At frequencies of smaller absolute value, averaging over the last nontrivial unit subgroup cancels <span class="math" data-tex="\(\chi\)">\(\chi\)</span>; when <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, this is simply the sum of a nontrivial character of the residue-field units. At larger frequencies, average over additive cosets of <span class="math" data-tex="\(\varpi^m\)">\(\varpi^m\)</span>, where <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is constant but the additive character is nontrivial. At the critical frequency, extend <span class="math" data-tex="\(\chi\)">\(\chi\)</span> by zero to <span class="math" data-tex="\(\mathcal O/\varpi^m\)">\(\mathcal O/\varpi^m\)</span>. Its finite Fourier transform vanishes at nonunit frequencies, by the same subgroup cancellation, and its values at unit frequencies differ by unit-character factors. Parseval gives the square of each unnormalized critical Gauss sum as <span class="math" data-tex="\(q^m\)">\(q^m\)</span>: the original function has <span class="math" data-tex="\(q^m-q^{m-1}\)">\(q^m-q^{m-1}\)</span> entries of absolute value one. Thus it cannot vanish. For the trivial character,
+<span class="math math-display" data-tex="\[
+\eta(1,\varpi^r)=
+\begin{cases}
+1&amp;r\ge-\ell,\\
+-1/(q-1)&amp;r=-\ell-1,\\
+0&amp;r\le-\ell-2.
+\end{cases}
+\tag{2.4}
+\]">\[
+\eta(1,\varpi^r)=
+\begin{cases}
+1&amp;r\ge-\ell,\\
+-1/(q-1)&amp;r=-\ell-1,\\
+0&amp;r\le-\ell-2.
+\end{cases}
+\tag{2.4}
+\]</span>
+Indeed integrate over <span class="math" data-tex="\(\mathcal O\setminus\varpi\mathcal O\)">\(\mathcal O\setminus\varpi\mathcal O\)</span>, subtracting the two additive-ball integrals and dividing by <span class="math" data-tex="\(1-q^{-1}\)">\(1-q^{-1}\)</span>.</p>
+<p><strong>Lemma 2.1 — a symmetric coefficient identity.</strong> Put <span class="math" data-tex="\(h=\alpha\beta\epsilon\)">\(h=\alpha\beta\epsilon\)</span> and
+<span class="math math-display" data-tex="\[
+S_{n,p}^{\alpha,\beta}
+ =\sum_\sigma\eta(\sigma^{-1}\alpha,\varpi^n)
+                 \eta(\sigma^{-1}\beta,\varpi^p)C_{n+p}^{\sigma}.
+\]">\[
+S_{n,p}^{\alpha,\beta}
+ =\sum_\sigma\eta(\sigma^{-1}\alpha,\varpi^n)
+                 \eta(\sigma^{-1}\beta,\varpi^p)C_{n+p}^{\sigma}.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+h(-1)S_{n,p}^{\alpha,\beta}
+ =\sum_r z^{-r}\bigl(\eta(h^{-1},\varpi^r)-1_{h=1}\bigr)
+       C_{n+r}^{\alpha}C_{p+r}^{\beta}
+ +\epsilon(-1)z^p1_{n=p}1_{h=1}I_X.
+\tag{2.5}
+\]">\[
+h(-1)S_{n,p}^{\alpha,\beta}
+ =\sum_r z^{-r}\bigl(\eta(h^{-1},\varpi^r)-1_{h=1}\bigr)
+       C_{n+r}^{\alpha}C_{p+r}^{\beta}
+ +\epsilon(-1)z^p1_{n=p}1_{h=1}I_X.
+\tag{2.5}
+\]</span></p>
+<p><strong>Proof.</strong> The matrix relation
+<span class="math" data-tex="\(w_0n(1)w_0=-n(-1)w_0n(-1)\)">\(w_0n(1)w_0=-n(-1)w_0n(-1)\)</span> gives
+<span class="math math-display" data-tex="\[
+W(\pi(n(1))-1)W\phi+\epsilon(-1)\phi
+ =\epsilon(-1)\pi(n(-1))W\pi(n(-1))\phi.
+\tag{2.6}
+\]">\[
+W(\pi(n(1))-1)W\phi+\epsilon(-1)\phi
+ =\epsilon(-1)\pi(n(-1))W\pi(n(-1))\phi.
+\tag{2.6}
+\]</span>
+Its middle input <span class="math" data-tex="\((\pi(n(1))-1)W\phi\)">\((\pi(n(1))-1)W\phi\)</span> is compact by Proposition 1.3, so (2.1) is applicable. To extract a coefficient without informal infinite-series multiplication, take a compact input with its only nonzero coefficient <span class="math" data-tex="\(\phi_p^\rho=x\)">\(\phi_p^\rho=x\)</span>.</p>
+<p>By (2.1), <span class="math" data-tex="\(W\phi\)">\(W\phi\)</span> has only the unit-character packet <span class="math" data-tex="\(\widetilde\rho\)">\(\widetilde\rho\)</span>. Apply (2.2), subtract its original packet, then apply (2.1) again. The coefficient of the left side of (2.6), at output <span class="math" data-tex="\((n,\alpha)\)">\((n,\alpha)\)</span>, is
+<span class="math math-display" data-tex="\[
+\sum_r z^{-p-r}
+ \bigl(\eta(\rho\alpha^{-1},\varpi^r)-1_{\rho=\alpha}\bigr)
+ C_{n+r}^{\alpha}C_{p+r}^{\widetilde\rho}x
+ +\epsilon(-1)1_{n=p}1_{\rho=\alpha}x.
+\tag{2.7}
+\]">\[
+\sum_r z^{-p-r}
+ \bigl(\eta(\rho\alpha^{-1},\varpi^r)-1_{\rho=\alpha}\bigr)
+ C_{n+r}^{\alpha}C_{p+r}^{\widetilde\rho}x
+ +\epsilon(-1)1_{n=p}1_{\rho=\alpha}x.
+\tag{2.7}
+\]</span>
+Applying (2.2), (2.1), (2.2) successively to the right side gives
+<span class="math math-display" data-tex="\[
+\epsilon(-1)z^{-p}\sum_\sigma
+ \eta(\sigma^{-1}\alpha,-\varpi^n)
+ \eta(\rho^{-1}\sigma^{-1}\epsilon^{-1},-\varpi^p)
+ C_{n+p}^{\sigma}x.
+\tag{2.8}
+\]">\[
+\epsilon(-1)z^{-p}\sum_\sigma
+ \eta(\sigma^{-1}\alpha,-\varpi^n)
+ \eta(\rho^{-1}\sigma^{-1}\epsilon^{-1},-\varpi^p)
+ C_{n+p}^{\sigma}x.
+\tag{2.8}
+\]</span>
+Use <span class="math" data-tex="\(\eta(\chi,-b)=\chi(-1)\eta(\chi,b)\)">\(\eta(\chi,-b)=\chi(-1)\eta(\chi,b)\)</span>, put
+<span class="math" data-tex="\(\beta=\widetilde\rho\)">\(\beta=\widetilde\rho\)</span>, and multiply by <span class="math" data-tex="\(z^p\)">\(z^p\)</span>. The sign in (2.8) becomes <span class="math" data-tex="\(h(-1)\)">\(h(-1)\)</span>; <span class="math" data-tex="\(\rho\alpha^{-1}=h^{-1}\)">\(\rho\alpha^{-1}=h^{-1}\)</span>. This is precisely (2.5).</p>
+<p>All sums are legitimate on the fixed <span class="math" data-tex="\(x\)">\(x\)</span>. The <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-sum is finite by the Gauss-sum conductor bounds in its two factors. The <span class="math" data-tex="\(r\)">\(r\)</span>-sum is finite: (2.3) leaves one term when <span class="math" data-tex="\(h\ne1\)">\(h\ne1\)</span>; when <span class="math" data-tex="\(h=1\)">\(h=1\)</span>, (2.4) kills its large positive indices and <span class="math" data-tex="\(C_{p+r}^{\beta}x=0\)">\(C_{p+r}^{\beta}x=0\)</span> kills its sufficiently negative indices. Thus this coefficient extraction uses only finite sums. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.2 — commuting coefficients.</strong> Every <span class="math" data-tex="\(C_n^\alpha\)">\(C_n^\alpha\)</span> commutes with every <span class="math" data-tex="\(C_p^\beta\)">\(C_p^\beta\)</span>.</p>
+<p><strong>Proof.</strong> The left side of (2.5) is symmetric under <span class="math" data-tex="\((n,\alpha)\leftrightarrow(p,\beta)\)">\((n,\alpha)\leftrightarrow(p,\beta)\)</span>. If <span class="math" data-tex="\(h\ne1\)">\(h\ne1\)</span> has conductor <span class="math" data-tex="\(\varpi^m\)">\(\varpi^m\)</span>, (2.3) makes its right side a nonzero scalar times
+<span class="math" data-tex="\(C_{n-m-\ell}^{\alpha}C_{p-m-\ell}^{\beta}\)">\(C_{n-m-\ell}^{\alpha}C_{p-m-\ell}^{\beta}\)</span>. Swapping proves commutation for all indices in this case.</p>
+<p>If <span class="math" data-tex="\(h=1\)">\(h=1\)</span>, (2.4) rewrites (2.5) as
+<span class="math math-display" data-tex="\[
+S_{n,p}^{\alpha,\widetilde\alpha}
+ =\epsilon(-1)z^p1_{n=p}I_X
+ +a C_{n-\ell-1}^{\alpha}C_{p-\ell-1}^{\widetilde\alpha}
+ -\sum_{r\le-\ell-2}z^{-r}
+       C_{n+r}^{\alpha}C_{p+r}^{\widetilde\alpha},
+\quad
+a=\frac{z^{\ell+1}}{q^{-1}-1}\ne0.
+\tag{2.9}
+\]">\[
+S_{n,p}^{\alpha,\widetilde\alpha}
+ =\epsilon(-1)z^p1_{n=p}I_X
+ +a C_{n-\ell-1}^{\alpha}C_{p-\ell-1}^{\widetilde\alpha}
+ -\sum_{r\le-\ell-2}z^{-r}
+       C_{n+r}^{\alpha}C_{p+r}^{\widetilde\alpha},
+\quad
+a=\frac{z^{\ell+1}}{q^{-1}-1}\ne0.
+\tag{2.9}
+\]</span>
+Subtract the swapped identity. The identity-operator terms cancel, since <span class="math" data-tex="\(n=p\)">\(n=p\)</span> makes <span class="math" data-tex="\(z^p=z^n\)">\(z^p=z^n\)</span>. For fixed integers <span class="math" data-tex="\(i,j\)">\(i,j\)</span> and <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, both ordered products
+<span class="math" data-tex="\(C_{i+k}^{\alpha}C_{j+k}^{\widetilde\alpha}x\)">\(C_{i+k}^{\alpha}C_{j+k}^{\widetilde\alpha}x\)</span> and its reverse are zero for sufficiently negative <span class="math" data-tex="\(k\)">\(k\)</span>: their respective right factors vanish. Insert
+<span class="math" data-tex="\(n=i+k+\ell+1,\ p=j+k+\ell+1\)">\(n=i+k+\ell+1,\ p=j+k+\ell+1\)</span> in (2.9). Its subtraction expresses <span class="math" data-tex="\(a\)">\(a\)</span> times the commutator at shift <span class="math" data-tex="\(k\)">\(k\)</span> as a finite sum of commutators at shifts at most <span class="math" data-tex="\(k-1\)">\(k-1\)</span>. Induction starting at the vanishing negative shifts proves the required commutator is zero on <span class="math" data-tex="\(x\)">\(x\)</span>. Since <span class="math" data-tex="\(x\)">\(x\)</span> was arbitrary, all coefficients commute. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.3 — Whittaker existence and uniqueness.</strong> For an irreducible smooth admissible <span class="math" data-tex="\(G\)">\(G\)</span>-representation,
+<span class="math math-display" data-tex="\[
+\dim\operatorname{Hom}_N(V,\psi)=
+\begin{cases}0&amp;\dim V&lt;\infty,\\1&amp;\dim V=\infty.\end{cases}
+\tag{2.10}
+\]">\[
+\dim\operatorname{Hom}_N(V,\psi)=
+\begin{cases}0&amp;\dim V&lt;\infty,\\1&amp;\dim V=\infty.\end{cases}
+\tag{2.10}
+\]</span></p>
+<p><strong>Proof.</strong> In the infinite-dimensional case, let <span class="math" data-tex="\(A\in\operatorname{End}(X)\)">\(A\in\operatorname{End}(X)\)</span> commute with all <span class="math" data-tex="\(C_n^\alpha\)">\(C_n^\alpha\)</span>. Its pointwise action preserves <span class="math" data-tex="\(V_0\)">\(V_0\)</span>. Formula (2.1) says that it also preserves <span class="math" data-tex="\(WV_0\)">\(WV_0\)</span>, and that <span class="math" data-tex="\(AW=WA\)">\(AW=WA\)</span> on <span class="math" data-tex="\(V_0\)">\(V_0\)</span>. By (1.3) it preserves <span class="math" data-tex="\(V\)">\(V\)</span>. On <span class="math" data-tex="\(WV_0\)">\(WV_0\)</span>, the identity <span class="math" data-tex="\(W^2=\epsilon(-1)I\)">\(W^2=\epsilon(-1)I\)</span> gives commutation with <span class="math" data-tex="\(W\)">\(W\)</span> as well. It commutes with <span class="math" data-tex="\(N\)">\(N\)</span>, the torus and the center by their pointwise formulas, so countable Schur makes its action on <span class="math" data-tex="\(V\)">\(V\)</span> scalar. Evaluating compact functions at one makes the original <span class="math" data-tex="\(A\)">\(A\)</span> scalar on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Proposition 2.2 permits taking <span class="math" data-tex="\(A=C_n^\alpha\)">\(A=C_n^\alpha\)</span>, so each coefficient is scalar. Now every endomorphism of <span class="math" data-tex="\(X\)">\(X\)</span> commutes with them, hence every endomorphism is scalar. A nonzero vector space of dimension at least two has a nonscalar projection, obtained by extending two independent vectors to a basis. Therefore <span class="math" data-tex="\(\dim X=1\)">\(\dim X=1\)</span>, and (1.1) proves the assertion. In the finite-dimensional case, Lesson 5 makes <span class="math" data-tex="\(V=\chi\circ\det\)">\(V=\chi\circ\det\)</span>. Since <span class="math" data-tex="\(N\)">\(N\)</span> acts trivially and <span class="math" data-tex="\(\psi\ne1\)">\(\psi\ne1\)</span>, a Whittaker functional is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-whittaker-functions-kirillov-functions-and-a-weyl-kernel">3. Whittaker functions, Kirillov functions and a Weyl kernel</h2>
+<p>Choose a nonzero Whittaker functional <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The functions
+<span class="math math-display" data-tex="\[
+W_v(g)=\lambda(\pi(g)v),\qquad
+\xi_v(t)=W_v(d(t))
+\]">\[
+W_v(g)=\lambda(\pi(g)v),\qquad
+\xi_v(t)=W_v(d(t))
+\]</span>
+satisfy <span class="math" data-tex="\(W_v(n(x)g)=\psi(x)W_v(g)\)">\(W_v(n(x)g)=\psi(x)W_v(g)\)</span>; right translation corresponds to <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The map to <span class="math" data-tex="\(\xi_v\)">\(\xi_v\)</span> is injective by Lemma 1.2. The image <span class="math" data-tex="\(\mathcal K(\pi,\psi)\)">\(\mathcal K(\pi,\psi)\)</span> is the Kirillov model. Scaling <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> does not change its function space. The image of <span class="math" data-tex="\(v\mapsto W_v\)">\(v\mapsto W_v\)</span> is the Whittaker model <span class="math" data-tex="\(\mathcal W(\pi,\psi)\)">\(\mathcal W(\pi,\psi)\)</span>. Any equivariant map into smooth <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-equivariant functions on <span class="math" data-tex="\(G\)">\(G\)</span> is determined by evaluation at the identity; this evaluation is a Whittaker functional. Theorem 2.3 therefore makes that realization unique up to scalar, and its image unique.</p>
+<p>By Proposition 1.3,
+<span class="math math-display" data-tex="\[
+C_c^\infty(F^\times)\subset\mathcal K(\pi,\psi),\qquad
+\mathcal K(\pi,\psi)/C_c^\infty(F^\times)\simeq V_N.
+\tag{3.1}
+\]">\[
+C_c^\infty(F^\times)\subset\mathcal K(\pi,\psi),\qquad
+\mathcal K(\pi,\psi)/C_c^\infty(F^\times)\simeq V_N.
+\tag{3.1}
+\]</span>
+The isomorphism uses the <strong>unnormalized</strong> Jacquet module. Its torus action is the induced dilation action. To obtain <span class="math" data-tex="\(r_N(V)\)">\(r_N(V)\)</span>, twist this action by <span class="math" data-tex="\(\delta_B^{-1/2}\)">\(\delta_B^{-1/2}\)</span>.</p>
+<p>For any upper triangular matrix,
+<span class="math math-display" data-tex="\[
+\left(\pi\begin{pmatrix}a&amp;b\\0&amp;d\end{pmatrix}\xi\right)(t)
+ =\omega(d)\psi(tb/d)\xi(ta/d).
+\tag{3.2}
+\]">\[
+\left(\pi\begin{pmatrix}a&amp;b\\0&amp;d\end{pmatrix}\xi\right)(t)
+ =\omega(d)\psi(tb/d)\xi(ta/d).
+\tag{3.2}
+\]</span>
+In particular <span class="math" data-tex="\(\pi(d(a)n(x))\xi(t)=\psi(tax)\xi(ta)\)">\(\pi(d(a)n(x))\xi(t)=\psi(tax)\xi(ta)\)</span>, while
+<span class="math" data-tex="\(\pi(n(x)d(a))\xi(t)=\psi(tx)\xi(ta)\)">\(\pi(n(x)d(a))\xi(t)=\psi(tx)\xi(ta)\)</span>. The order matters.</p>
+<p>Equations (2.1) and unit Fourier inversion are an explicit Weyl operator for every irreducible generic representation. More concretely, if the compact input <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is fixed under unit dilation by an open subgroup <span class="math" data-tex="\(H\)">\(H\)</span>, let
+<span class="math" data-tex="\(R_H=\{\alpha:\widetilde\alpha|_H=1\}\)">\(R_H=\{\alpha:\widetilde\alpha|_H=1\}\)</span>, a finite set. Then
+<span class="math math-display" data-tex="\[
+(W\xi)(\varpi^n v)=
+ \sum_p\int_U
+ z^{-p}\epsilon(u)^{-1}
+ \left(\sum_{\alpha\in R_H}C_{n+p}^\alpha\alpha(uv)^{-1}\right)
+ \xi(\varpi^p u)\,du,\qquad v\in U.
+\tag{3.3}
+\]">\[
+(W\xi)(\varpi^n v)=
+ \sum_p\int_U
+ z^{-p}\epsilon(u)^{-1}
+ \left(\sum_{\alpha\in R_H}C_{n+p}^\alpha\alpha(uv)^{-1}\right)
+ \xi(\varpi^p u)\,du,\qquad v\in U.
+\tag{3.3}
+\]</span>
+Only finitely many input shells <span class="math" data-tex="\(p\)">\(p\)</span> occur. The coefficients are now complex scalars. This is a finite unit-Fourier kernel on each space of compact inputs with fixed unit level. It determines the full <span class="math" data-tex="\(G\)">\(G\)</span>-action because <span class="math" data-tex="\(V=V_0+WV_0\)">\(V=V_0+WV_0\)</span> and <span class="math" data-tex="\(W^2=\omega(-1)\)">\(W^2=\omega(-1)\)</span>. For principal series we will calculate a closed integral form in Section 5.</p>
+<h2 id="4-principal-series-and-the-two-exceptional-extensions">4. Principal series and the two exceptional extensions</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+I(\mu_1,\mu_2)=\operatorname{Ind}_B^G(\mu_1\otimes\mu_2)
+\]">\[
+I(\mu_1,\mu_2)=\operatorname{Ind}_B^G(\mu_1\otimes\mu_2)
+\]</span>
+with the normalized multiplier <span class="math" data-tex="\(|a/d|^{1/2}\mu_1(a)\mu_2(d)\)">\(|a/d|^{1/2}\mu_1(a)\mu_2(d)\)</span> and right translation as in Lesson 6.</p>
+<p><strong>Lemma 4.1 — three facts about an induced representation.</strong></p>
+<ol>
+<li>Its twisted coinvariants have dimension one.</li>
+<li>A character subrepresentation <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span> exists exactly when
+<span class="math" data-tex="\((\mu_1,\mu_2)=(\chi\nu^{-1/2},\chi\nu^{1/2})\)">\((\mu_1,\mu_2)=(\chi\nu^{-1/2},\chi\nu^{1/2})\)</span>.</li>
+<li>A character quotient <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span> exists exactly when
+<span class="math" data-tex="\((\mu_1,\mu_2)=(\chi\nu^{1/2},\chi\nu^{-1/2})\)">\((\mu_1,\mu_2)=(\chi\nu^{1/2},\chi\nu^{-1/2})\)</span>.</li>
+</ol>
+<p>Each character map in the last two assertions has a one-dimensional Hom space.</p>
+<p><strong>Proof.</strong> The two Bruhat cells give an exact sequence of <span class="math" data-tex="\(N\)">\(N\)</span>-modules
+<span class="math math-display" data-tex="\[
+0\longrightarrow C_c^\infty(F)\longrightarrow I(\mu_1,\mu_2)
+ \longrightarrow\mathbb C\longrightarrow0.
+\]">\[
+0\longrightarrow C_c^\infty(F)\longrightarrow I(\mu_1,\mu_2)
+ \longrightarrow\mathbb C\longrightarrow0.
+\]</span>
+On the open chart <span class="math" data-tex="\(f_o(x)=f(w n(x))\)">\(f_o(x)=f(w n(x))\)</span>, with <span class="math" data-tex="\(w=-w_0\)">\(w=-w_0\)</span>, <span class="math" data-tex="\(N\)">\(N\)</span> acts by translation <span class="math" data-tex="\(f_o(x+y)\)">\(f_o(x+y)\)</span>; it acts trivially on the closed cell. The latter has zero <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-coinvariants. On the open cell the nonzero functional
+<span class="math" data-tex="\(f_o\mapsto\int_F f_o(x)\psi(-x)\,dx\)">\(f_o\mapsto\int_F f_o(x)\psi(-x)\,dx\)</span> gives its twisted coinvariant line. Its kernel is precisely the twisted-difference space: once an additive ideal <span class="math" data-tex="\(D\)">\(D\)</span> contains the support of <span class="math" data-tex="\(f_o\)">\(f_o\)</span>, its weighted average on <span class="math" data-tex="\(D\)">\(D\)</span> is a scalar times <span class="math" data-tex="\(\psi(x)1_D(x)\)">\(\psi(x)1_D(x)\)</span>, with scalar this integral. Lemma 1.1 proves the claim. Exactness now proves assertion 1.</p>
+<p>Normalized reciprocity says
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_G(\chi\circ\det,I(\mu_1,\mu_2))
+ =\operatorname{Hom}_T\bigl(
+ \chi(a)\chi(d)|a/d|^{-1/2},\,\mu_1(a)\mu_2(d)\bigr).
+\]">\[
+\operatorname{Hom}_G(\chi\circ\det,I(\mu_1,\mu_2))
+ =\operatorname{Hom}_T\bigl(
+ \chi(a)\chi(d)|a/d|^{-1/2},\,\mu_1(a)\mu_2(d)\bigr).
+\]</span>
+These are characters of <span class="math" data-tex="\(T\)">\(T\)</span>, so this space is one-dimensional precisely in assertion 2 and is zero otherwise. The induced dual from Lesson 6 is
+<span class="math" data-tex="\(I(\mu_1^{-1},\mu_2^{-1})\)">\(I(\mu_1^{-1},\mu_2^{-1})\)</span>. Dualizing a character quotient makes it a character subrepresentation of this dual, proving assertion 3, including its dimension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For any <span class="math" data-tex="\(I=I(\mu_1,\mu_2)\)">\(I=I(\mu_1,\mu_2)\)</span>, an <span class="math" data-tex="\(N\)">\(N\)</span>-invariant vector injects into <span class="math" data-tex="\(I_N\)">\(I_N\)</span>: a vector both invariant and an ordinary difference is killed by a sufficiently large average, while averaging leaves it unchanged. Lesson 6 gives <span class="math" data-tex="\(\dim I_N=2\)">\(\dim I_N=2\)</span>. By Lemma 1.2 the <span class="math" data-tex="\(N\)">\(N\)</span>-fixed space factors through determinant; if nonzero, this finite-dimensional space has a character subrepresentation, by simultaneous triangularization of commuting matrices. Consequently
+<span class="math math-display" data-tex="\[
+\mu_1/\mu_2\ne\nu^{-1}
+ \quad\Longrightarrow\quad I^N=0
+ \quad\Longrightarrow\quad \Phi:I\longrightarrow\{\text{scalar functions on }F^\times\}
+ \text{ is injective}.
+\tag{4.1}
+\]">\[
+\mu_1/\mu_2\ne\nu^{-1}
+ \quad\Longrightarrow\quad I^N=0
+ \quad\Longrightarrow\quad \Phi:I\longrightarrow\{\text{scalar functions on }F^\times\}
+ \text{ is injective}.
+\tag{4.1}
+\]</span>
+We identify its one-dimensional twisted fiber with <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The compact-function construction and the ordinary-difference argument in Proposition 1.3 used only injectivity, so they apply to this induced representation as well:
+<span class="math math-display" data-tex="\[
+I(N)=C_c^\infty(F^\times)=:V_0.
+\tag{4.2}
+\]">\[
+I(N)=C_c^\infty(F^\times)=:V_0.
+\tag{4.2}
+\]</span>
+Every nonzero <span class="math" data-tex="\(G\)">\(G\)</span>-subrepresentation <span class="math" data-tex="\(A\subset I\)">\(A\subset I\)</span> has a nonzero twisted fiber. Otherwise each <span class="math" data-tex="\(\pi(d(t))v\)">\(\pi(d(t))v\)</span>, <span class="math" data-tex="\(v\in A\)">\(v\in A\)</span>, would have zero class in the fiber of <span class="math" data-tex="\(I\)">\(I\)</span>, contradicting injectivity. Exactness injects that fiber into the one-dimensional fiber of <span class="math" data-tex="\(I\)">\(I\)</span>, so it is the entire fiber. Applying the Fourier-ball projectors to vectors of <span class="math" data-tex="\(A\)">\(A\)</span> now yields
+<span class="math math-display" data-tex="\[
+V_0\subset A.
+\tag{4.3}
+\]">\[
+V_0\subset A.
+\tag{4.3}
+\]</span></p>
+<p><strong>Theorem 4.2 — irreducibility and exceptional factors.</strong> The principal series is irreducible if and only if
+<span class="math" data-tex="\(\mu_1/\mu_2\notin\{\nu,\nu^{-1}\}\)">\(\mu_1/\mu_2\notin\{\nu,\nu^{-1}\}\)</span>. At the two exceptional ratios it has length two. Writing <span class="math" data-tex="\(D_\chi=\chi\circ\det\)">\(D_\chi=\chi\circ\det\)</span> and <span class="math" data-tex="\(\mathrm{St}_\chi=\mathrm{St}\otimes D_\chi\)">\(\mathrm{St}_\chi=\mathrm{St}\otimes D_\chi\)</span>, the exact sequences are
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathrm{St}_\chi
+ \longrightarrow I(\chi\nu^{1/2},\chi\nu^{-1/2})
+ \longrightarrow D_\chi\longrightarrow0,
+\tag{4.4}
+\]">\[
+0\longrightarrow\mathrm{St}_\chi
+ \longrightarrow I(\chi\nu^{1/2},\chi\nu^{-1/2})
+ \longrightarrow D_\chi\longrightarrow0,
+\tag{4.4}
+\]</span>
+<span class="math math-display" data-tex="\[
+0\longrightarrow D_\chi
+ \longrightarrow I(\chi\nu^{-1/2},\chi\nu^{1/2})
+ \longrightarrow\mathrm{St}_\chi\longrightarrow0.
+\tag{4.5}
+\]">\[
+0\longrightarrow D_\chi
+ \longrightarrow I(\chi\nu^{-1/2},\chi\nu^{1/2})
+ \longrightarrow\mathrm{St}_\chi\longrightarrow0.
+\tag{4.5}
+\]</span>
+The Steinberg representations are irreducible, and these extensions do not split.</p>
+<p><strong>Proof.</strong> First suppose neither exceptional ratio occurs. The <span class="math" data-tex="\(G\)">\(G\)</span>-span <span class="math" data-tex="\(G V_0\)">\(G V_0\)</span> has finite-dimensional quotient in <span class="math" data-tex="\(I\)">\(I\)</span>, because <span class="math" data-tex="\(V_0=I(N)\)">\(V_0=I(N)\)</span> and <span class="math" data-tex="\(\dim I_N=2\)">\(\dim I_N=2\)</span>. <span class="math" data-tex="\(N\)">\(N\)</span> acts trivially on that quotient; its normal closure <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span> consequently does too. If nonzero, the quotient is a finite-dimensional representation of the abelian group <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, and has a character quotient. This contradicts Lemma 4.1(3). Thus <span class="math" data-tex="\(G V_0=I\)">\(G V_0=I\)</span>. Equation (4.3) makes every nonzero subrepresentation all of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>At ratio <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, twist by <span class="math" data-tex="\(D_\chi^{-1}\)">\(D_\chi^{-1}\)</span> to reduce to
+<span class="math" data-tex="\(I_+=I(\nu^{1/2},\nu^{-1/2})\)">\(I_+=I(\nu^{1/2},\nu^{-1/2})\)</span>. Lesson 6 explicitly constructed
+<span class="math" data-tex="\(0\to\mathrm{St}\to I_+\to1\to0\)">\(0\to\mathrm{St}\to I_+\to1\to0\)</span>, without assuming Steinberg irreducibility. Its character quotient kills <span class="math" data-tex="\(I_+(N)=V_0\)">\(I_+(N)=V_0\)</span>, so <span class="math" data-tex="\(V_0\subset\mathrm{St}\)">\(V_0\subset\mathrm{St}\)</span>.
+The quotient <span class="math" data-tex="\(\mathrm{St}/G V_0\)">\(\mathrm{St}/G V_0\)</span> is finite-dimensional and <span class="math" data-tex="\(N\)">\(N\)</span>-trivial. If it were nonzero it would have a character quotient <span class="math" data-tex="\(D_\eta\)">\(D_\eta\)</span>. Exactness of normalized Jacquet modules would give a nonzero torus quotient map
+<span class="math math-display" data-tex="\[
+(\nu^{1/2},\nu^{-1/2})=r_N(\mathrm{St})
+ \longrightarrow
+(\eta\nu^{-1/2},\eta\nu^{1/2})=r_N(D_\eta).
+\]">\[
+(\nu^{1/2},\nu^{-1/2})=r_N(\mathrm{St})
+ \longrightarrow
+(\eta\nu^{-1/2},\eta\nu^{1/2})=r_N(D_\eta).
+\]</span>
+The two characters cannot coincide: their ratio on the two diagonal coordinates would force both <span class="math" data-tex="\(\eta=\nu\)">\(\eta=\nu\)</span> and <span class="math" data-tex="\(\eta=\nu^{-1}\)">\(\eta=\nu^{-1}\)</span>. Thus <span class="math" data-tex="\(\mathrm{St}=G V_0\)">\(\mathrm{St}=G V_0\)</span>. Every nonzero subrepresentation of <span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span>, viewed inside <span class="math" data-tex="\(I_+\)">\(I_+\)</span>, contains <span class="math" data-tex="\(V_0\)">\(V_0\)</span> by (4.3), so it is all of <span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span>. This proves irreducibility.</p>
+<p>It follows that any nonzero proper subrepresentation of <span class="math" data-tex="\(I_+\)">\(I_+\)</span> is <span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span>: it contains <span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span>, and the remaining quotient has dimension one. Lemma 4.1(2) prohibits a trivial subrepresentation of <span class="math" data-tex="\(I_+\)">\(I_+\)</span>, so (4.4) does not split. Lesson 6 proved <span class="math" data-tex="\(\mathrm{St}^\vee\simeq\mathrm{St}\)">\(\mathrm{St}^\vee\simeq\mathrm{St}\)</span> and the induced duality. Dualizing (4.4) with inverse twist gives (4.5), also nonsplit and of length two. Both exceptional series are therefore reducible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-an-explicit-principal-series-weyl-kernel-and-parameter-symmetry">5. An explicit principal-series Weyl kernel and parameter symmetry</h2>
+<p>This computation also proves the interchange of principal-series parameters. Put <span class="math" data-tex="\(r=\mu_1/\mu_2\)">\(r=\mu_1/\mu_2\)</span> and use the self-dual additive measure <span class="math" data-tex="\(dx\)">\(dx\)</span>. For the open chart of a section <span class="math" data-tex="\(f\)">\(f\)</span>, define
+<span class="math math-display" data-tex="\[
+\Lambda(f)=\int_F^{\mathrm{st}} f_o(x)\psi(-x)\,dx,\qquad
+\xi_f(t)=|t|^{1/2}\mu_2(t)\int_F^{\mathrm{st}} f_o(x)\psi(-tx)\,dx.
+\tag{5.1}
+\]">\[
+\Lambda(f)=\int_F^{\mathrm{st}} f_o(x)\psi(-x)\,dx,\qquad
+\xi_f(t)=|t|^{1/2}\mu_2(t)\int_F^{\mathrm{st}} f_o(x)\psi(-tx)\,dx.
+\tag{5.1}
+\]</span>
+Here “st” means that the integrals over increasing additive balls eventually have the same value. They exist for every pair of smooth characters. Indeed for large <span class="math" data-tex="\(|x|\)">\(|x|\)</span>,
+<span class="math math-display" data-tex="\[
+w n(x)=
+\begin{pmatrix}x^{-1}&amp;-1\\0&amp;x\end{pmatrix}
+\begin{pmatrix}1&amp;0\\x^{-1}&amp;1\end{pmatrix},\qquad
+f_o(x)=|x|^{-1}r(x)^{-1}f(1).
+\]">\[
+w n(x)=
+\begin{pmatrix}x^{-1}&amp;-1\\0&amp;x\end{pmatrix}
+\begin{pmatrix}1&amp;0\\x^{-1}&amp;1\end{pmatrix},\qquad
+f_o(x)=|x|^{-1}r(x)^{-1}f(1).
+\]</span>
+The lower matrix eventually lies in a right stabilizer of <span class="math" data-tex="\(f\)">\(f\)</span>. Far-out shell integrals of this tail times <span class="math" data-tex="\(\psi(-tx)\)">\(\psi(-tx)\)</span> vanish by the Gauss-sum bounds of Section 2. This is uniform when <span class="math" data-tex="\(t\)">\(t\)</span> ranges over a compact subset of <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>. Translation of a sufficiently large integration ball proves that <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is a Whittaker functional. It is nonzero on an open-cell bump. The identity for <span class="math" data-tex="\(\xi_f\)">\(\xi_f\)</span> follows from <span class="math" data-tex="\(w d(t)=\operatorname{diag}(1,t)w\)">\(w d(t)=\operatorname{diag}(1,t)w\)</span> and the substitution <span class="math" data-tex="\(x=ty\)">\(x=ty\)</span>.</p>
+<p>For <span class="math" data-tex="\(z&#x27;\ne0\)">\(z&#x27;\ne0\)</span>, define the stable Bessel integral
+<span class="math math-display" data-tex="\[
+J_r(z&#x27;)=\int_{F^\times}^{\mathrm{st}}
+ r(u)\psi(u+z&#x27;/u)\,\frac{du}{|u|}.
+\tag{5.2}
+\]">\[
+J_r(z&#x27;)=\int_{F^\times}^{\mathrm{st}}
+ r(u)\psi(u+z&#x27;/u)\,\frac{du}{|u|}.
+\tag{5.2}
+\]</span>
+At the large-<span class="math" data-tex="\(|u|\)">\(|u|\)</span> end, <span class="math" data-tex="\(\psi(z&#x27;/u)=1\)">\(\psi(z&#x27;/u)=1\)</span>, and the remaining shell integrals vanish beyond the conductor of <span class="math" data-tex="\(r|_U\)">\(r|_U\)</span>. At the small-<span class="math" data-tex="\(|u|\)">\(|u|\)</span> end, invert <span class="math" data-tex="\(u\)">\(u\)</span> to obtain the same argument. Thus only finitely many shells contribute. Their bounds can be chosen uniformly on compact sets of <span class="math" data-tex="\(z&#x27;\ne0\)">\(z&#x27;\ne0\)</span>.</p>
+<p><strong>Proposition 5.1 — Weyl action.</strong> If <span class="math" data-tex="\(\mu_1/\mu_2\ne\nu^{-1}\)">\(\mu_1/\mu_2\ne\nu^{-1}\)</span>, the injective scalar model of <span class="math" data-tex="\(I(\mu_1,\mu_2)\)">\(I(\mu_1,\mu_2)\)</span> obeys, for <span class="math" data-tex="\(\xi\in C_c^\infty(F^\times)\)">\(\xi\in C_c^\infty(F^\times)\)</span>,
+<span class="math math-display" data-tex="\[
+(W\xi)(t)=\int_{F^\times}
+ |ts|^{1/2}\mu_2(t)\mu_1(s)^{-1}J_r(ts)\xi(s)\,\frac{ds}{|s|}.
+\tag{5.3}
+\]">\[
+(W\xi)(t)=\int_{F^\times}
+ |ts|^{1/2}\mu_2(t)\mu_1(s)^{-1}J_r(ts)\xi(s)\,\frac{ds}{|s|}.
+\tag{5.3}
+\]</span></p>
+<p><strong>Proof.</strong> Extend <span class="math" data-tex="\(\xi(s)/(|s|^{1/2}\mu_2(s))\)">\(\xi(s)/(|s|^{1/2}\mu_2(s))\)</span> by zero at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. It is a compact locally constant function on <span class="math" data-tex="\(F\)">\(F\)</span>, so its inverse Fourier transform is
+<span class="math math-display" data-tex="\[
+f_o(x)=\int_F
+ \xi(s)|s|^{-1/2}\mu_2(s)^{-1}\psi(sx)\,ds.
+\]">\[
+f_o(x)=\int_F
+ \xi(s)|s|^{-1/2}\mu_2(s)^{-1}\psi(sx)\,ds.
+\]</span>
+This is a compact locally constant open-cell section and gives <span class="math" data-tex="\(\xi\)">\(\xi\)</span> by (5.1); injectivity makes it the unique section with that Kirillov function. Matrix multiplication and the Bruhat factorization give, for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+(\pi(w_0)f)_o(x)
+ =\omega(-1)|x|^{-1}r(x)^{-1}f_o(-x^{-1}).
+\]">\[
+(\pi(w_0)f)_o(x)
+ =\omega(-1)|x|^{-1}r(x)^{-1}f_o(-x^{-1}).
+\]</span>
+Insert the inverse Fourier integral into (5.1). For each <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>, substitute <span class="math" data-tex="\(u=-s/x\)">\(u=-s/x\)</span>. The phase <span class="math" data-tex="\(-tx-s/x\)">\(-tx-s/x\)</span> becomes <span class="math" data-tex="\(ts/u+u\)">\(ts/u+u\)</span>. Multiplicative measure is invariant under this substitution. The sign factor is
+<span class="math" data-tex="\(\omega(-1)r(-1)=\mu_1(-1)^2=1\)">\(\omega(-1)r(-1)=\mu_1(-1)^2=1\)</span>. The remaining factor, after replacing <span class="math" data-tex="\(ds\)">\(ds\)</span> by <span class="math" data-tex="\(|s|\,ds/|s|\)">\(|s|\,ds/|s|\)</span>, is
+<span class="math math-display" data-tex="\[
+|t|^{1/2}\mu_2(t)\,
+ |s|^{1/2}\mu_2(s)^{-1}r(s)^{-1}
+ =|ts|^{1/2}\mu_2(t)\mu_1(s)^{-1}.
+\]">\[
+|t|^{1/2}\mu_2(t)\,
+ |s|^{1/2}\mu_2(s)^{-1}r(s)^{-1}
+ =|ts|^{1/2}\mu_2(t)\mu_1(s)^{-1}.
+\]</span>
+This gives (5.3). The interchange of integrals is justified first on finite annuli. For <span class="math" data-tex="\(s\)">\(s\)</span> in the compact support of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the shell-vanishing bounds for (5.2) are uniform; increasing the annuli changes neither side. No assertion of absolute convergence at both infinite ends is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.2 — the unordered parameter pair.</strong> If the principal series is irreducible, then
+<span class="math math-display" data-tex="\[
+I(\mu_1,\mu_2)\simeq I(\mu_2,\mu_1).
+\tag{5.4}
+\]">\[
+I(\mu_1,\mu_2)\simeq I(\mu_2,\mu_1).
+\tag{5.4}
+\]</span></p>
+<p><strong>Proof.</strong> In (5.2), the substitution <span class="math" data-tex="\(u=z&#x27;/v\)">\(u=z&#x27;/v\)</span> gives
+<span class="math math-display" data-tex="\[
+J_r(z&#x27;)=r(z&#x27;)J_{r^{-1}}(z&#x27;).
+\tag{5.5}
+\]">\[
+J_r(z&#x27;)=r(z&#x27;)J_{r^{-1}}(z&#x27;).
+\tag{5.5}
+\]</span>
+Its factor converts the kernel in (5.3) into
+<span class="math math-display" data-tex="\[
+|ts|^{1/2}\mu_1(t)\mu_2(s)^{-1}J_{r^{-1}}(ts),
+\]">\[
+|ts|^{1/2}\mu_1(t)\mu_2(s)^{-1}J_{r^{-1}}(ts),
+\]</span>
+the kernel for the swapped parameters. The two models have the same compact part, the same pointwise upper-triangular action (3.2), and the same central character <span class="math" data-tex="\(\mu_1\mu_2\)">\(\mu_1\mu_2\)</span>. Their Weyl actions on the compact part agree by (5.3). By (1.3) each model is <span class="math" data-tex="\(V_0+WV_0\)">\(V_0+WV_0\)</span>; hence their function spaces agree. On such a sum, the Weyl action is determined by its action on <span class="math" data-tex="\(V_0\)">\(V_0\)</span> and <span class="math" data-tex="\(W^2=\omega(-1)\)">\(W^2=\omega(-1)\)</span>. Thus all generating matrices have the same action, giving (5.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-classification-and-the-germs-at-zero">6. Classification and the germs at zero</h2>
+<p><strong>Theorem 6.1 — the four families.</strong> Every irreducible smooth representation of <span class="math" data-tex="\(G\)">\(G\)</span> belongs to exactly one of the following families:
+<span class="math math-display" data-tex="\[
+D_\chi;\qquad \mathrm{St}_\chi;\qquad
+I(\mu_1,\mu_2)\ \ (\mu_1/\mu_2\ne\nu^{\pm1});\qquad
+\text{supercuspidal representations }(V_N=0).
+\tag{6.1}
+\]">\[
+D_\chi;\qquad \mathrm{St}_\chi;\qquad
+I(\mu_1,\mu_2)\ \ (\mu_1/\mu_2\ne\nu^{\pm1});\qquad
+\text{supercuspidal representations }(V_N=0).
+\tag{6.1}
+\]</span>
+The principal-series parameter is the unordered pair <span class="math" data-tex="\(\{\mu_1,\mu_2\}\)">\(\{\mu_1,\mu_2\}\)</span>. Character and Steinberg twists each have their unique parameter <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. No representation in one family is isomorphic to a representation in another.</p>
+<p><strong>Proof.</strong> Admissibility is already proved in Lesson 6, Theorem 5.4. A finite-dimensional irreducible is <span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span> by Lesson 5. If an infinite-dimensional irreducible has <span class="math" data-tex="\(V_N\ne0\)">\(V_N\ne0\)</span>, Lesson 6 embeds it in a normalized principal series. Theorem 4.2 shows that it is either that entire irreducible principal series or the infinite-dimensional constituent of an exceptional series, namely <span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span>. If <span class="math" data-tex="\(V_N=0\)">\(V_N=0\)</span>, the equivalence with the matrix-coefficient definition of supercuspidality is proved in Lesson 6, Theorems 5.2–5.3.</p>
+<p>Their Jacquet dimensions are
+<span class="math math-display" data-tex="\[
+\dim V_N=0\text{ for supercuspidals},\quad
+1\text{ for }\mathrm{St}_\chi,\quad
+2\text{ for irreducible principal series}.
+\tag{6.2}
+\]">\[
+\dim V_N=0\text{ for supercuspidals},\quad
+1\text{ for }\mathrm{St}_\chi,\quad
+2\text{ for irreducible principal series}.
+\tag{6.2}
+\]</span>
+The last two values are the exact cell and Steinberg calculations of Lesson 6. Together with finite versus infinite dimension, these separate the families. The two torus characters in the semisimplified normalized Jacquet module of a principal series are
+<span class="math" data-tex="\((\mu_1,\mu_2)\)">\((\mu_1,\mu_2)\)</span> and <span class="math" data-tex="\((\mu_2,\mu_1)\)">\((\mu_2,\mu_1)\)</span>. They recover the unordered pair, and Corollary 5.2 proves its sufficiency. For Steinberg,
+<span class="math math-display" data-tex="\[
+r_N(\mathrm{St}_\chi)=(\chi\nu^{1/2},\chi\nu^{-1/2}),
+\]">\[
+r_N(\mathrm{St}_\chi)=(\chi\nu^{1/2},\chi\nu^{-1/2}),
+\]</span>
+which recovers <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Determinant recovers <span class="math" data-tex="\(\chi\)">\(\chi\)</span> for <span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span>. The list leaves the individual supercuspidal classes as parameters; it does not assert that their common zero Jacquet module distinguishes them. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equations (3.1) and (6.2) prove that the compact part has codimension zero, one or two. These numbers have a concrete function interpretation. Put <span class="math" data-tex="\(\tau_i(t)=|t|^{1/2}\mu_i(t)\)">\(\tau_i(t)=|t|^{1/2}\mu_i(t)\)</span>.</p>
+<p><strong>Proposition 6.2 — complete function spaces.</strong> All functions below are locally constant on <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> and supported in <span class="math" data-tex="\(|t|\le C\)">\(|t|\le C\)</span> for some <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<ul>
+<li>A supercuspidal has <span class="math" data-tex="\(\mathcal K(\pi,\psi)=C_c^\infty(F^\times)\)">\(\mathcal K(\pi,\psi)=C_c^\infty(F^\times)\)</span>.</li>
+<li>For <span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span>, the model consists exactly of these functions with germ <span class="math" data-tex="\(c|t|\chi(t)\)">\(c|t|\chi(t)\)</span> at zero.</li>
+<li>For an irreducible principal series with <span class="math" data-tex="\(\mu_1\ne\mu_2\)">\(\mu_1\ne\mu_2\)</span>, it consists exactly of these functions with germ <span class="math" data-tex="\(c_1\tau_1(t)+c_2\tau_2(t)\)">\(c_1\tau_1(t)+c_2\tau_2(t)\)</span>.</li>
+<li>When <span class="math" data-tex="\(\mu_1=\mu_2=\mu\)">\(\mu_1=\mu_2=\mu\)</span>, replace this germ by
+<span class="math" data-tex="\(|t|^{1/2}\mu(t)(c_1+c_2v_F(t))\)">\(|t|^{1/2}\mu(t)(c_1+c_2v_F(t))\)</span>, where <span class="math" data-tex="\(v_F(\varpi)=1\)">\(v_F(\varpi)=1\)</span>.</li>
+</ul>
+<p><strong>Proof.</strong> Zero Jacquet module proves the first assertion directly from (3.1). For Steinberg, the unnormalized dilation character on the one-dimensional quotient is <span class="math" data-tex="\(\nu\chi\)">\(\nu\chi\)</span>. Average a lift of its nonzero class over <span class="math" data-tex="\(U\)">\(U\)</span> with this unit character. The lift <span class="math" data-tex="\(f\)">\(f\)</span> can therefore be chosen to transform exactly by <span class="math" data-tex="\(\chi|_U\)">\(\chi|_U\)</span> under unit dilation. The relation
+<span class="math" data-tex="\(f(\varpi t)-|\varpi|\chi(\varpi)f(t)\in C_c^\infty(F^\times)\)">\(f(\varpi t)-|\varpi|\chi(\varpi)f(t)\in C_c^\infty(F^\times)\)</span> holds on the quotient, so it is zero for sufficiently small <span class="math" data-tex="\(|t|\)">\(|t|\)</span>. Solving this recurrence gives the germ <span class="math" data-tex="\(c|t|\chi(t)\)">\(c|t|\chi(t)\)</span>. Its coefficient is nonzero for a nonzero quotient class; otherwise the lift itself would be compact away from zero.</p>
+<p>For distinct principal-series characters the normalized Jacquet module splits into its two distinct character lines. To see splitting directly, choose a torus element where their eigenvalues differ; its two eigenspaces are stable under all commuting torus operators. The corresponding unnormalized dilation characters are <span class="math" data-tex="\(\tau_1,\tau_2\)">\(\tau_1,\tau_2\)</span>. Choose unit-isotypic lifts by compact averaging and solve the uniformizer recurrence as above. Each nonzero quotient line gives a nonzero multiple of its <span class="math" data-tex="\(\tau_i\)">\(\tau_i\)</span>. They span the two-dimensional germ space.</p>
+<p>When the parameters coincide, every unit acts as a scalar on the quotient, since compact-unit representations are semisimple and both constituents have the same character. Dilation by <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> has both eigenvalues <span class="math" data-tex="\(\tau(\varpi)\)">\(\tau(\varpi)\)</span>. It cannot act as a scalar: the preceding recurrence would then make every germ a multiple of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, contradicting the two-dimensional quotient. It therefore has one Jordan block. Lift a Jordan basis with exact unit transformation. The first lift has germ <span class="math" data-tex="\(c\tau\)">\(c\tau\)</span>; the second satisfies, near zero,
+<span class="math math-display" data-tex="\[
+f_2(\varpi t)-\tau(\varpi)f_2(t)=f_1(t).
+\]">\[
+f_2(\varpi t)-\tau(\varpi)f_2(t)=f_1(t).
+\]</span>
+Dividing by <span class="math" data-tex="\(\tau(\varpi t)\)">\(\tau(\varpi t)\)</span> gives a constant first difference along valuation indices. Its solutions are exactly an affine function of <span class="math" data-tex="\(v_F(t)\)">\(v_F(t)\)</span> times <span class="math" data-tex="\(\tau(t)\)">\(\tau(t)\)</span>.</p>
+<p>Finally each indicated germ is realized by these lifts. Any other function with the same germ differs from its lift by a compact function supported away from zero, which lies in the model. This proves equality of the function spaces, not just necessary asymptotics. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 6.3 — Steinberg.</strong> For the untwisted Steinberg representation,
+<span class="math math-display" data-tex="\[
+\mathcal K(\mathrm{St},\psi)
+ =\{\xi:\operatorname{supp}\xi\subset\{|t|\le C\},
+           \ \xi(t)=c|t|\text{ for sufficiently small }|t|\}.
+\tag{6.3}
+\]">\[
+\mathcal K(\mathrm{St},\psi)
+ =\{\xi:\operatorname{supp}\xi\subset\{|t|\le C\},
+           \ \xi(t)=c|t|\text{ for sufficiently small }|t|\}.
+\tag{6.3}
+\]</span>
+For example <span class="math" data-tex="\(|t|1_{\{|t|\le1\}}\)">\(|t|1_{\{|t|\le1\}}\)</span> gives a nonzero quotient class. A compact bump gives the zero class. The factor is <span class="math" data-tex="\(|t|\)">\(|t|\)</span>, rather than <span class="math" data-tex="\(1\)">\(1\)</span>, because the quotient in (3.1) is unnormalized.</p>
+<p><strong>Example 6.4 — unramified principal series and a repeated parameter.</strong> If <span class="math" data-tex="\(\mu_1,\mu_2\)">\(\mu_1,\mu_2\)</span> are unramified, write <span class="math" data-tex="\(\alpha=\mu_1(\varpi)\)">\(\alpha=\mu_1(\varpi)\)</span>, <span class="math" data-tex="\(\beta=\mu_2(\varpi)\)">\(\beta=\mu_2(\varpi)\)</span>. For <span class="math" data-tex="\(\alpha/\beta\ne q^{\pm1}\)">\(\alpha/\beta\ne q^{\pm1}\)</span> and <span class="math" data-tex="\(\alpha\ne\beta\)">\(\alpha\ne\beta\)</span>, the two germs on <span class="math" data-tex="\(t=\varpi^n u\)">\(t=\varpi^n u\)</span>, <span class="math" data-tex="\(n\)">\(n\)</span> large, are
+<span class="math" data-tex="\(q^{-n/2}\alpha^n\)">\(q^{-n/2}\alpha^n\)</span> and <span class="math" data-tex="\(q^{-n/2}\beta^n\)">\(q^{-n/2}\beta^n\)</span>. Extend each by zero for <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>; Proposition 6.2 puts both extensions in the model. Their classes are independent. If <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>, the two germs are instead
+<span class="math" data-tex="\(q^{-n/2}\alpha^n\)">\(q^{-n/2}\alpha^n\)</span> and <span class="math" data-tex="\(nq^{-n/2}\alpha^n\)">\(nq^{-n/2}\alpha^n\)</span>. Equal parameters still give an irreducible principal series: the exceptional ratios are <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>, not <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Example 6.5 — supercuspidal.</strong> A supercuspidal Kirillov function always vanishes on a sufficiently small neighborhood of zero as well as outside a bounded ball. Every compact bump away from zero occurs, and there are no additional germs. Thus its model is exactly the compact-function space, although its Weyl coefficients in (3.3) carry information that differentiates supercuspidal representations.</p>
+<p>Deligne's <em>Formes modulaires et représentations de GL(2)</em>, §2.2, Théorème 2.2.4, singles out this finite codimension as the difficult part of the Kirillov-model theorem. Here the compact inclusion comes from Fourier-ball projectors; the finite bound comes from the principal-series embedding and classification. These are distinct steps. Uniqueness of the functional alone would not give the bound.</p>
+<h2 id="7-unitarity-and-temperedness">7. Unitarity and temperedness</h2>
+<p>A smooth irreducible representation is <strong>unitarizable</strong> if it has a positive definite <span class="math" data-tex="\(G\)">\(G\)</span>-invariant Hermitian form. We call a representation with unitary central character <strong>tempered</strong> when all its smooth matrix coefficients belong to <span class="math" data-tex="\(L^{2+\epsilon}(G/Z)\)">\(L^{2+\epsilon}(G/Z)\)</span> for every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>. The following proof gives both classifications without using a classification of higher-rank unitary representations.</p>
+<p><strong>Theorem 7.1 — the unitary families.</strong> The irreducible unitarizable representations are <span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span> and <span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span> with <span class="math" data-tex="\(\chi\)">\(\chi\)</span> unitary; supercuspidals with unitary central character; principal series with both inducing characters unitary; and the complementary series
+<span class="math math-display" data-tex="\[
+I(\chi\nu^s,\chi\nu^{-s}),\qquad
+\chi\text{ unitary},\quad 0&lt;s&lt;\tfrac12.
+\tag{7.1}
+\]">\[
+I(\chi\nu^s,\chi\nu^{-s}),\qquad
+\chi\text{ unitary},\quad 0&lt;s&lt;\tfrac12.
+\tag{7.1}
+\]</span>
+At <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span>, the principal series has the two constituents in (4.4), rather than being an additional irreducible family.</p>
+<p><strong>Necessity.</strong> An invariant positive form makes the central character unitary. Admissibility from Lesson 6, Theorem 5.4, identifies the Hermitian dual with the representation itself: the form gives an injection into the conjugate smooth dual, and it is onto on every fixed space by finite-dimensional duality. For a principal series, Lesson 6, Proposition 1.2, and Corollary 5.2 therefore give
+<span class="math math-display" data-tex="\[
+\{\mu_1,\mu_2\}
+=\{\overline{\mu_1}^{-1},\overline{\mu_2}^{-1}\}.
+\]">\[
+\{\mu_1,\mu_2\}
+=\{\overline{\mu_1}^{-1},\overline{\mu_2}^{-1}\}.
+\]</span>
+Either each character is unitary, or they are exchanged by this involution. In the second case write <span class="math" data-tex="\(\mu_1=\chi\nu^s\)">\(\mu_1=\chi\nu^s\)</span>, with <span class="math" data-tex="\(\chi\)">\(\chi\)</span> unitary and <span class="math" data-tex="\(s\)">\(s\)</span> real; smooth characters have unitary restriction to the compact unit group, and their absolute values are powers of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Then <span class="math" data-tex="\(\mu_2=\chi\nu^{-s}\)">\(\mu_2=\chi\nu^{-s}\)</span>. Swapping the parameters permits <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>.</p>
+<p>The smoothed evaluation argument in the proof of Lesson 6, Theorem 5.2, gives a smooth matrix coefficient that, for all sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>, is a nonzero constant times
+<span class="math" data-tex="\(\delta_B(t_r)^{1/2}\mu_1(\varpi)^r\)">\(\delta_B(t_r)^{1/2}\mu_1(\varpi)^r\)</span>, where
+<span class="math" data-tex="\(t_r=\operatorname{diag}(\varpi^r,1)\)">\(t_r=\operatorname{diag}(\varpi^r,1)\)</span>. Order the pair so
+<span class="math" data-tex="\(|\mu_1(\varpi)|=q^s\)">\(|\mu_1(\varpi)|=q^s\)</span>. Its absolute value is a positive constant times <span class="math" data-tex="\(q^{(s-1/2)r}\)">\(q^{(s-1/2)r}\)</span>. If <span class="math" data-tex="\(s&gt;1/2\)">\(s&gt;1/2\)</span>, this is unbounded, contradicting Cauchy–Schwarz for an invariant positive form. At <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span>, the principal series is reducible by Theorem 4.2. This proves the necessary range. For a character or Steinberg twist, the central character is <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span>, so its unitarity forces <span class="math" data-tex="\(\chi\)">\(\chi\)</span> to be unitary.</p>
+<p><strong>Unitary principal series and supercuspidals.</strong> For unitary inducing characters, the compact-model pairing is positive. Equivalently, in the open chart it is
+<span class="math" data-tex="\(\int_F|\phi(x)|^2dx\)">\(\int_F|\phi(x)|^2dx\)</span>, with <span class="math" data-tex="\(\phi(x)=f(wn(x))\)">\(\phi(x)=f(wn(x))\)</span>. The <span class="math" data-tex="\(N,T,w\)">\(N,T,w\)</span> changes of variables in Lesson 6, Proposition 1.2, prove invariance, now with complex conjugation. The chart determines the section and the form is positive definite.</p>
+<p>For a supercuspidal with unitary central character, choose a nonzero smooth functional <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Theorem 5.3 of that lesson proves compact support of each coefficient modulo <span class="math" data-tex="\(Z\)">\(Z\)</span>, so
+<span class="math math-display" data-tex="\[
+H(v,u)=\int_{G/Z}\ell(\pi(g)v)
+                    \overline{\ell(\pi(g)u)}\,d\bar g
+\]">\[
+H(v,u)=\int_{G/Z}\ell(\pi(g)v)
+                    \overline{\ell(\pi(g)u)}\,d\bar g
+\]</span>
+converges. The integrand descends because the central character is unitary. The quotient group is unimodular, so right translation proves invariance. The form is nonzero, since a nonzero value of <span class="math" data-tex="\(\ell(v)\)">\(\ell(v)\)</span> persists on an open neighborhood. Its radical is invariant and hence zero by irreducibility. This gives the required positive form.</p>
+<p><strong>Complementary series.</strong> A common unitary determinant twist does not affect positivity, so take <span class="math" data-tex="\(I(\nu^s,\nu^{-s})\)">\(I(\nu^s,\nu^{-s})\)</span>, <span class="math" data-tex="\(0&lt;s&lt;1/2\)">\(0&lt;s&lt;1/2\)</span>. Its open-chart functions satisfy
+<span class="math math-display" data-tex="\[
+|\phi(x)|\leq C\max(1,|x|)^{-1-2s}.
+\]">\[
+|\phi(x)|\leq C\max(1,|x|)^{-1-2s}.
+\]</span>
+The bound follows from Iwasawa decomposition and the bounded restriction to <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. Define
+<span class="math math-display" data-tex="\[
+H_s(\phi,\psi)=
+\int_{F^2}\phi(x)\overline{\psi(y)}
+                  |x-y|^{-1+2s}\,dx\,dy.
+\tag{7.2}
+\]">\[
+H_s(\phi,\psi)=
+\int_{F^2}\phi(x)\overline{\psi(y)}
+                  |x-y|^{-1+2s}\,dx\,dy.
+\tag{7.2}
+\]</span>
+The kernel is locally integrable at the diagonal, since <span class="math" data-tex="\(2s&gt;0\)">\(2s&gt;0\)</span>. Away from it the kernel is bounded, while both functions are integrable and bounded. These observations prove absolute convergence.</p>
+<p>Put <span class="math" data-tex="\(\lambda=1-2s&gt;0\)">\(\lambda=1-2s&gt;0\)</span>. For <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+|z|^{-\lambda}
+=\sum_{m\in\mathbb Z}
+  (q^{m\lambda}-q^{(m-1)\lambda})\,1_{\varpi^m\mathcal O}(z).
+\]">\[
+|z|^{-\lambda}
+=\sum_{m\in\mathbb Z}
+  (q^{m\lambda}-q^{(m-1)\lambda})\,1_{\varpi^m\mathcal O}(z).
+\]</span>
+Every coefficient is positive. The quadratic form of a ball kernel is
+<span class="math math-display" data-tex="\[
+Q_m(\phi)=
+\sum_{C\in F/\varpi^m\mathcal O}
+             \left|\int_C\phi(x)\,dx\right|^2\geq0.
+\]">\[
+Q_m(\phi)=
+\sum_{C\in F/\varpi^m\mathcal O}
+             \left|\int_C\phi(x)\,dx\right|^2\geq0.
+\]</span>
+Absolute convergence of (7.2) justifies the expansion of its quadratic form. A nonzero locally constant <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is constant and nonzero on some sufficiently small ball, so some <span class="math" data-tex="\(Q_m(\phi)&gt;0\)">\(Q_m(\phi)&gt;0\)</span>. Thus <span class="math" data-tex="\(H_s\)">\(H_s\)</span> is positive definite.</p>
+<p>Translations preserve (7.2). For <span class="math" data-tex="\(t=\operatorname{diag}(a,d)\)">\(t=\operatorname{diag}(a,d)\)</span>, write <span class="math" data-tex="\(b=d/a\)">\(b=d/a\)</span>. Its action is
+<span class="math" data-tex="\(\phi(x)\mapsto |b|^{1/2+s}\phi(bx)\)">\(\phi(x)\mapsto |b|^{1/2+s}\phi(bx)\)</span>; the two Jacobians and the kernel's homogeneity cancel the multiplier. For <span class="math" data-tex="\(w\)">\(w\)</span>, the open-cell factorization gives
+<span class="math math-display" data-tex="\[
+\phi(x)\longmapsto |x|^{-1-2s}\phi(-1/x).
+\]">\[
+\phi(x)\longmapsto |x|^{-1-2s}\phi(-1/x).
+\]</span>
+Under <span class="math" data-tex="\(u=-1/x,\ v=-1/y\)">\(u=-1/x,\ v=-1/y\)</span>, use
+<span class="math" data-tex="\(|x-y|=|u-v|/(|uv|)\)">\(|x-y|=|u-v|/(|uv|)\)</span> and <span class="math" data-tex="\(dx=|u|^{-2}du\)">\(dx=|u|^{-2}du\)</span>.
+Again all multipliers cancel. The omitted points have measure zero. Since <span class="math" data-tex="\(N,T,w\)">\(N,T,w\)</span> generate <span class="math" data-tex="\(G\)">\(G\)</span>, this proves invariance and sufficiency for the complementary series.</p>
+<p><strong>Steinberg.</strong> Untwist <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. By Lesson 6, equation (6.3), realize <span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span> inside <span class="math" data-tex="\(I(\nu^{1/2},\nu^{-1/2})\)">\(I(\nu^{1/2},\nu^{-1/2})\)</span>. In the open chart its functions have
+<span class="math math-display" data-tex="\[
+|\phi(x)|\leq C\max(1,|x|)^{-2},
+\qquad \int_F\phi(x)\,dx=0.
+\]">\[
+|\phi(x)|\leq C\max(1,|x|)^{-2},
+\qquad \int_F\phi(x)\,dx=0.
+\]</span>
+The last condition is precisely the trivial quotient functional in that lesson. Define
+<span class="math math-display" data-tex="\[
+H_{\mathrm{St}}(\phi,\psi)=
+-\int_{F^2}\phi(x)\overline{\psi(y)}\log|x-y|\,dx\,dy
+=(\log q)\sum_{m\in\mathbb Z}Q_m(\phi,\psi),
+\tag{7.3}
+\]">\[
+H_{\mathrm{St}}(\phi,\psi)=
+-\int_{F^2}\phi(x)\overline{\psi(y)}\log|x-y|\,dx\,dy
+=(\log q)\sum_{m\in\mathbb Z}Q_m(\phi,\psi),
+\tag{7.3}
+\]</span>
+where <span class="math" data-tex="\(Q_m(\phi,\psi)\)">\(Q_m(\phi,\psi)\)</span> is the polarized ball form. The logarithmic integral is absolutely convergent: near the diagonal use boundedness, integrability and the integrable function <span class="math" data-tex="\(|\log|z||\)">\(|\log|z||\)</span>; at infinity use the displayed quadratic decay.</p>
+<p>To verify the second equality, use
+<span class="math math-display" data-tex="\[
+v_F(z)=\sum_{m\in\mathbb Z}
+ (1_{\varpi^m\mathcal O}(z)-1_{m\leq0}).
+\]">\[
+v_F(z)=\sum_{m\in\mathbb Z}
+ (1_{\varpi^m\mathcal O}(z)-1_{m\leq0}).
+\]</span>
+Symmetric finite truncations are bounded in absolute value by <span class="math" data-tex="\(|v_F(z)|\)">\(|v_F(z)|\)</span>, so dominated convergence applies. Each subtracted constant contributes zero because both means vanish. The series is convergent: for <span class="math" data-tex="\(m\to+\infty\)">\(m\to+\infty\)</span>, Cauchy–Schwarz gives
+<span class="math" data-tex="\(Q_m(\phi)\leq q^{-m}\|\phi\|_2^2\)">\(Q_m(\phi)\leq q^{-m}\|\phi\|_2^2\)</span>. For <span class="math" data-tex="\(m\to-\infty\)">\(m\to-\infty\)</span>, the zero mean and the <span class="math" data-tex="\(O(|x|^{-2})\)">\(O(|x|^{-2})\)</span> tail give
+<span class="math" data-tex="\(Q_m(\phi)=O(q^{2m})\)">\(Q_m(\phi)=O(q^{2m})\)</span>. Indeed the integral on the ball containing zero is the negative tail integral, of size <span class="math" data-tex="\(O(q^m)\)">\(O(q^m)\)</span>, and the absolute integrals on all other cosets have total size <span class="math" data-tex="\(O(q^m)\)">\(O(q^m)\)</span>. Polarization gives convergence for the mixed form as well. Positivity and strict positivity follow from the same small-ball argument as before.</p>
+<p>Translations preserve (7.3). Torus scaling adds a constant to the logarithm, whose contribution vanishes by the zero means. Under inversion, the two Jacobians cancel the multipliers <span class="math" data-tex="\(|x|^{-2}\)">\(|x|^{-2}\)</span>, and
+<span class="math math-display" data-tex="\[
+-\log|x-y|=-\log|u-v|+\log|u|+\log|v|.
+\]">\[
+-\log|x-y|=-\log|u-v|+\log|u|+\log|v|.
+\]</span>
+The last two terms again vanish by the zero means; their integrals converge by the same decay bounds. Hence (7.3) is invariant. This proves Steinberg unitarity and finishes Theorem 7.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every positive form constructed above gives a strongly continuous unitary completion. Smooth vectors have finite-dimensional fixed spaces. Averaging the dense smooth space shows that the completion's <span class="math" data-tex="\(J\)">\(J\)</span>-fixed space is exactly that same finite-dimensional space. Thus a commuting orthogonal projection preserves the smooth representation and is scalar by Schur's lemma; the completion is irreducible. This argument concerns the completions just constructed and uses the proved smooth admissibility theorem.</p>
+<p><strong>Theorem 7.2 — the tempered families.</strong> Among representations with unitary central character, the tempered ones are precisely unitary principal series, unitary Steinberg twists and supercuspidals.</p>
+<p><strong>Proof of the positive assertions.</strong> Normalize the image of <span class="math" data-tex="\(K_0\)">\(K_0\)</span> in <span class="math" data-tex="\(G/Z\)">\(G/Z\)</span> to have volume one. For <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(K_0t_rK_0/Z)
+=(q+1)q^{r-1}.
+\tag{7.4}
+\]">\[
+\operatorname{vol}(K_0t_rK_0/Z)
+=(q+1)q^{r-1}.
+\tag{7.4}
+\]</span>
+Here the notation means the image of that double coset in <span class="math" data-tex="\(G/Z\)">\(G/Z\)</span>. Its right compact cosets are counted by primitive rows modulo <span class="math" data-tex="\(\varpi^r\)">\(\varpi^r\)</span>, up to a unit scalar. There are <span class="math" data-tex="\(q^{2r}-q^{2r-2}\)">\(q^{2r}-q^{2r-2}\)</span> primitive rows and <span class="math" data-tex="\(q^r-q^{r-1}\)">\(q^r-q^{r-1}\)</span> unit scalars; dividing gives (7.4). The Cartan decomposition in Lesson 6, equation (5.4), exhausts the quotient by these disjoint shells and the compact shell <span class="math" data-tex="\(r=0\)">\(r=0\)</span>.</p>
+<p>For a unitary principal series, its open-chart functions satisfy
+<span class="math" data-tex="\(|\phi(x)|\leq C\max(1,|x|)^{-1}\)">\(|\phi(x)|\leq C\max(1,|x|)^{-1}\)</span>. Its invariant <span class="math" data-tex="\(L^2(F)\)">\(L^2(F)\)</span> form gives the coefficient bound
+<span class="math math-display" data-tex="\[
+|\langle\pi(t_r)\phi,\psi\rangle|
+\leq C(r+1)q^{-r/2}.
+\tag{7.5}
+\]">\[
+|\langle\pi(t_r)\phi,\psi\rangle|
+\leq C(r+1)q^{-r/2}.
+\tag{7.5}
+\]</span>
+Indeed its absolute integral is bounded by
+<span class="math math-display" data-tex="\[
+Cq^{r/2}\int_F
+ \frac{dx}{\max(1,q^r|x|)\max(1,|x|)}.
+\]">\[
+Cq^{r/2}\int_F
+ \frac{dx}{\max(1,q^r|x|)\max(1,|x|)}.
+\]</span>
+The regions <span class="math" data-tex="\(|x|\leq q^{-r}\)">\(|x|\leq q^{-r}\)</span>, <span class="math" data-tex="\(q^{-r}&lt;|x|\leq1\)">\(q^{-r}&lt;|x|\leq1\)</span>, and <span class="math" data-tex="\(|x|&gt;1\)">\(|x|&gt;1\)</span> contribute respectively
+<span class="math" data-tex="\(O(q^{-r})\)">\(O(q^{-r})\)</span>, <span class="math" data-tex="\(O(rq^{-r})\)">\(O(rq^{-r})\)</span>, and <span class="math" data-tex="\(O(q^{-r})\)">\(O(q^{-r})\)</span> before the prefactor. Compact <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-orbits of fixed smooth vectors are finite-dimensional, so the same bound, with a changed constant, holds throughout each double coset. Equation (7.4) then gives <span class="math" data-tex="\(L^{2+\epsilon}\)">\(L^{2+\epsilon}\)</span> for every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>.</p>
+<p>For Steinberg, choose an additive character of conductor <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> and additive measure of volume one on <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. The elementary Fourier calculation for a ball gives
+<span class="math math-display" data-tex="\[
+Q_m(\phi,\psi)
+=q^{-m}\int_{|\xi|\leq q^m}
+ \widehat\phi(\xi)\overline{\widehat\psi(\xi)}\,d\xi.
+\]">\[
+Q_m(\phi,\psi)
+=q^{-m}\int_{|\xi|\leq q^m}
+ \widehat\phi(\xi)\overline{\widehat\psi(\xi)}\,d\xi.
+\]</span>
+It follows by Fourier orthogonality on finite quotients, then by <span class="math" data-tex="\(L^2\)">\(L^2\)</span> approximation; these are the same ball projectors used in Section 1. Summing the geometric series in (7.3) yields
+<span class="math math-display" data-tex="\[
+H_{\mathrm{St}}(\phi,\psi)
+=\frac{\log q}{1-q^{-1}}
+ \int_F\widehat\phi(\xi)\overline{\widehat\psi(\xi)}
+                     |\xi|^{-1}\,d\xi.
+\]">\[
+H_{\mathrm{St}}(\phi,\psi)
+=\frac{\log q}{1-q^{-1}}
+ \int_F\widehat\phi(\xi)\overline{\widehat\psi(\xi)}
+                     |\xi|^{-1}\,d\xi.
+\]</span>
+The value at <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> has measure zero. Every <span class="math" data-tex="\(\phi\)">\(\phi\)</span> here is fixed by sufficiently small additive translations, so its Fourier transform is compactly supported. Its zero mean and tail bound also give
+<span class="math" data-tex="\(|\widehat\phi(\xi)|\leq C|\xi|\)">\(|\widehat\phi(\xi)|\leq C|\xi|\)</span> near zero: subtract the constant Fourier value and integrate only over <span class="math" data-tex="\(|x|&gt;|\xi|^{-1}\)">\(|x|&gt;|\xi|^{-1}\)</span>.
+Since <span class="math" data-tex="\(t_r\)">\(t_r\)</span> acts in this chart by <span class="math" data-tex="\(q^r\phi(\varpi^{-r}x)\)">\(q^r\phi(\varpi^{-r}x)\)</span>, it acts on the transform by
+<span class="math" data-tex="\(\widehat\phi(\varpi^r\xi)\)">\(\widehat\phi(\varpi^r\xi)\)</span>. In the compact support of <span class="math" data-tex="\(\widehat\psi\)">\(\widehat\psi\)</span>, the last bound therefore proves
+<span class="math math-display" data-tex="\[
+|\langle\pi(t_r)\phi,\psi\rangle|\leq Cq^{-r}.
+\]">\[
+|\langle\pi(t_r)\phi,\psi\rangle|\leq Cq^{-r}.
+\]</span>
+Finite compact orbits and (7.4) show that these coefficients are in <span class="math" data-tex="\(L^2(G/Z)\)">\(L^2(G/Z)\)</span>, and hence in every <span class="math" data-tex="\(L^{2+\epsilon}\)">\(L^{2+\epsilon}\)</span> since they are bounded.</p>
+<p>A supercuspidal has compactly supported coefficients modulo <span class="math" data-tex="\(Z\)">\(Z\)</span>, by Lesson 6, Theorem 5.3. They too are bounded and in every required space. In each unitary family the invariant form identifies all smooth dual functionals with smooth vectors, by fixed-space duality, so these checks cover every smooth matrix coefficient.</p>
+<p><strong>Exclusion of the remaining families.</strong> A unitary determinant character has coefficients of constant absolute value, while (7.4) gives infinite quotient volume. It is not tempered.</p>
+<p>For any irreducible principal series with unitary central character, the absolute values of the inducing characters are <span class="math" data-tex="\(\nu^s\)">\(\nu^s\)</span> and <span class="math" data-tex="\(\nu^{-s}\)">\(\nu^{-s}\)</span> for some <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>. If <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, both characters are unitary. If <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, order them so <span class="math" data-tex="\(|\mu_1(\varpi)|=q^s\)">\(|\mu_1(\varpi)|=q^s\)</span>. The smoothed evaluation coefficient used in the necessity proof has absolute value <span class="math" data-tex="\(cq^{(s-1/2)r}\)">\(cq^{(s-1/2)r}\)</span> on <span class="math" data-tex="\(t_r\)">\(t_r\)</span>, for all sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>, with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Choose <span class="math" data-tex="\(K_m\)">\(K_m\)</span> fixing both its vector and its smooth functional. It is constant on <span class="math" data-tex="\(K_mt_rK_m\)">\(K_mt_rK_m\)</span>. The image of this double coset in <span class="math" data-tex="\(G/Z\)">\(G/Z\)</span> has volume <span class="math" data-tex="\(c_mq^r\)">\(c_mq^r\)</span>, with <span class="math" data-tex="\(c_m&gt;0\)">\(c_m&gt;0\)</span>: in the integral Gauss decomposition of <span class="math" data-tex="\(K_m\)">\(K_m\)</span>, the intersection with <span class="math" data-tex="\(t_rK_mt_r^{-1}\)">\(t_rK_mt_r^{-1}\)</span> imposes <span class="math" data-tex="\(r\)">\(r\)</span> additional upper-unipotent digits. The central units of <span class="math" data-tex="\(K_m\)">\(K_m\)</span> are already in the intersection and do not change this index. These sets lie in distinct Cartan shells. Its <span class="math" data-tex="\(p\)">\(p\)</span>-th power integral is therefore bounded below by a positive constant times
+<span class="math math-display" data-tex="\[
+\sum_{r\text{ large}}q^{\,r(1+p(s-1/2))}.
+\]">\[
+\sum_{r\text{ large}}q^{\,r(1+p(s-1/2))}.
+\]</span>
+For some <span class="math" data-tex="\(p=2+\epsilon&gt;2\)">\(p=2+\epsilon&gt;2\)</span>, the exponent is nonnegative, so this diverges. This excludes every principal series with <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, including the complementary series. The other families with unitary central character were all covered above. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the rank-two result of <a href="https://www.numdam.org/item/10.24033/asens.1510.pdf">Tadić's unitary classification, Theorem D and §7.5</a>. Getz–Hahn, Theorem 8.4.5, is the original reference for the tempered classification. The positive forms and coefficient estimates needed in rank two have been proved here.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<p><strong>Exercise 8.1 — matrix order.</strong> Compute the Kirillov action of <span class="math" data-tex="\(d(a)n(x)\)">\(d(a)n(x)\)</span> and <span class="math" data-tex="\(n(x)d(a)\)">\(n(x)d(a)\)</span>, and identify the multiplier for <span class="math" data-tex="\(\left(\begin{smallmatrix}a&amp;b\\0&amp;d\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}a&amp;b\\0&amp;d\end{smallmatrix}\right)\)</span>.</p>
+<p><strong>Solution 8.1.</strong> For the first product,
+<span class="math" data-tex="\(d(t)d(a)n(x)=n(tax)d(ta)\)">\(d(t)d(a)n(x)=n(tax)d(ta)\)</span>. Applying the Whittaker functional gives
+<span class="math math-display" data-tex="\[
+(\pi(d(a)n(x))\xi)(t)=\psi(tax)\xi(ta).
+\]">\[
+(\pi(d(a)n(x))\xi)(t)=\psi(tax)\xi(ta).
+\]</span>
+For the second product, <span class="math" data-tex="\(d(t)n(x)d(a)=n(tx)d(ta)\)">\(d(t)n(x)d(a)=n(tx)d(ta)\)</span>, giving
+<span class="math" data-tex="\(\psi(tx)\xi(ta)\)">\(\psi(tx)\xi(ta)\)</span>. A general upper triangular matrix is
+<span class="math" data-tex="\(dI\,n(b/d)d(a/d)\)">\(dI\,n(b/d)d(a/d)\)</span>, so its action is
+<span class="math" data-tex="\(\omega(d)\psi(tb/d)\xi(ta/d)\)">\(\omega(d)\psi(tb/d)\xi(ta/d)\)</span>. Thus a formula with <span class="math" data-tex="\(\psi(tx)\)">\(\psi(tx)\)</span> attached to <span class="math" data-tex="\(d(a)n(x)\)">\(d(a)n(x)\)</span> has interchanged the two factors. For instance, taking <span class="math" data-tex="\(a=\varpi\)">\(a=\varpi\)</span> and an <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\psi(x)\ne\psi(\varpi x)\)">\(\psi(x)\ne\psi(\varpi x)\)</span> distinguishes the two actions at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>.</p>
+<p><strong>Exercise 8.2 — dimensions and families.</strong> Compute the dimension of the Kirillov quotient by compact functions for each infinite-dimensional irreducible family. Explain what happens for a character.</p>
+<p><strong>Solution 8.2.</strong> Proposition 1.3 identifies the ordinary unipotent differences with the compact functions. Therefore the quotient is <span class="math" data-tex="\(V_N\)">\(V_N\)</span>, with no square-root twist. A supercuspidal has zero Jacquet module and quotient dimension zero. Exactness applied to
+<span class="math" data-tex="\(0\to\mathrm{St}_\chi\to I(\chi\nu^{1/2},\chi\nu^{-1/2})\to D_\chi\to0\)">\(0\to\mathrm{St}_\chi\to I(\chi\nu^{1/2},\chi\nu^{-1/2})\to D_\chi\to0\)</span>
+subtracts the one-dimensional character Jacquet module from the two-dimensional induced one, giving dimension one for Steinberg. A nonexceptional principal series has the two Bruhat-cell Jacquet factors from Lesson 6 and therefore dimension two. Proposition 6.2 realizes these dimensions as zero germs, one <span class="math" data-tex="\(\nu\chi\)">\(\nu\chi\)</span> germ, or two principal germs; at a repeated parameter the valuation term provides the second germ. A character <span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span> has a one-dimensional Jacquet module, but no Whittaker functional. It has no injective scalar Kirillov model of the type considered here, so the quotient calculation must not be assigned to it.</p>
+<p><strong>Exercise 8.3 — swapped parameters through the Kirillov model.</strong> Prove the isomorphism <span class="math" data-tex="\(I(\mu_1,\mu_2)\simeq I(\mu_2,\mu_1)\)">\(I(\mu_1,\mu_2)\simeq I(\mu_2,\mu_1)\)</span> when irreducible, using its Weyl action on compact functions.</p>
+<p><strong>Solution 8.3.</strong> With <span class="math" data-tex="\(r=\mu_1/\mu_2\)">\(r=\mu_1/\mu_2\)</span>, substitute <span class="math" data-tex="\(u=ts/v\)">\(u=ts/v\)</span> in the stable integral (5.2). Both tails consist of zero shell integrals, so the substitution gives
+<span class="math" data-tex="\(J_r(ts)=r(ts)J_{r^{-1}}(ts)\)">\(J_r(ts)=r(ts)J_{r^{-1}}(ts)\)</span>. Multiply this into the first kernel's factor:
+<span class="math math-display" data-tex="\[
+\mu_2(t)\mu_1(s)^{-1}r(ts)
+ =\mu_1(t)\mu_2(s)^{-1}.
+\]">\[
+\mu_2(t)\mu_1(s)^{-1}r(ts)
+ =\mu_1(t)\mu_2(s)^{-1}.
+\]</span>
+Consequently (5.3) is exactly the swapped kernel. Normalize the two Whittaker functionals so that both compact parts are the same scalar function space; the function spaces themselves do not depend on this scaling. Their upper-triangular actions agree because the central character is <span class="math" data-tex="\(\mu_1\mu_2\)">\(\mu_1\mu_2\)</span>. Their Weyl actions agree on <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, hence their spaces <span class="math" data-tex="\(V_0+WV_0\)">\(V_0+WV_0\)</span> agree. On <span class="math" data-tex="\(f_0+Wf_1\)">\(f_0+Wf_1\)</span>, the action of <span class="math" data-tex="\(W\)">\(W\)</span> is <span class="math" data-tex="\(Wf_0+\omega(-1)f_1\)">\(Wf_0+\omega(-1)f_1\)</span>, so it also agrees on the whole space. Upper-triangular matrices and <span class="math" data-tex="\(w_0\)">\(w_0\)</span> generate <span class="math" data-tex="\(G\)">\(G\)</span>. The identity of these two function spaces is therefore the desired <span class="math" data-tex="\(G\)">\(G\)</span>-isomorphism. This argument proves symmetry of the actual representation, rather than only symmetry of its Jacquet characters.</p>
+<p><strong>Exercise 8.4 — irreducibility without assuming finite length.</strong> Prove the principal-series criterion and Steinberg irreducibility from twisted coinvariants, reciprocity and the known induced Jacquet calculation.</p>
+<p><strong>Solution 8.4.</strong> The open Bruhat cell contributes one twisted coinvariant and the closed cell contributes zero, so the induced twisted fiber has dimension one. A vector with zero Kirillov function is <span class="math" data-tex="\(N\)">\(N\)</span>-fixed by the finite-Fourier enlargement argument. Such a vector is <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span>-fixed. The <span class="math" data-tex="\(N\)">\(N\)</span>-fixed space injects into the two-dimensional ordinary Jacquet module; if nonzero, it has a character subrepresentation. Reciprocity permits this exactly at ratio <span class="math" data-tex="\(\nu^{-1}\)">\(\nu^{-1}\)</span>. At every other ratio the scalar function model is consequently injective.</p>
+<p>Any nonzero subrepresentation then has a nonzero twisted fiber, which equals the induced fiber by exactness. Fourier-ball projectors put all compact functions <span class="math" data-tex="\(V_0\)">\(V_0\)</span> in that subrepresentation. The quotient of the induction by <span class="math" data-tex="\(G V_0\)">\(G V_0\)</span> is finite-dimensional and <span class="math" data-tex="\(N\)">\(N\)</span>-trivial, so if nonzero it has a character quotient. Induced duality and reciprocity permit a character quotient exactly at ratio <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Away from both exceptional ratios, <span class="math" data-tex="\(G V_0=I\)">\(G V_0=I\)</span>, and every nonzero subrepresentation equals <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>At ratio <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, the constructed Steinberg subrepresentation contains <span class="math" data-tex="\(V_0\)">\(V_0\)</span>. If <span class="math" data-tex="\(\mathrm{St}/G V_0\)">\(\mathrm{St}/G V_0\)</span> were nonzero, it would have a character quotient <span class="math" data-tex="\(D_\eta\)">\(D_\eta\)</span>. Exact Jacquet modules would require
+<span class="math" data-tex="\((\nu^{1/2},\nu^{-1/2})=(\eta\nu^{-1/2},\eta\nu^{1/2})\)">\((\nu^{1/2},\nu^{-1/2})=(\eta\nu^{-1/2},\eta\nu^{1/2})\)</span>, which is impossible on the two independent diagonal coordinates. Thus <span class="math" data-tex="\(\mathrm{St}=G V_0\)">\(\mathrm{St}=G V_0\)</span>, and every nonzero Steinberg subrepresentation equals it. Its quotient in <span class="math" data-tex="\(I_+\)">\(I_+\)</span> is trivial, giving the two irreducible factors at ratio <span class="math" data-tex="\(\nu\)">\(\nu\)</span>; twisting and dualizing give their reverse order at ratio <span class="math" data-tex="\(\nu^{-1}\)">\(\nu^{-1}\)</span>. Both ratios are reducible, completing both directions. Finite length has been obtained from these explicit sequences, rather than used as an assumption.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>H. Jacquet and R. P. Langlands, <a href="https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf"><em>Automorphic Forms on GL(2)</em></a> (1970), §2, Propositions 2.7–2.12 and Theorems 2.13–2.14, for the vector-valued model, Weyl coefficients and uniqueness; §3, Theorem 3.3 and Proposition 3.4, for principal-series classification and symmetry. Its <span class="math" data-tex="\(w_0\)">\(w_0\)</span> agrees with (0.1). Its normalized <span class="math" data-tex="\(B(\mu_1,\mu_2)\)">\(B(\mu_1,\mu_2)\)</span> agrees with our <span class="math" data-tex="\(I(\mu_1,\mu_2)\)">\(I(\mu_1,\mu_2)\)</span>. Its exceptional infinite-dimensional representation is denoted <span class="math" data-tex="\(\sigma(\mu_1,\mu_2)\)">\(\sigma(\mu_1,\mu_2)\)</span>.</li>
+<li>P. Deligne, <em>Formes modulaires et représentations de GL(2)</em> (1973), §2.2, especially Théorèmes 2.2.2 and 2.2.4: unique Whittaker functional, compact Kirillov part and its finite codimension.</li>
+<li>J. R. Getz and H. Hahn, <em>An Introduction to Automorphic Representations</em>, draft of 22 April 2022, §§8.3–8.4, especially Theorem 8.4.5 for the tempered classification proved in Section 7; see the <a href="https://sites.duke.edu/jgetz/graduate-text/">author's text page</a>. The complementary-series proof here uses the positive ball-kernel expansion in (7.2).</li>
+<li>M. Tadić, <em>Classification of unitary representations in irreducible representations of general linear group (non-Archimedean case)</em>, Ann. Sci. École Norm. Sup. 19 (1986), 335–382, <a href="https://www.numdam.org/item/10.24033/asens.1510.pdf">Theorem D, pp. 338–339, and §7.5, p. 370</a>. Its rank-two unitary consequence is proved here in Theorem 7.1.</li>
+<li><a href="smooth-local-representations-and-the-hecke-module-dictionary.html">Lesson 5</a>, Theorem 4.1 and Proposition 6.2, for countable Schur and the finite-dimensional determinant classification; <a href="normalized-induction-and-jacquet-modules.html">Lesson 6</a>, Theorems 3.1 and 4.1, Section 6, for reciprocity, exact induced Jacquet modules, and the two Steinberg sequences. Theorem 4.2 here completes its forward reference to Steinberg irreducibility.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="normalized-induction-and-jacquet-modules.html">← Normalized induction and Jacquet modules</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="newvectors-conductors-and-the-passage-to-classical-newforms.html">Newvectors, conductors and the passage to classical newforms →</a></span></nav>
+<p class="small source-link"><a href="src/whittaker-models-kirillov-models-and-the-local-classification.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/automorphic-forms-and-representations-of-gl2">Repository</a></nav>
+</footer>
+</body>
+</html>

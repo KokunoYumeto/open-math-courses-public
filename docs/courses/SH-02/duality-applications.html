@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SH02-DA-UNIT — Supports, characteristic classes, and finite duality · Microlocal sheaves</title>
+<meta name="description" content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/duality-applications.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <span class="unlinked">Microlocal sheaves</span> <span aria-hidden="true">›</span> <span>SH02-DA-UNIT — Supports, characteristic classes, and finite duality</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by AI in Codex.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="sh02-da-unit-supports-characteristic-classes-and-finite-duality">SH02-DA-UNIT — Supports, characteristic classes, and finite duality</h1>
+<p>Status: independently authored English draft. Every result below is conditional on the precise sheaf-operation contracts cited in its proof.</p>
+<p>The map that forgets a support condition can carry useful geometric information even when its source and target have very simple cohomology. This lesson studies that map for vector bundles, sphere bundles, quadratic regions, and accumulating supports. It also explains why the finiteness condition in sheaf biduality produces finite-dimensional global duality on a compact manifold.</p>
+<h2 id="sh02-da-conventions-coefficients-and-imported-results">SH02-DA-CONVENTIONS — Coefficients and imported results</h2>
+<p>Unless a paragraph explicitly assumes a field, let <span class="math" data-tex="$k$">$k$</span> be a commutative unital ring of finite global dimension. Spaces are locally compact Hausdorff. Manifolds have finite dimension, are countable at infinity, and have no boundary; a submanifold is locally a standard coordinate subspace. A vector-bundle base is a manifold, or more generally a locally compact Hausdorff space for which the finite-dimensional relative operation contracts below hold. No orientability or finiteness of coefficient modules is implicit. The zero ring makes every sheaf zero, so assertions about sharp dimensions assume <span class="math" data-tex="$k\ne0$">$k\ne0$</span>.</p>
+<p>We use cohomological grading, so <span class="math" data-tex="$k[-r]$">$k[-r]$</span> is in degree <span class="math" data-tex="$r$">$r$</span>. For a locally closed subset <span class="math" data-tex="$S\subset X$">$S\subset X$</span>, <span class="math" data-tex="$k_S$">$k_S$</span> means the constant sheaf on <span class="math" data-tex="$S$">$S$</span> extended by zero to <span class="math" data-tex="$X$">$X$</span>. In particular, an open inclusion uses <span class="math" data-tex="$j_!$">$j_!$</span>, and it must not be replaced by <span class="math" data-tex="$j_*$">$j_*$</span>. Write</p>
+<span class="math math-display" data-tex="$$
+D_XF=R\mathcal Hom(F,\omega_X),\qquad
+D&#x27;_XF=R\mathcal Hom(F,k_X).
+$$">$$
+D_XF=R\mathcal Hom(F,\omega_X),\qquad
+D&#x27;_XF=R\mathcal Hom(F,k_X).
+$$</span>
+<p>The <a href="../sheaf-proof-readings/SH02-manifold-duality.html">manifold-duality lesson</a> supplies the dimension bounds <code>SH02-MD-DIMENSION</code>, the oriented Euclidean calculation <code>SH02-MD-EUCLIDEAN</code>, the submersion formula <code>SH02-MD-SUBMERSION</code>, the closed-submanifold formula <code>SH02-MD-CLOSED</code>, and trace compatibility <code>SH02-MD-TRACE</code>. The sign line <span class="math" data-tex="$o(E)$">$o(E)$</span> of a real bundle is obtained from its integral orientation line by extension of coefficients; its canonical square pairing identifies <span class="math" data-tex="$o(E)^{\otimes2}$">$o(E)^{\otimes2}$</span> with <span class="math" data-tex="$k$">$k$</span>.</p>
+<p>The <a href="../sheaf-proof-readings/SH02-exceptional-operations.html">exceptional-operation lesson</a> supplies projection, composition, proper-support base change, localization, and the actual dual-sections adjunction in <code>SH02-EX-DUAL-SECTIONS</code>. Its support-forgetting map is the natural transformation <code>SH02-EX-SUPPORT-ERASURE</code>. The <a href="../sheaf-proof-readings/SH02-cohomological-biduality.html">local-finiteness lesson</a> supplies <code>SH02-CB-SYSTEMS</code>, <code>SH02-CB-BIDUALITY</code>, and <code>SH02-CB-EXTERNAL-HOM</code>. The words <em>cohomologically constructible</em> below mean that precise local ind/pro representability and perfectness condition; they do not mean that a finite stratification has been supplied.</p>
+<p>The remaining sheaf foundations are exact filtered stalk colimits, closed direct image, injective resolutions, acyclicity of soft sheaves on paracompact Hausdorff spaces, and the localization sequence. The smooth part identifies its additional analytic foundation explicitly.</p>
+<h2 id="sh02-da-counits-a-trace-equivalence-with-variable-coefficients">SH02-DA-COUNITS — A trace equivalence with variable coefficients</h2>
+<p>Let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be a topological submersion of fixed finite fiber dimension. Suppose its integral trace is an isomorphism</p>
+<span class="math math-display" data-tex="$$
+Rf_!\omega_f^{\mathbb Z}\longrightarrow\mathbb Z_X.
+$$">$$
+Rf_!\omega_f^{\mathbb Z}\longrightarrow\mathbb Z_X.
+$$</span>
+<p>Equivalently, by <code>SH02-MD-ACYCLIC-SUBMERSION</code>, every fiber has constant-section unit <span class="math" data-tex="$\mathbb Z\to R\Gamma(Y_x;\mathbb Z)$">$\mathbb Z\to R\Gamma(Y_x;\mathbb Z)$</span> an isomorphism. Then for every <span class="math" data-tex="$F\in D^+(k_X)$">$F\in D^+(k_X)$</span> the exceptional counit is an isomorphism</p>
+<span class="math math-display" data-tex="$$
+\epsilon_F:Rf_!f^!F\xrightarrow{\sim}F.
+$$">$$
+\epsilon_F:Rf_!f^!F\xrightarrow{\sim}F.
+$$</span>
+<p><strong>Proof.</strong> Coefficient change for submersions and projection identify the trace with <span class="math" data-tex="$Rf_!\omega_f\to k_X$">$Rf_!\omega_f\to k_X$</span>. The submersion tensor map and the projection map give</p>
+<span class="math math-display" data-tex="$$
+Rf_!f^!F
+\simeq Rf_!(\omega_f\otimes^Lf^{-1}F)
+\simeq (Rf_!\omega_f)\otimes^LF.
+$$">$$
+Rf_!f^!F
+\simeq Rf_!(\omega_f\otimes^Lf^{-1}F)
+\simeq (Rf_!\omega_f)\otimes^LF.
+$$</span>
+<p>Under these identifications, <span class="math" data-tex="$\epsilon_F$">$\epsilon_F$</span> is <span class="math" data-tex="$\epsilon_k\otimes\mathrm{id}_F$">$\epsilon_k\otimes\mathrm{id}_F$</span>. Indeed, the submersion tensor map is defined as the mate of projection followed by <span class="math" data-tex="$\epsilon_k$">$\epsilon_k$</span>; applying the adjunction counit returns that defining map. Thus this is the actual counit, with its shift and orientation factor, and it is invertible. The finite fiber dimension and finite global dimension retain the stated <span class="math" data-tex="$D^+$">$D^+$</span> range. No reflexivity of <span class="math" data-tex="$F$">$F$</span> is used. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-da-thom-the-supported-generator-of-a-vector-bundle">SH02-DA-THOM — The supported generator of a vector bundle</h2>
+<p>Let <span class="math" data-tex="$\pi:E\to B$">$\pi:E\to B$</span> have rank <span class="math" data-tex="$r$">$r$</span>, with zero section <span class="math" data-tex="$i:B\hookrightarrow E$">$i:B\hookrightarrow E$</span>. Choose an orientation <span class="math" data-tex="$o(E)\simeq k_B$">$o(E)\simeq k_B$</span>. The relative formulas give</p>
+<span class="math math-display" data-tex="$$
+i^!k_E\simeq k_B[-r],\qquad
+R\pi_!k_E\simeq k_B[-r],\qquad
+k_B\xrightarrow{\sim}R\pi_*k_E.
+$$">$$
+i^!k_E\simeq k_B[-r],\qquad
+R\pi_!k_E\simeq k_B[-r],\qquad
+k_B\xrightarrow{\sim}R\pi_*k_E.
+$$</span>
+<p>The first two identifications use the same ordered local orientation. The third is the ordinary adjunction unit: vector-space fibers satisfy the acyclicity condition of <code>SH02-MD-ACYCLIC-SUBMERSION</code>.</p>
+<p>There is consequently a canonical, orientation-dependent isomorphism</p>
+<span class="math math-display" data-tex="$$
+H^a(B;k)\xrightarrow{\sim}H_B^{a+r}(E;k).
+$$">$$
+H^a(B;k)\xrightarrow{\sim}H_B^{a+r}(E;k).
+$$</span>
+<p>Let <span class="math" data-tex="$u_E\in H_B^r(E;k)$">$u_E\in H_B^r(E;k)$</span> be the image of the constant section <span class="math" data-tex="$1$">$1$</span>. This definition works componentwise when <span class="math" data-tex="$B$">$B$</span> is disconnected. It also includes rank zero, where <span class="math" data-tex="$i$">$i$</span> is the identity and <span class="math" data-tex="$u_E=1$">$u_E=1$</span>.</p>
+<p><strong>Proof and normalization.</strong> Closed-support adjunction identifies</p>
+<span class="math math-display" data-tex="$$
+R\Gamma_B(E;k_E)=R\Gamma(B;i^!k_E)
+\simeq R\Gamma(B;k_B)[-r].
+$$">$$
+R\Gamma_B(E;k_E)=R\Gamma(B;i^!k_E)
+\simeq R\Gamma(B;k_B)[-r].
+$$</span>
+<p>Locally on <span class="math" data-tex="$B$">$B$</span>, the comparison from point support in a fiber to compact support in that fiber is the isomorphism in <code>SH02-MD-EUCLIDEAN</code>. Both generators are the ordered product of the one-dimensional endpoint-difference generators. Thus the map</p>
+<span class="math math-display" data-tex="$$
+R\pi_!R\Gamma_B k_E\longrightarrow R\pi_!k_E
+$$">$$
+R\pi_!R\Gamma_B k_E\longrightarrow R\pi_!k_E
+$$</span>
+<p>is the identity on <span class="math" data-tex="$k_B[-r]$">$k_B[-r]$</span> under the displayed identifications. This checks the map, not merely its one-dimensional stalks up to an unspecified unit. Compatibility of the closed and submersion traces makes these local identifications glue. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Without an orientation the corresponding statement has <span class="math" data-tex="$o(E)$">$o(E)$</span> in place of <span class="math" data-tex="$k_B$">$k_B$</span> on the right-hand base complex. An untwisted generator <span class="math" data-tex="$1$">$1$</span> then requires an orientation choice.</p>
+<h2 id="sh02-da-euler-what-remains-after-support-is-forgotten">SH02-DA-EULER — What remains after support is forgotten</h2>
+<p>Apply the natural transformation <span class="math" data-tex="$R\pi_!\to R\pi_*$">$R\pi_!\to R\pi_*$</span> to <span class="math" data-tex="$k_E$">$k_E$</span>. With the identifications just fixed it is a morphism</p>
+<span class="math math-display" data-tex="$$
+e_E:k_B[-r]\longrightarrow k_B.
+$$">$$
+e_E:k_B[-r]\longrightarrow k_B.
+$$</span>
+<p>Its class in <span class="math" data-tex="$\operatorname{Hom}(k_B,k_B[r])=H^r(B;k)$">$\operatorname{Hom}(k_B,k_B[r])=H^r(B;k)$</span> is the Euler class. For every <span class="math" data-tex="$a$">$a$</span>, the induced map <span class="math" data-tex="$H^a(B;k)\to H^{a+r}(B;k)$">$H^a(B;k)\to H^{a+r}(B;k)$</span> is multiplication by this class. The equality follows from the projection formula: the supported generator with coefficients in a class <span class="math" data-tex="$v$">$v$</span> is <span class="math" data-tex="$\pi^{-1}v\smile u_E$">$\pi^{-1}v\smile u_E$</span>, and forgetting supports respects that product.</p>
+<p>The map <span class="math" data-tex="$e_E$">$e_E$</span> is also obtained by forgetting the support of <span class="math" data-tex="$u_E$">$u_E$</span> and restricting to the zero section:</p>
+<span class="math math-display" data-tex="$$
+H_B^r(E;k)\longrightarrow H^r(E;k)
+\xrightarrow{i^*}H^r(B;k),\qquad u_E\longmapsto e(E).
+$$">$$
+H_B^r(E;k)\longrightarrow H^r(E;k)
+\xrightarrow{i^*}H^r(B;k),\qquad u_E\longmapsto e(E).
+$$</span>
+<p><strong>Proof.</strong> The complex <span class="math" data-tex="$R\Gamma_Bk_E=i_*i^!k_E$">$R\Gamma_Bk_E=i_*i^!k_E$</span> has support proper over <span class="math" data-tex="$B$">$B$</span>. For this complex, <span class="math" data-tex="$R\pi_!\to R\pi_*$">$R\pi_!\to R\pi_*$</span> is the identity after both sides are identified with <span class="math" data-tex="$i^!k_E$">$i^!k_E$</span>. Naturality of support-forgetting gives the commutative square</p>
+<span class="math math-display" data-tex="$$
+\begin{array}{ccc}
+R\pi_!R\Gamma_Bk_E&amp;\longrightarrow&amp;R\pi_!k_E\\
+\downarrow\wr&amp;&amp;\downarrow\\
+R\pi_*R\Gamma_Bk_E&amp;\longrightarrow&amp;R\pi_*k_E.
+\end{array}
+$$">$$
+\begin{array}{ccc}
+R\pi_!R\Gamma_Bk_E&amp;\longrightarrow&amp;R\pi_!k_E\\
+\downarrow\wr&amp;&amp;\downarrow\\
+R\pi_*R\Gamma_Bk_E&amp;\longrightarrow&amp;R\pi_*k_E.
+\end{array}
+$$</span>
+<p>The top arrow is the identity on the oriented <span class="math" data-tex="$k_B[-r]$">$k_B[-r]$</span> by <code>SH02-DA-THOM</code>. The bottom arrow forgets support. Finally <span class="math" data-tex="$i^*$">$i^*$</span> is inverse to the ordinary unit for <span class="math" data-tex="$\pi$">$\pi$</span>, since <span class="math" data-tex="$\pi i=\mathrm{id}_B$">$\pi i=\mathrm{id}_B$</span>. This proves the asserted identification of classes and maps. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Vanishing criterion.</strong> If <span class="math" data-tex="$E$">$E$</span> admits a continuous section <span class="math" data-tex="$s$">$s$</span> whose value is never zero, then <span class="math" data-tex="$e(E)=0$">$e(E)=0$</span>.</p>
+<p><strong>Proof.</strong> The ordinary image of <span class="math" data-tex="$u_E$">$u_E$</span> restricts to zero on <span class="math" data-tex="$E\setminus i(B)$">$E\setminus i(B)$</span> by the localization triangle. Hence its pullback along <span class="math" data-tex="$s$">$s$</span> is zero. The maps <span class="math" data-tex="$s$">$s$</span> and <span class="math" data-tex="$i$">$i$</span> are homotopic through <span class="math" data-tex="$s_t(b)=t s(b)$">$s_t(b)=t s(b)$</span>. Constant-sheaf cohomology is homotopy invariant for this homotopy: projection <span class="math" data-tex="$B\times[0,1]\to B$">$B\times[0,1]\to B$</span> is proper with contractible compact fibers, so its ordinary unit is an isomorphism by proper base change; both endpoint pullbacks are its inverse. Thus <span class="math" data-tex="$s^*=i^*$">$s^*=i^*$</span> on ordinary cohomology. The preceding formula gives <span class="math" data-tex="$e(E)=0$">$e(E)=0$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For rank zero over a nonempty base, a nowhere-zero section does not exist, consistently with <span class="math" data-tex="$e(E)=1\in H^0(B;k)$">$e(E)=1\in H^0(B;k)$</span>.</p>
+<h2 id="sh02-da-gysin-removing-a-closed-submanifold">SH02-DA-GYSIN — Removing a closed submanifold</h2>
+<p>Let <span class="math" data-tex="$i:M\hookrightarrow X$">$i:M\hookrightarrow X$</span> be a closed submanifold of codimension <span class="math" data-tex="$c$">$c$</span>. Choose a trivialization of the normal orientation line, so <span class="math" data-tex="$i^!k_X\simeq k_M[-c]$">$i^!k_X\simeq k_M[-c]$</span>. Put <span class="math" data-tex="$j:X\setminus M\hookrightarrow X$">$j:X\setminus M\hookrightarrow X$</span>. There is a distinguished triangle</p>
+<span class="math math-display" data-tex="$$
+i_*k_M[-c]\longrightarrow k_X\longrightarrow Rj_*k_{X\setminus M}
+\longrightarrow i_*k_M[1-c].
+$$">$$
+i_*k_M[-c]\longrightarrow k_X\longrightarrow Rj_*k_{X\setminus M}
+\longrightarrow i_*k_M[1-c].
+$$</span>
+<p>It gives, for every integer <span class="math" data-tex="$a$">$a$</span>, the exact sequence</p>
+<span class="math math-display" data-tex="$$
+\cdots\to H^a(M;k)\xrightarrow{i_!}
+H^{a+c}(X;k)\longrightarrow H^{a+c}(X\setminus M;k)
+\longrightarrow H^{a+1}(M;k)\to\cdots.
+$$">$$
+\cdots\to H^a(M;k)\xrightarrow{i_!}
+H^{a+c}(X;k)\longrightarrow H^{a+c}(X\setminus M;k)
+\longrightarrow H^{a+1}(M;k)\to\cdots.
+$$</span>
+<p>Here <span class="math" data-tex="$i_!$">$i_!$</span> denotes this cohomological Gysin map. Its definition is the supported adjunction map <span class="math" data-tex="$i_*i^!k_X\to k_X$">$i_*i^!k_X\to k_X$</span>, so it is available without compactness of <span class="math" data-tex="$M$">$M$</span> or orientability of <span class="math" data-tex="$X$">$X$</span>. The image of <span class="math" data-tex="$1$">$1$</span> is the ambient cohomology class of the oriented normal cycle. Its pullback to <span class="math" data-tex="$M$">$M$</span> is a different class; when the embedding is the zero section of an oriented vector bundle, that pullback is precisely <code>SH02-DA-EULER</code>.</p>
+<p><strong>Proof.</strong> For an injective resolution of <span class="math" data-tex="$k_X$">$k_X$</span>, sections supported on <span class="math" data-tex="$M$">$M$</span> form the kernel of restriction to the complementary open set. Deriving gives the closed-support localization triangle. Closed adjunction identifies its first term with <span class="math" data-tex="$i_*i^!k_X$">$i_*i^!k_X$</span>, and the normal orientation formula identifies this with <span class="math" data-tex="$i_*k_M[-c]$">$i_*k_M[-c]$</span>. Apply derived global sections and its long exact cohomology sequence. All arrows are therefore the stated natural arrows. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Without a normal orientation, replace <span class="math" data-tex="$k_M$">$k_M$</span> in the first and last terms by the normal orientation line. For <span class="math" data-tex="$c=0$">$c=0$</span>, <span class="math" data-tex="$M$">$M$</span> is both open and closed and the triangle is the direct decomposition by its two components.</p>
+<h2 id="sh02-da-spheres-the-two-cohomology-layers-of-a-sphere-bundle">SH02-DA-SPHERES — The two cohomology layers of a sphere bundle</h2>
+<p>Let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be a locally trivial sphere bundle with fiber <span class="math" data-tex="$S^m$">$S^m$</span>, where <span class="math" data-tex="$m\ge1$">$m\ge1$</span>. Write <span class="math" data-tex="$L$">$L$</span> for the rank-one sign local system whose transition on an overlap is the degree of the corresponding sphere homeomorphism. There is a canonical distinguished triangle</p>
+<span class="math math-display" data-tex="$$
+k_X\xrightarrow{\eta}Rf_*k_Y\longrightarrow L[-m]
+\xrightarrow{\delta}k_X[1].
+$$">$$
+k_X\xrightarrow{\eta}Rf_*k_Y\longrightarrow L[-m]
+\xrightarrow{\delta}k_X[1].
+$$</span>
+<p>Moreover <span class="math" data-tex="$L\simeq f_*o_f$">$L\simeq f_*o_f$</span>. Thus the third term can be written <span class="math" data-tex="$f_*o_f[-m]$">$f_*o_f[-m]$</span>. The map <span class="math" data-tex="$\eta$">$\eta$</span> is the constant-section unit, and <span class="math" data-tex="$\delta$">$\delta$</span> is an extension class. The triangle does not assert that this class vanishes.</p>
+<p><strong>Proof.</strong> The bundle is proper. On a trivializing open set, proper base change and the constant-coefficient sphere calculation give <span class="math" data-tex="$R^0f_*k_Y=k_X$">$R^0f_*k_Y=k_X$</span>, <span class="math" data-tex="$R^mf_*k_Y=L$">$R^mf_*k_Y=L$</span>, and zero in all other degrees. The degree-zero assertion uses connectedness of <span class="math" data-tex="$S^m$">$S^m$</span>. The identification of <span class="math" data-tex="$R^m$">$R^m$</span> is fixed by the compact-support generator and changes by the degree sign on a transition homeomorphism. The canonical truncation triangle for a complex with cohomology only in degrees <span class="math" data-tex="$0,m$">$0,m$</span> gives the displayed triangle. Its first arrow agrees with <span class="math" data-tex="$\eta$">$\eta$</span> because both induce the identity in degree zero.</p>
+<p>For the orientation statement, the relative orientation line is constant along each sphere fiber and has transition equal to the same degree sign. Hence evaluation gives <span class="math" data-tex="$f^{-1}L\simeq o_f$">$f^{-1}L\simeq o_f$</span>; applying <span class="math" data-tex="$f_*$">$f_*$</span> and using connected fibers gives <span class="math" data-tex="$L\simeq f_*o_f$">$L\simeq f_*o_f$</span>. This also identifies the top cohomology map using the relative trace pairing. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The sphere cohomology calculation used here follows from the decomposition into two balls with an annular overlap, or from the boundary of the oriented Euclidean ball; its degree-zero generator is the constant section and its top generator is the boundary orientation. For <span class="math" data-tex="$S^0$">$S^0$</span>, the degree-zero sheaf has rank two, so the connected-fiber triangle above is not its formula.</p>
+<p><strong>Relation to Euler classes.</strong> Suppose <span class="math" data-tex="$Y=S(E)$">$Y=S(E)$</span> is the sphere bundle of a metrized oriented bundle <span class="math" data-tex="$E\to X$">$E\to X$</span> of rank <span class="math" data-tex="$m+1$">$m+1$</span>. Then <span class="math" data-tex="$L=k_X$">$L=k_X$</span>. Identify the top layer by the boundary connecting map of the disk bundle. With the standard rotation convention for distinguished triangles, the last morphism is then <span class="math" data-tex="$\delta=-e_E[1]$">$\delta=-e_E[1]$</span>. Reversing the identification of the top layer changes this sign as well.</p>
+<p>Indeed, for the disk bundle <span class="math" data-tex="$D(E)$">$D(E)$</span>, the open interior inclusion and boundary restriction give the relative triangle. Proper pushforward along the disk projection identifies its middle term with <span class="math" data-tex="$k_X$">$k_X$</span>, its first term with <span class="math" data-tex="$k_X[-m-1]$">$k_X[-m-1]$</span> by the fiber compact-support generator, and its third term with <span class="math" data-tex="$Rf_*k_{S(E)}$">$Rf_*k_{S(E)}$</span>. The first map is the support-forgetting map defining <span class="math" data-tex="$e_E$">$e_E$</span>: fiberwise radial identification of the disk interior with <span class="math" data-tex="$E$">$E$</span> carries the ordered compact-support class to the Thom class. A triangle <span class="math" data-tex="$A\xrightarrow{e_E}B\to C\to A[1]$">$A\xrightarrow{e_E}B\to C\to A[1]$</span> rotates to <span class="math" data-tex="$B\to C\to A[1]\xrightarrow{-e_E[1]}B[1]$">$B\to C\to A[1]\xrightarrow{-e_E[1]}B[1]$</span>. This gives both the sphere triangle and the stated sign. Its vanishing is independent of that orientation convention.</p>
+<h2 id="sh02-da-quadratic-closed-quadratic-regions-including-null-directions">SH02-DA-QUADRATIC — Closed quadratic regions, including null directions</h2>
+<p>Let <span class="math" data-tex="$V=P\oplus N\oplus K$">$V=P\oplus N\oplus K$</span> be an orthogonal decomposition of a real vector space, and let</p>
+<span class="math math-display" data-tex="$$
+q(u,v,w)=\lVert u\rVert^2-\lVert v\rVert^2.
+$$">$$
+q(u,v,w)=\lVert u\rVert^2-\lVert v\rVert^2.
+$$</span>
+<p>Every real quadratic form has this form after a linear change of variables, with <span class="math" data-tex="$K$">$K$</span> its kernel. Set <span class="math" data-tex="$p=\dim P$">$p=\dim P$</span>, <span class="math" data-tex="$e=\dim N+\dim K$">$e=\dim N+\dim K$</span>, <span class="math" data-tex="$n=p+e$">$n=p+e$</span>, and <span class="math" data-tex="$C_t=\{q\le t\}$">$C_t=\{q\le t\}$</span>. Denote by <span class="math" data-tex="$o_{N\oplus K}$">$o_{N\oplus K}$</span> and <span class="math" data-tex="$o_P$">$o_P$</span> the orientation lines of the indicated vector spaces. There are isomorphisms</p>
+<span class="math math-display" data-tex="$$
+R\Gamma_c(V;k_{C_t})\simeq
+\begin{cases}
+o_{N\oplus K}[-e],&amp;t\ge0,\\
+0,&amp;t&lt;0,
+\end{cases}
+$$">$$
+R\Gamma_c(V;k_{C_t})\simeq
+\begin{cases}
+o_{N\oplus K}[-e],&amp;t\ge0,\\
+0,&amp;t&lt;0,
+\end{cases}
+$$</span>
+<p>and</p>
+<span class="math math-display" data-tex="$$
+R\Gamma_{C_t}(V;k_V)\simeq
+\begin{cases}
+o_P[-p],&amp;t\ge0,\\
+0,&amp;t&lt;0.
+\end{cases}
+$$">$$
+R\Gamma_{C_t}(V;k_V)\simeq
+\begin{cases}
+o_P[-p],&amp;t\ge0,\\
+0,&amp;t&lt;0.
+\end{cases}
+$$</span>
+<p>Orientations identify the displayed lines with <span class="math" data-tex="$k$">$k$</span>. Retaining the lines records how these choices change. Notice that null directions contribute to <span class="math" data-tex="$e$">$e$</span>, and the threshold <span class="math" data-tex="$t=0$">$t=0$</span> belongs to the nonzero case.</p>
+<p><strong>Proof.</strong> Projection <span class="math" data-tex="$h:C_t\to N\oplus K$">$h:C_t\to N\oplus K$</span> is proper onto</p>
+<span class="math math-display" data-tex="$$
+B_t=\{(v,w):\lVert v\rVert^2+t\ge0\}.
+$$">$$
+B_t=\{(v,w):\lVert v\rVert^2+t\ge0\}.
+$$</span>
+<p>For a compact subset of <span class="math" data-tex="$B_t$">$B_t$</span>, the coordinates <span class="math" data-tex="$v,w$">$v,w$</span> are bounded and <span class="math" data-tex="$\lVert u\rVert^2\le\lVert v\rVert^2+t$">$\lVert u\rVert^2\le\lVert v\rVert^2+t$</span> bounds <span class="math" data-tex="$u$">$u$</span> as well; closedness then proves properness. Every nonempty fiber is a closed ball in <span class="math" data-tex="$P$">$P$</span>, possibly a point. Its ordinary cohomology is <span class="math" data-tex="$k$">$k$</span> in degree zero by the compact-convex calculation. Proper base change therefore identifies the actual constant-section map <span class="math" data-tex="$k_{B_t}\to Rh_*k_{C_t}$">$k_{B_t}\to Rh_*k_{C_t}$</span> with an isomorphism. Composition gives</p>
+<span class="math math-display" data-tex="$$
+R\Gamma_c(C_t;k)\simeq R\Gamma_c(B_t;k).
+$$">$$
+R\Gamma_c(C_t;k)\simeq R\Gamma_c(B_t;k).
+$$</span>
+<p>If <span class="math" data-tex="$t\ge0$">$t\ge0$</span>, <span class="math" data-tex="$B_t=N\oplus K$">$B_t=N\oplus K$</span>, so the Euclidean compact-support calculation gives the first formula. If <span class="math" data-tex="$t&lt;0$">$t&lt;0$</span> and <span class="math" data-tex="$N=0$">$N=0$</span>, then <span class="math" data-tex="$B_t$">$B_t$</span> is empty. Otherwise</p>
+<span class="math math-display" data-tex="$$
+B_t\simeq S(N)\times[\sqrt{-t},\infty)\times K.
+$$">$$
+B_t\simeq S(N)\times[\sqrt{-t},\infty)\times K.
+$$</span>
+<p>The compact-support cohomology of a closed ray is zero. To check the endpoint, compactify it to a closed interval; its constant sheaf and the sheaf of its added endpoint both have ordinary cohomology <span class="math" data-tex="$k$">$k$</span>, and restriction is the identity. Localization thus makes the compact-support cohomology of the remaining half-open interval zero. The product projection formula now gives <span class="math" data-tex="$R\Gamma_c(B_t;k)=0$">$R\Gamma_c(B_t;k)=0$</span> without a field assumption.</p>
+<p>For the supported formula, dual sections give</p>
+<span class="math math-display" data-tex="$$
+R\Gamma_{C_t}(V;\omega_V)
+\simeq R\operatorname{Hom}_k(R\Gamma_c(C_t;k),k).
+$$">$$
+R\Gamma_{C_t}(V;\omega_V)
+\simeq R\operatorname{Hom}_k(R\Gamma_c(C_t;k),k).
+$$</span>
+<p>Use <span class="math" data-tex="$\omega_V=o_V[n]$">$\omega_V=o_V[n]$</span>, the canonical square pairing for orientation lines, and the ordered identification <span class="math" data-tex="$o_V=o_P\otimes o_{N\oplus K}$">$o_V=o_P\otimes o_{N\oplus K}$</span>. The nonzero answer becomes <span class="math" data-tex="$o_P[e-n]=o_P[-p]$">$o_P[e-n]=o_P[-p]$</span>; the zero answer stays zero. No biduality theorem for <span class="math" data-tex="$k_{C_t}$">$k_{C_t}$</span> is needed. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For example, take <span class="math" data-tex="$q$">$q$</span> on <span class="math" data-tex="$\mathbb R^6$">$\mathbb R^6$</span> with two positive, one negative, and three null directions. Every nonnegative closed sublevel has compact-support cohomology concentrated in degree four and supported cohomology of the ambient constant sheaf concentrated in degree two. Negative closed sublevels have neither. Replacing the closed inequality by an open inequality changes the boundary calculation and is not covered by this formula.</p>
+<h2 id="sh02-da-compact-images-finite-information-passes-through-a-compact-subset">SH02-DA-COMPACT-IMAGES — Finite information passes through a compact subset</h2>
+<p>Let <span class="math" data-tex="$k$">$k$</span> be a field, let <span class="math" data-tex="$X$">$X$</span> be a manifold, and let <span class="math" data-tex="$F\in D^b(k_X)$">$F\in D^b(k_X)$</span> have the ordinary local stabilization and perfect-stalk properties in <code>SH02-CB-SYSTEMS</code>. The compact-support stabilization property is not needed for this result. For a compact subset <span class="math" data-tex="$K\subset X$">$K\subset X$</span> and an open neighborhood <span class="math" data-tex="$U$">$U$</span> of <span class="math" data-tex="$K$">$K$</span>, every restriction</p>
+<span class="math math-display" data-tex="$$
+H^j(U;F)\longrightarrow H^j(K;F|_K)
+$$">$$
+H^j(U;F)\longrightarrow H^j(K;F|_K)
+$$</span>
+<p>has finite-dimensional image. Neither of the two groups has to be finite-dimensional.</p>
+<p><strong>Proof.</strong> First record what local stabilization supplies. If <span class="math" data-tex="$x\in V$">$x\in V$</span> with <span class="math" data-tex="$V$">$V$</span> open, the isomorphism of the neighborhood ind-system with the constant perfect object <span class="math" data-tex="$F_x$">$F_x$</span> implies that there is a smaller open neighborhood <span class="math" data-tex="$W$">$W$</span> of <span class="math" data-tex="$x$">$x$</span> for which</p>
+<span class="math math-display" data-tex="$$
+R\Gamma(V;F)\longrightarrow R\Gamma(W;F)
+$$">$$
+R\Gamma(V;F)\longrightarrow R\Gamma(W;F)
+$$</span>
+<p>factors through <span class="math" data-tex="$F_x$">$F_x$</span> in <span class="math" data-tex="$D(k)$">$D(k)$</span>. Indeed, the inverse map from the constant ind-object is represented at one neighborhood; the equality of its composite with the identity holds after passing to a sufficiently small further neighborhood. This is the defining equality of morphisms in an ind-category. In particular, the restriction has finite-dimensional image in every cohomological degree. Finitely many prescribed neighborhoods <span class="math" data-tex="$V$">$V$</span> can be handled at once by shrinking <span class="math" data-tex="$W$">$W$</span> again.</p>
+<p>We next show that any finite open cover <span class="math" data-tex="$(U_i)$">$(U_i)$</span> of <span class="math" data-tex="$K$">$K$</span> admits a finite refinement <span class="math" data-tex="$(V_a)$">$(V_a)$</span>, still covering <span class="math" data-tex="$K$">$K$</span>, whose Čech refinement maps have finite-dimensional image on the cohomology of each intersection. All open sets here are open in <span class="math" data-tex="$X$">$X$</span>; a cover of <span class="math" data-tex="$K$">$K$</span> therefore covers an open neighborhood of <span class="math" data-tex="$K$">$K$</span> as well.</p>
+<p>Choose compact subsets <span class="math" data-tex="$K_i\subset K\cap U_i$">$K_i\subset K\cap U_i$</span> with <span class="math" data-tex="$\bigcup_iK_i=K$">$\bigcup_iK_i=K$</span>. Such a closed shrinking exists by compactness and normality of the compact Hausdorff space <span class="math" data-tex="$K$">$K$</span>. For <span class="math" data-tex="$x\in K$">$x\in K$</span>, set <span class="math" data-tex="$I_x=\{i:x\in K_i\}$">$I_x=\{i:x\in K_i\}$</span>. It is nonempty. Choose an open neighborhood <span class="math" data-tex="$W_x$">$W_x$</span> contained in every <span class="math" data-tex="$U_i$">$U_i$</span> with <span class="math" data-tex="$i\in I_x$">$i\in I_x$</span>, disjoint from every <span class="math" data-tex="$K_i$">$K_i$</span> with <span class="math" data-tex="$i\notin I_x$">$i\notin I_x$</span>, and sufficiently small that</p>
+<span class="math math-display" data-tex="$$
+H^q(U_{i_0}\cap\cdots\cap U_{i_p};F)
+\longrightarrow H^q(W_x;F)
+$$">$$
+H^q(U_{i_0}\cap\cdots\cap U_{i_p};F)
+\longrightarrow H^q(W_x;F)
+$$</span>
+<p>has finite-dimensional image for each nonempty list of indices in <span class="math" data-tex="$I_x$">$I_x$</span> and every <span class="math" data-tex="$q$">$q$</span>. The first paragraph supplies the last requirement for this finite family.</p>
+<p>Take a finite cover <span class="math" data-tex="$(V_a)$">$(V_a)$</span> of <span class="math" data-tex="$K$">$K$</span> such that each <span class="math" data-tex="$V_a$">$V_a$</span> meets a chosen <span class="math" data-tex="$K_{r(a)}$">$K_{r(a)}$</span>, is contained in <span class="math" data-tex="$U_{r(a)}$">$U_{r(a)}$</span>, and the union of any intersecting family of the <span class="math" data-tex="$V_a$">$V_a$</span> lies inside some <span class="math" data-tex="$W_x$">$W_x$</span>. Here is the elementary refinement construction being used. A manifold has a compatible metric. On a fixed neighborhood of the compact set, the finite cover by selected <span class="math" data-tex="$W_x$">$W_x$</span> has a positive Lebesgue radius near <span class="math" data-tex="$K$">$K$</span>. Choose uniformly smaller metric balls centered on <span class="math" data-tex="$K$">$K$</span>, each contained in an eligible <span class="math" data-tex="$U_i$">$U_i$</span> with its center in <span class="math" data-tex="$K_i$">$K_i$</span>, and pass to a finite subcover. Their radii can be decreased uniformly because the compact sets <span class="math" data-tex="$K_i$">$K_i$</span> lie inside their respective open sets. Two such balls which meet have their centers and their union within the chosen Lebesgue radius; the same estimate applies to the union of a family with nonempty common intersection. This gives the required property.</p>
+<p>For an intersection <span class="math" data-tex="$V_{a_0}\cap\cdots\cap V_{a_p}\ne\varnothing$">$V_{a_0}\cap\cdots\cap V_{a_p}\ne\varnothing$</span>, let <span class="math" data-tex="$W_x$">$W_x$</span> contain the union of its members. Since <span class="math" data-tex="$V_{a_l}$">$V_{a_l}$</span> meets <span class="math" data-tex="$K_{r(a_l)}$">$K_{r(a_l)}$</span> and <span class="math" data-tex="$W_x$">$W_x$</span> is disjoint from the other <span class="math" data-tex="$K_i$">$K_i$</span>, every <span class="math" data-tex="$r(a_l)$">$r(a_l)$</span> belongs to <span class="math" data-tex="$I_x$">$I_x$</span>. The restriction from the corresponding old intersection therefore factors as</p>
+<span class="math math-display" data-tex="$$
+H^q(U_{r(a_0)}\cap\cdots\cap U_{r(a_p)};F)
+\longrightarrow H^q(W_x;F)
+\longrightarrow H^q(V_{a_0}\cap\cdots\cap V_{a_p};F).
+$$">$$
+H^q(U_{r(a_0)}\cap\cdots\cap U_{r(a_p)};F)
+\longrightarrow H^q(W_x;F)
+\longrightarrow H^q(V_{a_0}\cap\cdots\cap V_{a_p};F).
+$$</span>
+<p>Its image is finite-dimensional. Finite direct sums show the same for the entire refinement map in every bidegree of the Čech cohomology array.</p>
+<p>For completeness, that array has a convergent spectral sequence</p>
+<span class="math math-display" data-tex="$$
+E_1^{p,q}=\bigoplus_{i_0&lt;\cdots&lt;i_p}
+H^q(U_{i_0}\cap\cdots\cap U_{i_p};F)
+\ \Longrightarrow\ H^{p+q}\!\left(\bigcup_iU_i;F\right).
+$$">$$
+E_1^{p,q}=\bigoplus_{i_0&lt;\cdots&lt;i_p}
+H^q(U_{i_0}\cap\cdots\cap U_{i_p};F)
+\ \Longrightarrow\ H^{p+q}\!\left(\bigcup_iU_i;F\right).
+$$</span>
+<p>Choose a bounded-below injective resolution of <span class="math" data-tex="$F$">$F$</span> and form its Čech double complex. The augmented Čech resolution of each injective sheaf is exact locally, by contraction using an index of an open member containing the point. Its terms are injective: open restriction preserves injectives because extension by zero is exact, and open direct image preserves injectives because inverse image is exact. Hence each such augmented resolution splits successively and stays exact on global sections. The double complex consequently computes the displayed derived sections. Taking vertical cohomology gives the <span class="math" data-tex="$E_1$">$E_1$</span> page above. Refinement induces the usual restriction map on the abutment, with components the intersection restrictions just examined; repeated indices contribute zero in the alternating complex.</p>
+<p>Choose an integer <span class="math" data-tex="$b$">$b$</span> such that <span class="math" data-tex="$H^q(F)=0$">$H^q(F)=0$</span> for <span class="math" data-tex="$q&lt;b$">$q&lt;b$</span>. On total degree <span class="math" data-tex="$j\ge b$">$j\ge b$</span>, the induced Čech filtration has at most <span class="math" data-tex="$L=j-b+1$">$L=j-b+1$</span> nonzero layers, since <span class="math" data-tex="$p\ge0$">$p\ge0$</span> and <span class="math" data-tex="$q\ge b$">$q\ge b$</span>. A refinement of the kind just constructed induces a finite-dimensional image on each associated graded piece: finite-dimensionality of the image passes from one spectral-sequence page to the next, and hence to <span class="math" data-tex="$E_\infty$">$E_\infty$</span>.</p>
+<p>One must not infer finite-dimensionality of the whole image from this single associated-graded assertion. Instead perform <span class="math" data-tex="$L$">$L$</span> successive refinements. The following linear-algebra observation applies to the resulting maps on <span class="math" data-tex="$H^j$">$H^j$</span>. For vector spaces with decreasing filtrations of length <span class="math" data-tex="$L$">$L$</span>, a filtration-preserving map with finite-dimensional image on every associated graded piece sends each filtration step into the next step plus a finite-dimensional subspace of the target; choose finitely many lifts of a basis for each graded image. Composing <span class="math" data-tex="$L$">$L$</span> such maps sends the whole source into a finite sum of images of these finite-dimensional subspaces, because the residual term has descended through all <span class="math" data-tex="$L$">$L$</span> steps and is zero. The composite therefore has finite-dimensional image.</p>
+<p>Start with the one-member cover <span class="math" data-tex="$(U)$">$(U)$</span>. The final refined cover has union <span class="math" data-tex="$W$">$W$</span>, where <span class="math" data-tex="$K\subset W\subset U$">$K\subset W\subset U$</span>. The preceding argument proves that <span class="math" data-tex="$H^j(U;F)\to H^j(W;F)$">$H^j(U;F)\to H^j(W;F)$</span> has finite-dimensional image. The restriction to <span class="math" data-tex="$K$">$K$</span> factors through it, proving the assertion. For <span class="math" data-tex="$j&lt;b$">$j&lt;b$</span> both relevant derived-section groups vanish and no refinement is needed. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This result measures the information which survives restriction. A neighborhood may have many classes created near its boundary, while only finitely many can persist on a prescribed compact subset.</p>
+<h2 id="sh02-da-compact-finite-compactness-turns-the-local-duality-condition-into-finiteness">SH02-DA-COMPACT-FINITE — Compactness turns the local duality condition into finiteness</h2>
+<p>Let <span class="math" data-tex="$k$">$k$</span> be a field, let <span class="math" data-tex="$X$">$X$</span> be a compact <span class="math" data-tex="$n$">$n$</span>-manifold, and let <span class="math" data-tex="$F\in D^b(k_X)$">$F\in D^b(k_X)$</span> be cohomologically constructible in the sense of <code>SH02-CB-SYSTEMS</code>. Then all <span class="math" data-tex="$H^a(X;F)$">$H^a(X;F)$</span> are finite-dimensional and vanish outside a finite interval. The pairing induced by evaluation and trace is perfect:</p>
+<span class="math math-display" data-tex="$$
+H^a(X;F)\times H^{-a}(X;D_XF)\longrightarrow k.
+$$">$$
+H^a(X;F)\times H^{-a}(X;D_XF)\longrightarrow k.
+$$</span>
+<p>In particular, since <span class="math" data-tex="$D_XF=D&#x27;_XF\otimes o_X[n]$">$D_XF=D&#x27;_XF\otimes o_X[n]$</span>, the second group is <span class="math" data-tex="$H^{n-a}(X;D&#x27;_XF\otimes o_X)$">$H^{n-a}(X;D&#x27;_XF\otimes o_X)$</span>. Orientability is not assumed.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="$A=R\Gamma(X;F)$">$A=R\Gamma(X;F)$</span> and <span class="math" data-tex="$B=R\Gamma(X;D_XF)$">$B=R\Gamma(X;D_XF)$</span>. Finite cohomological dimension makes <span class="math" data-tex="$A$">$A$</span> bounded. The dual-sections adjunction and compactness identify</p>
+<span class="math math-display" data-tex="$$
+B\simeq R\operatorname{Hom}_k(A,k).
+$$">$$
+B\simeq R\operatorname{Hom}_k(A,k).
+$$</span>
+<p>This identification holds before finite-dimensionality is known. We must still prove that this dual has finite-dimensional cohomology.</p>
+<p>On <span class="math" data-tex="$X\times X$">$X\times X$</span>, the exterior-Hom theorem gives the evaluation isomorphism</p>
+<span class="math math-display" data-tex="$$
+D_XF\boxtimes^LF
+\xrightarrow{\sim}
+R\mathcal Hom(q_1^{-1}F,q_2^!F).
+$$">$$
+D_XF\boxtimes^LF
+\xrightarrow{\sim}
+R\mathcal Hom(q_1^{-1}F,q_2^!F).
+$$</span>
+<p>Apply derived global sections. Proper-support base change and projection, with <span class="math" data-tex="$X$">$X$</span> compact, identify the left side with <span class="math" data-tex="$B\otimes_k^LA$">$B\otimes_k^LA$</span>. The rectangle adjunction <code>SH02-EX-RECTANGLE</code> identifies the right side with <span class="math" data-tex="$R\operatorname{Hom}_k(A,A)$">$R\operatorname{Hom}_k(A,A)$</span>. The resulting isomorphism is</p>
+<span class="math math-display" data-tex="$$
+B\otimes_k^LA\longrightarrow R\operatorname{Hom}_k(A,A),
+\qquad b\otimes a\longmapsto\bigl(v\mapsto b(v)a\bigr),
+$$">$$
+B\otimes_k^LA\longrightarrow R\operatorname{Hom}_k(A,A),
+\qquad b\otimes a\longmapsto\bigl(v\mapsto b(v)a\bigr),
+$$</span>
+<p>with the graded signs prescribed by the tensor symmetry. To check its normalization, start with the exterior evaluation pairing, integrate its first variable, and apply the projection formula. This is exactly the adjunction defining <span class="math" data-tex="$B=R\operatorname{Hom}(A,k)$">$B=R\operatorname{Hom}(A,k)$</span>; its value on a decomposable tensor is the displayed rank-one operator. Thus it is the canonical tensor-to-Hom map, not an unrelated vector-space isomorphism.</p>
+<p>Over a field a bounded complex is isomorphic in its derived category to its graded cohomology: split boundaries inside cycles and cycles inside each term. The degree-zero part of <span class="math" data-tex="$B\otimes^LA$">$B\otimes^LA$</span> is a direct sum of tensor products of the graded cohomology spaces. Every tensor is a finite sum of elementary tensors. Since the identity of <span class="math" data-tex="$A$">$A$</span> lies in the image of the preceding isomorphism, its action on each <span class="math" data-tex="$H^a(A)$">$H^a(A)$</span> is a finite sum of rank-one linear maps. The identity of an infinite-dimensional vector space cannot have finite-dimensional image. Hence every <span class="math" data-tex="$H^a(A)$">$H^a(A)$</span> is finite-dimensional. Boundedness leaves only finitely many nonzero groups.</p>
+<p>Finally, exactness of algebraic duality over a field identifies <span class="math" data-tex="$H^{-a}(B)$">$H^{-a}(B)$</span> with <span class="math" data-tex="$\operatorname{Hom}_k(H^a(A),k)$">$\operatorname{Hom}_k(H^a(A),k)$</span>. The identification is induced by evaluation and the same trace; finite-dimensionality makes it a perfect pairing in both variables. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This argument uses the local constructibility condition through the exterior-Hom theorem. Finite stalk dimensions alone do not supply that theorem.</p>
+<h2 id="sh02-da-forms-smooth-forms-and-distributional-representatives">SH02-DA-FORMS — Smooth forms and distributional representatives</h2>
+<p>Now let <span class="math" data-tex="$k=\mathbb R$">$k=\mathbb R$</span> and let <span class="math" data-tex="$X$">$X$</span> be a compact oriented smooth <span class="math" data-tex="$n$">$n$</span>-manifold. Write <span class="math" data-tex="$\mathcal A^p$">$\mathcal A^p$</span> for smooth real <span class="math" data-tex="$p$">$p$</span>-forms and <span class="math" data-tex="$\mathcal T^p$">$\mathcal T^p$</span> for differential <span class="math" data-tex="$p$">$p$</span>-forms with distribution coefficients. The latter are also called currents with complementary test-form degree. Locally, <span class="math" data-tex="$T=\sum_I T_I\,dx_I$">$T=\sum_I T_I\,dx_I$</span>, where each <span class="math" data-tex="$T_I$">$T_I$</span> is a distribution. Both differentials are the exterior derivative, with distributional derivatives in <span class="math" data-tex="$\mathcal T^\bullet$">$\mathcal T^\bullet$</span>.</p>
+<p>The exact analytic foundation used here is the existence of smooth locally finite partitions of unity on a countable-at-infinity smooth manifold. A sheaf of modules over smooth functions is fine, and a fine sheaf is acyclic for ordinary sections on this paracompact space. In the usual Čech proof the homotopy on a locally finite cover is <span class="math" data-tex="$(hc)_{i_0\ldots i_{p-1}}=\sum_j\rho_j c_{j i_0\ldots i_{p-1}}$">$(hc)_{i_0\ldots i_{p-1}}=\sum_j\rho_j c_{j i_0\ldots i_{p-1}}$</span>, so <span class="math" data-tex="$dh+hd=1$">$dh+hd=1$</span> in positive Čech degrees. The local finiteness makes the sum meaningful for distributions as well. This is the precise acyclic-resolution foundation imported from the ordinary-sheaf prerequisite theory.</p>
+<p>Both complexes resolve the constant sheaf, and inclusion of smooth forms into distributional forms is a quasi-isomorphism:</p>
+<span class="math math-display" data-tex="$$
+\mathbb R_X\xrightarrow{\sim}\mathcal A^\bullet
+\longrightarrow\mathcal T^\bullet.
+$$">$$
+\mathbb R_X\xrightarrow{\sim}\mathcal A^\bullet
+\longrightarrow\mathcal T^\bullet.
+$$</span>
+<p>Here is a local verification, including the distributional part. For smooth forms on a star-shaped ball, the radial homotopy operator, obtained by integrating contraction along <span class="math" data-tex="$x\mapsto tx$">$x\mapsto tx$</span>, satisfies <span class="math" data-tex="$dH+Hd=1-\mathrm{ev}_0$">$dH+Hd=1-\mathrm{ev}_0$</span>; on degree zero <span class="math" data-tex="$\mathrm{ev}_0$">$\mathrm{ev}_0$</span> is the constant value and in positive degree its pullback is zero. This follows by integrating Cartan's formula for the radial homotopy. It proves the smooth Poincaré lemma.</p>
+<p>For a distributional form <span class="math" data-tex="$T$">$T$</span> on a ball, work on a smaller concentric ball and choose a smooth kernel <span class="math" data-tex="$\rho_\varepsilon$">$\rho_\varepsilon$</span> of integral <span class="math" data-tex="$1$">$1$</span>, supported in translations small enough to remain in the original ball. Translation averaging <span class="math" data-tex="$R_\varepsilon T=\int\rho_\varepsilon(v)\tau_v^*T\,dv$">$R_\varepsilon T=\int\rho_\varepsilon(v)\tau_v^*T\,dv$</span> is smooth and commutes with <span class="math" data-tex="$d$">$d$</span>. Define</p>
+<span class="math math-display" data-tex="$$
+A_\varepsilon T=
+\int\rho_\varepsilon(v)\int_0^1
+\tau_{tv}^*(\iota_vT)\,dt\,dv.
+$$">$$
+A_\varepsilon T=
+\int\rho_\varepsilon(v)\int_0^1
+\tau_{tv}^*(\iota_vT)\,dt\,dv.
+$$</span>
+<p>These integrals are defined by evaluation on compactly supported test forms; all translated tests stay in a fixed compact subset. Differentiating translation on tests proves Cartan's identity for distributions and hence</p>
+<span class="math math-display" data-tex="$$
+R_\varepsilon T-T=dA_\varepsilon T+A_\varepsilon dT.
+$$">$$
+R_\varepsilon T-T=dA_\varepsilon T+A_\varepsilon dT.
+$$</span>
+<p>If <span class="math" data-tex="$dT=0$">$dT=0$</span> and <span class="math" data-tex="$\deg T&gt;0$">$\deg T&gt;0$</span>, the smooth Poincaré lemma gives <span class="math" data-tex="$R_\varepsilon T=dH(R_\varepsilon T)$">$R_\varepsilon T=dH(R_\varepsilon T)$</span> on a further smaller ball. Therefore <span class="math" data-tex="$T=d(HR_\varepsilon T-A_\varepsilon T)$">$T=d(HR_\varepsilon T-A_\varepsilon T)$</span>. In degree zero, contraction is zero; a closed distribution equals its regularization and is a constant function locally. This proves the distributional Poincaré lemma and the stated quasi-isomorphism. Acyclicity of the terms now identifies the cohomology of the global smooth and distributional complexes with <span class="math" data-tex="$H^*(X;\mathbb R)$">$H^*(X;\mathbb R)$</span>.</p>
+<p>For a closed smooth <span class="math" data-tex="$a$">$a$</span>-form <span class="math" data-tex="$\alpha$">$\alpha$</span> and a closed distributional <span class="math" data-tex="$(n-a)$">$(n-a)$</span>-form <span class="math" data-tex="$T$">$T$</span>, the duality pairing is</p>
+<span class="math math-display" data-tex="$$
+([\alpha],[T])\longmapsto\int_X\alpha\wedge T.
+$$">$$
+([\alpha],[T])\longmapsto\int_X\alpha\wedge T.
+$$</span>
+<p>The integral means evaluation of the resulting top-degree distributional form on the constant function <span class="math" data-tex="$1$">$1$</span>. Compactness makes this legitimate without an added support condition. Multiplication of a distribution by a smooth form is defined; no multiplication of two arbitrary distributions is asserted. For a smooth <span class="math" data-tex="$a$">$a$</span>-form <span class="math" data-tex="$\alpha$">$\alpha$</span> and a distributional <span class="math" data-tex="$(n-a-1)$">$(n-a-1)$</span>-form <span class="math" data-tex="$S$">$S$</span>, distributional Stokes gives</p>
+<span class="math math-display" data-tex="$$
+\int_X d\alpha\wedge S=(-1)^{a+1}\int_X\alpha\wedge dS,
+$$">$$
+\int_X d\alpha\wedge S=(-1)^{a+1}\int_X\alpha\wedge dS,
+$$</span>
+<p>so replacing <span class="math" data-tex="$T$">$T$</span> by <span class="math" data-tex="$T+dS$">$T+dS$</span> does not change its pairing with a closed <span class="math" data-tex="$\alpha$">$\alpha$</span>. Applying the same identity to a smooth <span class="math" data-tex="$(a-1)$">$(a-1)$</span>-form and the closed form <span class="math" data-tex="$T$">$T$</span> proves independence under replacing <span class="math" data-tex="$\alpha$">$\alpha$</span> by an exact perturbation. The inclusion of smooth forms into currents takes a smooth form <span class="math" data-tex="$\beta$">$\beta$</span> to the same pairing <span class="math" data-tex="$\int_X\alpha\wedge\beta$">$\int_X\alpha\wedge\beta$</span>. The coordinate calculation in <code>SH02-MD-DENSITIES</code> identifies integration with the orientation-normalized sheaf trace; the same calculation over <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span> uses the identical endpoint-difference generator and integral <span class="math" data-tex="$1$">$1$</span>. Thus this is precisely <code>SH02-DA-COMPACT-FINITE</code> for <span class="math" data-tex="$F=\mathbb R_X$">$F=\mathbb R_X$</span>, and the pairing is perfect. This proves the smooth/distributional comparison as well as the numerical cohomological duality.</p>
+<h2 id="sh02-da-accumulation-a-general-support-defect-at-a-limit-point">SH02-DA-ACCUMULATION — A general support defect at a limit point</h2>
+<p>Let <span class="math" data-tex="$S=D\cup\{\infty\}$">$S=D\cup\{\infty\}$</span> be the one-point compactification of a countably infinite discrete set. Embed <span class="math" data-tex="$S$">$S$</span> as a compact subset of a real line <span class="math" data-tex="$L$">$L$</span>, writing <span class="math" data-tex="$p$">$p$</span> for the image of <span class="math" data-tex="$\infty$">$\infty$</span>. The embedding may approach <span class="math" data-tex="$p$">$p$</span> from either side. Let <span class="math" data-tex="$G=k_S$">$G=k_S$</span>, and let <span class="math" data-tex="$F$">$F$</span> be the extension by zero of <span class="math" data-tex="$k_D$">$k_D$</span> to <span class="math" data-tex="$L$">$L$</span>. Define</p>
+<span class="math math-display" data-tex="$$
+V=\prod_{d\in D}k,\qquad
+V_{\mathrm{fin}}=\bigoplus_{d\in D}k,\qquad
+V_{\mathrm{ec}}=k\mathbf 1+V_{\mathrm{fin}}.
+$$">$$
+V=\prod_{d\in D}k,\qquad
+V_{\mathrm{fin}}=\bigoplus_{d\in D}k,\qquad
+V_{\mathrm{ec}}=k\mathbf 1+V_{\mathrm{fin}}.
+$$</span>
+<p>Thus <span class="math" data-tex="$V_{\mathrm{ec}}$">$V_{\mathrm{ec}}$</span> consists of sequences that are constant off a finite set. Directly from the sheaf definitions,</p>
+<span class="math math-display" data-tex="$$
+\Gamma(L;F)=V_{\mathrm{fin}},\qquad
+\Gamma(L;G)=V_{\mathrm{ec}},\qquad
+\Gamma(L\setminus\{p\};G)=V.
+$$">$$
+\Gamma(L;F)=V_{\mathrm{fin}},\qquad
+\Gamma(L;G)=V_{\mathrm{ec}},\qquad
+\Gamma(L\setminus\{p\};G)=V.
+$$</span>
+<p>The distinction between <span class="math" data-tex="$F$">$F$</span> and direct image from <span class="math" data-tex="$D$">$D$</span> matters: a section of <span class="math" data-tex="$F$">$F$</span> has zero germ at <span class="math" data-tex="$p$">$p$</span> and must vanish on a neighborhood of <span class="math" data-tex="$p$">$p$</span>. Arbitrary sequences fail this condition.</p>
+<p>The sheaf <span class="math" data-tex="$G$">$G$</span> is soft, but</p>
+<span class="math math-display" data-tex="$$
+R\Gamma_{\{p\}}(L;G)\simeq
+(V/V_{\mathrm{ec}})[-1].
+$$">$$
+R\Gamma_{\{p\}}(L;G)\simeq
+(V/V_{\mathrm{ec}})[-1].
+$$</span>
+<p><strong>Proof.</strong> The compact space <span class="math" data-tex="$S$">$S$</span> has a basis of clopen subsets. A section on a closed subset <span class="math" data-tex="$A\subset S$">$A\subset S$</span> is a locally constant function to the discrete module <span class="math" data-tex="$k$">$k$</span> and has finite image by compactness. Its finitely many level sets are disjoint closed subsets of <span class="math" data-tex="$S$">$S$</span>. Clopen neighborhoods separate them: for each pair use the clopen basis and compactness to separate the two compact sets, then take finite intersections. Thus there are disjoint clopen neighborhoods of all level sets, on which the function extends constantly; set it to zero on the remaining clopen set. This proves extension to <span class="math" data-tex="$S$">$S$</span>. Closed direct image then proves softness of <span class="math" data-tex="$G$">$G$</span> on <span class="math" data-tex="$L$">$L$</span>.</p>
+<p>Soft acyclicity gives <span class="math" data-tex="$R\Gamma(L;G)=V_{\mathrm{ec}}$">$R\Gamma(L;G)=V_{\mathrm{ec}}$</span> in degree zero. On <span class="math" data-tex="$L\setminus\{p\}$">$L\setminus\{p\}$</span> the support <span class="math" data-tex="$D$">$D$</span> is closed and discrete, so its ordinary cohomology is <span class="math" data-tex="$V$">$V$</span> in degree zero: sections are products of the exact stalk section functors on a discrete space, and products of module surjections are surjective. Localization therefore gives the asserted cokernel in degree one; its degree-zero kernel is zero. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For a field <span class="math" data-tex="$k$">$k$</span>, the quotient <span class="math" data-tex="$V/V_{\mathrm{ec}}$">$V/V_{\mathrm{ec}}$</span> is infinite-dimensional. Partition <span class="math" data-tex="$D$">$D$</span> into countably many infinite sets <span class="math" data-tex="$D_j$">$D_j$</span>. Any finite linear combination of their indicator functions that is eventually constant must have constant value zero on an unused infinite block, and then every coefficient is zero on its own infinite block. Their classes are linearly independent.</p>
+<h2 id="sh02-da-bidual-defect-computing-both-duals-without-a-finiteness-assumption">SH02-DA-BIDUAL-DEFECT — Computing both duals without a finiteness assumption</h2>
+<p>Assume in this paragraph that <span class="math" data-tex="$k$">$k$</span> is a field and orient <span class="math" data-tex="$L$">$L$</span>, so <span class="math" data-tex="$\omega_L=k_L[1]$">$\omega_L=k_L[1]$</span>. Put</p>
+<span class="math math-display" data-tex="$$
+P=\prod_{d\in D}k_{\{d\}}.
+$$">$$
+P=\prod_{d\in D}k_{\{d\}}.
+$$</span>
+<p>This is the direct image of <span class="math" data-tex="$k_D$">$k_D$</span>; its sections on an open set are arbitrary families indexed by the points of <span class="math" data-tex="$D$">$D$</span> in that open set. There are explicit identifications</p>
+<span class="math math-display" data-tex="$$
+D&#x27;_LF\simeq P[-1],\qquad
+D&#x27;_LD&#x27;_LF\simeq Q:=D_LP.
+$$">$$
+D&#x27;_LF\simeq P[-1],\qquad
+D&#x27;_LD&#x27;_LF\simeq Q:=D_LP.
+$$</span>
+<p>The second object is a sheaf in degree zero. It is characterized on every open <span class="math" data-tex="$U\subset L$">$U\subset L$</span> by</p>
+<span class="math math-display" data-tex="$$
+\Gamma(U;Q)=\operatorname{Hom}_k(\Gamma_c(U;P),k).
+$$">$$
+\Gamma(U;Q)=\operatorname{Hom}_k(\Gamma_c(U;P),k).
+$$</span>
+<p>At each isolated point of <span class="math" data-tex="$D$">$D$</span> its stalk is <span class="math" data-tex="$k$">$k$</span>. At <span class="math" data-tex="$p$">$p$</span> its stalk is</p>
+<span class="math math-display" data-tex="$$
+Q_p\simeq
+V^*/V_{\mathrm{coord}}^*,
+$$">$$
+Q_p\simeq
+V^*/V_{\mathrm{coord}}^*,
+$$</span>
+<p>where <span class="math" data-tex="$V^*=\operatorname{Hom}_k(V,k)$">$V^*=\operatorname{Hom}_k(V,k)$</span> is the algebraic dual and <span class="math" data-tex="$V_{\mathrm{coord}}^*$">$V_{\mathrm{coord}}^*$</span> is the span of the coordinate evaluation functionals. On global sections, the evaluation <span class="math" data-tex="$F\to D&#x27;_LD&#x27;_LF$">$F\to D&#x27;_LD&#x27;_LF$</span> is the usual inclusion of finite coordinate functionals. The same description holds on compact-tail neighborhoods of <span class="math" data-tex="$p$">$p$</span>; on opens avoiding <span class="math" data-tex="$p$">$p$</span>, locally finite coordinate families instead give an isomorphism of sheaves. The nonzero stalk quotient at <span class="math" data-tex="$p$">$p$</span> shows that the global sheaf morphism is not an isomorphism.</p>
+<p><strong>Proof.</strong> Since compact subsets of the discrete space <span class="math" data-tex="$D$">$D$</span> are finite, <span class="math" data-tex="$\Gamma_c(U;F)=\bigoplus_{d\in U\cap D}k$">$\Gamma_c(U;F)=\bigoplus_{d\in U\cap D}k$</span>. The sheaf <span class="math" data-tex="$F$">$F$</span> is c-soft, as is a direct sum of the compactly supported point sheaves. Its compact-support derived sections are therefore concentrated in degree zero. Dual sections identify <span class="math" data-tex="$D_LF$">$D_LF$</span> with the product sheaf <span class="math" data-tex="$P$">$P$</span>, with its ordinary evaluation pairing. Tensoring by <span class="math" data-tex="$\omega_L^{-1}=k_L[-1]$">$\omega_L^{-1}=k_L[-1]$</span> gives <span class="math" data-tex="$D&#x27;_LF=P[-1]$">$D&#x27;_LF=P[-1]$</span>.</p>
+<p>Restriction maps of <span class="math" data-tex="$P$">$P$</span> are coordinate projections and are surjective, so <span class="math" data-tex="$P$">$P$</span> is flabby and hence c-soft. The same dual-sections argument makes <span class="math" data-tex="$D_LP=Q$">$D_LP=Q$</span> a sheaf in degree zero and gives its displayed section formula. Dualizing the shift in <span class="math" data-tex="$D&#x27;_LF$">$D&#x27;_LF$</span> gives <span class="math" data-tex="$D&#x27;_L(P[-1])=D_LP$">$D&#x27;_L(P[-1])=D_LP$</span>, proving the second formula.</p>
+<p>Choose decreasing neighborhoods of <span class="math" data-tex="$p$">$p$</span> that remove successively finite subsets of <span class="math" data-tex="$D$">$D$</span> and have boundary disjoint from <span class="math" data-tex="$S$">$S$</span>. The support of <span class="math" data-tex="$P$">$P$</span> in each such neighborhood is compact there, so its compact sections form the product over the remaining tail. Extension to a larger neighborhood is the inclusion that inserts zero in the missing finitely many coordinates. Dual restriction thus removes the corresponding finite coordinate functionals. The filtered colimit is exactly <span class="math" data-tex="$V^*/V_{\mathrm{coord}}^*$">$V^*/V_{\mathrm{coord}}^*$</span>.</p>
+<p>This quotient is nonzero. The nonzero vector space <span class="math" data-tex="$V/V_{\mathrm{fin}}$">$V/V_{\mathrm{fin}}$</span> admits a nonzero linear functional; pulled back to <span class="math" data-tex="$V$">$V$</span>, it vanishes on every finitely supported sequence. No nonzero finite sum of coordinate evaluations has that property. Hence its class in <span class="math" data-tex="$Q_p$">$Q_p$</span> is nonzero, whereas <span class="math" data-tex="$F_p=0$">$F_p=0$</span>. The evaluation map is therefore not invertible. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This calculation concerns algebraic duals, not continuous duals of any chosen topology on <span class="math" data-tex="$V$">$V$</span>.</p>
+<h2 id="sh02-da-flabby-the-sharp-positive-dimensional-flabby-bound">SH02-DA-FLABBY — The sharp positive-dimensional flabby bound</h2>
+<p>For every nonzero coefficient ring covered by the conventions and every <span class="math" data-tex="$n\ge1$">$n\ge1$</span>, the soft and c-soft dimensions of <span class="math" data-tex="$\mathbb R^n$">$\mathbb R^n$</span> are <span class="math" data-tex="$n$">$n$</span>, and its flabby dimension is <span class="math" data-tex="$n+1$">$n+1$</span>. In dimension zero all three dimensions are zero.</p>
+<p>The soft and c-soft assertions, and the flabby upper bound, are proved in <code>SH02-MD-DIMENSION</code> and <code>SH02-MD-EXERCISES</code>. We prove the remaining lower bound.</p>
+<p>Choose the compactification embedding in <code>SH02-DA-ACCUMULATION</code> so that <span class="math" data-tex="$D$">$D$</span> lies on just one side of <span class="math" data-tex="$p$">$p$</span>. Let <span class="math" data-tex="$H=k_{L\setminus S}$">$H=k_{L\setminus S}$</span>. The exact sequence</p>
+<span class="math math-display" data-tex="$$
+0\longrightarrow H\longrightarrow k_L\longrightarrow G\longrightarrow0
+$$">$$
+0\longrightarrow H\longrightarrow k_L\longrightarrow G\longrightarrow0
+$$</span>
+<p>and local cohomology at <span class="math" data-tex="$p$">$p$</span> give</p>
+<span class="math math-display" data-tex="$$
+H^2_{\{p\}}(L;H)\simeq V/V_{\mathrm{ec}}\ne0.
+$$">$$
+H^2_{\{p\}}(L;H)\simeq V/V_{\mathrm{ec}}\ne0.
+$$</span>
+<p>To check the possible incoming map, <span class="math" data-tex="$R\Gamma_{\{p\}}(L;k_L)=k[-1]$">$R\Gamma_{\{p\}}(L;k_L)=k[-1]$</span>. Its degree-one class is the difference of the constant values on the two components of <span class="math" data-tex="$L\setminus\{p\}$">$L\setminus\{p\}$</span>. Restriction to <span class="math" data-tex="$D$">$D$</span>, lying on one component, is a constant sequence, and its class in <span class="math" data-tex="$V/V_{\mathrm{ec}}$">$V/V_{\mathrm{ec}}$</span> is zero. Thus the map from <span class="math" data-tex="$k$">$k$</span> into <span class="math" data-tex="$H^1_{\{p\}}(L;G)$">$H^1_{\{p\}}(L;G)$</span> is zero, giving exactly the displayed isomorphism. The quotient is nonzero for every nonzero ring: a sequence taking values <span class="math" data-tex="$0$">$0$</span> and <span class="math" data-tex="$1$">$1$</span> on two infinite parts is not eventually constant.</p>
+<p>Now let <span class="math" data-tex="$\rho:L\times\mathbb R^{n-1}\to L$">$\rho:L\times\mathbb R^{n-1}\to L$</span> and let <span class="math" data-tex="$a$">$a$</span> include <span class="math" data-tex="$(p,0)$">$(p,0)$</span>. Write <span class="math" data-tex="$b:\{p\}\hookrightarrow L$">$b:\{p\}\hookrightarrow L$</span>. The oriented submersion formula and exceptional composition give</p>
+<span class="math math-display" data-tex="$$
+a^!\rho^{-1}H
+\simeq a^!\rho^!H[-(n-1)]
+\simeq b^!H[-(n-1)].
+$$">$$
+a^!\rho^{-1}H
+\simeq a^!\rho^!H[-(n-1)]
+\simeq b^!H[-(n-1)].
+$$</span>
+<p>Consequently <span class="math" data-tex="$\rho^{-1}H$">$\rho^{-1}H$</span> has nonzero point-supported cohomology in degree <span class="math" data-tex="$n+1$">$n+1$</span>. Every flabby sheaf is acyclic for sections with a fixed closed support; this follows from the localization sequence and surjectivity of restriction to the complementary open set. A flabby resolution of length at most <span class="math" data-tex="$n$">$n$</span> would force that degree-<span class="math" data-tex="$n+1$">$n+1$</span> group to vanish. This contradiction proves the lower bound. Together with the upper bound it proves equality. For <span class="math" data-tex="$n=0$">$n=0$</span> the space is a point and every sheaf is already flabby and soft. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-da-problems-further-calculations-with-complete-solutions">SH02-DA-PROBLEMS — Further calculations with complete solutions</h2>
+<p><strong>Problem: a bundle with a distinguished direction.</strong> Let <span class="math" data-tex="$E=E_0\oplus\mathbb R$">$E=E_0\oplus\mathbb R$</span> be an oriented real bundle of positive rank over a manifold. Compute its Euler class, and describe the effect on the sphere-bundle triangle when its rank is at least two.</p>
+<p><em>Solution.</em> The unit vector in the last summand is a nowhere-zero section, so <code>SH02-DA-EULER</code> gives <span class="math" data-tex="$e(E)=0$">$e(E)=0$</span>. The connecting morphism of the sphere triangle is therefore zero. A triangle with zero connecting morphism is split, so <span class="math" data-tex="$R f_*k_{S(E)}\simeq k\oplus k[-(\operatorname{rank}E-1)]$">$R f_*k_{S(E)}\simeq k\oplus k[-(\operatorname{rank}E-1)]$</span> as an object. A splitting is a further choice; the theorem supplies the canonical triangle and its zero extension class.</p>
+<p><strong>Problem: a normal cycle that is zero globally.</strong> In an oriented rank-<span class="math" data-tex="$r$">$r$</span> vector bundle, restrict the Thom class to the complement of the zero section and then pull back to any nowhere-zero section. Explain why this does not force the Thom class itself to be zero.</p>
+<p><em>Solution.</em> Localization makes both stated images zero. The Thom class lies in supported cohomology, whose map to ordinary cohomology need not be injective. For a trivial positive-rank bundle over a point, the Thom group is <span class="math" data-tex="$k$">$k$</span> whereas the ordinary group in degree <span class="math" data-tex="$r$">$r$</span> of the total vector space is zero. The supported class is the nonzero orientation generator despite its zero ordinary image.</p>
+<p><strong>Problem: adding neutral parameters.</strong> Suppose a closed quadratic sublevel for a form on <span class="math" data-tex="$W$">$W$</span> has <span class="math" data-tex="$s$">$s$</span> null directions. Add an additional null vector space of dimension <span class="math" data-tex="$d$">$d$</span>. Determine the changes in compact-support and supported cohomology.</p>
+<p><em>Solution.</em> The enlarged sublevel is the original one times <span class="math" data-tex="$\mathbb R^d$">$\mathbb R^d$</span>. In the nonzero threshold range, compact-support cohomology acquires the orientation line and shift <span class="math" data-tex="$[-d]$">$[-d]$</span>. Both the total dimension and the non-positive count increase by <span class="math" data-tex="$d$">$d$</span>, so their difference, the supported-cohomology degree, stays fixed. For a negative threshold both complexes remain zero. This is also immediate from the proper projection proof in <code>SH02-DA-QUADRATIC</code>.</p>
+<p><strong>Problem: why soft is not flabby.</strong> In <code>SH02-DA-ACCUMULATION</code>, give a section on <span class="math" data-tex="$L\setminus\{p\}$">$L\setminus\{p\}$</span> which cannot extend globally, despite softness of <span class="math" data-tex="$G$">$G$</span>.</p>
+<p><em>Solution.</em> Partition <span class="math" data-tex="$D$">$D$</span> into two infinite sets and use their indicator function with values <span class="math" data-tex="$0,1\in k$">$0,1\in k$</span>. This is a section on the punctured line, but it is not eventually constant, so it is not in <span class="math" data-tex="$\Gamma(L;G)$">$\Gamma(L;G)$</span>. Flabbiness asks for extension from an arbitrary open subset; softness asks for extension from a closed subset. The two requirements differ exactly at this accumulation point.</p>
+<p><strong>Problem: distributional representatives.</strong> Let <span class="math" data-tex="$\alpha$">$\alpha$</span> be a closed smooth <span class="math" data-tex="$a$">$a$</span>-form and let <span class="math" data-tex="$T,T&#x27;$">$T,T&#x27;$</span> be closed distributional <span class="math" data-tex="$(n-a)$">$(n-a)$</span>-forms on a compact oriented smooth manifold, with <span class="math" data-tex="$T&#x27;-T=dS$">$T&#x27;-T=dS$</span>. Show that their pairings with <span class="math" data-tex="$\alpha$">$\alpha$</span> agree, and explain why every distributional cohomology class can be compared to a smooth one.</p>
+<p><em>Solution.</em> Distributional Stokes gives <span class="math" data-tex="$\int\alpha\wedge dS=(-1)^{a+1}\int d\alpha\wedge S=0$">$\int\alpha\wedge dS=(-1)^{a+1}\int d\alpha\wedge S=0$</span>. The two fine resolutions in <code>SH02-DA-FORMS</code> are quasi-isomorphic, so their global cohomologies are isomorphic. Thus the class of <span class="math" data-tex="$T$">$T$</span> is represented by a smooth form; changing the representative does not change the integral. No global smoothing that commutes strictly with every coordinate change is needed.</p>
+<h2 id="sh02-da-antecedents-mathematical-correspondence-and-remaining-boundaries">SH02-DA-ANTECEDENTS — Mathematical correspondence and remaining boundaries</h2>
+<p>These applications develop support phenomena, characteristic classes and compact duality in the microlocal theory of sheaves of M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985). Their proofs use the operation, orientation and local-finiteness lessons linked above. The integral rank-one local-system pairing is proved in <code>SH02-MD-ORIENTATION-LINE</code> and <code>SH02-MD-EXERCISES</code>; the local-cohomological boundary criterion and convex cases are in <code>SH02-CB-BOUNDARY-CRITERION</code> and <code>SH02-CB-CONVEX</code>.</p>
+<p>The support-comparison diagrams belong to <code>SH02-EX-SUPPORT-ERASURE</code>, <code>SH02-EX-HOM-SUPPORT-COMPATIBILITY</code>, and <code>SH02-EX-COEFFICIENT-ACTION</code>. Their stated boundedness limits remain in force; this lesson does not extend an unresolved Hom comparison to an unproved derived range. The reader should distinguish that open dependency from the <span class="math" data-tex="$D^+$">$D^+$</span> counit result actually proved here.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><span class="unlinked">Course contents</span><span></span></nav>
+<p class="small source-link"><a href="src/duality-applications.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-02">Repository</a></nav>
+</footer>
+</body>
+</html>

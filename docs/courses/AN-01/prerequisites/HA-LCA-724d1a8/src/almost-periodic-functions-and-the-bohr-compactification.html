@@ -1,0 +1,319 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="416bf4daa10171910f9f1d3a1f9498fb0b2b9b4579c3b71fc344107ee116ed67"><title>Almost periodic functions and the Bohr compactification</title><link rel="stylesheet" href="../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="almost-periodic-functions-and-the-bohr-compactification.md">Editable source</a> · <a href="../LICENCES.html">Licences</a></nav><article><h1 id="almost-periodic-functions-and-the-bohr-compactification">Almost periodic functions and the Bohr compactification</h1>
+<p><strong>Lesson HA-LCA-16.</strong> Self-checked by the writing AI.</p>
+<p>A continuous function can fail to have a period while its translates still form a compact family after taking their uniform closure. The compact group that records all these functions is the Bohr compactification. Its group of characters is familiar; its topology is usually much weaker on the original group. We construct it, prove the uniform approximation theorem, and calculate its invariant mean.</p>
+<p>Throughout, <span class="math" data-tex="\(G\)">\(G\)</span> is an arbitrary locally compact Hausdorff abelian group, <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span>, and <span class="math" data-tex="\(L_yf(x)=f(x-y)\)">\(L_yf(x)=f(x-y)\)</span>. Write <span class="math" data-tex="\(\Gamma_d\)">\(\Gamma_d\)</span> for the same abstract group with the discrete topology. A trigonometric polynomial on <span class="math" data-tex="\(G\)">\(G\)</span> is a finite sum <span class="math" data-tex="\(\sum_\gamma c_\gamma\gamma\)">\(\sum_\gamma c_\gamma\gamma\)</span> of continuous unit-circle characters. There is no countability assumption on <span class="math" data-tex="\(G\)">\(G\)</span> or <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p>The free readings are Davalo and Fléchelles, <a href="https://www.math.ens.psl.eu/shared-files/9497/?DAVALO_FLECHELLES.pdf="><em>Les fonctions presque périodiques</em>, §§2.1–2.2 and 3.1–3.3</a>, and Spitters, <a href="https://arxiv.org/pdf/cs/0512009v3"><em>Almost periodic functions, constructively</em>, §3, exact arXiv revision cs/0512009v3</a>. We work in classical mathematics. All results needed from these readings are proved below or in the exact earlier programme results cited.</p>
+<p>Written and checked by GPT-6 Astra (OpenAI), Ultra, October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their source packages retain their licences.</p>
+<h2 id="1-a-compact-group-with-all-the-original-characters">1. A compact group with all the original characters</h2>
+<p><a id="ha-lca-16-theorem-1-1"></a>
+<strong>Theorem 1.1 — The Bohr compactification.</strong> The group
+<span class="math math-display" data-tex="\[
+ bG=\widehat{\Gamma_d},\qquad
+ \beta:G\longrightarrow bG,\qquad \beta(x)(\gamma)=\gamma(x)       \tag{1}
+\]">\[
+ bG=\widehat{\Gamma_d},\qquad
+ \beta:G\longrightarrow bG,\qquad \beta(x)(\gamma)=\gamma(x)       \tag{1}
+\]</span>
+is compact abelian. The map <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is a continuous injective homomorphism with dense image. Every continuous homomorphism <span class="math" data-tex="\(\rho:G\to K\)">\(\rho:G\to K\)</span> into a compact Hausdorff group has a unique continuous homomorphism <span class="math" data-tex="\(\widetilde\rho:bG\to K\)">\(\widetilde\rho:bG\to K\)</span> satisfying <span class="math" data-tex="\(\rho=\widetilde\rho\circ\beta\)">\(\rho=\widetilde\rho\circ\beta\)</span>. The target <span class="math" data-tex="\(K\)">\(K\)</span> need not be abelian.</p>
+<p><strong>Proof.</strong> Compact/discrete duality, <a href="characters-and-the-dual-group.html#ha-lca-02-theorem-2-1">HA-LCA-02, Theorem 2.1</a>, makes <span class="math" data-tex="\(bG\)">\(bG\)</span> compact. Compact subsets of <span class="math" data-tex="\(\Gamma_d\)">\(\Gamma_d\)</span> are finite, so its dual topology is precisely pointwise convergence on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>; each coordinate <span class="math" data-tex="\(x\mapsto\gamma(x)\)">\(x\mapsto\gamma(x)\)</span> is continuous. Formula (1) is a homomorphism, and characters separate points by <a href="raikovs-theorem-and-the-gelfand-raikov-theorem.html#ha-lca-05-corollary-4-2">HA-LCA-05, Corollary 4.2</a>, so it is injective.</p>
+<p>By <a href="the-pontryagin-duality-theorem.html#ha-lca-09-theorem-2-1">Pontryagin duality, HA-LCA-09, Theorem 2.1</a>, every character of <span class="math" data-tex="\(bG\)">\(bG\)</span> is evaluation at a unique <span class="math" data-tex="\(\gamma\in\Gamma_d\)">\(\gamma\in\Gamma_d\)</span>. Such a character is one on <span class="math" data-tex="\(\beta(G)\)">\(\beta(G)\)</span> exactly when <span class="math" data-tex="\(\gamma(x)=1\)">\(\gamma(x)=1\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, that is, when <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span>. The double-annihilator formula <a href="subgroups-quotients-and-annihilators.html#ha-lca-10-proposition-1-2">HA-LCA-10, Proposition 1.2</a> now gives <span class="math" data-tex="\(\overline{\beta(G)}=bG\)">\(\overline{\beta(G)}=bG\)</span>.</p>
+<p>Let <span class="math" data-tex="\(H=\overline{\rho(G)}\subset K\)">\(H=\overline{\rho(G)}\subset K\)</span>. It is a compact subgroup. It is abelian because the commutator map is continuous and is one on the dense subset <span class="math" data-tex="\(\rho(G)\times\rho(G)\)">\(\rho(G)\times\rho(G)\)</span> of <span class="math" data-tex="\(H\times H\)">\(H\times H\)</span>. The pullback
+<span class="math math-display" data-tex="\[
+ \widehat H\longrightarrow\Gamma_d,\qquad \chi\longmapsto\chi\circ\rho
+\]">\[
+ \widehat H\longrightarrow\Gamma_d,\qquad \chi\longmapsto\chi\circ\rho
+\]</span>
+is a continuous homomorphism, since <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span> is discrete. Dualize it using <a href="the-pontryagin-duality-theorem.html#ha-lca-09-proposition-5-1">HA-LCA-09, Proposition 5.1</a>, and identify <span class="math" data-tex="\(\widehat{\widehat H}\)">\(\widehat{\widehat H}\)</span> with <span class="math" data-tex="\(H\)">\(H\)</span> by Pontryagin duality. This gives a continuous homomorphism <span class="math" data-tex="\(bG\to H\)">\(bG\to H\)</span>. At <span class="math" data-tex="\(\beta(x)\)">\(\beta(x)\)</span>, its value has <span class="math" data-tex="\(\chi\)">\(\chi\)</span>-coordinate <span class="math" data-tex="\(\chi(\rho(x))\)">\(\chi(\rho(x))\)</span> for every <span class="math" data-tex="\(\chi\)">\(\chi\)</span>; separation of points identifies that value with <span class="math" data-tex="\(\rho(x)\)">\(\rho(x)\)</span>. Compose with <span class="math" data-tex="\(H\subset K\)">\(H\subset K\)</span>. Two continuous maps from <span class="math" data-tex="\(bG\)">\(bG\)</span> to the Hausdorff space <span class="math" data-tex="\(K\)">\(K\)</span> that agree on the dense image <span class="math" data-tex="\(\beta(G)\)">\(\beta(G)\)</span> agree everywhere: their equalizer is closed. This proves uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-topology-of-the-dense-image">2. The topology of the dense image</h2>
+<p>A continuous injective map need not be a homeomorphism onto its image. We prove the stronger fact that the image in (1) is proper for every noncompact <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><a id="ha-lca-16-lemma-2-0"></a>
+<strong>Lemma 2.0 — A discontinuous abstract character.</strong> Every nondiscrete LCA group <span class="math" data-tex="\(E\)">\(E\)</span> admits a group homomorphism <span class="math" data-tex="\(E\to\mathbb T\)">\(E\to\mathbb T\)</span> that is not continuous.</p>
+<p><strong>Proof.</strong> The structure theorem <a href="the-structure-of-locally-compact-abelian-groups.html#ha-lca-12-corollary-4-4">HA-LCA-12, Corollary 4.4</a> writes <span class="math" data-tex="\(E=\mathbb R^a\times H\)">\(E=\mathbb R^a\times H\)</span>, where <span class="math" data-tex="\(H\)">\(H\)</span> has a compact open subgroup <span class="math" data-tex="\(K\)">\(K\)</span>. The divisible-group extension argument <a href="the-structure-of-locally-compact-abelian-groups.html#ha-lca-12-lemma-4-1">HA-LCA-12, Lemma 4.1</a> says that an abstract homomorphism from a subgroup into <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> extends to the whole group. Divisibility here follows from the existence of all circle roots, proved in <a href="characters-and-the-dual-group.html#ha-lca-02-lemma-1-3">HA-LCA-02, Lemma 1.3</a>.</p>
+<p>If <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, define on <span class="math" data-tex="\(\mathbb Z+\sqrt2\,\mathbb Z\subset\mathbb R\)">\(\mathbb Z+\sqrt2\,\mathbb Z\subset\mathbb R\)</span>
+<span class="math math-display" data-tex="\[
+ m+n\sqrt2\longmapsto(-1)^n.
+\]">\[
+ m+n\sqrt2\longmapsto(-1)^n.
+\]</span>
+The expression is unique because <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> is irrational: an equality <span class="math" data-tex="\(r^2=2s^2\)">\(r^2=2s^2\)</span> for coprime positive integers would force both <span class="math" data-tex="\(r,s\)">\(r,s\)</span> even. Extend to an abstract character <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. A continuous character has the form <span class="math" data-tex="\(x\mapsto e^{2\pi itx}\)">\(x\mapsto e^{2\pi itx}\)</span>, by <a href="characters-and-the-dual-group.html#ha-lca-02-theorem-3-1">HA-LCA-02, Theorem 3.1</a>. Its value at <span class="math" data-tex="\(1\)">\(1\)</span> forces <span class="math" data-tex="\(t\in\mathbb Z\)">\(t\in\mathbb Z\)</span>, whereas its value at <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> would force <span class="math" data-tex="\(t\sqrt2\in\frac12+\mathbb Z\)">\(t\sqrt2\in\frac12+\mathbb Z\)</span>, which is impossible. Thus <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is discontinuous. Composing with one coordinate projection gives the required character on <span class="math" data-tex="\(E\)">\(E\)</span>; restriction to that coordinate line proves discontinuity.</p>
+<p>Suppose <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. The compact open <span class="math" data-tex="\(K\)">\(K\)</span> is infinite: a finite Hausdorff group is discrete, and an open discrete subgroup would make <span class="math" data-tex="\(E\)">\(E\)</span> discrete. Its discrete dual <span class="math" data-tex="\(\widehat K\)">\(\widehat K\)</span> is infinite by Pontryagin duality. Choose a countably infinite subgroup <span class="math" data-tex="\(D\subset\widehat K\)">\(D\subset\widehat K\)</span>: recursively choose distinct elements and take their generated subgroup. Restriction of characters gives a continuous surjection
+<span class="math math-display" data-tex="\[
+ \pi:K\longrightarrow L=\widehat D
+\]">\[
+ \pi:K\longrightarrow L=\widehat D
+\]</span>
+by <a href="subgroups-quotients-and-annihilators.html#ha-lca-10-theorem-2-1">HA-LCA-10, Theorem 2.1</a>. The group <span class="math" data-tex="\(L\)">\(L\)</span> is infinite compact metrizable by <a href="the-structure-of-locally-compact-abelian-groups.html#ha-lca-12-theorem-5-1">HA-LCA-12, Theorem 5.1</a>; finiteness would imply finiteness of its dual <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>Finite <span class="math" data-tex="\(1/n\)">\(1/n\)</span>-nets in <span class="math" data-tex="\(L\)">\(L\)</span> exist by compactness. Their union is countable and dense, so it generates a countable dense subgroup <span class="math" data-tex="\(A\)">\(A\)</span>. The group <span class="math" data-tex="\(L\)">\(L\)</span> is uncountable. Indeed, its normalized Haar measure gives the same mass <span class="math" data-tex="\(c\)">\(c\)</span> to every singleton. Arbitrarily large finite sets imply <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, and countability of <span class="math" data-tex="\(L\)">\(L\)</span> would then give total mass zero. Consequently <span class="math" data-tex="\(A\ne L\)">\(A\ne L\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(z\notin A\)">\(z\notin A\)</span>. On the cyclic subgroup generated by <span class="math" data-tex="\(z+A\)">\(z+A\)</span> in the abstract quotient <span class="math" data-tex="\(L/A\)">\(L/A\)</span>, take a character nontrivial at <span class="math" data-tex="\(z+A\)">\(z+A\)</span>: a primitive root of unity if its order is finite, or the value <span class="math" data-tex="\(-1\)">\(-1\)</span> if its order is infinite. Extend it to <span class="math" data-tex="\(L/A\)">\(L/A\)</span> by divisibility and pull it back to <span class="math" data-tex="\(L\)">\(L\)</span>. The resulting <span class="math" data-tex="\(\theta\)">\(\theta\)</span> kills the dense subgroup <span class="math" data-tex="\(A\)">\(A\)</span> but is not identically one, so it cannot be continuous.</p>
+<p>A continuous surjection from a compact space to a Hausdorff space is a quotient map: it is closed since compact subsets of a Hausdorff space are closed, as proved in <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-1">PRE-RADON, Lemma 1.1</a>. Hence <span class="math" data-tex="\(\theta\circ\pi\)">\(\theta\circ\pi\)</span> is discontinuous on <span class="math" data-tex="\(K\)">\(K\)</span>. Extend this abstract character from <span class="math" data-tex="\(K\)">\(K\)</span> to <span class="math" data-tex="\(E\)">\(E\)</span>. Its restriction to <span class="math" data-tex="\(K\)">\(K\)</span> remains discontinuous, completing the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-lemma-2-1"></a>
+<strong>Lemma 2.1 — Locally compact subgroups.</strong> A subgroup of a Hausdorff topological group that is locally compact in the subspace topology is closed.</p>
+<p><strong>Proof.</strong> Here is the full argument also established in <a href="the-pontryagin-duality-theorem.html#ha-lca-09-lemma-1-2">HA-LCA-09, Lemma 1.2</a>. Let <span class="math" data-tex="\(B\subset A\)">\(B\subset A\)</span> be the subgroup. Choose a compact neighbourhood <span class="math" data-tex="\(C\)">\(C\)</span> of its identity in <span class="math" data-tex="\(B\)">\(B\)</span>, and an open neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> of the identity in <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(V\cap B\subset C\)">\(V\cap B\subset C\)</span>. For <span class="math" data-tex="\(x\in V\cap\overline B\)">\(x\in V\cap\overline B\)</span>, each neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span>, intersected with <span class="math" data-tex="\(V\)">\(V\)</span>, meets <span class="math" data-tex="\(B\)">\(B\)</span>; hence <span class="math" data-tex="\(x\in\overline{V\cap B}\subset C\)">\(x\in\overline{V\cap B}\subset C\)</span>, because <span class="math" data-tex="\(C\)">\(C\)</span> is compact and therefore closed in <span class="math" data-tex="\(A\)">\(A\)</span>. Thus <span class="math" data-tex="\(V\cap\overline B\subset B\)">\(V\cap\overline B\subset B\)</span>, making <span class="math" data-tex="\(B\)">\(B\)</span> an open subgroup of <span class="math" data-tex="\(\overline B\)">\(\overline B\)</span>. An open subgroup is closed: its complementary cosets are open. As <span class="math" data-tex="\(B\)">\(B\)</span> is also dense in <span class="math" data-tex="\(\overline B\)">\(\overline B\)</span>, it equals <span class="math" data-tex="\(\overline B\)">\(\overline B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-lemma-2-2"></a>
+<strong>Lemma 2.2 — The image is proper.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is noncompact, <span class="math" data-tex="\(\beta(G)\ne bG\)">\(\beta(G)\ne bG\)</span>.</p>
+<p><strong>Proof.</strong> Its dual <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is nondiscrete by <a href="the-pontryagin-duality-theorem.html#ha-lca-09-corollary-4-4">HA-LCA-09, Corollary 4.4</a>. Lemma 2.0 supplies a discontinuous abstract character <span class="math" data-tex="\(\theta:\Gamma\to\mathbb T\)">\(\theta:\Gamma\to\mathbb T\)</span>. It is continuous on <span class="math" data-tex="\(\Gamma_d\)">\(\Gamma_d\)</span>, so it is a point of <span class="math" data-tex="\(bG\)">\(bG\)</span>. Every <span class="math" data-tex="\(\beta(x)\)">\(\beta(x)\)</span>, however, is a continuous character of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, by the evaluation pairing <a href="the-pontryagin-duality-theorem.html#ha-lca-09-lemma-1-1">HA-LCA-09, Lemma 1.1</a>. Thus <span class="math" data-tex="\(\theta\notin\beta(G)\)">\(\theta\notin\beta(G)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-corollary-2-3"></a>
+<strong>Corollary 2.3 — The Bohr map is an embedding exactly in the compact case.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is compact, <span class="math" data-tex="\(\beta:G\to bG\)">\(\beta:G\to bG\)</span> is a homeomorphism. If <span class="math" data-tex="\(G\)">\(G\)</span> is noncompact, its dense image is neither open nor locally compact in the subspace topology, and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is not a homeomorphism onto that image.</p>
+<p><strong>Proof.</strong> In the compact case the continuous injection has compact, hence closed, image. Density makes it onto, and a compact-to-Hausdorff continuous bijection is a homeomorphism by the closed-map argument above. In the noncompact case the image is proper and dense. An open subgroup would be closed, and a locally compact subgroup would be closed by Lemma 2.1, each contradicting proper density. If <span class="math" data-tex="\(\beta\)">\(\beta\)</span> were a homeomorphism onto its image, that image would inherit the local compactness of <span class="math" data-tex="\(G\)">\(G\)</span>, another contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-uniformly-almost-periodic-functions">3. Uniformly almost periodic functions</h2>
+<p>Give <span class="math" data-tex="\(C_b(G)\)">\(C_b(G)\)</span> the uniform norm. A function <span class="math" data-tex="\(f\in C_b(G)\)">\(f\in C_b(G)\)</span> is <strong>uniformly almost periodic</strong>, abbreviated <span class="math" data-tex="\(f\in AP(G)\)">\(f\in AP(G)\)</span>, when <span class="math" data-tex="\(\{L_yf:y\in G\}\)">\(\{L_yf:y\in G\}\)</span> has compact closure in that norm.</p>
+<p><a id="ha-lca-16-lemma-3-0"></a>
+<strong>Lemma 3.0 — The metric compactness facts.</strong> A complete totally bounded metric space is compact. A compact metric space is complete and totally bounded. The space <span class="math" data-tex="\(C_b(G)\)">\(C_b(G)\)</span> is complete.</p>
+<p><strong>Proof.</strong> “Totally bounded” means that for every positive radius finitely many balls cover the space. Given a sequence in such a space, successively select infinitely many of its terms in one ball of radius <span class="math" data-tex="\(1,1/2,1/3,\ldots\)">\(1,1/2,1/3,\ldots\)</span>, refining the previous selection. Taking a diagonal subsequence produces a Cauchy sequence, since the diameter at stage <span class="math" data-tex="\(n\)">\(n\)</span> is at most <span class="math" data-tex="\(2/n\)">\(2/n\)</span>. Completeness gives a convergent subsequence.</p>
+<p>To pass from this property to compactness, let an open cover be given. If no <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> has the property that every ball of radius <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is contained in a member of the cover, choose <span class="math" data-tex="\(x_n\)">\(x_n\)</span> whose <span class="math" data-tex="\(1/n\)">\(1/n\)</span>-ball is contained in no member. A convergent subsequence tends to <span class="math" data-tex="\(x\)">\(x\)</span> in some open member <span class="math" data-tex="\(U\)">\(U\)</span>. A small ball about <span class="math" data-tex="\(x\)">\(x\)</span> lies in <span class="math" data-tex="\(U\)">\(U\)</span>, and eventually it contains the <span class="math" data-tex="\(1/n\)">\(1/n\)</span>-balls about the selected <span class="math" data-tex="\(x_n\)">\(x_n\)</span>, a contradiction. Such a <span class="math" data-tex="\(\delta\)">\(\delta\)</span> therefore exists, and a finite <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span>-net gives a finite subcover.</p>
+<p>Compactness itself gives finite radius nets. For a Cauchy sequence in a compact space, the closures of its tails have the finite intersection property, hence a common point. The Cauchy estimate then implies convergence to this point, proving completeness.</p>
+<p>Finally, a uniformly Cauchy sequence of bounded continuous functions converges pointwise in the complete field <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and its uniform Cauchy estimates give uniform convergence to a bounded function. At any point, approximate the limit within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> by one continuous term and use that term's continuity; the resulting <span class="math" data-tex="\(3\varepsilon\)">\(3\varepsilon\)</span> estimate proves continuity of the limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-lemma-3-1"></a>
+<strong>Lemma 3.1 — A compact isometry group.</strong> For a nonempty compact metric space <span class="math" data-tex="\((X,d)\)">\((X,d)\)</span>, its surjective isometries form a compact topological group for
+<span class="math math-display" data-tex="\[
+ D(S,T)=\sup_{x\in X}d(Sx,Tx).                              \tag{2}
+\]">\[
+ D(S,T)=\sup_{x\in X}d(Sx,Tx).                              \tag{2}
+\]</span></p>
+<p><strong>Proof.</strong> This is a finite metric, since compact <span class="math" data-tex="\(X\)">\(X\)</span> is bounded: a finite unit-ball cover gives a finite bound on distances from any one centre. Composition obeys
+<span class="math math-display" data-tex="\[
+ D(ST,S&#x27;T&#x27;)\le D(S,S&#x27;)+D(T,T&#x27;),\qquad
+ D(S^{-1},T^{-1})=D(S,T).                                  \tag{3}
+\]">\[
+ D(ST,S&#x27;T&#x27;)\le D(S,S&#x27;)+D(T,T&#x27;),\qquad
+ D(S^{-1},T^{-1})=D(S,T).                                  \tag{3}
+\]</span>
+For the second identity substitute <span class="math" data-tex="\(x=Ty\)">\(x=Ty\)</span> and apply the isometry <span class="math" data-tex="\(S\)">\(S\)</span>. Thus the group operations are continuous.</p>
+<p>A uniformly Cauchy sequence <span class="math" data-tex="\(T_n\)">\(T_n\)</span> has a uniform limit <span class="math" data-tex="\(T:X\to X\)">\(T:X\to X\)</span> by completeness of <span class="math" data-tex="\(X\)">\(X\)</span>. It preserves distances. Formula (3) shows that <span class="math" data-tex="\(T_n^{-1}\)">\(T_n^{-1}\)</span> also has a uniform limit <span class="math" data-tex="\(R\)">\(R\)</span>. Passing to the limit in the compositions, using the first inequality in (3), gives <span class="math" data-tex="\(TR=RT=\mathrm{id}\)">\(TR=RT=\mathrm{id}\)</span>. Hence <span class="math" data-tex="\(T\)">\(T\)</span> is a surjective isometry, proving completeness.</p>
+<p>For total boundedness choose a finite <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-net <span class="math" data-tex="\(x_1,\ldots,x_m\)">\(x_1,\ldots,x_m\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span>, and for each isometry <span class="math" data-tex="\(T\)">\(T\)</span> choose a net point within <span class="math" data-tex="\(\delta\)">\(\delta\)</span> of each <span class="math" data-tex="\(Tx_i\)">\(Tx_i\)</span>. There are only finitely many possible lists of choices. Two isometries with the same list differ by at most <span class="math" data-tex="\(2\delta\)">\(2\delta\)</span> at each <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, and by at most <span class="math" data-tex="\(4\delta\)">\(4\delta\)</span> everywhere, by moving to a nearby <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. Choosing one isometry for each nonempty list gives a finite <span class="math" data-tex="\(4\delta\)">\(4\delta\)</span>-net. Lemma 3.0 proves compactness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-theorem-3-2"></a>
+<strong>Theorem 3.2 — Three characterizations.</strong> For <span class="math" data-tex="\(f\in C_b(G)\)">\(f\in C_b(G)\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(f\in AP(G)\)">\(f\in AP(G)\)</span>.</li>
+<li><span class="math" data-tex="\(f=F\circ\beta\)">\(f=F\circ\beta\)</span> for some <span class="math" data-tex="\(F\in C(bG)\)">\(F\in C(bG)\)</span>.</li>
+<li><span class="math" data-tex="\(f\)">\(f\)</span> is a uniform limit of trigonometric polynomials.</li>
+</ol>
+<p>The <span class="math" data-tex="\(F\)">\(F\)</span> in (2) is unique. Pullback by <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is an isometric unital star-algebra isomorphism <span class="math" data-tex="\(C(bG)\to AP(G)\)">\(C(bG)\to AP(G)\)</span>. Every almost periodic function is uniformly continuous.</p>
+<p><strong>Proof.</strong> First suppose the translates of <span class="math" data-tex="\(f\)">\(f\)</span> have compact closure. Choose a finite <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-net of this orbit consisting of orbit elements <span class="math" data-tex="\(g_1,\ldots,g_m\)">\(g_1,\ldots,g_m\)</span>. Continuity at zero gives a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> with
+<span class="math math-display" data-tex="\[
+ |g_j(-h)-g_j(0)|&lt;\varepsilon\quad(h\in U,\ 1\le j\le m).
+\]">\[
+ |g_j(-h)-g_j(0)|&lt;\varepsilon\quad(h\in U,\ 1\le j\le m).
+\]</span>
+For every <span class="math" data-tex="\(x\)">\(x\)</span>, approximate <span class="math" data-tex="\(L_{-x}f\)">\(L_{-x}f\)</span> by one <span class="math" data-tex="\(g_j\)">\(g_j\)</span>. Evaluating at <span class="math" data-tex="\(-h,0\)">\(-h,0\)</span> yields
+<span class="math math-display" data-tex="\[
+ |f(x-h)-f(x)|&lt;3\varepsilon \quad(h\in U,\ x\in G).          \tag{4}
+\]">\[
+ |f(x-h)-f(x)|&lt;3\varepsilon \quad(h\in U,\ x\in G).          \tag{4}
+\]</span>
+Thus <span class="math" data-tex="\(f\)">\(f\)</span> is uniformly continuous, and <span class="math" data-tex="\(y\mapsto L_yf\)">\(y\mapsto L_yf\)</span> is norm continuous.</p>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be the compact metric closure of its orbit in <span class="math" data-tex="\(C_b(G)\)">\(C_b(G)\)</span>. The operators <span class="math" data-tex="\(\rho(x)=L_{-x}|_X\)">\(\rho(x)=L_{-x}|_X\)</span> are surjective isometries. For an orbit element <span class="math" data-tex="\(g=L_yf\)">\(g=L_yf\)</span>,
+<span class="math" data-tex="\(\|L_{-x}g-g\|_\infty=\|L_{-x}f-f\|_\infty\)">\(\|L_{-x}g-g\|_\infty=\|L_{-x}f-f\|_\infty\)</span>; passage to a uniform limit gives the same equality for <span class="math" data-tex="\(g\in X\)">\(g\in X\)</span>. In particular
+<span class="math math-display" data-tex="\[
+ D(\rho(x),\mathrm{id})=\|L_{-x}f-f\|_\infty.
+\]">\[
+ D(\rho(x),\mathrm{id})=\|L_{-x}f-f\|_\infty.
+\]</span>
+This tends to zero at the identity by (4), and the group law gives continuity everywhere. Lemma 3.1 makes <span class="math" data-tex="\(\operatorname{Iso}(X)\)">\(\operatorname{Iso}(X)\)</span> a compact group. Theorem 1.1 extends <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to <span class="math" data-tex="\(\widetilde\rho:bG\to\operatorname{Iso}(X)\)">\(\widetilde\rho:bG\to\operatorname{Iso}(X)\)</span>. Set
+<span class="math math-display" data-tex="\[
+ F(z)=\bigl(\widetilde\rho(z)f\bigr)(0).
+\]">\[
+ F(z)=\bigl(\widetilde\rho(z)f\bigr)(0).
+\]</span>
+Evaluation at <span class="math" data-tex="\(f\)">\(f\)</span>, followed by evaluation at <span class="math" data-tex="\(0\in G\)">\(0\in G\)</span>, is continuous for the metric (2). Hence <span class="math" data-tex="\(F\)">\(F\)</span> is continuous and <span class="math" data-tex="\(F(\beta(x))=f(x)\)">\(F(\beta(x))=f(x)\)</span>, proving (1)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(2).</p>
+<p>The characters of <span class="math" data-tex="\(bG\)">\(bG\)</span> separate its points. Their linear span contains constants, is closed under products and conjugation, and is uniformly dense in <span class="math" data-tex="\(C(bG)\)">\(C(bG)\)</span> by <a href="../prerequisites/src/uniform-approximation.html#ha-lca-pre-approx-corollary-2-2">complex Stone–Weierstrass, PRE-APPROX, Corollary 2.2</a>. Each such character is evaluation at some <span class="math" data-tex="\(\gamma\in\Gamma_d\)">\(\gamma\in\Gamma_d\)</span>, whose pullback is <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. This proves (2)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(3).</p>
+<p>The translates of <span class="math" data-tex="\(p=\sum_{j=1}^m c_j\gamma_j\)">\(p=\sum_{j=1}^m c_j\gamma_j\)</span> lie in
+<span class="math math-display" data-tex="\[
+ \left\{\sum_{j=1}^m c_j z_j\gamma_j:(z_1,\ldots,z_m)\in\mathbb T^m\right\},
+\]">\[
+ \left\{\sum_{j=1}^m c_j z_j\gamma_j:(z_1,\ldots,z_m)\in\mathbb T^m\right\},
+\]</span>
+a compact set by continuity and finite compact products. If <span class="math" data-tex="\(\|f-p\|_\infty&lt;\varepsilon\)">\(\|f-p\|_\infty&lt;\varepsilon\)</span>, every translate of <span class="math" data-tex="\(f\)">\(f\)</span> is within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of the corresponding translate of <span class="math" data-tex="\(p\)">\(p\)</span>. Finite nets for the latter show that the orbit of <span class="math" data-tex="\(f\)">\(f\)</span> is totally bounded. Its closure in the complete space <span class="math" data-tex="\(C_b(G)\)">\(C_b(G)\)</span> is complete and totally bounded, so Lemma 3.0 makes it compact. This proves (3)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(1).</p>
+<p>Density of <span class="math" data-tex="\(\beta(G)\)">\(\beta(G)\)</span> gives uniqueness and
+<span class="math" data-tex="\(\|F\circ\beta\|_\infty=\|F\|_\infty\)">\(\|F\circ\beta\|_\infty=\|F\|_\infty\)</span>. Pullback preserves sums, products, conjugation and the constant one, so it is the asserted isomorphism. Its range is closed: a Cauchy sequence in the range lifts isometrically to a Cauchy sequence in the complete space <span class="math" data-tex="\(C(bG)\)">\(C(bG)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-proposition-3-3"></a>
+<strong>Proposition 3.3 — The Gelfand space.</strong> The character space of the unital commutative Banach algebra <span class="math" data-tex="\(AP(G)\)">\(AP(G)\)</span> is canonically <span class="math" data-tex="\(bG\)">\(bG\)</span>. Under this identification evaluation at <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span> corresponds to <span class="math" data-tex="\(\beta(x)\)">\(\beta(x)\)</span>, and the Gelfand transform sends <span class="math" data-tex="\(f=F\circ\beta\)">\(f=F\circ\beta\)</span> to <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proof.</strong> We first prove that every character of <span class="math" data-tex="\(C(K)\)">\(C(K)\)</span>, for a compact Hausdorff space <span class="math" data-tex="\(K\)">\(K\)</span>, is evaluation at a point. Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be a nonzero multiplicative complex linear functional. Then <span class="math" data-tex="\(\ell(1)=1\)">\(\ell(1)=1\)</span>. If the functions in its kernel had no common zero, compactness would give <span class="math" data-tex="\(F_1,\ldots,F_m\in\ker\ell\)">\(F_1,\ldots,F_m\in\ker\ell\)</span> with
+<span class="math" data-tex="\(h=\sum_j|F_j|^2&gt;0\)">\(h=\sum_j|F_j|^2&gt;0\)</span> everywhere. Since <span class="math" data-tex="\(1/h\)">\(1/h\)</span> is continuous,
+<span class="math math-display" data-tex="\[
+ 1=\sum_{j=1}^m F_j\,\frac{\overline{F_j}}h
+\]">\[
+ 1=\sum_{j=1}^m F_j\,\frac{\overline{F_j}}h
+\]</span>
+would belong to the ideal <span class="math" data-tex="\(\ker\ell\)">\(\ker\ell\)</span>, a contradiction. There is therefore <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span> where every member of <span class="math" data-tex="\(\ker\ell\)">\(\ker\ell\)</span> vanishes. Since <span class="math" data-tex="\(F-\ell(F)1\in\ker\ell\)">\(F-\ell(F)1\in\ker\ell\)</span>, we have <span class="math" data-tex="\(\ell(F)=F(z)\)">\(\ell(F)=F(z)\)</span>. Such <span class="math" data-tex="\(z\)">\(z\)</span> is unique because continuous functions separate points by <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-2">PRE-RADON, Lemma 1.2</a>.</p>
+<p>The evaluation map from <span class="math" data-tex="\(K\)">\(K\)</span> to the character space is continuous in the pointwise topology, since each coordinate is a continuous function on <span class="math" data-tex="\(K\)">\(K\)</span>. The character space is Hausdorff, as also proved in <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-theorem-4-2">PRE-BANACH, Theorem 4.2</a>. This continuous bijection is a homeomorphism by compactness and the closed-map argument of Lemma 2.0. Apply this to <span class="math" data-tex="\(K=bG\)">\(K=bG\)</span>, and use the isomorphism in Theorem 3.2. Evaluation of <span class="math" data-tex="\(F\circ\beta\)">\(F\circ\beta\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> is exactly <span class="math" data-tex="\(F(\beta(x))\)">\(F(\beta(x))\)</span>, proving both final assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-proposition-3-4"></a>
+<strong>Proposition 3.4 — The compact metric group of one function.</strong> For <span class="math" data-tex="\(f\in AP(G)\)">\(f\in AP(G)\)</span>, put
+<span class="math math-display" data-tex="\[
+ d_f(a,b)=\sup_{t\in G}|f(t+a)-f(t+b)|,\qquad
+ N_f=\{a:d_f(a,0)=0\}.                                    \tag{5}
+\]">\[
+ d_f(a,b)=\sup_{t\in G}|f(t+a)-f(t+b)|,\qquad
+ N_f=\{a:d_f(a,0)=0\}.                                    \tag{5}
+\]</span>
+This translation-invariant pseudometric induces a metric on <span class="math" data-tex="\(G/N_f\)">\(G/N_f\)</span>. Its metric completion <span class="math" data-tex="\(K_f\)">\(K_f\)</span> is a compact metrizable abelian group. The canonical map <span class="math" data-tex="\(j_f:G\to K_f\)">\(j_f:G\to K_f\)</span> is a continuous homomorphism with dense image, and
+<span class="math math-display" data-tex="\[
+ f=F_f\circ j_f
+\]">\[
+ f=F_f\circ j_f
+\]</span>
+for a continuous function <span class="math" data-tex="\(F_f\)">\(F_f\)</span> on <span class="math" data-tex="\(K_f\)">\(K_f\)</span>. A continuous surjective homomorphism <span class="math" data-tex="\(bG\to K_f\)">\(bG\to K_f\)</span> intertwines <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and <span class="math" data-tex="\(j_f\)">\(j_f\)</span>.</p>
+<p>The topology used to complete <span class="math" data-tex="\(G/N_f\)">\(G/N_f\)</span> is the metric topology from (5); it need not equal its topology as a quotient of the original <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Proof.</strong> The triangle inequality and translation invariance of <span class="math" data-tex="\(d_f\)">\(d_f\)</span> follow directly from the uniform norm and substitution in the supremum. They show that <span class="math" data-tex="\(N_f\)">\(N_f\)</span> is a subgroup and that changing either argument by an element of <span class="math" data-tex="\(N_f\)">\(N_f\)</span> leaves (5) unchanged. Distance zero in the resulting quotient occurs only for equal cosets.</p>
+<p>Map <span class="math" data-tex="\(a+N_f\)">\(a+N_f\)</span> to the function <span class="math" data-tex="\(T_af\)">\(T_af\)</span>, where <span class="math" data-tex="\(T_af(t)=f(t+a)\)">\(T_af(t)=f(t+a)\)</span>. This is an isometry onto the translation orbit. Its closure <span class="math" data-tex="\(X\)">\(X\)</span> in <span class="math" data-tex="\(C_b(G)\)">\(C_b(G)\)</span> is compact by almost periodicity, and complete by Lemma 3.0. Every point in the closure is the limit of a sequence of orbit elements, by choosing an element at distance less than <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Thus <span class="math" data-tex="\(X\)">\(X\)</span> is a metric completion; we take it as <span class="math" data-tex="\(K_f\)">\(K_f\)</span>.</p>
+<p>On the dense quotient the group operations satisfy
+<span class="math math-display" data-tex="\[
+ d_f(a+b,c+d)\le d_f(a,c)+d_f(b,d),\qquad
+ d_f(-a,-b)=d_f(a,b).                                     \tag{6}
+\]">\[
+ d_f(a+b,c+d)\le d_f(a,c)+d_f(b,d),\qquad
+ d_f(-a,-b)=d_f(a,b).                                     \tag{6}
+\]</span>
+For two points of <span class="math" data-tex="\(X\)">\(X\)</span>, choose Cauchy sequences <span class="math" data-tex="\(a_n+N_f,b_n+N_f\)">\(a_n+N_f,b_n+N_f\)</span> tending to them and define their sum as the limit of <span class="math" data-tex="\(a_n+b_n+N_f\)">\(a_n+b_n+N_f\)</span>. Inequality (6) makes that sequence Cauchy and shows that its limit is independent of both choices. The same construction defines inversion. Passing to limits in (6) proves continuity; passing to limits in the group identities proves associativity, commutativity, the identity and the inverse identities. Hence <span class="math" data-tex="\(K_f\)">\(K_f\)</span> is a compact metric abelian group.</p>
+<p>The map <span class="math" data-tex="\(j_f\)">\(j_f\)</span> is continuous since
+<span class="math" data-tex="\(d_f(a+h,a)=\|T_hf-f\|_\infty\to0\)">\(d_f(a+h,a)=\|T_hf-f\|_\infty\to0\)</span>, by the uniform continuity in Theorem 3.2. Evaluation at <span class="math" data-tex="\(0\)">\(0\)</span>, namely <span class="math" data-tex="\(F_f(g)=g(0)\)">\(F_f(g)=g(0)\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, is <span class="math" data-tex="\(1\)">\(1\)</span>-Lipschitz for its uniform metric and satisfies <span class="math" data-tex="\(F_f(j_f(a))=f(a)\)">\(F_f(j_f(a))=f(a)\)</span>. Finally Theorem 1.1 extends <span class="math" data-tex="\(j_f\)">\(j_f\)</span> to a continuous homomorphism <span class="math" data-tex="\(bG\to K_f\)">\(bG\to K_f\)</span>. Its compact image is closed and contains the dense set <span class="math" data-tex="\(j_f(G)\)">\(j_f(G)\)</span>, so it is onto. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-mean-coefficients-and-equidistribution">4. Mean, coefficients, and equidistribution</h2>
+<p>Normalize Haar measure on <span class="math" data-tex="\(bG\)">\(bG\)</span> to mass one. For <span class="math" data-tex="\(f=F\circ\beta\)">\(f=F\circ\beta\)</span> define
+<span class="math math-display" data-tex="\[
+ M(f)=\int_{bG}F(z)\,dz,\qquad
+ a_\gamma(f)=M(f\overline\gamma).                          \tag{7}
+\]">\[
+ M(f)=\int_{bG}F(z)\,dz,\qquad
+ a_\gamma(f)=M(f\overline\gamma).                          \tag{7}
+\]</span></p>
+<p><a id="ha-lca-16-proposition-4-1"></a>
+<strong>Proposition 4.1 — Mean and Parseval.</strong> The functional <span class="math" data-tex="\(M\)">\(M\)</span> is positive, bounded of norm one, and invariant under all translations of <span class="math" data-tex="\(G\)">\(G\)</span>. It is the unique bounded linear functional on <span class="math" data-tex="\(AP(G)\)">\(AP(G)\)</span> with translation invariance and <span class="math" data-tex="\(M(1)=1\)">\(M(1)=1\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+ M(|f|^2)=\sum_{\gamma\in\Gamma}|a_\gamma(f)|^2,             \tag{8}
+\]">\[
+ M(|f|^2)=\sum_{\gamma\in\Gamma}|a_\gamma(f)|^2,             \tag{8}
+\]</span>
+where the sum means the supremum of sums over finite subsets. Only countably many of the coefficients are nonzero. If <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span>, then
+<span class="math math-display" data-tex="\[
+ \lim_{T\to\infty}\ \sup_{s\in\mathbb R}
+ \left|\frac1{2T}\int_{s-T}^{s+T}f(x)\,dx-M(f)\right|=0.    \tag{9}
+\]">\[
+ \lim_{T\to\infty}\ \sup_{s\in\mathbb R}
+ \left|\frac1{2T}\int_{s-T}^{s+T}f(x)\,dx-M(f)\right|=0.    \tag{9}
+\]</span></p>
+<p><strong>Proof.</strong> Haar measure and its normalization are proved in <a href="../prerequisites/src/haar-measure.html">PRE-HAAR, Theorems 2.2, 3.1 and 4.1</a>. Positivity, <span class="math" data-tex="\(|M(f)|\le\|f\|_\infty\)">\(|M(f)|\le\|f\|_\infty\)</span>, and <span class="math" data-tex="\(M(1)=1\)">\(M(1)=1\)</span> give the norm assertion. Translation of <span class="math" data-tex="\(f\)">\(f\)</span> corresponds to translation of <span class="math" data-tex="\(F\)">\(F\)</span> by <span class="math" data-tex="\(\beta(y)\)">\(\beta(y)\)</span>; Haar invariance gives invariance of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>If <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is another such functional and <span class="math" data-tex="\(\gamma\ne1\)">\(\gamma\ne1\)</span>, choose <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(\gamma(y)\ne1\)">\(\gamma(y)\ne1\)</span>. Since <span class="math" data-tex="\(L_y\gamma=\overline{\gamma(y)}\gamma\)">\(L_y\gamma=\overline{\gamma(y)}\gamma\)</span>, invariance gives
+<span class="math" data-tex="\((1-\overline{\gamma(y)})\ell(\gamma)=0\)">\((1-\overline{\gamma(y)})\ell(\gamma)=0\)</span>. Thus <span class="math" data-tex="\(\ell(\gamma)=0\)">\(\ell(\gamma)=0\)</span>. The same holds for <span class="math" data-tex="\(M\)">\(M\)</span>, and both give value one at the trivial character. They agree on all trigonometric polynomials and then on <span class="math" data-tex="\(AP(G)\)">\(AP(G)\)</span> by boundedness and Theorem 3.2.</p>
+<p>The characters of the compact group <span class="math" data-tex="\(bG\)">\(bG\)</span>, indexed by <span class="math" data-tex="\(\Gamma_d\)">\(\Gamma_d\)</span>, are an orthonormal basis of <span class="math" data-tex="\(L^2(bG)\)">\(L^2(bG)\)</span>, by <a href="the-plancherel-theorem.html#ha-lca-08-corollary-4-1">HA-LCA-08, Corollary 4.1</a>. The coefficient of <span class="math" data-tex="\(F\)">\(F\)</span> at evaluation by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is exactly (7). The arbitrary-index Parseval identity <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-4-2">PRE-HILBERT, Theorem 4.2</a> proves (8). For each <span class="math" data-tex="\(n\)">\(n\)</span>, only finitely many coefficients can have modulus at least <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, since otherwise the finite sums in (8) would be unbounded. Their union over <span class="math" data-tex="\(n\)">\(n\)</span> contains every nonzero coefficient.</p>
+<p>On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, a character is <span class="math" data-tex="\(\gamma_\lambda(x)=e^{2\pi i\lambda x}\)">\(\gamma_\lambda(x)=e^{2\pi i\lambda x}\)</span> by HA-LCA-02, Theorem 3.1. For <span class="math" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span>, direct integration gives
+<span class="math math-display" data-tex="\[
+ \frac1{2T}\int_{s-T}^{s+T}\gamma_\lambda(x)\,dx
+ =e^{2\pi i\lambda s}\frac{\sin(2\pi\lambda T)}{2\pi\lambda T}. \tag{10}
+\]">\[
+ \frac1{2T}\int_{s-T}^{s+T}\gamma_\lambda(x)\,dx
+ =e^{2\pi i\lambda s}\frac{\sin(2\pi\lambda T)}{2\pi\lambda T}. \tag{10}
+\]</span>
+The fundamental theorem for this calculation is <a href="../prerequisites/src/real-variable-calculations.html">PRE-REAL, Lemmas 1.1 and 1.3</a>. The right side tends to zero uniformly in <span class="math" data-tex="\(s\)">\(s\)</span>; the trivial character has average one. Thus (9) holds for polynomials. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose a polynomial <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(\|f-p\|_\infty&lt;\varepsilon\)">\(\|f-p\|_\infty&lt;\varepsilon\)</span>. Both an interval average and <span class="math" data-tex="\(M\)">\(M\)</span> have norm at most one, so the error for <span class="math" data-tex="\(f\)">\(f\)</span> is at most <span class="math" data-tex="\(2\varepsilon\)">\(2\varepsilon\)</span> plus the uniform error for <span class="math" data-tex="\(p\)">\(p\)</span>. This proves (9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Parseval is an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> assertion on <span class="math" data-tex="\(bG\)">\(bG\)</span>. Theorem 3.2 separately provides uniform polynomial approximation. No assertion about uniform convergence of arbitrary Fourier partial sums is needed.</p>
+<p>For a compact abelian group <span class="math" data-tex="\(K\)">\(K\)</span>, a sequence <span class="math" data-tex="\(z_n\)">\(z_n\)</span> is <strong>equidistributed</strong> if
+<span class="math math-display" data-tex="\[
+ \frac1N\sum_{n=0}^{N-1}\varphi(z_n)\longrightarrow
+ \int_K\varphi\,dm_K \quad\text{for every }\varphi\in C(K),
+\]">\[
+ \frac1N\sum_{n=0}^{N-1}\varphi(z_n)\longrightarrow
+ \int_K\varphi\,dm_K \quad\text{for every }\varphi\in C(K),
+\]</span>
+where <span class="math" data-tex="\(m_K(K)=1\)">\(m_K(K)=1\)</span>.</p>
+<p><a id="ha-lca-16-lemma-4-2"></a>
+<strong>Lemma 4.2 — Character criterion.</strong> A sequence in <span class="math" data-tex="\(K\)">\(K\)</span> is equidistributed exactly when
+<span class="math math-display" data-tex="\[
+ \frac1N\sum_{n=0}^{N-1}\chi(z_n)\longrightarrow0
+ \quad\text{for every nontrivial }\chi\in\widehat K.         \tag{11}
+\]">\[
+ \frac1N\sum_{n=0}^{N-1}\chi(z_n)\longrightarrow0
+ \quad\text{for every nontrivial }\chi\in\widehat K.         \tag{11}
+\]</span></p>
+<p><strong>Proof.</strong> A nontrivial character has Haar integral zero: translation by a point where its value is not one multiplies the integral by that value and also leaves it unchanged. This proves necessity. Conversely (11), together with the constant character's average one, proves the desired limit for every character polynomial. Characters separate points by HA-LCA-05, Corollary 4.2, and their algebra is uniformly dense in <span class="math" data-tex="\(C(K)\)">\(C(K)\)</span> by PRE-APPROX, Corollary 2.2. Approximate <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> uniformly within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>; the empirical average and Haar integral each have norm one, so the total error is at most <span class="math" data-tex="\(2\varepsilon\)">\(2\varepsilon\)</span> plus the polynomial error. Letting <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease proves sufficiency. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-proposition-4-3"></a>
+<strong>Proposition 4.3 — Uniform rotation averages.</strong> Let <span class="math" data-tex="\(a\in K\)">\(a\in K\)</span>, with <span class="math" data-tex="\(K\)">\(K\)</span> compact abelian, and <span class="math" data-tex="\(H=\overline{\mathbb Za}\)">\(H=\overline{\mathbb Za}\)</span>. Then for every <span class="math" data-tex="\(\varphi\in C(K)\)">\(\varphi\in C(K)\)</span>,
+<span class="math math-display" data-tex="\[
+ \frac1N\sum_{n=0}^{N-1}\varphi(z+na)
+ \longrightarrow \int_H\varphi(z+h)\,dm_H(h)
+ \quad\text{uniformly for }z\in K.                        \tag{12}
+\]">\[
+ \frac1N\sum_{n=0}^{N-1}\varphi(z+na)
+ \longrightarrow \int_H\varphi(z+h)\,dm_H(h)
+ \quad\text{uniformly for }z\in K.                        \tag{12}
+\]</span>
+The sequence <span class="math" data-tex="\(na\)">\(na\)</span> is equidistributed in <span class="math" data-tex="\(H\)">\(H\)</span>. On <span class="math" data-tex="\(K=\mathbb R^d/\mathbb Z^d\)">\(K=\mathbb R^d/\mathbb Z^d\)</span>, the sequence <span class="math" data-tex="\(n\alpha+\mathbb Z^d\)">\(n\alpha+\mathbb Z^d\)</span> is equidistributed in <span class="math" data-tex="\(K\)">\(K\)</span> exactly when
+<span class="math math-display" data-tex="\[
+ k\cdot\alpha\notin\mathbb Z
+ \quad\text{for every }0\ne k\in\mathbb Z^d.               \tag{13}
+\]">\[
+ k\cdot\alpha\notin\mathbb Z
+ \quad\text{for every }0\ne k\in\mathbb Z^d.               \tag{13}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\varphi=\chi\in\widehat K\)">\(\varphi=\chi\in\widehat K\)</span>, the average is
+<span class="math" data-tex="\(\chi(z)N^{-1}\sum_{n=0}^{N-1}\chi(a)^n\)">\(\chi(z)N^{-1}\sum_{n=0}^{N-1}\chi(a)^n\)</span>. If <span class="math" data-tex="\(\chi(a)=1\)">\(\chi(a)=1\)</span>, the character is one on <span class="math" data-tex="\(H\)">\(H\)</span> by density and both sides of (12) equal <span class="math" data-tex="\(\chi(z)\)">\(\chi(z)\)</span>. Otherwise the geometric-sum identity bounds the average by
+<span class="math math-display" data-tex="\[
+ \frac{2}{N|1-\chi(a)|},
+\]">\[
+ \frac{2}{N|1-\chi(a)|},
+\]</span>
+uniformly in <span class="math" data-tex="\(z\)">\(z\)</span>, whereas the Haar integral on the right is zero. Linear combinations and uniform polynomial approximation prove (12), using again the norm-one bounds for the two averaging maps.</p>
+<p>Apply the same argument directly on <span class="math" data-tex="\(H\)">\(H\)</span>: a nontrivial character of <span class="math" data-tex="\(H\)">\(H\)</span> cannot be one at <span class="math" data-tex="\(a\)">\(a\)</span>, since its kernel is closed and would then contain the dense cyclic subgroup. Lemma 4.2 proves equidistribution in <span class="math" data-tex="\(H\)">\(H\)</span>. This does not require extending a continuous test function from <span class="math" data-tex="\(H\)">\(H\)</span> to <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>The torus characters are <span class="math" data-tex="\(x+\mathbb Z^d\mapsto e^{2\pi i k\cdot x}\)">\(x+\mathbb Z^d\mapsto e^{2\pi i k\cdot x}\)</span>, by <a href="characters-and-the-dual-group.html#ha-lca-02-corollary-4-2">HA-LCA-02, Corollary 4.2</a>. Formula (11) and the geometric sum prove sufficiency of (13). If (13) fails for a nonzero <span class="math" data-tex="\(k\)">\(k\)</span>, the corresponding nontrivial character has value one at every <span class="math" data-tex="\(n\alpha\)">\(n\alpha\)</span>; its average cannot tend to its Haar integral zero. This proves necessity. Equivalently, the double-annihilator formula identifies (13) with <span class="math" data-tex="\(\overline{\mathbb Z(\alpha+\mathbb Z^d)}=K\)">\(\overline{\mathbb Z(\alpha+\mathbb Z^d)}=K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-three-examples">5. Three examples</h2>
+<p><a id="ha-lca-16-example-5-1"></a>
+<strong>Example 5.1 — Almost periodic without a period.</strong> The function
+<span class="math math-display" data-tex="\[
+ f(x)=\sin x+\sin(\sqrt2\,x)
+\]">\[
+ f(x)=\sin x+\sin(\sqrt2\,x)
+\]</span>
+is almost periodic on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, but its only period is zero.</p>
+<p><strong>Proof.</strong> It is a linear combination of the four distinct characters <span class="math" data-tex="\(e^{ix},e^{-ix},e^{i\sqrt2x},e^{-i\sqrt2x}\)">\(e^{ix},e^{-ix},e^{i\sqrt2x},e^{-i\sqrt2x}\)</span>, so Theorem 3.2 applies. Distinct characters have mean inner product zero by Proposition 4.1. If <span class="math" data-tex="\(f(x+T)=f(x)\)">\(f(x+T)=f(x)\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>, multiply the difference by each conjugate character and take its mean. Every nonzero coefficient then forces <span class="math" data-tex="\(e^{iT}=e^{i\sqrt2T}=1\)">\(e^{iT}=e^{i\sqrt2T}=1\)</span>. Thus <span class="math" data-tex="\(T=2\pi m\)">\(T=2\pi m\)</span> and <span class="math" data-tex="\(\sqrt2T=2\pi n\)">\(\sqrt2T=2\pi n\)</span> for integers <span class="math" data-tex="\(m,n\)">\(m,n\)</span>. Irrationality of <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, proved in Lemma 2.0, forces <span class="math" data-tex="\(m=n=0\)">\(m=n=0\)</span>. The same orthogonality gives <span class="math" data-tex="\(M(f)=0\)">\(M(f)=0\)</span> and <span class="math" data-tex="\(M(|f|^2)=4\cdot(1/2)^2=1\)">\(M(|f|^2)=4\cdot(1/2)^2=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-example-5-2"></a>
+<strong>Example 5.2 — The Bohr compactification of the integers.</strong> One has
+<span class="math math-display" data-tex="\[
+ b\mathbb Z=\widehat{\mathbb T_d},\qquad
+ \beta(n)(z)=z^n.
+\]">\[
+ b\mathbb Z=\widehat{\mathbb T_d},\qquad
+ \beta(n)(z)=z^n.
+\]</span>
+It is a nonmetrizable compact group with a countable proper dense subgroup.</p>
+<p><strong>Proof.</strong> The dual of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, by <a href="characters-and-the-dual-group.html#ha-lca-02-corollary-3-2">HA-LCA-02, Corollary 3.2</a>. Formula (1) gives the asserted group and map. Density follows from Theorem 1.1; properness follows from Lemma 2.2 because <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is noncompact. The dual of <span class="math" data-tex="\(b\mathbb Z\)">\(b\mathbb Z\)</span> is the uncountable discrete group <span class="math" data-tex="\(\mathbb T_d\)">\(\mathbb T_d\)</span>, by Pontryagin duality. The uncountability follows already from the injective parametrization of any real interval of length less than one by <span class="math" data-tex="\(t\mapsto e^{2\pi it}\)">\(t\mapsto e^{2\pi it}\)</span>, using the real uncountability argument in <a href="subgroups-quotients-and-annihilators.html#ha-lca-10-example-6-3">HA-LCA-10, Example 6.3</a>. A compact abelian group is metrizable exactly when its dual is countable, by HA-LCA-12, Theorem 5.1. Thus <span class="math" data-tex="\(b\mathbb Z\)">\(b\mathbb Z\)</span> is not metrizable. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-example-5-3"></a>
+<strong>Example 5.3 — Bounded continuity is insufficient.</strong> The function <span class="math" data-tex="\(g(x)=\sin(x^2)\)">\(g(x)=\sin(x^2)\)</span> is not almost periodic.</p>
+<p><strong>Proof.</strong> Let
+<span class="math math-display" data-tex="\[
+ x_n=\sqrt{2\pi n+\pi/2},\qquad
+ y_n=\sqrt{2\pi n+3\pi/2}.
+\]">\[
+ x_n=\sqrt{2\pi n+\pi/2},\qquad
+ y_n=\sqrt{2\pi n+3\pi/2}.
+\]</span>
+Then <span class="math" data-tex="\(g(x_n)=1\)">\(g(x_n)=1\)</span>, <span class="math" data-tex="\(g(y_n)=-1\)">\(g(y_n)=-1\)</span>, but
+<span class="math math-display" data-tex="\[
+ |y_n-x_n|=\frac{\pi}{y_n+x_n}\longrightarrow0.
+\]">\[
+ |y_n-x_n|=\frac{\pi}{y_n+x_n}\longrightarrow0.
+\]</span>
+Thus <span class="math" data-tex="\(g\)">\(g\)</span> is not uniformly continuous. Every almost periodic function is uniformly continuous by Theorem 3.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><a id="ha-lca-16-exercise-6-1"></a>
+<strong>Exercise 6.1.</strong> Prove that the product of two almost periodic functions is almost periodic.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(f=F\circ\beta\)">\(f=F\circ\beta\)</span> and <span class="math" data-tex="\(g=H\circ\beta\)">\(g=H\circ\beta\)</span>, using Theorem 3.2. Then <span class="math" data-tex="\(fg=(FH)\circ\beta\)">\(fg=(FH)\circ\beta\)</span>, and <span class="math" data-tex="\(FH\in C(bG)\)">\(FH\in C(bG)\)</span>. The same theorem gives <span class="math" data-tex="\(fg\in AP(G)\)">\(fg\in AP(G)\)</span>. Directly from polynomial approximation, if <span class="math" data-tex="\(p_n\to f\)">\(p_n\to f\)</span> and <span class="math" data-tex="\(q_n\to g\)">\(q_n\to g\)</span> uniformly, then the polynomial products satisfy
+<span class="math math-display" data-tex="\[
+ \|p_nq_n-fg\|_\infty
+ \le\|p_n\|_\infty\|q_n-g\|_\infty
+     +\|p_n-f\|_\infty\|g\|_\infty\longrightarrow0,
+\]">\[
+ \|p_nq_n-fg\|_\infty
+ \le\|p_n\|_\infty\|q_n-g\|_\infty
+     +\|p_n-f\|_\infty\|g\|_\infty\longrightarrow0,
+\]</span>
+since the uniformly convergent <span class="math" data-tex="\(p_n\)">\(p_n\)</span> are uniformly bounded. This also proves the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-exercise-6-2"></a>
+<strong>Exercise 6.2.</strong> Prove that <span class="math" data-tex="\(\sin(x^2)\)">\(\sin(x^2)\)</span> is not almost periodic.</p>
+<p><strong>Solution.</strong> The points <span class="math" data-tex="\(x_n,y_n\)">\(x_n,y_n\)</span> of Example 5.3 have distance tending to zero and function-value difference two. To see explicitly why this contradicts almost periodicity, a finite <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-net of translates, with <span class="math" data-tex="\(\varepsilon=1/4\)">\(\varepsilon=1/4\)</span>, and continuity of those finitely many functions at zero give (4), so all sufficiently small increments change the function by less than <span class="math" data-tex="\(3/4\)">\(3/4\)</span>, uniformly in the base point. Taking the increment <span class="math" data-tex="\(y_n-x_n\)">\(y_n-x_n\)</span> at <span class="math" data-tex="\(x_n\)">\(x_n\)</span> contradicts the difference two. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-exercise-6-3"></a>
+<strong>Exercise 6.3.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is noncompact, prove that <span class="math" data-tex="\(\beta(G)\)">\(\beta(G)\)</span> is not open and that <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is not a homeomorphism onto its image.</p>
+<p><strong>Solution.</strong> The dual <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is nondiscrete. Lemma 2.0 supplies a discontinuous abstract character of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, which is a point of <span class="math" data-tex="\(bG\)">\(bG\)</span> outside <span class="math" data-tex="\(\beta(G)\)">\(\beta(G)\)</span>. Hence <span class="math" data-tex="\(\beta(G)\)">\(\beta(G)\)</span> is proper, while Theorem 1.1 makes it dense. An open subgroup is closed because its complementary cosets are open, so <span class="math" data-tex="\(\beta(G)\)">\(\beta(G)\)</span> cannot be open. If <span class="math" data-tex="\(\beta\)">\(\beta\)</span> were a homeomorphism onto its image, that image would be a locally compact subgroup of <span class="math" data-tex="\(bG\)">\(bG\)</span>, and Lemma 2.1 would make it closed. This again contradicts proper density. The proper-image argument is essential to this proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-16-exercise-6-4"></a>
+<strong>Exercise 6.4.</strong> For <span class="math" data-tex="\(f\in AP(\mathbb R)\)">\(f\in AP(\mathbb R)\)</span>, prove that its symmetric interval averages converge to <span class="math" data-tex="\(M(f)\)">\(M(f)\)</span>, and prove
+<span class="math" data-tex="\(M(|f|^2)=\sum_\gamma|M(f\overline\gamma)|^2\)">\(M(|f|^2)=\sum_\gamma|M(f\overline\gamma)|^2\)</span>.</p>
+<p><strong>Solution.</strong> For a polynomial <span class="math" data-tex="\(p=\sum_\lambda c_\lambda e^{2\pi i\lambda x}\)">\(p=\sum_\lambda c_\lambda e^{2\pi i\lambda x}\)</span>, formula (10) with <span class="math" data-tex="\(s=0\)">\(s=0\)</span> shows that its interval average tends to <span class="math" data-tex="\(c_0\)">\(c_0\)</span>, which equals <span class="math" data-tex="\(M(p)\)">\(M(p)\)</span>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(\|f-p\|_\infty&lt;\varepsilon\)">\(\|f-p\|_\infty&lt;\varepsilon\)</span>. The difference between the average of <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(M(f)\)">\(M(f)\)</span> has limit superior at most <span class="math" data-tex="\(2\varepsilon\)">\(2\varepsilon\)</span>, by the norm-one bounds on both averages; letting <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span> proves the limit.</p>
+<p>Lift <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(F\in C(b\mathbb R)\)">\(F\in C(b\mathbb R)\)</span>. Its inner product with the character <span class="math" data-tex="\(z\mapsto z(\gamma)\)">\(z\mapsto z(\gamma)\)</span> is <span class="math" data-tex="\(M(f\overline\gamma)\)">\(M(f\overline\gamma)\)</span>, while <span class="math" data-tex="\(\|F\|_2^2=M(|f|^2)\)">\(\|F\|_2^2=M(|f|^2)\)</span>. The orthonormal basis theorem HA-LCA-08, Corollary 4.1, and the arbitrary-index Parseval theorem PRE-HILBERT, Theorem 4.2, give the displayed identity. The sum is the supremum over finite subsets, so it is meaningful even though <span class="math" data-tex="\(\widehat{\mathbb R}\)">\(\widehat{\mathbb R}\)</span> is uncountable. The finite-level-set argument in Proposition 4.1 shows that only countably many terms are nonzero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

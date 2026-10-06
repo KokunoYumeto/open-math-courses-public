@@ -1,0 +1,1632 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Spectral measures and operator domains</title><link rel="stylesheet" href="reader.css"><script src="math-config.js"></script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body class="dependency-proof"><header><nav><a href="index.html">Course contents</a><span class="unlinked">Spectral budgets</span><span class="unlinked">Regular spectral triples</span><a href="the-local-index-formula.html">Residue index formulas</a><span class="unlinked">Transverse geometry</span><a href="dependencies.html">Prerequisite proofs</a></nav></header><main><article><p>Proof taken from Elliptic Operators &amp; Boundary Problems, AN03-P005, pinned September 2026 edition; AI-authored mathematical draft. (CC0-1.0), checked and edited by GPT-6.1 Sol (OpenAI) at Ultra. These complete proof sections supply the precise prerequisite statements identified in the course. Mathematical paragraphs are preserved; headings are made descriptive in this readable adaptation, dated 1 October 2026. The complete source and version information are available below.</p><p><a href="../dependencies/AN-03/lower-bounded-spectral-calculus.md">Original source</a> · <span class="unlinked">Source versions and proof scope</span> · <a href="../dependencies/AN-03/LICENSE">Component license notice</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a></p><p>This independently written programme text is dedicated under CC0 1.0 Universal, to the extent rights are held. External works retain their own rights.</p><hr><p><a href="#AN03-SPC-001">Constructing the scalar measure from a positive functional</a> · <a href="#IPM-001">Positivity and the mass constant</a> · <a href="#IPM-002">Mass assigned to open sets</a> · <a href="#IPM-003">Outer measure and separation by positive distance</a> · <a href="#IPM-004">Borel measurability and countable additivity</a> · <a href="#IPM-005">Outer and inner regularity</a> · <a href="#IPM-006">Integration and the convergence statements actually used</a> · <a href="#IPM-007">Recovery of the original functional</a> · <a href="#IPM-008">Uniqueness and lower semicontinuous approximation</a> · <a href="#IPM-009">Finite complex measures, variation, and integration</a> · <a href="#AN03-SPC-002">Complex measure pairings and Hilbert representation</a> · <a href="#IPM-010">Polarization with the linear-first convention</a> · <a href="#IPM-011">Bounded Borel pairings and their convergence</a> · <a href="#IPM-012">The corresponding bounded operators, with the Hilbert-space step proved</a> · <a href="#AN03-SPC-003">The full calculus of a bounded positive contraction</a> · <a href="#AN03-SPC-004">The original lower-bounded operator and its sharp cutoff</a> · <a href="#LB1">The bounded inverse is constructed on the actual domain</a> · <a href="#LB2">The original real spectral coordinate is recovered</a> · <a href="#LB3">Equality of the closed operators, including their domains</a> · <a href="#LB4">Every measurable multiplier and every recursive power</a> · <a href="#LB5">The precise sharp projector in DSP010</a> · <a href="#AN03-SPC-005">Two exact models and a solved domain exercise</a></p><h1 id="spectral-measures-with-the-original-operator-domain-retained">Spectral measures with the original operator domain retained</h1>
+<p>A sharp spectral cutoff can be constructed without an eigenbasis. This companion builds the scalar measures, the bounded positive-operator calculus, and the exact passage back to a lower-bounded self-adjoint operator. Every product keeps its actual operator domain. The construction applies to the unchanged weighted Hilbert space in the elliptic course, including noncompact domains.</p>
+<p>The first two parts supply the measure and Hilbert foundations used by the operator proof. The third constructs the full calculus from positive Bernstein polynomial weights. The fourth recovers the original lower-bounded operator, its recursive powers, and both endpoints of a sharp cutoff. The final part gives continuous and atomic models with complete domain calculations. Inner products are linear in the first variable throughout.</p>
+<h2 id="AN03-SPC-001"><span id="an03-spc-001"></span>Constructing the scalar measure from a positive functional</h2>
+<p>The space throughout is <span class="math" data-tex="\(K=[0,1]\)">\(K=[0,1]\)</span>, with its usual metric and relative topology. All Borel sets and all supports below are relative to <span class="math" data-tex="\(K\)">\(K\)</span>. A positive complex-linear functional means a complex-linear map <span class="math" data-tex="\(L:C(K;\mathbb C)\to\mathbb C\)">\(L:C(K;\mathbb C)\to\mathbb C\)</span> such that <span class="math" data-tex="\(L(f)\)">\(L(f)\)</span> is a nonnegative real number whenever <span class="math" data-tex="\(f\)">\(f\)</span> is real and nonnegative. Inner products and all sesquilinear forms are linear in their first argument and conjugate-linear in their second argument.</p>
+<p>This proof constructs the measure, proves countable additivity and regularity, develops the integration facts used, and then proves the exact complex-measure statements for operator pairings. Its measure-theoretic input is set theory and elementary compactness of the interval; it does not use a representation theorem or a spectral theorem. Completeness of a Hilbert space is used only in the final operator-representation step, whose proof is also included.</p>
+<h3 id="IPM-001"><span id="ipm-001"></span>Positivity and the mass constant</h3>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be positive, and put <span class="math" data-tex="\(M=L(1)\geq0\)">\(M=L(1)\geq0\)</span>. For real continuous <span class="math" data-tex="\(u\)">\(u\)</span>, the functions <span class="math" data-tex="\(u_+=\max(u,0)\)">\(u_+=\max(u,0)\)</span> and <span class="math" data-tex="\(u_-=\max(-u,0)\)">\(u_-=\max(-u,0)\)</span> are continuous and nonnegative, so <span class="math" data-tex="\(L(u)=L(u_+)-L(u_-)\)">\(L(u)=L(u_+)-L(u_-)\)</span> is real. Consequently <span class="math" data-tex="\(L(\overline f)=\overline{L(f)}\)">\(L(\overline f)=\overline{L(f)}\)</span> for complex continuous <span class="math" data-tex="\(f\)">\(f\)</span>. If <span class="math" data-tex="\(u\leq v\)">\(u\leq v\)</span> are real, positivity gives <span class="math" data-tex="\(L(u)\leq L(v)\)">\(L(u)\leq L(v)\)</span>.</p>
+<p>For complex <span class="math" data-tex="\(f\)">\(f\)</span>, if <span class="math" data-tex="\(L(f)\ne0\)">\(L(f)\ne0\)</span>, choose a scalar <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> of modulus one with <span class="math" data-tex="\(\zeta L(f)=|L(f)|\)">\(\zeta L(f)=|L(f)|\)</span>. Then <span class="math" data-tex="\(\operatorname{Re}(\zeta f)\leq|f|\)">\(\operatorname{Re}(\zeta f)\leq|f|\)</span> pointwise, and complex linearity and the preceding real-valued property give</p>
+<span class="math math-display" data-tex="\[
+|L(f)|=L(\operatorname{Re}(\zeta f))\leq L(|f|)\leq M\|f\|_\infty.
+\tag{PR1}
+\]">\[
+|L(f)|=L(\operatorname{Re}(\zeta f))\leq L(|f|)\leq M\|f\|_\infty.
+\tag{PR1}
+\]</span>
+<p>The same inequality holds when <span class="math" data-tex="\(L(f)=0\)">\(L(f)=0\)</span>. Thus positivity implies boundedness, <span class="math" data-tex="\(\|L\|\leq M\)">\(\|L\|\leq M\)</span>, and evaluation on <span class="math" data-tex="\(1\)">\(1\)</span> gives <span class="math" data-tex="\(\|L\|=M\)">\(\|L\|=M\)</span>. In particular <span class="math" data-tex="\(M=0\)">\(M=0\)</span> implies <span class="math" data-tex="\(L=0\)">\(L=0\)</span>. This case is included in every construction below.</p>
+<h3 id="IPM-002"><span id="ipm-002"></span>Mass assigned to open sets</h3>
+<p>For each open <span class="math" data-tex="\(U\subset K\)">\(U\subset K\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+c(U)=\sup\{L(f):f\in C(K;\mathbb R),\ 0\leq f\leq1,\ \operatorname{supp}f\subset U\}.
+\tag{PR2}
+\]">\[
+c(U)=\sup\{L(f):f\in C(K;\mathbb R),\ 0\leq f\leq1,\ \operatorname{supp}f\subset U\}.
+\tag{PR2}
+\]</span>
+<p>The zero function is allowed, and the empty support causes no exception. We have <span class="math" data-tex="\(0\leq c(U)\leq M\)">\(0\leq c(U)\leq M\)</span>, <span class="math" data-tex="\(c(\varnothing)=0\)">\(c(\varnothing)=0\)</span>, <span class="math" data-tex="\(c(K)=M\)">\(c(K)=M\)</span>, and <span class="math" data-tex="\(c\)">\(c\)</span> is monotone under inclusion.</p>
+<p>We first prove the finite decomposition needed for countable subadditivity. Let <span class="math" data-tex="\(S\subset\bigcup_{i=1}^rU_i\)">\(S\subset\bigcup_{i=1}^rU_i\)</span> be a nonempty compact set, with each <span class="math" data-tex="\(U_i\)">\(U_i\)</span> open. Put <span class="math" data-tex="\(d_i(x)=\operatorname{dist}(x,K\setminus U_i)\)">\(d_i(x)=\operatorname{dist}(x,K\setminus U_i)\)</span> when <span class="math" data-tex="\(U_i\ne K\)">\(U_i\ne K\)</span>, and put <span class="math" data-tex="\(d_i=1\)">\(d_i=1\)</span> when <span class="math" data-tex="\(U_i=K\)">\(U_i=K\)</span>. These functions are continuous, nonnegative, and positive at exactly the points of <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. The continuous function <span class="math" data-tex="\(\max_i d_i\)">\(\max_i d_i\)</span> is positive on <span class="math" data-tex="\(S\)">\(S\)</span>, so its minimum there is positive. Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> smaller than that minimum and also smaller than one. Set</p>
+<span class="math math-display" data-tex="\[
+h_i=(d_i-\delta/2)_+,\qquad h_0(x)=\operatorname{dist}(x,S),\qquad
+\psi_i=\frac{h_i}{h_0+\sum_{j=1}^rh_j}.
+\tag{PR3}
+\]">\[
+h_i=(d_i-\delta/2)_+,\qquad h_0(x)=\operatorname{dist}(x,S),\qquad
+\psi_i=\frac{h_i}{h_0+\sum_{j=1}^rh_j}.
+\tag{PR3}
+\]</span>
+<p>The denominator is positive on <span class="math" data-tex="\(S\)">\(S\)</span> by the choice of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and positive off <span class="math" data-tex="\(S\)">\(S\)</span> because <span class="math" data-tex="\(h_0&gt;0\)">\(h_0&gt;0\)</span> there. Thus each <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> is continuous and between zero and one. Its support is contained in the compact set <span class="math" data-tex="\(\{d_i\geq\delta/2\}\subset U_i\)">\(\{d_i\geq\delta/2\}\subset U_i\)</span>. On <span class="math" data-tex="\(S\)">\(S\)</span>, the sum of the <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> is one.</p>
+<p>Suppose that <span class="math" data-tex="\(U\subset\bigcup_{j=1}^\infty U_j\)">\(U\subset\bigcup_{j=1}^\infty U_j\)</span>, with all these sets open, and take an admissible <span class="math" data-tex="\(f\)">\(f\)</span> in (PR2) for <span class="math" data-tex="\(U\)">\(U\)</span>. If <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, there is nothing to prove. Otherwise its compact support <span class="math" data-tex="\(S\)">\(S\)</span> has a finite subcover from the <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. Apply (PR3) to that subcover and set <span class="math" data-tex="\(f_i=f\psi_i\)">\(f_i=f\psi_i\)</span>. Each <span class="math" data-tex="\(f_i\)">\(f_i\)</span> is admissible for its corresponding <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, and <span class="math" data-tex="\(\sum_i f_i=f\)">\(\sum_i f_i=f\)</span>: on <span class="math" data-tex="\(S\)">\(S\)</span> the partition sums to one, and off <span class="math" data-tex="\(S\)">\(S\)</span> the function <span class="math" data-tex="\(f\)">\(f\)</span> is zero. Therefore</p>
+<span class="math math-display" data-tex="\[
+L(f)=\sum_iL(f_i)\leq\sum_{j=1}^\infty c(U_j).
+\quad\text{Hence}\quad
+c(U)\leq\sum_{j=1}^\infty c(U_j).
+\tag{PR4}
+\]">\[
+L(f)=\sum_iL(f_i)\leq\sum_{j=1}^\infty c(U_j).
+\quad\text{Hence}\quad
+c(U)\leq\sum_{j=1}^\infty c(U_j).
+\tag{PR4}
+\]</span>
+<p>For finitely many pairwise disjoint open sets <span class="math" data-tex="\(U_1,\ldots,U_r\)">\(U_1,\ldots,U_r\)</span>, admissible functions <span class="math" data-tex="\(f_i\)">\(f_i\)</span> have disjoint supports, so <span class="math" data-tex="\(0\leq\sum_i f_i\leq1\)">\(0\leq\sum_i f_i\leq1\)</span> and its support is contained in <span class="math" data-tex="\(\bigcup_iU_i\)">\(\bigcup_iU_i\)</span>. Approximating each supremum in (PR2) within an arbitrarily small positive error gives <span class="math" data-tex="\(c(\bigcup_iU_i)\geq\sum_i c(U_i)\)">\(c(\bigcup_iU_i)\geq\sum_i c(U_i)\)</span>. Combined with (PR4), this proves equality. For countably many disjoint open sets, monotonicity gives the lower bound by every finite partial sum, while (PR4) gives the upper bound. Thus <span class="math" data-tex="\(c\)">\(c\)</span> is countably additive on disjoint open unions.</p>
+<h3 id="IPM-003"><span id="ipm-003"></span>Outer measure and separation by positive distance</h3>
+<p>For every subset <span class="math" data-tex="\(E\subset K\)">\(E\subset K\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\mu^*(E)=\inf\{c(U):U\subset K\text{ open},\ E\subset U\}.
+\tag{PR5}
+\]">\[
+\mu^*(E)=\inf\{c(U):U\subset K\text{ open},\ E\subset U\}.
+\tag{PR5}
+\]</span>
+<p>The family is never empty, since <span class="math" data-tex="\(K\)">\(K\)</span> is allowed. The function <span class="math" data-tex="\(\mu^*\)">\(\mu^*\)</span> is monotone, vanishes on the empty set, and is at most <span class="math" data-tex="\(M\)">\(M\)</span>. For subsets <span class="math" data-tex="\(E_j\)">\(E_j\)</span> and <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, choose open <span class="math" data-tex="\(U_j\supset E_j\)">\(U_j\supset E_j\)</span> with <span class="math" data-tex="\(c(U_j)\leq\mu^*(E_j)+\epsilon2^{-j}\)">\(c(U_j)\leq\mu^*(E_j)+\epsilon2^{-j}\)</span>, where indices begin at one. By (PR4),</p>
+<span class="math math-display" data-tex="\[
+\mu^*\Bigl(\bigcup_jE_j\Bigr)
+\leq c\Bigl(\bigcup_jU_j\Bigr)
+\leq\sum_j\mu^*(E_j)+\epsilon.
+\tag{PR6}
+\]">\[
+\mu^*\Bigl(\bigcup_jE_j\Bigr)
+\leq c\Bigl(\bigcup_jU_j\Bigr)
+\leq\sum_j\mu^*(E_j)+\epsilon.
+\tag{PR6}
+\]</span>
+<p>Letting <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span> proves countable subadditivity. Thus <span class="math" data-tex="\(\mu^*\)">\(\mu^*\)</span> is an outer measure. For open <span class="math" data-tex="\(U\)">\(U\)</span>, (PR5) and monotonicity of <span class="math" data-tex="\(c\)">\(c\)</span> show <span class="math" data-tex="\(\mu^*(U)=c(U)\)">\(\mu^*(U)=c(U)\)</span>; in particular <span class="math" data-tex="\(\mu^*(K)=M\)">\(\mu^*(K)=M\)</span>.</p>
+<p>If nonempty subsets <span class="math" data-tex="\(A,B\)">\(A,B\)</span> have distance <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, take any open <span class="math" data-tex="\(U\supset A\cup B\)">\(U\supset A\cup B\)</span> and form
+<span class="math" data-tex="\(U_A=U\cap\{x:\operatorname{dist}(x,A)&lt;d/3\}\)">\(U_A=U\cap\{x:\operatorname{dist}(x,A)&lt;d/3\}\)</span> and
+<span class="math" data-tex="\(U_B=U\cap\{x:\operatorname{dist}(x,B)&lt;d/3\}\)">\(U_B=U\cap\{x:\operatorname{dist}(x,B)&lt;d/3\}\)</span>.
+They are disjoint open supersets of <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. To see disjointness, a point in both would admit points of <span class="math" data-tex="\(A,B\)">\(A,B\)</span> whose distance is less than <span class="math" data-tex="\(2d/3\)">\(2d/3\)</span> plus arbitrarily small errors, contradicting the definition of <span class="math" data-tex="\(d\)">\(d\)</span>. Open-set additivity and monotonicity give
+<span class="math" data-tex="\(c(U)\geq c(U_A)+c(U_B)\geq\mu^*(A)+\mu^*(B)\)">\(c(U)\geq c(U_A)+c(U_B)\geq\mu^*(A)+\mu^*(B)\)</span>.
+Take the infimum over <span class="math" data-tex="\(U\)">\(U\)</span> and use outer subadditivity for the reverse inequality. The result, also immediate if one set is empty, is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{dist}(A,B)&gt;0
+\quad\Longrightarrow\quad
+\mu^*(A\cup B)=\mu^*(A)+\mu^*(B).
+\tag{PR7}
+\]">\[
+\operatorname{dist}(A,B)&gt;0
+\quad\Longrightarrow\quad
+\mu^*(A\cup B)=\mu^*(A)+\mu^*(B).
+\tag{PR7}
+\]</span>
+<h3 id="IPM-004"><span id="ipm-004"></span>Borel measurability and countable additivity</h3>
+<p>Call a set <span class="math" data-tex="\(A\subset K\)">\(A\subset K\)</span> measurable for <span class="math" data-tex="\(\mu^*\)">\(\mu^*\)</span> when, for every subset <span class="math" data-tex="\(E\subset K\)">\(E\subset K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mu^*(E)=\mu^*(E\cap A)+\mu^*(E\setminus A).
+\tag{PR8}
+\]">\[
+\mu^*(E)=\mu^*(E\cap A)+\mu^*(E\setminus A).
+\tag{PR8}
+\]</span>
+<p>First every closed set <span class="math" data-tex="\(F\)">\(F\)</span> satisfies (PR8). The cases <span class="math" data-tex="\(F=\varnothing,K\)">\(F=\varnothing,K\)</span> are immediate. Otherwise the function <span class="math" data-tex="\(d_F(x)=\operatorname{dist}(x,F)\)">\(d_F(x)=\operatorname{dist}(x,F)\)</span> is continuous and satisfies <span class="math" data-tex="\(|d_F(x)-d_F(y)|\leq|x-y|\)">\(|d_F(x)-d_F(y)|\leq|x-y|\)</span>, by the triangle inequality and taking infima. Fix any subset <span class="math" data-tex="\(E\)">\(E\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+E_i=\{x\in E:d_F(x)\geq1/i\},\qquad
+A_j=\{x\in E:1/(j+1)\leq d_F(x)&lt;1/j\}.
+\tag{PR9}
+\]">\[
+E_i=\{x\in E:d_F(x)\geq1/i\},\qquad
+A_j=\{x\in E:1/(j+1)\leq d_F(x)&lt;1/j\}.
+\tag{PR9}
+\]</span>
+<p>The set <span class="math" data-tex="\(E_i\)">\(E_i\)</span> has distance at least <span class="math" data-tex="\(1/i\)">\(1/i\)</span> from <span class="math" data-tex="\(E\cap F\)">\(E\cap F\)</span>. Hence (PR7) and monotonicity give
+<span class="math" data-tex="\(\mu^*(E)\geq\mu^*(E\cap F)+\mu^*(E_i)\)">\(\mu^*(E)\geq\mu^*(E\cap F)+\mu^*(E_i)\)</span>.
+The sets <span class="math" data-tex="\(A_j\)">\(A_j\)</span> with indices of one fixed parity are separated from one another by positive distance in each finite collection: for indices <span class="math" data-tex="\(j,j+2\)">\(j,j+2\)</span>, the gap between the indicated distance intervals is at least <span class="math" data-tex="\(1/(j+1)-1/(j+2)&gt;0\)">\(1/(j+1)-1/(j+2)&gt;0\)</span>, and the distance function is 1-Lipschitz. Iterating (PR7) over a finite collection of even indices, and then over odd indices, shows that each of the two series of their outer masses has sum at most <span class="math" data-tex="\(M\)">\(M\)</span>. Therefore <span class="math" data-tex="\(\sum_{j\geq1}\mu^*(A_j)\)">\(\sum_{j\geq1}\mu^*(A_j)\)</span> converges and its tails tend to zero.</p>
+<p>The set <span class="math" data-tex="\(E\setminus F\)">\(E\setminus F\)</span> is contained in <span class="math" data-tex="\(E_i\cup\bigcup_{j\geq i}A_j\)">\(E_i\cup\bigcup_{j\geq i}A_j\)</span>. Outer subadditivity now gives</p>
+<span class="math math-display" data-tex="\[
+\mu^*(E\setminus F)
+\leq\mu^*(E_i)+\sum_{j\geq i}\mu^*(A_j).
+\tag{PR10}
+\]">\[
+\mu^*(E\setminus F)
+\leq\mu^*(E_i)+\sum_{j\geq i}\mu^*(A_j).
+\tag{PR10}
+\]</span>
+<p>Combining the preceding two inequalities and letting <span class="math" data-tex="\(i\to\infty\)">\(i\to\infty\)</span> proves
+<span class="math" data-tex="\(\mu^*(E)\geq\mu^*(E\cap F)+\mu^*(E\setminus F)\)">\(\mu^*(E)\geq\mu^*(E\cap F)+\mu^*(E\setminus F)\)</span>.
+Outer subadditivity gives the opposite inequality. This proves (PR8) for every closed <span class="math" data-tex="\(F\)">\(F\)</span>, without assuming continuity from below for an outer measure.</p>
+<p>Here is the complete algebra argument for the measurable sets. Complementation preserves (PR8). If <span class="math" data-tex="\(A,B\)">\(A,B\)</span> satisfy (PR8), split <span class="math" data-tex="\(E\)">\(E\)</span> first by <span class="math" data-tex="\(A\)">\(A\)</span>, then split <span class="math" data-tex="\(E\setminus A\)">\(E\setminus A\)</span> by <span class="math" data-tex="\(B\)">\(B\)</span>. This gives
+<span class="math" data-tex="\(\mu^*(E)=\mu^*(E\cap A)+\mu^*((E\setminus A)\cap B)+\mu^*(E\setminus(A\cup B))\)">\(\mu^*(E)=\mu^*(E\cap A)+\mu^*((E\setminus A)\cap B)+\mu^*(E\setminus(A\cup B))\)</span>.
+The first two terms are at least <span class="math" data-tex="\(\mu^*(E\cap(A\cup B))\)">\(\mu^*(E\cap(A\cup B))\)</span> by subadditivity. Together with the reverse subadditivity bound, this proves (PR8) for <span class="math" data-tex="\(A\cup B\)">\(A\cup B\)</span>. Thus the measurable sets form an algebra.</p>
+<p>For pairwise disjoint measurable <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, repeated splitting gives, with <span class="math" data-tex="\(A=\bigcup_jA_j\)">\(A=\bigcup_jA_j\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mu^*(E)\geq\sum_{j=1}^r\mu^*(E\cap A_j)+\mu^*(E\setminus A)
+\qquad(r\geq1).
+\tag{PR11}
+\]">\[
+\mu^*(E)\geq\sum_{j=1}^r\mu^*(E\cap A_j)+\mu^*(E\setminus A)
+\qquad(r\geq1).
+\tag{PR11}
+\]</span>
+<p>Let <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>. The sum is at least <span class="math" data-tex="\(\mu^*(E\cap A)\)">\(\mu^*(E\cap A)\)</span> by countable subadditivity. Again the reverse inequality is automatic, so <span class="math" data-tex="\(A\)">\(A\)</span> is measurable. Any countable union can be made disjoint by replacing its terms by their differences from the finite preceding union; those differences belong to the algebra. Consequently the measurable sets form a sigma-algebra. Since they contain every closed set, they contain every Borel set.</p>
+<p>For disjoint measurable <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, take <span class="math" data-tex="\(E=\bigcup_jA_j\)">\(E=\bigcup_jA_j\)</span> in (PR11) and compare with countable subadditivity. The result is exact countable additivity. Restriction to Borel sets therefore gives a finite positive Borel measure</p>
+<span class="math math-display" data-tex="\[
+\mu(E)=\mu^*(E)\quad(E\text{ Borel}),\qquad
+\mu(K)=M,\qquad \mu(U)=c(U)\quad(U\text{ open}).
+\tag{PR12}
+\]">\[
+\mu(E)=\mu^*(E)\quad(E\text{ Borel}),\qquad
+\mu(K)=M,\qquad \mu(U)=c(U)\quad(U\text{ open}).
+\tag{PR12}
+\]</span>
+<p>No representation or integration theorem has been used to obtain this measure.</p>
+<h3 id="IPM-005"><span id="ipm-005"></span>Outer and inner regularity</h3>
+<p>Equation (PR5), together with (PR12), gives for every Borel set <span class="math" data-tex="\(E\)">\(E\)</span></p>
+<span class="math math-display" data-tex="\[
+\mu(E)=\inf_{U\supset E,\ U\text{ open}}\mu(U).
+\tag{PR13}
+\]">\[
+\mu(E)=\inf_{U\supset E,\ U\text{ open}}\mu(U).
+\tag{PR13}
+\]</span>
+<p>To prove inner regularity, choose open <span class="math" data-tex="\(V\supset K\setminus E\)">\(V\supset K\setminus E\)</span> with
+<span class="math" data-tex="\(\mu(V)&lt;\mu(K\setminus E)+\epsilon\)">\(\mu(V)&lt;\mu(K\setminus E)+\epsilon\)</span>, and put <span class="math" data-tex="\(F=K\setminus V\)">\(F=K\setminus V\)</span>.
+Then <span class="math" data-tex="\(F\)">\(F\)</span> is compact and contained in <span class="math" data-tex="\(E\)">\(E\)</span>. Finite additivity on the disjoint parts of <span class="math" data-tex="\(V\)">\(V\)</span> gives
+<span class="math" data-tex="\(\mu(E\setminus F)=\mu(E\cap V)=\mu(V)-\mu(K\setminus E)&lt;\epsilon\)">\(\mu(E\setminus F)=\mu(E\cap V)=\mu(V)-\mu(K\setminus E)&lt;\epsilon\)</span>.
+It follows that</p>
+<span class="math math-display" data-tex="\[
+\mu(E)=\sup_{F\subset E,\ F\text{ compact}}\mu(F).
+\tag{PR14}
+\]">\[
+\mu(E)=\sup_{F\subset E,\ F\text{ compact}}\mu(F).
+\tag{PR14}
+\]</span>
+<p>Both inequalities also hold for empty sets and for zero mass. This is the claimed regularity on every Borel set, rather than only on open sets.</p>
+<h3 id="IPM-006"><span id="ipm-006"></span>Integration and the convergence statements actually used</h3>
+<p>The following construction and proofs apply to any finite positive measure <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on a sigma-algebra, including <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on the Borel sets. A nonnegative simple function can be written as <span class="math" data-tex="\(s=\sum_{i=1}^ra_i1_{E_i}\)">\(s=\sum_{i=1}^ra_i1_{E_i}\)</span> with disjoint measurable <span class="math" data-tex="\(E_i\)">\(E_i\)</span> and <span class="math" data-tex="\(a_i\geq0\)">\(a_i\geq0\)</span>. Define <span class="math" data-tex="\(\int s\,d\rho=\sum_i a_i\rho(E_i)\)">\(\int s\,d\rho=\sum_i a_i\rho(E_i)\)</span>. Refining two finite partitions by their intersections proves independence of the representation, additivity for simple functions, and monotonicity. For a nonnegative measurable function <span class="math" data-tex="\(f\)">\(f\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\int f\,d\rho=\sup\{\int s\,d\rho:0\leq s\leq f,\ s\text{ simple}\}.
+\tag{PR15}
+\]">\[
+\int f\,d\rho=\sup\{\int s\,d\rho:0\leq s\leq f,\ s\text{ simple}\}.
+\tag{PR15}
+\]</span>
+<p>Countable additivity first implies continuity from below for sets. If <span class="math" data-tex="\(E_k\uparrow E\)">\(E_k\uparrow E\)</span>, the disjoint sets <span class="math" data-tex="\(E_1,E_2\setminus E_1,\ldots\)">\(E_1,E_2\setminus E_1,\ldots\)</span> partition <span class="math" data-tex="\(E\)">\(E\)</span>, so <span class="math" data-tex="\(\rho(E_k)\uparrow\rho(E)\)">\(\rho(E_k)\uparrow\rho(E)\)</span>. Taking complements inside a set of finite mass also proves continuity from above.</p>
+<p>If <span class="math" data-tex="\(0\leq f_k\uparrow f\)">\(0\leq f_k\uparrow f\)</span>, monotonicity gives <span class="math" data-tex="\(\lim_k\int f_k\leq\int f\)">\(\lim_k\int f_k\leq\int f\)</span>. For the reverse inequality, take a nonnegative simple <span class="math" data-tex="\(s\leq f\)">\(s\leq f\)</span> and <span class="math" data-tex="\(0&lt;c&lt;1\)">\(0&lt;c&lt;1\)</span>. On every point where <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, the increasing sequence <span class="math" data-tex="\(f_k\)">\(f_k\)</span> eventually exceeds <span class="math" data-tex="\(cs\)">\(cs\)</span>. Thus the sets <span class="math" data-tex="\(E_k=\{f_k\geq cs\}\)">\(E_k=\{f_k\geq cs\}\)</span> increase to the entire underlying space (points where <span class="math" data-tex="\(s=0\)">\(s=0\)</span> already belong to every <span class="math" data-tex="\(E_k\)">\(E_k\)</span>). Continuity from below for each set in the finite simple partition gives <span class="math" data-tex="\(\int s1_{E_k}\to\int s\)">\(\int s1_{E_k}\to\int s\)</span>, while <span class="math" data-tex="\(f_k\geq cs1_{E_k}\)">\(f_k\geq cs1_{E_k}\)</span>. Hence <span class="math" data-tex="\(\lim_k\int f_k\geq c\int s\)">\(\lim_k\int f_k\geq c\int s\)</span>. Take the supremum over <span class="math" data-tex="\(s\)">\(s\)</span> and then let <span class="math" data-tex="\(c\uparrow1\)">\(c\uparrow1\)</span>. This proves monotone convergence, including infinite integrals:</p>
+<span class="math math-display" data-tex="\[
+0\leq f_k\uparrow f\quad\Longrightarrow\quad
+\int f_k\,d\rho\uparrow\int f\,d\rho.
+\tag{PR16}
+\]">\[
+0\leq f_k\uparrow f\quad\Longrightarrow\quad
+\int f_k\,d\rho\uparrow\int f\,d\rho.
+\tag{PR16}
+\]</span>
+<p>Every nonnegative measurable <span class="math" data-tex="\(f\)">\(f\)</span> has the increasing simple approximants
+<span class="math" data-tex="\(s_k=2^{-k}\lfloor2^k\min(f,k)\rfloor\)">\(s_k=2^{-k}\lfloor2^k\min(f,k)\rfloor\)</span>.
+They are simple because the cap is finite, are measurable because their level sets are measurable, are increasing because the caps increase and each grid refines its predecessor, and tend pointwise to <span class="math" data-tex="\(f\)">\(f\)</span>. Applying (PR16) to these approximants for <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(g\)">\(g\)</span>, and their sums proves
+<span class="math" data-tex="\(\int(f+g)=\int f+\int g\)">\(\int(f+g)=\int f+\int g\)</span>. Positive homogeneity follows in the same way or directly from (PR15).</p>
+<p>For real <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(\int|f|&lt;\infty\)">\(\int|f|&lt;\infty\)</span>, define <span class="math" data-tex="\(\int f=\int f_+-\int f_-\)">\(\int f=\int f_+-\int f_-\)</span>. To prove additivity for real integrable <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, use the pointwise identity
+<span class="math" data-tex="\(f_++g_++(f+g)_-=f_-+g_-+(f+g)_+\)">\(f_++g_++(f+g)_-=f_-+g_-+(f+g)_+\)</span>.
+All terms have finite integrals because <span class="math" data-tex="\(|f+g|\leq|f|+|g|\)">\(|f+g|\leq|f|+|g|\)</span>; additivity for nonnegative functions and rearrangement therefore give <span class="math" data-tex="\(\int(f+g)=\int f+\int g\)">\(\int(f+g)=\int f+\int g\)</span>. Positive homogeneity is already proved, and <span class="math" data-tex="\((-f)_+=f_-\)">\((-f)_+=f_-\)</span>, <span class="math" data-tex="\((-f)_-=f_+\)">\((-f)_-=f_+\)</span> proves the negative-scalar case. For complex integrable <span class="math" data-tex="\(f\)">\(f\)</span>, define its integral by its real and imaginary parts; real linearity and multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> prove complex linearity. If its integral is nonzero, multiply by a constant phase making that integral positive real and use <span class="math" data-tex="\(\operatorname{Re}(\zeta f)\leq|f|\)">\(\operatorname{Re}(\zeta f)\leq|f|\)</span>, as in (PR1). This proves</p>
+<span class="math math-display" data-tex="\[
+\left|\int f\,d\rho\right|\leq\int|f|\,d\rho.
+\tag{PR17}
+\]">\[
+\left|\int f\,d\rho\right|\leq\int|f|\,d\rho.
+\tag{PR17}
+\]</span>
+<p>Fatou's inequality follows directly from (PR16): for nonnegative measurable <span class="math" data-tex="\(f_k\)">\(f_k\)</span>, set <span class="math" data-tex="\(h_j=\inf_{k\geq j}f_k\)">\(h_j=\inf_{k\geq j}f_k\)</span>. These measurable functions increase to <span class="math" data-tex="\(\liminf f_k\)">\(\liminf f_k\)</span>, and <span class="math" data-tex="\(\int h_j\leq\inf_{k\geq j}\int f_k\)">\(\int h_j\leq\inf_{k\geq j}\int f_k\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\int\liminf_k f_k\,d\rho\leq\liminf_k\int f_k\,d\rho.
+\tag{PR18}
+\]">\[
+\int\liminf_k f_k\,d\rho\leq\liminf_k\int f_k\,d\rho.
+\tag{PR18}
+\]</span>
+<p>If complex measurable <span class="math" data-tex="\(f_k\to f\)">\(f_k\to f\)</span> pointwise and <span class="math" data-tex="\(|f_k|\leq g\)">\(|f_k|\leq g\)</span> with <span class="math" data-tex="\(\int g&lt;\infty\)">\(\int g&lt;\infty\)</span>, then <span class="math" data-tex="\(|f|\leq g\)">\(|f|\leq g\)</span>. Apply (PR18) to the nonnegative functions <span class="math" data-tex="\(2g-|f_k-f|\)">\(2g-|f_k-f|\)</span>, whose limit is <span class="math" data-tex="\(2g\)">\(2g\)</span>. Their integrals are <span class="math" data-tex="\(2\int g-\int|f_k-f|\)">\(2\int g-\int|f_k-f|\)</span>, so the resulting inequality forces <span class="math" data-tex="\(\limsup_k\int|f_k-f|\leq0\)">\(\limsup_k\int|f_k-f|\leq0\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\int|f_k-f|\,d\rho\longrightarrow0,
+\qquad
+\int f_k\,d\rho\longrightarrow\int f\,d\rho.
+\tag{PR19}
+\]">\[
+\int|f_k-f|\,d\rho\longrightarrow0,
+\qquad
+\int f_k\,d\rho\longrightarrow\int f\,d\rho.
+\tag{PR19}
+\]</span>
+<p>The same proof applies to convergence outside a measurable null set by changing the functions to zero there. In particular, on a finite measure space, pointwise convergence of a uniformly bounded sequence of bounded Borel functions implies convergence of their integrals. All monotone and dominated convergence uses below refer to the proofs (PR16)–(PR19), not to a spectral-theoretic convergence assertion.</p>
+<h3 id="IPM-007"><span id="ipm-007"></span>Recovery of the original functional</h3>
+<p>Let <span class="math" data-tex="\(f\in C(K;\mathbb R)\)">\(f\in C(K;\mathbb R)\)</span> be nonnegative, and let <span class="math" data-tex="\(B=\|f\|_\infty\)">\(B=\|f\|_\infty\)</span>. If <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, the assertion is immediate. Otherwise fix <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, let <span class="math" data-tex="\(r=\lceil B/\delta\rceil\)">\(r=\lceil B/\delta\rceil\)</span>, and put <span class="math" data-tex="\(U_i=\{f&gt;i\delta\}\)">\(U_i=\{f&gt;i\delta\}\)</span>, <span class="math" data-tex="\(1\leq i\leq r\)">\(1\leq i\leq r\)</span>. For each <span class="math" data-tex="\(i\)">\(i\)</span>, choose any function <span class="math" data-tex="\(g_i\)">\(g_i\)</span> admissible in (PR2) for <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. At a point <span class="math" data-tex="\(x\)">\(x\)</span>, the number of indices with <span class="math" data-tex="\(g_i(x)&gt;0\)">\(g_i(x)&gt;0\)</span> is at most the number of positive integers <span class="math" data-tex="\(i\)">\(i\)</span> for which <span class="math" data-tex="\(i\delta&lt;f(x)\)">\(i\delta&lt;f(x)\)</span>. Therefore
+<span class="math" data-tex="\(0\leq\delta\sum_i g_i(x)\leq f(x)\)">\(0\leq\delta\sum_i g_i(x)\leq f(x)\)</span>.
+Positivity and approximation of the finitely many suprema give</p>
+<span class="math math-display" data-tex="\[
+L(f)\geq\delta\sum_{i=1}^r c(U_i)
+=\int s_\delta\,d\mu,
+\qquad
+s_\delta=\delta\sum_{i=1}^r1_{\{f&gt;i\delta\}}.
+\tag{PR20}
+\]">\[
+L(f)\geq\delta\sum_{i=1}^r c(U_i)
+=\int s_\delta\,d\mu,
+\qquad
+s_\delta=\delta\sum_{i=1}^r1_{\{f&gt;i\delta\}}.
+\tag{PR20}
+\]</span>
+<p>The approximation step is finite: choose each <span class="math" data-tex="\(L(g_i)\)">\(L(g_i)\)</span> within <span class="math" data-tex="\(\epsilon/(r\delta)\)">\(\epsilon/(r\delta)\)</span> of <span class="math" data-tex="\(c(U_i)\)">\(c(U_i)\)</span>, and then let <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>. Pointwise <span class="math" data-tex="\(0\leq f-s_\delta\leq\delta\)">\(0\leq f-s_\delta\leq\delta\)</span>, including values of <span class="math" data-tex="\(f\)">\(f\)</span> that are exact multiples of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. By the integration facts already proved,
+<span class="math" data-tex="\(\int s_\delta\geq\int f-\delta M\)">\(\int s_\delta\geq\int f-\delta M\)</span>.
+Let <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>; then <span class="math" data-tex="\(L(f)\geq\int f\)">\(L(f)\geq\int f\)</span>.</p>
+<p>Apply this same inequality to the nonnegative continuous function <span class="math" data-tex="\(B-f\)">\(B-f\)</span>. Since <span class="math" data-tex="\(\mu(K)=M=L(1)\)">\(\mu(K)=M=L(1)\)</span>, it gives
+<span class="math" data-tex="\(BM-L(f)\geq BM-\int f\)">\(BM-L(f)\geq BM-\int f\)</span>, hence <span class="math" data-tex="\(L(f)\leq\int f\)">\(L(f)\leq\int f\)</span>. Equality follows. Real continuous functions are differences of their continuous positive and negative parts, and complex continuous functions have real and imaginary parts. Linearity therefore proves</p>
+<span class="math math-display" data-tex="\[
+L(f)=\int_K f\,d\mu\quad(f\in C(K;\mathbb C)),
+\qquad \mu(K)=L(1).
+\tag{PR21}
+\]">\[
+L(f)=\int_K f\,d\mu\quad(f\in C(K;\mathbb C)),
+\qquad \mu(K)=L(1).
+\tag{PR21}
+\]</span>
+<p>This proves existence of the representing finite positive regular Borel measure for every positive bounded complex-linear functional.</p>
+<h3 id="IPM-008"><span id="ipm-008"></span>Uniqueness and lower semicontinuous approximation</h3>
+<p>For an open proper nonempty <span class="math" data-tex="\(U\subset K\)">\(U\subset K\)</span>, the continuous functions
+<span class="math" data-tex="\(g_k(x)=\min(1,(k\operatorname{dist}(x,K\setminus U)-1)_+)\)">\(g_k(x)=\min(1,(k\operatorname{dist}(x,K\setminus U)-1)_+)\)</span>
+increase to <span class="math" data-tex="\(1_U\)">\(1_U\)</span>. They are between zero and one, and each support lies in
+<span class="math" data-tex="\(\{x:\operatorname{dist}(x,K\setminus U)\geq1/k\}\subset U\)">\(\{x:\operatorname{dist}(x,K\setminus U)\geq1/k\}\subset U\)</span>.
+For <span class="math" data-tex="\(U=K\)">\(U=K\)</span> use the constant sequence one, and for <span class="math" data-tex="\(U=\varnothing\)">\(U=\varnothing\)</span> use zero. If another finite positive Borel measure <span class="math" data-tex="\(\nu\)">\(\nu\)</span> has the integrals (PR21), monotone convergence for both measures gives
+<span class="math" data-tex="\(\nu(U)=\lim_k\int g_k\,d\nu=\lim_kL(g_k)=\mu(U)\)">\(\nu(U)=\lim_k\int g_k\,d\nu=\lim_kL(g_k)=\mu(U)\)</span>.</p>
+<p>We give the elementary set argument extending this equality to all Borel sets. A family <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> containing <span class="math" data-tex="\(K\)">\(K\)</span>, closed under complements in <span class="math" data-tex="\(K\)">\(K\)</span>, and closed under disjoint countable unions is called a lambda-system. It is also closed under differences <span class="math" data-tex="\(A\setminus B\)">\(A\setminus B\)</span> when <span class="math" data-tex="\(B\subset A\)">\(B\subset A\)</span> and both sets belong to it: take the complement of the disjoint union <span class="math" data-tex="\((K\setminus A)\cup B\)">\((K\setminus A)\cup B\)</span>. A family <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> closed under finite intersections is a pi-system. If a lambda-system contains a pi-system <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> that contains <span class="math" data-tex="\(K\)">\(K\)</span>, it contains the sigma-algebra generated by <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>. Here is a proof. Let <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span> be the smallest lambda-system containing <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>. For fixed <span class="math" data-tex="\(A\in\mathcal P\)">\(A\in\mathcal P\)</span>, the sets <span class="math" data-tex="\(B\)">\(B\)</span> satisfying <span class="math" data-tex="\(A\cap B\in\mathcal D_0\)">\(A\cap B\in\mathcal D_0\)</span> form a lambda-system: the complement step uses the nested-difference property inside <span class="math" data-tex="\(A\)">\(A\)</span>. This lambda-system contains <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, so it contains <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span>. Next fix <span class="math" data-tex="\(B\in\mathcal D_0\)">\(B\in\mathcal D_0\)</span> and repeat the argument with the sets <span class="math" data-tex="\(A\)">\(A\)</span> satisfying <span class="math" data-tex="\(A\cap B\in\mathcal D_0\)">\(A\cap B\in\mathcal D_0\)</span>. The first step shows this new lambda-system contains <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, hence <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span>. Thus <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span> is closed under finite intersections. Complements and finite intersections give finite unions and differences, and disjointizing any countable union then proves it is a sigma-algebra. This proves the assertion.</p>
+<p>The Borel sets <span class="math" data-tex="\(E\)">\(E\)</span> with <span class="math" data-tex="\(\mu(E)=\nu(E)\)">\(\mu(E)=\nu(E)\)</span> form a lambda-system: total masses agree, complementation subtracts from that common finite mass, and disjoint countable unions use countable additivity. The open sets are a pi-system containing <span class="math" data-tex="\(K\)">\(K\)</span> and generating the Borel sigma-algebra. The preceding argument proves <span class="math" data-tex="\(\mu=\nu\)">\(\mu=\nu\)</span> on every Borel set. No regularity assumption on the competing measure was needed.</p>
+<p>For later use, let <span class="math" data-tex="\(f:K\to[0,B]\)">\(f:K\to[0,B]\)</span> be lower semicontinuous. For every positive integer <span class="math" data-tex="\(k\)">\(k\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+f_k(x)=\inf_{y\in K}\bigl(f(y)+k|x-y|\bigr).
+\tag{PR22}
+\]">\[
+f_k(x)=\inf_{y\in K}\bigl(f(y)+k|x-y|\bigr).
+\tag{PR22}
+\]</span>
+<p>The infimum is attained: a minimizing sequence has a convergent subsequence in compact <span class="math" data-tex="\(K\)">\(K\)</span>, and lower semicontinuity gives a minimizing limit. The inequality
+<span class="math" data-tex="\(\big||x-y|-|x&#x27;-y|\big|\leq|x-x&#x27;|\)">\(\big||x-y|-|x&#x27;-y|\big|\leq|x-x&#x27;|\)</span>
+implies <span class="math" data-tex="\(|f_k(x)-f_k(x&#x27;)|\leq k|x-x&#x27;|\)">\(|f_k(x)-f_k(x&#x27;)|\leq k|x-x&#x27;|\)</span> by comparing infima in both directions. Thus <span class="math" data-tex="\(f_k\)">\(f_k\)</span> is continuous. It satisfies <span class="math" data-tex="\(0\leq f_k\leq f\)">\(0\leq f_k\leq f\)</span> and increases with <span class="math" data-tex="\(k\)">\(k\)</span>. If <span class="math" data-tex="\(y_k\)">\(y_k\)</span> is a minimizer for a fixed <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(k|x-y_k|\leq f_k(x)\leq f(x)\leq B\)">\(k|x-y_k|\leq f_k(x)\leq f(x)\leq B\)</span>, so <span class="math" data-tex="\(y_k\to x\)">\(y_k\to x\)</span>. Lower semicontinuity yields
+<span class="math" data-tex="\(\liminf_k f_k(x)\geq\liminf_k f(y_k)\geq f(x)\)">\(\liminf_k f_k(x)\geq\liminf_k f(y_k)\geq f(x)\)</span>.
+Together with <span class="math" data-tex="\(f_k\leq f\)">\(f_k\leq f\)</span>, this proves <span class="math" data-tex="\(f_k\uparrow f\)">\(f_k\uparrow f\)</span>. Lower semicontinuity makes <span class="math" data-tex="\(f\)">\(f\)</span> Borel because its strict upper level sets are open. Consequently, by (PR16),</p>
+<span class="math math-display" data-tex="\[
+\int f\,d\mu
+=\sup\{L(g):g\in C(K;\mathbb R),\ 0\leq g\leq f\}.
+\tag{PR23}
+\]">\[
+\int f\,d\mu
+=\sup\{L(g):g\in C(K;\mathbb R),\ 0\leq g\leq f\}.
+\tag{PR23}
+\]</span>
+<p>The inequality from right to left is monotonicity; the reverse inequality follows by choosing the functions (PR22).</p>
+<h3 id="IPM-009"><span id="ipm-009"></span>Finite complex measures, variation, and integration</h3>
+<p>The complex measures needed here will be finite linear combinations
+<span class="math" data-tex="\(\nu=\sum_{r=1}^sc_r\rho_r\)">\(\nu=\sum_{r=1}^sc_r\rho_r\)</span>
+of finite positive Borel measures. They are countably additive because every summand is. Define the positive measure <span class="math" data-tex="\(\lambda=\sum_r|c_r|\rho_r\)">\(\lambda=\sum_r|c_r|\rho_r\)</span>; then <span class="math" data-tex="\(|\nu(E)|\leq\lambda(E)\)">\(|\nu(E)|\leq\lambda(E)\)</span>. Define total variation by finite measurable partitions:</p>
+<span class="math math-display" data-tex="\[
+|\nu|(E)=\sup\Bigl\{\sum_{j=1}^r|\nu(E_j)|:
+E=\bigsqcup_{j=1}^rE_j,\ E_j\text{ Borel}\Bigr\}.
+\tag{PR24}
+\]">\[
+|\nu|(E)=\sup\Bigl\{\sum_{j=1}^r|\nu(E_j)|:
+E=\bigsqcup_{j=1}^rE_j,\ E_j\text{ Borel}\Bigr\}.
+\tag{PR24}
+\]</span>
+<p>It satisfies <span class="math" data-tex="\(|\nu|(E)\leq\lambda(E)\)">\(|\nu|(E)\leq\lambda(E)\)</span>. It is a measure, as follows directly. For disjoint Borel sets <span class="math" data-tex="\(E_i\)">\(E_i\)</span> and <span class="math" data-tex="\(E=\bigcup_iE_i\)">\(E=\bigcup_iE_i\)</span>, combine near-maximizing finite partitions of the first finitely many <span class="math" data-tex="\(E_i\)">\(E_i\)</span>, together with the remaining subset of <span class="math" data-tex="\(E\)">\(E\)</span>, to obtain
+<span class="math" data-tex="\(|\nu|(E)\geq\sum_{i=1}^r|\nu|(E_i)\)">\(|\nu|(E)\geq\sum_{i=1}^r|\nu|(E_i)\)</span> for every <span class="math" data-tex="\(r\)">\(r\)</span>.
+In the other direction, for any finite partition <span class="math" data-tex="\(E=\bigsqcup_jF_j\)">\(E=\bigsqcup_jF_j\)</span>, countable additivity and triangle inequality give
+<span class="math" data-tex="\(\sum_j|\nu(F_j)|\leq\sum_i\sum_j|\nu(F_j\cap E_i)|\leq\sum_i|\nu|(E_i)\)">\(\sum_j|\nu(F_j)|\leq\sum_i\sum_j|\nu(F_j\cap E_i)|\leq\sum_i|\nu|(E_i)\)</span>.
+Take the supremum over the partition and then let <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span> in the first inequality. This proves countable additivity of <span class="math" data-tex="\(|\nu|\)">\(|\nu|\)</span>.</p>
+<p>For complex simple <span class="math" data-tex="\(s=\sum_jz_j1_{E_j}\)">\(s=\sum_jz_j1_{E_j}\)</span> on a finite disjoint partition, define <span class="math" data-tex="\(\int s\,d\nu=\sum_jz_j\nu(E_j)\)">\(\int s\,d\nu=\sum_jz_j\nu(E_j)\)</span>. Refinement proves independence of the partition, and (PR24) gives
+<span class="math" data-tex="\(|\int s\,d\nu|\leq\int|s|\,d|\nu|\)">\(|\int s\,d\nu|\leq\int|s|\,d|\nu|\)</span>.
+Every bounded complex Borel function has uniformly convergent simple approximants, obtained by rounding its real and imaginary parts to successively finer finite grids on their bounded ranges. The preceding inequality makes their integrals Cauchy, with a limit independent of the approximating sequence. This defines <span class="math" data-tex="\(\int f\,d\nu\)">\(\int f\,d\nu\)</span>, proves linearity, and gives</p>
+<span class="math math-display" data-tex="\[
+\left|\int f\,d\nu\right|\leq\int|f|\,d|\nu|,
+\qquad
+\int f\,d\nu=\sum_{r=1}^sc_r\int f\,d\rho_r
+\quad(f\text{ bounded Borel}).
+\tag{PR25}
+\]">\[
+\left|\int f\,d\nu\right|\leq\int|f|\,d|\nu|,
+\qquad
+\int f\,d\nu=\sum_{r=1}^sc_r\int f\,d\rho_r
+\quad(f\text{ bounded Borel}).
+\tag{PR25}
+\]</span>
+<p>Both assertions follow first for simple functions, then by uniform approximation; <span class="math" data-tex="\(\big||s|-|f|\big|\leq|s-f|\)">\(\big||s|-|f|\big|\leq|s-f|\)</span> handles the absolute-value integral. If <span class="math" data-tex="\(f_k\to f\)">\(f_k\to f\)</span> pointwise and all functions are uniformly bounded, (PR19) for <span class="math" data-tex="\(|\nu|\)">\(|\nu|\)</span> and (PR25) show convergence of the complex integrals. More generally, if <span class="math" data-tex="\(|f_k|\leq g\)">\(|f_k|\leq g\)</span> with <span class="math" data-tex="\(g\)">\(g\)</span> integrable for <span class="math" data-tex="\(|\nu|\)">\(|\nu|\)</span>, define integrals of such functions by truncation; the bound (PR25) makes the truncations Cauchy because the absolute-value tail integrals tend to zero by (PR19). The same bound and (PR19) prove dominated convergence in that case as well.</p>
+<p>If the positive measures <span class="math" data-tex="\(\rho_r\)">\(\rho_r\)</span> are regular, so is <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>: for a Borel <span class="math" data-tex="\(E\)">\(E\)</span>, choose compact subsets <span class="math" data-tex="\(F_r\subset E\)">\(F_r\subset E\)</span> and open supersets <span class="math" data-tex="\(U_r\supset E\)">\(U_r\supset E\)</span> making each <span class="math" data-tex="\(|c_r|\rho_r(U_r\setminus F_r)\)">\(|c_r|\rho_r(U_r\setminus F_r)\)</span> as small as prescribed, ignoring zero coefficients. The compact union <span class="math" data-tex="\(F=\bigcup_rF_r\)">\(F=\bigcup_rF_r\)</span> is contained in <span class="math" data-tex="\(E\)">\(E\)</span>, and the open intersection <span class="math" data-tex="\(U=\bigcap_rU_r\)">\(U=\bigcap_rU_r\)</span> contains <span class="math" data-tex="\(E\)">\(E\)</span>. Since <span class="math" data-tex="\(U\setminus F\subset U_r\setminus F_r\)">\(U\setminus F\subset U_r\setminus F_r\)</span> for every <span class="math" data-tex="\(r\)">\(r\)</span>, their weighted sum can be made arbitrarily small. As <span class="math" data-tex="\(|\nu|\leq\lambda\)">\(|\nu|\leq\lambda\)</span>, the same <span class="math" data-tex="\(F,U\)">\(F,U\)</span> prove regularity of <span class="math" data-tex="\(|\nu|\)">\(|\nu|\)</span>, and
+<span class="math" data-tex="\(|\nu(E)-\nu(F)|\leq|\nu|(E\setminus F)\)">\(|\nu(E)-\nu(F)|\leq|\nu|(E\setminus F)\)</span>,
+<span class="math" data-tex="\(|\nu(U)-\nu(E)|\leq|\nu|(U\setminus E)\)">\(|\nu(U)-\nu(E)|\leq|\nu|(U\setminus E)\)</span>
+give the corresponding approximation for <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>The uniqueness argument extends to any finite complex Borel measure of finite total variation. Indeed, once finiteness of (PR24) is given, the proof that variation is a measure and the integration construction above apply unchanged; the finite positive-measure decomposition was used to establish finiteness and regularity, not in those subsequent proofs. If <span class="math" data-tex="\(\int f\,d\nu=0\)">\(\int f\,d\nu=0\)</span> for every continuous <span class="math" data-tex="\(f\)">\(f\)</span>, the continuous open-set approximants in IPM-008 and dominated convergence for <span class="math" data-tex="\(|\nu|\)">\(|\nu|\)</span> give <span class="math" data-tex="\(\nu(U)=0\)">\(\nu(U)=0\)</span> for every open <span class="math" data-tex="\(U\)">\(U\)</span>. The family of Borel sets on which <span class="math" data-tex="\(\nu\)">\(\nu\)</span> vanishes is a lambda-system, since <span class="math" data-tex="\(\nu(K)=0\)">\(\nu(K)=0\)</span>, and countable additivity handles disjoint unions. The pi-system argument already proved therefore gives <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>. Applying this to a difference proves uniqueness whenever two finite complex measures have equal continuous integrals.</p>
+<h2 id="AN03-SPC-002"><span id="an03-spc-002"></span>Complex measure pairings and Hilbert representation</h2>
+<h3 id="IPM-010"><span id="ipm-010"></span>Polarization with the linear-first convention</h3>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be a complex Hilbert space. Suppose <span class="math" data-tex="\(F_f(x,y)\)">\(F_f(x,y)\)</span>, for continuous complex <span class="math" data-tex="\(f\)">\(f\)</span>, is complex-linear in <span class="math" data-tex="\(f\)">\(f\)</span>, linear in <span class="math" data-tex="\(x\)">\(x\)</span>, conjugate-linear in <span class="math" data-tex="\(y\)">\(y\)</span>, and satisfies</p>
+<span class="math math-display" data-tex="\[
+F_f(x,x)\geq0\quad\text{when }f\geq0,
+\qquad
+0\leq F_1(x,x)\leq C\|x\|^2
+\quad(x\in H),
+\tag{PR26}
+\]">\[
+F_f(x,x)\geq0\quad\text{when }f\geq0,
+\qquad
+0\leq F_1(x,x)\leq C\|x\|^2
+\quad(x\in H),
+\tag{PR26}
+\]</span>
+<p>for a fixed finite <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span>. These are precisely the measure-stage hypotheses, for example when <span class="math" data-tex="\(F_f(x,y)=\langle\Phi(f)x,y\rangle\)">\(F_f(x,y)=\langle\Phi(f)x,y\rangle\)</span> and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is a positive linear map with <span class="math" data-tex="\(\|\Phi(1)\|\leq C\)">\(\|\Phi(1)\|\leq C\)</span>. A unital continuous <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism has <span class="math" data-tex="\(C=1\)">\(C=1\)</span>: for real <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>, its continuous square root gives <span class="math" data-tex="\(\Phi(f)=\Phi(\sqrt f)^*\Phi(\sqrt f)\geq0\)">\(\Phi(f)=\Phi(\sqrt f)^*\Phi(\sqrt f)\geq0\)</span>, and <span class="math" data-tex="\(\Phi(1)=I\)">\(\Phi(1)=I\)</span>.</p>
+<p>For each <span class="math" data-tex="\(x\)">\(x\)</span>, IPM-001 and IPM-007 give a unique finite positive regular measure <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+F_f(x,x)=\int f\,d\mu_x,\qquad
+\mu_x(K)=F_1(x,x)\leq C\|x\|^2.
+\tag{PR27}
+\]">\[
+F_f(x,x)=\int f\,d\mu_x,\qquad
+\mu_x(K)=F_1(x,x)\leq C\|x\|^2.
+\tag{PR27}
+\]</span>
+<p>For any sesquilinear form <span class="math" data-tex="\(B\)">\(B\)</span> with the linear-first convention, writing <span class="math" data-tex="\(q(z)=B(z,z)\)">\(q(z)=B(z,z)\)</span> gives the algebraic identity</p>
+<span class="math math-display" data-tex="\[
+B(x,y)=\frac14\sum_{k=0}^3i^kq(x+i^ky)
+=\frac14\bigl(q(x+y)-q(x-y)+i q(x+iy)-i q(x-iy)\bigr).
+\tag{PR28}
+\]">\[
+B(x,y)=\frac14\sum_{k=0}^3i^kq(x+i^ky)
+=\frac14\bigl(q(x+y)-q(x-y)+i q(x+iy)-i q(x-iy)\bigr).
+\tag{PR28}
+\]</span>
+<p>This identity does not require <span class="math" data-tex="\(B\)">\(B\)</span> to be Hermitian. Indeed, for <span class="math" data-tex="\(t=i^k\)">\(t=i^k\)</span>,
+<span class="math" data-tex="\(q(x+ty)=q(x)+q(y)+\overline t B(x,y)+tB(y,x)\)">\(q(x+ty)=q(x)+q(y)+\overline t B(x,y)+tB(y,x)\)</span>.
+After multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> and summation, the constant terms vanish because <span class="math" data-tex="\(\sum t=0\)">\(\sum t=0\)</span>, the <span class="math" data-tex="\(B(y,x)\)">\(B(y,x)\)</span> term vanishes because <span class="math" data-tex="\(\sum t^2=0\)">\(\sum t^2=0\)</span>, and the <span class="math" data-tex="\(B(x,y)\)">\(B(x,y)\)</span> term is multiplied by <span class="math" data-tex="\(\sum|t|^2=4\)">\(\sum|t|^2=4\)</span>. This proves the formula and in particular fixes the plus sign before <span class="math" data-tex="\(i q(x+iy)\)">\(i q(x+iy)\)</span>.</p>
+<p>Define the finite regular complex measure</p>
+<span class="math math-display" data-tex="\[
+\mu_{x,y}=\frac14\bigl(\mu_{x+y}-\mu_{x-y}+i\mu_{x+iy}-i\mu_{x-iy}\bigr).
+\tag{PR29}
+\]">\[
+\mu_{x,y}=\frac14\bigl(\mu_{x+y}-\mu_{x-y}+i\mu_{x+iy}-i\mu_{x-iy}\bigr).
+\tag{PR29}
+\]</span>
+<p>Equation (PR25), followed by (PR28) applied to <span class="math" data-tex="\(F_f\)">\(F_f\)</span>, proves</p>
+<span class="math math-display" data-tex="\[
+\int f\,d\mu_{x,y}=F_f(x,y)\qquad(f\in C(K;\mathbb C)).
+\tag{PR30}
+\]">\[
+\int f\,d\mu_{x,y}=F_f(x,y)\qquad(f\in C(K;\mathbb C)).
+\tag{PR30}
+\]</span>
+<p>The complex-measure uniqueness proved in IPM-009 now shows that <span class="math" data-tex="\((x,y)\mapsto\mu_{x,y}\)">\((x,y)\mapsto\mu_{x,y}\)</span> is sesquilinear as a measure-valued map. For example, the continuous integrals of <span class="math" data-tex="\(\mu_{ax+bz,y}-a\mu_{x,y}-b\mu_{z,y}\)">\(\mu_{ax+bz,y}-a\mu_{x,y}-b\mu_{z,y}\)</span> vanish for all <span class="math" data-tex="\(f\)">\(f\)</span>, so this measure is zero; the second variable is treated with conjugated scalars. The same uniqueness gives <span class="math" data-tex="\(\mu_{x,x}=\mu_x\)">\(\mu_{x,x}=\mu_x\)</span>. This step proves sesquilinearity of the actual measures; it is not inferred just from the appearance of the polarization expression.</p>
+<p>Fix a Borel set <span class="math" data-tex="\(E\)">\(E\)</span>. Then <span class="math" data-tex="\(B_E(x,y)=\mu_{x,y}(E)\)">\(B_E(x,y)=\mu_{x,y}(E)\)</span> is a sesquilinear form with nonnegative real diagonal <span class="math" data-tex="\(B_E(x,x)=\mu_x(E)\)">\(B_E(x,x)=\mu_x(E)\)</span>. Every such form is Hermitian and satisfies Cauchy–Schwarz. For completeness, reality of <span class="math" data-tex="\(B_E(x+t y,x+t y)\)">\(B_E(x+t y,x+t y)\)</span> for real <span class="math" data-tex="\(t\)">\(t\)</span> gives that <span class="math" data-tex="\(B_E(x,y)+B_E(y,x)\)">\(B_E(x,y)+B_E(y,x)\)</span> is real; reality for <span class="math" data-tex="\(it\)">\(it\)</span> gives that <span class="math" data-tex="\(i(B_E(y,x)-B_E(x,y))\)">\(i(B_E(y,x)-B_E(x,y))\)</span> is real. Together these two equalities imply <span class="math" data-tex="\(B_E(y,x)=\overline{B_E(x,y)}\)">\(B_E(y,x)=\overline{B_E(x,y)}\)</span>. If <span class="math" data-tex="\(B_E(y,y)&gt;0\)">\(B_E(y,y)&gt;0\)</span>, substitute <span class="math" data-tex="\(t=-B_E(x,y)/B_E(y,y)\)">\(t=-B_E(x,y)/B_E(y,y)\)</span> into the nonnegative quadratic expression for <span class="math" data-tex="\(B_E(x+t y,x+t y)\)">\(B_E(x+t y,x+t y)\)</span>. Its value is <span class="math" data-tex="\(B_E(x,x)-|B_E(x,y)|^2/B_E(y,y)\)">\(B_E(x,x)-|B_E(x,y)|^2/B_E(y,y)\)</span>, proving the inequality. If <span class="math" data-tex="\(B_E(y,y)=0\)">\(B_E(y,y)=0\)</span> and <span class="math" data-tex="\(B_E(x,y)\ne0\)">\(B_E(x,y)\ne0\)</span>, substituting <span class="math" data-tex="\(t=-sB_E(x,y)\)">\(t=-sB_E(x,y)\)</span> with large positive real <span class="math" data-tex="\(s\)">\(s\)</span> makes that quadratic expression negative, a contradiction. Thus</p>
+<span class="math math-display" data-tex="\[
+\mu_{y,x}(E)=\overline{\mu_{x,y}(E)},\qquad
+|\mu_{x,y}(E)|^2\leq\mu_x(E)\mu_y(E).
+\tag{PR31}
+\]">\[
+\mu_{y,x}(E)=\overline{\mu_{x,y}(E)},\qquad
+|\mu_{x,y}(E)|^2\leq\mu_x(E)\mu_y(E).
+\tag{PR31}
+\]</span>
+<p>For a finite partition <span class="math" data-tex="\(E=\bigsqcup_jE_j\)">\(E=\bigsqcup_jE_j\)</span>, use (PR31), then the finite scalar Cauchy–Schwarz inequality, to obtain
+<span class="math" data-tex="\(\sum_j|\mu_{x,y}(E_j)|\leq\sum_j\sqrt{\mu_x(E_j)\mu_y(E_j)}\leq\sqrt{\mu_x(E)\mu_y(E)}\)">\(\sum_j|\mu_{x,y}(E_j)|\leq\sum_j\sqrt{\mu_x(E_j)\mu_y(E_j)}\leq\sqrt{\mu_x(E)\mu_y(E)}\)</span>.
+The scalar inequality itself follows from nonnegativity of <span class="math" data-tex="\(\sum_j|u_j+t v_j|^2\)">\(\sum_j|u_j+t v_j|^2\)</span> by the same quadratic minimization just used. Taking the supremum over partitions yields the sharper local variation estimate</p>
+<span class="math math-display" data-tex="\[
+|\mu_{x,y}|(E)\leq\sqrt{\mu_x(E)\mu_y(E)},
+\qquad
+|\mu_{x,y}|(K)\leq C\|x\|\|y\|.
+\tag{PR32}
+\]">\[
+|\mu_{x,y}|(E)\leq\sqrt{\mu_x(E)\mu_y(E)},
+\qquad
+|\mu_{x,y}|(K)\leq C\|x\|\|y\|.
+\tag{PR32}
+\]</span>
+<p>In particular this estimate handles zero vectors and zero diagonal mass exactly, without division by their norms or masses.</p>
+<h3 id="IPM-011"><span id="ipm-011"></span>Bounded Borel pairings and their convergence</h3>
+<p>For bounded complex Borel <span class="math" data-tex="\(g\)">\(g\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+B_g(x,y)=\int g\,d\mu_{x,y}.
+\tag{PR33}
+\]">\[
+B_g(x,y)=\int g\,d\mu_{x,y}.
+\tag{PR33}
+\]</span>
+<p>Measure-valued sesquilinearity and integration linearity show that this is a sesquilinear form. By (PR25) and (PR32),</p>
+<span class="math math-display" data-tex="\[
+|B_g(x,y)|\leq C\|g\|_\infty\|x\|\|y\|.
+\tag{PR34}
+\]">\[
+|B_g(x,y)|\leq C\|g\|_\infty\|x\|\|y\|.
+\tag{PR34}
+\]</span>
+<p>It agrees with <span class="math" data-tex="\(F_g\)">\(F_g\)</span> for continuous <span class="math" data-tex="\(g\)">\(g\)</span>, and <span class="math" data-tex="\(B_g(x,x)=\int g\,d\mu_x\)">\(B_g(x,x)=\int g\,d\mu_x\)</span>. It is positive when <span class="math" data-tex="\(g\geq0\)">\(g\geq0\)</span>, and (PR31) gives
+<span class="math" data-tex="\(B_{\overline g}(x,y)=\overline{B_g(y,x)}\)">\(B_{\overline g}(x,y)=\overline{B_g(y,x)}\)</span>.</p>
+<p>One additional estimate is useful for strong convergence. For a simple function <span class="math" data-tex="\(g=\sum_jz_j1_{E_j}\)">\(g=\sum_jz_j1_{E_j}\)</span> on a finite disjoint partition of <span class="math" data-tex="\(K\)">\(K\)</span>, (PR31) and finite Cauchy–Schwarz give
+<span class="math" data-tex="\( |B_g(x,y)|\leq\sum_j|z_j|\sqrt{\mu_x(E_j)\mu_y(E_j)}\leq(\sum_j|z_j|^2\mu_x(E_j))^{1/2}\mu_y(K)^{1/2}\)">\( |B_g(x,y)|\leq\sum_j|z_j|\sqrt{\mu_x(E_j)\mu_y(E_j)}\leq(\sum_j|z_j|^2\mu_x(E_j))^{1/2}\mu_y(K)^{1/2}\)</span>.
+Uniform simple approximation extends this to every bounded Borel <span class="math" data-tex="\(g\)">\(g\)</span>: uniform convergence of <span class="math" data-tex="\(g_j\)">\(g_j\)</span> implies uniform convergence of <span class="math" data-tex="\(|g_j|^2\)">\(|g_j|^2\)</span> because the sequence is uniformly bounded. Therefore</p>
+<span class="math math-display" data-tex="\[
+|B_g(x,y)|^2\leq\left(\int|g|^2\,d\mu_x\right)\mu_y(K)
+\leq C\|y\|^2\int|g|^2\,d\mu_x.
+\tag{PR35}
+\]">\[
+|B_g(x,y)|^2\leq\left(\int|g|^2\,d\mu_x\right)\mu_y(K)
+\leq C\|y\|^2\int|g|^2\,d\mu_x.
+\tag{PR35}
+\]</span>
+<p>If <span class="math" data-tex="\(g_k\)">\(g_k\)</span> are uniformly bounded Borel functions and converge pointwise to <span class="math" data-tex="\(g\)">\(g\)</span>, dominated convergence for <span class="math" data-tex="\(|\mu_{x,y}|\)">\(|\mu_{x,y}|\)</span> proves <span class="math" data-tex="\(B_{g_k}(x,y)\to B_g(x,y)\)">\(B_{g_k}(x,y)\to B_g(x,y)\)</span> for every <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. In fact (PR35) applied to <span class="math" data-tex="\(g_k-g\)">\(g_k-g\)</span>, with (PR19) for <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span>, proves</p>
+<span class="math math-display" data-tex="\[
+\sup_{\|y\|\leq1}|B_{g_k-g}(x,y)|\longrightarrow0
+\qquad(x\in H).
+\tag{PR36}
+\]">\[
+\sup_{\|y\|\leq1}|B_{g_k-g}(x,y)|\longrightarrow0
+\qquad(x\in H).
+\tag{PR36}
+\]</span>
+<p>For <span class="math" data-tex="\(0\leq g_k\uparrow g\)">\(0\leq g_k\uparrow g\)</span> with a common finite bound, (PR16) also gives the increasing convergence <span class="math" data-tex="\(B_{g_k}(x,x)\uparrow B_g(x,x)\)">\(B_{g_k}(x,x)\uparrow B_g(x,x)\)</span>. For bounded nonnegative lower semicontinuous <span class="math" data-tex="\(g\)">\(g\)</span>, the explicit continuous functions (PR22) give
+<span class="math" data-tex="\(B_g(x,x)=\sup\{F_f(x,x):f\in C(K;\mathbb R),0\leq f\leq g\}\)">\(B_g(x,x)=\sup\{F_f(x,x):f\in C(K;\mathbb R),0\leq f\leq g\}\)</span>
+by (PR23). These conclusions specify the convergence and lower semicontinuous supremum used in the operator application.</p>
+<h3 id="IPM-012"><span id="ipm-012"></span>The corresponding bounded operators, with the Hilbert-space step proved</h3>
+<p>We first prove the Hilbert representation needed to turn (PR33) into an operator. Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be a bounded conjugate-linear functional on a complex Hilbert space with the linear-first convention. If it is zero, its representing vector is zero. Otherwise <span class="math" data-tex="\(F(y)=\overline{\ell(y)}\)">\(F(y)=\overline{\ell(y)}\)</span> is a nonzero bounded linear functional. The closed affine set <span class="math" data-tex="\(A=\{y:F(y)=1\}\)">\(A=\{y:F(y)=1\}\)</span> is nonempty and has distance <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> from the origin, since <span class="math" data-tex="\(1\leq\|F\|\|y\|\)">\(1\leq\|F\|\|y\|\)</span> on it. Choose <span class="math" data-tex="\(v_k\in A\)">\(v_k\in A\)</span> with <span class="math" data-tex="\(\|v_k\|\to d\)">\(\|v_k\|\to d\)</span>. Its midpoints remain in <span class="math" data-tex="\(A\)">\(A\)</span>, and the parallelogram identity yields</p>
+<span class="math math-display" data-tex="\[
+\|v_k-v_l\|^2
+=2\|v_k\|^2+2\|v_l\|^2-4\|(v_k+v_l)/2\|^2
+\leq2\|v_k\|^2+2\|v_l\|^2-4d^2\longrightarrow0.
+\tag{PR37}
+\]">\[
+\|v_k-v_l\|^2
+=2\|v_k\|^2+2\|v_l\|^2-4\|(v_k+v_l)/2\|^2
+\leq2\|v_k\|^2+2\|v_l\|^2-4d^2\longrightarrow0.
+\tag{PR37}
+\]</span>
+<p>Completeness gives a limit <span class="math" data-tex="\(v\in A\)">\(v\in A\)</span> of norm <span class="math" data-tex="\(d\)">\(d\)</span>. For every <span class="math" data-tex="\(w\in\ker F\)">\(w\in\ker F\)</span>, the vector <span class="math" data-tex="\(v+t w\)">\(v+t w\)</span> lies in <span class="math" data-tex="\(A\)">\(A\)</span> for every complex <span class="math" data-tex="\(t\)">\(t\)</span>. Expanding its squared norm and using the minimality of <span class="math" data-tex="\(\|v\|\)">\(\|v\|\)</span> for real <span class="math" data-tex="\(t\)">\(t\)</span> and for purely imaginary <span class="math" data-tex="\(t\)">\(t\)</span> proves <span class="math" data-tex="\(\langle w,v\rangle=0\)">\(\langle w,v\rangle=0\)</span>. Since <span class="math" data-tex="\(y-F(y)v\in\ker F\)">\(y-F(y)v\in\ker F\)</span>, it follows that
+<span class="math" data-tex="\(\langle y,v\rangle=F(y)\|v\|^2\)">\(\langle y,v\rangle=F(y)\|v\|^2\)</span>. Thus
+<span class="math" data-tex="\(\ell(y)=\langle v/\|v\|^2,y\rangle\)">\(\ell(y)=\langle v/\|v\|^2,y\rangle\)</span>.
+Uniqueness follows by taking <span class="math" data-tex="\(y\)">\(y\)</span> equal to the difference of two representing vectors. Its norm equals <span class="math" data-tex="\(\|\ell\|\)">\(\|\ell\|\)</span>: Cauchy–Schwarz gives one inequality, and evaluation at the unit vector in the representing vector's direction gives the other. The Cauchy–Schwarz inequality for the Hilbert inner product follows from the positive-form quadratic proof in IPM-010, so no separate representation result is being imported here.</p>
+<p>For fixed <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span>, apply this result to <span class="math" data-tex="\(\ell(y)=B_g(x,y)\)">\(\ell(y)=B_g(x,y)\)</span>. There is a unique vector <span class="math" data-tex="\(\Psi(g)x\)">\(\Psi(g)x\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\langle\Psi(g)x,y\rangle=B_g(x,y)=\int g\,d\mu_{x,y}.
+\tag{PR38}
+\]">\[
+\langle\Psi(g)x,y\rangle=B_g(x,y)=\int g\,d\mu_{x,y}.
+\tag{PR38}
+\]</span>
+<p>Linearity in <span class="math" data-tex="\(x\)">\(x\)</span> follows from sesquilinearity and uniqueness of the representing vector. The bound (PR34) gives <span class="math" data-tex="\(\|\Psi(g)\|\leq C\|g\|_\infty\)">\(\|\Psi(g)\|\leq C\|g\|_\infty\)</span>. Linearity in <span class="math" data-tex="\(g\)">\(g\)</span>, positivity for <span class="math" data-tex="\(g\geq0\)">\(g\geq0\)</span>, and <span class="math" data-tex="\(\Psi(\overline g)=\Psi(g)^*\)">\(\Psi(\overline g)=\Psi(g)^*\)</span> follow by testing the corresponding vector equalities against every <span class="math" data-tex="\(y\)">\(y\)</span>, using (PR33)–(PR34) and their conjugation identity. If the original pairings came from <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, then <span class="math" data-tex="\(\Psi(f)=\Phi(f)\)">\(\Psi(f)=\Phi(f)\)</span> for continuous <span class="math" data-tex="\(f\)">\(f\)</span>, by (PR30) and uniqueness. If <span class="math" data-tex="\(F_1(x,y)=\langle x,y\rangle\)">\(F_1(x,y)=\langle x,y\rangle\)</span>, then <span class="math" data-tex="\(\Psi(1)=I\)">\(\Psi(1)=I\)</span>.</p>
+<p>Equation (PR35), followed by the equality between the norm of a vector and the norm of its represented functional, gives</p>
+<span class="math math-display" data-tex="\[
+\|\Psi(g)x\|^2\leq C\int|g|^2\,d\mu_x.
+\tag{PR39}
+\]">\[
+\|\Psi(g)x\|^2\leq C\int|g|^2\,d\mu_x.
+\tag{PR39}
+\]</span>
+<p>Consequently uniformly bounded pointwise convergence of a sequence of Borel functions implies strong operator convergence on each vector, by (PR19):
+<span class="math" data-tex="\(\|\Psi(g_k)x-\Psi(g)x\|^2\leq C\int|g_k-g|^2\,d\mu_x\to0\)">\(\|\Psi(g_k)x-\Psi(g)x\|^2\leq C\int|g_k-g|^2\,d\mu_x\to0\)</span>.
+Weak convergence follows as well. All convergence assertions here concern sequences.</p>
+<p>The constructed map is the unique linear extension of its continuous-function values that preserves uniformly bounded pointwise sequential convergence in every operator pairing. To prove this, let <span class="math" data-tex="\(\widetilde\Psi\)">\(\widetilde\Psi\)</span> be another extension with that convergence property, and fix <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. The continuous approximants to <span class="math" data-tex="\(1_U\)">\(1_U\)</span> in IPM-008 show equality of the two pairings on indicators of open sets. The Borel sets on whose indicators the two pairings agree form a lambda-system: they include <span class="math" data-tex="\(K\)">\(K\)</span>, complementation uses the common value on <span class="math" data-tex="\(1\)">\(1\)</span>, and a disjoint countable union follows from linearity for partial sums of indicators followed by the assumed sequential convergence. The proved pi-system argument extends equality to all Borel indicators. Linearity gives equality on simple functions, and uniform simple approximation, which is in particular uniformly bounded pointwise sequential approximation, gives equality for every bounded Borel function. This is true for every <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, so the operators agree.</p>
+<p>Multiplicativity is a further property when the original continuous map is a homomorphism; no multiplicativity follows from positivity alone, and none is assumed in the construction above. All representation, measure, polarization, variation, bounded-Borel pairing, regularity, uniqueness, and convergence assertions used in (PR38)–(PR39) have been proved here.</p>
+<h2 id="AN03-SPC-003"><span id="an03-spc-003"></span>The full calculus of a bounded positive contraction</h2>
+<h3 id="1-foundations-and-exact-statement">1. Foundations and exact statement</h3>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be a complex Hilbert space and let <span class="math" data-tex="\(S\in\mathcal B(H)\)">\(S\in\mathcal B(H)\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+S=S^*,\qquad (Sx,x)\geq0,\qquad\|S\|\leq1,
+\qquad\ker S=\{0\}.
+\tag{BS1}
+\]">\[
+S=S^*,\qquad (Sx,x)\geq0,\qquad\|S\|\leq1,
+\qquad\ker S=\{0\}.
+\tag{BS1}
+\]</span>
+<p>Set <span class="math" data-tex="\(K=[0,1]\)">\(K=[0,1]\)</span>. We prove that there is a unique strongly countably additive orthogonal projection-valued measure <span class="math" data-tex="\(E\)">\(E\)</span> on the Borel subsets of <span class="math" data-tex="\(K\)">\(K\)</span>, with <span class="math" data-tex="\(E(K)=I\)">\(E(K)=I\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+S=\int_K t\,dE(t).
+\tag{BS2}
+\]">\[
+S=\int_K t\,dE(t).
+\tag{BS2}
+\]</span>
+<p>For every bounded Borel function <span class="math" data-tex="\(f:K\to\mathbb C\)">\(f:K\to\mathbb C\)</span> the integral is a bounded operator. For every Borel function finite at each point, including unbounded functions, its closed densely defined integral has exactly the domain</p>
+<span class="math math-display" data-tex="\[
+D(f(S))=\left\{x\in H:\int_K|f|^2\,d\mu_x&lt;\infty\right\},
+\quad\mu_x(B)=(E(B)x,x),
+\quad\|f(S)x\|^2=\int_K|f|^2\,d\mu_x.
+\tag{BS3}
+\]">\[
+D(f(S))=\left\{x\in H:\int_K|f|^2\,d\mu_x&lt;\infty\right\},
+\quad\mu_x(B)=(E(B)x,x),
+\quad\|f(S)x\|^2=\int_K|f|^2\,d\mu_x.
+\tag{BS3}
+\]</span>
+<p>We prove all adjoint and product domains and <span class="math" data-tex="\(E(\{0\})=0\)">\(E(\{0\})=0\)</span>. No claim that <span class="math" data-tex="\(S\geq cI\)">\(S\geq cI\)</span> for a positive <span class="math" data-tex="\(c\)">\(c\)</span> is made.</p>
+<p>The scalar interval measure theorem, integration, convergence and finite complex-measure uniqueness are proved in AN03-SPC-001. The representation of bounded Hilbert functionals is proved in AN03-SPC-002. The remaining foundations are the Hilbert-space axioms, completeness of bounded operators in operator norm, and the elementary algebra and compactness used below.</p>
+<p>Every finite positive Borel measure <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on the interval is regular: apply the already proved representation theorem to <span class="math" data-tex="\(f\mapsto\int f\,d\nu\)">\(f\mapsto\int f\,d\nu\)</span>; its regular representing measure agrees with <span class="math" data-tex="\(\nu\)">\(\nu\)</span> by IPM-008, whose uniqueness proof does not assume regularity of the competing measure. If <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is a finite complex measure of finite variation and <span class="math" data-tex="\(f\)">\(f\)</span> is bounded Borel, the set function <span class="math" data-tex="\(f\mu:B\mapsto\int_B f\,d\mu\)">\(f\mu:B\mapsto\int_B f\,d\mu\)</span> is countably additive. Indeed the finite partial-union indicators converge boundedly pointwise, and dominated convergence for <span class="math" data-tex="\(|\mu|\)">\(|\mu|\)</span> passes the integrals to the union. Finite partitions give</p>
+<span class="math math-display" data-tex="\[
+|f\mu|(B)\leq\int_B|f|\,d|\mu|
+\leq\|f\|_\infty|\mu|(B).
+\]">\[
+|f\mu|(B)\leq\int_B|f|\,d|\mu|
+\leq\|f\|_\infty|\mu|(B).
+\]</span>
+<p>The finite positive measure <span class="math" data-tex="\(|\mu|\)">\(|\mu|\)</span> is regular by the preceding argument. Given a Borel <span class="math" data-tex="\(B\)">\(B\)</span>, choose compact <span class="math" data-tex="\(F\subset B\subset U\)">\(F\subset B\subset U\)</span> with <span class="math" data-tex="\(U\)">\(U\)</span> open and <span class="math" data-tex="\(|\mu|(U\setminus F)\)">\(|\mu|(U\setminus F)\)</span> arbitrarily small. The displayed bound then gives arbitrarily small <span class="math" data-tex="\(|f\mu|(U\setminus F)\)">\(|f\mu|(U\setminus F)\)</span>. Thus <span class="math" data-tex="\(f\mu\)">\(f\mu\)</span> is regular as well. This proves the weighted-measure fact used in the multiplicativity argument.</p>
+<h3 id="2-elementary-positivity-facts-and-bernstein-operator-weights">2. Elementary positivity facts and Bernstein operator weights</h3>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> is a bounded positive self-adjoint operator, the scalar nonnegativity of <span class="math" data-tex="\((B(x+zy),x+zy)\)">\((B(x+zy),x+zy)\)</span>, for all <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>, proves</p>
+<span class="math math-display" data-tex="\[
+|(Bx,y)|^2\leq(Bx,x)(By,y).
+\tag{BS4}
+\]">\[
+|(Bx,y)|^2\leq(Bx,x)(By,y).
+\tag{BS4}
+\]</span>
+<p>Indeed, if <span class="math" data-tex="\((By,y)&gt;0\)">\((By,y)&gt;0\)</span>, choose the phase and modulus of <span class="math" data-tex="\(z\)">\(z\)</span> to minimize that quadratic expression. If <span class="math" data-tex="\((By,y)=0\)">\((By,y)=0\)</span>, any nonzero cross term would make the expression negative for a suitable phase and sufficiently large modulus; thus the cross term is zero. This proves (BS4) in both cases.</p>
+<p>Write <span class="math" data-tex="\(\beta=\sup_{\|x\|=1}(Bx,x)\)">\(\beta=\sup_{\|x\|=1}(Bx,x)\)</span>. Taking the supremum over unit <span class="math" data-tex="\(y\)">\(y\)</span> in (BS4) gives <span class="math" data-tex="\(\|Bx\|^2\leq\beta(Bx,x)\)">\(\|Bx\|^2\leq\beta(Bx,x)\)</span>. Therefore <span class="math" data-tex="\(\|B\|\leq\beta\)">\(\|B\|\leq\beta\)</span>, and the opposite inequality follows from Cauchy–Schwarz. We have proved</p>
+<span class="math math-display" data-tex="\[
+\|B\|=\beta,\qquad \|Bx\|^2\leq\|B\|(Bx,x).
+\tag{BS5}
+\]">\[
+\|B\|=\beta,\qquad \|Bx\|^2\leq\|B\|(Bx,x).
+\tag{BS5}
+\]</span>
+<p>Apply this to <span class="math" data-tex="\(S\)">\(S\)</span>. The assumptions imply that <span class="math" data-tex="\(I-S\)">\(I-S\)</span> is positive. Moreover</p>
+<span class="math math-display" data-tex="\[
+((S-S^2)x,x)=(Sx,x)-\|Sx\|^2\geq0.
+\tag{BS6}
+\]">\[
+((S-S^2)x,x)=(Sx,x)-\|Sx\|^2\geq0.
+\tag{BS6}
+\]</span>
+<p>Consequently all four operators <span class="math" data-tex="\(I,S,I-S,S(I-S)\)">\(I,S,I-S,S(I-S)\)</span> are positive.</p>
+<p>For integers <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> and <span class="math" data-tex="\(0\leq k\leq n\)">\(0\leq k\leq n\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+W_{n,k}=\binom nk S^k(I-S)^{n-k}.
+\tag{BS7}
+\]">\[
+W_{n,k}=\binom nk S^k(I-S)^{n-k}.
+\tag{BS7}
+\]</span>
+<p>These operators are positive, as can be proved without taking an operator square root. Write <span class="math" data-tex="\(k=2a+\varepsilon\)">\(k=2a+\varepsilon\)</span> and <span class="math" data-tex="\(n-k=2b+\delta\)">\(n-k=2b+\delta\)</span>, where <span class="math" data-tex="\(\varepsilon,\delta\in\{0,1\}\)">\(\varepsilon,\delta\in\{0,1\}\)</span>, and put <span class="math" data-tex="\(Q=S^a(I-S)^b\)">\(Q=S^a(I-S)^b\)</span>. All factors are polynomials in the self-adjoint <span class="math" data-tex="\(S\)">\(S\)</span>, so they commute, and <span class="math" data-tex="\(Q=Q^*\)">\(Q=Q^*\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+W_{n,k}=\binom nk Q\,S^\varepsilon(I-S)^\delta Q.
+\]">\[
+W_{n,k}=\binom nk Q\,S^\varepsilon(I-S)^\delta Q.
+\]</span>
+<p>The middle factor is one of the four positive operators just proved positive. For each <span class="math" data-tex="\(x\)">\(x\)</span>, the quadratic form is its nonnegative value at <span class="math" data-tex="\(Qx\)">\(Qx\)</span>, multiplied by <span class="math" data-tex="\(\binom nk\)">\(\binom nk\)</span>. This proves positivity. The binomial formula for the commuting operators <span class="math" data-tex="\(S,I-S\)">\(S,I-S\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^nW_{n,k}=I.
+\tag{BS8}
+\]">\[
+\sum_{k=0}^nW_{n,k}=I.
+\tag{BS8}
+\]</span>
+<p>For a function <span class="math" data-tex="\(f:K\to\mathbb C\)">\(f:K\to\mathbb C\)</span>, its scalar Bernstein polynomial and corresponding operator are</p>
+<span class="math math-display" data-tex="\[
+B_nf(t)=\sum_{k=0}^nf(k/n)\binom nk t^k(1-t)^{n-k},
+\qquad (B_nf)(S)=\sum_{k=0}^nf(k/n)W_{n,k}.
+\tag{BS9}
+\]">\[
+B_nf(t)=\sum_{k=0}^nf(k/n)\binom nk t^k(1-t)^{n-k},
+\qquad (B_nf)(S)=\sum_{k=0}^nf(k/n)W_{n,k}.
+\tag{BS9}
+\]</span>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> is real and <span class="math" data-tex="\(a\leq f\leq b\)">\(a\leq f\leq b\)</span>, then (BS7)–(BS8) imply</p>
+<span class="math math-display" data-tex="\[
+aI\leq(B_nf)(S)\leq bI.
+\tag{BS10}
+\]">\[
+aI\leq(B_nf)(S)\leq bI.
+\tag{BS10}
+\]</span>
+<p>We next need convergence for a fixed polynomial in coefficient norm, rather than assuming that uniform convergence already implies operator convergence. For a nonnegative integer <span class="math" data-tex="\(d\)">\(d\)</span>, let <span class="math" data-tex="\(c_{d,j}\)">\(c_{d,j}\)</span> be the number of partitions of a <span class="math" data-tex="\(d\)">\(d\)</span>-element set into <span class="math" data-tex="\(j\)">\(j\)</span> nonempty unlabeled subsets. Counting maps from that set to a <span class="math" data-tex="\(k\)">\(k\)</span>-element set by their fibers gives</p>
+<span class="math math-display" data-tex="\[
+k^d=\sum_{j=0}^d c_{d,j}(k)_j,
+\quad (k)_j=k(k-1)\cdots(k-j+1),
+\quad c_{d,d}=1.
+\tag{BS11}
+\]">\[
+k^d=\sum_{j=0}^d c_{d,j}(k)_j,
+\quad (k)_j=k(k-1)\cdots(k-j+1),
+\quad c_{d,d}=1.
+\tag{BS11}
+\]</span>
+<p>For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, use <span class="math" data-tex="\(c_{0,0}=1\)">\(c_{0,0}=1\)</span>. Directly canceling factorials in the binomial sum gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^n(k)_j\binom nk t^k(1-t)^{n-k}=(n)_j t^j.
+\]">\[
+\sum_{k=0}^n(k)_j\binom nk t^k(1-t)^{n-k}=(n)_j t^j.
+\]</span>
+<p>Terms with <span class="math" data-tex="\(k&lt;j\)">\(k&lt;j\)</span> are zero; after substituting <span class="math" data-tex="\(k=j+\ell\)">\(k=j+\ell\)</span>, the remaining factor is the binomial expansion of <span class="math" data-tex="\((t+(1-t))^{n-j}\)">\((t+(1-t))^{n-j}\)</span>. Thus, for fixed <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(n\geq d\)">\(n\geq d\)</span>,</p>
+<span class="math math-display" data-tex="\[
+B_n(t^d)=\sum_{j=0}^dc_{d,j}\frac{(n)_j}{n^d}t^j.
+\tag{BS12}
+\]">\[
+B_n(t^d)=\sum_{j=0}^dc_{d,j}\frac{(n)_j}{n^d}t^j.
+\tag{BS12}
+\]</span>
+<p>The coefficient at <span class="math" data-tex="\(j=d\)">\(j=d\)</span> tends to one, and every coefficient with <span class="math" data-tex="\(j&lt;d\)">\(j&lt;d\)</span> tends to zero. By linearity, <span class="math" data-tex="\(B_np\to p\)">\(B_np\to p\)</span> in coefficient norm for every fixed polynomial <span class="math" data-tex="\(p\)">\(p\)</span>. Since <span class="math" data-tex="\(\|S^j\|\leq1\)">\(\|S^j\|\leq1\)</span>, the operator-norm difference between the two evaluated polynomials is at most the sum of the moduli of their coefficient differences. Hence</p>
+<span class="math math-display" data-tex="\[
+(B_np)(S)\longrightarrow p(S)\quad\hbox{in operator norm}.
+\tag{BS13}
+\]">\[
+(B_np)(S)\longrightarrow p(S)\quad\hbox{in operator norm}.
+\tag{BS13}
+\]</span>
+<p>If a real polynomial <span class="math" data-tex="\(q\)">\(q\)</span> is nonnegative on <span class="math" data-tex="\(K\)">\(K\)</span>, (BS10) and (BS13) show that <span class="math" data-tex="\(q(S)\)">\(q(S)\)</span> is positive. Positivity is preserved in operator-norm limits because each scalar quadratic form converges.</p>
+<p>For a complex polynomial <span class="math" data-tex="\(p\)">\(p\)</span>, let <span class="math" data-tex="\(M=\max_{t\in K}|p(t)|\)">\(M=\max_{t\in K}|p(t)|\)</span>. The real polynomial <span class="math" data-tex="\(q(t)=M^2-\overline{p(t)}p(t)\)">\(q(t)=M^2-\overline{p(t)}p(t)\)</span>, interpreted on the real variable <span class="math" data-tex="\(t\)">\(t\)</span>, is nonnegative on <span class="math" data-tex="\(K\)">\(K\)</span>. Polynomial algebra and <span class="math" data-tex="\(S=S^*\)">\(S=S^*\)</span> give</p>
+<span class="math math-display" data-tex="\[
+M^2I-p(S)^*p(S)=q(S)\geq0.
+\]">\[
+M^2I-p(S)^*p(S)=q(S)\geq0.
+\]</span>
+<p>Taking quadratic forms proves the exact bound</p>
+<span class="math math-display" data-tex="\[
+\|p(S)\|\leq\max_{0\leq t\leq1}|p(t)|.
+\tag{BS14}
+\]">\[
+\|p(S)\|\leq\max_{0\leq t\leq1}|p(t)|.
+\tag{BS14}
+\]</span>
+<p>No spectral inclusion, spectral radius formula, compactness, or spectral theorem has been used.</p>
+<h3 id="3-continuous-functional-calculus">3. Continuous functional calculus</h3>
+<p>For completeness, the Bernstein polynomials uniformly approximate every continuous complex function on <span class="math" data-tex="\(K\)">\(K\)</span>. The nonnegative scalar weights in (BS9) have total mass one, mean <span class="math" data-tex="\(t\)">\(t\)</span>, and squared displacement</p>
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^n(k/n-t)^2\binom nk t^k(1-t)^{n-k}
+=\frac{t(1-t)}n\leq\frac1{4n}.
+\tag{BS15}
+\]">\[
+\sum_{k=0}^n(k/n-t)^2\binom nk t^k(1-t)^{n-k}
+=\frac{t(1-t)}n\leq\frac1{4n}.
+\tag{BS15}
+\]</span>
+<p>The mean and second moment follow from the preceding factorial identity at <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span>, using <span class="math" data-tex="\(k^2=(k)_2+k\)">\(k^2=(k)_2+k\)</span>. For <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, let <span class="math" data-tex="\(\omega_f(\eta)=\sup_{|s-t|\leq\eta}|f(s)-f(t)|\)">\(\omega_f(\eta)=\sup_{|s-t|\leq\eta}|f(s)-f(t)|\)</span>. Separating indices with <span class="math" data-tex="\(|k/n-t|\leq\eta\)">\(|k/n-t|\leq\eta\)</span> and using (BS15) for the rest yields</p>
+<span class="math math-display" data-tex="\[
+\|B_nf-f\|_\infty
+\leq\omega_f(\eta)+\frac{2\|f\|_\infty}{4n\eta^2}.
+\tag{BS16}
+\]">\[
+\|B_nf-f\|_\infty
+\leq\omega_f(\eta)+\frac{2\|f\|_\infty}{4n\eta^2}.
+\tag{BS16}
+\]</span>
+<p>Uniform continuity makes the first term small by choosing <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, and then the second is made small by choosing <span class="math" data-tex="\(n\)">\(n\)</span>. Therefore complex polynomials are uniformly dense in <span class="math" data-tex="\(C(K)\)">\(C(K)\)</span>.</p>
+<p>For <span class="math" data-tex="\(f\in C(K)\)">\(f\in C(K)\)</span>, take any polynomials <span class="math" data-tex="\(p_n\to f\)">\(p_n\to f\)</span> uniformly and define</p>
+<span class="math math-display" data-tex="\[
+\Phi(f)=\lim_n p_n(S)
+\quad\hbox{in operator norm}.
+\tag{BS17}
+\]">\[
+\Phi(f)=\lim_n p_n(S)
+\quad\hbox{in operator norm}.
+\tag{BS17}
+\]</span>
+<p>Inequality (BS14) makes the sequence Cauchy and proves that the limit is independent of the sequence. It also gives <span class="math" data-tex="\(\|\Phi(f)\|\leq\|f\|_\infty\)">\(\|\Phi(f)\|\leq\|f\|_\infty\)</span>. The polynomial identities pass to these limits: for example, if <span class="math" data-tex="\(p_n\to f\)">\(p_n\to f\)</span> and <span class="math" data-tex="\(q_n\to g\)">\(q_n\to g\)</span> uniformly, then <span class="math" data-tex="\(p_nq_n\to fg\)">\(p_nq_n\to fg\)</span>, while boundedness of the approximating sequences and continuity of operator multiplication give <span class="math" data-tex="\(p_n(S)q_n(S)\to\Phi(f)\Phi(g)\)">\(p_n(S)q_n(S)\to\Phi(f)\Phi(g)\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\Phi(1)=I,\quad\Phi(t)=S,\quad
+\Phi(fg)=\Phi(f)\Phi(g),\quad
+\Phi(\overline f)=\Phi(f)^*.
+\tag{BS18}
+\]">\[
+\Phi(1)=I,\quad\Phi(t)=S,\quad
+\Phi(fg)=\Phi(f)\Phi(g),\quad
+\Phi(\overline f)=\Phi(f)^*.
+\tag{BS18}
+\]</span>
+<p>Linearity is proved in the same way by polynomial sums and scalar multiples. If <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span> is continuous, <span class="math" data-tex="\(h=\sqrt f\)">\(h=\sqrt f\)</span> is continuous and (BS18) gives <span class="math" data-tex="\(\Phi(f)=\Phi(h)^*\Phi(h)\geq0\)">\(\Phi(f)=\Phi(h)^*\Phi(h)\geq0\)</span>. Alternatively positivity follows from the Bernstein approximants. This proves all continuous-calculus facts needed below.</p>
+<h3 id="4-scalar-measures-with-the-correct-complex-convention">4. Scalar measures with the correct complex convention</h3>
+<p>For each <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, the functional <span class="math" data-tex="\(L_x(f)=(\Phi(f)x,x)\)">\(L_x(f)=(\Phi(f)x,x)\)</span> is positive and bounded on <span class="math" data-tex="\(C(K)\)">\(C(K)\)</span>. The scalar interval measure theorem gives a unique finite positive regular measure <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+(\Phi(f)x,x)=\int_K f\,d\mu_x,
+\qquad\mu_x(K)=\|x\|^2.
+\tag{BS19}
+\]">\[
+(\Phi(f)x,x)=\int_K f\,d\mu_x,
+\qquad\mu_x(K)=\|x\|^2.
+\tag{BS19}
+\]</span>
+<p>Define a finite complex measure for <span class="math" data-tex="\(x,y\in H\)">\(x,y\in H\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\mu_{x,y}=\frac14\sum_{k=0}^3i^k\mu_{x+i^k y}.
+\tag{BS20}
+\]">\[
+\mu_{x,y}=\frac14\sum_{k=0}^3i^k\mu_{x+i^k y}.
+\tag{BS20}
+\]</span>
+<p>To verify the sign, if <span class="math" data-tex="\(f\)">\(f\)</span> is real continuous, the form <span class="math" data-tex="\((\Phi(f)x,y)\)">\((\Phi(f)x,y)\)</span> is Hermitian, linear in <span class="math" data-tex="\(x\)">\(x\)</span> and conjugate-linear in <span class="math" data-tex="\(y\)">\(y\)</span>. Expansion gives</p>
+<span class="math math-display" data-tex="\[
+(\Phi(f)(x+i^k y),x+i^k y)
+=L_x(f)+L_y(f)+i^{-k}(\Phi(f)x,y)
++i^k(\Phi(f)y,x).
+\]">\[
+(\Phi(f)(x+i^k y),x+i^k y)
+=L_x(f)+L_y(f)+i^{-k}(\Phi(f)x,y)
++i^k(\Phi(f)y,x).
+\]</span>
+<p>Multiplying by <span class="math" data-tex="\(i^k\)">\(i^k\)</span>, summing, and dividing by four leaves exactly <span class="math" data-tex="\((\Phi(f)x,y)\)">\((\Phi(f)x,y)\)</span>. Splitting a complex continuous <span class="math" data-tex="\(f\)">\(f\)</span> into its real and imaginary parts consequently proves</p>
+<span class="math math-display" data-tex="\[
+(\Phi(f)x,y)=\int_K f\,d\mu_{x,y}
+\qquad(f\in C(K)).
+\tag{BS21}
+\]">\[
+(\Phi(f)x,y)=\int_K f\,d\mu_{x,y}
+\qquad(f\in C(K)).
+\tag{BS21}
+\]</span>
+<p>Uniqueness of finite complex measures from their continuous integrals now proves that <span class="math" data-tex="\((x,y)\mapsto\mu_{x,y}\)">\((x,y)\mapsto\mu_{x,y}\)</span> is linear in its first argument, conjugate-linear in its second, and satisfies <span class="math" data-tex="\(\mu_{y,x}=\overline{\mu_{x,y}}\)">\(\mu_{y,x}=\overline{\mu_{x,y}}\)</span> and <span class="math" data-tex="\(\mu_{x,x}=\mu_x\)">\(\mu_{x,x}=\mu_x\)</span>. For example, the measures representing <span class="math" data-tex="\(\mu_{\alpha x+\beta z,y}\)">\(\mu_{\alpha x+\beta z,y}\)</span> and <span class="math" data-tex="\(\alpha\mu_{x,y}+\beta\mu_{z,y}\)">\(\alpha\mu_{x,y}+\beta\mu_{z,y}\)</span> have equal integrals against every continuous <span class="math" data-tex="\(f\)">\(f\)</span> by (BS21), hence are equal. The other identities follow by the identical uniqueness argument.</p>
+<p>For each Borel <span class="math" data-tex="\(B\)">\(B\)</span>, the scalar form <span class="math" data-tex="\((x,y)\mapsto\mu_{x,y}(B)\)">\((x,y)\mapsto\mu_{x,y}(B)\)</span> is positive on the diagonal. The same quadratic argument as in (BS4) proves</p>
+<span class="math math-display" data-tex="\[
+|\mu_{x,y}(B)|^2\leq\mu_x(B)\mu_y(B).
+\tag{BS22}
+\]">\[
+|\mu_{x,y}(B)|^2\leq\mu_x(B)\mu_y(B).
+\tag{BS22}
+\]</span>
+<p>Taking a finite measurable partition <span class="math" data-tex="\(B=\bigcup_jB_j\)">\(B=\bigcup_jB_j\)</span> and applying scalar Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+\sum_j|\mu_{x,y}(B_j)|
+\leq\left(\sum_j\mu_x(B_j)\right)^{1/2}
+\left(\sum_j\mu_y(B_j)\right)^{1/2}.
+\]">\[
+\sum_j|\mu_{x,y}(B_j)|
+\leq\left(\sum_j\mu_x(B_j)\right)^{1/2}
+\left(\sum_j\mu_y(B_j)\right)^{1/2}.
+\]</span>
+<p>The supremum over finite partitions, which defines total variation, yields</p>
+<span class="math math-display" data-tex="\[
+|\mu_{x,y}|(B)\leq\mu_x(B)^{1/2}\mu_y(B)^{1/2},
+\qquad|\mu_{x,y}|(K)\leq\|x\|\|y\|.
+\tag{BS23}
+\]">\[
+|\mu_{x,y}|(B)\leq\mu_x(B)^{1/2}\mu_y(B)^{1/2},
+\qquad|\mu_{x,y}|(K)\leq\|x\|\|y\|.
+\tag{BS23}
+\]</span>
+<p>More generally, for nonnegative Borel <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_K h\,d|\mu_{x,y}|
+\leq\left(\int_Kh^2\,d\mu_x\right)^{1/2}\|y\|.
+\tag{BS24}
+\]">\[
+\int_K h\,d|\mu_{x,y}|
+\leq\left(\int_Kh^2\,d\mu_x\right)^{1/2}\|y\|.
+\tag{BS24}
+\]</span>
+<p>For a nonnegative simple <span class="math" data-tex="\(h=\sum_jc_j1_{B_j}\)">\(h=\sum_jc_j1_{B_j}\)</span> on disjoint sets, use (BS23) on each set and Cauchy–Schwarz for the finite sum. Increasing simple approximation proves the displayed inequality in general, with infinity permitted. These estimates will control every unbounded cross integral below.</p>
+<h3 id="5-bounded-borel-operators-and-direct-multiplicativity">5. Bounded Borel operators and direct multiplicativity</h3>
+<p>For bounded Borel <span class="math" data-tex="\(f\)">\(f\)</span>, the sesquilinear form</p>
+<span class="math math-display" data-tex="\[
+b_f(x,y)=\int_K f\,d\mu_{x,y}
+\]">\[
+b_f(x,y)=\int_K f\,d\mu_{x,y}
+\]</span>
+<p>has modulus at most <span class="math" data-tex="\(\|f\|_\infty\|x\|\|y\|\)">\(\|f\|_\infty\|x\|\|y\|\)</span> by (BS23). Hilbert representation gives a unique vector <span class="math" data-tex="\(\Psi(f)x\)">\(\Psi(f)x\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+(\Psi(f)x,y)=\int_K f\,d\mu_{x,y}\quad(y\in H).
+\tag{BS25}
+\]">\[
+(\Psi(f)x,y)=\int_K f\,d\mu_{x,y}\quad(y\in H).
+\tag{BS25}
+\]</span>
+<p>The form is linear in <span class="math" data-tex="\(x\)">\(x\)</span>, so uniqueness of the representing vector gives linearity of <span class="math" data-tex="\(\Psi(f)\)">\(\Psi(f)\)</span>. Its norm is at most <span class="math" data-tex="\(\|f\|_\infty\)">\(\|f\|_\infty\)</span>, so it is bounded. Representation is being used here for a conjugate-linear functional in <span class="math" data-tex="\(y\)">\(y\)</span>: if <span class="math" data-tex="\(F(y)\)">\(F(y)\)</span> is bounded and conjugate-linear, apply the ordinary linear-functional representation to <span class="math" data-tex="\(\overline{F(y)}\)">\(\overline{F(y)}\)</span>, giving <span class="math" data-tex="\(F(y)=(v,y)\)">\(F(y)=(v,y)\)</span>. This accounts for the inner-product convention exactly.</p>
+<p>The defining scalar integrals give linearity in <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(\Psi(1)=I\)">\(\Psi(1)=I\)</span>, and <span class="math" data-tex="\(\Psi(f)=\Phi(f)\)">\(\Psi(f)=\Phi(f)\)</span> for continuous <span class="math" data-tex="\(f\)">\(f\)</span>. They also give</p>
+<span class="math math-display" data-tex="\[
+\Psi(f)^*=\Psi(\overline f),\qquad
+\Psi(f)\geq0\text{ if }f\geq0.
+\tag{BS26}
+\]">\[
+\Psi(f)^*=\Psi(\overline f),\qquad
+\Psi(f)\geq0\text{ if }f\geq0.
+\tag{BS26}
+\]</span>
+<p>For the adjoint formula, use <span class="math" data-tex="\(\mu_{y,x}=\overline{\mu_{x,y}}\)">\(\mu_{y,x}=\overline{\mu_{x,y}}\)</span>: the conjugate of <span class="math" data-tex="\(\int\overline f\,d\mu_{y,x}\)">\(\int\overline f\,d\mu_{y,x}\)</span> is <span class="math" data-tex="\(\int f\,d\mu_{x,y}\)">\(\int f\,d\mu_{x,y}\)</span>.</p>
+<p>We prove multiplicativity rather than invoking a Borel extension theorem. First let <span class="math" data-tex="\(g\)">\(g\)</span> be continuous. For every continuous <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_Kh\,d\mu_{\Phi(g)x,y}
+=(\Phi(h)\Phi(g)x,y)
+=(\Phi(hg)x,y)=\int_Khg\,d\mu_{x,y}.
+\]">\[
+\int_Kh\,d\mu_{\Phi(g)x,y}
+=(\Phi(h)\Phi(g)x,y)
+=(\Phi(hg)x,y)=\int_Khg\,d\mu_{x,y}.
+\]</span>
+<p>The uniqueness of scalar complex measures implies</p>
+<span class="math math-display" data-tex="\[
+\mu_{\Phi(g)x,y}=g\,\mu_{x,y}.
+\tag{BS27}
+\]">\[
+\mu_{\Phi(g)x,y}=g\,\mu_{x,y}.
+\tag{BS27}
+\]</span>
+<p>Hence, for bounded Borel <span class="math" data-tex="\(f\)">\(f\)</span>, (BS25) gives</p>
+<span class="math math-display" data-tex="\[
+\Psi(f)\Phi(g)=\Psi(fg).
+\tag{BS28}
+\]">\[
+\Psi(f)\Phi(g)=\Psi(fg).
+\tag{BS28}
+\]</span>
+<p>Taking adjoints in (BS28), using (BS18) and (BS26), and then replacing <span class="math" data-tex="\(f,g\)">\(f,g\)</span> by their conjugates gives the opposite order</p>
+<span class="math math-display" data-tex="\[
+\Phi(g)\Psi(f)=\Psi(gf).
+\tag{BS29}
+\]">\[
+\Phi(g)\Psi(f)=\Psi(gf).
+\tag{BS29}
+\]</span>
+<p>Now keep <span class="math" data-tex="\(f\)">\(f\)</span> bounded Borel and test against any continuous <span class="math" data-tex="\(h\)">\(h\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\int_Kh\,d\mu_{\Psi(f)x,y}
+=(\Phi(h)\Psi(f)x,y)
+=(\Psi(hf)x,y)
+=\int_Khf\,d\mu_{x,y}.
+\]">\[
+\int_Kh\,d\mu_{\Psi(f)x,y}
+=(\Phi(h)\Psi(f)x,y)
+=(\Psi(hf)x,y)
+=\int_Khf\,d\mu_{x,y}.
+\]</span>
+<p>The measure <span class="math" data-tex="\(f\mu_{x,y}\)">\(f\mu_{x,y}\)</span> is finite and regular, as specified in Section 1. Scalar uniqueness therefore proves the decisive identity</p>
+<span class="math math-display" data-tex="\[
+\mu_{\Psi(f)x,y}=f\,\mu_{x,y}.
+\tag{BS30}
+\]">\[
+\mu_{\Psi(f)x,y}=f\,\mu_{x,y}.
+\tag{BS30}
+\]</span>
+<p>For any second bounded Borel <span class="math" data-tex="\(g\)">\(g\)</span>, substitute (BS30) in (BS25):</p>
+<span class="math math-display" data-tex="\[
+(\Psi(g)\Psi(f)x,y)
+=\int_Kg\,d\mu_{\Psi(f)x,y}
+=\int_Kgf\,d\mu_{x,y}
+=(\Psi(gf)x,y).
+\]">\[
+(\Psi(g)\Psi(f)x,y)
+=\int_Kg\,d\mu_{\Psi(f)x,y}
+=\int_Kgf\,d\mu_{x,y}
+=(\Psi(gf)x,y).
+\]</span>
+<p>Since this holds for every <span class="math" data-tex="\(x,y\)">\(x,y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Psi(g)\Psi(f)=\Psi(gf).
+\tag{BS31}
+\]">\[
+\Psi(g)\Psi(f)=\Psi(gf).
+\tag{BS31}
+\]</span>
+<p>Together with (BS26), this proves the bounded Borel unital star algebra homomorphism without any Hilbert-space separability assumption. In particular</p>
+<span class="math math-display" data-tex="\[
+\|\Psi(f)x\|^2=(\Psi(|f|^2)x,x)
+=\int_K|f|^2\,d\mu_x.
+\tag{BS32}
+\]">\[
+\|\Psi(f)x\|^2=(\Psi(|f|^2)x,x)
+=\int_K|f|^2\,d\mu_x.
+\tag{BS32}
+\]</span>
+<p>If <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span> pointwise and <span class="math" data-tex="\(\sup_n\|f_n\|_\infty&lt;\infty\)">\(\sup_n\|f_n\|_\infty&lt;\infty\)</span>, then dominated convergence in (BS32) applied to <span class="math" data-tex="\(f_n-f\)">\(f_n-f\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\Psi(f_n)x\longrightarrow\Psi(f)x\qquad(x\in H).
+\tag{BS33}
+\]">\[
+\Psi(f_n)x\longrightarrow\Psi(f)x\qquad(x\in H).
+\tag{BS33}
+\]</span>
+<p>Thus bounded pointwise convergence produces strong operator convergence. Only a scalar measure associated with the particular vector is used; there is no countable enumeration of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<h3 id="6-projection-valued-measure-exact-bounded-norms-and-uniqueness">6. Projection-valued measure, exact bounded norms, and uniqueness</h3>
+<p>For a Borel set <span class="math" data-tex="\(B\subset K\)">\(B\subset K\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+E(B)=\Psi(1_B).
+\tag{BS34}
+\]">\[
+E(B)=\Psi(1_B).
+\tag{BS34}
+\]</span>
+<p>Equations (BS26) and (BS31) give</p>
+<span class="math math-display" data-tex="\[
+E(B)^*=E(B),\quad E(B)^2=E(B),\quad
+E(B)E(C)=E(B\cap C),\quad E(K)=I,\quad E(\varnothing)=0.
+\tag{BS35}
+\]">\[
+E(B)^*=E(B),\quad E(B)^2=E(B),\quad
+E(B)E(C)=E(B\cap C),\quad E(K)=I,\quad E(\varnothing)=0.
+\tag{BS35}
+\]</span>
+<p>For disjoint Borel sets <span class="math" data-tex="\(B_j\)">\(B_j\)</span>, the indicator functions of their finite unions converge boundedly pointwise to the indicator of their union. Linearity and (BS33) imply</p>
+<span class="math math-display" data-tex="\[
+E\left(\bigcup_{j\geq1}B_j\right)x
+=\lim_{N\to\infty}\sum_{j=1}^NE(B_j)x
+\quad(x\in H).
+\tag{BS36}
+\]">\[
+E\left(\bigcup_{j\geq1}B_j\right)x
+=\lim_{N\to\infty}\sum_{j=1}^NE(B_j)x
+\quad(x\in H).
+\tag{BS36}
+\]</span>
+<p>More explicitly, the squared norm of the difference is
+<span class="math" data-tex="\(\mu_x((\bigcup_jB_j)\setminus(\bigcup_{j\leq N}B_j))\)">\(\mu_x((\bigcup_jB_j)\setminus(\bigcup_{j\leq N}B_j))\)</span>, which tends to zero by finite-measure continuity from above. This proves strong countable additivity. Countable additivity in operator norm is neither used nor claimed.</p>
+<p>Taking <span class="math" data-tex="\(f=1_B\)">\(f=1_B\)</span> in (BS25) confirms</p>
+<span class="math math-display" data-tex="\[
+(E(B)x,y)=\mu_{x,y}(B),\qquad
+\mu_x(B)=\|E(B)x\|^2.
+\tag{BS37}
+\]">\[
+(E(B)x,y)=\mu_{x,y}(B),\qquad
+\mu_x(B)=\|E(B)x\|^2.
+\tag{BS37}
+\]</span>
+<p>For a Borel set <span class="math" data-tex="\(N\)">\(N\)</span>, the following are equivalent: <span class="math" data-tex="\(E(N)=0\)">\(E(N)=0\)</span>; <span class="math" data-tex="\(\mu_x(N)=0\)">\(\mu_x(N)=0\)</span> for every <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>; and <span class="math" data-tex="\(E(N)x=0\)">\(E(N)x=0\)</span> for every <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>. We call such a set <span class="math" data-tex="\(E\)">\(E\)</span>-null. For bounded Borel <span class="math" data-tex="\(f\)">\(f\)</span>, its exact norm is</p>
+<span class="math math-display" data-tex="\[
+\|\Psi(f)\|
+=\inf\{c\geq0:E(\{|f|&gt;c\})=0\}.
+\tag{BS38}
+\]">\[
+\|\Psi(f)\|
+=\inf\{c\geq0:E(\{|f|&gt;c\})=0\}.
+\tag{BS38}
+\]</span>
+<p>For any <span class="math" data-tex="\(c\)">\(c\)</span> in this set, (BS32) gives <span class="math" data-tex="\(\|\Psi(f)x\|\leq c\|x\|\)">\(\|\Psi(f)x\|\leq c\|x\|\)</span>. Conversely, if <span class="math" data-tex="\(E(\{|f|&gt;c\})\ne0\)">\(E(\{|f|&gt;c\})\ne0\)</span>, choose a unit vector in the range of that projection. Its scalar measure is supported in <span class="math" data-tex="\(\{|f|&gt;c\}\)">\(\{|f|&gt;c\}\)</span>, by (BS35)–(BS37), and has mass one. Thus its integral of <span class="math" data-tex="\(|f|^2\)">\(|f|^2\)</span> is strictly greater than <span class="math" data-tex="\(c^2\)">\(c^2\)</span>; indeed <span class="math" data-tex="\(|f|^2-c^2\)">\(|f|^2-c^2\)</span> is positive at every point of a set of full scalar measure, and a nonnegative function with zero integral vanishes almost everywhere. Therefore <span class="math" data-tex="\(\|\Psi(f)\|&gt;c\)">\(\|\Psi(f)\|&gt;c\)</span>. These implications prove (BS38), including the zero-space case. A sup norm over all of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> need not equal the operator norm if part of that interval is <span class="math" data-tex="\(E\)">\(E\)</span>-null.</p>
+<p>For simple functions, <span class="math" data-tex="\(\Psi(\sum_jc_j1_{B_j})=\sum_jc_jE(B_j)\)">\(\Psi(\sum_jc_j1_{B_j})=\sum_jc_jE(B_j)\)</span>. Every bounded complex Borel function has uniformly convergent finite-range Borel approximations, obtained, for example, by dividing its bounded real and imaginary ranges into intervals of length <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Contractivity then identifies <span class="math" data-tex="\(\Psi(f)\)">\(\Psi(f)\)</span> with its bounded spectral integral. In particular <span class="math" data-tex="\(\Psi(t)=\Phi(t)=S\)">\(\Psi(t)=\Phi(t)=S\)</span>, proving (BS2).</p>
+<p>To prove uniqueness, suppose <span class="math" data-tex="\(F\)">\(F\)</span> is another orthogonal PVM on <span class="math" data-tex="\(K\)">\(K\)</span>, with <span class="math" data-tex="\(F(K)=I\)">\(F(K)=I\)</span>, strong countable additivity, and <span class="math" data-tex="\(\int_Kt\,dF(t)=S\)">\(\int_Kt\,dF(t)=S\)</span>. The integral of a simple function on disjoint sets is defined as above. Orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\left\|\sum_jc_jF(B_j)x\right\|^2
+=\sum_j|c_j|^2\|F(B_j)x\|^2
+\leq\max_j|c_j|^2\|x\|^2.
+\]">\[
+\left\|\sum_jc_jF(B_j)x\right\|^2
+=\sum_j|c_j|^2\|F(B_j)x\|^2
+\leq\max_j|c_j|^2\|x\|^2.
+\]</span>
+<p>Thus uniform simple approximation defines its bounded integrals and preserves sums, products, and conjugate adjoints, first checked on common finite partitions and then passed to norm limits. Consequently its polynomial integrals are <span class="math" data-tex="\(p(S)\)">\(p(S)\)</span>, and its continuous integrals are <span class="math" data-tex="\(\Phi(f)\)">\(\Phi(f)\)</span> by uniform polynomial approximation. For each <span class="math" data-tex="\(x\)">\(x\)</span>, the positive finite measure <span class="math" data-tex="\((F(\cdot)x,x)\)">\((F(\cdot)x,x)\)</span> therefore has exactly the continuous integrals in (BS19). Scalar uniqueness gives <span class="math" data-tex="\((F(B)x,x)=\mu_x(B)=(E(B)x,x)\)">\((F(B)x,x)=\mu_x(B)=(E(B)x,x)\)</span> for all <span class="math" data-tex="\(B,x\)">\(B,x\)</span>. Polarization with the convention in (BS20) gives <span class="math" data-tex="\((F(B)x,y)=(E(B)x,y)\)">\((F(B)x,y)=(E(B)x,y)\)</span> for all <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, so <span class="math" data-tex="\(F(B)=E(B)\)">\(F(B)=E(B)\)</span>. This proves the unique PVM assertion.</p>
+<h3 id="7-unbounded-borel-functions-and-the-exact-closed-domain">7. Unbounded Borel functions and the exact closed domain</h3>
+<p>Let <span class="math" data-tex="\(f:K\to\mathbb C\)">\(f:K\to\mathbb C\)</span> be Borel and finite at every point. Define</p>
+<span class="math math-display" data-tex="\[
+A_n=\{|f|\leq n\},\quad P_n=E(A_n),\quad
+f_n=f1_{A_n},\quad
+D_f=\left\{x:\int_K|f|^2\,d\mu_x&lt;\infty\right\}.
+\tag{BS39}
+\]">\[
+A_n=\{|f|\leq n\},\quad P_n=E(A_n),\quad
+f_n=f1_{A_n},\quad
+D_f=\left\{x:\int_K|f|^2\,d\mu_x&lt;\infty\right\}.
+\tag{BS39}
+\]</span>
+<p>The sets <span class="math" data-tex="\(A_n\)">\(A_n\)</span> increase to <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(P_n\to I\)">\(P_n\to I\)</span> strongly by (BS33). For any <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, (BS32) gives</p>
+<span class="math math-display" data-tex="\[
+\|\Psi(f_n)x\|^2=\int_{A_n}|f|^2\,d\mu_x,
+\quad
+\|\Psi(f_n-f_m)x\|^2
+=\int_{A_n\setminus A_m}|f|^2\,d\mu_x\quad(n\geq m).
+\tag{BS40}
+\]">\[
+\|\Psi(f_n)x\|^2=\int_{A_n}|f|^2\,d\mu_x,
+\quad
+\|\Psi(f_n-f_m)x\|^2
+=\int_{A_n\setminus A_m}|f|^2\,d\mu_x\quad(n\geq m).
+\tag{BS40}
+\]</span>
+<p>The sequence <span class="math" data-tex="\(\Psi(f_n)x\)">\(\Psi(f_n)x\)</span> is Cauchy if and only if <span class="math" data-tex="\(x\in D_f\)">\(x\in D_f\)</span>. Sufficiency follows from the vanishing tails of an integrable nonnegative function. For necessity a Cauchy sequence has bounded norms, so monotone convergence in the first formula gives a finite integral over <span class="math" data-tex="\(K\)">\(K\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+T_fx=\lim_n\Psi(f_n)x\quad(x\in D_f).
+\tag{BS41}
+\]">\[
+T_fx=\lim_n\Psi(f_n)x\quad(x\in D_f).
+\tag{BS41}
+\]</span>
+<p>The set <span class="math" data-tex="\(D_f\)">\(D_f\)</span> is a vector space: the pointwise identity of the approximating operators gives
+<span class="math" data-tex="\(\|\Psi(f_n)(x+y)\|^2\leq2\|\Psi(f_n)x\|^2+2\|\Psi(f_n)y\|^2\)">\(\|\Psi(f_n)(x+y)\|^2\leq2\|\Psi(f_n)x\|^2+2\|\Psi(f_n)y\|^2\)</span>; boundedness of these norms and (BS40) imply <span class="math" data-tex="\(x+y\in D_f\)">\(x+y\in D_f\)</span>. Scalar multiples are immediate. Limits in (BS41) then give linearity of <span class="math" data-tex="\(T_f\)">\(T_f\)</span>. Equations (BS40)–(BS41) imply exactly</p>
+<span class="math math-display" data-tex="\[
+\|T_fx\|^2=\int_K|f|^2\,d\mu_x.
+\tag{BS42}
+\]">\[
+\|T_fx\|^2=\int_K|f|^2\,d\mu_x.
+\tag{BS42}
+\]</span>
+<p>The domain is dense. For any <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(P_nx\in D_f\)">\(P_nx\in D_f\)</span> since its scalar measure is <span class="math" data-tex="\(1_{A_n}\mu_x\)">\(1_{A_n}\mu_x\)</span>, and hence its <span class="math" data-tex="\(|f|^2\)">\(|f|^2\)</span> moment is at most <span class="math" data-tex="\(n^2\|x\|^2\)">\(n^2\|x\|^2\)</span>. The asserted scalar measure formula follows from (BS35) and (BS37): <span class="math" data-tex="\(\mu_{P_nx}(B)=\|E(B)P_nx\|^2=\mu_x(B\cap A_n)\)">\(\mu_{P_nx}(B)=\|E(B)P_nx\|^2=\mu_x(B\cap A_n)\)</span>. As <span class="math" data-tex="\(P_nx\to x\)">\(P_nx\to x\)</span>, density follows.</p>
+<p>For every Borel <span class="math" data-tex="\(B\)">\(B\)</span>, this same argument shows <span class="math" data-tex="\(E(B)D_f\subset D_f\)">\(E(B)D_f\subset D_f\)</span>. Passing the bounded commutation identities through the limit (BS41) gives</p>
+<span class="math math-display" data-tex="\[
+E(B)T_fx=T_fE(B)x\quad(x\in D_f),
+\qquad T_fP_nx=\Psi(f_n)x\quad(x\in H).
+\tag{BS43}
+\]">\[
+E(B)T_fx=T_fE(B)x\quad(x\in D_f),
+\qquad T_fP_nx=\Psi(f_n)x\quad(x\in H).
+\tag{BS43}
+\]</span>
+<p>For <span class="math" data-tex="\(x\in D_f\)">\(x\in D_f\)</span>, also <span class="math" data-tex="\(P_nT_fx=\Psi(f_n)x\)">\(P_nT_fx=\Psi(f_n)x\)</span>, by the first formula. Thus <span class="math" data-tex="\(P_nx\to x\)">\(P_nx\to x\)</span> in the graph norm of <span class="math" data-tex="\(T_f\)">\(T_f\)</span>.</p>
+<p>To prove closedness, let <span class="math" data-tex="\(x_k\in D_f\)">\(x_k\in D_f\)</span>, <span class="math" data-tex="\(x_k\to x\)">\(x_k\to x\)</span>, and <span class="math" data-tex="\(T_fx_k\to y\)">\(T_fx_k\to y\)</span>. For fixed <span class="math" data-tex="\(n\)">\(n\)</span>, boundedness and (BS43) imply</p>
+<span class="math math-display" data-tex="\[
+\Psi(f_n)x=\lim_k\Psi(f_n)x_k
+=\lim_k P_nT_fx_k=P_ny.
+\]">\[
+\Psi(f_n)x=\lim_k\Psi(f_n)x_k
+=\lim_k P_nT_fx_k=P_ny.
+\]</span>
+<p>Its squared norm is at most <span class="math" data-tex="\(\|y\|^2\)">\(\|y\|^2\)</span>. Monotone convergence in (BS40) gives <span class="math" data-tex="\(x\in D_f\)">\(x\in D_f\)</span>. Letting <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span> in the last display gives <span class="math" data-tex="\(T_fx=y\)">\(T_fx=y\)</span>. This proves closedness with its full domain (BS39), not merely a closed restriction.</p>
+<p>For <span class="math" data-tex="\(x\in D_f\)">\(x\in D_f\)</span> and any <span class="math" data-tex="\(y\in H\)">\(y\in H\)</span>, (BS24) shows that <span class="math" data-tex="\(f\)">\(f\)</span> is integrable against <span class="math" data-tex="\(\mu_{x,y}\)">\(\mu_{x,y}\)</span>, and dominated convergence gives</p>
+<span class="math math-display" data-tex="\[
+(T_fx,y)=\int_K f\,d\mu_{x,y},\qquad
+\left|\int_Kf\,d\mu_{x,y}\right|
+\leq\left(\int_K|f|^2\,d\mu_x\right)^{1/2}\|y\|.
+\tag{BS44}
+\]">\[
+(T_fx,y)=\int_K f\,d\mu_{x,y},\qquad
+\left|\int_Kf\,d\mu_{x,y}\right|
+\leq\left(\int_K|f|^2\,d\mu_x\right)^{1/2}\|y\|.
+\tag{BS44}
+\]</span>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> is bounded, the construction agrees with <span class="math" data-tex="\(\Psi(f)\)">\(\Psi(f)\)</span>; if <span class="math" data-tex="\(f\)">\(f\)</span> is merely <span class="math" data-tex="\(E\)">\(E\)</span>-essentially bounded, (BS42) shows that its domain is all <span class="math" data-tex="\(H\)">\(H\)</span> and it equals a bounded representative with the exact norm (BS38). The operators only depend on <span class="math" data-tex="\(f\)">\(f\)</span> outside <span class="math" data-tex="\(E\)">\(E\)</span>-null sets, because the domain integrals and all approximating scalar integrals ignore those sets.</p>
+<p>A function with an infinite value on an <span class="math" data-tex="\(E\)">\(E\)</span>-null Borel set is handled by replacing its value on that set by zero. The result is independent of that replacement. The assertion of dense domain in this theorem concerns functions finite <span class="math" data-tex="\(E\)">\(E\)</span>-almost everywhere; no dense-domain assertion is made for an infinite value on a set with nonzero spectral projection.</p>
+<p>The same construction covers the completion of the Borel sigma-algebra by subsets of Borel <span class="math" data-tex="\(E\)">\(E\)</span>-null sets, without selecting a single dominating scalar measure. A countable union of <span class="math" data-tex="\(E\)">\(E\)</span>-null Borel sets is <span class="math" data-tex="\(E\)">\(E\)</span>-null: each <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> gives that union measure zero, and (BS37) applies. Each completed-measurable finite complex function has a Borel representative outside such a null set. To construct one, approximate its truncated real and imaginary parts by finite-range completed-measurable functions with pointwise errors at most <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Replace the finitely many completed-measurable level sets of each approximation by Borel representatives. The discrepancies across all approximations are contained in one countable union of Borel <span class="math" data-tex="\(E\)">\(E\)</span>-null sets. The resulting sequence consists of Borel functions and converges to the original function off that union. On the Borel set where the sequence converges, take its limit; give it value zero on the complement. This is a Borel representative. Any two representatives agree off an <span class="math" data-tex="\(E\)">\(E\)</span>-null set, and the preceding domain and integral formulas show that they give the same operator. Thus “measurable” may also be read with this precise completed convention.</p>
+<h3 id="8-full-adjoint-product-and-sum-domains">8. Full adjoint, product, and sum domains</h3>
+<p>We prove the unbounded adjoint formula in both directions. If <span class="math" data-tex="\(v\in D(T_f^*)\)">\(v\in D(T_f^*)\)</span>, let <span class="math" data-tex="\(w=T_f^*v\)">\(w=T_f^*v\)</span>. For arbitrary <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>, <span class="math" data-tex="\(P_nh\in D_f\)">\(P_nh\in D_f\)</span>, and the adjoint identity gives</p>
+<span class="math math-display" data-tex="\[
+(\Psi(f_n)h,v)=(T_fP_nh,v)=(P_nh,w).
+\]">\[
+(\Psi(f_n)h,v)=(T_fP_nh,v)=(P_nh,w).
+\]</span>
+<p>Bounded adjoints and self-adjointness of <span class="math" data-tex="\(P_n\)">\(P_n\)</span> turn this into</p>
+<span class="math math-display" data-tex="\[
+\Psi(\overline{f_n})v=P_nw.
+\tag{BS45}
+\]">\[
+\Psi(\overline{f_n})v=P_nw.
+\tag{BS45}
+\]</span>
+<p>Taking norms and using monotone convergence yields
+<span class="math" data-tex="\(\int_K|f|^2\,d\mu_v\leq\|w\|^2\)">\(\int_K|f|^2\,d\mu_v\leq\|w\|^2\)</span>, so <span class="math" data-tex="\(v\in D_{\overline f}\)">\(v\in D_{\overline f}\)</span>. Taking limits in (BS45) gives <span class="math" data-tex="\(T_{\overline f}v=w\)">\(T_{\overline f}v=w\)</span>. Conversely, if <span class="math" data-tex="\(v\in D_{\overline f}\)">\(v\in D_{\overline f}\)</span> and <span class="math" data-tex="\(u\in D_f\)">\(u\in D_f\)</span>, bounded adjoint identities imply</p>
+<span class="math math-display" data-tex="\[
+(T_fu,v)=\lim_n(\Psi(f_n)u,v)
+=\lim_n(u,\Psi(\overline{f_n})v)
+=(u,T_{\overline f}v).
+\]">\[
+(T_fu,v)=\lim_n(\Psi(f_n)u,v)
+=\lim_n(u,\Psi(\overline{f_n})v)
+=(u,T_{\overline f}v).
+\]</span>
+<p>Thus</p>
+<span class="math math-display" data-tex="\[
+T_f^*=T_{\overline f},\qquad
+D(T_f^*)=D_{\overline f}=D_f.
+\tag{BS46}
+\]">\[
+T_f^*=T_{\overline f},\qquad
+D(T_f^*)=D_{\overline f}=D_f.
+\tag{BS46}
+\]</span>
+<p>The last equality concerns domain sets, not equality of actions for complex <span class="math" data-tex="\(f\)">\(f\)</span>. Real functions give self-adjoint operators.</p>
+<p>For <span class="math" data-tex="\(x\in D_g\)">\(x\in D_g\)</span>, (BS43) and (BS42) prove the scalar change-of-measure formula</p>
+<span class="math math-display" data-tex="\[
+\mu_{T_gx}(B)=\|E(B)T_gx\|^2
+=\|T_gE(B)x\|^2
+=\int_B|g|^2\,d\mu_x.
+\tag{BS47}
+\]">\[
+\mu_{T_gx}(B)=\|E(B)T_gx\|^2
+=\|T_gE(B)x\|^2
+=\int_B|g|^2\,d\mu_x.
+\tag{BS47}
+\]</span>
+<p>Its last equality uses <span class="math" data-tex="\(\mu_{E(B)x}=1_B\mu_x\)">\(\mu_{E(B)x}=1_B\mu_x\)</span>. Equality of the measures then gives, for every nonnegative Borel <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_Kh\,d\mu_{T_gx}=\int_Kh|g|^2\,d\mu_x,
+\tag{BS48}
+\]">\[
+\int_Kh\,d\mu_{T_gx}=\int_Kh|g|^2\,d\mu_x,
+\tag{BS48}
+\]</span>
+<p>first for simple <span class="math" data-tex="\(h\)">\(h\)</span>, then by monotone convergence. Therefore the full domain of the product is</p>
+<span class="math math-display" data-tex="\[
+D(T_fT_g)
+=\{x\in D_g:T_gx\in D_f\}
+=D_g\cap D_{fg}.
+\tag{BS49}
+\]">\[
+D(T_fT_g)
+=\{x\in D_g:T_gx\in D_f\}
+=D_g\cap D_{fg}.
+\tag{BS49}
+\]</span>
+<p>This proves both inclusions, since the second required integral is exactly <span class="math" data-tex="\(\int|fg|^2\,d\mu_x\)">\(\int|fg|^2\,d\mu_x\)</span>, with no discarded <span class="math" data-tex="\(g\)">\(g\)</span>-moment condition.</p>
+<p>To identify the action, put <span class="math" data-tex="\(C_n=\{|f|\leq n,|g|\leq n\}\)">\(C_n=\{|f|\leq n,|g|\leq n\}\)</span> and <span class="math" data-tex="\(Q_n=E(C_n)\)">\(Q_n=E(C_n)\)</span>. Then <span class="math" data-tex="\(Q_n\to I\)">\(Q_n\to I\)</span> strongly. On <span class="math" data-tex="\(Q_nH\)">\(Q_nH\)</span>, the functions <span class="math" data-tex="\(f,g,fg\)">\(f,g,fg\)</span> are all bounded; (BS31), (BS41), and (BS43) consequently give, for every <span class="math" data-tex="\(x\)">\(x\)</span> in the domain in (BS49),</p>
+<span class="math math-display" data-tex="\[
+Q_nT_fT_gx=\Psi(f1_{C_n})\Psi(g1_{C_n})x
+=\Psi(fg1_{C_n})x=Q_nT_{fg}x.
+\]">\[
+Q_nT_fT_gx=\Psi(f1_{C_n})\Psi(g1_{C_n})x
+=\Psi(fg1_{C_n})x=Q_nT_{fg}x.
+\]</span>
+<p>Letting <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+T_fT_gx=T_{fg}x\quad(x\in D_g\cap D_{fg}).
+\tag{BS50}
+\]">\[
+T_fT_gx=T_{fg}x\quad(x\in D_g\cap D_{fg}).
+\tag{BS50}
+\]</span>
+<p>The intersection is essential. A complete example is <span class="math" data-tex="\(H=\ell^2(\mathbb N)\)">\(H=\ell^2(\mathbb N)\)</span>, with <span class="math" data-tex="\(Se_j=j^{-1}e_j\)">\(Se_j=j^{-1}e_j\)</span>. Direct summation proves that <span class="math" data-tex="\(S\)">\(S\)</span> is positive, self-adjoint, injective, and has norm one. Define <span class="math" data-tex="\(F(B)x\)">\(F(B)x\)</span> by keeping precisely the coordinates for which <span class="math" data-tex="\(j^{-1}\in B\)">\(j^{-1}\in B\)</span>. Coordinate multiplication proves the projection identities. For disjoint sets <span class="math" data-tex="\(B_k\)">\(B_k\)</span>, the squared norm of the countable-additivity remainder is the sum of <span class="math" data-tex="\(|x_j|^2\)">\(|x_j|^2\)</span> over coordinates in their union not in the first <span class="math" data-tex="\(N\)">\(N\)</span> sets; this tends to zero by convergence of <span class="math" data-tex="\(\sum_j|x_j|^2\)">\(\sum_j|x_j|^2\)</span>. Thus <span class="math" data-tex="\(F\)">\(F\)</span> is a PVM. Its integral of <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(S\)">\(S\)</span>, first for uniformly approximating simple functions and then by coordinate limits, so uniqueness identifies it with the constructed <span class="math" data-tex="\(E\)">\(E\)</span>. Set <span class="math" data-tex="\(f(t)=t\)">\(f(t)=t\)</span> and <span class="math" data-tex="\(g(t)=1/t\)">\(g(t)=1/t\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, with <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>. The measure of <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> is zero for this PVM. The operator <span class="math" data-tex="\(T_{fg}\)">\(T_{fg}\)</span> is the identity on <span class="math" data-tex="\(H\)">\(H\)</span>, while</p>
+<span class="math math-display" data-tex="\[
+D(T_fT_g)=D_g=\left\{x:\sum_{j\geq1}j^2|x_j|^2&lt;\infty\right\}.
+\]">\[
+D(T_fT_g)=D_g=\left\{x:\sum_{j\geq1}j^2|x_j|^2&lt;\infty\right\}.
+\]</span>
+<p>The vector <span class="math" data-tex="\(x_j=1/j\)">\(x_j=1/j\)</span> belongs to <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> and not to this domain. Hence the two operators have the same identity action on a proper subspace but different domains. This explicitly demonstrates why (BS49) cannot lose its intersection.</p>
+<p>The product does have the precise closure</p>
+<span class="math math-display" data-tex="\[
+\overline{T_fT_g}=T_{fg}.
+\tag{BS51}
+\]">\[
+\overline{T_fT_g}=T_{fg}.
+\tag{BS51}
+\]</span>
+<p>Indeed (BS50) makes it a restriction of the closed operator <span class="math" data-tex="\(T_{fg}\)">\(T_{fg}\)</span>. For any <span class="math" data-tex="\(x\in D_{fg}\)">\(x\in D_{fg}\)</span>, the vectors <span class="math" data-tex="\(Q_nx\)">\(Q_nx\)</span> above lie in <span class="math" data-tex="\(D_g\cap D_{fg}\)">\(D_g\cap D_{fg}\)</span>, and <span class="math" data-tex="\(Q_nx\to x\)">\(Q_nx\to x\)</span>, while <span class="math" data-tex="\(T_{fg}Q_nx=Q_nT_{fg}x\to T_{fg}x\)">\(T_{fg}Q_nx=Q_nT_{fg}x\to T_{fg}x\)</span>. Thus their product graphs approach every point of the graph of <span class="math" data-tex="\(T_{fg}\)">\(T_{fg}\)</span>, proving (BS51).</p>
+<p>The sum <span class="math" data-tex="\(T_f+T_g\)">\(T_f+T_g\)</span> is defined on exactly <span class="math" data-tex="\(D_f\cap D_g\)">\(D_f\cap D_g\)</span>. The inequality <span class="math" data-tex="\(|f+g|^2\leq2|f|^2+2|g|^2\)">\(|f+g|^2\leq2|f|^2+2|g|^2\)</span> puts this intersection inside <span class="math" data-tex="\(D_{f+g}\)">\(D_{f+g}\)</span>. The same common cutoffs <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span>, followed by strong limits, prove</p>
+<span class="math math-display" data-tex="\[
+(T_f+T_g)x=T_{f+g}x\quad(x\in D_f\cap D_g),
+\qquad\overline{T_f+T_g}=T_{f+g}.
+\tag{BS52}
+\]">\[
+(T_f+T_g)x=T_{f+g}x\quad(x\in D_f\cap D_g),
+\qquad\overline{T_f+T_g}=T_{f+g}.
+\tag{BS52}
+\]</span>
+<p>For the closure statement, use <span class="math" data-tex="\(x\in D_{f+g}\)">\(x\in D_{f+g}\)</span>, the approximants <span class="math" data-tex="\(Q_nx\in D_f\cap D_g\)">\(Q_nx\in D_f\cap D_g\)</span>, and <span class="math" data-tex="\(T_{f+g}Q_nx=Q_nT_{f+g}x\)">\(T_{f+g}Q_nx=Q_nT_{f+g}x\)</span>. No equality of the initial sum domain with the full domain of the closed sum is assumed.</p>
+<p>Applying (BS49)–(BS50) with <span class="math" data-tex="\(\overline f,f\)">\(\overline f,f\)</span>, and using <span class="math" data-tex="\(|f|^2\leq1+|f|^4\)">\(|f|^2\leq1+|f|^4\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+D(T_f^*T_f)=D(T_fT_f^*)
+&amp;=\left\{x:\int_K|f|^4\,d\mu_x&lt;\infty\right\},\\
+T_f^*T_f&amp;=T_fT_f^*=T_{|f|^2}.
+\end{split}
+\tag{BS53}
+\]">\[
+\begin{split}
+D(T_f^*T_f)=D(T_fT_f^*)
+&amp;=\left\{x:\int_K|f|^4\,d\mu_x&lt;\infty\right\},\\
+T_f^*T_f&amp;=T_fT_f^*=T_{|f|^2}.
+\end{split}
+\tag{BS53}
+\]</span>
+<p>Thus normality and the complete squared-modulus domain follow directly. Recursive powers also retain every intermediate-domain requirement. For an integer <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, a vector is in <span class="math" data-tex="\(D(T_f^q)\)">\(D(T_f^q)\)</span> precisely when its successive images through <span class="math" data-tex="\(T_f^{q-1}\)">\(T_f^{q-1}\)</span> lie in <span class="math" data-tex="\(D_f\)">\(D_f\)</span>. Induction using (BS49)–(BS50) proves</p>
+<span class="math math-display" data-tex="\[
+D(T_f^q)=\left\{x:\int_K|f|^{2q}\,d\mu_x&lt;\infty\right\},
+\qquad T_f^q=T_{f^q}\text{ on that domain}.
+\tag{BS53a}
+\]">\[
+D(T_f^q)=\left\{x:\int_K|f|^{2q}\,d\mu_x&lt;\infty\right\},
+\qquad T_f^q=T_{f^q}\text{ on that domain}.
+\tag{BS53a}
+\]</span>
+<p>At each step the higher moment implies all lower ones because <span class="math" data-tex="\(|f|^{2k}\leq1+|f|^{2q}\)">\(|f|^{2k}\leq1+|f|^{2q}\)</span> for <span class="math" data-tex="\(0\leq k\leq q\)">\(0\leq k\leq q\)</span>, and <span class="math" data-tex="\(\mu_x(K)=\|x\|^2&lt;\infty\)">\(\mu_x(K)=\|x\|^2&lt;\infty\)</span>. Conversely, the product-domain equality requires the higher moment, so the implication is in both directions. The exact norm is <span class="math" data-tex="\(\|T_f^qx\|^2=\int_K|f|^{2q}\,d\mu_x\)">\(\|T_f^qx\|^2=\int_K|f|^{2q}\,d\mu_x\)</span>, by (BS42). The case <span class="math" data-tex="\(q=0\)">\(q=0\)</span> is the identity on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>The kernels are also exact:</p>
+<span class="math math-display" data-tex="\[
+\ker T_f=E(\{f=0\})H.
+\tag{BS54}
+\]">\[
+\ker T_f=E(\{f=0\})H.
+\tag{BS54}
+\]</span>
+<p>If <span class="math" data-tex="\(T_fx=0\)">\(T_fx=0\)</span>, (BS42) makes <span class="math" data-tex="\(\mu_x(\{|f|&gt;0\})=0\)">\(\mu_x(\{|f|&gt;0\})=0\)</span>, by applying it to the union of sets <span class="math" data-tex="\(\{|f|\geq1/n\}\)">\(\{|f|\geq1/n\}\)</span>. Equation (BS37) then gives <span class="math" data-tex="\(x=E(\{f=0\})x\)">\(x=E(\{f=0\})x\)</span>. Conversely any vector in that range has zero moment and zero image. In particular a function nonzero <span class="math" data-tex="\(E\)">\(E\)</span>-almost everywhere gives an injective multiplier.</p>
+<h3 id="9-the-point-zero-and-the-inverse-needed-by-the-application">9. The point zero and the inverse needed by the application</h3>
+<p>For <span class="math" data-tex="\(S=\Psi(t)\)">\(S=\Psi(t)\)</span>, equation (BS32) gives</p>
+<span class="math math-display" data-tex="\[
+\|Sx\|^2=\int_Kt^2\,d\mu_x.
+\tag{BS55}
+\]">\[
+\|Sx\|^2=\int_Kt^2\,d\mu_x.
+\tag{BS55}
+\]</span>
+<p>If <span class="math" data-tex="\(Sx=0\)">\(Sx=0\)</span>, the measure of <span class="math" data-tex="\([1/n,1]\)">\([1/n,1]\)</span> is zero for every <span class="math" data-tex="\(n\)">\(n\)</span>, since the integral is at least <span class="math" data-tex="\(n^{-2}\mu_x([1/n,1])\)">\(n^{-2}\mu_x([1/n,1])\)</span>. Hence <span class="math" data-tex="\(\mu_x((0,1])=0\)">\(\mu_x((0,1])=0\)</span> and <span class="math" data-tex="\(x=E(\{0\})x\)">\(x=E(\{0\})x\)</span>. Conversely <span class="math" data-tex="\(SE(\{0\})=\Psi(t1_{\{0\}})=0\)">\(SE(\{0\})=\Psi(t1_{\{0\}})=0\)</span>. We have proved</p>
+<span class="math math-display" data-tex="\[
+\ker S=E(\{0\})H.
+\tag{BS56}
+\]">\[
+\ker S=E(\{0\})H.
+\tag{BS56}
+\]</span>
+<p>The assumed injectivity therefore implies <span class="math" data-tex="\(E(\{0\})=0\)">\(E(\{0\})=0\)</span>. This does not exclude spectral mass arbitrarily close to zero.</p>
+<p>Define the finite-valued Borel function</p>
+<span class="math math-display" data-tex="\[
+r_0(t)=\begin{cases}t^{-1},&amp;0&lt;t\leq1,\\0,&amp;t=0.\end{cases}
+\tag{BS57}
+\]">\[
+r_0(t)=\begin{cases}t^{-1},&amp;0&lt;t\leq1,\\0,&amp;t=0.\end{cases}
+\tag{BS57}
+\]</span>
+<p>Because the point zero is <span class="math" data-tex="\(E\)">\(E\)</span>-null, <span class="math" data-tex="\(T_{tr_0}=I\)">\(T_{tr_0}=I\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>. The product-domain theorem gives</p>
+<span class="math math-display" data-tex="\[
+D(T_{r_0}S)=D(S)\cap D(T_{tr_0})=H,
+\qquad T_{r_0}S=I\text{ on }H.
+\]">\[
+D(T_{r_0}S)=D(S)\cap D(T_{tr_0})=H,
+\qquad T_{r_0}S=I\text{ on }H.
+\]</span>
+<p>In the opposite order, it gives</p>
+<span class="math math-display" data-tex="\[
+D(ST_{r_0})=D(T_{r_0}),\qquad ST_{r_0}=I\text{ on }D(T_{r_0}).
+\]">\[
+D(ST_{r_0})=D(T_{r_0}),\qquad ST_{r_0}=I\text{ on }D(T_{r_0}).
+\]</span>
+<p>The first identity says <span class="math" data-tex="\(SH\subset D(T_{r_0})\)">\(SH\subset D(T_{r_0})\)</span>, and the second says every <span class="math" data-tex="\(u\in D(T_{r_0})\)">\(u\in D(T_{r_0})\)</span> equals <span class="math" data-tex="\(S(T_{r_0}u)\)">\(S(T_{r_0}u)\)</span>, so the reverse inclusion also holds. Therefore</p>
+<span class="math math-display" data-tex="\[
+D(T_{r_0})=\operatorname{Ran}S,
+\quad T_{r_0}=S^{-1}\text{ on that exact domain},
+\quad\|S^{-1}u\|^2=\int_{(0,1]}t^{-2}\,d\mu_u.
+\tag{BS58}
+\]">\[
+D(T_{r_0})=\operatorname{Ran}S,
+\quad T_{r_0}=S^{-1}\text{ on that exact domain},
+\quad\|S^{-1}u\|^2=\int_{(0,1]}t^{-2}\,d\mu_u.
+\tag{BS58}
+\]</span>
+<p>The range is dense: if <span class="math" data-tex="\(y\perp\operatorname{Ran}S\)">\(y\perp\operatorname{Ran}S\)</span>, then <span class="math" data-tex="\((Sx,y)=0\)">\((Sx,y)=0\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(Sy=0\)">\(Sy=0\)</span> by self-adjointness and hence <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. This also agrees with the dense-domain conclusion already proved for <span class="math" data-tex="\(T_{r_0}\)">\(T_{r_0}\)</span>.</p>
+<h2 id="AN03-SPC-004"><span id="an03-spc-004"></span>The original lower-bounded operator and its sharp cutoff</h2>
+<h3 id="LB1"><span id="lb1"></span>The bounded inverse is constructed on the actual domain</h3>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be a complex Hilbert space and let <span class="math" data-tex="\(A:D(A)\subset H\to H\)">\(A:D(A)\subset H\to H\)</span> be densely defined and self-adjoint, with</p>
+<span class="math math-display" data-tex="\[
+(Au,u)\geq a\|u\|^2\qquad(u\in D(A)).
+\tag{LB1}
+\]">\[
+(Au,u)\geq a\|u\|^2\qquad(u\in D(A)).
+\tag{LB1}
+\]</span>
+<p>Fix exactly a real number <span class="math" data-tex="\(\rho\geq1+\max(0,-a)\)">\(\rho\geq1+\max(0,-a)\)</span>, as in (DSP40), and write</p>
+<span class="math math-display" data-tex="\[
+T=A+\rho I,\quad D(T)=D(A),\qquad
+\delta=a+\rho\geq1.
+\tag{LB2}
+\]">\[
+T=A+\rho I,\quad D(T)=D(A),\qquad
+\delta=a+\rho\geq1.
+\tag{LB2}
+\]</span>
+<p>For <span class="math" data-tex="\(u\in D(T)\)">\(u\in D(T)\)</span>, Cauchy–Schwarz and (LB1) give
+<span class="math" data-tex="\(\|Tu\|\geq\delta\|u\|\)">\(\|Tu\|\geq\delta\|u\|\)</span>.
+In particular <span class="math" data-tex="\(T\)">\(T\)</span> is injective. It is closed because <span class="math" data-tex="\(A\)">\(A\)</span> is closed: if <span class="math" data-tex="\(u_n\to u\)">\(u_n\to u\)</span> and <span class="math" data-tex="\(Tu_n\to v\)">\(Tu_n\to v\)</span>, then <span class="math" data-tex="\(Au_n\to v-\rho u\)">\(Au_n\to v-\rho u\)</span>, so closedness of <span class="math" data-tex="\(A\)">\(A\)</span> gives <span class="math" data-tex="\(u\in D(A)\)">\(u\in D(A)\)</span> and <span class="math" data-tex="\(Tu=v\)">\(Tu=v\)</span>.</p>
+<p>Its range is closed. Indeed, if <span class="math" data-tex="\(Tu_n\)">\(Tu_n\)</span> converges, the displayed estimate makes <span class="math" data-tex="\(u_n\)">\(u_n\)</span> Cauchy. Its limit and the closed graph of <span class="math" data-tex="\(T\)">\(T\)</span> identify the limit of <span class="math" data-tex="\(Tu_n\)">\(Tu_n\)</span> as an element of <span class="math" data-tex="\(\operatorname{Ran}T\)">\(\operatorname{Ran}T\)</span>. Also <span class="math" data-tex="\(T^*=A^*+\rho I=T\)">\(T^*=A^*+\rho I=T\)</span>, with domain <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>: subtract the bounded functional <span class="math" data-tex="\(\rho(u,v)\)">\(\rho(u,v)\)</span> in the definition of the adjoint to obtain both inclusions of domains and the equality of values. The identity</p>
+<span class="math math-display" data-tex="\[
+(\operatorname{Ran}T)^\perp=\ker T^*=\{0\}
+\]">\[
+(\operatorname{Ran}T)^\perp=\ker T^*=\{0\}
+\]</span>
+<p>follows directly from that same adjoint definition. Thus the range is both closed and dense, and equals <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Consequently the inverse</p>
+<span class="math math-display" data-tex="\[
+S=T^{-1}:H\longrightarrow H,\qquad
+\operatorname{Ran}S=D(A),\quad \ker S=\{0\},\quad
+\|S\|\leq\delta^{-1}\leq1
+\tag{LB3}
+\]">\[
+S=T^{-1}:H\longrightarrow H,\qquad
+\operatorname{Ran}S=D(A),\quad \ker S=\{0\},\quad
+\|S\|\leq\delta^{-1}\leq1
+\tag{LB3}
+\]</span>
+<p>exists everywhere and is bounded. The equalities <span class="math" data-tex="\(TS=I\)">\(TS=I\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(ST=I\)">\(ST=I\)</span> on <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> follow from inverse bijectivity, with exactly the indicated domains. If <span class="math" data-tex="\(x=Tu\)">\(x=Tu\)</span>, <span class="math" data-tex="\(y=Tv\)">\(y=Tv\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+(Sx,y)=(u,Tv)=(Tu,v)=(x,Sy),
+\qquad (Sx,x)=(u,Tu)\geq0.
+\tag{LB4}
+\]">\[
+(Sx,y)=(u,Tv)=(Tu,v)=(x,Sy),
+\qquad (Sx,x)=(u,Tu)\geq0.
+\tag{LB4}
+\]</span>
+<p>Every <span class="math" data-tex="\(x,y\in H\)">\(x,y\in H\)</span> have such representations, so <span class="math" data-tex="\(S=S^*\geq0\)">\(S=S^*\geq0\)</span>. There is no compactness assertion. The range is dense because <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span> is dense.</p>
+<h3 id="LB2"><span id="lb2"></span>The original real spectral coordinate is recovered</h3>
+<p>The construction in AN03-SPC-003 gives its unique projection-valued measure <span class="math" data-tex="\(E\)">\(E\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+S=\int_{[0,1]}t\,dE(t),\qquad
+\mu_u(C)=(E(C)u,u),\qquad
+\|g(S)u\|^2=\int |g(t)|^2\,d\mu_u(t)
+\tag{LB5}
+\]">\[
+S=\int_{[0,1]}t\,dE(t),\qquad
+\mu_u(C)=(E(C)u,u),\qquad
+\|g(S)u\|^2=\int |g(t)|^2\,d\mu_u(t)
+\tag{LB5}
+\]</span>
+<p>on the exact square-integrability domain for a finite measurable <span class="math" data-tex="\(g\)">\(g\)</span>. At a null endpoint a chosen finite value makes no difference. Injectivity implies <span class="math" data-tex="\(E(\{0\})=0\)">\(E(\{0\})=0\)</span>: by (LB5), <span class="math" data-tex="\(Su=0\)">\(Su=0\)</span> is equivalent to <span class="math" data-tex="\(\mu_u((0,1])=0\)">\(\mu_u((0,1])=0\)</span>, hence its kernel is exactly <span class="math" data-tex="\(E(\{0\})H\)">\(E(\{0\})H\)</span>.</p>
+<p>Put <span class="math" data-tex="\(c=\delta^{-1}\)">\(c=\delta^{-1}\)</span>. The measure is concentrated on <span class="math" data-tex="\([0,c]\)">\([0,c]\)</span>. To prove this without assuming a spectral support theorem, fix <span class="math" data-tex="\(b&gt;c\)">\(b&gt;c\)</span>. For <span class="math" data-tex="\(u\in E([b,1])H\)">\(u\in E([b,1])H\)</span>, (LB5) and the bounded calculus give</p>
+<span class="math math-display" data-tex="\[
+b\|u\|^2\leq(Su,u)\leq\|S\|\|u\|^2\leq c\|u\|^2.
+\]">\[
+b\|u\|^2\leq(Su,u)\leq\|S\|\|u\|^2\leq c\|u\|^2.
+\]</span>
+<p>Thus <span class="math" data-tex="\(E([b,1])=0\)">\(E([b,1])=0\)</span>. The union of these sets for rational <span class="math" data-tex="\(b&gt;c\)">\(b&gt;c\)</span> is <span class="math" data-tex="\((c,1]\)">\((c,1]\)</span>, and strong countable additivity proves <span class="math" data-tex="\(E((c,1])=0\)">\(E((c,1])=0\)</span>. If <span class="math" data-tex="\(c=1\)">\(c=1\)</span> this set is empty. Combined with the preceding endpoint calculation, the full mass lies on</p>
+<span class="math math-display" data-tex="\[
+J=(0,\delta^{-1}],\qquad
+\kappa:J\longrightarrow[a,\infty),\quad
+\kappa(t)=t^{-1}-\rho,\qquad
+\kappa^{-1}(\lambda)=(\lambda+\rho)^{-1}.
+\tag{LB6}
+\]">\[
+J=(0,\delta^{-1}],\qquad
+\kappa:J\longrightarrow[a,\infty),\quad
+\kappa(t)=t^{-1}-\rho,\qquad
+\kappa^{-1}(\lambda)=(\lambda+\rho)^{-1}.
+\tag{LB6}
+\]</span>
+<p>These are inverse continuous maps, with reversed order. Their exact endpoint relation is <span class="math" data-tex="\(\kappa(\delta^{-1})=\delta-\rho=a\)">\(\kappa(\delta^{-1})=\delta-\rho=a\)</span>.</p>
+<p>For a Borel set <span class="math" data-tex="\(B\subset\mathbb R\)">\(B\subset\mathbb R\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+F(B)=E\bigl(\{t\in J:\kappa(t)\in B\}\bigr).
+\tag{LB7}
+\]">\[
+F(B)=E\bigl(\{t\in J:\kappa(t)\in B\}\bigr).
+\tag{LB7}
+\]</span>
+<p>Preimages preserve disjoint unions and intersections. Therefore <span class="math" data-tex="\(F\)">\(F\)</span> is a projection-valued measure, strongly countably additive, with <span class="math" data-tex="\(F(\mathbb R)=E(J)=I\)">\(F(\mathbb R)=E(J)=I\)</span>, and <span class="math" data-tex="\(F((-\infty,a))=0\)">\(F((-\infty,a))=0\)</span>. Its scalar measures satisfy, first for indicator functions, then for nonnegative simple functions and increasing limits,</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}h(\lambda)\,d(F(\lambda)u,u)
+=\int_J h(t^{-1}-\rho)\,d\mu_u(t)
+\tag{LB8}
+\]">\[
+\int_{\mathbb R}h(\lambda)\,d(F(\lambda)u,u)
+=\int_J h(t^{-1}-\rho)\,d\mu_u(t)
+\tag{LB8}
+\]</span>
+<p>for every nonnegative Borel <span class="math" data-tex="\(h\)">\(h\)</span>, with both sides allowed to be infinite. Linear decomposition gives the same change-of-variable identity for integrable complex <span class="math" data-tex="\(h\)">\(h\)</span>. The notation on the left denotes integration against <span class="math" data-tex="\(B\mapsto(F(B)u,u)\)">\(B\mapsto(F(B)u,u)\)</span>, not a derivative of a scalar distribution function.</p>
+<h3 id="LB3"><span id="lb3"></span>Equality of the closed operators, including their domains</h3>
+<p>Let <span class="math" data-tex="\(G(t)=t^{-1}\)">\(G(t)=t^{-1}\)</span> on <span class="math" data-tex="\(J\)">\(J\)</span>, and give it value zero outside <span class="math" data-tex="\(J\)">\(J\)</span>. Its value at zero is immaterial because that set is <span class="math" data-tex="\(E\)">\(E\)</span>-null. The unbounded calculus proved in AN03-SPC-003 defines the closed operator <span class="math" data-tex="\(G(S)\)">\(G(S)\)</span>.</p>
+<p>If <span class="math" data-tex="\(u=Sf\)">\(u=Sf\)</span>, the measure identity for multiplication by the bounded function <span class="math" data-tex="\(t\)">\(t\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\mu_{Sf}(B)=\int_B t^2\,d\mu_f(t).
+\tag{LB9}
+\]">\[
+\mu_{Sf}(B)=\int_B t^2\,d\mu_f(t).
+\tag{LB9}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(E(B)S=SE(B)\)">\(E(B)S=SE(B)\)</span>, and the squared norm of <span class="math" data-tex="\(SE(B)f\)">\(SE(B)f\)</span> is the displayed integral. Thus</p>
+<span class="math math-display" data-tex="\[
+\int_J t^{-2}\,d\mu_{Sf}(t)=\|f\|^2.
+\tag{LB10}
+\]">\[
+\int_J t^{-2}\,d\mu_{Sf}(t)=\|f\|^2.
+\tag{LB10}
+\]</span>
+<p>So <span class="math" data-tex="\(\operatorname{Ran}S\subset D(G(S))\)">\(\operatorname{Ran}S\subset D(G(S))\)</span> and the product identity gives <span class="math" data-tex="\(G(S)Sf=f\)">\(G(S)Sf=f\)</span>. Conversely, if <span class="math" data-tex="\(u\in D(G(S))\)">\(u\in D(G(S))\)</span>, put <span class="math" data-tex="\(f=G(S)u\)">\(f=G(S)u\)</span>. Bounded multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> gives <span class="math" data-tex="\(Sf=u\)">\(Sf=u\)</span>, since <span class="math" data-tex="\(tG(t)=1\)">\(tG(t)=1\)</span> on the full-measure set <span class="math" data-tex="\(J\)">\(J\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+D(G(S))=\operatorname{Ran}S=D(A),\qquad
+G(S)u=Tu.
+\tag{LB11}
+\]">\[
+D(G(S))=\operatorname{Ran}S=D(A),\qquad
+G(S)u=Tu.
+\tag{LB11}
+\]</span>
+<p>This proves the actual graph equality, not just an identity on a test core.</p>
+<p>On <span class="math" data-tex="\(J\)">\(J\)</span>, <span class="math" data-tex="\(G=\kappa+\rho\)">\(G=\kappa+\rho\)</span>. The elementary inequalities</p>
+<span class="math math-display" data-tex="\[
+|G|^2\leq2|\kappa|^2+2\rho^2,\qquad
+|\kappa|^2\leq2|G|^2+2\rho^2
+\tag{LB12}
+\]">\[
+|G|^2\leq2|\kappa|^2+2\rho^2,\qquad
+|\kappa|^2\leq2|G|^2+2\rho^2
+\tag{LB12}
+\]</span>
+<p>show equality of their square-integrability domains, since <span class="math" data-tex="\(\mu_u(J)=\|u\|^2&lt;\infty\)">\(\mu_u(J)=\|u\|^2&lt;\infty\)</span>. Bounded addition in the calculus consequently gives</p>
+<span class="math math-display" data-tex="\[
+D(\kappa(S))=D(A),\qquad
+\kappa(S)u=G(S)u-\rho u=Au.
+\tag{LB13}
+\]">\[
+D(\kappa(S))=D(A),\qquad
+\kappa(S)u=G(S)u-\rho u=Au.
+\tag{LB13}
+\]</span>
+<p>Thus the coordinate operator of <span class="math" data-tex="\(F\)">\(F\)</span> is exactly the given <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h3 id="LB4"><span id="lb4"></span>Every measurable multiplier and every recursive power</h3>
+<p>For any finite-valued complex Borel <span class="math" data-tex="\(m\)">\(m\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, define <span class="math" data-tex="\(m(A)=(m\circ\kappa)(S)\)">\(m(A)=(m\circ\kappa)(S)\)</span>, extending the composite arbitrarily across the <span class="math" data-tex="\(E\)">\(E\)</span>-null complement of <span class="math" data-tex="\(J\)">\(J\)</span>. Equations (LB5) and (LB8) prove</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(m(A))&amp;=\left\{u\in H:
+\int_{\mathbb R}|m(\lambda)|^2\,d(F(\lambda)u,u)&lt;\infty\right\},\\
+\|m(A)u\|^2&amp;=\int_{\mathbb R}|m(\lambda)|^2\,d(F(\lambda)u,u).
+\end{aligned}
+\tag{LB14}
+\]">\[
+\begin{aligned}
+D(m(A))&amp;=\left\{u\in H:
+\int_{\mathbb R}|m(\lambda)|^2\,d(F(\lambda)u,u)&lt;\infty\right\},\\
+\|m(A)u\|^2&amp;=\int_{\mathbb R}|m(\lambda)|^2\,d(F(\lambda)u,u).
+\end{aligned}
+\tag{LB14}
+\]</span>
+<p>The bounded measure construction proves density and closedness of this operator, its full adjoint <span class="math" data-tex="\(m(A)^*=\overline m(A)\)">\(m(A)^*=\overline m(A)\)</span>, and the exact product rule</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(m_1(A)m_2(A))
+&amp;=D(m_2(A))\cap D((m_1m_2)(A)),\\
+m_1(A)m_2(A)u&amp;=(m_1m_2)(A)u
+\quad\text{on this domain}.
+\end{aligned}
+\tag{LB15}
+\]">\[
+\begin{aligned}
+D(m_1(A)m_2(A))
+&amp;=D(m_2(A))\cap D((m_1m_2)(A)),\\
+m_1(A)m_2(A)u&amp;=(m_1m_2)(A)u
+\quad\text{on this domain}.
+\end{aligned}
+\tag{LB15}
+\]</span>
+<p>These statements transfer by (LB8) with both domains retained; no intersection is discarded. For bounded <span class="math" data-tex="\(m\)">\(m\)</span>, (LB14) gives <span class="math" data-tex="\(\|m(A)\|\leq\sup_{\lambda\geq a}|m(\lambda)|\)">\(\|m(A)\|\leq\sup_{\lambda\geq a}|m(\lambda)|\)</span>. More exactly the norm is the essential supremum relative to <span class="math" data-tex="\(F\)">\(F\)</span>: the upper bound follows by integration, and if <span class="math" data-tex="\(F(\{|m|&gt;b\})\ne0\)">\(F(\{|m|&gt;b\})\ne0\)</span>, a unit vector in this projection range has image norm greater than <span class="math" data-tex="\(b\)">\(b\)</span>. Taking all such <span class="math" data-tex="\(b\)">\(b\)</span> proves equality.</p>
+<p>The power in (DSP1) is the recursively defined power of the original operator, not a newly assigned domain. For <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, it is <span class="math" data-tex="\(I\)">\(I\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>; for <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, (LB13) proves the assertion. If the assertion holds for <span class="math" data-tex="\(q\)">\(q\)</span>, the product rule gives</p>
+<span class="math math-display" data-tex="\[
+D(A^{q+1})
+=\left\{u:
+\int |\lambda|^{2q}\,d(F(\lambda)u,u)&lt;\infty,\quad
+\int |\lambda|^{2q+2}\,d(F(\lambda)u,u)&lt;\infty\right\}.
+\]">\[
+D(A^{q+1})
+=\left\{u:
+\int |\lambda|^{2q}\,d(F(\lambda)u,u)&lt;\infty,\quad
+\int |\lambda|^{2q+2}\,d(F(\lambda)u,u)&lt;\infty\right\}.
+\]</span>
+<p>The second integral implies the first because
+<span class="math" data-tex="\(|\lambda|^{2q}\leq1+|\lambda|^{2q+2}\)">\(|\lambda|^{2q}\leq1+|\lambda|^{2q+2}\)</span>.
+Thus induction proves</p>
+<span class="math math-display" data-tex="\[
+D(A^q)=\left\{u:
+\int|\lambda|^{2q}\,d(F(\lambda)u,u)&lt;\infty\right\},
+\qquad A^q=(\lambda\mapsto\lambda^q)(A).
+\tag{LB16}
+\]">\[
+D(A^q)=\left\{u:
+\int|\lambda|^{2q}\,d(F(\lambda)u,u)&lt;\infty\right\},
+\qquad A^q=(\lambda\mapsto\lambda^q)(A).
+\tag{LB16}
+\]</span>
+<p>The opposite recursive convention <span class="math" data-tex="\(A^qA\)">\(A^qA\)</span> has domain
+<span class="math" data-tex="\(D(A)\cap D((\lambda\mapsto\lambda^{q+1})(A))\)">\(D(A)\cap D((\lambda\mapsto\lambda^{q+1})(A))\)</span> by (LB15).
+The moment of order <span class="math" data-tex="\(2q+2\)">\(2q+2\)</span> implies the moment of order two, because
+<span class="math" data-tex="\(|\lambda|^2\leq1+|\lambda|^{2q+2}\)">\(|\lambda|^2\leq1+|\lambda|^{2q+2}\)</span>. Thus this domain and action
+coincide with those of <span class="math" data-tex="\(AA^q\)">\(AA^q\)</span>. Both conventions give (LB16), including
+the recurrence through <span class="math" data-tex="\(Au\)">\(Au\)</span> used in (DSP39).</p>
+<p>The same induction applies to <span class="math" data-tex="\(T=A+\rho I\)">\(T=A+\rho I\)</span>, giving its recursive powers with multiplier <span class="math" data-tex="\((\lambda+\rho)^q\)">\((\lambda+\rho)^q\)</span>. The inequalities</p>
+<span class="math math-display" data-tex="\[
+|\lambda+\rho|^{2q}\leq 2^{2q-1}(|\lambda|^{2q}+\rho^{2q}),
+\qquad
+|\lambda|^{2q}\leq 2^{2q-1}(|\lambda+\rho|^{2q}+\rho^{2q})
+\]">\[
+|\lambda+\rho|^{2q}\leq 2^{2q-1}(|\lambda|^{2q}+\rho^{2q}),
+\qquad
+|\lambda|^{2q}\leq 2^{2q-1}(|\lambda+\rho|^{2q}+\rho^{2q})
+\]</span>
+<p>for <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span> prove <span class="math" data-tex="\(D(T^q)=D(A^q)\)">\(D(T^q)=D(A^q)\)</span>, without changing either operator.</p>
+<p>Uniqueness is also preserved. Suppose a real projection-valued measure <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span>
+represents the same closed <span class="math" data-tex="\(A\)">\(A\)</span>, with its square-integrability multiplier domains.
+Its lower concentration follows from the operator inequality itself. For</p>
+<span class="math math-display" data-tex="\[
+C_n=\{\lambda:|\lambda|\leq n,\ \lambda\leq a-1/n\},
+\]">\[
+C_n=\{\lambda:|\lambda|\leq n,\ \lambda\leq a-1/n\},
+\]</span>
+<p>a vector <span class="math" data-tex="\(u\in F&#x27;(C_n)H\)">\(u\in F&#x27;(C_n)H\)</span> belongs to <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>, since the coordinate is bounded on
+<span class="math" data-tex="\(C_n\)">\(C_n\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+a\|u\|^2\leq(Au,u)
+=\int_{C_n}\lambda\,d(F&#x27;(\lambda)u,u)
+\leq(a-1/n)\|u\|^2.
+\]">\[
+a\|u\|^2\leq(Au,u)
+=\int_{C_n}\lambda\,d(F&#x27;(\lambda)u,u)
+\leq(a-1/n)\|u\|^2.
+\]</span>
+<p>This forces <span class="math" data-tex="\(F&#x27;(C_n)=0\)">\(F&#x27;(C_n)=0\)</span>. These sets increase to <span class="math" data-tex="\((-\infty,a)\)">\((-\infty,a)\)</span>, so strong
+countable additivity gives <span class="math" data-tex="\(F&#x27;((-\infty,a))=0\)">\(F&#x27;((-\infty,a))=0\)</span>.
+On the full-mass half-line its multiplier <span class="math" data-tex="\(r(\lambda)=(\lambda+\rho)^{-1}\)">\(r(\lambda)=(\lambda+\rho)^{-1}\)</span>,
+extended as zero elsewhere, is bounded by <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span>. The product rule shows
+<span class="math" data-tex="\((A+\rho I)r(F&#x27;)=I\)">\((A+\rho I)r(F&#x27;)=I\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(r(F&#x27;)(A+\rho I)=I\)">\(r(F&#x27;)(A+\rho I)=I\)</span> on <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>; all domain assertions follow from <span class="math" data-tex="\((\lambda+\rho)r(\lambda)=1\)">\((\lambda+\rho)r(\lambda)=1\)</span>. Therefore <span class="math" data-tex="\(r(F&#x27;)=S\)">\(r(F&#x27;)=S\)</span>. Push <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> forward under <span class="math" data-tex="\(r\)">\(r\)</span> to a measure on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, assigning zero mass at zero. It represents <span class="math" data-tex="\(S\)">\(S\)</span>, hence equals <span class="math" data-tex="\(E\)">\(E\)</span> by the uniqueness in the bounded construction. The inverse map <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> then recovers <span class="math" data-tex="\(F&#x27;=F\)">\(F&#x27;=F\)</span>.</p>
+<h3 id="LB5"><span id="lb5"></span>The precise sharp projector in DSP010</h3>
+<p>For the original real parameter <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, put <span class="math" data-tex="\(E_\lambda=F((-\infty,\lambda])\)">\(E_\lambda=F((-\infty,\lambda])\)</span>. If <span class="math" data-tex="\(\lambda&lt;a\)">\(\lambda&lt;a\)</span>, this projection is zero. If <span class="math" data-tex="\(\lambda\geq a\)">\(\lambda\geq a\)</span>, its exact inverse-coordinate description is</p>
+<span class="math math-display" data-tex="\[
+E_\lambda
+=E\!\left([(\lambda+\rho)^{-1},(a+\rho)^{-1}]\right).
+\tag{LB17}
+\]">\[
+E_\lambda
+=E\!\left([(\lambda+\rho)^{-1},(a+\rho)^{-1}]\right).
+\tag{LB17}
+\]</span>
+<p>Both endpoints are included. In particular the change of coordinate reverses the inequality and keeps any atom at <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p>For <span class="math" data-tex="\(u\in E_\lambda H\)">\(u\in E_\lambda H\)</span>, its <span class="math" data-tex="\(F\)">\(F\)</span>-measure is supported in <span class="math" data-tex="\([a,\lambda]\)">\([a,\lambda]\)</span>. All moments of this finite interval are bounded, so <span class="math" data-tex="\(u\in D(A^q)=D(T^q)\)">\(u\in D(A^q)=D(T^q)\)</span> for every integer <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>. Write <span class="math" data-tex="\(L=\lambda+\rho\geq1\)">\(L=\lambda+\rho\geq1\)</span>. On this interval <span class="math" data-tex="\(1\leq a+\rho\leq t+\rho\leq L\)">\(1\leq a+\rho\leq t+\rho\leq L\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|T^ju\|\leq L^j\|u\|,\qquad
+\|A^ju\|\leq (L+\rho)^j\|u\|
+\leq(1+\rho)^jL^j\|u\|.
+\tag{LB18}
+\]">\[
+\|T^ju\|\leq L^j\|u\|,\qquad
+\|A^ju\|\leq (L+\rho)^j\|u\|
+\leq(1+\rho)^jL^j\|u\|.
+\tag{LB18}
+\]</span>
+<p>Since <span class="math" data-tex="\(L\geq1\)">\(L\geq1\)</span> and <span class="math" data-tex="\(1+\rho\geq1\)">\(1+\rho\geq1\)</span>, summing gives the explicit instance of (DSP40)</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^q\|A^ju\|
+\leq(q+1)(1+\rho)^qL^q\|u\|.
+\tag{LB19}
+\]">\[
+\sum_{j=0}^q\|A^ju\|
+\leq(q+1)(1+\rho)^qL^q\|u\|.
+\tag{LB19}
+\]</span>
+<p>This estimate is valid for every <span class="math" data-tex="\(\lambda\geq a\)">\(\lambda\geq a\)</span>; the later local kernel argument uses <span class="math" data-tex="\(\lambda\geq1\)">\(\lambda\geq1\)</span> to compare <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. If the projection is zero the estimate holds as well.</p>
+<p>For a bounded Borel <span class="math" data-tex="\(m\)">\(m\)</span> supported in <span class="math" data-tex="\((-\infty,b]\)">\((-\infty,b]\)</span>, bounded multiplicativity gives <span class="math" data-tex="\(m(A)=E_bm(A)E_b\)">\(m(A)=E_bm(A)E_b\)</span> exactly, including its value at <span class="math" data-tex="\(b\)">\(b\)</span>. For a bounded Borel sequence <span class="math" data-tex="\(m_n\)">\(m_n\)</span> with a common uniform bound and pointwise convergence to <span class="math" data-tex="\(m\)">\(m\)</span>, (LB14) applied to the differences and dominated convergence give <span class="math" data-tex="\(m_n(A)u\to m(A)u\)">\(m_n(A)u\to m(A)u\)</span> for every <span class="math" data-tex="\(u\in H\)">\(u\in H\)</span>.</p>
+<p>Finally, the entire proof applies directly to <span class="math" data-tex="\(H=L^2(X,r\,dx)\)">\(H=L^2(X,r\,dx)\)</span> with its original weighted inner product. No unitary change of density, coordinate change, compactness assumption, boundary condition or alteration of the test-domain inclusion (DSP33) enters this spectral step. Every differential-domain and boundary-regularity assertion in AN03-DSP-010 consequently keeps its existing separate proof.</p>
+<h2 id="AN03-SPC-005"><span id="an03-spc-005"></span>Two exact models and a solved domain exercise</h2>
+<p>The same coordinate correspondence can represent continuous spectrum or a sequence of eigenvalues. Here both models use the actual constants <span class="math" data-tex="\(a=-2\)">\(a=-2\)</span>, <span class="math" data-tex="\(\rho=3\)">\(\rho=3\)</span>, <span class="math" data-tex="\(\delta=1\)">\(\delta=1\)</span>, and the cutoff <span class="math" data-tex="\(\lambda=4\)">\(\lambda=4\)</span>.</p>
+<h3 id="a-weighted-continuous-model">A weighted continuous model</h3>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+H=L^2([0,\infty),e^{-x}\,dx),\quad
+D(A)=\left\{u\in H:\int_0^\infty|x-2|^2|u(x)|^2e^{-x}\,dx&lt;\infty\right\},
+\quad Au(x)=(x-2)u(x).
+\tag{SC1}
+\]">\[
+H=L^2([0,\infty),e^{-x}\,dx),\quad
+D(A)=\left\{u\in H:\int_0^\infty|x-2|^2|u(x)|^2e^{-x}\,dx&lt;\infty\right\},
+\quad Au(x)=(x-2)u(x).
+\tag{SC1}
+\]</span>
+<p>This is densely defined: truncating any <span class="math" data-tex="\(u\in H\)">\(u\in H\)</span> to <span class="math" data-tex="\([0,n]\)">\([0,n]\)</span> gives domain elements converging in <span class="math" data-tex="\(H\)">\(H\)</span>. Multiplication by the real function <span class="math" data-tex="\(x-2\)">\(x-2\)</span> is symmetric there. To identify its full adjoint, let <span class="math" data-tex="\(v\in D(A^*)\)">\(v\in D(A^*)\)</span> and put <span class="math" data-tex="\(w=A^*v\)">\(w=A^*v\)</span>. Test the adjoint identity with every <span class="math" data-tex="\(u\in H\)">\(u\in H\)</span> supported in <span class="math" data-tex="\([0,n]\)">\([0,n]\)</span>, which belongs to <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>. It gives <span class="math" data-tex="\(1_{[0,n]}w=(x-2)1_{[0,n]}v\)">\(1_{[0,n]}w=(x-2)1_{[0,n]}v\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>. Letting <span class="math" data-tex="\(n\)">\(n\)</span> increase proves <span class="math" data-tex="\(w=(x-2)v\)">\(w=(x-2)v\)</span> almost everywhere, so <span class="math" data-tex="\(v\in D(A)\)">\(v\in D(A)\)</span>. The converse follows by the integrable Hilbert pairing. Thus <span class="math" data-tex="\(A=A^*\)">\(A=A^*\)</span> on exactly (SC1), and</p>
+<span class="math math-display" data-tex="\[
+(Au,u)=\int_0^\infty(x-2)|u(x)|^2e^{-x}\,dx\geq-2\|u\|^2.
+\]">\[
+(Au,u)=\int_0^\infty(x-2)|u(x)|^2e^{-x}\,dx\geq-2\|u\|^2.
+\]</span>
+<p>The integral is finite for <span class="math" data-tex="\(u\in D(A)\)">\(u\in D(A)\)</span> by Cauchy–Schwarz.</p>
+<p>Here <span class="math" data-tex="\(T=A+3I\)">\(T=A+3I\)</span> multiplies by <span class="math" data-tex="\(x+1\)">\(x+1\)</span>, and <span class="math" data-tex="\(S=T^{-1}\)">\(S=T^{-1}\)</span> multiplies by <span class="math" data-tex="\((x+1)^{-1}\)">\((x+1)^{-1}\)</span>, with no density change. Its PVM on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is</p>
+<span class="math math-display" data-tex="\[
+E(B)u(x)=1_B((x+1)^{-1})u(x).
+\tag{SC2}
+\]">\[
+E(B)u(x)=1_B((x+1)^{-1})u(x).
+\tag{SC2}
+\]</span>
+<p>Indicator multiplication proves idempotence, adjoints and intersections; dominated convergence against <span class="math" data-tex="\(|u|^2e^{-x}\,dx\)">\(|u|^2e^{-x}\,dx\)</span> proves strong countable additivity. Its coordinate integral is <span class="math" data-tex="\(S\)">\(S\)</span>, so bounded uniqueness identifies it with the constructed PVM. Therefore the real PVM and sharp projector are exactly</p>
+<span class="math math-display" data-tex="\[
+F(B)u(x)=1_B(x-2)u(x),\qquad
+E_\lambda u(x)=
+\begin{cases}1_{[0,\lambda+2]}(x)u(x),&amp;\lambda\geq-2,\\
+0,&amp;\lambda&lt;-2.
+\end{cases}
+\tag{SC3}
+\]">\[
+F(B)u(x)=1_B(x-2)u(x),\qquad
+E_\lambda u(x)=
+\begin{cases}1_{[0,\lambda+2]}(x)u(x),&amp;\lambda\geq-2,\\
+0,&amp;\lambda&lt;-2.
+\end{cases}
+\tag{SC3}
+\]</span>
+<p>An eigenvector with eigenvalue <span class="math" data-tex="\(b\)">\(b\)</span> would vanish outside the singleton <span class="math" data-tex="\(\{b+2\}\)">\(\{b+2\}\)</span>, which has measure zero for <span class="math" data-tex="\(e^{-x}\,dx\)">\(e^{-x}\,dx\)</span>; hence there are no nonzero eigenvectors. For <span class="math" data-tex="\(\lambda&gt;-2\)">\(\lambda&gt;-2\)</span>, put <span class="math" data-tex="\(c=\lambda+2&gt;0\)">\(c=\lambda+2&gt;0\)</span>. The intervals <span class="math" data-tex="\((c2^{-(j+1)},c2^{-j})\)">\((c2^{-(j+1)},c2^{-j})\)</span>, <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, are pairwise disjoint subsets of <span class="math" data-tex="\([0,c]\)">\([0,c]\)</span> with positive weighted measure. Their indicator functions, divided by the square roots of those exact measures, give infinitely many orthonormal vectors in <span class="math" data-tex="\(E_\lambda H\)">\(E_\lambda H\)</span>. Thus this projection has infinite rank. A local spectral argument cannot infer finite rank from a finite spectral interval alone.</p>
+<p>At the specified cutoff,</p>
+<span class="math math-display" data-tex="\[
+E_4u=1_{[0,6]}u,\qquad E_4=E([1/7,1]).
+\tag{SC4}
+\]">\[
+E_4u=1_{[0,6]}u,\qquad E_4=E([1/7,1]).
+\tag{SC4}
+\]</span>
+<p>The example keeps the nonconstant density and the original coordinate <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<h3 id="an-atomic-model-that-detects-the-endpoint">An atomic model that detects the endpoint</h3>
+<p>On <span class="math" data-tex="\(H=\ell^2(\mathbb N_0)\)">\(H=\ell^2(\mathbb N_0)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+D(A)=\left\{u:\sum_{j=0}^\infty|j-2|^2|u_j|^2&lt;\infty\right\},
+\qquad(Au)_j=(j-2)u_j.
+\tag{SC5}
+\]">\[
+D(A)=\left\{u:\sum_{j=0}^\infty|j-2|^2|u_j|^2&lt;\infty\right\},
+\qquad(Au)_j=(j-2)u_j.
+\tag{SC5}
+\]</span>
+<p>Finite sequences are dense. Testing the adjoint identity on each coordinate vector forces the adjoint value to be <span class="math" data-tex="\((j-2)v_j\)">\((j-2)v_j\)</span>; membership of that sequence in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> is exactly the displayed domain. Conversely Cauchy–Schwarz proves the adjoint identity on that domain. Thus this is self-adjoint and lower-bounded by <span class="math" data-tex="\(-2\)">\(-2\)</span>. Its inverse <span class="math" data-tex="\(S=(A+3I)^{-1}\)">\(S=(A+3I)^{-1}\)</span> multiplies coordinate <span class="math" data-tex="\(j\)">\(j\)</span> by <span class="math" data-tex="\((j+1)^{-1}\)">\((j+1)^{-1}\)</span>. The coordinate projections give its PVM directly, and</p>
+<span class="math math-display" data-tex="\[
+E_4u=(u_0,u_1,\ldots,u_6,0,\ldots),\qquad
+E_4=E([1/7,1]).
+\tag{SC6}
+\]">\[
+E_4u=(u_0,u_1,\ldots,u_6,0,\ldots),\qquad
+E_4=E([1/7,1]).
+\tag{SC6}
+\]</span>
+<p>Both equalities include coordinate <span class="math" data-tex="\(j=6\)">\(j=6\)</span>. Replacing the lower endpoint <span class="math" data-tex="\(1/7\)">\(1/7\)</span> by an open endpoint deletes that eigenspace. This proves that the endpoint convention in (LB17) has observable mathematical content, even though the continuous model gives individual endpoints measure zero.</p>
+<h3 id="exercise-and-complete-solution">Exercise and complete solution</h3>
+<p>For the atomic model, determine the domains and actions of <span class="math" data-tex="\(S(A+3I)\)">\(S(A+3I)\)</span> and of the multiplier obtained from the product <span class="math" data-tex="\(t\cdot t^{-1}=1\)">\(t\cdot t^{-1}=1\)</span> on <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>. Exhibit a vector that distinguishes them.</p>
+<p>The operator <span class="math" data-tex="\(A+3I\)">\(A+3I\)</span> has domain (SC5), and <span class="math" data-tex="\(S\)">\(S\)</span> is bounded on all of <span class="math" data-tex="\(H\)">\(H\)</span>. Thus <span class="math" data-tex="\(S(A+3I)\)">\(S(A+3I)\)</span> has exactly domain <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>; its coordinate action there is <span class="math" data-tex="\(u_j\mapsto(j+1)^{-1}(j+1)u_j=u_j\)">\(u_j\mapsto(j+1)^{-1}(j+1)u_j=u_j\)</span>. The product function equals one outside the <span class="math" data-tex="\(E\)">\(E\)</span>-null point zero, so its multiplier is <span class="math" data-tex="\(I\)">\(I\)</span> on all of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Take <span class="math" data-tex="\(u_j=(j+1)^{-1}\)">\(u_j=(j+1)^{-1}\)</span>. Its squared sum is finite: for <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, <span class="math" data-tex="\(k^{-2}\leq[k(k-1)]^{-1}=(k-1)^{-1}-k^{-1}\)">\(k^{-2}\leq[k(k-1)]^{-1}=(k-1)^{-1}-k^{-1}\)</span>, whose partial sums are bounded. But for <span class="math" data-tex="\(j\geq5\)">\(j\geq5\)</span>, <span class="math" data-tex="\((j-2)/(j+1)\geq1/2\)">\((j-2)/(j+1)\geq1/2\)</span>, so the sum in (SC5) is infinite. Hence <span class="math" data-tex="\(u\in H\setminus D(A)\)">\(u\in H\setminus D(A)\)</span>. The two identity actions have different domains exactly as (LB15) states. The opposite composition <span class="math" data-tex="\((A+3I)S\)">\((A+3I)S\)</span> is defined on all of <span class="math" data-tex="\(H\)">\(H\)</span>, because multiplication by <span class="math" data-tex="\((j+1)^{-1}\)">\((j+1)^{-1}\)</span> places every sequence in <span class="math" data-tex="\(D(A+3I)\)">\(D(A+3I)\)</span>, and its action is <span class="math" data-tex="\(I\)">\(I\)</span> there.</p>
+<h2 id="antecedents-and-use-in-the-elliptic-course">Antecedents and use in the elliptic course</h2>
+<p>The measure representation is the classical Riesz representation theorem on the compact interval. The functional-calculus route has the human antecedent Markus Haase, <a href="https://arxiv.org/abs/2003.06130v2">The Functional Calculus Approach to the Spectral Theorem, arXiv:2003.06130v2</a>, especially the original TeX theorem labels con.t.ext-bdd, con.t.ext-cont, spt.t.bdd, and spt.t.unb. The original author LaTeX was consulted; all course arguments and examples above are independently written.</p>
+<p>For the differential-operator application, <a href="../dependencies/AN-03/receiving-sources/dirichlet-spectral-projectors.md">Dirichlet realizations, spectral projectors, and local extensions</a>, AN03-DSP-010, supplies the exact expression, weighted Hilbert space and boundary-domain inclusion. AN03-SPC-004 proves the spectral facts on that unchanged Hilbert space. Its moment identity (LB14), recursive-power identity (LB16), closed endpoint (LB17), and explicit constant (LB19) provide precisely the spectral step in (DSP1) and (DSP40). The local differential regularity and kernel construction keep their complete proofs in that unit. No compactness or eigenbasis premise is added to that application.</p>
+<p>This independently written programme text is dedicated under CC0 1.0 Universal, to the extent rights are held. External works retain their own rights.</p>
+</article></main><footer>CC0-1.0 applies to this reproduced prerequisite proof. Elliptic Operators &amp; Boundary Problems, AN03-P005, pinned September 2026 edition; AI-authored mathematical draft. MathJax retains its upstream license.</footer></body></html>

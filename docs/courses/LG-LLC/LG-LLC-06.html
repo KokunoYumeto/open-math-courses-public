@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The rank-two correspondence: principal series, Steinberg twists and characters · The local Langlands correspondence for GL_n</title>
+<meta name="description" content="A lesson of the course The local Langlands correspondence for GL_n. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-LLC/LG-LLC-06.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The local Langlands correspondence for GL_n</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-rank-two-correspondence-principal-series-steinberg-twists-and-characters">The rank-two correspondence: principal series, Steinberg twists and characters</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>At a reducibility point of a principal series, its two constituents have the same two character labels. Their parameters nevertheless differ: the Steinberg constituent has a nonzero monodromy operator, while the determinant character has none. This difference changes both the local Euler factor and the conductor. We calculate those changes, including ramified twists and the tensor product of two Steinberg parameters.</p>
+<p>We assume normalized induction and the rank-two representation classification, Tate's local functional equation, the Schwartz and Whittaker models, and the generic newvector theorem. Their precise uses are identified below. The correspondence statement from <em>The statement of the local Langlands correspondence</em> fixes the normalization, but its existence theorem is not used to deduce the factor calculations in this lesson. Basic references are [Jacquet–Langlands 1970], [Deligne 1973] and [Getz–Hahn 2022].</p>
+<h2 id="1-the-candidate-dictionary">1. The candidate dictionary</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be any nonarchimedean local field, with residue cardinality <span class="math" data-tex="\(q\)">\(q\)</span>, and put <span class="math" data-tex="\(\nu=|\cdot|_F\)">\(\nu=|\cdot|_F\)</span>. Reciprocity sends a uniformizer to geometric Frobenius <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, with <span class="math" data-tex="\(\lVert\Phi\rVert=q^{-1}\)">\(\lVert\Phi\rVert=q^{-1}\)</span>. A hat denotes the corresponding Weil character. Write <span class="math" data-tex="\(I(\mu_1,\mu_2)\)">\(I(\mu_1,\mu_2)\)</span> for normalized induction to <span class="math" data-tex="\(G_2=\mathrm{GL}_2(F)\)">\(G_2=\mathrm{GL}_2(F)\)</span>, and write <span class="math" data-tex="\(\mathrm{St}\chi\)">\(\mathrm{St}\chi\)</span> for <span class="math" data-tex="\(\mathrm{St}_2\otimes(\chi\circ\det)\)">\(\mathrm{St}_2\otimes(\chi\circ\det)\)</span>.</p>
+<p>The non-supercuspidal irreducibles are precisely
+<span class="math math-display" data-tex="\[
+I(\mu_1,\mu_2)\quad(\mu_1/\mu_2\ne\nu^{\pm1}),
+\qquad \mathrm{St}\chi,
+\qquad \chi\circ\det.
+\tag{1.1}
+\]">\[
+I(\mu_1,\mu_2)\quad(\mu_1/\mu_2\ne\nu^{\pm1}),
+\qquad \mathrm{St}\chi,
+\qquad \chi\circ\det.
+\tag{1.1}
+\]</span>
+This classification is the prerequisite recalled in <em>Irreducible representations of general linear groups over a local field</em>, Section 3; its source is [Jacquet–Langlands 1970, Theorem 3.3]. Principal-series labels are unordered. Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(I(\mu_1,\mu_2))&amp;=(\widehat\mu_1\oplus\widehat\mu_2,0),\\
+R(\mathrm{St}\chi)&amp;=\widehat\chi\otimes S_2,\\
+R(\chi\circ\det)&amp;=(\widehat{\chi\nu^{-1/2}}
+                         \oplus\widehat{\chi\nu^{1/2}},0).
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+R(I(\mu_1,\mu_2))&amp;=(\widehat\mu_1\oplus\widehat\mu_2,0),\\
+R(\mathrm{St}\chi)&amp;=\widehat\chi\otimes S_2,\\
+R(\chi\circ\det)&amp;=(\widehat{\chi\nu^{-1/2}}
+                         \oplus\widehat{\chi\nu^{1/2}},0).
+\end{aligned}
+\tag{1.2}
+\]</span>
+Here <span class="math" data-tex="\(S_2\)">\(S_2\)</span> has basis <span class="math" data-tex="\(e_-,e_+\)">\(e_-,e_+\)</span>, Weil weights <span class="math" data-tex="\(\lVert\cdot\rVert^{-1/2},\lVert\cdot\rVert^{1/2}\)">\(\lVert\cdot\rVert^{-1/2},\lVert\cdot\rVert^{1/2}\)</span>, and <span class="math" data-tex="\(Ne_-=e_+\)">\(Ne_-=e_+\)</span>, <span class="math" data-tex="\(Ne_+=0\)">\(Ne_+=0\)</span>. Its monodromy kernel is the positive-half line.</p>
+<p><strong>Proposition 1.1.</strong> The map (1.2) is a bijection onto the rank-two Frobenius-semisimple parameters whose underlying Weil action is reducible.</p>
+<p><strong>Proof.</strong> Such a parameter has either zero monodromy and two character summands, or the form <span class="math" data-tex="\(\lambda S_2\)">\(\lambda S_2\)</span>, by the rank-two classification in the correspondence-statement lesson, Lemma 3.1. A sum of two characters whose ratio is not <span class="math" data-tex="\(\lVert\cdot\rVert^{\pm1}\)">\(\lVert\cdot\rVert^{\pm1}\)</span> gives the first line of (1.2). When their ratio is <span class="math" data-tex="\(\lVert\cdot\rVert\)">\(\lVert\cdot\rVert\)</span>, the unique midpoint <span class="math" data-tex="\(\widehat\chi\)">\(\widehat\chi\)</span> gives the third line. Nonzero monodromy gives the second line, with <span class="math" data-tex="\(\widehat\chi\)">\(\widehat\chi\)</span> recovered from the kernel character by removing <span class="math" data-tex="\(\lVert\cdot\rVert^{1/2}\)">\(\lVert\cdot\rVert^{1/2}\)</span>. These three cases are disjoint. Reciprocity and the uniqueness of the labels in (1.1) prove both surjectivity and injectivity. ∎</p>
+<h2 id="2-twists-determinants-and-duals">2. Twists, determinants and duals</h2>
+<p><strong>Proposition 2.1.</strong> The candidate commutes with character twists and duality, and its determinant is the character corresponding to the central character.</p>
+<p><strong>Proof.</strong> Twisting normalized induction multiplies both inducing characters by the twisting character. Twisting <span class="math" data-tex="\(\mathrm{St}\chi\)">\(\mathrm{St}\chi\)</span> or <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span> multiplies <span class="math" data-tex="\(\chi\)">\(\chi\)</span> by that character. Each line of (1.2) therefore commutes with twists.</p>
+<p>The central character of the principal series is <span class="math" data-tex="\(\mu_1\mu_2\)">\(\mu_1\mu_2\)</span>: a scalar matrix has modular character one. The central characters of the other two representations are <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span>. The determinant of <span class="math" data-tex="\(S_2\)">\(S_2\)</span> is one, so (1.2) gives exactly these three determinant characters.</p>
+<p>For principal series, the usual invariant pairing of normalized induction with its inverse-character induction gives
+<span class="math" data-tex="\(I(\mu_1,\mu_2)^\vee\simeq I(\mu_1^{-1},\mu_2^{-1})\)">\(I(\mu_1,\mu_2)^\vee\simeq I(\mu_1^{-1},\mu_2^{-1})\)</span>; this normalized-duality fact is part of the induction prerequisite [Getz–Hahn 2022, §8.2]. Also <span class="math" data-tex="\(\mathrm{St}_2^\vee\simeq\mathrm{St}_2\)">\(\mathrm{St}_2^\vee\simeq\mathrm{St}_2\)</span>. One can see the latter from the same pairing at the reducibility point: the dual of the infinite-dimensional constituent is the infinite-dimensional constituent with the inverse cuspidal support <span class="math" data-tex="\(\{\nu^{-1/2},\nu^{1/2}\}\)">\(\{\nu^{-1/2},\nu^{1/2}\}\)</span>, whose only such constituent is Steinberg. Thus <span class="math" data-tex="\((\mathrm{St}\chi)^\vee=\mathrm{St}\chi^{-1}\)">\((\mathrm{St}\chi)^\vee=\mathrm{St}\chi^{-1}\)</span>, while a determinant character is inverted.</p>
+<p>On <span class="math" data-tex="\(S_2\)">\(S_2\)</span>, the alternating form with <span class="math" data-tex="\(B(e_-,e_+)=1\)">\(B(e_-,e_+)=1\)</span> is Weil-invariant and satisfies <span class="math" data-tex="\(B(Nx,y)+B(x,Ny)=0\)">\(B(Nx,y)+B(x,Ny)=0\)</span>. It identifies <span class="math" data-tex="\(S_2\)">\(S_2\)</span> with its dual, whose monodromy is <span class="math" data-tex="\(-{}^tN\)">\(-{}^tN\)</span>. Direct sums dualize by inverting their characters. Applying these identities to (1.2) proves the dual assertion. ∎</p>
+<h2 id="3-standard-factors-from-two-tate-integrals">3. Standard factors from two Tate integrals</h2>
+<p>Initially let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> have conductor zero and use self-dual additive measure, with <span class="math" data-tex="\(\operatorname{vol}(\mathcal O)=1\)">\(\operatorname{vol}(\mathcal O)=1\)</span> and multiplicative measure giving <span class="math" data-tex="\(\mathcal O^\times\)">\(\mathcal O^\times\)</span> volume one. Put <span class="math" data-tex="\(X=q^{-s}\)">\(X=q^{-s}\)</span>. For a smooth character <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, write
+<span class="math math-display" data-tex="\[
+\epsilon(s,\tau,\psi)=w(\tau,\psi)
+                         q^{-a(\tau)(s-1/2)}.
+\tag{3.1}
+\]">\[
+\epsilon(s,\tau,\psi)=w(\tau,\psi)
+                         q^{-a(\tau)(s-1/2)}.
+\tag{3.1}
+\]</span>
+For unramified <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, this epsilon factor is one and
+<span class="math" data-tex="\(L(s,\tau)=(1-\tau(\varpi)X)^{-1}\)">\(L(s,\tau)=(1-\tau(\varpi)X)^{-1}\)</span>. For ramified <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, its <span class="math" data-tex="\(L\)">\(L\)</span>-factor is one. These are Tate's character-factor inputs.</p>
+<p>We use only the following part of the <strong>Schwartz-model prerequisite</strong>. The Whittaker functions of an irreducible principal series are the images of <span class="math" data-tex="\(\Phi\in\mathcal S(F^2)\)">\(\Phi\in\mathcal S(F^2)\)</span>, and their standard zeta integrals are
+<span class="math math-display" data-tex="\[
+J_{\mu_1,\mu_2}(s,\Phi)=
+\int_{F^\times}\int_{F^\times}
+ \Phi(x,y)\mu_1(x)\mu_2(y)|xy|^s\,d^\times x\,d^\times y.
+\tag{3.2}
+\]">\[
+J_{\mu_1,\mu_2}(s,\Phi)=
+\int_{F^\times}\int_{F^\times}
+ \Phi(x,y)\mu_1(x)\mu_2(y)|xy|^s\,d^\times x\,d^\times y.
+\tag{3.2}
+\]</span>
+The Weyl operator in that realization is the Fourier operator; after the dual characters are inserted, its functional equation is obtained by applying Tate's functional equation in each variable. For the untwisted special constituent, the image is obtained from the subspace
+<span class="math math-display" data-tex="\[
+\int_F\Phi(x,0)\,dx=0.
+\tag{3.3}
+\]">\[
+\int_F\Phi(x,0)\,dx=0.
+\tag{3.3}
+\]</span>
+Determinant twists insert the twisting character in both variables of (3.2). These realization statements are [Jacquet–Langlands 1970, Proposition 3.2 and the realization assertion of Proposition 3.6]. The displayed zeta identity and Fourier action are also the identities used in the proof of Proposition 3.5. We now compute their factor consequences.</p>
+<p><strong>Lemma 3.1 (principal series).</strong> If the principal series is irreducible, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(s,I(\mu_1,\mu_2))&amp;=L(s,\mu_1)L(s,\mu_2),\\
+\epsilon(s,I(\mu_1,\mu_2),\psi)
+ &amp;=\epsilon(s,\mu_1,\psi)\epsilon(s,\mu_2,\psi).
+\end{aligned}
+\tag{3.4}
+\]">\[
+\begin{aligned}
+L(s,I(\mu_1,\mu_2))&amp;=L(s,\mu_1)L(s,\mu_2),\\
+\epsilon(s,I(\mu_1,\mu_2),\psi)
+ &amp;=\epsilon(s,\mu_1,\psi)\epsilon(s,\mu_2,\psi).
+\end{aligned}
+\tag{3.4}
+\]</span></p>
+<p><strong>Proof.</strong> Every locally constant compactly supported function on <span class="math" data-tex="\(F^2\)">\(F^2\)</span> is a finite sum of functions <span class="math" data-tex="\(f_1(x)f_2(y)\)">\(f_1(x)f_2(y)\)</span>: enclose its support in a compact rectangle and partition that rectangle into sufficiently small additive cosets on which it is constant. On such a tensor, (3.2) is the product of the two Tate integrals.</p>
+<p>Each Tate integral belongs to <span class="math" data-tex="\(L(s,\mu_i)\mathbb C[X,X^{-1}]\)">\(L(s,\mu_i)\mathbb C[X,X^{-1}]\)</span>, and some <span class="math" data-tex="\(f_i\)">\(f_i\)</span> realizes <span class="math" data-tex="\(L(s,\mu_i)\)">\(L(s,\mu_i)\)</span>. For an unramified character take <span class="math" data-tex="\(f_i=1_{\mathcal O}\)">\(f_i=1_{\mathcal O}\)</span>. For a ramified character take <span class="math" data-tex="\(f_i=\mu_i^{-1}1_{\mathcal O^\times}\)">\(f_i=\mu_i^{-1}1_{\mathcal O^\times}\)</span>, which gives the constant integral one. Thus the integral ideal in (3.2) is exactly the product ideal, proving its normalized <span class="math" data-tex="\(L\)">\(L\)</span>-generator in (3.4).</p>
+<p>Apply the Tate functional equation in the two variables, first on a tensor and then on their finite sums. The Fourier/Weyl identification in the prerequisite gives the gamma factor
+<span class="math math-display" data-tex="\[
+\gamma(s,I(\mu_1,\mu_2),\psi)
+ =\gamma(s,\mu_1,\psi)\gamma(s,\mu_2,\psi).
+\tag{3.5}
+\]">\[
+\gamma(s,I(\mu_1,\mu_2),\psi)
+ =\gamma(s,\mu_1,\psi)\gamma(s,\mu_2,\psi).
+\tag{3.5}
+\]</span>
+The dual principal series has the inverse characters. Substituting its already computed <span class="math" data-tex="\(L\)">\(L\)</span>-factor and the definition <span class="math" data-tex="\(\gamma=\epsilon L^\vee(1-s)/L(s)\)">\(\gamma=\epsilon L^\vee(1-s)/L(s)\)</span> into (3.5) cancels the four Tate <span class="math" data-tex="\(L\)">\(L\)</span>-factors and leaves the asserted product of epsilon factors. ∎</p>
+<p><strong>Lemma 3.2 (special representations).</strong> Put <span class="math" data-tex="\(\beta=\tau(\varpi)\)">\(\beta=\tau(\varpi)\)</span> when <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is unramified. Then
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c}
+&amp;L(s,\mathrm{St}\tau)&amp;\epsilon(s,\mathrm{St}\tau,\psi)\\\hline
+\tau\text{ unramified}&amp;(1-\beta q^{-1/2}X)^{-1}&amp;-\beta q^{1/2}X\\
+\tau\text{ ramified}&amp;1&amp;\epsilon(s,\tau,\psi)^2.
+\end{array}
+\tag{3.6}
+\]">\[
+\begin{array}{c|c|c}
+&amp;L(s,\mathrm{St}\tau)&amp;\epsilon(s,\mathrm{St}\tau,\psi)\\\hline
+\tau\text{ unramified}&amp;(1-\beta q^{-1/2}X)^{-1}&amp;-\beta q^{1/2}X\\
+\tau\text{ ramified}&amp;1&amp;\epsilon(s,\tau,\psi)^2.
+\end{array}
+\tag{3.6}
+\]</span></p>
+<p><strong>Proof.</strong> In the special model (3.2) has characters <span class="math" data-tex="\(\tau\nu^{1/2}\)">\(\tau\nu^{1/2}\)</span>, <span class="math" data-tex="\(\tau\nu^{-1/2}\)">\(\tau\nu^{-1/2}\)</span>, with condition (3.3). If <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is ramified, all double Tate integrals are Laurent polynomials. Choose both functions supported on units and equal there to <span class="math" data-tex="\(\tau^{-1}\)">\(\tau^{-1}\)</span>. Their tensor satisfies (3.3), because its second factor vanishes at zero, and its double integral is one. Hence the special integral ideal has generator one.</p>
+<p>Suppose <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is unramified. Before the condition (3.3), the possible denominator is
+<span class="math math-display" data-tex="\[
+(1-\beta q^{-1/2}X)(1-\beta q^{1/2}X).
+\tag{3.7}
+\]">\[
+(1-\beta q^{-1/2}X)(1-\beta q^{1/2}X).
+\tag{3.7}
+\]</span>
+At <span class="math" data-tex="\(X=\beta^{-1}q^{-1/2}\)">\(X=\beta^{-1}q^{-1/2}\)</span>, the possible pole comes from the tail <span class="math" data-tex="\(y\to0\)">\(y\to0\)</span>. Its residue is a fixed nonzero constant times the first-variable integral of <span class="math" data-tex="\(\Phi(x,0)\)">\(\Phi(x,0)\)</span>, evaluated at that value of <span class="math" data-tex="\(X\)">\(X\)</span>. On the shell <span class="math" data-tex="\(v(x)=r\)">\(v(x)=r\)</span>, the first-variable weight there is
+<span class="math" data-tex="\(\beta^r q^{-r/2}X^r=q^{-r}\)">\(\beta^r q^{-r/2}X^r=q^{-r}\)</span>. Multiplicative measure multiplied by <span class="math" data-tex="\(|x|\)">\(|x|\)</span> is a fixed multiple of additive measure, so this residue vanishes by (3.3). This shell argument is rigorous by first partitioning <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> into rectangles; the tails in each variable are geometric series, and the two roots in (3.7) are distinct. Thus every special integral belongs to
+<span class="math" data-tex="\((1-\beta q^{-1/2}X)^{-1}\mathbb C[X,X^{-1}]\)">\((1-\beta q^{-1/2}X)^{-1}\mathbb C[X,X^{-1}]\)</span>.</p>
+<p>For equality, take <span class="math" data-tex="\(\Phi=1_{\mathcal O}\otimes1_{\mathcal O^\times}\)">\(\Phi=1_{\mathcal O}\otimes1_{\mathcal O^\times}\)</span>. It satisfies (3.3), and its integral is exactly <span class="math" data-tex="\((1-\beta q^{-1/2}X)^{-1}\)">\((1-\beta q^{-1/2}X)^{-1}\)</span>. This proves the <span class="math" data-tex="\(L\)">\(L\)</span>-factor in (3.6).</p>
+<p>The two-variable Fourier equation remains valid on the special subrepresentation, so its gamma factor is
+<span class="math" data-tex="\(\gamma(s,\tau\nu^{1/2})\gamma(s,\tau\nu^{-1/2})\)">\(\gamma(s,\tau\nu^{1/2})\gamma(s,\tau\nu^{-1/2})\)</span>. In the ramified case every relevant <span class="math" data-tex="\(L\)">\(L\)</span>-factor is one, giving
+<span class="math math-display" data-tex="\[
+\epsilon(s,\mathrm{St}\tau)
+=\epsilon(s+1/2,\tau)\epsilon(s-1/2,\tau)
+=\epsilon(s,\tau)^2.
+\]">\[
+\epsilon(s,\mathrm{St}\tau)
+=\epsilon(s+1/2,\tau)\epsilon(s-1/2,\tau)
+=\epsilon(s,\tau)^2.
+\]</span>
+The last equality follows directly from the monomial (3.1). In the unramified case, divide the product gamma factor by the dual special <span class="math" data-tex="\(L\)">\(L\)</span>-factor and multiply by its standard <span class="math" data-tex="\(L\)">\(L\)</span>-factor. The result is
+<span class="math math-display" data-tex="\[
+\frac{1-\beta q^{1/2-s}}{1-\beta^{-1}q^{s-1/2}}
+=-\beta q^{1/2-s}.
+\]">\[
+\frac{1-\beta q^{1/2-s}}{1-\beta^{-1}q^{s-1/2}}
+=-\beta q^{1/2-s}.
+\]</span>
+This proves the sign and the exponent in (3.6). ∎</p>
+<p>For <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span>, the standard factors are defined through its Langlands quotient by the two character blocks <span class="math" data-tex="\(\chi\nu^{-1/2},\chi\nu^{1/2}\)">\(\chi\nu^{-1/2},\chi\nu^{1/2}\)</span> [Getz–Hahn 2022, §11.8]. Consequently
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(s,\chi\circ\det)&amp;=L(s,\chi\nu^{-1/2})L(s,\chi\nu^{1/2}),\\
+\epsilon(s,\chi\circ\det)&amp;=\epsilon(s,\chi)^2.
+\end{aligned}
+\tag{3.8}
+\]">\[
+\begin{aligned}
+L(s,\chi\circ\det)&amp;=L(s,\chi\nu^{-1/2})L(s,\chi\nu^{1/2}),\\
+\epsilon(s,\chi\circ\det)&amp;=\epsilon(s,\chi)^2.
+\end{aligned}
+\tag{3.8}
+\]</span>
+The two norm shifts in the epsilon product cancel, also when <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is ramified. No Whittaker integral for a one-dimensional representation is asserted.</p>
+<h2 id="4-matching-every-pair-with-a-character">4. Matching every pair with a character</h2>
+<p><strong>Theorem 4.1.</strong> For every non-supercuspidal <span class="math" data-tex="\(\pi\)">\(\pi\)</span> in (1.1) and every character <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, the analytic <span class="math" data-tex="\(L\)">\(L\)</span>- and epsilon factors of <span class="math" data-tex="\(\pi\times\xi\)">\(\pi\times\xi\)</span> equal the parameter factors of <span class="math" data-tex="\(R(\pi)\otimes\widehat\xi\)">\(R(\pi)\otimes\widehat\xi\)</span>.</p>
+<p><strong>Proof.</strong> The rank-two character-pair integral is the standard integral of <span class="math" data-tex="\(\pi\otimes(\xi\circ\det)\)">\(\pi\otimes(\xi\circ\det)\)</span>, including its epsilon factor; this was proved in the local-factor lesson, Proposition 3.1. The nongeneric extension has the same twist identity by its defining character-block product. Thus insert <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in all character labels in (3.4), (3.6) and (3.8).</p>
+<p>On a direct sum of Weil characters, both factors are products of Tate factors by their definitions and one-dimensional reciprocity compatibility. This proves the principal-series and determinant-character cases.</p>
+<p>Put <span class="math" data-tex="\(\tau=\chi\xi\)">\(\tau=\chi\xi\)</span> for the special case. Its parameter has Weil characters <span class="math" data-tex="\(\widehat{\tau\nu^{-1/2}},\widehat{\tau\nu^{1/2}}\)">\(\widehat{\tau\nu^{-1/2}},\widehat{\tau\nu^{1/2}}\)</span>, and its kernel is the second line. If <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is unramified, Frobenius on that kernel has value <span class="math" data-tex="\(\beta q^{-1/2}\)">\(\beta q^{-1/2}\)</span>, giving the <span class="math" data-tex="\(L\)">\(L\)</span>-factor in (3.6). The underlying Weil epsilon product is one. The monodromy correction, on the quotient by the kernel, is
+<span class="math math-display" data-tex="\[
+\det(-q^{-s}\Phi\mid V^{I_F}/(\ker N)^{I_F})
+=-\beta q^{1/2-s}.
+\tag{4.1}
+\]">\[
+\det(-q^{-s}\Phi\mid V^{I_F}/(\ker N)^{I_F})
+=-\beta q^{1/2-s}.
+\tag{4.1}
+\]</span>
+If <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is ramified, the inertia-invariant space is zero, so the <span class="math" data-tex="\(L\)">\(L\)</span>-factor and correction are both one. The two underlying character epsilon factors multiply to <span class="math" data-tex="\(\epsilon(s,\tau)^2\)">\(\epsilon(s,\tau)^2\)</span>. This is exactly the ramified line of (3.6).</p>
+<p>Finally, every additive character is <span class="math" data-tex="\(\psi_a(x)=\psi(ax)\)">\(\psi_a(x)=\psi(ax)\)</span> for some <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. The analytic character-pair change is
+<span class="math" data-tex="\(\omega_\pi(a)\xi(a)^2|a|^{2(s-1/2)}\)">\(\omega_\pi(a)\xi(a)^2|a|^{2(s-1/2)}\)</span>; the parameter change is its determinant at <span class="math" data-tex="\(a\)">\(a\)</span> times the same norm power. Proposition 2.1 identifies these determinants. Thus the match for conductor-zero <span class="math" data-tex="\(\psi\)">\(\psi\)</span> proves it for every <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. ∎</p>
+<h2 id="5-all-non-supercuspidal-rank-two-pairs">5. All non-supercuspidal rank-two pairs</h2>
+<p>The only pair that cannot be reduced immediately to character pairs is a pair of special representations. We compute it rather than inferring it from the existence of the correspondence.</p>
+<p><strong>Lemma 5.1.</strong> There is an isomorphism of Weil–Deligne objects
+<span class="math math-display" data-tex="\[
+S_2\otimes S_2\simeq S_3\oplus1.
+\tag{5.1}
+\]">\[
+S_2\otimes S_2\simeq S_3\oplus1.
+\tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(e_{ab}=e_a\otimes e_b\)">\(e_{ab}=e_a\otimes e_b\)</span>. The three vectors
+<span class="math math-display" data-tex="\[
+e_{--},\quad e_{+-}+e_{-+},\quad2e_{++}
+\]">\[
+e_{--},\quad e_{+-}+e_{-+},\quad2e_{++}
+\]</span>
+form a monodromy chain with weights <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span>. The remaining vector <span class="math" data-tex="\(e_{+-}-e_{-+}\)">\(e_{+-}-e_{-+}\)</span> has weight zero and monodromy zero. These four vectors form a basis over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and the two indicated spaces are stable. ∎</p>
+<p><strong>Theorem 5.2 (the special pair).</strong> Let <span class="math" data-tex="\(\eta=\chi\chi&#x27;\)">\(\eta=\chi\chi&#x27;\)</span>. For conductor-zero <span class="math" data-tex="\(\psi\)">\(\psi\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c}
+&amp;L(s,\mathrm{St}\chi\times\mathrm{St}\chi&#x27;)&amp;
+\epsilon(s,\mathrm{St}\chi\times\mathrm{St}\chi&#x27;,\psi)\\\hline
+\eta\text{ unramified}&amp;
+\bigl((1-\beta X)(1-\beta q^{-1}X)\bigr)^{-1}&amp;\beta^2qX^2\\
+\eta\text{ ramified}&amp;1&amp;\epsilon(s,\eta,\psi)^4,
+\end{array}
+\tag{5.2}
+\]">\[
+\begin{array}{c|c|c}
+&amp;L(s,\mathrm{St}\chi\times\mathrm{St}\chi&#x27;)&amp;
+\epsilon(s,\mathrm{St}\chi\times\mathrm{St}\chi&#x27;,\psi)\\\hline
+\eta\text{ unramified}&amp;
+\bigl((1-\beta X)(1-\beta q^{-1}X)\bigr)^{-1}&amp;\beta^2qX^2\\
+\eta\text{ ramified}&amp;1&amp;\epsilon(s,\eta,\psi)^4,
+\end{array}
+\tag{5.2}
+\]</span>
+where <span class="math" data-tex="\(\beta=\eta(\varpi)\)">\(\beta=\eta(\varpi)\)</span>. These factors equal those of the tensor product of the parameters in (1.2).</p>
+<p><strong>Proof.</strong> First assume <span class="math" data-tex="\(\chi,\chi&#x27;\)">\(\chi,\chi&#x27;\)</span> unitary, so both special representations are tempered. The stated analytic gamma multiplicativity theorem gives
+<span class="math math-display" data-tex="\[
+\gamma(s,\mathrm{St}\chi\times\mathrm{St}\chi&#x27;)
+=\gamma(s-1,\eta)\gamma(s,\eta)^2\gamma(s+1,\eta).
+\tag{5.3}
+\]">\[
+\gamma(s,\mathrm{St}\chi\times\mathrm{St}\chi&#x27;)
+=\gamma(s-1,\eta)\gamma(s,\eta)^2\gamma(s+1,\eta).
+\tag{5.3}
+\]</span>
+For special pairs it is [Jacquet–Piatetski-Shapiro–Shalika 1983, Theorems 3.1 and 8.2, equation (14) in §8.2]. This is an analytic theorem about generic induction, available independently of LLC.</p>
+<p>Tempered convergence says both <span class="math" data-tex="\(L(s)\)">\(L(s)\)</span> and the dual <span class="math" data-tex="\(L(s)\)">\(L(s)\)</span> are holomorphic for <span class="math" data-tex="\(\operatorname{Re}(s)&gt;0\)">\(\operatorname{Re}(s)&gt;0\)</span> [Getz–Hahn 2022, Proposition 11.5.1]. If <span class="math" data-tex="\(P(X)=L(s)^{-1}\)">\(P(X)=L(s)^{-1}\)</span>, every root of <span class="math" data-tex="\(P(q^{-s})\)">\(P(q^{-s})\)</span> therefore has <span class="math" data-tex="\(\operatorname{Re}(s)\le0\)">\(\operatorname{Re}(s)\le0\)</span>. In that half-plane, the dual inverse factor at <span class="math" data-tex="\(1-s\)">\(1-s\)</span> is nonzero. The epsilon factor is a nonzero Laurent monomial. Hence the zeros of gamma in this half-plane, including multiplicities, are precisely the roots of <span class="math" data-tex="\(P\)">\(P\)</span>, and determine <span class="math" data-tex="\(P\)">\(P\)</span> by its constant coefficient one.</p>
+<p>For unramified <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, put <span class="math" data-tex="\(Y=q^{s-1}\)">\(Y=q^{s-1}\)</span>. Substitution of Tate's factors in (5.3) and cancellation gives
+<span class="math math-display" data-tex="\[
+\gamma(s)=\beta^2qX^2
+\frac{(1-\beta X)(1-\beta q^{-1}X)}
+     {(1-\beta^{-1}Y)(1-\beta^{-1}q^{-1}Y)}.
+\tag{5.4}
+\]">\[
+\gamma(s)=\beta^2qX^2
+\frac{(1-\beta X)(1-\beta q^{-1}X)}
+     {(1-\beta^{-1}Y)(1-\beta^{-1}q^{-1}Y)}.
+\tag{5.4}
+\]</span>
+Since <span class="math" data-tex="\(|\beta|=1\)">\(|\beta|=1\)</span>, the numerator roots have real parts zero and minus one, and the denominator roots have real parts one and two. The preceding zero criterion proves the first <span class="math" data-tex="\(L\)">\(L\)</span>-factor in (5.2). Dividing (5.4) by its <span class="math" data-tex="\(L\)">\(L\)</span>-ratio gives its epsilon factor <span class="math" data-tex="\(\beta^2qX^2\)">\(\beta^2qX^2\)</span>.</p>
+<p>For ramified <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, all four Tate <span class="math" data-tex="\(L\)">\(L\)</span>-factors are one. The four shifts <span class="math" data-tex="\(-1,0,0,1\)">\(-1,0,0,1\)</span> in the epsilon monomials sum to zero, so (5.3) is the nonzero monomial <span class="math" data-tex="\(\epsilon(s,\eta)^4\)">\(\epsilon(s,\eta)^4\)</span>. It has no roots on <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span>. The zero criterion forces <span class="math" data-tex="\(P=1\)">\(P=1\)</span>, proving the second line of (5.2) and its epsilon factor.</p>
+<p>A smooth character can be written <span class="math" data-tex="\(\chi=\chi_u\nu^t\)">\(\chi=\chi_u\nu^t\)</span> with <span class="math" data-tex="\(\chi_u\)">\(\chi_u\)</span> unitary and <span class="math" data-tex="\(t\)">\(t\)</span> real: its unit restriction has finite image, and one chooses <span class="math" data-tex="\(t\)">\(t\)</span> to remove the modulus of its uniformizer value. The pair integrals show that norm twisting the two factors shifts <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(t+t&#x27;\)">\(t+t&#x27;\)</span>. The functional equation gives the same shift for gamma and epsilon. Thus the unitary calculation proves (5.2) for arbitrary characters as well.</p>
+<p>On the parameter side, Lemma 5.1 gives <span class="math" data-tex="\(\widehat\eta S_3\oplus\widehat\eta\)">\(\widehat\eta S_3\oplus\widehat\eta\)</span>. For unramified <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, the kernel Frobenius values are <span class="math" data-tex="\(\beta q^{-1}\)">\(\beta q^{-1}\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. The monodromy quotient in the three-dimensional block has values <span class="math" data-tex="\(\beta q\)">\(\beta q\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, so its correction is <span class="math" data-tex="\(\beta^2qX^2\)">\(\beta^2qX^2\)</span>. All underlying unramified character epsilon factors are one. For ramified <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, all inertia invariants vanish; the underlying four character epsilon factors, with weights <span class="math" data-tex="\(-1,0,0,1\)">\(-1,0,0,1\)</span>, give <span class="math" data-tex="\(\epsilon(s,\eta)^4\)">\(\epsilon(s,\eta)^4\)</span>. These calculations match the two analytic cases. The change-of-additive-character formula has determinant <span class="math" data-tex="\(\widehat\eta^4\)">\(\widehat\eta^4\)</span> and dimension four on both sides, proving the match for every <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. ∎</p>
+<p><strong>Corollary 5.3.</strong> All pairs of non-supercuspidal rank-two irreducibles have matching <span class="math" data-tex="\(L\)">\(L\)</span>- and epsilon factors under (1.2).</p>
+<p><strong>Proof.</strong> A principal series or determinant character is the Langlands quotient with its two one-character blocks. The stated Langlands-quotient product theorem [Getz–Hahn 2022, §11.8] reduces its pair factors against any of the three types to the products of the corresponding character pairs. On the parameter side the same reduction is the distributivity of tensor product over direct sum and multiplicativity of the factors. Theorem 4.1 supplies every character pair. If both representations are special, use Theorem 5.2. These alternatives exhaust (1.1). ∎</p>
+<p>For example, two unramified principal series with Frobenius values <span class="math" data-tex="\(\alpha_1,\alpha_2\)">\(\alpha_1,\alpha_2\)</span> and <span class="math" data-tex="\(\beta_1,\beta_2\)">\(\beta_1,\beta_2\)</span> have <span class="math" data-tex="\(L\)">\(L\)</span>-factor <span class="math" data-tex="\(\prod_{i,j}(1-\alpha_i\beta_jX)^{-1}\)">\(\prod_{i,j}(1-\alpha_i\beta_jX)^{-1}\)</span> and epsilon factor one for conductor-zero <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The spherical integral giving this factor was computed in the local-factor lesson, Theorem 2.2. In contrast, the untwisted Steinberg pair has conductor two, not four: its tensor monodromy kernel has dimension two.</p>
+<h2 id="6-conductors-and-the-generic-hypothesis">6. Conductors, and the generic hypothesis</h2>
+<p>Write <span class="math" data-tex="\(a_\epsilon(\pi)\)">\(a_\epsilon(\pi)\)</span> for the exponent of <span class="math" data-tex="\(q^{-(s-1/2)}\)">\(q^{-(s-1/2)}\)</span> in the standard epsilon factor for conductor-zero <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The Artin–Deligne definition is
+<span class="math math-display" data-tex="\[
+a(r,N)=a(r)+\dim V^{I_F}-\dim(\ker N)^{I_F}.
+\tag{6.1}
+\]">\[
+a(r,N)=a(r)+\dim V^{I_F}-\dim(\ker N)^{I_F}.
+\tag{6.1}
+\]</span></p>
+<p><strong>Theorem 6.1.</strong> The epsilon conductor is preserved on every representation in (1.1), with values
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a_\epsilon(I(\mu_1,\mu_2))&amp;=a(\mu_1)+a(\mu_2),\\
+a_\epsilon(\mathrm{St}\chi)&amp;=
+ \begin{cases}1,&amp;a(\chi)=0,\\2a(\chi),&amp;a(\chi)&gt;0,\end{cases}\\
+a_\epsilon(\chi\circ\det)&amp;=2a(\chi).
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+a_\epsilon(I(\mu_1,\mu_2))&amp;=a(\mu_1)+a(\mu_2),\\
+a_\epsilon(\mathrm{St}\chi)&amp;=
+ \begin{cases}1,&amp;a(\chi)=0,\\2a(\chi),&amp;a(\chi)&gt;0,\end{cases}\\
+a_\epsilon(\chi\circ\det)&amp;=2a(\chi).
+\end{aligned}
+\tag{6.2}
+\]</span>
+For the first two, which are generic, it is also the Casselman newvector conductor. A ramified determinant character has no nonzero Casselman newvector at any level.</p>
+<p><strong>Proof.</strong> The analytic exponents follow from (3.4), (3.6) and (3.8). On a sum of characters the Artin conductor is their conductor sum, and zero monodromy adds nothing. Norm twists are unramified and do not affect character conductors. On <span class="math" data-tex="\(\widehat\chi S_2\)">\(\widehat\chi S_2\)</span>, the underlying Artin conductor is <span class="math" data-tex="\(2a(\chi)\)">\(2a(\chi)\)</span>. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is unramified, the two-dimensional inertia-invariant space and one-dimensional kernel contribute one more in (6.1). If it is ramified, both invariant spaces are zero and the correction is zero. This proves (6.2) directly on the parameter side.</p>
+<p>The generic newvector theorem states that the epsilon conductor is the least <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span> for which <span class="math" data-tex="\(V^{K_1(\mathfrak p^r)}\ne0\)">\(V^{K_1(\mathfrak p^r)}\ne0\)</span>, and that this space is one-dimensional at the least level [Getz–Hahn 2022, Theorem 11.5.6]. Here
+<span class="math math-display" data-tex="\[
+K_1(\mathfrak p^r)=
+\{g\in\mathrm{GL}_2(\mathcal O):g_{21}\in\mathfrak p^r,
+                         \ g_{22}\equiv1\pmod{\mathfrak p^r}\}.
+\tag{6.3}
+\]">\[
+K_1(\mathfrak p^r)=
+\{g\in\mathrm{GL}_2(\mathcal O):g_{21}\in\mathfrak p^r,
+                         \ g_{22}\equiv1\pmod{\mathfrak p^r}\}.
+\tag{6.3}
+\]</span>
+At <span class="math" data-tex="\(r=0\)">\(r=0\)</span> this means the full maximal compact subgroup. Apply the theorem to the two infinite-dimensional types in (1.1).</p>
+<p>For the determinant character, <span class="math" data-tex="\(\operatorname{diag}(u,1)\)">\(\operatorname{diag}(u,1)\)</span> belongs to (6.3) for every <span class="math" data-tex="\(u\in\mathcal O^\times\)">\(u\in\mathcal O^\times\)</span> and every <span class="math" data-tex="\(r\)">\(r\)</span>. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is ramified, choose <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(\chi(u)\ne1\)">\(\chi(u)\ne1\)</span>. That element acts by a nontrivial scalar on the entire one-dimensional space, so no vector is fixed at any level. Thus the generic newvector theorem cannot be applied to this representation. Its well-defined epsilon conductor still equals its Artin–Deligne conductor <span class="math" data-tex="\(2a(\chi)\)">\(2a(\chi)\)</span>. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is unramified it is already maximal-compact invariant, with level zero. ∎</p>
+<p>This example separates two notions that agree on generic representations. Replacing the epsilon conductor of a ramified determinant character by a nonexistent newvector level would give a false statement of conductor preservation.</p>
+<p><strong>Proposition 6.2 (forced normalization).</strong> Any family satisfying properties 1–5 of the correspondence agrees with (1.2) on all non-supercuspidals.</p>
+<p><strong>Proof.</strong> Its rank-one parameters are fixed by reciprocity. Pair-factor preservation against all characters gives the twisted standard <span class="math" data-tex="\(L\)">\(L\)</span>-profiles computed in Section 3. These recover the two Weil characters for principal series and determinant characters, and the single monodromy-kernel character for a special representation. The rank-two profile lemma in the correspondence-statement lesson, Lemma 3.2, then forces respectively zero monodromy or the centered special block with the indicated midpoint. Thus the candidate values are forced, including their norm twists. ∎</p>
+<h2 id="7-a-weight-two-form-of-level-eleven">7. A weight-two form of level eleven</h2>
+<p>Consider the normalized newform
+<span class="math math-display" data-tex="\[
+f(z)=\eta(z)^2\eta(11z)^2
+=q_z\prod_{m\ge1}(1-q_z^m)^2(1-q_z^{11m})^2,
+\qquad q_z=e^{2\pi iz}.
+\tag{7.1}
+\]">\[
+f(z)=\eta(z)^2\eta(11z)^2
+=q_z\prod_{m\ge1}(1-q_z^m)^2(1-q_z^{11m})^2,
+\qquad q_z=e^{2\pi iz}.
+\tag{7.1}
+\]</span>
+The fact that it is the weight-two newform of level eleven with trivial character is an input from classical modular-form theory; the precise form, its eta expression and its associated elliptic-curve class are recorded in <a href="https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/11/2/a/a/">LMFDB, newform orbit 11.2.a.a</a>. The associated class contains the curve <span class="math" data-tex="\(y^2+y=x^3-x^2-10x-20\)">\(y^2+y=x^3-x^2-10x-20\)</span>. Local–global compatibility is stated later in <em>Local–global compatibility for modular forms and elliptic curves</em>. The finite product in (7.1), truncated at degree eleven, computes
+<span class="math math-display" data-tex="\[
+a_2=-2,\quad a_3=-1,\quad a_5=1,\quad a_7=-2,\quad a_{11}=1.
+\]">\[
+a_2=-2,\quad a_3=-1,\quad a_5=1,\quad a_7=-2,\quad a_{11}=1.
+\]</span></p>
+<p>Use the unitary automorphic normalization. At <span class="math" data-tex="\(p\ne11\)">\(p\ne11\)</span>, the two Satake values are the roots of
+<span class="math math-display" data-tex="\[
+T^2-\frac{a_p}{\sqrt p}T+1=0.
+\tag{7.2}
+\]">\[
+T^2-\frac{a_p}{\sqrt p}T+1=0.
+\tag{7.2}
+\]</span>
+Thus the parameter has zero monodromy, trivial inertia and those two geometric-Frobenius values. For example, at <span class="math" data-tex="\(p=2\)">\(p=2\)</span> they are <span class="math" data-tex="\((-1+i)/\sqrt2\)">\((-1+i)/\sqrt2\)</span> and <span class="math" data-tex="\((-1-i)/\sqrt2\)">\((-1-i)/\sqrt2\)</span>. Their sum is <span class="math" data-tex="\(-\sqrt2\)">\(-\sqrt2\)</span> and their product is one, giving
+<span class="math" data-tex="\(L(s)=(1+\sqrt2\,2^{-s}+2^{-2s})^{-1}\)">\(L(s)=(1+\sqrt2\,2^{-s}+2^{-2s})^{-1}\)</span>. At <span class="math" data-tex="\(p=3\)">\(p=3\)</span> the values are <span class="math" data-tex="\((-1\pm i\sqrt{11})/(2\sqrt3)\)">\((-1\pm i\sqrt{11})/(2\sqrt3)\)</span>; at <span class="math" data-tex="\(5\)">\(5\)</span> they are <span class="math" data-tex="\((1\pm i\sqrt{19})/(2\sqrt5)\)">\((1\pm i\sqrt{19})/(2\sqrt5)\)</span>; at <span class="math" data-tex="\(7\)">\(7\)</span> they are <span class="math" data-tex="\((-1\pm i\sqrt6)/\sqrt7\)">\((-1\pm i\sqrt6)/\sqrt7\)</span>. These follow directly from (7.2).</p>
+<p>At eleven the weight-two newform's local factor is <span class="math" data-tex="\((1-a_{11}11^{-s-1/2})^{-1}\)">\((1-a_{11}11^{-s-1/2})^{-1}\)</span> in unitary normalization, of inverse-polynomial degree one. A supercuspidal has factor one by Proposition 4.2 of <em>The statement of the local Langlands correspondence</em>. The central character is trivial. Thus a principal series would have labels <span class="math" data-tex="\(\mu,\mu^{-1}\)">\(\mu,\mu^{-1}\)</span>, both ramified or both unramified, giving degree zero or two. A determinant character likewise has degree zero or two by (3.5). The classification therefore leaves a Steinberg twist <span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span>; degree one forces <span class="math" data-tex="\(\chi\)">\(\chi\)</span> unramified by (3.6). That formula makes <span class="math" data-tex="\(\chi(11)=a_{11}=1\)">\(\chi(11)=a_{11}=1\)</span>, so <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> and this local representation is <span class="math" data-tex="\(\mathrm{St}_2\)">\(\mathrm{St}_2\)</span>. Its parameter is <span class="math" data-tex="\(S_2\)">\(S_2\)</span>, with conductor one and epsilon factor <span class="math" data-tex="\(-11^{1/2-s}\)">\(-11^{1/2-s}\)</span>.</p>
+<p>The split multiplicative sign can also be checked directly on the curve. Its discriminant is <span class="math" data-tex="\(-11^5\)">\(-11^5\)</span> and <span class="math" data-tex="\(c_4=496\)">\(c_4=496\)</span>, so the reduction at eleven is multiplicative. Its singular point modulo eleven is <span class="math" data-tex="\((5,5)\)">\((5,5)\)</span>. In coordinates <span class="math" data-tex="\(X=x-5,Y=y-5\)">\(X=x-5,Y=y-5\)</span>, the quadratic tangent cone is <span class="math" data-tex="\(Y^2-3X^2=(Y-5X)(Y+5X)\)">\(Y^2-3X^2=(Y-5X)(Y+5X)\)</span> over <span class="math" data-tex="\(\mathbb F_{11}\)">\(\mathbb F_{11}\)</span>. Both tangent directions are rational, so the reduction is split, explaining the sign <span class="math" data-tex="\(a_{11}=1\)">\(a_{11}=1\)</span>. The unitary local Euler variable includes the half shift; omitting it would place the kernel on the wrong Weil line.</p>
+<h2 id="8-exercises-and-complete-solutions">8. Exercises and complete solutions</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Compute the determinant of the parameter of <span class="math" data-tex="\(\mathrm{St}\chi\)">\(\mathrm{St}\chi\)</span>.</p>
+<p><strong>Solution.</strong> Its two Weil characters are <span class="math" data-tex="\(\widehat\chi\lVert\cdot\rVert^{-1/2}\)">\(\widehat\chi\lVert\cdot\rVert^{-1/2}\)</span> and <span class="math" data-tex="\(\widehat\chi\lVert\cdot\rVert^{1/2}\)">\(\widehat\chi\lVert\cdot\rVert^{1/2}\)</span>, whose product is <span class="math" data-tex="\(\widehat{\chi^2}\)">\(\widehat{\chi^2}\)</span>. Monodromy on the determinant is trace <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. The central character of the representation is <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span>, so these agree by reciprocity.</p>
+<p><strong>Exercise 8.2 (medium).</strong> Verify the epsilon-factor match for a ramified Steinberg twist, retaining its root number.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(a(\chi)=m&gt;0\)">\(a(\chi)=m&gt;0\)</span>, write <span class="math" data-tex="\(\epsilon(s,\chi)=w_\chi q^{-m(s-1/2)}\)">\(\epsilon(s,\chi)=w_\chi q^{-m(s-1/2)}\)</span>. The analytic two-variable functional equation gives the product at shifts <span class="math" data-tex="\(\pm1/2\)">\(\pm1/2\)</span>, hence
+<span class="math" data-tex="\(\epsilon(s,\mathrm{St}\chi)=w_\chi^2 q^{-2m(s-1/2)}\)">\(\epsilon(s,\mathrm{St}\chi)=w_\chi^2 q^{-2m(s-1/2)}\)</span>. On the parameter side inertia acts by the ramified scalar <span class="math" data-tex="\(\widehat\chi\)">\(\widehat\chi\)</span>, so neither the full space nor its monodromy kernel has invariants. The correction is one, and the underlying Weil epsilon product is the same two shifted character factors. Their product has exactly the displayed root number <span class="math" data-tex="\(w_\chi^2\)">\(w_\chi^2\)</span>, not just the same conductor exponent.</p>
+<p><strong>Exercise 8.3 (medium).</strong> Compute the parameter conductor of a Steinberg twist from the ramification definition, and explain why the nongeneric analogue of a newvector assertion fails.</p>
+<p><strong>Solution.</strong> At each ramification group the two Weil summands are the same scalar character, because norm twists restrict trivially to inertia. Their invariant codimensions are therefore twice those of the character; summing the Artin-conductor terms gives <span class="math" data-tex="\(a(r)=2a(\chi)\)">\(a(r)=2a(\chi)\)</span>. For an unramified character, (6.1) adds <span class="math" data-tex="\(2-1=1\)">\(2-1=1\)</span>; for a ramified character it adds <span class="math" data-tex="\(0-0=0\)">\(0-0=0\)</span>. This gives one or <span class="math" data-tex="\(2a(\chi)\)">\(2a(\chi)\)</span>, respectively. A ramified <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span>, by contrast, has parameter conductor <span class="math" data-tex="\(2a(\chi)\)">\(2a(\chi)\)</span> and no monodromy, but <span class="math" data-tex="\(\operatorname{diag}(u,1)\in K_1(\mathfrak p^r)\)">\(\operatorname{diag}(u,1)\in K_1(\mathfrak p^r)\)</span> acts nontrivially for some unit <span class="math" data-tex="\(u\)">\(u\)</span>, at every <span class="math" data-tex="\(r\)">\(r\)</span>. Its Casselman level is consequently nonexistent.</p>
+<p><strong>Exercise 8.4 (hard).</strong> Verify every factor of the untwisted Steinberg pair directly, including its conductor and monodromy decomposition.</p>
+<p><strong>Solution.</strong> The four basis vectors in Lemma 5.1 split the tensor into a length-three chain and a weight-zero singleton. Its monodromy kernel has Frobenius values <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span> and one, giving
+<span class="math" data-tex="\(L(s)=((1-q^{-s})(1-q^{-s-1}))^{-1}\)">\(L(s)=((1-q^{-s})(1-q^{-s-1}))^{-1}\)</span>. The quotient by that kernel has values <span class="math" data-tex="\(q\)">\(q\)</span> and one, giving epsilon correction <span class="math" data-tex="\(q^{1-2s}\)">\(q^{1-2s}\)</span>. The underlying Weil action is unramified, so its epsilon product is one and its Artin conductor is zero; formula (6.1) gives <span class="math" data-tex="\(4-2=2\)">\(4-2=2\)</span>. Analytically, (5.3) is the product of the Tate gamma factors at <span class="math" data-tex="\(s-1,s,s,s+1\)">\(s-1,s,s,s+1\)</span>. Its simplified expression (5.4), with <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span>, has zeros exactly at the two displayed Euler roots in the nonpositive half-plane. Tempered convergence forces the same <span class="math" data-tex="\(L\)">\(L\)</span>-factor, and then gamma's defining ratio forces <span class="math" data-tex="\(\epsilon=q^{1-2s}\)">\(\epsilon=q^{1-2s}\)</span>. This verifies both analytic factors independently of an appeal to LLC. The complete Iwahori integral computing a Laurent multiple of this <span class="math" data-tex="\(L\)">\(L\)</span>-factor is in the local-factor lesson, equation (5.5).</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The rank-two representation classification and the normalized-induction duality statement are prerequisites [Jacquet–Langlands 1970, Theorem 3.3; Getz–Hahn 2022, §8.2]. The Schwartz realization, its Fourier/Weyl action and its special-subspace description used in Section 3 are [Jacquet–Langlands 1970, Proposition 3.2, the zeta identities in the proof of Proposition 3.5, and the realization assertion of Proposition 3.6]. Tate's character functional equation and reciprocity compatibility are inputs, as are the Artin–Deligne factor definitions. Sections 3–4 compute the resulting rank-two factors and prove their match.</p>
+<p>The analytic special-pair gamma multiplicativity theorem in (5.3) is stated with its exact locator there. Tempered convergence is [Getz–Hahn 2022, Proposition 11.5.1]. The general Langlands-quotient factor product rule, including ramified principal-series pairs, is [Getz–Hahn 2022, §11.8]. Theorem 5.2 proves the complete special-pair factor match from those analytic inputs and explicit linear algebra. The generic newvector theorem is [Getz–Hahn 2022, Theorem 11.5.6], or the prerequisite <em>Local newforms and the conductor</em>. We apply its generic hypothesis explicitly. The classical modular-form identity and its automorphic local-component interpretation in Section 7 are prerequisites; local–global compatibility is stated in the later modular-form lesson. No general existence theorem for LLC is proved or used in the factor matching here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Jacquet–Langlands 1970] Hervé Jacquet and Robert P. Langlands, <a href="https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf"><em>Automorphic Forms on GL(2)</em></a>, Lecture Notes in Mathematics 114, Springer, 1970, §§2–3, especially Theorem 2.18 and Propositions 3.2, 3.5–3.6, Corollary 3.7.</li>
+<li>[Deligne 1973] Pierre Deligne, “<a href="https://publications.ias.edu/sites/default/files/Number21.pdf">Formes modulaires et représentations de GL(2)</a>,” in <em>Modular Functions of One Variable II</em>, Lecture Notes in Mathematics 349, Springer, 1973, 55–105, §§3.2.2–3.2.6. The unitary normalization is §3.2.3; its newvector property concerns infinite-dimensional representations.</li>
+<li>[Getz–Hahn 2022] Jayce R. Getz and Heekyoung Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em></a>, draft of 22 April 2022, §§8.2, 11.5, 11.8 and 12.4. Published as Graduate Texts in Mathematics 300, Springer, 2024; numbering here refers to the draft.</li>
+<li>[Jacquet–Piatetski-Shapiro–Shalika 1983] Hervé Jacquet, Ilya I. Piatetski-Shapiro and Joseph A. Shalika, “<a href="https://www.math.columbia.edu/~hj/Rankin%20Selberg%20convolutions.pdf">Rankin–Selberg convolutions</a>,” <em>American Journal of Mathematics</em> 105 (1983), 367–464, Theorems 3.1 and 8.2 and equation (14) of §8.2.</li>
+<li>[LMFDB] The L-functions and Modular Forms Database, <a href="https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/11/2/a/a/">newform orbit 11.2.a.a</a>, Properties, Related objects, q-expansion and Expression as an eta quotient. The coefficients used here were also computed directly from the product and checked by finite-field point counts.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-LLC-05.html">← Monodromy blocks and the passage from supercuspidals to all parameters</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-LLC-07.html">Two-dimensional Weil representations: induction and projective symmetry →</a></span></nav>
+<p class="small source-link"><a href="src/LG-LLC-06.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-LLC">Repository</a></nav>
+</footer>
+</body>
+</html>

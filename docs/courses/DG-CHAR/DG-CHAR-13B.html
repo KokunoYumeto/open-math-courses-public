@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Homotopy fibres and the Serre spectral sequence · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-13B.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="homotopy-fibres-and-the-serre-spectral-sequence">Homotopy fibres and the Serre spectral sequence</h1>
+<p>Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Independently authored text dedicated under CC0.</p>
+<p>The geometric Thom correspondence turns cobordism into a homotopy problem. This companion proves the homological and homotopy foundations for its rational continuation: filtered chains and convergence, relative compression and CW models, path fibrations and their exact homotopy sequence, the Serre homology spectral sequence, and finite generation in a fibration.</p>
+<p>The earlier proofs used here are in <a href="DG-CHAR-03.html">Classifying maps</a>, <a href="DG-CHAR-06.html">Thom and Euler classes</a>, <a href="DG-CHAR-08B.html">Frame fields and primary obstructions</a>, and <a href="DG-CHAR-13.html">The geometric Thom construction</a>. Six exercises include complete solutions. <a href="DG-CHAR-13C.html">Rational homotopy and the Hurewicz range</a> develops the Eilenberg–MacLane calculations, Serre finiteness and rational Hurewicz comparison used in rational cobordism.</p>
+<h2 id="a-a-filtered-chain-complex-and-its-spectral-sequence">A. A filtered chain complex and its spectral sequence</h2>
+<p>The geometric Thom construction has already identified cobordism with a homotopy group. The remaining question is how much of that homotopy group is visible in integral and rational homology. We begin with the algebra that will organize the comparison. All groups in this section are abelian.</p>
+<p>Let <span class="math" data-tex="\((C_*,d)\)">\((C_*,d)\)</span> be a chain complex concentrated in nonnegative degrees. Give it an increasing filtration by subcomplexes
+<span class="math math-display" data-tex="\[
+0=F_{-1}C_*\subset F_0C_*\subset F_1C_*\subset\cdots,
+\qquad \bigcup_{p\geq0}F_pC_*=C_*.
+\tag{A.1}
+\]">\[
+0=F_{-1}C_*\subset F_0C_*\subset F_1C_*\subset\cdots,
+\qquad \bigcup_{p\geq0}F_pC_*=C_*.
+\tag{A.1}
+\]</span>
+Set <span class="math" data-tex="\(F_pC_*=0\)">\(F_pC_*=0\)</span> for every <span class="math" data-tex="\(p&lt;0\)">\(p&lt;0\)</span>. Exhaustiveness means that each individual chain belongs to some finite filtration level. We do not require the whole chain group <span class="math" data-tex="\(C_n\)">\(C_n\)</span> to be contained in <span class="math" data-tex="\(F_nC_n\)">\(F_nC_n\)</span>. That stronger condition would be inappropriate for a filtration by the skeleta of a base space: an <span class="math" data-tex="\(n\)">\(n\)</span>-simplex can meet cells of much higher dimension.</p>
+<p>For <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, introduce the subgroups
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z_r^{p,n}
+  &amp;=\{x\in F_pC_n:dx\in F_{p-r}C_{n-1}\},\\
+B_r^{p,n}
+  &amp;=F_pC_n\cap d(F_{p+r}C_{n+1}).
+\end{aligned}
+\tag{A.2}
+\]">\[
+\begin{aligned}
+Z_r^{p,n}
+  &amp;=\{x\in F_pC_n:dx\in F_{p-r}C_{n-1}\},\\
+B_r^{p,n}
+  &amp;=F_pC_n\cap d(F_{p+r}C_{n+1}).
+\end{aligned}
+\tag{A.2}
+\]</span>
+Thus <span class="math" data-tex="\(Z_0^{p,n}=F_pC_n\)">\(Z_0^{p,n}=F_pC_n\)</span>. For <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, write <span class="math" data-tex="\(n=p+q\)">\(n=p+q\)</span> and define
+<span class="math math-display" data-tex="\[
+E_r^{p,q}
+ =\frac{Z_r^{p,n}}
+ {Z_{r-1}^{p-1,n}+B_{r-1}^{p,n}}.
+\tag{A.3}
+\]">\[
+E_r^{p,q}
+ =\frac{Z_r^{p,n}}
+ {Z_{r-1}^{p-1,n}+B_{r-1}^{p,n}}.
+\tag{A.3}
+\]</span>
+Both denominator summands lie in the numerator. For the first, its derivative lies in <span class="math" data-tex="\(F_{p-r}C_{n-1}\)">\(F_{p-r}C_{n-1}\)</span>; for the second, its derivative is zero.</p>
+<p><span id="DG-CHAR-13B.theorem-A.1"></span><strong>Theorem A.1 — Construction and convergence.</strong> Formula (A.3) has differentials
+<span class="math math-display" data-tex="\[
+d_r:E_r^{p,q}\longrightarrow E_r^{p-r,q+r-1},
+\qquad d_r[x]=[dx],
+\tag{A.4}
+\]">\[
+d_r:E_r^{p,q}\longrightarrow E_r^{p-r,q+r-1},
+\qquad d_r[x]=[dx],
+\tag{A.4}
+\]</span>
+with <span class="math" data-tex="\(d_r^2=0\)">\(d_r^2=0\)</span> and natural identifications
+<span class="math math-display" data-tex="\[
+E_{r+1}^{p,q}\cong
+\frac{\ker(d_r:E_r^{p,q}\to E_r^{p-r,q+r-1})}
+{\operatorname{im}(d_r:E_r^{p+r,q-r+1}\to E_r^{p,q})}.
+\tag{A.5}
+\]">\[
+E_{r+1}^{p,q}\cong
+\frac{\ker(d_r:E_r^{p,q}\to E_r^{p-r,q+r-1})}
+{\operatorname{im}(d_r:E_r^{p+r,q-r+1}\to E_r^{p,q})}.
+\tag{A.5}
+\]</span>
+The first page is
+<span class="math math-display" data-tex="\[
+E_1^{p,q}=H_{p+q}(F_pC_*/F_{p-1}C_*).
+\tag{A.6}
+\]">\[
+E_1^{p,q}=H_{p+q}(F_pC_*/F_{p-1}C_*).
+\tag{A.6}
+\]</span>
+Suppose additionally that the group in (A.6) is zero for <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>. Then all pages lie in the first quadrant, each bidegree eventually stabilizes, and the stabilized groups satisfy
+<span class="math math-display" data-tex="\[
+E_\infty^{p,n-p}\cong
+F_pH_n(C_*)/F_{p-1}H_n(C_*),
+\tag{A.7}
+\]">\[
+E_\infty^{p,n-p}\cong
+F_pH_n(C_*)/F_{p-1}H_n(C_*),
+\tag{A.7}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+F_pH_n(C_*)=
+\operatorname{im}\bigl(H_n(F_pC_*)\to H_n(C_*)\bigr).
+\tag{A.8}
+\]">\[
+F_pH_n(C_*)=
+\operatorname{im}\bigl(H_n(F_pC_*)\to H_n(C_*)\bigr).
+\tag{A.8}
+\]</span>
+In each degree this filtration is finite:
+<span class="math math-display" data-tex="\[
+0=F_{-1}H_n(C_*)\subset F_0H_n(C_*)\subset\cdots
+\subset F_nH_n(C_*)=H_n(C_*).
+\tag{A.9}
+\]">\[
+0=F_{-1}H_n(C_*)\subset F_0H_n(C_*)\subset\cdots
+\subset F_nH_n(C_*)=H_n(C_*).
+\tag{A.9}
+\]</span>
+A filtration-preserving chain map induces maps on all pages, commuting with the differentials and inducing its homology map on the filtration quotients.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(x\in Z_r^{p,n}\)">\(x\in Z_r^{p,n}\)</span>, then <span class="math" data-tex="\(dx\in F_{p-r}C_{n-1}\)">\(dx\in F_{p-r}C_{n-1}\)</span> is a cycle, so it represents an element of the target in (A.4). If we add <span class="math" data-tex="\(z\in Z_{r-1}^{p-1,n}\)">\(z\in Z_{r-1}^{p-1,n}\)</span>, then
+<span class="math math-display" data-tex="\[
+dz\in F_{p-r}C_{n-1}\cap d(F_{p-1}C_n)
+      =B_{r-1}^{p-r,n-1}.
+\]">\[
+dz\in F_{p-r}C_{n-1}\cap d(F_{p-1}C_n)
+      =B_{r-1}^{p-r,n-1}.
+\]</span>
+Thus this addition does not change the target class. Adding a boundary in the other denominator summand does not change the derivative at all. This proves well-definedness, and <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span> proves <span class="math" data-tex="\(d_r^2=0\)">\(d_r^2=0\)</span>.</p>
+<p>We verify the page transition directly. The condition <span class="math" data-tex="\(d_r[x]=0\)">\(d_r[x]=0\)</span> says
+<span class="math math-display" data-tex="\[
+dx=w+dv,
+\quad
+w\in Z_{r-1}^{p-r-1,n-1},
+\quad
+v\in F_{p-1}C_n,
+\quad dv\in F_{p-r}C_{n-1}.
+\tag{A.10}
+\]">\[
+dx=w+dv,
+\quad
+w\in Z_{r-1}^{p-r-1,n-1},
+\quad
+v\in F_{p-1}C_n,
+\quad dv\in F_{p-r}C_{n-1}.
+\tag{A.10}
+\]</span>
+The last two conditions put <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(Z_{r-1}^{p-1,n}\)">\(Z_{r-1}^{p-1,n}\)</span>, so subtracting <span class="math" data-tex="\(v\)">\(v\)</span> leaves the class <span class="math" data-tex="\([x]\)">\([x]\)</span> unchanged. The new representative <span class="math" data-tex="\(x-v\)">\(x-v\)</span> has derivative <span class="math" data-tex="\(w\in F_{p-r-1}C_{n-1}\)">\(w\in F_{p-r-1}C_{n-1}\)</span>, and hence lies in <span class="math" data-tex="\(Z_{r+1}^{p,n}\)">\(Z_{r+1}^{p,n}\)</span>. Conversely, every element of <span class="math" data-tex="\(Z_{r+1}^{p,n}\)">\(Z_{r+1}^{p,n}\)</span> has zero <span class="math" data-tex="\(d_r\)">\(d_r\)</span>-class, since its derivative is a cycle in <span class="math" data-tex="\(F_{p-r-1}C_{n-1}\)">\(F_{p-r-1}C_{n-1}\)</span>, a subgroup of the lower-filtration denominator of the target.</p>
+<p>Among representatives in <span class="math" data-tex="\(Z_{r+1}^{p,n}\)">\(Z_{r+1}^{p,n}\)</span>, the old ambiguity is
+<span class="math math-display" data-tex="\[
+Z_{r+1}^{p,n}\cap
+\bigl(Z_{r-1}^{p-1,n}+B_{r-1}^{p,n}\bigr)
+=Z_r^{p-1,n}+B_{r-1}^{p,n}.
+\tag{A.11}
+\]">\[
+Z_{r+1}^{p,n}\cap
+\bigl(Z_{r-1}^{p-1,n}+B_{r-1}^{p,n}\bigr)
+=Z_r^{p-1,n}+B_{r-1}^{p,n}.
+\tag{A.11}
+\]</span>
+Indeed, if <span class="math" data-tex="\(x=z+b\)">\(x=z+b\)</span> is in the intersection, then <span class="math" data-tex="\(dz=dx\in F_{p-r-1}C_{n-1}\)">\(dz=dx\in F_{p-r-1}C_{n-1}\)</span>, so <span class="math" data-tex="\(z\in Z_r^{p-1,n}\)">\(z\in Z_r^{p-1,n}\)</span>. The reverse inclusion follows from the definitions. The incoming <span class="math" data-tex="\(d_r\)">\(d_r\)</span>-images are precisely the classes of
+<span class="math math-display" data-tex="\[
+B_r^{p,n}=F_pC_n\cap d(F_{p+r}C_{n+1}):
+\]">\[
+B_r^{p,n}=F_pC_n\cap d(F_{p+r}C_{n+1}):
+\]</span>
+an element <span class="math" data-tex="\(y\in F_{p+r}C_{n+1}\)">\(y\in F_{p+r}C_{n+1}\)</span> with <span class="math" data-tex="\(dy\in F_pC_n\)">\(dy\in F_pC_n\)</span> is exactly an allowed <span class="math" data-tex="\(Z_r\)">\(Z_r\)</span>-representative at the source. Dividing (A.11) additionally by these incoming images gives
+<span class="math math-display" data-tex="\[
+\frac{Z_{r+1}^{p,n}}{Z_r^{p-1,n}+B_r^{p,n}},
+\]">\[
+\frac{Z_{r+1}^{p,n}}{Z_r^{p-1,n}+B_r^{p,n}},
+\]</span>
+which is (A.3) for <span class="math" data-tex="\(r+1\)">\(r+1\)</span>. This proves (A.5). At <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, (A.3) is exactly the cycles modulo boundaries in the quotient complex, proving (A.6).</p>
+<p>The first-quadrant hypothesis persists under passage to kernels and quotients. At <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span>, an outgoing differential is zero when <span class="math" data-tex="\(r&gt;p\)">\(r&gt;p\)</span>, and an incoming differential is zero when <span class="math" data-tex="\(r&gt;q+1\)">\(r&gt;q+1\)</span>. Consequently the pages stabilize at this bidegree once <span class="math" data-tex="\(r&gt;\max\{p,q+1\}\)">\(r&gt;\max\{p,q+1\}\)</span>.</p>
+<p>For <span class="math" data-tex="\(r&gt;p\)">\(r&gt;p\)</span>, the numerator <span class="math" data-tex="\(Z_r^{p,n}\)">\(Z_r^{p,n}\)</span> consists of actual cycles in <span class="math" data-tex="\(F_pC_n\)">\(F_pC_n\)</span>, and the lower numerator <span class="math" data-tex="\(Z_{r-1}^{p-1,n}\)">\(Z_{r-1}^{p-1,n}\)</span> consists of actual cycles in <span class="math" data-tex="\(F_{p-1}C_n\)">\(F_{p-1}C_n\)</span>. Exhaustiveness gives
+<span class="math math-display" data-tex="\[
+\bigcup_{r\geq1}B_{r-1}^{p,n}
+       =F_pC_n\cap d(C_{n+1}).
+\tag{A.12}
+\]">\[
+\bigcup_{r\geq1}B_{r-1}^{p,n}
+       =F_pC_n\cap d(C_{n+1}).
+\tag{A.12}
+\]</span>
+After the cycle numerators stabilize, the transition maps are the quotient maps as these boundary subgroups increase. Since the pages eventually stabilize too, their stabilized quotient is
+<span class="math math-display" data-tex="\[
+\frac{\ker d\cap F_pC_n}
+ {(\ker d\cap F_{p-1}C_n)+(F_pC_n\cap dC_{n+1})}.
+\tag{A.13}
+\]">\[
+\frac{\ker d\cap F_pC_n}
+ {(\ker d\cap F_{p-1}C_n)+(F_pC_n\cap dC_{n+1})}.
+\tag{A.13}
+\]</span>
+To identify it, send a cycle in <span class="math" data-tex="\(F_pC_n\)">\(F_pC_n\)</span> to its class in <span class="math" data-tex="\(F_pH_n/F_{p-1}H_n\)">\(F_pH_n/F_{p-1}H_n\)</span>. Its kernel consists exactly of cycles homologous in <span class="math" data-tex="\(C_*\)">\(C_*\)</span> to a cycle in <span class="math" data-tex="\(F_{p-1}C_n\)">\(F_{p-1}C_n\)</span>. Subtracting that lower-filtration cycle leaves a boundary that still lies in <span class="math" data-tex="\(F_pC_n\)">\(F_pC_n\)</span>. This is precisely the denominator in (A.13), proving (A.7).</p>
+<p>Every homology class has a cycle representative in some <span class="math" data-tex="\(F_pC_n\)">\(F_pC_n\)</span>, by (A.1), so <span class="math" data-tex="\(\bigcup_pF_pH_n=H_n(C_*)\)">\(\bigcup_pF_pH_n=H_n(C_*)\)</span>. For <span class="math" data-tex="\(p&gt;n\)">\(p&gt;n\)</span>, the corresponding bidegree in (A.7) has negative second index and is zero. Thus <span class="math" data-tex="\(F_pH_n=F_{p-1}H_n\)">\(F_pH_n=F_{p-1}H_n\)</span> for every <span class="math" data-tex="\(p&gt;n\)">\(p&gt;n\)</span>. Combining stabilization with exhaustiveness proves (A.9).</p>
+<p>A filtration-preserving chain map preserves every subgroup in (A.2), so induces (A.4)-compatible maps in (A.3). The representative description of (A.5) proves compatibility with the page transition. Sending cycles to their homology classes in (A.13) proves the final naturality assertion. ∎</p>
+<p>The differential <span class="math" data-tex="\(d_1\)">\(d_1\)</span> is concrete: a relative cycle in <span class="math" data-tex="\(F_p/F_{p-1}\)">\(F_p/F_{p-1}\)</span> has boundary in <span class="math" data-tex="\(F_{p-1}\)">\(F_{p-1}\)</span>; take that boundary and reduce it modulo <span class="math" data-tex="\(F_{p-2}\)">\(F_{p-2}\)</span>. Thus it is the composite of the connecting map for the first pair and the relative quotient map for the second pair. In a fibration over a CW complex, the next task is to identify this boundary with the cellular boundary of the base, with coefficients in the homology of the fibre. That topological identification is a further proof, not a consequence of the algebra alone.</p>
+<p><span id="DG-CHAR-13B.example-A.2"></span><strong>Example A.2 — A quotient need not be a direct summand.</strong> Filter the chain complex concentrated in degree one with <span class="math" data-tex="\(C_1=\mathbb Z/4\)">\(C_1=\mathbb Z/4\)</span> by <span class="math" data-tex="\(F_0C_1=2(\mathbb Z/4)\)">\(F_0C_1=2(\mathbb Z/4)\)</span>, <span class="math" data-tex="\(F_1C_1=C_1\)">\(F_1C_1=C_1\)</span>. Its two nonzero stabilized groups are <span class="math" data-tex="\(E_\infty^{0,1}=\mathbb Z/2\)">\(E_\infty^{0,1}=\mathbb Z/2\)</span> and <span class="math" data-tex="\(E_\infty^{1,0}=\mathbb Z/2\)">\(E_\infty^{1,0}=\mathbb Z/2\)</span>. Nevertheless its homology is <span class="math" data-tex="\(\mathbb Z/4\)">\(\mathbb Z/4\)</span>. The finite filtration in (A.9) asserts successive quotients, and does not assert an integral splitting.</p>
+<p>For the exact-couple construction and its convergence theorem, see Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/SSAT/SSch1.pdf"><em>Spectral Sequences in Algebraic Topology</em></a>.</p>
+<h2 id="b-relative-compression-cw-models-and-homology">B. Relative compression, CW models and homology</h2>
+<p>The fibre of a path-space construction need not itself be presented as a CW complex. We will need to replace it by a CW complex without changing its homotopy or homology. This section supplies that replacement and the comparison proof. The spaces below are path connected unless a different condition is stated. No local contractibility is assumed for the target of a CW model.</p>
+<h3 id="b-1-relative-homotopy-and-the-compression-criterion">B.1. Relative homotopy and the compression criterion</h3>
+<p>For a pair <span class="math" data-tex="\(A\subset Y\)">\(A\subset Y\)</span> with basepoint <span class="math" data-tex="\(a_0\in A\)">\(a_0\in A\)</span>, define <span class="math" data-tex="\(\pi_i(Y,A,a_0)\)">\(\pi_i(Y,A,a_0)\)</span>, for <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span>, using maps
+<span class="math math-display" data-tex="\[
+(D^i,S^{i-1},s_0)\longrightarrow(Y,A,a_0)
+\tag{B.1}
+\]">\[
+(D^i,S^{i-1},s_0)\longrightarrow(Y,A,a_0)
+\tag{B.1}
+\]</span>
+and homotopies through such maps. An equivalent cubical description sends one face <span class="math" data-tex="\(I^{i-1}\subset\partial I^i\)">\(I^{i-1}\subset\partial I^i\)</span> into <span class="math" data-tex="\(A\)">\(A\)</span> and all the other faces to <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. Collapsing the union of the other faces identifies the cube with the disk in (B.1). Concatenation along a coordinate parallel to the distinguished face gives a group for <span class="math" data-tex="\(i\geq2\)">\(i\geq2\)</span>. In dimensions <span class="math" data-tex="\(i\geq3\)">\(i\geq3\)</span>, two such coordinates are available; the interchange identity for the four subcubes makes the two concatenations agree and commute. The group in dimension two need not be abelian. In dimension one we use a pointed set.</p>
+<p>Paths in <span class="math" data-tex="\(A\)">\(A\)</span> change the basepoint. To construct the change, place a representative in a smaller half-disk whose distinguished boundary point is joined to the old boundary point by the path, and send the collar to that path. Reversing the path undoes the change: the concatenation of a path with its reverse contracts by traversing a progressively shorter initial segment in both directions. The same collar construction for a homotopy of paths shows that the change depends only on their homotopy class relative endpoints. Consequently vanishing at one basepoint is equivalent to vanishing at every basepoint of a path-connected <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><span id="DG-CHAR-13B.lemma-B.1"></span><strong>Lemma B.1 — Compression of a disk.</strong> A map in (B.1) represents zero if and only if it is homotopic, fixing its entire boundary, to a map <span class="math" data-tex="\(D^i\to A\)">\(D^i\to A\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(F:D^i\times I\to Y\)">\(F:D^i\times I\to Y\)</span> is a null-homotopy through maps of pairs: its side and top map into <span class="math" data-tex="\(A\)">\(A\)</span>. An explicit way to move the bottom disk into that side-and-top cap while fixing its rim is as follows. For <span class="math" data-tex="\(v\in D^i\)">\(v\in D^i\)</span>, set
+<span class="math math-display" data-tex="\[
+\mu(v)=\min\{2,1/\|v\|\},
+\qquad
+Q(v)=\bigl(\mu(v)v,\mu(v)-1\bigr),
+\tag{B.2}
+\]">\[
+\mu(v)=\min\{2,1/\|v\|\},
+\qquad
+Q(v)=\bigl(\mu(v)v,\mu(v)-1\bigr),
+\tag{B.2}
+\]</span>
+with <span class="math" data-tex="\(\mu(0)=2\)">\(\mu(0)=2\)</span>. The map <span class="math" data-tex="\(Q\)">\(Q\)</span> lands on the top when <span class="math" data-tex="\(\|v\|\leq1/2\)">\(\|v\|\leq1/2\)</span> and on the side when <span class="math" data-tex="\(\|v\|\geq1/2\)">\(\|v\|\geq1/2\)</span>. It fixes the bottom rim. Since the cylinder is convex,
+<span class="math math-display" data-tex="\[
+Q_s(v)=\bigl((1-s+s\mu(v))v,\ s(\mu(v)-1)\bigr)
+\tag{B.3}
+\]">\[
+Q_s(v)=\bigl((1-s+s\mu(v))v,\ s(\mu(v)-1)\bigr)
+\tag{B.3}
+\]</span>
+stays in the cylinder for <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>. Thus <span class="math" data-tex="\(FQ_s\)">\(FQ_s\)</span> is the required boundary-fixed homotopy, and its last map has image in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Conversely, after such a homotopy, contract the source disk affinely to <span class="math" data-tex="\(s_0\)">\(s_0\)</span>. The image of this entire contraction lies in <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(s_0\)">\(s_0\)</span> remains fixed. This is an allowed null-homotopy in (B.1). ∎</p>
+<p>Restriction to the boundary defines <span class="math" data-tex="\(\partial:\pi_i(Y,A)\to\pi_{i-1}(A)\)">\(\partial:\pi_i(Y,A)\to\pi_{i-1}(A)\)</span>. Together with the inclusions it gives the sequence
+<span class="math math-display" data-tex="\[
+\cdots\longrightarrow\pi_i(A)\longrightarrow\pi_i(Y)
+\longrightarrow\pi_i(Y,A)\xrightarrow{\partial}
+\pi_{i-1}(A)\longrightarrow\pi_{i-1}(Y)\longrightarrow\cdots.
+\tag{B.4}
+\]">\[
+\cdots\longrightarrow\pi_i(A)\longrightarrow\pi_i(Y)
+\longrightarrow\pi_i(Y,A)\xrightarrow{\partial}
+\pi_{i-1}(A)\longrightarrow\pi_{i-1}(Y)\longrightarrow\cdots.
+\tag{B.4}
+\]</span>
+Here and at the pointed-set end, exactness means that the image is the inverse image of the constant class.</p>
+<p>We verify the three types of terms. At <span class="math" data-tex="\(\pi_i(Y)\)">\(\pi_i(Y)\)</span>, a representative becomes zero relatively exactly when Lemma B.1 moves it into <span class="math" data-tex="\(A\)">\(A\)</span>, with its constant boundary retained. Those are precisely the images of <span class="math" data-tex="\(\pi_i(A)\)">\(\pi_i(A)\)</span>. At <span class="math" data-tex="\(\pi_i(Y,A)\)">\(\pi_i(Y,A)\)</span>, a boundary that is null-homotopic in <span class="math" data-tex="\(A\)">\(A\)</span> can be capped off using that null-homotopy: insert it in a collar on the boundary disk, reparametrizing that collar to occupy an increasing portion of the original disk. The result has constant boundary and gives an absolute representative in <span class="math" data-tex="\(\pi_i(Y)\)">\(\pi_i(Y)\)</span>. The insertion is a homotopy through maps of pairs, fixing the distinguished point. Conversely, an absolute representative has constant boundary. At <span class="math" data-tex="\(\pi_{i-1}(A)\)">\(\pi_{i-1}(A)\)</span>, a sphere that becomes null in <span class="math" data-tex="\(Y\)">\(Y\)</span> bounds a disk in <span class="math" data-tex="\(Y\)">\(Y\)</span>; that disk is a relative representative with the given sphere as boundary. Conversely, the boundary of a relative disk bounds that disk in <span class="math" data-tex="\(Y\)">\(Y\)</span>. For paths and components the same statements say, respectively, that a path can be moved into <span class="math" data-tex="\(A\)">\(A\)</span>, or that two points of <span class="math" data-tex="\(A\)">\(A\)</span> are joined in <span class="math" data-tex="\(Y\)">\(Y\)</span>. This proves (B.4), including its low-dimensional pointed-set assertions. Composition of representatives also proves naturality of all its maps.</p>
+<p>Call <span class="math" data-tex="\((Y,A)\)">\((Y,A)\)</span> <span class="math" data-tex="\(n\)">\(n\)</span>-connected if every component of <span class="math" data-tex="\(Y\)">\(Y\)</span> meets <span class="math" data-tex="\(A\)">\(A\)</span>, and its relative groups in dimensions <span class="math" data-tex="\(1,\ldots,n\)">\(1,\ldots,n\)</span> vanish at all basepoints in <span class="math" data-tex="\(A\)">\(A\)</span>. This definition includes the component condition when <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<h3 id="b-2-compression-on-a-cw-complex">B.2. Compression on a CW complex</h3>
+<p><span id="DG-CHAR-13B.lemma-B.2"></span><strong>Lemma B.2 — Cellular compression.</strong> Let <span class="math" data-tex="\((K,L)\)">\((K,L)\)</span> be a CW pair and <span class="math" data-tex="\(A\subset Y\)">\(A\subset Y\)</span> a nonempty subspace. Suppose every component of <span class="math" data-tex="\(Y\)">\(Y\)</span> meets <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(\pi_i(Y,A,a)=0\)">\(\pi_i(Y,A,a)=0\)</span> for every dimension <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span> of a cell of <span class="math" data-tex="\(K\setminus L\)">\(K\setminus L\)</span> and every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>. Every map <span class="math" data-tex="\((K,L)\to(Y,A)\)">\((K,L)\to(Y,A)\)</span> is homotopic, fixing <span class="math" data-tex="\(L\)">\(L\)</span>, to a map <span class="math" data-tex="\(K\to A\)">\(K\to A\)</span>.</p>
+<p><strong>Proof.</strong> Move the vertices outside <span class="math" data-tex="\(L\)">\(L\)</span> along paths into <span class="math" data-tex="\(A\)">\(A\)</span>. Suppose the map already sends the previous skeleton into <span class="math" data-tex="\(A\)">\(A\)</span>. On each next characteristic disk, its boundary is in <span class="math" data-tex="\(A\)">\(A\)</span>, and Lemma B.1 gives a boundary-fixed homotopy into <span class="math" data-tex="\(A\)">\(A\)</span>. Apply these homotopies on all cells of that dimension and the constant homotopy on the preceding skeleton and <span class="math" data-tex="\(L\)">\(L\)</span>. They descend under the attaching identifications. The CW homotopy-extension theorem proved in the frame-obstruction chapter, Section E, extends this partial homotopy to the entire complex.</p>
+<p>Use the successive time intervals <span class="math" data-tex="\([1-2^{-i},1-2^{-i-1}]\)">\([1-2^{-i},1-2^{-i-1}]\)</span>, starting with <span class="math" data-tex="\(i=0\)">\(i=0\)</span> for vertices. On each characteristic disk, the process is stationary after its dimension has been handled. Its extension to time one is therefore continuous on that disk times <span class="math" data-tex="\(I\)">\(I\)</span>. The weak topology and the quotient-product lemma from the classifying-map chapter, Lemma 7.1, imply continuity on <span class="math" data-tex="\(K\times I\)">\(K\times I\)</span>. The final image lies in <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> has remained fixed. ∎</p>
+<p>We also record exactly how cell dimensions control homotopy. If a CW pair <span class="math" data-tex="\((Z,C)\)">\((Z,C)\)</span> has no cells of <span class="math" data-tex="\(Z\setminus C\)">\(Z\setminus C\)</span> in dimensions at most <span class="math" data-tex="\(n\)">\(n\)</span>, then it is <span class="math" data-tex="\(n\)">\(n\)</span>-connected. Indeed, apply the geometric Thom chapter's full cellular approximation theorem to a map of pairs <span class="math" data-tex="\((D^i,S^{i-1})\to(Z,C)\)">\((D^i,S^{i-1})\to(Z,C)\)</span>, <span class="math" data-tex="\(i\leq n\)">\(i\leq n\)</span>. First make its boundary cellular inside <span class="math" data-tex="\(C\)">\(C\)</span>, extending that boundary homotopy by homotopy extension; then make its disk map cellular, fixing the new boundary. The disk now maps to <span class="math" data-tex="\(Z^i\subset C\)">\(Z^i\subset C\)</span>. All boundary changes were inside <span class="math" data-tex="\(C\)">\(C\)</span>, so its original relative class is zero. Every vertex of <span class="math" data-tex="\(Z\)">\(Z\)</span> belongs to <span class="math" data-tex="\(C\)">\(C\)</span>, and cellular approximation of a point proves the component assertion. By (B.4), adjoining cells of dimension <span class="math" data-tex="\(d\)">\(d\)</span> preserves <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span> for <span class="math" data-tex="\(i&lt;d-1\)">\(i&lt;d-1\)</span> and gives a surjection from the old <span class="math" data-tex="\(\pi_{d-1}\)">\(\pi_{d-1}\)</span> onto the new one. This assertion does not require the old complex to have dimension less than <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<h3 id="b-3-why-relative-connectivity-forces-homology-vanishing">B.3. Why relative connectivity forces homology vanishing</h3>
+<p><span id="DG-CHAR-13B.lemma-B.3"></span><strong>Lemma B.3.</strong> If <span class="math" data-tex="\((Y,A)\)">\((Y,A)\)</span> is <span class="math" data-tex="\(n\)">\(n\)</span>-connected, then
+<span class="math math-display" data-tex="\[
+H_i(Y,A;G)=0\qquad(0\leq i\leq n)
+\tag{B.5}
+\]">\[
+H_i(Y,A;G)=0\qquad(0\leq i\leq n)
+\tag{B.5}
+\]</span>
+for every abelian coefficient group <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Proof.</strong> A relative cycle is a finite chain
+<span class="math" data-tex="\(z=\sum_\sigma g_\sigma\sigma\)">\(z=\sum_\sigma g_\sigma\sigma\)</span>, whose boundary is a chain of singular simplices lying in <span class="math" data-tex="\(A\)">\(A\)</span>. Include every face of every simplex occurring in this chain. For each distinct singular simplex in this finite set, use one ordered abstract simplex of its dimension. Identify faces with the abstract simplex labelled by the corresponding singular face, using the order-preserving affine face map. Face identities make these identifications compatible. The resulting finite realization <span class="math" data-tex="\(K\)">\(K\)</span> is a CW complex: attach its labelled simplices in order of dimension, with the prescribed boundary identifications. Repeated labels on different faces are allowed; every open characteristic simplex remains an individual cell.</p>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> consist of all labelled simplices whose images lie in <span class="math" data-tex="\(A\)">\(A\)</span>. It is a subcomplex because their faces also lie in <span class="math" data-tex="\(A\)">\(A\)</span>. Evaluation of the labelled simplices gives a continuous map <span class="math" data-tex="\(s:(K,L)\to(Y,A)\)">\(s:(K,L)\to(Y,A)\)</span>. The same coefficients define a relative cycle <span class="math" data-tex="\(\widetilde z\)">\(\widetilde z\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>: the cancellations in its boundary are exactly the cancellations of identical singular-face labels in <span class="math" data-tex="\(\partial z\)">\(\partial z\)</span>. Its image under <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>If <span class="math" data-tex="\(z\)">\(z\)</span> has degree <span class="math" data-tex="\(i\leq n\)">\(i\leq n\)</span>, then <span class="math" data-tex="\(\dim K\leq i\)">\(\dim K\leq i\)</span>, so Lemma B.2 compresses <span class="math" data-tex="\(s\)">\(s\)</span> into <span class="math" data-tex="\(A\)">\(A\)</span>, fixing <span class="math" data-tex="\(L\)">\(L\)</span>. The singular prism formula for a homotopy of pairs shows that <span class="math" data-tex="\(s_*[\widetilde z]\)">\(s_*[\widetilde z]\)</span> equals the class induced by that compressed map. The latter factors through <span class="math" data-tex="\(H_i(A,A;G)=0\)">\(H_i(A,A;G)=0\)</span>. Hence <span class="math" data-tex="\([z]=0\)">\([z]=0\)</span>. The same construction in degree zero uses only the component condition. ∎</p>
+<p>For cohomology the corresponding vanishing through degree <span class="math" data-tex="\(n\)">\(n\)</span> follows from the integral version of (B.5) and the proved universal-coefficient sequence for the free relative singular complex. We have not invoked a relative Hurewicz isomorphism here; (B.5) follows directly from finite chains and relative compression.</p>
+<p><span id="DG-CHAR-13B.theorem-B.4"></span><strong>Theorem B.4 — Weak homotopy equivalence preserves homology.</strong> A map <span class="math" data-tex="\(f:C\to Y\)">\(f:C\to Y\)</span> between path-connected spaces that induces isomorphisms on all homotopy groups induces isomorphisms
+<span class="math math-display" data-tex="\[
+f_*:H_i(C;G)\xrightarrow{\cong}H_i(Y;G),
+\qquad
+f^*:H^i(Y;G)\xrightarrow{\cong}H^i(C;G)
+\tag{B.6}
+\]">\[
+f_*:H_i(C;G)\xrightarrow{\cong}H_i(Y;G),
+\qquad
+f^*:H^i(Y;G)\xrightarrow{\cong}H^i(C;G)
+\tag{B.6}
+\]</span>
+for all <span class="math" data-tex="\(i\)">\(i\)</span> and all abelian groups <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Proof.</strong> Form the mapping cylinder
+<span class="math math-display" data-tex="\[
+M_f=(C\times I)\amalg Y\big/\bigl((c,1)\sim f(c)\bigr).
+\]">\[
+M_f=(C\times I)\amalg Y\big/\bigl((c,1)\sim f(c)\bigr).
+\]</span>
+Its copy of <span class="math" data-tex="\(C=C\times\{0\}\)">\(C=C\times\{0\}\)</span> has the original topology. Pushing the cylinder coordinate toward one, and fixing <span class="math" data-tex="\(Y\)">\(Y\)</span>, is a deformation retraction <span class="math" data-tex="\(M_f\to Y\)">\(M_f\to Y\)</span>. It is continuous because the quotient map remains a quotient after product with <span class="math" data-tex="\(I\)">\(I\)</span>, as already proved. Its composition with <span class="math" data-tex="\(C\hookrightarrow M_f\)">\(C\hookrightarrow M_f\)</span> is <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Thus <span class="math" data-tex="\(C\hookrightarrow M_f\)">\(C\hookrightarrow M_f\)</span> induces the same homotopy isomorphisms, after the harmless basepoint change along the cylinder segment. Exactness of (B.4) gives <span class="math" data-tex="\(\pi_i(M_f,C)=0\)">\(\pi_i(M_f,C)=0\)</span> in every positive dimension; its component condition also holds. Lemma B.3, for every <span class="math" data-tex="\(n\)">\(n\)</span>, gives <span class="math" data-tex="\(H_i(M_f,C;G)=0\)">\(H_i(M_f,C;G)=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. The homology sequence of the pair proves the homology isomorphism in (B.6). For cohomology, first use integral relative vanishing and the universal-coefficient sequence to obtain <span class="math" data-tex="\(H^i(M_f,C;G)=0\)">\(H^i(M_f,C;G)=0\)</span>, and then use the cohomology sequence. Compose with the cylinder retraction. ∎</p>
+<h3 id="b-4-construction-and-use-of-a-cw-model">B.4. Construction and use of a CW model</h3>
+<p><span id="DG-CHAR-13B.theorem-B.5"></span><strong>Theorem B.5 — CW model.</strong> Every path-connected space <span class="math" data-tex="\(Y\)">\(Y\)</span>, with chosen basepoint <span class="math" data-tex="\(y_0\)">\(y_0\)</span>, admits a based map <span class="math" data-tex="\(f:C\to Y\)">\(f:C\to Y\)</span> from a CW complex with one vertex that induces isomorphisms on all homotopy groups. It also induces all the homology and cohomology isomorphisms in (B.6). If a path-connected CW complex <span class="math" data-tex="\(C_0\)">\(C_0\)</span> with a map <span class="math" data-tex="\(f_0:C_0\to Y\)">\(f_0:C_0\to Y\)</span> is already given, one can obtain such a model by adjoining cells to <span class="math" data-tex="\(C_0\)">\(C_0\)</span>.</p>
+<p><strong>Proof.</strong> Begin with the single vertex mapping to <span class="math" data-tex="\(y_0\)">\(y_0\)</span>. Attach a loop for each element of <span class="math" data-tex="\(\pi_1(Y,y_0)\)">\(\pi_1(Y,y_0)\)</span> and map it by a representative. The resulting map is surjective on <span class="math" data-tex="\(\pi_1\)">\(\pi_1\)</span>. Now perform the following step for <span class="math" data-tex="\(d=2,3,\ldots\)">\(d=2,3,\ldots\)</span>.</p>
+<p>First attach a <span class="math" data-tex="\(d\)">\(d\)</span>-cell for every element of the kernel of the current map on <span class="math" data-tex="\(\pi_{d-1}\)">\(\pi_{d-1}\)</span>. Make its attaching representative cellular by the proved cellular approximation theorem. Its composite into <span class="math" data-tex="\(Y\)">\(Y\)</span> is null-homotopic, so choose a filling to extend the map to that cell. Next attach a <span class="math" data-tex="\(d\)">\(d\)</span>-cell by the constant boundary map for each element of <span class="math" data-tex="\(\pi_d(Y)\)">\(\pi_d(Y)\)</span>; its quotient is a sphere, which we map by a representative of that element.</p>
+<p>The second group of cells makes the map surjective on <span class="math" data-tex="\(\pi_d\)">\(\pi_d\)</span>. A class in the new <span class="math" data-tex="\(\pi_{d-1}\)">\(\pi_{d-1}\)</span> is represented by a sphere map that can be moved into the old complex, by the cell-dimension assertion following Lemma B.2. If its image in <span class="math" data-tex="\(Y\)">\(Y\)</span> is zero, its old representative is one of the kernel elements whose filling was attached in the first group. Hence the new map is injective on <span class="math" data-tex="\(\pi_{d-1}\)">\(\pi_{d-1}\)</span>. Earlier homotopy groups remain unchanged, by the same cell-dimension assertion.</p>
+<p>Each attaching map has image in a finite subcomplex, by the compact-subset lemma for CW complexes proved in the classifying-map chapter. Thus these attachments form a closure-finite CW complex with the weak topology. The compatible maps on characteristic disks give a continuous map <span class="math" data-tex="\(f:C\to Y\)">\(f:C\to Y\)</span>. Every sphere map and every sphere homotopy in <span class="math" data-tex="\(C\)">\(C\)</span> meets only finitely many cells and therefore belongs to a finite stage of the construction. The isomorphisms already established in each fixed degree persist at the limit. This proves the homotopy assertion, and Theorem B.4 proves the homology and cohomology assertions.</p>
+<p>For the last assertion, start with <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. If its map is not surjective on <span class="math" data-tex="\(\pi_1\)">\(\pi_1\)</span>, first adjoin the needed loops; then use the same successive steps. No deletion of cells of <span class="math" data-tex="\(C_0\)">\(C_0\)</span> is required. ∎</p>
+<p>For completeness, such models are unique up to homotopy equivalence in the appropriate sense. If <span class="math" data-tex="\(f:C\to Y\)">\(f:C\to Y\)</span> and <span class="math" data-tex="\(f&#x27;:C&#x27;\to Y\)">\(f&#x27;:C&#x27;\to Y\)</span> are two models, include <span class="math" data-tex="\(Y\)">\(Y\)</span> into <span class="math" data-tex="\(M_{f&#x27;}\)">\(M_{f&#x27;}\)</span>. The map <span class="math" data-tex="\(C\to M_{f&#x27;}\)">\(C\to M_{f&#x27;}\)</span> can be compressed into <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> by Lemma B.2, because <span class="math" data-tex="\((M_{f&#x27;},C&#x27;)\)">\((M_{f&#x27;},C&#x27;)\)</span> has all relative homotopy groups zero. This gives <span class="math" data-tex="\(h:C\to C&#x27;\)">\(h:C\to C&#x27;\)</span> with <span class="math" data-tex="\(f&#x27;h\simeq f\)">\(f&#x27;h\simeq f\)</span>. It follows that <span class="math" data-tex="\(h\)">\(h\)</span> induces homotopy isomorphisms.</p>
+<p>A weak homotopy equivalence between CW complexes is a homotopy equivalence. Here is the remaining proof. Replace it by a cellular map through the already proved cellular approximation. Its mapping cylinder is a CW complex, with its domain a subcomplex: a cell <span class="math" data-tex="\(e^d\)">\(e^d\)</span> of the domain contributes the cell <span class="math" data-tex="\(e^d\times(0,1)\)">\(e^d\times(0,1)\)</span> of dimension <span class="math" data-tex="\(d+1\)">\(d+1\)</span>, with both its ends and all its sides in the preceding skeleta. Its relative homotopy groups vanish by (B.4). Lemma B.2 applied to its identity map therefore gives a deformation retraction onto the domain, fixing that domain. The cylinder's other deformation retraction is onto the codomain. Restricting and composing these retractions gives a homotopy inverse to the map. A homotopy between the original map and the cellular one then gives a homotopy inverse to the original map as well.</p>
+<p>We will use CW models of loopspaces and homotopy fibres through Theorems B.4–B.5. These statements supply the needed comparison without assuming that either space is already a CW complex or citing a theorem about its CW homotopy type.</p>
+<p>Relative homotopy, cellular compression, CW approximation and homology invariance are treated in Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/AT/AT.pdf"><em>Algebraic Topology</em></a>.</p>
+<h2 id="c-path-fibrations-transport-and-homotopy-fibres">C. Path fibrations, transport and homotopy fibres</h2>
+<p>This section works with continuous maps and the compact-open topology. A <strong>fibration</strong> means a map <span class="math" data-tex="\(p:E\to B\)">\(p:E\to B\)</span> with the homotopy lifting property for every parameter space: if <span class="math" data-tex="\(H:Z\times I\to B\)">\(H:Z\times I\to B\)</span> and <span class="math" data-tex="\(h_0:Z\to E\)">\(h_0:Z\to E\)</span> satisfy <span class="math" data-tex="\(ph_0=H|_{Z\times\{0\}}\)">\(ph_0=H|_{Z\times\{0\}}\)</span>, there is a lift <span class="math" data-tex="\(\widetilde H:Z\times I\to E\)">\(\widetilde H:Z\times I\to E\)</span> with that initial value. We prove this property for the path-space constructions that will be used below.</p>
+<h3 id="c-1-topology-and-an-explicit-lifting-formula">C.1. Topology and an explicit lifting formula</h3>
+<p>Give <span class="math" data-tex="\(B^I\)">\(B^I\)</span>, the set of continuous paths, the compact-open topology. Its subbasic open sets have the form
+<span class="math math-display" data-tex="\[
+[K,U]=\{\gamma\mid\gamma(K)\subset U\},
+\]">\[
+[K,U]=\{\gamma\mid\gamma(K)\subset U\},
+\]</span>
+where <span class="math" data-tex="\(K\subset I\)">\(K\subset I\)</span> is compact and <span class="math" data-tex="\(U\subset B\)">\(U\subset B\)</span> is open. Evaluation <span class="math" data-tex="\(B^I\times I\to B\)">\(B^I\times I\to B\)</span> is continuous. Indeed, if <span class="math" data-tex="\(\gamma(t)\in U\)">\(\gamma(t)\in U\)</span>, choose a compact interval neighbourhood <span class="math" data-tex="\(J\)">\(J\)</span> of <span class="math" data-tex="\(t\)">\(t\)</span>, relative to <span class="math" data-tex="\(I\)">\(I\)</span>, with <span class="math" data-tex="\(\gamma(J)\subset U\)">\(\gamma(J)\subset U\)</span>. The product <span class="math" data-tex="\([J,U]\times\operatorname{int}_I J\)">\([J,U]\times\operatorname{int}_I J\)</span> maps into <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>A function <span class="math" data-tex="\(Z\to B^I\)">\(Z\to B^I\)</span> is continuous if and only if its adjoint <span class="math" data-tex="\(Z\times I\to B\)">\(Z\times I\to B\)</span> is continuous. One implication follows from evaluation. For the other, if the adjoint sends <span class="math" data-tex="\(\{z\}\times K\)">\(\{z\}\times K\)</span> into <span class="math" data-tex="\(U\)">\(U\)</span>, cover <span class="math" data-tex="\(K\)">\(K\)</span> by finitely many product neighbourhoods on which it stays in <span class="math" data-tex="\(U\)">\(U\)</span>. Intersect their neighbourhoods in <span class="math" data-tex="\(Z\)">\(Z\)</span>. Every point of this intersection is sent into <span class="math" data-tex="\([K,U]\)">\([K,U]\)</span>. This proves continuity on every compact-open subbasic set. The same argument applies with <span class="math" data-tex="\(Z\times I\)">\(Z\times I\)</span> as parameter space.</p>
+<p>For a map <span class="math" data-tex="\(f:X\to B\)">\(f:X\to B\)</span>, define
+<span class="math math-display" data-tex="\[
+E_f=\{(x,\gamma)\in X\times B^I\mid\gamma(0)=f(x)\},
+\qquad p_f(x,\gamma)=\gamma(1).
+\tag{C.1}
+\]">\[
+E_f=\{(x,\gamma)\in X\times B^I\mid\gamma(0)=f(x)\},
+\qquad p_f(x,\gamma)=\gamma(1).
+\tag{C.1}
+\]</span>
+The topology is the subspace topology, and the projection is continuous by evaluation.</p>
+<p><span id="DG-CHAR-13B.lemma-C.1"></span><strong>Lemma C.1 — Path-space fibration.</strong> The map <span class="math" data-tex="\(p_f:E_f\to B\)">\(p_f:E_f\to B\)</span> is a fibration. The inclusion
+<span class="math math-display" data-tex="\[
+i_f:X\to E_f,\qquad x\mapsto(x,\text{constant path at }f(x))
+\tag{C.2}
+\]">\[
+i_f:X\to E_f,\qquad x\mapsto(x,\text{constant path at }f(x))
+\tag{C.2}
+\]</span>
+is a homotopy equivalence, and <span class="math" data-tex="\(p_fi_f=f\)">\(p_fi_f=f\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(H:Z\times I\to B\)">\(H:Z\times I\to B\)</span> and an initial lift <span class="math" data-tex="\(z\mapsto(a(z),\gamma_z)\)">\(z\mapsto(a(z),\gamma_z)\)</span> are given. For <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>, put
+<span class="math math-display" data-tex="\[
+\eta_{z,t}(s)=
+\begin{cases}
+\gamma_z((1+t)s),&amp;0\leq s\leq(1+t)^{-1},\\
+H(z,(1+t)s-1),&amp;(1+t)^{-1}\leq s\leq1.
+\end{cases}
+\tag{C.3}
+\]">\[
+\eta_{z,t}(s)=
+\begin{cases}
+\gamma_z((1+t)s),&amp;0\leq s\leq(1+t)^{-1},\\
+H(z,(1+t)s-1),&amp;(1+t)^{-1}\leq s\leq1.
+\end{cases}
+\tag{C.3}
+\]</span>
+The two formulas agree on their common boundary because <span class="math" data-tex="\(\gamma_z(1)=H(z,0)\)">\(\gamma_z(1)=H(z,0)\)</span>. They are continuous on a finite closed cover of <span class="math" data-tex="\(Z\times I\times I\)">\(Z\times I\times I\)</span>, and hence paste continuously. The adjoint criterion proves that <span class="math" data-tex="\((z,t)\mapsto(a(z),\eta_{z,t})\)">\((z,t)\mapsto(a(z),\eta_{z,t})\)</span> is continuous into <span class="math" data-tex="\(E_f\)">\(E_f\)</span>. Its endpoint is <span class="math" data-tex="\(H(z,t)\)">\(H(z,t)\)</span>, and at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> its path is exactly <span class="math" data-tex="\(\gamma_z\)">\(\gamma_z\)</span>, with no added pause. It is the required lift.</p>
+<p>The homotopy
+<span class="math math-display" data-tex="\[
+(x,\gamma)\longmapsto\bigl(x,\ s\mapsto\gamma((1-u)s)\bigr),
+\qquad 0\leq u\leq1,
+\tag{C.4}
+\]">\[
+(x,\gamma)\longmapsto\bigl(x,\ s\mapsto\gamma((1-u)s)\bigr),
+\qquad 0\leq u\leq1,
+\tag{C.4}
+\]</span>
+contracts each path to its initial value. The adjoint criterion proves its continuity. It fixes the constant paths and is a deformation retraction onto (C.2). ∎</p>
+<p>The <strong>homotopy fibre</strong> of <span class="math" data-tex="\(f\)">\(f\)</span>, at <span class="math" data-tex="\(b_0\)">\(b_0\)</span>, is
+<span class="math math-display" data-tex="\[
+F_f=p_f^{-1}(b_0)
+ =\{(x,\gamma)\mid\gamma(0)=f(x),\ \gamma(1)=b_0\}.
+\tag{C.5}
+\]">\[
+F_f=p_f^{-1}(b_0)
+ =\{(x,\gamma)\mid\gamma(0)=f(x),\ \gamma(1)=b_0\}.
+\tag{C.5}
+\]</span>
+For <span class="math" data-tex="\(X=\{b_0\}\)">\(X=\{b_0\}\)</span> and <span class="math" data-tex="\(f(b_0)=b_0\)">\(f(b_0)=b_0\)</span>, (C.1) is the based path space <span class="math" data-tex="\(PB\)">\(PB\)</span>, with fibre the based loopspace <span class="math" data-tex="\(\Omega B\)">\(\Omega B\)</span>. Formula (C.4) contracts <span class="math" data-tex="\(PB\)">\(PB\)</span>. A based map <span class="math" data-tex="\(I^j\to\Omega B\)">\(I^j\to\Omega B\)</span> has adjoint <span class="math" data-tex="\(I^j\times I\to B\)">\(I^j\times I\to B\)</span> constant on its entire boundary. The same is true for homotopies. Thus currying gives natural identifications
+<span class="math math-display" data-tex="\[
+\pi_j(\Omega B)\cong\pi_{j+1}(B)\quad(j\geq1),
+\qquad
+\pi_0(\Omega B)\cong\pi_1(B)
+\tag{C.6}
+\]">\[
+\pi_j(\Omega B)\cong\pi_{j+1}(B)\quad(j\geq1),
+\qquad
+\pi_0(\Omega B)\cong\pi_1(B)
+\tag{C.6}
+\]</span>
+in the latter formula as sets of components and loop classes.</p>
+<h3 id="c-2-relative-lifting-and-transport">C.2. Relative lifting and transport</h3>
+<p>We need lifting with prescribed boundary values as well. A fibration has the homotopy lifting property for a CW pair <span class="math" data-tex="\((K,L)\)">\((K,L)\)</span>, with a given lift on <span class="math" data-tex="\(K\times\{0\}\cup L\times I\)">\(K\times\{0\}\cup L\times I\)</span>. To see this, proceed over its characteristic disks. The pair
+<span class="math math-display" data-tex="\[
+\bigl(D^j\times I,\ D^j\times\{0\}\cup S^{j-1}\times I\bigr)
+\]">\[
+\bigl(D^j\times I,\ D^j\times\{0\}\cup S^{j-1}\times I\bigr)
+\]</span>
+is homeomorphic to <span class="math" data-tex="\((D^j\times I,D^j\times\{0\})\)">\((D^j\times I,D^j\times\{0\})\)</span>. Here is a direct construction of the required homeomorphism of pairs. Formula (B.2) parametrizes the top-and-side boundary cap homeomorphically by <span class="math" data-tex="\(D^j\)">\(D^j\)</span>: in its inner half-ball the image is the top disk, and in its outer annulus the radial coordinate is converted monotonically into the side height. Its time-reversal parametrizes the bottom-and-side cap, with its rim on the top rim of the cylinder. Thus both of these caps are explicitly disks. Parametrize the old bottom and the new bottom-and-side cap with matching rim parameters; map their complementary boundary disks in the same way. This gives a boundary homeomorphism taking the bottom disk to the bottom-and-side portion. Identify the convex cylinder with a ball by radial coordinates from an interior point and extend this boundary homeomorphism radially. For <span class="math" data-tex="\(j=0\)">\(j=0\)</span> only the initial point is prescribed. The ordinary lifting property, applied after this reparametrization, extends the lift over each cell cylinder. The lifts agree on attaching boundaries, and the weak topology and quotient-product lemma prove continuity on <span class="math" data-tex="\(K\times I\)">\(K\times I\)</span>.</p>
+<p>There is a second relative lifting case, with arbitrary parameter space <span class="math" data-tex="\(Z\)">\(Z\)</span>, that does not require <span class="math" data-tex="\(Z\)">\(Z\)</span> to be a CW complex. The pair
+<span class="math math-display" data-tex="\[
+\bigl(I\times I,\ (I\times\{0\})\cup(\partial I\times I)\bigr)
+\]">\[
+\bigl(I\times I,\ (I\times\{0\})\cup(\partial I\times I)\bigr)
+\]</span>
+is homeomorphic to <span class="math" data-tex="\((I\times I,I\times\{0\})\)">\((I\times I,I\times\{0\})\)</span>. For example, parametrize the square boundary cyclically and use a piecewise linear boundary reparametrization taking one edge to the three-edge arc; extend it radially from the centre. Take its product with <span class="math" data-tex="\(Z\)">\(Z\)</span> and apply the lifting property with parameter <span class="math" data-tex="\(Z\times I\)">\(Z\times I\)</span>. Therefore a homotopy on <span class="math" data-tex="\(Z\times I\times I\)">\(Z\times I\times I\)</span> can be lifted with its bottom and its two vertical sides prescribed whenever those lifts agree at their intersections.</p>
+<p>For a path <span class="math" data-tex="\(\alpha:I\to B\)">\(\alpha:I\to B\)</span>, apply the lifting property with parameter <span class="math" data-tex="\(F_{\alpha(0)}=p^{-1}(\alpha(0))\)">\(F_{\alpha(0)}=p^{-1}(\alpha(0))\)</span>, initial inclusion into <span class="math" data-tex="\(E\)">\(E\)</span>, and base homotopy <span class="math" data-tex="\((e,t)\mapsto\alpha(t)\)">\((e,t)\mapsto\alpha(t)\)</span>. Its last value defines transport
+<span class="math math-display" data-tex="\[
+T_\alpha:F_{\alpha(0)}\to F_{\alpha(1)}.
+\tag{C.7}
+\]">\[
+T_\alpha:F_{\alpha(0)}\to F_{\alpha(1)}.
+\tag{C.7}
+\]</span>
+If two lifts were chosen, prescribe them on the vertical sides of the relative square just described, with the inclusion on its bottom. Its top gives a homotopy between the two endpoint maps in <span class="math" data-tex="\(F_{\alpha(1)}\)">\(F_{\alpha(1)}\)</span>. If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is changed by a homotopy relative endpoints, the same square lifting proves that the endpoint transport changes by a homotopy. Thus its homotopy class depends only on the path class.</p>
+<p>Lifting the first path and then the second, on the two half-intervals, proves
+<span class="math math-display" data-tex="\[
+T_{\alpha*\beta}\simeq T_\beta T_\alpha,
+\qquad T_{\text{constant}}\simeq\operatorname{id}.
+\tag{C.8}
+\]">\[
+T_{\alpha*\beta}\simeq T_\beta T_\alpha,
+\qquad T_{\text{constant}}\simeq\operatorname{id}.
+\tag{C.8}
+\]</span>
+The second assertion uses the constant lift as one of the choices. A path followed by its reverse contracts relative endpoints: replace it by the path that traverses only the initial portion of length <span class="math" data-tex="\(1-u\)">\(1-u\)</span> and then traverses that portion backwards. Hence (C.8) gives
+<span class="math math-display" data-tex="\[
+T_{\alpha^{-1}}T_\alpha\simeq\operatorname{id},
+\qquad
+T_\alpha T_{\alpha^{-1}}\simeq\operatorname{id}.
+\tag{C.9}
+\]">\[
+T_{\alpha^{-1}}T_\alpha\simeq\operatorname{id},
+\qquad
+T_\alpha T_{\alpha^{-1}}\simeq\operatorname{id}.
+\tag{C.9}
+\]</span>
+Transport is a homotopy equivalence. On homology it defines the coefficient transport and, for loops, the action of the fundamental group of the base.</p>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> is simply connected, path classes with fixed endpoints are unique, so all these homology transports are canonically the same once a reference fibre and paths to it are chosen. No action on the fibre homology remains.</p>
+<h3 id="c-3-pullback-and-triviality-over-a-disk">C.3. Pullback and triviality over a disk</h3>
+<p>The pullback of <span class="math" data-tex="\(p:E\to B\)">\(p:E\to B\)</span> by <span class="math" data-tex="\(g:A\to B\)">\(g:A\to B\)</span> is
+<span class="math math-display" data-tex="\[
+g^*E=\{(a,e):g(a)=p(e)\}\longrightarrow A.
+\tag{C.10}
+\]">\[
+g^*E=\{(a,e):g(a)=p(e)\}\longrightarrow A.
+\tag{C.10}
+\]</span>
+It is a fibration: the first coordinate of a lift is its given base homotopy, and the second coordinate is obtained by lifting its composite into <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>If <span class="math" data-tex="\(g_0,g_1:A\to B\)">\(g_0,g_1:A\to B\)</span> are joined by <span class="math" data-tex="\(g_t\)">\(g_t\)</span>, transport in the pullback of <span class="math" data-tex="\(p\)">\(p\)</span> over <span class="math" data-tex="\(A\times I\)">\(A\times I\)</span> gives maps <span class="math" data-tex="\(g_0^*E\to g_1^*E\)">\(g_0^*E\to g_1^*E\)</span> and back. In the square lifting proof of (C.8)–(C.9), keep the <span class="math" data-tex="\(A\)">\(A\)</span>-coordinate of the base fixed. Those homotopies then preserve the projection to <span class="math" data-tex="\(A\)">\(A\)</span>. Consequently the pullbacks are <strong>fibre homotopy equivalent</strong>: their maps and inverse homotopies all preserve that projection.</p>
+<p>In particular, for a contractible <span class="math" data-tex="\(A\)">\(A\)</span>, compare the identity of <span class="math" data-tex="\(A\)">\(A\)</span> with a constant map to <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. This gives a fibre homotopy equivalence
+<span class="math math-display" data-tex="\[
+E|_A\simeq_A A\times F_{a_0}.
+\tag{C.11}
+\]">\[
+E|_A\simeq_A A\times F_{a_0}.
+\tag{C.11}
+\]</span>
+When <span class="math" data-tex="\(A=D^j\)">\(A=D^j\)</span>, the same equivalence restricts over <span class="math" data-tex="\(S^{j-1}\)">\(S^{j-1}\)</span>, since it preserves every basepoint of <span class="math" data-tex="\(D^j\)">\(D^j\)</span>. It is therefore an equivalence of pairs
+<span class="math math-display" data-tex="\[
+\bigl(E|_{D^j},E|_{S^{j-1}}\bigr)
+\simeq
+\bigl(D^j\times F,S^{j-1}\times F\bigr).
+\tag{C.12}
+\]">\[
+\bigl(E|_{D^j},E|_{S^{j-1}}\bigr)
+\simeq
+\bigl(D^j\times F,S^{j-1}\times F\bigr).
+\tag{C.12}
+\]</span>
+The product and relative singular-chain equivalences already proved in the Thom-class chapter now give
+<span class="math math-display" data-tex="\[
+H_{j+q}\bigl(E|_{D^j},E|_{S^{j-1}};G\bigr)
+\cong H_q(F;G).
+\tag{C.13}
+\]">\[
+H_{j+q}\bigl(E|_{D^j},E|_{S^{j-1}};G\bigr)
+\cong H_q(F;G).
+\tag{C.13}
+\]</span>
+One way to see the coefficient assertion explicitly is to use the free relative chains of <span class="math" data-tex="\((D^j,S^{j-1})\)">\((D^j,S^{j-1})\)</span>. They are chain-homotopy equivalent to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> concentrated in degree <span class="math" data-tex="\(j\)">\(j\)</span>: their only homology is its positive relative generator, and free-chain splittings of cycles and boundaries give the equivalence. Tensoring with the fibre chain complex, then with <span class="math" data-tex="\(G\)">\(G\)</span>, preserves the chain homotopies. The product-chain equivalence yields (C.13). Its sign is fixed by the positive disk generator. Its naturality follows from the chain equivalence and from transport.</p>
+<h3 id="c-4-the-long-exact-sequence">C.4. The long exact sequence</h3>
+<p><span id="DG-CHAR-13B.theorem-C.2"></span><strong>Theorem C.2 — Homotopy sequence of a fibration.</strong> For a fibration <span class="math" data-tex="\(p:E\to B\)">\(p:E\to B\)</span>, a point <span class="math" data-tex="\(e_0\)">\(e_0\)</span>, <span class="math" data-tex="\(b_0=p(e_0)\)">\(b_0=p(e_0)\)</span>, and <span class="math" data-tex="\(F=p^{-1}(b_0)\)">\(F=p^{-1}(b_0)\)</span>, the projection induces natural isomorphisms
+<span class="math math-display" data-tex="\[
+p_*:\pi_i(E,F,e_0)\xrightarrow{\cong}\pi_i(B,b_0)
+\quad(i\geq2),
+\tag{C.14}
+\]">\[
+p_*:\pi_i(E,F,e_0)\xrightarrow{\cong}\pi_i(B,b_0)
+\quad(i\geq2),
+\tag{C.14}
+\]</span>
+and a bijection of the corresponding pointed sets for <span class="math" data-tex="\(i=1\)">\(i=1\)</span>. Together with Section B's relative sequence, these give
+<span class="math math-display" data-tex="\[
+\cdots\longrightarrow\pi_i(F)\longrightarrow\pi_i(E)
+\longrightarrow\pi_i(B)\longrightarrow\pi_{i-1}(F)
+\longrightarrow\cdots\longrightarrow\pi_0(E)\longrightarrow\pi_0(B).
+\tag{C.15}
+\]">\[
+\cdots\longrightarrow\pi_i(F)\longrightarrow\pi_i(E)
+\longrightarrow\pi_i(B)\longrightarrow\pi_{i-1}(F)
+\longrightarrow\cdots\longrightarrow\pi_0(E)\longrightarrow\pi_0(B).
+\tag{C.15}
+\]</span>
+At the set-valued end, the maps are restriction and path lifting, with exactness at the distinguished classes.</p>
+<p><strong>Proof.</strong> Use the relative cubical convention from Section B: a map <span class="math" data-tex="\(I^i\to E\)">\(I^i\to E\)</span> sends one distinguished boundary face into <span class="math" data-tex="\(F\)">\(F\)</span> and the union <span class="math" data-tex="\(J\)">\(J\)</span> of the remaining faces to <span class="math" data-tex="\(e_0\)">\(e_0\)</span>. Its projection is constant on the whole boundary, hence represents <span class="math" data-tex="\(\pi_i(B)\)">\(\pi_i(B)\)</span>.</p>
+<p>To lift an arbitrary representative <span class="math" data-tex="\(g:(I^i,\partial I^i)\to(B,b_0)\)">\(g:(I^i,\partial I^i)\to(B,b_0)\)</span>, deform <span class="math" data-tex="\(I^i\)">\(I^i\)</span> onto <span class="math" data-tex="\(J\)">\(J\)</span>, fixing <span class="math" data-tex="\(J\)">\(J\)</span>. Such a deformation is given by the cylinder retraction onto its top and sides and straight interpolation with the identity. In ball coordinates on <span class="math" data-tex="\(I^{i-1}\)">\(I^{i-1}\)</span>, the retraction is
+<span class="math math-display" data-tex="\[
+(v,t)\longmapsto
+\bigl(\lambda v,-1+\lambda(t+1)\bigr),
+\quad
+\lambda=\min\{2/(t+1),1/\|v\|\}.
+\tag{C.16}
+\]">\[
+(v,t)\longmapsto
+\bigl(\lambda v,-1+\lambda(t+1)\bigr),
+\quad
+\lambda=\min\{2/(t+1),1/\|v\|\}.
+\tag{C.16}
+\]</span>
+At <span class="math" data-tex="\(v=0\)">\(v=0\)</span> ignore the second entry of the minimum. It lands on the top or a side and fixes that union. The straight interpolation stays in the convex cylinder and fixes <span class="math" data-tex="\(J\)">\(J\)</span>. Reverse this deformation and compose with <span class="math" data-tex="\(g\)">\(g\)</span>; it is a base homotopy starting at the constant <span class="math" data-tex="\(b_0\)">\(b_0\)</span>, fixed on <span class="math" data-tex="\(J\)">\(J\)</span>, and ending at <span class="math" data-tex="\(g\)">\(g\)</span>. Lift it starting at the constant <span class="math" data-tex="\(e_0\)">\(e_0\)</span>, prescribing the constant lift on <span class="math" data-tex="\(J\)">\(J\)</span>, by relative CW lifting. Its final map has the required relative boundary conditions. This proves surjectivity.</p>
+<p>If the projection of a relative representative <span class="math" data-tex="\(h\)">\(h\)</span> is null-homotopic through based sphere maps, lift that null-homotopy starting at <span class="math" data-tex="\(h\)">\(h\)</span> and prescribing the constant lift on <span class="math" data-tex="\(J\)">\(J\)</span>. Throughout it, the full boundary remains over <span class="math" data-tex="\(b_0\)">\(b_0\)</span>, so maps into <span class="math" data-tex="\(F\)">\(F\)</span>; at its end the whole cube maps into <span class="math" data-tex="\(F\)">\(F\)</span>. Hence the original relative class is zero, by Lemma B.1. This proves injectivity at group-valued terms. In dimension one, take a based homotopy between the projections of two relative paths. Prescribe their lifts on the two vertical sides of its square and the constant <span class="math" data-tex="\(e_0\)">\(e_0\)</span> on the edge for their distinguished endpoint. These three edges agree at their corners. Relative square lifting, rotated if necessary, fills the square with exactly these prescribed values. Its remaining edge lies over <span class="math" data-tex="\(b_0\)">\(b_0\)</span>, hence in <span class="math" data-tex="\(F\)">\(F\)</span>. The filling is a homotopy of relative paths between the original two paths, proving injectivity of the pointed-set map as well.</p>
+<p>The group operations in (C.14) commute with projection, by concatenation of representatives. Substitute (C.14) into (B.4). The map from <span class="math" data-tex="\(\pi_i(E)\)">\(\pi_i(E)\)</span> to <span class="math" data-tex="\(\pi_i(B)\)">\(\pi_i(B)\)</span> becomes the usual projection, and the connecting map sends a lifted base disk to its boundary in <span class="math" data-tex="\(F\)">\(F\)</span>. This proves (C.15) and naturality. ∎</p>
+<p>Applying this to (C.1), whose total space retracts onto <span class="math" data-tex="\(X\)">\(X\)</span>, supplies the homotopy sequence of any map through its homotopy fibre. The CW model of that fibre, from Theorem B.5, has exactly the same homotopy and homology groups by Theorem B.4.</p>
+<p><span id="DG-CHAR-13B.example-C.3"></span><strong>Example C.3 — Killing a first homotopy group.</strong> Suppose <span class="math" data-tex="\(X\)">\(X\)</span> is <span class="math" data-tex="\((r-1)\)">\((r-1)\)</span>-connected, <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>, and <span class="math" data-tex="\(g:X\to K\)">\(g:X\to K\)</span> induces an isomorphism on <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span>, while <span class="math" data-tex="\(\pi_i(K)=0\)">\(\pi_i(K)=0\)</span> for <span class="math" data-tex="\(i\ne r\)">\(i\ne r\)</span>. Its homotopy fibre <span class="math" data-tex="\(F_g\)">\(F_g\)</span> is <span class="math" data-tex="\(r\)">\(r\)</span>-connected, and
+<span class="math math-display" data-tex="\[
+\pi_i(F_g)\xrightarrow{\cong}\pi_i(X)\quad(i&gt;r).
+\tag{C.17}
+\]">\[
+\pi_i(F_g)\xrightarrow{\cong}\pi_i(X)\quad(i&gt;r).
+\tag{C.17}
+\]</span>
+Indeed, in (C.15) the only nonzero target group is <span class="math" data-tex="\(\pi_r(K)\)">\(\pi_r(K)\)</span>, and the preceding map <span class="math" data-tex="\(\pi_r(X)\to\pi_r(K)\)">\(\pi_r(X)\to\pi_r(K)\)</span> is an isomorphism. Exactness gives both <span class="math" data-tex="\(\pi_r(F_g)=0\)">\(\pi_r(F_g)=0\)</span> and <span class="math" data-tex="\(\pi_{r-1}(F_g)=0\)">\(\pi_{r-1}(F_g)=0\)</span>; lower groups and components vanish as well. For <span class="math" data-tex="\(i&gt;r\)">\(i&gt;r\)</span>, both neighbouring target groups are zero, giving (C.17). This example will construct connected covers after the spaces <span class="math" data-tex="\(K(A,r)\)">\(K(A,r)\)</span> and the required map <span class="math" data-tex="\(g\)">\(g\)</span> have been proved to exist.</p>
+<p>For fibrations, fibre transport and path-space constructions, see Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/AT/AT.pdf"><em>Algebraic Topology</em></a>.</p>
+<h2 id="d-the-homology-spectral-sequence-of-a-fibration">D. The homology spectral sequence of a fibration</h2>
+<p>Let <span class="math" data-tex="\(p:E\to B\)">\(p:E\to B\)</span> be a fibration in the sense of Section C. Assume that <span class="math" data-tex="\(B\)">\(B\)</span> is a path-connected, simply connected CW complex, and that its fibre <span class="math" data-tex="\(F\)">\(F\)</span> is path connected. Choose a vertex <span class="math" data-tex="\(b_0\)">\(b_0\)</span>, write <span class="math" data-tex="\(F=p^{-1}(b_0)\)">\(F=p^{-1}(b_0)\)</span>, and orient the cells of <span class="math" data-tex="\(B\)">\(B\)</span>. The coefficients <span class="math" data-tex="\(G\)">\(G\)</span> below are any abelian group. Simple connectivity is the precise condition that lets us use constant fibre-homology coefficients here; a general base requires its transport local system.</p>
+<p><span id="DG-CHAR-13B.theorem-D.1"></span><strong>Theorem D.1 — Serre homology sequence in the needed scope.</strong> There is a first-quadrant homological spectral sequence with
+<span class="math math-display" data-tex="\[
+E_2^{a,b}=H_a(B;H_b(F;G)),
+\qquad
+d_r:E_r^{a,b}\longrightarrow E_r^{a-r,b+r-1}.
+\tag{D.1}
+\]">\[
+E_2^{a,b}=H_a(B;H_b(F;G)),
+\qquad
+d_r:E_r^{a,b}\longrightarrow E_r^{a-r,b+r-1}.
+\tag{D.1}
+\]</span>
+It converges to <span class="math" data-tex="\(H_{a+b}(E;G)\)">\(H_{a+b}(E;G)\)</span> in the finite-filtration sense of (A.7)–(A.9). Its construction is natural for maps of fibrations whose map on the CW bases is cellular. Its two edges are the actual maps induced by fibre inclusion and projection:
+<span class="math math-display" data-tex="\[
+H_n(F;G)\longrightarrow H_n(E;G),
+\qquad
+H_n(E;G)\xrightarrow{p_*}H_n(B;G).
+\tag{D.2}
+\]">\[
+H_n(F;G)\longrightarrow H_n(E;G),
+\qquad
+H_n(E;G)\xrightarrow{p_*}H_n(B;G).
+\tag{D.2}
+\]</span>
+Here <span class="math" data-tex="\(E_\infty^{0,n}\)">\(E_\infty^{0,n}\)</span> is the image of the first map, and <span class="math" data-tex="\(E_\infty^{n,0}\)">\(E_\infty^{n,0}\)</span>, as a subgroup of <span class="math" data-tex="\(E_2^{n,0}=H_n(B;G)\)">\(E_2^{n,0}=H_n(B;G)\)</span>, is the image of the second map.</p>
+<p><strong>Proof.</strong></p>
+<h3 id="d-1-the-exhaustive-filtration-and-its-relative-terms">D.1. The exhaustive filtration and its relative terms</h3>
+<p>Put <span class="math" data-tex="\(E_a=p^{-1}(B^a)\)">\(E_a=p^{-1}(B^a)\)</span>, set <span class="math" data-tex="\(E_{-1}=\varnothing\)">\(E_{-1}=\varnothing\)</span>, and filter the singular chain complex by
+<span class="math math-display" data-tex="\[
+F_aC_*(E;G)=C_*(E_a;G).
+\tag{D.3}
+\]">\[
+F_aC_*(E;G)=C_*(E_a;G).
+\tag{D.3}
+\]</span>
+This is exhaustive. Every singular simplex has compact image, whose projection meets only finitely many cells of <span class="math" data-tex="\(B\)">\(B\)</span>, by the proved compact-subcomplex lemma. Those cells have a finite maximum dimension. Thus the simplex belongs to <span class="math" data-tex="\(C_*(E_a;G)\)">\(C_*(E_a;G)\)</span> for some <span class="math" data-tex="\(a\)">\(a\)</span>. This argument does not place it in filtration level equal to its own dimension.</p>
+<p>For <span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span>, work in <span class="math" data-tex="\(B^a\)">\(B^a\)</span> and take the open neighbourhood <span class="math" data-tex="\(N\)">\(N\)</span> of <span class="math" data-tex="\(B^{a-1}\)">\(B^{a-1}\)</span> consisting of that skeleton and the annuli of radius greater than <span class="math" data-tex="\(1/3\)">\(1/3\)</span> in every characteristic <span class="math" data-tex="\(a\)">\(a\)</span>-disk. Take <span class="math" data-tex="\(N_0\)">\(N_0\)</span> with radius greater than <span class="math" data-tex="\(2/3\)">\(2/3\)</span> instead. The weak topology makes both sets open. Moreover <span class="math" data-tex="\(\overline{N_0}\subset N\)">\(\overline{N_0}\subset N\)</span>: the skeleton together with the annuli of radius at least <span class="math" data-tex="\(2/3\)">\(2/3\)</span> is a closed set containing <span class="math" data-tex="\(N_0\)">\(N_0\)</span>, and lies in <span class="math" data-tex="\(N\)">\(N\)</span>. This is checked on every characteristic disk, including the lower-dimensional disks.</p>
+<p>Radial expansion of these annuli is a deformation of <span class="math" data-tex="\(N\)">\(N\)</span> onto <span class="math" data-tex="\(B^{a-1}\)">\(B^{a-1}\)</span>, fixing that skeleton. It is continuous on every characteristic disk and hence on the quotient times <span class="math" data-tex="\(I\)">\(I\)</span>. Lift it to <span class="math" data-tex="\(p^{-1}(N)\)">\(p^{-1}(N)\)</span>, with initial lift the identity. The endpoint lands in <span class="math" data-tex="\(E_{a-1}\)">\(E_{a-1}\)</span>. On <span class="math" data-tex="\(E_{a-1}\)">\(E_{a-1}\)</span>, the lifted homotopy may move points, but it stays in <span class="math" data-tex="\(E_{a-1}\)">\(E_{a-1}\)</span> throughout. Thus <span class="math" data-tex="\(E_{a-1}\hookrightarrow p^{-1}(N)\)">\(E_{a-1}\hookrightarrow p^{-1}(N)\)</span> is a homotopy equivalence. The sequences of the two pairs give
+<span class="math math-display" data-tex="\[
+H_*(E_a,E_{a-1};G)
+\cong H_*(E_a,p^{-1}(N);G).
+\tag{D.4}
+\]">\[
+H_*(E_a,E_{a-1};G)
+\cong H_*(E_a,p^{-1}(N);G).
+\tag{D.4}
+\]</span>
+Only a homotopy equivalence of the subspaces is needed for this conclusion; a pointwise fixed lifted deformation has not been assumed.</p>
+<p>Excision removes <span class="math" data-tex="\(p^{-1}(N_0)\)">\(p^{-1}(N_0)\)</span> from the right-hand pair. Its closure lies in <span class="math" data-tex="\(p^{-1}(N)\)">\(p^{-1}(N)\)</span>, because
+<span class="math" data-tex="\(\overline{p^{-1}(N_0)}\subset p^{-1}(\overline{N_0})\)">\(\overline{p^{-1}(N_0)}\subset p^{-1}(\overline{N_0})\)</span>.
+The remaining base is the disjoint union of the closed disk cores of radius <span class="math" data-tex="\(2/3\)">\(2/3\)</span>. It has the topology of that disjoint union: a union of closed subsets of its disk cores is closed in <span class="math" data-tex="\(B^a\)">\(B^a\)</span>, by the weak-topology test on characteristic disks. Consequently the remaining total-space pair is a disjoint union of pullback pairs over these cores and their annuli of radii <span class="math" data-tex="\(1/3&lt;\|v\|\leq2/3\)">\(1/3&lt;\|v\|\leq2/3\)</span>.</p>
+<p>Each core is contained in the open cell, where the characteristic map is a homeomorphism. By (C.12), its pullback fibration is fibre homotopy equivalent to a disk times a fibre, preserving the annulus as well. Radially retract the annulus onto the outer sphere and use the pair sequence to replace it by that sphere. Formula (C.13) and transport to the reference fibre therefore give
+<span class="math math-display" data-tex="\[
+H_{a+b}(E_a,E_{a-1};G)
+\cong\bigoplus_{e^a}H_b(F;G).
+\tag{D.5}
+\]">\[
+H_{a+b}(E_a,E_{a-1};G)
+\cong\bigoplus_{e^a}H_b(F;G).
+\tag{D.5}
+\]</span>
+At <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, <span class="math" data-tex="\(B^0\)">\(B^0\)</span> is discrete and the same formula follows directly from its disjoint fibres. The direct sum is correct even for infinitely many cells: a singular chain has finite support and, on projection, compact image in only finitely many cells. The chosen orientation of each disk fixes its generator. In the product model the disk comes first, followed by the fibre chain.</p>
+<p>Formula (D.5) vanishes when <span class="math" data-tex="\(b&lt;0\)">\(b&lt;0\)</span>. Theorem A.1 now constructs a first-quadrant sequence converging with the asserted finite filtration. Its first page is (D.5).</p>
+<h3 id="d-2-identifying-the-first-differential">D.2. Identifying the first differential</h3>
+<p>The differential on the first page is the composite
+<span class="math math-display" data-tex="\[
+H_{a+b}(E_a,E_{a-1};G)
+\xrightarrow{\partial}H_{a+b-1}(E_{a-1};G)
+\longrightarrow H_{a+b-1}(E_{a-1},E_{a-2};G).
+\tag{D.6}
+\]">\[
+H_{a+b}(E_a,E_{a-1};G)
+\xrightarrow{\partial}H_{a+b-1}(E_{a-1};G)
+\longrightarrow H_{a+b-1}(E_{a-1},E_{a-2};G).
+\tag{D.6}
+\]</span>
+We prove that under (D.5) it is the ordinary cellular boundary of <span class="math" data-tex="\(B\)">\(B\)</span>, with the coefficient group <span class="math" data-tex="\(H_b(F;G)\)">\(H_b(F;G)\)</span>.</p>
+<p>Pull the fibration back to one characteristic <span class="math" data-tex="\(a\)">\(a\)</span>-disk. Its fibre homotopy trivialization sends its relative class to the disk generator crossed with a fibre cycle <span class="math" data-tex="\(z\)">\(z\)</span>. The product boundary formula
+<span class="math math-display" data-tex="\[
+\partial(c\times z)=\partial c\times z+(-1)^a c\times\partial z
+\]">\[
+\partial(c\times z)=\partial c\times z+(-1)^a c\times\partial z
+\]</span>
+reduces, since <span class="math" data-tex="\(z\)">\(z\)</span> is a cycle, to the boundary sphere crossed with <span class="math" data-tex="\(z\)">\(z\)</span>. Thus (D.6) is obtained by applying the lifted attaching map to this sphere class and then excising the <span class="math" data-tex="\((a-1)\)">\((a-1)\)</span>-cell cores.</p>
+<p>For <span class="math" data-tex="\(a\geq2\)">\(a\geq2\)</span>, fix a target <span class="math" data-tex="\((a-1)\)">\((a-1)\)</span>-cell. The attaching sphere has compact image. In a small ball inside that cell, make its map piecewise affine by the localized cutoff-and-mesh construction from the geometric Thom chapter, Lemma B.1; the homotopy is fixed outside a slightly larger ball. Choose a point avoiding the images of all faces of dimension less than <span class="math" data-tex="\(a-1\)">\(a-1\)</span>, and all affine pieces of deficient rank. These images lie in finitely many proper affine subspaces, so do not fill the ball. The point has finitely many inverse images, each in an invertible affine piece. Compactness lets us choose a still smaller target ball whose inverse image consists exactly of the corresponding disjoint source disks, on each of which the map is a homeomorphism with sign <span class="math" data-tex="\(+1\)">\(+1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. More explicitly, outside small neighbourhoods of the finitely many inverse images the map has compact image missing the chosen point; shrink the target ball to miss that image and to lie inside every invertible affine chart image.</p>
+<p>This is the same signed local-degree computation used in the full sphere-degree proof in the frame-obstruction chapter, Lemma B.1. The sum of these signs is the cellular incidence coefficient: excision evaluates the attaching sphere in the relative group of the target cell, and its positive disk generator reads exactly that sum.</p>
+<p>The lifted map over each source disk gives the same coefficient map on fibre homology after transport. To check this without a trivialization assumption across an attaching sphere, trivialize the two pullbacks over the source and target disks. The resulting map is
+<span class="math math-display" data-tex="\[
+(v,z)\longmapsto\bigl(\varphi(v),\psi_v(z)\bigr).
+\]">\[
+(v,z)\longmapsto\bigl(\varphi(v),\psi_v(z)\bigr).
+\]</span>
+Contracting <span class="math" data-tex="\(v\)">\(v\)</span> within the source disk homotopes its second coordinate to <span class="math" data-tex="\(\psi_{v_0}(z)\)">\(\psi_{v_0}(z)\)</span>, while retaining its first coordinate <span class="math" data-tex="\(\varphi(v)\)">\(\varphi(v)\)</span>. This is a homotopy of pairs, since the boundary behaviour is controlled by the unchanged first coordinate. Hence its map on relative product homology is the signed degree of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> times <span class="math" data-tex="\((\psi_{v_0})_*\)">\((\psi_{v_0})_*\)</span>.</p>
+<p>Naturality of transport follows by applying a map of fibrations to a chosen lift of a path and comparing it with the chosen lift in the other fibration; the relative square proof in Section C supplies the comparison homotopy. It follows that <span class="math" data-tex="\((\psi_{v_0})_*\)">\((\psi_{v_0})_*\)</span>, under transport to <span class="math" data-tex="\(F\)">\(F\)</span>, is the identity. Any different choices insert a loop in <span class="math" data-tex="\(B\)">\(B\)</span>, and such a loop is null-homotopic by simple connectivity. Summing the source-disk signs therefore gives the cellular incidence coefficient times <span class="math" data-tex="\(z\)">\(z\)</span>, as required.</p>
+<p>For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, the boundary of a positively oriented interval is its terminal point minus its initial point. Its two fibre classes are transported along that interval. Under reference-fibre identification they again give exactly the two signed vertex coefficients of the cellular boundary. For <span class="math" data-tex="\(a=0\)">\(a=0\)</span> the differential is zero.</p>
+<p>We have proved
+<span class="math math-display" data-tex="\[
+(E_1^{*,b},d_1)
+\cong \bigl(C_*^{\mathrm{cell}}(B;H_b(F;G)),\partial_{\mathrm{cell}}\bigr).
+\tag{D.7}
+\]">\[
+(E_1^{*,b},d_1)
+\cong \bigl(C_*^{\mathrm{cell}}(B;H_b(F;G)),\partial_{\mathrm{cell}}\bigr).
+\tag{D.7}
+\]</span>
+The cellular complex with constant coefficients computes singular homology. Here is the precise earlier proof being used: the frame-obstruction chapter, Lemma G.1, constructs the annular small-chain equivalences equivariantly <em>before</em> applying <span class="math" data-tex="\(\operatorname{Hom}\)">\(\operatorname{Hom}\)</span>, and contracts each relative disk complex to its free disk generator. With constant coefficients, tensoring those chain equivalences gives the relative cellular homology groups. The pair sequences then give their cellular boundary complex. Passage to arbitrary-dimensional complexes uses compact singular chains in finite subcomplexes, so involves a direct union and no inverse-limit cohomology issue. Equivalently, applying Theorem A.1 to the skeleta of <span class="math" data-tex="\(B\)">\(B\)</span> puts the relative groups in the single row <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, and its first boundary is the cellular boundary just calculated. It consequently collapses at its second page to singular homology. Thus (D.7) proves (D.1).</p>
+<h3 id="d-3-naturality-and-the-edges">D.3. Naturality and the edges</h3>
+<p>A map of fibrations over a cellular map of bases preserves (D.3), so Section A gives maps of pages and of their limiting filtrations. On (D.5), excision over target cell cores computes its map by the same finite source-disk signed-degree calculation just used. Its coefficient map is the fibre homology map, by naturality of transport. On taking cellular homology, its second-page map is exactly
+<span class="math math-display" data-tex="\[
+H_a(B;H_b(F;G))\longrightarrow
+H_a(B&#x27;;H_b(F&#x27;;G))
+\]">\[
+H_a(B;H_b(F;G))\longrightarrow
+H_a(B&#x27;;H_b(F&#x27;;G))
+\]</span>
+induced by the base and fibre maps. This proves the stated naturality.</p>
+<p>If a based map of CW bases is initially not cellular, the proved cellular approximation makes it cellular while fixing the reference vertex. Lift that base homotopy, with parameter <span class="math" data-tex="\(E\)">\(E\)</span>, into the target fibration starting at the given total-space map. Its endpoint is a map of fibrations over the cellular base map, and its total-space map is homotopic to the original one. Over the fixed reference vertex the lifted homotopy remains inside the target fibre, so the fibre map also retains its homotopy class. This allows the cellular construction to compute the actual induced total-space, base, and fibre homology maps. We need no assertion here that every choice produces literally identical intermediate page representatives.</p>
+<p>The filtration level zero on total homology is the image of the reference fibre:
+<span class="math math-display" data-tex="\[
+F_0H_n(E;G)=\operatorname{im}(H_n(F;G)\to H_n(E;G)).
+\tag{D.8}
+\]">\[
+F_0H_n(E;G)=\operatorname{im}(H_n(F;G)\to H_n(E;G)).
+\tag{D.8}
+\]</span>
+Indeed <span class="math" data-tex="\(E_0\)">\(E_0\)</span> is the disjoint union of the vertex fibres. Transport along a path from a vertex to <span class="math" data-tex="\(b_0\)">\(b_0\)</span> is, as a map into <span class="math" data-tex="\(E\)">\(E\)</span>, homotopic to that vertex's inclusion, by its defining lifted path homotopy. Thus every vertex fibre has the same homology image as <span class="math" data-tex="\(F\)">\(F\)</span>. Since <span class="math" data-tex="\(F_{-1}=0\)">\(F_{-1}=0\)</span>, (A.7) identifies (D.8) with <span class="math" data-tex="\(E_\infty^{0,n}\)">\(E_\infty^{0,n}\)</span>. On the second page <span class="math" data-tex="\(E_2^{0,n}=H_n(F;G)\)">\(E_2^{0,n}=H_n(F;G)\)</span>; there are no outgoing differentials from its zero column, so the subsequent pages quotient it by incoming images. This is the first edge in (D.2).</p>
+<p>For the other edge, apply naturality to the map of fibrations
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+E&amp;\xrightarrow{p}&amp;B\\
+\downarrow p&amp;&amp;\downarrow\operatorname{id}\\
+B&amp;\xrightarrow{\operatorname{id}}&amp;B .
+\end{array}
+\]">\[
+\begin{array}{ccc}
+E&amp;\xrightarrow{p}&amp;B\\
+\downarrow p&amp;&amp;\downarrow\operatorname{id}\\
+B&amp;\xrightarrow{\operatorname{id}}&amp;B .
+\end{array}
+\]</span>
+The identity fibration has point fibre and only its zero row. Its second page and its limiting zero row are <span class="math" data-tex="\(H_*(B;G)\)">\(H_*(B;G)\)</span>. Because <span class="math" data-tex="\(F\)">\(F\)</span> is path connected, <span class="math" data-tex="\(H_0(F;G)=G\)">\(H_0(F;G)=G\)</span>, and the map on the zero row of (D.1) is the identity of <span class="math" data-tex="\(H_*(B;G)\)">\(H_*(B;G)\)</span>. No differential enters that row after page two, since its potential source has negative second index. Therefore <span class="math" data-tex="\(E_\infty^{n,0}\)">\(E_\infty^{n,0}\)</span> is a subgroup of <span class="math" data-tex="\(E_2^{n,0}=H_n(B;G)\)">\(E_2^{n,0}=H_n(B;G)\)</span>.</p>
+<p>The projection kills <span class="math" data-tex="\(F_{n-1}H_n(E;G)\)">\(F_{n-1}H_n(E;G)\)</span>, since its image factors through <span class="math" data-tex="\(H_n(B^{n-1};G)=0\)">\(H_n(B^{n-1};G)=0\)</span>, by the cellular calculation. On the remaining filtration quotient its map is exactly this subgroup inclusion, by naturality of (A.7). Its image is therefore <span class="math" data-tex="\(E_\infty^{n,0}\)">\(E_\infty^{n,0}\)</span>, and its kernel is <span class="math" data-tex="\(F_{n-1}H_n(E;G)\)">\(F_{n-1}H_n(E;G)\)</span>. This proves the second edge and completes Theorem D.1. ∎</p>
+<p><strong>Trivial fibre-homology transport over a path-connected base.</strong> Let <span class="math" data-tex="\(p:E\to B\)">\(p:E\to B\)</span> be a fibration as defined in Section C, with <span class="math" data-tex="\(B\)">\(B\)</span> path connected and its nonempty fibre <span class="math" data-tex="\(F=p^{-1}(b_0)\)">\(F=p^{-1}(b_0)\)</span> path connected. Let <span class="math" data-tex="\(G\)">\(G\)</span> be any abelian group. Suppose transport along every loop at <span class="math" data-tex="\(b_0\)">\(b_0\)</span> induces the identity on <span class="math" data-tex="\(H_b(F;G)\)">\(H_b(F;G)\)</span> for every <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span>. Then there is a first-quadrant spectral sequence with the second page and differential in (D.1), converging to <span class="math" data-tex="\(H_*(E;G)\)">\(H_*(E;G)\)</span> with a finite filtration in each total degree. Its two edges are the actual fibre-inclusion and projection maps in (D.2), with the same image descriptions. The base need not be a CW complex.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(B\)">\(B\)</span> is a CW complex. Transport on fibre homology along paths with fixed endpoints is independent of the chosen path: the difference between two paths is a loop, and its transport acts by the identity by hypothesis. Use these path-independent homology identifications in (D.5). Every part of the filtration, excision, disk-pair and convergence proofs above applies to this base. In the calculation of the first differential, a different choice of paths inserts precisely such a loop. Its action on the coefficient group is the identity, so (D.7) still holds with constant coefficients. This proves (D.1). Naturality for cellular maps of such fibrations follows from the same signed disk calculation. The edge proofs use that naturality and path connectivity of the fibre. Thus all assertions hold for a CW base under the stated transport hypothesis.</p>
+<p>For a general path-connected <span class="math" data-tex="\(B\)">\(B\)</span>, Theorem B.5 gives a based CW model <span class="math" data-tex="\(u:B&#x27;\to B\)">\(u:B&#x27;\to B\)</span>, with one vertex mapping to <span class="math" data-tex="\(b_0\)">\(b_0\)</span>. Pull back the fibration to <span class="math" data-tex="\(p&#x27;:E&#x27;=u^*E\to B&#x27;\)">\(p&#x27;:E&#x27;=u^*E\to B&#x27;\)</span>, and let <span class="math" data-tex="\(v:E&#x27;\to E\)">\(v:E&#x27;\to E\)</span> be its projection. The reference fibres are literally the same <span class="math" data-tex="\(F\)">\(F\)</span>. Their transport actions agree under <span class="math" data-tex="\(u_*\)">\(u_*\)</span>, by naturality of transport, so the hypothesis holds for <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>. Both total spaces are path connected: lifting a path from the projection of a point to the reference vertex joins that point to its reference fibre, and the reference fibre is path connected.</p>
+<p>The map <span class="math" data-tex="\(v\)">\(v\)</span> is a weak homotopy equivalence. To check this in every positive degree, use the natural exact sequences (C.15). Given a class <span class="math" data-tex="\(x\in\pi_i(E)\)">\(x\in\pi_i(E)\)</span>, lift its projected class to <span class="math" data-tex="\(y&#x27;\in\pi_i(B&#x27;)\)">\(y&#x27;\in\pi_i(B&#x27;)\)</span> using the isomorphism <span class="math" data-tex="\(u_*\)">\(u_*\)</span>. Its boundary in <span class="math" data-tex="\(\pi_{i-1}(F)\)">\(\pi_{i-1}(F)\)</span> is zero, because the boundary of the projection of <span class="math" data-tex="\(x\)">\(x\)</span> is zero. Hence <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span> lifts to some <span class="math" data-tex="\(x&#x27;\in\pi_i(E&#x27;)\)">\(x&#x27;\in\pi_i(E&#x27;)\)</span>. The difference between <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(v_*x&#x27;\)">\(v_*x&#x27;\)</span> lies in the image of <span class="math" data-tex="\(\pi_i(F)\)">\(\pi_i(F)\)</span>. Correct <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span> by that fibre class to obtain a preimage of <span class="math" data-tex="\(x\)">\(x\)</span>. This argument uses multiplication and inverse when <span class="math" data-tex="\(i=1\)">\(i=1\)</span>, and addition when <span class="math" data-tex="\(i\geq2\)">\(i\geq2\)</span>.</p>
+<p>For injectivity, if <span class="math" data-tex="\(v_*x&#x27;=0\)">\(v_*x&#x27;=0\)</span>, the isomorphism on base groups gives <span class="math" data-tex="\(p&#x27;_*x&#x27;=0\)">\(p&#x27;_*x&#x27;=0\)</span>, so <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span> comes from a fibre class <span class="math" data-tex="\(z\in\pi_i(F)\)">\(z\in\pi_i(F)\)</span>. Its image in <span class="math" data-tex="\(\pi_i(E)\)">\(\pi_i(E)\)</span> is zero. By exactness, <span class="math" data-tex="\(z\)">\(z\)</span> is the boundary of a class in <span class="math" data-tex="\(\pi_{i+1}(B)\)">\(\pi_{i+1}(B)\)</span>. Lift that class to <span class="math" data-tex="\(\pi_{i+1}(B&#x27;)\)">\(\pi_{i+1}(B&#x27;)\)</span>; naturality of the boundary says that its boundary is the same <span class="math" data-tex="\(z\)">\(z\)</span>. Therefore the image of <span class="math" data-tex="\(z\)">\(z\)</span> in <span class="math" data-tex="\(\pi_i(E&#x27;)\)">\(\pi_i(E&#x27;)\)</span> is zero and <span class="math" data-tex="\(x&#x27;=0\)">\(x&#x27;=0\)</span>. Path connectivity gives the required bijection on components. These arguments also verify the nonabelian degree-one case.</p>
+<p>Theorem B.4 now gives homology isomorphisms for <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>, with every abelian coefficient group. In particular,
+<span class="math math-display" data-tex="\[
+H_a(B&#x27;;H_b(F;G))\xrightarrow{\cong}H_a(B;H_b(F;G)),
+\qquad H_n(E&#x27;;G)\xrightarrow{\cong}H_n(E;G).
+\]">\[
+H_a(B&#x27;;H_b(F;G))\xrightarrow{\cong}H_a(B;H_b(F;G)),
+\qquad H_n(E&#x27;;G)\xrightarrow{\cong}H_n(E;G).
+\]</span>
+Use the first isomorphism to identify the second page of the CW-base sequence, and the second to transfer its finite filtration to <span class="math" data-tex="\(H_n(E;G)\)">\(H_n(E;G)\)</span>. The commuting pullback square, together with the identity on the reference fibre, identifies its two edge maps with the actual fibre-inclusion and projection maps for <span class="math" data-tex="\(p\)">\(p\)</span>. It also transfers their image descriptions. This proves all the assertions. ∎</p>
+<p>This transport form of the Serre theorem is treated in Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/SSAT/SSch1.pdf"><em>Spectral Sequences in Algebraic Topology</em></a>, and <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch5.pdf"><em>Spectral Sequences</em>, the preliminary extra chapter of <em>Algebraic Topology</em></a>.</p>
+<h2 id="e-exercises-with-complete-solutions">E. Exercises with complete solutions</h2>
+<p><span id="DG-CHAR-13B.exercise-E.1"></span><strong>Exercise E.1 — Easy: an acyclic part above the degree filtration.</strong> Let <span class="math" data-tex="\(C_1=\mathbb Z a\)">\(C_1=\mathbb Z a\)</span>, <span class="math" data-tex="\(C_0=\mathbb Z b\)">\(C_0=\mathbb Z b\)</span>, <span class="math" data-tex="\(d(a)=b\)">\(d(a)=b\)</span>, and all other chain groups be zero. Set <span class="math" data-tex="\(F_pC=0\)">\(F_pC=0\)</span> for <span class="math" data-tex="\(p&lt;5\)">\(p&lt;5\)</span>, and <span class="math" data-tex="\(F_pC=C\)">\(F_pC=C\)</span> for <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span>. Verify the first-quadrant condition of Theorem A.1 even though <span class="math" data-tex="\(C_0\not\subset F_0C_0\)">\(C_0\not\subset F_0C_0\)</span>. What changes if <span class="math" data-tex="\(d(a)=2b\)">\(d(a)=2b\)</span>?</p>
+<p><strong>Solution.</strong> The only nonzero associated quotient complex is <span class="math" data-tex="\(F_5C/F_4C=C\)">\(F_5C/F_4C=C\)</span>. Its differential is an isomorphism, so its homology is zero. Thus the entire first page is zero, and in particular is in the first quadrant. The total complex is acyclic too. Its high-filtration generators cause no convergence problem because they already cancel in the associated quotient.</p>
+<p>For the second differential, the quotient complex has <span class="math" data-tex="\(H_0=\mathbb Z/2\)">\(H_0=\mathbb Z/2\)</span>. It occurs at <span class="math" data-tex="\((p,q)=(5,-5)\)">\((p,q)=(5,-5)\)</span>. The first-quadrant hypothesis fails. Indeed <span class="math" data-tex="\(H_0(C)=\mathbb Z/2\)">\(H_0(C)=\mathbb Z/2\)</span>, whereas <span class="math" data-tex="\(F_0H_0=0\)">\(F_0H_0=0\)</span>, so the bounded-degree conclusion <span class="math" data-tex="\(F_0H_0=H_0\)">\(F_0H_0=H_0\)</span> would be false. Exhaustiveness by itself proves neither that conclusion nor the first-quadrant condition.</p>
+<p><span id="DG-CHAR-13B.exercise-E.2"></span><strong>Exercise E.2 — Medium: check the compression cap.</strong> Verify every domain and boundary condition in (B.2)–(B.3), including the centre and the joining radius <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and explain why its use on a null-homotopy fixes the original boundary.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(r=\|v\|\leq1/2\)">\(r=\|v\|\leq1/2\)</span>, <span class="math" data-tex="\(\mu=2\)">\(\mu=2\)</span>, so <span class="math" data-tex="\(Q(v)=(2v,1)\)">\(Q(v)=(2v,1)\)</span> lies on the top disk. For <span class="math" data-tex="\(1/2\leq r\leq1\)">\(1/2\leq r\leq1\)</span>, <span class="math" data-tex="\(\mu=1/r\)">\(\mu=1/r\)</span>, so the spatial coordinate is <span class="math" data-tex="\(v/r\)">\(v/r\)</span> and the time coordinate is <span class="math" data-tex="\(1/r-1\in[0,1]\)">\(1/r-1\in[0,1]\)</span>; it lies on the side. At <span class="math" data-tex="\(r=1/2\)">\(r=1/2\)</span> the formulas agree. At the centre the constant value <span class="math" data-tex="\(\mu=2\)">\(\mu=2\)</span> in a neighbourhood proves continuity without a division by zero. At <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, <span class="math" data-tex="\(\mu=1\)">\(\mu=1\)</span>, so <span class="math" data-tex="\(Q(v)=(v,0)\)">\(Q(v)=(v,0)\)</span>. The straight segment <span class="math" data-tex="\(Q_s(v)\)">\(Q_s(v)\)</span> between <span class="math" data-tex="\((v,0)\)">\((v,0)\)</span> and <span class="math" data-tex="\(Q(v)\)">\(Q(v)\)</span> stays in the convex cylinder and fixes that rim for every <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>If <span class="math" data-tex="\(F\)">\(F\)</span> is the null-homotopy in Lemma B.1, its side and top have image in <span class="math" data-tex="\(A\)">\(A\)</span>. Thus <span class="math" data-tex="\(FQ_1\)">\(FQ_1\)</span> has image in <span class="math" data-tex="\(A\)">\(A\)</span>, while for every boundary point <span class="math" data-tex="\(v\)">\(v\)</span> and every <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(FQ_s(v)=F(v,0)\)">\(FQ_s(v)=F(v,0)\)</span>. It fixes the entire original boundary, not just its distinguished point. The interior bottom is allowed to move; for example <span class="math" data-tex="\(Q(0)=(0,1)\)">\(Q(0)=(0,1)\)</span>.</p>
+<p><span id="DG-CHAR-13B.exercise-E.3"></span><strong>Exercise E.3 — Medium: two homotopy fibres.</strong> Find the homotopy fibres of the identity <span class="math" data-tex="\(B\to B\)">\(B\to B\)</span> and of the constant map <span class="math" data-tex="\(X\to B\)">\(X\to B\)</span> with value <span class="math" data-tex="\(b_0\)">\(b_0\)</span>. Supply an explicit contraction in the identity case.</p>
+<p><strong>Solution.</strong> In the identity case the point <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(\gamma(0)\)">\(\gamma(0)\)</span>, so the homotopy fibre is the space of paths ending at <span class="math" data-tex="\(b_0\)">\(b_0\)</span>. For <span class="math" data-tex="\(u\in I\)">\(u\in I\)</span>, replace <span class="math" data-tex="\((x,\gamma)\)">\((x,\gamma)\)</span> by
+<span class="math math-display" data-tex="\[
+\bigl(\gamma(u),\ s\mapsto\gamma(u+(1-u)s)\bigr).
+\]">\[
+\bigl(\gamma(u),\ s\mapsto\gamma(u+(1-u)s)\bigr).
+\]</span>
+It starts at the original point, ends at the constant <span class="math" data-tex="\(b_0\)">\(b_0\)</span> path, and fixes that constant path. Its continuity follows from the compact-open adjoint criterion in Section C. Thus this fibre is contractible.</p>
+<p>For the constant map, the only path condition is that both endpoints are <span class="math" data-tex="\(b_0\)">\(b_0\)</span>. Consequently its homotopy fibre is literally <span class="math" data-tex="\(X\times\Omega B\)">\(X\times\Omega B\)</span>, with the product topology inherited from <span class="math" data-tex="\(X\times B^I\)">\(X\times B^I\)</span>. This agrees with the long exact sequence: a constant map does not kill a nonzero homotopy class of <span class="math" data-tex="\(X\)">\(X\)</span>, whereas the identity kills all of them in its homotopy fibre.</p>
+<p><span id="DG-CHAR-13B.exercise-E.4"></span><strong>Exercise E.4 — Medium: the integral homology of a looped sphere.</strong> For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, use the path fibration to determine <span class="math" data-tex="\(H_j(\Omega S^n;\mathbb Z)\)">\(H_j(\Omega S^n;\mathbb Z)\)</span> in every degree. Determine the additive groups, without assuming a product calculation.</p>
+<p><strong>Solution.</strong> The loopspace is path connected by (C.6) and the already proved simple connectivity of <span class="math" data-tex="\(S^n\)">\(S^n\)</span>. Its path-space total space is contractible by (C.4). Give <span class="math" data-tex="\(S^n\)">\(S^n\)</span> its CW structure with a vertex and an <span class="math" data-tex="\(n\)">\(n\)</span>-cell. With <span class="math" data-tex="\(A_j=H_j(\Omega S^n;\mathbb Z)\)">\(A_j=H_j(\Omega S^n;\mathbb Z)\)</span>, (D.1) has only two columns:
+<span class="math math-display" data-tex="\[
+E_2^{0,j}=A_j,\qquad E_2^{n,j}=A_j.
+\]">\[
+E_2^{0,j}=A_j,\qquad E_2^{n,j}=A_j.
+\]</span>
+The sphere's cellular complex has zero differential and one generator in degrees zero and <span class="math" data-tex="\(n\)">\(n\)</span>, so this coefficient calculation holds for every <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, with no freeness assumption on it.</p>
+<p>The only possible differential is <span class="math" data-tex="\(d_n\)">\(d_n\)</span> from <span class="math" data-tex="\((n,j)\)">\((n,j)\)</span> to <span class="math" data-tex="\((0,j+n-1)\)">\((0,j+n-1)\)</span>. All earlier pages agree with page two, and all later pages agree with page <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. Every entry in column <span class="math" data-tex="\(n\)">\(n\)</span> must disappear: its total degree is positive and the total space is contractible, while no differential enters it. Every positive-degree entry in column zero must disappear as well, and none has an outgoing differential. Therefore
+<span class="math math-display" data-tex="\[
+d_n:A_j\xrightarrow{\cong}A_{j+n-1}\quad(j\geq0).
+\]">\[
+d_n:A_j\xrightarrow{\cong}A_{j+n-1}\quad(j\geq0).
+\]</span>
+Entries <span class="math" data-tex="\(A_j\)">\(A_j\)</span> with <span class="math" data-tex="\(0&lt;j&lt;n-1\)">\(0&lt;j&lt;n-1\)</span> have neither incoming nor outgoing differentials, so they are zero. Path connectivity gives <span class="math" data-tex="\(A_0=\mathbb Z\)">\(A_0=\mathbb Z\)</span>. The recurrence now proves
+<span class="math math-display" data-tex="\[
+H_j(\Omega S^n;\mathbb Z)=
+\begin{cases}
+\mathbb Z,&amp;j\text{ is a nonnegative multiple of }n-1,\\
+0,&amp;\text{otherwise}.
+\end{cases}
+\]">\[
+H_j(\Omega S^n;\mathbb Z)=
+\begin{cases}
+\mathbb Z,&amp;j\text{ is a nonnegative multiple of }n-1,\\
+0,&amp;\text{otherwise}.
+\end{cases}
+\]</span>
+This determines the groups alone. It does not yet identify a loopspace multiplication or its homology ring.</p>
+<p><span id="DG-CHAR-13B.exercise-E.5"></span><strong>Exercise E.5 — Hard: why the fibre transport matters.</strong> Form the mapping torus
+<span class="math math-display" data-tex="\[
+K=(S^1\times I)/\bigl((x,1)\sim(-x,0)\bigr),
+\]">\[
+K=(S^1\times I)/\bigl((x,1)\sim(-x,0)\bigr),
+\]</span>
+writing <span class="math" data-tex="\(S^1=\mathbb R/\mathbb Z\)">\(S^1=\mathbb R/\mathbb Z\)</span> additively. Determine the transport on <span class="math" data-tex="\(H_1(S^1;\mathbb Z)\)">\(H_1(S^1;\mathbb Z)\)</span>, compute <span class="math" data-tex="\(H_1(K;\mathbb Z)\)">\(H_1(K;\mathbb Z)\)</span> and <span class="math" data-tex="\(H_2(K;\mathbb Z)\)">\(H_2(K;\mathbb Z)\)</span>, and exhibit a contradiction to using constant fibre coefficients without the hypothesis of Theorem D.1.</p>
+<p><strong>Solution.</strong> Projection onto <span class="math" data-tex="\(I/\partial I=S^1\)">\(I/\partial I=S^1\)</span> is a circle bundle: away from the joined ends it is a product, and across those ends its fibre chart changes by <span class="math" data-tex="\(x\mapsto-x\)">\(x\mapsto-x\)</span>. Transport once around its base is this reflection. It acts by <span class="math" data-tex="\(-1\)">\(-1\)</span> on the positive generator of <span class="math" data-tex="\(H_1(S^1;\mathbb Z)\)">\(H_1(S^1;\mathbb Z)\)</span>, by the proved signed degree calculation.</p>
+<p>Here the projection also has the full lifting property of Section C. Write the same total space as the quotient of <span class="math" data-tex="\(S^1\times\mathbb R\)">\(S^1\times\mathbb R\)</span> by <span class="math" data-tex="\((x,t+1)\sim(-x,t)\)">\((x,t+1)\sim(-x,t)\)</span>. Given <span class="math" data-tex="\(H:Z\times I\to\mathbb R/\mathbb Z\)">\(H:Z\times I\to\mathbb R/\mathbb Z\)</span> and an initial lift into this quotient, choose local bundle coordinates for that initial lift, written <span class="math" data-tex="\((x_0(z),t_0(z))\)">\((x_0(z),t_0(z))\)</span>. Lift the base path <span class="math" data-tex="\(H(z,-)\)">\(H(z,-)\)</span> to a real path <span class="math" data-tex="\(\widetilde H(z,-)\)">\(\widetilde H(z,-)\)</span> starting at <span class="math" data-tex="\(t_0(z)\)">\(t_0(z)\)</span>, using the interval-cover lifting proof from the classifying-map chapter. These lifts vary continuously even for an arbitrary parameter space <span class="math" data-tex="\(Z\)">\(Z\)</span>: for a fixed parameter, subdivide the compact interval into finitely many closed subintervals whose base images lie in evenly covered arcs. Continuity and the finite tube argument give a neighbourhood of that parameter on which the same subdivision and arcs work. Their inverse sheet charts, chosen successively from the initial value, give a continuous lift on that neighbourhood times <span class="math" data-tex="\(I\)">\(I\)</span>. Uniqueness of real path lifting makes these local descriptions agree.</p>
+<p>The quotient class of <span class="math" data-tex="\((x_0(z),\widetilde H(z,s))\)">\((x_0(z),\widetilde H(z,s))\)</span> is therefore a continuous lift of the base homotopy with exactly the prescribed initial value. If initial coordinates change by an integer <span class="math" data-tex="\(k\)">\(k\)</span>, the real lift changes by <span class="math" data-tex="\(k\)">\(k\)</span> and the fibre coordinate changes by <span class="math" data-tex="\((-1)^k\)">\((-1)^k\)</span>, which represents the same quotient point. Thus the local constructions glue over <span class="math" data-tex="\(Z\)">\(Z\)</span>. This proves the required homotopy lifting property and makes the transport in the example an instance of (C.7).</p>
+<p>A square presentation gives one vertex, two edges <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, and one two-cell. The vertical edge <span class="math" data-tex="\(a\)">\(a\)</span> goes around the base, and the horizontal edge <span class="math" data-tex="\(b\)">\(b\)</span> goes around the fibre. Traversing the square boundary gives the attaching word <span class="math" data-tex="\(aba^{-1}b\)">\(aba^{-1}b\)</span>, after choosing its starting corner. Its cellular boundary is <span class="math" data-tex="\(0a+2b\)">\(0a+2b\)</span>. The one-dimensional boundary is zero. The cellular calculation proved in Section D therefore gives
+<span class="math math-display" data-tex="\[
+H_1(K;\mathbb Z)=\mathbb Z[a]\oplus(\mathbb Z/2)[b],
+\qquad H_2(K;\mathbb Z)=0.
+\]">\[
+H_1(K;\mathbb Z)=\mathbb Z[a]\oplus(\mathbb Z/2)[b],
+\qquad H_2(K;\mathbb Z)=0.
+\]</span>
+If one inserted constant fibre coefficients into (D.1), the supposed second page would have a copy of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> at each of <span class="math" data-tex="\((0,0),(1,0),(0,1),(1,1)\)">\((0,0),(1,0),(0,1),(1,1)\)</span>. Every higher differential would be zero for degree reasons. The entry at <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> would then make <span class="math" data-tex="\(H_2(K;\mathbb Z)=\mathbb Z\)">\(H_2(K;\mathbb Z)=\mathbb Z\)</span>, contrary to the calculation. The base is not simply connected and its action on fibre homology is nontrivial; those are exactly the missing hypotheses. Correct coefficients must retain this reflection transport.</p>
+<p><span id="DG-CHAR-13B.exercise-E.6"></span><strong>Exercise E.6 — Hard: finite generation in a fibration.</strong> Under Theorem D.1's hypotheses, suppose that any two of <span class="math" data-tex="\(F,E,B\)">\(F,E,B\)</span> have finitely generated integral homology in every degree. Prove that the third has finitely generated integral homology in every degree, including the case where the missing space is the fibre.</p>
+<p><strong>Solution.</strong> We first supply the coefficient algebra. Subgroups of finite-rank free abelian groups are free of finite rank, by the well-ordered basis proof in the Thom-class chapter, Lemma 5.1. A subgroup of a finitely generated abelian group is finitely generated: pull it back along a surjection <span class="math" data-tex="\(\mathbb Z^m\to A\)">\(\mathbb Z^m\to A\)</span>, apply that finite-rank assertion, and take its image. Quotients are finitely generated by the images of generators. For an extension, take generators of the kernel together with lifts of generators of the quotient. They generate the middle group. Thus subgroups, quotients and extensions preserve finite generation.</p>
+<p>For a free chain complex <span class="math" data-tex="\(C_*\)">\(C_*\)</span>, set <span class="math" data-tex="\(Z_j=\ker d_j\)">\(Z_j=\ker d_j\)</span> and <span class="math" data-tex="\(D_j=\operatorname{im}d_{j+1}\)">\(D_j=\operatorname{im}d_{j+1}\)</span>. These groups are free by that same subgroup theorem. The exact sequence
+<span class="math" data-tex="\(0\to Z_j\to C_j\to D_{j-1}\to0\)">\(0\to Z_j\to C_j\to D_{j-1}\to0\)</span>
+splits because its last group is free. Choose a splitting. In these coordinates the differential sends the <span class="math" data-tex="\(D_{j-1}\)">\(D_{j-1}\)</span>-summand into <span class="math" data-tex="\(Z_{j-1}\)">\(Z_{j-1}\)</span> by inclusion. Tensoring with an abelian group <span class="math" data-tex="\(A\)">\(A\)</span>, and taking cycles modulo boundaries, consequently gives
+<span class="math math-display" data-tex="\[
+0\longrightarrow H_j(C)\otimes A
+\longrightarrow H_j(C\otimes A)
+\longrightarrow \operatorname{Tor}_1(H_{j-1}(C),A)
+\longrightarrow0.
+\tag{E.1}
+\]">\[
+0\longrightarrow H_j(C)\otimes A
+\longrightarrow H_j(C\otimes A)
+\longrightarrow \operatorname{Tor}_1(H_{j-1}(C),A)
+\longrightarrow0.
+\tag{E.1}
+\]</span>
+Here <span class="math" data-tex="\(\operatorname{Tor}_1(T,A)\)">\(\operatorname{Tor}_1(T,A)\)</span> is the kernel of <span class="math" data-tex="\(D\otimes A\to Z\otimes A\)">\(D\otimes A\to Z\otimes A\)</span> for a free presentation <span class="math" data-tex="\(0\to D\to Z\to T\to0\)">\(0\to D\to Z\to T\to0\)</span>. Independence of that presentation follows directly from free lifts: lift a map on quotient groups to the free groups and then to their kernels. Two such chain lifts differ by a chain homotopy, because their difference on <span class="math" data-tex="\(Z\)">\(Z\)</span> lifts into the other presentation's kernel. Its difference on <span class="math" data-tex="\(D\)">\(D\)</span> is then forced by the injective kernel inclusion. Tensoring retains that chain homotopy, so the induced kernel map is independent of the lifts. Lifts of the identity in both directions give inverse maps. This proves the presentation independence and naturality used in (E.1). The splittings give a noncanonical splitting of (E.1), but only its exactness will be used.</p>
+<p>If <span class="math" data-tex="\(T,A\)">\(T,A\)</span> are finitely generated, so are <span class="math" data-tex="\(T\otimes A\)">\(T\otimes A\)</span> and <span class="math" data-tex="\(\operatorname{Tor}_1(T,A)\)">\(\operatorname{Tor}_1(T,A)\)</span>. The first is generated by tensor products of generators. For the second use a finite-rank presentation <span class="math" data-tex="\(\mathbb Z^m\to T\)">\(\mathbb Z^m\to T\)</span>; its kernel is finite-rank free, so the displayed kernel after tensoring is a subgroup of a finitely generated group. Applying (E.1) to singular chains proves that
+<span class="math math-display" data-tex="\[
+H_j(B;A)\text{ is finitely generated whenever }
+H_j(B;\mathbb Z),\ H_{j-1}(B;\mathbb Z),\ A
+\text{ are finitely generated}.
+\tag{E.2}
+\]">\[
+H_j(B;A)\text{ is finitely generated whenever }
+H_j(B;\mathbb Z),\ H_{j-1}(B;\mathbb Z),\ A
+\text{ are finitely generated}.
+\tag{E.2}
+\]</span></p>
+<p>Now apply (D.1), with integral coefficients. If the fibre and base homology are finitely generated, (E.2) makes every second-page entry finitely generated. Subsequent entries are subquotients and hence finitely generated. In each total degree there are finitely many final entries; the finite filtration and the extension assertion prove finite generation of <span class="math" data-tex="\(H_j(E;\mathbb Z)\)">\(H_j(E;\mathbb Z)\)</span>.</p>
+<p>If the fibre and total-space homology are finitely generated, induct on <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span> for the base. Its degree-zero homology is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Suppose the base homology is finitely generated below <span class="math" data-tex="\(j\)">\(j\)</span>. The entry
+<span class="math" data-tex="\(E_2^{j,0}=H_j(B;\mathbb Z)\)">\(E_2^{j,0}=H_j(B;\mathbb Z)\)</span>
+has no incoming differential on any page <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>. Each outgoing differential lands in
+<span class="math math-display" data-tex="\[
+E_r^{j-r,r-1},
+\]">\[
+E_r^{j-r,r-1},
+\]</span>
+a subquotient of <span class="math" data-tex="\(H_{j-r}(B;H_{r-1}(F;\mathbb Z))\)">\(H_{j-r}(B;H_{r-1}(F;\mathbb Z))\)</span>, which is finitely generated by the induction hypothesis and (E.2). There are only finitely many possible outgoing pages, <span class="math" data-tex="\(2\leq r\leq j\)">\(2\leq r\leq j\)</span>. Thus each quotient <span class="math" data-tex="\(E_r^{j,0}/E_{r+1}^{j,0}\)">\(E_r^{j,0}/E_{r+1}^{j,0}\)</span> is finitely generated. Its final subgroup <span class="math" data-tex="\(E_\infty^{j,0}\)">\(E_\infty^{j,0}\)</span> is the projection image of <span class="math" data-tex="\(H_j(E;\mathbb Z)\)">\(H_j(E;\mathbb Z)\)</span>, by (D.2), so it is finitely generated. Successive finite extensions, working back to page two, prove that <span class="math" data-tex="\(H_j(B;\mathbb Z)\)">\(H_j(B;\mathbb Z)\)</span> is finitely generated.</p>
+<p>If the base and total-space homology are finitely generated, induct instead on <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span> for the fibre; again its degree-zero homology is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The entry
+<span class="math" data-tex="\(E_2^{0,j}=H_j(F;\mathbb Z)\)">\(E_2^{0,j}=H_j(F;\mathbb Z)\)</span>
+has no outgoing differential. Its possible incoming sources are
+<span class="math math-display" data-tex="\[
+E_r^{r,j-r+1}\quad(2\leq r\leq j+1).
+\]">\[
+E_r^{r,j-r+1}\quad(2\leq r\leq j+1).
+\]</span>
+Each is a subquotient of <span class="math" data-tex="\(H_r(B;H_{j-r+1}(F;\mathbb Z))\)">\(H_r(B;H_{j-r+1}(F;\mathbb Z))\)</span>, and the fibre degree in this coefficient is less than <span class="math" data-tex="\(j\)">\(j\)</span>. The induction hypothesis and (E.2) therefore make every incoming image finitely generated. Each successive quotient of <span class="math" data-tex="\(E_2^{0,j}\)">\(E_2^{0,j}\)</span> has a finitely generated kernel, and its final quotient <span class="math" data-tex="\(E_\infty^{0,j}\)">\(E_\infty^{0,j}\)</span> is a subgroup of <span class="math" data-tex="\(H_j(E;\mathbb Z)\)">\(H_j(E;\mathbb Z)\)</span>, by (D.2). Working back through these finitely many extensions proves finite generation of <span class="math" data-tex="\(H_j(F;\mathbb Z)\)">\(H_j(F;\mathbb Z)\)</span>. This supplies all three cases. ∎</p>
+<p>The last solution is the finite-generation fibration lemma we will use for Eilenberg–MacLane spaces and connected covers. It is a fully proved statement within the simply connected CW-base, path-connected-fibre scope. It does not by itself identify rational homotopy groups or give the rational cohomology of <span class="math" data-tex="\(K(A,r)\)">\(K(A,r)\)</span>.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-13.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-13C.html">Next chapter</a></nav><p><a href="homotopy-fibres-and-the-serre-spectral-sequence.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

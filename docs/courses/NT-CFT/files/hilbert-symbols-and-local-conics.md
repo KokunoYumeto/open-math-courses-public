@@ -1,0 +1,252 @@
+# Hilbert symbols and local conics
+
+*Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).*
+
+Kummer theory labels abelian extensions by radicals, while reciprocity labels their automorphisms by elements of the ground field. The Hilbert symbol records the action of the latter on the former. This produces a perfect pairing, a norm criterion, and explicit tests for whether a quadratic conic has a local point.
+
+Initially let \(K\) be a nonarchimedean local field containing \(\mu_n\), where \(n\geq1\) is prime to \(\operatorname{char}K\). In characteristic zero, this allows \(n\) divisible by the residue characteristic. We use the Kummer theorem proved in [Hilbert's theorem 90 and Kummer theory](hilberts-theorem-90-and-kummer-theory.md), finite local reciprocity from [Local reciprocity and norm groups](local-reciprocity-and-norm-groups.md), and its explicit arithmetic normalization from [Explicit local reciprocity and the existence theorem](explicit-local-reciprocity-and-existence.md). The quadratic norm calculations over \(\mathbf Q_2\) in [Abelian ramification, conductors and Hasse–Arf](abelian-ramification-conductors-and-hasse-arf.md), Exercise 2, will give the wild quadratic formula. Real quadratic symbols are treated in section 4.
+
+
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-11) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+
+## 1. Definition and norm identities
+
+For \(a,b\in K^\times\), choose \(\lambda\) with \(\lambda^n=b\). The field \(L_b=K(\lambda)\) is finite cyclic: all roots are \(\zeta\lambda\), \(\zeta\in\mu_n\subset K\), and its Galois group embeds in \(\mu_n\). Define
+\[
+(a,b)_n=\frac{(a,L_b/K)(\lambda)}{\lambda}\in\mu_n.
+\tag{1}
+\]
+The **first** argument enters reciprocity; the **second** is put under the root. Replacing \(\lambda\) by \(\zeta\lambda\) has no effect because \(\zeta\in K\). This fixes the convention even when \(n>2\).
+
+### Proposition 11.1. Algebraic properties
+
+The symbol is multiplicative in each argument, factors through \(K^\times/K^{\times n}\) in each, and satisfies
+\[
+\begin{gathered}
+(a,b)_n=1\ \Longleftrightarrow\
+ a\in N_{L_b/K}L_b^\times,\\
+(a,-a)_n=1,\qquad (a,1-a)_n=1\quad(a\ne1),\\
+(a,b)_n(b,a)_n=1.
+\end{gathered}
+\tag{2}
+\]
+The elements in each displayed symbol are nonzero.
+
+**Proof.** Multiplicativity in \(a\) is the homomorphism property of the norm residue symbol. For the second argument, put roots of \(b,c\) in their finite abelian compositum. Restriction compatibility says its reciprocity automorphism acts on their product as the product of its actions. That product is an \(n\)th root of \(bc\), proving
+\((a,bc)_n=(a,b)_n(a,c)_n\).
+An \(n\)th power in the first argument gives an \(n\)th power in \(\mu_n\), hence 1; multiplying the second argument by an \(n\)th power only multiplies its root by an element of \(K\). Thus the pairing factors through both quotients.
+
+An automorphism of \(L_b\) fixes \(\lambda\) exactly when it is identity. Finite reciprocity identifies the identity kernel with the norm group, proving the first equivalence.
+
+We prove the two special norm identities without assuming \([L_b:K]=n\). The separable polynomial \(T^n-b\) defines a finite algebra
+\[
+A_b=K[T]/(T^n-b).
+\]
+Factoring it into relatively prime irreducible polynomials and applying the polynomial Chinese remainder theorem expresses \(A_b\) as a product of fields. Every factor is \(K\)-isomorphic to \(L_b\), because its root is some \(\zeta\lambda\) and generates the same field. The determinant norm of an element of this product is the product of its field norms, and therefore lies in \(N_{L_b/K}L_b^\times\) when the element is invertible.
+
+Multiplication by \(T\) has eigenvalues the \(n\) roots of \(T^n-b\), so
+\[
+N_{A_b/K}(-T)=-b,\qquad
+N_{A_b/K}(1-T)=1-b.
+\tag{3}
+\]
+The first follows by multiplying their negatives, and the second by evaluating the monic polynomial at 1. These elements are invertible when their displayed norms are nonzero. Taking \(b=-a\) proves that \(a\) is a norm from \(L_{-a}\); taking \(b=1-a\) proves that \(a\) is a norm from \(L_{1-a}\). These are the middle identities in (2).
+
+Finally expand \(1=(ab,-ab)_n\). In its first factor use \(-ab=(-a)b\), and in its second use \(-ab=(-b)a\). Multiplicativity yields
+\[
+1=(a,-a)_n(a,b)_n(b,-b)_n(b,a)_n
+  =(a,b)_n(b,a)_n.
+\]
+This proves the last identity. \(\square\)
+
+For \(n=2\), inversion of a sign changes nothing, so the pairing is symmetric. It need not be alternating: \((a,a)_n=(a,-1)_n^{-1}\), and \((-1,-1)_2\) over \(\mathbf Q_2\) will be \(-1\).
+
+## 2. Nondegeneracy
+
+### Theorem 11.2. The perfect Hilbert pairing
+
+The group \(B=K^\times/K^{\times n}\) is finite, and the pairing induces an isomorphism
+\[
+B\longrightarrow\operatorname{Hom}(B,\mu_n),\qquad
+b\longmapsto\bigl(a\mapsto(a,b)_n\bigr).
+\tag{4}
+\]
+In particular it is nondegenerate in both arguments.
+
+**Proof.** First verify finiteness, including the wild case. Put \(s=v_K(n)\), which is finite since \(n\ne0\) in \(K\). If \(v_K(t)>2s\), the polynomial
+\[
+P(X)=X^n-(1+t)
+\]
+has \(v_K(P(1))>2s\) and \(v_K(P'(1))=s\). The Newton estimates proved in the descent lemma of the preceding reciprocity lesson apply starting at 1: an increment of valuation \(r>s\) gives a next increment of valuation at least \(2r-s\), while the derivative keeps valuation \(s\). The iterates converge in \(K\) to a unit whose \(n\)th power is \(1+t\). Hence sufficiently deep units are \(n\)th powers.
+
+The unit group modulo a deep unit subgroup is finite, and valuation modulo \(n\) has only \(n\) classes. Thus \(B\) is finite. It has exponent dividing \(n\).
+
+If \(b\) is nontrivial in \(B\), the field \(L_b\) is nontrivial. Finite reciprocity is onto its Galois group, so some \(a\) gives an automorphism that moves its generating root. Therefore \((a,b)_n\ne1\). This proves injectivity in (4).
+
+A finite abelian group of exponent dividing \(n\) has exactly as many \(\mu_n\)-valued characters as elements. The finite character lemma in lesson 3, section 4, proves this directly, together with character separation, for every finite abelian group killed by \(n\). Consequently the injection (4) is onto. If \(a\) pairs trivially with every \(b\), it is annihilated by every character of \(B\), and character separation gives \(a=1\) in \(B\). This proves the other nondegeneracy. \(\square\)
+
+Thus being a norm from every radical extension of exponent dividing \(n\) is equivalent to being an \(n\)th power in \(K\).
+
+## 3. The tame formula and its direction
+
+Now assume the residue characteristic \(p\) does not divide \(n\). Write \(q=|\kappa_K|\), and
+\[
+a=\pi^\alpha u,\qquad b=\pi^\beta v,\qquad u,v\in\mathcal O_K^\times.
+\]
+Reduction maps \(\mu_n\) injectively to \(\kappa_K^\times\). Indeed, if \(\zeta=1+x\) is an \(n\)th root with \(v_K(x)>0\), the term \(nx\) in \((1+x)^n-1\) has strictly smaller valuation than every higher term, so cannot cancel unless \(x=0\). Hence \(n\mid q-1\).
+
+### Proposition 11.3. The tame Hilbert symbol
+
+The symbol is the unique root in \(\mu_n\) whose reduction is
+\[
+\overline{(a,b)_n}
+ =\left((-1)^{\alpha\beta}
+          \frac{\bar v^{\,\alpha}}{\bar u^{\,\beta}}\right)^{(q-1)/n}
+ =\left(\overline{(-1)^{\alpha\beta}b^\alpha/a^\beta}\right)^{(q-1)/n}.
+\tag{5}
+\]
+
+**Proof.** An \(n\)th root of a unit \(v\) lies in a finite unramified extension. Choose such an extension whose residue field contains a root of \(X^n-\bar v\); its derivative is a unit there. Lifting that residue root and applying the Newton iteration with derivative valuation zero constructs a root of \(X^n-v\) in the complete unramified field. Existence of the field with that residue extension is Theorem 2.1 of [Unramified and totally ramified extensions](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-07).
+
+The symbol of a unit acts trivially on an unramified extension, so \((u,v)_n=1\). The symbol of \(\pi\) there is arithmetic Frobenius. For \(z^n=v\), its action has ratio with reduction
+\[
+\overline{\varphi(z)/z}=\bar z^{\,q-1}
+          =\bar v^{(q-1)/n}.
+\]
+Thus \((\pi,v)_n\) has that reduction. Antisymmetry gives
+\(\overline{(u,\pi)_n}=\bar u^{-(q-1)/n}\).
+Finally \((\pi,-\pi)_n=1\) implies
+\[
+\overline{(\pi,\pi)_n}=(-1)^{(q-1)/n};
+\]
+the inverse of this sign equals itself. Expanding the pairing on \(\pi^\alpha u,\pi^\beta v\) proves (5), also for negative integer exponents. Injectivity of reduction on \(\mu_n\) identifies the symbol itself. \(\square\)
+
+In particular, under arithmetic normalization the numerator is \(b^\alpha\). Swapping the two arguments inverts the symbol; this distinction is visible for orders greater than two.
+
+## 4. Quadratic formulas
+
+Use the notation \((a,b)_p\) for the quadratic symbol over \(\mathbf Q_p\). For odd \(p\), let \((u/p)\) be the sign \(\bar u^{(p-1)/2}\) in the residue field, identified with \(\{\pm1\}\); this is the Legendre symbol of a unit.
+
+For odd \(2\)-adic units define, modulo 2,
+\[
+\epsilon(u)=\frac{u-1}{2},\qquad
+\omega(u)=\frac{u^2-1}{8}.
+\tag{6}
+\]
+These integral expressions depend only on the odd residue modulo 8.
+
+### Theorem 11.4. Explicit quadratic symbols
+
+For \(a=p^\alpha u,\ b=p^\beta v\), with units \(u,v\), one has
+\[
+(a,b)_p=(-1)^{\alpha\beta(p-1)/2}
+           (u/p)^\beta(v/p)^\alpha\quad(p\text{ odd}),
+\tag{7}
+\]
+and
+\[
+(a,b)_2=(-1)^{\epsilon(u)\epsilon(v)
+                       +\alpha\omega(v)+\beta\omega(u)}.
+\tag{8}
+\]
+Over \(\mathbf R\),
+\[
+(a,b)_\infty=-1
+\quad\Longleftrightarrow\quad a<0\text{ and }b<0.
+\tag{9}
+\]
+
+**Proof.** Formula (7) is (5) for \(n=2,q=p\); the inverse of each Legendre sign equals the sign.
+
+For (8), the square-class calculation in Exercise 2 of the ramification lesson proves that \(-1,2,5\) form a basis of the eight square classes of \(\mathbf Q_2\). Its independently computed norm groups give all the following pairings:
+\[
+\begin{array}{c|ccc}
+(\ ,\ )_2&-1&2&5\\ \hline
+-1&-1&1&1\\
+2&1&1&-1\\
+5&1&-1&1
+\end{array}.
+\tag{10}
+\]
+Here \((-1,-1)_2=-1\) because \(-1\) is not in \(1+4\mathbf Z_2\), the unit norm subgroup from \(\mathbf Q_2(i)\). The units \(-1\) and 5 are norms as appropriate for the other entries: \(-1\) is a unit norm from \(\mathbf Q_2(\sqrt2)\), and every unit is a norm from the unramified field \(\mathbf Q_2(\sqrt5)\). Also \(2=N(2+\sqrt2)\), giving \((2,2)_2=1\). The element 2 has odd valuation and is not a norm from that unramified quadratic field, giving \((2,5)_2=-1\). Symmetry supplies the reflected entries, and \((5,5)_2=1\) is again an unramified unit norm.
+
+For every odd unit,
+\[
+u\equiv(-1)^{\epsilon(u)}5^{\omega(u)}
+\pmod{\mathbf Q_2^{\times2}}.
+\tag{11}
+\]
+Check its four residues: \(1,3,5,7\) have exponent pairs \((0,0),(1,1),(0,1),(1,0)\). Their proposed representatives have exactly these residues modulo 8, whose equality is the square criterion. Express \(a,b\) with (11), reduce \(\alpha,\beta\) modulo 2, and expand by (10). The only negative basis pairings are the \((-1,-1)\) entry and the two \(2,5\) entries. Their exponents are exactly those in (8).
+
+For the real case, the quadratic reciprocity map on \(\mathbf R^\times\) takes positive elements to identity and negative elements to complex conjugation. Its kernel is the norm image from \(\mathbf C^\times\): \(N(x+iy)=x^2+y^2\) gives precisely the positive real numbers. If \(b>0\), its square root is real, so the symbol is 1. If \(b<0\), its root generates \(\mathbf C\), and a negative \(a\) acts by conjugation and changes the root's sign. This proves (9). It also shows the real pairing is nondegenerate on the two square classes. Over \(\mathbf C\) all elements are squares and the quadratic symbol is 1. \(\square\)
+
+## 5. The conic criterion
+
+### Proposition 11.5. Local points on a diagonal conic
+
+For \(K=\mathbf Q_p\) or \(\mathbf R\), and \(a,b\in K^\times\),
+\[
+(a,b)_K=1
+\quad\Longleftrightarrow\quad
+z^2=ax^2+by^2
+\text{ has a solution }(x,y,z)\ne(0,0,0)\text{ in }K^3.
+\tag{12}
+\]
+
+**Proof.** If \(b\) is a square, the symbol is 1 and \((0,1,\sqrt b)\) is a nonzero solution. Otherwise \(L=K(\sqrt b)\) is quadratic. The norm criterion, including the real norm calculation, says the symbol is 1 exactly when \(a=s^2-bt^2\) for some \(s,t\in K\). Such an equality supplies the conic point \((1,t,s)\).
+
+Conversely, if a nonzero solution has \(x=0\), then \(z^2=by^2\); nonzeroness forces \(y\ne0\), contradicting that \(b\) is nonsquare. Thus \(x\ne0\), and division by \(x^2\) gives
+\[
+a=(z/x)^2-b(y/x)^2,
+\]
+which is the norm of \(z/x+(y/x)\sqrt b\). Since \(a\ne0\), this is a nonzero norm, proving the symbol is 1. \(\square\)
+
+This is a test over one completion. A global assertion that a rational conic has a rational point requires an additional local-to-global theorem.
+
+## 6. Exercises and complete solutions
+
+### Exercise 1 — easy
+
+Compute \((2,3)_3\), \((-1,-1)_2\), and \((2,5)_5\).
+
+**Solution.** For \((2,3)_3\), the first argument is a unit, the second has valuation 1, so (7) gives the Legendre sign \((2/3)=-1\). For \((-1,-1)_2\), both valuations are zero and both \(\epsilon(-1)\) equal 1 modulo 2; (8) gives \(-1\). For \((2,5)_5\), formula (7) gives \((2/5)=-1\), because the nonzero squares modulo 5 are 1 and 4.
+
+### Exercise 2 — medium
+
+Prove the conic criterion, including solutions with a zero coordinate.
+
+**Solution.** If \(b\) is square, the point \((0,1,\sqrt b)\) proves solubility and the radical extension is trivial. If \(b\) is nonsquare, a nonzero point cannot have \(x=0\): that would give either a square root of \(b\), or all coordinates zero. Divide its equation by \(x^2\) to express \(a\) as a quadratic norm, so the symbol is 1. Conversely write a nonzero norm \(a=s^2-bt^2\) and take \((x,y,z)=(1,t,s)\). This reasoning allows \(t=0\) or \(s=0\) and applies over both the nonarchimedean fields and \(\mathbf R\).
+
+### Exercise 3 — medium
+
+Prove the Steinberg relation \((a,1-a)_n=1\) for \(a\ne0,1\).
+
+**Solution.** Put \(b=1-a\) and form \(A_b=K[T]/(T^n-b)\). Separability and \(\mu_n\subset K\) make each field factor isomorphic to \(L_b=K(b^{1/n})\). The determinant norm of \(1-T\) is
+\[
+\prod_{\lambda^n=b}(1-\lambda)=1-b=a.
+\]
+It is nonzero, so \(1-T\) is invertible in the product. Its component norms multiply to \(a\), and their product is a single norm from \(L_b\), by norm multiplicativity. The symbol's norm criterion proves the relation. Using the product algebra accounts for the case where the radical field has degree smaller than \(n\).
+
+### Exercise 4 — hard
+
+Derive the complete quadratic formula (8) from square classes and norm groups.
+
+**Solution.** The odd-unit square criterion identifies the square classes with \(2^\alpha(-1)^e5^w\), for \(\alpha,e,w\in\{0,1\}\). For an odd unit \(u\), its four residues modulo 8 give \(e=\epsilon(u)\), \(w=\omega(u)\), as in (11). The exact quadratic norm groups from the ramification lesson give the symmetric table (10), with negative entries only at \((-1,-1),(2,5),(5,2)\).
+
+If \(a\) has exponent vector \((\epsilon(u),\alpha,\omega(u))\) in the ordered basis \((-1,2,5)\), and \(b\) has vector \((\epsilon(v),\beta,\omega(v))\), multiplicativity gives their sign exponent
+\[
+\epsilon(u)\epsilon(v)+\alpha\omega(v)+\omega(u)\beta.
+\]
+This proves (8) for all classes. Squares in either argument do not affect the symbol, so the calculation applies to arbitrary integer valuations and all \(2\)-adic units.
+
+## Editable edition
+
+The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.
+
+## References
+
+The norm characterization and finite perfect pairing lead to the tame, real and dyadic quadratic formulas. The product-algebra proof handles local conics, including the split case. All displayed symbol normalizations are proved in the lesson.
+
+- [J. S. Milne, Class Field Theory, version 4.03](https://www.jmilne.org/math/CourseNotes/CFT.pdf).
+
+The [proof guide](../FREE_PROOFS.md) gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.

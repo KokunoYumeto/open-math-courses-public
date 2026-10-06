@@ -1,0 +1,213 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The real Connes spectrum: orbit supports, corners and cocycles · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-CA.html">Previous lesson</a><a href="OA-FLOW-MG.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CS.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original complete proof by GPT-6.1 Sol (OpenAI), Ultra; independently reviewed and integrated by GPT-6 Astra (OpenAI), Ultra, at exact earlier written proofs. Human review and formal verification are not asserted.</p><h1 id="OA-FLOW.CS.0">The real Connes spectrum: orbit supports, corners and cocycles</h1>
+<p><em>Independent proof development, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.</em></p>
+<p>Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> be a von Neumann factor and let <span class="math" data-tex="\(\alpha:\mathbb R\to\operatorname{Aut}(M)\)">\(\alpha:\mathbb R\to\operatorname{Aut}(M)\)</span> be a group of normal <span class="math" data-tex="\(*\)">\(*\)</span>-automorphisms, continuous on every normal scalar coefficient. No separability, finite state, modular realization, norm continuity of the action or countable-decomposability is assumed in this chapter. Write <span class="math" data-tex="\(M^\alpha\)">\(M^\alpha\)</span> for its fixed algebra. A fixed projection is a projection <span class="math" data-tex="\(p\in M^\alpha\)">\(p\in M^\alpha\)</span>. Its nonzero corner has the restricted action <span class="math" data-tex="\(\alpha^p\)">\(\alpha^p\)</span>.</p>
+<p>The earlier complete inputs are the smooth real Fourier filters and scalar local division <a href="OA-FLOW-RF.html#oa-flow.rf.1">RF-1–3</a>; the actual normal filters, hull/support equality, local detection, invariant bimodules and full product-support rule <a href="OA-FLOW-AL.html#oa-flow.al.1">AL-1–4</a>; arbitrary projection joins, bounded supports and central supports <span class="unlinked">PC-1</span> and <span class="unlinked">PC-2</span>; the full Hilbert/spectral calculus <a href="OA-FLOW-SF.html#oa-flow.sf.sf0">SF-0</a>; and bounded strong-to-ultraweak convergence <a href="OA-FLOW-SF.html#oa-flow.sf.sf2">SF-2</a>. Scalar compact-interval arguments use <span class="unlinked">CF-1</span>. All further arguments are written below.</p>
+<p>The freely readable source development is <a href="https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=43">Alain Connes, <em>Une classification des facteurs de type III</em> (1973), Definition 2.2.1, Theorem 2.2.4, Lemma 2.2.6 and Lemmas 2.3.2–2.3.4, printed pp.174–178</a>. The source's orbit-support sandwich mechanism is reconstructed here with the actual real-line local proofs. No general locally compact abelian theorem, external spectral-synthesis theorem or cited result replaces any step.</p>
+<p><a id="oa-flow.cs.0"></a></p>
+<h2 id="cs-0-exact-spectra-and-the-intersection-being-proved-invariant">CS-0. Exact spectra and the intersection being proved invariant</h2>
+<p>Use <span class="math" data-tex="\(\widehat f(r)=\int f(t)e^{itr}\,dt\)">\(\widehat f(r)=\int f(t)e^{itr}\,dt\)</span> and the weak-star normal filters <span class="math" data-tex="\(T_f x=\int f(t)\alpha_t(x)dt\)">\(T_f x=\int f(t)\alpha_t(x)dt\)</span>, constructed in <a href="OA-FLOW-AL.html#oa-flow.al.1">AL-1</a>. The spectra are exactly the <a href="OA-FLOW-AL.html#oa-flow.al.2">AL-2</a> annihilator hulls, and not a different support convention:</p>
+<p><a id="equation-cs1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{Sp}_\alpha(x)
+ =\bigcap_{T_fx=0}\{r:\widehat f(r)=0\},\qquad
+ \operatorname{Sp}(\alpha)
+ =\bigcap_{T_f=0}\{r:\widehat f(r)=0\}.
+ \tag{CS1}
+\]">\[
+ \operatorname{Sp}_\alpha(x)
+ =\bigcap_{T_fx=0}\{r:\widehat f(r)=0\},\qquad
+ \operatorname{Sp}(\alpha)
+ =\bigcap_{T_f=0}\{r:\widehat f(r)=0\}.
+ \tag{CS1}
+\]</span>
+For a closed set <span class="math" data-tex="\(E\)">\(E\)</span>, <span class="math" data-tex="\(M(\alpha,E)\)">\(M(\alpha,E)\)</span> consists of elements whose first spectrum is contained in <span class="math" data-tex="\(E\)">\(E\)</span>. <a href="OA-FLOW-AL.html#oa-flow.al.2">AL-2</a>–4 prove that these spaces are ultraweakly closed, that a nonzero element has nonempty spectrum, and that</p>
+<p><a id="equation-cs2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{Sp}(\alpha)=\overline{\bigcup_x\operatorname{Sp}_\alpha(x)},\qquad
+ M(\alpha,E)M(\alpha,F)\subseteq M(\alpha,\overline{E+F}).
+ \tag{CS2}
+\]">\[
+ \operatorname{Sp}(\alpha)=\overline{\bigcup_x\operatorname{Sp}_\alpha(x)},\qquad
+ M(\alpha,E)M(\alpha,F)\subseteq M(\alpha,\overline{E+F}).
+ \tag{CS2}
+\]</span>
+Adjoint reflects the spectrum; time translation preserves it. Every real <span class="math" data-tex="\(r\)">\(r\)</span> in an action spectrum and every open interval <span class="math" data-tex="\(O\ni r\)">\(O\ni r\)</span> admit a nonzero element with compact spectrum in <span class="math" data-tex="\(O\)">\(O\)</span>. This follows by applying a compact smooth filter nonzero at <span class="math" data-tex="\(r\)">\(r\)</span>, as proved in <a href="OA-FLOW-AL.html#oa-flow.al.3">AL-3</a>. Filtering an element of a fixed bimodule <span class="math" data-tex="\(eMf\)">\(eMf\)</span> stays in that bimodule. Its spectrum is the ambient element spectrum, and the corner spectrum has this same local detection property.</p>
+<p>Define</p>
+<p><a id="equation-cs3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \Gamma(\alpha)=
+ \bigcap_{0\ne p\in\operatorname{Proj}(M^\alpha)}
+       \operatorname{Sp}(\alpha^p).
+ \tag{CS3}
+\]">\[
+ \Gamma(\alpha)=
+ \bigcap_{0\ne p\in\operatorname{Proj}(M^\alpha)}
+       \operatorname{Sp}(\alpha^p).
+ \tag{CS3}
+\]</span>
+All spectra in this intersection are closed. They contain zero: the corner unit <span class="math" data-tex="\(p\)">\(p\)</span> is fixed and <span class="math" data-tex="\(T_f p=\widehat f(0)p\)">\(T_f p=\widehat f(0)p\)</span>, so every annihilator of the entire corner action vanishes at zero. They are symmetric, by the adjoint and union identities in (<a href="OA-FLOW-CS.html#equation-cs2">CS2</a>). Thus <span class="math" data-tex="\(\Gamma(\alpha)\)">\(\Gamma(\alpha)\)</span> is closed, symmetric and contains zero, before any subgroup assertion is proved.</p>
+<p><a id="oa-flow.cs.1"></a></p>
+<h2 id="OA-FLOW.CS.1">CS-1. The support-join sandwich lemma</h2>
+<p>Suppose <span class="math" data-tex="\(0\ne y\in eMf\)">\(0\ne y\in eMf\)</span>, where <span class="math" data-tex="\(e,f\)">\(e,f\)</span> are fixed projections, and <span class="math" data-tex="\(\operatorname{Sp}_\alpha(y)\)">\(\operatorname{Sp}_\alpha(y)\)</span> is contained in a compact interval <span class="math" data-tex="\(I\)">\(I\)</span>. Define its two orbit supports</p>
+<p><a id="equation-cs4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ a=\bigvee_{t\in\mathbb R}s(\alpha_t(y)\alpha_t(y)^*),\qquad
+ b=\bigvee_{t\in\mathbb R}s(\alpha_t(y)^*\alpha_t(y)).
+ \tag{CS4}
+\]">\[
+ a=\bigvee_{t\in\mathbb R}s(\alpha_t(y)\alpha_t(y)^*),\qquad
+ b=\bigvee_{t\in\mathbb R}s(\alpha_t(y)^*\alpha_t(y)).
+ \tag{CS4}
+\]</span>
+<span class="unlinked">PC-1</span> constructs each support and every join as the projection onto the indicated closed range or closed span. Both joins are nonzero; <span class="math" data-tex="\(a\le e\)">\(a\le e\)</span> and <span class="math" data-tex="\(b\le f\)">\(b\le f\)</span>. Normal automorphisms preserve order, joins and supports: they preserve least upper bounds by applying their inverse, and preserve the range support as the least projection <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(qx=x\)">\(qx=x\)</span>, or <span class="math" data-tex="\(xq=x\)">\(xq=x\)</span> for the initial support. Consequently <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span> permutes each joined family, so <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are fixed. Moreover <span class="math" data-tex="\(a\alpha_t(y)=\alpha_t(y)=\alpha_t(y)b\)">\(a\alpha_t(y)=\alpha_t(y)=\alpha_t(y)b\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>If <span class="math" data-tex="\(0\ne z\in aMa\)">\(0\ne z\in aMa\)</span>, some <span class="math" data-tex="\(t\)">\(t\)</span> satisfies <span class="math" data-tex="\(\alpha_t(y)^*z\ne0\)">\(\alpha_t(y)^*z\ne0\)</span>. Otherwise every vector in <span class="math" data-tex="\(zH\)">\(zH\)</span> is killed by every <span class="math" data-tex="\(\alpha_t(y)^*\)">\(\alpha_t(y)^*\)</span>, and is perpendicular to their joined ranges, namely <span class="math" data-tex="\(aH\)">\(aH\)</span>. This gives <span class="math" data-tex="\(az=0\)">\(az=0\)</span>, contradicting <span class="math" data-tex="\(az=z\ne0\)">\(az=z\ne0\)</span>. Put <span class="math" data-tex="\(w=\alpha_t(y)^*z\)">\(w=\alpha_t(y)^*z\)</span>. Its corner relations are <span class="math" data-tex="\(bw=w=wa\)">\(bw=w=wa\)</span>. If <span class="math" data-tex="\(w\alpha_u(y)=0\)">\(w\alpha_u(y)=0\)</span> for all <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(w\)">\(w\)</span> vanishes on the closed span of the ranges <span class="math" data-tex="\(\alpha_u(y)H\)">\(\alpha_u(y)H\)</span>, which is <span class="math" data-tex="\(aH\)">\(aH\)</span>. Since <span class="math" data-tex="\(w=wa\)">\(w=wa\)</span>, that would give <span class="math" data-tex="\(w=0\)">\(w=0\)</span>. Thus some <span class="math" data-tex="\(u\)">\(u\)</span> gives</p>
+<p><a id="equation-cs5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ 0\ne v=\alpha_t(y)^*z\alpha_u(y)\in bMb.
+ \tag{CS5}
+\]">\[
+ 0\ne v=\alpha_t(y)^*z\alpha_u(y)\in bMb.
+ \tag{CS5}
+\]</span>
+If <span class="math" data-tex="\(\operatorname{Sp}_\alpha(z)\subseteq J\)">\(\operatorname{Sp}_\alpha(z)\subseteq J\)</span> for a compact interval <span class="math" data-tex="\(J\)">\(J\)</span>, the complete product, adjoint and time-translation rules give</p>
+<p><a id="equation-cs6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{Sp}_\alpha(v)\subseteq -I+J+I=J+(I-I).
+ \tag{CS6}
+\]">\[
+ \operatorname{Sp}_\alpha(v)\subseteq -I+J+I=J+(I-I).
+ \tag{CS6}
+\]</span>
+The equality is of scalar sets; each is compact, so the product-support closure creates no additional points. Repeating the argument with <span class="math" data-tex="\(y^*\)">\(y^*\)</span> exchanges <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, with the same difference interval <span class="math" data-tex="\(I-I\)">\(I-I\)</span>. No polar partial isometry of <span class="math" data-tex="\(y\)">\(y\)</span> is assumed fixed, and no spectral assertion about such a polar partial isometry is used.</p>
+<p>Let <span class="math" data-tex="\(\delta\ge0\)">\(\delta\ge0\)</span> be the length of <span class="math" data-tex="\(I\)">\(I\)</span>, so <span class="math" data-tex="\(I-I=[-\delta,\delta]\)">\(I-I=[-\delta,\delta]\)</span>. Localize any <span class="math" data-tex="\(r\in\operatorname{Sp}(\alpha^a)\)">\(r\in\operatorname{Sp}(\alpha^a)\)</span> to a nonzero <span class="math" data-tex="\(z\in aMa\)">\(z\in aMa\)</span> with spectrum in <span class="math" data-tex="\([r-\eta,r+\eta]\)">\([r-\eta,r+\eta]\)</span>, for arbitrary <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. The nonzero <span class="math" data-tex="\(v\)">\(v\)</span> above has a spectral point in <span class="math" data-tex="\(\operatorname{Sp}(\alpha^b)\cap[r-\eta-\delta,r+\eta+\delta]\)">\(\operatorname{Sp}(\alpha^b)\cap[r-\eta-\delta,r+\eta+\delta]\)</span>, by (<a href="OA-FLOW-CS.html#equation-cs2">CS2</a>) and (<a href="OA-FLOW-CS.html#equation-cs6">CS6</a>). Let <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>; compactness of the bounded scalar interval and closedness of the target spectrum give</p>
+<p><a id="equation-cs7"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{Sp}(\alpha^a)\subseteq
+      \operatorname{Sp}(\alpha^b)+[-\delta,\delta],\qquad
+ \operatorname{Sp}(\alpha^b)\subseteq
+      \operatorname{Sp}(\alpha^a)+[-\delta,\delta].
+ \tag{CS7}
+\]">\[
+ \operatorname{Sp}(\alpha^a)\subseteq
+      \operatorname{Sp}(\alpha^b)+[-\delta,\delta],\qquad
+ \operatorname{Sp}(\alpha^b)\subseteq
+      \operatorname{Sp}(\alpha^a)+[-\delta,\delta].
+ \tag{CS7}
+\]</span>
+This is the precise transfer estimate. The center of <span class="math" data-tex="\(I\)">\(I\)</span> cancels; the error is its length. It is not an assertion that the two uncompressed corner spectra are equal.</p>
+<p><a id="oa-flow.cs.2"></a></p>
+<h2 id="OA-FLOW.CS.2">CS-2. Arbitrarily narrow transfers between any two fixed corners</h2>
+<p>Let <span class="math" data-tex="\(e,f\)">\(e,f\)</span> be any two nonzero fixed projections of the factor and let <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. <span class="unlinked">PC-2</span> proves <span class="math" data-tex="\(eMf\ne\{0\}\)">\(eMf\ne\{0\}\)</span>: otherwise their central supports would be orthogonal, whereas each nonzero projection of a factor has central support <span class="math" data-tex="\(1\)">\(1\)</span>. Choose <span class="math" data-tex="\(0\ne y_0\in eMf\)">\(0\ne y_0\in eMf\)</span>.</p>
+<p>Its element spectrum is nonempty. Choose a point in that spectrum and an open interval around it of length less than <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. <a href="OA-FLOW-AL.html#oa-flow.al.3">AL-3</a> supplies a compact smooth filter supported there whose value at that point is nonzero; its filtered element <span class="math" data-tex="\(y\)">\(y\)</span> is nonzero and remains in <span class="math" data-tex="\(eMf\)">\(eMf\)</span>. Its compact spectrum is contained in a closed interval <span class="math" data-tex="\(I\)">\(I\)</span> of length at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. <a href="OA-FLOW-CS.html#oa-flow.cs.1">CS-1</a> therefore produces nonzero fixed <span class="math" data-tex="\(a\le e\)">\(a\le e\)</span>, <span class="math" data-tex="\(b\le f\)">\(b\le f\)</span> with both transfer inclusions (<a href="OA-FLOW-CS.html#equation-cs7">CS7</a>), now with error at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. This uses only local smooth detection, not synthesis or an eigenvector assumption.</p>
+<p><a id="oa-flow.cs.3"></a></p>
+<h2 id="OA-FLOW.CS.3">CS-3. Corner invariance and the directed spectral neighborhoods</h2>
+<p>For every nonzero fixed <span class="math" data-tex="\(e\)">\(e\)</span>,</p>
+<p><a id="equation-cs8"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \Gamma(\alpha^e)=\Gamma(\alpha).
+ \tag{CS8}
+\]">\[
+ \Gamma(\alpha^e)=\Gamma(\alpha).
+ \tag{CS8}
+\]</span>
+Indeed the fixed projections of <span class="math" data-tex="\(eMe\)">\(eMe\)</span> are exactly the ambient fixed projections <span class="math" data-tex="\(a\le e\)">\(a\le e\)</span>, with identical restricted spectra. Thus the full intersection (<a href="OA-FLOW-CS.html#equation-cs3">CS3</a>) is contained in the corner intersection.</p>
+<p>Conversely let <span class="math" data-tex="\(r\in\Gamma(\alpha^e)\)">\(r\in\Gamma(\alpha^e)\)</span>. For any nonzero fixed <span class="math" data-tex="\(f\)">\(f\)</span> and any <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, <a href="OA-FLOW-CS.html#oa-flow.cs.2">CS-2</a> gives <span class="math" data-tex="\(a\le e\)">\(a\le e\)</span>, <span class="math" data-tex="\(b\le f\)">\(b\le f\)</span> satisfying (<a href="OA-FLOW-CS.html#equation-cs7">CS7</a>). Since <span class="math" data-tex="\(r\in\operatorname{Sp}(\alpha^a)\)">\(r\in\operatorname{Sp}(\alpha^a)\)</span>, its distance from <span class="math" data-tex="\(\operatorname{Sp}(\alpha^b)\)">\(\operatorname{Sp}(\alpha^b)\)</span>, and hence from <span class="math" data-tex="\(\operatorname{Sp}(\alpha^f)\)">\(\operatorname{Sp}(\alpha^f)\)</span>, is at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The latter spectrum is closed. Letting <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span> gives <span class="math" data-tex="\(r\in\operatorname{Sp}(\alpha^f)\)">\(r\in\operatorname{Sp}(\alpha^f)\)</span>. Since <span class="math" data-tex="\(f\)">\(f\)</span> was arbitrary, <span class="math" data-tex="\(r\in\Gamma(\alpha)\)">\(r\in\Gamma(\alpha)\)</span>, as required.</p>
+<p>The closed thickenings</p>
+<p><a id="equation-cs9"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \mathcal F_\alpha=
+ \{\operatorname{Sp}(\alpha^e)+[-\varepsilon,\varepsilon]:
+        0\ne e\in\operatorname{Proj}(M^\alpha),\ \varepsilon&gt;0\}
+ \tag{CS9}
+\]">\[
+ \mathcal F_\alpha=
+ \{\operatorname{Sp}(\alpha^e)+[-\varepsilon,\varepsilon]:
+        0\ne e\in\operatorname{Proj}(M^\alpha),\ \varepsilon&gt;0\}
+ \tag{CS9}
+\]</span>
+have intersection <span class="math" data-tex="\(\Gamma(\alpha)\)">\(\Gamma(\alpha)\)</span> and form a downward-directed family. To check the latter, start with two such sets using <span class="math" data-tex="\(e,f,\varepsilon_1,\varepsilon_2\)">\(e,f,\varepsilon_1,\varepsilon_2\)</span>. Choose positive <span class="math" data-tex="\(\delta,\rho\)">\(\delta,\rho\)</span> with <span class="math" data-tex="\(\rho\le\varepsilon_1\)">\(\rho\le\varepsilon_1\)</span> and <span class="math" data-tex="\(\delta+\rho\le\varepsilon_2\)">\(\delta+\rho\le\varepsilon_2\)</span>. <a href="OA-FLOW-CS.html#oa-flow.cs.2">CS-2</a> gives <span class="math" data-tex="\(a\le e\)">\(a\le e\)</span>, <span class="math" data-tex="\(b\le f\)">\(b\le f\)</span> and <span class="math" data-tex="\(\operatorname{Sp}(\alpha^a)\subseteq\operatorname{Sp}(\alpha^b)+[-\delta,\delta]\)">\(\operatorname{Sp}(\alpha^a)\subseteq\operatorname{Sp}(\alpha^b)+[-\delta,\delta]\)</span>. Restriction gives <span class="math" data-tex="\(\operatorname{Sp}(\alpha^a)\subseteq\operatorname{Sp}(\alpha^e)\)">\(\operatorname{Sp}(\alpha^a)\subseteq\operatorname{Sp}(\alpha^e)\)</span> and <span class="math" data-tex="\(\operatorname{Sp}(\alpha^b)\subseteq\operatorname{Sp}(\alpha^f)\)">\(\operatorname{Sp}(\alpha^b)\subseteq\operatorname{Sp}(\alpha^f)\)</span>. Hence <span class="math" data-tex="\(\operatorname{Sp}(\alpha^a)+[-\rho,\rho]\)">\(\operatorname{Sp}(\alpha^a)+[-\rho,\rho]\)</span> is contained in both original thickenings. Their intersection is (<a href="OA-FLOW-CS.html#equation-cs3">CS3</a>), since a point in all positive thickenings of a closed spectrum belongs to that spectrum.</p>
+<p><a id="oa-flow.cs.4"></a></p>
+<h2 id="OA-FLOW.CS.4">CS-4. Spectral translation and the subgroup law</h2>
+<p>We first prove</p>
+<p><a id="equation-cs10"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \Gamma(\alpha)+\operatorname{Sp}(\alpha)
+       =\operatorname{Sp}(\alpha).
+ \tag{CS10}
+\]">\[
+ \Gamma(\alpha)+\operatorname{Sp}(\alpha)
+       =\operatorname{Sp}(\alpha).
+ \tag{CS10}
+\]</span>
+Let <span class="math" data-tex="\(r\in\operatorname{Sp}(\alpha)\)">\(r\in\operatorname{Sp}(\alpha)\)</span>, <span class="math" data-tex="\(s\in\Gamma(\alpha)\)">\(s\in\Gamma(\alpha)\)</span>, and <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. Choose <span class="math" data-tex="\(0\ne x\)">\(0\ne x\)</span> with compact spectrum in <span class="math" data-tex="\([r-\eta,r+\eta]\)">\([r-\eta,r+\eta]\)</span>. Put <span class="math" data-tex="\(p=\bigvee_t s(\alpha_t(x)^*\alpha_t(x))\)">\(p=\bigvee_t s(\alpha_t(x)^*\alpha_t(x))\)</span>, a nonzero fixed projection by <a href="OA-FLOW-CS.html#oa-flow.cs.1">CS-1</a>'s support argument. Since <span class="math" data-tex="\(s\in\operatorname{Sp}(\alpha^p)\)">\(s\in\operatorname{Sp}(\alpha^p)\)</span>, choose <span class="math" data-tex="\(0\ne z\in pMp\)">\(0\ne z\in pMp\)</span> with spectrum in <span class="math" data-tex="\([s-\eta,s+\eta]\)">\([s-\eta,s+\eta]\)</span>. Some <span class="math" data-tex="\(t\)">\(t\)</span> has <span class="math" data-tex="\(\alpha_t(x)z\ne0\)">\(\alpha_t(x)z\ne0\)</span>: if all products vanished, <span class="math" data-tex="\(zH\)">\(zH\)</span> would be in the common kernel, the complement of <span class="math" data-tex="\(pH\)">\(pH\)</span>, contradicting <span class="math" data-tex="\(pz=z\)">\(pz=z\)</span>. Its spectrum is nonempty and lies in <span class="math" data-tex="\([r+s-2\eta,r+s+2\eta]\)">\([r+s-2\eta,r+s+2\eta]\)</span>. Thus <span class="math" data-tex="\(r+s\)">\(r+s\)</span> belongs to the closed <span class="math" data-tex="\(\operatorname{Sp}(\alpha)\)">\(\operatorname{Sp}(\alpha)\)</span>, by letting <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>. This proves one inclusion of (<a href="OA-FLOW-CS.html#equation-cs10">CS10</a>); its other inclusion follows from <span class="math" data-tex="\(0\in\Gamma(\alpha)\)">\(0\in\Gamma(\alpha)\)</span>.</p>
+<p>The same translation proof works for each corner action, with its own intersection definition; it did not use the factor bridge. If <span class="math" data-tex="\(r,s\in\Gamma(\alpha)\)">\(r,s\in\Gamma(\alpha)\)</span>, <a href="OA-FLOW-CS.html#oa-flow.cs.3">CS-3</a> gives <span class="math" data-tex="\(s\in\Gamma(\alpha^p)\)">\(s\in\Gamma(\alpha^p)\)</span> for every nonzero fixed <span class="math" data-tex="\(p\)">\(p\)</span>, while <span class="math" data-tex="\(r\in\operatorname{Sp}(\alpha^p)\)">\(r\in\operatorname{Sp}(\alpha^p)\)</span>. Applying that translation statement inside the corner puts <span class="math" data-tex="\(r+s\)">\(r+s\)</span> in every <span class="math" data-tex="\(\operatorname{Sp}(\alpha^p)\)">\(\operatorname{Sp}(\alpha^p)\)</span>. Hence <span class="math" data-tex="\(r+s\in\Gamma(\alpha)\)">\(r+s\in\Gamma(\alpha)\)</span>. <a href="OA-FLOW-CS.html#oa-flow.cs.0">CS-0</a> already proved symmetry, closedness and zero membership. Therefore <span class="math" data-tex="\(\Gamma(\alpha)\)">\(\Gamma(\alpha)\)</span> is a closed additive subgroup of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. In particular translation by each of its elements preserves every invariant-corner spectrum, as well as the full action spectrum.</p>
+<p><a id="oa-flow.cs.5"></a></p>
+<h2 id="OA-FLOW.CS.5">CS-5. The balanced matrix action proves exterior-cocycle invariance</h2>
+<p>Let <span class="math" data-tex="\(u_t\in\mathcal U(M)\)">\(u_t\in\mathcal U(M)\)</span> be strongly continuous and satisfy</p>
+<p><a id="equation-cs11"></a></p>
+<p><span class="math math-display" data-tex="\[
+ u_{t+s}=u_t\alpha_t(u_s),\qquad
+ \beta_t(x)=u_t\alpha_t(x)u_t^*.
+ \tag{CS11}
+\]">\[
+ u_{t+s}=u_t\alpha_t(u_s),\qquad
+ \beta_t(x)=u_t\alpha_t(x)u_t^*.
+ \tag{CS11}
+\]</span>
+The identity gives <span class="math" data-tex="\(u_0=1\)">\(u_0=1\)</span>; multiplication and the group law show that <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is a group of normal automorphisms. It has continuous normal coefficients: <a href="OA-FLOW-AL.html#oa-flow.al.1">AL-1</a> gives strong-star continuity of each <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> orbit and of bounded products. A strongly continuous unitary family is strongly-star continuous, since
+<span class="math" data-tex="\(\|(u_t^*-u_s^*)\xi\|=\|(1-u_tu_s^*)\xi\|\to0\)">\(\|(u_t^*-u_s^*)\xi\|=\|(1-u_tu_s^*)\xi\|\to0\)</span>.
+Bounded strong-star multiplication and SF-2 therefore give the claimed scalar continuity.</p>
+<p>On <span class="math" data-tex="\(N=M\overline\otimes M_2\)">\(N=M\overline\otimes M_2\)</span>, represented concretely on <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span>, put</p>
+<p><a id="equation-cs12"></a></p>
+<p><span class="math math-display" data-tex="\[
+ v_t=\begin{pmatrix}1&amp;0\\0&amp;u_t\end{pmatrix},\qquad
+ W_t(X)=v_t(\alpha_t\otimes\operatorname{id})(X)v_t^*.
+ \tag{CS12}
+\]">\[
+ v_t=\begin{pmatrix}1&amp;0\\0&amp;u_t\end{pmatrix},\qquad
+ W_t(X)=v_t(\alpha_t\otimes\operatorname{id})(X)v_t^*.
+ \tag{CS12}
+\]</span>
+Here <span class="math" data-tex="\(N\)">\(N\)</span> is simply the weakly closed algebra of two-by-two matrices with entries in <span class="math" data-tex="\(M\)">\(M\)</span>. Normality and scalar continuity hold entry by entry, using the four bounded coordinate maps. The cocycle law in (<a href="OA-FLOW-CS.html#equation-cs11">CS11</a>) gives
+<span class="math" data-tex="\(v_{t+s}=v_t(\alpha_t\otimes\operatorname{id})(v_s)\)">\(v_{t+s}=v_t(\alpha_t\otimes\operatorname{id})(v_s)\)</span>, so <span class="math" data-tex="\(W_{t+s}=W_tW_s\)">\(W_{t+s}=W_tW_s\)</span>. Each map is a normal automorphism, and its inverse is <span class="math" data-tex="\(W_{-t}\)">\(W_{-t}\)</span>.</p>
+<p>The algebra <span class="math" data-tex="\(N\)">\(N\)</span> is a factor. Indeed an element of its center commutes with the four scalar matrix units, hence is a diagonal matrix with the same entry <span class="math" data-tex="\(a\)">\(a\)</span> twice. Commutation with every diagonal copy of <span class="math" data-tex="\(M\)">\(M\)</span> gives <span class="math" data-tex="\(a\in Z(M)=\mathbb C1\)">\(a\in Z(M)=\mathbb C1\)</span>. Thus its center is scalar, with no classification or tensor-product theorem imported.</p>
+<p>The projections <span class="math" data-tex="\(p_1=1\otimes e_{11}\)">\(p_1=1\otimes e_{11}\)</span>, <span class="math" data-tex="\(p_2=1\otimes e_{22}\)">\(p_2=1\otimes e_{22}\)</span> are nonzero and fixed by <span class="math" data-tex="\(W\)">\(W\)</span>. Their corner actions, under the actual coordinate isomorphisms, are <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Such an isomorphism preserves the weak-star integral and every annihilator hull: testing its normal coefficients gives <span class="math" data-tex="\(\theta(T_fx)=T_f\theta(x)\)">\(\theta(T_fx)=T_f\theta(x)\)</span>, and injectivity preserves which filters are zero. Applying <a href="OA-FLOW-CS.html#oa-flow.cs.3">CS-3</a> twice therefore gives</p>
+<p><a id="equation-cs13"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \Gamma(\alpha)=\Gamma(W^{p_1})=\Gamma(W)
+        =\Gamma(W^{p_2})=\Gamma(\beta).
+ \tag{CS13}
+\]">\[
+ \Gamma(\alpha)=\Gamma(W^{p_1})=\Gamma(W)
+        =\Gamma(W^{p_2})=\Gamma(\beta).
+ \tag{CS13}
+\]</span>
+This proves invariance for an actual strongly continuous unitary cocycle. It neither constructs a cocycle from an arbitrary modular-looking action nor uses an arbitrary-cocycle-realization theorem.</p>
+<p><a id="oa-flow.cs.6"></a></p>
+<h2 id="OA-FLOW.CS.6">CS-6. An exact finite matrix check</h2>
+<p>Take <span class="math" data-tex="\(M=M_3(\mathbb C)\)">\(M=M_3(\mathbb C)\)</span>, <span class="math" data-tex="\(h=\operatorname{diag}(0,2,5)\)">\(h=\operatorname{diag}(0,2,5)\)</span> and <span class="math" data-tex="\(\alpha_t(x)=e^{ith}xe^{-ith}\)">\(\alpha_t(x)=e^{ith}xe^{-ith}\)</span>. Then <span class="math" data-tex="\(\alpha_t(e_{ij})=e^{it(h_i-h_j)}e_{ij}\)">\(\alpha_t(e_{ij})=e^{it(h_i-h_j)}e_{ij}\)</span>, so the scalar Fourier integral and finite matrix expansion give</p>
+<p><a id="equation-cs14"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{Sp}_\alpha(e_{ij})=\{h_i-h_j\},\quad
+ \operatorname{Sp}(\alpha)=\{0,\pm2,\pm3,\pm5\},\quad
+ \Gamma(\alpha)=\{0\}.
+ \tag{CS14}
+\]">\[
+ \operatorname{Sp}_\alpha(e_{ij})=\{h_i-h_j\},\quad
+ \operatorname{Sp}(\alpha)=\{0,\pm2,\pm3,\pm5\},\quad
+ \Gamma(\alpha)=\{0\}.
+ \tag{CS14}
+\]</span>
+For the first identity, a filter vanishes exactly when its transform vanishes at that point; smooth bumps exclude every different point. For the full action identity, the filter acts diagonally on the nine matrix units, so its annihilator hull is exactly the finite set displayed. Each rank-one diagonal corner has identity action and spectrum <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, proving the last identity with <a href="OA-FLOW-CS.html#oa-flow.cs.0">CS-0</a>. Corner spectra themselves need not coincide: the corner on coordinates one and two has spectrum <span class="math" data-tex="\(\{0,\pm2\}\)">\(\{0,\pm2\}\)</span>, whereas the third-coordinate corner has only <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. <a href="OA-FLOW-CS.html#oa-flow.cs.3">CS-3</a> preserves their Connes-spectrum intersections, not these individual spectra.</p>
+<p>For <span class="math" data-tex="\(y=e_{13}\)">\(y=e_{13}\)</span>, <a href="OA-FLOW-CS.html#oa-flow.cs.1">CS-1</a> has <span class="math" data-tex="\(I=\{-5\}\)">\(I=\{-5\}\)</span>, <span class="math" data-tex="\(a=e_{11}\)">\(a=e_{11}\)</span>, <span class="math" data-tex="\(b=e_{33}\)">\(b=e_{33}\)</span>, and zero transfer error. The sandwich <span class="math" data-tex="\(y^*e_{11}y=e_{33}\)">\(y^*e_{11}y=e_{33}\)</span> explicitly cancels the two frequencies <span class="math" data-tex="\(+5\)">\(+5\)</span> and <span class="math" data-tex="\(-5\)">\(-5\)</span>. With <span class="math" data-tex="\(u_t=e^{-ith}\)">\(u_t=e^{-ith}\)</span>, (<a href="OA-FLOW-CS.html#equation-cs11">CS11</a>) gives the identity action <span class="math" data-tex="\(\beta\)">\(\beta\)</span>; its Connes spectrum is still <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. This example verifies the sign and the distinction between action spectrum and Connes spectrum. It is not a type III model or a proof of the general theorem.</p>
+<p><strong>Exercise.</strong> In (<a href="OA-FLOW-CS.html#equation-cs7">CS7</a>), why is the error the length of <span class="math" data-tex="\(I\)">\(I\)</span>, rather than its distance from zero? <strong>Solution.</strong> The two copies of <span class="math" data-tex="\(y\)">\(y\)</span> in (<a href="OA-FLOW-CS.html#equation-cs5">CS5</a>) contribute <span class="math" data-tex="\(-I\)">\(-I\)</span> and <span class="math" data-tex="\(I\)">\(I\)</span>; their sum is <span class="math" data-tex="\(I-I=[-\delta,\delta]\)">\(I-I=[-\delta,\delta]\)</span>. Translating <span class="math" data-tex="\(I\)">\(I\)</span> by any scalar leaves that difference unchanged. The support-join argument supplies the nonzero sandwich independently of the central frequency.</p>
+<p>This chapter proves the real-action corner, subgroup, translation and exterior-cocycle statements at arbitrary-factor scope. The comparison with the modular <span class="math" data-tex="\(S\)">\(S\)</span>-invariant requires the separate full n.s.f. GNS spectral proof and exact corner transport; no such identity is assumed above.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-CA.html">Previous lesson</a><a href="OA-FLOW-MG.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CS.md">Lesson source</a></nav></main></body></html>

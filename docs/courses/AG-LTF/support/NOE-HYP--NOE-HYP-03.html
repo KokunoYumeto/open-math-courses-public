@@ -1,0 +1,299 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Representations, characters and the group determinant</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="representations-characters-and-the-group-determinant">Representations, characters and the group determinant</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Matrices are coordinates for modules. For a finite group in characteristic zero, the simple module types can be recognized by their traces, and the same types factor the determinant of the regular representation. This lesson connects those two calculations. At the end, a trace pairing tests semisimplicity for every finite-dimensional algebra in characteristic zero.</p>
+<p>The prerequisites are <a href="../support/NOE-HYP--NOE-HYP-01.html">Groups with operators</a> and <a href="../support/NOE-HYP--NOE-HYP-02.html">Semisimple rings and Wedderburn's theorem</a>, together with determinants and polynomial rings. Basic references are [Etingof et al.], [MIT], [Noether] and [Frobenius]. Representations are unital, and their vector spaces are finite-dimensional unless explicitly stated otherwise. The character calculations use <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>; the ring and averaging statements specify their more general fields.</p>
+<h2 id="1-the-module-behind-a-matrix-representation">1. The module behind a matrix representation</h2>
+<p>A representation of a <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> is a <span class="math" data-tex="\(k\)">\(k\)</span>-algebra map <span class="math" data-tex="\(A\to\operatorname{End}_k(V)\)">\(A\to\operatorname{End}_k(V)\)</span>. It is equivalent to a left <span class="math" data-tex="\(A\)">\(A\)</span>-module structure on <span class="math" data-tex="\(V\)">\(V\)</span> agreeing with the given scalar action. Choosing a basis identifies the endomorphism algebra with <span class="math" data-tex="\(M_n(k)\)">\(M_n(k)\)</span>. A linear isomorphism <span class="math" data-tex="\(V\to W\)">\(V\to W\)</span> intertwines the two representations exactly when it is an <span class="math" data-tex="\(A\)">\(A\)</span>-module isomorphism. In coordinates, this is simultaneous conjugacy of the representing matrices.</p>
+<p>A subrepresentation is a submodule. <strong>Irreducible</strong> means simple; <strong>indecomposable</strong> means not a direct sum of two nonzero submodules. They are different notions, as the nilpotent two-dimensional example in the first lesson shows. Finite-dimensional modules have finite length: every strict submodule inclusion increases dimension. Thus Jordan–Hölder determines their simple composition factors, and Krull–Remak–Schmidt determines their indecomposable direct summands. These factors need not coincide unless the module is semisimple.</p>
+<h3 id="theorem-1-1-all-modules-over-a-semisimple-ring">Theorem 1.1. All modules over a semisimple ring</h3>
+<p>Let <span class="math" data-tex="\(R=\prod_{i=1}^t M_{n_i}(D_i)\)">\(R=\prod_{i=1}^t M_{n_i}(D_i)\)</span>, with division rings <span class="math" data-tex="\(D_i\)">\(D_i\)</span>. Every left <span class="math" data-tex="\(R\)">\(R\)</span>-module, of any cardinality, is a direct sum of simple modules. There is one simple type for each factor, namely its column module <span class="math" data-tex="\(D_i^{n_i}\)">\(D_i^{n_i}\)</span>, on which the other factors act by zero. Every simple module is isomorphic to a minimal left ideal of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><strong>Proof.</strong> Semisimplicity of every module was proved in Theorem 3.1 of the preceding lesson. For the type classification, the central factor identities <span class="math" data-tex="\(c_i\)">\(c_i\)</span> give <span class="math" data-tex="\(M=\bigoplus_i c_iM\)">\(M=\bigoplus_i c_iM\)</span>, and a simple module can have just one nonzero component. In <span class="math" data-tex="\(M_n(D)\)">\(M_n(D)\)</span>, its <span class="math" data-tex="\(n\)">\(n\)</span> column left ideals are simple, and their sum is the regular module. Every simple module is cyclic, hence a quotient of that regular module; at least one column has nonzero image in the quotient. Schur's lemma makes that column map an isomorphism.</p>
+<p>One can also see arbitrary multiplicities concretely. Put <span class="math" data-tex="\(e=E_{11}\)">\(e=E_{11}\)</span>, and regard <span class="math" data-tex="\(eM\)">\(eM\)</span> as a left vector space over <span class="math" data-tex="\(eRe\simeq D\)">\(eRe\simeq D\)</span>. The map</p>
+<span class="math math-display" data-tex="\[
+D^n\otimes_D eM\longrightarrow M,
+\qquad (d_i)_i\otimes m\longmapsto\sum_i E_{i1}(d_i)m
+\]">\[
+D^n\otimes_D eM\longrightarrow M,
+\qquad (d_i)_i\otimes m\longmapsto\sum_i E_{i1}(d_i)m
+\]</span>
+<p>is well defined; here <span class="math" data-tex="\(D^n\)">\(D^n\)</span> has its usual right <span class="math" data-tex="\(D\)">\(D\)</span>-action, and <span class="math" data-tex="\(E_{ij}(d)\)">\(E_{ij}(d)\)</span> denotes the matrix with entry <span class="math" data-tex="\(d\)">\(d\)</span> at <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>. Its inverse is</p>
+<span class="math math-display" data-tex="\[
+m\longmapsto\sum_i e_i\otimes E_{1i}(1)m,
+\]">\[
+m\longmapsto\sum_i e_i\otimes E_{1i}(1)m,
+\]</span>
+<p>where <span class="math" data-tex="\(e_i\)">\(e_i\)</span> are the standard columns. The matrix-unit identities verify both compositions and <span class="math" data-tex="\(R\)">\(R\)</span>-linearity. A left <span class="math" data-tex="\(D\)">\(D\)</span>-basis of <span class="math" data-tex="\(eM\)">\(eM\)</span> therefore gives a direct sum of copies of the column module. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> is finite-dimensional over an algebraically closed field <span class="math" data-tex="\(k\)">\(k\)</span> and semisimple, the division rings in its Wedderburn decomposition equal <span class="math" data-tex="\(k\)">\(k\)</span>. Indeed, every element <span class="math" data-tex="\(d\)">\(d\)</span> of such a division ring satisfies a polynomial over <span class="math" data-tex="\(k\)">\(k\)</span>. Factor that polynomial into linear factors. Since a division ring has no zero divisors and the scalars commute with <span class="math" data-tex="\(d\)">\(d\)</span>, one factor <span class="math" data-tex="\(d-\lambda\)">\(d-\lambda\)</span> must be zero. Thus</p>
+<span class="math math-display" data-tex="\[
+A\simeq\prod_i M_{n_i}(k),\qquad \dim_k A=\sum_i n_i^2.
+\]">\[
+A\simeq\prod_i M_{n_i}(k),\qquad \dim_k A=\sum_i n_i^2.
+\]</span>
+<h2 id="2-averaging-an-arbitrary-complement">2. Averaging an arbitrary complement</h2>
+<p>For a group <span class="math" data-tex="\(G\)">\(G\)</span>, its group algebra <span class="math" data-tex="\(k[G]\)">\(k[G]\)</span> has a basis of group elements, with multiplication extended linearly. Representations <span class="math" data-tex="\(G\to\operatorname{GL}(V)\)">\(G\to\operatorname{GL}(V)\)</span> and modules over <span class="math" data-tex="\(k[G]\)">\(k[G]\)</span> are equivalent: extend the group action linearly, or restrict an algebra action to the basis units.</p>
+<h3 id="theorem-2-1-maschke-s-theorem">Theorem 2.1. Maschke's theorem</h3>
+<p>If <span class="math" data-tex="\(G\)">\(G\)</span> is finite and <span class="math" data-tex="\(\operatorname{char}k\)">\(\operatorname{char}k\)</span> does not divide <span class="math" data-tex="\(\lvert G\rvert\)">\(\lvert G\rvert\)</span>, every <span class="math" data-tex="\(k[G]\)">\(k[G]\)</span>-module is semisimple.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(N\)">\(N\)</span> be a submodule of <span class="math" data-tex="\(M\)">\(M\)</span>, with no finite-dimensional assumption. Choose a <span class="math" data-tex="\(k\)">\(k\)</span>-linear projection <span class="math" data-tex="\(p:M\to N\)">\(p:M\to N\)</span>, using a vector-space basis extending a basis of <span class="math" data-tex="\(N\)">\(N\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+P=\frac1{\lvert G\rvert}\sum_{g\in G} gpg^{-1}.
+\]">\[
+P=\frac1{\lvert G\rvert}\sum_{g\in G} gpg^{-1}.
+\]</span>
+<p>Each term has image in <span class="math" data-tex="\(N\)">\(N\)</span> and restricts to the identity on <span class="math" data-tex="\(N\)">\(N\)</span>. Reindexing the sum shows that <span class="math" data-tex="\(P\)">\(P\)</span> commutes with each element of <span class="math" data-tex="\(G\)">\(G\)</span>, so it is a module homomorphism. It satisfies <span class="math" data-tex="\(P|_N=1\)">\(P|_N=1\)</span>; hence <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span> and <span class="math" data-tex="\(M=N\oplus\ker P\)">\(M=N\oplus\ker P\)</span>. Complete reducibility in the first lesson gives the conclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The characteristic restriction is necessary. If <span class="math" data-tex="\(G\)">\(G\)</span> is cyclic of order <span class="math" data-tex="\(p\)">\(p\)</span> over a field of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+k[G]\simeq k[t]/(t^p-1)=k[t]/((t-1)^p),
+\]">\[
+k[G]\simeq k[t]/(t^p-1)=k[t]/((t-1)^p),
+\]</span>
+<p>whose nonzero ideal <span class="math" data-tex="\((t-1)\)">\((t-1)\)</span> is nilpotent. It is not semisimple.</p>
+<h3 id="theorem-2-2-the-two-counting-formulas">Theorem 2.2. The two counting formulas</h3>
+<p>Let <span class="math" data-tex="\(V_1,\ldots,V_t\)">\(V_1,\ldots,V_t\)</span> represent the irreducible complex representations of a finite group <span class="math" data-tex="\(G\)">\(G\)</span>, with <span class="math" data-tex="\(n_i=\dim V_i\)">\(n_i=\dim V_i\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\mathbb C[G]\simeq\prod_i M_{n_i}(\mathbb C),\qquad
+\lvert G\rvert=\sum_i n_i^2,
+\]">\[
+\mathbb C[G]\simeq\prod_i M_{n_i}(\mathbb C),\qquad
+\lvert G\rvert=\sum_i n_i^2,
+\]</span>
+<p>and <span class="math" data-tex="\(t\)">\(t\)</span> is the number of conjugacy classes of <span class="math" data-tex="\(G\)">\(G\)</span>. The left regular representation is <span class="math" data-tex="\(\bigoplus_i V_i^{n_i}\)">\(\bigoplus_i V_i^{n_i}\)</span>.</p>
+<p><strong>Proof.</strong> Maschke and Wedderburn–Artin give the displayed product, and comparing dimensions gives the sum of squares. Each matrix factor has its regular module decomposed into <span class="math" data-tex="\(n_i\)">\(n_i\)</span> simple columns, proving the regular-representation assertion. The centre of the product has dimension <span class="math" data-tex="\(t\)">\(t\)</span>. In the group basis, an element <span class="math" data-tex="\(\sum_g a_g g\)">\(\sum_g a_g g\)</span> is central exactly when <span class="math" data-tex="\(a_g=a_{hgh^{-1}}\)">\(a_g=a_{hgh^{-1}}\)</span> for all <span class="math" data-tex="\(g,h\)">\(g,h\)</span>. The sums over distinct conjugacy classes form a basis of the centre. Comparing its two dimensions gives the second counting formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-traces-distinguish-the-simple-types">3. Traces distinguish the simple types</h2>
+<p>The <strong>character</strong> of <span class="math" data-tex="\(V\)">\(V\)</span> is <span class="math" data-tex="\(\chi_V(g)=\operatorname{Tr}(\rho_V(g))\)">\(\chi_V(g)=\operatorname{Tr}(\rho_V(g))\)</span>. It is constant on conjugacy classes, additive on direct sums, and multiplicative on tensor products. These statements follow respectively from similarity invariance of trace, block-diagonal matrices, and <span class="math" data-tex="\(\operatorname{Tr}(A\otimes B)=\operatorname{Tr}(A)\operatorname{Tr}(B)\)">\(\operatorname{Tr}(A\otimes B)=\operatorname{Tr}(A)\operatorname{Tr}(B)\)</span>.</p>
+<p>Since each <span class="math" data-tex="\(g\)">\(g\)</span> has finite order, its eigenvalues over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> are roots of unity and it is diagonalizable: <span class="math" data-tex="\(t^m-1\)">\(t^m-1\)</span> has distinct roots in characteristic zero. Consequently</p>
+<span class="math math-display" data-tex="\[
+\chi_V(g^{-1})=\overline{\chi_V(g)}.
+\]">\[
+\chi_V(g^{-1})=\overline{\chi_V(g)}.
+\]</span>
+<p>For class functions, use the inner product</p>
+<span class="math math-display" data-tex="\[
+\langle f,h\rangle=\frac1{\lvert G\rvert}\sum_{g\in G} f(g)\overline{h(g)}.
+\]">\[
+\langle f,h\rangle=\frac1{\lvert G\rvert}\sum_{g\in G} f(g)\overline{h(g)}.
+\]</span>
+<h3 id="theorem-3-1-orthogonality-and-character-determination">Theorem 3.1. Orthogonality and character determination</h3>
+<p>For finite-dimensional complex representations <span class="math" data-tex="\(V,W\)">\(V,W\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle\chi_W,\chi_V\rangle=\dim_{\mathbb C}\operatorname{Hom}_G(V,W).
+\]">\[
+\langle\chi_W,\chi_V\rangle=\dim_{\mathbb C}\operatorname{Hom}_G(V,W).
+\]</span>
+<p>The irreducible characters form an orthonormal basis of class functions. The multiplicity of <span class="math" data-tex="\(V_i\)">\(V_i\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span> is <span class="math" data-tex="\(\langle\chi_V,\chi_i\rangle\)">\(\langle\chi_V,\chi_i\rangle\)</span>, and equal characters give isomorphic representations.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> act on <span class="math" data-tex="\(\operatorname{Hom}_{\mathbb C}(V,W)\)">\(\operatorname{Hom}_{\mathbb C}(V,W)\)</span> by <span class="math" data-tex="\(T\mapsto\rho_W(g)T\rho_V(g^{-1})\)">\(T\mapsto\rho_W(g)T\rho_V(g^{-1})\)</span>. The average <span class="math" data-tex="\(P\)">\(P\)</span> of these operators is a projection onto the invariant subspace, which is exactly <span class="math" data-tex="\(\operatorname{Hom}_G(V,W)\)">\(\operatorname{Hom}_G(V,W)\)</span>. A projection has trace equal to its image dimension. The trace of <span class="math" data-tex="\(T\mapsto BTA\)">\(T\mapsto BTA\)</span> on a matrix space is <span class="math" data-tex="\(\operatorname{Tr}(B)\operatorname{Tr}(A)\)">\(\operatorname{Tr}(B)\operatorname{Tr}(A)\)</span>: on the basis matrix <span class="math" data-tex="\(E_{ab}\)">\(E_{ab}\)</span>, its coefficient at that same basis vector is <span class="math" data-tex="\(B_{aa}A_{bb}\)">\(B_{aa}A_{bb}\)</span>. Summing the coefficients and then averaging over <span class="math" data-tex="\(G\)">\(G\)</span> gives the displayed formula.</p>
+<p>Schur's lemma makes this Hom dimension one for equal irreducible types and zero for distinct types. Hence the irreducible characters are orthonormal and linearly independent. Their number equals the dimension of class functions by Theorem 2.2, so they are a basis. Maschke writes <span class="math" data-tex="\(V\)">\(V\)</span> as <span class="math" data-tex="\(\bigoplus_i V_i^{m_i}\)">\(\bigoplus_i V_i^{m_i}\)</span>; taking inner products recovers each <span class="math" data-tex="\(m_i\)">\(m_i\)</span>. Equal characters recover equal multiplicities and therefore isomorphic modules. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There are two useful refinements. For representatives <span class="math" data-tex="\(g,h\)">\(g,h\)</span> of conjugacy classes, expansion of the indicator function of the class of <span class="math" data-tex="\(h\)">\(h\)</span> in this orthonormal basis gives <strong>column orthogonality</strong>:</p>
+<span class="math math-display" data-tex="\[
+\sum_i\chi_i(g)\overline{\chi_i(h)}=
+\begin{cases}
+\lvert C_G(g)\rvert,&amp;g\text{ is conjugate to }h,\\
+0,&amp;\text{otherwise}.
+\end{cases}
+\]">\[
+\sum_i\chi_i(g)\overline{\chi_i(h)}=
+\begin{cases}
+\lvert C_G(g)\rvert,&amp;g\text{ is conjugate to }h,\\
+0,&amp;\text{otherwise}.
+\end{cases}
+\]</span>
+<p>Indeed, the inner product of that indicator with <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span> is <span class="math" data-tex="\(\lvert\operatorname{Cl}(h)\rvert\overline{\chi_i(h)}/\lvert G\rvert\)">\(\lvert\operatorname{Cl}(h)\rvert\overline{\chi_i(h)}/\lvert G\rvert\)</span>, and <span class="math" data-tex="\(\lvert G\rvert/\lvert\operatorname{Cl}(h)\rvert=\lvert C_G(h)\rvert\)">\(\lvert G\rvert/\lvert\operatorname{Cl}(h)\rvert=\lvert C_G(h)\rvert\)</span>. This proves the formula, including its normalization.</p>
+<p>For irreducibles <span class="math" data-tex="\(\rho_i,\rho_j\)">\(\rho_i,\rho_j\)</span>, the same average on matrices is zero if <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. If <span class="math" data-tex="\(i=j\)">\(i=j\)</span>, it is a scalar matrix by Schur, and preservation of trace makes it <span class="math" data-tex="\(\operatorname{Tr}(T)I/n_i\)">\(\operatorname{Tr}(T)I/n_i\)</span>. Taking <span class="math" data-tex="\(T\)">\(T\)</span> to be a matrix unit gives <strong>matrix-coefficient orthogonality</strong>:</p>
+<span class="math math-display" data-tex="\[
+\frac1{\lvert G\rvert}\sum_g
+\rho_i(g)_{ab}\rho_j(g^{-1})_{cd}
+=\frac{\delta_{ij}}{n_i}\delta_{ad}\delta_{bc}.
+\]">\[
+\frac1{\lvert G\rvert}\sum_g
+\rho_i(g)_{ab}\rho_j(g^{-1})_{cd}
+=\frac{\delta_{ij}}{n_i}\delta_{ad}\delta_{bc}.
+\]</span>
+<h3 id="proposition-3-2-central-idempotents-from-characters">Proposition 3.2. Central idempotents from characters</h3>
+<p>The identity of the <span class="math" data-tex="\(i\)">\(i\)</span>-th simple factor in <span class="math" data-tex="\(\mathbb C[G]\)">\(\mathbb C[G]\)</span> is</p>
+<span class="math math-display" data-tex="\[
+e_i=\frac{n_i}{\lvert G\rvert}\sum_{g\in G}\chi_i(g^{-1})g.
+\]">\[
+e_i=\frac{n_i}{\lvert G\rvert}\sum_{g\in G}\chi_i(g^{-1})g.
+\]</span>
+<p><strong>Proof.</strong> Its coefficients are constant on conjugacy classes, so it is central. On <span class="math" data-tex="\(V_j\)">\(V_j\)</span> it acts by a scalar <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>, by Schur's lemma. Taking traces gives</p>
+<span class="math math-display" data-tex="\[
+n_j\lambda_j=\frac{n_i}{\lvert G\rvert}\sum_g\chi_i(g^{-1})\chi_j(g)=n_i\delta_{ij}.
+\]">\[
+n_j\lambda_j=\frac{n_i}{\lvert G\rvert}\sum_g\chi_i(g^{-1})\chi_j(g)=n_i\delta_{ij}.
+\]</span>
+<p>Thus its action is the identity on <span class="math" data-tex="\(V_i\)">\(V_i\)</span> and zero on every other simple type. The faithful Wedderburn product identifies it with the claimed factor identity. In particular <span class="math" data-tex="\(e_i^2=e_i\)">\(e_i^2=e_i\)</span>, <span class="math" data-tex="\(e_ie_j=0\)">\(e_ie_j=0\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, and <span class="math" data-tex="\(\sum_i e_i=1\)">\(\sum_i e_i=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Character determination also holds for finite-dimensional modules over any finite-dimensional semisimple algebra <span class="math" data-tex="\(A\)">\(A\)</span> over a characteristic-zero field <span class="math" data-tex="\(k\)">\(k\)</span>, with the character defined on all of <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(a\mapsto\operatorname{Tr}_k(a|_V)\)">\(a\mapsto\operatorname{Tr}_k(a|_V)\)</span>. To prove it, evaluate at the central factor identities. If <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is the simple type of that factor, then</p>
+<span class="math math-display" data-tex="\[
+\chi_V(e_i)=m_i\dim_k S_i.
+\]">\[
+\chi_V(e_i)=m_i\dim_k S_i.
+\]</span>
+<p>The positive integer <span class="math" data-tex="\(\dim_k S_i\)">\(\dim_k S_i\)</span> is nonzero in <span class="math" data-tex="\(k\)">\(k\)</span>, so this determines <span class="math" data-tex="\(m_i\)">\(m_i\)</span>. In a nonsemisimple algebra traces may determine only the composition factors. On <span class="math" data-tex="\(k[t]/(t^2)\)">\(k[t]/(t^2)\)</span>, the two-dimensional regular module and the sum of two copies of <span class="math" data-tex="\(k[t]/(t)\)">\(k[t]/(t)\)</span> both have character <span class="math" data-tex="\(a+bt\mapsto2a\)">\(a+bt\mapsto2a\)</span>; they are not isomorphic, since <span class="math" data-tex="\(t\)">\(t\)</span> acts nontrivially on the former and trivially on the latter.</p>
+<h2 id="4-factoring-the-determinant-of-the-regular-action">4. Factoring the determinant of the regular action</h2>
+<p>Introduce one variable <span class="math" data-tex="\(x_g\)">\(x_g\)</span> for each <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>. The <strong>group determinant</strong> is</p>
+<span class="math math-display" data-tex="\[
+\Theta_G(x)=\det\left(\sum_g x_g\rho_{\mathrm{reg}}(g)\right).
+\]">\[
+\Theta_G(x)=\det\left(\sum_g x_g\rho_{\mathrm{reg}}(g)\right).
+\]</span>
+<p>With group elements indexing rows and columns, the matrix entry at <span class="math" data-tex="\((h,k)\)">\((h,k)\)</span> is <span class="math" data-tex="\(x_{hk^{-1}}\)">\(x_{hk^{-1}}\)</span>. This fixes the left-regular convention.</p>
+<h3 id="lemma-4-1-a-generic-matrix-determinant-is-irreducible">Lemma 4.1. A generic matrix determinant is irreducible</h3>
+<p>For every field <span class="math" data-tex="\(k\)">\(k\)</span>, the determinant of an <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> matrix of independent variables is irreducible in <span class="math" data-tex="\(k[x_{ij}]\)">\(k[x_{ij}]\)</span>, for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(\det(x_{ij})=fg\)">\(\det(x_{ij})=fg\)</span>, with nonzero factors. Grade polynomials by the degree in one chosen row. The determinant is homogeneous of degree one in that row. In a domain, the lowest and highest nonzero homogeneous pieces of a product are the products of the corresponding extreme pieces. Thus their degrees cannot cancel. The difference between highest and lowest degrees for the product is the sum of those differences for the factors. Here it is zero. Therefore <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> are each homogeneous in that row, of degrees zero and one in some order. Repeat for every row and every column.</p>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be the rows of degree one in <span class="math" data-tex="\(f\)">\(f\)</span>, and <span class="math" data-tex="\(J\)">\(J\)</span> its columns of degree one. The other rows and columns have degree zero in <span class="math" data-tex="\(f\)">\(f\)</span> and degree one in <span class="math" data-tex="\(g\)">\(g\)</span>. If both factors are nonconstant, <span class="math" data-tex="\(I\)">\(I\)</span> is a nonempty proper row set and <span class="math" data-tex="\(J\)">\(J\)</span> is a nonempty proper column set. A polynomial of degree zero in a row or column cannot involve its variables. Choose <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span> and <span class="math" data-tex="\(j\notin J\)">\(j\notin J\)</span>. The variable <span class="math" data-tex="\(x_{ij}\)">\(x_{ij}\)</span> occurs in neither factor: its column excludes it from <span class="math" data-tex="\(f\)">\(f\)</span>, and its row excludes it from <span class="math" data-tex="\(g\)">\(g\)</span>. But the determinant contains a permutation monomial using <span class="math" data-tex="\(x_{ij}\)">\(x_{ij}\)</span>, with coefficient <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, so it depends on that variable. This is a contradiction. Hence one factor is constant. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the single variable is irreducible directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="theorem-4-2-frobenius-s-factorization">Theorem 4.2. Frobenius's factorization</h3>
+<p>For the irreducibles of a finite group over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\Phi_i(x)=\det\left(\sum_g x_g\rho_i(g)\right).
+\]">\[
+\Phi_i(x)=\det\left(\sum_g x_g\rho_i(g)\right).
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+\Theta_G(x)=\prod_i\Phi_i(x)^{n_i}.
+\]">\[
+\Theta_G(x)=\prod_i\Phi_i(x)^{n_i}.
+\]</span>
+<p>Each <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span> is irreducible, homogeneous of degree <span class="math" data-tex="\(n_i\)">\(n_i\)</span>, and no two are associates.</p>
+<p><strong>Proof.</strong> The regular module is <span class="math" data-tex="\(\bigoplus_i V_i^{n_i}\)">\(\bigoplus_i V_i^{n_i}\)</span>. A basis adapted to this decomposition makes its generic action block diagonal, with the <span class="math" data-tex="\(i\)">\(i\)</span>-th block repeated <span class="math" data-tex="\(n_i\)">\(n_i\)</span> times. Taking determinants proves the product with precisely these exponents.</p>
+<p>For irreducibility, the linear map</p>
+<span class="math math-display" data-tex="\[
+\mathbb C[G]\longrightarrow\bigoplus_i M_{n_i}(\mathbb C),
+\qquad a\longmapsto(\rho_i(a))_i,
+\]">\[
+\mathbb C[G]\longrightarrow\bigoplus_i M_{n_i}(\mathbb C),
+\qquad a\longmapsto(\rho_i(a))_i,
+\]</span>
+<p>is a vector-space isomorphism by Wedderburn–Artin. Change the <span class="math" data-tex="\(\lvert G\rvert\)">\(\lvert G\rvert\)</span> independent coordinates <span class="math" data-tex="\(x_g\)">\(x_g\)</span> to the individual entries <span class="math" data-tex="\(y_{i,ab}\)">\(y_{i,ab}\)</span> of these matrix factors. This is an invertible linear change of polynomial variables. In the new variables, <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span> is a generic determinant in the <span class="math" data-tex="\(i\)">\(i\)</span>-th block, so Lemma 4.1 proves irreducibility. It remains irreducible after adjoining the other independent variables: the quotient by its prime ideal is still a polynomial ring over a domain. The polynomial rings here are unique factorization domains, so irreducible elements generate prime ideals.</p>
+<p>The determinants for different blocks cannot be scalar multiples. Set one block to a singular matrix and a different block to the identity; its determinant is then zero while the other's is one. This also proves the nonassociation assertion after the inverse coordinate change. Homogeneity and the degree follow from the determinant formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>A cyclic group of order three.</strong> Let its generator be <span class="math" data-tex="\(r\)">\(r\)</span>, and put <span class="math" data-tex="\(\omega=\exp(2\pi\mathrm i/3)\)">\(\omega=\exp(2\pi\mathrm i/3)\)</span>. Its three irreducibles are the characters <span class="math" data-tex="\(r\mapsto1,\omega,\omega^2\)">\(r\mapsto1,\omega,\omega^2\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+\Theta_{C_3}(x)=\prod_{j=0}^2(x_1+\omega^j x_r+\omega^{2j}x_{r^2}).
+\]">\[
+\Theta_{C_3}(x)=\prod_{j=0}^2(x_1+\omega^j x_r+\omega^{2j}x_{r^2}).
+\]</span>
+<p>The product is <span class="math" data-tex="\(x_1^3+x_r^3+x_{r^2}^3-3x_1x_rx_{r^2}\)">\(x_1^3+x_r^3+x_{r^2}^3-3x_1x_rx_{r^2}\)</span>.</p>
+<p><strong>The symmetric group on three letters.</strong> The conjugacy classes have sizes <span class="math" data-tex="\(1,3,2\)">\(1,3,2\)</span>, represented by <span class="math" data-tex="\(1,s,r\)">\(1,s,r\)</span>. The two linear representations and the two-dimensional matrices from the preceding lesson give the character table:</p>
+<table>
+<thead>
+<tr>
+<th>Representation</th>
+<th style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(s\)">\(s\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(r\)">\(r\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trivial</td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td>Sign</td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td>Two-dimensional</td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For variables <span class="math" data-tex="\(a_0,a_1,a_2\)">\(a_0,a_1,a_2\)</span> on <span class="math" data-tex="\(1,r,r^2\)">\(1,r,r^2\)</span> and <span class="math" data-tex="\(b_0,b_1,b_2\)">\(b_0,b_1,b_2\)</span> on <span class="math" data-tex="\(s,sr,sr^2\)">\(s,sr,sr^2\)</span>, set <span class="math" data-tex="\(A=a_0+a_1+a_2\)">\(A=a_0+a_1+a_2\)</span>, <span class="math" data-tex="\(B=b_0+b_1+b_2\)">\(B=b_0+b_1+b_2\)</span>. The two linear determinant factors are <span class="math" data-tex="\(A+B\)">\(A+B\)</span> and <span class="math" data-tex="\(A-B\)">\(A-B\)</span>. Using the same two-dimensional matrices gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q={}&amp;a_0^2+a_1^2+a_2^2-a_0a_1-a_0a_2-a_1a_2\\
+&amp;-b_0^2-b_1^2-b_2^2+b_0b_1+b_0b_2+b_1b_2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q={}&amp;a_0^2+a_1^2+a_2^2-a_0a_1-a_0a_2-a_1a_2\\
+&amp;-b_0^2-b_1^2-b_2^2+b_0b_1+b_0b_2+b_1b_2.
+\end{aligned}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\Theta_{S_3}=(A+B)(A-B)Q^2\)">\(\Theta_{S_3}=(A+B)(A-B)Q^2\)</span>. Theorem 4.2 proves that <span class="math" data-tex="\(Q\)">\(Q\)</span> is irreducible over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, even though this quadratic has a large radical as a quadratic form in six variables: after the matrix-coordinate change it is the determinant of four independent entries. Its exponent two is the multiplicity of the two-dimensional representation in the regular module.</p>
+<h2 id="5-a-trace-test-for-semisimplicity">5. A trace test for semisimplicity</h2>
+<p>For a finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, write <span class="math" data-tex="\(L_a\)">\(L_a\)</span> for left multiplication by <span class="math" data-tex="\(a\)">\(a\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+T(a)=\operatorname{Tr}_k(L_a),\qquad B(a,b)=T(ab).
+\]">\[
+T(a)=\operatorname{Tr}_k(L_a),\qquad B(a,b)=T(ab).
+\]</span>
+<p>The form is symmetric because <span class="math" data-tex="\(\operatorname{Tr}(L_aL_b)=\operatorname{Tr}(L_bL_a)\)">\(\operatorname{Tr}(L_aL_b)=\operatorname{Tr}(L_bL_a)\)</span>. In a basis <span class="math" data-tex="\(a_1,\ldots,a_d\)">\(a_1,\ldots,a_d\)</span>, its <strong>discriminant</strong> is the determinant of <span class="math" data-tex="\((B(a_i,a_j))\)">\((B(a_i,a_j))\)</span>. Changing basis multiplies this determinant by the square of the basis-change determinant, so its vanishing is independent of the basis.</p>
+<h3 id="theorem-5-1-the-regular-trace-criterion">Theorem 5.1. The regular trace criterion</h3>
+<p>If <span class="math" data-tex="\(\operatorname{char}k=0\)">\(\operatorname{char}k=0\)</span>, a finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-algebra is semisimple if and only if its regular trace form is nondegenerate.</p>
+<p><strong>Proof.</strong> The algebra is Artinian, so its Jacobson radical <span class="math" data-tex="\(J\)">\(J\)</span> is nilpotent. For <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span> and <span class="math" data-tex="\(y\in A\)">\(y\in A\)</span>, the product <span class="math" data-tex="\(xy\)">\(xy\)</span> belongs to <span class="math" data-tex="\(J\)">\(J\)</span> and is nilpotent. Thus <span class="math" data-tex="\(L_{xy}\)">\(L_{xy}\)</span> is nilpotent and has trace zero. Hence <span class="math" data-tex="\(J\)">\(J\)</span> is contained in the radical of <span class="math" data-tex="\(B\)">\(B\)</span>. Nondegeneracy implies <span class="math" data-tex="\(J=0\)">\(J=0\)</span>, and Wedderburn–Artin makes <span class="math" data-tex="\(A\)">\(A\)</span> semisimple.</p>
+<p>Conversely, on a simple factor <span class="math" data-tex="\(A_i\)">\(A_i\)</span>, the radical <span class="math" data-tex="\(N_i\)">\(N_i\)</span> of its trace pairing is a two-sided ideal. For <span class="math" data-tex="\(x\in N_i\)">\(x\in N_i\)</span>, the identity <span class="math" data-tex="\(T(ax y)=T(x y a)\)">\(T(ax y)=T(x y a)\)</span> gives closure under left multiplication, while <span class="math" data-tex="\(T(xa y)=0\)">\(T(xa y)=0\)</span> gives closure under right multiplication. Simplicity makes <span class="math" data-tex="\(N_i\)">\(N_i\)</span> either zero or the entire factor. But</p>
+<span class="math math-display" data-tex="\[
+B(1,1)=\dim_k A_i\ne0
+\]">\[
+B(1,1)=\dim_k A_i\ne0
+\]</span>
+<p>in characteristic zero, so it is not the entire factor. The pairing on each factor is nondegenerate. The product decomposition of <span class="math" data-tex="\(A\)">\(A\)</span> is orthogonal for <span class="math" data-tex="\(B\)">\(B\)</span>, because products between distinct factors vanish and the regular trace restricts to the trace of each factor. Therefore the whole pairing is nondegenerate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(A=M_n(k)\)">\(A=M_n(k)\)</span>, left multiplication acts identically on the <span class="math" data-tex="\(n\)">\(n\)</span> column spaces, so <span class="math" data-tex="\(T(a)=n\operatorname{tr}(a)\)">\(T(a)=n\operatorname{tr}(a)\)</span>. In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, the regular trace on <span class="math" data-tex="\(M_p(k)\)">\(M_p(k)\)</span> is identically zero although the algebra is simple. The ordinary matrix trace, which is its reduced trace, still gives a nondegenerate pairing: <span class="math" data-tex="\(\operatorname{tr}(E_{ij}E_{kl})=\delta_{jk}\delta_{il}\)">\(\operatorname{tr}(E_{ij}E_{kl})=\delta_{jk}\delta_{il}\)</span>. This explains why regular and reduced trace must be distinguished in positive characteristic. For arbitrary imperfect fields, even the existence of a suitable reduced trace requires attention to the centre and separability; the characteristic-zero criterion above makes none of those extra claims.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<h3 id="exercise-6-1-easy-four-cyclic-characters">Exercise 6.1. Easy: four cyclic characters</h3>
+<p>Compute the character table of a cyclic group generated by <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\(z^4=1\)">\(z^4=1\)</span>, and verify all row inner products.</p>
+<h3 id="exercise-6-2-medium-the-symmetric-group-table">Exercise 6.2. Medium: the symmetric-group table</h3>
+<p>Recover the character table of <span class="math" data-tex="\(S_3\)">\(S_3\)</span> from its algebra decomposition. Use the class sizes to check all row inner products and all column norms. Decompose the permutation representation on three letters and the tensor square of its two-dimensional irreducible.</p>
+<h3 id="exercise-6-3-medium-two-abelian-group-determinants">Exercise 6.3. Medium: two abelian group determinants</h3>
+<p>Verify the order-three determinant directly. For <span class="math" data-tex="\(G=\{1,a,b,ab\}\)">\(G=\{1,a,b,ab\}\)</span> with <span class="math" data-tex="\(a^2=b^2=1\)">\(a^2=b^2=1\)</span> and <span class="math" data-tex="\(ab=ba\)">\(ab=ba\)</span>, give all four determinant factors and their product formula.</p>
+<h3 id="exercise-6-4-medium-the-positive-characteristic-trace">Exercise 6.4. Medium: the positive-characteristic trace</h3>
+<p>Calculate the regular trace pairing on <span class="math" data-tex="\(M_p(\mathbb F_p)\)">\(M_p(\mathbb F_p)\)</span>, and exhibit an explicit dual basis for its reduced trace pairing. Explain exactly which step of Theorem 5.1 would fail if one used regular trace in this case.</p>
+<h3 id="exercise-6-5-hard-irreducibility-without-a-geometry-argument">Exercise 6.5. Hard: irreducibility without a geometry argument</h3>
+<p>Supply the grading argument in Lemma 4.1 for a polynomial factorization in every row and column, including the justification that the extreme pieces cannot cancel. Then use the full Wedderburn coordinate change to prove irreducibility and nonassociation of the <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span>, not just the product formula for <span class="math" data-tex="\(\Theta_G\)">\(\Theta_G\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<h3 id="solution-6-1">Solution 6.1</h3>
+<p>The four characters are <span class="math" data-tex="\(\chi_j(z^a)=\mathrm i^{ja}\)">\(\chi_j(z^a)=\mathrm i^{ja}\)</span>, for <span class="math" data-tex="\(j,a=0,1,2,3\)">\(j,a=0,1,2,3\)</span>. Their rows are</p>
+<span class="math math-display" data-tex="\[
+(1,1,1,1),\quad(1,\mathrm i,-1,-\mathrm i),\quad
+(1,-1,1,-1),\quad(1,-\mathrm i,-1,\mathrm i).
+\]">\[
+(1,1,1,1),\quad(1,\mathrm i,-1,-\mathrm i),\quad
+(1,-1,1,-1),\quad(1,-\mathrm i,-1,\mathrm i).
+\]</span>
+<p>The inner product of rows <span class="math" data-tex="\(j,l\)">\(j,l\)</span> is <span class="math" data-tex="\(\frac14\sum_{a=0}^3\mathrm i^{(j-l)a}\)">\(\frac14\sum_{a=0}^3\mathrm i^{(j-l)a}\)</span>. It equals one when <span class="math" data-tex="\(j=l\)">\(j=l\)</span>. Otherwise the ratio is a nontrivial fourth root of unity, and the geometric sum is zero. The four one-dimensional types exhaust the irreducibles, either by the cyclic algebra decomposition or by the sum-of-squares formula.</p>
+<h3 id="solution-6-2">Solution 6.2</h3>
+<p>The two field factors give the trivial and sign lines. On the matrix factor, identity has trace two, <span class="math" data-tex="\(\rho(s)\)">\(\rho(s)\)</span> has trace zero, and <span class="math" data-tex="\(\rho(r)\)">\(\rho(r)\)</span> has trace minus one. This gives the displayed table. The row norms are <span class="math" data-tex="\((1+3+2)/6=1\)">\((1+3+2)/6=1\)</span>, <span class="math" data-tex="\((1+3+2)/6=1\)">\((1+3+2)/6=1\)</span>, and <span class="math" data-tex="\((4+0+2)/6=1\)">\((4+0+2)/6=1\)</span>. The cross inner products have numerators <span class="math" data-tex="\(1-3+2=0\)">\(1-3+2=0\)</span>, <span class="math" data-tex="\(2+0-2=0\)">\(2+0-2=0\)</span>, and <span class="math" data-tex="\(2+0-2=0\)">\(2+0-2=0\)</span>. Column norms are <span class="math" data-tex="\(1+1+4=6\)">\(1+1+4=6\)</span>, <span class="math" data-tex="\(1+1+0=2\)">\(1+1+0=2\)</span>, and <span class="math" data-tex="\(1+1+1=3\)">\(1+1+1=3\)</span>, agreeing with the centralizer orders of <span class="math" data-tex="\(1,s,r\)">\(1,s,r\)</span>; cross-column inner products are zero.</p>
+<p>The permutation representation has character <span class="math" data-tex="\((3,1,0)\)">\((3,1,0)\)</span>, by counting fixed letters. This is the sum of the trivial character and <span class="math" data-tex="\((2,0,-1)\)">\((2,0,-1)\)</span>, so the representation is a trivial line plus the two-dimensional type. The tensor square has character <span class="math" data-tex="\((4,0,1)\)">\((4,0,1)\)</span>. It equals the sum of the trivial, sign and two-dimensional characters. Character determination gives</p>
+<span class="math math-display" data-tex="\[
+V\otimes V\simeq\mathbf1\oplus\operatorname{sgn}\oplus V.
+\]">\[
+V\otimes V\simeq\mathbf1\oplus\operatorname{sgn}\oplus V.
+\]</span>
+<h3 id="solution-6-3">Solution 6.3</h3>
+<p>For order three the regular matrix is</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}x_1&amp;x_{r^2}&amp;x_r\\x_r&amp;x_1&amp;x_{r^2}\\x_{r^2}&amp;x_r&amp;x_1\end{pmatrix}.
+\]">\[
+\begin{pmatrix}x_1&amp;x_{r^2}&amp;x_r\\x_r&amp;x_1&amp;x_{r^2}\\x_{r^2}&amp;x_r&amp;x_1\end{pmatrix}.
+\]</span>
+<p>Expansion gives <span class="math" data-tex="\(x_1^3+x_r^3+x_{r^2}^3-3x_1x_rx_{r^2}\)">\(x_1^3+x_r^3+x_{r^2}^3-3x_1x_rx_{r^2}\)</span>. Factoring with the three Fourier characters gives the product in Section 4. For the four-element group, a character is determined by independent choices <span class="math" data-tex="\(\epsilon,\eta\in\{1,-1\}\)">\(\epsilon,\eta\in\{1,-1\}\)</span> for its values on <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Its value on <span class="math" data-tex="\(ab\)">\(ab\)</span> is <span class="math" data-tex="\(\epsilon\eta\)">\(\epsilon\eta\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\Theta_G=\prod_{\epsilon,\eta\in\{1,-1\}}
+(x_1+\epsilon x_a+\eta x_b+\epsilon\eta x_{ab}).
+\]">\[
+\Theta_G=\prod_{\epsilon,\eta\in\{1,-1\}}
+(x_1+\epsilon x_a+\eta x_b+\epsilon\eta x_{ab}).
+\]</span>
+<p>Each factor has degree one and occurs once. These four characters exhaust the group-algebra factors because their degree squares already sum to four.</p>
+<h3 id="solution-6-4">Solution 6.4</h3>
+<p>There are <span class="math" data-tex="\(p\)">\(p\)</span> columns, and left multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> acts on each by the matrix <span class="math" data-tex="\(x\)">\(x\)</span>. Hence <span class="math" data-tex="\(T(x)=p\operatorname{tr}(x)=0\)">\(T(x)=p\operatorname{tr}(x)=0\)</span> in <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>, and <span class="math" data-tex="\(B(x,y)=0\)">\(B(x,y)=0\)</span> for all <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. Nevertheless, <span class="math" data-tex="\(M_p(\mathbb F_p)\)">\(M_p(\mathbb F_p)\)</span> is simple by the matrix-unit argument in the preceding lesson. For the reduced trace <span class="math" data-tex="\(\operatorname{tr}\)">\(\operatorname{tr}\)</span>, the dual of <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> is <span class="math" data-tex="\(E_{ji}\)">\(E_{ji}\)</span>: the product formula gives <span class="math" data-tex="\(\operatorname{tr}(E_{ij}E_{lk})=\delta_{jl}\delta_{ik}\)">\(\operatorname{tr}(E_{ij}E_{lk})=\delta_{jl}\delta_{ik}\)</span>. The simple-factor proof of Theorem 5.1 used <span class="math" data-tex="\(B(1,1)=\dim_k A_i\ne0\)">\(B(1,1)=\dim_k A_i\ne0\)</span> to exclude a wholly radical pairing. Here <span class="math" data-tex="\(\dim_k A_i=p^2=0\)">\(\dim_k A_i=p^2=0\)</span> as a scalar in the field, and in fact the entire regular trace vanishes. Simplicity alone therefore does not rescue that argument in positive characteristic.</p>
+<h3 id="solution-6-5">Solution 6.5</h3>
+<p>Fix a row and write <span class="math" data-tex="\(f=\sum_{a=r}^s f_a\)">\(f=\sum_{a=r}^s f_a\)</span>, <span class="math" data-tex="\(g=\sum_{b=u}^v g_b\)">\(g=\sum_{b=u}^v g_b\)</span>, where the endpoint homogeneous pieces are nonzero. The pieces of the product in degrees <span class="math" data-tex="\(r+u\)">\(r+u\)</span> and <span class="math" data-tex="\(s+v\)">\(s+v\)</span> are respectively <span class="math" data-tex="\(f_rg_u\)">\(f_rg_u\)</span> and <span class="math" data-tex="\(f_sg_v\)">\(f_sg_v\)</span>, with no other contributions at those degrees. They are nonzero because the polynomial ring is a domain. Homogeneity of the determinant gives <span class="math" data-tex="\(r+u=s+v=1\)">\(r+u=s+v=1\)</span>, so <span class="math" data-tex="\((s-r)+(v-u)=0\)">\((s-r)+(v-u)=0\)</span>. Both terms are nonnegative, hence zero. Thus the factors are homogeneous for this row and have degrees zero and one in some order. Apply this to every row and column. If both are nonconstant, choose a row assigned to <span class="math" data-tex="\(f\)">\(f\)</span> and a column assigned to <span class="math" data-tex="\(g\)">\(g\)</span>. Their intersecting variable occurs in neither factor but occurs in the determinant, a contradiction. This proves generic determinant irreducibility, including all fields.</p>
+<p>The representation map from the group algebra to the product of its full matrix factors is an isomorphism, so its entries are a full independent coordinate system, not just a set of selected linear forms. It induces an automorphism of the polynomial ring on <span class="math" data-tex="\(\lvert G\rvert\)">\(\lvert G\rvert\)</span> variables. In these coordinates each <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span> is precisely a generic determinant in its own block. Its irreducibility remains after adjoining the remaining variables because its quotient ring is a domain. Two such determinants are not associates, since one can vanish while the other equals one. Apply the inverse polynomial automorphism to recover irreducibility and nonassociation in the original <span class="math" data-tex="\(x_g\)">\(x_g\)</span> variables. Combined with the regular-module decomposition, this proves every part of Frobenius's factorization theorem.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The theory of Schur indices and minimal splitting fields over non-algebraically-closed fields is not developed here. A simple factor over such a field can involve a noncommutative division ring, as explained by Wedderburn–Artin. Brauer and Noether's work on minimal splitting fields is a historical reference, rather than an additional theorem used in these proofs. The general reduced trace for central simple algebras belongs to the next lesson. All six central results of this lesson, including generic determinant irreducibility and the characteristic-zero trace criterion, have been proved.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Etingof et al.]</strong> Pavel Etingof, Oleg Golberg, Sebastian Hensel, Tiankai Liu, Alex Schwendner, Dmitry Vaintrob and Elena Yudovina, <em>Introduction to Representation Theory</em>, 2011 revision, especially §§3.1–3.8. <a href="https://arxiv.org/abs/0901.0827">arXiv:0901.0827</a>.</li>
+<li><strong>[MIT]</strong> <em>Noncommutative Algebra</em>, MIT OpenCourseWare, Spring 2023, instructor Roman Bezrukavnikov, lectures 1–3. <a href="https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/resources/mit18_706_s23_full_lec_pdf/">Course notes</a>.</li>
+<li><strong>[Noether]</strong> Emmy Noether, <em>Hyperkomplexe Größen und Darstellungstheorie</em>, written up by B. L. van der Waerden, <em>Mathematische Zeitschrift</em> <strong>30</strong> (1929), 641–692, §§15–26, especially §25 for the discriminant viewpoint.</li>
+<li><strong>[Frobenius]</strong> Ferdinand Georg Frobenius, <em>Über die Darstellung der endlichen Gruppen durch lineare Substitutionen</em>, <em>Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften zu Berlin</em> (1897), 994–1015; and <em>Theorie der hyperkomplexen Größen</em>, the same proceedings (1903), 504–537.</li>
+<li><strong>[Brauer–Noether]</strong> Richard Brauer and Emmy Noether, <em>Über minimale Zerfällungskörper irreduzibler Darstellungen</em>, <em>Sitzungsberichte der Preussischen Akademie der Wissenschaften</em> (1927), 221–228.</li>
+</ul>
+</article></main></body></html>

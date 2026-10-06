@@ -1,0 +1,428 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Compact Lie groups, their Lie algebras and the adjoint representation</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Representations of compact groups</a><a href="su-2-so-3-and-spherical-harmonics.html">Previous lesson</a><a href="tori-and-the-maximal-torus-theorem.html">Next lesson</a></nav></header><main id="main"><article class="math"><h1 id="compact-lie-groups-their-lie-algebras-and-the-adjoint-representation">Compact Lie groups, their Lie algebras and the adjoint representation</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. No separate AI review of this revision is recorded. Public domain (CC0). Revised and self-checked on 3 October 2026 by GPT-6.1 Sol (OpenAI), Ultra effort.</em></p>
+<p>A compact group has unitary representations. When it is also a Lie group, differentiation turns that global fact into a local one: its adjoint operators are skew-adjoint. This gives a concrete decomposition of its Lie algebra and explains both the usefulness and the limitations of passing from groups to Lie algebras.</p>
+<p>We use the exact Lie-group background below, with geometric orientation from core course <strong>D50, Smooth Manifolds and Differential Geometry</strong>, and unitarization from <a href="representations-of-compact-groups-unitarity-complete-reducibility-and-finite-dimension.html">Representations of compact groups</a>. All Lie algebras in this lesson are real until explicitly complexified. Representations act on finite-dimensional complex vector spaces. Dimensions of real Lie groups and their Lie algebras are real dimensions. We take <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>.</p>
+<h2 id="lie-group-background-and-hypotheses">Lie-group background and hypotheses</h2>
+<p>The exponential and closed-subgroup proofs are <a href="../DG-FND/local-tools-for-bundles-and-transport.html#section-2"><em>Local tools for bundles and transport</em>, §2</a> and <a href="../DG-FND/invariant-connections-on-homogeneous-bundles.html#section-1"><em>Invariant connections on homogeneous bundles</em>, Theorem 1.1</a>. The latter also constructs smooth quotients with local sections. The immersed-subgroup correspondence is <a href="../DG-FND/flat-connections-and-infinitesimal-holonomy.html#section-3"><em>Flat connections and infinitesimal holonomy</em>, Lemma 3.2</a>, using the complete smoothly generated subgroup proof in <a href="../DG-FND/curvature-and-holonomy-groups.html#section-4"><em>Curvature and holonomy groups</em>, Lemma 4.1</a>. Their statements are:</p>
+<ul>
+<li>A Lie group <span class="math" data-tex="\(G\)">\(G\)</span> has Lie algebra <span class="math" data-tex="\(\mathfrak g=T_eG\)">\(\mathfrak g=T_eG\)</span>, whose bracket comes from left-invariant vector fields. The exponential is smooth, is a diffeomorphism between neighborhoods of <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span>, and <span class="math" data-tex="\(t\mapsto\exp(tX)\)">\(t\mapsto\exp(tX)\)</span> is the unique one-parameter subgroup with initial derivative <span class="math" data-tex="\(X\)">\(X\)</span>.</li>
+<li>A closed subgroup of a finite-dimensional real Lie group is an embedded Lie subgroup. For a closed matrix subgroup <span class="math" data-tex="\(G\subset GL_N(\mathbb C)\)">\(G\subset GL_N(\mathbb C)\)</span>, viewed as a real Lie group,
+<span class="math math-display" data-tex="\[
+\mathfrak g=\{X:\exp(tX)\in G\text{ for every }t\in\mathbb R\},
+\qquad [X,Y]=XY-YX. \tag{1.1}
+\]">\[
+\mathfrak g=\{X:\exp(tX)\in G\text{ for every }t\in\mathbb R\},
+\qquad [X,Y]=XY-YX. \tag{1.1}
+\]</span>
+Each Lie subalgebra is the Lie algebra of a unique connected <strong>immersed</strong> Lie subgroup. That subgroup need not be closed.</li>
+<li>A smooth homomorphism <span class="math" data-tex="\(f:G\to H\)">\(f:G\to H\)</span> differentiates to a real Lie-algebra homomorphism, and <span class="math" data-tex="\(f(\exp X)=\exp(df_eX)\)">\(f(\exp X)=\exp(df_eX)\)</span>.</li>
+<li>A connected Lie group has a simply connected covering Lie group <span class="math" data-tex="\(p:\widetilde G\to G\)">\(p:\widetilde G\to G\)</span>. Its kernel is discrete and central and is naturally isomorphic to <span class="math" data-tex="\(\pi_1(G,e)\)">\(\pi_1(G,e)\)</span>.</li>
+<li>If <span class="math" data-tex="\(G\)">\(G\)</span> is connected and simply connected, every Lie-algebra homomorphism <span class="math" data-tex="\(\mathfrak g\to\mathfrak h\)">\(\mathfrak g\to\mathfrak h\)</span> integrates to a unique smooth homomorphism <span class="math" data-tex="\(G\to H\)">\(G\to H\)</span>. The target <span class="math" data-tex="\(H\)">\(H\)</span> need not be simply connected. For a general connected <span class="math" data-tex="\(G\)">\(G\)</span>, integrate first on <span class="math" data-tex="\(\widetilde G\)">\(\widetilde G\)</span>; descent to <span class="math" data-tex="\(G\)">\(G\)</span> requires that the resulting homomorphism kill <span class="math" data-tex="\(\ker p\)">\(\ker p\)</span>.</li>
+</ul>
+<p>The internal providers just linked prove the exponential, embedded and immersed subgroup assertions with the stated generality. The covering and integration assertions are proved next. Etingof's <a href="https://arxiv.org/abs/2201.09397v5"><em>Lie Groups and Lie Algebras</em>, version 5</a>, §10, supplies a freely readable comparison for the graph construction; its closed-subgroup statement alone is not used as a proof of the general closed-subgroup theorem.</p>
+<p id="result-theorem-1-2"><strong>Theorem 1.2 (integration and the covering group).</strong> The covering and integration statements in the preceding list hold for arbitrary connected finite-dimensional real Lie groups; the target of the integration theorem is unrestricted.</p>
+<p><em>Proof.</em> The full path and homotopy lifting construction is <a href="../DG-FND/flat-connections-and-infinitesimal-holonomy.html#section-2"><em>Flat connections and infinitesimal holonomy</em>, Lemma 2.1</a>. For a Lie group, multiply its based path classes pointwise, <span class="math" data-tex="\([\gamma][\eta]=[t\mapsto\gamma(t)\eta(t)]\)">\([\gamma][\eta]=[t\mapsto\gamma(t)\eta(t)]\)</span>, and invert them pointwise. Homotopies with endpoints fixed make these operations well defined; the group laws follow from those of <span class="math" data-tex="\(G\)">\(G\)</span>. The covering charts make multiplication and inversion smooth: they are the unique local lifts of the corresponding smooth operations in <span class="math" data-tex="\(G\)">\(G\)</span>. The constant path is the identity. Projection is a Lie-group homomorphism with discrete kernel. Conjugation of a fixed kernel element is a continuous map from the connected cover into this discrete kernel and therefore constant, proving centrality. Kernel classes are precisely based loops. Pointwise multiplication and concatenation of loops are homotopic: use <span class="math" data-tex="\((s,t)\mapsto\gamma(s)\eta(t)\)">\((s,t)\mapsto\gamma(s)\eta(t)\)</span> on the square and deform its diagonal to its bottom and right edges. Thus the kernel is the fundamental group with its usual multiplication.</p>
+<p>For a Lie-algebra homomorphism <span class="math" data-tex="\(\phi:\mathfrak g\to\mathfrak h\)">\(\phi:\mathfrak g\to\mathfrak h\)</span>, the graph <span class="math" data-tex="\(\{(X,\phi X)\}\)">\(\{(X,\phi X)\}\)</span> is a Lie subalgebra of <span class="math" data-tex="\(\mathfrak g\oplus\mathfrak h\)">\(\mathfrak g\oplus\mathfrak h\)</span>. The immersed-subgroup theorem just identified supplies a connected Lie subgroup <span class="math" data-tex="\(S\subset G\times H\)">\(S\subset G\times H\)</span> with this algebra. The projection <span class="math" data-tex="\(p:S\to G\)">\(p:S\to G\)</span> has invertible differential. It is a local diffeomorphism and its image is an open subgroup; connectedness makes it onto.</p>
+<p>This projection is a covering, even when the immersed subgroup is not closed in the product. Choose an identity neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> on which <span class="math" data-tex="\(p\)">\(p\)</span> is a diffeomorphism onto an open <span class="math" data-tex="\(V\)">\(V\)</span>, small enough that <span class="math" data-tex="\(U^{-1}U\cap\ker p=\{e\}\)">\(U^{-1}U\cap\ker p=\{e\}\)</span>. Every point of <span class="math" data-tex="\(p^{-1}(V)\)">\(p^{-1}(V)\)</span> differs from the unique point of <span class="math" data-tex="\(U\)">\(U\)</span> above it by a kernel element. The resulting kernel translates of <span class="math" data-tex="\(U\)">\(U\)</span> are disjoint, by the displayed intersection property. They give evenly covered neighbourhoods, translated at other points. When <span class="math" data-tex="\(G\)">\(G\)</span> is simply connected, path and homotopy lifting make this connected covering a diffeomorphism: lifting paths from the identity is independent of their chosen representatives and gives its inverse. Compose that inverse with the other projection <span class="math" data-tex="\(S\to H\)">\(S\to H\)</span>. Its derivative is <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, so it is the required smooth homomorphism.</p>
+<p>Uniqueness follows because the derivative determines a homomorphism on exponential curves, and an exponential identity neighbourhood generates a connected group. For a general connected domain, integrate on its simply connected cover. A homomorphism descends exactly when it kills the covering kernel; then constancy on fibres gives the descended map, and the covering charts make it smooth. This proves all the assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The graph argument is also the proof of the second fundamental theorem in Etingof's freely accessible <a href="https://arxiv.org/abs/2201.09397v5">2026 version</a>, §10. Here the precise immersed-subgroup and covering proofs are internal.</p>
+<h2 id="the-classical-compact-groups">The classical compact groups</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+J=\begin{pmatrix}0&amp;I_n\\-I_n&amp;0\end{pmatrix}.
+\]">\[
+J=\begin{pmatrix}0&amp;I_n\\-I_n&amp;0\end{pmatrix}.
+\]</span>
+We use the definitions
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U(n)&amp;=\{g:g^*g=I_n\},&amp;
+SU(n)&amp;=\{g\in U(n):\det g=1\},\\
+O(n)&amp;=\{g\in M_n(\mathbb R):g^tg=I_n\},&amp;
+SO(n)&amp;=\{g\in O(n):\det g=1\},\\
+Sp(n)&amp;=\{g\in U(2n):g^tJg=J\}.
+\end{aligned} \tag{2.1}
+\]">\[
+\begin{aligned}
+U(n)&amp;=\{g:g^*g=I_n\},&amp;
+SU(n)&amp;=\{g\in U(n):\det g=1\},\\
+O(n)&amp;=\{g\in M_n(\mathbb R):g^tg=I_n\},&amp;
+SO(n)&amp;=\{g\in O(n):\det g=1\},\\
+Sp(n)&amp;=\{g\in U(2n):g^tJg=J\}.
+\end{aligned} \tag{2.1}
+\]</span>
+Here <span class="math" data-tex="\(Sp(n)\)">\(Sp(n)\)</span> is the compact symplectic group. In particular its defining complex representation has dimension <span class="math" data-tex="\(2n\)">\(2n\)</span>. All five groups are closed and bounded subsets of their finite-dimensional matrix spaces, hence compact. They are Lie groups by the closed subgroup theorem.</p>
+<p id="result-proposition-2-2"><strong>Proposition 2.2 (classical Lie algebras).</strong> Their Lie algebras and dimensions are</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Lie algebra</th>
+<th>Dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(U(n)\)">\(U(n)\)</span></td>
+<td><span class="math" data-tex="\(X^*=-X\)">\(X^*=-X\)</span></td>
+<td><span class="math" data-tex="\(n^2\)">\(n^2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(SU(n)\)">\(SU(n)\)</span></td>
+<td><span class="math" data-tex="\(X^*=-X,\ \operatorname{tr}X=0\)">\(X^*=-X,\ \operatorname{tr}X=0\)</span></td>
+<td><span class="math" data-tex="\(n^2-1\)">\(n^2-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(O(n),SO(n)\)">\(O(n),SO(n)\)</span></td>
+<td><span class="math" data-tex="\(X\in M_n(\mathbb R),\ X^t=-X\)">\(X\in M_n(\mathbb R),\ X^t=-X\)</span></td>
+<td><span class="math" data-tex="\(n(n-1)/2\)">\(n(n-1)/2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(Sp(n)\)">\(Sp(n)\)</span></td>
+<td><span class="math" data-tex="\(X^*=-X,\ X^tJ+JX=0\)">\(X^*=-X,\ X^tJ+JX=0\)</span></td>
+<td><span class="math" data-tex="\(n(2n+1)\)">\(n(2n+1)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><em>Proof.</em> Differentiating each equation at the identity gives the displayed necessary conditions; the determinant condition uses <span class="math" data-tex="\(d(\det)_I(X)=\operatorname{tr}X\)">\(d(\det)_I(X)=\operatorname{tr}X\)</span>. Conversely a skew-Hermitian <span class="math" data-tex="\(X\)">\(X\)</span> satisfies
+<span class="math math-display" data-tex="\[
+(e^{tX})^*e^{tX}=I,
+\]">\[
+(e^{tX})^*e^{tX}=I,
+\]</span>
+and a real skew-symmetric <span class="math" data-tex="\(X\)">\(X\)</span> satisfies the real analogue. Moreover <span class="math" data-tex="\(\det e^{tX}=e^{t\operatorname{tr}X}\)">\(\det e^{tX}=e^{t\operatorname{tr}X}\)</span>. If <span class="math" data-tex="\(X^tJ+JX=0\)">\(X^tJ+JX=0\)</span>, differentiation gives
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\big((e^{tX})^tJe^{tX}\big)
+=(e^{tX})^t(X^tJ+JX)e^{tX}=0.
+\]">\[
+\frac{d}{dt}\big((e^{tX})^tJe^{tX}\big)
+=(e^{tX})^t(X^tJ+JX)e^{tX}=0.
+\]</span>
+Thus all the conditions are sufficient by (1.1). The real skew-symmetric exponential has determinant one, so <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span> and <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span> have the same Lie algebra.</p>
+<p>A skew-Hermitian matrix has <span class="math" data-tex="\(n\)">\(n\)</span> imaginary diagonal parameters and <span class="math" data-tex="\(n(n-1)/2\)">\(n(n-1)/2\)</span> arbitrary complex entries above the diagonal, giving <span class="math" data-tex="\(n^2\)">\(n^2\)</span>. Trace zero removes one real parameter. A real skew-symmetric matrix has <span class="math" data-tex="\(n(n-1)/2\)">\(n(n-1)/2\)</span> parameters. Finally the symplectic conditions are equivalent to the block description
+<span class="math math-display" data-tex="\[
+X=\begin{pmatrix}A&amp;B\\-\overline B&amp;\overline A\end{pmatrix},
+\qquad A^*=-A,\quad B^t=B. \tag{2.3}
+\]">\[
+X=\begin{pmatrix}A&amp;B\\-\overline B&amp;\overline A\end{pmatrix},
+\qquad A^*=-A,\quad B^t=B. \tag{2.3}
+\]</span>
+The first block contributes <span class="math" data-tex="\(n^2\)">\(n^2\)</span> real parameters; the symmetric complex block contributes <span class="math" data-tex="\(n(n+1)\)">\(n(n+1)\)</span>. Their sum is <span class="math" data-tex="\(n(2n+1)\)">\(n(2n+1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We need the quaternionic interpretation to prove connectedness of <span class="math" data-tex="\(Sp(n)\)">\(Sp(n)\)</span>. Write each quaternion uniquely as <span class="math" data-tex="\(z+jw\)">\(z+jw\)</span>, with <span class="math" data-tex="\(z,w\in\mathbb C\)">\(z,w\in\mathbb C\)</span>. On the resulting <span class="math" data-tex="\(\mathbb C^{2n}\)">\(\mathbb C^{2n}\)</span>, right multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> is ordinary multiplication by <span class="math" data-tex="\(i\)">\(i\)</span>, and right multiplication by <span class="math" data-tex="\(j\)">\(j\)</span> is the anti-linear map
+<span class="math math-display" data-tex="\[
+C(z,w)=(-\overline w,\overline z)=-J\overline{(z,w)}.
+\]">\[
+C(z,w)=(-\overline w,\overline z)=-J\overline{(z,w)}.
+\]</span>
+A complex-linear unitary map is right quaternion-linear exactly when it commutes with <span class="math" data-tex="\(C\)">\(C\)</span>. This commutation says <span class="math" data-tex="\(gJ=J\overline g\)">\(gJ=J\overline g\)</span>, which, using unitarity and conjugating once, is equivalent to <span class="math" data-tex="\(g^tJg=J\)">\(g^tJg=J\)</span>. Such maps preserve the quaternionic Hermitian form <span class="math" data-tex="\(\sum\overline{q_i}r_i\)">\(\sum\overline{q_i}r_i\)</span>: its real part is the real inner product, and its other components are recovered by pairing against right multiplication by <span class="math" data-tex="\(i,j,k\)">\(i,j,k\)</span>. Hence <span class="math" data-tex="\(Sp(n)\)">\(Sp(n)\)</span> is exactly the group of quaternionic unitary maps on <span class="math" data-tex="\(\mathbb H^n\)">\(\mathbb H^n\)</span>.</p>
+<p id="result-proposition-2-4"><strong>Proposition 2.4 (connectedness).</strong> The groups <span class="math" data-tex="\(U(n),SU(n),SO(n),Sp(n)\)">\(U(n),SU(n),SO(n),Sp(n)\)</span> are path connected. The group <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span> has exactly two connected components, its two determinant fibers.</p>
+<p><em>Proof.</em> We spell out the sphere argument. Orthonormal-frame completion by Gram–Schmidt over <span class="math" data-tex="\(\mathbb R,\mathbb C,\mathbb H\)">\(\mathbb R,\mathbb C,\mathbb H\)</span> shows that the first-column maps are onto:
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c}
+G&amp;\text{sphere of first columns}&amp;\text{stabilizer of the first standard vector}\\
+\hline
+U(n)&amp;S^{2n-1}&amp;U(n-1)\\
+SU(n),\ n\geq2&amp;S^{2n-1}&amp;SU(n-1)\\
+SO(n),\ n\geq2&amp;S^{n-1}&amp;SO(n-1)\\
+Sp(n)&amp;S^{4n-1}&amp;Sp(n-1).
+\end{array} \tag{2.5}
+\]">\[
+\begin{array}{c|c|c}
+G&amp;\text{sphere of first columns}&amp;\text{stabilizer of the first standard vector}\\
+\hline
+U(n)&amp;S^{2n-1}&amp;U(n-1)\\
+SU(n),\ n\geq2&amp;S^{2n-1}&amp;SU(n-1)\\
+SO(n),\ n\geq2&amp;S^{n-1}&amp;SO(n-1)\\
+Sp(n)&amp;S^{4n-1}&amp;Sp(n-1).
+\end{array} \tag{2.5}
+\]</span>
+Set <span class="math" data-tex="\(U(0)=Sp(0)=\{1\}\)">\(U(0)=Sp(0)=\{1\}\)</span>. In the special unitary case, multiply the last column of a completed unitary frame by the inverse of its determinant; it leaves the first column fixed. In the real oriented case, change the last column's sign if needed.</p>
+<p>These maps have continuous local sections. At a given first column <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, fix a frame completing it. For <span class="math" data-tex="\(v\)">\(v\)</span> near <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, Gram–Schmidt applied to <span class="math" data-tex="\(v\)">\(v\)</span> followed by the remaining fixed frame vectors has no zero denominators and depends continuously on <span class="math" data-tex="\(v\)">\(v\)</span>. Make the same determinant or orientation adjustment just described.</p>
+<p>Here is the precise path argument these sections permit. Choose a path <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> on the sphere from the first standard vector to the first column of <span class="math" data-tex="\(g\)">\(g\)</span>. Cover its compact parameter interval by finitely many section neighborhoods and subdivide so each segment lies in one neighborhood. On such a segment beginning at <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, if <span class="math" data-tex="\(h_0\)">\(h_0\)</span> is the already constructed lift, set
+<span class="math math-display" data-tex="\[
+h(t)=s(\gamma(t))s(\gamma(t_0))^{-1}h_0.
+\]">\[
+h(t)=s(\gamma(t))s(\gamma(t_0))^{-1}h_0.
+\]</span>
+Its first column is <span class="math" data-tex="\(\gamma(t)\)">\(\gamma(t)\)</span>, and its initial value is <span class="math" data-tex="\(h_0\)">\(h_0\)</span>. Starting at the identity constructs a path to <span class="math" data-tex="\(h(1)\)">\(h(1)\)</span>. The element <span class="math" data-tex="\(h(1)^{-1}g\)">\(h(1)^{-1}g\)</span> belongs to the stabilizer. If that stabilizer is path connected, join it to the identity there and concatenate the corresponding translated path.</p>
+<p>Induction now applies because all the displayed spheres are path connected. The base cases are <span class="math" data-tex="\(U(1)=S^1\)">\(U(1)=S^1\)</span>, <span class="math" data-tex="\(SU(1)=SO(1)=\{1\}\)">\(SU(1)=SO(1)=\{1\}\)</span>, and <span class="math" data-tex="\(Sp(0)=\{1\}\)">\(Sp(0)=\{1\}\)</span>. This proves every claimed connectedness statement. Finally, determinant gives a continuous surjection <span class="math" data-tex="\(O(n)\to\{1,-1\}\)">\(O(n)\to\{1,-1\}\)</span>. Its positive fiber is <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span>; its negative fiber is any fixed reflection times <span class="math" data-tex="\(SO(n)\)">\(SO(n)\)</span>. Each fiber is path connected and both are open and closed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="adjoint-operators-and-the-centre">Adjoint operators and the centre</h2>
+<p>Conjugation <span class="math" data-tex="\(h\mapsto ghg^{-1}\)">\(h\mapsto ghg^{-1}\)</span> differentiates to <span class="math" data-tex="\(\operatorname{Ad}_g\in GL(\mathfrak g)\)">\(\operatorname{Ad}_g\in GL(\mathfrak g)\)</span>. This gives a smooth representation
+<span class="math math-display" data-tex="\[
+\operatorname{Ad}:G\longrightarrow GL(\mathfrak g).
+\]">\[
+\operatorname{Ad}:G\longrightarrow GL(\mathfrak g).
+\]</span>
+For matrices, <span class="math" data-tex="\(\operatorname{Ad}_gX=gXg^{-1}\)">\(\operatorname{Ad}_gX=gXg^{-1}\)</span>. Its derivative is
+<span class="math math-display" data-tex="\[
+\operatorname{ad}_XY=[X,Y]. \tag{3.1}
+\]">\[
+\operatorname{ad}_XY=[X,Y]. \tag{3.1}
+\]</span>
+Indeed differentiating <span class="math" data-tex="\(e^{tX}Ye^{-tX}\)">\(e^{tX}Ye^{-tX}\)</span> at zero gives the commutator; the same formula follows from the left-invariant definition of the bracket for general Lie groups.</p>
+<p>Write <span class="math" data-tex="\(\mathfrak z=\{Z:[Z,X]=0\ \forall X\}\)">\(\mathfrak z=\{Z:[Z,X]=0\ \forall X\}\)</span>, and let <span class="math" data-tex="\([\mathfrak g,\mathfrak g]\)">\([\mathfrak g,\mathfrak g]\)</span> mean the linear span of all brackets. This span is an ideal by the Jacobi identity.</p>
+<p id="result-theorem-3-2"><strong>Theorem 3.2 (compact Lie-algebra structure).</strong> For a compact Lie group <span class="math" data-tex="\(G\)">\(G\)</span>, including a disconnected one, its Lie algebra has an <span class="math" data-tex="\(\operatorname{Ad}(G)\)">\(\operatorname{Ad}(G)\)</span>-invariant positive definite real inner product. Relative to it,
+<span class="math math-display" data-tex="\[
+\mathfrak g=\mathfrak z\ \mathbin{\perp}\ [\mathfrak g,\mathfrak g]. \tag{3.3}
+\]">\[
+\mathfrak g=\mathfrak z\ \mathbin{\perp}\ [\mathfrak g,\mathfrak g]. \tag{3.3}
+\]</span>
+The Killing form
+<span class="math math-display" data-tex="\[
+B(X,Y)=\operatorname{tr}_{\mathbb R}(\operatorname{ad}_X\operatorname{ad}_Y)
+\]">\[
+B(X,Y)=\operatorname{tr}_{\mathbb R}(\operatorname{ad}_X\operatorname{ad}_Y)
+\]</span>
+is negative semidefinite, has kernel <span class="math" data-tex="\(\mathfrak z\)">\(\mathfrak z\)</span>, and is negative definite on the semisimple ideal <span class="math" data-tex="\([\mathfrak g,\mathfrak g]\)">\([\mathfrak g,\mathfrak g]\)</span>.</p>
+<p><em>Proof.</em> Average any positive definite inner product:
+<span class="math math-display" data-tex="\[
+\langle X,Y\rangle=\int_G
+\langle\operatorname{Ad}_gX,\operatorname{Ad}_gY\rangle_0\,dg.
+\]">\[
+\langle X,Y\rangle=\int_G
+\langle\operatorname{Ad}_gX,\operatorname{Ad}_gY\rangle_0\,dg.
+\]</span>
+For nonzero <span class="math" data-tex="\(X\)">\(X\)</span>, the integrand with <span class="math" data-tex="\(Y=X\)">\(Y=X\)</span> is positive everywhere; compactness even gives a positive minimum. Haar invariance proves invariance. Differentiating invariance along <span class="math" data-tex="\(\exp(tX)\)">\(\exp(tX)\)</span> gives
+<span class="math math-display" data-tex="\[
+\langle[X,Y],Z\rangle=-\langle Y,[X,Z]\rangle. \tag{3.4}
+\]">\[
+\langle[X,Y],Z\rangle=-\langle Y,[X,Z]\rangle. \tag{3.4}
+\]</span>
+Thus every <span class="math" data-tex="\(\operatorname{ad}_X\)">\(\operatorname{ad}_X\)</span> is skew-adjoint. Its complexification is diagonalizable with purely imaginary eigenvalues, by the spectral theorem for a skew-Hermitian matrix. “Diagonalizable” here refers to complexification; over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> there may be rotation blocks.</p>
+<p>If <span class="math" data-tex="\(Z\)">\(Z\)</span> is orthogonal to all brackets, (3.4) yields <span class="math" data-tex="\(\langle Y,[X,Z]\rangle=0\)">\(\langle Y,[X,Z]\rangle=0\)</span> for all <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, so <span class="math" data-tex="\(Z\in\mathfrak z\)">\(Z\in\mathfrak z\)</span>. The converse follows from the same identity. Hence <span class="math" data-tex="\([\mathfrak g,\mathfrak g]^\perp=\mathfrak z\)">\([\mathfrak g,\mathfrak g]^\perp=\mathfrak z\)</span>, proving (3.3), with both summands ideals. In an orthonormal basis,
+<span class="math math-display" data-tex="\[
+B(X,X)=-\|\operatorname{ad}_X\|_{\mathrm{HS}}^2. \tag{3.5}
+\]">\[
+B(X,X)=-\|\operatorname{ad}_X\|_{\mathrm{HS}}^2. \tag{3.5}
+\]</span>
+This proves semidefiniteness, and equality holds exactly for <span class="math" data-tex="\(X\in\mathfrak z\)">\(X\in\mathfrak z\)</span>. Such an <span class="math" data-tex="\(X\)">\(X\)</span> pairs to zero with every <span class="math" data-tex="\(Y\)">\(Y\)</span> under <span class="math" data-tex="\(B\)">\(B\)</span>; conversely membership in the kernel forces <span class="math" data-tex="\(B(X,X)=0\)">\(B(X,X)=0\)</span>. The restriction to the orthogonal complementary ideal is therefore negative definite.</p>
+<p>We give an independent proof of semisimplicity, so no converse Killing-form criterion is being assumed. Every ideal <span class="math" data-tex="\(I\)">\(I\)</span> has an ideal orthogonal complement by (3.4). Consequently <span class="math" data-tex="\(\mathfrak g=I\oplus I^\perp\)">\(\mathfrak g=I\oplus I^\perp\)</span>, and <span class="math" data-tex="\([I,I^\perp]=0\)">\([I,I^\perp]=0\)</span>, since the bracket belongs to both ideals. Choose a minimal nonzero ideal <span class="math" data-tex="\(I\)">\(I\)</span>. Every ideal of <span class="math" data-tex="\(I\)">\(I\)</span> is then an ideal of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, because <span class="math" data-tex="\(I^\perp\)">\(I^\perp\)</span> commutes with <span class="math" data-tex="\(I\)">\(I\)</span>. Thus <span class="math" data-tex="\(I\)">\(I\)</span> is either simple and nonabelian, or abelian. In the abelian case it is central; minimality makes it one-dimensional. Repeat on <span class="math" data-tex="\(I^\perp\)">\(I^\perp\)</span>, decreasing the dimension each time.</p>
+<p>We have expressed <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> as an orthogonal sum of central lines and nonabelian simple ideals. Each simple ideal equals its own derived algebra; the central lines have zero brackets. Therefore <span class="math" data-tex="\([\mathfrak g,\mathfrak g]\)">\([\mathfrak g,\mathfrak g]\)</span> is precisely the sum of the simple ideals, which is semisimple. Equivalently it has no nonzero solvable ideal: projecting such an ideal to any simple summand would give a solvable ideal there, necessarily zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A real Lie algebra admitting an invariant positive definite inner product is often called <strong>of compact type</strong>. This includes abelian Lie algebras. Negative definiteness of its Killing form characterizes the centre-free case among these algebras; it does not cover every compact Lie algebra.</p>
+<h2 id="differentiating-representations">Differentiating representations</h2>
+<p>We first justify smoothness without assuming compactness.</p>
+<p id="result-lemma-4-1"><strong>Lemma 4.1.</strong> Every continuous homomorphism <span class="math" data-tex="\(\pi:G\to GL(V)\)">\(\pi:G\to GL(V)\)</span>, with <span class="math" data-tex="\(G\)">\(G\)</span> a finite-dimensional Lie group and <span class="math" data-tex="\(V\)">\(V\)</span> finite-dimensional, is smooth.</p>
+<p><em>Proof.</em> Left Haar measure on a Lie group is given by a smooth left-invariant density. Choose a nonnegative smooth compactly supported function <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, of integral one, in a sufficiently small identity neighborhood that <span class="math" data-tex="\(\|\pi(g)-I\|&lt;1/2\)">\(\|\pi(g)-I\|&lt;1/2\)</span> on its support. Then
+<span class="math math-display" data-tex="\[
+A=\int_G\phi(g)\pi(g)\,dg
+\]">\[
+A=\int_G\phi(g)\pi(g)\,dg
+\]</span>
+satisfies <span class="math" data-tex="\(\|A-I\|&lt;1/2\)">\(\|A-I\|&lt;1/2\)</span>, so is invertible. For <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>, left invariance gives
+<span class="math math-display" data-tex="\[
+\pi(x)Av=\int_G\phi(x^{-1}h)\pi(h)v\,dh. \tag{4.2}
+\]">\[
+\pi(x)Av=\int_G\phi(x^{-1}h)\pi(h)v\,dh. \tag{4.2}
+\]</span>
+This is smooth in <span class="math" data-tex="\(x\)">\(x\)</span>: on each compact coordinate neighborhood the relevant <span class="math" data-tex="\(h\)">\(h\)</span>'s lie in a fixed compact set, and every derivative of the smooth factor can be passed under the integral there. Since <span class="math" data-tex="\(A\)">\(A\)</span> is onto, every orbit map <span class="math" data-tex="\(x\mapsto\pi(x)w\)">\(x\mapsto\pi(x)w\)</span> is smooth. Its matrix entries in a basis of <span class="math" data-tex="\(V\)">\(V\)</span> are smooth, proving the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Differentiation thus defines
+<span class="math math-display" data-tex="\[
+d\pi:\mathfrak g\to\operatorname{End}_{\mathbb C}(V),\qquad
+d\pi(X)=\left.\frac{d}{dt}\right|_{t=0}\pi(\exp tX),
+\quad
+\pi(\exp X)=e^{d\pi(X)}. \tag{4.3}
+\]">\[
+d\pi:\mathfrak g\to\operatorname{End}_{\mathbb C}(V),\qquad
+d\pi(X)=\left.\frac{d}{dt}\right|_{t=0}\pi(\exp tX),
+\quad
+\pi(\exp X)=e^{d\pi(X)}. \tag{4.3}
+\]</span>
+It preserves real linear combinations and brackets. When <span class="math" data-tex="\(G\)">\(G\)</span> is compact, choose the invariant Hermitian inner product supplied by unitarization. Differentiating <span class="math" data-tex="\(\pi(\exp tX)^*\pi(\exp tX)=I\)">\(\pi(\exp tX)^*\pi(\exp tX)=I\)</span> then gives <span class="math" data-tex="\(d\pi(X)^*=-d\pi(X)\)">\(d\pi(X)^*=-d\pi(X)\)</span>. Thus <span class="math" data-tex="\(d\pi\)">\(d\pi\)</span> lands in <span class="math" data-tex="\(\mathfrak u(V)\)">\(\mathfrak u(V)\)</span> <strong>for that inner product</strong>.</p>
+<p id="result-proposition-4-4"><strong>Proposition 4.4.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is connected, <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is determined by <span class="math" data-tex="\(d\pi\)">\(d\pi\)</span>. A complex subspace <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>-invariant if and only if it is <span class="math" data-tex="\(d\pi(\mathfrak g)\)">\(d\pi(\mathfrak g)\)</span>-invariant.</p>
+<p><em>Proof.</em> The subgroup generated by an exponential identity neighborhood is open. Every coset is open, so its complement is also open. Connectedness forces it to be all of <span class="math" data-tex="\(G\)">\(G\)</span>. Consequently the exponential formula (4.3) determines <span class="math" data-tex="\(\pi\)">\(\pi\)</span> on generators and hence everywhere. If <span class="math" data-tex="\(W\)">\(W\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>-invariant, differentiating its orbit curves keeps the derivative in <span class="math" data-tex="\(W\)">\(W\)</span>, since <span class="math" data-tex="\(W\)">\(W\)</span> is closed. Conversely derivative invariance implies invariance under all powers of <span class="math" data-tex="\(d\pi(X)\)">\(d\pi(X)\)</span>, hence under its exponential, and then under all of <span class="math" data-tex="\(G\)">\(G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Connectedness cannot be omitted: the determinant and the trivial character of <span class="math" data-tex="\(O(n)\)">\(O(n)\)</span> have identical zero derivatives but differ on the reflection component.</p>
+<p>Let <span class="math" data-tex="\(\mathfrak g_{\mathbb C}=\mathfrak g\otimes_{\mathbb R}\mathbb C\)">\(\mathfrak g_{\mathbb C}=\mathfrak g\otimes_{\mathbb R}\mathbb C\)</span>. A representation of the real Lie algebra on complex <span class="math" data-tex="\(V\)">\(V\)</span> means a real-linear bracket-preserving map to <span class="math" data-tex="\(\operatorname{End}_{\mathbb C}(V)\)">\(\operatorname{End}_{\mathbb C}(V)\)</span>. It extends uniquely by
+<span class="math math-display" data-tex="\[
+\rho_{\mathbb C}(X+iY)=\rho(X)+i\rho(Y). \tag{4.5}
+\]">\[
+\rho_{\mathbb C}(X+iY)=\rho(X)+i\rho(Y). \tag{4.5}
+\]</span>
+Complex bilinearity verifies preservation of the bracket. Restriction and this extension are inverse operations, also on intertwining maps and invariant subspaces.</p>
+<p>If <span class="math" data-tex="\(G\)">\(G\)</span> is simply connected, the integration theorem applied to <span class="math" data-tex="\(GL(V)\)">\(GL(V)\)</span> integrates every such representation. For a general connected compact group there is a period condition. For example, with <span class="math" data-tex="\(S^1=\{e^{it}\}\)">\(S^1=\{e^{it}\}\)</span>, a Lie-algebra representation specified by <span class="math" data-tex="\(d\pi(1)=A\)">\(d\pi(1)=A\)</span> integrates to <span class="math" data-tex="\(S^1\)">\(S^1\)</span> precisely when
+<span class="math math-display" data-tex="\[
+e^{2\pi A}=I. \tag{4.6}
+\]">\[
+e^{2\pi A}=I. \tag{4.6}
+\]</span>
+This follows by first integrating on the covering group <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, where <span class="math" data-tex="\(\pi(t)=e^{tA}\)">\(\pi(t)=e^{tA}\)</span>, and checking its kernel <span class="math" data-tex="\(2\pi\mathbb Z\)">\(2\pi\mathbb Z\)</span>. Even the one-dimensional map <span class="math" data-tex="\(1\mapsto1\)">\(1\mapsto1\)</span> is a representation of the abelian Lie algebra of <span class="math" data-tex="\(S^1\)">\(S^1\)</span>, but it neither integrates to <span class="math" data-tex="\(S^1\)">\(S^1\)</span> nor becomes skew-Hermitian under a change of inner product. Hence the unitarity assertion for derivatives of compact-group representations cannot be extended to arbitrary representations of compact Lie algebras with centre.</p>
+<p>For a concrete complexification, put
+<span class="math math-display" data-tex="\[
+I=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},\quad
+J_0=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\quad
+K=\begin{pmatrix}0&amp;i\\i&amp;0\end{pmatrix}.
+\]">\[
+I=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},\quad
+J_0=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\quad
+K=\begin{pmatrix}0&amp;i\\i&amp;0\end{pmatrix}.
+\]</span>
+These form a real basis of <span class="math" data-tex="\(\mathfrak{su}(2)\)">\(\mathfrak{su}(2)\)</span>, with
+<span class="math math-display" data-tex="\[
+[I,J_0]=2K,\quad[J_0,K]=2I,\quad[K,I]=2J_0. \tag{4.7}
+\]">\[
+[I,J_0]=2K,\quad[J_0,K]=2I,\quad[K,I]=2J_0. \tag{4.7}
+\]</span>
+Inside its complexification set
+<span class="math math-display" data-tex="\[
+H=-iI,\qquad E=(J_0-iK)/2,\qquad F=(-J_0-iK)/2.
+\]">\[
+H=-iI,\qquad E=(J_0-iK)/2,\qquad F=(-J_0-iK)/2.
+\]</span>
+These are respectively <span class="math" data-tex="\(\operatorname{diag}(1,-1),E_{12},E_{21}\)">\(\operatorname{diag}(1,-1),E_{12},E_{21}\)</span>. They span <span class="math" data-tex="\(\mathfrak{sl}_2(\mathbb C)\)">\(\mathfrak{sl}_2(\mathbb C)\)</span>, giving an isomorphism
+<span class="math math-display" data-tex="\[
+\mathfrak{su}(2)_{\mathbb C}\simeq\mathfrak{sl}_2(\mathbb C),
+\qquad [H,E]=2E,\quad[H,F]=-2F,\quad[E,F]=H. \tag{4.8}
+\]">\[
+\mathfrak{su}(2)_{\mathbb C}\simeq\mathfrak{sl}_2(\mathbb C),
+\qquad [H,E]=2E,\quad[H,F]=-2F,\quad[E,F]=H. \tag{4.8}
+\]</span>
+Classification of its highest-weight modules belongs to the Lie-algebra representation course; here (4.5) specifies exactly how the two representation problems are related.</p>
+<h2 id="the-adjoint-covering-and-explicit-killing-forms">The adjoint covering and explicit Killing forms</h2>
+<p id="result-proposition-5-1"><strong>Proposition 5.1.</strong> The adjoint homomorphism <span class="math" data-tex="\(SU(2)\to SO(\mathfrak{su}(2))\simeq SO(3)\)">\(SU(2)\to SO(\mathfrak{su}(2))\simeq SO(3)\)</span> is onto and has kernel <span class="math" data-tex="\(\{\pm I_2\}\)">\(\{\pm I_2\}\)</span>. It is a two-sheeted universal covering. In particular <span class="math" data-tex="\(\pi_1(SO(3))\simeq\mathbb Z/2\mathbb Z\)">\(\pi_1(SO(3))\simeq\mathbb Z/2\mathbb Z\)</span>.</p>
+<p><em>Proof.</em> On <span class="math" data-tex="\(\mathfrak{su}(2)\)">\(\mathfrak{su}(2)\)</span> take <span class="math" data-tex="\(\langle X,Y\rangle=-\operatorname{tr}(XY)/2\)">\(\langle X,Y\rangle=-\operatorname{tr}(XY)/2\)</span>. It is a positive definite invariant real inner product, and <span class="math" data-tex="\(I,J_0,K\)">\(I,J_0,K\)</span> are orthonormal. Conjugation is orthogonal. Its determinant is one because <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> is connected and it equals one at the identity.</p>
+<p>By (4.7), the centre of <span class="math" data-tex="\(\mathfrak{su}(2)\)">\(\mathfrak{su}(2)\)</span> is zero. Thus <span class="math" data-tex="\(d\operatorname{Ad}=\operatorname{ad}\)">\(d\operatorname{Ad}=\operatorname{ad}\)</span> is injective, and it is an isomorphism onto <span class="math" data-tex="\(\mathfrak{so}(3)\)">\(\mathfrak{so}(3)\)</span> by dimensions. The inverse function theorem makes the image contain an identity neighborhood in <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>. An open subgroup of a connected group is the whole group, proving surjectivity. A matrix in the kernel commutes with <span class="math" data-tex="\(I\)">\(I\)</span>, so is diagonal; commuting also with <span class="math" data-tex="\(J_0\)">\(J_0\)</span> makes its two diagonal entries equal. Unitarity and determinant one then give <span class="math" data-tex="\(I_2\)">\(I_2\)</span> or <span class="math" data-tex="\(-I_2\)">\(-I_2\)</span>.</p>
+<p><a href="su-2-so-3-and-spherical-harmonics.html">The three-sphere description</a> identifies <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> with <span class="math" data-tex="\(S^3\)">\(S^3\)</span>. The quotient by <span class="math" data-tex="\(q\mapsto-q\)">\(q\mapsto-q\)</span> is a two-sheeted covering: choose a neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> of any <span class="math" data-tex="\(q\)">\(q\)</span> disjoint from <span class="math" data-tex="\(-U\)">\(-U\)</span>; the quotient is a homeomorphism on each of <span class="math" data-tex="\(U,-U\)">\(U,-U\)</span>. The induced continuous bijection from the compact quotient to Hausdorff <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span> is a homeomorphism; the local differential isomorphism makes the covering smooth.</p>
+<p>For completeness, the topological input that <span class="math" data-tex="\(S^3\)">\(S^3\)</span> is simply connected follows from the Seifert–van Kampen theorem: the complements of the north and south poles are each <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, while their intersection is path connected. Their union therefore has trivial fundamental group. Thus this is the universal covering. The covering-group statement of Section 1 identifies its two-element kernel with <span class="math" data-tex="\(\pi_1(SO(3))\)">\(\pi_1(SO(3))\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In quaternion coordinates <span class="math" data-tex="\(X=x_1I+x_2J_0+x_3K\)">\(X=x_1I+x_2J_0+x_3K\)</span>, (4.7) says <span class="math" data-tex="\(\operatorname{ad}_XY=2x\times y\)">\(\operatorname{ad}_XY=2x\times y\)</span>. Hence
+<span class="math math-display" data-tex="\[
+B_{\mathfrak{su}(2)}(X,Y)=-8\,x\cdot y
+=4\operatorname{tr}_2(XY). \tag{5.2}
+\]">\[
+B_{\mathfrak{su}(2)}(X,Y)=-8\,x\cdot y
+=4\operatorname{tr}_2(XY). \tag{5.2}
+\]</span>
+Indeed for <span class="math" data-tex="\(A_v(w)=v\times w\)">\(A_v(w)=v\times w\)</span>, the vector triple-product identity gives
+<span class="math math-display" data-tex="\[
+A_vA_w=w v^t-(v\cdot w)I_3,\qquad
+\operatorname{tr}_3(A_vA_w)=-2v\cdot w.
+\]">\[
+A_vA_w=w v^t-(v\cdot w)I_3,\qquad
+\operatorname{tr}_3(A_vA_w)=-2v\cdot w.
+\]</span>
+Since <span class="math" data-tex="\([A_v,A_w]=A_{v\times w}\)">\([A_v,A_w]=A_{v\times w}\)</span>, the adjoint representation of <span class="math" data-tex="\(\mathfrak{so}(3)\)">\(\mathfrak{so}(3)\)</span>, in the <span class="math" data-tex="\(v\)">\(v\)</span>-coordinates, is <span class="math" data-tex="\(A_v\)">\(A_v\)</span> itself. Consequently
+<span class="math math-display" data-tex="\[
+B_{\mathfrak{so}(3)}(A_v,A_w)=-2v\cdot w
+=\operatorname{tr}_3(A_vA_w). \tag{5.3}
+\]">\[
+B_{\mathfrak{so}(3)}(A_v,A_w)=-2v\cdot w
+=\operatorname{tr}_3(A_vA_w). \tag{5.3}
+\]</span>
+The differential of the covering sends <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(A_{2x}\)">\(A_{2x}\)</span>; (5.2) and (5.3) therefore agree under this isomorphism.</p>
+<p>The group centre of <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> is <span class="math" data-tex="\(\{zI_n:|z|=1\}\)">\(\{zI_n:|z|=1\}\)</span>: commuting with every diagonal unitary forces a matrix to be diagonal, and commuting with permutation matrices makes its diagonal entries equal. The analogous argument for its Lie algebra, using diagonal skew-Hermitian matrices and the matrices <span class="math" data-tex="\(E_{ab}-E_{ba}\)">\(E_{ab}-E_{ba}\)</span>, gives <span class="math" data-tex="\(\mathfrak z(\mathfrak u(n))=i\mathbb R I_n\)">\(\mathfrak z(\mathfrak u(n))=i\mathbb R I_n\)</span>. Explicitly
+<span class="math math-display" data-tex="\[
+X=\frac{\operatorname{tr}X}{n}I_n+
+\left(X-\frac{\operatorname{tr}X}{n}I_n\right),
+\qquad
+\mathfrak u(n)=i\mathbb R I_n\ \mathbin{\perp}\ \mathfrak{su}(n), \tag{5.4}
+\]">\[
+X=\frac{\operatorname{tr}X}{n}I_n+
+\left(X-\frac{\operatorname{tr}X}{n}I_n\right),
+\qquad
+\mathfrak u(n)=i\mathbb R I_n\ \mathbin{\perp}\ \mathfrak{su}(n), \tag{5.4}
+\]</span>
+for the inner product <span class="math" data-tex="\(-\operatorname{tr}(XY)\)">\(-\operatorname{tr}(XY)\)</span>. This displays the central directions on which the Killing form vanishes.</p>
+<p>Finally every <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrix satisfies <span class="math" data-tex="\(g^tJg=(\det g)J\)">\(g^tJg=(\det g)J\)</span>. Thus <span class="math" data-tex="\(Sp(1)=SU(2)\)">\(Sp(1)=SU(2)\)</span>, consistently of real dimension three.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Compute explicit Lie algebras and dimensions for <span class="math" data-tex="\(SO(3),SU(3),Sp(2)\)">\(SO(3),SU(3),Sp(2)\)</span>.</p>
+<p><em>Solution.</em> The first consists of
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}0&amp;-c&amp;b\\c&amp;0&amp;-a\\-b&amp;a&amp;0\end{pmatrix},
+\qquad a,b,c\in\mathbb R,
+\]">\[
+\begin{pmatrix}0&amp;-c&amp;b\\c&amp;0&amp;-a\\-b&amp;a&amp;0\end{pmatrix},
+\qquad a,b,c\in\mathbb R,
+\]</span>
+and has dimension three. For <span class="math" data-tex="\(SU(3)\)">\(SU(3)\)</span> take
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+ia&amp;z&amp;w\\-\overline z&amp;ib&amp;u\\-\overline w&amp;-\overline u&amp;-i(a+b)
+\end{pmatrix},
+\qquad a,b\in\mathbb R,\quad z,w,u\in\mathbb C.
+\]">\[
+\begin{pmatrix}
+ia&amp;z&amp;w\\-\overline z&amp;ib&amp;u\\-\overline w&amp;-\overline u&amp;-i(a+b)
+\end{pmatrix},
+\qquad a,b\in\mathbb R,\quad z,w,u\in\mathbb C.
+\]</span>
+This gives dimension <span class="math" data-tex="\(2+6=8\)">\(2+6=8\)</span>. For <span class="math" data-tex="\(Sp(2)\)">\(Sp(2)\)</span> use (2.3) with
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}ia&amp;z\\-\overline z&amp;ib\end{pmatrix},\qquad
+B=\begin{pmatrix}u&amp;v\\v&amp;w\end{pmatrix}.
+\]">\[
+A=\begin{pmatrix}ia&amp;z\\-\overline z&amp;ib\end{pmatrix},\qquad
+B=\begin{pmatrix}u&amp;v\\v&amp;w\end{pmatrix}.
+\]</span>
+The parameters in <span class="math" data-tex="\(A\)">\(A\)</span> contribute four real dimensions and those in <span class="math" data-tex="\(B\)">\(B\)</span> six, so the answer is ten. Necessity and sufficiency of all three descriptions were proved by differentiation and exponentiation in Proposition 2.2.</p>
+<p><strong>Exercise 2 (medium).</strong> Prove the adjoint surjection <span class="math" data-tex="\(SU(2)\to SO(3)\)">\(SU(2)\to SO(3)\)</span> and its kernel by computing rotations.</p>
+<p><em>Solution.</em> The basis (4.7) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Ad}_{e^{tI}}I&amp;=I,\\
+\operatorname{Ad}_{e^{tI}}J_0&amp;=\cos(2t)J_0+\sin(2t)K,\\
+\operatorname{Ad}_{e^{tI}}K&amp;=-\sin(2t)J_0+\cos(2t)K.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Ad}_{e^{tI}}I&amp;=I,\\
+\operatorname{Ad}_{e^{tI}}J_0&amp;=\cos(2t)J_0+\sin(2t)K,\\
+\operatorname{Ad}_{e^{tI}}K&amp;=-\sin(2t)J_0+\cos(2t)K.
+\end{aligned}
+\]</span>
+These follow either by multiplying <span class="math" data-tex="\((\cos t+I\sin t)J_0(\cos t-I\sin t)\)">\((\cos t+I\sin t)J_0(\cos t-I\sin t)\)</span> or by exponentiating <span class="math" data-tex="\(\operatorname{ad}_I\)">\(\operatorname{ad}_I\)</span>. Cyclically, the image contains rotations about all three coordinate axes with every angle.</p>
+<p>These rotations generate <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>. To see this explicitly, coordinate-axis rotations can first move <span class="math" data-tex="\(e_1\)">\(e_1\)</span> to any given unit vector: a rotation about the second axis chooses its third coordinate, and one about the third chooses the direction of its first two coordinates. For <span class="math" data-tex="\(R\in SO(3)\)">\(R\in SO(3)\)</span>, choose their product <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(Qe_1=Re_1\)">\(Qe_1=Re_1\)</span>. Then <span class="math" data-tex="\(Q^{-1}R\)">\(Q^{-1}R\)</span> fixes <span class="math" data-tex="\(e_1\)">\(e_1\)</span> and is a planar rotation on <span class="math" data-tex="\(e_1^\perp\)">\(e_1^\perp\)</span>, hence is a rotation about the first axis. Therefore <span class="math" data-tex="\(R\)">\(R\)</span> is in the image. The kernel computation in Proposition 5.1 uses commutation with <span class="math" data-tex="\(I,J_0\)">\(I,J_0\)</span>, forcing a scalar matrix; determinant one gives exactly <span class="math" data-tex="\(\pm I_2\)">\(\pm I_2\)</span>. This proves both assertions directly and agrees with the differential proof.</p>
+<p><strong>Exercise 3 (medium).</strong> Compute <span class="math" data-tex="\(B_{\mathfrak{su}(n)}\)">\(B_{\mathfrak{su}(n)}\)</span> as a multiple of <span class="math" data-tex="\(\operatorname{tr}(XY)\)">\(\operatorname{tr}(XY)\)</span>.</p>
+<p><em>Solution.</em> First work on <span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span>. Let <span class="math" data-tex="\(L_X(Z)=XZ\)">\(L_X(Z)=XZ\)</span>, <span class="math" data-tex="\(R_X(Z)=ZX\)">\(R_X(Z)=ZX\)</span>. In the basis <span class="math" data-tex="\(E_{ab}\)">\(E_{ab}\)</span>, direct diagonal-entry counting yields
+<span class="math math-display" data-tex="\[
+\operatorname{tr}(L_XL_Y)=n\operatorname{tr}(XY),\quad
+\operatorname{tr}(R_XR_Y)=n\operatorname{tr}(XY),\quad
+\operatorname{tr}(L_XR_Y)=\operatorname{tr}X\,\operatorname{tr}Y.
+\]">\[
+\operatorname{tr}(L_XL_Y)=n\operatorname{tr}(XY),\quad
+\operatorname{tr}(R_XR_Y)=n\operatorname{tr}(XY),\quad
+\operatorname{tr}(L_XR_Y)=\operatorname{tr}X\,\operatorname{tr}Y.
+\]</span>
+For example the coefficient of <span class="math" data-tex="\(E_{ab}\)">\(E_{ab}\)</span> in <span class="math" data-tex="\(XE_{ab}Y\)">\(XE_{ab}Y\)</span> is <span class="math" data-tex="\(X_{aa}Y_{bb}\)">\(X_{aa}Y_{bb}\)</span>, which proves the last identity by summing. Since <span class="math" data-tex="\(\operatorname{ad}_X=L_X-R_X\)">\(\operatorname{ad}_X=L_X-R_X\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{tr}_{M_n}(\operatorname{ad}_X\operatorname{ad}_Y)
+=2n\operatorname{tr}(XY)-2\operatorname{tr}X\,\operatorname{tr}Y. \tag{6.1}
+\]">\[
+\operatorname{tr}_{M_n}(\operatorname{ad}_X\operatorname{ad}_Y)
+=2n\operatorname{tr}(XY)-2\operatorname{tr}X\,\operatorname{tr}Y. \tag{6.1}
+\]</span>
+For traceless <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, the scalar line in <span class="math" data-tex="\(M_n=\mathbb CI_n\oplus\mathfrak{sl}_n(\mathbb C)\)">\(M_n=\mathbb CI_n\oplus\mathfrak{sl}_n(\mathbb C)\)</span> contributes zero, so the trace on <span class="math" data-tex="\(\mathfrak{sl}_n\)">\(\mathfrak{sl}_n\)</span> is <span class="math" data-tex="\(2n\operatorname{tr}(XY)\)">\(2n\operatorname{tr}(XY)\)</span>.</p>
+<p>The natural complexification of <span class="math" data-tex="\(\mathfrak{su}(n)\)">\(\mathfrak{su}(n)\)</span> is <span class="math" data-tex="\(\mathfrak{sl}_n(\mathbb C)\)">\(\mathfrak{sl}_n(\mathbb C)\)</span>: a traceless complex matrix <span class="math" data-tex="\(Z\)">\(Z\)</span> decomposes as
+<span class="math math-display" data-tex="\[
+Z=\frac{Z-Z^*}{2}+i\frac{Z+Z^*}{2i},
+\]">\[
+Z=\frac{Z-Z^*}{2}+i\frac{Z+Z^*}{2i},
+\]</span>
+with both summands before multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> traceless and skew-Hermitian. The trace of the complexification of a real endomorphism equals its real trace. Therefore
+<span class="math math-display" data-tex="\[
+\boxed{B_{\mathfrak{su}(n)}(X,Y)=2n\operatorname{tr}(XY).} \tag{6.2}
+\]">\[
+\boxed{B_{\mathfrak{su}(n)}(X,Y)=2n\operatorname{tr}(XY).} \tag{6.2}
+\]</span>
+The right side is real, since conjugation of the trace gives <span class="math" data-tex="\(\operatorname{tr}(YX)\)">\(\operatorname{tr}(YX)\)</span>. For <span class="math" data-tex="\(X=Y\neq0\)">\(X=Y\neq0\)</span> it is negative, since <span class="math" data-tex="\(\operatorname{tr}(X^2)=-\operatorname{tr}(X^*X)\)">\(\operatorname{tr}(X^2)=-\operatorname{tr}(X^*X)\)</span>. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the algebra is zero, so the formula is still valid. The same calculation on <span class="math" data-tex="\(\mathfrak u(n)\)">\(\mathfrak u(n)\)</span> gives (6.1); it vanishes when either argument is a scalar imaginary matrix.</p>
+<p><strong>Exercise 4 (hard).</strong> Prove that <span class="math" data-tex="\(Sp(1)\)">\(Sp(1)\)</span> is connected and simply connected, and that <span class="math" data-tex="\(Sp(n)\)">\(Sp(n)\)</span> is connected for every <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><em>Solution.</em> By the <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> determinant identity, <span class="math" data-tex="\(Sp(1)=SU(2)\)">\(Sp(1)=SU(2)\)</span>. Its matrices are
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}a&amp;b\\-\overline b&amp;\overline a\end{pmatrix},
+\qquad |a|^2+|b|^2=1,
+\]">\[
+\begin{pmatrix}a&amp;b\\-\overline b&amp;\overline a\end{pmatrix},
+\qquad |a|^2+|b|^2=1,
+\]</span>
+so this is <span class="math" data-tex="\(S^3\)">\(S^3\)</span>. The sphere is path connected and simply connected by the two-chart van Kampen argument in Proposition 5.1.</p>
+<p>For the general case, quaternionic Gram–Schmidt completes any unit <span class="math" data-tex="\(v\in\mathbb H^n\)">\(v\in\mathbb H^n\)</span> to an orthonormal frame. One may use the right-linear projection
+<span class="math math-display" data-tex="\[
+w\longmapsto w-\sum_j u_j\langle u_j,w\rangle_{\mathbb H}
+\]">\[
+w\longmapsto w-\sum_j u_j\langle u_j,w\rangle_{\mathbb H}
+\]</span>
+and divide each nonzero remainder by its positive real norm. The resulting frame is an element of <span class="math" data-tex="\(Sp(n)\)">\(Sp(n)\)</span> with first column <span class="math" data-tex="\(v\)">\(v\)</span>, and the fiber at <span class="math" data-tex="\(e_1\)">\(e_1\)</span> is <span class="math" data-tex="\(\operatorname{diag}(1,Sp(n-1))\)">\(\operatorname{diag}(1,Sp(n-1))\)</span>. Near any fixed <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, retain the other columns of a frame at <span class="math" data-tex="\(v_0\)">\(v_0\)</span>; the same construction gives a continuous section because its remainders remain nonzero.</p>
+<p>Given <span class="math" data-tex="\(g\)">\(g\)</span>, choose a sphere path from <span class="math" data-tex="\(e_1\)">\(e_1\)</span> to <span class="math" data-tex="\(ge_1\)">\(ge_1\)</span>. Lift it on finitely many section neighborhoods by the explicit formula in Proposition 2.4. This joins the identity to <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(he_1=ge_1\)">\(he_1=ge_1\)</span>. Then <span class="math" data-tex="\(h^{-1}g\)">\(h^{-1}g\)</span> lies in <span class="math" data-tex="\(Sp(n-1)\)">\(Sp(n-1)\)</span>. Induction joins that element to the identity inside the fiber and completes a path to <span class="math" data-tex="\(g\)">\(g\)</span>. This proves connectedness for every <span class="math" data-tex="\(n\)">\(n\)</span>, without assuming an unproved global frame section. The exercise claims simple connectedness only for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+<h2 id="source-and-course-connections">Source and course connections</h2>
+<p>Milne, <em>Algebraic Groups</em>, Section 10d, Definitions 10.18 and 10.20 and Theorem 10.23, gives the algebraic-group analogue of Lie algebra, adjoint action and bracket. Its scheme-theoretic construction is distinct from the analytic compactness and Haar averaging used here.</p>
+<p>The orthogonal ideal decomposition was proved directly, leaving general Cartan criteria to the Lie-algebra course. The next lessons use the invariant inner product for maximal tori, roots and Weyl integration. The period obstruction (4.6) will remain essential when deciding which highest weights belong to a particular compact group.</p>
+<h2 id="accessible-source-notes">Accessible source notes</h2>
+<p>Pavel Etingof, <a href="https://arxiv.org/abs/2201.09397v5"><em>Lie Groups and Lie Algebras</em>, arXiv:2201.09397v5</a>, 23 May 2026 (accessed 3 October 2026), §10. The graph-subgroup construction gives a proof comparison for Lie algebra integration. The complete internal immersed-subgroup and covering proofs are linked above, and the full integration/descent theorem is proved here.</p>
+</article></main><footer>Original lesson text and solutions: CC0 1.0. Mathematical sources are credited in each lesson. <a href="../../assets/mathjax/LICENSE">MathJax licence</a> · <a href="../../assets/mathjax/FONT-LICENSES.txt">Font licences</a> · <a href="src/RT-CPT-05.provenance.json">Source and result records</a></footer></body></html>

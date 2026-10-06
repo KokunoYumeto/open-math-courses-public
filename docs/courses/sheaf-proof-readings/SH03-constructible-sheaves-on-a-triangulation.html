@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Constructible sheaves on a triangulation</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><h1 id="constructible-sheaves-on-a-triangulation">Constructible sheaves
+on a triangulation</h1>
+<p>A triangulation turns local changes of a sheaf into algebra attached
+to faces. A module sits on each open simplex, and a homomorphism records
+how a germ on a face continues into a larger simplex. This lesson
+constructs the sheaf from that data, proves that sections on an open
+star have no higher cohomology, and compares the resulting diagram
+category with the derived category of constructible sheaves.</p>
+<p>The prerequisite model is <a href="SH03-constructible-gluing-on-an-interval.html">Constructible
+gluing on an interval</a>. The constant-sheaf input is the proved <a href="SH02-convex-acyclicity.html#SH02-CA-CONSTANT">convex acyclicity
+calculation</a>, applied to the intersection of a closed simplex with an
+open star. This intersection is convex and locally closed in the affine
+span of that simplex. Consequently the stated coefficient scope of the
+calculation applies, including arbitrary modules.</p>
+<p>The derived comparison uses enough injective sheaves, bounded-below
+resolutions, derived adjunction and truncation. Proposition 4 constructs
+the ordinary adjunction and explains why its right adjoint preserves
+injectives; Theorem 3 supplies the acyclicity needed for the displayed
+unit and counit calculations. For the resolution input, <a href="../derived-categories-and-sheaf-operations/sheaves-of-modules-and-their-derived-categories.html#5-enough-injectives-functorially">Sheaves
+of modules and their derived categories, Section 5</a> constructs enough
+injectives for modules and module sheaves; its <a href="../derived-categories-and-sheaf-operations/sheaves-of-modules-and-their-derived-categories.html#6-right-derived-functors-on-bounded-below-complexes">Theorem
+6.1 and Lemmas 6.2–6.3</a> construct bounded-below resolutions,
+comparison maps and computation by acyclic terms. The <a href="SH02-open-prerequisite-proofs.html#bounded-below-hypercohomology-proof">bounded-below
+hypercohomology proof</a> constructs the finite truncation filtration
+and identifies the actual edge to cohomology-sheaf sections and then to
+a stalk. Its linked good-truncation and resolution proofs supply those
+steps. General derived-category localization remains a separate
+foundational input. Theorem 5 retains its stated uniform dimension and
+finite-global-dimension hypotheses, and Theorem 7 retains
+Noetherianity.</p>
+<p><em>Original exposition by GPT-6.1 Sol (OpenAI), Ultra, September
+2026, with the direct module proof by GPT-6 Astra (OpenAI), Ultra,
+October 2026. Original lesson text is public domain (CC0).</em></p>
+<h2 id="from-the-interval-diagram-to-all-face-diagrams">From the
+interval diagram to all face diagrams</h2>
+<p>At an interior vertex of a triangulated line, its star has the vertex
+and the two incident open edges. The face arrows are exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>→</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">V\to L</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>→</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">V\to R</annotation></semantics></math>
+in the <a href="SH03-constructible-gluing-on-an-interval.html#one-diagram-from-sections-to-a-closed-layer-correction">fixed
+interval diagram</a>. The following general construction uses this same
+direction of arrows.</p>
+<p>For the categorical step, use the <a href="#the-algebra-of-face-diagrams">direct module calculation
+below</a>, which constructs kernels, quotients and their universal maps
+for an arbitrary set of simplices. Consider a natural map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>:</mo><mi>M</mi><mo>→</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">a:M\to N</annotation></semantics></math>.
+On a face arrow
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>≤</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">\sigma\le\tau</annotation></semantics></math>,
+the equality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>τ</mi></msub><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>M</mi></msubsup><mo>=</mo><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>N</mi></msubsup><msub><mi>a</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">a_\tau r^M_{\sigma\tau}=r^N_{\sigma\tau}a_\sigma</annotation></semantics></math>
+means that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>M</mi></msubsup><annotation encoding="application/x-tex">r^M_{\sigma\tau}</annotation></semantics></math>
+carries
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>a</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">\ker a_\sigma</annotation></semantics></math>
+into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>a</mi><mi>τ</mi></msub></mrow><annotation encoding="application/x-tex">\ker a_\tau</annotation></semantics></math>.
+The induced kernel arrow is uniquely determined by its inclusion into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>τ</mi></msub><annotation encoding="application/x-tex">M_\tau</annotation></semantics></math>.
+Dually the quotient arrow is induced by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>N</mi></msubsup><annotation encoding="application/x-tex">r^N_{\sigma\tau}</annotation></semantics></math>,
+because it carries
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">im</mi><mo>⁡</mo></mrow><msub><mi>a</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">\operatorname{im}a_\sigma</annotation></semantics></math>
+into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">im</mi><mo>⁡</mo></mrow><msub><mi>a</mi><mi>τ</mi></msub></mrow><annotation encoding="application/x-tex">\operatorname{im}a_\tau</annotation></semantics></math>.
+These are the actual natural kernel/cokernel diagrams. Their
+coimage-to-image maps are pointwise isomorphisms with natural inverses,
+so the face-diagram category is abelian.</p>
+<p>That calculation supplies the categorical assertion used after (2).
+It does not construct a sheaf or compute ambient sheaf cohomology. The
+étalé construction in Theorem 1 supplies the first task. The
+closed-simplex injective resolution in (4)–(8) supplies the second. For
+a fixed star
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">U_\sigma</annotation></semantics></math>,
+only cofaces of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+contribute to its product: at a point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ρ</mi><mo>∘</mo></msup><mo>⊂</mo><msub><mi>U</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">\rho^\circ\subset U_\sigma</annotation></semantics></math>,
+a nonzero factor requires
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>≤</mo><mi>ρ</mi><mo>≤</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">\sigma\le\rho\le\tau</annotation></semantics></math>.
+There are finitely many such
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+by local finiteness. Thus that restricted product is finite, without
+asserting exactness of arbitrary products of sheaves.</p>
+<p>The full bounded derived equivalence (12), and finite-coefficient
+equivalence (15) with its Noetherian hypothesis and finite-at-each-face
+projective covers, are retained below. The interval model is an entry
+calculation; these proofs supply the additional generality.</p>
+<h2 id="faces-and-open-stars">Faces and open stars</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+be a locally finite abstract simplicial complex. Its simplices are
+finite nonempty vertex sets; every nonempty subset of a simplex is a
+simplex. Each vertex belongs to finitely many simplices. Its realization
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>S</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|S|</annotation></semantics></math>
+consists of barycentric points</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mi>v</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>x</mi><mi>v</mi></msub><mo>≥</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><munder><mo>∑</mo><mi>v</mi></munder><msub><mi>x</mi><mi>v</mi></msub><mo>=</mo><mn>1</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">
+x=(x_v),\qquad x_v\geq0,\quad\sum_vx_v=1,
+</annotation></semantics></math></p>
+<p>whose positive-coordinate support is a simplex. The open simplex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>
+consists of points with positive support exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>.
+We write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>≤</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">\sigma\leq\tau</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+is a face of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>.
+The open star of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>σ</mi></msub><mo>=</mo><munder><mo>⋃</mo><mrow><mi>τ</mi><mo>≥</mo><mi>σ</mi></mrow></munder><msup><mi>τ</mi><mo>∘</mo></msup><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo>:</mo><msub><mi>x</mi><mi>v</mi></msub><mo>&gt;</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> for every </mtext><mspace width="0.333em"></mspace></mrow><mi>v</mi><mo>∈</mo><mi>σ</mi><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1)</mtext></mrow><annotation encoding="application/x-tex">
+U_\sigma=\bigcup_{\tau\geq\sigma}\tau^\circ
+=\{x:x_v&gt;0\text{ for every }v\in\sigma\}.
+\qquad\text{(1)}
+</annotation></semantics></math></p>
+<p>This is open in the realization. Every simplex has finitely many
+cofaces: choose one of its vertices and use local finiteness. Thus each
+star lies in a finite subcomplex. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>≤</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">\sigma\leq\tau</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>τ</mi></msub><mo>⊂</mo><msub><mi>U</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">U_\tau\subset U_\sigma</annotation></semantics></math>.
+Two stars intersect in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mrow><mi>σ</mi><mo>∪</mo><mi>τ</mi></mrow></msub><annotation encoding="application/x-tex">U_{\sigma\cup\tau}</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>∪</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">\sigma\cup\tau</annotation></semantics></math>
+is a simplex, and have empty intersection otherwise.</p>
+<p>Near a point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>,
+choose a sufficiently small barycentric neighborhood inside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">U_\sigma</annotation></semantics></math>.
+It meets only cofaces of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>,
+and its intersection with each such open simplex can be chosen convex.
+These neighborhoods are what will make the gluing construction
+local.</p>
+<p>The complex need not have finitely many simplices or vertices. No
+countability assumption is made here. A uniform dimension bound will be
+imposed separately for the stated bounded derived comparison.</p>
+<h2 id="modules-that-continue-into-larger-faces">Modules that continue
+into larger faces</h2>
+<p>Fix a commutative coefficient ring
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+A face diagram consists of modules
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">M_\sigma</annotation></semantics></math>
+and homomorphisms</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow></msub><mo>:</mo><msub><mi>M</mi><mi>σ</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>M</mi><mi>τ</mi></msub><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>σ</mi><mo>≤</mo><mi>τ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2)</mtext></mrow><annotation encoding="application/x-tex">
+r_{\sigma\tau}:M_\sigma\longrightarrow M_\tau
+\quad(\sigma\leq\tau),
+\qquad\text{(2)}
+</annotation></semantics></math></p>
+<p>with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>σ</mi><mi>σ</mi></mrow></msub><mo>=</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mrow><annotation encoding="application/x-tex">r_{\sigma\sigma}=\mathrm{id}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>τ</mi><mi>υ</mi></mrow></msub><msub><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow></msub><mo>=</mo><msub><mi>r</mi><mrow><mi>σ</mi><mi>υ</mi></mrow></msub></mrow><annotation encoding="application/x-tex">r_{\tau\upsilon}r_{\sigma\tau}=r_{\sigma\upsilon}</annotation></semantics></math>.
+Thus a face diagram is a covariant functor from the face poset to
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-modules</span>.
+Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\mathcal A_S</annotation></semantics></math>
+for this abelian category. Exactness is evaluated at each simplex.</p>
+<h3 id="the-algebra-of-face-diagrams">The algebra of face diagrams</h3>
+<p>Here is a direct verification of the abelian-category assertion for
+the modules and arrows in (2). It applies to an arbitrary set of
+simplices; neither local finiteness nor a dimension bound is needed for
+this algebraic step.</p>
+<p>A morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>:</mo><mi>M</mi><mo>→</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">a:M\to N</annotation></semantics></math>
+is a family of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-linear
+maps satisfying
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>τ</mi></msub><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>M</mi></msubsup><mo>=</mo><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>N</mi></msubsup><msub><mi>a</mi><mi>σ</mi></msub><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>σ</mi><mo>≤</mo><mi>τ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+a_\tau r^M_{\sigma\tau}=r^N_{\sigma\tau}a_\sigma
+\qquad(\sigma\le\tau).
+</annotation></semantics></math> Such families can be added, negated and
+multiplied by scalars, and composition is bilinear. The diagram whose
+modules are all zero is a zero object. The diagram with values
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>σ</mi></msub><mo>⊕</mo><msub><mi>N</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">M_\sigma\oplus N_\sigma</annotation></semantics></math>
+and transition maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>M</mi></msubsup><mo>⊕</mo><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>N</mi></msubsup></mrow><annotation encoding="application/x-tex">r^M_{\sigma\tau}\oplus r^N_{\sigma\tau}</annotation></semantics></math>
+is both a product and a coproduct of two diagrams: its coordinate
+inclusions and projections commute with every transition, and the
+required maps into or out of it are the ordinary pairs of module maps.
+Thus the category is additive.</p>
+<p>For the morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+form the following submodules and quotient modules:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>σ</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>m</mi><mo>∈</mo><msub><mi>M</mi><mi>σ</mi></msub><mo>:</mo><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>Q</mi><mi>σ</mi></msub><mo>=</mo><msub><mi>N</mi><mi>σ</mi></msub><mi>/</mi><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>M</mi><mi>σ</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+K_\sigma=\{m\in M_\sigma:a_\sigma(m)=0\},
+\qquad
+Q_\sigma=N_\sigma/a_\sigma(M_\sigma).
+</annotation></semantics></math> Their transition maps have the explicit
+formulas
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>K</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>M</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>Q</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">[</mo><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>N</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+r^K_{\sigma\tau}(m)=r^M_{\sigma\tau}(m),
+\qquad
+r^Q_{\sigma\tau}([n])=[r^N_{\sigma\tau}(n)].
+</annotation></semantics></math> The first formula lands in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>τ</mi></msub><annotation encoding="application/x-tex">K_\tau</annotation></semantics></math>,
+since its image under
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>τ</mi></msub><annotation encoding="application/x-tex">a_\tau</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>N</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r^N_{\sigma\tau}(a_\sigma(m))=0</annotation></semantics></math>.
+For the second, replacing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>+</mo><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n+a_\sigma(m)</annotation></semantics></math>
+changes its proposed image by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>N</mi></msubsup><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>a</mi><mi>τ</mi></msub><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>M</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r^N_{\sigma\tau}a_\sigma(m)=a_\tau r^M_{\sigma\tau}(m)</annotation></semantics></math>,
+which is zero in the quotient. Hence both formulas define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-linear
+maps. Their identity and composition laws follow by applying the
+corresponding laws for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>r</mi><mi>M</mi></msup><annotation encoding="application/x-tex">r^M</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>r</mi><mi>N</mi></msup><annotation encoding="application/x-tex">r^N</annotation></semantics></math>
+to an element or to a representative of a class. The inclusions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>σ</mi></msub><mo>↪</mo><msub><mi>M</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">K_\sigma\hookrightarrow M_\sigma</annotation></semantics></math>
+and quotient maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>σ</mi></msub><mo>↠</mo><msub><mi>Q</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">N_\sigma\twoheadrightarrow Q_\sigma</annotation></semantics></math>
+are morphisms of diagrams.</p>
+<p>These are categorical kernels and cokernels, not only lists of
+modules. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>:</mo><mi>L</mi><mo>→</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">b:L\to M</annotation></semantics></math>
+satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">ab=0</annotation></semantics></math>,
+define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>b</mi><mo accent="true">̃</mo></mover><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>l</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>b</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>l</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\widetilde b_\sigma(l)=b_\sigma(l)</annotation></semantics></math>,
+now regarded as an element of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">K_\sigma</annotation></semantics></math>.
+Its transition equation is the transition equation for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>b</mi><mo accent="true">̃</mo></mover><mo>:</mo><mi>L</mi><mo>→</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">\widetilde b:L\to K</annotation></semantics></math>
+is a diagram map. It is the unique factorization through the inclusions,
+because an element of a submodule has the same underlying element in its
+ambient module. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>:</mo><mi>N</mi><mo>→</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">c:N\to L</annotation></semantics></math>
+satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>a</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">ca=0</annotation></semantics></math>,
+define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mi>c</mi><mo accent="true" style="opacity:0">¯</mo></mover><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>c</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\overline c_\sigma([n])=c_\sigma(n)</annotation></semantics></math>.
+It is well-defined because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">c_\sigma</annotation></semantics></math>
+kills
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>M</mi><mi>σ</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a_\sigma(M_\sigma)</annotation></semantics></math>;
+its transition equation follows by evaluating both sides on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[n]</annotation></semantics></math>.
+It is the unique factorization through the quotient maps, because every
+class has a representative. This proves both universal properties,
+including their compatibility with all faces.</p>
+<p>The image diagram has modules
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>M</mi><mi>σ</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msub><mi>N</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">a_\sigma(M_\sigma)\subset N_\sigma</annotation></semantics></math>,
+with the restricted transitions of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>.
+The map from the coimage to the image is
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>σ</mi></msub><mi>/</mi><msub><mi>K</mi><mi>σ</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>M</mi><mi>σ</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">[</mo><mi>m</mi><mo form="postfix" stretchy="false">]</mo><mo data-source-command="longmapsto" stretchy="false">⟼</mo><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+M_\sigma/K_\sigma\longrightarrow a_\sigma(M_\sigma),
+\qquad [m]\longmapsto a_\sigma(m).
+</annotation></semantics></math> It is bijective: its values exhaust the
+image, and two representatives have the same value exactly when their
+difference is in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">K_\sigma</annotation></semantics></math>.
+Its inverse sends
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a_\sigma(m)</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>m</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[m]</annotation></semantics></math>,
+independently of the chosen preimage. Both maps commute with
+transitions, because the transition of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a_\sigma(m)</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><msubsup><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow><mi>M</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a_\tau(r^M_{\sigma\tau}(m))</annotation></semantics></math>.
+Thus the coimage-to-image comparison is an isomorphism of diagrams.
+Together with the additive structure and the universal kernel and
+cokernel constructions, this proves that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\mathcal A_S</annotation></semantics></math>
+is abelian.</p>
+<p>In particular, a sequence of diagrams is exact exactly when its
+sequence of modules at every simplex is exact. Kernels and images were
+computed as the corresponding submodules, and equality of those
+submodules is precisely module exactness. For a complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mo>•</mo></msup><annotation encoding="application/x-tex">C^\bullet</annotation></semantics></math>,
+evaluation therefore gives the specified natural identification
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>j</mi></msup><mo form="prefix" stretchy="false">(</mo><msup><mi>C</mi><mo>•</mo></msup><msub><mo form="postfix" stretchy="false">)</mo><mi>σ</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>d</mi><mi>σ</mi><mi>j</mi></msubsup><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mrow><mi mathvariant="normal">im</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>d</mi><mi>σ</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>H</mi><mi>j</mi></msup><mo form="prefix" stretchy="false">(</mo><msubsup><mi>C</mi><mi>σ</mi><mo>•</mo></msubsup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H^j(C^\bullet)_\sigma
+=\ker(d^j_\sigma)/\operatorname{im}(d^{j-1}_\sigma)
+=H^j(C^\bullet_\sigma).
+</annotation></semantics></math> These identifications commute with face
+maps and cochain maps, because all induced maps send the class of a
+cycle to the class of its image. This is the exactness calculation used
+in the injective resolutions and derived comparisons below.</p>
+<p>A sheaf is weakly constructible for this triangulation if its
+restriction to every open simplex is constant. No finite-generation
+condition is included.</p>
+<p><strong>Theorem 1.</strong> Face diagrams are equivalent, by an exact
+equivalence, to weakly constructible sheaves on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>S</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|S|</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Start with a face diagram. Over a point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><msup><mi>σ</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">x\in\sigma^\circ</annotation></semantics></math>,
+put the fibre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">M_\sigma</annotation></semantics></math>.
+An element
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>∈</mo><msub><mi>M</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">m\in M_\sigma</annotation></semantics></math>
+defines a local section on a small neighborhood of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+as follows: at a point in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>τ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\tau^\circ</annotation></semantics></math>,
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>≥</mo><mi>σ</mi></mrow><annotation encoding="application/x-tex">\tau\geq\sigma</annotation></semantics></math>,
+its value is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r_{\sigma\tau}(m)</annotation></semantics></math>.
+Use the small neighborhoods described after (1).</p>
+<p>These sections define an étalé space. To check compatibility of its
+basic neighborhoods, suppose two prescribed sections agree at a point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>τ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\tau^\circ</annotation></semantics></math>.
+Shrink to a neighborhood meeting only cofaces of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>.
+At every such coface their values are images of the same element of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>τ</mi></msub><annotation encoding="application/x-tex">M_\tau</annotation></semantics></math>,
+so they still agree by the composition identity in (2). The projection
+is therefore a local homeomorphism. The module operations are defined in
+each fibre and are continuous on these basic sections. Its sheaf of
+sections, denoted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E(M)</annotation></semantics></math>,
+restricts to the constant sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">M_\sigma</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>.</p>
+<p>Conversely, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+be weakly constructible. Constant transport on the contractible open
+simplex identifies its stalks there with a module
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">M_\sigma</annotation></semantics></math>.
+A germ on a face
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>
+has a representative in a small neighborhood meeting a coface
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>τ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\tau^\circ</annotation></semantics></math>.
+Restrict the representative to that coface and use its constant
+transport to obtain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow></msub><annotation encoding="application/x-tex">r_{\sigma\tau}</annotation></semantics></math>.</p>
+<p>This does not depend on the representative: two representatives of
+one germ agree after shrinking, and their restrictions meet a connected
+small part of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>τ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\tau^\circ</annotation></semantics></math>.
+It does not depend on the point chosen in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>:
+the same local argument shows that the resulting homomorphism is locally
+constant along
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>,
+which is connected. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>≤</mo><mi>τ</mi><mo>≤</mo><mi>υ</mi></mrow><annotation encoding="application/x-tex">\sigma\leq\tau\leq\upsilon</annotation></semantics></math>,
+choose a representative near a point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>,
+then a nearby point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>τ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\tau^\circ</annotation></semantics></math>.
+Its restriction near the latter point is a representative of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r_{\sigma\tau}(m)</annotation></semantics></math>,
+and its value in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>υ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\upsilon^\circ</annotation></semantics></math>
+is already
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>σ</mi><mi>υ</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r_{\sigma\upsilon}(m)</annotation></semantics></math>.
+This proves the composition identity.</p>
+<p>Every local section of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+determines a section of the constructed étalé space by taking its stalk
+values. On a sufficiently small neighborhood of a point in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>,
+these values have exactly the prescribed form in (2). The resulting map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>→</mo><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\to E(M)</annotation></semantics></math>
+is an isomorphism on all stalks, hence an isomorphism. The same
+construction identifies morphisms with compatible module maps. Finally,
+both sheaf exactness and diagram exactness are detected at the modules
+on the open simplices.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>This gives more than stalk values: the maps in (2) are part of the
+sheaf. Two diagrams with the same modules and different face maps can
+have different cohomology.</p>
+<h2 id="sections-on-a-star">Sections on a star</h2>
+<p><strong>Proposition 2.</strong> For a face diagram
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msub><mi>M</mi><mi>σ</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3)</mtext></mrow><annotation encoding="application/x-tex">
+\Gamma(U_\sigma;E(M))\simeq M_\sigma.
+\qquad\text{(3)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> A section is constant on each connected set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>τ</mi><mo>∘</mo></msup><mo>⊂</mo><msub><mi>U</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">\tau^\circ\subset U_\sigma</annotation></semantics></math>.
+Its value on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>
+is some
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>∈</mo><msub><mi>M</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">m\in M_\sigma</annotation></semantics></math>.
+The restriction rule forces its value on each coface
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>τ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\tau^\circ</annotation></semantics></math>
+to be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r_{\sigma\tau}(m)</annotation></semantics></math>.
+Conversely, these values define a local section near every point: near a
+point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ρ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\rho^\circ</annotation></semantics></math>,
+their further values are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>ρ</mi><mi>τ</mi></mrow></msub><msub><mi>r</mi><mrow><mi>σ</mi><mi>ρ</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r_{\rho\tau}r_{\sigma\rho}(m)</annotation></semantics></math>,
+which agree with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r_{\sigma\tau}(m)</annotation></semantics></math>.
+Thus they glue to a section on the whole star.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>It follows immediately that star sections are exact on the category
+of weakly constructible sheaves and detect the zero sheaf. Their higher
+<em>ambient sheaf cohomology</em> still requires a separate
+argument.</p>
+<h2 id="an-acyclic-resolution-built-from-closed-simplices">An acyclic
+resolution built from closed simplices</h2>
+<p>For a simplex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+and a module
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>,
+define a diagram</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>J</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>σ</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>J</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>σ</mi><mo>≤</mo><mi>τ</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>σ</mi><mo>≰</mo><mi>τ</mi><mo>,</mo></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4)</mtext></mrow><annotation encoding="application/x-tex">
+I_\tau(J)_\sigma=
+\begin{cases}J,&amp;\sigma\leq\tau,\\0,&amp;\sigma\not\leq\tau,\end{cases}
+\qquad\text{(4)}
+</annotation></semantics></math></p>
+<p>with identity maps between faces of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>.
+This is right adjoint to evaluation at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><msub><mi mathvariant="script">𝒜</mi><mi>S</mi></msub></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo>,</mo><msub><mi>I</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>M</mi><mi>τ</mi></msub><mo>,</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}_{\mathcal A_S}(M,I_\tau(J))
+\simeq\operatorname{Hom}_k(M_\tau,J).
+\qquad\text{(5)}
+</annotation></semantics></math></p>
+<p>Indeed, the component at any face
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>≤</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">\sigma\leq\tau</annotation></semantics></math>
+is the component at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+composed with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mrow><mi>σ</mi><mi>τ</mi></mrow></msub><annotation encoding="application/x-tex">r_{\sigma\tau}</annotation></semantics></math>;
+all other components are zero. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+is injective over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+(5) makes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I_\tau(J)</annotation></semantics></math>
+injective in the diagram category.</p>
+<p>Choose embeddings
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>τ</mi></msub><mo>↪</mo><msub><mi>J</mi><mi>τ</mi></msub></mrow><annotation encoding="application/x-tex">M_\tau\hookrightarrow J_\tau</annotation></semantics></math>
+into injective modules for all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>.
+They give an injection</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><munder><mo>∏</mo><mi>τ</mi></munder><msub><mi>I</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>J</mi><mi>τ</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6)</mtext></mrow><annotation encoding="application/x-tex">
+M\longrightarrow\prod_\tau I_\tau(J_\tau).
+\qquad\text{(6)}
+</annotation></semantics></math></p>
+<p>At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>,
+the factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mi>σ</mi></mrow><annotation encoding="application/x-tex">\tau=\sigma</annotation></semantics></math>
+detects injectivity. Products of these injective diagrams are injective:
+applying Hom turns the product into a product of exact module-Hom
+sequences, and products of surjections of modules are surjective. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\mathcal A_S</annotation></semantics></math>
+has enough injectives.</p>
+<p>The sheaf corresponding to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I_\tau(J)</annotation></semantics></math>
+is the constant sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+on the closed simplex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>τ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|\tau|</annotation></semantics></math>,
+extended by its closed embedding. Its intersection with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">U_\sigma</annotation></semantics></math>
+is empty if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>≰</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">\sigma\not\leq\tau</annotation></semantics></math>;
+otherwise it is the convex set in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>τ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|\tau|</annotation></semantics></math>
+where the coordinates indexed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+are positive. Hence</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><mi>E</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>I</mi><mi>τ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mrow><mo form="prefix" stretchy="true">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>J</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>σ</mi><mo>≤</mo><mi>τ</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>σ</mi><mo>≰</mo><mi>τ</mi><mo>,</mo></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma(U_\sigma;E(I_\tau(J)))
+\simeq\begin{cases}J,&amp;\sigma\leq\tau,\\0,&amp;\sigma\not\leq\tau,\end{cases}
+\qquad\text{(7)}
+</annotation></semantics></math></p>
+<p>in degree zero, by constant-sheaf acyclicity on that convex set.</p>
+<p>On a fixed star
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">U_\sigma</annotation></semantics></math>,
+only finitely many factors in (6) have nonzero restriction: they are
+indexed by cofaces of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>.
+At a point in a coface
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>,
+a nonzero factor requires
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>≤</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">\rho\leq\tau</annotation></semantics></math>,
+hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>≤</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">\sigma\leq\tau</annotation></semantics></math>.
+The product therefore restricts to a finite product of the sheaves in
+(7). In particular, it is acyclic for star sections. Every injective
+diagram is a direct summand of such a product, by splitting an embedding
+(6), so its corresponding sheaf is also acyclic for star sections.</p>
+<p><strong>Theorem 3.</strong> For any weakly constructible sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msub><mi>F</mi><mi>x</mi></msub><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for every </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>∈</mo><msup><mi>σ</mi><mo>∘</mo></msup><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(8)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma(U_\sigma;F)\simeq F_x
+\quad\text{for every }x\in\sigma^\circ,
+\qquad\text{(8)}
+</annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>x</mi></msub><annotation encoding="application/x-tex">F_x</annotation></semantics></math>
+is in degree zero. In particular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H^q(U_\sigma;F)=0</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">q&gt;0</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Resolve its face diagram by injective
+diagrams. The exact equivalence in Theorem 1 turns this into a sheaf
+resolution. By the preceding paragraph its terms are acyclic for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><mi>−</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Gamma(U_\sigma;- )</annotation></semantics></math>,
+so it calculates ambient derived sections. Proposition 2 identifies its
+section complex with evaluation of the diagram resolution at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>.
+Evaluation is exact, so this complex has cohomology only in degree zero,
+equal to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>σ</mi></msub><mo>=</mo><msub><mi>F</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">M_\sigma=F_x</annotation></semantics></math>.
+The natural restriction to a stalk is this identification.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The role of local finiteness is now visible. It made the product in
+(6) finite after restriction to a star; no interchange of an arbitrary
+product with a stalk or a cohomology functor was used.</p>
+<p>On the open simplex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>
+itself, constant-sheaf acyclicity also gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>σ</mi><mo>∘</mo></msup><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msub><mi>F</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">R\Gamma(\sigma^\circ;F)\simeq F_x</annotation></semantics></math>.
+The natural restriction from the star to that simplex induces the
+identity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">M_\sigma</annotation></semantics></math>
+in degree zero, so it too is an isomorphism of these derived section
+complexes.</p>
+<h2 id="approximating-an-arbitrary-sheaf-by-face-data">Approximating an
+arbitrary sheaf by face data</h2>
+<p>For an arbitrary sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>,
+take the diagram</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="sans-serif">𝖳</mi><mi>G</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>σ</mi></msub><mo>=</mo><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(9)</mtext></mrow><annotation encoding="application/x-tex">
+(\mathsf T G)_\sigma=\Gamma(U_\sigma;G),
+\qquad\text{(9)}
+</annotation></semantics></math></p>
+<p>with restriction along
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>τ</mi></msub><mo>⊂</mo><msub><mi>U</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">U_\tau\subset U_\sigma</annotation></semantics></math>.
+Here we regard
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="sans-serif">𝖳</mi><mi>G</mi></mrow><annotation encoding="application/x-tex">\mathsf T G</annotation></semantics></math>
+either as the diagram or as its weakly constructible sheaf. Each star
+section restricts to germs, giving a natural map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi mathvariant="sans-serif">𝖳</mi><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">E(\mathsf T G)\to G</annotation></semantics></math>.</p>
+<p><strong>Proposition 4.</strong> The functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="sans-serif">𝖳</mi><annotation encoding="application/x-tex">\mathsf T</annotation></semantics></math>
+is right adjoint to the exact inclusion of weakly constructible sheaves
+into all sheaves. It is left exact. For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">q\geq0</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>R</mi><mi>q</mi></msup><mi mathvariant="sans-serif">𝖳</mi><mi>G</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>σ</mi></msub><mo>≃</mo><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(10)</mtext></mrow><annotation encoding="application/x-tex">
+(R^q\mathsf T G)_\sigma\simeq H^q(U_\sigma;G).
+\qquad\text{(10)}
+</annotation></semantics></math></p>
+<p>It fixes weakly constructible sheaves, and those sheaves have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mi>q</mi></msup><mi mathvariant="sans-serif">𝖳</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R^q\mathsf T=0</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">q&gt;0</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> A sheaf map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">E(M)\to G</annotation></semantics></math>
+gives maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>σ</mi></msub><mo>=</mo><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">M_\sigma=\Gamma(U_\sigma;E(M))\to\Gamma(U_\sigma;G)</annotation></semantics></math>
+commuting with restrictions. Conversely, such maps give a local sheaf
+morphism: a germ from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">M_\sigma</annotation></semantics></math>
+is represented near a point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>
+by its associated star section of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>.
+Compatibility with cofaces makes these morphisms agree on overlaps. This
+proves the adjunction.</p>
+<p>Left exactness follows because star sections are left exact and
+evaluation is exact. Resolve
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+by injective sheaves. Evaluation of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="sans-serif">𝖳</mi><annotation encoding="application/x-tex">\mathsf T</annotation></semantics></math>
+on this resolution is precisely its star-section complex, so its
+cohomology is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^q(U_\sigma;G)</annotation></semantics></math>.
+This proves (10). The last assertions follow from Proposition 2 and
+Theorem 3.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The adjunction also implies that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="sans-serif">𝖳</mi><annotation encoding="application/x-tex">\mathsf T</annotation></semantics></math>
+sends injective sheaves to injective face diagrams: its left adjoint is
+exact. Thus its bounded-below right derived functor is the usual derived
+right adjoint.</p>
+<p>Call a sheaf star-acyclic when its higher cohomology vanishes on
+every star. Formula (10) says exactly that it is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="sans-serif">𝖳</mi><annotation encoding="application/x-tex">\mathsf T</annotation></semantics></math>-acyclic.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mo>•</mo></msup><annotation encoding="application/x-tex">C^\bullet</annotation></semantics></math>
+is bounded below, each term is star-acyclic, and every cohomology sheaf
+is weakly constructible, then the natural map</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi mathvariant="sans-serif">𝖳</mi><msup><mi>C</mi><mo>•</mo></msup><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msup><mi>C</mi><mo>•</mo></msup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(11)</mtext></mrow><annotation encoding="application/x-tex">
+E(\mathsf T C^\bullet)\longrightarrow C^\bullet
+\qquad\text{(11)}
+</annotation></semantics></math></p>
+<p>is a quasi-isomorphism. To verify this, evaluate at a point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>σ</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">\sigma^\circ</annotation></semantics></math>.
+The left side is the star-section complex. Its cohomology is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>j</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><msup><mi>C</mi><mo>•</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^j(U_\sigma;C^\bullet)</annotation></semantics></math>,
+since the terms are star-acyclic. The <a href="SH02-open-prerequisite-proofs.html#bounded-below-hypercohomology-proof">proved
+bounded-below hypercohomology sequence</a> has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>p</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>σ</mi></msub><mo>;</mo><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msup><mi>C</mi><mo>•</mo></msup><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^p(U_\sigma;H^q(C^\bullet))</annotation></semantics></math>
+as its second page. Theorem 3 makes all its rows with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p&gt;0</annotation></semantics></math>
+vanish; it identifies the surviving term with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msup><mi>C</mi><mo>•</mo></msup><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">H^q(C^\bullet)_x</annotation></semantics></math>.
+The sequence converges in each total degree because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p\geq0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+has one lower bound. The proof of the natural edge identifies the
+composite from hypercohomology to sections of the cohomology sheaf and
+then to its germ at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+On an injective replacement of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mo>•</mo></msup><annotation encoding="application/x-tex">C^\bullet</annotation></semantics></math>,
+the map in (11) is the same section-to-germ map; passing from the
+acyclic-term complex to that replacement commutes with restriction.
+Theorem 3 identifies cohomology-sheaf sections on the star with that
+germ. Thus the isomorphism just obtained is induced by the actual map
+(11), proving that it is a quasi-isomorphism.</p>
+<h2 id="bounded-derived-constructibility">Bounded derived
+constructibility</h2>
+<p>For this section assume that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+has finite global dimension and that all simplices have dimension at
+most one fixed integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>D</mi><mrow><mi>w</mi><mi>S</mi></mrow><mi>b</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">|</mo><mi>S</mi><mo form="prefix" stretchy="false">|</mo></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^b_{wS}(k_{|S|})</annotation></semantics></math>
+be bounded sheaf complexes with weakly constructible cohomology
+sheaves.</p>
+<p><strong>Theorem 5.</strong> The exact inclusion gives an
+equivalence</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="script">𝒜</mi><mi>S</mi></msub><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msubsup><mi>D</mi><mrow><mi>w</mi><mi>S</mi></mrow><mi>b</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">|</mo><mi>S</mi><mo form="prefix" stretchy="false">|</mo></mrow></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(12)</mtext></mrow><annotation encoding="application/x-tex">
+D^b(\mathcal A_S)\xrightarrow{\sim}D^b_{wS}(k_{|S|}),
+\qquad\text{(12)}
+</annotation></semantics></math></p>
+<p>with inverse the restriction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="sans-serif">𝖳</mi></mrow><annotation encoding="application/x-tex">R\mathsf T</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Work first in bounded-below derived
+categories, where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="sans-serif">𝖳</mi></mrow><annotation encoding="application/x-tex">R\mathsf T</annotation></semantics></math>
+is defined by injective resolutions and is right adjoint to the exact
+inclusion. For a bounded complex of face diagrams, Theorem 3 and
+Proposition 4 give that the adjunction unit is an isomorphism. At each
+simplex, apply the <a href="SH02-open-prerequisite-proofs.html#bounded-below-hypercohomology-proof">natural
+hypercohomology edge</a> to the corresponding star. Higher derived
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="sans-serif">𝖳</mi><annotation encoding="application/x-tex">\mathsf T</annotation></semantics></math>
+of each cohomology sheaf vanishes by Theorem 3; compatibility of the
+edge with restriction identifies the cohomology map of this actual
+adjunction unit with the identity on the face module. An adjunction with
+invertible unit makes its left adjoint fully faithful.</p>
+<p>Now take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msubsup><mi>D</mi><mrow><mi>w</mi><mi>S</mi></mrow><mi>b</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">|</mo><mi>S</mi><mo form="prefix" stretchy="false">|</mo></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^b_{wS}(k_{|S|})</annotation></semantics></math>
+and choose a bounded-below injective resolution. Its terms are
+star-acyclic. Formula (11) shows that the adjunction counit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mi mathvariant="sans-serif">𝖳</mi><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">E(R\mathsf T F)\to F</annotation></semantics></math>
+is a quasi-isomorphism. Moreover, at each simplex the cohomology of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="sans-serif">𝖳</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">R\mathsf T F</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>j</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">H^j(F)_x</annotation></semantics></math>,
+by the same sequence. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+is cohomologically bounded in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a,b]</annotation></semantics></math>,
+the diagram complex has zero cohomology outside that same global
+interval. Truncating in the diagram category gives a bounded
+representative. Thus the adjunction and its unit/counit restrict to
+exactly the categories in (12), proving the equivalence.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The uniform dimension hypothesis is retained in this bounded theorem.
+This proof calculates the right adjoint on objects with weakly
+constructible cohomology; it has not asserted a boundedness result for
+its value on every arbitrary bounded sheaf complex.</p>
+<h2 id="finite-coefficients-and-projective-covers">Finite coefficients
+and projective covers</h2>
+<p>Continue to assume finite global dimension. A bounded sheaf complex
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>-constructible
+when its cohomology is weakly constructible and its stalk at every point
+is perfect. Perfect means represented by a bounded complex of finitely
+generated projective
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-modules</span>.
+It does not mean merely that its terms have finite dimension unless
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is a field.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is Noetherian, a bounded module complex is perfect exactly when its
+cohomology modules are finitely generated, as proved in the interval
+lesson. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>-constructible
+sheaves in degree zero correspond exactly to diagrams of finitely
+generated modules. They form an abelian category
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi mathvariant="script">𝒜</mi><mi>S</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">g</mi></mrow></msubsup><annotation encoding="application/x-tex">\mathcal A_S^{\mathrm{fg}}</annotation></semantics></math>:
+kernels and cokernels are finitely generated by Noetherianity, and
+extensions of two finitely generated modules are finitely generated.</p>
+<p>For a simplex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>,
+let</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>τ</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>M</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>σ</mi><mo>≤</mo><mi>τ</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>σ</mi><mo>≰</mo><mi>τ</mi><mo>,</mo></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(13)</mtext></mrow><annotation encoding="application/x-tex">
+P_\sigma(M)_\tau=
+\begin{cases}M,&amp;\sigma\leq\tau,\\0,&amp;\sigma\not\leq\tau,\end{cases}
+\qquad\text{(13)}
+</annotation></semantics></math></p>
+<p>with identity maps among cofaces. This is left adjoint to evaluation
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>,
+so it is projective when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is projective over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.</p>
+<p><strong>Lemma 6.</strong> Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>:</mo><mi>F</mi><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">u:F\to G</annotation></semantics></math>
+is an epimorphism of face diagrams and every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">G_\sigma</annotation></semantics></math>
+is finitely generated. There is a diagram
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>,
+projective in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\mathcal A_S</annotation></semantics></math>,
+with finite free values, and a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">H\to F</annotation></semantics></math>
+whose composite to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+is an epimorphism.</p>
+<p><strong>Proof.</strong> Choose finitely many generators of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">G_\sigma</annotation></semantics></math>,
+and lift them along the surjection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>σ</mi></msub><mo>→</mo><msub><mi>G</mi><mi>σ</mi></msub></mrow><annotation encoding="application/x-tex">F_\sigma\to G_\sigma</annotation></semantics></math>.
+Their lifts define a map from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>k</mi><msub><mi>m</mi><mi>σ</mi></msub></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_\sigma(k^{m_\sigma})</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>.
+Take</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><msub><mo>⨁</mo><mi>σ</mi></msub><msub><mi>P</mi><mi>σ</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>k</mi><msub><mi>m</mi><mi>σ</mi></msub></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(14)</mtext></mrow><annotation encoding="application/x-tex">
+H=\bigoplus_\sigma P_\sigma(k^{m_\sigma}).
+\qquad\text{(14)}
+</annotation></semantics></math></p>
+<p>At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>,
+only its faces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>≤</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">\sigma\leq\tau</annotation></semantics></math>
+contribute. There are finitely many, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi>τ</mi></msub><annotation encoding="application/x-tex">H_\tau</annotation></semantics></math>
+is finite free. At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>,
+the chosen generators from its own summand make the composite onto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>σ</mi></msub><annotation encoding="application/x-tex">G_\sigma</annotation></semantics></math>
+surjective. Each summand is projective, and an arbitrary direct sum of
+projectives is projective: Hom from the sum is the product of the exact
+Hom functors. This proves the claim. The sheaf corresponding to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+is constructible, since its stalks are finite free.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is Noetherian of finite global dimension, apply this with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">F=G</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mrow><annotation encoding="application/x-tex">u=\mathrm{id}</annotation></semantics></math>.
+The resulting epimorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">H\to G</annotation></semantics></math>
+has finitely generated kernel at every simplex. Iterate to obtain a
+projective resolution within
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi mathvariant="script">𝒜</mi><mi>S</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">g</mi></mrow></msubsup><annotation encoding="application/x-tex">\mathcal A_S^{\mathrm{fg}}</annotation></semantics></math>,
+whose terms are also projective in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\mathcal A_S</annotation></semantics></math>.</p>
+<p><strong>Theorem 7.</strong> Assume the uniform dimension bound and
+assume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is Noetherian of finite global dimension. Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msubsup><mi mathvariant="script">𝒜</mi><mi>S</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">g</mi></mrow></msubsup><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msubsup><mi>D</mi><mi>S</mi><mi>b</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">|</mo><mi>S</mi><mo form="prefix" stretchy="false">|</mo></mrow></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(15)</mtext></mrow><annotation encoding="application/x-tex">
+D^b(\mathcal A_S^{\mathrm{fg}})\xrightarrow{\sim}D^b_S(k_{|S|}).
+\qquad\text{(15)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> The common projective resolutions just
+constructed calculate Ext between two finite-type diagrams both in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi mathvariant="script">𝒜</mi><mi>S</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">g</mi></mrow></msubsup><annotation encoding="application/x-tex">\mathcal A_S^{\mathrm{fg}}</annotation></semantics></math>
+and in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒜</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\mathcal A_S</annotation></semantics></math>.
+Their Hom complexes and differentials are identical. Hence all Ext
+groups agree. Finite truncation triangles show that the inclusion on
+bounded derived categories is fully faithful.</p>
+<p>Every bounded diagram complex with finitely generated cohomology is
+in its essential image. Induct on its cohomological interval. A single
+cohomology sheaf is already in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi mathvariant="script">𝒜</mi><mi>S</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">g</mi></mrow></msubsup><annotation encoding="application/x-tex">\mathcal A_S^{\mathrm{fg}}</annotation></semantics></math>.
+A truncation triangle expresses a longer object as an extension of its
+shorter truncation by its highest cohomology sheaf with a shift. Full
+faithfulness lifts the connecting morphism, and its cone gives a
+preimage. Finally, Theorem 5 identifies bounded diagram complexes with
+bounded weakly constructible sheaf complexes, and the perfect-stalk
+criterion above identifies their finite-type cohomology exactly with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>D</mi><mi>S</mi><mi>b</mi></msubsup><annotation encoding="application/x-tex">D^b_S</annotation></semantics></math>.
+This proves (15).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<h2 id="examples-and-exercises-with-solutions">Examples and exercises
+with solutions</h2>
+<h3 id="values-around-a-shared-edge">Values around a shared edge</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Take two triangles joined along one common edge, with no higher
+simplices. A face diagram assigns
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+to the shared open edge and modules
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>,</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A,B</annotation></semantics></math>
+to the two open triangles, with maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>:</mo><mi>M</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">a:M\to A</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>:</mo><mi>M</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">b:M\to B</annotation></semantics></math>.
+Describe sections on the edge’s open star and their higher
+cohomology.</p>
+<p><strong>Solution.</strong> The open star contains the open edge and
+the two open triangles. A section has values
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>,</mo><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>b</mi><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">m,a(m),b(m)</annotation></semantics></math>,
+so its module is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+regardless of injectivity or surjectivity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math>.
+Theorem 3 gives zero higher cohomology. Values at the edge’s endpoints
+play no role here, because the endpoints are not in this star.</p>
+<h3 id="global-cohomology-despite-local-acyclicity">Global cohomology
+despite local acyclicity</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Triangulate a circle by four edges and four vertices. Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+on each open edge and zero on each vertex, so all face maps from
+vertices are zero. Assume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\neq0</annotation></semantics></math>.
+Compute global sheaf cohomology and compare the star calculations.</p>
+<p><strong>Solution.</strong> The sheaf is the direct sum of extensions
+by zero from the four open edges. The ambient circle is compact, so
+global cohomology of each summand is compact-support cohomology of an
+open interval, namely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">k[-1]</annotation></semantics></math>.
+Thus the whole sheaf has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>1</mn></msup><mo>=</mo><msup><mi>k</mi><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">H^1=k^4</annotation></semantics></math>
+and all other cohomology zero. At a vertex star, the section module is
+zero and all higher cohomology vanishes. At an edge star, the section
+module is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+and higher cohomology again vanishes. Star acyclicity supplies local
+calculations; it does not make global cohomology vanish.</p>
+<h3 id="why-a-projective-cover-is-still-finite-at-each-stalk">Why a
+projective cover is still finite at each stalk</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+be an infinite locally finite triangulation of a line, and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+at every simplex. In the construction (14), choose one generator at
+every simplex. Compute the rank of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+at a vertex and at an edge.</p>
+<p><strong>Solution.</strong> A vertex has only itself as a nonempty
+face, so its value is one copy of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+An edge has its two vertices and itself as faces, so its value is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>k</mi><mn>3</mn></msup><annotation encoding="application/x-tex">k^3</annotation></semantics></math>.
+There are infinitely many summands globally, but only finitely many
+contribute at any stalk. The conclusion comes from face finiteness,
+rather than a claim that the global direct sum is finite.</p>
+<h3 id="which-hypothesis-supports-which-argument">Which hypothesis
+supports which argument</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Explain why local finiteness and a uniform dimension bound are
+distinct. Identify where local finiteness was used, and state the
+additional coefficient hypothesis in Theorem 7.</p>
+<p><strong>Solution.</strong> Local finiteness says that each vertex has
+finitely many cofaces. It allows different connected components to have
+arbitrarily large finite dimension. For example, the disjoint union of
+one simplex of each positive dimension is locally finite and has no
+uniform dimension bound. Local finiteness made the product of elementary
+injective diagrams finite on a star in the acyclicity proof. A uniform
+dimension bound is expressly retained in Theorems 5 and 7. Theorem 7
+additionally requires the ring to be Noetherian, as well as to have
+finite global dimension; Noetherianity keeps the kernels in its
+projective resolutions finitely generated. The ordinary diagram
+equivalence and star acyclicity did not require Noetherianity or a
+uniform dimension bound.</p>
+<h2 id="references">Source comparison and references</h2>
+<p>Curry’s <a href="https://arxiv.org/abs/1607.06942v1">exact arXiv
+version 1607.06942v1</a>, submitted 23 July 2016, provides the
+comparison for the direction of face maps and the elementary objects.
+The section “Sheaves and Cosheaves on Posets” constructs the Alexandrov
+sheaf from a functor by sections on upper sets. “Elementary Injectives
+and Projectives” gives the closed-cell and open-star diagrams and proves
+the first injectivity statement by its evaluation adjunction. Its
+default cellular coefficients are vector spaces, and its decomposition
+of all injectives into elementary objects is stated for a finite cell
+complex.</p>
+<p>The module-valued and locally finite argument here is supplied
+directly. Injective coefficient modules enter through the right adjoint
+to evaluation; local finiteness makes the elementary product finite on
+each star. The convex calculation then computes ambient sheaf
+cohomology, rather than only cohomology in an Alexandrov diagram
+category. Theorem 5 identifies the actual derived unit and counit, and
+the finite-at-each-face projective construction in (13)–(15) supplies
+the Noetherian finite-coefficient extension. These additional steps are
+not claimed as consequences of Curry’s finite vector-space decomposition
+theorem.</p>
+<p>The lesson is organized around recovering sections from a germ,
+proving ambient star acyclicity, and then comparing the bounded and
+finite-coefficient categories. The existing interval, shared-edge,
+circle and infinite-line calculations are retained. The module proof
+under (2) supplies the categorical input directly. For the general
+pointwise-limit theorem, the separate categorical reading below retains
+its own source attribution and terms.</p>
+<ul>
+<li><p>Tom Leinster, <em>Basic Category Theory</em>, Theorem 6.2.5 and
+its dual, <a href="https://arxiv.org/abs/1612.09375v2">arXiv:1612.09375v2</a>, for
+the general pointwise-limit formulation. The programme reading <a href="../categorical-tools-for-analytic-sheaves/pointwise-abelian-structure-and-natural-splittings.html#2-why-all-diagrams-form-an-abelian-category">Pointwise
+abelian structure and natural splittings</a> contains a credited
+adaptation and retains CC BY-NC-SA 4.0. It provides further categorical
+background; the face-module proof above is complete without it.</p></li>
+<li><p>Justin Curry, <em>Dualities between Cellular Sheaves and
+Cosheaves</em>, arXiv:1607.06942v1, 2016, the poset equivalence and
+elementary-object sections. <a href="https://arxiv.org/abs/1607.06942v1">Open preprint</a>.</p></li>
+<li><p>Pierre Schapira, <em>An Introduction to Sheaves on Grothendieck
+Topologies</em>, work in progress, title page dated 1 August 2026. <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf">Open
+text</a>.</p></li>
+<li><p><a href="SH02-convex-acyclicity.html#SH02-CA-CONSTANT">Extending
+sections on convex sets</a>, the constant-coefficient calculation used
+in (7)–(8), with its exact Stacks foundation comparisons.</p></li>
+</ul>
+</main></body></html>

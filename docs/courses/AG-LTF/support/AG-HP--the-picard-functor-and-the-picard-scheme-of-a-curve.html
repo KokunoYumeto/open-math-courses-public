@@ -1,0 +1,456 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Picard functor and the Picard scheme of a curve</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="the-picard-functor-and-the-picard-scheme-of-a-curve">The Picard functor and the Picard scheme of a curve</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A line bundle on a family can be changed by tensoring with a line bundle from the parameter scheme. That change leaves every fibre's isomorphism class unchanged. A relative parameter space should identify the two bundles. There is a second issue: classes that agree locally need not come with isomorphisms that satisfy a descent cocycle. The topology used to identify classes therefore belongs in the definition of the Picard functor.</p>
+<p>We first remove both ambiguities when the family has a section. We then construct the Picard scheme of a curve using effective divisors. The decisive chart consists of bundles of degree <span class="math" data-tex="\(g\)">\(g\)</span> with one section and no first cohomology: the unique section gives a unique divisor. Tensor translations of this chart cover the Picard functor. Higher symmetric powers supply the properness argument and describe the Abel map's fibres.</p>
+<p>In the curve construction, <span class="math" data-tex="\(C/k\)">\(C/k\)</span> is smooth, projective and geometrically connected, with genus <span class="math" data-tex="\(g=h^1(C,\mathcal O_C)\)">\(g=h^1(C,\mathcal O_C)\)</span>. We prove the construction over a separably closed field, including imperfect such fields. We explain the disconnected case as a product. A convention for projective bundles remains important throughout: <span class="math" data-tex="\(\mathbb P(V)=\operatorname{Proj}(\operatorname{Sym}V)\)">\(\mathbb P(V)=\operatorname{Proj}(\operatorname{Sym}V)\)</span> parametrizes quotient lines of <span class="math" data-tex="\(V\)">\(V\)</span>. Lines of sections of <span class="math" data-tex="\(V\)">\(V\)</span> are parametrized by <span class="math" data-tex="\(\mathbb P(V^\vee)\)">\(\mathbb P(V^\vee)\)</span>.</p>
+<h2 id="1-the-relative-quotient-and-its-sheaves">1 The relative quotient and its sheaves</h2>
+<p>For <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span>, write <span class="math" data-tex="\(X_T=X\times_S T\)">\(X_T=X\times_S T\)</span>, with projection <span class="math" data-tex="\(f_T\)">\(f_T\)</span>. The relative Picard presheaf is the abelian group</p>
+<span class="math math-display" data-tex="\[
+P(T)=\operatorname{Pic}(X_T)/f_T^*\operatorname{Pic}(T).
+\tag{1.1}
+\]">\[
+P(T)=\operatorname{Pic}(X_T)/f_T^*\operatorname{Pic}(T).
+\tag{1.1}
+\]</span>
+<p>The quotient is by the image of pullback; pullback need not be injective without additional assumptions. For <span class="math" data-tex="\(\tau\)">\(\tau\)</span> equal to the Zariski, étale or fppf topology, define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}_{X/S,\tau}=a_\tau P,
+\tag{1.2}
+\]">\[
+\operatorname{Pic}_{X/S,\tau}=a_\tau P,
+\tag{1.2}
+\]</span>
+<p>the associated sheaf. Sheafifying <span class="math" data-tex="\(T\mapsto\operatorname{Pic}(X_T)\)">\(T\mapsto\operatorname{Pic}(X_T)\)</span> gives the same answer: a line bundle on <span class="math" data-tex="\(T\)">\(T\)</span> is already trivial on a Zariski cover, so its pullback disappears in each sheafification. There are natural maps</p>
+<span class="math math-display" data-tex="\[
+P\longrightarrow\operatorname{Pic}_{X/S,\mathrm{Zar}}
+\longrightarrow\operatorname{Pic}_{X/S,\mathrm{\acute et}}
+\longrightarrow\operatorname{Pic}_{X/S,\mathrm{fppf}}.
+\tag{1.3}
+\]">\[
+P\longrightarrow\operatorname{Pic}_{X/S,\mathrm{Zar}}
+\longrightarrow\operatorname{Pic}_{X/S,\mathrm{\acute et}}
+\longrightarrow\operatorname{Pic}_{X/S,\mathrm{fppf}}.
+\tag{1.3}
+\]</span>
+<p>The notation <span class="math" data-tex="\(\operatorname{Pic}_{X/S}\)">\(\operatorname{Pic}_{X/S}\)</span> below means the last sheaf, or the étale sheaf where the comparison is proved. It never silently means the raw presheaf (1.1).</p>
+<p>Here is the functions hypothesis used in the comparison:</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_T\xrightarrow{\sim}(f_T)_*\mathcal O_{X_T}
+\quad\text{for every }T\to S.
+\tag{1.4}
+\]">\[
+\mathcal O_T\xrightarrow{\sim}(f_T)_*\mathcal O_{X_T}
+\quad\text{for every }T\to S.
+\tag{1.4}
+\]</span>
+<p>It implies the analogous equality of sheaves of units. Indeed a function and its inverse both come from the base; their product is one on the base as well. In particular every automorphism of a line bundle on <span class="math" data-tex="\(X_T\)">\(X_T\)</span> is multiplication by a unique unit on <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><strong>Proposition 1.1.</strong> Under (1.4), every arrow in (1.3) is injective. For every <span class="math" data-tex="\(T\)">\(T\)</span>, there is an exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\operatorname{Pic}(T)
+\xrightarrow{f_T^*}\operatorname{Pic}(X_T)
+\longrightarrow\operatorname{Pic}_{X/S,\mathrm{fppf}}(T).
+\tag{1.5}
+\]">\[
+0\longrightarrow\operatorname{Pic}(T)
+\xrightarrow{f_T^*}\operatorname{Pic}(X_T)
+\longrightarrow\operatorname{Pic}_{X/S,\mathrm{fppf}}(T).
+\tag{1.5}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(f_T^*N\)">\(f_T^*N\)</span> is trivial, pushing forward and using (1.4) gives <span class="math" data-tex="\(N\simeq\mathcal O_T\)">\(N\simeq\mathcal O_T\)</span>. The projection formula needed here is local: trivialize <span class="math" data-tex="\(N\)">\(N\)</span> on the base and apply (1.4).</p>
+<p>Suppose a bundle <span class="math" data-tex="\(L\)">\(L\)</span> has zero class in the last group. There is an fppf cover <span class="math" data-tex="\(T_i\to T\)">\(T_i\to T\)</span> on which its class is zero in (1.1). Thus <span class="math" data-tex="\(L|_{X_{T_i}}\)">\(L|_{X_{T_i}}\)</span> is pulled back from a bundle on <span class="math" data-tex="\(T_i\)">\(T_i\)</span>. Refine by trivializing those bundles, and choose trivializations of <span class="math" data-tex="\(L|_{X_{T_i}}\)">\(L|_{X_{T_i}}\)</span>. Their transition units on <span class="math" data-tex="\(X_{T_i\times_T T_j}\)">\(X_{T_i\times_T T_j}\)</span> come uniquely from <span class="math" data-tex="\(T_i\times_T T_j\)">\(T_i\times_T T_j\)</span> by (1.4). They satisfy the cocycle condition. Effective descent for line bundles constructs a bundle <span class="math" data-tex="\(N\)">\(N\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>, and the same trivializations identify <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(f_T^*N\)">\(f_T^*N\)</span>. This proves (1.5) and the injection <span class="math" data-tex="\(P\hookrightarrow\operatorname{Pic}_{\mathrm{fppf}}\)">\(P\hookrightarrow\operatorname{Pic}_{\mathrm{fppf}}\)</span>.</p>
+<p>Sheafification preserves injections of abelian presheaves. The target is already a sheaf for each of the three topologies. Sheafifying the injection just proved, first in the Zariski and then in the étale topology, proves all the asserted injections. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument uses equality of line-bundle classes only to obtain local isomorphisms. It constructs the cocycle explicitly from their transition units. That distinction will also explain the obstruction without a section.</p>
+<h2 id="2-a-section-removes-scalar-automorphisms">2 A section removes scalar automorphisms</h2>
+<p>Let <span class="math" data-tex="\(\sigma:S\to X\)">\(\sigma:S\to X\)</span> be a section. A <strong>rigidified line bundle</strong> over <span class="math" data-tex="\(T\)">\(T\)</span> is a pair</p>
+<span class="math math-display" data-tex="\[
+(L,\alpha),\qquad
+\alpha:\sigma_T^*L\xrightarrow{\sim}\mathcal O_T.
+\tag{2.1}
+\]">\[
+(L,\alpha),\qquad
+\alpha:\sigma_T^*L\xrightarrow{\sim}\mathcal O_T.
+\tag{2.1}
+\]</span>
+<p>Isomorphisms must respect <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Tensor product makes their isomorphism classes a group, denoted <span class="math" data-tex="\(R_\sigma(T)\)">\(R_\sigma(T)\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> If (1.4) holds and <span class="math" data-tex="\(f\)">\(f\)</span> has the section <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+P=\operatorname{Pic}_{X/S,\mathrm{Zar}}
+=\operatorname{Pic}_{X/S,\mathrm{\acute et}}
+=\operatorname{Pic}_{X/S,\mathrm{fppf}}
+=R_\sigma.
+\tag{2.2}
+\]">\[
+P=\operatorname{Pic}_{X/S,\mathrm{Zar}}
+=\operatorname{Pic}_{X/S,\mathrm{\acute et}}
+=\operatorname{Pic}_{X/S,\mathrm{fppf}}
+=R_\sigma.
+\tag{2.2}
+\]</span>
+<p>More explicitly,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(X_T)
+\simeq\operatorname{Pic}(T)\oplus R_\sigma(T),
+\tag{2.3}
+\]">\[
+\operatorname{Pic}(X_T)
+\simeq\operatorname{Pic}(T)\oplus R_\sigma(T),
+\tag{2.3}
+\]</span>
+<p>where the first projection is <span class="math" data-tex="\(\sigma_T^*\)">\(\sigma_T^*\)</span>.</p>
+<p><strong>Proof.</strong> Normalize a bundle <span class="math" data-tex="\(M\)">\(M\)</span> by</p>
+<span class="math math-display" data-tex="\[
+M^\natural=M\otimes f_T^*(\sigma_T^*M)^{-1}.
+\tag{2.4}
+\]">\[
+M^\natural=M\otimes f_T^*(\sigma_T^*M)^{-1}.
+\tag{2.4}
+\]</span>
+<p>Its restriction along the section has its natural trivialization. Tensoring <span class="math" data-tex="\(M\)">\(M\)</span> by a base bundle makes no change to this rigidified class, because the extra base factors cancel. Conversely two normalized bundles representing the same relative class differ by a base bundle whose restriction along <span class="math" data-tex="\(\sigma_T\)">\(\sigma_T\)</span> is trivial, so they are isomorphic as rigidified bundles after correcting a scalar. This proves <span class="math" data-tex="\(P(T)=R_\sigma(T)\)">\(P(T)=R_\sigma(T)\)</span> and (2.3).</p>
+<p>An automorphism of <span class="math" data-tex="\((L,\alpha)\)">\((L,\alpha)\)</span> is a base unit by (1.4). Its value along the section is one, so it is the identity. More generally an isomorphism between two rigidified bundles, if it exists, is unique.</p>
+<p>Now take compatible rigidified classes on an fppf cover <span class="math" data-tex="\(T_i\to T\)">\(T_i\to T\)</span>. On every overlap their equality gives an isomorphism respecting the rigidifications. One can obtain it from any isomorphism by dividing by its scalar along the section. Uniqueness forces the cocycle identity on triple overlaps. Effective fppf descent gives a line bundle on <span class="math" data-tex="\(X_T\)">\(X_T\)</span>; descent of the trivializations on the section gives its rigidification. Uniqueness also proves the separated sheaf condition. Hence <span class="math" data-tex="\(R_\sigma\)">\(R_\sigma\)</span> is an fppf sheaf. Its sheafifications for all three topologies are itself, proving (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When (1.4) holds and a section exists only Zariski locally on <span class="math" data-tex="\(S\)">\(S\)</span>, the last three sheaves still agree: apply the theorem on that cover and glue the isomorphisms of sheaves. An étale-local section similarly identifies the étale and fppf sheaves. A smooth surjective family has étale-local sections, since a smooth morphism has local étale coordinates and local sections through geometric points. The raw quotient need not then be a sheaf on the original base.</p>
+<h2 id="3-the-obstruction-to-an-actual-line-bundle">3 The obstruction to an actual line bundle</h2>
+<p>We give the comparison without a section as well. We use one topology prerequisite here: for every scheme <span class="math" data-tex="\(Y\)">\(Y\)</span>, cohomology of the smooth commutative group <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span> has the same values in the étale and fppf topologies,</p>
+<span class="math math-display" data-tex="\[
+H^i_{\mathrm{\acute et}}(Y,\mathbf G_m)
+\xrightarrow{\sim}H^i_{\mathrm{fppf}}(Y,\mathbf G_m).
+\tag{3.1}
+\]">\[
+H^i_{\mathrm{\acute et}}(Y,\mathbf G_m)
+\xrightarrow{\sim}H^i_{\mathrm{fppf}}(Y,\mathbf G_m).
+\tag{3.1}
+\]</span>
+<p>Only <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span> are used. This is Grothendieck's smooth-group comparison theorem, stated precisely in Poonen, <em>Rational Points on Varieties</em>, Section 6.6.1, which also proves the degree-one case for the multiplicative group; see also Kleiman, <em>The Picard scheme</em>, Remark 2.11. It is a theorem about these topologies, not a representability theorem for Picard functors. A proof in every degree over every scheme, including compatibility with pullback, is given in <a href="AG-HP--multiplicative-group-cohomology-and-change-of-topology.html#the-comparison-and-its-naturality">Multiplicative group cohomology and change of topology, Theorem 1</a>.</p>
+<p><strong>Theorem 3.1.</strong> Under (1.4), the natural map
+<span class="math" data-tex="\(\operatorname{Pic}_{X/S,\mathrm{\acute et}}\to\operatorname{Pic}_{X/S,\mathrm{fppf}}\)">\(\operatorname{Pic}_{X/S,\mathrm{\acute et}}\to\operatorname{Pic}_{X/S,\mathrm{fppf}}\)</span>
+is an isomorphism. There is a functorial exact sequence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\longrightarrow\operatorname{Pic}(T)
+&amp;\longrightarrow\operatorname{Pic}(X_T)
+\longrightarrow\operatorname{Pic}_{X/S}(T)\\
+&amp;\xrightarrow{\delta_T}H^2_{\mathrm{\acute et}}(T,\mathbf G_m)
+\longrightarrow H^2_{\mathrm{\acute et}}(X_T,\mathbf G_m).
+\end{aligned}
+\tag{3.2}
+\]">\[
+\begin{aligned}
+0\longrightarrow\operatorname{Pic}(T)
+&amp;\longrightarrow\operatorname{Pic}(X_T)
+\longrightarrow\operatorname{Pic}_{X/S}(T)\\
+&amp;\xrightarrow{\delta_T}H^2_{\mathrm{\acute et}}(T,\mathbf G_m)
+\longrightarrow H^2_{\mathrm{\acute et}}(X_T,\mathbf G_m).
+\end{aligned}
+\tag{3.2}
+\]</span>
+<p>A class is represented by a line bundle on <span class="math" data-tex="\(X_T\)">\(X_T\)</span> exactly when its image under <span class="math" data-tex="\(\delta_T\)">\(\delta_T\)</span> is zero.</p>
+<p><strong>Proof.</strong> For either topology, line bundles and <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>-torsors have the same descent cocycles. A cocycle of units glues trivial line bundles, and a line bundle's frames form its torsor. Thus
+<span class="math" data-tex="\(H^1(Y,\mathbf G_m)=\operatorname{Pic}(Y)\)">\(H^1(Y,\mathbf G_m)=\operatorname{Pic}(Y)\)</span>, with the pullback maps identified.</p>
+<p>On the relative big site over <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(R^1(f_T)_*\mathbf G_m\)">\(R^1(f_T)_*\mathbf G_m\)</span> is the sheaf associated to <span class="math" data-tex="\(U\mapsto H^1(X_U,\mathbf G_m)\)">\(U\mapsto H^1(X_U,\mathbf G_m)\)</span>. Its sections over <span class="math" data-tex="\(T\)">\(T\)</span> are precisely the relevant Picard sheaf's <span class="math" data-tex="\(T\)">\(T\)</span>-points. Hypothesis (1.4) identifies <span class="math" data-tex="\((f_T)_*\mathbf G_m\)">\((f_T)_*\mathbf G_m\)</span> with <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>. The degree-one and degree-two terms of the Leray spectral sequence give</p>
+<span class="math math-display" data-tex="\[
+0\to\operatorname{Pic}(T)\to\operatorname{Pic}(X_T)
+\to\operatorname{Pic}_{X/S,\tau}(T)
+\to H^2_\tau(T,\mathbf G_m)\to H^2_\tau(X_T,\mathbf G_m).
+\tag{3.3}
+\]">\[
+0\to\operatorname{Pic}(T)\to\operatorname{Pic}(X_T)
+\to\operatorname{Pic}_{X/S,\tau}(T)
+\to H^2_\tau(T,\mathbf G_m)\to H^2_\tau(X_T,\mathbf G_m).
+\tag{3.3}
+\]</span>
+<p>To spell out the exactness, the filtration on total degree one has subobject <span class="math" data-tex="\(E_2^{1,0}\)">\(E_2^{1,0}\)</span>. Its quotient is the kernel of the differential
+<span class="math" data-tex="\(d_2:E_2^{0,1}\to E_2^{2,0}\)">\(d_2:E_2^{0,1}\to E_2^{2,0}\)</span>. The cokernel of that differential injects into total degree two. This is exactly the five-term sequence (3.3). Leray for a morphism of sites is the foundational result used here [Stacks, Tag 0732; for small étale sites, Tag 03QC].</p>
+<p>Compare (3.3) for the two topologies. The Picard groups at its beginning are the same, and (3.1) identifies the two groups at its end. Equivalently both middle Picard groups are extensions of the same quotient (1.1) by the same kernel</p>
+<span class="math math-display" data-tex="\[
+\ker\bigl(H^2(T,\mathbf G_m)\to H^2(X_T,\mathbf G_m)\bigr).
+\]">\[
+\ker\bigl(H^2(T,\mathbf G_m)\to H^2(X_T,\mathbf G_m)\bigr).
+\]</span>
+<p>The diagram chase for these short exact sequences proves that the canonical comparison map is an isomorphism. Equation (3.2), its naturality and the stated vanishing criterion follow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a concrete description of <span class="math" data-tex="\(\delta_T\)">\(\delta_T\)</span>. Represent a Picard class by local bundles <span class="math" data-tex="\(L_i\)">\(L_i\)</span>, choose local isomorphisms between their pullbacks, and refine overlaps when necessary. On a triple overlap, the composite differs from the identity by a scalar unit <span class="math" data-tex="\(c_{ijk}\)">\(c_{ijk}\)</span> on the base, using (1.4). Associativity gives the degree-two cocycle identity. Changing the isomorphisms changes this cocycle by a coboundary. If a single cover is insufficient, the same construction on successive overlap refinements is a hypercover cocycle; it represents the same sheaf-cohomology class. Killing the class adjusts the isomorphisms into a descent datum. This describes the map in (3.2), and explains why equality of local classes alone is insufficient.</p>
+<p>For a field, <span class="math" data-tex="\(H^2_{\mathrm{\acute et}}(k,\mathbf G_m)\)">\(H^2_{\mathrm{\acute et}}(k,\mathbf G_m)\)</span> is the usual Brauer group. For arbitrary schemes, one must distinguish it from the group of Azumaya algebras and from its torsion subgroup, often denoted the cohomological Brauer group. Formula (3.2) uses the displayed <span class="math" data-tex="\(H^2\)">\(H^2\)</span> itself. No equality of these three groups is assumed. With a section, pullback on <span class="math" data-tex="\(H^2\)">\(H^2\)</span> has the section's pullback as a left inverse, so <span class="math" data-tex="\(\delta_T=0\)">\(\delta_T=0\)</span>, in agreement with Theorem 2.1.</p>
+<h2 id="4-an-open-chart-and-its-translates">4 An open chart and its translates</h2>
+<p>The following criterion constructs a scheme without first assuming that the functor is an algebraic space.</p>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be a Zariski sheaf of groups on schemes over a field <span class="math" data-tex="\(k\)">\(k\)</span>. Suppose <span class="math" data-tex="\(F\subset G\)">\(F\subset G\)</span> is represented by a scheme and the inclusion is represented by open immersions. Assume that for every field extension <span class="math" data-tex="\(K/k\)">\(K/k\)</span> and every <span class="math" data-tex="\(x\in G(K)\)">\(x\in G(K)\)</span>, some <span class="math" data-tex="\(a\in G(k)\)">\(a\in G(k)\)</span> satisfies <span class="math" data-tex="\(ax\in F(K)\)">\(ax\in F(K)\)</span>. Then <span class="math" data-tex="\(G\)">\(G\)</span> is represented by a group scheme.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(a\in G(k)\)">\(a\in G(k)\)</span>, put <span class="math" data-tex="\(F_a(T)=\{x:ax\in F(T)\}\)">\(F_a(T)=\{x:ax\in F(T)\}\)</span>. Translation identifies <span class="math" data-tex="\(F_a\)">\(F_a\)</span> with <span class="math" data-tex="\(F\)">\(F\)</span>, and its inclusion in <span class="math" data-tex="\(G\)">\(G\)</span> is represented by an open immersion. The intersection <span class="math" data-tex="\(F_a\times_G F_b\)">\(F_a\times_G F_b\)</span> is an open subscheme in each chart: pull back one open immersion along the other chart. The two descriptions identify the same subfunctor and therefore give a canonical isomorphism between these opens. These isomorphisms obey the cocycle identity because their composites all identify the same elements of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>Glue the schemes <span class="math" data-tex="\(F_a\)">\(F_a\)</span> along these open identifications to obtain a scheme <span class="math" data-tex="\(Y\)">\(Y\)</span> and a map <span class="math" data-tex="\(h_Y\to G\)">\(h_Y\to G\)</span>. This gluing creates no duplicate points on overlaps, since every chart map is a monomorphism.</p>
+<p>Given <span class="math" data-tex="\(x\in G(T)\)">\(x\in G(T)\)</span>, its inverse images of the <span class="math" data-tex="\(F_a\)">\(F_a\)</span> are open subschemes <span class="math" data-tex="\(T_a\subset T\)">\(T_a\subset T\)</span>. They cover <span class="math" data-tex="\(T\)">\(T\)</span>: at <span class="math" data-tex="\(t\in T\)">\(t\in T\)</span>, apply the field assumption to <span class="math" data-tex="\(x_t\in G(\kappa(t))\)">\(x_t\in G(\kappa(t))\)</span>. The resulting residue-field point factors through <span class="math" data-tex="\(F_a\)">\(F_a\)</span>, so <span class="math" data-tex="\(t\in T_a\)">\(t\in T_a\)</span>. On <span class="math" data-tex="\(T_a\)">\(T_a\)</span>, the element <span class="math" data-tex="\(x\)">\(x\)</span> is a map into the corresponding chart, and these maps glue uniquely to <span class="math" data-tex="\(T\to Y\)">\(T\to Y\)</span>. Conversely the charts' maps to <span class="math" data-tex="\(G\)">\(G\)</span> glue by the sheaf property. The two constructions are inverse for all <span class="math" data-tex="\(T\)">\(T\)</span>. Thus <span class="math" data-tex="\(h_Y=G\)">\(h_Y=G\)</span>. Yoneda turns multiplication, inverse and identity into morphisms satisfying the group axioms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The covering hypothesis concerns every extension field, not merely the <span class="math" data-tex="\(k\)">\(k\)</span>-rational points of <span class="math" data-tex="\(G\)">\(G\)</span>. Checking only those rational points would leave open the possibility of missing part of a test scheme.</p>
+<h2 id="5-divisors-and-the-nonspecial-chart">5 Divisors and the nonspecial chart</h2>
+<p>For our geometrically connected curve, smoothness makes every geometric fibre integral. Over a field, a finite closed subscheme of a smooth curve has an ideal generated by a nonzerodivisor in each discrete valuation local ring. In a flat finite family, the fibrewise Cartier criterion [Stacks, Tag 062Y] makes the family a relative effective Cartier divisor. Conversely a relative effective Cartier divisor on the projective curve has finite fibres, so properness and finite presentation make it finite locally free over its parameter scheme. Its rank is the degree of its fibres. Therefore</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hilb}^d_C=\operatorname{Sym}^d C.
+\tag{5.1}
+\]">\[
+\operatorname{Hilb}^d_C=\operatorname{Sym}^d C.
+\tag{5.1}
+\]</span>
+<p>The all-characteristic construction in <em>Hilbert and Quot schemes</em> proves this identification, projectivity and smoothness of the symmetric power, of dimension <span class="math" data-tex="\(d\)">\(d\)</span>. The divisor construction also shows it is geometrically irreducible: the map <span class="math" data-tex="\(C^d\to\operatorname{Sym}^d C\)">\(C^d\to\operatorname{Sym}^d C\)</span> obtained by adding the graphs is surjective on geometric points, and <span class="math" data-tex="\(C^d\)">\(C^d\)</span> is geometrically irreducible.</p>
+<p>Suppose <span class="math" data-tex="\(C\)">\(C\)</span> has a point <span class="math" data-tex="\(p\in C(k)\)">\(p\in C(k)\)</span>. Then (1.4) holds. On <span class="math" data-tex="\(C\)">\(C\)</span>, a regular function is constant: a nonconstant one would give a nonconstant map to <span class="math" data-tex="\(\mathbb A^1\)">\(\mathbb A^1\)</span>, contradicting properness, or equivalently the pole-free divisor of such a function. Geometric connectedness gives <span class="math" data-tex="\(H^0(C,\mathcal O_C)=k\)">\(H^0(C,\mathcal O_C)=k\)</span>. For an affine <span class="math" data-tex="\(T=\operatorname{Spec}A\)">\(T=\operatorname{Spec}A\)</span>, the affine-cover complex for <span class="math" data-tex="\(C_T\)">\(C_T\)</span> is the complex for <span class="math" data-tex="\(C\)">\(C\)</span> tensored with <span class="math" data-tex="\(A\)">\(A\)</span>; tensoring over the field is exact. Its degree-zero kernel is <span class="math" data-tex="\(A\)">\(A\)</span>. Localization on <span class="math" data-tex="\(T\)">\(T\)</span> proves (1.4). By Theorem 2.1 the Picard functor is thus the sheaf of bundles normalized along <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Let <span class="math" data-tex="\(F\subset\operatorname{Pic}_{C/k}\)">\(F\subset\operatorname{Pic}_{C/k}\)</span> consist of those normalized bundles <span class="math" data-tex="\(L\)">\(L\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+H^0(C_t,L_t)\text{ has dimension }1,
+\qquad H^1(C_t,L_t)=0
+\quad(t\in T).
+\tag{5.2}
+\]">\[
+H^0(C_t,L_t)\text{ has dimension }1,
+\qquad H^1(C_t,L_t)=0
+\quad(t\in T).
+\tag{5.2}
+\]</span>
+<p>The condition is compatible with arbitrary base change. The finite locally free cohomology complex for a flat bundle on a projective family [Stacks, Tag 0A1H] shows that it is open and that, on this open,</p>
+<span class="math math-display" data-tex="\[
+R(f_T)_*L=N[0]
+\quad\text{for a line bundle }N\text{ on }T.
+\tag{5.3}
+\]">\[
+R(f_T)_*L=N[0]
+\quad\text{for a line bundle }N\text{ on }T.
+\tag{5.3}
+\]</span>
+<p>For precision, a finite free complex near a point can have all its pairs joined by invertible differential entries cancelled. If its fibre cohomology is one-dimensional in degree zero alone, its remaining differentials have maximal required ranks on a neighbourhood, and the residual degree-zero module is a line bundle. This is the openness assertion of Tag 0B9S. No representability of Picard is needed to apply it to the line bundle supplied by any test scheme. It proves that <span class="math" data-tex="\(F\to\operatorname{Pic}_{C/k}\)">\(F\to\operatorname{Pic}_{C/k}\)</span> is represented by open immersions.</p>
+<p>Riemann–Roch gives <span class="math" data-tex="\(\deg L_t=g\)">\(\deg L_t=g\)</span> in (5.2), because
+<span class="math" data-tex="\(\chi(L_t)=\deg L_t+1-g=1\)">\(\chi(L_t)=\deg L_t+1-g=1\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> The open functor <span class="math" data-tex="\(F\)">\(F\)</span> is represented by the open subscheme</p>
+<span class="math math-display" data-tex="\[
+W=\{D\in\operatorname{Sym}^g C:H^1(C,\mathcal O_C(D))=0\}.
+\tag{5.4}
+\]">\[
+W=\{D\in\operatorname{Sym}^g C:H^1(C,\mathcal O_C(D))=0\}.
+\tag{5.4}
+\]</span>
+<p>The Abel map identifies <span class="math" data-tex="\(W\)">\(W\)</span> with this open in the Picard functor.</p>
+<p><strong>Proof.</strong> The universal divisor on <span class="math" data-tex="\(C\times\operatorname{Sym}^g C\)">\(C\times\operatorname{Sym}^g C\)</span> supplies <span class="math" data-tex="\(\mathcal O(D)\)">\(\mathcal O(D)\)</span>. Normalize it by (2.4). Condition (5.2) cuts out the open <span class="math" data-tex="\(W\)">\(W\)</span>; Riemann–Roch shows that degree <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(H^1=0\)">\(H^1=0\)</span> force <span class="math" data-tex="\(h^0=1\)">\(h^0=1\)</span>. We therefore have <span class="math" data-tex="\(W\to F\)">\(W\to F\)</span>.</p>
+<p>For the inverse, let <span class="math" data-tex="\((L,\alpha)\in F(T)\)">\((L,\alpha)\in F(T)\)</span>, and put <span class="math" data-tex="\(N=(f_T)_*L\)">\(N=(f_T)_*L\)</span>. The evaluation map</p>
+<span class="math math-display" data-tex="\[
+f_T^*N\longrightarrow L
+\tag{5.5}
+\]">\[
+f_T^*N\longrightarrow L
+\tag{5.5}
+\]</span>
+<p>is nonzero on every fibre, by (5.3) and base change. A nonzero section of a line bundle on an integral curve is a nonzerodivisor. The fibrewise Cartier criterion makes its zero locus a relative effective Cartier divisor <span class="math" data-tex="\(D\)">\(D\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathcal O(D)=L\otimes f_T^*N^{-1}.
+\tag{5.6}
+\]">\[
+\mathcal O(D)=L\otimes f_T^*N^{-1}.
+\tag{5.6}
+\]</span>
+<p>This divisor is finite locally free of degree <span class="math" data-tex="\(g\)">\(g\)</span>, so gives <span class="math" data-tex="\(T\to\operatorname{Sym}^g C\)">\(T\to\operatorname{Sym}^g C\)</span>. Equation (5.6) gives <span class="math" data-tex="\(H^1(\mathcal O(D_t))=0\)">\(H^1(\mathcal O(D_t))=0\)</span>, so this map factors through <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>Both inverses can be checked without selecting a generator of <span class="math" data-tex="\(N\)">\(N\)</span>. Starting with <span class="math" data-tex="\(D\in W(T)\)">\(D\in W(T)\)</span>, the canonical section <span class="math" data-tex="\(1\)">\(1\)</span> of <span class="math" data-tex="\(\mathcal O(D)\)">\(\mathcal O(D)\)</span> spans its one-dimensional space of sections on every fibre. Hence <span class="math" data-tex="\(\mathcal O_T\to(f_T)_*\mathcal O(D)\)">\(\mathcal O_T\to(f_T)_*\mathcal O(D)\)</span> is an isomorphism. Its evaluation has exactly the original zero divisor <span class="math" data-tex="\(D\)">\(D\)</span>; normalization only tensors its source and target by the same base line bundle, and leaves its zero scheme unchanged. Starting with <span class="math" data-tex="\(L\)">\(L\)</span>, normalize (5.6) along <span class="math" data-tex="\(p\)">\(p\)</span>; the base factor <span class="math" data-tex="\(N^{-1}\)">\(N^{-1}\)</span> cancels in (2.4), so it recovers <span class="math" data-tex="\((L,\alpha)\)">\((L,\alpha)\)</span>. All evaluation maps and identifications commute with base change. These are inverse transformations on every test scheme. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The empty divisor covers genus zero: <span class="math" data-tex="\(\operatorname{Sym}^0 C\)">\(\operatorname{Sym}^0 C\)</span> is a point, and <span class="math" data-tex="\(W\)">\(W\)</span> has the same interpretation.</p>
+<h2 id="6-why-these-charts-cover-over-a-separably-closed-field">6 Why these charts cover over a separably closed field</h2>
+<p>The translate used to reach <span class="math" data-tex="\(W\)">\(W\)</span> must be defined over <span class="math" data-tex="\(k\)">\(k\)</span>, even when the bundle to be translated is defined over a much larger field.</p>
+<p><strong>Lemma 6.1.</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be separably closed and <span class="math" data-tex="\(K/k\)">\(K/k\)</span> any field extension. Given a line bundle <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(C_K\)">\(C_K\)</span>, there is a line bundle <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+h^0(C_K,L\otimes M_K)=1,
+\qquad h^1(C_K,L\otimes M_K)=0.
+\tag{6.1}
+\]">\[
+h^0(C_K,L\otimes M_K)=1,
+\qquad h^1(C_K,L\otimes M_K)=0.
+\tag{6.1}
+\]</span>
+<p><strong>Proof.</strong> First note that <span class="math" data-tex="\(C(k)\)">\(C(k)\)</span> is infinite. A nonempty open of a smooth curve has an étale coordinate map to a nonempty open of <span class="math" data-tex="\(\mathbb A^1_k\)">\(\mathbb A^1_k\)</span>. For any rational point in its image, the nonempty étale fibre has a point over a finite separable extension of <span class="math" data-tex="\(k\)">\(k\)</span>, hence over <span class="math" data-tex="\(k\)">\(k\)</span> itself. Shrinking away from finitely many points repeats the argument. This also gives a rational point <span class="math" data-tex="\(p\)">\(p\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>. The density statement for smooth schemes is [Stacks, Tag 056U].</p>
+<p>Twist <span class="math" data-tex="\(L\)">\(L\)</span> by a sufficiently positive power of an ample bundle on <span class="math" data-tex="\(C\)">\(C\)</span>, obtaining a bundle <span class="math" data-tex="\(L&#x27;\)">\(L&#x27;\)</span> with <span class="math" data-tex="\(H^1(C_K,L&#x27;)=0\)">\(H^1(C_K,L&#x27;)=0\)</span> and <span class="math" data-tex="\(h^0(C_K,L&#x27;)=r\geq1\)">\(h^0(C_K,L&#x27;)=r\geq1\)</span>. Serre vanishing gives the first condition and Riemann–Roch the second.</p>
+<p>If <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>, choose a nonzero section. Its zero divisor is finite, so cannot contain the infinitely many distinct <span class="math" data-tex="\(K\)">\(K\)</span>-points obtained from <span class="math" data-tex="\(C(k)\)">\(C(k)\)</span>. Choose <span class="math" data-tex="\(x\in C(k)\)">\(x\in C(k)\)</span> where the section is nonzero. The sequence</p>
+<span class="math math-display" data-tex="\[
+0\to L&#x27;(-x_K)\to L&#x27;\to L&#x27;|_{x_K}\to0
+\]">\[
+0\to L&#x27;(-x_K)\to L&#x27;\to L&#x27;|_{x_K}\to0
+\]</span>
+<p>has surjective evaluation on global sections. Its cohomology sequence gives</p>
+<span class="math math-display" data-tex="\[
+h^0(L&#x27;(-x_K))=r-1,
+\qquad H^1(L&#x27;(-x_K))=0.
+\]">\[
+h^0(L&#x27;(-x_K))=r-1,
+\qquad H^1(L&#x27;(-x_K))=0.
+\]</span>
+<p>Repeat until there is one section. The final twist is the chosen ample power minus a sum of <span class="math" data-tex="\(k\)">\(k\)</span>-rational points, and is therefore <span class="math" data-tex="\(M_K\)">\(M_K\)</span> for a bundle <span class="math" data-tex="\(M\)">\(M\)</span> defined on <span class="math" data-tex="\(C\)">\(C\)</span>. This proves (6.1), even when <span class="math" data-tex="\(k\)">\(k\)</span> is imperfect and <span class="math" data-tex="\(K\)">\(K\)</span> is transcendental over it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2.</strong> For a smooth projective geometrically connected curve over a separably closed field, the Picard functor is represented by a smooth separated group scheme, locally of finite type and of dimension <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p><strong>Proof.</strong> Choose the rational point supplied by Lemma 6.1. Theorem 2.1 identifies the functor with normalized bundles. Proposition 5.1 gives the represented open <span class="math" data-tex="\(W\)">\(W\)</span>. Lemma 6.1 says exactly that its tensor translates by <span class="math" data-tex="\(\operatorname{Pic}_{C/k}(k)\)">\(\operatorname{Pic}_{C/k}(k)\)</span> cover at all field-valued points. Lemma 4.1 now constructs the representing scheme <span class="math" data-tex="\(P_C\)">\(P_C\)</span>.</p>
+<p>Each chart is isomorphic to <span class="math" data-tex="\(W\)">\(W\)</span>, an open in the smooth <span class="math" data-tex="\(g\)">\(g\)</span>-dimensional <span class="math" data-tex="\(\operatorname{Sym}^g C\)">\(\operatorname{Sym}^g C\)</span>. Smoothness, local finite type and the dimension assertion follow on this open cover. In particular, the argument establishes smoothness directly from the charts; it does not assume the higher-dimensional Picard scheme is always smooth.</p>
+<p>The group scheme is separated. Its identity <span class="math" data-tex="\(\operatorname{Spec}k\to P_C\)">\(\operatorname{Spec}k\to P_C\)</span> is a closed immersion: a rational point of a scheme over a field is closed, and evaluation at that point is surjective onto <span class="math" data-tex="\(k\)">\(k\)</span>. More explicitly, a specialization of this rational point is seen in an affine neighbourhood of the specialization, where the rational point corresponds to a maximal ideal and has no proper specialization. The inverse image of the identity under</p>
+<span class="math math-display" data-tex="\[
+P_C\times P_C\longrightarrow P_C,
+\qquad (a,b)\longmapsto ab^{-1},
+\]">\[
+P_C\times P_C\longrightarrow P_C,
+\qquad (a,b)\longmapsto ab^{-1},
+\]</span>
+<p>is the diagonal, so the diagonal is closed. This is the elementary separatedness argument for group schemes over a field [Stacks, Tag 047L]. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-degree-pieces-abel-fibres-and-properness">7 Degree pieces, Abel fibres and properness</h2>
+<p>The degree of a bundle in a flat family on <span class="math" data-tex="\(C\)">\(C\)</span> is locally constant: its Euler characteristic is locally constant [Stacks, Tag 0B9T], and
+<span class="math" data-tex="\(\deg L_t=\chi(L_t)-1+g\)">\(\deg L_t=\chi(L_t)-1+g\)</span>. The universal normalized line bundle exists on <span class="math" data-tex="\(C\times P_C\)">\(C\times P_C\)</span>, because representability and Theorem 2.1 supply it by Yoneda. Consequently</p>
+<span class="math math-display" data-tex="\[
+P_C=\coprod_{d\in\mathbb Z}P_C^d,
+\tag{7.1}
+\]">\[
+P_C=\coprod_{d\in\mathbb Z}P_C^d,
+\tag{7.1}
+\]</span>
+<p>with each piece open and closed. Tensor product adds degrees. Tensoring by <span class="math" data-tex="\(\mathcal O_C(np)\)">\(\mathcal O_C(np)\)</span> identifies <span class="math" data-tex="\(P_C^d\)">\(P_C^d\)</span> with <span class="math" data-tex="\(P_C^{d+n}\)">\(P_C^{d+n}\)</span>.</p>
+<p>For <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>, the universal effective divisor defines the Abel map</p>
+<span class="math math-display" data-tex="\[
+a_d:\operatorname{Sym}^d C\longrightarrow P_C^d,
+\qquad D\longmapsto[\mathcal O_C(D)].
+\tag{7.2}
+\]">\[
+a_d:\operatorname{Sym}^d C\longrightarrow P_C^d,
+\qquad D\longmapsto[\mathcal O_C(D)].
+\tag{7.2}
+\]</span>
+<p><strong>Proposition 7.1.</strong> For every field extension <span class="math" data-tex="\(K/k\)">\(K/k\)</span> and every degree-<span class="math" data-tex="\(d\)">\(d\)</span> line bundle <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(C_K\)">\(C_K\)</span>, the scheme-theoretic fibre of <span class="math" data-tex="\(a_d\)">\(a_d\)</span> at <span class="math" data-tex="\([L]\)">\([L]\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\mathbb P\bigl(H^0(C_K,L)^\vee\bigr).
+\tag{7.3}
+\]">\[
+\mathbb P\bigl(H^0(C_K,L)^\vee\bigr).
+\tag{7.3}
+\]</span>
+<p>If <span class="math" data-tex="\(H^0(L)=0\)">\(H^0(L)=0\)</span>, this projective space is empty. If <span class="math" data-tex="\(d&gt;2g-2\)">\(d&gt;2g-2\)</span> and <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>, then the fibre is <span class="math" data-tex="\(\mathbb P_K^{d-g}\)">\(\mathbb P_K^{d-g}\)</span>, and <span class="math" data-tex="\(a_d\)">\(a_d\)</span> is a projective bundle, smooth and surjective.</p>
+<p><strong>Proof.</strong> We prove the fibre identity on arbitrary <span class="math" data-tex="\(K\)">\(K\)</span>-schemes <span class="math" data-tex="\(T\)">\(T\)</span>. A quotient line of <span class="math" data-tex="\(H^0(L)^\vee\otimes_K\mathcal O_T\)">\(H^0(L)^\vee\otimes_K\mathcal O_T\)</span> is, by duality, a line subbundle</p>
+<span class="math math-display" data-tex="\[
+N\hookrightarrow H^0(L)\otimes_K\mathcal O_T
+\tag{7.4}
+\]">\[
+N\hookrightarrow H^0(L)\otimes_K\mathcal O_T
+\tag{7.4}
+\]</span>
+<p>whose inclusion remains injective on every fibre. Evaluation gives a section of <span class="math" data-tex="\(L_T\otimes f_T^*N^{-1}\)">\(L_T\otimes f_T^*N^{-1}\)</span> that is nonzero on each fibre. Since the fibres of <span class="math" data-tex="\(C_T/T\)">\(C_T/T\)</span> are integral, its zero scheme is a relative effective Cartier divisor of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Its class is <span class="math" data-tex="\([L_T]\)">\([L_T]\)</span>, giving a <span class="math" data-tex="\(T\)">\(T\)</span>-point of the Abel fibre.</p>
+<p>Conversely, a divisor in that fibre has <span class="math" data-tex="\(\mathcal O(D)\simeq L_T\otimes f_T^*A\)">\(\mathcal O(D)\simeq L_T\otimes f_T^*A\)</span> for a base line bundle <span class="math" data-tex="\(A\)">\(A\)</span>. This follows from Theorem 2.1, not merely from equality on the geometric fibres. Its canonical section gives <span class="math" data-tex="\(A^{-1}\to(f_T)_*L_T\)">\(A^{-1}\to(f_T)_*L_T\)</span>. Field-extension cohomology identifies the latter with <span class="math" data-tex="\(H^0(L)\otimes_K\mathcal O_T\)">\(H^0(L)\otimes_K\mathcal O_T\)</span>. The section is nonzero on each fibre, so this map is a line subbundle: locally one coefficient is a unit, giving a splitting and a locally free cokernel. Changing the isomorphism multiplies the section by a base unit and makes no change to the subline. The resulting subline is intrinsic, and the two constructions are inverse, by taking the same section and its zero scheme. This proves (7.3) as a functorial scheme identity, including nonreduced <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For the high-degree assertion, Serre duality identifies <span class="math" data-tex="\(H^1(L)\)">\(H^1(L)\)</span> with the dual of <span class="math" data-tex="\(H^0(\omega_C\otimes L^{-1})\)">\(H^0(\omega_C\otimes L^{-1})\)</span>. The latter bundle has negative degree when <span class="math" data-tex="\(d&gt;2g-2\)">\(d&gt;2g-2\)</span>, so has no nonzero section. Riemann–Roch now gives <span class="math" data-tex="\(h^0(L)=d+1-g\)">\(h^0(L)=d+1-g\)</span>.</p>
+<p>Apply this to the universal normalized bundle <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> on <span class="math" data-tex="\(C\times P_C^d\)">\(C\times P_C^d\)</span>. Its pushforward <span class="math" data-tex="\(V\)">\(V\)</span> is finite locally free of rank <span class="math" data-tex="\(d+1-g\)">\(d+1-g\)</span>, and commutes with arbitrary base change. The evaluation/subline proof just given works over the whole <span class="math" data-tex="\(P_C^d\)">\(P_C^d\)</span> and identifies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sym}^d C\simeq\mathbb P_{P_C^d}(V^\vee).
+\tag{7.5}
+\]">\[
+\operatorname{Sym}^d C\simeq\mathbb P_{P_C^d}(V^\vee).
+\tag{7.5}
+\]</span>
+<p>It is a projective bundle of relative dimension <span class="math" data-tex="\(d-g\)">\(d-g\)</span>, hence smooth and surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7.2.</strong> Every degree piece <span class="math" data-tex="\(P_C^d\)">\(P_C^d\)</span> is a smooth proper geometrically integral variety of dimension <span class="math" data-tex="\(g\)">\(g\)</span>. The degree-zero piece is the identity component and an abelian variety. It is called the Jacobian of <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(d_0\geq\max(0,2g-1)\)">\(d_0\geq\max(0,2g-1)\)</span>. Proposition 7.1 makes <span class="math" data-tex="\(a_{d_0}\)">\(a_{d_0}\)</span> surjective. The source is projective and geometrically irreducible. Its target is separated by Theorem 6.2.</p>
+<p>First the target is quasi-compact, since it is a continuous image of a quasi-compact scheme. It is locally of finite type over <span class="math" data-tex="\(k\)">\(k\)</span>, hence is of finite type. A morphism from a proper <span class="math" data-tex="\(k\)">\(k\)</span>-scheme to a separated <span class="math" data-tex="\(k\)">\(k\)</span>-scheme is proper: its graph is closed, and projection from the product is proper. Thus <span class="math" data-tex="\(a_{d_0}\)">\(a_{d_0}\)</span> is proper.</p>
+<p>To see that its target is universally closed over <span class="math" data-tex="\(k\)">\(k\)</span>, base change to any <span class="math" data-tex="\(T\)">\(T\)</span>. For a closed subset <span class="math" data-tex="\(B\subset P_C^{d_0}\times T\)">\(B\subset P_C^{d_0}\times T\)</span>, its inverse image in <span class="math" data-tex="\(\operatorname{Sym}^{d_0}C\times T\)">\(\operatorname{Sym}^{d_0}C\times T\)</span> is closed and has closed image in <span class="math" data-tex="\(T\)">\(T\)</span>. That image equals the image of <span class="math" data-tex="\(B\)">\(B\)</span>, because the projective bundle (7.5) is surjective after every base change. Thus the target's structure morphism is universally closed. Finite type and separatedness give properness.</p>
+<p>After algebraic closure the source is irreducible, and its surjective image is irreducible. The target is smooth, hence geometrically reduced. It is therefore geometrically integral. Translation by <span class="math" data-tex="\(\mathcal O_C((d-d_0)p)\)">\(\mathcal O_C((d-d_0)p)\)</span> gives all the same properties for each <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>In particular <span class="math" data-tex="\(P_C^0\)">\(P_C^0\)</span> is connected, contains the identity and is open and closed. Every connected subset through the identity remains in degree zero; hence this piece is the identity component. Tensor product makes it a commutative group scheme. A proper geometrically integral group variety is an abelian variety [Stacks, Tag 03RO, definition]; such a variety is projective [Stacks, Tag 0BFA]. Smoothness and dimension <span class="math" data-tex="\(g\)">\(g\)</span> were already established by the owned construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same reasoning shows <span class="math" data-tex="\(a_d\)">\(a_d\)</span> is surjective for every <span class="math" data-tex="\(d\geq g\)">\(d\geq g\)</span>: Riemann–Roch gives a nonzero section of every degree-<span class="math" data-tex="\(d\)">\(d\)</span> bundle over every extension field. Its effective zero divisor is a point of the corresponding fibre. This stronger surjectivity needs no vanishing of <span class="math" data-tex="\(H^1\)">\(H^1\)</span>; the projective-bundle assertion requires the high-degree hypothesis.</p>
+<p>If a smooth projective curve over separably closed <span class="math" data-tex="\(k\)">\(k\)</span> has several connected components <span class="math" data-tex="\(C_i\)">\(C_i\)</span>, each is geometrically integral and has a rational point. A line bundle on their disjoint union is a tuple of line bundles. The Picard sheaf and its representing scheme are the product of the <span class="math" data-tex="\(P_{C_i}\)">\(P_{C_i}\)</span>, and the degree is a multidegree. Its identity component is the product of their Jacobians, of dimension <span class="math" data-tex="\(\sum_i h^1(C_i,\mathcal O_{C_i})\)">\(\sum_i h^1(C_i,\mathcal O_{C_i})\)</span>. Using one section for the whole disconnected curve would not satisfy (1.4); the componentwise argument is what proves this case.</p>
+<h2 id="8-three-examples-of-the-comparison">8 Three examples of the comparison</h2>
+<h3 id="projective-space-over-an-arbitrary-base">Projective space over an arbitrary base</h3>
+<p>For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> and every scheme <span class="math" data-tex="\(S\)">\(S\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}_{\mathbb P^n_S/S}
+=\underline{\mathbb Z}_S
+=\coprod_{d\in\mathbb Z}S.
+\tag{8.1}
+\]">\[
+\operatorname{Pic}_{\mathbb P^n_S/S}
+=\underline{\mathbb Z}_S
+=\coprod_{d\in\mathbb Z}S.
+\tag{8.1}
+\]</span>
+<p>The sheaf <span class="math" data-tex="\(\underline{\mathbb Z}_S\)">\(\underline{\mathbb Z}_S\)</span> assigns locally constant integer functions to a test scheme. To prove the relative assertion rather than just the field-valued one, let <span class="math" data-tex="\(L\)">\(L\)</span> be a bundle on <span class="math" data-tex="\(\mathbb P^n_T\)">\(\mathbb P^n_T\)</span>. At <span class="math" data-tex="\(t\in T\)">\(t\in T\)</span>, the field computation <span class="math" data-tex="\(\operatorname{Pic}(\mathbb P^n_{\kappa(t)})=\mathbb Z\)">\(\operatorname{Pic}(\mathbb P^n_{\kappa(t)})=\mathbb Z\)</span> [Stacks, Tag 0BXJ] gives <span class="math" data-tex="\(L_t=\mathcal O(d)\)">\(L_t=\mathcal O(d)\)</span>. For <span class="math" data-tex="\(L(-d)\)">\(L(-d)\)</span>, the fibre cohomology is one-dimensional in degree zero and zero in higher degrees [Stacks, Tag 01XT]. On a neighbourhood of <span class="math" data-tex="\(t\)">\(t\)</span>, perfect cohomology and Tag 0B9S give a base line bundle <span class="math" data-tex="\(N=(f_T)_*L(-d)\)">\(N=(f_T)_*L(-d)\)</span>. Its evaluation</p>
+<span class="math math-display" data-tex="\[
+f_T^*N\longrightarrow L(-d)
+\]">\[
+f_T^*N\longrightarrow L(-d)
+\]</span>
+<p>is an isomorphism: on each fibre it is the evaluation isomorphism for the trivial bundle; a map between line bundles that is nonzero at every point is locally multiplication by a unit. The fibre cohomology condition forces the integer on that neighbourhood to be <span class="math" data-tex="\(d\)">\(d\)</span>, since among bundles <span class="math" data-tex="\(\mathcal O(e)\)">\(\mathcal O(e)\)</span> on <span class="math" data-tex="\(\mathbb P^n\)">\(\mathbb P^n\)</span>, only <span class="math" data-tex="\(e=0\)">\(e=0\)</span> has exactly one section and no higher cohomology. Thus the integers are locally constant. On overlaps they agree by the field classification. The section <span class="math" data-tex="\([1:0:\cdots:0]\)">\([1:0:\cdots:0]\)</span> then normalizes the base factors and proves (8.1) for all test schemes and all three topologies. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the relative functor is zero instead.</p>
+<h3 id="an-elliptic-curve">An elliptic curve</h3>
+<p>Let <span class="math" data-tex="\(E/k\)">\(E/k\)</span> be a smooth projective geometrically connected genus-one curve with point <span class="math" data-tex="\(p\)">\(p\)</span>. Every degree-one bundle has one section and no first cohomology. Proposition 5.1 therefore identifies the entire degree-one Picard functor with <span class="math" data-tex="\(\operatorname{Sym}^1E=E\)">\(\operatorname{Sym}^1E=E\)</span>. The inverse assigns the unique zero divisor, a finite locally free divisor of degree one and hence the graph of a map to <span class="math" data-tex="\(E\)">\(E\)</span>. This argument works over any field with the chosen point; separable closedness is unnecessary here.</p>
+<p>Translation by <span class="math" data-tex="\(\mathcal O_E(-p)\)">\(\mathcal O_E(-p)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+E\xrightarrow{\sim}\operatorname{Pic}^0_{E/k},
+\qquad x\longmapsto\mathcal O_E(x-p).
+\tag{8.2}
+\]">\[
+E\xrightarrow{\sim}\operatorname{Pic}^0_{E/k},
+\qquad x\longmapsto\mathcal O_E(x-p).
+\tag{8.2}
+\]</span>
+<p>This is the usual elliptic group law expressed by addition of divisor classes. Tensoring by <span class="math" data-tex="\(\mathcal O_E(dp)\)">\(\mathcal O_E(dp)\)</span> gives
+<span class="math" data-tex="\(\operatorname{Pic}_{E/k}\simeq E\times\underline{\mathbb Z}\)">\(\operatorname{Pic}_{E/k}\simeq E\times\underline{\mathbb Z}\)</span>, with the product group law. The splitting depends on <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<h3 id="a-real-conic-with-no-real-point">A real conic with no real point</h3>
+<p>Let <span class="math" data-tex="\(C\subset\mathbb P^2_{\mathbb R}\)">\(C\subset\mathbb P^2_{\mathbb R}\)</span> be <span class="math" data-tex="\(x^2+y^2+z^2=0\)">\(x^2+y^2+z^2=0\)</span>. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, it is a projective line. Degree is preserved by every automorphism of that line, so the constant Picard sheaf <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> descends through the étale cover <span class="math" data-tex="\(\operatorname{Spec}\mathbb C\to\operatorname{Spec}\mathbb R\)">\(\operatorname{Spec}\mathbb C\to\operatorname{Spec}\mathbb R\)</span>. More explicitly, after this cover the sheaf is <span class="math" data-tex="\(\underline{\mathbb Z}\)">\(\underline{\mathbb Z}\)</span> by (8.1), and both transition maps are the identity on degree; the étale sheaf condition identifies it with <span class="math" data-tex="\(\underline{\mathbb Z}_{\mathbb R}\)">\(\underline{\mathbb Z}_{\mathbb R}\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}_{C/\mathbb R,\mathrm{\acute et}}(\mathbb R)
+=\mathbb Z.
+\tag{8.3}
+\]">\[
+\operatorname{Pic}_{C/\mathbb R,\mathrm{\acute et}}(\mathbb R)
+=\mathbb Z.
+\tag{8.3}
+\]</span>
+<p>Actual real line bundles have even geometric degree. The restriction of <span class="math" data-tex="\(\mathcal O_{\mathbb P^2}(1)\)">\(\mathcal O_{\mathbb P^2}(1)\)</span> has degree two and realizes every even integer. If a real bundle had odd degree, tensoring it by a suitable integer power of this degree-two bundle would produce a real bundle of degree one. Genus-zero Riemann–Roch and duality give two real sections and no first cohomology. A nonzero section would have an effective divisor of degree one, hence a real point, a contradiction. Degree-zero real bundles are trivial: their complexifications are trivial, cohomology and faithful flatness make the evaluation from their one-dimensional real section space an isomorphism. Hence <span class="math" data-tex="\(\operatorname{Pic}(C)=2\mathbb Z\)">\(\operatorname{Pic}(C)=2\mathbb Z\)</span> inside (8.3).</p>
+<p>The odd class is thus a Picard-scheme point that is not an actual line bundle. Its <span class="math" data-tex="\(\delta\)">\(\delta\)</span> in (3.2) is nonzero. One can see the scalar failure directly. Parametrize the complex conic by</p>
+<span class="math math-display" data-tex="\[
+[s:t]\longmapsto
+[i(s^2+t^2):s^2-t^2:2st].
+\]">\[
+[s:t]\longmapsto
+[i(s^2+t^2):s^2-t^2:2st].
+\]</span>
+<p>Substitution checks its equation, and the degree-two Veronese map makes it an isomorphism onto the conic. In these coordinates, conjugation is induced by the semilinear map</p>
+<span class="math math-display" data-tex="\[
+(s,t)\longmapsto(-\overline t,\overline s).
+\]">\[
+(s,t)\longmapsto(-\overline t,\overline s).
+\]</span>
+<p>Its square is <span class="math" data-tex="\(-1\)">\(-1\)</span> on the two-dimensional vector space. The induced descent isomorphism on the degree-one bundle has scalar square <span class="math" data-tex="\(-1\)">\(-1\)</span>. Rescaling it changes this scalar by a complex norm <span class="math" data-tex="\(a\overline a&gt;0\)">\(a\overline a&gt;0\)</span>, so cannot turn it into one. That scalar cocycle is the nontrivial real Brauer obstruction. The Zariski Picard sheaf at <span class="math" data-tex="\(\operatorname{Spec}\mathbb R\)">\(\operatorname{Spec}\mathbb R\)</span> still has just <span class="math" data-tex="\(2\mathbb Z\)">\(2\mathbb Z\)</span>, since that one-point base has no nontrivial open cover. It therefore differs from the étale Picard functor.</p>
+<h2 id="9-exercises">9 Exercises</h2>
+<ol>
+<li>
+<p><strong>Basic.</strong> Compute <span class="math" data-tex="\(\operatorname{Pic}_{\mathbb P^1_S/S}\)">\(\operatorname{Pic}_{\mathbb P^1_S/S}\)</span> for every scheme <span class="math" data-tex="\(S\)">\(S\)</span>. State what its <span class="math" data-tex="\(T\)">\(T\)</span>-points mean when <span class="math" data-tex="\(T\)">\(T\)</span> is disconnected.</p>
+</li>
+<li>
+<p><strong>Intermediate.</strong> For a smooth conic over a field <span class="math" data-tex="\(k\)">\(k\)</span> with no rational point, construct an étale Picard class of geometric degree one and prove that no line bundle on the conic represents it. Include imperfect fields and explain why a separable splitting field can be used.</p>
+</li>
+<li>
+<p><strong>Intermediate.</strong> For <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>, <span class="math" data-tex="\(d&gt;2g-2\)">\(d&gt;2g-2\)</span>, prove the scheme-theoretic Abel-fibre identity (7.3) on arbitrary test schemes. Explain the dual in the quotient-line convention.</p>
+</li>
+<li>
+<p><strong>Intermediate.</strong> Prove Lemma 4.1 by gluing translated charts. Identify the precise step where the assumption over every extension field is used.</p>
+</li>
+<li>
+<p><strong>Advanced.</strong> Prove properness of <span class="math" data-tex="\(\operatorname{Pic}^0_{C/k}\)">\(\operatorname{Pic}^0_{C/k}\)</span> using an Abel map with <span class="math" data-tex="\(d\geq\max(0,2g-1)\)">\(d\geq\max(0,2g-1)\)</span>. Justify finite type, separatedness and universal closedness individually, and do not assume that a surjective map from a proper scheme automatically settles all three.</p>
+</li>
+</ol>
+<h2 id="10-solutions">10 Solutions</h2>
+<p><strong>1.</strong> The answer is <span class="math" data-tex="\(\coprod_{m\in\mathbb Z}S\)">\(\coprod_{m\in\mathbb Z}S\)</span>. For a test scheme <span class="math" data-tex="\(T\)">\(T\)</span>, it assigns a locally constant function <span class="math" data-tex="\(m:T\to\mathbb Z\)">\(m:T\to\mathbb Z\)</span>. Over the open and closed subset where <span class="math" data-tex="\(m\)">\(m\)</span> has the value <span class="math" data-tex="\(a\)">\(a\)</span>, the normalized representative is <span class="math" data-tex="\(\mathcal O_{\mathbb P^1_T}(a)\)">\(\mathcal O_{\mathbb P^1_T}(a)\)</span>. Different components can have different integers.</p>
+<p>For completeness, every bundle has such a representative. Its fibre at <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(\mathcal O(a)\)">\(\mathcal O(a)\)</span>; twist by <span class="math" data-tex="\(-a\)">\(-a\)</span>, use the open rank-one cohomology locus and the evaluation isomorphism as in Section 8. The base line bundle in this expression is removed by restriction to <span class="math" data-tex="\([1:0]\)">\([1:0]\)</span>. Uniqueness of <span class="math" data-tex="\(a\)">\(a\)</span> on fibres glues the integer function, and Theorem 2.1 glues the normalized bundles. Thus this calculation concerns all test schemes, not only spectra of fields.</p>
+<p><strong>2.</strong> A smooth conic has a closed point with finite separable residue field, by the étale-coordinate argument of Lemma 6.1, applied over a separable closure; equivalently use density of separable closed points [Stacks, Tag 056U]. Such a finite separable extension <span class="math" data-tex="\(K/k\)">\(K/k\)</span> gives a point and identifies the conic with <span class="math" data-tex="\(\mathbb P^1_K\)">\(\mathbb P^1_K\)</span>: the degree-one point bundle has two sections, and its complete linear system is the usual degree-one isomorphism after geometric extension, hence is an isomorphism by faithful flatness.</p>
+<p>On this étale cover choose the degree-one bundle. On any overlap its two pullbacks have the same Picard class. Indeed after a further separable cover trivializing the conic both are the degree-one bundle on a projective line; projective-line automorphisms preserve the integer in its Picard sheaf. These local classes therefore glue to an étale Picard class of degree one. One must glue classes here, rather than claim that chosen bundle isomorphisms satisfy a cocycle.</p>
+<p>If a line bundle <span class="math" data-tex="\(L\)">\(L\)</span> on the conic represented this class, it would have geometric degree one. Duality gives <span class="math" data-tex="\(H^1(L)=0\)">\(H^1(L)=0\)</span>, because <span class="math" data-tex="\(\omega_C\otimes L^{-1}\)">\(\omega_C\otimes L^{-1}\)</span> has degree <span class="math" data-tex="\(-3\)">\(-3\)</span>. Riemann–Roch gives <span class="math" data-tex="\(h^0(L)=2\)">\(h^0(L)=2\)</span>. Any nonzero <span class="math" data-tex="\(k\)">\(k\)</span>-section has a zero divisor finite of degree one, which is a rational point. This contradicts the hypothesis. The argument uses no perfectness assumption and no division by two.</p>
+<p><strong>3.</strong> Put <span class="math" data-tex="\(V=H^0(C_K,L)\)">\(V=H^0(C_K,L)\)</span>. On <span class="math" data-tex="\(T\)">\(T\)</span>, a point of <span class="math" data-tex="\(\mathbb P(V^\vee)\)">\(\mathbb P(V^\vee)\)</span> is a quotient <span class="math" data-tex="\(V^\vee\otimes\mathcal O_T\twoheadrightarrow A\)">\(V^\vee\otimes\mathcal O_T\twoheadrightarrow A\)</span>, or equivalently a fibrewise nonzero subline <span class="math" data-tex="\(A^\vee\hookrightarrow V\otimes\mathcal O_T\)">\(A^\vee\hookrightarrow V\otimes\mathcal O_T\)</span>. Evaluate this subline in <span class="math" data-tex="\(L_T\)">\(L_T\)</span>. Its fibrewise nonzero section is regular on the integral curve fibres, and Tag 062Y makes its zero scheme a relative divisor of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Its bundle differs from <span class="math" data-tex="\(L_T\)">\(L_T\)</span> by a base factor, so it lies in the Abel fibre.</p>
+<p>A divisor in the fibre has <span class="math" data-tex="\(\mathcal O(D)=L_T\otimes f_T^*B\)">\(\mathcal O(D)=L_T\otimes f_T^*B\)</span>, by the rigidified comparison. The canonical section defines <span class="math" data-tex="\(B^{-1}\to V\otimes\mathcal O_T\)">\(B^{-1}\to V\otimes\mathcal O_T\)</span>. It is fibrewise nonzero and therefore a subbundle, locally split by a unit coefficient. Isomorphism changes multiply by units and leave this subline unchanged. Taking the zero divisor and taking this subline are inverse even over nonreduced <span class="math" data-tex="\(T\)">\(T\)</span>. This proves the scheme-theoretic identity. Duality and Riemann–Roch give <span class="math" data-tex="\(\dim_K V=d+1-g\)">\(\dim_K V=d+1-g\)</span>, so the fibre is <span class="math" data-tex="\(\mathbb P_K^{d-g}\)">\(\mathbb P_K^{d-g}\)</span>. The dual occurs because <span class="math" data-tex="\(\mathbb P(V)\)">\(\mathbb P(V)\)</span> parametrizes quotients of <span class="math" data-tex="\(V\)">\(V\)</span>, whereas sections up to scalar are sublines of <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p><strong>4.</strong> Let <span class="math" data-tex="\(F_a=a^{-1}F\)">\(F_a=a^{-1}F\)</span> for <span class="math" data-tex="\(a\in G(k)\)">\(a\in G(k)\)</span>. Translation represents each by the same chart scheme as <span class="math" data-tex="\(F\)">\(F\)</span>. The intersection <span class="math" data-tex="\(F_a\times_G F_b\)">\(F_a\times_G F_b\)</span> is open in both charts by the relative openness hypothesis. Its identity as a subfunctor provides the overlap isomorphism; all triple-overlap cocycles are identities of the same subfunctor. Glue the charts using these isomorphisms.</p>
+<p>For <span class="math" data-tex="\(x\in G(T)\)">\(x\in G(T)\)</span>, pull back the charts to opens <span class="math" data-tex="\(T_a\subset T\)">\(T_a\subset T\)</span>. The extension-field assumption applied to <span class="math" data-tex="\(x_t\in G(\kappa(t))\)">\(x_t\in G(\kappa(t))\)</span> puts every point <span class="math" data-tex="\(t\)">\(t\)</span> in some <span class="math" data-tex="\(T_a\)">\(T_a\)</span>. This is the step that would fail if only <span class="math" data-tex="\(G(k)\)">\(G(k)\)</span> were covered. Maps from these opens to the corresponding charts agree and glue. The Zariski sheaf condition makes the reverse gluing into <span class="math" data-tex="\(G(T)\)">\(G(T)\)</span> effective and unique. Thus the glued scheme represents <span class="math" data-tex="\(G\)">\(G\)</span>; Yoneda gives its group structure.</p>
+<p><strong>5.</strong> Choose <span class="math" data-tex="\(d\geq\max(0,2g-1)\)">\(d\geq\max(0,2g-1)\)</span>. The universal normalized bundle on <span class="math" data-tex="\(C\times P_C^d\)">\(C\times P_C^d\)</span> has vanishing first cohomology on all fibres. Its pushforward is a vector bundle of rank <span class="math" data-tex="\(d+1-g\)">\(d+1-g\)</span>, and Proposition 7.1 identifies the Abel map as its projective bundle. Hence it is universally surjective.</p>
+<p>The target is locally of finite type from its translated charts, and quasi-compact from surjectivity of the proper source, so it is of finite type. The identity of the whole Picard group scheme is closed over the field; pulling it back by the difference map makes the diagonal closed, proving separatedness. The Abel map is proper because its graph in the product with the separated target is closed, and the projection from that product is proper.</p>
+<p>After any base change <span class="math" data-tex="\(T\)">\(T\)</span>, pull a closed subset of <span class="math" data-tex="\(P_C^d\times T\)">\(P_C^d\times T\)</span> back along the Abel map. Its image in <span class="math" data-tex="\(T\)">\(T\)</span> is closed because <span class="math" data-tex="\(\operatorname{Sym}^d C\)">\(\operatorname{Sym}^d C\)</span> is proper. Universal surjectivity shows this is exactly the original subset's image. Thus <span class="math" data-tex="\(P_C^d\to\operatorname{Spec}k\)">\(P_C^d\to\operatorname{Spec}k\)</span> is universally closed. Finite type and separatedness give properness. Tensoring by <span class="math" data-tex="\(\mathcal O_C(-dp)\)">\(\mathcal O_C(-dp)\)</span> identifies this degree piece with <span class="math" data-tex="\(P_C^0\)">\(P_C^0\)</span>, proving the assertion. Its geometric connectedness and smoothness were proved from the charts and the irreducible symmetric power, so the proper degree-zero group is the Jacobian abelian variety.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The topology comparison, rigidified descent, group-functor gluing criterion, complete curve construction, Abel fibres and properness of the Jacobian are proved above. The construction uses no pre-existing Picard scheme for a curve.</p>
+<p>We use these precise prerequisites:</p>
+<ul>
+<li>Effective fppf descent of quasi-coherent modules and preservation of rank-one local freeness [Stacks, Tag 023R]. Theorem 2.1 supplies the cocycle and rigidification needed in this application.</li>
+<li>Cohomology of <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span> agrees in étale and fppf topologies for every scheme, in particular in degrees one and two: the smooth-group comparison stated in Poonen, <em>Rational Points on Varieties</em>, Section 6.6.1. The full comparison and its naturality are proved in <a href="AG-HP--multiplicative-group-cohomology-and-change-of-topology.html#the-comparison-and-its-naturality">Multiplicative group cohomology and change of topology, Theorem 1</a>.</li>
+<li>Leray for a morphism of sites [Stacks, Tag 0732; étale version Tag 03QC]. Theorem 3.1 derives the needed exact sequence and comparison from it.</li>
+<li>Perfect cohomology with arbitrary base change for a finitely presented flat sheaf with proper support [Stacks, Tag 0A1H], its open rank-one degree-zero locus [Tag 0B9S], and local constancy of Euler characteristic [Tag 0B9T]. These apply to the universal line bundles on the projective curve.</li>
+<li>Riemann–Roch and Serre duality for smooth projective curves [Stacks, Tags 0BS6 and 0BS2]; line-bundle cohomology on projective space [Tag 01XT] and its Picard group over a field [Tag 0BXJ]. The fibrewise Cartier criterion for a flat finitely presented ambient family [Tag 062Y] and proper finite-fibre finiteness [Tag 02LS].</li>
+<li><em>Hilbert and Quot schemes</em> proves the all-characteristic identification <span class="math" data-tex="\(\operatorname{Hilb}^d C=\operatorname{Sym}^d C\)">\(\operatorname{Hilb}^d C=\operatorname{Sym}^d C\)</span> and its smooth projective structure. The criterion of Section 4 and the Picard charts are proved here, not imported from that lesson.</li>
+<li>A proper geometrically integral group variety is called an abelian variety [Stacks, Tag 03RO]. Its projectivity is the separate foundational result [Tag 0BFA]; the proof above establishes all the defining hypotheses for the Jacobian.</li>
+</ul>
+<p>The general algebraic-space theorem says that a flat proper finitely presented family with (1.4) has an algebraic-space Picard functor [Stacks, Tag 0D2C]. It provides useful context for the next lesson, but it is not used in the curve construction. The next lesson owns the broader scheme construction from relative divisors.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Grothendieck, <em>Technique de descente et théorèmes d'existence en géométrie algébrique V: les schémas de Picard, théorèmes d'existence</em>, Bourbaki Exposé 232, §§1–2, pp. 143–148. <a href="https://numdam.org/item/SB_1961-1962__7__143_0/">Original text</a>.</li>
+<li>The Stacks project, <em>Picard Schemes of Curves</em>: the functor comparison, the open-chart criterion and curve construction [Tags 0B9J–0BA0]; <em>Quot and Hilbert Spaces</em>, Tags 0D24–0D28 and 0D2C. The tagged texts are read in the AI Integrated Stacks Project edition. <a href="https://stacks.math.columbia.edu/tag/0B92">Picard schemes of curves</a>, <a href="https://stacks.math.columbia.edu/tag/0D2C">Picard algebraic spaces</a>.</li>
+<li>Kleiman, <em>The Picard scheme</em>, §2, especially Theorem 2.5 and Remark 2.11. <a href="https://arxiv.org/abs/math/0504020">Author's survey</a>.</li>
+<li>Poonen, <em>Rational Points on Varieties</em>, Section 6.6: the cohomology of the multiplicative group in the Zariski, étale and fppf topologies, Grothendieck's comparison theorem for smooth commutative group schemes, and the cohomological Brauer group. <a href="https://math.mit.edu/~poonen/papers/Qpoints.pdf">Author's version</a>.</li>
+</ul>
+</article></main></body></html>

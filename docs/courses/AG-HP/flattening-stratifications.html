@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flattening stratifications · Hilbert and Picard schemes, deformations and representability</title>
+<meta name="description" content="A lesson of the course Hilbert and Picard schemes, deformations and representability. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-HP/flattening-stratifications.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Hilbert and Picard schemes, deformations and representability</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 11</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="flattening-stratifications">Flattening stratifications</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A sheaf can have fibres that look harmless while failing to form a flat family. Passing to residue fields erases the relations caused by nilpotent elements of the parameter ring. A flattening stratification records those relations in the scheme structures of its strata. Its universal property therefore concerns maps from arbitrary schemes, including nonreduced schemes.</p>
+<p>We begin with relations between free modules and with the especially transparent case of an Artinian base. For a coherent sheaf on projective space, the problem then becomes a sequence of finite module problems, one for each sufficiently large graded degree. Regularity supplies a uniform comparison with the fibres. Noetherianity makes the accumulated equations finite. This proves Mumford's theorem without assuming the existence of a Hilbert or Quot scheme.</p>
+<p>The prerequisites are flatness, tensor products, Nakayama's lemma, Fitting ideals, projective sheafification, generic flatness, and the regularity theorem proved in <em>Regularity and bounded families</em>. One cohomology input is used explicitly: a finitely presented sheaf flat over a base, with proper support on a morphism of finite presentation, has a perfect derived pushforward compatible with arbitrary base change [Stacks, Tag 0A1H]. Locally on the base, this means that a finite complex of finite free modules computes its cohomology after every base change. We explain the elementary consequences needed here, and list this prerequisite at the end.</p>
+<h2 id="1-the-functor-asks-for-flatness-after-pullback">1 The functor asks for flatness after pullback</h2>
+<p>Let <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span>, and let <span class="math" data-tex="\(F\)">\(F\)</span> be a quasi-coherent sheaf on <span class="math" data-tex="\(X\)">\(X\)</span>. Define a subfunctor of the functor of points of <span class="math" data-tex="\(S\)">\(S\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Flat}_F(T)=
+\{g:T\to S\mid F_T\text{ is flat over }T\}.
+\]">\[
+\operatorname{Flat}_F(T)=
+\{g:T\to S\mid F_T\text{ is flat over }T\}.
+\]</span>
+<p>Here <span class="math" data-tex="\(F_T\)">\(F_T\)</span> is the ordinary pullback to <span class="math" data-tex="\(X_T\)">\(X_T\)</span>. Flatness is stable under base change, so this is indeed a contravariant functor. A <strong>universal flattening</strong> is a scheme <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> over <span class="math" data-tex="\(S\)">\(S\)</span> representing it. Its structural map is a monomorphism: for a fixed map <span class="math" data-tex="\(T\to S\)">\(T\to S\)</span>, there is at most one factorization through <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>.</p>
+<p>In this lesson a <strong>flattening stratification</strong> is a universal flattening of the form</p>
+<span class="math math-display" data-tex="\[
+\coprod_{\alpha=1}^a S_\alpha\longrightarrow S,
+\]">\[
+\coprod_{\alpha=1}^a S_\alpha\longrightarrow S,
+\]</span>
+<p>where the <span class="math" data-tex="\(S_\alpha\)">\(S_\alpha\)</span> are locally closed subschemes with disjoint underlying subsets whose union is <span class="math" data-tex="\(|S|\)">\(|S|\)</span>. Every field-valued point belongs to the flattening functor, because every vector space is flat. Consequently any universal flattening is surjective on underlying points. The map need not be an isomorphism: a test scheme can meet a stratum set-theoretically and still fail to factor through its scheme structure.</p>
+<p>For example, <span class="math" data-tex="\(A/(a)\)">\(A/(a)\)</span> becomes a free module of rank one over an <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span> precisely when the image of <span class="math" data-tex="\(a\)">\(a\)</span> is zero. Over a field this condition sees only the support. Over the dual numbers it distinguishes zero from a nonzero nilpotent.</p>
+<h2 id="2-rank-strata-and-their-equations">2 Rank strata and their equations</h2>
+<p>For a finitely presented module <span class="math" data-tex="\(M\)">\(M\)</span>, its Fitting ideals commute with every base change. With a presentation</p>
+<span class="math math-display" data-tex="\[
+A^p\xrightarrow{u}A^q\longrightarrow M\longrightarrow0,
+\]">\[
+A^p\xrightarrow{u}A^q\longrightarrow M\longrightarrow0,
+\]</span>
+<p><span class="math" data-tex="\(\operatorname{Fitt}_r(M)\)">\(\operatorname{Fitt}_r(M)\)</span> is generated by the <span class="math" data-tex="\((q-r)\)">\((q-r)\)</span>-minors of <span class="math" data-tex="\(u\)">\(u\)</span>. We use the conventions that a minor of size zero is 1, impossible positive sizes give the zero ideal, and <span class="math" data-tex="\(\operatorname{Fitt}_{-1}(M)=0\)">\(\operatorname{Fitt}_{-1}(M)=0\)</span>. The ideals are independent of the presentation. For the universal property below, the local matrix calculation also proves that independence on each rank chart.</p>
+<p><strong>Proposition 2.1.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a finitely presented sheaf on a scheme <span class="math" data-tex="\(S\)">\(S\)</span>. For <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, the locally closed subscheme</p>
+<span class="math math-display" data-tex="\[
+S_r=V(\operatorname{Fitt}_{r-1}(M))
+\cap D(\operatorname{Fitt}_r(M))
+\]">\[
+S_r=V(\operatorname{Fitt}_{r-1}(M))
+\cap D(\operatorname{Fitt}_r(M))
+\]</span>
+<p>represents maps <span class="math" data-tex="\(g:T\to S\)">\(g:T\to S\)</span> for which <span class="math" data-tex="\(g^*M\)">\(g^*M\)</span> is locally free of constant rank <span class="math" data-tex="\(r\)">\(r\)</span>. The notation <span class="math" data-tex="\(D(I)\)">\(D(I)\)</span> means the complement of <span class="math" data-tex="\(V(I)\)">\(V(I)\)</span>, possibly a union of principal opens. Over a Noetherian <span class="math" data-tex="\(S\)">\(S\)</span>, only finitely many nonempty rank strata occur, and their disjoint union is a flattening stratification of <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Proof.</strong> Work with the displayed matrix presentation. On an open where a <span class="math" data-tex="\((q-r)\)">\((q-r)\)</span>-minor is invertible, invertible row and column operations put the matrix into block form</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}1_{q-r}&amp;0\\0&amp;C\end{pmatrix}.
+\]">\[
+\begin{pmatrix}1_{q-r}&amp;0\\0&amp;C\end{pmatrix}.
+\]</span>
+<p>Its cokernel is the cokernel of <span class="math" data-tex="\(C:A^{p-q+r}\to A^r\)">\(C:A^{p-q+r}\to A^r\)</span>. On this open, vanishing of all <span class="math" data-tex="\((q-r+1)\)">\((q-r+1)\)</span>-minors is equivalent to vanishing of all entries of <span class="math" data-tex="\(C\)">\(C\)</span>: the minors containing the identity block give those entries, and if they vanish every larger minor vanishes. The cokernel is then <span class="math" data-tex="\(A^r\)">\(A^r\)</span>.</p>
+<p>Conversely, if this cokernel is free of rank <span class="math" data-tex="\(r\)">\(r\)</span>, the surjection <span class="math" data-tex="\(A^r\to\operatorname{coker}C\)">\(A^r\to\operatorname{coker}C\)</span> is an isomorphism locally. Indeed, over a local ring its matrix modulo the maximal ideal is invertible, so its determinant is a unit. Thus <span class="math" data-tex="\(C=0\)">\(C=0\)</span>. A free cokernel of rank <span class="math" data-tex="\(r\)">\(r\)</span> also forces some <span class="math" data-tex="\((q-r)\)">\((q-r)\)</span>-minor of the original matrix to be invertible locally, by splitting off the kernel and choosing bases. Therefore the two Fitting conditions are necessary and sufficient, after any base change. They give exactly the claimed factorization property. These local descriptions agree on overlaps because the property is intrinsic.</p>
+<p>Every fibre of <span class="math" data-tex="\(M\)">\(M\)</span> has one finite dimension, so the rank strata partition <span class="math" data-tex="\(|S|\)">\(|S|\)</span>. A finite affine cover bounds those dimensions on a Noetherian scheme. Finally, a finitely presented flat module is locally free, with locally constant rank. Decomposing a test scheme into its open and closed rank loci gives its unique factorization through the disjoint union. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The scheme structure in this proposition is essential. On the locus where all fibres have dimension <span class="math" data-tex="\(r\)">\(r\)</span>, the ideal <span class="math" data-tex="\(\operatorname{Fitt}_r(M)\)">\(\operatorname{Fitt}_r(M)\)</span> is the unit ideal, but <span class="math" data-tex="\(\operatorname{Fitt}_{r-1}(M)\)">\(\operatorname{Fitt}_{r-1}(M)\)</span> can be a nonzero nilpotent ideal. It is this latter ideal that removes the residual relations.</p>
+<h2 id="3-all-relations-can-be-removed-over-an-artinian-base">3 All relations can be removed over an Artinian base</h2>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be an Artinian ring, <span class="math" data-tex="\(X\)">\(X\)</span> any <span class="math" data-tex="\(A\)">\(A\)</span>-scheme, and <span class="math" data-tex="\(F\)">\(F\)</span> any quasi-coherent sheaf on <span class="math" data-tex="\(X\)">\(X\)</span>. There is an ideal <span class="math" data-tex="\(J\subset A\)">\(J\subset A\)</span> such that <span class="math" data-tex="\(\operatorname{Spec}(A/J)\to\operatorname{Spec}A\)">\(\operatorname{Spec}(A/J)\to\operatorname{Spec}A\)</span> is the universal flattening of <span class="math" data-tex="\(F\)">\(F\)</span>. In particular, a flattening stratification exists. Neither finite presentation of <span class="math" data-tex="\(F\)">\(F\)</span> nor properness of <span class="math" data-tex="\(X\)">\(X\)</span> is required.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(A\)">\(A\)</span> is local, with maximal ideal <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> and residue field <span class="math" data-tex="\(k\)">\(k\)</span>. Its maximal ideal is nilpotent. For any <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, choose lifts of a basis <span class="math" data-tex="\((\bar e_i)_{i\in I}\)">\((\bar e_i)_{i\in I}\)</span> of <span class="math" data-tex="\(M/\mathfrak mM\)">\(M/\mathfrak mM\)</span>. They define</p>
+<span class="math math-display" data-tex="\[
+P=A^{(I)}\longrightarrow M.
+\]">\[
+P=A^{(I)}\longrightarrow M.
+\]</span>
+<p>This is surjective even when <span class="math" data-tex="\(I\)">\(I\)</span> is infinite. Its cokernel <span class="math" data-tex="\(C\)">\(C\)</span> satisfies <span class="math" data-tex="\(C=\mathfrak mC\)">\(C=\mathfrak mC\)</span>; iteration and nilpotence force <span class="math" data-tex="\(C=0\)">\(C=0\)</span>. Let <span class="math" data-tex="\(R\)">\(R\)</span> be its kernel. The basis condition gives <span class="math" data-tex="\(R\subset\mathfrak mP\)">\(R\subset\mathfrak mP\)</span>. Let <span class="math" data-tex="\(J_M\)">\(J_M\)</span> be the ideal generated by all coefficients of all finite-support vectors in <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>For an <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, right exactness gives</p>
+<span class="math math-display" data-tex="\[
+R\otimes_A B\longrightarrow B^{(I)}\longrightarrow M\otimes_A B\longrightarrow0.
+\]">\[
+R\otimes_A B\longrightarrow B^{(I)}\longrightarrow M\otimes_A B\longrightarrow0.
+\]</span>
+<p>If <span class="math" data-tex="\(J_MB=0\)">\(J_MB=0\)</span>, the first map is zero and <span class="math" data-tex="\(M\otimes_A B=B^{(I)}\)">\(M\otimes_A B=B^{(I)}\)</span>, so it is flat. For the converse, suppose <span class="math" data-tex="\(M_B=M\otimes_A B\)">\(M_B=M\otimes_A B\)</span> is flat, and put <span class="math" data-tex="\(N=\ker(B^{(I)}\to M_B)\)">\(N=\ker(B^{(I)}\to M_B)\)</span>. The ideal <span class="math" data-tex="\(\mathfrak mB\)">\(\mathfrak mB\)</span> is still nilpotent. Modulo this ideal the displayed surjection is an isomorphism, by the original choice of basis. Flatness makes</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow N/(\mathfrak mB)N
+\longrightarrow (B/\mathfrak mB)^{(I)}
+\longrightarrow M_B/(\mathfrak mB)M_B\longrightarrow0
+\]">\[
+0\longrightarrow N/(\mathfrak mB)N
+\longrightarrow (B/\mathfrak mB)^{(I)}
+\longrightarrow M_B/(\mathfrak mB)M_B\longrightarrow0
+\]</span>
+<p>exact. Hence <span class="math" data-tex="\(N=(\mathfrak mB)N\)">\(N=(\mathfrak mB)N\)</span>, and nilpotence gives <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. Every relation in <span class="math" data-tex="\(R\)">\(R\)</span> therefore has every coefficient zero in <span class="math" data-tex="\(B\)">\(B\)</span>, which is exactly <span class="math" data-tex="\(J_MB=0\)">\(J_MB=0\)</span>. We have proved the universal property for an arbitrary module.</p>
+<p>Choose affine opens <span class="math" data-tex="\(U_\lambda\)">\(U_\lambda\)</span> covering <span class="math" data-tex="\(X\)">\(X\)</span>, and set <span class="math" data-tex="\(M_\lambda=\Gamma(U_\lambda,F)\)">\(M_\lambda=\Gamma(U_\lambda,F)\)</span>. Pullback on <span class="math" data-tex="\(U_{\lambda,B}\)">\(U_{\lambda,B}\)</span> is represented by <span class="math" data-tex="\(M_\lambda\otimes_A B\)">\(M_\lambda\otimes_A B\)</span>. Flatness over <span class="math" data-tex="\(B\)">\(B\)</span> is equivalent to flatness of these modules: it can be checked locally on the affine source and the base. Thus the ideal</p>
+<span class="math math-display" data-tex="\[
+J=\sum_\lambda J_{M_\lambda}
+\]">\[
+J=\sum_\lambda J_{M_\lambda}
+\]</span>
+<p>has the required property for every affine test scheme. General test schemes follow by gluing the local factorizations through a closed immersion. There is no finiteness difficulty with the sum: an Artinian ring is Noetherian, so it is generated by finitely many of the coefficients.</p>
+<p>Finally, an Artinian ring is a finite product of local Artinian rings. Apply the construction to each open and closed factor and take the product of the resulting quotient rings. This is again a closed subscheme of <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span>, with the same universal property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(A=k[\epsilon]/(\epsilon^2)\)">\(A=k[\epsilon]/(\epsilon^2)\)</span> and <span class="math" data-tex="\(M=A/(\epsilon)\)">\(M=A/(\epsilon)\)</span>, the ideal is <span class="math" data-tex="\((\epsilon)\)">\((\epsilon)\)</span>. The universal flattening is the reduced point. The only underlying point of <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span> is already flat as a fibre; the obstruction lies in its infinitesimal neighbourhood.</p>
+<h2 id="4-two-cohomology-consequences">4 Two cohomology consequences</h2>
+<p>We isolate the cohomology input before using it in the projective construction.</p>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(f:X\to T\)">\(f:X\to T\)</span> be of finite presentation and let <span class="math" data-tex="\(G\)">\(G\)</span> be a finitely presented sheaf, flat over <span class="math" data-tex="\(T\)">\(T\)</span>, with proper support. If <span class="math" data-tex="\(H^i(X_t,G_t)=0\)">\(H^i(X_t,G_t)=0\)</span> for every <span class="math" data-tex="\(t\in T\)">\(t\in T\)</span> and every <span class="math" data-tex="\(i&gt;0\)">\(i&gt;0\)</span>, then <span class="math" data-tex="\(f_*G\)">\(f_*G\)</span> is finite locally free and commutes with arbitrary base change. Its rank at <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(h^0(X_t,G_t)\)">\(h^0(X_t,G_t)\)</span>.</p>
+<p><strong>Proof from the stated prerequisite.</strong> Locally on <span class="math" data-tex="\(T\)">\(T\)</span>, take a finite complex of finite free modules computing cohomology after arbitrary base change, as supplied by [Stacks, Tag 0A1H]. At a point <span class="math" data-tex="\(t\)">\(t\)</span>, its tensor product with <span class="math" data-tex="\(\kappa(t)\)">\(\kappa(t)\)</span> has cohomology only in degree zero. A bounded complex of vector spaces is the direct sum of its cohomology and two-term identity complexes. Lift the invertible minors used for the latter decomposition to a neighbourhood of <span class="math" data-tex="\(t\)">\(t\)</span>. Row and column operations split off the corresponding two-term identity complexes there. The remaining complex has only a free term in degree zero: the other remaining terms have rank zero, as seen at <span class="math" data-tex="\(t\)">\(t\)</span>. Consequently the original complex is represented there by a finite free module in degree zero. Its tensor product with any algebra has the same description. This proves local freeness, the rank formula, and arbitrary base change. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2.</strong> In a flat projective family of finitely presented sheaves, the Hilbert polynomial is locally constant.</p>
+<p><strong>Proof from the same prerequisite.</strong> Near a given point, for each of the finitely many twists <span class="math" data-tex="\(0,1,\ldots,n\)">\(0,1,\ldots,n\)</span> on <span class="math" data-tex="\(\mathbb P^n_T\)">\(\mathbb P^n_T\)</span>, choose its finite free cohomology complex. Its Euler characteristic on a fibre is the alternating sum of the ranks of its terms. It is therefore locally constant. Each fibre Hilbert polynomial has degree at most <span class="math" data-tex="\(n\)">\(n\)</span>; its values at these <span class="math" data-tex="\(n+1\)">\(n+1\)</span> integers determine it. Shrink simultaneously for these twists. The polynomial is constant there. For a projective closed subscheme use its pushforward to projective space, which preserves fibre cohomology. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These proofs separate cohomology and base change from flattening. In particular, they use flatness of the sheaf in advance; they do not apply the flat-family conclusion to an arbitrary sheaf on the original base.</p>
+<h2 id="5-a-graded-comparison-uniform-over-all-fibres">5 A graded comparison uniform over all fibres</h2>
+<p>Let <span class="math" data-tex="\(S=\operatorname{Spec}A\)">\(S=\operatorname{Spec}A\)</span> with <span class="math" data-tex="\(A\)">\(A\)</span> Noetherian, and put <span class="math" data-tex="\(R=A[x_0,\ldots,x_n]\)">\(R=A[x_0,\ldots,x_n]\)</span>. A coherent sheaf <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(\mathbb P^n_A\)">\(\mathbb P^n_A\)</span> has a presentation by finite sums of line bundles</p>
+<span class="math math-display" data-tex="\[
+L_1\longrightarrow L_0\longrightarrow F\longrightarrow0.
+\]">\[
+L_1\longrightarrow L_0\longrightarrow F\longrightarrow0.
+\]</span>
+<p>To obtain it, use Serre generation first on <span class="math" data-tex="\(F\)">\(F\)</span> and then on the coherent kernel of the first surjection. The morphism between the line bundles is a matrix of homogeneous polynomials. Let <span class="math" data-tex="\(M\)">\(M\)</span> be the cokernel of the corresponding map between finite graded free <span class="math" data-tex="\(R\)">\(R\)</span>-modules. Then <span class="math" data-tex="\(\widetilde M=F\)">\(\widetilde M=F\)</span>. Sheafification commutes with arbitrary base change and cokernels, so</p>
+<span class="math math-display" data-tex="\[
+\widetilde{M\otimes_A B}=F_B
+\]">\[
+\widetilde{M\otimes_A B}=F_B
+\]</span>
+<p>for every <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>. Each graded piece <span class="math" data-tex="\(M_m\)">\(M_m\)</span> is a finite, hence finitely presented, <span class="math" data-tex="\(A\)">\(A\)</span>-module.</p>
+<p><strong>Lemma 5.1.</strong> Only finitely many polynomials <span class="math" data-tex="\(P_{F_s}\)">\(P_{F_s}\)</span> occur for <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>. There is an integer <span class="math" data-tex="\(N\)">\(N\)</span> such that for every <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span> and <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span>,</p>
+<span class="math math-display" data-tex="\[
+M_m\otimes_A\kappa(s)\simeq H^0(\mathbb P^n_s,F_s(m)),
+\qquad H^i(F_s(m))=0\quad(i&gt;0).
+\]">\[
+M_m\otimes_A\kappa(s)\simeq H^0(\mathbb P^n_s,F_s(m)),
+\qquad H^i(F_s(m))=0\quad(i&gt;0).
+\]</span>
+<p>The isomorphism is the natural map from a graded piece to sections.</p>
+<p><strong>Proof.</strong> Generic flatness, applied on the reduced irreducible components of the base, gives a finite decomposition into reduced locally closed schemes over which the restricted sheaf is flat. Here is why the decomposition is finite: remove a dense open from every irreducible component on which generic flatness holds, and perform Noetherian induction on the remaining proper closed subset. No bound on the Krull dimension of <span class="math" data-tex="\(A\)">\(A\)</span> is needed. Each resulting stratum is Noetherian, so Lemma 4.2 and quasi-compactness give only finitely many polynomials there. This proves the first assertion. This preliminary decomposition is used only to establish numerical finiteness; its reduced scheme structures are not asserted to represent the flattening functor.</p>
+<p>On a fibre, write <span class="math" data-tex="\(K_s=\ker(L_{0,s}\to F_s)\)">\(K_s=\ker(L_{0,s}\to F_s)\)</span> and <span class="math" data-tex="\(K_{1,s}=\ker(L_{1,s}\to K_s)\)">\(K_{1,s}=\ker(L_{1,s}\to K_s)\)</span>. Pullback preserves the right exact presentation, so <span class="math" data-tex="\(L_{1,s}\to K_s\)">\(L_{1,s}\to K_s\)</span> is surjective. Their polynomials are</p>
+<span class="math math-display" data-tex="\[
+P_{K_s}=P_{L_{0,s}}-P_{F_s},
+\qquad P_{K_{1,s}}=P_{L_{1,s}}-P_{K_s}.
+\]">\[
+P_{K_s}=P_{L_{0,s}}-P_{F_s},
+\qquad P_{K_{1,s}}=P_{L_{1,s}}-P_{K_s}.
+\]</span>
+<p>Both range over finite sets. The uniform regularity theorem in <em>Regularity and bounded families</em> applies to quotients of the fixed split sheaves <span class="math" data-tex="\(L_0\)">\(L_0\)</span> and <span class="math" data-tex="\(L_1\)">\(L_1\)</span>, and thus uniformly bounds these kernels and <span class="math" data-tex="\(F_s\)">\(F_s\)</span>. Its bound is independent of the field. For completeness, split sheaves with several fixed twists cause no problem: after one fixed twist each admits a surjection from a trivial bundle by monomials. The number of monomials and the polynomial of its kernel depend only on those twists and <span class="math" data-tex="\(n\)">\(n\)</span>. The uniform kernel theorem therefore gives the same reduction over every field.</p>
+<p>Choose <span class="math" data-tex="\(N\)">\(N\)</span> larger than these bounds and than all shifts in the graded presentation. For <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span>, the two kernel sequences give an exact sequence</p>
+<span class="math math-display" data-tex="\[
+H^0(L_{1,s}(m))\longrightarrow H^0(L_{0,s}(m))
+\longrightarrow H^0(F_s(m))\longrightarrow0,
+\]">\[
+H^0(L_{1,s}(m))\longrightarrow H^0(L_{0,s}(m))
+\longrightarrow H^0(F_s(m))\longrightarrow0,
+\]</span>
+<p>because <span class="math" data-tex="\(H^1(K_s(m))=H^1(K_{1,s}(m))=0\)">\(H^1(K_s(m))=H^1(K_{1,s}(m))=0\)</span>. The first two terms are exactly the graded free modules in degree <span class="math" data-tex="\(m\)">\(m\)</span>, tensored with <span class="math" data-tex="\(\kappa(s)\)">\(\kappa(s)\)</span>. Right exactness identifies their cokernel with <span class="math" data-tex="\(M_m\otimes_A\kappa(s)\)">\(M_m\otimes_A\kappa(s)\)</span>. This proves the natural isomorphism. The uniform bound on <span class="math" data-tex="\(F_s\)">\(F_s\)</span> gives the higher vanishing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Notice that the lemma compares with fields. It has not asserted that direct images of the original nonflat sheaf commute with every base change. The graded module will let us avoid that assertion.</p>
+<p><strong>Lemma 5.2.</strong> For any <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, if <span class="math" data-tex="\(M_m\otimes_A B\)">\(M_m\otimes_A B\)</span> is flat over <span class="math" data-tex="\(B\)">\(B\)</span> for every <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span>, then <span class="math" data-tex="\(F_B\)">\(F_B\)</span> is flat over <span class="math" data-tex="\(B\)">\(B\)</span>. Conversely, if <span class="math" data-tex="\(F_B\)">\(F_B\)</span> is flat over <span class="math" data-tex="\(B\)">\(B\)</span>, then for every <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span> the natural map</p>
+<span class="math math-display" data-tex="\[
+M_m\otimes_A B\longrightarrow H^0(\mathbb P^n_B,F_B(m))
+\]">\[
+M_m\otimes_A B\longrightarrow H^0(\mathbb P^n_B,F_B(m))
+\]</span>
+<p>is an isomorphism, and these modules are finite locally free.</p>
+<p><strong>Proof.</strong> For the forward direction, on <span class="math" data-tex="\(D_+(x_i)\)">\(D_+(x_i)\)</span> the module of sections of <span class="math" data-tex="\(\widetilde{M\otimes_A B}\)">\(\widetilde{M\otimes_A B}\)</span> is</p>
+<span class="math math-display" data-tex="\[
+((M\otimes_A B)_{x_i})_0
+=\underset{q\geq N}{\operatorname{colim}},(M_q\otimes_A B),
+\]">\[
+((M\otimes_A B)_{x_i})_0
+=\underset{q\geq N}{\operatorname{colim}},(M_q\otimes_A B),
+\]</span>
+<p>with transition maps multiplication by <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. Starting the sequence at any larger index leaves the colimit unchanged. A filtered colimit of flat modules is flat. Thus the sheaf is flat over <span class="math" data-tex="\(B\)">\(B\)</span> on each standard affine open, proving the assertion.</p>
+<p>For the converse, every fibre over <span class="math" data-tex="\(\operatorname{Spec}B\)">\(\operatorname{Spec}B\)</span> is a field extension of a fibre in Lemma 5.1. Its higher cohomology at <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span> is zero. Lemma 4.1 gives a finite locally free module <span class="math" data-tex="\(G_m=H^0(F_B(m))\)">\(G_m=H^0(F_B(m))\)</span>, with formation compatible with field-valued base change. The natural map <span class="math" data-tex="\(M_m\otimes_A B\to G_m\)">\(M_m\otimes_A B\to G_m\)</span> is an isomorphism on every residue field, by Lemma 5.1 and field extension. It is therefore surjective by Nakayama, since its cokernel is finite. Locally <span class="math" data-tex="\(G_m\)">\(G_m\)</span> is free, so the surjection splits. Its kernel is then a direct summand of a finite module and is finite. Its fibre at every prime is zero, because the target is flat and the original fibre map is an isomorphism. Nakayama makes this kernel zero. This proves the isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument applies to arbitrary <span class="math" data-tex="\(B\)">\(B\)</span>, with no Noetherian assumption on it.</p>
+<h2 id="6-mumford-s-theorem-and-the-finite-sum-of-equations">6 Mumford's theorem and the finite sum of equations</h2>
+<p><strong>Theorem 6.1 (Mumford).</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be Noetherian and <span class="math" data-tex="\(F\)">\(F\)</span> coherent on <span class="math" data-tex="\(\mathbb P^n_S\)">\(\mathbb P^n_S\)</span>. There is a finite set <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> of numerical polynomials and, for each <span class="math" data-tex="\(P\in\mathcal P\)">\(P\in\mathcal P\)</span>, a locally closed subscheme <span class="math" data-tex="\(S_P\subset S\)">\(S_P\subset S\)</span> such that:</p>
+<ol>
+<li>its underlying subset consists exactly of points <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(P_{F_s}=P\)">\(P_{F_s}=P\)</span>;</li>
+<li>for every <span class="math" data-tex="\(g:T\to S\)">\(g:T\to S\)</span>, the sheaf <span class="math" data-tex="\(F_T\)">\(F_T\)</span> is flat over <span class="math" data-tex="\(T\)">\(T\)</span> if and only if <span class="math" data-tex="\(g\)">\(g\)</span> factors uniquely through <span class="math" data-tex="\(\coprod_{P\in\mathcal P}S_P\)">\(\coprod_{P\in\mathcal P}S_P\)</span>;</li>
+<li>a factorization through <span class="math" data-tex="\(S_P\)">\(S_P\)</span> means that the flat family has constant fibre polynomial <span class="math" data-tex="\(P\)">\(P\)</span>.</li>
+</ol>
+<p>The theorem also holds for a coherent sheaf on a projective closed subscheme of <span class="math" data-tex="\(\mathbb P^n_S\)">\(\mathbb P^n_S\)</span>.</p>
+<p><strong>Proof.</strong> Begin over an affine open of <span class="math" data-tex="\(S\)">\(S\)</span>, using <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> from Section 5. Apply Proposition 2.1 successively to</p>
+<span class="math math-display" data-tex="\[
+M_N,M_{N+1},\ldots,M_{N+n},
+\]">\[
+M_N,M_{N+1},\ldots,M_{N+n},
+\]</span>
+<p>restricting to each preceding rank stratum before the next step. This produces finitely many locally closed subschemes, with the universal property that these <span class="math" data-tex="\(n+1\)">\(n+1\)</span> modules become locally free of prescribed ranks. Lemma 5.1 says that at a point these ranks are</p>
+<span class="math math-display" data-tex="\[
+(P_{F_s}(N),P_{F_s}(N+1),\ldots,P_{F_s}(N+n)).
+\]">\[
+(P_{F_s}(N),P_{F_s}(N+1),\ldots,P_{F_s}(N+n)).
+\]</span>
+<p>A polynomial of degree at most <span class="math" data-tex="\(n\)">\(n\)</span> is determined by these values. Thus discard empty strata and label the others <span class="math" data-tex="\(W_P\)">\(W_P\)</span>, for <span class="math" data-tex="\(P\in\mathcal P\)">\(P\in\mathcal P\)</span>. Their underlying subsets already have the right fibre polynomials.</p>
+<p>For each <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span>, the fibres of <span class="math" data-tex="\(M_m|_{W_P}\)">\(M_m|_{W_P}\)</span> have constant dimension <span class="math" data-tex="\(P(m)\)">\(P(m)\)</span>. Therefore its <span class="math" data-tex="\(P(m)\)">\(P(m)\)</span>-th Fitting ideal is the unit ideal. Proposition 2.1 says that local freeness of rank <span class="math" data-tex="\(P(m)\)">\(P(m)\)</span> is now represented by a closed subscheme of <span class="math" data-tex="\(W_P\)">\(W_P\)</span>, defined by</p>
+<span class="math math-display" data-tex="\[
+J_m=\operatorname{Fitt}_{P(m)-1}(M_m|_{W_P}).
+\]">\[
+J_m=\operatorname{Fitt}_{P(m)-1}(M_m|_{W_P}).
+\]</span>
+<p>Every <span class="math" data-tex="\(J_m\)">\(J_m\)</span> is contained in the nilradical: its zero scheme has all points of <span class="math" data-tex="\(W_P\)">\(W_P\)</span>. Equivalently, its radical is the radical of the zero ideal. Let</p>
+<span class="math math-display" data-tex="\[
+J=\sum_{m\geq N}J_m\subset\mathcal O_{W_P}.
+\]">\[
+J=\sum_{m\geq N}J_m\subset\mathcal O_{W_P}.
+\]</span>
+<p>Since <span class="math" data-tex="\(W_P\)">\(W_P\)</span> is Noetherian, this sum stabilizes as a finite sum of coherent ideals. To see this globally, take a finite affine cover and use the ascending chain condition on each affine coordinate ring; the maximum of the finitely many stopping indices works on the whole cover. Thus <span class="math" data-tex="\(J\)">\(J\)</span> is coherent. Define <span class="math" data-tex="\(S_P=V(J)\subset W_P\)">\(S_P=V(J)\subset W_P\)</span>. Its underlying subset is still all of <span class="math" data-tex="\(|W_P|\)">\(|W_P|\)</span>, while its scheme structure enforces local freeness of every <span class="math" data-tex="\(M_m\)">\(M_m\)</span> for <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span>.</p>
+<p>By Lemma 5.2, the family over <span class="math" data-tex="\(S_P\)">\(S_P\)</span> is flat. Any map factoring through its disjoint union therefore gives a flat family. Conversely, suppose <span class="math" data-tex="\(F_T\)">\(F_T\)</span> is flat. Lemma 4.2 decomposes <span class="math" data-tex="\(T\)">\(T\)</span> into open and closed polynomial loci <span class="math" data-tex="\(T_P\)">\(T_P\)</span>. On <span class="math" data-tex="\(T_P\)">\(T_P\)</span>, Lemma 5.2 makes every <span class="math" data-tex="\(g^*M_m\)">\(g^*M_m\)</span>, <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span>, locally free of rank <span class="math" data-tex="\(P(m)\)">\(P(m)\)</span>. The first <span class="math" data-tex="\(n+1\)">\(n+1\)</span> ranks force the map through <span class="math" data-tex="\(W_P\)">\(W_P\)</span>. The remaining ranks annihilate every <span class="math" data-tex="\(J_m\)">\(J_m\)</span>, hence their sum <span class="math" data-tex="\(J\)">\(J\)</span>, so it factors through <span class="math" data-tex="\(S_P\)">\(S_P\)</span>. This holds locally on arbitrary affine test schemes and glues. The factorization is unique, since each stratum is an immersion and different strata have disjoint underlying subsets. Their cross fibre products are empty, so their disjoint union is a monomorphism.</p>
+<p>For a general Noetherian base, use a finite affine open cover. On overlaps, the constructed fixed-polynomial strata represent the same functor, so Yoneda gives unique identifications respecting their maps to the base. These identifications satisfy the cocycle condition and glue the strata. Locally closed immersions are local on the target, so the glued strata are locally closed subschemes of <span class="math" data-tex="\(S\)">\(S\)</span>. The union of the finitely many sets of polynomials from the cover is finite. This gives the global theorem.</p>
+<p>Finally, for a closed immersion <span class="math" data-tex="\(i:X\hookrightarrow\mathbb P^n_S\)">\(i:X\hookrightarrow\mathbb P^n_S\)</span>, use <span class="math" data-tex="\(i_*F\)">\(i_*F\)</span>. Closed pushforward commutes with base change, preserves cohomology and fibre Hilbert polynomials, and is flat over the base exactly when <span class="math" data-tex="\(F\)">\(F\)</span> is. The theorem for <span class="math" data-tex="\(i_*F\)">\(i_*F\)</span> is therefore the desired theorem on <span class="math" data-tex="\(X\)">\(X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof does not say that the first <span class="math" data-tex="\(n+1\)">\(n+1\)</span> twists alone suffice for flatness. They label the polynomial strata. The higher twists can impose additional nilpotent equations. Noetherianity shows that finitely many of these additional equations suffice, without specifying their number in advance.</p>
+<p><strong>Corollary 6.2.</strong> Order the finite set <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> by eventual values: <span class="math" data-tex="\(P&lt;Q\)">\(P&lt;Q\)</span> when <span class="math" data-tex="\(P(m)&lt;Q(m)\)">\(P(m)&lt;Q(m)\)</span> for all sufficiently large <span class="math" data-tex="\(m\)">\(m\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\overline{|S_P|}\subset\bigcup_{Q\geq P}|S_Q|.
+\]">\[
+\overline{|S_P|}\subset\bigcup_{Q\geq P}|S_Q|.
+\]</span>
+<p><strong>Proof.</strong> Choose one <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span> large enough that evaluation at <span class="math" data-tex="\(m\)">\(m\)</span> realizes this order on the finite set. The dimension of the fibre of the finite module <span class="math" data-tex="\(M_m\)">\(M_m\)</span> is upper semicontinuous: a matrix presentation makes the condition that it be at least an integer a closed determinantal condition. It equals <span class="math" data-tex="\(P(m)\)">\(P(m)\)</span> on <span class="math" data-tex="\(S_P\)">\(S_P\)</span>, by Lemma 5.1. At a point in its closure the dimension is therefore at least <span class="math" data-tex="\(P(m)\)">\(P(m)\)</span>. The choice of <span class="math" data-tex="\(m\)">\(m\)</span> identifies its polynomial as some <span class="math" data-tex="\(Q\geq P\)">\(Q\geq P\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-examples-fibre-changes-and-actual-failures-of-flatness">7 Examples: fibre changes and actual failures of flatness</h2>
+<h3 id="a-coordinate-cross-is-flat-under-the-sum-map">A coordinate cross is flat under the sum map</h3>
+<p>Take <span class="math" data-tex="\(X=\operatorname{Spec}k[x,y]/(xy)\)">\(X=\operatorname{Spec}k[x,y]/(xy)\)</span>, with <span class="math" data-tex="\(t=x+y\)">\(t=x+y\)</span> giving a map to <span class="math" data-tex="\(\mathbb A^1_k\)">\(\mathbb A^1_k\)</span>. Eliminate <span class="math" data-tex="\(y=t-x\)">\(y=t-x\)</span>:</p>
+<span class="math math-display" data-tex="\[
+k[x,y]/(xy)=k[t,x]/(x^2-tx).
+\]">\[
+k[x,y]/(xy)=k[t,x]/(x^2-tx).
+\]</span>
+<p>The polynomial in <span class="math" data-tex="\(x\)">\(x\)</span> is monic, so this is a free <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span>-module with basis <span class="math" data-tex="\(1,x\)">\(1,x\)</span>. The morphism is finite flat of degree two, and its flattening stratification has one stratum, all of <span class="math" data-tex="\(\mathbb A^1\)">\(\mathbb A^1\)</span>. For <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span> the fibre is two distinct points; at zero it is a double point. This change in reducedness does not change length and does not obstruct flatness. The calculation works in every characteristic.</p>
+<p>Likewise, in <span class="math" data-tex="\(\mathbb P^1\times\mathbb A^1\)">\(\mathbb P^1\times\mathbb A^1\)</span> with coordinates <span class="math" data-tex="\([X:Y]\)">\([X:Y]\)</span>, the equation <span class="math" data-tex="\(X(X-tY)=0\)">\(X(X-tY)=0\)</span> gives a family entirely contained in <span class="math" data-tex="\(Y\ne0\)">\(Y\ne0\)</span>. Its affine ring is the same free rank-two ring. Its fibre Hilbert polynomial is the constant 2, including at zero.</p>
+<h3 id="an-additional-special-point-changes-the-polynomial">An additional special point changes the polynomial</h3>
+<p>In <span class="math" data-tex="\(\mathbb P^2\)">\(\mathbb P^2\)</span>, let <span class="math" data-tex="\(L\)">\(L\)</span> be a line and let <span class="math" data-tex="\(p\)">\(p\)</span> lie outside it. Over <span class="math" data-tex="\(S=\mathbb A^1=\operatorname{Spec}k[t]\)">\(S=\mathbb A^1=\operatorname{Spec}k[t]\)</span>, form the disjoint closed union</p>
+<span class="math math-display" data-tex="\[
+Z=(L\times S)\amalg(\{p\}\times\{0\})\subset\mathbb P^2\times S.
+\]">\[
+Z=(L\times S)\amalg(\{p\}\times\{0\})\subset\mathbb P^2\times S.
+\]</span>
+<p>The two components have disjoint supports, so</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_Z=\mathcal O_{L\times S}\oplus\mathcal O_{p\times\{0\}}.
+\]">\[
+\mathcal O_Z=\mathcal O_{L\times S}\oplus\mathcal O_{p\times\{0\}}.
+\]</span>
+<p>Its fibre polynomial is <span class="math" data-tex="\(m+1\)">\(m+1\)</span> away from zero and <span class="math" data-tex="\(m+2\)">\(m+2\)</span> at zero. The universal flattening is</p>
+<span class="math math-display" data-tex="\[
+D(t)\amalg V(t)\longrightarrow S,
+\]">\[
+D(t)\amalg V(t)\longrightarrow S,
+\]</span>
+<p>with the reduced scheme structure <span class="math" data-tex="\((t)\)">\((t)\)</span> on the closed stratum. To check the scheme structure, after base change to <span class="math" data-tex="\(B\)">\(B\)</span> the second summand is <span class="math" data-tex="\(B/tB\)">\(B/tB\)</span>, supported on the constant point <span class="math" data-tex="\(p\)">\(p\)</span>. It is flat precisely when it is locally free. Its rank is either zero, which means <span class="math" data-tex="\(t\)">\(t\)</span> is a unit locally, or one, which means <span class="math" data-tex="\(t=0\)">\(t=0\)</span> locally. Thus a test scheme splits into the two corresponding open and closed pieces. A nonzero nilpotent value of <span class="math" data-tex="\(t\)">\(t\)</span> fails this test.</p>
+<h3 id="a-distinction-about-the-flat-locus">A distinction about the flat locus</h3>
+<p>For a finitely presented module on a Noetherian base itself, the locus where its stalk is flat is open. Indeed, a flat finitely presented module over a local ring is free. A basis at that stalk extends to a map from a finite free module on a neighbourhood; its kernel and cokernel vanish after shrinking, by finite presentation. Thus it remains free on a neighbourhood.</p>
+<p>For a sheaf on a nonproper <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span>, the set of <span class="math" data-tex="\(s\)">\(s\)</span> where it is flat at every point of <span class="math" data-tex="\(X_s\)">\(X_s\)</span> need not be open. Let <span class="math" data-tex="\(S=\operatorname{Spec}k[x,y]\)">\(S=\operatorname{Spec}k[x,y]\)</span>, let <span class="math" data-tex="\(X=D(x)\subset S\)">\(X=D(x)\subset S\)</span>, and put <span class="math" data-tex="\(F=\mathcal O_X/(y)\)">\(F=\mathcal O_X/(y)\)</span>. This sheaf is finitely presented on <span class="math" data-tex="\(X\)">\(X\)</span>. It fails to be flat at every point with <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span> and <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, because multiplication by the nonzero element <span class="math" data-tex="\(y\)">\(y\)</span> of the base domain becomes zero on a nonzero quotient. Elsewhere on <span class="math" data-tex="\(X\)">\(X\)</span> it is zero and flat. Fibres above <span class="math" data-tex="\(V(x)\)">\(V(x)\)</span> are empty. The set of base points where it is flat throughout the fibre is therefore</p>
+<span class="math math-display" data-tex="\[
+D(y)\cup V(x).
+\]">\[
+D(y)\cup V(x).
+\]</span>
+<p>It contains the origin but no neighbourhood of it, so it is not open. Properness would make the image of a closed nonflat locus closed; its absence is precisely relevant in this example.</p>
+<h2 id="8-beyond-projective-stratifications">8 Beyond projective stratifications</h2>
+<p>There is a broader theorem, but its conclusion should be distinguished from a finite decomposition into locally closed subschemes.</p>
+<p>For a finite type <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> and a finite type sheaf <span class="math" data-tex="\(F\)">\(F\)</span>, <strong>purity relative to <span class="math" data-tex="\(S\)">\(S\)</span></strong> has the following formulation. For each <span class="math" data-tex="\(s\)">\(s\)</span>, pass to the henselization <span class="math" data-tex="\(S^h=\operatorname{Spec}\mathcal O_{S,s}^h\)">\(S^h=\operatorname{Spec}\mathcal O_{S,s}^h\)</span>. Every associated point of the restriction of <span class="math" data-tex="\(F\)">\(F\)</span> to any fibre over <span class="math" data-tex="\(S^h\)">\(S^h\)</span> must have a specialization in its closed fibre <span class="math" data-tex="\(X_s\)">\(X_s\)</span>. Equivalently, associated points cannot escape the closed fibre in an elementary étale neighbourhood. This is [Stacks, Tag 05J4]; it is relative purity, distinct from the usual assertion that a single sheaf has all associated points of one fixed dimension.</p>
+<p><strong>Theorem 8.1 (Raynaud–Gruson, stated).</strong> If <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> is of finite presentation and <span class="math" data-tex="\(F\)">\(F\)</span> is finitely presented and pure relative to <span class="math" data-tex="\(S\)">\(S\)</span>, then <span class="math" data-tex="\(\operatorname{Flat}_F\)">\(\operatorname{Flat}_F\)</span> is represented by a monomorphism of finite presentation <span class="math" data-tex="\(S&#x27;\to S\)">\(S&#x27;\to S\)</span>. In particular this conclusion holds when <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> is proper and of finite presentation. The same assertions for flattening <span class="math" data-tex="\(X\)">\(X\)</span> itself use <span class="math" data-tex="\(F=\mathcal O_X\)">\(F=\mathcal O_X\)</span>.</p>
+<p>The precise locators are [Stacks, Tags 05UG and 05UH], with purity of sheaves with proper support in Tag 05K3. We do not prove the general theorem here. Its monomorphism conclusion alone does not assert that it is the disjoint union of a finite collection of locally closed immersions. Theorem 6.1 proves that stronger description in the projective Noetherian situation.</p>
+<p>There is also a local theorem that isolates flatness near a chosen point. Its condition concerns specified points after base change, rather than every point of the base-changed scheme.</p>
+<p><strong>Theorem 8.2 (henselian local flattening, stated).</strong> Let <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> be a local homomorphism of local rings, with <span class="math" data-tex="\(A\)">\(A\)</span> henselian and <span class="math" data-tex="\(B\)">\(B\)</span> essentially of finite type over <span class="math" data-tex="\(A\)">\(A\)</span>. Let <span class="math" data-tex="\(M\)">\(M\)</span> be a finite <span class="math" data-tex="\(B\)">\(B\)</span>-module. There is an ideal <span class="math" data-tex="\(I\subset A\)">\(I\subset A\)</span> such that, for every local homomorphism <span class="math" data-tex="\(A\to A&#x27;\)">\(A\to A&#x27;\)</span> of local rings, setting <span class="math" data-tex="\(B&#x27;=B\otimes_A A&#x27;\)">\(B&#x27;=B\otimes_A A&#x27;\)</span> and <span class="math" data-tex="\(M&#x27;=M\otimes_A A&#x27;\)">\(M&#x27;=M\otimes_A A&#x27;\)</span>, one has</p>
+<span class="math math-display" data-tex="\[
+I A&#x27;=0
+\quad\Longleftrightarrow\quad
+M&#x27;_{\mathfrak q}\text{ is flat over }A&#x27;
+\text{ for every }\mathfrak q\in
+V(\mathfrak m_{A&#x27;}B&#x27;+\mathfrak m_B B&#x27;).
+\]">\[
+I A&#x27;=0
+\quad\Longleftrightarrow\quad
+M&#x27;_{\mathfrak q}\text{ is flat over }A&#x27;
+\text{ for every }\mathfrak q\in
+V(\mathfrak m_{A&#x27;}B&#x27;+\mathfrak m_B B&#x27;).
+\]</span>
+<p>Equivalently, <span class="math" data-tex="\(A/I\)">\(A/I\)</span> corepresents this flatness functor on local <span class="math" data-tex="\(A\)">\(A\)</span>-algebras with local structure maps. If <span class="math" data-tex="\(B\)">\(B\)</span> is essentially of finite presentation over <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> is finitely presented over <span class="math" data-tex="\(B\)">\(B\)</span>, then <span class="math" data-tex="\(I\)">\(I\)</span> is finitely generated. This is [Stacks, Tag 05PG]. The two finiteness assertions have different hypotheses; neither the closed-fibre point condition nor the henselian assumption may be dropped from this statement.</p>
+<p>Without the finiteness and purity hypotheses, a universal flattening can fail to exist. Here is the mechanism of [Stacks, Tag 0FJ1], with a proof for schemes. Let <span class="math" data-tex="\(A=k[x,y]\)">\(A=k[x,y]\)</span>, <span class="math" data-tex="\(X=S=\operatorname{Spec}A\)">\(X=S=\operatorname{Spec}A\)</span>, and let the quasi-coherent sheaf correspond to</p>
+<span class="math math-display" data-tex="\[
+M=A[x^{-1}]/(y).
+\]">\[
+M=A[x^{-1}]/(y).
+\]</span>
+<p>It is not finitely presented as an <span class="math" data-tex="\(A\)">\(A\)</span>-module. Put <span class="math" data-tex="\(A_j=A/(x,y)^j\)">\(A_j=A/(x,y)^j\)</span>. Since <span class="math" data-tex="\(x\)">\(x\)</span> is nilpotent in <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, localizing it makes the ring zero; hence <span class="math" data-tex="\(M\otimes_A A_j=0\)">\(M\otimes_A A_j=0\)</span>, which is flat. But for <span class="math" data-tex="\(\widehat A=k[[x,y]]\)">\(\widehat A=k[[x,y]]\)</span>, the module</p>
+<span class="math math-display" data-tex="\[
+M\otimes_A\widehat A=\widehat A[x^{-1}]/(y)
+\]">\[
+M\otimes_A\widehat A=\widehat A[x^{-1}]/(y)
+\]</span>
+<p>is nonzero and is killed by <span class="math" data-tex="\(y\)">\(y\)</span>. It is not flat: tensoring the injection <span class="math" data-tex="\(\widehat A\xrightarrow{y}\widehat A\)">\(\widehat A\xrightarrow{y}\widehat A\)</span> would give a zero map on this nonzero module.</p>
+<p>If a scheme represented the flattening functor, the compatible maps <span class="math" data-tex="\(\operatorname{Spec}A_j\to S&#x27;\)">\(\operatorname{Spec}A_j\to S&#x27;\)</span> would all take their sole point to one point of <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>. They lie in a common affine neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of that point. Compatible homomorphisms <span class="math" data-tex="\(\Gamma(U,\mathcal O_U)\to A_j\)">\(\Gamma(U,\mathcal O_U)\to A_j\)</span> give a homomorphism to <span class="math" data-tex="\(\lim A_j=\widehat A\)">\(\lim A_j=\widehat A\)</span>, hence an <span class="math" data-tex="\(S\)">\(S\)</span>-map <span class="math" data-tex="\(\operatorname{Spec}\widehat A\to S&#x27;\)">\(\operatorname{Spec}\widehat A\to S&#x27;\)</span>. That would make the last module flat, a contradiction. This rules out a representing scheme. The stronger exclusion of algebraic spaces is part of the cited example, using the corresponding formal lifting property.</p>
+<h2 id="9-exercises">9 Exercises</h2>
+<ol>
+<li>
+<p><strong>Basic.</strong> Over the dual numbers <span class="math" data-tex="\(A=k[\epsilon]/(\epsilon^2)\)">\(A=k[\epsilon]/(\epsilon^2)\)</span>, find the universal flattening of <span class="math" data-tex="\(A\oplus A/(\epsilon)\)">\(A\oplus A/(\epsilon)\)</span>. Explain why all residue-field information misses the answer.</p>
+</li>
+<li>
+<p><strong>Intermediate.</strong> For a map <span class="math" data-tex="\(A^p\to A^q\)">\(A^p\to A^q\)</span>, prove that its cokernel becomes locally free of rank <span class="math" data-tex="\(r\)">\(r\)</span> exactly on the Fitting stratum in Proposition 2.1, over arbitrary <span class="math" data-tex="\(A\)">\(A\)</span>-algebras. Include ranks zero and <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+</li>
+<li>
+<p><strong>Intermediate.</strong> Compute the flattening stratification of <span class="math" data-tex="\(X(X-tY)=0\)">\(X(X-tY)=0\)</span> in <span class="math" data-tex="\(\mathbb P^1\times\mathbb A^1\)">\(\mathbb P^1\times\mathbb A^1\)</span>. Contrast it with the line plus special point of Section 7, including maps from nonreduced schemes.</p>
+</li>
+<li>
+<p><strong>Intermediate.</strong> Prove that the flat locus of a finitely presented module on a Noetherian base is open. Then verify that <span class="math" data-tex="\(D(y)\cup V(x)\)">\(D(y)\cup V(x)\)</span> in Section 7 is the whole-fibre flat locus of the specified sheaf and is not open.</p>
+</li>
+<li>
+<p><strong>Advanced.</strong> Reconstruct Theorem 6.1 from its graded presentation. Identify separately the uses of generic flatness, uniform regularity, the first <span class="math" data-tex="\(n+1\)">\(n+1\)</span> rank conditions, and Noetherianity. Prove the universal property for arbitrary test schemes, not only for residue fields.</p>
+</li>
+<li>
+<p><strong>Advanced.</strong> Let <span class="math" data-tex="\(T\)">\(T\)</span> be any scheme and let <span class="math" data-tex="\(G\)">\(G\)</span> be a flat finitely presented sheaf on <span class="math" data-tex="\(\mathbb P^n_T\)">\(\mathbb P^n_T\)</span>. Deduce local constancy of its Hilbert polynomial from the cohomology-complex prerequisite. Explain why a polynomial jump in the line plus point family proves nonflatness, whereas a jump in the number of distinct geometric points in the degree-two family does not.</p>
+</li>
+</ol>
+<h2 id="10-solutions">10 Solutions</h2>
+<p><strong>1.</strong> Lift the residue-field basis represented by <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. The only relation module is generated by <span class="math" data-tex="\((0,\epsilon)\)">\((0,\epsilon)\)</span>. The coefficient ideal of Theorem 3.1 is <span class="math" data-tex="\((\epsilon)\)">\((\epsilon)\)</span>, so the universal flattening is <span class="math" data-tex="\(\operatorname{Spec}k\)">\(\operatorname{Spec}k\)</span>. Directly, after base change to <span class="math" data-tex="\(B\)">\(B\)</span>, the second summand is <span class="math" data-tex="\(B/\epsilon B\)">\(B/\epsilon B\)</span>. If the direct sum is flat, its direct summand is flat. Reduction modulo the nilpotent ideal <span class="math" data-tex="\(\epsilon B\)">\(\epsilon B\)</span> has rank one, so the nilpotent relation argument forces <span class="math" data-tex="\(\epsilon B=0\)">\(\epsilon B=0\)</span>. Conversely, that condition makes the entire module <span class="math" data-tex="\(B^2\)">\(B^2\)</span>. Every residue field already kills <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, so it sees rank two at the sole point, with no information about the nonzero infinitesimal relation.</p>
+<p><strong>2.</strong> On an invertible <span class="math" data-tex="\((q-r)\)">\((q-r)\)</span>-minor, elementary operations split off an identity block. The remaining matrix has <span class="math" data-tex="\(r\)">\(r\)</span> rows. Its entries vanish precisely when all <span class="math" data-tex="\((q-r+1)\)">\((q-r+1)\)</span>-minors vanish, and in that case the remaining cokernel is free of rank <span class="math" data-tex="\(r\)">\(r\)</span>. Conversely, a free cokernel makes the surjection from those <span class="math" data-tex="\(r\)">\(r\)</span> generators an isomorphism, so all remaining relations vanish. The conditions are unchanged by arbitrary tensor product, since determinants are polynomials in the entries. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, an invertible <span class="math" data-tex="\(q\)">\(q\)</span>-minor makes the matrix surjective and its cokernel zero; there is no further equation. For <span class="math" data-tex="\(r=q\)">\(r=q\)</span>, the invertible minor is the size-zero minor 1 and the condition is that every entry of the original matrix vanish. Impossible ranks give the empty stratum. These observations also handle a presentation with redundant relations.</p>
+<p><strong>3.</strong> The family lies in <span class="math" data-tex="\(Y\ne0\)">\(Y\ne0\)</span> and has ring <span class="math" data-tex="\(k[t,x]/(x^2-tx)\)">\(k[t,x]/(x^2-tx)\)</span>. Division by a monic polynomial gives the basis <span class="math" data-tex="\(1,x\)">\(1,x\)</span> over every base algebra, so all pullbacks are free of rank two. Its universal flattening is the identity of <span class="math" data-tex="\(\mathbb A^1\)">\(\mathbb A^1\)</span>. This includes sending <span class="math" data-tex="\(t\)">\(t\)</span> to a nonzero nilpotent. In the second family, after pullback the point summand is <span class="math" data-tex="\(B/tB\)">\(B/tB\)</span>. Where it has rank zero, <span class="math" data-tex="\(t\)">\(t\)</span> is invertible; where it has rank one, the surjection <span class="math" data-tex="\(B\to B/tB\)">\(B\to B/tB\)</span> between free rank-one modules is an isomorphism, so <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Thus the map must factor through <span class="math" data-tex="\(D(t)\amalg V(t)\)">\(D(t)\amalg V(t)\)</span>. In a local algebra where <span class="math" data-tex="\(t\)">\(t\)</span> is a nonzero nilpotent it does not factor, and the second family is not flat.</p>
+<p><strong>4.</strong> At a flat stalk, finite presentation gives freeness. Choose local sections mapping to a basis and form a map from a finite free sheaf. Its cokernel vanishes after shrinking by Nakayama. Its kernel is finite over the Noetherian base and vanishes at that stalk, so it too vanishes after shrinking. This proves openness. For the specified open immersion, the sheaf vanishes where <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, fails flatness where <span class="math" data-tex="\(x\ne0,y=0\)">\(x\ne0,y=0\)</span>, and has no source fibre where <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. This gives exactly <span class="math" data-tex="\(D(y)\cup V(x)\)">\(D(y)\cup V(x)\)</span>. Any neighbourhood of the origin intersects the punctured <span class="math" data-tex="\(x\)">\(x\)</span>-axis: its localizations on that irreducible line contain a nonempty open neighbourhood of the origin and hence its generic point. Those points are excluded from the locus, so the locus is not open.</p>
+<p><strong>5.</strong> A finite graded presentation gives <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(\widetilde M=F\)">\(\widetilde M=F\)</span> and finite graded pieces. Generic flatness produces finitely many reduced parameter strata; flat-family Euler characteristics give finitely many fibre polynomials. Uniform regularity of the two successive fibre kernels then yields one <span class="math" data-tex="\(N\)">\(N\)</span> for which <span class="math" data-tex="\(M_m\otimes\kappa(s)=H^0(F_s(m))\)">\(M_m\otimes\kappa(s)=H^0(F_s(m))\)</span> and higher cohomology vanishes for every <span class="math" data-tex="\(m\geq N\)">\(m\geq N\)</span>. The first <span class="math" data-tex="\(n+1\)">\(n+1\)</span> Fitting rank conditions create <span class="math" data-tex="\(W_P\)">\(W_P\)</span> and identify its polynomial. On <span class="math" data-tex="\(W_P\)">\(W_P\)</span>, each further rank condition is closed, with ideal <span class="math" data-tex="\(J_m\)">\(J_m\)</span>; their sum stabilizes by Noetherianity and defines <span class="math" data-tex="\(S_P\)">\(S_P\)</span>. All graded pieces are flat there, so standard affine localizations are colimits of flat modules and the sheaf is flat. For a flat pullback to any test algebra, the proper flat cohomology prerequisite gives locally free sections compatible with residue fields. The natural map from each pulled-back <span class="math" data-tex="\(M_m\)">\(M_m\)</span> is an isomorphism by the split-surjection and Nakayama argument of Lemma 5.2. All Fitting equations therefore vanish. Polynomial loci on the test scheme are open and closed, so these unique local factorizations glue. This proves the universal property, including nilpotent tests.</p>
+<p><strong>6.</strong> For each of the twists <span class="math" data-tex="\(0,\ldots,n\)">\(0,\ldots,n\)</span>, choose near a given parameter point a finite free complex computing fibre cohomology. Its alternating sum of term ranks is constant after shrinking. Those sums equal the <span class="math" data-tex="\(n+1\)">\(n+1\)</span> values of the fibre Hilbert polynomial and determine it, so the polynomial is locally constant. The line plus special point has polynomials <span class="math" data-tex="\(m+1\)">\(m+1\)</span> and <span class="math" data-tex="\(m+2\)">\(m+2\)</span> arbitrarily close to zero, hence cannot be flat there. The degree-two family has polynomial 2 throughout. Its direct free-module calculation establishes flatness even though its special fibre is nonreduced. The Hilbert polynomial counts length, not the number of distinct points.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use generic flatness [Stacks, Tag 051R], Serre generation and vanishing for ample twists [Stacks, Tag 01XO and Lemmas in that section], and the projective sheafification correspondence. We also use the exact proper flat cohomology theorem in Tag 0A1H: for a morphism of finite presentation, a bounded complex of finitely presented sheaves flat over the base with proper support, tensored with a perfect sheaf complex, has perfect derived pushforward compatible with arbitrary base change. Here the sheaf complex is one sheaf and the perfect factor is <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>; Lemmas 4.1 and 4.2 prove the consequences used in the construction. The regularity input is proved in <em>Regularity and bounded families</em>.</p>
+<p>The general Raynaud–Gruson representability theorem is stated with its hypotheses in Theorem 8.1, using Tags 05UG–05UH and the purity definition in Tag 05J4. Theorem 8.2 is the henselian local theorem [Stacks, Tag 05PG]; its proof is outside this lesson. We prove the nonrepresentability example for schemes; its algebraic-space extension is imported from Tag 0FJ1. These inputs do not replace the Artinian, determinantal, or projective flattening proofs, which are given here in full.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Stacks] The Stacks project, <em>More on Flatness</em>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/flat.html#section-flattening-functors">flattening functors and stratifications</a>, Tags 05MG, 05P6–05PB; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/flat.html#section-flattening-final">universal flattening</a>, Tags 05UG–05UH, retained in AI Integrated Stacks Project Stacks. AI Integrated Stacks Project includes AI-proposed corrections and AI-written additions not reviewed by the Stacks project maintainers.</li>
+<li>[Stacks] <em>Divisors</em>, <a href="https://stacks.math.columbia.edu/tag/05P9">Fitting stratification</a>, Tag 05P9; <em>Derived Categories of Schemes</em>, <a href="https://stacks.math.columbia.edu/tag/0A1H">proper flat cohomology and arbitrary base change</a>, Tag 0A1H.</li>
+<li>[Nitsure] N. Nitsure, <a href="https://arxiv.org/abs/math/0504590">Construction of Hilbert and Quot Schemes</a>, 2005, Sections 3–4, especially Lemmas 3.1–3.2 and Theorem 4.3.</li>
+<li>[Raynaud–Gruson] M. Raynaud and L. Gruson, <em>Critères de platitude et de projectivité. Techniques de « platification » d'un module</em>, Inventiones Mathematicae 13 (1971), 1–89. The relative-purity formulation used here is the one in the cited Stacks tags.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="regularity-and-bounded-families.html">← Castelnuovo–Mumford regularity and boundedness</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="hilbert-and-quot-schemes.html">Hilbert and Quot schemes →</a></span></nav>
+<p class="small source-link"><a href="src/flattening-stratifications.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-HP">Repository</a></nav>
+</footer>
+</body>
+</html>

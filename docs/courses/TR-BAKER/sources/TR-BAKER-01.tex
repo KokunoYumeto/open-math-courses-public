@@ -1,0 +1,758 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Linear forms in logarithms: the problem{,} the trivial bounds{,} and effectivity},
+  pdfauthor={GPT-6.1 Sol (OpenAI), Ultra},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Linear forms in logarithms: the problem, the trivial bounds, and
+effectivity}
+\author{GPT-6.1 Sol (OpenAI), Ultra}
+\date{October 2026}
+
+\providecommand{\Eta}{\mathrm{H}}
+\begin{document}
+\maketitle
+
+\emph{Draft. Public domain (CC0).}
+
+Two integers can be very large and still differ by one. To study a
+difference such as \(2^x-3^y\), divide by one of the powers. The
+question becomes how close \(2^x3^{-y}\) can be to \(1\). Taking
+logarithms changes multiplication into addition, but introduces a second
+question: how much cancellation can occur in \(x\log 2-y\log 3\)?
+
+This lesson develops the elementary estimates that make the question
+precise. It proves the passage between the multiplicative and additive
+forms, a height bound, a box-principle construction of small forms, and
+an explicit finiteness consequence of a polynomial lower bound. Its
+height prerequisite is the written lesson
+\href{../../TR-TRANS/TR-TRANS-02.html}{\emph{Heights of algebraic
+numbers}} in \emph{Transcendental numbers}: Theorem 2.4 supplies the
+normalization, Proposition 2.5 the product and sum inequalities, and
+Theorem 2.8 the one-place Liouville inequality. The freely accessible
+treatments {[}Waldschmidt 1992{]}, {[}Waldschmidt 2000{]} and {[}Evertse
+2019{]} provide the comparisons discussed below. The logarithm methods
+of Baker and later authors are credited in the references.
+
+\subsection{1. Start with a Diophantine
+equation}\label{start-with-a-diophantine-equation}
+
+If \(2^x-3^y=k\), then
+
+\[
+2^x3^{-y}-1=k3^{-y}.
+\]
+
+For fixed nonzero \(k\), the right side is exponentially small as \(y\)
+grows. A lower bound that decreases only as a power of \(\max(x,y)\)
+must eventually contradict this identity. This is the central mechanism
+of effective applications.
+
+Let \(\alpha_1,\ldots,\alpha_n\) be nonzero algebraic numbers, let
+\(b_1,\ldots,b_n\) be integers, and choose logarithms \(\ell_j\) with
+\(e^{\ell_j}=\alpha_j\). Put
+
+\[
+P=\prod_{j=1}^n\alpha_j^{b_j},\qquad
+\Delta=P-1,\qquad
+\Lambda=\sum_{j=1}^n b_j\ell_j,\qquad
+B=\max\{3,|b_1|,\ldots,|b_n|\}.
+\]
+
+Thus \(e^\Lambda=P\). In particular,
+
+\[
+\Delta=0\quad\Longleftrightarrow\quad\Lambda\in2\pi i\mathbb Z.
+\]
+
+If the \(\alpha_j\) are positive real numbers and the \(\ell_j\) are
+real logarithms, this reduces to
+\(\Delta=0\Longleftrightarrow\Lambda=0\). A family is
+\emph{multiplicatively independent} if \(P=1\) forces every \(b_j=0\).
+For positive real numbers this is exactly the rational linear
+independence of their real logarithms.
+
+For \(2\) and \(3\), independence follows from unique factorization:
+\(2^u3^v=1\) implies \(u=v=0\). More generally, independence of positive
+rationals can be checked by linear algebra on the vectors of their prime
+valuations. For example, \(2,3,6\) are dependent even though no two of
+them are powers of each other.
+
+An \emph{inhomogeneous} logarithmic form has the shape
+
+\[
+\beta_0+\beta_1\ell_1+\cdots+\beta_n\ell_n,
+\qquad \beta_j\in\overline{\mathbb Q}.
+\]
+
+It need not exponentiate to an algebraic number. Its exponential is
+\(e^{\beta_0}\prod_j\alpha_j^{\beta_j}\), where each algebraic power
+means \(e^{\beta_j\ell_j}\) for the chosen logarithm. For instance,
+\(\pi+\log 2=-i\log(-1)+\log2\) is a homogeneous algebraic-coefficient
+logarithmic form if \(\log(-1)=i\pi\).
+
+\subsection{2. Which logarithm is
+small?}\label{which-logarithm-is-small}
+
+Our principal logarithm has imaginary part in \((-\pi,\pi]\). We only
+use its holomorphic restriction near \(1\), so its convention on the
+negative real axis creates no ambiguity in the following estimates.
+
+\textbf{Lemma 1.1 (local comparison).} If \(|w|<1/2\), then
+
+\[
+|\operatorname{Log}(1+w)|\le2|w|.
+\]
+
+If \(|z|\le1/2\), then
+
+\[
+|e^z-1|\le2|z|.
+\]
+
+\textbf{Proof.} The line segment from \(1\) to \(1+w\) stays in the
+right half-plane. Hence
+
+\[
+\operatorname{Log}(1+w)=\int_0^1\frac{w}{1+tw}\,dt.
+\]
+
+The integrand has absolute value at most \(|w|/(1-|w|)\le2|w|\).
+Likewise
+
+\[
+e^z-1=z\int_0^1 e^{tz}\,dt,
+\]
+
+and \(e^{|z|}\le e^{1/2}<2\). This proves both estimates. \(\square\)
+
+\textbf{Lemma 1.2 (branch correction).} Take principal logarithms of the
+\(\alpha_j\). If \(|\Delta|<1/2\), there is an even integer \(b_0\) such
+that
+
+\[
+|b_0|\le\sum_j|b_j|+1\le nB+1,
+\qquad
+\left|b_0\log(-1)+\sum_jb_j\log\alpha_j\right|\le2|\Delta|.
+\]
+
+\textbf{Proof.} Set \(u=\operatorname{Log}(1+\Delta)\). Since
+\(e^u=e^\Lambda\), the elementary description of the kernel of the
+exponential gives \(\Lambda-u=2\pi i k\) for an integer \(k\). Choose
+\(b_0=-2k\). Then the corrected form equals \(u\), so Lemma 1.1 gives
+its bound. Moreover,
+
+\[
+\pi|b_0|=|\operatorname{Im}(\Lambda-u)|
+\le\pi\sum_j|b_j|+|\operatorname{Im}u|.
+\]
+
+The number \(1+\Delta\) has positive real part, so
+\(|\operatorname{Im}u|<\pi/2\). The claimed integer bound follows.
+\(\square\)
+
+The correction cannot be omitted. If \(\alpha_1=\alpha_2=-1\) and
+\(b_1=b_2=1\), then \(P=1\) but \(\Lambda=2\pi i\). There are examples
+with a small nonzero \(\Delta\) too: take \(\alpha_1=-1\),
+\(\alpha_2=-(1+1/N)\), and both coefficients equal to \(1\). Then
+\(\Delta=1/N\), while \(\Lambda=\log(1+1/N)+2\pi i\).
+
+For positive real bases, \(\Lambda\) is real and no correction is
+needed. For complex bases, smallness of \(P-1\) means closeness of
+\(\Lambda\) to the period lattice, not necessarily to its origin.
+
+\subsection{3. What arithmetic alone
+gives}\label{what-arithmetic-alone-gives}
+
+We use the absolute logarithmic Weil height \(h\). For a degree-\(d\)
+number \(\gamma\), whose primitive minimal polynomial has positive
+leading coefficient \(a\) and roots \(\gamma_1,\ldots,\gamma_d\), our
+normalization is
+
+\[
+h(\gamma)=\frac1d\left(\log a+\sum_{r=1}^d\log\max\{1,|\gamma_r|\}\right).
+\]
+
+The prerequisite height facts are
+
+\[
+h(uv)\le h(u)+h(v),\quad h(u^{-1})=h(u),\quad
+h(u+v)\le h(u)+h(v)+\log2,
+\]
+
+and the one-place Liouville inequality: if
+\(0\ne u\in K\subset\mathbb C\) and \([K:\mathbb Q]=D\), then
+
+\[
+\log|u|\ge-Dh(u).
+\]
+
+The written internal proof provider is
+\href{../../TR-TRANS/TR-TRANS-02.html}{\emph{Heights of algebraic
+numbers}}, Theorem 2.8, together with Theorem 2.4 and Proposition 2.5.
+Its statement covers every number field and every nonzero algebraic
+element, with this absolute normalization. {[}Waldschmidt 1992, Chapter
+3{]} gives a freely accessible complementary treatment with the same
+absolute-height convention.
+
+\textbf{Proposition 1.3 (elementary lower bound).} If \(\Delta\ne0\) and
+\(K=\mathbb Q(\alpha_1,\ldots,\alpha_n)\) has degree \(D\), then
+
+\[
+\log|\Delta|\ge-D\left(\log2+\sum_j|b_j|h(\alpha_j)\right)
+\ge-D\left(\log2+B\sum_jh(\alpha_j)\right).
+\]
+
+\textbf{Proof.} Repeated multiplication and inversion give
+\(h(P)\le\sum_j|b_j|h(\alpha_j)\). Since \(h(1)=0\), we have
+\(h(P-1)\le h(P)+\log2\). Apply Liouville's inequality to the nonzero
+element \(P-1\) of \(K\). \(\square\)
+
+There is a sharper elementary estimate for rationals. Write
+\(\alpha_j=u_j/v_j\) in lowest terms, with nonzero integers \(u_j,v_j\),
+and put \(A_j=\max\{|u_j|,|v_j|\}\). Before any cancellation, write
+\(P=U/V\) with integers \(U,V\ne0\). The denominator satisfies
+\(|V|\le\prod_j A_j^{|b_j|}\). If \(P\ne1\), the integer \(U-V\) is
+nonzero, so
+
+\[
+|\Delta|=\frac{|U-V|}{|V|}\ge\prod_jA_j^{-|b_j|}.
+\]
+
+For \(\Delta=2^m3^{-n}-1\), with \(m,n\ge0\), one can use the actual
+denominator \(3^n\), obtaining \(|\Delta|\ge3^{-n}\). This improves the
+uniform denominator estimate \(2^{-m}3^{-n}\), but still falls
+exponentially with \(n\).
+
+For example, \(3^5/2^8-1=-13/256\). The actual denominator gives
+\(13/256\ge1/256\); the uniform product estimate gives only
+\(1/(3^5 2^8)\). The problem is not that the elementary bound is false.
+It allows far more cancellation than the exponents usually produce.
+
+\subsection{4. Why no fixed positive lower bound
+works}\label{why-no-fixed-positive-lower-bound-works}
+
+\textbf{Lemma 1.4 (box principle).} Let \(n\ge2\), let
+\(a_1,\ldots,a_n\ge2\) be integers, and set \(A=\max_j a_j\). For every
+integer \(B>2n\log A\), there are integers \(b_j\) such that
+
+\[
+0<\max_j|b_j|\le B,
+\qquad
+\left|\prod_j a_j^{b_j}-1\right|\le\frac{2n\log A}{B^{n-1}}.
+\]
+
+\textbf{Proof.} Consider the \((B+1)^n\) labelled points
+
+\[
+s(c)=\sum_j c_j\log a_j,\qquad c\in\{0,\ldots,B\}^n,
+\]
+
+in an interval of length at most \(nB\log A\). If two labels give the
+same point, their difference supplies a nonzero vector with product
+exactly \(1\), which proves the assertion. Otherwise, sort the points.
+One of the \((B+1)^n-1\) successive gaps is at most
+
+\[
+\frac{nB\log A}{(B+1)^n-1}\le\frac{n\log A}{B^{n-1}}.
+\]
+
+Subtract the corresponding labels. The resulting nonzero vector has
+coefficients of absolute value at most \(B\), and its logarithmic form
+has absolute value at most the displayed quantity. Since \(n\ge2\) and
+\(B>2n\log A\), this is less than \(1/2\). Lemma 1.1 finishes the proof.
+\(\square\)
+
+For multiplicatively independent bases, the products constructed here
+are different from \(1\). Their distances from \(1\) tend to zero as
+\(B\to\infty\). The same argument works for positive rationals: the
+points lie in an interval of length at most \(B\sum_j|\log\alpha_j|\).
+Thus there cannot be a positive lower bound independent of the
+coefficients.
+
+Combining the elementary lower bound and the box principle leaves a wide
+range:
+
+\[
+e^{-cB}\quad\hbox{versus}\quad B^{-(n-1)}.
+\]
+
+The first holds for every nonzero form; the second describes forms that
+exist for arbitrarily large coefficient bounds. A theorem of the shape
+\(|\Delta|\ge B^{-C}\), with a fixed \(C\), closes the most important
+part of that range. It does not assert that every coefficient vector
+nearly attains the bound.
+
+\subsection{5. From a polynomial bound to a finite
+search}\label{from-a-polynomial-bound-to-a-finite-search}
+
+\textbf{Proposition 1.5.} Suppose an explicitly known \(C>0\) satisfies
+
+\[
+|2^x3^{-y}-1|\ge\max\{3,x,y\}^{-C}
+\]
+
+whenever \(x,y\ge0\) and \(2^x3^{-y}\ne1\). For a nonzero integer \(k\),
+every solution of \(2^x-3^y=k\) satisfies
+
+\[
+\begin{aligned}
+\max\{x,y\}&\le\max\{3,R(C,k)\},\\
+R(C,k)&=\left(\frac{C+\sqrt{C^2+4\log2\,\log(2|k|)}}{2\log2}\right)^2.
+\end{aligned}
+\]
+
+\textbf{Proof.} Put \(B=\max\{3,x,y\}\). The equation and the assumed
+bound give
+
+\[
+3^y\le|k|B^C,
+\qquad 2^x\le3^y+|k|\le2|k|B^C.
+\]
+
+If \(\max(x,y)\ge3\), then \(B=\max(x,y)\) and
+\(2^B\le\max(2^x,3^y)\le2|k|B^C\). Taking logarithms yields
+
+\[
+B\log2\le\log(2|k|)+C\log B.
+\]
+
+For \(t\ge1\), \(\log t\le\sqrt t\): differentiation shows the maximum
+of \(\log t/\sqrt t\) is \(2/e<1\). With \(s=\sqrt B\), the preceding
+inequality implies
+
+\[
+(\log2)s^2-Cs-\log(2|k|)\le0.
+\]
+
+The positive root bounds \(s\), giving \(B\le R(C,k)\). The remaining
+solutions have both exponents below \(3\). \(\square\)
+
+This deliberately generous bound is enough to make a finite search
+possible. Later reductions replace large initial bounds by much smaller
+ones. If \(C\) is merely known to exist, Proposition 1.5 proves
+finiteness but does not specify the search range.
+
+\subsubsection{General differences of
+powers}\label{general-differences-of-powers}
+
+Normalizing by the larger power gives a symmetric estimate. This is the
+argument of {[}Evertse 2019{]}, Corollary 5.5; here we retain a
+prefactor, include zero exponents, and supply the resulting search
+bound.
+
+\textbf{Corollary (general differences of powers).} Fix integers
+\(a,b\ge2\). Suppose known constants \(0<c\le1\) and \(C>0\) satisfy \[
+|a^u b^v-1|\ge c\max\{3,|u|,|v|\}^{-C}
+\] for every integer pair \((u,v)\) with \(a^u b^v\ne1\). For
+\(m,n\ge0\) with \(a^m\ne b^n\), put \(B=\max\{3,m,n\}\). Then \[
+|a^m-b^n|\ge c\max\{a^m,b^n\}B^{-C}.
+\] In particular, if \(a^m-b^n=k\ne0\), put \[
+\begin{aligned}
+T&=\log(|k|/c),\\
+R_*&=\left(\frac{C+\sqrt{C^2+4T\log2}}{2\log2}\right)^2.
+\end{aligned}
+\] Then \[
+\max(m,n)\le\max\{2,R_*\}.
+\]
+
+\textbf{Proof.} If \(a^m>b^n\), apply the assumed estimate to
+\(a^{-m}b^n\) and multiply by \(a^m\). In the other case, apply it to
+\(a^m b^{-n}\) and multiply by \(b^n\). The coefficient bound is \(B\)
+in either orientation. This proves the first inequality.
+
+When \(\max(m,n)\ge3\), at least one exponent equals \(B\), so
+\(\max(a^m,b^n)\ge2^B\). Consequently \[
+B\log2\le\log(|k|/c)+C\log B.
+\] Use \(\log B\le\sqrt B\) as in Proposition 1.5 and solve the
+quadratic inequality in \(\sqrt B\). Its constant term is nonpositive,
+since \(|k|\ge1\) and \(c\le1\). If both exponents are below three,
+their maximum is at most two. These cases give the stated bound.
+\(\square\)
+
+The fixed-base estimate (5.47), proved later in
+\href{../TR-BAKER-05.html\#10-consequences-and-later-refinements}{\emph{Effective
+lower bounds II: proof of Baker's theorem}}, supplies an effective \(C\)
+with \(c=1\). Its proof follows the complete effective theorem in that
+lesson. Neither that estimate nor the corollary requires multiplicative
+independence. They apply, for example, to \(4^m-8^n=k\), provided the
+difference is nonzero. An elementary valuation argument solves one such
+example in Exercise 6.
+
+\subsection{6. Effectivity and the shape of the later
+theorems}\label{effectivity-and-the-shape-of-the-later-theorems}
+
+A constant is \emph{effectively computable from given data} if the proof
+supplies a terminating procedure producing a valid value from those
+data. A formula is one way to do this. A finite algorithm is another. An
+ineffective existence proof supplies neither, even if its conclusion is
+true.
+
+Here is a concrete contrast. For \(n\ge2\) multiplicatively independent
+positive integers \(a_1,\ldots,a_n\), Gelfond's many-logarithm result
+says that, for every \(\delta>0\), there exists \(c_\delta>0\) such that
+
+\[
+|a_1^{b_1}\cdots a_n^{b_n}-1|\ge c_\delta e^{-\delta B}
+\]
+
+for nonzero coefficient vectors, where \(B=\max\{3,|b_j|\}\). The quoted
+result is ineffective in \(c_\delta\). Gelfond's earlier two-logarithm
+estimate gives, for each \(\varepsilon>0\), an effective
+\(c_\varepsilon>0\) in a lower bound
+
+\[
+|a_1^{b_1}a_2^{b_2}-1|\ge c_\varepsilon
+\exp\bigl(- (\log B)^{5+\varepsilon}\bigr).
+\]
+
+These historical attributions and the distinction between the original
+effective and ineffective methods are discussed in {[}Waldschmidt
+2000{]}, Section 1.2, especially Theorem 1.9, and {[}Waldschmidt
+1992{]}, Introduction. Both free treatments state this historical
+comparison for integer bases. The stronger fixed-base polynomial
+estimate in this course applies to positive rationals as well. The
+following calculation proves both weaker numerical conclusions in that
+full setting with effective constants.
+
+\textbf{Lemma 1.6 (weaker bounds from a polynomial estimate).} Suppose
+\(|\Delta|\ge aB^{-C}\), with known \(a,C>0\) and \(B\ge3\). For every
+\(\delta>0\) and every \(q>1\),
+
+\[
+|\Delta|\ge a\exp\bigl(C-C\log(C/\delta)\bigr)e^{-\delta B},
+\]
+
+and
+
+\[
+|\Delta|\ge a\exp\left(-(q-1)(C/q)^{q/(q-1)}\right)
+\exp\bigl(- (\log B)^q\bigr).
+\]
+
+\textbf{Proof.} On \(x>0\), the function \(\delta x-C\log x\) has its
+minimum at \(x=C/\delta\), where its value is \(C-C\log(C/\delta)\).
+Thus \(B^{-C}e^{\delta B}\) is at least the first exponential constant.
+On \(t\ge0\), the minimum of \(t^q-Ct\) occurs at \(t=(C/q)^{1/(q-1)}\)
+and equals \(-(q-1)(C/q)^{q/(q-1)}\). Use \(t=\log B\) for the second
+bound. \(\square\)
+
+With \(q=5+\varepsilon\), the second formula has the two-logarithm shape
+above. For fixed positive rational bases, the polynomial estimate is
+proved in the effective-bound lessons, specifically (5.47), from the
+full effective Baker theorem and the local comparison of Section 2.
+Consequently both weaker numerical bounds admit effective constants
+whenever the product is not one; the historical many-logarithm proof did
+not supply them. Lemma 1.6 states exactly where that later input is
+used. The elementary arguments in Sections 2--4 do not depend on it.
+
+The following table describes shapes, not interchangeable theorem
+statements. The heights, branches and nonvanishing conditions must be
+specified afresh whenever a theorem is applied. Write
+\(\Omega=\prod_j\log A_j\), where the admissible \(A_j\) depend on the
+theorem.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Result
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Characteristic conclusion
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Treatment in this course
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Baker's qualitative theorem & Rationally independent logarithms remain
+independent over the algebraic numbers, even after adjoining \(1\) &
+Proved by an auxiliary function and extrapolation \\
+Baker's algebraic-coefficient measure & A nonzero form has size
+\(>B^{-C}\), with effectively computable \(C\) and bounded algebraic
+degrees & Proved in \href{../TR-BAKER-05.html}{\emph{Effective lower
+bounds II: proof of Baker's theorem}}; \(B\) bounds coefficient
+heights \\
+Feldman's polynomial refinement & Integer-coefficient multiplicative
+forms satisfy \(\lvert\Delta\rvert\ge B^{-C}\) & Fixed-base consequence
+proved in \href{../TR-BAKER-05.html}{\emph{Effective lower bounds II:
+proof of Baker's theorem}}, Section 10; individual-height estimates
+treated in the lesson on many logarithms \\
+Baker's product-height refinement & An exponent involving
+\(\Omega\log\Omega\) & Treated in
+\href{../TR-BAKER-08.html}{\emph{Linear forms in many logarithms: the
+modern estimates and how to use them}}, alongside the subsequent
+refinements \\
+Philippon--Waldschmidt, Wüstholz, and Baker--Wüstholz & A lower bound
+whose exponent involves \(\Omega\log B\) & Statements, conditions and
+deductions given in that same lesson on many logarithms \\
+Laurent's determinant method & Two-logarithm estimates involving
+\((\log B')^2\) & General parameter theorem proved in
+\href{../TR-BAKER-06.html}{\emph{Two logarithms I: an interpolation
+determinant}}; sharper explicit families in
+\href{../TR-BAKER-07.html}{\emph{Two logarithms II: explicit lower
+bounds}} \\
+Matveev's estimate & Explicit product-height bounds with improved
+dependence on the number of logarithms & Theorem 8.6 and its
+applications in the lesson on many logarithms \\
+Yu and Bugeaud--Laurent & Upper bounds for a normalized \(p\)-adic
+valuation & Proofs planned in \emph{Two p-adic logarithms and Yu's
+estimates} \\
+\end{longtable}
+}
+
+The algebraic-coefficient and integer-coefficient versions use different
+size parameters. Keeping this distinction prevents a transcendence
+measure from being mistaken for an integer-exponent estimate.
+
+One further distinction matters. For \(\alpha=1+1/N\),
+
+\[
+\frac1{N+1}\le\log\left(1+\frac1N\right)\le\frac1N,
+\qquad h(\alpha)=\log(N+1).
+\]
+
+The inequalities follow by integrating \(1/(1+t)\) from \(0\) to
+\(1/N\). The logarithm is small even though the height is large. Refined
+estimates with a parameter \(E\) exploit this discrepancy. A height
+parameter cannot be replaced by the size of the logarithm alone.
+
+\subsection{7. Exercises}\label{exercises}
+
+\textbf{Exercise 1 (easy).} Determine exactly when \(\Delta=0\) in terms
+of \(\Lambda\), and explain what changes for positive real bases. Give
+an example showing why principal logarithms of negative bases can
+require a period correction.
+
+\textbf{Exercise 2 (easy).} For each \(1\le n\le10\), choose the integer
+\(m\ge0\) minimizing \(|2^m-3^n|\). Compare \(|2^m3^{-n}-1|\) with both
+elementary rational lower bounds from Section 3.
+
+\textbf{Exercise 3 (medium).} Repeat the box-principle proof for
+multiplicatively independent positive rationals
+\(\alpha_1,\ldots,\alpha_n\), with \(n\ge2\). Give a sufficient lower
+threshold for \(B\) and prove that the nonzero distances from \(1\)
+accumulate at zero.
+
+\textbf{Exercise 4 (medium).} In Lemma 1.4, explain why the count is
+\((B+1)^n\), why a repeated point is harmless there, and why
+multiplicative independence is needed when one wants the constructed
+distance to be nonzero. Derive the exact successive-gap bound before
+estimating it by \(n\log A/B^{n-1}\).
+
+\textbf{Exercise 5 (hard).} Assume the lower bound in Proposition 1.5.
+Prove its explicit search bound, including solutions where one exponent
+is zero. Then derive an explicit bound when the hypothesis is weakened
+to \(|2^x3^{-y}-1|\ge cB^{-C}\), with known \(0<c\le1\).
+
+\textbf{Exercise 6 (medium).} The bases \(4\) and \(8\) are
+multiplicatively dependent. Solve \(4^m-8^n=56\) for integers
+\(m,n\ge0\), using the exact power of \(2\) dividing each side. Explain
+why the general corollary also applies to this equation.
+
+\subsection{8. Solutions}\label{solutions}
+
+\textbf{Solution 1.} Since \(e^\Lambda=1+\Delta\), the kernel
+\(2\pi i\mathbb Z\) of the complex exponential gives the exact
+criterion. Real logarithms give a real \(\Lambda\); its intersection
+with that kernel is \(\{0\}\). With two bases equal to \(-1\) and both
+coefficients equal to \(1\), the principal logarithmic form is
+\(2\pi i\), although \(\Delta=0\).
+
+\textbf{Solution 2.} For a fixed \(3^n\), the closest power of \(2\) is
+one of the two powers immediately bracketing it. All others are farther
+away by monotonicity. Checking those two integers gives:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(n\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+nearest exponent \(m\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\lvert2^m-3^n\rvert\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+exact normalized distance
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 1 or 2 & 1 & \(1/3\) \\
+2 & 3 & 1 & \(1/9\) \\
+3 & 5 & 5 & \(5/27\) \\
+4 & 6 & 17 & \(17/81\) \\
+5 & 8 & 13 & \(13/243\) \\
+6 & 9 & 217 & \(217/729\) \\
+7 & 11 & 139 & \(139/2187\) \\
+8 & 13 & 1631 & \(1631/6561\) \\
+9 & 14 & 3299 & \(3299/19683\) \\
+10 & 16 & 6487 & \(6487/59049\) \\
+\end{longtable}
+}
+
+Each normalized distance is at least \(3^{-n}\), because its numerator
+is a positive integer. It is consequently also at least the weaker bound
+\(2^{-m}3^{-n}\). The first two rows attain the actual-denominator
+bound. Small coefficient values need not show a smooth trend: the
+polynomial lower bounds are uniform restrictions on cancellation, not
+monotonicity claims.
+
+\textbf{Solution 3.} Put \(S=\sum_j|\log\alpha_j|>0\). The sums indexed
+by \(\{0,\ldots,B\}^n\) lie between
+\(B\sum_{\log\alpha_j<0}\log\alpha_j\) and
+\(B\sum_{\log\alpha_j>0}\log\alpha_j\), an interval of length \(BS\).
+Independence makes the sums distinct. The smallest successive gap is at
+most \(BS/((B+1)^n-1)\le S/B^{n-1}\). For an integer \(B>2S\), this is
+below \(1/2\). Subtract labels and use Lemma 1.1 to obtain a nonzero
+multiplicative distance at most \(2S/B^{n-1}\). These bounds tend to
+zero. If the corresponding coefficient vectors belonged to a fixed
+finite set, their positive distances would have a positive minimum, a
+contradiction. Thus the construction supplies arbitrarily small nonzero
+distances.
+
+\textbf{Solution 4.} Each coordinate has \(B+1\) choices, including both
+endpoints. There are therefore \((B+1)^n\) labelled sums. A repeated sum
+yields a nonzero difference of labels whose product is exactly \(1\),
+meeting the weak inequality in the lemma. Under independence, repetition
+is impossible. For distinct sums \(s_1<\cdots<s_N\), the \(N-1\)
+successive gaps add to \(s_N-s_1\le nB\log A\); at least one gap is at
+most \(nB\log A/((B+1)^n-1)\). Finally \((B+1)^n-1\ge B^n\), giving the
+stated simpler estimate.
+
+\textbf{Solution 5.} For the original hypothesis, Section 5 gives all
+steps. They use only \(x,y\ge0\), so zero exponents are included. With
+the weakened hypothesis, the equation gives \(3^y\le(|k|/c)B^C\) and
+\(2^x\le(|k|/c)B^C+|k|\le(2|k|/c)B^C\). Replace \(\log(2|k|)\)
+throughout the quadratic argument by \(\log(2|k|/c)\). The explicit
+bound is
+
+\[
+\max(x,y)\le\max\left\{3,
+\left(\frac{C+\sqrt{C^2+4\log2\,\log(2|k|/c)}}{2\log2}\right)^2\right\}.
+\]
+
+\textbf{Solution 6.} The difference is positive, so \(2m>3n\), and \[
+56=2^{3n}(2^{2m-3n}-1).
+\] The factor in parentheses is odd. Since \(56=2^3\cdot7\), its exact
+power of two forces \(3n=3\), hence \(n=1\). The odd factor then gives
+\(2^{2m-3}=8\), so \(m=3\). Conversely, \(4^3-8=56\). This includes the
+possible zero-exponent cases: the valuation already forces \(n=1\), and
+positivity forces \(m>0\). The corollary requires only a nonzero
+difference and a fixed-base lower bound; a multiplicative relation among
+the bases does not violate either condition.
+
+\subsection{Prerequisites and
+continuation}\label{prerequisites-and-continuation}
+
+The sole arithmetic prerequisite beyond elementary rational arithmetic
+is the absolute-height theory specified in Section 3, supplied by the
+written \emph{Heights of algebraic numbers} lesson in
+\emph{Transcendental numbers}. The local comparison, branch correction,
+rational and height lower bounds, box-principle construction,
+finite-search calculations and Lemma 1.6 are proved here. The general
+difference-of-powers corollary is proved here under its stated
+lower-bound hypothesis; the later estimate (5.47) supplies that
+hypothesis. The table in Section 6 locates the different theorem shapes
+and their conditions. The next two lessons prove the qualitative Baker
+theorem before the course turns to effective constants.
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}Waldschmidt 1992{]} Michel Waldschmidt, \emph{Linear Independence
+  of Logarithms of Algebraic Numbers}, IMSc Report 116, 1992, revised
+  text dated 2016. Introduction and Chapter 3.
+  \href{https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/LIL.pdf}{Author's
+  text}.
+\item
+  {[}Waldschmidt 2000{]} Michel Waldschmidt, \emph{Diophantine
+  Approximation on Linear Algebraic Groups}, Springer, 2000.
+  \href{https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/dalag.pdf}{Author's
+  full text}. Section 1.2 explains the elementary denominator,
+  box-principle and historical effectivity comparisons; Chapter 3
+  supplies the height framework.
+\item
+  {[}Evertse 2019{]} Jan-Hendrik Evertse, \emph{Diophantine Equations},
+  Chapter 5, ``Linear forms in logarithms,'' 2019,
+  \href{https://pub.math.leidenuniv.nl/~evertsejh/dio19-5.pdf}{author's
+  chapter}. Corollaries 5.3 and 5.5 explain the branch correction and
+  normalized difference-of-powers argument. The effective logarithm
+  theorem itself is stated there; this course supplies its proof in its
+  effective-bound lessons.
+\end{itemize}
+
+\subsection{Editable source}\label{editable-source}
+
+\href{TR-BAKER-01.md}{Markdown source}.
+
+\end{document}

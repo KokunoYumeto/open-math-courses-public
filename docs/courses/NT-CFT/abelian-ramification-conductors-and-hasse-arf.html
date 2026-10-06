@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abelian ramification, conductors and Hasse–Arf · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/abelian-ramification-conductors-and-hasse-arf.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (5)</summary><ul><li><a href="lubin-tate-division-fields.html">Lubin–Tate division fields</a></li><li><a href="explicit-local-reciprocity-and-existence.html">Explicit local reciprocity and the existence theorem</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-07">Unramified and totally ramified extensions</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-09">Ramification groups and the different of a local extension</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-10">Herbrand&#x27;s function and the upper numbering</a></li></ul></details>
+<article class="lesson">
+<h1 id="abelian-ramification-conductors-and-hasse-arf">Abelian ramification, conductors and Hasse–Arf</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p>The unit filtration of a local field measures abelian ramification exactly. Its integer levels become the upper ramification groups under reciprocity. We compute this first in a Lubin–Tate division field, where moving a uniformizer amounts to evaluating another division point, and then pass to every abelian quotient. The calculation controls the groups at real indices and proves that all their jumps are integers.</p>
+<p>Fix a nonarchimedean local field <span class="math" data-tex="\(K\)">\(K\)</span>, valuation ring <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, maximal ideal <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, and residue field <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>. Put <span class="math" data-tex="\(U^{(0)}=U=\mathcal O^\times\)">\(U^{(0)}=U=\mathcal O^\times\)</span> and <span class="math" data-tex="\(U^{(j)}=1+\mathfrak p^j\)">\(U^{(j)}=1+\mathfrak p^j\)</span> for <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>. The explicit symbol and local existence theorem are proved in <a href="explicit-local-reciprocity-and-existence.html">Explicit local reciprocity and the existence theorem</a>.</p>
+<p>We use the actual written ramification prerequisites in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-09">Ramification groups and the different of a local extension</a>, Proposition 1.1, equation (2.2) and Theorem 3.1, and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-10">Herbrand's function and the upper numbering</a>, Proposition 1.1 and Theorem 3.1. In particular, the latter's quotient theorem was proved without Hasse–Arf; its reference to a planned proof of Hasse–Arf is fulfilled here and is not a hypothesis of our argument.</p>
+<p><strong>Prerequisite proof availability.</strong> The named results below identify specific programme lessons. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-10">prerequisite record</a> distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.</p>
+<h2 id="1-conventions-at-a-jump">1. Conventions at a jump</h2>
+<p>For a finite Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, normalize <span class="math" data-tex="\(v_L(L^\times)=\mathbf Z\)">\(v_L(L^\times)=\mathbf Z\)</span> and put <span class="math" data-tex="\(G=\operatorname{Gal}(L/K)\)">\(G=\operatorname{Gal}(L/K)\)</span>. Its motion number and lower groups are
+<span class="math math-display" data-tex="\[
+i_G(\sigma)=\min_{x\in\mathcal O_L}v_L(\sigma x-x),\qquad
+G_j=\{\sigma:i_G(\sigma)\geq j+1\}.
+\]">\[
+i_G(\sigma)=\min_{x\in\mathcal O_L}v_L(\sigma x-x),\qquad
+G_j=\{\sigma:i_G(\sigma)\geq j+1\}.
+\]</span>
+Identity has infinite motion number. Use the real-index convention
+<span class="math math-display" data-tex="\[
+G_t=G_{\lceil t\rceil}\quad(t\geq-1),\qquad
+\phi(t)=\int_0^t\frac{|G_s|}{|G_0|}\,ds\quad(t\geq0).
+\tag{1}
+\]">\[
+G_t=G_{\lceil t\rceil}\quad(t\geq-1),\qquad
+\phi(t)=\int_0^t\frac{|G_s|}{|G_0|}\,ds\quad(t\geq0).
+\tag{1}
+\]</span>
+On <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span>, put <span class="math" data-tex="\(\phi(t)=t\)">\(\phi(t)=t\)</span>. Let <span class="math" data-tex="\(\psi=\phi^{-1}\)">\(\psi=\phi^{-1}\)</span>, and <span class="math" data-tex="\(G^v=G_{\psi(v)}\)">\(G^v=G_{\psi(v)}\)</span>. Thus a group retains its value at a jump and decreases immediately afterward. The group <span class="math" data-tex="\(G^0=G_0\)">\(G^0=G_0\)</span> is inertia.</p>
+<p>Herbrand's quotient theorem says that for <span class="math" data-tex="\(H\triangleleft G\)">\(H\triangleleft G\)</span>,
+<span class="math math-display" data-tex="\[
+(G/H)^v=G^vH/H\qquad(v\geq-1).
+\tag{2}
+\]">\[
+(G/H)^v=G^vH/H\qquad(v\geq-1).
+\tag{2}
+\]</span>
+Hilbert's different formula is
+<span class="math math-display" data-tex="\[
+\delta_{L/K}:=v_L(\mathfrak D_{L/K})
+       =\sum_{j\geq0}(|G_j|-1).
+\tag{3}
+\]">\[
+\delta_{L/K}:=v_L(\mathfrak D_{L/K})
+       =\sum_{j\geq0}(|G_j|-1).
+\tag{3}
+\]</span>
+All sums of nonzero terms here are finite.</p>
+<h2 id="2-motion-in-a-lubin-tate-field">2. Motion in a Lubin–Tate field</h2>
+<p>Let <span class="math" data-tex="\(L=K_{\pi,n}\)">\(L=K_{\pi,n}\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, and choose a primitive division point <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> for <span class="math" data-tex="\(f(X)=\pi X+X^q\)">\(f(X)=\pi X+X^q\)</span>. Lesson 8 proves that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a uniformizer and
+<span class="math math-display" data-tex="\[
+G\simeq(\mathcal O/\pi^n\mathcal O)^\times,\qquad
+|G|=D_n=(q-1)q^{n-1}.
+\]">\[
+G\simeq(\mathcal O/\pi^n\mathcal O)^\times,\qquad
+|G|=D_n=(q-1)q^{n-1}.
+\]</span>
+Write <span class="math" data-tex="\(\sigma_u(\lambda)=[u]_f(\lambda)\)">\(\sigma_u(\lambda)=[u]_f(\lambda)\)</span>. This is the scalar-action coordinate; the reciprocity symbol of a unit <span class="math" data-tex="\(u\)">\(u\)</span> is <span class="math" data-tex="\(\sigma_{u^{-1}}\)">\(\sigma_{u^{-1}}\)</span>.</p>
+<p>For a nonidentity class, write <span class="math" data-tex="\(u-1=\pi^k a\)">\(u-1=\pi^k a\)</span>, where <span class="math" data-tex="\(a\in U\)">\(a\in U\)</span> and <span class="math" data-tex="\(0\leq k&lt;n\)">\(0\leq k&lt;n\)</span>. The formal group law has the form
+<span class="math math-display" data-tex="\[
+F_f(X,Y)=X+Y+XYB(X,Y),\qquad B\in\mathcal O[[X,Y]],
+\]">\[
+F_f(X,Y)=X+Y+XYB(X,Y),\qquad B\in\mathcal O[[X,Y]],
+\]</span>
+because its restrictions to either axis are the identity. The scalar identities give
+<span class="math math-display" data-tex="\[
+\sigma_u(\lambda)-\lambda
+ =[u-1]_f(\lambda)\bigl(1+\lambda B(\lambda,[u-1]_f(\lambda))\bigr).
+\tag{4}
+\]">\[
+\sigma_u(\lambda)-\lambda
+ =[u-1]_f(\lambda)\bigl(1+\lambda B(\lambda,[u-1]_f(\lambda))\bigr).
+\tag{4}
+\]</span>
+The second factor is a unit. Moreover <span class="math" data-tex="\([\pi^k]_f(\lambda)\)">\([\pi^k]_f(\lambda)\)</span> is primitive at level <span class="math" data-tex="\(n-k\)">\(n-k\)</span>, hence is a uniformizer of <span class="math" data-tex="\(K_{\pi,n-k}\)">\(K_{\pi,n-k}\)</span>. The relative ramification index from that field to <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\(q^k\)">\(q^k\)</span>. The series <span class="math" data-tex="\([a]_f\)">\([a]_f\)</span> has unit linear coefficient and integral higher coefficients, so preserves the valuation of positive-valuation points. The uniformizer formula for motion therefore yields
+<span class="math math-display" data-tex="\[
+i_G(\sigma_u)=v_L(\sigma_u(\lambda)-\lambda)=q^k.
+\tag{5}
+\]">\[
+i_G(\sigma_u)=v_L(\sigma_u(\lambda)-\lambda)=q^k.
+\tag{5}
+\]</span></p>
+<h3 id="proposition-10-1-the-lubin-tate-upper-filtration">Proposition 10.1. The Lubin–Tate upper filtration</h3>
+<p>For <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+G^v=\{\sigma_u:u\in U^{(\lceil v\rceil)}\},
+\tag{6}
+\]">\[
+G^v=\{\sigma_u:u\in U^{(\lceil v\rceil)}\},
+\tag{6}
+\]</span>
+where unit classes are taken modulo <span class="math" data-tex="\(\pi^n\)">\(\pi^n\)</span>; a level at least <span class="math" data-tex="\(n\)">\(n\)</span> gives identity. For <span class="math" data-tex="\(-1\leq v\leq0\)">\(-1\leq v\leq0\)</span>, the group is <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(b_k=q^k-1\)">\(b_k=q^k-1\)</span>, so <span class="math" data-tex="\(b_0=0\)">\(b_0=0\)</span>. Formula (5) and the definition of <span class="math" data-tex="\(G_j\)">\(G_j\)</span> give
+<span class="math math-display" data-tex="\[
+G_t=\operatorname{image}(U^{(k)})
+\quad\text{for }b_{k-1}&lt;t\leq b_k,\quad 1\leq k&lt;n.
+\tag{7}
+\]">\[
+G_t=\operatorname{image}(U^{(k)})
+\quad\text{for }b_{k-1}&lt;t\leq b_k,\quad 1\leq k&lt;n.
+\tag{7}
+\]</span>
+Indeed, for the integer indices <span class="math" data-tex="\(q^{k-1}\leq j\leq q^k-1\)">\(q^{k-1}\leq j\leq q^k-1\)</span>, the inequality <span class="math" data-tex="\(q^{v_K(u-1)}\geq j+1\)">\(q^{v_K(u-1)}\geq j+1\)</span> is exactly <span class="math" data-tex="\(v_K(u-1)\geq k\)">\(v_K(u-1)\geq k\)</span>. The ceiling convention extends these intervals to (7). Beyond <span class="math" data-tex="\(b_{n-1}\)">\(b_{n-1}\)</span> the lower group is identity.</p>
+<p>On the interval in (7), the group has order <span class="math" data-tex="\(q^{n-k}\)">\(q^{n-k}\)</span>. Its index in <span class="math" data-tex="\(G_0=G\)">\(G_0=G\)</span> is <span class="math" data-tex="\((q-1)q^{k-1}\)">\((q-1)q^{k-1}\)</span>, exactly the length <span class="math" data-tex="\(b_k-b_{k-1}\)">\(b_k-b_{k-1}\)</span>. Thus every interval contributes 1 to the integral (1), giving
+<span class="math math-display" data-tex="\[
+\phi(b_k)=k,\qquad
+\phi(t)=k-1+\frac{t-b_{k-1}}{(q-1)q^{k-1}}
+\quad(b_{k-1}\leq t\leq b_k).
+\tag{8}
+\]">\[
+\phi(b_k)=k,\qquad
+\phi(t)=k-1+\frac{t-b_{k-1}}{(q-1)q^{k-1}}
+\quad(b_{k-1}\leq t\leq b_k).
+\tag{8}
+\]</span>
+For <span class="math" data-tex="\(t\geq b_{n-1}\)">\(t\geq b_{n-1}\)</span>, it is <span class="math" data-tex="\(n-1+(t-b_{n-1})/D_n\)">\(n-1+(t-b_{n-1})/D_n\)</span>. This latter formula covers all nonnegative <span class="math" data-tex="\(t\)">\(t\)</span> when <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+<p>The change of variable carries (7) to <span class="math" data-tex="\(k-1&lt;v\leq k\)">\(k-1&lt;v\leq k\)</span>, proving (6) at every endpoint as well. Total ramification gives the full group at nonpositive indices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The positive jumps are <span class="math" data-tex="\(1,\ldots,n-1\)">\(1,\ldots,n-1\)</span>. Zero is also a jump when <span class="math" data-tex="\(q&gt;2\)">\(q&gt;2\)</span>, since the residue-unit quotient has order <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. When <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, <span class="math" data-tex="\(U=U^{(1)}\)">\(U=U^{(1)}\)</span>, so zero is not a jump. In particular <span class="math" data-tex="\(q=2,n=1\)">\(q=2,n=1\)</span> gives a trivial extension.</p>
+<h2 id="3-every-abelian-extension">3. Every abelian extension</h2>
+<h3 id="theorem-10-2-units-and-upper-ramification">Theorem 10.2. Units and upper ramification</h3>
+<p>Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be finite abelian, with Galois group <span class="math" data-tex="\(G\)">\(G\)</span>. Then
+<span class="math math-display" data-tex="\[
+(U,L/K)=G^0,\qquad
+(U^{(j)},L/K)=G^j\quad(j\geq1).
+\tag{9}
+\]">\[
+(U,L/K)=G^0,\qquad
+(U^{(j)},L/K)=G^j\quad(j\geq1).
+\tag{9}
+\]</span>
+More precisely, at every real <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+G^v=(U^{(\lceil v\rceil)},L/K).
+\tag{10}
+\]">\[
+G^v=(U^{(\lceil v\rceil)},L/K).
+\tag{10}
+\]</span>
+On the maximal abelian extension the corresponding upper group is the closure of the reciprocity image of the same unit group.</p>
+<p><strong>Proof.</strong> By Theorem 9.4, <span class="math" data-tex="\(L\)">\(L\)</span> lies in <span class="math" data-tex="\(A=K_dK_{\pi,n}\)">\(A=K_dK_{\pi,n}\)</span> for some <span class="math" data-tex="\(d,n\)">\(d,n\)</span>. Its Galois group is the product of the unramified group and the division-field group. The inertia group is the latter factor. The extension <span class="math" data-tex="\(A/K_{\pi,n}\)">\(A/K_{\pi,n}\)</span> is unramified, so the same primitive point <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a uniformizer of <span class="math" data-tex="\(A\)">\(A\)</span>, with the same normalized values on the division field.</p>
+<p>The maximal unramified subfield of <span class="math" data-tex="\(A/K\)">\(A/K\)</span> is <span class="math" data-tex="\(K_d\)">\(K_d\)</span>. Over it, the uniformizer formula for inertial motion applies to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and (4)–(5) remain unchanged. Thus all nonnegative lower groups and the denominator <span class="math" data-tex="\(|G_0|=D_n\)">\(|G_0|=D_n\)</span> in Herbrand's integral are those of the division field. Proposition 10.1 gives their upper filtration, with trivial unramified coordinate. The explicit reciprocity law sends units to precisely these groups: inversion preserves each <span class="math" data-tex="\(U^{(j)}\)">\(U^{(j)}\)</span>. This proves (9)–(10) for <span class="math" data-tex="\(A/K\)">\(A/K\)</span>.</p>
+<p>Restriction to <span class="math" data-tex="\(L\)">\(L\)</span> carries the symbol to its symbol on <span class="math" data-tex="\(L\)">\(L\)</span>, and Herbrand's theorem (2) carries each real upper group onto that of <span class="math" data-tex="\(L\)">\(L\)</span>. This proves the result for <span class="math" data-tex="\(L/K\)">\(L/K\)</span>.</p>
+<p>For the infinite assertion, the upper groups are the inverse limits of the finite upper groups, by Proposition 4.1 of the Herbrand lesson. On every finite collection of levels, their prescribed elements can be tested in the finite compositum, where (9)–(10) give surjectivity from the relevant unit group. Its image is therefore dense in the inverse-limit upper group. It is contained in that closed group, proving the closure statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-10-3-hasse-arf">Corollary 10.3. Hasse–Arf</h3>
+<p>Every upper jump of a finite abelian extension of local fields is an integer.</p>
+<p><strong>Proof.</strong> Formula (10) makes the filtration constant on each <span class="math" data-tex="\(k-1&lt;v\leq k\)">\(k-1&lt;v\leq k\)</span>. There can be no jump strictly between consecutive nonnegative integers. On <span class="math" data-tex="\((-1,0]\)">\((-1,0]\)</span> the group is inertia, also constant. The possible remaining jumps are at <span class="math" data-tex="\(-1,0,1,\ldots\)">\(-1,0,1,\ldots\)</span>, all integers. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Abelianity is used through the containment in explicit class fields. It cannot be dropped: the splitting field of <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span> over <span class="math" data-tex="\(\mathbf Q_3\)">\(\mathbf Q_3\)</span> has group <span class="math" data-tex="\(S_3\)">\(S_3\)</span> and positive upper jump <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, as computed with a uniformizer in Exercise 4 of the Herbrand lesson.</p>
+<h2 id="4-conductors-of-fields-and-characters">4. Conductors of fields and characters</h2>
+<p>For finite abelian <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, define its <strong>conductor</strong> to be <span class="math" data-tex="\(\mathfrak f_{L/K}=\mathfrak p^c\)">\(\mathfrak f_{L/K}=\mathfrak p^c\)</span>, where
+<span class="math math-display" data-tex="\[
+c=\min\{j\geq0:U^{(j)}\subset N_{L/K}L^\times\}.
+\tag{11}
+\]">\[
+c=\min\{j\geq0:U^{(j)}\subset N_{L/K}L^\times\}.
+\tag{11}
+\]</span>
+Deep units are norms by lesson 6, so the minimum exists. For a complex character <span class="math" data-tex="\(\chi:G\to\mathbf C^\times\)">\(\chi:G\to\mathbf C^\times\)</span>, put
+<span class="math math-display" data-tex="\[
+a(\chi)=\min\{j\geq0:\chi(G^j)=1\}.
+\tag{12}
+\]">\[
+a(\chi)=\min\{j\geq0:\chi(G^j)=1\}.
+\tag{12}
+\]</span>
+These are integer conductor exponents; <span class="math" data-tex="\(a(1)=0\)">\(a(1)=0\)</span>.</p>
+<h3 id="proposition-10-4-characterizations-of-the-conductor">Proposition 10.4. Characterizations of the conductor</h3>
+<p>The exponent <span class="math" data-tex="\(c\)">\(c\)</span> is the least <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span> for which <span class="math" data-tex="\(G^j=1\)">\(G^j=1\)</span>, and
+<span class="math math-display" data-tex="\[
+c=0\ \Longleftrightarrow\ L/K\text{ is unramified},\qquad
+c=\max_\chi a(\chi).
+\tag{13}
+\]">\[
+c=0\ \Longleftrightarrow\ L/K\text{ is unramified},\qquad
+c=\max_\chi a(\chi).
+\tag{13}
+\]</span>
+For a ramified character, <span class="math" data-tex="\(a(\chi)\)">\(a(\chi)\)</span> is one plus its last upper jump; an unramified character has exponent zero.</p>
+<p><strong>Proof.</strong> Theorem 10.2 identifies the image of <span class="math" data-tex="\(U^{(j)}\)">\(U^{(j)}\)</span> with <span class="math" data-tex="\(G^j\)">\(G^j\)</span>, and the norm group is the symbol kernel. This gives the first characterization. The condition <span class="math" data-tex="\(G^0=1\)">\(G^0=1\)</span> is trivial inertia, equivalently unramifiedness.</p>
+<p>Characters separate elements of a finite abelian group. The finite character lemma in <a href="hilberts-theorem-90-and-kummer-theory.html">Hilbert’s Theorem 90 and Kummer theory</a>, section 4, proves this explicitly: choose a nontrivial character on the cyclic subgroup generated by a nonidentity element and extend it one finite cyclic enlargement at a time. Consequently <span class="math" data-tex="\(G^j=1\)">\(G^j=1\)</span> exactly when every character is trivial on it. Taking the least <span class="math" data-tex="\(j\)">\(j\)</span> gives the maximum in (13).</p>
+<p>If <span class="math" data-tex="\(a(\chi)=c_\chi\geq1\)">\(a(\chi)=c_\chi\geq1\)</span>, the character is nontrivial on <span class="math" data-tex="\(G^{c_\chi-1}\)">\(G^{c_\chi-1}\)</span> and trivial on <span class="math" data-tex="\(G^{c_\chi}\)">\(G^{c_\chi}\)</span>. The real-index formula (10) makes it nontrivial through <span class="math" data-tex="\(v=c_\chi-1\)">\(v=c_\chi-1\)</span> and trivial at all <span class="math" data-tex="\(v&gt;c_\chi-1\)">\(v&gt;c_\chi-1\)</span>. Its last upper jump is therefore <span class="math" data-tex="\(c_\chi-1\)">\(c_\chi-1\)</span>. If <span class="math" data-tex="\(a(\chi)=0\)">\(a(\chi)=0\)</span>, it is trivial on inertia and has no nonnegative ramification jump. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the full cyclotomic extension <span class="math" data-tex="\(\mathbf Q_p(\zeta_{p^n})/\mathbf Q_p\)">\(\mathbf Q_p(\zeta_{p^n})/\mathbf Q_p\)</span>, its norm group is <span class="math" data-tex="\(p^{\mathbf Z}(1+p^n\mathbf Z_p)\)">\(p^{\mathbf Z}(1+p^n\mathbf Z_p)\)</span>. The conductor exponent is <span class="math" data-tex="\(n\)">\(n\)</span>, except for <span class="math" data-tex="\(p=2,n=1\)">\(p=2,n=1\)</span>, when the extension is trivial and its exponent is zero.</p>
+<h2 id="5-discriminants-as-sums-of-conductors">5. Discriminants as sums of conductors</h2>
+<p>Let <span class="math" data-tex="\(\mathfrak d_{L/K}\)">\(\mathfrak d_{L/K}\)</span> denote the discriminant ideal, defined by the determinant of the trace matrix in an integral <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>-basis. We first record explicitly its relation to the different:
+<span class="math math-display" data-tex="\[
+v_K(\mathfrak d_{L/K})=f(L/K)\,\delta_{L/K}.
+\tag{14}
+\]">\[
+v_K(\mathfrak d_{L/K})=f(L/K)\,\delta_{L/K}.
+\tag{14}
+\]</span>
+Indeed, if <span class="math" data-tex="\(T\)">\(T\)</span> is that invertible trace matrix, the trace dual is <span class="math" data-tex="\(T^{-1}\mathcal O_K^{[L:K]}\)">\(T^{-1}\mathcal O_K^{[L:K]}\)</span>, while the integral lattice is <span class="math" data-tex="\(\mathcal O_K^{[L:K]}\)">\(\mathcal O_K^{[L:K]}\)</span>. The quotient of the former by the latter has length <span class="math" data-tex="\(v_K(\det T)\)">\(v_K(\det T)\)</span>. To see the length assertion over a DVR, choose an entry of <span class="math" data-tex="\(T\)">\(T\)</span> of smallest valuation, move it to the first position, and use integral row and column operations to eliminate its row and column: it divides every entry. Repeat on the smaller matrix. This gives a diagonal matrix up to invertible integral operations; the quotient length and determinant valuation are both the sum of its diagonal valuations.</p>
+<p>By the definition of the different, the trace dual is <span class="math" data-tex="\(\mathfrak P_L^{-\delta}\)">\(\mathfrak P_L^{-\delta}\)</span>. Its quotient by <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span> has <span class="math" data-tex="\(\delta\)">\(\delta\)</span> successive quotients isomorphic to <span class="math" data-tex="\(\kappa_L\)">\(\kappa_L\)</span>, each of length <span class="math" data-tex="\(f(L/K)\)">\(f(L/K)\)</span> over <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. This proves (14) directly, including its residue-degree factor.</p>
+<h3 id="theorem-10-5-the-local-conductor-discriminant-formula">Theorem 10.5. The local conductor–discriminant formula</h3>
+<p>For finite abelian <span class="math" data-tex="\(L/K\)">\(L/K\)</span>,
+<span class="math math-display" data-tex="\[
+v_K(\mathfrak d_{L/K})=\sum_{\chi\in\widehat G}a(\chi).
+\tag{15}
+\]">\[
+v_K(\mathfrak d_{L/K})=\sum_{\chi\in\widehat G}a(\chi).
+\tag{15}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\epsilon_\chi(H)=1\)">\(\epsilon_\chi(H)=1\)</span> if <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is nontrivial on <span class="math" data-tex="\(H\)">\(H\)</span>, and 0 otherwise. Proposition 10.4 and Hasse–Arf give
+<span class="math math-display" data-tex="\[
+a(\chi)=\epsilon_\chi(G_0)
+           +\int_0^\infty\epsilon_\chi(G^v)\,dv.
+\]">\[
+a(\chi)=\epsilon_\chi(G_0)
+           +\int_0^\infty\epsilon_\chi(G^v)\,dv.
+\]</span>
+For a ramified character the integral is the length of the interval from zero to its last upper jump, namely <span class="math" data-tex="\(a(\chi)-1\)">\(a(\chi)-1\)</span>; for an unramified character both terms vanish. Substitute <span class="math" data-tex="\(v=\phi(t)\)">\(v=\phi(t)\)</span> and use (1), whose ceiling convention makes <span class="math" data-tex="\(G_t=G_j\)">\(G_t=G_j\)</span> on <span class="math" data-tex="\(j-1&lt;t\leq j\)">\(j-1&lt;t\leq j\)</span>. We get
+<span class="math math-display" data-tex="\[
+a(\chi)=\sum_{j\geq0}
+          \frac{|G_j|}{|G_0|}\epsilon_\chi(G_j).
+\tag{16}
+\]">\[
+a(\chi)=\sum_{j\geq0}
+          \frac{|G_j|}{|G_0|}\epsilon_\chi(G_j).
+\tag{16}
+\]</span>
+The <span class="math" data-tex="\(j=0\)">\(j=0\)</span> term has weight 1.</p>
+<p>A finite abelian group <span class="math" data-tex="\(B\)">\(B\)</span> has exactly <span class="math" data-tex="\(|B|\)">\(|B|\)</span> complex characters. One proof is induction: restriction to a cyclic subgroup <span class="math" data-tex="\(C\)">\(C\)</span> is onto by the extension argument above, its kernel is the character group of <span class="math" data-tex="\(B/C\)">\(B/C\)</span>, and <span class="math" data-tex="\(C\)">\(C\)</span> has <span class="math" data-tex="\(|C|\)">\(|C|\)</span> characters. In particular, the number of characters of <span class="math" data-tex="\(G\)">\(G\)</span> trivial on <span class="math" data-tex="\(G_j\)">\(G_j\)</span> is <span class="math" data-tex="\(|G/G_j|\)">\(|G/G_j|\)</span>. Summing (16) thus gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_\chi a(\chi)
+ &amp;=\sum_{j\geq0}\frac{|G_j|}{|G_0|}
+                \left(|G|-\frac{|G|}{|G_j|}\right)\\
+ &amp;=\frac{|G|}{|G_0|}\sum_{j\geq0}(|G_j|-1)\\
+ &amp;=f(L/K)\delta_{L/K}
+ =v_K(\mathfrak d_{L/K}),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_\chi a(\chi)
+ &amp;=\sum_{j\geq0}\frac{|G_j|}{|G_0|}
+                \left(|G|-\frac{|G|}{|G_j|}\right)\\
+ &amp;=\frac{|G|}{|G_0|}\sum_{j\geq0}(|G_j|-1)\\
+ &amp;=f(L/K)\delta_{L/K}
+ =v_K(\mathfrak d_{L/K}),
+\end{aligned}
+\]</span>
+by (3), inertia order <span class="math" data-tex="\(|G_0|=e(L/K)\)">\(|G_0|=e(L/K)\)</span>, and (14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(\mathbf Q_3(\zeta_9)\)">\(\mathbf Q_3(\zeta_9)\)</span>, the group is cyclic of order 6. Of its six characters, one is trivial, one is a nontrivial tame character, and four are nontrivial on the order-three wild subgroup. Their exponents are <span class="math" data-tex="\(0,1,2,2,2,2\)">\(0,1,2,2,2,2\)</span>, summing to 9.</p>
+<h2 id="6-exercises-and-complete-solutions">6. Exercises and complete solutions</h2>
+<h3 id="exercise-1-easy">Exercise 1 — easy</h3>
+<p>Compute the conductor of <span class="math" data-tex="\(\mathbf Q_p(\zeta_{p^n})/\mathbf Q_p\)">\(\mathbf Q_p(\zeta_{p^n})/\mathbf Q_p\)</span> from its norm group.</p>
+<p><strong>Solution.</strong> The norm group is <span class="math" data-tex="\(p^{\mathbf Z}U^{(n)}\)">\(p^{\mathbf Z}U^{(n)}\)</span>, so <span class="math" data-tex="\(U^{(n)}\)">\(U^{(n)}\)</span> is contained in it. If <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, the element <span class="math" data-tex="\(1+p^{n-1}\)">\(1+p^{n-1}\)</span> belongs to <span class="math" data-tex="\(U^{(n-1)}\)">\(U^{(n-1)}\)</span> and not to <span class="math" data-tex="\(U^{(n)}\)">\(U^{(n)}\)</span>, so the least level is <span class="math" data-tex="\(n\)">\(n\)</span>. If <span class="math" data-tex="\(n=1,p&gt;2\)">\(n=1,p&gt;2\)</span>, a unit with residue different from 1 shows that <span class="math" data-tex="\(U\)">\(U\)</span> is not contained, while <span class="math" data-tex="\(U^{(1)}\)">\(U^{(1)}\)</span> is; the exponent is 1. If <span class="math" data-tex="\(n=1,p=2\)">\(n=1,p=2\)</span>, all units already lie in <span class="math" data-tex="\(U^{(1)}\)">\(U^{(1)}\)</span>, the norm group is the entire multiplicative group, and the exponent is 0. Thus the conductor ideal is <span class="math" data-tex="\(p^n\mathbf Z_p\)">\(p^n\mathbf Z_p\)</span> except in this trivial case, when it is <span class="math" data-tex="\(\mathbf Z_2\)">\(\mathbf Z_2\)</span>.</p>
+<h3 id="exercise-2-medium">Exercise 2 — medium</h3>
+<p>Compute the norm groups and conductors of all quadratic extensions of <span class="math" data-tex="\(\mathbf Q_2\)">\(\mathbf Q_2\)</span>.</p>
+<p><strong>Solution.</strong> First, an odd <span class="math" data-tex="\(2\)">\(2\)</span>-adic unit is a square exactly when it is <span class="math" data-tex="\(1\)">\(1\)</span> modulo 8. Necessity follows by squaring odd residues. For sufficiency, start a root modulo 8 and inductively lift a root <span class="math" data-tex="\(z\)">\(z\)</span> modulo <span class="math" data-tex="\(2^r\)">\(2^r\)</span>, <span class="math" data-tex="\(r\geq3\)">\(r\geq3\)</span>: replacing <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(z+2^{r-1}\)">\(z+2^{r-1}\)</span> changes its square by <span class="math" data-tex="\(2^rz\)">\(2^rz\)</span> modulo <span class="math" data-tex="\(2^{r+1}\)">\(2^{r+1}\)</span>, toggling the required next bit. These compatible corrections converge and square to the given unit. Valuation parity and the four odd residues modulo 8 therefore give eight square classes, with the seven nonsquare representatives in the following table. For <span class="math" data-tex="\(d\)">\(d\)</span> in its first column put <span class="math" data-tex="\(L_d=\mathbf Q_2(\sqrt d)\)">\(L_d=\mathbf Q_2(\sqrt d)\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(d\)">\(d\)</span></th>
+<th>Norm group <span class="math" data-tex="\(N_{L_d/\mathbf Q_2}L_d^\times\)">\(N_{L_d/\mathbf Q_2}L_d^\times\)</span></th>
+<th style="text-align:right">Conductor exponent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td><span class="math" data-tex="\(2^{2\mathbf Z}\mathbf Z_2^\times\)">\(2^{2\mathbf Z}\mathbf Z_2^\times\)</span></td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(2^{\mathbf Z}(1+4\mathbf Z_2)\)">\(2^{\mathbf Z}(1+4\mathbf Z_2)\)</span></td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-5\)">\(-5\)</span></td>
+<td><span class="math" data-tex="\(6^{\mathbf Z}(1+4\mathbf Z_2)\)">\(6^{\mathbf Z}(1+4\mathbf Z_2)\)</span></td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\((-2)^{\mathbf Z}\{u\mid u\bmod8\in\{1,7\}\}\)">\((-2)^{\mathbf Z}\{u\mid u\bmod8\in\{1,7\}\}\)</span></td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+<td><span class="math" data-tex="\(2^{\mathbf Z}\{u\mid u\bmod8\in\{1,3\}\}\)">\(2^{\mathbf Z}\{u\mid u\bmod8\in\{1,3\}\}\)</span></td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(10\)">\(10\)</span></td>
+<td><span class="math" data-tex="\((-10)^{\mathbf Z}\{u\mid u\bmod8\in\{1,7\}\}\)">\((-10)^{\mathbf Z}\{u\mid u\bmod8\in\{1,7\}\}\)</span></td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-10\)">\(-10\)</span></td>
+<td><span class="math" data-tex="\(10^{\mathbf Z}\{u\mid u\bmod8\in\{1,3\}\}\)">\(10^{\mathbf Z}\{u\mid u\bmod8\in\{1,3\}\}\)</span></td>
+<td style="text-align:right">3</td>
+</tr>
+</tbody>
+</table>
+<p>In the last four rows the displayed <span class="math" data-tex="\(u\)">\(u\)</span> ranges over <span class="math" data-tex="\(\mathbf Z_2^\times\)">\(\mathbf Z_2^\times\)</span>. We justify every row. The field <span class="math" data-tex="\(L_5\)">\(L_5\)</span> is the unique unramified quadratic extension, as proved in the unramified-extension lesson, so its norm group is the first row. The others are ramified: they are distinct quadratic fields by the Kummer correspondence in lesson 3 and the distinct square classes, and cannot be that unique unramified field.</p>
+<p>For any ramified quadratic field, norm valuations are all integers, since <span class="math" data-tex="\(v_2(Nx)=f\,v_L(x)=v_L(x)\)">\(v_2(Nx)=f\,v_L(x)=v_L(x)\)</span>. Finite reciprocity gives norm index 2; adjusting valuations by a norm shows that its unit norm subgroup has index 2 in <span class="math" data-tex="\(\mathbf Z_2^\times\)">\(\mathbf Z_2^\times\)</span>.</p>
+<p>For <span class="math" data-tex="\(d=-1,-5\)">\(d=-1,-5\)</span>, a norm is <span class="math" data-tex="\(x^2+cy^2\)">\(x^2+cy^2\)</span> with <span class="math" data-tex="\(c=1,5\)">\(c=1,5\)</span>. If the minimum of <span class="math" data-tex="\(v_2(x),v_2(y)\)">\(v_2(x),v_2(y)\)</span> is a negative integer <span class="math" data-tex="\(r\)">\(r\)</span>, factor out <span class="math" data-tex="\(2^{2r}\)">\(2^{2r}\)</span>. The remaining norm has valuation 0 when just one scaled coordinate is odd, and valuation 1 when both are odd, since <span class="math" data-tex="\(1+c\equiv2\pmod4\)">\(1+c\equiv2\pmod4\)</span>. It cannot give a unit. Thus a unit norm has integral coordinates, exactly one odd, and is 1 modulo 4. This residue condition has index 2, so the preceding index argument proves that all <span class="math" data-tex="\(1+4\mathbf Z_2\)">\(1+4\mathbf Z_2\)</span> are unit norms. The elements <span class="math" data-tex="\(1+i\)">\(1+i\)</span> and <span class="math" data-tex="\(1+\sqrt{-5}\)">\(1+\sqrt{-5}\)</span> have norms 2 and 6, giving the two full norm groups.</p>
+<p>For <span class="math" data-tex="\(d=2\varepsilon\)">\(d=2\varepsilon\)</span>, <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> odd, the terms in <span class="math" data-tex="\(x^2-2\varepsilon y^2\)">\(x^2-2\varepsilon y^2\)</span> have valuations <span class="math" data-tex="\(2v_2(x)\)">\(2v_2(x)\)</span> and <span class="math" data-tex="\(1+2v_2(y)\)">\(1+2v_2(y)\)</span>, which are distinct. A unit norm requires <span class="math" data-tex="\(x\)">\(x\)</span> odd and <span class="math" data-tex="\(y\)">\(y\)</span> integral. Modulo 8 its residue is 1 if <span class="math" data-tex="\(y\)">\(y\)</span> is even, and <span class="math" data-tex="\(1-2\varepsilon\)">\(1-2\varepsilon\)</span> if <span class="math" data-tex="\(y\)">\(y\)</span> is odd. For <span class="math" data-tex="\(\varepsilon=1,5\)">\(\varepsilon=1,5\)</span> these are <span class="math" data-tex="\(\{1,7\}\)">\(\{1,7\}\)</span>, and for <span class="math" data-tex="\(\varepsilon=-1,-5\)">\(\varepsilon=-1,-5\)</span> they are <span class="math" data-tex="\(\{1,3\}\)">\(\{1,3\}\)</span>. Each inverse image is an index-two subgroup of the unit group, so is the exact unit norm subgroup. The norm of <span class="math" data-tex="\(\sqrt d\)">\(\sqrt d\)</span> is <span class="math" data-tex="\(-d\)">\(-d\)</span>, with valuation 1, supplying each displayed generator.</p>
+<p>Finally <span class="math" data-tex="\(U^{(1)}=U\)">\(U^{(1)}=U\)</span> over <span class="math" data-tex="\(\mathbf Q_2\)">\(\mathbf Q_2\)</span>. The odd ramified rows contain <span class="math" data-tex="\(U^{(2)}\)">\(U^{(2)}\)</span>, but not all units, so have exponent 2. The even rows contain <span class="math" data-tex="\(U^{(3)}\)">\(U^{(3)}\)</span> and exclude the unit 5 in <span class="math" data-tex="\(U^{(2)}\)">\(U^{(2)}\)</span>, so have exponent 3. The unramified row has exponent 0.</p>
+<p>These also equal the discriminant exponents. For the odd ramified rows, <span class="math" data-tex="\(1+\sqrt d\)">\(1+\sqrt d\)</span> is a uniformizer, and integral uniformizer generation gives <span class="math" data-tex="\(\mathcal O_{L_d}=\mathbf Z_2[\sqrt d]\)">\(\mathcal O_{L_d}=\mathbf Z_2[\sqrt d]\)</span>. For the even rows, <span class="math" data-tex="\(X^2-d\)">\(X^2-d\)</span> is Eisenstein and gives the same integral basis <span class="math" data-tex="\(1,\sqrt d\)">\(1,\sqrt d\)</span>. Its trace matrix is diagonal with entries <span class="math" data-tex="\(2,2d\)">\(2,2d\)</span>, so its discriminant is <span class="math" data-tex="\(4d\)">\(4d\)</span>, of valuation 2 for the odd rows and 3 for the even rows. The unramified different, hence discriminant, is trivial by (3) and (14). Theorem 10.5 gives the same values from the sole nontrivial character.</p>
+<h3 id="exercise-3-medium">Exercise 3 — medium</h3>
+<p>Verify the conductor–discriminant formula for <span class="math" data-tex="\(\mathbf Q_3(\zeta_9)\)">\(\mathbf Q_3(\zeta_9)\)</span>.</p>
+<p><strong>Solution.</strong> Its group has order 6, inertia is the whole group, and the first upper group has order 3; the second is identity. Exactly two characters are trivial on that order-three subgroup. They have exponents 0 and 1. The other four have exponent 2, so their total is 9.</p>
+<p>Independently (5) gives lower groups of orders <span class="math" data-tex="\(6,3,3\)">\(6,3,3\)</span> at indices <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>, then identity. Hilbert's formula yields <span class="math" data-tex="\(\delta=(6-1)+(3-1)+(3-1)=9\)">\(\delta=(6-1)+(3-1)+(3-1)=9\)</span>. The extension is totally ramified, so <span class="math" data-tex="\(f=1\)">\(f=1\)</span>, and (14) gives discriminant exponent 9. This agrees with the character sum.</p>
+<h3 id="exercise-4-hard">Exercise 4 — hard</h3>
+<p>Deduce Hasse–Arf for every finite abelian extension using the unit-filtration theorem, including real indices.</p>
+<p><strong>Solution.</strong> Theorem 10.2 proves that for every real <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span> the group is the image of <span class="math" data-tex="\(U^{(\lceil v\rceil)}\)">\(U^{(\lceil v\rceil)}\)</span>. If <span class="math" data-tex="\(v\)">\(v\)</span> lies strictly between consecutive integers, choose <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> small enough that <span class="math" data-tex="\(v+\epsilon\)">\(v+\epsilon\)</span> remains in the same interval. Their ceilings, and hence their groups, agree, so <span class="math" data-tex="\(v\)">\(v\)</span> cannot be a jump. At a positive integer the group may decrease immediately afterward; these are precisely the permitted locations. The filtration on <span class="math" data-tex="\((-1,0]\)">\((-1,0]\)</span> is constantly inertia, leaving only the integer locations <span class="math" data-tex="\(-1\)">\(-1\)</span> and 0 there. This proves the assertion for all jumps.</p>
+<p>The real-index formula comes from the explicit Lubin–Tate rescaling and Herbrand's quotient theorem, both proved before invoking Hasse–Arf. Thus there is no circular use of integral jumps in obtaining it.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>The division-point motion calculation determines all real-index ramification groups. The quotient filtration gives Hasse–Arf for every finite abelian local extension. The conductor, different and character-sum arguments retain their exact local-field prerequisites.</p>
+<ul>
+<li><a href="https://arxiv.org/abs/math/0606108v2">Teruyoshi Yoshida, Local class field theory via Lubin–Tate theory, arXiv:math/0606108v2</a>.</li>
+<li><a href="https://kskedlaya.org/cft/sec_abstractcft1.html">Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="explicit-local-reciprocity-and-existence.html">← Explicit local reciprocity and the existence theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="hilbert-symbols-and-local-conics.html">Hilbert symbols and local conics →</a></span></nav>
+<p class="small source-link"><a href="files/abelian-ramification-conductors-and-hasse-arf.md">Markdown source of this lesson</a> · <a download href="files/abelian-ramification-conductors-and-hasse-arf.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

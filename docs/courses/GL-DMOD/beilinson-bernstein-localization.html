@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beilinson-Bernstein localization · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/beilinson-bernstein-localization.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Lesson 8 of 10</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="beilinson-bernstein-localization">Beilinson-Bernstein localization</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The projective line is not affine: a line bundle can have higher cohomology or no global sections. Yet a quasi-coherent module carrying an ordinary D-action on it has neither obstruction. Differentiation forces enough global sections to recover the module. This is the simplest localization theorem, and we will prove it for every quasi-coherent D-module, not only for connections or holonomic modules.</p>
+<p>We work over an algebraically closed characteristic-zero field <span class="math" data-tex="$k$">$k$</span>, with left D-modules quasi-coherent over <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>. The general flag-variety theorem is stated over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. The background is semisimple Lie algebras, Verma modules and category <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>, and line bundles and quasi-coherent cohomology on projective space. Category <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span> is the subject of the planned prerequisite <em>Category O and the Kazhdan-Lusztig conjecture</em> in the semisimple Lie algebra course. Twists and adjunctions use <a href="equivariant-and-twisted-d-modules.html">Equivariant and twisted D-modules</a>.</p>
+<p>Our scalar twist on <span class="math" data-tex="$\mathbb P^1$">$\mathbb P^1$</span> is
+<span class="math math-display" data-tex="\[
+\mathcal D^{(n)}=\mathcal D_{\mathcal O(1)}^n,\qquad
+\mathcal D^{(0)}=\mathcal D_{\mathbb P^1}.
+\]">\[
+\mathcal D^{(n)}=\mathcal D_{\mathcal O(1)}^n,\qquad
+\mathcal D^{(0)}=\mathcal D_{\mathbb P^1}.
+\]</span>
+For integer <span class="math" data-tex="$n$">$n$</span> this acts on <span class="math" data-tex="$\mathcal O(n)$">$\mathcal O(n)$</span>. The shifted parameter is <span class="math" data-tex="$\nu=n+1$">$\nu=n+1$</span>: regularity means <span class="math" data-tex="$\nu\ne0$">$\nu\ne0$</span>, and integral dominance means <span class="math" data-tex="$\nu&gt;0$">$\nu&gt;0$</span>. Thus the singular scalar twist is <span class="math" data-tex="$n=-1$">$n=-1$</span>, not <span class="math" data-tex="$n=0$">$n=0$</span>.</p>
+<h2 id="1-a-ring-visible-in-two-charts">1. A ring visible in two charts</h2>
+<p>On the chart with coordinate <span class="math" data-tex="$x$">$x$</span>, put
+<span class="math math-display" data-tex="\[
+e=\partial_x,\qquad h=-2x\partial_x+n,\qquad
+f=-x^2\partial_x+nx.
+\]">\[
+e=\partial_x,\qquad h=-2x\partial_x+n,\qquad
+f=-x^2\partial_x+nx.
+\]</span>
+On the second chart <span class="math" data-tex="$y=x^{-1}$">$y=x^{-1}$</span>, the twist transition is
+<span class="math" data-tex="$\partial_x=-y^2\partial_y+ny$">$\partial_x=-y^2\partial_y+ny$</span>. The three operators are global and satisfy
+<span class="math math-display" data-tex="\[
+[h,e]=2e,\qquad[h,f]=-2f,\qquad[e,f]=h.
+\]">\[
+[h,e]=2e,\qquad[h,f]=-2f,\qquad[e,f]=h.
+\]</span>
+Fix the Casimir
+<span class="math math-display" data-tex="\[
+\mathsf C=h^2+2h+4fe.
+\]">\[
+\mathsf C=h^2+2h+4fe.
+\]</span>
+It acts as the scalar <span class="math" data-tex="$n(n+2)$">$n(n+2)$</span> in the ring of global operators. The preceding lesson, Formula (3.7), proved for every scalar <span class="math" data-tex="$n\in k$">$n\in k$</span> that
+<span class="math math-display" data-tex="\[
+U_n:=\Gamma(\mathbb P^1,\mathcal D^{(n)})
+\simeq U(\mathfrak{sl}_2)/(\mathsf C-n(n+2)).                \tag{1.1}
+\]">\[
+U_n:=\Gamma(\mathbb P^1,\mathcal D^{(n)})
+\simeq U(\mathfrak{sl}_2)/(\mathsf C-n(n+2)).                \tag{1.1}
+\]</span>
+The proof identified the order symbols with the even Veronese ring
+<span class="math" data-tex="$\bigoplus_{m\geq0}H^0(\mathcal O(2m))$">$\bigoplus_{m\geq0}H^0(\mathcal O(2m))$</span>, and checked that the Casimir generates the entire kernel. We use that proved ring calculation here.</p>
+<p>For <span class="math" data-tex="$n=0$">$n=0$</span>, <span class="math" data-tex="$e,h,f$">$e,h,f$</span> are just vector fields and <span class="math" data-tex="$\mathsf C=0$">$\mathsf C=0$</span>. This is the central character of the trivial representation, even though many infinite-dimensional representations also have it.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+\Delta_n(V)=\mathcal D^{(n)}\otimes_{U_n}V,\qquad
+\Gamma_n(M)=\Gamma(\mathbb P^1,M).
+                                                               \tag{1.2}
+\]">\[
+\Delta_n(V)=\mathcal D^{(n)}\otimes_{U_n}V,\qquad
+\Gamma_n(M)=\Gamma(\mathbb P^1,M).
+                                                               \tag{1.2}
+\]</span>
+Tensor-Hom adjunction gives <span class="math" data-tex="$\Delta_n\dashv\Gamma_n$">$\Delta_n\dashv\Gamma_n$</span>. We still have to prove that the adjunction maps are isomorphisms. The ring calculation alone does not do this.</p>
+<h2 id="2-jets-supply-the-missing-global-sections">2. Jets supply the missing global sections</h2>
+<p>We first prove a geometric lemma. All tensor products involving <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span> on the right below use its right <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-module structure.</p>
+<p><strong>Lemma 2.1.</strong> For every integer <span class="math" data-tex="$r\geq0$">$r\geq0$</span>, the induced left D-module
+<span class="math math-display" data-tex="\[
+P_r=\mathcal D_{\mathbb P^1}\otimes_{\mathcal O}\mathcal O(-r)
+                                                               \tag{2.1}
+\]">\[
+P_r=\mathcal D_{\mathbb P^1}\otimes_{\mathcal O}\mathcal O(-r)
+                                                               \tag{2.1}
+\]</span>
+is generated by global sections as an <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-module and has <span class="math" data-tex="$H^1(P_r)=0$">$H^1(P_r)=0$</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$J^m\mathcal O(r)$">$J^m\mathcal O(r)$</span> denote the bundle of <span class="math" data-tex="$m$">$m$</span>-jets: its fiber at a point consists of local sections modulo those vanishing to order <span class="math" data-tex="$m+1$">$m+1$</span>. In a coordinate it has basis <span class="math" data-tex="$1,t,\ldots,t^m$">$1,t,\ldots,t^m$</span> times a frame. Evaluating a differential operator of order at most <span class="math" data-tex="$m$">$m$</span> on a jet gives a perfect pairing, with <span class="math" data-tex="$\partial_t^j(t^j)=j!$">$\partial_t^j(t^j)=j!$</span>. Thus
+<span class="math math-display" data-tex="\[
+F_m P_r\simeq\bigl(J^m\mathcal O(r)\bigr)^*.                 \tag{2.2}
+\]">\[
+F_m P_r\simeq\bigl(J^m\mathcal O(r)\bigr)^*.                 \tag{2.2}
+\]</span>
+This also follows directly by regarding <span class="math" data-tex="$P_r$">$P_r$</span> as differential operators from <span class="math" data-tex="$\mathcal O(r)$">$\mathcal O(r)$</span> to <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>. It explains why the right <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-tensor structure in (2.1) matters.</p>
+<p>The evaluation map
+<span class="math math-display" data-tex="\[
+H^0(\mathcal O(r))\otimes\mathcal O
+\longrightarrow J^r\mathcal O(r)                           \tag{2.3}
+\]">\[
+H^0(\mathcal O(r))\otimes\mathcal O
+\longrightarrow J^r\mathcal O(r)                           \tag{2.3}
+\]</span>
+is an isomorphism. Both bundles have rank <span class="math" data-tex="$r+1$">$r+1$</span>. At any finite point, polynomials of degree at most <span class="math" data-tex="$r$">$r$</span> prescribe arbitrary <span class="math" data-tex="$r$">$r$</span>-jets by Taylor expansion. The other coordinate chart gives the same assertion at infinity. Hence (2.3) is an isomorphism on every fiber and therefore on bundles. Dualizing yields
+<span class="math math-display" data-tex="\[
+F_rP_r\simeq\mathcal O^{\oplus(r+1)}.
+\]">\[
+F_rP_r\simeq\mathcal O^{\oplus(r+1)}.
+\]</span></p>
+<p>For <span class="math" data-tex="$m&gt;r$">$m&gt;r$</span>, the symbol exact sequence is
+<span class="math math-display" data-tex="\[
+0\to F_{m-1}P_r\to F_mP_r\to\mathcal O(2m-r)\to0.           \tag{2.4}
+\]">\[
+0\to F_{m-1}P_r\to F_mP_r\to\mathcal O(2m-r)\to0.           \tag{2.4}
+\]</span>
+On the two standard charts the Čech calculation for <span class="math" data-tex="$\mathcal O(a)$">$\mathcal O(a)$</span> gives <span class="math" data-tex="$H^1(\mathcal O(a))=0$">$H^1(\mathcal O(a))=0$</span> for <span class="math" data-tex="$a\geq-1$">$a\geq-1$</span>; for <span class="math" data-tex="$a\geq0$">$a\geq0$</span> it is also generated by its homogeneous polynomial sections. Starting with <span class="math" data-tex="$F_rP_r$">$F_rP_r$</span>, (2.4) proves inductively that every <span class="math" data-tex="$F_mP_r$">$F_mP_r$</span>, <span class="math" data-tex="$m\geq r$">$m\geq r$</span>, has vanishing <span class="math" data-tex="$H^1$">$H^1$</span>. Its symbol sections lift globally, and those lifts together with generators of <span class="math" data-tex="$F_{m-1}P_r$">$F_{m-1}P_r$</span> generate <span class="math" data-tex="$F_mP_r$">$F_mP_r$</span> at every point.</p>
+<p>Finally <span class="math" data-tex="$P_r=\varinjlim_m F_mP_r$">$P_r=\varinjlim_m F_mP_r$</span>. Quasi-coherent cohomology commutes with this filtered colimit: use the two affine charts and their affine intersection, so the Čech complex is a finite complex and filtered colimits are exact. This proves both assertions. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 2.2 (D-affinity of <span class="math" data-tex="$\mathbb P^1$">$\mathbb P^1$</span>).</strong> For every quasi-coherent left <span class="math" data-tex="$\mathcal D_{\mathbb P^1}$">$\mathcal D_{\mathbb P^1}$</span>-module <span class="math" data-tex="$M$">$M$</span>,
+<span class="math math-display" data-tex="\[
+H^i(\mathbb P^1,M)=0\quad(i&gt;0),
+\qquad
+\mathcal O\otimes_k\Gamma(M)\longrightarrow M
+\text{ is surjective}.                                    \tag{2.5}
+\]">\[
+H^i(\mathbb P^1,M)=0\quad(i&gt;0),
+\qquad
+\mathcal O\otimes_k\Gamma(M)\longrightarrow M
+\text{ is surjective}.                                    \tag{2.5}
+\]</span>
+In particular <span class="math" data-tex="$\Gamma$">$\Gamma$</span> is exact and detects nonzero D-modules.</p>
+<p><strong>Proof.</strong> Every quasi-coherent sheaf on projective space is generated by maps from negative line bundles. More explicitly, it is the filtered union of coherent subsheaves; after a sufficiently positive twist each such subsheaf is generated by finitely many sections. Thus there is an <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-linear surjection
+<span class="math" data-tex="$\bigoplus_\alpha\mathcal O(-r_\alpha)\to M$">$\bigoplus_\alpha\mathcal O(-r_\alpha)\to M$</span>, with <span class="math" data-tex="$r_\alpha\geq0$">$r_\alpha\geq0$</span>.
+Induction extends these maps to a D-linear surjection
+<span class="math math-display" data-tex="\[
+\bigoplus_\alpha P_{r_\alpha}\longrightarrow M.
+                                                               \tag{2.6}
+\]">\[
+\bigoplus_\alpha P_{r_\alpha}\longrightarrow M.
+                                                               \tag{2.6}
+\]</span>
+The image contains the original generating sections, so surjectivity really holds.</p>
+<p>Let <span class="math" data-tex="$K$">$K$</span> be the kernel. It is quasi-coherent over <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>. Lemma 2.1 and the same finite Čech complex show that the source of (2.6) has zero <span class="math" data-tex="$H^1$">$H^1$</span>, even for an infinite sum. Every quasi-coherent sheaf on this two-chart cover has zero <span class="math" data-tex="$H^2$">$H^2$</span>. The long exact sequence therefore gives <span class="math" data-tex="$H^1(M)=0$">$H^1(M)=0$</span>. Higher cohomology already vanishes for this cover.</p>
+<p>Every <span class="math" data-tex="$P_{r_\alpha}$">$P_{r_\alpha}$</span> is <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-generated by its global sections. Their images are global sections of <span class="math" data-tex="$M$">$M$</span> and generate the image of (2.6), which is all of <span class="math" data-tex="$M$">$M$</span>. This proves the second assertion. The long exact cohomology sequence makes <span class="math" data-tex="$\Gamma$">$\Gamma$</span> exact on D-modules; generation shows that <span class="math" data-tex="$\Gamma(M)=0$">$\Gamma(M)=0$</span> implies <span class="math" data-tex="$M=0$">$M=0$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The underlying sheaf in (2.5) need not be coherent over <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>. The proof applies, for example, to point modules and arbitrary direct sums.</p>
+<p><strong>Theorem 2.3 (localization for <span class="math" data-tex="$\mathbb P^1$">$\mathbb P^1$</span>).</strong> The functors in (1.2) at <span class="math" data-tex="$n=0$">$n=0$</span> are inverse exact equivalences
+<span class="math math-display" data-tex="\[
+\operatorname{Mod}_{\rm qc}(\mathcal D_{\mathbb P^1})
+\simeq U_0\text{-}\operatorname{Mod}.                       \tag{2.7}
+\]">\[
+\operatorname{Mod}_{\rm qc}(\mathcal D_{\mathbb P^1})
+\simeq U_0\text{-}\operatorname{Mod}.                       \tag{2.7}
+\]</span>
+They restrict to coherent D-modules and finitely generated <span class="math" data-tex="$U_0$">$U_0$</span>-modules.</p>
+<p><strong>Proof.</strong> First prove the unit <span class="math" data-tex="$V\to\Gamma\Delta_0(V)$">$V\to\Gamma\Delta_0(V)$</span> is an isomorphism for every <span class="math" data-tex="$U_0$">$U_0$</span>-module. Choose a free presentation
+<span class="math" data-tex="$U_0^{(I)}\to U_0^{(J)}\to V\to0$">$U_0^{(I)}\to U_0^{(J)}\to V\to0$</span>. The functor <span class="math" data-tex="$\Delta_0$">$\Delta_0$</span> is right exact, <span class="math" data-tex="$\Gamma$">$\Gamma$</span> is exact by Theorem 2.2, and <span class="math" data-tex="$\Gamma$">$\Gamma$</span> commutes with sums by the finite Čech calculation. For a free module the unit is the identity, since <span class="math" data-tex="$\Gamma(\mathcal D)=U_0$">$\Gamma(\mathcal D)=U_0$</span>. Taking cokernels of the two identical free presentations proves the assertion for <span class="math" data-tex="$V$">$V$</span>.</p>
+<p>The counit <span class="math" data-tex="$\Delta_0\Gamma(M)\to M$">$\Delta_0\Gamma(M)\to M$</span> is surjective by global generation. Its map on global sections is an isomorphism, by the unit just proved and the adjunction identity. Exactness gives <span class="math" data-tex="$\Gamma(K)=0$">$\Gamma(K)=0$</span> for its kernel. The detection statement in Theorem 2.2 gives <span class="math" data-tex="$K=0$">$K=0$</span>. Thus both adjunction maps are isomorphisms.</p>
+<p>If <span class="math" data-tex="$V$">$V$</span> is finitely generated, its localization is a quotient of a finite sum of <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span>, hence coherent. Conversely a coherent <span class="math" data-tex="$M$">$M$</span> is locally D-generated by finitely many sections. Global generation and quasi-compactness allow finitely many global sections to replace them. The resulting surjection <span class="math" data-tex="$\mathcal D^s\to M$">$\mathcal D^s\to M$</span> stays surjective under <span class="math" data-tex="$\Gamma$">$\Gamma$</span>, so <span class="math" data-tex="$\Gamma(M)$">$\Gamma(M)$</span> is finitely generated over <span class="math" data-tex="$U_0$">$U_0$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="3-positive-twists-and-the-singular-kernel">3. Positive twists and the singular kernel</h2>
+<p>The same elementary proof gives more than the untwisted case.</p>
+<p><strong>Proposition 3.1.</strong> For integer <span class="math" data-tex="$n\geq0$">$n\geq0$</span>, <span class="math" data-tex="$\Gamma_n$">$\Gamma_n$</span> and <span class="math" data-tex="$\Delta_n$">$\Delta_n$</span> are inverse equivalences between quasi-coherent <span class="math" data-tex="$\mathcal D^{(n)}$">$\mathcal D^{(n)}$</span>-modules and <span class="math" data-tex="$U_n$">$U_n$</span>-modules. For <span class="math" data-tex="$n=-1$">$n=-1$</span>, <span class="math" data-tex="$\Gamma_{-1}$">$\Gamma_{-1}$</span> is exact, but its kernel is
+<span class="math math-display" data-tex="\[
+\ker\Gamma_{-1}
+=\{\mathcal O(-1)\otimes_k V:V\in\operatorname{Vect}_k\},
+                                                               \tag{3.1}
+\]">\[
+\ker\Gamma_{-1}
+=\{\mathcal O(-1)\otimes_k V:V\in\operatorname{Vect}_k\},
+                                                               \tag{3.1}
+\]</span>
+with the canonical twisted D-action. In particular it is not an equivalence at the singular twist.</p>
+<p><strong>Proof.</strong> Integral Morita equivalence writes a twisted module uniquely as
+<span class="math" data-tex="$M=\mathcal O(n)\otimes N$">$M=\mathcal O(n)\otimes N$</span>, with <span class="math" data-tex="$N$">$N$</span> an ordinary D-module. By Theorem 2.2 there is an <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-linear surjection <span class="math" data-tex="$\mathcal O^{(I)}\to N$">$\mathcal O^{(I)}\to N$</span>. Tensoring gives a surjection <span class="math" data-tex="$\mathcal O(n)^{(I)}\to M$">$\mathcal O(n)^{(I)}\to M$</span>. For <span class="math" data-tex="$n\geq-1$">$n\geq-1$</span>, <span class="math" data-tex="$H^1(\mathcal O(n))=0$">$H^1(\mathcal O(n))=0$</span> and <span class="math" data-tex="$H^2$">$H^2$</span> of its kernel is zero. Hence <span class="math" data-tex="$H^1(M)=0$">$H^1(M)=0$</span>, proving exactness throughout this range. For <span class="math" data-tex="$n\geq0$">$n\geq0$</span>, <span class="math" data-tex="$\mathcal O(n)$">$\mathcal O(n)$</span> is generated by sections, so <span class="math" data-tex="$M$">$M$</span> is too. The free-presentation and counit argument of Theorem 2.3 applies verbatim with <span class="math" data-tex="$\mathcal D^{(n)}$">$\mathcal D^{(n)}$</span> and (1.1).</p>
+<p>For the kernel at <span class="math" data-tex="$n=-1$">$n=-1$</span>, suppose <span class="math" data-tex="$\Gamma(N(-1))=0$">$\Gamma(N(-1))=0$</span>. Since <span class="math" data-tex="$N$">$N$</span> is <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-generated by global sections, it is a filtered union of coherent images <span class="math" data-tex="$E$">$E$</span> of finite sums of <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>. Each <span class="math" data-tex="$E$">$E$</span> is globally generated and <span class="math" data-tex="$H^0(E(-1))=0$">$H^0(E(-1))=0$</span>. Its torsion subsheaf must vanish: any nonzero sheaf on finitely many points has a nonzero global section after every line twist, contradicting this equality. Thus <span class="math" data-tex="$E$">$E$</span> is a vector bundle.</p>
+<p>For any point <span class="math" data-tex="$p$">$p$</span>, the exact sequence
+<span class="math" data-tex="$0\to E(-p)\to E\to E|_p\to0$">$0\to E(-p)\to E\to E|_p\to0$</span> shows that <span class="math" data-tex="$\Gamma(E)\to E|_p$">$\Gamma(E)\to E|_p$</span> is injective. It is also surjective because <span class="math" data-tex="$E$">$E$</span> is globally generated. Hence the evaluation map <span class="math" data-tex="$\Gamma(E)\otimes\mathcal O\to E$">$\Gamma(E)\otimes\mathcal O\to E$</span> is an isomorphism on every fiber, and <span class="math" data-tex="$E$">$E$</span> is a trivial bundle. Maps between such bundles are constant matrices. Taking the filtered union gives
+<span class="math" data-tex="$N\simeq\mathcal O\otimes_k V$">$N\simeq\mathcal O\otimes_k V$</span>.</p>
+<p>Its D-action is the ordinary one. Indeed the difference from ordinary differentiation on <span class="math" data-tex="$1\otimes V$">$1\otimes V$</span> is a map into global sections of
+<span class="math" data-tex="$\Omega^1_{\mathbb P^1}\otimes_k V$">$\Omega^1_{\mathbb P^1}\otimes_k V$</span>, which are zero since <span class="math" data-tex="$\Omega^1=\mathcal O(-2)$">$\Omega^1=\mathcal O(-2)$</span>; this remains true for arbitrary <span class="math" data-tex="$V$">$V$</span>. Conversely <span class="math" data-tex="$\mathcal O(-1)\otimes V$">$\mathcal O(-1)\otimes V$</span> has no sections. This proves (3.1) for all quasi-coherent modules, not only coherent ones. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The Casimir at <span class="math" data-tex="$n=-1$">$n=-1$</span> is <span class="math" data-tex="$-1$">$-1$</span>, since <span class="math" data-tex="$n(n+2)=-1$">$n(n+2)=-1$</span>. The nonzero twisted line <span class="math" data-tex="$\mathcal O(-1)$">$\mathcal O(-1)$</span> has both <span class="math" data-tex="$H^0=0$">$H^0=0$</span> and <span class="math" data-tex="$H^1=0$">$H^1=0$</span>, so even derived global sections kills it. Exactness is therefore insufficient for localization.</p>
+<p>The unit <span class="math" data-tex="$V\to\Gamma_{-1}\Delta_{-1}V$">$V\to\Gamma_{-1}\Delta_{-1}V$</span> is still an isomorphism, by the free-presentation proof. Applying <span class="math" data-tex="$\Gamma_{-1}$">$\Gamma_{-1}$</span> to the counit shows that both its kernel and cokernel lie in (3.1). Thus after quotienting the abelian twisted category by this kernel, the counit becomes an isomorphism and gives an equivalence with <span class="math" data-tex="$U_{-1}$">$U_{-1}$</span>-modules. This is the precise quotient statement at the singular parameter.</p>
+<p>At <span class="math" data-tex="$n=-2$">$n=-2$</span> even exactness fails: the twisted module <span class="math" data-tex="$\mathcal O(-2)$">$\mathcal O(-2)$</span> has <span class="math" data-tex="$H^1=k$">$H^1=k$</span>. The two parameters <span class="math" data-tex="$0$">$0$</span> and <span class="math" data-tex="$-2$">$-2$</span> have the same Casimir scalar, but their global-section functors behave differently. A central character alone does not specify a favorable localization parameter.</p>
+<h2 id="4-the-general-flag-theorem-and-its-normalization">4. The general flag theorem and its normalization</h2>
+<p>Let <span class="math" data-tex="$G$">$G$</span> be simply connected semisimple over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, <span class="math" data-tex="$X=G/B$">$X=G/B$</span>, and <span class="math" data-tex="$\rho$">$\rho$</span> half the sum of the positive roots. To state the twist unambiguously, use the homogeneous line bundles <span class="math" data-tex="$\mathcal L(\eta)$">$\mathcal L(\eta)$</span> of Miličić's <em>Localization and Representation Theory of Reductive Lie Groups</em>, Chapter 2, where they are written <span class="math" data-tex="$\mathcal O(\eta)$">$\mathcal O(\eta)$</span>: for <span class="math" data-tex="$\mathrm{SL}_2$">$\mathrm{SL}_2$</span>, <span class="math" data-tex="$\mathcal L(m\rho)=\mathcal O(-m)$">$\mathcal L(m\rho)=\mathcal O(-m)$</span>. Our geometrically positive parameter <span class="math" data-tex="$\lambda$">$\lambda$</span> specifies operators on <span class="math" data-tex="$\mathcal L(-\lambda)$">$\mathcal L(-\lambda)$</span> in integral cases. In Miličić's notation this is
+<span class="math math-display" data-tex="\[
+\mathcal D^{(\lambda)}=\mathcal D^{\rm Mil}_{-\lambda-\rho}.
+                                                               \tag{4.1}
+\]">\[
+\mathcal D^{(\lambda)}=\mathcal D^{\rm Mil}_{-\lambda-\rho}.
+                                                               \tag{4.1}
+\]</span>
+For arbitrary complex <span class="math" data-tex="$\lambda$">$\lambda$</span> the TDO is defined by the analogous Cartan-torsor scalar reduction. The Harish-Chandra parameter of its central character, in Miličić's conventions, is <span class="math" data-tex="$-\lambda-\rho$">$-\lambda-\rho$</span>, considered modulo the Weyl group. Denote this character by <span class="math" data-tex="$\chi_\lambda^{\rm geom}$">$\chi_\lambda^{\rm geom}$</span>. At <span class="math" data-tex="$\lambda=0$">$\lambda=0$</span> it is the character of the trivial representation.</p>
+<p><strong>Theorem 4.1 (Beilinson-Bernstein; statement).</strong> For every such parameter,
+<span class="math math-display" data-tex="\[
+\Gamma(X,\mathcal D^{(\lambda)})
+\simeq U(\mathfrak g)/
+U(\mathfrak g)\ker\chi_\lambda^{\rm geom}.                  \tag{4.2}
+\]">\[
+\Gamma(X,\mathcal D^{(\lambda)})
+\simeq U(\mathfrak g)/
+U(\mathfrak g)\ker\chi_\lambda^{\rm geom}.                  \tag{4.2}
+\]</span>
+If for every positive root <span class="math" data-tex="$\alpha$">$\alpha$</span>,
+<span class="math math-display" data-tex="\[
+\langle\lambda+\rho,\alpha^\vee\rangle\notin\mathbb Z_{&lt;0},
+                                                               \tag{4.3}
+\]">\[
+\langle\lambda+\rho,\alpha^\vee\rangle\notin\mathbb Z_{&lt;0},
+                                                               \tag{4.3}
+\]</span>
+global sections is exact on quasi-coherent <span class="math" data-tex="$\mathcal D^{(\lambda)}$">$\mathcal D^{(\lambda)}$</span>-modules. If also none of these pairings is zero, it is an equivalence with the modules over (4.2), inverse to localization. It restricts to coherent modules and finitely generated representations.</p>
+<p>For integral dominant <span class="math" data-tex="$\lambda$">$\lambda$</span>, all pairings in (4.3) are positive integers and the equivalence applies. In particular the ordinary flag variety is D-affine. The usual expression “dominant regular” refers here to the shifted parameter <span class="math" data-tex="$\lambda+\rho$">$\lambda+\rho$</span> and these conditions. For <span class="math" data-tex="$\mathrm{SL}_2$">$\mathrm{SL}_2$</span>, it reduces to the calculation <span class="math" data-tex="$\nu=n+1$">$\nu=n+1$</span> already fixed.</p>
+<p>Miličić's <em>Localization and Representation Theory of Reductive Lie Groups</em> proves this theorem for arbitrary complex parameters: Chapter 2 computes the global sections of the twisted operator rings and proves exactness of global sections, and Chapter 3, §1, proves the equivalence and its restriction to coherent modules and finitely generated representations. Its antidominance condition on <span class="math" data-tex="$-\lambda-\rho$">$-\lambda-\rho$</span>, that no pairing with a positive coroot is a positive integer, is (4.3), and its regular antidominant case is the equivalence. The theorem is due to Beilinson and Bernstein, <em>Localisation de <span class="math" data-tex="$\mathfrak g$">$\mathfrak g$</span>-modules</em>, C. R. Acad. Sci. Paris Sér. I Math. 292 (1981), 15–18. This lesson proves Theorems 2.2–2.3 and Proposition 3.1 on <span class="math" data-tex="$\mathbb P^1$">$\mathbb P^1$</span>; it does not prove the general theorem.</p>
+<h2 id="5-two-orbits-and-two-highest-weight-simples">5. Two orbits and two highest-weight simples</h2>
+<p>Choose the Borel whose Lie algebra is spanned by <span class="math" data-tex="$e,h$">$e,h$</span>. Its action on the <span class="math" data-tex="$x$">$x$</span> chart has open orbit <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span> and closed orbit <span class="math" data-tex="$\{\infty\}$">$\{\infty\}$</span>. In the action convention of the preceding lesson, the group is chosen so that its induced action on functions differentiates to the displayed <span class="math" data-tex="$e,h$">$e,h$</span>.</p>
+<p>Localization and global sections respect this strong equivariance. One direction follows from the balanced tensor construction of the preceding lesson. For the other, global sections inherit the rational Borel action, and its derivative agrees with the <span class="math" data-tex="$\mathfrak b$">$\mathfrak b$</span>-action. Thus (2.7) restricts to finitely generated <span class="math" data-tex="$U_0$">$U_0$</span>-modules whose <span class="math" data-tex="$\mathfrak b$">$\mathfrak b$</span>-action integrates rationally.</p>
+<p>For the principal integral parameters, these are the modules in category <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span> on which the Casimir acts <strong>exactly</strong> as zero. Rational Borel action implies integral semisimple <span class="math" data-tex="$h$">$h$</span> and locally nilpotent <span class="math" data-tex="$e$">$e$</span>; conversely these properties integrate on each finite <span class="math" data-tex="$\mathfrak b$">$\mathfrak b$</span>-span, compatibly, to the Borel. Finite generation gives the usual category <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span> conditions. This is the exact-central-character part of the principal block. A block defined using generalized central character can contain modules with nonzero nilpotent action of <span class="math" data-tex="$\mathsf C$">$\mathsf C$</span> and is larger. Such modules require a thickened central-character or monodromic twisting formulation, rather than the single ring <span class="math" data-tex="$U_0$">$U_0$</span>.</p>
+<p>For a concrete example of that difference, take basis vectors <span class="math" data-tex="$w_m,z_m$">$w_m,z_m$</span>, <span class="math" data-tex="$m\geq0$">$m\geq0$</span>, put <span class="math" data-tex="$w_{-1}=z_{-1}=0$">$w_{-1}=z_{-1}=0$</span>, and define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;fw_m=w_{m+1},\quad hw_m=-2m w_m,\quad ew_m=m(1-m)w_{m-1},\\
+&amp;fz_m=z_{m+1},\quad hz_m=-2(m+1)z_m,\quad
+ez_m=w_m-m(m+1)z_{m-1}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;fw_m=w_{m+1},\quad hw_m=-2m w_m,\quad ew_m=m(1-m)w_{m-1},\\
+&amp;fz_m=z_{m+1},\quad hz_m=-2(m+1)z_m,\quad
+ez_m=w_m-m(m+1)z_{m-1}.
+\end{aligned}
+\]</span>
+The three Lie relations hold directly; for example <span class="math" data-tex="$(ef-fe)z_m=-2(m+1)z_m$">$(ef-fe)z_m=-2(m+1)z_m$</span>. This module is generated by <span class="math" data-tex="$w_0,z_0$">$w_0,z_0$</span>, its weight spaces are finite dimensional, and <span class="math" data-tex="$e$">$e$</span> is locally nilpotent. It belongs to the generalized principal block, but
+<span class="math" data-tex="$\mathsf Cw_m=0$">$\mathsf Cw_m=0$</span> and <span class="math" data-tex="$\mathsf Cz_m=4w_{m+1}\ne0$">$\mathsf Cz_m=4w_{m+1}\ne0$</span>.
+Thus <span class="math" data-tex="$\mathsf C^2=0$">$\mathsf C^2=0$</span> without <span class="math" data-tex="$\mathsf C=0$">$\mathsf C=0$</span>, and it is not a module over <span class="math" data-tex="$U_0$">$U_0$</span>.</p>
+<p>The two simple strongly equivariant coherent D-modules are
+<span class="math math-display" data-tex="\[
+\mathcal O_{\mathbb P^1},\qquad \delta_\infty.
+                                                               \tag{5.1}
+\]">\[
+\mathcal O_{\mathbb P^1},\qquad \delta_\infty.
+                                                               \tag{5.1}
+\]</span>
+To verify completeness on this curve, choose a finite set of D-generators and its finite-dimensional Borel orbit span. A good filtration generated from that span makes the orbit vector fields preserve filtration degree, so their principal symbols annihilate the associated graded module. Its characteristic variety lies in the union of the two orbit conormals, of dimension one; it is holonomic. Its simple factors are minimal extensions of irreducible connections on an orbit, by <a href="preservation-of-holonomicity-and-minimal-extensions.html">Preservation of holonomicity and minimal extensions</a>. The open orbit is homogeneous with connected stabilizer; equivariant descent there reduces its irreducible connection to the trivial rank-one one. At the closed orbit, connected stabilizer likewise permits only the trivial irreducible strong representation. Minimal extension of the former is <span class="math" data-tex="$\mathcal O_{\mathbb P^1}$">$\mathcal O_{\mathbb P^1}$</span>, while Kashiwara's equivalence gives <span class="math" data-tex="$\delta_\infty$">$\delta_\infty$</span> for the latter.</p>
+<p>Their sections are <span class="math" data-tex="$L(0)=k$">$L(0)=k$</span> and <span class="math" data-tex="$L(-2)=M(-2)$">$L(-2)=M(-2)$</span>. Indeed on the <span class="math" data-tex="$y$">$y$</span> chart <span class="math" data-tex="$\delta_\infty$">$\delta_\infty$</span> has basis <span class="math" data-tex="$\partial_y^m\delta$">$\partial_y^m\delta$</span>, <span class="math" data-tex="$m\geq0$">$m\geq0$</span>, with <span class="math" data-tex="$y\delta=0$">$y\delta=0$</span>. The global operators give
+<span class="math math-display" data-tex="\[
+h\,\partial_y^m\delta=-2(m+1)\partial_y^m\delta,\quad
+f\,\partial_y^m\delta=\partial_y^{m+1}\delta,\quad
+e\,\partial_y^m\delta=-m(m+1)\partial_y^{m-1}\delta.
+                                                               \tag{5.2}
+\]">\[
+h\,\partial_y^m\delta=-2(m+1)\partial_y^m\delta,\quad
+f\,\partial_y^m\delta=\partial_y^{m+1}\delta,\quad
+e\,\partial_y^m\delta=-m(m+1)\partial_y^{m-1}\delta.
+                                                               \tag{5.2}
+\]</span>
+The last expression is zero at <span class="math" data-tex="$m=0$">$m=0$</span>. These are the Verma formulas for highest weight <span class="math" data-tex="$-2$">$-2$</span>, which is irreducible. Thus the two orbit simples match the two highest-weight simples of the principal block.</p>
+<h3 id="standard-and-costandard-modules">Standard and costandard modules</h3>
+<p>Let <span class="math" data-tex="$j:\mathbb A^1\hookrightarrow\mathbb P^1$">$j:\mathbb A^1\hookrightarrow\mathbb P^1$</span>. Direct images and duality give nonsplit sequences
+<span class="math math-display" data-tex="\[
+0\to\mathcal O_{\mathbb P^1}\to j_*\mathcal O_{\mathbb A^1}
+\to\delta_\infty\to0,
+\qquad
+0\to\delta_\infty\to j_!\mathcal O_{\mathbb A^1}
+\to\mathcal O_{\mathbb P^1}\to0.                            \tag{5.3}
+\]">\[
+0\to\mathcal O_{\mathbb P^1}\to j_*\mathcal O_{\mathbb A^1}
+\to\delta_\infty\to0,
+\qquad
+0\to\delta_\infty\to j_!\mathcal O_{\mathbb A^1}
+\to\mathcal O_{\mathbb P^1}\to0.                            \tag{5.3}
+\]</span>
+Their local forms are the Laurent star and shriek extensions calculated in Holonomic D-modules and duality. The second is the holonomic dual of the first; the first nonsplitting follows because a section killed by <span class="math" data-tex="$y$">$y$</span> cannot be a nonzero Laurent function. These are strong Borel-equivariant modules.</p>
+<p>For the star extension, global sections are <span class="math" data-tex="$k[x]$">$k[x]$</span>, with
+<span class="math math-display" data-tex="\[
+e x^m=m x^{m-1},\quad h x^m=-2m x^m,\quad
+f x^m=-m x^{m+1}.                                         \tag{5.4}
+\]">\[
+e x^m=m x^{m-1},\quad h x^m=-2m x^m,\quad
+f x^m=-m x^{m+1}.                                         \tag{5.4}
+\]</span>
+This is the restricted dual Verma module <span class="math" data-tex="$M(0)^\vee$">$M(0)^\vee$</span>, where the duality uses the anti-involution <span class="math" data-tex="$e\leftrightarrow f$">$e\leftrightarrow f$</span>, <span class="math" data-tex="$h\mapsto h$">$h\mapsto h$</span>. To check rather than merely name it, let <span class="math" data-tex="$v_m=f^m v_0$">$v_m=f^m v_0$</span> be the Verma basis. Its actions are
+<span class="math" data-tex="$e v_m=m(1-m)v_{m-1}$">$e v_m=m(1-m)v_{m-1}$</span> and <span class="math" data-tex="$h v_m=-2m v_m$">$h v_m=-2m v_m$</span>. On the dual basis <span class="math" data-tex="$v_m^*$">$v_m^*$</span>, <span class="math" data-tex="$e v_m^*=v_{m-1}^*$">$e v_m^*=v_{m-1}^*$</span> and <span class="math" data-tex="$f v_m^*=-m(m+1)v_{m+1}^*$">$f v_m^*=-m(m+1)v_{m+1}^*$</span>. The map <span class="math" data-tex="$v_m^*\mapsto x^m/m!$">$v_m^*\mapsto x^m/m!$</span> identifies these with (5.4). The constants form its submodule <span class="math" data-tex="$L(0)$">$L(0)$</span> and the quotient is <span class="math" data-tex="$L(-2)$">$L(-2)$</span>.</p>
+<p>For the shriek extension, a generator <span class="math" data-tex="$u$">$u$</span> on the <span class="math" data-tex="$y$">$y$</span> chart satisfies
+<span class="math" data-tex="$y\partial_y u=0$">$y\partial_y u=0$</span> and restricts to <span class="math" data-tex="$1$">$1$</span> on the <span class="math" data-tex="$x$">$x$</span> chart. It is therefore a global section <span class="math" data-tex="$v_0$">$v_0$</span>. Its global descendants satisfy
+<span class="math math-display" data-tex="\[
+v_m=f^m v_0,\quad h v_m=-2m v_m,\quad
+e v_m=m(1-m)v_{m-1}.                                      \tag{5.5}
+\]">\[
+v_m=f^m v_0,\quad h v_m=-2m v_m,\quad
+e v_m=m(1-m)v_{m-1}.                                      \tag{5.5}
+\]</span>
+Here <span class="math" data-tex="$f v_0=\partial_yu$">$f v_0=\partial_yu$</span> is a nonzero point-supported section. For <span class="math" data-tex="$m\geq1$">$m\geq1$</span> all descendants lie in <span class="math" data-tex="$\delta_\infty$">$\delta_\infty$</span> and span it. Exactness of <span class="math" data-tex="$\Gamma$">$\Gamma$</span> applied to (5.3) shows that these are all global sections, one in each displayed weight. Thus
+<span class="math math-display" data-tex="\[
+\Gamma(j_!\mathcal O_{\mathbb A^1})=M(0),\qquad
+\Delta_0(M(0))=j_!\mathcal O_{\mathbb A^1}.                 \tag{5.6}
+\]">\[
+\Gamma(j_!\mathcal O_{\mathbb A^1})=M(0),\qquad
+\Delta_0(M(0))=j_!\mathcal O_{\mathbb A^1}.                 \tag{5.6}
+\]</span>
+This fixes the standard/costandard convention by actual operators.</p>
+<p>The general Kazhdan-Lusztig character theorem is a further statement. With Weyl group <span class="math" data-tex="$W$">$W$</span> and its Kazhdan-Lusztig polynomials,
+<span class="math math-display" data-tex="\[
+[L(-w\rho-\rho)]
+=\sum_{y\leq w}(-1)^{\ell(w)-\ell(y)}P_{y,w}(1)
+[M(-y\rho-\rho)].                                         \tag{5.7}
+\]">\[
+[L(-w\rho-\rho)]
+=\sum_{y\leq w}(-1)^{\ell(w)-\ell(y)}P_{y,w}(1)
+[M(-y\rho-\rho)].                                         \tag{5.7}
+\]</span>
+Kazhdan and Lusztig formulated it in this normalization in <em>Representations of Coxeter groups and Hecke algebras</em>, Conjecture 1.5, and Beilinson–Bernstein and Brylinski–Kashiwara proved it. Localization turns the simples into intersection-cohomology objects; Riemann-Hilbert and the intersection-cohomology calculation on Schubert varieties yield the coefficients. That last calculation, due to Kazhdan and Lusztig, is an additional geometric input, not a formal consequence of localization alone; Springer's Bourbaki exposé <em>Quelques applications de la cohomologie d'intersection</em> explains it together with the proof of the multiplicity formula. For <span class="math" data-tex="$\mathfrak{sl}_2$">$\mathfrak{sl}_2$</span>, <span class="math" data-tex="$P_{e,s}=1$">$P_{e,s}=1$</span>, so (5.7) says <span class="math" data-tex="$[L(0)]=[M(0)]-[M(-2)]$">$[L(0)]=[M(0)]-[M(-2)]$</span>, exactly (5.3)–(5.6).</p>
+<h2 id="6-what-survives-in-the-affine-setting">6. What survives in the affine setting</h2>
+<p>There are two different comparisons to keep apart.</p>
+<p>Beilinson–Drinfeld, Theorem 7.15.6, treats the affine flag ind-scheme <span class="math" data-tex="$G((t))/I$">$G((t))/I$</span> and a twist <span class="math" data-tex="$\chi$">$\chi$</span>. In its conventions <span class="math" data-tex="$\chi$">$\chi$</span> is antidominant when its affine Verma module is irreducible; it is regular when <span class="math" data-tex="$\chi+\rho$">$\chi+\rho$</span> has trivial affine Weyl stabilizer. Under these conditions global sections is an equivalence with discrete <strong>right modules over the topological global TDO ring</strong>. Theorem 7.15.8 gives higher-cohomology vanishing and nonzero-section detection. The definition in §7.15.5 explicitly excludes its critical central value <span class="math" data-tex="$c=-1/2$">$c=-1/2$</span>. Moreover §7.15.7 distinguishes this global-ring category from the category of all affine Lie algebra modules. Thus this theorem cannot be read as critical-level localization onto all Kac-Moody modules.</p>
+<p>At critical level, use instead Frenkel–Gaitsgory, <em>Localization of <span class="math" data-tex="$\widehat{\mathfrak g}$">$\widehat{\mathfrak g}$</span>-modules on the affine Grassmannian</em>. The Grassmannian is <span class="math" data-tex="$G((t))/G[[t]]$">$G((t))/G[[t]]$</span>. Its critical D-modules carry convolution by <span class="math" data-tex="$\operatorname{Rep}(\check G)$">$\operatorname{Rep}(\check G)$</span>, and global sections have the regular quotient of the Feigin-Frenkel center. Ordinary global sections is not full. The paper's subsection <em>The statement of the main result</em>, parts (1)–(2), proves an exact equivalence after imposing both the regular-center <strong>Hecke eigen-object structure</strong> and strong <span class="math" data-tex="$I^0$">$I^0$</span>-equivariance, where <span class="math" data-tex="$I^0$">$I^0$</span> is the pro-unipotent radical of the Iwahori. The target is critical modules with the regular-center action and algebraic <span class="math" data-tex="$I^0$">$I^0$</span>-action. The unrestricted eigen-object equivalence is presented there as a conjecture; it is not what that theorem proves. These are statements with precise source hypotheses, not extensions of our finite-dimensional proof.</p>
+<p>The global construction used in <em>Proof of the geometric Langlands conjecture II: Kac-Moody localization and the FLE</em> is another local-to-global functor. Section 10 constructs localization from the factorization family of Kac-Moody categories to twisted D-modules on <span class="math" data-tex="$\mathrm{Bun}_G$">$\mathrm{Bun}_G$</span>. Section 10.3 obtains adjunctions on quasi-compact open substacks and assembles them by a limit. This is not a literal single adjunction between the two displayed global categories: the auxiliary global-section functor is defined on the paper's “co” category. At critical level its twist is the half-twist discussed in the preceding lesson. The introduction explains its Hecke eigen-property. We cite this construction and its compatibility, without asserting that all critical modules and all D-modules on <span class="math" data-tex="$\mathrm{Bun}_G$">$\mathrm{Bun}_G$</span> are equivalent.</p>
+<h2 id="7-exercises-and-solutions">7. Exercises and solutions</h2>
+<p><strong>Exercise 16.1 (easy).</strong> Verify the <span class="math" data-tex="$\mathfrak{sl}_2$">$\mathfrak{sl}_2$</span> relations for <span class="math" data-tex="$\partial_x,-2x\partial_x,-x^2\partial_x$">$\partial_x,-2x\partial_x,-x^2\partial_x$</span>.</p>
+<p><strong>Solution.</strong> For vector fields <span class="math" data-tex="$a\partial,b\partial$">$a\partial,b\partial$</span>, the bracket is <span class="math" data-tex="$(ab&#x27;-ba&#x27;)\partial$">$(ab&#x27;-ba&#x27;)\partial$</span>. The three coefficient pairs give <span class="math" data-tex="$2$">$2$</span>, <span class="math" data-tex="$2x^2$">$2x^2$</span> and <span class="math" data-tex="$-2x$">$-2x$</span>, respectively. These are <span class="math" data-tex="$2e,-2f,h$">$2e,-2f,h$</span>, so all three relations hold. For first-order operators the formula is
+<span class="math" data-tex="$[a\partial+b,c\partial+d]=(ac&#x27;-ca&#x27;)\partial+ad&#x27;-cb&#x27;$">$[a\partial+b,c\partial+d]=(ac&#x27;-ca&#x27;)\partial+ad&#x27;-cb&#x27;$</span>.
+Substitution of the actual coefficients in Section 1 also verifies every twisted relation.</p>
+<p><strong>Exercise 16.2 (easy).</strong> Compute the Casimir in the global operator ring and on a highest-weight vector.</p>
+<p><strong>Solution.</strong> Substitute <span class="math" data-tex="$h=-2x\partial+n$">$h=-2x\partial+n$</span>, <span class="math" data-tex="$f=-x^2\partial+nx$">$f=-x^2\partial+nx$</span>, <span class="math" data-tex="$e=\partial$">$e=\partial$</span> and use <span class="math" data-tex="$\partial x=x\partial+1$">$\partial x=x\partial+1$</span>. The order-two and order-one terms in <span class="math" data-tex="$h^2+2h+4fe$">$h^2+2h+4fe$</span> cancel, leaving <span class="math" data-tex="$n(n+2)$">$n(n+2)$</span>. On a vector <span class="math" data-tex="$v$">$v$</span> with <span class="math" data-tex="$ev=0$">$ev=0$</span>, <span class="math" data-tex="$hv=\mu v$">$hv=\mu v$</span>, the same Casimir acts as <span class="math" data-tex="$\mu(\mu+2)v$">$\mu(\mu+2)v$</span>. Thus the untwisted scalar zero allows highest weights <span class="math" data-tex="$0,-2$">$0,-2$</span>, and the singular scalar <span class="math" data-tex="$-1$">$-1$</span> has the repeated highest-weight solution <span class="math" data-tex="$\mu=-1$">$\mu=-1$</span>.</p>
+<p><strong>Exercise 16.3 (medium).</strong> Find the D-module whose global sections are the Verma module <span class="math" data-tex="$M(0)$">$M(0)$</span>.</p>
+<p><strong>Solution.</strong> It is <span class="math" data-tex="$j_!\mathcal O_{\mathbb A^1}$">$j_!\mathcal O_{\mathbb A^1}$</span> for the open Borel orbit. The global generator and all three operator actions are computed in (5.5). The nonzero vector <span class="math" data-tex="$fv_0$">$fv_0$</span> generates the point submodule <span class="math" data-tex="$M(-2)$">$M(-2)$</span>, and quotienting leaves the trivial representation. Every weight space has dimension one, so the resulting surjective map from <span class="math" data-tex="$M(0)$">$M(0)$</span> is injective as well. The localization equivalence proves uniqueness. The star extension gives the dual Verma, as checked in (5.4), and is a different answer.</p>
+<p><strong>Exercise 16.4 (medium).</strong> Prove <span class="math" data-tex="$H^1(\mathbb P^1,M)=0$">$H^1(\mathbb P^1,M)=0$</span> for every quasi-coherent ordinary D-module, without assuming finite generation.</p>
+<p><strong>Solution.</strong> The jet evaluation map (2.3) trivializes <span class="math" data-tex="$F_rP_r$">$F_rP_r$</span>. Positive symbol quotients in (2.4) then show <span class="math" data-tex="$H^1(P_r)=0$">$H^1(P_r)=0$</span>. Resolve <span class="math" data-tex="$M$">$M$</span> surjectively by any sum of these induced modules, as in (2.6). Cohomology commutes with the sum on the finite affine Čech cover, so the source has zero <span class="math" data-tex="$H^1$">$H^1$</span>. The kernel has zero <span class="math" data-tex="$H^2$">$H^2$</span> because the cover has two opens. The long exact sequence gives <span class="math" data-tex="$H^1(M)=0$">$H^1(M)=0$</span>. This is the full argument for arbitrary quasi-coherent modules; reducing to finite-rank connections would not prove the assertion.</p>
+<p><strong>Exercise 16.5 (hard).</strong> Locate the singular twist, show localization is not an equivalence there, and identify the entire kernel of global sections.</p>
+<p><strong>Solution.</strong> The shifted parameter is <span class="math" data-tex="$n+1$">$n+1$</span>, so the singular twist is <span class="math" data-tex="$\mathcal D^{(-1)}$">$\mathcal D^{(-1)}$</span>. It kills the nonzero module <span class="math" data-tex="$\mathcal O(-1)$">$\mathcal O(-1)$</span>, which has no cohomology. Proposition 3.1 proves the full kernel is exactly all <span class="math" data-tex="$\mathcal O(-1)\otimes V$">$\mathcal O(-1)\otimes V$</span>, by untwisting, using globally generated coherent images and their vanishing sections after a negative twist, and then ruling out a nontrivial connection by <span class="math" data-tex="$H^0(\Omega^1)=0$">$H^0(\Omega^1)=0$</span>. Coherent objects in the kernel have finite-dimensional <span class="math" data-tex="$V$">$V$</span>. Global sections is nevertheless exact and gives the quotient category described after (3.1). The ordinary untwisted parameter <span class="math" data-tex="$n=0$">$n=0$</span> is regular and its localization equivalence remains valid.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use quasi-coherent generation by negative line bundles, filtered unions of coherent subsheaves on a noetherian scheme, and the two-chart computation of line-bundle cohomology as algebraic geometry prerequisites. Basic Verma-module and restricted-dual constructions belong to the category <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span> prerequisite.</p>
+<p>The general flag-variety theorem is stated here and proved in Miličić's <em>Localization and Representation Theory of Reductive Lie Groups</em>, Chapters 2–3. The general Kazhdan-Lusztig theorem and its intersection-cohomology input are stated with the sources named in Section 5. We do not prove the infinite-dimensional constructions, the affine flag theorem, the critical Grassmannian equivalence, or the localization and Hecke constructions of the geometric Langlands series. Their exact scopes and locators are given in Section 6. The complete projective-line D-affinity, equivalence, Verma dictionary and singular kernel are proved here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>A. Beilinson and J. Bernstein, <a href="https://gallica.bnf.fr/ark:/12148/bpt6k98224180/f47.item"><em>Localisation de <span class="math" data-tex="$\mathfrak g$">$\mathfrak g$</span>-modules</em></a>, C. R. Acad. Sci. Paris Sér. I Math. 292 (1981), 15–18.</li>
+<li>D. Miličić, <a href="https://www.math.utah.edu/~milicic/Eprints/book.pdf"><em>Localization and Representation Theory of Reductive Lie Groups</em></a>, Chapters 2–3: twisted differential operators on the flag variety, global sections, vanishing and localization.</li>
+<li>D. Kazhdan and G. Lusztig, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0053/LOG_0014.pdf"><em>Representations of Coxeter groups and Hecke algebras</em></a>, Inventiones Mathematicae 53 (1979), 165–184, Conjecture 1.5.</li>
+<li>J.-L. Brylinski and M. Kashiwara, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0064/LOG_0025.pdf"><em>Kazhdan-Lusztig conjecture and holonomic systems</em></a>, Inventiones Mathematicae 64 (1981), 387–410.</li>
+<li>T. A. Springer, <a href="https://www.numdam.org/item/SB_1981-1982__24__249_0.pdf"><em>Quelques applications de la cohomologie d'intersection</em></a>, Séminaire Bourbaki, exposé 589, Astérisque 92–93 (1982), 249–273, §§1–3: intersection cohomology of Schubert varieties and the proofs of the multiplicity formula.</li>
+<li>A. Beilinson and V. Drinfeld, <a href="https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf"><em>Quantization of Hitchin's integrable system and Hecke eigensheaves</em></a>, §1.2.4 and §§7.14–7.15, especially Theorems 7.15.6 and 7.15.8.</li>
+<li>E. Frenkel and D. Gaitsgory, <a href="https://arxiv.org/abs/math/0512562"><em>Localization of <span class="math" data-tex="$\widehat{\mathfrak g}$">$\widehat{\mathfrak g}$</span>-modules on the affine Grassmannian</em></a>, introduction and the subsection <em>The statement of the main result</em>, parts (1)–(2).</li>
+<li>D. Arinkin, D. Beraldo, L. Chen, J. Færgeman, D. Gaitsgory, K. Lin, S. Raskin and N. Rozenblyum, <a href="https://arxiv.org/abs/2405.03648"><em>Proof of the geometric Langlands conjecture II: Kac-Moody localization and the FLE</em></a>, introduction and §§10.1–10.3.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="equivariant-and-twisted-d-modules.html">← Equivariant and twisted D-modules</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="stacks-ind-schemes-and-the-de-rham-prestack.html">D-modules on stacks, ind-schemes and the de Rham prestack →</a></span></nav>
+<p class="small source-link"><a href="src/beilinson-bernstein-localization.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Killing form and Cartan&#x27;s criteria</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><p><a href="../../index.html">Kasparov’s KK-theory</a> · <a href="index.html">Supporting Lie-algebra proofs</a> · <a href="RT-LIE-03.md">Exact structured source</a></p><article class="lesson">
+<h1 id="the-killing-form-and-cartan-s-criteria">The Killing form and Cartan's criteria</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><em>KT–KK receiving revision, 5 October 2026: the proofs used by Lesson 18 are rewritten from the checked free author editions and bound to the local companion. Original authorship and CC0 remain as stated above. The proof/source audit distinguishes this used chain from retained comparisons and unused later dependencies.</em></p>
+<p>The trace of a product can detect a structural property that no single bracket reveals. Cartan's first criterion turns vanishing traces into solvability. His second identifies semisimple algebras by a nondegenerate bilinear form. With that form available, orthogonal complements become ideals, decompositions become canonical, and derivations become inner.</p>
+<p>The prerequisites are proved in the <a href="RT-LIE-foundations.html">receiving companion</a>: Engel's theorem and elementary ideal/field-extension operations in Theorem RTF-001, and Lie's theorem in Theorem RTF-002. All spaces and Lie algebras here are finite-dimensional. The ground field has characteristic zero; the polynomial Jordan decomposition and its abstract version are discussed over an algebraically closed field, including <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Cartan's criteria, the ideal decomposition and the inner-derivation theorem hold over every characteristic-zero field. The freely readable comparisons are [Milne, Lie algebras], [Etingof] and, only for the prime-characteristic example, [Premet–Strade].</p>
+<h2 id="1-separating-eigenvalues-from-nilpotence">1. Separating eigenvalues from nilpotence</h2>
+<p>Call an endomorphism <strong>semisimple</strong> if it is diagonalizable over the algebraically closed field.</p>
+<span id="RTLIE03-L11"></span>
+<p><strong>Lemma 1.1 (polynomial Jordan decomposition).</strong> For <span class="math" data-tex="\(X\in\operatorname{End}(V)\)">\(X\in\operatorname{End}(V)\)</span>, there is a unique decomposition
+<span class="math math-display" data-tex="\[
+X=S+N,\qquad SN=NS,\qquad S\text{ semisimple},\quad N\text{ nilpotent}.
+\]">\[
+X=S+N,\qquad SN=NS,\qquad S\text{ semisimple},\quad N\text{ nilpotent}.
+\]</span>
+Both <span class="math" data-tex="\(S,N\)">\(S,N\)</span> are polynomials in <span class="math" data-tex="\(X\)">\(X\)</span> with zero constant term. On <span class="math" data-tex="\(\operatorname{End}(V)\)">\(\operatorname{End}(V)\)</span>,
+<span class="math math-display" data-tex="\[
+(\operatorname{ad}X)_s=\operatorname{ad}S,\qquad
+(\operatorname{ad}X)_n=\operatorname{ad}N.
+\tag{1.1}
+\]">\[
+(\operatorname{ad}X)_s=\operatorname{ad}S,\qquad
+(\operatorname{ad}X)_n=\operatorname{ad}N.
+\tag{1.1}
+\]</span></p>
+<p><strong>Proof.</strong> If the space is zero take both parts zero. Otherwise the least-degree monic annihilating polynomial factors as <span class="math" data-tex="\(m(t)=\prod_\lambda(t-\lambda)^{d_\lambda}\)">\(m(t)=\prod_\lambda(t-\lambda)^{d_\lambda}\)</span>. Polynomial division gives the Bézout identity for any two coprime factors, and repeated use of it gives the Chinese-remainder projections <span class="math" data-tex="\(p_\lambda(t)\)">\(p_\lambda(t)\)</span>. Their values at X are orthogonal idempotents summing to the identity. The image of each is <span class="math" data-tex="\(V_\lambda=\ker(X-\lambda)^{d_\lambda}\)">\(V_\lambda=\ker(X-\lambda)^{d_\lambda}\)</span>: the product <span class="math" data-tex="\((t-\lambda)^{d_\lambda}p_\lambda(t)\)">\((t-\lambda)^{d_\lambda}p_\lambda(t)\)</span> is divisible by m, and the residue of <span class="math" data-tex="\(p_\lambda\)">\(p_\lambda\)</span> on this kernel is one. Thus these generalized eigenspaces form a direct sum.</p>
+<p>Prescribe a polynomial p to have constant residue <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> modulo each factor. If zero is an eigenvalue, the corresponding residue already makes <span class="math" data-tex="\(p(0)=0\)">\(p(0)=0\)</span>; if it is not, add the coprime prescription <span class="math" data-tex="\(p\equiv0\pmod t\)">\(p\equiv0\pmod t\)</span>. Then <span class="math" data-tex="\(S=p(X)\)">\(S=p(X)\)</span> is scalar <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>, and <span class="math" data-tex="\(N=X-S\)">\(N=X-S\)</span> is nilpotent on each summand. The parts commute and both have polynomial expressions with zero constant term.</p>
+<p>For uniqueness, any commuting decomposition <span class="math" data-tex="\(X=S&#x27;+N&#x27;\)">\(X=S&#x27;+N&#x27;\)</span> preserves every <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>, because both parts commute with X. Inside it, diagonalize <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>. Its eigenspaces are preserved by <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>, and X on an eigenspace of eigenvalue <span class="math" data-tex="\(\mu\)">\(\mu\)</span> has sole eigenvalue <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Hence <span class="math" data-tex="\(\mu=\lambda\)">\(\mu=\lambda\)</span>; this identifies <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> and then <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>.</p>
+<p>The operator <span class="math" data-tex="\(\operatorname{ad}S\)">\(\operatorname{ad}S\)</span> is diagonalizable on Hom blocks, with eigenvalue <span class="math" data-tex="\(\lambda-\mu\)">\(\lambda-\mu\)</span> from <span class="math" data-tex="\(V_\mu\)">\(V_\mu\)</span> to <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>. The binomial formula in RTF-001 makes <span class="math" data-tex="\(\operatorname{ad}N\)">\(\operatorname{ad}N\)</span> nilpotent. These operators commute and sum to <span class="math" data-tex="\(\operatorname{ad}X\)">\(\operatorname{ad}X\)</span>; the uniqueness just proved gives (1.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example,
+<span class="math math-display" data-tex="\[
+X=\begin{pmatrix}2&amp;1&amp;0\\0&amp;2&amp;0\\0&amp;0&amp;-1\end{pmatrix}
+\]">\[
+X=\begin{pmatrix}2&amp;1&amp;0\\0&amp;2&amp;0\\0&amp;0&amp;-1\end{pmatrix}
+\]</span>
+has <span class="math" data-tex="\(S=\operatorname{diag}(2,2,-1)\)">\(S=\operatorname{diag}(2,2,-1)\)</span> and <span class="math" data-tex="\(N=E_{12}\)">\(N=E_{12}\)</span>.
+Every <span class="math" data-tex="\(X\)">\(X\)</span>-invariant subspace is invariant under its Jordan parts because they are polynomials in <span class="math" data-tex="\(X\)">\(X\)</span>. Applying the lemma to <span class="math" data-tex="\(\operatorname{ad}X\)">\(\operatorname{ad}X\)</span> itself also makes its semisimple part a zero-constant-term polynomial in <span class="math" data-tex="\(\operatorname{ad}X\)">\(\operatorname{ad}X\)</span>. This does not assert the same property for arbitrary <span class="math" data-tex="\(\operatorname{ad}(p(X))\)">\(\operatorname{ad}(p(X))\)</span>; the next proof establishes the precise relation it needs.</p>
+<h2 id="2-the-trace-criterion-for-solvability">2. The trace criterion for solvability</h2>
+<p>Trace-cyclicity gives
+<span class="math math-display" data-tex="\[
+\operatorname{tr}([A,B]C)=\operatorname{tr}(A[B,C]).
+\tag{2.1}
+\]">\[
+\operatorname{tr}([A,B]C)=\operatorname{tr}(A[B,C]).
+\tag{2.1}
+\]</span></p>
+<span id="RTLIE03-T21"></span>
+<p><strong>Theorem 2.1 (Cartan's solvability criterion).</strong> For a Lie subalgebra
+<span class="math" data-tex="\(\mathfrak l\subseteq\mathfrak{gl}(V)\)">\(\mathfrak l\subseteq\mathfrak{gl}(V)\)</span> in characteristic zero,
+<span class="math math-display" data-tex="\[
+\mathfrak l\text{ solvable}
+\quad\Longleftrightarrow\quad
+\operatorname{tr}(XY)=0
+\quad(X\in[\mathfrak l,\mathfrak l],\ Y\in\mathfrak l).
+\tag{2.2}
+\]">\[
+\mathfrak l\text{ solvable}
+\quad\Longleftrightarrow\quad
+\operatorname{tr}(XY)=0
+\quad(X\in[\mathfrak l,\mathfrak l],\ Y\in\mathfrak l).
+\tag{2.2}
+\]</span></p>
+<p><strong>Proof of necessity.</strong> After scalar extension to an algebraic closure, RTF-002 gives a common upper-triangular flag for <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>. Commutators have zero diagonal. Multiplying one by an upper-triangular matrix leaves zero diagonal and hence zero trace. Trace and bracket formation commute with scalar extension, proving the assertion over the original field.</p>
+<p><strong>Proof of sufficiency.</strong> RTF-001 proves that extension of the ground field preserves and reflects solvability, so assume it algebraically closed. Fix <span class="math" data-tex="\(X\in[\mathfrak l,\mathfrak l]\)">\(X\in[\mathfrak l,\mathfrak l]\)</span>, and let <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> be its eigenvalues with multiplicities. Put <span class="math" data-tex="\(E=\operatorname{span}_{\mathbb Q}\{\lambda_i\}\)">\(E=\operatorname{span}_{\mathbb Q}\{\lambda_i\}\)</span>. For a rational linear map <span class="math" data-tex="\(f:E\to\mathbb Q\)">\(f:E\to\mathbb Q\)</span>, define <span class="math" data-tex="\(Y_f\)">\(Y_f\)</span> to be scalar <span class="math" data-tex="\(f(\lambda)\)">\(f(\lambda)\)</span> on each generalized X-eigenspace. This operator need not lie in <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>.</p>
+<p>We first prove the precise normalizer property needed for the trace argument. Write <span class="math" data-tex="\(X=S+N\)">\(X=S+N\)</span> as in Lemma 1.1. On <span class="math" data-tex="\(\operatorname{Hom}(V_\mu,V_\lambda)\)">\(\operatorname{Hom}(V_\mu,V_\lambda)\)</span>, the respective commutator operators of S and <span class="math" data-tex="\(Y_f\)">\(Y_f\)</span> are scalar <span class="math" data-tex="\(\lambda-\mu\)">\(\lambda-\mu\)</span> and <span class="math" data-tex="\(f(\lambda-\mu)\)">\(f(\lambda-\mu)\)</span>. Interpolate on this finite set of distinct differences, prescribing zero at zero. The resulting polynomial q has <span class="math" data-tex="\(q(0)=0\)">\(q(0)=0\)</span> and satisfies <span class="math" data-tex="\(\operatorname{ad}Y_f=q(\operatorname{ad}S)\)">\(\operatorname{ad}Y_f=q(\operatorname{ad}S)\)</span>. Lemma 1.1, applied to <span class="math" data-tex="\(\operatorname{ad}X\)">\(\operatorname{ad}X\)</span>, writes its semisimple part <span class="math" data-tex="\(\operatorname{ad}S=p_0(\operatorname{ad}X)\)">\(\operatorname{ad}S=p_0(\operatorname{ad}X)\)</span> with <span class="math" data-tex="\(p_0(0)=0\)">\(p_0(0)=0\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\operatorname{ad}Y_f=q(p_0(\operatorname{ad}X)),\qquad
+[Y_f,\mathfrak l]\subset[\mathfrak l,\mathfrak l].
+\tag{2.3}
+\]">\[
+\operatorname{ad}Y_f=q(p_0(\operatorname{ad}X)),\qquad
+[Y_f,\mathfrak l]\subset[\mathfrak l,\mathfrak l].
+\tag{2.3}
+\]</span>
+Indeed, every positive power of <span class="math" data-tex="\(\operatorname{ad}X\)">\(\operatorname{ad}X\)</span> sends <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span> into its derived ideal. A polynomial identity for <span class="math" data-tex="\(Y_f\)">\(Y_f\)</span> on V alone would not prove this conclusion.</p>
+<p>Express X as a finite sum <span class="math" data-tex="\(\sum[A_j,B_j]\)">\(\sum[A_j,B_j]\)</span>. Trace-cyclicity and (2.3) give
+<span class="math math-display" data-tex="\[
+\sum_i\lambda_i f(\lambda_i)=\operatorname{tr}(XY_f)
+=\sum_j\operatorname{tr}(A_j[B_j,Y_f])=0.
+\tag{2.4}
+\]">\[
+\sum_i\lambda_i f(\lambda_i)=\operatorname{tr}(XY_f)
+=\sum_j\operatorname{tr}(A_j[B_j,Y_f])=0.
+\tag{2.4}
+\]</span>
+The first equality holds because the remaining nilpotent block of X has trace zero. Apply f to the equality in E: <span class="math" data-tex="\(\sum_i f(\lambda_i)^2=0\)">\(\sum_i f(\lambda_i)^2=0\)</span>. These are rational numbers; the ordering of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> forces all <span class="math" data-tex="\(f(\lambda_i)=0\)">\(f(\lambda_i)=0\)</span>. Rational coordinate functionals for a basis of E separate its vectors, so every <span class="math" data-tex="\(\lambda_i=0\)">\(\lambda_i=0\)</span>. This reasoning uses no ordering of the original field. X is therefore nilpotent.</p>
+<p>All elements of <span class="math" data-tex="\([\mathfrak l,\mathfrak l]\)">\([\mathfrak l,\mathfrak l]\)</span> have now been proved nilpotent as matrices. RTF-001 triangularizes this represented algebra strictly. An iterated commutator of sufficiently many strictly upper-triangular matrices is zero (each multiplication increases the distance above the diagonal); it is nilpotent and hence solvable. The quotient of <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span> by it is abelian, and the solvable-extension argument of RTF-001 completes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-an-intrinsic-bilinear-form">3. An intrinsic bilinear form</h2>
+<p>For a representation <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, define its <strong>trace form</strong> and the <strong>Killing form</strong> by
+<span class="math math-display" data-tex="\[
+B_\rho(x,y)=\operatorname{tr}_V(\rho(x)\rho(y)),\qquad
+\kappa_{\mathfrak g}(x,y)=
+\operatorname{tr}_{\mathfrak g}(\operatorname{ad}x\,\operatorname{ad}y).
+\]">\[
+B_\rho(x,y)=\operatorname{tr}_V(\rho(x)\rho(y)),\qquad
+\kappa_{\mathfrak g}(x,y)=
+\operatorname{tr}_{\mathfrak g}(\operatorname{ad}x\,\operatorname{ad}y).
+\]</span></p>
+<span id="RTLIE03-P31"></span>
+<p><strong>Proposition 3.1.</strong> These forms are symmetric, bilinear and invariant:
+<span class="math math-display" data-tex="\[
+B_\rho([x,y],z)=B_\rho(x,[y,z]).
+\tag{3.1}
+\]">\[
+B_\rho([x,y],z)=B_\rho(x,[y,z]).
+\tag{3.1}
+\]</span>
+For any invariant symmetric form <span class="math" data-tex="\(B\)">\(B\)</span>, the orthogonal complement <span class="math" data-tex="\(I^\perp\)">\(I^\perp\)</span> of an ideal is an ideal. For an ideal <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>,
+<span class="math math-display" data-tex="\[
+\kappa_{\mathfrak g}|_{I\times I}=\kappa_I.
+\tag{3.2}
+\]">\[
+\kappa_{\mathfrak g}|_{I\times I}=\kappa_I.
+\tag{3.2}
+\]</span></p>
+<p><strong>Proof.</strong> The trace identity (2.1) gives invariance; bilinearity and symmetry follow from linearity and cyclicity of trace. For <span class="math" data-tex="\(z\in I^\perp\)">\(z\in I^\perp\)</span>, <span class="math" data-tex="\(u\in I\)">\(u\in I\)</span>, invariance gives <span class="math" data-tex="\(B([x,z],u)=-B(z,[x,u])=0\)">\(B([x,z],u)=-B(z,[x,u])=0\)</span>, so <span class="math" data-tex="\(I^\perp\)">\(I^\perp\)</span> is an ideal. If x lies in I, <span class="math" data-tex="\(\operatorname{ad}x\)">\(\operatorname{ad}x\)</span> maps the whole algebra into I. In a basis adapted to I its quotient diagonal block is zero. For x,y both in I the product thus has trace exactly that of its restriction to I, proving (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The restriction formula requires an ideal, not an arbitrary subalgebra.</p>
+<span id="RTLIE03-C32"></span>
+<p><strong>Corollary 3.2 (intrinsic solvability criterion).</strong>
+<span class="math math-display" data-tex="\[
+\mathfrak g\text{ solvable}\quad\Longleftrightarrow\quad
+\kappa_{\mathfrak g}([\mathfrak g,\mathfrak g],\mathfrak g)=0.
+\]">\[
+\mathfrak g\text{ solvable}\quad\Longleftrightarrow\quad
+\kappa_{\mathfrak g}([\mathfrak g,\mathfrak g],\mathfrak g)=0.
+\]</span></p>
+<p><strong>Proof.</strong> The adjoint image has derived algebra <span class="math" data-tex="\(\operatorname{ad}[\mathfrak g,\mathfrak g]\)">\(\operatorname{ad}[\mathfrak g,\mathfrak g]\)</span>; its matrix trace pairing is precisely the Killing pairing in the statement. Theorem 2.1 therefore says that this image is solvable exactly under the indicated vanishing condition. Its kernel is the centre, an abelian ideal. The solvable-extension argument of RTF-001 shows that the adjoint image is solvable exactly when <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> is solvable. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define <strong>semisimple</strong> by <span class="math" data-tex="\(\operatorname{rad}(\mathfrak g)=0\)">\(\operatorname{rad}(\mathfrak g)=0\)</span>. Equivalently there is no nonzero solvable ideal, or no nonzero abelian ideal. A nonzero solvable ideal has a last nonzero derived term which is abelian; Jacobi shows that this term is still an ideal of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. Conversely every abelian ideal is solvable. The zero algebra is semisimple.</p>
+<span id="RTLIE03-T33"></span>
+<p><strong>Theorem 3.3 (Cartan's semisimplicity criterion).</strong> A characteristic-zero Lie algebra is semisimple if and only if its Killing form is nondegenerate.</p>
+<p><strong>Proof.</strong> Denote the nullspace of the Killing form by R. Proposition 3.1 makes R an ideal, and its restriction formula identifies the Killing form of R with the zero restriction. Corollary 3.2 makes R solvable. A semisimple algebra has no such nonzero ideal, hence its form is nondegenerate.</p>
+<p>For the converse take an abelian ideal A and <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(y\in\mathfrak g\)">\(y\in\mathfrak g\)</span>. The operator <span class="math" data-tex="\(\operatorname{ad}a\operatorname{ad}y\)">\(\operatorname{ad}a\operatorname{ad}y\)</span> has image in A and vanishes on A: y preserves A, and a brackets to zero with A. Its diagonal blocks, in a basis starting with A, are both zero. Thus <span class="math" data-tex="\(\kappa(a,y)=0\)">\(\kappa(a,y)=0\)</span> for every y. Nondegeneracy forces <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, so A is zero. A nonzero solvable ideal would have a last nonzero derived term which is an abelian ideal of the whole algebra, as proved in RTF-001. Therefore there is no nonzero solvable ideal. The zero algebra satisfies both conditions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular semisimple algebras have zero centre. The converse fails for the solvable algebra <span class="math" data-tex="\([x,y]=y\)">\([x,y]=y\)</span>. The criterion also shows that field extension preserves and reflects semisimplicity: its Killing matrix has the same entries, and its determinant is unchanged.</p>
+<h2 id="4-orthogonality-splits-every-ideal">4. Orthogonality splits every ideal</h2>
+<p>An algebra is <strong>simple</strong> if it is nonabelian and its only ideals are zero and itself. The one-dimensional abelian algebra is not called simple.</p>
+<p><strong>Theorem 4.1 (canonical simple ideals).</strong> A semisimple algebra decomposes as
+<span class="math math-display" data-tex="\[
+\mathfrak g=I_1\oplus\cdots\oplus I_r
+\]">\[
+\mathfrak g=I_1\oplus\cdots\oplus I_r
+\]</span>
+into commuting simple ideals. They are exactly its minimal nonzero ideals, and every ideal is a sum of a uniquely determined subset of them. For the zero algebra the sum is empty.</p>
+<p><strong>Proof.</strong> For any ideal <span class="math" data-tex="\(I\)">\(I\)</span>, let <span class="math" data-tex="\(J=I\cap I^\perp\)">\(J=I\cap I^\perp\)</span>. For <span class="math" data-tex="\(u,v\in J\)">\(u,v\in J\)</span>, <span class="math" data-tex="\(z\in\mathfrak g\)">\(z\in\mathfrak g\)</span>, invariance gives
+<span class="math math-display" data-tex="\[
+\kappa([u,v],z)=\kappa(u,[v,z])=0,
+\]">\[
+\kappa([u,v],z)=\kappa(u,[v,z])=0,
+\]</span>
+since <span class="math" data-tex="\([v,z]\in I\)">\([v,z]\in I\)</span> and <span class="math" data-tex="\(u\in I^\perp\)">\(u\in I^\perp\)</span>. Nondegeneracy makes <span class="math" data-tex="\(J\)">\(J\)</span> abelian; semisimplicity then makes <span class="math" data-tex="\(J=0\)">\(J=0\)</span>. The dimension formula
+<span class="math" data-tex="\(\dim I^\perp=\dim\mathfrak g-\dim I\)">\(\dim I^\perp=\dim\mathfrak g-\dim I\)</span> gives
+<span class="math math-display" data-tex="\[
+\mathfrak g=I\oplus I^\perp.
+\tag{4.1}
+\]">\[
+\mathfrak g=I\oplus I^\perp.
+\tag{4.1}
+\]</span>
+The two ideals commute, since their bracket lies in their intersection.</p>
+<p>For nonzero <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, choose a minimal nonzero ideal <span class="math" data-tex="\(I_1\)">\(I_1\)</span>. In (4.1), every ideal of <span class="math" data-tex="\(I_1\)">\(I_1\)</span> as a Lie algebra is an ideal of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, because the complement commutes with it. Thus <span class="math" data-tex="\(I_1\)">\(I_1\)</span> is simple; it cannot be abelian. The complement is semisimple: any abelian ideal in it would also be an abelian ideal of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. Repeat on that complement. Decreasing dimension makes the process terminate with simple commuting ideals.</p>
+<p>For uniqueness and the assertion about all ideals, let <span class="math" data-tex="\(J\)">\(J\)</span> be an ideal, <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span>, and write <span class="math" data-tex="\(x=\sum_i x_i\)">\(x=\sum_i x_i\)</span>, <span class="math" data-tex="\(x_i\in I_i\)">\(x_i\in I_i\)</span>. If <span class="math" data-tex="\(x_i\ne0\)">\(x_i\ne0\)</span>, some <span class="math" data-tex="\(a\in I_i\)">\(a\in I_i\)</span> has <span class="math" data-tex="\([a,x_i]\ne0\)">\([a,x_i]\ne0\)</span>, since the centre of the nonabelian simple algebra <span class="math" data-tex="\(I_i\)">\(I_i\)</span> is zero. Then
+<span class="math math-display" data-tex="\[
+[a,x]=[a,x_i]\in J\cap I_i.
+\]">\[
+[a,x]=[a,x_i]\in J\cap I_i.
+\]</span>
+This nonzero intersection is an ideal of <span class="math" data-tex="\(I_i\)">\(I_i\)</span>, so equals <span class="math" data-tex="\(I_i\)">\(I_i\)</span>. Consequently every nonzero component of every vector of <span class="math" data-tex="\(J\)">\(J\)</span> belongs to a factor entirely contained in <span class="math" data-tex="\(J\)">\(J\)</span>. Hence <span class="math" data-tex="\(J\)">\(J\)</span> is precisely the sum of those factors. Its minimal nonzero possibilities are the individual <span class="math" data-tex="\(I_i\)">\(I_i\)</span>, so they are intrinsic, and every decomposition has the same factors up to permutation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2.</strong> Ideals and quotients of semisimple algebras are semisimple, and <span class="math" data-tex="\([\mathfrak g,\mathfrak g]=\mathfrak g\)">\([\mathfrak g,\mathfrak g]=\mathfrak g\)</span>.</p>
+<p><strong>Proof.</strong> An ideal is a sum of some <span class="math" data-tex="\(I_i\)">\(I_i\)</span>, and its quotient removes those factors. A direct sum of simple algebras has no nonzero abelian ideal, because its projection to each factor would be such an ideal there. Finally <span class="math" data-tex="\([I_i,I_i]\)">\([I_i,I_i]\)</span> is a nonzero ideal of each nonabelian simple factor, hence all of it. Summing proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A diagonal copy <span class="math" data-tex="\(\{(x,x):x\in I\}\)">\(\{(x,x):x\in I\}\)</span> inside <span class="math" data-tex="\(I\oplus I\)">\(I\oplus I\)</span> is a simple subalgebra but is not an ideal: for noncommuting <span class="math" data-tex="\(a,x\)">\(a,x\)</span>,
+<span class="math" data-tex="\([(a,0),(x,x)]=([a,x],0)\)">\([(a,0),(x,x)]=([a,x],0)\)</span> leaves the diagonal. The canonical factors are ideals, not arbitrary simple subalgebras.</p>
+<h2 id="5-derivations-are-detected-by-the-form">5. Derivations are detected by the form</h2>
+<span id="RTLIE03-T51"></span>
+<p><strong>Theorem 5.1.</strong> Every derivation of a characteristic-zero semisimple algebra is inner:
+<span class="math math-display" data-tex="\[
+\operatorname{Der}(\mathfrak g)=\operatorname{ad}\mathfrak g.
+\]">\[
+\operatorname{Der}(\mathfrak g)=\operatorname{ad}\mathfrak g.
+\]</span>
+Its inducing element is unique.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathfrak d=\operatorname{Der}(\mathfrak g)\)">\(\mathfrak d=\operatorname{Der}(\mathfrak g)\)</span>. The derivation rule computes
+<span class="math math-display" data-tex="\[
+[D,\operatorname{ad}x]=\operatorname{ad}(Dx),
+\tag{5.1}
+\]">\[
+[D,\operatorname{ad}x]=\operatorname{ad}(Dx),
+\tag{5.1}
+\]</span>
+so <span class="math" data-tex="\(\operatorname{ad}\mathfrak g\)">\(\operatorname{ad}\mathfrak g\)</span> is an ideal in <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span>. The centre of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> is zero by Theorem 3.3, and this ideal is isomorphic to <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. Its restricted Killing form is its own Killing form, by Proposition 3.1, so is nondegenerate. Even if the form on all of <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> were degenerate, this nondegenerate restriction gives the vector-space decomposition
+<span class="math" data-tex="\(\mathfrak d=\operatorname{ad}\mathfrak g\oplus(\operatorname{ad}\mathfrak g)^\perp\)">\(\mathfrak d=\operatorname{ad}\mathfrak g\oplus(\operatorname{ad}\mathfrak g)^\perp\)</span>.
+Both spaces are ideals, and their intersection is zero, hence they commute. For D in the complement, (5.1) gives <span class="math" data-tex="\(\operatorname{ad}(Dx)=0\)">\(\operatorname{ad}(Dx)=0\)</span> for every x. Zero centre then gives D=0. Thus all derivations belong to the adjoint ideal. The inducing element is unique for the same reason. No algebraic closure was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For later use, a faithful representation <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of semisimple <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> also has nondegenerate trace form <span class="math" data-tex="\(B_\rho\)">\(B_\rho\)</span>. Its radical <span class="math" data-tex="\(R\)">\(R\)</span> is an ideal by invariance. The trace form on the faithful image <span class="math" data-tex="\(\rho(R)\)">\(\rho(R)\)</span> vanishes on all pairs, so Theorem 2.1 makes <span class="math" data-tex="\(R\)">\(R\)</span> solvable. Hence <span class="math" data-tex="\(R=0\)">\(R=0\)</span>. The next lesson uses this observation to construct Casimir operators.</p>
+<h2 id="6-jordan-decomposition-inside-the-lie-algebra">6. Jordan decomposition inside the Lie algebra</h2>
+<p>A polynomial in a derivation need not automatically be a derivation. To place its Jordan parts back in the algebra, first prove the relevant property.</p>
+<span id="RTLIE03-L61"></span>
+<p><strong>Lemma 6.1.</strong> Over an algebraically closed characteristic-zero field, the semisimple and nilpotent parts of a derivation <span class="math" data-tex="\(D\)">\(D\)</span> are derivations.</p>
+<p><strong>Proof.</strong> In the generalized-eigenspace decomposition of D, the derivation rule gives
+<span class="math math-display" data-tex="\[
+(D-\lambda-\mu)[u,v]=[(D-\lambda)u,v]+[u,(D-\mu)v]
+\quad(u\in V_\lambda,v\in V_\mu).
+\]">\[
+(D-\lambda-\mu)[u,v]=[(D-\lambda)u,v]+[u,(D-\mu)v]
+\quad(u\in V_\lambda,v\in V_\mu).
+\]</span>
+Iterating r times produces the binomial sum of brackets with the two powers adding to r. If the two generalized nilpotence indices are p,q, every summand is zero for <span class="math" data-tex="\(r\ge p+q-1\)">\(r\ge p+q-1\)</span>. Hence <span class="math" data-tex="\([V_\lambda,V_\mu]\subset V_{\lambda+\mu}\)">\([V_\lambda,V_\mu]\subset V_{\lambda+\mu}\)</span>, interpreted as zero when that eigenvalue is absent. D's semisimple part acts on this bracket by <span class="math" data-tex="\(\lambda+\mu\)">\(\lambda+\mu\)</span>, which is exactly the sum of its actions on the two arguments. The derivation rule follows on homogeneous pairs and then by bilinearity on all pairs. Subtract this derivation from D to obtain the nilpotent part, also a derivation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="RTLIE03-T62"></span>
+<p><strong>Theorem 6.2 (abstract Jordan decomposition).</strong> In a semisimple algebra over an algebraically closed characteristic-zero field, every <span class="math" data-tex="\(x\)">\(x\)</span> decomposes uniquely as
+<span class="math math-display" data-tex="\[
+x=x_s+x_n,\qquad [x_s,x_n]=0,
+\]">\[
+x=x_s+x_n,\qquad [x_s,x_n]=0,
+\]</span>
+with <span class="math" data-tex="\(\operatorname{ad}x_s\)">\(\operatorname{ad}x_s\)</span> semisimple and <span class="math" data-tex="\(\operatorname{ad}x_n\)">\(\operatorname{ad}x_n\)</span> nilpotent. They are the respective Jordan parts of <span class="math" data-tex="\(\operatorname{ad}x\)">\(\operatorname{ad}x\)</span>.</p>
+<p><strong>Proof.</strong> The operator decomposition of <span class="math" data-tex="\(\operatorname{ad}x\)">\(\operatorname{ad}x\)</span> in Lemma 1.1 has derivation parts by Lemma 6.1. Theorem 5.1 realizes them as <span class="math" data-tex="\(\operatorname{ad}x_s\)">\(\operatorname{ad}x_s\)</span> and <span class="math" data-tex="\(\operatorname{ad}x_n\)">\(\operatorname{ad}x_n\)</span>, with unique inducing elements. Injectivity of the adjoint map converts their sum into <span class="math" data-tex="\(x=x_s+x_n\)">\(x=x_s+x_n\)</span> and their commuting property into <span class="math" data-tex="\([x_s,x_n]=0\)">\([x_s,x_n]=0\)</span>. Any second decomposition would give a second commuting Jordan decomposition of the same operator. Its uniqueness and adjoint injectivity identify both elements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This assertion is intrinsic and independent of a chosen matrix realization. That arbitrary finite-dimensional representations preserve it is a further theorem, proved in <em>Complete reducibility: Casimir elements and Weyl's theorem</em>.</p>
+<h2 id="7-computing-the-form-and-testing-the-characteristic">7. Computing the form and testing the characteristic</h2>
+<p>Use <span class="math" data-tex="\(e=E_{12}\)">\(e=E_{12}\)</span>, <span class="math" data-tex="\(h=\operatorname{diag}(1,-1)\)">\(h=\operatorname{diag}(1,-1)\)</span>, <span class="math" data-tex="\(f=E_{21}\)">\(f=E_{21}\)</span> for <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>. In the ordered basis <span class="math" data-tex="\(e,h,f\)">\(e,h,f\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{ad}e=
+\begin{pmatrix}0&amp;-2&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix},\quad
+\operatorname{ad}h=\operatorname{diag}(2,0,-2),\quad
+\operatorname{ad}f=
+\begin{pmatrix}0&amp;0&amp;0\\-1&amp;0&amp;0\\0&amp;2&amp;0\end{pmatrix}.
+\]">\[
+\operatorname{ad}e=
+\begin{pmatrix}0&amp;-2&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix},\quad
+\operatorname{ad}h=\operatorname{diag}(2,0,-2),\quad
+\operatorname{ad}f=
+\begin{pmatrix}0&amp;0&amp;0\\-1&amp;0&amp;0\\0&amp;2&amp;0\end{pmatrix}.
+\]</span>
+Multiplying and tracing gives
+<span class="math math-display" data-tex="\[
+[\kappa]_{e,h,f}=
+\begin{pmatrix}0&amp;0&amp;4\\0&amp;8&amp;0\\4&amp;0&amp;0\end{pmatrix},
+\qquad\det[\kappa]=-128.
+\tag{7.1}
+\]">\[
+[\kappa]_{e,h,f}=
+\begin{pmatrix}0&amp;0&amp;4\\0&amp;8&amp;0\\4&amp;0&amp;0\end{pmatrix},
+\qquad\det[\kappa]=-128.
+\tag{7.1}
+\]</span>
+Thus <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> is semisimple.</p>
+<p>For all <span class="math" data-tex="\(n\)">\(n\)</span>, a calculation on matrix units gives
+<span class="math math-display" data-tex="\[
+\kappa_{\mathfrak{gl}_n}(X,Y)
+=2n\operatorname{tr}(XY)-2\operatorname{tr}(X)\operatorname{tr}(Y).
+\tag{7.2}
+\]">\[
+\kappa_{\mathfrak{gl}_n}(X,Y)
+=2n\operatorname{tr}(XY)-2\operatorname{tr}(X)\operatorname{tr}(Y).
+\tag{7.2}
+\]</span>
+Write <span class="math" data-tex="\(\operatorname{ad}X=L_X-R_X\)">\(\operatorname{ad}X=L_X-R_X\)</span>. On the space of matrices,
+<span class="math math-display" data-tex="\[
+\operatorname{tr}(L_A)=\operatorname{tr}(R_A)=n\operatorname{tr}(A),\qquad
+\operatorname{tr}(L_XR_Y)=\operatorname{tr}(X)\operatorname{tr}(Y).
+\]">\[
+\operatorname{tr}(L_A)=\operatorname{tr}(R_A)=n\operatorname{tr}(A),\qquad
+\operatorname{tr}(L_XR_Y)=\operatorname{tr}(X)\operatorname{tr}(Y).
+\]</span>
+For the last equality, the coefficient of <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> in <span class="math" data-tex="\(XE_{ij}Y\)">\(XE_{ij}Y\)</span> is <span class="math" data-tex="\(X_{ii}Y_{jj}\)">\(X_{ii}Y_{jj}\)</span>; sum over <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. For left multiplication, the <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span>-coefficient of <span class="math" data-tex="\(AE_{ij}\)">\(AE_{ij}\)</span> is <span class="math" data-tex="\(A_{ii}\)">\(A_{ii}\)</span>, repeated for all <span class="math" data-tex="\(j\)">\(j\)</span>; right multiplication is analogous. Expanding the product of the two adjoint operators proves (7.2). Since <span class="math" data-tex="\(\mathfrak{sl}_n\)">\(\mathfrak{sl}_n\)</span> is an ideal, (3.2) gives
+<span class="math math-display" data-tex="\[
+\kappa_{\mathfrak{sl}_n}(X,Y)=2n\operatorname{tr}(XY).
+\tag{7.3}
+\]">\[
+\kappa_{\mathfrak{sl}_n}(X,Y)=2n\operatorname{tr}(XY).
+\tag{7.3}
+\]</span>
+The trace pairing on <span class="math" data-tex="\(\mathfrak{sl}_n\)">\(\mathfrak{sl}_n\)</span> is nondegenerate in characteristic zero. If <span class="math" data-tex="\(X\)">\(X\)</span> pairs to zero with every off-diagonal matrix unit, its off-diagonal entries vanish. Pairing with <span class="math" data-tex="\(E_{ii}-E_{jj}\)">\(E_{ii}-E_{jj}\)</span> makes the diagonal entries equal, and trace zero makes them zero. Thus <span class="math" data-tex="\(\mathfrak{sl}_n\)">\(\mathfrak{sl}_n\)</span> is semisimple. The centre <span class="math" data-tex="\(k1\)">\(k1\)</span> lies in the radical of (7.2), so <span class="math" data-tex="\(\mathfrak{gl}_n\)">\(\mathfrak{gl}_n\)</span>, for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, is not semisimple.</p>
+<p>The defining module's trace form is <span class="math" data-tex="\(\operatorname{tr}(XY)\)">\(\operatorname{tr}(XY)\)</span>; the Killing form is <span class="math" data-tex="\(2n\)">\(2n\)</span> times it. More generally, every invariant symmetric form <span class="math" data-tex="\(B\)">\(B\)</span> on a complex simple algebra is a scalar multiple of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Define <span class="math" data-tex="\(T\)">\(T\)</span> by <span class="math" data-tex="\(B(x,y)=\kappa(Tx,y)\)">\(B(x,y)=\kappa(Tx,y)\)</span>. Invariance implies <span class="math" data-tex="\(T[a,x]=[a,Tx]\)">\(T[a,x]=[a,Tx]\)</span>. For an eigenvalue <span class="math" data-tex="\(c\)">\(c\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>, the nonzero kernel of <span class="math" data-tex="\(T-c\)">\(T-c\)</span> is an ideal, hence all of the simple algebra. Thus <span class="math" data-tex="\(T=c1\)">\(T=c1\)</span>. The scalar depends on the form and can be zero.</p>
+<p>Here is an explicit contrast in prime characteristic. For a prime <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>, let
+<span class="math math-display" data-tex="\[
+W=\operatorname{Der}(k[t]/(t^p)),\qquad
+d_i=t^{i+1}\partial_t\quad(-1\le i\le p-2).
+\]">\[
+W=\operatorname{Der}(k[t]/(t^p)),\qquad
+d_i=t^{i+1}\partial_t\quad(-1\le i\le p-2).
+\]</span>
+Every derivation is determined by its value on <span class="math" data-tex="\(t\)">\(t\)</span>, and every value is allowed because the derivative of <span class="math" data-tex="\(t^p\)">\(t^p\)</span> is zero. These <span class="math" data-tex="\(p\)">\(p\)</span> operators form a basis and the product rule gives
+<span class="math math-display" data-tex="\[
+[d_i,d_j]=(j-i)d_{i+j},
+\]">\[
+[d_i,d_j]=(j-i)d_{i+j},
+\]</span>
+with out-of-range terms zero.</p>
+<p>This algebra is simple. A nonzero ideal is invariant under <span class="math" data-tex="\(\operatorname{ad}d_0\)">\(\operatorname{ad}d_0\)</span>, whose <span class="math" data-tex="\(p\)">\(p\)</span> eigenvalues are distinct. Polynomial coordinate projections isolate some <span class="math" data-tex="\(d_i\)">\(d_i\)</span> in it. Repeated brackets with <span class="math" data-tex="\(d_{-1}\)">\(d_{-1}\)</span>, with nonzero coefficients <span class="math" data-tex="\(i+1\)">\(i+1\)</span>, reach <span class="math" data-tex="\(d_{-1}\)">\(d_{-1}\)</span>. Bracketing that element with the basis of <span class="math" data-tex="\(W\)">\(W\)</span> gives <span class="math" data-tex="\(d_{-1},\ldots,d_{p-3}\)">\(d_{-1},\ldots,d_{p-3}\)</span>. Finally
+<span class="math" data-tex="\([d_1,d_{p-3}]=(p-4)d_{p-2}\)">\([d_1,d_{p-3}]=(p-4)d_{p-2}\)</span> gives the missing element, since <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>. The ideal is therefore all of <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>Its Killing form, however, is zero. A product of adjoint operators shifts the integer basis index by <span class="math" data-tex="\(i+j\)">\(i+j\)</span>, so has zero diagonal unless <span class="math" data-tex="\(i+j=0\)">\(i+j=0\)</span>. The only remaining pairs are <span class="math" data-tex="\((0,0),(-1,1),(1,-1)\)">\((0,0),(-1,1),(1,-1)\)</span>. Their traces are
+<span class="math math-display" data-tex="\[
+\sum_{m=-1}^{p-2}m^2,\qquad
+\sum_{m=-1}^{p-2}(m-1)(m+2),
+\]">\[
+\sum_{m=-1}^{p-2}m^2,\qquad
+\sum_{m=-1}^{p-2}(m-1)(m+2),
+\]</span>
+and the latter again by symmetry. Truncated boundary terms have coefficient zero, so these sums are valid. The indices run through <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>; sums of <span class="math" data-tex="\(1,m,m^2\)">\(1,m,m^2\)</span> vanish in <span class="math" data-tex="\(k\)">\(k\)</span>. The first sum is <span class="math" data-tex="\(p=0\)">\(p=0\)</span>. For the others, choose <span class="math" data-tex="\(a\in\mathbb F_p^\times\)">\(a\in\mathbb F_p^\times\)</span> with <span class="math" data-tex="\(a^2\ne1\)">\(a^2\ne1\)</span>; permutation by multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> forces both sums to vanish. Thus <span class="math" data-tex="\(\kappa_W=0\)">\(\kappa_W=0\)</span>, despite simplicity. This is the truncated-polynomial Witt algebra discussed in [Premet–Strade, §1].</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Compute the Killing form of <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> in the basis <span class="math" data-tex="\(e,h,f\)">\(e,h,f\)</span>, including its determinant.</p>
+<p><strong>Solution.</strong> The adjoint matrices in Section 7 are obtained by applying <span class="math" data-tex="\([h,e]=2e\)">\([h,e]=2e\)</span>, <span class="math" data-tex="\([h,f]=-2f\)">\([h,f]=-2f\)</span>, <span class="math" data-tex="\([e,f]=h\)">\([e,f]=h\)</span> to each basis vector. The squares for <span class="math" data-tex="\(e,f\)">\(e,f\)</span> have trace zero; the square for <span class="math" data-tex="\(h\)">\(h\)</span> has trace <span class="math" data-tex="\(4+4=8\)">\(4+4=8\)</span>. Products involving <span class="math" data-tex="\(h\)">\(h\)</span> and either off-diagonal matrix have zero trace. The product for <span class="math" data-tex="\(e,f\)">\(e,f\)</span> has diagonal <span class="math" data-tex="\(2,2,0\)">\(2,2,0\)</span>, giving trace <span class="math" data-tex="\(4\)">\(4\)</span>, and symmetry gives the other mixed entry. These are all entries of (7.1), with determinant <span class="math" data-tex="\(4(-32)=-128\)">\(4(-32)=-128\)</span>.</p>
+<p><strong>Exercise 8.2 (medium).</strong> Prove (7.3) without writing all adjoint matrices on <span class="math" data-tex="\(\mathfrak{sl}_n\)">\(\mathfrak{sl}_n\)</span>.</p>
+<p><strong>Solution.</strong> On the <span class="math" data-tex="\(n^2\)">\(n^2\)</span>-dimensional matrix space,
+<span class="math math-display" data-tex="\[
+\operatorname{ad}X\,\operatorname{ad}Y
+=L_{XY}-L_XR_Y-R_XL_Y+R_{YX}.
+\]">\[
+\operatorname{ad}X\,\operatorname{ad}Y
+=L_{XY}-L_XR_Y-R_XL_Y+R_{YX}.
+\]</span>
+The first and last terms have traces <span class="math" data-tex="\(n\operatorname{tr}(XY)\)">\(n\operatorname{tr}(XY)\)</span>. For <span class="math" data-tex="\(L_XR_Y\)">\(L_XR_Y\)</span>, its <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span>-diagonal coefficient is <span class="math" data-tex="\(X_{ii}Y_{jj}\)">\(X_{ii}Y_{jj}\)</span>, giving trace <span class="math" data-tex="\(\operatorname{tr}(X)\operatorname{tr}(Y)\)">\(\operatorname{tr}(X)\operatorname{tr}(Y)\)</span>. The other mixed term gives the same trace. Both vanish for traceless <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>. Since <span class="math" data-tex="\(\mathfrak{sl}_n\)">\(\mathfrak{sl}_n\)</span> is an ideal, (3.2) identifies the ambient trace with its own Killing form. The result is <span class="math" data-tex="\(2n\operatorname{tr}(XY)\)">\(2n\operatorname{tr}(XY)\)</span>.</p>
+<p><strong>Exercise 8.3 (medium).</strong> For an ideal <span class="math" data-tex="\(I\)">\(I\)</span> of semisimple <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, prove <span class="math" data-tex="\(\mathfrak g=I\oplus I^\perp\)">\(\mathfrak g=I\oplus I^\perp\)</span>. Does the assertion hold for every subalgebra?</p>
+<p><strong>Solution.</strong> Invariance makes <span class="math" data-tex="\(I^\perp\)">\(I^\perp\)</span> an ideal. For <span class="math" data-tex="\(J=I\cap I^\perp\)">\(J=I\cap I^\perp\)</span>,
+<span class="math" data-tex="\(\kappa([u,v],z)=\kappa(u,[v,z])=0\)">\(\kappa([u,v],z)=\kappa(u,[v,z])=0\)</span> for <span class="math" data-tex="\(u,v\in J\)">\(u,v\in J\)</span>, because <span class="math" data-tex="\([v,z]\in I\)">\([v,z]\in I\)</span>. Nondegeneracy makes <span class="math" data-tex="\(J\)">\(J\)</span> abelian, and semisimplicity makes it zero. The orthogonal-complement dimension formula proves the direct sum. For subalgebras it fails: <span class="math" data-tex="\(ke\subseteq\mathfrak{sl}_2\)">\(ke\subseteq\mathfrak{sl}_2\)</span> satisfies <span class="math" data-tex="\(\kappa(e,e)=0\)">\(\kappa(e,e)=0\)</span>, so intersects its own orthogonal complement nontrivially.</p>
+<p><strong>Exercise 8.4 (hard).</strong> Prove the sufficiency direction of Cartan's solvability criterion over any characteristic-zero field. Explain why a polynomial in <span class="math" data-tex="\(X\)">\(X\)</span> alone does not prove the required normalizer assertion.</p>
+<p><strong>Solution.</strong> Extend to an algebraic closure, which preserves and reflects termination of the derived series. For <span class="math" data-tex="\(X\)">\(X\)</span> in the derived algebra, form the rational span <span class="math" data-tex="\(E\)">\(E\)</span> of its eigenvalues and use rational functionals <span class="math" data-tex="\(f\)">\(f\)</span> to define <span class="math" data-tex="\(Y_f\)">\(Y_f\)</span> on generalized eigenspaces. On a Hom block, <span class="math" data-tex="\(\operatorname{ad}Y_f\)">\(\operatorname{ad}Y_f\)</span> acts by <span class="math" data-tex="\(f(\lambda-\mu)\)">\(f(\lambda-\mu)\)</span>; interpolation makes it a zero-constant-term polynomial in <span class="math" data-tex="\(\operatorname{ad}X_s\)">\(\operatorname{ad}X_s\)</span>. By Lemma 1.1 the latter is itself a zero-constant-term polynomial in <span class="math" data-tex="\(\operatorname{ad}X\)">\(\operatorname{ad}X\)</span>. Hence <span class="math" data-tex="\([Y_f,\mathfrak l]\)">\([Y_f,\mathfrak l]\)</span> belongs to the derived ideal.</p>
+<p>Writing <span class="math" data-tex="\(X=\sum[A_r,B_r]\)">\(X=\sum[A_r,B_r]\)</span>, trace-cyclicity and the hypothesis give
+<span class="math math-display" data-tex="\[
+\sum_i\lambda_i f(\lambda_i)
+=\sum_r\operatorname{tr}(A_r[B_r,Y_f])=0.
+\]">\[
+\sum_i\lambda_i f(\lambda_i)
+=\sum_r\operatorname{tr}(A_r[B_r,Y_f])=0.
+\]</span>
+Expand the eigenvalues in a rational basis of <span class="math" data-tex="\(E\)">\(E\)</span> and use the coordinate functionals. Each gives a vanishing sum of rational squares, forcing all eigenvalues to vanish. Engel makes the derived algebra nilpotent, and the solvable-extension property completes the proof.</p>
+<p>The distinction about polynomials is substantive. Put <span class="math" data-tex="\(X=\operatorname{diag}(-1,0,1)\)">\(X=\operatorname{diag}(-1,0,1)\)</span>, <span class="math" data-tex="\(A=E_{12}+E_{23}\)">\(A=E_{12}+E_{23}\)</span>, <span class="math" data-tex="\(B=E_{21}+E_{32}\)">\(B=E_{21}+E_{32}\)</span>. Their span is a Lie algebra because <span class="math" data-tex="\([X,A]=-A\)">\([X,A]=-A\)</span>, <span class="math" data-tex="\([X,B]=B\)">\([X,B]=B\)</span>, <span class="math" data-tex="\([A,B]=-X\)">\([A,B]=-X\)</span>. In particular <span class="math" data-tex="\(X\)">\(X\)</span> belongs to its derived algebra. But <span class="math" data-tex="\([X^2,A]=E_{12}-E_{23}\)">\([X^2,A]=E_{12}-E_{23}\)</span> is outside that span. Invariance under <span class="math" data-tex="\(\operatorname{ad}X\)">\(\operatorname{ad}X\)</span> alone does not imply invariance under <span class="math" data-tex="\(\operatorname{ad}(X^2)\)">\(\operatorname{ad}(X^2)\)</span>. The Hom-block interpolation proves the particular assertion needed.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use elementary finite-dimensional basis extension and rank–nullity, verified in [Hefferon, Chapter Two §III.2, Corollary 2.12; Chapter Three §II.2, Theorem 2.14]. Trace-cyclicity was computed in the first lesson. Lemma 1.1 constructs the generalized eigenspaces and the polynomial Jordan decomposition, including the needed Bézout residue argument. The orthogonal-complement dimension formula follows by identifying the space with its dual using the nondegenerate form and restricting functionals to the subspace. All Lie-algebra results asserted here, including the modular example, have proofs. Preservation of abstract Jordan decomposition by representations belongs to the next lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne, Lie algebras]</strong> J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/LAG.pdf"><em>Lie Algebras, Algebraic Groups, and Lie Groups</em>, version 2.00 (2013)</a>, Chapter I, §§1, 3–5, especially Theorem 4.22 for inner derivations. The actual author-hosted PDF is the edition cited.</li>
+<li><strong>[Etingof]</strong> P. Etingof, <a href="https://math.mit.edu/~etingof/lnlg.pdf"><em>18.745: Lie Groups and Lie Algebras, I</em>, author-hosted lecture notes</a>, Sections 13–15, especially Lemma 14.21 and Theorem 14.18 for the two Cartan criteria. These are comparison sources; the used proofs appear in full above and in the companion.</li>
+<li><strong>[Premet–Strade]</strong> A. Premet and H. Strade, <a href="https://arxiv.org/pdf/math/0601380"><em>Classification of finite dimensional simple Lie algebras in prime characteristics</em></a>, arXiv:math/0601380, §1, for the Witt-algebra comparison. The concrete example and its proof remain in Section 7.</li>
+</ul>
+</article></main></body></html>

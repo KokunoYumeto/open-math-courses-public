@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Measuring regularity with weighted Fourier spaces</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="measuring-regularity-with-weighted-fourier-spaces">Measuring regularity with weighted Fourier spaces</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A differential equation need not gain the same number of derivatives in every direction. The polynomial <span class="math" data-tex="\(\xi_1^2+i\xi_2\)">\(\xi_1^2+i\xi_2\)</span>, for example, grows quadratically in one variable and linearly in the other. A single isotropic Sobolev exponent hides that distinction. We develop spaces whose weights can follow the actual polynomial, while retaining multiplication by smooth cutoffs, completeness, and a useful duality.</p>
+<p>Read <a href="AN02-L001.html">Fundamental solutions and the directions an equation uses</a> for the polynomial derivative norm. The analytic prerequisites are the Fourier transform on Schwartz functions and tempered distributions, Hölder's inequality, the <span class="math" data-tex="\(L^1*L^p\)">\(L^1*L^p\)</span> convolution inequality, and the duality of <span class="math" data-tex="\(L^p\)">\(L^p\)</span> for <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>. The Fourier convention and its inverse are given in <a href="prerequisites/prerequisite-bridges.html#AN03-DEP-001">Fourier transforms, finite spectra and convex separation</a>. Grubb [Grubb] and Melrose [Melrose] give background on Fourier analysis. The locally convex and Lebesgue tools used here are proved in the internal lessons linked below.</p>
+<p><a href="AN02-L043.html">Lebesgue duality and the functionals on Fourier spaces</a>, Sections 1–3, proves the finite-exponent Lebesgue duality theorem, including its endpoint and exact norm. Its final section uses only the weighted isometry defined here to identify the Fourier representation. <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Sections 15.0–15.4, proves Hölder, completeness, Young and finite-exponent smooth approximation. <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a>, Section 13.10, constructs the cutoffs.</p>
+<h2 id="weights-that-tolerate-frequency-shifts">Weights that tolerate frequency shifts</h2>
+<p>A positive function <span class="math" data-tex="\(k:\mathbb R^n\to(0,\infty)\)">\(k:\mathbb R^n\to(0,\infty)\)</span> is a <strong>moderate weight</strong> in this lesson if there are constants <span class="math" data-tex="\(C,N\geq0\)">\(C,N\geq0\)</span> such that
+<span class="math math-display" data-tex="\[
+k(\xi+h)\leq(1+C|h|)^N k(\xi)
+\qquad(\xi,h\in\mathbb R^n).
+\]">\[
+k(\xi+h)\leq(1+C|h|)^N k(\xi)
+\qquad(\xi,h\in\mathbb R^n).
+\]</span>
+The factor tends to one as <span class="math" data-tex="\(h\to0\)">\(h\to0\)</span>. This convention makes every such weight continuous without imposing a separate regularity assumption. Reversing the shift gives
+<span class="math math-display" data-tex="\[
+(1+C|h|)^{-N}\leq\frac{k(\xi+h)}{k(\xi)}
+\leq(1+C|h|)^N.
+\]">\[
+(1+C|h|)^{-N}\leq\frac{k(\xi+h)}{k(\xi)}
+\leq(1+C|h|)^N.
+\]</span>
+In particular both <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(1/k\)">\(1/k\)</span> have at most polynomial growth. Define
+<span class="math math-display" data-tex="\[
+M_k(h)=\sup_\xi\frac{k(\xi+h)}{k(\xi)}.
+\]">\[
+M_k(h)=\sup_\xi\frac{k(\xi+h)}{k(\xi)}.
+\]</span></p>
+<p><strong>Lemma 1.1.</strong> The function <span class="math" data-tex="\(M_k\)">\(M_k\)</span> is continuous, submultiplicative, and satisfies
+<span class="math math-display" data-tex="\[
+1\leq M_k(h)\leq(1+C|h|)^N,
+\qquad M_k(h+l)\leq M_k(h)M_k(l).
+\]">\[
+1\leq M_k(h)\leq(1+C|h|)^N,
+\qquad M_k(h+l)\leq M_k(h)M_k(l).
+\]</span>
+If <span class="math" data-tex="\(k_1,k_2\)">\(k_1,k_2\)</span> are moderate, so are their sum, product, pointwise maximum and pointwise minimum. Every real power of a moderate weight is moderate. Reflection <span class="math" data-tex="\(k^\vee(\xi)=k(-\xi)\)">\(k^\vee(\xi)=k(-\xi)\)</span> preserves moderation.</p>
+<p><strong>Proof.</strong> Factor the ratio for a shift <span class="math" data-tex="\(h+l\)">\(h+l\)</span> through the point <span class="math" data-tex="\(\xi+l\)">\(\xi+l\)</span> to prove submultiplicativity. If <span class="math" data-tex="\(M_k(h)&lt;1\)">\(M_k(h)&lt;1\)</span>, iteration gives <span class="math" data-tex="\(k(\xi+rh)\leq M_k(h)^r k(\xi)\)">\(k(\xi+rh)\leq M_k(h)^r k(\xi)\)</span> for positive integers <span class="math" data-tex="\(r\)">\(r\)</span>, whereas the reverse moderate bound gives <span class="math" data-tex="\(k(\xi+rh)\geq(1+Cr|h|)^{-N}k(\xi)\)">\(k(\xi+rh)\geq(1+Cr|h|)^{-N}k(\xi)\)</span>. An exponential decay cannot dominate that polynomial lower bound for every <span class="math" data-tex="\(r\)">\(r\)</span>. Thus <span class="math" data-tex="\(M_k(h)\geq1\)">\(M_k(h)\geq1\)</span>. Finally
+<span class="math math-display" data-tex="\[
+M_k(h+l)\leq M_k(h)(1+C|l|)^N,
+\qquad M_k(h)\leq M_k(h+l)(1+C|l|)^N
+\]">\[
+M_k(h+l)\leq M_k(h)(1+C|l|)^N,
+\qquad M_k(h)\leq M_k(h+l)(1+C|l|)^N
+\]</span>
+prove continuity. For a sum, maximum or minimum, apply a common shift bound to the two terms before combining them. For a product multiply their bounds. Reciprocal weights obey the same bound by reversing the shift; positive powers then give all real powers. Reflection simply replaces <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(-h\)">\(-h\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 1.2.</strong> The weights <span class="math" data-tex="\(\langle\xi\rangle^s=(1+|\xi|^2)^{s/2}\)">\(\langle\xi\rangle^s=(1+|\xi|^2)^{s/2}\)</span>, <span class="math" data-tex="\(s\in\mathbb R\)">\(s\in\mathbb R\)</span>, are moderate because <span class="math" data-tex="\(\langle\xi+h\rangle\leq(1+|h|)\langle\xi\rangle\)">\(\langle\xi+h\rangle\leq(1+|h|)\langle\xi\rangle\)</span>. Products of these weights on separate groups of variables are moderate as well. Another example in one variable is <span class="math" data-tex="\(k(\xi)=(1+\max(\xi,0))^s\)">\(k(\xi)=(1+\max(\xi,0))^s\)</span>, which need not be even.</p>
+<p><strong>Proposition 1.3.</strong> If <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> is a polynomial of degree at most <span class="math" data-tex="\(m\)">\(m\)</span>, then the derivative norm <span class="math" data-tex="\(S_P\)">\(S_P\)</span> is a moderate weight, with constants depending only on <span class="math" data-tex="\(m\)">\(m\)</span> and the dimension.</p>
+<p><strong>Proof.</strong> Collect all derivatives <span class="math" data-tex="\(\partial^\alpha P(\xi)\)">\(\partial^\alpha P(\xi)\)</span>, <span class="math" data-tex="\(|\alpha|\leq m\)">\(|\alpha|\leq m\)</span>, in one vector <span class="math" data-tex="\(J(\xi)\)">\(J(\xi)\)</span>. Differentiation of this vector in any coordinate shifts its entries to derivatives of higher order, with derivatives of order above <span class="math" data-tex="\(m\)">\(m\)</span> interpreted as zero. Denote those fixed commuting shift matrices by <span class="math" data-tex="\(T_j\)">\(T_j\)</span>. Their joint products of total degree greater than <span class="math" data-tex="\(m\)">\(m\)</span> vanish. Taylor's formula is therefore the finite identity
+<span class="math math-display" data-tex="\[
+J(\xi+h)=\sum_{r=0}^m\frac{(\sum_jh_jT_j)^r}{r!}J(\xi).
+\]">\[
+J(\xi+h)=\sum_{r=0}^m\frac{(\sum_jh_jT_j)^r}{r!}J(\xi).
+\]</span>
+Choose <span class="math" data-tex="\(A\)">\(A\)</span> depending only on the matrices so that <span class="math" data-tex="\(\|\sum h_jT_j\|\leq A|h|\)">\(\|\sum h_jT_j\|\leq A|h|\)</span>. Since <span class="math" data-tex="\(1/r!\leq\binom mr\)">\(1/r!\leq\binom mr\)</span> for <span class="math" data-tex="\(0\leq r\leq m\)">\(0\leq r\leq m\)</span>,
+<span class="math math-display" data-tex="\[
+|J(\xi+h)|\leq\sum_{r=0}^m\frac{(A|h|)^r}{r!}|J(\xi)|
+\leq(1+A|h|)^m|J(\xi)|.
+\]">\[
+|J(\xi+h)|\leq\sum_{r=0}^m\frac{(A|h|)^r}{r!}|J(\xi)|
+\leq(1+A|h|)^m|J(\xi)|.
+\]</span>
+The norm of <span class="math" data-tex="\(J\)">\(J\)</span> is exactly <span class="math" data-tex="\(S_P\)">\(S_P\)</span>. Positivity was proved in the preceding lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.4.</strong> If <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is a positive measure, the convolution
+<span class="math" data-tex="\((\mu*k)(\xi)=\int k(\xi-y)\,d\mu(y)\)">\((\mu*k)(\xi)=\int k(\xi-y)\,d\mu(y)\)</span> is either infinite everywhere or, if finite at one point, finite everywhere. In the finite case it obeys the same shift inequality as <span class="math" data-tex="\(k\)">\(k\)</span>. It is a positive moderate weight when <span class="math" data-tex="\(\mu\ne0\)">\(\mu\ne0\)</span>.</p>
+<p><strong>Proof.</strong> Integrate both sides of the moderate shift inequality for <span class="math" data-tex="\(k(\xi-y)\)">\(k(\xi-y)\)</span>. Finiteness at one point then gives finiteness at every point. A nonzero positive measure integrates a strictly positive function to a strictly positive number. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="replacing-a-weight-by-one-that-moves-slowly">Replacing a weight by one that moves slowly</h2>
+<p>Equivalent weights define equivalent norms, but their local shift behavior can be quite different. The following construction will make perturbation estimates small.</p>
+<p><strong>Theorem 2.1.</strong> For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, set
+<span class="math math-display" data-tex="\[
+k_\varepsilon(\xi)=\sup_y e^{-\varepsilon|y|}k(\xi-y).
+\]">\[
+k_\varepsilon(\xi)=\sup_y e^{-\varepsilon|y|}k(\xi-y).
+\]</span>
+Then <span class="math" data-tex="\(k\leq k_\varepsilon\leq A_\varepsilon k\)">\(k\leq k_\varepsilon\leq A_\varepsilon k\)</span> for a finite <span class="math" data-tex="\(A_\varepsilon\)">\(A_\varepsilon\)</span>. The original moderate shift constants also work for <span class="math" data-tex="\(k_\varepsilon\)">\(k_\varepsilon\)</span>, and
+<span class="math math-display" data-tex="\[
+1\leq M_{k_\varepsilon}(h)\leq e^{\varepsilon|h|}.
+\]">\[
+1\leq M_{k_\varepsilon}(h)\leq e^{\varepsilon|h|}.
+\]</span>
+Thus <span class="math" data-tex="\(M_{k_\varepsilon}\to1\)">\(M_{k_\varepsilon}\to1\)</span> uniformly on every bounded set as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>.</p>
+<p><strong>Proof.</strong> The choice <span class="math" data-tex="\(y=0\)">\(y=0\)</span> gives the lower bound. The original shift estimate gives the upper bound with
+<span class="math" data-tex="\(A_\varepsilon=\sup_{r\geq0}e^{-\varepsilon r}(1+Cr)^N&lt;\infty\)">\(A_\varepsilon=\sup_{r\geq0}e^{-\varepsilon r}(1+Cr)^N&lt;\infty\)</span>.
+Keeping <span class="math" data-tex="\(y\)">\(y\)</span> fixed in the supremum proves that the original polynomial shift bound is retained. Alternatively write
+<span class="math" data-tex="\(k_\varepsilon(\xi)=\sup_z e^{-\varepsilon|\xi-z|}k(z)\)">\(k_\varepsilon(\xi)=\sup_z e^{-\varepsilon|\xi-z|}k(z)\)</span>.
+The triangle inequality shows <span class="math" data-tex="\(k_\varepsilon(\xi+h)\leq e^{\varepsilon|h|}k_\varepsilon(\xi)\)">\(k_\varepsilon(\xi+h)\leq e^{\varepsilon|h|}k_\varepsilon(\xi)\)</span>. Apply Lemma 1.1 for the lower bound and let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. No differentiability of <span class="math" data-tex="\(k_\varepsilon\)">\(k_\varepsilon\)</span> is asserted. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="a-banach-space-on-each-fourier-scale">A Banach space on each Fourier scale</h2>
+<p>Use
+<span class="math math-display" data-tex="\[
+\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,
+\qquad
+\mathcal F^{-1}g(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}g(\xi)\,d\xi.
+\]">\[
+\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,
+\qquad
+\mathcal F^{-1}g(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}g(\xi)\,d\xi.
+\]</span>
+For <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>, define <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> to be the tempered distributions <span class="math" data-tex="\(u\)">\(u\)</span> whose Fourier transform is a measurable function with <span class="math" data-tex="\(k\widehat u\in L^p\)">\(k\widehat u\in L^p\)</span>. Its norm is
+<span class="math math-display" data-tex="\[
+\|u\|_{p,k}=(2\pi)^{-n/p}\|k\widehat u\|_{L^p},
+\]">\[
+\|u\|_{p,k}=(2\pi)^{-n/p}\|k\widehat u\|_{L^p},
+\]</span>
+where <span class="math" data-tex="\(1/\infty=0\)">\(1/\infty=0\)</span>. Equality of Fourier functions is understood almost everywhere.</p>
+<p><strong>Theorem 3.1.</strong> The space <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> is Banach, and both inclusions
+<span class="math math-display" data-tex="\[
+\mathcal S\longrightarrow B_{p,k}\longrightarrow\mathcal S&#x27;
+\]">\[
+\mathcal S\longrightarrow B_{p,k}\longrightarrow\mathcal S&#x27;
+\]</span>
+are continuous. If <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span>, compactly supported smooth functions are dense in <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span>.</p>
+<p><strong>Proof.</strong> A measurable <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(kg\in L^p\)">\(kg\in L^p\)</span> defines a tempered distribution: for <span class="math" data-tex="\(\psi\in\mathcal S\)">\(\psi\in\mathcal S\)</span>, Hölder's inequality gives
+<span class="math math-display" data-tex="\[
+\left|\int g\psi\right|\leq\|kg\|_p\|\psi/k\|_{p&#x27;}.
+\]">\[
+\left|\int g\psi\right|\leq\|kg\|_p\|\psi/k\|_{p&#x27;}.
+\]</span>
+The second factor is bounded by finitely many Schwartz seminorms because <span class="math" data-tex="\(1/k\)">\(1/k\)</span> has polynomial growth. Conversely <span class="math" data-tex="\(k\)">\(k\)</span> has polynomial growth, so the weighted norm of a Schwartz function is bounded by finitely many of its seminorms. Fourier inversion identifies <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> isometrically with the complete space of functions of weighted <span class="math" data-tex="\(L^p\)">\(L^p\)</span> norm. This proves completeness and the two continuous inclusions. The bound just given is uniform on bounded subsets of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, so it also proves continuity into the strong dual topology on <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>.</p>
+<p>For finite <span class="math" data-tex="\(p\)">\(p\)</span>, first truncate a weighted <span class="math" data-tex="\(L^p\)">\(L^p\)</span> function to compact frequency sets. On a fixed compact set <span class="math" data-tex="\(k\)">\(k\)</span> is bounded above and bounded away from zero, so approximation there by smooth compactly supported functions in ordinary <span class="math" data-tex="\(L^p\)">\(L^p\)</span> is also approximation in weighted <span class="math" data-tex="\(L^p\)">\(L^p\)</span>. Their inverse transforms lie in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Finally, if <span class="math" data-tex="\(u\in\mathcal S\)">\(u\in\mathcal S\)</span>, multiplying it by a fixed smooth cutoff equal to one near zero, dilated to larger and larger balls, converges to <span class="math" data-tex="\(u\)">\(u\)</span> in every Schwartz seminorm. Hence it converges in <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span>. This proves the stated density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, Plancherel makes <span class="math" data-tex="\(B_{2,1}=L^2\)">\(B_{2,1}=L^2\)</span> with the same norm. For <span class="math" data-tex="\(k=\langle\xi\rangle^s\)">\(k=\langle\xi\rangle^s\)</span>, <span class="math" data-tex="\(B_{2,k}\)">\(B_{2,k}\)</span> is the Fourier definition of <span class="math" data-tex="\(H^s\)">\(H^s\)</span>. These familiar spaces are special cases; no evenness or radial symmetry is required of a general weight.</p>
+<h2 id="cutoffs-differential-operators-and-convolution">Cutoffs, differential operators, and convolution</h2>
+<p><strong>Theorem 4.1.</strong> For <span class="math" data-tex="\(\chi\in\mathcal S\)">\(\chi\in\mathcal S\)</span>, multiplication by <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is bounded on <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span>, and
+<span class="math math-display" data-tex="\[
+\|\chi u\|_{p,k}\leq A_k(\chi)\|u\|_{p,k},
+\qquad
+A_k(\chi)=(2\pi)^{-n}\int M_k(h)|\widehat\chi(h)|\,dh.
+\]">\[
+\|\chi u\|_{p,k}\leq A_k(\chi)\|u\|_{p,k},
+\qquad
+A_k(\chi)=(2\pi)^{-n}\int M_k(h)|\widehat\chi(h)|\,dh.
+\]</span></p>
+<p><strong>Proof.</strong> The Fourier transform of a product is <span class="math" data-tex="\((2\pi)^{-n}\widehat\chi*\widehat u\)">\((2\pi)^{-n}\widehat\chi*\widehat u\)</span>. The weighted pointwise bound is
+<span class="math math-display" data-tex="\[
+k(\xi)|\widehat{\chi u}(\xi)|
+\leq(2\pi)^{-n}\int
+M_k(\xi-\eta)|\widehat\chi(\xi-\eta)|
+k(\eta)|\widehat u(\eta)|\,d\eta.
+\]">\[
+k(\xi)|\widehat{\chi u}(\xi)|
+\leq(2\pi)^{-n}\int
+M_k(\xi-\eta)|\widehat\chi(\xi-\eta)|
+k(\eta)|\widehat u(\eta)|\,d\eta.
+\]</span>
+The kernel <span class="math" data-tex="\(M_k|\widehat\chi|\)">\(M_k|\widehat\chi|\)</span> is integrable. The <span class="math" data-tex="\(L^1*L^p\)">\(L^1*L^p\)</span> inequality proves the claim, including <span class="math" data-tex="\(p=1\)">\(p=1\)</span> and <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>. The product formula holds distributionally as well: the bound proves absolute integrability after pairing with a Schwartz function, which permits Fubini in that pairing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.2.</strong> For a nonzero polynomial <span class="math" data-tex="\(Q\)">\(Q\)</span>,
+<span class="math math-display" data-tex="\[
+Q(D):B_{p,k}\longrightarrow B_{p,k/S_Q}
+\]">\[
+Q(D):B_{p,k}\longrightarrow B_{p,k/S_Q}
+\]</span>
+has norm at most one. If <span class="math" data-tex="\(u\in B_{p,k_1}\)">\(u\in B_{p,k_1}\)</span> has compact support and <span class="math" data-tex="\(v\in B_{\infty,k_2}\)">\(v\in B_{\infty,k_2}\)</span>, then
+<span class="math math-display" data-tex="\[
+u*v\in B_{p,k_1k_2},\qquad
+\|u*v\|_{p,k_1k_2}\leq\|u\|_{p,k_1}\|v\|_{\infty,k_2}.
+\]">\[
+u*v\in B_{p,k_1k_2},\qquad
+\|u*v\|_{p,k_1k_2}\leq\|u\|_{p,k_1}\|v\|_{\infty,k_2}.
+\]</span></p>
+<p><strong>Proof.</strong> The first statement follows from <span class="math" data-tex="\(\widehat{Q(D)u}=Q\widehat u\)">\(\widehat{Q(D)u}=Q\widehat u\)</span> and <span class="math" data-tex="\(|Q|\leq S_Q\)">\(|Q|\leq S_Q\)</span>. The quotient weight is moderate by Lemma 1.1. For the second, compact support makes convolution defined and its transform is <span class="math" data-tex="\(\widehat u\widehat v\)">\(\widehat u\widehat v\)</span>. Apply the <span class="math" data-tex="\(L^p\)">\(L^p\)</span> bound for multiplication by a bounded function to <span class="math" data-tex="\(k_1\widehat u\)">\(k_1\widehat u\)</span> and <span class="math" data-tex="\(k_2\widehat v\)">\(k_2\widehat v\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.3.</strong> Let <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span>, <span class="math" data-tex="\(u\in B_{p,k}\)">\(u\in B_{p,k}\)</span>, <span class="math" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span> with <span class="math" data-tex="\(\chi(0)=1\)">\(\chi(0)=1\)</span>, and <span class="math" data-tex="\(\rho\in C_c^\infty\)">\(\rho\in C_c^\infty\)</span> with <span class="math" data-tex="\(\int\rho=1\)">\(\int\rho=1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\chi(\varepsilon x)u\longrightarrow u,
+\qquad
+u*\rho_\varepsilon\longrightarrow u
+\quad\text{in }B_{p,k},
+\qquad \rho_\varepsilon(x)=\varepsilon^{-n}\rho(x/\varepsilon).
+\]">\[
+\chi(\varepsilon x)u\longrightarrow u,
+\qquad
+u*\rho_\varepsilon\longrightarrow u
+\quad\text{in }B_{p,k},
+\qquad \rho_\varepsilon(x)=\varepsilon^{-n}\rho(x/\varepsilon).
+\]</span></p>
+<p><strong>Proof.</strong> The cutoff bound is uniform for <span class="math" data-tex="\(0&lt;\varepsilon\leq1\)">\(0&lt;\varepsilon\leq1\)</span>: after substituting <span class="math" data-tex="\(h=\varepsilon z\)">\(h=\varepsilon z\)</span>, its constant is at most
+<span class="math" data-tex="\((2\pi)^{-n}\int(1+C|z|)^N|\widehat\chi(z)|\,dz\)">\((2\pi)^{-n}\int(1+C|z|)^N|\widehat\chi(z)|\,dz\)</span>.
+Convergence for a compactly supported smooth <span class="math" data-tex="\(u\)">\(u\)</span> holds in its smooth test-function topology, because <span class="math" data-tex="\(\chi(\varepsilon x)\to1\)">\(\chi(\varepsilon x)\to1\)</span> with all derivatives on its support. Density from Theorem 3.1 and the uniform bound give convergence for every <span class="math" data-tex="\(u\)">\(u\)</span>. For mollification,
+<span class="math" data-tex="\(\widehat{u*\rho_\varepsilon}(\xi)=\widehat u(\xi)\widehat\rho(\varepsilon\xi)\)">\(\widehat{u*\rho_\varepsilon}(\xi)=\widehat u(\xi)\widehat\rho(\varepsilon\xi)\)</span>.
+The second factor is uniformly bounded and tends pointwise to one. Dominated convergence in the weighted <span class="math" data-tex="\(L^p\)">\(L^p\)</span> norm completes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="duality-with-the-signs-visible">Duality with the signs visible</h2>
+<p>For <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span>, the continuous linear functionals on <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> can be represented as
+<span class="math math-display" data-tex="\[
+L_v(u)=(2\pi)^{-n}\int
+\widehat u(\xi)\overline{\widehat v(\xi)}\,d\xi,
+\qquad v\in B_{p&#x27;,1/k}.
+\]">\[
+L_v(u)=(2\pi)^{-n}\int
+\widehat u(\xi)\overline{\widehat v(\xi)}\,d\xi,
+\qquad v\in B_{p&#x27;,1/k}.
+\]</span>
+The map <span class="math" data-tex="\(v\mapsto L_v\)">\(v\mapsto L_v\)</span> is conjugate-linear. If instead a linear functional is written as a complex-linear distribution pairing <span class="math" data-tex="\(\langle w,u\rangle\)">\(\langle w,u\rangle\)</span> on Schwartz functions, its representing distribution belongs to <span class="math" data-tex="\(B_{p&#x27;,1/k^\vee}\)">\(B_{p&#x27;,1/k^\vee}\)</span>.</p>
+<p><strong>Theorem 5.1.</strong> Every continuous linear functional has a unique representation <span class="math" data-tex="\(L_v\)">\(L_v\)</span> as above, with norm <span class="math" data-tex="\(\|v\|_{p&#x27;,1/k}\)">\(\|v\|_{p&#x27;,1/k}\)</span>. Equivalently, the bilinear distribution representation has norm <span class="math" data-tex="\(\|w\|_{p&#x27;,1/k^\vee}\)">\(\|w\|_{p&#x27;,1/k^\vee}\)</span>. These statements include <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, <span class="math" data-tex="\(p&#x27;=\infty\)">\(p&#x27;=\infty\)</span>, but make no assertion that the dual of <span class="math" data-tex="\(B_{\infty,k}\)">\(B_{\infty,k}\)</span> is another weighted Fourier space.</p>
+<p><strong>Proof.</strong> Identify <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> with weighted <span class="math" data-tex="\(L^p\)">\(L^p\)</span> as in Theorem 3.1 and apply the <span class="math" data-tex="\(L^p\)">\(L^p\)</span> duality theorem to <span class="math" data-tex="\(k\widehat u\)">\(k\widehat u\)</span>. It gives the first representation and its exact norm; the factors <span class="math" data-tex="\((2\pi)^{-n/p}\)">\((2\pi)^{-n/p}\)</span> and <span class="math" data-tex="\((2\pi)^{-n/p&#x27;}\)">\((2\pi)^{-n/p&#x27;}\)</span> multiply to <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>. Uniqueness follows either from that duality or from the density of Schwartz functions. For the bilinear convention,
+<span class="math math-display" data-tex="\[
+\langle w,u\rangle=(2\pi)^{-n}\int
+\widehat w(-\xi)\widehat u(\xi)\,d\xi.
+\]">\[
+\langle w,u\rangle=(2\pi)^{-n}\int
+\widehat w(-\xi)\widehat u(\xi)\,d\xi.
+\]</span>
+Thus <span class="math" data-tex="\(\widehat w(-\xi)=\overline{\widehat v(\xi)}\)">\(\widehat w(-\xi)=\overline{\widehat v(\xi)}\)</span>, and reflection changes <span class="math" data-tex="\(1/k\)">\(1/k\)</span> into <span class="math" data-tex="\(1/k^\vee\)">\(1/k^\vee\)</span>. This proves the second statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 (entry).</strong> Compute <span class="math" data-tex="\(S_P\)">\(S_P\)</span> for <span class="math" data-tex="\(P(\xi_1,\xi_2)=\xi_1^2+i\xi_2\)">\(P(\xi_1,\xi_2)=\xi_1^2+i\xi_2\)</span>. Give the weight of the target space in Proposition 4.2 when the initial weight is one.</p>
+<p><strong>Solution.</strong> The nonzero derivatives are <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(2\xi_1\)">\(2\xi_1\)</span>, <span class="math" data-tex="\(i\)">\(i\)</span>, and <span class="math" data-tex="\(2\)">\(2\)</span>. Hence
+<span class="math" data-tex="\(S_P^2=\xi_1^4+\xi_2^2+4\xi_1^2+5\)">\(S_P^2=\xi_1^4+\xi_2^2+4\xi_1^2+5\)</span>.
+The target weight is <span class="math" data-tex="\(1/S_P\)">\(1/S_P\)</span>. It allows loss measured by this anisotropic polynomial size, rather than by a uniform two-derivative isotropic weight.</p>
+<p><strong>Exercise 2 (intermediate).</strong> For finite <span class="math" data-tex="\(p\)">\(p\)</span>, decide exactly when <span class="math" data-tex="\(\delta_0\in B_{p,\langle\xi\rangle^s}\)">\(\delta_0\in B_{p,\langle\xi\rangle^s}\)</span>. What is the answer for <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>?</p>
+<p><strong>Solution.</strong> The Fourier transform of delta is one. For finite <span class="math" data-tex="\(p\)">\(p\)</span>, the norm is finite exactly when <span class="math" data-tex="\(\int\langle\xi\rangle^{sp}\,d\xi&lt;\infty\)">\(\int\langle\xi\rangle^{sp}\,d\xi&lt;\infty\)</span>, which by radial integration holds exactly when <span class="math" data-tex="\(sp&lt;-n\)">\(sp&lt;-n\)</span>. The equality case diverges logarithmically. For <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, the weight is bounded exactly when <span class="math" data-tex="\(s\leq0\)">\(s\leq0\)</span>.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Show that compactly supported smooth functions are not dense in <span class="math" data-tex="\(B_{\infty,1}\)">\(B_{\infty,1}\)</span>, and that the mollification conclusion of Theorem 4.3 fails there.</p>
+<p><strong>Solution.</strong> Delta belongs to <span class="math" data-tex="\(B_{\infty,1}\)">\(B_{\infty,1}\)</span> and its Fourier transform is one. A compactly supported smooth function has a rapidly decreasing Fourier transform, so its distance from delta in this norm is at least one, by taking frequencies tending to infinity. Similarly, <span class="math" data-tex="\(\delta_0*\rho_\varepsilon=\rho_\varepsilon\)">\(\delta_0*\rho_\varepsilon=\rho_\varepsilon\)</span> has transform <span class="math" data-tex="\(\widehat\rho(\varepsilon\xi)\)">\(\widehat\rho(\varepsilon\xi)\)</span>, which tends to zero at infinity for each fixed <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Hence its distance from delta is at least one for every <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p><strong>Exercise 4 (advanced).</strong> Let <span class="math" data-tex="\(k(\xi)=(1+\max(\xi,0))^2\)">\(k(\xi)=(1+\max(\xi,0))^2\)</span>. State the weight of the distribution representing a bilinear linear functional on <span class="math" data-tex="\(B_{1,k}\)">\(B_{1,k}\)</span>, and explain why simply writing <span class="math" data-tex="\(1/k\)">\(1/k\)</span> changes the assertion.</p>
+<p><strong>Solution.</strong> The representing distribution lies in <span class="math" data-tex="\(B_{\infty,1/k^\vee}\)">\(B_{\infty,1/k^\vee}\)</span>, where <span class="math" data-tex="\(k^\vee(\xi)=(1+\max(-\xi,0))^2\)">\(k^\vee(\xi)=(1+\max(-\xi,0))^2\)</span>. These reciprocal weights impose different conditions at positive and negative infinity. For example a Fourier function that grows quadratically only at negative infinity is allowed by <span class="math" data-tex="\(1/k^\vee\)">\(1/k^\vee\)</span>, but is not allowed by <span class="math" data-tex="\(1/k\)">\(1/k\)</span>. The reversal comes from <span class="math" data-tex="\(\widehat w(-\xi)\)">\(\widehat w(-\xi)\)</span> in the bilinear pairing, not from a choice to make the weight even.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Grubb] Gerd Grubb, <em>Distributions and Operators</em>, open lecture-note versions, 2007–2008, sections on Fourier transformation and Sobolev spaces. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>[Melrose] Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004, sections on the Schwartz space, Fourier transformation, and Sobolev embedding. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Internal inequalities: <a href="prerequisites/banach-foundation-bridges.html#section-15-2">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 15.2, proves Hölder, Minkowski and all Young endpoints.</li>
+<li>Internal completeness and density: <a href="prerequisites/banach-foundation-bridges.html#section-15-3">the same foundation</a>, Section 15.3, proves completeness for every displayed exponent and compact smooth density for finite exponents.</li>
+<li>Internal duality: <a href="AN02-L043.html">Lebesgue duality and the functionals on Fourier spaces</a>, Lemmas 1.1 and 2.1–2.2 and Theorem 3.1, proves finite-exponent duality before its weighted Fourier adapter.</li>
+<li>Internal cutoff construction: <a href="prerequisites/metric-foundation-bridges.html#section-13-10">Metric and topological foundations</a>, Section 13.10.</li>
+</ul>
+</main></body></html>

@@ -1,0 +1,242 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Geodesics, normal coordinates and curvature</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><p><a href="../../../index.html">Representations of compact groups</a></p><p>Prerequisite reading: complete sections 1–2 of this chapter.</p><h1 id="geodesics-normal-coordinates-and-curvature">Geodesics, normal coordinates and curvature</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026. Draft; self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Original text dedicated to the public domain under CC0 1.0.</em></p>
+<h2 id="section-1">1. Launching a geodesic</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a finite-dimensional Hausdorff second-countable smooth manifold, with a smooth linear connection <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span>. No metric or torsion condition is assumed. In coordinates write</p>
+<span class="math math-display" data-tex="\[
+\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k.
+\]">\[
+\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k.
+\]</span>
+<p>Repeated indices are summed. The first lower index gives the direction of differentiation. If <span class="math" data-tex="\(\gamma(t)\)">\(\gamma(t)\)</span> has coordinates <span class="math" data-tex="\(x(t)\)">\(x(t)\)</span>, the derivative along it is</p>
+<span class="math math-display" data-tex="\[
+(D_tV)^k=\dot V^k+\Gamma^k_{ij}(x(t))\dot x^iV^j.
+\tag{1.1}
+\]">\[
+(D_tV)^k=\dot V^k+\Gamma^k_{ij}(x(t))\dot x^iV^j.
+\tag{1.1}
+\]</span>
+<p>A <span class="math" data-tex="\(C^2\)">\(C^2\)</span> curve is a <strong>geodesic with affine parameter</strong> if <span class="math" data-tex="\(D_t\dot\gamma=0\)">\(D_t\dot\gamma=0\)</span>. Equivalently,</p>
+<span class="math math-display" data-tex="\[
+\ddot x^k+\Gamma^k_{ij}(x)\dot x^i\dot x^j=0.
+\tag{1.2}
+\]">\[
+\ddot x^k+\Gamma^k_{ij}(x)\dot x^i\dot x^j=0.
+\tag{1.2}
+\]</span>
+<p>Constant curves are included.</p>
+<p><strong>Theorem 1.1 (initial data and parameter).</strong> Every <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span> and <span class="math" data-tex="\(v\in T_pM\)">\(v\in T_pM\)</span> determine a unique maximal geodesic <span class="math" data-tex="\(\gamma_v:I_v\to M\)">\(\gamma_v:I_v\to M\)</span>, with <span class="math" data-tex="\(0\in I_v\)">\(0\in I_v\)</span>, <span class="math" data-tex="\(\gamma_v(0)=p\)">\(\gamma_v(0)=p\)</span> and <span class="math" data-tex="\(\dot\gamma_v(0)=v\)">\(\dot\gamma_v(0)=v\)</span>. It is smooth and depends smoothly on its initial data wherever its solution is defined. A nonconstant geodesic has nowhere-zero velocity. A regular change of parameter preserves its geodesic equation exactly when the change is affine.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(z=\dot x\)">\(z=\dot x\)</span>. Equation (1.2) becomes the first-order system</p>
+<span class="math math-display" data-tex="\[
+\dot x^k=z^k,\qquad
+\dot z^k=-\Gamma^k_{ij}(x)z^iz^j.
+\tag{1.3}
+\]">\[
+\dot x^k=z^k,\qquad
+\dot z^k=-\Gamma^k_{ij}(x)z^iz^j.
+\tag{1.3}
+\]</span>
+<p>This is a smooth vector field on <span class="math" data-tex="\(TM\)">\(TM\)</span>. To check the assertion under a change of coordinates, apply the chain rule to the first derivative of the new coordinates along a curve. The second derivative has the Hessian term of the coordinate change; the transformation of the connection in (1.1) cancels it. Thus a solution in one tangent chart gives a solution in every overlapping tangent chart. Local existence, uniqueness and smooth dependence follow from the local-flow theorem in Local tools for bundles and transport. Glue all extensions of the same initial solution. Uniqueness makes them agree on overlapping intervals and gives one solution on their union, an open interval <span class="math" data-tex="\(I_v\)">\(I_v\)</span>. It is maximal by construction.</p>
+<p>Smooth dependence persists over every compact subinterval of <span class="math" data-tex="\(I_v\)">\(I_v\)</span>. Cover its trajectory in <span class="math" data-tex="\(TM\)">\(TM\)</span> by finitely many flow charts and compose their smooth solution maps. This also shows that nearby initial data have solutions over that subinterval. Smoothness in time follows from (1.3).</p>
+<p>If the velocity vanishes at some time, the constant curve at that point has the same initial data there. Uniqueness forces the two curves to agree on their entire common interval. Hence a nonconstant solution has no zero velocity.</p>
+<p>Let <span class="math" data-tex="\(\eta(s)=\gamma(t(s))\)">\(\eta(s)=\gamma(t(s))\)</span>, where <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(C^2\)">\(C^2\)</span> and <span class="math" data-tex="\(t&#x27;\ne0\)">\(t&#x27;\ne0\)</span>. The derivative rule along curves gives</p>
+<span class="math math-display" data-tex="\[
+D_s\dot\eta=(t&#x27;)^2D_t\dot\gamma+t&#x27;&#x27;\dot\gamma.
+\tag{1.4}
+\]">\[
+D_s\dot\eta=(t&#x27;)^2D_t\dot\gamma+t&#x27;&#x27;\dot\gamma.
+\tag{1.4}
+\]</span>
+<p>For a nonconstant geodesic the first term is zero and <span class="math" data-tex="\(\dot\gamma\ne0\)">\(\dot\gamma\ne0\)</span>, so <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is geodesic precisely when <span class="math" data-tex="\(t&#x27;&#x27;=0\)">\(t&#x27;&#x27;=0\)</span>. This means <span class="math" data-tex="\(t(s)=as+b\)">\(t(s)=as+b\)</span>, <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. For a constant curve every change of parameter works; the nonconstant hypothesis is essential. □</p>
+<p>For <span class="math" data-tex="\(s\in\mathbb R\)">\(s\in\mathbb R\)</span>, uniqueness also gives the scaling identity</p>
+<span class="math math-display" data-tex="\[
+\gamma_{sv}(t)=\gamma_v(st)
+\tag{1.5}
+\]">\[
+\gamma_{sv}(t)=\gamma_v(st)
+\tag{1.5}
+\]</span>
+<p>on the corresponding domains. For <span class="math" data-tex="\(s=0\)">\(s=0\)</span> both sides are constant.</p>
+<p>There is a useful description upstairs. Let <span class="math" data-tex="\(u:\mathbb R^n\to T_pM\)">\(u:\mathbb R^n\to T_pM\)</span> be a frame, put <span class="math" data-tex="\(a=u^{-1}v\)">\(a=u^{-1}v\)</span>, and let <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span> be the standard horizontal field, defined by <span class="math" data-tex="\(\theta(B(a))=a\)">\(\theta(B(a))=a\)</span>. Its integral curve <span class="math" data-tex="\(u(t)\)">\(u(t)\)</span> is horizontal and projects to a curve with velocity <span class="math" data-tex="\(u(t)a\)">\(u(t)a\)</span>. That vector is parallel, so the projected curve is a geodesic. Conversely, horizontally lift a geodesic from <span class="math" data-tex="\(u\)">\(u\)</span>. Its parallel velocity has constant coordinates <span class="math" data-tex="\(a\)">\(a\)</span> in that lift, hence the lift is an integral curve of <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span>.</p>
+<p>The connection is <strong>geodesically complete</strong> if all the intervals <span class="math" data-tex="\(I_v\)">\(I_v\)</span> equal <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. This holds if and only if every standard horizontal field <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span> on <span class="math" data-tex="\(L(M)\)">\(L(M)\)</span> is complete. In one direction its complete integral curve projects to every required geodesic. In the other direction lift a complete geodesic on each compact time interval. Whole-interval parallel transport exists by Connections and parallel transport, Theorem 4.1. Uniqueness glues these lifts for all real time, giving the complete integral curve of <span class="math" data-tex="\(B(a)\)">\(B(a)\)</span>. Completeness is an extra global property; the local existence theorem does not imply it.</p>
+<p>Geodesics also forget one part of the connection. The torsion is</p>
+<span class="math math-display" data-tex="\[
+T(X,Y)=\nabla_XY-\nabla_YX-[X,Y].
+\]">\[
+T(X,Y)=\nabla_XY-\nabla_YX-[X,Y].
+\]</span>
+<p>It is a smooth skew tensor by Linear and affine connections, Proposition 3.1. Therefore</p>
+<span class="math math-display" data-tex="\[
+\nabla^s_XY=\nabla_XY-\tfrac12T(X,Y)
+\tag{1.6}
+\]">\[
+\nabla^s_XY=\nabla_XY-\tfrac12T(X,Y)
+\tag{1.6}
+\]</span>
+<p>is another connection. Its torsion is zero and it has exactly the same geodesics with the same affine parameters, since <span class="math" data-tex="\(T(\dot\gamma,\dot\gamma)=0\)">\(T(\dot\gamma,\dot\gamma)=0\)</span>. More generally, if <span class="math" data-tex="\(\nabla&#x27;=\nabla+S\)">\(\nabla&#x27;=\nabla+S\)</span>, the two connections have the same parametrized geodesics if and only if <span class="math" data-tex="\(S(X,Y)+S(Y,X)=0\)">\(S(X,Y)+S(Y,X)=0\)</span>.</p>
+<p>Indeed, skewness makes <span class="math" data-tex="\(S(\dot\gamma,\dot\gamma)=0\)">\(S(\dot\gamma,\dot\gamma)=0\)</span>. Conversely, launch their common geodesic with any initial vector <span class="math" data-tex="\(v\)">\(v\)</span> at any point. Subtracting its two equations gives <span class="math" data-tex="\(S(v,v)=0\)">\(S(v,v)=0\)</span>. Polarization,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(v+w,v+w)-S(v,v)-S(w,w)\\
+=S(v,w)+S(w,v),
+\end{gathered}
+\]">\[
+\begin{gathered}
+S(v+w,v+w)-S(v,v)-S(w,w)\\
+=S(v,w)+S(w,v),
+\end{gathered}
+\]</span>
+<p>proves skewness. Thus geodesics determine the symmetric part of a connection, while parallel transport retains additional information.</p>
+<h2 id="section-2">2. Coordinates made from initial vectors</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal D=\{v\in TM:1\in I_v\},\\
+\operatorname{Exp}(v)=\gamma_v(1).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\mathcal D=\{v\in TM:1\in I_v\},\\
+\operatorname{Exp}(v)=\gamma_v(1).
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>Write <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> for its restriction to <span class="math" data-tex="\(T_pM\)">\(T_pM\)</span>. The domain <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is open, contains the zero section, and <span class="math" data-tex="\(\operatorname{Exp}\)">\(\operatorname{Exp}\)</span> is smooth. For an initial vector in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, Theorem 1.1 gives existence and smooth dependence for nearby initial data throughout <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. A zero initial vector gives a constant solution for all time, so these observations prove all three assertions. No completeness assumption is needed. Equation (1.5) implies</p>
+<span class="math math-display" data-tex="\[
+\exp_p(tv)=\gamma_v(t)
+\tag{2.2}
+\]">\[
+\exp_p(tv)=\gamma_v(t)
+\tag{2.2}
+\]</span>
+<p>whenever the indicated geodesic and exponential values are defined.</p>
+<p><strong>Theorem 2.1 (normal coordinates).</strong> For every <span class="math" data-tex="\(p\)">\(p\)</span>, the differential <span class="math" data-tex="\((d\exp_p)_0:T_pM\to T_pM\)">\((d\exp_p)_0:T_pM\to T_pM\)</span> is the identity. There is an open ball <span class="math" data-tex="\(W\)">\(W\)</span> about zero in <span class="math" data-tex="\(T_pM\)">\(T_pM\)</span> on which <span class="math" data-tex="\(\exp_p\)">\(\exp_p\)</span> is a diffeomorphism onto a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(p\)">\(p\)</span>. After choosing a basis of <span class="math" data-tex="\(T_pM\)">\(T_pM\)</span>, its inverse gives coordinates <span class="math" data-tex="\(x\)">\(x\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> in which</p>
+<span class="math math-display" data-tex="\[
+x(\exp_p(tv))=t\,x_*(v).
+\tag{2.3}
+\]">\[
+x(\exp_p(tv))=t\,x_*(v).
+\tag{2.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(x_*(v)\)">\(x_*(v)\)</span> means the components of <span class="math" data-tex="\(v\)">\(v\)</span> in the chosen basis. At the centre,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma^k_{ij}(p)+\Gamma^k_{ji}(p)=0,\\
+\Gamma^k_{ij}(p)=\tfrac12T^k_{ij}(p).
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+\Gamma^k_{ij}(p)+\Gamma^k_{ji}(p)=0,\\
+\Gamma^k_{ij}(p)=\tfrac12T^k_{ij}(p).
+\end{gathered}
+\tag{2.4}
+\]</span>
+<p>Consequently every coefficient vanishes there if and only if the torsion vanishes at <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Proof.</strong> For any fixed <span class="math" data-tex="\(v\)">\(v\)</span>, equation (2.2) holds for <span class="math" data-tex="\(t\)">\(t\)</span> near zero. Differentiation at zero gives</p>
+<span class="math math-display" data-tex="\[
+(d\exp_p)_0(v)=\dot\gamma_v(0)=v.
+\]">\[
+(d\exp_p)_0(v)=\dot\gamma_v(0)=v.
+\]</span>
+<p>The inverse function theorem from Local tools for bundles and transport gives a diffeomorphism on a neighbourhood of zero. Restrict it to a sufficiently small ball <span class="math" data-tex="\(W\)">\(W\)</span>. Its line segments through zero remain in <span class="math" data-tex="\(W\)">\(W\)</span>, so (2.2) proves (2.3). It also proves uniqueness of the germ of these coordinates for a fixed initial basis: a chart with property (2.3) has the same inverse map <span class="math" data-tex="\(v\mapsto\exp_p(v)\)">\(v\mapsto\exp_p(v)\)</span>.</p>
+<p>Substitute <span class="math" data-tex="\(x(t)=ta\)">\(x(t)=ta\)</span> into the geodesic equation at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. For every <span class="math" data-tex="\(a\in\mathbb R^n\)">\(a\in\mathbb R^n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Gamma^k_{ij}(p)a^ia^j=0.
+\]">\[
+\Gamma^k_{ij}(p)a^ia^j=0.
+\]</span>
+<p>Polarization gives the first identity in (2.4). In a coordinate frame <span class="math" data-tex="\([\partial_i,\partial_j]=0\)">\([\partial_i,\partial_j]=0\)</span>, so the definition of torsion gives <span class="math" data-tex="\(T^k_{ij}=\Gamma^k_{ij}-\Gamma^k_{ji}\)">\(T^k_{ij}=\Gamma^k_{ij}-\Gamma^k_{ji}\)</span>. Combining the two identities gives the second one. □</p>
+<p>The radial identity holds throughout the normal chart:</p>
+<span class="math math-display" data-tex="\[
+\Gamma^k_{ij}(x)x^ix^j=0.
+\tag{2.5}
+\]">\[
+\Gamma^k_{ij}(x)x^ix^j=0.
+\tag{2.5}
+\]</span>
+<p>For <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, use the radial geodesic through that point and multiply its equation by the square of its radial parameter. At zero the identity is immediate. A radial line is therefore geodesic with its linear parameter, whereas a general straight line in the chart need not be geodesic.</p>
+<p>At a torsion-free centre the tensor-derivative formula has no connection correction terms. Thus the components of <span class="math" data-tex="\(\nabla S\)">\(\nabla S\)</span> there are the ordinary partial derivatives of the components of any tensor <span class="math" data-tex="\(S\)">\(S\)</span>. Torsion-free at the point is sufficient for this conclusion; vanishing torsion on the whole chart is unnecessary.</p>
+<p>We will need one uniform version of normal coordinates. It concerns geodesics, without a length-minimizing assertion.</p>
+<p><strong>Theorem 2.2 (convex normal neighbourhoods).</strong> Every point has a neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> such that each pair <span class="math" data-tex="\(x,y\in V\)">\(x,y\in V\)</span> is joined by exactly one affinely parametrized geodesic segment <span class="math" data-tex="\(\gamma:[0,1]\to V\)">\(\gamma:[0,1]\to V\)</span> with endpoints <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. This segment depends smoothly on <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>. For each <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span>, an open star-shaped neighbourhood <span class="math" data-tex="\(W_x\subset T_xM\)">\(W_x\subset T_xM\)</span> of zero is mapped diffeomorphically by <span class="math" data-tex="\(\exp_x\)">\(\exp_x\)</span> onto <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p><strong>Proof.</strong> Work in a coordinate chart with the given point at zero, using Euclidean norms only for this proof. Consider the map</p>
+<span class="math math-display" data-tex="\[
+\Phi(x,v)=(x,\exp_xv).
+\]">\[
+\Phi(x,v)=(x,\exp_xv).
+\]</span>
+<p>At <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>, its differential is</p>
+<span class="math math-display" data-tex="\[
+(\delta x,\delta v)\longmapsto
+(\delta x,\delta x+\delta v).
+\]">\[
+(\delta x,\delta v)\longmapsto
+(\delta x,\delta x+\delta v).
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(\exp_x0=x\)">\(\exp_x0=x\)</span>, and Theorem 2.1 supplies the derivative in <span class="math" data-tex="\(v\)">\(v\)</span>. The differential is invertible. Restrict <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to an open neighbourhood <span class="math" data-tex="\(O\)">\(O\)</span> on which it is a diffeomorphism onto an open neighbourhood of <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>. Choose numbers <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\{|x|&lt;a,\ |v|&lt;b\}\subset O.
+\tag{2.6}
+\]">\[
+\{|x|&lt;a,\ |v|&lt;b\}\subset O.
+\tag{2.6}
+\]</span>
+<p>On a sufficiently small closed coordinate ball, smoothness supplies <span class="math" data-tex="\(K\ge1\)">\(K\ge1\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|\Gamma(x)(z,z)|\le K|z|^2.
+\]">\[
+|\Gamma(x)(z,z)|\le K|z|^2.
+\]</span>
+<p>Choose an outer radius <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> in this ball with <span class="math" data-tex="\(Kc&lt;1/2\)">\(Kc&lt;1/2\)</span>. For any geodesic contained in that outer ball, <span class="math" data-tex="\(F(t)=|x(t)|^2\)">\(F(t)=|x(t)|^2\)</span> obeys</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F&#x27;&#x27;(t)&amp;=2|\dot x|^2\\
+&amp;\quad-2x\cdot\Gamma(x)(\dot x,\dot x)\\
+&amp;\ge|\dot x|^2.
+\end{aligned}
+\tag{2.7}
+\]">\[
+\begin{aligned}
+F&#x27;&#x27;(t)&amp;=2|\dot x|^2\\
+&amp;\quad-2x\cdot\Gamma(x)(\dot x,\dot x)\\
+&amp;\ge|\dot x|^2.
+\end{aligned}
+\tag{2.7}
+\]</span>
+<p>After shrinking the neighbourhood of endpoint pairs, the inverse <span class="math" data-tex="\(\Phi^{-1}(x,y)=(x,v(x,y))\)">\(\Phi^{-1}(x,y)=(x,v(x,y))\)</span> gives geodesic segments defined throughout <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and contained in <span class="math" data-tex="\(|x|&lt;c\)">\(|x|&lt;c\)</span>. This follows from smooth dependence and compactness of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>: the segment for <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> is constant, and finitely many time neighbourhoods control all nearby segments. Arrange also that these initial vectors satisfy <span class="math" data-tex="\(|v(x,y)|&lt;b\)">\(|v(x,y)|&lt;b\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> small enough that every pair in <span class="math" data-tex="\(B_r\times B_r\)">\(B_r\times B_r\)</span> lies in this endpoint neighbourhood, <span class="math" data-tex="\(r&lt;a\)">\(r&lt;a\)</span>,</p>
+<span class="math math-display" data-tex="\[
+4r&lt;\frac1{4K},\qquad 4r e^{4Kr}&lt;b.
+\tag{2.8}
+\]">\[
+4r&lt;\frac1{4K},\qquad 4r e^{4Kr}&lt;b.
+\tag{2.8}
+\]</span>
+<p>Let <span class="math" data-tex="\(V=B_r\)">\(V=B_r\)</span>. Equation (2.7) makes <span class="math" data-tex="\(F\)">\(F\)</span> convex along the constructed segment, hence</p>
+<span class="math math-display" data-tex="\[
+F(t)\le(1-t)|x|^2+t|y|^2&lt;r^2.
+\]">\[
+F(t)\le(1-t)|x|^2+t|y|^2&lt;r^2.
+\]</span>
+<p>So that segment stays in <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>We must exclude a different segment in <span class="math" data-tex="\(V\)">\(V\)</span> with a large initial velocity. Let such a segment be nonconstant and let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be its Euclidean arc length parameter. Its velocity never vanishes, by Theorem 1.1. If <span class="math" data-tex="\(w=dx/d\ell\)">\(w=dx/d\ell\)</span> is its unit tangent and <span class="math" data-tex="\(h=|\dot x|\)">\(h=|\dot x|\)</span>, equation (1.2) gives</p>
+<span class="math math-display" data-tex="\[
+\left|\frac{dw}{d\ell}\right|\le2K,\qquad
+\left|\frac{d\log h}{d\ell}\right|\le K.
+\tag{2.9}
+\]">\[
+\left|\frac{dw}{d\ell}\right|\le2K,\qquad
+\left|\frac{d\log h}{d\ell}\right|\le K.
+\tag{2.9}
+\]</span>
+<p>For the first bound, differentiate <span class="math" data-tex="\(\dot x/h\)">\(\dot x/h\)</span>, project <span class="math" data-tex="\(\ddot x\)">\(\ddot x\)</span> onto the orthogonal complement of <span class="math" data-tex="\(\dot x\)">\(\dot x\)</span>, and divide by <span class="math" data-tex="\(h^2\)">\(h^2\)</span>; the stated bound follows from <span class="math" data-tex="\(|\ddot x|\le Kh^2\)">\(|\ddot x|\le Kh^2\)</span>. The second follows from <span class="math" data-tex="\(|\dot h|\le Kh^2\)">\(|\dot h|\le Kh^2\)</span>, dividing by <span class="math" data-tex="\(h^2\)">\(h^2\)</span>.</p>
+<p>For <span class="math" data-tex="\(0\le\ell\le1/(4K)\)">\(0\le\ell\le1/(4K)\)</span>, the first bound gives <span class="math" data-tex="\(w(\ell)\cdot w(0)\ge1-2K\ell\ge1/2\)">\(w(\ell)\cdot w(0)\ge1-2K\ell\ge1/2\)</span>. If the total arc length <span class="math" data-tex="\(L\)">\(L\)</span> were at least <span class="math" data-tex="\(4r\)">\(4r\)</span>, the displacement at arc length <span class="math" data-tex="\(4r\)">\(4r\)</span> would have component at least <span class="math" data-tex="\(2r\)">\(2r\)</span> in direction <span class="math" data-tex="\(w(0)\)">\(w(0)\)</span>. This contradicts both points being in the open ball <span class="math" data-tex="\(B_r\)">\(B_r\)</span>. Thus <span class="math" data-tex="\(L&lt;4r\)">\(L&lt;4r\)</span>. The second bound gives <span class="math" data-tex="\(h(t)\ge h(0)e^{-KL}\)">\(h(t)\ge h(0)e^{-KL}\)</span>, and integration over <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+|\dot x(0)|\le L e^{KL}&lt;4r e^{4Kr}&lt;b.
+\]">\[
+|\dot x(0)|\le L e^{KL}&lt;4r e^{4Kr}&lt;b.
+\]</span>
+<p>Its initial data therefore lie in <span class="math" data-tex="\(O\)">\(O\)</span>, by (2.6). The injectivity of <span class="math" data-tex="\(\Phi|_O\)">\(\Phi|_O\)</span> forces its initial vector to be <span class="math" data-tex="\(v(x,y)\)">\(v(x,y)\)</span>, so initial-value uniqueness identifies the segments. A constant segment is covered as well; any competing nonconstant segment has just been excluded by the same argument.</p>
+<p>For a fixed <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span>, put <span class="math" data-tex="\(W_x=\{v(x,y):y\in V\}\)">\(W_x=\{v(x,y):y\in V\}\)</span>. The inverse-function charts make this an open neighbourhood of zero in <span class="math" data-tex="\(T_xM\)">\(T_xM\)</span>, and <span class="math" data-tex="\(\exp_x:W_x\to V\)">\(\exp_x:W_x\to V\)</span> a diffeomorphism. If <span class="math" data-tex="\(v\in W_x\)">\(v\in W_x\)</span> and <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span>, its geodesic segment stays in <span class="math" data-tex="\(V\)">\(V\)</span>, so <span class="math" data-tex="\(\exp_x(tv)\in V\)">\(\exp_x(tv)\in V\)</span>. Also <span class="math" data-tex="\(|tv|&lt;b\)">\(|tv|&lt;b\)</span>; equation (2.6) and the injectivity of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> identify <span class="math" data-tex="\(tv\)">\(tv\)</span> with the vector assigned to this endpoint. Hence <span class="math" data-tex="\(tv\in W_x\)">\(tv\in W_x\)</span>. This proves star-shapedness and completes the proof. □</p>
+<p>This is Whitehead's local convexity theorem. The quantitative velocity bound in the proof makes the uniqueness assertion apply to every segment contained in <span class="math" data-tex="\(V\)">\(V\)</span>, rather than only to the small initial vectors in the inverse-function chart. Length minimization requires a Riemannian metric and will be proved separately.</p>
+</main><footer>Original text: CC0 1.0. The authorship notice above belongs to the source edition. Selection and reader integration: GPT-6.1 Sol (OpenAI), Ultra, 3 October 2026.</footer></body></html>

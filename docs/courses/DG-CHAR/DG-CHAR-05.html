@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Steenrod squares and Stiefel–Whitney classes · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-05.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="steenrod-squares-and-stiefel-whitney-classes">Steenrod squares and Stiefel–Whitney classes</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored text dedicated under CC0.</em></p>
+<p>The Thom class records the local generator in every fibre. Cohomology operations measure how that class behaves under squaring, and the Thom isomorphism transfers the answer to the base. This gives all the Stiefel–Whitney classes at once. Their product formula follows from a product formula for the operations themselves.</p>
+<p>Our prerequisites are <a href="DG-CHAR-06.html">Thom classes and Euler classes</a>, especially its full singular-chain, product, coefficient and Thom proofs; <a href="DG-CHAR-08.html">The Gysin sequence and projective splitting</a>, Sections 3–5; and the compact embedding and classification proofs in <a href="DG-CHAR-01.html">Vector bundles and their constructions</a> and <a href="DG-CHAR-03.html">Grassmannians and classifying maps</a>. We construct the operations used here rather than taking their existence or their Cartan identity as an additional prerequisite. All coefficients in this chapter are <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>, unless another ring is explicitly displayed.</p>
+<h2 id="1-higher-diagonals-on-singular-chains">1. Higher diagonals on singular chains</h2>
+<p>Let <span class="math" data-tex="\(C_*(X)\)">\(C_*(X)\)</span> be the unnormalized singular chain complex over <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>. Its boundary is the sum of its face maps; all signs disappear. For a singular <span class="math" data-tex="\(m\)">\(m\)</span>-simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and a subset <span class="math" data-tex="\(A\subset\{0,\ldots,m\}\)">\(A\subset\{0,\ldots,m\}\)</span>, write <span class="math" data-tex="\(d_A\sigma\)">\(d_A\sigma\)</span> for the face retaining precisely the vertices outside <span class="math" data-tex="\(A\)">\(A\)</span>, in their original order. Deleting all vertices gives zero in our unaugmented complex. This notation concerns faces, not arbitrary vertex permutations.</p>
+<p>For <span class="math" data-tex="\(0\leq i\leq m\)">\(0\leq i\leq m\)</span>, let <span class="math" data-tex="\(U=\{u_1&lt;\cdots&lt;u_{m-i}\}\)">\(U=\{u_1&lt;\cdots&lt;u_{m-i}\}\)</span> range over the subsets of size <span class="math" data-tex="\(m-i\)">\(m-i\)</span>. Divide its vertices into</p>
+<span class="math math-display" data-tex="\[
+U^0=\{u_j:u_j+j\equiv0\pmod2\},\qquad
+U^1=\{u_j:u_j+j\equiv1\pmod2\}.
+\]">\[
+U^0=\{u_j:u_j+j\equiv0\pmod2\},\qquad
+U^1=\{u_j:u_j+j\equiv1\pmod2\}.
+\]</span>
+<p>The position <span class="math" data-tex="\(j\)">\(j\)</span> starts at one, while vertex numbers start at zero. Define a higher diagonal by</p>
+<span class="math math-display" data-tex="\[
+D_i\sigma=\sum_{|U|=m-i}d_{U^0}\sigma\otimes d_{U^1}\sigma.
+\]">\[
+D_i\sigma=\sum_{|U|=m-i}d_{U^0}\sigma\otimes d_{U^1}\sigma.
+\]</span>
+<p>Set <span class="math" data-tex="\(D_i\sigma=0\)">\(D_i\sigma=0\)</span> for <span class="math" data-tex="\(i&lt;0\)">\(i&lt;0\)</span> or <span class="math" data-tex="\(i&gt;m\)">\(i&gt;m\)</span>. Its output has total degree <span class="math" data-tex="\(m+i\)">\(m+i\)</span>. Let <span class="math" data-tex="\(T(c\otimes d)=d\otimes c\)">\(T(c\otimes d)=d\otimes c\)</span>; over this field it is the chain interchange without signs. Each term uses faces of the same original simplex. The formula is consequently natural for continuous maps and preserves chains in every subspace.</p>
+<p><span id="DG-CHAR-05.lemma-1.1"></span><strong>Lemma 1.1 (higher-diagonal identity).</strong> For every <span class="math" data-tex="\(i\geq0\)">\(i\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\partial D_i+D_i\partial=(1+T)D_{i-1}.
+\]">\[
+\partial D_i+D_i\partial=(1+T)D_{i-1}.
+\]</span>
+<p>Also <span class="math" data-tex="\(D_0\)">\(D_0\)</span> is the Alexander–Whitney diagonal, and <span class="math" data-tex="\(D_m\sigma=\sigma\otimes\sigma\)">\(D_m\sigma=\sigma\otimes\sigma\)</span>.</p>
+<p>The degrees provide a useful check on the identity. On an <span class="math" data-tex="\(m\)">\(m\)</span>-chain, both <span class="math" data-tex="\(\partial D_i\)">\(\partial D_i\)</span> and <span class="math" data-tex="\(D_i\partial\)">\(D_i\partial\)</span> have total degree <span class="math" data-tex="\(m+i-1\)">\(m+i-1\)</span>, as does <span class="math" data-tex="\(D_{i-1}\)">\(D_{i-1}\)</span>. The diagonal index therefore stays <span class="math" data-tex="\(i\)">\(i\)</span> in the boundary term <span class="math" data-tex="\(D_i\partial\)">\(D_i\partial\)</span>.</p>
+<p><strong>Proof of the two normalizations.</strong> For <span class="math" data-tex="\(i=m\)">\(i=m\)</span>, the deletion set is empty, so there is exactly the asserted term. For <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, each deletion set misses one vertex <span class="math" data-tex="\(k\)">\(k\)</span>. A vertex below <span class="math" data-tex="\(k\)">\(k\)</span> has position one larger than its vertex number, and belongs to <span class="math" data-tex="\(U^1\)">\(U^1\)</span>; a vertex above <span class="math" data-tex="\(k\)">\(k\)</span> has position equal to its vertex number, and belongs to <span class="math" data-tex="\(U^0\)">\(U^0\)</span>. The corresponding term is therefore
+<span class="math" data-tex="\(\sigma[0,\ldots,k]\otimes\sigma[k,\ldots,m]\)">\(\sigma[0,\ldots,k]\otimes\sigma[k,\ldots,m]\)</span>.
+Summing over <span class="math" data-tex="\(k\)">\(k\)</span> gives the Alexander–Whitney formula.</p>
+<p><strong>Proof of the identity.</strong> First assume <span class="math" data-tex="\(0\leq i\leq m\)">\(0\leq i\leq m\)</span>. A term of <span class="math" data-tex="\(\partial D_i\sigma\)">\(\partial D_i\sigma\)</span> deletes one more vertex <span class="math" data-tex="\(v\)">\(v\)</span> from one of the two surviving faces. There are two types.</p>
+<p>If <span class="math" data-tex="\(v\in U\)">\(v\in U\)</span>, it had already been deleted from the other face. The output now deletes <span class="math" data-tex="\(v\)">\(v\)</span> from both faces. This term occurs once in <span class="math" data-tex="\(D_i\partial\sigma\)">\(D_i\partial\sigma\)</span>: first delete <span class="math" data-tex="\(v\)">\(v\)</span> from the input and then use the tuple <span class="math" data-tex="\(U\setminus\{v\}\)">\(U\setminus\{v\}\)</span>. To check the colouring, vertices below <span class="math" data-tex="\(v\)">\(v\)</span> keep both their vertex number and tuple position, and vertices above <span class="math" data-tex="\(v\)">\(v\)</span> lose one from both. Thus <span class="math" data-tex="\(u_j+j\)">\(u_j+j\)</span> has the same parity after this change. These terms cancel in pairs. The correspondence is reversible: the common deleted vertex specifies the input boundary face, and all other deleted vertices specify its tuple.</p>
+<p>If <span class="math" data-tex="\(v\notin U\)">\(v\notin U\)</span>, put <span class="math" data-tex="\(W=U\cup\{v\}=\{w_1&lt;\cdots&lt;w_q\}\)">\(W=U\cup\{v\}=\{w_1&lt;\cdots&lt;w_q\}\)</span>, where <span class="math" data-tex="\(q=m-i+1\)">\(q=m-i+1\)</span>, and suppose <span class="math" data-tex="\(v=w_k\)">\(v=w_k\)</span>. Put <span class="math" data-tex="\(p_l=w_l+l\pmod2\)">\(p_l=w_l+l\pmod2\)</span>. In the output term, vertices before position <span class="math" data-tex="\(k\)">\(k\)</span> are coloured <span class="math" data-tex="\(p_l\)">\(p_l\)</span>, and vertices after it are coloured <span class="math" data-tex="\(1-p_l\)">\(1-p_l\)</span>, because their positions in <span class="math" data-tex="\(U\)">\(U\)</span> are one less than in <span class="math" data-tex="\(W\)">\(W\)</span>. The inserted vertex can be deleted in either factor, so its colour is either <span class="math" data-tex="\(\epsilon=0\)">\(\epsilon=0\)</span> or <span class="math" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span>. Denote the resulting tensor face by <span class="math" data-tex="\(C_{k,\epsilon}\)">\(C_{k,\epsilon}\)</span>.</p>
+<p>For <span class="math" data-tex="\(1\leq k&lt;q\)">\(1\leq k&lt;q\)</span>, the two colour assignments</p>
+<span class="math math-display" data-tex="\[
+C_{k,p_k}=C_{k+1,1-p_{k+1}}
+\]">\[
+C_{k,p_k}=C_{k+1,1-p_{k+1}}
+\]</span>
+<p>are identical: both colour positions through <span class="math" data-tex="\(k\)">\(k\)</span> by <span class="math" data-tex="\(p_l\)">\(p_l\)</span> and the later positions by <span class="math" data-tex="\(1-p_l\)">\(1-p_l\)</span>. They cancel. Each middle position has one choice paired with the preceding position and its other choice paired with the next. The two unpaired end choices are <span class="math" data-tex="\(C_{1,1-p_1}\)">\(C_{1,1-p_1}\)</span>, which colours all vertices by <span class="math" data-tex="\(1-p_l\)">\(1-p_l\)</span>, and <span class="math" data-tex="\(C_{q,p_q}\)">\(C_{q,p_q}\)</span>, which colours all by <span class="math" data-tex="\(p_l\)">\(p_l\)</span>. Thus the contribution for each <span class="math" data-tex="\(W\)">\(W\)</span> is exactly its term in <span class="math" data-tex="\(T D_{i-1}\sigma+D_{i-1}\sigma\)">\(T D_{i-1}\sigma+D_{i-1}\sigma\)</span>.</p>
+<p>For <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span> consists of all <span class="math" data-tex="\(m+1\)">\(m+1\)</span> vertices. Its colours <span class="math" data-tex="\(w_l+l\)">\(w_l+l\)</span> are all one, so each remaining end term deletes all vertices in one factor and is zero. This agrees with <span class="math" data-tex="\(D_{-1}=0\)">\(D_{-1}=0\)</span>. Terms creating an empty face have throughout been interpreted as zero, as required for the unaugmented boundary.</p>
+<p>For <span class="math" data-tex="\(i=m+1\)">\(i=m+1\)</span>, both left-hand terms are zero and the right-hand side is
+<span class="math" data-tex="\((1+T)(\sigma\otimes\sigma)=0\)">\((1+T)(\sigma\otimes\sigma)=0\)</span>. For larger <span class="math" data-tex="\(i\)">\(i\)</span>, every term vanishes. This proves the identity in all dimensions, including dimension zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The index rule is the mathematical higher-diagonal formula of [MM, Definition 7]. The argument above is an independently written all-dimensional cancellation proof. In particular, vertex parity alone would give the wrong formula: the tuple position is essential.</p>
+<h2 id="2-squares-as-well-defined-cohomology-operations">2. Squares as well-defined cohomology operations</h2>
+<p>For cochains <span class="math" data-tex="\(a,b\)">\(a,b\)</span> of degrees <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+a\smile_i b=(a\otimes b)D_i\in C^{p+q-i}(X),\qquad i\geq0,
+\]">\[
+a\smile_i b=(a\otimes b)D_i\in C^{p+q-i}(X),\qquad i\geq0,
+\]</span>
+<p>and set <span class="math" data-tex="\(\smile_i=0\)">\(\smile_i=0\)</span> for <span class="math" data-tex="\(i&lt;0\)">\(i&lt;0\)</span>. Degrees below zero contain only zero cochains. The operation is bilinear. The case <span class="math" data-tex="\(i=0\)">\(i=0\)</span> is the ordinary cup product, and dualizing Lemma 1.1 gives</p>
+<span class="math math-display" data-tex="\[
+\delta(a\smile_i b)=
+\delta a\smile_i b+a\smile_i\delta b+
+a\smile_{i-1}b+b\smile_{i-1}a.
+\tag{2.1}
+\]">\[
+\delta(a\smile_i b)=
+\delta a\smile_i b+a\smile_i\delta b+
+a\smile_{i-1}b+b\smile_{i-1}a.
+\tag{2.1}
+\]</span>
+<p>For a degree-<span class="math" data-tex="\(n\)">\(n\)</span> cocycle <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(0\leq s\leq n\)">\(0\leq s\leq n\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sq}^s[a]=[a\smile_{n-s}a]\in H^{n+s}(X).
+\]">\[
+\operatorname{Sq}^s[a]=[a\smile_{n-s}a]\in H^{n+s}(X).
+\]</span>
+<p>For <span class="math" data-tex="\(s&gt;n\)">\(s&gt;n\)</span> set it to zero; negative indices are also zero. These are the <strong>Steenrod squares</strong> used in this course.</p>
+<p><span id="DG-CHAR-05.theorem-2.1"></span><strong>Theorem 2.1.</strong> These formulas define additive natural operations on singular cohomology, with</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sq}^0x=x,\qquad
+\operatorname{Sq}^{n}x=x^2\quad(x\in H^n),\qquad
+\operatorname{Sq}^{s}x=0\quad(s&gt;n).
+\]">\[
+\operatorname{Sq}^0x=x,\qquad
+\operatorname{Sq}^{n}x=x^2\quad(x\in H^n),\qquad
+\operatorname{Sq}^{s}x=0\quad(s&gt;n).
+\]</span>
+<p>The same statements hold on <span class="math" data-tex="\(H^*(X,A)\)">\(H^*(X,A)\)</span> for every subspace <span class="math" data-tex="\(A\subset X\)">\(A\subset X\)</span>.</p>
+<p><strong>Proof.</strong> For a cocycle <span class="math" data-tex="\(a\)">\(a\)</span>, (2.1) makes <span class="math" data-tex="\(a\smile_i a\)">\(a\smile_i a\)</span> a cocycle: its remaining two terms are equal. If <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are cocycles of the same degree, the mixed terms in the square of <span class="math" data-tex="\(a+b\)">\(a+b\)</span> are</p>
+<span class="math math-display" data-tex="\[
+a\smile_i b+b\smile_i a=\delta(a\smile_{i+1}b).
+\]">\[
+a\smile_i b+b\smile_i a=\delta(a\smile_{i+1}b).
+\]</span>
+<p>This proves additivity in cohomology. For independence of representative, replace <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(a+\delta c\)">\(a+\delta c\)</span>, with <span class="math" data-tex="\(|c|=n-1\)">\(|c|=n-1\)</span>. By (2.1) the difference of their squares is the differential of</p>
+<span class="math math-display" data-tex="\[
+c\smile_i a+a\smile_i c+
+c\smile_i\delta c+c\smile_{i-1}c.
+\tag{2.2}
+\]">\[
+c\smile_i a+a\smile_i c+
+c\smile_i\delta c+c\smile_{i-1}c.
+\tag{2.2}
+\]</span>
+<p>Indeed the first two differentials give
+<span class="math" data-tex="\(\delta c\smile_i a+a\smile_i\delta c\)">\(\delta c\smile_i a+a\smile_i\delta c\)</span>, because their lower-index mixed terms cancel. The third contributes
+<span class="math" data-tex="\(\delta c\smile_i\delta c+c\smile_{i-1}\delta c+
+\delta c\smile_{i-1}c\)">\(\delta c\smile_i\delta c+c\smile_{i-1}\delta c+
+\delta c\smile_{i-1}c\)</span>; the fourth cancels those last two terms. This includes <span class="math" data-tex="\(i=0\)">\(i=0\)</span> under the zero negative-index convention. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> there are no nonzero coboundaries to check.</p>
+<p>Naturality follows directly from the natural face formulas. On an <span class="math" data-tex="\(n\)">\(n\)</span>-simplex, <span class="math" data-tex="\(D_n\sigma=\sigma\otimes\sigma\)">\(D_n\sigma=\sigma\otimes\sigma\)</span>, so
+<span class="math" data-tex="\((a\smile_n a)(\sigma)=a(\sigma)^2=a(\sigma)\)">\((a\smile_n a)(\sigma)=a(\sigma)^2=a(\sigma)\)</span> in <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>. This proves the identity square. The top square is the ordinary cup square, and instability is our zero-index convention.</p>
+<p>For a relative cochain, every face of a simplex in <span class="math" data-tex="\(A\)">\(A\)</span> is still in <span class="math" data-tex="\(A\)">\(A\)</span>. The formulas therefore preserve cochains vanishing on <span class="math" data-tex="\(A\)">\(A\)</span>; so do all the primitives just displayed, when the cochains involved are relative. The same proof gives the operations and their properties on every pair. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equation (2.1) is also a concrete explanation for cup-product commutativity: for cocycles, the difference of <span class="math" data-tex="\(a\smile b\)">\(a\smile b\)</span> and <span class="math" data-tex="\(b\smile a\)">\(b\smile a\)</span> is the differential of <span class="math" data-tex="\(a\smile_1b\)">\(a\smile_1b\)</span>. The operations carry more information than the ordinary product because their output degree depends on how far the higher diagonal is taken.</p>
+<h2 id="3-the-cartan-identity-with-its-chain-comparison">3. The Cartan identity, with its chain comparison</h2>
+<p><span id="DG-CHAR-05.theorem-3.1"></span><strong>Theorem 3.1 (Cartan identity).</strong> For cohomology classes <span class="math" data-tex="\(x,y\)">\(x,y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sq}^{s}(x\smile y)=
+\sum_{r+t=s}\operatorname{Sq}^{r}x\smile\operatorname{Sq}^{t}y.
+\tag{3.1}
+\]">\[
+\operatorname{Sq}^{s}(x\smile y)=
+\sum_{r+t=s}\operatorname{Sq}^{r}x\smile\operatorname{Sq}^{t}y.
+\tag{3.1}
+\]</span>
+<p>For external products the corresponding formula is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sq}^{s}(x\times y)=
+\sum_{r+t=s}\operatorname{Sq}^{r}x\times\operatorname{Sq}^{t}y.
+\tag{3.2}
+\]">\[
+\operatorname{Sq}^{s}(x\times y)=
+\sum_{r+t=s}\operatorname{Sq}^{r}x\times\operatorname{Sq}^{t}y.
+\tag{3.2}
+\]</span>
+<p>It holds for <span class="math" data-tex="\(x\in H^*(X,A)\)">\(x\in H^*(X,A)\)</span>, <span class="math" data-tex="\(y\in H^*(Y,B)\)">\(y\in H^*(Y,B)\)</span>, with target relative to <span class="math" data-tex="\(A\times Y\cup X\times B\)">\(A\times Y\cup X\times B\)</span>, whenever <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are open. If one subspace is empty, the other can be arbitrary. Pulling back along a diagonal gives the relative internal formula under the corresponding union hypotheses.</p>
+<p><strong>Proof: a resolution and its diagonal.</strong> Write <span class="math" data-tex="\(\tau\)">\(\tau\)</span> for the nonidentity element of the two-element group, and let <span class="math" data-tex="\(W\)">\(W\)</span> be the nonnegative chain complex with</p>
+<span class="math math-display" data-tex="\[
+W_i=\mathbf F_2[\tau]e_i,\qquad
+\partial e_i=(1+\tau)e_{i-1}\quad(i&gt;0).
+\]">\[
+W_i=\mathbf F_2[\tau]e_i,\qquad
+\partial e_i=(1+\tau)e_{i-1}\quad(i&gt;0).
+\]</span>
+<p>Its augmentation sends both <span class="math" data-tex="\(e_0\)">\(e_0\)</span> and <span class="math" data-tex="\(\tau e_0\)">\(\tau e_0\)</span> to one. In each positive degree, multiplication by <span class="math" data-tex="\(1+\tau\)">\(1+\tau\)</span> has both kernel and image the line spanned by <span class="math" data-tex="\(1+\tau\)">\(1+\tau\)</span>. This also equals the kernel of the augmentation in degree zero. Thus this is a free resolution of the trivial module, with no assumed group-homology theorem.</p>
+<p>Lemma 1.1 says exactly that</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_X:W\otimes C_*(X)\longrightarrow C_*(X)\otimes C_*(X),
+\qquad \mathcal D_X(e_i\otimes c)=D_i c,
+\]">\[
+\mathcal D_X:W\otimes C_*(X)\longrightarrow C_*(X)\otimes C_*(X),
+\qquad \mathcal D_X(e_i\otimes c)=D_i c,
+\]</span>
+<p>is an equivariant chain map when <span class="math" data-tex="\(\tau\)">\(\tau\)</span> acts trivially on <span class="math" data-tex="\(C_*(X)\)">\(C_*(X)\)</span> and exchanges the two target factors. Its value on <span class="math" data-tex="\(\tau e_i\otimes c\)">\(\tau e_i\otimes c\)</span> is <span class="math" data-tex="\(T D_i c\)">\(T D_i c\)</span>. Here and below tensor complexes have the ordinary total degree. All differentials add without signs over <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>.</p>
+<p>Define an equivariant resolution diagonal, with diagonal group action on its target, by</p>
+<span class="math math-display" data-tex="\[
+\Gamma(e_i)=\sum_{j=0}^{i}e_j\otimes\tau^j e_{i-j}.
+\tag{3.3}
+\]">\[
+\Gamma(e_i)=\sum_{j=0}^{i}e_j\otimes\tau^j e_{i-j}.
+\tag{3.3}
+\]</span>
+<p>It is a chain map. To verify this in degree <span class="math" data-tex="\(i&gt;0\)">\(i&gt;0\)</span>, put <span class="math" data-tex="\(k+l=i-1\)">\(k+l=i-1\)</span>. The differential from the first factor, after reindexing <span class="math" data-tex="\(j=k+1\)">\(j=k+1\)</span>, is the sum of
+<span class="math" data-tex="\(e_k\otimes\tau^{k+1}e_l+\tau e_k\otimes\tau^{k+1}e_l\)">\(e_k\otimes\tau^{k+1}e_l+\tau e_k\otimes\tau^{k+1}e_l\)</span>.
+The differential from the second is the sum of
+<span class="math" data-tex="\(e_k\otimes\tau^k e_l+e_k\otimes\tau^{k+1}e_l\)">\(e_k\otimes\tau^k e_l+e_k\otimes\tau^{k+1}e_l\)</span>.
+The repeated terms cancel, leaving
+<span class="math" data-tex="\(\sum_{k+l=i-1}(e_k\otimes\tau^k e_l+\tau e_k\otimes\tau^{k+1}e_l)\)">\(\sum_{k+l=i-1}(e_k\otimes\tau^k e_l+\tau e_k\otimes\tau^{k+1}e_l)\)</span>.
+This is <span class="math" data-tex="\((1+\tau)\Gamma(e_{i-1})=\Gamma(\partial e_i)\)">\((1+\tau)\Gamma(e_{i-1})=\Gamma(\partial e_i)\)</span>. Its degree-zero augmentation is also the diagonal augmentation.</p>
+<p><strong>Proof: the two product maps are homotopic.</strong> Let
+<span class="math" data-tex="\(A:C_*(X\times Y)\to C_*(X)\otimes C_*(Y)\)">\(A:C_*(X\times Y)\to C_*(X)\otimes C_*(Y)\)</span>
+be the Alexander–Whitney product map proved in the Thom/Euler chapter, Lemma 4.1. Form two natural equivariant chain maps with common target</p>
+<span class="math math-display" data-tex="\[
+K(X,Y)=C_*(X)\otimes C_*(X)\otimes C_*(Y)\otimes C_*(Y).
+\]">\[
+K(X,Y)=C_*(X)\otimes C_*(X)\otimes C_*(Y)\otimes C_*(Y).
+\]</span>
+<p>The first map <span class="math" data-tex="\(F\)">\(F\)</span> applies <span class="math" data-tex="\(\mathcal D_{X\times Y}\)">\(\mathcal D_{X\times Y}\)</span>, then <span class="math" data-tex="\(A\)">\(A\)</span> to each of the two product-space factors, and finally rearranges the factors into the order <span class="math" data-tex="\(X,X,Y,Y\)">\(X,X,Y,Y\)</span>. The second map <span class="math" data-tex="\(G\)">\(G\)</span> first applies <span class="math" data-tex="\(\Gamma\otimes A\)">\(\Gamma\otimes A\)</span>, rearranges into
+<span class="math" data-tex="\((W\otimes C_*(X))\otimes(W\otimes C_*(Y))\)">\((W\otimes C_*(X))\otimes(W\otimes C_*(Y))\)</span>, and then applies <span class="math" data-tex="\(\mathcal D_X\otimes\mathcal D_Y\)">\(\mathcal D_X\otimes\mathcal D_Y\)</span>. The target group action simultaneously exchanges the two <span class="math" data-tex="\(X\)">\(X\)</span> factors and the two <span class="math" data-tex="\(Y\)">\(Y\)</span> factors. All component maps are equivariant chain maps, so both composites are too. They agree on degree-zero augmentation.</p>
+<p>We construct their natural equivariant chain homotopy, rather than asserting a comparison theorem. Order generators <span class="math" data-tex="\(e_i\otimes\sigma_m\)">\(e_i\otimes\sigma_m\)</span> by total degree <span class="math" data-tex="\(i+m\)">\(i+m\)</span>. Suppose the homotopy <span class="math" data-tex="\(H\)">\(H\)</span> has been defined in all lower total degrees and satisfies the required identity there. For this generator use the universal simplex
+<span class="math" data-tex="\(\sigma_m^\Delta:\Delta^m\to\Delta^m\times\Delta^m\)">\(\sigma_m^\Delta:\Delta^m\to\Delta^m\times\Delta^m\)</span>, <span class="math" data-tex="\(z\mapsto(z,z)\)">\(z\mapsto(z,z)\)</span>.
+In the target <span class="math" data-tex="\(K(\Delta^m,\Delta^m)\)">\(K(\Delta^m,\Delta^m)\)</span>, form</p>
+<span class="math math-display" data-tex="\[
+z=(F+G)(e_i\otimes\sigma_m^\Delta)
++H\partial(e_i\otimes\sigma_m^\Delta).
+\]">\[
+z=(F+G)(e_i\otimes\sigma_m^\Delta)
++H\partial(e_i\otimes\sigma_m^\Delta).
+\]</span>
+<p>This is a cycle: applying <span class="math" data-tex="\(\partial\)">\(\partial\)</span>, the chain-map identities and the lower-degree homotopy identity cancel its two copies of <span class="math" data-tex="\((F+G)\partial\)">\((F+G)\partial\)</span>. In degree zero it has augmentation zero; in fact the two maps then agree on the single vertex.</p>
+<p>Each singular chain complex of the convex simplex contracts to its first vertex by the cone homotopy of the Thom/Euler chapter. If <span class="math" data-tex="\(P=i\epsilon\)">\(P=i\epsilon\)</span> is its augmentation projection and <span class="math" data-tex="\(K\)">\(K\)</span> its contraction, the four-factor homotopy</p>
+<span class="math math-display" data-tex="\[
+K\otimes1\otimes1\otimes1+
+P\otimes K\otimes1\otimes1+
+P\otimes P\otimes K\otimes1+
+P\otimes P\otimes P\otimes K
+\]">\[
+K\otimes1\otimes1\otimes1+
+P\otimes K\otimes1\otimes1+
+P\otimes P\otimes K\otimes1+
+P\otimes P\otimes P\otimes K
+\]</span>
+<p>has boundary sum <span class="math" data-tex="\(1-P^{\otimes4}\)">\(1-P^{\otimes4}\)</span>, by telescoping the four contraction identities. Hence it fills every augmented cycle in that tensor complex. Apply it to <span class="math" data-tex="\(z\)">\(z\)</span>; the resulting filling defines <span class="math" data-tex="\(H(e_i\otimes\sigma_m^\Delta)\)">\(H(e_i\otimes\sigma_m^\Delta)\)</span>. For an arbitrary simplex <span class="math" data-tex="\(\sigma=(\sigma_X,\sigma_Y)\)">\(\sigma=(\sigma_X,\sigma_Y)\)</span>, push this filling forward by
+<span class="math" data-tex="\(\sigma_X\otimes\sigma_X\otimes\sigma_Y\otimes\sigma_Y\)">\(\sigma_X\otimes\sigma_X\otimes\sigma_Y\otimes\sigma_Y\)</span>.
+Define <span class="math" data-tex="\(H(\tau e_i\otimes\sigma)=\tau H(e_i\otimes\sigma)\)">\(H(\tau e_i\otimes\sigma)=\tau H(e_i\otimes\sigma)\)</span>.</p>
+<p>This induction is consistent: the domain is free on these generators and their <span class="math" data-tex="\(\tau\)">\(\tau\)</span> translates, so no invariant choice of filling is required. Faces are affine images of lower-dimensional universal simplices; the already defined <span class="math" data-tex="\(H\)">\(H\)</span> on their images is the one used in the residual cycle. The construction commutes with maps of <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>, because the only filling choices were made on the fixed universal simplices. It gives</p>
+<span class="math math-display" data-tex="\[
+F+G=\partial H+H\partial.
+\tag{3.4}
+\]">\[
+F+G=\partial H+H\partial.
+\tag{3.4}
+\]</span>
+<p>It also preserves product subspaces: every target simplex in an <span class="math" data-tex="\(X\)">\(X\)</span> factor lies in the image of <span class="math" data-tex="\(\sigma_X\)">\(\sigma_X\)</span>, and every target simplex in a <span class="math" data-tex="\(Y\)">\(Y\)</span> factor lies in the image of <span class="math" data-tex="\(\sigma_Y\)">\(\sigma_Y\)</span>. This support assertion includes the cone fillings, since they are pushed forward from the same two model simplices.</p>
+<p><strong>Proof: evaluating the comparison.</strong> Let <span class="math" data-tex="\(a,b\)">\(a,b\)</span> be cocycles of degrees <span class="math" data-tex="\(n,p\)">\(n,p\)</span>, and put
+<span class="math" data-tex="\(\varphi=a\otimes a\otimes b\otimes b\)">\(\varphi=a\otimes a\otimes b\otimes b\)</span>.
+This cocycle of degree <span class="math" data-tex="\(2n+2p\)">\(2n+2p\)</span> is invariant under the simultaneous exchange. Fix <span class="math" data-tex="\(s\leq n+p\)">\(s\leq n+p\)</span> and put <span class="math" data-tex="\(i=n+p-s\)">\(i=n+p-s\)</span>. Evaluating <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(e_i\otimes c\)">\(e_i\otimes c\)</span>, for chains <span class="math" data-tex="\(c\)">\(c\)</span> of degree <span class="math" data-tex="\(n+p+s\)">\(n+p+s\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+(a\times b)\smile_i(a\times b).
+\]">\[
+(a\times b)\smile_i(a\times b).
+\]</span>
+<p>Evaluating <span class="math" data-tex="\(G\)">\(G\)</span> uses the terms <span class="math" data-tex="\(e_j\otimes\tau^j e_{i-j}\)">\(e_j\otimes\tau^j e_{i-j}\)</span> of (3.3). The twist <span class="math" data-tex="\(\tau^j\)">\(\tau^j\)</span> disappears on evaluation by <span class="math" data-tex="\(b\otimes b\)">\(b\otimes b\)</span>. The corresponding cochain is</p>
+<span class="math math-display" data-tex="\[
+(a\smile_j a)\times(b\smile_{i-j}b).
+\]">\[
+(a\smile_j a)\times(b\smile_{i-j}b).
+\]</span>
+<p>It can be nonzero only when <span class="math" data-tex="\(0\leq j\leq n\)">\(0\leq j\leq n\)</span> and <span class="math" data-tex="\(0\leq i-j\leq p\)">\(0\leq i-j\leq p\)</span>. For example, if <span class="math" data-tex="\(j&gt;n\)">\(j&gt;n\)</span>, its required input degree is <span class="math" data-tex="\(2n-j&lt;j\)">\(2n-j&lt;j\)</span>, where <span class="math" data-tex="\(D_j\)">\(D_j\)</span> is zero. Set <span class="math" data-tex="\(r=n-j\)">\(r=n-j\)</span>, <span class="math" data-tex="\(t=p-(i-j)\)">\(t=p-(i-j)\)</span>; then <span class="math" data-tex="\(r+t=s\)">\(r+t=s\)</span>, and these terms give exactly the right-hand side of (3.2).</p>
+<p>Equation (3.4) says the two evaluations differ by a coboundary. More explicitly, the cochain primitive on a chain <span class="math" data-tex="\(c\)">\(c\)</span> of degree <span class="math" data-tex="\(n+p+s-1\)">\(n+p+s-1\)</span> is <span class="math" data-tex="\(\varphi H(e_i\otimes c)\)">\(\varphi H(e_i\otimes c)\)</span>. The <span class="math" data-tex="\(\partial H\)">\(\partial H\)</span> term evaluates to zero because <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is a cocycle. The term involving
+<span class="math" data-tex="\(\partial e_i=(1+\tau)e_{i-1}\)">\(\partial e_i=(1+\tau)e_{i-1}\)</span> also evaluates to zero because <span class="math" data-tex="\(H\)">\(H\)</span> is equivariant and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is invariant. The remaining term is precisely the differential of that primitive. Thus (3.2) follows. If <span class="math" data-tex="\(s&gt;n+p\)">\(s&gt;n+p\)</span>, its left side is zero and every term on the right has <span class="math" data-tex="\(r&gt;n\)">\(r&gt;n\)</span> or <span class="math" data-tex="\(t&gt;p\)">\(t&gt;p\)</span>, so the formula holds there too. Pull back along <span class="math" data-tex="\(X\to X\times X\)">\(X\to X\times X\)</span> and use naturality to obtain (3.1).</p>
+<p><strong>Proof for pairs.</strong> If <span class="math" data-tex="\(a\)">\(a\)</span> vanishes on <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>, all the maps just used preserve the chains in either <span class="math" data-tex="\(A\times Y\)">\(A\times Y\)</span> or <span class="math" data-tex="\(X\times B\)">\(X\times B\)</span>. Evaluation and the homotopy primitive therefore vanish on their sum. Work first in the quotient of <span class="math" data-tex="\(C_*(X\times Y)\)">\(C_*(X\times Y)\)</span> by
+<span class="math" data-tex="\(C_*(A\times Y)+C_*(X\times B)\)">\(C_*(A\times Y)+C_*(X\times B)\)</span>.
+The higher diagonals preserve this sum, and the product map and its homotopies descend. When the two subspaces are open, the small-chain equivalence proved in the Thom/Euler chapter identifies this quotient with the usual relative complex for their union. The quotient map commutes with every <span class="math" data-tex="\(D_i\)">\(D_i\)</span>, so the operations on cohomology correspond under this equivalence. If one subspace is empty, its sum is already the ordinary chain complex of the other product subspace; no small-chain argument is needed. This proves (3.2) in the stated relative cases. Naturality along the diagonal gives the relative internal version. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a homogeneous class define its total square by
+<span class="math" data-tex="\(\operatorname{Sq}x=\sum_{s\geq0}\operatorname{Sq}^s x\)">\(\operatorname{Sq}x=\sum_{s\geq0}\operatorname{Sq}^s x\)</span>.
+Instability makes the sum finite. Extend additively to the graded direct sum of cohomology groups. Theorem 3.1 says this total operation preserves multiplication; its degree-zero component is the identity. No relations between iterated squares are needed for the constructions below.</p>
+<h2 id="4-transferring-the-squares-through-the-thom-isomorphism">4. Transferring the squares through the Thom isomorphism</h2>
+<p>Let <span class="math" data-tex="\(V\to B\)">\(V\to B\)</span> be a real rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle over a Hausdorff base. Let <span class="math" data-tex="\(E\)">\(E\)</span> be its total space, <span class="math" data-tex="\(E_0\)">\(E_0\)</span> its nonzero vectors and <span class="math" data-tex="\(u_V\in H^r(E,E_0)\)">\(u_V\in H^r(E,E_0)\)</span> its canonical mod-two Thom class. The preceding Thom theorem supplies the isomorphism</p>
+<span class="math math-display" data-tex="\[
+\Phi_V:H^j(B)\longrightarrow H^{j+r}(E,E_0),\qquad
+\Phi_V(x)=\pi^*x\smile u_V.
+\]">\[
+\Phi_V:H^j(B)\longrightarrow H^{j+r}(E,E_0),\qquad
+\Phi_V(x)=\pi^*x\smile u_V.
+\]</span>
+<p>Define the <strong>Stiefel–Whitney classes</strong> by</p>
+<span class="math math-display" data-tex="\[
+w_i(V)=\Phi_V^{-1}\bigl(\operatorname{Sq}^i u_V\bigr),\qquad
+w(V)=1+w_1(V)+\cdots+w_r(V).
+\tag{4.1}
+\]">\[
+w_i(V)=\Phi_V^{-1}\bigl(\operatorname{Sq}^i u_V\bigr),\qquad
+w(V)=1+w_1(V)+\cdots+w_r(V).
+\tag{4.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(w_i(V)\in H^i(B;\mathbf F_2)\)">\(w_i(V)\in H^i(B;\mathbf F_2)\)</span>. For <span class="math" data-tex="\(i&gt;r\)">\(i&gt;r\)</span> the square is zero. The rank-zero bundle has <span class="math" data-tex="\(u=1\)">\(u=1\)</span>, <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> the identity, and <span class="math" data-tex="\(w=1\)">\(w=1\)</span>.</p>
+<p><span id="DG-CHAR-05.theorem-4.1"></span><strong>Theorem 4.1 (existence and the four axioms).</strong> Formula (4.1) has the following properties.</p>
+<ol>
+<li><span class="math" data-tex="\(w_0(V)=1\)">\(w_0(V)=1\)</span> and <span class="math" data-tex="\(w_i(V)=0\)">\(w_i(V)=0\)</span> for <span class="math" data-tex="\(i&gt;\operatorname{rank}V\)">\(i&gt;\operatorname{rank}V\)</span>.</li>
+<li><span class="math" data-tex="\(w_i(f^*V)=f^*w_i(V)\)">\(w_i(f^*V)=f^*w_i(V)\)</span> for continuous maps between Hausdorff bases; bundle isomorphisms give the same classes.</li>
+<li><span class="math" data-tex="\(w(V\oplus W)=w(V)w(W)\)">\(w(V\oplus W)=w(V)w(W)\)</span>.</li>
+<li>For the tautological line <span class="math" data-tex="\(\gamma_{\mathbb R}\)">\(\gamma_{\mathbb R}\)</span> over <span class="math" data-tex="\(\mathbb RP^1\)">\(\mathbb RP^1\)</span>, <span class="math" data-tex="\(w_1(\gamma_{\mathbb R})\)">\(w_1(\gamma_{\mathbb R})\)</span> is the nonzero class of <span class="math" data-tex="\(H^1(\mathbb RP^1;\mathbf F_2)\)">\(H^1(\mathbb RP^1;\mathbf F_2)\)</span>.</li>
+</ol>
+<p>Moreover,</p>
+<span class="math math-display" data-tex="\[
+w_r(V)=e_{\mathbf F_2}(V).
+\tag{4.2}
+\]">\[
+w_r(V)=e_{\mathbf F_2}(V).
+\tag{4.2}
+\]</span>
+<p>For an integrally oriented bundle the right side is the reduction modulo two of its integral Euler class.</p>
+<p><strong>Proof.</strong> The identity square gives <span class="math" data-tex="\(\operatorname{Sq}^0u_V=u_V=\Phi_V(1)\)">\(\operatorname{Sq}^0u_V=u_V=\Phi_V(1)\)</span>, and instability gives the asserted rank bound. Thom-class naturality and square naturality show that the pullback of (4.1) is the defining equation for the pullback bundle. Its Thom isomorphism is injective, so the classes are natural.</p>
+<p>The top square is <span class="math" data-tex="\(u_V^2\)">\(u_V^2\)</span>. Section 8 of the Thom/Euler chapter proves the self-intersection identity</p>
+<span class="math math-display" data-tex="\[
+u_V^2=\pi^*e_{\mathbf F_2}(V)\smile u_V
+=\Phi_V(e_{\mathbf F_2}(V)).
+\]">\[
+u_V^2=\pi^*e_{\mathbf F_2}(V)\smile u_V
+=\Phi_V(e_{\mathbf F_2}(V)).
+\]</span>
+<p>Its proof uses restriction of the relative class to the absolute total-space cohomology and scalar contraction to the zero section. Thus it applies to the same Hausdorff bases as the Thom theorem. Applying <span class="math" data-tex="\(\Phi_V^{-1}\)">\(\Phi_V^{-1}\)</span> proves (4.2). Integral reduction is the coefficient compatibility established there. In rank one, (4.2) identifies the class with the orientation-transport class proved in Section 9 of that chapter. For the Möbius line over <span class="math" data-tex="\(\mathbb RP^1\)">\(\mathbb RP^1\)</span>, its loop reverses the fibre sign, so that class evaluates to one. This proves normalization.</p>
+<p>For the product formula first place <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span> on separate bases <span class="math" data-tex="\(B,C\)">\(B,C\)</span>. Their external direct sum has Thom class <span class="math" data-tex="\(u_V\times u_W\)">\(u_V\times u_W\)</span>: this is the fibrewise product-generator statement proved in the Thom/Euler chapter, Section 8. The nonzero-vector subspaces are open, so relative Cartan gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Sq}^s(u_V\times u_W)
+&amp;=\sum_{i+j=s}\operatorname{Sq}^i u_V\times\operatorname{Sq}^j u_W\\
+&amp;=\pi^*\left(\sum_{i+j=s}w_i(V)\times w_j(W)\right)
+\smile(u_V\times u_W).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Sq}^s(u_V\times u_W)
+&amp;=\sum_{i+j=s}\operatorname{Sq}^i u_V\times\operatorname{Sq}^j u_W\\
+&amp;=\pi^*\left(\sum_{i+j=s}w_i(V)\times w_j(W)\right)
+\smile(u_V\times u_W).
+\end{aligned}
+\]</span>
+<p>Associativity and commutativity in mod-two cohomology justify the second equality; no integral sign is involved. The Thom isomorphism on the external direct sum is injective, so its degree-<span class="math" data-tex="\(s\)">\(s\)</span> class is the displayed sum. If the bundles have the same base, pull back along <span class="math" data-tex="\(B\to B\times B\)">\(B\to B\times B\)</span>. The pullback bundle is <span class="math" data-tex="\(V\oplus W\)">\(V\oplus W\)</span>, and naturality now gives
+<span class="math" data-tex="\(w_s(V\oplus W)=\sum_{i+j=s}w_i(V)w_j(W)\)">\(w_s(V\oplus W)=\sum_{i+j=s}w_i(V)w_j(W)\)</span>.
+This is the total product formula. Rank zero is included by the identity Thom class and by the relative Cartan cases with an empty subspace. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(w(\varepsilon^r)=1\)">\(w(\varepsilon^r)=1\)</span>: a trivial bundle is pulled back from a point, whose positive-degree cohomology is zero. For a real line <span class="math" data-tex="\(L\)">\(L\)</span>,</p>
+<span class="math math-display" data-tex="\[
+w(L)=1+e_{\mathbf F_2}(L)=1+w_1(L),
+\]">\[
+w(L)=1+e_{\mathbf F_2}(L)=1+w_1(L),
+\]</span>
+<p>where its first class is exactly the earlier transport class. Thus the notation for the first line class used in the preceding chapters agrees with the full sequence just constructed.</p>
+<h2 id="5-why-the-axioms-determine-the-classes">5. Why the axioms determine the classes</h2>
+<p>The four axioms suffice; the computation of the universal Grassmannian ring is not needed for this uniqueness proof. That makes the argument independent of the later use of these very classes to calculate that ring.</p>
+<p><span id="DG-CHAR-05.theorem-5.1"></span><strong>Theorem 5.1 (uniqueness).</strong> On real finite-rank bundles over Hausdorff spaces, the four axioms in Theorem 4.1 determine the classes uniquely. They also determine them uniquely if the category of bases is restricted to paracompact Hausdorff spaces.</p>
+<p><strong>Proof on lines over compact bases.</strong> Let <span class="math" data-tex="\(\widetilde w\)">\(\widetilde w\)</span> be another rule satisfying the axioms. For <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>, the ring calculation in the Gysin chapter shows that
+<span class="math" data-tex="\(H^1(\mathbb RP^N)=\mathbf F_2 a\)">\(H^1(\mathbb RP^N)=\mathbf F_2 a\)</span>, and restriction to <span class="math" data-tex="\(\mathbb RP^1\)">\(\mathbb RP^1\)</span> sends <span class="math" data-tex="\(a\)">\(a\)</span> to its nonzero generator. Naturality and normalization therefore force
+<span class="math" data-tex="\(\widetilde w_1(\gamma_{\mathbb R}|_{\mathbb RP^N})=a=w_1(\gamma_{\mathbb R}|_{\mathbb RP^N})\)">\(\widetilde w_1(\gamma_{\mathbb R}|_{\mathbb RP^N})=a=w_1(\gamma_{\mathbb R}|_{\mathbb RP^N})\)</span>.
+For <span class="math" data-tex="\(N=0\)">\(N=0\)</span> it is zero. The rank bound determines all the other positive classes of a line. Every line over a compact Hausdorff space is pulled back from a finite tautological line by the finite embedding theorem of the first chapter. Consequently <span class="math" data-tex="\(\widetilde w=w\)">\(\widetilde w=w\)</span> on these lines.</p>
+<p><strong>Proof on arbitrary rank over compact bases.</strong> A compact Hausdorff base is paracompact, so the flag-splitting theorem supplies
+<span class="math" data-tex="\(f:\operatorname{Flag}(V)\to B\)">\(f:\operatorname{Flag}(V)\to B\)</span>, with injective mod-two cohomology pullback and
+<span class="math" data-tex="\(f^*V=\bigoplus_{l=1}^{r}L_l\)">\(f^*V=\bigoplus_{l=1}^{r}L_l\)</span>.
+The flag space is compact Hausdorff. Here is the compactness check, which is needed before applying the preceding line argument. A locally trivial bundle with compact fibre over a compact base has compact total space. Given an open cover upstairs, trivialize at each <span class="math" data-tex="\(b\)">\(b\)</span>. Finitely many product neighbourhoods <span class="math" data-tex="\(U_i\times O_i\)">\(U_i\times O_i\)</span>, each lying in a cover member, cover the fibre over <span class="math" data-tex="\(b\)">\(b\)</span>. Intersect the finitely many <span class="math" data-tex="\(U_i\)">\(U_i\)</span>; the resulting neighbourhood <span class="math" data-tex="\(U_b\)">\(U_b\)</span> has its entire inverse image covered by those same finitely many members. Finitely many <span class="math" data-tex="\(U_b\)">\(U_b\)</span> cover the compact base, yielding a finite cover of the total space by original members. Hausdorffness follows from the bundle charts and the Hausdorff base. Applying this at every projective step proves the assertion for the flag tower.</p>
+<p>The line case and Whitney axiom now give</p>
+<span class="math math-display" data-tex="\[
+f^*\widetilde w(V)=\prod_{l=1}^{r}\widetilde w(L_l)
+=\prod_{l=1}^{r}w(L_l)=f^*w(V).
+\]">\[
+f^*\widetilde w(V)=\prod_{l=1}^{r}\widetilde w(L_l)
+=\prod_{l=1}^{r}w(L_l)=f^*w(V).
+\]</span>
+<p>Injectivity forces equality on <span class="math" data-tex="\(B\)">\(B\)</span>. Rank zero follows directly from the rank and constant-term axiom.</p>
+<p><strong>Passage to every Hausdorff base.</strong> Let
+<span class="math" data-tex="\(\alpha=\widetilde w_i(V)-w_i(V)\in H^i(B;\mathbf F_2)\)">\(\alpha=\widetilde w_i(V)-w_i(V)\in H^i(B;\mathbf F_2)\)</span>.
+Every singular cycle is a finite sum of simplices, so its image is contained in a compact subset <span class="math" data-tex="\(C\subset B\)">\(C\subset B\)</span>. The restriction of <span class="math" data-tex="\(V\)">\(V\)</span> to <span class="math" data-tex="\(C\)">\(C\)</span> is a bundle on a compact Hausdorff space. Naturality and the compact proof make <span class="math" data-tex="\(\alpha|_C=0\)">\(\alpha|_C=0\)</span>, hence its evaluation on that cycle is zero. The field coefficient theorem proved in the Thom/Euler chapter identifies
+<span class="math" data-tex="\(H^i(B;\mathbf F_2)=\operatorname{Hom}_{\mathbf F_2}(H_i(B;\mathbf F_2),\mathbf F_2)\)">\(H^i(B;\mathbf F_2)=\operatorname{Hom}_{\mathbf F_2}(H_i(B;\mathbf F_2),\mathbf F_2)\)</span>.
+Thus a class evaluating to zero on every cycle is zero, proving uniqueness. This argument uses field duality; it makes no analogous claim about detection of arbitrary integral cohomology by compact restrictions.</p>
+<p>If rules are defined only on paracompact Hausdorff bases, the same compact restrictions and flag spaces lie in that category, so the proof is unchanged. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a paracompact Hausdorff base we can now write the splitting formula</p>
+<span class="math math-display" data-tex="\[
+f^*w(V)=\prod_{l=1}^{r}(1+x_l),\qquad x_l=w_1(L_l).
+\tag{5.1}
+\]">\[
+f^*w(V)=\prod_{l=1}^{r}(1+x_l),\qquad x_l=w_1(L_l).
+\tag{5.1}
+\]</span>
+<p>It is a formula after an injective pullback. The existence of the classes downstairs was proved by (4.1), so no descent of arbitrary flag polynomials is being assumed.</p>
+<p><span id="DG-CHAR-05.corollary-5.2"></span><strong>Corollary 5.2 (the first class and orientation).</strong> For every Hausdorff base,
+<span class="math" data-tex="\(w_1(V)=w_1(\det V)\)">\(w_1(V)=w_1(\det V)\)</span>.
+An orientable bundle has <span class="math" data-tex="\(w_1=0\)">\(w_1=0\)</span>. On a Hausdorff CW complex the converse holds: <span class="math" data-tex="\(V\)">\(V\)</span> is orientable exactly when <span class="math" data-tex="\(w_1(V)=0\)">\(w_1(V)=0\)</span>.</p>
+<p><strong>Proof.</strong> On a flag space, <span class="math" data-tex="\(\det f^*V=\bigotimes_l L_l\)">\(\det f^*V=\bigotimes_l L_l\)</span>. The real-line tensor formula from the Gysin chapter and (5.1) show that both first classes pull back to <span class="math" data-tex="\(\sum_l x_l\)">\(\sum_l x_l\)</span>. Injectivity proves the equality for paracompact Hausdorff bases. Restricting to compact subsets and using field detection as in Theorem 5.1 proves it for every Hausdorff base.</p>
+<p>A choice of orientation trivializes the sign transport on the determinant line, so its first transport class is zero. Conversely, on a CW complex the full line-classification theorem proved in the classifying-maps chapter says that a line with zero first class is trivial. A nonzero section of the trivial determinant line specifies an orientation of every vector-space fibre, continuously in bundle charts. This orients <span class="math" data-tex="\(V\)">\(V\)</span>. For rank zero use its canonical empty-basis orientation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a complex line <span class="math" data-tex="\(L\)">\(L\)</span>, its underlying real plane has the complex orientation. Thus
+<span class="math" data-tex="\(w_1(L_{\mathbb R})=0\)">\(w_1(L_{\mathbb R})=0\)</span> and
+<span class="math" data-tex="\(w_2(L_{\mathbb R})=\rho_2 c_1(L)\)">\(w_2(L_{\mathbb R})=\rho_2 c_1(L)\)</span>, by (4.2) and the line definition of <span class="math" data-tex="\(c_1\)">\(c_1\)</span> in the preceding chapter. Hence
+<span class="math" data-tex="\(w(L_{\mathbb R})=1+\rho_2 c_1(L)\)">\(w(L_{\mathbb R})=1+\rho_2 c_1(L)\)</span>. This is the first bridge between the real and complex characteristic classes.</p>
+<h2 id="6-computations-of-the-operations">6. Computations of the operations</h2>
+<p>For the degree-one generator <span class="math" data-tex="\(a\)">\(a\)</span> of real projective cohomology, Theorem 2.1 gives
+<span class="math" data-tex="\(\operatorname{Sq}a=a+a^2\)">\(\operatorname{Sq}a=a+a^2\)</span>. Repeated Cartan and the binomial expansion give</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sq}^s(a^m)=\binom{m}{s}a^{m+s},
+\qquad \binom{m}{s}\text{ read modulo two}.
+\tag{6.1}
+\]">\[
+\operatorname{Sq}^s(a^m)=\binom{m}{s}a^{m+s},
+\qquad \binom{m}{s}\text{ read modulo two}.
+\tag{6.1}
+\]</span>
+<p>This applies to <span class="math" data-tex="\(\mathbb RP^N\)">\(\mathbb RP^N\)</span> with its truncation <span class="math" data-tex="\(a^{N+1}=0\)">\(a^{N+1}=0\)</span>, and to <span class="math" data-tex="\(\mathbb RP^\infty\)">\(\mathbb RP^\infty\)</span> without a truncation. Naturality agrees with the restrictions between them. The formula for <span class="math" data-tex="\(m=0\)">\(m=0\)</span> is <span class="math" data-tex="\(\operatorname{Sq}(1)=1\)">\(\operatorname{Sq}(1)=1\)</span>.</p>
+<p>For the mod-two reduction <span class="math" data-tex="\(x\)">\(x\)</span> of the positive complex-projective generator, <span class="math" data-tex="\(|x|=2\)">\(|x|=2\)</span>. Its first square is zero, since <span class="math" data-tex="\(H^3(\mathbb CP^N;\mathbf F_2)=0\)">\(H^3(\mathbb CP^N;\mathbf F_2)=0\)</span>. This vanishing, and the ring with mod-two coefficients, follow from the free even-degree integral homology and the coefficient theorem of the previous chapters. Its top square is <span class="math" data-tex="\(x^2\)">\(x^2\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sq}^{2s}(x^m)=\binom{m}{s}x^{m+s},\qquad
+\operatorname{Sq}^{2s+1}(x^m)=0.
+\tag{6.2}
+\]">\[
+\operatorname{Sq}^{2s}(x^m)=\binom{m}{s}x^{m+s},\qquad
+\operatorname{Sq}^{2s+1}(x^m)=0.
+\tag{6.2}
+\]</span>
+<p>The proof is the expansion of <span class="math" data-tex="\((x+x^2)^m\)">\((x+x^2)^m\)</span>, with the same finite-projective truncation as appropriate. The integral generator may be chosen as the first class of the dual tautological line; reduction removes its sign distinction from the tautological line.</p>
+<p>One further consequence will be used in the manifold calculations. If <span class="math" data-tex="\(H^q(X;\mathbf F_2)=0\)">\(H^q(X;\mathbf F_2)=0\)</span> for <span class="math" data-tex="\(q&gt;d\)">\(q&gt;d\)</span>, the total square is an additive automorphism of the graded direct sum of cohomology. Indeed write it as <span class="math" data-tex="\(1+N\)">\(1+N\)</span>. On every homogeneous class <span class="math" data-tex="\(N\)">\(N\)</span> strictly increases degree. Hence <span class="math" data-tex="\(N^{d+1}=0\)">\(N^{d+1}=0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+(1+N)^{-1}=1+N+N^2+\cdots+N^d.
+\]">\[
+(1+N)^{-1}=1+N+N^2+\cdots+N^d.
+\]</span>
+<p>Its multiplicativity makes it a ring automorphism too. The degree bound matters. On <span class="math" data-tex="\(\mathbf F_2[a]=H^*(\mathbb RP^\infty;\mathbf F_2)\)">\(\mathbf F_2[a]=H^*(\mathbb RP^\infty;\mathbf F_2)\)</span>, substitution <span class="math" data-tex="\(a\mapsto a+a^2\)">\(a\mapsto a+a^2\)</span> is not onto: a nonconstant polynomial of degree <span class="math" data-tex="\(m\)">\(m\)</span> maps to one of degree <span class="math" data-tex="\(2m\)">\(2m\)</span>, so it cannot map to <span class="math" data-tex="\(a\)">\(a\)</span>. An inverse exists in the degree completion, where <span class="math" data-tex="\(a+a^2+a^4+\cdots\)">\(a+a^2+a^4+\cdots\)</span> is a meaningful series, but that series is not an element of the graded direct-sum polynomial ring.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><span id="DG-CHAR-05.exercise-7.1"></span><strong>Exercise 7.1 (easy).</strong> Compute <span class="math" data-tex="\(D_1\)">\(D_1\)</span> on a triangle and verify the higher-diagonal identity there directly.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(s=\sigma[0,1,2]\)">\(s=\sigma[0,1,2]\)</span>, <span class="math" data-tex="\(e_{ij}=\sigma[i,j]\)">\(e_{ij}=\sigma[i,j]\)</span>, and <span class="math" data-tex="\(v_i=\sigma[i]\)">\(v_i=\sigma[i]\)</span>. The three one-element deletion sets give</p>
+<span class="math math-display" data-tex="\[
+D_1s=s\otimes e_{12}+e_{02}\otimes s+s\otimes e_{01}.
+\]">\[
+D_1s=s\otimes e_{12}+e_{02}\otimes s+s\otimes e_{01}.
+\]</span>
+<p>Each edge has <span class="math" data-tex="\(D_1e=e\otimes e\)">\(D_1e=e\otimes e\)</span>. Substitute
+<span class="math" data-tex="\(\partial s=e_{12}+e_{02}+e_{01}\)">\(\partial s=e_{12}+e_{02}+e_{01}\)</span> and <span class="math" data-tex="\(\partial e_{ij}=v_i+v_j\)">\(\partial e_{ij}=v_i+v_j\)</span>. The repeated edge tensors cancel, leaving</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\partial D_1+D_1\partial)s
+={}&amp;(v_0+v_2)\otimes s+s\otimes(v_0+v_2)\\
+&amp;+e_{01}\otimes e_{12}+e_{12}\otimes e_{01}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+(\partial D_1+D_1\partial)s
+={}&amp;(v_0+v_2)\otimes s+s\otimes(v_0+v_2)\\
+&amp;+e_{01}\otimes e_{12}+e_{12}\otimes e_{01}.
+\end{aligned}
+\]</span>
+<p>Since <span class="math" data-tex="\(D_0s=v_0\otimes s+e_{01}\otimes e_{12}+s\otimes v_2\)">\(D_0s=v_0\otimes s+e_{01}\otimes e_{12}+s\otimes v_2\)</span>, this is precisely <span class="math" data-tex="\((1+T)D_0s\)">\((1+T)D_0s\)</span>. In particular the middle deletion contributes <span class="math" data-tex="\(e_{02}\otimes s\)">\(e_{02}\otimes s\)</span>, not the other order: its vertex number one plus its tuple position one is even.</p>
+<p><span id="DG-CHAR-05.exercise-7.2"></span><strong>Exercise 7.2 (easy).</strong> Find all squares of <span class="math" data-tex="\(a^5\)">\(a^5\)</span> on <span class="math" data-tex="\(\mathbb RP^\infty\)">\(\mathbb RP^\infty\)</span>, and then restrict the answer to <span class="math" data-tex="\(\mathbb RP^9\)">\(\mathbb RP^9\)</span>.</p>
+<p><strong>Solution.</strong> In characteristic two,
+<span class="math" data-tex="\((1+t)^5=(1+t)^4(1+t)=(1+t^4)(1+t)=1+t+t^4+t^5\)">\((1+t)^5=(1+t)^4(1+t)=(1+t^4)(1+t)=1+t+t^4+t^5\)</span>.
+Thus the nonzero squares on the infinite space are
+<span class="math" data-tex="\(\operatorname{Sq}^0a^5=a^5\)">\(\operatorname{Sq}^0a^5=a^5\)</span>, <span class="math" data-tex="\(\operatorname{Sq}^1a^5=a^6\)">\(\operatorname{Sq}^1a^5=a^6\)</span>,
+<span class="math" data-tex="\(\operatorname{Sq}^4a^5=a^9\)">\(\operatorname{Sq}^4a^5=a^9\)</span>, and <span class="math" data-tex="\(\operatorname{Sq}^5a^5=a^{10}\)">\(\operatorname{Sq}^5a^5=a^{10}\)</span>.
+The second and third squares are zero by even binomial coefficients; every square above five is zero by instability. On <span class="math" data-tex="\(\mathbb RP^9\)">\(\mathbb RP^9\)</span> the last of the four displayed answers also becomes zero because <span class="math" data-tex="\(a^{10}=0\)">\(a^{10}=0\)</span>. The degree-one and degree-four squares remain nonzero.</p>
+<p><span id="DG-CHAR-05.exercise-7.3"></span><strong>Exercise 7.3 (medium).</strong> Compute the total square on the cohomology of <span class="math" data-tex="\(\mathbb CP^2\)">\(\mathbb CP^2\)</span>, and give its inverse.</p>
+<p><strong>Solution.</strong> The ring is <span class="math" data-tex="\(\mathbf F_2[x]/(x^3)\)">\(\mathbf F_2[x]/(x^3)\)</span>, with <span class="math" data-tex="\(|x|=2\)">\(|x|=2\)</span>. We have
+<span class="math" data-tex="\(\operatorname{Sq}(1)=1\)">\(\operatorname{Sq}(1)=1\)</span>, <span class="math" data-tex="\(\operatorname{Sq}(x)=x+x^2\)">\(\operatorname{Sq}(x)=x+x^2\)</span>, and
+<span class="math" data-tex="\(\operatorname{Sq}(x^2)=(x+x^2)^2=x^2+x^4=x^2\)">\(\operatorname{Sq}(x^2)=(x+x^2)^2=x^2+x^4=x^2\)</span>.
+Consequently the map sends
+<span class="math" data-tex="\(\alpha+\beta x+\gamma x^2\)">\(\alpha+\beta x+\gamma x^2\)</span> to
+<span class="math" data-tex="\(\alpha+\beta x+(\beta+\gamma)x^2\)">\(\alpha+\beta x+(\beta+\gamma)x^2\)</span>.
+Applying it twice is the identity, so in this example its inverse is itself. The truncation explains why the answer is an automorphism here even though the analogous substitution on an infinite polynomial ring need not be onto.</p>
+<p><span id="DG-CHAR-05.exercise-7.4"></span><strong>Exercise 7.4 (medium).</strong> For the Möbius line <span class="math" data-tex="\(L\to S^1\)">\(L\to S^1\)</span>, compute the first square of its Thom class. Compare the Euler and total Stiefel–Whitney classes of <span class="math" data-tex="\(L\oplus\varepsilon^1\)">\(L\oplus\varepsilon^1\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(a\)">\(a\)</span> be the nonzero class of <span class="math" data-tex="\(H^1(S^1;\mathbf F_2)\)">\(H^1(S^1;\mathbf F_2)\)</span>. The earlier transport computation gives <span class="math" data-tex="\(e_{\mathbf F_2}(L)=a\)">\(e_{\mathbf F_2}(L)=a\)</span>. Since the line Thom class has degree one,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sq}^1u_L=u_L^2=\pi^*a\smile u_L=\Phi_L(a).
+\]">\[
+\operatorname{Sq}^1u_L=u_L^2=\pi^*a\smile u_L=\Phi_L(a).
+\]</span>
+<p>The Thom isomorphism shows this is nonzero. Therefore <span class="math" data-tex="\(w(L)=1+a\)">\(w(L)=1+a\)</span>, confirming normalization directly in the Thom construction. The trivial summand has total class one, so
+<span class="math" data-tex="\(w(L\oplus\varepsilon^1)=1+a\)">\(w(L\oplus\varepsilon^1)=1+a\)</span>.
+Its rank-two top class is zero and hence its mod-two Euler class is zero. The constant section in its trivial summand also proves this vanishing. Its first class remains nonzero, so the bundle is not orientable. Vanishing of the top class does not make all the classes vanish.</p>
+<p><span id="DG-CHAR-05.exercise-7.5"></span><strong>Exercise 7.5 (medium).</strong> Suppose <span class="math" data-tex="\(V\oplus W\cong\varepsilon^k\)">\(V\oplus W\cong\varepsilon^k\)</span> on a finite CW complex of dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Express <span class="math" data-tex="\(w(W)\)">\(w(W)\)</span> in terms of <span class="math" data-tex="\(w(V)\)">\(w(V)\)</span>, and explain the normal-bundle case.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(b=w(V)-1\)">\(b=w(V)-1\)</span>, a sum of positive-degree classes. The finite-cell dimension bound proved in the Gysin chapter gives <span class="math" data-tex="\(b^{d+1}=0\)">\(b^{d+1}=0\)</span>. Whitney and the trivial-bundle calculation give
+<span class="math" data-tex="\((1+b)w(W)=1\)">\((1+b)w(W)=1\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+w(W)=1+b+b^2+\cdots+b^d.
+\]">\[
+w(W)=1+b+b^2+\cdots+b^d.
+\]</span>
+<p>Multiplication verifies the formula, because every intermediate power appears twice and the final power is zero. More generally, if a manifold is embedded in Euclidean space, the tangent-normal decomposition proved in the first chapter gives <span class="math" data-tex="\(w(TM)w(\nu)=1\)">\(w(TM)w(\nu)=1\)</span> degree by degree. Whenever its cohomology has a finite upper degree bound the same finite formula applies. Otherwise the equality still determines the inverse degree by degree in the degree completion; the actual finite-rank normal bundle supplies the stated class. No embedding existence theorem is asserted in this exercise.</p>
+<p><span id="DG-CHAR-05.exercise-7.6"></span><strong>Exercise 7.6 (hard).</strong> Prove uniqueness on paracompact Hausdorff bases using universal lines and an injective flag pullback. Explain why this avoids a dependence on the universal Grassmannian cohomology theorem.</p>
+<p><strong>Solution.</strong> The Gysin chapter proves that restriction from <span class="math" data-tex="\(\mathbb RP^N\)">\(\mathbb RP^N\)</span> to <span class="math" data-tex="\(\mathbb RP^1\)">\(\mathbb RP^1\)</span> is an isomorphism in degree one for <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>. Thus normalization and naturality force the first class of each finite universal tautological line to be its nonzero generator; rank fixes the higher classes. On a compact Hausdorff base every line is pulled back from one of these finite universal lines, so every axiomatic rule agrees on its classes. For a line on a paracompact Hausdorff base, restrict to each compact subset and use the field-detection argument of Theorem 5.1: each cycle has compact image, so equality of the compact restrictions gives equality of the original cohomology classes. For <span class="math" data-tex="\(V\)">\(V\)</span>, pass to its flag tower; it remains paracompact Hausdorff by the compact-fibre argument proved in the preceding chapter. Whitney makes every rule pull back to <span class="math" data-tex="\(\prod_l(1+w_1(L_l))\)">\(\prod_l(1+w_1(L_l))\)</span>. The composite flag pullback is injective, so the original rules agree on every <span class="math" data-tex="\(w_i(V)\)">\(w_i(V)\)</span>. This uses only finite universal <strong>line</strong> spaces and their Gysin cohomology. The higher-rank universal cohomology ring can therefore be calculated later using the classes now constructed. Theorem 5.1 additionally proves uniqueness on all Hausdorff bases by compact flags and field detection.</p>
+<p><span id="DG-CHAR-05.exercise-7.7"></span><strong>Exercise 7.7 (hard).</strong> Recover the mod-two Thom theorem by finite-cover induction and justify the passage to a Hausdorff base that has no finite trivializing cover.</p>
+<p><strong>Solution.</strong> This exercise uses the fully proved small-chain, product and coefficient lemmas in Sections 1–6 of the Thom/Euler chapter. On a trivializing set <span class="math" data-tex="\(U\)">\(U\)</span>, the product-chain equivalence and the one-dimensional relative fibre homology in degree <span class="math" data-tex="\(r\)">\(r\)</span> give a fibre generator and the cup/cap isomorphisms. For two sets, relative Mayer–Vietoris in degree <span class="math" data-tex="\(r\)">\(r\)</span> glues the generators that agree on the intersection. The relative group of degree <span class="math" data-tex="\(r-1\)">\(r-1\)</span> on that intersection vanishes; it gives uniqueness of the glued class. Lower-degree vanishing follows from the same exact sequence. In higher degrees compare the base Mayer–Vietoris sequence with the bundle relative sequence using multiplication by the glued class. The maps commute over <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>, including connecting maps. The five lemma gives the cup isomorphisms. The parallel homological diagram with the right-cap map gives the cap isomorphisms. Induct on a finite cover; its final intersection has a cover with fewer sets, so this proves the induction hypothesis required for that intersection. Rank zero is the identity separately.</p>
+<p>For any compact <span class="math" data-tex="\(C\subset B\)">\(C\subset B\)</span>, the restricted bundle has a finite cover. Its degree-<span class="math" data-tex="\(r\)">\(r\)</span> Thom class is unique with the prescribed fibre values, so these classes and the induced cap homology maps are compatible on inclusions of compact subsets. Every relative chain has compact projected support. Cycles and any bounding chains have finite support, and finite unions of their supports are still compact. Thus relative homology upstairs and homology downstairs are their respective filtered limits over compact subsets. The compatible finite-base cap isomorphisms give global homology isomorphisms.</p>
+<p>In degree <span class="math" data-tex="\(r\)">\(r\)</span>, compose this compatible homology map
+<span class="math" data-tex="\(H_r(E,E_0)\to H_0(B)\)">\(H_r(E,E_0)\to H_0(B)\)</span> with the augmentation <span class="math" data-tex="\(H_0(B)\to\mathbf F_2\)">\(H_0(B)\to\mathbf F_2\)</span> that sends every point class to one. Field duality makes the resulting functional a global degree-<span class="math" data-tex="\(r\)">\(r\)</span> cohomology class <span class="math" data-tex="\(u\)">\(u\)</span>. On each compact restricted bundle its evaluations are those of the local Thom class, so field duality there shows that it restricts to that class. In particular its value on each fibre generator is one. A cocycle representing <span class="math" data-tex="\(u\)">\(u\)</span> defines a global cap map. On each compact restriction it induces the cap map of the local Thom class: changing representatives by a coboundary changes cap by the explicit homotopy in Section 4 of the Thom/Euler chapter. Its induced global homology map is therefore the compatible isomorphism already obtained. Dualizing over the field makes the cup map
+<span class="math" data-tex="\(x\mapsto\pi^*x\smile u\)">\(x\mapsto\pi^*x\smile u\)</span> an isomorphism in every degree. The same homology calculation gives zero below degree <span class="math" data-tex="\(r\)">\(r\)</span>. This proves the arbitrary-Hausdorff mod-two theorem; it does not attempt a cohomological inverse-limit shortcut. The integral orientation version, including its coefficient passage, was proved separately in the Thom/Euler chapter, Theorem 7.1.</p>
+<h2 id="references">References</h2>
+<p>[H] Allen Hatcher, <em>Vector Bundles and K-Theory</em>, version 2.2 (2017), <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf">freely accessible author PDF</a>, Section 3.1. Its axioms, flag pullbacks and uniqueness argument give a further comparison for Sections 4–5. The singular-chain construction and complete Cartan proof are supplied above.</p>
+<p>[MM] Anibal M. Medina-Mardones, <em>New formulas for cup-i products and fast computation of Steenrod squares</em>, <a href="https://arxiv.org/abs/2105.08025v3">arXiv:2105.08025v3</a>, Definition 7 and Section 8. Scholarly reference for the higher-diagonal index formula. The face cancellation, resolution comparison, Cartan proof and teaching text above are independently authored. The paper's arXiv distribution licence does not license republication of its protected text; none is reproduced here.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-08.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-02.html">Next chapter</a></nav><p><a href="steenrod-squares-and-stiefel-whitney-classes.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

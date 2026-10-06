@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Counting zeros and the explicit formula for ψ(x, χ) · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-08.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 8 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="counting-zeros-and-the-explicit-formula-for-character-sums-over-prime-powers">Counting zeros and the explicit formula for character sums over prime powers</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Original material is public domain (CC0).</em></p>
+<p>The logarithmic derivative of an L-function turns its Euler product into a sum over prime powers. Perron's kernel turns that Dirichlet series into a sharp partial sum. Moving the integral across the zeros then gives the explicit formula. There are two details that must survive the calculation: complex characters require counting zeros above and below the real axis, and even nonprincipal characters have a zero at the origin which produces a double pole in the integrand.</p>
+<p>We use the functional equation, Gamma formulas and genus-one product from the preceding lessons. The local zero count and logarithmic-derivative expansion were proved in <em>Zero-free regions and the exceptional zero</em>. The only Perron input is the scalar truncated kernel in the planned zeta-course lesson <em>Perron's formula and the explicit formula for ψ(x)</em>: with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi i}\int_{c-iT}^{c+iT}\frac{y^s}s\,ds
+=\delta(y)+O\left(y^c\min\left\{1,\frac1{T|\log y|}\right\}\right)
+\quad(y\ne1),
+\tag{0.1}
+\]">\[
+\frac1{2\pi i}\int_{c-iT}^{c+iT}\frac{y^s}s\,ds
+=\delta(y)+O\left(y^c\min\left\{1,\frac1{T|\log y|}\right\}\right)
+\quad(y\ne1),
+\tag{0.1}
+\]</span>
+<p>where <span class="math" data-tex="\(\delta(y)=0,1/2,1\)">\(\delta(y)=0,1/2,1\)</span> according as <span class="math" data-tex="\(y&lt;1,y=1,y&gt;1\)">\(y&lt;1,y=1,y&gt;1\)</span>; at <span class="math" data-tex="\(y=1\)">\(y=1\)</span> the error is <span class="math" data-tex="\(O(c/T)\)">\(O(c/T)\)</span>. We use <span class="math" data-tex="\(1&lt;c&lt;2\)">\(1&lt;c&lt;2\)</span>. This precise generic kernel has an existing internal proof assignment. The character-specific contour estimates and residues are supplied here.</p>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+\psi(x,\chi)=\sum_{n\le x}\chi(n)\Lambda(n),
+\qquad
+\psi_0(x,\chi)=\sum_{n&lt;x}\chi(n)\Lambda(n)
++\frac12\chi(x)\Lambda(x),
+\tag{0.2}
+\]">\[
+\psi(x,\chi)=\sum_{n\le x}\chi(n)\Lambda(n),
+\qquad
+\psi_0(x,\chi)=\sum_{n&lt;x}\chi(n)\Lambda(n)
++\frac12\chi(x)\Lambda(x),
+\tag{0.2}
+\]</span>
+<p>where the last term is zero unless <span class="math" data-tex="\(x\)">\(x\)</span> is an integral prime power. Nontrivial zeros always refer to the inducing primitive function; they are repeated with multiplicity. For a primitive nonprincipal character, they lie strictly in <span class="math" data-tex="\(0&lt;\Re s&lt;1\)">\(0&lt;\Re s&lt;1\)</span>.</p>
+<h2 id="1-counting-both-halves-of-the-strip">1. Counting both halves of the strip</h2>
+<p>Let <span class="math" data-tex="\(N(T,\chi)\)">\(N(T,\chi)\)</span> count the nontrivial zeros with <span class="math" data-tex="\(|\Im\rho|\le T\)">\(|\Im\rho|\le T\)</span>. Unlike the ordinary zeta convention of counting positive ordinates, this counts both signs. Real zeros are included. A complex character need not have conjugate zeros within its own L-function.</p>
+<p><strong>Theorem 1.1.</strong> For a primitive character of conductor <span class="math" data-tex="\(q\)">\(q\)</span>, uniformly for <span class="math" data-tex="\(T\ge2\)">\(T\ge2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{N(T,\chi)=\frac T\pi\log\frac{qT}{2\pi e}
++O(\log(qT)).}
+\tag{1.1}
+\]">\[
+\boxed{N(T,\chi)=\frac T\pi\log\frac{qT}{2\pi e}
++O(\log(qT)).}
+\tag{1.1}
+\]</span>
+<p><strong>Proof.</strong> Begin with a nonprincipal primitive character and a height <span class="math" data-tex="\(T\)">\(T\)</span> which is not a zero ordinate in absolute value. Apply the argument principle to the entire function <span class="math" data-tex="\(\xi(s,\chi)\)">\(\xi(s,\chi)\)</span> on the rectangle
+<span class="math" data-tex="\(-1-iT,2-iT,2+iT,-1+iT\)">\(-1-iT,2-iT,2+iT,-1+iT\)</span>, traversed counterclockwise. All its zeros are nontrivial and inside <span class="math" data-tex="\(0&lt;\Re s&lt;1\)">\(0&lt;\Re s&lt;1\)</span>.</p>
+<p>The reflection identity
+<span class="math" data-tex="\(\xi(s,\chi)=\varepsilon(\chi)\overline{\xi(1-\overline s,\chi)}\)">\(\xi(s,\chi)=\varepsilon(\chi)\overline{\xi(1-\overline s,\chi)}\)</span>
+reflects the left half of the boundary to the right half. Reflection reverses boundary orientation; complex conjugation reverses variation of argument. The two reversals cancel, and the constant <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> contributes no variation. Thus</p>
+<span class="math math-display" data-tex="\[
+\pi N(T,\chi)=\Delta_R\arg\xi(s,\chi),
+\tag{1.2}
+\]">\[
+\pi N(T,\chi)=\Delta_R\arg\xi(s,\chi),
+\tag{1.2}
+\]</span>
+<p>where <span class="math" data-tex="\(R\)">\(R\)</span> is the path
+<span class="math" data-tex="\(1/2-iT\to2-iT\to2+iT\to1/2+iT\)">\(1/2-iT\to2-iT\to2+iT\to1/2+iT\)</span>.</p>
+<p>On <span class="math" data-tex="\(\Re s=2\)">\(\Re s=2\)</span>, the Euler-product logarithm of <span class="math" data-tex="\(L\)">\(L\)</span> is bounded uniformly, so its argument variation is <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>. On each horizontal part the local expansion from the preceding lesson gives</p>
+<span class="math math-display" data-tex="\[
+\frac{L&#x27;}L(s,\chi)
+=\sum_{|\gamma\mp T|\le1}\frac1{s-\rho}
++O(\log(qT)).
+\]">\[
+\frac{L&#x27;}L(s,\chi)
+=\sum_{|\gamma\mp T|\le1}\frac1{s-\rho}
++O(\log(qT)).
+\]</span>
+<p>Its nearby zeros number <span class="math" data-tex="\(O(\log(qT))\)">\(O(\log(qT))\)</span>. For one zero, the imaginary part of the integral of <span class="math" data-tex="\(1/(s-\rho)\)">\(1/(s-\rho)\)</span> along a horizontal segment is a change in <span class="math" data-tex="\(\arg(s-\rho)\)">\(\arg(s-\rho)\)</span>, whose absolute value is at most <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The error integrates over a segment of bounded length. Therefore
+<span class="math" data-tex="\(\Delta_R\arg L=O(\log(qT))\)">\(\Delta_R\arg L=O(\log(qT))\)</span>, without requiring separation between <span class="math" data-tex="\(T\)">\(T\)</span> and the ordinates.</p>
+<p>The Gamma factor has an analytic logarithm on the right half of the rectangle. With
+<span class="math" data-tex="\(z_T=1/4+a/2+iT/2\)">\(z_T=1/4+a/2+iT/2\)</span>, its variation is
+<span class="math" data-tex="\(2\Im\log\Gamma(z_T)\)">\(2\Im\log\Gamma(z_T)\)</span>. Vertical Stirling gives</p>
+<span class="math math-display" data-tex="\[
+2\Im\log\Gamma(z_T)
+=T\log(T/2)-T+O(1),
+\]">\[
+2\Im\log\Gamma(z_T)
+=T\log(T/2)-T+O(1),
+\]</span>
+<p>uniformly for <span class="math" data-tex="\(a=0,1\)">\(a=0,1\)</span> and <span class="math" data-tex="\(T\ge2\)">\(T\ge2\)</span>. The conductor factor contributes <span class="math" data-tex="\(T\log(q/\pi)\)">\(T\log(q/\pi)\)</span>. Insert these in (1.2) to obtain (1.1).</p>
+<p>If <span class="math" data-tex="\(T\)">\(T\)</span> is an ordinate, take nearby non-ordinate heights. The local zero-count bound controls the number on the two edges by <span class="math" data-tex="\(O(\log(qT))\)">\(O(\log(qT))\)</span>; hence either inclusion convention has the same stated error. For the primitive principal character, of conductor 1, the zeta-course <em>Riemann–von Mangoldt formula</em> supplies the positive-ordinate count; doubling it yields (1.1). This is an exact existing internal prerequisite, with its own argument-principle and Gamma proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The already-proved local estimate is</p>
+<span class="math math-display" data-tex="\[
+\#\{\rho:|\gamma-t|\le1\}\ll\log(q(|t|+2)).
+\tag{1.3}
+\]">\[
+\#\{\rho:|\gamma-t|\le1\}\ll\log(q(|t|+2)).
+\tag{1.3}
+\]</span>
+<p>Its two useful consequences, by division into unit intervals, are</p>
+<span class="math math-display" data-tex="\[
+\sum_{1&lt;|\gamma|\le T}\frac1{|\gamma|}
+\ll\log(q(T+2))\log(T+2),
+\qquad
+\sum_{|\gamma|&gt;T}\frac1{\gamma^2}
+\ll\frac{\log(q(T+2))}{T}\quad(T\ge2).
+\tag{1.4}
+\]">\[
+\sum_{1&lt;|\gamma|\le T}\frac1{|\gamma|}
+\ll\log(q(T+2))\log(T+2),
+\qquad
+\sum_{|\gamma|&gt;T}\frac1{\gamma^2}
+\ll\frac{\log(q(T+2))}{T}\quad(T\ge2).
+\tag{1.4}
+\]</span>
+<p>For the second, sum <span class="math" data-tex="\(\log(q(k+2))/k^2\)">\(\log(q(k+2))/k^2\)</span> from <span class="math" data-tex="\(k\asymp T\)">\(k\asymp T\)</span>, or integrate it; the integral is <span class="math" data-tex="\(O(\log(q(T+2))/T)\)">\(O(\log(q(T+2))/T)\)</span>. The first follows from the analogous harmonic sum. These estimates do not presume GRH.</p>
+<h2 id="2-the-constant-at-the-origin">2. The constant at the origin</h2>
+<p>For a primitive nonprincipal character put</p>
+<span class="math math-display" data-tex="\[
+b(\chi)=
+\begin{cases}
+L&#x27;(0,\chi)/L(0,\chi),&amp;a=1,\\
+\displaystyle\lim_{s\to0}\left(\frac{L&#x27;}L(s,\chi)-\frac1s\right),&amp;a=0.
+\end{cases}
+\tag{2.1}
+\]">\[
+b(\chi)=
+\begin{cases}
+L&#x27;(0,\chi)/L(0,\chi),&amp;a=1,\\
+\displaystyle\lim_{s\to0}\left(\frac{L&#x27;}L(s,\chi)-\frac1s\right),&amp;a=0.
+\end{cases}
+\tag{2.1}
+\]</span>
+<p>Both quantities are finite. For odd characters <span class="math" data-tex="\(L(0,\chi)\ne0\)">\(L(0,\chi)\ne0\)</span>; for even ones <span class="math" data-tex="\(L\)">\(L\)</span> has a simple zero at 0. Let <span class="math" data-tex="\(B(\chi)=\xi&#x27;(0,\chi)/\xi(0,\chi)\)">\(B(\chi)=\xi&#x27;(0,\chi)/\xi(0,\chi)\)</span>, as in the functional-equation lesson. Its logarithmic derivative gives the exact relations</p>
+<span class="math math-display" data-tex="\[
+b(\chi)=B(\chi)-\frac12\log(q/\pi)
+-\frac12\frac{\Gamma&#x27;}\Gamma(1/2)\quad(a=1),
+\tag{2.2}
+\]">\[
+b(\chi)=B(\chi)-\frac12\log(q/\pi)
+-\frac12\frac{\Gamma&#x27;}\Gamma(1/2)\quad(a=1),
+\tag{2.2}
+\]</span>
+<span class="math math-display" data-tex="\[
+b(\chi)=B(\chi)-\frac12\log(q/\pi)+\frac{\gamma_E}2
+\quad(a=0).
+\tag{2.3}
+\]">\[
+b(\chi)=B(\chi)-\frac12\log(q/\pi)+\frac{\gamma_E}2
+\quad(a=0).
+\tag{2.3}
+\]</span>
+<p>The second uses <span class="math" data-tex="\(\Gamma&#x27;/\Gamma(s/2)=-2/s-\gamma_E+O(s)\)">\(\Gamma&#x27;/\Gamma(s/2)=-2/s-\gamma_E+O(s)\)</span>. The zero summands <span class="math" data-tex="\(1/(s-\rho)+1/\rho\)">\(1/(s-\rho)+1/\rho\)</span> vanish at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>; their normally convergent sum therefore adds no constant there.</p>
+<p><strong>Proposition 2.1.</strong> Uniformly in primitive nonprincipal <span class="math" data-tex="\(\chi\)">\(\chi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{b(\chi)=-\sum_{|\gamma|\le1}\frac1\rho+O(\log q).}
+\tag{2.4}
+\]">\[
+\boxed{b(\chi)=-\sum_{|\gamma|\le1}\frac1\rho+O(\log q).}
+\tag{2.4}
+\]</span>
+<p>In particular, if every zero with <span class="math" data-tex="\(|\gamma|\le1\)">\(|\gamma|\le1\)</span> satisfies <span class="math" data-tex="\(|\rho|\ge\eta&gt;0\)">\(|\rho|\ge\eta&gt;0\)</span>, then
+<span class="math" data-tex="\(|b(\chi)|\ll(1+\eta^{-1})\log q\)">\(|b(\chi)|\ll(1+\eta^{-1})\log q\)</span>.</p>
+<p><strong>Proof.</strong> Subtract the genus-one logarithmic derivative at 2 from the derivative at <span class="math" data-tex="\(s\)">\(s\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\frac{L&#x27;}L(s,\chi)=\frac{L&#x27;}L(2,\chi)
+-\frac12\left(
+\frac{\Gamma&#x27;}\Gamma((s+a)/2)
+-\frac{\Gamma&#x27;}\Gamma((2+a)/2)\right)
++\sum_\rho\left(\frac1{s-\rho}-\frac1{2-\rho}\right).
+\]">\[
+\frac{L&#x27;}L(s,\chi)=\frac{L&#x27;}L(2,\chi)
+-\frac12\left(
+\frac{\Gamma&#x27;}\Gamma((s+a)/2)
+-\frac{\Gamma&#x27;}\Gamma((2+a)/2)\right)
++\sum_\rho\left(\frac1{s-\rho}-\frac1{2-\rho}\right).
+\]</span>
+<p>The first term is <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> by absolute Euler convergence. Take the constant term at zero, removing <span class="math" data-tex="\(1/s\)">\(1/s\)</span> in the even case. The Gamma constant is <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+b(\chi)=O(1)-\sum_\rho
+\left(\frac1\rho+\frac1{2-\rho}\right).
+\tag{2.5}
+\]">\[
+b(\chi)=O(1)-\sum_\rho
+\left(\frac1\rho+\frac1{2-\rho}\right).
+\tag{2.5}
+\]</span>
+<p>For <span class="math" data-tex="\(|\gamma|&gt;1\)">\(|\gamma|&gt;1\)</span>, the paired summand is
+<span class="math" data-tex="\(2/(\rho(2-\rho))=O(\gamma^{-2})\)">\(2/(\rho(2-\rho))=O(\gamma^{-2})\)</span>; (1.3) bounds their sum by <span class="math" data-tex="\(O(\log q)\)">\(O(\log q)\)</span>. For <span class="math" data-tex="\(|\gamma|\le1\)">\(|\gamma|\le1\)</span>, the base-point denominator satisfies <span class="math" data-tex="\(|2-\rho|\ge1\)">\(|2-\rho|\ge1\)</span>, and there are <span class="math" data-tex="\(O(\log q)\)">\(O(\log q)\)</span> terms. This proves (2.4). The additional bound follows by taking absolute values in the finite remaining sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus a large constant can only come from zeros close to the origin. A zero near 1 for a real character has a reflected zero near 0, so omitting this constant would conceal a potentially large contribution. The cancellation in Section 5 will make that contribution explicit and stable.</p>
+<h2 id="3-perron-s-integral-and-its-endpoint-error">3. Perron's integral and its endpoint error</h2>
+<p>Let <span class="math" data-tex="\(\langle x\rangle\)">\(\langle x\rangle\)</span> be the distance from <span class="math" data-tex="\(x\)">\(x\)</span> to the nearest integral prime power other than <span class="math" data-tex="\(x\)">\(x\)</span> itself if <span class="math" data-tex="\(x\)">\(x\)</span> is a prime power. For <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span> this distance is positive. Define</p>
+<span class="math math-display" data-tex="\[
+E(x,T)=\frac xT\log^2(2x)
++\log(2x)\min\left\{1,\frac{x}{T\langle x\rangle}\right\}.
+\tag{3.1}
+\]">\[
+E(x,T)=\frac xT\log^2(2x)
++\log(2x)\min\left\{1,\frac{x}{T\langle x\rangle}\right\}.
+\tag{3.1}
+\]</span>
+<p><strong>Lemma 3.1.</strong> With <span class="math" data-tex="\(c=1+1/\log(2x)\)">\(c=1+1/\log(2x)\)</span>, uniformly for <span class="math" data-tex="\(x,T\ge2\)">\(x,T\ge2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi_0(x,\chi)
+=-\frac1{2\pi i}\int_{c-iT}^{c+iT}
+\frac{L&#x27;}L(s,\chi)\frac{x^s}s\,ds+O(E(x,T)).
+\tag{3.2}
+\]">\[
+\psi_0(x,\chi)
+=-\frac1{2\pi i}\int_{c-iT}^{c+iT}
+\frac{L&#x27;}L(s,\chi)\frac{x^s}s\,ds+O(E(x,T)).
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> On this line the logarithmic derivative has its absolutely convergent series
+<span class="math" data-tex="\(-L&#x27;/L(s,\chi)=\sum_n\Lambda(n)\chi(n)n^{-s}\)">\(-L&#x27;/L(s,\chi)=\sum_n\Lambda(n)\chi(n)n^{-s}\)</span>.
+Interchange it with the finite integral and apply (0.1) term by term. Since <span class="math" data-tex="\(|\chi(n)|\le1\)">\(|\chi(n)|\le1\)</span>, the error is bounded by</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\ne x}\Lambda(n)(x/n)^c
+\min\left\{1,\frac1{T|\log(x/n)|}\right\}
++O(\log(2x)/T).
+\tag{3.3}
+\]">\[
+\sum_{n\ne x}\Lambda(n)(x/n)^c
+\min\left\{1,\frac1{T|\log(x/n)|}\right\}
++O(\log(2x)/T).
+\tag{3.3}
+\]</span>
+<p>The last term covers the possible prime power <span class="math" data-tex="\(n=x\)">\(n=x\)</span> with its half weight. For <span class="math" data-tex="\(n\le x/2\)">\(n\le x/2\)</span> or <span class="math" data-tex="\(n\ge2x\)">\(n\ge2x\)</span>, <span class="math" data-tex="\(|\log(x/n)|\ge\log2\)">\(|\log(x/n)|\ge\log2\)</span>. The Chebyshev bound <span class="math" data-tex="\(\sum_{n\le u}\Lambda(n)\ll u\)">\(\sum_{n\le u}\Lambda(n)\ll u\)</span>, proved in the Dirichlet-theorem lesson, and partial summation give
+<span class="math" data-tex="\(\sum_n\Lambda(n)n^{-c}\ll1/(c-1)\ll\log(2x)\)">\(\sum_n\Lambda(n)n^{-c}\ll1/(c-1)\ll\log(2x)\)</span>.
+As <span class="math" data-tex="\(x^c\le ex\)">\(x^c\le ex\)</span>, these outer ranges contribute <span class="math" data-tex="\(O(x\log(2x)/T)\)">\(O(x\log(2x)/T)\)</span>.</p>
+<p>In <span class="math" data-tex="\(x/2&lt;n&lt;2x\)">\(x/2&lt;n&lt;2x\)</span>, the power factor is bounded and
+<span class="math" data-tex="\(|\log(x/n)|\gg|x-n|/x\)">\(|\log(x/n)|\gg|x-n|/x\)</span>. Also <span class="math" data-tex="\(\Lambda(n)\le\log(2x)\)">\(\Lambda(n)\le\log(2x)\)</span>. Keep the nearest prime power on each side of <span class="math" data-tex="\(x\)">\(x\)</span> separately, giving at most a constant times the second term of (3.1). The remaining integers can be ordered by distance; their distances are bounded below by a constant times their index, after these nearest terms are removed. Hence their contribution is
+<span class="math" data-tex="\(O((x/T)\log(2x)\sum_{k\le3x}1/k)
+=O(x\log^2(2x)/T)\)">\(O((x/T)\log(2x)\sum_{k\le3x}1/k)
+=O(x\log^2(2x)/T)\)</span>.
+This bounds (3.3) by (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No factor depending on the character entered this endpoint estimate. If <span class="math" data-tex="\(x\)">\(x\)</span> is an integer, then <span class="math" data-tex="\(\langle x\rangle\ge1\)">\(\langle x\rangle\ge1\)</span> and the whole error is
+<span class="math" data-tex="\(O(x\log^2(2x)/T)\)">\(O(x\log^2(2x)/T)\)</span>. Near a nonintegral prime-power endpoint, the second term is needed.</p>
+<h2 id="4-shifting-the-contour-and-taking-every-residue">4. Shifting the contour and taking every residue</h2>
+<p><strong>Theorem 4.1 (sharp truncated explicit formula).</strong> For a primitive nonprincipal character of conductor <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(x,T\ge2\)">\(x,T\ge2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\begin{aligned}
+\psi_0(x,\chi)={}&amp;-\sum_{|\gamma|&lt;T}\frac{x^\rho}{\rho}
+-(1-a)\log x-b(\chi)\\
+&amp;+\sum_{m\ge1}\frac{x^{a-2m}}{2m-a}+R(x,T;\chi),
+\end{aligned}}
+\tag{4.1}
+\]">\[
+\boxed{\begin{aligned}
+\psi_0(x,\chi)={}&amp;-\sum_{|\gamma|&lt;T}\frac{x^\rho}{\rho}
+-(1-a)\log x-b(\chi)\\
+&amp;+\sum_{m\ge1}\frac{x^{a-2m}}{2m-a}+R(x,T;\chi),
+\end{aligned}}
+\tag{4.1}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+\boxed{R(x,T;\chi)\ll
+\frac xT\log^2(qxT)
++\log(2x)\min\left\{1,\frac{x}{T\langle x\rangle}\right\}.}
+\tag{4.2}
+\]">\[
+\boxed{R(x,T;\chi)\ll
+\frac xT\log^2(qxT)
++\log(2x)\min\left\{1,\frac{x}{T\langle x\rangle}\right\}.}
+\tag{4.2}
+\]</span>
+<p>The implied constant is absolute. For integral <span class="math" data-tex="\(x\)">\(x\)</span>, this simplifies to
+<span class="math" data-tex="\(R\ll x\log^2(qxT)/T\)">\(R\ll x\log^2(qxT)/T\)</span>.</p>
+<p><strong>Proof.</strong> First choose a good height <span class="math" data-tex="\(U\in[T,T+1]\)">\(U\in[T,T+1]\)</span> whose distance from every ordinate of either sign is at least
+<span class="math" data-tex="\(\kappa/\log(q(T+2))\)">\(\kappa/\log(q(T+2))\)</span>, with an absolute <span class="math" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span>. Such a height exists: (1.3) bounds the zeros in the two relevant unit intervals by <span class="math" data-tex="\(C\log(q(T+2))\)">\(C\log(q(T+2))\)</span>. Excluding intervals of radius <span class="math" data-tex="\(\kappa/\log(q(T+2))\)">\(\kappa/\log(q(T+2))\)</span> around their absolute ordinates removes less than half of <span class="math" data-tex="\([T,T+1]\)">\([T,T+1]\)</span> if <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is sufficiently small. Ordinates outside a slightly larger interval are already separated by an absolute distance.</p>
+<p>On the horizontal segments with <span class="math" data-tex="\(-1\le\sigma\le c\)">\(-1\le\sigma\le c\)</span>, the local logarithmic-derivative expansion gives</p>
+<span class="math math-display" data-tex="\[
+\left|\frac{L&#x27;}L(\sigma\pm iU,\chi)\right|
+\ll\log^2(q(T+2)).
+\tag{4.3}
+\]">\[
+\left|\frac{L&#x27;}L(\sigma\pm iU,\chi)\right|
+\ll\log^2(q(T+2)).
+\tag{4.3}
+\]</span>
+<p>Here is the extension to the left of the strip used earlier. Subtract the Hadamard derivative at <span class="math" data-tex="\(2\pm iU\)">\(2\pm iU\)</span> exactly as in the local-expansion proof. The far zero terms are still <span class="math" data-tex="\(O(\log(q(T+2)))\)">\(O(\log(q(T+2)))\)</span>, since the real-part interval has bounded length. Each nearby denominator is at least the chosen separation, and there are <span class="math" data-tex="\(O(\log(q(T+2)))\)">\(O(\log(q(T+2)))\)</span> such terms. The Gamma term is <span class="math" data-tex="\(O(\log(U+2))\)">\(O(\log(U+2))\)</span> on this horizontal interval: use its recurrence to move its real part to a positive bounded interval; <span class="math" data-tex="\(|U|\ge2\)">\(|U|\ge2\)</span> bounds each removed reciprocal. This proves (4.3).</p>
+<p>For <span class="math" data-tex="\(\sigma\le-1\)">\(\sigma\le-1\)</span>, logarithmically differentiate the functional equation. The right-hand L-function at <span class="math" data-tex="\(1-s\)">\(1-s\)</span> has real part at least 2, so its logarithmic derivative is bounded by an absolute constant. Gamma reflection and vertical Stirling then show</p>
+<span class="math math-display" data-tex="\[
+\frac{L&#x27;}L(s,\chi)\ll\log(q(|s|+2))
+\tag{4.4}
+\]">\[
+\frac{L&#x27;}L(s,\chi)\ll\log(q(|s|+2))
+\tag{4.4}
+\]</span>
+<p>away from fixed-radius discs about the trivial zeros. At height <span class="math" data-tex="\(\pm U\)">\(\pm U\)</span> there is no such restriction: the cotangent in Gamma reflection is bounded because <span class="math" data-tex="\(|\Im s|\ge2\)">\(|\Im s|\ge2\)</span>. On the left line <span class="math" data-tex="\(\sigma=-V\)">\(\sigma=-V\)</span>, choose <span class="math" data-tex="\(V=k+1/2\)">\(V=k+1/2\)</span>, <span class="math" data-tex="\(k\)">\(k\)</span> an integer tending to infinity; its distance from every trivial-zero abscissa is at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Thus (4.4) applies throughout that line too. The Gamma estimates are the exact reflection/Stirling inputs already used in the functional-equation lesson.</p>
+<p>Shift the integral in (3.2) to <span class="math" data-tex="\(-V\)">\(-V\)</span>. Its left vertical integral is
+<span class="math" data-tex="\(O(x^{-V}U\log(q(V+U+2))/V)\)">\(O(x^{-V}U\log(q(V+U+2))/V)\)</span>, which tends to zero as <span class="math" data-tex="\(V\to\infty\)">\(V\to\infty\)</span> for fixed <span class="math" data-tex="\(x,U\)">\(x,U\)</span>. On the horizontal portions between <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span>, (4.3) bounds the integrals by</p>
+<span class="math math-display" data-tex="\[
+\ll\frac{\log^2(q(T+2))}{T}
+\int_{-1}^c x^\sigma\,d\sigma
+\ll\frac{x\log^2(q(T+2))}{T\log x}.
+\]">\[
+\ll\frac{\log^2(q(T+2))}{T}
+\int_{-1}^c x^\sigma\,d\sigma
+\ll\frac{x\log^2(q(T+2))}{T\log x}.
+\]</span>
+<p>The remaining portions to the left are, by (4.4),</p>
+<span class="math math-display" data-tex="\[
+\ll\frac1T\int_{-\infty}^{-1}
+x^\sigma\log(q(T+|\sigma|+2))\,d\sigma
+\ll\frac{x^{-1}\log(q(T+2))}{T\log x}.
+\]">\[
+\ll\frac1T\int_{-\infty}^{-1}
+x^\sigma\log(q(T+|\sigma|+2))\,d\sigma
+\ll\frac{x^{-1}\log(q(T+2))}{T\log x}.
+\]</span>
+<p>The last bound follows on writing <span class="math" data-tex="\(\sigma=-1-v\)">\(\sigma=-1-v\)</span>, using
+<span class="math" data-tex="\(\log(q(T+v+3))\le\log(q(T+3))+\log(v+1)\)">\(\log(q(T+v+3))\le\log(q(T+3))+\log(v+1)\)</span>, and integrating the exponentially decaying factor <span class="math" data-tex="\(x^{-v}\)">\(x^{-v}\)</span>; <span class="math" data-tex="\(\log x\ge\log2\)">\(\log x\ge\log2\)</span>. Both horizontal bounds are covered by the first term of (4.2).</p>
+<p>It remains to compute the residues of
+<span class="math" data-tex="\(-L&#x27;/L(s,\chi)x^s/s\)">\(-L&#x27;/L(s,\chi)x^s/s\)</span>. At a nontrivial zero <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of multiplicity <span class="math" data-tex="\(m\)">\(m\)</span>, the residue is <span class="math" data-tex="\(-m x^\rho/\rho\)">\(-m x^\rho/\rho\)</span>. At a trivial zero <span class="math" data-tex="\(a-2m\)">\(a-2m\)</span>, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, it is
+<span class="math" data-tex="\(x^{a-2m}/(2m-a)\)">\(x^{a-2m}/(2m-a)\)</span>. These trivial-zero residues converge absolutely as the left boundary recedes.</p>
+<p>For odd characters the origin is regular for <span class="math" data-tex="\(L&#x27;/L\)">\(L&#x27;/L\)</span>, so its residue is <span class="math" data-tex="\(-b(\chi)\)">\(-b(\chi)\)</span>. For even characters,</p>
+<span class="math math-display" data-tex="\[
+\frac{L&#x27;}L(s,\chi)=\frac1s+b(\chi)+O(s),
+\qquad
+\frac{x^s}s=\frac1s+\log x+O(s).
+\]">\[
+\frac{L&#x27;}L(s,\chi)=\frac1s+b(\chi)+O(s),
+\qquad
+\frac{x^s}s=\frac1s+\log x+O(s).
+\]</span>
+<p>The integrand has a double pole whose coefficient of <span class="math" data-tex="\(1/s\)">\(1/s\)</span> is
+<span class="math" data-tex="\(-\log x-b(\chi)\)">\(-\log x-b(\chi)\)</span>. This is exactly the extra term in (4.1). There is no principal pole because the character is nonprincipal.</p>
+<p>We have proved (4.1) at the good height <span class="math" data-tex="\(U\)">\(U\)</span>, including its Perron error. Replacing <span class="math" data-tex="\(U\)">\(U\)</span> by <span class="math" data-tex="\(T\)">\(T\)</span> changes the zero sum by
+<span class="math" data-tex="\(O(\log(q(T+2)))\)">\(O(\log(q(T+2)))\)</span> terms, each of magnitude at most <span class="math" data-tex="\(x/T\)">\(x/T\)</span>. This change is covered by (4.2). The endpoint term at <span class="math" data-tex="\(U\ge T\)">\(U\ge T\)</span> is no larger than its stated bound at <span class="math" data-tex="\(T\)">\(T\)</span>. This also permits either convention at a zero exactly on the chosen height, within the same error. The integer simplification follows from <span class="math" data-tex="\(\langle x\rangle\ge1\)">\(\langle x\rangle\ge1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The trivial-zero series is especially transparent:</p>
+<span class="math math-display" data-tex="\[
+\sum_{m\ge1}\frac{x^{-2m}}{2m}
+=-\frac12\log(1-x^{-2})\quad(a=0),
+\]">\[
+\sum_{m\ge1}\frac{x^{-2m}}{2m}
+=-\frac12\log(1-x^{-2})\quad(a=0),
+\]</span>
+<span class="math math-display" data-tex="\[
+\sum_{m\ge1}\frac{x^{1-2m}}{2m-1}
+=\operatorname{arctanh}(1/x)
+=\frac12\log\frac{1+x^{-1}}{1-x^{-1}}\quad(a=1).
+\tag{4.5}
+\]">\[
+\sum_{m\ge1}\frac{x^{1-2m}}{2m-1}
+=\operatorname{arctanh}(1/x)
+=\frac12\log\frac{1+x^{-1}}{1-x^{-1}}\quad(a=1).
+\tag{4.5}
+\]</span>
+<p>For the primitive principal character, of conductor 1, the exact internal zeta explicit formula adds the pole residue <span class="math" data-tex="\(x\)">\(x\)</span>, uses <span class="math" data-tex="\(b=\zeta&#x27;(0)/\zeta(0)=\log(2\pi)\)">\(b=\zeta&#x27;(0)/\zeta(0)=\log(2\pi)\)</span>, and has no zero at the origin. Its trivial-zero series is the even series in (4.5). This precise case is supplied by the zeta-course lesson named above; it must not be obtained by inserting the principal character into the nonprincipal even-origin calculation.</p>
+<p>For fixed <span class="math" data-tex="\(x&gt;1\)">\(x&gt;1\)</span>, letting <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span> gives the symmetric limit form of (4.1). The same contour proof applies on <span class="math" data-tex="\(1&lt;x&lt;2\)">\(1&lt;x&lt;2\)</span> with constants depending on a positive lower bound for <span class="math" data-tex="\(x-1\)">\(x-1\)</span>. The convergence is uniform on compact intervals free of prime powers, because <span class="math" data-tex="\(\langle x\rangle\)">\(\langle x\rangle\)</span> has a positive lower bound there. The zero series is understood by this symmetric limiting procedure, not as an absolutely convergent sum.</p>
+<h2 id="5-a-uniform-formula-without-a-large-hidden-constant">5. A uniform formula without a large hidden constant</h2>
+<p>The function</p>
+<span class="math math-display" data-tex="\[
+\frac{x^\rho-1}{\rho}=\int_1^x u^{\rho-1}\,du
+\tag{5.1}
+\]">\[
+\frac{x^\rho-1}{\rho}=\int_1^x u^{\rho-1}\,du
+\tag{5.1}
+\]</span>
+<p>has the removable value <span class="math" data-tex="\(\log x\)">\(\log x\)</span> at <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>. This is the stable way to keep a zero very close to the origin in a uniform formula.</p>
+<p><strong>Theorem 5.1.</strong> For every Dirichlet character modulo <span class="math" data-tex="\(q\)">\(q\)</span>, uniformly for <span class="math" data-tex="\(x\ge T\ge2\)">\(x\ge T\ge2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\psi(x,\chi)=\mathbf1_{\chi=\chi_0}x
+-\sum_{|\gamma|&lt;T}\frac{x^\rho-1}{\rho}
++O\left(\frac xT\log^2(qx)\right).}
+\tag{5.2}
+\]">\[
+\boxed{\psi(x,\chi)=\mathbf1_{\chi=\chi_0}x
+-\sum_{|\gamma|&lt;T}\frac{x^\rho-1}{\rho}
++O\left(\frac xT\log^2(qx)\right).}
+\tag{5.2}
+\]</span>
+<p>The zeros in this formula belong to the primitive inducing function. The implied constant is absolute; no lower bound for <span class="math" data-tex="\(|\rho|\)">\(|\rho|\)</span> is assumed.</p>
+<p><strong>Proof.</strong> For a primitive nonprincipal character, use (2.4) in (4.1). It replaces <span class="math" data-tex="\(-b\)">\(-b\)</span> by <span class="math" data-tex="\(\sum_{|\gamma|\le1}1/\rho+O(\log q)\)">\(\sum_{|\gamma|\le1}1/\rho+O(\log q)\)</span>. The difference from using <span class="math" data-tex="\(\sum_{|\gamma|&lt;T}1/\rho\)">\(\sum_{|\gamma|&lt;T}1/\rho\)</span> is bounded by (1.4):
+<span class="math" data-tex="\(O(\log(q(T+2))\log(T+2))\)">\(O(\log(q(T+2))\log(T+2))\)</span>.
+Thus each zero term becomes the quotient in (5.1), and the remaining constant is <span class="math" data-tex="\(O(\log^2(qx))\)">\(O(\log^2(qx))\)</span> when <span class="math" data-tex="\(T\le x\)">\(T\le x\)</span>.</p>
+<p>The logarithmic origin term, the trivial-zero series and the difference between <span class="math" data-tex="\(\psi_0\)">\(\psi_0\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> are <span class="math" data-tex="\(O(\log(2x))\)">\(O(\log(2x))\)</span>, since <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span> and the series in (4.5) are bounded. The nearest-endpoint term in (4.2) is at most <span class="math" data-tex="\(\log(2x)\)">\(\log(2x)\)</span>, and the first error is <span class="math" data-tex="\(O(x\log^2(qx)/T)\)">\(O(x\log^2(qx)/T)\)</span>. Since <span class="math" data-tex="\(x/T\ge1\)">\(x/T\ge1\)</span>, all these contributions are absorbed in the error of (5.2).</p>
+<p>For the primitive principal character use the zeta formula in Section 4. The same far-zero reciprocal estimate applies. Its finitely many zeros with <span class="math" data-tex="\(|\gamma|\le1\)">\(|\gamma|\le1\)</span>, if present, have reciprocals bounded by an absolute constant from the internal zeta zero-free-region and functional-equation results: neither 0 nor 1 is a zero of the completed zeta function. Compactness for this single fixed function suffices. Its fixed origin constant and trivial-zero series are likewise absorbed. This yields the additional <span class="math" data-tex="\(x\)">\(x\)</span> term in (5.2).</p>
+<p>Finally, if <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is induced by <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span> of conductor <span class="math" data-tex="\(d\mid q\)">\(d\mid q\)</span>, the two prime-power sums differ only at prime powers with prime dividing <span class="math" data-tex="\(q\)">\(q\)</span>:</p>
+<span class="math math-display" data-tex="\[
+|\psi(x,\chi)-\psi(x,\chi^*)|
+\le\sum_{p\mid q}\sum_{p^k\le x}\log p
+\le\omega(q)\log x\ll\log q\log x.
+\tag{5.3}
+\]">\[
+|\psi(x,\chi)-\psi(x,\chi^*)|
+\le\sum_{p\mid q}\sum_{p^k\le x}\log p
+\le\omega(q)\log x\ll\log q\log x.
+\tag{5.3}
+\]</span>
+<p>This is absorbed in the stated error. The nontrivial zeros are unchanged, and the principal indicator is unchanged as well: conductor 1 is exactly the principal case. Replace <span class="math" data-tex="\(d\)">\(d\)</span> by the larger <span class="math" data-tex="\(q\)">\(q\)</span> in the logarithmic bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>It would be incorrect to suppress <span class="math" data-tex="\(b(\chi)\)">\(b(\chi)\)</span> separately in (4.1) by a blanket <span class="math" data-tex="\(O(\log q)\)">\(O(\log q)\)</span> claim. Formula (2.4) specifies the cancellation that makes (5.2) valid.</p>
+<p>For progressions, finite character orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\psi(x;q,b)=\frac1{\varphi(q)}\sum_{\chi\bmod q}
+\overline{\chi(b)}\,\psi(x,\chi),\qquad(b,q)=1.
+\tag{5.4}
+\]">\[
+\psi(x;q,b)=\frac1{\varphi(q)}\sum_{\chi\bmod q}
+\overline{\chi(b)}\,\psi(x,\chi),\qquad(b,q)=1.
+\tag{5.4}
+\]</span>
+<p>This average has just one principal contribution. It will be used both conditionally below and unconditionally in the next lesson.</p>
+<h2 id="6-what-grh-gives-for-prime-powers-and-progressions">6. What GRH gives for prime powers and progressions</h2>
+<p>Here GRH means that every nontrivial zero of every primitive Dirichlet L-function involved, including the Riemann zeta function, has real part <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. We use it as a clearly stated hypothesis, not as a theorem.</p>
+<p><strong>Theorem 6.1.</strong> Under GRH, uniformly for <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span> and characters modulo <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi(x,\chi)=\mathbf1_{\chi=\chi_0}x
++O(\sqrt x\log^2(qx)).
+\tag{6.1}
+\]">\[
+\psi(x,\chi)=\mathbf1_{\chi=\chi_0}x
++O(\sqrt x\log^2(qx)).
+\tag{6.1}
+\]</span>
+<p>Consequently, for <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi(x;q,b)=\frac x{\varphi(q)}
++O(\sqrt x\log^2(qx)).
+\tag{6.2}
+\]">\[
+\psi(x;q,b)=\frac x{\varphi(q)}
++O(\sqrt x\log^2(qx)).
+\tag{6.2}
+\]</span>
+<p>In particular the error is <span class="math" data-tex="\(O(\sqrt x\log^2 x)\)">\(O(\sqrt x\log^2 x)\)</span> when <span class="math" data-tex="\(q\le x\)">\(q\le x\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(T=x\)">\(T=x\)</span> in (5.2). Under GRH, <span class="math" data-tex="\(|\rho|\ge1/2\)">\(|\rho|\ge1/2\)</span> and <span class="math" data-tex="\(|x^\rho|=\sqrt x\)">\(|x^\rho|=\sqrt x\)</span>. By (1.3) for <span class="math" data-tex="\(|\gamma|\le1\)">\(|\gamma|\le1\)</span> and by (1.4) for the others,</p>
+<span class="math math-display" data-tex="\[
+\sum_{|\gamma|&lt;x}\frac1{|\rho|}
+\ll\log(q(x+2))\log(x+2)\ll\log^2(qx).
+\]">\[
+\sum_{|\gamma|&lt;x}\frac1{|\rho|}
+\ll\log(q(x+2))\log(x+2)\ll\log^2(qx).
+\]</span>
+<p>The absolute value of the zero sum in (5.2) is therefore
+<span class="math" data-tex="\(O((\sqrt x+1)\log^2(qx))\)">\(O((\sqrt x+1)\log^2(qx))\)</span>, proving (6.1). Average it in (5.4). The <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span> errors are divided by <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span>, so their bound stays of the same size; the principal main term becomes <span class="math" data-tex="\(x/\varphi(q)\)">\(x/\varphi(q)\)</span>. Finally <span class="math" data-tex="\(q\le x\)">\(q\le x\)</span> gives <span class="math" data-tex="\(\log(qx)\le2\log x\)">\(\log(qx)\le2\log x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Prime powers with exponent at least 2 contribute at most <span class="math" data-tex="\(O(\sqrt x\log^2 x)\)">\(O(\sqrt x\log^2 x)\)</span> by the elementary bound that there are <span class="math" data-tex="\(O(\log x)\)">\(O(\log x)\)</span> exponents and at most <span class="math" data-tex="\(\sqrt x\)">\(\sqrt x\)</span> possible primes for each. Thus the same GRH error holds for <span class="math" data-tex="\(\theta(x;q,b)\)">\(\theta(x;q,b)\)</span>. Partial summation then gives a corresponding prime-counting estimate; its precise unconditional form, including an exceptional-zero term, is developed in the next lesson.</p>
+<h2 id="7-a-computed-example-for-the-character-modulo-4">7. A computed example for the character modulo 4</h2>
+<p>For <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span>, the root number is 1, so its critical-line Hardy function</p>
+<span class="math math-display" data-tex="\[
+Z_{-4}(t)=
+(4/\pi)^{it/2}
+\frac{\Gamma(3/4+it/2)}{|\Gamma(3/4+it/2)|}
+L(1/2+it,\chi_{-4})
+\tag{7.1}
+\]">\[
+Z_{-4}(t)=
+(4/\pi)^{it/2}
+\frac{\Gamma(3/4+it/2)}{|\Gamma(3/4+it/2)|}
+L(1/2+it,\chi_{-4})
+\tag{7.1}
+\]</span>
+<p>is real. Its sign changes give numerical roots. Computation at 32-digit precision gives these ten positive ordinates below 30, rounded here:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Number</th>
+<th style="text-align:right">Ordinate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">6.020948904698</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">10.243770304167</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">12.988098012312</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">16.342607104587</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">18.291993196124</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">21.450611343983</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">23.278376520460</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">25.728756425089</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">28.359634343025</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">29.656384014593</td>
+</tr>
+</tbody>
+</table>
+<p>The negative ordinates are their negatives because this character is real. Substitution into <span class="math" data-tex="\(L\)">\(L\)</span> gives residuals below <span class="math" data-tex="\(3\cdot10^{-32}\)">\(3\cdot10^{-32}\)</span>. A numerical argument-principle calculation on the rectangle with real sides <span class="math" data-tex="\(-1,2\)">\(-1,2\)</span> and heights <span class="math" data-tex="\(\pm30\)">\(\pm30\)</span>, at two successively halved sampling spacings, gives winding number 20 in both cases. This is a numerical consistency check for the list, not a certified zero-isolation calculation or a proof of GRH.</p>
+<p>For this odd character,
+<span class="math" data-tex="\(b=L&#x27;(0,\chi_{-4})/L(0,\chi_{-4})\approx0.783188785414\)">\(b=L&#x27;(0,\chi_{-4})/L(0,\chi_{-4})\approx0.783188785414\)</span>.
+Using the ten pairs of zeros with <span class="math" data-tex="\(T=30\)">\(T=30\)</span>, formula (4.1) becomes the finite approximation</p>
+<span class="math math-display" data-tex="\[
+-2\sum_{0&lt;\gamma&lt;30}
+\Re\frac{x^{1/2+i\gamma}}{1/2+i\gamma}
+-b+\operatorname{arctanh}(1/x).
+\tag{7.2}
+\]">\[
+-2\sum_{0&lt;\gamma&lt;30}
+\Re\frac{x^{1/2+i\gamma}}{1/2+i\gamma}
+-b+\operatorname{arctanh}(1/x).
+\tag{7.2}
+\]</span>
+<p>Direct prime-power sums and this approximation give:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(x\)">\(x\)</span></th>
+<th style="text-align:right">Direct <span class="math" data-tex="\(\psi_0(x,\chi_{-4})\)">\(\psi_0(x,\chi_{-4})\)</span></th>
+<th style="text-align:right">Approximation (7.2)</th>
+<th style="text-align:right">Direct minus approximation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">−0.336472237</td>
+<td style="text-align:right">−0.067027458</td>
+<td style="text-align:right">−0.269444779</td>
+</tr>
+<tr>
+<td style="text-align:right">25</td>
+<td style="text-align:right">−2.611419047</td>
+<td style="text-align:right">−3.231561623</td>
+<td style="text-align:right">0.620142576</td>
+</tr>
+<tr>
+<td style="text-align:right">50</td>
+<td style="text-align:right">−1.312951343</td>
+<td style="text-align:right">−1.472559540</td>
+<td style="text-align:right">0.159608197</td>
+</tr>
+<tr>
+<td style="text-align:right">100</td>
+<td style="text-align:right">−0.112564888</td>
+<td style="text-align:right">0.271039275</td>
+<td style="text-align:right">−0.383604162</td>
+</tr>
+</tbody>
+</table>
+<p>At <span class="math" data-tex="\(x=25\)">\(x=25\)</span>, the prime-power endpoint contributes half of <span class="math" data-tex="\(\chi_{-4}(25)\log5\)">\(\chi_{-4}(25)\log5\)</span>, exactly as in (0.2). The remaining zeros account for the truncation error. Neither these approximate values nor the low-height list replaces the contour proof.</p>
+<figure><img src="assets/beta-explicit-formula.png" alt="The character-weighted prime-power step function and the explicit-formula approximation from ten zero pairs." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. The dark step curve is the right-continuous <span class="math" data-tex="\(\psi(x,\chi_{-4})\)">\(\psi(x,\chi_{-4})\)</span>; the smooth curve is (7.2), with the recomputed zero ordinates, the constant and the odd trivial-zero tail. At an isolated prime-power jump, <span class="math" data-tex="\(\psi_0\)">\(\psi_0\)</span> takes the midpoint rather than the right endpoint of the step. The approximation is a numerical truncation at <span class="math" data-tex="\(T=30\)">\(T=30\)</span>, not a bound; the proved error is (4.2). The reproducible original diagram uses no source figure.</em></p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Derive the main term of <span class="math" data-tex="\(N(T,\chi)\)">\(N(T,\chi)\)</span> from vertical Stirling, explaining the factor of two compared with the positive-ordinate zeta count.</li>
+<li><strong>Medium.</strong> Express <span class="math" data-tex="\(b(\chi)\)">\(b(\chi)\)</span> in terms of <span class="math" data-tex="\(B(\chi)\)">\(B(\chi)\)</span>, and prove that it can be large only when zeros lie close to the origin.</li>
+<li><strong>Medium.</strong> Under GRH, prove <span class="math" data-tex="\(\psi(x;q,b)=x/\varphi(q)+O(\sqrt x\log^2 x)\)">\(\psi(x;q,b)=x/\varphi(q)+O(\sqrt x\log^2 x)\)</span> uniformly for <span class="math" data-tex="\(q\le x\)">\(q\le x\)</span>.</li>
+<li><strong>Hard.</strong> Carry out the contour argument for an even primitive nonprincipal character, including the double pole at 0 and the exact prime-power endpoint convention.</li>
+</ol>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>1.</strong> The right-half contour has imaginary endpoint difference <span class="math" data-tex="\(2T\)">\(2T\)</span>. Thus the conductor factor contributes <span class="math" data-tex="\(T\log(q/\pi)\)">\(T\log(q/\pi)\)</span>, and Gamma contributes
+<span class="math" data-tex="\(2\Im\log\Gamma(1/4+a/2+iT/2)
+=T\log(T/2)-T+O(1)\)">\(2\Im\log\Gamma(1/4+a/2+iT/2)
+=T\log(T/2)-T+O(1)\)</span>.
+The L-factor argument contributes <span class="math" data-tex="\(O(\log(qT))\)">\(O(\log(qT))\)</span> by the local kernel argument. Reflection doubles this half-boundary variation, and the argument principle divides the full variation by <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. Equivalently divide the half variation by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, giving
+<span class="math" data-tex="\(T\pi^{-1}\log(qT/(2\pi e))+O(\log(qT))\)">\(T\pi^{-1}\log(qT/(2\pi e))+O(\log(qT))\)</span>.
+The zeta count usually includes only positive ordinates; this character count includes both signs, even when the character is complex and those signs are not paired.</p>
+<p><strong>2.</strong> Evaluate the genus-one logarithmic derivative at zero. For odd characters the Gamma term is regular, giving (2.2). For even characters remove the simple pole <span class="math" data-tex="\(1/s\)">\(1/s\)</span> from <span class="math" data-tex="\(L&#x27;/L\)">\(L&#x27;/L\)</span>, and use
+<span class="math" data-tex="\(\Gamma&#x27;/\Gamma(s/2)=-2/s-\gamma_E+O(s)\)">\(\Gamma&#x27;/\Gamma(s/2)=-2/s-\gamma_E+O(s)\)</span>, giving (2.3). To see what controls the size, subtract the derivative at 2 first. This produces (2.5). The far terms are <span class="math" data-tex="\(O(\gamma^{-2})\)">\(O(\gamma^{-2})\)</span>, summable to <span class="math" data-tex="\(O(\log q)\)">\(O(\log q)\)</span> by the local zero count. The nearby base-point terms <span class="math" data-tex="\(1/(2-\rho)\)">\(1/(2-\rho)\)</span> are likewise <span class="math" data-tex="\(O(\log q)\)">\(O(\log q)\)</span>. Hence (2.4). If every nearby zero has <span class="math" data-tex="\(|\rho|\ge\eta\)">\(|\rho|\ge\eta\)</span>, then <span class="math" data-tex="\(|b|\ll(1+\eta^{-1})\log q\)">\(|b|\ll(1+\eta^{-1})\log q\)</span>. This is the required one-way assertion: it does not say that every individual nearby zero forces a large uncancelled complex constant.</p>
+<p><strong>3.</strong> Apply (5.2) with <span class="math" data-tex="\(T=x\)">\(T=x\)</span>. GRH gives <span class="math" data-tex="\(|\rho|\ge1/2\)">\(|\rho|\ge1/2\)</span> and <span class="math" data-tex="\(|x^\rho|=\sqrt x\)">\(|x^\rho|=\sqrt x\)</span>. The local count for heights at most 1 and the harmonic bound (1.4) above height 1 give
+<span class="math" data-tex="\(\sum_{|\gamma|&lt;x}1/|\rho|\ll\log^2(qx)\)">\(\sum_{|\gamma|&lt;x}1/|\rho|\ll\log^2(qx)\)</span>.
+Thus each character sum differs from its principal main term by
+<span class="math" data-tex="\(O(\sqrt x\log^2(qx))\)">\(O(\sqrt x\log^2(qx))\)</span>. Character orthogonality averages these bounds with coefficients of modulus 1. The error remains of that size and the principal term is <span class="math" data-tex="\(x/\varphi(q)\)">\(x/\varphi(q)\)</span>. Since <span class="math" data-tex="\(q\le x\)">\(q\le x\)</span>, replace <span class="math" data-tex="\(\log(qx)\)">\(\log(qx)\)</span> by at most <span class="math" data-tex="\(2\log x\)">\(2\log x\)</span>.</p>
+<p><strong>4.</strong> Use the half-weighted Perron formula (3.2). Choose the separated height <span class="math" data-tex="\(U\in[T,T+1]\)">\(U\in[T,T+1]\)</span> by the local zero count and shift to <span class="math" data-tex="\(\Re s=-k-1/2\)">\(\Re s=-k-1/2\)</span>. The bounds (4.3)–(4.4) control both horizontal pieces and send the left vertical integral to zero; the prime-power endpoint error remains (3.1). Nontrivial zeros contribute <span class="math" data-tex="\(-x^\rho/\rho\)">\(-x^\rho/\rho\)</span>, with multiplicity. Negative even trivial zeros <span class="math" data-tex="\(-2m\)">\(-2m\)</span>, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, contribute <span class="math" data-tex="\(x^{-2m}/(2m)\)">\(x^{-2m}/(2m)\)</span>, whose sum is <span class="math" data-tex="\(-\tfrac12\log(1-x^{-2})\)">\(-\tfrac12\log(1-x^{-2})\)</span>. At 0 the two expansions displayed in the proof of Theorem 4.1 give
+<span class="math" data-tex="\(-L&#x27;/L(s)x^s/s=-s^{-2}-(\log x+b)s^{-1}+O(1)\)">\(-L&#x27;/L(s)x^s/s=-s^{-2}-(\log x+b)s^{-1}+O(1)\)</span>.
+Its residue is therefore <span class="math" data-tex="\(-\log x-b\)">\(-\log x-b\)</span>. There is no residue at 1 because the character is nonprincipal and is nonzero there. Replacing <span class="math" data-tex="\(U\)">\(U\)</span> by <span class="math" data-tex="\(T\)">\(T\)</span> adds <span class="math" data-tex="\(O(x\log(qT)/T)\)">\(O(x\log(qT)/T)\)</span>, giving (4.1)–(4.2). At an integral prime power <span class="math" data-tex="\(x\)">\(x\)</span>, the Perron kernel contributes exactly half of <span class="math" data-tex="\(\chi(x)\Lambda(x)\)">\(\chi(x)\Lambda(x)\)</span>; no alteration of the origin residue is made to compensate for this independent endpoint convention.</p>
+<h2 id="references">References</h2>
+<p>D. Koukoulopoulos, <em>The Distribution of Prime Numbers</em>, Theorem 11.3 and Lemma 11.4, emphasizes the stable quotient <span class="math" data-tex="\((x^\rho-1)/\rho\)">\((x^\rho-1)/\rho\)</span> and uniform character estimates. The contour estimates and residues are proved here rather than left as a character adaptation exercise. The generic Perron kernel, the principal zeta explicit formula and the principal zero count have the exact existing internal proof providers identified in the introduction and Section 1; their assigned status is planned where no completed text has been verified.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-07.html">← Zero-free regions and the exceptional zero</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-09.html">The prime number theorem for arithmetic progressions →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-08.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

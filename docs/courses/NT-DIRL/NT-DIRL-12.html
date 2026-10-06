@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The large sieve inequality · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-12.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-large-sieve-inequality">The large sieve inequality</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An exponential sum cannot have large values at too many well-separated points unless its coefficients have large total energy. The large sieve makes this assertion precise. Its arithmetic form converts omitted residue classes into a bound on the size of a set of integers. We prove both the elementary analytic estimate and the sharp estimate, then retain local spacings to obtain the exact uniform Brun–Titchmarsh bound. These analytic and arithmetic forms will also be useful for averages of character sums in the next lesson.</p>
+<p>We use finite Fourier orthogonality from <em>Dirichlet characters</em>, the elementary prime-reciprocal estimate from <em>Dirichlet's theorem on primes in arithmetic progressions</em>, and elementary real and complex analysis. Put <span class="math" data-tex="\(e(t)=\exp(2\pi i t)\)">\(e(t)=\exp(2\pi i t)\)</span> and <span class="math" data-tex="\(\|t\|=\min_{k\in\mathbb Z}|t-k|\)">\(\|t\|=\min_{k\in\mathbb Z}|t-k|\)</span>. Let <span class="math" data-tex="\(M\in\mathbb Z\)">\(M\in\mathbb Z\)</span>, <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> be an integer, and</p>
+<span class="math math-display" data-tex="\[
+T(t)=\sum_{M&lt;n\le M+N}a_n e(nt).
+\tag{0.1}
+\]">\[
+T(t)=\sum_{M&lt;n\le M+N}a_n e(nt).
+\tag{0.1}
+\]</span>
+<p>Points <span class="math" data-tex="\(x_1,\ldots,x_R\)">\(x_1,\ldots,x_R\)</span> are <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-spaced modulo 1 if <span class="math" data-tex="\(\|x_r-x_s\|\ge\delta\)">\(\|x_r-x_s\|\ge\delta\)</span> whenever <span class="math" data-tex="\(r\ne s\)">\(r\ne s\)</span>. We always take <span class="math" data-tex="\(0&lt;\delta\le1\)">\(0&lt;\delta\le1\)</span>; the upper restriction also covers the otherwise vacuous one-point case.</p>
+<h2 id="1-gallagher-s-estimate">1. Gallagher's estimate</h2>
+<p><strong>Lemma 1.1 (the midpoint Sobolev inequality).</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is continuously differentiable on <span class="math" data-tex="\(I=[x_0-\delta/2,x_0+\delta/2]\)">\(I=[x_0-\delta/2,x_0+\delta/2]\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+|f(x_0)|\le\frac1\delta\int_I|f(u)|\,du
++\frac12\int_I|f&#x27;(u)|\,du.
+\tag{1.1}
+\]">\[
+|f(x_0)|\le\frac1\delta\int_I|f(u)|\,du
++\frac12\int_I|f&#x27;(u)|\,du.
+\tag{1.1}
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(a=x_0-\delta/2\)">\(a=x_0-\delta/2\)</span>, <span class="math" data-tex="\(b=x_0+\delta/2\)">\(b=x_0+\delta/2\)</span>. Integration by parts on the two halves gives</p>
+<span class="math math-display" data-tex="\[
+\delta f(x_0)=\int_a^b f(u)\,du
++\int_a^{x_0}(u-a)f&#x27;(u)\,du
++\int_{x_0}^b(u-b)f&#x27;(u)\,du.
+\]">\[
+\delta f(x_0)=\int_a^b f(u)\,du
++\int_a^{x_0}(u-a)f&#x27;(u)\,du
++\int_{x_0}^b(u-b)f&#x27;(u)\,du.
+\]</span>
+<p>Both coefficients of <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> have absolute value at most <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span>. Take absolute values and divide by <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The midpoint is essential: for an arbitrary point of <span class="math" data-tex="\(I\)">\(I\)</span>, the same argument only gives coefficient 1 in front of the derivative integral. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Center pairwise disjoint arcs of length <span class="math" data-tex="\(\delta\)">\(\delta\)</span> at the <span class="math" data-tex="\(x_r\)">\(x_r\)</span> on the unit circle. For a differentiable function <span class="math" data-tex="\(U\)">\(U\)</span> with periodic <span class="math" data-tex="\(|U|^2\)">\(|U|^2\)</span>, apply (1.1) to <span class="math" data-tex="\(f=|U|^2\)">\(f=|U|^2\)</span>, whose derivative satisfies <span class="math" data-tex="\(|f&#x27;|\le2|U||U&#x27;|\)">\(|f&#x27;|\le2|U||U&#x27;|\)</span>. Summing over the arcs and then using Cauchy–Schwarz gives Gallagher's estimate</p>
+<span class="math math-display" data-tex="\[
+\sum_r|U(x_r)|^2
+\le\delta^{-1}\int_0^1|U|^2
++\left(\int_0^1|U|^2\int_0^1|U&#x27;|^2\right)^{1/2}.
+\tag{1.2}
+\]">\[
+\sum_r|U(x_r)|^2
+\le\delta^{-1}\int_0^1|U|^2
++\left(\int_0^1|U|^2\int_0^1|U&#x27;|^2\right)^{1/2}.
+\tag{1.2}
+\]</span>
+<p>Take <span class="math" data-tex="\(c=M+(N+1)/2\)">\(c=M+(N+1)/2\)</span> and <span class="math" data-tex="\(U(t)=e(-ct)T(t)\)">\(U(t)=e(-ct)T(t)\)</span>. Even if <span class="math" data-tex="\(c\)">\(c\)</span> is a half-integer, both squared moduli in (1.2) are periodic. Differences between its frequencies are integers, so direct integration gives</p>
+<span class="math math-display" data-tex="\[
+\int_0^1|U|^2=\sum|a_n|^2,
+\qquad
+\int_0^1|U&#x27;|^2
+=4\pi^2\sum(n-c)^2|a_n|^2
+\le\pi^2(N-1)^2\sum|a_n|^2.
+\]">\[
+\int_0^1|U|^2=\sum|a_n|^2,
+\qquad
+\int_0^1|U&#x27;|^2
+=4\pi^2\sum(n-c)^2|a_n|^2
+\le\pi^2(N-1)^2\sum|a_n|^2.
+\]</span>
+<p>Thus</p>
+<span class="math math-display" data-tex="\[
+\boxed{\sum_r|T(x_r)|^2
+\le\bigl(\pi(N-1)+\delta^{-1}\bigr)\sum|a_n|^2.}
+\tag{1.3}
+\]">\[
+\boxed{\sum_r|T(x_r)|^2
+\le\bigl(\pi(N-1)+\delta^{-1}\bigr)\sum|a_n|^2.}
+\tag{1.3}
+\]</span>
+<p>In particular the usually stated <span class="math" data-tex="\(\pi N+\delta^{-1}\)">\(\pi N+\delta^{-1}\)</span> bound follows. Multiplying <span class="math" data-tex="\(T\)">\(T\)</span> by a phase has removed dependence on its starting frequency <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h2 id="2-duality">2. Duality</h2>
+<p><strong>Lemma 2.1.</strong> For a finite complex matrix <span class="math" data-tex="\(A=(A_{rn})\)">\(A=(A_{rn})\)</span> and <span class="math" data-tex="\(C\ge0\)">\(C\ge0\)</span>, the following three assertions are equivalent:</p>
+<span class="math math-display" data-tex="\[
+\|Aa\|_2^2\le C\|a\|_2^2,
+\qquad
+\|A^*b\|_2^2\le C\|b\|_2^2,
+\qquad
+|\langle Aa,b\rangle|\le\sqrt C\|a\|_2\|b\|_2.
+\tag{2.1}
+\]">\[
+\|Aa\|_2^2\le C\|a\|_2^2,
+\qquad
+\|A^*b\|_2^2\le C\|b\|_2^2,
+\qquad
+|\langle Aa,b\rangle|\le\sqrt C\|a\|_2\|b\|_2.
+\tag{2.1}
+\]</span>
+<p>Each assertion is understood for all vectors of the indicated size.</p>
+<p><strong>Proof.</strong> The first gives the third by Cauchy–Schwarz. Conversely, take <span class="math" data-tex="\(b=Aa\)">\(b=Aa\)</span> in the third and cancel <span class="math" data-tex="\(\|Aa\|_2\)">\(\|Aa\|_2\)</span> when it is nonzero. Interchanging the two vectors in the identity <span class="math" data-tex="\(\langle Aa,b\rangle=\langle a,A^*b\rangle\)">\(\langle Aa,b\rangle=\langle a,A^*b\rangle\)</span> proves equivalence with the second. Zero vectors require no division. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(A_{rn}=e(nx_r)\)">\(A_{rn}=e(nx_r)\)</span>, the adjoint contains <span class="math" data-tex="\(e(-nx_r)\)">\(e(-nx_r)\)</span>. Since conjugating the arbitrary coefficients changes the sign in the absolute square, the dual large sieve has the equivalent form</p>
+<span class="math math-display" data-tex="\[
+\sum_{M&lt;n\le M+N}\left|\sum_r b_r e(nx_r)\right|^2
+\le C\sum_r|b_r|^2.
+\tag{2.2}
+\]">\[
+\sum_{M&lt;n\le M+N}\left|\sum_r b_r e(nx_r)\right|^2
+\le C\sum_r|b_r|^2.
+\tag{2.2}
+\]</span>
+<p>Proving either version with the same <span class="math" data-tex="\(C\)">\(C\)</span> proves the other.</p>
+<h2 id="3-an-interval-majorant-with-compact-fourier-support">3. An interval majorant with compact Fourier support</h2>
+<p>The sharp constant requires a function that lies above the interval indicator while having no Fourier frequencies outside a prescribed short interval. We construct it and prove the support assertion, including the endpoints. For an integrable function <span class="math" data-tex="\(F\)">\(F\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+\widehat F(\xi)=\int_{\mathbb R}F(x)e(-\xi x)\,dx.
+\]">\[
+\widehat F(\xi)=\int_{\mathbb R}F(x)e(-\xi x)\,dx.
+\]</span>
+<p>Define the entire functions</p>
+<span class="math math-display" data-tex="\[
+K(z)=\left(\frac{\sin\pi z}{\pi z}\right)^2,
+\qquad
+H(z)=\left(\frac{\sin\pi z}{\pi}\right)^2
+\left(\sum_{n\ne0}\frac{\operatorname{sgn}(n)}{(z-n)^2}+\frac2z\right),
+\qquad B=H+K.
+\tag{3.1}
+\]">\[
+K(z)=\left(\frac{\sin\pi z}{\pi z}\right)^2,
+\qquad
+H(z)=\left(\frac{\sin\pi z}{\pi}\right)^2
+\left(\sum_{n\ne0}\frac{\operatorname{sgn}(n)}{(z-n)^2}+\frac2z\right),
+\qquad B=H+K.
+\tag{3.1}
+\]</span>
+<p>The sum converges locally uniformly away from the integers. The sine square cancels every apparent double pole; at zero, <span class="math" data-tex="\(H(0)=0\)">\(H(0)=0\)</span>. Therefore these definitions extend to entire functions. Also <span class="math" data-tex="\(H\)">\(H\)</span> is odd, <span class="math" data-tex="\(K\)">\(K\)</span> is even, <span class="math" data-tex="\(H(n)=\operatorname{sgn}(n)\)">\(H(n)=\operatorname{sgn}(n)\)</span>, and <span class="math" data-tex="\(K(n)=0\)">\(K(n)=0\)</span> for nonzero integers.</p>
+<p>First establish the partial-fraction identity</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\in\mathbb Z}\frac1{(z-n)^2}=\frac{\pi^2}{\sin^2\pi z}.
+\tag{3.2}
+\]">\[
+\sum_{n\in\mathbb Z}\frac1{(z-n)^2}=\frac{\pi^2}{\sin^2\pi z}.
+\tag{3.2}
+\]</span>
+<p>Integrate <span class="math" data-tex="\(\pi\cot(\pi w)/(w-z)^2\)">\(\pi\cot(\pi w)/(w-z)^2\)</span> over squares with vertical sides at <span class="math" data-tex="\(\pm(J+1/2)\)">\(\pm(J+1/2)\)</span> and horizontal sides at imaginary heights <span class="math" data-tex="\(\pm(J+1/2)\)">\(\pm(J+1/2)\)</span>. For large <span class="math" data-tex="\(J\)">\(J\)</span>, <span class="math" data-tex="\(\cot\pi w\)">\(\cot\pi w\)</span> is bounded on the boundary, its length is <span class="math" data-tex="\(O(J)\)">\(O(J)\)</span>, and <span class="math" data-tex="\(|w-z|\gg J\)">\(|w-z|\gg J\)</span>; hence the integral tends to zero. The residues at integers are <span class="math" data-tex="\((n-z)^{-2}\)">\((n-z)^{-2}\)</span>, and the residue at <span class="math" data-tex="\(z\)">\(z\)</span> is <span class="math" data-tex="\((\pi\cot\pi z)&#x27;=-\pi^2\csc^2\pi z\)">\((\pi\cot\pi z)&#x27;=-\pi^2\csc^2\pi z\)</span>. The residue theorem gives (3.2).</p>
+<p>For real <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, (3.2) yields</p>
+<span class="math math-display" data-tex="\[
+1-H(x)=K(x)\left(1+2x^2\sum_{n\ge1}\frac1{(x+n)^2}-2x\right).
+\tag{3.3}
+\]">\[
+1-H(x)=K(x)\left(1+2x^2\sum_{n\ge1}\frac1{(x+n)^2}-2x\right).
+\tag{3.3}
+\]</span>
+<p>The decreasing-function integral test gives</p>
+<span class="math math-display" data-tex="\[
+\frac1x-\frac1{x^2}\le\sum_{n\ge1}(x+n)^{-2}\le\frac1x.
+\]">\[
+\frac1x-\frac1{x^2}\le\sum_{n\ge1}(x+n)^{-2}\le\frac1x.
+\]</span>
+<p>Thus the parenthesis in (3.3) lies between <span class="math" data-tex="\(-1\)">\(-1\)</span> and 1. Oddness handles <span class="math" data-tex="\(x&lt;0\)">\(x&lt;0\)</span>; the values at zero and the integers follow by continuity. We have proved</p>
+<span class="math math-display" data-tex="\[
+|H(x)-\operatorname{sgn}(x)|\le K(x),
+\qquad B(x)\ge\operatorname{sgn}(x).
+\tag{3.4}
+\]">\[
+|H(x)-\operatorname{sgn}(x)|\le K(x),
+\qquad B(x)\ge\operatorname{sgn}(x).
+\tag{3.4}
+\]</span>
+<p>Moreover <span class="math" data-tex="\(\int_{\mathbb R}K=1\)">\(\int_{\mathbb R}K=1\)</span>. Here is a direct normalization check. Integrating by parts,</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}K(x)\,dx
+=\frac2\pi\int_0^\infty\frac{\sin(2\pi x)}x\,dx=1.
+\]">\[
+\int_{\mathbb R}K(x)\,dx
+=\frac2\pi\int_0^\infty\frac{\sin(2\pi x)}x\,dx=1.
+\]</span>
+<p>To evaluate the last integral, first insert <span class="math" data-tex="\(e^{-\eta x}\)">\(e^{-\eta x}\)</span>. Differentiation with respect to the frequency shows
+<span class="math" data-tex="\(\int_0^\infty e^{-\eta x}\sin(ax)\,dx/x=\arctan(a/\eta)\)">\(\int_0^\infty e^{-\eta x}\sin(ax)\,dx/x=\arctan(a/\eta)\)</span>.
+An integration-by-parts estimate for the sine tail, uniform in <span class="math" data-tex="\(\eta\ge0\)">\(\eta\ge0\)</span>, allows <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>, giving <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span> for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. By (3.4), <span class="math" data-tex="\(H-\operatorname{sgn}\)">\(H-\operatorname{sgn}\)</span> is absolutely integrable and odd, so its integral is zero.</p>
+<p>Let <span class="math" data-tex="\(a\le b\)">\(a\le b\)</span> and define</p>
+<span class="math math-display" data-tex="\[
+S(x)=\frac12 B(\delta(x-a))+\frac12 B(\delta(b-x)).
+\tag{3.5}
+\]">\[
+S(x)=\frac12 B(\delta(x-a))+\frac12 B(\delta(b-x)).
+\tag{3.5}
+\]</span>
+<p>Inequality (3.4) proves <span class="math" data-tex="\(S(x)\ge\mathbf1_{[a,b]}(x)\)">\(S(x)\ge\mathbf1_{[a,b]}(x)\)</span> at interior and exterior points. At either endpoint, <span class="math" data-tex="\(B(0)=1\)">\(B(0)=1\)</span> and <span class="math" data-tex="\(B(t)\ge1\)">\(B(t)\ge1\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, so the closed-interval indicator is also majorized. If <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, then <span class="math" data-tex="\(S(x)=K(\delta(x-a))\)">\(S(x)=K(\delta(x-a))\)</span>. Furthermore,</p>
+<span class="math math-display" data-tex="\[
+0\le S(x)-\mathbf1_{[a,b]}(x)
+\le K(\delta(x-a))+K(\delta(b-x))
+\quad\text{away from the endpoints},
+\]">\[
+0\le S(x)-\mathbf1_{[a,b]}(x)
+\le K(\delta(x-a))+K(\delta(b-x))
+\quad\text{away from the endpoints},
+\]</span>
+<p>and hence <span class="math" data-tex="\(S\in L^1(\mathbb R)\)">\(S\in L^1(\mathbb R)\)</span>. The integral of the two sign functions gives the interval length; the two <span class="math" data-tex="\(H-\operatorname{sgn}\)">\(H-\operatorname{sgn}\)</span> terms have zero integral. Therefore</p>
+<span class="math math-display" data-tex="\[
+\widehat S(0)=b-a+\delta^{-1}.
+\tag{3.6}
+\]">\[
+\widehat S(0)=b-a+\delta^{-1}.
+\tag{3.6}
+\]</span>
+<p>We now prove</p>
+<span class="math math-display" data-tex="\[
+\widehat S(\xi)=0\qquad(|\xi|\ge\delta).
+\tag{3.7}
+\]">\[
+\widehat S(\xi)=0\qquad(|\xi|\ge\delta).
+\tag{3.7}
+\]</span>
+<p>For <span class="math" data-tex="\(\operatorname{Re}z\ge0\)">\(\operatorname{Re}z\ge0\)</span>, <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, (3.2) gives</p>
+<span class="math math-display" data-tex="\[
+B(z)-1=2\left(\frac{\sin\pi z}{\pi}\right)^2
+\left(\frac1z-\sum_{n\ge1}(z+n)^{-2}\right).
+\tag{3.8}
+\]">\[
+B(z)-1=2\left(\frac{\sin\pi z}{\pi}\right)^2
+\left(\frac1z-\sum_{n\ge1}(z+n)^{-2}\right).
+\tag{3.8}
+\]</span>
+<p>Replace <span class="math" data-tex="\(1/z\)">\(1/z\)</span> by <span class="math" data-tex="\(\int_0^\infty(z+t)^{-2}dt\)">\(\int_0^\infty(z+t)^{-2}dt\)</span>. Comparing each unit interval with its right endpoint bounds the absolute value of the parenthesis by</p>
+<span class="math math-display" data-tex="\[
+2\int_0^\infty|z+t|^{-3}dt\le\frac2{|z|^2}.
+\]">\[
+2\int_0^\infty|z+t|^{-3}dt\le\frac2{|z|^2}.
+\]</span>
+<p>The inequality follows by direct integration: writing <span class="math" data-tex="\(z=u+iv\)">\(z=u+iv\)</span>, the integral is <span class="math" data-tex="\(1/(|z|(|z|+u))\)">\(1/(|z|(|z|+u))\)</span> when <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, with the continuous limiting value at positive real <span class="math" data-tex="\(z\)">\(z\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+B(z)=1+O\left(\frac{e^{2\pi|\operatorname{Im}z|}}{|z|^2}\right)
+\quad(\operatorname{Re}z\ge0).
+\tag{3.9}
+\]">\[
+B(z)=1+O\left(\frac{e^{2\pi|\operatorname{Im}z|}}{|z|^2}\right)
+\quad(\operatorname{Re}z\ge0).
+\tag{3.9}
+\]</span>
+<p>Since <span class="math" data-tex="\(B(-z)=-B(z)+2K(z)\)">\(B(-z)=-B(z)+2K(z)\)</span>, the analogous estimate with constant <span class="math" data-tex="\(-1\)">\(-1\)</span> holds in the left half-plane. In (3.5) these two constants cancel outside the vertical strip between <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>. Consequently, on horizontal lines of height <span class="math" data-tex="\(-Y\)">\(-Y\)</span>, for <span class="math" data-tex="\(Y\ge\delta^{-1}\)">\(Y\ge\delta^{-1}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}|S(x-iY)|\,dx
+\ll_{a,b,\delta}1+\frac{e^{2\pi\delta Y}}Y.
+\tag{3.10}
+\]">\[
+\int_{\mathbb R}|S(x-iY)|\,dx
+\ll_{a,b,\delta}1+\frac{e^{2\pi\delta Y}}Y.
+\tag{3.10}
+\]</span>
+<p>Indeed, in the fixed strip the two constant terms are bounded, and the error terms everywhere integrate to <span class="math" data-tex="\(O(e^{2\pi\delta Y}/Y)\)">\(O(e^{2\pi\delta Y}/Y)\)</span>. For <span class="math" data-tex="\(\xi&gt;\delta\)">\(\xi&gt;\delta\)</span>, shift the integral defining <span class="math" data-tex="\(\widehat S(\xi)\)">\(\widehat S(\xi)\)</span> down to height <span class="math" data-tex="\(-Y\)">\(-Y\)</span>. The vertical sides tend to zero as their real parts tend to infinity, by (3.9), first with <span class="math" data-tex="\(Y\)">\(Y\)</span> fixed. The shifted integral has absolute value at most</p>
+<span class="math math-display" data-tex="\[
+e^{-2\pi\xi Y}\int_{\mathbb R}|S(x-iY)|\,dx\longrightarrow0.
+\]">\[
+e^{-2\pi\xi Y}\int_{\mathbb R}|S(x-iY)|\,dx\longrightarrow0.
+\]</span>
+<p>Shift upward for <span class="math" data-tex="\(\xi&lt;-\delta\)">\(\xi&lt;-\delta\)</span>. This proves vanishing outside the support interval. Since <span class="math" data-tex="\(S\in L^1\)">\(S\in L^1\)</span>, its Fourier transform is continuous by dominated convergence; hence it also vanishes at <span class="math" data-tex="\(\pm\delta\)">\(\pm\delta\)</span>. This proves (3.7) without a Paley–Wiener theorem.</p>
+<p>Finally, the same complex estimate and Cauchy's derivative formula give <span class="math" data-tex="\(S^{(j)}(x)=O_{a,b,\delta,j}((1+|x|)^{-2})\)">\(S^{(j)}(x)=O_{a,b,\delta,j}((1+|x|)^{-2})\)</span> for <span class="math" data-tex="\(j=0,1,2\)">\(j=0,1,2\)</span>. For real <span class="math" data-tex="\(t\)">\(t\)</span>, periodize <span class="math" data-tex="\(S(x)e(tx)\)">\(S(x)e(tx)\)</span>. Its translates and their first two derivatives converge uniformly. The resulting continuous periodic function has Fourier coefficients <span class="math" data-tex="\(\widehat S(\ell-t)\)">\(\widehat S(\ell-t)\)</span>. Only finitely many of these are nonzero by (3.7). Subtract that finite Fourier polynomial; the difference has every Fourier coefficient zero. Convolution with the Fejér kernels tends uniformly to a continuous periodic function and is zero here: positivity, integral 1, and the bound <span class="math" data-tex="\(O(1/(J\sin^2\pi x))\)">\(O(1/(J\sin^2\pi x))\)</span> outside a fixed neighborhood of zero prove this convergence directly. Therefore the difference vanishes. Evaluating at zero proves the exact identity</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\in\mathbb Z}S(n)e(nt)
+=\sum_{\ell\in\mathbb Z}\widehat S(\ell-t).
+\tag{3.11}
+\]">\[
+\sum_{n\in\mathbb Z}S(n)e(nt)
+=\sum_{\ell\in\mathbb Z}\widehat S(\ell-t).
+\tag{3.11}
+\]</span>
+<p>Both sides are legitimate: the first converges absolutely and the second is finite.</p>
+<h2 id="4-the-sharp-analytic-large-sieve">4. The sharp analytic large sieve</h2>
+<p><strong>Theorem 4.1 (Selberg's sharp form).</strong> For <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-spaced points modulo 1,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\sum_r|T(x_r)|^2
+\le\bigl(N-1+\delta^{-1}\bigr)\sum_{M&lt;n\le M+N}|a_n|^2.}
+\tag{4.1}
+\]">\[
+\boxed{\sum_r|T(x_r)|^2
+\le\bigl(N-1+\delta^{-1}\bigr)\sum_{M&lt;n\le M+N}|a_n|^2.}
+\tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> By duality it is enough to prove (2.2). In Section 3 take <span class="math" data-tex="\(a=M+1\)">\(a=M+1\)</span>, <span class="math" data-tex="\(b=M+N\)">\(b=M+N\)</span>. Since <span class="math" data-tex="\(S\ge0\)">\(S\ge0\)</span> everywhere and <span class="math" data-tex="\(S(n)\ge1\)">\(S(n)\ge1\)</span> on these <span class="math" data-tex="\(N\)">\(N\)</span> integers,</p>
+<span class="math math-display" data-tex="\[
+\sum_{M&lt;n\le M+N}\left|\sum_r b_r e(nx_r)\right|^2
+\le\sum_{n\in\mathbb Z}S(n)\left|\sum_r b_r e(nx_r)\right|^2.
+\]">\[
+\sum_{M&lt;n\le M+N}\left|\sum_r b_r e(nx_r)\right|^2
+\le\sum_{n\in\mathbb Z}S(n)\left|\sum_r b_r e(nx_r)\right|^2.
+\]</span>
+<p>Expand the square. For <span class="math" data-tex="\(r\ne s\)">\(r\ne s\)</span>, the corresponding inner sum is, by (3.11),
+<span class="math" data-tex="\(\sum_\ell\widehat S(\ell-x_r+x_s)=0\)">\(\sum_\ell\widehat S(\ell-x_r+x_s)=0\)</span>, because every argument has absolute value at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Vanishing at the boundary in (3.7) is needed if two points are exactly <span class="math" data-tex="\(\delta\)">\(\delta\)</span> apart. On the diagonal, <span class="math" data-tex="\(0&lt;\delta\le1\)">\(0&lt;\delta\le1\)</span> eliminates all nonzero integers, leaving <span class="math" data-tex="\(\widehat S(0)=N-1+\delta^{-1}\)">\(\widehat S(0)=N-1+\delta^{-1}\)</span>. Thus the whole right side equals this constant times <span class="math" data-tex="\(\sum|b_r|^2\)">\(\sum|b_r|^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The case <span class="math" data-tex="\(N=1\)">\(N=1\)</span> says <span class="math" data-tex="\(R\le\delta^{-1}\)">\(R\le\delta^{-1}\)</span>, as it should. For equally spaced points with <span class="math" data-tex="\(\delta=1/R\)">\(\delta=1/R\)</span>, Parseval shows that the <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span> term cannot be discarded. The <span class="math" data-tex="\(N\)">\(N\)</span> term is already necessary at a single sampling point, by Cauchy–Schwarz with equal-phase coefficients.</p>
+<h2 id="5-farey-fractions">5. Farey fractions</h2>
+<p>Use one representative of each reduced fraction <span class="math" data-tex="\(b/q\)">\(b/q\)</span> modulo 1, with <span class="math" data-tex="\(q\le Q\)">\(q\le Q\)</span>; the denominator-one fraction is 0. If two such fractions are distinct, then</p>
+<span class="math math-display" data-tex="\[
+\left\|\frac bq-\frac{b&#x27;}{q&#x27;}\right\|
+=\min_{k\in\mathbb Z}\frac{|bq&#x27;-b&#x27;q-kqq&#x27;|}{qq&#x27;}
+\ge\frac1{qq&#x27;}\ge Q^{-2}.
+\tag{5.1}
+\]">\[
+\left\|\frac bq-\frac{b&#x27;}{q&#x27;}\right\|
+=\min_{k\in\mathbb Z}\frac{|bq&#x27;-b&#x27;q-kqq&#x27;|}{qq&#x27;}
+\ge\frac1{qq&#x27;}\ge Q^{-2}.
+\tag{5.1}
+\]</span>
+<p>The numerator cannot be zero because distinct reduced fractions modulo 1 represent distinct circle points. For real <span class="math" data-tex="\(Q\ge1\)">\(Q\ge1\)</span>, Theorems 1.3 and 4.1 therefore give respectively</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}\sum_{b\bmod q}^{*}|T(b/q)|^2
+\le\bigl(\pi(N-1)+Q^2\bigr)\sum|a_n|^2
+\tag{5.2}
+\]">\[
+\sum_{q\le Q}\sum_{b\bmod q}^{*}|T(b/q)|^2
+\le\bigl(\pi(N-1)+Q^2\bigr)\sum|a_n|^2
+\tag{5.2}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\boxed{\sum_{q\le Q}\sum_{b\bmod q}^{*}|T(b/q)|^2
+\le\bigl(N-1+Q^2\bigr)\sum|a_n|^2.}
+\tag{5.3}
+\]">\[
+\boxed{\sum_{q\le Q}\sum_{b\bmod q}^{*}|T(b/q)|^2
+\le\bigl(N-1+Q^2\bigr)\sum|a_n|^2.}
+\tag{5.3}
+\]</span>
+<p>The stars mean <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>; modulo 1 this convention includes its unique residue class. One may replace <span class="math" data-tex="\(N-1\)">\(N-1\)</span> by <span class="math" data-tex="\(N\)">\(N\)</span> in applications.</p>
+<h2 id="6-the-arithmetic-large-sieve">6. The arithmetic large sieve</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\subset\{M+1,\ldots,M+N\}\)">\(\mathcal A\subset\{M+1,\ldots,M+N\}\)</span>, and write <span class="math" data-tex="\(Z=|\mathcal A|\)">\(Z=|\mathcal A|\)</span>. For each prime <span class="math" data-tex="\(p\le Q\)">\(p\le Q\)</span>, suppose that all members of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> avoid a specified set <span class="math" data-tex="\(\Omega_p\)">\(\Omega_p\)</span> of <span class="math" data-tex="\(\omega(p)\)">\(\omega(p)\)</span> residue classes. If <span class="math" data-tex="\(\omega(p)=p\)">\(\omega(p)=p\)</span>, then <span class="math" data-tex="\(Z=0\)">\(Z=0\)</span>; hence assume <span class="math" data-tex="\(0\le\omega(p)&lt;p\)">\(0\le\omega(p)&lt;p\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+g(p)=\frac{\omega(p)}{p-\omega(p)},\qquad
+g(q)=\prod_{p\mid q}g(p)\quad(q\text{ squarefree}),
+\qquad
+L(Q)=\sum_{q\le Q}\mu^2(q)g(q),
+\tag{6.1}
+\]">\[
+g(p)=\frac{\omega(p)}{p-\omega(p)},\qquad
+g(q)=\prod_{p\mid q}g(p)\quad(q\text{ squarefree}),
+\qquad
+L(Q)=\sum_{q\le Q}\mu^2(q)g(q),
+\tag{6.1}
+\]</span>
+<p>with <span class="math" data-tex="\(g(1)=1\)">\(g(1)=1\)</span>.</p>
+<p><strong>Lemma 6.1.</strong> For <span class="math" data-tex="\(T(t)=\sum_{n\in\mathcal A}e(nt)\)">\(T(t)=\sum_{n\in\mathcal A}e(nt)\)</span> and squarefree <span class="math" data-tex="\(q\)">\(q\)</span> built from primes at most <span class="math" data-tex="\(Q\)">\(Q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{b\bmod q}^{*}|T(b/q)|^2\ge Z^2g(q).
+\tag{6.2}
+\]">\[
+\sum_{b\bmod q}^{*}|T(b/q)|^2\ge Z^2g(q).
+\tag{6.2}
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(p\)">\(p\)</span>, define a function on <span class="math" data-tex="\(\mathbb Z/p\mathbb Z\)">\(\mathbb Z/p\mathbb Z\)</span> by</p>
+<span class="math math-display" data-tex="\[
+w_p(h)=
+\begin{cases}
+-1,&amp;h\in\Omega_p,\\
+g(p),&amp;h\notin\Omega_p.
+\end{cases}
+\]">\[
+w_p(h)=
+\begin{cases}
+-1,&amp;h\in\Omega_p,\\
+g(p),&amp;h\notin\Omega_p.
+\end{cases}
+\]</span>
+<p>Its mean is zero, and its mean square is</p>
+<span class="math math-display" data-tex="\[
+\frac1p\sum_h|w_p(h)|^2
+=\frac{\omega(p)+(p-\omega(p))g(p)^2}{p}=g(p).
+\]">\[
+\frac1p\sum_h|w_p(h)|^2
+=\frac{\omega(p)+(p-\omega(p))g(p)^2}{p}=g(p).
+\]</span>
+<p>Write its finite Fourier expansion as <span class="math" data-tex="\(w_p(h)=\sum_{b=1}^{p-1}c_p(b)e(bh/p)\)">\(w_p(h)=\sum_{b=1}^{p-1}c_p(b)e(bh/p)\)</span>. Finite orthogonality gives <span class="math" data-tex="\(\sum_b|c_p(b)|^2=g(p)\)">\(\sum_b|c_p(b)|^2=g(p)\)</span>. For squarefree <span class="math" data-tex="\(q\)">\(q\)</span>, multiply these expansions. By the Chinese remainder theorem, sums of the nonzero local frequencies correspond bijectively to the unit frequencies modulo <span class="math" data-tex="\(q\)">\(q\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+W_q(h):=\prod_{p\mid q}w_p(h)
+=\sum_{b\bmod q}^{*}c_q(b)e(bh/q),
+\qquad
+\sum_b^{*}|c_q(b)|^2=g(q).
+\]">\[
+W_q(h):=\prod_{p\mid q}w_p(h)
+=\sum_{b\bmod q}^{*}c_q(b)e(bh/q),
+\qquad
+\sum_b^{*}|c_q(b)|^2=g(q).
+\]</span>
+<p>For <span class="math" data-tex="\(n\in\mathcal A\)">\(n\in\mathcal A\)</span>, <span class="math" data-tex="\(W_q(n)=g(q)\)">\(W_q(n)=g(q)\)</span>. Summing and applying Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+Z^2g(q)^2
+=\left|\sum_b^{*}c_q(b)T(b/q)\right|^2
+\le g(q)\sum_b^{*}|T(b/q)|^2.
+\]">\[
+Z^2g(q)^2
+=\left|\sum_b^{*}c_q(b)T(b/q)\right|^2
+\le g(q)\sum_b^{*}|T(b/q)|^2.
+\]</span>
+<p>If <span class="math" data-tex="\(g(q)&gt;0\)">\(g(q)&gt;0\)</span>, divide by it; otherwise (6.2) is trivial. For <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, it is the identity <span class="math" data-tex="\(|T(0)|^2=Z^2\)">\(|T(0)|^2=Z^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Sum (6.2) over squarefree <span class="math" data-tex="\(q\le Q\)">\(q\le Q\)</span>, enlarge to all denominators, and apply (5.3) with coefficients <span class="math" data-tex="\(\mathbf1_{\mathcal A}\)">\(\mathbf1_{\mathcal A}\)</span>, whose square norm is <span class="math" data-tex="\(Z\)">\(Z\)</span>. If <span class="math" data-tex="\(Z&gt;0\)">\(Z&gt;0\)</span>, cancellation yields Montgomery's arithmetic large sieve:</p>
+<span class="math math-display" data-tex="\[
+\boxed{Z\le\frac{N-1+Q^2}{L(Q)}.}
+\tag{6.3}
+\]">\[
+\boxed{Z\le\frac{N-1+Q^2}{L(Q)}.}
+\tag{6.3}
+\]</span>
+<p>This also holds for <span class="math" data-tex="\(Z=0\)">\(Z=0\)</span>. Using (5.2) instead gives numerator <span class="math" data-tex="\(\pi(N-1)+Q^2\)">\(\pi(N-1)+Q^2\)</span>.</p>
+<p>A simpler prime-only version is useful. Put <span class="math" data-tex="\(Z(p,h)=|\{n\in\mathcal A:n\equiv h\pmod p\}|\)">\(Z(p,h)=|\{n\in\mathcal A:n\equiv h\pmod p\}|\)</span>. Orthogonality gives the exact variance identity</p>
+<span class="math math-display" data-tex="\[
+p\sum_{h\bmod p}\left|Z(p,h)-\frac Zp\right|^2
+=\sum_{b=1}^{p-1}|T(b/p)|^2.
+\tag{6.4}
+\]">\[
+p\sum_{h\bmod p}\left|Z(p,h)-\frac Zp\right|^2
+=\sum_{b=1}^{p-1}|T(b/p)|^2.
+\tag{6.4}
+\]</span>
+<p>If <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> consists of <span class="math" data-tex="\(P\)">\(P\)</span> primes at most <span class="math" data-tex="\(Q\)">\(Q\)</span>, and at least <span class="math" data-tex="\(\tau p\)">\(\tau p\)</span> classes are empty for each <span class="math" data-tex="\(p\in\mathcal P\)">\(p\in\mathcal P\)</span>, their contribution to the left side is at least <span class="math" data-tex="\(\tau Z^2\)">\(\tau Z^2\)</span>. Summing and applying (5.3) proves</p>
+<span class="math math-display" data-tex="\[
+Z\le\frac{N-1+Q^2}{\tau P}
+\quad(P&gt;0).
+\tag{6.5}
+\]">\[
+Z\le\frac{N-1+Q^2}{\tau P}
+\quad(P&gt;0).
+\tag{6.5}
+\]</span>
+<h2 id="7-primes-in-a-short-interval">7. Primes in a short interval</h2>
+<p>For primes exceeding <span class="math" data-tex="\(Q\)">\(Q\)</span>, sieve out just 0 modulo each prime at most <span class="math" data-tex="\(Q\)">\(Q\)</span>. Then <span class="math" data-tex="\(g(p)=1/(p-1)\)">\(g(p)=1/(p-1)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+L(Q)=\sum_{q\le Q}\frac{\mu^2(q)}{\varphi(q)}
+=\log Q+O(1).
+\tag{7.1}
+\]">\[
+L(Q)=\sum_{q\le Q}\frac{\mu^2(q)}{\varphi(q)}
+=\log Q+O(1).
+\tag{7.1}
+\]</span>
+<p>We prove the asymptotic and keep an explicit, deliberately coarse bound for its error. Define a multiplicative function <span class="math" data-tex="\(h\)">\(h\)</span> by</p>
+<span class="math math-display" data-tex="\[
+h(p)=\frac1{p(p-1)},\qquad
+h(p^2)=-\frac1{p(p-1)},\qquad h(p^j)=0\ (j\ge3).
+\]">\[
+h(p)=\frac1{p(p-1)},\qquad
+h(p^2)=-\frac1{p(p-1)},\qquad h(p^j)=0\ (j\ge3).
+\]</span>
+<p>Checking the local coefficients gives <span class="math" data-tex="\(\mu^2(n)/\varphi(n)=\sum_{d\mid n}h(d)/(n/d)\)">\(\mu^2(n)/\varphi(n)=\sum_{d\mid n}h(d)/(n/d)\)</span>. The absolutely convergent Euler products show</p>
+<span class="math math-display" data-tex="\[
+\sum_d h(d)=1,\qquad
+A_0:=\sum_d|h(d)|\le e^2,
+\qquad
+A_1:=\sum_d|h(d)|\log d\le12e^2.
+\tag{7.2}
+\]">\[
+\sum_d h(d)=1,\qquad
+A_0:=\sum_d|h(d)|\le e^2,
+\qquad
+A_1:=\sum_d|h(d)|\log d\le12e^2.
+\tag{7.2}
+\]</span>
+<p>For the last bound, differentiating the product for the absolute sum, or expanding its local logarithmic contributions, gives
+<span class="math" data-tex="\(A_1\le3A_0\sum_p\log p/[p(p-1)]\)">\(A_1\le3A_0\sum_p\log p/[p(p-1)]\)</span>.
+To bound this last sum by 4, enlarge to all integers and use
+<span class="math" data-tex="\(1/[n(n-1)]\le2/n^2\)">\(1/[n(n-1)]\le2/n^2\)</span>; the positive function <span class="math" data-tex="\(\log t/t^2\)">\(\log t/t^2\)</span> is decreasing for <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span>, so its sum is at most its value at 2 plus <span class="math" data-tex="\(\int_2^\infty\log t/t^2\,dt&lt;2\)">\(\int_2^\infty\log t/t^2\,dt&lt;2\)</span>. For <span class="math" data-tex="\(A_0\)">\(A_0\)</span>, use <span class="math" data-tex="\(\sum_{n\ge2}1/[n(n-1)]=1\)">\(\sum_{n\ge2}1/[n(n-1)]=1\)</span>.</p>
+<p>Writing <span class="math" data-tex="\(H_k=\sum_{m\le k}1/m\)">\(H_k=\sum_{m\le k}1/m\)</span>, finite rearrangement gives</p>
+<span class="math math-display" data-tex="\[
+L(Q)=\sum_{d\le Q}h(d)H_{\lfloor Q/d\rfloor}.
+\]">\[
+L(Q)=\sum_{d\le Q}h(d)H_{\lfloor Q/d\rfloor}.
+\]</span>
+<p>For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, integral comparison bounds <span class="math" data-tex="\(|H_{\lfloor t\rfloor}-\log t|\le2\)">\(|H_{\lfloor t\rfloor}-\log t|\le2\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+|L(Q)-\log Q|
+\le\sum_{d\le Q}|h(d)|\log d
++\log Q\sum_{d&gt;Q}|h(d)|+2A_0
+\le A_1+2A_0&lt;200.
+\tag{7.3}
+\]">\[
+|L(Q)-\log Q|
+\le\sum_{d\le Q}|h(d)|\log d
++\log Q\sum_{d&gt;Q}|h(d)|+2A_0
+\le A_1+2A_0&lt;200.
+\tag{7.3}
+\]</span>
+<p>In particular all constants in (7.1) are effective.</p>
+<p>For a simple bound valid even at small <span class="math" data-tex="\(Q\)">\(Q\)</span>, there is a better lower estimate:</p>
+<span class="math math-display" data-tex="\[
+L(Q)\ge\sum_{m\le Q}\frac1m\ge\log Q.
+\tag{7.7}
+\]">\[
+L(Q)\ge\sum_{m\le Q}\frac1m\ge\log Q.
+\tag{7.7}
+\]</span>
+<p>Indeed, for squarefree <span class="math" data-tex="\(q\)">\(q\)</span>, multiplying geometric series over its prime divisors gives
+<span class="math" data-tex="\(1/\varphi(q)=\sum_{\operatorname{rad}(m)=q}1/m\)">\(1/\varphi(q)=\sum_{\operatorname{rad}(m)=q}1/m\)</span>, where <span class="math" data-tex="\(\operatorname{rad}(m)\)">\(\operatorname{rad}(m)\)</span> is the product of its distinct prime divisors. Consequently <span class="math" data-tex="\(L(Q)=\sum_{\operatorname{rad}(m)\le Q}1/m\)">\(L(Q)=\sum_{\operatorname{rad}(m)\le Q}1/m\)</span>, an absolutely convergent sum: only the finitely many primes at most <span class="math" data-tex="\(Q\)">\(Q\)</span> can occur. This includes all <span class="math" data-tex="\(m\le Q\)">\(m\le Q\)</span>. Finally <span class="math" data-tex="\(H_{\lfloor Q\rfloor}\ge\int_1^{\lfloor Q\rfloor+1}dt/t\ge\log Q\)">\(H_{\lfloor Q\rfloor}\ge\int_1^{\lfloor Q\rfloor+1}dt/t\ge\log Q\)</span>.</p>
+<p><strong>Theorem 7.1 (Brun–Titchmarsh with asymptotic constant 2).</strong> For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is an effective <span class="math" data-tex="\(y_0(\varepsilon)\)">\(y_0(\varepsilon)\)</span> such that, uniformly for real <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> and <span class="math" data-tex="\(y\ge y_0(\varepsilon)\)">\(y\ge y_0(\varepsilon)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\pi(x+y)-\pi(x)\le(2+\varepsilon)\frac y{\log y}.
+\tag{7.4}
+\]">\[
+\pi(x+y)-\pi(x)\le(2+\varepsilon)\frac y{\log y}.
+\tag{7.4}
+\]</span>
+<p>For all <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>, <span class="math" data-tex="\(y\ge2\)">\(y\ge2\)</span>, the explicit estimate</p>
+<span class="math math-display" data-tex="\[
+\pi(x+y)-\pi(x)\le5\frac y{\log y}
+\tag{7.5}
+\]">\[
+\pi(x+y)-\pi(x)\le5\frac y{\log y}
+\tag{7.5}
+\]</span>
+<p>holds.</p>
+<p><strong>Proof.</strong> The integers of <span class="math" data-tex="\((x,x+y]\)">\((x,x+y]\)</span> lie in an integer block with <span class="math" data-tex="\(N\le y+1\)">\(N\le y+1\)</span>. The primes in this block exceeding <span class="math" data-tex="\(Q\)">\(Q\)</span> avoid 0 modulo every prime at most <span class="math" data-tex="\(Q\)">\(Q\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\pi(x+y)-\pi(x)
+\le Q+\frac{y+Q^2}{L(Q)}.
+\tag{7.6}
+\]">\[
+\pi(x+y)-\pi(x)
+\le Q+\frac{y+Q^2}{L(Q)}.
+\tag{7.6}
+\]</span>
+<p>For large <span class="math" data-tex="\(y\)">\(y\)</span>, choose <span class="math" data-tex="\(Q=\sqrt y/(\log y)^2\)">\(Q=\sqrt y/(\log y)^2\)</span>. Then <span class="math" data-tex="\(Q=o(y/\log y)\)">\(Q=o(y/\log y)\)</span>, <span class="math" data-tex="\(Q^2=o(y)\)">\(Q^2=o(y)\)</span>, and <span class="math" data-tex="\(\log Q=\tfrac12\log y-2\log\log y\)">\(\log Q=\tfrac12\log y-2\log\log y\)</span>. Equations (7.3) and (7.6) give</p>
+<span class="math math-display" data-tex="\[
+\pi(x+y)-\pi(x)\le(2+o(1))y/\log y
+\]">\[
+\pi(x+y)-\pi(x)\le(2+o(1))y/\log y
+\]</span>
+<p>with a uniform effective <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span>. This proves (7.4). For the explicit all-<span class="math" data-tex="\(y\)">\(y\)</span> constant, take <span class="math" data-tex="\(Q=\sqrt y\)">\(Q=\sqrt y\)</span> in (7.6), and use (7.7). The fraction is at most <span class="math" data-tex="\(4y/\log y\)">\(4y/\log y\)</span>. Also <span class="math" data-tex="\(\sqrt y\le y/\log y\)">\(\sqrt y\le y/\log y\)</span>, since <span class="math" data-tex="\(\log y\le\sqrt y\)">\(\log y\le\sqrt y\)</span> for <span class="math" data-tex="\(y\ge2\)">\(y\ge2\)</span>. One can check the latter inequality by maximizing <span class="math" data-tex="\((\log y)/\sqrt y\)">\((\log y)/\sqrt y\)</span>: its maximum on <span class="math" data-tex="\((1,\infty)\)">\((1,\infty)\)</span> is <span class="math" data-tex="\(2/e&lt;1\)">\(2/e&lt;1\)</span>. This proves the constant 5. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If we used only Gallagher's bound, the same asymptotic argument would give <span class="math" data-tex="\(2\pi+\varepsilon\)">\(2\pi+\varepsilon\)</span> instead of <span class="math" data-tex="\(2+\varepsilon\)">\(2+\varepsilon\)</span>; the choice <span class="math" data-tex="\(Q=\sqrt y\)">\(Q=\sqrt y\)</span> and (7.7) would give the explicit all-<span class="math" data-tex="\(y\)">\(y\)</span> constant <span class="math" data-tex="\(2\pi+3\)">\(2\pi+3\)</span>. The interval length <span class="math" data-tex="\(N-1\)">\(N-1\)</span>, the small extra term <span class="math" data-tex="\(Q^2\)">\(Q^2\)</span>, and the factor <span class="math" data-tex="\(\tfrac12\log y\)">\(\tfrac12\log y\)</span> in the denominator explain the sharp asymptotic constant 2.</p>
+<h2 id="8-squares-and-the-benefit-of-composite-moduli">8. Squares and the benefit of composite moduli</h2>
+<p>For squares, the forbidden classes at an odd prime are the <span class="math" data-tex="\((p-1)/2\)">\((p-1)/2\)</span> quadratic nonresidues. At 2, there are no forbidden classes: both 0 and 1 occur as squares. Thus</p>
+<span class="math math-display" data-tex="\[
+g(2)=0,\qquad g(p)=\frac{p-1}{p+1}\quad(p&gt;2).
+\tag{8.1}
+\]">\[
+g(2)=0,\qquad g(p)=\frac{p-1}{p+1}\quad(p&gt;2).
+\tag{8.1}
+\]</span>
+<p>We show that the denominator in (6.3) satisfies <span class="math" data-tex="\(L(Q)\sim cQ\)">\(L(Q)\sim cQ\)</span>, with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Let <span class="math" data-tex="\(f(n)=\mu^2(n)g(n)\)">\(f(n)=\mu^2(n)g(n)\)</span> and write <span class="math" data-tex="\(f=\mathbf1*h\)">\(f=\mathbf1*h\)</span>, where the star is Dirichlet convolution and <span class="math" data-tex="\(\mathbf1(n)=1\)">\(\mathbf1(n)=1\)</span>. The local values are</p>
+<span class="math math-display" data-tex="\[
+h(p)=g(p)-1,\qquad h(p^2)=-g(p),\qquad h(p^j)=0\ (j\ge3).
+\]">\[
+h(p)=g(p)-1,\qquad h(p^2)=-g(p),\qquad h(p^j)=0\ (j\ge3).
+\]</span>
+<p>Here <span class="math" data-tex="\(g(2)=0\)">\(g(2)=0\)</span>, so <span class="math" data-tex="\(h(2)=-1\)">\(h(2)=-1\)</span>, <span class="math" data-tex="\(h(4)=0\)">\(h(4)=0\)</span>. For odd primes,
+<span class="math" data-tex="\(|h(p)|=2/(p+1)\)">\(|h(p)|=2/(p+1)\)</span>, <span class="math" data-tex="\(|h(p^2)|\le1\)">\(|h(p^2)|\le1\)</span>. Hence <span class="math" data-tex="\(\sum_d|h(d)|/d&lt;\infty\)">\(\sum_d|h(d)|/d&lt;\infty\)</span>, by the Euler product and convergence of <span class="math" data-tex="\(\sum_p p^{-2}\)">\(\sum_p p^{-2}\)</span>. Now</p>
+<span class="math math-display" data-tex="\[
+\frac{L(Q)}Q=\sum_{d\le Q}h(d)\frac{\lfloor Q/d\rfloor}Q
+\longrightarrow\sum_{d\ge1}\frac{h(d)}d
+=\prod_p\left(1-\frac1p\right)\left(1+\frac{g(p)}p\right)=:c.
+\tag{8.2}
+\]">\[
+\frac{L(Q)}Q=\sum_{d\le Q}h(d)\frac{\lfloor Q/d\rfloor}Q
+\longrightarrow\sum_{d\ge1}\frac{h(d)}d
+=\prod_p\left(1-\frac1p\right)\left(1+\frac{g(p)}p\right)=:c.
+\tag{8.2}
+\]</span>
+<p>Dominated convergence applies because <span class="math" data-tex="\(\lfloor Q/d\rfloor/Q\le1/d\)">\(\lfloor Q/d\rfloor/Q\le1/d\)</span>. The factor at 2 is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>; at odd primes each factor is positive and is <span class="math" data-tex="\(1+O(p^{-2})\)">\(1+O(p^{-2})\)</span>. Their product therefore converges to a positive number. This proves the claim.</p>
+<p>For a set of square integers in any block of <span class="math" data-tex="\(N\)">\(N\)</span> consecutive integers, take <span class="math" data-tex="\(Q=\sqrt N\)">\(Q=\sqrt N\)</span> in (6.3). By (8.2), adjusting the constant for bounded <span class="math" data-tex="\(N\)">\(N\)</span>,</p>
+<span class="math math-display" data-tex="\[
+Z\ll\sqrt N.
+\tag{8.3}
+\]">\[
+Z\ll\sqrt N.
+\tag{8.3}
+\]</span>
+<p>The elementary truth is at least as sharp in order: a block containing <span class="math" data-tex="\(k\)">\(k\)</span> distinct nonnegative squares has distance between its extreme squares at least <span class="math" data-tex="\((k-1)^2\)">\((k-1)^2\)</span>, so <span class="math" data-tex="\(k\le1+\sqrt{N-1}\)">\(k\le1+\sqrt{N-1}\)</span>. The significance of (8.3) is that it uses only the local restrictions, without recognizing the actual integers as squares. The prime-only denominator would give a weaker <span class="math" data-tex="\(\sqrt N\log N\)">\(\sqrt N\log N\)</span> estimate; retaining squarefree composite moduli removes that logarithm.</p>
+<h2 id="9-a-positive-density-of-smooth-integers">9. A positive density of smooth integers</h2>
+<p>For Linnik's application we need many integers whose prime factors are small. Define <span class="math" data-tex="\(\Psi(X,Y)\)">\(\Psi(X,Y)\)</span> to be the number of positive integers at most <span class="math" data-tex="\(X\)">\(X\)</span> with every prime factor at most <span class="math" data-tex="\(Y\)">\(Y\)</span>, including 1. For each fixed <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Psi(X,X^\alpha)\ge c_\alpha X
+\quad\text{for sufficiently large }X,
+\tag{9.1}
+\]">\[
+\Psi(X,X^\alpha)\ge c_\alpha X
+\quad\text{for sufficiently large }X,
+\tag{9.1}
+\]</span>
+<p>where <span class="math" data-tex="\(c_\alpha&gt;0\)">\(c_\alpha&gt;0\)</span>. We prove this rather than assume a smooth-number theorem.</p>
+<p>Let <span class="math" data-tex="\(\rho(u)=1\)">\(\rho(u)=1\)</span> for <span class="math" data-tex="\(0\le u\le1\)">\(0\le u\le1\)</span>. On successive intervals of length 1 define it by the delay equation</p>
+<span class="math math-display" data-tex="\[
+\rho(u)=1-\int_1^u\frac{\rho(v-1)}v\,dv
+\quad(u\ge1).
+\tag{9.2}
+\]">\[
+\rho(u)=1-\int_1^u\frac{\rho(v-1)}v\,dv
+\quad(u\ge1).
+\tag{9.2}
+\]</span>
+<p>On each new interval the integrand has already been defined. Thus this gives a unique continuous function, differentiable for <span class="math" data-tex="\(u&gt;1\)">\(u&gt;1\)</span>, with <span class="math" data-tex="\(u\rho&#x27;(u)=-\rho(u-1)\)">\(u\rho&#x27;(u)=-\rho(u-1)\)</span>.</p>
+<p>We prove by induction on integer <span class="math" data-tex="\(U\ge1\)">\(U\ge1\)</span> that</p>
+<span class="math math-display" data-tex="\[
+\frac{\Psi(X,X^{1/u})}X\longrightarrow\rho(u)
+\quad(1\le u\le U),
+\tag{9.3}
+\]">\[
+\frac{\Psi(X,X^{1/u})}X\longrightarrow\rho(u)
+\quad(1\le u\le U),
+\tag{9.3}
+\]</span>
+<p>uniformly on that interval. For <span class="math" data-tex="\(0&lt;u\le1\)">\(0&lt;u\le1\)</span>, all integers at most <span class="math" data-tex="\(X\)">\(X\)</span> are counted, so the base case is immediate. The exact largest-prime-factor decomposition is</p>
+<span class="math math-display" data-tex="\[
+\Psi(X,Y)=\lfloor X\rfloor-
+\sum_{Y&lt;p\le X}\Psi(X/p,p).
+\tag{9.4}
+\]">\[
+\Psi(X,Y)=\lfloor X\rfloor-
+\sum_{Y&lt;p\le X}\Psi(X/p,p).
+\tag{9.4}
+\]</span>
+<p>Every nonsmooth integer is counted once, at its largest prime factor <span class="math" data-tex="\(p\)">\(p\)</span>; repeated copies of that prime are allowed in the remaining factor.</p>
+<p>Suppose (9.3) is known uniformly up to <span class="math" data-tex="\(U-1\)">\(U-1\)</span>, and fix <span class="math" data-tex="\(1&lt;u\le U\)">\(1&lt;u\le U\)</span>. In the summand of (9.4), put <span class="math" data-tex="\(v=\log X/\log p\)">\(v=\log X/\log p\)</span>. Then <span class="math" data-tex="\(1\le v&lt;u\)">\(1\le v&lt;u\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\frac{\log(X/p)}{\log p}=v-1\le U-1.
+\]">\[
+\frac{\log(X/p)}{\log p}=v-1\le U-1.
+\]</span>
+<p>If <span class="math" data-tex="\(p\le X^{1-\eta}\)">\(p\le X^{1-\eta}\)</span>, the argument <span class="math" data-tex="\(X/p\)">\(X/p\)</span> tends to infinity uniformly, and the inductive hypothesis gives
+<span class="math" data-tex="\(\Psi(X/p,p)/(X/p)=\rho(v-1)+o(1)\)">\(\Psi(X/p,p)/(X/p)=\rho(v-1)+o(1)\)</span>, uniformly. When <span class="math" data-tex="\(v-1\le1\)">\(v-1\le1\)</span> this assertion is just the base case. The omitted upper range <span class="math" data-tex="\(p&gt;X^{1-\eta}\)">\(p&gt;X^{1-\eta}\)</span> contributes at most</p>
+<span class="math math-display" data-tex="\[
+X\sum_{X^{1-\eta}&lt;p\le X}\frac1p
+=X\bigl(-\log(1-\eta)+o(1)\bigr).
+\tag{9.5}
+\]">\[
+X\sum_{X^{1-\eta}&lt;p\le X}\frac1p
+=X\bigl(-\log(1-\eta)+o(1)\bigr).
+\tag{9.5}
+\]</span>
+<p>Here and below we use the elementary estimate already proved earlier in the course,
+<span class="math" data-tex="\(\sum_{p\le t}1/p=\log\log t+B+O(1/\log t)\)">\(\sum_{p\le t}1/p=\log\log t+B+O(1/\log t)\)</span>.
+In particular, for fixed <span class="math" data-tex="\(0&lt;a&lt;b\le1\)">\(0&lt;a&lt;b\le1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{X^a&lt;p\le X^b}\frac1p\longrightarrow\log(b/a).
+\]">\[
+\sum_{X^a&lt;p\le X^b}\frac1p\longrightarrow\log(b/a).
+\]</span>
+<p>Approximate a continuous function on a fixed closed subinterval of <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span> by step functions; the last identity then shows that these reciprocal-prime sums converge to integration against <span class="math" data-tex="\(dw/w\)">\(dw/w\)</span>, where <span class="math" data-tex="\(w=\log p/\log X\)">\(w=\log p/\log X\)</span>. Using (9.4), first let <span class="math" data-tex="\(X\to\infty\)">\(X\to\infty\)</span> with <span class="math" data-tex="\(\eta\)">\(\eta\)</span> fixed, then let <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>. The bound (9.5), and boundedness of the continuous <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\([0,U-1]\)">\([0,U-1]\)</span>, justify the second limit. The result is</p>
+<span class="math math-display" data-tex="\[
+\lim_{X\to\infty}\frac{\Psi(X,X^{1/u})}X
+=1-\int_{1/u}^1\rho\left(\frac{1-w}w\right)\frac{dw}w
+=1-\int_1^u\frac{\rho(v-1)}v\,dv=\rho(u).
+\]">\[
+\lim_{X\to\infty}\frac{\Psi(X,X^{1/u})}X
+=1-\int_{1/u}^1\rho\left(\frac{1-w}w\right)\frac{dw}w
+=1-\int_1^u\frac{\rho(v-1)}v\,dv=\rho(u).
+\]</span>
+<p>This proves pointwise convergence on <span class="math" data-tex="\([1,U]\)">\([1,U]\)</span>. It is uniform there: each function on the left is nonincreasing in <span class="math" data-tex="\(u\)">\(u\)</span>, and the limit is continuous. Given an error tolerance, choose a finite grid on which the limit varies by at most that tolerance; monotonicity traps the values between those at successive grid points, where pointwise convergence holds. This completes the induction.</p>
+<p>Finally, <span class="math" data-tex="\(\rho(u)&gt;0\)">\(\rho(u)&gt;0\)</span> for every finite <span class="math" data-tex="\(u\)">\(u\)</span>. Differentiating shows that</p>
+<span class="math math-display" data-tex="\[
+u\rho(u)=\int_{u-1}^u\rho(t)\,dt\qquad(u\ge1):
+\tag{9.6}
+\]">\[
+u\rho(u)=\int_{u-1}^u\rho(t)\,dt\qquad(u\ge1):
+\tag{9.6}
+\]</span>
+<p>both sides have derivative <span class="math" data-tex="\(\rho(u)-\rho(u-1)\)">\(\rho(u)-\rho(u-1)\)</span> and agree at 1. If there were a first zero after 1, the right side at that zero would be positive, a contradiction. Before any such zero the derivative in (9.2) is negative, so no change of sign without a first zero is possible. Equation (9.3), with <span class="math" data-tex="\(u=1/\alpha\)">\(u=1/\alpha\)</span> when <span class="math" data-tex="\(\alpha&lt;1\)">\(\alpha&lt;1\)</span>, gives (9.1) with <span class="math" data-tex="\(c_\alpha=\rho(1/\alpha)/2\)">\(c_\alpha=\rho(1/\alpha)/2\)</span>. For <span class="math" data-tex="\(\alpha\ge1\)">\(\alpha\ge1\)</span>, all integers are smooth and the assertion is immediate.</p>
+<h2 id="10-linnik-s-sparsity-theorem-for-quadratic-nonresidues">10. Linnik's sparsity theorem for quadratic nonresidues</h2>
+<p>For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, write <span class="math" data-tex="\(n_2(p)\)">\(n_2(p)\)</span> for the least positive quadratic nonresidue modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Such a number exists because exactly <span class="math" data-tex="\((p-1)/2\)">\((p-1)/2\)</span> nonzero classes are nonresidues.</p>
+<p><strong>Theorem 10.1 (Linnik).</strong> For every fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\#\{p\le x:p\text{ odd prime},\ n_2(p)&gt;p^\delta\}
+\ll_\delta\log\log x
+\qquad(x\ge e^e).
+\tag{10.1}
+\]">\[
+\#\{p\le x:p\text{ odd prime},\ n_2(p)&gt;p^\delta\}
+\ll_\delta\log\log x
+\qquad(x\ge e^e).
+\tag{10.1}
+\]</span>
+<p><strong>Proof.</strong> It suffices to consider <span class="math" data-tex="\(0&lt;\delta&lt;1\)">\(0&lt;\delta&lt;1\)</span>. For <span class="math" data-tex="\(\delta\ge1\)">\(\delta\ge1\)</span>, <span class="math" data-tex="\(n_2(p)\le p-1&lt;p^\delta\)">\(n_2(p)\le p-1&lt;p^\delta\)</span>, so the set is empty. Fix a large <span class="math" data-tex="\(Q\)">\(Q\)</span> and consider exceptional primes <span class="math" data-tex="\(\sqrt Q&lt;p\le Q\)">\(\sqrt Q&lt;p\le Q\)</span>. Put <span class="math" data-tex="\(N=\lfloor Q^2\rfloor\)">\(N=\lfloor Q^2\rfloor\)</span> and</p>
+<span class="math math-display" data-tex="\[
+Y=Q^{\delta/2},\qquad
+\mathcal A=\{1\le n\le N:n\text{ is }Y\text{-smooth}\}.
+\]">\[
+Y=Q^{\delta/2},\qquad
+\mathcal A=\{1\le n\le N:n\text{ is }Y\text{-smooth}\}.
+\]</span>
+<p>For every exceptional <span class="math" data-tex="\(p\)">\(p\)</span> in this block, each prime factor <span class="math" data-tex="\(\ell\le Y\)">\(\ell\le Y\)</span> satisfies <span class="math" data-tex="\(\ell&lt;p^\delta&lt;n_2(p)\)">\(\ell&lt;p^\delta&lt;n_2(p)\)</span>, and <span class="math" data-tex="\(\ell&lt;p\)">\(\ell&lt;p\)</span>. Thus <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is a nonzero quadratic residue modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Multiplicativity makes every <span class="math" data-tex="\(n\in\mathcal A\)">\(n\in\mathcal A\)</span> a nonzero quadratic residue modulo <span class="math" data-tex="\(p\)">\(p\)</span>. In particular, at least <span class="math" data-tex="\((p-1)/2\ge p/3\)">\((p-1)/2\ge p/3\)</span> classes are missed. All these sieving primes are at most <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Since <span class="math" data-tex="\(Y\ge N^{\delta/4}\)">\(Y\ge N^{\delta/4}\)</span>, the smooth-number lemma gives <span class="math" data-tex="\(Z=|\mathcal A|\gg_\delta N\)">\(Z=|\mathcal A|\gg_\delta N\)</span>. If the block contains <span class="math" data-tex="\(P\)">\(P\)</span> exceptional primes, (6.5) with <span class="math" data-tex="\(\tau=1/3\)">\(\tau=1/3\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+Z\le3(N-1+Q^2)/P,
+\qquad P\ll_\delta1.
+\tag{10.2}
+\]">\[
+Z\le3(N-1+Q^2)/P,
+\qquad P\ll_\delta1.
+\tag{10.2}
+\]</span>
+<p>Every sufficiently large block <span class="math" data-tex="\((\sqrt Q,Q]\)">\((\sqrt Q,Q]\)</span> therefore contains only a bounded number, depending on <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Apply this successively with <span class="math" data-tex="\(Q=x,x^{1/2},x^{1/4},\ldots\)">\(Q=x,x^{1/2},x^{1/4},\ldots\)</span>, stopping when <span class="math" data-tex="\(Q\)">\(Q\)</span> falls below a fixed sufficiently large threshold. There are <span class="math" data-tex="\(O(\log\log x)\)">\(O(\log\log x)\)</span> blocks; the remaining finite primes are absorbed in the constant. This proves (10.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is a statement about how rare primes with unusually large least nonresidues are. It does not bound the least nonresidue for every individual prime; the character-sum methods from <em>Character sums: the Pólya–Vinogradov inequality</em> address that different question.</p>
+<h2 id="11-the-exact-uniform-brun-titchmarsh-refinement">11. The exact uniform Brun–Titchmarsh refinement</h2>
+<p>Keeping only the smallest Farey spacing loses useful information: a fraction with a small denominator is farther from its neighbours. We now retain each point's own spacing. This will remove the logarithmic loss in Section 7 and prove the exact uniform inequality.</p>
+<h3 id="11-1-a-weighted-hilbert-inequality">11.1. A weighted Hilbert inequality</h3>
+<p>For distinct real numbers <span class="math" data-tex="\(\lambda_r\)">\(\lambda_r\)</span>, let
+<span class="math" data-tex="\(\delta_r=\min_{s\ne r}|\lambda_r-\lambda_s|\)">\(\delta_r=\min_{s\ne r}|\lambda_r-\lambda_s|\)</span>.
+We first prove
+<span class="math math-display" data-tex="\[
+\left|\sum_{r\ne s}\frac{u_r\overline{u_s}}{\lambda_r-\lambda_s}\right|
+\le\frac{3\pi}{2}\sum_r\frac{|u_r|^2}{\delta_r}.
+\tag{11.1}
+\]">\[
+\left|\sum_{r\ne s}\frac{u_r\overline{u_s}}{\lambda_r-\lambda_s}\right|
+\le\frac{3\pi}{2}\sum_r\frac{|u_r|^2}{\delta_r}.
+\tag{11.1}
+\]</span>
+The corresponding bilinear bound follows from the norm of the same skew-Hermitian matrix. A family consisting of one point has zero left side and can be omitted.</p>
+<p>Here are the spacing estimates needed for the proof:
+<span class="math math-display" data-tex="\[
+\sum_{m\ne r}\frac{\delta_m}{(\lambda_m-\lambda_r)^2}
+\le\frac4{\delta_r},
+\qquad
+\sum_{m\ne r}\frac{\delta_m}{(\lambda_m-\lambda_r)^4}
+\le\frac8{3\delta_r^3},
+\tag{11.2}
+\]">\[
+\sum_{m\ne r}\frac{\delta_m}{(\lambda_m-\lambda_r)^2}
+\le\frac4{\delta_r},
+\qquad
+\sum_{m\ne r}\frac{\delta_m}{(\lambda_m-\lambda_r)^4}
+\le\frac8{3\delta_r^3},
+\tag{11.2}
+\]</span>
+and, for <span class="math" data-tex="\(r\ne s\)">\(r\ne s\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{m\ne r,s}
+\frac{\delta_m}{(\lambda_m-\lambda_r)^2(\lambda_m-\lambda_s)^2}
+\le\frac4{(\lambda_r-\lambda_s)^2}
+\left(\frac1{\delta_r}+\frac1{\delta_s}\right).
+\tag{11.3}
+\]">\[
+\sum_{m\ne r,s}
+\frac{\delta_m}{(\lambda_m-\lambda_r)^2(\lambda_m-\lambda_s)^2}
+\le\frac4{(\lambda_r-\lambda_s)^2}
+\left(\frac1{\delta_r}+\frac1{\delta_s}\right).
+\tag{11.3}
+\]</span></p>
+<p><strong>Proof of the spacing estimates.</strong> Order the <span class="math" data-tex="\(\lambda_r\)">\(\lambda_r\)</span>. The centred intervals
+<span class="math" data-tex="\(J_r=[\lambda_r-\delta_r/2,\lambda_r+\delta_r/2]\)">\(J_r=[\lambda_r-\delta_r/2,\lambda_r+\delta_r/2]\)</span>
+have disjoint interiors. For a positive convex function <span class="math" data-tex="\(f\)">\(f\)</span>,
+<span class="math" data-tex="\(\delta_m f(\lambda_m)\le\int_{J_m}f(t)\,dt\)">\(\delta_m f(\lambda_m)\le\int_{J_m}f(t)\,dt\)</span>.
+On one side of <span class="math" data-tex="\(\lambda_r\)">\(\lambda_r\)</span>, separate its nearest neighbour at distance <span class="math" data-tex="\(d\)">\(d\)</span>. Its contribution to the second-power sum is at most <span class="math" data-tex="\(1/d\)">\(1/d\)</span>; all later centred intervals lie beyond that neighbour, so their total is at most
+<span class="math" data-tex="\(\int_d^\infty t^{-2}\,dt=1/d\)">\(\int_d^\infty t^{-2}\,dt=1/d\)</span>.
+The fourth-power calculation gives <span class="math" data-tex="\(d^{-3}+\int_d^\infty t^{-4}\,dt=4/(3d^3)\)">\(d^{-3}+\int_d^\infty t^{-4}\,dt=4/(3d^3)\)</span>. Sum both sides and use <span class="math" data-tex="\(d\ge\delta_r\)">\(d\ge\delta_r\)</span>, obtaining (11.2).</p>
+<p>For (11.3), the function
+<span class="math" data-tex="\(f(t)=(t-\lambda_r)^{-2}(t-\lambda_s)^{-2}\)">\(f(t)=(t-\lambda_r)^{-2}(t-\lambda_s)^{-2}\)</span>
+is positive and convex on every component away from its poles: indeed
+<span class="math math-display" data-tex="\[
+\frac{f&#x27;&#x27;}{f}
+=\left(\frac{-2}{t-\lambda_r}+\frac{-2}{t-\lambda_s}\right)^2
++\frac2{(t-\lambda_r)^2}+\frac2{(t-\lambda_s)^2}&gt;0.
+\]">\[
+\frac{f&#x27;&#x27;}{f}
+=\left(\frac{-2}{t-\lambda_r}+\frac{-2}{t-\lambda_s}\right)^2
++\frac2{(t-\lambda_r)^2}+\frac2{(t-\lambda_s)^2}&gt;0.
+\]</span>
+Its centred integrals are bounded by its integral on
+<span class="math" data-tex="\(\mathbb R\setminus(J_r\cup J_s)\)">\(\mathbb R\setminus(J_r\cup J_s)\)</span>.
+With <span class="math" data-tex="\(d=\lambda_s-\lambda_r&gt;0\)">\(d=\lambda_s-\lambda_r&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+f(t)=d^{-2}\left((t-\lambda_r)^{-2}+(t-\lambda_s)^{-2}
+-\frac2{(t-\lambda_r)(t-\lambda_s)}\right).
+\]">\[
+f(t)=d^{-2}\left((t-\lambda_r)^{-2}+(t-\lambda_s)^{-2}
+-\frac2{(t-\lambda_r)(t-\lambda_s)}\right).
+\]</span>
+The first two integrals are at most <span class="math" data-tex="\(4/(d^2\delta_r)\)">\(4/(d^2\delta_r)\)</span> and <span class="math" data-tex="\(4/(d^2\delta_s)\)">\(4/(d^2\delta_s)\)</span>. The remaining integral has a nonpositive contribution. To check its sign exactly, the symmetric principal-value integral of
+<span class="math" data-tex="\(g(t)=1/((t-\lambda_r)(t-\lambda_s))\)">\(g(t)=1/((t-\lambda_r)(t-\lambda_s))\)</span>
+over the whole line is zero, by partial fractions. Its principal-value integral over <span class="math" data-tex="\(J_r\)">\(J_r\)</span> is
+<span class="math math-display" data-tex="\[
+\frac1d\log\frac{d-\delta_r/2}{d+\delta_r/2}&lt;0,
+\]">\[
+\frac1d\log\frac{d-\delta_r/2}{d+\delta_r/2}&lt;0,
+\]</span>
+and the analogous integral over <span class="math" data-tex="\(J_s\)">\(J_s\)</span> is negative as well. Thus the integral of <span class="math" data-tex="\(g\)">\(g\)</span> on the complement is positive. Multiplication by <span class="math" data-tex="\(-2/d^2\)">\(-2/d^2\)</span> proves the required sign, and hence (11.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of (11.1).</strong> Put
+<span class="math math-display" data-tex="\[
+A_{rs}=\frac{\sqrt{\delta_r\delta_s}}{\lambda_r-\lambda_s}\quad(r\ne s),
+\qquad A_{rr}=0.
+\]">\[
+A_{rs}=\frac{\sqrt{\delta_r\delta_s}}{\lambda_r-\lambda_s}\quad(r\ne s),
+\qquad A_{rr}=0.
+\]</span>
+The matrix satisfies <span class="math" data-tex="\(A^*=-A\)">\(A^*=-A\)</span>; its norm is the largest absolute value of its eigenvalues. Choose a unit eigenvector <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(Av=itv\)">\(Av=itv\)</span>, <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>. Expanding <span class="math" data-tex="\(\|Av\|^2\)">\(\|Av\|^2\)</span>, the diagonal contribution is at most 4 by (11.2). For the off-diagonal part use
+<span class="math math-display" data-tex="\[
+\frac{\delta_m}{(\lambda_m-\lambda_r)(\lambda_m-\lambda_s)}
+=\frac1{\lambda_r-\lambda_s}
+\left(\frac{\delta_m}{\lambda_m-\lambda_r}
+-\frac{\delta_m}{\lambda_m-\lambda_s}\right).
+\]">\[
+\frac{\delta_m}{(\lambda_m-\lambda_r)(\lambda_m-\lambda_s)}
+=\frac1{\lambda_r-\lambda_s}
+\left(\frac{\delta_m}{\lambda_m-\lambda_r}
+-\frac{\delta_m}{\lambda_m-\lambda_s}\right).
+\]</span>
+Inserting the omitted terms <span class="math" data-tex="\(m=s\)">\(m=s\)</span> and <span class="math" data-tex="\(m=r\)">\(m=r\)</span> gives a contribution
+<span class="math math-display" data-tex="\[
+\sum_{r\ne s}
+\frac{\sqrt{\delta_r\delta_s}(\delta_r+\delta_s)}
+{(\lambda_r-\lambda_s)^2}v_r\overline{v_s},
+\]">\[
+\sum_{r\ne s}
+\frac{\sqrt{\delta_r\delta_s}(\delta_r+\delta_s)}
+{(\lambda_r-\lambda_s)^2}v_r\overline{v_s},
+\]</span>
+plus a difference of two separable sums. The latter cancel. More explicitly, write
+<span class="math" data-tex="\(B_r=\sum_{m\ne r}\delta_m/(\lambda_m-\lambda_r)\)">\(B_r=\sum_{m\ne r}\delta_m/(\lambda_m-\lambda_r)\)</span>.
+The difference is
+<span class="math" data-tex="\(\sum_{r\ne s}A_{rs}v_r\overline{v_s}(B_r-B_s)\)">\(\sum_{r\ne s}A_{rs}v_r\overline{v_s}(B_r-B_s)\)</span>;
+the eigenvector equation and its conjugate make its two parts both
+<span class="math" data-tex="\(-it\sum_r|v_r|^2B_r\)">\(-it\sum_r|v_r|^2B_r\)</span>.</p>
+<p>Consequently the off-diagonal contribution is bounded in absolute value by
+<span class="math math-display" data-tex="\[
+U=\sum_{r\ne s}
+\frac{\sqrt{\delta_r\delta_s}(\delta_r+\delta_s)}
+{(\lambda_r-\lambda_s)^2}|v_rv_s|.
+\]">\[
+U=\sum_{r\ne s}
+\frac{\sqrt{\delta_r\delta_s}(\delta_r+\delta_s)}
+{(\lambda_r-\lambda_s)^2}|v_rv_s|.
+\]</span>
+By symmetry, this is twice
+<span class="math" data-tex="\(\sum_r |v_r|\sqrt{\delta_r}
+\sum_{s\ne r}\delta_s^{3/2}|v_s|/(\lambda_r-\lambda_s)^2\)">\(\sum_r |v_r|\sqrt{\delta_r}
+\sum_{s\ne r}\delta_s^{3/2}|v_s|/(\lambda_r-\lambda_s)^2\)</span>.
+Cauchy–Schwarz, followed by expansion of the square and (11.2)–(11.3), gives
+<span class="math math-display" data-tex="\[
+(U/2)^2
+\le\sum_{s,t}\delta_s^{3/2}\delta_t^{3/2}|v_sv_t|
+\sum_{r\ne s,t}
+\frac{\delta_r}{(\lambda_r-\lambda_s)^2(\lambda_r-\lambda_t)^2}
+\le\frac83+4U.
+\]">\[
+(U/2)^2
+\le\sum_{s,t}\delta_s^{3/2}\delta_t^{3/2}|v_sv_t|
+\sum_{r\ne s,t}
+\frac{\delta_r}{(\lambda_r-\lambda_s)^2(\lambda_r-\lambda_t)^2}
+\le\frac83+4U.
+\]</span>
+In the first sum the notation excludes <span class="math" data-tex="\(r=s\)">\(r=s\)</span> and <span class="math" data-tex="\(r=t\)">\(r=t\)</span>; when <span class="math" data-tex="\(s=t\)">\(s=t\)</span>, use the fourth-power estimate. The terms with <span class="math" data-tex="\(s\ne t\)">\(s\ne t\)</span> are exactly bounded by <span class="math" data-tex="\(4U\)">\(4U\)</span>.
+Solving the quadratic yields
+<span class="math" data-tex="\(U\le8+4\sqrt{14/3}&lt;17\)">\(U\le8+4\sqrt{14/3}&lt;17\)</span>.
+Thus <span class="math" data-tex="\(t^2\le4+U&lt;21&lt;(3\pi/2)^2\)">\(t^2\le4+U&lt;21&lt;(3\pi/2)^2\)</span>.
+The last numerical comparison follows already from <span class="math" data-tex="\(\pi&gt;3.1\)">\(\pi&gt;3.1\)</span>, for example from the perimeter of the inscribed regular twelve-sided polygon. This proves the matrix norm bound and (11.1) after setting <span class="math" data-tex="\(v_r=u_r/\sqrt{\delta_r}\)">\(v_r=u_r/\sqrt{\delta_r}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For circle points <span class="math" data-tex="\(\alpha_r\)">\(\alpha_r\)</span>, put
+<span class="math" data-tex="\(\delta_r=\min_{s\ne r}\|\alpha_r-\alpha_s\|\)">\(\delta_r=\min_{s\ne r}\|\alpha_r-\alpha_s\|\)</span>.
+The line inequality implies
+<span class="math math-display" data-tex="\[
+\left|\sum_{r\ne s}u_r\overline{u_s}\csc\pi(\alpha_r-\alpha_s)\right|
+\le\frac32\sum_r\frac{|u_r|^2}{\delta_r}.
+\tag{11.4}
+\]">\[
+\left|\sum_{r\ne s}u_r\overline{u_s}\csc\pi(\alpha_r-\alpha_s)\right|
+\le\frac32\sum_r\frac{|u_r|^2}{\delta_r}.
+\tag{11.4}
+\]</span>
+To prove this implication, apply (11.1) to
+<span class="math" data-tex="\(\lambda_{nr}=n+\alpha_r\)">\(\lambda_{nr}=n+\alpha_r\)</span>, <span class="math" data-tex="\(1\le n\le K\)">\(1\le n\le K\)</span>, with coefficients
+<span class="math" data-tex="\((-1)^nu_r/\sqrt K\)">\((-1)^nu_r/\sqrt K\)</span>.
+Their line spacings are at least <span class="math" data-tex="\(\delta_r\)">\(\delta_r\)</span>, and the terms with the same <span class="math" data-tex="\(r\)">\(r\)</span> cancel in pairs. For <span class="math" data-tex="\(r\ne s\)">\(r\ne s\)</span> the resulting kernel is
+<span class="math math-display" data-tex="\[
+\sum_{|j|&lt;K}\frac{(1-|j|/K)(-1)^j}{j+\alpha_r-\alpha_s}
+\longrightarrow\pi\csc\pi(\alpha_r-\alpha_s).
+\]">\[
+\sum_{|j|&lt;K}\frac{(1-|j|/K)(-1)^j}{j+\alpha_r-\alpha_s}
+\longrightarrow\pi\csc\pi(\alpha_r-\alpha_s).
+\]</span>
+This is the partial-fraction identity for the cosecant. It follows by residues, just as the cotangent identity in Section 3; pairing <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(-j\)">\(-j\)</span> gives absolutely convergent terms of size <span class="math" data-tex="\(O(j^{-2})\)">\(O(j^{-2})\)</span>, which also justifies the displayed limit. Divide the line bound by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, obtaining (11.4).</p>
+<h3 id="11-2-the-local-spacing-sieve">11.2. The local-spacing sieve</h3>
+<p>For <span class="math" data-tex="\(N\)">\(N\)</span> consecutive integer frequencies, (11.4) gives
+<span class="math math-display" data-tex="\[
+\sum_r\frac{|T(\alpha_r)|^2}{N+\tfrac32\delta_r^{-1}}
+\le\sum_{M&lt;n\le M+N}|a_n|^2.
+\tag{11.5}
+\]">\[
+\sum_r\frac{|T(\alpha_r)|^2}{N+\tfrac32\delta_r^{-1}}
+\le\sum_{M&lt;n\le M+N}|a_n|^2.
+\tag{11.5}
+\]</span>
+Indeed the dual Gram matrix has diagonal <span class="math" data-tex="\(N\)">\(N\)</span>. Its off-diagonal kernel is
+<span class="math math-display" data-tex="\[
+\sum_{M&lt;n\le M+N}e(nh)
+=\frac{e((M+N+\tfrac12)h)-e((M+\tfrac12)h)}
+{2i\sin\pi h}.
+\]">\[
+\sum_{M&lt;n\le M+N}e(nh)
+=\frac{e((M+N+\tfrac12)h)-e((M+\tfrac12)h)}
+{2i\sin\pi h}.
+\]</span>
+Apply (11.4) separately to the two phase-modified coefficient vectors. Their norms and spacings agree, so the off-diagonal quadratic form is bounded by
+<span class="math" data-tex="\(\tfrac32\sum|u_r|^2/\delta_r\)">\(\tfrac32\sum|u_r|^2/\delta_r\)</span>.
+This proves the dual estimate with diagonal weights <span class="math" data-tex="\(N+\tfrac32\delta_r^{-1}\)">\(N+\tfrac32\delta_r^{-1}\)</span>; the duality argument of Section 2, after dividing each row by its square-root weight, gives (11.5).</p>
+<p>For Farey fractions with denominators <span class="math" data-tex="\(q\le z\)">\(q\le z\)</span>, each local spacing is at least <span class="math" data-tex="\(1/(qz)\)">\(1/(qz)\)</span>. Combining (11.5) with the local Fourier selector calculation of Section 6 therefore gives
+<span class="math math-display" data-tex="\[
+Z\le\left(
+\sum_{q\le z}\frac{\mu^2(q)g(q)}{N+\tfrac32qz}
+\right)^{-1}.
+\tag{11.6}
+\]">\[
+Z\le\left(
+\sum_{q\le z}\frac{\mu^2(q)g(q)}{N+\tfrac32qz}
+\right)^{-1}.
+\tag{11.6}
+\]</span>
+If <span class="math" data-tex="\(Z=0\)">\(Z=0\)</span> there is nothing to show; otherwise cancel one <span class="math" data-tex="\(Z\)">\(Z\)</span> after applying the selector lower bound <span class="math" data-tex="\(Z^2\mu^2(q)g(q)\)">\(Z^2\mu^2(q)g(q)\)</span>. A single Farey point causes no difficulty: its estimate is immediate. For primes greater than <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(g(q)=1/\varphi(q)\)">\(g(q)=1/\varphi(q)\)</span>.</p>
+<h3 id="11-3-an-explicit-denominator-estimate">11.3. An explicit denominator estimate</h3>
+<p>Write
+<span class="math math-display" data-tex="\[
+D(t)=\sum_{n\le t}\frac{\mu^2(n)}{\varphi(n)},
+\qquad
+S(z)=\sum_{n\le z}\frac{\mu^2(n)}{\varphi(n)(1+n/z)}.
+\]">\[
+D(t)=\sum_{n\le t}\frac{\mu^2(n)}{\varphi(n)},
+\qquad
+S(z)=\sum_{n\le z}\frac{\mu^2(n)}{\varphi(n)(1+n/z)}.
+\]</span>
+We shall prove the two bounds
+<span class="math math-display" data-tex="\[
+D(t)\ge\log t+1.07\quad(t\ge6),
+\qquad
+S(z)&gt;\log z+0.36\quad(z\ge100).
+\tag{11.7}
+\]">\[
+D(t)\ge\log t+1.07\quad(t\ge6),
+\qquad
+S(z)&gt;\log z+0.36\quad(z\ge100).
+\tag{11.7}
+\]</span>
+The decimals here are exact rational constants.</p>
+<p>First we need a uniformly explicit harmonic estimate. Put
+<span class="math" data-tex="\(B_2(u)=u^2-u+1/6\)">\(B_2(u)=u^2-u+1/6\)</span>, and let <span class="math" data-tex="\(\{v\}\)">\(\{v\}\)</span> denote fractional part. Integration by parts on consecutive unit intervals gives, for <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+H_{\lfloor v\rfloor}
+=\log v+\gamma+\frac{1/2-\{v\}}v
+-\frac{B_2(\{v\})}{2v^2}
++\int_v^\infty\frac{B_2(\{u\})}{u^3}\,du.
+\tag{11.8}
+\]">\[
+H_{\lfloor v\rfloor}
+=\log v+\gamma+\frac{1/2-\{v\}}v
+-\frac{B_2(\{v\})}{2v^2}
++\int_v^\infty\frac{B_2(\{u\})}{u^3}\,du.
+\tag{11.8}
+\]</span>
+For completeness, start with <span class="math" data-tex="\(H_{\lfloor v\rfloor}-\log v\)">\(H_{\lfloor v\rfloor}-\log v\)</span> and its limit <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. On each open unit interval its derivative is <span class="math" data-tex="\(-1/v\)">\(-1/v\)</span>; its jump at an integer <span class="math" data-tex="\(n\)">\(n\)</span> is <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Subtracting <span class="math" data-tex="\((1/2-\{v\})/v\)">\((1/2-\{v\})/v\)</span> cancels those jumps and leaves derivative <span class="math" data-tex="\((1/2-\{v\})/v^2\)">\((1/2-\{v\})/v^2\)</span>. Integrate this derivative from <span class="math" data-tex="\(v\)">\(v\)</span> to infinity, then use <span class="math" data-tex="\(B_2&#x27;(\{v\})=2(\{v\}-1/2)\)">\(B_2&#x27;(\{v\})=2(\{v\}-1/2)\)</span>. This proves (11.8), including integer endpoints and <span class="math" data-tex="\(0&lt;v&lt;1\)">\(0&lt;v&lt;1\)</span>.
+Since <span class="math" data-tex="\(|B_2|\le1/6\)">\(|B_2|\le1/6\)</span>, the last two terms together have absolute value at most <span class="math" data-tex="\(1/(6v^2)\)">\(1/(6v^2)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(H_6(t)=\sum_{r\le t,(r,6)=1}1/r\)">\(H_6(t)=\sum_{r\le t,(r,6)=1}1/r\)</span>.
+Inclusion–exclusion applied to (11.8) gives
+<span class="math math-display" data-tex="\[
+H_6(t)=\frac13\log t+\frac{\gamma}{3}
++\frac{\log2}{3}+\frac{\log3}{6}
+-\frac1t\sum_{d\mid6}\mu(d)\{t/d\}+E(t),
+\qquad |E(t)|\le\frac2{t^2}.
+\tag{11.9}
+\]">\[
+H_6(t)=\frac13\log t+\frac{\gamma}{3}
++\frac{\log2}{3}+\frac{\log3}{6}
+-\frac1t\sum_{d\mid6}\mu(d)\{t/d\}+E(t),
+\qquad |E(t)|\le\frac2{t^2}.
+\tag{11.9}
+\]</span>
+Here <span class="math" data-tex="\(\sum_{d\mid6}d=12\)">\(\sum_{d\mid6}d=12\)</span> bounds the error, and
+<span class="math" data-tex="\(\sum_{d\mid6}\mu(d)=0\)">\(\sum_{d\mid6}\mu(d)=0\)</span> removes the half terms.</p>
+<p>The radical decomposition of an integer proves
+<span class="math math-display" data-tex="\[
+\sum_{\substack{r\le t\\(r,6)=1}}\frac{\mu^2(r)}{\varphi(r)}
+\ge H_6(t).
+\]">\[
+\sum_{\substack{r\le t\\(r,6)=1}}\frac{\mu^2(r)}{\varphi(r)}
+\ge H_6(t).
+\]</span>
+Indeed <span class="math" data-tex="\(1/\varphi(r)=r^{-1}\prod_{p\mid r}(1-p^{-1})^{-1}\)">\(1/\varphi(r)=r^{-1}\prod_{p\mid r}(1-p^{-1})^{-1}\)</span> for squarefree <span class="math" data-tex="\(r\)">\(r\)</span>; expanding the geometric factors assigns every positive integer its reciprocal, grouped by its radical. Restricting radicals to <span class="math" data-tex="\(r\le t\)">\(r\le t\)</span> includes all the terms from integers at most <span class="math" data-tex="\(t\)">\(t\)</span>.
+Separating the part of a squarefree <span class="math" data-tex="\(n\)">\(n\)</span> that divides 6 now yields
+<span class="math math-display" data-tex="\[
+D(z)\ge\sum_{m\mid6}\frac{H_6(z/m)}{\varphi(m)}
+\ge\log z+c-\frac{A(z,6)}z-\frac{55}{z^2},
+\tag{11.10}
+\]">\[
+D(z)\ge\sum_{m\mid6}\frac{H_6(z/m)}{\varphi(m)}
+\ge\log z+c-\frac{A(z,6)}z-\frac{55}{z^2},
+\tag{11.10}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+c=\gamma+\tfrac12\log2+\tfrac16\log3,
+\quad
+A(z,k)=\sum_{m\mid k}\frac m{\varphi(m)}
+\sum_{d\mid k}\mu(d)\{z/(md)\}.
+\]">\[
+c=\gamma+\tfrac12\log2+\tfrac16\log3,
+\quad
+A(z,k)=\sum_{m\mid k}\frac m{\varphi(m)}
+\sum_{d\mid k}\mu(d)\{z/(md)\}.
+\]</span>
+The error coefficient is <span class="math" data-tex="\(2\sum_{m\mid6}m^2/\varphi(m)=55\)">\(2\sum_{m\mid6}m^2/\varphi(m)=55\)</span>.
+For <span class="math" data-tex="\(p\nmid k\)">\(p\nmid k\)</span>, expanding the divisors gives
+<span class="math math-display" data-tex="\[
+A(z,pk)=A(z,k)+\frac{A(z/p,k)}{p-1}
+-\frac{pA(z/p^2,k)}{p-1}.
+\]">\[
+A(z,pk)=A(z,k)+\frac{A(z/p,k)}{p-1}
+-\frac{pA(z/p^2,k)}{p-1}.
+\]</span>
+The function <span class="math" data-tex="\(A(z,2)=\{z\}+\{z/2\}-2\{z/4\}\)">\(A(z,2)=\{z\}+\{z/2\}-2\{z/4\}\)</span> has absolute value at most 1, by examining the four unit intervals of its period 4. Thus <span class="math" data-tex="\(|A(z,6)|\le3\)">\(|A(z,6)|\le3\)</span>.
+Use <span class="math" data-tex="\(\gamma&gt;0.577\)">\(\gamma&gt;0.577\)</span>, <span class="math" data-tex="\(\log2&gt;0.693\)">\(\log2&gt;0.693\)</span>, and <span class="math" data-tex="\(\log3&gt;1.098\)">\(\log3&gt;1.098\)</span>.
+At <span class="math" data-tex="\(z\ge100\)">\(z\ge100\)</span>, (11.10) is greater than <span class="math" data-tex="\(\log z+1.071\)">\(\log z+1.071\)</span>, proving the first part of (11.7) in that range.</p>
+<p>Here is an explicit finite certificate for <span class="math" data-tex="\(6\le z&lt;100\)">\(6\le z&lt;100\)</span>. It suffices to check
+<span class="math" data-tex="\(D(Q)-\log(Q+1)&gt;1.07\)">\(D(Q)-\log(Q+1)&gt;1.07\)</span>, <span class="math" data-tex="\(6\le Q\le99\)">\(6\le Q\le99\)</span>, because <span class="math" data-tex="\(D\)">\(D\)</span> is constant between its integer jumps. The following lower bounds are rounded down:</p>
+<table>
+<thead>
+<tr>
+<th>Integers <span class="math" data-tex="\(Q\)">\(Q\)</span></th>
+<th style="text-align:right">Lower bound for <span class="math" data-tex="\(D(Q)-\log(Q+1)\)">\(D(Q)-\log(Q+1)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6–9</td>
+<td style="text-align:right">1.1140</td>
+</tr>
+<tr>
+<td>10–19</td>
+<td style="text-align:right">1.2017</td>
+</tr>
+<tr>
+<td>20–29</td>
+<td style="text-align:right">1.2045</td>
+</tr>
+<tr>
+<td>30–39</td>
+<td style="text-align:right">1.2693</td>
+</tr>
+<tr>
+<td>40–49</td>
+<td style="text-align:right">1.3314</td>
+</tr>
+<tr>
+<td>50–59</td>
+<td style="text-align:right">1.2768</td>
+</tr>
+<tr>
+<td>60–69</td>
+<td style="text-align:right">1.2762</td>
+</tr>
+<tr>
+<td>70–79</td>
+<td style="text-align:right">1.3131</td>
+</tr>
+<tr>
+<td>80–89</td>
+<td style="text-align:right">1.3213</td>
+</tr>
+<tr>
+<td>90–99</td>
+<td style="text-align:right">1.3053</td>
+</tr>
+</tbody>
+</table>
+<p>These are rational comparisons, and can be reproduced without numerical logarithms as follows. Factor each <span class="math" data-tex="\(n\le99\)">\(n\le99\)</span> to compute <span class="math" data-tex="\(\mu^2(n)/\varphi(n)\)">\(\mu^2(n)/\varphi(n)\)</span> exactly. Write <span class="math" data-tex="\(Q+1=2^jt\)">\(Q+1=2^jt\)</span>, <span class="math" data-tex="\(1\le t\le2\)">\(1\le t\le2\)</span>, and put <span class="math" data-tex="\(w=(t-1)/(t+1)\)">\(w=(t-1)/(t+1)\)</span>. Use
+<span class="math math-display" data-tex="\[
+L_{150}(t)=2\sum_{h=0}^{149}\frac{w^{2h+1}}{2h+1},
+\qquad
+0\le\log t-L_{150}(t)
+\le\frac{2w^{301}}{301(1-w^2)}.
+\tag{11.11}
+\]">\[
+L_{150}(t)=2\sum_{h=0}^{149}\frac{w^{2h+1}}{2h+1},
+\qquad
+0\le\log t-L_{150}(t)
+\le\frac{2w^{301}}{301(1-w^2)}.
+\tag{11.11}
+\]</span>
+Apply the same bound to <span class="math" data-tex="\(\log2\)">\(\log2\)</span>, and subtract the resulting rational upper bound for <span class="math" data-tex="\(j\log2+\log t\)">\(j\log2+\log t\)</span> from <span class="math" data-tex="\(D(Q)\)">\(D(Q)\)</span>. Taking the minimum in each displayed group gives the table. The bounds on <span class="math" data-tex="\(\log2,\log3\)">\(\log2,\log3\)</span> above follow by the same series. For the Euler constant, the elementary integral comparison
+<span class="math" data-tex="\(\gamma\ge H_{10000}-\log10001&gt;0.577\)">\(\gamma\ge H_{10000}-\log10001&gt;0.577\)</span>
+gives the stated rationally certified lower bound. Thus every finite comparison in (11.7) has an explicit error bound.</p>
+<p>Partial summation and <span class="math" data-tex="\(D(u)\ge\log u+1.07\)">\(D(u)\ge\log u+1.07\)</span> for <span class="math" data-tex="\(u\ge6\)">\(u\ge6\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S(z)\ge{}&amp;
+\sum_{q\le5}\frac{\mu^2(q)}{\varphi(q)}
+\left(\frac z{z+q}-\frac z{z+6}\right)\\
+&amp;+\frac z{z+6}(\log6+1.07)
++\int_6^z\frac z{z+u}\frac{du}{u}.
+\end{aligned}
+\tag{11.12}
+\]">\[
+\begin{aligned}
+S(z)\ge{}&amp;
+\sum_{q\le5}\frac{\mu^2(q)}{\varphi(q)}
+\left(\frac z{z+q}-\frac z{z+6}\right)\\
+&amp;+\frac z{z+6}(\log6+1.07)
++\int_6^z\frac z{z+u}\frac{du}{u}.
+\end{aligned}
+\tag{11.12}
+\]</span>
+This follows directly by integrating against the step function <span class="math" data-tex="\(D\)">\(D\)</span>, keeping its terms below 6 exact; hence there is no endpoint approximation.
+For <span class="math" data-tex="\(z\ge100\)">\(z\ge100\)</span>, the first line is at least
+<span class="math math-display" data-tex="\[
+\frac{0.9}{z+6}
+\sum_{q\le5}\frac{\mu^2(q)(6-q)}{\varphi(q)}
+=\frac{9.675}{z+6}.
+\]">\[
+\frac{0.9}{z+6}
+\sum_{q\le5}\frac{\mu^2(q)(6-q)}{\varphi(q)}
+=\frac{9.675}{z+6}.
+\]</span>
+The integral equals
+<span class="math" data-tex="\(\log z+\log(1+6/z)-\log12\)">\(\log z+\log(1+6/z)-\log12\)</span>, and
+<span class="math" data-tex="\(\log(1+6/z)\ge6/(z+6)\)">\(\log(1+6/z)\ge6/(z+6)\)</span>.
+Consequently
+<span class="math math-display" data-tex="\[
+S(z)\ge\log z+1.07-\log2
++\frac{15.675-6(\log6+1.07)}{z+6}
+{}&gt;\log z+0.36.
+\]">\[
+S(z)\ge\log z+1.07-\log2
++\frac{15.675-6(\log6+1.07)}{z+6}
+{}&gt;\log z+0.36.
+\]</span>
+For the final comparison use <span class="math" data-tex="\(\log2&lt;0.694\)">\(\log2&lt;0.694\)</span>, <span class="math" data-tex="\(\log6&lt;1.792\)">\(\log6&lt;1.792\)</span>, and <span class="math" data-tex="\(z+6\ge106\)">\(z+6\ge106\)</span>. This completes (11.7). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="11-4-all-interval-lengths">11.4. All interval lengths</h3>
+<p><strong>Theorem 11.1 (Montgomery–Vaughan).</strong> For all <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> and <span class="math" data-tex="\(y&gt;1\)">\(y&gt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\pi(x+y)-\pi(x)\le\frac{2y}{\log y}
+\tag{11.13}
+\]">\[
+\pi(x+y)-\pi(x)\le\frac{2y}{\log y}
+\tag{11.13}
+\]</span>
+<p><strong>Proof for large <span class="math" data-tex="\(y\)">\(y\)</span>.</strong> Let
+<span class="math" data-tex="\(N=\lfloor x+y\rfloor-\lfloor x\rfloor\)">\(N=\lfloor x+y\rfloor-\lfloor x\rfloor\)</span>, the number of consecutive integers in the interval. Suppose <span class="math" data-tex="\(y&gt;20000\)">\(y&gt;20000\)</span>; then <span class="math" data-tex="\(N\ge19999\)">\(N\ge19999\)</span>. Take
+<span class="math" data-tex="\(z=\sqrt{2N/3}\ge100\)">\(z=\sqrt{2N/3}\ge100\)</span>.
+The primes greater than <span class="math" data-tex="\(z\)">\(z\)</span> omit the zero class at every sieving prime. In (11.6),
+<span class="math math-display" data-tex="\[
+N+\tfrac32qz=N(1+q/z).
+\]">\[
+N+\tfrac32qz=N(1+q/z).
+\]</span>
+The second part of (11.7) therefore bounds their number by <span class="math" data-tex="\(N/S(z)\)">\(N/S(z)\)</span>. Including primes at most <span class="math" data-tex="\(z\)">\(z\)</span> gives
+<span class="math math-display" data-tex="\[
+\pi(x+y)-\pi(x)\le\frac{N}{\tfrac12\log N+0.15}+\frac{\sqrt N}{3}.
+\tag{11.14}
+\]">\[
+\pi(x+y)-\pi(x)\le\frac{N}{\tfrac12\log N+0.15}+\frac{\sqrt N}{3}.
+\tag{11.14}
+\]</span>
+We used <span class="math" data-tex="\(0.36+\tfrac12\log(2/3)&gt;0.15\)">\(0.36+\tfrac12\log(2/3)&gt;0.15\)</span>.
+Also <span class="math" data-tex="\(\pi(z)\le z/3&lt;\sqrt N/3\)">\(\pi(z)\le z/3&lt;\sqrt N/3\)</span> for <span class="math" data-tex="\(z\ge100\)">\(z\ge100\)</span>: the integers coprime to 6 number at most <span class="math" data-tex="\(z/3+1\)">\(z/3+1\)</span>; remove 1 and the four composites <span class="math" data-tex="\(35,49,55,65\)">\(35,49,55,65\)</span>, and add the primes 2 and 3.</p>
+<p>Put <span class="math" data-tex="\(l=\log N\)">\(l=\log N\)</span>. For <span class="math" data-tex="\(N\ge15000\)">\(N\ge15000\)</span>, <span class="math" data-tex="\(l&gt;9.6\)">\(l&gt;9.6\)</span>, <span class="math" data-tex="\(l^2&lt;\sqrt N\)">\(l^2&lt;\sqrt N\)</span>, and
+<span class="math math-display" data-tex="\[
+\frac{2N}{l}-\frac{N}{l/2+0.15}
+=\frac{0.6N}{l(l+0.3)}
+\ge\frac{N}{2l^2}
+{}&gt;\frac{\sqrt N}{2}
+{}&gt;\frac{\sqrt N}{3}+\frac2l.
+\]">\[
+\frac{2N}{l}-\frac{N}{l/2+0.15}
+=\frac{0.6N}{l(l+0.3)}
+\ge\frac{N}{2l^2}
+{}&gt;\frac{\sqrt N}{2}
+{}&gt;\frac{\sqrt N}{3}+\frac2l.
+\]</span>
+The last inequality follows from <span class="math" data-tex="\(\sqrt N\,l&gt;12\)">\(\sqrt N\,l&gt;12\)</span>.
+To verify <span class="math" data-tex="\(l^2&lt;\sqrt N\)">\(l^2&lt;\sqrt N\)</span> throughout this range, it holds already at <span class="math" data-tex="\(N=10000\)">\(N=10000\)</span>, and the ratio <span class="math" data-tex="\((\log N)^2/\sqrt N\)">\((\log N)^2/\sqrt N\)</span> decreases for <span class="math" data-tex="\(\log N&gt;4\)">\(\log N&gt;4\)</span>.
+Thus (11.14) is less than <span class="math" data-tex="\(2(N-1)/\log N\)">\(2(N-1)/\log N\)</span>.
+Finally <span class="math" data-tex="\(N-1&lt;y&lt;N+1\)">\(N-1&lt;y&lt;N+1\)</span>. If <span class="math" data-tex="\(y\ge N\)">\(y\ge N\)</span>, use monotonicity of <span class="math" data-tex="\(t/\log t\)">\(t/\log t\)</span> for <span class="math" data-tex="\(t&gt;e\)">\(t&gt;e\)</span>; if <span class="math" data-tex="\(N-1&lt;y&lt;N\)">\(N-1&lt;y&lt;N\)</span>, use
+<span class="math math-display" data-tex="\[
+\frac{N-1}{\log N}
+&lt;\frac{N-1}{\log(N-1)}
+\le\frac y{\log y}.
+\]">\[
+\frac{N-1}{\log N}
+&lt;\frac{N-1}{\log(N-1)}
+\le\frac y{\log y}.
+\]</span>
+This proves (11.13) for large <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p><strong>Proof for <span class="math" data-tex="\(1&lt;y\le20000\)">\(1&lt;y\le20000\)</span>.</strong> Sieve directly by the primes at most <span class="math" data-tex="\(z\)">\(z\)</span>. Inclusion–exclusion, with at most one rounding error for each squarefree divisor, gives
+<span class="math math-display" data-tex="\[
+\pi(x+y)-\pi(x)
+\le y\prod_{p\le z}(1-1/p)+2^{\pi(z)}+\pi(z).
+\tag{11.15}
+\]">\[
+\pi(x+y)-\pi(x)
+\le y\prod_{p\le z}(1-1/p)+2^{\pi(z)}+\pi(z).
+\tag{11.15}
+\]</span>
+The last term restores the primes at most <span class="math" data-tex="\(z\)">\(z\)</span>; this also covers intervals starting at 0.
+For <span class="math" data-tex="\(z=2,3,5,13\)">\(z=2,3,5,13\)</span>, respectively, the ratio of the right side to <span class="math" data-tex="\(2y/\log y\)">\(2y/\log y\)</span> is
+<span class="math math-display" data-tex="\[
+f(y;\alpha,\beta)=(\log y)(\alpha+\beta/y)
+\]">\[
+f(y;\alpha,\beta)=(\log y)(\alpha+\beta/y)
+\]</span>
+with the parameters in this table. Both endpoint values are bounded by the displayed rational upper bounds:</p>
+<table>
+<thead>
+<tr>
+<th>Range of <span class="math" data-tex="\(y\)">\(y\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(z\)">\(z\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\alpha\)">\(\alpha\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\beta\)">\(\beta\)</span></th>
+<th style="text-align:right">Upper bounds at the endpoints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\([1,20]\)">\([1,20]\)</span></td>
+<td style="text-align:right">2</td>
+<td style="text-align:right"><span class="math" data-tex="\(1/4\)">\(1/4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3/2\)">\(3/2\)</span></td>
+<td style="text-align:right">0, 0.974</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\([20,270]\)">\([20,270]\)</span></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right"><span class="math" data-tex="\(1/6\)">\(1/6\)</span></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0.949, 0.996</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\([270,1000]\)">\([270,1000]\)</span></td>
+<td style="text-align:right">5</td>
+<td style="text-align:right"><span class="math" data-tex="\(2/15\)">\(2/15\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(11/2\)">\(11/2\)</span></td>
+<td style="text-align:right">0.861, 0.960</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\([1000,20000]\)">\([1000,20000]\)</span></td>
+<td style="text-align:right">13</td>
+<td style="text-align:right"><span class="math" data-tex="\(96/1001\)">\(96/1001\)</span></td>
+<td style="text-align:right">35</td>
+<td style="text-align:right">0.905, 0.968</td>
+</tr>
+</tbody>
+</table>
+<p>These endpoint comparisons use the rational series (11.11). They control every real point in the indicated intervals. Indeed
+<span class="math math-display" data-tex="\[
+y^2f&#x27;(y)=\alpha y+\beta(1-\log y).
+\]">\[
+y^2f&#x27;(y)=\alpha y+\beta(1-\log y).
+\]</span>
+For the first row its global minimum occurs at <span class="math" data-tex="\(y=6\)">\(y=6\)</span>, and is
+<span class="math" data-tex="\(3-\tfrac32\log6&gt;0\)">\(3-\tfrac32\log6&gt;0\)</span>; hence <span class="math" data-tex="\(f\)">\(f\)</span> is increasing. For each later row the interval starts beyond <span class="math" data-tex="\(\beta/\alpha\)">\(\beta/\alpha\)</span>, where the displayed derivative numerator is increasing. It can therefore change sign at most once there, from negative to positive. Thus <span class="math" data-tex="\(f\)">\(f\)</span> has no interior maximum, and its endpoint values bound the whole interval. Each bound is less than 1. The four ranges cover every <span class="math" data-tex="\(1&lt;y\le20000\)">\(1&lt;y\le20000\)</span>, proving (11.13) and completing the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The global-spacing sieve already explains the asymptotic constant 2. Its exact uniform form uses the extra denominator gain in (11.6), the explicit positive margin in (11.7), and a separate elementary treatment of short intervals. None of these arguments assumes a prime number theorem for short intervals.</p>
+<h2 id="12-exercises">12. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Prove the spacing assertion for distinct reduced Farey fractions with denominators at most <span class="math" data-tex="\(Q\)">\(Q\)</span>, including spacing across the endpoint of the unit interval.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Starting from the arithmetic large sieve, prove a uniform bound <span class="math" data-tex="\(Cy/\log y\)">\(Cy/\log y\)</span> for the number of primes in <span class="math" data-tex="\((x,x+y]\)">\((x,x+y]\)</span>, with an explicit <span class="math" data-tex="\(C\)">\(C\)</span> for <span class="math" data-tex="\(y\ge2\)">\(y\ge2\)</span>. Show where the sharp analytic inequality gives the asymptotic constant <span class="math" data-tex="\(2+\varepsilon\)">\(2+\varepsilon\)</span>, and what constant follows from Gallagher's estimate alone.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Prove the duality principle for a finite bilinear form <span class="math" data-tex="\(\sum_{r,n}A_{rn}a_n\overline{b_r}\)">\(\sum_{r,n}A_{rn}a_n\overline{b_r}\)</span>. State the dual sharp large sieve, keeping the coefficient norm and the range of <span class="math" data-tex="\(n\)">\(n\)</span> exact.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Apply the arithmetic large sieve to a set of square integers in a block of <span class="math" data-tex="\(N\)">\(N\)</span> consecutive integers. Prove the required denominator estimate, treat the prime 2, and compare the answer with the elementary count of actual squares.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Prove Linnik's estimate (10.1). Explain why a positive density of smooth integers is needed, why the interval of sieving primes is <span class="math" data-tex="\((\sqrt Q,Q]\)">\((\sqrt Q,Q]\)</span>, and why ordinary dyadic intervals would give a weaker global count.</p>
+</li>
+</ol>
+<h2 id="13-complete-solutions">13. Complete solutions</h2>
+<p><strong>1.</strong> For any integer <span class="math" data-tex="\(k\)">\(k\)</span>,
+<span class="math" data-tex="\(b/q-b&#x27;/q&#x27;-k=(bq&#x27;-b&#x27;q-kqq&#x27;)/(qq&#x27;)\)">\(b/q-b&#x27;/q&#x27;-k=(bq&#x27;-b&#x27;q-kqq&#x27;)/(qq&#x27;)\)</span>.
+Its numerator is a nonzero integer for distinct points modulo 1. Therefore its absolute value is at least 1, and minimizing over <span class="math" data-tex="\(k\)">\(k\)</span> gives distance at least <span class="math" data-tex="\(1/(qq&#x27;)\ge Q^{-2}\)">\(1/(qq&#x27;)\ge Q^{-2}\)</span>. This minimization includes the arc crossing 0. Include 0 just once, as the reduced fraction with denominator 1; nonreduced duplicate fractions must be removed.</p>
+<p><strong>2.</strong> Discard at most <span class="math" data-tex="\(Q\)">\(Q\)</span> primes at most <span class="math" data-tex="\(Q\)">\(Q\)</span>, and sieve the others with <span class="math" data-tex="\(\omega(p)=1\)">\(\omega(p)=1\)</span>. The convolution calculation (7.1)–(7.3) proves <span class="math" data-tex="\(L(Q)=\log Q+O(1)\)">\(L(Q)=\log Q+O(1)\)</span>, with error less than 200; the radical decomposition in (7.7) also gives <span class="math" data-tex="\(L(Q)\ge\log Q\)">\(L(Q)\ge\log Q\)</span> for every <span class="math" data-tex="\(Q\ge1\)">\(Q\ge1\)</span>. The block has <span class="math" data-tex="\(N-1\le y\)">\(N-1\le y\)</span>, so the sharp arithmetic bound is (7.6). For <span class="math" data-tex="\(Q=\sqrt y/(\log y)^2\)">\(Q=\sqrt y/(\log y)^2\)</span>, its numerator is <span class="math" data-tex="\(y(1+o(1))\)">\(y(1+o(1))\)</span>, its denominator is <span class="math" data-tex="\((\tfrac12+o(1))\log y\)">\((\tfrac12+o(1))\log y\)</span>, and the discarded <span class="math" data-tex="\(Q\)">\(Q\)</span> primes are <span class="math" data-tex="\(o(y/\log y)\)">\(o(y/\log y)\)</span>. All errors are uniform in <span class="math" data-tex="\(x\)">\(x\)</span>, and the explicit error bound makes the threshold effective. This yields <span class="math" data-tex="\(2+\varepsilon\)">\(2+\varepsilon\)</span> for large <span class="math" data-tex="\(y\)">\(y\)</span>. Taking <span class="math" data-tex="\(Q=\sqrt y\)">\(Q=\sqrt y\)</span> instead and using <span class="math" data-tex="\(L(Q)\ge\tfrac12\log y\)">\(L(Q)\ge\tfrac12\log y\)</span> gives at most <span class="math" data-tex="\(4y/\log y\)">\(4y/\log y\)</span> for the sieved primes; the discarded <span class="math" data-tex="\(Q\)">\(Q\)</span> primes are at most <span class="math" data-tex="\(y/\log y\)">\(y/\log y\)</span>. Thus <span class="math" data-tex="\(C=5\)">\(C=5\)</span> works for all <span class="math" data-tex="\(y\ge2\)">\(y\ge2\)</span>. Gallagher's numerator is <span class="math" data-tex="\(\pi(N-1)+Q^2\)">\(\pi(N-1)+Q^2\)</span>, so the same large-<span class="math" data-tex="\(y\)">\(y\)</span> computation gives <span class="math" data-tex="\(2\pi+\varepsilon\)">\(2\pi+\varepsilon\)</span>, and the simple all-<span class="math" data-tex="\(y\)">\(y\)</span> calculation gives <span class="math" data-tex="\(C=2\pi+3\)">\(C=2\pi+3\)</span>. To obtain the exact uniform constant 2, retain individual Farey spacings and apply the separate denominator and short-interval arguments in Section 11.</p>
+<p><strong>3.</strong> For <span class="math" data-tex="\(\mathcal B(a,b)=\langle Aa,b\rangle\)">\(\mathcal B(a,b)=\langle Aa,b\rangle\)</span>, the assertion <span class="math" data-tex="\(|\mathcal B(a,b)|\le\sqrt C\|a\|_2\|b\|_2\)">\(|\mathcal B(a,b)|\le\sqrt C\|a\|_2\|b\|_2\)</span> follows from <span class="math" data-tex="\(\|Aa\|_2^2\le C\|a\|_2^2\)">\(\|Aa\|_2^2\le C\|a\|_2^2\)</span> by Cauchy–Schwarz. Taking <span class="math" data-tex="\(b=Aa\)">\(b=Aa\)</span> gives the converse after canceling a nonzero norm. The identity <span class="math" data-tex="\(\mathcal B(a,b)=\langle a,A^*b\rangle\)">\(\mathcal B(a,b)=\langle a,A^*b\rangle\)</span> gives the same equivalence with the adjoint estimate. Thus the sharp dual inequality is</p>
+<span class="math math-display" data-tex="\[
+\sum_{M&lt;n\le M+N}\left|\sum_{r=1}^R b_r e(nx_r)\right|^2
+\le(N-1+\delta^{-1})\sum_{r=1}^R|b_r|^2,
+\]">\[
+\sum_{M&lt;n\le M+N}\left|\sum_{r=1}^R b_r e(nx_r)\right|^2
+\le(N-1+\delta^{-1})\sum_{r=1}^R|b_r|^2,
+\]</span>
+<p>for <span class="math" data-tex="\(M\in\mathbb Z\)">\(M\in\mathbb Z\)</span>, integer <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, and <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-spaced circle points with <span class="math" data-tex="\(0&lt;\delta\le1\)">\(0&lt;\delta\le1\)</span>. Sign reversal follows by conjugating the arbitrary <span class="math" data-tex="\(b_r\)">\(b_r\)</span>; it does not change the norm.</p>
+<p><strong>4.</strong> At an odd prime the image of squaring consists of 0 and <span class="math" data-tex="\((p-1)/2\)">\((p-1)/2\)</span> nonzero residues. Thus <span class="math" data-tex="\(\omega(p)=(p-1)/2\)">\(\omega(p)=(p-1)/2\)</span>, giving <span class="math" data-tex="\(g(p)=(p-1)/(p+1)\)">\(g(p)=(p-1)/(p+1)\)</span>. At 2 both classes occur, so <span class="math" data-tex="\(g(2)=0\)">\(g(2)=0\)</span>. Define <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(f=\mathbf1*h\)">\(f=\mathbf1*h\)</span>, where <span class="math" data-tex="\(f=\mu^2g\)">\(f=\mu^2g\)</span>. Its values are exactly those in Section 8; the series <span class="math" data-tex="\(\sum|h(d)|/d\)">\(\sum|h(d)|/d\)</span> converges because each odd-prime local contribution is <span class="math" data-tex="\(O(p^{-2})\)">\(O(p^{-2})\)</span>, and the factor at 2 is finite. Hence (8.2) proves <span class="math" data-tex="\(L(Q)\sim cQ\)">\(L(Q)\sim cQ\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Taking <span class="math" data-tex="\(Q=\sqrt N\)">\(Q=\sqrt N\)</span> in (6.3) gives <span class="math" data-tex="\(Z\ll\sqrt N\)">\(Z\ll\sqrt N\)</span>, adjusting an absolute constant for small <span class="math" data-tex="\(N\)">\(N\)</span>. If the smallest square in the block is <span class="math" data-tex="\(m^2\)">\(m^2\)</span>, its <span class="math" data-tex="\(k\)">\(k\)</span>-th distinct square is at least <span class="math" data-tex="\((m+k-1)^2\)">\((m+k-1)^2\)</span>, so its distance from the smallest is at least <span class="math" data-tex="\((k-1)^2\)">\((k-1)^2\)</span>. Since the block's extreme integers differ by <span class="math" data-tex="\(N-1\)">\(N-1\)</span>, the actual count is at most <span class="math" data-tex="\(1+\sqrt{N-1}\)">\(1+\sqrt{N-1}\)</span>. The local sieve reproduces this order for any set with those same residue restrictions.</p>
+<p><strong>5.</strong> For <span class="math" data-tex="\(0&lt;\delta&lt;1\)">\(0&lt;\delta&lt;1\)</span>, fix <span class="math" data-tex="\(Q\)">\(Q\)</span>, and take the integers at most <span class="math" data-tex="\(\lfloor Q^2\rfloor\)">\(\lfloor Q^2\rfloor\)</span> whose prime factors are at most <span class="math" data-tex="\(Q^{\delta/2}\)">\(Q^{\delta/2}\)</span>. Section 9 proves that their number is <span class="math" data-tex="\(\gg_\delta Q^2\)">\(\gg_\delta Q^2\)</span>: the fixed parameter is <span class="math" data-tex="\(u=4/\delta\)">\(u=4/\delta\)</span>, and the delay-function identity (9.6) proves its limiting density is positive. If <span class="math" data-tex="\(\sqrt Q&lt;p\le Q\)">\(\sqrt Q&lt;p\le Q\)</span> and <span class="math" data-tex="\(n_2(p)&gt;p^\delta\)">\(n_2(p)&gt;p^\delta\)</span>, all these small factors are less than <span class="math" data-tex="\(p^\delta\)">\(p^\delta\)</span> and less than <span class="math" data-tex="\(p\)">\(p\)</span>, so the entire set lies in the nonzero quadratic residues modulo <span class="math" data-tex="\(p\)">\(p\)</span>. At least <span class="math" data-tex="\(p/3\)">\(p/3\)</span> classes are omitted. The prime-only arithmetic inequality with <span class="math" data-tex="\(N\asymp Q^2\)">\(N\asymp Q^2\)</span> then bounds the number of such exceptional <span class="math" data-tex="\(p\)">\(p\)</span> by a constant depending only on <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Positive smooth density is what cancels the <span class="math" data-tex="\(Q^2\)">\(Q^2\)</span> numerator; merely constructing a sublinear number of smooth integers would leave a growing bound. Successive square-root blocks have only <span class="math" data-tex="\(O(\log\log x)\)">\(O(\log\log x)\)</span> members, giving (10.1). Ordinary dyadic blocks have <span class="math" data-tex="\(O(\log x)\)">\(O(\log x)\)</span> members and would give only that weaker count. For <span class="math" data-tex="\(\delta\ge1\)">\(\delta\ge1\)</span>, the exceptional set is empty because <span class="math" data-tex="\(n_2(p)\le p-1\)">\(n_2(p)\le p-1\)</span>.</p>
+<h2 id="references-and-proof-coverage">References and proof coverage</h2>
+<p>The large sieve originates with Linnik; Gallagher's midpoint argument gives the elementary analytic estimate. The sharp interval-majorant method is due to Selberg, using Beurling's sign majorant. Montgomery developed the general arithmetic denominator. The delay function in Section 9 is Dickman's function; its fixed-parameter asymptotic is proved here from the elementary reciprocal-prime theorem.</p>
+<p>Koukoulopoulos, <em>The Distribution of Prime Numbers</em>, Chapter 25, Theorems 25.9, 25.11 and 25.16, treats these results and their normalizations. The local-spacing method and the exact uniform prime bound are due to Montgomery and Vaughan, <a href="https://doi.org/10.1112/S0025579300004708">“The large sieve”</a>, <em>Mathematika</em> 20 (1973), 119–134, Theorems 1–2 and Sections 2–6. Their <a href="https://doi.org/10.1112/jlms/s2-8.1.73">“Hilbert's inequality”</a>, <em>Journal of the London Mathematical Society</em> (2) 8 (1974), 73–82, supplies the weighted Hilbert method. Section 11 gives the full supporting argument, with independent rational certificates and an explicit harmonic remainder sufficient for the stated constants.</p>
+<p>The analytic bounds, sharp constant, Farey form, arithmetic denominator, weighted local-spacing refinement, exact all-interval prime constant 2, square example, smooth-number bridge, Linnik sparsity theorem, and all five exercise solutions are proved above.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-11.html">← The Siegel–Walfisz theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-13.html">The multiplicative large sieve and bilinear forms with characters →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-12.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Abelian number fields and Dirichlet L-functions at s = 1 · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="abelian-number-fields-and-dirichlet-l-functions-at-s-1">Abelian number fields and Dirichlet L-functions at <span class="math" data-tex="\(s=1\)">\(s=1\)</span></h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. No independent full-lesson review is claimed. Public domain (CC0).</em></p>
+<p>Characters turn the prime decomposition of a cyclotomic subfield into a product of one-dimensional Euler factors. At ramified primes, some characters lose their Euler factor, while the others retain the residue-field Frobenius. Keeping each character at its primitive conductor makes the product exact.</p>
+<p>We first work with
+<span class="math math-display" data-tex="\[
+E=\mathbf Q(\zeta_m),\quad G=\operatorname{Gal}(E/\mathbf Q)
+\simeq(\mathbf Z/m\mathbf Z)^\times,\quad
+K=E^H,\quad A=G/H.
+\tag{1}
+\]">\[
+E=\mathbf Q(\zeta_m),\quad G=\operatorname{Gal}(E/\mathbf Q)
+\simeq(\mathbf Z/m\mathbf Z)^\times,\quad
+K=E^H,\quad A=G/H.
+\tag{1}
+\]</span>
+The cyclotomic groups, integral bases, inertia and arithmetic Frobenius come from <a href="cyclotomic-fields.html"><em>Cyclotomic fields</em></a>. The zeta residue comes from <a href="the-dedekind-zeta-function-and-the-analytic-class-number-formula.html"><em>The Dedekind zeta function and the analytic class number formula</em></a>.</p>
+<h2 id="characters-conductors-and-subfields">Characters, conductors and subfields</h2>
+<p>A character of a finite abelian group is a homomorphism to <span class="math" data-tex="\(\mathbf C^\times\)">\(\mathbf C^\times\)</span>; its values are roots of unity. The characters form a group <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> under multiplication.</p>
+<p>We recall the finite duality facts with their proofs. Writing <span class="math" data-tex="\(G\)">\(G\)</span> as a product of cyclic groups shows that <span class="math" data-tex="\(|\widehat G|=|G|\)">\(|\widehat G|=|G|\)</span> and that characters separate points. A character of a subgroup <span class="math" data-tex="\(B\)">\(B\)</span> extends to <span class="math" data-tex="\(G\)">\(G\)</span>: choose <span class="math" data-tex="\(g\notin B\)">\(g\notin B\)</span>, let <span class="math" data-tex="\(d\)">\(d\)</span> be the order of its class modulo <span class="math" data-tex="\(B\)">\(B\)</span>, and choose a complex <span class="math" data-tex="\(d\)">\(d\)</span>-th root <span class="math" data-tex="\(z\)">\(z\)</span> of the character's value on <span class="math" data-tex="\(g^d\)">\(g^d\)</span>. Setting the value on <span class="math" data-tex="\(g\)">\(g\)</span> to <span class="math" data-tex="\(z\)">\(z\)</span> defines a character on <span class="math" data-tex="\(B\langle g\rangle\)">\(B\langle g\rangle\)</span>; the relation <span class="math" data-tex="\(g^d\in B\)">\(g^d\in B\)</span> makes it well-defined. Repeat until the finite group is exhausted. Thus restriction to any subgroup is onto.</p>
+<p>For <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span>, its annihilator is
+<span class="math math-display" data-tex="\[
+H^\perp=\{\chi\in\widehat G\mid\chi|_H=1\}
+\simeq\widehat{G/H},\qquad |H^\perp|=[G:H].
+\tag{2}
+\]">\[
+H^\perp=\{\chi\in\widehat G\mid\chi|_H=1\}
+\simeq\widehat{G/H},\qquad |H^\perp|=[G:H].
+\tag{2}
+\]</span>
+Conversely, for <span class="math" data-tex="\(X\leq\widehat G\)">\(X\leq\widehat G\)</span>, let
+<span class="math" data-tex="\(X^\perp=\{g\mid\chi(g)=1\text{ for all }\chi\in X\}\)">\(X^\perp=\{g\mid\chi(g)=1\text{ for all }\chi\in X\}\)</span>.
+The evaluation map identifies <span class="math" data-tex="\(G\)">\(G\)</span> with its double dual. Applying the surjective restriction map from <span class="math" data-tex="\(\widehat{\widehat G}\)">\(\widehat{\widehat G}\)</span> to <span class="math" data-tex="\(\widehat X\)">\(\widehat X\)</span> gives <span class="math" data-tex="\(|X^\perp|=|G|/|X|\)">\(|X^\perp|=|G|/|X|\)</span>; hence <span class="math" data-tex="\((X^\perp)^\perp=X\)">\((X^\perp)^\perp=X\)</span>. Together with Galois correspondence this proves the bijection
+<span class="math math-display" data-tex="\[
+K\longleftrightarrow X(K)=H^\perp.
+\tag{3}
+\]">\[
+K\longleftrightarrow X(K)=H^\perp.
+\tag{3}
+\]</span>
+Inclusions of fields correspond to inclusions of character groups.</p>
+<p>An ambient character modulo <span class="math" data-tex="\(m\)">\(m\)</span> has a unique primitive conductor. Indeed, the Chinese remainder theorem writes its group as a product of the groups modulo <span class="math" data-tex="\(p^a\)">\(p^a\)</span>. In each factor, choose the least <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(0\leq b\leq a\)">\(0\leq b\leq a\)</span>, through which the local character factors. The reduction maps are onto and their kernels are nested. Their least exponents therefore give
+<span class="math math-display" data-tex="\[
+f(\chi)=\prod_p p^{b_p},
+\tag{4}
+\]">\[
+f(\chi)=\prod_p p^{b_p},
+\tag{4}
+\]</span>
+and a uniquely determined primitive character modulo <span class="math" data-tex="\(f(\chi)\)">\(f(\chi)\)</span>. This includes the trivial character of conductor <span class="math" data-tex="\(1\)">\(1\)</span> and the trivial group modulo <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p>We identify each member of <span class="math" data-tex="\(X(K)\)">\(X(K)\)</span> with that primitive character. Its value on an integer is zero exactly when that integer is not coprime to its conductor. The group operation still means multiplication after inflation to a common modulus, followed by passage to the primitive representative. Multiplying the two zero-extended functions directly would not give that operation.</p>
+<p>The least cyclotomic modulus containing <span class="math" data-tex="\(K\)">\(K\)</span> is
+<span class="math math-display" data-tex="\[
+f_K=\operatorname{lcm}_{\chi\in X(K)}f(\chi).
+\tag{5}
+\]">\[
+f_K=\operatorname{lcm}_{\chi\in X(K)}f(\chi).
+\tag{5}
+\]</span>
+For divisors <span class="math" data-tex="\(f\mid m\)">\(f\mid m\)</span>, the field lies in <span class="math" data-tex="\(\mathbf Q(\zeta_f)\)">\(\mathbf Q(\zeta_f)\)</span> precisely when every character factors modulo <span class="math" data-tex="\(f\)">\(f\)</span>, by (2) and the kernel of reduction. This gives the least divisor <span class="math" data-tex="\(f_K\)">\(f_K\)</span>. If <span class="math" data-tex="\(K\)">\(K\)</span> also lies in <span class="math" data-tex="\(\mathbf Q(\zeta_{m&#x27;})\)">\(\mathbf Q(\zeta_{m&#x27;})\)</span>, the cyclotomic intersection formula from <em>Cyclotomic fields</em> puts it in <span class="math" data-tex="\(\mathbf Q(\zeta_{\gcd(m,m&#x27;)})\)">\(\mathbf Q(\zeta_{\gcd(m,m&#x27;)})\)</span>. Thus <span class="math" data-tex="\(f_K\mid m&#x27;\)">\(f_K\mid m&#x27;\)</span>, proving the global assertion.</p>
+<h2 id="recovering-all-three-decomposition-numbers">Recovering all three decomposition numbers</h2>
+<p>For a rational prime <span class="math" data-tex="\(p\)">\(p\)</span>, define subgroups of <span class="math" data-tex="\(X=X(K)\)">\(X=X(K)\)</span> by
+<span class="math math-display" data-tex="\[
+Y=\{\chi\in X\mid p\nmid f(\chi)\},\qquad
+Z=\{\chi\in Y\mid\chi(p)=1\}.
+\tag{6}
+\]">\[
+Y=\{\chi\in X\mid p\nmid f(\chi)\},\qquad
+Z=\{\chi\in Y\mid\chi(p)=1\}.
+\tag{6}
+\]</span>
+Equivalently <span class="math" data-tex="\(Y\)">\(Y\)</span> consists of the characters with <span class="math" data-tex="\(\chi(p)\ne0\)">\(\chi(p)\ne0\)</span>.</p>
+<p><strong>Proposition 17.0.</strong> If <span class="math" data-tex="\(pO_K=(\mathfrak p_1\cdots\mathfrak p_g)^e\)">\(pO_K=(\mathfrak p_1\cdots\mathfrak p_g)^e\)</span> and every <span class="math" data-tex="\(\mathfrak p_i\)">\(\mathfrak p_i\)</span> has residue degree <span class="math" data-tex="\(f\)">\(f\)</span>, then
+<span class="math math-display" data-tex="\[
+e=[X:Y],\qquad f=[Y:Z],\qquad g=|Z|.
+\tag{7}
+\]">\[
+e=[X:Y],\qquad f=[Y:Z],\qquad g=|Z|.
+\tag{7}
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(m=p^ab\)">\(m=p^ab\)</span>, <span class="math" data-tex="\((p,b)=1\)">\((p,b)=1\)</span>. In the full cyclotomic field, its inertia group is
+<span class="math math-display" data-tex="\[
+I_E=(\mathbf Z/p^a\mathbf Z)^\times\times\{1\}
+\]">\[
+I_E=(\mathbf Z/p^a\mathbf Z)^\times\times\{1\}
+\]</span>
+in the Chinese remainder decomposition; when <span class="math" data-tex="\(a=0\)">\(a=0\)</span> this is the trivial group. Its image in <span class="math" data-tex="\(A\)">\(A\)</span> is the inertia group <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(K/\mathbf Q\)">\(K/\mathbf Q\)</span>. A character's conductor is prime to <span class="math" data-tex="\(p\)">\(p\)</span> exactly when its <span class="math" data-tex="\(p\)">\(p\)</span>-component is trivial, so
+<span class="math math-display" data-tex="\[
+Y=\widehat{A/I},\qquad |Y|=|A|/|I|.
+\tag{8}
+\]">\[
+Y=\widehat{A/I},\qquad |Y|=|A|/|I|.
+\tag{8}
+\]</span>
+Here <span class="math" data-tex="\(|I|=e\)">\(|I|=e\)</span> by the inertia theorem.</p>
+<p>The arithmetic Frobenius of the residue extension is the image in <span class="math" data-tex="\(A/I\)">\(A/I\)</span> of the cyclotomic action <span class="math" data-tex="\(p\bmod b\)">\(p\bmod b\)</span>. For <span class="math" data-tex="\(\chi\in Y\)">\(\chi\in Y\)</span>, evaluation on this element <span class="math" data-tex="\(F\)">\(F\)</span> is exactly its primitive value <span class="math" data-tex="\(\chi(p)\)">\(\chi(p)\)</span>. The subgroup <span class="math" data-tex="\(\langle F\rangle=D/I\)">\(\langle F\rangle=D/I\)</span> has order <span class="math" data-tex="\(f\)">\(f\)</span>, where <span class="math" data-tex="\(D\)">\(D\)</span> is the decomposition group. By character restriction surjectivity, the evaluation map
+<span class="math math-display" data-tex="\[
+Y\longrightarrow\widehat{\langle F\rangle}
+\]">\[
+Y\longrightarrow\widehat{\langle F\rangle}
+\]</span>
+is onto and has kernel <span class="math" data-tex="\(Z\)">\(Z\)</span>. Therefore <span class="math" data-tex="\([Y:Z]=f\)">\([Y:Z]=f\)</span> and
+<span class="math math-display" data-tex="\[
+|Z|=\frac{|A|}{|I|f}=\frac{|A|}{|D|}=g.
+\]">\[
+|Z|=\frac{|A|}{|I|f}=\frac{|A|}{|D|}=g.
+\]</span>
+Together with <span class="math" data-tex="\(|X|=|A|\)">\(|X|=|A|\)</span>, this proves all of (7), including ramified primes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="factoring-the-zeta-function">Factoring the zeta function</h2>
+<p>For a primitive character, put
+<span class="math math-display" data-tex="\[
+L(s,\chi)=\sum_{a\geq1}\chi(a)a^{-s}
+=\prod_p(1-\chi(p)p^{-s})^{-1},\qquad \Re s&gt;1.
+\tag{9}
+\]">\[
+L(s,\chi)=\sum_{a\geq1}\chi(a)a^{-s}
+=\prod_p(1-\chi(p)p^{-s})^{-1},\qquad \Re s&gt;1.
+\tag{9}
+\]</span>
+Absolute convergence follows from <span class="math" data-tex="\(|\chi(a)|\leq1\)">\(|\chi(a)|\leq1\)</span>; multiplicativity and integer prime factorization prove the product by finite expansion and absolute exhaustion. For the conductor-one character <span class="math" data-tex="\(1\)">\(1\)</span>, this is the Riemann zeta function.</p>
+<p><strong>Theorem 17.1.</strong> For every cyclotomic subfield <span class="math" data-tex="\(K\)">\(K\)</span>,
+<span class="math math-display" data-tex="\[
+\zeta_K(s)=\prod_{\chi\in X(K)}L(s,\chi),\qquad \Re s&gt;1,
+\tag{10}
+\]">\[
+\zeta_K(s)=\prod_{\chi\in X(K)}L(s,\chi),\qquad \Re s&gt;1,
+\tag{10}
+\]</span>
+where every factor uses the primitive character.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(p\)">\(p\)</span>, and put <span class="math" data-tex="\(T=p^{-s}\)">\(T=p^{-s}\)</span>. The characters outside <span class="math" data-tex="\(Y\)">\(Y\)</span> have value zero and contribute the factor <span class="math" data-tex="\(1\)">\(1\)</span>. By the proof of Proposition 17.0, the values <span class="math" data-tex="\(\chi(p)\)">\(\chi(p)\)</span>, <span class="math" data-tex="\(\chi\in Y\)">\(\chi\in Y\)</span>, run through every <span class="math" data-tex="\(f\)">\(f\)</span>-th root of unity exactly <span class="math" data-tex="\(g=|Y|/f\)">\(g=|Y|/f\)</span> times. Thus
+<span class="math math-display" data-tex="\[
+\prod_{\chi\in X}(1-\chi(p)T)
+=\left(\prod_{\omega^f=1}(1-\omega T)\right)^g
+=(1-T^f)^g.
+\tag{11}
+\]">\[
+\prod_{\chi\in X}(1-\chi(p)T)
+=\left(\prod_{\omega^f=1}(1-\omega T)\right)^g
+=(1-T^f)^g.
+\tag{11}
+\]</span>
+The reciprocal is <span class="math" data-tex="\((1-p^{-fs})^{-g}\)">\((1-p^{-fs})^{-g}\)</span>, which is precisely the product of the <span class="math" data-tex="\(g\)">\(g\)</span> prime-ideal factors above <span class="math" data-tex="\(p\)">\(p\)</span>. This argument includes <span class="math" data-tex="\(p\mid f_K\)">\(p\mid f_K\)</span>. Taking the absolutely convergent product over all <span class="math" data-tex="\(p\)">\(p\)</span> proves (10). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, <span class="math" data-tex="\(K=\mathbf Q(\zeta_5)\)">\(K=\mathbf Q(\zeta_5)\)</span> has four characters. The three nontrivial ones have conductor <span class="math" data-tex="\(5\)">\(5\)</span>, while the trivial one has conductor <span class="math" data-tex="\(1\)">\(1\)</span>. At <span class="math" data-tex="\(5\)">\(5\)</span>, only the latter contributes, giving <span class="math" data-tex="\((1-5^{-s})^{-1}\)">\((1-5^{-s})^{-1}\)</span>, the factor of the single totally ramified prime. If all characters were instead extended by zero modulo <span class="math" data-tex="\(5\)">\(5\)</span>, even the trivial factor would disappear: that product would equal <span class="math" data-tex="\((1-5^{-s})\zeta_K(s)\)">\((1-5^{-s})\zeta_K(s)\)</span>.</p>
+<p>For <span class="math" data-tex="\(K=\mathbf Q(\zeta_{12})\)">\(K=\mathbf Q(\zeta_{12})\)</span>,
+<span class="math math-display" data-tex="\[
+X(K)=\{1,\chi_{-3},\chi_{-4},\chi_{12}\}.
+\tag{12}
+\]">\[
+X(K)=\{1,\chi_{-3},\chi_{-4},\chi_{12}\}.
+\tag{12}
+\]</span>
+At <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(Y=\{1,\chi_{-3}\}\)">\(Y=\{1,\chi_{-3}\}\)</span> and <span class="math" data-tex="\(\chi_{-3}(2)=-1\)">\(\chi_{-3}(2)=-1\)</span>; hence <span class="math" data-tex="\(e=2,f=2,g=1\)">\(e=2,f=2,g=1\)</span>. At <span class="math" data-tex="\(3\)">\(3\)</span>, the same calculation uses <span class="math" data-tex="\(\{1,\chi_{-4}\}\)">\(\{1,\chi_{-4}\}\)</span>, again giving <span class="math" data-tex="\(2,2,1\)">\(2,2,1\)</span>. These give the factors <span class="math" data-tex="\((1-2^{-2s})^{-1}\)">\((1-2^{-2s})^{-1}\)</span> and <span class="math" data-tex="\((1-3^{-2s})^{-1}\)">\((1-3^{-2s})^{-1}\)</span>. At <span class="math" data-tex="\(5\)">\(5\)</span>, evaluation has order two and kernel of size two, so <span class="math" data-tex="\(e=1,f=2,g=2\)">\(e=1,f=2,g=2\)</span>. These agree with the earlier direct prime decomposition.</p>
+<h2 id="continuation-and-nonvanishing-at-one">Continuation and nonvanishing at one</h2>
+<p><strong>Proposition 17.2.</strong> If <span class="math" data-tex="\(\chi\ne1\)">\(\chi\ne1\)</span>, its series <span class="math" data-tex="\(L(s,\chi)\)">\(L(s,\chi)\)</span> converges for <span class="math" data-tex="\(\Re s&gt;0\)">\(\Re s&gt;0\)</span> and is holomorphic there.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(q=f(\chi)\)">\(q=f(\chi)\)</span>, then
+<span class="math" data-tex="\(\sum_{a=1}^q\chi(a)=0\)">\(\sum_{a=1}^q\chi(a)=0\)</span>: multiplication by a unit <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(\chi(u)\ne1\)">\(\chi(u)\ne1\)</span> permutes the residues and multiplies this sum by <span class="math" data-tex="\(\chi(u)\)">\(\chi(u)\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+B_\chi(x)=\sum_{a\leq x}\chi(a)
+\]">\[
+B_\chi(x)=\sum_{a\leq x}\chi(a)
+\]</span>
+is bounded by a constant depending on <span class="math" data-tex="\(q\)">\(q\)</span>. Finite Abel summation gives
+<span class="math math-display" data-tex="\[
+\sum_{a\leq T}\chi(a)a^{-s}
+=B_\chi(T)T^{-s}
+ +s\int_1^T B_\chi(x)x^{-s-1}\,dx.
+\]">\[
+\sum_{a\leq T}\chi(a)a^{-s}
+=B_\chi(T)T^{-s}
+ +s\int_1^T B_\chi(x)x^{-s-1}\,dx.
+\]</span>
+On a compact subset of <span class="math" data-tex="\(\Re s&gt;0\)">\(\Re s&gt;0\)</span>, take <span class="math" data-tex="\(\sigma_0&gt;0\)">\(\sigma_0&gt;0\)</span> below the real parts and bound <span class="math" data-tex="\(|s|\)">\(|s|\)</span>. The endpoint and integral tail tend uniformly to zero, with bounds <span class="math" data-tex="\(O(T^{-\sigma_0})\)">\(O(T^{-\sigma_0})\)</span>. The limiting integral
+<span class="math math-display" data-tex="\[
+L(s,\chi)=s\int_1^\infty B_\chi(x)x^{-s-1}\,dx
+\tag{13}
+\]">\[
+L(s,\chi)=s\int_1^\infty B_\chi(x)x^{-s-1}\,dx
+\tag{13}
+\]</span>
+is holomorphic: <span class="math" data-tex="\(x^{-\sigma_0-1}(\log x)^j\)">\(x^{-\sigma_0-1}(\log x)^j\)</span> dominates each derivative on the compact set and is integrable. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 17.3.</strong> Every nontrivial primitive Dirichlet character satisfies
+<span class="math math-display" data-tex="\[
+L(1,\chi)\ne0.
+\tag{14}
+\]">\[
+L(1,\chi)\ne0.
+\tag{14}
+\]</span></p>
+<p><strong>Proof.</strong> Take the full field <span class="math" data-tex="\(E=\mathbf Q(\zeta_m)\)">\(E=\mathbf Q(\zeta_m)\)</span>, where <span class="math" data-tex="\(m=f(\chi)\)">\(m=f(\chi)\)</span>. Its character group includes the inflation of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and the conductor-one trivial character. Equation (10) gives
+<span class="math math-display" data-tex="\[
+\frac{\zeta_E(s)}{\zeta(s)}
+=\prod_{\psi\in X(E),\,\psi\ne1}L(s,\psi).
+\]">\[
+\frac{\zeta_E(s)}{\zeta(s)}
+=\prod_{\psi\in X(E),\,\psi\ne1}L(s,\psi).
+\]</span>
+All factors on the right are holomorphic at <span class="math" data-tex="\(1\)">\(1\)</span> by Proposition 17.2. On the left, the simple-pole residues proved in the preceding lesson give the nonzero limit
+<span class="math math-display" data-tex="\[
+\lim_{s\downarrow1}\frac{\zeta_E(s)}{\zeta(s)}
+=\frac{2^{r_1}(2\pi)^{r_2}h_ER_E}
+ {w_E\sqrt{|d_E|}}&gt;0.
+\]">\[
+\lim_{s\downarrow1}\frac{\zeta_E(s)}{\zeta(s)}
+=\frac{2^{r_1}(2\pi)^{r_2}h_ER_E}
+ {w_E\sqrt{|d_E|}}&gt;0.
+\]</span>
+The finite product of their values at <span class="math" data-tex="\(1\)">\(1\)</span> is therefore nonzero, so each value is nonzero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a nonprincipal character presented at an imprimitive modulus, its usual series differs from the primitive one by finitely many factors <span class="math" data-tex="\(1-\chi^*(p)p^{-s}\)">\(1-\chi^*(p)p^{-s}\)</span>. None vanishes at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, since <span class="math" data-tex="\(|\chi^*(p)|\leq1&lt;p\)">\(|\chi^*(p)|\leq1&lt;p\)</span>. Nonvanishing therefore holds for that convention too.</p>
+<h2 id="quadratic-class-numbers-as-finite-sums">Quadratic class numbers as finite sums</h2>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> be the fundamental discriminant of a quadratic field <span class="math" data-tex="\(F\)">\(F\)</span>, put <span class="math" data-tex="\(q=|D|\)">\(q=|D|\)</span>, and write <span class="math" data-tex="\(\chi=\chi_D\)">\(\chi=\chi_D\)</span>. Set
+<span class="math math-display" data-tex="\[
+\zeta_q=e^{2\pi i/q},\qquad
+\tau_D=\sum_{a=1}^{q-1}\chi(a)\zeta_q^a.
+\]">\[
+\zeta_q=e^{2\pi i/q},\qquad
+\tau_D=\sum_{a=1}^{q-1}\chi(a)\zeta_q^a.
+\]</span>
+The finite quadratic Gauss-transform identity was proved in <em>Cyclotomic fields</em>, including its zero values at nonunits:
+<span class="math math-display" data-tex="\[
+\sum_{a=1}^{q-1}\chi(a)\zeta_q^{an}
+=\chi(n)\tau_D,\qquad \tau_D^2=D.
+\tag{15}
+\]">\[
+\sum_{a=1}^{q-1}\chi(a)\zeta_q^{an}
+=\chi(n)\tau_D,\qquad \tau_D^2=D.
+\tag{15}
+\]</span>
+The additional <strong>sign theorem</strong> is proved in <a href="providers/NT-DIRL-03.html"><em>Gauss sums</em></a>, Theorem 5.1, with the Gaussian and branch argument of sections 3–4 (<a href="providers/src/NT-DIRL-03.md">source</a>). In our notation it says
+<span class="math math-display" data-tex="\[
+\tau_D=
+\begin{cases}
+\sqrt D,&amp;D&gt;0,\\
+i\sqrt{|D|},&amp;D&lt;0,
+\end{cases}
+\tag{16}
+\]">\[
+\tau_D=
+\begin{cases}
+\sqrt D,&amp;D&gt;0,\\
+i\sqrt{|D|},&amp;D&lt;0,
+\end{cases}
+\tag{16}
+\]</span>
+where both real square roots are positive. The provider defines <span class="math" data-tex="\(e(x)=\exp(2\pi i x)\)">\(e(x)=\exp(2\pi i x)\)</span>, exactly as here, and covers every real primitive character, including all fundamental discriminants with a factor at <span class="math" data-tex="\(2\)">\(2\)</span>. Thus no conjugation or exponential-sign conversion is needed.</p>
+<p>Here is how the cited proof determines the phase. The Gaussian transformation uses the holomorphic square root positive on the positive real axis. Its limit at <span class="math" data-tex="\(t-2i/q\)">\(t-2i/q\)</span>, as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>, gives the exact quadratic sum for every positive integer modulus; for an odd prime this is <span class="math" data-tex="\(\sqrt p\)">\(\sqrt p\)</span> or <span class="math" data-tex="\(i\sqrt p\)">\(i\sqrt p\)</span> according to <span class="math" data-tex="\(p\bmod4\)">\(p\bmod4\)</span>. Theorem 5.1 then combines these prime evaluations with the direct sums for <span class="math" data-tex="\(-4,8,-8\)">\(-4,8,-8\)</span>. Its Chinese-remainder product formula includes the cross-character factors; quadratic reciprocity shows that their signs turn the product phase into <span class="math" data-tex="\(1\)">\(1\)</span> for positive fundamental discriminant and <span class="math" data-tex="\(i\)">\(i\)</span> for negative fundamental discriminant. These are the full Gaussian-limit and conductor-product proofs of (16), rather than a choice between the two square roots in (15). For historical comparison, the exact classical sign theorem is Hecke VIII §58, Satz 164, printed p.242.</p>
+<p><strong>Theorem 17.4.</strong> The ordinary ideal class number is
+<span class="math math-display" data-tex="\[
+h_F=-\frac{w_F}{2|D|}
+\sum_{a=1}^{|D|-1}\chi_D(a)a,\qquad D&lt;0.
+\tag{17}
+\]">\[
+h_F=-\frac{w_F}{2|D|}
+\sum_{a=1}^{|D|-1}\chi_D(a)a,\qquad D&lt;0.
+\tag{17}
+\]</span>
+For <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>, if <span class="math" data-tex="\(\varepsilon&gt;1\)">\(\varepsilon&gt;1\)</span> is the fundamental unit in the chosen real embedding, of either norm, then
+<span class="math math-display" data-tex="\[
+h_F\log\varepsilon
+=-\frac12\sum_{a=1}^{D-1}
+\chi_D(a)\log\sin\frac{\pi a}{D}.
+\tag{18}
+\]">\[
+h_F\log\varepsilon
+=-\frac12\sum_{a=1}^{D-1}
+\chi_D(a)\log\sin\frac{\pi a}{D}.
+\tag{18}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>, insert (15) into the absolutely convergent damped series:
+<span class="math math-display" data-tex="\[
+\sum_{n\geq1}\frac{\chi(n)r^n}{n}
+=-\frac1{\tau_D}\sum_{a=1}^{q-1}
+\chi(a)\log(1-r\zeta_q^a).
+\tag{19}
+\]">\[
+\sum_{n\geq1}\frac{\chi(n)r^n}{n}
+=-\frac1{\tau_D}\sum_{a=1}^{q-1}
+\chi(a)\log(1-r\zeta_q^a).
+\tag{19}
+\]</span>
+The logarithm is the branch reached from <span class="math" data-tex="\(r=0\)">\(r=0\)</span>; all these arguments have positive real part.</p>
+<p>To justify the limit on the left, put <span class="math" data-tex="\(U_N=\sum_{n=1}^N\chi(n)/n\)">\(U_N=\sum_{n=1}^N\chi(n)/n\)</span>. Proposition 17.2 gives <span class="math" data-tex="\(U_N\to L(1,\chi)\)">\(U_N\to L(1,\chi)\)</span>. Summation of the geometric weights yields
+<span class="math math-display" data-tex="\[
+\sum_{n\geq1}\frac{\chi(n)r^n}{n}
+=(1-r)\sum_{N\geq1}U_Nr^N.
+\]">\[
+\sum_{n\geq1}\frac{\chi(n)r^n}{n}
+=(1-r)\sum_{N\geq1}U_Nr^N.
+\]</span>
+Split the last sum at a fixed large <span class="math" data-tex="\(N_0\)">\(N_0\)</span>. The finite initial part tends to zero after multiplication by <span class="math" data-tex="\(1-r\)">\(1-r\)</span>, and the tail differs from its limiting constant by at most <span class="math" data-tex="\(\sup_{N\geq N_0}|U_N-L(1,\chi)|\)">\(\sup_{N\geq N_0}|U_N-L(1,\chi)|\)</span>. Thus the limit is <span class="math" data-tex="\(L(1,\chi)\)">\(L(1,\chi)\)</span>. Every logarithm on the finite right side of (19) also has a finite limit, since <span class="math" data-tex="\(1\leq a&lt;q\)">\(1\leq a&lt;q\)</span>.</p>
+<p>For these indices,
+<span class="math math-display" data-tex="\[
+\log(1-\zeta_q^a)
+=\log\left(2\sin\frac{\pi a}{q}\right)
+ +i\pi\left(\frac aq-\frac12\right).
+\tag{20}
+\]">\[
+\log(1-\zeta_q^a)
+=\log\left(2\sin\frac{\pi a}{q}\right)
+ +i\pi\left(\frac aq-\frac12\right).
+\tag{20}
+\]</span>
+This follows from
+<span class="math" data-tex="\(1-e^{2\pi ia/q}=2\sin(\pi a/q)e^{i(\pi a/q-\pi/2)}\)">\(1-e^{2\pi ia/q}=2\sin(\pi a/q)e^{i(\pi a/q-\pi/2)}\)</span>;
+the displayed argument lies between <span class="math" data-tex="\(-\pi/2\)">\(-\pi/2\)</span> and <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span>.</p>
+<p>If <span class="math" data-tex="\(D&lt;0\)">\(D&lt;0\)</span>, then <span class="math" data-tex="\(\chi(q-a)=-\chi(a)\)">\(\chi(q-a)=-\chi(a)\)</span>, so the real logarithms cancel in pairs. Also <span class="math" data-tex="\(\sum_a\chi(a)=0\)">\(\sum_a\chi(a)=0\)</span>. Equations (16), (19) and (20) give
+<span class="math math-display" data-tex="\[
+L(1,\chi_D)
+=-\frac{\pi}{q\sqrt q}\sum_{a=1}^{q-1}\chi_D(a)a.
+\tag{21}
+\]">\[
+L(1,\chi_D)
+=-\frac{\pi}{q\sqrt q}\sum_{a=1}^{q-1}\chi_D(a)a.
+\tag{21}
+\]</span>
+The previous residue formula and quadratic factorization give
+<span class="math" data-tex="\(L(1,\chi_D)=2\pi h_F/(w_F\sqrt q)\)">\(L(1,\chi_D)=2\pi h_F/(w_F\sqrt q)\)</span>, because <span class="math" data-tex="\(R_F=1\)">\(R_F=1\)</span>. Comparing proves (17), including <span class="math" data-tex="\(D=-3,-4\)">\(D=-3,-4\)</span> with their larger <span class="math" data-tex="\(w_F\)">\(w_F\)</span>.</p>
+<p>If <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>, then <span class="math" data-tex="\(\chi(D-a)=\chi(a)\)">\(\chi(D-a)=\chi(a)\)</span>; the imaginary parts in (20) cancel. The constant <span class="math" data-tex="\(\log2\)">\(\log2\)</span> cancels because the character sum is zero. Therefore
+<span class="math math-display" data-tex="\[
+L(1,\chi_D)
+=-\frac1{\sqrt D}\sum_{a=1}^{D-1}
+\chi_D(a)\log\sin\frac{\pi a}{D}.
+\tag{22}
+\]">\[
+L(1,\chi_D)
+=-\frac1{\sqrt D}\sum_{a=1}^{D-1}
+\chi_D(a)\log\sin\frac{\pi a}{D}.
+\tag{22}
+\]</span>
+Now <span class="math" data-tex="\(R_F=\log\varepsilon,\ w_F=2\)">\(R_F=\log\varepsilon,\ w_F=2\)</span>, and the residue formula is
+<span class="math" data-tex="\(L(1,\chi_D)=2h_F\log\varepsilon/\sqrt D\)">\(L(1,\chi_D)=2h_F\log\varepsilon/\sqrt D\)</span>. This proves (18). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The ordinary and narrow conventions agree after their constants are matched. If <span class="math" data-tex="\(h_F^+\)">\(h_F^+\)</span> is the narrow class number and <span class="math" data-tex="\(\varepsilon^+&gt;1\)">\(\varepsilon^+&gt;1\)</span> the least unit of norm <span class="math" data-tex="\(+1\)">\(+1\)</span>, the unit-sign sequence from <a href="quadratic-fields-ideal-classes-and-binary-quadratic-forms.html"><em>Quadratic fields: ideal classes and binary quadratic forms</em></a> gives
+<span class="math math-display" data-tex="\[
+h_F^+\log\varepsilon^+=2h_F\log\varepsilon.
+\tag{23}
+\]">\[
+h_F^+\log\varepsilon^+=2h_F\log\varepsilon.
+\tag{23}
+\]</span>
+When <span class="math" data-tex="\(N\varepsilon=-1\)">\(N\varepsilon=-1\)</span>, one has <span class="math" data-tex="\(h_F^+=h_F\)">\(h_F^+=h_F\)</span> and <span class="math" data-tex="\(\varepsilon^+=\varepsilon^2\)">\(\varepsilon^+=\varepsilon^2\)</span>. When <span class="math" data-tex="\(N\varepsilon=+1\)">\(N\varepsilon=+1\)</span>, one has <span class="math" data-tex="\(h_F^+=2h_F\)">\(h_F^+=2h_F\)</span> and <span class="math" data-tex="\(\varepsilon^+=\varepsilon\)">\(\varepsilon^+=\varepsilon\)</span>.</p>
+<p>For <span class="math" data-tex="\(D=-4\)">\(D=-4\)</span>, the weighted sum is <span class="math" data-tex="\(1-3=-2\)">\(1-3=-2\)</span>, and (17) gives <span class="math" data-tex="\(h=1\)">\(h=1\)</span>. For <span class="math" data-tex="\(D=-23\)">\(D=-23\)</span>, the positive quadratic residues sum to <span class="math" data-tex="\(92\)">\(92\)</span>, while all residues <span class="math" data-tex="\(1,\ldots,22\)">\(1,\ldots,22\)</span> sum to <span class="math" data-tex="\(253\)">\(253\)</span>. Thus the weighted sum is <span class="math" data-tex="\(184-253=-69\)">\(184-253=-69\)</span>, giving <span class="math" data-tex="\(h=3\)">\(h=3\)</span>.</p>
+<p>For <span class="math" data-tex="\(D=5\)">\(D=5\)</span>, the values on <span class="math" data-tex="\(1,2,3,4\)">\(1,2,3,4\)</span> are <span class="math" data-tex="\(1,-1,-1,1\)">\(1,-1,-1,1\)</span>. Equation (18) reduces to
+<span class="math math-display" data-tex="\[
+h\log\varphi
+=\log\frac{\sin(2\pi/5)}{\sin(\pi/5)}
+=\log\left(2\cos\frac\pi5\right)=\log\varphi,
+\quad\varphi=\frac{1+\sqrt5}{2}.
+\tag{24}
+\]">\[
+h\log\varphi
+=\log\frac{\sin(2\pi/5)}{\sin(\pi/5)}
+=\log\left(2\cos\frac\pi5\right)=\log\varphi,
+\quad\varphi=\frac{1+\sqrt5}{2}.
+\tag{24}
+\]</span>
+Here <span class="math" data-tex="\(2\cos(\pi/5)\)">\(2\cos(\pi/5)\)</span> is the positive root of <span class="math" data-tex="\(t^2-t-1\)">\(t^2-t-1\)</span>, from the fifth-root identity, and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is the previously proved fundamental unit. Consequently <span class="math" data-tex="\(h=1\)">\(h=1\)</span>.</p>
+<h2 id="abelian-fields-and-their-conductor-discriminant-formula">Abelian fields and their conductor–discriminant formula</h2>
+<p>The next two theorems use the exact written programme proofs in <a href="../NT-CFT/kronecker-weber-and-the-maximal-abelian-extension-of-the-rationals.html"><em>Kronecker–Weber and the maximal abelian extension of the rationals</em></a> (<a href="../NT-CFT/src/kronecker-weber-and-the-maximal-abelian-extension-of-the-rationals.md">source</a>).</p>
+<p><strong>Theorem 17.5 (Kronecker–Weber).</strong> Every finite abelian extension of <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> is contained in a cyclotomic field. Consequently (3), (7) and (10) apply to every abelian number field.</p>
+<p><strong>Proof from the programme result.</strong> The provider's Theorem 20.2 proves the finite assertion using its earlier global conductor and ray-field containment theorems. A finite abelian extension has a conductor bounded by some modulus <span class="math" data-tex="\(m\infty\)">\(m\infty\)</span>, so it lies in the rational ray field for that modulus. Proposition 20.1 identifies this ray field with <span class="math" data-tex="\(\mathbf Q(\zeta_m)\)">\(\mathbf Q(\zeta_m)\)</span>: its ray group is <span class="math" data-tex="\((\mathbf Z/m\mathbf Z)^\times\)">\((\mathbf Z/m\mathbf Z)^\times\)</span>, the local cyclotomic symbols annihilate the modulus subgroup, and cyclotomic irreducibility gives the same degree as the ray group. This includes <span class="math" data-tex="\(m=1,2\)">\(m=1,2\)</span>. After choosing the resulting cyclotomic embedding, the finite character, decomposition and Euler-factor proofs above apply unchanged. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 17.6 (conductor–discriminant).</strong> For every finite abelian number field <span class="math" data-tex="\(K\)">\(K\)</span>,
+<span class="math math-display" data-tex="\[
+|d_K|=\prod_{\chi\in X(K)}f(\chi).
+\tag{25}
+\]">\[
+|d_K|=\prod_{\chi\in X(K)}f(\chi).
+\tag{25}
+\]</span>
+The conductors are those of the primitive representatives in (4); the trivial character contributes <span class="math" data-tex="\(1\)">\(1\)</span>. The infinity part of a global conductor is not an integer factor in (25).</p>
+<p><strong>Proof from the programme result.</strong> Proposition 20.5 in the cited class-field lesson identifies the finite Dirichlet conductor of each character with its local conductor: their exponents are the least exponents at which the corresponding local unit groups lie in its kernel. The inversion relating the idèle character to the cyclotomic exponent character preserves that kernel. Thus its Theorem 20.6 uses exactly our conductors, rather than conductors at a chosen larger modulus.</p>
+<p>For completeness, its local-to-global argument is as follows. Fix <span class="math" data-tex="\(p\)">\(p\)</span>, let <span class="math" data-tex="\(D_p\)">\(D_p\)</span> be the decomposition group in <span class="math" data-tex="\(A=\operatorname{Gal}(K/\mathbf Q)\)">\(A=\operatorname{Gal}(K/\mathbf Q)\)</span>, and let <span class="math" data-tex="\(E/\mathbf Q_p\)">\(E/\mathbf Q_p\)</span> be the corresponding completion. There are <span class="math" data-tex="\(g=[A:D_p]\)">\(g=[A:D_p]\)</span> primes above <span class="math" data-tex="\(p\)">\(p\)</span>. The character-extension argument preceding (2) makes restriction <span class="math" data-tex="\(\widehat A\to\widehat{D_p}\)">\(\widehat A\to\widehat{D_p}\)</span> onto, with every fibre of size <span class="math" data-tex="\(g\)">\(g\)</span>. The earlier local conductor–discriminant theorem, class-field Theorem 10.5, therefore gives
+<span class="math math-display" data-tex="\[
+\sum_{\chi\in X(K)}v_p(f(\chi))
+=g\sum_{\eta\in\widehat{D_p}}a(\eta)
+=g\,v_p(\mathfrak d_{E/\mathbf Q_p}),
+\]">\[
+\sum_{\chi\in X(K)}v_p(f(\chi))
+=g\sum_{\eta\in\widehat{D_p}}a(\eta)
+=g\,v_p(\mathfrak d_{E/\mathbf Q_p}),
+\]</span>
+where <span class="math" data-tex="\(a(\eta)\)">\(a(\eta)\)</span> is the local conductor exponent and <span class="math" data-tex="\(\mathfrak d_{E/\mathbf Q_p}\)">\(\mathfrak d_{E/\mathbf Q_p}\)</span> is the local discriminant ideal. The last term is <span class="math" data-tex="\(v_p(d_K)\)">\(v_p(d_K)\)</span>: the completed integral algebra is the product of the integral rings at all primes over <span class="math" data-tex="\(p\)">\(p\)</span>, and its trace matrix is block diagonal, with one local trace matrix per factor. The Galois hypothesis makes those <span class="math" data-tex="\(g\)">\(g\)</span> factors isomorphic. Equality of every prime exponent proves (25), with the absolute value removing the archimedean sign. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The class-field proof uses only the finite character duality already established before (3), together with its own earlier local conductor theorem. Its proof of Kronecker–Weber precedes that use. Therefore these imports do not use (25), Theorem 17.4 or the general abelian conclusion as their own prerequisites. Equation (25) was not used to prove the zeta factorization or the quadratic formulas.</p>
+<p>As a consistency check, (12) has conductors <span class="math" data-tex="\(1,3,4,12\)">\(1,3,4,12\)</span>, whose product is <span class="math" data-tex="\(144\)">\(144\)</span>, the independently computed discriminant of <span class="math" data-tex="\(\mathbf Q(\zeta_{12})\)">\(\mathbf Q(\zeta_{12})\)</span>.</p>
+<h2 id="exercises-and-complete-solutions">Exercises and complete solutions</h2>
+<p><strong>Exercise 1.</strong> Determine <span class="math" data-tex="\(X(\mathbf Q(\sqrt{-3}))\)">\(X(\mathbf Q(\sqrt{-3}))\)</span>.</p>
+<p><strong>Solution 1.</strong> This field is <span class="math" data-tex="\(\mathbf Q(\zeta_3)\)">\(\mathbf Q(\zeta_3)\)</span>, because <span class="math" data-tex="\(\zeta_3=(-1+\sqrt{-3})/2\)">\(\zeta_3=(-1+\sqrt{-3})/2\)</span>. Its Galois group is the order-two unit group modulo <span class="math" data-tex="\(3\)">\(3\)</span>. Its two characters are the conductor-one trivial character and the primitive quadratic character
+<span class="math math-display" data-tex="\[
+\chi_{-3}(a)=
+\begin{cases}
+0,&amp;3\mid a,\\
+1,&amp;a\equiv1\pmod3,\\
+-1,&amp;a\equiv2\pmod3.
+\end{cases}
+\]">\[
+\chi_{-3}(a)=
+\begin{cases}
+0,&amp;3\mid a,\\
+1,&amp;a\equiv1\pmod3,\\
+-1,&amp;a\equiv2\pmod3.
+\end{cases}
+\]</span>
+The latter has order two and cannot factor modulo <span class="math" data-tex="\(1\)">\(1\)</span>. Thus <span class="math" data-tex="\(X=\{1,\chi_{-3}\}\)">\(X=\{1,\chi_{-3}\}\)</span>.</p>
+<p><strong>Exercise 2.</strong> Prove the zeta factorization for a quadratic field directly from its decomposition law.</p>
+<p><strong>Solution 2.</strong> Its group is <span class="math" data-tex="\(\{1,\chi_D\}\)">\(\{1,\chi_D\}\)</span>. At <span class="math" data-tex="\(\chi_D(p)=1\)">\(\chi_D(p)=1\)</span>, the product of the two factors is <span class="math" data-tex="\((1-p^{-s})^{-2}\)">\((1-p^{-s})^{-2}\)</span>, matching two degree-one primes. At <span class="math" data-tex="\(-1\)">\(-1\)</span>, it is
+<span class="math" data-tex="\((1-p^{-s})^{-1}(1+p^{-s})^{-1}=(1-p^{-2s})^{-1}\)">\((1-p^{-s})^{-1}(1+p^{-s})^{-1}=(1-p^{-2s})^{-1}\)</span>, matching one degree-two prime. At <span class="math" data-tex="\(0\)">\(0\)</span>, the nontrivial factor is <span class="math" data-tex="\(1\)">\(1\)</span>, while the trivial factor remains <span class="math" data-tex="\((1-p^{-s})^{-1}\)">\((1-p^{-s})^{-1}\)</span>, matching one ramified degree-one prime. Absolute convergence proves
+<span class="math" data-tex="\(\zeta_F(s)=\zeta(s)L(s,\chi_D)\)">\(\zeta_F(s)=\zeta(s)L(s,\chi_D)\)</span> after multiplication over all primes.</p>
+<p><strong>Exercise 3.</strong> Compute <span class="math" data-tex="\(h(-23)\)">\(h(-23)\)</span> and <span class="math" data-tex="\(h(-47)\)">\(h(-47)\)</span> and compare them with reduced forms.</p>
+<p><strong>Solution 3.</strong> For <span class="math" data-tex="\(D=-p\)">\(D=-p\)</span>, <span class="math" data-tex="\(p=23,47\)">\(p=23,47\)</span>, one has <span class="math" data-tex="\(w=2\)">\(w=2\)</span> and <span class="math" data-tex="\(\chi_D(a)=(a/p)\)">\(\chi_D(a)=(a/p)\)</span>. Write <span class="math" data-tex="\(R_p\)">\(R_p\)</span> for the sum of the nonzero quadratic residues as their representatives in <span class="math" data-tex="\(1,\ldots,p-1\)">\(1,\ldots,p-1\)</span>. Enumerating the squares of <span class="math" data-tex="\(1,\ldots,(p-1)/2\)">\(1,\ldots,(p-1)/2\)</span> gives
+<span class="math math-display" data-tex="\[
+R_{23}=92,\qquad R_{47}=423.
+\]">\[
+R_{23}=92,\qquad R_{47}=423.
+\]</span>
+Hence the weighted character sums are
+<span class="math math-display" data-tex="\[
+2R_{23}-\frac{23\cdot22}{2}=-69,\qquad
+2R_{47}-\frac{47\cdot46}{2}=-235.
+\]">\[
+2R_{23}-\frac{23\cdot22}{2}=-69,\qquad
+2R_{47}-\frac{47\cdot46}{2}=-235.
+\]</span>
+Equation (17) gives <span class="math" data-tex="\(h(-23)=3\)">\(h(-23)=3\)</span> and <span class="math" data-tex="\(h(-47)=5\)">\(h(-47)=5\)</span>.</p>
+<p>For the independent form comparison, the earlier reduction theorem requires
+<span class="math" data-tex="\(|b|\leq a\leq c\)">\(|b|\leq a\leq c\)</span>, <span class="math" data-tex="\(b^2-4ac=D\)">\(b^2-4ac=D\)</span>, primitivity, and <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span> on either equality boundary. It gives <span class="math" data-tex="\(a\leq\sqrt{|D|/3}\)">\(a\leq\sqrt{|D|/3}\)</span>. Thus <span class="math" data-tex="\(a\leq2\)">\(a\leq2\)</span> for <span class="math" data-tex="\(-23\)">\(-23\)</span> and <span class="math" data-tex="\(a\leq3\)">\(a\leq3\)</span> for <span class="math" data-tex="\(-47\)">\(-47\)</span>. Substituting those values and checking the parity of <span class="math" data-tex="\(b\)">\(b\)</span> gives exactly
+<span class="math math-display" data-tex="\[
+\begin{array}{c|l}
+D&amp;\text{reduced representatives }(a,b,c)\\ \hline
+-23&amp;(1,1,6),\ (2,1,3),\ (2,-1,3)\\
+-47&amp;(1,1,12),\ (2,1,6),\ (2,-1,6),\
+(3,1,4),\ (3,-1,4).
+\end{array}
+\]">\[
+\begin{array}{c|l}
+D&amp;\text{reduced representatives }(a,b,c)\\ \hline
+-23&amp;(1,1,6),\ (2,1,3),\ (2,-1,3)\\
+-47&amp;(1,1,12),\ (2,1,6),\ (2,-1,6),\
+(3,1,4),\ (3,-1,4).
+\end{array}
+\]</span>
+They are primitive and satisfy every boundary convention; the bound excludes further values of <span class="math" data-tex="\(a\)">\(a\)</span>. The form-to-ideal bijection therefore gives the same class numbers.</p>
+<p><strong>Exercise 4.</strong> For <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>, <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span>, derive Dirichlet's half-sum formula
+<span class="math math-display" data-tex="\[
+h(\mathbf Q(\sqrt{-p}))
+=\frac1{2-(2/p)}\sum_{0&lt;a&lt;p/2}\left(\frac ap\right).
+\tag{26}
+\]">\[
+h(\mathbf Q(\sqrt{-p}))
+=\frac1{2-(2/p)}\sum_{0&lt;a&lt;p/2}\left(\frac ap\right).
+\tag{26}
+\]</span></p>
+<p><strong>Solution 4.</strong> Put <span class="math" data-tex="\(\chi(a)=(a/p)\)">\(\chi(a)=(a/p)\)</span>,
+<span class="math" data-tex="\(S=\sum_{a=1}^{p-1}a\chi(a)\)">\(S=\sum_{a=1}^{p-1}a\chi(a)\)</span>, and
+<span class="math" data-tex="\(T=\sum_{a=1}^{(p-1)/2}\chi(a)\)">\(T=\sum_{a=1}^{(p-1)/2}\chi(a)\)</span>.
+Since <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>, <span class="math" data-tex="\(w=2\)">\(w=2\)</span>, so (17) says <span class="math" data-tex="\(S=-ph\)">\(S=-ph\)</span>. Oddness gives
+<span class="math" data-tex="\(\sum_{a&gt;p/2}\chi(a)=-T\)">\(\sum_{a&gt;p/2}\chi(a)=-T\)</span>. Multiplication by <span class="math" data-tex="\(2\)">\(2\)</span> permutes the nonzero residues, and its representative is <span class="math" data-tex="\(2a\)">\(2a\)</span> in the lower half and <span class="math" data-tex="\(2a-p\)">\(2a-p\)</span> in the upper half. Therefore
+<span class="math math-display" data-tex="\[
+S=\chi(2)\sum_{a=1}^{p-1}
+ \chi(a)(2a-p\,\mathbf1_{a&gt;p/2})
+=\chi(2)(2S+pT).
+\]">\[
+S=\chi(2)\sum_{a=1}^{p-1}
+ \chi(a)(2a-p\,\mathbf1_{a&gt;p/2})
+=\chi(2)(2S+pT).
+\]</span>
+Since <span class="math" data-tex="\(\chi(2)^2=1\)">\(\chi(2)^2=1\)</span>, rearranging gives
+<span class="math" data-tex="\(pT=(\chi(2)-2)S=p(2-\chi(2))h\)">\(pT=(\chi(2)-2)S=p(2-\chi(2))h\)</span>.
+The denominator <span class="math" data-tex="\(2-\chi(2)\)">\(2-\chi(2)\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(3\)">\(3\)</span>, so division proves (26).</p>
+<p><strong>Exercise 5.</strong> Express the analytic class number constant of an abelian field as a product of <span class="math" data-tex="\(L\)">\(L\)</span>-values.</p>
+<p><strong>Solution 5.</strong> The conductor-one trivial character occurs once in <span class="math" data-tex="\(X(K)\)">\(X(K)\)</span>. Divide (10) by its factor <span class="math" data-tex="\(\zeta(s)\)">\(\zeta(s)\)</span>; all other factors are holomorphic at <span class="math" data-tex="\(1\)">\(1\)</span> by Proposition 17.2. Taking the limit and using the residues from the preceding lesson yields
+<span class="math math-display" data-tex="\[
+\frac{2^{r_1}(2\pi)^{r_2}h_KR_K}
+ {w_K\sqrt{|d_K|}}
+=\prod_{\chi\in X(K),\,\chi\ne1}L(1,\chi).
+\tag{27}
+\]">\[
+\frac{2^{r_1}(2\pi)^{r_2}h_KR_K}
+ {w_K\sqrt{|d_K|}}
+=\prod_{\chi\in X(K),\,\chi\ne1}L(1,\chi).
+\tag{27}
+\]</span>
+For <span class="math" data-tex="\(K=\mathbf Q\)">\(K=\mathbf Q\)</span> the product is empty and equals <span class="math" data-tex="\(1\)">\(1\)</span>, consistent with <span class="math" data-tex="\(R=1,h=1,w=2,d=1\)">\(R=1,h=1,w=2,d=1\)</span>. For a general abelian field, Theorem 17.5 supplies the cyclotomic embedding through the cited programme proof.</p>
+<h2 id="proof-dependencies-and-further-topics">Proof dependencies and further topics</h2>
+<p>The cyclotomic arithmetic, quadratic character classification and finite quadratic Gauss transform are imported from <em>Cyclotomic fields</em>. The analytic class number residue is imported from the preceding lesson. Finite abelian group decomposition and Galois correspondence are algebra prerequisites; their character consequences used here were proved above.</p>
+<p>The sign theorem (16) imports the written Dirichlet-course Theorem 5.1, whose earlier inputs are real primitive-character classification, supplementary quadratic laws and the elementary analytic prerequisites used in its Gaussian proof. Theorems 17.5–17.6 import the written class-field Theorems 20.2 and 20.6 and Proposition 20.5; their earlier inputs include local reciprocity, global conductor and ray-field existence, and local conductor–discriminant. These receiving arguments retain those programme dependencies and do not certify their entire earlier proof chains. General finite <span class="math" data-tex="\(L(1,\chi)\)">\(L(1,\chi)\)</span> formulas, full Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-function continuation and functional equations, and Dirichlet's theorem on arithmetic progressions are further topics in the dedicated courses.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="providers/NT-DIRL-03.html"><em>Gauss sums</em></a>, sections 3–5, especially Theorems 4.1 and 5.1, for the full signed sum (16), including its Gaussian branch and all fundamental discriminants.</li>
+<li><a href="../NT-CFT/kronecker-weber-and-the-maximal-abelian-extension-of-the-rationals.html"><em>Kronecker–Weber and the maximal abelian extension of the rationals</em></a>, Proposition 20.1, Theorem 20.2, Proposition 20.5 and Theorem 20.6, for the programme proofs of Theorems 17.5–17.6 with primitive finite conductors.</li>
+<li>Erich Hecke, <a href="https://archive.org/details/vorlesungenber00heckuoft"><em>Vorlesungen über die Theorie der algebraischen Zahlen</em></a>, 1923, VII §§49–52, printed pp.197–209, especially Satz 150–152, pp.208–209, for the historical finite quadratic formulas; VIII §58, Satz 164, p.242, for the classical signed sum. The sign used here is supplied by the linked programme proof.</li>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em>, v3.08</a>, Chapter 6, “The basic results,” printed pp.95–100, for freely readable cyclotomic background; the arithmetic imported here is proved in the earlier programme lesson <em>Cyclotomic fields</em>.</li>
+</ul>
+</article><nav><a href="src/abelian-number-fields-and-dirichlet-l-functions-at-s-1.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

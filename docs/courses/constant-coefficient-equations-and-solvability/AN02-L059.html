@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Analytic norms and propagation on complex balls</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="analytic-norms-and-propagation-on-complex-balls">Analytic norms and propagation on complex balls</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>The characteristic Cauchy estimate uses two different kinds of propagation. The norm of a tangential Fourier transform on the negative time axis has exactly the exponential type of its spatial support there. A plurisubharmonic function which is substantially negative on one small ball must also be negative at every interior point of a larger ball. We prove both facts, including the norm endpoints, the zero norm case and a constant independent of the center of the small ball.</p>
+<p>Read <a href="AN02-L058.html">Weighted inversion on a half-line</a>, <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz Fourier inversion; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies finite coordinates, scalar calculus and compact cutoffs; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the norm, extension and integration estimates.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs use the linked prerequisite lessons and any stated planned theorem.</p>
+<h2 id="the-normed-target-and-its-analytic-map">The normed target and its analytic map</h2>
+<p>Fix a positive moderate weight <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, with constants <span class="math" data-tex="\(C,N\)">\(C,N\)</span> as in(<a href="AN02-L058.html">equation 1 in Weighted inversion on a half-line</a>), and <span class="math" data-tex="\(1\le p\le\infty\)">\(1\le p\le\infty\)</span>. Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Y=\mathcal S(\mathbb R)/\mathcal N,\\
+\qquad
+ \|[f]\|_Y=\|f\|^-_{p,k},\\
+\qquad
+ \mathcal N=\{f\in\mathcal S:f(t)=0\text{ for }t&lt;0\}.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+Y=\mathcal S(\mathbb R)/\mathcal N,\\
+\qquad
+ \|[f]\|_Y=\|f\|^-_{p,k},\\
+\qquad
+ \mathcal N=\{f\in\mathcal S:f(t)=0\text{ for }t&lt;0\}.
+\end{gathered}
+\tag{1}
+\]</span>
+<a href="AN02-L058.html">Equation 4 in Weighted inversion on a half-line</a> proves that this is a norm. The quotient map <span class="math" data-tex="\(Q:\mathcal S\to Y\)">\(Q:\mathcal S\to Y\)</span> is continuous for the Schwartz topology, because the quotient norm is at most the full-line weighted norm.</p>
+<p>Here is a finite seminorm estimate making that continuity precise for functions supported in one fixed time interval <span class="math" data-tex="\([-T,T]\)">\([-T,T]\)</span>, <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>. Choose an integer <span class="math" data-tex="\(J&gt;N+1\)">\(J&gt;N+1\)</span>. Integration by parts in the time transform, together with the direct integral bound when <span class="math" data-tex="\(|\xi|\le1\)">\(|\xi|\le1\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|f\|_{p,k}\le A_{p,k,T,J}
+        \max_{0\le j\le J}\sup_t|\partial_t^j f(t)|,
+ \\
+\qquad \operatorname{supp}f\subset[-T,T].
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+\|f\|_{p,k}\le A_{p,k,T,J}
+        \max_{0\le j\le J}\sup_t|\partial_t^j f(t)|,
+ \\
+\qquad \operatorname{supp}f\subset[-T,T].
+\end{gathered}
+\tag{2}
+\]</span>
+Indeed <span class="math math-display" data-tex="\[
+\begin{gathered}
+|\widehat f(\xi)|\\
+\le A_{T,J}(1+|\xi|)^{-J}\max_{j\le J}\|\partial_t^j f\|_\infty
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\widehat f(\xi)|\\
+\le A_{T,J}(1+|\xi|)^{-J}\max_{j\le J}\|\partial_t^j f\|_\infty
+\end{gathered}
+\]</span></p>
+<p>The weight bound <span class="math" data-tex="\(k(\xi)\le k(0)(1+C|\xi|)^N\)">\(k(\xi)\le k(0)(1+C|\xi|)^N\)</span> makes its product integrable in every finite <span class="math" data-tex="\(L^p\)">\(L^p\)</span>, and bounded at <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>. Retain the factor <span class="math" data-tex="\((2\pi)^{-1/p}\)">\((2\pi)^{-1/p}\)</span> when forming <span class="math" data-tex="\(A_{p,k,T,J}\)">\(A_{p,k,T,J}\)</span>. Every integration by parts has zero boundary terms because <span class="math" data-tex="\(f\)">\(f\)</span> is smooth and compactly supported. No density assertion at infinity is involved.</p>
+<p>Let <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, and write <span class="math" data-tex="\(x\in\mathbb R^d\)">\(x\in\mathbb R^d\)</span> for the spatial variables and <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span> for time. For <span class="math" data-tex="\(v\in C_c^\infty(\mathbb R^{d+1})\)">\(v\in C_c^\infty(\mathbb R^{d+1})\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_z(t)=\int_{\mathbb R^d}e^{-ix\cdot z}v(x,t)\,dx,\\
+\qquad
+ F(z)=Qf_z,\\
+\qquad V(z)=\|F(z)\|_Y,\\
+\quad z\in\mathbb C^d.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+f_z(t)=\int_{\mathbb R^d}e^{-ix\cdot z}v(x,t)\,dx,\\
+\qquad
+ F(z)=Qf_z,\\
+\qquad V(z)=\|F(z)\|_Y,\\
+\quad z\in\mathbb C^d.
+\end{gathered}
+\tag{3}
+\]</span>
+The functions <span class="math" data-tex="\(f_z\)">\(f_z\)</span> have a common compact time support. They form an entire Schwartz-valued map and hence an entire normed-space-valued map into <span class="math" data-tex="\(Y\)">\(Y\)</span>. To prove this assertion explicitly, fix <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. On the compact spatial support, expand each factor of <span class="math" data-tex="\(e^{-ix\cdot h}\)">\(e^{-ix\cdot h}\)</span>. If <span class="math" data-tex="\(|x_j|\le S\)">\(|x_j|\le S\)</span> there, the coefficient of <span class="math" data-tex="\(h^\alpha\)">\(h^\alpha\)</span> has every time derivative bounded by a constant times <span class="math" data-tex="\(S^{|\alpha|}/\alpha!\)">\(S^{|\alpha|}/\alpha!\)</span>. Its time support is fixed, so every Schwartz seminorm has the same bound with its own constant. The series of absolute seminorm bounds is at most a constant times <span class="math" data-tex="\(\prod_j e^{S|h_j|}\)">\(\prod_j e^{S|h_j|}\)</span>, uniformly on bounded sets of <span class="math" data-tex="\(h\)">\(h\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_{z_0+h}(t)=
+ \sum_{\alpha\in\mathbb N^d}\frac{h^\alpha}{\alpha!}
+       \\
+\int_{\mathbb R^d}(-ix)^\alpha e^{-ix\cdot z_0}v(x,t)\,dx
+ \\\text{in }\mathcal S.
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+f_{z_0+h}(t)=
+ \sum_{\alpha\in\mathbb N^d}\frac{h^\alpha}{\alpha!}
+       \\
+\int_{\mathbb R^d}(-ix)^\alpha e^{-ix\cdot z_0}v(x,t)\,dx
+ \\\text{in }\mathcal S.
+\end{gathered}
+\tag{4}
+\]</span>
+Equation(2) passes the series and all its local derivatives into <span class="math" data-tex="\(Y\)">\(Y\)</span>. In particular <span class="math" data-tex="\(F\)">\(F\)</span> is norm-continuous, and every continuous complex-linear functional <span class="math" data-tex="\(\ell\)">\(\ell\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span> makes <span class="math" data-tex="\(\ell F\)">\(\ell F\)</span> holomorphic. Completeness of <span class="math" data-tex="\(Y\)">\(Y\)</span> is unnecessary: the limits just used already exist as actual Schwartz functions before passage to the quotient.</p>
+<h2 id="the-local-subharmonic-facts-used-here">The local subharmonic facts used here</h2>
+<p>We use the following convention. A subharmonic function is upper semicontinuous, with values in <span class="math" data-tex="\([-\infty,\infty)\)">\([-\infty,\infty)\)</span>, locally integrable unless it is identically <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> on its component, and satisfies the circle-mean inequality on every sufficiently small disk about each point. A plurisubharmonic function is upper semicontinuous and has subharmonic or identically <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> restrictions to complex lines. The identically <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> case is permitted.</p>
+<p>First, <span class="math" data-tex="\(\log|g|\)">\(\log|g|\)</span> is subharmonic for a scalar holomorphic <span class="math" data-tex="\(g\)">\(g\)</span>, with <span class="math" data-tex="\(\log0=-\infty\)">\(\log0=-\infty\)</span>. At a nonzero value <span class="math" data-tex="\(g(a)\)">\(g(a)\)</span>, shrink the disk until <span class="math" data-tex="\(g/g(a)=1+h\)">\(g/g(a)=1+h\)</span> with <span class="math" data-tex="\(|h|&lt;1\)">\(|h|&lt;1\)</span>. The convergent series <span class="math" data-tex="\(L=\sum_{j\ge1}(-1)^{j+1}h^j/j\)">\(L=\sum_{j\ge1}(-1)^{j+1}h^j/j\)</span> is holomorphic there. Differentiating its locally uniformly convergent series gives <span class="math" data-tex="\(L&#x27;=h&#x27;/(1+h)\)">\(L&#x27;=h&#x27;/(1+h)\)</span>; hence <span class="math" data-tex="\(e^{-L}(1+h)\)">\(e^{-L}(1+h)\)</span> has derivative zero and equals one at the center, where <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. Thus <span class="math" data-tex="\(e^L=1+h\)">\(e^L=1+h\)</span>, and taking moduli proves <span class="math" data-tex="\(\operatorname{Re}L=\log|g/g(a)|\)">\(\operatorname{Re}L=\log|g/g(a)|\)</span>. The circle mean of its real part equals its center value by the local Cauchy formula. At a zero, the circle-mean inequality has the left side <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>. The local factorization <span class="math" data-tex="\(g(z)=(z-a)^m b(z)\)">\(g(z)=(z-a)^m b(z)\)</span>, <span class="math" data-tex="\(b(a)\ne0\)">\(b(a)\ne0\)</span>, follows from the first nonzero term of the Cauchy series. It also proves local integrability of <span class="math" data-tex="\(\log|g|\)">\(\log|g|\)</span>, since <span class="math" data-tex="\(\log|z-a|\)">\(\log|z-a|\)</span> is integrable in a disk and on every circle not reduced to that point. If all series coefficients vanish, the identity principle gives the identically zero case on that component. These arguments also prove that <span class="math" data-tex="\(\log|z-a|\)">\(\log|z-a|\)</span> is harmonic away from <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><strong>Lemma 1 (logarithm of an analytic norm).</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is a continuous analytic map from a complex domain into a complex normed space, in the sense of locally norm-convergent power series, then <span class="math" data-tex="\(\log\|G\|\)">\(\log\|G\|\)</span> is plurisubharmonic.</p>
+<p><strong>Proof.</strong> Norm-continuity makes this function upper semicontinuous, including at zeros: if <span class="math" data-tex="\(\|G(z_0)\|=0\)">\(\|G(z_0)\|=0\)</span>, it tends below every finite logarithmic bound near <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. Fix a complex line. If <span class="math" data-tex="\(G\)">\(G\)</span> is identically zero on its line component, the restriction is identically <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>. Otherwise choose a point on that component where <span class="math" data-tex="\(G\ne0\)">\(G\ne0\)</span>. The scalar norm test B6 gives a continuous functional <span class="math" data-tex="\(\ell\)">\(\ell\)</span> with <span class="math" data-tex="\(\|\ell\|=1\)">\(\|\ell\|=1\)</span> and <span class="math" data-tex="\(|\ell G|=\|G\|\)">\(|\ell G|=\|G\|\)</span> at that point. The scalar holomorphic function <span class="math" data-tex="\(\ell G\)">\(\ell G\)</span> is not identically zero. On every compact part of this line,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\log|\ell G(z)|\le\log\|G(z)\|,
+ \\
+\qquad
+ \|y\|=\sup_{\|\ell\|\le1}|\ell(y)|.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+\log|\ell G(z)|\le\log\|G(z)\|,
+ \\
+\qquad
+ \|y\|=\sup_{\|\ell\|\le1}|\ell(y)|.
+\end{gathered}
+\tag{5}
+\]</span>
+The scalar lower bound is locally integrable, and the norm has a locally bounded logarithmic upper bound. Thus the logarithm of the norm is locally integrable on the line.</p>
+<p>At any center <span class="math" data-tex="\(z_0\)">\(z_0\)</span> with <span class="math" data-tex="\(G(z_0)\ne0\)">\(G(z_0)\ne0\)</span>, choose a norming functional at that center. On a sufficiently small disk its scalar function is nonzero and its logarithm has the exact circle mean just proved. Since <span class="math" data-tex="\(\log\|G\|\ge\log|\ell G|\)">\(\log\|G\|\ge\log|\ell G|\)</span> on the circle and equality holds at the center, the circle-mean inequality follows. At a zero the inequality is immediate. This proves subharmonicity on every line and hence the assertion. The Hahn–Banach theorem applies to the normed space itself; no completed quotient or endpoint approximation has been assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We will also use the following maximum comparison. If a subharmonic <span class="math" data-tex="\(u\)">\(u\)</span> is defined in a bounded plane domain <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(\limsup_{z\to b,\ z\in D}u(z)\le0\)">\(\limsup_{z\to b,\ z\in D}u(z)\le0\)</span> at every boundary point <span class="math" data-tex="\(b\)">\(b\)</span>, then <span class="math" data-tex="\(u\le0\)">\(u\le0\)</span> in <span class="math" data-tex="\(D\)">\(D\)</span>. Here the domain has compact boundary, as in the disks and annuli below. For a proof, add <span class="math" data-tex="\(\varepsilon|z|^2\)">\(\varepsilon|z|^2\)</span>. Its circle mean exceeds its center value by <span class="math" data-tex="\(\varepsilon\rho^2\)">\(\varepsilon\rho^2\)</span> on a circle of radius <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. A positive excess of <span class="math" data-tex="\(u+\varepsilon|z|^2\)">\(u+\varepsilon|z|^2\)</span> over its boundary supremum would attain an interior maximum: upper semicontinuity gives attainment on a compact interior part, and the boundary upper limits exclude the rest. The strict circle-mean inequality contradicts that maximum. Consequently <span class="math" data-tex="\(u(z)\le\varepsilon(\sup_{\overline D}|z|^2-|z|^2)\)">\(u(z)\le\varepsilon(\sup_{\overline D}|z|^2-|z|^2)\)</span>; let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Subtracting a harmonic function preserves the circle-mean inequality, so the same argument compares a subharmonic function to a harmonic boundary majorant. The identically <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> case satisfies every such comparison.</p>
+<h2 id="exact-spatial-exponential-type-of-the-restriction">Exact spatial exponential type of the restriction</h2>
+<p><strong>Theorem 2.</strong> Suppose <span class="math" data-tex="\(v\in C_c^\infty(\mathbb R^{d+1})\)">\(v\in C_c^\infty(\mathbb R^{d+1})\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|x|\le M\\
+\quad\text{on }\operatorname{supp}v\cap\{t&lt;0\},
+ \\
+\qquad M\ge0.
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+|x|\le M\\
+\quad\text{on }\operatorname{supp}v\cap\{t&lt;0\},
+ \\
+\qquad M\ge0.
+\end{gathered}
+\tag{6}
+\]</span>
+For every moderate <span class="math" data-tex="\(k\)">\(k\)</span> on the time frequency and every <span class="math" data-tex="\(1\le p\le\infty\)">\(1\le p\le\infty\)</span>, the function <span class="math" data-tex="\(\log V\)">\(\log V\)</span> in(3) is plurisubharmonic, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V(z)\le e^{M|\operatorname{Im}z|}B,\\
+\qquad
+ B=\sup_{\xi\in\mathbb R^d}V(\xi)&lt;\infty.
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+V(z)\le e^{M|\operatorname{Im}z|}B,\\
+\qquad
+ B=\sup_{\xi\in\mathbb R^d}V(\xi)&lt;\infty.
+\end{gathered}
+\tag{7}
+\]</span></p>
+<p><strong>Proof.</strong> Lemma1 applies to the analytic map <span class="math" data-tex="\(F\)">\(F\)</span>, so it gives the first assertion, including zero restrictions.</p>
+<p>There is a subtlety in the support hypothesis: the positive-time portion of <span class="math" data-tex="\(v\)">\(v\)</span> may have larger spatial support. For each <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose a smooth compact spatial cutoff <span class="math" data-tex="\(\chi_\varepsilon\)">\(\chi_\varepsilon\)</span> equal to one on <span class="math" data-tex="\(\{|x|\le M\}\)">\(\{|x|\le M\}\)</span>, with support in <span class="math" data-tex="\(\{|x|&lt;M+\varepsilon\}\)">\(\{|x|&lt;M+\varepsilon\}\)</span>. Such a cutoff follows from the smooth cutoff construction; it also exists when <span class="math" data-tex="\(M=0\)">\(M=0\)</span>. Set <span class="math" data-tex="\(v_\varepsilon=\chi_\varepsilon v\)">\(v_\varepsilon=\chi_\varepsilon v\)</span>. Its partial Fourier transform has exactly the same restriction to <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span> as <span class="math" data-tex="\(f_z\)">\(f_z\)</span>, so it gives the same <span class="math" data-tex="\(F(z)\)">\(F(z)\)</span> and <span class="math" data-tex="\(V(z)\)">\(V(z)\)</span>. All time supports still lie in one fixed <span class="math" data-tex="\([-T,T]\)">\([-T,T]\)</span>.</p>
+<p>For every integer <span class="math" data-tex="\(L\ge0\)">\(L\ge0\)</span> and each <span class="math" data-tex="\(j\le J\)">\(j\le J\)</span>, tangential integration by parts gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_t\left|\partial_t^j\int e^{-ix\cdot z}v_\varepsilon(x,t)\,dx\right|
+ \\
+\le A_{\varepsilon,j,L}(1+|z|)^{-L}
+                e^{(M+\varepsilon)|\operatorname{Im}z|}.
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+\sup_t\left|\partial_t^j\int e^{-ix\cdot z}v_\varepsilon(x,t)\,dx\right|
+ \\
+\le A_{\varepsilon,j,L}(1+|z|)^{-L}
+                e^{(M+\varepsilon)|\operatorname{Im}z|}.
+\end{gathered}
+\tag{8}
+\]</span>
+For <span class="math" data-tex="\(|z|\ge1\)">\(|z|\ge1\)</span>, choose a coordinate with <span class="math" data-tex="\(|z_q|\ge |z|/\sqrt d\)">\(|z_q|\ge |z|/\sqrt d\)</span>, and integrate <span class="math" data-tex="\(L\)">\(L\)</span> derivatives in that coordinate. Its exact factor is <span class="math" data-tex="\((iz_q)^{-L}\)">\((iz_q)^{-L}\)</span>; the derivatives land on <span class="math" data-tex="\(v_\varepsilon\)">\(v_\varepsilon\)</span>, and every remaining exponential has modulus at most <span class="math" data-tex="\(e^{(M+\varepsilon)|\operatorname{Im}z|}\)">\(e^{(M+\varepsilon)|\operatorname{Im}z|}\)</span>. For <span class="math" data-tex="\(|z|\le1\)">\(|z|\le1\)</span>, use the direct compact integral bound and enlarge the constant. These are estimates in the full complex norm <span class="math" data-tex="\(|z|\)">\(|z|\)</span>, not just in <span class="math" data-tex="\(|\operatorname{Re}z|\)">\(|\operatorname{Re}z|\)</span>. Apply(2) to obtain
+<span class="math math-display" data-tex="\[
+ V(z)\le A_{\varepsilon,L}(1+|z|)^{-L}
+                 e^{(M+\varepsilon)|\operatorname{Im}z|}.
+ \tag{9}
+\]">\[
+ V(z)\le A_{\varepsilon,L}(1+|z|)^{-L}
+                 e^{(M+\varepsilon)|\operatorname{Im}z|}.
+ \tag{9}
+\]</span>
+In particular <span class="math" data-tex="\(B\)">\(B\)</span> is finite.</p>
+<p>Fix real <span class="math" data-tex="\(\xi,\eta\in\mathbb R^d\)">\(\xi,\eta\in\mathbb R^d\)</span>, with <span class="math" data-tex="\(\eta\ne0\)">\(\eta\ne0\)</span>, and a number <span class="math" data-tex="\(b&gt;B\)">\(b&gt;B\)</span>. On the upper half-plane define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u(w)\\
+=\log V(\xi+w\eta)-\log b
+                   \\
+-(M+\varepsilon)|\eta|\operatorname{Im}w.
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+u(w)\\
+=\log V(\xi+w\eta)-\log b
+                   \\
+-(M+\varepsilon)|\eta|\operatorname{Im}w.
+\end{gathered}
+\tag{10}
+\]</span>
+It is subharmonic or identically <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>: the first term is a complex-line restriction, and the subtracted imaginary part is harmonic. On the real axis its upper limits are at most zero by upper semicontinuity and <span class="math" data-tex="\(V\le B&lt;b\)">\(V\le B&lt;b\)</span>. On an upper semicircle <span class="math" data-tex="\(|w|=R\)">\(|w|=R\)</span>, equation(9), with <span class="math" data-tex="\(L=1\)">\(L=1\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u(w)\le \log(A_{\varepsilon,1}/b)
+               \\
+-\log(1+|\xi+w\eta|),\\|\xi+w\eta|\ge R|\eta|-|\xi|.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+u(w)\le \log(A_{\varepsilon,1}/b)
+               \\
+-\log(1+|\xi+w\eta|),\\|\xi+w\eta|\ge R|\eta|-|\xi|.
+\end{gathered}
+\tag{11}
+\]</span>
+Thus its upper boundary values on that arc are at most zero for every sufficiently large <span class="math" data-tex="\(R\)">\(R\)</span>. The maximum comparison on the upper half-disk shows <span class="math" data-tex="\(u\le0\)">\(u\le0\)</span> at each fixed point of the upper half-plane. At <span class="math" data-tex="\(w=i\)">\(w=i\)</span>, this gives <span class="math" data-tex="\(V(\xi+i\eta)\le b e^{(M+\varepsilon)|\eta|}\)">\(V(\xi+i\eta)\le b e^{(M+\varepsilon)|\eta|}\)</span>. Let <span class="math" data-tex="\(b\downarrow B\)">\(b\downarrow B\)</span>, then <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. This proves(7), even when <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, since every <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> was permitted in that case. For <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>, the assertion is the definition of <span class="math" data-tex="\(B\)">\(B\)</span>. No constants need to remain bounded as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>: each cutoff first gives a maximum comparison with the same real-axis bound <span class="math" data-tex="\(B\)">\(B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Dimension <span class="math" data-tex="\(d=0\)">\(d=0\)</span> consists of one tangential point, so <span class="math" data-tex="\(V\)">\(V\)</span> is a constant and the norm estimate is equality. No line argument is needed. When <span class="math" data-tex="\(M=0\)">\(M=0\)</span> and <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, a smooth <span class="math" data-tex="\(v\)">\(v\)</span> supported spatially in a single point at negative times is zero there, so <span class="math" data-tex="\(V=0\)">\(V=0\)</span>; the proof also covers it directly.</p>
+<h2 id="moving-a-negative-ball-toward-the-center">Moving a negative ball toward the center</h2>
+<p><strong>Lemma 3 (centered comparison).</strong> Let <span class="math" data-tex="\(w\)">\(w\)</span> be plurisubharmonic on <span class="math" data-tex="\(B(c,R)\subset\mathbb C^d\)">\(B(c,R)\subset\mathbb C^d\)</span>, <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>. If <span class="math" data-tex="\(w\le0\)">\(w\le0\)</span> on this ball and <span class="math" data-tex="\(w\le-a\)">\(w\le-a\)</span> on <span class="math" data-tex="\(B(c,r)\)">\(B(c,r)\)</span>, where <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-tex="\(0&lt;r&lt;R\)">\(0&lt;r&lt;R\)</span>, then for <span class="math" data-tex="\(r&lt;|z-c|&lt;R\)">\(r&lt;|z-c|&lt;R\)</span>,
+<span class="math math-display" data-tex="\[
+ w(z)\le a\,\frac{\log(|z-c|/R)}{\log(R/r)}.
+ \tag{12}
+\]">\[
+ w(z)\le a\,\frac{\log(|z-c|/R)}{\log(R/r)}.
+ \tag{12}
+\]</span>
+For all <span class="math" data-tex="\(z\in B(c,R)\)">\(z\in B(c,R)\)</span>, including <span class="math" data-tex="\(z=c\)">\(z=c\)</span>, it follows that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w(z)\\
+\le \frac{a}{\max(1,\log(R/r))}
+                      \left(\frac{|z-c|}{R}-1\right).
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+w(z)\\
+\le \frac{a}{\max(1,\log(R/r))}
+                      \left(\frac{|z-c|}{R}-1\right).
+\end{gathered}
+\tag{13}
+\]</span></p>
+<p><strong>Proof.</strong> Restrict <span class="math" data-tex="\(w\)">\(w\)</span> to the complex line <span class="math" data-tex="\(c+\lambda e\)">\(c+\lambda e\)</span>, with <span class="math" data-tex="\(e=(z-c)/|z-c|\)">\(e=(z-c)/|z-c|\)</span> at a point <span class="math" data-tex="\(z\ne c\)">\(z\ne c\)</span>. It is subharmonic or identically <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>. Choose <span class="math" data-tex="\(0&lt;\rho&lt;r\)">\(0&lt;\rho&lt;r\)</span> and <span class="math" data-tex="\(|z-c|&lt;R&#x27;&lt;R\)">\(|z-c|&lt;R&#x27;&lt;R\)</span>. On the annulus <span class="math" data-tex="\(\rho&lt;|\lambda|&lt;R&#x27;\)">\(\rho&lt;|\lambda|&lt;R&#x27;\)</span>, compare it to the harmonic function <span class="math" data-tex="\(a\log(|\lambda|/R&#x27;)/\log(R&#x27;/\rho)\)">\(a\log(|\lambda|/R&#x27;)/\log(R&#x27;/\rho)\)</span>. On the inner circle that function is <span class="math" data-tex="\(-a\)">\(-a\)</span>, and on the outer circle it is zero. The stated bounds on <span class="math" data-tex="\(w\)">\(w\)</span>, and its upper semicontinuity at these circles, permit the maximum comparison. Let <span class="math" data-tex="\(\rho\uparrow r\)">\(\rho\uparrow r\)</span> and <span class="math" data-tex="\(R&#x27;\uparrow R\)">\(R&#x27;\uparrow R\)</span>; this proves(12). This limiting argument uses inner circles actually contained in the negative ball and does not assume an extra boundary value on <span class="math" data-tex="\(|\lambda|=r\)">\(|\lambda|=r\)</span>.</p>
+<p>For <span class="math" data-tex="\(|z-c|&gt;r\)">\(|z-c|&gt;r\)</span>, use <span class="math" data-tex="\(\log q\le q-1\)">\(\log q\le q-1\)</span> for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>. If <span class="math" data-tex="\(\log(R/r)\ge1\)">\(\log(R/r)\ge1\)</span>, this immediately gives(13). If it is less than one, dividing the negative number <span class="math" data-tex="\(q-1\)">\(q-1\)</span> by it gives an even smaller number, so the same estimate with denominator one holds. For <span class="math" data-tex="\(|z-c|&lt;r\)">\(|z-c|&lt;r\)</span>, the right side of(13) is at least <span class="math" data-tex="\(-a\)">\(-a\)</span>, which is already an upper bound for <span class="math" data-tex="\(w\)">\(w\)</span>. At <span class="math" data-tex="\(|z-c|=r\)">\(|z-c|=r\)</span>, the annular comparisons with <span class="math" data-tex="\(\rho&lt;r\)">\(\rho&lt;r\)</span> give the limiting bound <span class="math" data-tex="\(-a\)">\(-a\)</span>. At <span class="math" data-tex="\(z=c\)">\(z=c\)</span> use the negative-ball bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The case <span class="math" data-tex="\(r=R\)">\(r=R\)</span> also has(13), interpreted with denominator one, directly from <span class="math" data-tex="\(w\le-a\)">\(w\le-a\)</span> on the whole ball.</p>
+<p><strong>Theorem 4 (a center-independent propagation constant).</strong> Suppose <span class="math" data-tex="\(w\)">\(w\)</span> is plurisubharmonic on <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>, <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w\le0\text{ on }B(0,R),\\
+\qquad
+ w\le-1\text{ on }B(c,r)\subset B(0,R),\\
+\quad 0&lt;r\le R.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+w\le0\text{ on }B(0,R),\\
+\qquad
+ w\le-1\text{ on }B(c,r)\subset B(0,R),\\
+\quad 0&lt;r\le R.
+\end{gathered}
+\tag{14}
+\]</span>
+There is a number <span class="math" data-tex="\(\delta(R,r)&gt;0\)">\(\delta(R,r)&gt;0\)</span>, depending only on <span class="math" data-tex="\(r/R\)">\(r/R\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w(z)\le\delta(R,r)\left(\frac{|z|}{R}-1\right),
+               \\
+\qquad |z|&lt;R.
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+w(z)\le\delta(R,r)\left(\frac{|z|}{R}-1\right),
+               \\
+\qquad |z|&lt;R.
+\end{gathered}
+\tag{15}
+\]</span>
+One explicit choice is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=\max(1,\log3),\\\alpha=\frac1{9A},\\K=\min\{k\in\mathbb N_0:\\
+(4/3)^k r&gt;2R/3\},\\\delta(R,r)=\frac{\alpha^K}{\max(1,\log(2R/r))}.
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+A=\max(1,\log3),\\\alpha=\frac1{9A},\\K=\min\{k\in\mathbb N_0:\\
+(4/3)^k r&gt;2R/3\},\\\delta(R,r)=\frac{\alpha^K}{\max(1,\log(2R/r))}.
+\end{gathered}
+\tag{16}
+\]</span></p>
+<p><strong>Proof.</strong> Inclusion of the balls implies <span class="math" data-tex="\(|c|+r\le R\)">\(|c|+r\le R\)</span>. Track a ball <span class="math" data-tex="\(B(c_j,r_j)\)">\(B(c_j,r_j)\)</span> on which <span class="math" data-tex="\(w\le-a_j\)">\(w\le-a_j\)</span>, beginning with <span class="math" data-tex="\(c_0=c\)">\(c_0=c\)</span>, <span class="math" data-tex="\(r_0=r\)">\(r_0=r\)</span>, <span class="math" data-tex="\(a_0=1\)">\(a_0=1\)</span>. Its inclusion in <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span> is preserved below.</p>
+<p>If <span class="math" data-tex="\(|c_j|\le r_j/2\)">\(|c_j|\le r_j/2\)</span>, the centered ball <span class="math" data-tex="\(B(0,r_j/2)\)">\(B(0,r_j/2)\)</span> lies in <span class="math" data-tex="\(B(c_j,r_j)\)">\(B(c_j,r_j)\)</span>, and we stop. Otherwise move the center toward zero by <span class="math" data-tex="\(r_j/2\)">\(r_j/2\)</span>:
+<span class="math math-display" data-tex="\[
+ c_{j+1}=c_j-\frac{r_j}{2}\frac{c_j}{|c_j|}.
+ \tag{17}
+\]">\[
+ c_{j+1}=c_j-\frac{r_j}{2}\frac{c_j}{|c_j|}.
+ \tag{17}
+\]</span>
+The following containments retain the centers and radii:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B(c_{j+1},r_j/2)\subset B(c_j,r_j),\\
+\qquad
+ B(c_{j+1},3r_j/2)\subset B(0,R).
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+B(c_{j+1},r_j/2)\subset B(c_j,r_j),\\
+\qquad
+ B(c_{j+1},3r_j/2)\subset B(0,R).
+\end{gathered}
+\tag{18}
+\]</span>
+The first follows from a displacement of <span class="math" data-tex="\(r_j/2\)">\(r_j/2\)</span>. For the second,
+<span class="math" data-tex="\(|c_{j+1}|+3r_j/2=|c_j|+r_j\le R\)">\(|c_{j+1}|+3r_j/2=|c_j|+r_j\le R\)</span>.
+Apply Lemma3 to the ball of radius <span class="math" data-tex="\(3r_j/2\)">\(3r_j/2\)</span>, with inner radius <span class="math" data-tex="\(r_j/2\)">\(r_j/2\)</span> and amplitude <span class="math" data-tex="\(a_j\)">\(a_j\)</span>. On the ball with radius <span class="math" data-tex="\(4r_j/3\)">\(4r_j/3\)</span>, its linear bound gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w\le-\frac{a_j}{9\max(1,\log3)}=-\alpha a_j,\\
+\qquad
+ r_{j+1}=4r_j/3,\\
+\quad a_{j+1}=\alpha a_j.
+\end{gathered}
+\tag{19}
+\]">\[
+\begin{gathered}
+w\le-\frac{a_j}{9\max(1,\log3)}=-\alpha a_j,\\
+\qquad
+ r_{j+1}=4r_j/3,\\
+\quad a_{j+1}=\alpha a_j.
+\end{gathered}
+\tag{19}
+\]</span>
+The strict outer radius yields the indicated weak upper bound throughout this open smaller ball. It is still contained in the original ball, since
+<span class="math" data-tex="\(|c_{j+1}|+r_{j+1}=|c_j|+5r_j/6\le R\)">\(|c_{j+1}|+r_{j+1}=|c_j|+5r_j/6\le R\)</span>.</p>
+<p>If we have not stopped after <span class="math" data-tex="\(K\)">\(K\)</span> moves, then <span class="math" data-tex="\(r_K=(4/3)^K r&gt;2R/3\)">\(r_K=(4/3)^K r&gt;2R/3\)</span>. Its inclusion gives <span class="math" data-tex="\(|c_K|\le R-r_K&lt;r_K/2\)">\(|c_K|\le R-r_K&lt;r_K/2\)</span>, so we stop at that step. There are at most <span class="math" data-tex="\(K\)">\(K\)</span> moves. At the stopping step <span class="math" data-tex="\(j\le K\)">\(j\le K\)</span>, the centered negative ball has radius <span class="math" data-tex="\(r_j/2\ge r/2\)">\(r_j/2\ge r/2\)</span>, and its negative amplitude is <span class="math" data-tex="\(a_j=\alpha^j\ge\alpha^K\)">\(a_j=\alpha^j\ge\alpha^K\)</span>. In particular <span class="math" data-tex="\(w\le-\alpha^K\)">\(w\le-\alpha^K\)</span> on <span class="math" data-tex="\(B(0,r/2)\)">\(B(0,r/2)\)</span>. Apply(13) once more on <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>, with this inner radius and amplitude. The result is exactly(15)–(16). It does not depend on the starting center or on the complex dimension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For completeness this constant is no worse than a fixed power of the small-ball ratio. Put <span class="math" data-tex="\(\gamma=\log(1/\alpha)/\log(4/3)&gt;0\)">\(\gamma=\log(1/\alpha)/\log(4/3)&gt;0\)</span>. If <span class="math" data-tex="\(r\le2R/3\)">\(r\le2R/3\)</span>, minimality gives <span class="math" data-tex="\(K\le1+\log(2R/(3r))/\log(4/3)\)">\(K\le1+\log(2R/(3r))/\log(4/3)\)</span>; if <span class="math" data-tex="\(r&gt;2R/3\)">\(r&gt;2R/3\)</span>, then <span class="math" data-tex="\(K=0\)">\(K=0\)</span>. In either case <span class="math" data-tex="\(\alpha^K\ge\alpha(r/R)^\gamma\)">\(\alpha^K\ge\alpha(r/R)^\gamma\)</span>. Also <span class="math" data-tex="\(\max(1,\log(2R/r))\le2R/r\)">\(\max(1,\log(2R/r))\le2R/r\)</span>, by <span class="math" data-tex="\(\log s\le s-1\)">\(\log s\le s-1\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ \delta(R,r)\ge\frac{\alpha}{2}(r/R)^{\gamma+1}.
+ \tag{20}
+\]">\[
+ \delta(R,r)\ge\frac{\alpha}{2}(r/R)^{\gamma+1}.
+ \tag{20}
+\]</span>
+This estimate keeps every scale and constant explicit; it is a proved lower bound for one valid propagation constant, rather than a claim of optimality.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — basic: an analytic vector norm.</strong> For <span class="math" data-tex="\(G(z)=(1,z)\in\mathbb C^2\)">\(G(z)=(1,z)\in\mathbb C^2\)</span> with its Euclidean norm, compute the planar Laplacian of <span class="math" data-tex="\(\log\|G(z)\|\)">\(\log\|G(z)\|\)</span>. Explain how Lemma1 also deals with the zero of <span class="math" data-tex="\(G_0(z)=z\)">\(G_0(z)=z\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>. Differentiating <span class="math" data-tex="\(\tfrac12\log(1+x^2+y^2)\)">\(\tfrac12\log(1+x^2+y^2)\)</span> twice in each real coordinate gives
+<span class="math math-display" data-tex="\[
+ \Delta\log\|(1,z)\|=\frac{2}{(1+|z|^2)^2}\ge0.
+ \tag{21}
+\]">\[
+ \Delta\log\|(1,z)\|=\frac{2}{(1+|z|^2)^2}\ge0.
+ \tag{21}
+\]</span>
+Its strict positive value agrees with the subharmonic norm theorem. For <span class="math" data-tex="\(G_0(z)=z\)">\(G_0(z)=z\)</span>, the function is <span class="math" data-tex="\(\log|z|\)">\(\log|z|\)</span>, harmonic away from zero. At zero its value is <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>, which is upper semicontinuous and satisfies the circle-mean inequality there. Local integrability follows from the radial logarithmic integral. Removing that value or replacing it by a positive finite value would fail upper semicontinuity or the circle-mean condition. A zero of an analytic map therefore creates no exception to Lemma1.</p>
+<p><strong>Exercise 2 — intermediate: the exponent comes from the negative-time support.</strong> In spatial dimension one, let <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span> and <span class="math" data-tex="\(0&lt;\varepsilon&lt;M\)">\(0&lt;\varepsilon&lt;M\)</span>. Choose a smooth nonnegative <span class="math" data-tex="\(g\)">\(g\)</span> supported in <span class="math" data-tex="\([M-\varepsilon,M]\)">\([M-\varepsilon,M]\)</span>, positive on its interior, and a nonzero smooth <span class="math" data-tex="\(h\)">\(h\)</span> supported in a compact interval of negative times. For <span class="math" data-tex="\(v(x,t)=g(x)h(t)\)">\(v(x,t)=g(x)h(t)\)</span>, calculate <span class="math" data-tex="\(V\)">\(V\)</span>, its real-axis supremum and its exponential rate on the positive imaginary axis.</p>
+<p><strong>Solution.</strong> The written flat cutoff gives such a <span class="math" data-tex="\(g\)">\(g\)</span> by a product of two flat positive factors, with its endpoints as stated. The partial transform is <span class="math" data-tex="\(\widehat g(z)h(t)\)">\(\widehat g(z)h(t)\)</span>. Homogeneity of the exact quotient norm and its nondegeneracy give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V(z)=|\widehat g(z)|\,\|h\|^-_{p,k},\\
+\qquad
+ B=\left(\int g(x)\,dx\right)\|h\|^-_{p,k}&gt;0.
+\end{gathered}
+\tag{22}
+\]">\[
+\begin{gathered}
+V(z)=|\widehat g(z)|\,\|h\|^-_{p,k},\\
+\qquad
+ B=\left(\int g(x)\,dx\right)\|h\|^-_{p,k}&gt;0.
+\end{gathered}
+\tag{22}
+\]</span>
+Indeed <span class="math" data-tex="\(|\widehat g(\xi)|\le\int g\)">\(|\widehat g(\xi)|\le\int g\)</span> on the real axis, and equality holds at <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>. At <span class="math" data-tex="\(z=iy\)">\(z=iy\)</span>, <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, the integral is positive and at most <span class="math" data-tex="\(e^{My}\int g\)">\(e^{My}\int g\)</span>. For any <span class="math" data-tex="\(s&lt;M\)">\(s&lt;M\)</span> sufficiently close to <span class="math" data-tex="\(M\)">\(M\)</span>, the interval <span class="math" data-tex="\(s&lt;x&lt;M\)">\(s&lt;x&lt;M\)</span> contains positive <span class="math" data-tex="\(g\)">\(g\)</span>-mass, giving <span class="math" data-tex="\(\widehat g(iy)\ge e^{sy}\int_s^M g(x)\,dx\)">\(\widehat g(iy)\ge e^{sy}\int_s^M g(x)\,dx\)</span>. Divide logarithms by <span class="math" data-tex="\(y\)">\(y\)</span>, let <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>, and then <span class="math" data-tex="\(s\uparrow M\)">\(s\uparrow M\)</span>. It follows that
+<span class="math math-display" data-tex="\[
+ \lim_{y\to\infty}\frac{\log V(iy)}y=M.
+ \tag{23}
+\]">\[
+ \lim_{y\to\infty}\frac{\log V(iy)}y=M.
+ \tag{23}
+\]</span>
+Thus replacing <span class="math" data-tex="\(M\)">\(M\)</span> by a smaller constant in this norm estimate fails for this example. Adding a spatially more distant smooth term supported entirely at positive times changes a chosen full-line representative but leaves every <span class="math" data-tex="\(F(z)\)">\(F(z)\)</span>, <span class="math" data-tex="\(V(z)\)">\(V(z)\)</span> and the sharp rate above unchanged.</p>
+<p><strong>Exercise 3 — advanced: dependence on the small radius is necessary.</strong> On the unit ball in <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>, <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, let <span class="math" data-tex="\(0&lt;r&lt;1/2\)">\(0&lt;r&lt;1/2\)</span>. Construct a plurisubharmonic <span class="math" data-tex="\(w_r\le0\)">\(w_r\le0\)</span> which is <span class="math" data-tex="\(-1\)">\(-1\)</span> on the centered ball of radius <span class="math" data-tex="\(r\)">\(r\)</span>, but tends to zero at a point of radius <span class="math" data-tex="\(1/2\)">\(1/2\)</span> as <span class="math" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>. Explain what this says about <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<p><strong>Solution.</strong> Lemma1, applied to the identity map into <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>, shows that <span class="math" data-tex="\(\log|z|\)">\(\log|z|\)</span> is plurisubharmonic, with value <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> at zero. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w_r(z)=\max\left(-1,\frac{\log|z|}{\log(1/r)}\right),
+ \\
+\qquad w_r(0)=-1.
+\end{gathered}
+\tag{24}
+\]">\[
+\begin{gathered}
+w_r(z)=\max\left(-1,\frac{\log|z|}{\log(1/r)}\right),
+ \\
+\qquad w_r(0)=-1.
+\end{gathered}
+\tag{24}
+\]</span>
+A finite maximum of two subharmonic functions is subharmonic: at a center choose the larger branch, use its local circle-mean inequality and bound it by the maximum on the circle. It is upper semicontinuous and locally integrable. Apply this on every complex line; in the identically <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> branch case the constant branch suffices. Thus the displayed maximum is plurisubharmonic. It is at most zero for <span class="math" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>, and equals <span class="math" data-tex="\(-1\)">\(-1\)</span> for <span class="math" data-tex="\(|z|\le r\)">\(|z|\le r\)</span>. At any point of radius <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, the logarithmic branch is larger than <span class="math" data-tex="\(-1\)">\(-1\)</span>, so its value is <span class="math" data-tex="\(-\log2/\log(1/r)\)">\(-\log2/\log(1/r)\)</span>, which tends to zero. If(15) had one positive constant independent of <span class="math" data-tex="\(r\)">\(r\)</span>, it would require this value to be at most minus half that constant, a contradiction. The theorem's dependence on <span class="math" data-tex="\(r/R\)">\(r/R\)</span> is therefore necessary.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

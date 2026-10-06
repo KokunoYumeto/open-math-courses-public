@@ -1,0 +1,1 @@
+The new proof, caption, exact data and reproduction script are dedicated under CC0-1.0 to the extent of rights held. Existing historical lessons retain their recorded terms. The cited source, private page images and text extracts are not included in this dedication or any proposed reader export. DejaVu font outlines retain the accompanying font license.

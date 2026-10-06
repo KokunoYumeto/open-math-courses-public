@@ -1,0 +1,387 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Manifold duality, the diagonal and Wu classes</title><link rel="stylesheet" href="../assets/reader/reader.css"><script src="../assets/reader/mathjax-config.js"></script><script defer src="../assets/mathjax/tex-svg.js"></script></head><body><main><nav><a href="../index.html">Course contents</a><a href="index.html">Companion readings</a><a href="src/manifold-duality-the-diagonal-and-wu-classes.md" download>Markdown source</a></nav><h1 id="manifold-duality-the-diagonal-and-wu-classes">Manifold duality, the diagonal and Wu classes</h1>
+<p><em>Public domain (CC0).</em></p>
+<p>A manifold's tangent characteristic classes can be recovered from its cohomology and its cohomology operations. The bridge is the diagonal: its normal bundle is the tangent bundle, while its cohomology class is determined by the cup-product pairing. We prove the bridge, including the compact-support duality and tubular-neighbourhood foundations, and then derive the Euler characteristic and Wu formula.</p>
+<p>Manifolds here are smooth, Hausdorff and second countable, without boundary unless stated. Dimension-zero orientation statements use the canonical point orientation and the established rank-zero Thom convention. The <a href="../../DG-CHAR/DG-CHAR-06.html">Thom/Euler chapter</a> proves singular excision, Mayer–Vietoris, products, coefficient theorems and the Thom isomorphism. The <a href="../../DG-CHAR/DG-CHAR-02.html">projective applications</a> and <a href="../../DG-CHAR/DG-CHAR-09.html">Chern chapter</a> prove the mod-two and signed compact-set fundamental classes. The <a href="../../DG-CHAR/DG-CHAR-05.html">squares chapter</a> proves the cochain operations, Cartan and the Thom definition of Stiefel–Whitney classes. These are the precise prerequisites used below.</p>
+<h2 id="section-1"><span id="1-compact-supports-and-the-duality-map"></span>1. Compact supports and the duality map</h2>
+<p>Fix a commutative coefficient ring <span class="math" data-tex="\(R\)">\(R\)</span>. Use an orientation of <span class="math" data-tex="\(M^d\)">\(M^d\)</span> when <span class="math" data-tex="\(R\ne\mathbb F _2\)">\(R\ne\mathbb F _2\)</span>; for <span class="math" data-tex="\(R=\mathbb F _2\)">\(R=\mathbb F _2\)</span> no orientation is required. The fundamental-class results just cited give a compatible class
+<span class="math math-display" data-tex="\[
+\mu_K\in H_d(M,M\setminus K;R)
+\]">\[
+\mu_K\in H_d(M,M\setminus K;R)
+\]</span>
+for every compact <span class="math" data-tex="\(K\subset M\)">\(K\subset M\)</span>: it has the prescribed local orientation at every point of <span class="math" data-tex="\(K\)">\(K\)</span>, and is uniquely determined by these local restrictions. With an orientation, this class is the coefficient image of the integer class. With mod-two coefficients it is the corresponding unsigned class. The compact-set construction works over <span class="math" data-tex="\(R\)">\(R\)</span> by the same proof: coordinate relative homology is <span class="math" data-tex="\(R\)">\(R\)</span> in top degree and zero above it; its Mayer–Vietoris gluing and local detection use only addition and subtraction. Thus uniqueness is being proved over the chosen ring, rather than inferred from an unsupported coefficient-change injection.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+C_c^r(M;R)=\bigcup_{K\text{ compact}} C^r(M,M\setminus K;R),
+\qquad H_c^r(M;R)=H^r(C_c^*(M;R)).
+\tag{1.1}
+\]">\[
+C_c^r(M;R)=\bigcup_{K\text{ compact}} C^r(M,M\setminus K;R),
+\qquad H_c^r(M;R)=H^r(C_c^*(M;R)).
+\tag{1.1}
+\]</span>
+The condition on a cochain is that it vanish on every simplex contained in the complement of some compact set. It need not vanish on all large simplices. Coboundary preserves this condition. A cocycle and a cochain witnessing its being a coboundary each belong to one compact-support stage. Taking their union shows directly that
+<span class="math math-display" data-tex="\[
+H_c^r(M;R)=\underset{K}{\operatorname{colim}}H^r(M,M\setminus K;R).
+\tag{1.2}
+\]">\[
+H_c^r(M;R)=\underset{K}{\operatorname{colim}}H^r(M,M\setminus K;R).
+\tag{1.2}
+\]</span>
+These are filtered direct limits, not inverse limits. Excision identifies each stage with the corresponding stage in any open neighbourhood of <span class="math" data-tex="\(K\)">\(K\)</span>. Thus an open inclusion <span class="math" data-tex="\(U\subset M\)">\(U\subset M\)</span> induces extension of supports <span class="math" data-tex="\(H_c^r(U)\to H_c^r(M)\)">\(H_c^r(U)\to H_c^r(M)\)</span>. If <span class="math" data-tex="\(M\)">\(M\)</span> is compact, its maximal support is <span class="math" data-tex="\(M\)">\(M\)</span>, so <span class="math" data-tex="\(H_c^r(M)=H^r(M)\)">\(H_c^r(M)=H^r(M)\)</span>.</p>
+<p>Use the manuscript's right cap convention
+<span class="math math-display" data-tex="\[
+R_a\sigma=a(\sigma[d-r,\ldots,d])\sigma[0,\ldots,d-r]
+\]">\[
+R_a\sigma=a(\sigma[d-r,\ldots,d])\sigma[0,\ldots,d-r]
+\]</span>
+on a <span class="math" data-tex="\(d\)">\(d\)</span>-simplex. For a degree-<span class="math" data-tex="\(r\)">\(r\)</span> cochain on an <span class="math" data-tex="\(m\)">\(m\)</span>-simplex, boundary expansion gives the more general identity
+<span class="math math-display" data-tex="\[
+\partial R_a c=R_a\partial c+(-1)^{m-r}R_{\delta a}c.
+\tag{1.3}
+\]">\[
+\partial R_a c=R_a\partial c+(-1)^{m-r}R_{\delta a}c.
+\tag{1.3}
+\]</span>
+The terms with a deleted vertex before the cut give the first summand, those after the cut give the coboundary summand, and their shared cut terms cancel. When <span class="math" data-tex="\(a\)">\(a\)</span> is a cocycle supported on <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> represents <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span>, the first summand vanishes because <span class="math" data-tex="\(\partial c\)">\(\partial c\)</span> is outside <span class="math" data-tex="\(K\)">\(K\)</span>. Hence <span class="math" data-tex="\(R_a c\)">\(R_a c\)</span> is an absolute cycle. Changing <span class="math" data-tex="\(c\)">\(c\)</span> by a relative boundary or by an outside chain changes it by an absolute boundary or zero. If <span class="math" data-tex="\(a\)">\(a\)</span> changes by <span class="math" data-tex="\(\delta b\)">\(\delta b\)</span>, (1.3) gives a boundary, since <span class="math" data-tex="\(R_b\partial c=0\)">\(R_b\partial c=0\)</span>. Compatibility of <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span> makes the result independent of enlarging <span class="math" data-tex="\(K\)">\(K\)</span>. We have a well-defined natural homomorphism
+<span class="math math-display" data-tex="\[
+D_M^r:H_c^r(M;R)\longrightarrow H_{d-r}(M;R),
+\qquad [a]\longmapsto R_a\mu_K.
+\tag{1.4}
+\]">\[
+D_M^r:H_c^r(M;R)\longrightarrow H_{d-r}(M;R),
+\qquad [a]\longmapsto R_a\mu_K.
+\tag{1.4}
+\]</span>
+Naturality here is for open inclusions, extension of supports and ordinary homological inclusion. The cap evaluation identity is
+<span class="math math-display" data-tex="\[
+\langle b,D_M^r(a)\rangle=\langle b\smile a,[M]\rangle
+\tag{1.5}
+\]">\[
+\langle b,D_M^r(a)\rangle=\langle b\smile a,[M]\rangle
+\tag{1.5}
+\]</span>
+when <span class="math" data-tex="\(M\)">\(M\)</span> is closed and <span class="math" data-tex="\(|b|=d-r\)">\(|b|=d-r\)</span>. Its order follows from the actual front/back face formula.</p>
+<h2 id="section-2">2. The full Poincaré duality proof</h2>
+<p><strong>Lemma 2.1 — The compact-support gluing square.</strong> If <span class="math" data-tex="\(M=U\cup V\)">\(M=U\cup V\)</span> is an open cover, cap maps identify the compact-support cohomology Mayer–Vietoris sequence with the ordinary homology Mayer–Vietoris sequence, reversing degrees. Give its middle vertical map the signs <span class="math" data-tex="\((D_U,-D_V)\)">\((D_U,-D_V)\)</span>, matching the cohomological difference map with the homological sum map. Squares for the inclusion maps then commute; the square of connecting maps in cohomological degree <span class="math" data-tex="\(r\)">\(r\)</span> commutes up to the sign <span class="math" data-tex="\((-1)^{d-r}\)">\((-1)^{d-r}\)</span>.</p>
+<p><strong>Proof.</strong> For compact <span class="math" data-tex="\(K\subset U,L\subset V\)">\(K\subset U,L\subset V\)</span>, put <span class="math" data-tex="\(A=M\setminus K\)">\(A=M\setminus K\)</span>, <span class="math" data-tex="\(B=M\setminus L\)">\(B=M\setminus L\)</span>. On singular cochains the sequence
+<span class="math math-display" data-tex="\[
+0\to C^*(M,C_*(A)+C_*(B))\to C^*(M,A)\oplus C^*(M,B)
+\xrightarrow{(a,b)\mapsto a-b} C^*(M,A\cap B)\to0
+\tag{2.1}
+\]">\[
+0\to C^*(M,C_*(A)+C_*(B))\to C^*(M,A)\oplus C^*(M,B)
+\xrightarrow{(a,b)\mapsto a-b} C^*(M,A\cap B)\to0
+\tag{2.1}
+\]</span>
+is degreewise split exact. In its first term the notation means cochains vanishing on both indicated chain groups. To split the last arrow, assign each simplex's value to the first cochain if that simplex is not contained in <span class="math" data-tex="\(A\)">\(A\)</span>, and otherwise to the negative second cochain; a simplex in both <span class="math" data-tex="\(A,B\)">\(A,B\)</span> has value zero. Since <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are open, small-chain excision identifies the first term's cohomology with that of the pair <span class="math" data-tex="\((M,A\cup B)\)">\((M,A\cup B)\)</span>. Thus (2.1) gives the sequence for supports <span class="math" data-tex="\(K\cap L,K,L,K\cup L\)">\(K\cap L,K,L,K\cup L\)</span>. Excision places these terms respectively in <span class="math" data-tex="\(U\cap V,U,V,M\)">\(U\cap V,U,V,M\)</span>.</p>
+<p>The connecting square requires a chain check. Represent <span class="math" data-tex="\(\mu_{K\cup L}\)">\(\mu_{K\cup L}\)</span>, after subdivision, as
+<span class="math math-display" data-tex="\[
+\alpha=x+y+z
+\]">\[
+\alpha=x+y+z
+\]</span>
+with <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(U\setminus L\)">\(U\setminus L\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span> in <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span>, and <span class="math" data-tex="\(z\)">\(z\)</span> in <span class="math" data-tex="\(V\setminus K\)">\(V\setminus K\)</span>; these open sets cover <span class="math" data-tex="\(M\)">\(M\)</span>. Then <span class="math" data-tex="\(x+y\)">\(x+y\)</span> represents <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span>, since its boundary is outside <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(y\)">\(y\)</span> represents <span class="math" data-tex="\(\mu_{K\cap L}\)">\(\mu_{K\cap L}\)</span>. Their local values are the required ones, so uniqueness of compact-set fundamental classes proves these assertions.</p>
+<p>Let a cocycle <span class="math" data-tex="\(\phi\)">\(\phi\)</span> with support <span class="math" data-tex="\(K\cup L\)">\(K\cup L\)</span> be written <span class="math" data-tex="\(\phi=\phi_A-\phi_B\)">\(\phi=\phi_A-\phi_B\)</span> by (2.1). Its connecting cocycle is <span class="math" data-tex="\(\delta\phi_A=\delta\phi_B\)">\(\delta\phi_A=\delta\phi_B\)</span>, supported on <span class="math" data-tex="\(K\cap L\)">\(K\cap L\)</span> in the small-chain model. The homological Mayer–Vietoris boundary of <span class="math" data-tex="\(R_\phi\alpha\)">\(R_\phi\alpha\)</span> is represented by <span class="math" data-tex="\(\partial R_\phi x\)">\(\partial R_\phi x\)</span>: take its <span class="math" data-tex="\(U\)">\(U\)</span> part to be <span class="math" data-tex="\(R_\phi x\)">\(R_\phi x\)</span> and its <span class="math" data-tex="\(V\)">\(V\)</span> part to be <span class="math" data-tex="\(R_\phi(y+z)\)">\(R_\phi(y+z)\)</span>. Since <span class="math" data-tex="\(\phi_B\)">\(\phi_B\)</span> vanishes on <span class="math" data-tex="\(x\)">\(x\)</span>, this boundary equals <span class="math" data-tex="\(R_{\phi_A}\partial x\)">\(R_{\phi_A}\partial x\)</span>. Also <span class="math" data-tex="\(R_{\phi_A}\partial(x+y)=0\)">\(R_{\phi_A}\partial(x+y)=0\)</span>, because that boundary is outside <span class="math" data-tex="\(K\)">\(K\)</span>. It is therefore <span class="math" data-tex="\(-R_{\phi_A}\partial y\)">\(-R_{\phi_A}\partial y\)</span>. By (1.3), modulo boundaries in <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span>,
+<span class="math math-display" data-tex="\[
+R_{\delta\phi_A}y=(-1)^{d-r+1}R_{\phi_A}\partial y.
+\]">\[
+R_{\delta\phi_A}y=(-1)^{d-r+1}R_{\phi_A}\partial y.
+\]</span>
+The two connecting routes differ by exactly <span class="math" data-tex="\((-1)^{d-r}\)">\((-1)^{d-r}\)</span>, as asserted. All calculations can be made after the same sufficiently fine subdivision; the proved small-chain homotopies identify them with the original classes.</p>
+<p>Pass to the filtered limit over <span class="math" data-tex="\(K,L\)">\(K,L\)</span>. Each compact subset of <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span> lies in such an intersection, and each compact subset of <span class="math" data-tex="\(M\)">\(M\)</span> lies in such a union: use a finite subcover and compact shrinkings inside <span class="math" data-tex="\(U,V\)">\(U,V\)</span>. Filtered limits preserve exactness, since an element in a kernel has its zero image at a later stage and then lifts there by stagewise exactness. This gives the stated diagram. The other squares follow directly from local fundamental-class compatibility. ∎</p>
+<p><strong>Theorem 2.2 — Poincaré duality.</strong> The map (1.4) is an isomorphism for every <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, closed balls are cofinal compact supports. The relative cohomology of a ball and its exterior is <span class="math" data-tex="\(R\)">\(R\)</span> in degree <span class="math" data-tex="\(d\)">\(d\)</span> and zero otherwise, by the sphere calculation and excision. Cap with a positively oriented <span class="math" data-tex="\(d\)">\(d\)</span>-simplex sends its degree-<span class="math" data-tex="\(d\)">\(d\)</span> evaluation cocycle to the first vertex, with coefficient one. Thus <span class="math" data-tex="\(D\)">\(D\)</span> is an isomorphism on <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span> and on any open ball or nonempty convex open subset homeomorphic to it.</p>
+<p>If duality holds on <span class="math" data-tex="\(U,V,U\cap V\)">\(U,V,U\cap V\)</span>, Lemma 2.1 and the five lemma prove it on their union; signs can be inserted in the vertical maps and do not change invertibility. If <span class="math" data-tex="\(U_1\subset U_2\subset\cdots\)">\(U_1\subset U_2\subset\cdots\)</span> are open and cover <span class="math" data-tex="\(M\)">\(M\)</span>, compact supports lie in some <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, and every finite singular cycle or bounding chain also lies in some <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. Hence both sides of (1.4) are their filtered direct limits and duality passes to the union.</p>
+<p>An open subset of <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span> is a countable union of open balls with closures inside it. Every nonempty finite intersection is homeomorphic to <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. To verify this detail, choose a point <span class="math" data-tex="\(c\)">\(c\)</span> in the intersection. The distance <span class="math" data-tex="\(R_i(\theta)\)">\(R_i(\theta)\)</span> from <span class="math" data-tex="\(c\)">\(c\)</span> to the <span class="math" data-tex="\(i\)">\(i\)</span>-th ball's boundary in unit direction <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is the positive root of <span class="math" data-tex="\(\|c+t\theta-c_i\|^2=r_i^2\)">\(\|c+t\theta-c_i\|^2=r_i^2\)</span>; its explicit quadratic formula is continuous and positive. The minimum <span class="math" data-tex="\(R(\theta)\)">\(R(\theta)\)</span> of these finitely many roots is likewise continuous and positive. In polar coordinates the map <span class="math" data-tex="\(c+t\theta\mapsto t\theta/(R(\theta)-t)\)">\(c+t\theta\mapsto t\theta/(R(\theta)-t)\)</span> is a homeomorphism onto <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, with continuous inverse and the centre mapped to zero. Induction over finite unions, followed by the preceding limit argument, proves duality for every open subset of <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. Finally cover <span class="math" data-tex="\(M\)">\(M\)</span> by countably many coordinate neighbourhoods. Intersections of any already formed union with a new chart are open subsets of that chart, so their duality is established. Finite-union induction and the countable-union argument now prove the theorem on <span class="math" data-tex="\(M\)">\(M\)</span>. The empty space and <span class="math" data-tex="\(d=0\)">\(d=0\)</span> follow from the same definitions: a compact subset of a discrete manifold is finite and the cap map is the identity on its point coefficients. ∎</p>
+<p><strong>Corollary 2.3 — Finite generation and perfect pairings.</strong> A closed oriented manifold has finitely generated integer homology, zero above its dimension. Over a field <span class="math" data-tex="\(F\)">\(F\)</span>, with the stated orientation or <span class="math" data-tex="\(F=\mathbb F _2\)">\(F=\mathbb F _2\)</span>, the pairing
+<span class="math math-display" data-tex="\[
+H^r(M;F)\times H^{d-r}(M;F)\to F,
+\qquad (a,b)\mapsto\langle a\smile b,[M]\rangle
+\tag{2.2}
+\]">\[
+H^r(M;F)\times H^{d-r}(M;F)\to F,
+\qquad (a,b)\mapsto\langle a\smile b,[M]\rangle
+\tag{2.2}
+\]</span>
+is perfect.</p>
+<p><strong>Proof.</strong> Write the ordinary fundamental class as a finite singular cycle <span class="math" data-tex="\(c\)">\(c\)</span>. For each <span class="math" data-tex="\(r\)">\(r\)</span>, every cap <span class="math" data-tex="\(R_a c\)">\(R_a c\)</span> lies in the finite free subgroup of chains generated by the front <span class="math" data-tex="\((d-r)\)">\((d-r)\)</span>-faces of the finitely many simplices of <span class="math" data-tex="\(c\)">\(c\)</span>. Its subgroup of cycles is finitely generated over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>: a subgroup of a finite-rank free abelian group is free of rank at most that rank, as proved in the coefficient chapter. Duality says these caps represent every homology class. Thus homology is a quotient of this finitely generated cycle subgroup. Over a field the same argument gives finite dimension. Duality in negative cohomological degrees gives the vanishing above <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>Field cohomology is the linear dual of homology by the proved coefficient theorem. Apply this and (1.5) to the duality isomorphism. It makes (2.2) nondegenerate, and finite dimension makes the induced maps to dual spaces isomorphisms. Graded commutativity accounts for changing the order of its two factors. ∎</p>
+<p>Define <span class="math" data-tex="\(\chi(M)=\sum_r(-1)^r\operatorname{rank}H_r(M;\mathbb Z)\)">\(\chi(M)=\sum_r(-1)^r\operatorname{rank}H_r(M;\mathbb Z)\)</span> when these groups are finitely generated and vanish in sufficiently large degrees. It equals the alternating sum of dimensions over every coefficient field. Indeed split the finitely generated integer groups into free and finite cyclic summands. Coefficient change gives each free generator once; a torsion summand visible in the chosen characteristic contributes in two consecutive homological degrees through tensor and Tor, so cancels in the alternating sum. In characteristic zero no torsion contributes. The tensor/Tor coefficient sequence follows from the same split cycle-boundary free presentation used for the already proved cohomology coefficient theorem: tensor its two-term free resolution. The elementary two-term resolution of <span class="math" data-tex="\(\mathbb Z/q\)">\(\mathbb Z/q\)</span> is multiplication by <span class="math" data-tex="\(q\)">\(q\)</span>, yielding the claimed two adjacent contributions. For nonorientable closed manifolds the finite-generation premise is proved in Section 3 below.</p>
+<h2 id="section-3"><span id="3-tubular-neighbourhoods-with-the-analytic-prerequisites"></span>3. Tubular neighbourhoods, with the analytic prerequisites</h2>
+<p>We need a tubular neighbourhood in a smooth ambient manifold <span class="math" data-tex="\(A\)">\(A\)</span>, not an unexplained appeal to a geodesic construction. The following elementary analytic facts supply one.</p>
+<p><strong>Lemma 3.1 — Local inverse and local flows.</strong> A smooth map between open Euclidean sets with invertible derivative at a point has a smooth inverse on neighbourhoods of that point. A smooth finite-dimensional vector field has a unique local flow, smooth in time and its initial point.</p>
+<p><strong>Proof.</strong> For the inverse assertion translate the point to zero and let its derivative be the invertible matrix <span class="math" data-tex="\(B\)">\(B\)</span>. On a sufficiently small closed ball, continuity of the derivative gives <span class="math" data-tex="\(\|I-B^{-1}DF\|\leq1/2\)">\(\|I-B^{-1}DF\|\leq1/2\)</span>. Solving <span class="math" data-tex="\(F(x)=y\)">\(F(x)=y\)</span> is the fixed-point problem <span class="math" data-tex="\(x=x+B^{-1}(y-F(x))\)">\(x=x+B^{-1}(y-F(x))\)</span>. For <span class="math" data-tex="\(y\)">\(y\)</span> sufficiently close to <span class="math" data-tex="\(F(0)\)">\(F(0)\)</span>, this map preserves the ball and contracts distances by <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Its iterates converge uniformly, since successive distances form a geometric series; completeness gives a unique solution. The same estimate bounds inverse differences by <span class="math" data-tex="\(2\|B^{-1}\|\|y-y&#x27;\|\)">\(2\|B^{-1}\|\|y-y&#x27;\|\)</span>, so the inverse is continuous. Inserting this bound into the differentiability remainder for <span class="math" data-tex="\(F\)">\(F\)</span> proves its derivative is <span class="math" data-tex="\(DF(x)^{-1}\)">\(DF(x)^{-1}\)</span>. This derivative is continuous. Repeated differentiation of the inverse identity proves smoothness, inductively using smoothness of matrix inversion where its determinant is nonzero. Shrinking the open ball and its image provides the stated neighbourhoods.</p>
+<p>For a smooth field <span class="math" data-tex="\(G\)">\(G\)</span>, restrict to a coordinate ball where <span class="math" data-tex="\(\|G\|\leq C\)">\(\|G\|\leq C\)</span> and <span class="math" data-tex="\(\|DG\|\leq L\)">\(\|DG\|\leq L\)</span>. Choose <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span> with <span class="math" data-tex="\(TC\)">\(TC\)</span> smaller than the available margin and <span class="math" data-tex="\(TL&lt;1/2\)">\(TL&lt;1/2\)</span>. On continuous paths staying in that ball, the map
+<span class="math math-display" data-tex="\[
+x(t)\longmapsto x_0+\int_0^tG(x(s))\,ds
+\]">\[
+x(t)\longmapsto x_0+\int_0^tG(x(s))\,ds
+\]</span>
+preserves the closed path ball and is a contraction in the supremum norm. This path space is complete: a uniformly Cauchy sequence converges pointwise in Euclidean space, its convergence is uniform, and its continuous limit still takes values in the closed ball. The contraction iterates therefore give the unique solution there. Any solution with that initial point remains in the ball for a small interval, so local uniqueness applies to it. For two solutions, agreement is a closed condition by continuity and an open condition by this local uniqueness at each common value. Their equality set is thus their entire connected common time interval. The geometric estimate also proves continuity in <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. The derivative in <span class="math" data-tex="\(x_0\)">\(x_0\)</span> solves the linear integral equation
+<span class="math math-display" data-tex="\[
+J(t)=I+\int_0^t DG(x(s))J(s)\,ds.
+\]">\[
+J(t)=I+\int_0^t DG(x(s))J(s)\,ds.
+\]</span>
+Its integral operator has norm at most <span class="math" data-tex="\(TL&lt;1/2\)">\(TL&lt;1/2\)</span>, so the Neumann series gives a unique continuous solution. Subtracting the equations for neighbouring initial points, dividing by their difference, and using the uniform differentiability remainder of <span class="math" data-tex="\(G\)">\(G\)</span> proves convergence of difference quotients to this solution. The same argument with parameters proves continuous derivatives. Each higher derivative satisfies this same linear equation with an inhomogeneous term formed from already obtained lower derivatives and derivatives of <span class="math" data-tex="\(G\)">\(G\)</span>; induction gives all derivatives. Time differentiability follows from the differential equation itself. Uniqueness lets these coordinate solutions agree on overlaps and continue along any already existing compact time interval. This proves the smooth local-flow assertion. ∎</p>
+<p>Choose a smooth partition of unity <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span> subordinate to coordinate charts of <span class="math" data-tex="\(A\)">\(A\)</span>, using the smooth bump construction in the bundle chapter. On <span class="math" data-tex="\(TA\)">\(TA\)</span> above one chart let <span class="math" data-tex="\(S_i\)">\(S_i\)</span> be the vector field whose coordinate equations are <span class="math" data-tex="\(\dot x=v,\dot v=0\)">\(\dot x=v,\dot v=0\)</span>. Set <span class="math" data-tex="\(S=\sum_i\theta_i(x)S_i\)">\(S=\sum_i\theta_i(x)S_i\)</span>. This locally finite sum is a globally smooth field on <span class="math" data-tex="\(TA\)">\(TA\)</span>. Its projection to <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(v\)">\(v\)</span>. In any chart its acceleration is quadratic in <span class="math" data-tex="\(v\)">\(v\)</span>: under a coordinate change <span class="math" data-tex="\(h\)">\(h\)</span>, a straight path has acceleration <span class="math" data-tex="\(D^2h(v,v)\)">\(D^2h(v,v)\)</span>. In particular <span class="math" data-tex="\(S(x,0)=0\)">\(S(x,0)=0\)</span>, and its linearization there is <span class="math" data-tex="\(\dot a=b,\dot b=0\)">\(\dot a=b,\dot b=0\)</span>.</p>
+<p>Lemma 3.1 gives its flow to time one on a neighbourhood of every <span class="math" data-tex="\((x,0)\)">\((x,0)\)</span>: the zero trajectory exists for the whole compact interval, and finitely many local existence intervals extend nearby trajectories along it. Let <span class="math" data-tex="\(L(x,v)\)">\(L(x,v)\)</span> be the base point at time one. Then
+<span class="math math-display" data-tex="\[
+L(x,0)=x,\qquad DL_{(x,0)}(a,b)=a+b.
+\tag{3.1}
+\]">\[
+L(x,0)=x,\qquad DL_{(x,0)}(a,b)=a+b.
+\tag{3.1}
+\]</span>
+This is a smooth local addition, constructed without any connection or geodesic theorem.</p>
+<p><strong>Theorem 3.2 — Tubular neighbourhood.</strong> If <span class="math" data-tex="\(M\subset A\)">\(M\subset A\)</span> is a smooth embedded submanifold, its normal quotient bundle <span class="math" data-tex="\(\nu=TA|_M/TM\)">\(\nu=TA|_M/TM\)</span> has a neighbourhood of its zero section diffeomorphic to an open neighbourhood of <span class="math" data-tex="\(M\)">\(M\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>, fixing <span class="math" data-tex="\(M\)">\(M\)</span>. The whole bundle is diffeomorphic to such a neighbourhood by a radial fibre change. If <span class="math" data-tex="\(M\)">\(M\)</span> is closed as a subset of <span class="math" data-tex="\(A\)">\(A\)</span>, excision also identifies the pairs' cohomology
+<span class="math math-display" data-tex="\[
+H^*(A,A\setminus M;R)\cong H^*(\nu,\nu\setminus M;R).
+\tag{3.2}
+\]">\[
+H^*(A,A\setminus M;R)\cong H^*(\nu,\nu\setminus M;R).
+\tag{3.2}
+\]</span></p>
+<p><strong>Proof.</strong> First reduce the tubular assertion to a closed embedding. Local submanifold charts make <span class="math" data-tex="\(M\)">\(M\)</span> locally closed: near each of its points, it is the zero set of the normal coordinates. Hence every point of <span class="math" data-tex="\(M\)">\(M\)</span> has a neighbourhood disjoint from <span class="math" data-tex="\(C=\overline M\setminus M\)">\(C=\overline M\setminus M\)</span>. Points outside <span class="math" data-tex="\(\overline M\)">\(\overline M\)</span> do also. Thus <span class="math" data-tex="\(C\)">\(C\)</span> is closed in <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(A&#x27;=A\setminus C\)">\(A&#x27;=A\setminus C\)</span> is open with <span class="math" data-tex="\(M\)">\(M\)</span> closed in it. The normal quotient in <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> is the same as in <span class="math" data-tex="\(A\)">\(A\)</span>, and an open tube in <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> is open in <span class="math" data-tex="\(A\)">\(A\)</span>. We can therefore assume <span class="math" data-tex="\(M\)">\(M\)</span> closed for the construction. The relative-cohomology assertion (3.2) is asserted for the original ambient space only when its embedding is closed.</p>
+<p>A smooth metric identifies <span class="math" data-tex="\(\nu\)">\(\nu\)</span> with the orthogonal complement of <span class="math" data-tex="\(TM\)">\(TM\)</span>, by the proved complement theorem. Restrict <span class="math" data-tex="\(L\)">\(L\)</span> to this complement. At a zero vector its derivative sends <span class="math" data-tex="\((a,b)\in T_xM\oplus\nu_x\)">\((a,b)\in T_xM\oplus\nu_x\)</span> to <span class="math" data-tex="\(a+b\in T_xA\)">\(a+b\in T_xA\)</span>, an isomorphism. Lemma 3.1 makes it a local diffeomorphism near each zero vector.</p>
+<p>Here is the global injectivity detail, including a noncompact base. A second-countable manifold has a compact exhaustion: take a countable relatively compact chart cover and successively enlarge finite unions of their closures to lie inside the interiors of the next such unions. Smooth bumps equal to one on each compact stage and supported in the next produce a nonnegative proper smooth function <span class="math" data-tex="\(h\)">\(h\)</span>: if <span class="math" data-tex="\(\psi_j=1\)">\(\psi_j=1\)</span> on stage <span class="math" data-tex="\(j\)">\(j\)</span> and is supported in stage <span class="math" data-tex="\(j+1\)">\(j+1\)</span>, the locally finite sum <span class="math" data-tex="\(\sum_j(1-\psi_j)\)">\(\sum_j(1-\psi_j)\)</span> is bounded on compact stages and tends to infinity off them. Its sublevel sets are compact. Put <span class="math" data-tex="\(K_j=M\cap\{h\leq j\}\)">\(K_j=M\cap\{h\leq j\}\)</span>, compact because <span class="math" data-tex="\(M\)">\(M\)</span> is closed.</p>
+<p>For each <span class="math" data-tex="\(K_j\)">\(K_j\)</span> there is a radius <span class="math" data-tex="\(\epsilon_j&gt;0\)">\(\epsilon_j&gt;0\)</span> such that <span class="math" data-tex="\(L\)">\(L\)</span> is defined and locally invertible on all normal vectors over <span class="math" data-tex="\(K_j\)">\(K_j\)</span> of smaller norm, satisfies <span class="math" data-tex="\(|h(L(x,v))-h(x)|&lt;1/2\)">\(|h(L(x,v))-h(x)|&lt;1/2\)</span>, and is injective between any two such vectors. For the last claim, if no radius worked, two distinct vectors of norms tending to zero would have equal images and bases in <span class="math" data-tex="\(K_j\)">\(K_j\)</span>. Pass to convergent base subsequences. Their images tend to the bases, so both limiting bases agree. The local inverse at that common zero vector contradicts the equality for sufficiently late terms. The other claims follow from compactness and continuity. Take these radii positive and decreasing in <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>Choose a continuous positive function <span class="math" data-tex="\(g(t)\)">\(g(t)\)</span>, <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, by interpolating between <span class="math" data-tex="\(\epsilon_{j+4}/2\)">\(\epsilon_{j+4}/2\)</span> at successive integers, and choose a smooth positive <span class="math" data-tex="\(\rho(x)&lt;g(h(x))\)">\(\rho(x)&lt;g(h(x))\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>. Such a minorant follows by a smooth locally finite chart partition and constants smaller than the positive lower bound of <span class="math" data-tex="\(g\circ h\)">\(g\circ h\)</span> on each chart closure. The normal disk domain <span class="math" data-tex="\(\|v\|&lt;\rho(x)\)">\(\|v\|&lt;\rho(x)\)</span> is contained in the local-diffeomorphism domain. If two of its points have the same image, their base heights differ by less than one. With <span class="math" data-tex="\(j\)">\(j\)</span> the ceiling of the larger height, both bases lie in <span class="math" data-tex="\(K_j\)">\(K_j\)</span>, and both norms are smaller than <span class="math" data-tex="\(\epsilon_j\)">\(\epsilon_j\)</span> by the decreasing-radius choice and the four-stage margin. The compact-stage injectivity then makes them equal. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is an injective local diffeomorphism on this domain and has a smooth inverse on its open image.</p>
+<p>The fibre map <span class="math" data-tex="\(v\mapsto\rho(x)v/\sqrt{1+\|v\|^2}\)">\(v\mapsto\rho(x)v/\sqrt{1+\|v\|^2}\)</span> is a diffeomorphism from the whole normal bundle onto that domain, with inverse <span class="math" data-tex="\(w\mapsto w/\sqrt{\rho(x)^2-\|w\|^2}\)">\(w\mapsto w/\sqrt{\rho(x)^2-\|w\|^2}\)</span>. It fixes the zero section. The resulting open neighbourhood and <span class="math" data-tex="\(A\setminus M\)">\(A\setminus M\)</span> cover <span class="math" data-tex="\(A\)">\(A\)</span>; excision for this cover proves (3.2). In codimension zero <span class="math" data-tex="\(M\)">\(M\)</span> is open and closed, and the statement reduces to its identity neighbourhood. ∎</p>
+<p>The orientation of <span class="math" data-tex="\(TM\)">\(TM\)</span> agrees with the local-homology orientation used above. In an oriented coordinate chart this is the positive coordinate generator. If a transition has derivative <span class="math" data-tex="\(B\)">\(B\)</span> at a point, the rescaled maps <span class="math" data-tex="\(h_t(v)=(h(tv)-h(0))/t\)">\(h_t(v)=(h(tv)-h(0))/t\)</span> extend at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> to <span class="math" data-tex="\(Bv\)">\(Bv\)</span>, uniformly on a small sphere; invertibility makes them avoid zero there. Hence their local degree is <span class="math" data-tex="\(\operatorname{sign}\det B\)">\(\operatorname{sign}\det B\)</span>, by the linear determinant calculation in the Thom chapter. This proves compatibility, including its change on opposite orientations.</p>
+<p><strong>Lemma 3.3 — Compact Euclidean embedding and finite domination.</strong> Every compact smooth manifold embeds smoothly in some finite Euclidean space and is a retract of a neighbourhood there. Its integer homology is finitely generated and vanishes in sufficiently large degrees, whether or not it is oriented.</p>
+<p><strong>Proof.</strong> Take finitely many coordinate maps <span class="math" data-tex="\(f_i:U_i\to\mathbb R^d\)">\(f_i:U_i\to\mathbb R^d\)</span> and smooth functions <span class="math" data-tex="\(\phi_i\geq0\)">\(\phi_i\geq0\)</span> supported inside <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, positive on sets covering <span class="math" data-tex="\(M\)">\(M\)</span>. Define the Euclidean map with blocks <span class="math" data-tex="\((\phi_i,\phi_i f_i)\)">\((\phi_i,\phi_i f_i)\)</span>, extending the second component by zero. These extensions are smooth because their supports are inside the charts. If two points have the same image, a block positive at the first is positive at the second, and division by its common first coordinate gives identical chart coordinates; the points agree. If its derivative vanishes on a tangent vector, a positive block gives first <span class="math" data-tex="\(d\phi_i=0\)">\(d\phi_i=0\)</span>, then <span class="math" data-tex="\(\phi_i df_i=0\)">\(\phi_i df_i=0\)</span>, so the vector is zero. Thus it is an injective immersion; compactness makes it a homeomorphism onto its image. The local inverse lemma, applied to any full-rank coordinate projection of its derivative, shows its image is an embedded submanifold.</p>
+<p>In Euclidean space the normal map is simply <span class="math" data-tex="\((x,v)\mapsto x+v\)">\((x,v)\mapsto x+v\)</span>. Its derivative at zero is the tangent/normal direct-sum isomorphism. The compact version of the injectivity argument in Theorem 3.2 gives a tubular neighbourhood <span class="math" data-tex="\(N\)">\(N\)</span>, and projection along its normal fibres is a retraction <span class="math" data-tex="\(r:N\to M\)">\(r:N\to M\)</span>. Choose a sufficiently fine finite grid of closed Euclidean cubes meeting <span class="math" data-tex="\(M\)">\(M\)</span>. Their union <span class="math" data-tex="\(P\)">\(P\)</span> lies inside <span class="math" data-tex="\(N\)">\(N\)</span>, since the distance from compact <span class="math" data-tex="\(M\)">\(M\)</span> to the closed complement of <span class="math" data-tex="\(N\)">\(N\)</span> is positive. Include all faces, so <span class="math" data-tex="\(P\)">\(P\)</span> is a finite cubical CW complex. Inclusion and retraction give <span class="math" data-tex="\(M\to P\to M\)">\(M\to P\to M\)</span> with composite identity. Thus homology of <span class="math" data-tex="\(M\)">\(M\)</span> is a direct summand of homology of <span class="math" data-tex="\(P\)">\(P\)</span>. The finite cellular complex, proved from relative cells in the Schubert chapter, has finitely generated integer groups in finitely many degrees. Its homology and their summands have the same finiteness properties. This proves the claim. ∎</p>
+<p>Together with the coefficient calculation following Corollary 2.3, this proves coefficient independence of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> for every closed manifold. No triangulation of <span class="math" data-tex="\(M\)">\(M\)</span> was assumed.</p>
+<h2 id="section-4"><span id="4-a-submanifold-s-dual-class-and-the-diagonal"></span>4. A submanifold's dual class and the diagonal</h2>
+<p>For a closed embedded codimension-<span class="math" data-tex="\(k\)">\(k\)</span> submanifold <span class="math" data-tex="\(j:M\hookrightarrow A\)">\(j:M\hookrightarrow A\)</span>, the Thom class of its normal bundle transfers by (3.2) to
+<span class="math math-display" data-tex="\[
+u_M\in H^k(A,A\setminus M;R).
+\]">\[
+u_M\in H^k(A,A\setminus M;R).
+\]</span>
+Use mod-two coefficients without an orientation, or an orientation of the normal bundle with any <span class="math" data-tex="\(R\)">\(R\)</span>. Its image in <span class="math" data-tex="\(H^k(A;R)\)">\(H^k(A;R)\)</span> is the <strong>dual cohomology class</strong> <span class="math" data-tex="\(U_M\)">\(U_M\)</span>. Restriction back to <span class="math" data-tex="\(M\)">\(M\)</span> is the Euler class of the normal bundle, or its top Stiefel–Whitney class modulo two: restriction corresponds under the tube to zero-section pullback of the Thom class. This proves the self-intersection formula directly from the Euler definition.</p>
+<p>If <span class="math" data-tex="\(A^D,M^{D-k}\)">\(A^D,M^{D-k}\)</span> are closed and oriented, orient the normal bundle by the convention that a positive tangent basis of <span class="math" data-tex="\(M\)">\(M\)</span>, followed by a positive normal basis, is positive in <span class="math" data-tex="\(A\)">\(A\)</span>. In codimension zero take <span class="math" data-tex="\(j\)">\(j\)</span> to preserve the given orientations, consistently with the rank-zero convention. Then for <span class="math" data-tex="\(z\in H^{D-k}(A;R)\)">\(z\in H^{D-k}(A;R)\)</span>,
+<span class="math math-display" data-tex="\[
+\langle z\smile U_M,[A]\rangle=\langle j^*z,[M]\rangle.
+\tag{4.1}
+\]">\[
+\langle z\smile U_M,[A]\rangle=\langle j^*z,[M]\rangle.
+\tag{4.1}
+\]</span>
+The same formula holds without signs over <span class="math" data-tex="\(\mathbb F _2\)">\(\mathbb F _2\)</span>.</p>
+<p><strong>Proof of (4.1).</strong> Subdivide a fundamental cycle of <span class="math" data-tex="\(A\)">\(A\)</span> for the tube/complement cover. Cap with a relative cocycle representing <span class="math" data-tex="\(u_M\)">\(u_M\)</span> kills the complement pieces and gives a cycle in the tube. Project it to <span class="math" data-tex="\(M\)">\(M\)</span>. In a local tangent/normal coordinate product, the ambient local generator is the product of the positive tangent generator and positive normal generator, in that order. The Thom cap calculation of the Thom chapter sends this product to the tangent generator: its normal-factor evaluation is one. Thus the projected cycle has the required local value at every point of <span class="math" data-tex="\(M\)">\(M\)</span>. Local fundamental-class detection makes its class <span class="math" data-tex="\([M]\)">\([M]\)</span>. The cap evaluation identity says its evaluation by <span class="math" data-tex="\(j^*z\)">\(j^*z\)</span> is the left side of (4.1), because the tube retracts onto <span class="math" data-tex="\(M\)">\(M\)</span>. ∎</p>
+<p>For example, a positive-codimension submanifold embedded as a closed subset of Euclidean space has zero dual class in that ambient space. Therefore its normal top Stiefel–Whitney class, and oriented normal Euler class if defined, vanish. Closedness and embeddedness are part of this assertion; an immersion supplies no such ambient relative Thom class.</p>
+<p>Now take a closed <span class="math" data-tex="\(d\)">\(d\)</span>-manifold <span class="math" data-tex="\(M\)">\(M\)</span> and its diagonal <span class="math" data-tex="\(\Delta:M\hookrightarrow M\times M\)">\(\Delta:M\hookrightarrow M\times M\)</span>. With a product metric its tangent space is <span class="math" data-tex="\(\{(v,v)\}\)">\(\{(v,v)\}\)</span> and its normal space is <span class="math" data-tex="\(\{(-v,v)\}\)">\(\{(-v,v)\}\)</span>. Hence
+<span class="math math-display" data-tex="\[
+TM\cong\nu_\Delta,\qquad v\longmapsto(-v,v).
+\tag{4.2}
+\]">\[
+TM\cong\nu_\Delta,\qquad v\longmapsto(-v,v).
+\tag{4.2}
+\]</span></p>
+<p><img src="figures/circle-diagonal.png" alt="The circle diagonal in a unit fundamental square of the product torus; opposite sides are identified, the tangent direction is (1,1), and the positively oriented normal direction is (-1,1)." class="course-figure" width="940" height="1040" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="circle-diagonal" data-asset-sha256="150EBB62AB28F9B86326277D45DE101A26B2DAD2B865B3198653BCAFE25806C1"><p class="figure-downloads"><a href="figures/circle-diagonal.png" download>Full-size PNG</a> · <a href="figures/circle-diagonal.svg" download>Editable SVG</a></p></p>
+<p><em>Figure 1. This is the diagonal of <span class="math" data-tex="\(S^1\)">\(S^1\)</span> in <span class="math" data-tex="\(S^1\times S^1\)">\(S^1\times S^1\)</span>, represented in unit period coordinates. The two arrows are scaled by <span class="math" data-tex="\(1/5\)">\(1/5\)</span>; their unscaled ordered determinant is <span class="math" data-tex="\(2&gt;0\)">\(2&gt;0\)</span>. All four square vertices are the same diagonal point in the quotient. The positive dual class is <span class="math" data-tex="\(a_2-a_1\)">\(a_2-a_1\)</span>, and its diagonal pullback is zero, as proved in Theorem 4.1 and Exercise 6.4. The diagram represents this one-dimensional example; it is not a picture of a higher-dimensional diagonal. The editable code, SVG and exact coordinate data accompany the diagram. Scholarly coverage: Milnor and Stasheff, Section 11.</em></p>
+<p>For an oriented <span class="math" data-tex="\(M\)">\(M\)</span>, give this normal bundle the tangent orientation via (4.2). The tangent-first/normal-second matrix is
+<span class="math" data-tex="\(\begin{pmatrix}I&amp;-I\\I&amp;I\end{pmatrix}\)">\(\begin{pmatrix}I&amp;-I\\I&amp;I\end{pmatrix}\)</span>, with determinant <span class="math" data-tex="\(2^d&gt;0\)">\(2^d&gt;0\)</span>, so it agrees with the orientation convention in (4.1). Let <span class="math" data-tex="\(u\)">\(u\)</span> be its relative Thom class and <span class="math" data-tex="\(U\)">\(U\)</span> its absolute image, the <strong>diagonal class</strong>. We have
+<span class="math math-display" data-tex="\[
+\Delta^*U=e(TM),\qquad
+\langle z\smile U,[M\times M]\rangle=\langle\Delta^*z,[M]\rangle.
+\tag{4.3}
+\]">\[
+\Delta^*U=e(TM),\qquad
+\langle z\smile U,[M\times M]\rangle=\langle\Delta^*z,[M]\rangle.
+\tag{4.3}
+\]</span>
+Modulo two the first equality is <span class="math" data-tex="\(\Delta^*U=w_d(TM)\)">\(\Delta^*U=w_d(TM)\)</span>.</p>
+<p>These signs can also be checked on a transverse fibre. The diagonal tube may be built using the local addition on <span class="math" data-tex="\(M\)">\(M\)</span> as
+<span class="math" data-tex="\((x,v)\mapsto(L(x,-v),L(x,v))\)">\((x,v)\mapsto(L(x,-v),L(x,v))\)</span>. Its derivative has exactly the tangent/normal blocks above; the compact injectivity argument makes it a tube after shrinking the radius. For fixed <span class="math" data-tex="\(x\)">\(x\)</span>, the maps
+<span class="math math-display" data-tex="\[
+v\longmapsto(L(x,-tv),L(x,v)),\quad 0\leq t\leq1,
+\]">\[
+v\longmapsto(L(x,-tv),L(x,v)),\quad 0\leq t\leq1,
+\]</span>
+stay off the diagonal when <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> is sufficiently small. Indeed the fibre map <span class="math" data-tex="\(L(x,-)\)">\(L(x,-)\)</span> is locally injective, and <span class="math" data-tex="\(-tv\ne v\)">\(-tv\ne v\)</span>. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span> this is the slice <span class="math" data-tex="\(y\mapsto(x,y)\)">\(y\mapsto(x,y)\)</span>. Thus its Thom pullback is the positive local cohomology generator of <span class="math" data-tex="\(M\)">\(M\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>, with no hidden sign.</p>
+<p>The projections <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span> are homotopic on the tube since they agree on its deformation retract, the diagonal. Relative multiplication and excision therefore give
+<span class="math math-display" data-tex="\[
+(a\times1)\smile U=(1\times a)\smile U
+\tag{4.4}
+\]">\[
+(a\times1)\smile U=(1\times a)\smile U
+\tag{4.4}
+\]</span>
+for every <span class="math" data-tex="\(a\in H^*(M;R)\)">\(a\in H^*(M;R)\)</span>.</p>
+<p><strong>Theorem 4.1 — The signed diagonal formula.</strong> Work over a field <span class="math" data-tex="\(F\)">\(F\)</span>, with <span class="math" data-tex="\(M\)">\(M\)</span> oriented or with <span class="math" data-tex="\(F=\mathbb F _2\)">\(F=\mathbb F _2\)</span>. Choose a homogeneous basis <span class="math" data-tex="\(b_i\)">\(b_i\)</span> of <span class="math" data-tex="\(H^*(M;F)\)">\(H^*(M;F)\)</span>, and its cup-dual basis <span class="math" data-tex="\(b_i^\vee\)">\(b_i^\vee\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\langle b_i\smile b_j^\vee,[M]\rangle=\delta_{ij}.
+\]">\[
+\langle b_i\smile b_j^\vee,[M]\rangle=\delta_{ij}.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+U=\sum_i(-1)^{|b_i|}\,b_i\times b_i^\vee.
+\tag{4.5}
+\]">\[
+U=\sum_i(-1)^{|b_i|}\,b_i\times b_i^\vee.
+\tag{4.5}
+\]</span></p>
+<p><strong>Proof.</strong> Corollary 2.3 gives the finite dual basis. The singular-chain product equivalence already proved in the Thom chapter, together with vector-space splittings into homology and contractible boundary pairs, gives
+<span class="math" data-tex="\(H^*(M\times M;F)=H^*(M;F)\otimes H^*(M;F)\)">\(H^*(M\times M;F)=H^*(M;F)\otimes H^*(M;F)\)</span>.
+Finite dimension permits dualizing these tensor products in each degree. Its external-product multiplication is
+<span class="math math-display" data-tex="\[
+(a\times b)\smile(c\times e)=(-1)^{|b||c|}(a\smile c)\times(b\smile e),
+\]">\[
+(a\times b)\smile(c\times e)=(-1)^{|b||c|}(a\smile c)\times(b\smile e),
+\]</span>
+by the proved graded commutativity. The product fundamental class is <span class="math" data-tex="\([M]\times[M]\)">\([M]\times[M]\)</span>: its local coordinate product values agree with the orientation of <span class="math" data-tex="\(M\times M\)">\(M\times M\)</span>, hence local detection identifies the classes.</p>
+<p>Test the right side of (4.5) against <span class="math" data-tex="\(a\times b\)">\(a\times b\)</span> of total degree <span class="math" data-tex="\(d\)">\(d\)</span>. A term contributes only when <span class="math" data-tex="\(|b_i|=|b|\)">\(|b_i|=|b|\)</span>. Its multiplication sign is then <span class="math" data-tex="\((-1)^{|b|^2}=(-1)^{|b_i|}\)">\((-1)^{|b|^2}=(-1)^{|b_i|}\)</span>, cancelling the coefficient in (4.5). The result is
+<span class="math math-display" data-tex="\[
+\sum_i\langle a\smile b_i,[M]\rangle\langle b\smile b_i^\vee,[M]\rangle
+=\langle a\smile b,[M]\rangle,
+\]">\[
+\sum_i\langle a\smile b_i,[M]\rangle\langle b\smile b_i^\vee,[M]\rangle
+=\langle a\smile b,[M]\rangle,
+\]</span>
+since the second evaluations are precisely the coefficients of <span class="math" data-tex="\(b\)">\(b\)</span> in its basis. By (4.3) this is also the test against <span class="math" data-tex="\(U\)">\(U\)</span>. External products span <span class="math" data-tex="\(H^d(M\times M;F)\)">\(H^d(M\times M;F)\)</span>, and its pairing with itself is perfect by duality on the product. The two degree-<span class="math" data-tex="\(d\)">\(d\)</span> classes must therefore agree. ∎</p>
+<p>Define slant with the second fundamental class by
+<span class="math math-display" data-tex="\[
+(a\times b)/[M]=a\langle b,[M]\rangle,
+\tag{4.6}
+\]">\[
+(a\times b)/[M]=a\langle b,[M]\rangle,
+\tag{4.6}
+\]</span>
+with evaluation zero unless <span class="math" data-tex="\(|b|=d\)">\(|b|=d\)</span>. The product decomposition makes this a well-defined operation. It is left linear over first-factor cohomology. Formula (4.5), or the positive slice computation, gives <span class="math" data-tex="\(U/[M]=1\)">\(U/[M]=1\)</span>. For disconnected <span class="math" data-tex="\(M\)">\(M\)</span>, each degree-zero component idempotent has its corresponding component top class as dual; their sum is the unit. Thus the statement includes disconnected manifolds.</p>
+<p><strong>Corollary 4.2 — Euler number and Euler characteristic.</strong> For a closed oriented manifold,
+<span class="math math-display" data-tex="\[
+\langle e(TM),[M]\rangle=\chi(M).
+\tag{4.7}
+\]">\[
+\langle e(TM),[M]\rangle=\chi(M).
+\tag{4.7}
+\]</span>
+For every closed manifold,
+<span class="math math-display" data-tex="\[
+\langle w_d(TM),[M]_2\rangle\equiv\chi(M)\pmod2.
+\tag{4.8}
+\]">\[
+\langle w_d(TM),[M]_2\rangle\equiv\chi(M)\pmod2.
+\tag{4.8}
+\]</span></p>
+<p><strong>Proof.</strong> Apply <span class="math" data-tex="\(\Delta^*\)">\(\Delta^*\)</span> to (4.5), then evaluate. Each dual-basis pair evaluates to one, so the result is <span class="math" data-tex="\(\sum_i(-1)^{|b_i|}\)">\(\sum_i(-1)^{|b_i|}\)</span>, the alternating sum of Betti numbers. Over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, this is <span class="math" data-tex="\(\chi(M)\)">\(\chi(M)\)</span> by its established coefficient independence. The integer Euler evaluation has that same value upon passing to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, proving (4.7). Over <span class="math" data-tex="\(\mathbb F _2\)">\(\mathbb F _2\)</span> all signs disappear and coefficient independence gives (4.8). In dimension zero the rank-zero Euler class is one and the fundamental class has the orientation signs of the points; the Euler evaluation counts each point positively because its tangent zero-plane has its canonical orientation. We take this canonical orientation for the tangent Euler class and its associated fundamental class. ∎</p>
+<h2 id="section-5"><span id="5-wu-s-formula-and-homotopy-invariance"></span>5. Wu's formula and homotopy invariance</h2>
+<p>All coefficients in this section are <span class="math" data-tex="\(\mathbb F _2\)">\(\mathbb F _2\)</span>; <span class="math" data-tex="\(M^d\)">\(M^d\)</span> is closed and no orientation is needed. Perfect duality defines a unique class <span class="math" data-tex="\(v_i\in H^i(M;\mathbb F _2)\)">\(v_i\in H^i(M;\mathbb F _2)\)</span> by
+<span class="math math-display" data-tex="\[
+\langle v_i\smile x,[M]_2\rangle=\langle Sq^i x,[M]_2\rangle,
+\qquad x\in H^{d-i}(M;\mathbb F _2).
+\tag{5.1}
+\]">\[
+\langle v_i\smile x,[M]_2\rangle=\langle Sq^i x,[M]_2\rangle,
+\qquad x\in H^{d-i}(M;\mathbb F _2).
+\tag{5.1}
+\]</span>
+Their sum <span class="math" data-tex="\(v=1+v_1+\cdots+v_d\)">\(v=1+v_1+\cdots+v_d\)</span> is the <strong>Wu class</strong>. Here <span class="math" data-tex="\(v_0=1\)">\(v_0=1\)</span>, since <span class="math" data-tex="\(Sq^0\)">\(Sq^0\)</span> is the identity. Instability gives <span class="math" data-tex="\(v_i=0\)">\(v_i=0\)</span> for <span class="math" data-tex="\(i&gt;d/2\)">\(i&gt;d/2\)</span>: in that range <span class="math" data-tex="\(i&gt;d-i\)">\(i&gt;d-i\)</span>, so the functional on the right is zero. These are tangent-manifold classes defined using its pairing and operations, not a second arbitrary bundle construction.</p>
+<p><strong>Theorem 5.1 — Wu's formula.</strong>
+<span class="math math-display" data-tex="\[
+w(TM)=Sq(v),\qquad w_k(TM)=\sum_{i+j=k}Sq^i(v_j).
+\tag{5.2}
+\]">\[
+w(TM)=Sq(v),\qquad w_k(TM)=\sum_{i+j=k}Sq^i(v_j).
+\tag{5.2}
+\]</span></p>
+<p><strong>Proof.</strong> On the diagonal tube, the Thom definition and (4.2) give
+<span class="math math-display" data-tex="\[
+Sq(u)=p_1^*w(TM)\smile u.
+\]">\[
+Sq(u)=p_1^*w(TM)\smile u.
+\]</span>
+Indeed the tubular retraction identifies either projection with the bundle base; relative multiplication transfers by excision, and naturality of the proved squares applies to this pair. Passing to the absolute group yields
+<span class="math" data-tex="\(Sq(U)=(w(TM)\times1)\smile U\)">\(Sq(U)=(w(TM)\times1)\smile U\)</span>.
+Slant with the second fundamental class and <span class="math" data-tex="\(U/[M]=1\)">\(U/[M]=1\)</span> therefore give
+<span class="math math-display" data-tex="\[
+Sq(U)/[M]=w(TM).
+\tag{5.3}
+\]">\[
+Sq(U)/[M]=w(TM).
+\tag{5.3}
+\]</span></p>
+<p>Take the dual basis from Theorem 4.1, now without signs. Equation (5.1) says precisely
+<span class="math math-display" data-tex="\[
+v=\sum_i b_i\langle Sq(b_i^\vee),[M]_2\rangle:
+\]">\[
+v=\sum_i b_i\langle Sq(b_i^\vee),[M]_2\rangle:
+\]</span>
+the coefficient of a basis element of degree <span class="math" data-tex="\(j\)">\(j\)</span> is the evaluation of <span class="math" data-tex="\(Sq^j\)">\(Sq^j\)</span> of its degree-<span class="math" data-tex="\((d-j)\)">\((d-j)\)</span> dual. Additivity and external Cartan give
+<span class="math math-display" data-tex="\[
+Sq(v)=\sum_i Sq(b_i)\langle Sq(b_i^\vee),[M]_2\rangle
+=Sq\Bigl(\sum_i b_i\times b_i^\vee\Bigr)/[M]
+=Sq(U)/[M].
+\]">\[
+Sq(v)=\sum_i Sq(b_i)\langle Sq(b_i^\vee),[M]_2\rangle
+=Sq\Bigl(\sum_i b_i\times b_i^\vee\Bigr)/[M]
+=Sq(U)/[M].
+\]</span>
+Together with (5.3), this proves (5.2). Every sum is finite after restricting to the finite-dimensional cohomology of the manifold; no power-series convergence or unproved Adem relation enters. ∎</p>
+<p>For an oriented four-manifold, <span class="math" data-tex="\(w_1=0\)">\(w_1=0\)</span>, hence <span class="math" data-tex="\(v_1=0\)">\(v_1=0\)</span> by the degree-one part of (5.2). Its degree-two part gives <span class="math" data-tex="\(w_2=v_2\)">\(w_2=v_2\)</span>, since the only other possible term is <span class="math" data-tex="\(Sq^1v_1=v_1^2\)">\(Sq^1v_1=v_1^2\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\langle w_2\smile x,[M]_2\rangle=\langle x^2,[M]_2\rangle,
+\qquad x\in H^2(M;\mathbb F _2).
+\tag{5.4}
+\]">\[
+\langle w_2\smile x,[M]_2\rangle=\langle x^2,[M]_2\rangle,
+\qquad x\in H^2(M;\mathbb F _2).
+\tag{5.4}
+\]</span>
+The degree-two tangent class is the characteristic element of the mod-two middle cup pairing.</p>
+<p><strong>Corollary 5.2.</strong> A homotopy equivalence of closed <span class="math" data-tex="\(d\)">\(d\)</span>-manifolds carries their Stiefel–Whitney classes to each other, and preserves all their Stiefel–Whitney numbers.</p>
+<p><strong>Proof.</strong> Such an equivalence permutes components and induces an isomorphism in top mod-two homology on each. Each component's fundamental class is the unique nonzero element of that group, so the sum fundamental class is carried to the sum fundamental class. Its cohomology map preserves cup products, and the squares are natural by their cochain construction. Equation (5.1) and perfect pairing therefore imply that it carries the Wu classes to each other. Apply (5.2) to obtain the same assertion for <span class="math" data-tex="\(w\)">\(w\)</span>. Every characteristic number is evaluation of a degree-<span class="math" data-tex="\(d\)">\(d\)</span> product of the <span class="math" data-tex="\(w_i\)">\(w_i\)</span> on the fundamental class, so it too is preserved. The argument needs the cohomology operations as well as the ring. ∎</p>
+<p><strong>Proposition 5.3 — A ring with one generator.</strong> If
+<span class="math math-display" data-tex="\[
+H^*(M;\mathbb F _2)=\mathbb F _2[a]/(a^{m+1}),\qquad |a|=k&gt;0,
+\]">\[
+H^*(M;\mathbb F _2)=\mathbb F _2[a]/(a^{m+1}),\qquad |a|=k&gt;0,
+\]</span>
+then <span class="math" data-tex="\(d=km\)">\(d=km\)</span>, <span class="math" data-tex="\(\langle a^m,[M]_2\rangle=1\)">\(\langle a^m,[M]_2\rangle=1\)</span>, and
+<span class="math math-display" data-tex="\[
+v=\sum_{j=0}^{\lfloor m/2\rfloor}\binom{m-j}{j}a^j,
+\qquad w(TM)=(1+a)^{m+1}\pmod{a^{m+1}}.
+\tag{5.5}
+\]">\[
+v=\sum_{j=0}^{\lfloor m/2\rfloor}\binom{m-j}{j}a^j,
+\qquad w(TM)=(1+a)^{m+1}\pmod{a^{m+1}}.
+\tag{5.5}
+\]</span>
+The binomial coefficients in this equation are reduced modulo two.</p>
+<p><strong>Proof.</strong> The top nonzero cohomology degree is <span class="math" data-tex="\(km\)">\(km\)</span>, which equals <span class="math" data-tex="\(d\)">\(d\)</span> by duality, and its nonzero element has evaluation one. Only degrees divisible by <span class="math" data-tex="\(k\)">\(k\)</span> occur. Instability and the top-square rule therefore imply <span class="math" data-tex="\(Sq(a)=a+a^2\)">\(Sq(a)=a+a^2\)</span>: there is no possible intermediate-degree component. Cartan gives <span class="math" data-tex="\(Sq(a^s)=a^s(1+a)^s\)">\(Sq(a^s)=a^s(1+a)^s\)</span>. Evaluation of <span class="math" data-tex="\(Sq^{kj}(a^{m-j})\)">\(Sq^{kj}(a^{m-j})\)</span> is <span class="math" data-tex="\(\binom{m-j}{j}\)">\(\binom{m-j}{j}\)</span>, giving the Wu formula in (5.5).</p>
+<p>For completeness, let <span class="math" data-tex="\(F_m(z)=\sum_j\binom{m-j}{j}z^j\)">\(F_m(z)=\sum_j\binom{m-j}{j}z^j\)</span> over <span class="math" data-tex="\(\mathbb F _2\)">\(\mathbb F _2\)</span>. Pascal's identity gives <span class="math" data-tex="\(F_m=F_{m-1}+zF_{m-2}\)">\(F_m=F_{m-1}+zF_{m-2}\)</span>, with <span class="math" data-tex="\(F_0=F_1=1\)">\(F_0=F_1=1\)</span>. After substituting <span class="math" data-tex="\(z=a(1+a)\)">\(z=a(1+a)\)</span>, the polynomials
+<span class="math" data-tex="\(G_m=(1+a)^{m+1}+a^{m+1}\)">\(G_m=(1+a)^{m+1}+a^{m+1}\)</span> satisfy exactly this recurrence and these initial values: both <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(1+a\)">\(1+a\)</span> satisfy <span class="math" data-tex="\(r^2=r+a(1+a)\)">\(r^2=r+a(1+a)\)</span>. Induction gives <span class="math" data-tex="\(F_m(a(1+a))=G_m\)">\(F_m(a(1+a))=G_m\)</span>. Thus <span class="math" data-tex="\(Sq(v)=G_m\)">\(Sq(v)=G_m\)</span>, and its final term <span class="math" data-tex="\(a^{m+1}\)">\(a^{m+1}\)</span> vanishes in the stated ring. Theorem 5.1 proves the assertion for <span class="math" data-tex="\(w\)">\(w\)</span>. ∎</p>
+<h2 id="section-6"><span id="6-exercises-with-solutions"></span>6. Exercises with solutions</h2>
+<p><strong>Exercise 6.1 — Easy.</strong> Derive the hairy ball theorem from the Euler number, and treat odd-dimensional spheres.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(S^n\)">\(S^n\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, the sphere homology calculation gives <span class="math" data-tex="\(\chi=1+(-1)^n\)">\(\chi=1+(-1)^n\)</span>. In even positive dimension the Euler evaluation is two by Corollary 4.2, so <span class="math" data-tex="\(e(TS^n)\ne0\)">\(e(TS^n)\ne0\)</span>. A nowhere-zero vector field would make it zero by the proved Euler-section property, a contradiction. For odd <span class="math" data-tex="\(n=2r+1\)">\(n=2r+1\)</span>, view the sphere as the unit sphere in <span class="math" data-tex="\(\mathbb C^{r+1}\)">\(\mathbb C^{r+1}\)</span>; the field <span class="math" data-tex="\(x\mapsto ix\)">\(x\mapsto ix\)</span> is tangent, has unit norm, and never vanishes. This both provides existence and is consistent with its zero Euler number.</p>
+<p><strong>Exercise 6.2 — Medium.</strong> Prove homotopy invariance of Stiefel–Whitney numbers. Explain why a cup-ring isomorphism alone was not the hypothesis of the proof.</p>
+<p><strong>Solution.</strong> A homotopy equivalence preserves the sum of mod-two fundamental classes and commutes with every <span class="math" data-tex="\(Sq^i\)">\(Sq^i\)</span>. Substituting these two facts in (5.1) gives equality of the pulled-back Wu class with the source Wu class by uniqueness in its perfect pairing. Formula (5.2) then identifies the tangent <span class="math" data-tex="\(w_i\)">\(w_i\)</span>. Pullback preserves their products, and fundamental-class naturality preserves the evaluation, hence every number. A ring isomorphism without compatibility with squares would not carry the right-hand functional in (5.1) to the other one, so the argument makes no such claim.</p>
+<p><strong>Exercise 6.3 — Medium.</strong> Compute the Wu class of <span class="math" data-tex="\(\mathbb {CP}^2\)">\(\mathbb {CP}^2\)</span>, verify the tangent total class, and interpret its <span class="math" data-tex="\(w_2\)">\(w_2\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(x\in H^2(\mathbb {CP}^2;\mathbb F _2)\)">\(x\in H^2(\mathbb {CP}^2;\mathbb F _2)\)</span> be the reduced positive hyperplane generator; <span class="math" data-tex="\(x^2[M]=1\)">\(x^2[M]=1\)</span>. The functional <span class="math" data-tex="\(x\mapsto Sq^2x=x^2\)">\(x\mapsto Sq^2x=x^2\)</span> makes <span class="math" data-tex="\(v_2=x\)">\(v_2=x\)</span>. Odd cohomology is zero, and instability gives <span class="math" data-tex="\(v_i=0\)">\(v_i=0\)</span> for <span class="math" data-tex="\(i&gt;2\)">\(i&gt;2\)</span>, so <span class="math" data-tex="\(v=1+x\)">\(v=1+x\)</span>. Therefore <span class="math" data-tex="\(Sq(v)=1+x+x^2\)">\(Sq(v)=1+x+x^2\)</span>. This agrees with reduction of <span class="math" data-tex="\(c(T\mathbb {CP}^2)=(1+x)^3\)">\(c(T\mathbb {CP}^2)=(1+x)^3\)</span> from the Chern chapter. Its <span class="math" data-tex="\(w_2=x\)">\(w_2=x\)</span> is exactly the characteristic element of the one-dimensional middle pairing, as (5.4) states. Its top Stiefel–Whitney number is one, the parity of <span class="math" data-tex="\(\chi=3\)">\(\chi=3\)</span>.</p>
+<p><strong>Exercise 6.4 — Hard.</strong> Prove the signed diagonal formula, then compute it for the circle and <span class="math" data-tex="\(\mathbb {CP}^2\)">\(\mathbb {CP}^2\)</span>.</p>
+<p><strong>Solution.</strong> Give the diagonal normal bundle the tangent orientation under <span class="math" data-tex="\(v\mapsto(-v,v)\)">\(v\mapsto(-v,v)\)</span>; its tangent-first determinant is <span class="math" data-tex="\(2^d&gt;0\)">\(2^d&gt;0\)</span>. The dual-class cap calculation proves (4.3). Expanding in external-product bases, testing against <span class="math" data-tex="\(a\times b\)">\(a\times b\)</span>, and cancelling <span class="math" data-tex="\((-1)^{|b||b_i|}\)">\((-1)^{|b||b_i|}\)</span> with <span class="math" data-tex="\((-1)^{|b_i|}\)">\((-1)^{|b_i|}\)</span> in each contributing term proves (4.5) by perfect pairing. For an oriented circle, let <span class="math" data-tex="\(a[S^1]=1\)">\(a[S^1]=1\)</span>. The basis <span class="math" data-tex="\(1,a\)">\(1,a\)</span> has dual <span class="math" data-tex="\(a,1\)">\(a,1\)</span>, so
+<span class="math math-display" data-tex="\[
+U=1\times a-a\times1.
+\]">\[
+U=1\times a-a\times1.
+\]</span>
+Restriction to the diagonal is zero, agreeing with <span class="math" data-tex="\(e(TS^1)=0\)">\(e(TS^1)=0\)</span>. For <span class="math" data-tex="\(\mathbb {CP}^2\)">\(\mathbb {CP}^2\)</span>, the basis <span class="math" data-tex="\(1,x,x^2\)">\(1,x,x^2\)</span> has dual <span class="math" data-tex="\(x^2,x,1\)">\(x^2,x,1\)</span>; all degrees are even, and
+<span class="math math-display" data-tex="\[
+U=1\times x^2+x\times x+x^2\times1.
+\]">\[
+U=1\times x^2+x\times x+x^2\times1.
+\]</span>
+Its restriction is <span class="math" data-tex="\(3x^2\)">\(3x^2\)</span>, whose integer evaluation is three. The displayed integer formula is justified here as well: the projective homology is free, its integral product basis was proved in the Chern chapter, and the same tests distinguish every integral coefficient. No general torsion-sensitive integral tensor decomposition was assumed.</p>
+<p><strong>Exercise 6.5 — Medium.</strong> Suppose a positive-codimension submanifold is embedded as a closed subset of Euclidean space. Prove its normal top class vanishes and identify the hypothesis that would fail for an arbitrary immersion.</p>
+<p><strong>Solution.</strong> Its tubular Thom class gives an ambient dual class in <span class="math" data-tex="\(H^k(\mathbb R^N;R)=0\)">\(H^k(\mathbb R^N;R)=0\)</span>, <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, since Euclidean space is contractible. Restriction of that zero class is the normal Euler class if the normal bundle is oriented, and the normal top Stiefel–Whitney class otherwise with mod-two coefficients. A general immersion has self-intersections; it does not identify a tubular neighbourhood of its normal bundle with a neighbourhood of a single embedded subset. Thus this particular relative-pair/excision proof does not apply to it.</p>
+<p><strong>Exercise 6.6 — Medium.</strong> Prove the one-generator formula and compute <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> for <span class="math" data-tex="\(\mathbb {RP}^4\)">\(\mathbb {RP}^4\)</span>.</p>
+<p><strong>Solution.</strong> Instability and the ring's missing intermediate degrees give <span class="math" data-tex="\(Sq(a)=a+a^2\)">\(Sq(a)=a+a^2\)</span>; Cartan gives the binomial coefficients on powers. The degree-<span class="math" data-tex="\(kj\)">\(kj\)</span> Wu coefficient is <span class="math" data-tex="\(\binom{m-j}{j}\)">\(\binom{m-j}{j}\)</span> by evaluation on <span class="math" data-tex="\(a^{m-j}\)">\(a^{m-j}\)</span>. To simplify its total square, Pascal's recurrence for <span class="math" data-tex="\(F_m\)">\(F_m\)</span> and the two roots <span class="math" data-tex="\(a,1+a\)">\(a,1+a\)</span> give <span class="math" data-tex="\(Sq(v)=(1+a)^{m+1}+a^{m+1}\)">\(Sq(v)=(1+a)^{m+1}+a^{m+1}\)</span>, as fully proved in Proposition 5.3. The last term is zero in the ring. On <span class="math" data-tex="\(\mathbb {RP}^4\)">\(\mathbb {RP}^4\)</span>, <span class="math" data-tex="\(m=4,k=1\)">\(m=4,k=1\)</span>, so <span class="math" data-tex="\(v=1+a+a^2\)">\(v=1+a+a^2\)</span>. Its square is <span class="math" data-tex="\(1+(a+a^2)+(a^2+a^4)=1+a+a^4\)">\(1+(a+a^2)+(a^2+a^4)=1+a+a^4\)</span>, agreeing with <span class="math" data-tex="\((1+a)^5\)">\((1+a)^5\)</span> truncated at <span class="math" data-tex="\(a^5=0\)">\(a^5=0\)</span>.</p>
+<h2 id="sources-and-scope">Sources and scope</h2>
+<p>Scholarly coverage follows Milnor and Stasheff, <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnstas.pdf"><em>Characteristic Classes</em></a> (1974), Section 11: tubular/dual classes11.1–11.9, diagonal11.11, Euler characteristic11.12 and Wu11.13–11.14. The homotopy-invariance statement is proved in Corollary 5.2 and Exercise 6.2; the book's actual numbered corollary11.15 is the one-generator formula, also fully proved in Proposition 5.3 and Exercise 6.6. Hatcher, <em>Algebraic Topology</em> (2002), Section 3.3, theorem3.35 and lemma3.36, supplies the compact-support duality comparison.</p>
+<p>The cap convention is the manuscript's unshifted right cap. Orientation and coefficient conditions are explicit; integer and mod-two fundamental classes have their complete earlier proofs. We supply the inverse/flow and noncompact tubular arguments, the compact-support connecting square, finite Euclidean domination, and the product proof needed for the diagonal. Dimension-zero statements use the canonical point orientation and rank-zero Thom convention.</p>
+<footer>CC0-1.0. Source credits and component terms are retained. <a href="index.html">Companion readings and terms</a>.</footer></main></body></html>

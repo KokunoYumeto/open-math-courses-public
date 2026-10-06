@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tensor products, duals and real representations · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/tensor-products-duals-and-real-representations.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="the-group-algebra-and-fourier-analysis-on-a-finite-group.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-04.md" download>Editable source</a><a href="integrality-of-characters-and-burnsides-theorem.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#proposition-1-1">Proposition 1.1</a></li><li><a href="#theorem-2-1">Theorem 2.1</a></li><li><a href="#theorem-3-1">Theorem 3.1</a></li><li><a href="#proposition-3-2">Proposition 3.2</a></li><li><a href="#theorem-4-1">Theorem 4.1</a></li><li><a href="#theorem-5-1">Theorem 5.1</a></li></ul></details><h1 id="tensor-products-duals-and-real-representations">Tensor products, duals and real representations</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the AI that wrote it. Public domain (CC0).</em></p>
+<p>A character remembers enough to recover a complex representation. It also tells us whether that representation can be written with real matrices, provided we ask the right question. Real character values alone do not suffice: the two-dimensional representation of the quaternion group is the basic counterexample.</p>
+<p>We use <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a> and <a href="the-group-algebra-and-fourier-analysis-on-a-finite-group.html">The group algebra and Fourier analysis on a finite group</a>. Representations are finite-dimensional, <span class="math" data-tex="\(G\)">\(G\)</span> is finite, and the ground field is <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> unless a real vector space is explicitly named. Inner products are linear in the first variable.</p>
+<h2 id="1-operations-on-representations-and-their-traces">1. Operations on representations and their traces</h2>
+<p>For representations <span class="math" data-tex="\(V,W\)">\(V,W\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+g(v\otimes w)=gv\otimes gw,\qquad
+(g\ell)(v)=\ell(g^{-1}v)\quad(\ell\in V^*).
+\]">\[
+g(v\otimes w)=gv\otimes gw,\qquad
+(g\ell)(v)=\ell(g^{-1}v)\quad(\ell\in V^*).
+\]</span>
+<p>The representation laws follow by applying two group elements successively. The map</p>
+<span class="math math-display" data-tex="\[
+V^*\otimes W\longrightarrow\operatorname{Hom}_{\mathbb C}(V,W),
+\qquad \ell\otimes w\longmapsto(v\mapsto\ell(v)w)
+\]">\[
+V^*\otimes W\longrightarrow\operatorname{Hom}_{\mathbb C}(V,W),
+\qquad \ell\otimes w\longmapsto(v\mapsto\ell(v)w)
+\]</span>
+<p>is an isomorphism: in bases, the elementary tensors map to the rectangular matrix units. It is equivariant for <span class="math" data-tex="\(gT=\rho_W(g)T\rho_V(g^{-1})\)">\(gT=\rho_W(g)T\rho_V(g^{-1})\)</span>.</p>
+<p id="proposition-1-1" class="result-link"><strong>Proposition 1.1 (character operations).</strong> Writing <span class="math" data-tex="\(\chi=\chi_V\)">\(\chi=\chi_V\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\chi_{V\otimes W}=\chi_V\chi_W,\qquad
+\chi_{V^*}(g)=\chi(g^{-1})=\overline{\chi(g)},\qquad
+\chi_{\operatorname{Hom}(V,W)}=\overline{\chi_V}\chi_W.
+\tag{1}
+\]">\[
+\chi_{V\otimes W}=\chi_V\chi_W,\qquad
+\chi_{V^*}(g)=\chi(g^{-1})=\overline{\chi(g)},\qquad
+\chi_{\operatorname{Hom}(V,W)}=\overline{\chi_V}\chi_W.
+\tag{1}
+\]</span>
+<p>Moreover,</p>
+<span class="math math-display" data-tex="\[
+\chi_{\operatorname{Sym}^2V}(g)=\frac{\chi(g)^2+\chi(g^2)}2,\qquad
+\chi_{\Lambda^2V}(g)=\frac{\chi(g)^2-\chi(g^2)}2.
+\tag{2}
+\]">\[
+\chi_{\operatorname{Sym}^2V}(g)=\frac{\chi(g)^2+\chi(g^2)}2,\qquad
+\chi_{\Lambda^2V}(g)=\frac{\chi(g)^2-\chi(g^2)}2.
+\tag{2}
+\]</span>
+<p><strong>Proof.</strong> In tensor-product bases, the diagonal entries are products of diagonal entries, so the trace is the product of the traces. The dual matrix is the transpose of the inverse; its trace is <span class="math" data-tex="\(\chi(g^{-1})\)">\(\chi(g^{-1})\)</span>. An invariant Hermitian form makes the original matrix unitary, which identifies this trace with <span class="math" data-tex="\(\overline{\chi(g)}\)">\(\overline{\chi(g)}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\tau(v\otimes w)=w\otimes v\)">\(\tau(v\otimes w)=w\otimes v\)</span>. Its <span class="math" data-tex="\(+1\)">\(+1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> eigenspaces are the symmetric and alternating tensors, with projectors <span class="math" data-tex="\((I+\tau)/2\)">\((I+\tau)/2\)</span> and <span class="math" data-tex="\((I-\tau)/2\)">\((I-\tau)/2\)</span>. The action <span class="math" data-tex="\(A\otimes A\)">\(A\otimes A\)</span> commutes with <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. In a basis, the coefficient of <span class="math" data-tex="\(e_i\otimes e_j\)">\(e_i\otimes e_j\)</span> in <span class="math" data-tex="\(\tau(Ae_i\otimes Ae_j)\)">\(\tau(Ae_i\otimes Ae_j)\)</span> is <span class="math" data-tex="\(A_{ji}A_{ij}\)">\(A_{ji}A_{ij}\)</span>; hence</p>
+<span class="math math-display" data-tex="\[
+\operatorname{tr}\bigl(\tau(A\otimes A)\bigr)
+=\sum_{i,j}A_{ij}A_{ji}=\operatorname{tr}(A^2).
+\]">\[
+\operatorname{tr}\bigl(\tau(A\otimes A)\bigr)
+=\sum_{i,j}A_{ij}A_{ji}=\operatorname{tr}(A^2).
+\]</span>
+<p>Taking the trace after each projector gives (2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The invariant vectors in <span class="math" data-tex="\(\operatorname{Hom}(V,W)\)">\(\operatorname{Hom}(V,W)\)</span> are exactly the intertwiners. Averaging its character therefore recovers</p>
+<span class="math math-display" data-tex="\[
+\dim\operatorname{Hom}_G(V,W)=
+\frac1{|G|}\sum_g\overline{\chi_V(g)}\chi_W(g)
+=\langle\chi_W,\chi_V\rangle.
+\tag{3}
+\]">\[
+\dim\operatorname{Hom}_G(V,W)=
+\frac1{|G|}\sum_g\overline{\chi_V(g)}\chi_W(g)
+=\langle\chi_W,\chi_V\rangle.
+\tag{3}
+\]</span>
+<p>These formulas calculate multiplicities in tensor products without constructing a decomposition beforehand. They do not say that a tensor product of two irreducibles is usually irreducible.</p>
+<h2 id="2-a-character-sum-detects-invariant-bilinear-forms">2. A character sum detects invariant bilinear forms</h2>
+<p>A bilinear form <span class="math" data-tex="\(B:V\times V\to\mathbb C\)">\(B:V\times V\to\mathbb C\)</span> is invariant when <span class="math" data-tex="\(B(gv,gw)=B(v,w)\)">\(B(gv,gw)=B(v,w)\)</span>. It defines the intertwiner <span class="math" data-tex="\(V\to V^*\)">\(V\to V^*\)</span>, <span class="math" data-tex="\(v\mapsto B(v,-)\)">\(v\mapsto B(v,-)\)</span>. If <span class="math" data-tex="\(V\)">\(V\)</span> is irreducible, Schur's lemma says that the space of such forms has dimension zero or one. A nonzero form is nondegenerate. Its transpose <span class="math" data-tex="\(B^{\mathrm t}(v,w)=B(w,v)\)">\(B^{\mathrm t}(v,w)=B(w,v)\)</span> is another invariant form, and transposing twice is the identity. Uniqueness thus makes <span class="math" data-tex="\(B^{\mathrm t}=B\)">\(B^{\mathrm t}=B\)</span> or <span class="math" data-tex="\(B^{\mathrm t}=-B\)">\(B^{\mathrm t}=-B\)</span>.</p>
+<p>Define the <strong>Frobenius–Schur indicator</strong></p>
+<span class="math math-display" data-tex="\[
+\nu(\chi)=\frac1{|G|}\sum_{g\in G}\chi(g^2).
+\tag{4}
+\]">\[
+\nu(\chi)=\frac1{|G|}\sum_{g\in G}\chi(g^2).
+\tag{4}
+\]</span>
+<p id="theorem-2-1" class="result-link"><strong>Theorem 2.1 (forms and indicator).</strong> For an irreducible complex representation <span class="math" data-tex="\(V\)">\(V\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\nu(\chi)=
+\begin{cases}
+1&amp;\text{a nonzero invariant symmetric bilinear form exists},\\
+-1&amp;\text{a nonzero invariant alternating bilinear form exists},\\
+0&amp;\text{no nonzero invariant bilinear form exists}.
+\end{cases}
+\tag{5}
+\]">\[
+\nu(\chi)=
+\begin{cases}
+1&amp;\text{a nonzero invariant symmetric bilinear form exists},\\
+-1&amp;\text{a nonzero invariant alternating bilinear form exists},\\
+0&amp;\text{no nonzero invariant bilinear form exists}.
+\end{cases}
+\tag{5}
+\]</span>
+<p>The last case is equivalent to <span class="math" data-tex="\(\chi\)">\(\chi\)</span> not being real-valued.</p>
+<p><strong>Proof.</strong> The symmetric and alternating forms are the invariant subspaces in <span class="math" data-tex="\(\operatorname{Sym}^2(V^*)\)">\(\operatorname{Sym}^2(V^*)\)</span> and <span class="math" data-tex="\(\Lambda^2(V^*)\)">\(\Lambda^2(V^*)\)</span>. Let their dimensions be <span class="math" data-tex="\(b_+\)">\(b_+\)</span> and <span class="math" data-tex="\(b_-\)">\(b_-\)</span>. Formula (2), applied to <span class="math" data-tex="\(V^*\)">\(V^*\)</span>, and the invariant-vector character formula give</p>
+<span class="math math-display" data-tex="\[
+b_+-b_-=\frac1{|G|}\sum_g\overline{\chi(g^2)}
+=\overline{\nu(\chi)}.
+\]">\[
+b_+-b_-=\frac1{|G|}\sum_g\overline{\chi(g^2)}
+=\overline{\nu(\chi)}.
+\]</span>
+<p>The left side is an integer, so <span class="math" data-tex="\(\nu(\chi)\)">\(\nu(\chi)\)</span> equals it. Uniqueness and nondegeneracy of a nonzero invariant form say that the pair <span class="math" data-tex="\((b_+,b_-)\)">\((b_+,b_-)\)</span> is exactly one of <span class="math" data-tex="\((1,0),(0,1),(0,0)\)">\((1,0),(0,1),(0,0)\)</span>. This proves (5).</p>
+<p>A nonzero form exists exactly when <span class="math" data-tex="\(V\simeq V^*\)">\(V\simeq V^*\)</span>. The character of <span class="math" data-tex="\(V^*\)">\(V^*\)</span> is <span class="math" data-tex="\(\overline\chi\)">\(\overline\chi\)</span>, so character determination makes this equivalent to <span class="math" data-tex="\(\chi=\overline\chi\)">\(\chi=\overline\chi\)</span> pointwise. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The indicator is attached here to an <strong>irreducible</strong> character. For an arbitrary character it is additive on irreducible constituents and need not be one of these three numbers.</p>
+<h2 id="3-from-a-bilinear-form-to-a-real-or-quaternionic-structure">3. From a bilinear form to a real or quaternionic structure</h2>
+<p>A <strong>real form</strong> of <span class="math" data-tex="\(V\)">\(V\)</span> is a real <span class="math" data-tex="\(G\)">\(G\)</span>-module <span class="math" data-tex="\(R\)">\(R\)</span> with <span class="math" data-tex="\(V\simeq R\otimes_{\mathbb R}\mathbb C\)">\(V\simeq R\otimes_{\mathbb R}\mathbb C\)</span>. Equivalently, <span class="math" data-tex="\(V\)">\(V\)</span> has a basis in which all group matrices are real. A <strong>quaternionic structure</strong> is a conjugate-linear equivariant map <span class="math" data-tex="\(J:V\to V\)">\(J:V\to V\)</span> with <span class="math" data-tex="\(J^2=-I\)">\(J^2=-I\)</span>.</p>
+<p id="theorem-3-1" class="result-link"><strong>Theorem 3.1 (realizability).</strong> An irreducible <span class="math" data-tex="\(V\)">\(V\)</span> has a real form exactly when <span class="math" data-tex="\(\nu(\chi)=1\)">\(\nu(\chi)=1\)</span>. It has a quaternionic structure exactly when <span class="math" data-tex="\(\nu(\chi)=-1\)">\(\nu(\chi)=-1\)</span>. In the latter case its complex dimension is even.</p>
+<p><strong>Proof.</strong> Fix an invariant positive Hermitian inner product <span class="math" data-tex="\(H\)">\(H\)</span>. For a nonzero invariant bilinear form <span class="math" data-tex="\(B\)">\(B\)</span>, there is a unique conjugate-linear map <span class="math" data-tex="\(J\)">\(J\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+B(v,w)=H(v,Jw).
+\tag{6}
+\]">\[
+B(v,w)=H(v,Jw).
+\tag{6}
+\]</span>
+<p>Existence and uniqueness follow by writing both forms in an orthonormal basis; conjugate-linearity is what makes the right side linear in <span class="math" data-tex="\(w\)">\(w\)</span>. Nondegeneracy makes <span class="math" data-tex="\(J\)">\(J\)</span> invertible. Invariance of both forms gives <span class="math" data-tex="\(Jg=gJ\)">\(Jg=gJ\)</span>, by testing (6) on all <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>The form <span class="math" data-tex="\(H&#x27;(v,w)=H(Jw,Jv)\)">\(H&#x27;(v,w)=H(Jw,Jv)\)</span> is positive Hermitian and invariant. Two invariant Hermitian forms on an irreducible are proportional: write <span class="math" data-tex="\(H&#x27;(v,w)=H(Tv,w)\)">\(H&#x27;(v,w)=H(Tv,w)\)</span>; invariance makes <span class="math" data-tex="\(T\)">\(T\)</span> an equivariant complex-linear operator, and Schur's lemma makes it scalar. Positivity then gives <span class="math" data-tex="\(H&#x27;=cH\)">\(H&#x27;=cH\)</span> with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. In particular,</p>
+<span class="math math-display" data-tex="\[
+H(Jv,Jv)=cH(v,v).
+\]">\[
+H(Jv,Jv)=cH(v,v).
+\]</span>
+<p>The complex-linear equivariant operator <span class="math" data-tex="\(J^2\)">\(J^2\)</span> is <span class="math" data-tex="\(\lambda I\)">\(\lambda I\)</span>. If <span class="math" data-tex="\(B(w,v)=\epsilon B(v,w)\)">\(B(w,v)=\epsilon B(v,w)\)</span>, with <span class="math" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, substituting <span class="math" data-tex="\(w=Jv\)">\(w=Jv\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+H(Jv,Jv)=B(Jv,v)=\epsilon B(v,Jv)
+=\epsilon H(v,J^2v)
+=\epsilon\overline\lambda H(v,v).
+\]">\[
+H(Jv,Jv)=B(Jv,v)=\epsilon B(v,Jv)
+=\epsilon H(v,J^2v)
+=\epsilon\overline\lambda H(v,v).
+\]</span>
+<p>Therefore <span class="math" data-tex="\(\lambda=\epsilon c\)">\(\lambda=\epsilon c\)</span>. Replacing <span class="math" data-tex="\(J\)">\(J\)</span> by <span class="math" data-tex="\(J/\sqrt c\)">\(J/\sqrt c\)</span> makes it antiunitary and gives <span class="math" data-tex="\(J^2=\epsilon I\)">\(J^2=\epsilon I\)</span>.</p>
+<p>When <span class="math" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span>, the fixed space <span class="math" data-tex="\(R=\{v:Jv=v\}\)">\(R=\{v:Jv=v\}\)</span> is invariant over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+v=\frac{v+Jv}{2}
++i\frac{v-Jv}{2i}
+\]">\[
+v=\frac{v+Jv}{2}
++i\frac{v-Jv}{2i}
+\]</span>
+<p>writes every vector uniquely in <span class="math" data-tex="\(R\oplus iR\)">\(R\oplus iR\)</span>. A real basis of <span class="math" data-tex="\(R\)">\(R\)</span> is therefore a complex basis of <span class="math" data-tex="\(V\)">\(V\)</span>, giving a real form. Conversely, a real form has an invariant positive real inner product by finite averaging. Its complex-bilinear extension is an invariant nondegenerate symmetric form, so Theorem 2.1 gives <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span>.</p>
+<p>When <span class="math" data-tex="\(\epsilon=-1\)">\(\epsilon=-1\)</span>, the normalized <span class="math" data-tex="\(J\)">\(J\)</span> is the required quaternionic structure. Conversely, an equivariant conjugate-linear <span class="math" data-tex="\(J\)">\(J\)</span> with square <span class="math" data-tex="\(-I\)">\(-I\)</span> can be made antiunitary by replacing <span class="math" data-tex="\(H\)">\(H\)</span> with</p>
+<span class="math math-display" data-tex="\[
+H_0(v,w)=H(v,w)+H(Jw,Jv).
+\]">\[
+H_0(v,w)=H(v,w)+H(Jw,Jv).
+\]</span>
+<p>This is positive and invariant, and satisfies <span class="math" data-tex="\(H_0(Jv,Jw)=H_0(w,v)\)">\(H_0(Jv,Jw)=H_0(w,v)\)</span>. The form <span class="math" data-tex="\(B(v,w)=H_0(v,Jw)\)">\(B(v,w)=H_0(v,Jw)\)</span> is then bilinear and invariant, and</p>
+<span class="math math-display" data-tex="\[
+B(w,v)=H_0(J^2v,Jw)=-B(v,w).
+\]">\[
+B(w,v)=H_0(J^2v,Jw)=-B(v,w).
+\]</span>
+<p>It is nondegenerate, so <span class="math" data-tex="\(\nu=-1\)">\(\nu=-1\)</span>. Finally write <span class="math" data-tex="\(Jv=M\overline v\)">\(Jv=M\overline v\)</span> in a complex basis. Its square being <span class="math" data-tex="\(-I\)">\(-I\)</span> means <span class="math" data-tex="\(M\overline M=-I\)">\(M\overline M=-I\)</span>. Taking determinants gives <span class="math" data-tex="\(|\det M|^2=(-1)^{\dim V}\)">\(|\det M|^2=(-1)^{\dim V}\)</span>; the left side is positive, forcing even dimension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="what-the-corresponding-irreducibles-over-mathbb-r-are">What the corresponding irreducibles over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> are</h3>
+<p>“Real-valued character,” “complex representation with a real form,” and “irreducible representation over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>” name different properties. The following description keeps all three fields of scalars visible.</p>
+<p id="proposition-3-2" class="result-link"><strong>Proposition 3.2 (real irreducibles).</strong></p>
+<table>
+<thead>
+<tr>
+<th>Complex irreducible type</th>
+<th>Irreducible real module</th>
+<th>Its complexification</th>
+<th>Real commuting algebra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span></td>
+<td>a real form <span class="math" data-tex="\(R\)">\(R\)</span></td>
+<td><span class="math" data-tex="\(V\)">\(V\)</span></td>
+<td><span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span></td>
+<td><span class="math" data-tex="\(V\)">\(V\)</span> with scalars restricted to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span></td>
+<td><span class="math" data-tex="\(V\oplus\overline V\)">\(V\oplus\overline V\)</span></td>
+<td><span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\nu=-1\)">\(\nu=-1\)</span></td>
+<td><span class="math" data-tex="\(V\)">\(V\)</span> with scalars restricted to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span></td>
+<td><span class="math" data-tex="\(V\oplus V\)">\(V\oplus V\)</span></td>
+<td><span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Every irreducible real <span class="math" data-tex="\(G\)">\(G\)</span>-module occurs on this list. In the middle row, <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span> give the same real isomorphism class; there are no other repetitions.</p>
+<p><strong>Proof.</strong> On the underlying real space <span class="math" data-tex="\(V_{\mathbb R}\)">\(V_{\mathbb R}\)</span>, write <span class="math" data-tex="\(I\)">\(I\)</span> for multiplication by <span class="math" data-tex="\(i\)">\(i\)</span>. Every real-linear equivariant map <span class="math" data-tex="\(T\)">\(T\)</span> splits as</p>
+<span class="math math-display" data-tex="\[
+T=\frac{T-ITI}{2}+\frac{T+ITI}{2}.
+\]">\[
+T=\frac{T-ITI}{2}+\frac{T+ITI}{2}.
+\]</span>
+<p>The first part is complex-linear and hence scalar. The second is conjugate-linear. Such maps correspond to intertwiners <span class="math" data-tex="\(\overline V\to V\)">\(\overline V\to V\)</span>; their space is zero if <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>, and one-dimensional over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> otherwise. In the latter cases a normalized <span class="math" data-tex="\(J\)">\(J\)</span> from Theorem 3.1 spans it. Thus the real commutant is either <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, or</p>
+<span class="math math-display" data-tex="\[
+\{a+bJ:a,b\in\mathbb C\},\qquad
+Jz=\overline zJ,\quad J^2=\epsilon\,\mathrm{id}_{V_{\mathbb R}}.
+\tag{7}
+\]">\[
+\{a+bJ:a,b\in\mathbb C\},\qquad
+Jz=\overline zJ,\quad J^2=\epsilon\,\mathrm{id}_{V_{\mathbb R}}.
+\tag{7}
+\]</span>
+<p>For <span class="math" data-tex="\(\epsilon=-1\)">\(\epsilon=-1\)</span>, the generators <span class="math" data-tex="\(I,J,IJ\)">\(I,J,IJ\)</span> satisfy the quaternion relations. Each nonzero <span class="math" data-tex="\(a+bJ\)">\(a+bJ\)</span> has inverse</p>
+<span class="math math-display" data-tex="\[
+\frac{\overline a-bJ}{|a|^2+|b|^2},
+\]">\[
+\frac{\overline a-bJ}{|a|^2+|b|^2},
+\]</span>
+<p>so this algebra is the division algebra <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span>. For <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>, the commutant is also a division algebra, namely <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Maschke's theorem over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> implies that either underlying real module is irreducible: a proper nonzero invariant summand would yield a nontrivial idempotent in its division commutant.</p>
+<p>For <span class="math" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span>, <span class="math" data-tex="\(V_{\mathbb R}=R\oplus iR\)">\(V_{\mathbb R}=R\oplus iR\)</span> as above. A proper real invariant subspace of <span class="math" data-tex="\(R\)">\(R\)</span> would complexify to a proper complex invariant subspace of <span class="math" data-tex="\(V\)">\(V\)</span>, so <span class="math" data-tex="\(R\)">\(R\)</span> is irreducible. An equivariant real endomorphism of <span class="math" data-tex="\(R\)">\(R\)</span> extends to a scalar complex endomorphism of <span class="math" data-tex="\(V\)">\(V\)</span>; preserving <span class="math" data-tex="\(R\)">\(R\)</span> forces the scalar to be real. Therefore <span class="math" data-tex="\(\operatorname{End}_G(R)=\mathbb R\)">\(\operatorname{End}_G(R)=\mathbb R\)</span>, and <span class="math" data-tex="\(\operatorname{End}_G(V_{\mathbb R})=M_2(\mathbb R)\)">\(\operatorname{End}_G(V_{\mathbb R})=M_2(\mathbb R)\)</span>.</p>
+<p>The complexification of an underlying real complex module is <span class="math" data-tex="\(V\oplus\overline V\)">\(V\oplus\overline V\)</span>. One way to check this is to extend <span class="math" data-tex="\(I\)">\(I\)</span> to the complexification: its <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(-i\)">\(-i\)</span> eigenspaces give the two summands, with the scalar structures of <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>. Their dimensions are both <span class="math" data-tex="\(\dim_{\mathbb C}V\)">\(\dim_{\mathbb C}V\)</span>. When <span class="math" data-tex="\(\nu=-1\)">\(\nu=-1\)</span>, <span class="math" data-tex="\(V\simeq\overline V\)">\(V\simeq\overline V\)</span>, giving two copies.</p>
+<p>To prove exhaustiveness, complexify an irreducible real module <span class="math" data-tex="\(W\)">\(W\)</span> and choose a complex irreducible summand <span class="math" data-tex="\(V\)">\(V\)</span>. Compose its inclusion with the real-part projection <span class="math" data-tex="\(W\otimes\mathbb C\to W\)">\(W\otimes\mathbb C\to W\)</span>, viewing <span class="math" data-tex="\(V\)">\(V\)</span> over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. This map is nonzero: a complex subspace cannot lie entirely in <span class="math" data-tex="\(iW\)">\(iW\)</span>, since multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> would place it in <span class="math" data-tex="\(W\)">\(W\)</span> as well, and <span class="math" data-tex="\(W\cap iW=0\)">\(W\cap iW=0\)</span>. It is an equivariant map onto <span class="math" data-tex="\(W\)">\(W\)</span>, so <span class="math" data-tex="\(W\)">\(W\)</span> is a real irreducible summand of <span class="math" data-tex="\(V_{\mathbb R}\)">\(V_{\mathbb R}\)</span>. The preceding cases list all such summands. Their complexifications show exactly when two entries can be isomorphic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>It follows that a general complex representation has a real form exactly when each quaternionic irreducible occurs with even multiplicity and each non-real irreducible occurs with the same multiplicity as its conjugate. Necessity follows by complexifying real irreducible summands; sufficiency follows by assembling the real modules in the table.</p>
+<h2 id="4-counting-square-roots-with-the-indicator">4. Counting square roots with the indicator</h2>
+<p id="theorem-4-1" class="result-link"><strong>Theorem 4.1 (square roots).</strong> For every <span class="math" data-tex="\(z\in G\)">\(z\in G\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\#\{x\in G:x^2=z\}=\sum_i\nu(\chi_i)\chi_i(z).
+\tag{8}
+\]">\[
+\#\{x\in G:x^2=z\}=\sum_i\nu(\chi_i)\chi_i(z).
+\tag{8}
+\]</span>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+\#\{x:x^2=1\}=\sum_i\nu(\chi_i)d_i.
+\tag{9}
+\]">\[
+\#\{x:x^2=1\}=\sum_i\nu(\chi_i)d_i.
+\tag{9}
+\]</span>
+<p><strong>Proof.</strong> The left side of (8) is a class function <span class="math" data-tex="\(q\)">\(q\)</span>. Its coefficient in the orthonormal character basis is</p>
+<span class="math math-display" data-tex="\[
+\langle q,\chi_i\rangle
+=\frac1{|G|}\sum_z q(z)\overline{\chi_i(z)}
+=\frac1{|G|}\sum_x\overline{\chi_i(x^2)}
+=\nu(\chi_i).
+\]">\[
+\langle q,\chi_i\rangle
+=\frac1{|G|}\sum_z q(z)\overline{\chi_i(z)}
+=\frac1{|G|}\sum_x\overline{\chi_i(x^2)}
+=\nu(\chi_i).
+\]</span>
+<p>The last equality uses the reality of each indicator proved in Theorem 2.1. Character completeness gives (8), and setting <span class="math" data-tex="\(z=1\)">\(z=1\)</span> gives (9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The identity is included in (9). Thus the number of elements of order exactly two is its right side minus one.</p>
+<p>The number of real irreducible isomorphism classes also has a class-theoretic description. If <span class="math" data-tex="\(r\)">\(r\)</span> is the total class count and <span class="math" data-tex="\(s\)">\(s\)</span> is the number of classes equal to their inverse classes, that number is <span class="math" data-tex="\((r+s)/2\)">\((r+s)/2\)</span>. Indeed, the complex-linear operator <span class="math" data-tex="\(f(g)\mapsto f(g^{-1})\)">\(f(g)\mapsto f(g^{-1})\)</span> permutes the class-indicator basis, with trace <span class="math" data-tex="\(s\)">\(s\)</span>. It also permutes the irreducible-character basis by <span class="math" data-tex="\(\chi\mapsto\overline\chi\)">\(\chi\mapsto\overline\chi\)</span>, so exactly <span class="math" data-tex="\(s\)">\(s\)</span> irreducible characters are self-conjugate. Proposition 3.2 counts one real module for each fixed character and one for each conjugate pair, giving <span class="math" data-tex="\(s+(r-s)/2\)">\(s+(r-s)/2\)</span>.</p>
+<p>For a group of odd order, squaring is a permutation of its elements: choose an odd common multiple <span class="math" data-tex="\(m\)">\(m\)</span> of their orders and an integer <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(2a\equiv1\pmod m\)">\(2a\equiv1\pmod m\)</span>; <span class="math" data-tex="\(x\mapsto x^a\)">\(x\mapsto x^a\)</span> is the inverse map. Hence <span class="math" data-tex="\(\nu(\chi)=|G|^{-1}\sum_g\chi(g)\)">\(\nu(\chi)=|G|^{-1}\sum_g\chi(g)\)</span>. Every nontrivial irreducible then has indicator zero, and only the trivial irreducible has a real form.</p>
+<h2 id="5-a-faithful-representation-eventually-sees-every-irreducible">5. A faithful representation eventually sees every irreducible</h2>
+<p>Put <span class="math" data-tex="\(V^{\otimes0}=\mathbb C\)">\(V^{\otimes0}=\mathbb C\)</span> with trivial action, so its character is the constant function one.</p>
+<p id="theorem-5-1" class="result-link"><strong>Theorem 5.1 (Burnside–Brauer).</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> is faithful and its character takes exactly <span class="math" data-tex="\(r\)">\(r\)</span> distinct values, every irreducible occurs in one of</p>
+<span class="math math-display" data-tex="\[
+V^{\otimes0},\quad V,\quad V^{\otimes2},\quad\ldots,\quad V^{\otimes(r-1)}.
+\tag{10}
+\]">\[
+V^{\otimes0},\quad V,\quad V^{\otimes2},\quad\ldots,\quad V^{\otimes(r-1)}.
+\tag{10}
+\]</span>
+<p><strong>Proof.</strong> List the character values as <span class="math" data-tex="\(a_1,\ldots,a_r\)">\(a_1,\ldots,a_r\)</span>, with <span class="math" data-tex="\(a_1=d=\dim V\)">\(a_1=d=\dim V\)</span>. For an irreducible character <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, suppose all its multiplicities in (10) vanish. For <span class="math" data-tex="\(0\le k&lt;r\)">\(0\le k&lt;r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0=|G|\langle\chi^k,\psi\rangle
+=\sum_{j=1}^r a_j^k b_j,\qquad
+b_j=\sum_{\chi(g)=a_j}\overline{\psi(g)}.
+\]">\[
+0=|G|\langle\chi^k,\psi\rangle
+=\sum_{j=1}^r a_j^k b_j,\qquad
+b_j=\sum_{\chi(g)=a_j}\overline{\psi(g)}.
+\]</span>
+<p>The coefficient matrix is Vandermonde; its determinant is <span class="math" data-tex="\(\prod_{i&lt;j}(a_j-a_i)\ne0\)">\(\prod_{i&lt;j}(a_j-a_i)\ne0\)</span>. Consequently every <span class="math" data-tex="\(b_j\)">\(b_j\)</span> is zero.</p>
+<p>But <span class="math" data-tex="\(\chi(g)=d\)">\(\chi(g)=d\)</span> holds exactly when <span class="math" data-tex="\(\rho(g)=I\)">\(\rho(g)=I\)</span>. Indeed, in a unitary realization the eigenvalues have absolute value one. The real part of their sum equals <span class="math" data-tex="\(d\)">\(d\)</span> only when every eigenvalue has real part one, hence equals one. Finite-order operators are diagonalizable, so the operator is the identity. Faithfulness now says that the level set for <span class="math" data-tex="\(a_1\)">\(a_1\)</span> consists only of the group identity. Hence <span class="math" data-tex="\(b_1=\psi(1)&gt;0\)">\(b_1=\psi(1)&gt;0\)</span>, a contradiction. The zero-dimensional faithful case can occur only for the trivial group and gives the same conclusion from the zeroth power. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bound counts character values, rather than the representation's dimension. Including the zeroth power is essential to the precise statement.</p>
+<h2 id="6-character-tables-and-geometric-models">6. Character tables and geometric models</h2>
+<h3 id="the-quaternion-group-and-a-cyclic-group">The quaternion group and a cyclic group</h3>
+<p>For <span class="math" data-tex="\(Q_8=\{\pm1,\pm i,\pm j,\pm k\}\)">\(Q_8=\{\pm1,\pm i,\pm j,\pm k\}\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+\rho(i)=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},\qquad
+\rho(j)=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}.
+\]">\[
+\rho(i)=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},\qquad
+\rho(j)=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}.
+\]</span>
+<p>They satisfy <span class="math" data-tex="\(\rho(i)^2=\rho(j)^2=-I\)">\(\rho(i)^2=\rho(j)^2=-I\)</span> and anticommute, so give the irreducible row <span class="math" data-tex="\((2,-2,0,0,0)\)">\((2,-2,0,0,0)\)</span> on <span class="math" data-tex="\(1,-1,\{\pm i\},\{\pm j\},\{\pm k\}\)">\(1,-1,\{\pm i\},\{\pm j\},\{\pm k\}\)</span>. Two elements square to <span class="math" data-tex="\(1\)">\(1\)</span> and six square to <span class="math" data-tex="\(-1\)">\(-1\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+\nu(\chi)=\frac{2\cdot2+6(-2)}8=-1.
+\]">\[
+\nu(\chi)=\frac{2\cdot2+6(-2)}8=-1.
+\]</span>
+<p>The conjugate-linear operator <span class="math" data-tex="\(J(v)=\rho(j)\overline v\)">\(J(v)=\rho(j)\overline v\)</span> commutes with both displayed generators and has <span class="math" data-tex="\(J^2=-I\)">\(J^2=-I\)</span>. This realizes the quaternionic structure directly. The underlying real space has dimension four; it is an irreducible real representation even though the complex representation has no real form.</p>
+<p>For <span class="math" data-tex="\(C_3=\langle t\rangle\)">\(C_3=\langle t\rangle\)</span>, the characters with <span class="math" data-tex="\(t\mapsto\zeta,\zeta^{-1}\)">\(t\mapsto\zeta,\zeta^{-1}\)</span>, where <span class="math" data-tex="\(\zeta=e^{2\pi i/3}\)">\(\zeta=e^{2\pi i/3}\)</span>, each have indicator <span class="math" data-tex="\((1+\zeta+\zeta^2)/3=0\)">\((1+\zeta+\zeta^2)/3=0\)</span>. Their underlying real modules are isomorphic rotations of a plane; their complexifications contain the two distinct conjugate characters.</p>
+<h3 id="the-full-table-of-s_4">The full table of <span class="math" data-tex="\(S_4\)">\(S_4\)</span></h3>
+<p>The classes have cycle types <span class="math" data-tex="\(1,2,22,3,4\)">\(1,2,22,3,4\)</span> and sizes <span class="math" data-tex="\(1,6,3,8,6\)">\(1,6,3,8,6\)</span>. The permutation representation on four letters gives the standard irreducible <span class="math" data-tex="\(W\)">\(W\)</span> with character “number of fixed letters minus one.” Twisting by sign gives another degree-three irreducible.</p>
+<p>For the remaining degree-two representation, let <span class="math" data-tex="\(S_4\)">\(S_4\)</span> permute the three decompositions</p>
+<span class="math math-display" data-tex="\[
+12|34,\qquad13|24,\qquad14|23
+\]">\[
+12|34,\qquad13|24,\qquad14|23
+\]</span>
+<p>into unordered pairs. This action gives a surjection onto <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, with kernel the Klein four-group of double transpositions. Pulling back the standard irreducible of <span class="math" data-tex="\(S_3\)">\(S_3\)</span> gives <span class="math" data-tex="\(U\)">\(U\)</span>. In the stated class order the complete table is</p>
+<table>
+<thead>
+<tr>
+<th>Representation</th>
+<th style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(22\)">\(22\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trivial</td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td>Sign</td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(W\)">\(W\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(W\otimes\mathrm{sign}\)">\(W\otimes\mathrm{sign}\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(U\)">\(U\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The five rows are characters of the representations just constructed. Their weighted norms equal one and their pairwise weighted inner products equal zero. Their degree squares sum to <span class="math" data-tex="\(1+1+9+9+4=24\)">\(1+1+9+9+4=24\)</span>, proving completeness. If <span class="math" data-tex="\(X\)">\(X\)</span> is this table and <span class="math" data-tex="\(D=\operatorname{diag}(1,6,3,8,6)\)">\(D=\operatorname{diag}(1,6,3,8,6)\)</span>, direct multiplication gives</p>
+<span class="math math-display" data-tex="\[
+XDX^{\mathrm t}=24I,\qquad
+X^{\mathrm t}X=\operatorname{diag}(24,4,8,3,4).
+\tag{11}
+\]">\[
+XDX^{\mathrm t}=24I,\qquad
+X^{\mathrm t}X=\operatorname{diag}(24,4,8,3,4).
+\tag{11}
+\]</span>
+<p>The second identity checks all column centralizer orders.</p>
+<p>Squaring sends the five class types to <span class="math" data-tex="\(1,1,1,3,22\)">\(1,1,1,3,22\)</span>. Formula (2) therefore gives</p>
+<span class="math math-display" data-tex="\[
+\chi_{\Lambda^2W}=(3,-1,-1,0,1),\qquad
+\chi_{\operatorname{Sym}^2W}=(6,2,2,0,0).
+\]">\[
+\chi_{\Lambda^2W}=(3,-1,-1,0,1),\qquad
+\chi_{\operatorname{Sym}^2W}=(6,2,2,0,0).
+\]</span>
+<p>Character determination identifies <span class="math" data-tex="\(\Lambda^2W\simeq W\otimes\mathrm{sign}\)">\(\Lambda^2W\simeq W\otimes\mathrm{sign}\)</span> and <span class="math" data-tex="\(\operatorname{Sym}^2W\simeq\mathbf1\oplus U\oplus W\)">\(\operatorname{Sym}^2W\simeq\mathbf1\oplus U\oplus W\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+W\otimes W\simeq
+\mathbf1\oplus U\oplus W\oplus(W\otimes\mathrm{sign}).
+\tag{12}
+\]">\[
+W\otimes W\simeq
+\mathbf1\oplus U\oplus W\oplus(W\otimes\mathrm{sign}).
+\tag{12}
+\]</span>
+<p>All five representations have explicit real forms from their permutation constructions, so all indicators are <span class="math" data-tex="\(+1\)">\(+1\)</span>. The standard representation is faithful: its action together with the trivial line is the faithful four-point permutation action. Its four character values give the bound <span class="math" data-tex="\(0\le k\le3\)">\(0\le k\le3\)</span> in Theorem 5.1. Formula (12) supplies every type except sign by the second power, and</p>
+<span class="math math-display" data-tex="\[
+\langle\chi_W^3,\mathrm{sign}\rangle
+=\frac{27-6-3+6}{24}=1
+\]">\[
+\langle\chi_W^3,\mathrm{sign}\rangle
+=\frac{27-6-3+6}{24}=1
+\]</span>
+<p>supplies sign in the third.</p>
+<h3 id="a_5-the-table-and-its-rotations"><span class="math" data-tex="\(A_5\)">\(A_5\)</span>: the table and its rotations</h3>
+<p>The preceding Fourier lesson derived all five rows from the five-letter and six-Sylow-subgroup permutation actions, completeness, and eigenvalue constraints. In class order <span class="math" data-tex="\(1,2A,3A,5A,5B\)">\(1,2A,3A,5A,5B\)</span>, sizes <span class="math" data-tex="\(1,15,20,12,12\)">\(1,15,20,12,12\)</span>, they are</p>
+<table>
+<thead>
+<tr>
+<th>Degree</th>
+<th style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2A\)">\(2A\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(3A\)">\(3A\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(5A\)">\(5A\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(5B\)">\(5B\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(\varphi\)">\(\varphi\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(\varphi&#x27;\)">\(\varphi&#x27;\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(\varphi&#x27;\)">\(\varphi&#x27;\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(\varphi\)">\(\varphi\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Here <span class="math" data-tex="\(\varphi=(1+\sqrt5)/2\)">\(\varphi=(1+\sqrt5)/2\)</span>, <span class="math" data-tex="\(\varphi&#x27;=(1-\sqrt5)/2\)">\(\varphi&#x27;=(1-\sqrt5)/2\)</span>; thus <span class="math" data-tex="\(\varphi+\varphi&#x27;=1\)">\(\varphi+\varphi&#x27;=1\)</span>, <span class="math" data-tex="\(\varphi\varphi&#x27;=-1\)">\(\varphi\varphi&#x27;=-1\)</span>, and <span class="math" data-tex="\(\varphi^2+\varphi&#x27;^2=3\)">\(\varphi^2+\varphi&#x27;^2=3\)</span>. These identities verify</p>
+<span class="math math-display" data-tex="\[
+X\operatorname{diag}(1,15,20,12,12)X^{\mathrm t}=60I,\qquad
+X^{\mathrm t}X=\operatorname{diag}(60,4,3,5,5).
+\tag{13}
+\]">\[
+X\operatorname{diag}(1,15,20,12,12)X^{\mathrm t}=60I,\qquad
+X^{\mathrm t}X=\operatorname{diag}(60,4,3,5,5).
+\tag{13}
+\]</span>
+<p>All values are real, but we still calculate the indicators. Squaring sends <span class="math" data-tex="\(2A\)">\(2A\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>, preserves <span class="math" data-tex="\(3A\)">\(3A\)</span>, and exchanges <span class="math" data-tex="\(5A,5B\)">\(5A,5B\)</span>. For either degree-three row,</p>
+<span class="math math-display" data-tex="\[
+\nu=\frac{3+15\cdot3+12(\varphi+\varphi&#x27;)} {60}=1.
+\]">\[
+\nu=\frac{3+15\cdot3+12(\varphi+\varphi&#x27;)} {60}=1.
+\]</span>
+<p>For degrees four and five it gives respectively</p>
+<span class="math math-display" data-tex="\[
+\frac{4+15\cdot4+20\cdot1-24}{60}=1,\qquad
+\frac{5+15\cdot5-20}{60}=1.
+\]">\[
+\frac{4+15\cdot4+20\cdot1-24}{60}=1,\qquad
+\frac{5+15\cdot5-20}{60}=1.
+\]</span>
+<p>The trivial indicator is one as well. Thus both degree-three representations have real forms. Average a positive real inner product on each. Their determinants are trivial, since <span class="math" data-tex="\(A_5\)">\(A_5\)</span> has no nontrivial linear character, and faithfulness was proved in the preceding lesson. They embed <span class="math" data-tex="\(A_5\)">\(A_5\)</span> into <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>. A trace <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> means rotation angle <span class="math" data-tex="\(2\pi/5\)">\(2\pi/5\)</span>; a trace <span class="math" data-tex="\(\varphi&#x27;\)">\(\varphi&#x27;\)</span> means angle <span class="math" data-tex="\(4\pi/5\)">\(4\pi/5\)</span>, since a three-dimensional rotation has trace <span class="math" data-tex="\(1+2\cos\theta\)">\(1+2\cos\theta\)</span>. Exchanging <span class="math" data-tex="\(\sqrt5\)">\(\sqrt5\)</span> and <span class="math" data-tex="\(-\sqrt5\)">\(-\sqrt5\)</span> exchanges their character rows.</p>
+<p>We can identify the polyhedron in this rotation picture without assuming it in the character construction. In either representation choose an element acting by a <span class="math" data-tex="\(2\pi/5\)">\(2\pi/5\)</span> rotation and a unit vector <span class="math" data-tex="\(v\)">\(v\)</span> on its oriented axis. Its stabilizer consists of rotations about that axis and is cyclic. The element orders in <span class="math" data-tex="\(A_5\)">\(A_5\)</span> are <span class="math" data-tex="\(1,2,3,5\)">\(1,2,3,5\)</span>, so this stabilizer has order five. The orbit <span class="math" data-tex="\(S\)">\(S\)</span> has twelve points. An involution in the dihedral normalizer of the order-five subgroup reverses the axis, so <span class="math" data-tex="\(S\)">\(S\)</span> contains <span class="math" data-tex="\(-v\)">\(-v\)</span> and is antipodal.</p>
+<p>The axis subgroup acts freely on the other ten points, giving two regular pentagons. Antipodality exchanges them, so their heights are <span class="math" data-tex="\(h,-h\)">\(h,-h\)</span>. The operator</p>
+<span class="math math-display" data-tex="\[
+T=\sum_{w\in S}ww^{\mathrm t}
+\]">\[
+T=\sum_{w\in S}ww^{\mathrm t}
+\]</span>
+<p>commutes with the real irreducible action and hence is scalar, by Proposition 3.2. Its trace is twelve, so <span class="math" data-tex="\(T=4I\)">\(T=4I\)</span>. Evaluating <span class="math" data-tex="\(v^{\mathrm t}Tv\)">\(v^{\mathrm t}Tv\)</span> gives <span class="math" data-tex="\(2+10h^2=4\)">\(2+10h^2=4\)</span>, hence <span class="math" data-tex="\(|h|=1/\sqrt5\)">\(|h|=1/\sqrt5\)</span>. After choosing the upper pentagon's phase, the points are</p>
+<span class="math math-display" data-tex="\[
+(0,0,\pm1),\qquad
+p_j=\left(\frac2{\sqrt5}\cos\frac{2\pi j}5,\
+\frac2{\sqrt5}\sin\frac{2\pi j}5,\
+\frac1{\sqrt5}\right),\qquad -p_j
+\quad(0\le j&lt;5).
+\]">\[
+(0,0,\pm1),\qquad
+p_j=\left(\frac2{\sqrt5}\cos\frac{2\pi j}5,\
+\frac2{\sqrt5}\sin\frac{2\pi j}5,\
+\frac1{\sqrt5}\right),\qquad -p_j
+\quad(0\le j&lt;5).
+\]</span>
+<p>The two pentagons are staggered by <span class="math" data-tex="\(36^\circ\)">\(36^\circ\)</span>. Distinct nonantipodal points have inner products <span class="math" data-tex="\(\pm1/\sqrt5\)">\(\pm1/\sqrt5\)</span>. The triples of mutual inner product <span class="math" data-tex="\(1/\sqrt5\)">\(1/\sqrt5\)</span> give twenty equilateral triangular faces: five at each pole and ten between the pentagons. Each such triangle is supporting: its sum of vertex vectors has inner product <span class="math" data-tex="\(1+2/\sqrt5\)">\(1+2/\sqrt5\)</span> with each of its vertices, while every other orbit point has inner product at most <span class="math" data-tex="\(3/\sqrt5\)">\(3/\sqrt5\)</span> with that sum. These triangles form the convex hull's boundary, with thirty edges, each belonging to two triangles. The hull is therefore a regular icosahedron. A rotation preserving it is determined by a vertex and one of that vertex's five neighbors, so there are at most <span class="math" data-tex="\(12\cdot5=60\)">\(12\cdot5=60\)</span> such rotations. The faithful <span class="math" data-tex="\(A_5\)">\(A_5\)</span> action already supplies sixty; it is the full rotational symmetry group.</p>
+<h2 id="7-exercises-with-solutions">7. Exercises with solutions</h2>
+<h3 id="exercise-1-three-groups-three-indicator-calculations">Exercise 1. Three groups, three indicator calculations</h3>
+<p>Compute the indicators of every irreducible of <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, of the dihedral group <span class="math" data-tex="\(D_4\)">\(D_4\)</span> of order eight, and of <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, trivial and sign have indicator one: their values on every square are one. The degree-two character has values <span class="math" data-tex="\(2,0,-1\)">\(2,0,-1\)</span>, and squaring sends a transposition to the identity and interchanges the two 3-cycles. Its indicator is <span class="math" data-tex="\((2+3\cdot2+2(-1))/6=1\)">\((2+3\cdot2+2(-1))/6=1\)</span>.</p>
+<p>For <span class="math" data-tex="\(D_4=\langle r,s:r^4=s^2=1,\ srs=r^{-1}\rangle\)">\(D_4=\langle r,s:r^4=s^2=1,\ srs=r^{-1}\rangle\)</span>, its four linear characters send each generator to <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, so again their values on squares are one. The degree-two square-symmetry character is <span class="math" data-tex="\(2,-2,0,0,0\)">\(2,-2,0,0,0\)</span> on <span class="math" data-tex="\(1,r^2,\{r,r^3\},\{s,r^2s\},\{rs,r^3s\}\)">\(1,r^2,\{r,r^3\},\{s,r^2s\},\{rs,r^3s\}\)</span>. Six elements square to <span class="math" data-tex="\(1\)">\(1\)</span> and two square to <span class="math" data-tex="\(r^2\)">\(r^2\)</span>, giving <span class="math" data-tex="\((6\cdot2+2(-2))/8=1\)">\((6\cdot2+2(-2))/8=1\)</span>.</p>
+<p>The four linear characters of <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span> factor through its exponent-two quotient by <span class="math" data-tex="\(\{\pm1\}\)">\(\{\pm1\}\)</span>, so have indicator one. Its degree-two character has indicator <span class="math" data-tex="\((2\cdot2+6(-2))/8=-1\)">\((2\cdot2+6(-2))/8=-1\)</span>, as above. Thus the equal character tables of <span class="math" data-tex="\(D_4\)">\(D_4\)</span> and <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span> do not give equal indicators: one also needs the class map induced by squaring.</p>
+<h3 id="exercise-2-involutions-in-s_4">Exercise 2. Involutions in <span class="math" data-tex="\(S_4\)">\(S_4\)</span></h3>
+<p>Prove (9) and use it to count the elements of order exactly two in <span class="math" data-tex="\(S_4\)">\(S_4\)</span>.</p>
+<p><strong>Solution.</strong> The regular character is <span class="math" data-tex="\(\chi_{\mathrm{reg}}=\sum_i d_i\chi_i\)">\(\chi_{\mathrm{reg}}=\sum_i d_i\chi_i\)</span>, equal to <span class="math" data-tex="\(|G|\)">\(|G|\)</span> at the identity and zero elsewhere. Therefore</p>
+<span class="math math-display" data-tex="\[
+\sum_i d_i\nu(\chi_i)=
+\frac1{|G|}\sum_g\chi_{\mathrm{reg}}(g^2)
+=\#\{g:g^2=1\}.
+\]">\[
+\sum_i d_i\nu(\chi_i)=
+\frac1{|G|}\sum_g\chi_{\mathrm{reg}}(g^2)
+=\#\{g:g^2=1\}.
+\]</span>
+<p>All five <span class="math" data-tex="\(S_4\)">\(S_4\)</span> indicators are one, so this number is <span class="math" data-tex="\(1+1+3+3+2=10\)">\(1+1+3+3+2=10\)</span>. Subtract the identity to obtain nine involutions. Directly, they are the six transpositions and three double transpositions, giving the same count.</p>
+<h3 id="exercise-3-real-values-versus-a-real-form">Exercise 3. Real values versus a real form</h3>
+<p>Prove that every character of <span class="math" data-tex="\(S_n\)">\(S_n\)</span> is real-valued. State what this alone proves about irreducible indicators, and determine the indicators in <span class="math" data-tex="\(S_4\)">\(S_4\)</span>.</p>
+<p><strong>Solution.</strong> A permutation and its inverse have the same cycle lengths. Permutations with the same cycle lengths are conjugate: match corresponding cycles entry by entry. Characters are constant on conjugacy classes, so <span class="math" data-tex="\(\chi(g)=\chi(g^{-1})=\overline{\chi(g)}\)">\(\chi(g)=\chi(g^{-1})=\overline{\chi(g)}\)</span>. For an irreducible, Theorem 2.1 then says <span class="math" data-tex="\(\nu=\pm1\)">\(\nu=\pm1\)</span>, without deciding the sign.</p>
+<p>For <span class="math" data-tex="\(S_4\)">\(S_4\)</span>, trivial and sign are real one-dimensional representations. The standard representation is the real sum-zero subspace of the permutation representation; its sign twist is also defined over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. The degree-two representation is pulled back from the real standard plane of <span class="math" data-tex="\(S_3\)">\(S_3\)</span> through the action on pairings. Thus every one of the five irreducibles has a real form and indicator <span class="math" data-tex="\(+1\)">\(+1\)</span>. The general rational constructions for <span class="math" data-tex="\(S_n\)">\(S_n\)</span> will provide the stronger conclusion for every <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<h3 id="exercise-4-the-tensor-bound-and-its-precise-scope">Exercise 4. The tensor bound and its precise scope</h3>
+<p>Prove Theorem 5.1 by grouping elements according to their character values. Then state and prove its counterpart when the representation is not faithful.</p>
+<p><strong>Solution.</strong> If an irreducible <span class="math" data-tex="\(\psi\)">\(\psi\)</span> occurs in none of the first <span class="math" data-tex="\(r\)">\(r\)</span> powers, its <span class="math" data-tex="\(r\)">\(r\)</span> zero multiplicities give the linear equations <span class="math" data-tex="\(\sum_j a_j^k b_j=0\)">\(\sum_j a_j^k b_j=0\)</span>, <span class="math" data-tex="\(0\le k&lt;r\)">\(0\le k&lt;r\)</span>, with <span class="math" data-tex="\(b_j=\sum_{\chi(g)=a_j}\overline{\psi(g)}\)">\(b_j=\sum_{\chi(g)=a_j}\overline{\psi(g)}\)</span>. Distinct values make the Vandermonde matrix invertible. Hence <span class="math" data-tex="\(b_j=0\)">\(b_j=0\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>. The level <span class="math" data-tex="\(\chi(g)=\dim V\)">\(\chi(g)=\dim V\)</span> consists of elements acting identically; for a faithful representation it is <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>. Its sum is <span class="math" data-tex="\(\psi(1)&gt;0\)">\(\psi(1)&gt;0\)</span>, contradiction.</p>
+<p>For an arbitrary representation with kernel <span class="math" data-tex="\(K\)">\(K\)</span>, every tensor power is trivial on <span class="math" data-tex="\(K\)">\(K\)</span>. Thus every constituent factors through <span class="math" data-tex="\(G/K\)">\(G/K\)</span>. Conversely the representation of <span class="math" data-tex="\(G/K\)">\(G/K\)</span> is faithful, has the same <span class="math" data-tex="\(r\)">\(r\)</span> character values, and Theorem 5.1 gives every irreducible of that quotient in a power with exponent at most <span class="math" data-tex="\(r-1\)">\(r-1\)</span>. Inflating to <span class="math" data-tex="\(G\)">\(G\)</span> proves that the constituents of all tensor powers are exactly the irreducibles with <span class="math" data-tex="\(K\)">\(K\)</span> in their kernels, with the same bound. For example, powers of the trivial representation of a nontrivial group never supply any nontrivial irreducible.</p>
+<h2 id="8-prerequisite-results-used-without-proof">8. Prerequisite results used without proof</h2>
+<p>Complete reducibility over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, invariant positive inner products and Schur's lemma come from the first lesson. Character determination, orthogonality, class completeness and regular multiplicities come from the second. The class sizes, simplicity, permutation constructions and degree-three character derivation for <span class="math" data-tex="\(A_5\)">\(A_5\)</span> are proved in Exercise 4 of the preceding Fourier lesson. We also use elementary finite-dimensional linear algebra: trace, determinants, adjoints and the Vandermonde determinant formula.</p>
+<p>The general Young-tableau construction over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> for <span class="math" data-tex="\(S_n\)">\(S_n\)</span> is a later topic; this lesson proves real realizability for <span class="math" data-tex="\(S_4\)">\(S_4\)</span> directly. No general classification of finite-dimensional division algebras was needed for Proposition 3.2: its three commuting algebras were computed from complex Schur's lemma and conjugate-linear operators.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>C. Gruson and V. Serganova</strong>, <em>A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras</em>, 2018, Chapter 1 §2 for tensor and dual actions; Theorem 4.27 for faithful tensor powers; §§6–8, especially Lemmas 6.2–6.4, Proposition 8.3 and Corollary 8.4, for invariant forms and real representations.</li>
+<li><strong>F. G. Frobenius and I. Schur</strong>, <em>Über die reellen Darstellungen der endlichen Gruppen</em>, Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften zu Berlin, 1906, pp. 186–208; the introduction states both the indicator criterion and the square-root character expansion. Reprinted as paper 75 in Frobenius's <em>Gesammelte Abhandlungen</em>.</li>
+</ul>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

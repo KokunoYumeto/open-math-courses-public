@@ -1,0 +1,311 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tensor actions and absolute algebra presentations</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="tensor-actions-and-absolute-algebra-presentations">Tensor actions and absolute algebra presentations</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, September 2026. Self-checked; no independent review. Public domain (CC0).</em></p>
+<p>An algebra object can act on objects of a category without those objects being vector spaces. Its action defines a monad. The resulting algebra objects have a canonical presentation by free algebras, and that presentation explains when a right adjoint recovers all the algebraic structure of its domain.</p>
+<p>We use ordinary categories throughout. Tensor categories have an associator satisfying the pentagon, and a unit when one is specified. No symmetry or braiding is assumed. The unit and associativity interfaces are those of <a href="https://stacks.math.columbia.edu/tag/0FFJ">Stacks, monoidal categories</a>, with the associator inverted to point from <span class="math" data-tex="\((A\otimes B)\otimes C\)">\((A\otimes B)\otimes C\)</span> to <span class="math" data-tex="\(A\otimes(B\otimes C)\)">\(A\otimes(B\otimes C)\)</span>. For comparison with the monad constructions proved below, see Emily Riehl’s <a href="https://emilyriehl.github.io/files/context.pdf"><em>Category Theory in Context</em>, Chapter 5</a>.</p>
+<h2 id="1-the-action-of-the-unit-detects-unitality">1. The action of the unit detects unitality</h2>
+<p>An action of a tensor category <span class="math" data-tex="\(\mathsf T\)">\(\mathsf T\)</span> on <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is a strong tensor functor <span class="math" data-tex="\(\mathsf T\to\operatorname{End}(\mathsf C)\)">\(\mathsf T\to\operatorname{End}(\mathsf C)\)</span>, where the tensor product in the endofunctor category is composition. Write its evaluation as <span class="math" data-tex="\(A\odot X\)">\(A\odot X\)</span>. Its constraint is a natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\beta_{A,B,X}:(A\otimes B)\odot X
+\\
+\longrightarrow A\odot(B\odot X).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\beta_{A,B,X}:(A\otimes B)\odot X
+\\
+\longrightarrow A\odot(B\odot X).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The action pentagon compares the two ways to apply (1.1) to three tensor factors. A unital action also has a compatible natural isomorphism <span class="math" data-tex="\(\lambda_X:I\odot X\to X\)">\(\lambda_X:I\odot X\to X\)</span>, where <span class="math" data-tex="\(I\)">\(I\)</span> is the unit.</p>
+<p>The definition using a cancellable idempotent unit asks that <span class="math" data-tex="\(I\otimes-\)">\(I\otimes-\)</span> and <span class="math" data-tex="\(-\otimes I\)">\(-\otimes I\)</span> be fully faithful, together with <span class="math" data-tex="\(\rho:I\otimes I\to I\)">\(\rho:I\otimes I\to I\)</span> invertible. To compare this with the canonical convention, observe the following general fact.</p>
+<p><strong>Lemma 1.1.</strong> If <span class="math" data-tex="\(P:\mathsf C\to\mathsf C\)">\(P:\mathsf C\to\mathsf C\)</span> is fully faithful and <span class="math" data-tex="\(\nu:P^2\to P\)">\(\nu:P^2\to P\)</span> is a natural isomorphism, there is a unique natural isomorphism <span class="math" data-tex="\(e:P\to1_{\mathsf C}\)">\(e:P\to1_{\mathsf C}\)</span> with <span class="math" data-tex="\(P(e_X)=\nu_X\)">\(P(e_X)=\nu_X\)</span>.</p>
+<p><strong>Proof.</strong> Full faithfulness uniquely lifts <span class="math" data-tex="\(\nu_X:P(PX)\to P(X)\)">\(\nu_X:P(PX)\to P(X)\)</span> to <span class="math" data-tex="\(e_X:PX\to X\)">\(e_X:PX\to X\)</span>. For <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, naturality of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> says</p>
+<span class="math math-display" data-tex="\[
+P(f)P(e_X)=P(e_Y)P^2(f).
+\]">\[
+P(f)P(e_X)=P(e_Y)P^2(f).
+\]</span>
+<p>Faithfulness gives <span class="math" data-tex="\(fe_X=e_YP(f)\)">\(fe_X=e_YP(f)\)</span>, proving naturality. A fully faithful functor reflects isomorphisms: fullness lifts an inverse to <span class="math" data-tex="\(P(e_X)\)">\(P(e_X)\)</span>, and faithfulness makes the two lifted composites identities. Hence each <span class="math" data-tex="\(e_X\)">\(e_X\)</span> is invertible. Uniqueness follows from the same fullness and faithfulness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(P=I\otimes-\)">\(P=I\otimes-\)</span>, the associator and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> supply <span class="math" data-tex="\(P^2\simeq P\)">\(P^2\simeq P\)</span>; similarly for <span class="math" data-tex="\(P=-\otimes I\)">\(P=-\otimes I\)</span>. Lemma 1.1 makes both functors isomorphic to the identity, and therefore equivalences. This verifies the hypothesis of the canonical unit theorem, which uses equivalences. Its compatible unit constraints and coherence can consequently be used with the cancellable-idempotent convention.</p>
+<p>For structural reassociations we retain the open monoidal coherence theorem: between two formal expressions in the same ordered list of objects, any two composites of associators, unit constraints and their inverses agree. The exact proof is Markus Himmel's Mathlib construction of <code>FreeMonoidalCategory.subsingleton_hom</code>, following the normalization argument of Ilya Beylin and Peter Dybjer, in <a href="https://github.com/leanprover-community/mathlib4/blob/87fc9444ea2b018e3940bd8853f4d40f870b50ba/Mathlib/CategoryTheory/Monoidal/Free/Coherence.lean">Monoidal coherence</a>, under <a href="https://github.com/leanprover-community/mathlib4/blob/87fc9444ea2b018e3940bd8853f4d40f870b50ba/LICENSE">Apache 2.0</a>. Its full normalization proof gives a natural isomorphism from a formal expression to its normal form, in which the ordered factors remain fixed and units are erased. Naturality factors every structural map through that same normal form; its discrete category has at most one map between any two objects. This proves equality of parallel formal structural maps. The <a href="https://github.com/leanprover-community/mathlib4/blob/87fc9444ea2b018e3940bd8853f4d40f870b50ba/Mathlib/CategoryTheory/Monoidal/Free/Basic.lean#L361">evaluation functor</a> sends each formal associator and unit constraint to the corresponding one in our category and respects their defining relations, so it transfers the equality here. Distinct positions in the word remain distinct formal symbols even when their values happen to be equal objects. This is the precise coherence interface used below; it does not identify arbitrary morphisms.</p>
+<p>Now set <span class="math" data-tex="\(P=I\odot-\)">\(P=I\odot-\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\nu_X=(\rho\odot1_X)\beta_{I,I,X}^{-1}:P^2X\to PX.
+\]">\[
+\nu_X=(\rho\odot1_X)\beta_{I,I,X}^{-1}:P^2X\to PX.
+\]</span>
+<p><strong>Theorem 1.2.</strong> The action is unital if and only if <span class="math" data-tex="\(P\)">\(P\)</span> is fully faithful.</p>
+<p><strong>Proof.</strong> A unital action gives <span class="math" data-tex="\(P\simeq1_{\mathsf C}\)">\(P\simeq1_{\mathsf C}\)</span>, so <span class="math" data-tex="\(P\)">\(P\)</span> is fully faithful. Conversely, Lemma 1.1 gives <span class="math" data-tex="\(e:P\simeq1_{\mathsf C}\)">\(e:P\simeq1_{\mathsf C}\)</span>. Its compatibility with the image of the unit multiplication is</p>
+<span class="math math-display" data-tex="\[
+e_X\nu_X=e_XP(e_X).
+\tag{1.2}
+\]">\[
+e_X\nu_X=e_XP(e_X).
+\tag{1.2}
+\]</span>
+<p>This holds by the defining equality <span class="math" data-tex="\(P(e_X)=\nu_X\)">\(P(e_X)=\nu_X\)</span>. The right side is the component of the tensor square of <span class="math" data-tex="\(e\)">\(e\)</span>, followed by the multiplication of the identity endofunctor. Thus <span class="math" data-tex="\(e\)">\(e\)</span> identifies <span class="math" data-tex="\((P,\nu)\)">\((P,\nu)\)</span> with the unit of <span class="math" data-tex="\(\operatorname{End}(\mathsf C)\)">\(\operatorname{End}(\mathsf C)\)</span>. The action is unital, with <span class="math" data-tex="\(\lambda=e\)">\(\lambda=e\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The criterion involves full faithfulness of the functor on <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>, not a presupposed unit isomorphism. Exercise 2 gives an associative action whose unit functor fails the criterion.</p>
+<h2 id="2-algebra-objects-become-monads">2. Algebra objects become monads</h2>
+<p>Let the action be unital. An algebra object of <span class="math" data-tex="\(\mathsf T\)">\(\mathsf T\)</span> consists of <span class="math" data-tex="\(A\)">\(A\)</span>, a multiplication <span class="math" data-tex="\(m:A\otimes A\to A\)">\(m:A\otimes A\to A\)</span>, and a unit <span class="math" data-tex="\(u:I\to A\)">\(u:I\to A\)</span>. With left and right unit constraints <span class="math" data-tex="\(l_A,r_A\)">\(l_A,r_A\)</span>, its unit laws are <span class="math" data-tex="\(m(u\otimes1_A)=l_A\)">\(m(u\otimes1_A)=l_A\)</span> and <span class="math" data-tex="\(m(1_A\otimes u)=r_A\)">\(m(1_A\otimes u)=r_A\)</span>. Its associative law is</p>
+<span class="math math-display" data-tex="\[
+m(m\otimes1_A)=m(1_A\otimes m)a_{A,A,A},
+\tag{2.1}
+\]">\[
+m(m\otimes1_A)=m(1_A\otimes m)a_{A,A,A},
+\tag{2.1}
+\]</span>
+<p>where <span class="math" data-tex="\(a\)">\(a\)</span> is the associator. This is sometimes called a ring object, even when the ambient category has no addition.</p>
+<p>Define <span class="math" data-tex="\(T(X)=A\odot X\)">\(T(X)=A\odot X\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\eta_X&amp;=(u\odot1_X)\lambda_X^{-1},\\
+\mu_X&amp;=(m\odot1_X)\beta_{A,A,X}^{-1}.
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+\eta_X&amp;=(u\odot1_X)\lambda_X^{-1},\\
+\mu_X&amp;=(m\odot1_X)\beta_{A,A,X}^{-1}.
+\end{aligned}
+\tag{2.2}
+\]</span>
+<p>These are natural transformations <span class="math" data-tex="\(1_{\mathsf C}\to T\)">\(1_{\mathsf C}\to T\)</span> and <span class="math" data-tex="\(T^2\to T\)">\(T^2\to T\)</span>. They satisfy the monad equations</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mu_X\eta_{TX}=1_{TX}=\mu_XT(\eta_X),\\
+\mu_X\mu_{TX}=\mu_XT(\mu_X).
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+\mu_X\eta_{TX}=1_{TX}=\mu_XT(\eta_X),\\
+\mu_X\mu_{TX}=\mu_XT(\mu_X).
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>A monad on <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is precisely an algebra object of <span class="math" data-tex="\(\operatorname{End}(\mathsf C)\)">\(\operatorname{End}(\mathsf C)\)</span>: its tensor multiplication is <span class="math" data-tex="\(\mu:T\circ T\to T\)">\(\mu:T\circ T\to T\)</span>, its unit is <span class="math" data-tex="\(\eta:1_{\mathsf C}\to T\)">\(\eta:1_{\mathsf C}\to T\)</span>, and its algebra equations are (2.3).</p>
+<p>Here is the associativity check with the parentheses retained. From <span class="math" data-tex="\(((A\otimes A)\otimes A)\odot X\)">\(((A\otimes A)\otimes A)\odot X\)</span> to <span class="math" data-tex="\(T^3X\)">\(T^3X\)</span>, the action pentagon identifies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_X&amp;=\beta_{A,A,A\odot X}\,
+\beta_{A\otimes A,A,X}\\
+&amp;=(1_A\odot\beta_{A,A,X})\,
+\beta_{A,A\otimes A,X}\,
+(a_{A,A,A}\odot1_X).
+\end{aligned}
+\]">\[
+\begin{aligned}
+c_X&amp;=\beta_{A,A,A\odot X}\,
+\beta_{A\otimes A,A,X}\\
+&amp;=(1_A\odot\beta_{A,A,X})\,
+\beta_{A,A\otimes A,X}\,
+(a_{A,A,A}\odot1_X).
+\end{aligned}
+\]</span>
+<p>Naturality of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> shows that <span class="math" data-tex="\(\mu_X\mu_{TX}c_X\)">\(\mu_X\mu_{TX}c_X\)</span> is <span class="math" data-tex="\((m(m\otimes1_A))\odot1_X\)">\((m(m\otimes1_A))\odot1_X\)</span>. It also shows that <span class="math" data-tex="\(\mu_XT(\mu_X)c_X\)">\(\mu_XT(\mu_X)c_X\)</span> is <span class="math" data-tex="\((m(1_A\otimes m)a_{A,A,A})\odot1_X\)">\((m(1_A\otimes m)a_{A,A,A})\odot1_X\)</span>. Equation (2.1) equates these maps; cancel <span class="math" data-tex="\(c_X\)">\(c_X\)</span> to obtain the last equation of (2.3). For the first two equations, the action unit constraints identify insertion of <span class="math" data-tex="\(\eta_{TX}\)">\(\eta_{TX}\)</span> with insertion of <span class="math" data-tex="\(u\)">\(u\)</span> on the left of <span class="math" data-tex="\(A\)">\(A\)</span>, and insertion of <span class="math" data-tex="\(T(\eta_X)\)">\(T(\eta_X)\)</span> with insertion on its right. After applying <span class="math" data-tex="\(\mu_X\)">\(\mu_X\)</span>, these are respectively the left and right unit laws for <span class="math" data-tex="\(m\)">\(m\)</span>. Their composites are <span class="math" data-tex="\(1_{TX}\)">\(1_{TX}\)</span>.</p>
+<p>A <span class="math" data-tex="\(T\)">\(T\)</span>-algebra is an object <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(b:TX\to X\)">\(b:TX\to X\)</span> such that <span class="math" data-tex="\(b\eta_X=1_X\)">\(b\eta_X=1_X\)</span> and <span class="math" data-tex="\(b\mu_X=bT(b)\)">\(b\mu_X=bT(b)\)</span>. A map <span class="math" data-tex="\(f:(X,b)\to(Y,d)\)">\(f:(X,b)\to(Y,d)\)</span> satisfies <span class="math" data-tex="\(fb=dT(f)\)">\(fb=dT(f)\)</span>. For the monad (2.2), these equations say exactly that <span class="math" data-tex="\(b:A\odot X\to X\)">\(b:A\odot X\to X\)</span> is an <span class="math" data-tex="\(A\)">\(A\)</span>-module action, with its unit and associativity constraints. Thus <span class="math" data-tex="\(\operatorname{Mod}(A,\mathsf C)\)">\(\operatorname{Mod}(A,\mathsf C)\)</span> and <span class="math" data-tex="\(\mathsf C^T\)">\(\mathsf C^T\)</span> have the same objects and arrows. Their forgetful functor is faithful.</p>
+<p>For an arbitrary monad, the free algebra on <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\((TY,\mu_Y)\)">\((TY,\mu_Y)\)</span>. The free-algebra adjunction is given by the following inverse maps; compare Riehl, Lemma 5.2.9. The maps in its Hom bijection are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C^T}((TY,\mu_Y),(X,b))
+\\
+\longrightarrow\operatorname{Hom}_{\mathsf C}(Y,X),\\
+g\longmapsto g\eta_Y;
+\qquad f\longmapsto bT(f).
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C^T}((TY,\mu_Y),(X,b))
+\\
+\longrightarrow\operatorname{Hom}_{\mathsf C}(Y,X),\\
+g\longmapsto g\eta_Y;
+\qquad f\longmapsto bT(f).
+\end{gathered}
+\tag{2.4}
+\]</span>
+<p>Their checks make the interface explicit. The map <span class="math" data-tex="\(bT(f)\)">\(bT(f)\)</span> is an algebra map, since naturality of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and the law <span class="math" data-tex="\(b\mu_X=bT(b)\)">\(b\mu_X=bT(b)\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+bT(f)\mu_Y&amp;=b\mu_XT^2(f)\\
+&amp;=bT(b)T^2(f)=bT(bT(f)).
+\end{aligned}
+\]">\[
+\begin{aligned}
+bT(f)\mu_Y&amp;=b\mu_XT^2(f)\\
+&amp;=bT(b)T^2(f)=bT(bT(f)).
+\end{aligned}
+\]</span>
+<p>Also <span class="math" data-tex="\(bT(f)\eta_Y=b\eta_Xf=f\)">\(bT(f)\eta_Y=b\eta_Xf=f\)</span>. Conversely, for an algebra map <span class="math" data-tex="\(g\)">\(g\)</span>,</p>
+<span class="math math-display" data-tex="\[
+bT(g\eta_Y)=bT(g)T(\eta_Y)
+=g\mu_YT(\eta_Y)=g.
+\]">\[
+bT(g\eta_Y)=bT(g)T(\eta_Y)
+=g\mu_YT(\eta_Y)=g.
+\]</span>
+<p>The maps are natural in both variables. The free algebra laws themselves are the associativity and unit laws (2.3).</p>
+<h2 id="3-presentations-which-every-functor-preserves">3. Presentations which every functor preserves</h2>
+<p>Let <span class="math" data-tex="\(h_X=\operatorname{Hom}_{\mathsf C}(-,X)\)">\(h_X=\operatorname{Hom}_{\mathsf C}(-,X)\)</span>. Call a fork</p>
+<span class="math math-display" data-tex="\[
+V\overset{f,g}{\rightrightarrows}W
+\overset{q}{\longrightarrow}Z
+\tag{3.1}
+\]">\[
+V\overset{f,g}{\rightrightarrows}W
+\overset{q}{\longrightarrow}Z
+\tag{3.1}
+\]</span>
+<p><strong>presheaf exact</strong> if <span class="math" data-tex="\(h_V\rightrightarrows h_W\to h_Z\)">\(h_V\rightrightarrows h_W\to h_Z\)</span> is a coequalizer of presheaves. Equivalently, applying <span class="math" data-tex="\(\operatorname{Hom}_{\mathsf C}(H,-)\)">\(\operatorname{Hom}_{\mathsf C}(H,-)\)</span> gives a coequalizer of sets for every object <span class="math" data-tex="\(H\)">\(H\)</span>. This requires more than an ordinary coequalizer.</p>
+<p>A presheaf-exact fork is an absolute coequalizer: every functor preserves it. This is the representable-colimit preservation theorem proved in <a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a>, Section 3, Proposition 3.2. Apply that theorem to the parallel-pair diagram whose formal presheaf colimit is <span class="math" data-tex="\(h_Z\)">\(h_Z\)</span>. No colimit-completeness of the receiving category is needed.</p>
+<p>A useful sufficient condition is a split fork. Suppose there are <span class="math" data-tex="\(s:Z\to W\)">\(s:Z\to W\)</span> and <span class="math" data-tex="\(t:W\to V\)">\(t:W\to V\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+qf=qg,\qquad qs=1_Z,\\
+gt=1_W,\qquad ft=sq.
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+qf=qg,\qquad qs=1_Z,\\
+gt=1_W,\qquad ft=sq.
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>For <span class="math" data-tex="\(k:W\to H\)">\(k:W\to H\)</span> with <span class="math" data-tex="\(kf=kg\)">\(kf=kg\)</span>, the required factorization is <span class="math" data-tex="\(ks\)">\(ks\)</span>, because <span class="math" data-tex="\(ksq=kft=kgt=k\)">\(ksq=kft=kgt=k\)</span>. Uniqueness follows from <span class="math" data-tex="\(qs=1_Z\)">\(qs=1_Z\)</span>. Every functor preserves the identities (3.2), so preserves this coequalizer. In particular the covariant functor <span class="math" data-tex="\(\operatorname{Hom}(H,-)\)">\(\operatorname{Hom}(H,-)\)</span> preserves it for every <span class="math" data-tex="\(H\)">\(H\)</span>; thus the fork is presheaf exact.</p>
+<p>For a <span class="math" data-tex="\(T\)">\(T\)</span>-algebra <span class="math" data-tex="\((X,b)\)">\((X,b)\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+T^2X\overset{T(b),\mu_X}{\rightrightarrows}
+TX\overset{b}{\longrightarrow}X.
+\tag{3.3}
+\]">\[
+T^2X\overset{T(b),\mu_X}{\rightrightarrows}
+TX\overset{b}{\longrightarrow}X.
+\tag{3.3}
+\]</span>
+<p>The splitting has <span class="math" data-tex="\(s=\eta_X\)">\(s=\eta_X\)</span>, <span class="math" data-tex="\(t=\eta_{TX}\)">\(t=\eta_{TX}\)</span>. Indeed <span class="math" data-tex="\(bT(b)=b\mu_X\)">\(bT(b)=b\mu_X\)</span>, <span class="math" data-tex="\(b\eta_X=1_X\)">\(b\eta_X=1_X\)</span>, <span class="math" data-tex="\(\mu_X\eta_{TX}=1_{TX}\)">\(\mu_X\eta_{TX}=1_{TX}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+T(b)\eta_{TX}=\eta_Xb
+\]">\[
+T(b)\eta_{TX}=\eta_Xb
+\]</span>
+<p>by naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Hence (3.3) is presheaf exact for every monad and every algebra, including the monads arising from tensor actions.</p>
+<p>The arrows in (3.3) are also maps of free algebras: <span class="math" data-tex="\(T(b)\)">\(T(b)\)</span> is the free-algebra image of <span class="math" data-tex="\(b\)">\(b\)</span>, and <span class="math" data-tex="\(\mu_X\)">\(\mu_X\)</span> satisfies the algebra-map identity by the monad associativity law. The colimit construction that follows will therefore lift (3.3) to the algebra category. Its splittings are maps in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>; they need not be algebra homomorphisms. Exercise 3 distinguishes an ordinary coequalizer from a presheaf-exact one.</p>
+<p>We will also use the following colimit-creation argument. Suppose <span class="math" data-tex="\(f,g:(V,v)\rightrightarrows(W,w)\)">\(f,g:(V,v)\rightrightarrows(W,w)\)</span> are algebra maps and their underlying fork (3.1) is presheaf exact. Absoluteness makes <span class="math" data-tex="\(Tq\)">\(Tq\)</span> and <span class="math" data-tex="\(T^2q\)">\(T^2q\)</span> coequalizers too. Since</p>
+<span class="math math-display" data-tex="\[
+qwT(f)=qfv=qgv=qwT(g),
+\]">\[
+qwT(f)=qfv=qgv=qwT(g),
+\]</span>
+<p>there is a unique <span class="math" data-tex="\(z:TZ\to Z\)">\(z:TZ\to Z\)</span> with <span class="math" data-tex="\(zT(q)=qw\)">\(zT(q)=qw\)</span>. It is an algebra structure: naturality and the algebra laws for <span class="math" data-tex="\(w\)">\(w\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+z\eta_Zq&amp;=zT(q)\eta_W=qw\eta_W=q,\\
+z\mu_ZT^2(q)&amp;=zT(q)\mu_W
+=qw\mu_W,\\
+zT(z)T^2(q)&amp;=zT(zT(q))\\
+&amp;=zT(qw)=qwT(w).
+\end{aligned}
+\]">\[
+\begin{aligned}
+z\eta_Zq&amp;=zT(q)\eta_W=qw\eta_W=q,\\
+z\mu_ZT^2(q)&amp;=zT(q)\mu_W
+=qw\mu_W,\\
+zT(z)T^2(q)&amp;=zT(zT(q))\\
+&amp;=zT(qw)=qwT(w).
+\end{aligned}
+\]</span>
+<p>The last two right sides agree. Cancel the epimorphisms <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(T^2q\)">\(T^2q\)</span> to obtain <span class="math" data-tex="\(z\eta_Z=1_Z\)">\(z\eta_Z=1_Z\)</span> and <span class="math" data-tex="\(z\mu_Z=zT(z)\)">\(z\mu_Z=zT(z)\)</span>.</p>
+<p>For an algebra map <span class="math" data-tex="\(k:(W,w)\to(H,h)\)">\(k:(W,w)\to(H,h)\)</span> equalizing <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, its unique underlying factor <span class="math" data-tex="\(j:Z\to H\)">\(j:Z\to H\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+jzT(q)=jqw=kw=hT(k)=hT(j)T(q).
+\]">\[
+jzT(q)=jqw=kw=hT(k)=hT(j)T(q).
+\]</span>
+<p>Cancel <span class="math" data-tex="\(Tq\)">\(Tq\)</span> to see that <span class="math" data-tex="\(j\)">\(j\)</span> is an algebra map. Thus <span class="math" data-tex="\(q\)">\(q\)</span> lifts uniquely to a coequalizer of algebras. This proves the colimit-creation assertion needed below, including the use of both <span class="math" data-tex="\(Tq\)">\(Tq\)</span> and <span class="math" data-tex="\(T^2q\)">\(T^2q\)</span>; compare Riehl’s Theorem 5.6.5(ii).</p>
+<h2 id="4-the-presheaf-exact-monadicity-criterion"><span id="4-retaining-the-presheaf-exact-monadicity-criterion"></span>4. The presheaf-exact monadicity criterion</h2>
+<p>Let <span class="math" data-tex="\(L:\mathsf C\to\mathsf D\)">\(L:\mathsf C\to\mathsf D\)</span> be left adjoint to <span class="math" data-tex="\(R:\mathsf D\to\mathsf C\)">\(R:\mathsf D\to\mathsf C\)</span>, with unit <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and counit <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The canonical adjunction-to-monad construction, Riehl’s Lemma 5.1.3, gives</p>
+<span class="math math-display" data-tex="\[
+T=RL,\qquad \mu=R\varepsilon L.
+\]">\[
+T=RL,\qquad \mu=R\varepsilon L.
+\]</span>
+<p>The two monad unit laws are the adjunction triangles, and associativity is naturality of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> at <span class="math" data-tex="\(\varepsilon_{LX}\)">\(\varepsilon_{LX}\)</span>, after applying <span class="math" data-tex="\(R\)">\(R\)</span>. The comparison functor, Riehl’s Proposition 5.2.13, is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K:\mathsf D\to\mathsf C^T,\\
+Y\longmapsto(RY,R(\varepsilon_Y)).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+K:\mathsf D\to\mathsf C^T,\\
+Y\longmapsto(RY,R(\varepsilon_Y)).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>On maps it is <span class="math" data-tex="\(R\)">\(R\)</span>. The algebra unit law is <span class="math" data-tex="\(R(\varepsilon_Y)\eta_{RY}=1\)">\(R(\varepsilon_Y)\eta_{RY}=1\)</span>, and its associative law is naturality of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> at <span class="math" data-tex="\(\varepsilon_Y\)">\(\varepsilon_Y\)</span>. Naturality at any <span class="math" data-tex="\(f:Y\to Y&#x27;\)">\(f:Y\to Y&#x27;\)</span> verifies the algebra-map condition for <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span>. Thus the formulas give the specified comparison, with <span class="math" data-tex="\(UK=R\)">\(UK=R\)</span> and <span class="math" data-tex="\(KL\)">\(KL\)</span> the free-algebra functor.</p>
+<p><strong>Theorem 4.1.</strong> The comparison <span class="math" data-tex="\(K\)">\(K\)</span> is an equivalence if and only if both conditions hold:</p>
+<ol>
+<li><span class="math" data-tex="\(R\)">\(R\)</span> is conservative: an arrow whose <span class="math" data-tex="\(R\)">\(R\)</span>-image is invertible is invertible.</li>
+<li>For every parallel pair <span class="math" data-tex="\(f,g: V\rightrightarrows W\)">\(f,g: V\rightrightarrows W\)</span> in <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span>, if its <span class="math" data-tex="\(R\)">\(R\)</span>-image admits a coequalizer <span class="math" data-tex="\(q:RW\to Z\)">\(q:RW\to Z\)</span> which is presheaf exact in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>, then <span class="math" data-tex="\(f,g\)">\(f,g\)</span> have a coequalizer in <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> preserves it.</li>
+</ol>
+<p><strong>Proof.</strong> The algebra forgetful functor reflects isomorphisms. If an algebra map <span class="math" data-tex="\(f:(X,b)\to(Y,d)\)">\(f:(X,b)\to(Y,d)\)</span> has an underlying inverse <span class="math" data-tex="\(h\)">\(h\)</span>, then <span class="math" data-tex="\(fb=dT(f)\)">\(fb=dT(f)\)</span>, composed with <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(T(h)\)">\(T(h)\)</span>, gives <span class="math" data-tex="\(hd=bT(h)\)">\(hd=bT(h)\)</span>. Thus <span class="math" data-tex="\(h\)">\(h\)</span> is its inverse as an algebra map. If <span class="math" data-tex="\(K\)">\(K\)</span> is an equivalence, this proves condition 1 for <span class="math" data-tex="\(R=UK\)">\(R=UK\)</span>. Section 3 constructs every presheaf-exact coequalizer in the algebra category and preserves its underlying fork. Transporting it along <span class="math" data-tex="\(K\)">\(K\)</span> proves condition 2. This establishes necessity with the full presheaf-exact hypothesis.</p>
+<p>Suppose now that conditions 1 and 2 hold. For each algebra <span class="math" data-tex="\((X,b)\)">\((X,b)\)</span>, form the pair
+<span class="math math-display" data-tex="\[
+LTX\overset{L(b),\varepsilon_{LX}}{\rightrightarrows}LX.
+\tag{4.2}
+\]">\[
+LTX\overset{L(b),\varepsilon_{LX}}{\rightrightarrows}LX.
+\tag{4.2}
+\]</span>
+Its <span class="math" data-tex="\(R\)">\(R\)</span>-image is <span class="math" data-tex="\(T(b),\mu_X:T^2X\rightrightarrows TX\)">\(T(b),\mu_X:T^2X\rightrightarrows TX\)</span>, whose coequalizer <span class="math" data-tex="\(b:TX\to X\)">\(b:TX\to X\)</span> is split by (3.3). Condition 2 therefore gives a coequalizer <span class="math" data-tex="\(p_X:LX\to J(X,b)\)">\(p_X:LX\to J(X,b)\)</span> and makes <span class="math" data-tex="\(R(p_X)\)">\(R(p_X)\)</span> its underlying coequalizer. The unique comparison
+<span class="math math-display" data-tex="\[
+u_X:RJ(X,b)\longrightarrow X,
+\qquad u_XR(p_X)=b
+\]">\[
+u_X:RJ(X,b)\longrightarrow X,
+\qquad u_XR(p_X)=b
+\]</span>
+is an isomorphism in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>, since both sides are coequalizers of the same pair. It is an algebra isomorphism too. Indeed <span class="math" data-tex="\(K(p_X)\)">\(K(p_X)\)</span> is an algebra map from the free algebra <span class="math" data-tex="\((TX,\mu_X)\)">\((TX,\mu_X)\)</span>. Section 3 gives the unique algebra structure on the coequalizer for which this map is an algebra map. Under <span class="math" data-tex="\(u_X\)">\(u_X\)</span>, the structure is <span class="math" data-tex="\(b\)">\(b\)</span>, since (3.3) is that same algebra coequalizer. This proves that every algebra is isomorphic to a value of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Next we prove that each counit is a coequalizer in <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span>:
+<span class="math math-display" data-tex="\[
+LTR Y\overset{LR(\varepsilon_Y),\varepsilon_{LRY}}
+{\rightrightarrows}LRY
+\overset{\varepsilon_Y}{\longrightarrow}Y.
+\]">\[
+LTR Y\overset{LR(\varepsilon_Y),\varepsilon_{LRY}}
+{\rightrightarrows}LRY
+\overset{\varepsilon_Y}{\longrightarrow}Y.
+\]</span>
+Naturality of the counit makes this a fork. Its <span class="math" data-tex="\(R\)">\(R\)</span>-image is (3.3) for the algebra <span class="math" data-tex="\((RY,R\varepsilon_Y)\)">\((RY,R\varepsilon_Y)\)</span>. Condition 2 gives some coequalizer <span class="math" data-tex="\(p:LRY\to Y_0\)">\(p:LRY\to Y_0\)</span>, preserved by <span class="math" data-tex="\(R\)">\(R\)</span>. The fork <span class="math" data-tex="\(\varepsilon_Y\)">\(\varepsilon_Y\)</span> factors uniquely as <span class="math" data-tex="\(dp\)">\(dp\)</span>. Applying <span class="math" data-tex="\(R\)">\(R\)</span>, both <span class="math" data-tex="\(Rp\)">\(Rp\)</span> and <span class="math" data-tex="\(R\varepsilon_Y\)">\(R\varepsilon_Y\)</span> are coequalizers of the same pair, so <span class="math" data-tex="\(Rd\)">\(Rd\)</span> is an isomorphism. Conservativity makes <span class="math" data-tex="\(d\)">\(d\)</span> an isomorphism. Consequently <span class="math" data-tex="\(\varepsilon_Y\)">\(\varepsilon_Y\)</span> itself is the required coequalizer, hence is epic.</p>
+<p>Let <span class="math" data-tex="\(a:K(Y)\to K(Z)\)">\(a:K(Y)\to K(Z)\)</span> be an algebra map. Naturality of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and the equation <span class="math" data-tex="\(aR\varepsilon_Y=R\varepsilon_ZT(a)\)">\(aR\varepsilon_Y=R\varepsilon_ZT(a)\)</span> show that <span class="math" data-tex="\(\varepsilon_ZL(a):LRY\to Z\)">\(\varepsilon_ZL(a):LRY\to Z\)</span> equalizes the displayed counit pair: its composites are respectively <span class="math" data-tex="\(\varepsilon_ZL(aR\varepsilon_Y)\)">\(\varepsilon_ZL(aR\varepsilon_Y)\)</span> and <span class="math" data-tex="\(\varepsilon_ZLR\varepsilon_ZLT(a)\)">\(\varepsilon_ZLR\varepsilon_ZLT(a)\)</span>, equal by that equation. The counit coequalizer therefore gives a unique <span class="math" data-tex="\(h:Y\to Z\)">\(h:Y\to Z\)</span> with
+<span class="math math-display" data-tex="\[
+h\varepsilon_Y=\varepsilon_ZL(a).
+\]">\[
+h\varepsilon_Y=\varepsilon_ZL(a).
+\]</span>
+Applying <span class="math" data-tex="\(R\)">\(R\)</span> gives <span class="math" data-tex="\(Rh\,R\varepsilon_Y=R\varepsilon_ZT(a)=aR\varepsilon_Y\)">\(Rh\,R\varepsilon_Y=R\varepsilon_ZT(a)=aR\varepsilon_Y\)</span>. The last map <span class="math" data-tex="\(R\varepsilon_Y\)">\(R\varepsilon_Y\)</span> is split epic, so <span class="math" data-tex="\(Rh=a\)">\(Rh=a\)</span>. Hence <span class="math" data-tex="\(K\)">\(K\)</span> is full. If <span class="math" data-tex="\(Rh=Rh&#x27;\)">\(Rh=Rh&#x27;\)</span>, counit naturality gives <span class="math" data-tex="\(h\varepsilon_Y=\varepsilon_ZLRh=\varepsilon_ZLRh&#x27;=h&#x27;\varepsilon_Y\)">\(h\varepsilon_Y=\varepsilon_ZLRh=\varepsilon_ZLRh&#x27;=h&#x27;\varepsilon_Y\)</span>; cancel the epic <span class="math" data-tex="\(\varepsilon_Y\)">\(\varepsilon_Y\)</span> to obtain <span class="math" data-tex="\(h=h&#x27;\)">\(h=h&#x27;\)</span>. Thus <span class="math" data-tex="\(K\)">\(K\)</span> is faithful. Together with essential surjectivity already proved, these assertions make it an equivalence.</p>
+<p>The inverse is the concrete construction <span class="math" data-tex="\(J\)">\(J\)</span> above. An algebra map <span class="math" data-tex="\(a:(X,b)\to(X&#x27;,b&#x27;)\)">\(a:(X,b)\to(X&#x27;,b&#x27;)\)</span> makes <span class="math" data-tex="\(L(a)\)">\(L(a)\)</span> a map of the two presentation pairs: one square uses the algebra-map equation, and the other uses counit naturality. It therefore induces the unique map between their coequalizers. This uniqueness gives identities and composition, so <span class="math" data-tex="\(J\)">\(J\)</span> is a functor. The comparisons <span class="math" data-tex="\(u_X\)">\(u_X\)</span> are natural by their equations on <span class="math" data-tex="\(R(p_X)\)">\(R(p_X)\)</span>. The counit coequalizers give the other natural comparison <span class="math" data-tex="\(JK\simeq1_{\mathsf D}\)">\(JK\simeq1_{\mathsf D}\)</span>. This proves the criterion and its inverse without appealing to an external monadicity theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2.</strong> If <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> has finite colimits, <span class="math" data-tex="\(R\)">\(R\)</span> is conservative, and <span class="math" data-tex="\(R\)">\(R\)</span> preserves finite colimits, then <span class="math" data-tex="\(K\)">\(K\)</span> is an equivalence.</p>
+<p><strong>Proof.</strong> Every parallel pair has a coequalizer in <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span>, and its image is a coequalizer in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Thus condition 2 holds whenever its antecedent holds, and Theorem 4.1 applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If right exactness is defined by filtered comma categories, the finite-colimit interface proved in <a href="one-sided-fractions-and-saturation.html">One-sided fractions and saturation</a>, Section 4, converts it into finite-colimit preservation here. Therefore the usual “conservative and exact” hypothesis with finite colimits also gives this corollary; its left-exact part is unnecessary for the conclusion.</p>
+<h2 id="5-exercises-and-complete-solutions">5. Exercises and complete solutions</h2>
+<p><strong>Exercise 1 (Grade 1: a monad which adjoins a point).</strong> On sets define <span class="math" data-tex="\(TX=X\sqcup\{*\}\)">\(TX=X\sqcup\{*\}\)</span>, with <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span> the inclusion and <span class="math" data-tex="\(\mu_X:T^2X\to TX\)">\(\mu_X:T^2X\to TX\)</span> collapsing the two added points to <span class="math" data-tex="\(*\)">\(*\)</span>. Verify the monad laws and identify its algebras and free algebras.</p>
+<p><strong>Solution.</strong> On a function <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, <span class="math" data-tex="\(Tf\)">\(Tf\)</span> acts as <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> and carries the added point to the added point. This gives a functor, and makes <span class="math" data-tex="\(\eta,\mu\)">\(\eta,\mu\)</span> natural. Either insertion of one new layer followed by <span class="math" data-tex="\(\mu\)">\(\mu\)</span> fixes <span class="math" data-tex="\(X\)">\(X\)</span> and the already present point; both unit laws follow. On <span class="math" data-tex="\(T^3X\)">\(T^3X\)</span>, each associative composite fixes every element of <span class="math" data-tex="\(X\)">\(X\)</span> and sends all three added points to the single added point of <span class="math" data-tex="\(TX\)">\(TX\)</span>. Thus they agree.</p>
+<p>An algebra map <span class="math" data-tex="\(b:TX\to X\)">\(b:TX\to X\)</span> is the identity on <span class="math" data-tex="\(X\)">\(X\)</span>, by <span class="math" data-tex="\(b\eta_X=1\)">\(b\eta_X=1\)</span>, and chooses <span class="math" data-tex="\(x_0=b(*)\)">\(x_0=b(*)\)</span>. Its associative law holds: on <span class="math" data-tex="\(X\)">\(X\)</span> both maps are identities; on either added point of <span class="math" data-tex="\(T^2X\)">\(T^2X\)</span>, both give <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Conversely every chosen point gives such an algebra. A morphism of algebras is exactly a function preserving the chosen point. The empty set has no algebra, since there is no function <span class="math" data-tex="\(T\varnothing\to\varnothing\)">\(T\varnothing\to\varnothing\)</span>. The free algebra on <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\(Y\sqcup\{*\}\)">\(Y\sqcup\{*\}\)</span> with distinguished point <span class="math" data-tex="\(*\)">\(*\)</span>, and a map from it to <span class="math" data-tex="\((X,x_0)\)">\((X,x_0)\)</span> extends any function <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span> uniquely by sending <span class="math" data-tex="\(*\)">\(*\)</span> to <span class="math" data-tex="\(x_0\)">\(x_0\)</span>.</p>
+<p><strong>Exercise 2 (Grade 2: an associative action without a unit action).</strong> Let <span class="math" data-tex="\(\mathsf T\)">\(\mathsf T\)</span> have one object <span class="math" data-tex="\(I\)">\(I\)</span> and just its identity, with <span class="math" data-tex="\(I\otimes I=I\)">\(I\otimes I=I\)</span>. On <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span>, let <span class="math" data-tex="\(P\)">\(P\)</span> be the constant singleton functor. Show that <span class="math" data-tex="\(I\mapsto P\)">\(I\mapsto P\)</span> defines a tensor action, and that it is not unital.</p>
+<p><strong>Solution.</strong> Choose the same singleton at every occurrence. Then <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>, and the tensor constraint <span class="math" data-tex="\(P\simeq P^2\)">\(P\simeq P^2\)</span> is its identity. All naturality and associativity diagrams have singleton components, so commute. This gives the strong tensor functor, hence the action. The functor <span class="math" data-tex="\(P\)">\(P\)</span> is not faithful: the two functions from a singleton to a two-element set have the same image. Therefore it is not fully faithful, and Theorem 1.2 rules out unitality. Directly, <span class="math" data-tex="\(P(\varnothing)\)">\(P(\varnothing)\)</span> is a singleton and is not isomorphic to <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, so no natural unit isomorphism can exist.</p>
+<p><strong>Exercise 3 (Grade 3: ordinary coequalizers need not be presheaf exact).</strong> Let <span class="math" data-tex="\(B=\{0,1\}\)">\(B=\{0,1\}\)</span>, let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> exchange its elements, and take <span class="math" data-tex="\(q:B\to\{*\}\)">\(q:B\to\{*\}\)</span>. Prove that <span class="math" data-tex="\(q\)">\(q\)</span> coequalizes <span class="math" data-tex="\(1_B,\sigma\)">\(1_B,\sigma\)</span> in sets, but that the fork is not presheaf exact.</p>
+<p><strong>Solution.</strong> A function <span class="math" data-tex="\(k:B\to H\)">\(k:B\to H\)</span> satisfies <span class="math" data-tex="\(k=k\sigma\)">\(k=k\sigma\)</span> exactly when it is constant. Such functions factor uniquely through <span class="math" data-tex="\(q\)">\(q\)</span>, including when <span class="math" data-tex="\(H\)">\(H\)</span> is empty, since then neither kind of function exists. Thus <span class="math" data-tex="\(q\)">\(q\)</span> is the coequalizer.</p>
+<p>Apply <span class="math" data-tex="\(\operatorname{Hom}(B,-)\)">\(\operatorname{Hom}(B,-)\)</span>. Its value on <span class="math" data-tex="\(B\)">\(B\)</span> has four functions: the two constants <span class="math" data-tex="\(c_0,c_1\)">\(c_0,c_1\)</span>, the identity, and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. The induced parallel maps are the identity and postcomposition by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Their coequalizer has two classes, <span class="math" data-tex="\(\{c_0,c_1\}\)">\(\{c_0,c_1\}\)</span> and <span class="math" data-tex="\(\{1_B,\sigma\}\)">\(\{1_B,\sigma\}\)</span>. But <span class="math" data-tex="\(\operatorname{Hom}(B,\{*\})\)">\(\operatorname{Hom}(B,\{*\})\)</span> has one element. Hence the resulting set fork is not a coequalizer, and the original fork is not presheaf exact. The covariant functor <span class="math" data-tex="\(\operatorname{Hom}(B,-)\)">\(\operatorname{Hom}(B,-)\)</span> also witnesses the failure of absoluteness directly.</p>
+<p><strong>Exercise 4 (Grade 4: the induced monad can miss topology).</strong> Let <span class="math" data-tex="\(L:\mathsf{Set}\to\mathsf{Top}\)">\(L:\mathsf{Set}\to\mathsf{Top}\)</span> give the discrete topology and let <span class="math" data-tex="\(R:\mathsf{Top}\to\mathsf{Set}\)">\(R:\mathsf{Top}\to\mathsf{Set}\)</span> forget topology. Compute the induced monad and comparison functor. Explain why the comparison fails to be an equivalence using both conservativity and full faithfulness.</p>
+<p><strong>Solution.</strong> Every function from a discrete space into a topological space is continuous, so <span class="math" data-tex="\(L\dashv R\)">\(L\dashv R\)</span>. The underlying set <span class="math" data-tex="\(RLX\)">\(RLX\)</span> is exactly <span class="math" data-tex="\(X\)">\(X\)</span>; the unit is the identity function. The counit <span class="math" data-tex="\(LRY\to Y\)">\(LRY\to Y\)</span> is also the identity on underlying sets, so <span class="math" data-tex="\(\mu=R\varepsilon L\)">\(\mu=R\varepsilon L\)</span> is the identity. Thus the monad is the identity monad. Its algebra condition forces the structure map <span class="math" data-tex="\(b:X\to X\)">\(b:X\to X\)</span> to be <span class="math" data-tex="\(1_X\)">\(1_X\)</span>, and every function is an algebra morphism. Consequently its algebra category is <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span>, and <span class="math" data-tex="\(K\)">\(K\)</span> is the underlying-set functor.</p>
+<p>On a two-element set, the identity from the discrete topology to the indiscrete topology is continuous and bijective. Its inverse is not continuous, because a singleton is open in the discrete target and is not open in the indiscrete source. Therefore <span class="math" data-tex="\(R\)">\(R\)</span> is not conservative, violating condition 1 of Theorem 4.1. Also the underlying identity function from the indiscrete space to the discrete space is a set map without a continuous lift. Thus <span class="math" data-tex="\(K\)">\(K\)</span> is not full and cannot be an equivalence. The induced monad records no topology.</p>
+<h2 id="references">References</h2>
+<p>Monoidal categories and module categories over them are treated in Pavel Etingof, Shlomo Gelaki, Dmitri Nikshych and Victor Ostrik, <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf"><em>Tensor Categories</em></a>, author's final version, Chapters 2 and 7, and monads and their algebras in Emily Riehl, <a href="https://emilyriehl.github.io/files/context.pdf"><em>Category Theory in Context</em></a>, Chapter 5. Theorem 4.1 keeps the full condition involving the Yoneda image of the coequalizer.</p>
+<p><a href="https://stacks.math.columbia.edu/tag/0FFJ">Stacks, Section 4.43</a> supplies the canonical associativity and unit constraints. Emily Riehl, <a href="https://emilyriehl.github.io/files/context.pdf"><em>Category Theory in Context</em>, second edition, Chapter 5</a>, discusses the free-algebra adjunction, algebra presentations, monadicity and creation of monad-preserved colimits. These references give mathematical credit and comparison with the constructions and complete proofs above; their text is not reproduced.</p>
+</main></body></html>

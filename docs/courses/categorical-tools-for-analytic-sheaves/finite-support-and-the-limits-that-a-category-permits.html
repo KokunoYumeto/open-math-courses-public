@@ -1,0 +1,333 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite support and the limits that a category permits</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="finite-support-and-the-limits-that-a-category-permits">Finite support and the limits that a category permits</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, October 2026. Self-checked by GPT-6.1 Sol, the writing AI; no independent review. Public domain (CC0).</em></p>
+<p>A limit answers a universal question about maps from the objects of a particular category. If those objects change, the answer can change too. We will see increasing nonzero modules whose colimit becomes zero in a full abelian subcategory, and decreasing quotients whose limit does the same. Formal ind-objects give a second phenomenon: finite support can prevent inverse limits from preserving surjections, even when every individual short exact sequence splits.</p>
+<p>The last section connects finite support to a finiteness condition on an object. An object of finite type can detect when two maps eventually agree. An object of finite presentation must also allow every map into a filtered colimit to appear at a stage. These are different requirements, even for an object of length one.</p>
+<p>We assume ordinary abelian categories and filtered diagrams. The prerequisites are <a href="full-subcategories-and-exact-closure.html">Full subcategories and exact closure</a>, Theorem 2.2; <a href="composition-factors-and-uniform-chain-bounds.html">Composition factors and uniform chain bounds</a>, Theorem 2.1; <a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a>, for compact constants and pointwise filtered colimits; <a href="limits-and-colimits-of-formal-objects.html">Limits and colimits of formal objects</a>, Corollary 2.3 and Theorem 3.1; and <a href="ind-abelian-categories-and-controlled-exact-sequences.html">Ind-abelian categories and controlled exact sequences</a>, Theorems 3.2 and 6.1. Their constructions and proofs are used throughout. Basic open references are [Stacks, Finite modules], [Stacks, Inverse systems] and [Schapira, Homological Algebra], listed below.</p>
+<p>Fix a universe of small indexing categories, and use larger ambient universes for presheaves and iterated completions. Categories are locally small relative to the indexing universe. An essentially small category is not required. Every limit, colimit and countable family below is small in that fixed indexing universe. For an abelian category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, write <span class="math" data-tex="\(\iota X\)">\(\iota X\)</span> for the constant object in <span class="math" data-tex="\(\operatorname{Ind}(\mathcal C)\)">\(\operatorname{Ind}(\mathcal C)\)</span>. We distinguish formal coproducts in this category from any coproduct in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<h2 id="1-zero-limits-inside-uniformly-nilpotent-modules">1. Zero limits inside uniformly nilpotent modules</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be any field and <span class="math" data-tex="\(A=k[t]\)">\(A=k[t]\)</span>. Let <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> be the full subcategory of all <span class="math" data-tex="\(A\)">\(A\)</span>-modules <span class="math" data-tex="\(M\)">\(M\)</span> for which <span class="math" data-tex="\(t^rM=0\)">\(t^rM=0\)</span> for some integer <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span> depending on <span class="math" data-tex="\(M\)">\(M\)</span>. There is no restriction on dimension or on the number of generators. The case <span class="math" data-tex="\(r=0\)">\(r=0\)</span> gives only the zero module.</p>
+<p>This is an abelian category with exact inclusion in <span class="math" data-tex="\(\mathsf{Mod}(A)\)">\(\mathsf{Mod}(A)\)</span>. Indeed, zero and finite direct sums belong to it. A kernel is a submodule of the source and inherits its bound; a cokernel is a quotient of the target and inherits its bound. Apply the full-subcategory criterion in the prerequisite. It is also extension closed: if <span class="math" data-tex="\(t^aL=0\)">\(t^aL=0\)</span> and <span class="math" data-tex="\(t^bN=0\)">\(t^bN=0\)</span> in a short exact sequence <span class="math" data-tex="\(0\to L\to M\to N\to0\)">\(0\to L\to M\to N\to0\)</span>, then <span class="math" data-tex="\(t^bM\subseteq L\)">\(t^bM\subseteq L\)</span> and <span class="math" data-tex="\(t^{a+b}M=0\)">\(t^{a+b}M=0\)</span>. Its abelian structure therefore agrees with the ambient kernels, cokernels and short exact sequences.</p>
+<p>For <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X_n=t^{-n}A/A\subseteq A[t^{-1}]/A,\\
+Y_n=A/(t^{n+1}).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+X_n=t^{-n}A/A\subseteq A[t^{-1}]/A,\\
+Y_n=A/(t^{n+1}).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The maps <span class="math" data-tex="\(X_n\to X_{n+1}\)">\(X_n\to X_{n+1}\)</span> are inclusions, and the maps <span class="math" data-tex="\(Y_{n+1}\to Y_n\)">\(Y_{n+1}\to Y_n\)</span> are reductions. Both diagrams lie in <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, since <span class="math" data-tex="\(t^nX_n=0\)">\(t^nX_n=0\)</span> and <span class="math" data-tex="\(t^{n+1}Y_n=0\)">\(t^{n+1}Y_n=0\)</span>. In particular <span class="math" data-tex="\(X_0=0\)">\(X_0=0\)</span>. The inclusions are monomorphisms and the reductions are epimorphisms, both internally and in the ambient module category.</p>
+<p><strong>Proposition 1.1.</strong> Their universal objects are as follows.</p>
+<table>
+<thead>
+<tr>
+<th>Diagram</th>
+<th>In <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span></th>
+<th>In <span class="math" data-tex="\(\mathsf{Mod}(A)\)">\(\mathsf{Mod}(A)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Colimit of the inclusions <span class="math" data-tex="\(X_n\)">\(X_n\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(A[t^{-1}]/A\)">\(A[t^{-1}]/A\)</span></td>
+</tr>
+<tr>
+<td>Limit of the reductions <span class="math" data-tex="\(Y_n\)">\(Y_n\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(k[[t]]\)">\(k[[t]]\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Proof.</strong> The ambient colimit of the increasing submodules <span class="math" data-tex="\(X_n\)">\(X_n\)</span> is their union</p>
+<span class="math math-display" data-tex="\[
+P=A[t^{-1}]/A.
+\tag{1.2}
+\]">\[
+P=A[t^{-1}]/A.
+\tag{1.2}
+\]</span>
+<p>To verify the colimit property directly, maps defined compatibly on the submodules define a unique map on their union. Every Laurent polynomial modulo <span class="math" data-tex="\(A\)">\(A\)</span> has only finitely many negative powers, so belongs to some <span class="math" data-tex="\(X_n\)">\(X_n\)</span>. Multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> on <span class="math" data-tex="\(P\)">\(P\)</span> is surjective: divide a Laurent representative by <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>Consider any cocone from the <span class="math" data-tex="\(X_n\)">\(X_n\)</span> to <span class="math" data-tex="\(N\in\mathcal N\)">\(N\in\mathcal N\)</span>. It induces an ambient map <span class="math" data-tex="\(f:P\to N\)">\(f:P\to N\)</span>. Choose <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(t^rN=0\)">\(t^rN=0\)</span>. For every <span class="math" data-tex="\(p\in P\)">\(p\in P\)</span>, surjectivity of multiplication by <span class="math" data-tex="\(t^r\)">\(t^r\)</span> supplies <span class="math" data-tex="\(z\in P\)">\(z\in P\)</span> with <span class="math" data-tex="\(p=t^rz\)">\(p=t^rz\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+f(p)=t^rf(z)=0.
+\tag{1.3}
+\]">\[
+f(p)=t^rf(z)=0.
+\tag{1.3}
+\]</span>
+<p>Thus every such cocone is zero. It factors uniquely through the zero cocone with vertex <span class="math" data-tex="\(0\)">\(0\)</span>. This proves the colimit assertion inside <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, including the required universal property for arbitrarily large modules in that category.</p>
+<p>For the second diagram, write a class in <span class="math" data-tex="\(Y_n\)">\(Y_n\)</span> uniquely as a polynomial of degree at most <span class="math" data-tex="\(n\)">\(n\)</span>. Compatibility of its reductions says that each coefficient is independent of the truncation once that coefficient is present. Hence compatible tuples correspond bijectively to formal power series. This correspondence respects addition and the <span class="math" data-tex="\(A\)">\(A\)</span>-action, and its coordinate maps are truncations. Conversely a power series supplies all its truncations. Maps into this module are exactly compatible families of maps into the <span class="math" data-tex="\(Y_n\)">\(Y_n\)</span>, so the ambient limit is <span class="math" data-tex="\(k[[t]]\)">\(k[[t]]\)</span>.</p>
+<p>Multiplication by <span class="math" data-tex="\(t^r\)">\(t^r\)</span> on <span class="math" data-tex="\(k[[t]]\)">\(k[[t]]\)</span> is injective: it shifts the coefficients by <span class="math" data-tex="\(r\)">\(r\)</span> places. A cone from <span class="math" data-tex="\(M\in\mathcal N\)">\(M\in\mathcal N\)</span> induces an ambient map <span class="math" data-tex="\(g:M\to k[[t]]\)">\(g:M\to k[[t]]\)</span>. If <span class="math" data-tex="\(t^rM=0\)">\(t^rM=0\)</span>, then <span class="math" data-tex="\(t^rg(m)=g(t^rm)=0\)">\(t^rg(m)=g(t^rm)=0\)</span>, so injectivity gives <span class="math" data-tex="\(g(m)=0\)">\(g(m)=0\)</span> for every <span class="math" data-tex="\(m\)">\(m\)</span>. Every cone is therefore zero and factors uniquely through <span class="math" data-tex="\(0\)">\(0\)</span>. This proves the internal limit assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Both ambient answers are nonzero. The class of <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> is nonzero in <span class="math" data-tex="\(P\)">\(P\)</span>; for every <span class="math" data-tex="\(r\)">\(r\)</span>, the class of <span class="math" data-tex="\(t^{-(r+1)}\)">\(t^{-(r+1)}\)</span> survives multiplication by <span class="math" data-tex="\(t^r\)">\(t^r\)</span>. In <span class="math" data-tex="\(k[[t]]\)">\(k[[t]]\)</span>, multiplication by <span class="math" data-tex="\(t^r\)">\(t^r\)</span> sends <span class="math" data-tex="\(1\)">\(1\)</span> to the nonzero series <span class="math" data-tex="\(t^r\)">\(t^r\)</span>. Neither ambient answer belongs to <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>. Exactness of the inclusion on finite exact sequences does not make it preserve these particular infinite limits or colimits.</p>
+<h2 id="2-formal-tails-and-failure-of-exact-inverse-limits">2. Formal tails and failure of exact inverse limits</h2>
+<p>Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be any abelian category with all small limits. Its ind-category is abelian and has all small limits and colimits by the prerequisite theorems. Constants are compact for formal filtered colimits, and <span class="math" data-tex="\(\iota\)">\(\iota\)</span> preserves the small limits already present in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p>For arbitrary objects <span class="math" data-tex="\((X_m)_{m\geq0}\)">\((X_m)_{m\geq0}\)</span> of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, define formal coproducts</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S=\coprod_{m\geq0}\iota X_m,\\
+T_n=\coprod_{m\geq n}\iota X_m,\\
+F_n=\coprod_{m&lt;n}\iota X_m.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+S=\coprod_{m\geq0}\iota X_m,\\
+T_n=\coprod_{m\geq n}\iota X_m,\\
+F_n=\coprod_{m&lt;n}\iota X_m.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>Each finite prefix <span class="math" data-tex="\(F_n\)">\(F_n\)</span> is <span class="math" data-tex="\(\iota(\bigoplus_{m&lt;n}X_m)\)">\(\iota(\bigoplus_{m&lt;n}X_m)\)</span>, since constants preserve finite biproducts. The formal coproduct construction identifies <span class="math" data-tex="\(S\)">\(S\)</span> with the filtered colimit of these finite prefixes. There is a finite biproduct decomposition <span class="math" data-tex="\(S=F_n\oplus T_n\)">\(S=F_n\oplus T_n\)</span>. The inclusions <span class="math" data-tex="\(T_{n+1}\to T_n\)">\(T_{n+1}\to T_n\)</span> define an inverse system.</p>
+<p><strong>Theorem 2.1.</strong> For every such family, including families containing zero objects,</p>
+<span class="math math-display" data-tex="\[
+\varprojlim_n T_n=0
+\quad\text{in }\operatorname{Ind}(\mathcal C).
+\tag{2.2}
+\]">\[
+\varprojlim_n T_n=0
+\quad\text{in }\operatorname{Ind}(\mathcal C).
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> The limit exists by the formal limit theorem. Test a cone on it from a constant <span class="math" data-tex="\(\iota Y\)">\(\iota Y\)</span>. Its maps <span class="math" data-tex="\(a_n:\iota Y\to T_n\)">\(a_n:\iota Y\to T_n\)</span>, followed by the inclusions into <span class="math" data-tex="\(S\)">\(S\)</span>, are one common map <span class="math" data-tex="\(a:\iota Y\to S\)">\(a:\iota Y\to S\)</span>, by compatibility.</p>
+<p>Compactness of the constant gives a factorization <span class="math" data-tex="\(a:\iota Y\to F_r\to S\)">\(a:\iota Y\to F_r\to S\)</span> for some <span class="math" data-tex="\(r\)">\(r\)</span>. For <span class="math" data-tex="\(n\geq r\)">\(n\geq r\)</span>, the same map also factors through <span class="math" data-tex="\(T_n\)">\(T_n\)</span>. Project <span class="math" data-tex="\(S=F_n\oplus T_n\)">\(S=F_n\oplus T_n\)</span> onto <span class="math" data-tex="\(F_n\)">\(F_n\)</span>. It kills that second factorization, whereas its restriction to <span class="math" data-tex="\(F_r\)">\(F_r\)</span> is the split inclusion <span class="math" data-tex="\(F_r\to F_n\)">\(F_r\to F_n\)</span>. This inclusion is monic, so the map <span class="math" data-tex="\(\iota Y\to F_r\)">\(\iota Y\to F_r\)</span> is zero. Thus <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Every inclusion <span class="math" data-tex="\(T_n\to S\)">\(T_n\to S\)</span> is split monic, so all <span class="math" data-tex="\(a_n=0\)">\(a_n=0\)</span>.</p>
+<p>The limit therefore has zero Hom group from every constant. Constants detect objects: in the presheaf description, <span class="math" data-tex="\(\operatorname{Hom}(\iota Y,L)=L(Y)\)">\(\operatorname{Hom}(\iota Y,L)=L(Y)\)</span>. A presheaf with only its zero element at every <span class="math" data-tex="\(Y\)">\(Y\)</span> is the zero ind-object. This proves (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An infinite intersection of tails has vanished, but the transition maps need not ever become zero. The assertion concerns the actual inverse limit in the ind-category; it does not assert that the diagram is a zero formal pro-object.</p>
+<p><strong>Theorem 2.2.</strong> If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> contains a nonzero object, cofiltered limits in <span class="math" data-tex="\(\operatorname{Ind}(\mathcal C)\)">\(\operatorname{Ind}(\mathcal C)\)</span> are not exact. A countable inverse system of split short exact sequences already demonstrates the failure.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(0\ne X\in\mathcal C\)">\(0\ne X\in\mathcal C\)</span> and set <span class="math" data-tex="\(X_m=X\)">\(X_m=X\)</span> for every <span class="math" data-tex="\(m\)">\(m\)</span>. At each <span class="math" data-tex="\(n\)">\(n\)</span> we have the split short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow T_n\longrightarrow S
+\longrightarrow F_n\longrightarrow0.
+\tag{2.3}
+\]">\[
+0\longrightarrow T_n\longrightarrow S
+\longrightarrow F_n\longrightarrow0.
+\tag{2.3}
+\]</span>
+<p>On the first terms use the tail inclusions, on the middle terms use identities, and on the last terms use the prefix projections. These maps make (2.3) a short exact sequence of inverse systems. Its inverse limit has the form</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\longrightarrow0\longrightarrow S\xrightarrow{\alpha}\iota P,\\
+P=\prod_{m\geq0}X.
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+0\longrightarrow0\longrightarrow S\xrightarrow{\alpha}\iota P,\\
+P=\prod_{m\geq0}X.
+\end{gathered}
+\tag{2.4}
+\]</span>
+<p>The first limit is zero by Theorem 2.1. The middle diagram is constant, so has limit <span class="math" data-tex="\(S\)">\(S\)</span>. The limit of the finite prefixes in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is <span class="math" data-tex="\(P\)">\(P\)</span>: compatible maps into finite prefixes are precisely a map to each coordinate. Preservation of limits by <span class="math" data-tex="\(\iota\)">\(\iota\)</span> identifies the last limit with <span class="math" data-tex="\(\iota P\)">\(\iota P\)</span>. The map <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is induced by embedding every finite prefix in <span class="math" data-tex="\(P\)">\(P\)</span>, with zero in the other coordinates.</p>
+<p>We prove that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is not epic by constructing a nonzero map that kills it. This is necessary: a failure of surjectivity after applying <span class="math" data-tex="\(\operatorname{Hom}(\iota Y,-)\)">\(\operatorname{Hom}(\iota Y,-)\)</span> alone would not establish failure of epimorphy unless <span class="math" data-tex="\(\iota Y\)">\(\iota Y\)</span> were projective.</p>
+<p>Let <span class="math" data-tex="\(D_n\subseteq P\)">\(D_n\subseteq P\)</span> be the first <span class="math" data-tex="\(n\)">\(n\)</span> coordinates, inserted with zero elsewhere; <span class="math" data-tex="\(D_0=0\)">\(D_0=0\)</span>. This is a split monomorphism from the finite biproduct. The inclusions <span class="math" data-tex="\(D_n\subseteq D_{n+1}\)">\(D_n\subseteq D_{n+1}\)</span> give quotient maps, hence an ind-object</p>
+<span class="math math-display" data-tex="\[
+Q=\operatorname{colim}_n\iota(P/D_n).
+\tag{2.5}
+\]">\[
+Q=\operatorname{colim}_n\iota(P/D_n).
+\tag{2.5}
+\]</span>
+<p>The compatible quotient maps define <span class="math" data-tex="\(q:\iota P\to Q\)">\(q:\iota P\to Q\)</span>, represented at stage <span class="math" data-tex="\(n\)">\(n\)</span> by <span class="math" data-tex="\(P\to P/D_n\)">\(P\to P/D_n\)</span>. Compactness of <span class="math" data-tex="\(\iota P\)">\(\iota P\)</span> identifies its Hom group into <span class="math" data-tex="\(Q\)">\(Q\)</span> with the filtered colimit of the corresponding Hom groups. Therefore <span class="math" data-tex="\(q=0\)">\(q=0\)</span> would mean that one of these quotient maps becomes zero at a later stage.</p>
+<p>None is zero. The projection of <span class="math" data-tex="\(P\)">\(P\)</span> to coordinate <span class="math" data-tex="\(n\)">\(n\)</span> kills <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, so factors through <span class="math" data-tex="\(P/D_n\)">\(P/D_n\)</span>. It is nonzero because inserting <span class="math" data-tex="\(X\)">\(X\)</span> in that coordinate is its section and <span class="math" data-tex="\(1_X\ne0\)">\(1_X\ne0\)</span>. Thus <span class="math" data-tex="\(q\ne0\)">\(q\ne0\)</span>.</p>
+<p>On any finite prefix of <span class="math" data-tex="\(S\)">\(S\)</span>, the composite <span class="math" data-tex="\(q\alpha\)">\(q\alpha\)</span> becomes zero after quotienting by a sufficiently long <span class="math" data-tex="\(D_n\)">\(D_n\)</span>. It is consequently zero on every summand, and hence zero on <span class="math" data-tex="\(S\)">\(S\)</span> by the coproduct property. The distinct maps <span class="math" data-tex="\(q,0:\iota P\to Q\)">\(q,0:\iota P\to Q\)</span> agree after precomposition by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. This proves that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is not epic, so the inverse limit of (2.3) is not right exact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The finite-prefix sections <span class="math" data-tex="\(F_n\to S\)">\(F_n\to S\)</span> split each individual row but fail compatibility. For example, inserting the last coordinate of <span class="math" data-tex="\(F_{n+1}\)">\(F_{n+1}\)</span> into <span class="math" data-tex="\(S\)">\(S\)</span> is nonzero, whereas projecting that coordinate to <span class="math" data-tex="\(F_n\)">\(F_n\)</span> and then taking its section gives zero. A compatible section of the inverse systems would give a right inverse to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, contrary to the theorem.</p>
+<p>The quotient construction extends the concrete formal quotient in <a href="finite-rank-tests-and-finite-generation.html">Finite-rank tests and finite generation</a>, Proposition 2.1. The categorical argument here uses coordinate projections and sections in any abelian <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, rather than elements of vector spaces. For comparison, [Stacks, Inverse systems] treats Mittag–Leffler hypotheses for ordinary module systems. No general assertion about arbitrary abelian categories is obtained by replacing formal objects with their ordinary realizations.</p>
+<p><strong>Corollary 2.3.</strong> For nonzero <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, the abelian categories</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(\operatorname{Pro}(\mathcal C))
+\quad\text{and}\quad
+\operatorname{Pro}(\operatorname{Ind}(\mathcal C))
+\tag{2.6}
+\]">\[
+\operatorname{Ind}(\operatorname{Pro}(\mathcal C))
+\quad\text{and}\quad
+\operatorname{Pro}(\operatorname{Ind}(\mathcal C))
+\tag{2.6}
+\]</span>
+<p>are not equivalent.</p>
+<p><strong>Proof.</strong> Apply the dual of the ind-abelian theorem to <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. It makes <span class="math" data-tex="\(\operatorname{Pro}(\mathcal C)\)">\(\operatorname{Pro}(\mathcal C)\)</span> abelian with all small limits and exact small cofiltered limits. Its constant embedding is fully faithful, so the image of a nonzero object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is nonzero. Theorem 2.2, with this pro-category as its base, shows that <span class="math" data-tex="\(\operatorname{Ind}(\operatorname{Pro}(\mathcal C))\)">\(\operatorname{Ind}(\operatorname{Pro}(\mathcal C))\)</span> does not have exact cofiltered limits.</p>
+<p>On the other hand, the same dual theorem applied to the abelian category <span class="math" data-tex="\(\operatorname{Ind}(\mathcal C)\)">\(\operatorname{Ind}(\mathcal C)\)</span> gives exact cofiltered limits in <span class="math" data-tex="\(\operatorname{Pro}(\operatorname{Ind}(\mathcal C))\)">\(\operatorname{Pro}(\operatorname{Ind}(\mathcal C))\)</span>. An equivalence preserves all existing limits and colimits by transporting their universal properties. In particular it preserves zero objects, kernels and cokernels, and therefore short exact sequences. It would transport exactness of the inverse-limit functor from one category to the other, a contradiction. All iterations use the fixed small indexing universe and sufficiently large ambient universes as specified above. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-noetherian-objects-detect-eventual-equality">3. Noetherian objects detect eventual equality</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be an abelian category with all small colimits and exact small filtered colimits. For a small filtered diagram <span class="math" data-tex="\(Y:I\to\mathcal A\)">\(Y:I\to\mathcal A\)</span>, there is a canonical comparison</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_{i\in I}\operatorname{Hom}(X,Y_i)\\
+\longrightarrow
+\operatorname{Hom}\!\left(X,\operatorname{colim}_{i\in I}Y_i\right).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_{i\in I}\operatorname{Hom}(X,Y_i)\\
+\longrightarrow
+\operatorname{Hom}\!\left(X,\operatorname{colim}_{i\in I}Y_i\right).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>Here <em>finite type</em> means that (3.1) is injective for every such diagram. Finite presentation means it is bijective. The arbitrary-ring module criterion, Theorem 3.1 of <a href="finite-rank-tests-and-finite-generation.html">Finite-rank tests and finite generation</a>, is retained: finite type in a module category is exactly finite generation. Its commutative instance is [Stacks, Finite modules]. We now prove the category-level implication using kernels instead of module elements.</p>
+<p><strong>Theorem 3.1.</strong> Every Noetherian object of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is of finite type. Consequently every object of finite length is of finite type.</p>
+<p><strong>Proof.</strong> Suppose two representatives in the left side of (3.1) have the same image. Filteredness moves them to a common stage <span class="math" data-tex="\(j\)">\(j\)</span>. Their difference is a map <span class="math" data-tex="\(g:X\to Y_j\)">\(g:X\to Y_j\)</span> whose composite into <span class="math" data-tex="\(L=\operatorname{colim}_iY_i\)">\(L=\operatorname{colim}_iY_i\)</span> is zero. It is enough to show that <span class="math" data-tex="\(Y(u)g=0\)">\(Y(u)g=0\)</span> for a single arrow <span class="math" data-tex="\(u:j\to i\)">\(u:j\to i\)</span>.</p>
+<p>Use the category <span class="math" data-tex="\(J=j/I\)">\(J=j/I\)</span> whose objects are arrows <span class="math" data-tex="\(u:j\to i\)">\(u:j\to i\)</span>, and whose maps <span class="math" data-tex="\(u\to v\)">\(u\to v\)</span> are arrows <span class="math" data-tex="\(h:i\to i&#x27;\)">\(h:i\to i&#x27;\)</span> with <span class="math" data-tex="\(hu=v\)">\(hu=v\)</span>. It is small, nonempty and filtered. To combine two objects, first choose a common target of their endpoints and then equalize the resulting two arrows from <span class="math" data-tex="\(j\)">\(j\)</span>. To equalize parallel arrows in <span class="math" data-tex="\(J\)">\(J\)</span>, use filteredness of <span class="math" data-tex="\(I\)">\(I\)</span> on their underlying arrows. This treats parallel morphisms as well as objects; the index is not assumed to be a poset.</p>
+<p>The projection <span class="math" data-tex="\(J\to I\)">\(J\to I\)</span> preserves the colimit of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Here is the required cocone check. Given a cocone on the restricted diagram, define its map from <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> by choosing arrows <span class="math" data-tex="\(i\to k\)">\(i\to k\)</span> and <span class="math" data-tex="\(j\to k\)">\(j\to k\)</span> and using the cocone map at the latter object of <span class="math" data-tex="\(J\)">\(J\)</span>. Two choices can be moved to a common endpoint, then the two resulting arrows from <span class="math" data-tex="\(i\)">\(i\)</span>, and separately those from <span class="math" data-tex="\(j\)">\(j\)</span>, can be equalized after a further arrow. The cocone identities therefore make the definition independent of choices. The same operation checks compatibility with every arrow from <span class="math" data-tex="\(i\)">\(i\)</span>, and it recovers the original restricted cocone. Conversely any cocone on <span class="math" data-tex="\(I\)">\(I\)</span> restricts to this one. The two operations are inverse, establishing the colimit claim.</p>
+<p>For <span class="math" data-tex="\(u\in J\)">\(u\in J\)</span>, define the subobject</p>
+<span class="math math-display" data-tex="\[
+K_u=\ker\bigl(Y(u)g:X\to Y_i\bigr)\subseteq X.
+\tag{3.2}
+\]">\[
+K_u=\ker\bigl(Y(u)g:X\to Y_i\bigr)\subseteq X.
+\tag{3.2}
+\]</span>
+<p>A map <span class="math" data-tex="\(u\to v\)">\(u\to v\)</span> gives an inclusion <span class="math" data-tex="\(K_u\subseteq K_v\)">\(K_u\subseteq K_v\)</span>. These form the kernel diagram of the natural transformation from the constant diagram <span class="math" data-tex="\(X\)">\(X\)</span> on <span class="math" data-tex="\(J\)">\(J\)</span> to the restricted <span class="math" data-tex="\(Y\)">\(Y\)</span>. A constant diagram on a nonempty filtered category has colimit its constant value: compatibility forces all cocone maps to agree, since any two indices have a common target. Exactness of filtered colimits preserves kernels, by the exact-functor criterion in the prerequisite. As the induced map <span class="math" data-tex="\(X\to L\)">\(X\to L\)</span> is zero, we obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_{u\in J}K_u\simeq\ker(X\xrightarrow{0}L),\\
+\ker(X\xrightarrow{0}L)=X.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_{u\in J}K_u\simeq\ker(X\xrightarrow{0}L),\\
+\ker(X\xrightarrow{0}L)=X.
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>with its canonical maps into <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>The <span class="math" data-tex="\(K_u\)">\(K_u\)</span> constitute a small nonempty directed family of subobjects. A Noetherian object makes such a family have a greatest member, by the chain criterion in the composition-factors prerequisite. Choose it as <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. Every map <span class="math" data-tex="\(K_u\to X\)">\(K_u\to X\)</span> factors uniquely through <span class="math" data-tex="\(K_v\)">\(K_v\)</span>; these factorizations are compatible because its inclusion is monic. The universal property of (3.3) gives <span class="math" data-tex="\(b:X\to K_v\)">\(b:X\to K_v\)</span> with</p>
+<span class="math math-display" data-tex="\[
+(K_v\hookrightarrow X)b=1_X.
+\tag{3.4}
+\]">\[
+(K_v\hookrightarrow X)b=1_X.
+\tag{3.4}
+\]</span>
+<p>That inclusion is both monic and epic, so is an isomorphism in an abelian category. Hence <span class="math" data-tex="\(K_v=X\)">\(K_v=X\)</span>, which means <span class="math" data-tex="\(Y(v)g=0\)">\(Y(v)g=0\)</span>. The two Hom representatives become equal after one arrow and have the same filtered-colimit class. This proves injectivity of (3.1).</p>
+<p>An object of finite length is Noetherian by the complete chain-bound theorem in the prerequisite. Apply the implication just proved. Artinianity is not needed for the stronger Noetherian statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Nothing in this argument constructs a representative for an arbitrary map <span class="math" data-tex="\(X\to L\)">\(X\to L\)</span>. Exercise 1 shows that surjectivity can fail even for a simple object. Exactness of filtered colimits lets the increasing kernels fill <span class="math" data-tex="\(X\)">\(X\)</span>; Noetherianity makes one kernel already fill it. Those are the two separate steps.</p>
+<h2 id="4-exercises-with-full-solutions">4. Exercises with full solutions</h2>
+<p><strong>Exercise 1 (intermediate: length one with infinitely many relations).</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be an infinite-dimensional vector space over a field <span class="math" data-tex="\(k\)">\(k\)</span>. Give <span class="math" data-tex="\(R=k\oplus V\)">\(R=k\oplus V\)</span> the multiplication</p>
+<span class="math math-display" data-tex="\[
+(a,v)(b,w)=(ab,aw+bv).
+\tag{4.1}
+\]">\[
+(a,v)(b,w)=(ab,aw+bv).
+\tag{4.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(K=R/V\)">\(K=R/V\)</span>. Prove that <span class="math" data-tex="\(K\)">\(K\)</span> has length one and is of finite type, but is not finitely presented. For a concrete failure of surjectivity, use the filtered diagram <span class="math" data-tex="\(R/W\)">\(R/W\)</span> indexed by finite-dimensional subspaces <span class="math" data-tex="\(W\subseteq V\)">\(W\subseteq V\)</span>. Compute both sides of (3.1).</p>
+<p><strong>Solution.</strong> Formula (4.1) makes <span class="math" data-tex="\(R\)">\(R\)</span> a commutative unital ring with unit <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>: multiplying three factors gives scalar part <span class="math" data-tex="\(abc\)">\(abc\)</span> and vector part <span class="math" data-tex="\(abz+acw+bcv\)">\(abz+acw+bcv\)</span>, in either association. The ideal <span class="math" data-tex="\(V\)">\(V\)</span> has square zero. The quotient <span class="math" data-tex="\(K\)">\(K\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>, with <span class="math" data-tex="\(R\)">\(R\)</span> acting through its scalar part. Its submodules are <span class="math" data-tex="\(k\)">\(k\)</span>-subspaces of the one-dimensional space <span class="math" data-tex="\(k\)">\(k\)</span>, so are just <span class="math" data-tex="\(0,K\)">\(0,K\)</span>. Thus it is simple and has length one. It is cyclic, so the retained module criterion gives finite type; Theorem 3.1 gives the same conclusion.</p>
+<p>Every subspace <span class="math" data-tex="\(W\subseteq V\)">\(W\subseteq V\)</span> is an ideal, because multiplication on <span class="math" data-tex="\(V\)">\(V\)</span> uses only the scalar part. The finite-dimensional subspaces form a small filtered poset under inclusion: <span class="math" data-tex="\(W+W&#x27;\)">\(W+W&#x27;\)</span> is a common upper bound. Their union is <span class="math" data-tex="\(V\)">\(V\)</span>, and the quotient maps have colimit <span class="math" data-tex="\(R/V=K\)">\(R/V=K\)</span>. Indeed, compatible maps out of <span class="math" data-tex="\(R/W\)">\(R/W\)</span> correspond to a map out of <span class="math" data-tex="\(R\)">\(R\)</span> killing every <span class="math" data-tex="\(W\)">\(W\)</span>, hence all of <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>A homomorphism <span class="math" data-tex="\(K\to R/W\)">\(K\to R/W\)</span> is determined by the image of <span class="math" data-tex="\(1\)">\(1\)</span>, which must be annihilated by <span class="math" data-tex="\(V\)">\(V\)</span>. For a class represented by <span class="math" data-tex="\((a,v)\)">\((a,v)\)</span>, multiplication by <span class="math" data-tex="\((0,u)\)">\((0,u)\)</span> gives <span class="math" data-tex="\((0,au)\)">\((0,au)\)</span> modulo <span class="math" data-tex="\(W\)">\(W\)</span>. To vanish for every <span class="math" data-tex="\(u\in V\)">\(u\in V\)</span> requires <span class="math" data-tex="\(aV\subseteq W\)">\(aV\subseteq W\)</span>. As <span class="math" data-tex="\(W\)">\(W\)</span> is finite-dimensional and <span class="math" data-tex="\(V\)">\(V\)</span> is not, this forces <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Conversely every class in <span class="math" data-tex="\(V/W\)">\(V/W\)</span> is annihilated by <span class="math" data-tex="\(V\)">\(V\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_R(K,R/W)=V/W,\\
+\operatorname{colim}_{W}(V/W)=0,\\
+\operatorname{Hom}_R(K,K)=k.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_R(K,R/W)=V/W,\\
+\operatorname{colim}_{W}(V/W)=0,\\
+\operatorname{Hom}_R(K,K)=k.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>The middle equality holds because the class of any <span class="math" data-tex="\(v\)">\(v\)</span> is killed after enlarging <span class="math" data-tex="\(W\)">\(W\)</span> to <span class="math" data-tex="\(W+kv\)">\(W+kv\)</span>. The Hom comparison is consequently <span class="math" data-tex="\(0\to k\)">\(0\to k\)</span>. It is injective, but its image misses <span class="math" data-tex="\(1_K\ne0\)">\(1_K\ne0\)</span>. The categorical finite-presentation criterion in <a href="formal-colimits-and-compact-presentations.html">Formal colimits and compact presentations</a>, Theorem 4.1, proves that <span class="math" data-tex="\(K\)">\(K\)</span> is not finitely presented. This conclusion does not depend on a choice of basis of <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p><strong>Exercise 2 (advanced: a power-series endomorphism ring).</strong> For <span class="math" data-tex="\(A=k[t]\)">\(A=k[t]\)</span> and <span class="math" data-tex="\(P=A[t^{-1}]/A\)">\(P=A[t^{-1}]/A\)</span>, compute <span class="math" data-tex="\(\operatorname{End}_A(P)\)">\(\operatorname{End}_A(P)\)</span> as a ring. Classify all submodules of <span class="math" data-tex="\(P\)">\(P\)</span>, decide whether it is Noetherian or Artinian, and determine the kernel and image of every nonzero endomorphism. Finally decide whether <span class="math" data-tex="\(P\)">\(P\)</span> is of finite type in <span class="math" data-tex="\(\mathsf{Mod}(A)\)">\(\mathsf{Mod}(A)\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(e_n\)">\(e_n\)</span> for the class of <span class="math" data-tex="\(t^{-n}\)">\(t^{-n}\)</span>, with <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. The submodule <span class="math" data-tex="\(X_n=Ae_n\)">\(X_n=Ae_n\)</span> is isomorphic to <span class="math" data-tex="\(A/(t^n)\)">\(A/(t^n)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+te_1=0,\qquad te_{n+1}=e_n,\\
+P=\bigcup_{n\geq1}X_n.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+te_1=0,\qquad te_{n+1}=e_n,\\
+P=\bigcup_{n\geq1}X_n.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>Moreover <span class="math" data-tex="\(\ker(t^n:P\to P)=X_n\)">\(\ker(t^n:P\to P)=X_n\)</span>. Indeed, the classes of the negative monomials form a <span class="math" data-tex="\(k\)">\(k\)</span>-basis, and a class killed by <span class="math" data-tex="\(t^n\)">\(t^n\)</span> has no powers below <span class="math" data-tex="\(t^{-n}\)">\(t^{-n}\)</span>.</p>
+<p>An endomorphism <span class="math" data-tex="\(f\)">\(f\)</span> preserves these annihilator submodules. Thus its restriction to <span class="math" data-tex="\(X_n\)">\(X_n\)</span> is multiplication by a unique <span class="math" data-tex="\(a_n\in A/(t^n)\)">\(a_n\in A/(t^n)\)</span>, determined by <span class="math" data-tex="\(f(e_n)=a_ne_n\)">\(f(e_n)=a_ne_n\)</span>. Compatibility with <span class="math" data-tex="\(te_{n+1}=e_n\)">\(te_{n+1}=e_n\)</span> is exactly</p>
+<span class="math math-display" data-tex="\[
+a_{n+1}\bmod t^n=a_n.
+\tag{4.4}
+\]">\[
+a_{n+1}\bmod t^n=a_n.
+\tag{4.4}
+\]</span>
+<p>The compatible coefficients give a unique power series <span class="math" data-tex="\(a\in k[[t]]\)">\(a\in k[[t]]\)</span>. Conversely any such series acts on <span class="math" data-tex="\(P\)">\(P\)</span>: on an element killed by <span class="math" data-tex="\(t^n\)">\(t^n\)</span>, use its polynomial truncation modulo <span class="math" data-tex="\(t^n\)">\(t^n\)</span>. Different sufficiently long truncations agree, and (4.4) proves compatibility on all <span class="math" data-tex="\(X_n\)">\(X_n\)</span>. Addition and composition are addition and multiplication of the truncated coefficients at every <span class="math" data-tex="\(n\)">\(n\)</span>. Hence this correspondence is a ring isomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{End}_A(P)\simeq k[[t]].
+\tag{4.5}
+\]">\[
+\operatorname{End}_A(P)\simeq k[[t]].
+\tag{4.5}
+\]</span>
+<p>To classify submodules, an element of exact annihilator exponent <span class="math" data-tex="\(n\)">\(n\)</span> can be written <span class="math" data-tex="\(b e_n\)">\(b e_n\)</span> with <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span> having nonzero constant coefficient modulo <span class="math" data-tex="\(t^n\)">\(t^n\)</span>. Such a <span class="math" data-tex="\(b\)">\(b\)</span> is a unit in <span class="math" data-tex="\(A/(t^n)\)">\(A/(t^n)\)</span>: after dividing by its constant coefficient, its remaining positive-degree part is nilpotent, and a finite geometric sum gives an inverse. This element therefore generates <span class="math" data-tex="\(X_n\)">\(X_n\)</span>. A submodule with elements of unbounded annihilator exponent contains every <span class="math" data-tex="\(X_n\)">\(X_n\)</span> and equals <span class="math" data-tex="\(P\)">\(P\)</span>. If its nonzero exponents are bounded, their maximum <span class="math" data-tex="\(n\)">\(n\)</span> exists; it contains <span class="math" data-tex="\(X_n\)">\(X_n\)</span>, and all its elements lie in <span class="math" data-tex="\(X_n\)">\(X_n\)</span>, so it equals <span class="math" data-tex="\(X_n\)">\(X_n\)</span>. The complete list is</p>
+<span class="math math-display" data-tex="\[
+0,\quad X_1,\quad X_2,\quad\ldots,\quad P.
+\tag{4.6}
+\]">\[
+0,\quad X_1,\quad X_2,\quad\ldots,\quad P.
+\tag{4.6}
+\]</span>
+<p>The strictly increasing chain of <span class="math" data-tex="\(X_n\)">\(X_n\)</span> shows that <span class="math" data-tex="\(P\)">\(P\)</span> is not Noetherian. Every descending chain stabilizes: either it stays at <span class="math" data-tex="\(P\)">\(P\)</span>, or its first proper term is some <span class="math" data-tex="\(X_n\)">\(X_n\)</span> or <span class="math" data-tex="\(0\)">\(0\)</span>; thereafter only the finite list of submodules below that term is available. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is Artinian.</p>
+<p>Every nonzero series has the form <span class="math" data-tex="\(t^ru\)">\(t^ru\)</span>, with <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> a series with nonzero constant coefficient. The coefficients of an inverse to <span class="math" data-tex="\(u\)">\(u\)</span> are solved recursively, dividing each time by that nonzero constant. Hence <span class="math" data-tex="\(u\)">\(u\)</span> acts invertibly on <span class="math" data-tex="\(P\)">\(P\)</span>. Multiplication by <span class="math" data-tex="\(t^r\)">\(t^r\)</span> is surjective on <span class="math" data-tex="\(P\)">\(P\)</span> and has kernel <span class="math" data-tex="\(X_r\)">\(X_r\)</span>, with <span class="math" data-tex="\(X_0=0\)">\(X_0=0\)</span>. Since an invertible series preserves <span class="math" data-tex="\(X_r\)">\(X_r\)</span> in both directions, the endomorphism <span class="math" data-tex="\(t^ru\)">\(t^ru\)</span> has image <span class="math" data-tex="\(P\)">\(P\)</span> and kernel <span class="math" data-tex="\(X_r\)">\(X_r\)</span>. In particular it is an automorphism exactly when <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Finally, finitely many elements of <span class="math" data-tex="\(P\)">\(P\)</span> all lie in one <span class="math" data-tex="\(X_n\)">\(X_n\)</span> and cannot generate <span class="math" data-tex="\(P\)">\(P\)</span>. The module is not finitely generated, so is not of finite type by the retained arbitrary-ring criterion. Artinianity alone did not suffice in Theorem 3.1.</p>
+<p><strong>Exercise 3 (intermediate: an inverse that requires infinite support).</strong> Let <span class="math" data-tex="\(S=k^{\oplus\mathbb N}\)">\(S=k^{\oplus\mathbb N}\)</span>, <span class="math" data-tex="\(W=k^{\mathbb N}\)">\(W=k^{\mathbb N}\)</span>, and let <span class="math" data-tex="\(R\)">\(R\)</span> be the right shift</p>
+<span class="math math-display" data-tex="\[
+R(a_0,a_1,\ldots)=(0,a_0,a_1,\ldots).
+\tag{4.7}
+\]">\[
+R(a_0,a_1,\ldots)=(0,a_0,a_1,\ldots).
+\tag{4.7}
+\]</span>
+<p>For <span class="math" data-tex="\(d=1-R\)">\(d=1-R\)</span>, determine its kernel and cokernel on both <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span>. Give an explicit inverse when one exists. Identify the obstruction to restricting that inverse to <span class="math" data-tex="\(S\)">\(S\)</span>, and interpret your formulas using polynomials and formal power series.</p>
+<p><strong>Solution.</strong> In both spaces the coordinates of <span class="math" data-tex="\(d(a)\)">\(d(a)\)</span> are <span class="math" data-tex="\(a_0\)">\(a_0\)</span> and <span class="math" data-tex="\(a_n-a_{n-1}\)">\(a_n-a_{n-1}\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. A zero value forces <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>, then recursively every <span class="math" data-tex="\(a_n=0\)">\(a_n=0\)</span>. Thus both kernels are zero.</p>
+<p>Given <span class="math" data-tex="\(b\in W\)">\(b\in W\)</span>, the unique solution is</p>
+<span class="math math-display" data-tex="\[
+a_n=\sum_{j=0}^{n}b_j.
+\tag{4.8}
+\]">\[
+a_n=\sum_{j=0}^{n}b_j.
+\tag{4.8}
+\]</span>
+<p>Every coordinate is a finite sum, so this is well defined over any field and gives a linear map <span class="math" data-tex="\(W\to W\)">\(W\to W\)</span>. The recurrence proves both inverse identities. Consequently <span class="math" data-tex="\(d\)">\(d\)</span> is invertible on <span class="math" data-tex="\(W\)">\(W\)</span> and has zero cokernel there.</p>
+<p>For <span class="math" data-tex="\(b\in S\)">\(b\in S\)</span>, these partial sums eventually equal the finite total <span class="math" data-tex="\(\varepsilon(b)=\sum_jb_j\)">\(\varepsilon(b)=\sum_jb_j\)</span>. The solution has finite support exactly when <span class="math" data-tex="\(\varepsilon(b)=0\)">\(\varepsilon(b)=0\)</span>. This includes <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{im}(d:S\to S)=\ker\varepsilon,\\
+\operatorname{coker}(d:S\to S)\simeq k.
+\end{gathered}
+\tag{4.9}
+\]">\[
+\begin{gathered}
+\operatorname{im}(d:S\to S)=\ker\varepsilon,\\
+\operatorname{coker}(d:S\to S)\simeq k.
+\end{gathered}
+\tag{4.9}
+\]</span>
+<p>The last isomorphism follows because <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is surjective, sending the first basis vector to <span class="math" data-tex="\(1\)">\(1\)</span>. In particular the inverse image in <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\((1,0,0,\ldots)\)">\((1,0,0,\ldots)\)</span> is <span class="math" data-tex="\((1,1,1,\ldots)\)">\((1,1,1,\ldots)\)</span>, which lies outside <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>The identifications <span class="math" data-tex="\((a_n)\mapsto\sum_na_nt^n\)">\((a_n)\mapsto\sum_na_nt^n\)</span> turn <span class="math" data-tex="\(S\)">\(S\)</span> into <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span> into <span class="math" data-tex="\(k[[t]]\)">\(k[[t]]\)</span> as vector spaces, with their ordinary <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span>-actions. The shift becomes multiplication by <span class="math" data-tex="\(t\)">\(t\)</span>, and <span class="math" data-tex="\(d\)">\(d\)</span> becomes multiplication by <span class="math" data-tex="\(1-t\)">\(1-t\)</span>. Its cokernel on polynomials is <span class="math" data-tex="\(k[t]/(1-t)\simeq k\)">\(k[t]/(1-t)\simeq k\)</span>, identified by evaluation at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. On formal series, its inverse is multiplication by <span class="math" data-tex="\(\sum_{n\geq0}t^n\)">\(\sum_{n\geq0}t^n\)</span>, whose coefficient formula is (4.8). No evaluation of arbitrary formal series at <span class="math" data-tex="\(1\)">\(1\)</span> has been used; only finite polynomials admit the total-sum map in this calculation.</p>
+<p><strong>Exercise 4 (advanced: the sharp finite-support boundary).</strong> Return to arbitrary <span class="math" data-tex="\((X_m)\)">\((X_m)\)</span> in the setting of Section 2. Put <span class="math" data-tex="\(P=\prod_mX_m\)">\(P=\prod_mX_m\)</span>, and let <span class="math" data-tex="\(\alpha:S\to\iota P\)">\(\alpha:S\to\iota P\)</span> be induced by the finite-coordinate inclusions. Prove that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is always monic. Prove that it is epic, and equivalently an isomorphism, exactly when only finitely many <span class="math" data-tex="\(X_m\)">\(X_m\)</span> are nonzero. Deduce the exact condition for inverse limit to preserve the short exact sequences <span class="math" data-tex="\(0\to T_n\to S\to F_n\to0\)">\(0\to T_n\to S\to F_n\to0\)</span> for this family.</p>
+<p><strong>Solution.</strong> Every finite-coordinate inclusion <span class="math" data-tex="\(\bigoplus_{m&lt;r}X_m\to P\)">\(\bigoplus_{m&lt;r}X_m\to P\)</span> is split monic: its retraction is the product of the first <span class="math" data-tex="\(r\)">\(r\)</span> projections. Constants preserve these maps and their splitting identities. Suppose <span class="math" data-tex="\(a:\iota Y\to S\)">\(a:\iota Y\to S\)</span> has <span class="math" data-tex="\(\alpha a=0\)">\(\alpha a=0\)</span>. Compactness factors <span class="math" data-tex="\(a\)">\(a\)</span> through some <span class="math" data-tex="\(F_r\)">\(F_r\)</span>. Its map into <span class="math" data-tex="\(F_r\)">\(F_r\)</span>, followed by the split monomorphism <span class="math" data-tex="\(F_r\to\iota P\)">\(F_r\to\iota P\)</span>, is zero, so the map into <span class="math" data-tex="\(F_r\)">\(F_r\)</span> is zero and <span class="math" data-tex="\(a=0\)">\(a=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be the kernel of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. A map from a constant into <span class="math" data-tex="\(L\)">\(L\)</span>, composed with the monomorphism <span class="math" data-tex="\(L\to S\)">\(L\to S\)</span>, is a map of the preceding kind and is zero. Cancelling that monomorphism makes the original map zero. All constant probes of <span class="math" data-tex="\(L\)">\(L\)</span> therefore vanish; the presheaf test in Theorem 2.1 gives <span class="math" data-tex="\(L=0\)">\(L=0\)</span>. In an abelian category a zero kernel means that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is monic.</p>
+<p>If only finitely many <span class="math" data-tex="\(X_m\)">\(X_m\)</span> are nonzero, choose <span class="math" data-tex="\(r\)">\(r\)</span> beyond their indices. Then <span class="math" data-tex="\(S=F_r\)">\(S=F_r\)</span>, and <span class="math" data-tex="\(P\)">\(P\)</span> is the same finite biproduct in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. The map <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is its constant isomorphism.</p>
+<p>If infinitely many <span class="math" data-tex="\(X_m\)">\(X_m\)</span> are nonzero, adapt the full quotient witness of Theorem 2.2. Embed <span class="math" data-tex="\(D_n=\bigoplus_{m&lt;n}X_m\)">\(D_n=\bigoplus_{m&lt;n}X_m\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span> and set <span class="math" data-tex="\(Q=\operatorname{colim}_n\iota(P/D_n)\)">\(Q=\operatorname{colim}_n\iota(P/D_n)\)</span>. The quotient maps define <span class="math" data-tex="\(q:\iota P\to Q\)">\(q:\iota P\to Q\)</span>. For every <span class="math" data-tex="\(n\)">\(n\)</span>, choose an index <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span> with <span class="math" data-tex="\(X_m\ne0\)">\(X_m\ne0\)</span>. The projection <span class="math" data-tex="\(P\to X_m\)">\(P\to X_m\)</span> kills <span class="math" data-tex="\(D_n\)">\(D_n\)</span> and has a section, so is nonzero and factors through <span class="math" data-tex="\(P/D_n\)">\(P/D_n\)</span>. The quotient <span class="math" data-tex="\(P\to P/D_n\)">\(P\to P/D_n\)</span> is consequently nonzero at every stage. Compactness makes <span class="math" data-tex="\(q\ne0\)">\(q\ne0\)</span>, since its class cannot become zero at a later stage. Nevertheless <span class="math" data-tex="\(q\alpha=0\)">\(q\alpha=0\)</span>, as each finite prefix is killed at a later quotient. Thus <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is not epic. This proves both directions of the criterion, and abelian balance identifies the epic and isomorphism cases because monicity always holds.</p>
+<p>The limits of the three systems are still <span class="math" data-tex="\(0,S,\iota P\)">\(0,S,\iota P\)</span>, by Theorem 2.1 and preservation of the finite-prefix limit. Their resulting sequence is already exact on the left and in the middle, since <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is monic. Exactness on the right is precisely its epimorphy, which holds exactly for finite support. This proves the stated sharp condition, rather than merely a sufficient example of failure.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project authors, <em>The Stacks project</em>, Commutative Algebra, <a href="https://stacks.math.columbia.edu/tag/0G8M">Characterizing finite and finitely presented modules</a>, especially <a href="https://stacks.math.columbia.edu/tag/0G8N">Lemma 10.11.1</a>, for the finite-generation criterion retained from the earlier module lesson. Abelian Categories, <a href="https://stacks.math.columbia.edu/tag/02MY">Inverse systems</a>, for ordinary inverse-system conventions and the scope of Mittag–Leffler statements.</li>
+<li>Pierre Schapira, <em>Homological Algebra</em>, open lecture notes, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf">Sections 2.7 and 5.7</a>, for formal ind-objects, their distinction from ordinary realizations, and inverse systems of abelian groups. The full categorical foundations used here are proved in the prerequisite lessons.</li>
+<li><a href="full-subcategories-and-exact-closure.html">Full subcategories and exact closure</a>, Theorem 2.2, for the exact full-subcategory criterion; <a href="composition-factors-and-uniform-chain-bounds.html">Composition factors and uniform chain bounds</a>, Theorem 2.1, for finite-length and Noetherian chain properties.</li>
+<li><a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a>; <a href="limits-and-colimits-of-formal-objects.html">Limits and colimits of formal objects</a>, Corollary 2.3 and Theorem 3.1; <a href="ind-abelian-categories-and-controlled-exact-sequences.html">Ind-abelian categories and controlled exact sequences</a>, Theorems 3.2 and 6.1, for compact constants, formal coproducts, preservation of limits and abelianity, including the large-base case and its dual.</li>
+<li><a href="finite-rank-tests-and-finite-generation.html">Finite-rank tests and finite generation</a>, Propositions 2.1 and Theorem 3.1, for the earlier formal quotient and the arbitrary-ring finite-type criterion; <a href="formal-colimits-and-compact-presentations.html">Formal colimits and compact presentations</a>, Theorem 4.1, for categorical finite presentation of modules.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Sections 2.7 and 5.1, for ind-objects and abelian categories.</li>
+</ul>
+</main></body></html>

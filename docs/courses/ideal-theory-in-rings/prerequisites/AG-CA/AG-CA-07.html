@@ -1,0 +1,1128 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tor and flat modules · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/tor-and-flat-modules.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="COPYING-GFDL-1.2.txt">GFDL-1.2-or-later</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1 id="tor-and-flat-modules">Tor and flat modules</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra
+setting, October 2026. This edition incorporates an AI Integrated Stacks
+Project proof under GNU FDL 1.2; see the attribution and licence notice
+below.</em></p>
+<p>Tensor products preserve quotients, but can turn an injection into a
+map with a kernel. Flatness is the condition that this loss never
+occurs. Tor measures the loss, while the equational criterion describes
+flatness through finite lists of elements and relations. Together these
+viewpoints explain why flatness is local, when it gives a free module,
+and how it constrains prime ideals in a family.</p>
+<p>Rings are commutative with identity. A finite module means finitely
+generated; finite presentation additionally requires finitely many
+relations. Local rings need not be Noetherian. We use localization,
+local detection and Nakayama from <a
+href="AG-CA-02.html"><em>Localization, local properties and
+support</em></a>, especially Theorems 2.1, 3.1, 4.2 and 5.1. The
+preceding required lesson <a href="AG-CA-06S.html"><em>Resolutions, Tor
+and Ext</em></a>, Theorems 1.1 and 3.2, proves resolution comparison,
+balance, symmetry and the homology sequences used below. Section 6
+constructs the filtered free presentations of every flat module.</p>
+<h2 id="what-tor-measures">1. What Tor measures</h2>
+<p>Choose an augmented free resolution of an <span
+class="math inline">\(R\)</span>-module <span
+class="math inline">\(M\)</span>:</p>
+<p><span class="math display">\[
+\cdots\longrightarrow F_2\xrightarrow{d_2}F_1
+\xrightarrow{d_1}F_0\longrightarrow M\longrightarrow0.
+\]</span></p>
+<p>Free ranks can be infinite. Such a resolution is obtained by
+successively taking free modules surjecting onto kernels. Remove the
+augmentation to <span class="math inline">\(M\)</span>, tensor the
+resulting complex with <span class="math inline">\(N\)</span>, and
+define</p>
+<p><span class="math display">\[
+\operatorname{Tor}_i^R(M,N)=H_i(F_\bullet\otimes_R N),
+\qquad i\geq0.
+\]</span></p>
+<p>Here the differential decreases degree. Right exactness of tensor
+gives <span class="math inline">\(\operatorname{Tor}_0^R(M,N)=M\otimes_R
+N\)</span>.</p>
+<p>The comparison and balance proofs in <em>Resolutions, Tor and
+Ext</em> make Tor a bifunctor independent of the chosen resolution, with
+natural symmetry <span
+class="math inline">\(\operatorname{Tor}_i^R(M,N)\simeq\operatorname{Tor}_i^R(N,M)\)</span>;
+it can be computed by a projective resolution of either variable. For
+every short exact sequence <span class="math inline">\(0\to N&#39;\to
+N\to N&#39;&#39;\to0\)</span>, its long exact sequence has segments</p>
+<p><span class="math display">\[
+\cdots\to\operatorname{Tor}_i^R(M,N&#39;)
+\to\operatorname{Tor}_i^R(M,N)
+\to\operatorname{Tor}_i^R(M,N&#39;&#39;)
+\to\operatorname{Tor}_{i-1}^R(M,N&#39;)\to\cdots
+\]</span></p>
+<p>and ends in</p>
+<p><span class="math display">\[
+\operatorname{Tor}_1^R(M,N&#39;&#39;)\longrightarrow M\otimes_R N&#39;
+\longrightarrow M\otimes_R N
+\longrightarrow M\otimes_R N&#39;&#39;\longrightarrow0.
+\tag{1}
+\]</span></p>
+<p>Symmetry gives the corresponding sequence in the first variable. The
+connecting maps are natural in maps of short exact sequences: their
+lift-and-differentiate construction and its exactness are proved in
+Section 2 of that preceding lesson. References are [Stacks, Tags 00LZ,
+00M0, 00M3], with links below.</p>
+<p><strong>A principal equation.</strong> If multiplication by <span
+class="math inline">\(a\)</span> is injective on <span
+class="math inline">\(R\)</span>, then</p>
+<p><span class="math display">\[
+0\longrightarrow R\xrightarrow{a}R\longrightarrow R/(a)\longrightarrow0
+\]</span></p>
+<p>is a free resolution. Consequently</p>
+<p><span class="math display">\[
+\operatorname{Tor}_i^R(R/(a),N)=
+\begin{cases}
+N/aN,&amp;i=0,\\
+\{n\in N:an=0\},&amp;i=1,\\
+0,&amp;i\geq2.
+\end{cases}
+\tag{2}
+\]</span></p>
+<p>For instance, <span
+class="math inline">\(\operatorname{Tor}_1^{\mathbb Z}(\mathbb
+Z/n,\mathbb Z/m)\)</span> is the kernel of multiplication by <span
+class="math inline">\(n\)</span> on <span class="math inline">\(\mathbb
+Z/m\)</span>, for positive <span class="math inline">\(n,m\)</span>. If
+<span class="math inline">\(d=\gcd(n,m)\)</span>, its elements are the
+multiples of <span class="math inline">\(m/d\)</span> modulo <span
+class="math inline">\(m\)</span>; it is cyclic of order <span
+class="math inline">\(d\)</span>. All higher Tor groups vanish.</p>
+<p>The injectivity hypothesis on <span class="math inline">\(a\)</span>
+matters. For <span
+class="math inline">\(R=k[\epsilon]/(\epsilon^2)\)</span> and <span
+class="math inline">\(k=R/(\epsilon)\)</span>, the two-term complex is
+not a resolution. Instead use</p>
+<p><span class="math display">\[
+\cdots\xrightarrow{\epsilon}R\xrightarrow{\epsilon}R
+\xrightarrow{\epsilon}R\longrightarrow k\longrightarrow0.
+\]</span></p>
+<p>Its kernels and images are both <span
+class="math inline">\((\epsilon)\)</span> in positive degrees, so it is
+exact. After tensoring with <span class="math inline">\(k\)</span>,
+every differential is zero. Thus <span
+class="math inline">\(\operatorname{Tor}_i^R(k,k)=k\)</span> in every
+degree, including arbitrarily high ones.</p>
+<h2 id="the-ideal-and-tor-criteria">2. The ideal and Tor criteria</h2>
+<p>An <span class="math inline">\(R\)</span>-module <span
+class="math inline">\(M\)</span> is <strong>flat</strong> if <span
+class="math inline">\(-\otimes_R M\)</span> is exact. Since tensor is
+always right exact, this means that it preserves every injection. A ring
+map <span class="math inline">\(R\to S\)</span> is flat if <span
+class="math inline">\(S\)</span> is flat as an <span
+class="math inline">\(R\)</span>-module.</p>
+<p><strong>Theorem 2.1.</strong> For an arbitrary <span
+class="math inline">\(R\)</span>-module <span
+class="math inline">\(M\)</span>, the following are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(M\)</span> is flat.</li>
+<li><span class="math inline">\(\operatorname{Tor}_i^R(M,N)=0\)</span>
+for all <span class="math inline">\(N\)</span> and all <span
+class="math inline">\(i&gt;0\)</span>.</li>
+<li><span class="math inline">\(\operatorname{Tor}_1^R(M,N)=0\)</span>
+for all <span class="math inline">\(N\)</span>.</li>
+<li><span class="math inline">\(\operatorname{Tor}_1^R(M,R/I)=0\)</span>
+for every finitely generated ideal <span
+class="math inline">\(I\)</span>.</li>
+<li>The multiplication map <span class="math inline">\(I\otimes_R M\to
+M\)</span> is injective for every finitely generated ideal <span
+class="math inline">\(I\)</span>.</li>
+</ol>
+<p>In conditions (4) and (5), one may equally test all ideals.</p>
+<p><strong>Proof.</strong> If <span class="math inline">\(M\)</span> is
+flat, tensoring a free resolution of <span
+class="math inline">\(N\)</span> with <span
+class="math inline">\(M\)</span> leaves it exact in positive degrees.
+Balance of Tor then gives (2). The implications (2) to (3) to (4) are
+immediate. Applying (1) to <span class="math inline">\(0\to I\to R\to
+R/I\to0\)</span>, and using <span
+class="math inline">\(\operatorname{Tor}_1^R(M,R)=0\)</span>, identifies
+<span class="math inline">\(\operatorname{Tor}_1^R(M,R/I)\)</span> with
+the kernel of <span class="math inline">\(I\otimes_R M\to M\)</span>.
+Thus (4) and (5) are equivalent. Flatness directly implies the all-ideal
+versions. It remains to prove (5) implies flatness.</p>
+<p>First the injection test extends to any ideal <span
+class="math inline">\(I\)</span>. A tensor in <span
+class="math inline">\(I\otimes_R M\)</span> is a finite sum <span
+class="math inline">\(\sum_j a_j\otimes m_j\)</span>, and therefore
+comes from <span class="math inline">\(J\otimes_R M\)</span> for the
+finitely generated ideal <span class="math inline">\(J=(a_j)\subset
+I\)</span>. If it maps to zero in <span
+class="math inline">\(M\)</span>, that representing tensor is zero by
+(5), so the original tensor is zero.</p>
+<p>Next prove that <span class="math inline">\(K\otimes_R M\to
+R^n\otimes_R M\)</span> is injective for every submodule <span
+class="math inline">\(K\subset R^n\)</span>, by induction on <span
+class="math inline">\(n\)</span>. For <span
+class="math inline">\(n=1\)</span>, this is the all-ideal test; for
+<span class="math inline">\(n=0\)</span> it is empty. For larger <span
+class="math inline">\(n\)</span>, project <span
+class="math inline">\(K\)</span> onto the last coordinate, obtaining an
+ideal <span class="math inline">\(I\)</span>, with kernel <span
+class="math inline">\(K&#39;\subset R^{n-1}\)</span>. The sequence</p>
+<p><span class="math display">\[
+K&#39;\otimes_R M\longrightarrow K\otimes_R M
+\longrightarrow I\otimes_R M\longrightarrow0
+\]</span></p>
+<p>is right exact. A tensor in <span class="math inline">\(K\otimes_R
+M\)</span> whose image in <span class="math inline">\(M^n\)</span> is
+zero maps to zero in <span class="math inline">\(I\otimes_R M\)</span>,
+since the latter embeds in the last copy of <span
+class="math inline">\(M\)</span>. Lift it to <span
+class="math inline">\(K&#39;\otimes_R M\)</span>. Its image in <span
+class="math inline">\(M^{n-1}\)</span> is zero, so induction makes the
+lift zero, proving the claim.</p>
+<p>For an arbitrary free module <span
+class="math inline">\(F=\bigoplus_{j\in J}R\)</span>, a finite tensor
+from a submodule <span class="math inline">\(K\subset F\)</span> uses
+only finitely many elements of <span class="math inline">\(K\)</span>,
+whose coordinates lie in some finite direct summand <span
+class="math inline">\(F_0\)</span>. It comes from <span
+class="math inline">\((K\cap F_0)\otimes_R M\)</span>. If its image in
+<span class="math inline">\(F\otimes_R M\)</span> is zero, its image in
+<span class="math inline">\(F_0\otimes_R M\)</span> is zero, since <span
+class="math inline">\(F_0\)</span> is a direct summand. The finite-rank
+case makes the tensor zero. Thus all submodules of free modules pass the
+injection test.</p>
+<p>Finally, for any inclusion <span class="math inline">\(A\subset
+B\)</span>, take a free surjection <span class="math inline">\(F\to
+B\)</span>, let <span class="math inline">\(K\)</span> be its kernel and
+<span class="math inline">\(L\)</span> the inverse image of <span
+class="math inline">\(A\)</span>. Then <span
+class="math inline">\(K\subset L\subset F\)</span>, <span
+class="math inline">\(A=L/K\)</span>, and <span
+class="math inline">\(B=F/K\)</span>. We have just proved that <span
+class="math inline">\(K\otimes M\)</span> and <span
+class="math inline">\(L\otimes M\)</span> embed in <span
+class="math inline">\(F\otimes M\)</span>, compatibly with their
+inclusions. Right exactness identifies the induced map <span
+class="math inline">\(A\otimes M\to B\otimes M\)</span> with the
+injection of their respective quotients by the same submodule <span
+class="math inline">\(K\otimes M\)</span>. Every injection is therefore
+preserved, and <span class="math inline">\(M\)</span> is flat. <span
+class="math inline">\(\square\)</span></p>
+<p>No finiteness of <span class="math inline">\(M\)</span>, no finite
+presentation of <span class="math inline">\(I\)</span>, and no
+Noetherian hypothesis on <span class="math inline">\(R\)</span> entered
+this proof.</p>
+<h2 id="stability-and-localization">3. Stability and localization</h2>
+<p><strong>Proposition 3.1.</strong> Free modules, projective modules,
+direct sums of flat modules and direct summands of flat modules are
+flat. Filtered colimits of flat modules are flat.</p>
+<p><strong>Proof.</strong> Tensoring with a free module is taking a
+direct sum of copies of the given module, which preserves injections.
+Tensor commutes with direct sums, proving the sum assertion. If <span
+class="math inline">\(M\oplus P\)</span> is flat, tensoring an injection
+with this sum gives an injective map whose <span
+class="math inline">\(M\)</span>-component is injective; this proves the
+summand assertion. Projective modules are direct summands of free
+modules, so are flat.</p>
+<p>For a filtered diagram <span
+class="math inline">\((M_\lambda)\)</span>, tensor commutes with its
+colimit by the universal property of tensor products. To see
+preservation of an injection <span class="math inline">\(A\to
+B\)</span>, represent any element of <span
+class="math inline">\(\varinjlim(A\otimes M_\lambda)\)</span> at one
+stage. If its image in <span class="math inline">\(\varinjlim(B\otimes
+M_\lambda)\)</span> is zero, that image becomes zero after a transition
+to a later stage. There flatness makes its preimage zero as well, so the
+colimit map is injective. We used the elementary filtered-colimit rule:
+a finite list of representatives and equalities can be brought to a
+common object; an equality in the colimit holds after a further
+transition. This rule follows directly from the finite relations
+defining the colimit, with filteredness also equalizing parallel
+transition maps. Thus the argument applies to filtered diagrams, and in
+particular to directed systems. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Proposition 3.2 (base change and composition).</strong> If
+<span class="math inline">\(M\)</span> is flat over <span
+class="math inline">\(R\)</span> and <span class="math inline">\(R\to
+A\)</span> is any ring map, then <span class="math inline">\(A\otimes_R
+M\)</span> is flat over <span class="math inline">\(A\)</span>. If <span
+class="math inline">\(A\)</span> is flat over <span
+class="math inline">\(R\)</span> and <span
+class="math inline">\(P\)</span> is flat over <span
+class="math inline">\(A\)</span>, then <span
+class="math inline">\(P\)</span> is flat over <span
+class="math inline">\(R\)</span>.</p>
+<p><strong>Proof.</strong> For an <span
+class="math inline">\(A\)</span>-module <span
+class="math inline">\(N\)</span>, the natural identification</p>
+<p><span class="math display">\[
+N\otimes_A(A\otimes_R M)\simeq N\otimes_R M
+\]</span></p>
+<p>transfers exactness from <span
+class="math inline">\(R\)</span>-modules to <span
+class="math inline">\(A\)</span>-modules. For composition, first apply
+<span class="math inline">\(A\otimes_R-\)</span> to an exact sequence,
+then apply <span class="math inline">\(P\otimes_A-\)</span>. The
+identification <span class="math inline">\(P\otimes_A(A\otimes_R
+N)\simeq P\otimes_R N\)</span> proves the result. Taking <span
+class="math inline">\(P\)</span> to be an algebra proves composition of
+flat ring maps. <span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 3.3 (flatness is local).</strong> For a
+multiplicative set <span class="math inline">\(S\subset R\)</span>,
+<span class="math inline">\(S^{-1}R\)</span> is flat over <span
+class="math inline">\(R\)</span>. For any <span
+class="math inline">\(R\)</span>-module <span
+class="math inline">\(M\)</span>,</p>
+<p><span class="math display">\[
+M\text{ is flat over }R
+\quad\Longleftrightarrow\quad
+M_{\mathfrak p}\text{ is flat over }R_{\mathfrak p}
+\text{ for every prime }\mathfrak p.
+\]</span></p>
+<p>It suffices to test maximal ideals.</p>
+<p><strong>Proof.</strong> Localization is exact and equals tensoring
+with <span class="math inline">\(S^{-1}R\)</span>, by Theorem 2.1 and
+Proposition 1.3 of the localization lesson; hence this algebra is flat.
+If <span class="math inline">\(M\)</span> is flat, its localizations are
+flat over their localized rings by base change. Conversely suppose all
+<span class="math inline">\(M_{\mathfrak m}\)</span> are flat over <span
+class="math inline">\(R_{\mathfrak m}\)</span>. For any inclusion <span
+class="math inline">\(A\subset B\)</span>, let <span
+class="math inline">\(K\)</span> be the kernel of <span
+class="math inline">\(A\otimes_R M\to B\otimes_R M\)</span>. Exactness
+and the tensor-localization identity identify <span
+class="math inline">\(K_{\mathfrak m}\)</span> with the kernel of</p>
+<p><span class="math display">\[
+A_{\mathfrak m}\otimes_{R_{\mathfrak m}}M_{\mathfrak m}
+\longrightarrow B_{\mathfrak m}\otimes_{R_{\mathfrak m}}M_{\mathfrak m},
+\]</span></p>
+<p>which is zero by the hypothesis. Local detection makes <span
+class="math inline">\(K=0\)</span>. Thus <span
+class="math inline">\(M\)</span> is flat. Testing all primes includes
+testing maximal ideals, completing both equivalences. <span
+class="math inline">\(\square\)</span></p>
+<p>A useful related fact is that an <span
+class="math inline">\(S^{-1}R\)</span>-module is flat over <span
+class="math inline">\(R\)</span> exactly when it is flat over <span
+class="math inline">\(S^{-1}R\)</span>. One direction is composition
+with the flat localization. For the other, a sequence of localized-ring
+modules is also a sequence of <span
+class="math inline">\(R\)</span>-modules, and tensor over <span
+class="math inline">\(R\)</span> with such a module agrees with tensor
+over <span class="math inline">\(S^{-1}R\)</span>, since every <span
+class="math inline">\(s\in S\)</span> already acts invertibly.</p>
+<p>The local test concerns modules over the local rings. It is not a
+test on residue-field fibres alone: every <span
+class="math inline">\(M\otimes_R\kappa(\mathfrak p)\)</span> is a vector
+space and hence flat over its residue field, whatever <span
+class="math inline">\(M\)</span> is. For example, this observation
+applies to <span class="math inline">\(\mathbb Z/2\)</span>, which is
+not flat over <span class="math inline">\(\mathbb Z\)</span>.</p>
+<h2 id="domains-where-torsion-is-the-whole-obstruction">4. Domains where
+torsion is the whole obstruction</h2>
+<p>For a domain <span class="math inline">\(R\)</span>, an <span
+class="math inline">\(R\)</span>-module is <strong>torsion-free</strong>
+if <span class="math inline">\(am=0\)</span> with <span
+class="math inline">\(a\ne0\)</span> implies <span
+class="math inline">\(m=0\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> Over a principal ideal domain, a module
+is flat if and only if it is torsion-free. The same holds over a
+valuation domain, meaning a domain whose principal ideals are linearly
+ordered by inclusion.</p>
+<p><strong>Proof.</strong> In any domain, <span
+class="math inline">\(0\to R\xrightarrow{a}R\)</span> is injective for
+<span class="math inline">\(a\ne0\)</span>; a flat module preserves this
+injection, so is torsion-free. Conversely, in a principal ideal domain
+every ideal is <span class="math inline">\((a)\)</span>. For <span
+class="math inline">\(a\ne0\)</span>, the isomorphism <span
+class="math inline">\(R\to(a)\)</span>, <span
+class="math inline">\(r\mapsto ar\)</span>, identifies <span
+class="math inline">\((a)\otimes_R M\to M\)</span> with multiplication
+by <span class="math inline">\(a\)</span> on <span
+class="math inline">\(M\)</span>, which is injective for a torsion-free
+module. The zero ideal presents no condition. Theorem 2.1 proves
+flatness.</p>
+<p>In a valuation domain, any finitely generated ideal is principal: of
+the finitely many principal ideals of its generators, choose the
+largest. The same argument therefore verifies the finitely generated
+ideal test, again giving flatness. <span
+class="math inline">\(\square\)</span></p>
+<p>For completeness, a <strong>Dedekind domain</strong> here means a
+Noetherian normal domain of dimension at most one, allowing a field.
+Each localization at a nonzero maximal ideal is a discrete valuation
+ring [Stacks, Tag 034X]. Here is the local argument, needed for the
+flatness conclusion.</p>
+<p>Let <span class="math inline">\((A,\mathfrak m)\)</span> be a
+one-dimensional Noetherian normal local domain. Choose <span
+class="math inline">\(0\ne x\in\mathfrak m\)</span>. The only prime
+containing <span class="math inline">\((x)\)</span> is <span
+class="math inline">\(\mathfrak m\)</span>, so a power of <span
+class="math inline">\(\mathfrak m\)</span> lies in <span
+class="math inline">\((x)\)</span>. Choose the least <span
+class="math inline">\(n\ge1\)</span> with this property and <span
+class="math inline">\(y\in\mathfrak m^{n-1}\setminus(x)\)</span>. Then
+<span class="math inline">\(t=y/x\notin A\)</span>, but <span
+class="math inline">\(t\mathfrak m\subset A\)</span>. If <span
+class="math inline">\(t\mathfrak m\subset\mathfrak m\)</span>, write
+multiplication by <span class="math inline">\(t\)</span> on a finite
+list of generators of the nonzero ideal <span
+class="math inline">\(\mathfrak m\)</span> as a matrix over <span
+class="math inline">\(A\)</span>. The adjugate identity makes its monic
+characteristic polynomial annihilate that ideal, hence vanish at <span
+class="math inline">\(t\)</span> in the fraction field. Normality would
+put <span class="math inline">\(t\)</span> in <span
+class="math inline">\(A\)</span>, a contradiction. Thus <span
+class="math inline">\(t\mathfrak m\)</span> contains a unit, and equals
+<span class="math inline">\(A\)</span>. Consequently <span
+class="math inline">\(\mathfrak m=t^{-1}A=(\pi)\)</span>. Krull
+intersection for the finite module <span
+class="math inline">\(A\)</span>, proved in the Noetherian lesson, gives
+<span class="math inline">\(\bigcap_n\mathfrak m^n=0\)</span>. Each
+nonzero element is therefore <span
+class="math inline">\(u\pi^v\)</span>, with <span
+class="math inline">\(u\)</span> a unit; choosing the least valuation in
+a nonzero ideal shows that every ideal is a power of <span
+class="math inline">\((\pi)\)</span>. This is the DVR characterization
+and also makes <span class="math inline">\(A\)</span> a valuation
+domain. Normality localizes: if a fraction is integral over <span
+class="math inline">\(A_s\)</span>, multiplying it by a sufficiently
+high power of <span class="math inline">\(s\)</span> clears the
+coefficients of its monic equation and makes it integral over <span
+class="math inline">\(A\)</span>. The same finite-denominator argument
+works for an arbitrary localization. A maximal ideal equal to zero
+instead makes the domain a field.</p>
+<p><strong>Corollary 4.2.</strong> A module over a Dedekind domain is
+flat if and only if it is torsion-free.</p>
+<p><strong>Proof.</strong> Flatness implies torsion-freeness as above.
+If <span class="math inline">\(M\)</span> is torsion-free, so is <span
+class="math inline">\(M_{\mathfrak m}\)</span> over <span
+class="math inline">\(R_{\mathfrak m}\)</span>: if <span
+class="math inline">\((a/s)(m/t)=0\)</span> with <span
+class="math inline">\(a/s\ne0\)</span>, the localization equality
+criterion gives <span class="math inline">\(uam=0\)</span> for some
+nonzero <span class="math inline">\(u\notin\mathfrak m\)</span>; the
+domain property and torsion-freeness force <span
+class="math inline">\(m=0\)</span>. Every such localization is therefore
+flat by Theorem 4.1, or by the vector-space case at a field. Theorem 3.3
+gives flatness over <span class="math inline">\(R\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="relations-and-finite-free-bases">5. Relations and finite free
+bases</h2>
+<p>A relation <span class="math inline">\(\sum_{i=1}^n a_i
+x_i=0\)</span>, with <span class="math inline">\(a_i\in R\)</span> and
+<span class="math inline">\(x_i\in M\)</span>, is called
+<strong>trivial</strong> in the equational criterion if there are
+finitely many <span class="math inline">\(y_j\in M\)</span> and
+coefficients <span class="math inline">\(b_{ij}\in R\)</span> such
+that</p>
+<p><span class="math display">\[
+x_i=\sum_j b_{ij}y_j\quad\text{for every }i,
+\qquad
+\sum_i a_i b_{ij}=0\quad\text{for every }j.
+\tag{3}
+\]</span></p>
+<p>The word describes the origin of the relation, not whether its
+coefficients vanish: the columns of <span
+class="math inline">\(B=(b_{ij})\)</span> are relations among the
+coefficients in the ring itself.</p>
+<p><strong>Theorem 5.1 (equational criterion).</strong> An <span
+class="math inline">\(R\)</span>-module is flat if and only if every
+finite relation has a factorization (3).</p>
+<p><strong>Proof.</strong> For a relation, let <span
+class="math inline">\(I=(a_1,\ldots,a_n)\)</span> and <span
+class="math inline">\(K=\ker(R^n\to I)\)</span>, where the map sends
+<span class="math inline">\(e_i\)</span> to <span
+class="math inline">\(a_i\)</span>. If <span
+class="math inline">\(M\)</span> is flat, <span
+class="math inline">\(I\otimes M\to M\)</span> is injective, so <span
+class="math inline">\(\sum_i a_i\otimes x_i=0\)</span>. Right exactness
+applied to <span class="math inline">\(K\to R^n\to I\to0\)</span> says
+that <span class="math inline">\(\sum_i e_i\otimes x_i\)</span> comes
+from <span class="math inline">\(K\otimes M\)</span>. Write a preimage
+as <span class="math inline">\(\sum_j v_j\otimes y_j\)</span>, and write
+<span class="math inline">\(v_j=\sum_i b_{ij}e_i\)</span>. Membership of
+<span class="math inline">\(v_j\)</span> in <span
+class="math inline">\(K\)</span> gives the second equality in (3);
+comparison of coordinates gives the first.</p>
+<p>Conversely, a kernel tensor in <span class="math inline">\(I\otimes
+M\to M\)</span> is a finite sum <span class="math inline">\(z=\sum_i
+a_i\otimes x_i\)</span> with <span class="math inline">\(\sum_i
+a_ix_i=0\)</span>. Applying (3) yields</p>
+<p><span class="math display">\[
+z=\sum_{i,j}a_i\otimes b_{ij}y_j
+=\sum_j\left(\sum_i a_i b_{ij}\right)\otimes y_j=0.
+\]</span></p>
+<p>Thus the ideal injection test holds, and Theorem 2.1 proves flatness.
+<span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (finite flat over a local ring).</strong> If
+<span class="math inline">\((R,\mathfrak m,\kappa)\)</span> is local and
+<span class="math inline">\(M\)</span> is finite and flat, then <span
+class="math inline">\(M\)</span> is finite free. Finite presentation is
+not assumed.</p>
+<p><strong>Proof.</strong> Lift a basis <span class="math inline">\(\bar
+x_1,\ldots,\bar x_r\)</span> of <span class="math inline">\(M/\mathfrak
+mM\)</span> to <span class="math inline">\(M\)</span>. Nakayama makes
+<span class="math inline">\(x_1,\ldots,x_r\)</span> generators. If <span
+class="math inline">\(r=0\)</span>, it gives <span
+class="math inline">\(M=0\)</span>, which is free of rank zero.
+Otherwise take any relation <span class="math inline">\(\sum_i
+a_ix_i=0\)</span>. The equational criterion provides <span
+class="math inline">\(x=By\)</span>, where <span
+class="math inline">\(x,y\)</span> are columns, <span
+class="math inline">\(B\)</span> is an <span
+class="math inline">\(r\)</span>-by-<span
+class="math inline">\(s\)</span> matrix and the coefficient row <span
+class="math inline">\(a\)</span> satisfies <span
+class="math inline">\(aB=0\)</span>. Since the <span
+class="math inline">\(x_i\)</span> generate, write <span
+class="math inline">\(y=Cx\)</span>, with <span
+class="math inline">\(C\)</span> an <span
+class="math inline">\(s\)</span>-by-<span
+class="math inline">\(r\)</span> matrix. Hence <span
+class="math inline">\(x=BCx\)</span>.</p>
+<p>The residue classes <span class="math inline">\(\bar x_i\)</span> are
+a basis, so this last equality implies</p>
+<p><span class="math display">\[
+BC\equiv I_r\pmod{\mathfrak m}.
+\]</span></p>
+<p>The determinant of <span class="math inline">\(BC\)</span> is
+therefore a unit of the local ring, and the adjugate formula makes <span
+class="math inline">\(BC\)</span> invertible. But <span
+class="math inline">\(aBC=0\)</span>, so <span
+class="math inline">\(a=0\)</span>. Every relation is zero, and the
+generators form a free basis. The relation module never needed finitely
+many generators. <span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 5.3 (finite presentation gives
+projectivity).</strong> A finitely presented flat <span
+class="math inline">\(R\)</span>-module is finite projective and is free
+of finite rank on an open neighborhood of each prime of <span
+class="math inline">\(R\)</span>.</p>
+<p><strong>Proof.</strong> Choose a finite presentation <span
+class="math inline">\(R^t\to F=R^n\xrightarrow{\pi}M\to0\)</span>. Let
+<span class="math inline">\(x_i=\pi(e_i)\)</span>, and write the chosen
+generators of <span class="math inline">\(\ker\pi\)</span> as <span
+class="math inline">\(k_\ell=\sum_i a_{\ell i}e_i\)</span>, for <span
+class="math inline">\(1\leq\ell\leq t\)</span>. Thus each row of <span
+class="math inline">\(A=(a_{\ell i})\)</span> is a relation on the
+column <span class="math inline">\(x\)</span>.</p>
+<p>We can trivialize all these finitely many relations
+simultaneously:</p>
+<p><span class="math display">\[
+x=By,
+\qquad AB=0.
+\tag{4}
+\]</span></p>
+<p>To see this, apply Theorem 5.1 to the first row, giving <span
+class="math inline">\(x=B_1y^{(1)}\)</span> with that row times <span
+class="math inline">\(B_1\)</span> zero. The second row now gives a
+relation on <span class="math inline">\(y^{(1)}\)</span>; factor that
+relation through <span class="math inline">\(B_2\)</span>, and replace
+<span class="math inline">\(B_1\)</span> by <span
+class="math inline">\(B_1B_2\)</span>. The first row remains zero, and
+the second becomes zero. Repeating for the finite list gives (4). If
+there are no rows, use <span class="math inline">\(B=I_n\)</span> and
+<span class="math inline">\(y=x\)</span>.</p>
+<p>Lift each <span class="math inline">\(y_j\)</span> to <span
+class="math inline">\(z_j\in F\)</span>. Define <span
+class="math inline">\(h:F\to F\)</span> by <span
+class="math inline">\(h(e_i)=\sum_j b_{ij}z_j\)</span>. Then <span
+class="math inline">\(\pi h(e_i)=x_i\)</span>, so <span
+class="math inline">\(\pi h=\pi\)</span>; and</p>
+<p><span class="math display">\[
+h(k_\ell)=\sum_j\left(\sum_i a_{\ell i}b_{ij}\right)z_j=0.
+\]</span></p>
+<p>Since the <span class="math inline">\(k_\ell\)</span> generate the
+kernel, <span class="math inline">\(h\)</span> induces <span
+class="math inline">\(\sigma:M\to F\)</span> with <span
+class="math inline">\(\pi\sigma=\mathrm{id}_M\)</span>. Thus <span
+class="math inline">\(M\)</span> is a direct summand of the finite free
+module <span class="math inline">\(F\)</span>, proving finite
+projectivity.</p>
+<p>Now fix <span class="math inline">\(\mathfrak p\)</span>. By
+localization and Theorem 5.2, <span class="math inline">\(M_{\mathfrak
+p}\)</span> is free of some finite rank <span
+class="math inline">\(r\)</span>. Choose <span
+class="math inline">\(m_1,\ldots,m_r\in M\)</span> whose localized
+images are a basis: clear the denominators of a basis and multiply its
+members by the resulting units. The cokernel of <span
+class="math inline">\(R^r\to M\)</span>, <span
+class="math inline">\(e_i\mapsto m_i\)</span>, is finite and vanishes at
+<span class="math inline">\(\mathfrak p\)</span>. The localization
+equality criterion, applied to finitely many generators, gives <span
+class="math inline">\(f\notin\mathfrak p\)</span> for which this map is
+surjective over <span class="math inline">\(R_f\)</span>. Since <span
+class="math inline">\(M_f\)</span> is projective, the surjection splits.
+Its kernel is a direct summand of <span
+class="math inline">\(R_f^r\)</span>, so is finite. That kernel also
+vanishes at <span class="math inline">\(\mathfrak p\)</span>; kill its
+finite list of generators by another element <span
+class="math inline">\(g\notin\mathfrak p\)</span>. Over <span
+class="math inline">\(R_{fg}\)</span> the map is an isomorphism.
+Therefore <span class="math inline">\(M\)</span> has a free basis
+throughout <span class="math inline">\(D(fg)\)</span>, an actual open
+neighborhood. <span class="math inline">\(\square\)</span></p>
+<p>Conversely, a finite projective module is flat by Proposition 3.1 and
+finitely presented: in a splitting <span
+class="math inline">\(R^n=M\oplus K\)</span>, the complementary summand
+<span class="math inline">\(K\)</span> is finite. The finite
+presentation hypothesis in Theorem 5.3 is essential; Section 7 gives a
+finite flat counterexample. Free stalks alone also need not supply open
+free neighborhoods without appropriate finiteness, as the localization
+lesson’s examples show.</p>
+<h2 id="exact-sequences-and-prime-lifting">6. Exact sequences and prime
+lifting</h2>
+<p><strong>Theorem 6.1.</strong> In a short exact sequence <span
+class="math inline">\(0\to M&#39;\to M\to M&#39;&#39;\to0\)</span> with
+<span class="math inline">\(M&#39;&#39;\)</span> flat, tensoring with
+any module <span class="math inline">\(N\)</span> gives a short exact
+sequence. Moreover <span class="math inline">\(M&#39;\)</span> is flat
+if and only if <span class="math inline">\(M\)</span> is flat.</p>
+<p><strong>Proof.</strong> The Tor long exact sequence in the first
+variable ends in</p>
+<p><span class="math display">\[
+\operatorname{Tor}_1^R(M&#39;&#39;,N)\longrightarrow M&#39;\otimes_R N
+\longrightarrow M\otimes_R N\longrightarrow M&#39;&#39;\otimes_R
+N\longrightarrow0.
+\]</span></p>
+<p>Its first term is zero, giving exactness also at the left. If <span
+class="math inline">\(M&#39;\)</span> is flat, the segment <span
+class="math inline">\(\operatorname{Tor}_1(M&#39;,N)\to\operatorname{Tor}_1(M,N)\to\operatorname{Tor}_1(M&#39;&#39;,N)\)</span>
+makes the middle term zero for every <span
+class="math inline">\(N\)</span>, so <span
+class="math inline">\(M\)</span> is flat. Conversely, if <span
+class="math inline">\(M\)</span> is flat, use <span
+class="math inline">\(\operatorname{Tor}_2(M&#39;&#39;,N)\to\operatorname{Tor}_1(M&#39;,N)\to\operatorname{Tor}_1(M,N)\)</span>.
+Both outer terms vanish, so <span class="math inline">\(M&#39;\)</span>
+is flat. <span class="math inline">\(\square\)</span></p>
+<p>A flat module or algebra is <strong>faithfully flat</strong> if
+tensoring with it sends a nonzero module to a nonzero module. For flat
+modules this is equivalent to reflecting exactness: flat tensoring
+preserves kernels, images and their quotients, hence the homology of a
+complex, and the stated detection property makes vanishing of that
+homology equivalent before and after tensoring. The next lesson develops
+faithful flatness systematically. We need one local case now.</p>
+<p><strong>Lemma 6.2.</strong> A flat local homomorphism <span
+class="math inline">\((A,\mathfrak m)\to(B,\mathfrak n)\)</span> is
+faithfully flat.</p>
+<p><strong>Proof.</strong> For a nonzero <span
+class="math inline">\(A\)</span>-module <span
+class="math inline">\(N\)</span>, choose <span
+class="math inline">\(u\ne0\)</span>. Its cyclic submodule is <span
+class="math inline">\(Au\simeq A/I\)</span> for a proper ideal <span
+class="math inline">\(I\subset\mathfrak m\)</span>. Flatness embeds
+<span class="math inline">\((A/I)\otimes_A B=B/IB\)</span> in <span
+class="math inline">\(N\otimes_A B\)</span>. Locality gives <span
+class="math inline">\(IB\subset\mathfrak mB\subset\mathfrak n\)</span>,
+so <span class="math inline">\(B/IB\ne0\)</span>. Thus the latter tensor
+module is nonzero. <span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 6.3 (flat maps satisfy going down).</strong> Let
+<span class="math inline">\(R\to S\)</span> be flat, let <span
+class="math inline">\(\mathfrak p\subset\mathfrak p&#39;\)</span> be
+primes of <span class="math inline">\(R\)</span>, and let <span
+class="math inline">\(\mathfrak q&#39;\subset S\)</span> contract to
+<span class="math inline">\(\mathfrak p&#39;\)</span>. There is a prime
+<span class="math inline">\(\mathfrak q\subset\mathfrak q&#39;\)</span>
+contracting to <span class="math inline">\(\mathfrak p\)</span>.</p>
+<p><strong>Proof.</strong> Put <span
+class="math inline">\(A=R_{\mathfrak p&#39;}\)</span>, <span
+class="math inline">\(B=S_{\mathfrak q&#39;}\)</span>. The map <span
+class="math inline">\(A\to B\)</span> is local. It is flat: <span
+class="math inline">\(S_{\mathfrak q&#39;}\)</span> is flat over <span
+class="math inline">\(S\)</span> and hence over <span
+class="math inline">\(R\)</span> by composition, and as an <span
+class="math inline">\(A\)</span>-module it is flat by the localized-ring
+observation after Theorem 3.3. Lemma 6.2 makes it faithfully flat.</p>
+<p>The ideal <span class="math inline">\(\mathfrak r=\mathfrak
+pA\)</span> is prime by localization correspondence. Its residue field
+<span class="math inline">\(\kappa_A(\mathfrak r)\)</span> is a nonzero
+<span class="math inline">\(A\)</span>-module, so</p>
+<p><span class="math display">\[
+B\otimes_A\kappa_A(\mathfrak r)\ne0.
+\]</span></p>
+<p>This nonzero ring has a maximal ideal, hence a prime. The fibre
+correspondence, Theorem 3.2 of the localization lesson, gives a prime of
+<span class="math inline">\(B\)</span> over <span
+class="math inline">\(\mathfrak r\)</span>. Contract it to <span
+class="math inline">\(S\)</span>; the result is contained in <span
+class="math inline">\(\mathfrak q&#39;\)</span>, and its contraction to
+<span class="math inline">\(R\)</span> is <span
+class="math inline">\(\mathfrak p\)</span>, by prime correspondence for
+<span class="math inline">\(R_{\mathfrak p&#39;}\)</span>. This proves
+going down. No integrality or Noetherianity was assumed. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 6.4 (Lazard).</strong> An <span
+class="math inline">\(R\)</span>-module is flat if and only if it is a
+filtered colimit of finite free <span
+class="math inline">\(R\)</span>-modules [Stacks, Tag 058G]. The
+transition maps need not be inclusions.</p>
+<p><strong>Proof.</strong> Proposition 3.1 proves one direction. Suppose
+<span class="math inline">\(M\)</span> is flat. The equational criterion
+proved in Theorem 5.1 implies the following factorization property: if
+<span class="math inline">\(f:R^n\to M\)</span> and <span
+class="math inline">\(x\in\ker f\)</span>, there are maps <span
+class="math inline">\(h:R^n\to R^r\)</span>, <span
+class="math inline">\(g:R^r\to M\)</span> with <span
+class="math inline">\(f=gh\)</span> and <span
+class="math inline">\(h(x)=0\)</span>. Indeed the coefficients of <span
+class="math inline">\(x\)</span> give one relation on the images of the
+basis; the matrix and elements supplied by the criterion are exactly
+<span class="math inline">\(h,g\)</span>. Given finitely many kernel
+elements, kill them successively. At the next step apply the property to
+<span class="math inline">\(g\)</span> and the image of the next
+element; composition still kills all earlier ones. Thus every map from a
+finitely presented module to <span class="math inline">\(M\)</span>
+factors through a finite free module: apply this procedure to a finite
+list of relations in its presentation.</p>
+<p>Take the free module <span class="math inline">\(R^{(I)}\)</span> on
+<span class="math inline">\(I=M\times\mathbb Z\)</span>, mapping <span
+class="math inline">\((m,j)\)</span> to <span
+class="math inline">\(m\)</span>, and write its kernel as <span
+class="math inline">\(K\)</span>. Consider pairs <span
+class="math inline">\((J,N)\)</span>, where <span
+class="math inline">\(J\subset I\)</span> is finite and <span
+class="math inline">\(N\subset K\cap R^J\)</span> is finitely generated.
+Order them by inclusion in both entries. This is a directed set: take
+the union of two finite sets and the sum of the two relation modules.
+Put <span class="math inline">\(M_{J,N}=R^J/N\)</span>. Their colimit is
+<span class="math inline">\(M\)</span>: every element is represented by
+a basis vector; every finite relation becomes zero at the pair
+containing its coordinates and the submodule it generates.</p>
+<p>For each pair, factor <span class="math inline">\(M_{J,N}\to
+M\)</span> through a finite free <span class="math inline">\(F\)</span>,
+say <span
+class="math inline">\(M_{J,N}\xrightarrow{h}F\xrightarrow{g}M\)</span>.
+If <span class="math inline">\(b_1,\ldots,b_r\)</span> is a basis of
+<span class="math inline">\(F\)</span>, choose distinct indices outside
+<span class="math inline">\(J\)</span> mapping to <span
+class="math inline">\(g(b_1),\ldots,g(b_r)\)</span>. Infinitely many
+copies of each element in <span class="math inline">\(I\)</span> make
+this possible even when some images coincide. Enlarge <span
+class="math inline">\(J\)</span> by these indices to <span
+class="math inline">\(J&#39;\)</span>, and map <span
+class="math inline">\(R^{J&#39;}\to F\)</span> by <span
+class="math inline">\(h\)</span> on the old coordinates and by the
+selected basis on the new ones. Its kernel <span
+class="math inline">\(N&#39;\)</span> lies in <span
+class="math inline">\(K\)</span>, contains <span
+class="math inline">\(N\)</span>, and is finitely generated: the
+surjection splits, so its kernel is the image of the finite free module
+under the complementary projection. Hence <span
+class="math inline">\((J&#39;,N&#39;)\)</span> is a larger pair with
+<span class="math inline">\(M_{J&#39;,N&#39;}\cong F\)</span>.</p>
+<p>The pairs whose quotients are finite free are therefore cofinal. They
+form a directed subset, since a common upper bound in the whole directed
+set can be enlarged to another free pair. Restricting to a cofinal
+subset does not change the colimit: any finite set of representatives
+and relations reaches such an upper pair. This proves the theorem for
+arbitrary rings and modules. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="four-worked-tests">7. Four worked tests</h2>
+<p><strong>Flat need not be projective.</strong> The localization <span
+class="math inline">\(\mathbb Q\)</span> is flat over <span
+class="math inline">\(\mathbb Z\)</span>. Every homomorphism <span
+class="math inline">\(\mathbb Q\to\mathbb Z\)</span> is zero: the image
+of <span class="math inline">\(1\)</span> is divisible by every positive
+integer, so is zero, and then <span
+class="math inline">\(b\varphi(a/b)=a\varphi(1)=0\)</span> forces the
+remaining images to vanish. Thus every map from <span
+class="math inline">\(\mathbb Q\)</span> to any free abelian group is
+zero, since all coordinate maps are zero. If <span
+class="math inline">\(\mathbb Q\)</span> were projective, a free
+surjection onto it would split, giving a nonzero map into a free group,
+a contradiction. By contrast <span class="math inline">\(\mathbb
+Z/n\)</span>, for <span class="math inline">\(n\geq2\)</span>, is not
+flat: multiplication by the nonzero integer <span
+class="math inline">\(n\)</span> kills its nonzero class of <span
+class="math inline">\(1\)</span>.</p>
+<p><strong>A component trapped over a point.</strong> In <span
+class="math inline">\(B=k[X,Y]/(XY)\)</span>, the class of <span
+class="math inline">\(Y\)</span> is nonzero, as reduction modulo <span
+class="math inline">\(X\)</span> shows, and is killed by <span
+class="math inline">\(X\)</span>. Therefore <span
+class="math inline">\(k[X]\to B\)</span> is not flat. In <span
+class="math inline">\(C=k[T,X,Y]/(XY-T)\)</span>, substitution <span
+class="math inline">\(T=XY\)</span> identifies <span
+class="math inline">\(C\)</span> with the domain <span
+class="math inline">\(k[X,Y]\)</span>. The map <span
+class="math inline">\(k[T]\to C\)</span> is injective, since the
+monomials <span class="math inline">\((XY)^i\)</span> are linearly
+independent. Hence <span class="math inline">\(C\)</span> is
+torsion-free, and flat over the principal ideal domain <span
+class="math inline">\(k[T]\)</span>. Its fibre at <span
+class="math inline">\(T=0\)</span> has two axes, while its generic fibre
+is <span class="math inline">\(k(T)[X,X^{-1}]\)</span>, obtained by
+<span class="math inline">\(Y=T/X\)</span>. Reducibility of a special
+fibre is therefore compatible with flatness; the first example fails
+through torsion.</p>
+<p><strong>The Koszul calculation at the origin.</strong> Let <span
+class="math inline">\(R=k[X,Y]\)</span> and <span
+class="math inline">\(k=R/(X,Y)\)</span>. The complex</p>
+<p><span class="math display">\[
+0\longrightarrow R\xrightarrow{\binom{-Y}{X}}R^2
+\xrightarrow{(X\ \ Y)}R\longrightarrow k\longrightarrow0
+\tag{5}
+\]</span></p>
+<p>is exact. The left map is injective because <span
+class="math inline">\(R\)</span> is a domain. For <span
+class="math inline">\(Xu+Yv=0\)</span>, reduce modulo <span
+class="math inline">\(X\)</span>: multiplication by <span
+class="math inline">\(Y\)</span> is injective in <span
+class="math inline">\(k[Y]\)</span>, so <span
+class="math inline">\(v=Xw\)</span>. Then <span
+class="math inline">\(u=-Yw\)</span>, giving exactly the image of the
+left map. The right cokernel is <span class="math inline">\(k\)</span>.
+Thus (5), the two-variable Koszul resolution, computes Tor. Tensor with
+<span class="math inline">\(k\)</span>; both differentials become zero,
+giving</p>
+<p><span class="math display">\[
+\operatorname{Tor}_i^{k[X,Y]}(k,k)=
+\begin{cases}k,&amp;i=0,2,\\k^2,&amp;i=1,\\0,&amp;i&gt;2.\end{cases}
+\]</span></p>
+<p><strong>Finite flat can still fail projectivity.</strong> Put <span
+class="math inline">\(R=C^\infty(\mathbb R)\)</span>, and let <span
+class="math inline">\(I\)</span> consist of functions vanishing on some
+neighborhood of zero. This is a proper nonzero ideal. We claim the
+cyclic module <span class="math inline">\(M=R/I\)</span> is flat.</p>
+<p>For every <span class="math inline">\(a\in I\)</span>, choose <span
+class="math inline">\(\epsilon&gt;0\)</span> for which <span
+class="math inline">\(a=0\)</span> on <span
+class="math inline">\(|x|&lt;\epsilon\)</span>. There is a smooth
+function <span class="math inline">\(h\)</span> equal to zero on <span
+class="math inline">\(|x|\leq\epsilon/2\)</span> and to one on <span
+class="math inline">\(|x|\geq\epsilon\)</span>. Then <span
+class="math inline">\(h\in I\)</span> and <span
+class="math inline">\(ha=a\)</span>. One explicit construction is</p>
+<p><span class="math display">\[
+\eta(u)=\begin{cases}e^{-1/u},&amp;u&gt;0,\\0,&amp;u\leq0,\end{cases}
+\qquad \theta(u)=\frac{\eta(u)}{\eta(u)+\eta(1-u)},
+\qquad h(x)=\theta\left(\frac{x^2-\epsilon^2/4}{3\epsilon^2/4}\right).
+\]</span></p>
+<p>The denominator defining <span class="math inline">\(\theta\)</span>
+is everywhere positive. Smoothness of <span
+class="math inline">\(\eta\)</span> at zero follows because each
+one-sided derivative is an exponential times a polynomial in <span
+class="math inline">\(1/u\)</span>, tending to zero; it and all
+derivatives match the zero function on the other side. This verifies the
+cutoff properties.</p>
+<p>For every ideal <span class="math inline">\(J\subset R\)</span>, an
+element <span class="math inline">\(a\in J\cap I\)</span> satisfies
+<span class="math inline">\(a=ha\in IJ\)</span> by this construction.
+The reverse inclusion is automatic, so <span class="math inline">\(J\cap
+I=IJ\)</span>. Since <span
+class="math inline">\(J\otimes_R(R/I)=J/IJ\)</span>, the kernel of its
+map to <span class="math inline">\(R/I\)</span> is <span
+class="math inline">\((J\cap I)/IJ=0\)</span>. Theorem 2.1 proves
+flatness.</p>
+<p>If the cyclic quotient <span class="math inline">\(R/I\)</span> were
+projective, the surjection <span class="math inline">\(R\to R/I\)</span>
+would split. Its kernel would be the image of an idempotent endomorphism
+of the rank-one free module <span class="math inline">\(R\)</span>,
+hence <span class="math inline">\(I=eR\)</span> for an idempotent
+function <span class="math inline">\(e\)</span>. A continuous idempotent
+on the connected real line has values in <span
+class="math inline">\(\{0,1\}\)</span> and is constant. This would give
+<span class="math inline">\(I=0\)</span> or <span
+class="math inline">\(I=R\)</span>, both impossible. Thus <span
+class="math inline">\(M\)</span> is finite and flat but not projective,
+and Theorem 5.3 shows it is not finitely presented. The quotient retains
+only the germ of a smooth function at zero, but this global module need
+not have a global splitting.</p>
+<h2 id="exercises">8. Exercises</h2>
+<p><strong>Exercise 8.1 (easy: a principal ideal test).</strong> Over a
+principal ideal domain, prove that flatness is equivalent to
+torsion-freeness for arbitrary modules. Explain why the conclusion need
+not mean freeness when the module is not finite.</p>
+<p><strong>Exercise 8.2 (easy: two localization charts).</strong> For
+<span class="math inline">\(f,g\in R\)</span>, prove that <span
+class="math inline">\(R\to R_f\times R_g\)</span> is flat, and is
+faithfully flat exactly when <span class="math inline">\(D(f)\cup
+D(g)=\operatorname{Spec}R\)</span>. Include the empty-spectrum case.</p>
+<p><strong>Exercise 8.3 (medium: the two axes).</strong> Let <span
+class="math inline">\(R=k[X,Y]\)</span>. Compute every <span
+class="math inline">\(\operatorname{Tor}_i^R(R/(X),R/(Y))\)</span> and
+interpret the answer as an intersection of the two coordinate axes. Also
+derive <span
+class="math inline">\(\operatorname{Tor}_1^R(R/I,R/J)\simeq(I\cap
+J)/IJ\)</span> for arbitrary ideals <span
+class="math inline">\(I,J\subset R\)</span>.</p>
+<p><strong>Exercise 8.4 (medium: constructing a splitting).</strong> Use
+the equational criterion to prove that a finitely presented flat module
+is projective. Starting with a finite presentation, specify a splitting
+map and show that it respects every relation, rather than only one
+chosen relation.</p>
+<p><strong>Exercise 8.5 (medium: a monic equation and a torsion
+equation).</strong> Show that <span class="math inline">\(k[X]\to
+k[X,Y]/(Y^2-X)\)</span> is flat. Give an explicit module basis. Show
+that <span class="math inline">\(k[X]\to k[X,Y]/(XY)\)</span> is not
+flat by locating a nonzero tensor obstruction.</p>
+<p><strong>Exercise 8.6 (hard: no finite-presentation
+assumption).</strong> Prove that a finite flat module over a local ring
+is free. Your proof must apply even when the kernel of an initial finite
+free surjection has not been shown finitely generated.</p>
+<h2 id="solutions">9. Solutions</h2>
+<p><strong>Solution 8.1.</strong> For <span
+class="math inline">\(a\ne0\)</span>, a flat module preserves the
+injection <span class="math inline">\(R\xrightarrow{a}R\)</span>, so has
+no <span class="math inline">\(a\)</span>-torsion. Conversely every
+nonzero ideal is <span class="math inline">\((a)\simeq R\)</span>. Under
+that isomorphism the map <span class="math inline">\((a)\otimes_R M\to
+M\)</span> is multiplication by <span class="math inline">\(a\)</span>,
+hence injective for a torsion-free module. The zero ideal also passes
+the test, so Theorem 2.1 gives flatness. The module <span
+class="math inline">\(\mathbb Q\)</span> over the principal ideal domain
+<span class="math inline">\(\mathbb Z\)</span> is torsion-free and flat
+but is not even projective, as Section 7 proves, so is not free. Finite
+generation is not needed for the equivalence with torsion-freeness.</p>
+<p><strong>Solution 8.2.</strong> As an <span
+class="math inline">\(R\)</span>-module the finite product is <span
+class="math inline">\(R_f\oplus R_g\)</span>. Each summand is flat, so
+the product is flat. For any <span class="math inline">\(N\)</span>,
+tensoring gives <span class="math inline">\(N_f\oplus N_g\)</span>.
+Suppose the two opens cover the spectrum and this tensor is zero. At
+every maximal ideal <span class="math inline">\(\mathfrak m\)</span>,
+either <span class="math inline">\(f\)</span> or <span
+class="math inline">\(g\)</span> is a unit in <span
+class="math inline">\(R_{\mathfrak m}\)</span>. Localizing the
+corresponding zero module <span class="math inline">\(N_f\)</span> or
+<span class="math inline">\(N_g\)</span> at <span
+class="math inline">\(\mathfrak m\)</span> gives <span
+class="math inline">\(N_{\mathfrak m}=0\)</span>. Local detection gives
+<span class="math inline">\(N=0\)</span>, so the map is faithfully
+flat.</p>
+<p>Conversely, if <span class="math inline">\(\mathfrak p\)</span> lies
+outside both opens, then <span class="math inline">\(f,g\in\mathfrak
+p\)</span>. The nonzero module <span
+class="math inline">\(\kappa(\mathfrak p)\)</span> has both
+localizations zero, since both elements act as zero and are made
+invertible. Its tensor with the product is zero, so faithful flatness
+fails. If <span class="math inline">\(R=0\)</span>, its spectrum is
+empty, the cover condition holds, and its only module is zero; the
+detection condition is vacuous, giving the same equivalence.
+Equivalently, the cover condition is <span
+class="math inline">\((f,g)=R\)</span>: a proper ideal would lie in a
+maximal ideal outside both opens.</p>
+<p><strong>Solution 8.3.</strong> Resolve <span
+class="math inline">\(R/(X)\)</span> by <span class="math inline">\(0\to
+R\xrightarrow{X}R\to R/(X)\to0\)</span>. After tensoring with <span
+class="math inline">\(R/(Y)=k[X]\)</span>, multiplication by <span
+class="math inline">\(X\)</span> is injective. Thus</p>
+<p><span class="math display">\[
+\operatorname{Tor}_0^R(R/(X),R/(Y))=k,
+\qquad \operatorname{Tor}_i^R(R/(X),R/(Y))=0\quad(i&gt;0).
+\]</span></p>
+<p>The ordinary tensor product is the coordinate ring of their
+intersection, the reduced origin. There is no higher Tor obstruction for
+these two independent equations.</p>
+<p>For general ideals use <span class="math inline">\(0\to I\to R\to
+R/I\to0\)</span>. The long exact sequence, together with <span
+class="math inline">\(\operatorname{Tor}_1^R(R,R/J)=0\)</span>,
+identifies <span
+class="math inline">\(\operatorname{Tor}_1^R(R/I,R/J)\)</span> with the
+kernel of <span class="math inline">\(I\otimes_R(R/J)\to R/J\)</span>.
+The source is <span class="math inline">\(I/JI\)</span>, and the kernel
+is <span class="math inline">\((I\cap J)/JI\)</span>, proving the
+formula. For the axes, <span
+class="math inline">\((X)\cap(Y)=(XY)\)</span>: if <span
+class="math inline">\(Xu\in(Y)\)</span>, reduction modulo <span
+class="math inline">\(Y\)</span> makes <span class="math inline">\(X\bar
+u=0\)</span> in the domain <span class="math inline">\(k[X]\)</span>,
+hence <span class="math inline">\(u\in(Y)\)</span>. Thus the
+intersection of their ideals equals their product, explaining the
+vanishing. In comparison, intersecting <span
+class="math inline">\((X)\)</span> with itself gives <span
+class="math inline">\((X)/(X^2)\)</span>, a nonzero first Tor group.</p>
+<p><strong>Solution 8.4.</strong> Let <span
+class="math inline">\(F=R^n\to M\)</span> have a kernel generated by the
+finite rows <span class="math inline">\(k_\ell=\sum_i a_{\ell
+i}e_i\)</span>, and set <span class="math inline">\(x_i\)</span> equal
+to the image of <span class="math inline">\(e_i\)</span>. Successive
+applications of the equational criterion give a factorization <span
+class="math inline">\(x=By\)</span> with every row of <span
+class="math inline">\(AB\)</span> zero. At each application, replace the
+current column of module elements by its factorization; multiplying its
+coefficient matrix on the right preserves all previously zero rows.
+There are finitely many rows, so this process terminates. Lift the final
+<span class="math inline">\(y_j\)</span> to elements <span
+class="math inline">\(z_j\in F\)</span>. Define <span
+class="math inline">\(h(e_i)=\sum_j b_{ij}z_j\)</span>. Its image in
+<span class="math inline">\(M\)</span> is <span
+class="math inline">\(x_i\)</span>, and <span
+class="math inline">\(h(k_\ell)=\sum_j(\sum_i a_{\ell
+i}b_{ij})z_j=0\)</span> for every kernel generator. It therefore
+annihilates the whole kernel and induces <span
+class="math inline">\(\sigma:M\to F\)</span>. The equality of images
+says that the composite <span
+class="math inline">\(M\xrightarrow{\sigma}F\to M\)</span> is the
+identity. Thus <span class="math inline">\(M\)</span> is a direct
+summand of a free module and is projective. Finite presentation supplies
+the finite list of rows; trivializing a single relation would not
+suffice.</p>
+<p><strong>Solution 8.5.</strong> Monic division by <span
+class="math inline">\(Y^2-X\)</span> in <span
+class="math inline">\(k[X][Y]\)</span> gives a representative <span
+class="math inline">\(a(X)+b(X)Y\)</span> for every class. It is unique:
+a nonzero multiple of the monic polynomial has <span
+class="math inline">\(Y\)</span>-degree at least two, so cannot equal a
+nonzero polynomial of <span class="math inline">\(Y\)</span>-degree at
+most one. Thus <span class="math inline">\(1,Y\)</span> are a free <span
+class="math inline">\(k[X]\)</span>-module basis, proving flatness.</p>
+<p>For <span class="math inline">\(B=k[X,Y]/(XY)\)</span>, reduce modulo
+<span class="math inline">\(X\)</span> to see that the class <span
+class="math inline">\(\bar Y\)</span> is nonzero. Tensor the injective
+map <span class="math inline">\(k[X]\xrightarrow{X}k[X]\)</span> with
+<span class="math inline">\(B\)</span>. The resulting multiplication map
+<span class="math inline">\(B\xrightarrow{X}B\)</span> kills <span
+class="math inline">\(\bar Y\)</span>, so is not injective.
+Equivalently, identify <span
+class="math inline">\((X)\otimes_{k[X]}B\)</span> with <span
+class="math inline">\(B\)</span> using <span
+class="math inline">\(k[X]\simeq(X)\)</span>; the nonzero tensor <span
+class="math inline">\(X\otimes\bar Y\)</span> maps to <span
+class="math inline">\(X\bar Y=0\)</span>. This is precisely a failure of
+the ideal criterion.</p>
+<p><strong>Solution 8.6.</strong> Let <span
+class="math inline">\((R,\mathfrak m)\)</span> be local, and lift a
+residue-field basis of <span class="math inline">\(M/\mathfrak
+mM\)</span> to <span class="math inline">\(x_1,\ldots,x_r\)</span>.
+These generate by Nakayama; if <span class="math inline">\(r=0\)</span>,
+then <span class="math inline">\(M=0\)</span>. For any relation with
+coefficient row <span class="math inline">\(a\)</span>, flatness gives
+<span class="math inline">\(x=By\)</span> and <span
+class="math inline">\(aB=0\)</span>. Express the finite list <span
+class="math inline">\(y\)</span> in the generating list <span
+class="math inline">\(x\)</span>, giving <span
+class="math inline">\(y=Cx\)</span>. Then <span
+class="math inline">\(x=BCx\)</span>, and independence modulo <span
+class="math inline">\(\mathfrak m\)</span> forces <span
+class="math inline">\(BC\equiv I_r\pmod{\mathfrak m}\)</span>. Its
+determinant is a unit, so <span class="math inline">\(BC\)</span> is
+invertible. The equality <span class="math inline">\(aBC=0\)</span> now
+gives <span class="math inline">\(a=0\)</span>. Every relation vanishes,
+so the surjection <span class="math inline">\(R^r\to M\)</span> is an
+isomorphism. The proof treats each relation individually and never
+applies Nakayama to an unproved finite relation module.</p>
+<h2 id="proof-dependencies-and-licence">Proof dependencies and
+licence</h2>
+<p>The independence, balance and symmetry of Tor and its natural long
+exact sequences are proved in <em>Resolutions, Tor and Ext</em>,
+Sections 1–3. Section 4 here proves the local DVR fact used for Dedekind
+flatness, and Theorem 6.4 gives both directions of Lazard’s theorem. The
+earlier localization and Noetherian results are used at the locators in
+the text.</p>
+<p>The Lazard proof incorporates the Stacks Project Authors’
+finite-relation and cofinal-free-presentation argument from <a
+href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex#L20525">AI
+Integrated Stacks Project, pinned algebra source</a>,
+<code>lemma-flat-factors-free</code>, <code>lemma-flat-factors-fp</code>
+and <code>theorem-lazard</code>. GPT-6.1 Sol checked the factorization,
+finite generation and cofinality steps and integrated them with this
+lesson’s equational criterion. This modified lesson is distributed under
+GNU Free Documentation License 1.2, with no Invariant Sections, no
+Front-Cover Texts and no Back-Cover Texts. The <a
+href="COPYING-GFDL-1.2.txt">licence text</a> accompanies its transparent
+Markdown source. History: Stacks Project Authors, <em>Commutative
+Algebra</em>, as incorporated at the pinned AI Integrated Stacks Project
+revision; GPT-6.1 Sol, original CC0 course lesson and this adaptation,
+October 2026. The previously released original material remains
+available under CC0; the combined adapted edition retains GNU FDL
+terms.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project authors, <em>The Stacks project</em>, Commutative
+Algebra. Definition and criteria: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-flat">Tag
+00HB</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-flat">Tag
+00HD</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-flat-eq">Tag
+00HK</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-characterize-flat">Tag
+00M5</a>. Stability: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-composition-flat">Tag
+00HC</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-flat-base-change">Tag
+00HI</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-colimit-flat">Tag
+05UT</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-flat-localization">Tag
+00HT</a>.</li>
+<li>The same work, Tor and tensor exactness: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-tor-welldefined">Tag
+00LZ</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-long-exact-sequence-tor">Tag
+00M0</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-tor-left-right">Tag
+00M3</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-flat-tor-zero">Tag
+00HL</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-flat-ses">Tag
+00HM</a>. Finiteness and prime lifting: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-finite-projective">Tag
+00NX</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-finite-flat-local">Tag
+00NZ</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-remark-warning">Tag
+00NY</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-local-flat-ff">Tag
+00HR</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-flat-going-down">Tag
+00HS</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-theorem-lazard">Tag
+058G</a>.</li>
+<li>The same work, special domains: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-characterize-Dedekind">Tag
+034X</a>, and More on Algebra, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-valuation-ring-torsion-free-flat">Tag
+0539</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-dedekind-torsion-free-flat">Tag
+0AUW</a>. These links use the AI Integrated Stacks Project English
+reader described in the course introduction.</li>
+<li>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic
+Geometry</em>, public draft of 27 July 2024, Section 23.1 on Tor,
+Sections 24.1–24.3 on flatness and its criteria, and Section 24.4 on the
+Koszul complex. <a
+href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">Author’s
+public draft</a>.</li>
+<li>Timothy J. Ford, <em>Commutative Algebra</em>, version of 23 September 2026, Chapter 3, Section 7 on flat modules, including the ideal and equational criteria and finitely presented flat modules, and Chapter 9, Section 3 on Tor groups and on Tor and torsion over an integral domain. <a href="https://tim4datfau.github.io/Timothy-Ford-at-FAU/preprints/CA.pdf">Author’s version</a>.</li>
+</ul>
+<h2 id="copyright-and-licence">Copyright and licence</h2>
+<p>Copyright (C) 2005–2025 Johan de Jong. The incorporated source is
+<em>The Stacks Project</em>, as distributed in AI Integrated Stacks
+Project at revision
+<code>565b10e987aba5969b21145a0833f42d69f96790</code>.</p>
+<p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. A copy
+is supplied as <a href="COPYING-GFDL-1.2.txt">GNU Free Documentation
+License 1.2</a>.</p>
+<p>The original course material remains available under its CC0
+dedication. This combined edition, including the incorporated and
+adapted proof, is distributed under GNU FDL 1.2 or later. The source
+authors, incorporated source titles and mathematical adaptations are
+identified above. History: Stacks Project Authors, original source; the
+credited AI Integrated Stacks Project editorial contributors, where
+used; OpenAI GPT-6.1 Sol, course adaptation, October 2026.</p>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

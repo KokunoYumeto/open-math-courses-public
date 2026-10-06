@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Support cones force reciprocal bounds</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}</style></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="support-cones-force-reciprocal-bounds">Support cones force reciprocal bounds</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>An inverse for a convolution equation may grow too quickly to have a Fourier transform. Its support can still determine where the compact kernel's entire transform is nonzero. We prove this by keeping a bounded part of the inverse. One truncation determines the vertex of its support cone. Another produces a compact error whose transform decays exponentially inside that cone's dual directions.</p>
+<p>Assume the definitions of distributions, their support, multiplication by a smooth function, and their finite order on each fixed compact set. Theorem 1.1 of <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a> supplies convolution when one factor is compact, its support inclusion, and its tensor formula. Theorem 3.1 of <a href="prerequisites/convex-supports-and-convolution-cancellation.html">Convex supports and convolution cancellation</a> supplies the complete compact convolution support theorem. Both proofs are used with their stated compactness hypotheses. Basic human references are [Dyatlov 2026] for distributions and compact convolution, and [Grubb] for transform conventions. The sharp estimate needed here is proved below; the full Paley–Wiener converse is unnecessary.</p>
+<p>All pairings are complex-linear. For <span class="math" data-tex="\(T\in\mathcal E&#x27;(\mathbb R^n)\)">\(T\in\mathcal E&#x27;(\mathbb R^n)\)</span>, where <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\widehat T(\zeta)=\langle T(X),e^{-iX\cdot\zeta}\rangle,
+\qquad \zeta\in\mathbb C^n.
+\tag{1.1}
+\]">\[
+\widehat T(\zeta)=\langle T(X),e^{-iX\cdot\zeta}\rangle,
+\qquad \zeta\in\mathbb C^n.
+\tag{1.1}
+\]</span>
+<p>A compact smooth cutoff equal to one near the support defines this pairing. Different such cutoffs give the same value. Notice the sign:</p>
+<span class="math math-display" data-tex="\[
+|e^{-iX\cdot(\xi+i\eta)}|=e^{X\cdot\eta}.
+\tag{1.2}
+\]">\[
+|e^{-iX\cdot(\xi+i\eta)}|=e^{X\cdot\eta}.
+\tag{1.2}
+\]</span>
+<p>For a nonempty set <span class="math" data-tex="\(A\subset\mathbb R^n\)">\(A\subset\mathbb R^n\)</span>, put <span class="math" data-tex="\(H_A(\eta)=\sup_{X\in A}X\cdot\eta\)">\(H_A(\eta)=\sup_{X\in A}X\cdot\eta\)</span>, allowing <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. Passing to its closed convex hull does not change <span class="math" data-tex="\(H_A\)">\(H_A\)</span>: linearity handles convex combinations, and continuity handles their limits. Write <span class="math" data-tex="\(H_T=H_{\operatorname{supp}T}\)">\(H_T=H_{\operatorname{supp}T}\)</span> for a nonzero distribution. A cone is invariant under multiplication by positive real numbers; a nonempty closed cone contains zero. An open cone may be all of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>.</p>
+<h2 id="the-theorem-and-its-geometric-content">The theorem and its geometric content</h2>
+<p><strong>Theorem 1.1 (a support cone fixes the exponential factor).</strong> Suppose</p>
+<span class="math math-display" data-tex="\[
+\mu\in\mathcal E&#x27;(\mathbb R^n),\quad
+E\in\mathcal D&#x27;(\mathbb R^n),\quad
+\mu*E=\delta_0.
+\tag{1.3}
+\]">\[
+\mu\in\mathcal E&#x27;(\mathbb R^n),\quad
+E\in\mathcal D&#x27;(\mathbb R^n),\quad
+\mu*E=\delta_0.
+\tag{1.3}
+\]</span>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be the closed convex hull of <span class="math" data-tex="\(\operatorname{supp}E\)">\(\operatorname{supp}E\)</span>, and suppose that</p>
+<span class="math math-display" data-tex="\[
+\Gamma=\operatorname{int}\{\eta:H_K(\eta)&lt;\infty\}
+\tag{1.4}
+\]">\[
+\Gamma=\operatorname{int}\{\eta:H_K(\eta)&lt;\infty\}
+\tag{1.4}
+\]</span>
+<p>is nonempty. Then <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is an open convex cone. There is a unique real vector <span class="math" data-tex="\(a\in\mathbb R^n\)">\(a\in\mathbb R^n\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+H_\mu(\eta)=-H_K(\eta)=a\cdot\eta
+\quad(\eta\in\Gamma).
+\tag{1.5}
+\]">\[
+H_\mu(\eta)=-H_K(\eta)=a\cdot\eta
+\quad(\eta\in\Gamma).
+\tag{1.5}
+\]</span>
+<p>With the negative polar cone</p>
+<span class="math math-display" data-tex="\[
+C=\Gamma^\circ
+=\{X:X\cdot\eta\le0\ \text{for every }\eta\in\Gamma\},
+\tag{1.6}
+\]">\[
+C=\Gamma^\circ
+=\{X:X\cdot\eta\le0\ \text{for every }\eta\in\Gamma\},
+\tag{1.6}
+\]</span>
+<p>one has the exact identity and the inclusion</p>
+<span class="math math-display" data-tex="\[
+K=C-a,\qquad \operatorname{supp}\mu\subset C+a.
+\tag{1.7}
+\]">\[
+K=C-a,\qquad \operatorname{supp}\mu\subset C+a.
+\tag{1.7}
+\]</span>
+<p>For every <strong>closed cone</strong> <span class="math" data-tex="\(\Gamma_1\subset\Gamma\cup\{0\}\)">\(\Gamma_1\subset\Gamma\cup\{0\}\)</span>, there are <span class="math" data-tex="\(C_1&gt;0\)">\(C_1&gt;0\)</span> and an integer <span class="math" data-tex="\(M\ge0\)">\(M\ge0\)</span> such that, whenever</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Im}\zeta\in\Gamma_1,
+\qquad |\operatorname{Im}\zeta|
+&gt;C_1\log(|\zeta|+2),
+\tag{1.8}
+\]">\[
+\operatorname{Im}\zeta\in\Gamma_1,
+\qquad |\operatorname{Im}\zeta|
+&gt;C_1\log(|\zeta|+2),
+\tag{1.8}
+\]</span>
+<p>the transform <span class="math" data-tex="\(\widehat\mu(\zeta)\)">\(\widehat\mu(\zeta)\)</span> is nonzero and</p>
+<span class="math math-display" data-tex="\[
+\left|\frac1{\widehat\mu(\zeta)}\right|
+\le C_1(1+|\zeta|)^M
+e^{-a\cdot\operatorname{Im}\zeta}.
+\tag{1.9}
+\]">\[
+\left|\frac1{\widehat\mu(\zeta)}\right|
+\le C_1(1+|\zeta|)^M
+e^{-a\cdot\operatorname{Im}\zeta}.
+\tag{1.9}
+\]</span>
+<p>The constants may depend on <span class="math" data-tex="\(\mu,E,\Gamma_1\)">\(\mu,E,\Gamma_1\)</span>. The norm is the Euclidean norm on <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, and the logarithm is natural. No growth or transformability assumption on <span class="math" data-tex="\(E\)">\(E\)</span> is present.</p>
+<p>The geometry is rigid. The support hull of the inverse is a whole translated cone, rather than an arbitrary convex set that happens to fit inside one. The compact kernel lies in the opposite translate of the same cone. Equation (1.9) records that translation exactly. An open set in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> spans all real directions, so (1.5) determines <span class="math" data-tex="\(a\)">\(a\)</span> uniquely.</p>
+<p><a href="reproduce/L115/figures/translated-cone-and-kernel.png" title="Open full-size figure"><img src="reproduce/L115/figures/translated-cone-and-kernel.png" alt="The support hull of a two-direction inverse and the translated compact kernel" class="course-figure" width="1216" height="1216" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="translated-cone-and-kernel" data-asset-sha256="364EC3F86F117521CC5943BABBE4001972B8FBD485A07A9B64862C0F092CF5E9"></a><br><a href="reproduce/L115/figures/translated-cone-and-kernel.png">Open full-size figure</a></p>
+<p><em>Figure 1. The worked two-direction example in Section 6 has <span class="math" data-tex="\(a=(1,-1)\)">\(a=(1,-1)\)</span>, <span class="math" data-tex="\(v_1=(1,1)\)">\(v_1=(1,1)\)</span>, <span class="math" data-tex="\(v_2=(1,-1)\)">\(v_2=(1,-1)\)</span>. Its inverse has support at <span class="math" data-tex="\(-a+jv_1+kv_2\)">\(-a+jv_1+kv_2\)</span>, <span class="math" data-tex="\(j,k\ge0\)">\(j,k\ge0\)</span>, and its closed convex hull is the entire wedge <span class="math" data-tex="\(K=\{(x,y):x+1\ge|y-1|\}\)">\(K=\{(x,y):x+1\ge|y-1|\}\)</span>. Only a finite portion is displayed; the arrows mark the unbounded rays. The compact kernel has four support points <span class="math" data-tex="\(a,a+v_1,a+v_2,a+v_1+v_2\)">\(a,a+v_1,a+v_2,a+v_1+v_2\)</span>. Their coefficients are <span class="math" data-tex="\(1,-2,-3,6\)">\(1,-2,-3,6\)</span>. The interior negative-polar directions are precisely <span class="math" data-tex="\(\eta_x&lt;-|\eta_y|\)">\(\eta_x&lt;-|\eta_y|\)</span>. Theorem 1.1 and Example 6.1 supply the proof; no numerical support test is being substituted for it.</em></p>
+<h2 id="nearby-directions-make-a-high-slice-compact">Nearby directions make a high slice compact</h2>
+<p>Every support function is positively homogeneous and convex. It is also lower semicontinuous, since it is a supremum of continuous linear functions. Its effective domain</p>
+<span class="math math-display" data-tex="\[
+D=\{\eta:H_K(\eta)&lt;\infty\}
+\tag{2.1}
+\]">\[
+D=\{\eta:H_K(\eta)&lt;\infty\}
+\tag{2.1}
+\]</span>
+<p>contains zero and is a convex cone: <span class="math" data-tex="\(H_K(t\eta)=tH_K(\eta)\)">\(H_K(t\eta)=tH_K(\eta)\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, and <span class="math" data-tex="\(H_K(\eta+\theta)\le H_K(\eta)+H_K(\theta)\)">\(H_K(\eta+\theta)\le H_K(\eta)+H_K(\theta)\)</span>. Its nonempty interior <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is therefore open and convex, and positive dilations preserve it. If <span class="math" data-tex="\(0\in\Gamma\)">\(0\in\Gamma\)</span>, a ball around zero lies in <span class="math" data-tex="\(D\)">\(D\)</span>; dilation gives <span class="math" data-tex="\(D=\Gamma=\mathbb R^n\)">\(D=\Gamma=\mathbb R^n\)</span>.</p>
+<p><strong>Lemma 2.1 (bounded high slices).</strong> For <span class="math" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span> and <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, the set</p>
+<span class="math math-display" data-tex="\[
+K\cap\{X:X\cdot\eta\ge t\}
+\tag{2.2}
+\]">\[
+K\cap\{X:X\cdot\eta\ge t\}
+\tag{2.2}
+\]</span>
+<p>is compact, possibly empty.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> so that <span class="math" data-tex="\(\eta\pm r e_j\in D\)">\(\eta\pm r e_j\in D\)</span> for every coordinate vector <span class="math" data-tex="\(e_j\)">\(e_j\)</span>. For a point in (2.2),</p>
+<span class="math math-display" data-tex="\[
+\pm rX_j
+\le H_K(\eta\pm re_j)-t.
+\tag{2.3}
+\]">\[
+\pm rX_j
+\le H_K(\eta\pm re_j)-t.
+\tag{2.3}
+\]</span>
+<p>These finitely many finite bounds make the set bounded. It is closed because <span class="math" data-tex="\(K\)">\(K\)</span> and the half-space are closed, and is compact by finite-dimensional compactness. This argument handles all transverse coordinates; a bound only on <span class="math" data-tex="\(X\cdot\eta\)">\(X\cdot\eta\)</span> would not suffice. □</p>
+<p><strong>Lemma 2.2 (recovering a closed convex set).</strong> A nonempty closed convex set <span class="math" data-tex="\(L\subset\mathbb R^n\)">\(L\subset\mathbb R^n\)</span> is the intersection of its supporting half-spaces with finite support value:</p>
+<span class="math math-display" data-tex="\[
+L=\{X:X\cdot\eta\le H_L(\eta)
+\ \text{whenever }H_L(\eta)&lt;\infty\}.
+\tag{2.4}
+\]">\[
+L=\{X:X\cdot\eta\le H_L(\eta)
+\ \text{whenever }H_L(\eta)&lt;\infty\}.
+\tag{2.4}
+\]</span>
+<p><strong>Proof.</strong> The inclusion from left to right follows from the definition. For <span class="math" data-tex="\(X\notin L\)">\(X\notin L\)</span>, choose a point <span class="math" data-tex="\(p\in L\)">\(p\in L\)</span> minimizing the distance to <span class="math" data-tex="\(X\)">\(X\)</span>. It exists: a minimizing sequence is bounded, since its distances to <span class="math" data-tex="\(X\)">\(X\)</span> are bounded, and a convergent subsequence has its limit in <span class="math" data-tex="\(L\)">\(L\)</span>. The distance is positive because <span class="math" data-tex="\(L\)">\(L\)</span> is closed. Put <span class="math" data-tex="\(\eta=X-p\ne0\)">\(\eta=X-p\ne0\)</span>. For every <span class="math" data-tex="\(y\in L\)">\(y\in L\)</span>, the segment <span class="math" data-tex="\(p+s(y-p)\)">\(p+s(y-p)\)</span>, <span class="math" data-tex="\(0\le s\le1\)">\(0\le s\le1\)</span>, lies in <span class="math" data-tex="\(L\)">\(L\)</span>. The minimum of its squared distance to <span class="math" data-tex="\(X\)">\(X\)</span> at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> gives <span class="math" data-tex="\((X-p)\cdot(y-p)\le0\)">\((X-p)\cdot(y-p)\le0\)</span>, by expanding the square and letting <span class="math" data-tex="\(s\downarrow0\)">\(s\downarrow0\)</span>. Consequently <span class="math" data-tex="\(H_L(\eta)=p\cdot\eta&lt; X\cdot\eta\)">\(H_L(\eta)=p\cdot\eta&lt; X\cdot\eta\)</span>. This is a finite supporting half-space that excludes <span class="math" data-tex="\(X\)">\(X\)</span>. □</p>
+<h2 id="the-first-truncation-determines-the-vertex">The first truncation determines the vertex</h2>
+<p>Both factors in (1.3) are nonzero, hence have nonempty support. Fix <span class="math" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span> and set</p>
+<span class="math math-display" data-tex="\[
+h=H_\mu(\eta),\qquad t=-h-1.
+\tag{3.1}
+\]">\[
+h=H_\mu(\eta),\qquad t=-h-1.
+\tag{3.1}
+\]</span>
+<p>Lemma 2.1 makes <span class="math" data-tex="\(A=K\cap\{X\cdot\eta\ge t\}\)">\(A=K\cap\{X\cdot\eta\ge t\}\)</span> compact. Choose a compact smooth cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one on a neighborhood of <span class="math" data-tex="\(A\)">\(A\)</span>, and write</p>
+<span class="math math-display" data-tex="\[
+E_0=\chi E,\qquad T=(1-\chi)E,
+\qquad E=E_0+T.
+\tag{3.2}
+\]">\[
+E_0=\chi E,\qquad T=(1-\chi)E,
+\qquad E=E_0+T.
+\tag{3.2}
+\]</span>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> is empty, the zero cutoff is allowed initially. Multiplication does not enlarge support. Since <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near every point of <span class="math" data-tex="\(\operatorname{supp}E\)">\(\operatorname{supp}E\)</span> with <span class="math" data-tex="\(X\cdot\eta\ge t\)">\(X\cdot\eta\ge t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}T\subset K\cap\{X\cdot\eta\le t\}.
+\tag{3.3}
+\]">\[
+\operatorname{supp}T\subset K\cap\{X\cdot\eta\le t\}.
+\tag{3.3}
+\]</span>
+<p>Convolution by the compact factor <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is defined for this unrestricted <span class="math" data-tex="\(T\in\mathcal D&#x27;\)">\(T\in\mathcal D&#x27;\)</span>. Its support inclusion gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}(\mu*T)
+\subset\{X:X\cdot\eta\le h+t=-1\}.
+\tag{3.4}
+\]">\[
+\operatorname{supp}(\mu*T)
+\subset\{X:X\cdot\eta\le h+t=-1\}.
+\tag{3.4}
+\]</span>
+<p>Therefore</p>
+<span class="math math-display" data-tex="\[
+\mu*E_0=\delta_0-\mu*T
+\tag{3.5}
+\]">\[
+\mu*E_0=\delta_0-\mu*T
+\tag{3.5}
+\]</span>
+<p>has support with directional supremum exactly zero. Indeed, its support lies in the union of <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> and the half-space in (3.4), and it agrees with <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> on the open half-space <span class="math" data-tex="\(X\cdot\eta&gt;-1\)">\(X\cdot\eta&gt;-1\)</span>. Thus it is nonzero, and <span class="math" data-tex="\(E_0\ne0\)">\(E_0\ne0\)</span>.</p>
+<p>Both factors on the left of (3.5) are now compact. The compact convolution support theorem, with its exact hypotheses satisfied, gives</p>
+<span class="math math-display" data-tex="\[
+H_\mu(\eta)+H_{E_0}(\eta)
+=H_{\mu*E_0}(\eta)=0.
+\tag{3.6}
+\]">\[
+H_\mu(\eta)+H_{E_0}(\eta)
+=H_{\mu*E_0}(\eta)=0.
+\tag{3.6}
+\]</span>
+<p>Since <span class="math" data-tex="\(E_0\)">\(E_0\)</span> is a smooth multiple of <span class="math" data-tex="\(E\)">\(E\)</span>, <span class="math" data-tex="\(H_{E_0}(\eta)\le H_K(\eta)\)">\(H_{E_0}(\eta)\le H_K(\eta)\)</span>. Conversely (3.2)–(3.3) imply</p>
+<span class="math math-display" data-tex="\[
+H_K(\eta)
+\le\max\{H_{E_0}(\eta),t\}
+=-h,
+\tag{3.7}
+\]">\[
+H_K(\eta)
+\le\max\{H_{E_0}(\eta),t\}
+=-h,
+\tag{3.7}
+\]</span>
+<p>because <span class="math" data-tex="\(H_{E_0}(\eta)=-h&gt;t\)">\(H_{E_0}(\eta)=-h&gt;t\)</span>. If <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, only the first term is needed. Hence</p>
+<span class="math math-display" data-tex="\[
+H_K(\eta)=-H_\mu(\eta)
+\quad(\eta\in\Gamma).
+\tag{3.8}
+\]">\[
+H_K(\eta)=-H_\mu(\eta)
+\quad(\eta\in\Gamma).
+\tag{3.8}
+\]</span>
+<p>No convolution support equality for an arbitrary noncompact factor has been assumed. The compact theorem entered only after the high slice was retained in <span class="math" data-tex="\(E_0\)">\(E_0\)</span>.</p>
+<p>The function <span class="math" data-tex="\(H_\mu\)">\(H_\mu\)</span> is convex, and (3.8) makes it concave on the open convex set <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. It is therefore affine there. For completeness, both convexity inequalities give equality on every segment. Fix a point <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> and a small ball about it in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Subtract the value at <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span>, and denote the resulting increment by <span class="math" data-tex="\(g(u)\)">\(g(u)\)</span>. Midpoint equality gives <span class="math" data-tex="\(g(-u)=-g(u)\)">\(g(-u)=-g(u)\)</span> and</p>
+<span class="math math-display" data-tex="\[
+g(u+v)=g(u)+g(v)
+\tag{3.9}
+\]">\[
+g(u+v)=g(u)+g(v)
+\tag{3.9}
+\]</span>
+<p>when all increments are sufficiently small: apply midpoint equality to <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, and then to <span class="math" data-tex="\(0,u+v\)">\(0,u+v\)</span>. Segment equality supplies <span class="math" data-tex="\(g(su)=s g(u)\)">\(g(su)=s g(u)\)</span> for real <span class="math" data-tex="\(s\)">\(s\)</span> with these increments in the ball. Splitting <span class="math" data-tex="\(u\)">\(u\)</span> into its coordinate increments now gives <span class="math" data-tex="\(g(u)=a\cdot u\)">\(g(u)=a\cdot u\)</span> for a real vector <span class="math" data-tex="\(a\)">\(a\)</span>. Every other point of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> lies on a segment whose initial small part is in that ball, so segment equality extends the same affine formula to all of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Positive homogeneity, applied to <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and <span class="math" data-tex="\(2\eta\)">\(2\eta\)</span>, removes its constant term. We have proved (1.5).</p>
+<p>To prove the exact set identity in (1.7), (1.5) first gives <span class="math" data-tex="\(K+a\subset C\)">\(K+a\subset C\)</span>. Fix <span class="math" data-tex="\(\eta_0\in\Gamma\)">\(\eta_0\in\Gamma\)</span> and any <span class="math" data-tex="\(\eta\in D\)">\(\eta\in D\)</span>. For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\eta+\varepsilon\eta_0\in\Gamma.
+\tag{3.10}
+\]">\[
+\eta+\varepsilon\eta_0\in\Gamma.
+\tag{3.10}
+\]</span>
+<p>Indeed, an open ball around <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> is contained in <span class="math" data-tex="\(D\)">\(D\)</span>, and adding <span class="math" data-tex="\(\eta\)">\(\eta\)</span> to its positive dilation remains in the convex cone <span class="math" data-tex="\(D\)">\(D\)</span>. Subadditivity and lower semicontinuity then give, respectively,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+-a\cdot(\eta+\varepsilon\eta_0)
+&amp;\le H_K(\eta)-\varepsilon a\cdot\eta_0,\\
+H_K(\eta)&amp;\le
+\liminf_{\varepsilon\downarrow0}
+[-a\cdot(\eta+\varepsilon\eta_0)].
+\end{aligned}
+\tag{3.11}
+\]">\[
+\begin{aligned}
+-a\cdot(\eta+\varepsilon\eta_0)
+&amp;\le H_K(\eta)-\varepsilon a\cdot\eta_0,\\
+H_K(\eta)&amp;\le
+\liminf_{\varepsilon\downarrow0}
+[-a\cdot(\eta+\varepsilon\eta_0)].
+\end{aligned}
+\tag{3.11}
+\]</span>
+<p>Thus <span class="math" data-tex="\(H_K(\eta)=-a\cdot\eta\)">\(H_K(\eta)=-a\cdot\eta\)</span> on <strong>all</strong> of <span class="math" data-tex="\(D\)">\(D\)</span>, including its boundary. If <span class="math" data-tex="\(X\in C-a\)">\(X\in C-a\)</span>, (3.10) and the definition of <span class="math" data-tex="\(C\)">\(C\)</span> give <span class="math" data-tex="\((X+a)\cdot(\eta+\varepsilon\eta_0)\le0\)">\((X+a)\cdot(\eta+\varepsilon\eta_0)\le0\)</span>. Letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> proves <span class="math" data-tex="\(X\cdot\eta\le H_K(\eta)\)">\(X\cdot\eta\le H_K(\eta)\)</span> for every <span class="math" data-tex="\(\eta\in D\)">\(\eta\in D\)</span>. Lemma 2.2 puts <span class="math" data-tex="\(X\)">\(X\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>. Hence <span class="math" data-tex="\(K=C-a\)">\(K=C-a\)</span>. Finally, for <span class="math" data-tex="\(y\in\operatorname{supp}\mu\)">\(y\in\operatorname{supp}\mu\)</span>, (1.5) says <span class="math" data-tex="\((y-a)\cdot\eta\le0\)">\((y-a)\cdot\eta\le0\)</span> for every <span class="math" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span>. This proves <span class="math" data-tex="\(\operatorname{supp}\mu\subset C+a\)">\(\operatorname{supp}\mu\subset C+a\)</span>.</p>
+<h2 id="a-compact-distribution-has-the-sharp-supporting-exponent">A compact distribution has the sharp supporting exponent</h2>
+<p><strong>Proposition 4.1 (the needed forward transform estimate).</strong> Let <span class="math" data-tex="\(T\ne0\)">\(T\ne0\)</span> be compactly supported, and put <span class="math" data-tex="\(S=\operatorname{supp}T\)">\(S=\operatorname{supp}T\)</span>. Its transform (1.1) is entire. For some constant <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> and integer <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\widehat T(\zeta)|
+\le A(1+|\zeta|)^m e^{H_S(\operatorname{Im}\zeta)}
+\quad(\zeta\in\mathbb C^n).
+\tag{4.1}
+\]">\[
+|\widehat T(\zeta)|
+\le A(1+|\zeta|)^m e^{H_S(\operatorname{Im}\zeta)}
+\quad(\zeta\in\mathbb C^n).
+\tag{4.1}
+\]</span>
+<p>For compact distributions <span class="math" data-tex="\(U,V\)">\(U,V\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\widehat{U*V}=\widehat U\,\widehat V,
+\qquad \widehat{\delta_0}=1.
+\tag{4.2}
+\]">\[
+\widehat{U*V}=\widehat U\,\widehat V,
+\qquad \widehat{\delta_0}=1.
+\tag{4.2}
+\]</span>
+<p><strong>Proof.</strong> Fix a compact neighborhood of <span class="math" data-tex="\(S\)">\(S\)</span> large enough to contain every point at distance at most three from <span class="math" data-tex="\(S\)">\(S\)</span>. The finite-order estimate on this one compact set gives a constant <span class="math" data-tex="\(A_0\)">\(A_0\)</span> and an integer <span class="math" data-tex="\(m\)">\(m\)</span> bounding the pairing with tests by their derivatives through order <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>Choose a nonnegative <span class="math" data-tex="\(\rho\in C_c^\infty(B(0,1))\)">\(\rho\in C_c^\infty(B(0,1))\)</span> with integral one; for example normalize <span class="math" data-tex="\(e^{-1/(1-|X|^2)}\)">\(e^{-1/(1-|X|^2)}\)</span> inside the unit ball and extend it by zero. Put <span class="math" data-tex="\(\rho_\varepsilon(X)=\varepsilon^{-n}\rho(X/\varepsilon)\)">\(\rho_\varepsilon(X)=\varepsilon^{-n}\rho(X/\varepsilon)\)</span>, and let <span class="math" data-tex="\(S_{2\varepsilon}\)">\(S_{2\varepsilon}\)</span> be the open <span class="math" data-tex="\(2\varepsilon\)">\(2\varepsilon\)</span>-neighborhood of <span class="math" data-tex="\(S\)">\(S\)</span>. The function</p>
+<span class="math math-display" data-tex="\[
+q_\varepsilon
+=\rho_\varepsilon*\mathbf1_{S_{2\varepsilon}}
+\tag{4.3}
+\]">\[
+q_\varepsilon
+=\rho_\varepsilon*\mathbf1_{S_{2\varepsilon}}
+\tag{4.3}
+\]</span>
+<p>is smooth and compactly supported. It equals one when <span class="math" data-tex="\(\operatorname{dist}(X,S)&lt;\varepsilon\)">\(\operatorname{dist}(X,S)&lt;\varepsilon\)</span>, is zero when that distance exceeds <span class="math" data-tex="\(3\varepsilon\)">\(3\varepsilon\)</span>, and satisfies</p>
+<span class="math math-display" data-tex="\[
+\|\partial^\alpha q_\varepsilon\|_\infty
+\le\|\partial^\alpha\rho\|_1\varepsilon^{-|\alpha|}.
+\tag{4.4}
+\]">\[
+\|\partial^\alpha q_\varepsilon\|_\infty
+\le\|\partial^\alpha\rho\|_1\varepsilon^{-|\alpha|}.
+\tag{4.4}
+\]</span>
+<p>Differentiating the convolution is legitimate because its bounded indicator has compact support and the differentiated smooth kernel is integrable. The estimate follows from its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm and the indicator's bound one.</p>
+<p>For a particular <span class="math" data-tex="\(\zeta=\xi+i\eta\)">\(\zeta=\xi+i\eta\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+\varepsilon=(1+|\zeta|)^{-1},\qquad
+\widehat T(\zeta)
+=\langle T,q_\varepsilon e^{-iX\cdot\zeta}\rangle.
+\tag{4.5}
+\]">\[
+\varepsilon=(1+|\zeta|)^{-1},\qquad
+\widehat T(\zeta)
+=\langle T,q_\varepsilon e^{-iX\cdot\zeta}\rangle.
+\tag{4.5}
+\]</span>
+<p>On the support of <span class="math" data-tex="\(q_\varepsilon\)">\(q_\varepsilon\)</span>,</p>
+<span class="math math-display" data-tex="\[
+X\cdot\eta
+\le H_S(\eta)+3\varepsilon|\eta|
+\le H_S(\eta)+3.
+\tag{4.6}
+\]">\[
+X\cdot\eta
+\le H_S(\eta)+3\varepsilon|\eta|
+\le H_S(\eta)+3.
+\tag{4.6}
+\]</span>
+<p>The product rule, (4.4), and <span class="math" data-tex="\(\varepsilon^{-1}=1+|\zeta|\)">\(\varepsilon^{-1}=1+|\zeta|\)</span> bound every derivative of the test in (4.5) through order <span class="math" data-tex="\(m\)">\(m\)</span> by</p>
+<span class="math math-display" data-tex="\[
+A_2(1+|\zeta|)^m e^{H_S(\eta)}.
+\tag{4.7}
+\]">\[
+A_2(1+|\zeta|)^m e^{H_S(\eta)}.
+\tag{4.7}
+\]</span>
+<p>The factor <span class="math" data-tex="\(e^3\)">\(e^3\)</span> has been included in <span class="math" data-tex="\(A_2\)">\(A_2\)</span>. Applying the fixed compact finite-order estimate proves (4.1). The cutoff scale in (4.5) is what removes an unwanted <span class="math" data-tex="\(e^{\varepsilon_0|\eta|}\)">\(e^{\varepsilon_0|\eta|}\)</span> factor from a fixed enlarged support.</p>
+<p>Entirety can be checked with one fixed compact cutoff. On its support, the exponential's power series about any <span class="math" data-tex="\(\zeta_0\)">\(\zeta_0\)</span> converges in every fixed <span class="math" data-tex="\(X\)">\(X\)</span>-derivative, uniformly when <span class="math" data-tex="\(\zeta-\zeta_0\)">\(\zeta-\zeta_0\)</span> lies in a compact set. The factorial denominators dominate the powers and the finitely many derivative factors. Applying the continuous distribution to this series gives a convergent complex power series, with</p>
+<span class="math math-display" data-tex="\[
+\partial_\zeta^\alpha\widehat T(\zeta)
+=\langle T,(-iX)^\alpha e^{-iX\cdot\zeta}\rangle.
+\tag{4.8}
+\]">\[
+\partial_\zeta^\alpha\widehat T(\zeta)
+=\langle T,(-iX)^\alpha e^{-iX\cdot\zeta}\rangle.
+\tag{4.8}
+\]</span>
+<p>Thus the transform is entire.</p>
+<p>For (4.2), use the tensor convolution formula with compact cutoffs near the two factor supports. The exponential pulled back under addition factors as <span class="math" data-tex="\(e^{-iX\cdot\zeta}e^{-iY\cdot\zeta}\)">\(e^{-iX\cdot\zeta}e^{-iY\cdot\zeta}\)</span>. The tensor pairing of this product is the product of the two pairings. Evaluation at zero gives <span class="math" data-tex="\(\widehat{\delta_0}=1\)">\(\widehat{\delta_0}=1\)</span>. □</p>
+<p>This is the forward support estimate alone. It uses finite local order, compact cutoffs and the tensor definition of compact convolution. Neither Fourier inversion nor a representation of the original <span class="math" data-tex="\(E\)">\(E\)</span> is needed.</p>
+<h2 id="a-compact-error-decays-uniformly-inside-the-dual-cone">A compact error decays uniformly inside the dual cone</h2>
+<p><strong>Lemma 5.1 (strict cone pairing).</strong> Let <span class="math" data-tex="\(C=\Gamma^\circ\)">\(C=\Gamma^\circ\)</span>. It is closed and convex and contains no nonzero line. For <span class="math" data-tex="\(X\in C\setminus\{0\}\)">\(X\in C\setminus\{0\}\)</span> and <span class="math" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span>,</p>
+<span class="math math-display" data-tex="\[
+X\cdot\eta&lt;0.
+\tag{5.1}
+\]">\[
+X\cdot\eta&lt;0.
+\tag{5.1}
+\]</span>
+<p>If <span class="math" data-tex="\(\Gamma_1\subset\Gamma\cup\{0\}\)">\(\Gamma_1\subset\Gamma\cup\{0\}\)</span> is a closed cone with a nonzero direction, and <span class="math" data-tex="\(C\ne\{0\}\)">\(C\ne\{0\}\)</span>, there is <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+X\cdot\eta\le-b|X||\eta|
+\quad(X\in C,\ \eta\in\Gamma_1).
+\tag{5.2}
+\]">\[
+X\cdot\eta\le-b|X||\eta|
+\quad(X\in C,\ \eta\in\Gamma_1).
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> Closedness and convexity follow from the defining half-spaces. If both <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(-X\)">\(-X\)</span> belong to <span class="math" data-tex="\(C\)">\(C\)</span>, then <span class="math" data-tex="\(X\cdot\eta=0\)">\(X\cdot\eta=0\)</span> on the open set <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. A linear function vanishing on a ball has every coefficient zero, so <span class="math" data-tex="\(X=0\)">\(X=0\)</span>. If equality held in (5.1), openness would put <span class="math" data-tex="\(\eta+\varepsilon X\)">\(\eta+\varepsilon X\)</span> in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> for small <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and <span class="math" data-tex="\(X\cdot(\eta+\varepsilon X)&gt;0\)">\(X\cdot(\eta+\varepsilon X)&gt;0\)</span>, a contradiction. The sets <span class="math" data-tex="\(C\cap S^{n-1}\)">\(C\cap S^{n-1}\)</span> and <span class="math" data-tex="\(\Gamma_1\cap S^{n-1}\)">\(\Gamma_1\cap S^{n-1}\)</span> are compact; the latter lies in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Their continuous pairings have a strictly negative maximum by (5.1). Scaling proves (5.2). □</p>
+<p>Choose a compact smooth cutoff <span class="math" data-tex="\(\psi\)">\(\psi\)</span> equal to one on a ball of radius <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> centered at <span class="math" data-tex="\(-a\)">\(-a\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+F=\psi E\in\mathcal E&#x27;,\qquad
+R=\mu*F-\delta_0\in\mathcal E&#x27;.
+\tag{5.3}
+\]">\[
+F=\psi E\in\mathcal E&#x27;,\qquad
+R=\mu*F-\delta_0\in\mathcal E&#x27;.
+\tag{5.3}
+\]</span>
+<p>The support geometry already proved gives <span class="math" data-tex="\(\operatorname{supp}F\subset C-a\)">\(\operatorname{supp}F\subset C-a\)</span>. The convolution equation also gives the <strong>distributional</strong> identity</p>
+<span class="math math-display" data-tex="\[
+R=-\mu*((1-\psi)E).
+\tag{5.4}
+\]">\[
+R=-\mu*((1-\psi)E).
+\tag{5.4}
+\]</span>
+<p>For a tail support point <span class="math" data-tex="\(X\in\operatorname{supp}((1-\psi)E)\)">\(X\in\operatorname{supp}((1-\psi)E)\)</span> and a kernel support point <span class="math" data-tex="\(Y\in\operatorname{supp}\mu\)">\(Y\in\operatorname{supp}\mu\)</span>, every contributing sum on the right has the form</p>
+<span class="math math-display" data-tex="\[
+X+Y=(X+a)+(Y-a),
+\tag{5.5}
+\]">\[
+X+Y=(X+a)+(Y-a),
+\tag{5.5}
+\]</span>
+<p>where <span class="math" data-tex="\(X+a,Y-a\in C\)">\(X+a,Y-a\in C\)</span> and <span class="math" data-tex="\(|X+a|\ge r\)">\(|X+a|\ge r\)</span>. The sum is in <span class="math" data-tex="\(C\)">\(C\)</span>. If <span class="math" data-tex="\(C\ne\{0\}\)">\(C\ne\{0\}\)</span>, fix a nonzero <span class="math" data-tex="\(\eta_0\in\Gamma\)">\(\eta_0\in\Gamma\)</span>. The singleton direction cone generated by <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> satisfies Lemma 5.1, so for some <span class="math" data-tex="\(b_0&gt;0\)">\(b_0&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(X+Y)\cdot\eta_0
+\le-b_0r|\eta_0|&lt;0.
+\tag{5.6}
+\]">\[
+(X+Y)\cdot\eta_0
+\le-b_0r|\eta_0|&lt;0.
+\tag{5.6}
+\]</span>
+<p>The compact factor <span class="math" data-tex="\(\mu\)">\(\mu\)</span> ensures that its sum with the closed tail support is closed and that convolution's support inclusion applies. Hence</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}R\subset C,
+\qquad 0\notin\operatorname{supp}R.
+\tag{5.7}
+\]">\[
+\operatorname{supp}R\subset C,
+\qquad 0\notin\operatorname{supp}R.
+\tag{5.7}
+\]</span>
+<p>Compactness of <span class="math" data-tex="\(R\)">\(R\)</span> in (5.3) comes from <span class="math" data-tex="\(\mu*F-\delta_0\)">\(\mu*F-\delta_0\)</span>, even though the tail in (5.4) can be unbounded and grow arbitrarily quickly. If <span class="math" data-tex="\(C=\{0\}\)">\(C=\{0\}\)</span>, then <span class="math" data-tex="\(K=\{-a\}\)">\(K=\{-a\}\)</span>, the tail is zero, and <span class="math" data-tex="\(R=0\)">\(R=0\)</span> directly.</p>
+<p>Since <span class="math" data-tex="\(\delta_0+R\)">\(\delta_0+R\)</span> agrees with <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> near zero, <span class="math" data-tex="\(\mu*F=\delta_0+R\)">\(\mu*F=\delta_0+R\)</span> is nonzero. In particular <span class="math" data-tex="\(F\ne0\)">\(F\ne0\)</span>, so its supporting function in the following estimates is defined.</p>
+<p>Now fix a closed cone <span class="math" data-tex="\(\Gamma_1\subset\Gamma\cup\{0\}\)">\(\Gamma_1\subset\Gamma\cup\{0\}\)</span>. If it has no nonzero directions, (1.8) has no solutions and the statement is vacuous. If <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, (4.2) gives <span class="math" data-tex="\(\widehat\mu\widehat F=1\)">\(\widehat\mu\widehat F=1\)</span> everywhere, and (4.1) with <span class="math" data-tex="\(H_F(\eta)\le-a\cdot\eta\)">\(H_F(\eta)\le-a\cdot\eta\)</span> gives (1.9) immediately after enlarging the constant.</p>
+<p>In the remaining case <span class="math" data-tex="\(R\ne0\)">\(R\ne0\)</span>, its compact support avoids zero. Let <span class="math" data-tex="\(d=\min_{X\in\operatorname{supp}R}|X|&gt;0\)">\(d=\min_{X\in\operatorname{supp}R}|X|&gt;0\)</span>. Lemma 5.1 gives <span class="math" data-tex="\(c=bd&gt;0\)">\(c=bd&gt;0\)</span> with</p>
+<span class="math math-display" data-tex="\[
+H_R(\eta)\le-c|\eta|
+\quad(\eta\in\Gamma_1).
+\tag{5.8}
+\]">\[
+H_R(\eta)\le-c|\eta|
+\quad(\eta\in\Gamma_1).
+\tag{5.8}
+\]</span>
+<p>Applying Proposition 4.1 separately to the compact distributions <span class="math" data-tex="\(R,F\)">\(R,F\)</span>, and enlarging constants to be at least one, yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\widehat R(\zeta)|
+&amp;\le A(1+|\zeta|)^N e^{-c|\eta|},\\
+|\widehat F(\zeta)|
+&amp;\le B(1+|\zeta|)^M e^{-a\cdot\eta},
+\end{aligned}
+\qquad \eta=\operatorname{Im}\zeta\in\Gamma_1.
+\tag{5.9}
+\]">\[
+\begin{aligned}
+|\widehat R(\zeta)|
+&amp;\le A(1+|\zeta|)^N e^{-c|\eta|},\\
+|\widehat F(\zeta)|
+&amp;\le B(1+|\zeta|)^M e^{-a\cdot\eta},
+\end{aligned}
+\qquad \eta=\operatorname{Im}\zeta\in\Gamma_1.
+\tag{5.9}
+\]</span>
+<p>For example, choose</p>
+<span class="math math-display" data-tex="\[
+C_0=\frac{N+\log(2A)/\log2+1}{c}.
+\tag{5.10}
+\]">\[
+C_0=\frac{N+\log(2A)/\log2+1}{c}.
+\tag{5.10}
+\]</span>
+<p>If <span class="math" data-tex="\(|\eta|&gt;C_0\log(|\zeta|+2)\)">\(|\eta|&gt;C_0\log(|\zeta|+2)\)</span>, the first estimate in (5.9) is less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span>: use <span class="math" data-tex="\(\log(1+|\zeta|)\le\log(|\zeta|+2)\)">\(\log(1+|\zeta|)\le\log(|\zeta|+2)\)</span> and <span class="math" data-tex="\(\log(|\zeta|+2)\ge\log2\)">\(\log(|\zeta|+2)\ge\log2\)</span>. On this region, transforming the compact identity (5.3) gives</p>
+<span class="math math-display" data-tex="\[
+\widehat\mu(\zeta)\widehat F(\zeta)
+=1+\widehat R(\zeta),
+\qquad |1+\widehat R(\zeta)|&gt;\tfrac12.
+\tag{5.11}
+\]">\[
+\widehat\mu(\zeta)\widehat F(\zeta)
+=1+\widehat R(\zeta),
+\qquad |1+\widehat R(\zeta)|&gt;\tfrac12.
+\tag{5.11}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\widehat\mu(\zeta)\ne0\)">\(\widehat\mu(\zeta)\ne0\)</span>. Division now gives</p>
+<span class="math math-display" data-tex="\[
+\left|\frac1{\widehat\mu(\zeta)}\right|
+=\frac{|\widehat F(\zeta)|}{|1+\widehat R(\zeta)|}
+\le2B(1+|\zeta|)^M e^{-a\cdot\eta}.
+\tag{5.12}
+\]">\[
+\left|\frac1{\widehat\mu(\zeta)}\right|
+=\frac{|\widehat F(\zeta)|}{|1+\widehat R(\zeta)|}
+\le2B(1+|\zeta|)^M e^{-a\cdot\eta}.
+\tag{5.12}
+\]</span>
+<p>Taking <span class="math" data-tex="\(C_1\ge\max(C_0,2B,1)\)">\(C_1\ge\max(C_0,2B,1)\)</span> proves both (1.8) and (1.9) with one constant. This completes Theorem 1.1. □</p>
+<p>The closed-cone condition has a specific purpose. Its unit directions form a compact subset of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, making <span class="math" data-tex="\(b\)">\(b\)</span> in (5.2) positive. The proof permits constants to deteriorate as the directions approach the boundary of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<h2 id="a-growing-inverse-with-an-exactly-computable-cone">A growing inverse with an exactly computable cone</h2>
+<p><strong>Example 6.1 (two independent delays).</strong> In <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, take</p>
+<span class="math math-display" data-tex="\[
+a=(1,-1),\quad v_1=(1,1),\quad v_2=(1,-1),
+\tag{6.1}
+\]">\[
+a=(1,-1),\quad v_1=(1,1),\quad v_2=(1,-1),
+\tag{6.1}
+\]</span>
+<p>and define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mu&amp;=\delta_a*(\delta_0-2\delta_{v_1})
+*(\delta_0-3\delta_{v_2}),\\
+E&amp;=\sum_{j,k\ge0}2^j3^k\delta_{-a+jv_1+kv_2}.
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+\mu&amp;=\delta_a*(\delta_0-2\delta_{v_1})
+*(\delta_0-3\delta_{v_2}),\\
+E&amp;=\sum_{j,k\ge0}2^j3^k\delta_{-a+jv_1+kv_2}.
+\end{aligned}
+\tag{6.2}
+\]</span>
+<p>The sum defining <span class="math" data-tex="\(E\)">\(E\)</span> is locally finite: the first coordinate of its support point is <span class="math" data-tex="\(-1+j+k\)">\(-1+j+k\)</span>, so a compact set bounds <span class="math" data-tex="\(j+k\)">\(j+k\)</span>. Thus it defines a distribution without a summability assumption at infinity. For each test, only finitely many terms of the convolution contribute. Successively subtracting the two shifted sums cancels every term except the origin after translation by <span class="math" data-tex="\(a\)">\(a\)</span>, so <span class="math" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span>.</p>
+<p>All coefficients of <span class="math" data-tex="\(E\)">\(E\)</span> are positive. Its support is exactly the displayed lattice, with no extra points. The convex hull of <span class="math" data-tex="\(\mathbb N^2\)">\(\mathbb N^2\)</span> is <span class="math" data-tex="\(\mathbb R_+^2\)">\(\mathbb R_+^2\)</span>: each point of a unit square is a convex combination of its four integer corners. The invertible map <span class="math" data-tex="\((j,k)\mapsto jv_1+kv_2\)">\((j,k)\mapsto jv_1+kv_2\)</span> therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C&amp;=\{(x,y):x\ge|y|\},\\
+K&amp;=C-a,\\
+D&amp;=\{\eta:\eta_x+\eta_y\le0,
+\ \eta_x-\eta_y\le0\},\\
+\Gamma&amp;=\{\eta:\eta_x&lt;-|\eta_y|\}.
+\end{aligned}
+\tag{6.3}
+\]">\[
+\begin{aligned}
+C&amp;=\{(x,y):x\ge|y|\},\\
+K&amp;=C-a,\\
+D&amp;=\{\eta:\eta_x+\eta_y\le0,
+\ \eta_x-\eta_y\le0\},\\
+\Gamma&amp;=\{\eta:\eta_x&lt;-|\eta_y|\}.
+\end{aligned}
+\tag{6.3}
+\]</span>
+<p>On <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(H_K(\eta)=-a\cdot\eta\)">\(H_K(\eta)=-a\cdot\eta\)</span>; outside <span class="math" data-tex="\(D\)">\(D\)</span> it is infinite. On <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, the finite kernel's largest supporting point is <span class="math" data-tex="\(a\)">\(a\)</span>, since its other points add positive multiples of <span class="math" data-tex="\(v_1,v_2\)">\(v_1,v_2\)</span>. Thus <span class="math" data-tex="\(H_\mu(\eta)=a\cdot\eta\)">\(H_\mu(\eta)=a\cdot\eta\)</span>, as predicted.</p>
+<p>The entire kernel transform is</p>
+<span class="math math-display" data-tex="\[
+\widehat\mu(\zeta)=e^{-ia\cdot\zeta}
+\bigl(1-2e^{-iv_1\cdot\zeta}\bigr)
+\bigl(1-3e^{-iv_2\cdot\zeta}\bigr).
+\tag{6.4}
+\]">\[
+\widehat\mu(\zeta)=e^{-ia\cdot\zeta}
+\bigl(1-2e^{-iv_1\cdot\zeta}\bigr)
+\bigl(1-3e^{-iv_2\cdot\zeta}\bigr).
+\tag{6.4}
+\]</span>
+<p>For <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\Gamma_\varepsilon
+=\{\eta:\eta_x\le0,
+\ |\eta_y|\le(1-\varepsilon)(-\eta_x)\}.
+\tag{6.5}
+\]">\[
+\Gamma_\varepsilon
+=\{\eta:\eta_x\le0,
+\ |\eta_y|\le(1-\varepsilon)(-\eta_x)\}.
+\tag{6.5}
+\]</span>
+<p>Its nonzero directions lie in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and <span class="math" data-tex="\(v_\ell\cdot\eta\le-\varepsilon|\eta|/\sqrt2\)">\(v_\ell\cdot\eta\le-\varepsilon|\eta|/\sqrt2\)</span> for <span class="math" data-tex="\(\ell=1,2\)">\(\ell=1,2\)</span>. If <span class="math" data-tex="\(|\eta|&gt;(\sqrt2/\varepsilon)\log6\)">\(|\eta|&gt;(\sqrt2/\varepsilon)\log6\)</span>, each of the two exponential terms in (6.4) has modulus less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+|1/\widehat\mu(\zeta)|\le4e^{-a\cdot\eta}.
+\tag{6.6}
+\]">\[
+|1/\widehat\mu(\zeta)|\le4e^{-a\cdot\eta}.
+\tag{6.6}
+\]</span>
+<p>Here the estimate is already independent of <span class="math" data-tex="\(\operatorname{Re}\zeta\)">\(\operatorname{Re}\zeta\)</span>, and is stronger than the logarithmic bound.</p>
+<p>A concrete compact truncation makes the error visible. Retain only <span class="math" data-tex="\(0\le j,k\le2\)">\(0\le j,k\le2\)</span> in (6.2), and call the resulting compact distribution <span class="math" data-tex="\(F_2\)">\(F_2\)</span>. Such a truncation equals <span class="math" data-tex="\(\psi E\)">\(\psi E\)</span> for a compact smooth cutoff that is one near those nine lattice points and zero near the other lattice points. Telescoping each finite sum gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mu*F_2&amp;=\delta_0+R_2,\\
+R_2&amp;=-8\delta_{3v_1}-27\delta_{3v_2}
++216\delta_{3(v_1+v_2)}.
+\end{aligned}
+\tag{6.7}
+\]">\[
+\begin{aligned}
+\mu*F_2&amp;=\delta_0+R_2,\\
+R_2&amp;=-8\delta_{3v_1}-27\delta_{3v_2}
++216\delta_{3(v_1+v_2)}.
+\end{aligned}
+\tag{6.7}
+\]</span>
+<p>Thus the compact error has support at <span class="math" data-tex="\((3,3),(3,-3),(6,0)\)">\((3,3),(3,-3),(6,0)\)</span>, all in <span class="math" data-tex="\(C\)">\(C\)</span> and all separated from zero. In the direction <span class="math" data-tex="\(\eta=(-1,0)\)">\(\eta=(-1,0)\)</span>, its support function is <span class="math" data-tex="\(-3\)">\(-3\)</span>. More generally (6.5) gives <span class="math" data-tex="\(H_{R_2}(\eta)\le-3\varepsilon|\eta|/\sqrt2\)">\(H_{R_2}(\eta)\le-3\varepsilon|\eta|/\sqrt2\)</span>. This finite computation illustrates the two compact transforms used in (5.11).</p>
+<p><a href="reproduce/L115/figures/finite-truncation-error.png" title="Open full-size figure"><img src="reproduce/L115/figures/finite-truncation-error.png" alt="The three support points of the exact finite-truncation error, separated from the origin inside the wedge" class="course-figure" width="1216" height="1216" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="finite-truncation-error" data-asset-sha256="B5A8CF0FE0F305EA6D2B2F15BDF1384EC9879101DFAB0E4E21260243CB480178"></a><br><a href="reproduce/L115/figures/finite-truncation-error.png">Open full-size figure</a></p>
+<p><em>Figure 2. The nine retained inverse atoms in <span class="math" data-tex="\(F_2\)">\(F_2\)</span> yield the three exact error atoms in (6.7). Their coefficients are <span class="math" data-tex="\(-8,-27,216\)">\(-8,-27,216\)</span>; signs can affect cancellation, but each displayed coefficient is nonzero at a distinct point. Every error point lies in <span class="math" data-tex="\(C=\{x\ge|y|\}\)">\(C=\{x\ge|y|\}\)</span>, and the dashed supporting line <span class="math" data-tex="\(x=3\)">\(x=3\)</span> gives <span class="math" data-tex="\(X\cdot(-1,0)\le-3\)">\(X\cdot(-1,0)\le-3\)</span>. This is the compact error mechanism in (5.7)–(5.12), shown for the worked example rather than asserted numerically for a general distribution.</em></p>
+<p>To state its growth precisely, the Schwartz space consists of smooth functions for which all the increasing seminorms</p>
+<span class="math math-display" data-tex="\[
+p_N(\phi)=\max_{|\alpha|\le N}\sup_X
+(1+|X|)^N|\partial^\alpha\phi(X)|,\qquad N=0,1,\ldots
+\tag{6.8}
+\]">\[
+p_N(\phi)=\max_{|\alpha|\le N}\sup_X
+(1+|X|)^N|\partial^\alpha\phi(X)|,\qquad N=0,1,\ldots
+\tag{6.8}
+\]</span>
+<p>are finite. A tempered distribution is a continuous linear functional on this space. Such continuity gives a bound by one <span class="math" data-tex="\(p_N\)">\(p_N\)</span>: a neighborhood of zero is determined by finitely many of these increasing seminorms, and scaling its inequality gives the bound for arbitrary <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p>Nevertheless <span class="math" data-tex="\(E\)">\(E\)</span> is not tempered. Choose a smooth test equal to one at zero supported in a ball of radius less than <span class="math" data-tex="\(1/3\)">\(1/3\)</span>, and translate it to <span class="math" data-tex="\(-a+jv_1\)">\(-a+jv_1\)</span>. Its pairing with <span class="math" data-tex="\(E\)">\(E\)</span> is <span class="math" data-tex="\(2^j\)">\(2^j\)</span>, while every fixed Schwartz seminorm of this translated test grows at most polynomially in <span class="math" data-tex="\(j\)">\(j\)</span>. Continuity would bound <span class="math" data-tex="\(2^j\)">\(2^j\)</span> by a polynomial, which is impossible. In fact, <span class="math" data-tex="\(e^{X\cdot\eta}E\)">\(e^{X\cdot\eta}E\)</span> need not be tempered even when <span class="math" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span>: for <span class="math" data-tex="\(\eta=(-1/10,0)\)">\(\eta=(-1/10,0)\)</span>, the coefficients along that same ray have ratio <span class="math" data-tex="\(2e^{-1/10}&gt;1\)">\(2e^{-1/10}&gt;1\)</span>. This explains why the proof transforms <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span>, rather than <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Example 6.2 (a boundary direction can contain zeros).</strong> On <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, let <span class="math" data-tex="\(\mu=\partial_x\delta_{(0,0)}\)">\(\mu=\partial_x\delta_{(0,0)}\)</span> and <span class="math" data-tex="\(E=H(x)\otimes\delta_0(y)\)">\(E=H(x)\otimes\delta_0(y)\)</span>, where <span class="math" data-tex="\(H\)">\(H\)</span> is the half-line indicator. Integration by parts gives <span class="math" data-tex="\(\partial_xE=\delta_{(0,0)}\)">\(\partial_xE=\delta_{(0,0)}\)</span>, hence <span class="math" data-tex="\(\mu*E=\delta_{(0,0)}\)">\(\mu*E=\delta_{(0,0)}\)</span>. Its support hull is the positive <span class="math" data-tex="\(x\)">\(x\)</span>-axis, and <span class="math" data-tex="\(\Gamma=\{\eta:\eta_x&lt;0\}\)">\(\Gamma=\{\eta:\eta_x&lt;0\}\)</span>. Here <span class="math" data-tex="\(a=0\)">\(a=0\)</span> and <span class="math" data-tex="\(\widehat\mu(\zeta)=i\zeta_x\)">\(\widehat\mu(\zeta)=i\zeta_x\)</span>. The boundary direction <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> admits zeros, for example <span class="math" data-tex="\(\zeta=(0,i)\)">\(\zeta=(0,i)\)</span>. Inside <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, <span class="math" data-tex="\(\zeta=(-i\varepsilon,i)\)">\(\zeta=(-i\varepsilon,i)\)</span> has reciprocal modulus <span class="math" data-tex="\(1/\varepsilon\)">\(1/\varepsilon\)</span>, which diverges as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. The uniform constants of Theorem 1.1 therefore belong to cones whose angular directions remain inside <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="translation-determines-the-sign">Translation determines the sign</h3>
+<p><strong>Problem 1.</strong> Take <span class="math" data-tex="\(b=(2,-3)\)">\(b=(2,-3)\)</span>, <span class="math" data-tex="\(\mu=\delta_b\)">\(\mu=\delta_b\)</span>, <span class="math" data-tex="\(E=\delta_{-b}\)">\(E=\delta_{-b}\)</span>. Find <span class="math" data-tex="\(K,\Gamma,a,C\)">\(K,\Gamma,a,C\)</span>, the transform of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and its reciprocal modulus. Does this example satisfy the theorem when the imaginary part is zero?</p>
+<p><strong>Solution.</strong> Point-mass convolution gives <span class="math" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span>. The hull <span class="math" data-tex="\(K=\{-b\}\)">\(K=\{-b\}\)</span> has finite support function <span class="math" data-tex="\(-b\cdot\eta\)">\(-b\cdot\eta\)</span> in every direction. Hence <span class="math" data-tex="\(\Gamma=\mathbb R^2\)">\(\Gamma=\mathbb R^2\)</span> and its negative polar is <span class="math" data-tex="\(C=\{0\}\)">\(C=\{0\}\)</span>. The vector is <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, since <span class="math" data-tex="\(H_\mu(\eta)=b\cdot\eta\)">\(H_\mu(\eta)=b\cdot\eta\)</span>. Direct evaluation gives</p>
+<span class="math math-display" data-tex="\[
+\widehat\mu(\zeta)=e^{-ib\cdot\zeta},
+\qquad |1/\widehat\mu(\xi+i\eta)|=e^{-b\cdot\eta}.
+\]">\[
+\widehat\mu(\zeta)=e^{-ib\cdot\zeta},
+\qquad |1/\widehat\mu(\xi+i\eta)|=e^{-b\cdot\eta}.
+\]</span>
+<p>The reciprocal identity is valid even at <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>, although the theorem's stated region requires <span class="math" data-tex="\(|\eta|&gt;C_1\log(|\zeta|+2)\)">\(|\eta|&gt;C_1\log(|\zeta|+2)\)</span> and therefore excludes <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>. A theorem can assert a sufficient region without describing every point where its conclusion holds.</p>
+<h3 id="one-finite-direction-is-insufficient">One finite direction is insufficient</h3>
+<p><strong>Problem 2.</strong> Let <span class="math" data-tex="\(K=\{(x,y):x\le0\}\)">\(K=\{(x,y):x\le0\}\)</span>. Show that <span class="math" data-tex="\(H_K(-1,0)=+\infty\)">\(H_K(-1,0)=+\infty\)</span>, <span class="math" data-tex="\(H_K(1,0)=0\)">\(H_K(1,0)=0\)</span>, and <span class="math" data-tex="\(H_K(1,\varepsilon)=+\infty\)">\(H_K(1,\varepsilon)=+\infty\)</span> for every nonzero <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Find the effective domain and explain why its interior is empty. Is <span class="math" data-tex="\(K\cap\{x\ge-1\}\)">\(K\cap\{x\ge-1\}\)</span> compact?</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(\eta=(-1,0)\)">\(\eta=(-1,0)\)</span>, points <span class="math" data-tex="\((-t,0)\)">\((-t,0)\)</span>, <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, give arbitrarily large pairing. With <span class="math" data-tex="\(\eta=(1,0)\)">\(\eta=(1,0)\)</span>, every pairing is <span class="math" data-tex="\(x\le0\)">\(x\le0\)</span>, and equality is attained at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. A nonzero second component makes the pairing unbounded as <span class="math" data-tex="\(y\)">\(y\)</span> tends to infinity with its sign. More generally, the only finite directions are <span class="math" data-tex="\((s,0)\)">\((s,0)\)</span>, <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>. This ray has empty interior in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>. The high slice <span class="math" data-tex="\([-1,0]\times\mathbb R\)">\([-1,0]\times\mathbb R\)</span> is closed and unbounded, so it is not compact. The nearby directions in Lemma 2.1 are essential for controlling the transverse coordinate.</p>
+<h3 id="the-exact-cone-rather-than-a-containing-cone">The exact cone, rather than a containing cone</h3>
+<p><strong>Problem 3.</strong> Let <span class="math" data-tex="\(H=\mathbf1_{[0,\infty)}\)">\(H=\mathbf1_{[0,\infty)}\)</span> on the line. Put <span class="math" data-tex="\(\mu=\delta&#x27;_0\)">\(\mu=\delta&#x27;_0\)</span> and <span class="math" data-tex="\(E=H\)">\(E=H\)</span>. Verify the convolution equation, find <span class="math" data-tex="\(K,D,\Gamma,C,a\)">\(K,D,\Gamma,C,a\)</span>, and calculate the reciprocal estimate on the closed cone <span class="math" data-tex="\((-\infty,0]\)">\((-\infty,0]\)</span>.</p>
+<p><strong>Solution.</strong> For a compact smooth test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+\langle H&#x27;,\phi\rangle
+=-\int_0^\infty\phi&#x27;(x)\,dx=\phi(0).
+\]">\[
+\langle H&#x27;,\phi\rangle
+=-\int_0^\infty\phi&#x27;(x)\,dx=\phi(0).
+\]</span>
+<p>Thus <span class="math" data-tex="\(\delta&#x27;_0*H=H&#x27;=\delta_0\)">\(\delta&#x27;_0*H=H&#x27;=\delta_0\)</span>. Its support hull is <span class="math" data-tex="\(K=[0,\infty)\)">\(K=[0,\infty)\)</span>, with <span class="math" data-tex="\(H_K(\eta)=0\)">\(H_K(\eta)=0\)</span> for <span class="math" data-tex="\(\eta\le0\)">\(\eta\le0\)</span> and <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> for <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. Consequently <span class="math" data-tex="\(D=(-\infty,0]\)">\(D=(-\infty,0]\)</span>, <span class="math" data-tex="\(\Gamma=(-\infty,0)\)">\(\Gamma=(-\infty,0)\)</span>, <span class="math" data-tex="\(C=[0,\infty)\)">\(C=[0,\infty)\)</span>, and <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. The transform <span class="math" data-tex="\(\widehat\mu(\zeta)=i\zeta\)">\(\widehat\mu(\zeta)=i\zeta\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+|1/\widehat\mu(\xi+i\eta)|
+=|\xi+i\eta|^{-1}\le|\eta|^{-1}
+\quad(\eta&lt;0).
+\]">\[
+|1/\widehat\mu(\xi+i\eta)|
+=|\xi+i\eta|^{-1}\le|\eta|^{-1}
+\quad(\eta&lt;0).
+\]</span>
+<p>Choosing <span class="math" data-tex="\(C_1\ge2\)">\(C_1\ge2\)</span> in the theorem's logarithmic region guarantees <span class="math" data-tex="\(|\eta|&gt;2\log2&gt;1\)">\(|\eta|&gt;2\log2&gt;1\)</span>, and the bound holds with <span class="math" data-tex="\(M=0\)">\(M=0\)</span>. On the real axis the transform vanishes at zero, so the claimed nonzero region must retain its imaginary-height restriction.</p>
+<h3 id="exponential-growth-can-survive-a-support-cone">Exponential growth can survive a support cone</h3>
+<p><strong>Problem 4.</strong> In <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\mu=\delta_0-4\delta_2,\qquad
+E=\sum_{k\ge0}4^k\delta_{2k}.
+\]">\[
+\mu=\delta_0-4\delta_2,\qquad
+E=\sum_{k\ge0}4^k\delta_{2k}.
+\]</span>
+<p>Prove that <span class="math" data-tex="\(E\in\mathcal D&#x27;\)">\(E\in\mathcal D&#x27;\)</span>, that <span class="math" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span>, and that <span class="math" data-tex="\(E\notin\mathcal S&#x27;\)">\(E\notin\mathcal S&#x27;\)</span>. Give an <span class="math" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span> for which the weighted distribution <span class="math" data-tex="\(e^{\eta x}E\)">\(e^{\eta x}E\)</span> is still not tempered. Find the zeros of the compact transform.</p>
+<p><strong>Solution.</strong> A compact set intersects the sequence <span class="math" data-tex="\(2k\)">\(2k\)</span> in finitely many points, so the defining sum pairs finitely on every compact test and has order zero there. Shift and subtract:</p>
+<span class="math math-display" data-tex="\[
+(\delta_0-4\delta_2)*E
+=\sum_{k\ge0}4^k\delta_{2k}
+-\sum_{k\ge1}4^k\delta_{2k}
+=\delta_0.
+\]">\[
+(\delta_0-4\delta_2)*E
+=\sum_{k\ge0}4^k\delta_{2k}
+-\sum_{k\ge1}4^k\delta_{2k}
+=\delta_0.
+\]</span>
+<p>The hull <span class="math" data-tex="\(K=[0,\infty)\)">\(K=[0,\infty)\)</span> gives <span class="math" data-tex="\(\Gamma=(-\infty,0)\)">\(\Gamma=(-\infty,0)\)</span>, <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. If <span class="math" data-tex="\(E\)">\(E\)</span> were tempered, its continuity would give a bound by finitely many Schwartz seminorms. Choose a test <span class="math" data-tex="\(\phi\)">\(\phi\)</span> supported in <span class="math" data-tex="\((-1/2,1/2)\)">\((-1/2,1/2)\)</span> with <span class="math" data-tex="\(\phi(0)=1\)">\(\phi(0)=1\)</span>, and set <span class="math" data-tex="\(\phi_k(x)=\phi(x-2k)\)">\(\phi_k(x)=\phi(x-2k)\)</span>. Then <span class="math" data-tex="\(\langle E,\phi_k\rangle=4^k\)">\(\langle E,\phi_k\rangle=4^k\)</span>, whereas every fixed Schwartz seminorm of <span class="math" data-tex="\(\phi_k\)">\(\phi_k\)</span> is bounded by a polynomial in <span class="math" data-tex="\(k\)">\(k\)</span>: the derivatives are translates of fixed derivatives, and their support has <span class="math" data-tex="\(|x|\le2k+1/2\)">\(|x|\le2k+1/2\)</span>. This contradicts exponential growth. For <span class="math" data-tex="\(\eta=-1/10\)">\(\eta=-1/10\)</span>, the weighted coefficients have ratio <span class="math" data-tex="\(4e^{-1/5}&gt;1\)">\(4e^{-1/5}&gt;1\)</span>, so the same argument proves non-temperedness although <span class="math" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span>.</p>
+<p>The compact kernel has transform <span class="math" data-tex="\(\widehat\mu(\zeta)=1-4e^{-2i\zeta}\)">\(\widehat\mu(\zeta)=1-4e^{-2i\zeta}\)</span>. Its zeros satisfy <span class="math" data-tex="\(e^{-2i\zeta}=1/4\)">\(e^{-2i\zeta}=1/4\)</span>. Writing <span class="math" data-tex="\(\zeta=\xi+i\eta\)">\(\zeta=\xi+i\eta\)</span>, their modulus and phase give</p>
+<span class="math math-display" data-tex="\[
+\eta=-\log2,\qquad \xi\in\pi\mathbb Z.
+\]">\[
+\eta=-\log2,\qquad \xi\in\pi\mathbb Z.
+\]</span>
+<p>Zeros occur at a fixed negative height. The theorem excludes them by requiring an imaginary height large compared with <span class="math" data-tex="\(\log(|\zeta|+2)\)">\(\log(|\zeta|+2)\)</span>. The support cone alone does not make every negative-height point nonzero.</p>
+<h3 id="a-complete-compact-approximation-to-the-delay-inverse">A complete compact approximation to the delay inverse</h3>
+<p><strong>Problem 5.</strong> For the distributions in Problem 4, define</p>
+<span class="math math-display" data-tex="\[
+F_N=\sum_{k=0}^N4^k\delta_{2k}
+\quad(N\ge0).
+\]">\[
+F_N=\sum_{k=0}^N4^k\delta_{2k}
+\quad(N\ge0).
+\]</span>
+<p>Find <span class="math" data-tex="\(R_N=\mu*F_N-\delta_0\)">\(R_N=\mu*F_N-\delta_0\)</span>, its support, its transform, and the region where <span class="math" data-tex="\(|\widehat R_N|&lt;1/2\)">\(|\widehat R_N|&lt;1/2\)</span>. Explain why the transform of <span class="math" data-tex="\(F_N\)">\(F_N\)</span> can bound a reciprocal even when <span class="math" data-tex="\(E\)">\(E\)</span> is not tempered.</p>
+<p><strong>Solution.</strong> All interior terms cancel exactly, leaving</p>
+<span class="math math-display" data-tex="\[
+R_N=-4^{N+1}\delta_{2(N+1)},\qquad
+\widehat R_N(\zeta)
+=-4^{N+1}e^{-2i(N+1)\zeta}.
+\]">\[
+R_N=-4^{N+1}\delta_{2(N+1)},\qquad
+\widehat R_N(\zeta)
+=-4^{N+1}e^{-2i(N+1)\zeta}.
+\]</span>
+<p>Its support is one point in <span class="math" data-tex="\(C=[0,\infty)\)">\(C=[0,\infty)\)</span>, away from zero. For <span class="math" data-tex="\(\eta&lt;0\)">\(\eta&lt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\widehat R_N(\xi+i\eta)|
+=(4e^{2\eta})^{N+1}.
+\]">\[
+|\widehat R_N(\xi+i\eta)|
+=(4e^{2\eta})^{N+1}.
+\]</span>
+<p>It is less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span> exactly when</p>
+<span class="math math-display" data-tex="\[
+\eta&lt;-\log2-\frac{\log2}{2(N+1)}.
+\]">\[
+\eta&lt;-\log2-\frac{\log2}{2(N+1)}.
+\]</span>
+<p>The compact identity <span class="math" data-tex="\(\widehat\mu\widehat F_N=1+\widehat R_N\)">\(\widehat\mu\widehat F_N=1+\widehat R_N\)</span> then gives</p>
+<span class="math math-display" data-tex="\[
+|1/\widehat\mu|\le2|\widehat F_N|.
+\]">\[
+|1/\widehat\mu|\le2|\widehat F_N|.
+\]</span>
+<p>Every distribution transformed here is compact. The proof does not form, interchange, or transform the infinite sum defining <span class="math" data-tex="\(E\)">\(E\)</span>. Increasing <span class="math" data-tex="\(N\)">\(N\)</span> approaches the true fixed zero height from below, but no <span class="math" data-tex="\(N\)">\(N\)</span> makes the reciprocal nonzero at that height.</p>
+<h3 id="angular-separation-is-part-of-the-estimate">Angular separation is part of the estimate</h3>
+<p><strong>Problem 6.</strong> For the wedge <span class="math" data-tex="\(C=\{(x,y):x\ge|y|\}\)">\(C=\{(x,y):x\ge|y|\}\)</span>, let <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\Gamma_\varepsilon
+=\{(p,q):p\le0,\ |q|\le(1-\varepsilon)(-p)\}.
+\]">\[
+\Gamma_\varepsilon
+=\{(p,q):p\le0,\ |q|\le(1-\varepsilon)(-p)\}.
+\]</span>
+<p>Prove the explicit bound</p>
+<span class="math math-display" data-tex="\[
+(x,y)\cdot(p,q)
+\le-\frac{\varepsilon}{2}|(x,y)||(p,q)|
+\quad((x,y)\in C,\ (p,q)\in\Gamma_\varepsilon).
+\]">\[
+(x,y)\cdot(p,q)
+\le-\frac{\varepsilon}{2}|(x,y)||(p,q)|
+\quad((x,y)\in C,\ (p,q)\in\Gamma_\varepsilon).
+\]</span>
+<p>Give a pair of boundary directions for which strict negativity fails.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(s=-p\ge0\)">\(s=-p\ge0\)</span>. Since <span class="math" data-tex="\(x\ge|y|\)">\(x\ge|y|\)</span>,</p>
+<span class="math math-display" data-tex="\[
+xp+yq\le-xs+x|q|
+\le-\varepsilon xs.
+\]">\[
+xp+yq\le-xs+x|q|
+\le-\varepsilon xs.
+\]</span>
+<p>Also <span class="math" data-tex="\(|(x,y)|\le\sqrt2x\)">\(|(x,y)|\le\sqrt2x\)</span> and <span class="math" data-tex="\(|(p,q)|\le\sqrt2s\)">\(|(p,q)|\le\sqrt2s\)</span>. Thus <span class="math" data-tex="\(xs\ge |(x,y)||(p,q)|/2\)">\(xs\ge |(x,y)||(p,q)|/2\)</span>, proving the bound. The zero-vector cases follow directly. At the boundary, <span class="math" data-tex="\(X=(1,1)\in C\)">\(X=(1,1)\in C\)</span> and <span class="math" data-tex="\(\eta=(-1,1)\in\partial\Gamma\)">\(\eta=(-1,1)\in\partial\Gamma\)</span> have zero pairing. As <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> tends to zero, the useful uniform coefficient can tend to zero. This is why Theorem 1.1 quantifies over each closed cone of interior directions separately.</p>
+<h3 id="turning-an-exponential-gain-into-a-logarithmic-threshold">Turning an exponential gain into a logarithmic threshold</h3>
+<p><strong>Problem 7.</strong> Suppose a compact remainder satisfies</p>
+<span class="math math-display" data-tex="\[
+|\widehat R(\zeta)|
+\le5(1+|\zeta|)^3e^{-(2/5)|\eta|},
+\qquad \eta=\operatorname{Im}\zeta.
+\]">\[
+|\widehat R(\zeta)|
+\le5(1+|\zeta|)^3e^{-(2/5)|\eta|},
+\qquad \eta=\operatorname{Im}\zeta.
+\]</span>
+<p>Find an explicit constant <span class="math" data-tex="\(L\)">\(L\)</span> such that <span class="math" data-tex="\(|\eta|&gt;L\log(|\zeta|+2)\)">\(|\eta|&gt;L\log(|\zeta|+2)\)</span> implies <span class="math" data-tex="\(|\widehat R(\zeta)|&lt;1/2\)">\(|\widehat R(\zeta)|&lt;1/2\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(u=\log(|\zeta|+2)\ge\log2\)">\(u=\log(|\zeta|+2)\ge\log2\)</span>. Then <span class="math" data-tex="\(\log(1+|\zeta|)\le u\)">\(\log(1+|\zeta|)\le u\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\log|\widehat R|\le\log5+3u-\frac25|\eta|.
+\]">\[
+\log|\widehat R|\le\log5+3u-\frac25|\eta|.
+\]</span>
+<p>Choose</p>
+<span class="math math-display" data-tex="\[
+L=\frac52\left(4+\frac{\log10}{\log2}\right).
+\]">\[
+L=\frac52\left(4+\frac{\log10}{\log2}\right).
+\]</span>
+<p>The strict height inequality makes the right side less than the expression bounded here:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log5-(1+\log10/\log2)u
+&amp;\le\log5-\log10-\log2\\
+&amp;=-\log4.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\log5-(1+\log10/\log2)u
+&amp;\le\log5-\log10-\log2\\
+&amp;=-\log4.
+\end{aligned}
+\]</span>
+<p>Thus <span class="math" data-tex="\(|\widehat R|&lt;1/4&lt;1/2\)">\(|\widehat R|&lt;1/4&lt;1/2\)</span>. The extra margin is harmless. The power of <span class="math" data-tex="\(|\zeta|\)">\(|\zeta|\)</span> is overcome because exponential decay at a height proportional to <span class="math" data-tex="\(\log|\zeta|\)">\(\log|\zeta|\)</span> becomes a negative power of <span class="math" data-tex="\(|\zeta|\)">\(|\zeta|\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, October 2, 2026. Sections 4.2–4.3, 8.1–8.2, and 11.2.5. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Author-hosted notes</a>. Theorem 11.31 states a ball version of the Paley–Wiener theorem; Proposition 4.1 above supplies the sharp support-function estimate with a complete proof.</li>
+<li>[Grubb] Gerd Grubb, <em>Distributions and Operators</em>, author-hosted Chapter 5, <em>Fourier transformation</em>, Sections on tempered distributions and the paragraph on entire extensions following Remark 5.18. <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Open chapter</a>. This is background and credit for the transform convention; no proof is delegated to it.</li>
+<li><a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a>, Theorem 1.1: convolution with a compact factor, support inclusion, tensor pairing and point-mass identities.</li>
+<li><a href="prerequisites/convex-supports-and-convolution-cancellation.html">Convex supports and convolution cancellation</a>, Theorem 3.1: the complete compact convolution support theorem. Its stated dependencies retain their own source and licence attribution.</li>
+</ul>
+<p><a href="reproduce-AN02-L115.html">Reproduction guide and original source downloads</a> · <a href="src/support-cones-force-reciprocal-bounds.md">Download the complete lesson source</a>.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

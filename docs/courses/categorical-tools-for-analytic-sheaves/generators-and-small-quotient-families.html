@@ -1,0 +1,194 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Generators and small quotient families</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="generators-and-small-quotient-families">Generators and small quotient families</h1>
+<p>A small family of probes can detect isomorphisms and encode subobjects by small sets. The probes must retain their separate outputs. An empty Hom set can erase information if all outputs are multiplied together.</p>
+<p>We use small Hom sets, a fixed universe of small indexing sets, and the Yoneda identification of maps from representable presheaves with elements. The basic presheaf convention is the one in <a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a>. A coproduct indexed by a small set is always meant in the category under discussion.</p>
+<h2 id="1-keep-the-family-of-probes">1. Keep the family of probes</h2>
+<p>Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a locally small category and <span class="math" data-tex="\((G_i)_{i\in I}\)">\((G_i)_{i\in I}\)</span> a small family. Its probe functor is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H:\mathcal C\longrightarrow\operatorname{Set}^{I},\\
+H(X)=(\operatorname{Hom}_{\mathcal C}(G_i,X))_{i\in I},
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+H:\mathcal C\longrightarrow\operatorname{Set}^{I},\\
+H(X)=(\operatorname{Hom}_{\mathcal C}(G_i,X))_{i\in I},
+\end{gathered}
+\tag{1.1}
+\]</span>
+where <span class="math" data-tex="\(I\)">\(I\)</span> is regarded as a discrete category. Isomorphisms in <span class="math" data-tex="\(\operatorname{Set}^{I}\)">\(\operatorname{Set}^{I}\)</span> are componentwise bijections.</p>
+<p>Call the family <strong>separating</strong> if <span class="math" data-tex="\(H\)">\(H\)</span> is faithful, and <strong>detecting</strong> if <span class="math" data-tex="\(H\)">\(H\)</span> is conservative: whenever every <span class="math" data-tex="\(\operatorname{Hom}(G_i,f)\)">\(\operatorname{Hom}(G_i,f)\)</span> is bijective, <span class="math" data-tex="\(f\)">\(f\)</span> is an isomorphism. A single detecting object will be called a detecting generator. A cogenerating family is defined by reversing arrows, using <span class="math" data-tex="\(\operatorname{Hom}(-,G_i)\)">\(\operatorname{Hom}(-,G_i)\)</span>.</p>
+<p>The canonical terminology in <a href="https://perso.uclouvain.be/enrico.vitale/pdfs/gab_CUP2.pdf">Adámek–Rosický–Vitale, Definition 6.1 and Remark 6.2</a> calls a separating family a generator, and a separating, conservative family a strong generator. The extra condition matters. In §2 we check that, when equalizers exist, a detecting family is automatically separating, so is a strong generator in that canonical sense.</p>
+<p>The functor in (1.1) is different from the set-valued functor
+<span class="math math-display" data-tex="\[
+P(X)=\prod_{i\in I}\operatorname{Hom}(G_i,X).
+\tag{1.2}
+\]">\[
+P(X)=\prod_{i\in I}\operatorname{Hom}(G_i,X).
+\tag{1.2}
+\]</span>
+In <span class="math" data-tex="\(\operatorname{Set}\times\operatorname{Set}\)">\(\operatorname{Set}\times\operatorname{Set}\)</span>, take
+<span class="math math-display" data-tex="\[
+G_1=(1,\varnothing),\qquad G_2=(\varnothing,1).
+\]">\[
+G_1=(1,\varnothing),\qquad G_2=(\varnothing,1).
+\]</span>
+Their separate Hom functors are the two coordinate projections, so jointly detect all isomorphisms. But <span class="math" data-tex="\(P(A,B)=A\times B\)">\(P(A,B)=A\times B\)</span>. The morphism
+<span class="math math-display" data-tex="\[
+(\varnothing,\varnothing)\longrightarrow(\varnothing,1)
+\tag{1.3}
+\]">\[
+(\varnothing,\varnothing)\longrightarrow(\varnothing,1)
+\tag{1.3}
+\]</span>
+is not an isomorphism, although its image under <span class="math" data-tex="\(P\)">\(P\)</span> is the bijection <span class="math" data-tex="\(\varnothing\to\varnothing\)">\(\varnothing\to\varnothing\)</span>. Thus a product of the output sets can hide a failed component.</p>
+<p>The coproduct <span class="math" data-tex="\(G_1\amalg G_2=(1,1)\)">\(G_1\amalg G_2=(1,1)\)</span> has Hom functor <span class="math" data-tex="\(P\)">\(P\)</span>, so is not a detecting generator. The usual identification
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}\!\left(\coprod_iG_i,X\right)
+\simeq\prod_i\operatorname{Hom}(G_i,X)
+\]">\[
+\operatorname{Hom}\!\left(\coprod_iG_i,X\right)
+\simeq\prod_i\operatorname{Hom}(G_i,X)
+\]</span>
+does not justify replacing an arbitrary detecting family by its coproduct.</p>
+<p>This replacement does work in a pointed category, which has a zero object. All these Hom sets then have distinguished zero maps. If the product map is bijective, each factor map is injective: place two competing elements in that coordinate and zero maps in all others. Each factor map is surjective: place any desired target element in that coordinate and target zero maps in the others, then lift the resulting tuple. Thus the product is bijective exactly when every factor is bijective. A coproduct of a detecting family is consequently a detecting generator in this pointed setting. This also covers the empty family whenever it is detecting.</p>
+<p>Useful examples retain the separate probes. A singleton detects isomorphisms of sets. For left modules over any unital ring <span class="math" data-tex="\(R\)">\(R\)</span>, evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> identifies <span class="math" data-tex="\(\operatorname{Hom}_R(R,M)\)">\(\operatorname{Hom}_R(R,M)\)</span> with the underlying set of <span class="math" data-tex="\(M\)">\(M\)</span>. A bijective module map has a linear inverse: apply the map to each addition and scalar-multiplication equation and use injectivity. Hence <span class="math" data-tex="\(R\)">\(R\)</span> is a detecting generator.</p>
+<p>For a small category <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, the representables <span class="math" data-tex="\(h_a\)">\(h_a\)</span> form a detecting family in <span class="math" data-tex="\(\operatorname{Set}^{\mathcal A^{op}}\)">\(\operatorname{Set}^{\mathcal A^{op}}\)</span>. Yoneda gives <span class="math" data-tex="\(\operatorname{Hom}(h_a,F)=F(a)\)">\(\operatorname{Hom}(h_a,F)=F(a)\)</span>, and a componentwise bijective natural transformation has a natural inverse by reversing its naturality squares. This is the exact contravariant version of <a href="https://perso.uclouvain.be/enrico.vitale/pdfs/gab_CUP2.pdf">Adámek–Rosický–Vitale, Example 6.6</a>. It asserts a family of generators; it makes no unsupported claim that their coproduct is a single detecting generator. A two-element set is a cogenerator in <span class="math" data-tex="\(\operatorname{Set}\)">\(\operatorname{Set}\)</span>, as Exercise 1 checks, including empty sets.</p>
+<h2 id="2-detection-gives-faithfulness-and-tests-cancellation">2. Detection gives faithfulness and tests cancellation</h2>
+<p><strong>Theorem 2.1.</strong> Suppose <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has equalizers and <span class="math" data-tex="\((G_i)\)">\((G_i)\)</span> is detecting. Then it is separating. For any morphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, <span class="math" data-tex="\(f\)">\(f\)</span> is a monomorphism exactly when all <span class="math" data-tex="\(\operatorname{Hom}(G_i,f)\)">\(\operatorname{Hom}(G_i,f)\)</span> are injective. If all these maps are surjective, <span class="math" data-tex="\(f\)">\(f\)</span> is an epimorphism.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(a,b: X\rightrightarrows Y\)">\(a,b: X\rightrightarrows Y\)</span> have equal images under every probe, and let <span class="math" data-tex="\(e:E\to X\)">\(e:E\to X\)</span> be their equalizer. Every <span class="math" data-tex="\(u:G_i\to X\)">\(u:G_i\to X\)</span> satisfies <span class="math" data-tex="\(au=bu\)">\(au=bu\)</span>, so factors uniquely through <span class="math" data-tex="\(e\)">\(e\)</span>. Hence every <span class="math" data-tex="\(\operatorname{Hom}(G_i,e)\)">\(\operatorname{Hom}(G_i,e)\)</span> is bijective. Detection makes <span class="math" data-tex="\(e\)">\(e\)</span> an isomorphism. Since <span class="math" data-tex="\(ae=be\)">\(ae=be\)</span>, this gives <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, proving faithfulness.</p>
+<p>A monomorphism induces injections under every Hom functor. Conversely, if the probe maps of <span class="math" data-tex="\(f\)">\(f\)</span> are injective and <span class="math" data-tex="\(fr=fs\)">\(fr=fs\)</span> for <span class="math" data-tex="\(r,s: Z\rightrightarrows X\)">\(r,s: Z\rightrightarrows X\)</span>, then <span class="math" data-tex="\(\operatorname{Hom}(G_i,r)=\operatorname{Hom}(G_i,s)\)">\(\operatorname{Hom}(G_i,r)=\operatorname{Hom}(G_i,s)\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. Faithfulness gives <span class="math" data-tex="\(r=s\)">\(r=s\)</span>.</p>
+<p>Finally suppose all probe maps of <span class="math" data-tex="\(f\)">\(f\)</span> are surjective. If <span class="math" data-tex="\(af=bf\)">\(af=bf\)</span> for <span class="math" data-tex="\(a,b: Y\rightrightarrows Z\)">\(a,b: Y\rightrightarrows Z\)</span>, every <span class="math" data-tex="\(u:G_i\to Y\)">\(u:G_i\to Y\)</span> has a lift <span class="math" data-tex="\(v:G_i\to X\)">\(v:G_i\to X\)</span>. Thus <span class="math" data-tex="\(au=afv=bfv=bu\)">\(au=afv=bfv=bu\)</span>; faithfulness gives <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. This is the epimorphism cancellation condition. No converse about surjectivity is asserted. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The equalizer argument checks the exact interface from our detecting convention to the canonical strong-generator convention. It requires no coproduct and preserves all empty Hom sets.</p>
+<p><strong>Theorem 2.2.</strong> In a balanced category, where every morphism that is both monic and epic is invertible, any separating family is detecting. Consequently, if equalizers also exist, separation and detection are equivalent.</p>
+<p><strong>Proof.</strong> Suppose all probe maps of <span class="math" data-tex="\(f\)">\(f\)</span> are bijective. The cancellation arguments in Theorem 2.1 use only faithfulness: their injectivity makes <span class="math" data-tex="\(f\)">\(f\)</span> monic, and their surjectivity makes it epic. Balancedness makes <span class="math" data-tex="\(f\)">\(f\)</span> invertible. The converse uses Theorem 2.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Balancedness cannot be dropped. A point separates continuous maps of topological spaces, while a continuous bijection need not have a continuous inverse. Exercise 3 gives the full witness.</p>
+<h2 id="3-canonical-coproduct-presentations">3. Canonical coproduct presentations</h2>
+<p>Assume <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has small coproducts and the family is separating. For <span class="math" data-tex="\(X\)">\(X\)</span>, form
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_X=\coprod_{\substack{i\in I\\u:G_i\to X}}G_i,\\
+e_X:E_X\longrightarrow X,
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+E_X=\coprod_{\substack{i\in I\\u:G_i\to X}}G_i,\\
+e_X:E_X\longrightarrow X,
+\end{gathered}
+\tag{3.1}
+\]</span>
+whose component indexed by <span class="math" data-tex="\((i,u)\)">\((i,u)\)</span> is <span class="math" data-tex="\(u\)">\(u\)</span>. The index is small because <span class="math" data-tex="\(I\)">\(I\)</span> and all relevant Hom sets are small.</p>
+<p>We retain <a href="https://perso.uclouvain.be/enrico.vitale/pdfs/gab_CUP2.pdf">Adámek–Rosický–Vitale, Proposition 6.3</a>: a separating family supplies these epimorphic presentations; a strong generating family supplies extremal epimorphic presentations. An epimorphism <span class="math" data-tex="\(e\)">\(e\)</span> is extremal if every factorization <span class="math" data-tex="\(e=mt\)">\(e=mt\)</span> with <span class="math" data-tex="\(m\)">\(m\)</span> monic forces <span class="math" data-tex="\(m\)">\(m\)</span> to be an isomorphism.</p>
+<p>Here are the full interface checks. If <span class="math" data-tex="\(ae_X=be_X\)">\(ae_X=be_X\)</span>, restricting to every coproduct component gives <span class="math" data-tex="\(au=bu\)">\(au=bu\)</span> for every probe map. Separation gives <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, so <span class="math" data-tex="\(e_X\)">\(e_X\)</span> is epic. If the family is also detecting and <span class="math" data-tex="\(e_X=mt\)">\(e_X=mt\)</span> with <span class="math" data-tex="\(m:B\to X\)">\(m:B\to X\)</span> monic, every <span class="math" data-tex="\(u:G_i\to X\)">\(u:G_i\to X\)</span> factors through <span class="math" data-tex="\(m\)">\(m\)</span>. Monicity makes that factorization unique. Therefore every <span class="math" data-tex="\(\operatorname{Hom}(G_i,m)\)">\(\operatorname{Hom}(G_i,m)\)</span> is bijective; detection makes <span class="math" data-tex="\(m\)">\(m\)</span> invertible. Thus <span class="math" data-tex="\(e_X\)">\(e_X\)</span> is extremal.</p>
+<p>Conversely, suppose every object is the target of an epimorphism from a small coproduct of family objects. Two arrows equal on all probe maps agree after such an epimorphism, hence agree. The family is separating. If every such presentation can be chosen extremal, a monomorphism <span class="math" data-tex="\(m:B\to X\)">\(m:B\to X\)</span> through which all probe maps factor receives a factorization of the presentation map; extremality makes <span class="math" data-tex="\(m\)">\(m\)</span> invertible. For a morphism whose probe maps are all bijective, separation makes it monic by cancellation, and then this last property makes it invertible. This proves the complete canonical equivalence without presuming any Hom factor nonempty.</p>
+<p>In a balanced category with equalizers and small coproducts, these arguments give three equivalent conditions for a single <span class="math" data-tex="\(G\)">\(G\)</span>: it is detecting; <span class="math" data-tex="\(\operatorname{Hom}(G,-)\)">\(\operatorname{Hom}(G,-)\)</span> is faithful; every <span class="math" data-tex="\(X\)">\(X\)</span> has an epimorphic presentation by a small coproduct of copies of <span class="math" data-tex="\(G\)">\(G\)</span>. In the forward direction (3.1) is the specified canonical presentation.</p>
+<p>The components in (3.1) vary with <span class="math" data-tex="\(X\)">\(X\)</span>. This construction is valid for an arbitrary detecting family; it does not replace the family by the fixed coproduct <span class="math" data-tex="\(\coprod_iG_i\)">\(\coprod_iG_i\)</span>.</p>
+<h2 id="4-small-subobjects-and-strict-quotients">4. Small subobjects and strict quotients</h2>
+<p>A subobject of <span class="math" data-tex="\(X\)">\(X\)</span> is a monomorphism <span class="math" data-tex="\(m:A\to X\)">\(m:A\to X\)</span>, with two such arrows identified when there is an isomorphism of their domains commuting with their maps to <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has pullbacks and a small detecting family, then the subobjects of each <span class="math" data-tex="\(X\)">\(X\)</span>, up to this identification, form a small collection.</p>
+<p><strong>Proof.</strong> Associate to a subobject <span class="math" data-tex="\(m\)">\(m\)</span> the tuple of subsets
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_i(m)=\operatorname{im}\bigl(\\
+\operatorname{Hom}(G_i,A)\to\operatorname{Hom}(G_i,X)\bigr).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+S_i(m)=\operatorname{im}\bigl(\\
+\operatorname{Hom}(G_i,A)\to\operatorname{Hom}(G_i,X)\bigr).
+\end{gathered}
+\tag{4.1}
+\]</span>
+Each probe map is injective because <span class="math" data-tex="\(m\)">\(m\)</span> is monic. The possible tuples belong to the small set
+<span class="math math-display" data-tex="\[
+\prod_{i\in I}\mathcal P(\operatorname{Hom}(G_i,X)).
+\tag{4.2}
+\]">\[
+\prod_{i\in I}\mathcal P(\operatorname{Hom}(G_i,X)).
+\tag{4.2}
+\]</span>
+This product stores subsets separately; it does not multiply the Hom sets themselves.</p>
+<p>If <span class="math" data-tex="\(m:A\to X\)">\(m:A\to X\)</span> and <span class="math" data-tex="\(n:B\to X\)">\(n:B\to X\)</span> give the same tuple, form <span class="math" data-tex="\(D=A\times_XB\)">\(D=A\times_XB\)</span>. Maps <span class="math" data-tex="\(G_i\to D\)">\(G_i\to D\)</span> are pairs with the same image in <span class="math" data-tex="\(\operatorname{Hom}(G_i,X)\)">\(\operatorname{Hom}(G_i,X)\)</span>. Equality of the two subsets and injectivity of both probe maps show that each projection <span class="math" data-tex="\(D\to A\)">\(D\to A\)</span> and <span class="math" data-tex="\(D\to B\)">\(D\to B\)</span> induces a bijection for every <span class="math" data-tex="\(i\)">\(i\)</span>. Detection makes both projections isomorphisms. Their composite gives the required isomorphism <span class="math" data-tex="\(A\simeq B\)">\(A\simeq B\)</span> over <span class="math" data-tex="\(X\)">\(X\)</span>. Thus the code (4.1) is injective on subobject classes, proving smallness. No small coproduct hypothesis is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a morphism <span class="math" data-tex="\(q:X\to Y\)">\(q:X\to Y\)</span>, call <span class="math" data-tex="\(q\)">\(q\)</span> a <strong>strict epimorphism</strong> if, for every <span class="math" data-tex="\(Z\)">\(Z\)</span>, precomposition with <span class="math" data-tex="\(q\)">\(q\)</span> identifies <span class="math" data-tex="\(\operatorname{Hom}(Y,Z)\)">\(\operatorname{Hom}(Y,Z)\)</span> with the maps <span class="math" data-tex="\(r:X\to Z\)">\(r:X\to Z\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+qa=qb\ \Longrightarrow\ ra=rb\\
+\text{for every pair }a,b: W\rightrightarrows X.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+qa=qb\ \Longrightarrow\ ra=rb\\
+\text{for every pair }a,b: W\rightrightarrows X.
+\end{gathered}
+\tag{4.3}
+\]</span>
+In particular the factorization through <span class="math" data-tex="\(q\)">\(q\)</span> is unique, so <span class="math" data-tex="\(q\)">\(q\)</span> is epic. The definition makes sense without assuming limits or colimits.</p>
+<p>The same condition has an exact presheaf formulation. Put
+<span class="math math-display" data-tex="\[
+Q_q(W)=\operatorname{im}\!\left(
+\operatorname{Hom}(W,X)\to\operatorname{Hom}(W,Y)
+\right).
+\]">\[
+Q_q(W)=\operatorname{im}\!\left(
+\operatorname{Hom}(W,X)\to\operatorname{Hom}(W,Y)
+\right).
+\]</span>
+A map <span class="math" data-tex="\(r:X\to Z\)">\(r:X\to Z\)</span> satisfying (4.3) defines a natural transformation <span class="math" data-tex="\(Q_q\to h_Z\)">\(Q_q\to h_Z\)</span> by <span class="math" data-tex="\(qa\mapsto ra\)">\(qa\mapsto ra\)</span>. Equal representatives give equal results by (4.3), and precomposition proves naturality. Conversely, evaluate such a transformation at <span class="math" data-tex="\(q\in Q_q(X)\)">\(q\in Q_q(X)\)</span> to obtain <span class="math" data-tex="\(r\)">\(r\)</span>. Naturality along <span class="math" data-tex="\(a:W\to X\)">\(a:W\to X\)</span> gives its value <span class="math" data-tex="\(ra\)">\(ra\)</span> at <span class="math" data-tex="\(qa\)">\(qa\)</span>, so these constructions are inverse. Restriction of <span class="math" data-tex="\(h_Y\to h_Z\)">\(h_Y\to h_Z\)</span> corresponds to precomposition with <span class="math" data-tex="\(q\)">\(q\)</span>. Thus strictness is exactly the assertion that, for every <span class="math" data-tex="\(Z\)">\(Z\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(Y,Z)\simeq
+\operatorname{Nat}(Q_q,h_Z).
+\tag{4.4}
+\]">\[
+\operatorname{Hom}(Y,Z)\simeq
+\operatorname{Nat}(Q_q,h_Z).
+\tag{4.4}
+\]</span></p>
+<p>If the kernel pair <span class="math" data-tex="\(X\times_YX\rightrightarrows X\)">\(X\times_YX\rightrightarrows X\)</span> exists, (4.3) says exactly that <span class="math" data-tex="\(q\)">\(q\)</span> is its coequalizer. Indeed each competing pair <span class="math" data-tex="\(a,b\)">\(a,b\)</span> factors through the kernel pair, while its own projections are one of the competing pairs. Thus the two equalizing conditions coincide, and the required bijection of Hom sets is precisely the coequalizer universal property.</p>
+<p>A coequalizer of any pair is also strict: a map satisfying (4.3) equalizes that particular pair, so descends uniquely. Hence, when kernel pairs exist, strict epimorphisms are exactly regular epimorphisms, meaning coequalizers of some parallel pair. No assertion that all epimorphisms are regular is needed.</p>
+<p>A strict quotient of <span class="math" data-tex="\(X\)">\(X\)</span> is a strict epimorphism <span class="math" data-tex="\(q:X\to Y\)">\(q:X\to Y\)</span>, up to an isomorphism of targets commuting with <span class="math" data-tex="\(q\)">\(q\)</span>.
+A strict monomorphism is a strict epimorphism in the opposite category; its class, with a fixed target and isomorphisms of domains over that target, is a strict subobject.</p>
+<p><strong>Corollary 4.2.</strong> If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has finite limits and a small detecting family, its strict quotients of each <span class="math" data-tex="\(X\)">\(X\)</span> form a small collection.</p>
+<p><strong>Proof.</strong> Send <span class="math" data-tex="\(q\)">\(q\)</span> to its kernel pair regarded as a subobject
+<span class="math math-display" data-tex="\[
+R_q=X\times_YX\longrightarrow X\times X.
+\tag{4.5}
+\]">\[
+R_q=X\times_YX\longrightarrow X\times X.
+\tag{4.5}
+\]</span>
+This arrow is monic: its two coordinates uniquely determine any arrow into the pullback. Theorem 4.1 makes the possible subobject classes small. If two quotients give the same subobject, they coequalize the same two coordinate maps <span class="math" data-tex="\(R_q\rightrightarrows X\)">\(R_q\rightrightarrows X\)</span>. Since both are their coequalizer, the universal property gives unique compatible arrows in both directions. Uniqueness makes their composites identities. The quotients are therefore equivalent. The kernel-pair code is injective, proving the corollary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the strict-quotient bound without a small coproduct assumption. It does not bound arbitrary epimorphic quotients. Reversing the argument gives the corresponding strict-subobject statement under finite colimits and a small detecting cogenerating family.</p>
+<h2 id="5-graded-exercises-with-complete-solutions">5. Graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Classify the detecting generators and detecting cogenerators of <span class="math" data-tex="\(\operatorname{Set}\)">\(\operatorname{Set}\)</span>. Include the empty set.</p>
+<p><strong>Solution.</strong> A detecting generator is exactly a nonempty set <span class="math" data-tex="\(G\)">\(G\)</span>. If <span class="math" data-tex="\(\operatorname{Hom}(G,f)\)">\(\operatorname{Hom}(G,f)\)</span> is bijective, injectivity separates constant maps to two elements of the source, so <span class="math" data-tex="\(f\)">\(f\)</span> is injective. Every constant map from <span class="math" data-tex="\(G\)">\(G\)</span> to an element of the target has a lift, so <span class="math" data-tex="\(f\)">\(f\)</span> is surjective. Its inverse is a set map. This argument also handles an empty source: a nonempty target would supply a constant map with no lift. In contrast <span class="math" data-tex="\(\operatorname{Hom}(\varnothing,X)\)">\(\operatorname{Hom}(\varnothing,X)\)</span> is always a singleton, so <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> does not detect a noninvertible map.</p>
+<p>A detecting cogenerator is exactly a set <span class="math" data-tex="\(Q\)">\(Q\)</span> with at least two elements. Suppose precomposition <span class="math" data-tex="\(Q^Y\to Q^X\)">\(Q^Y\to Q^X\)</span> along <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> is bijective. If <span class="math" data-tex="\(f(x)=f(x&#x27;)\)">\(f(x)=f(x&#x27;)\)</span> with <span class="math" data-tex="\(x\ne x&#x27;\)">\(x\ne x&#x27;\)</span>, choose a function <span class="math" data-tex="\(X\to Q\)">\(X\to Q\)</span> taking different values there. It cannot be pulled back from <span class="math" data-tex="\(Y\)">\(Y\)</span>, contradicting surjectivity. If <span class="math" data-tex="\(y\notin f(X)\)">\(y\notin f(X)\)</span>, two functions <span class="math" data-tex="\(Y\to Q\)">\(Y\to Q\)</span> differing only at <span class="math" data-tex="\(y\)">\(y\)</span> pull back equally, contradicting injectivity. Hence <span class="math" data-tex="\(f\)">\(f\)</span> is bijective. For <span class="math" data-tex="\(Q\)">\(Q\)</span> a singleton, every probe map is a bijection. For <span class="math" data-tex="\(Q=\varnothing\)">\(Q=\varnothing\)</span>, the noninvertible inclusion <span class="math" data-tex="\(1\to2\)">\(1\to2\)</span> induces the bijection <span class="math" data-tex="\(\varnothing\to\varnothing\)">\(\varnothing\to\varnothing\)</span>. Thus neither detects all isomorphisms.</p>
+<p><strong>Exercise 2 (moderate).</strong> Prove that <span class="math" data-tex="\(\operatorname{Set}\times\operatorname{Set}\)">\(\operatorname{Set}\times\operatorname{Set}\)</span> has the two-object detecting family in §1 and has no single detecting generator.</p>
+<p><strong>Solution.</strong> Maps from <span class="math" data-tex="\((1,\varnothing)\)">\((1,\varnothing)\)</span> to <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span> are precisely elements of <span class="math" data-tex="\(A\)">\(A\)</span>; maps from <span class="math" data-tex="\((\varnothing,1)\)">\((\varnothing,1)\)</span> are elements of <span class="math" data-tex="\(B\)">\(B\)</span>. Both probe maps are bijective exactly when both coordinate maps are bijective.</p>
+<p>For an arbitrary proposed generator <span class="math" data-tex="\(G=(G_1,G_2)\)">\(G=(G_1,G_2)\)</span>, if both coordinates are nonempty, use the noninvertible map (1.3). Both its source and target Hom sets from <span class="math" data-tex="\(G\)">\(G\)</span> are empty because the first coordinate is empty. If <span class="math" data-tex="\(G_1=\varnothing\)">\(G_1=\varnothing\)</span>, use
+<span class="math math-display" data-tex="\[
+(\varnothing,1)\longrightarrow(1,1).
+\]">\[
+(\varnothing,1)\longrightarrow(1,1).
+\]</span>
+The first-coordinate Hom sets are both singletons, and the second-coordinate Hom sets into <span class="math" data-tex="\(1\)">\(1\)</span> are also singletons, whatever <span class="math" data-tex="\(G_2\)">\(G_2\)</span> is. The induced map is bijective but the original map is not invertible. If <span class="math" data-tex="\(G_2=\varnothing\)">\(G_2=\varnothing\)</span>, the symmetric map
+<span class="math" data-tex="\((1,\varnothing)\to(1,1)\)">\((1,\varnothing)\to(1,1)\)</span> gives the same failure. These cases exhaust all <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>This category is also the presheaf category on a discrete two-object category. Its representables are a detecting family, whose fixed coproduct fails to detect isomorphisms. Under a literal product-valued family test even the representable example fails; under the componentwise test it is valid and the coproduct replacement fails. The two readings cannot be interchanged.</p>
+<p><strong>Exercise 3 (hard).</strong> Give a continuous map that is monic and epic and induces a bijection on point probes, but is not invertible or a strict epimorphism. Explain which hypothesis of Theorem 2.2 fails.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(X=\{0,1\}\)">\(X=\{0,1\}\)</span> have the discrete topology and <span class="math" data-tex="\(Y=\{0,1\}\)">\(Y=\{0,1\}\)</span> the indiscrete topology. The identity set map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> is continuous and bijective. It is monic by injectivity of its underlying function, and epic by surjectivity: two continuous maps agreeing after <span class="math" data-tex="\(f\)">\(f\)</span> agree at every point. The inverse is not continuous, because the singleton <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, open in <span class="math" data-tex="\(X\)">\(X\)</span>, has a nonopen preimage in <span class="math" data-tex="\(Y\)">\(Y\)</span>. Thus the category of all topological spaces is not balanced.</p>
+<p>Maps from a point are elements, so its probe map is bijective. Point probes are faithful, because distinct continuous maps differ at a point; they are not conservative. Finally the kernel pair of <span class="math" data-tex="\(f\)">\(f\)</span> is the diagonal pair of <span class="math" data-tex="\(X\)">\(X\)</span>, since <span class="math" data-tex="\(f\)">\(f\)</span> is injective. If <span class="math" data-tex="\(f\)">\(f\)</span> were strict, it would coequalize that identical pair universally; the map <span class="math" data-tex="\(1_X\)">\(1_X\)</span> would then factor continuously through <span class="math" data-tex="\(f\)">\(f\)</span>, giving its forbidden inverse. Hence it is not strict. This also shows why Corollary 4.2 distinguishes strict quotients from arbitrary epimorphic quotients.</p>
+<p><strong>Exercise 4 (expert).</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be any group. In the category of left <span class="math" data-tex="\(H\)">\(H\)</span>-sets, classify the strict quotients of the regular left <span class="math" data-tex="\(H\)">\(H\)</span>-set <span class="math" data-tex="\(H\)">\(H\)</span>, retaining the specified map from <span class="math" data-tex="\(H\)">\(H\)</span>. Describe when one quotient factors through another.</p>
+<p><strong>Solution.</strong> For any <span class="math" data-tex="\(H\)">\(H\)</span>-set <span class="math" data-tex="\(X\)">\(X\)</span>, evaluation at the group identity identifies <span class="math" data-tex="\(\operatorname{Hom}_H(H,X)\)">\(\operatorname{Hom}_H(H,X)\)</span> with its underlying set. The inverse sends <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(h\mapsto hx\)">\(h\mapsto hx\)</span>. A bijective equivariant map has an equivariant inverse, so <span class="math" data-tex="\(H\)">\(H\)</span> is a detecting generator, consistently with the Cayley probe in <a href="https://emilyriehl.github.io/files/context.pdf">Riehl, Example 2.3.7</a>.</p>
+<p>A strict epimorphism is surjective here. Indeed its kernel-pair coequalizer is the set quotient by the kernel equivalence relation, with the induced <span class="math" data-tex="\(H\)">\(H\)</span>-action, hence is surjective. Conversely a surjective equivariant map is the coequalizer of its kernel pair: a map constant on every fibre descends uniquely as a set map, and the descended map is equivariant by applying it to <span class="math" data-tex="\(hx\)">\(hx\)</span>. Thus it is strict.</p>
+<p>For a strict quotient <span class="math" data-tex="\(q:H\to X\)">\(q:H\to X\)</span>, put <span class="math" data-tex="\(x=q(1)\)">\(x=q(1)\)</span>. Surjectivity and equivariance give <span class="math" data-tex="\(X=Hx\)">\(X=Hx\)</span>. The stabilizer
+<span class="math math-display" data-tex="\[
+K=\{h\in H:hx=x\}
+\]">\[
+K=\{h\in H:hx=x\}
+\]</span>
+is a subgroup. The map <span class="math" data-tex="\(H/K\to X\)">\(H/K\to X\)</span>, <span class="math" data-tex="\(hK\mapsto hx\)">\(hK\mapsto hx\)</span>, is well-defined, equivariant and bijective: <span class="math" data-tex="\(hx=h&#x27;x\)">\(hx=h&#x27;x\)</span> exactly when <span class="math" data-tex="\(h&#x27;^{-1}h\in K\)">\(h&#x27;^{-1}h\in K\)</span>. It carries the specified quotient map <span class="math" data-tex="\(H\to H/K\)">\(H\to H/K\)</span> to <span class="math" data-tex="\(q\)">\(q\)</span>. Conversely every subgroup <span class="math" data-tex="\(K\)">\(K\)</span> gives such a strict quotient.</p>
+<p>A compatible isomorphism must carry <span class="math" data-tex="\(q(1)\)">\(q(1)\)</span> to the other distinguished point and therefore preserve its stabilizer. Hence quotient classes correspond to the actual subgroups <span class="math" data-tex="\(K\)">\(K\)</span>, with no conjugacy identification and no normality requirement. A compatible factorization <span class="math" data-tex="\(H/K\to H/L\)">\(H/K\to H/L\)</span> exists exactly when <span class="math" data-tex="\(K\subseteq L\)">\(K\subseteq L\)</span>; then it is uniquely <span class="math" data-tex="\(hK\mapsto hL\)">\(hK\mapsto hL\)</span>. Necessity follows because every element fixing the distinguished source point must fix its image. This concretely realizes the small kernel-pair code: the relation is <span class="math" data-tex="\(h\sim h&#x27;\)">\(h\sim h&#x27;\)</span> exactly when <span class="math" data-tex="\(h&#x27;^{-1}h\in K\)">\(h&#x27;^{-1}h\in K\)</span>.</p>
+<p>Original exposition and solutions are dedicated to CC0 1.0. Canonical results are retained through the cited interfaces without reproducing their text. Self-checked; no independent review has occurred.</p>
+</main></body></html>

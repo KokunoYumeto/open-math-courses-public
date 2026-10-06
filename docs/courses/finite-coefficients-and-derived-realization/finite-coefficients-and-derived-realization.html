@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finite coefficients and derived realization</title>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body>
+<nav aria-label="Course"><a href="index.html">Finite coefficients and derived realization</a></nav>
+<main>
+<h1 id="finite-coefficients-and-derived-realization">Finite coefficients
+and derived realization</h1>
+<p>A complex with finite cohomology need not visibly have finite terms.
+This reading proves how finite subcomplexes preserve objects, morphisms
+and nullhomotopies, and gives the extra injective-module argument needed
+for constructible sheaves on a fixed stratification. Four exercises have
+complete solutions.</p>
+<p><em>Original teaching text and solutions by GPT-6.1 Sol (OpenAI),
+Ultra, October 2026. CC0.</em></p>
+<h2 id="setting-and-earlier-comparisons">Setting and earlier
+comparisons</h2>
+<p>Bounded derived categories, cohomology truncations, ordinary sheaf
+adjunctions and the published derived-category foundations linked below
+are prerequisites. The algebraic comparisons cover arbitrary left
+Noetherian rings where stated; torsion and the injective construction
+use commutative Noetherian or finitely generated commutative algebras
+with their precise hypotheses.</p>
+<p>The <span class="unlinked">earlier
+fixed-stratification reading</span> proves the unrestricted realization
+criterion. Its equation 31 defines the finite normal stratifications
+used below: compatible ball-times-cone neighborhoods, connected manifold
+strata and incident link pieces with finitely many connected components.
+Its equation 26 is the stalkwise adjunction embedding into a finite sum
+of stratum direct images. Its equation 35 proves unrestricted
+realization for the three torus-orbit strata of the projective line.
+This reading supplies the separate finite-heart argument, and uses those
+exact earlier results only at the identified applications.</p>
+<p>Equations 36–49 retain their locators in the existing
+derived-constructibility lesson. A union of finite-dimensional monodromy
+modules is called ind-finite; it may itself have infinite-dimensional
+stalks.</p>
+<h2 id="passing-from-finite-cohomology-to-the-finite-heart">Passing from
+finite cohomology to the finite heart</h2>
+<p>The fixed-stratification theorem has an unrestricted heart: its stalk
+modules need not be finite. We now prove the additional comparison for
+finite stalks. The two mechanisms are different. A Noetherian module
+calculation produces finite subcomplexes. For constructible sheaves,
+suitable injectives first make the same finite extraction possible.</p>
+<p>The modern reference is Lunts and Schnürer’s <a
+href="https://arxiv.org/html/2601.05477v1"><em>Categories of
+constructible sheaves</em></a>, including its finite-type variants. The
+full arguments below retain the distinction between modules annihilated
+by an ideal and modules annihilated by a power of it. They also spell
+out faithfulness, where a nullhomotopy must survive the finite
+replacement.</p>
+<p>We use the programme’s published <a
+href="https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/complexes-cones-and-localization.html#4-fractions-at-quasi-isomorphisms">derived-category
+foundations</a> for roofs and common refinements, and <a
+href="https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#3-complexes-that-admit-comparison-maps">bounded-below
+injective comparison</a>. Those foundations retain their stated human
+attribution and GFDL terms; their expression is not imported here. All
+derived categories in the new finite-heart comparisons are bounded.</p>
+<h3 id="a-finite-subcomplex-that-retains-specified-data">A finite
+subcomplex that retains specified data</h3>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒜</mi><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math></span>
+be an abelian category, and let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">ℱ</mi><mo>⊂</mo><mi mathvariant="script">𝒜</mi></mrow><annotation encoding="application/x-tex">\mathcal F\subset\mathcal A</annotation></semantics></math></span>
+be a Serre subcategory of Noetherian objects. Thus subobjects, quotients
+and extensions of its objects remain in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℱ</mi><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span>,
+and ascending chains of subobjects of each such object stabilize.
+Suppose the terms of a bounded-below complex
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+are directed unions of their subobjects in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℱ</mi><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span>,
+and the same is true of their subobjects. Assume
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>n</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi mathvariant="script">ℱ</mi></mrow><annotation encoding="application/x-tex">H^n(J)\in\mathcal F</annotation></semantics></math></span>,
+with only finitely many nonzero cohomology objects.</p>
+<p>We require the following detection property: if a directed union maps
+epimorphically onto an object of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℱ</mi><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span>,
+some member does so. For finite modules this follows by lifting a finite
+set of generators. For finite-stratum, finite-stalk sheaves it follows
+by stabilization of the images on one stalk in each stratum.
+Directedness then combines the finitely many choices.</p>
+<p><strong>Finite extraction lemma.</strong> Every bounded subcomplex
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>⊂</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">D\subset J</annotation></semantics></math></span>
+with terms in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℱ</mi><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span>
+is contained in a bounded subcomplex
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>⊂</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">K\subset J</annotation></semantics></math></span>
+with terms in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℱ</mi><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span>
+such that</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>⊂</mo><mi>K</mi><mo>⊂</mo><mi>J</mi><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>H</mi><mi>n</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>K</mi><mo stretchy="false" form="postfix">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msup><mi>H</mi><mi>n</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for every </mtext><mspace width="0.333em"></mspace></mrow><mi>n</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(36)</mtext></mrow><annotation encoding="application/x-tex">
+D\subset K\subset J,\qquad H^n(K)\xrightarrow{\sim}H^n(J)
+\quad\text{for every }n.
+\qquad\text{(36)}
+</annotation></semantics></math></span></p>
+<p><strong>Proof.</strong> Choose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mi>n</mi></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">J^n=0</annotation></semantics></math></span>
+for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">n&lt;a</annotation></semantics></math></span>,
+and choose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+at least as large as the top degree of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math></span>
+and of the nonzero cohomology of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>.
+In degree
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>,
+choose a finite subobject of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Z</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Z^b(J)</annotation></semantics></math></span>
+surjecting onto
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H^b(J)</annotation></semantics></math></span>,
+and add
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mi>b</mi></msup><annotation encoding="application/x-tex">D^b</annotation></semantics></math></span>.
+This still lies in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Z</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Z^b(J)</annotation></semantics></math></span>,
+because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mrow><mi>b</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">D^{b+1}=0</annotation></semantics></math></span>.</p>
+<p>Suppose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mi>n</mi></msup><annotation encoding="application/x-tex">K^n</annotation></semantics></math></span>
+has been chosen. The object
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>K</mi><mi>n</mi></msup><mo>∩</mo><msup><mi>B</mi><mi>n</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">K^n\cap B^n(J)</annotation></semantics></math></span>
+is finite, by the Serre property. Its preimage under
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>→</mo><msup><mi>B</mi><mi>n</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">J^{n-1}\to B^n(J)</annotation></semantics></math></span>
+is a union of finite subobjects. The detection property supplies one
+whose differential maps onto that intersection. Separately choose a
+finite subobject of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Z</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Z^{n-1}(J)</annotation></semantics></math></span>
+mapping onto
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H^{n-1}(J)</annotation></semantics></math></span>.
+Add both choices and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">D^{n-1}</annotation></semantics></math></span>
+inside the preimage of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mi>n</mi></msup><annotation encoding="application/x-tex">K^n</annotation></semantics></math></span>.
+Their finite sum is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">K^{n-1}</annotation></semantics></math></span>.
+The inclusion of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">D^{n-1}</annotation></semantics></math></span>
+is allowed because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>D</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>⊂</mo><msup><mi>D</mi><mi>n</mi></msup><mo>⊂</mo><msup><mi>K</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">dD^{n-1}\subset D^n\subset K^n</annotation></semantics></math></span>.</p>
+<p>The new boundaries of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math></span>
+in degree
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math></span>
+are exactly
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>K</mi><mi>n</mi></msup><mo>∩</mo><msup><mi>B</mi><mi>n</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>J</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">K^n\cap B^n(J)</annotation></semantics></math></span>.
+Thus the cohomology map in that degree is injective. The previously
+chosen cycle representatives make it surjective. Descend through the
+finite interval
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>,</mo><mi>b</mi><mo>−</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">b,b-1,\ldots,a</annotation></semantics></math></span>.
+In degree
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>,
+there are no ambient boundaries, because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mrow><mi>a</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">J^{a-1}=0</annotation></semantics></math></span>;
+surjectivity from the chosen cycles is therefore also injectivity there.
+Put
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>K</mi><mi>n</mi></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">K^n=0</annotation></semantics></math></span>
+outside the interval. Above
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>,
+both cohomologies vanish. This proves (36).
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<p>A useful relative form needs no finite preimage under a quotient: add
+the specified finite data at each step of this construction. In
+particular, images of maps from bounded finite complexes, and images of
+a specified homotopy, can all be retained.</p>
+<h3 id="finitely-generated-modules-inside-all-modules">Finitely
+generated modules inside all modules</h3>
+<p><strong>Proposition.</strong> For a left Noetherian ring
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>,
+writing
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mrow><mi>f</mi><mi>g</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{mod}_{fg}(A)</annotation></semantics></math></span>
+for its finitely generated left modules, inclusion induces</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><msub><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mrow><mi>f</mi><mi>g</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msubsup><mi>D</mi><mrow><mi>f</mi><mi>g</mi></mrow><mi>b</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">Mod</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(37)</mtext></mrow><annotation encoding="application/x-tex">
+D^b(\operatorname{mod}_{fg}(A))
+\xrightarrow{\sim}
+D^b_{fg}(\operatorname{Mod}(A)).
+\qquad\text{(37)}
+</annotation></semantics></math></span></p>
+<p>No finite global dimension is required.</p>
+<p><strong>Proof.</strong> Every module is the directed union of its
+finitely generated submodules. Submodules of finitely generated modules
+are finitely generated because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+is left Noetherian. Apply (36) to a bounded representative
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math></span>
+with finitely generated cohomology, taking
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">D=0</annotation></semantics></math></span>.
+It gives a bounded finite subcomplex
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>→</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">K\to C</annotation></semantics></math></span>
+that is a quasi-isomorphism, proving essential surjectivity.</p>
+<p>For fullness, an ambient morphism between bounded finite complexes is
+a left roof
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>←</mo><mi>C</mi><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">F\leftarrow C\to G</annotation></semantics></math></span>,
+whose left arrow is a quasi-isomorphism. Its middle complex has finite
+cohomology. Replace
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math></span>
+by the finite
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>⊂</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">K\subset C</annotation></semantics></math></span>
+just constructed and restrict both maps. The resulting roof is entirely
+finite and represents the same morphism.</p>
+<p>For faithfulness, take a finite roof whose ambient morphism is zero.
+The common-refinement and cancellation criterion in the linked
+foundations supplies a bounded quasi-isomorphism into its middle complex
+on which its numerator is nullhomotopic. That new middle complex again
+has finite cohomology. Replace it by a finite subcomplex and restrict
+the maps and homotopy. The left composite remains a quasi-isomorphism,
+and the restricted homotopy still kills the numerator. This is a finite
+witness that the source roof is zero. Differences of two roofs reduce to
+this case.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<h3 id="the-quotient-criterion-in-its-full-abelian-generality">The
+quotient criterion in its full abelian generality</h3>
+<p><strong>Proposition.</strong> Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>
+be a strictly full abelian subcategory of an abelian category
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒜</mi><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math></span>,
+with exact inclusion, closed under extensions. Suppose every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>∈</mo><mi mathvariant="script">𝒜</mi></mrow><annotation encoding="application/x-tex">M\in\mathcal A</annotation></semantics></math></span>
+has a subobject
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></span>
+such that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><mi>N</mi><mo>∈</mo><mi mathvariant="script">ℬ</mi></mrow><annotation encoding="application/x-tex">M/N\in\mathcal B</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></span>
+has no nonzero subobject belonging to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>.
+Then</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">ℬ</mi><mo stretchy="false" form="postfix">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msubsup><mi>D</mi><mi mathvariant="script">ℬ</mi><mi>b</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">𝒜</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(38)</mtext></mrow><annotation encoding="application/x-tex">
+D^b(\mathcal B)\xrightarrow{\sim}D^b_{\mathcal B}(\mathcal A).
+\qquad\text{(38)}
+</annotation></semantics></math></span></p>
+<p><strong>Proof.</strong> Take a bounded complex
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math></span>
+with cohomology in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>.
+Beginning at its lowest degree, let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math></span>
+be the first degree whose term is not yet in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>.
+The boundaries and cycles through this degree belong to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>.
+Indeed the bottom boundary is zero; if
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>B</mi><mi>i</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi mathvariant="script">ℬ</mi></mrow><annotation encoding="application/x-tex">B^i(C)\in\mathcal B</annotation></semantics></math></span>,
+its extension by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>i</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H^i(C)</annotation></semantics></math></span>
+gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Z</mi><mi>i</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi mathvariant="script">ℬ</mi></mrow><annotation encoding="application/x-tex">Z^i(C)\in\mathcal B</annotation></semantics></math></span>,
+and for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>&lt;</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">i&lt;t</annotation></semantics></math></span>
+the cokernel of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Z</mi><mi>i</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><msup><mi>C</mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">Z^i(C)\to C^i</annotation></semantics></math></span>,
+a map between objects of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>,
+gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>B</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi mathvariant="script">ℬ</mi></mrow><annotation encoding="application/x-tex">B^{i+1}(C)\in\mathcal B</annotation></semantics></math></span>.
+Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Z</mi><mi>t</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi mathvariant="script">ℬ</mi></mrow><annotation encoding="application/x-tex">Z^t(C)\in\mathcal B</annotation></semantics></math></span>.</p>
+<p>Choose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>⊂</mo><msup><mi>C</mi><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">P\subset C^t</annotation></semantics></math></span>
+as in the hypothesis. The intersection
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>∩</mo><msup><mi>Z</mi><mi>t</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P\cap Z^t(C)</annotation></semantics></math></span>
+is the kernel of the map
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Z</mi><mi>t</mi></msup><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><msup><mi>C</mi><mi>t</mi></msup><mi>/</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">Z^t(C)\to C^t/P</annotation></semantics></math></span>.
+Both its source and target belong to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>;
+exact abelian inclusion puts its kernel in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>.
+The hypothesis on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math></span>
+makes that kernel zero. Consequently
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>:</mo><mi>P</mi><mo>→</mo><mi>d</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">d:P\to dP</annotation></semantics></math></span>
+is an isomorphism. Quotient out the acyclic subcomplex</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mover><mo>→</mo><mrow><mspace width="0.167em"></mspace><mi>d</mi><mspace width="0.167em"></mspace></mrow></mover><mi>d</mi><mi>P</mi><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">in degrees </mtext><mspace width="0.333em"></mspace></mrow><mi>t</mi><mo>,</mo><mi>t</mi><mo>+</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(39)</mtext></mrow><annotation encoding="application/x-tex">
+P\xrightarrow{\,d\,}dP
+\quad\text{in degrees }t,t+1.
+\qquad\text{(39)}
+</annotation></semantics></math></span></p>
+<p>The quotient has its term of degree
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math></span>
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>,
+changes no earlier terms, and has the same cohomology. Repeat through
+the finite degree interval. At the final degree the same argument forces
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">P=0</annotation></semantics></math></span>
+if it would have a zero outgoing differential. We obtain a
+quasi-isomorphism
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>→</mo><msup><mi>C</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">C\to C&#39;</annotation></semantics></math></span>
+with all terms in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>.</p>
+<p>Represent morphisms by right roofs
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>→</mo><mi>C</mi><mo>←</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">F\to C\leftarrow G</annotation></semantics></math></span>.
+Compose both maps with this quotient replacement. This proves fullness
+and essential surjectivity. For faithfulness, the right-fraction
+cancellation criterion represents an ambient zero by a quasi-isomorphism
+out of the roof’s middle complex on which its numerator is
+nullhomotopic. Apply the same quotient replacement to that complex and
+compose the homotopy with the quotient. All maps and that homotopy then
+have terms in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>,
+because both their sources and targets do. The resulting right roof is
+zero already in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">ℬ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">D^b(\mathcal B)</annotation></semantics></math></span>.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<p>This proof does not require arbitrary subobject closure of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℬ</mi><annotation encoding="application/x-tex">\mathcal B</annotation></semantics></math></span>.
+The intersection is controlled by a kernel between two of its own
+objects. That distinction retains the full abelian and extension-closed
+form of the criterion.</p>
+<h3 id="ideal-power-torsion-retains-the-extensions">Ideal-power torsion
+retains the extensions</h3>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+now be commutative Noetherian, let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>⊂</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">J\subset A</annotation></semantics></math></span>
+be an ideal, and let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒯</mi><mi>J</mi></msub><annotation encoding="application/x-tex">\mathcal T_J</annotation></semantics></math></span>
+consist of finitely generated modules killed by some power of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>.
+This is a Serre subcategory of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">mod</mi><mo>&#8289;</mo></mrow><mrow><mi>f</mi><mi>g</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{mod}_{fg}(A)</annotation></semantics></math></span>.
+In an extension, if powers
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>J</mi><mi>r</mi></msup><annotation encoding="application/x-tex">J^r</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>J</mi><mi>s</mi></msup><annotation encoding="application/x-tex">J^s</annotation></semantics></math></span>
+kill the outer terms, then
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>J</mi><mrow><mi>r</mi><mo>+</mo><mi>s</mi></mrow></msup><annotation encoding="application/x-tex">J^{r+s}</annotation></semantics></math></span>
+kills the middle term.</p>
+<p>We reuse the full <span class="unlinked">Artin–Rees
+proof</span>. That separately licensed Valette component proves the
+statement for every ideal of every commutative Noetherian ring; it is
+not restricted to analytic local rings.</p>
+<p>For a finite module
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math></span>,
+put
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>m</mi><mo>:</mo><msup><mi>J</mi><mi>r</mi></msup><mi>m</mi><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> for some </mtext><mspace width="0.333em"></mspace></mrow><mi>r</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">T=\{m:J^rm=0\text{ for some }r\}</annotation></semantics></math></span>.
+It is a submodule and is finite. A single power
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>J</mi><mi>r</mi></msup><annotation encoding="application/x-tex">J^r</annotation></semantics></math></span>
+kills it, by taking the maximum of the exponents for finitely many
+generators. Artin–Rees supplies
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math></span>
+such that</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>∩</mo><msup><mi>J</mi><mi>n</mi></msup><mi>M</mi><mo>=</mo><msup><mi>J</mi><mrow><mi>n</mi><mo>−</mo><mi>c</mi></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>T</mi><mo>∩</mo><msup><mi>J</mi><mi>c</mi></msup><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>≥</mo><mi>c</mi><mo>+</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(40)</mtext></mrow><annotation encoding="application/x-tex">
+T\cap J^nM=J^{n-c}(T\cap J^cM)=0
+\qquad(n\geq c+r).
+\qquad\text{(40)}
+</annotation></semantics></math></span></p>
+<p>Choose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><msup><mi>J</mi><mi>n</mi></msup><mi>M</mi></mrow><annotation encoding="application/x-tex">N=J^nM</annotation></semantics></math></span>
+at such a degree. Its quotient is in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒯</mi><mi>J</mi></msub><annotation encoding="application/x-tex">\mathcal T_J</annotation></semantics></math></span>;
+it has no nonzero
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒯</mi><mi>J</mi></msub><annotation encoding="application/x-tex">\mathcal T_J</annotation></semantics></math></span>-subobject,
+because every element of such a subobject would lie in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>∩</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">T\cap N</annotation></semantics></math></span>.
+Apply (38), then (37), to obtain</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="script">𝒯</mi><mi>J</mi></msub><mo stretchy="false" form="postfix">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msubsup><mi>D</mi><msub><mi mathvariant="script">𝒯</mi><mi>J</mi></msub><mi>b</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">Mod</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(41)</mtext></mrow><annotation encoding="application/x-tex">
+D^b(\mathcal T_J)
+\xrightarrow{\sim}
+D^b_{\mathcal T_J}(\operatorname{Mod}(A)).
+\qquad\text{(41)}
+</annotation></semantics></math></span></p>
+<p>This result is about power torsion. Replacing
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒯</mi><mi>J</mi></msub><annotation encoding="application/x-tex">\mathcal T_J</annotation></semantics></math></span>
+by the modules annihilated by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+gives a different, generally false assertion, as the earlier
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo stretchy="false" form="prefix">[</mo><mi>t</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">k[t]</annotation></semantics></math></span>
+exercise proves. The extension
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo stretchy="false" form="prefix">[</mo><mi>t</mi><mo stretchy="false" form="postfix">]</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>t</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">k[t]/(t^2)</annotation></semantics></math></span>
+is retained in (41).</p>
+<h3
+id="zero-dimensional-support-gives-a-second-finite-subcategory">Zero-dimensional
+support gives a second finite subcategory</h3>
+<p>For any commutative Noetherian
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>,
+let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒞</mi><annotation encoding="application/x-tex">\mathcal C</annotation></semantics></math></span>
+be the finite modules whose support has dimension zero. Equivalently
+these are the modules of finite length. Here is the equivalence without
+an Artinian-ring theorem. Every nonzero finite module has a nonzero
+element with prime annihilator: choose an annihilator maximal among
+annihilators of nonzero elements, using the ascending-chain condition.
+If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">ab</annotation></semantics></math></span>
+annihilates the element and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+does not, the nonzero element obtained by multiplication by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+has a larger annihilator containing
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>;
+maximality proves primality. Apply this observation successively to
+quotients to build a prime cyclic filtration. The ascending-chain
+condition on submodules makes the filtration finite. With
+zero-dimensional support every prime in it is maximal, so its cyclic
+factors are simple. Conversely a finite filtration by simple modules has
+support in its finitely many maximal ideals.</p>
+<p>The finite-length modules form a Serre subcategory. In a finite
+module
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math></span>,
+the sum
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math></span>
+of all its finite-length submodules is finite length: the increasing
+finite sums stabilize by Noetherianity. If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T=0</annotation></semantics></math></span>,
+choose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">N=M</annotation></semantics></math></span>
+in (38). Otherwise take a composition series of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math></span>,
+and let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+be the product of the annihilator maximal ideals of its factors. The
+product ideal kills
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math></span>,
+by applying the successive annihilators along the filtration. The
+quotient
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>/</mi><mi>J</mi></mrow><annotation encoding="application/x-tex">A/J</annotation></semantics></math></span>
+has finite length. Indeed, for the successive products, each ideal-layer
+quotient is a finite module over one of those residue fields, and the
+ring is Noetherian.</p>
+<p>Every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>/</mi><msup><mi>J</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">A/J^n</annotation></semantics></math></span>
+has finite length too, by its finite filtration with layers
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mi>i</mi></msup><mi>/</mi><msup><mi>J</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">J^i/J^{i+1}</annotation></semantics></math></span>,
+finite over
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>/</mi><mi>J</mi></mrow><annotation encoding="application/x-tex">A/J</annotation></semantics></math></span>.
+Artin–Rees gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>∩</mo><msup><mi>J</mi><mi>n</mi></msup><mi>M</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T\cap J^nM=0</annotation></semantics></math></span>
+for sufficiently large
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math></span>.
+Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><msup><mi>J</mi><mi>n</mi></msup><mi>M</mi></mrow><annotation encoding="application/x-tex">N=J^nM</annotation></semantics></math></span>
+has finite-length quotient and no nonzero finite-length subobject.
+Equations (38) and (37) prove</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">𝒞</mi><mo stretchy="false" form="postfix">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msubsup><mi>D</mi><mi mathvariant="script">𝒞</mi><mi>b</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">Mod</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(42)</mtext></mrow><annotation encoding="application/x-tex">
+D^b(\mathcal C)\xrightarrow{\sim}
+D^b_{\mathcal C}(\operatorname{Mod}(A)).
+\qquad\text{(42)}
+</annotation></semantics></math></span></p>
+<p>This supplies the full zero-dimensional-support comparison, including
+roofs and their equality, rather than just an object replacement.</p>
+<h3
+id="injectives-that-remain-unions-of-finite-dimensional-modules">Injectives
+that remain unions of finite-dimensional modules</h3>
+<p>Fix a field
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></span>.
+An
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>-module
+is <strong>ind-finite</strong> if it is the union of its
+finite-dimensional
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>-submodules.
+The required embedding condition says that every ind-finite module
+embeds in an injective
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>-module
+that is itself ind-finite. We prove this condition for every finitely
+generated commutative
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></span>-algebra.</p>
+<p><strong>Proposition.</strong> Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+be a finitely generated commutative
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></span>-algebra.
+For any injective
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>-module
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math></span>,
+the submodule</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Γ</mi><mrow><mi>f</mi><mi>t</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>e</mi><mo>∈</mo><mi>E</mi><mo>:</mo><msub><mrow><mi mathvariant="normal">dim</mi><mo>&#8289;</mo></mrow><mi>k</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mi>e</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>∞</mi><mo stretchy="false" form="postfix">}</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(43)</mtext></mrow><annotation encoding="application/x-tex">
+\Gamma_{ft}(E)=\{e\in E:\dim_k(Ae)&lt;\infty\}
+\qquad\text{(43)}
+</annotation></semantics></math></span></p>
+<p>is injective. Consequently the required ind-finite injective
+embeddings exist.</p>
+<p><strong>Proof.</strong> A sum of two finite-dimensional cyclic
+submodules is finite, so (43) is a submodule and is ind-finite. The
+Hilbert basis theorem, proved in the linked Artin–Rees component, makes
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+Noetherian.</p>
+<p>Use <a
+href="https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#2-functorial-injective-embeddings">Baer’s
+criterion</a>, with its full ideal-extension proof. Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>⊂</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">L\subset A</annotation></semantics></math></span>
+be an ideal and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>L</mi><mo>→</mo><msub><mi mathvariant="normal">Γ</mi><mrow><mi>f</mi><mi>t</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f:L\to\Gamma_{ft}(E)</annotation></semantics></math></span>
+a map. The ideal has finitely many generators; their images lie in a
+single finite-dimensional submodule. Hence the image of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math></span>
+is annihilated by a finite-codimensional ideal
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>:
+take its annihilator, since its action factors through its
+finite-dimensional endomorphism algebra. Artin–Rees for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>⊂</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">L\subset A</annotation></semantics></math></span>
+gives, for some
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math></span>,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>∩</mo><msup><mi>J</mi><mi>n</mi></msup><mo>⊂</mo><mi>J</mi><mi>L</mi><mo>⊂</mo><mrow><mi mathvariant="normal">ker</mi><mo>&#8289;</mo></mrow><mi>f</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(44)</mtext></mrow><annotation encoding="application/x-tex">
+L\cap J^n\subset JL\subset\ker f.
+\qquad\text{(44)}
+</annotation></semantics></math></span></p>
+<p>The map therefore descends to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>L</mi><mo>+</mo><msup><mi>J</mi><mi>n</mi></msup><mo stretchy="false" form="postfix">)</mo><mi>/</mi><msup><mi>J</mi><mi>n</mi></msup><mo>⊂</mo><mi>A</mi><mi>/</mi><msup><mi>J</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">(L+J^n)/J^n\subset A/J^n</annotation></semantics></math></span>.
+Injectivity of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math></span>
+extends it to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>/</mi><msup><mi>J</mi><mi>n</mi></msup><mo>→</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">A/J^n\to E</annotation></semantics></math></span>.
+If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math></span>
+is the image of one, then
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mi>n</mi></msup><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">J^ny=0</annotation></semantics></math></span>,
+and multiplication by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math></span>
+extends
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math></span>
+to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>.</p>
+<p>This extension lands in (43):
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>/</mi><msup><mi>J</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">A/J^n</annotation></semantics></math></span>
+is finite-dimensional. To check that assertion,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+is finitely generated, and every layer
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mi>i</mi></msup><mi>/</mi><msup><mi>J</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">J^i/J^{i+1}</annotation></semantics></math></span>
+is a finite module over the finite-dimensional algebra
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>/</mi><mi>J</mi></mrow><annotation encoding="application/x-tex">A/J</annotation></semantics></math></span>.
+A finite filtration of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>/</mi><msup><mi>J</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">A/J^n</annotation></semantics></math></span>
+by those layers proves the assertion. Baer’s criterion now proves
+injectivity.</p>
+<p>For an ind-finite module
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math></span>,
+take the coinduced injective
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>&#8289;</mo></mrow><mi>k</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>,</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">E=\operatorname{Hom}_k(A,M)</annotation></semantics></math></span>,
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mi>φ</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>φ</mi><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(a\varphi)(b)=\varphi(ba)</annotation></semantics></math></span>.
+The adjunction
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>&#8289;</mo></mrow><mi>A</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mo>,</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>&#8289;</mo></mrow><mi>k</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mo>,</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}_A(-,E)=\operatorname{Hom}_k(-,M)</annotation></semantics></math></span>
+makes it injective because vector spaces are injective. The map</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>→</mo><mi>E</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>m</mi><mo>↦</mo><mo stretchy="false" form="prefix">(</mo><mi>b</mi><mo>↦</mo><mi>b</mi><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(45)</mtext></mrow><annotation encoding="application/x-tex">
+M\longrightarrow E,\qquad m\longmapsto (b\longmapsto bm)
+\qquad\text{(45)}
+</annotation></semantics></math></span></p>
+<p>is linear and monic, as evaluation at one recovers
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math></span>.
+Its image is ind-finite, so it lies in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Γ</mi><mrow><mi>f</mi><mi>t</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\Gamma_{ft}(E)</annotation></semantics></math></span>.
+This gives the required embedding.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<p>This is a direct Artin–Rees and Baer proof of the needed condition.
+It avoids requiring a classification of indecomposable injective modules
+as an additional prerequisite. The classical torsion-injectivity
+comparison is also present in the <a
+href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/dualizing.tex#L335">AI
+Integrated Stacks Project</a>; that mathematical reference retains the
+Stacks project authors’ credit and its own reuse terms.</p>
+<h3 id="finite-extraction-for-constructible-sheaves">Finite extraction
+for constructible sheaves</h3>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>,</mo><mi mathvariant="script">𝒮</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(Y,\mathcal S)</annotation></semantics></math></span>
+have a finite normal stratification as in (31): connected manifold
+strata, compatible ball-cone neighborhoods, and finitely many connected
+components in each incident link piece. Work over a field
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></span>.
+Write
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒜</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">Cons</mi><mo>&#8289;</mo></mrow><mi>k</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>,</mo><mi mathvariant="script">𝒮</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal A=\operatorname{Cons}_k(Y,\mathcal S)</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">ℱ</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">Cons</mi><mo>&#8289;</mo></mrow><mrow><mi>f</mi><mi>t</mi><mo>,</mo><mi>k</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>,</mo><mi mathvariant="script">𝒮</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal F=\operatorname{Cons}_{ft,k}(Y,\mathcal S)</annotation></semantics></math></span>,
+and let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℐ</mi><annotation encoding="application/x-tex">\mathcal I</annotation></semantics></math></span>
+be the objects whose stratum monodromy modules are ind-finite. Assume
+each group algebra
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo stretchy="false" form="prefix">[</mo><msub><mi>π</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>S</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">k[\pi_1(S)]</annotation></semantics></math></span>
+has the ind-finite injective embedding condition.</p>
+<p>The finite-stalk category
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℱ</mi><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span>
+is Serre inside
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒜</mi><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math></span>:
+restriction is exact, kernels and quotients of finite-dimensional vector
+spaces are finite, and an extension adds the two dimensions. Its objects
+are Noetherian: an ascending sequence of constructible subobjects
+stabilizes on a chosen stalk in each of the finitely many connected
+strata, hence everywhere.</p>
+<p>For a stratum inclusion
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>:</mo><mi>S</mi><mo>↪</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">s:S\hookrightarrow Y</annotation></semantics></math></span>,
+ordinary
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mo>*</mo></msub><annotation encoding="application/x-tex">s_*</annotation></semantics></math></span>
+carries finite local systems to finite-stalk sheaves. The boundary stalk
+is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mrow><mi>x</mi><mo>,</mo><mi>S</mi></mrow></msub><mo>;</mo><mi>L</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">H^0(L_{x,S};L)</annotation></semantics></math></span>;
+its dimension is at most the sum of the stalk dimensions over the
+finitely many connected link components. For an ind-finite local system,
+this stalk is a union of the
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>0</mn></msup><annotation encoding="application/x-tex">H^0</annotation></semantics></math></span>
+groups of finite sub-local-systems. A section is determined by an
+invariant vector on each component, and finitely many such vectors lie
+together in a finite-dimensional monodromy submodule. Invariance is
+preserved inside that submodule. Consequently
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mo>*</mo></msub><annotation encoding="application/x-tex">s_*</annotation></semantics></math></span>
+carries an ind-finite local system to a union of finite-stalk
+constructible subsheaves.</p>
+<p>Every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><mi mathvariant="script">ℐ</mi></mrow><annotation encoding="application/x-tex">G\in\mathcal I</annotation></semantics></math></span>
+is itself a union of finite-stalk subsheaves. The adjunction diagonal
+embeds it into
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>⨁</mo><mi>S</mi></msub><msub><mi>s</mi><mo>*</mo></msub><mo stretchy="false" form="prefix">(</mo><mi>G</mi><msub><mo stretchy="false" form="prefix">|</mo><mi>S</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\bigoplus_Ss_*(G|_S)</annotation></semantics></math></span>,
+by the same stalkwise argument as (26). Each summand is a directed union
+of finite-stalk sheaves by the preceding calculation. Intersect
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math></span>
+with those finite stages. Each intersection is constructible and
+finite-stalk, and their union is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math></span>.
+This argument supplies actual lifts across the attachments; merely
+declaring that a quotient has smaller support would not supply them.</p>
+<p>The embedding condition on the group algebras gives injective
+ind-finite local systems
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>S</mi></msub><annotation encoding="application/x-tex">I_S</annotation></semantics></math></span>
+containing
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><msub><mo stretchy="false" form="prefix">|</mo><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">G|_S</annotation></semantics></math></span>.
+Therefore</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>↪</mo><msub><mo>⨁</mo><mrow><mi>S</mi><mo>∈</mo><mi mathvariant="script">𝒮</mi></mrow></msub><msub><mi>s</mi><mo>*</mo></msub><msub><mi>I</mi><mi>S</mi></msub><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">is an embedding into an injective object of </mtext><mspace width="0.333em"></mspace></mrow><mi mathvariant="script">𝒜</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> belonging to </mtext><mspace width="0.333em"></mspace></mrow><mi mathvariant="script">ℐ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(46)</mtext></mrow><annotation encoding="application/x-tex">
+G\hookrightarrow \bigoplus_{S\in\mathcal S}s_*I_S
+\quad\text{is an embedding into an injective object of }\mathcal A
+\text{ belonging to }\mathcal I.
+\qquad\text{(46)}
+</annotation></semantics></math></span></p>
+<p>Adjunction to exact restriction makes each summand injective; the sum
+is finite. Ind-finite monodromy modules are closed under submodules and
+quotients. The embedding condition also proves extension closure: embed
+the submodule of an extension into an ind-finite injective, extend that
+map across the middle module, and combine it with the quotient map. This
+embeds the middle module in the sum of that injective and the ind-finite
+quotient. Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℐ</mi><annotation encoding="application/x-tex">\mathcal I</annotation></semantics></math></span>
+is a Serre subcategory and (46) can be iterated on cokernels.</p>
+<p>The published bounded-below resolution construction applies within
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℐ</mi><annotation encoding="application/x-tex">\mathcal I</annotation></semantics></math></span>
+while keeping the terms injective in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒜</mi><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math></span>.
+In its one-degree pushout step, direct sums and quotients remain in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℐ</mi><annotation encoding="application/x-tex">\mathcal I</annotation></semantics></math></span>.
+Each degree stabilizes after finitely many steps, so no additional
+infinite-limit assertion is required. Every bounded complex in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℐ</mi><annotation encoding="application/x-tex">\mathcal I</annotation></semantics></math></span>
+therefore has a quasi-isomorphism to a bounded-below complex of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒜</mi><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math></span>-injectives
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℐ</mi><annotation encoding="application/x-tex">\mathcal I</annotation></semantics></math></span>.</p>
+<p><strong>Finite-heart theorem.</strong> Under these conditions,
+inclusion induces</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">ℱ</mi><mo stretchy="false" form="postfix">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msubsup><mi>D</mi><mrow><mi>f</mi><mi>t</mi></mrow><mi>b</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">𝒜</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(47)</mtext></mrow><annotation encoding="application/x-tex">
+D^b(\mathcal F)\xrightarrow{\sim}D^b_{ft}(\mathcal A).
+\qquad\text{(47)}
+</annotation></semantics></math></span></p>
+<p><strong>Proof.</strong> First consider
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>,</mo><mi>G</mi><mo>∈</mo><mi mathvariant="script">ℱ</mi></mrow><annotation encoding="application/x-tex">F,G\in\mathcal F</annotation></semantics></math></span>
+and all their shifts. Choose a bounded-below injective resolution
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo stretchy="false" form="prefix">[</mo><mi>m</mi><mo stretchy="false" form="postfix">]</mo><mo>→</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">G[m]\to J</annotation></semantics></math></span>
+as above. Its cohomology is bounded and finite-stalk. Every morphism
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>→</mo><mi>G</mi><mo stretchy="false" form="prefix">[</mo><mi>m</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">F\to G[m]</annotation></semantics></math></span>
+in the ambient derived category is represented by a chain map
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>F</mi><mo>→</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">f:F\to J</annotation></semantics></math></span>,
+using the published K-injective comparison.</p>
+<p>The images of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo stretchy="false" form="prefix">[</mo><mi>m</mi><mo stretchy="false" form="postfix">]</mo><mo>→</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">G[m]\to J</annotation></semantics></math></span>
+form a bounded finite subcomplex
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>⊂</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">D\subset J</annotation></semantics></math></span>.
+The hypotheses of (36) hold: all terms and subobjects are unions of
+finite-stalk subsheaves, as proved above, and a finite-stalk quotient is
+detected at finitely many stratum stalks. Obtain a finite bounded
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>⊂</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">K\subset J</annotation></semantics></math></span>
+containing
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math></span>.
+The resulting right roof
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>→</mo><mi>K</mi><mo>←</mo><mi>G</mi><mo stretchy="false" form="prefix">[</mo><mi>m</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">F\to K\leftarrow G[m]</annotation></semantics></math></span>
+realizes the prescribed morphism. This proves fullness on shifted heart
+objects.</p>
+<p>For faithfulness, take a finite right roof
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>→</mo><mi>K</mi><mo>←</mo><mi>G</mi><mo stretchy="false" form="prefix">[</mo><mi>m</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">F\to K\leftarrow G[m]</annotation></semantics></math></span>
+with ambient value zero. Resolve its finite middle complex by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>:</mo><mi>K</mi><mo>→</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">q:K\to J</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+as above. The numerator into
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+is nullhomotopic, by the K-injective comparison. Include in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math></span>
+the images of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo stretchy="false" form="prefix">(</mo><mi>K</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">q(K)</annotation></semantics></math></span>
+and of every component of that homotopy. Close under the differential.
+There are only finitely many such degrees because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math></span>
+are bounded; all these images and their finite sums are finite-stalk.
+Apply (36) retaining this
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math></span>.
+The map
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>→</mo><msup><mi>K</mi><mo>′</mo></msup><mo>⊂</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">K\to K&#39;\subset J</annotation></semantics></math></span>
+is a quasi-isomorphism, and the same homotopy has values in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mo>′</mo></msup><annotation encoding="application/x-tex">K&#39;</annotation></semantics></math></span>.
+Thus the roof is zero in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><mi mathvariant="script">ℱ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">D^b(\mathcal F)</annotation></semantics></math></span>.
+This proves injectivity of Hom, rather than just lifting its
+elements.</p>
+<p>Finite cohomology truncation triangles generate all bounded objects
+from shifted heart objects. Apply the two long exact Hom sequences and
+finite induction on their amplitudes: the heart Hom comparison just
+proved implies full faithfulness on every bounded pair. Essential
+surjectivity follows by the same finite truncation induction. Realize
+each cohomology object in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">ℱ</mi><annotation encoding="application/x-tex">\mathcal F</annotation></semantics></math></span>;
+lift the connecting morphism using full faithfulness; its cone realizes
+the next truncation. The finite number of cohomological degrees
+terminates the construction.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<p>If the unrestricted fixed-stratification realization criterion also
+holds, compose (47) with its finite-cohomology restriction to obtain the
+ambient finite-stalk sheaf equivalence. Equation (47) itself does not
+assume that boundary comparison.</p>
+<h3
+id="finitely-generated-abelian-monodromy-and-the-finite-projective-line-theorem">Finitely
+generated abelian monodromy and the finite projective-line theorem</h3>
+<p>For a finitely generated abelian group
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math></span>,
+the algebra
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo stretchy="false" form="prefix">[</mo><mi>G</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">k[G]</annotation></semantics></math></span>
+is a finitely generated commutative
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></span>-algebra:
+use finitely many group generators and their inverses as algebra
+generators. Equations (43)–(45) verify the embedding condition. Thus for
+a finite normal stratification with such stratum groups,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><msub><mrow><mi mathvariant="normal">Cons</mi><mo>&#8289;</mo></mrow><mrow><mi>f</mi><mi>t</mi><mo>,</mo><mi>k</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>,</mo><mi mathvariant="script">𝒮</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msubsup><mi>D</mi><mrow><mi>f</mi><mi>t</mi></mrow><mi>b</mi></msubsup><mo stretchy="false" form="prefix">(</mo><msub><mrow><mi mathvariant="normal">Cons</mi><mo>&#8289;</mo></mrow><mi>k</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>Y</mi><mo>,</mo><mi mathvariant="script">𝒮</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(48)</mtext></mrow><annotation encoding="application/x-tex">
+D^b(\operatorname{Cons}_{ft,k}(Y,\mathcal S))
+\xrightarrow{\sim}
+D^b_{ft}(\operatorname{Cons}_k(Y,\mathcal S)).
+\qquad\text{(48)}
+</annotation></semantics></math></span></p>
+<p>No semisimplicity of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo stretchy="false" form="prefix">[</mo><mi>G</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">k[G]</annotation></semantics></math></span>
+or finite global dimension of that algebra is required.</p>
+<p>For the three torus-orbit strata of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="double-struck">ℙ</mi><mn>1</mn></msup><mo stretchy="false" form="prefix">(</mo><mi mathvariant="double-struck">ℂ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbb P^1(\mathbb C)</annotation></semantics></math></span>,
+the groups are
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mathbb Z,0,0</annotation></semantics></math></span>.
+The unrestricted realization was proved in (35). Combining it with (48)
+now proves the previously separate finite-heart statement:</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo stretchy="false" form="prefix">(</mo><msub><mrow><mi mathvariant="normal">Cons</mi><mo>&#8289;</mo></mrow><mrow><mi>f</mi><mi>t</mi><mo>,</mo><mi>k</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><msup><mi mathvariant="double-struck">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo stretchy="false" form="prefix">{</mo><msup><mi mathvariant="double-struck">ℂ</mi><mo>*</mo></msup><mo>,</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">}</mo><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msubsup><mi>D</mi><mrow><mo stretchy="false" form="prefix">{</mo><msup><mi mathvariant="double-struck">ℂ</mi><mo>*</mo></msup><mo>,</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mi>f</mi><mi>t</mi></mrow><mi>b</mi></msubsup><mo stretchy="false" form="prefix">(</mo><msup><mi mathvariant="double-struck">ℙ</mi><mn>1</mn></msup><mo>;</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(49)</mtext></mrow><annotation encoding="application/x-tex">
+D^b(\operatorname{Cons}_{ft,k}(\mathbb P^1,\{\mathbb C^*,0,\infty\}))
+\xrightarrow{\sim}
+D^b_{\{\mathbb C^*,0,\infty\},ft}(\mathbb P^1;k).
+\qquad\text{(49)}
+</annotation></semantics></math></span></p>
+<p>It holds over every field. The general normal toric-variety
+application still needs its full orbit-star cone geometry and link-map
+calculation, beyond the explicit projective line. The finite-heart step
+for its finitely generated abelian stratum groups is now supplied by
+(48).</p>
+<h2 id="further-exercises-on-finite-terms-and-derived-equality">Further
+exercises on finite terms and derived equality</h2>
+<h3 id="two-nilpotent-extensions-retain-a-degree-two-class">Two
+nilpotent extensions retain a degree-two class</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi>k</mi><mo stretchy="false" form="prefix">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">A=k[x,y]</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">J=(x,y)</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>x</mi></msub><mo>=</mo><mi>A</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">M_x=A/(x^2,y)</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>y</mi></msub><mo>=</mo><mi>A</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><msup><mi>y</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">M_y=A/(x,y^2)</annotation></semantics></math></span>.
+Show that the sequence
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>→</mo><mi>k</mi><mo>→</mo><msub><mi>M</mi><mi>x</mi></msub><mo>→</mo><msub><mi>M</mi><mi>y</mi></msub><mo>→</mo><mi>k</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0\to k\to M_x\to M_y\to k\to0</annotation></semantics></math></span>,
+whose middle map sends
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math></span>
+to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math></span>,
+represents a nonzero ambient degree-two class. Explain why ideal-power
+torsion retains it while modules annihilated by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+lose it.</p>
+<p><strong>Solution.</strong> The first map sends
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math></span>
+to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math></span>;
+the last is the residue quotient. The middle map is linear because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x^2y=0</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y^2=0</annotation></semantics></math></span>
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>y</mi></msub><annotation encoding="application/x-tex">M_y</annotation></semantics></math></span>.
+Its kernel is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">kx</annotation></semantics></math></span>
+and image is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">ky</annotation></semantics></math></span>,
+proving exactness. The Koszul free resolution of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></span>
+has differentials
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mn>2</mn></msup><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">A^2\to A</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>↦</mo><mi>x</mi><mi>a</mi><mo>+</mo><mi>y</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">(a,b)\mapsto xa+yb</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><msup><mi>A</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">A\to A^2</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>↦</mo><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mi>y</mi><mi>c</mi><mo>,</mo><mi>x</mi><mi>c</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">c\mapsto(-yc,xc)</annotation></semantics></math></span>.
+Exactness follows because a relation
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mi>a</mi><mo>+</mo><mi>y</mi><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xa+yb=0</annotation></semantics></math></span>
+has
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mi>x</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">b=xc</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>−</mi><mi>y</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">a=-yc</annotation></semantics></math></span>
+in the polynomial ring. Applying Hom into
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></span>
+gives zero differentials, so
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mrow><mi mathvariant="normal">Ext</mi><mo>&#8289;</mo></mrow><mi>A</mi><mn>2</mn></msubsup><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>,</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">\operatorname{Ext}^2_A(k,k)=k</annotation></semantics></math></span>.</p>
+<p>Lift
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">1\in A</annotation></semantics></math></span>
+to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>∈</mo><msub><mi>M</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">1\in M_y</annotation></semantics></math></span>.
+The first Koszul differential then has values
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">0,y</annotation></semantics></math></span>.
+Lift those through
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>x</mi></msub><mo>→</mo><msub><mi>M</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">M_x\to M_y</annotation></semantics></math></span>
+by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0,1</annotation></semantics></math></span>.
+On the second differential this lift gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>y</mi><mo>⋅</mo><mn>0</mn><mo>+</mo><mi>x</mi><mo>⋅</mo><mn>1</mn><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">-y\cdot0+x\cdot1=x</annotation></semantics></math></span>,
+which is the image of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>∈</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">1\in k</annotation></semantics></math></span>.
+Thus the extension represents the nonzero scalar
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math></span>,
+including the chosen sign. Both middle terms are killed by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>J</mi><mn>2</mn></msup><annotation encoding="application/x-tex">J^2</annotation></semantics></math></span>,
+so the entire two-extension belongs to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒯</mi><mi>J</mi></msub><annotation encoding="application/x-tex">\mathcal T_J</annotation></semantics></math></span>.
+Modules annihilated by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+are vector spaces over
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>/</mi><mi>J</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">A/J=k</annotation></semantics></math></span>
+and have no degree-two extensions. The power-torsion category in (41)
+retains the actual middle terms.</p>
+<h3
+id="finite-coefficients-may-need-infinite-injective-resolutions">Finite
+coefficients may need infinite injective resolutions</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Prove that no nonzero finite-dimensional
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo stretchy="false" form="prefix">[</mo><mi>t</mi><mo>,</mo><msup><mi>t</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">k[t,t^{-1}]</annotation></semantics></math></span>-module
+is injective in the category of all modules. Explain how this is
+compatible with (48).</p>
+<p><strong>Solution.</strong> A finite-dimensional module
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math></span>
+has a nonzero annihilating polynomial
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">p(t)</annotation></semantics></math></span>,
+because the powers of its endomorphism
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math></span>
+are linearly dependent. In the Laurent ring this polynomial is nonzero.
+A nonzero injective module over this domain is divisible by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></span>:
+for any
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math></span>,
+the map from the ideal
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">pA</annotation></semantics></math></span>
+sending
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">pa</annotation></semantics></math></span>
+to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">av</annotation></semantics></math></span>
+extends to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>,
+and its value
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math></span>
+at one satisfies
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>w</mi><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">pw=v</annotation></semantics></math></span>.
+On
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math></span>,
+however, multiplication by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></span>
+is zero. Surjectivity then forces
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V=0</annotation></semantics></math></span>.
+Equations (46) and (47) use injectives that are unions of
+finite-dimensional submodules, usually infinite-dimensional themselves.
+Finite extraction retains the bounded object, its morphisms and
+homotopies; it does not require finite-dimensional injective terms.</p>
+<h3 id="a-nullhomotopy-requires-more-than-the-image-of-its-map">A
+nullhomotopy requires more than the image of its map</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+be
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mover><mo>→</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mover><mi>k</mi></mrow><annotation encoding="application/x-tex">k\xrightarrow{\mathrm{id}}k</annotation></semantics></math></span>
+in degrees
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">-1,0</annotation></semantics></math></span>,
+and let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>k</mi><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">F=k[0]</annotation></semantics></math></span>.
+The map
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>→</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">F\to J</annotation></semantics></math></span>
+is identity in degree zero. Show why retaining only its image cannot
+witness its ambient vanishing, and construct the finite witness.</p>
+<p><strong>Solution.</strong> The image alone is the subcomplex
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo stretchy="false" form="postfix">]</mo><mo>⊂</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">k[0]\subset J</annotation></semantics></math></span>,
+with nonzero
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>0</mn></msup><annotation encoding="application/x-tex">H^0</annotation></semantics></math></span>.
+The map to that image is identity, so is not zero in its derived
+category. The homotopy into
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+has component
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>h</mi><mn>0</mn></msup><mo>:</mo><msup><mi>F</mi><mn>0</mn></msup><mo>→</mo><msup><mi>J</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">h^0:F^0\to J^{-1}</annotation></semantics></math></span>
+equal to identity; then
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>h</mi><mo>+</mo><mi>h</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">dh+hd</annotation></semantics></math></span>
+is the original map. Add that
+degree-<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span>
+image. The resulting finite subcomplex is all of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>,
+contractible by this same homotopy. Thus the map vanishes there. This is
+why faithfulness in (47) explicitly retains homotopy images, rather than
+stopping after fullness.</p>
+<h3
+id="abelian-monodromy-does-not-imply-a-semisimple-group-algebra">Abelian
+monodromy does not imply a semisimple group algebra</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">char</mi><mo>&#8289;</mo></mrow><mi>k</mi><mo>=</mo><mi>p</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\operatorname{char}k=p&gt;0</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><msub><mi>C</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">G=C_p</annotation></semantics></math></span>.
+Compute the positive self-extensions of its trivial representation. Does
+the algebraic embedding argument for (48) require their vanishing?</p>
+<p><strong>Solution.</strong> Write
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi>k</mi><mo stretchy="false" form="prefix">[</mo><mi>G</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>k</mi><mo stretchy="false" form="prefix">[</mo><mi>z</mi><mo stretchy="false" form="postfix">]</mo><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>z</mi><mi>p</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">A=k[G]=k[z]/(z^p)</annotation></semantics></math></span>,
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>g</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">z=g-1</annotation></semantics></math></span>.
+A free resolution of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>A</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">k=A/(z)</annotation></semantics></math></span>
+alternates multiplication by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>z</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">z^{p-1}</annotation></semantics></math></span>.
+Their kernels are respectively
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup><mi>A</mi></mrow><annotation encoding="application/x-tex">z^{p-1}A</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">zA</annotation></semantics></math></span>,
+so the resolution is exact, including
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">p=2</annotation></semantics></math></span>,
+when both maps are
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math></span>.
+Applying
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>&#8289;</mo></mrow><mi>A</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mo>,</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}_A(-,k)</annotation></semantics></math></span>
+makes every differential zero. Hence
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mrow><mi mathvariant="normal">Ext</mi><mo>&#8289;</mo></mrow><mi>A</mi><mi>n</mi></msubsup><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>,</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">\operatorname{Ext}^n_A(k,k)=k</annotation></semantics></math></span>
+for all
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">n\geq0</annotation></semantics></math></span>.
+The algebra is nevertheless finitely generated and commutative, so
+(43)–(45) apply. The finite-heart comparison preserves these classes; it
+does not assert their vanishing. This example concerns the algebraic
+embedding condition, without asserting that this group occurs as an
+aspherical finite-dimensional manifold’s fundamental group.</p>
+<h2 id="sources-and-reuse">Sources and reuse</h2>
+<p>Lunts and Schnürer’s <a
+href="https://arxiv.org/html/2601.05477v1">Categories of constructible
+sheaves</a>, January 2026, supplies the modern finite-type comparison
+questions and theorems. The Stacks project authors are credited for the
+algebra and derived foundations in the linked AI Integrated Stacks
+edition. Guillaume Valette’s separately licensed analytic finiteness
+component supplies the full Artin–Rees proof; its CC BY 4.0 terms remain
+at that linked source. The published derived-sheaf course retains its
+GFDL terms. Their expression is not imported or relicensed here. This
+original exposition, four complete solutions and reader code are CC0.
+Author self-check is not independent review or completion of the parent
+course.</p>
+<p><a href="index.html">Reading index</a> · <a href="LICENSE.txt">Reuse
+terms</a> · <span class="unlinked">Provenance</span></p>
+</main>
+</body>
+</html>

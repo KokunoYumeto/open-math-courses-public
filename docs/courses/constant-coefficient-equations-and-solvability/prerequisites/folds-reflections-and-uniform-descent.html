@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Folds, reflections and uniform smooth descent</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="folds-reflections-and-uniform-smooth-descent">Folds, reflections and uniform smooth descent</h1>
+<p>A fold identifies two nearby points and has one critical hypersurface where the two sheets meet. A smooth function on the source descends through this identification precisely when it is invariant under the sheet exchange. For Fourier-integral amplitudes, existence of a descended smooth function is only part of the task: its derivatives must obey uniform symbol bounds. We prove both statements, including an explicit extension across the unattained side of the target.</p>
+<p><a href="phase-space-and-generating-families.html">Phase space and generating families</a> supplies the manifold, tangent and cotangent conventions. <a href="referenced-prerequisite-statements.html#reference-00ad848f1256">Homogeneous submanifold normal forms</a> explains characteristic directions and function-preserving symplectic pairs; we will need the fold facts here before constructing simultaneous symplectic fold coordinates. <a href="cubic-scaling-and-necessary-continuity.html">Cubic scaling and necessary continuity</a> shows why the order <span class="math" data-tex="\(-1/6\)">\(-1/6\)</span> is a possible necessary threshold when corank is two. The present lesson supplies supporting smooth geometry and amplitude realization, not the later Airy continuity theorem.</p>
+<p>The authority is [Hörmander III, Appendix C.4], especially the fold coordinate theorem, the fold involution and smooth descent. We give full proofs and a derivative-controlled extension suitable for parameter-dependent ordinary symbols. The simultaneous normal form of two distinct involutions and the full homogeneous canonical-relation fold normal form remain separate targets.</p>
+<h2 id="the-fold-condition-is-a-hessian-in-a-quotient"><span id="1-the-fold-condition-is-a-hessian-in-a-quotient"></span><span id="section-1"></span>1. The fold condition is a Hessian in a quotient</h2>
+<p>Let <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span> be smooth. At <span class="math" data-tex="\(y_0\)">\(y_0\)</span>, write
+<span class="math math-display" data-tex="\[
+K=\ker df(y_0),\qquad
+Q=T_{f(y_0)}X/df(y_0)(T_{y_0}Y).
+\tag{1.1}
+\]">\[
+K=\ker df(y_0),\qquad
+Q=T_{f(y_0)}X/df(y_0)(T_{y_0}Y).
+\tag{1.1}
+\]</span>
+For <span class="math" data-tex="\(v\in K\)">\(v\in K\)</span>, choose a smooth curve <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> with <span class="math" data-tex="\(\gamma(0)=y_0\)">\(\gamma(0)=y_0\)</span>, <span class="math" data-tex="\(\gamma&#x27;(0)=v\)">\(\gamma&#x27;(0)=v\)</span>. In local coordinates, the second derivative of <span class="math" data-tex="\(f\circ\gamma\)">\(f\circ\gamma\)</span>, taken modulo the range of <span class="math" data-tex="\(df(y_0)\)">\(df(y_0)\)</span>, is
+<span class="math math-display" data-tex="\[
+\mathcal H_f(v)=[d^2f(y_0)(v,v)]\in Q.
+\tag{1.2}
+\]">\[
+\mathcal H_f(v)=[d^2f(y_0)(v,v)]\in Q.
+\tag{1.2}
+\]</span>
+The term <span class="math" data-tex="\(df(y_0)\gamma&#x27;&#x27;(0)\)">\(df(y_0)\gamma&#x27;&#x27;(0)\)</span> vanishes in this quotient, so the result is independent of the acceleration of the curve. A source coordinate change adds only a term in that range. A target coordinate change acts on (1.2) by its differential: its additional quadratic term involves <span class="math" data-tex="\(df(y_0)v=0\)">\(df(y_0)v=0\)</span> and vanishes. Thus <span class="math" data-tex="\(\mathcal H_f\)">\(\mathcal H_f\)</span> is an intrinsic quadratic map from <span class="math" data-tex="\(K\)">\(K\)</span> to <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><strong>Definition 1.1 (fold).</strong> The map has a fold at <span class="math" data-tex="\(y_0\)">\(y_0\)</span> if <span class="math" data-tex="\(\dim K=\dim Q=1\)">\(\dim K=\dim Q=1\)</span> and <span class="math" data-tex="\(\mathcal H_f\)">\(\mathcal H_f\)</span> is nonzero. These dimensions force <span class="math" data-tex="\(\dim Y=\dim X=d\)">\(\dim Y=\dim X=d\)</span>; the differential has rank <span class="math" data-tex="\(d-1\)">\(d-1\)</span>.</p>
+<p>This condition tests curvature in the missing output direction. A large second derivative in an output direction already in the range does not establish a fold.</p>
+<p><strong>Theorem 1.2 (ordinary fold coordinates).</strong> At a fold, there are source coordinates <span class="math" data-tex="\((z,s)\in\mathbb R^{d-1}\times\mathbb R\)">\((z,s)\in\mathbb R^{d-1}\times\mathbb R\)</span>, and target coordinates <span class="math" data-tex="\((Z,r)\)">\((Z,r)\)</span>, both centered at the marked points, such that
+<span class="math math-display" data-tex="\[
+f(z,s)=(z,s^2).
+\tag{1.3}
+\]">\[
+f(z,s)=(z,s^2).
+\tag{1.3}
+\]</span>
+The attained target germ is <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>. The critical set is <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, and its image is <span class="math" data-tex="\(r=0\)">\(r=0\)</span>.</p>
+<p><strong>Proof.</strong> Choose a target linear change so that its first <span class="math" data-tex="\(d-1\)">\(d-1\)</span> component differentials are independent and its last component differential is zero at the marked point. Use those first components as the source coordinates <span class="math" data-tex="\(z\)">\(z\)</span>, completing them by a coordinate <span class="math" data-tex="\(s\)">\(s\)</span>. The map is then <span class="math" data-tex="\((z,s)\mapsto(z,g(z,s))\)">\((z,s)\mapsto(z,g(z,s))\)</span>, with <span class="math" data-tex="\(dg(0)=0\)">\(dg(0)=0\)</span>. The kernel is the <span class="math" data-tex="\(s\)">\(s\)</span> direction, so the fold Hessian says <span class="math" data-tex="\(g_{ss}(0)\neq0\)">\(g_{ss}(0)\neq0\)</span>.</p>
+<p>The equation <span class="math" data-tex="\(g_s(z,s)=0\)">\(g_s(z,s)=0\)</span> has a unique smooth solution <span class="math" data-tex="\(s=c(z)\)">\(s=c(z)\)</span>, by the implicit function theorem. Replace the source variable by <span class="math" data-tex="\(t=s-c(z)\)">\(t=s-c(z)\)</span>. Taylor's formula with an integral remainder gives
+<span class="math math-display" data-tex="\[
+g(z,c(z)+t)=g(z,c(z))+t^2 A(z,t),
+\quad
+A(z,t)=\int_0^1(1-u)g_{ss}(z,c(z)+ut)\,du.
+\tag{1.4}
+\]">\[
+g(z,c(z)+t)=g(z,c(z))+t^2 A(z,t),
+\quad
+A(z,t)=\int_0^1(1-u)g_{ss}(z,c(z)+ut)\,du.
+\tag{1.4}
+\]</span>
+The target change <span class="math" data-tex="\(r=R-g(Z,c(Z))\)">\(r=R-g(Z,c(Z))\)</span> removes the first term. The function <span class="math" data-tex="\(A\)">\(A\)</span> is smooth and <span class="math" data-tex="\(A(0,0)\neq0\)">\(A(0,0)\neq0\)</span>. Shrink the neighborhood so its sign is constant; reverse the target <span class="math" data-tex="\(r\)">\(r\)</span> coordinate if necessary. Then <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>. The source change <span class="math" data-tex="\(s_*=t\sqrt{A(z,t)}\)">\(s_*=t\sqrt{A(z,t)}\)</span> has nonzero derivative in <span class="math" data-tex="\(t\)">\(t\)</span> at the marked point, hence is a local diffeomorphism. In these coordinates the last output is <span class="math" data-tex="\(s_*^2\)">\(s_*^2\)</span>, proving (1.3). Differentiating (1.3) gives all the critical-set and image assertions. ∎</p>
+<p>If <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, the <span class="math" data-tex="\(z\)">\(z\)</span> variables are absent and the proof applies with the same one-variable formulas.</p>
+<p><strong>Corollary 1.3 (a determinant test).</strong> For equal-dimensional source and target, suppose <span class="math" data-tex="\(df(y_0)\)">\(df(y_0)\)</span> has rank <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. In any local coordinate systems, let <span class="math" data-tex="\(J=\det df\)">\(J=\det df\)</span>. The map is a fold if and only if <span class="math" data-tex="\(dJ(y_0)v\neq0\)">\(dJ(y_0)v\neq0\)</span> for a nonzero kernel vector <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Proof.</strong> With the first <span class="math" data-tex="\(d-1\)">\(d-1\)</span> components used as source coordinates, the map is <span class="math" data-tex="\((z,s)\mapsto(z,g(z,s))\)">\((z,s)\mapsto(z,g(z,s))\)</span>. Its determinant is <span class="math" data-tex="\(g_s\)">\(g_s\)</span>, and the kernel at the marked point is the <span class="math" data-tex="\(s\)">\(s\)</span> direction. Hence <span class="math" data-tex="\(dJ(v)\neq0\)">\(dJ(v)\neq0\)</span> is exactly <span class="math" data-tex="\(g_{ss}(0)\neq0\)">\(g_{ss}(0)\neq0\)</span>, the nonzero quotient Hessian. Under either coordinate change the determinant is multiplied by a smooth nonvanishing factor. At <span class="math" data-tex="\(J=0\)">\(J=0\)</span>, its derivative is multiplied by that same factor, so the test is invariant. In fold coordinates it also proves that the kernel line is transverse to the critical hypersurface. ∎</p>
+<h2 id="the-sheet-exchange-determines-a-reflection-line"><span id="2-the-sheet-exchange-determines-a-reflection-line"></span><span id="section-2"></span>2. The sheet exchange determines a reflection line</h2>
+<p>In (1.3), the two source points over <span class="math" data-tex="\((z,r)\)">\((z,r)\)</span>, for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, are <span class="math" data-tex="\((z,\sqrt r)\)">\((z,\sqrt r)\)</span> and <span class="math" data-tex="\((z,-\sqrt r)\)">\((z,-\sqrt r)\)</span>. The sheet exchange is
+<span class="math math-display" data-tex="\[
+\iota(z,s)=(z,-s),\qquad f\circ\iota=f,
+\qquad \iota^2=\mathrm{id}.
+\tag{2.1}
+\]">\[
+\iota(z,s)=(z,-s),\qquad f\circ\iota=f,
+\qquad \iota^2=\mathrm{id}.
+\tag{2.1}
+\]</span>
+It is a smooth involution with fixed set <span class="math" data-tex="\(s=0\)">\(s=0\)</span>.</p>
+<p><strong>Proposition 2.1 (intrinsic fold involution).</strong> There is a unique nonidentity smooth map germ near the fold point satisfying <span class="math" data-tex="\(f\circ\iota=f\)">\(f\circ\iota=f\)</span>. It is the involution (2.1), expressed in the original coordinates. On its fixed hypersurface, its minus-one differential eigenspace is the kernel line of <span class="math" data-tex="\(df\)">\(df\)</span>.</p>
+<p><strong>Proof.</strong> A map preserving (1.3) must keep <span class="math" data-tex="\(z\)">\(z\)</span> fixed and send <span class="math" data-tex="\(s\)">\(s\)</span> to a function <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(h^2=s^2\)">\(h^2=s^2\)</span>. On each of the two connected local sets <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, <span class="math" data-tex="\(s&lt;0\)">\(s&lt;0\)</span>, continuity forces <span class="math" data-tex="\(h/s\)">\(h/s\)</span> to be a constant sign. Smoothness at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> forces these two signs to agree, since they give the two one-sided normal derivatives. Thus the only smooth germs are identity and reflection. This proves uniqueness independently of the chosen fold coordinates. Its square and fixed set follow from (2.1). At a fixed point its differential is identity on <span class="math" data-tex="\(z\)">\(z\)</span> and minus identity on <span class="math" data-tex="\(s\)">\(s\)</span>, while <span class="math" data-tex="\(\ker df\)">\(\ker df\)</span> is the <span class="math" data-tex="\(s\)">\(s\)</span> line. ∎</p>
+<p>We call that minus-one line the <strong>reflection line</strong>. For a fold family it is a smooth line bundle on the critical hypersurface.</p>
+<p><img class="course-figure" loading="lazy" decoding="async" src="figures/fold-and-smooth-descent.svg" alt="Graph of the exact fold r=s squared, with its two exchanged sheets and unattained negative target values." data-source-sha256="C4DBD3653580DA7D63B5ED305D4A4D2D97B5FCC90A88BDFC550C63F25AF35983"></p>
+<p><strong>Figure 2.1.</strong> The graph of the exact one-variable normal slice <span class="math" data-tex="\(r=s^2\)">\(r=s^2\)</span>, with <span class="math" data-tex="\(z\)">\(z\)</span> held fixed in Theorem 1.2. The arrow exchanges the points <span class="math" data-tex="\(s=-1\)">\(s=-1\)</span> and <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, which both have output <span class="math" data-tex="\(r=1\)">\(r=1\)</span>; it is an identification, not a flow trajectory. The critical point is the origin. The shaded negative target values have no source preimage. Theorem 5.1 requires equal function values on the two sheets, and Theorem 4.2 constructs a smooth extension into the unattained side. The drawing shows a normal-form slice rather than an entire higher-dimensional fold.</p>
+<p><strong>Theorem 2.2 (one involution is a reflection).</strong> Let <span class="math" data-tex="\(\iota\)">\(\iota\)</span> be a smooth involution with a fixed point <span class="math" data-tex="\(p\)">\(p\)</span>, whose local fixed set is a hypersurface. There are smooth coordinates <span class="math" data-tex="\((z,s)\)">\((z,s)\)</span> centered at <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(\iota(z,s)=(z,-s)\)">\(\iota(z,s)=(z,-s)\)</span>.</p>
+<p><strong>Proof.</strong> The differential <span class="math" data-tex="\(L=d\iota(p)\)">\(L=d\iota(p)\)</span> satisfies <span class="math" data-tex="\(L^2=I\)">\(L^2=I\)</span>. Its dual space is the direct sum of its plus-one and minus-one eigenspaces, with projections <span class="math" data-tex="\((I\pm L^*)/2\)">\((I\pm L^*)/2\)</span>. Start with local coordinate functions <span class="math" data-tex="\(u_j\)">\(u_j\)</span> vanishing at <span class="math" data-tex="\(p\)">\(p\)</span>. Their symmetric and antisymmetric combinations
+<span class="math math-display" data-tex="\[
+u_j^+=(u_j+u_j\circ\iota)/2,
+\qquad u_j^-=(u_j-u_j\circ\iota)/2
+\tag{2.2}
+\]">\[
+u_j^+=(u_j+u_j\circ\iota)/2,
+\qquad u_j^-=(u_j-u_j\circ\iota)/2
+\tag{2.2}
+\]</span>
+have differentials spanning those two eigenspaces. Select a basis from these differentials. The corresponding functions are a coordinate system by the inverse function theorem. Each chosen coordinate is exactly even or odd under <span class="math" data-tex="\(\iota\)">\(\iota\)</span>, not just even or odd to first order.</p>
+<p>In this coordinate system the fixed set is precisely the simultaneous zero set of the odd coordinates. Its codimension therefore equals their number. The hypersurface hypothesis makes that number one. Naming the odd coordinate <span class="math" data-tex="\(s\)">\(s\)</span> gives the assertion. The construction also proves that the reflection line is transverse to the fixed hypersurface. ∎</p>
+<p>The map <span class="math" data-tex="\((z,s)\mapsto(z,s^2)\)">\((z,s)\mapsto(z,s^2)\)</span> consequently realizes any such single involution locally as the sheet exchange of a fold. Two involutions with the same fixed hypersurface can have different reflection lines; their simultaneous normalization requires a further theorem.</p>
+<h2 id="even-and-odd-functions-become-smooth-functions-of-the-square"><span id="3-even-and-odd-functions-become-smooth-functions-of-the-square"></span><span id="section-3"></span>3. Even and odd functions become smooth functions of the square</h2>
+<p>Let <span class="math" data-tex="\(a(s,z)\)">\(a(s,z)\)</span> be smooth for <span class="math" data-tex="\(|s|&lt;s_0\)">\(|s|&lt;s_0\)</span>, with additional parameters <span class="math" data-tex="\(z\)">\(z\)</span> in an open set. We work on compact parameter sets and a smaller interval <span class="math" data-tex="\(|s|\leq s_1&lt;s_0\)">\(|s|\leq s_1&lt;s_0\)</span>. Parameter multi-indices are denoted by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p><strong>Lemma 3.1 (division of an odd function).</strong> If <span class="math" data-tex="\(a\)">\(a\)</span> is odd in <span class="math" data-tex="\(s\)">\(s\)</span>, there is a smooth even function <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(a=sb\)">\(a=sb\)</span>, given by
+<span class="math math-display" data-tex="\[
+b(s,z)=\int_0^1\partial_s a(us,z)\,du.
+\tag{3.1}
+\]">\[
+b(s,z)=\int_0^1\partial_s a(us,z)\,du.
+\tag{3.1}
+\]</span>
+For each <span class="math" data-tex="\(j,\alpha\)">\(j,\alpha\)</span>, its derivative is bounded by a constant times the supremum of <span class="math" data-tex="\(|\partial_s^{j+1}\partial_z^\alpha a|\)">\(|\partial_s^{j+1}\partial_z^\alpha a|\)</span> on the same interval and parameter set.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(a(0,z)=0\)">\(a(0,z)=0\)</span>, the fundamental theorem of calculus gives <span class="math" data-tex="\(a(s,z)=s\int_0^1a_s(us,z)du\)">\(a(s,z)=s\int_0^1a_s(us,z)du\)</span>. The integral is smooth, including at zero. For <span class="math" data-tex="\(s\neq0\)">\(s\neq0\)</span>, oddness of <span class="math" data-tex="\(a\)">\(a\)</span> makes <span class="math" data-tex="\(a(s,z)/s\)">\(a(s,z)/s\)</span> even; continuity extends this parity to zero. Differentiation under the integral supplies a factor <span class="math" data-tex="\(u^j\)">\(u^j\)</span>, bounded by one, and proves the stated estimate. ∎</p>
+<p><strong>Lemma 3.2 (smooth square descent on the attained side).</strong> If <span class="math" data-tex="\(a\)">\(a\)</span> is even in <span class="math" data-tex="\(s\)">\(s\)</span>, then
+<span class="math math-display" data-tex="\[
+F(r,z)=a(\sqrt r,z),\qquad 0\leq r\leq s_1^2,
+\tag{3.2}
+\]">\[
+F(r,z)=a(\sqrt r,z),\qquad 0\leq r\leq s_1^2,
+\tag{3.2}
+\]</span>
+is smooth up to <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. For every <span class="math" data-tex="\(p,\alpha\)">\(p,\alpha\)</span>,
+<span class="math math-display" data-tex="\[
+\sup|\partial_r^p\partial_z^\alpha F|
+\leq C_p\sup|\partial_s^{2p}\partial_z^\alpha a|.
+\tag{3.3}
+\]">\[
+\sup|\partial_r^p\partial_z^\alpha F|
+\leq C_p\sup|\partial_s^{2p}\partial_z^\alpha a|.
+\tag{3.3}
+\]</span>
+Its boundary derivatives are
+<span class="math math-display" data-tex="\[
+\partial_r^p F(0,z)=
+\frac{p!}{(2p)!}\partial_s^{2p}a(0,z).
+\tag{3.4}
+\]">\[
+\partial_r^p F(0,z)=
+\frac{p!}{(2p)!}\partial_s^{2p}a(0,z).
+\tag{3.4}
+\]</span></p>
+<p><strong>Proof.</strong> On even smooth functions define
+<span class="math math-display" data-tex="\[
+(La)(s,z)=\frac12\int_0^1\partial_s^2a(us,z)\,du.
+\tag{3.5}
+\]">\[
+(La)(s,z)=\frac12\int_0^1\partial_s^2a(us,z)\,du.
+\tag{3.5}
+\]</span>
+Evenness gives <span class="math" data-tex="\(a_s(0,z)=0\)">\(a_s(0,z)=0\)</span>, so for <span class="math" data-tex="\(s\neq0\)">\(s\neq0\)</span> this is <span class="math" data-tex="\(a_s(s,z)/(2s)\)">\(a_s(s,z)/(2s)\)</span>. The integral proves that <span class="math" data-tex="\(La\)">\(La\)</span> is itself smooth and even, without dividing by a vanishing coordinate. Each prescribed <span class="math" data-tex="\(j\)">\(j\)</span>-th <span class="math" data-tex="\(s\)">\(s\)</span> derivative of <span class="math" data-tex="\(La\)">\(La\)</span> is bounded by one half the corresponding <span class="math" data-tex="\((j+2)\)">\((j+2)\)</span>-th derivative bound of <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, the chain rule gives <span class="math" data-tex="\(\partial_r^p F(r,z)=(L^pa)(\sqrt r,z)\)">\(\partial_r^p F(r,z)=(L^pa)(\sqrt r,z)\)</span>. The right-hand side extends continuously to <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, with all parameter derivatives. Repeating the fundamental theorem of calculus from <span class="math" data-tex="\(r=0\)">\(r=0\)</span> shows that these continuous extensions are the actual successive one-sided derivatives. This proves smoothness up to the boundary and the finite-derivative estimate (3.3), for example with <span class="math" data-tex="\(C_p=2^{-p}\)">\(C_p=2^{-p}\)</span>.</p>
+<p>For the boundary value, the even Taylor expansion through order <span class="math" data-tex="\(2p\)">\(2p\)</span> is
+<span class="math math-display" data-tex="\[
+a(s,z)=\sum_{j=0}^p
+\frac{\partial_s^{2j}a(0,z)}{(2j)!}s^{2j}
+\ +\ o(s^{2p}).
+\]">\[
+a(s,z)=\sum_{j=0}^p
+\frac{\partial_s^{2j}a(0,z)}{(2j)!}s^{2j}
+\ +\ o(s^{2p}).
+\]</span>
+Substitute <span class="math" data-tex="\(s=\sqrt r\)">\(s=\sqrt r\)</span> and use the proved boundary smoothness. Comparison of Taylor coefficients gives (3.4). ∎</p>
+<p>For a general <span class="math" data-tex="\(a\)">\(a\)</span>, write
+<span class="math math-display" data-tex="\[
+a_e=(a(s,z)+a(-s,z))/2,
+\qquad a_o=(a(s,z)-a(-s,z))/2.
+\]">\[
+a_e=(a(s,z)+a(-s,z))/2,
+\qquad a_o=(a(s,z)-a(-s,z))/2.
+\]</span>
+Lemmas 3.1–3.2 give unique smooth attained-side functions <span class="math" data-tex="\(F_0,F_1\)">\(F_0,F_1\)</span> with
+<span class="math math-display" data-tex="\[
+a(s,z)=F_0(s^2,z)+sF_1(s^2,z).
+\tag{3.6}
+\]">\[
+a(s,z)=F_0(s^2,z)+sF_1(s^2,z).
+\tag{3.6}
+\]</span>
+Their <span class="math" data-tex="\(p\)">\(p\)</span>-th square-variable derivative bounds use finitely many derivatives of <span class="math" data-tex="\(a\)">\(a\)</span>: at most <span class="math" data-tex="\(2p\)">\(2p\)</span> for <span class="math" data-tex="\(F_0\)">\(F_0\)</span>, and <span class="math" data-tex="\(2p+1\)">\(2p+1\)</span> for <span class="math" data-tex="\(F_1\)">\(F_1\)</span>. We next extend these functions to negative <span class="math" data-tex="\(r\)">\(r\)</span>, retaining such bounds.</p>
+<h2 id="an-explicit-extension-matches-every-boundary-jet"><span id="4-an-explicit-extension-matches-every-boundary-jet"></span><span id="section-4"></span>4. An explicit extension matches every boundary jet</h2>
+<p>Fix <span class="math" data-tex="\(0&lt;\delta&lt;s_1^2\)">\(0&lt;\delta&lt;s_1^2\)</span>. Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be a smooth function on the closed half-line, equal to one near zero and supported in <span class="math" data-tex="\([0,\delta)\)">\([0,\delta)\)</span>. For a smooth <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\([0,\delta]\)">\([0,\delta]\)</span>, we will extend its germ at zero. The cutoff is fixed independently of <span class="math" data-tex="\(F\)">\(F\)</span> and of all parameters.</p>
+<p>Put <span class="math" data-tex="\(b_k=-2^k\)">\(b_k=-2^k\)</span>. For <span class="math" data-tex="\(0\leq k\leq N\)">\(0\leq k\leq N\)</span>, the Lagrange coefficient for evaluating a degree-<span class="math" data-tex="\(N\)">\(N\)</span> polynomial at 1 from its values at these nodes is
+<span class="math math-display" data-tex="\[
+a_{k,N}=\prod_{\substack{0\leq j\leq N\\j\neq k}}
+\frac{1+2^j}{2^j-2^k}.
+\tag{4.1}
+\]">\[
+a_{k,N}=\prod_{\substack{0\leq j\leq N\\j\neq k}}
+\frac{1+2^j}{2^j-2^k}.
+\tag{4.1}
+\]</span>
+Lagrange interpolation therefore gives, for every integer <span class="math" data-tex="\(0\leq p\leq N\)">\(0\leq p\leq N\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^N a_{k,N}(-2^k)^p=1.
+\tag{4.2}
+\]">\[
+\sum_{k=0}^N a_{k,N}(-2^k)^p=1.
+\tag{4.2}
+\]</span></p>
+<p><strong>Lemma 4.1 (rapid coefficients with all moments).</strong> For fixed <span class="math" data-tex="\(k\)">\(k\)</span>, the limit <span class="math" data-tex="\(a_k=\lim_{N\to\infty}a_{k,N}\)">\(a_k=\lim_{N\to\infty}a_{k,N}\)</span> exists. There is a constant <span class="math" data-tex="\(C\)">\(C\)</span> independent of <span class="math" data-tex="\(k,N\)">\(k,N\)</span> such that
+<span class="math math-display" data-tex="\[
+|a_{k,N}|\leq C2^{-k(k+1)/2},
+\qquad |a_k|\leq C2^{-k(k+1)/2}.
+\tag{4.3}
+\]">\[
+|a_{k,N}|\leq C2^{-k(k+1)/2},
+\qquad |a_k|\leq C2^{-k(k+1)/2}.
+\tag{4.3}
+\]</span>
+For each integer <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span>, the following sums converge absolutely and satisfy
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^\infty|a_k|2^{kp}&lt;\infty,
+\qquad
+\sum_{k=0}^\infty a_k(-2^k)^p=1.
+\tag{4.4}
+\]">\[
+\sum_{k=0}^\infty|a_k|2^{kp}&lt;\infty,
+\qquad
+\sum_{k=0}^\infty a_k(-2^k)^p=1.
+\tag{4.4}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(j&lt;k\)">\(j&lt;k\)</span>, the absolute factor in (4.1) is
+<span class="math math-display" data-tex="\[
+2^{j-k}\frac{1+2^{-j}}{1-2^{j-k}};
+\]">\[
+2^{j-k}\frac{1+2^{-j}}{1-2^{j-k}};
+\]</span>
+for <span class="math" data-tex="\(j&gt;k\)">\(j&gt;k\)</span>, it is <span class="math" data-tex="\((1+2^{-j})/(1-2^{k-j})\)">\((1+2^{-j})/(1-2^{k-j})\)</span>. The product of the powers for <span class="math" data-tex="\(j&lt;k\)">\(j&lt;k\)</span> is <span class="math" data-tex="\(2^{-k(k+1)/2}\)">\(2^{-k(k+1)/2}\)</span>. The numerator products are bounded by <span class="math" data-tex="\(\prod_{j=0}^\infty(1+2^{-j})&lt;\infty\)">\(\prod_{j=0}^\infty(1+2^{-j})&lt;\infty\)</span>. The denominator products, on each side, are bounded below by the positive number <span class="math" data-tex="\(\prod_{j=1}^\infty(1-2^{-j})\)">\(\prod_{j=1}^\infty(1-2^{-j})\)</span>.</p>
+<p>For completeness, the first product converges because <span class="math" data-tex="\(\log(1+t)\leq t\)">\(\log(1+t)\leq t\)</span> for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span> and <span class="math" data-tex="\(\sum2^{-j}&lt;\infty\)">\(\sum2^{-j}&lt;\infty\)</span>. The second has a nonzero limit: <span class="math" data-tex="\(|\log(1-t)|\leq2t\)">\(|\log(1-t)|\leq2t\)</span> for <span class="math" data-tex="\(0\leq t\leq1/2\)">\(0\leq t\leq1/2\)</span>, so its logarithms have a finite sum. These observations prove the uniform bound (4.3). For fixed <span class="math" data-tex="\(k\)">\(k\)</span>, the tail factors for <span class="math" data-tex="\(j&gt;k\)">\(j&gt;k\)</span> also have summable logarithms, so their product converges and the limit <span class="math" data-tex="\(a_k\)">\(a_k\)</span> exists.</p>
+<p>The bound multiplied by <span class="math" data-tex="\(2^{kp}\)">\(2^{kp}\)</span> is summable, since its exponent is a negative quadratic in <span class="math" data-tex="\(k\)">\(k\)</span>. Extend <span class="math" data-tex="\(a_{k,N}\)">\(a_{k,N}\)</span> by zero for <span class="math" data-tex="\(k&gt;N\)">\(k&gt;N\)</span>. Dominated convergence in (4.2), with <span class="math" data-tex="\(N\geq p\)">\(N\geq p\)</span>, gives the second identity in (4.4). Absolute convergence is the first. ∎</p>
+<p><strong>Theorem 4.2 (controlled half-line extension).</strong> For <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>, define
+<span class="math math-display" data-tex="\[
+(EF)(r,z)=\sum_{k=0}^\infty
+a_k\chi(-2^kr)F(-2^kr,z),
+\tag{4.5}
+\]">\[
+(EF)(r,z)=\sum_{k=0}^\infty
+a_k\chi(-2^kr)F(-2^kr,z),
+\tag{4.5}
+\]</span>
+and for <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span> set <span class="math" data-tex="\((EF)(r,z)=F(r,z)\)">\((EF)(r,z)=F(r,z)\)</span>. This defines a linear smooth extension near zero. Every mixed derivative on the negative side is bounded by finitely many derivatives of <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\([0,\delta]\)">\([0,\delta]\)</span>; specifically, for a compact parameter set <span class="math" data-tex="\(K\)">\(K\)</span>,
+<span class="math math-display" data-tex="\[
+\sup_{-\delta\leq r\leq0,\ z\in K}
+|\partial_r^p\partial_z^\alpha EF|
+\leq C_{p,\chi}
+\max_{0\leq j\leq p}
+\sup_{0\leq r\leq\delta,\ z\in K}
+|\partial_r^j\partial_z^\alpha F|.
+\tag{4.6}
+\]">\[
+\sup_{-\delta\leq r\leq0,\ z\in K}
+|\partial_r^p\partial_z^\alpha EF|
+\leq C_{p,\chi}
+\max_{0\leq j\leq p}
+\sup_{0\leq r\leq\delta,\ z\in K}
+|\partial_r^j\partial_z^\alpha F|.
+\tag{4.6}
+\]</span>
+All derivatives at zero agree with the given right-hand derivatives.</p>
+<p><strong>Proof.</strong> For each fixed <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>, only finitely many summands are nonzero, because <span class="math" data-tex="\(-2^kr\)">\(-2^kr\)</span> eventually exceeds the cutoff support. Define <span class="math" data-tex="\(H=\chi F\)">\(H=\chi F\)</span> on the nonnegative half-line and extend it by zero beyond <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. It is smooth at that far endpoint, since <span class="math" data-tex="\(\chi\)">\(\chi\)</span> vanishes in a neighborhood of it. Formula (4.5) can thus be differentiated without evaluating <span class="math" data-tex="\(F\)">\(F\)</span> outside its domain. Its <span class="math" data-tex="\(p\)">\(p\)</span>-th derivative is
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^\infty
+a_k(-2^k)^p\partial_r^p\partial_z^\alpha H(-2^kr,z).
+\tag{4.7}
+\]">\[
+\sum_{k=0}^\infty
+a_k(-2^k)^p\partial_r^p\partial_z^\alpha H(-2^kr,z).
+\tag{4.7}
+\]</span>
+The product rule for <span class="math" data-tex="\(H\)">\(H\)</span> and the first sum in (4.4) give (4.6), uniformly all the way to zero.</p>
+<p>As <span class="math" data-tex="\(r\uparrow0\)">\(r\uparrow0\)</span>, each term in (4.7) tends to
+<span class="math" data-tex="\(a_k(-2^k)^p\partial_r^p\partial_z^\alpha F(0,z)\)">\(a_k(-2^k)^p\partial_r^p\partial_z^\alpha F(0,z)\)</span>, because <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is one near zero. The common summable bound gives uniform convergence of this limit on compact parameter sets. The moment identity (4.4) makes the resulting sum exactly <span class="math" data-tex="\(\partial_r^p\partial_z^\alpha F(0,z)\)">\(\partial_r^p\partial_z^\alpha F(0,z)\)</span>.</p>
+<p>Hence every derivative from the negative side has the correct continuous boundary value. The fundamental theorem of calculus glues the first derivatives across zero; induction glues all successive derivatives and their parameter derivatives. The result is jointly smooth. Linearity follows directly from the fixed coefficients and cutoff. ∎</p>
+<p>The extension is unique on the attained side <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, but generally not on <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>. A smooth function supported on the negative side and flat at zero can be added without changing its pullback under <span class="math" data-tex="\(r=s^2\)">\(r=s^2\)</span>. If the original <span class="math" data-tex="\(F\)">\(F\)</span> vanishes for some parameter values, (4.5) vanishes there too: the construction does not enlarge parameter supports.</p>
+<h2 id="invariance-is-exactly-the-smooth-descent-condition"><span id="5-invariance-is-exactly-the-smooth-descent-condition"></span><span id="section-5"></span>5. Invariance is exactly the smooth descent condition</h2>
+<p><strong>Theorem 5.1 (descent through a fold).</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> have a fold at <span class="math" data-tex="\(y_0\)">\(y_0\)</span>, and let <span class="math" data-tex="\(\iota\)">\(\iota\)</span> be its fold involution. A smooth function <span class="math" data-tex="\(a\)">\(a\)</span> near <span class="math" data-tex="\(y_0\)">\(y_0\)</span> has the form <span class="math" data-tex="\(a=v\circ f\)">\(a=v\circ f\)</span>, with <span class="math" data-tex="\(v\)">\(v\)</span> smooth in a full target neighborhood, if and only if <span class="math" data-tex="\(a\circ\iota=a\)">\(a\circ\iota=a\)</span>.</p>
+<p><strong>Proof.</strong> Necessity follows from <span class="math" data-tex="\(f\circ\iota=f\)">\(f\circ\iota=f\)</span>. For sufficiency use Theorem 1.2 to write <span class="math" data-tex="\(f(z,s)=(z,s^2)\)">\(f(z,s)=(z,s^2)\)</span>. Invariance means evenness in <span class="math" data-tex="\(s\)">\(s\)</span>. Lemma 3.2 gives a smooth function <span class="math" data-tex="\(F(r,z)=a(\sqrt r,z)\)">\(F(r,z)=a(\sqrt r,z)\)</span> up to the attained-side boundary; Theorem 4.2 extends it to negative <span class="math" data-tex="\(r\)">\(r\)</span>. Set <span class="math" data-tex="\(v(Z,r)=EF(r,Z)\)">\(v(Z,r)=EF(r,Z)\)</span> in the target coordinates. Then <span class="math" data-tex="\(v\circ f=a\)">\(v\circ f=a\)</span>. The coordinate maps are smooth, so this is a smooth target germ in the original coordinates as well. ∎</p>
+<p>This proof supplies parameter bounds in fixed fold coordinates. It does not assert that arbitrary frequency-dependent changes of fold coordinates preserve an ordinary symbol class without their own derivative estimates.</p>
+<p><strong>Corollary 5.2 (even/odd decomposition in a full neighborhood).</strong> For every smooth <span class="math" data-tex="\(a(s,z)\)">\(a(s,z)\)</span> there are smooth functions <span class="math" data-tex="\(F_0,F_1\)">\(F_0,F_1\)</span> on a full neighborhood of <span class="math" data-tex="\(r=0\)">\(r=0\)</span> such that
+<span class="math math-display" data-tex="\[
+a(s,z)=F_0(s^2,z)+sF_1(s^2,z)
+\tag{5.1}
+\]">\[
+a(s,z)=F_0(s^2,z)+sF_1(s^2,z)
+\tag{5.1}
+\]</span>
+for small <span class="math" data-tex="\(s\)">\(s\)</span>. They can be chosen linearly in <span class="math" data-tex="\(a\)">\(a\)</span>, with each prescribed mixed derivative bounded by finitely many mixed derivatives of <span class="math" data-tex="\(a\)">\(a\)</span>, and without increasing its parameter support.</p>
+<p><strong>Proof.</strong> Split into even and odd parts. Divide the odd part by <span class="math" data-tex="\(s\)">\(s\)</span> using Lemma 3.1. Descend both even functions by Lemma 3.2 and extend each using Theorem 4.2. All operations are linear, and their finite-derivative estimates compose. On <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, the functions are fixed by the given even and odd parts; hence (5.1) is exact on a smaller source neighborhood. The parameter support assertion follows at each step. ∎</p>
+<p>For example, <span class="math" data-tex="\(a(s,z)=c(z)+s d(z)+s^2 e(z)+s^3 h(z)\)">\(a(s,z)=c(z)+s d(z)+s^2 e(z)+s^3 h(z)\)</span> has attained-side coefficients <span class="math" data-tex="\(F_0(r,z)=c(z)+r e(z)\)">\(F_0(r,z)=c(z)+r e(z)\)</span>, <span class="math" data-tex="\(F_1(r,z)=d(z)+r h(z)\)">\(F_1(r,z)=d(z)+r h(z)\)</span>. The same statement holds for smooth nonanalytic functions, by the proved extension rather than an assumed convergent Taylor series.</p>
+<h2 id="uniform-ordinary-symbols-descend-with-the-airy-order-shifts"><span id="6-uniform-ordinary-symbols-descend-with-the-airy-order-shifts"></span><span id="section-6"></span>6. Uniform ordinary symbols descend with the Airy order shifts</h2>
+<p>We now make the frequency estimates explicit. Let <span class="math" data-tex="\(a(s,x,\xi)\)">\(a(s,x,\xi)\)</span> be smooth for <span class="math" data-tex="\(|s|&lt;s_0\)">\(|s|&lt;s_0\)</span>, with ordinary symbol order <span class="math" data-tex="\(\nu\)">\(\nu\)</span> in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, uniformly with all derivatives in <span class="math" data-tex="\(s\)">\(s\)</span> and on compact <span class="math" data-tex="\(x\)">\(x\)</span> sets. Thus for every <span class="math" data-tex="\(j,\alpha,\beta\)">\(j,\alpha,\beta\)</span>,
+<span class="math math-display" data-tex="\[
+|\partial_s^j\partial_x^\alpha\partial_\xi^\beta a(s,x,\xi)|
+\leq C_{j\alpha\beta}\langle\xi\rangle^{\nu-|\beta|}
+\tag{6.1}
+\]">\[
+|\partial_s^j\partial_x^\alpha\partial_\xi^\beta a(s,x,\xi)|
+\leq C_{j\alpha\beta}\langle\xi\rangle^{\nu-|\beta|}
+\tag{6.1}
+\]</span>
+on the smaller fixed <span class="math" data-tex="\(s\)">\(s\)</span> interval. Cone cutoffs and compact base cutoffs may be included. Smooth low-frequency extensions are harmless, so the following assertions are made on a high-frequency cone where
+<span class="math math-display" data-tex="\[
+\rho=\xi_n\geq1,\qquad |\xi|\leq C\rho,\qquad
+|\xi_1/\rho|&lt;\delta_1,\qquad n\geq2.
+\tag{6.2}
+\]">\[
+\rho=\xi_n\geq1,\qquad |\xi|\leq C\rho,\qquad
+|\xi_1/\rho|&lt;\delta_1,\qquad n\geq2.
+\tag{6.2}
+\]</span>
+Choose <span class="math" data-tex="\(\delta_1\)">\(\delta_1\)</span> sufficiently small for the preceding square-variable constructions.</p>
+<p><strong>Proposition 6.1 (symbol-controlled square coefficients).</strong> The functions in (5.1) can be chosen so that, for every <span class="math" data-tex="\(p,\alpha,\beta\)">\(p,\alpha,\beta\)</span>,
+<span class="math math-display" data-tex="\[
+|\partial_r^p\partial_x^\alpha\partial_\xi^\beta F_j(r,x,\xi)|
+\leq C_{p\alpha\beta}\langle\xi\rangle^{\nu-|\beta|},
+\qquad j=0,1,
+\tag{6.3}
+\]">\[
+|\partial_r^p\partial_x^\alpha\partial_\xi^\beta F_j(r,x,\xi)|
+\leq C_{p\alpha\beta}\langle\xi\rangle^{\nu-|\beta|},
+\qquad j=0,1,
+\tag{6.3}
+\]</span>
+for <span class="math" data-tex="\(|r|\)">\(|r|\)</span> in a fixed smaller interval. Each such constant is controlled by finitely many seminorms in (6.1). In particular
+<span class="math math-display" data-tex="\[
+c_j(x,\xi)=F_j(\xi_1/\rho,x,\xi)\in S^\nu.
+\tag{6.4}
+\]">\[
+c_j(x,\xi)=F_j(\xi_1/\rho,x,\xi)\in S^\nu.
+\tag{6.4}
+\]</span></p>
+<p><strong>Proof.</strong> All parity, division, square-descent and extension operations act in the <span class="math" data-tex="\(s,r\)">\(s,r\)</span> variables with fixed kernels and cutoffs. They commute with <span class="math" data-tex="\(x,\xi\)">\(x,\xi\)</span> differentiation. Apply their estimates to <span class="math" data-tex="\(\partial_x^\alpha\partial_\xi^\beta a\)">\(\partial_x^\alpha\partial_\xi^\beta a\)</span>, multiply by the weight <span class="math" data-tex="\(\langle\xi\rangle^{-\nu+|\beta|}\)">\(\langle\xi\rangle^{-\nu+|\beta|}\)</span>, and take the supremum. This proves (6.3) with finite seminorm control, including for negative <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>The ratio <span class="math" data-tex="\(r(\xi)=\xi_1/\rho\)">\(r(\xi)=\xi_1/\rho\)</span> is homogeneous of degree zero and smooth on the cone. Its derivatives satisfy
+<span class="math math-display" data-tex="\[
+|\partial_\xi^\gamma r(\xi)|
+\leq C_\gamma\rho^{-|\gamma|}
+\quad (|\gamma|\geq1).
+\tag{6.5}
+\]">\[
+|\partial_\xi^\gamma r(\xi)|
+\leq C_\gamma\rho^{-|\gamma|}
+\quad (|\gamma|\geq1).
+\tag{6.5}
+\]</span>
+This can be read directly from the quotient, or from homogeneity on the compact normalized cone <span class="math" data-tex="\(\rho=1\)">\(\rho=1\)</span>. In the repeated chain rule for (6.4), a derivative of total frequency order <span class="math" data-tex="\(|\beta|\)">\(|\beta|\)</span> is a sum of terms consisting of a derivative of <span class="math" data-tex="\(F_j\)">\(F_j\)</span> of external frequency order <span class="math" data-tex="\(|\beta_0|\)">\(|\beta_0|\)</span>, square-variable order <span class="math" data-tex="\(p\)">\(p\)</span>, and a product of ratio derivatives of total order <span class="math" data-tex="\(|\beta|-|\beta_0|\)">\(|\beta|-|\beta_0|\)</span>. Equations (6.3)–(6.5), and <span class="math" data-tex="\(\rho\asymp\langle\xi\rangle\)">\(\rho\asymp\langle\xi\rangle\)</span> on the high-frequency cone, bound each term by <span class="math" data-tex="\(C\langle\xi\rangle^{\nu-|\beta|}\)">\(C\langle\xi\rangle^{\nu-|\beta|}\)</span>. Base derivatives are unchanged. This proves (6.4). Ordinary symbol cutoffs on a smaller cone give the localized assertion, with a smooth extension at bounded frequencies. ∎</p>
+<p>The square root itself has singular derivatives at the boundary. The estimates use the descended function <span class="math" data-tex="\(F_j\)">\(F_j\)</span>, whose derivatives were proved smooth and uniformly bounded; they do not differentiate <span class="math" data-tex="\(\sqrt{\xi_1/\rho}\)">\(\sqrt{\xi_1/\rho}\)</span> as if it were a smooth function across <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span>.</p>
+<p>Consider the fold phase
+<span class="math math-display" data-tex="\[
+\Phi(x,y,s,\xi)=(x-y)\cdot\xi+s\xi_1-s^3\rho/3,
+\qquad \rho&gt;0.
+\tag{6.6}
+\]">\[
+\Phi(x,y,s,\xi)=(x-y)\cdot\xi+s\xi_1-s^3\rho/3,
+\qquad \rho&gt;0.
+\tag{6.6}
+\]</span>
+On its critical set in <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(\xi_1=s^2\rho\)">\(\xi_1=s^2\rho\)</span>. An unscaled coefficient for an FIO of order <span class="math" data-tex="\(m\)">\(m\)</span> has order <span class="math" data-tex="\(\nu=m+1/2\)">\(\nu=m+1/2\)</span>; the complete phase-density derivation will be proved with the fold model. Here we identify precisely what that coefficient order entails.</p>
+<p><strong>Theorem 6.2 (realize the critical coefficient).</strong> Suppose <span class="math" data-tex="\(a(s,x,\xi)\)">\(a(s,x,\xi)\)</span> satisfies (6.1) with <span class="math" data-tex="\(\nu=m+1/2\)">\(\nu=m+1/2\)</span>. On a smaller cone there are ordinary symbols
+<span class="math math-display" data-tex="\[
+b_0\in S^{m+1/6},\qquad b_1\in S^{m-1/6}
+\tag{6.7}
+\]">\[
+b_0\in S^{m+1/6},\qquad b_1\in S^{m-1/6}
+\tag{6.7}
+\]</span>
+such that on <span class="math" data-tex="\(\xi_1=s^2\rho\)">\(\xi_1=s^2\rho\)</span>, for small <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math math-display" data-tex="\[
+a(s,x,\xi)=
+\rho^{1/3}b_0(x,\xi)-is\rho^{2/3}b_1(x,\xi).
+\tag{6.8}
+\]">\[
+a(s,x,\xi)=
+\rho^{1/3}b_0(x,\xi)-is\rho^{2/3}b_1(x,\xi).
+\tag{6.8}
+\]</span>
+Conversely any symbols of those orders give an unscaled smooth coefficient of order <span class="math" data-tex="\(m+1/2\)">\(m+1/2\)</span> by the right-hand side of (6.8), uniformly for <span class="math" data-tex="\(s\)">\(s\)</span> in a compact interval. Compact base support can be retained in both directions.</p>
+<p><strong>Proof.</strong> Choose the functions <span class="math" data-tex="\(F_0,F_1\)">\(F_0,F_1\)</span> from Proposition 6.1 and set
+<span class="math math-display" data-tex="\[
+b_0=\rho^{-1/3}F_0(\xi_1/\rho,x,\xi),
+\qquad
+b_1=i\rho^{-2/3}F_1(\xi_1/\rho,x,\xi).
+\tag{6.9}
+\]">\[
+b_0=\rho^{-1/3}F_0(\xi_1/\rho,x,\xi),
+\qquad
+b_1=i\rho^{-2/3}F_1(\xi_1/\rho,x,\xi).
+\tag{6.9}
+\]</span>
+The powers of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> are ordinary symbols of their displayed orders on this cone. Thus the orders are <span class="math" data-tex="\(\nu-1/3=m+1/6\)">\(\nu-1/3=m+1/6\)</span> and <span class="math" data-tex="\(\nu-2/3=m-1/6\)">\(\nu-2/3=m-1/6\)</span>, respectively. On the critical set the ratio is <span class="math" data-tex="\(s^2\)">\(s^2\)</span>. Substitution into the right-hand side of (6.8) gives <span class="math" data-tex="\(F_0(s^2,x,\xi)+sF_1(s^2,x,\xi)\)">\(F_0(s^2,x,\xi)+sF_1(s^2,x,\xi)\)</span>, because <span class="math" data-tex="\((-i)i=1\)">\((-i)i=1\)</span>. This is exactly <span class="math" data-tex="\(a\)">\(a\)</span>. Cone cutoffs equal to one on a smaller critical germ retain the identity there.</p>
+<p>Conversely <span class="math" data-tex="\(\rho^{1/3}b_0\)">\(\rho^{1/3}b_0\)</span> and <span class="math" data-tex="\(\rho^{2/3}b_1\)">\(\rho^{2/3}b_1\)</span> both have order <span class="math" data-tex="\(m+1/2\)">\(m+1/2\)</span>. Multiplication by <span class="math" data-tex="\(s\)">\(s\)</span> and its derivatives on a compact interval preserves that order, as do base derivatives. A fixed smooth <span class="math" data-tex="\(s\)">\(s\)</span> cutoff supplies compact <span class="math" data-tex="\(s\)">\(s\)</span> support if desired. The parameter-preserving constructions and multiplication retain compact base support. ∎</p>
+<p>This realizes the coefficient <strong>on the critical set</strong>. It does not yet identify two full oscillatory integrals away from that set, sum all lower-order corrections, prove the noncompact <span class="math" data-tex="\(s\)">\(s\)</span> tail is smoothing, or establish an Airy bound. Those analytic statements have their own proofs. In particular, the negative <span class="math" data-tex="\(i\)">\(i\)</span> sign in (6.8) and the positive <span class="math" data-tex="\(i\)">\(i\)</span> in the definition of <span class="math" data-tex="\(b_1\)">\(b_1\)</span> serve different roles and must not be interchanged.</p>
+<h2 id="exercises-with-complete-solutions"><span id="7-exercises-with-complete-solutions"></span><span id="section-7"></span>7. Exercises with complete solutions</h2>
+<p><strong>Exercise 7.1 (Hessian in the missing output; introductory).</strong> For <span class="math" data-tex="\(f(z,s)=(z,z^2+s^2)\)">\(f(z,s)=(z,z^2+s^2)\)</span> at zero, compute the kernel, cokernel and quotient Hessian. Compare it with <span class="math" data-tex="\(g(z,s)=(z,z^2+s^3)\)">\(g(z,s)=(z,z^2+s^3)\)</span>. Why does a nonzero second derivative in <span class="math" data-tex="\(z\)">\(z\)</span> not make the latter a fold?</p>
+<p><strong>Solution.</strong> Both differentials have matrix <span class="math" data-tex="\(\left(\begin{smallmatrix}1&amp;0\\0&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}1&amp;0\\0&amp;0\end{smallmatrix}\right)\)</span> at zero. The kernel is the <span class="math" data-tex="\(s\)">\(s\)</span> line and the cokernel is the second output line modulo the first. For <span class="math" data-tex="\(f\)">\(f\)</span>, the Hessian on a kernel vector <span class="math" data-tex="\((0,v)\)">\((0,v)\)</span> is <span class="math" data-tex="\((0,2v^2)\)">\((0,2v^2)\)</span>, giving a nonzero quotient class when <span class="math" data-tex="\(v\neq0\)">\(v\neq0\)</span>. Thus it is a fold. For <span class="math" data-tex="\(g\)">\(g\)</span>, the same kernel Hessian is zero, so it is not a fold. Its <span class="math" data-tex="\(z^2\)">\(z^2\)</span> curvature lies in a direction of the source outside the kernel and is irrelevant to the fold test. Subtracting <span class="math" data-tex="\(Z^2\)">\(Z^2\)</span> from the second target coordinate leaves the maps <span class="math" data-tex="\((z,s^2)\)">\((z,s^2)\)</span> and <span class="math" data-tex="\((z,s^3)\)">\((z,s^3)\)</span>, which display the distinction exactly.</p>
+<p><strong>Exercise 7.2 (actual nonlinear fold coordinates; intermediate).</strong> Near zero let
+<span class="math math-display" data-tex="\[
+f(y,s)=(y+s,(y+s)^2+s^2(1+s)^2).
+\]">\[
+f(y,s)=(y+s,(y+s)^2+s^2(1+s)^2).
+\]</span>
+Find an exact source change and target change to (1.3), the critical set near zero and its kernel line. Give the fold involution in the original variables.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(z=y+s\)">\(z=y+s\)</span>, <span class="math" data-tex="\(t=s(1+s)\)">\(t=s(1+s)\)</span> on the source and <span class="math" data-tex="\((Z,r)=(Z,R-Z^2)\)">\((Z,r)=(Z,R-Z^2)\)</span> on the target. The source Jacobian determinant is <span class="math" data-tex="\(1+2s\)">\(1+2s\)</span>, nonzero near zero; the target determinant is one. The transformed map is exactly <span class="math" data-tex="\((z,t^2)\)">\((z,t^2)\)</span>. The critical set near zero is <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. Its kernel there is spanned by <span class="math" data-tex="\(-\partial_y+\partial_s\)">\(-\partial_y+\partial_s\)</span>, since it keeps <span class="math" data-tex="\(z\)">\(z\)</span> fixed. The local inverse of <span class="math" data-tex="\(t=s+s^2\)">\(t=s+s^2\)</span> is <span class="math" data-tex="\(s=(-1+\sqrt{1+4t})/2\)">\(s=(-1+\sqrt{1+4t})/2\)</span>. Thus write
+<span class="math math-display" data-tex="\[
+s_*=\frac{-1+\sqrt{1-4s-4s^2}}2,
+\qquad \iota(y,s)=(y+s-s_*,s_*).
+\]">\[
+s_*=\frac{-1+\sqrt{1-4s-4s^2}}2,
+\qquad \iota(y,s)=(y+s-s_*,s_*).
+\]</span>
+The positive square-root branch near zero is smooth. It satisfies <span class="math" data-tex="\(s_*(1+s_*)=-s(1+s)\)">\(s_*(1+s_*)=-s(1+s)\)</span>, hence keeps <span class="math" data-tex="\(t^2\)">\(t^2\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span> fixed. Applying it twice restores <span class="math" data-tex="\(t\)">\(t\)</span>, and therefore <span class="math" data-tex="\(s,y\)">\(s,y\)</span>, so it is the intrinsic involution. Its reflection line at the critical set is the computed kernel, not the original coordinate <span class="math" data-tex="\(s\)">\(s\)</span> line alone.</p>
+<p><strong>Exercise 7.3 (invariance and nonuniqueness; introductory).</strong> For the fold <span class="math" data-tex="\((z,s)\mapsto(z,s^2)\)">\((z,s)\mapsto(z,s^2)\)</span>, decide whether <span class="math" data-tex="\(a(z,s)=1+s\)">\(a(z,s)=1+s\)</span> descends smoothly. Show that <span class="math" data-tex="\(a(z,s)=1+s^2\)">\(a(z,s)=1+s^2\)</span> has two different smooth full-neighborhood descents with the same pullback.</p>
+<p><strong>Solution.</strong> The first function is not invariant under <span class="math" data-tex="\(s\mapsto-s\)">\(s\mapsto-s\)</span>, so it cannot be a pullback. For the second, one descent is <span class="math" data-tex="\(v_1(z,r)=1+r\)">\(v_1(z,r)=1+r\)</span>. Define <span class="math" data-tex="\(h(r)=e^{-1/r^2}\)">\(h(r)=e^{-1/r^2}\)</span> for <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span> and zero for <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>. It is smooth and flat at zero: each negative-side derivative is a polynomial in <span class="math" data-tex="\(1/r\)">\(1/r\)</span> times <span class="math" data-tex="\(e^{-1/r^2}\)">\(e^{-1/r^2}\)</span>, and hence tends to zero. Then <span class="math" data-tex="\(v_2=1+r+h(r)\)">\(v_2=1+r+h(r)\)</span> is a different smooth descent, with the same pullback because <span class="math" data-tex="\(s^2\geq0\)">\(s^2\geq0\)</span>. The attained-side descent is unique; its extension to the other side is not.</p>
+<p><strong>Exercise 7.4 (a smooth function invisible to its Taylor series; intermediate).</strong> Let <span class="math" data-tex="\(a(s)=e^{-1/s^2}\)">\(a(s)=e^{-1/s^2}\)</span> for <span class="math" data-tex="\(s\neq0\)">\(s\neq0\)</span> and <span class="math" data-tex="\(a(0)=0\)">\(a(0)=0\)</span>. Show that it descends through <span class="math" data-tex="\(s^2\)">\(s^2\)</span>, although its Taylor series at zero is identically zero. Give a full smooth descent without appealing to analytic continuation.</p>
+<p><strong>Solution.</strong> The function is even and smooth, with all derivatives zero at zero. On <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, its unique descent is <span class="math" data-tex="\(F(r)=e^{-1/r}\)">\(F(r)=e^{-1/r}\)</span>, since <span class="math" data-tex="\(r=s^2\)">\(r=s^2\)</span>. Set <span class="math" data-tex="\(F(r)=0\)">\(F(r)=0\)</span> for <span class="math" data-tex="\(r\leq0\)">\(r\leq0\)</span>. Every positive-side derivative is a polynomial in <span class="math" data-tex="\(1/r\)">\(1/r\)</span> times <span class="math" data-tex="\(e^{-1/r}\)">\(e^{-1/r}\)</span>, which tends to zero as <span class="math" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>; thus this is a full smooth function. Its pullback equals <span class="math" data-tex="\(a\)">\(a\)</span>, which is nonzero for <span class="math" data-tex="\(s\neq0\)">\(s\neq0\)</span>. A convergent-series argument using the zero Taylor series would miss that entire flat remainder. The smooth descent theorem covers it.</p>
+<p><strong>Exercise 7.5 (boundary derivatives and finite derivative cost; intermediate).</strong> For <span class="math" data-tex="\(a(s)=\cos s\)">\(a(s)=\cos s\)</span>, compute the first three square-variable Taylor coefficients and <span class="math" data-tex="\(F&#x27;&#x27;(0)\)">\(F&#x27;&#x27;(0)\)</span>. For an odd amplitude, how many source <span class="math" data-tex="\(s\)">\(s\)</span> derivatives suffice to control a prescribed <span class="math" data-tex="\(p\)">\(p\)</span>-th square derivative of its odd coefficient?</p>
+<p><strong>Solution.</strong> The attained-side descent has expansion <span class="math" data-tex="\(F(r)=1-r/2+r^2/24+O(r^3)\)">\(F(r)=1-r/2+r^2/24+O(r^3)\)</span>. Formula (3.4) gives <span class="math" data-tex="\(F&#x27;&#x27;(0)=2!\,a^{(4)}(0)/4!=1/12\)">\(F&#x27;&#x27;(0)=2!\,a^{(4)}(0)/4!=1/12\)</span>, agreeing with the expansion. For an odd amplitude, division by <span class="math" data-tex="\(s\)">\(s\)</span> costs one derivative by Lemma 3.1, and <span class="math" data-tex="\(p\)">\(p\)</span> square derivatives cost at most <span class="math" data-tex="\(2p\)">\(2p\)</span> more by Lemma 3.2. Thus <span class="math" data-tex="\(2p+1\)">\(2p+1\)</span> source derivatives suffice on the fixed interval, for each fixed parameter derivative. The result is a finite seminorm bound, not a statement that one derivative bound controls all higher derivatives.</p>
+<p><strong>Exercise 7.6 (the extension moments in a finite model; advanced).</strong> For nodes <span class="math" data-tex="\(-1,-2,-4\)">\(-1,-2,-4\)</span>, compute the finite coefficients (4.1) at <span class="math" data-tex="\(N=2\)">\(N=2\)</span>. Verify their moments for powers zero, one and two. What fails if the last coefficient is discarded?</p>
+<p><strong>Solution.</strong> The coefficients are <span class="math" data-tex="\(a_{0,2}=5\)">\(a_{0,2}=5\)</span>, <span class="math" data-tex="\(a_{1,2}=-5\)">\(a_{1,2}=-5\)</span>, <span class="math" data-tex="\(a_{2,2}=1\)">\(a_{2,2}=1\)</span>. Their zeroth moment is <span class="math" data-tex="\(5-5+1=1\)">\(5-5+1=1\)</span>; their first is <span class="math" data-tex="\(-5+10-4=1\)">\(-5+10-4=1\)</span>; and their second is <span class="math" data-tex="\(5-20+16=1\)">\(5-20+16=1\)</span>. If the last coefficient is discarded, the zeroth moment becomes zero, so the negative-side value of a constant profile would fail to match its boundary value. All prescribed moments matter for smooth gluing. The infinite construction matches every derivative, whereas a fixed finite interpolation formula matches only finitely many polynomial moments.</p>
+<p><strong>Exercise 7.7 (symbol order is retained despite a square root; advanced).</strong> Let <span class="math" data-tex="\(a(s,\xi)=\langle\xi\rangle^\nu(1+s^2+s+s^3)\)">\(a(s,\xi)=\langle\xi\rangle^\nu(1+s^2+s+s^3)\)</span>, on the cone (6.2). Compute attained-side <span class="math" data-tex="\(F_0,F_1\)">\(F_0,F_1\)</span>, and verify explicitly that their critical restrictions have ordinary symbol order <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Explain why a direct derivative of <span class="math" data-tex="\(\sqrt{\xi_1/\rho}\)">\(\sqrt{\xi_1/\rho}\)</span> is unnecessary.</p>
+<p><strong>Solution.</strong> The even part is <span class="math" data-tex="\(\langle\xi\rangle^\nu(1+s^2)\)">\(\langle\xi\rangle^\nu(1+s^2)\)</span>, and the odd part divided by <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\(\langle\xi\rangle^\nu(1+s^2)\)">\(\langle\xi\rangle^\nu(1+s^2)\)</span>. Hence both attained-side coefficients are <span class="math" data-tex="\(F_j(r,\xi)=\langle\xi\rangle^\nu(1+r)\)">\(F_j(r,\xi)=\langle\xi\rangle^\nu(1+r)\)</span>, and we may use those polynomial expressions as full extensions near zero. Their restrictions are <span class="math" data-tex="\(\langle\xi\rangle^\nu(1+\xi_1/\rho)\)">\(\langle\xi\rangle^\nu(1+\xi_1/\rho)\)</span>. The ratio is bounded and each frequency derivative of it loses one power of <span class="math" data-tex="\(\rho\asymp\langle\xi\rangle\)">\(\rho\asymp\langle\xi\rangle\)</span>; the product rule gives order <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. The parity and division steps removed the square-root singularity before frequency restriction. Differentiating a raw square root at <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span> would not be a legitimate smooth-symbol calculation.</p>
+<p><strong>Exercise 7.8 (both Airy coefficient orders and the odd sign; intermediate).</strong> Take unscaled order <span class="math" data-tex="\(\nu=m+1/2\)">\(\nu=m+1/2\)</span>. Derive the two orders in (6.7), and check that (6.9) reproduces <span class="math" data-tex="\(a=F_0(s^2)+sF_1(s^2)\)">\(a=F_0(s^2)+sF_1(s^2)\)</span> on the critical set. What happens if <span class="math" data-tex="\(b_1\)">\(b_1\)</span> is defined with <span class="math" data-tex="\(-i\)">\(-i\)</span> instead?</p>
+<p><strong>Solution.</strong> Multiplication by <span class="math" data-tex="\(\rho^{-1/3}\)">\(\rho^{-1/3}\)</span> gives order <span class="math" data-tex="\(m+1/2-1/3=m+1/6\)">\(m+1/2-1/3=m+1/6\)</span>. Multiplication by <span class="math" data-tex="\(\rho^{-2/3}\)">\(\rho^{-2/3}\)</span> gives order <span class="math" data-tex="\(m+1/2-2/3=m-1/6\)">\(m+1/2-2/3=m-1/6\)</span>. In the prescribed formula, <span class="math" data-tex="\(-is\rho^{2/3}b_1=-is\rho^{2/3}i\rho^{-2/3}F_1=sF_1\)">\(-is\rho^{2/3}b_1=-is\rho^{2/3}i\rho^{-2/3}F_1=sF_1\)</span>. Thus it has the correct odd coefficient. Defining <span class="math" data-tex="\(b_1=-i\rho^{-2/3}F_1\)">\(b_1=-i\rho^{-2/3}F_1\)</span> would give <span class="math" data-tex="\((-i)(-i)sF_1=-sF_1\)">\((-i)(-i)sF_1=-sF_1\)</span>, reversing the odd term. The representation sign and the solving formula cannot be chosen independently.</p>
+<p><strong>Exercise 7.9 (two reflections are distinct data; advanced).</strong> In coordinates <span class="math" data-tex="\((z,s)\)">\((z,s)\)</span>, set <span class="math" data-tex="\(f(z,s)=(z,-s)\)">\(f(z,s)=(z,-s)\)</span> and <span class="math" data-tex="\(g(z,s)=(z+s,-s)\)">\(g(z,s)=(z+s,-s)\)</span>. Find their common fixed set, their reflection lines there, and their composition. Can a coordinate change make both involutions the same reflection?</p>
+<p><strong>Solution.</strong> Both fixed sets are <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. For <span class="math" data-tex="\(df\)">\(df\)</span>, the minus-one line is <span class="math" data-tex="\(\mathbb R\partial_s\)">\(\mathbb R\partial_s\)</span>. For <span class="math" data-tex="\(dg=\left(\begin{smallmatrix}1&amp;1\\0&amp;-1\end{smallmatrix}\right)\)">\(dg=\left(\begin{smallmatrix}1&amp;1\\0&amp;-1\end{smallmatrix}\right)\)</span>, solve <span class="math" data-tex="\((v_z+v_s,-v_s)=(-v_z,-v_s)\)">\((v_z+v_s,-v_s)=(-v_z,-v_s)\)</span>; this gives <span class="math" data-tex="\(v_s=-2v_z\)">\(v_s=-2v_z\)</span>, so its line is <span class="math" data-tex="\(\mathbb R(\partial_s-\tfrac12\partial_z)\)">\(\mathbb R(\partial_s-\tfrac12\partial_z)\)</span>. They are independent. Their composition <span class="math" data-tex="\(g\circ f\)">\(g\circ f\)</span> is <span class="math" data-tex="\((z-s,s)\)">\((z-s,s)\)</span>, a nonidentity shear. If a single coordinate change conjugated both to the same reflection, their composition would conjugate to identity, which is impossible. The single-involution theorem supplies separate coordinates for each; it does not supply their simultaneous normal form.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Hörmander III, Appendix C.4] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators</em>, corrected second printing, Springer, 1994, Definition C.4.1, Theorem C.4.2, Corollary C.4.3 and Theorems C.4.4–C.4.5. The explicit controlled extension here proves the needed uniform parameter statement directly. Theorems C.4.6–C.4.8 and §21.4 supply the later simultaneous geometry targets.</li>
+<li>[Hörmander IV, §25.3] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators</em>, Springer, 1985, equations 25.3.7–25.3.12 for the later Airy representation, coefficient orders and negative-<span class="math" data-tex="\(i\)">\(i\)</span> odd critical coefficient. The complete representation and continuity proofs remain separate from the smooth critical-coefficient realization proved here.</li>
+</ul>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text and coordinate figure: public domain (CC0).</em></p>
+<footer><p>Original text: CC0.</p><p><a href="src/folds-reflections-and-uniform-descent.md">Editable original Markdown</a>. Source commit 39ee5c0c073550633578b12a80111fc27c86d250.</p></footer></main></body></html>

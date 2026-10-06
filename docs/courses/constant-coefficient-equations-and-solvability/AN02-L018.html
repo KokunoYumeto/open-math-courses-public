@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Symbols at infinity</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="symbols-at-infinity">Symbols at infinity</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A polynomial seen through a fixed frequency window can approach a simpler polynomial as the center of the window escapes to infinity. The limiting polynomial retains information that its highest homogeneous part alone can miss. For example, a product symbol viewed near one coordinate axis becomes a first-order symbol in the other coordinate. We will prove that these limits can be reached along polynomial paths, identify a direction that every limit loses, and obtain a uniform power estimate for approaching the family of limits.</p>
+<p>Read <a href="AN02-L001.html">Fundamental solutions and the directions an equation uses</a> and <a href="AN02-L006.html">Rescaled symbols and stable strength</a> first. We use finite-dimensional polynomial norms, elementary complex analysis, and polynomial division. Coste's notes [Coste] explain the real algebraic geometry behind the argument. Grubb's freely readable lecture chapter §5 [Grubb] supplies Fourier and tempered-distribution background for the later analytic applications; the polynomial and real-algebraic arguments here are given below. The proofs below include the specific real algebraic tools we need.</p>
+<p>Let <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> be a complex polynomial on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, of degree <span class="math" data-tex="\(m\)">\(m\)</span>, and write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|q|_J^2=\sum_{|\alpha|\leq m}|\partial^\alpha q(0)|^2,\\
+S_P(\eta)=|P(\eta+\cdot)|_J,\\
+T_P(\eta)=\frac{P(\eta+\cdot)}{S_P(\eta)}.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+|q|_J^2=\sum_{|\alpha|\leq m}|\partial^\alpha q(0)|^2,\\
+S_P(\eta)=|P(\eta+\cdot)|_J,\\
+T_P(\eta)=\frac{P(\eta+\cdot)}{S_P(\eta)}.
+\end{gathered}
+\tag{1}
+\]</span>
+The coefficient space is viewed as a real vector space when discussing algebraic inequalities: its coordinates are real and imaginary parts. A highest-order derivative of <span class="math" data-tex="\(P\)">\(P\)</span> is a nonzero constant, so <span class="math" data-tex="\(S_P\)">\(S_P\)</span> never vanishes.</p>
+<h2 id="the-family-of-limiting-windows">The family of limiting windows</h2>
+<p>A <strong>normalized localization</strong> of <span class="math" data-tex="\(P\)">\(P\)</span> is a coefficient limit of <span class="math" data-tex="\(T_P(\eta_j)\)">\(T_P(\eta_j)\)</span> along a sequence <span class="math" data-tex="\(|\eta_j|\to\infty\)">\(|\eta_j|\to\infty\)</span>. Denote the set of these limits by <span class="math" data-tex="\(\mathcal L(P)\)">\(\mathcal L(P)\)</span>. For <span class="math" data-tex="\(\theta\ne0\)">\(\theta\ne0\)</span>, let <span class="math" data-tex="\(\mathcal L_\theta(P)\)">\(\mathcal L_\theta(P)\)</span> consist of the limits for which
+<span class="math math-display" data-tex="\[
+\frac{\eta_j}{|\eta_j|}\longrightarrow\frac{\theta}{|\theta|}.
+\tag{2}
+\]">\[
+\frac{\eta_j}{|\eta_j|}\longrightarrow\frac{\theta}{|\theta|}.
+\tag{2}
+\]</span>
+We also call any nonzero scalar multiple of a normalized localization a localization; statements involving a numerical normalization will always use the normalized set.</p>
+<p>Every <span class="math" data-tex="\(\mathcal L_\theta(P)\)">\(\mathcal L_\theta(P)\)</span> is a nonempty compact subset of the unit coefficient sphere. Indeed <span class="math" data-tex="\(T_P(\eta)\)">\(T_P(\eta)\)</span> has norm one. A sequence <span class="math" data-tex="\(\eta=r\theta\)">\(\eta=r\theta\)</span> has a coefficient-convergent subsequence. Closedness follows by a diagonal choice: if <span class="math" data-tex="\(Q_j\in\mathcal L_\theta(P)\)">\(Q_j\in\mathcal L_\theta(P)\)</span> tends to <span class="math" data-tex="\(Q\)">\(Q\)</span>, choose a center of length greater than <span class="math" data-tex="\(j\)">\(j\)</span> whose direction and normalized polynomial are within <span class="math" data-tex="\(1/j\)">\(1/j\)</span> of <span class="math" data-tex="\(\theta/|\theta|\)">\(\theta/|\theta|\)</span> and <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span>. The resulting sequence tends to <span class="math" data-tex="\(Q\)">\(Q\)</span>. The same argument gives compactness of the joint graph
+<span class="math math-display" data-tex="\[
+\mathcal G_P=\{(\omega,Q):
+|\omega|=1,\ Q\in\mathcal L_\omega(P)\}.
+\tag{3}
+\]">\[
+\mathcal G_P=\{(\omega,Q):
+|\omega|=1,\ Q\in\mathcal L_\omega(P)\}.
+\tag{3}
+\]</span>
+It also proves that <span class="math" data-tex="\(\mathcal L(P)\)">\(\mathcal L(P)\)</span> is the union of the directional sets: extract a convergent subsequence of directions from any sequence defining a localization.</p>
+<h2 id="algebraic-inequalities-survive-projection">Algebraic inequalities survive projection</h2>
+<p>A subset of a real finite-dimensional space is <strong>semialgebraic</strong> if it is defined by a finite Boolean combination of polynomial equalities and strict inequalities. Weak inequalities can be expressed in the same language. A map is semialgebraic when its graph is.</p>
+<p><strong>Lemma 2.1 (projection).</strong> A coordinate projection of a semialgebraic set is semialgebraic. Consequently any condition built from polynomial equalities and inequalities by finitely many real existential or universal quantifiers defines a semialgebraic set.</p>
+<p><strong>Proof.</strong> It suffices to eliminate one real variable <span class="math" data-tex="\(s\)">\(s\)</span>. We describe a finite procedure that decides which sign combinations of a finite family of polynomials in <span class="math" data-tex="\(s\)">\(s\)</span> occur. Their coefficients depend polynomially on the remaining parameters <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>For fixed coefficients, arrange all distinct real roots of the nonzero polynomials in increasing order. Record the sign of each polynomial at each root and on each intervening open interval, including the two unbounded intervals. Call this its ordered sign table. Identically zero polynomials have sign zero throughout. The number of roots is bounded by the sum of the degrees, so there are finitely many possible tables.</p>
+<p>We prove that a finite collection of polynomial sign tests on the coefficients determines the table. The induction is on the largest degree and, for a fixed largest degree, on the number of polynomials with that degree. For degree zero, the signs of the constants give the table. Branching on whether leading coefficients vanish first fixes all actual degrees.</p>
+<p>Choose a polynomial <span class="math" data-tex="\(p\)">\(p\)</span> of maximal positive degree. Form a reduced family from all the other polynomials, <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>, and the remainders of <span class="math" data-tex="\(p\)">\(p\)</span> on division by every nonconstant member of the family consisting of the other polynomials and <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>. Omit identically zero members after recording that fact. Each remainder has smaller degree than its divisor; <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> has smaller degree than <span class="math" data-tex="\(p\)">\(p\)</span>. The reduced family therefore has one fewer member of maximal degree. Its coefficients are rational functions of the original coefficients on each branch where the relevant leading coefficients are nonzero.</p>
+<p>By induction we know the reduced sign table. From it select the roots of the other original polynomials and <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>, ignoring roots introduced only by the remainders. At a selected root of a divisor <span class="math" data-tex="\(r\)">\(r\)</span>, the value of <span class="math" data-tex="\(p\)">\(p\)</span> has the sign of its remainder on division by <span class="math" data-tex="\(r\)">\(r\)</span>. Thus the table gives the sign of <span class="math" data-tex="\(p\)">\(p\)</span> at every selected point. At infinity the sign is determined by its leading coefficient and degree.</p>
+<p>Between successive selected points, <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> has a fixed nonzero sign, so <span class="math" data-tex="\(p\)">\(p\)</span> is strictly monotone. It has exactly one root inside such an interval if its endpoint signs are strictly opposite, and none otherwise. An endpoint sign of zero already accounts for that endpoint root. These rules include the unbounded intervals using the signs at infinity. At a newly inserted root, every other original polynomial has the constant sign it had throughout the interval. On the two parts of that interval the sign of <span class="math" data-tex="\(p\)">\(p\)</span> is determined by monotonicity. We have recovered the complete original table.</p>
+<p>This procedure has finite branching. The induction decreases the number of polynomials of the current maximal degree before decreasing that degree. A rational coefficient test can be converted into a polynomial test by clearing denominators with a positive even power; branches with zero denominators were already separated by the degree tests. It follows that the parameters producing each table form a semialgebraic set.</p>
+<p>For any prescribed Boolean combination of the original polynomial signs, the existence of a real <span class="math" data-tex="\(s\)">\(s\)</span> satisfying it is decided by whether that combination holds in a point or interval of the table. The projection is a finite union of the corresponding parameter branches. This proves the assertion for one coordinate, hence for any finite projection by iteration. Complements turn universal quantifiers into existential ones. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here are two useful consequences, with their quantifiers made explicit. The closure of a semialgebraic set is semialgebraic, because membership in the closure says that every positive-radius ball meets it. If a continuous semialgebraic function is minimized over nonempty compact semialgebraic fibers, both the minimum and its minimizer set are semialgebraic: the minimum is attained, and a point is a minimizer exactly when no point in that fiber has a smaller value.</p>
+<h2 id="one-parameter-has-a-power-expansion">One parameter has a power expansion</h2>
+<p><strong>Lemma 3.1.</strong> A finite-valued semialgebraic function <span class="math" data-tex="\(h:(R,\infty)\to\mathbb R\)">\(h:(R,\infty)\to\mathbb R\)</span> has, after increasing <span class="math" data-tex="\(R\)">\(R\)</span>, a convergent expansion
+<span class="math math-display" data-tex="\[
+h(t)=\sum_{j=j_0}^{\infty}a_j t^{-j/\ell}
+\tag{4}
+\]">\[
+h(t)=\sum_{j=j_0}^{\infty}a_j t^{-j/\ell}
+\tag{4}
+\]</span>
+for some integer <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span> and an integer <span class="math" data-tex="\(j_0\)">\(j_0\)</span>. There are only finitely many positive powers of <span class="math" data-tex="\(t^{1/\ell}\)">\(t^{1/\ell}\)</span>. In particular <span class="math" data-tex="\(h\)">\(h\)</span> is eventually zero or
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h(t)=a\,t^\gamma(1+o(1)),\\
+a\ne0,\qquad\gamma\in\mathbb Q.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+h(t)=a\,t^\gamma(1+o(1)),\\
+a\ne0,\qquad\gamma\in\mathbb Q.
+\end{gathered}
+\tag{5}
+\]</span></p>
+<p><strong>Proof.</strong> Choose finitely many nonzero real polynomials defining the graph by sign conditions. At each graph point at least one of them must vanish: otherwise all their signs would be constant in a small two-dimensional ball, and the graph would contain that ball. Their product gives a nonzero polynomial <span class="math" data-tex="\(F(t,y)\)">\(F(t,y)\)</span> with <span class="math" data-tex="\(F(t,h(t))=0\)">\(F(t,h(t))=0\)</span>.</p>
+<p>Over the rational function field <span class="math" data-tex="\(\mathbb R(t)\)">\(\mathbb R(t)\)</span>, replace <span class="math" data-tex="\(F\)">\(F\)</span> by its squarefree part as a polynomial in <span class="math" data-tex="\(y\)">\(y\)</span>, and clear denominators. Polynomial division computes this part from <span class="math" data-tex="\(F\)">\(F\)</span> and its <span class="math" data-tex="\(y\)">\(y\)</span>-derivative. After excluding finitely many real values of <span class="math" data-tex="\(t\)">\(t\)</span>, its leading coefficient and discriminant are nonzero. Its real roots are then distinct analytic functions, ordered increasingly; their number is constant on the remaining final interval. The graph of each ordered root is semialgebraic, since being the <span class="math" data-tex="\(j\)">\(j\)</span>-th real root can be expressed by finitely many quantifiers and inequalities. Lemma 2.1 applies.</p>
+<p>For each root branch, the set of <span class="math" data-tex="\(t\)">\(t\)</span>'s where <span class="math" data-tex="\(h\)">\(h\)</span> equals that branch is semialgebraic. A semialgebraic subset of the line is a finite union of points and intervals: the finitely many real zeros of its defining polynomials divide the line into intervals of constant signs. Since the branches cover the graph, one branch equals <span class="math" data-tex="\(h\)">\(h\)</span> on a final interval. Thus <span class="math" data-tex="\(h\)">\(h\)</span> is eventually a single algebraic analytic branch.</p>
+<p>For completeness, its fractional-power expansion follows from ordinary one-variable complex analysis. Set <span class="math" data-tex="\(z=1/t\)">\(z=1/t\)</span>, clear powers of <span class="math" data-tex="\(z\)">\(z\)</span>, and write its polynomial equation as
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^d b_j(z)y^j=0,\qquad b_d\not\equiv0.
+\tag{6}
+\]">\[
+\sum_{j=0}^d b_j(z)y^j=0,\qquad b_d\not\equiv0.
+\tag{6}
+\]</span>
+The coefficients are holomorphic near zero. After taking the squarefree part and shrinking the disk, the leading coefficient and discriminant have no zeros on the punctured disk. The roots can be continued locally there by the holomorphic implicit function theorem. Continuing once around zero permutes a finite set of roots. After a finite number <span class="math" data-tex="\(\ell\)">\(\ell\)</span> of turns the selected root returns to itself, so substitution <span class="math" data-tex="\(z=u^\ell\)">\(z=u^\ell\)</span> gives a single-valued holomorphic branch on a punctured <span class="math" data-tex="\(u\)">\(u\)</span>-disk.</p>
+<p>The product <span class="math" data-tex="\(w=b_d(z)y\)">\(w=b_d(z)y\)</span> satisfies a monic polynomial whose coefficients are holomorphic at zero. Indeed multiplying (6) by <span class="math" data-tex="\(b_d^{d-1}\)">\(b_d^{d-1}\)</span> makes its coefficient of <span class="math" data-tex="\(w^d\)">\(w^d\)</span> one, its coefficient of <span class="math" data-tex="\(w^{d-1}\)">\(w^{d-1}\)</span> equal to <span class="math" data-tex="\(b_{d-1}\)">\(b_{d-1}\)</span>, and each remaining coefficient a nonnegative power of <span class="math" data-tex="\(b_d\)">\(b_d\)</span> times a <span class="math" data-tex="\(b_j\)">\(b_j\)</span>. The elementary root bound for a monic polynomial makes <span class="math" data-tex="\(w\)">\(w\)</span> bounded near zero. It therefore has a removable singularity on the <span class="math" data-tex="\(u\)">\(u\)</span>-disk. Dividing its Taylor series by <span class="math" data-tex="\(b_d(u^\ell)\)">\(b_d(u^\ell)\)</span>, which has a finite-order zero or is nonzero at zero, gives a convergent Laurent series with only finitely many negative powers. Returning to <span class="math" data-tex="\(t\)">\(t\)</span> proves (4). Its coefficients are real because the branch is real on the positive axis. The first nonzero term gives (5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> A nonnegative semialgebraic function <span class="math" data-tex="\(h(t)\)">\(h(t)\)</span> with <span class="math" data-tex="\(\liminf_{t\to\infty}h(t)=0\)">\(\liminf_{t\to\infty}h(t)=0\)</span> either vanishes eventually or satisfies
+<span class="math math-display" data-tex="\[
+0\leq h(t)\leq C t^{-b}
+\quad(t\geq R)
+\tag{7}
+\]">\[
+0\leq h(t)\leq C t^{-b}
+\quad(t\geq R)
+\tag{7}
+\]</span>
+for some <span class="math" data-tex="\(C,b&gt;0\)">\(C,b&gt;0\)</span>. A positive semialgebraic function is bounded below by <span class="math" data-tex="\(c t^{-N}\)">\(c t^{-N}\)</span> for large <span class="math" data-tex="\(t\)">\(t\)</span>, for some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>.</p>
+<p><strong>Proof.</strong> In (5), nonnegativity forces <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. A zero lower limit forces <span class="math" data-tex="\(\gamma&lt;0\)">\(\gamma&lt;0\)</span>. For a positive function choose <span class="math" data-tex="\(N\geq\max(0,-\gamma)\)">\(N\geq\max(0,-\gamma)\)</span> and decrease <span class="math" data-tex="\(c\)">\(c\)</span>. The eventually zero alternative is excluded in the second statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.3.</strong> Let compact nonempty sets <span class="math" data-tex="\(K_t\subset\mathbb R^d\)">\(K_t\subset\mathbb R^d\)</span>, <span class="math" data-tex="\(t&gt;R\)">\(t&gt;R\)</span>, have a semialgebraic graph. There is a semialgebraic selection <span class="math" data-tex="\(a(t)\in K_t\)">\(a(t)\in K_t\)</span>, and its coordinates have expansions (4).</p>
+<p><strong>Proof.</strong> Choose the smallest first coordinate occurring in <span class="math" data-tex="\(K_t\)">\(K_t\)</span>, then the smallest second coordinate among points with that first coordinate, and continue through coordinate <span class="math" data-tex="\(d\)">\(d\)</span>. Compactness ensures that each minimum is attained and each successive fiber is compact and nonempty. The resulting point is unique. Its graph is semialgebraic by Lemma 2.1, since each minimum condition says that no competing point has a smaller specified coordinate. Apply Lemma 3.1 to its coordinates. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>As another consequence, if a real polynomial <span class="math" data-tex="\(q\)">\(q\)</span> is strictly positive on all of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, then
+<span class="math math-display" data-tex="\[
+q(\xi)\geq c(1+|\xi|)^{-N}.
+\tag{8}
+\]">\[
+q(\xi)\geq c(1+|\xi|)^{-N}.
+\tag{8}
+\]</span>
+To see this, minimize it on the sphere <span class="math" data-tex="\(|\xi|=r\)">\(|\xi|=r\)</span>. The minimum is positive, attained and semialgebraic in <span class="math" data-tex="\(r\)">\(r\)</span>. Corollary 3.2 gives the lower bound for large <span class="math" data-tex="\(r\)">\(r\)</span>, while compactness gives a positive bound on the remaining ball.</p>
+<h2 id="reaching-a-limit-on-a-polynomial-path">Reaching a limit on a polynomial path</h2>
+<p><strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(Q\in\mathcal L_\theta(P)\)">\(Q\in\mathcal L_\theta(P)\)</span>, <span class="math" data-tex="\(\theta\ne0\)">\(\theta\ne0\)</span>, there is a real polynomial path
+<span class="math math-display" data-tex="\[
+\eta(t)=\theta t^k+\sum_{j=0}^{k-1}\theta_j t^j,
+\qquad k&gt;0,
+\tag{9}
+\]">\[
+\eta(t)=\theta t^k+\sum_{j=0}^{k-1}\theta_j t^j,
+\qquad k&gt;0,
+\tag{9}
+\]</span>
+such that <span class="math" data-tex="\(T_P(\eta(t))\to Q\)">\(T_P(\eta(t))\to Q\)</span> in coefficient norm.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, minimize
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\left|\frac{\eta}{r}-\theta\right|^2
++|T_P(\eta)-Q|_J^2,\\
+|\eta|=r|\theta|.
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+\left|\frac{\eta}{r}-\theta\right|^2
++|T_P(\eta)-Q|_J^2,\\
+|\eta|=r|\theta|.
+\end{gathered}
+\tag{10}
+\]</span>
+This sphere is compact. The objective and its minimizer set are semialgebraic: introduce a positive variable <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(a^2S_P(\eta)^2=1\)">\(a^2S_P(\eta)^2=1\)</span> to express <span class="math" data-tex="\(T_P(\eta)=aP(\eta+\cdot)\)">\(T_P(\eta)=aP(\eta+\cdot)\)</span> using polynomial conditions.</p>
+<p>A sequence defining <span class="math" data-tex="\(Q\)">\(Q\)</span> gives radii <span class="math" data-tex="\(r_j=|\eta_j|/|\theta|\to\infty\)">\(r_j=|\eta_j|/|\theta|\to\infty\)</span> at which the minimum tends to zero. By Corollary 3.2 the minimum tends to zero along all large radii. Select a minimizer <span class="math" data-tex="\(\widetilde\eta(r)\)">\(\widetilde\eta(r)\)</span> by Corollary 3.3. Then
+<span class="math math-display" data-tex="\[
+\frac{\widetilde\eta(r)}r\to\theta,
+\qquad T_P(\widetilde\eta(r))\to Q.
+\tag{11}
+\]">\[
+\frac{\widetilde\eta(r)}r\to\theta,
+\qquad T_P(\widetilde\eta(r))\to Q.
+\tag{11}
+\]</span>
+Choose a common denominator <span class="math" data-tex="\(k\)">\(k\)</span> for the finitely many fractional exponents in the coordinate expansions and substitute <span class="math" data-tex="\(r=t^k\)">\(r=t^k\)</span>. Equation (11) implies that the resulting Laurent series has leading term <span class="math" data-tex="\(\theta t^k\)">\(\theta t^k\)</span>, no higher positive powers, and only integer powers. Retain its nonnegative powers to obtain (9). The discarded part is <span class="math" data-tex="\(O(t^{-1})\)">\(O(t^{-1})\)</span>.</p>
+<p>This small absolute error preserves the normalized polynomial limit. To verify it uniformly, let <span class="math" data-tex="\(\mathsf T_h q=q(\cdot+h)\)">\(\mathsf T_h q=q(\cdot+h)\)</span>. On the unit coefficient sphere,
+<span class="math math-display" data-tex="\[
+|\mathsf T_hq-q|_J\leq C|h|\quad(|h|\leq1),
+\tag{12}
+\]">\[
+|\mathsf T_hq-q|_J\leq C|h|\quad(|h|\leq1),
+\tag{12}
+\]</span>
+by the finite Taylor formula and norm equivalence. Its norm differs from one by at most <span class="math" data-tex="\(C|h|\)">\(C|h|\)</span>. Normalizing <span class="math" data-tex="\(\mathsf T_hq\)">\(\mathsf T_hq\)</span> therefore changes <span class="math" data-tex="\(q\)">\(q\)</span> by <span class="math" data-tex="\(O(|h|)\)">\(O(|h|)\)</span>. Apply this to <span class="math" data-tex="\(q=T_P(\widetilde\eta(t^k))\)">\(q=T_P(\widetilde\eta(t^k))\)</span> and <span class="math" data-tex="\(h=\eta(t)-\widetilde\eta(t^k)\)">\(h=\eta(t)-\widetilde\eta(t^k)\)</span>. Since this <span class="math" data-tex="\(h\)">\(h\)</span> tends to zero, the truncated polynomial path has the same limit <span class="math" data-tex="\(Q\)">\(Q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The leading coefficient in (9) is the prescribed vector <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, including its length. The degree <span class="math" data-tex="\(k\)">\(k\)</span> and the lower coefficients depend on the localization.</p>
+<h2 id="the-direction-that-disappears">The direction that disappears</h2>
+<p>For a polynomial <span class="math" data-tex="\(q\)">\(q\)</span>, let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+N_q=\{v\in\mathbb R^n: \partial_vq\equiv0\},\\
+V_q=N_q^\perp.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+N_q=\{v\in\mathbb R^n: \partial_vq\equiv0\},\\
+V_q=N_q^\perp.
+\end{gathered}
+\tag{13}
+\]</span>
+Here <span class="math" data-tex="\(\partial_v=v\cdot\partial_\xi\)">\(\partial_v=v\cdot\partial_\xi\)</span>; the condition is equivalent to <span class="math" data-tex="\(q(\xi+sv)=q(\xi)\)">\(q(\xi+sv)=q(\xi)\)</span> for every <span class="math" data-tex="\(\xi,s\)">\(\xi,s\)</span>. These are its inactive and active subspaces.</p>
+<p><strong>Theorem 5.1.</strong> Every <span class="math" data-tex="\(Q\in\mathcal L_\theta(P)\)">\(Q\in\mathcal L_\theta(P)\)</span> satisfies <span class="math" data-tex="\(\theta\in N_Q\)">\(\theta\in N_Q\)</span>. If <span class="math" data-tex="\(\theta\notin N_P\)">\(\theta\notin N_P\)</span>, then <span class="math" data-tex="\(\deg Q&lt;\deg P\)">\(\deg Q&lt;\deg P\)</span>.</p>
+<p><strong>Proof.</strong> Use the polynomial path (9). Each derivative of <span class="math" data-tex="\(P\)">\(P\)</span>, evaluated on that path, is a polynomial in <span class="math" data-tex="\(t\)">\(t\)</span>. The sum of their squared absolute values consequently has an asymptotic
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_P(\eta(t))=a t^\sigma(1+o(1)),\\
+a&gt;0,\qquad\sigma\in\mathbb Z_{\geq0}.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+S_P(\eta(t))=a t^\sigma(1+o(1)),\\
+a&gt;0,\qquad\sigma\in\mathbb Z_{\geq0}.
+\end{gathered}
+\tag{14}
+\]</span>
+The exponent is nonnegative because one of those derivatives is a nonzero constant.</p>
+<p>Fix <span class="math" data-tex="\(s\in\mathbb R\)">\(s\in\mathbb R\)</span> and put <span class="math" data-tex="\(t_s=t+(s/k)t^{1-k}\)">\(t_s=t+(s/k)t^{1-k}\)</span>. Expanding the finite polynomial path gives
+<span class="math math-display" data-tex="\[
+\eta(t_s)=\eta(t)+s\theta+O(t^{-1}).
+\tag{15}
+\]">\[
+\eta(t_s)=\eta(t)+s\theta+O(t^{-1}).
+\tag{15}
+\]</span>
+For <span class="math" data-tex="\(k=1\)">\(k=1\)</span> the error is zero; for larger <span class="math" data-tex="\(k\)">\(k\)</span> the derivatives of the lower powers and the quadratic remainder give the stated bound. Also <span class="math" data-tex="\(t_s/t\to1\)">\(t_s/t\to1\)</span>, so (14) gives
+<span class="math math-display" data-tex="\[
+\frac{S_P(\eta(t_s))}{S_P(\eta(t))}\to1.
+\tag{16}
+\]">\[
+\frac{S_P(\eta(t_s))}{S_P(\eta(t))}\to1.
+\tag{16}
+\]</span>
+The limit of <span class="math" data-tex="\(P(\xi+\eta(t_s))/S_P(\eta(t))\)">\(P(\xi+\eta(t_s))/S_P(\eta(t))\)</span> is therefore <span class="math" data-tex="\(Q(\xi)\)">\(Q(\xi)\)</span>. By (15), coefficient convergence and continuity of translation, the same limit is <span class="math" data-tex="\(Q(\xi+s\theta)\)">\(Q(\xi+s\theta)\)</span>. Thus <span class="math" data-tex="\(Q\)">\(Q\)</span> is constant along <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.</p>
+<p>If <span class="math" data-tex="\(\theta\notin N_P\)">\(\theta\notin N_P\)</span>, projection of (9) onto <span class="math" data-tex="\(N_P^\perp\)">\(N_P^\perp\)</span> tends to infinity in norm. The properness theorem in the active-directions lesson, Theorem 4.1, gives <span class="math" data-tex="\(S_P(\eta(t))\to\infty\)">\(S_P(\eta(t))\to\infty\)</span>. All derivatives of <span class="math" data-tex="\(P\)">\(P\)</span> of order <span class="math" data-tex="\(m\)">\(m\)</span> are constant, so their normalized coefficients tend to zero. The degree of <span class="math" data-tex="\(Q\)">\(Q\)</span> is strictly smaller than <span class="math" data-tex="\(m\)">\(m\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(x\cdot\theta=0\)">\(x\cdot\theta=0\)</span> whenever <span class="math" data-tex="\(x\in V_Q\)">\(x\in V_Q\)</span> and <span class="math" data-tex="\(Q\in\mathcal L_\theta(P)\)">\(Q\in\mathcal L_\theta(P)\)</span>. This orthogonality will determine a restriction on the wavefront set of a regular kernel.</p>
+<h2 id="a-uniform-rate-toward-the-limiting-graph">A uniform rate toward the limiting graph</h2>
+<p><strong>Theorem 6.1.</strong> The compact graph <span class="math" data-tex="\(\mathcal G_P\)">\(\mathcal G_P\)</span> in (3) is semialgebraic. There are constants <span class="math" data-tex="\(C,b,R&gt;0\)">\(C,b,R&gt;0\)</span>, depending on <span class="math" data-tex="\(P\)">\(P\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{dist}\left(
+\left(\frac{\eta}{|\eta|},T_P(\eta)\right),\mathcal G_P\right)\\
+\leq C|\eta|^{-b},\qquad|\eta|\geq R.
+\end{gathered}
+\tag{17}
+\]">\[
+\begin{gathered}
+\operatorname{dist}\left(
+\left(\frac{\eta}{|\eta|},T_P(\eta)\right),\mathcal G_P\right)\\
+\leq C|\eta|^{-b},\qquad|\eta|\geq R.
+\end{gathered}
+\tag{17}
+\]</span>
+Distance uses the Euclidean norm of the direction and the coefficient norm of the polynomial.</p>
+<p><strong>Proof.</strong> Membership of <span class="math" data-tex="\((\omega,Q)\)">\((\omega,Q)\)</span> in <span class="math" data-tex="\(\mathcal G_P\)">\(\mathcal G_P\)</span> is equivalent to <span class="math" data-tex="\(|\omega|=|Q|_J=1\)">\(|\omega|=|Q|_J=1\)</span> and the following condition: for every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> and <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> there is <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(|\eta|&gt;r\)">\(|\eta|&gt;r\)</span>, such that its normalized direction is within <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> and <span class="math" data-tex="\(T_P(\eta)\)">\(T_P(\eta)\)</span> is within <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Introduce positive auxiliary variables for <span class="math" data-tex="\(|\eta|\)">\(|\eta|\)</span> and <span class="math" data-tex="\(S_P(\eta)^{-1}\)">\(S_P(\eta)^{-1}\)</span>; squaring the inequalities expresses this using polynomial conditions and quantifiers. Lemma 2.1 proves semialgebraicity.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+h(r)=\max_{|\eta|=r}
+\operatorname{dist}\left(
+\left(\frac{\eta}{r},T_P(\eta)\right),
+\mathcal G_P\right).
+\tag{18}
+\]">\[
+h(r)=\max_{|\eta|=r}
+\operatorname{dist}\left(
+\left(\frac{\eta}{r},T_P(\eta)\right),
+\mathcal G_P\right).
+\tag{18}
+\]</span>
+The distance is a minimum over a fixed nonempty compact graph, so it and the attained maximum in (18) are semialgebraic by Lemma 2.1.</p>
+<p>We first prove <span class="math" data-tex="\(h(r)\to0\)">\(h(r)\to0\)</span>. Otherwise choose <span class="math" data-tex="\(r_j\to\infty\)">\(r_j\to\infty\)</span> and maximizing centers for which the distance is bounded below by a positive number. After taking a subsequence, their directions and unit-norm polynomials converge to a pair <span class="math" data-tex="\((\omega,Q)\)">\((\omega,Q)\)</span>. By the definition of directional localization this pair belongs to <span class="math" data-tex="\(\mathcal G_P\)">\(\mathcal G_P\)</span>, contradicting the distance bound.</p>
+<p>Corollary 3.2 now gives <span class="math" data-tex="\(h(r)\leq Cr^{-b}\)">\(h(r)\leq Cr^{-b}\)</span>, unless it is eventually zero, when any positive exponent works after increasing <span class="math" data-tex="\(R\)">\(R\)</span>. This proves (17). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The direction of the nearby localization in (17) may differ slightly from <span class="math" data-tex="\(\eta/|\eta|\)">\(\eta/|\eta|\)</span>. Controlling the polynomial and direction together is essential when excluding a whole neighborhood of a candidate wavefront point.</p>
+<h2 id="differentiating-homogeneous-coefficient-functions">Differentiating homogeneous coefficient functions</h2>
+<p>The coefficient norm also converts a derivative estimate for a polynomial path into an estimate for any smooth homogeneous function of its coefficients.</p>
+<p><strong>Lemma 7.1.</strong> Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be a finite-dimensional real normed space. Suppose <span class="math" data-tex="\(f\)">\(f\)</span> is smooth on <span class="math" data-tex="\(Y\setminus\{0\}\)">\(Y\setminus\{0\}\)</span> and <span class="math" data-tex="\(f(ay)=a^\mu f(y)\)">\(f(ay)=a^\mu f(y)\)</span> for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. If <span class="math" data-tex="\(y(s)\)">\(y(s)\)</span> is a <span class="math" data-tex="\(C^k\)">\(C^k\)</span> curve and <span class="math" data-tex="\(y(s)\ne0\)">\(y(s)\ne0\)</span>, then, for <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\left|\frac{d^k}{ds^k}f(y(s))\right|\\
+&amp;\quad\leq C_k |y(s)|^\mu\\
+&amp;\qquad\cdot\max_{1\leq j\leq k}
+\left(\frac{|y^{(j)}(s)|}{|y(s)|}\right)^{k/j}.
+\end{aligned}
+\tag{19}
+\]">\[
+\begin{aligned}
+&amp;\left|\frac{d^k}{ds^k}f(y(s))\right|\\
+&amp;\quad\leq C_k |y(s)|^\mu\\
+&amp;\qquad\cdot\max_{1\leq j\leq k}
+\left(\frac{|y^{(j)}(s)|}{|y(s)|}\right)^{k/j}.
+\end{aligned}
+\tag{19}
+\]</span>
+The constant depends on the derivatives of <span class="math" data-tex="\(f\)">\(f\)</span> through order <span class="math" data-tex="\(k\)">\(k\)</span> on the unit sphere. It can be chosen uniformly for a compact smooth family of such functions.</p>
+<p><strong>Proof.</strong> Homogeneity gives the multilinear differential estimate
+<span class="math math-display" data-tex="\[
+|d^\ell f(y)|\leq C_\ell |y|^{\mu-\ell}.
+\tag{20}
+\]">\[
+|d^\ell f(y)|\leq C_\ell |y|^{\mu-\ell}.
+\tag{20}
+\]</span>
+Repeated differentiation of a composition gives a finite sum of terms
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d^\ell f(y)[y^{(j_1)},\ldots,y^{(j_\ell)}],\\
+j_1+\cdots+j_\ell=k,\qquad j_i\geq1.
+\end{gathered}
+\tag{21}
+\]">\[
+\begin{gathered}
+d^\ell f(y)[y^{(j_1)},\ldots,y^{(j_\ell)}],\\
+j_1+\cdots+j_\ell=k,\qquad j_i\geq1.
+\end{gathered}
+\tag{21}
+\]</span>
+with constants depending only on <span class="math" data-tex="\(k\)">\(k\)</span>. This form follows by induction: one more derivative either differentiates <span class="math" data-tex="\(f\)">\(f\)</span> and adds a factor <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span>, or increases the derivative order of one existing factor.</p>
+<p>Let <span class="math" data-tex="\(M=\max_{1\leq j\leq k}(|y^{(j)}|/|y|)^{1/j}\)">\(M=\max_{1\leq j\leq k}(|y^{(j)}|/|y|)^{1/j}\)</span>. Each term in (21), by (20), is bounded by <span class="math" data-tex="\(C|y|^\mu M^k\)">\(C|y|^\mu M^k\)</span>. This is (19), since <span class="math" data-tex="\(M^k\)">\(M^k\)</span> equals the maximum displayed there. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, all terms are zero. Compactness gives uniform constants for a compact parameter family. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The exponent <span class="math" data-tex="\(k/j\)">\(k/j\)</span> is forced by differentiation: a <span class="math" data-tex="\(j\)">\(j\)</span>-th curve derivative accounts for <span class="math" data-tex="\(j\)">\(j\)</span> of the total <span class="math" data-tex="\(k\)">\(k\)</span> differentiations. Using exponent <span class="math" data-tex="\(k\)">\(k\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span> would be incorrect.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1. Elliptic windows.</strong> Compute <span class="math" data-tex="\(\mathcal L_\theta(P)\)">\(\mathcal L_\theta(P)\)</span> for <span class="math" data-tex="\(P(\xi)=1+|\xi|^2\)">\(P(\xi)=1+|\xi|^2\)</span>. More generally suppose the principal part <span class="math" data-tex="\(P_m\)">\(P_m\)</span> never vanishes at a nonzero real point. Find the directional localization.</p>
+<p><strong>Solution.</strong> In the first case <span class="math" data-tex="\(P(\eta+\xi)=|\eta|^2+2\eta\cdot\xi+|\xi|^2+1\)">\(P(\eta+\xi)=|\eta|^2+2\eta\cdot\xi+|\xi|^2+1\)</span>, and <span class="math" data-tex="\(S_P(\eta)/|\eta|^2\to1\)">\(S_P(\eta)/|\eta|^2\to1\)</span>, uniformly in the direction. Thus every normalized limit is the constant <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>For the general elliptic polynomial, compactness of the real unit sphere gives <span class="math" data-tex="\(|P_m(\omega)|\geq c&gt;0\)">\(|P_m(\omega)|\geq c&gt;0\)</span>. As <span class="math" data-tex="\(\eta=r\omega\)">\(\eta=r\omega\)</span>, the undifferentiated polynomial is <span class="math" data-tex="\(r^mP_m(\omega)+O(r^{m-1})\)">\(r^mP_m(\omega)+O(r^{m-1})\)</span>, while all its nonzero derivatives are <span class="math" data-tex="\(O(r^{m-1})\)">\(O(r^{m-1})\)</span>, uniformly in <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Therefore <span class="math" data-tex="\(S_P(r\omega)=r^m|P_m(\omega)|(1+O(r^{-1}))\)">\(S_P(r\omega)=r^m|P_m(\omega)|(1+O(r^{-1}))\)</span>. All nonconstant coefficients vanish after normalization, leaving the constant <span class="math" data-tex="\(P_m(\theta)/|P_m(\theta)|\)">\(P_m(\theta)/|P_m(\theta)|\)</span>. This formula includes its complex phase and is unchanged by replacing <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with a positive scalar multiple.</p>
+<p><strong>Exercise 2. A whole family along one axis.</strong> For <span class="math" data-tex="\(P(\xi_1,\xi_2)=\xi_1\xi_2\)">\(P(\xi_1,\xi_2)=\xi_1\xi_2\)</span>, show that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal L_{e_2}(P)
+&amp;=\left\{\frac{a+\xi_1}{\sqrt{1+a^2}}:a\in\mathbb R\right\}\\
+&amp;\quad\cup\{-1,1\}.
+\end{aligned}
+\tag{22}
+\]">\[
+\begin{aligned}
+\mathcal L_{e_2}(P)
+&amp;=\left\{\frac{a+\xi_1}{\sqrt{1+a^2}}:a\in\mathbb R\right\}\\
+&amp;\quad\cup\{-1,1\}.
+\end{aligned}
+\tag{22}
+\]</span></p>
+<p><strong>Solution.</strong> At a center <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span>,
+<span class="math math-display" data-tex="\[
+S_P(u,v)^2=(1+u^2)(1+v^2).
+\]">\[
+S_P(u,v)^2=(1+u^2)(1+v^2).
+\]</span>
+In direction <span class="math" data-tex="\(e_2\)">\(e_2\)</span>, <span class="math" data-tex="\(v\to+\infty\)">\(v\to+\infty\)</span> and <span class="math" data-tex="\(u/v\to0\)">\(u/v\to0\)</span>. If <span class="math" data-tex="\(u\to a\)">\(u\to a\)</span> along a subsequence, the constant coefficient tends to <span class="math" data-tex="\(a/\sqrt{1+a^2}\)">\(a/\sqrt{1+a^2}\)</span>, the <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span> coefficient to <span class="math" data-tex="\(1/\sqrt{1+a^2}\)">\(1/\sqrt{1+a^2}\)</span>, and the other coefficients to zero. If <span class="math" data-tex="\(|u|\to\infty\)">\(|u|\to\infty\)</span>, take a subsequence with fixed sign. The constant coefficient tends to that sign and every other coefficient to zero. Any sequence has a subsequence of one of these two types, which exhausts its possible polynomial limits. Paths <span class="math" data-tex="\((a,t)\)">\((a,t)\)</span>, <span class="math" data-tex="\((t,t^2)\)">\((t,t^2)\)</span>, and <span class="math" data-tex="\((-t,t^2)\)">\((-t,t^2)\)</span> attain all the stated values. Each limit is independent of <span class="math" data-tex="\(\xi_2\)">\(\xi_2\)</span>, as Theorem 5.1 requires.</p>
+<p><strong>Exercise 3. When degree does not decrease.</strong> Let <span class="math" data-tex="\(P(\xi_1,\xi_2)=\xi_1\)">\(P(\xi_1,\xi_2)=\xi_1\)</span>. Compute a localization in direction <span class="math" data-tex="\(e_2\)">\(e_2\)</span> with the same degree as <span class="math" data-tex="\(P\)">\(P\)</span>. Explain the missing hypothesis in the degree conclusion.</p>
+<p><strong>Solution.</strong> The path <span class="math" data-tex="\(\eta(t)=(0,t)\)">\(\eta(t)=(0,t)\)</span> gives <span class="math" data-tex="\(T_P(\eta(t))=\xi_1\)">\(T_P(\eta(t))=\xi_1\)</span>, since <span class="math" data-tex="\(S_P(0,t)=1\)">\(S_P(0,t)=1\)</span>. Thus the degree remains one. Here <span class="math" data-tex="\(e_2\in N_P\)">\(e_2\in N_P\)</span>, so the strict-degree clause of Theorem 5.1 does not apply. Its inactive-direction conclusion does apply, and <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span> is indeed independent of <span class="math" data-tex="\(\xi_2\)">\(\xi_2\)</span>.</p>
+<p><strong>Exercise 4. Discarding a negative power.</strong> For <span class="math" data-tex="\(P(\xi)=\xi_1\xi_2-1\)">\(P(\xi)=\xi_1\xi_2-1\)</span>, compare the paths <span class="math" data-tex="\((t^{-1},t)\)">\((t^{-1},t)\)</span> and <span class="math" data-tex="\((0,t)\)">\((0,t)\)</span>. What normalized limit do they share?</p>
+<p><strong>Solution.</strong> On the first path the translated polynomial is
+<span class="math math-display" data-tex="\[
+t\xi_1+t^{-1}\xi_2+\xi_1\xi_2,
+\]">\[
+t\xi_1+t^{-1}\xi_2+\xi_1\xi_2,
+\]</span>
+and its derivative norm is asymptotic to <span class="math" data-tex="\(t\)">\(t\)</span>. The limit is <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span>. On the second path the translated polynomial is <span class="math" data-tex="\(t\xi_1+\xi_1\xi_2-1\)">\(t\xi_1+\xi_1\xi_2-1\)</span>, again with norm asymptotic to <span class="math" data-tex="\(t\)">\(t\)</span>, and the same limit results. The centers differ by <span class="math" data-tex="\((t^{-1},0)\to0\)">\((t^{-1},0)\to0\)</span>, exactly the absolute error controlled by (12). Replacing the second path by <span class="math" data-tex="\((0,2t)\)">\((0,2t)\)</span> prescribes leading coefficient <span class="math" data-tex="\(2e_2\)">\(2e_2\)</span> and still gives <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span>.</p>
+<p><strong>Exercise 5. Why compactness does not give a power.</strong> Consider the unit vectors
+<span class="math math-display" data-tex="\[
+v(r)=\frac{(1,a(r))}{\sqrt{1+a(r)^2}},
+\qquad a(r)=\frac1{\log(r+e)}.
+\]">\[
+v(r)=\frac{(1,a(r))}{\sqrt{1+a(r)^2}},
+\qquad a(r)=\frac1{\log(r+e)}.
+\]</span>
+Show that <span class="math" data-tex="\(v(r)\to(1,0)\)">\(v(r)\to(1,0)\)</span>, but its distance from that limit is not <span class="math" data-tex="\(O(r^{-b})\)">\(O(r^{-b})\)</span> for any <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. Deduce that this curve is not semialgebraic.</p>
+<p><strong>Solution.</strong> For small positive <span class="math" data-tex="\(a\)">\(a\)</span>, its second coordinate is between <span class="math" data-tex="\(a/2\)">\(a/2\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span>, while the first-coordinate error is <span class="math" data-tex="\(O(a^2)\)">\(O(a^2)\)</span>. The distance is therefore comparable to <span class="math" data-tex="\(1/\log(r+e)\)">\(1/\log(r+e)\)</span>. For each <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, <span class="math" data-tex="\(r^b/\log(r+e)\to\infty\)">\(r^b/\log(r+e)\to\infty\)</span>, as follows for example by differentiating numerator and denominator in the quotient <span class="math" data-tex="\(\log r/r^b\)">\(\log r/r^b\)</span>. Hence no power bound holds. If the curve were semialgebraic, its distance from <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> would be a nonnegative semialgebraic function tending to zero. Corollary 3.2 would give such a bound, a contradiction.</p>
+<p><strong>Exercise 6. The second curve derivative matters.</strong> Take <span class="math" data-tex="\(f(y)=1/y\)">\(f(y)=1/y\)</span> on <span class="math" data-tex="\(Y=\mathbb R\setminus\{0\}\)">\(Y=\mathbb R\setminus\{0\}\)</span> and <span class="math" data-tex="\(y(s)=1+As^2/2\)">\(y(s)=1+As^2/2\)</span>, <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>. Compute <span class="math" data-tex="\((f\circ y)&#x27;&#x27;(0)\)">\((f\circ y)&#x27;&#x27;(0)\)</span>. Check the power <span class="math" data-tex="\(k/j\)">\(k/j\)</span> in (19) for <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, and show that replacing it by <span class="math" data-tex="\(k\)">\(k\)</span> fails uniformly as <span class="math" data-tex="\(A\to0\)">\(A\to0\)</span>.</p>
+<p><strong>Solution.</strong> At zero, <span class="math" data-tex="\(y=1\)">\(y=1\)</span>, <span class="math" data-tex="\(y&#x27;=0\)">\(y&#x27;=0\)</span>, <span class="math" data-tex="\(y&#x27;&#x27;=A\)">\(y&#x27;&#x27;=A\)</span>, and <span class="math" data-tex="\((1/y)&#x27;&#x27;=-A\)">\((1/y)&#x27;&#x27;=-A\)</span>. The maximum in (19) is <span class="math" data-tex="\(\max(0,A^{2/2})=A\)">\(\max(0,A^{2/2})=A\)</span>, giving the correct scale. Replacing <span class="math" data-tex="\(2/2\)">\(2/2\)</span> by <span class="math" data-tex="\(2\)">\(2\)</span> would bound <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(CA^2\)">\(CA^2\)</span> with a constant independent of <span class="math" data-tex="\(A\)">\(A\)</span>, which fails for arbitrarily small positive <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Coste]</strong> Michel Coste, <em>Real Algebraic Sets</em>, lecture notes, 2003, §1.1 on projection and §1.5 on algebraic curves and fractional powers. <a href="https://indico.ictp.it/event/a02455/session/9/contribution/6/material/0/0.pdf">ICTP notes</a>.</li>
+<li>Internal continuation and cyclic descent: <a href="AN02-L071.html#a-finite-cover-and-a-convergent-laurent-series">A finite cover and a convergent Laurent series</a>, equation (4) and the complete path, homotopy and monodromy argument. Lemma 3.1 here applies that polynomial-at-infinity proof to its original algebraic equation and inverts the covered parameter. Inversion preserves the selected cycle length; a common cover of all root cycles is not needed.</li>
+<li>Internal bounded-removal proof: the bounded-extension argument in <a href="AN02-L071.html#a-finite-cover-and-a-convergent-laurent-series">the same finite-cover section</a>, following equation (6), and the explicit annular formula and inner-circle estimate in <a href="AN02-L053.html#covering-all-arguments-and-removing-infinity">Covering all arguments and removing infinity</a>, equations (11)–(12). In Lemma 3.1 here, this argument applies to the bounded product of the selected branch and the leading coefficient. Dividing by that coefficient then permits only a finite pole.</li>
+<li><strong>[Grubb]</strong> Gerd Grubb, <em>Distributions and Operators</em>, author-hosted lecture chapter §5, <em>Fourier transformation of distributions</em>: §§5.1–5.3, Definitions 5.1 and 5.8 and Theorems 5.16–5.17 (native pp. 5.1, 5.9 and 5.13). <a href="https://www.math.ku.dk/~grubb/dist5.pdf">Exact freely readable chapter</a>. <a href="https://web.math.ku.dk/~grubb/">Author's notes</a>.</li>
+</ul>
+</main></body></html>

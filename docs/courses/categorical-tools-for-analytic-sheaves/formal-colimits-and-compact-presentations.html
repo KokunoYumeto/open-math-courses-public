@@ -1,0 +1,267 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formal colimits and compact presentations</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Subsequent full independent model review: GPT-6 Astra, Ultra; no corrections requested. This review covers the recorded version of this lesson and its specified prerequisite interfaces.</p><h1 id="formal-colimits-and-compact-presentations">Formal colimits and compact presentations</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, September 2026. Self-checked; no independent review. Public domain (CC0).</em></p>
+<p>Taking a colimit can erase information about how an object was assembled. A formal colimit retains that information through its maps from test objects. This distinction explains why an infinite set, viewed as one constant object, differs from the formal union of its finite subsets even though both constructions realize the same set.</p>
+<p>We assume filtered categories, the universal property of a colimit and Yoneda. Use <a href="https://stacks.math.columbia.edu/tag/05PW">The Stacks Project's ind-object convention</a> for the basic category and its morphisms. Schapira's <em>Homological Algebra</em>, Section 2.7, gives another account of the formal versus ordinary distinction. Our goal is to understand realization, the two embeddings around it, and the role of objects of finite presentation.</p>
+<h2 id="1-retain-the-diagram-before-realizing-it">1. Retain the diagram before realizing it</h2>
+<p>Fix a universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> and a larger ambient universe. The category <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small; every indexing category below is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. The category of its objects may require the larger universe. All colimits and finite-presentation conditions refer to these indexing categories.</p>
+<p>An ind-object is a formal filtered diagram, written <span class="math" data-tex="\(\langle X_i\rangle_{i\in I}\)">\(\langle X_i\rangle_{i\in I}\)</span>. Its presheaf on <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is</p>
+<span class="math math-display" data-tex="\[
+T\longmapsto \mathop{\rm colim}_{i\in I}
+\operatorname{Hom}_{\mathsf C}(T,X_i).
+\tag{1.1}
+\]">\[
+T\longmapsto \mathop{\rm colim}_{i\in I}
+\operatorname{Hom}_{\mathsf C}(T,X_i).
+\tag{1.1}
+\]</span>
+<p>Isomorphic presheaves determine the same ind-object up to isomorphism. The morphism convention is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}
+(\langle X_i\rangle,\langle Y_j\rangle)
+=\mathop{\rm lim}_{i\in I}\mathop{\rm colim}_{j\in J}
+\operatorname{Hom}_{\mathsf C}(X_i,Y_j).
+\tag{1.2}
+\]">\[
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}
+(\langle X_i\rangle,\langle Y_j\rangle)
+=\mathop{\rm lim}_{i\in I}\mathop{\rm colim}_{j\in J}
+\operatorname{Hom}_{\mathsf C}(X_i,Y_j).
+\tag{1.2}
+\]</span>
+<p>These are the definitions in the reference above, rather than an assertion that the ordinary colimit of the diagram exists. Let <span class="math" data-tex="\(\iota X\)">\(\iota X\)</span> denote the constant diagram at <span class="math" data-tex="\(X\)">\(X\)</span>. Formula (1.2) makes <span class="math" data-tex="\(\iota\)">\(\iota\)</span> fully faithful.</p>
+<p>Suppose now that <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> admits all the filtered colimits in question. Realization sends a formal diagram to its actual colimit:</p>
+<span class="math math-display" data-tex="\[
+\sigma\langle X_i\rangle=\mathop{\rm colim}_{i}X_i.
+\]">\[
+\sigma\langle X_i\rangle=\mathop{\rm colim}_{i}X_i.
+\]</span>
+<p><strong>Proposition 1.1.</strong> Realization defines a functor <span class="math" data-tex="\(\sigma:\operatorname{Ind}(\mathsf C)\to\mathsf C\)">\(\sigma:\operatorname{Ind}(\mathsf C)\to\mathsf C\)</span>, with a natural adjunction</p>
+<span class="math math-display" data-tex="\[
+\sigma\dashv\iota,\qquad \sigma\iota\simeq\operatorname{id}_{\mathsf C}.
+\tag{1.3}
+\]">\[
+\sigma\dashv\iota,\qquad \sigma\iota\simeq\operatorname{id}_{\mathsf C}.
+\tag{1.3}
+\]</span>
+<p><strong>Proof.</strong> A morphism in (1.2) supplies, for each <span class="math" data-tex="\(i\)">\(i\)</span>, a map <span class="math" data-tex="\(X_i\to Y_j\)">\(X_i\to Y_j\)</span> for some <span class="math" data-tex="\(j\)">\(j\)</span>, determined up to passage to later stages. Composing with <span class="math" data-tex="\(Y_j\to\operatorname{colim}_jY_j\)">\(Y_j\to\operatorname{colim}_jY_j\)</span> removes the choice of stage. The inverse-limit condition makes these maps compatible with the <span class="math" data-tex="\(X\)">\(X\)</span>-diagram. The colimit universal property then supplies a map between the realizations. Identities and composites give the expected maps, because they do so on every <span class="math" data-tex="\(X_i\)">\(X_i\)</span>.</p>
+<p>More intrinsically, for each <span class="math" data-tex="\(Y\)">\(Y\)</span> one has natural bijections</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}
+(\langle X_i\rangle,\iota Y)
+&amp;=\mathop{\rm lim}_i\operatorname{Hom}_{\mathsf C}(X_i,Y)\\
+&amp;=\operatorname{Hom}_{\mathsf C}(\operatorname{colim}_iX_i,Y).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}
+(\langle X_i\rangle,\iota Y)
+&amp;=\mathop{\rm lim}_i\operatorname{Hom}_{\mathsf C}(X_i,Y)\\
+&amp;=\operatorname{Hom}_{\mathsf C}(\operatorname{colim}_iX_i,Y).
+\end{aligned}
+\]</span>
+<p>Thus the realization is determined by the ind-object, independently of its chosen diagram. These bijections give the adjunction. A constant diagram realizes to its value, which proves the second assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The adjunction gives a comparison</p>
+<span class="math math-display" data-tex="\[
+\langle X_i\rangle\longrightarrow
+\iota(\operatorname{colim}_iX_i).
+\tag{1.4}
+\]">\[
+\langle X_i\rangle\longrightarrow
+\iota(\operatorname{colim}_iX_i).
+\tag{1.4}
+\]</span>
+<p>On a test object <span class="math" data-tex="\(T\)">\(T\)</span>, it takes a map into some stage to the resulting map into the colimit. Surjectivity would say that every map from <span class="math" data-tex="\(T\)">\(T\)</span> factors through a stage. Injectivity would say that two such factorizations become equal at a common later stage. Neither follows merely from the existence of the colimit.</p>
+<h2 id="2-small-pieces-that-detect-maps-into-a-colimit">2. Small pieces that detect maps into a colimit</h2>
+<p>An object <span class="math" data-tex="\(D\)">\(D\)</span> is <em>of finite presentation</em>, also called <em>compact with respect to filtered colimits</em>, if for every filtered diagram the canonical map</p>
+<span class="math math-display" data-tex="\[
+\mathop{\rm colim}_j\operatorname{Hom}_{\mathsf C}(D,Y_j)
+\longrightarrow\operatorname{Hom}_{\mathsf C}
+(D,\operatorname{colim}_jY_j)
+\tag{2.1}
+\]">\[
+\mathop{\rm colim}_j\operatorname{Hom}_{\mathsf C}(D,Y_j)
+\longrightarrow\operatorname{Hom}_{\mathsf C}
+(D,\operatorname{colim}_jY_j)
+\tag{2.1}
+\]</span>
+<p>is bijective. This use of “compact” concerns a categorical preservation property, not a topology on <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>Equivalently, for every <span class="math" data-tex="\(A\in\operatorname{Ind}(\mathsf C)\)">\(A\in\operatorname{Ind}(\mathsf C)\)</span>, the realization comparison</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(\iota D,A)
+&amp;{}\\
+\longrightarrow\operatorname{Hom}_{\mathsf C}(D,\sigma A)&amp;{}
+\end{aligned}
+\tag{2.F}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(\iota D,A)
+&amp;{}\\
+\longrightarrow\operatorname{Hom}_{\mathsf C}(D,\sigma A)&amp;{}
+\end{aligned}
+\tag{2.F}
+\]</span>
+<p>is bijective. Indeed, if <span class="math" data-tex="\(A=\langle Y_j\rangle\)">\(A=\langle Y_j\rangle\)</span>, its left side is <span class="math" data-tex="\(\operatorname{colim}_j\operatorname{Hom}_{\mathsf C}(D,Y_j)\)">\(\operatorname{colim}_j\operatorname{Hom}_{\mathsf C}(D,Y_j)\)</span> and <span class="math" data-tex="\(\sigma A=\operatorname{colim}_jY_j\)">\(\sigma A=\operatorname{colim}_jY_j\)</span>. The comparison is exactly (2.1). Every small filtered diagram defines such an <span class="math" data-tex="\(A\)">\(A\)</span>, and every ind-object has such a presentation, which proves both implications. This equivalence uses realization alone; it requires no generation hypothesis on the finitely presented objects.</p>
+<p>Let <span class="math" data-tex="\(F:\mathsf D\to\mathsf C\)">\(F:\mathsf D\to\mathsf C\)</span> be fully faithful, and suppose every <span class="math" data-tex="\(F(D)\)">\(F(D)\)</span> is of finite presentation. Neither <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> nor the full subcategory of all such objects is required to have a small skeleton. Only the individual diagrams used to form ind-objects must be small in the chosen universe.</p>
+<p><strong>Theorem 2.1.</strong> The realization functor</p>
+<span class="math math-display" data-tex="\[
+J_F:\operatorname{Ind}(\mathsf D)\longrightarrow\mathsf C,
+\qquad \langle D_i\rangle\longmapsto\operatorname{colim}_iF(D_i),
+\]">\[
+J_F:\operatorname{Ind}(\mathsf D)\longrightarrow\mathsf C,
+\qquad \langle D_i\rangle\longmapsto\operatorname{colim}_iF(D_i),
+\]</span>
+<p>is fully faithful. If every object of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is a small filtered colimit of objects in the image of <span class="math" data-tex="\(F\)">\(F\)</span>, then <span class="math" data-tex="\(J_F\)">\(J_F\)</span> is an equivalence.</p>
+<p><strong>Proof.</strong> For diagrams <span class="math" data-tex="\((D_i)\)">\((D_i)\)</span> and <span class="math" data-tex="\((E_j)\)">\((E_j)\)</span>, compute maps between their realizations by first mapping out of the colimit and then using finite presentation:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\mathsf C}
+(\operatorname{colim}_iF(D_i),\operatorname{colim}_jF(E_j))
+&amp;=\mathop{\rm lim}_i
+\operatorname{Hom}_{\mathsf C}(F(D_i),\operatorname{colim}_jF(E_j))\\
+&amp;=\mathop{\rm lim}_i\mathop{\rm colim}_j
+\operatorname{Hom}_{\mathsf C}(F(D_i),F(E_j))\\
+&amp;=\mathop{\rm lim}_i\mathop{\rm colim}_j
+\operatorname{Hom}_{\mathsf D}(D_i,E_j).
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\mathsf C}
+(\operatorname{colim}_iF(D_i),\operatorname{colim}_jF(E_j))
+&amp;=\mathop{\rm lim}_i
+\operatorname{Hom}_{\mathsf C}(F(D_i),\operatorname{colim}_jF(E_j))\\
+&amp;=\mathop{\rm lim}_i\mathop{\rm colim}_j
+\operatorname{Hom}_{\mathsf C}(F(D_i),F(E_j))\\
+&amp;=\mathop{\rm lim}_i\mathop{\rm colim}_j
+\operatorname{Hom}_{\mathsf D}(D_i,E_j).
+\end{aligned}
+\tag{2.2}
+\]</span>
+<p>This is (1.2), and the bijection is exactly the map induced by realization. It respects composition because each step is natural. Hence <span class="math" data-tex="\(J_F\)">\(J_F\)</span> is fully faithful. The additional hypothesis says that every object is isomorphic to a value of <span class="math" data-tex="\(J_F\)">\(J_F\)</span>, giving essential surjectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Finite presentation controls maps <em>from each piece</em>. The filtered-colimit presentation of all objects controls which objects can be reached. These are distinct hypotheses.</p>
+<h2 id="3-two-embeddings-with-realization-between-them">3. Two embeddings with realization between them</h2>
+<p>Assume that <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> is a full subcategory of finitely presented objects of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>, and that every object of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is a small filtered colimit of objects of <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span>. By Theorem 2.1, <span class="math" data-tex="\(J:\operatorname{Ind}(\mathsf D)\to\mathsf C\)">\(J:\operatorname{Ind}(\mathsf D)\to\mathsf C\)</span> is an equivalence. The inclusion of <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> into <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> also gives a fully faithful inclusion of their ind-categories, directly by (1.2).</p>
+<p>Choose a quasi-inverse to <span class="math" data-tex="\(J\)">\(J\)</span> and compose it with this inclusion. The resulting functor <span class="math" data-tex="\(\kappa:\mathsf C\to\operatorname{Ind}(\mathsf C)\)">\(\kappa:\mathsf C\to\operatorname{Ind}(\mathsf C)\)</span> sends <span class="math" data-tex="\(X\)">\(X\)</span> to a formal presentation of it by the small pieces:</p>
+<span class="math math-display" data-tex="\[
+X\simeq\operatorname{colim}_iD_i
+\quad\Longrightarrow\quad
+\kappa X\simeq\langle D_i\rangle.
+\tag{3.1}
+\]">\[
+X\simeq\operatorname{colim}_iD_i
+\quad\Longrightarrow\quad
+\kappa X\simeq\langle D_i\rangle.
+\tag{3.1}
+\]</span>
+<p>Different presentations give canonically compatible objects through the equivalence; a presentation is not extra structure imposed on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> There is an adjoint triple</p>
+<span class="math math-display" data-tex="\[
+\kappa\dashv\sigma\dashv\iota.
+\tag{3.2}
+\]">\[
+\kappa\dashv\sigma\dashv\iota.
+\tag{3.2}
+\]</span>
+<p>Both <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> and <span class="math" data-tex="\(\iota\)">\(\iota\)</span> are fully faithful, and <span class="math" data-tex="\(\sigma\kappa\simeq\operatorname{id}\simeq\sigma\iota\)">\(\sigma\kappa\simeq\operatorname{id}\simeq\sigma\iota\)</span>. There is a natural comparison <span class="math" data-tex="\(r_X:\kappa X\to\iota X\)">\(r_X:\kappa X\to\iota X\)</span>. It is an isomorphism exactly when <span class="math" data-tex="\(X\)">\(X\)</span> is of finite presentation in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>.</p>
+<p><strong>Proof.</strong> The construction already gives full faithfulness of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> and <span class="math" data-tex="\(\sigma\kappa\simeq\operatorname{id}\)">\(\sigma\kappa\simeq\operatorname{id}\)</span>. For <span class="math" data-tex="\(X=\operatorname{colim}_iD_i\)">\(X=\operatorname{colim}_iD_i\)</span> and <span class="math" data-tex="\(A=\langle Y_j\rangle\)">\(A=\langle Y_j\rangle\)</span>, finite presentation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(\kappa X,A)
+&amp;=\mathop{\rm lim}_i\mathop{\rm colim}_j
+\operatorname{Hom}_{\mathsf C}(D_i,Y_j)\\
+&amp;=\mathop{\rm lim}_i\operatorname{Hom}_{\mathsf C}(D_i,\sigma A)\\
+&amp;=\operatorname{Hom}_{\mathsf C}(X,\sigma A).
+\end{aligned}
+\tag{3.3}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(\kappa X,A)
+&amp;=\mathop{\rm lim}_i\mathop{\rm colim}_j
+\operatorname{Hom}_{\mathsf C}(D_i,Y_j)\\
+&amp;=\mathop{\rm lim}_i\operatorname{Hom}_{\mathsf C}(D_i,\sigma A)\\
+&amp;=\operatorname{Hom}_{\mathsf C}(X,\sigma A).
+\end{aligned}
+\tag{3.3}
+\]</span>
+<p>This proves the first adjunction, naturally in both variables. Proposition 1.1 supplies the other.</p>
+<p>The comparison is the unit <span class="math" data-tex="\(\kappa X\to\iota\sigma\kappa X\)">\(\kappa X\to\iota\sigma\kappa X\)</span> of <span class="math" data-tex="\(\sigma\dashv\iota\)">\(\sigma\dashv\iota\)</span>, followed by the identification <span class="math" data-tex="\(\sigma\kappa X\simeq X\)">\(\sigma\kappa X\simeq X\)</span>. For every <span class="math" data-tex="\(A=\langle Y_j\rangle\)">\(A=\langle Y_j\rangle\)</span>, precomposition by <span class="math" data-tex="\(r_X\)">\(r_X\)</span> is the map</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(\iota X,A)\longrightarrow
+\operatorname{Hom}(\kappa X,A),
+\]">\[
+\operatorname{Hom}(\iota X,A)\longrightarrow
+\operatorname{Hom}(\kappa X,A),
+\]</span>
+<p>which, under (1.2) and (3.3), is precisely (2.1) with <span class="math" data-tex="\(D=X\)">\(D=X\)</span>. If <span class="math" data-tex="\(X\)">\(X\)</span> is finitely presented, these maps are all bijective, so Yoneda makes <span class="math" data-tex="\(r_X\)">\(r_X\)</span> invertible. If <span class="math" data-tex="\(r_X\)">\(r_X\)</span> is invertible, the same computation gives (2.1) for every filtered diagram, proving finite presentation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Realization therefore has two fully faithful sections with different meanings. The constant section remembers <span class="math" data-tex="\(X\)">\(X\)</span> as one allowed stage. The other section records its construction from finitely presented pieces.</p>
+<p>For sets, take <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> to be finite sets. A map from a finite set into a filtered colimit uses finitely many elements and finitely many equalities. Filteredness places all those elements and equalities in one stage, proving (2.1). Every set is the filtered union of its finite subsets. Conversely, the identity of an infinite set cannot factor through one of its finite subsets, so an infinite set is not finitely presented. Thus <span class="math" data-tex="\(\operatorname{Ind}(\mathsf{FinSet})\simeq\mathsf{Set}\)">\(\operatorname{Ind}(\mathsf{FinSet})\simeq\mathsf{Set}\)</span>.</p>
+<p>For <span class="math" data-tex="\(X=\mathbb N\)">\(X=\mathbb N\)</span>, the presheaf of <span class="math" data-tex="\(\kappa X\)">\(\kappa X\)</span>, tested on a set <span class="math" data-tex="\(T\)">\(T\)</span>, consists of maps <span class="math" data-tex="\(T\to\mathbb N\)">\(T\to\mathbb N\)</span> with finite image. The presheaf of <span class="math" data-tex="\(\iota X\)">\(\iota X\)</span> consists of all such maps. The map <span class="math" data-tex="\(r_X\)">\(r_X\)</span> includes the former into the latter. At <span class="math" data-tex="\(T=\mathbb N\)">\(T=\mathbb N\)</span>, the identity is missing from the former. Consequently <span class="math" data-tex="\(r_X\)">\(r_X\)</span> is not an isomorphism, although <span class="math" data-tex="\(\sigma r_X\)">\(\sigma r_X\)</span> is an isomorphism of sets.</p>
+<h2 id="4-module-presentations-over-an-arbitrary-ring">4. Module presentations over an arbitrary ring</h2>
+<p>For commutative rings, the algebraic finite-presentation criterion and filtered presentations are already available in <a href="https://stacks.math.columbia.edu/tag/0G8M">Characterizing finite and finitely presented modules</a>. They supply the commutative instance of Theorem 2.1. We give the arbitrary-ring argument to retain the noncommutative instance too.</p>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a unital ring, with no commutativity assumption. All modules in this section are left <span class="math" data-tex="\(R\)">\(R\)</span>-modules. A module is algebraically finitely presented if it has a presentation</p>
+<span class="math math-display" data-tex="\[
+R^a\longrightarrow R^b\longrightarrow P\longrightarrow0
+\quad(a,b&lt;\infty).
+\tag{4.1}
+\]">\[
+R^a\longrightarrow R^b\longrightarrow P\longrightarrow0
+\quad(a,b&lt;\infty).
+\tag{4.1}
+\]</span>
+<p><strong>Theorem 4.1.</strong> In <span class="math" data-tex="\(\mathsf{Mod}(R)\)">\(\mathsf{Mod}(R)\)</span>, the objects of finite presentation in the sense of (2.1) are exactly the modules with a presentation (4.1). Every module is a small filtered colimit of such modules. In particular,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(\mathsf{Mod}_{\rm fp}(R))
+\simeq\mathsf{Mod}(R).
+\tag{4.2}
+\]">\[
+\operatorname{Ind}(\mathsf{Mod}_{\rm fp}(R))
+\simeq\mathsf{Mod}(R).
+\tag{4.2}
+\]</span>
+<p><strong>Proof.</strong> A homomorphism from a module presented as in (4.1) is determined by the images of <span class="math" data-tex="\(b\)">\(b\)</span> generators, subject to <span class="math" data-tex="\(a\)">\(a\)</span> relations. In a filtered colimit, finitely many candidate images can be represented at one stage. Each relation that vanishes in the colimit vanishes at some later stage, and filteredness gives one stage for all the relations. This proves surjectivity in (2.1). If two maps become equal, their values on the finitely many generators become equal at a common later stage. This proves injectivity. The element description used here follows from the usual quotient construction of a module colimit: a finite sum can be moved to a common stage, and an equality involves only finitely many of its defining relations. Left multiplication respects these relations; multiplication of coefficients never needs to be commuted.</p>
+<p>To build presentations of an arbitrary module <span class="math" data-tex="\(M\)">\(M\)</span>, use a skeleton of the algebraically finitely presented modules and form the category of all homomorphisms <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span> from it. It is small: finite matrices over the small ring form a set, and each set of homomorphisms into <span class="math" data-tex="\(M\)">\(M\)</span> is small. It is nonempty, as <span class="math" data-tex="\(0\to M\)">\(0\to M\)</span> is an object. Two objects map to their direct sum with the induced map to <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>If <span class="math" data-tex="\(f,g\colon P\rightrightarrows Q\)">\(f,g\colon P\rightrightarrows Q\)</span> are parallel maps over <span class="math" data-tex="\(M\)">\(M\)</span>, their difference has image generated by finitely many elements, since <span class="math" data-tex="\(P\)">\(P\)</span> is finitely generated. The quotient</p>
+<span class="math math-display" data-tex="\[
+Q/\operatorname{im}(f-g)
+\]">\[
+Q/\operatorname{im}(f-g)
+\]</span>
+<p>is finitely presented: add those finitely many generators of the image as relations to a finite presentation of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Its map to <span class="math" data-tex="\(M\)">\(M\)</span> is defined because <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> agree over <span class="math" data-tex="\(M\)">\(M\)</span>. This quotient equalizes them. Hence the category is filtered.</p>
+<p>The canonical map <span class="math" data-tex="\(\operatorname{colim}_{P\to M}P\to M\)">\(\operatorname{colim}_{P\to M}P\to M\)</span> is surjective: every <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span> is the image of <span class="math" data-tex="\(1\)">\(1\)</span> under a map <span class="math" data-tex="\(R\to M\)">\(R\to M\)</span>. If an element <span class="math" data-tex="\(p\in P\)">\(p\in P\)</span> maps to zero in <span class="math" data-tex="\(M\)">\(M\)</span>, the arrow <span class="math" data-tex="\(P\to P/Rp\)">\(P\to P/Rp\)</span>, still over <span class="math" data-tex="\(M\)">\(M\)</span>, kills it. The quotient is finitely presented by adding one relation. Any two representatives can first be moved to a common object by filteredness. This proves injectivity and hence the claimed presentation of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Finally, suppose <span class="math" data-tex="\(M\)">\(M\)</span> satisfies (2.1). Apply it to this filtered presentation. The identity of <span class="math" data-tex="\(M\)">\(M\)</span> factors as <span class="math" data-tex="\(M\to P\to M\)">\(M\to P\to M\)</span> for some algebraically finitely presented <span class="math" data-tex="\(P\)">\(P\)</span>. Thus <span class="math" data-tex="\(M\)">\(M\)</span> is a direct summand of <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>We check algebraically that a summand is finitely presented. Write <span class="math" data-tex="\(P=M\oplus N\)">\(P=M\oplus N\)</span>. Both summands are finitely generated by projecting a finite generating set of <span class="math" data-tex="\(P\)">\(P\)</span>. Choose finite free surjections <span class="math" data-tex="\(F_M\to M\)">\(F_M\to M\)</span> and <span class="math" data-tex="\(F_N\to N\)">\(F_N\to N\)</span>, giving <span class="math" data-tex="\(q:F_M\oplus F_N\to P\)">\(q:F_M\oplus F_N\to P\)</span>. Also choose a finite free surjection <span class="math" data-tex="\(v:G\to P\)">\(v:G\to P\)</span> whose kernel <span class="math" data-tex="\(H\)">\(H\)</span> is finitely generated, using (4.1). Freeness supplies lifts <span class="math" data-tex="\(h:G\to F_M\oplus F_N\)">\(h:G\to F_M\oplus F_N\)</span> and <span class="math" data-tex="\(k:F_M\oplus F_N\to G\)">\(k:F_M\oplus F_N\to G\)</span> with <span class="math" data-tex="\(qh=v\)">\(qh=v\)</span> and <span class="math" data-tex="\(vk=q\)">\(vk=q\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\ker q=h(H)+\operatorname{im}(1-hk).
+\tag{4.3}
+\]">\[
+\ker q=h(H)+\operatorname{im}(1-hk).
+\tag{4.3}
+\]</span>
+<p>Indeed, both summands on the right lie in the kernel; for <span class="math" data-tex="\(z\in\ker q\)">\(z\in\ker q\)</span>, the identity <span class="math" data-tex="\(z=h(kz)+(1-hk)z\)">\(z=h(kz)+(1-hk)z\)</span> expresses it in that sum, since <span class="math" data-tex="\(kz\in H\)">\(kz\in H\)</span>. The right side is finitely generated. But <span class="math" data-tex="\(\ker q\)">\(\ker q\)</span> is the direct sum of the kernels of <span class="math" data-tex="\(F_M\to M\)">\(F_M\to M\)</span> and <span class="math" data-tex="\(F_N\to N\)">\(F_N\to N\)</span>. Projecting its generators shows that the first of these kernels is finitely generated. This gives a finite presentation of <span class="math" data-tex="\(M\)">\(M\)</span>. The categorical criterion follows, and Theorem 2.1 proves (4.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem includes a module <span class="math" data-tex="\(R/Ru\)">\(R/Ru\)</span> over a ring in which <span class="math" data-tex="\(u\)">\(u\)</span> need not be central. It does not require submodules of finite free modules to be finitely generated. The presentation category handles only finitely many relations at a time.</p>
+<h2 id="5-exercises-with-solutions">5. Exercises with solutions</h2>
+<p><strong>Exercise 1 (introductory: a finite test).</strong> Let <span class="math" data-tex="\(X_n=\{0,\ldots,n\}\)">\(X_n=\{0,\ldots,n\}\)</span> with the inclusion maps, and let <span class="math" data-tex="\(E\)">\(E\)</span> have three elements. Describe the map</p>
+<span class="math math-display" data-tex="\[
+\operatorname{colim}_n\operatorname{Hom}(E,X_n)
+\longrightarrow\operatorname{Hom}(E,\mathbb N)
+\]">\[
+\operatorname{colim}_n\operatorname{Hom}(E,X_n)
+\longrightarrow\operatorname{Hom}(E,\mathbb N)
+\]</span>
+<p>and prove it is bijective without appealing to Theorem 2.1.</p>
+<p><strong>Solution.</strong> A map on the left is a function whose three values all lie in one <span class="math" data-tex="\(X_n\)">\(X_n\)</span>. A function into <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span> has three values; their maximum gives such an <span class="math" data-tex="\(n\)">\(n\)</span>, proving surjectivity. Two stage maps with the same resulting function agree after both are included in <span class="math" data-tex="\(X_{\max(n,m)}\)">\(X_{\max(n,m)}\)</span>, proving injectivity. The resulting bijection identifies both sides with ordered triples of natural numbers.</p>
+<p><strong>Exercise 2 (intermediate: a noncentral relation).</strong> Take <span class="math" data-tex="\(R=k\langle u,v\rangle\)">\(R=k\langle u,v\rangle\)</span>, the free associative algebra on two generators, and <span class="math" data-tex="\(P=R/Ru\)">\(P=R/Ru\)</span>. For a left module <span class="math" data-tex="\(M\)">\(M\)</span>, identify <span class="math" data-tex="\(\operatorname{Hom}_R(P,M)\)">\(\operatorname{Hom}_R(P,M)\)</span>. Use your answer to verify finite presentation categorically, keeping the order of multiplication explicit.</p>
+<p><strong>Solution.</strong> The image <span class="math" data-tex="\(m\)">\(m\)</span> of the class of <span class="math" data-tex="\(1\)">\(1\)</span> determines the map <span class="math" data-tex="\(r+Ru\mapsto rm\)">\(r+Ru\mapsto rm\)</span>. It is well-defined exactly when <span class="math" data-tex="\(um=0\)">\(um=0\)</span>, since every element of <span class="math" data-tex="\(Ru\)">\(Ru\)</span> is a sum of terms <span class="math" data-tex="\(ru\)">\(ru\)</span>. Thus the Hom set identifies with <span class="math" data-tex="\(\{m\in M:um=0\}\)">\(\{m\in M:um=0\}\)</span>. In a filtered colimit, choose a stage representing <span class="math" data-tex="\(m\)">\(m\)</span>. If <span class="math" data-tex="\(um=0\)">\(um=0\)</span> in the colimit, that equality holds at some later stage; this gives surjectivity of (2.1). Equality of two choices also holds at a later stage, giving injectivity. No condition involving <span class="math" data-tex="\(mu\)">\(mu\)</span> is meaningful for a general left module. This distinguishes the left ideal <span class="math" data-tex="\(Ru\)">\(Ru\)</span> from the right ideal <span class="math" data-tex="\(uR\)">\(uR\)</span>.</p>
+<p><strong>Exercise 3 (intermediate: finite tests can miss a difference).</strong> Let <span class="math" data-tex="\(r\colon\kappa\mathbb N\to\iota\mathbb N\)">\(r\colon\kappa\mathbb N\to\iota\mathbb N\)</span> be the comparison of Section 3. Show that <span class="math" data-tex="\(\operatorname{Hom}(\iota E,r)\)">\(\operatorname{Hom}(\iota E,r)\)</span> is bijective for every finite set <span class="math" data-tex="\(E\)">\(E\)</span>, while <span class="math" data-tex="\(r\)">\(r\)</span> itself is not an isomorphism. Explain why this does not contradict Theorem 2.1.</p>
+<p><strong>Solution.</strong> Both Hom sets consist of functions <span class="math" data-tex="\(E\to\mathbb N\)">\(E\to\mathbb N\)</span>: every such function has finite image. The map between them is the identity on this description. With <span class="math" data-tex="\(E=\mathbb N\)">\(E=\mathbb N\)</span>, the identity function lies in <span class="math" data-tex="\(\operatorname{Hom}(\iota E,\iota\mathbb N)\)">\(\operatorname{Hom}(\iota E,\iota\mathbb N)\)</span>, but not in <span class="math" data-tex="\(\operatorname{Hom}(\iota E,\kappa\mathbb N)\)">\(\operatorname{Hom}(\iota E,\kappa\mathbb N)\)</span>. Thus an infinite test detects the failure of invertibility. Theorem 2.1 compares two objects of <span class="math" data-tex="\(\operatorname{Ind}(\mathsf{FinSet})\)">\(\operatorname{Ind}(\mathsf{FinSet})\)</span> with their realizations. Here <span class="math" data-tex="\(\iota\mathbb N\)">\(\iota\mathbb N\)</span> is a constant object of the larger <span class="math" data-tex="\(\operatorname{Ind}(\mathsf{Set})\)">\(\operatorname{Ind}(\mathsf{Set})\)</span>; it is not in the image of that smaller ind-category, as the failed comparison shows.</p>
+<p><strong>Exercise 4 (advanced: retracts of small pieces).</strong> In any category with filtered colimits, let <span class="math" data-tex="\(M\)">\(M\)</span> be a retract of a finitely presented object <span class="math" data-tex="\(P\)">\(P\)</span>: there are <span class="math" data-tex="\(a:M\to P\)">\(a:M\to P\)</span> and <span class="math" data-tex="\(b:P\to M\)">\(b:P\to M\)</span> with <span class="math" data-tex="\(ba=1_M\)">\(ba=1_M\)</span>. Prove that <span class="math" data-tex="\(M\)">\(M\)</span> is finitely presented, using only the definition (2.1).</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(f:M\to\operatorname{colim}_iY_i\)">\(f:M\to\operatorname{colim}_iY_i\)</span>, finite presentation of <span class="math" data-tex="\(P\)">\(P\)</span> factors <span class="math" data-tex="\(fb\)">\(fb\)</span> through a map <span class="math" data-tex="\(g:P\to Y_i\)">\(g:P\to Y_i\)</span>. Then <span class="math" data-tex="\(ga:M\to Y_i\)">\(ga:M\to Y_i\)</span> factors <span class="math" data-tex="\(f\)">\(f\)</span>, since <span class="math" data-tex="\(fba=f\)">\(fba=f\)</span>. This proves surjectivity. For injectivity, first put two maps <span class="math" data-tex="\(u,v:M\to Y_i\)">\(u,v:M\to Y_i\)</span> into one common stage. If their colimit maps agree, the maps <span class="math" data-tex="\(ub,vb:P\to Y_i\)">\(ub,vb:P\to Y_i\)</span> also agree in the colimit. Finite presentation of <span class="math" data-tex="\(P\)">\(P\)</span> makes them equal after an arrow to a later stage. Precompose with <span class="math" data-tex="\(a\)">\(a\)</span> and use <span class="math" data-tex="\(ba=1_M\)">\(ba=1_M\)</span> to make the images of <span class="math" data-tex="\(u,v\)">\(u,v\)</span> equal there. This is precisely equality in the filtered colimit of Hom sets. Both parts of (2.1) hold.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project, <em>Categories</em>, <a href="https://stacks.math.columbia.edu/tag/05PW">Remark 4.22.4</a>, for the ind-object and morphism conventions; <em>Commutative Algebra</em>, <a href="https://stacks.math.columbia.edu/tag/0G8M">Section 10.11</a>, for the commutative module criteria and presentations. These results are used by reference; their text is not reproduced here.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>Homological Algebra</em></a>, Section 2.7, for ind-objects and the distinction between formal and ordinary colimits.</li>
+<li>For the finite-presentation convention, see Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, Exercise 2.5. Realization and its adjoint triple are proved in Sections 1–3 of this lesson under the stated filtered-colimit and finite-presentation hypotheses; Section 4 proves the arbitrary-ring module comparison. Section 2.7 of the notes is used for the formal-colimit convention, rather than as a proof of these adjunctions.</li>
+</ul>
+</main></body></html>

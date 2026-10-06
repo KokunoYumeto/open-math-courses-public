@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Odd-prime reduced powers and the Wu classes · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-14B.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="odd-prime-reduced-powers-and-the-wu-classes">Odd-prime reduced powers and the Wu classes</h1>
+<p><em>Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Independently authored text dedicated under CC0. No independent AI review is recorded.</em></p>
+<p>Reduced powers recover characteristic classes from a Thom class. On a closed oriented manifold, the diagonal turns those bundle classes into expressions involving just the cohomology pairing and its operations. We construct the required operations from normalized chains, prove their identities and then prove the precise odd-prime Wu theorem. Six original graded exercises have complete solutions.</p>
+<p>This continues <a href="DG-CHAR-14.html">Multiplicative sequences and the signature theorem</a>; the section letters continue its A–F. Together the two chapters treat signatures, genera, reduced powers and Wu classes.</p>
+<p>The exact proved prerequisites are <a href="DG-CHAR-06.html">Thom and Euler classes</a> for singular chain products, excision, coefficient comparisons and the arbitrary-Hausdorff Thom theorem; <a href="DG-CHAR-03.html">Grassmannians</a> for classifying maps and compact CW subsets; <a href="DG-CHAR-08B.html">Frame fields</a>, LemmaG.1, for cellular cohomology on arbitrary CW complexes; <a href="DG-CHAR-13B.html">Homotopy fibres</a>, TheoremsB.4–B.5, for a CW model with its actual cohomology comparison; <a href="DG-CHAR-07.html">Manifold duality</a>, Sections1–4, for perfect field pairings and the signed diagonal; <a href="DG-CHAR-10.html">Pontryagin classes</a>, Section5, for the universal ring at odd primes; and <a href="DG-CHAR-11.html">Characteristic numbers</a>, Lemma2.1, for integral stable symmetric polynomials.</p>
+<h2 id="g-normalized-chains-and-a-cyclic-resolution">G. Normalized chains and a cyclic resolution</h2>
+<p>Fix an odd prime <span class="math" data-tex="\(\ell=2r+1\)">\(\ell=2r+1\)</span>, and put <span class="math" data-tex="\(F=\mathbb F_\ell\)">\(F=\mathbb F_\ell\)</span>. The degree increase of the reduced power <span class="math" data-tex="\(P^i\)">\(P^i\)</span> will be <span class="math" data-tex="\(2i(\ell-1)=4ri\)">\(2i(\ell-1)=4ri\)</span>. We construct the operations and the properties used in the characteristic-class argument. Adem relations and Bockstein operations are not premises of that argument and are not asserted in this companion.</p>
+<p>The singular chains, products, excision and coefficient comparisons used below have their full proofs in the <a href="DG-CHAR-06.html">Thom/Euler chapter</a>. The CW comparison needed later is <a href="DG-CHAR-13B.html">Homotopy fibres</a>, Theorems B.4–B.5. We first supply the additional normalization and equivariant chain algebra.</p>
+<h3 id="g-1-removing-degenerate-simplices-with-a-chain-homotopy">G.1. Removing degenerate simplices, with a chain homotopy</h3>
+<p>A simplicial module <span class="math" data-tex="\(A\)">\(A\)</span> has face maps <span class="math" data-tex="\(d_i:A_n\to A_{n-1}\)">\(d_i:A_n\to A_{n-1}\)</span> and degeneracy maps <span class="math" data-tex="\(s_i:A_n\to A_{n+1}\)">\(s_i:A_n\to A_{n+1}\)</span>, induced by deleting and repeating a coordinate. Their identities follow by composing those coordinate maps. In particular,
+<span class="math math-display" data-tex="\[
+d_i s_j=\begin{cases}s_{j-1}d_i&amp;i&lt;j,\\1&amp;i=j,j+1,\\s_jd_{i-1}&amp;i&gt;j+1,\end{cases}
+\quad d_i d_j=d_{j-1}d_i\ (i&lt;j),\quad
+s_i s_j=s_{j+1}s_i\ (i\leq j).
+\tag{G.1}
+\]">\[
+d_i s_j=\begin{cases}s_{j-1}d_i&amp;i&lt;j,\\1&amp;i=j,j+1,\\s_jd_{i-1}&amp;i&gt;j+1,\end{cases}
+\quad d_i d_j=d_{j-1}d_i\ (i&lt;j),\quad
+s_i s_j=s_{j+1}s_i\ (i\leq j).
+\tag{G.1}
+\]</span>
+The differential on its unnormalized complex is <span class="math" data-tex="\(d=\sum_i(-1)^i d_i\)">\(d=\sum_i(-1)^i d_i\)</span>. Define
+<span class="math math-display" data-tex="\[
+D_n=\sum_{i=0}^{n-1}s_i A_{n-1},\qquad
+N_n=\bigcap_{i=0}^{n-1}\ker d_i,
+\tag{G.2}
+\]">\[
+D_n=\sum_{i=0}^{n-1}s_i A_{n-1},\qquad
+N_n=\bigcap_{i=0}^{n-1}\ker d_i,
+\tag{G.2}
+\]</span>
+with the empty intersection <span class="math" data-tex="\(N_0=A_0\)">\(N_0=A_0\)</span>. The quotient by <span class="math" data-tex="\(D\)">\(D\)</span> is the normalized complex.</p>
+<p><span id="DG-CHAR-14B.lemma-G.1"></span><strong>Lemma G.1 — Normalization with its explicit comparison.</strong> The quotient complex is naturally isomorphic to <span class="math" data-tex="\(N\)">\(N\)</span>. Projection onto this summand is chain homotopic to the identity. Consequently normalized chains and cochains compute the singular theory, including relative groups and the cup product.</p>
+<p><strong>Proof.</strong> Write
+<span class="math math-display" data-tex="\[
+p_n^{(i)}=(1-s_{i-1}d_{i-1})\cdots(1-s_0d_0),\quad
+0\leq i\leq n,\qquad p_n=p_n^{(n)}.
+\tag{G.3}
+\]">\[
+p_n^{(i)}=(1-s_{i-1}d_{i-1})\cdots(1-s_0d_0),\quad
+0\leq i\leq n,\qquad p_n=p_n^{(n)}.
+\tag{G.3}
+\]</span>
+The empty product is the identity. Applying the factors in increasing index kills successive faces <span class="math" data-tex="\(d_0,\ldots,d_{i-1}\)">\(d_0,\ldots,d_{i-1}\)</span>. A later factor preserves previously killed faces by (G.1). Thus <span class="math" data-tex="\(p_n A_n\subset N_n\)">\(p_n A_n\subset N_n\)</span>; it acts as the identity on <span class="math" data-tex="\(N_n\)">\(N_n\)</span>. Each difference from the original vector is degenerate.</p>
+<p>For a vector <span class="math" data-tex="\(s_j x\)">\(s_j x\)</span>, the factors with index below <span class="math" data-tex="\(j\)">\(j\)</span> commute it past <span class="math" data-tex="\(s_j\)">\(s_j\)</span>, using <span class="math" data-tex="\(d_i s_j=s_{j-1}d_i\)">\(d_i s_j=s_{j-1}d_i\)</span> and <span class="math" data-tex="\(s_i s_{j-1}=s_j s_i\)">\(s_i s_{j-1}=s_j s_i\)</span>. The factor with index <span class="math" data-tex="\(j\)">\(j\)</span> then kills it since <span class="math" data-tex="\(d_j s_j=1\)">\(d_j s_j=1\)</span>. Hence <span class="math" data-tex="\(p_nD_n=0\)">\(p_nD_n=0\)</span>, and <span class="math" data-tex="\(A_n=N_n\oplus D_n\)">\(A_n=N_n\oplus D_n\)</span>. The two equal middle faces in <span class="math" data-tex="\(d(s_jx)\)">\(d(s_jx)\)</span> cancel, and every other face is degenerate by (G.1), so <span class="math" data-tex="\(D\)">\(D\)</span> is a subcomplex. On <span class="math" data-tex="\(N_n\)">\(N_n\)</span> the differential is <span class="math" data-tex="\((-1)^n d_n\)">\((-1)^n d_n\)</span>, which lies in <span class="math" data-tex="\(N_{n-1}\)">\(N_{n-1}\)</span> because <span class="math" data-tex="\(d_i d_n=d_{n-1}d_i\)">\(d_i d_n=d_{n-1}d_i\)</span> for <span class="math" data-tex="\(i&lt;n-1\)">\(i&lt;n-1\)</span>. Both summands are therefore subcomplexes, and <span class="math" data-tex="\(p\)">\(p\)</span> is a chain map.</p>
+<p>For completeness the required homotopy is
+<span class="math math-display" data-tex="\[
+h_n=\sum_{i=0}^{n}(-1)^i s_i p_n^{(i)},
+\qquad d h+h d=1-p.
+\tag{G.4}
+\]">\[
+h_n=\sum_{i=0}^{n}(-1)^i s_i p_n^{(i)},
+\qquad d h+h d=1-p.
+\tag{G.4}
+\]</span>
+Here is the cancellation in that identity. In the expansion of <span class="math" data-tex="\(d s_i p_n^{(i)}\)">\(d s_i p_n^{(i)}\)</span>, faces below <span class="math" data-tex="\(i\)">\(i\)</span> vanish since the corresponding faces of <span class="math" data-tex="\(p_n^{(i)}x\)">\(p_n^{(i)}x\)</span> are zero. The two identity faces at <span class="math" data-tex="\(i,i+1\)">\(i,i+1\)</span> cancel each other. Faces above <span class="math" data-tex="\(i+1\)">\(i+1\)</span> commute through to <span class="math" data-tex="\(s_i d_{j-1}p_n^{(i)}\)">\(s_i d_{j-1}p_n^{(i)}\)</span> and cancel the corresponding terms of <span class="math" data-tex="\(h_{n-1}d\)">\(h_{n-1}d\)</span>. Moving the remaining face terms past each factor in (G.3) uses the same identities; the terms that do not cancel are
+<span class="math math-display" data-tex="\[
+\sum_{i=0}^{n-1}s_i d_i p_n^{(i)}
+=\sum_{i=0}^{n-1}\bigl(p_n^{(i)}-p_n^{(i+1)}\bigr)
+=1-p_n.
+\]">\[
+\sum_{i=0}^{n-1}s_i d_i p_n^{(i)}
+=\sum_{i=0}^{n-1}\bigl(p_n^{(i)}-p_n^{(i+1)}\bigr)
+=1-p_n.
+\]</span>
+The term with <span class="math" data-tex="\(s_n p_n\)">\(s_n p_n\)</span> supplies the last upper-face cancellation. This proves (G.4), also in degree zero, where <span class="math" data-tex="\(d s_0=0\)">\(d s_0=0\)</span>. Every expression is natural and preserves a simplicial submodule, so the same homotopy works on its quotient and on cochains vanishing on it. Dualizing this actual homotopy proves the cohomology comparison without an unsupported dualization of a homology isomorphism.</p>
+<p>For a space, take the free simplicial module on its singular simplices. A simplex in a subspace is a subset of the singular-simplex basis. A degenerate simplex's Alexander–Whitney cuts each have a degenerate factor: the cut lies either before or after the repeated vertices. Thus that diagonal descends to the normalized quotient. The quotient chain map preserves it, and its dual cohomology isomorphism preserves cup products. Relative cochains and their products are preserved by the same observation. ∎</p>
+<p>For the standard simplicial <span class="math" data-tex="\(j\)">\(j\)</span>-simplex, normalized chains have basis the strictly increasing vertex lists in <span class="math" data-tex="\(\{0,\ldots,j\}\)">\(\{0,\ldots,j\}\)</span>. There are no chains in dimensions greater than <span class="math" data-tex="\(j\)">\(j\)</span>. Prepending vertex zero, and interpreting a repeated zero as zero, is a contraction of its augmented complex: the first face gives the original list and all other faces cancel its application to the boundary. Thus it has homology <span class="math" data-tex="\(F\)">\(F\)</span> in degree zero and zero in positive degrees. The tensor product of finitely many such complexes has the same property, by tensoring their contractions. These are the actual acyclic models used below.</p>
+<h3 id="g-2-the-cyclic-resolution-and-its-diagonal">G.2. The cyclic resolution and its diagonal</h3>
+<p>Let <span class="math" data-tex="\(C_\ell=\langle g\rangle\)">\(C_\ell=\langle g\rangle\)</span>, with <span class="math" data-tex="\(g^\ell=1\)">\(g^\ell=1\)</span>, and let
+<span class="math math-display" data-tex="\[
+W_i=F[C_\ell]e_i\ (i\geq0),\quad
+d e_{2j+1}=(g-1)e_{2j},\quad
+d e_{2j}=N e_{2j-1}\ (j\geq1),\qquad
+N=1+g+\cdots+g^{\ell-1}.
+\tag{G.5}
+\]">\[
+W_i=F[C_\ell]e_i\ (i\geq0),\quad
+d e_{2j+1}=(g-1)e_{2j},\quad
+d e_{2j}=N e_{2j-1}\ (j\geq1),\qquad
+N=1+g+\cdots+g^{\ell-1}.
+\tag{G.5}
+\]</span>
+The augmentation sends <span class="math" data-tex="\(g^a e_0\)">\(g^a e_0\)</span> to one. With <span class="math" data-tex="\(T=g-1\)">\(T=g-1\)</span>, its group algebra is <span class="math" data-tex="\(F[T]/(T^\ell)\)">\(F[T]/(T^\ell)\)</span>, and <span class="math" data-tex="\(N=T^{\ell-1}\)">\(N=T^{\ell-1}\)</span>. The last identity follows by dividing <span class="math" data-tex="\((1+T)^\ell-1=T^\ell\)">\((1+T)^\ell-1=T^\ell\)</span> by <span class="math" data-tex="\(T\)">\(T\)</span> as a polynomial identity. Multiplication by <span class="math" data-tex="\(T\)">\(T\)</span> has kernel <span class="math" data-tex="\((T^{\ell-1})\)">\((T^{\ell-1})\)</span>, and multiplication by <span class="math" data-tex="\(T^{\ell-1}\)">\(T^{\ell-1}\)</span> has kernel <span class="math" data-tex="\((T)\)">\((T)\)</span>. These are the respective images of the preceding maps, including the augmentation kernel. Thus <span class="math" data-tex="\(W\)">\(W\)</span> is a free resolution of the trivial module, with the exactness proved directly.</p>
+<p>On a tensor of two copies of <span class="math" data-tex="\(W\)">\(W\)</span> use diagonal group action. Define an equivariant map by
+<span class="math math-display" data-tex="\[
+\Gamma(e_{2n+1})=\sum_{j+k=n}
+\bigl(e_{2j}\otimes e_{2k+1}+e_{2j+1}\otimes g e_{2k}\bigr),
+\tag{G.6}
+\]">\[
+\Gamma(e_{2n+1})=\sum_{j+k=n}
+\bigl(e_{2j}\otimes e_{2k+1}+e_{2j+1}\otimes g e_{2k}\bigr),
+\tag{G.6}
+\]</span>
+<span class="math math-display" data-tex="\[
+\Gamma(e_{2n})=\sum_{j+k=n}e_{2j}\otimes e_{2k}
++\sum_{j+k=n-1}\sum_{0\leq a&lt;b&lt;\ell}
+g^a e_{2j+1}\otimes g^b e_{2k+1}.
+\tag{G.7}
+\]">\[
+\Gamma(e_{2n})=\sum_{j+k=n}e_{2j}\otimes e_{2k}
++\sum_{j+k=n-1}\sum_{0\leq a&lt;b&lt;\ell}
+g^a e_{2j+1}\otimes g^b e_{2k+1}.
+\tag{G.7}
+\]</span>
+An empty sum is zero.</p>
+<p><span id="DG-CHAR-14B.lemma-G.2"></span><strong>Lemma G.2.</strong> This is a chain map over the diagonal augmentation. After passing to trivial coefficients, its even-degree diagonal is
+<span class="math math-display" data-tex="\[
+e_{2n}\longmapsto\sum_{j+k=n}e_{2j}\otimes e_{2k}.
+\tag{G.8}
+\]">\[
+e_{2n}\longmapsto\sum_{j+k=n}e_{2j}\otimes e_{2k}.
+\tag{G.8}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(A=g\otimes1\)">\(A=g\otimes1\)</span>, <span class="math" data-tex="\(B=1\otimes g\)">\(B=1\otimes g\)</span>, <span class="math" data-tex="\(C=AB\)">\(C=AB\)</span>, and <span class="math" data-tex="\(S=\sum_{a&lt;b}A^aB^b\)">\(S=\sum_{a&lt;b}A^aB^b\)</span>. These operators commute and satisfy <span class="math" data-tex="\(A^\ell=B^\ell=1\)">\(A^\ell=B^\ell=1\)</span>. Summing the geometric differences gives
+<span class="math math-display" data-tex="\[
+(A-1)S=N(C)-N(B),\qquad
+(B-1)S=N(A)-B N(C),
+\tag{G.9}
+\]">\[
+(A-1)S=N(C)-N(B),\qquad
+(B-1)S=N(A)-B N(C),
+\tag{G.9}
+\]</span>
+and therefore <span class="math" data-tex="\((C-1)S=N(A)-N(B)\)">\((C-1)S=N(A)-N(B)\)</span>. For example, the first sum telescopes for each fixed <span class="math" data-tex="\(b\)">\(b\)</span> from <span class="math" data-tex="\(a=0\)">\(a=0\)</span> to <span class="math" data-tex="\(b-1\)">\(b-1\)</span>; the second telescopes for each fixed <span class="math" data-tex="\(a\)">\(a\)</span> from <span class="math" data-tex="\(b=a+1\)">\(b=a+1\)</span> to <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span>.</p>
+<p>In the differential of (G.7), the even/odd terms have coefficient <span class="math" data-tex="\(N(B)+(A-1)S=N(C)\)">\(N(B)+(A-1)S=N(C)\)</span>; the odd/even terms have coefficient <span class="math" data-tex="\(N(A)-(B-1)S=B N(C)\)">\(N(A)-(B-1)S=B N(C)\)</span>. These are exactly <span class="math" data-tex="\(N(C)\Gamma(e_{2n-1})\)">\(N(C)\Gamma(e_{2n-1})\)</span>, proving the even identity. In the differential of (G.6), the even/even coefficient is <span class="math" data-tex="\((B-1)+(A-1)B=C-1\)">\((B-1)+(A-1)B=C-1\)</span>. The odd/odd coefficient is <span class="math" data-tex="\(N(A)-N(B)=(C-1)S\)">\(N(A)-N(B)=(C-1)S\)</span>. These are exactly <span class="math" data-tex="\((C-1)\Gamma(e_{2n})\)">\((C-1)\Gamma(e_{2n})\)</span>, proving the odd identity. This also includes all end terms and degree zero. It proves <span class="math" data-tex="\(d\Gamma=\Gamma d\)">\(d\Gamma=\Gamma d\)</span>.</p>
+<p>With trivial coefficients the differential in (G.5) is zero. The extra odd/odd coefficient in (G.7) becomes <span class="math" data-tex="\(\ell(\ell-1)/2=0\)">\(\ell(\ell-1)/2=0\)</span> in <span class="math" data-tex="\(F\)">\(F\)</span>, since <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is odd. Hence the induced even diagonal is (G.8). ∎</p>
+<p>This construction needs a chain diagonal; it makes no additional strict coassociativity assertion. Its formula, with the tensor differential's signs retained, will suffice for Cartan.</p>
+<h3 id="g-3-the-elementary-equivariant-comparison-principle">G.3. The elementary equivariant comparison principle</h3>
+<p>We use twice the following principle. A positive free resolution of <span class="math" data-tex="\(F\)">\(F\)</span> can be mapped equivariantly to any other such resolution over the augmentation, and any two such maps are equivariantly chain homotopic. To prove it, choose a module basis in each degree. If the map is defined below degree <span class="math" data-tex="\(i\)">\(i\)</span>, its prescribed differential at a basis vector in degree <span class="math" data-tex="\(i\)">\(i\)</span> is a cycle. Target exactness supplies a preimage, and equivariant extension defines that degree. For a homotopy, apply the same procedure to the cycle consisting of the difference of the two maps minus the homotopy already applied to the differential. In degree zero the augmentation makes this cycle an augmentation-kernel vector. This proves existence and uniqueness up to homotopy by induction.</p>
+<p>For a finite group <span class="math" data-tex="\(G\)">\(G\)</span> an explicit free resolution is the homogeneous bar complex: its basis in degree <span class="math" data-tex="\(n\)">\(n\)</span> consists of tuples <span class="math" data-tex="\((a_0,\ldots,a_n)\in G^{n+1}\)">\((a_0,\ldots,a_n)\in G^{n+1}\)</span>, with differential the alternating deletion of entries and diagonal left action. That action is free on the tuple basis. Prepending the identity gives an ordinary contraction of the augmented complex, by the same deletion cancellation as for a simplex. In particular this supplies the full symmetric-group resolution used in the next section. Restricting it to <span class="math" data-tex="\(C_\ell\subset\Sigma_\ell\)">\(C_\ell\subset\Sigma_\ell\)</span> still gives a free resolution, by choosing coset representatives. No computation of symmetric-group homology is assumed.</p>
+<h2 id="h-higher-diagonals-and-the-reduced-power-construction">H. Higher diagonals and the reduced-power construction</h2>
+<p>Write <span class="math" data-tex="\(C(K)\)">\(C(K)\)</span> for normalized chains of a simplicial set, first taking its free <span class="math" data-tex="\(F\)">\(F\)</span>-module in each degree. For a space use its singular simplicial set. We also normalize simplicial modules in the intermediate multilinear comparison (H.3). Its later diagonal is used only on the free module on a simplicial set, where sending each simplex to its repeated tensor defines a linear simplicial coalgebra map, and on the relative quotients that inherit this map. We assert no natural tensor diagonal on an arbitrary simplicial vector space. Permutations act on a tensor of chain complexes with the Koszul sign: interchanging degrees <span class="math" data-tex="\(a,b\)">\(a,b\)</span> contributes <span class="math" data-tex="\((-1)^{ab}\)">\((-1)^{ab}\)</span>. All group actions below retain that sign.</p>
+<h3 id="h-1-an-acyclic-model-construction-with-its-degree-bound">H.1. An acyclic-model construction with its degree bound</h3>
+<p><span id="DG-CHAR-14B.lemma-H.1"></span><strong>Lemma H.1 — Equivariant higher diagonal.</strong> There is a natural equivariant chain map
+<span class="math math-display" data-tex="\[
+\mathcal D:W\otimes C(K)\longrightarrow C(K)^{\otimes\ell},
+\tag{H.1}
+\]">\[
+\mathcal D:W\otimes C(K)\longrightarrow C(K)^{\otimes\ell},
+\tag{H.1}
+\]</span>
+where the cyclic group acts trivially on <span class="math" data-tex="\(K\)">\(K\)</span> and permutes the target factors. At <span class="math" data-tex="\(e_0\)">\(e_0\)</span> it is the iterated Alexander–Whitney diagonal. It preserves subspaces, and
+<span class="math math-display" data-tex="\[
+\mathcal D(e_i\otimes C_j(K))=0\quad\text{if }i+j&gt;\ell j.
+\tag{H.2}
+\]">\[
+\mathcal D(e_i\otimes C_j(K))=0\quad\text{if }i+j&gt;\ell j.
+\tag{H.2}
+\]</span>
+It is naturally equivariantly homotopic to the restriction of a higher diagonal for the full symmetric-group bar resolution.</p>
+<p><strong>Proof: the models and the induction.</strong> First keep <span class="math" data-tex="\(\ell\)">\(\ell\)</span> independent simplicial modules <span class="math" data-tex="\(K_1,\ldots,K_\ell\)">\(K_1,\ldots,K_\ell\)</span>. Their degreewise tensor product is a simplicial module. We construct
+<span class="math math-display" data-tex="\[
+\Phi:W\otimes C(K_1\otimes\cdots\otimes K_\ell)
+\longrightarrow W\otimes C(K_1)\otimes\cdots\otimes C(K_\ell).
+\tag{H.3}
+\]">\[
+\Phi:W\otimes C(K_1\otimes\cdots\otimes K_\ell)
+\longrightarrow W\otimes C(K_1)\otimes\cdots\otimes C(K_\ell).
+\tag{H.3}
+\]</span>
+On <span class="math" data-tex="\(e_0\)">\(e_0\)</span> take <span class="math" data-tex="\(e_0\)">\(e_0\)</span> tensored with the iterated Alexander–Whitney map. On degree-zero input take the identity on <span class="math" data-tex="\(W\)">\(W\)</span> and on the tensor of vertices. These prescriptions agree at their intersection and are chain maps there. Prescribe the values on group translates by equivariance, including the permutation of the independent modules.</p>
+<p>Here is why the normalized domain causes no representability gap. The unnormalized degree-<span class="math" data-tex="\(j\)">\(j\)</span> input is <span class="math" data-tex="\((K_1)_j\otimes\cdots\otimes(K_\ell)_j\)">\((K_1)_j\otimes\cdots\otimes(K_\ell)_j\)</span>. A tuple of simplices is represented by <span class="math" data-tex="\(\ell\)">\(\ell\)</span> separate free simplicial modules on the standard <span class="math" data-tex="\(j\)">\(j\)</span>-simplex. The projector (G.3) makes the normalized degree-<span class="math" data-tex="\(j\)">\(j\)</span> domain a natural direct summand of that functor. Any natural obstruction on that summand can first be extended to the representable functor by precomposing with the projector; after choosing a model filler, precomposing with the same projector gives a filler on the summand. Multilinearity in the <span class="math" data-tex="\(\ell\)">\(\ell\)</span> independent inputs follows because each model variable appears in just its own target factor. This procedure enforces degeneracy relations as well as linear relations.</p>
+<p>Induct first in resolution degree <span class="math" data-tex="\(i\)">\(i\)</span>, and then in input degree <span class="math" data-tex="\(j\)">\(j\)</span>. For a free generator of <span class="math" data-tex="\(W_i\)">\(W_i\)</span> and <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>, the already prescribed value of the differential is a cycle in total degree <span class="math" data-tex="\(i+j-1\)">\(i+j-1\)</span>: applying its differential again gives zero by the induction hypotheses and <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>. If <span class="math" data-tex="\(i&gt;0\)">\(i&gt;0\)</span>, this degree is positive. On the universal models the target is <span class="math" data-tex="\(W\)">\(W\)</span> tensored with the normalized complexes of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> standard simplices. Its positive homology is zero: each augmented simplex complex has the vertex contraction of G.1, and <span class="math" data-tex="\(W\)">\(W\)</span> has homology only <span class="math" data-tex="\(F\)">\(F\)</span> in degree zero. Hence the cycle has a filler. Choose it on a free resolution generator, carry it to arbitrary simplices by their representing maps and the projector just described, and extend by equivariance. At <span class="math" data-tex="\(i=0\)">\(i=0\)</span> the prescribed Alexander–Whitney map already gives every degree. This completes the induction and proves (H.3).</p>
+<p>Every normalized model factor vanishes above dimension <span class="math" data-tex="\(j\)">\(j\)</span>. Therefore the tensor-chain part of every filler in (H.3) has degree at most <span class="math" data-tex="\(\ell j\)">\(\ell j\)</span>. This is an actual bound on its construction, not an assumed property of an arbitrary higher diagonal.</p>
+<p>Apply (H.3) to the iterated simplicial diagonal <span class="math" data-tex="\(K\to K^{\otimes\ell}\)">\(K\to K^{\otimes\ell}\)</span>, and then apply the augmentation of its output <span class="math" data-tex="\(W\)">\(W\)</span>-factor. This gives (H.1). Surviving terms have tensor degree <span class="math" data-tex="\(i+j\)">\(i+j\)</span>; the preceding bound proves (H.2). Its value at <span class="math" data-tex="\(e_0\)">\(e_0\)</span> is the required diagonal. Naturality makes every simplex in a subspace produce factors in that same subspace.</p>
+<p><strong>Proof: the symmetric comparison.</strong> Repeat the construction with the symmetric-group bar resolution of G.3. The comparison principle there gives a cyclic-equivariant map from <span class="math" data-tex="\(W\)">\(W\)</span> to its restricted bar resolution, taking <span class="math" data-tex="\(e_0\)">\(e_0\)</span> to the identity-labelled vertex. The two higher diagonals agree in degree zero on vertices and at the augmentation. Their difference has a natural equivariant homotopy, constructed on the same independent models: at each step subtract the homotopy already applied to the differential, obtaining a cycle in positive target degree, and choose a filler. Precomposition with the normalization projector again respects the domain relations. The target tensor of simplex complexes has zero positive homology. Equivariant extension from resolution bases and natural extension from model simplices finish the induction. This proves the stated homotopy. ∎</p>
+<p>The same homotopy induction shows that two choices in this construction give the same cohomology operations. There is no need to assume a preferred filler on every simplex.</p>
+<h3 id="h-2-the-dual-convention-so-that-all-signs-are-specified">H.2. The dual convention, so that all signs are specified</h3>
+<p>It is convenient to regard cochains as a homological complex in negative degrees. Put
+<span class="math math-display" data-tex="\[
+K_{-q}=\operatorname{Hom}_F(C_q,F),\qquad
+d_K a=(-1)^{q+1}a d_C\quad(a\in K_{-q}).
+\tag{H.4}
+\]">\[
+K_{-q}=\operatorname{Hom}_F(C_q,F),\qquad
+d_K a=(-1)^{q+1}a d_C\quad(a\in K_{-q}).
+\tag{H.4}
+\]</span>
+In <span class="math" data-tex="\(W\otimes_{C_\ell}K^{\otimes\ell}\)">\(W\otimes_{C_\ell}K^{\otimes\ell}\)</span> our notation means coinvariants of the diagonal left action. Thus <span class="math" data-tex="\(g e_i\otimes x=e_i\otimes g^{-1}x\)">\(g e_i\otimes x=e_i\otimes g^{-1}x\)</span>. This fixes the inverse appearing in the chain correction below.
+This is the graded dual convention. The usual singular cochain complex, whose differential is <span class="math" data-tex="\(\delta a=a d_C\)">\(\delta a=a d_C\)</span>, maps isomorphically to (H.4) by
+<span class="math math-display" data-tex="\[
+a\longmapsto(-1)^{q(q+1)/2}a\quad\text{in degree }q.
+\tag{H.5}
+\]">\[
+a\longmapsto(-1)^{q(q+1)/2}a\quad\text{in degree }q.
+\tag{H.5}
+\]</span>
+The ratio of its consecutive signs is <span class="math" data-tex="\((-1)^{q+1}\)">\((-1)^{q+1}\)</span>, proving that it commutes with differentials. In graded-dual evaluation, moving a cochain past an earlier chain contributes its Koszul sign. For two cochains of degrees <span class="math" data-tex="\(q,t\)">\(q,t\)</span>, this makes the dual Alexander–Whitney product <span class="math" data-tex="\((-1)^{qt}\)">\((-1)^{qt}\)</span> times the usual cochain product. The identity
+<span class="math math-display" data-tex="\[
+\frac{(-1)^{(q+t)(q+t+1)/2}}{(-1)^{q(q+1)/2}(-1)^{t(t+1)/2}}=(-1)^{qt}
+\]">\[
+\frac{(-1)^{(q+t)(q+t+1)/2}}{(-1)^{q(q+1)/2}(-1)^{t(t+1)/2}}=(-1)^{qt}
+\]</span>
+shows that (H.5) preserves products. We transfer all operations back by this explicit ring isomorphism. Thus the final characteristic-class formulas use the course's usual cup product and usual cohomological degrees.</p>
+<p>Let <span class="math" data-tex="\(\alpha:K^{\otimes\ell}\to(C^{\otimes\ell})^\vee\)">\(\alpha:K^{\otimes\ell}\to(C^{\otimes\ell})^\vee\)</span> be graded tensor evaluation. For <span class="math" data-tex="\(|w|=i\)">\(|w|=i\)</span> and homogeneous <span class="math" data-tex="\(x\)">\(x\)</span>, define
+<span class="math math-display" data-tex="\[
+\Theta(w\otimes x)(c)=(-1)^{i|x|}
+\alpha(x)\bigl(\mathcal D(w\otimes c)\bigr).
+\tag{H.6}
+\]">\[
+\Theta(w\otimes x)(c)=(-1)^{i|x|}
+\alpha(x)\bigl(\mathcal D(w\otimes c)\bigr).
+\tag{H.6}
+\]</span>
+Its degree is <span class="math" data-tex="\(i+|x|\)">\(i+|x|\)</span>. The graded tensor differential and the dual differential (H.4) show that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> commutes with differentials: differentiating the <span class="math" data-tex="\(j\)">\(j\)</span>-th evaluated factor supplies exactly the sign for moving that differential past the preceding factors. Here is the full remaining sign check. Put <span class="math" data-tex="\(m=|x|\)">\(m=|x|\)</span>, and evaluate <span class="math" data-tex="\(d\Theta(w\otimes x)\)">\(d\Theta(w\otimes x)\)</span> on a chain <span class="math" data-tex="\(c\)">\(c\)</span> of degree <span class="math" data-tex="\(1-i-m\)">\(1-i-m\)</span>. The dual differential makes its left side
+<span class="math math-display" data-tex="\[
+(-1)^{i+m+1+im}\alpha(x)\mathcal D(w\otimes dc).
+\]">\[
+(-1)^{i+m+1+im}\alpha(x)\mathcal D(w\otimes dc).
+\]</span>
+Use <span class="math" data-tex="\(d\mathcal D(w\otimes c)=\mathcal D(dw\otimes c)+(-1)^i\mathcal D(w\otimes dc)\)">\(d\mathcal D(w\otimes c)=\mathcal D(dw\otimes c)+(-1)^i\mathcal D(w\otimes dc)\)</span>, and
+<span class="math" data-tex="\(\alpha(x)d=(-1)^{m+1}\alpha(dx)\)">\(\alpha(x)d=(-1)^{m+1}\alpha(dx)\)</span>.
+The two resulting coefficients are <span class="math" data-tex="\((-1)^{im+m}\)">\((-1)^{im+m}\)</span> on
+<span class="math" data-tex="\(\alpha(x)\mathcal D(dw\otimes c)\)">\(\alpha(x)\mathcal D(dw\otimes c)\)</span> and <span class="math" data-tex="\((-1)^{im}\)">\((-1)^{im}\)</span> on
+<span class="math" data-tex="\(\alpha(dx)\mathcal D(w\otimes c)\)">\(\alpha(dx)\mathcal D(w\otimes c)\)</span>. They are precisely
+<span class="math" data-tex="\(\Theta(dw\otimes x)(c)\)">\(\Theta(dw\otimes x)(c)\)</span> and <span class="math" data-tex="\((-1)^i\Theta(w\otimes dx)(c)\)">\((-1)^i\Theta(w\otimes dx)(c)\)</span>, since
+<span class="math" data-tex="\((i-1)m\equiv im+m\)">\((i-1)m\equiv im+m\)</span> and <span class="math" data-tex="\(i+i(m-1)=im\)">\(i+i(m-1)=im\)</span>. This proves that
+<span class="math" data-tex="\(\Theta:W\otimes K^{\otimes\ell}\to K\)">\(\Theta:W\otimes K^{\otimes\ell}\to K\)</span> is a chain map. It is equivariant with trivial action on the target, since permuting a tensor and its evaluated dual tensor has cancelling Koszul signs. It therefore descends to coinvariants.</p>
+<p>For a cocycle <span class="math" data-tex="\(a\)">\(a\)</span> of cohomological degree <span class="math" data-tex="\(q\)">\(q\)</span>, the tensor <span class="math" data-tex="\(a^{\otimes\ell}\)">\(a^{\otimes\ell}\)</span> is cyclically fixed: its rotation sign is <span class="math" data-tex="\((-1)^{(\ell-1)q^2}=1\)">\((-1)^{(\ell-1)q^2}=1\)</span>. Thus every <span class="math" data-tex="\(e_i\otimes a^{\otimes\ell}\)">\(e_i\otimes a^{\otimes\ell}\)</span> is a cycle in <span class="math" data-tex="\(W\otimes_{C_\ell}K^{\otimes\ell}\)">\(W\otimes_{C_\ell}K^{\otimes\ell}\)</span>; the <span class="math" data-tex="\(g-1\)">\(g-1\)</span> differential is zero, and the norm differential is multiplication by <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>. Define
+<span class="math math-display" data-tex="\[
+D_i([a])=[\Theta(e_i\otimes a^{\otimes\ell})]
+\in H^{\ell q-i}(K),\qquad D_i=0\text{ for }i&lt;0.
+\tag{H.7}
+\]">\[
+D_i([a])=[\Theta(e_i\otimes a^{\otimes\ell})]
+\in H^{\ell q-i}(K),\qquad D_i=0\text{ for }i&lt;0.
+\tag{H.7}
+\]</span></p>
+<h3 id="h-3-why-the-class-is-independent-of-the-representative">H.3. Why the class is independent of the representative</h3>
+<p>We give the tensor-homotopy argument needed in (H.7). Let <span class="math" data-tex="\(I\)">\(I\)</span> be the chain interval with vertices <span class="math" data-tex="\(z_0,z_1\)">\(z_0,z_1\)</span>, edge <span class="math" data-tex="\(z\)">\(z\)</span>, and <span class="math" data-tex="\(dz=z_1-z_0\)">\(dz=z_1-z_0\)</span>. For a positive free equivariant complex <span class="math" data-tex="\(V\)">\(V\)</span>, there is an equivariant chain map
+<span class="math math-display" data-tex="\[
+I\otimes V\longrightarrow V\otimes I^{\otimes\ell}
+\tag{H.8}
+\]">\[
+I\otimes V\longrightarrow V\otimes I^{\otimes\ell}
+\tag{H.8}
+\]</span>
+equal to <span class="math" data-tex="\(v\otimes z_b^{\otimes\ell}\)">\(v\otimes z_b^{\otimes\ell}\)</span> at vertex <span class="math" data-tex="\(b\)">\(b\)</span>, with the tensor interchange signs understood. To construct its value on <span class="math" data-tex="\(z\otimes v\)">\(z\otimes v\)</span>, work in the kernel of the augmentation of <span class="math" data-tex="\(I^{\otimes\ell}\)">\(I^{\otimes\ell}\)</span>. That kernel is contractible as an ordinary complex: the interval contracts to <span class="math" data-tex="\(z_0\)">\(z_0\)</span>, and tensoring its contraction gives a contraction to <span class="math" data-tex="\(z_0^{\otimes\ell}\)">\(z_0^{\otimes\ell}\)</span>. Tensoring with <span class="math" data-tex="\(V\)">\(V\)</span> preserves this contraction. The prescribed differential of <span class="math" data-tex="\(z\otimes v\)">\(z\otimes v\)</span>, minus the already chosen values on lower-resolution differentials, is consequently a boundary in that kernel. Fill it on a free basis for <span class="math" data-tex="\(V\)">\(V\)</span> and extend equivariantly. This inductively proves (H.8).</p>
+<p>If <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are homologous cocycles in <span class="math" data-tex="\(K\)">\(K\)</span>, choose <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(dc=b-a\)">\(dc=b-a\)</span>. The map from the interval tensored with the one-dimensional complex concentrated in <span class="math" data-tex="\(|a|\)">\(|a|\)</span>, taking its two vertices to <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and its edge to <span class="math" data-tex="\(c\)">\(c\)</span>, is a chain map. Tensor its <span class="math" data-tex="\(\ell\)">\(\ell\)</span> copies and compose with (H.8), for <span class="math" data-tex="\(V=W\)">\(V=W\)</span>. The cyclic action on the shifted one-dimensional tensor is trivial because a cycle of odd length is an even permutation. In coinvariants, <span class="math" data-tex="\(e_i\otimes1\)">\(e_i\otimes1\)</span> is a cycle. Applying the resulting interval homotopy to that cycle shows that
+<span class="math" data-tex="\(e_i\otimes a^{\otimes\ell}\)">\(e_i\otimes a^{\otimes\ell}\)</span> and <span class="math" data-tex="\(e_i\otimes b^{\otimes\ell}\)">\(e_i\otimes b^{\otimes\ell}\)</span> differ by a boundary, with the same harmless interchange sign on both endpoints. Applying <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> proves representative independence of (H.7).</p>
+<p>For two cocycles of the same degree, the mixed terms in
+<span class="math" data-tex="\((a+b)^{\otimes\ell}-a^{\otimes\ell}-b^{\otimes\ell}\)">\((a+b)^{\otimes\ell}-a^{\otimes\ell}-b^{\otimes\ell}\)</span>
+are a sum of norms of mixed words. Each binary word has a free cyclic orbit, since its prime length admits no nonconstant periodic word. The rotation signs on these equal-degree factors are positive. For a mixed-word cycle <span class="math" data-tex="\(c\)">\(c\)</span>, <span class="math" data-tex="\(e_i\otimes Nc\)">\(e_i\otimes Nc\)</span> is a boundary: if <span class="math" data-tex="\(i\)">\(i\)</span> is odd use <span class="math" data-tex="\(e_{i+1}\otimes c\)">\(e_{i+1}\otimes c\)</span>, and if <span class="math" data-tex="\(i\)">\(i\)</span> is even use <span class="math" data-tex="\((g-1)^{\ell-2}e_{i+1}\otimes c\)">\((g-1)^{\ell-2}e_{i+1}\otimes c\)</span>. Their differentials are the required norm, by <span class="math" data-tex="\((g-1)^{\ell-1}=N\)">\((g-1)^{\ell-1}=N\)</span>, including <span class="math" data-tex="\(i=0\)">\(i=0\)</span>. Hence every <span class="math" data-tex="\(D_i\)">\(D_i\)</span> is additive. Scalar multiplication is linear because <span class="math" data-tex="\(\lambda^\ell=\lambda\)">\(\lambda^\ell=\lambda\)</span> in <span class="math" data-tex="\(F\)">\(F\)</span>, proved by permuting the nonzero field elements in their product. Naturality follows from the natural construction and (H.6).</p>
+<p>All arguments hold on relative cochains. The diagonal of a simplex in a subspace has every factor in that subspace; the constructions and homotopies preserve it. Equivalently, apply the normalized construction to the simplicial quotient module by that subspace. Its iterated diagonal is well defined because the submodule's iterated diagonal lies in its own tensor power. This proves the relative, natural and additive operations without a citation-only existence premise.</p>
+<h3 id="h-4-the-normalization-of-reduced-powers">H.4. The normalization of reduced powers</h3>
+<p>For any integer <span class="math" data-tex="\(u\)">\(u\)</span>, put
+<span class="math math-display" data-tex="\[
+\nu(u)=(-1)^{r u(u-1)/2}(r!)^u\in F^\times,
+\qquad
+P^s x=(-1)^s\nu(-q)D_{(q-2s)(\ell-1)}x
+\quad(x\in H^q).
+\tag{H.9}
+\]">\[
+\nu(u)=(-1)^{r u(u-1)/2}(r!)^u\in F^\times,
+\qquad
+P^s x=(-1)^s\nu(-q)D_{(q-2s)(\ell-1)}x
+\quad(x\in H^q).
+\tag{H.9}
+\]</span>
+Negative powers of <span class="math" data-tex="\(r!\)">\(r!\)</span> mean its inverse in <span class="math" data-tex="\(F\)">\(F\)</span>. The index convention makes this zero if <span class="math" data-tex="\(2s&gt;q\)">\(2s&gt;q\)</span>. Its degree is
+<span class="math" data-tex="\(q+2s(\ell-1)\)">\(q+2s(\ell-1)\)</span>. Transfer by (H.5) and the normalization isomorphism of G.1 identifies it with an operation on the usual singular cohomology of every pair.</p>
+<p>Pairing every nonzero field element with its inverse shows <span class="math" data-tex="\((\ell-1)!=-1\)">\((\ell-1)!=-1\)</span>: only <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> are self-inverse. Also
+<span class="math" data-tex="\((\ell-1)!=(-1)^r(r!)^2\)">\((\ell-1)!=(-1)^r(r!)^2\)</span>, by pairing <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(\ell-a\)">\(\ell-a\)</span>. Thus
+<span class="math math-display" data-tex="\[
+(r!)^2=(-1)^{r+1},\qquad
+\nu(2j+\epsilon)=(-1)^j(r!)^\epsilon\quad(\epsilon=0,1).
+\tag{H.10}
+\]">\[
+(r!)^2=(-1)^{r+1},\qquad
+\nu(2j+\epsilon)=(-1)^j(r!)^\epsilon\quad(\epsilon=0,1).
+\tag{H.10}
+\]</span>
+These identities hold for negative <span class="math" data-tex="\(j\)">\(j\)</span> as well, by inversion. In particular, if <span class="math" data-tex="\(q=2s\)">\(q=2s\)</span>, the multiplier in (H.9) is one. Since <span class="math" data-tex="\(\Theta(e_0,-)\)">\(\Theta(e_0,-)\)</span> is the iterated product, this proves
+<span class="math math-display" data-tex="\[
+P^s x=x^\ell\quad\text{when }|x|=2s.
+\tag{H.11}
+\]">\[
+P^s x=x^\ell\quad\text{when }|x|=2s.
+\tag{H.11}
+\]</span>
+The remaining Cartan, suspension and identity properties are proved next; they are not inferred solely from this top-power normalization.</p>
+<h2 id="i-cartan-suspension-and-the-identity-operation">I. Cartan, suspension and the identity operation</h2>
+<h3 id="i-1-the-normalizer-selects-the-nonzero-even-indices">I.1. The normalizer selects the nonzero even indices</h3>
+<p>We need the following restriction on (H.7):
+<span class="math math-display" data-tex="\[
+D_{2a}(x)=0\quad\text{unless }a\equiv rq\pmod{\ell-1},
+\qquad x\in H^q.
+\tag{I.1}
+\]">\[
+D_{2a}(x)=0\quad\text{unless }a\equiv rq\pmod{\ell-1},
+\qquad x\in H^q.
+\tag{I.1}
+\]</span>
+Here is its proof, including the small group-theoretic calculation. The multiplicative group of <span class="math" data-tex="\(F\)">\(F\)</span> is cyclic. Indeed, for each prime dividing the order of any of its elements, select an element having the largest prime-power component occurring among those orders. Raise it to the complementary factor to obtain an element of just that prime-power order. Products of these elements have the product of their orders, since they commute and those orders are coprime. Call that order <span class="math" data-tex="\(m\)">\(m\)</span>. Every group element has order dividing <span class="math" data-tex="\(m\)">\(m\)</span>, so every nonzero field element is a root of <span class="math" data-tex="\(X^m-1\)">\(X^m-1\)</span>. A polynomial has at most its degree many roots, by successive division by <span class="math" data-tex="\(X-a\)">\(X-a\)</span>. Thus <span class="math" data-tex="\(\ell-1\leq m\)">\(\ell-1\leq m\)</span>, while the subgroup of order <span class="math" data-tex="\(m\)">\(m\)</span> has at most <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span> elements. Equality holds, proving cyclicity.</p>
+<p>Choose a generator <span class="math" data-tex="\(k\in F^\times\)">\(k\in F^\times\)</span>, represented by an integer between 1 and <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span>. Label the cyclically permuted coordinates by <span class="math" data-tex="\(F\)">\(F\)</span>, and let <span class="math" data-tex="\(h\)">\(h\)</span> multiply their labels by <span class="math" data-tex="\(k\)">\(k\)</span>. It fixes zero and cycles the <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span> nonzero labels, so its permutation sign is <span class="math" data-tex="\(-1\)">\(-1\)</span>. Also <span class="math" data-tex="\(hgh^{-1}=g^k\)">\(hgh^{-1}=g^k\)</span>. A semilinear chain map on (G.5), over this automorphism, is
+<span class="math math-display" data-tex="\[
+h_\#(e_{2a})=k^a e_{2a},\qquad
+h_\#(e_{2a+1})=k^a(1+g+\cdots+g^{k-1})e_{2a+1}.
+\tag{I.2}
+\]">\[
+h_\#(e_{2a})=k^a e_{2a},\qquad
+h_\#(e_{2a+1})=k^a(1+g+\cdots+g^{k-1})e_{2a+1}.
+\tag{I.2}
+\]</span>
+The odd differential identity follows from
+<span class="math" data-tex="\((g-1)(1+\cdots+g^{k-1})=g^k-1\)">\((g-1)(1+\cdots+g^{k-1})=g^k-1\)</span>.
+The even identity follows because multiplying a norm by that sum multiplies it by <span class="math" data-tex="\(k\)">\(k\)</span>, while <span class="math" data-tex="\(g\mapsto g^k\)">\(g\mapsto g^k\)</span> fixes the norm. Thus (I.2) really commutes with differentials.</p>
+<p>Map <span class="math" data-tex="\(W\)">\(W\)</span> into the symmetric-group bar resolution of H.1. The maps obtained by applying (I.2) before that comparison or by applying <span class="math" data-tex="\(h\)">\(h\)</span> after it are semilinearly chain homotopic: both lift the same augmentation, and the free-basis induction of G.3 works also with the prescribed automorphism in the equivariant extension. In symmetric-group coinvariants, acting by <span class="math" data-tex="\(h\)">\(h\)</span> on both the resolution and the tensor does not change the class. On <span class="math" data-tex="\(x^{\otimes\ell}\)">\(x^{\otimes\ell}\)</span> its Koszul sign is <span class="math" data-tex="\((-1)^q\)">\((-1)^q\)</span>, because <span class="math" data-tex="\(h\)">\(h\)</span> is odd. The symmetric comparison of H.1 therefore gives
+<span class="math math-display" data-tex="\[
+D_{2a}(x)=(-1)^q k^a D_{2a}(x).
+\tag{I.3}
+\]">\[
+D_{2a}(x)=(-1)^q k^a D_{2a}(x).
+\tag{I.3}
+\]</span>
+If this scalar differs from one, invert its nonzero difference in the field. The class is zero. Since <span class="math" data-tex="\(k\)">\(k\)</span> has order <span class="math" data-tex="\(\ell-1=2r\)">\(\ell-1=2r\)</span>, the scalar is one precisely for <span class="math" data-tex="\(a\equiv rq\pmod{2r}\)">\(a\equiv rq\pmod{2r}\)</span>. This proves (I.1). We do not need the additional odd-index restriction for the argument below.</p>
+<p>The degree bound (H.2) proves <span class="math" data-tex="\(P^s=0\)">\(P^s=0\)</span> also for <span class="math" data-tex="\(s&lt;0\)">\(s&lt;0\)</span>. Its possible input-chain degree in (H.7) is <span class="math" data-tex="\(n=\ell q-i=q+2s(\ell-1)\)">\(n=\ell q-i=q+2s(\ell-1)\)</span>. If <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span> there is no chain. Otherwise <span class="math" data-tex="\(s&lt;0\)">\(s&lt;0\)</span> makes <span class="math" data-tex="\(n&lt;q\)">\(n&lt;q\)</span>, so the required tensor degree <span class="math" data-tex="\(i+n=\ell q\)">\(i+n=\ell q\)</span> exceeds the allowed bound <span class="math" data-tex="\(\ell n\)">\(\ell n\)</span>. Its evaluation is zero. Thus negative operations are zero by a proved chain bound, while positive instability <span class="math" data-tex="\(2s&gt;q\)">\(2s&gt;q\)</span> follows from the negative-index convention.</p>
+<h3 id="i-2-the-full-product-comparison">I.2. The full product comparison</h3>
+<p><span id="DG-CHAR-14B.theorem-I.1"></span><strong>Theorem I.1 — Cartan identity.</strong> The natural additive operations (H.9) satisfy
+<span class="math math-display" data-tex="\[
+P^s(x\smile y)=\sum_{a+b=s}P^a x\smile P^b y.
+\tag{I.4}
+\]">\[
+P^s(x\smile y)=\sum_{a+b=s}P^a x\smile P^b y.
+\tag{I.4}
+\]</span>
+The analogous external identity holds for pairs relative to
+<span class="math" data-tex="\(A\times Y\cup X\times B\)">\(A\times Y\cup X\times B\)</span> when <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are open, and when either is empty with the other arbitrary. All the terms with negative operation indices are zero.</p>
+<p><strong>Proof: the comparison on chains.</strong> The Alexander–Whitney and shuffle product maps have their complete inverse homotopies in the Thom/Euler chapter. There are two natural equivariant maps from <span class="math" data-tex="\(W\otimes C(K\otimes L)\)">\(W\otimes C(K\otimes L)\)</span> to <span class="math" data-tex="\((C(K)\otimes C(L))^{\otimes\ell}\)">\((C(K)\otimes C(L))^{\otimes\ell}\)</span>. One first takes the higher diagonal of <span class="math" data-tex="\(K\otimes L\)">\(K\otimes L\)</span>, then Alexander–Whitney in each output factor. The other first takes Alexander–Whitney on the input, uses <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> of G.2 on its resolution coordinate, takes the two higher diagonals, and shuffles their outputs into alternating factors.</p>
+<p>These maps are naturally equivariantly chain homotopic. To construct the homotopy, keep all simplicial inputs separate, as in H.1. The universal targets are tensor products of normalized standard simplex complexes and have zero positive homology. At vertices the maps agree. At resolution degree zero the Alexander–Whitney product comparisons have the usual acyclic-model homotopy: the difference minus the homotopy on lower-degree faces is an augmentation-zero cycle, which is filled in that target. At each higher resolution degree, repeat exactly this filling induction on a free resolution basis and then on input degree. The normalization projector of G.1 extends each obstruction to the representable functor and restricts its filler back to the normalized summand. This proves the homotopy while retaining naturality, degeneracy relations and equivariance. Precomposing with simplicial diagonals and dualizing gives the same comparison for the products in (H.6).</p>
+<p><strong>Proof: evaluation and constants.</strong> For cocycles of degrees <span class="math" data-tex="\(q,t\)">\(q,t\)</span>, their <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-fold tensors are cyclically fixed. The induced even resolution diagonal is (G.8); the extra odd/odd sum has coefficient <span class="math" data-tex="\(\ell(\ell-1)/2=0\)">\(\ell(\ell-1)/2=0\)</span>. Shuffling <span class="math" data-tex="\(\ell\)">\(\ell\)</span> copies of <span class="math" data-tex="\(x\otimes y\)">\(x\otimes y\)</span> into the two blocks makes <span class="math" data-tex="\(\ell(\ell-1)/2\)">\(\ell(\ell-1)/2\)</span> exchanges of degrees <span class="math" data-tex="\(q,t\)">\(q,t\)</span>, and has sign <span class="math" data-tex="\((-1)^{rqt}\)">\((-1)^{rqt}\)</span>. The even resolution indices contribute no additional exchange sign. Thus the comparison gives
+<span class="math math-display" data-tex="\[
+D_{2n}(x\times y)=(-1)^{rqt}
+\sum_{a+b=n}D_{2a}(x)\times D_{2b}(y).
+\tag{I.5}
+\]">\[
+D_{2n}(x\times y)=(-1)^{rqt}
+\sum_{a+b=n}D_{2a}(x)\times D_{2b}(y).
+\tag{I.5}
+\]</span>
+By (I.1), a nonzero first index has <span class="math" data-tex="\(2a=(q-2u)(\ell-1)\)">\(2a=(q-2u)(\ell-1)\)</span>, and a nonzero second has <span class="math" data-tex="\(2b=(t-2v)(\ell-1)\)">\(2b=(t-2v)(\ell-1)\)</span>, for integers <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. If the left index is <span class="math" data-tex="\(((q+t)-2s)(\ell-1)\)">\(((q+t)-2s)(\ell-1)\)</span>, these integers satisfy <span class="math" data-tex="\(u+v=s\)">\(u+v=s\)</span>. Negative ones contribute zero by the degree bound just proved.</p>
+<p>From the exponent defining <span class="math" data-tex="\(\nu\)">\(\nu\)</span> one has
+<span class="math math-display" data-tex="\[
+\nu(-(q+t))=(-1)^{rqt}\nu(-q)\nu(-t).
+\tag{I.6}
+\]">\[
+\nu(-(q+t))=(-1)^{rqt}\nu(-q)\nu(-t).
+\tag{I.6}
+\]</span>
+Multiply (I.5) by <span class="math" data-tex="\((-1)^s\nu(-(q+t))\)">\((-1)^s\nu(-(q+t))\)</span>, and use <span class="math" data-tex="\(s=u+v\)">\(s=u+v\)</span>. The two signs <span class="math" data-tex="\((-1)^{rqt}\)">\((-1)^{rqt}\)</span> cancel, and every summand becomes <span class="math" data-tex="\(P^u x\times P^v y\)">\(P^u x\times P^v y\)</span>. This proves external Cartan with all constants specified. Pullback by the diagonal proves (I.4).</p>
+<p>For relative external products, each construction and homotopy preserves simplices in either factor subspace. The small-chain comparison for the indicated union is the full open-cover relative product comparison already proved in the Thom/Euler chapter. It gives the asserted relative identity; when a factor subspace is empty no cover comparison is needed. Naturality along a diagonal gives the corresponding internal identity, including a relative class multiplied by an absolute class. ∎</p>
+<h3 id="i-3-a-chain-correction-that-proves-suspension">I.3. A chain correction that proves suspension</h3>
+<p>We prove compatibility with cohomology connecting maps rather than assuming it from the operation's name. It is clearer to perform the calculation in the homological grading of H.4, allowing any integer degree.</p>
+<p>Let <span class="math" data-tex="\(a\)">\(a\)</span> have homological degree <span class="math" data-tex="\(u\)">\(u\)</span>, and write <span class="math" data-tex="\(b=da\)">\(b=da\)</span>. First do the following construction in the formal free two-generator complex with <span class="math" data-tex="\(da=b\)">\(da=b\)</span>, and then substitute the actual <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. This convention includes <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, and does not pretend that two dependent vectors form a basis. On its tensor power define <span class="math" data-tex="\(S=1^{\otimes(\ell-1)}\otimes s\)">\(S=1^{\otimes(\ell-1)}\otimes s\)</span>, where <span class="math" data-tex="\(s(b)=a\)">\(s(b)=a\)</span>, <span class="math" data-tex="\(s(a)=0\)">\(s(a)=0\)</span>. The tensor sign gives
+<span class="math" data-tex="\(S(zb)=(-1)^{|z|}za\)">\(S(zb)=(-1)^{|z|}za\)</span> and <span class="math" data-tex="\(S(za)=0\)">\(S(za)=0\)</span>. Consequently <span class="math" data-tex="\(dS+Sd=1\)">\(dS+Sd=1\)</span>: the differentials in the earlier factors cancel across this odd map, and the last factor has <span class="math" data-tex="\(ds+sd=1\)">\(ds+sd=1\)</span>.</p>
+<p>Put <span class="math" data-tex="\(T&#x27;=g^{-1}-1\)">\(T&#x27;=g^{-1}-1\)</span> on this tensor power, and define
+<span class="math math-display" data-tex="\[
+t_0=b^{\otimes\ell},\quad t_1=St_0,\quad
+t_{2k}=S T&#x27;t_{2k-1},\quad t_{2k+1}=S N t_{2k}
+\quad(1\leq k\leq r).
+\tag{I.7}
+\]">\[
+t_0=b^{\otimes\ell},\quad t_1=St_0,\quad
+t_{2k}=S T&#x27;t_{2k-1},\quad t_{2k+1}=S N t_{2k}
+\quad(1\leq k\leq r).
+\tag{I.7}
+\]</span>
+Their differentials are
+<span class="math math-display" data-tex="\[
+dt_1=t_0,\quad dt_{2k}=T&#x27;t_{2k-1},\quad
+dt_{2k+1}=N t_{2k}.
+\tag{I.8}
+\]">\[
+dt_1=t_0,\quad dt_{2k}=T&#x27;t_{2k-1},\quad
+dt_{2k+1}=N t_{2k}.
+\tag{I.8}
+\]</span>
+Indeed the prescribed argument of <span class="math" data-tex="\(S\)">\(S\)</span> is a cycle: at the first step <span class="math" data-tex="\(T&#x27;t_0=0\)">\(T&#x27;t_0=0\)</span>; later use <span class="math" data-tex="\(NT&#x27;=T&#x27;N=0\)">\(NT&#x27;=T&#x27;N=0\)</span>. The identity <span class="math" data-tex="\(dS+Sd=1\)">\(dS+Sd=1\)</span> then proves (I.8) inductively.</p>
+<p>The final tensor has the exact leading coefficient
+<span class="math math-display" data-tex="\[
+t_\ell=(-1)^{ru}r!\,a^{\otimes\ell}.
+\tag{I.9}
+\]">\[
+t_\ell=(-1)^{ru}r!\,a^{\otimes\ell}.
+\tag{I.9}
+\]</span>
+Here is a direct count proving that coefficient. Omitting tensor symbols between letters, induction in (I.7) gives
+<span class="math math-display" data-tex="\[
+t_{2k}=(-1)^{ku}(k-1)!
+\sum_{i_1+\cdots+i_k=\ell-2k}
+b^{i_1}a^2\cdots b^{i_k}a^2,
+\tag{I.10}
+\]">\[
+t_{2k}=(-1)^{ku}(k-1)!
+\sum_{i_1+\cdots+i_k=\ell-2k}
+b^{i_1}a^2\cdots b^{i_k}a^2,
+\tag{I.10}
+\]</span>
+<span class="math math-display" data-tex="\[
+t_{2k+1}=(-1)^{ku}k!
+\sum_{i_1+\cdots+i_{k+1}=\ell-1-2k}
+b^{i_1}a^2\cdots b^{i_k}a^2 b^{i_{k+1}}a.
+\tag{I.11}
+\]">\[
+t_{2k+1}=(-1)^{ku}k!
+\sum_{i_1+\cdots+i_{k+1}=\ell-1-2k}
+b^{i_1}a^2\cdots b^{i_k}a^2 b^{i_{k+1}}a.
+\tag{I.11}
+\]</span>
+All <span class="math" data-tex="\(i_j\)">\(i_j\)</span> are nonnegative. The base <span class="math" data-tex="\(t_1=b^{\ell-1}a\)">\(t_1=b^{\ell-1}a\)</span> follows since <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span> is even. For the even step, the identity part of <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> is killed by <span class="math" data-tex="\(S\)">\(S\)</span>, since every word ends in <span class="math" data-tex="\(a\)">\(a\)</span>. The inverse rotation contributes only from words starting in <span class="math" data-tex="\(b\)">\(b\)</span>. Removing that initial <span class="math" data-tex="\(b\)">\(b\)</span>, rotating it to the end and applying <span class="math" data-tex="\(S\)">\(S\)</span> appends the new adjacent pair <span class="math" data-tex="\(a^2\)">\(a^2\)</span>, bijectively giving the compositions in (I.10). The rotation sign is <span class="math" data-tex="\((-1)^{u-1}\)">\((-1)^{u-1}\)</span>, since the rest has odd degree modulo two, and the final <span class="math" data-tex="\(S\)">\(S\)</span> sign is <span class="math" data-tex="\(-1\)">\(-1\)</span>; their product is <span class="math" data-tex="\((-1)^u\)">\((-1)^u\)</span>.</p>
+<p>For the odd step, after a norm rotation and <span class="math" data-tex="\(S\)">\(S\)</span>, each output word has <span class="math" data-tex="\(k\)">\(k\)</span> paired <span class="math" data-tex="\(a^2\)">\(a^2\)</span>-blocks and one final <span class="math" data-tex="\(a\)">\(a\)</span>. Restore its final letter to <span class="math" data-tex="\(b\)">\(b\)</span>. There are exactly <span class="math" data-tex="\(k\)">\(k\)</span> choices of which paired block is to be the last block in the input word ending in <span class="math" data-tex="\(a^2\)">\(a^2\)</span>; they give its <span class="math" data-tex="\(k\)">\(k\)</span> norm contributions, counted with multiplicity even if some intermediate exponents are zero. Moving a whole <span class="math" data-tex="\(a^2\)">\(a^2\)</span>-block has even degree and gives no sign. The signs from moving the initial <span class="math" data-tex="\(b\)">\(b\)</span>-letters and applying <span class="math" data-tex="\(S\)">\(S\)</span> cancel, so these contributions have the same sign. This multiplies <span class="math" data-tex="\((k-1)!\)">\((k-1)!\)</span> by <span class="math" data-tex="\(k\)">\(k\)</span>, yielding (I.11). For <span class="math" data-tex="\(k=r\)">\(k=r\)</span>, its exponents sum to zero, leaving just (I.9). This proves the coefficient for every odd prime, not by a finite numerical check.</p>
+<p>For a homological operation index <span class="math" data-tex="\(s\)">\(s\)</span>, put <span class="math" data-tex="\(j=(2s-u+1)(\ell-1)\)">\(j=(2s-u+1)(\ell-1)\)</span>, which is even, and define in cyclic coinvariants
+<span class="math math-display" data-tex="\[
+c_s(a)=\sum_{k=0}^{r}(-1)^k e_{j-2k}\otimes t_{2k+1}
+-\sum_{k=1}^{r}(-1)^k e_{j+1-2k}\otimes (T&#x27;)^{\ell-2}t_{2k}.
+\tag{I.12}
+\]">\[
+c_s(a)=\sum_{k=0}^{r}(-1)^k e_{j-2k}\otimes t_{2k+1}
+-\sum_{k=1}^{r}(-1)^k e_{j+1-2k}\otimes (T&#x27;)^{\ell-2}t_{2k}.
+\tag{I.12}
+\]</span>
+Terms with negative resolution index are zero. Since <span class="math" data-tex="\(ge\otimes z=e\otimes g^{-1}z\)">\(ge\otimes z=e\otimes g^{-1}z\)</span>, the resolution differential becomes <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> on the tensor, and <span class="math" data-tex="\((T&#x27;)^{\ell-1}=N\)">\((T&#x27;)^{\ell-1}=N\)</span>.</p>
+<p>The full telescoping calculation gives
+<span class="math math-display" data-tex="\[
+dc_s(a)=e_j\otimes b^{\otimes\ell}.
+\tag{I.13}
+\]">\[
+dc_s(a)=e_j\otimes b^{\otimes\ell}.
+\tag{I.13}
+\]</span>
+To see every cancellation, the tensor differential of the <span class="math" data-tex="\(k\)">\(k\)</span>-th first sum, for <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, is <span class="math" data-tex="\((-1)^k e_{j-2k}\otimes N t_{2k}\)">\((-1)^k e_{j-2k}\otimes N t_{2k}\)</span>; this cancels the resolution differential of its <span class="math" data-tex="\(k\)">\(k\)</span>-th second-sum term. The tensor differential of that second-sum term has the extra minus from its odd resolution degree; it is <span class="math" data-tex="\((-1)^k e_{j+1-2k}\otimes N t_{2k-1}\)">\((-1)^k e_{j+1-2k}\otimes N t_{2k-1}\)</span>, cancelling the resolution differential of the first-sum term with index <span class="math" data-tex="\(k-1\)">\(k-1\)</span>. The last possible residue is <span class="math" data-tex="\((-1)^r e_{j-2r-1}\otimes Nt_\ell=0\)">\((-1)^r e_{j-2r-1}\otimes Nt_\ell=0\)</span>, since the all-<span class="math" data-tex="\(a\)">\(a\)</span> tensor is cyclically fixed and <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>. The <span class="math" data-tex="\(k=0\)">\(k=0\)</span> tensor differential is exactly the right side of (I.13). Negative-index terms and the zero differential at <span class="math" data-tex="\(e_0\)">\(e_0\)</span> fit these same cancellations.</p>
+<p>Apply <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> and set
+<span class="math math-display" data-tex="\[
+\mathscr P_s(a)=(-1)^s\nu(u-1)\Theta(c_s(a)).
+\tag{I.14}
+\]">\[
+\mathscr P_s(a)=(-1)^s\nu(u-1)\Theta(c_s(a)).
+\tag{I.14}
+\]</span>
+If <span class="math" data-tex="\(a\)">\(a\)</span> is a cycle, (I.7)–(I.11) leave only <span class="math" data-tex="\(t_\ell\)">\(t_\ell\)</span>, and (I.12) becomes
+<span class="math" data-tex="\((-1)^{r(u+1)}r!e_{(2s-u)(\ell-1)}\otimes a^{\otimes\ell}\)">\((-1)^{r(u+1)}r!e_{(2s-u)(\ell-1)}\otimes a^{\otimes\ell}\)</span>.
+The identity <span class="math" data-tex="\(\nu(u)=(-1)^{r(u+1)}r!\nu(u-1)\)">\(\nu(u)=(-1)^{r(u+1)}r!\nu(u-1)\)</span>, immediate from H.9, shows that (I.14) represents the normalized operation in that homological grading. Moreover (I.13) gives
+<span class="math math-display" data-tex="\[
+d\mathscr P_s(a)=\mathscr P_s(da).
+\tag{I.15}
+\]">\[
+d\mathscr P_s(a)=\mathscr P_s(da).
+\tag{I.15}
+\]</span>
+The right side is the cocycle operation on <span class="math" data-tex="\(b=da\)">\(b=da\)</span>. Every step is natural on chain maps commuting with <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>; the correction uses just <span class="math" data-tex="\(a,da\)">\(a,da\)</span>, the cyclic action and fixed scalars.</p>
+<p><span id="DG-CHAR-14B.theorem-I.2"></span><strong>Theorem I.2 — Connecting maps and suspension.</strong> On the cohomology of pairs, reduced powers commute with the connecting homomorphism. They consequently commute with the reduced suspension isomorphism.</p>
+<p><strong>Proof.</strong> Extend a cocycle <span class="math" data-tex="\(x\)">\(x\)</span> on a subspace to a cochain <span class="math" data-tex="\(a\)">\(a\)</span> on the whole space, using its subset of the singular-simplex basis. In the dual convention H.4 its differential <span class="math" data-tex="\(b\)">\(b\)</span> is a relative cocycle representing the corresponding connecting class. Naturality of (I.14) under restriction says that <span class="math" data-tex="\(\mathscr P_{-s}(a)\)">\(\mathscr P_{-s}(a)\)</span> extends a representative of <span class="math" data-tex="\(P^s x\)">\(P^s x\)</span>. By (I.15), its differential represents <span class="math" data-tex="\(P^s b\)">\(P^s b\)</span>. This is exactly the defining connecting-cochain calculation, and proves compatibility in that convention. The isomorphism H.5 commutes with the maps of the short exact sequence of cochain complexes, hence with its connecting map; transferring back proves the assertion for the usual convention.</p>
+<p>For the cone pair, its connecting map on reduced cohomology is an isomorphism by cone contraction and the pair sequence. Comparing the cone pair with the suspension quotient by its collar, using the full relative excision comparison from the Thom/Euler chapter, identifies this map with reduced suspension. Naturality and the pair result prove suspension compatibility. No transgression or Adem relation is required. ∎</p>
+<h3 id="i-4-the-degree-zero-operation-really-is-the-identity">I.4. The degree-zero operation really is the identity</h3>
+<p><span id="DG-CHAR-14B.theorem-I.3"></span><strong>Theorem I.3.</strong> <span class="math" data-tex="\(P^0x=x\)">\(P^0x=x\)</span> on the usual cohomology of spaces and pairs.</p>
+<p><strong>Proof for spaces.</strong> On degree-zero classes, <span class="math" data-tex="\(P^0=D_0\)">\(P^0=D_0\)</span> is the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th power, hence the identity over <span class="math" data-tex="\(F\)">\(F\)</span>. Suspension compatibility therefore proves the identity on the reduced generator of every sphere, by suspending the generator of <span class="math" data-tex="\(S^0\)">\(S^0\)</span> repeatedly.</p>
+<p>For a CW complex and a positive degree <span class="math" data-tex="\(q\)">\(q\)</span>, restriction to its <span class="math" data-tex="\(q\)">\(q\)</span>-skeleton is injective in <span class="math" data-tex="\(H^q(-;F)\)">\(H^q(-;F)\)</span>. Indeed the relative cellular complex for the cells above that skeleton is zero in degrees at most <span class="math" data-tex="\(q\)">\(q\)</span>; the full cellular cohomology comparison in <a href="DG-CHAR-08B.html">Frame fields</a>, LemmaG.1, gives the injection, including infinitely many cells. That lemma proves its integer and field versions by actual relative-chain comparisons and a stabilized skeleton tower. Every class on that <span class="math" data-tex="\(q\)">\(q\)</span>-skeleton is the reduction of an integral top cohomology class: lift the values of a cellular cochain on each <span class="math" data-tex="\(q\)">\(q\)</span>-cell to integers; there are no cells in degree <span class="math" data-tex="\(q+1\)">\(q+1\)</span>, so this lift is a cocycle.</p>
+<p>Such an integer cellular top class is pulled back from <span class="math" data-tex="\(S^q\)">\(S^q\)</span> by a map: send the <span class="math" data-tex="\((q-1)\)">\((q-1)\)</span>-skeleton to the basepoint, and on each <span class="math" data-tex="\(q\)">\(q\)</span>-cell use a boundary-constant disk map of degree equal to that cell's chosen integer. One constructs a map of any integer degree by using that many disjoint interior disks, positively or negatively oriented, mapping each disk modulo its boundary once onto the sphere and collapsing their complement. The degree computation is the relative-cell generator calculation already proved in the Schubert chapter. CW weak topology makes the assembled map continuous, even with infinitely many cells. Its pullback cellular cocycle has precisely the prescribed values. Naturality and the sphere calculation prove <span class="math" data-tex="\(P^0=1\)">\(P^0=1\)</span> on the skeleton; injectivity proves it on the CW complex. For an arbitrary path-connected space, the complete CW-model and cohomology-comparison proof in homotopy Theorems B.4–B.5 transfers the result by naturality. Singular chains split over path components, so the conclusion holds for arbitrary spaces as well.</p>
+<p><strong>The comparison needed for pairs.</strong> We also describe why the same argument applies to a simplicial quotient, rather than inferring relative equality from a five-lemma isomorphism. A simplicial set's geometric realization is a CW complex with one open cell for each nondegenerate simplex. To verify this, first note the intersection identity: if <span class="math" data-tex="\(s_i y=s_j z\)">\(s_i y=s_j z\)</span> with <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, then <span class="math" data-tex="\(y=s_{j-1}d_i z\)">\(y=s_{j-1}d_i z\)</span>, by applying <span class="math" data-tex="\(d_i\)">\(d_i\)</span>, and the degeneracy identities give <span class="math" data-tex="\(s_i y=s_j s_i d_i z\)">\(s_i y=s_j s_i d_i z\)</span>; applying <span class="math" data-tex="\(d_j\)">\(d_j\)</span> gives <span class="math" data-tex="\(z=s_i d_i z\)">\(z=s_i d_i z\)</span>. Thus two different possible first degeneracies factor through their common double degeneracy. Induction using this identity, the injectivity of each <span class="math" data-tex="\(s_i\)">\(s_i\)</span> through its face section, and the identities ordering successive degeneracies proves the unique expression of any simplex as degeneracies of a nondegenerate one. Repeatedly removing a degeneracy terminates since dimension decreases. The simplicial identities put its degeneracies in increasing order, equivalently an order-preserving surjection of vertex sets. This expression is unique: the positions collapsed by that surjection are exactly the indices at which the simplex lies in the corresponding degeneracy image; applying their face sections recovers the residual simplex. Thus interiors of nondegenerate simplices are distinct, and the usual affine degeneracy identifications remove precisely the other interiors. Their faces attach in lower dimensions; finite faces give closure finiteness, and the quotient topology is the CW weak topology. Its cellular differential is the alternating face sum with a degenerate face contributing zero, exactly the normalized complex.</p>
+<p>Send a simplex to its characteristic affine simplex in the realization. These maps form a simplicial map to its singular simplicial set: they respect both faces and the affine degeneracy identifications. On chains it induces the cellular-to-singular isomorphism, by the full relative-cell chain comparison in Frame fields, LemmaG.1, specialized to constant coefficients, and the skeleton homology proof in the Schubert chapter, Lemma2.1. These chain comparisons apply before dualization. More explicitly each skeleton's relative disk generator is sent to its singular relative generator; the pair sequences give the comparison in finite dimensions, and every singular cycle and bounding chain has compact image in a finite subcomplex, so passage to the union preserves it. The normalization comparison G.1 identifies these with normalized chains. The map is natural, hence it commutes with the operations constructed in H.1–H.9. The identity already proved on CW spaces therefore proves <span class="math" data-tex="\(P^0=1\)">\(P^0=1\)</span> for simplicial sets too.</p>
+<p>For a nonempty simplicial subspace <span class="math" data-tex="\(L\subset K\)">\(L\subset K\)</span>, its quotient simplicial set <span class="math" data-tex="\(K/L\)">\(K/L\)</span> collapses all of <span class="math" data-tex="\(L\)">\(L\)</span> to the single point simplex in every degree. Its reduced free simplicial module is exactly <span class="math" data-tex="\(F[K]/F[L]\)">\(F[K]/F[L]\)</span>; the normalized dual is the relative cochain complex. The operations agree under this identification by their actual quotient diagonal construction. Thus the simplicial-set identity proves the pair identity. Taking <span class="math" data-tex="\(K=\operatorname{Sing}X\)">\(K=\operatorname{Sing}X\)</span>, <span class="math" data-tex="\(L=\operatorname{Sing}A\)">\(L=\operatorname{Sing}A\)</span> proves it for every nonempty subspace <span class="math" data-tex="\(A\)">\(A\)</span>; the empty case is the absolute result. ∎</p>
+<p>We have now constructed every operation property needed below: naturality on pairs, additivity, <span class="math" data-tex="\(F\)">\(F\)</span>-linearity, <span class="math" data-tex="\(P^0=1\)">\(P^0=1\)</span>, positive instability, the top <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th power, Cartan, and compatibility with relative connecting maps and suspension. Each has its own actual chain or cellular proof.</p>
+<h2 id="j-odd-prime-thom-classes-and-wu-s-formula">J. Odd-prime Thom classes and Wu's formula</h2>
+<p>Continue to use <span class="math" data-tex="\(F=\mathbb F_\ell\)">\(F=\mathbb F_\ell\)</span>, <span class="math" data-tex="\(\ell=2r+1\)">\(\ell=2r+1\)</span>. Classes called Pontryagin classes below are reductions of the integral classes of the <a href="DG-CHAR-10.html">Pontryagin chapter</a>. Every manifold in this section is smooth, Hausdorff and second countable.</p>
+<h3 id="j-1-the-classes-defined-by-a-thom-class">J.1. The classes defined by a Thom class</h3>
+<p>Let <span class="math" data-tex="\(\xi\)">\(\xi\)</span> be an oriented real rank-<span class="math" data-tex="\(n\)">\(n\)</span> vector bundle over a Hausdorff space <span class="math" data-tex="\(B\)">\(B\)</span>. Write <span class="math" data-tex="\(E_0\)">\(E_0\)</span> for its total space with the zero section removed and <span class="math" data-tex="\(u_\xi\in H^n(E,E_0;F)\)">\(u_\xi\in H^n(E,E_0;F)\)</span> for the reduction of its oriented integral Thom class. The full arbitrary-Hausdorff Thom theorem in the <a href="DG-CHAR-06.html">Thom/Euler chapter</a>, Sections7–8, makes multiplication by this class an isomorphism. Define
+<span class="math math-display" data-tex="\[
+P^i(u_\xi)=\pi^*q_i(\xi)\smile u_\xi,\qquad
+q_i(\xi)\in H^{4ri}(B;F),\qquad q(\xi)=\sum_{i\geq0}q_i(\xi).
+\tag{J.1}
+\]">\[
+P^i(u_\xi)=\pi^*q_i(\xi)\smile u_\xi,\qquad
+q_i(\xi)\in H^{4ri}(B;F),\qquad q(\xi)=\sum_{i\geq0}q_i(\xi).
+\tag{J.1}
+\]</span>
+The sum is finite: instability on the degree-<span class="math" data-tex="\(n\)">\(n\)</span> Thom class gives <span class="math" data-tex="\(q_i=0\)">\(q_i=0\)</span> when <span class="math" data-tex="\(2i&gt;n\)">\(2i&gt;n\)</span>. In rank zero its Thom pair is <span class="math" data-tex="\((B,\varnothing)\)">\((B,\varnothing)\)</span>, the Thom class is the unit and the same definition applies.</p>
+<p><span id="DG-CHAR-14B.theorem-J.1"></span><strong>Theorem J.1 — Thom-class rules.</strong> These classes are natural, satisfy <span class="math" data-tex="\(q_0=1\)">\(q_0=1\)</span>, and have the Whitney formula
+<span class="math math-display" data-tex="\[
+q(\xi\oplus\eta)=q(\xi)q(\eta).
+\tag{J.2}
+\]">\[
+q(\xi\oplus\eta)=q(\xi)q(\eta).
+\tag{J.2}
+\]</span>
+For a trivial bundle <span class="math" data-tex="\(q=1\)">\(q=1\)</span>; consequently <span class="math" data-tex="\(q\)">\(q\)</span> is stable under adding trivial bundles. Changing the orientation, even separately on open and closed components of the base, leaves these classes unchanged.</p>
+<p><strong>Proof.</strong> Naturality follows from naturality of the Thom class and the relative operations, and then Thom injectivity. The identity <span class="math" data-tex="\(P^0u=u\)">\(P^0u=u\)</span> gives <span class="math" data-tex="\(q_0=1\)">\(q_0=1\)</span>. Under the direct-sum Thom product isomorphism, the oriented product Thom class is the external product <span class="math" data-tex="\(u_\xi\times u_\eta\)">\(u_\xi\times u_\eta\)</span>. The relative product identity I.1 applies: the deleted-zero subspaces are open, and the union of their inverse images is precisely the complement of the simultaneous zero section. Pull it back over the base diagonal. Cartan and (J.1) now give the convolution of the <span class="math" data-tex="\(q_i\)">\(q_i\)</span>'s times the product Thom class. Moving any <span class="math" data-tex="\(q_i\)">\(q_i\)</span> past a Thom factor has sign one, since its degree <span class="math" data-tex="\(4ri\)">\(4ri\)</span> is even. Thom injectivity proves (J.2).</p>
+<p>The Thom class of a trivial rank-<span class="math" data-tex="\(n\)">\(n\)</span> bundle is pulled back from the positive relative generator of <span class="math" data-tex="\((\mathbb R^n,\mathbb R^n-\{0\})\)">\((\mathbb R^n,\mathbb R^n-\{0\})\)</span>. This pair has cohomology <span class="math" data-tex="\(F\)">\(F\)</span> only in degree <span class="math" data-tex="\(n\)">\(n\)</span>, by the full sphere/pair calculation in the Thom chapter; its positive powers consequently vanish for degree reasons. Pullback proves <span class="math" data-tex="\(q=1\)">\(q=1\)</span> for the trivial bundle. Formula (J.2) proves stability.</p>
+<p>On a component where the orientation is reversed, <span class="math" data-tex="\(u\)">\(u\)</span> changes to <span class="math" data-tex="\(-u\)">\(-u\)</span>. Linearity gives <span class="math" data-tex="\(P^i(-u)=-P^i(u)\)">\(P^i(-u)=-P^i(u)\)</span>, and cancelling the new Thom generator in (J.1) leaves <span class="math" data-tex="\(q_i\)">\(q_i\)</span> unchanged. For a locally varying orientation choice its sign is a degree-zero class taking values <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>. Its positive powers vanish by instability and <span class="math" data-tex="\(P^0\)">\(P^0\)</span> fixes it; Cartan gives exactly the same cancellation. ∎</p>
+<p><span id="DG-CHAR-14B.lemma-J.2"></span><strong>Lemma J.2 — An oriented two-plane.</strong> For an oriented rank-two bundle with Euler class <span class="math" data-tex="\(e\)">\(e\)</span>,
+<span class="math math-display" data-tex="\[
+q(\xi)=1+e^{\ell-1}=1+p_1(\xi)^r.
+\tag{J.3}
+\]">\[
+q(\xi)=1+e^{\ell-1}=1+p_1(\xi)^r.
+\tag{J.3}
+\]</span></p>
+<p><strong>Proof.</strong> Only <span class="math" data-tex="\(q_0,q_1\)">\(q_0,q_1\)</span> can survive instability. The top operation gives <span class="math" data-tex="\(P^1u=u^\ell\)">\(P^1u=u^\ell\)</span>. Relative multiplication is compatible with forgetting one factor to absolute cohomology; that image of <span class="math" data-tex="\(u\)">\(u\)</span> is <span class="math" data-tex="\(\pi^*e\)">\(\pi^*e\)</span>, by the Euler/zero-section calculation and the retraction of <span class="math" data-tex="\(E\)">\(E\)</span> onto <span class="math" data-tex="\(B\)">\(B\)</span>. Thus <span class="math" data-tex="\(u^2=\pi^*e\smile u\)">\(u^2=\pi^*e\smile u\)</span>, and induction gives <span class="math" data-tex="\(u^\ell=\pi^*e^{\ell-1}\smile u\)">\(u^\ell=\pi^*e^{\ell-1}\smile u\)</span>. Thom injectivity proves the first equality. The integral oriented-plane identity <span class="math" data-tex="\(p_1=e^2\)">\(p_1=e^2\)</span>, fully proved in the Pontryagin chapter, gives the second. ∎</p>
+<h3 id="j-2-the-precise-polynomials-in-pontryagin-classes">J.2. The precise polynomials in Pontryagin classes</h3>
+<p>Define integral polynomials <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> by the symmetric-root identity
+<span class="math math-display" data-tex="\[
+\prod_{j=1}^m(1+z_j^r t)
+ =\sum_{i\geq0}Q_i(e_1(z),e_2(z),\ldots)t^i .
+\tag{J.4}
+\]">\[
+\prod_{j=1}^m(1+z_j^r t)
+ =\sum_{i\geq0}Q_i(e_1(z),e_2(z),\ldots)t^i .
+\tag{J.4}
+\]</span>
+Here <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> has weight <span class="math" data-tex="\(ri\)">\(ri\)</span> when <span class="math" data-tex="\(e_j\)">\(e_j\)</span> has weight <span class="math" data-tex="\(j\)">\(j\)</span>. Existence, uniqueness and stability are the integral symmetric-polynomial theorem and the orbit-sum proof in <a href="DG-CHAR-11.html">Characteristic numbers</a>, Lemma2.1. Equivalently, the multiplicative sequence of the signature chapter for <span class="math" data-tex="\(f(z)=1+z^r\)">\(f(z)=1+z^r\)</span> has <span class="math" data-tex="\(K_{ri}=Q_i\)">\(K_{ri}=Q_i\)</span> and all weights not divisible by <span class="math" data-tex="\(r\)">\(r\)</span> zero. No division modulo <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is involved.</p>
+<p><span id="DG-CHAR-14B.theorem-J.3"></span><strong>Theorem J.3 — The odd-prime polynomial formula.</strong> For every oriented real vector bundle over a Hausdorff base,
+<span class="math math-display" data-tex="\[
+q_i(\xi)=Q_i(p_1(\xi),p_2(\xi),\ldots)\quad\text{in }H^{4ri}(B;F).
+\tag{J.5}
+\]">\[
+q_i(\xi)=Q_i(p_1(\xi),p_2(\xi),\ldots)\quad\text{in }H^{4ri}(B;F).
+\tag{J.5}
+\]</span></p>
+<p><strong>Proof on universal bundles.</strong> The full universal-ring theorem in the Pontryagin chapter, Section5, gives
+<span class="math math-display" data-tex="\[
+H^*(BSO(2m+1);F)=F[p_1,\ldots,p_m].
+\tag{J.6}
+\]">\[
+H^*(BSO(2m+1);F)=F[p_1,\ldots,p_m].
+\tag{J.6}
+\]</span>
+This theorem includes odd-characteristic fields: two is invertible, and its proof identifies the actual odd-rank image through the antipodal action. It is not merely a rational rank calculation.</p>
+<p>Classify the sum of <span class="math" data-tex="\(m\)">\(m\)</span> underlying real complex lines and one positive trivial line on <span class="math" data-tex="\((\mathbb {CP}^\infty)^m\)">\((\mathbb {CP}^\infty)^m\)</span>. If their first Chern classes are <span class="math" data-tex="\(x_j\)">\(x_j\)</span>, its Pontryagin classes pull back to <span class="math" data-tex="\(e_i(x_1^2,\ldots,x_m^2)\)">\(e_i(x_1^2,\ldots,x_m^2)\)</span>. The pullback of (J.6) is injective: the elementary symmetric functions in <span class="math" data-tex="\(z_j=x_j^2\)">\(z_j=x_j^2\)</span> are algebraically independent over <span class="math" data-tex="\(F\)">\(F\)</span>, by the coefficientwise integral symmetric-polynomial proof, and the substitution <span class="math" data-tex="\(z_j\mapsto x_j^2\)">\(z_j\mapsto x_j^2\)</span> is injective on the polynomial ring since distinct monomials stay distinct. The target is that polynomial ring in the <span class="math" data-tex="\(x_j\)">\(x_j\)</span>'s, by the projective cellular and field product calculations already proved in the Schubert and Chern chapters.</p>
+<p>Lemmas J.1–J.2 show that the same bundle has
+<span class="math" data-tex="\(q=\prod_j(1+x_j^{\ell-1})=\prod_j(1+(x_j^2)^r)\)">\(q=\prod_j(1+x_j^{\ell-1})=\prod_j(1+(x_j^2)^r)\)</span>.
+Identity (J.4) and the injectivity just proved identify its universal <span class="math" data-tex="\(q_i\)">\(q_i\)</span> with <span class="math" data-tex="\(Q_i(p)\)">\(Q_i(p)\)</span>. This proves (J.5) on every odd-rank universal bundle. Stabilize an even-rank universal bundle by a positive line, classify that sum in odd rank, and use stability of both <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span>. The formula follows in even rank too.</p>
+<p><strong>Proof for general bases, with its actual generality.</strong> On a paracompact Hausdorff base the full classifying-map construction in <a href="DG-CHAR-03.html">Grassmannians</a>, Theorem3.2, gives a map for the bundle. An orientation lifts it to the oriented Grassmannian: a local positive frame selects one of the two oriented planes continuously, and these selections agree on overlaps. Pullback of the universal formula proves (J.5) on this base.</p>
+<p>For a general Hausdorff <span class="math" data-tex="\(B\)">\(B\)</span>, test the difference of the two sides against an arbitrary singular homology cycle over <span class="math" data-tex="\(F\)">\(F\)</span>. Its finitely many singular simplices have compact image <span class="math" data-tex="\(C\subset B\)">\(C\subset B\)</span>; this is compact Hausdorff, hence paracompact by the proved compact-space partition theorem. The restricted bundle satisfies the formula just established. Its evaluation on that cycle is therefore zero. The field cochain/homology comparison in the Thom chapter is an isomorphism <span class="math" data-tex="\(H^k(B;F)\cong\operatorname{Hom}_F(H_k(B;F),F)\)">\(H^k(B;F)\cong\operatorname{Hom}_F(H_k(B;F),F)\)</span>: split cycles and boundaries in a vector-space chain complex. All zero evaluations force the difference to be zero. This proves the stated Hausdorff generality without assuming an unproved classifying map on a nonparacompact base. ∎</p>
+<p>When <span class="math" data-tex="\(\ell=3\)">\(\ell=3\)</span>, <span class="math" data-tex="\(r=1\)">\(r=1\)</span> and (J.4) gives <span class="math" data-tex="\(Q_i=p_i\)">\(Q_i=p_i\)</span>. When <span class="math" data-tex="\(\ell=5\)">\(\ell=5\)</span>, <span class="math" data-tex="\(r=2\)">\(r=2\)</span>; its first formulas are
+<span class="math math-display" data-tex="\[
+q_1=p_1^2-2p_2,\qquad
+q_2=p_2^2-2p_1p_3+2p_4.
+\tag{J.7}
+\]">\[
+q_1=p_1^2-2p_2,\qquad
+q_2=p_2^2-2p_1p_3+2p_4.
+\tag{J.7}
+\]</span>
+Indeed, if <span class="math" data-tex="\(E(t)=\prod_j(1+z_jt)=\sum_j p_jt^j\)">\(E(t)=\prod_j(1+z_jt)=\sum_j p_jt^j\)</span>, then
+<span class="math" data-tex="\(E(t)E(-t)=\prod_j(1-z_j^2t^2)\)">\(E(t)E(-t)=\prod_j(1-z_j^2t^2)\)</span>.
+Comparing its coefficient in degree <span class="math" data-tex="\(2i\)">\(2i\)</span> gives the full formula
+<span class="math math-display" data-tex="\[
+Q_i=\sum_{a+b=2i}(-1)^{i+b}p_a p_b
+\quad(r=2),\qquad p_0=1.
+\tag{J.8}
+\]">\[
+Q_i=\sum_{a+b=2i}(-1)^{i+b}p_a p_b
+\quad(r=2),\qquad p_0=1.
+\tag{J.8}
+\]</span>
+Thus the odd-prime result is a statement about these specified polynomial combinations; it is not a claim that every individual Pontryagin class is a homotopy invariant modulo every odd prime.</p>
+<h3 id="j-3-wu-classes-and-the-tangent-formula-including-the-signs">J.3. Wu classes and the tangent formula, including the signs</h3>
+<p>Let <span class="math" data-tex="\(M^d\)">\(M^d\)</span> be closed and oriented, with coefficients <span class="math" data-tex="\(F\)">\(F\)</span>. Its finite-dimensional cohomology has a perfect Poincaré pairing by the <a href="DG-CHAR-07.html">manifold chapter</a>. Define <span class="math" data-tex="\(v_i\in H^{4ri}(M;F)\)">\(v_i\in H^{4ri}(M;F)\)</span> uniquely by
+<span class="math math-display" data-tex="\[
+\langle v_i\smile x,[M]\rangle
+ =\langle P^i x,[M]\rangle,\qquad
+x\in H^{d-4ri}(M;F).
+\tag{J.9}
+\]">\[
+\langle v_i\smile x,[M]\rangle
+ =\langle P^i x,[M]\rangle,\qquad
+x\in H^{d-4ri}(M;F).
+\tag{J.9}
+\]</span>
+For degrees beyond <span class="math" data-tex="\(d\)">\(d\)</span> set <span class="math" data-tex="\(v_i=0\)">\(v_i=0\)</span>. The identity operation gives <span class="math" data-tex="\(v_0=1\)">\(v_0=1\)</span>. Instability makes
+<span class="math math-display" data-tex="\[
+v_i=0\quad\text{if }2\ell i&gt;d:
+\tag{J.10}
+\]">\[
+v_i=0\quad\text{if }2\ell i&gt;d:
+\tag{J.10}
+\]</span>
+in that range <span class="math" data-tex="\(2i&gt;d-4ri\)">\(2i&gt;d-4ri\)</span>, so the right-hand functional is zero. Put <span class="math" data-tex="\(v=\sum_i v_i\)">\(v=\sum_i v_i\)</span>.</p>
+<p><span id="DG-CHAR-14B.theorem-J.4"></span><strong>Theorem J.4 — Odd-prime Wu formula.</strong>
+<span class="math math-display" data-tex="\[
+q(TM)=P(v),\qquad
+Q_k(p(TM))=\sum_{a+b=k}P^a(v_b).
+\tag{J.11}
+\]">\[
+q(TM)=P(v),\qquad
+Q_k(p(TM))=\sum_{a+b=k}P^a(v_b).
+\tag{J.11}
+\]</span>
+The total operation <span class="math" data-tex="\(P=\sum_aP^a\)">\(P=\sum_aP^a\)</span> is interpreted in the finite-dimensional cohomology of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Proof.</strong> The diagonal's normal bundle is <span class="math" data-tex="\(TM\)">\(TM\)</span> through <span class="math" data-tex="\(w\mapsto(-w,w)\)">\(w\mapsto(-w,w)\)</span>, with the tangent-first/normal-second orientation checked by the positive determinant <span class="math" data-tex="\(2^d\)">\(2^d\)</span> in the manifold chapter. On its tube let <span class="math" data-tex="\(u\)">\(u\)</span> be its oriented relative Thom class, and let <span class="math" data-tex="\(U\in H^d(M\times M;F)\)">\(U\in H^d(M\times M;F)\)</span> be the diagonal class. Formula (J.1), naturality, tubular excision and forgetting relative cohomology give
+<span class="math math-display" data-tex="\[
+P(U)=(q(TM)\times1)\smile U.
+\tag{J.12}
+\]">\[
+P(U)=(q(TM)\times1)\smile U.
+\tag{J.12}
+\]</span>
+Both projections on the tube agree with its base map up to the tube retraction. Consequently there is no separate unproved normal-versus-tangent identification in this formula.</p>
+<p>Choose the homogeneous cup-dual bases of manifold Theorem4.1, so
+<span class="math" data-tex="\(\langle b_\alpha b_\beta^\vee,[M]\rangle=\delta_{\alpha\beta}\)">\(\langle b_\alpha b_\beta^\vee,[M]\rangle=\delta_{\alpha\beta}\)</span>.
+That theorem proves the signed formula and the slant convention
+<span class="math math-display" data-tex="\[
+U=\sum_\alpha(-1)^{|b_\alpha|}b_\alpha\times b_\alpha^\vee,\qquad
+(a\times b)/[M]=a\langle b,[M]\rangle,\qquad U/[M]=1.
+\tag{J.13}
+\]">\[
+U=\sum_\alpha(-1)^{|b_\alpha|}b_\alpha\times b_\alpha^\vee,\qquad
+(a\times b)/[M]=a\langle b,[M]\rangle,\qquad U/[M]=1.
+\tag{J.13}
+\]</span>
+Left linearity of slant in (J.12) gives <span class="math" data-tex="\(P(U)/[M]=q(TM)\)">\(P(U)/[M]=q(TM)\)</span>.</p>
+<p>For a second-factor evaluation <span class="math" data-tex="\(\langle P^j b_\alpha^\vee,[M]\rangle\)">\(\langle P^j b_\alpha^\vee,[M]\rangle\)</span> to be nonzero, its degree forces <span class="math" data-tex="\(|b_\alpha|=4rj\)">\(|b_\alpha|=4rj\)</span>. These degrees are even. Thus every term of (J.13) surviving after applying Cartan and slant has its coefficient sign equal to <span class="math" data-tex="\(+1\)">\(+1\)</span>. Definition (J.9) says exactly that
+<span class="math math-display" data-tex="\[
+v=\sum_\alpha b_\alpha
+       \langle P(b_\alpha^\vee),[M]\rangle.
+\tag{J.14}
+\]">\[
+v=\sum_\alpha b_\alpha
+       \langle P(b_\alpha^\vee),[M]\rangle.
+\tag{J.14}
+\]</span>
+To verify the coefficient, multiply by any <span class="math" data-tex="\(b_\beta^\vee\)">\(b_\beta^\vee\)</span>, evaluate, and use cup duality; in degree <span class="math" data-tex="\(4rj\)">\(4rj\)</span> the functional is precisely that of (J.9). Additivity, scalar linearity and external Cartan therefore give
+<span class="math math-display" data-tex="\[
+P(v)=\sum_\alpha P(b_\alpha)
+       \langle P(b_\alpha^\vee),[M]\rangle
+     =P(U)/[M]=q(TM).
+\]">\[
+P(v)=\sum_\alpha P(b_\alpha)
+       \langle P(b_\alpha^\vee),[M]\rangle
+     =P(U)/[M]=q(TM).
+\]</span>
+Terms of other basis degrees evaluate to zero, as just checked. Taking degree <span class="math" data-tex="\(4rk\)">\(4rk\)</span> and using Theorem J.3 proves the component formula. All sums are finite; neither an Adem relation nor a Bockstein calculation is required. ∎</p>
+<p><span id="DG-CHAR-14B.corollary-J.5"></span><strong>Corollary J.5 — The homotopy invariants.</strong> If <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span> is a homotopy equivalence of closed oriented <span class="math" data-tex="\(d\)">\(d\)</span>-manifolds, then
+<span class="math math-display" data-tex="\[
+f^*v_i(N)=v_i(M),\qquad f^*q_i(TN)=q_i(TM).
+\tag{J.15}
+\]">\[
+f^*v_i(N)=v_i(M),\qquad f^*q_i(TN)=q_i(TM).
+\tag{J.15}
+\]</span>
+There is no orientation-preservation hypothesis on <span class="math" data-tex="\(f\)">\(f\)</span>. In particular every individual <span class="math" data-tex="\(p_i(TM)\)">\(p_i(TM)\)</span> modulo <span class="math" data-tex="\(3\)">\(3\)</span> is a homotopy invariant.</p>
+<p><strong>Proof.</strong> On a connected component <span class="math" data-tex="\(f_*[M]=\epsilon[N]\)">\(f_*[M]=\epsilon[N]\)</span>, where <span class="math" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>: integral top homology is generated by its fundamental class and a homotopy equivalence induces an isomorphism. Naturality of <span class="math" data-tex="\(P^i\)">\(P^i\)</span> and products shows, for <span class="math" data-tex="\(x\in H^{d-4ri}(N;F)\)">\(x\in H^{d-4ri}(N;F)\)</span>, that
+<span class="math math-display" data-tex="\[
+\langle f^*v_i(N)\smile f^*x,[M]\rangle
+ =\epsilon\langle v_i(N)\smile x,[N]\rangle
+ =\epsilon\langle P^ix,[N]\rangle
+ =\langle P^i(f^*x),[M]\rangle.
+\]">\[
+\langle f^*v_i(N)\smile f^*x,[M]\rangle
+ =\epsilon\langle v_i(N)\smile x,[N]\rangle
+ =\epsilon\langle P^ix,[N]\rangle
+ =\langle P^i(f^*x),[M]\rangle.
+\]</span>
+Surjectivity of <span class="math" data-tex="\(f^*\)">\(f^*\)</span> and the perfect pairing identify this class with <span class="math" data-tex="\(v_i(M)\)">\(v_i(M)\)</span>. Apply <span class="math" data-tex="\(P\)">\(P\)</span> and (J.11) to obtain the second equality. A homotopy equivalence permutes components, so this proof applies with its separate signs to every component. Compact manifolds have finitely many components. In dimension zero use the canonical tangent orientation; the only possible class is <span class="math" data-tex="\(v_0=q_0=1\)">\(v_0=q_0=1\)</span>. Finally <span class="math" data-tex="\(r=1\)">\(r=1\)</span> makes <span class="math" data-tex="\(q_i=p_i\)">\(q_i=p_i\)</span>, proving the modulo-three assertion. ∎</p>
+<h3 id="j-4-a-projective-calculation-of-both-sides">J.4. A projective calculation of both sides</h3>
+<p>Let <span class="math" data-tex="\(x\in H^2(\mathbb {CP}^m;F)\)">\(x\in H^2(\mathbb {CP}^m;F)\)</span> be the positive hyperplane generator; <span class="math" data-tex="\(\langle x^m,[\mathbb {CP}^m]\rangle=1\)">\(\langle x^m,[\mathbb {CP}^m]\rangle=1\)</span>. The proved stable tangent identity is <span class="math" data-tex="\(T\mathbb {CP}^m\oplus\mathbb C\cong(m+1)H\)">\(T\mathbb {CP}^m\oplus\mathbb C\cong(m+1)H\)</span>, where <span class="math" data-tex="\(H\)">\(H\)</span> is the hyperplane line. Its underlying real Thom classes and (J.3) give
+<span class="math math-display" data-tex="\[
+q(T\mathbb {CP}^m)=(1+x^{\ell-1})^{m+1}.
+\tag{J.16}
+\]">\[
+q(T\mathbb {CP}^m)=(1+x^{\ell-1})^{m+1}.
+\tag{J.16}
+\]</span>
+Instability and the top power give <span class="math" data-tex="\(P(x)=x+x^\ell\)">\(P(x)=x+x^\ell\)</span>. Cartan then proves, for every <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+P^j(x^a)=\binom aj x^{a+(\ell-1)j}.
+\tag{J.17}
+\]">\[
+P^j(x^a)=\binom aj x^{a+(\ell-1)j}.
+\tag{J.17}
+\]</span>
+This equality includes <span class="math" data-tex="\(a=0\)">\(a=0\)</span> and <span class="math" data-tex="\(j&gt;a\)">\(j&gt;a\)</span>, with the usual zero binomial convention.</p>
+<p>The class dual in (J.9) to a potential <span class="math" data-tex="\(v_j\)">\(v_j\)</span> is <span class="math" data-tex="\(x^{m-(\ell-1)j}\)">\(x^{m-(\ell-1)j}\)</span>. Hence
+<span class="math math-display" data-tex="\[
+v_j=\binom{m-(\ell-1)j}{j}\,x^{(\ell-1)j},
+\quad 0\leq j\leq \left\lfloor\frac m\ell\right\rfloor,
+\tag{J.18}
+\]">\[
+v_j=\binom{m-(\ell-1)j}{j}\,x^{(\ell-1)j},
+\quad 0\leq j\leq \left\lfloor\frac m\ell\right\rfloor,
+\tag{J.18}
+\]</span>
+and all remaining <span class="math" data-tex="\(v_j\)">\(v_j\)</span> are zero by (J.10). The stated range makes the upper binomial entry nonnegative; it avoids using a formal negative binomial coefficient as an actual manifold pairing. Equations (J.16)–(J.18) give explicit instances of the tangent formula with all coefficient reductions understood in <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<h3 id="j-5-prime-local-coefficients-and-the-inverse-operation">J.5. Prime-local coefficients and the inverse operation</h3>
+<p>The integral polynomials <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> describe the Thom classes. The individual manifold Wu classes also have formulas through rational <span class="math" data-tex="\(L\)">\(L\)</span>, Â and Todd polynomials. Their factors of the prime must be applied before reducing coefficients.</p>
+<p>Write <span class="math" data-tex="\(\mathbb Z_{(p)}\)">\(\mathbb Z_{(p)}\)</span> for the rational numbers whose reduced denominator is prime to the prime <span class="math" data-tex="\(p\)">\(p\)</span>. Define the Todd polynomials by
+<span class="math math-display" data-tex="\[
+\prod_j\frac{x_jt}{1-e^{-x_jt}}
+ =\sum_{n\geq0}T_n(c_1,c_2,\ldots)t^n,
+\qquad c_i=e_i(x_1,x_2,\ldots).
+\]">\[
+\prod_j\frac{x_jt}{1-e^{-x_jt}}
+ =\sum_{n\geq0}T_n(c_1,c_2,\ldots)t^n,
+\qquad c_i=e_i(x_1,x_2,\ldots).
+\]</span>
+<a href="DG-CHAR-14.html">The signature chapter</a>, Theorem D.1, gives unique stable rational polynomials of weight <span class="math" data-tex="\(n\)">\(n\)</span>, with <span class="math" data-tex="\(c_i\)">\(c_i\)</span> of weight <span class="math" data-tex="\(i\)">\(i\)</span>. The first ones are <span class="math" data-tex="\(T_0=1\)">\(T_0=1\)</span>, <span class="math" data-tex="\(T_1=c_1/2\)">\(T_1=c_1/2\)</span>, <span class="math" data-tex="\(T_2=(c_1^2+c_2)/12\)">\(T_2=(c_1^2+c_2)/12\)</span>, and <span class="math" data-tex="\(T_3=c_1c_2/24\)">\(T_3=c_1c_2/24\)</span>.</p>
+<p><strong>Prime-local coefficient lemma.</strong> Every coefficient of <span class="math" data-tex="\(T_n\)">\(T_n\)</span> has <span class="math" data-tex="\(p\)">\(p\)</span>-adic valuation at least <span class="math" data-tex="\(-\lfloor n/(p-1)\rfloor\)">\(-\lfloor n/(p-1)\rfloor\)</span>. In particular <span class="math" data-tex="\(p^iT_{(p-1)i}\)">\(p^iT_{(p-1)i}\)</span> has coefficients in <span class="math" data-tex="\(\mathbb Z_{(p)}\)">\(\mathbb Z_{(p)}\)</span>. Put
+<span class="math math-display" data-tex="\[
+z_p(x)=\sum_{k\geq0}(-1)^k x^{p^k},\qquad
+F_p(x)=\frac{x}{z_p(x)}=1+z_p(x)^{p-1}
+\quad\text{in }\mathbb F_p[[x]].
+\tag{J.19}
+\]">\[
+z_p(x)=\sum_{k\geq0}(-1)^k x^{p^k},\qquad
+F_p(x)=\frac{x}{z_p(x)}=1+z_p(x)^{p-1}
+\quad\text{in }\mathbb F_p[[x]].
+\tag{J.19}
+\]</span>
+The quotient means the reciprocal of the unit series <span class="math" data-tex="\(z_p(x)/x\)">\(z_p(x)/x\)</span>. Only powers divisible by <span class="math" data-tex="\(p-1\)">\(p-1\)</span> occur in <span class="math" data-tex="\(F_p\)">\(F_p\)</span>. The coefficient of root degree <span class="math" data-tex="\((p-1)i\)">\((p-1)i\)</span> in <span class="math" data-tex="\(\prod_jF_p(x_j)\)">\(\prod_jF_p(x_j)\)</span>, expressed in elementary variables, equals <span class="math" data-tex="\(p^iT_{(p-1)i}(c)\bmod p\)">\(p^iT_{(p-1)i}(c)\bmod p\)</span>.</p>
+<p><strong>Proof.</strong> Use the finite free ring
+<span class="math math-display" data-tex="\[
+S=\mathbb Z_{(p)}[\pi]/(\pi^{p-1}-p).
+\]">\[
+S=\mathbb Z_{(p)}[\pi]/(\pi^{p-1}-p).
+\]</span>
+Division by the monic relation gives the basis <span class="math" data-tex="\(1,\pi,\ldots,\pi^{p-2}\)">\(1,\pi,\ldots,\pi^{p-2}\)</span>. The same basis embeds it in <span class="math" data-tex="\(\mathbb Q[\pi]/(\pi^{p-1}-p)\)">\(\mathbb Q[\pi]/(\pi^{p-1}-p)\)</span>, where <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is invertible. Also <span class="math" data-tex="\(S/(\pi)=\mathbb F_p\)">\(S/(\pi)=\mathbb F_p\)</span>. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(S=\mathbb Z_{(2)}\)">\(S=\mathbb Z_{(2)}\)</span> and <span class="math" data-tex="\(\pi=2\)">\(\pi=2\)</span>. If <span class="math" data-tex="\(n=(p-1)m+j\)">\(n=(p-1)m+j\)</span>, <span class="math" data-tex="\(0\leq j&lt;p-1\)">\(0\leq j&lt;p-1\)</span>, then for rational <span class="math" data-tex="\(a\)">\(a\)</span>
+<span class="math math-display" data-tex="\[
+a\pi^n\in S\quad\Longleftrightarrow\quad
+ap^m\in\mathbb Z_{(p)},
+\]">\[
+a\pi^n\in S\quad\Longleftrightarrow\quad
+ap^m\in\mathbb Z_{(p)},
+\]</span>
+because the only nonzero basis coefficient is <span class="math" data-tex="\(ap^m\)">\(ap^m\)</span> in position <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>Count the factors of <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(k!\)">\(k!\)</span>:
+<span class="math math-display" data-tex="\[
+e_p(k!)=\sum_{a\geq1}\left\lfloor k/p^a\right\rfloor
+        =\frac{k-s_p(k)}{p-1}.
+\]">\[
+e_p(k!)=\sum_{a\geq1}\left\lfloor k/p^a\right\rfloor
+        =\frac{k-s_p(k)}{p-1}.
+\]</span>
+The first equality counts a factor for each multiple of each <span class="math" data-tex="\(p^a\)">\(p^a\)</span>. Substituting the base-<span class="math" data-tex="\(p\)">\(p\)</span> expansion of <span class="math" data-tex="\(k\)">\(k\)</span> and summing its finite geometric sums gives the second; <span class="math" data-tex="\(s_p(k)\)">\(s_p(k)\)</span> is its digit sum. Hence <span class="math" data-tex="\(e_p(k!)\leq(k-1)/(p-1)\)">\(e_p(k!)\leq(k-1)/(p-1)\)</span>, with equality exactly when <span class="math" data-tex="\(k\)">\(k\)</span> is a power of <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>It follows that
+<span class="math math-display" data-tex="\[
+G(\pi x)=\frac{1-e^{-\pi x}}{\pi x}
+       =\sum_{n\geq0}\frac{(-1)^n\pi^n}{(n+1)!}x^n
+\]">\[
+G(\pi x)=\frac{1-e^{-\pi x}}{\pi x}
+       =\sum_{n\geq0}\frac{(-1)^n\pi^n}{(n+1)!}x^n
+\]</span>
+belongs to <span class="math" data-tex="\(S[[x]]\)">\(S[[x]]\)</span>. Indeed, writing <span class="math" data-tex="\((n+1)!=p^eu\)">\((n+1)!=p^eu\)</span> with <span class="math" data-tex="\(u\)">\(u\)</span> a unit in <span class="math" data-tex="\(\mathbb Z_{(p)}\)">\(\mathbb Z_{(p)}\)</span>, its coefficient is <span class="math" data-tex="\((-1)^n\pi^{n-(p-1)e}/u\)">\((-1)^n\pi^{n-(p-1)e}/u\)</span>, with nonnegative exponent. It reduces to zero modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span> unless <span class="math" data-tex="\(n+1=p^k\)">\(n+1=p^k\)</span>.</p>
+<p>The unit part of <span class="math" data-tex="\((p^k)!\)">\((p^k)!\)</span> is <span class="math" data-tex="\((-1)^k\bmod p\)">\((-1)^k\bmod p\)</span>. Separate its multiples of <span class="math" data-tex="\(p\)">\(p\)</span>, whose unit product is that of <span class="math" data-tex="\((p^{k-1})!\)">\((p^{k-1})!\)</span>, from its <span class="math" data-tex="\(p^{k-1}\)">\(p^{k-1}\)</span> blocks of nonmultiples. Each block has product <span class="math" data-tex="\((p-1)!=-1\bmod p\)">\((p-1)!=-1\bmod p\)</span>, by the inverse pairing of H.4. For odd <span class="math" data-tex="\(p\)">\(p\)</span> each step therefore changes the sign; for <span class="math" data-tex="\(p=2\)">\(p=2\)</span> the same equality holds in <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>. Starting with <span class="math" data-tex="\(1!\)">\(1!\)</span> proves the claim. Thus
+<span class="math math-display" data-tex="\[
+G(\pi x)\bmod\pi=\sum_{k\geq0}(-1)^k x^{p^k-1}=z_p(x)/x.
+\]">\[
+G(\pi x)\bmod\pi=\sum_{k\geq0}(-1)^k x^{p^k-1}=z_p(x)/x.
+\]</span>
+Its constant term is one, so reciprocal recursion in <span class="math" data-tex="\(S[[x]]\)">\(S[[x]]\)</span> proves
+<span class="math math-display" data-tex="\[
+\frac{\pi x}{1-e^{-\pi x}}\bmod\pi=F_p(x).
+\]">\[
+\frac{\pi x}{1-e^{-\pi x}}\bmod\pi=F_p(x).
+\]</span>
+The identity <span class="math" data-tex="\(z_p+z_p^p=x\)">\(z_p+z_p^p=x\)</span> proves (J.19). Its powers are multiples of <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, since this is true of <span class="math" data-tex="\(z_p/x\)">\(z_p/x\)</span>.</p>
+<p>Now form the root product. The coefficientwise symmetric-polynomial theorem over <span class="math" data-tex="\(S\)">\(S\)</span> expresses its weight-<span class="math" data-tex="\(n\)">\(n\)</span> coefficient as <span class="math" data-tex="\(\pi^nT_n(c)\)">\(\pi^nT_n(c)\)</span> with coefficients in <span class="math" data-tex="\(S\)">\(S\)</span>. The basis criterion above gives the asserted rational bound. When <span class="math" data-tex="\(n=(p-1)i\)">\(n=(p-1)i\)</span>, <span class="math" data-tex="\(\pi^n=p^i\)">\(\pi^n=p^i\)</span> is rational; its reduction modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is reduction modulo <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(\mathbb Z_{(p)}\)">\(\mathbb Z_{(p)}\)</span>. Adjoining zero roots proves stability. ∎</p>
+<p>For odd <span class="math" data-tex="\(p=\ell\)">\(p=\ell\)</span>, the even root series for the signature and Â-polynomials are
+<span class="math math-display" data-tex="\[
+f_L(x)=\frac{x}{\tanh x},\qquad
+f_{\widehat A}(x)=\frac{x}{2\sinh(x/2)}.
+\]">\[
+f_L(x)=\frac{x}{\tanh x},\qquad
+f_{\widehat A}(x)=\frac{x}{2\sinh(x/2)}.
+\]</span>
+Write <span class="math" data-tex="\(f_T(x)=x/(1-e^{-x})\)">\(f_T(x)=x/(1-e^{-x})\)</span>. Direct formal identities give
+<span class="math math-display" data-tex="\[
+f_L(x)=f_T(2x)-x,\qquad f_{\widehat A}(x)=e^{-x/2}f_T(x).
+\]">\[
+f_L(x)=f_T(2x)-x,\qquad f_{\widehat A}(x)=e^{-x/2}f_T(x).
+\]</span>
+The series <span class="math" data-tex="\(e^{-\pi x/2}\)">\(e^{-\pi x/2}\)</span> belongs to <span class="math" data-tex="\(S[[x]]\)">\(S[[x]]\)</span> and reduces to one: in positive degree <span class="math" data-tex="\(n\)">\(n\)</span>, the exponent remaining in <span class="math" data-tex="\(\pi^n/n!\)">\(\pi^n/n!\)</span> is <span class="math" data-tex="\(s_p(n)&gt;0\)">\(s_p(n)&gt;0\)</span>, and two is a unit. Moreover <span class="math" data-tex="\(\pi x\)">\(\pi x\)</span> reduces to zero and <span class="math" data-tex="\(F_p(2x)=F_p(x)\)">\(F_p(2x)=F_p(x)\)</span>, since its exponents are multiples of <span class="math" data-tex="\(p-1\)">\(p-1\)</span> and <span class="math" data-tex="\(2^{p-1}=1\bmod p\)">\(2^{p-1}=1\bmod p\)</span>. Both scaled even series therefore reduce to <span class="math" data-tex="\(F_p(x)\)">\(F_p(x)\)</span>. Their weight-<span class="math" data-tex="\(j\)">\(j\)</span> polynomials in <span class="math" data-tex="\(p_i=e_i(x_1^2,x_2^2,\ldots)\)">\(p_i=e_i(x_1^2,x_2^2,\ldots)\)</span> have root degree <span class="math" data-tex="\(2j\)">\(2j\)</span>. Applying the symmetric-polynomial theorem in squared roots proves
+<span class="math math-display" data-tex="\[
+\ell^iL_{ri},\ \ell^i\widehat A_{ri}
+ \in\mathbb Z_{(\ell)}[p_1,p_2,\ldots],\qquad
+\ell^iL_{ri}\equiv\ell^i\widehat A_{ri}\pmod\ell,
+\quad r=(\ell-1)/2.
+\tag{J.20}
+\]">\[
+\ell^iL_{ri},\ \ell^i\widehat A_{ri}
+ \in\mathbb Z_{(\ell)}[p_1,p_2,\ldots],\qquad
+\ell^iL_{ri}\equiv\ell^i\widehat A_{ri}\pmod\ell,
+\quad r=(\ell-1)/2.
+\tag{J.20}
+\]</span>
+These are coefficient statements, made before characteristic classes are substituted.</p>
+<h3 id="j-6-individual-wu-classes-in-l--â--and-todd-polynomial-coordinates">J.6. Individual Wu classes in L-, Â- and Todd-polynomial coordinates</h3>
+<p><strong>The rational-coordinate Wu formulas.</strong> On every closed oriented smooth manifold, the classes of (J.9) satisfy
+<span class="math math-display" data-tex="\[
+v_i=\ell^iL_{ri}(p(TM))
+   =\ell^i\widehat A_{ri}(p(TM))\pmod\ell.
+\tag{J.21}
+\]">\[
+v_i=\ell^iL_{ri}(p(TM))
+   =\ell^i\widehat A_{ri}(p(TM))\pmod\ell.
+\tag{J.21}
+\]</span>
+If <span class="math" data-tex="\(TM\)">\(TM\)</span> is stably complex, with the Chern classes of that stable complex structure, then
+<span class="math math-display" data-tex="\[
+v_i=\ell^iT_{(\ell-1)i}(c(TM))\pmod\ell.
+\tag{J.22}
+\]">\[
+v_i=\ell^iT_{(\ell-1)i}(c(TM))\pmod\ell.
+\tag{J.22}
+\]</span>
+An integrable complex structure is not required.</p>
+<p><strong>Proof.</strong> In the bounded graded cohomology of a closed manifold, <span class="math" data-tex="\(P=1+R\)">\(P=1+R\)</span> is a ring automorphism. Every term of <span class="math" data-tex="\(R\)">\(R\)</span> raises degree, so <span class="math" data-tex="\(R^{d+1}=0\)">\(R^{d+1}=0\)</span>, and its linear inverse is <span class="math" data-tex="\(\sum_{j=0}^d(-R)^j\)">\(\sum_{j=0}^d(-R)^j\)</span>. The inverse of a bijective ring homomorphism also preserves products. Theorem J.4 therefore determines <span class="math" data-tex="\(v=P^{-1}(q(TM))\)">\(v=P^{-1}(q(TM))\)</span> uniquely.</p>
+<p>For an oriented two-plane's degree-two Euler root <span class="math" data-tex="\(x\)">\(x\)</span>, the operation properties give <span class="math" data-tex="\(P(x)=x+x^\ell\)">\(P(x)=x+x^\ell\)</span>; J.2 gives <span class="math" data-tex="\(q=1+x^{\ell-1}\)">\(q=1+x^{\ell-1}\)</span>. Consecutive terms of the defining series cancel to give
+<span class="math math-display" data-tex="\[
+z_\ell(x)+z_\ell(x)^\ell=x,\qquad
+z_\ell(x+x^\ell)=x.
+\]">\[
+z_\ell(x)+z_\ell(x)^\ell=x,\qquad
+z_\ell(x+x^\ell)=x.
+\]</span>
+Thus <span class="math" data-tex="\(z_\ell\)">\(z_\ell\)</span> is the compositional inverse of <span class="math" data-tex="\(x+x^\ell\)">\(x+x^\ell\)</span>, and
+<span class="math math-display" data-tex="\[
+F_\ell(x+x^\ell)=1+x^{\ell-1}.
+\tag{J.23}
+\]">\[
+F_\ell(x+x^\ell)=1+x^{\ell-1}.
+\tag{J.23}
+\]</span>
+For sums of two-planes, Cartan sends <span class="math" data-tex="\(\prod_jF_\ell(x_j)\)">\(\prod_jF_\ell(x_j)\)</span> to <span class="math" data-tex="\(\prod_j(1+x_j^{\ell-1})=q\)">\(\prod_j(1+x_j^{\ell-1})=q\)</span>. The universal splitting injection established in J.3 proves the equality on every oriented bundle in each finite degree. The coefficient identifications (J.20), followed by uniqueness of <span class="math" data-tex="\(P^{-1}q\)">\(P^{-1}q\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, prove (J.21). For a complex bundle use the full flag splitting and its injective cohomology pullback from <a href="DG-CHAR-09.html">the Chern chapter</a>; the prime-local lemma identifies the same root product with the right side of (J.22). Trivial real or complex summands add only zero roots. This proves the stable complex assertion. All series terminate when evaluated on <span class="math" data-tex="\(M\)">\(M\)</span>. ∎</p>
+<p>At the prime two, write <span class="math" data-tex="\(V^j\)">\(V^j\)</span> for the usual Wu class defined by
+<span class="math math-display" data-tex="\[
+\langle V^j x,[M]_2\rangle=\langle Sq^j x,[M]_2\rangle.
+\]">\[
+\langle V^j x,[M]_2\rangle=\langle Sq^j x,[M]_2\rangle.
+\]</span>
+On every closed smooth manifold, without an orientability hypothesis,
+<span class="math math-display" data-tex="\[
+V^j=2^jT_j(w_1(TM),w_2(TM),\ldots)\pmod2.
+\tag{J.24}
+\]">\[
+V^j=2^jT_j(w_1(TM),w_2(TM),\ldots)\pmod2.
+\tag{J.24}
+\]</span>
+For oriented <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(V^{2j+1}=0\)">\(V^{2j+1}=0\)</span>. If <span class="math" data-tex="\(TM\)">\(TM\)</span> is stably complex, then
+<span class="math math-display" data-tex="\[
+V^{2j+1}=0,\qquad V^{2j}=2^jT_j(c(TM))\pmod2.
+\tag{J.25}
+\]">\[
+V^{2j+1}=0,\qquad V^{2j}=2^jT_j(c(TM))\pmod2.
+\tag{J.25}
+\]</span></p>
+<p><strong>Proof.</strong> <a href="DG-CHAR-07.html">Manifold duality</a>, Theorem 5.1, proves <span class="math" data-tex="\(w(TM)=Sq(V)\)">\(w(TM)=Sq(V)\)</span>. The total square is a ring automorphism in bounded dimension for the same degree argument. For a real line root <span class="math" data-tex="\(x\)">\(x\)</span> of degree one, <span class="math" data-tex="\(Sq(x)=x+x^2\)">\(Sq(x)=x+x^2\)</span>. The lemma at <span class="math" data-tex="\(p=2\)">\(p=2\)</span> and (J.23) give <span class="math" data-tex="\(Sq(F_2(x))=1+x\)">\(Sq(F_2(x))=1+x\)</span>. The full real splitting injection in <a href="DG-CHAR-08.html">the Gysin chapter</a> identifies <span class="math" data-tex="\(\sum_j2^jT_j(w)\)">\(\sum_j2^jT_j(w)\)</span> with the inverse square of <span class="math" data-tex="\(w\)">\(w\)</span>, proving (J.24).</p>
+<p>To check the odd components, <span class="math" data-tex="\(h(x)=e^{-x/2}f_T(x)=x/(2\sinh(x/2))\)">\(h(x)=e^{-x/2}f_T(x)=x/(2\sinh(x/2))\)</span> is even, and
+<span class="math math-display" data-tex="\[
+\prod_i f_T(x_i)=e^{c_1/2}\prod_i h(x_i).
+\]">\[
+\prod_i f_T(x_i)=e^{c_1/2}\prod_i h(x_i).
+\]</span>
+Each odd-weight coefficient of the second product vanishes. An odd-weight coefficient of the whole product therefore contains a positive odd power of <span class="math" data-tex="\(c_1\)">\(c_1\)</span>, and is divisible by <span class="math" data-tex="\(c_1\)">\(c_1\)</span> over <span class="math" data-tex="\(\mathbb Q[c]\)">\(\mathbb Q[c]\)</span>. Since <span class="math" data-tex="\(2^{2j+1}T_{2j+1}\)">\(2^{2j+1}T_{2j+1}\)</span> already has coefficients in <span class="math" data-tex="\(\mathbb Z_{(2)}\)">\(\mathbb Z_{(2)}\)</span>, its quotient by the polynomial variable <span class="math" data-tex="\(c_1\)">\(c_1\)</span> has coefficients there as well. Substitute <span class="math" data-tex="\(c_1=w_1=0\)">\(c_1=w_1=0\)</span> to obtain the orientable assertion.</p>
+<p>For a complex line root <span class="math" data-tex="\(x\)">\(x\)</span> of degree two, <span class="math" data-tex="\(Sq(x)=x+x^2\)">\(Sq(x)=x+x^2\)</span>. The identity and top square give these terms. On the universal line over <span class="math" data-tex="\(\mathbb {CP}^\infty\)">\(\mathbb {CP}^\infty\)</span>, degree-three cohomology vanishes by the projective cell calculation, so <span class="math" data-tex="\(Sq^1x=0\)">\(Sq^1x=0\)</span>. Naturality under the line classifying map proves this after splitting. The complex flag pullback is injective over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, and the underlying real bundle has <span class="math" data-tex="\(w=c\bmod2\)">\(w=c\bmod2\)</span> in even degrees and no odd classes, by the full line and splitting proof of the Chern chapter. Hence <span class="math" data-tex="\(\prod_iF_2(x_i)\)">\(\prod_iF_2(x_i)\)</span> is <span class="math" data-tex="\(Sq^{-1}w\)">\(Sq^{-1}w\)</span>; it lies in even degrees and its degree-<span class="math" data-tex="\(2j\)">\(2j\)</span> coefficient is <span class="math" data-tex="\(2^jT_j(c)\bmod2\)">\(2^jT_j(c)\bmod2\)</span>. This proves (J.25), including stable trivial summands. ∎</p>
+<p>For example, at <span class="math" data-tex="\(\ell=3\)">\(\ell=3\)</span>,
+<span class="math math-display" data-tex="\[
+v_1=p_1,\qquad v_2=(7p_2-p_1^2)/5\pmod3,
+\]">\[
+v_1=p_1,\qquad v_2=(7p_2-p_1^2)/5\pmod3,
+\]</span>
+while <span class="math" data-tex="\(q_i=p_i\)">\(q_i=p_i\)</span>. On <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span>, <span class="math" data-tex="\(p_1=5x^2\)">\(p_1=5x^2\)</span>, <span class="math" data-tex="\(p_2=10x^4\)">\(p_2=10x^4\)</span>; thus <span class="math" data-tex="\(v_1=2x^2\)">\(v_1=2x^2\)</span>, <span class="math" data-tex="\(v_2=0\)">\(v_2=0\)</span>, as in K.5. At <span class="math" data-tex="\(\ell=5\)">\(\ell=5\)</span>, <span class="math" data-tex="\(v_1=(7p_2-p_1^2)/9=p_1^2+3p_2\bmod5\)">\(v_1=(7p_2-p_1^2)/9=p_1^2+3p_2\bmod5\)</span>; on <span class="math" data-tex="\(\mathbb {CP}^{10}\)">\(\mathbb {CP}^{10}\)</span> this is <span class="math" data-tex="\(x^4\)">\(x^4\)</span>, agreeing with K.6. Every inverted denominator is prime to the coefficient prime.</p>
+<h3 id="j-7-symmetric-coordinates-and-exact-denominators">J.7. Symmetric coordinates and exact denominators</h3>
+<p>Two coordinates for Todd polynomials, studied by Buchstaber and Veselov in <em>Todd polynomials and Hirzebruch numbers</em>, expose their denominators. Here is an algebraic proof.</p>
+<p>Let <span class="math" data-tex="\(m_\lambda\)">\(m_\lambda\)</span> denote a stable monomial symmetric function, and let <span class="math" data-tex="\(e_j,h_j\)">\(e_j,h_j\)</span> be elementary and complete symmetric functions. Work in the stable ring first; in weight <span class="math" data-tex="\(n\)">\(n\)</span>, at least <span class="math" data-tex="\(n\)">\(n\)</span> root variables suffice to detect its coefficients. We impose no finite-rank relation while applying <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Their generating functions obey <span class="math" data-tex="\(E(-t)H(t)=1\)">\(E(-t)H(t)=1\)</span>. Since the <span class="math" data-tex="\(e_j\)">\(e_j\)</span> are polynomial generators, <span class="math" data-tex="\(\omega(e_j)=h_j\)">\(\omega(e_j)=h_j\)</span> defines an integer algebra homomorphism. Applying it to the reciprocal identity gives <span class="math" data-tex="\(\omega(H(t))=E(t)\)">\(\omega(H(t))=E(t)\)</span>; hence <span class="math" data-tex="\(\omega^2=1\)">\(\omega^2=1\)</span>. The forgotten functions <span class="math" data-tex="\(f_\lambda=\omega(m_\lambda)\)">\(f_\lambda=\omega(m_\lambda)\)</span> form an integer basis in each weight, since the orbit monomials do and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is an integer automorphism.</p>
+<p>The universal product identity gives
+<span class="math math-display" data-tex="\[
+\prod_{i,j}(1+x_i y_j)=\sum_\lambda m_\lambda(x)e_\lambda(y).
+\]">\[
+\prod_{i,j}(1+x_i y_j)=\sum_\lambda m_\lambda(x)e_\lambda(y).
+\]</span>
+Apply <span class="math" data-tex="\(\omega\)">\(\omega\)</span> in the <span class="math" data-tex="\(x\)">\(x\)</span> variables, sending each <span class="math" data-tex="\(E_x(y_j)\)">\(E_x(y_j)\)</span> to <span class="math" data-tex="\(H_x(y_j)\)">\(H_x(y_j)\)</span>:
+<span class="math math-display" data-tex="\[
+\prod_{i,j}(1-x_i y_j)^{-1}
+ =\sum_\lambda f_\lambda(x)e_\lambda(y).
+\tag{J.27}
+\]">\[
+\prod_{i,j}(1-x_i y_j)^{-1}
+ =\sum_\lambda f_\lambda(x)e_\lambda(y).
+\tag{J.27}
+\]</span>
+All expressions are considered in finite weight, so stable root lists cause no infinite summation issue. Specialize the polynomial generators <span class="math" data-tex="\(e_j(y)\)">\(e_j(y)\)</span> to <span class="math" data-tex="\(1/(j+1)!\)">\(1/(j+1)!\)</span>. Then
+<span class="math math-display" data-tex="\[
+H_y(t)=\left(\sum_{j\geq0}\frac{(-t)^j}{(j+1)!}\right)^{-1}
+      =\frac{t}{1-e^{-t}}.
+\]">\[
+H_y(t)=\left(\sum_{j\geq0}\frac{(-t)^j}{(j+1)!}\right)^{-1}
+      =\frac{t}{1-e^{-t}}.
+\]</span>
+The left side of (J.27) becomes the Todd root product. Its weight-<span class="math" data-tex="\(n\)">\(n\)</span> coefficient proves
+<span class="math math-display" data-tex="\[
+T_n=\sum_{|\lambda|=n}
+       \frac{f_\lambda}{\prod_j(\lambda_j+1)!}.
+\tag{J.28}
+\]">\[
+T_n=\sum_{|\lambda|=n}
+       \frac{f_\lambda}{\prod_j(\lambda_j+1)!}.
+\tag{J.28}
+\]</span>
+The exact common denominator is the least common multiple of these factorial products, because the <span class="math" data-tex="\(f_\lambda\)">\(f_\lambda\)</span> form an integer basis; both changes of basis to elementary monomials are integer matrices. For example,
+<span class="math math-display" data-tex="\[
+T_3=\frac{m_{(2,1)}+3m_{(1,1,1)}}{24}
+   =\frac{c_1c_2}{24}.
+\]">\[
+T_3=\frac{m_{(2,1)}+3m_{(1,1,1)}}{24}
+   =\frac{c_1c_2}{24}.
+\]</span></p>
+<p>To obtain factorial-free coordinates take independent formal coefficients in
+<span class="math math-display" data-tex="\[
+A(t)=t+\sum_{n\geq1}a_nt^{n+1},\qquad
+B(t)=A^{-1}(t)=t+\sum_{n\geq1}b_nt^{n+1}.
+\]">\[
+A(t)=t+\sum_{n\geq1}a_nt^{n+1},\qquad
+B(t)=A^{-1}(t)=t+\sum_{n\geq1}b_nt^{n+1}.
+\]</span>
+Successive coefficient comparison in <span class="math" data-tex="\(A(B(t))=t\)">\(A(B(t))=t\)</span> gives <span class="math" data-tex="\(b_n=-a_n\)">\(b_n=-a_n\)</span> plus an integer polynomial in lower <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, homogeneous of weight <span class="math" data-tex="\(n\)">\(n\)</span> when <span class="math" data-tex="\(a_i\)">\(a_i\)</span> has weight <span class="math" data-tex="\(i\)">\(i\)</span>. Thus
+<span class="math math-display" data-tex="\[
+b_\lambda=\sum_{|\mu|=|\lambda|}C^\lambda_\mu a_\mu,
+\qquad C^\lambda_\mu\in\mathbb Z.
+\]">\[
+b_\lambda=\sum_{|\mu|=|\lambda|}C^\lambda_\mu a_\mu,
+\qquad C^\lambda_\mu\in\mathbb Z.
+\]</span>
+Every non-diagonal term refines at least one part of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> into smaller parts. Order partitions by a linear extension of refinement. The matrix is triangular with diagonal <span class="math" data-tex="\((-1)^{\operatorname{length}(\lambda)}\)">\((-1)^{\operatorname{length}(\lambda)}\)</span>; triangular recursion gives an integer inverse. It follows that <span class="math" data-tex="\(g_\mu=\sum_\lambda C^\lambda_\mu f_\lambda\)">\(g_\mu=\sum_\lambda C^\lambda_\mu f_\lambda\)</span> is another integer basis. Specializing <span class="math" data-tex="\(A(t)=-\log(1-t)\)">\(A(t)=-\log(1-t)\)</span>, <span class="math" data-tex="\(B(t)=1-e^{-t}\)">\(B(t)=1-e^{-t}\)</span> gives <span class="math" data-tex="\(a_n=1/(n+1)\)">\(a_n=1/(n+1)\)</span>, <span class="math" data-tex="\(b_n=(-1)^n/(n+1)!\)">\(b_n=(-1)^n/(n+1)!\)</span>, and (J.28) becomes
+<span class="math math-display" data-tex="\[
+T_n=(-1)^n\sum_{|\mu|=n}
+       \frac{g_\mu}{\prod_j(\mu_j+1)}.
+\tag{J.29}
+\]">\[
+T_n=(-1)^n\sum_{|\mu|=n}
+       \frac{g_\mu}{\prod_j(\mu_j+1)}.
+\tag{J.29}
+\]</span>
+Hence the least common multiple of these products equals that of the factorial products. At weight two, <span class="math" data-tex="\(b_1=-a_1\)">\(b_1=-a_1\)</span>, <span class="math" data-tex="\(b_2=-a_2+2a_1^2\)">\(b_2=-a_2+2a_1^2\)</span>; consequently <span class="math" data-tex="\(g_{(1,1)}=f_{(1,1)}+2f_{(2)}\)">\(g_{(1,1)}=f_{(1,1)}+2f_{(2)}\)</span>, <span class="math" data-tex="\(g_{(2)}=-f_{(2)}\)">\(g_{(2)}=-f_{(2)}\)</span>, and <span class="math" data-tex="\(T_2=g_{(1,1)}/4+g_{(2)}/3\)">\(T_2=g_{(1,1)}/4+g_{(2)}/3\)</span>. The coordinates require no complex-bordism classification premise.</p>
+<p><strong>Exact Todd denominator.</strong> The least positive integer clearing every coefficient of <span class="math" data-tex="\(T_n(c_1,\ldots,c_n)\)">\(T_n(c_1,\ldots,c_n)\)</span> is
+<span class="math math-display" data-tex="\[
+d_n=\prod_{p\ \mathrm{prime}}p^{\lfloor n/(p-1)\rfloor}.
+\tag{J.26}
+\]">\[
+d_n=\prod_{p\ \mathrm{prime}}p^{\lfloor n/(p-1)\rfloor}.
+\tag{J.26}
+\]</span>
+Only primes at most <span class="math" data-tex="\(n+1\)">\(n+1\)</span> contribute; <span class="math" data-tex="\(d_0=1\)">\(d_0=1\)</span>. Its first six positive values are <span class="math" data-tex="\(2,12,24,720,1440,60480\)">\(2,12,24,720,1440,60480\)</span>.</p>
+<p><strong>Arithmetic proof.</strong> For <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, if <span class="math" data-tex="\(p^e\mid(k+1)\)">\(p^e\mid(k+1)\)</span>, then <span class="math" data-tex="\(k\geq p^e-1\geq e(p-1)\)">\(k\geq p^e-1\geq e(p-1)\)</span>. Thus the <span class="math" data-tex="\(p\)">\(p\)</span>-exponent of any product <span class="math" data-tex="\(\prod_j(\lambda_j+1)\)">\(\prod_j(\lambda_j+1)\)</span>, <span class="math" data-tex="\(|\lambda|=n\)">\(|\lambda|=n\)</span>, is at most <span class="math" data-tex="\(\lfloor n/(p-1)\rfloor\)">\(\lfloor n/(p-1)\rfloor\)</span>. A partition with that many copies of <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, and its remainder in parts smaller than <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, attains the bound. Formula (J.29)'s integer basis proves (J.26).</p>
+<p><strong>A geometric sharpness check.</strong> The stable tangent formula gives the Todd number of <span class="math" data-tex="\(\mathbb {CP}^a\)">\(\mathbb {CP}^a\)</span> as <span class="math" data-tex="\([x^a]f_T(x)^{a+1}\)">\([x^a]f_T(x)^{a+1}\)</span>. The formal residue change of variable in signature Lemma E.1, with <span class="math" data-tex="\(u=1-e^{-x}=x+O(x^2)\)">\(u=1-e^{-x}=x+O(x^2)\)</span>, <span class="math" data-tex="\(dx=du/(1-u)\)">\(dx=du/(1-u)\)</span>, gives
+<span class="math math-display" data-tex="\[
+[x^a]f_T(x)^{a+1}
+ =\operatorname{res}_{u=0}\frac{du}{u^{a+1}(1-u)}=1.
+\]">\[
+[x^a]f_T(x)^{a+1}
+ =\operatorname{res}_{u=0}\frac{du}{u^{a+1}(1-u)}=1.
+\]</span>
+This includes <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, and multiplicativity gives one for every product of projective spaces. Fix <span class="math" data-tex="\(p\)">\(p\)</span>, let <span class="math" data-tex="\(m=\lfloor n/(p-1)\rfloor&gt;0\)">\(m=\lfloor n/(p-1)\rfloor&gt;0\)</span>, and write <span class="math" data-tex="\(n=m(p-1)+a\)">\(n=m(p-1)+a\)</span>, <span class="math" data-tex="\(0\leq a&lt;p-1\)">\(0\leq a&lt;p-1\)</span>. On
+<span class="math math-display" data-tex="\[
+X=(\mathbb {CP}^{p-1})^m\times\mathbb {CP}^a
+\]">\[
+X=(\mathbb {CP}^{p-1})^m\times\mathbb {CP}^a
+\]</span>
+the first <span class="math" data-tex="\(m\)">\(m\)</span> tangent Chern products are <span class="math" data-tex="\(c=(1+x)^p\)">\(c=(1+x)^p\)</span>, truncated by <span class="math" data-tex="\(x^p=0\)">\(x^p=0\)</span>. Every positive coefficient is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>: for <span class="math" data-tex="\(0&lt;j&lt;p\)">\(0&lt;j&lt;p\)</span>, <span class="math" data-tex="\(j\binom pj=p\binom{p-1}{j-1}\)">\(j\binom pj=p\binom{p-1}{j-1}\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> is prime to <span class="math" data-tex="\(p\)">\(p\)</span>. In the total product, a term using a positive power in any of these factors carries a factor <span class="math" data-tex="\(p\)">\(p\)</span> for each such factor. A top-degree monomial Chern number uses all <span class="math" data-tex="\(m\)">\(m\)</span>, and is therefore divisible by <span class="math" data-tex="\(p^m\)">\(p^m\)</span>, including when one term uses several factors. If every coefficient of <span class="math" data-tex="\(T_n\)">\(T_n\)</span> had denominator <span class="math" data-tex="\(p\)">\(p\)</span>-exponent at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, its value on <span class="math" data-tex="\(X\)">\(X\)</span> would lie in <span class="math" data-tex="\(p\mathbb Z_{(p)}\)">\(p\mathbb Z_{(p)}\)</span>. The value is one, a contradiction. This independently checks sharpness against the prime-local bound. ∎</p>
+<p><strong>Exact L denominator.</strong> For <span class="math" data-tex="\(L_n\)">\(L_n\)</span> it is
+<span class="math math-display" data-tex="\[
+\prod_{p\ \mathrm{prime},\ p\geq3}p^{\lfloor2n/(p-1)\rfloor}
+ =\operatorname{lcm}_{|\lambda|=n}\prod_j(2\lambda_j+1).
+\tag{J.30}
+\]">\[
+\prod_{p\ \mathrm{prime},\ p\geq3}p^{\lfloor2n/(p-1)\rfloor}
+ =\operatorname{lcm}_{|\lambda|=n}\prod_j(2\lambda_j+1).
+\tag{J.30}
+\]</span></p>
+<p><strong>Proof.</strong> At an odd prime the scaled even-series proof in J.5 bounds every coefficient denominator by the stated exponent. At two, the coefficient lemma gives <span class="math" data-tex="\(f_T(2x)\in\mathbb Z_{(2)}[[x]]\)">\(f_T(2x)\in\mathbb Z_{(2)}[[x]]\)</span>; hence <span class="math" data-tex="\(f_L(x)=f_T(2x)-x\)">\(f_L(x)=f_T(2x)-x\)</span> belongs to this ring. It is even, so the symmetric-polynomial theorem in squared roots places all <span class="math" data-tex="\(L_n\)">\(L_n\)</span> coefficients in <span class="math" data-tex="\(\mathbb Z_{(2)}\)">\(\mathbb Z_{(2)}\)</span>.</p>
+<p>For sharpness at odd <span class="math" data-tex="\(p\)">\(p\)</span>, take <span class="math" data-tex="\(X=(\mathbb {CP}^{p-1})^m\times\mathbb {CP}^a\)">\(X=(\mathbb {CP}^{p-1})^m\times\mathbb {CP}^a\)</span>, with <span class="math" data-tex="\(m=\lfloor2n/(p-1)\rfloor\)">\(m=\lfloor2n/(p-1)\rfloor\)</span> and <span class="math" data-tex="\(a=2n-m(p-1)\)">\(a=2n-m(p-1)\)</span>. Both <span class="math" data-tex="\(p-1\)">\(p-1\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> are even. Every factor has signature one, so the signature theorem and multiplicativity give <span class="math" data-tex="\(\langle L_n(TX),[X]\rangle=1\)">\(\langle L_n(TX),[X]\rangle=1\)</span>. The first <span class="math" data-tex="\(m\)">\(m\)</span> factors have <span class="math" data-tex="\(p=(1+x^2)^p\)">\(p=(1+x^2)^p\)</span>, truncated by dimension; every positive coefficient is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. The same top-degree expansion makes every Pontryagin number divisible by <span class="math" data-tex="\(p^m\)">\(p^m\)</span>. A smaller coefficient denominator exponent would contradict the value one.</p>
+<p>Finally, if <span class="math" data-tex="\(p^e\mid(2k+1)\)">\(p^e\mid(2k+1)\)</span>, then <span class="math" data-tex="\(2k\geq p^e-1\geq e(p-1)\)">\(2k\geq p^e-1\geq e(p-1)\)</span>. Every product <span class="math" data-tex="\(\prod_j(2\lambda_j+1)\)">\(\prod_j(2\lambda_j+1)\)</span> therefore has <span class="math" data-tex="\(p\)">\(p\)</span>-exponent at most <span class="math" data-tex="\(\lfloor2n/(p-1)\rfloor\)">\(\lfloor2n/(p-1)\rfloor\)</span>. A partition containing that many copies of <span class="math" data-tex="\((p-1)/2\)">\((p-1)/2\)</span>, with the remaining weight in smaller parts, attains it. All products are odd. This proves the least-common-multiple formula, including <span class="math" data-tex="\(n=0\)">\(n=0\)</span> with empty product one. ∎</p>
+<h3 id="j-8-operations-and-the-gysin-map-of-an-arbitrary-closed-manifold-map">J.8. Operations and the Gysin map of an arbitrary closed-manifold map</h3>
+<p>The tangent formula also controls maps between manifolds, without requiring that the map preserve orientation or be an embedding. Let <span class="math" data-tex="\(f:Y^d\to X^e\)">\(f:Y^d\to X^e\)</span> be any continuous map between closed oriented smooth manifolds and use <span class="math" data-tex="\(\mathbb F_\ell\)">\(\mathbb F_\ell\)</span> coefficients. Define
+<span class="math math-display" data-tex="\[
+f_!:H^a(Y;F)\longrightarrow H^{a+e-d}(X;F)
+\]">\[
+f_!:H^a(Y;F)\longrightarrow H^{a+e-d}(X;F)
+\]</span>
+by the perfect-pairing identity
+<span class="math math-display" data-tex="\[
+\langle b\smile f_!a,[X]\rangle
+ =\langle f^*b\smile a,[Y]\rangle.
+\tag{J.31}
+\]">\[
+\langle b\smile f_!a,[X]\rangle
+ =\langle f^*b\smile a,[Y]\rangle.
+\tag{J.31}
+\]</span>
+Negative-degree groups are zero. Each fundamental class is the sum of the oriented component classes; the definition therefore includes disconnected or empty manifolds. The same definition works over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, with no orientations. Perfect duality proves existence and uniqueness degree by degree, the projection formula
+<span class="math" data-tex="\(f_!(f^*b\smile a)=b\smile f_!a\)">\(f_!(f^*b\smile a)=b\smile f_!a\)</span>, homotopy invariance of <span class="math" data-tex="\(f_!\)">\(f_!\)</span>, and <span class="math" data-tex="\((g f)_!=g_!f_!\)">\((g f)_!=g_!f_!\)</span>: evaluate each assertion against an arbitrary complementary class and use (J.31).</p>
+<p>Put <span class="math" data-tex="\(Q_Y=q(TY)\)">\(Q_Y=q(TY)\)</span> and <span class="math" data-tex="\(Q_X=q(TX)\)">\(Q_X=q(TX)\)</span>. These total classes have constant term one, so are units in the bounded cohomology rings. Then
+<span class="math math-display" data-tex="\[
+P(f_!a)=Q_X\smile f_!\bigl(P(a)\smile Q_Y^{-1}\bigr).
+\tag{J.32}
+\]">\[
+P(f_!a)=Q_X\smile f_!\bigl(P(a)\smile Q_Y^{-1}\bigr).
+\tag{J.32}
+\]</span>
+Over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, replace <span class="math" data-tex="\(P,Q_Y,Q_X\)">\(P,Q_Y,Q_X\)</span> by <span class="math" data-tex="\(Sq,w(TY),w(TX)\)">\(Sq,w(TY),w(TX)\)</span>. All expressions mean finite sums after evaluating on the manifolds. In particular, the correction factor here is the inverse tangent Thom class <span class="math" data-tex="\(Q_Y^{-1}\)">\(Q_Y^{-1}\)</span>; the usual Wu class in (J.9) is instead <span class="math" data-tex="\(P^{-1}(Q_Y)\)">\(P^{-1}(Q_Y)\)</span>.</p>
+<p><strong>Proof.</strong> First consider a smooth closed embedding <span class="math" data-tex="\(i:Y\hookrightarrow Z\)">\(i:Y\hookrightarrow Z\)</span>, with normal bundle <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Orient its normal by tangent followed by normal equal to the ambient orientation. The tubular and local Thom-cap proofs in <a href="DG-CHAR-07.html">Manifold duality</a>, Section 4, identify <span class="math" data-tex="\(i_!a\)">\(i_!a\)</span> with the absolute image of <span class="math" data-tex="\(\pi^*a\smile U_\nu\)">\(\pi^*a\smile U_\nu\)</span>. Indeed, subdivision for the tube/complement cover kills the complement terms, and the positive normal Thom evaluation leaves the tangent fundamental cycle. Evaluating the remaining cocycle <span class="math" data-tex="\(i^*b\smile a\)">\(i^*b\smile a\)</span> gives precisely (J.31), also for <span class="math" data-tex="\(a\)">\(a\)</span> of positive degree. Over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span> the same local argument needs no orientation.</p>
+<p>Naturality on the tube pair and relative Cartan now give
+<span class="math math-display" data-tex="\[
+P(i_!a)=i_!\bigl(P(a)\smile q(\nu)\bigr).
+\tag{J.33}
+\]">\[
+P(i_!a)=i_!\bigl(P(a)\smile q(\nu)\bigr).
+\tag{J.33}
+\]</span>
+This is the full relative Thom multiplication calculation, not an interchange of an operation with integration. The square version follows from the proved Thom definition of <span class="math" data-tex="\(w(\nu)\)">\(w(\nu)\)</span>. There are no odd-prime commutation signs because every component of <span class="math" data-tex="\(q\)">\(q\)</span> and every degree increase of <span class="math" data-tex="\(P\)">\(P\)</span> is even; signs vanish over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>.</p>
+<p>For projection <span class="math" data-tex="\(p:X\times S^N\to X\)">\(p:X\times S^N\to X\)</span>, choose positive even <span class="math" data-tex="\(N\)">\(N\)</span>. Let <span class="math" data-tex="\(u\in H^N(S^N;F)\)">\(u\in H^N(S^N;F)\)</span> evaluate to one. The field Künneth theorem writes every class uniquely as <span class="math" data-tex="\(p^*a+p^*b\smile u\)">\(p^*a+p^*b\smile u\)</span>; definition (J.31) gives <span class="math" data-tex="\(p_!(p^*a)=0\)">\(p_!(p^*a)=0\)</span> and <span class="math" data-tex="\(p_!(p^*b\smile u)=b\)">\(p_!(p^*b\smile u)=b\)</span>. Since <span class="math" data-tex="\(P(u)=u\)">\(P(u)=u\)</span> by the identity operation and dimension, and <span class="math" data-tex="\(P(1)=1\)">\(P(1)=1\)</span>, Cartan proves <span class="math" data-tex="\(P p_!=p_!P\)">\(P p_!=p_!P\)</span>. The same argument proves <span class="math" data-tex="\(Sq p_!=p_!Sq\)">\(Sq p_!=p_!Sq\)</span>. The stable tangent identity <span class="math" data-tex="\(TS^N\oplus\varepsilon^1=\varepsilon^{N+1}\)">\(TS^N\oplus\varepsilon^1=\varepsilon^{N+1}\)</span> gives <span class="math" data-tex="\(q(T(X\times S^N))=p^*Q_X\)">\(q(T(X\times S^N))=p^*Q_X\)</span>, and similarly for <span class="math" data-tex="\(w\)">\(w\)</span>.</p>
+<p>Every continuous <span class="math" data-tex="\(f\)">\(f\)</span> is homotopic to a smooth map <span class="math" data-tex="\(f_0\)">\(f_0\)</span>. Here this approximation follows directly from earlier proved constructions: embed compact <span class="math" data-tex="\(X\)">\(X\)</span> in Euclidean space and take a smooth tubular retraction. A sufficiently fine finite cover of <span class="math" data-tex="\(Y\)">\(Y\)</span>, with a smooth partition of unity, gives a smooth weighted average of the Euclidean vectors <span class="math" data-tex="\(f(y_j)\)">\(f(y_j)\)</span>, uniformly close to <span class="math" data-tex="\(f\)">\(f\)</span>. Compactness gives a positive tube radius. Both that average and its straight interpolation with <span class="math" data-tex="\(f\)">\(f\)</span> lie in the tube, so the retraction supplies <span class="math" data-tex="\(f_0\)">\(f_0\)</span> and the homotopy. The Euclidean embedding is proved in <a href="DG-CHAR-07.html">Manifold duality</a>, Lemma 3.3, and the smooth partitions in <a href="DG-CHAR-01.html">Vector bundles</a>.</p>
+<p>Embed <span class="math" data-tex="\(Y\)">\(Y\)</span> smoothly in <span class="math" data-tex="\(\mathbb R^N\)">\(\mathbb R^N\)</span>, enlarging to positive even <span class="math" data-tex="\(N\)">\(N\)</span>, and regard that embedding <span class="math" data-tex="\(j\)">\(j\)</span> as lying in the punctured sphere <span class="math" data-tex="\(S^N\)">\(S^N\)</span>. The graph
+<span class="math math-display" data-tex="\[
+i=(f_0,j):Y\hookrightarrow X\times S^N
+\]">\[
+i=(f_0,j):Y\hookrightarrow X\times S^N
+\]</span>
+is a smooth closed embedding: <span class="math" data-tex="\(j\)">\(j\)</span> is injective with injective derivative, and compactness gives a closed image and the embedding topology. Also <span class="math" data-tex="\(p i=f_0\)">\(p i=f_0\)</span>. Its tangent-normal identity and stability imply
+<span class="math math-display" data-tex="\[
+q(TY)\,q(\nu)=i^*q(T(X\times S^N))=f_0^*Q_X,
+\]">\[
+q(TY)\,q(\nu)=i^*q(T(X\times S^N))=f_0^*Q_X,
+\]</span>
+and likewise <span class="math" data-tex="\(w(TY)w(\nu)=f_0^*w(TX)\)">\(w(TY)w(\nu)=f_0^*w(TX)\)</span> modulo two. Thus <span class="math" data-tex="\(q(\nu)=f_0^*Q_X\,Q_Y^{-1}\)">\(q(\nu)=f_0^*Q_X\,Q_Y^{-1}\)</span>. Apply (J.33), commute the operation with <span class="math" data-tex="\(p_!\)">\(p_!\)</span>, use functoriality and the projection formula, and obtain (J.32). Homotopy invariance gives the statement for <span class="math" data-tex="\(f\)">\(f\)</span>. ∎</p>
+<p>For the map to a point, (J.32) becomes
+<span class="math math-display" data-tex="\[
+\langle P(a)\smile q(TY)^{-1},[Y]\rangle
+ =\langle a,[Y]\rangle.
+\]">\[
+\langle P(a)\smile q(TY)^{-1},[Y]\rangle
+ =\langle a,[Y]\rangle.
+\]</span>
+This explains the inverse-class correction in the general Gysin formula. It is compatible with the diagonal proof of (J.11), which identifies the usual Wu class by the different functional <span class="math" data-tex="\(\langle P(a),[Y]\rangle\)">\(\langle P(a),[Y]\rangle\)</span>.</p>
+<h2 id="k-exercises-with-complete-solutions">K. Exercises with complete solutions</h2>
+<p><span id="DG-CHAR-14B.exercise-K.1"></span><strong>Exercise K.1 — Easy: two stages of the cyclic resolution.</strong> In <span class="math" data-tex="\(F[C_\ell]\)">\(F[C_\ell]\)</span>, find the kernels and images of multiplication by <span class="math" data-tex="\(g-1\)">\(g-1\)</span> and by <span class="math" data-tex="\(N\)">\(N\)</span>. Compute <span class="math" data-tex="\(\Gamma(e_2)\)">\(\Gamma(e_2)\)</span>, and explain why its odd/odd part disappears on trivial coefficients.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(T=g-1\)">\(T=g-1\)</span>. The algebra is <span class="math" data-tex="\(F[T]/T^\ell\)">\(F[T]/T^\ell\)</span>, with basis <span class="math" data-tex="\(1,T,\ldots,T^{\ell-1}\)">\(1,T,\ldots,T^{\ell-1}\)</span>, and <span class="math" data-tex="\(N=T^{\ell-1}\)">\(N=T^{\ell-1}\)</span>. Multiplication by <span class="math" data-tex="\(T\)">\(T\)</span> has image <span class="math" data-tex="\((T)\)">\((T)\)</span> and kernel <span class="math" data-tex="\(F T^{\ell-1}\)">\(F T^{\ell-1}\)</span>. Multiplication by <span class="math" data-tex="\(N\)">\(N\)</span> has image <span class="math" data-tex="\(F T^{\ell-1}\)">\(F T^{\ell-1}\)</span> and kernel <span class="math" data-tex="\((T)\)">\((T)\)</span>. These identities prove exactness at both repeating stages; the augmentation kernel is <span class="math" data-tex="\((T)\)">\((T)\)</span>. Formula (G.7) gives
+<span class="math math-display" data-tex="\[
+\Gamma(e_2)=e_0\otimes e_2+e_2\otimes e_0
+ +\sum_{0\leq a&lt;b&lt;\ell}g^a e_1\otimes g^b e_1.
+\]">\[
+\Gamma(e_2)=e_0\otimes e_2+e_2\otimes e_0
+ +\sum_{0\leq a&lt;b&lt;\ell}g^a e_1\otimes g^b e_1.
+\]</span>
+With trivial coefficients each translated term becomes <span class="math" data-tex="\(e_1\otimes e_1\)">\(e_1\otimes e_1\)</span>. There are <span class="math" data-tex="\(\ell(\ell-1)/2\)">\(\ell(\ell-1)/2\)</span> terms; their coefficient is zero in <span class="math" data-tex="\(F\)">\(F\)</span>. The two even terms remain.</p>
+<p><span id="DG-CHAR-14B.exercise-K.2"></span><strong>Exercise K.2 — Easy: a power of a projective class.</strong> For the positive class <span class="math" data-tex="\(x\)">\(x\)</span> on <span class="math" data-tex="\(\mathbb {CP}^\infty\)">\(\mathbb {CP}^\infty\)</span>, compute <span class="math" data-tex="\(P^2(x^3)\)">\(P^2(x^3)\)</span> at primes <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(5\)">\(5\)</span>. Decide whether each class survives on <span class="math" data-tex="\(\mathbb {CP}^8\)">\(\mathbb {CP}^8\)</span>.</p>
+<p><strong>Solution.</strong> Cartan and <span class="math" data-tex="\(P(x)=x+x^\ell\)">\(P(x)=x+x^\ell\)</span> give
+<span class="math" data-tex="\(P^2(x^3)=\binom32x^{3+2(\ell-1)}\)">\(P^2(x^3)=\binom32x^{3+2(\ell-1)}\)</span>.
+Modulo <span class="math" data-tex="\(3\)">\(3\)</span> its coefficient is zero, so the operation is zero already on the infinite space. Modulo <span class="math" data-tex="\(5\)">\(5\)</span> it is <span class="math" data-tex="\(3x^{11}\)">\(3x^{11}\)</span>, nonzero on the infinite space, because its polynomial generator has no relation. On <span class="math" data-tex="\(\mathbb {CP}^8\)">\(\mathbb {CP}^8\)</span>, <span class="math" data-tex="\(x^{11}=0\)">\(x^{11}=0\)</span> by dimension, so this operation also vanishes there. A zero coefficient and a truncated target degree are two different calculations.</p>
+<p><span id="DG-CHAR-14B.exercise-K.3"></span><strong>Exercise K.3 — Medium: the first three polynomials at prime five.</strong> Derive <span class="math" data-tex="\(Q_1,Q_2,Q_3\)">\(Q_1,Q_2,Q_3\)</span> integrally for <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, and then reduce them modulo <span class="math" data-tex="\(5\)">\(5\)</span>. Explain why the proof does not use the division of a Newton identity by its index.</p>
+<p><strong>Solution.</strong> Compare coefficients in
+<span class="math math-display" data-tex="\[
+\Bigl(\sum_{a\geq0}p_at^a\Bigr)
+\Bigl(\sum_{b\geq0}(-1)^bp_bt^b\Bigr)
+=\sum_{i\geq0}(-1)^iQ_it^{2i}.
+\]">\[
+\Bigl(\sum_{a\geq0}p_at^a\Bigr)
+\Bigl(\sum_{b\geq0}(-1)^bp_bt^b\Bigr)
+=\sum_{i\geq0}(-1)^iQ_it^{2i}.
+\]</span>
+This gives
+<span class="math math-display" data-tex="\[
+Q_1=p_1^2-2p_2,\quad
+Q_2=p_2^2-2p_1p_3+2p_4,\quad
+Q_3=p_3^2-2p_2p_4+2p_1p_5-2p_6.
+\]">\[
+Q_1=p_1^2-2p_2,\quad
+Q_2=p_2^2-2p_1p_3+2p_4,\quad
+Q_3=p_3^2-2p_2p_4+2p_1p_5-2p_6.
+\]</span>
+These are integer polynomial identities, with <span class="math" data-tex="\(p_0=1\)">\(p_0=1\)</span>, so their coefficients may be reduced directly modulo <span class="math" data-tex="\(5\)">\(5\)</span>. Each paired off-diagonal term appears twice and the central term once; this accounts for every coefficient and sign. There is no division, including when the weight or an index is divisible by <span class="math" data-tex="\(5\)">\(5\)</span>.</p>
+<p><span id="DG-CHAR-14B.exercise-K.4"></span><strong>Exercise K.4 — Medium: orientation and a two-plane on a projective space.</strong> Let the complex line <span class="math" data-tex="\(H^{\otimes a}\)">\(H^{\otimes a}\)</span> on <span class="math" data-tex="\(\mathbb {CP}^m\)">\(\mathbb {CP}^m\)</span> have first Chern class <span class="math" data-tex="\(ax\)">\(ax\)</span>, where <span class="math" data-tex="\(a\)">\(a\)</span> is an integer and negative exponents mean powers of the dual line. For its oriented underlying real bundle compute <span class="math" data-tex="\(q\)">\(q\)</span>, including the case <span class="math" data-tex="\(\ell\mid a\)">\(\ell\mid a\)</span>, and the effect of reversing its real orientation.</p>
+<p><strong>Solution.</strong> The full Chern line rules give <span class="math" data-tex="\(e=ax\)">\(e=ax\)</span>. Lemma J.2 gives
+<span class="math math-display" data-tex="\[
+q=1+a^{\ell-1}x^{\ell-1}.
+\]">\[
+q=1+a^{\ell-1}x^{\ell-1}.
+\]</span>
+If <span class="math" data-tex="\(a=0\)">\(a=0\)</span> in <span class="math" data-tex="\(F\)">\(F\)</span>, this is <span class="math" data-tex="\(1\)">\(1\)</span>. If <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> permutes all nonzero field elements; comparison of their nonzero product gives <span class="math" data-tex="\(a^{\ell-1}=1\)">\(a^{\ell-1}=1\)</span>. Hence <span class="math" data-tex="\(q=1+x^{\ell-1}\)">\(q=1+x^{\ell-1}\)</span>, with its positive term zero if <span class="math" data-tex="\(\ell-1&gt;m\)">\(\ell-1&gt;m\)</span>. Reversing the real orientation sends <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(-e\)">\(-e\)</span>, whose even power <span class="math" data-tex="\(e^{\ell-1}\)">\(e^{\ell-1}\)</span> is unchanged. The same invariance follows directly by linearity and cancellation of the reversed Thom class in (J.1).</p>
+<p><span id="DG-CHAR-14B.exercise-K.5"></span><strong>Exercise K.5 — Hard: both sides of Wu on <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span> at prime three.</strong> Compute <span class="math" data-tex="\(v\)">\(v\)</span> directly from its defining pairing. Apply the reduced powers, compare with <span class="math" data-tex="\(q(T\mathbb {CP}^4)\)">\(q(T\mathbb {CP}^4)\)</span>, and give the individual Pontryagin classes modulo <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, <span class="math" data-tex="\(d=8\)">\(d=8\)</span>, and the bound <span class="math" data-tex="\(2\ell j\leq d\)">\(2\ell j\leq d\)</span> leaves only <span class="math" data-tex="\(j=0,1\)">\(j=0,1\)</span>. The dual test for <span class="math" data-tex="\(v_1=cx^2\)">\(v_1=cx^2\)</span> is <span class="math" data-tex="\(x^2\)">\(x^2\)</span>. Formula (J.17) gives <span class="math" data-tex="\(P^1(x^2)=2x^4\)">\(P^1(x^2)=2x^4\)</span>; its evaluation is <span class="math" data-tex="\(2\)">\(2\)</span>, hence <span class="math" data-tex="\(v=1+2x^2\)">\(v=1+2x^2\)</span>. The operations on that term are <span class="math" data-tex="\(P^0(2x^2)=2x^2\)">\(P^0(2x^2)=2x^2\)</span>, <span class="math" data-tex="\(P^1(2x^2)=4x^4=x^4\)">\(P^1(2x^2)=4x^4=x^4\)</span>, and <span class="math" data-tex="\(P^2(2x^2)=2x^6=0\)">\(P^2(2x^2)=2x^6=0\)</span> on this space. Thus
+<span class="math math-display" data-tex="\[
+P(v)=1+2x^2+x^4.
+\]">\[
+P(v)=1+2x^2+x^4.
+\]</span>
+Independently, (J.16) gives
+<span class="math" data-tex="\((1+x^2)^5=1+5x^2+10x^4=1+2x^2+x^4\)">\((1+x^2)^5=1+5x^2+10x^4=1+2x^2+x^4\)</span>
+after truncation and reduction modulo <span class="math" data-tex="\(3\)">\(3\)</span>. Since <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, <span class="math" data-tex="\(q_i=p_i\)">\(q_i=p_i\)</span>. Therefore <span class="math" data-tex="\(p_1=2x^2\)">\(p_1=2x^2\)</span>, <span class="math" data-tex="\(p_2=x^4\)">\(p_2=x^4\)</span> and all remaining positive classes vanish by dimension. This computes the pairing, the operation and the tangent polynomial separately.</p>
+<p><span id="DG-CHAR-14B.exercise-K.6"></span><strong>Exercise K.6 — Hard: a cancellation at prime five, and the information retained.</strong> Compute <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(P(v)\)">\(P(v)\)</span> on <span class="math" data-tex="\(\mathbb {CP}^{10}\)">\(\mathbb {CP}^{10}\)</span> at prime <span class="math" data-tex="\(5\)">\(5\)</span>. Verify the result from its tangent Pontryagin classes and (J.7). Finally show algebraically that all the <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>'s at this prime need not determine all the <span class="math" data-tex="\(p_i\)">\(p_i\)</span>'s; state the limit of this last observation.</p>
+<p><strong>Solution.</strong> Now <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, <span class="math" data-tex="\(d=20\)">\(d=20\)</span>, so <span class="math" data-tex="\(j\leq2\)">\(j\leq2\)</span>. Formula (J.18) gives
+<span class="math math-display" data-tex="\[
+v_1=\binom61x^4=x^4,\qquad
+v_2=\binom22x^8=x^8,\qquad v=1+x^4+x^8.
+\]">\[
+v_1=\binom61x^4=x^4,\qquad
+v_2=\binom22x^8=x^8,\qquad v=1+x^4+x^8.
+\]</span>
+By Cartan, <span class="math" data-tex="\(P^1(x^4)=4x^8\)">\(P^1(x^4)=4x^8\)</span>. All other positive contributions from <span class="math" data-tex="\(x^4\)">\(x^4\)</span> or <span class="math" data-tex="\(x^8\)">\(x^8\)</span> have exponent at least <span class="math" data-tex="\(12\)">\(12\)</span> and vanish on <span class="math" data-tex="\(\mathbb {CP}^{10}\)">\(\mathbb {CP}^{10}\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+P(v)=1+x^4+(4+1)x^8=1+x^4.
+\]">\[
+P(v)=1+x^4+(4+1)x^8=1+x^4.
+\]</span>
+The stable tangent formula gives <span class="math" data-tex="\(p=(1+x^2)^{11}\)">\(p=(1+x^2)^{11}\)</span>. Modulo <span class="math" data-tex="\(5\)">\(5\)</span>, its first four coefficients are <span class="math" data-tex="\(11=1\)">\(11=1\)</span>, <span class="math" data-tex="\(55=0\)">\(55=0\)</span>, <span class="math" data-tex="\(165=0\)">\(165=0\)</span>, <span class="math" data-tex="\(330=0\)">\(330=0\)</span>. Hence (J.7) yields <span class="math" data-tex="\(q_1=x^4\)">\(q_1=x^4\)</span>, <span class="math" data-tex="\(q_2=0\)">\(q_2=0\)</span>; higher <span class="math" data-tex="\(q_i\)">\(q_i\)</span>'s are beyond dimension. This agrees with <span class="math" data-tex="\((1+x^4)^{11}=1+x^4\)">\((1+x^4)^{11}=1+x^4\)</span> after truncation.</p>
+<p>For the algebraic observation work in <span class="math" data-tex="\(F[z]\)">\(F[z]\)</span>. The two formal root lists <span class="math" data-tex="\((z)\)">\((z)\)</span> and <span class="math" data-tex="\((-z)\)">\((-z)\)</span> have distinct first elementary functions <span class="math" data-tex="\(z,-z\)">\(z,-z\)</span>, since <span class="math" data-tex="\(2z\ne0\)">\(2z\ne0\)</span>. Their complete sequences are nevertheless both <span class="math" data-tex="\(Q(t)=1+z^2t\)">\(Q(t)=1+z^2t\)</span>; every higher <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> is zero. Thus recovering every elementary Pontryagin variable from just these polynomial combinations is impossible in general. This is a formal algebra example explaining why Theorem J.4 alone does not imply homotopy invariance of every individual <span class="math" data-tex="\(p_i\)">\(p_i\)</span> modulo <span class="math" data-tex="\(5\)">\(5\)</span>. It does not assert that these two formal lists are tangent bundles of homotopy-equivalent manifolds.</p>
+<h2 id="sources-and-scope">Sources and scope</h2>
+<p>J. Peter May, <em>A general algebraic approach to Steenrod operations</em>, <a href="https://math.uchicago.edu/~may/PAPERS/10.pdf">author-hosted text</a>, develops the equivariant algebraic construction of reduced powers, including the identity operation <span class="math" data-tex="\(P^0=1\)">\(P^0=1\)</span>. Allen Hatcher, <em>Algebraic Topology</em>, <a href="https://pi.math.cornell.edu/~hatcher/AT/AT.pdf">corrected author edition</a>, treats the operation properties and a geometric construction. John Milnor, <em>Lectures on Characteristic Classes</em>, <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnorcc.pdf">Spring1957 notes by James Stasheff</a>, relates the Thom construction to Pontryagin polynomials and homotopy invariance.</p>
+<p>Friedrich Hirzebruch, <em>On Steenrod's Reduced Powers, the Index of Inertia, and the Todd Genus</em>, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1063884/">1953 primary article</a>, states the rational-coordinate Wu formulas. Michael F. Atiyah and Friedrich Hirzebruch, <em>Cohomologie-Operationen und charakteristische Klassen</em>, <a href="https://hirzebruch.mpim-bonn.mpg.de/155/1/31_Cohomologie-Operationen%20und%20charakteristische%20Klassen.pdf">1961 primary paper</a>, supplies their prime-local coefficient and inverse-operation arguments, including the Â-polynomial expression. Victor M. Buchstaber and Alexander P. Veselov, <em>Todd polynomials and Hirzebruch numbers</em>, <a href="https://arxiv.org/html/2310.07383v2">November2023 version</a>, develops the forgotten-function and factorial-free coordinates and the exact denominators. The operations are due to Norman Steenrod; the manifold Wu construction is due to Wen-Tsün Wu, with the diagonal method also developed by René Thom.</p>
+<p>The AI authored the exposition, full chain and characteristic-class arguments, symmetric-function derivations, examples and six solved exercises, and performed the recorded mathematical self-checks.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-14.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-15.html">Next chapter</a></nav><p><a href="odd-prime-reduced-powers-and-wu-classes.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

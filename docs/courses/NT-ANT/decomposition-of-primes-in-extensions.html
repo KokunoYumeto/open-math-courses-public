@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Decomposition of primes in extensions · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="decomposition-of-primes-in-extensions">Decomposition of primes in extensions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Original material is public domain (CC0); the explicitly marked Stein adaptation and its marked cubic application are licensed CC BY-SA 3.0.</em></p>
+<p>A prime ideal of a smaller ring can become several prime ideals in a larger ring. Each resulting prime has a multiplicity and a residue field. These two pieces of information account for the whole degree of a finite extension. Polynomial factorization often reveals them, but only when the chosen generator describes the ring correctly at the prime in question.</p>
+<h2 id="what-this-lesson-assumes">What this lesson assumes</h2>
+<p>We use the ideal factorization theorem, invertibility of fractional ideals, discrete valuation localizations, and Chinese remainders from <a href="discrete-valuation-rings-and-dedekind-domains.html"><em>Discrete valuation rings and Dedekind domains</em></a>. We also use projectivity of finite torsion-free modules over a Dedekind domain and the diagonalization of matrices over a discrete valuation ring from <a href="norms-class-groups-and-modules-over-dedekind-domains.html"><em>Norms of ideals, the ideal class group, and modules over Dedekind domains</em></a>. The determinant definitions of trace and norm, integrality, and integral bases come from the first two lessons.</p>
+<p>Throughout the general part, <span class="math" data-tex="\(A\)">\(A\)</span> is a Dedekind domain, <span class="math" data-tex="\(F=\operatorname{Frac}(A)\)">\(F=\operatorname{Frac}(A)\)</span>, <span class="math" data-tex="\(L/F\)">\(L/F\)</span> is finite and separable of degree <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(B\)">\(B\)</span> is the integral closure of <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span>. Dedekind domains here are not fields. If fields are included in that convention, the closure assertion below reduces to <span class="math" data-tex="\(B=L\)">\(B=L\)</span>; the assertions about nonzero primes have no instances.</p>
+<p>We use two general algebra results with precise locators. A short exact sequence of modules of finite length has additive lengths [Stacks, Tag 00IV]. For a finite field extension <span class="math" data-tex="\(E/k\)">\(E/k\)</span>, the pairing <span class="math" data-tex="\((x,y)\mapsto\operatorname{Tr}_{E/k}(xy)\)">\((x,y)\mapsto\operatorname{Tr}_{E/k}(xy)\)</span> is nondegenerate exactly when <span class="math" data-tex="\(E/k\)">\(E/k\)</span> is separable [Stacks, Tag 0BIL]. Neither assertion requires characteristic zero.</p>
+<h2 id="the-larger-ring-is-still-dedekind">The larger ring is still Dedekind</h2>
+<p><strong>Theorem 5.1.</strong> The ring <span class="math" data-tex="\(B\)">\(B\)</span> is a finite <span class="math" data-tex="\(A\)">\(A\)</span>-module and a Dedekind domain. Its fraction field is <span class="math" data-tex="\(L\)">\(L\)</span>, and its rank over <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Proof.</strong> Any algebraic element <span class="math" data-tex="\(u\in L\)">\(u\in L\)</span> can be multiplied by a nonzero element <span class="math" data-tex="\(d\in A\)">\(d\in A\)</span> to become integral over <span class="math" data-tex="\(A\)">\(A\)</span>: choose <span class="math" data-tex="\(d\)">\(d\)</span> clearing all coefficients of a monic polynomial for <span class="math" data-tex="\(u\)">\(u\)</span> over <span class="math" data-tex="\(F\)">\(F\)</span>. If that polynomial has coefficients <span class="math" data-tex="\(c_j\)">\(c_j\)</span>, the polynomial for <span class="math" data-tex="\(du\)">\(du\)</span> has coefficients <span class="math" data-tex="\(d^jc_j\in A\)">\(d^jc_j\in A\)</span>. Scale an <span class="math" data-tex="\(F\)">\(F\)</span>-basis in this way to obtain a basis <span class="math" data-tex="\(b_1,\ldots,b_n\)">\(b_1,\ldots,b_n\)</span> contained in <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>The trace pairing on <span class="math" data-tex="\(L/F\)">\(L/F\)</span> is nondegenerate. Let
+<span class="math math-display" data-tex="\[
+G=(\operatorname{Tr}_{L/F}(b_i b_j))_{i,j}.
+\]">\[
+G=(\operatorname{Tr}_{L/F}(b_i b_j))_{i,j}.
+\]</span>
+Its entries belong to <span class="math" data-tex="\(A\)">\(A\)</span>. Indeed, the conjugates of an integral element are integral, their sum is integral, and the trace lies in <span class="math" data-tex="\(F\)">\(F\)</span>; the integral closedness of <span class="math" data-tex="\(A\)">\(A\)</span> puts it in <span class="math" data-tex="\(A\)">\(A\)</span>. For <span class="math" data-tex="\(x=\sum_i x_i b_i\in B\)">\(x=\sum_i x_i b_i\in B\)</span>, every <span class="math" data-tex="\(\operatorname{Tr}(xb_j)\)">\(\operatorname{Tr}(xb_j)\)</span> also belongs to <span class="math" data-tex="\(A\)">\(A\)</span>. Consequently its coordinate column lies in <span class="math" data-tex="\(G^{-1}A^n\)">\(G^{-1}A^n\)</span>. This is a finite <span class="math" data-tex="\(A\)">\(A\)</span>-module, isomorphic to <span class="math" data-tex="\(A^n\)">\(A^n\)</span>, and <span class="math" data-tex="\(B\)">\(B\)</span> is an <span class="math" data-tex="\(A\)">\(A\)</span>-submodule of it. Since <span class="math" data-tex="\(A\)">\(A\)</span> is Noetherian, <span class="math" data-tex="\(B\)">\(B\)</span> is a finite <span class="math" data-tex="\(A\)">\(A\)</span>-module.</p>
+<p>Every ideal of <span class="math" data-tex="\(B\)">\(B\)</span> is now finite as an <span class="math" data-tex="\(A\)">\(A\)</span>-module. The same generators generate it as a <span class="math" data-tex="\(B\)">\(B\)</span>-ideal, so <span class="math" data-tex="\(B\)">\(B\)</span> is Noetherian. Integrality is transitive: an element of <span class="math" data-tex="\(L\)">\(L\)</span> integral over <span class="math" data-tex="\(B\)">\(B\)</span> is integral over <span class="math" data-tex="\(A\)">\(A\)</span>, and hence lies in <span class="math" data-tex="\(B\)">\(B\)</span>. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is integrally closed. The denominator argument at the start gives <span class="math" data-tex="\(F B=L\)">\(F B=L\)</span>, and also gives <span class="math" data-tex="\(\operatorname{Frac}(B)=L\)">\(\operatorname{Frac}(B)=L\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathfrak Q\ne0\)">\(\mathfrak Q\ne0\)</span> be a prime of <span class="math" data-tex="\(B\)">\(B\)</span>, and choose <span class="math" data-tex="\(0\ne b\in\mathfrak Q\)">\(0\ne b\in\mathfrak Q\)</span>. The monic minimal polynomial of <span class="math" data-tex="\(b\)">\(b\)</span> over <span class="math" data-tex="\(F\)">\(F\)</span> has coefficients in <span class="math" data-tex="\(A\)">\(A\)</span>, because <span class="math" data-tex="\(A\)">\(A\)</span> is integrally closed and <span class="math" data-tex="\(b\)">\(b\)</span> is integral. Its constant coefficient <span class="math" data-tex="\(c\)">\(c\)</span> is nonzero and belongs to <span class="math" data-tex="\(bB\)">\(bB\)</span>. Therefore <span class="math" data-tex="\(0\ne c\in\mathfrak Q\cap A\)">\(0\ne c\in\mathfrak Q\cap A\)</span>. This contraction is a maximal ideal <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>. The domain <span class="math" data-tex="\(B/\mathfrak Q\)">\(B/\mathfrak Q\)</span> is finite dimensional over <span class="math" data-tex="\(A/\mathfrak p\)">\(A/\mathfrak p\)</span>. Multiplication by any nonzero element is injective and therefore surjective, so this domain is a field. Every nonzero prime of <span class="math" data-tex="\(B\)">\(B\)</span> is maximal.</p>
+<p>Finally <span class="math" data-tex="\(B\)">\(B\)</span> is not a field. Otherwise <span class="math" data-tex="\(1/a\in B\)">\(1/a\in B\)</span> for every <span class="math" data-tex="\(a\in A\setminus\{0\}\)">\(a\in A\setminus\{0\}\)</span>; since <span class="math" data-tex="\(1/a\in F\)">\(1/a\in F\)</span> is integral over <span class="math" data-tex="\(A\)">\(A\)</span>, normality would put it in <span class="math" data-tex="\(A\)">\(A\)</span>, making <span class="math" data-tex="\(A\)">\(A\)</span> a field. The proved properties characterize a Dedekind domain. Tensoring with <span class="math" data-tex="\(F\)">\(F\)</span> gives <span class="math" data-tex="\(L\)">\(L\)</span>, so the rank is <span class="math" data-tex="\(n\)">\(n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The finiteness argument uses separability in an essential place: the invertible trace matrix bounds every integral element in one finite module. No global relative integral basis was assumed.</p>
+<h2 id="multiplicity-residue-degree-and-the-fundamental-identity">Multiplicity, residue degree, and the fundamental identity</h2>
+<p>Fix a nonzero prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>. Put <span class="math" data-tex="\(\kappa=A/\mathfrak p\)">\(\kappa=A/\mathfrak p\)</span> and <span class="math" data-tex="\(R=A_{\mathfrak p}\)">\(R=A_{\mathfrak p}\)</span>. Since <span class="math" data-tex="\(B\)">\(B\)</span> is finite and torsion-free over <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(B_{\mathfrak p}=B\otimes_A R\)">\(B_{\mathfrak p}=B\otimes_A R\)</span> is free over the discrete valuation ring <span class="math" data-tex="\(R\)">\(R\)</span>, of rank <span class="math" data-tex="\(n\)">\(n\)</span>. Thus
+<span class="math math-display" data-tex="\[
+B/\mathfrak pB \cong B_{\mathfrak p}/\mathfrak pB_{\mathfrak p},
+\qquad
+\dim_\kappa(B/\mathfrak pB)=n. \tag{1}
+\]">\[
+B/\mathfrak pB \cong B_{\mathfrak p}/\mathfrak pB_{\mathfrak p},
+\qquad
+\dim_\kappa(B/\mathfrak pB)=n. \tag{1}
+\]</span>
+The first isomorphism holds because every element of <span class="math" data-tex="\(A\setminus\mathfrak p\)">\(A\setminus\mathfrak p\)</span> already acts invertibly on the <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-vector space on the left. In particular <span class="math" data-tex="\(\mathfrak pB\)">\(\mathfrak pB\)</span> is proper.</p>
+<p>Write its ideal factorization as
+<span class="math math-display" data-tex="\[
+\mathfrak pB=\prod_{i=1}^g\mathfrak P_i^{e_i}.
+\]">\[
+\mathfrak pB=\prod_{i=1}^g\mathfrak P_i^{e_i}.
+\]</span>
+Its prime divisors are exactly the primes of <span class="math" data-tex="\(B\)">\(B\)</span> over <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>: a prime containing <span class="math" data-tex="\(\mathfrak pB\)">\(\mathfrak pB\)</span> has contraction <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, and the reverse containment is immediate. Define
+<span class="math math-display" data-tex="\[
+e_i=e(\mathfrak P_i\mid\mathfrak p),
+\qquad
+f_i=f(\mathfrak P_i\mid\mathfrak p)
+=[B/\mathfrak P_i:\kappa].
+\]">\[
+e_i=e(\mathfrak P_i\mid\mathfrak p),
+\qquad
+f_i=f(\mathfrak P_i\mid\mathfrak p)
+=[B/\mathfrak P_i:\kappa].
+\]</span>
+The integer <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is the <strong>ramification index</strong>, <span class="math" data-tex="\(f_i\)">\(f_i\)</span> the <strong>residue degree</strong>, and <span class="math" data-tex="\(g\)">\(g\)</span> the number of primes above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>.</p>
+<p><strong>Theorem 5.2 (fundamental identity).</strong> With these definitions,
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^g e_i f_i=n. \tag{2}
+\]">\[
+\sum_{i=1}^g e_i f_i=n. \tag{2}
+\]</span>
+The relative norm of fractional ideals is the multiplicative homomorphism defined on prime ideals by
+<span class="math math-display" data-tex="\[
+N_{L/F}(\mathfrak P)=
+(\mathfrak P\cap A)^{f(\mathfrak P\mid\mathfrak P\cap A)}.
+\]">\[
+N_{L/F}(\mathfrak P)=
+(\mathfrak P\cap A)^{f(\mathfrak P\mid\mathfrak P\cap A)}.
+\]</span>
+For every nonzero fractional ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+N_{L/F}(\mathfrak aB)=\mathfrak a^n. \tag{3}
+\]">\[
+N_{L/F}(\mathfrak aB)=\mathfrak a^n. \tag{3}
+\]</span>
+For every <span class="math" data-tex="\(\beta\in L^\times\)">\(\beta\in L^\times\)</span>, it also satisfies
+<span class="math math-display" data-tex="\[
+N_{L/F}(\beta B)=N_{L/F}(\beta)A, \tag{4}
+\]">\[
+N_{L/F}(\beta B)=N_{L/F}(\beta)A, \tag{4}
+\]</span>
+where the norm on the right is the field norm.</p>
+<p><strong>Proof.</strong> Chinese remainders give
+<span class="math math-display" data-tex="\[
+B/\mathfrak pB\cong\prod_i B/\mathfrak P_i^{e_i}.
+\]">\[
+B/\mathfrak pB\cong\prod_i B/\mathfrak P_i^{e_i}.
+\]</span>
+Each quotient on the right has a filtration with factors
+<span class="math" data-tex="\(\mathfrak P_i^j/\mathfrak P_i^{j+1}\)">\(\mathfrak P_i^j/\mathfrak P_i^{j+1}\)</span>, for <span class="math" data-tex="\(0\leq j&lt;e_i\)">\(0\leq j&lt;e_i\)</span>.
+Such a factor is killed by <span class="math" data-tex="\(\mathfrak P_i\)">\(\mathfrak P_i\)</span>; localizing at <span class="math" data-tex="\(\mathfrak P_i\)">\(\mathfrak P_i\)</span> does not change it. In the discrete valuation ring <span class="math" data-tex="\(B_{\mathfrak P_i}\)">\(B_{\mathfrak P_i}\)</span>, it is one dimensional over <span class="math" data-tex="\(B/\mathfrak P_i\)">\(B/\mathfrak P_i\)</span>. Its dimension over <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is therefore <span class="math" data-tex="\(f_i\)">\(f_i\)</span>. Adding the dimensions of the factors and using (1) proves (2).</p>
+<p>Every nonzero prime of <span class="math" data-tex="\(B\)">\(B\)</span> contracts to a nonzero prime of <span class="math" data-tex="\(A\)">\(A\)</span>, by Theorem 5.1. Unique factorization of fractional ideals consequently makes the displayed prime assignment extend uniquely to a multiplicative homomorphism. Applying it to <span class="math" data-tex="\(\mathfrak pB\)">\(\mathfrak pB\)</span> gives <span class="math" data-tex="\(\mathfrak p^{\sum e_i f_i}=\mathfrak p^n\)">\(\mathfrak p^{\sum e_i f_i}=\mathfrak p^n\)</span>. Factoring <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span>, with arbitrary integer exponents, proves (3).</p>
+<p>For (4), first take <span class="math" data-tex="\(0\ne\beta\in B\)">\(0\ne\beta\in B\)</span>. Multiplication by <span class="math" data-tex="\(\beta\)">\(\beta\)</span> on the free <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(B_{\mathfrak p}\)">\(B_{\mathfrak p}\)</span> has determinant <span class="math" data-tex="\(N_{L/F}(\beta)\)">\(N_{L/F}(\beta)\)</span>. Diagonalization over the discrete valuation ring gives
+<span class="math math-display" data-tex="\[
+v_{\mathfrak p}(N_{L/F}(\beta))
+=\operatorname{length}_R(B_{\mathfrak p}/\beta B_{\mathfrak p}).
+\]">\[
+v_{\mathfrak p}(N_{L/F}(\beta))
+=\operatorname{length}_R(B_{\mathfrak p}/\beta B_{\mathfrak p}).
+\]</span>
+Indeed, a diagonal entry <span class="math" data-tex="\(u\pi^m\)">\(u\pi^m\)</span>, with <span class="math" data-tex="\(u\)">\(u\)</span> a unit, contributes <span class="math" data-tex="\(m\)">\(m\)</span> to both sides. On the other hand, factorization of <span class="math" data-tex="\(\beta B\)">\(\beta B\)</span>, localization at <span class="math" data-tex="\(A\setminus\mathfrak p\)">\(A\setminus\mathfrak p\)</span>, and Chinese remainders decompose this quotient into the prime-power factors at the <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> over <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Each of their successive factors is <span class="math" data-tex="\(B/\mathfrak P\)">\(B/\mathfrak P\)</span>, whose length as an <span class="math" data-tex="\(R\)">\(R\)</span>-module is its <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-dimension <span class="math" data-tex="\(f(\mathfrak P\mid\mathfrak p)\)">\(f(\mathfrak P\mid\mathfrak p)\)</span>. Additivity of length yields
+<span class="math math-display" data-tex="\[
+v_{\mathfrak p}(N_{L/F}(\beta))
+=\sum_{\mathfrak P\mid\mathfrak p}
+ f(\mathfrak P\mid\mathfrak p)\,v_{\mathfrak P}(\beta). \tag{5}
+\]">\[
+v_{\mathfrak p}(N_{L/F}(\beta))
+=\sum_{\mathfrak P\mid\mathfrak p}
+ f(\mathfrak P\mid\mathfrak p)\,v_{\mathfrak P}(\beta). \tag{5}
+\]</span>
+These are precisely the prime exponents of <span class="math" data-tex="\(N_{L/F}(\beta B)\)">\(N_{L/F}(\beta B)\)</span>. Equality at every prime of <span class="math" data-tex="\(A\)">\(A\)</span> proves (4) for integral <span class="math" data-tex="\(\beta\)">\(\beta\)</span>.</p>
+<p>For arbitrary <span class="math" data-tex="\(\beta\in L^\times\)">\(\beta\in L^\times\)</span>, choose <span class="math" data-tex="\(0\ne a\in A\)">\(0\ne a\in A\)</span> with <span class="math" data-tex="\(a\beta\in B\)">\(a\beta\in B\)</span>. Apply the integral case to <span class="math" data-tex="\(a\beta\)">\(a\beta\)</span>, use (3) for <span class="math" data-tex="\(aA\)">\(aA\)</span>, and cancel <span class="math" data-tex="\(a^n\)">\(a^n\)</span>. The field identity <span class="math" data-tex="\(N_{L/F}(a\beta)=a^nN_{L/F}(\beta)\)">\(N_{L/F}(a\beta)=a^nN_{L/F}(\beta)\)</span> gives (4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In a tower <span class="math" data-tex="\(F\subseteq L\subseteq M\)">\(F\subseteq L\subseteq M\)</span> of finite separable extensions, ideal norms are transitive. For a prime of the top integral closure, the residue degrees multiply by the field degree formula. The two successive prime-ideal assignments therefore equal the direct one, and multiplicativity extends this equality to every fractional ideal. For number fields over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, this relative ideal norm recovers the absolute norm: a prime over <span class="math" data-tex="\(p\)">\(p\)</span> has absolute norm <span class="math" data-tex="\(p^f\)">\(p^f\)</span>.</p>
+<h2 id="reading-primes-from-a-polynomial">Reading primes from a polynomial</h2>
+<p>Let <span class="math" data-tex="\(\alpha\in B\)">\(\alpha\in B\)</span> generate <span class="math" data-tex="\(L\)">\(L\)</span> over <span class="math" data-tex="\(F\)">\(F\)</span>, and let <span class="math" data-tex="\(f(X)\in A[X]\)">\(f(X)\in A[X]\)</span> be its monic minimal polynomial. The correct local condition is
+<span class="math math-display" data-tex="\[
+B_{\mathfrak p}=R[\alpha]. \tag{6}
+\]">\[
+B_{\mathfrak p}=R[\alpha]. \tag{6}
+\]</span>
+Equivalently, <span class="math" data-tex="\((B/A[\alpha])_{\mathfrak p}=0\)">\((B/A[\alpha])_{\mathfrak p}=0\)</span>. Over <span class="math" data-tex="\(A=\mathbf Z\)">\(A=\mathbf Z\)</span> this says that the rational prime <span class="math" data-tex="\(p\)">\(p\)</span> does not divide the integer index <span class="math" data-tex="\([B:\mathbf Z[\alpha]]\)">\([B:\mathbf Z[\alpha]]\)</span>. Over a general ring of integers, the quotient is a torsion <span class="math" data-tex="\(A\)">\(A\)</span>-module; its vanishing at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, rather than divisibility of an unspecified integer index, is the condition to use.</p>
+<h3 id="an-ideal-valued-index">An ideal-valued index</h3>
+<p>There is a precise ideal that measures the failure of this power order. Put <span class="math" data-tex="\(C=A[\alpha]\)">\(C=A[\alpha]\)</span>. Division by the monic minimal polynomial shows that <span class="math" data-tex="\(1,\alpha,\ldots,\alpha^{n-1}\)">\(1,\alpha,\ldots,\alpha^{n-1}\)</span> span <span class="math" data-tex="\(C\)">\(C\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>; they are independent over <span class="math" data-tex="\(F\)">\(F\)</span>, so they form an <span class="math" data-tex="\(A\)">\(A\)</span>-basis. Thus <span class="math" data-tex="\(C\subseteq B\)">\(C\subseteq B\)</span> is an inclusion of finite torsion-free modules of the same rank. Its quotient <span class="math" data-tex="\(T=B/C\)">\(T=B/C\)</span> is finite as an <span class="math" data-tex="\(A\)">\(A\)</span>-module and torsion, because tensoring with <span class="math" data-tex="\(F\)">\(F\)</span> gives zero. The torsion classification in the preceding lesson gives its complete primary decomposition:
+<span class="math math-display" data-tex="\[
+T\cong\bigoplus_{\mathfrak q}\bigoplus_j
+A/\mathfrak q^{a_{\mathfrak q,j}},
+\qquad a_{\mathfrak q,j}\geq1.
+\]">\[
+T\cong\bigoplus_{\mathfrak q}\bigoplus_j
+A/\mathfrak q^{a_{\mathfrak q,j}},
+\qquad a_{\mathfrak q,j}\geq1.
+\]</span>
+There are only finitely many summands. Define the <strong>index ideal</strong>
+<span class="math math-display" data-tex="\[
+\mathfrak i(C,B)=
+\prod_{\mathfrak q}\mathfrak q^{\sum_j a_{\mathfrak q,j}}.
+\tag{6a}
+\]">\[
+\mathfrak i(C,B)=
+\prod_{\mathfrak q}\mathfrak q^{\sum_j a_{\mathfrak q,j}}.
+\tag{6a}
+\]</span>
+The empty product is <span class="math" data-tex="\(A\)">\(A\)</span> when <span class="math" data-tex="\(C=B\)">\(C=B\)</span>. Its exponent at <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> is the length of <span class="math" data-tex="\(T_{\mathfrak q}\)">\(T_{\mathfrak q}\)</span> over <span class="math" data-tex="\(A_{\mathfrak q}\)">\(A_{\mathfrak q}\)</span>: each <span class="math" data-tex="\(A_{\mathfrak q}/\mathfrak q^a A_{\mathfrak q}\)">\(A_{\mathfrak q}/\mathfrak q^a A_{\mathfrak q}\)</span> has <span class="math" data-tex="\(a\)">\(a\)</span> residue-field factors. Summands at other primes vanish upon localization. Consequently (6) is equivalent to
+<span class="math math-display" data-tex="\[
+\mathfrak p\nmid\mathfrak i(C,B).
+\]">\[
+\mathfrak p\nmid\mathfrak i(C,B).
+\]</span>
+For <span class="math" data-tex="\(A=\mathbf Z\)">\(A=\mathbf Z\)</span>, the positive generator of this ideal is the integer index. For a general Dedekind domain it is an ideal, and the full quotient decomposition records more than that ideal: <span class="math" data-tex="\(A/\mathfrak q^2\)">\(A/\mathfrak q^2\)</span> and <span class="math" data-tex="\((A/\mathfrak q)^2\)">\((A/\mathfrak q)^2\)</span> both give <span class="math" data-tex="\(\mathfrak q^2\)">\(\mathfrak q^2\)</span>, but have different first residue-filtration dimensions.</p>
+<p>The <a href="norms-class-groups-and-modules-over-dedekind-domains.html#determinants-and-the-index-of-a-submodule">determinant inclusion proved in the preceding lesson</a> applies to this same quotient. In the common exterior-power line it gives
+<span class="math math-display" data-tex="\[
+\operatorname{im}\bigl(\bigwedge_A^n C\longrightarrow\bigwedge_A^n B\bigr)
+=\mathfrak i(C,B)\bigwedge_A^n B,
+\qquad
+\operatorname{St}(C)=[\mathfrak i(C,B)]\operatorname{St}(B).
+\]">\[
+\operatorname{im}\bigl(\bigwedge_A^n C\longrightarrow\bigwedge_A^n B\bigr)
+=\mathfrak i(C,B)\bigwedge_A^n B,
+\qquad
+\operatorname{St}(C)=[\mathfrak i(C,B)]\operatorname{St}(B).
+\]</span>
+Since <span class="math" data-tex="\(C\)">\(C\)</span> is free, its Steinitz class is the identity. Hence
+<span class="math math-display" data-tex="\[
+[\mathfrak i(C,B)]\operatorname{St}(B)=1.
+\tag{6b}
+\]">\[
+[\mathfrak i(C,B)]\operatorname{St}(B)=1.
+\tag{6b}
+\]</span>
+This is a constraint on every power order inside <span class="math" data-tex="\(B\)">\(B\)</span>; it uses no global basis for <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Theorem 5.3 (Kummer–Dedekind).</strong> Suppose (6) holds and
+<span class="math math-display" data-tex="\[
+\overline f=\prod_{i=1}^g \overline g_i^{\,m_i}
+\quad\text{in }\kappa[X],
+\]">\[
+\overline f=\prod_{i=1}^g \overline g_i^{\,m_i}
+\quad\text{in }\kappa[X],
+\]</span>
+where the <span class="math" data-tex="\(\overline g_i\)">\(\overline g_i\)</span> are distinct monic irreducible polynomials. Choose monic lifts <span class="math" data-tex="\(g_i\in A[X]\)">\(g_i\in A[X]\)</span>. Then
+<span class="math math-display" data-tex="\[
+\mathfrak pB=\prod_i\mathfrak P_i^{m_i},
+\qquad
+\mathfrak P_i=\mathfrak pB+g_i(\alpha)B,
+\qquad
+f(\mathfrak P_i\mid\mathfrak p)=\deg\overline g_i. \tag{7}
+\]">\[
+\mathfrak pB=\prod_i\mathfrak P_i^{m_i},
+\qquad
+\mathfrak P_i=\mathfrak pB+g_i(\alpha)B,
+\qquad
+f(\mathfrak P_i\mid\mathfrak p)=\deg\overline g_i. \tag{7}
+\]</span></p>
+<p><strong>Proof.</strong> Polynomial division by the monic <span class="math" data-tex="\(f\)">\(f\)</span> shows that <span class="math" data-tex="\(R[\alpha]\cong R[X]/(f)\)">\(R[\alpha]\cong R[X]/(f)\)</span>: a remainder of degree less than <span class="math" data-tex="\(n\)">\(n\)</span> vanishing at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is zero over <span class="math" data-tex="\(F\)">\(F\)</span>, and hence over <span class="math" data-tex="\(R\)">\(R\)</span>. Reducing (6) gives
+<span class="math math-display" data-tex="\[
+C:=B/\mathfrak pB\cong\kappa[X]/(\overline f)
+\cong\prod_i\kappa[X]/(\overline g_i^{\,m_i}). \tag{8}
+\]">\[
+C:=B/\mathfrak pB\cong\kappa[X]/(\overline f)
+\cong\prod_i\kappa[X]/(\overline g_i^{\,m_i}). \tag{8}
+\]</span>
+The maximal ideals of <span class="math" data-tex="\(C\)">\(C\)</span> are the inverse images of the ideals generated by <span class="math" data-tex="\(\overline g_i\)">\(\overline g_i\)</span> in these factors. In <span class="math" data-tex="\(B\)">\(B\)</span>, these inverse images are exactly the displayed <span class="math" data-tex="\(\mathfrak P_i\)">\(\mathfrak P_i\)</span>, and their residue fields are <span class="math" data-tex="\(\kappa[X]/(\overline g_i)\)">\(\kappa[X]/(\overline g_i)\)</span>. This proves primality, completeness of the list, and the residue degree.</p>
+<p>It remains to identify the exponents, rather than just their sum. The local factor <span class="math" data-tex="\(\kappa[X]/(\overline g_i^{\,m_i})\)">\(\kappa[X]/(\overline g_i^{\,m_i})\)</span> has maximal ideal generated by <span class="math" data-tex="\(\overline g_i\)">\(\overline g_i\)</span>. Its nilpotency index is exactly <span class="math" data-tex="\(m_i\)">\(m_i\)</span>: its <span class="math" data-tex="\(m_i\)">\(m_i\)</span>-th power is zero and its <span class="math" data-tex="\((m_i-1)\)">\((m_i-1)\)</span>-st power is nonzero. From the ideal factorization in Theorem 5.2, the same local factor is <span class="math" data-tex="\(B/\mathfrak P_i^{e_i}\)">\(B/\mathfrak P_i^{e_i}\)</span>. Localizing at <span class="math" data-tex="\(\mathfrak P_i\)">\(\mathfrak P_i\)</span>, its maximal ideal is generated by a uniformizer and has nilpotency index exactly <span class="math" data-tex="\(e_i\)">\(e_i\)</span>. Thus <span class="math" data-tex="\(e_i=m_i\)">\(e_i=m_i\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The notation <span class="math" data-tex="\((\mathfrak p,g_i(\alpha))\)">\((\mathfrak p,g_i(\alpha))\)</span> in this theorem denotes an ideal of the full ring <span class="math" data-tex="\(B\)">\(B\)</span>. A repeated factor of a polynomial is evidence of ramification only after the local condition (6) has been checked.</p>
+<h2 id="discriminants-detect-ramification">Discriminants detect ramification</h2>
+<p>A prime <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is <strong>unramified</strong> when
+<span class="math math-display" data-tex="\[
+e(\mathfrak P\mid\mathfrak p)=1
+\quad\text{and}\quad
+B/\mathfrak P\text{ is separable over }\kappa.
+\]">\[
+e(\mathfrak P\mid\mathfrak p)=1
+\quad\text{and}\quad
+B/\mathfrak P\text{ is separable over }\kappa.
+\]</span>
+The prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is unramified in <span class="math" data-tex="\(B\)">\(B\)</span> when all primes above it are unramified. Otherwise it ramifies. Over finite residue fields the separability condition is automatic; over imperfect fields it is part of the definition.</p>
+<p>For completeness, a finite field of characteristic <span class="math" data-tex="\(p\)">\(p\)</span> has bijective Frobenius <span class="math" data-tex="\(x\mapsto x^p\)">\(x\mapsto x^p\)</span>. If an irreducible polynomial over it had derivative zero, all its exponents would be divisible by <span class="math" data-tex="\(p\)">\(p\)</span>; taking <span class="math" data-tex="\(p\)">\(p\)</span>-th roots of its coefficients would express it as a <span class="math" data-tex="\(p\)">\(p\)</span>-th power, a contradiction. Thus its finite field extensions are separable.</p>
+<p>For an <span class="math" data-tex="\(F\)">\(F\)</span>-basis <span class="math" data-tex="\(c_1,\ldots,c_n\)">\(c_1,\ldots,c_n\)</span> contained in <span class="math" data-tex="\(B\)">\(B\)</span>, put
+<span class="math math-display" data-tex="\[
+\operatorname{disc}(c_1,\ldots,c_n)
+=\det(\operatorname{Tr}_{L/F}(c_i c_j)).
+\]">\[
+\operatorname{disc}(c_1,\ldots,c_n)
+=\det(\operatorname{Tr}_{L/F}(c_i c_j)).
+\]</span>
+These nonzero elements lie in <span class="math" data-tex="\(A\)">\(A\)</span>. The <strong>relative discriminant ideal</strong>
+<span class="math" data-tex="\(\mathfrak d_{B/A}\)">\(\mathfrak d_{B/A}\)</span> is the ideal they generate. This definition works even when <span class="math" data-tex="\(B\)">\(B\)</span> has no basis over <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>At <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, choose an <span class="math" data-tex="\(R\)">\(R\)</span>-basis <span class="math" data-tex="\(u_1,\ldots,u_n\)">\(u_1,\ldots,u_n\)</span> of <span class="math" data-tex="\(B_{\mathfrak p}\)">\(B_{\mathfrak p}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\mathfrak d_{B/A}R
+=\operatorname{disc}(u_1,\ldots,u_n)R. \tag{9}
+\]">\[
+\mathfrak d_{B/A}R
+=\operatorname{disc}(u_1,\ldots,u_n)R. \tag{9}
+\]</span>
+Every tuple from <span class="math" data-tex="\(B\)">\(B\)</span> has coordinates in <span class="math" data-tex="\(R\)">\(R\)</span>; the change of basis formula multiplies the discriminant by the square of its determinant in <span class="math" data-tex="\(R\)">\(R\)</span>. This proves one containment. Conversely, multiply each <span class="math" data-tex="\(u_i\)">\(u_i\)</span> by a denominator in <span class="math" data-tex="\(A\setminus\mathfrak p\)">\(A\setminus\mathfrak p\)</span> to obtain elements of <span class="math" data-tex="\(B\)">\(B\)</span>. They form an <span class="math" data-tex="\(F\)">\(F\)</span>-basis, and their discriminant differs from that of the <span class="math" data-tex="\(u_i\)">\(u_i\)</span> by a unit of <span class="math" data-tex="\(R\)">\(R\)</span>. This proves the other containment.</p>
+<h3 id="the-square-of-the-index-ideal">The square of the index ideal</h3>
+<p>For the power order <span class="math" data-tex="\(C=A[\alpha]\)">\(C=A[\alpha]\)</span> just considered, put
+<span class="math" data-tex="\(\Delta_\alpha=\operatorname{disc}(1,\alpha,\ldots,\alpha^{n-1})\)">\(\Delta_\alpha=\operatorname{disc}(1,\alpha,\ldots,\alpha^{n-1})\)</span>.
+The relative form of the discriminant index formula is
+<span class="math math-display" data-tex="\[
+\Delta_\alpha A=\mathfrak i(C,B)^2\mathfrak d_{B/A}.
+\tag{9a}
+\]">\[
+\Delta_\alpha A=\mathfrak i(C,B)^2\mathfrak d_{B/A}.
+\tag{9a}
+\]</span></p>
+<p><strong>Proof.</strong> Localize at any nonzero prime <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>. Choose a basis <span class="math" data-tex="\(u_1,\ldots,u_n\)">\(u_1,\ldots,u_n\)</span> of the free <span class="math" data-tex="\(A_{\mathfrak q}\)">\(A_{\mathfrak q}\)</span>-module <span class="math" data-tex="\(B_{\mathfrak q}\)">\(B_{\mathfrak q}\)</span>, and let <span class="math" data-tex="\(M_{\mathfrak q}\)">\(M_{\mathfrak q}\)</span> have as columns the coordinates of <span class="math" data-tex="\(1,\alpha,\ldots,\alpha^{n-1}\)">\(1,\alpha,\ldots,\alpha^{n-1}\)</span> in this basis. Its entries belong to <span class="math" data-tex="\(A_{\mathfrak q}\)">\(A_{\mathfrak q}\)</span> and its determinant is nonzero. Diagonalizing the inclusion over this discrete valuation ring gives diagonal entries <span class="math" data-tex="\(u_i&#x27;\pi^{b_i}\)">\(u_i&#x27;\pi^{b_i}\)</span>, where the <span class="math" data-tex="\(u_i&#x27;\)">\(u_i&#x27;\)</span> are units and <span class="math" data-tex="\(b_i\geq0\)">\(b_i\geq0\)</span>. Its cokernel is the sum of <span class="math" data-tex="\(A_{\mathfrak q}/\pi^{b_i}A_{\mathfrak q}\)">\(A_{\mathfrak q}/\pi^{b_i}A_{\mathfrak q}\)</span>; its positive exponents are exactly the <span class="math" data-tex="\(a_{\mathfrak q,j}\)">\(a_{\mathfrak q,j}\)</span> retained in (6a). Therefore
+<span class="math math-display" data-tex="\[
+v_{\mathfrak q}(\det M_{\mathfrak q})
+=\sum_i b_i
+=\sum_j a_{\mathfrak q,j}
+=v_{\mathfrak q}(\mathfrak i(C,B)).
+\]">\[
+v_{\mathfrak q}(\det M_{\mathfrak q})
+=\sum_i b_i
+=\sum_j a_{\mathfrak q,j}
+=v_{\mathfrak q}(\mathfrak i(C,B)).
+\]</span>
+If <span class="math" data-tex="\(G_{\mathfrak q}=(\operatorname{Tr}_{L/F}(u_i u_j))\)">\(G_{\mathfrak q}=(\operatorname{Tr}_{L/F}(u_i u_j))\)</span>, bilinearity makes the power-basis Gram matrix exactly
+<span class="math" data-tex="\(M_{\mathfrak q}^{\,t}G_{\mathfrak q}M_{\mathfrak q}\)">\(M_{\mathfrak q}^{\,t}G_{\mathfrak q}M_{\mathfrak q}\)</span>.
+Taking determinants gives
+<span class="math math-display" data-tex="\[
+\Delta_\alpha=(\det M_{\mathfrak q})^2\det G_{\mathfrak q}.
+\]">\[
+\Delta_\alpha=(\det M_{\mathfrak q})^2\det G_{\mathfrak q}.
+\]</span>
+Formula (9) identifies <span class="math" data-tex="\((\det G_{\mathfrak q})A_{\mathfrak q}\)">\((\det G_{\mathfrak q})A_{\mathfrak q}\)</span> with <span class="math" data-tex="\(\mathfrak d_{B/A}A_{\mathfrak q}\)">\(\mathfrak d_{B/A}A_{\mathfrak q}\)</span>. We have proved (9a) at every nonzero prime. Unique factorization of ideals proves the global equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Passing to ideal classes in (9a), and then using (6b), gives the exact direction of the relation:
+<span class="math math-display" data-tex="\[
+1=[\mathfrak i(C,B)]^2[\mathfrak d_{B/A}],
+\qquad
+[\mathfrak d_{B/A}]=\operatorname{St}(B)^2.
+\tag{9b}
+\]">\[
+1=[\mathfrak i(C,B)]^2[\mathfrak d_{B/A}],
+\qquad
+[\mathfrak d_{B/A}]=\operatorname{St}(B)^2.
+\tag{9b}
+\]</span>
+In particular the relative discriminant ideal need not be principal; its class is the square of the integral closure's Steinitz class. For extensions of number fields, <a href="the-different-and-the-discriminant.html#norm-and-discriminant"><em>The different and the discriminant</em>, Theorem 14.3</a>, later proves
+<span class="math" data-tex="\(\mathfrak d_{B/A}=N_{L/F}(\mathfrak D_{B/A})\)">\(\mathfrak d_{B/A}=N_{L/F}(\mathfrak D_{B/A})\)</span>.
+Thus (9b) will also identify the class of that norm. The proof here uses only the trace Gram matrix and the preceding module theorem, so the later different theorem is a consequence to connect, rather than a prerequisite.</p>
+<p>We need the following elementary bridge between algebras and trace forms.</p>
+<p><strong>Trace lemma.</strong> If <span class="math" data-tex="\(C\)">\(C\)</span> is a finite dimensional commutative algebra over a field <span class="math" data-tex="\(k\)">\(k\)</span>, the pairing
+<span class="math math-display" data-tex="\[
+(x,y)\longmapsto\operatorname{Tr}_k(m_{xy})
+\]">\[
+(x,y)\longmapsto\operatorname{Tr}_k(m_{xy})
+\]</span>
+is nondegenerate exactly when <span class="math" data-tex="\(C\)">\(C\)</span> is a product of finite separable field extensions of <span class="math" data-tex="\(k\)">\(k\)</span>. Here <span class="math" data-tex="\(m_z\)">\(m_z\)</span> means multiplication by <span class="math" data-tex="\(z\)">\(z\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><strong>Proof.</strong> A nilpotent <span class="math" data-tex="\(z\in C\)">\(z\in C\)</span> satisfies <span class="math" data-tex="\((zx)^r=0\)">\((zx)^r=0\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span> and some <span class="math" data-tex="\(r\)">\(r\)</span>. Thus <span class="math" data-tex="\(m_{zx}\)">\(m_{zx}\)</span> is nilpotent and has trace zero. If the pairing is nondegenerate, <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, so <span class="math" data-tex="\(C\)">\(C\)</span> is reduced.</p>
+<p>Every prime ideal of <span class="math" data-tex="\(C\)">\(C\)</span> is maximal: its quotient is a finite dimensional domain over <span class="math" data-tex="\(k\)">\(k\)</span>, hence a field. There are only finitely many maximal ideals. Indeed, Chinese remainders for any finite list of distinct ones give a surjection onto the product of their residue fields; the length of such a list is at most <span class="math" data-tex="\(\dim_k C\)">\(\dim_k C\)</span>.</p>
+<p>Their intersection is the nilradical. To see the nontrivial direction, if <span class="math" data-tex="\(z\)">\(z\)</span> is not nilpotent, <span class="math" data-tex="\(C[1/z]\ne0\)">\(C[1/z]\ne0\)</span>. A maximal ideal of this ring pulls back to a prime ideal of <span class="math" data-tex="\(C\)">\(C\)</span> avoiding <span class="math" data-tex="\(z\)">\(z\)</span>, which is a maximal ideal by the preceding paragraph. For reduced <span class="math" data-tex="\(C\)">\(C\)</span>, the intersection is therefore zero. Chinese remainders identify <span class="math" data-tex="\(C\)">\(C\)</span> with the product of its residue fields.</p>
+<p>On a product of fields, multiplication matrices and trace pairings are block diagonal. A block is nondegenerate exactly when its field extension is separable [Stacks, Tag 0BIL]. This proves both directions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.4 (discriminant criterion).</strong> The following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is unramified in <span class="math" data-tex="\(B\)">\(B\)</span>.</li>
+<li><span class="math" data-tex="\(B/\mathfrak pB\)">\(B/\mathfrak pB\)</span> is a product of finite separable extensions of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</li>
+<li>The trace pairing of the <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-algebra <span class="math" data-tex="\(B/\mathfrak pB\)">\(B/\mathfrak pB\)</span> is nondegenerate.</li>
+<li><span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> does not divide <span class="math" data-tex="\(\mathfrak d_{B/A}\)">\(\mathfrak d_{B/A}\)</span>.</li>
+</ol>
+<p>Only finitely many primes of <span class="math" data-tex="\(A\)">\(A\)</span> ramify in <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> Chinese remainders express <span class="math" data-tex="\(B/\mathfrak pB\)">\(B/\mathfrak pB\)</span> as the product of <span class="math" data-tex="\(B/\mathfrak P_i^{e_i}\)">\(B/\mathfrak P_i^{e_i}\)</span>. A factor is reduced exactly when <span class="math" data-tex="\(e_i=1\)">\(e_i=1\)</span>. For <span class="math" data-tex="\(e_i&gt;1\)">\(e_i&gt;1\)</span>, its localization at <span class="math" data-tex="\(\mathfrak P_i\)">\(\mathfrak P_i\)</span> has a nonzero nilpotent uniformizer class; the quotient is unchanged by this localization. For <span class="math" data-tex="\(e_i=1\)">\(e_i=1\)</span>, it is the field <span class="math" data-tex="\(B/\mathfrak P_i\)">\(B/\mathfrak P_i\)</span>. Hence conditions 1 and 2 are equivalent. The trace lemma proves the equivalence of 2 and 3.</p>
+<p>Use an <span class="math" data-tex="\(R\)">\(R\)</span>-basis of <span class="math" data-tex="\(B_{\mathfrak p}\)">\(B_{\mathfrak p}\)</span>. Multiplication by each element has a matrix over <span class="math" data-tex="\(R\)">\(R\)</span>, and reduction modulo its maximal ideal gives its multiplication matrix on <span class="math" data-tex="\(B/\mathfrak pB\)">\(B/\mathfrak pB\)</span>. Taking traces commutes with this reduction. Thus the Gram matrix of the residue trace pairing is the reduction of the Gram matrix in (9). It is nonsingular exactly when its determinant is a unit in <span class="math" data-tex="\(R\)">\(R\)</span>, which is condition 4.</p>
+<p>Finally, separability of <span class="math" data-tex="\(L/F\)">\(L/F\)</span> supplies a nonzero basis discriminant, so <span class="math" data-tex="\(\mathfrak d_{B/A}\ne0\)">\(\mathfrak d_{B/A}\ne0\)</span>. A nonzero ideal in a Dedekind domain has only finitely many prime divisors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a number field <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(A=\mathbf Z\)">\(A=\mathbf Z\)</span> and <span class="math" data-tex="\(B=\mathcal O_K\)">\(B=\mathcal O_K\)</span> have an integral basis, so <span class="math" data-tex="\(\mathfrak d_{B/A}=d_K\mathbf Z\)">\(\mathfrak d_{B/A}=d_K\mathbf Z\)</span>. The theorem says that <span class="math" data-tex="\(p\)">\(p\)</span> ramifies in <span class="math" data-tex="\(K\)">\(K\)</span> exactly when <span class="math" data-tex="\(p\mid d_K\)">\(p\mid d_K\)</span>. More generally it applies to <span class="math" data-tex="\(\mathcal O_L/\mathcal O_K\)">\(\mathcal O_L/\mathcal O_K\)</span> without a relative integral basis. Indeed, the integral closure of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>, by transitivity of integrality over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. The field extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span> being separable does not by itself make its residue field extensions separable; this is why that hypothesis remains visible in condition 1.</p>
+<h2 id="computing-primes-from-a-multiplication-table">Computing primes from a multiplication table</h2>
+<p><em>This section is adapted from William Stein, <a href="https://wstein.org/books/ant/">Algebraic Number Theory, a Computational Approach</a>, current HTML §4.3.4, <a href="https://wstein.org/books/ant/ant/ch_factoring_primes.html#alg:factorsep">Algorithms 4.3.7 and 4.3.9</a>, and the intervening discussion. The editable source is pinned to commit 97343f5d6c851aac0fdfd1af3818965ac27359fd (March 2, 2022), <a href="https://github.com/williamstein/ant/blob/97343f5d6c851aac0fdfd1af3818965ac27359fd/factoring.tex#L666">factoring.tex, lines 666–788</a>. Copyright William Stein, 2005, 2007. Stein grants <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution–ShareAlike 3.0 Unported</a>; this adaptation, including the marked application in Solution 4, retains those terms. GPT-6.1 Sol added the explicit Frobenius bound, complete recursive correctness proof, multiplicity computation, and exact application below, and corrected the source's typographical <span class="math" data-tex="\(m(\alpha)=01\)">\(m(\alpha)=01\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>. Stein credits the general-prime algorithm to J. Buchmann and H. W. Lenstra; we use Stein's freely accessible treatment.</em></p>
+<p>Theorem 5.3 is efficient when a power order is correct at the chosen prime. When that condition fails, an integral basis still gives an exact multiplication table. We now use that table to find all the residue fields without first finding one element that generates their product.</p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field, let <span class="math" data-tex="\(b_1,\ldots,b_n\)">\(b_1,\ldots,b_n\)</span> be an integral basis of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, and let <span class="math" data-tex="\(p\)">\(p\)</span> be a rational prime. Reduce the integer multiplication coefficients modulo <span class="math" data-tex="\(p\)">\(p\)</span> to obtain
+<span class="math math-display" data-tex="\[
+C=\mathcal O_K/p\mathcal O_K,
+\qquad \dim_{\mathbf F_p}C=n.
+\]">\[
+C=\mathcal O_K/p\mathcal O_K,
+\qquad \dim_{\mathbf F_p}C=n.
+\]</span>
+All the following vector spaces and linear maps are over <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>. The nilradical <span class="math" data-tex="\(N\)">\(N\)</span> is the ideal of nilpotent elements. The proof of the trace lemma above shows that the reduced algebra <span class="math" data-tex="\(C/N\)">\(C/N\)</span> is a product of finite fields: its finitely many maximal ideals have zero intersection, and Chinese remainders give the product. This conclusion does not require the trace pairing on <span class="math" data-tex="\(C\)">\(C\)</span> to be nondegenerate.</p>
+<p><strong>Algorithm.</strong> Given the integral basis and its multiplication table:</p>
+<ol>
+<li>Form the matrix of <span class="math" data-tex="\(F:C\to C\)">\(F:C\to C\)</span>, <span class="math" data-tex="\(x\mapsto x^p\)">\(x\mapsto x^p\)</span>. Choose an integer <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span> with <span class="math" data-tex="\(p^r\geq n\)">\(p^r\geq n\)</span>, compute <span class="math" data-tex="\(N=\ker(F^r)\)">\(N=\ker(F^r)\)</span>, and form <span class="math" data-tex="\(A=C/N\)">\(A=C/N\)</span>, with its induced multiplication table.</li>
+<li>For the current nonzero reduced algebra <span class="math" data-tex="\(A\)">\(A\)</span>, with identity <span class="math" data-tex="\(1_A\)">\(1_A\)</span>, compute <span class="math" data-tex="\(V=\ker(F-1)\)">\(V=\ker(F-1)\)</span>. If <span class="math" data-tex="\(\dim V=1\)">\(\dim V=1\)</span>, retain <span class="math" data-tex="\(A\)">\(A\)</span> as one residue field. Otherwise choose <span class="math" data-tex="\(v\in V\setminus\mathbf F_p1_A\)">\(v\in V\setminus\mathbf F_p1_A\)</span>.</li>
+<li>Find the first linear dependence among <span class="math" data-tex="\(1_A,v,v^2,\ldots\)">\(1_A,v,v^2,\ldots\)</span>, giving the monic minimal polynomial <span class="math" data-tex="\(m\)">\(m\)</span>. Split <span class="math" data-tex="\(m=m_1m_2\)">\(m=m_1m_2\)</span> into two nonconstant coprime factors. Compute <span class="math" data-tex="\(U_1m_1+U_2m_2=1\)">\(U_1m_1+U_2m_2=1\)</span>, and set <span class="math" data-tex="\(\varepsilon=(U_1m_1)(v)\)">\(\varepsilon=(U_1m_1)(v)\)</span>.</li>
+<li>Replace <span class="math" data-tex="\(A\)">\(A\)</span> by the two algebras <span class="math" data-tex="\(\varepsilon A\)">\(\varepsilon A\)</span> and <span class="math" data-tex="\((1_A-\varepsilon)A\)">\((1_A-\varepsilon)A\)</span>, and repeat Step 2 on each. Their identities are respectively <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and <span class="math" data-tex="\(1_A-\varepsilon\)">\(1_A-\varepsilon\)</span>; use these identities for scalar subspaces and polynomial evaluation.</li>
+<li>For each final field factor <span class="math" data-tex="\(k_i\)">\(k_i\)</span>, pull back the kernel of the projection through <span class="math" data-tex="\(\mathcal O_K\to C\to C/N\to k_i\)">\(\mathcal O_K\to C\to C/N\to k_i\)</span>. These inverse images are exactly the prime ideals <span class="math" data-tex="\(\mathfrak P_i\)">\(\mathfrak P_i\)</span> above <span class="math" data-tex="\(p\)">\(p\)</span>. Set <span class="math" data-tex="\(f_i=\dim_{\mathbf F_p}k_i\)">\(f_i=\dim_{\mathbf F_p}k_i\)</span>.</li>
+</ol>
+<p><strong>Correctness and termination.</strong> Frobenius is linear because <span class="math" data-tex="\((x+y)^p=x^p+y^p\)">\((x+y)^p=x^p+y^p\)</span> in a commutative algebra of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(a^p=a\)">\(a^p=a\)</span> for <span class="math" data-tex="\(a\in\mathbf F_p\)">\(a\in\mathbf F_p\)</span>. If <span class="math" data-tex="\(x\)">\(x\)</span> is nilpotent, multiplication <span class="math" data-tex="\(m_x\)">\(m_x\)</span> is a nilpotent endomorphism of the <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional vector space <span class="math" data-tex="\(C\)">\(C\)</span>. Its nilpotency index is at most <span class="math" data-tex="\(n\)">\(n\)</span>: the kernels of its successive powers strictly increase until they are all of <span class="math" data-tex="\(C\)">\(C\)</span>, since equality of two consecutive kernels forces equality at every later power. Thus <span class="math" data-tex="\(m_x^n=0\)">\(m_x^n=0\)</span>, and application to <span class="math" data-tex="\(1_C\)">\(1_C\)</span> gives <span class="math" data-tex="\(x^n=0\)">\(x^n=0\)</span>. Consequently <span class="math" data-tex="\(x^{p^r}=0\)">\(x^{p^r}=0\)</span> when <span class="math" data-tex="\(p^r\geq n\)">\(p^r\geq n\)</span>. Conversely <span class="math" data-tex="\(F^r(x)=0\)">\(F^r(x)=0\)</span> immediately says that <span class="math" data-tex="\(x\)">\(x\)</span> is nilpotent. This proves Step 1, including the case <span class="math" data-tex="\(n=1,r=0\)">\(n=1,r=0\)</span>, when <span class="math" data-tex="\(C=\mathbf F_p\)">\(C=\mathbf F_p\)</span> and <span class="math" data-tex="\(N=0\)">\(N=0\)</span>.</p>
+<p>Write the current reduced algebra abstractly as
+<span class="math math-display" data-tex="\[
+A=k_1\times\cdots\times k_s,
+\]">\[
+A=k_1\times\cdots\times k_s,
+\]</span>
+where each <span class="math" data-tex="\(k_j\)">\(k_j\)</span> is a finite field extension of <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>. This product is used to prove correctness; it need not be known to perform the linear calculations. In each field, the roots of <span class="math" data-tex="\(X^p-X\)">\(X^p-X\)</span> are exactly the <span class="math" data-tex="\(p\)">\(p\)</span> elements of <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>: these elements are roots and a polynomial of degree <span class="math" data-tex="\(p\)">\(p\)</span> has no more. Hence
+<span class="math math-display" data-tex="\[
+V=\mathbf F_p^s,\qquad \dim V=s.
+\]">\[
+V=\mathbf F_p^s,\qquad \dim V=s.
+\]</span>
+If <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, the current algebra is a field. If <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span>, the scalar subspace consists of the constant tuples, so a vector <span class="math" data-tex="\(v\)">\(v\)</span> outside it has at least two different coordinates, all in <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>. Its minimal polynomial is
+<span class="math math-display" data-tex="\[
+m(X)=\prod_{a\text{ occurring as a coordinate of }v}(X-a).
+\]">\[
+m(X)=\prod_{a\text{ occurring as a coordinate of }v}(X-a).
+\]</span>
+Indeed, a polynomial vanishes at <span class="math" data-tex="\(v\)">\(v\)</span> exactly when it vanishes at all those coordinate values. The displayed distinct linear factors therefore divide every annihilating polynomial and their product annihilates <span class="math" data-tex="\(v\)">\(v\)</span>. This proves that <span class="math" data-tex="\(m\)">\(m\)</span> is squarefree and that the splitting in Step 3 is available. Its linear factors can be found simply by testing all <span class="math" data-tex="\(a\in\mathbf F_p\)">\(a\in\mathbf F_p\)</span>.</p>
+<p>Put <span class="math" data-tex="\(u=(U_1m_1)(v)\)">\(u=(U_1m_1)(v)\)</span> and <span class="math" data-tex="\(w=(U_2m_2)(v)\)">\(w=(U_2m_2)(v)\)</span>. The Bézout identity gives <span class="math" data-tex="\(u+w=1_A\)">\(u+w=1_A\)</span>, while <span class="math" data-tex="\(uw=(U_1U_2m)(v)=0\)">\(uw=(U_1U_2m)(v)=0\)</span>. Therefore <span class="math" data-tex="\(u^2=u\)">\(u^2=u\)</span>. At a coordinate whose value is a root of <span class="math" data-tex="\(m_1\)">\(m_1\)</span>, <span class="math" data-tex="\(u=0\)">\(u=0\)</span>; at a root of <span class="math" data-tex="\(m_2\)">\(m_2\)</span>, <span class="math" data-tex="\(u=1\)">\(u=1\)</span>. Both kinds of root occur, so <span class="math" data-tex="\(\varepsilon=u\)">\(\varepsilon=u\)</span> is neither zero nor <span class="math" data-tex="\(1_A\)">\(1_A\)</span>. The maps
+<span class="math math-display" data-tex="\[
+A\longrightarrow\varepsilon A\times(1_A-\varepsilon)A,
+\quad a\longmapsto(\varepsilon a,(1_A-\varepsilon)a),
+\qquad (b,c)\longmapsto b+c
+\]">\[
+A\longrightarrow\varepsilon A\times(1_A-\varepsilon)A,
+\quad a\longmapsto(\varepsilon a,(1_A-\varepsilon)a),
+\qquad (b,c)\longmapsto b+c
+\]</span>
+are inverse algebra homomorphisms. Both factors have smaller positive dimension and remain reduced. Recursion therefore terminates and retains precisely all the field factors.</p>
+<p>Every prime ideal of <span class="math" data-tex="\(C\)">\(C\)</span> contains <span class="math" data-tex="\(N\)">\(N\)</span>, because a prime containing <span class="math" data-tex="\(x^m\)">\(x^m\)</span> contains <span class="math" data-tex="\(x\)">\(x\)</span>. Thus the primes of <span class="math" data-tex="\(C\)">\(C\)</span> correspond to those of <span class="math" data-tex="\(C/N\)">\(C/N\)</span>. In a product of fields, the prime ideals are exactly the projection kernels: the coordinate idempotents sum to one, so precisely one survives in any domain quotient. Pullback along <span class="math" data-tex="\(\mathcal O_K\to C\)">\(\mathcal O_K\to C\)</span> now proves Step 5 and its residue-degree assertion. In coordinates, each kernel is a vector subspace; lifts of its basis, together with <span class="math" data-tex="\(pb_1,\ldots,pb_n\)">\(pb_1,\ldots,pb_n\)</span>, give the full integer lattice of <span class="math" data-tex="\(\mathfrak P_i\)">\(\mathfrak P_i\)</span>.</p>
+<p>The algorithm can also recover multiplicities in the maximal order. By unique ideal factorization,
+<span class="math math-display" data-tex="\[
+p\mathcal O_K\subseteq\mathfrak P_i^m
+\quad\Longleftrightarrow\quad m\leq e_i.
+\]">\[
+p\mathcal O_K\subseteq\mathfrak P_i^m
+\quad\Longleftrightarrow\quad m\leq e_i.
+\]</span>
+The other prime factors of <span class="math" data-tex="\(p\mathcal O_K\)">\(p\mathcal O_K\)</span> have valuation zero at <span class="math" data-tex="\(\mathfrak P_i\)">\(\mathfrak P_i\)</span>, so this is an assertion about that one exponent. Theorem 5.2 gives <span class="math" data-tex="\(e_i\leq n\)">\(e_i\leq n\)</span>. Compute <span class="math" data-tex="\(\mathfrak P_i^m\)">\(\mathfrak P_i^m\)</span> and test containment for <span class="math" data-tex="\(m=1,\ldots,n\)">\(m=1,\ldots,n\)</span>; the largest successful <span class="math" data-tex="\(m\)">\(m\)</span> is <span class="math" data-tex="\(e_i\)">\(e_i\)</span>. The multiplication table gives additive lattice generators for each product by multiplying the generators of its factors. For an explicit finite containment test, note that <span class="math" data-tex="\(p^m\mathcal O_K\subseteq\mathfrak P_i^m\)">\(p^m\mathcal O_K\subseteq\mathfrak P_i^m\)</span>. Reduce the generators in <span class="math" data-tex="\(\mathcal O_K/p^m\mathcal O_K\cong(\mathbf Z/p^m\mathbf Z)^n\)">\(\mathcal O_K/p^m\mathcal O_K\cong(\mathbf Z/p^m\mathbf Z)^n\)</span>, and form the finite additive subgroup they generate. Then <span class="math" data-tex="\(p\mathcal O_K\subseteq\mathfrak P_i^m\)">\(p\mathcal O_K\subseteq\mathfrak P_i^m\)</span> exactly when the residues of <span class="math" data-tex="\(pb_1,\ldots,pb_n\)">\(pb_1,\ldots,pb_n\)</span> all belong to that subgroup. Enumeration suffices to decide this; integer lattice reduction gives a more efficient implementation. This proves the full factorization, including ramification, without a power-basis hypothesis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The field-factor part works for any finite dimensional commutative <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>-algebra, so also for the reduction of an order. The exponent assertion uses the Dedekind ideal factorization of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>; an arbitrary nonmaximal order cannot be substituted there.</p>
+<h2 id="how-many-generators-does-complete-splitting-require">How many generators does complete splitting require?</h2>
+<p>The product of residue fields can explain a failure of monogeneity before we try individual integral elements. Let <span class="math" data-tex="\(k=\mathbf F_q\)">\(k=\mathbf F_q\)</span>, where <span class="math" data-tex="\(q\)">\(q\)</span> is any prime power, and let <span class="math" data-tex="\(g\geq1\)">\(g\geq1\)</span>. Given <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span> elements <span class="math" data-tex="\(t_1,\ldots,t_d\in k^g\)">\(t_1,\ldots,t_d\in k^g\)</span>, collect their values at the <span class="math" data-tex="\(i\)">\(i\)</span>-th coordinate into a single vector
+<span class="math math-display" data-tex="\[
+v_i=((t_1)_i,\ldots,(t_d)_i)\in k^d.
+\]">\[
+v_i=((t_1)_i,\ldots,(t_d)_i)\in k^d.
+\]</span></p>
+<p><strong>Generator criterion.</strong> The <span class="math" data-tex="\(t_j\)">\(t_j\)</span> generate <span class="math" data-tex="\(k^g\)">\(k^g\)</span> as a <span class="math" data-tex="\(k\)">\(k\)</span>-algebra exactly when the <span class="math" data-tex="\(g\)">\(g\)</span> vectors <span class="math" data-tex="\(v_i\)">\(v_i\)</span> are pairwise distinct. Consequently the least number of generators is
+<span class="math math-display" data-tex="\[
+\min\{d\geq0:q^d\geq g\}=\lceil\log_q g\rceil.
+\]">\[
+\min\{d\geq0:q^d\geq g\}=\lceil\log_q g\rceil.
+\]</span>
+Its value is zero for <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, since the scalar subalgebra already equals <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(v_i=v_j\)">\(v_i=v_j\)</span>, evaluating any polynomial in the <span class="math" data-tex="\(t_a\)">\(t_a\)</span> gives equal <span class="math" data-tex="\(i\)">\(i\)</span>-th and <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinates. It cannot produce the <span class="math" data-tex="\(i\)">\(i\)</span>-th coordinate idempotent, so the generated algebra is proper.</p>
+<p>Conversely suppose all <span class="math" data-tex="\(v_i\)">\(v_i\)</span> are distinct. For every <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>, choose a coordinate <span class="math" data-tex="\(a(i,j)\)">\(a(i,j)\)</span> where they differ. Form the interpolation polynomial
+<span class="math math-display" data-tex="\[
+E_i(T_1,\ldots,T_d)=
+\prod_{j\ne i}
+\frac{T_{a(i,j)}-(v_j)_{a(i,j)}}
+{(v_i)_{a(i,j)}-(v_j)_{a(i,j)}}.
+\]">\[
+E_i(T_1,\ldots,T_d)=
+\prod_{j\ne i}
+\frac{T_{a(i,j)}-(v_j)_{a(i,j)}}
+{(v_i)_{a(i,j)}-(v_j)_{a(i,j)}}.
+\]</span>
+Every denominator is a nonzero element of <span class="math" data-tex="\(k\)">\(k\)</span>. The value at <span class="math" data-tex="\(v_i\)">\(v_i\)</span> is one, while the factor indexed by <span class="math" data-tex="\(j\)">\(j\)</span> makes the value at <span class="math" data-tex="\(v_j\)">\(v_j\)</span> zero. Thus <span class="math" data-tex="\(E_i(t_1,\ldots,t_d)\)">\(E_i(t_1,\ldots,t_d)\)</span> is precisely the <span class="math" data-tex="\(i\)">\(i\)</span>-th coordinate idempotent. These idempotents span <span class="math" data-tex="\(k^g\)">\(k^g\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span>, proving generation. For <span class="math" data-tex="\(g=1,d=0\)">\(g=1,d=0\)</span>, the empty product is one, so this argument includes the zero-generator case. There are <span class="math" data-tex="\(q^d\)">\(q^d\)</span> vectors in <span class="math" data-tex="\(k^d\)">\(k^d\)</span>; <span class="math" data-tex="\(g\)">\(g\)</span> distinct choices exist exactly when <span class="math" data-tex="\(q^d\geq g\)">\(q^d\geq g\)</span>, proving the stated minimum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Now suppose <span class="math" data-tex="\(\kappa=A/\mathfrak p=\mathbf F_q\)">\(\kappa=A/\mathfrak p=\mathbf F_q\)</span> and <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> <strong>splits completely</strong> in <span class="math" data-tex="\(B\)">\(B\)</span>, meaning every <span class="math" data-tex="\(e_i=f_i=1\)">\(e_i=f_i=1\)</span>. The fundamental identity gives <span class="math" data-tex="\(n=g\)">\(n=g\)</span>, and Chinese remainders give
+<span class="math math-display" data-tex="\[
+B/\mathfrak pB\cong\kappa^g.
+\]">\[
+B/\mathfrak pB\cong\kappa^g.
+\]</span>
+The least number of <span class="math" data-tex="\(R=A_{\mathfrak p}\)">\(R=A_{\mathfrak p}\)</span>-algebra generators of <span class="math" data-tex="\(B_{\mathfrak p}\)">\(B_{\mathfrak p}\)</span> is the same <span class="math" data-tex="\(\lceil\log_q g\rceil\)">\(\lceil\log_q g\rceil\)</span>.</p>
+<p><strong>Proof of lifting.</strong> Reduction of any generating list gives a generating list of the residue algebra, so the preceding criterion gives the lower bound. For the upper bound, choose <span class="math" data-tex="\(g\)">\(g\)</span> distinct vectors in <span class="math" data-tex="\(\kappa^d\)">\(\kappa^d\)</span> for the minimum <span class="math" data-tex="\(d\)">\(d\)</span>. Their <span class="math" data-tex="\(d\)">\(d\)</span> coordinate elements generate the residue algebra. Lift them through <span class="math" data-tex="\(B\to B/\mathfrak pB\)">\(B\to B/\mathfrak pB\)</span> to <span class="math" data-tex="\(b_1,\ldots,b_d\in B\)">\(b_1,\ldots,b_d\in B\)</span>, and set <span class="math" data-tex="\(C=R[b_1,\ldots,b_d]\subseteq B_{\mathfrak p}\)">\(C=R[b_1,\ldots,b_d]\subseteq B_{\mathfrak p}\)</span>. As a submodule of a finite module over the Noetherian ring <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(C\)">\(C\)</span> is finite. The residue surjectivity says <span class="math" data-tex="\(B_{\mathfrak p}=C+\mathfrak pB_{\mathfrak p}\)">\(B_{\mathfrak p}=C+\mathfrak pB_{\mathfrak p}\)</span>, so the finite <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(Q=B_{\mathfrak p}/C\)">\(Q=B_{\mathfrak p}/C\)</span> satisfies <span class="math" data-tex="\(Q=\pi Q\)">\(Q=\pi Q\)</span>, where <span class="math" data-tex="\(\pi\)">\(\pi\)</span> generates <span class="math" data-tex="\(\mathfrak pR\)">\(\mathfrak pR\)</span>.</p>
+<p>Here is the needed form of Nakayama's argument. Choose module generators <span class="math" data-tex="\(z_1,\ldots,z_m\)">\(z_1,\ldots,z_m\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Write <span class="math" data-tex="\(z_i=\pi\sum_j a_{ij}z_j\)">\(z_i=\pi\sum_j a_{ij}z_j\)</span>, with <span class="math" data-tex="\(a_{ij}\in R\)">\(a_{ij}\in R\)</span>. The matrix <span class="math" data-tex="\(I_m-\pi(a_{ij})\)">\(I_m-\pi(a_{ij})\)</span> annihilates their column. Multiplication by its adjugate shows that its determinant annihilates every <span class="math" data-tex="\(z_i\)">\(z_i\)</span>. That determinant is one modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, hence a unit in the local ring <span class="math" data-tex="\(R\)">\(R\)</span>; all <span class="math" data-tex="\(z_i\)">\(z_i\)</span> vanish. If <span class="math" data-tex="\(Q\)">\(Q\)</span> has no generators it is already zero. Thus <span class="math" data-tex="\(C=B_{\mathfrak p}\)">\(C=B_{\mathfrak p}\)</span>, proving the upper bound, including <span class="math" data-tex="\(d=0\)">\(d=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(g&gt;q\)">\(g&gt;q\)</span> excludes every single local generator. For any integral primitive <span class="math" data-tex="\(\theta\in B\)">\(\theta\in B\)</span>, the quotient <span class="math" data-tex="\((B/A[\theta])_{\mathfrak p}\)">\((B/A[\theta])_{\mathfrak p}\)</span> is then nonzero, so <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> divides its index ideal (6a). A global power basis would give a local one and is therefore impossible. If <span class="math" data-tex="\(g\leq q\)">\(g\leq q\)</span>, the conclusion is local monogeneity at this prime; no global power-basis assertion follows.</p>
+<h2 id="the-quadratic-decomposition-law">The quadratic decomposition law</h2>
+<p>Let <span class="math" data-tex="\(d\ne1\)">\(d\ne1\)</span> be a nonzero squarefree integer, of either sign, let <span class="math" data-tex="\(K=\mathbf Q(\sqrt d)\)">\(K=\mathbf Q(\sqrt d)\)</span>, and write <span class="math" data-tex="\(s=\sqrt d\)">\(s=\sqrt d\)</span>. The integral basis theorem gives
+<span class="math math-display" data-tex="\[
+\mathcal O_K=
+\begin{cases}
+\mathbf Z[(1+s)/2],&amp;d\equiv1\pmod4,\\
+\mathbf Z[s],&amp;d\equiv2,3\pmod4,
+\end{cases}
+\qquad
+D=d_K=
+\begin{cases}
+d,&amp;d\equiv1\pmod4,\\
+4d,&amp;d\equiv2,3\pmod4.
+\end{cases}
+\]">\[
+\mathcal O_K=
+\begin{cases}
+\mathbf Z[(1+s)/2],&amp;d\equiv1\pmod4,\\
+\mathbf Z[s],&amp;d\equiv2,3\pmod4,
+\end{cases}
+\qquad
+D=d_K=
+\begin{cases}
+d,&amp;d\equiv1\pmod4,\\
+4d,&amp;d\equiv2,3\pmod4.
+\end{cases}
+\]</span>
+A rational prime <strong>splits</strong> if there are two primes with <span class="math" data-tex="\(e=f=1\)">\(e=f=1\)</span>; it is <strong>inert</strong> if there is one prime with <span class="math" data-tex="\(e=1,f=2\)">\(e=1,f=2\)</span>; it <strong>ramifies</strong> here if there is one prime with <span class="math" data-tex="\(e=2,f=1\)">\(e=2,f=1\)</span>.</p>
+<p><strong>Corollary 5.5.</strong> For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, the decomposition is
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\text{condition}&amp;\text{decomposition}\\ \hline
+p\mid D&amp;\text{ramified}\\
+p\nmid D,\ (d/p)=1&amp;\text{split}\\
+p\nmid D,\ (d/p)=-1&amp;\text{inert}.
+\end{array}
+\]">\[
+\begin{array}{c|c}
+\text{condition}&amp;\text{decomposition}\\ \hline
+p\mid D&amp;\text{ramified}\\
+p\nmid D,\ (d/p)=1&amp;\text{split}\\
+p\nmid D,\ (d/p)=-1&amp;\text{inert}.
+\end{array}
+\]</span>
+Here <span class="math" data-tex="\((d/p)\)">\((d/p)\)</span> is the Legendre symbol. At <span class="math" data-tex="\(2\)">\(2\)</span> the law is
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+d\equiv2,3\pmod4&amp;\text{ramified}\\
+d\equiv1\pmod8&amp;\text{split}\\
+d\equiv5\pmod8&amp;\text{inert}.
+\end{array}
+\]">\[
+\begin{array}{c|c}
+d\equiv2,3\pmod4&amp;\text{ramified}\\
+d\equiv1\pmod8&amp;\text{split}\\
+d\equiv5\pmod8&amp;\text{inert}.
+\end{array}
+\]</span></p>
+<p><strong>Proof.</strong> At odd <span class="math" data-tex="\(p\)">\(p\)</span>, the ring of integers localized at <span class="math" data-tex="\(p\)">\(p\)</span> is <span class="math" data-tex="\(\mathbf Z_{(p)}[s]\)">\(\mathbf Z_{(p)}[s]\)</span>, because <span class="math" data-tex="\(2\)">\(2\)</span> is invertible there. Apply Theorem 5.3 to <span class="math" data-tex="\(X^2-d\)">\(X^2-d\)</span>. If <span class="math" data-tex="\(p\mid d\)">\(p\mid d\)</span>, its reduction is <span class="math" data-tex="\(X^2\)">\(X^2\)</span>, giving
+<span class="math math-display" data-tex="\[
+(p)=(p,s)^2.
+\]">\[
+(p)=(p,s)^2.
+\]</span>
+If <span class="math" data-tex="\(d\)">\(d\)</span> is a nonzero square modulo <span class="math" data-tex="\(p\)">\(p\)</span>, choose <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(a^2\equiv d\)">\(a^2\equiv d\)</span>; the two distinct linear factors give
+<span class="math math-display" data-tex="\[
+(p)=(p,s-a)(p,s+a).
+\]">\[
+(p)=(p,s-a)(p,s+a).
+\]</span>
+If <span class="math" data-tex="\(d\)">\(d\)</span> is a nonsquare, the polynomial is irreducible and <span class="math" data-tex="\((p)\)">\((p)\)</span> is prime, of residue degree two. For odd <span class="math" data-tex="\(p\)">\(p\)</span>, divisibility of <span class="math" data-tex="\(D\)">\(D\)</span> is the same as divisibility of <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>At <span class="math" data-tex="\(2\)">\(2\)</span>, if <span class="math" data-tex="\(d\equiv2\pmod4\)">\(d\equiv2\pmod4\)</span>, the integral generator is <span class="math" data-tex="\(s\)">\(s\)</span> and its polynomial reduces to <span class="math" data-tex="\(X^2\)">\(X^2\)</span>. If <span class="math" data-tex="\(d\equiv3\pmod4\)">\(d\equiv3\pmod4\)</span>, it reduces to <span class="math" data-tex="\((X+1)^2\)">\((X+1)^2\)</span>. Thus respectively
+<span class="math math-display" data-tex="\[
+(2)=(2,s)^2,\qquad (2)=(2,1+s)^2.
+\]">\[
+(2)=(2,s)^2,\qquad (2)=(2,1+s)^2.
+\]</span>
+If <span class="math" data-tex="\(d\equiv1\pmod4\)">\(d\equiv1\pmod4\)</span>, use <span class="math" data-tex="\(\omega=(1+s)/2\)">\(\omega=(1+s)/2\)</span>, whose polynomial is
+<span class="math math-display" data-tex="\[
+X^2-X+\frac{1-d}{4}.
+\]">\[
+X^2-X+\frac{1-d}{4}.
+\]</span>
+For <span class="math" data-tex="\(d\equiv1\pmod8\)">\(d\equiv1\pmod8\)</span> its reduction is <span class="math" data-tex="\(X(X+1)\)">\(X(X+1)\)</span>, giving
+<span class="math" data-tex="\((2)=(2,\omega)(2,\omega-1)\)">\((2)=(2,\omega)(2,\omega-1)\)</span>. For <span class="math" data-tex="\(d\equiv5\pmod8\)">\(d\equiv5\pmod8\)</span> its reduction is <span class="math" data-tex="\(X^2+X+1\)">\(X^2+X+1\)</span>, which has no root in <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>, and <span class="math" data-tex="\((2)\)">\((2)\)</span> is inert. Every case satisfies <span class="math" data-tex="\(ef=2\)">\(ef=2\)</span> or <span class="math" data-tex="\(1+1=2\)">\(1+1=2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="three-fields-with-their-actual-prime-ideals">Three fields, with their actual prime ideals</h2>
+<p>In <span class="math" data-tex="\(\mathbf Z[i]\)">\(\mathbf Z[i]\)</span>,
+<span class="math math-display" data-tex="\[
+2=-i(1+i)^2,\qquad (2)=(1+i)^2.
+\]">\[
+2=-i(1+i)^2,\qquad (2)=(1+i)^2.
+\]</span>
+The residue field of <span class="math" data-tex="\((1+i)\)">\((1+i)\)</span> is <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>, so <span class="math" data-tex="\(e=2,f=1\)">\(e=2,f=1\)</span>. For an odd prime, <span class="math" data-tex="\(-1\)">\(-1\)</span> is a square modulo <span class="math" data-tex="\(p\)">\(p\)</span> exactly when <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span>: the cyclic group <span class="math" data-tex="\(\mathbf F_p^\times\)">\(\mathbf F_p^\times\)</span> contains an element of order four exactly in that case. Such a prime splits as <span class="math" data-tex="\((p,i-a)(p,i+a)\)">\((p,i-a)(p,i+a)\)</span>, where <span class="math" data-tex="\(a^2\equiv-1\)">\(a^2\equiv-1\)</span>; a prime congruent to <span class="math" data-tex="\(3\pmod4\)">\(3\pmod4\)</span> is inert. The degree checks are <span class="math" data-tex="\(1+1=2\)">\(1+1=2\)</span> and <span class="math" data-tex="\(1\cdot2=2\)">\(1\cdot2=2\)</span>.</p>
+<p>Here is the elementary cyclicity argument used in this example. If <span class="math" data-tex="\(G\)">\(G\)</span> is a finite subgroup of a field's multiplicative group, let <span class="math" data-tex="\(m\)">\(m\)</span> be the least common multiple of its element orders. For each prime power dividing <span class="math" data-tex="\(m\)">\(m\)</span>, some element has an order divisible by that prime power; raising that element to a suitable power gives an element of exactly that order. The product of these elements has order <span class="math" data-tex="\(m\)">\(m\)</span>, because their orders are relatively prime and they commute. Every member of <span class="math" data-tex="\(G\)">\(G\)</span> is a root of <span class="math" data-tex="\(X^m-1\)">\(X^m-1\)</span>, so <span class="math" data-tex="\(\#G\leq m\)">\(\#G\leq m\)</span>. The element of order <span class="math" data-tex="\(m\)">\(m\)</span> gives the reverse inequality. Thus <span class="math" data-tex="\(G\)">\(G\)</span> is generated by that element. Applying this to <span class="math" data-tex="\(\mathbf F_p^\times\)">\(\mathbf F_p^\times\)</span> proves the assertion: an element of order four has square <span class="math" data-tex="\(-1\)">\(-1\)</span>, the unique element of order two, and a square root of <span class="math" data-tex="\(-1\)">\(-1\)</span> has order four.</p>
+<p>For <span class="math" data-tex="\(K=\mathbf Q(\alpha)\)">\(K=\mathbf Q(\alpha)\)</span>, <span class="math" data-tex="\(\alpha^3=2\)">\(\alpha^3=2\)</span>, the integral basis calculation in <em>Discriminants and integral bases</em> proves <span class="math" data-tex="\(\mathcal O_K=\mathbf Z[\alpha]\)">\(\mathcal O_K=\mathbf Z[\alpha]\)</span>. Thus Theorem 5.3 applies at every prime.</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(p\)">\(p\)</span></th>
+<th>Factorization of <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span> over <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span></th>
+<th>Factorization of <span class="math" data-tex="\((p)\)">\((p)\)</span> in <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span></th>
+<th><span class="math" data-tex="\(\sum ef\)">\(\sum ef\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\(X^3\)">\(X^3\)</span></td>
+<td><span class="math" data-tex="\((2,\alpha)^3\)">\((2,\alpha)^3\)</span></td>
+<td><span class="math" data-tex="\(3\cdot1=3\)">\(3\cdot1=3\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\((X+1)^3\)">\((X+1)^3\)</span></td>
+<td><span class="math" data-tex="\((3,\alpha+1)^3\)">\((3,\alpha+1)^3\)</span></td>
+<td><span class="math" data-tex="\(3\cdot1=3\)">\(3\cdot1=3\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td><span class="math" data-tex="\((X-3)(X^2+3X+4)\)">\((X-3)(X^2+3X+4)\)</span></td>
+<td><span class="math" data-tex="\((5,\alpha-3)(5,\alpha^2+3\alpha+4)\)">\((5,\alpha-3)(5,\alpha^2+3\alpha+4)\)</span></td>
+<td><span class="math" data-tex="\(1+2=3\)">\(1+2=3\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td>irreducible</td>
+<td><span class="math" data-tex="\((7)\)">\((7)\)</span>, prime</td>
+<td><span class="math" data-tex="\(1\cdot3=3\)">\(1\cdot3=3\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(31\)">\(31\)</span></td>
+<td><span class="math" data-tex="\((X-4)(X-7)(X-20)\)">\((X-4)(X-7)(X-20)\)</span></td>
+<td><span class="math" data-tex="\((31,\alpha-4)(31,\alpha-7)(31,\alpha-20)\)">\((31,\alpha-4)(31,\alpha-7)(31,\alpha-20)\)</span></td>
+<td><span class="math" data-tex="\(1+1+1=3\)">\(1+1+1=3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>At <span class="math" data-tex="\(5\)">\(5\)</span>, the quadratic factor has discriminant <span class="math" data-tex="\(3\)">\(3\)</span>, a nonsquare modulo <span class="math" data-tex="\(5\)">\(5\)</span>. At <span class="math" data-tex="\(7\)">\(7\)</span>, the possible cubes are <span class="math" data-tex="\(0,1,6\)">\(0,1,6\)</span>, so the cubic has no root and is irreducible. At <span class="math" data-tex="\(31\)">\(31\)</span>, direct cubing gives <span class="math" data-tex="\(4^3\equiv7^3\equiv20^3\equiv2\)">\(4^3\equiv7^3\equiv20^3\equiv2\)</span>; these are three distinct roots. These observations verify every irreducibility assertion in the table. The first two primes are totally ramified: there is a single prime, with ramification index equal to the field degree.</p>
+<p>For <span class="math" data-tex="\(K=\mathbf Q(\sqrt{-5})\)">\(K=\mathbf Q(\sqrt{-5})\)</span>, put <span class="math" data-tex="\(s=\sqrt{-5}\)">\(s=\sqrt{-5}\)</span>. Here <span class="math" data-tex="\(\mathcal O_K=\mathbf Z[s]\)">\(\mathcal O_K=\mathbf Z[s]\)</span> and <span class="math" data-tex="\(D=-20\)">\(D=-20\)</span>. The primes <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(5\)">\(5\)</span> ramify. The squares <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(9\equiv2\)">\(9\equiv2\)</span> modulo <span class="math" data-tex="\(7\)">\(7\)</span> give
+<span class="math math-display" data-tex="\[
+(3)=(3,s-1)(3,s+1),
+\qquad
+(7)=(7,s-3)(7,s+3).
+\]">\[
+(3)=(3,s-1)(3,s+1),
+\qquad
+(7)=(7,s-3)(7,s+3).
+\]</span>
+At <span class="math" data-tex="\(11\)">\(11\)</span>, <span class="math" data-tex="\(-5\equiv6\)">\(-5\equiv6\)</span> is not among the nonzero squares <span class="math" data-tex="\(1,3,4,5,9\)">\(1,3,4,5,9\)</span>. At <span class="math" data-tex="\(13\)">\(13\)</span>, <span class="math" data-tex="\(-5\equiv8\)">\(-5\equiv8\)</span> is not among <span class="math" data-tex="\(1,3,4,9,10,12\)">\(1,3,4,9,10,12\)</span>. Hence <span class="math" data-tex="\((11)\)">\((11)\)</span> and <span class="math" data-tex="\((13)\)">\((13)\)</span> are inert primes. Each ramified prime has <span class="math" data-tex="\(ef=2\)">\(ef=2\)</span>, each split pair contributes <span class="math" data-tex="\(1+1=2\)">\(1+1=2\)</span>, and each inert prime has <span class="math" data-tex="\(ef=2\)">\(ef=2\)</span>. Inert prime ideals have absolute norms <span class="math" data-tex="\(11^2\)">\(11^2\)</span> and <span class="math" data-tex="\(13^2\)">\(13^2\)</span>, rather than <span class="math" data-tex="\(11\)">\(11\)</span> and <span class="math" data-tex="\(13\)">\(13\)</span>.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Factor <span class="math" data-tex="\(2,3,5,7\)">\(2,3,5,7\)</span> in <span class="math" data-tex="\(\mathcal O_{\mathbf Q(\sqrt{-5})}\)">\(\mathcal O_{\mathbf Q(\sqrt{-5})}\)</span>, giving the prime ideals and their <span class="math" data-tex="\(e,f\)">\(e,f\)</span>.</li>
+<li><strong>Medium.</strong> Let <span class="math" data-tex="\(\alpha^3-\alpha-1=0\)">\(\alpha^3-\alpha-1=0\)</span>. Factor <span class="math" data-tex="\(3,5,7\)">\(3,5,7\)</span> in <span class="math" data-tex="\(\mathbf Z[\alpha]\)">\(\mathbf Z[\alpha]\)</span>, and verify <span class="math" data-tex="\(\sum ef=3\)">\(\sum ef=3\)</span> in each case.</li>
+<li><strong>Medium.</strong> Derive the entire quadratic law at <span class="math" data-tex="\(2\)">\(2\)</span>, using <span class="math" data-tex="\(\omega=(1+\sqrt d)/2\)">\(\omega=(1+\sqrt d)/2\)</span> when <span class="math" data-tex="\(d\equiv1\pmod4\)">\(d\equiv1\pmod4\)</span>. Explain why reducing <span class="math" data-tex="\(X^2-d\)">\(X^2-d\)</span> at <span class="math" data-tex="\(2\)">\(2\)</span> is insufficient in that case.</li>
+<li><strong>Hard.</strong> Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be a root of <span class="math" data-tex="\(h(X)=X^3+X^2-2X+8\)">\(h(X)=X^3+X^2-2X+8\)</span>, and <span class="math" data-tex="\(K=\mathbf Q(\alpha)\)">\(K=\mathbf Q(\alpha)\)</span>. Prove that <span class="math" data-tex="\(2\)">\(2\)</span> splits completely in <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, and that <span class="math" data-tex="\(\mathcal O_K\ne\mathbf Z[\theta]\)">\(\mathcal O_K\ne\mathbf Z[\theta]\)</span> for every <span class="math" data-tex="\(\theta\in\mathcal O_K\)">\(\theta\in\mathcal O_K\)</span>.</li>
+</ol>
+<h2 id="complete-solutions">Complete solutions</h2>
+<p><strong>1.</strong> With <span class="math" data-tex="\(s=\sqrt{-5}\)">\(s=\sqrt{-5}\)</span>, the integral generator <span class="math" data-tex="\(s\)">\(s\)</span> has polynomial <span class="math" data-tex="\(X^2+5\)">\(X^2+5\)</span>. Its reductions at <span class="math" data-tex="\(2,3,5,7\)">\(2,3,5,7\)</span> are respectively
+<span class="math math-display" data-tex="\[
+(X+1)^2,\quad (X-1)(X+1),\quad X^2,\quad (X-3)(X+3).
+\]">\[
+(X+1)^2,\quad (X-1)(X+1),\quad X^2,\quad (X-3)(X+3).
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(2)&amp;=(2,1+s)^2,\\
+(3)&amp;=(3,s-1)(3,s+1),\\
+(5)&amp;=(5,s)^2,\\
+(7)&amp;=(7,s-3)(7,s+3).
+\end{aligned}
+\]">\[
+\begin{aligned}
+(2)&amp;=(2,1+s)^2,\\
+(3)&amp;=(3,s-1)(3,s+1),\\
+(5)&amp;=(5,s)^2,\\
+(7)&amp;=(7,s-3)(7,s+3).
+\end{aligned}
+\]</span>
+Each displayed prime has residue field <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>, so <span class="math" data-tex="\(f=1\)">\(f=1\)</span>. The exponents are two at the ramified primes and one at both primes of a split pair. Thus the sum is two in all four cases. Primality and equality of the ideals follow from Theorem 5.3, not merely from matching their norms.</p>
+<p><strong>2.</strong> The cubic is irreducible over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>: neither possible rational root <span class="math" data-tex="\(1\)">\(1\)</span> nor <span class="math" data-tex="\(-1\)">\(-1\)</span> is a root. Its discriminant is <span class="math" data-tex="\(-23\)">\(-23\)</span>, so the squarefree-discriminant criterion of <em>Discriminants and integral bases</em> gives <span class="math" data-tex="\(\mathcal O_K=\mathbf Z[\alpha]\)">\(\mathcal O_K=\mathbf Z[\alpha]\)</span>.</p>
+<p>Modulo <span class="math" data-tex="\(3\)">\(3\)</span>, evaluation at <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span> always gives <span class="math" data-tex="\(2\)">\(2\)</span>. Thus <span class="math" data-tex="\(X^3-X-1\)">\(X^3-X-1\)</span> has no root, is irreducible, and <span class="math" data-tex="\((3)\)">\((3)\)</span> is prime with <span class="math" data-tex="\(e=1,f=3\)">\(e=1,f=3\)</span>.</p>
+<p>Modulo <span class="math" data-tex="\(5\)">\(5\)</span> and <span class="math" data-tex="\(7\)">\(7\)</span>, respectively,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X^3-X-1&amp;=(X-2)(X^2+2X+3)&amp;&amp;\text{over }\mathbf F_5,\\
+X^3-X-1&amp;=(X+2)(X^2+5X+3)&amp;&amp;\text{over }\mathbf F_7.
+\end{aligned}
+\]">\[
+\begin{aligned}
+X^3-X-1&amp;=(X-2)(X^2+2X+3)&amp;&amp;\text{over }\mathbf F_5,\\
+X^3-X-1&amp;=(X+2)(X^2+5X+3)&amp;&amp;\text{over }\mathbf F_7.
+\end{aligned}
+\]</span>
+The quadratic discriminants are <span class="math" data-tex="\(2\)">\(2\)</span> modulo <span class="math" data-tex="\(5\)">\(5\)</span> and <span class="math" data-tex="\(6\)">\(6\)</span> modulo <span class="math" data-tex="\(7\)">\(7\)</span>, both nonsquares. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(5)&amp;=(5,\alpha-2)(5,\alpha^2+2\alpha+3),\\
+(7)&amp;=(7,\alpha+2)(7,\alpha^2+5\alpha+3).
+\end{aligned}
+\]">\[
+\begin{aligned}
+(5)&amp;=(5,\alpha-2)(5,\alpha^2+2\alpha+3),\\
+(7)&amp;=(7,\alpha+2)(7,\alpha^2+5\alpha+3).
+\end{aligned}
+\]</span>
+At each of these primes the two residue degrees are <span class="math" data-tex="\(1,2\)">\(1,2\)</span>, and both exponents are one. The checks are <span class="math" data-tex="\(1\cdot3=3\)">\(1\cdot3=3\)</span>, <span class="math" data-tex="\(1+2=3\)">\(1+2=3\)</span>, and <span class="math" data-tex="\(1+2=3\)">\(1+2=3\)</span>.</p>
+<p><strong>3.</strong> For <span class="math" data-tex="\(d\equiv2,3\pmod4\)">\(d\equiv2,3\pmod4\)</span>, the ring of integers is <span class="math" data-tex="\(\mathbf Z[s]\)">\(\mathbf Z[s]\)</span>. Reduction gives <span class="math" data-tex="\(X^2\)">\(X^2\)</span> in the first case and <span class="math" data-tex="\((X+1)^2\)">\((X+1)^2\)</span> in the second. Theorem 5.3 gives <span class="math" data-tex="\((2)=(2,s)^2\)">\((2)=(2,s)^2\)</span> or <span class="math" data-tex="\((2)=(2,s+1)^2\)">\((2)=(2,s+1)^2\)</span>, both with <span class="math" data-tex="\(e=2,f=1\)">\(e=2,f=1\)</span>.</p>
+<p>For <span class="math" data-tex="\(d\equiv1\pmod4\)">\(d\equiv1\pmod4\)</span>, the full ring is <span class="math" data-tex="\(\mathbf Z[\omega]\)">\(\mathbf Z[\omega]\)</span>, and the polynomial of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is <span class="math" data-tex="\(X^2-X+(1-d)/4\)">\(X^2-X+(1-d)/4\)</span>. If <span class="math" data-tex="\(d\equiv1\pmod8\)">\(d\equiv1\pmod8\)</span>, its constant coefficient is even, so its reduction is <span class="math" data-tex="\(X(X+1)\)">\(X(X+1)\)</span>; the distinct factors give <span class="math" data-tex="\((2)=(2,\omega)(2,\omega-1)\)">\((2)=(2,\omega)(2,\omega-1)\)</span>, with <span class="math" data-tex="\(e=f=1\)">\(e=f=1\)</span> at both primes. If <span class="math" data-tex="\(d\equiv5\pmod8\)">\(d\equiv5\pmod8\)</span>, the constant coefficient is odd, so the reduction is the irreducible <span class="math" data-tex="\(X^2+X+1\)">\(X^2+X+1\)</span>; now <span class="math" data-tex="\((2)\)">\((2)\)</span> is prime with <span class="math" data-tex="\(e=1,f=2\)">\(e=1,f=2\)</span>. The order <span class="math" data-tex="\(\mathbf Z[s]\)">\(\mathbf Z[s]\)</span> has index two in <span class="math" data-tex="\(\mathbf Z[\omega]\)">\(\mathbf Z[\omega]\)</span>, so it fails the local hypothesis at <span class="math" data-tex="\(2\)">\(2\)</span>; its polynomial cannot determine this decomposition.</p>
+<p><strong>4.</strong> None of the possible rational roots <span class="math" data-tex="\(\pm1,\pm2,\pm4,\pm8\)">\(\pm1,\pm2,\pm4,\pm8\)</span> is a root of <span class="math" data-tex="\(h\)">\(h\)</span>; hence <span class="math" data-tex="\(h\)">\(h\)</span> is irreducible. Define
+<span class="math math-display" data-tex="\[
+\beta=\frac{\alpha^2+\alpha}{2}.
+\]">\[
+\beta=\frac{\alpha^2+\alpha}{2}.
+\]</span>
+Using <span class="math" data-tex="\(h(\alpha)=0\)">\(h(\alpha)=0\)</span> gives the three relations
+<span class="math math-display" data-tex="\[
+\alpha^2=2\beta-\alpha,\qquad
+\alpha\beta=\alpha-4,\qquad
+\beta^2=\beta-2\alpha-2. \tag{10}
+\]">\[
+\alpha^2=2\beta-\alpha,\qquad
+\alpha\beta=\alpha-4,\qquad
+\beta^2=\beta-2\alpha-2. \tag{10}
+\]</span>
+Thus the lattice <span class="math" data-tex="\(C=\mathbf Z+\mathbf Z\alpha+\mathbf Z\beta\)">\(C=\mathbf Z+\mathbf Z\alpha+\mathbf Z\beta\)</span> is a ring. The multiplication matrix of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> on the basis <span class="math" data-tex="\(1,\alpha,\beta\)">\(1,\alpha,\beta\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+0&amp;-4&amp;-2\\
+0&amp;1&amp;-2\\
+1&amp;0&amp;1
+\end{pmatrix}.
+\]">\[
+\begin{pmatrix}
+0&amp;-4&amp;-2\\
+0&amp;1&amp;-2\\
+1&amp;0&amp;1
+\end{pmatrix}.
+\]</span>
+Its characteristic polynomial is <span class="math" data-tex="\(T^3-2T^2+3T-10\)">\(T^3-2T^2+3T-10\)</span>. By Cayley–Hamilton, applied to <span class="math" data-tex="\(1\)">\(1\)</span>, this monic polynomial annihilates <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, so <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is integral and <span class="math" data-tex="\(C\subseteq\mathcal O_K\)">\(C\subseteq\mathcal O_K\)</span>.</p>
+<p>The change of basis determinant from <span class="math" data-tex="\(1,\alpha,\alpha^2\)">\(1,\alpha,\alpha^2\)</span> to <span class="math" data-tex="\(1,\alpha,\beta\)">\(1,\alpha,\beta\)</span> is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Since <span class="math" data-tex="\(\operatorname{disc}(h)=-2012=-4\cdot503\)">\(\operatorname{disc}(h)=-2012=-4\cdot503\)</span>, we get
+<span class="math math-display" data-tex="\[
+\operatorname{disc}(1,\alpha,\beta)=-503.
+\]">\[
+\operatorname{disc}(1,\alpha,\beta)=-503.
+\]</span>
+For direct verification its trace matrix is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+3&amp;-1&amp;2\\
+-1&amp;5&amp;-13\\
+2&amp;-13&amp;-2
+\end{pmatrix},
+\]">\[
+\begin{pmatrix}
+3&amp;-1&amp;2\\
+-1&amp;5&amp;-13\\
+2&amp;-13&amp;-2
+\end{pmatrix},
+\]</span>
+whose determinant is <span class="math" data-tex="\(-503\)">\(-503\)</span>. The number <span class="math" data-tex="\(503\)">\(503\)</span> is prime: trial division by <span class="math" data-tex="\(2,3,5,7,11,13,17,19\)">\(2,3,5,7,11,13,17,19\)</span>, the primes below <span class="math" data-tex="\(\sqrt{503}&lt;23\)">\(\sqrt{503}&lt;23\)</span>, gives no divisor. The discriminant index formula
+<span class="math" data-tex="\(\operatorname{disc}(C)=[\mathcal O_K:C]^2d_K\)">\(\operatorname{disc}(C)=[\mathcal O_K:C]^2d_K\)</span> therefore forces <span class="math" data-tex="\([\mathcal O_K:C]=1\)">\([\mathcal O_K:C]=1\)</span>. We have proved
+<span class="math math-display" data-tex="\[
+\mathcal O_K=\mathbf Z+\mathbf Z\alpha+\mathbf Z\beta,
+\qquad
+[\mathcal O_K:\mathbf Z[\alpha]]=2.
+\]">\[
+\mathcal O_K=\mathbf Z+\mathbf Z\alpha+\mathbf Z\beta,
+\qquad
+[\mathcal O_K:\mathbf Z[\alpha]]=2.
+\]</span></p>
+<p>Modulo <span class="math" data-tex="\(2\)">\(2\)</span>, (10) becomes
+<span class="math math-display" data-tex="\[
+\alpha^2=\alpha,\qquad \beta^2=\beta,\qquad \alpha\beta=\alpha.
+\]">\[
+\alpha^2=\alpha,\qquad \beta^2=\beta,\qquad \alpha\beta=\alpha.
+\]</span></p>
+<p><strong>Applying the multiplication-table algorithm.</strong> This marked application, including its displayed calculations, continues the CC BY-SA 3.0 Stein adaptation above. On the basis <span class="math" data-tex="\(1,\alpha,\beta\)">\(1,\alpha,\beta\)</span> of <span class="math" data-tex="\(C=\mathcal O_K/2\mathcal O_K\)">\(C=\mathcal O_K/2\mathcal O_K\)</span>, Frobenius fixes every basis vector, so its matrix is <span class="math" data-tex="\(I_3\)">\(I_3\)</span>. Take <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, since <span class="math" data-tex="\(2^2\geq3\)">\(2^2\geq3\)</span>. Then <span class="math" data-tex="\(\ker F^2=0\)">\(\ker F^2=0\)</span>, so <span class="math" data-tex="\(A=C\)">\(A=C\)</span> and <span class="math" data-tex="\(V=\ker(F-1)=C\)">\(V=\ker(F-1)=C\)</span>. Choose <span class="math" data-tex="\(v=\beta\)">\(v=\beta\)</span>. It is neither <span class="math" data-tex="\(0\)">\(0\)</span> nor <span class="math" data-tex="\(1\)">\(1\)</span>, and its minimal polynomial is <span class="math" data-tex="\(X(X-1)\)">\(X(X-1)\)</span>. The Bézout identity <span class="math" data-tex="\(X-(X-1)=1\)">\(X-(X-1)=1\)</span> gives the idempotent <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, splitting off <span class="math" data-tex="\((1+\beta)C\)">\((1+\beta)C\)</span>.</p>
+<p>The remaining factor <span class="math" data-tex="\(\beta C\)">\(\beta C\)</span> has basis <span class="math" data-tex="\(\beta,\alpha\)">\(\beta,\alpha\)</span> and identity <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, since <span class="math" data-tex="\(\alpha\beta=\alpha\)">\(\alpha\beta=\alpha\)</span>. Choose <span class="math" data-tex="\(v=\alpha\)">\(v=\alpha\)</span> inside it. Relative to this identity its minimal polynomial is again <span class="math" data-tex="\(X(X-1)\)">\(X(X-1)\)</span>; it yields the two factors with identities <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta+\alpha\)">\(\beta+\alpha\)</span>. Thus the algorithm produces the three nonzero orthogonal idempotents
+<span class="math math-display" data-tex="\[
+\varepsilon_{00}=1+\beta,\qquad
+\varepsilon_{01}=\alpha+\beta,\qquad
+\varepsilon_{11}=\alpha.
+\]">\[
+\varepsilon_{00}=1+\beta,\qquad
+\varepsilon_{01}=\alpha+\beta,\qquad
+\varepsilon_{11}=\alpha.
+\]</span>
+Their sum is <span class="math" data-tex="\(1\)">\(1\)</span>, and the three displayed multiplication relations give <span class="math" data-tex="\(\varepsilon_{ij}^2=\varepsilon_{ij}\)">\(\varepsilon_{ij}^2=\varepsilon_{ij}\)</span> and pairwise products zero. Each factor is one dimensional over <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>, since these three idempotents are a basis. Evaluation at <span class="math" data-tex="\((\alpha,\beta)=(0,0),(0,1),(1,1)\)">\((\alpha,\beta)=(0,0),(0,1),(1,1)\)</span> sends them respectively to <span class="math" data-tex="\((1,0,0),(0,1,0),(0,0,1)\)">\((1,0,0),(0,1,0),(0,0,1)\)</span>. The three projections below are therefore exactly the projections recovered by the algorithm, rather than a guess from the polynomial <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>There are three evaluation homomorphisms to <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>, corresponding to
+<span class="math math-display" data-tex="\[
+(\alpha,\beta)=(0,0),\ (0,1),\ (1,1).
+\]">\[
+(\alpha,\beta)=(0,0),\ (0,1),\ (1,1).
+\]</span>
+Together they give an isomorphism <span class="math" data-tex="\(\mathcal O_K/2\mathcal O_K\to\mathbf F_2^3\)">\(\mathcal O_K/2\mathcal O_K\to\mathbf F_2^3\)</span>. Indeed, the matrix of this linear map on <span class="math" data-tex="\(1,\alpha,\beta\)">\(1,\alpha,\beta\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;1\\1&amp;1&amp;1\end{pmatrix},
+\]">\[
+\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;1\\1&amp;1&amp;1\end{pmatrix},
+\]</span>
+which is invertible modulo <span class="math" data-tex="\(2\)">\(2\)</span>. Its three kernels lift to the distinct prime ideals
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathfrak P_{00}&amp;=(2,\alpha,\beta),\\
+\mathfrak P_{01}&amp;=(2,\alpha,\beta-1),\\
+\mathfrak P_{11}&amp;=(2,\alpha-1,\beta-1).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathfrak P_{00}&amp;=(2,\alpha,\beta),\\
+\mathfrak P_{01}&amp;=(2,\alpha,\beta-1),\\
+\mathfrak P_{11}&amp;=(2,\alpha-1,\beta-1).
+\end{aligned}
+\]</span>
+The quotient is reduced, so all exponents are one. All residue fields are <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>, so
+<span class="math math-display" data-tex="\[
+(2)=\mathfrak P_{00}\mathfrak P_{01}\mathfrak P_{11},
+\qquad
+\sum ef=1+1+1=3.
+\]">\[
+(2)=\mathfrak P_{00}\mathfrak P_{01}\mathfrak P_{11},
+\qquad
+\sum ef=1+1+1=3.
+\]</span></p>
+<p>Suppose now that <span class="math" data-tex="\(\mathcal O_K=\mathbf Z[\theta]\)">\(\mathcal O_K=\mathbf Z[\theta]\)</span> for some integral <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Then its quotient modulo <span class="math" data-tex="\(2\)">\(2\)</span> would be generated as an <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>-algebra by the image of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. In <span class="math" data-tex="\(\mathbf F_2^3\)">\(\mathbf F_2^3\)</span>, any triple has two equal coordinates. Every polynomial in that triple has those same two coordinates equal, so cannot generate the whole product. This contradiction excludes every <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.</p>
+<p>Notice the failure of the tempting calculation with <span class="math" data-tex="\(h\)">\(h\)</span>: modulo <span class="math" data-tex="\(2\)">\(2\)</span>, it is <span class="math" data-tex="\(X^2(X+1)\)">\(X^2(X+1)\)</span>, which would suggest two primes, one with exponent two. The index is divisible by <span class="math" data-tex="\(2\)">\(2\)</span>, so Theorem 5.3 does not apply to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> there. The actual decomposition has three unramified primes.</p>
+<p>The generator criterion makes the obstruction sharp. Here <span class="math" data-tex="\(q=2,g=3\)">\(q=2,g=3\)</span>, so the least local generator count is <span class="math" data-tex="\(\lceil\log_2 3\rceil=2\)">\(\lceil\log_2 3\rceil=2\)</span>. The actual two generators have coordinate vectors
+<span class="math math-display" data-tex="\[
+\bar\alpha=(0,0,1),\qquad \bar\beta=(0,1,1)
+\quad\text{in }\mathbf F_2^3.
+\]">\[
+\bar\alpha=(0,0,1),\qquad \bar\beta=(0,1,1)
+\quad\text{in }\mathbf F_2^3.
+\]</span>
+Their joint values and interpolation idempotents are:</p>
+<table>
+<thead>
+<tr>
+<th>residue map</th>
+<th><span class="math" data-tex="\((\bar\alpha,\bar\beta)\)">\((\bar\alpha,\bar\beta)\)</span></th>
+<th>idempotent selecting it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\mathfrak P_{00}\)">\(\mathfrak P_{00}\)</span></td>
+<td><span class="math" data-tex="\((0,0)\)">\((0,0)\)</span></td>
+<td><span class="math" data-tex="\(1-\bar\beta\)">\(1-\bar\beta\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathfrak P_{01}\)">\(\mathfrak P_{01}\)</span></td>
+<td><span class="math" data-tex="\((0,1)\)">\((0,1)\)</span></td>
+<td><span class="math" data-tex="\(\bar\beta-\bar\alpha\)">\(\bar\beta-\bar\alpha\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathfrak P_{11}\)">\(\mathfrak P_{11}\)</span></td>
+<td><span class="math" data-tex="\((1,1)\)">\((1,1)\)</span></td>
+<td><span class="math" data-tex="\(\bar\alpha\)">\(\bar\alpha\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These idempotents evaluate to the three standard coordinate vectors. The fourth possible pair <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> is excluded by <span class="math" data-tex="\(\bar\alpha\bar\beta=\bar\alpha\)">\(\bar\alpha\bar\beta=\bar\alpha\)</span>. Moreover the integral basis already proves <span class="math" data-tex="\(\mathcal O_K=\mathbf Z[\alpha,\beta]\)">\(\mathcal O_K=\mathbf Z[\alpha,\beta]\)</span>: this algebra contains <span class="math" data-tex="\(1,\alpha,\beta\)">\(1,\alpha,\beta\)</span>, hence every element of the displayed integral lattice, and is contained in <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. Together with the one-generator impossibility, this proves that this particular ring needs exactly two <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-algebra generators.</p>
+<p>The index calculation also displays every piece of (9a). With <span class="math" data-tex="\(B=\mathcal O_K\)">\(B=\mathcal O_K\)</span> and <span class="math" data-tex="\(C=\mathbf Z[\alpha]\)">\(C=\mathbf Z[\alpha]\)</span>, the power basis has coordinate matrix
+<span class="math math-display" data-tex="\[
+M=
+\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;-1\\0&amp;0&amp;2\end{pmatrix}
+\]">\[
+M=
+\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;-1\\0&amp;0&amp;2\end{pmatrix}
+\]</span>
+in the basis <span class="math" data-tex="\(1,\alpha,\beta\)">\(1,\alpha,\beta\)</span>, because <span class="math" data-tex="\(\alpha^2=2\beta-\alpha\)">\(\alpha^2=2\beta-\alpha\)</span>. The quotient <span class="math" data-tex="\(B/C\)">\(B/C\)</span> is generated by the class of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, with <span class="math" data-tex="\(2\beta=\alpha^2+\alpha\in C\)">\(2\beta=\alpha^2+\alpha\in C\)</span>. That class is nonzero, since every element of <span class="math" data-tex="\(C\)">\(C\)</span> has an even <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-coordinate. Thus
+<span class="math math-display" data-tex="\[
+B/C\cong\mathbf Z/2\mathbf Z,\qquad
+\mathfrak i(C,B)=(2).
+\]">\[
+B/C\cong\mathbf Z/2\mathbf Z,\qquad
+\mathfrak i(C,B)=(2).
+\]</span>
+For the trace matrix <span class="math" data-tex="\(G\)">\(G\)</span> displayed above, the power-basis Gram matrix is exactly
+<span class="math math-display" data-tex="\[
+M^tGM=
+\begin{pmatrix}3&amp;-1&amp;5\\-1&amp;5&amp;-31\\5&amp;-31&amp;49\end{pmatrix}.
+\]">\[
+M^tGM=
+\begin{pmatrix}3&amp;-1&amp;5\\-1&amp;5&amp;-31\\5&amp;-31&amp;49\end{pmatrix}.
+\]</span>
+Its determinant gives the signed equality
+<span class="math math-display" data-tex="\[
+-2012=(\det M)^2\det G=4(-503),
+\]">\[
+-2012=(\det M)^2\det G=4(-503),
+\]</span>
+and hence the ideal equality <span class="math" data-tex="\((-2012)=(2)^2(-503)\)">\((-2012)=(2)^2(-503)\)</span>. The quotient survives precisely at <span class="math" data-tex="\(2\)">\(2\)</span>, which explains why <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> fails the local polynomial hypothesis there even though the field is unramified there.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>For a finite field extension, separability is equivalent to nondegeneracy of its trace pairing; this is [Stacks, Tag 0BIL]. The additivity of finite module length in a short exact sequence is [Stacks, Tag 00IV]. We use the ideal factorization, localization and module theorems proved in the preceding two lessons, and the discriminant index formula and quadratic and pure cubic integral bases proved in <em>Discriminants and integral bases</em>.</p>
+<p>Hilbert's decomposition and inertia groups are treated in the next lesson. The relation with completions and the scheme interpretation of unramifiedness belong to the courses on local fields and on finite separable and étale morphisms; neither is used as an unproved step here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne ANT]</strong> J. S. Milne, <em>Algebraic Number Theory</em>, version 3.08 (2020), Chapter 3, Theorems 3.29, 3.34, 3.35 and 3.41, Proposition 3.44, pp. 57–64; Chapter 4, Proposition 4.1, pp. 68–69. <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Lecture notes</a>.</li>
+<li><strong>[Hecke 1923]</strong> Erich Hecke, <em>Vorlesungen über die Theorie der algebraischen Zahlen</em>, 1923, Chapter V, §29, quadratic decomposition, pp. 106–110.</li>
+<li><strong>[Stein ANT]</strong> William Stein, <em>Algebraic Number Theory, a Computational Approach</em>, author HTML §4.3.4, Algorithms 4.3.7 and 4.3.9; editable source commit 97343f5d6c851aac0fdfd1af3818965ac27359fd, factoring.tex, lines 666–788. <a href="https://wstein.org/books/ant/">Author edition and permission</a>; <a href="https://wstein.org/books/ant/ant/ch_factoring_primes.html#alg:factorsep">algorithm passage</a>. The marked adaptations retain CC BY-SA 3.0.</li>
+<li><strong>[Stacks]</strong> The Stacks project, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-length-additive">Tag 00IV</a>, additivity of length, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-separable-trace-pairing">Tag 0BIL</a>, separability and the trace pairing.</li>
+</ul>
+</article><nav><a href="src/decomposition-of-primes-in-extensions.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

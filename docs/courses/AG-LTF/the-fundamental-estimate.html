@@ -1,0 +1,655 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The fundamental estimate</title><link rel="stylesheet" href="runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="the-fundamental-estimate">The fundamental estimate</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The estimate turns a global statement about poles into an exact statement about every local Frobenius eigenvalue. Three ingredients do different jobs. Rational local characteristic polynomials make even powers of traces nonnegative. Large geometric symplectic monodromy determines the top compact-support cohomology of tensor powers. The trace formula then places the global poles on a known circle. Comparing convergence radii and taking arbitrarily high tensor powers removes the error in the exponent.</p>
+<p>We prove the estimate and both cohomological corollaries. We prove the symplectic tensor-invariant theorem before computing the top cohomology; finite-coefficient curve duality supplies the input for the adic and middle-extension pairings proved here. For the elliptic example we prove open monodromy directly from the Tate calculations of Lesson 8. Neither the estimate under its stated hypotheses nor that example requires a Picard–Lefschetz theorem.</p>
+<h2 id="1-weights-and-the-exact-hypotheses">1. Weights and the exact hypotheses</h2>
+<p>Fix <span class="math" data-tex="\(q=p^a\)">\(q=p^a\)</span>, <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, and a nonempty open
+<span class="math" data-tex="\(U_0\subset\mathbf P^1_{\mathbf F_q}\)">\(U_0\subset\mathbf P^1_{\mathbf F_q}\)</span>. Put
+<span class="math" data-tex="\(U=U_0\times_{\mathbf F_q}\overline{\mathbf F}_q\)">\(U=U_0\times_{\mathbf F_q}\overline{\mathbf F}_q\)</span>. For a closed point <span class="math" data-tex="\(x\)">\(x\)</span>, write
+<span class="math" data-tex="\(d_x=[\kappa(x):\mathbf F_q]\)">\(d_x=[\kappa(x):\mathbf F_q]\)</span> and <span class="math" data-tex="\(q_x=q^{d_x}\)">\(q_x=q^{d_x}\)</span>. The operators <span class="math" data-tex="\(F_x\)">\(F_x\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> are geometric Frobenius, with the conventions of Lessons 3 and 8. In particular <span class="math" data-tex="\(F_x\)">\(F_x\)</span> acts on <span class="math" data-tex="\(\mathbf Q_\ell(r)\)">\(\mathbf Q_\ell(r)\)</span> by <span class="math" data-tex="\(q_x^{-r}\)">\(q_x^{-r}\)</span>.</p>
+<p>A lisse <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>-sheaf <span class="math" data-tex="\(\mathcal F_0\)">\(\mathcal F_0\)</span> is <strong>pure of weight <span class="math" data-tex="\(\beta\)">\(\beta\)</span></strong> if every eigenvalue of every <span class="math" data-tex="\(F_x\)">\(F_x\)</span> is algebraic over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, and every complex conjugate has absolute value <span class="math" data-tex="\(q_x^{\beta/2}\)">\(q_x^{\beta/2}\)</span>. Algebraic means algebraic over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, not merely over <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>. We speak of complex absolute values after embedding a number field containing the eigenvalues into <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. Purity requires the assertion for every such embedding.</p>
+<p>The Tate sheaf <span class="math" data-tex="\(\mathbf Q_\ell(r)\)">\(\mathbf Q_\ell(r)\)</span> is pure of weight <span class="math" data-tex="\(-2r\)">\(-2r\)</span>. Tensor products of pure sheaves have weights equal to the sum of their weights, and a dual has the negative weight: the eigenvalues are products and inverses respectively. These facts use the same embedding on all algebraic factors. They do not require semisimplicity.</p>
+<p><strong>Theorem 1.1 (Deligne's fundamental estimate).</strong> Suppose that <span class="math" data-tex="\(\beta\in\mathbf Z\)">\(\beta\in\mathbf Z\)</span> and:</p>
+<ol>
+<li>There is a nondegenerate alternating pairing of sheaves on <span class="math" data-tex="\(U_0\)">\(U_0\)</span>,
+<span class="math math-display" data-tex="\[
+\psi:\mathcal F_0\otimes\mathcal F_0\longrightarrow
+\mathbf Q_\ell(-\beta).
+\tag{1.1}
+\]">\[
+\psi:\mathcal F_0\otimes\mathcal F_0\longrightarrow
+\mathbf Q_\ell(-\beta).
+\tag{1.1}
+\]</span></li>
+<li>For a geometric base point <span class="math" data-tex="\(u\)">\(u\)</span>, the image of the <strong>geometric</strong> group
+<span class="math" data-tex="\(\pi_1(U,u)\)">\(\pi_1(U,u)\)</span> is open in
+<span class="math" data-tex="\(\operatorname{Sp}(\mathcal F_u,\psi)(\mathbf Q_\ell)\)">\(\operatorname{Sp}(\mathcal F_u,\psi)(\mathbf Q_\ell)\)</span>.</li>
+<li>For every <span class="math" data-tex="\(x\in|U_0|\)">\(x\in|U_0|\)</span>,
+<span class="math math-display" data-tex="\[
+\det(1-F_xT\mid\mathcal F_{0,x})\in\mathbf Q[T].
+\tag{1.2}
+\]">\[
+\det(1-F_xT\mid\mathcal F_{0,x})\in\mathbf Q[T].
+\tag{1.2}
+\]</span></li>
+</ol>
+<p>Then <span class="math" data-tex="\(\mathcal F_0\)">\(\mathcal F_0\)</span> is pure of weight <span class="math" data-tex="\(\beta\)">\(\beta\)</span>.</p>
+<p>This is Deligne, <em>Weil I</em>, Theorem (3.2), printed p.284. The pairing is defined over <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, so arithmetic Frobenius acts on its target by <span class="math" data-tex="\(q^\beta\)">\(q^\beta\)</span>. Geometric monodromy fixes that target and lies in a symplectic group. Using the arithmetic group in condition 2 would generally give symplectic similitudes, and would change the hypothesis.</p>
+<p>Rank zero is harmless and the conclusion is vacuous. To prove the theorem point by point, we may assume <span class="math" data-tex="\(U_0\)">\(U_0\)</span> affine. If necessary, remove a closed point different from the particular <span class="math" data-tex="\(x\)">\(x\)</span> being tested. Restriction preserves (1.1) and (1.2), and the map of geometric fundamental groups from this smaller open is surjective: a connected finite étale cover of the original smooth connected curve stays connected upon restricting to a dense open. Hence condition 2 is preserved. We now work on an affine open.</p>
+<h2 id="2-rationality-and-even-tensor-powers">2. Rationality and even tensor powers</h2>
+<p>Let <span class="math" data-tex="\(\alpha_{x,1},\ldots,\alpha_{x,r}\)">\(\alpha_{x,1},\ldots,\alpha_{x,r}\)</span> be the eigenvalues of <span class="math" data-tex="\(F_x\)">\(F_x\)</span>, with multiplicity. Condition (1.2) makes them algebraic over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Newton's identities give
+<span class="math math-display" data-tex="\[
+a_{x,m}:=\operatorname{Tr}(F_x^m\mid\mathcal F_{0,x})
+=\sum_j\alpha_{x,j}^m\in\mathbf Q
+\quad(m\ge1).
+\tag{2.1}
+\]">\[
+a_{x,m}:=\operatorname{Tr}(F_x^m\mid\mathcal F_{0,x})
+=\sum_j\alpha_{x,j}^m\in\mathbf Q
+\quad(m\ge1).
+\tag{2.1}
+\]</span>
+This implication holds even when the operator is not diagonalizable: an upper-triangular form computes both characteristic polynomial and traces of powers.</p>
+<p>Rationality of the characteristic polynomial does not, in general, mean that the operator has a rational matrix in some basis. For example, let <span class="math" data-tex="\(a=\sqrt2\)">\(a=\sqrt2\)</span> in <span class="math" data-tex="\(K=\mathbf Q(\sqrt2)\)">\(K=\mathbf Q(\sqrt2)\)</span> and take
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}a&amp;1\\0&amp;a\end{pmatrix}\oplus(-a)\oplus(-a).
+\]">\[
+A=\begin{pmatrix}a&amp;1\\0&amp;a\end{pmatrix}\oplus(-a)\oplus(-a).
+\]</span>
+Its characteristic polynomial is <span class="math" data-tex="\((T^2-2)^2\)">\((T^2-2)^2\)</span>, but its minimal polynomial is <span class="math" data-tex="\((T-a)^2(T+a)\)">\((T-a)^2(T+a)\)</span>, which does not belong to <span class="math" data-tex="\(\mathbf Q[T]\)">\(\mathbf Q[T]\)</span>. A rational matrix has a rational minimal polynomial: Gaussian elimination on the rational linear relations between <span class="math" data-tex="\(1,A,A^2,\ldots\)">\(1,A,A^2,\ldots\)</span> computes it, and extension of the field does not change those ranks. Thus this operator has no rational matrix. Nevertheless all its power traces are rational, exactly as (2.1) asserts. The fundamental estimate uses rational characteristic polynomials and these traces; it requires no descent of Jordan blocks or semisimplicity assumption. This distinguishes the necessary hypothesis from the stronger formulation in Milne, Lemma 30.2.</p>
+<p>For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, put <span class="math" data-tex="\(\mathcal T_k=\mathcal F_0^{\otimes2k}\)">\(\mathcal T_k=\mathcal F_0^{\otimes2k}\)</span>. Tensor-product traces multiply, so
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(F_x^m\mid\mathcal T_{k,x})=a_{x,m}^{\,2k}\ge0.
+\tag{2.2}
+\]">\[
+\operatorname{Tr}(F_x^m\mid\mathcal T_{k,x})=a_{x,m}^{\,2k}\ge0.
+\tag{2.2}
+\]</span>
+Here “nonnegative” includes zero. There is no assertion that every trace is nonzero. The tensor-power characteristic polynomial is also rational: its roots are all products of <span class="math" data-tex="\(2k\)">\(2k\)</span> roots of the original rational polynomial, and their multiset is invariant under every automorphism of <span class="math" data-tex="\(\overline{\mathbf Q}/\mathbf Q\)">\(\overline{\mathbf Q}/\mathbf Q\)</span>.</p>
+<p>Define the local factor in the global variable <span class="math" data-tex="\(t\)">\(t\)</span> by
+<span class="math math-display" data-tex="\[
+f_{x,k}(t)=
+\det(1-F_xt^{d_x}\mid\mathcal T_{k,x})^{-1}.
+\tag{2.3}
+\]">\[
+f_{x,k}(t)=
+\det(1-F_xt^{d_x}\mid\mathcal T_{k,x})^{-1}.
+\tag{2.3}
+\]</span>
+The characteristic-zero formal logarithm gives
+<span class="math math-display" data-tex="\[
+\log f_{x,k}(t)=
+\sum_{m\ge1}\frac{a_{x,m}^{\,2k}}m\,t^{md_x}.
+\tag{2.4}
+\]">\[
+\log f_{x,k}(t)=
+\sum_{m\ge1}\frac{a_{x,m}^{\,2k}}m\,t^{md_x}.
+\tag{2.4}
+\]</span>
+Thus both its logarithm and its logarithmic derivative have nonnegative rational coefficients. Exponentiating proves the same for <span class="math" data-tex="\(f_{x,k}\)">\(f_{x,k}\)</span>, whose constant term is <span class="math" data-tex="\(1\)">\(1\)</span>. More explicitly, if <span class="math" data-tex="\(\log f=\sum_{n\ge1}b_nt^n\)">\(\log f=\sum_{n\ge1}b_nt^n\)</span> and <span class="math" data-tex="\(f=\sum_{n\ge0}c_nt^n\)">\(f=\sum_{n\ge0}c_nt^n\)</span>, then
+<span class="math math-display" data-tex="\[
+c_0=1,\qquad
+nc_n=\sum_{j=1}^n j b_jc_{n-j};
+\tag{2.5}
+\]">\[
+c_0=1,\qquad
+nc_n=\sum_{j=1}^n j b_jc_{n-j};
+\tag{2.5}
+\]</span>
+induction gives <span class="math" data-tex="\(c_n\ge0\)">\(c_n\ge0\)</span>.</p>
+<p>There are finitely many closed points of bounded degree, so
+<span class="math math-display" data-tex="\[
+L_k(t)=L(U_0,\mathcal T_k,t)=\prod_{x\in|U_0|}f_{x,k}(t)
+\tag{2.6}
+\]">\[
+L_k(t)=L(U_0,\mathcal T_k,t)=\prod_{x\in|U_0|}f_{x,k}(t)
+\tag{2.6}
+\]</span>
+is a well-defined formal power series with nonnegative rational coefficients. No convergence claim has yet been used. Equations (2.2)–(2.6) are the precise squaring step: a rational trace can have either sign, but its even power cannot. Squaring the eigenvalues individually would not make each of them a nonnegative real number.</p>
+<h2 id="3-the-convergence-comparison">3. The convergence comparison</h2>
+<p><strong>Lemma 3.1 (Deligne's form of Landau's argument).</strong> Let <span class="math" data-tex="\(f_i\in1+t\mathbf R[[t]]\)">\(f_i\in1+t\mathbf R[[t]]\)</span> have nonnegative coefficients. Suppose that <span class="math" data-tex="\(\operatorname{ord}_t(f_i-1)\to\infty\)">\(\operatorname{ord}_t(f_i-1)\to\infty\)</span>, allowing <span class="math" data-tex="\(f_i=1\)">\(f_i=1\)</span>. The product <span class="math" data-tex="\(f=\prod_i f_i\)">\(f=\prod_i f_i\)</span> exists formally. Every factor has radius of absolute convergence at least that of <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>Proof.</strong> In a given degree, only finitely many nonconstant factors contribute. Write <span class="math" data-tex="\(f_i=\sum_n c_{i,n}t^n\)">\(f_i=\sum_n c_{i,n}t^n\)</span> and <span class="math" data-tex="\(f=\sum_n c_nt^n\)">\(f=\sum_n c_nt^n\)</span>. Selecting the degree-<span class="math" data-tex="\(n\)">\(n\)</span> term from factor <span class="math" data-tex="\(i\)">\(i\)</span> and the constant terms from all other factors proves
+<span class="math math-display" data-tex="\[
+0\le c_{i,n}\le c_n.
+\tag{3.1}
+\]">\[
+0\le c_{i,n}\le c_n.
+\tag{3.1}
+\]</span>
+If <span class="math" data-tex="\(\sum_n c_nR^n\)">\(\sum_n c_nR^n\)</span> converges for a positive <span class="math" data-tex="\(R\)">\(R\)</span>, coefficient domination proves that <span class="math" data-tex="\(\sum_n c_{i,n}R^n\)">\(\sum_n c_{i,n}R^n\)</span> converges. Apply this at every <span class="math" data-tex="\(R\)">\(R\)</span> strictly below the radius of <span class="math" data-tex="\(f\)">\(f\)</span>. The assertion also covers radius zero or infinity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2.</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> and each <span class="math" data-tex="\(f_i\)">\(f_i\)</span> are Taylor expansions of rational functions regular at zero, then
+<span class="math math-display" data-tex="\[
+\inf\{|z|:z\text{ is a pole of }f\}
+\ \le\
+\inf\{|z|:z\text{ is a pole of }f_i\}.
+\tag{3.2}
+\]">\[
+\inf\{|z|:z\text{ is a pole of }f\}
+\ \le\
+\inf\{|z|:z\text{ is a pole of }f_i\}.
+\tag{3.2}
+\]</span>
+The infimum of the empty set is infinity.</p>
+<p><strong>Proof.</strong> After cancelling common numerator and denominator factors, a rational function is holomorphic on the open disc ending at its nearest pole. Its Taylor series converges there. It cannot have a larger radius, since that would define a holomorphic continuation at a genuine pole. Hence its radius is precisely the displayed infimum. Lemma 3.1 proves (3.2). Cancellation in the global rational function can remove poles; it cannot create nearer ones. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are Deligne's Lemmas (3.5)–(3.6), printed p.284. They apply also to meromorphic functions on the whole plane, with the same nearest-pole reasoning.</p>
+<p>For comparison, the usual positive-series singularity statement has a short proof. If <span class="math" data-tex="\(f(t)=\sum c_nt^n\)">\(f(t)=\sum c_nt^n\)</span>, <span class="math" data-tex="\(c_n\ge0\)">\(c_n\ge0\)</span>, has finite positive radius <span class="math" data-tex="\(R\)">\(R\)</span>, suppose it were analytic near the positive real point <span class="math" data-tex="\(R\)">\(R\)</span>. For every <span class="math" data-tex="\(m\)">\(m\)</span>, differentiation inside the disc, passage to <span class="math" data-tex="\(t\uparrow R\)">\(t\uparrow R\)</span>, and monotone convergence give
+<span class="math math-display" data-tex="\[
+\frac{f^{(m)}(R)}{m!}
+=\sum_{n\ge m}\binom nm c_nR^{n-m}.
+\]">\[
+\frac{f^{(m)}(R)}{m!}
+=\sum_{n\ge m}\binom nm c_nR^{n-m}.
+\]</span>
+For small <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, the Taylor expansion at <span class="math" data-tex="\(R\)">\(R\)</span> converges at <span class="math" data-tex="\(R+s\)">\(R+s\)</span>. All the terms in the double sum are nonnegative, so exchanging the sums gives
+<span class="math math-display" data-tex="\[
+\sum_m\frac{f^{(m)}(R)}{m!}s^m
+=\sum_n c_n(R+s)^n&lt;\infty,
+\]">\[
+\sum_m\frac{f^{(m)}(R)}{m!}s^m
+=\sum_n c_n(R+s)^n&lt;\infty,
+\]</span>
+contradicting the radius <span class="math" data-tex="\(R\)">\(R\)</span>. Thus <span class="math" data-tex="\(R\)">\(R\)</span> is a singularity; for a rational function it is a pole. The proof of Theorem 1.1 needs only Lemmas 3.1–3.2, because all possible global poles already have a known modulus.</p>
+<h2 id="4-symplectic-coinvariants-and-their-frobenius-action">4. Symplectic coinvariants and their Frobenius action</h2>
+<p>Put <span class="math" data-tex="\(V=\mathcal F_u\)">\(V=\mathcal F_u\)</span>. Over the geometric field, choose a basis of the constant Tate line to view <span class="math" data-tex="\(\psi\)">\(\psi\)</span> as scalar-valued. We first justify that an open subgroup of <span class="math" data-tex="\(\operatorname{Sp}(V,\psi)(\mathbf Q_\ell)\)">\(\operatorname{Sp}(V,\psi)(\mathbf Q_\ell)\)</span> is Zariski dense, including <span class="math" data-tex="\(\ell=2\)">\(\ell=2\)</span>.</p>
+<p>Write <span class="math" data-tex="\(J\)">\(J\)</span> for the pairing matrix. On the open set where the denominators are invertible, the Cayley maps
+<span class="math math-display" data-tex="\[
+A\longmapsto(1-A)^{-1}(1+A),\qquad
+g\longmapsto(g-1)(g+1)^{-1}
+\]">\[
+A\longmapsto(1-A)^{-1}(1+A),\qquad
+g\longmapsto(g-1)(g+1)^{-1}
+\]</span>
+are inverse maps between <span class="math" data-tex="\(A^{\mathsf t}J+JA=0\)">\(A^{\mathsf t}J+JA=0\)</span> and the symplectic group. Substitution proves the pairing identity; the inverse follows by multiplying the commuting factors <span class="math" data-tex="\(1\pm A\)">\(1\pm A\)</span>. They give a chart around zero and the identity over <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>. At <span class="math" data-tex="\(\ell=2\)">\(\ell=2\)</span>, shrink the ball so that both denominators remain invertible; no assertion about an integral chart is needed.</p>
+<p>The symplectic group is irreducible over an algebraic closure. Here is a proof of this fact used in the density argument. Its points are ordered symplectic bases. The possible first pairs <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span>, with <span class="math" data-tex="\(\psi(v,w)=1\)">\(\psi(v,w)=1\)</span>, form an affine bundle with fibre <span class="math" data-tex="\(\mathbf A^{2n-1}\)">\(\mathbf A^{2n-1}\)</span> over <span class="math" data-tex="\(V-\{0\}\)">\(V-\{0\}\)</span>; it is irreducible. Their orthogonal complements form a symplectic vector bundle of rank <span class="math" data-tex="\(2n-2\)">\(2n-2\)</span>. Alternating pivot elimination supplies symplectic frames on Zariski open neighbourhoods, so the choices of the remaining basis vectors form a locally trivial bundle with fibre <span class="math" data-tex="\(\operatorname{Sp}_{2n-2}\)">\(\operatorname{Sp}_{2n-2}\)</span>. Induction from rank zero proves irreducibility of the total space: the base opens and their intersections are irreducible, and each inverse image is a product of irreducible varieties.</p>
+<p>A polynomial vanishing on an open subgroup pulls back through the Cayley chart to a rational function vanishing on a small ball in the symplectic Lie algebra. Clear its denominators. A polynomial on affine space vanishing on a product of infinite balls is zero, by induction on the variables and the one-variable root bound. It therefore vanishes on the whole Cayley open and, by irreducibility, on the whole symplectic group. This proves density without a geometric monodromy theorem.</p>
+<p>For a representation <span class="math" data-tex="\(W\)">\(W\)</span>, let <span class="math" data-tex="\(W_G\)">\(W_G\)</span> denote its largest quotient with trivial <span class="math" data-tex="\(G\)">\(G\)</span>-action. Its dual is <span class="math" data-tex="\((W^\vee)^G\)">\((W^\vee)^G\)</span>. The condition that a linear form be invariant is a closed polynomial condition on the acting group; Zariski density therefore identifies geometric-monodromy invariants, and hence coinvariants, with those of the whole symplectic group.</p>
+<h3 id="tensor-invariants-and-pair-contractions">Tensor invariants and pair contractions</h3>
+<p>We first prove the algebraic statement that makes the monodromy calculation possible. The reduction from a classical group to the general linear group has a geometric treatment in <a href="https://publications.ias.edu/sites/default/files/2015-06-ortho.pdf">Deligne, Lehrer and Zhang, <em>The first fundamental theorem of invariant theory for the orthosymplectic super group</em></a>. Here we give the ordinary symplectic argument over an arbitrary characteristic-zero field.</p>
+<p><strong>Lemma 4.1 (general linear tensor invariants).</strong> Let <span class="math" data-tex="\(W\)">\(W\)</span> be a finite-dimensional vector space over a field <span class="math" data-tex="\(K\)">\(K\)</span> of characteristic zero. For every <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, every endomorphism of <span class="math" data-tex="\(W^{\otimes r}\)">\(W^{\otimes r}\)</span> commuting with the algebraic group <span class="math" data-tex="\(\operatorname{GL}(W)\)">\(\operatorname{GL}(W)\)</span> is a linear combination of permutations of the <span class="math" data-tex="\(r\)">\(r\)</span> tensor factors.</p>
+<p><strong>Proof.</strong> The case <span class="math" data-tex="\(r=0\)">\(r=0\)</span> is immediate. We can extend scalars to an algebraic closure: invariance is the kernel of linear equations obtained by comparing polynomial matrix coefficients, and the span of the permutation operators also commutes with scalar extension. A spanning assertion over the algebraic closure therefore descends to <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Write <span class="math" data-tex="\(E=\operatorname{End}(W)\)">\(E=\operatorname{End}(W)\)</span> and <span class="math" data-tex="\(T=W^{\otimes r}\)">\(T=W^{\otimes r}\)</span>. Under the canonical identification
+<span class="math math-display" data-tex="\[
+\operatorname{End}(T)=E^{\otimes r},
+\]">\[
+\operatorname{End}(T)=E^{\otimes r},
+\]</span>
+conjugation by a permutation operator permutes the factors of <span class="math" data-tex="\(E^{\otimes r}\)">\(E^{\otimes r}\)</span>. The centralizer of the permutation operators is consequently the symmetric subspace of this tensor power. That subspace is spanned by tensors <span class="math" data-tex="\(a^{\otimes r}\)">\(a^{\otimes r}\)</span>. Indeed, polarization gives
+<span class="math math-display" data-tex="\[
+\sum_{S\subseteq\{1,\ldots,r\}}(-1)^{r-|S|}
+\left(\sum_{i\in S}a_i\right)^{\otimes r}
+=\sum_{\sigma\in S_r}a_{\sigma(1)}\otimes\cdots\otimes a_{\sigma(r)}.
+\]">\[
+\sum_{S\subseteq\{1,\ldots,r\}}(-1)^{r-|S|}
+\left(\sum_{i\in S}a_i\right)^{\otimes r}
+=\sum_{\sigma\in S_r}a_{\sigma(1)}\otimes\cdots\otimes a_{\sigma(r)}.
+\]</span>
+The symmetrized elementary tensors span the symmetric subspace, because division by <span class="math" data-tex="\(r!\)">\(r!\)</span> is possible. We may restrict <span class="math" data-tex="\(a\)">\(a\)</span> to invertible matrices: any linear functional vanishing on their tensor powers gives a polynomial in the matrix entries vanishing on the dense open set <span class="math" data-tex="\(\det(a)\ne0\)">\(\det(a)\ne0\)</span>, hence vanishing everywhere.</p>
+<p>It follows that, if <span class="math" data-tex="\(B\)">\(B\)</span> is the algebra generated by the permutation operators, its centralizer <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span> is the linear span of <span class="math" data-tex="\(g^{\otimes r}\)">\(g^{\otimes r}\)</span>, <span class="math" data-tex="\(g\in\operatorname{GL}(W)\)">\(g\in\operatorname{GL}(W)\)</span>.</p>
+<p>For completeness, the double-centralizer assertion used next follows from elementary semisimple-module theory. Averaging a projection over the finite group <span class="math" data-tex="\(S_r\)">\(S_r\)</span> makes every invariant subspace have an invariant complement. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is a direct sum of simple <span class="math" data-tex="\(K[S_r]\)">\(K[S_r]\)</span>-modules. Over the algebraic closure, write it as
+<span class="math math-display" data-tex="\[
+T=\bigoplus_\alpha S_\alpha\otimes M_\alpha
+\]">\[
+T=\bigoplus_\alpha S_\alpha\otimes M_\alpha
+\]</span>
+with the <span class="math" data-tex="\(S_\alpha\)">\(S_\alpha\)</span> pairwise nonisomorphic. Schur's lemma gives <span class="math" data-tex="\(\operatorname{End}_{S_r}(S_\alpha)=K\)">\(\operatorname{End}_{S_r}(S_\alpha)=K\)</span>: a commuting endomorphism has an eigenvalue, and its corresponding eigenspace is an invariant nonzero subspace. Consequently
+<span class="math math-display" data-tex="\[
+B&#x27;=\bigoplus_\alpha
+1_{S_\alpha}\otimes\operatorname{End}(M_\alpha).
+\]">\[
+B&#x27;=\bigoplus_\alpha
+1_{S_\alpha}\otimes\operatorname{End}(M_\alpha).
+\]</span>
+The image of the group algebra acts as the full matrix algebra on each <span class="math" data-tex="\(S_\alpha\)">\(S_\alpha\)</span>, independently for different <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Here is a direct justification. Choose a basis in each <span class="math" data-tex="\(S_\alpha\)">\(S_\alpha\)</span>, and form the vector whose components list all these basis vectors in
+<span class="math" data-tex="\(\bigoplus_\alpha S_\alpha^{\oplus\dim S_\alpha}\)">\(\bigoplus_\alpha S_\alpha^{\oplus\dim S_\alpha}\)</span>. If the cyclic submodule generated by that vector were proper, semisimplicity would give a nonzero map from its quotient to one of the simple modules. Such a map is a scalar linear combination of the components belonging to that same simple module, by Schur's lemma. Evaluating the resulting relation at the identity of the group algebra contradicts linear independence of its chosen basis. The cyclic submodule is therefore the whole direct sum, which is precisely simultaneous surjectivity onto the matrix blocks.</p>
+<p>Hence
+<span class="math math-display" data-tex="\[
+B=\bigoplus_\alpha
+\operatorname{End}(S_\alpha)\otimes1_{M_\alpha}=B&#x27;&#x27;.
+\]">\[
+B=\bigoplus_\alpha
+\operatorname{End}(S_\alpha)\otimes1_{M_\alpha}=B&#x27;&#x27;.
+\]</span>
+An operator commuting with all <span class="math" data-tex="\(g^{\otimes r}\)">\(g^{\otimes r}\)</span> lies in <span class="math" data-tex="\(B&#x27;&#x27;\)">\(B&#x27;&#x27;\)</span>, so lies in <span class="math" data-tex="\(B\)">\(B\)</span>. This proves the lemma, with no restriction comparing <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(\dim W\)">\(\dim W\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2 (symplectic tensor invariants).</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> carry a nondegenerate alternating form <span class="math" data-tex="\(\psi\)">\(\psi\)</span> over a characteristic-zero field <span class="math" data-tex="\(K\)">\(K\)</span>. Invariant linear forms on <span class="math" data-tex="\(V^{\otimes 2k}\)">\(V^{\otimes 2k}\)</span> are spanned by
+<span class="math math-display" data-tex="\[
+\psi_P(v_1\otimes\cdots\otimes v_{2k})
+=\prod_{\{i,j\}\in P,\ i&lt;j}\psi(v_i,v_j),
+\tag{4.1}
+\]">\[
+\psi_P(v_1\otimes\cdots\otimes v_{2k})
+=\prod_{\{i,j\}\in P,\ i&lt;j}\psi(v_i,v_j),
+\tag{4.1}
+\]</span>
+where <span class="math" data-tex="\(P\)">\(P\)</span> runs through pair partitions of <span class="math" data-tex="\(\{1,\ldots,2k\}\)">\(\{1,\ldots,2k\}\)</span>. In odd tensor degree there are no invariants. The spanning assertion holds in every dimension and every tensor degree; it does not assert that the displayed generators are independent.</p>
+<p><strong>Proof.</strong> Degree zero is <span class="math" data-tex="\(K\)">\(K\)</span>; if <span class="math" data-tex="\(V=0\)">\(V=0\)</span>, all positive-degree tensor spaces are zero. Suppose <span class="math" data-tex="\(\dim V=2n&gt;0\)">\(\dim V=2n&gt;0\)</span>. As in the lemma, the assertion descends from an algebraic closure, so we work over an algebraically closed field.</p>
+<p>Put <span class="math" data-tex="\(W=V^\vee\)">\(W=V^\vee\)</span>. The form <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, viewed as an antisymmetric tensor, is
+<span class="math math-display" data-tex="\[
+\Omega=\sum_{i=1}^n(e_i\otimes f_i-f_i\otimes e_i)
+\]">\[
+\Omega=\sum_{i=1}^n(e_i\otimes f_i-f_i\otimes e_i)
+\]</span>
+in a suitable basis of <span class="math" data-tex="\(W\)">\(W\)</span>. The action on <span class="math" data-tex="\(W\)">\(W\)</span> identifies <span class="math" data-tex="\(\operatorname{Sp}(V,\psi)\)">\(\operatorname{Sp}(V,\psi)\)</span> with the stabilizer of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> in <span class="math" data-tex="\(\operatorname{GL}(W)\)">\(\operatorname{GL}(W)\)</span>. A linear form on <span class="math" data-tex="\(V^{\otimes m}\)">\(V^{\otimes m}\)</span> is an element of <span class="math" data-tex="\(W^{\otimes m}\)">\(W^{\otimes m}\)</span>. Odd-degree invariants vanish because <span class="math" data-tex="\(-1\)">\(-1\)</span> belongs to the group. Take <span class="math" data-tex="\(m=2k\)">\(m=2k\)</span>, and let <span class="math" data-tex="\(v\in W^{\otimes m}\)">\(v\in W^{\otimes m}\)</span> be invariant.</p>
+<p>Consider the affine space <span class="math" data-tex="\(\Lambda^2W\)">\(\Lambda^2W\)</span> of alternating bivectors, using the injection
+<span class="math math-display" data-tex="\[
+x\wedge y\longmapsto x\otimes y-y\otimes x.
+\]">\[
+x\wedge y\longmapsto x\otimes y-y\otimes x.
+\]</span>
+Its nondegenerate open subset is the orbit of
+<span class="math" data-tex="\(B_0=\sum_i e_i\wedge f_i\)">\(B_0=\sum_i e_i\wedge f_i\)</span>. Let
+<span class="math" data-tex="\(\tau=e_1\wedge f_1\wedge\cdots\wedge e_n\wedge f_n\)">\(\tau=e_1\wedge f_1\wedge\cdots\wedge e_n\wedge f_n\)</span>.
+Define the Pfaffian by
+<span class="math math-display" data-tex="\[
+\frac{B^{\wedge n}}{n!}=\operatorname{Pf}(B)\tau.
+\]">\[
+\frac{B^{\wedge n}}{n!}=\operatorname{Pf}(B)\tau.
+\]</span>
+Thus <span class="math" data-tex="\(\operatorname{Pf}(B_0)=1\)">\(\operatorname{Pf}(B_0)=1\)</span> and
+<span class="math" data-tex="\(\operatorname{Pf}(gB)=\det(g)\operatorname{Pf}(B)\)">\(\operatorname{Pf}(gB)=\det(g)\operatorname{Pf}(B)\)</span>.</p>
+<p>For <span class="math" data-tex="\(B=gB_0\)">\(B=gB_0\)</span>, set <span class="math" data-tex="\(h(B)=g^{\otimes m}v\)">\(h(B)=g^{\otimes m}v\)</span>. This is independent of the choice of <span class="math" data-tex="\(g\)">\(g\)</span>, because two choices differ by the stabilizer of <span class="math" data-tex="\(B_0\)">\(B_0\)</span>. It is a regular map on the nondegenerate open subset. To see regularity explicitly, choose a nonzero pivot in the alternating matrix, split off its two-dimensional block, and repeat on the complementary block. The usual symplectic elimination uses only division by the chosen pivots. On the open sets where those pivots are invertible it supplies regular matrices <span class="math" data-tex="\(g(B)\)">\(g(B)\)</span>; their images <span class="math" data-tex="\(g(B)^{\otimes m}v\)">\(g(B)^{\otimes m}v\)</span> agree on overlaps. These open sets cover all nondegenerate alternating matrices.</p>
+<p>The coordinate ring of that open subset is the polynomial ring in the alternating-matrix entries with the Pfaffian inverted. Therefore, for some integer <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+P(B)=\operatorname{Pf}(B)^s h(B)
+\]">\[
+P(B)=\operatorname{Pf}(B)^s h(B)
+\]</span>
+is a polynomial map on all of <span class="math" data-tex="\(\Lambda^2W\)">\(\Lambda^2W\)</span>. It satisfies
+<span class="math math-display" data-tex="\[
+P(gB)=\det(g)^s g^{\otimes m}P(B).
+\]">\[
+P(gB)=\det(g)^s g^{\otimes m}P(B).
+\]</span>
+Taking <span class="math" data-tex="\(g=a\,1_W\)">\(g=a\,1_W\)</span> shows that <span class="math" data-tex="\(P\)">\(P\)</span> is homogeneous of degree
+<span class="math" data-tex="\(N=k+ns\)">\(N=k+ns\)</span>: its degree-<span class="math" data-tex="\(d\)">\(d\)</span> part scales by <span class="math" data-tex="\(a^{2d}\)">\(a^{2d}\)</span>, whereas the right side scales by <span class="math" data-tex="\(a^{m+2ns}\)">\(a^{m+2ns}\)</span>.</p>
+<p>Polarization now gives an equivariant linear map
+<span class="math math-display" data-tex="\[
+p:\operatorname{Sym}^N(\Lambda^2W)
+\longrightarrow
+W^{\otimes m}\otimes(\Lambda^{2n}W)^{\otimes s},
+\qquad
+p(B_0^N)=v\otimes\tau^{\otimes s}.
+\]">\[
+p:\operatorname{Sym}^N(\Lambda^2W)
+\longrightarrow
+W^{\otimes m}\otimes(\Lambda^{2n}W)^{\otimes s},
+\qquad
+p(B_0^N)=v\otimes\tau^{\otimes s}.
+\]</span>
+The determinant factors on the right are exactly those needed for the displayed equivariance.</p>
+<p>Both sides are direct summands of <span class="math" data-tex="\(W^{\otimes2N}\)">\(W^{\otimes2N}\)</span>. For the source, antisymmetrize inside each consecutive pair and then average over permutations of the <span class="math" data-tex="\(N\)">\(N\)</span> pairs. These commuting idempotents have image <span class="math" data-tex="\(\operatorname{Sym}^N(\Lambda^2W)\)">\(\operatorname{Sym}^N(\Lambda^2W)\)</span>. For each determinant factor on the target, use the alternating projector on <span class="math" data-tex="\(2n\)">\(2n\)</span> slots. Its normalized exterior embedding sends <span class="math" data-tex="\(w_1\wedge\cdots\wedge w_{2n}\)">\(w_1\wedge\cdots\wedge w_{2n}\)</span> to
+<span class="math math-display" data-tex="\[
+\frac{1}{(2n)!}\sum_\sigma
+\operatorname{sgn}(\sigma)\,
+w_{\sigma(1)}\otimes\cdots\otimes w_{\sigma(2n)}.
+\]">\[
+\frac{1}{(2n)!}\sum_\sigma
+\operatorname{sgn}(\sigma)\,
+w_{\sigma(1)}\otimes\cdots\otimes w_{\sigma(2n)}.
+\]</span>
+Compose the source projection, <span class="math" data-tex="\(p\)">\(p\)</span>, and the target embedding. This gives a <span class="math" data-tex="\(\operatorname{GL}(W)\)">\(\operatorname{GL}(W)\)</span>-equivariant endomorphism of <span class="math" data-tex="\(W^{\otimes2N}\)">\(W^{\otimes2N}\)</span>. By Lemma 4.1 it is a linear combination of permutation operators. Evaluating it on <span class="math" data-tex="\(\Omega^{\otimes N}\)">\(\Omega^{\otimes N}\)</span> therefore expresses the embedded tensor <span class="math" data-tex="\(v\otimes\tau^{\otimes s}\)">\(v\otimes\tau^{\otimes s}\)</span> as a linear combination of permutations of <span class="math" data-tex="\(\Omega^{\otimes N}\)">\(\Omega^{\otimes N}\)</span>.</p>
+<p>It remains to remove the determinant factors. Let <span class="math" data-tex="\(\eta\)">\(\eta\)</span> be the alternating form on <span class="math" data-tex="\(W\)">\(W\)</span> with
+<span class="math" data-tex="\(\eta(e_i,f_j)=\delta_{ij}\)">\(\eta(e_i,f_j)=\delta_{ij}\)</span> and zero values on the pairs of <span class="math" data-tex="\(e\)">\(e\)</span>'s or pairs of <span class="math" data-tex="\(f\)">\(f\)</span>'s. The alternating functional
+<span class="math math-display" data-tex="\[
+\lambda(w_1,\ldots,w_{2n})
+=\operatorname{Pf}\bigl(\eta(w_i,w_j)\bigr)
+\]">\[
+\lambda(w_1,\ldots,w_{2n})
+=\operatorname{Pf}\bigl(\eta(w_i,w_j)\bigr)
+\]</span>
+is the volume functional taking <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. It also takes its normalized exterior embedding to <span class="math" data-tex="\(1\)">\(1\)</span>, since antisymmetrization of an alternating functional leaves that functional unchanged. Expand the Pfaffian as its signed sum over pair partitions: <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a sum of products of <span class="math" data-tex="\(n\)">\(n\)</span> pair contractions by <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p>Apply <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to each of the <span class="math" data-tex="\(s\)">\(s\)</span> determinant blocks. On the left this recovers <span class="math" data-tex="\(v\)">\(v\)</span>. On the right we have finitely many contractions of permuted copies of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, with <span class="math" data-tex="\(m\)">\(m\)</span> uncontracted slots. Each summand has a graph consisting of alternating <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>-edges and <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-edges. Every internal vertex has degree two; each free slot is an endpoint. Hence each component is either a path between two free slots or a closed cycle.</p>
+<p>In the chosen basis the two coefficient matrices are both
+<span class="math math-display" data-tex="\[
+J=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}^{\oplus n},
+\qquad J^2=-1.
+\]">\[
+J=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}^{\oplus n},
+\qquad J^2=-1.
+\]</span>
+Successive contractions along a path therefore reduce to a copy of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, with a possible sign from its orientations. A cycle reduces to the trace of a signed identity, hence a signed scalar <span class="math" data-tex="\(2n\)">\(2n\)</span>. Thus every summand is a scalar multiple of a product of copies of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> pairing the free slots. This expresses <span class="math" data-tex="\(v\)">\(v\)</span> as a linear combination of the pair tensors. Under <span class="math" data-tex="\(W^{\otimes2k}=\operatorname{Hom}(V^{\otimes2k},K)\)">\(W^{\otimes2k}=\operatorname{Hom}(V^{\otimes2k},K)\)</span>, those tensors are exactly (4.1).</p>
+<p>Finally, scalar extension does not create a failure of spanning: both the invariant space and the span of the <span class="math" data-tex="\(K\)">\(K\)</span>-defined pair tensors commute with extension, so the assertion descends to the original field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="frobenius-on-the-coinvariants">Frobenius on the coinvariants</h3>
+<p>The forms can have relations when <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span> is small. Choose a subset that is a basis of the invariant linear forms, of cardinality <span class="math" data-tex="\(N_k\)">\(N_k\)</span>. Restoring the Tate target, these maps induce an isomorphism
+<span class="math math-display" data-tex="\[
+(V^{\otimes2k})_{\pi_1(U)}
+\simeq \mathbf Q_\ell(-k\beta)^{N_k}.
+\tag{4.2}
+\]">\[
+(V^{\otimes2k})_{\pi_1(U)}
+\simeq \mathbf Q_\ell(-k\beta)^{N_k}.
+\tag{4.2}
+\]</span>
+Indeed the dual map is an isomorphism onto all invariant linear forms, and finite-dimensional duality gives the claim about the quotient.</p>
+<p>Crucially, (4.2) also identifies arithmetic Frobenius. The maps <span class="math" data-tex="\(\psi_P\)">\(\psi_P\)</span> are built from the pairing (1.1) defined over <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. They are arithmetic-equivariant and take values in the <em>same fixed</em> Tate line for every <span class="math" data-tex="\(P\)">\(P\)</span>. Therefore <span class="math" data-tex="\(F\)">\(F\)</span> acts on the quotient by the scalar <span class="math" data-tex="\(q^{k\beta}\)">\(q^{k\beta}\)</span>; it does not permute an arbitrarily chosen contraction basis.</p>
+<p><strong>Lemma 4.3 (the adic passage in curve duality).</strong> Let <span class="math" data-tex="\(U\)">\(U\)</span> be a smooth connected curve over an algebraically closed field of characteristic different from <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and let <span class="math" data-tex="\(L\)">\(L\)</span> be a classical lisse <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>-sheaf. Cup product and the degree-normalized curve trace give perfect pairings
+<span class="math math-display" data-tex="\[
+H_c^i(U,L)\otimes H^{2-i}(U,L^\vee)
+\longrightarrow\mathbf Q_\ell(-1).
+\tag{4.3a}
+\]">\[
+H_c^i(U,L)\otimes H^{2-i}(U,L^\vee)
+\longrightarrow\mathbf Q_\ell(-1).
+\tag{4.3a}
+\]</span>
+They are natural for extension by zero and restriction, and for automorphisms of the curve and its coefficients.</p>
+<p><strong>Proof.</strong> Choose a stable finite free <span class="math" data-tex="\(\mathbf Z_\ell\)">\(\mathbf Z_\ell\)</span>-lattice <span class="math" data-tex="\(M\subset L\)">\(M\subset L\)</span>; compactness of the monodromy image gives one by Lesson 1. Put <span class="math" data-tex="\(M_n=M/\ell^nM\)">\(M_n=M/\ell^nM\)</span>. The finite-coefficient curve-duality theorem in <em>Poincaré duality for curves</em>, Theorem 11.1, gives the evaluation-and-trace isomorphism
+<span class="math math-display" data-tex="\[
+R\Gamma(U,M_n^\vee(1))
+\simeq R\operatorname{Hom}_{\mathbf Z/\ell^n}
+   (R\Gamma_c(U,M_n),\mathbf Z/\ell^n)[-2].
+\tag{4.3b}
+\]">\[
+R\Gamma(U,M_n^\vee(1))
+\simeq R\operatorname{Hom}_{\mathbf Z/\ell^n}
+   (R\Gamma_c(U,M_n),\mathbf Z/\ell^n)[-2].
+\tag{4.3b}
+\]</span>
+Here <span class="math" data-tex="\(M_n^\vee=\operatorname{Hom}(M_n,\mathbf Z/\ell^n)\)">\(M_n^\vee=\operatorname{Hom}(M_n,\mathbf Z/\ell^n)\)</span>, and finite freeness identifies it with the reduction of <span class="math" data-tex="\(M^\vee\)">\(M^\vee\)</span>. This finite theorem applies to ramified local systems as well as constant ones; its local inertia calculation and its ordered evaluation pairing are part of that provider's proof.</p>
+<p>Lesson 7, Theorem 5.1 and its proof of (5.3)–(5.5), show that the perfect complexes <span class="math" data-tex="\(C_n=R\Gamma_c(U,M_n)\)">\(C_n=R\Gamma_c(U,M_n)\)</span> are the compatible derived reductions of a bounded finite free <span class="math" data-tex="\(\mathbf Z_\ell\)">\(\mathbf Z_\ell\)</span>-complex <span class="math" data-tex="\(C\)">\(C\)</span>. Its dual is also finite free, and
+<span class="math math-display" data-tex="\[
+C^\vee\otimes^{\mathbf L}\mathbf Z/\ell^n
+=R\operatorname{Hom}_{\mathbf Z/\ell^n}(C_n,\mathbf Z/\ell^n).
+\]">\[
+C^\vee\otimes^{\mathbf L}\mathbf Z/\ell^n
+=R\operatorname{Hom}_{\mathbf Z/\ell^n}(C_n,\mathbf Z/\ell^n).
+\]</span>
+All maps in (4.3b) are defined by cup product and the trace sending a point class to <span class="math" data-tex="\(+1\)">\(+1\)</span>. Reduction of coefficients preserves this normalization and these maps. They therefore form compatible isomorphisms, including their homotopies, rather than unrelated isomorphisms at each level.</p>
+<p>Taking their derived limit identifies
+<span class="math" data-tex="\(R\Gamma(U,M^\vee(1))\)">\(R\Gamma(U,M^\vee(1))\)</span> with <span class="math" data-tex="\(C^\vee[-2]\)">\(C^\vee[-2]\)</span>: derived global sections commute with these limits, and the finite-level cohomology groups are finite, so their towers are Mittag–Leffler. This is also the classical adic cohomology comparison of Lesson 2, (5.1). Tensoring the resulting finite free complexes with <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span> gives a duality of bounded finite-dimensional complexes. Over a field dualization is exact; taking cohomology proves (4.3a) in every degree. Its maps retain the evaluation, trace and functorialities used at each finite level. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Lemma 4.3 and the degree-normalized trace now give
+<span class="math math-display" data-tex="\[
+H_c^0(U,\mathcal T_k)=0,\qquad
+H_c^2(U,\mathcal T_k)
+\simeq(V^{\otimes2k})_{\pi_1(U)}(-1)
+\simeq\mathbf Q_\ell(-k\beta-1)^{N_k}.
+\tag{4.3}
+\]">\[
+H_c^0(U,\mathcal T_k)=0,\qquad
+H_c^2(U,\mathcal T_k)
+\simeq(V^{\otimes2k})_{\pi_1(U)}(-1)
+\simeq\mathbf Q_\ell(-k\beta-1)^{N_k}.
+\tag{4.3}
+\]</span>
+The first assertion follows because a section of a lisse sheaf on a connected affine curve cannot have finite support. For the second, ordinary <span class="math" data-tex="\(H^0\)">\(H^0\)</span> is the invariant subspace; Poincaré duality exchanges it with the top compact-support coinvariant quotient and supplies the twist <span class="math" data-tex="\((-1)\)">\((-1)\)</span>.</p>
+<p>For example <span class="math" data-tex="\(N_1=1\)">\(N_1=1\)</span> when <span class="math" data-tex="\(V\ne0\)">\(V\ne0\)</span>. If <span class="math" data-tex="\(\dim V=2\)">\(\dim V=2\)</span> and <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, the three contractions satisfy
+<span class="math math-display" data-tex="\[
+\psi_{12}\psi_{34}-\psi_{13}\psi_{24}
++\psi_{14}\psi_{23}=0.
+\tag{4.4}
+\]">\[
+\psi_{12}\psi_{34}-\psi_{13}\psi_{24}
++\psi_{14}\psi_{23}=0.
+\tag{4.4}
+\]</span>
+It is the vanishing of a fourfold exterior product on a two-dimensional space, or can be checked in a symplectic basis. The first two forms are independent: evaluate on <span class="math" data-tex="\((e,e,f,f)\)">\((e,e,f,f)\)</span> and <span class="math" data-tex="\((e,f,e,f)\)">\((e,f,e,f)\)</span>, with <span class="math" data-tex="\(\psi(e,f)=1\)">\(\psi(e,f)=1\)</span>. Hence <span class="math" data-tex="\(N_2=2\)">\(N_2=2\)</span>, not <span class="math" data-tex="\(3\)">\(3\)</span>. Counting pair partitions without their relations would give a wrong pole order, although not a different pole modulus.</p>
+<h2 id="5-proof-of-the-fundamental-estimate">5. Proof of the fundamental estimate</h2>
+<p>Apply <a href="support/AG-LTF--l-functions-rationality-and-the-functional-equation.html">Lesson 8</a>, Theorem 2.1, to (4.3). This is the characteristic-zero determinant formula, proved there from the trace identity. Its Theorem 2.2 supplies the stronger finite-coefficient determinant formula for every Noetherian coefficient ring killed by an integer prime to <span class="math" data-tex="\(p\)">\(p\)</span>, with finite Tor amplitude; the present characteristic-zero argument does not infer that finite formula from power traces alone. We obtain
+<span class="math math-display" data-tex="\[
+L_k(t)=
+\frac{P_k(t)}{(1-q^{k\beta+1}t)^{N_k}},\qquad
+P_k(t)=\det(1-Ft\mid H_c^1(U,\mathcal T_k)).
+\tag{5.1}
+\]">\[
+L_k(t)=
+\frac{P_k(t)}{(1-q^{k\beta+1}t)^{N_k}},\qquad
+P_k(t)=\det(1-Ft\mid H_c^1(U,\mathcal T_k)).
+\tag{5.1}
+\]</span>
+The Euler product has rational coefficients by §2. Multiplying its formal expansion by the rational polynomial in the denominator shows that <span class="math" data-tex="\(P_k\in\mathbf Q[t]\)">\(P_k\in\mathbf Q[t]\)</span>. Thus (5.1) is a rational function over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, and we can regard it as a complex rational function without choosing an embedding for arbitrary <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic coefficients.</p>
+<p>Every possible pole of (5.1) is at <span class="math" data-tex="\(q^{-(k\beta+1)}\)">\(q^{-(k\beta+1)}\)</span>. Cancellation can only enlarge its Taylor radius <span class="math" data-tex="\(\rho_k\)">\(\rho_k\)</span>, so
+<span class="math math-display" data-tex="\[
+\rho_k\ge q^{-(k\beta+1)}.
+\tag{5.2}
+\]">\[
+\rho_k\ge q^{-(k\beta+1)}.
+\tag{5.2}
+\]</span>
+The local factors (2.3) also are rational functions over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, with nonnegative Taylor coefficients. Their nonconstant orders tend to infinity as <span class="math" data-tex="\(d_x\to\infty\)">\(d_x\to\infty\)</span>, and there are finitely many <span class="math" data-tex="\(x\)">\(x\)</span> of bounded degree. Lemma 3.1 therefore applies to their Euler product.</p>
+<p>Fix an eigenvalue <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of <span class="math" data-tex="\(F_x\)">\(F_x\)</span>, and fix any complex conjugate of it. The repeated product <span class="math" data-tex="\(\alpha^{2k}\)">\(\alpha^{2k}\)</span> is an eigenvalue of the tensor-power operator. Every solution of
+<span class="math" data-tex="\(t^{d_x}=\alpha^{-2k}\)">\(t^{d_x}=\alpha^{-2k}\)</span> is a genuine pole of (2.3), since its numerator is <span class="math" data-tex="\(1\)">\(1\)</span>. Each has modulus
+<span class="math" data-tex="\(|\alpha|^{-2k/d_x}\)">\(|\alpha|^{-2k/d_x}\)</span>. By (5.2) and the radius comparison,
+<span class="math math-display" data-tex="\[
+q^{-(k\beta+1)}
+\le \rho_k
+\le \operatorname{radius}(f_{x,k})
+\le |\alpha|^{-2k/d_x}.
+\]">\[
+q^{-(k\beta+1)}
+\le \rho_k
+\le \operatorname{radius}(f_{x,k})
+\le |\alpha|^{-2k/d_x}.
+\]</span>
+Equivalently,
+<span class="math math-display" data-tex="\[
+|\alpha|^{2k}\le q_x^{k\beta+1},\qquad
+|\alpha|\le q_x^{\beta/2+1/(2k)}.
+\tag{5.3}
+\]">\[
+|\alpha|^{2k}\le q_x^{k\beta+1},\qquad
+|\alpha|\le q_x^{\beta/2+1/(2k)}.
+\tag{5.3}
+\]</span>
+Letting <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span> gives <span class="math" data-tex="\( |\alpha|\le q_x^{\beta/2}\)">\( |\alpha|\le q_x^{\beta/2}\)</span>.</p>
+<p>The pairing (1.1) says that <span class="math" data-tex="\(F_x\)">\(F_x\)</span> is a similitude of multiplier <span class="math" data-tex="\(q_x^\beta\)">\(q_x^\beta\)</span>. In matrix form,
+<span class="math" data-tex="\(A^{\mathsf t}JA=q_x^\beta J\)">\(A^{\mathsf t}JA=q_x^\beta J\)</span>; hence <span class="math" data-tex="\(A\)">\(A\)</span> is similar to
+<span class="math" data-tex="\(q_x^\beta A^{-\mathsf t}\)">\(q_x^\beta A^{-\mathsf t}\)</span>. Consequently <span class="math" data-tex="\(q_x^\beta/\alpha\)">\(q_x^\beta/\alpha\)</span> is also an eigenvalue, with multiplicity. Apply the upper bound to this eigenvalue under the same complex embedding:
+<span class="math math-display" data-tex="\[
+\left|\frac{q_x^\beta}{\alpha}\right|
+\le q_x^{\beta/2},\qquad
+|\alpha|\ge q_x^{\beta/2}.
+\tag{5.4}
+\]">\[
+\left|\frac{q_x^\beta}{\alpha}\right|
+\le q_x^{\beta/2},\qquad
+|\alpha|\ge q_x^{\beta/2}.
+\tag{5.4}
+\]</span>
+The two inequalities give equality. Condition (1.2) already supplied algebraicity, and every complex conjugate was allowed in the argument. This proves Theorem 1.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only Zariski density was used in §4; the stated openness hypothesis implies it. This proof establishes a theorem about a sheaf satisfying the three explicit hypotheses. Applying it to the vanishing quotient of a higher-dimensional Lefschetz pencil additionally requires the algebraic Picard–Lefschetz and geometric monodromy inputs of Lesson 9. Such an application must verify those inputs; a calculation in a complex quadratic model alone does not supply them in arbitrary characteristic.</p>
+<h2 id="6-the-two-cohomological-bounds">6. The two cohomological bounds</h2>
+<p>Return to the hypotheses of Theorem 1.1, with <span class="math" data-tex="\(U_0\)">\(U_0\)</span> affine. The standard symplectic representation <span class="math" data-tex="\(V\ne0\)">\(V\ne0\)</span> has no trivial quotient: its dual has no invariant vector, since a vector fixed by every symplectic transvection would be orthogonal to every vector. By density the same holds for geometric monodromy. Thus
+<span class="math math-display" data-tex="\[
+H_c^0(U,\mathcal F)=H_c^2(U,\mathcal F)=0,\qquad
+L(U_0,\mathcal F_0,t)
+=\det(1-Ft\mid H_c^1(U,\mathcal F)).
+\tag{6.1}
+\]">\[
+H_c^0(U,\mathcal F)=H_c^2(U,\mathcal F)=0,\qquad
+L(U_0,\mathcal F_0,t)
+=\det(1-Ft\mid H_c^1(U,\mathcal F)).
+\tag{6.1}
+\]</span>
+The rank-zero case again gives zero cohomology and no eigenvalues.</p>
+<p><strong>Corollary 6.1 (Deligne (3.8)).</strong> Every eigenvalue <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(H_c^1(U,\mathcal F)\)">\(H_c^1(U,\mathcal F)\)</span> is algebraic over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, and every complex conjugate satisfies
+<span class="math math-display" data-tex="\[
+|\gamma|\le q^{\beta/2+1}
+=q^{(\beta+1)/2+1/2}.
+\tag{6.2}
+\]">\[
+|\gamma|\le q^{\beta/2+1}
+=q^{(\beta+1)/2+1/2}.
+\tag{6.2}
+\]</span></p>
+<p><strong>Proof.</strong> The left side of (6.1) has rational formal coefficients by (1.2). Since the right side is a polynomial, it lies in <span class="math" data-tex="\(\mathbf Q[t]\)">\(\mathbf Q[t]\)</span>, proving algebraicity of its reciprocal roots.</p>
+<p>By purity, every local eigenvalue has modulus <span class="math" data-tex="\(q_x^{\beta/2}\)">\(q_x^{\beta/2}\)</span>. Let <span class="math" data-tex="\(r=\operatorname{rank}\mathcal F\)">\(r=\operatorname{rank}\mathcal F\)</span>, and let <span class="math" data-tex="\(M_d\)">\(M_d\)</span> be the number of degree-<span class="math" data-tex="\(d\)">\(d\)</span> points of <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. The projective line has <span class="math" data-tex="\(q^d+1\)">\(q^d+1\)</span> rational points over <span class="math" data-tex="\(\mathbf F_{q^d}\)">\(\mathbf F_{q^d}\)</span>, so <span class="math" data-tex="\(M_d\le q^d+1\)">\(M_d\le q^d+1\)</span>. For <span class="math" data-tex="\(q^{\beta/2}|t|&lt;1\)">\(q^{\beta/2}|t|&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{x,j}|\alpha_{x,j}t^{d_x}|
+\le r\sum_{d\ge1}(q^d+1)
+(q^{\beta/2}|t|)^d.
+\tag{6.3}
+\]">\[
+\sum_{x,j}|\alpha_{x,j}t^{d_x}|
+\le r\sum_{d\ge1}(q^d+1)
+(q^{\beta/2}|t|)^d.
+\tag{6.3}
+\]</span>
+The right side converges when <span class="math" data-tex="\(|t|&lt;q^{-\beta/2-1}\)">\(|t|&lt;q^{-\beta/2-1}\)</span>. In that disc every local term has modulus less than <span class="math" data-tex="\(1\)">\(1\)</span>, and the product of its reciprocal <span class="math" data-tex="\(1-\alpha_{x,j}t^{d_x}\)">\(1-\alpha_{x,j}t^{d_x}\)</span> factors converges locally uniformly to a nonzero holomorphic function. This follows also by expanding their logarithms; the convergent sum in (6.3) bounds the logarithmic series on any smaller disc. Therefore the polynomial in (6.1) has no zero in that disc. Its reciprocal roots satisfy (6.2), and all conjugates occur among those roots because its coefficients are rational. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(j:U\hookrightarrow C=\mathbf P^1\)">\(j:U\hookrightarrow C=\mathbf P^1\)</span>. We now derive the pairing for the ordinary sheaf <span class="math" data-tex="\(j_*L\)">\(j_*L\)</span>, including its boundary terms, from Lemma 4.3.</p>
+<p><strong>Proposition 6.2 (duality of the middle extension on a curve).</strong> For a classical lisse <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>-sheaf <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, cup product and trace give perfect pairings
+<span class="math math-display" data-tex="\[
+H^i(C,j_*L)\otimes H^{2-i}(C,j_*L^\vee)
+\longrightarrow\mathbf Q_\ell(-1).
+\tag{6.4}
+\]">\[
+H^i(C,j_*L)\otimes H^{2-i}(C,j_*L^\vee)
+\longrightarrow\mathbf Q_\ell(-1).
+\tag{6.4}
+\]</span>
+The construction is equivariant for arithmetic Frobenius when <span class="math" data-tex="\(C,U,L\)">\(C,U,L\)</span> descend to a finite field.</p>
+<p><strong>Proof.</strong> The quotient <span class="math" data-tex="\(j_*L/j_!L\)">\(j_*L/j_!L\)</span> is supported on the finite boundary. It has no positive cohomology, so
+<span class="math" data-tex="\(H_c^1(U,L)\to H^1(C,j_*L)\)">\(H_c^1(U,L)\to H^1(C,j_*L)\)</span> is onto and
+<span class="math" data-tex="\(H^2(C,j_*L)=H_c^2(U,L)\)">\(H^2(C,j_*L)=H_c^2(U,L)\)</span>.
+The first terms of the Leray spectral sequence for <span class="math" data-tex="\(j\)">\(j\)</span> give an injection
+<span class="math" data-tex="\(H^1(C,j_*L)\to H^1(U,L)\)">\(H^1(C,j_*L)\to H^1(U,L)\)</span>.
+Consequently
+<span class="math math-display" data-tex="\[
+H^1(C,j_*L)=
+\operatorname{im}\bigl(\alpha_L:H_c^1(U,L)\to H^1(U,L)\bigr).
+\tag{6.4a}
+\]">\[
+H^1(C,j_*L)=
+\operatorname{im}\bigl(\alpha_L:H_c^1(U,L)\to H^1(U,L)\bigr).
+\tag{6.4a}
+\]</span>
+Both these maps are the natural maps induced by extension by zero and restriction. In degree zero, <span class="math" data-tex="\(H^0(C,j_*L)=H^0(U,L)\)">\(H^0(C,j_*L)=H^0(U,L)\)</span>.</p>
+<p>Lemma 4.3 identifies <span class="math" data-tex="\(H^1(U,L^\vee)\)">\(H^1(U,L^\vee)\)</span> with the dual of <span class="math" data-tex="\(H_c^1(U,L)\)">\(H_c^1(U,L)\)</span>, retaining the trace line. Under this identification the adjoint of <span class="math" data-tex="\(\alpha_L\)">\(\alpha_L\)</span> is <span class="math" data-tex="\(-\alpha_{L^\vee}\)">\(-\alpha_{L^\vee}\)</span>: the sign is the exchange of two degree-one cup factors. To check the adjunction, choose compact classes <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. The two evaluations are the trace of their cup product after the same natural map to ordinary cohomology, in the two orders; graded commutativity gives precisely the minus sign. Thus
+<span class="math math-display" data-tex="\[
+(\ker\alpha_L)^\perp=\operatorname{im}\alpha_{L^\vee}.
+\tag{6.4b}
+\]">\[
+(\ker\alpha_L)^\perp=\operatorname{im}\alpha_{L^\vee}.
+\tag{6.4b}
+\]</span>
+This last equality is elementary linear algebra: the image of the dual of a finite-dimensional map is the annihilator of its kernel.</p>
+<p>For <span class="math" data-tex="\(x=\alpha_L(a)\)">\(x=\alpha_L(a)\)</span> and <span class="math" data-tex="\(y\in\operatorname{im}\alpha_{L^\vee}\)">\(y\in\operatorname{im}\alpha_{L^\vee}\)</span>, define their pairing by the compact–ordinary pairing of <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(y\)">\(y\)</span>. Equation (6.4b) makes this independent of the lift <span class="math" data-tex="\(a\)">\(a\)</span>, and makes the induced pairing between the two images perfect. By (6.4a) these are the two degree-one groups in (6.4). This is their cup-product pairing on <span class="math" data-tex="\(C\)">\(C\)</span>: evaluation <span class="math" data-tex="\(L\otimes L^\vee\to\mathbf Q_\ell\)">\(L\otimes L^\vee\to\mathbf Q_\ell\)</span> extends to <span class="math" data-tex="\(j_*L\otimes j_*L^\vee\to\mathbf Q_\ell\)">\(j_*L\otimes j_*L^\vee\to\mathbf Q_\ell\)</span>, since <span class="math" data-tex="\(j_*\mathbf Q_\ell=\mathbf Q_\ell\)">\(j_*\mathbf Q_\ell=\mathbf Q_\ell\)</span> on the smooth connected curve. Naturality of cup product with the maps from <span class="math" data-tex="\(j_!\)">\(j_!\)</span> identifies its trace with the compact pairing just used.</p>
+<p>For degrees zero and two, the identifications above reduce (6.4) directly to Lemma 4.3's pairing of <span class="math" data-tex="\(H^0(U,L)\)">\(H^0(U,L)\)</span> with <span class="math" data-tex="\(H_c^2(U,L^\vee)\)">\(H_c^2(U,L^\vee)\)</span>, and its exchanged version. All other groups vanish by the curve cohomological-dimension bound. This proves every degree. All constructions use natural maps and the degree-normalized trace, so they commute with Frobenius; on the target line it acts by <span class="math" data-tex="\(q\)">\(q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equivalently, twist the second factor by <span class="math" data-tex="\((1)\)">\((1)\)</span> to obtain a scalar-valued perfect pairing. The boundary stalks of <span class="math" data-tex="\(j_*L\)">\(j_*L\)</span> are local-inertia invariants. Replacing them by full generic fibres would lose the kernel in (6.4b) and would not prove this theorem. Deligne states the resulting pairing in (2.12), printed p.283.</p>
+<p><strong>Corollary 6.2 (Deligne (3.9)).</strong> Every eigenvalue <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(H^1(\mathbf P^1,j_*\mathcal F)\)">\(H^1(\mathbf P^1,j_*\mathcal F)\)</span> is algebraic, and every complex conjugate satisfies
+<span class="math math-display" data-tex="\[
+q^{\beta/2}\le|\gamma|\le q^{\beta/2+1}.
+\tag{6.5}
+\]">\[
+q^{\beta/2}\le|\gamma|\le q^{\beta/2+1}.
+\tag{6.5}
+\]</span></p>
+<p><strong>Proof.</strong> The quotient <span class="math" data-tex="\(\mathcal B=j_*\mathcal F/j_!\mathcal F\)">\(\mathcal B=j_*\mathcal F/j_!\mathcal F\)</span> is supported on finitely many points, so <span class="math" data-tex="\(H^1(\mathbf P^1,\mathcal B)=0\)">\(H^1(\mathbf P^1,\mathcal B)=0\)</span>. Its long exact sequence gives a Frobenius-equivariant surjection
+<span class="math math-display" data-tex="\[
+H_c^1(U,\mathcal F)\twoheadrightarrow
+H^1(\mathbf P^1,j_*\mathcal F).
+\tag{6.6}
+\]">\[
+H_c^1(U,\mathcal F)\twoheadrightarrow
+H^1(\mathbf P^1,j_*\mathcal F).
+\tag{6.6}
+\]</span>
+The characteristic polynomial of a quotient divides that of the original operator over <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, so its eigenvalues are algebraic and have the upper bound of Corollary 6.1, for every conjugate.</p>
+<p>The sheaf pairing identifies <span class="math" data-tex="\(\mathcal F^\vee\simeq\mathcal F(\beta)\)">\(\mathcal F^\vee\simeq\mathcal F(\beta)\)</span>. Combining this identification with (6.4) gives a perfect pairing on <span class="math" data-tex="\(H^1(\mathbf P^1,j_*\mathcal F)\)">\(H^1(\mathbf P^1,j_*\mathcal F)\)</span> valued in <span class="math" data-tex="\(\mathbf Q_\ell(-\beta-1)\)">\(\mathbf Q_\ell(-\beta-1)\)</span>. It is Frobenius-equivariant, so <span class="math" data-tex="\(q^{\beta+1}/\gamma\)">\(q^{\beta+1}/\gamma\)</span> is another eigenvalue of the same operator. Applying the upper bound to that eigenvalue gives
+<span class="math" data-tex="\(q^{\beta+1}/|\gamma|\le q^{\beta/2+1}\)">\(q^{\beta+1}/|\gamma|\le q^{\beta/2+1}\)</span>, which is the lower bound in (6.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are deliberately coarse bounds. Their midpoint exponent is <span class="math" data-tex="\((\beta+1)/2\)">\((\beta+1)/2\)</span>, with error <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. The lower exponent is <span class="math" data-tex="\(\beta/2\)">\(\beta/2\)</span>, not <span class="math" data-tex="\(\beta-1/2\)">\(\beta-1/2\)</span>. In Lesson 11 the fibre weight is <span class="math" data-tex="\(\beta=d-1\)">\(\beta=d-1\)</span>, giving the interval <span class="math" data-tex="\(q^{d/2-1/2}\)">\(q^{d/2-1/2}\)</span> to <span class="math" data-tex="\(q^{d/2+1/2}\)">\(q^{d/2+1/2}\)</span> for the varying middle term. The tensor-power trick will remove that error.</p>
+<p>The quotient argument proves algebraicity and the bounds for all conjugates. It does not by itself prove that the quotient characteristic polynomial is rational. Even a rational matrix can have a stable subspace over <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span> with an irrational quotient eigenvalue: over <span class="math" data-tex="\(\mathbf Q_7\)">\(\mathbf Q_7\)</span>, the matrix <span class="math" data-tex="\(\begin{pmatrix}0&amp;2\\1&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;2\\1&amp;0\end{pmatrix}\)</span> has an eigenline and a one-dimensional quotient with eigenvalue <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>. The root lies in <span class="math" data-tex="\(\mathbf Q_7\)">\(\mathbf Q_7\)</span> by Hensel lifting a root of <span class="math" data-tex="\(T^2-2\)">\(T^2-2\)</span> modulo <span class="math" data-tex="\(7\)">\(7\)</span>. Thus the surjection in (6.6) justifies exactly the algebraicity conclusion stated by Deligne (3.9); it supplies no general rational-matrix descent for this quotient.</p>
+<h3 id="the-same-argument-over-other-curves-and-coefficient-fields">The same argument over other curves and coefficient fields</h3>
+<p><strong>Proposition 6.3.</strong> Theorem 1.1 and Corollaries 6.1–6.2 remain valid with <span class="math" data-tex="\(U_0\)">\(U_0\)</span> any smooth separated geometrically connected finite-type curve over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, and with its smooth projective completion <span class="math" data-tex="\(C_0\)">\(C_0\)</span> replacing <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> in the middle-extension statement. They also remain valid for a finite coefficient extension <span class="math" data-tex="\(E/\mathbf Q_\ell\)">\(E/\mathbf Q_\ell\)</span>, with pairing into <span class="math" data-tex="\(E(-\beta)\)">\(E(-\beta)\)</span>. In either version, Zariski density in the corresponding algebraic symplectic group suffices in place of openness. The local characteristic polynomials are still required to belong to <span class="math" data-tex="\(\mathbf Q[T]\)">\(\mathbf Q[T]\)</span>.</p>
+<p><strong>Proof.</strong> Fix a point being tested and, if necessary, remove another closed point to make the curve affine. Surjectivity of the geometric fundamental group under restriction preserves its image. All steps of §§2–5 then apply: the trace formula and curve duality hold on every smooth curve, the tensor contractions are algebraic statements over any characteristic-zero field, and the only use of openness was density. Formula (4.3) therefore has precisely the same Frobenius scalars. No geometry specific to <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> entered the local-purity proof.</p>
+<p>For the global bound, choose a nonconstant rational function on <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. It extends to a finite map <span class="math" data-tex="\(C_0\to\mathbf P^1\)">\(C_0\to\mathbf P^1\)</span>, of some degree <span class="math" data-tex="\(e\)">\(e\)</span>: on a smooth complete curve its pole divisor defines the extension, the nonconstant map is proper with finite fibres, and hence finite. Thus
+<span class="math math-display" data-tex="\[
+M_d\le\#C_0(\mathbf F_{q^d})\le e(q^d+1).
+\]">\[
+M_d\le\#C_0(\mathbf F_{q^d})\le e(q^d+1).
+\]</span>
+This replaces the counting bound in (6.3) and gives the same convergence disc. On an affine curve, <span class="math" data-tex="\(H_c^0=0\)">\(H_c^0=0\)</span> as before; if the curve is complete, <span class="math" data-tex="\(H_c^0=H^0=0\)">\(H_c^0=H^0=0\)</span> because the standard symplectic representation has no invariants. Its top coinvariants also vanish in both cases. Hence (6.1) still holds. The proof of Proposition 6.2 uses only a smooth complete curve and a finite boundary, so it supplies the same pairing on <span class="math" data-tex="\(C\)">\(C\)</span>; the quotient and similitude argument proves the same interval.</p>
+<p>For <span class="math" data-tex="\(E\)">\(E\)</span>-coefficients, Lesson 8, Theorem 2.1, already gives the determinant formula over <span class="math" data-tex="\(E\)">\(E\)</span>. Curve duality also gives its <span class="math" data-tex="\(E\)">\(E\)</span>-valued evaluation-and-trace pairing. One can verify this directly by restriction of scalars: the nondegenerate field trace <span class="math" data-tex="\(\operatorname{Tr}_{E/\mathbf Q_\ell}\)">\(\operatorname{Tr}_{E/\mathbf Q_\ell}\)</span> identifies the <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>-dual of an <span class="math" data-tex="\(E\)">\(E\)</span>-space with its <span class="math" data-tex="\(E\)">\(E\)</span>-dual, and the composite of the <span class="math" data-tex="\(E\)">\(E\)</span>-valued cup pairing with field trace is the perfect pairing of Lemma 4.3. Thus the <span class="math" data-tex="\(E\)">\(E\)</span>-valued pairing is perfect as well. Rational local polynomials still give rational traces and rational tensor polynomials, so the nonnegative real-series argument is unchanged. This proves every assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The rationality condition cannot be replaced in this proof by “coefficients in a number field” without an additional condition ensuring real nonnegative even traces under the embeddings in use. It is the precise source of positivity, independently of the choice of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic coefficient field.</p>
+<p>The later general weight theorem gives stronger bounds. Deligne, <em>Weil II</em>, Corollary (3.3.4), applied to a pointwise pure lisse sheaf of weight <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, bounds the weights of <span class="math" data-tex="\(H_c^1\)">\(H_c^1\)</span> by <span class="math" data-tex="\(\beta+1\)">\(\beta+1\)</span>, so <span class="math" data-tex="\(|\gamma|\le q^{(\beta+1)/2}\)">\(|\gamma|\le q^{(\beta+1)/2}\)</span>. Corollary (3.3.5) bounds ordinary <span class="math" data-tex="\(H^1\)">\(H^1\)</span> from below by that weight; together they make the image of <span class="math" data-tex="\(H_c^1\to H^1\)">\(H_c^1\to H^1\)</span> pure of weight <span class="math" data-tex="\(\beta+1\)">\(\beta+1\)</span>, as stated in (3.3.6). Proposition 6.2 identifies this image with <span class="math" data-tex="\(H^1(C,j_*\mathcal F)\)">\(H^1(C,j_*\mathcal F)\)</span>. These sharper conclusions require the general weight theorem, beyond the estimate proved here. They are a comparison with that later theory and are not inputs to §§1–7 or to the Weil I argument in Lesson 11. Hard Lefschetz is likewise not an input.</p>
+<h2 id="7-examples-and-the-twisting-qualification">7. Examples and the twisting qualification</h2>
+<h3 id="a-family-of-elliptic-curves">A family of elliptic curves</h3>
+<p>For <span class="math" data-tex="\(q\)">\(q\)</span> odd, take the Legendre family
+<span class="math math-display" data-tex="\[
+y^2=x(x-1)(x-\lambda),\qquad
+U_0=\mathbf P^1-\{0,1,\infty\},\qquad
+\mathcal F_0=R^1f_*\mathbf Q_\ell.
+\]">\[
+y^2=x(x-1)(x-\lambda),\qquad
+U_0=\mathbf P^1-\{0,1,\infty\},\qquad
+\mathcal F_0=R^1f_*\mathbf Q_\ell.
+\]</span>
+It is lisse of rank <span class="math" data-tex="\(2\)">\(2\)</span>, and its nonconstant function
+<span class="math" data-tex="\(j(\lambda)=256(1-\lambda+\lambda^2)^3/(\lambda^2(1-\lambda)^2)\)">\(j(\lambda)=256(1-\lambda+\lambda^2)^3/(\lambda^2(1-\lambda)^2)\)</span>
+makes it an explicit nonisotrivial example. Cup product gives (1.1) with <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span>, using the degree-normalized curve trace. Every smooth fibre has local polynomial
+<span class="math math-display" data-tex="\[
+1-a_xT+q_xT^2,\qquad
+a_x=q_x+1-\#X_x(\mathbf F_{q_x})\in\mathbf Z,
+\]">\[
+1-a_xT+q_xT^2,\qquad
+a_x=q_x+1-\#X_x(\mathbf F_{q_x})\in\mathbf Z,
+\]</span>
+by the fixed-point formula and duality in <a href="cycle-classes-and-the-lefschetz-fixed-point-formula-for-curves.html">Lesson 5</a>, and Lesson 8, (6.3). We verify the remaining monodromy hypothesis algebraically.</p>
+<p><strong>Proposition 7.1.</strong> For every odd <span class="math" data-tex="\(q\)">\(q\)</span> and every <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, including <span class="math" data-tex="\(\ell=2\)">\(\ell=2\)</span>, the geometric monodromy of this family is open in <span class="math" data-tex="\(\operatorname{SL}_2(\mathbf Q_\ell)\)">\(\operatorname{SL}_2(\mathbf Q_\ell)\)</span>. In a symplectic integral basis its image has finite index in <span class="math" data-tex="\(\operatorname{SL}_2(\mathbf Z_\ell)\)">\(\operatorname{SL}_2(\mathbf Z_\ell)\)</span>.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(k=\overline{\mathbf F}_q\)">\(k=\overline{\mathbf F}_q\)</span>, let <span class="math" data-tex="\(V\)">\(V\)</span> be the geometric fibre, and let <span class="math" data-tex="\(G\)">\(G\)</span> be the geometric image. We use the actual Tate uniformization proved in Lesson 8, Theorem 6.3. At <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, its equation (6.6) gives nontrivial unipotent inertia: the multiplicative parameter has valuation <span class="math" data-tex="\(2\)">\(2\)</span>, so its image contains <span class="math" data-tex="\(1+2\mathbf Z_\ell N\)">\(1+2\mathbf Z_\ell N\)</span> for a nonzero rank-one nilpotent <span class="math" data-tex="\(N\)">\(N\)</span>, in an appropriate integral basis. Dualizing to <span class="math" data-tex="\(H^1\)">\(H^1\)</span> takes inverse transposes and preserves this assertion. Wild inertia acts trivially. At <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, equation (6.7) identifies the family as a ramified quadratic twist of a multiplicative family. The inertia semisimplification is therefore the quadratic character twice; an element with quadratic character <span class="math" data-tex="\(-1\)">\(-1\)</span> has both eigenvalues <span class="math" data-tex="\(-1\)">\(-1\)</span>. These assertions include the valuation factor <span class="math" data-tex="\(2\)">\(2\)</span>; it is not a unit when <span class="math" data-tex="\(\ell=2\)">\(\ell=2\)</span>.</p>
+<p>First, <span class="math" data-tex="\(V\)">\(V\)</span> is absolutely irreducible. Otherwise a <span class="math" data-tex="\(G\)">\(G\)</span>-stable line is defined over a finite extension <span class="math" data-tex="\(E/\mathbf Q_\ell\)">\(E/\mathbf Q_\ell\)</span>; write <span class="math" data-tex="\(\chi\)">\(\chi\)</span> for its character. On inertia at <span class="math" data-tex="\(0,1\)">\(0,1\)</span> its character is trivial, because a unipotent operator has only eigenvalue <span class="math" data-tex="\(1\)">\(1\)</span>; at <span class="math" data-tex="\(\infty\)">\(\infty\)</span> it is the nontrivial quadratic character. Thus <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span> is trivial on inertia at all three missing points. Compactness allows an <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span>-lattice on this line. Every reduction of <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span> modulo a power of the maximal ideal is a finite character unramified at the missing points. Its cover extends étale across those points: normalize the smooth complete curve in the finite covering field, and apply the unramified criterion over each strict henselian discrete valuation ring. This is the normalization argument of <em>Étale fundamental groups</em>, §4. The extended cover of <span class="math" data-tex="\(\mathbf P^1_k\)">\(\mathbf P^1_k\)</span> is trivial by that lesson's Proposition 5.1. Indeed a connected degree-<span class="math" data-tex="\(e\)">\(e\)</span> étale cover would have canonical degree <span class="math" data-tex="\(2g-2=-2e\)">\(2g-2=-2e\)</span>, forcing <span class="math" data-tex="\(e=1\)">\(e=1\)</span>. Every reduction of <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span> is consequently trivial, and separatedness of <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span> gives <span class="math" data-tex="\(\chi^2=1\)">\(\chi^2=1\)</span>.</p>
+<p>The resulting character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has values in <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>, and is unramified at <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, so it defines a quadratic étale cover of <span class="math" data-tex="\(\mathbf A^1_k\)">\(\mathbf A^1_k\)</span>. Such a cover is trivial: the Kummer sequence, valid because <span class="math" data-tex="\(p\ne2\)">\(p\ne2\)</span>, gives its group of classes between <span class="math" data-tex="\(k[t]^*/(k[t]^*)^2=0\)">\(k[t]^*/(k[t]^*)^2=0\)</span> and <span class="math" data-tex="\(\operatorname{Pic}(k[t])[2]=0\)">\(\operatorname{Pic}(k[t])[2]=0\)</span>. Here <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed and <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span> is a principal ideal domain. This contradicts the value <span class="math" data-tex="\(-1\)">\(-1\)</span> on inertia at infinity. Notice that only quadratic covers of the affine line were used; its full fundamental group in positive characteristic need not be trivial.</p>
+<p>Write the nilpotent of one nontrivial inertia subgroup, after a nonzero scalar adjustment, as
+<span class="math" data-tex="\(N_u(x)=\psi(x,u)u\)">\(N_u(x)=\psi(x,u)u\)</span>. Absolute irreducibility gives <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> for which <span class="math" data-tex="\(v=gu\)">\(v=gu\)</span> is independent of <span class="math" data-tex="\(u\)">\(u\)</span>. Conjugation supplies a nonzero open parameter subgroup <span class="math" data-tex="\(1+tN_v\)">\(1+tN_v\)</span> in <span class="math" data-tex="\(G\)">\(G\)</span>. Rescale <span class="math" data-tex="\(v\)">\(v\)</span> so that <span class="math" data-tex="\(\psi(u,v)=1\)">\(\psi(u,v)=1\)</span>; this merely rescales its open parameter set. Choose a nonidentity <span class="math" data-tex="\(h=1+t_0N_u\)">\(h=1+t_0N_u\)</span> in the first subgroup. Then <span class="math" data-tex="\(w=hv=v+a u\)">\(w=hv=v+a u\)</span>, with <span class="math" data-tex="\(a=-t_0\ne0\)">\(a=-t_0\ne0\)</span>, and conjugation by <span class="math" data-tex="\(h\)">\(h\)</span> supplies a third subgroup <span class="math" data-tex="\(1+tN_w\)">\(1+tN_w\)</span>. In the basis <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span>, the three nilpotents are
+<span class="math math-display" data-tex="\[
+N_u=\begin{pmatrix}0&amp;-1\\0&amp;0\end{pmatrix},\qquad
+N_v=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix},\qquad
+N_w=\begin{pmatrix}a&amp;-a^2\\1&amp;-a\end{pmatrix}.
+\]">\[
+N_u=\begin{pmatrix}0&amp;-1\\0&amp;0\end{pmatrix},\qquad
+N_v=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix},\qquad
+N_w=\begin{pmatrix}a&amp;-a^2\\1&amp;-a\end{pmatrix}.
+\]</span>
+They span <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>, since the third has nonzero diagonal and the first two span the off-diagonal subspace.</p>
+<p>The product map
+<span class="math math-display" data-tex="\[
+(t_1,t_2,t_3)\longmapsto
+(1+t_1N_u)(1+t_2N_v)(1+t_3N_w)
+\]">\[
+(t_1,t_2,t_3)\longmapsto
+(1+t_1N_u)(1+t_2N_v)(1+t_3N_w)
+\]</span>
+has invertible derivative at zero, using the Cayley chart of §4 as a target chart. It therefore maps a small <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic ball onto a neighbourhood of the identity. For completeness, the local inverse assertion follows by composing with the inverse derivative and shrinking the ball: the map becomes <span class="math" data-tex="\(x\mapsto x+R(x)\)">\(x\mapsto x+R(x)\)</span>, where <span class="math" data-tex="\(R\)">\(R\)</span> has Lipschitz constant strictly less than <span class="math" data-tex="\(1\)">\(1\)</span>. For every sufficiently small <span class="math" data-tex="\(y\)">\(y\)</span>, iteration of <span class="math" data-tex="\(x\mapsto y-R(x)\)">\(x\mapsto y-R(x)\)</span> converges in the complete ball to its unique solution. All three parameter balls can be chosen inside the actual inertia subgroups and their conjugates, so this neighbourhood lies in <span class="math" data-tex="\(G\)">\(G\)</span>. Thus <span class="math" data-tex="\(G\)">\(G\)</span> is open. The symplectic integral Tate lattice places it inside <span class="math" data-tex="\(\operatorname{SL}_2(\mathbf Z_\ell)\)">\(\operatorname{SL}_2(\mathbf Z_\ell)\)</span>; compactness of that group makes the index of an open subgroup finite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All three hypotheses of Theorem 1.1 are now verified, and it gives local weight <span class="math" data-tex="\(1\)">\(1\)</span>. The cohomological bounds give <span class="math" data-tex="\(|\gamma|\le q^{3/2}\)">\(|\gamma|\le q^{3/2}\)</span> on <span class="math" data-tex="\(H_c^1\)">\(H_c^1\)</span> and <span class="math" data-tex="\(q^{1/2}\le|\gamma|\le q^{3/2}\)">\(q^{1/2}\le|\gamma|\le q^{3/2}\)</span> on <span class="math" data-tex="\(H^1(\mathbf P^1,j_*\mathcal F)\)">\(H^1(\mathbf P^1,j_*\mathcal F)\)</span>. Lesson 8, (6.8) and Exercise 8.9, give a more precise check in this particular family: the two compact-support eigenvalues are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\chi_q(-1)\)">\(\chi_q(-1)\)</span>, while the middle-extension <span class="math" data-tex="\(H^1\)">\(H^1\)</span> is zero. Thus the latter interval is vacuous in this example. These calculations and Proposition 7.1 use the Tate proof, not the higher-dimensional Picard–Lefschetz theorem.</p>
+<p>This proves the example for a concrete family with nonconstant <span class="math" data-tex="\(j\)">\(j\)</span>. Extending the monodromy assertion to every nonisotrivial elliptic family uses the separate modular-curve monodromy theorem; no such additional theorem is needed for this example.</p>
+<h3 id="what-a-frobenius-character-twist-actually-changes">What a Frobenius-character twist actually changes</h3>
+<p>Rationality enters at two identifiable places: (2.1) makes even trace powers nonnegative real numbers, and (5.1)/(6.1) turns the global determinant into a rational polynomial whose roots are algebraic. An arbitrary <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic trace cannot be ordered as a real number or silently regarded as algebraic over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<p>Here is a twist that makes that distinction concrete. Work over <span class="math" data-tex="\(\mathbf F_5\)">\(\mathbf F_5\)</span>, with <span class="math" data-tex="\(\ell\ne5\)">\(\ell\ne5\)</span>. Choose
+<span class="math" data-tex="\(c\in1+\ell\mathbf Z_\ell\)">\(c\in1+\ell\mathbf Z_\ell\)</span> transcendental over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>; for <span class="math" data-tex="\(\ell=2\)">\(\ell=2\)</span> one can choose it in <span class="math" data-tex="\(1+4\mathbf Z_2\)">\(1+4\mathbf Z_2\)</span>. Such choices exist because these sets are uncountable and the algebraic numbers are countable. There is a continuous rank-one constant-field character <span class="math" data-tex="\(\chi_c\)">\(\chi_c\)</span> with geometric Frobenius <span class="math" data-tex="\(c\)">\(c\)</span>: the homomorphism from the integers generated by Frobenius extends to <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>, since the closure of the cyclic subgroup of the compact unit group is profinite.</p>
+<p>Twist the Legendre sheaf by this character. Geometric monodromy stays the same, and the local eigenvalues become <span class="math" data-tex="\(c^{d_x}\alpha_{x,j}\)">\(c^{d_x}\alpha_{x,j}\)</span>. At <span class="math" data-tex="\(\lambda=2\)">\(\lambda=2\)</span>, direct counting gives <span class="math" data-tex="\(a_x=-2\)">\(a_x=-2\)</span>, so the new polynomial is
+<span class="math math-display" data-tex="\[
+1+2cT+5c^2T^2.
+\tag{7.1}
+\]">\[
+1+2cT+5c^2T^2.
+\tag{7.1}
+\]</span>
+It is not rational, and its eigenvalues are not algebraic over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Thus this twist fails both condition 3 and the conclusion of purity.</p>
+<p>There is a necessary qualification: it also changes the pairing target to
+<span class="math" data-tex="\(\mathbf Q_\ell(-1)\otimes\chi_c^{\,2}\)">\(\mathbf Q_\ell(-1)\otimes\chi_c^{\,2}\)</span>. It does <strong>not</strong> preserve condition 1 with the original Tate line. In rank <span class="math" data-tex="\(2\)">\(2\)</span>, the determinant at this fibre is <span class="math" data-tex="\(5c^2\)">\(5c^2\)</span>, whereas a nondegenerate alternating pairing into <span class="math" data-tex="\(\mathbf Q_\ell(-1)\)">\(\mathbf Q_\ell(-1)\)</span> would require determinant <span class="math" data-tex="\(5\)">\(5\)</span>. A constant-field twist retaining that pairing must have <span class="math" data-tex="\(\chi_c^2=1\)">\(\chi_c^2=1\)</span>; then it is a quadratic twist and preserves both rationality and weight. Consequently the arbitrary-character example demonstrates the role of rationality in this proof, but is not a counterexample obtained by dropping condition 3 alone while retaining conditions 1–2.</p>
+<h2 id="8-exercises-and-audited-solutions">8. Exercises and solutions</h2>
+<p><strong>Exercise 10.1 (easy).</strong> Prove the Tate and tensor-product weight assertions, keeping all complex conjugates in the statement.</p>
+<p><strong>Solution.</strong> The only eigenvalue on <span class="math" data-tex="\(\mathbf Q_\ell(r)\)">\(\mathbf Q_\ell(r)\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> is the rational number <span class="math" data-tex="\(q_x^{-r}\)">\(q_x^{-r}\)</span>, of modulus <span class="math" data-tex="\(q_x^{(-2r)/2}\)">\(q_x^{(-2r)/2}\)</span>. Tensor eigenvalues are products <span class="math" data-tex="\(\alpha\delta\)">\(\alpha\delta\)</span>; for any embedding of a number field containing both factors, their moduli multiply to <span class="math" data-tex="\(q_x^{(\beta+\gamma)/2}\)">\(q_x^{(\beta+\gamma)/2}\)</span>. Algebraicity is preserved under products. Every conjugate of a product arises under such an embedding, which proves the required all-conjugates assertion. Inverse eigenvalues similarly prove the dual-weight assertion.</p>
+<p><strong>Exercise 10.2 (medium).</strong> Prove the radius comparison for an infinite product of nonnegative series, and explain its rational-function version.</p>
+<p><strong>Solution.</strong> For each coefficient only finitely many nonconstant factors contribute, by the order hypothesis. The coefficient of any single factor is one nonnegative summand of the product coefficient, using constant terms from the other factors. This is (3.1); evaluating at any positive <span class="math" data-tex="\(R\)">\(R\)</span> below the product radius proves absolute convergence of the factor there. For a rational function in reduced form the Taylor radius is the modulus of the nearest genuine pole, as proved in Lemma 3.2. Applying the comparison gives (3.2), even if some global denominator factors cancel. It is unnecessary to assume every coefficient is strictly positive.</p>
+<p><strong>Exercise 10.3 (medium).</strong> Given the upper local bound and the alternating pairing, obtain equality for every conjugate.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> represents local Frobenius and <span class="math" data-tex="\(J\)">\(J\)</span> the pairing, <span class="math" data-tex="\(A^{\mathsf t}JA=q_x^\beta J\)">\(A^{\mathsf t}JA=q_x^\beta J\)</span> shows <span class="math" data-tex="\(A\)">\(A\)</span> is similar to <span class="math" data-tex="\(q_x^\beta A^{-\mathsf t}\)">\(q_x^\beta A^{-\mathsf t}\)</span>. Thus the eigenvalue multiset is stable under <span class="math" data-tex="\(\alpha\mapsto q_x^\beta/\alpha\)">\(\alpha\mapsto q_x^\beta/\alpha\)</span>. For any complex embedding, the upper bound for this partner gives <span class="math" data-tex="\(q_x^\beta/|\alpha|\le q_x^{\beta/2}\)">\(q_x^\beta/|\alpha|\le q_x^{\beta/2}\)</span>. Together with <span class="math" data-tex="\(|\alpha|\le q_x^{\beta/2}\)">\(|\alpha|\le q_x^{\beta/2}\)</span>, this forces equality. No diagonalizability or pairing of a chosen individual eigenvector is needed.</p>
+<p><strong>Exercise 10.4 (medium).</strong> Identify where rationality is used. Construct a Frobenius-character twist that violates it, and check the other hypotheses rather than assuming they survive.</p>
+<p><strong>Solution.</strong> Newton identities give rational traces; the even powers in (2.2) become nonnegative real numbers, enabling Lemma 3.1. Rational local factors also give rational global coefficients and the rational polynomials in (5.1) and (6.1). For the Legendre sheaf over <span class="math" data-tex="\(\mathbf F_5\)">\(\mathbf F_5\)</span>, choose the transcendental unit <span class="math" data-tex="\(c\)">\(c\)</span> of §7 and use <span class="math" data-tex="\(\chi_c\)">\(\chi_c\)</span>. At <span class="math" data-tex="\(\lambda=2\)">\(\lambda=2\)</span>, the fibre has <span class="math" data-tex="\(8\)">\(8\)</span> rational points, so trace <span class="math" data-tex="\(6-8=-2\)">\(6-8=-2\)</span>. Its twisted polynomial is (7.1), which is not rational; multiplying a nonzero algebraic eigenvalue by transcendental <span class="math" data-tex="\(c\)">\(c\)</span> also destroys algebraicity. Geometric monodromy is unchanged, but the determinant becomes <span class="math" data-tex="\(5c^2\)">\(5c^2\)</span>, and the pairing target acquires <span class="math" data-tex="\(\chi_c^2\)">\(\chi_c^2\)</span>. Thus condition 1 fails as well. If one insists on retaining it, only <span class="math" data-tex="\(c^2=1\)">\(c^2=1\)</span> is allowed for this constant-field twist, and that twist is not the requested rationality counterexample.</p>
+<p><strong>Exercise 10.5 (hard).</strong> Prove the two-sided bound for <span class="math" data-tex="\(H^1(\mathbf P^1,j_*\mathcal F)\)">\(H^1(\mathbf P^1,j_*\mathcal F)\)</span> from the compact-support bound and curve duality.</p>
+<p><strong>Solution.</strong> The boundary quotient <span class="math" data-tex="\(j_*\mathcal F/j_!\mathcal F\)">\(j_*\mathcal F/j_!\mathcal F\)</span> has finite support and no <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. Its long exact sequence gives (6.6), so all eigenvalues in question already occur on <span class="math" data-tex="\(H_c^1\)">\(H_c^1\)</span>, proving algebraicity and the upper bound <span class="math" data-tex="\(q^{\beta/2+1}\)">\(q^{\beta/2+1}\)</span>. The pairing identifies <span class="math" data-tex="\(\mathcal F^\vee=\mathcal F(\beta)\)">\(\mathcal F^\vee=\mathcal F(\beta)\)</span>. Duality (6.4), including the curve trace twist <span class="math" data-tex="\((-1)\)">\((-1)\)</span>, then makes the degree-one pairing take values in <span class="math" data-tex="\(\mathbf Q_\ell(-\beta-1)\)">\(\mathbf Q_\ell(-\beta-1)\)</span>. Hence <span class="math" data-tex="\(q^{\beta+1}/\gamma\)">\(q^{\beta+1}/\gamma\)</span> also occurs. Apply the upper bound to this eigenvalue and rearrange to obtain <span class="math" data-tex="\(|\gamma|\ge q^{\beta/2}\)">\(|\gamma|\ge q^{\beta/2}\)</span>. The same argument applies to every conjugate because the original compact-support characteristic polynomial is rational.</p>
+<p><strong>Exercise 10.6 (medium; pole-order check).</strong> For a two-dimensional symplectic space, determine the pole denominator in (5.1) for <span class="math" data-tex="\(k=1,2\)">\(k=1,2\)</span>, and distinguish a possible pole from a guaranteed one.</p>
+<p><strong>Solution.</strong> The unique contraction for two tensor factors gives <span class="math" data-tex="\(N_1=1\)">\(N_1=1\)</span>, hence denominator <span class="math" data-tex="\(1-q^{\beta+1}t\)">\(1-q^{\beta+1}t\)</span>. For four factors, the first fundamental theorem gives three contractions, with relation (4.4). The evaluations after that formula prove two are independent, so <span class="math" data-tex="\(N_2=2\)">\(N_2=2\)</span>; the denominator is <span class="math" data-tex="\((1-q^{2\beta+1}t)^2\)">\((1-q^{2\beta+1}t)^2\)</span>. The numerator can cancel a factor. The convergence proof only requires that there be no pole of smaller modulus. In fact, for positive rank the Euler product and Lemma 3.1 prevent all global poles from disappearing: a local reciprocal determinant has a finite radius, whereas a polynomial global series would have infinite radius. The pole order need not equal the uncancelled top-cohomology dimension.</p>
+<h2 id="scope-and-references">Scope and references</h2>
+<p>The general-linear centralizer lemma, the first fundamental theorem for symplectic tensors, and density of open symplectic subgroups are proved in §4. Lemma 4.3 proves the adic passage from finite-coefficient curve duality, and Proposition 6.2 proves the pairing for <span class="math" data-tex="\(j_*\)">\(j_*\)</span>; their uses and twists are specified in §§4–6. Lesson 8, Theorem 2.1, supplies the characteristic-zero determinant formula, using the all-dimensional trace theorem and adic comparison of Lessons 7 and 2. Its Theorem 2.2 also proves the full finite-coefficient determinant formula, including nonreduced rings. The positivity lemmas, radius comparison, fundamental estimate, both cohomological bounds, and the extensions of Proposition 6.3 are proved here.</p>
+<p><a href="cycle-classes-and-the-lefschetz-fixed-point-formula-for-curves.html">Lesson 5</a>, §§2.1–2.7 and Theorem 5.3, contains the full Hodge-index proof on <span class="math" data-tex="\(C\times C\)">\(C\times C\)</span> of the Riemann hypothesis for curves; its fixed-point formula and duality give the local elliptic polynomial used here. The degree-normalized trace and its general smooth duality extension are also proved in <a href="support/AG-LTF--smooth-trace-and-duality.html">Smooth trace and duality</a>, §§1–2 and 8–13. Proposition 7.1 proves Legendre openness from Lesson 8's actual Tate uniformization and boundary calculations, together with normalization and the fundamental group of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> in <a href="support/AG-DFG--AG-DFG-05.html">Étale fundamental groups</a>, §4 and Proposition 5.1. It requires no higher-dimensional Picard–Lefschetz assertion. Curve intersection positivity and the nonnegative trace powers in this lesson are distinct arguments; the latter prove Theorem 1.1 without assuming curve purity.</p>
+<p>Applications to higher-dimensional vanishing quotients still require the algebraic local variation, tameness, conjugacy and geometric monodromy statements of Lesson 9. Those geometric assertions are separate from Theorem 1.1's explicitly assumed open-monodromy hypothesis. The comparison with the sharper Weil II bounds in §6 requires the general weight theorem stated there.</p>
+<ul>
+<li><a href="https://www.numdam.org/item/PMIHES_1974__43__273_0/">Deligne, <em>La conjecture de Weil I</em></a>, (1.2)–(1.7) for conventions; (2.10)–(2.12), printed pp.282–283, for compact-support coinvariants and <span class="math" data-tex="\(j_*\)">\(j_*\)</span>-duality; §3, printed pp.283–287, especially Theorem (3.2), Lemmas (3.3)–(3.6), the invariant-theory computation (3.7), and Corollaries (3.8)–(3.9).</li>
+<li>The first fundamental theorem for the symplectic group is due to Hermann Weyl (1939); H. Kraft and C. Procesi, <a href="https://dmi.unibas.ch/fileadmin/user_upload/dmi/Personen/Kraft_Hanspeter/Classical_Invariant_Theory.pdf"><em>Classical Invariant Theory: A Primer</em></a>, §10.3, proves it from Weyl's theorems on polarization. The tensor theorem used above is proved in this lesson.</li>
+<li><a href="https://publications.ias.edu/sites/default/files/2015-06-ortho.pdf">P. Deligne, G. I. Lehrer and R. B. Zhang, <em>The first fundamental theorem of invariant theory for the orthosymplectic super group</em></a>, for the geometric reduction to general linear invariant theory. The ordinary characteristic-zero symplectic argument is proved above.</li>
+<li><a href="https://www.numdam.org/item/PMIHES_1980__52__137_0/">Deligne, <em>La conjecture de Weil II</em></a>, (3.3.4)–(3.3.6), printed p.206, for the sharper weight comparison in §6.</li>
+<li><a href="https://arxiv.org/abs/1509.00797">Milne, <em>The Riemann Hypothesis over Finite Fields: From Weil to the Present Day</em></a>, “Landau's theorem,” “Rankin's theorem,” “A remark of Langlands,” “Grothendieck's theorem,” and “The main lemma (restricted form).” Its normalization <span class="math" data-tex="\(q^{d/2+1}\)">\(q^{d/2+1}\)</span> agrees with (6.2) for <span class="math" data-tex="\(\beta=d\)">\(\beta=d\)</span>. The lower exponent printed in its later completion passage must instead be read as <span class="math" data-tex="\(d/2-1/2\)">\(d/2-1/2\)</span>, as confirmed by Deligne's (3.9) with fibre weight <span class="math" data-tex="\(d-1\)">\(d-1\)</span>.</li>
+<li><a href="support/AG-LTF--l-functions-rationality-and-the-functional-equation.html">Lesson 8</a>, Theorems 2.1–2.2 and 6.3, (6.6)–(6.8) and Exercise 8.9; <a href="further-reading.html">Lesson 9</a> for the separate higher-dimensional applications; <a href="support/ag-etale-cohomology--poincare-duality-for-curves.html">Poincaré duality for curves</a>, Theorem 11.1 and §5, for the full finite-coefficient curve proof. Lemma 4.3 and Proposition 6.2 above prove the adic passage and the middle-extension pairing used here.</li>
+<li><a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/trace.tex">AI Integrated Stacks, trace-formula chapter</a>, “Cohomology of curves, revisited,” for the canonical finite-module formulation of top compact-support coinvariants and the cyclotomic twist. This lesson proves the general-linear and symplectic invariant statements, the adic passage and the middle-extension pairing. The underlying Stacks Project mathematics is credited to its human authors and retains its GNU Free Documentation License.</li>
+</ul>
+<p>Linked sources retain their own rights.</p>
+</article></main></body></html>

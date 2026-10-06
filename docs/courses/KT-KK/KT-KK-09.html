@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connections and the existence of the Kasparov product · Kasparov’s KK-theory</title>
+<meta name="description" content="A lesson of the course Kasparov&#x27;s KK-theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Kasparov&#x27;s KK-theory</a> <span aria-hidden="true">›</span> <span>Lesson 9 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson"><p><strong>Draft.</strong> Self-checked by the writing AI. English · CC0 1.0.</p></aside>
+
+<article class="lesson">
+<h1 id="connections-and-the-existence-of-the-kasparov-product">Connections and the existence of the Kasparov product</h1>
+<p><em>Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A tensor product of represented Hilbert modules gives the right space for composing two cycles. It does not give an operator automatically. The second operator usually fails to respect the relation used to form the interior tensor product. A connection replaces that nonexistent operator by one that respects elementary tensors up to compact errors. Kasparov's technical theorem then combines this connection with the first operator.</p>
+<p>We prove existence and uniqueness, including the compactness and positivity calculations. We also calculate products with homomorphisms, Morita equivalences, two circle classes and a vector bundle. Associativity and comparison of the two homotopy relations are proved in the next lesson; neither is used to construct the product here.</p>
+<p>All tensor products and commutators are graded. For homogeneous operators,
+<span class="math math-display" data-tex="\[
+[R,T]_{\mathrm{gr}}=RT-(-1)^{|R||T|}TR.
+\]">\[
+[R,T]_{\mathrm{gr}}=RT-(-1)^{|R||T|}TR.
+\]</span>
+In particular the commutator of two odd operators is their anticommutator. We write <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span> and <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> for adjointable and compact module operators, and use the analogous notation between different modules. The stabilization and compact-operator rules were proved in <em>Graded C*-algebras, Clifford algebras and graded Hilbert modules</em>. The square-root partition is Theorem 3.1 and Corollary 3.2 of <em>Kasparov's technical theorem</em>.</p>
+<h2 id="1-the-connection-conditions">1. The connection conditions</h2>
+<p>Let <span class="math" data-tex="\(E_1\)">\(E_1\)</span> be a countably generated graded Hilbert <span class="math" data-tex="\(D\)">\(D\)</span>-module, let <span class="math" data-tex="\(E_2\)">\(E_2\)</span> be a graded Hilbert <span class="math" data-tex="\(B\)">\(B\)</span>-module, and let
+<span class="math" data-tex="\(\psi:D\to\mathcal L(E_2)\)">\(\psi:D\to\mathcal L(E_2)\)</span> be a graded homomorphism. Set
+<span class="math math-display" data-tex="\[
+E=E_1\widehat\otimes_\psi E_2.
+\]">\[
+E=E_1\widehat\otimes_\psi E_2.
+\]</span>
+For homogeneous <span class="math" data-tex="\(x\in E_1\)">\(x\in E_1\)</span> define the creation operator
+<span class="math math-display" data-tex="\[
+T_x y=x\widehat\otimes y,\qquad
+T_x^*(z\widehat\otimes y)=\psi(\langle x,z\rangle)y.
+\tag{1.1}
+\]">\[
+T_x y=x\widehat\otimes y,\qquad
+T_x^*(z\widehat\otimes y)=\psi(\langle x,z\rangle)y.
+\tag{1.1}
+\]</span>
+These formulas give <span class="math" data-tex="\(\|T_x\|\leq\|x\|\)">\(\|T_x\|\leq\|x\|\)</span> and degree <span class="math" data-tex="\(|x|\)">\(|x|\)</span>. In particular
+<span class="math math-display" data-tex="\[
+T_x^*T_z=\psi(\langle x,z\rangle),\qquad
+T_xT_z^*=\theta_{x,z}\widehat\otimes1.
+\tag{1.2}
+\]">\[
+T_x^*T_z=\psi(\langle x,z\rangle),\qquad
+T_xT_z^*=\theta_{x,z}\widehat\otimes1.
+\tag{1.2}
+\]</span></p>
+<p>Let <span class="math" data-tex="\(F_2\)">\(F_2\)</span> have degree <span class="math" data-tex="\(p\)">\(p\)</span>, with
+<span class="math" data-tex="\([F_2,\psi(d)]_{\mathrm{gr}}\)">\([F_2,\psi(d)]_{\mathrm{gr}}\)</span> compact for every <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>.
+An <strong><span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection</strong> is an operator <span class="math" data-tex="\(G\)">\(G\)</span> of degree <span class="math" data-tex="\(p\)">\(p\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_xF_2-(-1)^{p|x|}GT_x&amp;\in\mathcal K(E_2,E),\\
+F_2T_x^*-(-1)^{p|x|}T_x^*G&amp;\in\mathcal K(E,E_2)
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+T_xF_2-(-1)^{p|x|}GT_x&amp;\in\mathcal K(E_2,E),\\
+F_2T_x^*-(-1)^{p|x|}T_x^*G&amp;\in\mathcal K(E,E_2)
+\end{aligned}
+\tag{1.3}
+\]</span>
+for every homogeneous <span class="math" data-tex="\(x\)">\(x\)</span>. The two conditions are both imposed; for self-adjoint <span class="math" data-tex="\(F_2,G\)">\(F_2,G\)</span>, either one implies the other by taking adjoints.</p>
+<p><strong>Lemma 1.1 (the compactness test).</strong> Put
+<span class="math math-display" data-tex="\[
+I_0=\mathcal K(E_1)\widehat\otimes1\subset\mathcal L(E).
+\]">\[
+I_0=\mathcal K(E_1)\widehat\otimes1\subset\mathcal L(E).
+\]</span>
+An operator <span class="math" data-tex="\(Z\)">\(Z\)</span> is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection if and only if
+<span class="math math-display" data-tex="\[
+ZI_0\subset\mathcal K(E),\qquad I_0Z\subset\mathcal K(E).
+\tag{1.4}
+\]">\[
+ZI_0\subset\mathcal K(E),\qquad I_0Z\subset\mathcal K(E).
+\tag{1.4}
+\]</span>
+Every connection graded commutes with <span class="math" data-tex="\(I_0\)">\(I_0\)</span> modulo <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(ZT_x\)">\(ZT_x\)</span> and <span class="math" data-tex="\(T_x^*Z\)">\(T_x^*Z\)</span> are compact, multiplication by <span class="math" data-tex="\(T_y^*,T_y\)">\(T_y^*,T_y\)</span> and (1.2) prove (1.4) first on rank-one generators and then on their norm closure. Conversely take an approximate identity <span class="math" data-tex="\(u_\lambda\)">\(u_\lambda\)</span> of <span class="math" data-tex="\(\mathcal K(E_1)\)">\(\mathcal K(E_1)\)</span>. It acts in norm on every vector of <span class="math" data-tex="\(E_1\)">\(E_1\)</span>; this follows first on the range of rank-one operators and then by density. Thus
+<span class="math math-display" data-tex="\[
+\|(u_\lambda\widehat\otimes1)T_x-T_x\|
+\leq\|u_\lambda x-x\|\longrightarrow0.
+\]">\[
+\|(u_\lambda\widehat\otimes1)T_x-T_x\|
+\leq\|u_\lambda x-x\|\longrightarrow0.
+\]</span>
+Under (1.4), <span class="math" data-tex="\(Z(u_\lambda\widehat\otimes1)T_x\)">\(Z(u_\lambda\widehat\otimes1)T_x\)</span> is compact and converges in norm to <span class="math" data-tex="\(ZT_x\)">\(ZT_x\)</span>. Applying the same argument to <span class="math" data-tex="\(Z^*\)">\(Z^*\)</span> proves the other condition.</p>
+<p>For a connection <span class="math" data-tex="\(G\)">\(G\)</span>, move it across the two creation operators in <span class="math" data-tex="\(T_xT_y^*\)">\(T_xT_y^*\)</span>, using (1.3). The two resulting errors are compact; the remaining terms have the sign <span class="math" data-tex="\((-1)^{p(|x|+|y|)}\)">\((-1)^{p(|x|+|y|)}\)</span>. This is precisely the graded commutator with <span class="math" data-tex="\(\theta_{x,y}\widehat\otimes1\)">\(\theta_{x,y}\widehat\otimes1\)</span>. Norm approximation proves the assertion for <span class="math" data-tex="\(I_0\)">\(I_0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The following elementary rules will make the later calculations shorter.</p>
+<p><strong>Lemma 1.2 (connection calculus).</strong> Adjoints of connections are connections of the adjoints. Sums and products of homogeneous connections correspond to sums and products of the second operators, with the usual degree bookkeeping. Two connections of the same operator differ by a <span class="math" data-tex="\(0\)">\(0\)</span>-connection. For self-adjoint connections, continuous functional calculus has the same property; even and odd functions have the corresponding parity.</p>
+<p>If <span class="math" data-tex="\(S=R\widehat\otimes1\)">\(S=R\widehat\otimes1\)</span>, for homogeneous <span class="math" data-tex="\(R\in\mathcal L(E_1)\)">\(R\in\mathcal L(E_1)\)</span>, then
+<span class="math math-display" data-tex="\[
+[S,G]_{\mathrm{gr}}\text{ is a }0\text{-connection}.
+\tag{1.5}
+\]">\[
+[S,G]_{\mathrm{gr}}\text{ is a }0\text{-connection}.
+\tag{1.5}
+\]</span>
+Finally, connections compose on a triple interior tensor product.</p>
+<p><strong>Proof.</strong> Taking adjoints in (1.3) gives the first assertion. For products use, modulo compact operators,
+<span class="math math-display" data-tex="\[
+GH T_x
+\equiv(-1)^{(|G|+|H|)|x|}T_xF_2F&#x27;_2.
+\]">\[
+GH T_x
+\equiv(-1)^{(|G|+|H|)|x|}T_xF_2F&#x27;_2.
+\]</span>
+This follows by moving <span class="math" data-tex="\(H\)">\(H\)</span>, then <span class="math" data-tex="\(G\)">\(G\)</span>, past <span class="math" data-tex="\(T_x\)">\(T_x\)</span>; the errors remain compact after multiplication by bounded operators. The adjoint-side calculation is the same. The sum and difference assertions follow directly from (1.3). Polynomial approximation on a compact spectral interval proves the assertion about continuous functions, since the connection conditions are norm closed.</p>
+<p>For (1.5), <span class="math" data-tex="\(ST_x=T_{Rx}\)">\(ST_x=T_{Rx}\)</span>. Moving <span class="math" data-tex="\(G\)">\(G\)</span> across <span class="math" data-tex="\(T_x\)">\(T_x\)</span> and <span class="math" data-tex="\(T_{Rx}\)">\(T_{Rx}\)</span> shows
+<span class="math math-display" data-tex="\[
+SGT_x\equiv(-1)^{p|x|}T_{Rx}F_2,\qquad
+GST_x\equiv(-1)^{p(|R|+|x|)}T_{Rx}F_2.
+\]">\[
+SGT_x\equiv(-1)^{p|x|}T_{Rx}F_2,\qquad
+GST_x\equiv(-1)^{p(|R|+|x|)}T_{Rx}F_2.
+\]</span>
+Their graded difference vanishes modulo compacts. The second creation condition follows by the adjoint calculation.</p>
+<p>For the last assertion write a creation operator for an elementary vector <span class="math" data-tex="\(x\widehat\otimes y\)">\(x\widehat\otimes y\)</span> as <span class="math" data-tex="\(T_xU_y\)">\(T_xU_y\)</span>, where <span class="math" data-tex="\(U_y\)">\(U_y\)</span> is the creation operator for the second tensor product. Move the final connection past <span class="math" data-tex="\(T_x\)">\(T_x\)</span>, then the intermediate connection past <span class="math" data-tex="\(U_y\)">\(U_y\)</span>. The total sign is the sum of the two vector degrees. Each error is compact. Taking adjoints proves the second condition. Finite sums of elementary vectors are dense and the creation operators depend continuously in norm on their vectors, completing the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here and below, an operator on the first factor really does tensor with <span class="math" data-tex="\(1\)">\(1\)</span>: it is <span class="math" data-tex="\(D\)">\(D\)</span>-linear and adjointable. An operator on the second factor generally does not tensor with <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Theorem 1.3 (existence of connections).</strong> An <span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection exists. It can be chosen self-adjoint when <span class="math" data-tex="\(F_2\)">\(F_2\)</span> is self-adjoint, of the same degree, and with norm at most <span class="math" data-tex="\(\|F_2\|\)">\(\|F_2\|\)</span>. A norm-continuous path <span class="math" data-tex="\(F_{2,t}\)">\(F_{2,t}\)</span> admits a norm-continuous path of such connections.</p>
+<p><strong>Proof.</strong> Regard <span class="math" data-tex="\(E_1\)">\(E_1\)</span> as a module over the forced unitization <span class="math" data-tex="\(D^+\)">\(D^+\)</span>, and extend <span class="math" data-tex="\(\psi\)">\(\psi\)</span> to the unital homomorphism
+<span class="math" data-tex="\(\psi^+(d+\lambda1)=\psi(d)+\lambda1\)">\(\psi^+(d+\lambda1)=\psi(d)+\lambda1\)</span>.
+Countable generation is retained. The natural map
+<span class="math math-display" data-tex="\[
+E_1\widehat\otimes_\psi E_2
+\longrightarrow E_1\widehat\otimes_{\psi^+}E_2
+\]">\[
+E_1\widehat\otimes_\psi E_2
+\longrightarrow E_1\widehat\otimes_{\psi^+}E_2
+\]</span>
+is unitary: both inner products agree, and the unitization balancing relations already hold by linearity and the scalar action. Graded stabilization realizes <span class="math" data-tex="\(E_1=P\widehat H_{D^+}\)">\(E_1=P\widehat H_{D^+}\)</span> for an even projection <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>On <span class="math" data-tex="\(\widehat H_{D^+}\widehat\otimes_{\psi^+}E_2
+\cong\widehat\ell^2\widehat\otimes E_2\)">\(\widehat H_{D^+}\widehat\otimes_{\psi^+}E_2
+\cong\widehat\ell^2\widehat\otimes E_2\)</span>, define
+<span class="math math-display" data-tex="\[
+C(e_j\widehat\otimes y)
+=(-1)^{p|e_j|}e_j\widehat\otimes F_2y.
+\tag{1.6}
+\]">\[
+C(e_j\widehat\otimes y)
+=(-1)^{p|e_j|}e_j\widehat\otimes F_2y.
+\tag{1.6}
+\]</span>
+For a homogeneous vector <span class="math" data-tex="\(x=\sum_j e_jx_j\)">\(x=\sum_j e_jx_j\)</span> supported on finitely many coordinates, <span class="math" data-tex="\(|x_j|=|x|-|e_j|\)">\(|x_j|=|x|-|e_j|\)</span>. The <span class="math" data-tex="\(j\)">\(j\)</span>-th entry of its creation error is consequently
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(CT_x-(-1)^{p|x|}T_xF_2)_j\\
+&amp;\quad=(-1)^{p|e_j|}
+ \bigl(F_2\psi^+(x_j)-(-1)^{p|x_j|}\psi^+(x_j)F_2\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(CT_x-(-1)^{p|x|}T_xF_2)_j\\
+&amp;\quad=(-1)^{p|e_j|}
+ \bigl(F_2\psi^+(x_j)-(-1)^{p|x_j|}\psi^+(x_j)F_2\bigr).
+\end{aligned}
+\]</span>
+Every entry is compact by the input commutator condition; the added scalar coordinates have zero commutator. A finite column of compact operators is compact, by approximating each entry by finite-rank operators. Applying the same calculation to <span class="math" data-tex="\(F_2^*\)">\(F_2^*\)</span> and taking adjoints gives the other creation error. The bound <span class="math" data-tex="\(\|T_x\|\leq\|x\|\)">\(\|T_x\|\leq\|x\|\)</span> extends both errors by norm approximation to every vector. This proves the full connection condition for <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>Tensor <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(1\)">\(1\)</span>, and compress:
+<span class="math math-display" data-tex="\[
+G=(P\widehat\otimes1)C(P\widehat\otimes1).
+\tag{1.7}
+\]">\[
+G=(P\widehat\otimes1)C(P\widehat\otimes1).
+\tag{1.7}
+\]</span>
+For <span class="math" data-tex="\(x\in PE_1^{\mathrm{standard}}\)">\(x\in PE_1^{\mathrm{standard}}\)</span>, one has
+<span class="math" data-tex="\((P\widehat\otimes1)T_x=T_x\)">\((P\widehat\otimes1)T_x=T_x\)</span>. Thus the first creation error for <span class="math" data-tex="\(G\)">\(G\)</span> is the projection times the corresponding error for <span class="math" data-tex="\(C\)">\(C\)</span>; the second is obtained on the other side. This proves the connection property. Compression retains the degree, norm bound and self-adjointness. Apply the same fixed compression to <span class="math" data-tex="\(C_t\)">\(C_t\)</span> for a path <span class="math" data-tex="\(F_{2,t}\)">\(F_{2,t}\)</span>; (1.6) shows norm continuity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction is called a <strong>Grassmann connection</strong>. It uses the unitization of the intermediate algebra, so it does not require that <span class="math" data-tex="\(\psi(D)E_2\)">\(\psi(D)E_2\)</span> be all of <span class="math" data-tex="\(E_2\)">\(E_2\)</span>.</p>
+<h2 id="2-the-product-axioms-and-normalization">2. The product axioms and normalization</h2>
+<p>Take cycles
+<span class="math math-display" data-tex="\[
+\alpha=(E_1,\phi_1,F_1)\in\mathcal E(A,D),\qquad
+\beta=(E_2,\psi,F_2)\in\mathcal E(D,B).
+\]">\[
+\alpha=(E_1,\phi_1,F_1)\in\mathcal E(A,D),\qquad
+\beta=(E_2,\psi,F_2)\in\mathcal E(D,B).
+\]</span>
+On <span class="math" data-tex="\(E=E_1\widehat\otimes_\psi E_2\)">\(E=E_1\widehat\otimes_\psi E_2\)</span> put
+<span class="math math-display" data-tex="\[
+\phi=\phi_1\widehat\otimes1,\qquad S=F_1\widehat\otimes1.
+\]">\[
+\phi=\phi_1\widehat\otimes1,\qquad S=F_1\widehat\otimes1.
+\]</span>
+A <strong>product operator</strong> is an odd <span class="math" data-tex="\(F\in\mathcal L(E)\)">\(F\in\mathcal L(E)\)</span> satisfying:</p>
+<ol>
+<li><span class="math" data-tex="\((E,\phi,F)\)">\((E,\phi,F)\)</span> is a Kasparov cycle.</li>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> is an <span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection.</li>
+<li>For every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>,
+<span class="math math-display" data-tex="\[
+\phi(a)[S,F]_{\mathrm{gr}}\phi(a)^*\geq0
+\quad\text{in }\mathcal L(E)/\mathcal K(E).
+\tag{2.1}
+\]">\[
+\phi(a)[S,F]_{\mathrm{gr}}\phi(a)^*\geq0
+\quad\text{in }\mathcal L(E)/\mathcal K(E).
+\tag{2.1}
+\]</span></li>
+</ol>
+<p>We can normalize <span class="math" data-tex="\(F_1,F_2\)">\(F_1,F_2\)</span> to odd self-adjoint contractions by Theorem 3.2 of <em>Kasparov modules and the groups <span class="math" data-tex="\(KK(A,B)\)">\(KK(A,B)\)</span></em>. These normalizations preserve the product axioms in the following precise sense.</p>
+<p><strong>Lemma 2.1 (locally compact changes of the inputs).</strong> Replacing either input operator by a locally compact perturbation does not change the connection and localized positivity requirements, modulo compacts. A product-operator perturbation retains the product axioms if it is both a <span class="math" data-tex="\(0\)">\(0\)</span>-connection and two-sided locally compact for <span class="math" data-tex="\(\phi(A)\)">\(\phi(A)\)</span>. Self-adjoint normalization and clipping of a product operator have these properties.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(R^*\)">\(R^*\)</span> are locally compact for <span class="math" data-tex="\(\psi(D)\)">\(\psi(D)\)</span>. Then
+<span class="math math-display" data-tex="\[
+(T_xR)^*(T_xR)=R^*\psi(\langle x,x\rangle)R
+\]">\[
+(T_xR)^*(T_xR)=R^*\psi(\langle x,x\rangle)R
+\]</span>
+is compact. An adjointable operator <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> compact is compact: use <span class="math" data-tex="\(T(T^*T+\varepsilon)^{-1}T^*T\)">\(T(T^*T+\varepsilon)^{-1}T^*T\)</span> and the scalar bound on its error to approximate <span class="math" data-tex="\(T\)">\(T\)</span> by compact operators. Thus <span class="math" data-tex="\(T_xR\)">\(T_xR\)</span> is compact; the adjoint version proves <span class="math" data-tex="\(RT_x^*\)">\(RT_x^*\)</span> compact. This proves the assertion for the second input.</p>
+<p>For a first-input perturbation <span class="math" data-tex="\(R_1\)">\(R_1\)</span>, write <span class="math" data-tex="\(R=R_1\widehat\otimes1\)">\(R=R_1\widehat\otimes1\)</span>. Each <span class="math" data-tex="\(R\phi(a)\)">\(R\phi(a)\)</span> and <span class="math" data-tex="\(\phi(a)R\)">\(\phi(a)R\)</span> lies in <span class="math" data-tex="\(I_0\)">\(I_0\)</span>. Use Lemma 1.1 to move the connection <span class="math" data-tex="\(F\)">\(F\)</span> across these operators, and use its cycle commutator to move it across <span class="math" data-tex="\(\phi(a)\)">\(\phi(a)\)</span>. The two terms in
+<span class="math" data-tex="\(\phi(a)[R,F]_{\mathrm{gr}}\phi(a)^*\)">\(\phi(a)[R,F]_{\mathrm{gr}}\phi(a)^*\)</span> then cancel modulo compacts. Thus (2.1) is unchanged.</p>
+<p>For the stated product-operator perturbation <span class="math" data-tex="\(Z\)">\(Z\)</span>, both terms of
+<span class="math" data-tex="\(\phi(a)[S,Z]_{\mathrm{gr}}\phi(a)^*\)">\(\phi(a)[S,Z]_{\mathrm{gr}}\phi(a)^*\)</span> are compact: one contains <span class="math" data-tex="\(Z\phi(a)^*\)">\(Z\phi(a)^*\)</span>, the other contains <span class="math" data-tex="\(\phi(a)Z\)">\(\phi(a)Z\)</span>. The connection assertion is its assumed <span class="math" data-tex="\(0\)">\(0\)</span>-connection condition. In self-adjoint normalization this condition holds automatically, since <span class="math" data-tex="\(F-F^*\)">\(F-F^*\)</span> is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection when <span class="math" data-tex="\(F_2\)">\(F_2\)</span> is self-adjoint. A clipping function then changes <span class="math" data-tex="\(F\)">\(F\)</span> by a function vanishing at <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. Since <span class="math" data-tex="\(F_2^2-1\)">\(F_2^2-1\)</span> is locally compact for <span class="math" data-tex="\(\psi(D)\)">\(\psi(D)\)</span>, that function of <span class="math" data-tex="\(F_2\)">\(F_2\)</span> has compact creation products by the first part. Lemma 1.2 makes the clipping change a <span class="math" data-tex="\(0\)">\(0\)</span>-connection. The cycle perturbation rule supplies its local compactness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-existence-from-the-technical-theorem">3. Existence from the technical theorem</h2>
+<p><strong>Theorem 3.1 (existence of the product).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is separable, <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital and both input modules are countably generated, there is a product operator. For self-adjoint input operators it can be chosen self-adjoint. No <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unitality hypothesis on <span class="math" data-tex="\(B\)">\(B\)</span> is needed.</p>
+<p><strong>Proof.</strong> Normalize the inputs as above and choose a self-adjoint odd <span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection <span class="math" data-tex="\(G\)">\(G\)</span>. The module <span class="math" data-tex="\(E\)">\(E\)</span> is countably generated: products <span class="math" data-tex="\(x_i\widehat\otimes y_j\)">\(x_i\widehat\otimes y_j\)</span> of two countable generating families have dense <span class="math" data-tex="\(B\)">\(B\)</span>-span, using the balancing relation to move the <span class="math" data-tex="\(D\)">\(D\)</span>-coefficients into <span class="math" data-tex="\(\psi(D)y_j\)">\(\psi(D)y_j\)</span>.
+Put <span class="math" data-tex="\(J=\mathcal K(E)\)">\(J=\mathcal K(E)\)</span>, a <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital algebra, and
+<span class="math math-display" data-tex="\[
+A_1=C^*(I_0,J)=I_0+J.
+\]">\[
+A_1=C^*(I_0,J)=I_0+J.
+\]</span>
+Its two summands are <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital, so a sum of their strictly positive elements is strictly positive in <span class="math" data-tex="\(A_1\)">\(A_1\)</span>. Set
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_2&amp;=C^*(J\cup\mathcal Z),\\
+\mathcal Z&amp;=\{G^2-1,[S,G]_{\mathrm{gr}}\}\\
+&amp;\quad\cup\{[G,\phi(a)]_{\mathrm{gr}}:a\in A\}.
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+A_2&amp;=C^*(J\cup\mathcal Z),\\
+\mathcal Z&amp;=\{G^2-1,[S,G]_{\mathrm{gr}}\}\\
+&amp;\quad\cup\{[G,\phi(a)]_{\mathrm{gr}}:a\in A\}.
+\end{aligned}
+\tag{3.1}
+\]</span>
+All generators can be selected from a countable dense subset of <span class="math" data-tex="\(A\)">\(A\)</span>. Adjoining them to the <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital ideal <span class="math" data-tex="\(J\)">\(J\)</span> gives a <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital algebra: if <span class="math" data-tex="\(h_J\)">\(h_J\)</span> is strictly positive in <span class="math" data-tex="\(J\)">\(J\)</span>, add a convergent positive sum of suitably weighted <span class="math" data-tex="\(z_j^*z_j+z_jz_j^*\)">\(z_j^*z_j+z_jz_j^*\)</span>. The resulting <span class="math" data-tex="\(h\)">\(h\)</span> has <span class="math" data-tex="\(f_n(h)z_j\to z_j\)">\(f_n(h)z_j\to z_j\)</span> and <span class="math" data-tex="\(z_jf_n(h)\to z_j\)">\(z_jf_n(h)\to z_j\)</span>, since <span class="math" data-tex="\(h\)">\(h\)</span> dominates a positive multiple of both <span class="math" data-tex="\(z_j^*z_j\)">\(z_j^*z_j\)</span> and <span class="math" data-tex="\(z_jz_j^*\)">\(z_jz_j^*\)</span>; it also acts as an approximate identity on <span class="math" data-tex="\(J\)">\(J\)</span>. Thus <span class="math" data-tex="\(f_n(h)\)">\(f_n(h)\)</span> approximates every element of the generated algebra.</p>
+<p>Each generator in (3.1), other than <span class="math" data-tex="\(J\)">\(J\)</span>, is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection. For <span class="math" data-tex="\(G^2-1\)">\(G^2-1\)</span>, Lemma 1.2 gives a connection of <span class="math" data-tex="\(F_2^2-1\)">\(F_2^2-1\)</span>, whose creation errors are compact by Lemma 2.1. The commutators are <span class="math" data-tex="\(0\)">\(0\)</span>-connections by (1.5). They and their adjoints therefore annihilate <span class="math" data-tex="\(I_0\)">\(I_0\)</span> modulo <span class="math" data-tex="\(J\)">\(J\)</span>. This proves
+<span class="math math-display" data-tex="\[
+A_1A_2\subset J.
+\tag{3.2}
+\]">\[
+A_1A_2\subset J.
+\tag{3.2}
+\]</span>
+The separable graded space spanned by <span class="math" data-tex="\(S,G,\phi(A)\)">\(S,G,\phi(A)\)</span> derives <span class="math" data-tex="\(A_1\)">\(A_1\)</span>. For <span class="math" data-tex="\(S,\phi(A)\)">\(S,\phi(A)\)</span> this is the adjointable ideal property on the first module; for <span class="math" data-tex="\(G\)">\(G\)</span> it is Lemma 1.1.</p>
+<p>The graded technical theorem supplies even positive contractions <span class="math" data-tex="\(M,N\)">\(M,N\)</span> with
+<span class="math math-display" data-tex="\[
+M+N=1,\quad MA_1\subset J,\quad NA_2\subset J,
+\tag{3.3}
+\]">\[
+M+N=1,\quad MA_1\subset J,\quad NA_2\subset J,
+\tag{3.3}
+\]</span>
+and compact commutators with <span class="math" data-tex="\(S,G,\phi(A)\)">\(S,G,\phi(A)\)</span>. Its square-root corollary gives the same annihilation and commutation properties for the needed roots.
+First define
+<span class="math math-display" data-tex="\[
+F_0=M^{1/2}S+N^{1/2}G.
+\tag{3.4}
+\]">\[
+F_0=M^{1/2}S+N^{1/2}G.
+\tag{3.4}
+\]</span>
+The operator <span class="math" data-tex="\(M^{1/2}\)">\(M^{1/2}\)</span> is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection by Lemma 1.1. Hence its product with <span class="math" data-tex="\(S\)">\(S\)</span> is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection. Since <span class="math" data-tex="\(N-1=-M\)">\(N-1=-M\)</span> is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection, functional calculus gives <span class="math" data-tex="\(N^{1/2}-1\)">\(N^{1/2}-1\)</span> a <span class="math" data-tex="\(0\)">\(0\)</span>-connection as well. Consequently the second term in (3.4) is an <span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection. Their sum is the required connection.</p>
+<p>All the following equalities are modulo <span class="math" data-tex="\(J\)">\(J\)</span>. Move the cutoffs past <span class="math" data-tex="\(S,G,\phi(a)\)">\(S,G,\phi(a)\)</span> to obtain
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(F_0^2-1)\phi(a)
+&amp;=M(S^2-1)\phi(a)\\
+&amp;\quad+N(G^2-1)\phi(a)\\
+&amp;\quad+M^{1/2}N^{1/2}[S,G]_{\mathrm{gr}}\phi(a)\\
+&amp;=0.
+\end{aligned}
+\tag{3.5}
+\]">\[
+\begin{aligned}
+(F_0^2-1)\phi(a)
+&amp;=M(S^2-1)\phi(a)\\
+&amp;\quad+N(G^2-1)\phi(a)\\
+&amp;\quad+M^{1/2}N^{1/2}[S,G]_{\mathrm{gr}}\phi(a)\\
+&amp;=0.
+\end{aligned}
+\tag{3.5}
+\]</span>
+Here <span class="math" data-tex="\((S^2-1)\phi(a)\in I_0\)">\((S^2-1)\phi(a)\in I_0\)</span>, while the other two defects belong to <span class="math" data-tex="\(A_2\)">\(A_2\)</span>. Also
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\left[F_0,\phi(a)\right]_{\mathrm{gr}}
+&amp;\equiv M^{1/2}[S,\phi(a)]_{\mathrm{gr}}\\
+&amp;\quad+N^{1/2}[G,\phi(a)]_{\mathrm{gr}}=0.
+\end{aligned}
+\tag{3.6}
+\]">\[
+\begin{aligned}
+\left[F_0,\phi(a)\right]_{\mathrm{gr}}
+&amp;\equiv M^{1/2}[S,\phi(a)]_{\mathrm{gr}}\\
+&amp;\quad+N^{1/2}[G,\phi(a)]_{\mathrm{gr}}=0.
+\end{aligned}
+\tag{3.6}
+\]</span>
+The first commutator is in <span class="math" data-tex="\(I_0\)">\(I_0\)</span>, and the second is in <span class="math" data-tex="\(A_2\)">\(A_2\)</span>.
+The adjoint defect is compact because the two cutoffs commute with the self-adjoint <span class="math" data-tex="\(S,G\)">\(S,G\)</span> modulo <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>Finally,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\phi(a)[S,F_0]_{\mathrm{gr}}\phi(a)^*
+&amp;\equiv2\phi(a)M^{1/2}S^2\phi(a)^*\\
+&amp;\equiv2\phi(a)M^{1/2}\phi(a)^*\geq0.
+\end{aligned}
+\tag{3.7}
+\]">\[
+\begin{aligned}
+\phi(a)[S,F_0]_{\mathrm{gr}}\phi(a)^*
+&amp;\equiv2\phi(a)M^{1/2}S^2\phi(a)^*\\
+&amp;\equiv2\phi(a)M^{1/2}\phi(a)^*\geq0.
+\end{aligned}
+\tag{3.7}
+\]</span>
+The omitted commutator with <span class="math" data-tex="\(G\)">\(G\)</span> is killed by <span class="math" data-tex="\(N^{1/2}\)">\(N^{1/2}\)</span>. The second equality uses
+<span class="math" data-tex="\((S^2-1)\phi(a)^*\in I_0\)">\((S^2-1)\phi(a)^*\in I_0\)</span> and the cutoff commutators. This proves all three product conditions.</p>
+<p>For an exactly self-adjoint operator use
+<span class="math math-display" data-tex="\[
+F=M^{1/4}SM^{1/4}+N^{1/4}GN^{1/4}.
+\tag{3.8}
+\]">\[
+F=M^{1/4}SM^{1/4}+N^{1/4}GN^{1/4}.
+\tag{3.8}
+\]</span>
+It differs from <span class="math" data-tex="\(F_0\)">\(F_0\)</span> by a globally compact operator, so all the verified conditions persist. Undoing the input normalizations with Lemma 2.1 proves the stated generality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Notice the localization in (3.5). For a nonunital source one only knows
+<span class="math" data-tex="\((F_1^2-1)\phi_1(a)\)">\((F_1^2-1)\phi_1(a)\)</span> is compact. One cannot replace this by a global assertion <span class="math" data-tex="\(F_1^2-1\in\mathcal K(E_1)\)">\(F_1^2-1\in\mathcal K(E_1)\)</span>.</p>
+<h2 id="4-uniqueness-and-descent-to-homotopy-classes">4. Uniqueness and descent to homotopy classes</h2>
+<p><strong>Theorem 4.1 (uniqueness up to operator homotopy).</strong> Under the hypotheses of Theorem 3.1, any two product operators on the given tensor module represent the same operator-homotopy class.</p>
+<p><strong>Proof.</strong> Normalize <span class="math" data-tex="\(F_1\)">\(F_1\)</span> and the two product operators <span class="math" data-tex="\(F,F&#x27;\)">\(F,F&#x27;\)</span> to self-adjoint contractions. Lemma 2.1 preserves their product conditions. This time apply the technical theorem with the same <span class="math" data-tex="\(A_1\)">\(A_1\)</span> and
+<span class="math math-display" data-tex="\[
+A_2=C^*(J,\ [S,F]_{\mathrm{gr}},\
+[S,F&#x27;]_{\mathrm{gr}},\ F-F&#x27;).
+\tag{4.1}
+\]">\[
+A_2=C^*(J,\ [S,F]_{\mathrm{gr}},\
+[S,F&#x27;]_{\mathrm{gr}},\ F-F&#x27;).
+\tag{4.1}
+\]</span>
+These generators are <span class="math" data-tex="\(0\)">\(0\)</span>-connections by Lemma 1.2. Include <span class="math" data-tex="\(S,F,F&#x27;,\phi(A)\)">\(S,F,F&#x27;,\phi(A)\)</span> in the separable derivating space. As in Section 3 all hypotheses are satisfied. Let <span class="math" data-tex="\(M,N\)">\(M,N\)</span> be the resulting partition and put
+<span class="math math-display" data-tex="\[
+H=M^{1/2}S+N^{1/2}F.
+\tag{4.2}
+\]">\[
+H=M^{1/2}S+N^{1/2}F.
+\tag{4.2}
+\]</span>
+Use its self-adjoint sandwich version if desired. The existence calculation shows that <span class="math" data-tex="\(H\)">\(H\)</span> is a product operator: the defects of <span class="math" data-tex="\(F\)">\(F\)</span> are already locally compact, while <span class="math" data-tex="\(M\)">\(M\)</span> kills the first-module defects and <span class="math" data-tex="\(N\)">\(N\)</span> kills <span class="math" data-tex="\([S,F]_{\mathrm{gr}}\)">\([S,F]_{\mathrm{gr}}\)</span>.</p>
+<p>We compare <span class="math" data-tex="\(H\)">\(H\)</span> to both original operators. Fix <span class="math" data-tex="\(a\)">\(a\)</span>, put <span class="math" data-tex="\(b=\phi(a)\)">\(b=\phi(a)\)</span>, and take <span class="math" data-tex="\(T=F\)">\(T=F\)</span> or <span class="math" data-tex="\(T=F&#x27;\)">\(T=F&#x27;\)</span>. Modulo <span class="math" data-tex="\(J\)">\(J\)</span> the comparison is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b[T,H]_{\mathrm{gr}}b^*
+&amp;=bM^{1/2}[T,S]_{\mathrm{gr}}b^*\\
+&amp;\quad+2bN^{1/2}b^*.
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+b[T,H]_{\mathrm{gr}}b^*
+&amp;=bM^{1/2}[T,S]_{\mathrm{gr}}b^*\\
+&amp;\quad+2bN^{1/2}b^*.
+\end{aligned}
+\tag{4.3}
+\]</span>
+For <span class="math" data-tex="\(T=F\)">\(T=F\)</span>, use the cycle equation for <span class="math" data-tex="\(F\)">\(F\)</span>. For <span class="math" data-tex="\(T=F&#x27;\)">\(T=F&#x27;\)</span>, use
+<span class="math" data-tex="\(N^{1/2}(F-F&#x27;)=0\)">\(N^{1/2}(F-F&#x27;)=0\)</span> modulo <span class="math" data-tex="\(J\)">\(J\)</span> to replace the term
+<span class="math" data-tex="\(N^{1/2}[F&#x27;,F]_{\mathrm{gr}}\)">\(N^{1/2}[F&#x27;,F]_{\mathrm{gr}}\)</span> by <span class="math" data-tex="\(2N^{1/2}F^2\)">\(2N^{1/2}F^2\)</span>, then uses the same localized cycle equation.</p>
+<p>These sums are positive. Indeed <span class="math" data-tex="\(M^{1/2}\)">\(M^{1/2}\)</span> commutes modulo <span class="math" data-tex="\(J\)">\(J\)</span> with all operators in the sandwich, so its product with the positive localized anticommutator is positive. Proposition 3.3 of <em>Kasparov modules and the groups <span class="math" data-tex="\(KK(A,B)\)">\(KK(A,B)\)</span></em> supplies an operator homotopy from <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span>, and one from <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span>. Reverse and concatenate the latter to prove the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof needs positivity, rather than smallness of the ordinary commutator. Both <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> are odd, so their relevant bracket is <span class="math" data-tex="\(SF+FS\)">\(SF+FS\)</span>.</p>
+<p><strong>Theorem 4.2 (the bilinear product).</strong> The construction gives a well-defined bilinear map
+<span class="math math-display" data-tex="\[
+KK(A,D)\times KK(D,B)\longrightarrow KK(A,B),\qquad
+(x,y)\longmapsto x\widehat\otimes_D y.
+\tag{4.4}
+\]">\[
+KK(A,D)\times KK(D,B)\longrightarrow KK(A,B),\qquad
+(x,y)\longmapsto x\widehat\otimes_D y.
+\tag{4.4}
+\]</span></p>
+<p><strong>Proof.</strong> A homotopy of the second cycle is a cycle over <span class="math" data-tex="\(C([0,1],B)\)">\(C([0,1],B)\)</span>. Apply Theorem 3.1 with that coefficient algebra. The tensor module evaluates to the two endpoint tensor modules; creation conditions, compact defects and quotient positivity descend under evaluation. Its endpoints are products of the endpoint input cycles and hence have the required classes by Theorem 4.1.</p>
+<p>For a homotopy of the first cycle, its intermediate algebra is <span class="math" data-tex="\(C([0,1],D)\)">\(C([0,1],D)\)</span>, still <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. Tensor the second cycle externally with <span class="math" data-tex="\(C([0,1])\)">\(C([0,1])\)</span>, using the pointwise representation and constant operator. Compact defects are continuous compact-valued fields. Apply the same theorem and evaluate. The canonical map identifying the evaluated interior tensor product with the tensor product of the evaluated modules is unitary by its inner-product formula and density of elementary tensors. This proves invariance in both variables.</p>
+<p>Direct sums of product operators satisfy every axiom for a direct sum in either input, by the two block creation conditions and block positivity. Theorem 4.1 then proves additivity. Degenerate cycles have zero homotopy class by Proposition 2.3 of the cycle lesson, so the preceding homotopy invariance also covers their addition. Thus (4.4) is well-defined on the groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-essential-representations-and-homomorphisms">5. Essential representations and homomorphisms</h2>
+<p>A representation is <strong>essential</strong> if <span class="math" data-tex="\(\overline{\psi(D)E_2}=E_2\)">\(\overline{\psi(D)E_2}=E_2\)</span>. This is useful when identifying <span class="math" data-tex="\(D\widehat\otimes_\psi E_2\)">\(D\widehat\otimes_\psi E_2\)</span> with <span class="math" data-tex="\(E_2\)">\(E_2\)</span>. An arbitrary representation need not be essential, and its essential submodule need not have an adjointable orthogonal projection.</p>
+<p><strong>Proposition 5.1 (essential replacement).</strong> If <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital, every cycle <span class="math" data-tex="\((E_2,\psi,F_2)\)">\((E_2,\psi,F_2)\)</span> is homotopic to a cycle on
+<span class="math" data-tex="\(E_2^0=\overline{\psi(D)E_2}\)">\(E_2^0=\overline{\psi(D)E_2}\)</span>, with its essential representation.</p>
+<p><strong>Proof.</strong> Normalize <span class="math" data-tex="\(F_2\)">\(F_2\)</span> to be self-adjoint. Set
+<span class="math math-display" data-tex="\[
+L=\{f\in C([0,1],D^+):f(1)\in D\}.
+\]">\[
+L=\{f\in C([0,1],D^+):f(1)\in D\}.
+\]</span>
+It is a countably generated Hilbert ideal of <span class="math" data-tex="\(C([0,1],D^+)\)">\(C([0,1],D^+)\)</span>. For example, if <span class="math" data-tex="\(h\)">\(h\)</span> is strictly positive in <span class="math" data-tex="\(D\)">\(D\)</span>, the function
+<span class="math" data-tex="\(\ell(t)=(1-t)1+th\)">\(\ell(t)=(1-t)1+th\)</span> is strictly positive in <span class="math" data-tex="\(L\)">\(L\)</span>: its standard functional-calculus approximate identity converges on every fiber, and uniformly on a given continuous section by compactness of the interval and a finite-neighborhood argument. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital and generated as a Hilbert ideal by a countable approximate identity.</p>
+<p>Tensor <span class="math" data-tex="\(L\)">\(L\)</span> with the constant interval module
+<span class="math" data-tex="\(\overline E_2=C([0,1],E_2)\)">\(\overline E_2=C([0,1],E_2)\)</span>, using the pointwise unital extension <span class="math" data-tex="\(\psi^+\)">\(\psi^+\)</span>. The map
+<span class="math math-display" data-tex="\[
+f\widehat\otimes \xi\longmapsto
+\bigl(t\mapsto\psi^+(f(t))\xi(t)\bigr)
+\]">\[
+f\widehat\otimes \xi\longmapsto
+\bigl(t\mapsto\psi^+(f(t))\xi(t)\bigr)
+\]</span>
+identifies this tensor module with
+<span class="math math-display" data-tex="\[
+\mathcal M=\{\xi\in C([0,1],E_2):\xi(1)\in E_2^0\}.
+\tag{5.1}
+\]">\[
+\mathcal M=\{\xi\in C([0,1],E_2):\xi(1)\in E_2^0\}.
+\tag{5.1}
+\]</span>
+It preserves inner products. Its image is dense: first approximate the endpoint value by finite sums <span class="math" data-tex="\(\psi(d)y\)">\(\psi(d)y\)</span>, subtract their constant sections, and approximate the remaining section by sections vanishing near <span class="math" data-tex="\(1\)">\(1\)</span>. Those sections are obtained with scalar cutoffs supported away from <span class="math" data-tex="\(1\)">\(1\)</span>, which belong to <span class="math" data-tex="\(L\)">\(L\)</span>. The approximation is uniform. Products of countable generating families show countable generation of <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>.</p>
+<p>Choose a self-adjoint Grassmann <span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection <span class="math" data-tex="\(G\)">\(G\)</span> on this tensor module. Let <span class="math" data-tex="\(D\)">\(D\)</span> act through its constant embedding in <span class="math" data-tex="\(L\)">\(L\)</span>, followed by the left action on the tensor product. Left multiplication by an element of <span class="math" data-tex="\(L\)">\(L\)</span> is compact on the Hilbert ideal <span class="math" data-tex="\(L\)">\(L\)</span>: rank-one operators are multiplication by <span class="math" data-tex="\(fg^*\)">\(fg^*\)</span>, and their closed span is <span class="math" data-tex="\(L\)">\(L\)</span>. Lemma 1.1 therefore gives compact representation commutators.</p>
+<p>For the square defect one must retain localization to <span class="math" data-tex="\(D\)">\(D\)</span>, since <span class="math" data-tex="\(F_2\)">\(F_2\)</span> need not be a cycle for the unitization <span class="math" data-tex="\(D^+\)">\(D^+\)</span>. Approximate <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span> by finite sums <span class="math" data-tex="\(d_1d_2^*\)">\(d_1d_2^*\)</span> with <span class="math" data-tex="\(d_i\in D\)">\(d_i\in D\)</span>, regarded as constant vectors in <span class="math" data-tex="\(L\)">\(L\)</span>. Its represented left multiplication on the tensor module is then approximated by <span class="math" data-tex="\(T_{d_1}T_{d_2}^*\)">\(T_{d_1}T_{d_2}^*\)</span>. The connection identities give
+<span class="math math-display" data-tex="\[
+(G^2-1)T_{d_1}T_{d_2}^*
+\equiv T_{d_1}(F_2^2-1)T_{d_2}^*
+\pmod{\mathcal K(\mathcal M)}.
+\]">\[
+(G^2-1)T_{d_1}T_{d_2}^*
+\equiv T_{d_1}(F_2^2-1)T_{d_2}^*
+\pmod{\mathcal K(\mathcal M)}.
+\]</span>
+The right side is compact by the creation compactness test of Lemma 2.1, because the original square defect is locally compact for <span class="math" data-tex="\(\psi(D)\)">\(\psi(D)\)</span>. Its interval field is compact in <span class="math" data-tex="\(C([0,1],\mathcal K(E_2))\)">\(C([0,1],\mathcal K(E_2))\)</span>. Taking the finite-sum limit proves the localized square condition. Self-adjointness supplies the adjoint condition. Thus <span class="math" data-tex="\((\mathcal M,\psi,G)\)">\((\mathcal M,\psi,G)\)</span> is an interval cycle.</p>
+<p>Its fiber at <span class="math" data-tex="\(0\)">\(0\)</span> is <span class="math" data-tex="\(D^+\widehat\otimes_{\psi^+}E_2\cong E_2\)">\(D^+\widehat\otimes_{\psi^+}E_2\cong E_2\)</span>. The creation operator for <span class="math" data-tex="\(1\in D^+\)">\(1\in D^+\)</span> is this unitary identification, so the connection condition gives <span class="math" data-tex="\(G_0-F_2\)">\(G_0-F_2\)</span> compact. At <span class="math" data-tex="\(1\)">\(1\)</span> the fiber is <span class="math" data-tex="\(D\widehat\otimes_\psi E_2\cong E_2^0\)">\(D\widehat\otimes_\psi E_2\cong E_2^0\)</span>, with essential representation. Combining the interval cycle with the initial compact perturbation proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same construction supplies the explicit multiplication connections used later. For homogeneous <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>, let <span class="math" data-tex="\(A_d:E_2\to E_2^0\)">\(A_d:E_2\to E_2^0\)</span> send <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(\psi(d)y\)">\(\psi(d)y\)</span>. Its adjoint is multiplication by <span class="math" data-tex="\(d^*\)">\(d^*\)</span>, followed by inclusion in <span class="math" data-tex="\(E_2\)">\(E_2\)</span>; the inner-product identity verifies this without an orthogonal projection onto <span class="math" data-tex="\(E_2^0\)">\(E_2^0\)</span>. At the final fiber, the creation operator for the constant vector <span class="math" data-tex="\(d\in L\)">\(d\in L\)</span> is exactly <span class="math" data-tex="\(A_d\)">\(A_d\)</span>. Therefore the Grassmann connection gives
+<span class="math math-display" data-tex="\[
+F_2^0A_d-(-1)^{|d|}A_dF_2
+\in\mathcal K(E_2,E_2^0),
+\tag{5.1a}
+\]">\[
+F_2^0A_d-(-1)^{|d|}A_dF_2
+\in\mathcal K(E_2,E_2^0),
+\tag{5.1a}
+\]</span>
+and its adjoint condition. At the initial fiber the creation for <span class="math" data-tex="\(1\)">\(1\)</span> identifies <span class="math" data-tex="\(G_0\)">\(G_0\)</span> with <span class="math" data-tex="\(F_2\)">\(F_2\)</span> modulo compacts, as above. Self-adjoint normalization and clipping preserve (5.1a): a two-sided locally compact change <span class="math" data-tex="\(K\)">\(K\)</span> of the final operator has compact <span class="math" data-tex="\(KA_d\)">\(KA_d\)</span>, by approximating <span class="math" data-tex="\(d\)">\(d\)</span> by sums of products and writing <span class="math" data-tex="\(A_{rs}=\psi^0(r)A_s\)">\(A_{rs}=\psi^0(r)A_s\)</span>. The changes of the initial operator have compact <span class="math" data-tex="\(A_dK\)">\(A_dK\)</span> by the analogous adjoint-side argument. Hence the replacement can be normalized while retaining both multiplication-connection conditions.</p>
+<p><strong>Theorem 5.2 (products with homomorphisms).</strong> For graded homomorphisms
+<span class="math" data-tex="\(f:A\to D\)">\(f:A\to D\)</span> and <span class="math" data-tex="\(g:D\to B\)">\(g:D\to B\)</span>, under the countability hypotheses for their homomorphism cycles,
+<span class="math math-display" data-tex="\[
+[f]\widehat\otimes_D y=f^*(y),\qquad
+x\widehat\otimes_D[g]=g_*(x).
+\tag{5.2}
+\]">\[
+[f]\widehat\otimes_D y=f^*(y),\qquad
+x\widehat\otimes_D[g]=g_*(x).
+\tag{5.2}
+\]</span>
+Consequently <span class="math" data-tex="\(1_A=[\operatorname{id}_A]\)">\(1_A=[\operatorname{id}_A]\)</span> is a two-sided identity whenever the indicated products are defined.</p>
+<p><strong>Proof.</strong> The homomorphism cycle for <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\((D,f,0)\)">\((D,f,0)\)</span>. Replace the representation of <span class="math" data-tex="\(y\)">\(y\)</span> by an essential one using Proposition 5.1. The unitary
+<span class="math math-display" data-tex="\[
+D\widehat\otimes_\psi E_2\longrightarrow E_2,\qquad
+d\widehat\otimes y\longmapsto\psi(d)y
+\tag{5.3}
+\]">\[
+D\widehat\otimes_\psi E_2\longrightarrow E_2,\qquad
+d\widehat\otimes y\longmapsto\psi(d)y
+\tag{5.3}
+\]</span>
+intertwines the representation with <span class="math" data-tex="\(\psi f\)">\(\psi f\)</span>. Its creation errors for <span class="math" data-tex="\(F_2\)">\(F_2\)</span> are the original compact commutators with <span class="math" data-tex="\(\psi(d)\)">\(\psi(d)\)</span>. It is a cycle, and its positivity condition is zero because the first operator is zero. This gives <span class="math" data-tex="\(f^*(y)\)">\(f^*(y)\)</span>.</p>
+<p>For <span class="math" data-tex="\(g\)">\(g\)</span>, write <span class="math" data-tex="\(E_g=\overline{g(D)B}\)">\(E_g=\overline{g(D)B}\)</span>. Since the intermediate algebra <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital, a countable approximate identity makes this module countably generated, and <span class="math" data-tex="\(g(d)|_{E_g}\)">\(g(d)|_{E_g}\)</span> is compact by the support-module proof in Lesson 06, Section 5. Thus <span class="math" data-tex="\((E_g,g,0)\)">\((E_g,g,0)\)</span> is the homomorphism cycle even for arbitrary <span class="math" data-tex="\(B\)">\(B\)</span>. If <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital, Lemma 5.2 there identifies it with the canonical cycle <span class="math" data-tex="\((B,g,0)\)">\((B,g,0)\)</span>.</p>
+<p>The inclusion of <span class="math" data-tex="\(E_g\)">\(E_g\)</span> into <span class="math" data-tex="\(B\)">\(B\)</span> gives a unitary
+<span class="math" data-tex="\(E_1\widehat\otimes_gE_g\to E_1\widehat\otimes_gB\)">\(E_1\widehat\otimes_gE_g\to E_1\widehat\otimes_gB\)</span>: it preserves inner products, and its range is dense because
+<span class="math" data-tex="\(x\widehat\otimes b=\lim_j xe_j\widehat\otimes b=\lim_jx\widehat\otimes g(e_j)b\)">\(x\widehat\otimes b=\lim_j xe_j\widehat\otimes b=\lim_jx\widehat\otimes g(e_j)b\)</span>.
+The tensor module is countably generated by the vectors <span class="math" data-tex="\(x_i\widehat\otimes g(e_j)\)">\(x_i\widehat\otimes g(e_j)\)</span>, for generating vectors <span class="math" data-tex="\(x_i\)">\(x_i\)</span> of <span class="math" data-tex="\(E_1\)">\(E_1\)</span>. Under this unitary the proposed tensor cycle is
+<span class="math math-display" data-tex="\[
+(E_1\widehat\otimes_g B,\ \phi_1\widehat\otimes1,\
+F_1\widehat\otimes1).
+\]">\[
+(E_1\widehat\otimes_g B,\ \phi_1\widehat\otimes1,\
+F_1\widehat\otimes1).
+\]</span>
+Each creation operator <span class="math" data-tex="\(T_x:E_g\to E_1\widehat\otimes_g E_g\)">\(T_x:E_g\to E_1\widehat\otimes_g E_g\)</span> is compact. Indeed <span class="math" data-tex="\(T_x^*T_x\)">\(T_x^*T_x\)</span> is the compact action of <span class="math" data-tex="\(g(\langle x,x\rangle)\)">\(g(\langle x,x\rangle)\)</span> on <span class="math" data-tex="\(E_g\)">\(E_g\)</span>, and the compactness test used in Lemma 2.1 applies. Hence <span class="math" data-tex="\(S=F_1\widehat\otimes1\)">\(S=F_1\widehat\otimes1\)</span> is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection. Compact input defects tensor to compact operators here: a rank-one operator <span class="math" data-tex="\(\theta_{x,z}\)">\(\theta_{x,z}\)</span> becomes <span class="math" data-tex="\(T_xT_z^*\)">\(T_xT_z^*\)</span>. Finally
+<span class="math math-display" data-tex="\[
+\phi(a)[S,S]_{\mathrm{gr}}\phi(a)^*
+=2\phi(a)S^2\phi(a)^*\geq0
+\]">\[
+\phi(a)[S,S]_{\mathrm{gr}}\phi(a)^*
+=2\phi(a)S^2\phi(a)^*\geq0
+\]</span>
+already as an operator, since <span class="math" data-tex="\(S\)">\(S\)</span> is self-adjoint. This is exactly the coefficient pushforward. Choosing <span class="math" data-tex="\(f\)">\(f\)</span> or <span class="math" data-tex="\(g\)">\(g\)</span> to be the identity proves the last statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> is not <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital, the full Hilbert module <span class="math" data-tex="\(B\)">\(B\)</span> need not be countably generated, so <span class="math" data-tex="\((B,g,0)\)">\((B,g,0)\)</span> is not automatically an allowed cycle. For separable <span class="math" data-tex="\(D\)">\(D\)</span>, use instead the countably generated ideal module
+<span class="math math-display" data-tex="\[
+B_g=\overline{g(D)B}\subset B.
+\]">\[
+B_g=\overline{g(D)B}\subset B.
+\]</span>
+A countable approximate identity of <span class="math" data-tex="\(D\)">\(D\)</span> acts in norm on this module, so <span class="math" data-tex="\(g(u_n)\)">\(g(u_n)\)</span> generate it as a right module. The left action of <span class="math" data-tex="\(g(d)\)">\(g(d)\)</span> is compact: the multipliers
+<span class="math" data-tex="\(g(u_n)g(d)g(u_n)\)">\(g(u_n)g(d)g(u_n)\)</span> converge to <span class="math" data-tex="\(g(d)\)">\(g(d)\)</span> in norm, and each is multiplication by <span class="math" data-tex="\(xy^*\)">\(xy^*\)</span> for <span class="math" data-tex="\(x=g(u_n)g(d)\)">\(x=g(u_n)g(d)\)</span>, <span class="math" data-tex="\(y=g(u_n)\)">\(y=g(u_n)\)</span> in <span class="math" data-tex="\(B_g\)">\(B_g\)</span>, hence a rank-one operator on <span class="math" data-tex="\(B_g\)">\(B_g\)</span>. The tensor product with <span class="math" data-tex="\(E_1\)">\(E_1\)</span> is unchanged, since <span class="math" data-tex="\(E_1D\)">\(E_1D\)</span> is dense in <span class="math" data-tex="\(E_1\)">\(E_1\)</span>. The proof of (5.2) then applies with <span class="math" data-tex="\(B_g\)">\(B_g\)</span>. For <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital <span class="math" data-tex="\(B\)">\(B\)</span>, the simpler full-module cycle suffices.</p>
+<h2 id="6-a-useful-formula-which-need-not-be-a-connection">6. A useful formula which need not be a connection</h2>
+<p>Suppose <span class="math" data-tex="\(F_1\)">\(F_1\)</span> is a self-adjoint contraction and <span class="math" data-tex="\(G\)">\(G\)</span> is an odd <span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection, without requiring <span class="math" data-tex="\(G\)">\(G\)</span> to be self-adjoint. Put
+<span class="math math-display" data-tex="\[
+R=(1-S^2)^{1/2},\qquad H=S+RG.
+\tag{6.1}
+\]">\[
+R=(1-S^2)^{1/2},\qquad H=S+RG.
+\tag{6.1}
+\]</span>
+This formula is useful when its representation commutators are compact. It does not generally satisfy the connection condition itself.</p>
+<p><strong>Theorem 6.1 (the special formula).</strong> Under the product hypotheses, if
+<span class="math" data-tex="\([H,\phi(a)]_{\mathrm{gr}}\)">\([H,\phi(a)]_{\mathrm{gr}}\)</span> is compact for all <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, then <span class="math" data-tex="\((E,\phi,H)\)">\((E,\phi,H)\)</span> is a cycle operator homotopic to a product operator.</p>
+<p><strong>Proof.</strong> We first prove the cycle assertion without assuming that <span class="math" data-tex="\(S\)">\(S\)</span> graded commutes with <span class="math" data-tex="\(G\)">\(G\)</span> globally modulo compacts.
+Let
+<span class="math math-display" data-tex="\[
+C=C^*(1,J,I_0,S,G,\phi(A)),\qquad Q=C/J,
+\]">\[
+C=C^*(1,J,I_0,S,G,\phi(A)),\qquad Q=C/J,
+\]</span>
+Let <span class="math" data-tex="\(I\)">\(I\)</span> be the closed two-sided ideal of <span class="math" data-tex="\(Q\)">\(Q\)</span> generated by the image of <span class="math" data-tex="\(I_0\)">\(I_0\)</span>. This image need not itself be an ideal. A <span class="math" data-tex="\(0\)">\(0\)</span>-connection <span class="math" data-tex="\(D\in C\)">\(D\in C\)</span> annihilates <span class="math" data-tex="\(I\)">\(I\)</span>, as follows. Suppress quotient symbols for this calculation. First-factor generators <span class="math" data-tex="\(S,\phi(a)\)">\(S,\phi(a)\)</span>, and generators from <span class="math" data-tex="\(I_0\)">\(I_0\)</span>, multiply <span class="math" data-tex="\(I_0\)">\(I_0\)</span> into itself on either side. The generators <span class="math" data-tex="\(G,G^*\)">\(G,G^*\)</span> graded commute with <span class="math" data-tex="\(I_0\)">\(I_0\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span>, by Lemma 1.1. Generators from <span class="math" data-tex="\(J\)">\(J\)</span> have zero image. The identity has the first property.</p>
+<p>For a homogeneous word <span class="math" data-tex="\(c=a_1\cdots a_n\)">\(c=a_1\cdots a_n\)</span> in these generators and <span class="math" data-tex="\(i\in I_0\)">\(i\in I_0\)</span>, prove <span class="math" data-tex="\(Dci=0\)">\(Dci=0\)</span> by induction on <span class="math" data-tex="\(n\)">\(n\)</span>. The empty word is Lemma 1.1. If the last generator is a first-factor generator, combine <span class="math" data-tex="\(a_ni\in I_0\)">\(a_ni\in I_0\)</span> and apply the induction hypothesis to the shorter word. If it is <span class="math" data-tex="\(G\)">\(G\)</span> or <span class="math" data-tex="\(G^*\)">\(G^*\)</span>, write <span class="math" data-tex="\(c=u a_n\)">\(c=u a_n\)</span> and move <span class="math" data-tex="\(i\)">\(i\)</span> past that last generator:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Du a_ni
+&amp;=(-1)^{|a_n||i|}Du i a_n\\
+&amp;=0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+Du a_ni
+&amp;=(-1)^{|a_n||i|}Du i a_n\\
+&amp;=0.
+\end{aligned}
+\]</span>
+The remaining zero-image and identity cases are immediate. Thus <span class="math" data-tex="\(Dci=0\)">\(Dci=0\)</span> for all words, then for their linear span and norm closure. Multiplication on the right proves that <span class="math" data-tex="\(D\)">\(D\)</span> kills every generator <span class="math" data-tex="\(ci c&#x27;\)">\(ci c&#x27;\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span>. Apply the same argument to the <span class="math" data-tex="\(0\)">\(0\)</span>-connection <span class="math" data-tex="\(D^*\)">\(D^*\)</span>, and take adjoints, to obtain <span class="math" data-tex="\(ID=0\)">\(ID=0\)</span>. This proves annihilation without asserting that arbitrary products of derivating operators still derive <span class="math" data-tex="\(I_0+J\)">\(I_0+J\)</span>. Write
+<span class="math math-display" data-tex="\[
+Z=\operatorname{Ann}(I)
+=\{z\in Q:zI=Iz=0\}.
+\]">\[
+Z=\operatorname{Ann}(I)
+=\{z\in Q:zI=Iz=0\}.
+\]</span>
+This is a closed two-sided ideal, and <span class="math" data-tex="\(I\cap Z=0\)">\(I\cap Z=0\)</span>: an element <span class="math" data-tex="\(z\)">\(z\)</span> in the intersection has <span class="math" data-tex="\(zz^*=0\)">\(zz^*=0\)</span>. In these quotient calculations we suppress the quotient symbols.</p>
+<p>The operators <span class="math" data-tex="\(G^2-1\)">\(G^2-1\)</span>, <span class="math" data-tex="\(G-G^*\)">\(G-G^*\)</span> and <span class="math" data-tex="\([S,G]_{\mathrm{gr}}\)">\([S,G]_{\mathrm{gr}}\)</span> belong to <span class="math" data-tex="\(Z\)">\(Z\)</span>, by the connection calculus and the second input's localized defects. In <span class="math" data-tex="\(Q/Z\)">\(Q/Z\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span> is self-adjoint and anticommutes with <span class="math" data-tex="\(S\)">\(S\)</span>, so it commutes with <span class="math" data-tex="\(S^2\)">\(S^2\)</span> and with <span class="math" data-tex="\(R\)">\(R\)</span>. Thus <span class="math" data-tex="\([G,R],[G^*,R]\in Z\)">\([G,R],[G^*,R]\in Z\)</span>. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H-H^*&amp;=R(G-G^*)+[R,G^*]\in Z,\\
+H^2-1&amp;=R^2(G^2-1)+R[S,G]_{\mathrm{gr}}\\
+&amp;\quad+R[G,R]G\in Z.
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+H-H^*&amp;=R(G-G^*)+[R,G^*]\in Z,\\
+H^2-1&amp;=R^2(G^2-1)+R[S,G]_{\mathrm{gr}}\\
+&amp;\quad+R[G,R]G\in Z.
+\end{aligned}
+\tag{6.2}
+\]</span></p>
+<p>The first input cycle implies
+<span class="math math-display" data-tex="\[
+R\phi(a),\ \phi(a)R,\ [S,\phi(a)]_{\mathrm{gr}}\in I.
+\tag{6.3}
+\]">\[
+R\phi(a),\ \phi(a)R,\ [S,\phi(a)]_{\mathrm{gr}}\in I.
+\tag{6.3}
+\]</span>
+For the roots in (6.3), pass first to
+<span class="math" data-tex="\(\mathcal L(E_1)/\mathcal K(E_1)\)">\(\mathcal L(E_1)/\mathcal K(E_1)\)</span>: <span class="math" data-tex="\(F_1\)">\(F_1\)</span> commutes graded with the source, and <span class="math" data-tex="\((1-F_1^2)\phi_1(a)=0\)">\((1-F_1^2)\phi_1(a)=0\)</span>; commuting functional calculus gives the square-root assertion there. Tensor the resulting compact operators with <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Now pass to <span class="math" data-tex="\(Q/I\)">\(Q/I\)</span>. There <span class="math" data-tex="\(R\phi(a)=0\)">\(R\phi(a)=0\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span> commutes graded with <span class="math" data-tex="\(\phi(a)\)">\(\phi(a)\)</span>, and <span class="math" data-tex="\(S^2\phi(a)=\phi(a)\)">\(S^2\phi(a)=\phi(a)\)</span>. By the assumed pseudolocality of <span class="math" data-tex="\(H\)">\(H\)</span>,
+<span class="math math-display" data-tex="\[
+RH\phi(a)=(-1)^{|a|}R\phi(a)H=0
+\]">\[
+RH\phi(a)=(-1)^{|a|}R\phi(a)H=0
+\]</span>
+for homogeneous <span class="math" data-tex="\(a\)">\(a\)</span>. Since <span class="math" data-tex="\(R\)">\(R\)</span> commutes with <span class="math" data-tex="\(S\)">\(S\)</span>, this says <span class="math" data-tex="\(R^2G\phi(a)=0\)">\(R^2G\phi(a)=0\)</span>. Positivity of <span class="math" data-tex="\(R\)">\(R\)</span> gives <span class="math" data-tex="\(RG\phi(a)=0\)">\(RG\phi(a)=0\)</span>: the square of its norm is the norm of
+<span class="math" data-tex="\(\phi(a)^*G^*R^2G\phi(a)\)">\(\phi(a)^*G^*R^2G\phi(a)\)</span>, which is zero. Hence
+<span class="math math-display" data-tex="\[
+H\phi(a)=H^*\phi(a)=S\phi(a)
+\quad\text{in }Q/I.
+\]">\[
+H\phi(a)=H^*\phi(a)=S\phi(a)
+\quad\text{in }Q/I.
+\]</span>
+For the square, graded commutation of <span class="math" data-tex="\(S\)">\(S\)</span> with the source gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^2\phi(a)&amp;=HS\phi(a)\\
+&amp;=(-1)^{|a|}H\phi(a)S\\
+&amp;=(-1)^{|a|}S\phi(a)S\\
+&amp;=S^2\phi(a)=\phi(a).
+\end{aligned}
+\]">\[
+\begin{aligned}
+H^2\phi(a)&amp;=HS\phi(a)\\
+&amp;=(-1)^{|a|}H\phi(a)S\\
+&amp;=(-1)^{|a|}S\phi(a)S\\
+&amp;=S^2\phi(a)=\phi(a).
+\end{aligned}
+\]</span>
+The localized defects therefore belong to <span class="math" data-tex="\(I\)">\(I\)</span>, as well as to <span class="math" data-tex="\(Z\)">\(Z\)</span> by (6.2). Their intersection is zero. This proves all cycle defects compact in the original algebra.</p>
+<p>To compare with a product, use the Section 3 technical-theorem construction, adding <span class="math" data-tex="\([G,R]\)">\([G,R]\)</span> and <span class="math" data-tex="\(G-G^*\)">\(G-G^*\)</span> to <span class="math" data-tex="\(A_2\)">\(A_2\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> to the derivating space already containing <span class="math" data-tex="\(S,G,\phi(A)\)">\(S,G,\phi(A)\)</span>. These additions are permitted: the added defects are <span class="math" data-tex="\(0\)">\(0\)</span>-connections by the quotient calculation above, and <span class="math" data-tex="\(R\)">\(R\)</span> is an even first-factor operator, so it normalizes <span class="math" data-tex="\(I_0\)">\(I_0\)</span> and derives <span class="math" data-tex="\(I_0+J\)">\(I_0+J\)</span>. The cutoffs commute with <span class="math" data-tex="\(H\)">\(H\)</span> modulo <span class="math" data-tex="\(J\)">\(J\)</span> because, for <span class="math" data-tex="\(P=M,N\)">\(P=M,N\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\left[P,H\right]&amp;=[P,S]+[P,R]G\\
+&amp;\quad+R[P,G]\in J.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\left[P,H\right]&amp;=[P,S]+[P,R]G\\
+&amp;\quad+R[P,G]\in J.
+\end{aligned}
+\]</span>
+Functional calculus gives the same compact commutator for their required roots. No derivation condition on <span class="math" data-tex="\(H\)">\(H\)</span> is needed. The second input may first be normalized without changing which operators are its connections, by Lemma 2.1. Let
+<span class="math math-display" data-tex="\[
+F=M^{1/2}S+N^{1/2}G
+\]">\[
+F=M^{1/2}S+N^{1/2}G
+\]</span>
+be the resulting product operator. Its self-adjoint version differs globally compactly, since <span class="math" data-tex="\(N^{1/2}(G-G^*)\)">\(N^{1/2}(G-G^*)\)</span> is compact; equivalently the construction may use <span class="math" data-tex="\((G+G^*)/2\)">\((G+G^*)/2\)</span>. The extra cutoff conditions and (6.3) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\phi(a)[H,F]_{\mathrm{gr}}\phi(a)^*
+&amp;\equiv2\phi(a)M^{1/2}S^2\phi(a)^*\\
+&amp;\quad+2\phi(a)N^{1/2}R\phi(a)^*\geq0
+\quad\pmod J.
+\end{aligned}
+\tag{6.4}
+\]">\[
+\begin{aligned}
+\phi(a)[H,F]_{\mathrm{gr}}\phi(a)^*
+&amp;\equiv2\phi(a)M^{1/2}S^2\phi(a)^*\\
+&amp;\quad+2\phi(a)N^{1/2}R\phi(a)^*\geq0
+\quad\pmod J.
+\end{aligned}
+\tag{6.4}
+\]</span>
+Here <span class="math" data-tex="\([H,S]_{\mathrm{gr}}=2S^2+R[S,G]_{\mathrm{gr}}\)">\([H,S]_{\mathrm{gr}}=2S^2+R[S,G]_{\mathrm{gr}}\)</span>; the second term disappears after sandwiching, because <span class="math" data-tex="\(\phi(a)R\in I\)">\(\phi(a)R\in I\)</span> and the bracket annihilates <span class="math" data-tex="\(I\)">\(I\)</span>. Also
+<span class="math" data-tex="\([H,G]_{\mathrm{gr}}=[S,G]_{\mathrm{gr}}+2RG^2+[G,R]G\)">\([H,G]_{\mathrm{gr}}=[S,G]_{\mathrm{gr}}+2RG^2+[G,R]G\)</span>; the <span class="math" data-tex="\(N^{1/2}\)">\(N^{1/2}\)</span> cutoff kills its two bracket terms and the square defect. The remaining two summands in (6.4) are positive because the cutoffs commute modulo <span class="math" data-tex="\(J\)">\(J\)</span> with <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>The positive comparison criterion proves the operator homotopy to <span class="math" data-tex="\(F\)">\(F\)</span>. This proves the formula without an unverified interpolation path. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-morita-and-external-products">7. Morita and external products</h2>
+<p><strong>Proposition 7.1 (imprimitivity bimodules).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be an imprimitivity <span class="math" data-tex="\(A\)">\(A\)</span>-<span class="math" data-tex="\(D\)">\(D\)</span> bimodule, with <span class="math" data-tex="\(A,D\)">\(A,D\)</span> <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. Its cycle <span class="math" data-tex="\((X,\lambda,0)\)">\((X,\lambda,0)\)</span> has an inverse represented by the conjugate <span class="math" data-tex="\(D\)">\(D\)</span>-<span class="math" data-tex="\(A\)">\(A\)</span> bimodule <span class="math" data-tex="\(X^*\)">\(X^*\)</span>. Products with this cycle are the usual Morita tensor constructions.</p>
+<p><strong>Proof.</strong> Compact left action makes the zero operator a valid cycle; <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unitality of <span class="math" data-tex="\(\mathcal K(X)=A\)">\(\mathcal K(X)=A\)</span> gives countable generation. For a cycle on <span class="math" data-tex="\(E_2\)">\(E_2\)</span>, every <span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection on <span class="math" data-tex="\(X\widehat\otimes_D E_2\)">\(X\widehat\otimes_D E_2\)</span> is a cycle: its defects are <span class="math" data-tex="\(0\)">\(0\)</span>-connections and the source action lies in <span class="math" data-tex="\(\mathcal K(X)\widehat\otimes1\)">\(\mathcal K(X)\widehat\otimes1\)</span>. Positivity is zero because the first operator is zero. Thus it computes the indicated Morita construction.</p>
+<p>For two zero-operator bimodule cycles use the zero product operator. The inner-product maps
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X^*\widehat\otimes_A X&amp;\longrightarrow D,
+&amp;\bar x\widehat\otimes y&amp;\longmapsto\langle x,y\rangle_D,\\
+X\widehat\otimes_D X^*&amp;\longrightarrow A,
+&amp;x\widehat\otimes\bar y&amp;\longmapsto{}_A\langle x,y\rangle
+\end{aligned}
+\tag{7.1}
+\]">\[
+\begin{aligned}
+X^*\widehat\otimes_A X&amp;\longrightarrow D,
+&amp;\bar x\widehat\otimes y&amp;\longmapsto\langle x,y\rangle_D,\\
+X\widehat\otimes_D X^*&amp;\longrightarrow A,
+&amp;x\widehat\otimes\bar y&amp;\longmapsto{}_A\langle x,y\rangle
+\end{aligned}
+\tag{7.1}
+\]</span>
+are well-defined bimodule isometries. For example the squared inner-product calculation for the first uses
+<span class="math math-display" data-tex="\[
+\langle y_1,{}_A\langle x_1,x_2\rangle y_2\rangle_D
+=\langle y_1,x_1\rangle_D\langle x_2,y_2\rangle_D.
+\]">\[
+\langle y_1,{}_A\langle x_1,x_2\rangle y_2\rangle_D
+=\langle y_1,x_1\rangle_D\langle x_2,y_2\rangle_D.
+\]</span>
+Fullness makes their ranges dense and hence surjective. The corresponding product cycles are <span class="math" data-tex="\((D,\operatorname{id},0)\)">\((D,\operatorname{id},0)\)</span> and <span class="math" data-tex="\((A,\operatorname{id},0)\)">\((A,\operatorname{id},0)\)</span>, the identities of Theorem 5.2. This proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For separable source algebras and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital coefficient algebras, dilation by an auxiliary algebra <span class="math" data-tex="\(C\)">\(C\)</span> is
+<span class="math math-display" data-tex="\[
+\tau_C(E,\phi,F)
+=(E\widehat\otimes C,\ \phi\widehat\otimes1,\
+F\widehat\otimes1).
+\]">\[
+\tau_C(E,\phi,F)
+=(E\widehat\otimes C,\ \phi\widehat\otimes1,\
+F\widehat\otimes1).
+\]</span>
+The auxiliary algebra must be <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital to guarantee countable generation of this displayed module. Compact defects are checked after multiplying by <span class="math" data-tex="\(a\widehat\otimes c\)">\(a\widehat\otimes c\)</span>: they are original compact operators tensored with multiplication by <span class="math" data-tex="\(c\in\mathcal K(C)\)">\(c\in\mathcal K(C)\)</span>. The same construction over an interval shows homotopy invariance.</p>
+<p>Thus for <span class="math" data-tex="\(x\in KK(A_1,B_1)\)">\(x\in KK(A_1,B_1)\)</span> and <span class="math" data-tex="\(y\in KK(A_2,B_2)\)">\(y\in KK(A_2,B_2)\)</span> we define the <strong>external product</strong>
+<span class="math math-display" data-tex="\[
+x\boxtimes y
+=\tau_{A_2}(x)\widehat\otimes_{B_1\widehat\otimes A_2}
+\tau_{B_1}(y)
+\in KK(A_1\widehat\otimes A_2,B_1\widehat\otimes B_2).
+\tag{7.2}
+\]">\[
+x\boxtimes y
+=\tau_{A_2}(x)\widehat\otimes_{B_1\widehat\otimes A_2}
+\tau_{B_1}(y)
+\in KK(A_1\widehat\otimes A_2,B_1\widehat\otimes B_2).
+\tag{7.2}
+\]</span>
+The second dilation places <span class="math" data-tex="\(B_1\)">\(B_1\)</span> on the left, with the graded flip used to order its factors. Countable generation and the intermediate <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unitality hold under the stated hypotheses. Theorem 4.2 makes (7.2) bilinear and well-defined. Its associativity and graded symmetry will follow in the next lesson from the internal product.</p>
+<p>Coefficient Morita reduction is compatible with this construction directly, without invoking associativity. If <span class="math" data-tex="\(Y\)">\(Y\)</span> is a compact-left correspondence and <span class="math" data-tex="\(F\)">\(F\)</span> is a product operator, <span class="math" data-tex="\(F\widehat\otimes1\)">\(F\widehat\otimes1\)</span> satisfies the same product axioms after tensoring the coefficient modules with <span class="math" data-tex="\(Y\)">\(Y\)</span>. Compact creation errors remain compact by the compact-left tensor rule, the canonical tensor-associating unitary identifies the creation operators, and the induced homomorphism on adjointable operators preserves quotient positivity. This also justifies using the <span class="math" data-tex="\(C_2\)">\(C_2\)</span>-<span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> matrix correspondence to express the product of two odd classes as an even cycle.</p>
+<h2 id="8-the-two-circle-classes">8. The two circle classes</h2>
+<p>Let <span class="math" data-tex="\(e_n(z)=z^n\)">\(e_n(z)=z^n\)</span> be the Fourier basis of <span class="math" data-tex="\(L^2(\mathbb T)\)">\(L^2(\mathbb T)\)</span>, and let the odd circle cycle have operator
+<span class="math math-display" data-tex="\[
+F_{\mathbb T}e_n=f(n)e_n,\qquad
+f(n)=\frac{n}{\sqrt{1+n^2}}.
+\tag{8.1}
+\]">\[
+F_{\mathbb T}e_n=f(n)e_n,\qquad
+f(n)=\frac{n}{\sqrt{1+n^2}}.
+\tag{8.1}
+\]</span>
+This is the bounded transform of <span class="math" data-tex="\(-i\,d/d\theta\)">\(-i\,d/d\theta\)</span>. Multiplication by <span class="math" data-tex="\(z\)">\(z\)</span> is the bilateral shift, and its commutator with (8.1) is compact because <span class="math" data-tex="\(f(n+1)-f(n)\to0\)">\(f(n+1)-f(n)\to0\)</span> at both ends. Laurent-polynomial approximation gives compact commutators for all continuous functions.</p>
+<p><strong>Proposition 8.1 (the torus product).</strong> With the order of the two circle factors fixed, their external product is the even cycle on
+<span class="math math-display" data-tex="\[
+H=\ell^2(\mathbb Z^2)\otimes\mathbb C^2,\qquad
+\Gamma=\sigma_3,
+\]">\[
+H=\ell^2(\mathbb Z^2)\otimes\mathbb C^2,\qquad
+\Gamma=\sigma_3,
+\]</span>
+with multiplication representation of <span class="math" data-tex="\(C(\mathbb T^2)\)">\(C(\mathbb T^2)\)</span> and
+<span class="math math-display" data-tex="\[
+F e_{n,m}
+=\frac{n\sigma_1-m\sigma_2}{\sqrt{1+n^2+m^2}}e_{n,m}.
+\tag{8.2}
+\]">\[
+F e_{n,m}
+=\frac{n\sigma_1-m\sigma_2}{\sqrt{1+n^2+m^2}}e_{n,m}.
+\tag{8.2}
+\]</span>
+Here
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma_1=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
+\sigma_2=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},\\
+\sigma_3=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sigma_1=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
+\sigma_2=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},\\
+\sigma_3=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> In the Clifford model for the product, take
+<span class="math math-display" data-tex="\[
+E_1=\ell^2(\mathbb Z)\widehat\otimes C(\mathbb T)
+\widehat\otimes C_1,\qquad
+F_1=f(n)\varepsilon.
+\]">\[
+E_1=\ell^2(\mathbb Z)\widehat\otimes C(\mathbb T)
+\widehat\otimes C_1,\qquad
+F_1=f(n)\varepsilon.
+\]</span>
+The first source circle acts by shifting <span class="math" data-tex="\(n\)">\(n\)</span>; the second acts on the coefficient <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. After the <span class="math" data-tex="\(C_2\)">\(C_2\)</span> matrix correspondence, the second cycle is on
+<span class="math" data-tex="\(\ell^2(\mathbb Z)\otimes\mathbb C^2\)">\(\ell^2(\mathbb Z)\otimes\mathbb C^2\)</span>, with
+<span class="math math-display" data-tex="\[
+\psi(g\widehat\otimes\varepsilon^r)=M_g\sigma_1^r,
+\qquad F_2=-f(m)\sigma_2,\quad r=0,1.
+\tag{8.3}
+\]">\[
+\psi(g\widehat\otimes\varepsilon^r)=M_g\sigma_1^r,
+\qquad F_2=-f(m)\sigma_2,\quad r=0,1.
+\tag{8.3}
+\]</span>
+Here the odd product uses right Clifford dilation of the second cycle. Its coefficient generators are ordered as the second cycle's original generator, followed by the auxiliary generator supplied by the first cycle. We represent these by <span class="math" data-tex="\(-\sigma_2,\sigma_1\)">\(-\sigma_2,\sigma_1\)</span>, respectively. Their chirality is
+<span class="math" data-tex="\((-i)(-\sigma_2)\sigma_1=\sigma_3\)">\((-i)(-\sigma_2)\sigma_1=\sigma_3\)</span>, agreeing with the chosen grading. This identification is an even unitary conjugate of the usual ordered pair <span class="math" data-tex="\(\sigma_1,\sigma_2\)">\(\sigma_1,\sigma_2\)</span>. It fixes the minus sign in (8.2) and (8.3), and hence the orientation of the product.</p>
+<p>These are valid graded cycles by the circle compactness calculation and
+<span class="math" data-tex="\(\sigma_1\sigma_2=-\sigma_2\sigma_1\)">\(\sigma_1\sigma_2=-\sigma_2\sigma_1\)</span>. Their tensor module is <span class="math" data-tex="\(H\)">\(H\)</span>, and
+<span class="math" data-tex="\(S=F_1\widehat\otimes1=f(n)\sigma_1\)">\(S=F_1\widehat\otimes1=f(n)\sigma_1\)</span>.</p>
+<p>The operator (8.2) is odd and self-adjoint. Its square defect is
+<span class="math math-display" data-tex="\[
+F^2-1=-\frac{1}{1+n^2+m^2}1_2,
+\]">\[
+F^2-1=-\frac{1}{1+n^2+m^2}1_2,
+\]</span>
+a compact diagonal operator: outside any finite lattice set its entries tend uniformly to zero. The two coordinate shifts have compact commutators with <span class="math" data-tex="\(F\)">\(F\)</span>. Indeed the gradient of
+<span class="math" data-tex="\((x,y)\mapsto(x\sigma_1-y\sigma_2)/\sqrt{1+x^2+y^2}\)">\((x,y)\mapsto(x\sigma_1-y\sigma_2)/\sqrt{1+x^2+y^2}\)</span>
+has norm bounded by <span class="math" data-tex="\(C/\sqrt{1+x^2+y^2}\)">\(C/\sqrt{1+x^2+y^2}\)</span>; finite differences in either coordinate tend to zero at infinity. Laurent-polynomial approximation again proves all source commutators compact.</p>
+<p>For the connection condition first take a vector
+<span class="math" data-tex="\(x=e_n\widehat\otimes g\widehat\otimes\varepsilon^r\)">\(x=e_n\widehat\otimes g\widehat\otimes\varepsilon^r\)</span>.
+Its creation operator is <span class="math" data-tex="\(J_nM_g\sigma_1^r\)">\(J_nM_g\sigma_1^r\)</span>, where <span class="math" data-tex="\(J_n\)">\(J_n\)</span> embeds the second Fourier space at the fixed first coordinate <span class="math" data-tex="\(n\)">\(n\)</span>. At this fixed coordinate,
+<span class="math math-display" data-tex="\[
+\left\|
+\frac{n\sigma_1-m\sigma_2}{\sqrt{1+n^2+m^2}}
++f(m)\sigma_2
+\right\|\longrightarrow0
+\quad(|m|\longrightarrow\infty).
+\tag{8.4}
+\]">\[
+\left\|
+\frac{n\sigma_1-m\sigma_2}{\sqrt{1+n^2+m^2}}
++f(m)\sigma_2
+\right\|\longrightarrow0
+\quad(|m|\longrightarrow\infty).
+\tag{8.4}
+\]</span>
+Thus the difference times <span class="math" data-tex="\(J_n\)">\(J_n\)</span> is compact. Move <span class="math" data-tex="\(\sigma_2\)">\(\sigma_2\)</span> across <span class="math" data-tex="\(\sigma_1^r\)">\(\sigma_1^r\)</span>, giving the sign <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span>, and move <span class="math" data-tex="\(f(m)\)">\(f(m)\)</span> across <span class="math" data-tex="\(M_g\)">\(M_g\)</span>, giving the already proved compact circle commutator. These are exactly the two terms of the first creation error. Self-adjointness gives the adjoint condition. Finite sums of these vectors are dense in <span class="math" data-tex="\(E_1\)">\(E_1\)</span>, so the norm-closed connection condition holds for every vector.</p>
+<p>Finally the positivity is particularly simple:
+<span class="math math-display" data-tex="\[
+[S,F]_{\mathrm{gr}}
+=\frac{2n^2}{\sqrt{1+n^2}\sqrt{1+n^2+m^2}}1_2\geq0.
+\tag{8.5}
+\]">\[
+[S,F]_{\mathrm{gr}}
+=\frac{2n^2}{\sqrt{1+n^2}\sqrt{1+n^2+m^2}}1_2\geq0.
+\tag{8.5}
+\]</span>
+Sandwiching this positive operator by any <span class="math" data-tex="\(\phi(a)\)">\(\phi(a)\)</span> stays positive. All three product axioms hold, and uniqueness proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The untwisted scalar index of (8.2) is zero: only the zero Fourier mode lies in the kernel, with one vector in each parity. This does not make its <span class="math" data-tex="\(C(\mathbb T^2)\)">\(C(\mathbb T^2)\)</span>-homology class zero. A bundle test supplies more information than the scalar test.</p>
+<p>The simpler expression <span class="math" data-tex="\(f(n)\sigma_1-
+\sqrt{1-f(n)^2}\,f(m)\sigma_2\)">\(f(n)\sigma_1-
+\sqrt{1-f(n)^2}\,f(m)\sigma_2\)</span> illustrates the hypothesis in Theorem 6.1. Its commutator with the first coordinate shift does not tend to zero when <span class="math" data-tex="\(n\)">\(n\)</span> is fixed and <span class="math" data-tex="\(|m|\to\infty\)">\(|m|\to\infty\)</span>. Hence it cannot simply replace (8.2). A formula for the operator still needs the representation-commutator test.</p>
+<h2 id="9-bundles-and-twisted-dirac-operators">9. Bundles and twisted Dirac operators</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a closed even-dimensional spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> manifold with graded spinor bundle <span class="math" data-tex="\(S_M\)">\(S_M\)</span>, and let <span class="math" data-tex="\(D_M\)">\(D_M\)</span> be its self-adjoint Dirac operator with domain <span class="math" data-tex="\(H^1(M,S_M)\)">\(H^1(M,S_M)\)</span>. Let <span class="math" data-tex="\(V\)">\(V\)</span> be a smooth Hermitian vector bundle with a Hermitian connection. The section module <span class="math" data-tex="\(\Gamma(V)\)">\(\Gamma(V)\)</span> is a finitely generated projective <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span>-module, concentrated in even degree. Pointwise multiplication gives the cycle
+<span class="math math-display" data-tex="\[
+[[V]]=[(\Gamma(V),\lambda,0)]\in KK(C(M),C(M)).
+\]">\[
+[[V]]=[(\Gamma(V),\lambda,0)]\in KK(C(M),C(M)).
+\]</span>
+Its scalar pullback is the K-theory class <span class="math" data-tex="\([V]\in KK(\mathbb C,C(M))\)">\([V]\in KK(\mathbb C,C(M))\)</span>.</p>
+<p>We will use the compact-resolvent and self-adjointness assertions for closed-manifold Dirac operators proved in Corollary 4.2 of <em>Fredholm modules and analytic K-homology</em>. The analytic index of the bounded transform is the Sobolev Dirac index, by Theorem 5.2 of <em>The index pairing between K-theory and K-homology</em>.</p>
+<p><strong>Lemma 9.1 (bounded intertwining and transforms).</strong> Suppose <span class="math" data-tex="\(D,D&#x27;\)">\(D,D&#x27;\)</span> are self-adjoint operators with compact resolvents on two Hilbert spaces. Let <span class="math" data-tex="\(T\)">\(T\)</span> be bounded, map the domain of <span class="math" data-tex="\(D\)">\(D\)</span> into that of <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span>, and satisfy
+<span class="math math-display" data-tex="\[
+D&#x27;T-TD=C
+\]">\[
+D&#x27;T-TD=C
+\]</span>
+there, for a bounded operator <span class="math" data-tex="\(C\)">\(C\)</span>. Then, for <span class="math" data-tex="\(b(t)=t/\sqrt{1+t^2}\)">\(b(t)=t/\sqrt{1+t^2}\)</span>,
+<span class="math math-display" data-tex="\[
+b(D&#x27;)T-Tb(D)\text{ is compact}.
+\tag{9.1}
+\]">\[
+b(D&#x27;)T-Tb(D)\text{ is compact}.
+\tag{9.1}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\alpha=\sqrt{1+s^2}\)">\(\alpha=\sqrt{1+s^2}\)</span>, the domain assumption gives the resolvent identity
+<span class="math math-display" data-tex="\[
+(D&#x27;\pm i\alpha)^{-1}T-T(D\pm i\alpha)^{-1}
+=-(D&#x27;\pm i\alpha)^{-1}C(D\pm i\alpha)^{-1}.
+\tag{9.2}
+\]">\[
+(D&#x27;\pm i\alpha)^{-1}T-T(D\pm i\alpha)^{-1}
+=-(D&#x27;\pm i\alpha)^{-1}C(D\pm i\alpha)^{-1}.
+\tag{9.2}
+\]</span>
+Every right side is compact and has norm at most <span class="math" data-tex="\(\|C\|/(1+s^2)\)">\(\|C\|/(1+s^2)\)</span>. Use
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b(D)=\frac2\pi\int_0^\infty D(D^2+1+s^2)^{-1}\,ds,\\
+D(D^2+\alpha^2)^{-1}
+=\frac12\bigl((D-i\alpha)^{-1}+(D+i\alpha)^{-1}\bigr).
+\end{gathered}
+\tag{9.3}
+\]">\[
+\begin{gathered}
+b(D)=\frac2\pi\int_0^\infty D(D^2+1+s^2)^{-1}\,ds,\\
+D(D^2+\alpha^2)^{-1}
+=\frac12\bigl((D-i\alpha)^{-1}+(D+i\alpha)^{-1}\bigr).
+\end{gathered}
+\tag{9.3}
+\]</span>
+The individual truncated integrals converge strongly, as follows from the scalar integral and bounded spectral calculus. Their intertwined difference, by (9.2), converges in norm to a compact operator, since
+<span class="math" data-tex="\(\int_0^\infty(1+s^2)^{-1}ds&lt;\infty\)">\(\int_0^\infty(1+s^2)^{-1}ds&lt;\infty\)</span>. Its strong limit is the difference in (9.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 9.2 (twisting is the Kasparov product).</strong> If <span class="math" data-tex="\(D_V\)">\(D_V\)</span> is the Dirac operator on <span class="math" data-tex="\(S_M\otimes V\)">\(S_M\otimes V\)</span> for the tensor connection, then
+<span class="math math-display" data-tex="\[
+[[V]]\widehat\otimes_{C(M)}[D_M]=[D_V].
+\tag{9.4}
+\]">\[
+[[V]]\widehat\otimes_{C(M)}[D_M]=[D_V].
+\tag{9.4}
+\]</span>
+Also
+<span class="math math-display" data-tex="\[
+[V]\widehat\otimes_{C(M)}[D_M]
+=\operatorname{index}D_V^+\in KK(\mathbb C,\mathbb C)=\mathbb Z.
+\tag{9.5}
+\]">\[
+[V]\widehat\otimes_{C(M)}[D_M]
+=\operatorname{index}D_V^+\in KK(\mathbb C,\mathbb C)=\mathbb Z.
+\tag{9.5}
+\]</span></p>
+<p><strong>Proof.</strong> The map
+<span class="math math-display" data-tex="\[
+\Gamma(V)\widehat\otimes_{C(M)}L^2(M,S_M)
+\longrightarrow L^2(M,S_M\otimes V)
+\]">\[
+\Gamma(V)\widehat\otimes_{C(M)}L^2(M,S_M)
+\longrightarrow L^2(M,S_M\otimes V)
+\]</span>
+given by pointwise tensoring is an isometry by integration of the fiber inner products. Its range is dense: use finitely many local frames, a partition of unity and density of smooth spinor sections. Hence it is unitary.</p>
+<p>For a smooth section <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span>, creation <span class="math" data-tex="\(T_v\)">\(T_v\)</span> maps <span class="math" data-tex="\(H^1\)">\(H^1\)</span> to <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, and the tensor connection formula gives
+<span class="math math-display" data-tex="\[
+D_VT_v-T_vD_M
+=\sum_j c(e_j)\otimes\nabla^V_{e_j}v.
+\tag{9.6}
+\]">\[
+D_VT_v-T_vD_M
+=\sum_j c(e_j)\otimes\nabla^V_{e_j}v.
+\tag{9.6}
+\]</span>
+The right side is a smooth bundle homomorphism on a compact manifold, hence bounded on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Lemma 9.1 proves that <span class="math" data-tex="\(b(D_V)\)">\(b(D_V)\)</span> is a <span class="math" data-tex="\(b(D_M)\)">\(b(D_M)\)</span>-connection for every smooth <span class="math" data-tex="\(v\)">\(v\)</span>. Smooth sections are dense in <span class="math" data-tex="\(\Gamma(V)\)">\(\Gamma(V)\)</span> in the uniform norm; creation is norm-continuous in that norm. Thus the connection property holds for all sections, and self-adjointness gives its second condition.</p>
+<p>Ellipticity supplies the remaining cycle conditions for <span class="math" data-tex="\(b(D_V)\)">\(b(D_V)\)</span>. Positivity is zero because the first operator is zero. Theorem 4.1 proves (9.4).</p>
+<p>For (9.5) use the same tensor product and operator, with scalar first representation. It is a product by the same connection proof. The scalar Fredholm calculation of the cycle lesson makes its class the even-kernel dimension minus the odd-kernel dimension. The bounded-transform domain calculation in the index-pairing lesson identifies this with <span class="math" data-tex="\(\operatorname{index}D_V^+\)">\(\operatorname{index}D_V^+\)</span>. This proves the integer formula without an associativity argument or a topological index theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A Grassmann connection gives a second concrete representative. Choose a smooth isometric embedding <span class="math" data-tex="\(V\subset M\times\mathbb C^N\)">\(V\subset M\times\mathbb C^N\)</span>, with smooth projection <span class="math" data-tex="\(p\)">\(p\)</span>. The operator
+<span class="math math-display" data-tex="\[
+p\,b(D_M)^{\oplus N}p
+\quad\text{on }pL^2(M,S_M)^{\oplus N}
+\tag{9.7}
+\]">\[
+p\,b(D_M)^{\oplus N}p
+\quad\text{on }pL^2(M,S_M)^{\oplus N}
+\tag{9.7}
+\]</span>
+is a connection and a cycle. Its representation is compact on the first projective module, and its positivity condition is again zero. It has the same class as the twisted Dirac transform by the product uniqueness theorem. Thus the choice of embedding and the choice of connection on <span class="math" data-tex="\(V\)">\(V\)</span> do not change the class.</p>
+<h2 id="10-exercises">10. Exercises</h2>
+<p><strong>10.1. Exact tensoring.</strong> Suppose a homogeneous <span class="math" data-tex="\(F_2\)">\(F_2\)</span> graded commutes exactly with <span class="math" data-tex="\(\psi(D)\)">\(\psi(D)\)</span>. Prove that <span class="math" data-tex="\(1\widehat\otimes F_2\)">\(1\widehat\otimes F_2\)</span> is well-defined on the interior tensor product and is an <span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection.</p>
+<p><strong>10.2. A projective Grassmann connection.</strong> Let <span class="math" data-tex="\(E_1=pD^N\)">\(E_1=pD^N\)</span>, for an even projection <span class="math" data-tex="\(p\)">\(p\)</span> in the graded matrix algebra over <span class="math" data-tex="\(D\)">\(D\)</span>. Write the Grassmann connection explicitly and prove both creation conditions. If the first representation is compact, prove that it is already a product operator with first operator zero.</p>
+<p><strong>10.3. A homomorphism on the right.</strong> Verify the connection, cycle and positivity conditions for
+<span class="math" data-tex="\(F_1\widehat\otimes1\)">\(F_1\widehat\otimes1\)</span> in the product with <span class="math" data-tex="\((B,g,0)\)">\((B,g,0)\)</span>. Explain the countability qualification when <span class="math" data-tex="\(B\)">\(B\)</span> is not <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital.</p>
+<p><strong>10.4. Two odd circle classes.</strong> Construct their product as an even cycle using <span class="math" data-tex="\(C_1\widehat\otimes C_1\cong M_2\)">\(C_1\widehat\otimes C_1\cong M_2\)</span>. Prove compactness of its source commutators, both connection conditions and positivity, with the signs fixed. Compute its scalar index.</p>
+<h2 id="11-solutions">11. Solutions</h2>
+<p><strong>Solution to 10.1.</strong> On homogeneous elementary tensors set
+<span class="math math-display" data-tex="\[
+K(x\widehat\otimes y)=(-1)^{|F_2||x|}
+x\widehat\otimes F_2y.
+\]">\[
+K(x\widehat\otimes y)=(-1)^{|F_2||x|}
+x\widehat\otimes F_2y.
+\]</span>
+For homogeneous <span class="math" data-tex="\(d\)">\(d\)</span>, applying the formula to <span class="math" data-tex="\(xd\widehat\otimes y\)">\(xd\widehat\otimes y\)</span> gives the sign <span class="math" data-tex="\((-1)^{|F_2|(|x|+|d|)}\)">\((-1)^{|F_2|(|x|+|d|)}\)</span>. Applying it to <span class="math" data-tex="\(x\widehat\otimes\psi(d)y\)">\(x\widehat\otimes\psi(d)y\)</span> gives the same result because
+<span class="math" data-tex="\(F_2\psi(d)=(-1)^{|F_2||d|}\psi(d)F_2\)">\(F_2\psi(d)=(-1)^{|F_2||d|}\psi(d)F_2\)</span>. Thus it respects balancing.</p>
+<p>To see boundedness without a formal manipulation of null vectors, extend <span class="math" data-tex="\(\psi\)">\(\psi\)</span> to <span class="math" data-tex="\(D^+\)">\(D^+\)</span> and use the standard-module operator (1.6). Exact commutation implies that operator commutes with the even stabilized projection <span class="math" data-tex="\(P\)">\(P\)</span>, by first checking finite matrix coefficients and then strong convergence of the matrix truncations on vectors. Its restriction is the formula above, has norm at most <span class="math" data-tex="\(\|F_2\|\)">\(\|F_2\|\)</span>, and has adjoint given by the same formula with <span class="math" data-tex="\(F_2^*\)">\(F_2^*\)</span>. Finally
+<span class="math math-display" data-tex="\[
+KT_x=(-1)^{|F_2||x|}T_xF_2
+\]">\[
+KT_x=(-1)^{|F_2||x|}T_xF_2
+\]</span>
+exactly; the adjoint-side identity is also exact. Thus both creation errors are zero.</p>
+<p><strong>Solution to 10.2.</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be the signed diagonal amplification (1.6) on the finite free module tensor <span class="math" data-tex="\(E_2\)">\(E_2\)</span>, and let <span class="math" data-tex="\(\Pi=p\widehat\otimes1\)">\(\Pi=p\widehat\otimes1\)</span>. Set <span class="math" data-tex="\(G=\Pi C\Pi\)">\(G=\Pi C\Pi\)</span> on <span class="math" data-tex="\(\Pi(E_2^{\oplus N})\)">\(\Pi(E_2^{\oplus N})\)</span>, with the appropriate coordinate parities. For a homogeneous <span class="math" data-tex="\(x=(x_j)\)">\(x=(x_j)\)</span> in <span class="math" data-tex="\(pD^N\)">\(pD^N\)</span>, <span class="math" data-tex="\(T_x\)">\(T_x\)</span> is the column of the represented coordinates, and <span class="math" data-tex="\(\Pi T_x=T_x\)">\(\Pi T_x=T_x\)</span>. Hence
+<span class="math math-display" data-tex="\[
+GT_x-(-1)^{|F_2||x|}T_xF_2
+=\Pi\bigl(CT_x-(-1)^{|F_2||x|}T_xF_2\bigr).
+\]">\[
+GT_x-(-1)^{|F_2||x|}T_xF_2
+=\Pi\bigl(CT_x-(-1)^{|F_2||x|}T_xF_2\bigr).
+\]</span>
+Its entries are compact commutators of <span class="math" data-tex="\(F_2\)">\(F_2\)</span> with <span class="math" data-tex="\(\psi(x_j)\)">\(\psi(x_j)\)</span>. This is a finite compact column. Taking adjoints proves the second condition when <span class="math" data-tex="\(F_2\)">\(F_2\)</span> is self-adjoint; in general apply the same finite row computation using the second connection condition for <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>For a compact first representation, every <span class="math" data-tex="\(\phi(a)\)">\(\phi(a)\)</span> lies in the image of <span class="math" data-tex="\(\mathcal K(pD^N)\)">\(\mathcal K(pD^N)\)</span>. The defect <span class="math" data-tex="\(G^2-1\)">\(G^2-1\)</span> is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection, so its product with that image is compact. Lemma 1.1 gives the compact representation commutators; the adjoint defect is handled by adjoints or by choosing self-adjoint <span class="math" data-tex="\(G\)">\(G\)</span>. The first operator is zero, making the positivity sandwich zero. Thus this connection is a product without an additional cutoff partition.</p>
+<p><strong>Solution to 10.3.</strong> On <span class="math" data-tex="\(E=E_1\widehat\otimes_g B\)">\(E=E_1\widehat\otimes_g B\)</span>, the creation operator from <span class="math" data-tex="\(B\)">\(B\)</span> has
+<span class="math" data-tex="\(T_x^*T_x=g(\langle x,x\rangle)\in\mathcal K(B)\)">\(T_x^*T_x=g(\langle x,x\rangle)\in\mathcal K(B)\)</span>. The <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> compactness test makes <span class="math" data-tex="\(T_x\)">\(T_x\)</span> compact. Therefore <span class="math" data-tex="\(ST_x\)">\(ST_x\)</span> and <span class="math" data-tex="\(T_x^*S\)">\(T_x^*S\)</span> are compact for <span class="math" data-tex="\(S=F_1\widehat\otimes1\)">\(S=F_1\widehat\otimes1\)</span>, proving the <span class="math" data-tex="\(0\)">\(0\)</span>-connection condition. Tensoring a compact rank-one operator on <span class="math" data-tex="\(E_1\)">\(E_1\)</span> gives <span class="math" data-tex="\(T_xT_z^*\)">\(T_xT_z^*\)</span>, so all three input defects descend to compact defects. With normalized self-adjoint <span class="math" data-tex="\(F_1\)">\(F_1\)</span>, the positivity expression is <span class="math" data-tex="\(2\phi(a)S^2\phi(a)^*\)">\(2\phi(a)S^2\phi(a)^*\)</span>, positive already before quotienting.</p>
+<p>The full module <span class="math" data-tex="\(B\)">\(B\)</span> is countably generated exactly when it is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. If this fails and <span class="math" data-tex="\(D\)">\(D\)</span> is separable, replace it by <span class="math" data-tex="\(B_g=\overline{g(D)B}\)">\(B_g=\overline{g(D)B}\)</span>, as in Section 5. On this module
+<span class="math" data-tex="\(g(\langle x,x\rangle)\)">\(g(\langle x,x\rangle)\)</span> still acts compactly, and the approximate identity of <span class="math" data-tex="\(D\)">\(D\)</span> makes it countably generated. The tensor product and resulting pushforward class agree with the usual coefficient tensor construction.</p>
+<p><strong>Solution to 10.4.</strong> Use the Pauli matrices in Section 8 as the two odd Clifford generators and <span class="math" data-tex="\(\sigma_3\)">\(\sigma_3\)</span> as the grading. The tensor module is
+<span class="math" data-tex="\(\ell^2(\mathbb Z^2)\otimes\mathbb C^2\)">\(\ell^2(\mathbb Z^2)\otimes\mathbb C^2\)</span>, with operator (8.2). Its square is <span class="math" data-tex="\((n^2+m^2)/(1+n^2+m^2)\)">\((n^2+m^2)/(1+n^2+m^2)\)</span>, so the defect tends to zero outside finite lattice sets. Each source coordinate shift has a commutator whose entries are finite differences of the coefficient vector in (8.2), bounded by <span class="math" data-tex="\(C/\sqrt{1+n^2+m^2}\)">\(C/\sqrt{1+n^2+m^2}\)</span> at infinity. They are compact; uniform Laurent-polynomial approximation handles all source functions.</p>
+<p>For the dense creation vectors <span class="math" data-tex="\(e_n\widehat\otimes g\widehat\otimes\varepsilon^r\)">\(e_n\widehat\otimes g\widehat\otimes\varepsilon^r\)</span>, the operators are <span class="math" data-tex="\(J_nM_g\sigma_1^r\)">\(J_nM_g\sigma_1^r\)</span>. Equation (8.4) supplies the compact fixed-coordinate error, the original circle commutator supplies the compact error from <span class="math" data-tex="\(M_g\)">\(M_g\)</span>, and
+<span class="math" data-tex="\(\sigma_2\sigma_1^r=(-1)^r\sigma_1^r\sigma_2\)">\(\sigma_2\sigma_1^r=(-1)^r\sigma_1^r\sigma_2\)</span> supplies exactly the creation sign. Taking adjoints gives the second condition. Norm approximation handles arbitrary creation vectors. The positivity bracket is (8.5), positive at every lattice point. The zero mode has one even and one odd vector, while no other mode has a kernel. Hence the scalar index is <span class="math" data-tex="\(1-1=0\)">\(1-1=0\)</span>. This completes every product axiom and the scalar calculation.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The product's associativity, its naturality for general changes of the intermediate algebra, graded symmetry of external products and the comparison <span class="math" data-tex="\(KK_h=KK_{\mathrm{oh}}\)">\(KK_h=KK_{\mathrm{oh}}\)</span> are theorems of <em>Homotopy, associativity, the index pairing and KK-equivalence</em>. The present construction and examples do not assume them.</p>
+<p>The elementary module calculus uses the programme's Hilbert-module prerequisites: <em>Tensor products of Hilbert modules and C*-correspondences</em> in <em>Hilbert C*-modules and Morita equivalence</em> gives positivity and completion of the interior tensor product; <a href="KT-KK-05.html#lemma-2-0-compact-module-operators-and-their-multipliers">Lesson 05, Lemma 2.0</a> proves <span class="math" data-tex="\(\mathcal L(E)=M(\mathcal K(E))\)">\(\mathcal L(E)=M(\mathcal K(E))\)</span> and the equivalence of countable generation with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unitality of <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>. Graded stabilization and the compact-left tensor rules also have complete proofs in the preceding graded lesson of this course. The closed-manifold analytic input is precisely Corollary 4.2 of the Fredholm-module lesson and Theorem 5.2 of the index-pairing lesson, both already proved there.</p>
+<p>No characteristic-class index formula, Bott equivalence, Thom isomorphism or universal coefficient theorem is used here.</p>
+<h2 id="references-and-source-credit">References and source credit</h2>
+<ul>
+<li>B. Blackadar, <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf"><em>K-Theory for Operator Algebras</em>, author-posted corrected second edition</a>. The <a href="https://www.bruceblackadar.com/mathpubs.html">author identifies this freely downloadable version</a> as a slightly corrected second edition. The source retains its author copyright and the usage terms stated on that page. Sections 18.3–18.4, printed pp. 169–175, for connections, existence, uniqueness and homomorphism cycles. The required proofs and all exercise solutions are given in this lesson and its exact preceding programme prerequisites.</li>
+</ul>
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="KT-KK-08.html">← Kasparov&#x27;s technical theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="KT-KK-10.html">Homotopy, associativity, the index pairing and KK-equivalence →</a></span></nav>
+<p class="small source-link"><a href="KT-KK-09.tex">Complete LaTeX source of this lesson</a> · <span class="unlinked">Editable source package</span></p>
+<p class="small source-link"><span class="unlinked">Complete available text as a PDF</span> · <a href="sources.html">Sources and component terms</a></p>
+</main>
+<footer class="site-footer"><p>Course text, solutions and original figures: CC0 1.0.</p></footer>
+</body>
+</html>

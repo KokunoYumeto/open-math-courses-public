@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Picard groups and Grothendieck–Lefschetz · Local cohomology, Lefschetz theorems and purity</title>
+<meta name="description" content="A lesson of the course Local cohomology, Lefschetz theorems and purity. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LCL/picard-groups-and-grothendieck-lefschetz.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Local cohomology, Lefschetz theorems and purity</a> <span aria-hidden="true">›</span> <span>Lesson 6 of 8</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="picard-groups-and-grothendieck-lefschetz">Picard groups and Grothendieck–Lefschetz</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by GPT-6.1 Sol, the AI that wrote it. Public domain (CC0).</em></p>
+<p>A line bundle can be extended through a square-zero thickening unless a degree-two cohomology class obstructs it. Degree-one cohomology controls the ambiguity. Formal algebraization then turns compatible extensions into an ordinary line bundle near the closed subscheme. A final local condition, parafactoriality, lets that bundle cross the points still missing from the neighbourhood.</p>
+<p>We use <a href="local-cohomology.html">Local cohomology</a> for the depth criterion and Hartogs extension, <a href="formal-geometry.html">Formal geometry along a closed subscheme</a> for formal bundles and their algebraization, and the omitted-point argument in <a href="lefschetz-for-finite-etale-covers.html">Lefschetz theorems for finite étale covers</a>. We assume Noetherian completion and Artin–Rees, coherent extension from quasi-compact opens, divisors on normal schemes, and the commutative-algebra theorem that finite modules over a regular local ring have finite free resolutions. The finite-resolution assertion was proved in <a href="local-duality-and-finiteness.html">Local duality and finiteness</a>, Proposition 2.5, using a Koszul resolution and minimal free resolutions. Projective-space cohomology will be the input to an explicit complete-intersection vanishing proof.</p>
+<p>The Picard group is written additively, with tensor product as addition. An element is torsion if some positive tensor power is trivial. In this lesson a <strong>complete intersection local ring</strong> means a quotient of a regular local ring by a regular sequence. The local vanishing theorem also holds when only the completion has such a presentation; we will prove that extension of scope. A projective complete intersection is defined scheme-theoretically by a homogeneous regular sequence of positive degrees. No smoothness or characteristic-zero assumption is implicit.</p>
+<h2 id="1-thickenings-and-formal-line-bundles">1. Thickenings and formal line bundles</h2>
+<p>Let <span class="math" data-tex="\(X\subset X&#x27;\)">\(X\subset X&#x27;\)</span> have square-zero ideal <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>. The underlying topological spaces agree. The sequence of abelian sheaves
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal J\xrightarrow{a\mapsto1+a}
+\mathcal O_{X&#x27;}^\times\longrightarrow\mathcal O_X^\times
+\longrightarrow1
+\tag{1.1}
+\]">\[
+0\longrightarrow\mathcal J\xrightarrow{a\mapsto1+a}
+\mathcal O_{X&#x27;}^\times\longrightarrow\mathcal O_X^\times
+\longrightarrow1
+\tag{1.1}
+\]</span>
+is exact. Indeed <span class="math" data-tex="\((1+a)(1+b)=1+a+b\)">\((1+a)(1+b)=1+a+b\)</span> because <span class="math" data-tex="\(\mathcal J^2=0\)">\(\mathcal J^2=0\)</span>, and the kernel of reduction is exactly <span class="math" data-tex="\(1+\mathcal J\)">\(1+\mathcal J\)</span>. A lift of a unit remains a unit locally: if the product with a lift of its inverse is <span class="math" data-tex="\(1+c\)">\(1+c\)</span>, then <span class="math" data-tex="\((1+c)^{-1}=1-c\)">\((1+c)^{-1}=1-c\)</span>.</p>
+<p><strong>Proposition 1.1 (first-order Picard sequence).</strong> There is a canonical exact sequence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\to H^0(X,\mathcal J)&amp;\to\Gamma(X&#x27;,\mathcal O_{X&#x27;}^\times)
+\to\Gamma(X,\mathcal O_X^\times)\\
+&amp;\to H^1(X,\mathcal J)\to\operatorname{Pic}(X&#x27;)
+\to\operatorname{Pic}(X)\to H^2(X,\mathcal J).
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+0\to H^0(X,\mathcal J)&amp;\to\Gamma(X&#x27;,\mathcal O_{X&#x27;}^\times)
+\to\Gamma(X,\mathcal O_X^\times)\\
+&amp;\to H^1(X,\mathcal J)\to\operatorname{Pic}(X&#x27;)
+\to\operatorname{Pic}(X)\to H^2(X,\mathcal J).
+\end{aligned}
+\tag{1.2}
+\]</span></p>
+<p><strong>Proof.</strong> A line bundle is described by transition units on an open cover; changing frames multiplies the transition cocycle by a coboundary. This identifies <span class="math" data-tex="\(\operatorname{Pic}(X)\)">\(\operatorname{Pic}(X)\)</span> with <span class="math" data-tex="\(H^1(X,\mathcal O_X^\times)\)">\(H^1(X,\mathcal O_X^\times)\)</span>, and similarly for <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>. Take the long exact sequence of (1.1). The boundary of a line-bundle cocycle is represented by the failure of chosen lifted transition units to satisfy the cocycle equation, now an additive <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>-valued two-cocycle. Its vanishing permits the lifted gluing. The exact sequence also identifies the ambiguity in that gluing and the role of global units. ∎</p>
+<p>This proves [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-morphisms.html#more-morphisms-lemma-picard-group-first-order-thickening">Tag 0C6R</a>]. In particular <span class="math" data-tex="\(H^2(\mathcal J)=0\)">\(H^2(\mathcal J)=0\)</span> gives surjectivity on Picard groups, while <span class="math" data-tex="\(H^1(\mathcal J)=0\)">\(H^1(\mathcal J)=0\)</span> gives injectivity and surjectivity on global units.</p>
+<p>For the formal comparison assume <span class="math" data-tex="\(X\)">\(X\)</span> is Noetherian. For an ideal <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> put <span class="math" data-tex="\(Y_n=V(\mathcal I^n)\)">\(Y_n=V(\mathcal I^n)\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. The step <span class="math" data-tex="\(Y_n\subset Y_{n+1}\)">\(Y_n\subset Y_{n+1}\)</span> has square-zero ideal
+<span class="math" data-tex="\(\mathcal I^n/\mathcal I^{n+1}\)">\(\mathcal I^n/\mathcal I^{n+1}\)</span>. If <span class="math" data-tex="\(Y\)">\(Y\)</span> is an effective Cartier divisor, this is
+<span class="math" data-tex="\(\mathcal O_Y(-nY)\)">\(\mathcal O_Y(-nY)\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\operatorname{Pic}(\widehat X_Y)\)">\(\operatorname{Pic}(\widehat X_Y)\)</span> for isomorphism classes of invertible coherent formal modules. There is always a map
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(\widehat X_Y)\longrightarrow
+\varprojlim_n\operatorname{Pic}(Y_n).
+\tag{1.3}
+\]">\[
+\operatorname{Pic}(\widehat X_Y)\longrightarrow
+\varprojlim_n\operatorname{Pic}(Y_n).
+\tag{1.3}
+\]</span>
+It is surjective: for compatible classes choose representatives successively and choose isomorphisms of each reduction with its predecessor. These choices give a formal object. Injectivity requires a compatibility check on the isomorphisms, rather than just on their classes.</p>
+<p>Here are two sufficient settings in which (1.3) is an isomorphism. First, if all
+<span class="math math-display" data-tex="\[
+H^1(Y,\mathcal I^n/\mathcal I^{n+1})=0,\qquad n\ge1,
+\tag{1.4}
+\]">\[
+H^1(Y,\mathcal I^n/\mathcal I^{n+1})=0,\qquad n\ge1,
+\tag{1.4}
+\]</span>
+then the global unit groups at consecutive levels map surjectively. Any individually chosen isomorphisms between two formal systems can then be adjusted by units successively to become compatible.</p>
+<p>Second, if every <span class="math" data-tex="\(Y_n\)">\(Y_n\)</span> is proper over a field <span class="math" data-tex="\(k\)">\(k\)</span>, the same conclusion holds even without (1.4). Their section algebras <span class="math" data-tex="\(R_n=\Gamma(Y_n,\mathcal O_{Y_n})\)">\(R_n=\Gamma(Y_n,\mathcal O_{Y_n})\)</span> are finite-dimensional over <span class="math" data-tex="\(k\)">\(k\)</span>. At any fixed level the images of <span class="math" data-tex="\(R_m\to R_n\)">\(R_m\to R_n\)</span> form a descending chain of finite-dimensional subspaces and stabilize. Units of a finite-dimensional algebra map onto the units of each quotient: decompose its Artinian ring into local factors, and choose unit lifts in every retained factor and the unit <span class="math" data-tex="\(1\)">\(1\)</span> in omitted factors. Consequently the images of <span class="math" data-tex="\(R_m^\times\to R_n^\times\)">\(R_m^\times\to R_n^\times\)</span> stabilize too. This is the Mittag–Leffler condition on the automorphism groups of any line bundle. It makes compatible adjustments possible: after passing to stable images, choose a correction at the first level and lift it recursively. Equivalently, the usual countable inverse-limit obstruction <span class="math" data-tex="\(\varprojlim^1 R_n^\times\)">\(\varprojlim^1 R_n^\times\)</span> vanishes. This proves injectivity of (1.3).</p>
+<p>If both <span class="math" data-tex="\(H^1\)">\(H^1\)</span> and <span class="math" data-tex="\(H^2\)">\(H^2\)</span> of every layer vanish, (1.2) and (1.3) therefore give
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(\widehat X_Y)\simeq\operatorname{Pic}(Y).
+\tag{1.5}
+\]">\[
+\operatorname{Pic}(\widehat X_Y)\simeq\operatorname{Pic}(Y).
+\tag{1.5}
+\]</span>
+The vanishing of <span class="math" data-tex="\(H^1\)">\(H^1\)</span> also supplies the compatible units needed for this statement without properness. A bare inverse limit of Picard classes should not be identified with formal line bundles in arbitrary settings without that extra check.</p>
+<h2 id="2-torsion-in-the-local-picard-group">2. Torsion in the local Picard group</h2>
+<p>Let <span class="math" data-tex="\((A,\mathfrak m)\)">\((A,\mathfrak m)\)</span> be Noetherian local, <span class="math" data-tex="\(f\in\mathfrak m\)">\(f\in\mathfrak m\)</span> a nonzerodivisor, and set
+<span class="math math-display" data-tex="\[
+U=\operatorname{Spec}A\setminus\{\mathfrak m\},\qquad
+U_0=\operatorname{Spec}(A/fA)\setminus\{\mathfrak m\}.
+\]">\[
+U=\operatorname{Spec}A\setminus\{\mathfrak m\},\qquad
+U_0=\operatorname{Spec}(A/fA)\setminus\{\mathfrak m\}.
+\]</span>
+Assume <span class="math" data-tex="\(\operatorname{depth}A\ge3\)">\(\operatorname{depth}A\ge3\)</span>, equivalently <span class="math" data-tex="\(\operatorname{depth}(A/fA)\ge2\)">\(\operatorname{depth}(A/fA)\ge2\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> The restriction
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(U)\longrightarrow\operatorname{Pic}(U_0)
+\tag{2.1}
+\]">\[
+\operatorname{Pic}(U)\longrightarrow\operatorname{Pic}(U_0)
+\tag{2.1}
+\]</span>
+is injective on torsion.</p>
+<p>We prove this using a finite-length invariant and a finite-difference argument. This avoids imposing completeness, a dualizing complex, or invertibility of the torsion order.</p>
+<p>A <strong>coherent triple</strong> is <span class="math" data-tex="\((F,F_0,\alpha)\)">\((F,F_0,\alpha)\)</span>, with <span class="math" data-tex="\(F\)">\(F\)</span> coherent on <span class="math" data-tex="\(U\)">\(U\)</span>, multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> injective on <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(F_0\)">\(F_0\)</span> coherent on <span class="math" data-tex="\(\operatorname{Spec}(A/fA)\)">\(\operatorname{Spec}(A/fA)\)</span>, and
+<span class="math" data-tex="\(\alpha:F/fF\simeq F_0|_{U_0}\)">\(\alpha:F/fF\simeq F_0|_{U_0}\)</span>. Invertible triples have both sheaves invertible.</p>
+<p><strong>Lemma 2.2 (a finite-length invariant).</strong> Choose a finite <span class="math" data-tex="\(f\)">\(f\)</span>-torsion-free <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span> extending <span class="math" data-tex="\(F\)">\(F\)</span>, together with a map
+<span class="math math-display" data-tex="\[
+\beta:M/fM\longrightarrow N_0=\Gamma(\operatorname{Spec}(A/fA),F_0)
+\]">\[
+\beta:M/fM\longrightarrow N_0=\Gamma(\operatorname{Spec}(A/fA),F_0)
+\]</span>
+extending <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Then
+<span class="math math-display" data-tex="\[
+\chi(F,F_0,\alpha)
+=\operatorname{length}_A\operatorname{coker}\beta
+-\operatorname{length}_A\ker\beta
+\tag{2.2}
+\]">\[
+\chi(F,F_0,\alpha)
+=\operatorname{length}_A\operatorname{coker}\beta
+-\operatorname{length}_A\ker\beta
+\tag{2.2}
+\]</span>
+is defined, independent of the choice, and additive in short exact sequences of triples.</p>
+<p><strong>Proof.</strong> Begin with a finite coherent extension of <span class="math" data-tex="\(F\)">\(F\)</span> and divide out its <span class="math" data-tex="\(f\)">\(f\)</span>-power torsion, which restricts to zero. A map defined off the closed point extends after replacing the source by a sufficiently high <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-power: this is the finite-module map-extension formula [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-homs-over-open">Tag 01YB</a>], obtained by clearing denominators on a finite principal cover and applying Artin–Rees to relations. Apply it on <span class="math" data-tex="\(\operatorname{Spec}(A/fA)\)">\(\operatorname{Spec}(A/fA)\)</span>, and replace <span class="math" data-tex="\(M\)">\(M\)</span> by <span class="math" data-tex="\(\mathfrak m^cM\)">\(\mathfrak m^cM\)</span>. This gives <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Its kernel and cokernel are finite modules supported at <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, hence have finite length.</p>
+<p>Two such extensions admit a common smaller one: the identity on <span class="math" data-tex="\(F\)">\(F\)</span> extends from a high <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-power, and any difference between the two maps modulo <span class="math" data-tex="\(f\)">\(f\)</span>, being supported at the closed point, is killed by another power. The common comparison is injective, since a closed-point kernel would be killed by a power of <span class="math" data-tex="\(f\)">\(f\)</span>, while the source is <span class="math" data-tex="\(f\)">\(f\)</span>-torsion-free. Its cokernel <span class="math" data-tex="\(C\)">\(C\)</span> has finite length. Reduction modulo <span class="math" data-tex="\(f\)">\(f\)</span> gives kernel <span class="math" data-tex="\(C[f]\)">\(C[f]\)</span> and cokernel <span class="math" data-tex="\(C/fC\)">\(C/fC\)</span>. They have equal lengths, by the kernel-cokernel sequence for the endomorphism <span class="math" data-tex="\(f:C\to C\)">\(f:C\to C\)</span>. The six-term kernel-cokernel sequence for composition with <span class="math" data-tex="\(\beta\)">\(\beta\)</span> therefore leaves (2.2) unchanged.</p>
+<p>For additivity, take a finite extension <span class="math" data-tex="\(M_G\)">\(M_G\)</span> of the middle sheaf of a short exact sequence of triples. Intersect it with the first sheaf inside the pushforward from <span class="math" data-tex="\(U\)">\(U\)</span>, and take the quotient, giving finite <span class="math" data-tex="\(M_F,M_H\)">\(M_F,M_H\)</span>. All are <span class="math" data-tex="\(f\)">\(f\)</span>-torsion-free, so their sequence remains exact modulo <span class="math" data-tex="\(f\)">\(f\)</span>. The maps to <span class="math" data-tex="\(F_0,G_0,H_0\)">\(F_0,G_0,H_0\)</span> might initially fail to form a diagram only at the closed point. Replace <span class="math" data-tex="\(M_G\)">\(M_G\)</span> by a high <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-power; Artin–Rees ensures its intersection with <span class="math" data-tex="\(M_F\)">\(M_F\)</span> lies in a power killing that failure. We then have a commutative diagram of exact rows modulo <span class="math" data-tex="\(f\)">\(f\)</span>. The snake lemma and additivity of finite lengths prove additivity of (2.2). Independence permits these replacements. ∎</p>
+<p><strong>Lemma 2.3 (finite differences).</strong> For an invertible triple <span class="math" data-tex="\(T\)">\(T\)</span> and a coherent triple <span class="math" data-tex="\(C\)">\(C\)</span>, the function
+<span class="math math-display" data-tex="\[
+n\longmapsto\chi(C\otimes T^{\otimes n}),\qquad n\in\mathbb Z,
+\tag{2.3}
+\]">\[
+n\longmapsto\chi(C\otimes T^{\otimes n}),\qquad n\in\mathbb Z,
+\tag{2.3}
+\]</span>
+is a polynomial with rational coefficients.</p>
+<p><strong>Proof.</strong> Induct on the dimension of the support of the sheaf of <span class="math" data-tex="\(C\)">\(C\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>. If that sheaf is zero, its other sheaf is supported at the closed point; twisting by the locally free rank-one <span class="math" data-tex="\(F_0\)">\(F_0\)</span> does not change its finite length. Thus (2.3) is constant.</p>
+<p>Remove the closed-point torsion from <span class="math" data-tex="\(F_0\)">\(F_0\)</span>. Its contribution is constant by the preceding case and additivity, so it suffices to consider <span class="math" data-tex="\(\mathfrak m\notin\operatorname{Ass}(F_0)\)">\(\mathfrak m\notin\operatorname{Ass}(F_0)\)</span>. Choose a section <span class="math" data-tex="\(s\)">\(s\)</span> of the invertible sheaf of <span class="math" data-tex="\(T\)">\(T\)</span> nonvanishing at the finite set
+<span class="math" data-tex="\(\operatorname{Ass}(F)\cup\operatorname{Ass}(F/fF)\)">\(\operatorname{Ass}(F)\cup\operatorname{Ass}(F/fF)\)</span>. Such a section exists on a quasi-affine scheme [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/properties.html#properties-lemma-quasi-affine-invertible-nonvanishing-section">Tag 0F20</a>]. Its reduction corresponds to a section of the invertible sheaf of <span class="math" data-tex="\(T_0\)">\(T_0\)</span> on <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. That section extends over the closed point after multiplication by a high <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-power, by the map-extension formula. Choose the multiplying element outside the finitely many associated primes just used; prime avoidance permits this since they are nonmaximal. Thus <span class="math" data-tex="\(s\)">\(s\)</span> still avoids them, and it has a compatible extension <span class="math" data-tex="\(s_0\)">\(s_0\)</span>.</p>
+<p>Multiplication by <span class="math" data-tex="\((s,s_0)\)">\((s,s_0)\)</span> gives an injection
+<span class="math math-display" data-tex="\[
+0\longrightarrow C\longrightarrow C\otimes T\longrightarrow G\longrightarrow0
+\tag{2.4}
+\]">\[
+0\longrightarrow C\longrightarrow C\otimes T\longrightarrow G\longrightarrow0
+\tag{2.4}
+\]</span>
+of triples. Injectivity on <span class="math" data-tex="\(F\)">\(F\)</span> and on <span class="math" data-tex="\(F/fF\)">\(F/fF\)</span> makes <span class="math" data-tex="\(f\)">\(f\)</span> injective on the quotient; <span class="math" data-tex="\(s_0\)">\(s_0\)</span> is injective on <span class="math" data-tex="\(F_0\)">\(F_0\)</span> since it avoids its associated points on <span class="math" data-tex="\(U_0\)">\(U_0\)</span> and there is no closed-point associated point. The support of <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> has strictly smaller dimension: it contains no associated point of <span class="math" data-tex="\(F\)">\(F\)</span>, in particular none of its generic support points.</p>
+<p>Twist (2.4) by <span class="math" data-tex="\(T^n\)">\(T^n\)</span>. Additivity says the first difference of (2.3) is the corresponding polynomial for <span class="math" data-tex="\(G\)">\(G\)</span>, by induction. A polynomial in <span class="math" data-tex="\(n\)">\(n\)</span> has a polynomial discrete antiderivative, as seen by using the basis <span class="math" data-tex="\(\binom n j\)">\(\binom n j\)</span>, for which <span class="math" data-tex="\(\binom{n+1}{j+1}-\binom n{j+1}=\binom n j\)">\(\binom{n+1}{j+1}-\binom n{j+1}=\binom n j\)</span>. Subtract such an antiderivative; the remaining function has zero first difference for every integer and is constant. This proves (2.3), for negative as well as positive <span class="math" data-tex="\(n\)">\(n\)</span>. ∎</p>
+<p>These two lemmas supply the needed parts of [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-prepare-chi-triple">Tag 0F23</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-well-defined-chi-triple">Tag 0F25</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-ses-chi-triple">Tag 0F26</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-proposition-hilbert-triple">Tag 0F27</a>].</p>
+<p><strong>Lemma 2.4 (positivity for an invertible triple).</strong> For an invertible triple,
+<span class="math math-display" data-tex="\[
+\chi(L,L_0,\lambda)
+=\operatorname{length}_A\operatorname{coker}
+\bigl(\Gamma(U,L)\to\Gamma(U_0,L_0)\bigr)\ge0.
+\tag{2.5}
+\]">\[
+\chi(L,L_0,\lambda)
+=\operatorname{length}_A\operatorname{coker}
+\bigl(\Gamma(U,L)\to\Gamma(U_0,L_0)\bigr)\ge0.
+\tag{2.5}
+\]</span>
+It is zero exactly when <span class="math" data-tex="\(L\)">\(L\)</span> is trivial.</p>
+<p><strong>Proof.</strong> Depth gives <span class="math" data-tex="\(\Gamma(U,\mathcal O_U)=A\)">\(\Gamma(U,\mathcal O_U)=A\)</span> and
+<span class="math" data-tex="\(\Gamma(U_0,\mathcal O_{U_0})=A/fA\)">\(\Gamma(U_0,\mathcal O_{U_0})=A/fA\)</span>. Also <span class="math" data-tex="\(L_0\)">\(L_0\)</span> is trivial on its local affine scheme. The module <span class="math" data-tex="\(M=\Gamma(U,L)\)">\(M=\Gamma(U,L)\)</span> is finite. Indeed quasi-affineness gives a finite surjection <span class="math" data-tex="\(\mathcal O_U^r\to L^\vee\)">\(\mathcal O_U^r\to L^\vee\)</span>; dualizing gives an injection <span class="math" data-tex="\(L\to\mathcal O_U^r\)">\(L\to\mathcal O_U^r\)</span>, so <span class="math" data-tex="\(M\subset A^r\)">\(M\subset A^r\)</span> is finite. Its associated sheaf restricts to <span class="math" data-tex="\(L\)">\(L\)</span>, by quasi-coherent pushforward on this open. The support sequence and the equality <span class="math" data-tex="\(M=\Gamma(U,L)\)">\(M=\Gamma(U,L)\)</span> give <span class="math" data-tex="\(H^0_{\mathfrak m}(M)=H^1_{\mathfrak m}(M)=0\)">\(H^0_{\mathfrak m}(M)=H^1_{\mathfrak m}(M)=0\)</span>, hence depth at least two. Multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> is injective on <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>The map <span class="math" data-tex="\(M/fM\to A/fA\)">\(M/fM\to A/fA\)</span> is an isomorphism off the closed point. Its kernel has finite length and is zero because <span class="math" data-tex="\(\operatorname{depth}(M/fM)\ge1\)">\(\operatorname{depth}(M/fM)\ge1\)</span>. Consequently (2.2) is the cokernel length in (2.5).</p>
+<p>If this length is zero, <span class="math" data-tex="\(M/fM\simeq A/fA\)">\(M/fM\simeq A/fA\)</span>. Lift its generator to <span class="math" data-tex="\(M\)">\(M\)</span>. Nakayama gives a surjection <span class="math" data-tex="\(A\to M\)">\(A\to M\)</span>. Because <span class="math" data-tex="\(f\)">\(f\)</span> is regular on <span class="math" data-tex="\(M\)">\(M\)</span>, reduction of its finite kernel <span class="math" data-tex="\(K\)">\(K\)</span> gives <span class="math" data-tex="\(K/fK=0\)">\(K/fK=0\)</span>; Nakayama gives <span class="math" data-tex="\(K=0\)">\(K=0\)</span>. Thus <span class="math" data-tex="\(M\simeq A\)">\(M\simeq A\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> is trivial. Conversely if <span class="math" data-tex="\(L\)">\(L\)</span> is trivial, <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> differs from its ordinary trivialization by a unit of <span class="math" data-tex="\(A/fA\)">\(A/fA\)</span>, which lifts to a unit of the local ring <span class="math" data-tex="\(A\)">\(A\)</span>. Therefore the cokernel is zero. ∎</p>
+<p>This gives [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-nonnegative-chi-triple">Tag 0F28</a>].</p>
+<p><strong>Proof of Theorem 2.1.</strong> Suppose <span class="math" data-tex="\(L|_{U_0}\)">\(L|_{U_0}\)</span> is trivial, and choose that trivialization to make the invertible triple <span class="math" data-tex="\(T=(L,\mathcal O_{X_0},\lambda)\)">\(T=(L,\mathcal O_{X_0},\lambda)\)</span>. Lemma 2.3 makes <span class="math" data-tex="\(\chi(T^n)\)">\(\chi(T^n)\)</span> a polynomial. If <span class="math" data-tex="\(L\)">\(L\)</span> has torsion order dividing <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, then <span class="math" data-tex="\(L^{rn}\)">\(L^{rn}\)</span> is trivial for every integer <span class="math" data-tex="\(n\)">\(n\)</span>. Lemma 2.4 makes all the corresponding polynomial values zero, regardless of the chosen trivialization on <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. A polynomial with infinitely many zeros is zero. Its value at <span class="math" data-tex="\(1\)">\(1\)</span> is zero, so Lemma 2.4 makes <span class="math" data-tex="\(L\)">\(L\)</span> trivial. ∎</p>
+<p>This proves [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-injective-torsion-in-pic">Tag 0F2A</a>], including torsion divisible by the residue characteristic. It does not claim injectivity on the whole Picard group.</p>
+<p>The same invariant also proves full injectivity when duality bounds its growth. This connects the finite-difference argument with the local duality and finiteness already developed in the course.</p>
+<p><strong>Theorem 2.5 (Kollár's injectivity theorem).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> has a dualizing complex, <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzerodivisor, <span class="math" data-tex="\(\operatorname{depth}(A/fA)\ge2\)">\(\operatorname{depth}(A/fA)\ge2\)</span>, and
+<span class="math math-display" data-tex="\[
+f\in\mathfrak p,\ \dim(A/\mathfrak p)=2
+\quad\Longrightarrow\quad\operatorname{depth}A_{\mathfrak p}\ge2,
+\tag{2.6}
+\]">\[
+f\in\mathfrak p,\ \dim(A/\mathfrak p)=2
+\quad\Longrightarrow\quad\operatorname{depth}A_{\mathfrak p}\ge2,
+\tag{2.6}
+\]</span>
+then (2.1) is injective. Moreover (2.6) follows from the other hypotheses if <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span> and <span class="math" data-tex="\(\dim A\ge4\)">\(\dim A\ge4\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L\)">\(L\)</span> restrict trivially to <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, choose that trivialization, and form the invertible triple <span class="math" data-tex="\(T\)">\(T\)</span>. The function <span class="math" data-tex="\(P(n)=\chi(T^n)\)">\(P(n)=\chi(T^n)\)</span> is a polynomial, nonnegative for every integer <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(P(0)=0\)">\(P(0)=0\)</span>. We will bound it linearly for positive <span class="math" data-tex="\(n\)">\(n\)</span>; these three properties force it to be zero.</p>
+<p>Put <span class="math" data-tex="\(M=\Gamma(U,L)\)">\(M=\Gamma(U,L)\)</span>. Lemma 2.4 gives a finite module of depth at least two and an exact sequence
+<span class="math math-display" data-tex="\[
+0\to M/fM\to A/fA\to Q\to0,
+\qquad\operatorname{length}Q=\chi(T).
+\tag{2.7}
+\]">\[
+0\to M/fM\to A/fA\to Q\to0,
+\qquad\operatorname{length}Q=\chi(T).
+\tag{2.7}
+\]</span>
+The group <span class="math" data-tex="\(F=H^2_{\mathfrak m}(M)\)">\(F=H^2_{\mathfrak m}(M)\)</span> has finite length. To verify the finiteness input, <span class="math" data-tex="\(M\)">\(M\)</span> is locally free on the puncture, while <span class="math" data-tex="\(H^i_{\mathfrak m}(A)=0\)">\(H^i_{\mathfrak m}(A)=0\)</span> for <span class="math" data-tex="\(i\le2\)">\(i\le2\)</span>. The finite locally free local-cohomology comparison [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-local-finiteness-for-finite-locally-free">Tag 0BPY</a>] therefore gives finiteness of <span class="math" data-tex="\(H^2_{\mathfrak m}(M)\)">\(H^2_{\mathfrak m}(M)\)</span>. That result's full open proof applies to finite modules locally free off the support; its hypotheses here include all three low cohomology groups of <span class="math" data-tex="\(A\)">\(A\)</span>. A finite module supported at the closed point has finite length.</p>
+<p>The support sequences of (2.7) and of multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span> give
+<span class="math math-display" data-tex="\[
+0\to Q\to F\xrightarrow{f}F\xrightarrow{\rho}
+H^2_{\mathfrak m}(A/fA).
+\]">\[
+0\to Q\to F\xrightarrow{f}F\xrightarrow{\rho}
+H^2_{\mathfrak m}(A/fA).
+\]</span>
+Indeed <span class="math" data-tex="\(H^1_{\mathfrak m}(A/fA)=0\)">\(H^1_{\mathfrak m}(A/fA)=0\)</span> and
+<span class="math" data-tex="\(H^2_{\mathfrak m}(M/fM)=H^2_{\mathfrak m}(A/fA)\)">\(H^2_{\mathfrak m}(M/fM)=H^2_{\mathfrak m}(A/fA)\)</span>.
+An endomorphism of the finite-length <span class="math" data-tex="\(F\)">\(F\)</span> has kernel and cokernel of equal length. Thus <span class="math" data-tex="\(\chi(T)=\operatorname{length}\operatorname{im}\rho\)">\(\chi(T)=\operatorname{length}\operatorname{im}\rho\)</span>.</p>
+<p>Choose a normalized dualizing complex <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, and set
+<span class="math math-display" data-tex="\[
+N=\operatorname{Ext}^{-2}_A(A/fA,\omega),\qquad
+P_M=\operatorname{Ext}^{-2}_A(M,\omega).
+\]">\[
+N=\operatorname{Ext}^{-2}_A(A/fA,\omega),\qquad
+P_M=\operatorname{Ext}^{-2}_A(M,\omega).
+\]</span>
+Local duality, including the completion in its finite-module side, identifies the dual of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with the completion of the natural map <span class="math" data-tex="\(\alpha:N\to P_M\)">\(\alpha:N\to P_M\)</span>. Its image has length <span class="math" data-tex="\(\chi(T)\)">\(\chi(T)\)</span>. Since <span class="math" data-tex="\(N,P_M\)">\(N,P_M\)</span> are finite, faithful flatness descends finite length of this image, and completion preserves that length. Hence
+<span class="math math-display" data-tex="\[
+\chi(T)=\operatorname{length}\operatorname{im}\alpha.
+\tag{2.8}
+\]">\[
+\chi(T)=\operatorname{length}\operatorname{im}\alpha.
+\tag{2.8}
+\]</span>
+This uses the precise duality in Local duality and finiteness, Section 3; it imposes no completeness on <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>That lesson's dimension function and local depth bounds also show <span class="math" data-tex="\(\dim\operatorname{Supp}N\le1\)">\(\dim\operatorname{Supp}N\le1\)</span>. Its support is inside <span class="math" data-tex="\(V(f)\)">\(V(f)\)</span>. At a prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, let <span class="math" data-tex="\(\delta=\dim(A/\mathfrak p)\)">\(\delta=\dim(A/\mathfrak p)\)</span>. The normalized localized dual degree for <span class="math" data-tex="\(N_{\mathfrak p}\)">\(N_{\mathfrak p}\)</span> is <span class="math" data-tex="\(\delta-2\)">\(\delta-2\)</span>. If <span class="math" data-tex="\(\delta&gt;2\)">\(\delta&gt;2\)</span>, this is positive and the group vanishes. If <span class="math" data-tex="\(\delta=2\)">\(\delta=2\)</span>, condition (2.6) and regularity of <span class="math" data-tex="\(f\)">\(f\)</span> give <span class="math" data-tex="\(\operatorname{depth}(A/fA)_{\mathfrak p}\ge1\)">\(\operatorname{depth}(A/fA)_{\mathfrak p}\ge1\)</span>, so the degree-zero dual group vanishes too. Only primes with <span class="math" data-tex="\(\delta\le1\)">\(\delta\le1\)</span> remain.</p>
+<p>Choose a section <span class="math" data-tex="\(t\)">\(t\)</span> of <span class="math" data-tex="\(L^\vee\)">\(L^\vee\)</span> nonvanishing at the finitely many nonmaximal points of <span class="math" data-tex="\(\operatorname{Supp}N\)">\(\operatorname{Supp}N\)</span>, using the quasi-affine section lemma from Lemma 2.3. Its reduction, under the chosen trivialization, is a section of <span class="math" data-tex="\(\mathcal O_{U_0}\)">\(\mathcal O_{U_0}\)</span>, hence an element <span class="math" data-tex="\(g\in A/fA\)">\(g\in A/fA\)</span> by Hartogs. It is a unit at those support points, so <span class="math" data-tex="\(N/gN\)">\(N/gN\)</span> has finite length; write that length as <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>Multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> gives <span class="math" data-tex="\(M\to A\)">\(M\to A\)</span>, compatible with multiplication by <span class="math" data-tex="\(g\)">\(g\)</span> on the quotients. Applying <span class="math" data-tex="\(\operatorname{Ext}^{-2}_A(-,\omega)\)">\(\operatorname{Ext}^{-2}_A(-,\omega)\)</span> to this diagram gives <span class="math" data-tex="\(\alpha\circ g=0\)">\(\alpha\circ g=0\)</span>, because
+<span class="math" data-tex="\(\operatorname{Ext}^{-2}_A(A,\omega)=0\)">\(\operatorname{Ext}^{-2}_A(A,\omega)=0\)</span> by <span class="math" data-tex="\(\operatorname{depth}A\ge3\)">\(\operatorname{depth}A\ge3\)</span>. For <span class="math" data-tex="\(T^n\)">\(T^n\)</span>, use <span class="math" data-tex="\(t^n\)">\(t^n\)</span> and <span class="math" data-tex="\(g^n\)">\(g^n\)</span>. The same calculation gives
+<span class="math math-display" data-tex="\[
+0\le P(n)\le\operatorname{length}(N/g^nN)\le nc
+\quad(n\ge1).
+\tag{2.9}
+\]">\[
+0\le P(n)\le\operatorname{length}(N/g^nN)\le nc
+\quad(n\ge1).
+\tag{2.9}
+\]</span>
+The final inequality follows by filtering by the powers of <span class="math" data-tex="\(g\)">\(g\)</span>: each <span class="math" data-tex="\(g^jN/g^{j+1}N\)">\(g^jN/g^{j+1}N\)</span> is a quotient of <span class="math" data-tex="\(N/gN\)">\(N/gN\)</span>. A polynomial bounded above linearly on positive integers has degree at most one. A polynomial of that degree which is nonnegative on all integers and vanishes at zero must be zero. Lemma 2.4 now makes <span class="math" data-tex="\(L\)">\(L\)</span> trivial.</p>
+<p>Finally a ring with a dualizing complex is catenary, and an <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span> such local ring is equidimensional by the connectedness lesson. Thus
+<span class="math" data-tex="\(\dim A_{\mathfrak p}+\dim(A/\mathfrak p)=\dim A\)">\(\dim A_{\mathfrak p}+\dim(A/\mathfrak p)=\dim A\)</span>.
+When <span class="math" data-tex="\(\dim A\ge4\)">\(\dim A\ge4\)</span> and <span class="math" data-tex="\(\dim(A/\mathfrak p)=2\)">\(\dim(A/\mathfrak p)=2\)</span>, the local dimension is at least two and <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span> gives (2.6). ∎</p>
+<p>This proves [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-proposition-injective-pic">Tag 0F2B</a>]. It is an injectivity result, with no surjectivity conclusion.</p>
+<h2 id="3-completion-and-regular-local-rings">3. Completion and regular local rings</h2>
+<p><strong>Lemma 3.1.</strong> If <span class="math" data-tex="\(\operatorname{depth}A\ge2\)">\(\operatorname{depth}A\ge2\)</span>, completion at <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> induces an injection
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(U)\longrightarrow\operatorname{Pic}(\widehat U),
+\qquad
+\widehat U=\operatorname{Spec}\widehat A\setminus\{\widehat{\mathfrak m}\}.
+\tag{3.1}
+\]">\[
+\operatorname{Pic}(U)\longrightarrow\operatorname{Pic}(\widehat U),
+\qquad
+\widehat U=\operatorname{Spec}\widehat A\setminus\{\widehat{\mathfrak m}\}.
+\tag{3.1}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(M=\Gamma(U,L)\)">\(M=\Gamma(U,L)\)</span>. Flat Čech base change gives
+<span class="math" data-tex="\(M\otimes_A\widehat A=\Gamma(\widehat U,\widehat L)\)">\(M\otimes_A\widehat A=\Gamma(\widehat U,\widehat L)\)</span>.
+If <span class="math" data-tex="\(\widehat L\)">\(\widehat L\)</span> is trivial, the right side is <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>, by depth at least two. Faithfully flat descent makes <span class="math" data-tex="\(M\)">\(M\)</span> a finite locally free rank-one <span class="math" data-tex="\(A\)">\(A\)</span>-module. Concretely, choose finitely many elements of <span class="math" data-tex="\(M\)">\(M\)</span> whose tensors generate the rank-one completed module; faithful flatness kills the cokernel of the resulting finite presentation, and descends its flatness. A finite flat module over the local ring <span class="math" data-tex="\(A\)">\(A\)</span> is free. Thus <span class="math" data-tex="\(M\simeq A\)">\(M\simeq A\)</span>. The sheaf associated to <span class="math" data-tex="\(M\)">\(M\)</span>, restricted to <span class="math" data-tex="\(U\)">\(U\)</span>, recovers <span class="math" data-tex="\(L\)">\(L\)</span>, so <span class="math" data-tex="\(L\)">\(L\)</span> is trivial. ∎</p>
+<p>This proves [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-local-pic-to-completion">Tag 0F2G</a>]. No algebraization of arbitrary bundles from <span class="math" data-tex="\(\widehat U\)">\(\widehat U\)</span> is being asserted.</p>
+<p><strong>Theorem 3.2.</strong> A regular local ring has trivial Picard group on its punctured spectrum.</p>
+<p><strong>Proof.</strong> Extend a line bundle <span class="math" data-tex="\(L\)">\(L\)</span> coherently over the affine spectrum, obtaining a finite module <span class="math" data-tex="\(M\)">\(M\)</span>. The finite global-dimension theorem for regular local rings gives a finite resolution of <span class="math" data-tex="\(M\)">\(M\)</span> by finite free modules. Restrict it to the punctured spectrum, where <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>. In this exact complex every successive kernel is a vector bundle: starting from the surjection onto <span class="math" data-tex="\(L\)">\(L\)</span>, split it locally and proceed inductively. For a short exact sequence of vector bundles, determinants satisfy
+<span class="math" data-tex="\(\det B=\det A\otimes\det C\)">\(\det B=\det A\otimes\det C\)</span>, as follows locally from a basis adapted to the subbundle. Multiplying these identities through the resolution identifies
+<span class="math math-display" data-tex="\[
+L=\det L\simeq
+\bigotimes_i(\det \mathcal O_U^{r_i})^{(-1)^i}
+\simeq\mathcal O_U.
+\tag{3.2}
+\]">\[
+L=\det L\simeq
+\bigotimes_i(\det \mathcal O_U^{r_i})^{(-1)^i}
+\simeq\mathcal O_U.
+\tag{3.2}
+\]</span>
+In dimension zero the puncture is empty and the assertion is immediate. ∎</p>
+<p>This is a proof of [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-trivial-local-pic-regular">Tag 0F2H</a>] through determinants. The usual factoriality route gives the same result: regular local rings are UFDs [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-regular-local-UFD">Tag 0AG0</a>], and divisor closure extends an invertible sheaf to their local spectrum [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-extend-invertible-module">Tag 0BD9</a>], where every line bundle is free. The determinant proof proves the Picard assertion directly from finite free resolutions.</p>
+<h2 id="4-complete-intersections-and-parafactoriality">4. Complete intersections and parafactoriality</h2>
+<p><strong>Lemma 4.1 (principal lifting of line bundles).</strong> Suppose <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(f\)">\(f\)</span>-adically complete, <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzerodivisor and
+<span class="math math-display" data-tex="\[
+H^1_{\mathfrak m}(A/fA),\ H^2_{\mathfrak m}(A/fA)
+\text{ are finite},\qquad H^3_{\mathfrak m}(A/fA)=0.
+\tag{4.1}
+\]">\[
+H^1_{\mathfrak m}(A/fA),\ H^2_{\mathfrak m}(A/fA)
+\text{ are finite},\qquad H^3_{\mathfrak m}(A/fA)=0.
+\tag{4.1}
+\]</span>
+Every line bundle on <span class="math" data-tex="\(U_0\)">\(U_0\)</span> lifts to a line bundle on a neighbourhood of <span class="math" data-tex="\(U_0\)">\(U_0\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span>. If the punctured local spectra at all maximal ideals of <span class="math" data-tex="\(A_f\)">\(A_f\)</span> have zero Picard group, it lifts to all of <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Proof.</strong> The principal thickening layers are <span class="math" data-tex="\(\mathcal O_{U_0}\)">\(\mathcal O_{U_0}\)</span>, because <span class="math" data-tex="\(f\)">\(f\)</span> is regular. Their obstruction groups are
+<span class="math math-display" data-tex="\[
+H^2(U_0,\mathcal O_{U_0})=H^3_{\mathfrak m}(A/fA)=0.
+\]">\[
+H^2(U_0,\mathcal O_{U_0})=H^3_{\mathfrak m}(A/fA)=0.
+\]</span>
+Proposition 1.1 lifts a given line bundle successively through every thickening, with chosen reduction isomorphisms. This gives an invertible coherent formal module. The permitted principal formal-bundle algebraization statement in Formal geometry, Section 8, applies because the other two groups in (4.1) are finite. It supplies a coherent algebraization that is free of rank one on some neighbourhood <span class="math" data-tex="\(V\supset U_0\)">\(V\supset U_0\)</span>.</p>
+<p>As proved in the preceding lesson, <span class="math" data-tex="\(U\setminus V\)">\(U\setminus V\)</span> is a finite set of closed points, maximal in <span class="math" data-tex="\(A_f\)">\(A_f\)</span>: the principal ideal theorem gives dimension one for the closures of its components. At each missing point the line bundle on the punctured local spectrum is trivial by hypothesis, hence extends as the trivial bundle over the local spectrum. The isomorphism with the existing bundle spreads to a neighbourhood by finite-presentation descent and glues there. Add the finitely many points. ∎</p>
+<p>This proves the lifting arguments of [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-surjective-Pic-first">Tag 0F2D</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-surjective-Pic-first-better">Tag 0F2F</a>] from the already specified formal input.</p>
+<p><strong>Theorem 4.2 (Grothendieck).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is a complete intersection local ring of dimension at least four, then
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(\operatorname{Spec}A\setminus\{\mathfrak m\})=0.
+\tag{4.2}
+\]">\[
+\operatorname{Pic}(\operatorname{Spec}A\setminus\{\mathfrak m\})=0.
+\tag{4.2}
+\]</span>
+The same holds when its completion is a quotient of a regular local ring by a regular sequence.</p>
+<p><strong>Proof.</strong> Such a ring is Cohen–Macaulay, so its depth is its dimension. Lemma 3.1 reduces to its completion. Completion of a presentation by a regular sequence gives the corresponding presentation over the completed regular local ring. We prove the result by induction on the number <span class="math" data-tex="\(r\)">\(r\)</span> of equations, simultaneously for all local rings with a presentation of length at most <span class="math" data-tex="\(r\)">\(r\)</span>, including their completed versions. The base case is Theorem 3.2.</p>
+<p>For the step write the complete ring as
+<span class="math math-display" data-tex="\[
+A=B/(f_1,\ldots,f_r),\qquad
+A&#x27;=B/(f_1,\ldots,f_{r-1}),\qquad f=f_r.
+\]">\[
+A=B/(f_1,\ldots,f_r),\qquad
+A&#x27;=B/(f_1,\ldots,f_{r-1}),\qquad f=f_r.
+\]</span>
+Then <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> is complete, <span class="math" data-tex="\(f\)">\(f\)</span> is regular, and <span class="math" data-tex="\(A=A&#x27;/fA&#x27;\)">\(A=A&#x27;/fA&#x27;\)</span> is Cohen–Macaulay of dimension <span class="math" data-tex="\(d\ge4\)">\(d\ge4\)</span>. Thus the three groups in (4.1) for this quotient all vanish. Lemma 4.1 lifts every line bundle on the punctured spectrum of <span class="math" data-tex="\(A\)">\(A\)</span> to a neighbourhood in the punctured spectrum of <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>.</p>
+<p>For a maximal prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> of <span class="math" data-tex="\(A&#x27;_f\)">\(A&#x27;_f\)</span>, put <span class="math" data-tex="\(S=A&#x27;/\mathfrak p\)">\(S=A&#x27;/\mathfrak p\)</span>. This is a local domain, <span class="math" data-tex="\(f\)">\(f\)</span> is nonzero and belongs to its maximal ideal, and <span class="math" data-tex="\(S_f\)">\(S_f\)</span> is a field. We claim <span class="math" data-tex="\(\dim S=1\)">\(\dim S=1\)</span>. If its dimension were at least two, its maximal ideal would not lie in the union of the finitely many height-one primes containing <span class="math" data-tex="\(f\)">\(f\)</span>. Prime avoidance would give a nonzero element <span class="math" data-tex="\(g\)">\(g\)</span> in that maximal ideal outside all those primes. A prime minimal over <span class="math" data-tex="\((g)\)">\((g)\)</span> has height one by the principal ideal theorem, and cannot contain <span class="math" data-tex="\(f\)">\(f\)</span>, since every height-one prime containing <span class="math" data-tex="\(f\)">\(f\)</span> is minimal over <span class="math" data-tex="\((f)\)">\((f)\)</span>. It would survive as a nonzero prime of the field <span class="math" data-tex="\(S_f\)">\(S_f\)</span>, a contradiction. Dimension zero is impossible because <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzero nonunit of the local domain. Thus <span class="math" data-tex="\(\dim S=1\)">\(\dim S=1\)</span>, and <span class="math" data-tex="\(V(\mathfrak p)\cap V(f)\)">\(V(\mathfrak p)\cap V(f)\)</span> consists only of the closed point. A complete Cohen–Macaulay local ring is equidimensional and catenary. Hence
+<span class="math math-display" data-tex="\[
+\dim A&#x27;_{\mathfrak p}=\dim A&#x27;-1=d\ge4.
+\tag{4.3}
+\]">\[
+\dim A&#x27;_{\mathfrak p}=\dim A&#x27;-1=d\ge4.
+\tag{4.3}
+\]</span>
+This local ring is <span class="math" data-tex="\(B_{\mathfrak q}/(f_1,\ldots,f_{r-1})\)">\(B_{\mathfrak q}/(f_1,\ldots,f_{r-1})\)</span> for the corresponding prime <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>. The regular sequence remains regular on localization and <span class="math" data-tex="\(B_{\mathfrak q}\)">\(B_{\mathfrak q}\)</span> is regular. The inductive hypothesis therefore gives zero Picard group on its puncture. Notice that these localized rings need not be complete; the simultaneous inductive statement and Lemma 3.1 apply to them.</p>
+<p>The second assertion of Lemma 4.1 now lifts the original line bundle to all of the puncture of <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>. That Picard group is zero by induction, since <span class="math" data-tex="\(\dim A&#x27;=d+1\ge5\)">\(\dim A&#x27;=d+1\ge5\)</span>. Its restriction is consequently trivial. This proves (4.2) for the complete ring, and Lemma 3.1 descends it to the original ring. The same descent proves the completion-only version. ∎</p>
+<p>This is the full local theorem [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-proposition-trivial-local-pic-complete-intersection">Tag 0F2I</a>]. It proves the Picard content of the independently cited [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-theorem-ci-parafactorial">Tag 0HDG</a>] rather than using that citation as a substitute for the argument.</p>
+<p>A Noetherian local ring is <strong>parafactorial</strong> here if its depth is at least two and its punctured Picard group is zero. Regular local rings of dimension at least two and complete intersections of dimension at least four are therefore parafactorial.</p>
+<p><strong>Proposition 4.3 (extension across a parafactorial closed set).</strong> Let <span class="math" data-tex="\(Z\subset X\)">\(Z\subset X\)</span> be closed in a Noetherian scheme, and suppose <span class="math" data-tex="\(\mathcal O_{X,z}\)">\(\mathcal O_{X,z}\)</span> is parafactorial for every <span class="math" data-tex="\(z\in Z\)">\(z\in Z\)</span>. Then restriction of line bundles from <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(X\setminus Z\)">\(X\setminus Z\)</span> is an equivalence.</p>
+<p><strong>Proof.</strong> Depth at least two gives
+<span class="math" data-tex="\(\mathcal O_X\simeq j_*\mathcal O_{X\setminus Z}\)">\(\mathcal O_X\simeq j_*\mathcal O_{X\setminus Z}\)</span> by the supported-depth criterion. For two line bundles their internal Hom is a line bundle and has the same stalk depth, so the same criterion identifies it with the pushforward of its restriction. Taking sections proves full faithfulness.</p>
+<p>For existence, take a generic point <span class="math" data-tex="\(z\)">\(z\)</span> of the remaining closed complement of an open on which the given line bundle has already been extended. In <span class="math" data-tex="\(\operatorname{Spec}\mathcal O_{X,z}\)">\(\operatorname{Spec}\mathcal O_{X,z}\)</span> that complement consists only of its closed point. The bundle on its puncture is trivial by parafactoriality, so it extends there. A trivialization is a finite-presentation isomorphism; it spreads from the localized puncture to an overlap with an ordinary neighbourhood of <span class="math" data-tex="\(z\)">\(z\)</span>. Glue the trivial bundle on that neighbourhood to the existing bundle. This removes an open part of each generic component of the complement. Noetherian induction on the closed complement finishes the extension. The full faithfulness already proved makes the gluing unique with its prescribed restriction. ∎</p>
+<p>Parafactoriality is not by itself factoriality. If <span class="math" data-tex="\(A\)">\(A\)</span> is a normal local domain of dimension at least two and all its nonmaximal localizations are UFDs, however, zero Picard group on its puncture implies that <span class="math" data-tex="\(A\)">\(A\)</span> is a UFD. Indeed every Weil divisor is Cartier on the puncture and thus defines a line bundle there. If that bundle is trivial, the divisor differs from a principal divisor by a divisor supported at the closed point. That point has codimension at least two and cannot occur in a Weil divisor. Hence every height-one prime divisor is principal, the UFD criterion for a normal Noetherian domain.</p>
+<p>The confirmed <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-theorem-ci-Cartier-codimension-three">Samuel–Grothendieck theorem</a> in AI Integrated Stacks Project gives the following statements. For a complete intersection local ring, if it is normal and a Weil divisor is Cartier at every prime of height at most three, that divisor is Cartier everywhere. If its localizations at every prime of height at most three are UFDs, the ring is a UFD; in particular regularity in those codimensions suffices. The first assertion follows by dimension induction from Theorem 4.2: it makes the divisor principal on the puncture at each induction step. For the second, the complete intersection is <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span>, and factoriality in heights zero and one gives <span class="math" data-tex="\((R_1)\)">\((R_1)\)</span>; Serre's criterion gives normality, after which the first assertion applies to every height-one prime. This explains the factoriality consequence while distinguishing it from parafactoriality.</p>
+<h2 id="5-global-picard-comparison">5. Global Picard comparison</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be proper over a field, and let <span class="math" data-tex="\(Y\)">\(Y\)</span> be an effective ample Cartier divisor. Assume
+<span class="math math-display" data-tex="\[
+\operatorname{depth}\mathcal O_{X,x}+\dim\overline{\{x\}}&gt;2
+\quad(x\notin Y),
+\tag{5.1}
+\]">\[
+\operatorname{depth}\mathcal O_{X,x}+\dim\overline{\{x\}}&gt;2
+\quad(x\notin Y),
+\tag{5.1}
+\]</span>
+and assume that all local rings at closed points outside <span class="math" data-tex="\(Y\)">\(Y\)</span> are parafactorial.</p>
+<p><strong>Theorem 5.1.</strong> Under these hypotheses,
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(X)\simeq\operatorname{Pic}(\widehat X_Y).
+\tag{5.2}
+\]">\[
+\operatorname{Pic}(X)\simeq\operatorname{Pic}(\widehat X_Y).
+\tag{5.2}
+\]</span>
+If also
+<span class="math math-display" data-tex="\[
+H^1(Y,\mathcal O_Y(-nY))=
+H^2(Y,\mathcal O_Y(-nY))=0
+\quad\text{for every }n\ge1,
+\tag{5.3}
+\]">\[
+H^1(Y,\mathcal O_Y(-nY))=
+H^2(Y,\mathcal O_Y(-nY))=0
+\quad\text{for every }n\ge1,
+\tag{5.3}
+\]</span>
+then restriction <span class="math" data-tex="\(\operatorname{Pic}(X)\to\operatorname{Pic}(Y)\)">\(\operatorname{Pic}(X)\to\operatorname{Pic}(Y)\)</span> is an isomorphism.</p>
+<p><strong>Proof.</strong> Theorem 6.4 of Formal geometry, under exactly (5.1), is an equivalence between neighbourhood vector bundles and formal vector bundles. Its restriction to rank-one objects is an equivalence: a formal line bundle algebraizes to a bundle whose rank is one along <span class="math" data-tex="\(Y\)">\(Y\)</span>, and one shrinks to that rank locus. Thus each formal line bundle algebraizes on some <span class="math" data-tex="\(V\supset Y\)">\(V\supset Y\)</span>, and morphisms are detected after shrinking.</p>
+<p>The complement <span class="math" data-tex="\(X\setminus V\)">\(X\setminus V\)</span> is proper over the field and closed in the affine <span class="math" data-tex="\(X\setminus Y\)">\(X\setminus Y\)</span>, hence finite. All its points are closed and parafactorial. Proposition 4.3 extends the line bundle over them, proving surjectivity in (5.2). If a line bundle on <span class="math" data-tex="\(X\)">\(X\)</span> is formally trivial, formal full faithfulness makes it trivial on a neighbourhood of <span class="math" data-tex="\(Y\)">\(Y\)</span>. The same proposition's full faithfulness across that finite complement extends the isomorphism to all of <span class="math" data-tex="\(X\)">\(X\)</span>, proving injectivity.</p>
+<p>The Cartier thickening layers are <span class="math" data-tex="\(\mathcal O_Y(-nY)\)">\(\mathcal O_Y(-nY)\)</span>. Proposition 1.1 and (5.3) identify all their Picard groups with <span class="math" data-tex="\(\operatorname{Pic}(Y)\)">\(\operatorname{Pic}(Y)\)</span>. The compatible-unit check in Section 1 identifies this common group with the formal Picard group. Combine with (5.2). ∎</p>
+<p>For finitely many nonvanishing low layers the same proof compares with a sufficiently high thickening once both groups vanish at all later layers. The displayed theorem uses all layers to compare directly with <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<h2 id="6-complete-intersections-in-projective-space">6. Complete intersections in projective space</h2>
+<p><strong>Lemma 6.1 (explicit cohomology vanishing).</strong> If <span class="math" data-tex="\(Z\subset\mathbb P^N_k\)">\(Z\subset\mathbb P^N_k\)</span> is a complete intersection of dimension <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, then
+<span class="math math-display" data-tex="\[
+H^i(Z,\mathcal O_Z(m))=0
+\quad\text{for all integers }m\text{ and }0&lt;i&lt;r.
+\tag{6.1}
+\]">\[
+H^i(Z,\mathcal O_Z(m))=0
+\quad\text{for all integers }m\text{ and }0&lt;i&lt;r.
+\tag{6.1}
+\]</span></p>
+<p><strong>Proof.</strong> Induct along the homogeneous regular sequence. For projective space, Čech computation gives vanishing in every middle degree and every twist. If <span class="math" data-tex="\(Z\subset W\)">\(Z\subset W\)</span> is the next equation of degree <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, regularity gives
+<span class="math math-display" data-tex="\[
+0\to\mathcal O_W(m-d)\longrightarrow
+\mathcal O_W(m)\longrightarrow\mathcal O_Z(m)\to0.
+\tag{6.2}
+\]">\[
+0\to\mathcal O_W(m-d)\longrightarrow
+\mathcal O_W(m)\longrightarrow\mathcal O_Z(m)\to0.
+\tag{6.2}
+\]</span>
+Here <span class="math" data-tex="\(\dim W=r+1\)">\(\dim W=r+1\)</span>. For <span class="math" data-tex="\(0&lt;i&lt;r\)">\(0&lt;i&lt;r\)</span>, both <span class="math" data-tex="\(H^i(W,\mathcal O_W(m))\)">\(H^i(W,\mathcal O_W(m))\)</span> and <span class="math" data-tex="\(H^{i+1}(W,\mathcal O_W(m-d))\)">\(H^{i+1}(W,\mathcal O_W(m-d))\)</span> vanish by induction, because <span class="math" data-tex="\(i+1\le r&lt;\dim W\)">\(i+1\le r&lt;\dim W\)</span>. The long exact sequence gives (6.1). A homogeneous regular sequence also makes each intermediate scheme pure and Cohen–Macaulay, of the expected dimension, by the depth drop and dimension formula for a regular sequence. ∎</p>
+<p><strong>Theorem 6.2 (Grothendieck–Lefschetz for complete intersections).</strong> A scheme-theoretic complete intersection <span class="math" data-tex="\(Y\subset\mathbb P^N_k\)">\(Y\subset\mathbb P^N_k\)</span> of dimension at least three satisfies
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(Y)=\mathbb Z\,[\mathcal O_Y(1)].
+\tag{6.3}
+\]">\[
+\operatorname{Pic}(Y)=\mathbb Z\,[\mathcal O_Y(1)].
+\tag{6.3}
+\]</span></p>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(\operatorname{Pic}(\mathbb P^N_k)=\mathbb Z[\mathcal O(1)]\)">\(\operatorname{Pic}(\mathbb P^N_k)=\mathbb Z[\mathcal O(1)]\)</span>. One divisor proof is to take a rational section of any line bundle. Projective space is regular, so its Cartier divisor is a Weil divisor. Every prime divisor comes from a homogeneous height-one prime in the UFD <span class="math" data-tex="\(k[x_0,\ldots,x_N]\)">\(k[x_0,\ldots,x_N]\)</span>, hence from one homogeneous irreducible polynomial <span class="math" data-tex="\(g\)">\(g\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Its divisor is linearly equivalent to <span class="math" data-tex="\(d\)">\(d\)</span> times a hyperplane, using the rational function <span class="math" data-tex="\(g/x_0^d\)">\(g/x_0^d\)</span>. Thus <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> generates. Restriction to a line detects its exponent by degree, so it has infinite order.</p>
+<p>Choose the flag cut out by the successive equations:
+<span class="math math-display" data-tex="\[
+\mathbb P^N=X_0\supset X_1\supset\cdots\supset X_c=Y.
+\]">\[
+\mathbb P^N=X_0\supset X_1\supset\cdots\supset X_c=Y.
+\]</span>
+At the <span class="math" data-tex="\(j\)">\(j\)</span>-th step <span class="math" data-tex="\(X_j\)">\(X_j\)</span> is an effective ample Cartier divisor in <span class="math" data-tex="\(X_{j-1}\)">\(X_{j-1}\)</span>, given by a positive-degree section of its <span class="math" data-tex="\(\mathcal O(d_j)\)">\(\mathcal O(d_j)\)</span>. All preceding dimensions are at least four. They are pure Cohen–Macaulay, so their depth-plus-closure sum is their dimension, greater than two. Each local ring at a closed point is a quotient of a regular local ring by a regular sequence and has that dimension, at least four. Theorem 4.2 makes it parafactorial.</p>
+<p>Theorem 5.1 therefore compares <span class="math" data-tex="\(\operatorname{Pic}(X_{j-1})\)">\(\operatorname{Pic}(X_{j-1})\)</span> with the formal Picard group along <span class="math" data-tex="\(X_j\)">\(X_j\)</span>. Its layers are
+<span class="math" data-tex="\(\mathcal O_{X_j}(-nd_j)\)">\(\mathcal O_{X_j}(-nd_j)\)</span>. Since <span class="math" data-tex="\(\dim X_j\ge3\)">\(\dim X_j\ge3\)</span>, Lemma 6.1 kills both their <span class="math" data-tex="\(H^1\)">\(H^1\)</span> and <span class="math" data-tex="\(H^2\)">\(H^2\)</span> for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. The second assertion of Theorem 5.1 gives
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(X_{j-1})\xrightarrow{\sim}\operatorname{Pic}(X_j).
+\]">\[
+\operatorname{Pic}(X_{j-1})\xrightarrow{\sim}\operatorname{Pic}(X_j).
+\]</span>
+Induction gives (6.3), with the indicated generator because every restriction preserves <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>. No step uses Kodaira vanishing or smoothness. ∎</p>
+<p>For example, a smooth cubic threefold in <span class="math" data-tex="\(\mathbb P^4\)">\(\mathbb P^4\)</span> has Picard group <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> generated by its hyperplane bundle. The argument also applies to singular and nonreduced complete intersections of the stated dimension.</p>
+<h2 id="7-sharpness-of-the-bounds">7. Sharpness of the bounds</h2>
+<p><strong>Example 7.1 (the local quadric cone).</strong> Let
+<span class="math math-display" data-tex="\[
+A=k[[x,y,z,w]]/(xy-zw),\qquad
+I=(x,z),\qquad U=\operatorname{Spec}A\setminus\{\mathfrak m\}.
+\tag{7.1}
+\]">\[
+A=k[[x,y,z,w]]/(xy-zw),\qquad
+I=(x,z),\qquad U=\operatorname{Spec}A\setminus\{\mathfrak m\}.
+\tag{7.1}
+\]</span>
+The plane <span class="math" data-tex="\(V(x,z)\)">\(V(x,z)\)</span> cuts out a Cartier divisor on <span class="math" data-tex="\(U\)">\(U\)</span>. On <span class="math" data-tex="\(D(x)\)">\(D(x)\)</span> and <span class="math" data-tex="\(D(z)\)">\(D(z)\)</span> its ideal is the unit ideal. On <span class="math" data-tex="\(D(y)\)">\(D(y)\)</span> the equation gives <span class="math" data-tex="\(x=zw/y\)">\(x=zw/y\)</span>, so the ideal is generated by <span class="math" data-tex="\(z\)">\(z\)</span>; on <span class="math" data-tex="\(D(w)\)">\(D(w)\)</span> it is generated by <span class="math" data-tex="\(x\)">\(x\)</span>. These generators are nonzerodivisors. Thus <span class="math" data-tex="\(\widetilde I|_U\)">\(\widetilde I|_U\)</span> is an invertible ideal, denoted <span class="math" data-tex="\(\mathcal O_U(-D)\)">\(\mathcal O_U(-D)\)</span>.</p>
+<p>The ring <span class="math" data-tex="\(A\)">\(A\)</span> is a three-dimensional hypersurface and has depth three. Its quotient <span class="math" data-tex="\(A/I=k[[y,w]]\)">\(A/I=k[[y,w]]\)</span> has depth two. The depth lemma in
+<span class="math math-display" data-tex="\[
+0\to I\to A\to A/I\to0
+\]">\[
+0\to I\to A\to A/I\to0
+\]</span>
+gives <span class="math" data-tex="\(\operatorname{depth}I\ge3\)">\(\operatorname{depth}I\ge3\)</span>. In particular the support sequence gives
+<span class="math math-display" data-tex="\[
+\Gamma(U,\widetilde I)=I,\qquad \Gamma(U,\mathcal O_U)=A.
+\]">\[
+\Gamma(U,\widetilde I)=I,\qquad \Gamma(U,\mathcal O_U)=A.
+\]</span>
+If the invertible ideal were trivial, these modules would be isomorphic, so <span class="math" data-tex="\(I\)">\(I\)</span> would be cyclic. But its images <span class="math" data-tex="\(x,z\)">\(x,z\)</span> are linearly independent in <span class="math" data-tex="\(I/\mathfrak m I\)">\(I/\mathfrak m I\)</span>: every element of <span class="math" data-tex="\(\mathfrak m I\)">\(\mathfrak m I\)</span> has order at least two, while the relation <span class="math" data-tex="\(xy-zw\)">\(xy-zw\)</span> has no linear term. Hence <span class="math" data-tex="\(I\)">\(I\)</span> needs two generators and cannot be cyclic. This proves the nonzero local Picard class [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-example-grothendieck-sharp">Tag 0F2J</a>].</p>
+<p>For completeness, the generators used above are regular: in the ambient power-series UFD the element <span class="math" data-tex="\(xy-zw\)">\(xy-zw\)</span> is not divisible by <span class="math" data-tex="\(x\)">\(x\)</span> or <span class="math" data-tex="\(z\)">\(z\)</span>, so each is relatively prime to it. If <span class="math" data-tex="\(xa\)">\(xa\)</span> or <span class="math" data-tex="\(za\)">\(za\)</span> lies in its principal ideal, divisibility forces <span class="math" data-tex="\(a\)">\(a\)</span> to lie there. Thus <span class="math" data-tex="\(x,z\)">\(x,z\)</span> are nonzerodivisors in <span class="math" data-tex="\(A\)">\(A\)</span>, and remain so on localization. The same Cartier divisor gives a nontrivial class on the punctured affine cone <span class="math" data-tex="\(k[x,y,z,w]/(xy-zw)\)">\(k[x,y,z,w]/(xy-zw)\)</span>; triviality there would persist after localization and completion at the vertex, contradicting (7.1). Dimension three is too small for Theorem 4.2.</p>
+<p><strong>Example 7.2 (the split quadric surface).</strong> The Segre map
+<span class="math math-display" data-tex="\[
+\mathbb P^1\times\mathbb P^1\longrightarrow\mathbb P^3,\qquad
+([a:b],[c:d])\longmapsto[ac:bd:ad:bc]
+\]">\[
+\mathbb P^1\times\mathbb P^1\longrightarrow\mathbb P^3,\qquad
+([a:b],[c:d])\longmapsto[ac:bd:ad:bc]
+\]</span>
+identifies its image with <span class="math" data-tex="\(xy=zw\)">\(xy=zw\)</span>. Its two ruling bundles give
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(Q)=\mathbb Z[\mathcal O(1,0)]
+\oplus\mathbb Z[\mathcal O(0,1)].
+\tag{7.2}
+\]">\[
+\operatorname{Pic}(Q)=\mathbb Z[\mathcal O(1,0)]
+\oplus\mathbb Z[\mathcal O(0,1)].
+\tag{7.2}
+\]</span>
+Here is the usual calculation. The degree of a line bundle on a fibre of the first projection is constant. Tensor with the inverse of that degree's <span class="math" data-tex="\(\mathcal O(0,1)\)">\(\mathcal O(0,1)\)</span>; the resulting bundle has trivial restriction to every fibre. Its pushforward to the first <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> is a line bundle, and the evaluation map is an isomorphism, by the degree-zero cohomology of <span class="math" data-tex="\(\mathcal O_{\mathbb P^1}\)">\(\mathcal O_{\mathbb P^1}\)</span> and base change. It is therefore a pullback <span class="math" data-tex="\(\mathcal O(a,0)\)">\(\mathcal O(a,0)\)</span>. Restriction to the two fibre lines detects <span class="math" data-tex="\(a\)">\(a\)</span> and the original degree, proving the direct sum.</p>
+<p>The hyperplane bundle restricts as <span class="math" data-tex="\(\mathcal O(1,1)\)">\(\mathcal O(1,1)\)</span>. Consequently
+<span class="math" data-tex="\(\operatorname{Pic}(\mathbb P^3)\to\operatorname{Pic}(Q)\)">\(\operatorname{Pic}(\mathbb P^3)\to\operatorname{Pic}(Q)\)</span> has diagonal image and is not surjective. The target dimension is two, so the degree-two layer vanishing needed in the complete-intersection proof is absent. Over an algebraically closed field every smooth quadric surface is split and this is its Picard calculation. Over an arbitrary field a smooth nonsplit quadric need not have this Picard group; the split or algebraically closed qualification is essential.</p>
+<h2 id="8-exercises-and-solutions">8. Exercises and solutions</h2>
+<p><strong>Exercise 8.1 (regular puncture; elementary).</strong> Compute the Picard group of the punctured spectrum of <span class="math" data-tex="\(k[[x,y]]\)">\(k[[x,y]]\)</span>.</p>
+<p><strong>Solution.</strong> This is a regular local ring of dimension two. Theorem 3.2 gives zero. More explicitly any coherent extension of a line bundle has a finite free resolution; its determinant on the puncture is the original line bundle and also the alternating tensor product of trivial determinants. Thus that line bundle is trivial.</p>
+<p><strong>Exercise 8.2 (the plane on a cone; intermediate).</strong> Prove that <span class="math" data-tex="\(V(x,z)\)">\(V(x,z)\)</span> gives a nontrivial local Picard class for (7.1).</p>
+<p><strong>Solution.</strong> The four opens <span class="math" data-tex="\(D(x),D(y),D(z),D(w)\)">\(D(x),D(y),D(z),D(w)\)</span> cover <span class="math" data-tex="\(U\)">\(U\)</span>. The ideal <span class="math" data-tex="\(I\)">\(I\)</span> is respectively generated by <span class="math" data-tex="\(1,z,1,x\)">\(1,z,1,x\)</span> there, with the last two nonunit generators regular, so it is invertible on the puncture. The exact sequence with quotient <span class="math" data-tex="\(k[[y,w]]\)">\(k[[y,w]]\)</span> gives depth at least three for <span class="math" data-tex="\(I\)">\(I\)</span>, hence <span class="math" data-tex="\(\Gamma(U,\widetilde I)=I\)">\(\Gamma(U,\widetilde I)=I\)</span>. If it were trivial, <span class="math" data-tex="\(I\simeq A\)">\(I\simeq A\)</span> would be cyclic. Its two independent linear generators in <span class="math" data-tex="\(I/\mathfrak mI\)">\(I/\mathfrak mI\)</span> rule that out. The hypersurface is a complete intersection of dimension three, locating the sharp failure of the dimension-four theorem.</p>
+<p><strong>Exercise 8.3 (quadric surface; intermediate).</strong> Compute the Picard restriction for a smooth quadric surface over an algebraically closed field.</p>
+<p><strong>Solution.</strong> Identify it with the Segre product. Its two fibre degrees give <span class="math" data-tex="\(\operatorname{Pic}(Q)=\mathbb Z^2\)">\(\operatorname{Pic}(Q)=\mathbb Z^2\)</span>, and the ambient hyperplane restricts to <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>. The class <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> cannot extend from <span class="math" data-tex="\(\mathbb P^3\)">\(\mathbb P^3\)</span>. The failed global complete-intersection hypothesis is dimension at least three for the target. Indeed for its Cartier thickening the layer <span class="math" data-tex="\(\mathcal O_Q(-2n)\)">\(\mathcal O_Q(-2n)\)</span> is <span class="math" data-tex="\(\mathcal O(-2n,-2n)\)">\(\mathcal O(-2n,-2n)\)</span>; its <span class="math" data-tex="\(H^2\)">\(H^2\)</span> is nonzero for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, by the two-factor Čech/Künneth computation <span class="math" data-tex="\(H^1(\mathbb P^1,\mathcal O(-2n))^{\otimes2}\)">\(H^1(\mathbb P^1,\mathcal O(-2n))^{\otimes2}\)</span>. One cannot discard the obstruction group.</p>
+<p><strong>Exercise 8.4 (hypersurface vanishing; intermediate).</strong> For a hypersurface <span class="math" data-tex="\(Y\subset\mathbb P^N\)">\(Y\subset\mathbb P^N\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>, <span class="math" data-tex="\(N\ge4\)">\(N\ge4\)</span>, prove that <span class="math" data-tex="\(H^1(Y,\mathcal O_Y(m))=H^2(Y,\mathcal O_Y(m))=0\)">\(H^1(Y,\mathcal O_Y(m))=H^2(Y,\mathcal O_Y(m))=0\)</span> for every integer <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Solution.</strong> The exact sequence (6.2) with <span class="math" data-tex="\(W=\mathbb P^N\)">\(W=\mathbb P^N\)</span> gives each of these groups between a middle degree <span class="math" data-tex="\(H^i(\mathbb P^N,\mathcal O(m))\)">\(H^i(\mathbb P^N,\mathcal O(m))\)</span> and the next middle degree <span class="math" data-tex="\(H^{i+1}(\mathbb P^N,\mathcal O(m-d))\)">\(H^{i+1}(\mathbb P^N,\mathcal O(m-d))\)</span>. For <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>, all four groups vanish because <span class="math" data-tex="\(i+1\le3&lt;N\)">\(i+1\le3&lt;N\)</span>. Exactness gives the claim for every twist, positive or negative, over every field.</p>
+<p><strong>Exercise 8.5 (complete intersections; advanced).</strong> Prove (6.3) by the successive-equation route.</p>
+<p><strong>Solution.</strong> Cut the complete intersection by its homogeneous regular sequence, retaining its flag of intermediate schemes. Every ambient member before the last has dimension at least four and is pure Cohen–Macaulay. Its depth-plus-closure sum exceeds two; its closed local rings are complete intersections of dimension at least four, hence parafactorial by Theorem 4.2. Theorem 5.1 compares its Picard group with the formal Picard group along the next ample Cartier divisor. Lemma 6.1 kills the <span class="math" data-tex="\(H^1,H^2\)">\(H^1,H^2\)</span> of all layers, since that next divisor has dimension at least three. Proposition 1.1 and compatible units then identify the formal group with the divisor's Picard group. Repeat this isomorphism through the flag, starting with <span class="math" data-tex="\(\mathbb Z[\mathcal O_{\mathbb P^N}(1)]\)">\(\mathbb Z[\mathcal O_{\mathbb P^N}(1)]\)</span>. Every restriction preserves that bundle, so the final group and generator are exactly (6.3).</p>
+<h2 id="proofs-and-further-inputs">Proofs and further inputs</h2>
+<p>The polynomial argument proves both torsion injectivity at its elementary depth hypotheses and full injectivity under Theorem 2.5's duality hypotheses. Its finite locally free cohomology comparison is supplied by the exact linked open proof at [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-local-finiteness-for-finite-locally-free">Tag 0BPY</a>]. Finite free resolutions over regular local rings were proved in Local duality and finiteness. Finite-presentation spreading and projective-space cohomology are commutative-algebra and cohomology inputs with the precise open sources recorded above. Principal formal-bundle algebraization is the exact local input already recorded in Formal geometry; the projective formal comparison and existence results in Section 5 were proved there. Linked Stacks source proofs retain their <a href="https://github.com/stacks/stacks-project/blob/master/COPYING">GNU Free Documentation License</a>; the independently written lesson text is CC0.</p>
+<p>No Ramanujam–Samuel theorem is used. The local and global complete-intersection conclusions do not follow from a characteristic-zero vanishing theorem: the required vanishing and the dimension thresholds were proved explicitly above.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Stacks] The Stacks Project authors, <em>The Stacks Project</em>, <a href="https://stacks.math.columbia.edu/">official project</a>. Tag links use AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks Project's maintainers. Its <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">English reader</a> retains upstream tags. Relevant sections are More on Morphisms, “Picard groups of thickenings”; Algebraic and Formal Geometry, “Coherent triples” and “Invertible modules on punctured spectra”; and Divisors, the parafactoriality and Samuel–Grothendieck statements.</li>
+<li>[Grothendieck–Laszlo] A. Grothendieck, <em>Cohomologie locale des faisceaux cohérents et théorèmes de Lefschetz locaux et globaux (SGA 2)</em>, revised edition edited by Y. Laszlo, <a href="https://arxiv.org/abs/math/0511279">arXiv:math/0511279</a>, Exposé XI, especially the Picard comparison, parafactoriality and codimension-three factoriality results.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="lefschetz-for-finite-etale-covers.html">← Lefschetz theorems for finite étale covers</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="purity-of-the-branch-locus.html">Purity of the branch locus →</a></span></nav>
+<p class="small source-link"><a href="src/picard-groups-and-grothendieck-lefschetz.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-LCL">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The functor of points and representability · Sheaves and schemes</title>
+<meta name="description" content="A lesson of the course Sheaves and schemes. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-SS/the-functor-of-points-and-representability.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Sheaves and schemes</a> <span aria-hidden="true">›</span> <span>Lesson 6 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-functor-of-points-and-representability">The functor of points and representability</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex at Ultra; writing-AI self-check completed. No independent review is claimed. Original exposition, proofs and exercises: CC0.</em></p>
+<p>A scheme can be studied by the maps into it. Testing only with fields records its points and residue fields; testing with dual numbers also records tangent directions. Testing with every scheme records the entire scheme, including its morphisms. The functor of points makes this statement precise, and its gluing criterion lets us build a scheme from a geometric description of its families.</p>
+<p>The prerequisite is <a href="schemes-gluing-and-immersions.html">Schemes, gluing and immersions</a>. In particular we use its mapping gluing theorem and its nontrivial invertible sheaf on the projective line. The affine-target mapping theorem from <a href="affine-schemes.html">Affine schemes</a> turns the examples below into ring calculations. We work in fixed nested universes so that schemes in the smaller universe form an admissible category and their set-valued functors live in the larger one. This size convention does not affect any calculation.</p>
+<h2 id="1-a-scheme-through-all-its-test-maps">1. A scheme through all its test maps</h2>
+<p>For a scheme <span class="math" data-tex="\(X\)">\(X\)</span>, its <strong>functor of points</strong> is the contravariant functor</p>
+<span class="math math-display" data-tex="\[
+h_X(T)=\operatorname{Hom}(T,X),\qquad
+h_X(a)(f)=f\circ a\quad(a:T&#x27;\to T).
+\]">\[
+h_X(T)=\operatorname{Hom}(T,X),\qquad
+h_X(a)(f)=f\circ a\quad(a:T&#x27;\to T).
+\]</span>
+<p>An element of <span class="math" data-tex="\(h_X(T)\)">\(h_X(T)\)</span> is a <strong><span class="math" data-tex="\(T\)">\(T\)</span>-valued point</strong>. It is a morphism, not generally one point of the underlying topological space. Over a base <span class="math" data-tex="\(S\)">\(S\)</span>, replace every Hom by <span class="math" data-tex="\(\operatorname{Hom}_S\)">\(\operatorname{Hom}_S\)</span> and take test schemes over <span class="math" data-tex="\(S\)">\(S\)</span>. A functor <span class="math" data-tex="\(F\)">\(F\)</span> is <strong>represented</strong> by a scheme <span class="math" data-tex="\(X\)">\(X\)</span> if there is a natural isomorphism <span class="math" data-tex="\(h_X\cong F\)">\(h_X\cong F\)</span>.</p>
+<p><strong>Theorem 1.1 (Yoneda).</strong> For every contravariant set-valued functor <span class="math" data-tex="\(F\)">\(F\)</span> on schemes,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Nat}(h_X,F)\cong F(X),\qquad
+\alpha\longmapsto\alpha_X(1_X).
+\tag{1.1}
+\]">\[
+\operatorname{Nat}(h_X,F)\cong F(X),\qquad
+\alpha\longmapsto\alpha_X(1_X).
+\tag{1.1}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(X\mapsto h_X\)">\(X\mapsto h_X\)</span> is fully faithful. The same assertion holds over a base scheme.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\xi\in F(X)\)">\(\xi\in F(X)\)</span>, define <span class="math" data-tex="\(\alpha_T(f)=F(f)(\xi)\)">\(\alpha_T(f)=F(f)(\xi)\)</span> for every <span class="math" data-tex="\(f:T\to X\)">\(f:T\to X\)</span>. If <span class="math" data-tex="\(a:T&#x27;\to T\)">\(a:T&#x27;\to T\)</span>, the functor identity gives
+<span class="math" data-tex="\(F(a)\alpha_T(f)=F(fa)(\xi)=\alpha_{T&#x27;}(fa)\)">\(F(a)\alpha_T(f)=F(fa)(\xi)=\alpha_{T&#x27;}(fa)\)</span>,
+so <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is natural. Conversely naturality of any <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, applied to <span class="math" data-tex="\(f:T\to X\)">\(f:T\to X\)</span> and <span class="math" data-tex="\(1_X\)">\(1_X\)</span>, gives exactly this formula with <span class="math" data-tex="\(\xi=\alpha_X(1_X)\)">\(\xi=\alpha_X(1_X)\)</span>. Thus the constructions are inverse. Taking <span class="math" data-tex="\(F=h_Y\)">\(F=h_Y\)</span>, the element <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is a morphism <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span>, and the associated transformation is postcomposition with it. This proves full faithfulness. The argument works in the category of schemes over <span class="math" data-tex="\(S\)">\(S\)</span> without change. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\((X,\xi)\)">\((X,\xi)\)</span> represents <span class="math" data-tex="\(F\)">\(F\)</span>, every <span class="math" data-tex="\(\eta\in F(T)\)">\(\eta\in F(T)\)</span> is uniquely <span class="math" data-tex="\(f^*\xi=F(f)(\xi)\)">\(f^*\xi=F(f)(\xi)\)</span> for a map <span class="math" data-tex="\(f:T\to X\)">\(f:T\to X\)</span>. The element <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is the <strong>universal element</strong>, often called the universal family. A representing scheme together with this identification is unique up to a unique isomorphism. Without a specified identification it can have nontrivial automorphisms.</p>
+<p>The identity test in Yoneda is unavailable if we only test a nonaffine <span class="math" data-tex="\(X\)">\(X\)</span> with affines. Nevertheless those tests suffice.</p>
+<p><strong>Theorem 1.2 (affine tests suffice).</strong> For any schemes <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, postcomposition gives a bijection</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(X,Y)\cong
+\operatorname{Nat}\bigl(h_X|_{\mathrm{Aff}},h_Y|_{\mathrm{Aff}}\bigr).
+\tag{1.2}
+\]">\[
+\operatorname{Hom}(X,Y)\cong
+\operatorname{Nat}\bigl(h_X|_{\mathrm{Aff}},h_Y|_{\mathrm{Aff}}\bigr).
+\tag{1.2}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be a transformation on affine test schemes, and choose an affine open cover <span class="math" data-tex="\(X=\bigcup U_i\)">\(X=\bigcup U_i\)</span>, with inclusions <span class="math" data-tex="\(j_i\)">\(j_i\)</span>. Put <span class="math" data-tex="\(f_i=\alpha_{U_i}(j_i):U_i\to Y\)">\(f_i=\alpha_{U_i}(j_i):U_i\to Y\)</span>. On an affine open <span class="math" data-tex="\(W\subset U_i\cap U_j\)">\(W\subset U_i\cap U_j\)</span>, naturality for both inclusions says that <span class="math" data-tex="\(f_i|_W=f_j|_W\)">\(f_i|_W=f_j|_W\)</span>. Such <span class="math" data-tex="\(W\)">\(W\)</span> cover the intersection, even when that intersection is not affine. Morphism gluing makes <span class="math" data-tex="\(f_i=f_j\)">\(f_i=f_j\)</span> there, and then gives a unique <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>.</p>
+<p>For any affine <span class="math" data-tex="\(T\)">\(T\)</span> and any <span class="math" data-tex="\(g:T\to X\)">\(g:T\to X\)</span>, cover <span class="math" data-tex="\(T\)">\(T\)</span> by affine opens <span class="math" data-tex="\(V_a\)">\(V_a\)</span> lying in some <span class="math" data-tex="\(g^{-1}U_i\)">\(g^{-1}U_i\)</span>. Naturality for <span class="math" data-tex="\(V_a\to T\)">\(V_a\to T\)</span> and for the factor <span class="math" data-tex="\(V_a\to U_i\)">\(V_a\to U_i\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\alpha_T(g)|_{V_a}=
+\alpha_{V_a}(g|_{V_a})=f_i\circ g|_{V_a}=f\circ g|_{V_a}.
+\]">\[
+\alpha_T(g)|_{V_a}=
+\alpha_{V_a}(g|_{V_a})=f_i\circ g|_{V_a}=f\circ g|_{V_a}.
+\]</span>
+<p>The gluing uniqueness theorem implies <span class="math" data-tex="\(\alpha_T(g)=fg\)">\(\alpha_T(g)=fg\)</span>. Thus the transformation is postcomposition with <span class="math" data-tex="\(f\)">\(f\)</span>. Uniqueness of <span class="math" data-tex="\(f\)">\(f\)</span> follows already by testing on the affine chart inclusions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, a natural isomorphism of the restricted functors determines an isomorphism of schemes: the transformations in both directions come from morphisms, and their composites are identities by full faithfulness. Remember that this requires every affine test ring and every homomorphism between them, not just field-valued points.</p>
+<h2 id="2-equations-as-representing-schemes">2. Equations as representing schemes</h2>
+<p>Fix a ring <span class="math" data-tex="\(R\)">\(R\)</span>, and work on schemes over <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span>. Put <span class="math" data-tex="\(A_T=\Gamma(T,\mathcal O_T)\)">\(A_T=\Gamma(T,\mathcal O_T)\)</span>, with its specified <span class="math" data-tex="\(R\)">\(R\)</span>-algebra structure. The affine-target theorem gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_R(T,\operatorname{Spec}B)
+\cong\operatorname{Hom}_{R\text{-alg}}(B,A_T).
+\tag{2.1}
+\]">\[
+\operatorname{Hom}_R(T,\operatorname{Spec}B)
+\cong\operatorname{Hom}_{R\text{-alg}}(B,A_T).
+\tag{2.1}
+\]</span>
+<p>This holds for nonaffine <span class="math" data-tex="\(T\)">\(T\)</span> too. The over-<span class="math" data-tex="\(R\)">\(R\)</span> condition is precisely that the global ring map commute with the given map from <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><strong>Theorem 2.1 (polynomial solution functors).</strong> For polynomials <span class="math" data-tex="\(f_1,\ldots,f_r\in R[x_1,\ldots,x_n]\)">\(f_1,\ldots,f_r\in R[x_1,\ldots,x_n]\)</span>, the closed subscheme</p>
+<span class="math math-display" data-tex="\[
+V(f_1,\ldots,f_r)=\operatorname{Spec}R[x_1,\ldots,x_n]/(f_1,\ldots,f_r)
+\subset\mathbb A^n_R
+\]">\[
+V(f_1,\ldots,f_r)=\operatorname{Spec}R[x_1,\ldots,x_n]/(f_1,\ldots,f_r)
+\subset\mathbb A^n_R
+\]</span>
+<p>represents the functor</p>
+<span class="math math-display" data-tex="\[
+T\longmapsto\{(a_1,\ldots,a_n)\in A_T^n:
+f_j(a_1,\ldots,a_n)=0\text{ for every }j\}.
+\tag{2.2}
+\]">\[
+T\longmapsto\{(a_1,\ldots,a_n)\in A_T^n:
+f_j(a_1,\ldots,a_n)=0\text{ for every }j\}.
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> A homomorphism from the polynomial ring is determined uniquely by the images <span class="math" data-tex="\(a_i\)">\(a_i\)</span> of its variables. It factors through the quotient precisely when all the <span class="math" data-tex="\(f_j\)">\(f_j\)</span> map to zero. Formula (2.1) gives the required bijection. Pulling back a section tuple along <span class="math" data-tex="\(T&#x27;\to T\)">\(T&#x27;\to T\)</span> applies the induced ring homomorphism to its entries, which commutes with polynomial evaluation. Thus the bijections are natural. The inclusion is the closed immersion associated with the quotient map, proved in the preceding lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument also permits an arbitrary set of equations, with its generated ideal; no finite-presentation conclusion should be inferred in that case. For no equations it says <span class="math" data-tex="\(\mathbb A^n_R(T)=A_T^n\)">\(\mathbb A^n_R(T)=A_T^n\)</span>. A regular function is a map to affine one-space over the base, even on a nonaffine test scheme.</p>
+<p>Here are several useful instances. The universal coordinates provide their universal elements.</p>
+<table>
+<thead>
+<tr>
+<th>Scheme over <span class="math" data-tex="\(R\)">\(R\)</span></th>
+<th>Coordinate ring</th>
+<th>Its <span class="math" data-tex="\(T\)">\(T\)</span>-valued points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\mathbb G_{m,R}\)">\(\mathbb G_{m,R}\)</span></td>
+<td><span class="math" data-tex="\(R[t,t^{-1}]\)">\(R[t,t^{-1}]\)</span></td>
+<td><span class="math" data-tex="\(A_T^*\)">\(A_T^*\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mu_{n,R}\)">\(\mu_{n,R}\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span></td>
+<td><span class="math" data-tex="\(R[t]/(t^n-1)\)">\(R[t]/(t^n-1)\)</span></td>
+<td><span class="math" data-tex="\(\{a\in A_T:a^n=1\}\)">\(\{a\in A_T:a^n=1\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{GL}_{n,R}\)">\(\mathrm{GL}_{n,R}\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span></td>
+<td><span class="math" data-tex="\(R[x_{ij},d^{-1}]\)">\(R[x_{ij},d^{-1}]\)</span>, <span class="math" data-tex="\(d=\det(x_{ij})\)">\(d=\det(x_{ij})\)</span></td>
+<td>invertible <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> matrices over <span class="math" data-tex="\(A_T\)">\(A_T\)</span></td>
+</tr>
+<tr>
+<td>Two copies of <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span></td>
+<td><span class="math" data-tex="\(R\times R\)">\(R\times R\)</span></td>
+<td>idempotents in <span class="math" data-tex="\(A_T\)">\(A_T\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For the first row, localization forces the image of <span class="math" data-tex="\(t\)">\(t\)</span> to be a unit, and every unit defines a unique map. For <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>, a solution of <span class="math" data-tex="\(a^n=1\)">\(a^n=1\)</span> is automatically a unit with inverse <span class="math" data-tex="\(a^{n-1}\)">\(a^{n-1}\)</span>. For matrices, localization at <span class="math" data-tex="\(d\)">\(d\)</span> asks exactly that the determinant be a unit. The adjugate formula proves sufficiency for invertibility, and taking determinants of a matrix inverse proves necessity. Both directions hold over arbitrary commutative rings, including those with zero divisors. The last row is proved in Solution 2.</p>
+<p>These functors have natural group operations in the first three rows: multiplication of units, multiplication of roots of unity, and matrix multiplication. The corresponding morphisms are forced by Yoneda. For example inversion on <span class="math" data-tex="\(\mathbb G_m\)">\(\mathbb G_m\)</span> is induced by <span class="math" data-tex="\(t\mapsto t^{-1}\)">\(t\mapsto t^{-1}\)</span>; the determinant gives a morphism <span class="math" data-tex="\(\mathrm{GL}_n\to\mathbb G_m\)">\(\mathrm{GL}_n\to\mathbb G_m\)</span>. Construction of products in the next lesson lets us formulate all group-scheme axioms as diagrams of morphisms.</p>
+<h2 id="3-the-sheaf-property-and-geometric-openness">3. The sheaf property and geometric openness</h2>
+<p>A contravariant functor <span class="math" data-tex="\(F\)">\(F\)</span> is a <strong>Zariski sheaf on schemes</strong> if for every open cover <span class="math" data-tex="\(T=\bigcup V_a\)">\(T=\bigcup V_a\)</span>, restriction induces a bijection between <span class="math" data-tex="\(F(T)\)">\(F(T)\)</span> and the compatible families of elements of <span class="math" data-tex="\(F(V_a)\)">\(F(V_a)\)</span>. Explicitly,</p>
+<span class="math math-display" data-tex="\[
+F(T)\longrightarrow\prod_a F(V_a)\rightrightarrows
+\prod_{a,b}F(V_a\cap V_b)
+\tag{3.1}
+\]">\[
+F(T)\longrightarrow\prod_a F(V_a)\rightrightarrows
+\prod_{a,b}F(V_a\cap V_b)
+\tag{3.1}
+\]</span>
+<p>is an equalizer. Include the empty cover of the empty scheme; it requires <span class="math" data-tex="\(F(\varnothing)\)">\(F(\varnothing)\)</span> to have one element.</p>
+<p><strong>Theorem 3.1.</strong> Every representable functor is a Zariski sheaf.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(F=h_X\)">\(F=h_X\)</span>, a compatible family in (3.1) is a family of maps <span class="math" data-tex="\(V_a\to X\)">\(V_a\to X\)</span> agreeing on overlaps. The preceding lesson's morphism gluing theorem gives precisely one map <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span>. For the empty scheme there is exactly one morphism to <span class="math" data-tex="\(X\)">\(X\)</span>. A natural isomorphism transfers the assertion to any representable <span class="math" data-tex="\(F\)">\(F\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A <strong>subfunctor</strong> <span class="math" data-tex="\(H\subset F\)">\(H\subset F\)</span> assigns a subset <span class="math" data-tex="\(H(T)\subset F(T)\)">\(H(T)\subset F(T)\)</span> preserved by every pullback. Call it an <strong>open subfunctor</strong> if for every <span class="math" data-tex="\(\xi\in F(T)\)">\(\xi\in F(T)\)</span> there is an open subscheme <span class="math" data-tex="\(V_\xi\subset T\)">\(V_\xi\subset T\)</span> such that, for every morphism <span class="math" data-tex="\(a:T&#x27;\to T\)">\(a:T&#x27;\to T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+a^*\xi\in H(T&#x27;)\quad\Longleftrightarrow\quad
+a\text{ factors through }V_\xi.
+\tag{3.2}
+\]">\[
+a^*\xi\in H(T&#x27;)\quad\Longleftrightarrow\quad
+a\text{ factors through }V_\xi.
+\tag{3.2}
+\]</span>
+<p>The factorization is unique because open immersions are monomorphisms. Thus (3.2) says that the set-valued fibre product <span class="math" data-tex="\(h_T\times_F H\)">\(h_T\times_F H\)</span> is represented by that open of <span class="math" data-tex="\(T\)">\(T\)</span>. This notation does not assume scheme fibre products already exist.</p>
+<p>The open is unique: each candidate's inclusion factors through the other by (3.2). It is the largest open on which the restricted element belongs to <span class="math" data-tex="\(H\)">\(H\)</span>. The same property also gives pullback compatibility, since the open attached to <span class="math" data-tex="\(a^*\xi\)">\(a^*\xi\)</span> is <span class="math" data-tex="\(a^{-1}V_\xi\)">\(a^{-1}V_\xi\)</span>. Finally an open subfunctor of a Zariski sheaf is a sheaf: a compatible local family first glues in <span class="math" data-tex="\(F\)">\(F\)</span>; its associated membership open contains all the cover opens, so is all of <span class="math" data-tex="\(T\)">\(T\)</span>, forcing the glued element into <span class="math" data-tex="\(H(T)\)">\(H(T)\)</span>.</p>
+<p><strong>Theorem 3.2 (open subfunctors of a scheme).</strong> Open subfunctors of <span class="math" data-tex="\(h_X\)">\(h_X\)</span> correspond bijectively to open subschemes of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Proof.</strong> For an open <span class="math" data-tex="\(U\subset X\)">\(U\subset X\)</span>, identify <span class="math" data-tex="\(h_U\)">\(h_U\)</span> with its image in <span class="math" data-tex="\(h_X\)">\(h_X\)</span>, using the monomorphism assertion. For <span class="math" data-tex="\(\xi=f:T\to X\)">\(\xi=f:T\to X\)</span>, the membership open is <span class="math" data-tex="\(f^{-1}U\)">\(f^{-1}U\)</span>. A morphism <span class="math" data-tex="\(a:T&#x27;\to T\)">\(a:T&#x27;\to T\)</span> has <span class="math" data-tex="\(fa\)">\(fa\)</span> factoring through <span class="math" data-tex="\(U\)">\(U\)</span> exactly when <span class="math" data-tex="\(a\)">\(a\)</span> factors through <span class="math" data-tex="\(f^{-1}U\)">\(f^{-1}U\)</span>: the continuous image condition determines factorization through an open subscheme, and its structure map is the restriction. Hence this is an open subfunctor.</p>
+<p>Conversely let <span class="math" data-tex="\(H\subset h_X\)">\(H\subset h_X\)</span> be open and apply its definition to <span class="math" data-tex="\(1_X\)">\(1_X\)</span>. Obtain <span class="math" data-tex="\(U\subset X\)">\(U\subset X\)</span>. Formula (3.2), now with arbitrary <span class="math" data-tex="\(f:T\to X\)">\(f:T\to X\)</span>, says <span class="math" data-tex="\(f\in H(T)\)">\(f\in H(T)\)</span> if and only if <span class="math" data-tex="\(f\)">\(f\)</span> factors through <span class="math" data-tex="\(U\)">\(U\)</span>. Thus <span class="math" data-tex="\(H=h_U\)">\(H=h_U\)</span> inside <span class="math" data-tex="\(h_X\)">\(h_X\)</span>. These constructions reverse each other, including empty and full opens. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A family of open subfunctors <span class="math" data-tex="\((F_i)\)">\((F_i)\)</span> <strong>covers</strong> <span class="math" data-tex="\(F\)">\(F\)</span> if for every <span class="math" data-tex="\(\xi\in F(T)\)">\(\xi\in F(T)\)</span> its membership opens <span class="math" data-tex="\(V_i(\xi)\)">\(V_i(\xi)\)</span> cover <span class="math" data-tex="\(T\)">\(T\)</span>. This allows an element to need several charts. It does not require that one chart contain the whole element on every test scheme.</p>
+<p>It suffices to test this cover condition on spectra of fields. For each <span class="math" data-tex="\(t\in T\)">\(t\in T\)</span>, pull <span class="math" data-tex="\(\xi\)">\(\xi\)</span> back by <span class="math" data-tex="\(\operatorname{Spec}\kappa(t)\to T\)">\(\operatorname{Spec}\kappa(t)\to T\)</span>. If it belongs to an <span class="math" data-tex="\(F_i\)">\(F_i\)</span>, (3.2) forces this map to factor through <span class="math" data-tex="\(V_i(\xi)\)">\(V_i(\xi)\)</span>, and hence <span class="math" data-tex="\(t\in V_i(\xi)\)">\(t\in V_i(\xi)\)</span>. The converse follows immediately because a one-point field spectrum must lie in one covering open. Openness itself still requires all test schemes.</p>
+<h2 id="4-representing-a-functor-by-its-open-charts">4. Representing a functor by its open charts</h2>
+<p><strong>Theorem 4.1 (representability by gluing).</strong> Suppose <span class="math" data-tex="\(F\)">\(F\)</span> is a Zariski sheaf and has a set-indexed cover by open subfunctors <span class="math" data-tex="\(F_i\)">\(F_i\)</span>, each represented by a scheme <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. Then <span class="math" data-tex="\(F\)">\(F\)</span> is represented by a scheme <span class="math" data-tex="\(X\)">\(X\)</span>, in which the <span class="math" data-tex="\(X_i\)">\(X_i\)</span> occur as open subschemes. The overlap of charts represents <span class="math" data-tex="\(F_i\cap F_j\)">\(F_i\cap F_j\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\xi_i\in F_i(X_i)\subset F(X_i)\)">\(\xi_i\in F_i(X_i)\subset F(X_i)\)</span> be the universal element. Openness of <span class="math" data-tex="\(F_j\)">\(F_j\)</span> gives an open <span class="math" data-tex="\(U_{ij}\subset X_i\)">\(U_{ij}\subset X_i\)</span> characterized by</p>
+<span class="math math-display" data-tex="\[
+a:T\to X_i\text{ factors through }U_{ij}
+\quad\Longleftrightarrow\quad a^*\xi_i\in F_j(T).
+\tag{4.1}
+\]">\[
+a:T\to X_i\text{ factors through }U_{ij}
+\quad\Longleftrightarrow\quad a^*\xi_i\in F_j(T).
+\tag{4.1}
+\]</span>
+<p>The left-hand element automatically belongs to <span class="math" data-tex="\(F_i(T)\)">\(F_i(T)\)</span>. Thus <span class="math" data-tex="\(U_{ij}\)">\(U_{ij}\)</span> represents <span class="math" data-tex="\(F_i\cap F_j\)">\(F_i\cap F_j\)</span>. In particular <span class="math" data-tex="\(\xi_i|_{U_{ij}}\)">\(\xi_i|_{U_{ij}}\)</span>, viewed in <span class="math" data-tex="\(F_j(U_{ij})\)">\(F_j(U_{ij})\)</span>, determines a unique map <span class="math" data-tex="\(g_{ij}:U_{ij}\to X_j\)">\(g_{ij}:U_{ij}\to X_j\)</span>. Its element also belongs to <span class="math" data-tex="\(F_i\)">\(F_i\)</span>, so (4.1) on <span class="math" data-tex="\(X_j\)">\(X_j\)</span> makes this map factor through <span class="math" data-tex="\(U_{ji}\)">\(U_{ji}\)</span>. The reversed map is its inverse: their composite preserves the universal element, and uniqueness of the representing map forces it to be the identity.</p>
+<p>On <span class="math" data-tex="\(U_{ij}\)">\(U_{ij}\)</span>, belonging additionally to <span class="math" data-tex="\(F_k\)">\(F_k\)</span> cuts out <span class="math" data-tex="\(U_{ij}\cap U_{ik}\)">\(U_{ij}\cap U_{ik}\)</span>. Under <span class="math" data-tex="\(g_{ij}\)">\(g_{ij}\)</span> this condition cuts out <span class="math" data-tex="\(U_{ji}\cap U_{jk}\)">\(U_{ji}\cap U_{jk}\)</span>. This proves the gluing domain identity. On that open, both <span class="math" data-tex="\(g_{jk}g_{ij}\)">\(g_{jk}g_{ij}\)</span> and <span class="math" data-tex="\(g_{ik}\)">\(g_{ik}\)</span>, as maps to <span class="math" data-tex="\(X_k\)">\(X_k\)</span>, pull <span class="math" data-tex="\(\xi_k\)">\(\xi_k\)</span> back to the same element. Representability of <span class="math" data-tex="\(F_k\)">\(F_k\)</span> proves equality, hence the cocycle. Also <span class="math" data-tex="\(U_{ii}=X_i\)">\(U_{ii}=X_i\)</span> and <span class="math" data-tex="\(g_{ii}=1\)">\(g_{ii}=1\)</span>.</p>
+<p>The scheme gluing theorem now constructs <span class="math" data-tex="\(X\)">\(X\)</span> with open chart maps <span class="math" data-tex="\(j_i:X_i\to X\)">\(j_i:X_i\to X\)</span>. Transport the <span class="math" data-tex="\(\xi_i\)">\(\xi_i\)</span> to these open charts. They agree on the overlaps by construction. Since <span class="math" data-tex="\(F\)">\(F\)</span> is a sheaf, they glue to <span class="math" data-tex="\(\xi\in F(X)\)">\(\xi\in F(X)\)</span>. This element defines the natural transformation <span class="math" data-tex="\(h_X\to F\)">\(h_X\to F\)</span>, <span class="math" data-tex="\(f\mapsto f^*\xi\)">\(f\mapsto f^*\xi\)</span>. We prove it is a bijection on every test scheme.</p>
+<p>Given <span class="math" data-tex="\(\eta\in F(T)\)">\(\eta\in F(T)\)</span>, its membership opens <span class="math" data-tex="\(V_i\)">\(V_i\)</span> cover <span class="math" data-tex="\(T\)">\(T\)</span>. On <span class="math" data-tex="\(V_i\)">\(V_i\)</span>, representability of <span class="math" data-tex="\(F_i\)">\(F_i\)</span> gives a unique map <span class="math" data-tex="\(f_i:V_i\to X_i\)">\(f_i:V_i\to X_i\)</span> pulling back <span class="math" data-tex="\(\xi_i\)">\(\xi_i\)</span> to <span class="math" data-tex="\(\eta|_{V_i}\)">\(\eta|_{V_i}\)</span>. On <span class="math" data-tex="\(V_i\cap V_j\)">\(V_i\cap V_j\)</span>, the element belongs to both subfunctors. Thus <span class="math" data-tex="\(f_i\)">\(f_i\)</span> factors through <span class="math" data-tex="\(U_{ij}\)">\(U_{ij}\)</span>, and <span class="math" data-tex="\(g_{ij}f_i=f_j\)">\(g_{ij}f_i=f_j\)</span> by uniqueness in <span class="math" data-tex="\(F_j\)">\(F_j\)</span>. The maps <span class="math" data-tex="\(j_i f_i\)">\(j_i f_i\)</span> glue to <span class="math" data-tex="\(f:T\to X\)">\(f:T\to X\)</span>, and its pullback of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> equals <span class="math" data-tex="\(\eta\)">\(\eta\)</span> by the sheaf uniqueness axiom.</p>
+<p>For injectivity, suppose <span class="math" data-tex="\(f,g:T\to X\)">\(f,g:T\to X\)</span> give the same element. Cover <span class="math" data-tex="\(T\)">\(T\)</span> by the opens
+<span class="math" data-tex="\(W_{ij}=f^{-1}(j_iX_i)\cap g^{-1}(j_jX_j)\)">\(W_{ij}=f^{-1}(j_iX_i)\cap g^{-1}(j_jX_j)\)</span>.
+On such an open their common element belongs to both <span class="math" data-tex="\(F_i\)">\(F_i\)</span> and <span class="math" data-tex="\(F_j\)">\(F_j\)</span>. The two chart maps therefore factor through <span class="math" data-tex="\(U_{ij}\)">\(U_{ij}\)</span> and <span class="math" data-tex="\(U_{ji}\)">\(U_{ji}\)</span> by (4.1), and agree after the transition, by representability. Hence <span class="math" data-tex="\(f=g\)">\(f=g\)</span> there. Morphism gluing gives <span class="math" data-tex="\(f=g\)">\(f=g\)</span> globally. This proves the required natural isomorphism and the asserted overlap description. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This criterion isolates what a geometric construction must establish: local representing objects, a genuinely open membership condition, and the ability to glue its families uniquely. Merely having a collection of familiar-looking charts does not suffice. In particular the sheaf hypothesis is essential.</p>
+<p><strong>Example 4.2 (the Picard functor fails even uniqueness).</strong> The functor
+<span class="math" data-tex="\(T\mapsto\operatorname{Pic}(T)\)">\(T\mapsto\operatorname{Pic}(T)\)</span>,
+with pullback of invertible sheaves, is not a Zariski sheaf. Take the nontrivial invertible sheaf <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> on <span class="math" data-tex="\(\mathbb P^1_k\)">\(\mathbb P^1_k\)</span> constructed in the preceding lesson's Solution 6. Its class and the class of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> are distinct globally but restrict to the same class on both affine charts. Restriction is therefore not injective in the equalizer diagram (3.1). By Theorem 3.1 this functor is not represented by a scheme. The issue here is the functor of isomorphism classes with its stated values; later Picard constructions use additional structure and sheafification.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Prove that <span class="math" data-tex="\(\operatorname{Spec}R[t,t^{-1}]\)">\(\operatorname{Spec}R[t,t^{-1}]\)</span> represents the unit functor on <span class="math" data-tex="\(R\)">\(R\)</span>-schemes, identify the universal unit, and compute its inverse morphism.</li>
+<li><strong>Easy.</strong> Prove that <span class="math" data-tex="\(\operatorname{Spec}\mathbb Z\amalg\operatorname{Spec}\mathbb Z\)">\(\operatorname{Spec}\mathbb Z\amalg\operatorname{Spec}\mathbb Z\)</span> represents idempotent global sections. Relate the idempotent to a decomposition of the test scheme into two open and closed pieces.</li>
+<li><strong>Medium.</strong> Use the projective-line transition <span class="math" data-tex="\(e_\infty=t e_0\)">\(e_\infty=t e_0\)</span> to prove that the Picard functor is not a Zariski sheaf. Specify which sheaf axiom fails.</li>
+<li><strong>Medium.</strong> Suppose <span class="math" data-tex="\(h_X|_{\mathrm{Aff}}\cong h_Y|_{\mathrm{Aff}}\)">\(h_X|_{\mathrm{Aff}}\cong h_Y|_{\mathrm{Aff}}\)</span> naturally. Construct the corresponding scheme isomorphism, and explain why nonaffine chart intersections cause no problem.</li>
+<li><strong>Medium.</strong> Given the open-chart gluing data of the preceding lesson, construct the functor of compatible local maps to those charts, and apply Theorem 4.1 to recover their gluing as a representing scheme. Check the sheaf and openness conditions.</li>
+<li><strong>Medium.</strong> Over a field <span class="math" data-tex="\(k\)">\(k\)</span> of characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, describe <span class="math" data-tex="\(\mu_p\)">\(\mu_p\)</span>, its reduction, its field-valued points and its dual-number points over <span class="math" data-tex="\(k\)">\(k\)</span>. What information is absent from its field-valued points?</li>
+</ol>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>Solution 1.</strong> By (2.1), a map from <span class="math" data-tex="\(T\)">\(T\)</span> to this spectrum is an <span class="math" data-tex="\(R\)">\(R\)</span>-algebra map to <span class="math" data-tex="\(A_T\)">\(A_T\)</span>. Such a map is determined by a unit <span class="math" data-tex="\(a\)">\(a\)</span>, the image of <span class="math" data-tex="\(t\)">\(t\)</span>, and then sends <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> to <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>. Conversely each unit gives this map by the localization universal property. Ring homomorphisms preserve units and inverses, so the bijection is natural. The universal element is <span class="math" data-tex="\(t\)">\(t\)</span> in the coordinate ring, the image of the identity morphism under this bijection. The ring map <span class="math" data-tex="\(t\mapsto t^{-1}\)">\(t\mapsto t^{-1}\)</span> gives inversion, since pullback sends the universal unit to its inverse.</p>
+<p><strong>Solution 2.</strong> The polynomial <span class="math" data-tex="\(e^2-e=e(e-1)\)">\(e^2-e=e(e-1)\)</span> has comaximal factors, since <span class="math" data-tex="\(e-(e-1)=1\)">\(e-(e-1)=1\)</span>. Evaluation at <span class="math" data-tex="\(0,1\)">\(0,1\)</span> gives an isomorphism
+<span class="math" data-tex="\(\mathbb Z[e]/(e^2-e)\cong\mathbb Z\times\mathbb Z\)">\(\mathbb Z[e]/(e^2-e)\cong\mathbb Z\times\mathbb Z\)</span>
+by the Chinese remainder theorem; explicitly, the inverse sends <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> to <span class="math" data-tex="\(a(1-e)+be\)">\(a(1-e)+be\)</span>, using <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>. A prime of a product contains one of its two complementary idempotents, so its spectrum is the disjoint union of the two spectra; on each piece localization gives the appropriate factor ring and its structure sheaf. Thus Theorem 2.1 proves the representation.</p>
+<p>For an idempotent section on any <span class="math" data-tex="\(T\)">\(T\)</span>, its image in each residue field is <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>. The unit loci of <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(1-e\)">\(1-e\)</span>, open by the local-ring unit criterion, are disjoint and cover <span class="math" data-tex="\(T\)">\(T\)</span>. On the first open, idempotence and invertibility force <span class="math" data-tex="\(e=1\)">\(e=1\)</span>; on the second <span class="math" data-tex="\(e=0\)">\(e=0\)</span>. Both are open and closed, and the map to the two-copy scheme labels them by <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>. Conversely any decomposition into two such opens glues the corresponding constant sections. This also treats empty pieces.</p>
+<p><strong>Solution 3.</strong> The sheaf <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> is trivial on each chart. If it were globally trivial, a global frame would be <span class="math" data-tex="\(a e_0\)">\(a e_0\)</span> and <span class="math" data-tex="\(b e_\infty\)">\(b e_\infty\)</span> with unit polynomial coefficients. Those units are nonzero constants, and agreement would require <span class="math" data-tex="\(a=b t\)">\(a=b t\)</span>, impossible in <span class="math" data-tex="\(k[t,t^{-1}]\)">\(k[t,t^{-1}]\)</span>. Thus <span class="math" data-tex="\([\mathcal L]\ne[\mathcal O]\)">\([\mathcal L]\ne[\mathcal O]\)</span> in <span class="math" data-tex="\(\operatorname{Pic}(\mathbb P^1_k)\)">\(\operatorname{Pic}(\mathbb P^1_k)\)</span>, but their restrictions agree on both charts. The uniqueness, or separatedness, part of the sheaf axiom fails. This is already enough to rule out a representing scheme.</p>
+<p><strong>Solution 4.</strong> Apply the natural transformation to every inclusion of an affine chart of <span class="math" data-tex="\(X\)">\(X\)</span> to obtain its map to <span class="math" data-tex="\(Y\)">\(Y\)</span>. On an arbitrary chart intersection, choose an affine open cover; naturality identifies the two maps on each member of that cover, and morphism gluing identifies them on the whole intersection. Glue the chart maps to <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>. The inverse transformation similarly produces <span class="math" data-tex="\(g:Y\to X\)">\(g:Y\to X\)</span>. Theorem 1.2 identifies their composites with the identity transformations, so its injectivity gives <span class="math" data-tex="\(gf=1_X\)">\(gf=1_X\)</span> and <span class="math" data-tex="\(fg=1_Y\)">\(fg=1_Y\)</span>. This constructs the isomorphism without treating any nonaffine overlap as affine.</p>
+<p><strong>Solution 5.</strong> Define a presentation on <span class="math" data-tex="\(T\)">\(T\)</span> to be an open cover <span class="math" data-tex="\((V_a)\)">\((V_a)\)</span>, chart labels <span class="math" data-tex="\(i_a\)">\(i_a\)</span>, and maps <span class="math" data-tex="\(f_a:V_a\to X_{i_a}\)">\(f_a:V_a\to X_{i_a}\)</span> such that on each overlap the first map lands in <span class="math" data-tex="\(U_{i_ai_b}\)">\(U_{i_ai_b}\)</span> and becomes the second under <span class="math" data-tex="\(g_{i_ai_b}\)">\(g_{i_ai_b}\)</span>. Two presentations are equivalent if the same compatibility holds on all intersections between members of their covers. Reflexivity and symmetry follow from the gluing data. For transitivity, cover any intersection of the first and third covers by its intersections with the middle cover; the domain identity and cocycle show compatibility there, and the point-image and morphism-equality conditions are local. Thus this defines an equivalence relation. Let <span class="math" data-tex="\(F(T)\)">\(F(T)\)</span> be the set of classes, with pullback of covers and maps along a morphism of test schemes.</p>
+<p>Restriction classes agreeing over a cover can be represented there and their presentations combined into one presentation: on cross overlaps, agreement of the classes is exactly the required compatibility. This gives existence of gluing. If two global classes restrict equally, the same local condition gives their mutual compatibility, hence equality. Therefore <span class="math" data-tex="\(F\)">\(F\)</span> is a Zariski sheaf, with a unique empty presentation class on the empty scheme.</p>
+<p>A map <span class="math" data-tex="\(T\to X_i\)">\(T\to X_i\)</span>, viewed as a one-member presentation, defines a subfunctor <span class="math" data-tex="\(F_i\cong h_{X_i}\)">\(F_i\cong h_{X_i}\)</span>: equality of two such presentations is equality of their maps, since <span class="math" data-tex="\(g_{ii}=1\)">\(g_{ii}=1\)</span>. For a presentation of <span class="math" data-tex="\(\eta\in F(T)\)">\(\eta\in F(T)\)</span>, the membership open for <span class="math" data-tex="\(F_i\)">\(F_i\)</span> is</p>
+<span class="math math-display" data-tex="\[
+V_i=\bigcup_a f_a^{-1}(U_{i_ai})\subset T.
+\]">\[
+V_i=\bigcup_a f_a^{-1}(U_{i_ai})\subset T.
+\]</span>
+<p>The transported maps to <span class="math" data-tex="\(X_i\)">\(X_i\)</span> agree by the cocycle and glue uniquely on <span class="math" data-tex="\(V_i\)">\(V_i\)</span>. Hence the class restricted there lies in <span class="math" data-tex="\(F_i\)">\(F_i\)</span>. Conversely, membership after any <span class="math" data-tex="\(b:T&#x27;\to T\)">\(b:T&#x27;\to T\)</span> means its pulled-back presentation is compatible with a single map to <span class="math" data-tex="\(X_i\)">\(X_i\)</span>; compatibility forces <span class="math" data-tex="\(b\)">\(b\)</span> to land in <span class="math" data-tex="\(V_i\)">\(V_i\)</span>. If <span class="math" data-tex="\(b\)">\(b\)</span> lands there, the glued transported map gives that membership. This proves (3.2); the formula is independent of presentation by its characterization. The <span class="math" data-tex="\(V_i\)">\(V_i\)</span> cover <span class="math" data-tex="\(T\)">\(T\)</span>, since each original <span class="math" data-tex="\(V_a\)">\(V_a\)</span> lies in <span class="math" data-tex="\(V_{i_a}\)">\(V_{i_a}\)</span>. Theorem 4.1 gives a representing scheme with exactly these charts, overlaps and transitions. This recovers the scheme gluing statement in functor language.</p>
+<p><strong>Solution 6.</strong> In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, the binomial identity gives <span class="math" data-tex="\(t^p-1=(t-1)^p\)">\(t^p-1=(t-1)^p\)</span>. Put <span class="math" data-tex="\(u=t-1\)">\(u=t-1\)</span>; the coordinate ring is <span class="math" data-tex="\(k[u]/(u^p)\)">\(k[u]/(u^p)\)</span>, with reduction <span class="math" data-tex="\(k\)">\(k\)</span>. Every map to a field extension of <span class="math" data-tex="\(k\)">\(k\)</span> must kill <span class="math" data-tex="\(u\)">\(u\)</span>, so it gives only <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. A dual-number point has <span class="math" data-tex="\(t=a+\epsilon b\)">\(t=a+\epsilon b\)</span>. Its <span class="math" data-tex="\(p\)">\(p\)</span>-th power is <span class="math" data-tex="\(a^p\)">\(a^p\)</span>, since <span class="math" data-tex="\(\epsilon^p=0\)">\(\epsilon^p=0\)</span> and the intervening binomial coefficients vanish. The equation <span class="math" data-tex="\(a^p=1\)">\(a^p=1\)</span> forces <span class="math" data-tex="\(a=1\)">\(a=1\)</span> in the field, while <span class="math" data-tex="\(b\)">\(b\)</span> is arbitrary. Thus all <span class="math" data-tex="\(1+\epsilon b\)">\(1+\epsilon b\)</span> occur. These first-order directions and the nonzero nilpotent structure cannot be recovered from field-valued points alone.</p>
+<h2 id="proof-dependencies">Proof dependencies</h2>
+<p>The scheme-specific affine-test theorem, open-subfunctor theorem and representability criterion are proved here. The full Yoneda calculation is included, with [Stacks, Tag 001P] as the primary reference. Maps into spectra and open-chart gluing use the written proofs in the preceding two lessons. The Picard example uses the preceding lesson's actual solved exercise rather than a future Picard-group calculation. No general descent for modules, quotient construction or projective representability theorem is being assumed.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Stacks]</strong> The Stacks project authors, <em>The Stacks project</em>, read in the AI Integrated Stacks Project English edition: <em>Categories</em>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#lemma-yoneda">Tag 001P</a>; <em>Schemes</em>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#definition-representable-functor">Tag 01JG</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#definition-representable-by-open-immersions">Tag 01JI</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#lemma-glue-functors">Tag 01JJ</a>.</li>
+<li><strong>[Vakil]</strong> Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic Geometry</em>, public draft of 27 July 2024, Section 7.6. <a href="https://math.stanford.edu/~vakil/216blog/">Author's book page</a>; <a href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">consulted public draft</a> (personal viewing and downloading only; no redistribution or derivative works).</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="schemes-gluing-and-immersions.html">← Schemes, gluing and immersions</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="fibre-products-and-base-change.html">Fibre products and base change →</a></span></nav>
+<p class="small source-link"><a href="src/the-functor-of-points-and-representability.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-SS">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Differential operators and the Weyl algebra · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/differential-operators-and-the-weyl-algebra.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Differential operators and the Weyl algebra</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="differential-operators-and-the-weyl-algebra">Differential operators and the Weyl algebra</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A differential equation allows multiplication by a function and differentiation, and it matters which comes first. On the affine line, differentiating a product gives</p>
+<span class="math math-display" data-tex="\[
+\partial x-x\partial=1.
+\]">\[
+\partial x-x\partial=1.
+\]</span>
+<p>We will build the algebra behind this identity, explain why its leading terms live on a cotangent bundle, and prove that its ideals behave very differently from ideals of a polynomial ring. The construction works on every smooth variety in characteristic zero, even when there are no global coordinates.</p>
+<p>We assume elementary ring and module theory, the universal property of Kähler differentials, and the local description of a smooth variety by étale coordinates. In particular, an étale algebra has unique lifting of algebra maps across nilpotent ideals. These are the algebraic prerequisites; none of the analytic theory of differential equations is needed here. The <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D100">Algebraic Geometry Bridge</a> supplies geometric background. Basic references are the Stacks project, Bezrukavnikov's <em>Noncommutative Algebra</em>, and Ginzburg's <em>Lectures on D-modules</em>. The proofs below develop the algebra directly.</p>
+<p>Except in the section explicitly devoted to positive characteristic, <span class="math" data-tex="\(k\)">\(k\)</span> is a field of characteristic zero. A variety is smooth, separated and of finite type over <span class="math" data-tex="\(k\)">\(k\)</span>. We use <span class="math" data-tex="\([P,Q]=PQ-QP\)">\([P,Q]=PQ-QP\)</span>. The order filtration gives degree zero to functions and degree one to vector fields; the Bernstein filtration on a Weyl algebra gives degree one to both.</p>
+<h2 id="1-reading-a-noncommutative-formula">1. Reading a noncommutative formula</h2>
+<p>Let <span class="math" data-tex="\(A=k[x,y]\)">\(A=k[x,y]\)</span>, and write <span class="math" data-tex="\(\partial_x,\partial_y\)">\(\partial_x,\partial_y\)</span> for its usual derivations. Consider</p>
+<span class="math math-display" data-tex="\[
+P=x^2\partial_x\partial_y-\partial_y.
+\]">\[
+P=x^2\partial_x\partial_y-\partial_y.
+\]</span>
+<p>Applied to a monomial, it gives</p>
+<span class="math math-display" data-tex="\[
+P(x^a y^b)=abx^{a+1}y^{b-1}-bx^a y^{b-1}.
+\]">\[
+P(x^a y^b)=abx^{a+1}y^{b-1}-bx^a y^{b-1}.
+\]</span>
+<p>This calculation is about an operator on functions. In contrast, its principal symbol will be the function <span class="math" data-tex="\(x^2\xi_x\xi_y\)">\(x^2\xi_x\xi_y\)</span> on the cotangent bundle. The variables <span class="math" data-tex="\(\xi_x,\xi_y\)">\(\xi_x,\xi_y\)</span> describe covectors; they are not additional coordinates of the original variety. Lower derivative terms disappear from the principal symbol.</p>
+<p>On <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>, the Euler operator <span class="math" data-tex="\(\theta=x\partial\)">\(\theta=x\partial\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\theta(x^r)=rx^r,
+\qquad
+\theta x^r=x^r\theta+rx^r.
+\]">\[
+\theta(x^r)=rx^r,
+\qquad
+\theta x^r=x^r\theta+rx^r.
+\]</span>
+<p>The first formula applies an operator to a function. The second is an equality of operators and still has a derivative term. Keeping these two meanings apart prevents many sign and order mistakes.</p>
+<p>Every derivation <span class="math" data-tex="\(\delta\)">\(\delta\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+[\delta,a](b)=\delta(ab)-a\delta(b)=\delta(a)b.
+\]">\[
+[\delta,a](b)=\delta(ab)-a\delta(b)=\delta(a)b.
+\]</span>
+<p>Thus commuting a derivation with multiplication produces multiplication. This observation gives a coordinate-free definition of order.</p>
+<h2 id="2-order-from-repeated-commutators">2. Order from repeated commutators</h2>
+<p>For a commutative <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span>-modules <span class="math" data-tex="\(M,N\)">\(M,N\)</span>, put <span class="math" data-tex="\(\operatorname{Diff}^{-1}_{A/k}(M,N)=0\)">\(\operatorname{Diff}^{-1}_{A/k}(M,N)=0\)</span>. Define recursively</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Diff}^{m}_{A/k}(M,N)
+=\{P\in\operatorname{Hom}_k(M,N):[P,a]\in
+\operatorname{Diff}^{m-1}_{A/k}(M,N)\text{ for every }a\in A\}.
+\]">\[
+\operatorname{Diff}^{m}_{A/k}(M,N)
+=\{P\in\operatorname{Hom}_k(M,N):[P,a]\in
+\operatorname{Diff}^{m-1}_{A/k}(M,N)\text{ for every }a\in A\}.
+\]</span>
+<p>Here <span class="math" data-tex="\([P,a](u)=P(au)-aP(u)\)">\([P,a](u)=P(au)-aP(u)\)</span>. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, this is exactly <span class="math" data-tex="\(\operatorname{Hom}_A(M,N)\)">\(\operatorname{Hom}_A(M,N)\)</span>. Membership means order <strong>at most</strong> <span class="math" data-tex="\(m\)">\(m\)</span>. The zero operator belongs to every level. An operator has exact order <span class="math" data-tex="\(m\)">\(m\)</span> if it belongs to level <span class="math" data-tex="\(m\)">\(m\)</span> and not to level <span class="math" data-tex="\(m-1\)">\(m-1\)</span>.</p>
+<p>The spaces of operators are closed under addition and under multiplication by functions on either side. This follows recursively: commutation with a function commutes with either of these two scalar actions, because <span class="math" data-tex="\(A\)">\(A\)</span> is commutative. They form an increasing filtration, since the same recursion shows that an operator of order at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span> also has order at most <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> If <span class="math" data-tex="\(P:M\to N\)">\(P:M\to N\)</span> has order at most <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(Q:N\to L\)">\(Q:N\to L\)</span> has order at most <span class="math" data-tex="\(n\)">\(n\)</span>, then <span class="math" data-tex="\(QP\)">\(QP\)</span> has order at most <span class="math" data-tex="\(m+n\)">\(m+n\)</span>.</p>
+<p><strong>Proof.</strong> Induct on <span class="math" data-tex="\(m+n\)">\(m+n\)</span>. For zero total order, both maps are <span class="math" data-tex="\(A\)">\(A\)</span>-linear. In general,</p>
+<span class="math math-display" data-tex="\[
+[QP,a]=Q[P,a]+[Q,a]P.
+\]">\[
+[QP,a]=Q[P,a]+[Q,a]P.
+\]</span>
+<p>The first summand has order at most <span class="math" data-tex="\(n+m-1\)">\(n+m-1\)</span>, by the inductive hypothesis, and so does the second. A summand whose commutator is zero can simply be omitted. The defining condition now gives the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Orders can drop in a product: multiplication by zero is one immediate example. Later, when the associated graded ring has no zero divisors, we will obtain exact additivity for nonzero operators. The theorem here makes no smoothness assumption and allows arbitrary modules.</p>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+D_{A/k}=\bigcup_{m\geq0}\operatorname{Diff}^{m}_{A/k}(A,A),
+\qquad F_mD_{A/k}=\operatorname{Diff}^{m}_{A/k}(A,A).
+\]">\[
+D_{A/k}=\bigcup_{m\geq0}\operatorname{Diff}^{m}_{A/k}(A,A),
+\qquad F_mD_{A/k}=\operatorname{Diff}^{m}_{A/k}(A,A).
+\]</span>
+<p>Theorem 2.1 makes this a filtered ring. It contains <span class="math" data-tex="\(A\)">\(A\)</span> as multiplication operators, but that copy of <span class="math" data-tex="\(A\)">\(A\)</span> is generally not central.</p>
+<p><strong>Lemma 2.2.</strong> To test order at most <span class="math" data-tex="\(m\)">\(m\)</span>, it suffices to test commutators with algebra generators of <span class="math" data-tex="\(A\)">\(A\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Proof.</strong> Suppose the required commutators have order at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span>. The elements for which this holds form a <span class="math" data-tex="\(k\)">\(k\)</span>-subalgebra, since</p>
+<span class="math math-display" data-tex="\[
+[P,a+b]=[P,a]+[P,b],\qquad
+[P,ab]=[P,a]b+a[P,b].
+\]">\[
+[P,a+b]=[P,a]+[P,b],\qquad
+[P,ab]=[P,a]b+a[P,b].
+\]</span>
+<p>The closure properties just proved justify the second equality as an order bound. The subalgebra contains the generators and hence all of <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In order one there is already a complete answer:</p>
+<span class="math math-display" data-tex="\[
+F_1D_{A/k}=A\oplus\operatorname{Der}_k(A,A).
+\]">\[
+F_1D_{A/k}=A\oplus\operatorname{Der}_k(A,A).
+\]</span>
+<p>Indeed, if <span class="math" data-tex="\(P\)">\(P\)</span> has order at most one, then <span class="math" data-tex="\([P,a]\)">\([P,a]\)</span> is multiplication by <span class="math" data-tex="\(P(a)-aP(1)\)">\(P(a)-aP(1)\)</span>. Substituting into <span class="math" data-tex="\(P(ab)\)">\(P(ab)\)</span> shows that <span class="math" data-tex="\(\delta(a)=P(a)-aP(1)\)">\(\delta(a)=P(a)-aP(1)\)</span> obeys the Leibniz rule. Conversely, a derivation plus multiplication has order at most one.</p>
+<p>There is also a useful finite algebra representing every level of order. Let</p>
+<span class="math math-display" data-tex="\[
+I=\ker(A\otimes_k A\longrightarrow A),\qquad
+\mathcal P^m_{A/k}=(A\otimes_k A)/I^{m+1}.
+\]">\[
+I=\ker(A\otimes_k A\longrightarrow A),\qquad
+\mathcal P^m_{A/k}=(A\otimes_k A)/I^{m+1}.
+\]</span>
+<p>We regard this as a left <span class="math" data-tex="\(A\)">\(A\)</span>-module through the first factor. It is called the module of principal parts of order <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Lemma 2.3.</strong> Sending <span class="math" data-tex="\(P\)">\(P\)</span> to the map <span class="math" data-tex="\(a\otimes b\mapsto aP(b)\)">\(a\otimes b\mapsto aP(b)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+F_mD_{A/k}\simeq\operatorname{Hom}_A(\mathcal P^m_{A/k},A).
+\]">\[
+F_mD_{A/k}\simeq\operatorname{Hom}_A(\mathcal P^m_{A/k},A).
+\]</span>
+<p><strong>Proof.</strong> Every <span class="math" data-tex="\(k\)">\(k\)</span>-linear <span class="math" data-tex="\(P\)">\(P\)</span> gives a unique left <span class="math" data-tex="\(A\)">\(A\)</span>-linear map from <span class="math" data-tex="\(A\otimes_k A\)">\(A\otimes_k A\)</span>. The ideal <span class="math" data-tex="\(I\)">\(I\)</span> is generated by the differences <span class="math" data-tex="\(1\otimes a-a\otimes1\)">\(1\otimes a-a\otimes1\)</span>. Applying the map to such a difference times <span class="math" data-tex="\(1\otimes b\)">\(1\otimes b\)</span> gives <span class="math" data-tex="\([P,a](b)\)">\([P,a](b)\)</span>. Applying it to a product of <span class="math" data-tex="\(m+1\)">\(m+1\)</span> differences gives the corresponding iterated commutator. The recursive definition of order is equivalent to all these iterated commutators vanishing. That is precisely the condition that the map kill <span class="math" data-tex="\(I^{m+1}\)">\(I^{m+1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>References for the intrinsic definitions are [Stacks, Tags 09CI, 09CJ and 0G35]. These arguments also apply over an arbitrary commutative base ring with base-linear maps.</p>
+<h2 id="3-why-étale-coordinates-suffice">3. Why étale coordinates suffice</h2>
+<p>An étale coordinate chart of dimension <span class="math" data-tex="\(n\)">\(n\)</span> is an étale map</p>
+<span class="math math-display" data-tex="\[
+k[x_1,\ldots,x_n]\longrightarrow A.
+\]">\[
+k[x_1,\ldots,x_n]\longrightarrow A.
+\]</span>
+<p>Such charts exist locally on a smooth variety. The differentials <span class="math" data-tex="\(dx_i\)">\(dx_i\)</span> form a basis of <span class="math" data-tex="\(\Omega^1_{A/k}\)">\(\Omega^1_{A/k}\)</span>. Let <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> be the dual derivations, so that <span class="math" data-tex="\(\partial_i(x_j)=\delta_{ij}\)">\(\partial_i(x_j)=\delta_{ij}\)</span>. Their brackets vanish: <span class="math" data-tex="\([\partial_i,\partial_j]\)">\([\partial_i,\partial_j]\)</span> is a derivation killing every <span class="math" data-tex="\(x_\ell\)">\(x_\ell\)</span>, and the basis of differentials says that such a derivation is zero.</p>
+<p>The subtlety is that <span class="math" data-tex="\(A\)">\(A\)</span> need not be generated over <span class="math" data-tex="\(k\)">\(k\)</span> by the <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. We therefore cannot prove a statement about operators on <span class="math" data-tex="\(A\)">\(A\)</span> just by testing polynomials and ignoring the étale extension.</p>
+<p><strong>Proposition 3.1.</strong> On this chart, there is an isomorphism of left <span class="math" data-tex="\(A\)">\(A\)</span>-algebras</p>
+<span class="math math-display" data-tex="\[
+\mathcal P^m_{A/k}\simeq
+A[t_1,\ldots,t_n]/(t_1,\ldots,t_n)^{m+1},
+\qquad 1\otimes x_i-x_i\otimes1\longleftrightarrow t_i.
+\]">\[
+\mathcal P^m_{A/k}\simeq
+A[t_1,\ldots,t_n]/(t_1,\ldots,t_n)^{m+1},
+\qquad 1\otimes x_i-x_i\otimes1\longleftrightarrow t_i.
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(R=A[t_1,\ldots,t_n]/(t)^{m+1}\)">\(R=A[t_1,\ldots,t_n]/(t)^{m+1}\)</span>. Give <span class="math" data-tex="\(R\)">\(R\)</span> a polynomial-algebra structure by <span class="math" data-tex="\(x_i\mapsto x_i+t_i\)">\(x_i\mapsto x_i+t_i\)</span>. Modulo <span class="math" data-tex="\((t)\)">\((t)\)</span>, the identity of <span class="math" data-tex="\(A\)">\(A\)</span> is a map compatible with this structure. The unique lifting property of the étale algebra gives a unique map <span class="math" data-tex="\(\tau:A\to R\)">\(\tau:A\to R\)</span> lifting that identity and sending <span class="math" data-tex="\(x_i\)">\(x_i\)</span> to <span class="math" data-tex="\(x_i+t_i\)">\(x_i+t_i\)</span>.</p>
+<p>Consequently <span class="math" data-tex="\(a\otimes b\mapsto a\tau(b)\)">\(a\otimes b\mapsto a\tau(b)\)</span> sends <span class="math" data-tex="\(I\)">\(I\)</span> into <span class="math" data-tex="\((t)\)">\((t)\)</span> and induces <span class="math" data-tex="\(\phi:\mathcal P^m_{A/k}\to R\)">\(\phi:\mathcal P^m_{A/k}\to R\)</span>. In the other direction, send <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> to its first-factor image and <span class="math" data-tex="\(t_i\)">\(t_i\)</span> to <span class="math" data-tex="\(1\otimes x_i-x_i\otimes1\)">\(1\otimes x_i-x_i\otimes1\)</span>. Since these differences belong to <span class="math" data-tex="\(I\)">\(I\)</span>, this defines <span class="math" data-tex="\(\psi:R\to\mathcal P^m_{A/k}\)">\(\psi:R\to\mathcal P^m_{A/k}\)</span>.</p>
+<p>The composite <span class="math" data-tex="\(\phi\psi\)">\(\phi\psi\)</span> fixes <span class="math" data-tex="\(A\)">\(A\)</span> and all <span class="math" data-tex="\(t_i\)">\(t_i\)</span>, so is the identity. The maps <span class="math" data-tex="\(b\mapsto\psi\tau(b)\)">\(b\mapsto\psi\tau(b)\)</span> and <span class="math" data-tex="\(b\mapsto1\otimes b\)">\(b\mapsto1\otimes b\)</span> from <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\(\mathcal P^m_{A/k}\)">\(\mathcal P^m_{A/k}\)</span> both lift the identity modulo <span class="math" data-tex="\(I\)">\(I\)</span>, with polynomial coordinates sent to <span class="math" data-tex="\(1\otimes x_i\)">\(1\otimes x_i\)</span>. Unique étale lifting identifies them. Thus <span class="math" data-tex="\(\psi\phi\)">\(\psi\phi\)</span> fixes both factors and is the identity too. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a multi-index <span class="math" data-tex="\(\alpha=(\alpha_1,\ldots,\alpha_n)\)">\(\alpha=(\alpha_1,\ldots,\alpha_n)\)</span>, write <span class="math" data-tex="\(|\alpha|=\sum\alpha_i\)">\(|\alpha|=\sum\alpha_i\)</span>, <span class="math" data-tex="\(\alpha!=\prod\alpha_i!\)">\(\alpha!=\prod\alpha_i!\)</span>, and <span class="math" data-tex="\(\partial^\alpha=\prod\partial_i^{\alpha_i}\)">\(\partial^\alpha=\prod\partial_i^{\alpha_i}\)</span>. In characteristic zero the étale lift just constructed is</p>
+<span class="math math-display" data-tex="\[
+\tau(b)=\sum_{|\alpha|\leq m}
+\frac{\partial^\alpha(b)}{\alpha!}t^\alpha.
+\]">\[
+\tau(b)=\sum_{|\alpha|\leq m}
+\frac{\partial^\alpha(b)}{\alpha!}t^\alpha.
+\]</span>
+<p>To verify this, the iterated Leibniz rule shows that the displayed formula is an algebra map into the truncated ring. It lifts the identity and has the required values on the <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, so étale uniqueness identifies it with <span class="math" data-tex="\(\tau\)">\(\tau\)</span>.</p>
+<p><strong>Theorem 3.2.</strong> Every differential operator on the chart has a unique finite expression</p>
+<span class="math math-display" data-tex="\[
+P=\sum_\alpha a_\alpha\partial^\alpha,\qquad a_\alpha\in A.
+\]">\[
+P=\sum_\alpha a_\alpha\partial^\alpha,\qquad a_\alpha\in A.
+\]</span>
+<p>It has order at most <span class="math" data-tex="\(m\)">\(m\)</span> exactly when only indices with <span class="math" data-tex="\(|\alpha|\leq m\)">\(|\alpha|\leq m\)</span> occur. In particular, <span class="math" data-tex="\(F_mD_{A/k}\)">\(F_mD_{A/k}\)</span> is free of rank <span class="math" data-tex="\(\binom{n+m}{n}\)">\(\binom{n+m}{n}\)</span>.</p>
+<p><strong>Proof.</strong> The monomials <span class="math" data-tex="\(t^\alpha\)">\(t^\alpha\)</span>, <span class="math" data-tex="\(|\alpha|\leq m\)">\(|\alpha|\leq m\)</span>, are a basis of principal parts. Under Lemma 2.3, their coefficient functionals are the operators <span class="math" data-tex="\(\partial^\alpha/\alpha!\)">\(\partial^\alpha/\alpha!\)</span>. They form a basis of <span class="math" data-tex="\(F_mD\)">\(F_mD\)</span>. Comparing the bases at consecutive values of <span class="math" data-tex="\(m\)">\(m\)</span> proves the order assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equivalently, <span class="math" data-tex="\(D\)">\(D\)</span> is generated by functions and the commuting <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span>, with relations</p>
+<span class="math math-display" data-tex="\[
+[\partial_i,a]=\partial_i(a),\qquad
+[\partial_i,\partial_j]=0.
+\]">\[
+[\partial_i,a]=\partial_i(a),\qquad
+[\partial_i,\partial_j]=0.
+\]</span>
+<p>Moving functions to the left gives spanning by the displayed monomials, and their independence proves that these are all the relations on a coordinate chart.</p>
+<p>The construction is local on the variety. Indeed, principal parts on a smaller open set are the restriction of principal parts on the chart: after a function is inverted in the first factor, its second-factor image differs from it by a nilpotent element and is also invertible. Since each <span class="math" data-tex="\(\mathcal P^m\)">\(\mathcal P^m\)</span> is locally free of finite rank, its dual restricts as well. This gives the sheaf <span class="math" data-tex="\(\mathcal D_X\)">\(\mathcal D_X\)</span> and its locally free order pieces <span class="math" data-tex="\(F_m\mathcal D_X\)">\(F_m\mathcal D_X\)</span>. This argument also explains the localization property in [Stacks, Tag 0G36]. The sheaf definition is discussed in [Stacks, Tag 0G3P].</p>
+<h2 id="4-cotangent-geometry-and-the-leading-bracket">4. Cotangent geometry and the leading bracket</h2>
+<p>Put <span class="math" data-tex="\(\mathcal T_X=\operatorname{Der}_k(\mathcal O_X,\mathcal O_X)\)">\(\mathcal T_X=\operatorname{Der}_k(\mathcal O_X,\mathcal O_X)\)</span>. The cotangent bundle is</p>
+<span class="math math-display" data-tex="\[
+T^*X=\operatorname{Spec}_X\operatorname{Sym}_{\mathcal O_X}\mathcal T_X,
+\qquad \pi:T^*X\to X.
+\]">\[
+T^*X=\operatorname{Spec}_X\operatorname{Sym}_{\mathcal O_X}\mathcal T_X,
+\qquad \pi:T^*X\to X.
+\]</span>
+<p>A tangent vector field <span class="math" data-tex="\(v\)">\(v\)</span> defines a fibre-linear function on covectors by evaluation <span class="math" data-tex="\(\eta\mapsto\eta(v)\)">\(\eta\mapsto\eta(v)\)</span>. This is why the symmetric algebra of the <strong>tangent</strong> sheaf is the algebra of functions on the <strong>cotangent</strong> bundle.</p>
+<p>For <span class="math" data-tex="\(P\in F_m\mathcal D_X\)">\(P\in F_m\mathcal D_X\)</span>, let <span class="math" data-tex="\(\sigma_m(P)\)">\(\sigma_m(P)\)</span> be its class modulo <span class="math" data-tex="\(F_{m-1}\)">\(F_{m-1}\)</span>. Multiplication of these classes is defined because Theorem 2.1 respects the filtration. Locally the relations imply</p>
+<span class="math math-display" data-tex="\[
+[F_m\mathcal D_X,F_n\mathcal D_X]
+\subset F_{m+n-1}\mathcal D_X.
+\]">\[
+[F_m\mathcal D_X,F_n\mathcal D_X]
+\subset F_{m+n-1}\mathcal D_X.
+\]</span>
+<p>One can see this by moving derivatives past coefficients: the terms with no coefficient differentiated cancel in the commutator, and every remaining term has at least one fewer derivative. Hence the associated graded ring is commutative.</p>
+<p><strong>Theorem 4.1.</strong> There is a canonical graded isomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{gr}^{F}\mathcal D_X
+\simeq \operatorname{Sym}_{\mathcal O_X}\mathcal T_X
+=\pi_*\mathcal O_{T^*X}.
+\]">\[
+\operatorname{gr}^{F}\mathcal D_X
+\simeq \operatorname{Sym}_{\mathcal O_X}\mathcal T_X
+=\pi_*\mathcal O_{T^*X}.
+\]</span>
+<p>On an étale chart it sends <span class="math" data-tex="\(\sigma_1(\partial_i)\)">\(\sigma_1(\partial_i)\)</span> to <span class="math" data-tex="\(\xi_i\)">\(\xi_i\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\sigma_m\Bigl(\sum_{|\alpha|\leq m}a_\alpha\partial^\alpha\Bigr)
+=\sum_{|\alpha|=m}a_\alpha\xi^\alpha.
+\]">\[
+\sigma_m\Bigl(\sum_{|\alpha|\leq m}a_\alpha\partial^\alpha\Bigr)
+=\sum_{|\alpha|=m}a_\alpha\xi^\alpha.
+\]</span>
+<p><strong>Proof.</strong> Functions and vector fields define an intrinsic homomorphism from the symmetric algebra to <span class="math" data-tex="\(\operatorname{gr}^{F}\mathcal D_X\)">\(\operatorname{gr}^{F}\mathcal D_X\)</span>, because their symbols commute. In each chart, Theorem 3.2 identifies the monomial bases on the two sides. Thus the map is an isomorphism locally, and its intrinsic definition glues these isomorphisms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For every <span class="math" data-tex="\(P\in F_mD\)">\(P\in F_mD\)</span>, <span class="math" data-tex="\(Q\in F_nD\)">\(Q\in F_nD\)</span>, including operators of smaller actual order,</p>
+<span class="math math-display" data-tex="\[
+\sigma_{m+n}(PQ)=\sigma_m(P)\sigma_n(Q).
+\]">\[
+\sigma_{m+n}(PQ)=\sigma_m(P)\sigma_n(Q).
+\]</span>
+<p>This is a statement in the indicated graded piece, where the symbol of an operator of lower order is zero. It follows directly from graded multiplication, or from the leading terms in the coordinate normal form.</p>
+<p>Define a bracket on homogeneous symbols by</p>
+<span class="math math-display" data-tex="\[
+\{\sigma_m(P),\sigma_n(Q)\}
+=\sigma_{m+n-1}([P,Q]).
+\]">\[
+\{\sigma_m(P),\sigma_n(Q)\}
+=\sigma_{m+n-1}([P,Q]).
+\]</span>
+<p>Changing a lift by one filtration level changes the commutator by a level too, so the definition is independent of lifts. Antisymmetry, the Jacobi identity and the Leibniz rule follow from their commutator counterparts. In coordinates,</p>
+<span class="math math-display" data-tex="\[
+\{\xi_i,x_j\}=\delta_{ij},\qquad
+\{x_i,x_j\}=\{\xi_i,\xi_j\}=0,
+\]">\[
+\{\xi_i,x_j\}=\delta_{ij},\qquad
+\{x_i,x_j\}=\{\xi_i,\xi_j\}=0,
+\]</span>
+<p>and therefore, for polynomial functions in the fibre coordinates,</p>
+<span class="math math-display" data-tex="\[
+\{p,q\}=\sum_i
+\left(\frac{\partial p}{\partial\xi_i}\partial_iq
+-\partial_i p\frac{\partial q}{\partial\xi_i}\right).
+\]">\[
+\{p,q\}=\sum_i
+\left(\frac{\partial p}{\partial\xi_i}\partial_iq
+-\partial_i p\frac{\partial q}{\partial\xi_i}\right).
+\]</span>
+<p>This fixes the sign of the cotangent Poisson bracket used here. With <span class="math" data-tex="\(p=x^2\xi_x\xi_y\)">\(p=x^2\xi_x\xi_y\)</span> and <span class="math" data-tex="\(q=x\)">\(q=x\)</span>, the bracket is <span class="math" data-tex="\(x^2\xi_y\)">\(x^2\xi_y\)</span>. Directly, the operator from Section 1 satisfies <span class="math" data-tex="\([P,x]=x^2\partial_y\)">\([P,x]=x^2\partial_y\)</span>, with exactly that principal symbol.</p>
+<p>Changing coordinates can alter lower-order terms of an operator. Its principal symbol remains the same cotangent function. For example, on <span class="math" data-tex="\(\mathbb G_m\)">\(\mathbb G_m\)</span> use <span class="math" data-tex="\(z=x^{-1}\)">\(z=x^{-1}\)</span>. Then <span class="math" data-tex="\(\partial_x=-z^2\partial_z\)">\(\partial_x=-z^2\partial_z\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\partial_x^2=z^4\partial_z^2+2z^3\partial_z.
+\]">\[
+\partial_x^2=z^4\partial_z^2+2z^3\partial_z.
+\]</span>
+<p>The quadratic symbols agree under the induced covector-coordinate change. The second term shows why a total expression in derivatives is not itself coordinate invariant.</p>
+<h2 id="5-polynomial-operators-two-filtrations-one-ring">5. Polynomial operators: two filtrations, one ring</h2>
+<p>On <span class="math" data-tex="\(\mathbb A^n\)">\(\mathbb A^n\)</span>, Theorem 3.2 identifies <span class="math" data-tex="\(D_{k[x]/k}\)">\(D_{k[x]/k}\)</span> with the Weyl algebra</p>
+<span class="math math-display" data-tex="\[
+A_n(k)=k\langle x_1,\ldots,x_n,\partial_1,\ldots,\partial_n\rangle/
+\bigl([x_i,x_j], [\partial_i,\partial_j],
+[\partial_i,x_j]-\delta_{ij}\bigr).
+\]">\[
+A_n(k)=k\langle x_1,\ldots,x_n,\partial_1,\ldots,\partial_n\rangle/
+\bigl([x_i,x_j], [\partial_i,\partial_j],
+[\partial_i,x_j]-\delta_{ij}\bigr).
+\]</span>
+<p>Its <span class="math" data-tex="\(k\)">\(k\)</span>-basis is <span class="math" data-tex="\(x^\alpha\partial^\beta\)">\(x^\alpha\partial^\beta\)</span>. The order filtration counts only <span class="math" data-tex="\(|\beta|\)">\(|\beta|\)</span>, while the Bernstein filtration is</p>
+<span class="math math-display" data-tex="\[
+B_rA_n=\operatorname{span}_k\{x^\alpha\partial^\beta:
+|\alpha|+|\beta|\leq r\}.
+\]">\[
+B_rA_n=\operatorname{span}_k\{x^\alpha\partial^\beta:
+|\alpha|+|\beta|\leq r\}.
+\]</span>
+<p>The defining commutator replaces two letters by a scalar, so multiplication respects this filtration and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{gr}^{B}A_n\simeq
+k[x_1,\ldots,x_n,\xi_1,\ldots,\xi_n],
+\quad \deg x_i=\deg\xi_i=1.
+\]">\[
+\operatorname{gr}^{B}A_n\simeq
+k[x_1,\ldots,x_n,\xi_1,\ldots,\xi_n],
+\quad \deg x_i=\deg\xi_i=1.
+\]</span>
+<p>In the order grading, <span class="math" data-tex="\(x_i\)">\(x_i\)</span> has degree zero instead. The underlying polynomial rings are isomorphic; their gradings and the dimensions of their filtration pieces differ. For example,</p>
+<span class="math math-display" data-tex="\[
+\dim_k B_rA_n=\binom{r+2n}{2n},
+\]">\[
+\dim_k B_rA_n=\binom{r+2n}{2n},
+\]</span>
+<p>whereas <span class="math" data-tex="\(F_0A_n=k[x_1,\ldots,x_n]\)">\(F_0A_n=k[x_1,\ldots,x_n]\)</span> already has infinite <span class="math" data-tex="\(k\)">\(k\)</span>-dimension when <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>.</p>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be a ring with an exhaustive increasing multiplicative filtration <span class="math" data-tex="\(F_mR\)">\(F_mR\)</span>, <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>, with <span class="math" data-tex="\(1\in F_0R\)">\(1\in F_0R\)</span> and <span class="math" data-tex="\(F_{-1}R=0\)">\(F_{-1}R=0\)</span>. If <span class="math" data-tex="\(\operatorname{gr}^{F}R\)">\(\operatorname{gr}^{F}R\)</span> is left Noetherian, then <span class="math" data-tex="\(R\)">\(R\)</span> is left Noetherian. The corresponding right-handed assertion also holds. In particular, commutative Noetherian associated graded implies both.</p>
+<p><strong>Proof.</strong> Give a left ideal <span class="math" data-tex="\(J\subset R\)">\(J\subset R\)</span> the intersection filtration. Its associated graded embeds as a homogeneous left ideal of <span class="math" data-tex="\(\operatorname{gr}^{F}R\)">\(\operatorname{gr}^{F}R\)</span>, so it has finitely many homogeneous generators <span class="math" data-tex="\(\bar q_1,\ldots,\bar q_s\)">\(\bar q_1,\ldots,\bar q_s\)</span>. Lift them to <span class="math" data-tex="\(q_i\in J\)">\(q_i\in J\)</span>, of degrees <span class="math" data-tex="\(d_i\)">\(d_i\)</span>.</p>
+<p>For <span class="math" data-tex="\(u\in J\)">\(u\in J\)</span> of degree <span class="math" data-tex="\(m\)">\(m\)</span>, express its symbol as <span class="math" data-tex="\(\sum_i\bar a_i\bar q_i\)">\(\sum_i\bar a_i\bar q_i\)</span>, choosing homogeneous coefficients of degree <span class="math" data-tex="\(m-d_i\)">\(m-d_i\)</span> and omitting negative degrees. Lift the coefficients to <span class="math" data-tex="\(a_i\in R\)">\(a_i\in R\)</span>. Then <span class="math" data-tex="\(u-\sum_i a_iq_i\)">\(u-\sum_i a_iq_i\)</span> has degree at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span>. Repeating terminates at degree below zero and proves that the <span class="math" data-tex="\(q_i\)">\(q_i\)</span> generate <span class="math" data-tex="\(J\)">\(J\)</span>. Every left ideal is therefore finitely generated. Apply the argument to the opposite ring for right ideals. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lower bound and exhaustiveness in this theorem matter: they guarantee that degree reduction terminates and reaches every element of the ring. No topology or completion is required for this nonnegative filtration. Compare [Ginzburg, Proposition 1.1.6(i)] and the filtered statement [Kashiwara–Schapira, Proposition 11.2.1].</p>
+<p>Consequently <span class="math" data-tex="\(A_n\)">\(A_n\)</span> is left and right Noetherian. More generally, for smooth affine <span class="math" data-tex="\(X=\operatorname{Spec}A\)">\(X=\operatorname{Spec}A\)</span>, the order grading of <span class="math" data-tex="\(D_{A/k}\)">\(D_{A/k}\)</span> is <span class="math" data-tex="\(\operatorname{Sym}_A\operatorname{Der}_k(A,A)\)">\(\operatorname{Sym}_A\operatorname{Der}_k(A,A)\)</span>. The derivation module is finitely generated projective, so this symmetric algebra is a finitely generated commutative algebra over the Noetherian ring <span class="math" data-tex="\(A\)">\(A\)</span>. Thus <span class="math" data-tex="\(D_{A/k}\)">\(D_{A/k}\)</span> is left and right Noetherian as well. To identify the affine associated graded with global sections, use exactness of global sections for quasi-coherent sheaves on an affine scheme in each finite filtration level; this avoids assuming global coordinates.</p>
+<p><strong>Theorem 5.2.</strong> For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, the characteristic-zero Weyl algebra <span class="math" data-tex="\(A_n\)">\(A_n\)</span> is simple and has no nonzero finite-dimensional unital modules.</p>
+<p><strong>Proof of simplicity.</strong> Let <span class="math" data-tex="\(J\)">\(J\)</span> be a nonzero two-sided ideal. Choose a nonzero element <span class="math" data-tex="\(P\in J\)">\(P\in J\)</span> of smallest Bernstein degree. Each commutator <span class="math" data-tex="\([\partial_i,P]\)">\([\partial_i,P]\)</span> and <span class="math" data-tex="\([P,x_i]\)">\([P,x_i]\)</span> belongs to <span class="math" data-tex="\(J\)">\(J\)</span> and has smaller Bernstein degree unless it is zero. Minimality makes all these commutators zero.</p>
+<p>In normal form,</p>
+<span class="math math-display" data-tex="\[
+[\partial_i,x^\alpha\partial^\beta]
+=\alpha_i x^{\alpha-e_i}\partial^\beta,
+\qquad
+[x^\alpha\partial^\beta,x_i]
+=\beta_i x^\alpha\partial^{\beta-e_i}.
+\]">\[
+[\partial_i,x^\alpha\partial^\beta]
+=\alpha_i x^{\alpha-e_i}\partial^\beta,
+\qquad
+[x^\alpha\partial^\beta,x_i]
+=\beta_i x^\alpha\partial^{\beta-e_i}.
+\]</span>
+<p>Normal-form independence and characteristic zero first force all positive <span class="math" data-tex="\(x_i\)">\(x_i\)</span>-exponents to vanish, then all positive <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span>-exponents. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is a nonzero scalar. Its inverse gives <span class="math" data-tex="\(1\in J\)">\(1\in J\)</span>, hence <span class="math" data-tex="\(J=A_n\)">\(J=A_n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof concerning finite dimension.</strong> On a finite-dimensional unital module <span class="math" data-tex="\(V\)">\(V\)</span>, take traces of <span class="math" data-tex="\([\partial_1,x_1]=1\)">\([\partial_1,x_1]=1\)</span>. A commutator of endomorphisms has trace zero, while the identity has trace <span class="math" data-tex="\(\dim_k V\)">\(\dim_k V\)</span>. In characteristic zero this forces <span class="math" data-tex="\(\dim_k V=0\)">\(\dim_k V=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This does not say that <span class="math" data-tex="\(A_n\)">\(A_n\)</span> has no proper left ideals: for instance, <span class="math" data-tex="\(A_1\partial\)">\(A_1\partial\)</span> is proper, with quotient <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>. Simplicity concerns two-sided ideals. When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, <span class="math" data-tex="\(A_0=k\)">\(A_0=k\)</span> is still simple but certainly has finite-dimensional modules; the restriction <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> in the second assertion is essential.</p>
+<p>Also, <span class="math" data-tex="\(A_n\)">\(A_n\)</span> has no zero divisors: the Bernstein symbol of a product of two nonzero elements is the product of two nonzero polynomials. This proves the product is nonzero. The same reasoning proves exact additivity of order on a connected smooth affine variety, since its cotangent coordinate ring is a domain.</p>
+<p>On <span class="math" data-tex="\(\mathbb G_m\)">\(\mathbb G_m\)</span>, the normal form is</p>
+<span class="math math-display" data-tex="\[
+D_{k[x,x^{-1}]/k}
+=\bigoplus_{j\geq0}k[x,x^{-1}]\partial^j
+=\bigoplus_{j\geq0}k[x,x^{-1}]\theta^j.
+\]">\[
+D_{k[x,x^{-1}]/k}
+=\bigoplus_{j\geq0}k[x,x^{-1}]\partial^j
+=\bigoplus_{j\geq0}k[x,x^{-1}]\theta^j.
+\]</span>
+<p>For the second equality, <span class="math" data-tex="\(\theta^j=x^j\partial^j\)">\(\theta^j=x^j\partial^j\)</span> plus lower-order terms, with invertible leading coefficient <span class="math" data-tex="\(x^j\)">\(x^j\)</span>. Thus the change of basis is triangular and invertible in every finite order. In this form <span class="math" data-tex="\(\theta x^r=x^r(\theta+r)\)">\(\theta x^r=x^r(\theta+r)\)</span> for every <span class="math" data-tex="\(r\in\mathbb Z\)">\(r\in\mathbb Z\)</span>.</p>
+<h2 id="6-what-changes-in-positive-characteristic">6. What changes in positive characteristic</h2>
+<p>Now let <span class="math" data-tex="\(k\)">\(k\)</span> have characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, and work on <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>. Define the Hasse operators by</p>
+<span class="math math-display" data-tex="\[
+H_r(x^q)=\binom qr x^{q-r},
+\]">\[
+H_r(x^q)=\binom qr x^{q-r},
+\]</span>
+<p>with the binomial coefficient reduced in <span class="math" data-tex="\(k\)">\(k\)</span> and the value zero if <span class="math" data-tex="\(q&lt;r\)">\(q&lt;r\)</span>. Pascal's identity gives</p>
+<span class="math math-display" data-tex="\[
+[H_r,x]=H_{r-1},\qquad H_0=1.
+\]">\[
+[H_r,x]=H_{r-1},\qquad H_0=1.
+\]</span>
+<p>Lemma 2.2 and induction show that <span class="math" data-tex="\(H_r\)">\(H_r\)</span> has order at most <span class="math" data-tex="\(r\)">\(r\)</span>. Repeating the commutator <span class="math" data-tex="\(r\)">\(r\)</span> times gives <span class="math" data-tex="\(H_0\ne0\)">\(H_0\ne0\)</span>, so the order is exactly <span class="math" data-tex="\(r\)">\(r\)</span>. For <span class="math" data-tex="\(r&lt;p\)">\(r&lt;p\)</span>, one has <span class="math" data-tex="\(H_r=\partial^r/r!\)">\(H_r=\partial^r/r!\)</span>. But</p>
+<span class="math math-display" data-tex="\[
+\partial^p=0\text{ on }k[x],\qquad H_p(x^p)=1.
+\]">\[
+\partial^p=0\text{ on }k[x],\qquad H_p(x^p)=1.
+\]</span>
+<p>Every derivation is <span class="math" data-tex="\(a(x)\partial\)">\(a(x)\partial\)</span>, and it commutes with multiplication by <span class="math" data-tex="\(x^p\)">\(x^p\)</span>. Functions commute with <span class="math" data-tex="\(x^p\)">\(x^p\)</span> as well, so the ring generated by functions and derivations commutes with <span class="math" data-tex="\(x^p\)">\(x^p\)</span>. The operator <span class="math" data-tex="\(H_p\)">\(H_p\)</span> does not: its commutator with <span class="math" data-tex="\(x^p\)">\(x^p\)</span>, applied to <span class="math" data-tex="\(1\)">\(1\)</span>, is <span class="math" data-tex="\(1\)">\(1\)</span>. Therefore Grothendieck's differential-operator ring is strictly larger than the ring generated by functions and derivations.</p>
+<p>There is also a finite-dimensional representation of the abstract characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> Weyl algebra: multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> and differentiation on</p>
+<span class="math math-display" data-tex="\[
+V=k[x]/(x^p).
+\]">\[
+V=k[x]/(x^p).
+\]</span>
+<p>Differentiation preserves the ideal because <span class="math" data-tex="\(\partial(x^p)=0\)">\(\partial(x^p)=0\)</span>, and the relation <span class="math" data-tex="\([\partial,x]=1\)">\([\partial,x]=1\)</span> remains valid. The module has dimension <span class="math" data-tex="\(p\)">\(p\)</span>. Its identity has trace <span class="math" data-tex="\(p=0\)">\(p=0\)</span> in <span class="math" data-tex="\(k\)">\(k\)</span>, so the characteristic-zero obstruction disappears. This representation of the abstract algebra is not faithful: <span class="math" data-tex="\(x^p\)">\(x^p\)</span> and <span class="math" data-tex="\(\partial^p\)">\(\partial^p\)</span> act by zero.</p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<p>The difficulty labels indicate the length of the argument, not additional background.</p>
+<p><strong>Exercise 7.1 (easy).</strong> On <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>, expand <span class="math" data-tex="\([\partial^2,x^2]\)">\([\partial^2,x^2]\)</span> in normal form. Then compute <span class="math" data-tex="\([\partial^3,x^2]\)">\([\partial^3,x^2]\)</span> and check the leading-symbol bracket in each case.</p>
+<p><strong>Solution.</strong> First <span class="math" data-tex="\(\partial x^2=x^2\partial+2x\)">\(\partial x^2=x^2\partial+2x\)</span>, whence</p>
+<span class="math math-display" data-tex="\[
+\partial^2x^2=x^2\partial^2+4x\partial+2.
+\]">\[
+\partial^2x^2=x^2\partial^2+4x\partial+2.
+\]</span>
+<p>Thus <span class="math" data-tex="\([\partial^2,x^2]=4x\partial+2\)">\([\partial^2,x^2]=4x\partial+2\)</span>. Differentiating that normal-form expression once more gives</p>
+<span class="math math-display" data-tex="\[
+\partial^3x^2=x^2\partial^3+6x\partial^2+6\partial,
+\]">\[
+\partial^3x^2=x^2\partial^3+6x\partial^2+6\partial,
+\]</span>
+<p>so the second commutator is <span class="math" data-tex="\(6x\partial^2+6\partial\)">\(6x\partial^2+6\partial\)</span>. The leading symbols are respectively <span class="math" data-tex="\(4x\xi\)">\(4x\xi\)</span> and <span class="math" data-tex="\(6x\xi^2\)">\(6x\xi^2\)</span>, agreeing with <span class="math" data-tex="\(\{\xi^2,x^2\}\)">\(\{\xi^2,x^2\}\)</span> and <span class="math" data-tex="\(\{\xi^3,x^2\}\)">\(\{\xi^3,x^2\}\)</span>.</p>
+<p><strong>Exercise 7.2 (easy).</strong> Show that <span class="math" data-tex="\(x\mapsto x\)">\(x\mapsto x\)</span>, <span class="math" data-tex="\(\partial\mapsto-\partial\)">\(\partial\mapsto-\partial\)</span>, with reversal of products, defines an involutive anti-automorphism <span class="math" data-tex="\(t\)">\(t\)</span> of <span class="math" data-tex="\(A_1\)">\(A_1\)</span>. Compute <span class="math" data-tex="\(t(x^2\partial^2+x\partial)\)">\(t(x^2\partial^2+x\partial)\)</span>.</p>
+<p><strong>Solution.</strong> On the free associative algebra, reverse every word and replace each <span class="math" data-tex="\(\partial\)">\(\partial\)</span> by <span class="math" data-tex="\(-\partial\)">\(-\partial\)</span>. The relation <span class="math" data-tex="\(\partial x-x\partial-1\)">\(\partial x-x\partial-1\)</span> is carried to <span class="math" data-tex="\(-x\partial+\partial x-1\)">\(-x\partial+\partial x-1\)</span>, the same relation, so the map descends. Applying it twice fixes the generators and every product, making it an involution. Finally,</p>
+<span class="math math-display" data-tex="\[
+t(x^2\partial^2+x\partial)=\partial^2x^2-\partial x
+=x^2\partial^2+3x\partial+1.
+\]">\[
+t(x^2\partial^2+x\partial)=\partial^2x^2-\partial x
+=x^2\partial^2+3x\partial+1.
+\]</span>
+<p><strong>Exercise 7.3 (medium).</strong> Prove the multiplicative symbol identity for
+<span class="math" data-tex="\(P=\sum a_\alpha\partial^\alpha\)">\(P=\sum a_\alpha\partial^\alpha\)</span> and
+<span class="math" data-tex="\(Q=\sum b_\beta\partial^\beta\)">\(Q=\sum b_\beta\partial^\beta\)</span> of orders at most <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, using the complete product formula.</p>
+<p><strong>Solution.</strong> Repeated Leibniz gives</p>
+<span class="math math-display" data-tex="\[
+PQ=\sum_{\alpha,\beta}\sum_{\gamma\leq\alpha}
+\binom\alpha\gamma a_\alpha\partial^\gamma(b_\beta)
+\partial^{\alpha-\gamma+\beta}.
+\]">\[
+PQ=\sum_{\alpha,\beta}\sum_{\gamma\leq\alpha}
+\binom\alpha\gamma a_\alpha\partial^\gamma(b_\beta)
+\partial^{\alpha-\gamma+\beta}.
+\]</span>
+<p>The terms of derivative degree <span class="math" data-tex="\(m+n\)">\(m+n\)</span> require <span class="math" data-tex="\(|\alpha|=m\)">\(|\alpha|=m\)</span>, <span class="math" data-tex="\(|\beta|=n\)">\(|\beta|=n\)</span>, and <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span>. Their sum has symbol <span class="math" data-tex="\((\sum_{|\alpha|=m}a_\alpha\xi^\alpha)(\sum_{|\beta|=n}b_\beta\xi^\beta)\)">\((\sum_{|\alpha|=m}a_\alpha\xi^\alpha)(\sum_{|\beta|=n}b_\beta\xi^\beta)\)</span>. All other terms have smaller degree. This proves the identity even if that product is zero.</p>
+<p><strong>Exercise 7.4 (medium).</strong> Give the characteristic-zero trace obstruction for a nonzero finite-dimensional <span class="math" data-tex="\(A_1\)">\(A_1\)</span>-module, and construct explicitly the characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> module of dimension <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(X,D\)">\(X,D\)</span> are the actions, <span class="math" data-tex="\(DX-XD=I\)">\(DX-XD=I\)</span> gives <span class="math" data-tex="\(0=\operatorname{tr}(DX-XD)=\dim V\)">\(0=\operatorname{tr}(DX-XD)=\dim V\)</span>. In characteristic zero a positive integer is nonzero in <span class="math" data-tex="\(k\)">\(k\)</span>, a contradiction. In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, take basis <span class="math" data-tex="\(v_0,\ldots,v_{p-1}\)">\(v_0,\ldots,v_{p-1}\)</span>, put <span class="math" data-tex="\(Xv_j=v_{j+1}\)">\(Xv_j=v_{j+1}\)</span> for <span class="math" data-tex="\(j&lt;p-1\)">\(j&lt;p-1\)</span> and <span class="math" data-tex="\(Xv_{p-1}=0\)">\(Xv_{p-1}=0\)</span>, and put <span class="math" data-tex="\(Dv_j=jv_{j-1}\)">\(Dv_j=jv_{j-1}\)</span>, with <span class="math" data-tex="\(Dv_0=0\)">\(Dv_0=0\)</span>. For <span class="math" data-tex="\(j&lt;p-1\)">\(j&lt;p-1\)</span> the commutator is <span class="math" data-tex="\(((j+1)-j)v_j=v_j\)">\(((j+1)-j)v_j=v_j\)</span>. For <span class="math" data-tex="\(j=p-1\)">\(j=p-1\)</span> it is <span class="math" data-tex="\(-(p-1)v_{p-1}=v_{p-1}\)">\(-(p-1)v_{p-1}=v_{p-1}\)</span>. These formulas realize <span class="math" data-tex="\(k[x]/(x^p)\)">\(k[x]/(x^p)\)</span>.</p>
+<p><strong>Exercise 7.5 (medium).</strong> Give <span class="math" data-tex="\(x^2\partial^2+x\partial\)">\(x^2\partial^2+x\partial\)</span> its order and Bernstein degree. Compute both leading symbols and explain why they differ.</p>
+<p><strong>Solution.</strong> Its order is two and its order symbol is <span class="math" data-tex="\(x^2\xi^2\)">\(x^2\xi^2\)</span>, with <span class="math" data-tex="\(x\)">\(x\)</span> of degree zero. Its Bernstein degree is four; its Bernstein symbol is again the polynomial <span class="math" data-tex="\(x^2\xi^2\)">\(x^2\xi^2\)</span>, now of total degree four. The polynomials happen to agree, but they lie in different graded pieces. For <span class="math" data-tex="\(x^{10}+\partial\)">\(x^{10}+\partial\)</span>, the distinction is visible in the polynomials themselves: the order symbol is <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, whereas the Bernstein symbol is <span class="math" data-tex="\(x^{10}\)">\(x^{10}\)</span>.</p>
+<p><strong>Exercise 7.6 (hard).</strong> Prove that <span class="math" data-tex="\(H_p\)">\(H_p\)</span> is not generated by functions and derivations on <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span> in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. Explain why replacing it by <span class="math" data-tex="\(\partial^p/p!\)">\(\partial^p/p!\)</span> is impossible.</p>
+<p><strong>Solution.</strong> For a derivation <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, <span class="math" data-tex="\(\delta(x^p)=p x^{p-1}\delta(x)=0\)">\(\delta(x^p)=p x^{p-1}\delta(x)=0\)</span>, so <span class="math" data-tex="\([\delta,x^p]=0\)">\([\delta,x^p]=0\)</span>. Multiplications also commute with <span class="math" data-tex="\(x^p\)">\(x^p\)</span>; sums and products of commuting operators still do. But <span class="math" data-tex="\([H_p,x^p](1)=H_p(x^p)-x^pH_p(1)=1\)">\([H_p,x^p](1)=H_p(x^p)-x^pH_p(1)=1\)</span>. Thus <span class="math" data-tex="\(H_p\)">\(H_p\)</span> is outside the generated ring. The scalar <span class="math" data-tex="\(p!\)">\(p!\)</span> is zero in <span class="math" data-tex="\(k\)">\(k\)</span>, while <span class="math" data-tex="\(\partial^p\)">\(\partial^p\)</span> is the zero operator, so the proposed division defines no operator and cannot recover <span class="math" data-tex="\(H_p\)">\(H_p\)</span>.</p>
+<p><strong>Exercise 7.7 (hard).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be an étale algebra over <span class="math" data-tex="\(k[x_1,\ldots,x_n]\)">\(k[x_1,\ldots,x_n]\)</span> in characteristic zero. Show that an operator of order at most <span class="math" data-tex="\(m\)">\(m\)</span> that kills every coordinate monomial <span class="math" data-tex="\(x^\beta\)">\(x^\beta\)</span> with <span class="math" data-tex="\(|\beta|\leq m\)">\(|\beta|\leq m\)</span> is zero. Identify where the étale condition enters.</p>
+<p><strong>Solution.</strong> By Theorem 3.2 write <span class="math" data-tex="\(P=\sum_{|\alpha|\leq m}a_\alpha\partial^\alpha\)">\(P=\sum_{|\alpha|\leq m}a_\alpha\partial^\alpha\)</span>. Evaluating on <span class="math" data-tex="\(1\)">\(1\)</span> gives <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>. Induct on <span class="math" data-tex="\(r\leq m\)">\(r\leq m\)</span>, assuming all coefficients of degree less than <span class="math" data-tex="\(r\)">\(r\)</span> vanish. For <span class="math" data-tex="\(|\beta|=r\)">\(|\beta|=r\)</span>, a derivative with larger total degree kills <span class="math" data-tex="\(x^\beta\)">\(x^\beta\)</span>; one with the same total degree contributes only when <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>, and then contributes <span class="math" data-tex="\(\beta!\)">\(\beta!\)</span>. Thus <span class="math" data-tex="\(0=P(x^\beta)=\beta!a_\beta\)">\(0=P(x^\beta)=\beta!a_\beta\)</span>, so <span class="math" data-tex="\(a_\beta=0\)">\(a_\beta=0\)</span>. Characteristic zero allows division by <span class="math" data-tex="\(\beta!\)">\(\beta!\)</span>. The étale condition entered in proving the normal form on all of <span class="math" data-tex="\(A\)">\(A\)</span> via principal parts, before the test on monomials; testing monomials alone would not justify that normal form on an arbitrary extension algebra.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The geometric prerequisites used are the existence of étale coordinate charts on a smooth variety, the unique nilpotent lifting property of étale maps, and exactness of global sections for quasi-coherent sheaves on affine schemes. The universal property of Kähler differentials is also assumed. These are algebraic geometry results, not assertions about differential-operator modules. In particular, [Stacks, Tags 00UQ and 00UR] identify an étale map of finite presentation with the unique lifting property for square-zero ideals; applying that property successively to the powers of a nilpotent ideal gives the version used in Proposition 3.1. [Stacks, Tag 00TA] gives local standard smooth presentations, and [Stacks, Tag 00T7] identifies their free differentials. For the affine sheaf arguments, [Stacks, Tag 01IA] identifies quasi-coherent sheaves with modules and [Stacks, Tag 01XB] gives vanishing of higher cohomology.</p>
+<p>This lesson proves the operator, symbol, Noetherianity, simplicity and finite-dimensional representation statements it uses. It does not assert the corresponding simplicity theorem for every global ring of differential operators, nor a positive-characteristic analogue of the characteristic-zero normal form.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project, <em>Commutative Algebra</em>, Tags 09CI, 09CJ, 09CM, 0G35 and 0G36; <em>Sheaves of Modules</em>, Tag 0G3P. The <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#definition-differential-operators">AI Integrated Stacks Project English reader</a> preserves these tags and labels. AI Integrated Stacks Project is an edition with AI-proposed corrections and AI-written additions; it is not reviewed by the maintainers of the <a href="https://stacks.math.columbia.edu/">official Stacks project</a>.</li>
+<li>Roman Bezrukavnikov, <em>Noncommutative Algebra</em>, MIT 18.706, spring 2023, Sections 24.6 and 25.2. <a href="https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/">Open course materials</a>.</li>
+<li>Victor Ginzburg, with Vladimir Baranovsky and Sam Evens, <em>Lectures on D-modules</em>, 1998, Section 1.1, especially Proposition 1.1.6. <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf">University-hosted notes</a>.</li>
+<li>M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §10.1, and V. Ginzburg, <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em></a>, for the ring of holomorphic differential operators and its order filtration. The algebraic arguments here do not require the analytic results.</li>
+<li>Alexander Beilinson and Vladimir Drinfeld, <em>Quantization of Hitchin's integrable system and Hecke eigensheaves</em>, Sections 1.1.3–1.1.4, for the relationship with differential operators on smooth stacks.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/differential-operators-and-the-weyl-algebra.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

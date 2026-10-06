@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Units and class numbers of cyclotomic fields; Kummer&#x27;s theorem for regular primes · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="units-and-class-numbers-of-cyclotomic-fields-kummer-s-theorem-for-regular-primes">Units and class numbers of cyclotomic fields; Kummer's theorem for regular primes</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>Factoring an equation into algebraic integers is useful only when the factors can be controlled. In a prime cyclotomic field, two facts provide that control: distinct factors of a first-case Fermat equation generate relatively prime ideals, and every unit is a power of the cyclotomic root times a real unit. Regularity then turns an ideal power into an element power. The remaining obstruction appears in a short congruence in the integral basis.</p>
+<p>Throughout, <span class="math" data-tex="\(p\)">\(p\)</span> is an odd prime and
+<span class="math math-display" data-tex="\[
+\zeta=e^{2\pi i/p},\qquad K=\mathbf Q(\zeta),\qquad
+K^+=\mathbf Q(\zeta+\zeta^{-1}),\qquad \lambda=1-\zeta.
+\tag{1}
+\]">\[
+\zeta=e^{2\pi i/p},\qquad K=\mathbf Q(\zeta),\qquad
+K^+=\mathbf Q(\zeta+\zeta^{-1}),\qquad \lambda=1-\zeta.
+\tag{1}
+\]</span>
+Write <span class="math" data-tex="\(E=\mathcal O_K^\times\)">\(E=\mathcal O_K^\times\)</span>, <span class="math" data-tex="\(E^+=\mathcal O_{K^+}^\times\)">\(E^+=\mathcal O_{K^+}^\times\)</span>, and <span class="math" data-tex="\(h=h(K)\)">\(h=h(K)\)</span>, <span class="math" data-tex="\(h^+=h(K^+)\)">\(h^+=h(K^+)\)</span>. A bar denotes complex conjugation. From <a href="cyclotomic-fields.html"><em>Cyclotomic fields</em></a>, we use
+<span class="math math-display" data-tex="\[
+\mathcal O_K=\mathbf Z[\zeta],\qquad
+\mathcal O_K/(\lambda)=\mathbf F_p,\qquad
+(p)=(\lambda)^{p-1},\qquad [K^+:\mathbf Q]=(p-1)/2.
+\tag{2}
+\]">\[
+\mathcal O_K=\mathbf Z[\zeta],\qquad
+\mathcal O_K/(\lambda)=\mathbf F_p,\qquad
+(p)=(\lambda)^{p-1},\qquad [K^+:\mathbf Q]=(p-1)/2.
+\tag{2}
+\]</span>
+The last ideal identity suppresses a unit in the corresponding element identity. The same lesson supplies cyclotomic field intersections and the unit geometric-series ratios. We use Kronecker's lemma and the unit theorem from <a href="dirichlets-unit-theorem.html"><em>Dirichlet's unit theorem</em></a>, together with unique ideal factorization and the finite class group from the earlier ideal and class-number lessons.</p>
+<h2 id="roots-of-unity-and-real-units">Roots of unity and real units</h2>
+<p>First identify all roots of unity in <span class="math" data-tex="\(K\)">\(K\)</span>:
+<span class="math math-display" data-tex="\[
+\mu(K)=\{\pm\zeta^j: j\in\mathbf Z/p\mathbf Z\}.
+\tag{3}
+\]">\[
+\mu(K)=\{\pm\zeta^j: j\in\mathbf Z/p\mathbf Z\}.
+\tag{3}
+\]</span>
+Indeed, if a root of unity of order <span class="math" data-tex="\(N\)">\(N\)</span> belongs to <span class="math" data-tex="\(K\)">\(K\)</span>, then <span class="math" data-tex="\(K_N\subseteq K_p\)">\(K_N\subseteq K_p\)</span>. The intersection theorem gives <span class="math" data-tex="\(K_N=K_{\gcd(N,p)}\)">\(K_N=K_{\gcd(N,p)}\)</span>. If <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>, its degree is one, so <span class="math" data-tex="\(N=1\)">\(N=1\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>. If <span class="math" data-tex="\(p\mid N\)">\(p\mid N\)</span>, write <span class="math" data-tex="\(N=p^r m\)">\(N=p^r m\)</span> with <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>. Now <span class="math" data-tex="\(K_N=K_p\)">\(K_N=K_p\)</span>, and the degree formula yields <span class="math" data-tex="\(p^{r-1}\varphi(m)=1\)">\(p^{r-1}\varphi(m)=1\)</span>. Hence <span class="math" data-tex="\(r=1\)">\(r=1\)</span> and <span class="math" data-tex="\(m=1\)">\(m=1\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>. This proves (3), since every root of order <span class="math" data-tex="\(p\)">\(p\)</span> or <span class="math" data-tex="\(2p\)">\(2p\)</span> is among those displayed.</p>
+<p><strong>Proposition 13.1 (Kummer's unit lemma).</strong> Every <span class="math" data-tex="\(\varepsilon\in E\)">\(\varepsilon\in E\)</span> has the form
+<span class="math math-display" data-tex="\[
+\varepsilon=\zeta^k v,\qquad v\in E^+.
+\tag{4}
+\]">\[
+\varepsilon=\zeta^k v,\qquad v\in E^+.
+\tag{4}
+\]</span>
+In particular, the unit index <span class="math" data-tex="\([E:\mu(K)E^+]\)">\([E:\mu(K)E^+]\)</span> equals one.</p>
+<p><strong>Proof.</strong> The quotient <span class="math" data-tex="\(\varepsilon/\overline\varepsilon\)">\(\varepsilon/\overline\varepsilon\)</span> is an algebraic integer because both factors are units. Cyclotomic automorphisms commute with conjugation, so every conjugate of this quotient has absolute value one. Kronecker's lemma makes it a root of unity. By (3), it is <span class="math" data-tex="\(\pm\zeta^j\)">\(\pm\zeta^j\)</span>.</p>
+<p>Reduction modulo <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> sends <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> and <span class="math" data-tex="\(\zeta^{-1}\)">\(\zeta^{-1}\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. Thus <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and <span class="math" data-tex="\(\overline\varepsilon\)">\(\overline\varepsilon\)</span> have the same nonzero residue, and their quotient reduces to <span class="math" data-tex="\(1\)">\(1\)</span>. A root <span class="math" data-tex="\(-\zeta^j\)">\(-\zeta^j\)</span> reduces to <span class="math" data-tex="\(-1\)">\(-1\)</span>, which differs from <span class="math" data-tex="\(1\)">\(1\)</span> because <span class="math" data-tex="\(p\)">\(p\)</span> is odd. Therefore
+<span class="math math-display" data-tex="\[
+\varepsilon/\overline\varepsilon=\zeta^j.
+\]">\[
+\varepsilon/\overline\varepsilon=\zeta^j.
+\]</span>
+Choose <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(2k\equiv j\pmod p\)">\(2k\equiv j\pmod p\)</span> and put <span class="math" data-tex="\(v=\zeta^{-k}\varepsilon\)">\(v=\zeta^{-k}\varepsilon\)</span>. Then <span class="math" data-tex="\(v/\overline v=\zeta^{j-2k}=1\)">\(v/\overline v=\zeta^{j-2k}=1\)</span>. Both <span class="math" data-tex="\(v\)">\(v\)</span> and its inverse are integral and real, hence belong to <span class="math" data-tex="\(\mathcal O_{K^+}\)">\(\mathcal O_{K^+}\)</span>. This proves (4). The possible minus sign in a root of unity has been absorbed into the real unit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The residue congruence supplies the extra information beyond the general CM-field argument. The latter gives a root of unity; the congruence removes its negative coset.</p>
+<h2 id="constructing-cyclotomic-units">Constructing cyclotomic units</h2>
+<p>For <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span>, define
+<span class="math math-display" data-tex="\[
+u_a=\frac{1-\zeta^a}{1-\zeta}.
+\tag{5}
+\]">\[
+u_a=\frac{1-\zeta^a}{1-\zeta}.
+\tag{5}
+\]</span>
+Only the residue of <span class="math" data-tex="\(a\)">\(a\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> matters.</p>
+<p><strong>Proposition 13.2.</strong> The element <span class="math" data-tex="\(u_a\)">\(u_a\)</span> is a unit of <span class="math" data-tex="\(\mathbf Z[\zeta]\)">\(\mathbf Z[\zeta]\)</span>.</p>
+<p><strong>Proof.</strong> Represent <span class="math" data-tex="\(a\)">\(a\)</span> by an integer between <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. Then
+<span class="math math-display" data-tex="\[
+u_a=1+\zeta+\cdots+\zeta^{a-1}\in\mathbf Z[\zeta].
+\]">\[
+u_a=1+\zeta+\cdots+\zeta^{a-1}\in\mathbf Z[\zeta].
+\]</span>
+Choose a positive integer <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(ab\equiv1\pmod p\)">\(ab\equiv1\pmod p\)</span>. The reverse ratio is also a geometric sum:
+<span class="math math-display" data-tex="\[
+u_a^{-1}=\frac{1-(\zeta^a)^b}{1-\zeta^a}
+=1+\zeta^a+\cdots+(\zeta^a)^{b-1}.
+\]">\[
+u_a^{-1}=\frac{1-(\zeta^a)^b}{1-\zeta^a}
+=1+\zeta^a+\cdots+(\zeta^a)^{b-1}.
+\]</span>
+Multiplication proves that these two algebraic integers are inverses. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The ratios themselves need not be real. Direct conjugation gives
+<span class="math math-display" data-tex="\[
+\overline u_a=\zeta^{1-a}u_a.
+\]">\[
+\overline u_a=\zeta^{1-a}u_a.
+\]</span>
+Let <span class="math" data-tex="\(r_a\in\mathbf Z/p\mathbf Z\)">\(r_a\in\mathbf Z/p\mathbf Z\)</span> satisfy <span class="math" data-tex="\(2r_a\equiv1-a\pmod p\)">\(2r_a\equiv1-a\pmod p\)</span>, and put
+<span class="math math-display" data-tex="\[
+c_a=\zeta^{r_a}u_a\in E^+.
+\tag{6}
+\]">\[
+c_a=\zeta^{r_a}u_a\in E^+.
+\tag{6}
+\]</span>
+Indeed, <span class="math" data-tex="\(c_a/\overline c_a=\zeta^{2r_a+a-1}=1\)">\(c_a/\overline c_a=\zeta^{2r_a+a-1}=1\)</span>. Moreover <span class="math" data-tex="\(c_1=1\)">\(c_1=1\)</span> and <span class="math" data-tex="\(c_{p-a}=-c_a\)">\(c_{p-a}=-c_a\)</span>: the latter follows from <span class="math" data-tex="\(u_{p-a}=-\zeta^{-a}u_a\)">\(u_{p-a}=-\zeta^{-a}u_a\)</span> and <span class="math" data-tex="\(r_{p-a}-r_a\equiv a\pmod p\)">\(r_{p-a}-r_a\equiv a\pmod p\)</span>. Thus the real cyclotomic-unit subgroup can be written
+<span class="math math-display" data-tex="\[
+C^+=\langle-1,c_2,c_3,\ldots,c_{(p-1)/2}\rangle\subseteq E^+.
+\tag{7}
+\]">\[
+C^+=\langle-1,c_2,c_3,\ldots,c_{(p-1)/2}\rangle\subseteq E^+.
+\tag{7}
+\]</span>
+For <span class="math" data-tex="\(p=3\)">\(p=3\)</span> this means <span class="math" data-tex="\(C^+=\{1,-1\}\)">\(C^+=\{1,-1\}\)</span>. Its displayed nontorsion generators number <span class="math" data-tex="\((p-3)/2\)">\((p-3)/2\)</span>, the rank of <span class="math" data-tex="\(E^+\)">\(E^+\)</span>.</p>
+<h3 id="the-index-of-the-real-cyclotomic-units">The index of the real cyclotomic units</h3>
+<p><strong>Theorem (real cyclotomic-unit index).</strong> For every odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, the subgroup in (7) has finite index
+<span class="math math-display" data-tex="\[
+[E^+:C^+]=h(K^+)=h^+.
+\tag{8}
+\]">\[
+[E^+:C^+]=h(K^+)=h^+.
+\tag{8}
+\]</span></p>
+<p>The proof uses the unit theorem already established in <a href="dirichlets-unit-theorem.html"><em>Dirichlet's unit theorem</em></a>. Its analytic inputs are proved later in <a href="the-dedekind-zeta-function-and-the-analytic-class-number-formula.html"><em>The Dedekind zeta function and the analytic class number formula</em></a>, Theorem 16.2, and <a href="abelian-number-fields-and-dirichlet-l-functions-at-s-1.html"><em>Abelian number fields and Dirichlet L-functions at <span class="math" data-tex="\(s=1\)">\(s=1\)</span></em></a>, Theorem 17.1, Proposition 17.2 and Theorem 17.3. These give the residue, the cyclotomic Euler-factor product, and convergence and nonvanishing at one. Their proofs use the ordinary class group and the full unit lattice, not this index theorem.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, then <span class="math" data-tex="\(\zeta+\zeta^{-1}=-1\)">\(\zeta+\zeta^{-1}=-1\)</span>, so <span class="math" data-tex="\(K^+=\mathbf Q\)">\(K^+=\mathbf Q\)</span>, <span class="math" data-tex="\(E^+=C^+=\{1,-1\}\)">\(E^+=C^+=\{1,-1\}\)</span>, and <span class="math" data-tex="\(h^+=1\)">\(h^+=1\)</span>. The regulator is <span class="math" data-tex="\(1\)">\(1\)</span>, by the rank-zero convention. This proves the theorem in that case.</p>
+<p>Assume henceforth that <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span>. Set
+<span class="math math-display" data-tex="\[
+n=\frac{p-1}{2},\qquad F=K^+,\qquad
+t=\zeta+\zeta^{-1},\qquad
+G=(\mathbf Z/p\mathbf Z)^\times/\{1,-1\}.
+\]">\[
+n=\frac{p-1}{2},\qquad F=K^+,\qquad
+t=\zeta+\zeta^{-1},\qquad
+G=(\mathbf Z/p\mathbf Z)^\times/\{1,-1\}.
+\]</span>
+Use <span class="math" data-tex="\(1,2,\ldots,n\)">\(1,2,\ldots,n\)</span> as representatives for <span class="math" data-tex="\(G\)">\(G\)</span>, with <span class="math" data-tex="\(1\)">\(1\)</span> its identity. Its elements index the real embeddings <span class="math" data-tex="\(\sigma_a:F\to\mathbf R\)">\(\sigma_a:F\to\mathbf R\)</span>, obtained by restricting <span class="math" data-tex="\(\zeta\mapsto\zeta^a\)">\(\zeta\mapsto\zeta^a\)</span>. Write <span class="math" data-tex="\(R^+\)">\(R^+\)</span> for the ordinary, deleted-row regulator of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>The real integral basis and discriminant.</strong> Multiplication by the unit <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> takes the integral basis <span class="math" data-tex="\(1,\zeta,\ldots,\zeta^{p-2}\)">\(1,\zeta,\ldots,\zeta^{p-2}\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span> to the integral basis
+<span class="math math-display" data-tex="\[
+\zeta,\zeta^2,\ldots,\zeta^{p-1}.
+\]">\[
+\zeta,\zeta^2,\ldots,\zeta^{p-1}.
+\]</span>
+Conjugation permutes this basis by <span class="math" data-tex="\(a\mapsto p-a\)">\(a\mapsto p-a\)</span>. Uniqueness of integral coordinates shows that its fixed lattice has basis
+<span class="math math-display" data-tex="\[
+s_a=\zeta^a+\zeta^{-a}\qquad(1\leq a\leq n).
+\]">\[
+s_a=\zeta^a+\zeta^{-a}\qquad(1\leq a\leq n).
+\]</span>
+The algebraic integers of <span class="math" data-tex="\(F\)">\(F\)</span> are exactly <span class="math" data-tex="\(\mathcal O_K\cap F\)">\(\mathcal O_K\cap F\)</span>, so this fixed lattice is <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>. Set <span class="math" data-tex="\(s_0=2\)">\(s_0=2\)</span> and <span class="math" data-tex="\(s_1=t\)">\(s_1=t\)</span>. The identity
+<span class="math math-display" data-tex="\[
+s_{a+1}=t s_a-s_{a-1}
+\]">\[
+s_{a+1}=t s_a-s_{a-1}
+\]</span>
+puts every <span class="math" data-tex="\(s_a\)">\(s_a\)</span> in <span class="math" data-tex="\(\mathbf Z[t]\)">\(\mathbf Z[t]\)</span>. Conversely <span class="math" data-tex="\(t\)">\(t\)</span> is a real algebraic integer, hence <span class="math" data-tex="\(\mathbf Z[t]\subseteq\mathcal O_F\)">\(\mathbf Z[t]\subseteq\mathcal O_F\)</span>. We have proved
+<span class="math math-display" data-tex="\[
+\mathcal O_F=\mathbf Z[t].
+\tag{CU1}
+\]">\[
+\mathcal O_F=\mathbf Z[t].
+\tag{CU1}
+\]</span>
+In particular <span class="math" data-tex="\(1,t,\ldots,t^{n-1}\)">\(1,t,\ldots,t^{n-1}\)</span> is an integral basis: the monic minimal polynomial of <span class="math" data-tex="\(t\)">\(t\)</span> has degree <span class="math" data-tex="\(n\)">\(n\)</span>, and division by it describes all of <span class="math" data-tex="\(\mathbf Z[t]\)">\(\mathbf Z[t]\)</span>.</p>
+<p>Let <span class="math" data-tex="\(P(T)\)">\(P(T)\)</span> be that minimal polynomial. The numbers <span class="math" data-tex="\(\zeta^a+\zeta^{-a}\)">\(\zeta^a+\zeta^{-a}\)</span>, indexed by <span class="math" data-tex="\(G\)">\(G\)</span>, are distinct: two equal sums give the same polynomial <span class="math" data-tex="\(X^2-t_aX+1\)">\(X^2-t_aX+1\)</span>, and hence the same unordered pair of roots <span class="math" data-tex="\(\{\zeta^a,\zeta^{-a}\}\)">\(\{\zeta^a,\zeta^{-a}\}\)</span>. Pairing the roots of <span class="math" data-tex="\(\Phi_p\)">\(\Phi_p\)</span> therefore gives
+<span class="math math-display" data-tex="\[
+\Phi_p(X)=\prod_{a\in G}(X^2-t_aX+1)
+=X^nP(X+X^{-1}).
+\]">\[
+\Phi_p(X)=\prod_{a\in G}(X^2-t_aX+1)
+=X^nP(X+X^{-1}).
+\]</span>
+Differentiate this identity and evaluate at <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. Since <span class="math" data-tex="\(P(t)=0\)">\(P(t)=0\)</span>, the term differentiating <span class="math" data-tex="\(X^n\)">\(X^n\)</span> vanishes, leaving
+<span class="math math-display" data-tex="\[
+\Phi_p&#x27;(\zeta)
+=\zeta^{n-1}(\zeta-\zeta^{-1})P&#x27;(t).
+\tag{CU2}
+\]">\[
+\Phi_p&#x27;(\zeta)
+=\zeta^{n-1}(\zeta-\zeta^{-1})P&#x27;(t).
+\tag{CU2}
+\]</span></p>
+<p>For a monogenic integral basis with minimal polynomial <span class="math" data-tex="\(Q\)">\(Q\)</span>, the discriminant has absolute value <span class="math" data-tex="\(|N(Q&#x27;(\alpha))|\)">\(|N(Q&#x27;(\alpha))|\)</span>. Indeed, if the roots are <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>, then <span class="math" data-tex="\(Q&#x27;(\alpha_i)=\prod_{j\ne i}(\alpha_i-\alpha_j)\)">\(Q&#x27;(\alpha_i)=\prod_{j\ne i}(\alpha_i-\alpha_j)\)</span>. Multiplying over <span class="math" data-tex="\(i\)">\(i\)</span> gives, up to the sign <span class="math" data-tex="\((-1)^{m(m-1)/2}\)">\((-1)^{m(m-1)/2}\)</span>, the squared Vandermonde determinant, which is the trace discriminant of <span class="math" data-tex="\(1,\alpha,\ldots,\alpha^{m-1}\)">\(1,\alpha,\ldots,\alpha^{m-1}\)</span>.</p>
+<p>The cyclotomic discriminant calculation from <em>Cyclotomic fields</em> gives <span class="math" data-tex="\(|d_K|=p^{p-2}\)">\(|d_K|=p^{p-2}\)</span>. Also
+<span class="math math-display" data-tex="\[
+|N_{K/\mathbf Q}(\zeta-\zeta^{-1})|
+=|N_{K/\mathbf Q}(\zeta^{-1}(\zeta^2-1))|=p.
+\]">\[
+|N_{K/\mathbf Q}(\zeta-\zeta^{-1})|
+=|N_{K/\mathbf Q}(\zeta^{-1}(\zeta^2-1))|=p.
+\]</span>
+Here <span class="math" data-tex="\(\zeta^{-1}\)">\(\zeta^{-1}\)</span> is a root of unity, and <span class="math" data-tex="\(\zeta^2\)">\(\zeta^2\)</span> is again a primitive <span class="math" data-tex="\(p\)">\(p\)</span>-th root, so the last norm is <span class="math" data-tex="\(\Phi_p(1)=p\)">\(\Phi_p(1)=p\)</span> in absolute value. Each real embedding of <span class="math" data-tex="\(F\)">\(F\)</span> has two extensions to <span class="math" data-tex="\(K\)">\(K\)</span>, giving
+<span class="math math-display" data-tex="\[
+|N_{K/\mathbf Q}(P&#x27;(t))|
+=|N_{F/\mathbf Q}(P&#x27;(t))|^2=d_F^2.
+\]">\[
+|N_{K/\mathbf Q}(P&#x27;(t))|
+=|N_{F/\mathbf Q}(P&#x27;(t))|^2=d_F^2.
+\]</span>
+The last equality uses (CU1); <span class="math" data-tex="\(d_F&gt;0\)">\(d_F&gt;0\)</span> because all embeddings are real. Taking absolute norms in (CU2) now yields
+<span class="math math-display" data-tex="\[
+p^{p-2}=p\,d_F^2,\qquad d_F=p^{n-1}.
+\tag{CU3}
+\]">\[
+p^{p-2}=p\,d_F^2,\qquad d_F=p^{n-1}.
+\tag{CU3}
+\]</span></p>
+<p><strong>The augmentation determinant.</strong> We first prove a finite linear-algebra identity. Let <span class="math" data-tex="\(H\)">\(H\)</span> be a finite abelian group with identity <span class="math" data-tex="\(1\)">\(1\)</span>, and let <span class="math" data-tex="\(q:H\to\mathbf C\)">\(q:H\to\mathbf C\)</span> be any function. Form the matrix
+<span class="math math-display" data-tex="\[
+D_{a,b}=q(ab)-q(a)\qquad(a,b\in H\setminus\{1\}).
+\]">\[
+D_{a,b}=q(ab)-q(a)\qquad(a,b\in H\setminus\{1\}).
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+|\det D|
+=\prod_{\substack{\chi\in\widehat H\\\chi\ne1}}
+\left|\sum_{a\in H}\chi(a)q(a)\right|.
+\tag{CU4}
+\]">\[
+|\det D|
+=\prod_{\substack{\chi\in\widehat H\\\chi\ne1}}
+\left|\sum_{a\in H}\chi(a)q(a)\right|.
+\tag{CU4}
+\]</span>
+This also includes the trivial group, with both sides equal to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>To prove it, take the vector space with basis <span class="math" data-tex="\(e_a\)">\(e_a\)</span>, and put
+<span class="math math-display" data-tex="\[
+T(e_b)=\sum_{a\in H}q(ab^{-1})e_a,\qquad
+W=\left\{\sum_a x_ae_a:\sum_a x_a=0\right\}.
+\]">\[
+T(e_b)=\sum_{a\in H}q(ab^{-1})e_a,\qquad
+W=\left\{\sum_a x_ae_a:\sum_a x_a=0\right\}.
+\]</span>
+Every column of <span class="math" data-tex="\(T\)">\(T\)</span> has sum <span class="math" data-tex="\(\sum_aq(a)\)">\(\sum_aq(a)\)</span>, so <span class="math" data-tex="\(T(W)\subseteq W\)">\(T(W)\subseteq W\)</span>. The integral augmentation lattice <span class="math" data-tex="\(W\cap\mathbf Z[H]\)">\(W\cap\mathbf Z[H]\)</span> has basis <span class="math" data-tex="\(u_b=e_b-e_1\)">\(u_b=e_b-e_1\)</span>, <span class="math" data-tex="\(b\ne1\)">\(b\ne1\)</span>: a vector with coefficient sum zero is uniquely <span class="math" data-tex="\(\sum_{b\ne1}x_bu_b\)">\(\sum_{b\ne1}x_bu_b\)</span>. In that same basis for both domain and range, the matrix of <span class="math" data-tex="\(T|_W\)">\(T|_W\)</span> is
+<span class="math math-display" data-tex="\[
+M_{a,b}=q(ab^{-1})-q(a)\qquad(a,b\ne1).
+\]">\[
+M_{a,b}=q(ab^{-1})-q(a)\qquad(a,b\ne1).
+\]</span>
+Replacing each column index <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span> changes the determinant only by a sign and turns <span class="math" data-tex="\(M\)">\(M\)</span> into <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>Finite abelian group decomposition gives exactly <span class="math" data-tex="\(|H|\)">\(|H|\)</span> complex characters. Their orthogonality can be checked directly: if <span class="math" data-tex="\(\chi\ne\psi\)">\(\chi\ne\psi\)</span>, choose <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(\chi(h)\overline{\psi(h)}\ne1\)">\(\chi(h)\overline{\psi(h)}\ne1\)</span>; translation by <span class="math" data-tex="\(h\)">\(h\)</span> multiplies <span class="math" data-tex="\(\sum_a\chi(a)\overline{\psi(a)}\)">\(\sum_a\chi(a)\overline{\psi(a)}\)</span> by this value, forcing the sum to be zero. For <span class="math" data-tex="\(\chi=\psi\)">\(\chi=\psi\)</span> the sum is <span class="math" data-tex="\(|H|\)">\(|H|\)</span>, because character values are roots of unity. Consequently the vectors
+<span class="math math-display" data-tex="\[
+v_\chi=\sum_{a\in H}\chi(a)e_a
+\]">\[
+v_\chi=\sum_{a\in H}\chi(a)e_a
+\]</span>
+form a basis. The nontrivial ones have coefficient sum zero and form a basis of <span class="math" data-tex="\(W\)">\(W\)</span>. Substitution <span class="math" data-tex="\(c=ab^{-1}\)">\(c=ab^{-1}\)</span> shows
+<span class="math math-display" data-tex="\[
+T v_\chi=
+\left(\sum_{c\in H}q(c)\chi(c)^{-1}\right)v_\chi.
+\]">\[
+T v_\chi=
+\left(\sum_{c\in H}q(c)\chi(c)^{-1}\right)v_\chi.
+\]</span>
+The determinant of <span class="math" data-tex="\(T|_W\)">\(T|_W\)</span> is the product of these eigenvalues. Reindexing the nontrivial characters by inversion, and taking absolute values, proves (CU4). No factor <span class="math" data-tex="\(|H|\)">\(|H|\)</span> appears: we computed the actual restricted operator in one augmentation basis, not a cofactor of its full matrix.</p>
+<p>Apply this with <span class="math" data-tex="\(H=G\)">\(H=G\)</span> and
+<span class="math math-display" data-tex="\[
+\ell(a)=\log|1-\zeta^a|.
+\]">\[
+\ell(a)=\log|1-\zeta^a|.
+\]</span>
+The function is well-defined on <span class="math" data-tex="\(G\)">\(G\)</span> since <span class="math" data-tex="\(|1-\zeta^{-a}|=|1-\zeta^a|\)">\(|1-\zeta^{-a}|=|1-\zeta^a|\)</span>. The real units <span class="math" data-tex="\(c_b\)">\(c_b\)</span> constructed in (6) satisfy
+<span class="math math-display" data-tex="\[
+\log|\sigma_a(c_b)|=\ell(ab)-\ell(a),
+\]">\[
+\log|\sigma_a(c_b)|=\ell(ab)-\ell(a),
+\]</span>
+because their root-of-unity phases have absolute value one. Thus the deleted-row logarithmic matrix for <span class="math" data-tex="\(c_2,\ldots,c_n\)">\(c_2,\ldots,c_n\)</span> is
+<span class="math math-display" data-tex="\[
+B=(\ell(ab)-\ell(a))_{a,b\in G\setminus\{1\}},
+\]">\[
+B=(\ell(ab)-\ell(a))_{a,b\in G\setminus\{1\}},
+\]</span>
+where the omitted embedding is <span class="math" data-tex="\(a=1\)">\(a=1\)</span>. Define <span class="math" data-tex="\(R_C=|\det B|\)">\(R_C=|\det B|\)</span>, without yet assuming that the units are independent. Formula (CU4) gives
+<span class="math math-display" data-tex="\[
+R_C=\prod_{\substack{\chi\in\widehat G\\\chi\ne1}}|S_\chi|,
+\qquad S_\chi=\sum_{a\in G}\chi(a)\ell(a).
+\tag{CU5}
+\]">\[
+R_C=\prod_{\substack{\chi\in\widehat G\\\chi\ne1}}|S_\chi|,
+\qquad S_\chi=\sum_{a\in G}\chi(a)\ell(a).
+\tag{CU5}
+\]</span></p>
+<p><strong>The even-character logarithm formula.</strong> Characters of <span class="math" data-tex="\(G\)">\(G\)</span> are exactly the even Dirichlet characters modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Extend them by zero at multiples of <span class="math" data-tex="\(p\)">\(p\)</span>. Every nontrivial one is primitive, since its conductor divides the prime <span class="math" data-tex="\(p\)">\(p\)</span> and cannot be <span class="math" data-tex="\(1\)">\(1\)</span>. We now prove, for all such characters, including nonreal ones,
+<span class="math math-display" data-tex="\[
+L(1,\chi)=-\frac{2}{\tau(\overline\chi)}S_{\overline\chi},
+\qquad
+\tau(\chi)=\sum_{a=1}^{p-1}\chi(a)\zeta^a,
+\qquad |\tau(\chi)|=\sqrt p.
+\tag{CU6}
+\]">\[
+L(1,\chi)=-\frac{2}{\tau(\overline\chi)}S_{\overline\chi},
+\qquad
+\tau(\chi)=\sum_{a=1}^{p-1}\chi(a)\zeta^a,
+\qquad |\tau(\chi)|=\sqrt p.
+\tag{CU6}
+\]</span></p>
+<p>A nontrivial character has <span class="math" data-tex="\(\sum_{a=1}^{p-1}\chi(a)=0\)">\(\sum_{a=1}^{p-1}\chi(a)=0\)</span>, by multiplying the residues by a unit on which it is not <span class="math" data-tex="\(1\)">\(1\)</span>. Character values on units have absolute value one. In the squared Gauss-sum magnitude, substitute <span class="math" data-tex="\(a=ub\)">\(a=ub\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\tau(\chi)|^2
+&amp;=\sum_{u=1}^{p-1}\chi(u)
+  \sum_{b=1}^{p-1}\zeta^{(u-1)b}\\
+&amp;=(p-1)-\sum_{u\ne1}\chi(u)=p.
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\tau(\chi)|^2
+&amp;=\sum_{u=1}^{p-1}\chi(u)
+  \sum_{b=1}^{p-1}\zeta^{(u-1)b}\\
+&amp;=(p-1)-\sum_{u\ne1}\chi(u)=p.
+\end{aligned}
+\]</span>
+The inner geometric sum is <span class="math" data-tex="\(p-1\)">\(p-1\)</span> at <span class="math" data-tex="\(u=1\)">\(u=1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise. This proves the magnitude and nonvanishing of the Gauss sum without a choice of phase.</p>
+<p>For every positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, change variables <span class="math" data-tex="\(b=am\)">\(b=am\)</span> if <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>. If <span class="math" data-tex="\(p\mid m\)">\(p\mid m\)</span>, use the zero character sum. The two cases give
+<span class="math math-display" data-tex="\[
+\sum_{a=1}^{p-1}\overline\chi(a)\zeta^{am}
+=\tau(\overline\chi)\chi(m).
+\]">\[
+\sum_{a=1}^{p-1}\overline\chi(a)\zeta^{am}
+=\tau(\overline\chi)\chi(m).
+\]</span>
+For <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>, absolute convergence of <span class="math" data-tex="\(\sum r^m/m\)">\(\sum r^m/m\)</span> therefore permits interchange with the finite sum:
+<span class="math math-display" data-tex="\[
+\sum_{m\geq1}\frac{\chi(m)r^m}{m}
+=-\frac1{\tau(\overline\chi)}
+ \sum_{a=1}^{p-1}\overline\chi(a)\log(1-r\zeta^a).
+\tag{CU7}
+\]">\[
+\sum_{m\geq1}\frac{\chi(m)r^m}{m}
+=-\frac1{\tau(\overline\chi)}
+ \sum_{a=1}^{p-1}\overline\chi(a)\log(1-r\zeta^a).
+\tag{CU7}
+\]</span>
+The logarithm is the branch starting at zero when <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Its argument has positive real part throughout <span class="math" data-tex="\(0\leq r\leq1\)">\(0\leq r\leq1\)</span>, so this is also the principal branch.</p>
+<p>The undamped series <span class="math" data-tex="\(\sum\chi(m)/m\)">\(\sum\chi(m)/m\)</span> converges: periodicity and the zero period sum bound the partial sums of <span class="math" data-tex="\(\chi(m)\)">\(\chi(m)\)</span>, and summation by parts gives a tail tending to zero. Its limit is <span class="math" data-tex="\(L=L(1,\chi)\)">\(L=L(1,\chi)\)</span>, as in Proposition 17.2. If <span class="math" data-tex="\(U_N=\sum_{m=1}^N\chi(m)/m\)">\(U_N=\sum_{m=1}^N\chi(m)/m\)</span>, then
+<span class="math math-display" data-tex="\[
+\sum_{m\geq1}\frac{\chi(m)r^m}{m}
+=(1-r)\sum_{N\geq1}U_Nr^N
+=Lr+(1-r)\sum_{N\geq1}(U_N-L)r^N.
+\]">\[
+\sum_{m\geq1}\frac{\chi(m)r^m}{m}
+=(1-r)\sum_{N\geq1}U_Nr^N
+=Lr+(1-r)\sum_{N\geq1}(U_N-L)r^N.
+\]</span>
+For any <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, choose <span class="math" data-tex="\(N_0\)">\(N_0\)</span> so that <span class="math" data-tex="\(|U_N-L|&lt;\delta\)">\(|U_N-L|&lt;\delta\)</span> for <span class="math" data-tex="\(N\geq N_0\)">\(N\geq N_0\)</span>. The finite initial part of the last sum tends to zero after multiplication by <span class="math" data-tex="\(1-r\)">\(1-r\)</span>; the remaining part has absolute value at most <span class="math" data-tex="\(\delta r\)">\(\delta r\)</span>. This proves the Abel limit as <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span>.</p>
+<p>Each logarithm on the finite right side of (CU7) has a limit, since <span class="math" data-tex="\(\zeta^a\ne1\)">\(\zeta^a\ne1\)</span>. The terms at <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(p-a\)">\(p-a\)</span> have equal character coefficients, because <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is even, and conjugate logarithms. Their logarithms sum to <span class="math" data-tex="\(2\log|1-\zeta^a|\)">\(2\log|1-\zeta^a|\)</span>. Taking the limit of (CU7) proves (CU6).</p>
+<p>Applying (CU6) to <span class="math" data-tex="\(\overline\chi\)">\(\overline\chi\)</span> gives
+<span class="math math-display" data-tex="\[
+|S_\chi|=\frac{\sqrt p}{2}|L(1,\overline\chi)|.
+\]">\[
+|S_\chi|=\frac{\sqrt p}{2}|L(1,\overline\chi)|.
+\]</span>
+Complex conjugation permutes the nontrivial characters of <span class="math" data-tex="\(G\)">\(G\)</span>. Thus (CU5) becomes
+<span class="math math-display" data-tex="\[
+R_C=\left(\frac{\sqrt p}{2}\right)^{n-1}
+ \prod_{\substack{\chi\in\widehat G\\\chi\ne1}}|L(1,\chi)|.
+\tag{CU8}
+\]">\[
+R_C=\left(\frac{\sqrt p}{2}\right)^{n-1}
+ \prod_{\substack{\chi\in\widehat G\\\chi\ne1}}|L(1,\chi)|.
+\tag{CU8}
+\]</span>
+Theorem 17.3 proves that every factor is nonzero. In particular <span class="math" data-tex="\(\det B\ne0\)">\(\det B\ne0\)</span>; independence of the displayed cyclotomic units follows from this calculation rather than being assumed at the start.</p>
+<p><strong>The analytic class-number product.</strong> The field <span class="math" data-tex="\(F\)">\(F\)</span> is already a specified cyclotomic subfield, with character group <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>. The Euler-factor proof of Theorem 17.1 gives, for <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\zeta_F(s)=\zeta(s)
+ \prod_{\substack{\chi\in\widehat G\\\chi\ne1}}L(s,\chi).
+\]">\[
+\zeta_F(s)=\zeta(s)
+ \prod_{\substack{\chi\in\widehat G\\\chi\ne1}}L(s,\chi).
+\]</span>
+The trivial character here is taken at its primitive conductor <span class="math" data-tex="\(1\)">\(1\)</span>, so its factor is <span class="math" data-tex="\(\zeta(s)\)">\(\zeta(s)\)</span>, including the Euler factor at <span class="math" data-tex="\(p\)">\(p\)</span>. It is not the imprimitive principal character modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Every other factor is holomorphic at <span class="math" data-tex="\(1\)">\(1\)</span> by Proposition 17.2. Divide by <span class="math" data-tex="\(\zeta(s)\)">\(\zeta(s)\)</span> and let real <span class="math" data-tex="\(s\)">\(s\)</span> decrease to <span class="math" data-tex="\(1\)">\(1\)</span>. Theorem 16.2 gives the residue of <span class="math" data-tex="\(\zeta_F\)">\(\zeta_F\)</span>, while the residue of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. The field <span class="math" data-tex="\(F\)">\(F\)</span> has <span class="math" data-tex="\(n\)">\(n\)</span> real places, no complex places, exactly two roots of unity, and discriminant (CU3). Therefore
+<span class="math math-display" data-tex="\[
+\prod_{\substack{\chi\in\widehat G\\\chi\ne1}}L(1,\chi)
+=\frac{2^{n-1}h^+R^+}{p^{(n-1)/2}}&gt;0.
+\tag{CU9}
+\]">\[
+\prod_{\substack{\chi\in\widehat G\\\chi\ne1}}L(1,\chi)
+=\frac{2^{n-1}h^+R^+}{p^{(n-1)/2}}&gt;0.
+\tag{CU9}
+\]</span>
+The product of the absolute values is the absolute value of this product, hence the same positive number. Substitution into (CU8) cancels every factor <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(\sqrt p\)">\(\sqrt p\)</span>, giving
+<span class="math math-display" data-tex="\[
+R_C=h^+R^+.
+\tag{CU10}
+\]">\[
+R_C=h^+R^+.
+\tag{CU10}
+\]</span></p>
+<p><strong>From logarithmic determinants to the integer index.</strong> By the unit theorem choose units <span class="math" data-tex="\(\varepsilon_1,\ldots,\varepsilon_{n-1}\)">\(\varepsilon_1,\ldots,\varepsilon_{n-1}\)</span> whose classes form a basis of <span class="math" data-tex="\(E^+/\{1,-1\}\)">\(E^+/\{1,-1\}\)</span>. These are its only torsion units because <span class="math" data-tex="\(F\)">\(F\)</span> is real. Let
+<span class="math math-display" data-tex="\[
+U=(\log|\sigma_a(\varepsilon_j)|)_{a\ne1,\,1\leq j\leq n-1},
+\qquad |\det U|=R^+.
+\]">\[
+U=(\log|\sigma_a(\varepsilon_j)|)_{a\ne1,\,1\leq j\leq n-1},
+\qquad |\det U|=R^+.
+\]</span>
+The unit theorem makes <span class="math" data-tex="\(U\)">\(U\)</span> nonsingular. Each <span class="math" data-tex="\(c_b\)">\(c_b\)</span> has a unique expression
+<span class="math math-display" data-tex="\[
+c_b=(-1)^{\delta_b}\prod_{j=1}^{n-1}\varepsilon_j^{m_{j,b}},
+\qquad m_{j,b}\in\mathbf Z,
+\]">\[
+c_b=(-1)^{\delta_b}\prod_{j=1}^{n-1}\varepsilon_j^{m_{j,b}},
+\qquad m_{j,b}\in\mathbf Z,
+\]</span>
+up to the written sign. With <span class="math" data-tex="\(M=(m_{j,b})\)">\(M=(m_{j,b})\)</span>, logarithms give <span class="math" data-tex="\(B=UM\)">\(B=UM\)</span>. Since <span class="math" data-tex="\(B\)">\(B\)</span> is nonsingular, <span class="math" data-tex="\(\det M\ne0\)">\(\det M\ne0\)</span>. The subgroup <span class="math" data-tex="\(C^+\)">\(C^+\)</span> contains both torsion units, so
+<span class="math math-display" data-tex="\[
+E^+/C^+\cong\mathbf Z^{n-1}/M\mathbf Z^{n-1}.
+\]">\[
+E^+/C^+\cong\mathbf Z^{n-1}/M\mathbf Z^{n-1}.
+\]</span></p>
+<p>For completeness, a nonsingular square integer matrix <span class="math" data-tex="\(M\)">\(M\)</span> has quotient of order <span class="math" data-tex="\(|\det M|\)">\(|\det M|\)</span>. Integer row and column swaps, sign changes, and addition of an integer multiple of one row or column to another preserve both this quotient's order and the absolute determinant. Row operations change the ambient lattice basis; column operations change the chosen generators of its sublattice. The Euclidean algorithm diagonalizes <span class="math" data-tex="\(M\)">\(M\)</span>: move a nonzero entry to the first pivot; division in its row and column either permits clearing an entry or produces a smaller positive pivot after a swap. Positive pivot sizes cannot decrease indefinitely. Eventually clear the first row and column, and continue on the remaining nonsingular block. No divisibility ordering of the final diagonal entries is needed. For the resulting diagonal matrix <span class="math" data-tex="\(\operatorname{diag}(d_1,\ldots,d_{n-1})\)">\(\operatorname{diag}(d_1,\ldots,d_{n-1})\)</span>, the quotient is <span class="math" data-tex="\(\prod_j\mathbf Z/d_j\mathbf Z\)">\(\prod_j\mathbf Z/d_j\mathbf Z\)</span>, of order <span class="math" data-tex="\(\prod_j|d_j|=|\det M|\)">\(\prod_j|d_j|=|\det M|\)</span>.</p>
+<p>Consequently the index is finite and
+<span class="math math-display" data-tex="\[
+[E^+:C^+]=|\det M|
+=\frac{|\det B|}{|\det U|}
+=\frac{R_C}{R^+}=h^+,
+\]">\[
+[E^+:C^+]=|\det M|
+=\frac{|\det B|}{|\det U|}
+=\frac{R_C}{R^+}=h^+,
+\]</span>
+as asserted. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the classical theorem and its regulator approach, see Romyar Sharifi, <a href="https://math.ucla.edu/~sharifi/notes/iwasawa-ch04.html"><em>Iwasawa Theory</em>, Chapter 4, Theorem 4.3.3</a>, together with the even-character formula in Theorem 4.2.14 and the class-number product in Theorem 4.2.20. The proof above explicitly supplies the real integral basis, discriminant, augmentation determinant, Abel limit, independence, and regulator-index calculation in the prime-conductor case.</p>
+<p>For example, if <span class="math" data-tex="\(h^+=1\)">\(h^+=1\)</span>, these cyclotomic units generate all real units. Together with (4), they then generate <span class="math" data-tex="\(E\)">\(E\)</span> after adjoining <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. Equation (8) concerns the real class number, whereas regularity below concerns the full class number.</p>
+<h3 id="the-golden-ratio-in-the-fifth-cyclotomic-field">The golden ratio in the fifth cyclotomic field</h3>
+<p>Let <span class="math" data-tex="\(p=5\)">\(p=5\)</span>, and set <span class="math" data-tex="\(t=\zeta+\zeta^{-1}\)">\(t=\zeta+\zeta^{-1}\)</span>. Since <span class="math" data-tex="\(1+\zeta+\zeta^2+\zeta^3+\zeta^4=0\)">\(1+\zeta+\zeta^2+\zeta^3+\zeta^4=0\)</span>,
+<span class="math math-display" data-tex="\[
+t^2+t-1=0.
+\]">\[
+t^2+t-1=0.
+\]</span>
+Here <span class="math" data-tex="\(t=2\cos(2\pi/5)&gt;0\)">\(t=2\cos(2\pi/5)&gt;0\)</span>, so <span class="math" data-tex="\(t=(\sqrt5-1)/2\)">\(t=(\sqrt5-1)/2\)</span>. With <span class="math" data-tex="\(\phi=(1+\sqrt5)/2=t+1\)">\(\phi=(1+\sqrt5)/2=t+1\)</span>, we obtain
+<span class="math math-display" data-tex="\[
+\zeta^2+\zeta^3=-1-t=-\phi,
+\qquad \zeta^2(1+\zeta)=-\phi.
+\]">\[
+\zeta^2+\zeta^3=-1-t=-\phi,
+\qquad \zeta^2(1+\zeta)=-\phi.
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+1+\zeta=-\zeta^3\phi.
+\tag{9}
+\]">\[
+1+\zeta=-\zeta^3\phi.
+\tag{9}
+\]</span>
+The real factor <span class="math" data-tex="\(-\phi\)">\(-\phi\)</span> is a unit: <span class="math" data-tex="\(\phi^2=\phi+1\)">\(\phi^2=\phi+1\)</span> gives <span class="math" data-tex="\(\phi^{-1}=\phi-1\)">\(\phi^{-1}=\phi-1\)</span>. Its quadratic norm is <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus (9) exhibits precisely the root-of-unity and real-unit factors of Proposition 13.1. The fundamental-unit calculation for <span class="math" data-tex="\(\mathbf Q(\sqrt5)\)">\(\mathbf Q(\sqrt5)\)</span> was given in <em>Dirichlet's unit theorem</em>.</p>
+<h2 id="regular-primes-and-their-class-numbers">Regular primes and their class numbers</h2>
+<p>An odd prime <span class="math" data-tex="\(p\)">\(p\)</span> is <strong>regular</strong> if
+<span class="math math-display" data-tex="\[
+p\nmid h(\mathbf Q(\zeta_p)).
+\tag{10}
+\]">\[
+p\nmid h(\mathbf Q(\zeta_p)).
+\tag{10}
+\]</span>
+Equivalently, the class group of <span class="math" data-tex="\(K\)">\(K\)</span> has no nontrivial element killed by <span class="math" data-tex="\(p\)">\(p\)</span>. One direction follows from Lagrange's theorem; the converse follows from Cauchy's theorem for a finite group.</p>
+<p>Define the Bernoulli numbers by the formal power series
+<span class="math math-display" data-tex="\[
+\frac{T}{e^T-1}=\sum_{n\geq0}B_n\frac{T^n}{n!}.
+\tag{11}
+\]">\[
+\frac{T}{e^T-1}=\sum_{n\geq0}B_n\frac{T^n}{n!}.
+\tag{11}
+\]</span>
+In this convention <span class="math" data-tex="\(B_1=-1/2\)">\(B_1=-1/2\)</span>.</p>
+<h3 id="kummer-s-bernoulli-criterion">Kummer's Bernoulli criterion</h3>
+<p><strong>Theorem (Kummer's criterion).</strong> With the convention (11), an odd prime <span class="math" data-tex="\(p\)">\(p\)</span> is regular if and only if it divides none of the numerators, in lowest terms, of
+<span class="math math-display" data-tex="\[
+B_2,B_4,\ldots,B_{p-3}.
+\tag{12}
+\]">\[
+B_2,B_4,\ldots,B_{p-3}.
+\tag{12}
+\]</span>
+For <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, this list is empty.</p>
+<p>All class numbers in this proof are ordinary ideal class numbers. Put</p>
+<span class="math math-display" data-tex="\[
+F=K^+,\qquad n=\frac{p-1}{2},\qquad h_F=h^+,\qquad H=\frac{h_K}{h_F}.
+\]">\[
+F=K^+,\qquad n=\frac{p-1}{2},\qquad h_F=h^+,\qquad H=\frac{h_K}{h_F}.
+\]</span>
+<p>Initially <span class="math" data-tex="\(H\)">\(H\)</span> is a positive rational ratio; the proof does not assume that it is an integer. Its <span class="math" data-tex="\(p\)">\(p\)</span>-adic valuation will be identified with the order of the minus <span class="math" data-tex="\(p\)">\(p\)</span>-primary class group.</p>
+<p>The proof uses the following proved programme results, with their hypotheses and normalizations:</p>
+<ol>
+<li><em>Cyclotomic fields</em>, Theorems 12.1–12.3, gives cyclotomic degrees, integral bases and discriminants, prime decomposition, and total ramification of <span class="math" data-tex="\(\mathbf Q(\zeta_{p^r})\)">\(\mathbf Q(\zeta_{p^r})\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span>. In particular, <span class="math" data-tex="\(|d_K|=p^{p-2}\)">\(|d_K|=p^{p-2}\)</span>, and every prime over <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(\mathbf Q(\zeta_{p-1})\)">\(\mathbf Q(\zeta_{p-1})\)</span> has ramification and residue degrees both one.</li>
+<li>Proposition 13.1 and the preceding root-of-unity calculation give
+<span class="math" data-tex="\(E_K=\mu(K)E_F\)">\(E_K=\mu(K)E_F\)</span>, <span class="math" data-tex="\(\mu(K)=\{\pm\zeta_p^a\}\)">\(\mu(K)=\{\pm\zeta_p^a\}\)</span>, and <span class="math" data-tex="\(\mu(F)=\{1,-1\}\)">\(\mu(F)=\{1,-1\}\)</span>. Their proof precedes this criterion and is independent of the cyclotomic-unit index formula.</li>
+<li><em>The Dedekind zeta function and the analytic class number formula</em>, Theorem 16.4, imports <a href="providers/NT-ADL-10.html"><em>Hecke L-functions and the Dedekind zeta function</em>, Theorem 10.2 and Corollary 10.4</a>, with Proposition 10.3. For every number field <span class="math" data-tex="\(T\)">\(T\)</span>,
+<span class="math math-display" data-tex="\[
+\zeta_T(s)=-\frac{h_TR_T}{w_T}s^{r_1(T)+r_2(T)-1}
++O\!\left(s^{r_1(T)+r_2(T)}\right)
+\]">\[
+\zeta_T(s)=-\frac{h_TR_T}{w_T}s^{r_1(T)+r_2(T)-1}
++O\!\left(s^{r_1(T)+r_2(T)}\right)
+\]</span>
+near zero. The regulator is the weighted deleted-row regulator and equals one in rank zero. <a href="providers/NT-ADL-08.html"><em>Tate's local theory at the infinite places</em>, equations (5)–(6)</a>, in “Mellin continuation without a functional equation,” proves that <span class="math" data-tex="\(1/\Gamma(s)\)">\(1/\Gamma(s)\)</span> is entire and equals <span class="math" data-tex="\(s+O(s^2)\)">\(s+O(s^2)\)</span> at zero.</li>
+<li><em>Abelian number fields and Dirichlet L-functions at <span class="math" data-tex="\(s=1\)">\(s=1\)</span></em>, Theorem 17.1, proves the primitive-character factorization for every cyclotomic subfield, including the ramified Euler factors. Its proof precedes its Gauss-sign, Kronecker–Weber and conductor–discriminant imports. Its first section supplies the finite character facts used here.</li>
+<li><a href="../NT-CFT/hilbert-and-ring-class-fields-and-quadratic-prime-forms.html"><em>Hilbert and ring class fields and quadratic prime forms</em>, Theorem 19.1</a>, gives the <strong>ordinary Hilbert class field</strong>: for every number field <span class="math" data-tex="\(T\)">\(T\)</span>, there is an abelian extension <span class="math" data-tex="\(H_T/T\)">\(H_T/T\)</span>, unramified at every place including real places, with <span class="math" data-tex="\(\operatorname{Gal}(H_T/T)\cong\operatorname{Cl}_T\)">\(\operatorname{Gal}(H_T/T)\cong\operatorname{Cl}_T\)</span>. Its <a href="../NT-CFT/src/hilbert-and-ring-class-fields-and-quadratic-prime-forms.md">written proof</a>, §1, uses the preceding class-field conductor and existence lesson, Theorem 18.4 and Proposition 18.3, and the earlier reciprocity and existence theorems.</li>
+<li><em>Hilbert's ramification theory in Galois extensions</em>, Theorem 6.2 and its tower arguments, identify inertia as the kernel of the residue action, give its projection to a Galois subfield, and characterize unramified finite primes by trivial inertia.</li>
+<li><em>Finiteness of the class number</em>, Theorem 8.1, supplies the Minkowski ideal-class bound. Unique fractional-ideal factorization and finiteness of the ordinary class group are earlier NT-ANT results.</li>
+</ol>
+<p>The analytic inputs in items 3–4 and the class-field input in item 5 are forward programme dependencies of this proof. The Bernoulli congruence, special <span class="math" data-tex="\(L\)">\(L\)</span>-value computation, and plus-to-minus implication needed for the criterion are proved below.</p>
+<h4 id="a-the-relative-class-number-product">A. The relative class-number product</h4>
+<p>Every embedding of <span class="math" data-tex="\(F\)">\(F\)</span> is real, and its two extensions to <span class="math" data-tex="\(K\)">\(K\)</span> form one complex-conjugate pair. The unit decomposition identifies</p>
+<span class="math math-display" data-tex="\[
+E_F/\{1,-1\}\cong E_K/\mu(K):
+\]">\[
+E_F/\{1,-1\}\cong E_K/\mu(K):
+\]</span>
+<p>surjectivity follows from <span class="math" data-tex="\(E_K=\mu(K)E_F\)">\(E_K=\mu(K)E_F\)</span>, and <span class="math" data-tex="\(E_F\cap\mu(K)=\{1,-1\}\)">\(E_F\cap\mu(K)=\{1,-1\}\)</span>. A fundamental real-unit basis is therefore also a basis modulo roots of unity in <span class="math" data-tex="\(K\)">\(K\)</span>. Each weighted logarithm at a complex place is twice its corresponding real-place logarithm in <span class="math" data-tex="\(F\)">\(F\)</span>. Deleting one of the <span class="math" data-tex="\(n\)">\(n\)</span> corresponding rows multiplies the regulator determinant by <span class="math" data-tex="\(2^{n-1}\)">\(2^{n-1}\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+R_K=2^{n-1}R_F,\qquad w_K=2p,\qquad w_F=2.
+\]">\[
+R_K=2^{n-1}R_F,\qquad w_K=2p,\qquad w_F=2.
+\]</span>
+<p>This includes <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, when the regulator determinants are empty and equal one. Both zeta functions have order <span class="math" data-tex="\(n-1\)">\(n-1\)</span> at zero. Their leading terms give</p>
+<span class="math math-display" data-tex="\[
+\lim_{s\to0}\frac{\zeta_K(s)}{\zeta_F(s)}
+=H\frac{2^{n-1}}p. \tag{A1}
+\]">\[
+\lim_{s\to0}\frac{\zeta_K(s)}{\zeta_F(s)}
+=H\frac{2^{n-1}}p. \tag{A1}
+\]</span>
+<p>The characters of <span class="math" data-tex="\(\operatorname{Gal}(K/\mathbf Q)\)">\(\operatorname{Gal}(K/\mathbf Q)\)</span> are the characters modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Those of <span class="math" data-tex="\(F\)">\(F\)</span> are exactly the even characters, since they kill complex conjugation, the residue <span class="math" data-tex="\(-1\)">\(-1\)</span>. The primitive-character factorization gives</p>
+<span class="math math-display" data-tex="\[
+\frac{\zeta_K(s)}{\zeta_F(s)}
+=\prod_{\substack{\chi\bmod p\\\chi(-1)=-1}}L(s,\chi)
+\]">\[
+\frac{\zeta_K(s)}{\zeta_F(s)}
+=\prod_{\substack{\chi\bmod p\\\chi(-1)=-1}}L(s,\chi)
+\]</span>
+<p>initially for <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>. Every odd character is nontrivial. We now prove that each factor is holomorphic at zero and evaluate it there.</p>
+<p>For a nontrivial character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+F_\chi(t)=\frac{\sum_{a=1}^{p-1}\chi(a)e^{-at}}{1-e^{-pt}},
+\qquad C_\chi=-\frac1p\sum_{a=1}^{p-1}a\chi(a).
+\]">\[
+F_\chi(t)=\frac{\sum_{a=1}^{p-1}\chi(a)e^{-at}}{1-e^{-pt}},
+\qquad C_\chi=-\frac1p\sum_{a=1}^{p-1}a\chi(a).
+\]</span>
+<p>The character sum vanishes: multiplication of the nonzero residues by a unit whose character value is not one multiplies the sum by that value. Expanding the numerator and denominator at zero therefore gives <span class="math" data-tex="\(F_\chi(t)=C_\chi+O(t)\)">\(F_\chi(t)=C_\chi+O(t)\)</span>, with an analytic expansion near zero. At infinity, <span class="math" data-tex="\(F_\chi(t)=O(e^{-t})\)">\(F_\chi(t)=O(e^{-t})\)</span>. Expanding its denominator for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> gives the absolutely convergent identity</p>
+<span class="math math-display" data-tex="\[
+F_\chi(t)=\sum_{r\geq1}\chi(r)e^{-rt}.
+\]">\[
+F_\chi(t)=\sum_{r\geq1}\chi(r)e^{-rt}.
+\]</span>
+<p>For <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>, absolute summability permits termwise integration and gives</p>
+<span class="math math-display" data-tex="\[
+\Gamma(s)L(s,\chi)=\int_0^\infty F_\chi(t)t^{s-1}\,dt
+=\frac{C_\chi}s+A_\chi(s),
+\]">\[
+\Gamma(s)L(s,\chi)=\int_0^\infty F_\chi(t)t^{s-1}\,dt
+=\frac{C_\chi}s+A_\chi(s),
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+A_\chi(s)=\int_0^1\bigl(F_\chi(t)-C_\chi\bigr)t^{s-1}\,dt
++\int_1^\infty F_\chi(t)t^{s-1}\,dt.
+\]">\[
+A_\chi(s)=\int_0^1\bigl(F_\chi(t)-C_\chi\bigr)t^{s-1}\,dt
++\int_1^\infty F_\chi(t)t^{s-1}\,dt.
+\]</span>
+<p>The first integral is holomorphic on <span class="math" data-tex="\(\Re s&gt;-1\)">\(\Re s&gt;-1\)</span>. On a compact subset, choose a lower real-part bound greater than <span class="math" data-tex="\(-1\)">\(-1\)</span>; the estimate <span class="math" data-tex="\(F_\chi(t)-C_\chi=O(t)\)">\(F_\chi(t)-C_\chi=O(t)\)</span> dominates every parameter derivative by an integrable power of <span class="math" data-tex="\(t\)">\(t\)</span> times a power of <span class="math" data-tex="\(|\log t|\)">\(|\log t|\)</span>. Exponential decay makes the second integral entire by the same compact differentiation argument. Since <span class="math" data-tex="\(1/\Gamma(s)=s+O(s^2)\)">\(1/\Gamma(s)=s+O(s^2)\)</span>, division continues <span class="math" data-tex="\(L(s,\chi)\)">\(L(s,\chi)\)</span> holomorphically near zero and proves</p>
+<span class="math math-display" data-tex="\[
+L(0,\chi)=C_\chi=-B_{1,\chi},\qquad
+B_{1,\chi}:=\frac1p\sum_{a=1}^{p-1}a\chi(a). \tag{A2}
+\]">\[
+L(0,\chi)=C_\chi=-B_{1,\chi},\qquad
+B_{1,\chi}:=\frac1p\sum_{a=1}^{p-1}a\chi(a). \tag{A2}
+\]</span>
+<p>This convention also equals <span class="math" data-tex="\(\sum_a\chi(a)(a/p-1/2)\)">\(\sum_a\chi(a)(a/p-1/2)\)</span>, since <span class="math" data-tex="\(\sum_a\chi(a)=0\)">\(\sum_a\chi(a)=0\)</span>. No conjugate character is inserted in the definition.</p>
+<p>The meromorphic identity theorem extends the product identity to this neighborhood of zero. The limit in (A1) is nonzero, so every odd-character value in (A2) is nonzero, and</p>
+<span class="math math-display" data-tex="\[
+H=\frac p{2^{n-1}}
+\prod_{\substack{\chi\bmod p\\\chi(-1)=-1}}L(0,\chi). \tag{A3}
+\]">\[
+H=\frac p{2^{n-1}}
+\prod_{\substack{\chi\bmod p\\\chi(-1)=-1}}L(0,\chi). \tag{A3}
+\]</span>
+<p>Thus the product formula also supplies the nonvanishing of its individual factors.</p>
+<h4 id="b-bernoulli-denominators-and-permutation-congruences">B. Bernoulli denominators and permutation congruences</h4>
+<p>Until part E, assume <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span>. Let <span class="math" data-tex="\(v_p\)">\(v_p\)</span> be the rational <span class="math" data-tex="\(p\)">\(p\)</span>-adic valuation normalized by <span class="math" data-tex="\(v_p(p)=1\)">\(v_p(p)=1\)</span>. A rational number is <span class="math" data-tex="\(p\)">\(p\)</span>-integral when its reduced denominator is prime to <span class="math" data-tex="\(p\)">\(p\)</span>; write <span class="math" data-tex="\(\mathbf Z_{(p)}\)">\(\mathbf Z_{(p)}\)</span> for this ring.</p>
+<p>The generating series gives <span class="math" data-tex="\(B_0=1\)">\(B_0=1\)</span> and <span class="math" data-tex="\(B_1=-1/2\)">\(B_1=-1/2\)</span>. Also <span class="math" data-tex="\(B_m=0\)">\(B_m=0\)</span> for odd <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>: replacing <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(-t\)">\(-t\)</span> shows that <span class="math" data-tex="\(t/(e^t-1)+t/2\)">\(t/(e^t-1)+t/2\)</span> is even.</p>
+<p>For <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>, put <span class="math" data-tex="\(S_m=\sum_{a=1}^{p-1}a^m\)">\(S_m=\sum_{a=1}^{p-1}a^m\)</span>. The finite geometric identity</p>
+<span class="math math-display" data-tex="\[
+\frac{te^{pt}}{e^t-1}-\frac t{e^t-1}
+=t\sum_{a=0}^{p-1}e^{at}
+\]">\[
+\frac{te^{pt}}{e^t-1}-\frac t{e^t-1}
+=t\sum_{a=0}^{p-1}e^{at}
+\]</span>
+<p>and comparison of the coefficient of <span class="math" data-tex="\(t^{m+1}\)">\(t^{m+1}\)</span> give</p>
+<span class="math math-display" data-tex="\[
+S_m=\frac1{m+1}\sum_{j=0}^m\binom{m+1}{j}B_jp^{m+1-j}.
+\]">\[
+S_m=\frac1{m+1}\sum_{j=0}^m\binom{m+1}{j}B_jp^{m+1-j}.
+\]</span>
+<p>Isolating its final term and putting <span class="math" data-tex="\(d=m-j\)">\(d=m-j\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+B_m=\frac{S_m}p
+-\sum_{d=1}^m\binom md B_{m-d}\frac{p^d}{d+1}. \tag{B1}
+\]">\[
+B_m=\frac{S_m}p
+-\sum_{d=1}^m\binom md B_{m-d}\frac{p^d}{d+1}. \tag{B1}
+\]</span>
+<p>This formula is used only for <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>; <span class="math" data-tex="\(B_0\)">\(B_0\)</span> is the separate induction base. We claim that</p>
+<span class="math math-display" data-tex="\[
+v_p(B_m)\geq-1\qquad(m\geq0). \tag{B2}
+\]">\[
+v_p(B_m)\geq-1\qquad(m\geq0). \tag{B2}
+\]</span>
+<p>Induct on <span class="math" data-tex="\(m\)">\(m\)</span>. The term <span class="math" data-tex="\(S_m/p\)">\(S_m/p\)</span> has valuation at least <span class="math" data-tex="\(-1\)">\(-1\)</span>. By the induction hypothesis, each remaining summand in (B1) has valuation at least</p>
+<span class="math math-display" data-tex="\[
+d-v_p(d+1)-1.
+\]">\[
+d-v_p(d+1)-1.
+\]</span>
+<p>For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, this is zero, since <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span>. For <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>, it is at least one: indeed <span class="math" data-tex="\(v_p(d+1)\leq d-2\)">\(v_p(d+1)\leq d-2\)</span>, because</p>
+<span class="math math-display" data-tex="\[
+p^{d-1}\geq5^{d-1}&gt;d+1.
+\]">\[
+p^{d-1}\geq5^{d-1}&gt;d+1.
+\]</span>
+<p>The last inequality follows by induction from <span class="math" data-tex="\(5&gt;3\)">\(5&gt;3\)</span>. Every other term is therefore <span class="math" data-tex="\(p\)">\(p\)</span>-integral, proving (B2). A zero Bernoulli number satisfies the bound as well.</p>
+<p>For even <span class="math" data-tex="\(m\geq4\)">\(m\geq4\)</span>, the <span class="math" data-tex="\(d=1\)">\(d=1\)</span> term vanishes because <span class="math" data-tex="\(B_{m-1}=0\)">\(B_{m-1}=0\)</span>. For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, that summand is <span class="math" data-tex="\(pB_1=-p/2\)">\(pB_1=-p/2\)</span>, whose contribution to <span class="math" data-tex="\(B_m-S_m/p\)">\(B_m-S_m/p\)</span> is <span class="math" data-tex="\(+p/2\)">\(+p/2\)</span>. Each <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span> summand has valuation at least one. Consequently</p>
+<span class="math math-display" data-tex="\[
+B_m-\frac{S_m}p\in p\mathbf Z_{(p)}
+\qquad(m\geq2\text{ even}). \tag{B3}
+\]">\[
+B_m-\frac{S_m}p\in p\mathbf Z_{(p)}
+\qquad(m\geq2\text{ even}). \tag{B3}
+\]</span>
+<p>If <span class="math" data-tex="\(p-1\nmid m\)">\(p-1\nmid m\)</span>, then <span class="math" data-tex="\(S_m\equiv0\pmod p\)">\(S_m\equiv0\pmod p\)</span>. Reduce <span class="math" data-tex="\(m\)">\(m\)</span> modulo <span class="math" data-tex="\(p-1\)">\(p-1\)</span> to <span class="math" data-tex="\(r\in\{1,\ldots,p-2\}\)">\(r\in\{1,\ldots,p-2\}\)</span>. The polynomial <span class="math" data-tex="\(X^r-1\)">\(X^r-1\)</span> cannot vanish at all <span class="math" data-tex="\(p-1\)">\(p-1\)</span> nonzero residues, so some <span class="math" data-tex="\(c\)">\(c\)</span> satisfies <span class="math" data-tex="\(c^m\not\equiv1\pmod p\)">\(c^m\not\equiv1\pmod p\)</span>. Multiplication by <span class="math" data-tex="\(c\)">\(c\)</span> permutes those residues and gives <span class="math" data-tex="\(S_m\equiv c^mS_m\pmod p\)">\(S_m\equiv c^mS_m\pmod p\)</span>. The assertion follows, and (B3) proves</p>
+<span class="math math-display" data-tex="\[
+B_m\in\mathbf Z_{(p)}
+\quad\text{if }m\geq2\text{ is even and }p-1\nmid m. \tag{B4}
+\]">\[
+B_m\in\mathbf Z_{(p)}
+\quad\text{if }m\geq2\text{ is even and }p-1\nmid m. \tag{B4}
+\]</span>
+<p>Now let <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span> be even, with <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span> and <span class="math" data-tex="\(p-1\nmid m\)">\(p-1\nmid m\)</span>. Choose <span class="math" data-tex="\(1\leq c\leq p-1\)">\(1\leq c\leq p-1\)</span>, and put <span class="math" data-tex="\(q_a=\lfloor ca/p\rfloor\)">\(q_a=\lfloor ca/p\rfloor\)</span>. The residues <span class="math" data-tex="\(r_a=ca-pq_a\)">\(r_a=ca-pq_a\)</span> permute <span class="math" data-tex="\(1,\ldots,p-1\)">\(1,\ldots,p-1\)</span>. The binomial expansion gives</p>
+<span class="math math-display" data-tex="\[
+S_m=\sum_a r_a^m
+\equiv c^mS_m-mp c^{m-1}\sum_a a^{m-1}q_a\pmod{p^2}.
+\]">\[
+S_m=\sum_a r_a^m
+\equiv c^mS_m-mp c^{m-1}\sum_a a^{m-1}q_a\pmod{p^2}.
+\]</span>
+<p>Divide by <span class="math" data-tex="\(p\)">\(p\)</span>, replace <span class="math" data-tex="\(S_m/p\)">\(S_m/p\)</span> by <span class="math" data-tex="\(B_m\)">\(B_m\)</span> using (B3), and divide by the <span class="math" data-tex="\(p\)">\(p\)</span>-adic unit <span class="math" data-tex="\(m\)">\(m\)</span>. This yields a congruence between <span class="math" data-tex="\(p\)">\(p\)</span>-integral rationals:</p>
+<span class="math math-display" data-tex="\[
+(1-c^m)\frac{B_m}m
+\equiv-c^{m-1}\sum_{a=1}^{p-1}a^{m-1}
+\left\lfloor\frac{ca}p\right\rfloor\pmod p. \tag{B5}
+\]">\[
+(1-c^m)\frac{B_m}m
+\equiv-c^{m-1}\sum_{a=1}^{p-1}a^{m-1}
+\left\lfloor\frac{ca}p\right\rfloor\pmod p. \tag{B5}
+\]</span>
+<p>For odd <span class="math" data-tex="\(k\in\{1,3,\ldots,p-4\}\)">\(k\in\{1,3,\ldots,p-4\}\)</span>, put <span class="math" data-tex="\(m=1+pk\)">\(m=1+pk\)</span> and <span class="math" data-tex="\(r=k+1\)">\(r=k+1\)</span>. Both are even, prime to <span class="math" data-tex="\(p\)">\(p\)</span>, and not divisible by <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. They agree modulo <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, and <span class="math" data-tex="\(2\leq r\leq p-3\)">\(2\leq r\leq p-3\)</span>. Choose <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c^r\not\equiv1\pmod p\)">\(c^r\not\equiv1\pmod p\)</span>, using the polynomial root bound. In (B5) for <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span>, the factors <span class="math" data-tex="\(1-c^m\)">\(1-c^m\)</span> and <span class="math" data-tex="\(1-c^r\)">\(1-c^r\)</span> have the same nonzero residue. The right sides agree because <span class="math" data-tex="\(m-1\equiv r-1\pmod{p-1}\)">\(m-1\equiv r-1\pmod{p-1}\)</span>. Cancelling their common unit proves</p>
+<span class="math math-display" data-tex="\[
+\frac{B_{1+pk}}{1+pk}
+\equiv\frac{B_{k+1}}{k+1}\pmod p. \tag{B6}
+\]">\[
+\frac{B_{1+pk}}{1+pk}
+\equiv\frac{B_{k+1}}{k+1}\pmod p. \tag{B6}
+\]</span>
+<p>This is the exact Bernoulli congruence needed below, proved directly from the generating series and a permutation of residues.</p>
+<h4 id="c-character-values-at-one-prime-over-p">C. Character values at one prime over <span class="math" data-tex="\(p\)">\(p\)</span></h4>
+<p>Let <span class="math" data-tex="\(T=\mathbf Q(\zeta_{p-1})\)">\(T=\mathbf Q(\zeta_{p-1})\)</span>, choose a prime <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> over <span class="math" data-tex="\(p\)">\(p\)</span>, and put <span class="math" data-tex="\(R=\mathcal O_{T,\mathfrak P}\)">\(R=\mathcal O_{T,\mathfrak P}\)</span>. By <em>Cyclotomic fields</em>, Theorem 12.3, this is a discrete valuation ring with maximal ideal <span class="math" data-tex="\(pR\)">\(pR\)</span> and residue field <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>: <span class="math" data-tex="\(p\nmid p-1\)">\(p\nmid p-1\)</span>, and the order of <span class="math" data-tex="\(p\)">\(p\)</span> modulo <span class="math" data-tex="\(p-1\)">\(p-1\)</span> is one. Its normalized valuation <span class="math" data-tex="\(v\)">\(v\)</span> restricts to <span class="math" data-tex="\(v_p\)">\(v_p\)</span> on rational numbers. All subsequent congruences are in <span class="math" data-tex="\(R\)">\(R\)</span> or <span class="math" data-tex="\(R/p^2R\)">\(R/p^2R\)</span>; every <span class="math" data-tex="\(p\)">\(p\)</span>-integral rational belongs to <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>Reduction identifies <span class="math" data-tex="\(\mu_{p-1}\)">\(\mu_{p-1}\)</span> with <span class="math" data-tex="\(\mathbf F_p^\times\)">\(\mathbf F_p^\times\)</span>. To prove uniqueness, suppose two <span class="math" data-tex="\((p-1)\)">\((p-1)\)</span>st roots <span class="math" data-tex="\(x,y\)">\(x,y\)</span> have the same nonzero residue <span class="math" data-tex="\(a\)">\(a\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+0=x^{p-1}-y^{p-1}
+=(x-y)(x^{p-2}+x^{p-3}y+\cdots+y^{p-2}).
+\]">\[
+0=x^{p-1}-y^{p-1}
+=(x-y)(x^{p-2}+x^{p-3}y+\cdots+y^{p-2}).
+\]</span>
+<p>The bracket reduces to <span class="math" data-tex="\((p-1)a^{p-2}\neq0\)">\((p-1)a^{p-2}\neq0\)</span>, so it is a unit and <span class="math" data-tex="\(x=y\)">\(x=y\)</span>. There are <span class="math" data-tex="\(p-1\)">\(p-1\)</span> roots and <span class="math" data-tex="\(p-1\)">\(p-1\)</span> nonzero residues, proving that reduction is a bijective group map. Its inverse defines the character</p>
+<span class="math math-display" data-tex="\[
+\omega:\mathbf F_p^\times\longrightarrow\mu_{p-1},
+\qquad\omega(a)\equiv a\pmod{pR}.
+\]">\[
+\omega:\mathbf F_p^\times\longrightarrow\mu_{p-1},
+\qquad\omega(a)\equiv a\pmod{pR}.
+\]</span>
+<p>Here “inverse” means the inverse of the reduction map. It does not mean the inverse character.</p>
+<p>The same derivative argument proves uniqueness modulo <span class="math" data-tex="\(p^2R\)">\(p^2R\)</span> of a <span class="math" data-tex="\((p-1)\)">\((p-1)\)</span>st-root lift of a nonzero residue. If <span class="math" data-tex="\(x-y=pd\)">\(x-y=pd\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+x^{p-1}-y^{p-1}
+\equiv pd(p-1)a^{p-2}\pmod{p^2R},
+\]">\[
+x^{p-1}-y^{p-1}
+\equiv pd(p-1)a^{p-2}\pmod{p^2R},
+\]</span>
+<p>which forces <span class="math" data-tex="\(d\equiv0\pmod{pR}\)">\(d\equiv0\pmod{pR}\)</span>. In particular,</p>
+<span class="math math-display" data-tex="\[
+\omega(a)\equiv a^p\pmod{p^2R}. \tag{C1}
+\]">\[
+\omega(a)\equiv a^p\pmod{p^2R}. \tag{C1}
+\]</span>
+<p>Indeed, write <span class="math" data-tex="\(\omega(a)=a+pt\)">\(\omega(a)=a+pt\)</span>, with <span class="math" data-tex="\(t\in R\)">\(t\in R\)</span>. Since <span class="math" data-tex="\(\omega(a)^p=\omega(a)\)">\(\omega(a)^p=\omega(a)\)</span>, expanding <span class="math" data-tex="\((a+pt)^p\)">\((a+pt)^p\)</span> modulo <span class="math" data-tex="\(p^2R\)">\(p^2R\)</span> gives (C1).</p>
+<p>The character <span class="math" data-tex="\(\omega\)">\(\omega\)</span> has order <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, and its powers are all characters modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Its values run through the cyclic group <span class="math" data-tex="\(\mu_{p-1}\)">\(\mu_{p-1}\)</span>, so the inverse image of a generator also shows that <span class="math" data-tex="\(\mathbf F_p^\times\)">\(\mathbf F_p^\times\)</span> is cyclic. The characters of a cyclic group are exactly these powers. Since <span class="math" data-tex="\(\omega(-1)=-1\)">\(\omega(-1)=-1\)</span>, the odd characters are <span class="math" data-tex="\(\omega^k\)">\(\omega^k\)</span> for <span class="math" data-tex="\(k=1,3,\ldots,p-2\)">\(k=1,3,\ldots,p-2\)</span>.</p>
+<p>For such <span class="math" data-tex="\(k\)">\(k\)</span>, equation (C1) implies</p>
+<span class="math math-display" data-tex="\[
+\sum_{a=1}^{p-1}a\omega(a)^k
+\equiv S_{1+pk}\pmod{p^2R}. \tag{C2}
+\]">\[
+\sum_{a=1}^{p-1}a\omega(a)^k
+\equiv S_{1+pk}\pmod{p^2R}. \tag{C2}
+\]</span>
+<p>For <span class="math" data-tex="\(k\leq p-4\)">\(k\leq p-4\)</span>, this numerator is zero modulo <span class="math" data-tex="\(pR\)">\(pR\)</span>: its residue is <span class="math" data-tex="\(\sum_a a^{k+1}\)">\(\sum_a a^{k+1}\)</span>, and <span class="math" data-tex="\(p-1\nmid k+1\)">\(p-1\nmid k+1\)</span>. Thus <span class="math" data-tex="\(B_{1,\omega^k}\in R\)">\(B_{1,\omega^k}\in R\)</span>. Divide (C2) by <span class="math" data-tex="\(p\)">\(p\)</span> and use (B3), then (B6), to obtain</p>
+<span class="math math-display" data-tex="\[
+B_{1,\omega^k}
+\equiv\frac{S_{1+pk}}p
+\equiv B_{1+pk}
+\equiv\frac{B_{k+1}}{k+1}\pmod{pR}. \tag{C3}
+\]">\[
+B_{1,\omega^k}
+\equiv\frac{S_{1+pk}}p
+\equiv B_{1+pk}
+\equiv\frac{B_{k+1}}{k+1}\pmod{pR}. \tag{C3}
+\]</span>
+<p>The last equality also uses <span class="math" data-tex="\(1+pk\equiv1\pmod p\)">\(1+pk\equiv1\pmod p\)</span>. Each <span class="math" data-tex="\(B_{k+1}\)">\(B_{k+1}\)</span> is <span class="math" data-tex="\(p\)">\(p\)</span>-integral by (B4), and <span class="math" data-tex="\(k+1\)">\(k+1\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-adic unit. Therefore</p>
+<span class="math math-display" data-tex="\[
+v(B_{1,\omega^k})\geq1
+\quad\Longleftrightarrow\quad
+p\text{ divides the reduced numerator of }B_{k+1},
+\quad k=1,3,\ldots,p-4. \tag{C4}
+\]">\[
+v(B_{1,\omega^k})\geq1
+\quad\Longleftrightarrow\quad
+p\text{ divides the reduced numerator of }B_{k+1},
+\quad k=1,3,\ldots,p-4. \tag{C4}
+\]</span>
+<p>For the remaining character, <span class="math" data-tex="\(k=p-2\)">\(k=p-2\)</span>, the numerator in (C2) reduces to
+<span class="math" data-tex="\(\sum_a a^{p-1}=p-1\equiv-1\pmod{pR}\)">\(\sum_a a^{p-1}=p-1\equiv-1\pmod{pR}\)</span>. It is therefore a unit, and</p>
+<span class="math math-display" data-tex="\[
+v(B_{1,\omega^{p-2}})=-1. \tag{C5}
+\]">\[
+v(B_{1,\omega^{p-2}})=-1. \tag{C5}
+\]</span>
+<p>Every factor in (A3) is nonzero by part A. Taking its valuation, recalling <span class="math" data-tex="\(L(0,\chi)=-B_{1,\chi}\)">\(L(0,\chi)=-B_{1,\chi}\)</span> and that <span class="math" data-tex="\(2\)">\(2\)</span> is a unit, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v_p(H)
+&amp;=1+\sum_{\substack{1\leq k\leq p-2\\ k\text{ odd}}}v(B_{1,\omega^k})\\
+&amp;=\sum_{\substack{1\leq k\leq p-4\\ k\text{ odd}}}v(B_{1,\omega^k}).
+\end{aligned} \tag{C6}
+\]">\[
+\begin{aligned}
+v_p(H)
+&amp;=1+\sum_{\substack{1\leq k\leq p-2\\ k\text{ odd}}}v(B_{1,\omega^k})\\
+&amp;=\sum_{\substack{1\leq k\leq p-4\\ k\text{ odd}}}v(B_{1,\omega^k}).
+\end{aligned} \tag{C6}
+\]</span>
+<p>All terms on the last line are nonnegative integers. In particular, <span class="math" data-tex="\(v_p(H)\geq0\)">\(v_p(H)\geq0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+v_p(H)&gt;0
+\quad\Longleftrightarrow\quad
+\text{some }B_2,B_4,\ldots,B_{p-3}
+\text{ has numerator divisible by }p. \tag{C7}
+\]">\[
+v_p(H)&gt;0
+\quad\Longleftrightarrow\quad
+\text{some }B_2,B_4,\ldots,B_{p-3}
+\text{ has numerator divisible by }p. \tag{C7}
+\]</span>
+<h4 id="d-passing-from-the-relative-to-the-full-class-number">D. Passing from the relative to the full class number</h4>
+<p>Write <span class="math" data-tex="\(A=\operatorname{Cl}_K[p^\infty]\)">\(A=\operatorname{Cl}_K[p^\infty]\)</span> and <span class="math" data-tex="\(A_F=\operatorname{Cl}_F[p^\infty]\)">\(A_F=\operatorname{Cl}_F[p^\infty]\)</span> for the <span class="math" data-tex="\(p\)">\(p\)</span>-primary subgroups, using additive notation. A finite abelian group splits into its <span class="math" data-tex="\(p\)">\(p\)</span>-primary and prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> parts: if its order is <span class="math" data-tex="\(p^rd\)">\(p^rd\)</span> with <span class="math" data-tex="\((p,d)=1\)">\((p,d)=1\)</span>, a Bézout identity supplies complementary projections. Multiplication by two is an automorphism on <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(A_F\)">\(A_F\)</span>.</p>
+<p>Complex conjugation <span class="math" data-tex="\(j\)">\(j\)</span> acts on <span class="math" data-tex="\(A\)">\(A\)</span>. The maps <span class="math" data-tex="\((1+j)/2\)">\((1+j)/2\)</span> and <span class="math" data-tex="\((1-j)/2\)">\((1-j)/2\)</span>, with division by two interpreted as the inverse of multiplication by two, are complementary projections. Hence</p>
+<span class="math math-display" data-tex="\[
+A=A^+\oplus A^-,\qquad
+A^+=\{x:jx=x\},\quad A^-=\{x:jx=-x\}. \tag{D1}
+\]">\[
+A=A^+\oplus A^-,\qquad
+A^+=\{x:jx=x\},\quad A^-=\{x:jx=-x\}. \tag{D1}
+\]</span>
+<p>Let <span class="math" data-tex="\(i:\operatorname{Cl}_F\to\operatorname{Cl}_K\)">\(i:\operatorname{Cl}_F\to\operatorname{Cl}_K\)</span> extend ideals, and let <span class="math" data-tex="\(N:\operatorname{Cl}_K\to\operatorname{Cl}_F\)">\(N:\operatorname{Cl}_K\to\operatorname{Cl}_F\)</span> be the ideal norm. For the quadratic Galois extension <span class="math" data-tex="\(K/F\)">\(K/F\)</span>, prime factorization gives</p>
+<span class="math math-display" data-tex="\[
+Ni=2,\qquad iN=1+j. \tag{D2}
+\]">\[
+Ni=2,\qquad iN=1+j. \tag{D2}
+\]</span>
+<p>Extending a prime and then taking its norm multiplies its exponent by <span class="math" data-tex="\(\sum ef=[K:F]=2\)">\(\sum ef=[K:F]=2\)</span>, proving the first identity. For the second, extension of the norm of an ideal gives its product with its conjugate. This follows by checking a prime in each of the split, inert and ramified quadratic cases; multiplicativity proves it for every fractional ideal. Both maps take principal ideals to principal ideals, so the identities descend to class groups.</p>
+<p>On the <span class="math" data-tex="\(p\)">\(p\)</span>-primary subgroups, <span class="math" data-tex="\(i\)">\(i\)</span> is injective because <span class="math" data-tex="\(Ni=2\)">\(Ni=2\)</span> is invertible. Its image lies in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. Conversely, if <span class="math" data-tex="\(x\in A^+\)">\(x\in A^+\)</span>, then <span class="math" data-tex="\(iN(x/2)=x\)">\(iN(x/2)=x\)</span> by (D2). Consequently</p>
+<span class="math math-display" data-tex="\[
+i:A_F\xrightarrow{\sim}A^+,\qquad
+v_p(H)=\log_p|A^-|. \tag{D3}
+\]">\[
+i:A_F\xrightarrow{\sim}A^+,\qquad
+v_p(H)=\log_p|A^-|. \tag{D3}
+\]</span>
+<p>Thus (C7) tests whether the minus <span class="math" data-tex="\(p\)">\(p\)</span>-primary class group is nonzero. We must still exclude a nonzero plus group with zero minus group. We prove</p>
+<span class="math math-display" data-tex="\[
+p\mid h_F\quad\Longrightarrow\quad A^-\neq0. \tag{D4}
+\]">\[
+p\mid h_F\quad\Longrightarrow\quad A^-\neq0. \tag{D4}
+\]</span>
+<p>Suppose <span class="math" data-tex="\(p\mid h_F\)">\(p\mid h_F\)</span>. The finite abelian class group has a quotient of order <span class="math" data-tex="\(p\)">\(p\)</span>. Here is an elementary justification. An element of order <span class="math" data-tex="\(p\)">\(p\)</span> exists by induction on group order: choose a nontrivial cyclic subgroup; if its order is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, it contains such an element. Otherwise pass to the smaller quotient and lift an order-<span class="math" data-tex="\(p\)">\(p\)</span> element, correcting its <span class="math" data-tex="\(p\)">\(p\)</span>th multiple inside the cyclic subgroup, where multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> is invertible. Multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> on the finite group therefore has nonzero kernel and cannot be onto. The quotient by its <span class="math" data-tex="\(p\)">\(p\)</span> multiples is a nonzero finite <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>-vector space, and a nonzero linear functional gives a quotient of order <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>By <em>Hilbert and ring class fields and quadratic prime forms</em>, Theorem 19.1, this quotient corresponds to a cyclic extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span> of degree <span class="math" data-tex="\(p\)">\(p\)</span>, unramified at every place. Since <span class="math" data-tex="\(F\)">\(F\)</span> is totally real and its real places do not ramify, <span class="math" data-tex="\(L\)">\(L\)</span> is totally real. The coprime degrees <span class="math" data-tex="\(p\)">\(p\)</span> and two give <span class="math" data-tex="\(L\cap K=F\)">\(L\cap K=F\)</span>, so <span class="math" data-tex="\(M=LK\)">\(M=LK\)</span> is Galois over <span class="math" data-tex="\(F\)">\(F\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(M/F)
+\cong\operatorname{Gal}(L/F)\times\operatorname{Gal}(K/F).
+\]">\[
+\operatorname{Gal}(M/F)
+\cong\operatorname{Gal}(L/F)\times\operatorname{Gal}(K/F).
+\]</span>
+<p>Extend <span class="math" data-tex="\(j\)">\(j\)</span> to <span class="math" data-tex="\(M\)">\(M\)</span> by fixing <span class="math" data-tex="\(L\)">\(L\)</span> and conjugating <span class="math" data-tex="\(K\)">\(K\)</span>. This is complex conjugation and commutes with the first factor.</p>
+<p>To prove that <span class="math" data-tex="\(M/K\)">\(M/K\)</span> is unramified at finite primes, fix a prime of <span class="math" data-tex="\(M\)">\(M\)</span> over <span class="math" data-tex="\(F\)">\(F\)</span>. Its inertia group projects trivially to <span class="math" data-tex="\(\operatorname{Gal}(L/F)\)">\(\operatorname{Gal}(L/F)\)</span>, because <span class="math" data-tex="\(L/F\)">\(L/F\)</span> is unramified. Thus inertia lies in the order-two factor. The relative inertia for <span class="math" data-tex="\(M/K\)">\(M/K\)</span> is its intersection with <span class="math" data-tex="\(\operatorname{Gal}(M/K)\)">\(\operatorname{Gal}(M/K)\)</span>, the order-<span class="math" data-tex="\(p\)">\(p\)</span> factor, and is trivial. <em>Hilbert's ramification theory in Galois extensions</em>, Theorem 6.2, gives ramification index one. There is no real place of <span class="math" data-tex="\(K\)">\(K\)</span> to introduce infinite ramification.</p>
+<p>Let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> generate <span class="math" data-tex="\(\operatorname{Gal}(M/K)\)">\(\operatorname{Gal}(M/K)\)</span>. As a <span class="math" data-tex="\(K\)">\(K\)</span>-linear operator on <span class="math" data-tex="\(M\)">\(M\)</span>, it satisfies <span class="math" data-tex="\(X^p-1\)">\(X^p-1\)</span>, which splits over <span class="math" data-tex="\(K\)">\(K\)</span> with distinct roots. It is diagonalizable. Since <span class="math" data-tex="\(\sigma\neq1\)">\(\sigma\neq1\)</span>, a nonzero eigenvector has eigenvalue <span class="math" data-tex="\(\zeta_p^t\)">\(\zeta_p^t\)</span>, with <span class="math" data-tex="\(t\not\equiv0\pmod p\)">\(t\not\equiv0\pmod p\)</span>. Raising it to a positive power inverse to <span class="math" data-tex="\(t\)">\(t\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> gives <span class="math" data-tex="\(u\neq0\)">\(u\neq0\)</span> with <span class="math" data-tex="\(\sigma(u)=\zeta_pu\)">\(\sigma(u)=\zeta_pu\)</span>. Then <span class="math" data-tex="\(u^p=a\in K\)">\(u^p=a\in K\)</span>, <span class="math" data-tex="\(u\notin K\)">\(u\notin K\)</span>, and the prime degree implies <span class="math" data-tex="\(M=K(u)\)">\(M=K(u)\)</span>.</p>
+<p>Commutation of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span>, together with <span class="math" data-tex="\(j(\zeta_p)=\zeta_p^{-1}\)">\(j(\zeta_p)=\zeta_p^{-1}\)</span>, gives <span class="math" data-tex="\(\sigma(j(u))=\zeta_p^{-1}j(u)\)">\(\sigma(j(u))=\zeta_p^{-1}j(u)\)</span>. The element <span class="math" data-tex="\(j(u)u\)">\(j(u)u\)</span> is fixed by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>; write it as <span class="math" data-tex="\(b\in K^\times\)">\(b\in K^\times\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+j(u)=\frac bu,\qquad a j(a)=b^p. \tag{D5}
+\]">\[
+j(u)=\frac bu,\qquad a j(a)=b^p. \tag{D5}
+\]</span>
+<p>For each finite prime of <span class="math" data-tex="\(K\)">\(K\)</span>, choose a prime of <span class="math" data-tex="\(M\)">\(M\)</span> above it and normalize both valuations to take integer values. Unramifiedness gives <span class="math" data-tex="\(v_M(a)=v_K(a)\)">\(v_M(a)=v_K(a)\)</span>, whereas <span class="math" data-tex="\(u^p=a\)">\(u^p=a\)</span> gives <span class="math" data-tex="\(v_M(a)=p v_M(u)\)">\(v_M(a)=p v_M(u)\)</span>. Every exponent in the fractional ideal <span class="math" data-tex="\((a)\)">\((a)\)</span> is therefore divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. Unique fractional-ideal factorization defines an ideal <span class="math" data-tex="\(\mathfrak B\)">\(\mathfrak B\)</span> with <span class="math" data-tex="\((a)=\mathfrak B^p\)">\((a)=\mathfrak B^p\)</span>. Equation (D5) gives</p>
+<span class="math math-display" data-tex="\[
+(\mathfrak B j(\mathfrak B))^p=(b)^p,
+\]">\[
+(\mathfrak B j(\mathfrak B))^p=(b)^p,
+\]</span>
+<p>and hence <span class="math" data-tex="\(\mathfrak B j(\mathfrak B)=(b)\)">\(\mathfrak B j(\mathfrak B)=(b)\)</span>, since the fractional-ideal group is free abelian on prime ideals. Thus <span class="math" data-tex="\([\mathfrak B]\)">\([\mathfrak B]\)</span> is killed by <span class="math" data-tex="\(p\)">\(p\)</span> and satisfies <span class="math" data-tex="\(j[\mathfrak B]=-[\mathfrak B]\)">\(j[\mathfrak B]=-[\mathfrak B]\)</span>: it belongs to <span class="math" data-tex="\(A^-\)">\(A^-\)</span>.</p>
+<p>Assume for contradiction that <span class="math" data-tex="\(A^-=0\)">\(A^-=0\)</span>. Then <span class="math" data-tex="\(\mathfrak B=(c)\)">\(\mathfrak B=(c)\)</span>, and <span class="math" data-tex="\(a=c^p\varepsilon\)">\(a=c^p\varepsilon\)</span> for a unit <span class="math" data-tex="\(\varepsilon\in E_K\)">\(\varepsilon\in E_K\)</span>. Equation (D5) implies</p>
+<span class="math math-display" data-tex="\[
+\varepsilon j(\varepsilon)
+=\left(\frac b{c j(c)}\right)^p.
+\]">\[
+\varepsilon j(\varepsilon)
+=\left(\frac b{c j(c)}\right)^p.
+\]</span>
+<p>The expression inside parentheses is a unit, because its <span class="math" data-tex="\(p\)">\(p\)</span>th power is a unit and therefore all its prime valuations are zero. In <span class="math" data-tex="\(E_K/E_K^p\)">\(E_K/E_K^p\)</span>, the class of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is consequently anti-invariant under <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>The proved unit decomposition gives <span class="math" data-tex="\(\varepsilon=\zeta_p^rv\)">\(\varepsilon=\zeta_p^rv\)</span>, with <span class="math" data-tex="\(v\in E_F\)">\(v\in E_F\)</span>; the sign can be absorbed into <span class="math" data-tex="\(v\)">\(v\)</span>. Then <span class="math" data-tex="\(\varepsilon j(\varepsilon)=v^2\)">\(\varepsilon j(\varepsilon)=v^2\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>th power in <span class="math" data-tex="\(E_K\)">\(E_K\)</span>. Multiplication by two is invertible in the exponent-<span class="math" data-tex="\(p\)">\(p\)</span> group <span class="math" data-tex="\(E_K/E_K^p\)">\(E_K/E_K^p\)</span>, so <span class="math" data-tex="\(v=d^p\)">\(v=d^p\)</span> for some <span class="math" data-tex="\(d\in E_K\)">\(d\in E_K\)</span>. It follows that</p>
+<span class="math math-display" data-tex="\[
+a=(cd)^p\zeta_p^r.
+\]">\[
+a=(cd)^p\zeta_p^r.
+\]</span>
+<p>If <span class="math" data-tex="\(r\equiv0\pmod p\)">\(r\equiv0\pmod p\)</span>, then <span class="math" data-tex="\(a\in K^{\times p}\)">\(a\in K^{\times p}\)</span>, and <span class="math" data-tex="\(X^p-a\)">\(X^p-a\)</span> splits over <span class="math" data-tex="\(K\)">\(K\)</span>. This forces <span class="math" data-tex="\(u\in K\)">\(u\in K\)</span>, contrary to <span class="math" data-tex="\([M:K]=p\)">\([M:K]=p\)</span>. If <span class="math" data-tex="\(r\not\equiv0\pmod p\)">\(r\not\equiv0\pmod p\)</span>, then <span class="math" data-tex="\(u/(cd)\)">\(u/(cd)\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>th root of <span class="math" data-tex="\(\zeta_p^r\)">\(\zeta_p^r\)</span>, hence a primitive <span class="math" data-tex="\(p^2\)">\(p^2\)</span>nd root of unity. Thus</p>
+<span class="math math-display" data-tex="\[
+M=K(\zeta_{p^2}).
+\]">\[
+M=K(\zeta_{p^2}).
+\]</span>
+<p>By <em>Cyclotomic fields</em>, Theorem 12.3, this extension is totally ramified of degree <span class="math" data-tex="\(p\)">\(p\)</span> at the prime over <span class="math" data-tex="\(p\)">\(p\)</span>: the absolute ramification indices are <span class="math" data-tex="\(p(p-1)\)">\(p(p-1)\)</span> and <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. This contradicts the unramifiedness of <span class="math" data-tex="\(M/K\)">\(M/K\)</span>. Both cases are impossible, proving (D4).</p>
+<p>The order of <span class="math" data-tex="\(\operatorname{Cl}_K\)">\(\operatorname{Cl}_K\)</span> is <span class="math" data-tex="\(|A^+||A^-|\)">\(|A^+||A^-|\)</span> times a number prime to <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(A^+\cong A_F\)">\(A^+\cong A_F\)</span>. Therefore, if <span class="math" data-tex="\(p\mid h_K\)">\(p\mid h_K\)</span>, either <span class="math" data-tex="\(A^-\neq0\)">\(A^-\neq0\)</span> already, or <span class="math" data-tex="\(p\mid h_F\)">\(p\mid h_F\)</span>, in which case (D4) again gives <span class="math" data-tex="\(A^-\neq0\)">\(A^-\neq0\)</span>. Conversely, <span class="math" data-tex="\(A^-\neq0\)">\(A^-\neq0\)</span> implies <span class="math" data-tex="\(p\mid h_K\)">\(p\mid h_K\)</span>. Equations (D3) and (C7) now prove the stated criterion for <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span>.</p>
+<p>The obstruction has a concrete form: a nonzero plus class produces an ordinary unramified cyclic <span class="math" data-tex="\(p\)">\(p\)</span>-extension, whose Kummer radical defines an anti-invariant <span class="math" data-tex="\(p\)">\(p\)</span>-torsion ideal class. If that minus class vanished, the unit decomposition would reduce the radical to a <span class="math" data-tex="\(p\)">\(p\)</span>th root of <span class="math" data-tex="\(\zeta_p\)">\(\zeta_p\)</span>, which gives a ramified extension. This contradiction excludes a plus-only obstruction.</p>
+<h4 id="e-the-empty-list-case-p-3">E. The empty-list case <span class="math" data-tex="\(p=3\)">\(p=3\)</span></h4>
+<p>Here <span class="math" data-tex="\(K=\mathbf Q(\zeta_3)\)">\(K=\mathbf Q(\zeta_3)\)</span> is the imaginary quadratic field of discriminant <span class="math" data-tex="\(-3\)">\(-3\)</span>, by <em>Cyclotomic fields</em>. Its Minkowski bound, from <em>Finiteness of the class number</em>, Theorem 8.1, is</p>
+<span class="math math-display" data-tex="\[
+\frac{2!}{2^2}\frac4\pi\sqrt3
+=\frac{2\sqrt3}\pi&lt;2.
+\]">\[
+\frac{2!}{2^2}\frac4\pi\sqrt3
+=\frac{2\sqrt3}\pi&lt;2.
+\]</span>
+<p>For example, <span class="math" data-tex="\(\sqrt3&lt;2\)">\(\sqrt3&lt;2\)</span> and <span class="math" data-tex="\(\pi&gt;3\)">\(\pi&gt;3\)</span> give a bound below <span class="math" data-tex="\(4/3\)">\(4/3\)</span>. Every ideal class has an integral representative of norm less than two, hence of norm one. That ideal is <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, so <span class="math" data-tex="\(h_K=1\)">\(h_K=1\)</span> and <span class="math" data-tex="\(3\nmid h_K\)">\(3\nmid h_K\)</span>. This is exactly the vacuous Bernoulli condition for the empty list. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an exact example,
+<span class="math math-display" data-tex="\[
+B_{32}=-\frac{7709321041217}{510},\qquad
+7709321041217=37\cdot208360028141.
+\tag{13}
+\]">\[
+B_{32}=-\frac{7709321041217}{510},\qquad
+7709321041217=37\cdot208360028141.
+\tag{13}
+\]</span>
+The denominator is prime to <span class="math" data-tex="\(37\)">\(37\)</span>, so the criterion makes <span class="math" data-tex="\(37\)">\(37\)</span> irregular. These rational numbers can be calculated directly from (11), using <span class="math" data-tex="\(B_0=1\)">\(B_0=1\)</span> and
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^{n}\binom{n+1}{j}B_j=0\quad(n\geq1).
+\tag{14}
+\]">\[
+\sum_{j=0}^{n}\binom{n+1}{j}B_j=0\quad(n\geq1).
+\tag{14}
+\]</span>
+Thus the numerical divisibility in (13) does not require a floating-point approximation.</p>
+<h3 id="exact-class-numbers-for-the-eight-small-prime-conductors">Exact class numbers for the eight small prime conductors</h3>
+<p>We now prove the full values
+<span class="math math-display" data-tex="\[
+h(\mathbf Q(\zeta_p))=1\quad(p=3,5,7,11,13,17,19),
+\qquad h(\mathbf Q(\zeta_{23}))=3.
+\tag{15}
+\]">\[
+h(\mathbf Q(\zeta_p))=1\quad(p=3,5,7,11,13,17,19),
+\qquad h(\mathbf Q(\zeta_{23}))=3.
+\tag{15}
+\]</span>
+The calculation has two parts: a finite Minkowski certificate for <span class="math" data-tex="\(h^+=1\)">\(h^+=1\)</span>, and an integer determinant for the ratio <span class="math" data-tex="\(h/h^+\)">\(h/h^+\)</span>. Both parts are unconditional.</p>
+<p><strong>The real class numbers.</strong> Retain <span class="math" data-tex="\(n=(p-1)/2\)">\(n=(p-1)/2\)</span>, <span class="math" data-tex="\(t=\zeta+\zeta^{-1}\)">\(t=\zeta+\zeta^{-1}\)</span>, and define
+<span class="math math-display" data-tex="\[
+S_0(T)=2,\quad S_1(T)=T,\quad
+S_{j+1}(T)=T S_j(T)-S_{j-1}(T),\qquad
+F_p(T)=1+\sum_{j=1}^{n}S_j(T).
+\]">\[
+S_0(T)=2,\quad S_1(T)=T,\quad
+S_{j+1}(T)=T S_j(T)-S_{j-1}(T),\qquad
+F_p(T)=1+\sum_{j=1}^{n}S_j(T).
+\]</span>
+The integral-basis argument in (CU1) gives <span class="math" data-tex="\(\mathcal O_{K^+}=\mathbf Z[t]\)">\(\mathcal O_{K^+}=\mathbf Z[t]\)</span>. Moreover
+<span class="math" data-tex="\(F_p(t)=1+\sum_{j=1}^n(\zeta^j+\zeta^{-j})=0\)">\(F_p(t)=1+\sum_{j=1}^n(\zeta^j+\zeta^{-j})=0\)</span>, and its monic degree is <span class="math" data-tex="\(n=[K^+:\mathbf Q]\)">\(n=[K^+:\mathbf Q]\)</span>, so <span class="math" data-tex="\(F_p\)">\(F_p\)</span> is the minimal polynomial. The elements <span class="math" data-tex="\(b_0=1\)">\(b_0=1\)</span>, <span class="math" data-tex="\(b_j=S_j(t)\)">\(b_j=S_j(t)\)</span>, <span class="math" data-tex="\(1\le j&lt;n\)">\(1\le j&lt;n\)</span>, form an integral basis: each <span class="math" data-tex="\(S_j\)">\(S_j\)</span> is monic of degree <span class="math" data-tex="\(j\)">\(j\)</span>, so their change from the power basis is triangular with diagonal one.</p>
+<p>By (CU3), the discriminant is <span class="math" data-tex="\(D=p^{n-1}\)">\(D=p^{n-1}\)</span>. The proved Minkowski bound in <em>Finiteness of the class number</em>, Theorem 8.1, says that prime ideals of norm at most
+<span class="math math-display" data-tex="\[
+M=\frac{n!}{n^n}\sqrt{D}
+\]">\[
+M=\frac{n!}{n^n}\sqrt{D}
+\]</span>
+generate the class group. To see the prime version directly, take an integral ideal of norm at most <span class="math" data-tex="\(M\)">\(M\)</span> representing any class, and factor it; each prime factor has norm at most that ideal's norm. Put
+<span class="math math-display" data-tex="\[
+N=(n!)^2D,\qquad E=n^{2n},\qquad
+B=\operatorname{isqrt}(\lfloor N/E\rfloor).
+\]">\[
+N=(n!)^2D,\qquad E=n^{2n},\qquad
+B=\operatorname{isqrt}(\lfloor N/E\rfloor).
+\]</span>
+Thus <span class="math" data-tex="\(B^2 E\le N&lt;(B+1)^2 E\)">\(B^2 E\le N&lt;(B+1)^2 E\)</span>, so <span class="math" data-tex="\(B=\lfloor M\rfloor\)">\(B=\lfloor M\rfloor\)</span> by integer comparisons. The following table lists every orbit of prime ideals with norm at most <span class="math" data-tex="\(B\)">\(B\)</span>. Its entries <span class="math" data-tex="\((q,f)\)">\((q,f)\)</span> give rational prime and residue degree; all primes in an orbit have norm <span class="math" data-tex="\(q^f\)">\(q^f\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(p\)">\(p\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(B\)">\(B\)</span></th>
+<th style="text-align:left">Required prime orbits <span class="math" data-tex="\((q,f)\)">\((q,f)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:left">none</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+<td style="text-align:left">none</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">1</td>
+<td style="text-align:left">none</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">4</td>
+<td style="text-align:left">none</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">9</td>
+<td style="text-align:left">none</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">48</td>
+<td style="text-align:left"><span class="math" data-tex="\(2,4\)">\(2,4\)</span>, <span class="math" data-tex="\(17,1\)">\(17,1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">122</td>
+<td style="text-align:left"><span class="math" data-tex="\(19,1\)">\(19,1\)</span>, <span class="math" data-tex="\(37,1\)">\(37,1\)</span>, <span class="math" data-tex="\(113,1\)">\(113,1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:right">11</td>
+<td style="text-align:right">900</td>
+<td style="text-align:left"><span class="math" data-tex="\(23,1\)">\(23,1\)</span>, <span class="math" data-tex="\(47,1\)">\(47,1\)</span>, <span class="math" data-tex="\(137,1\)">\(137,1\)</span>, <span class="math" data-tex="\(139,1\)">\(139,1\)</span>, <span class="math" data-tex="\(229,1\)">\(229,1\)</span>, <span class="math" data-tex="\(277,1\)">\(277,1\)</span>, <span class="math" data-tex="\(367,1\)">\(367,1\)</span>, <span class="math" data-tex="\(461,1\)">\(461,1\)</span>, <span class="math" data-tex="\(599,1\)">\(599,1\)</span>, <span class="math" data-tex="\(643,1\)">\(643,1\)</span>, <span class="math" data-tex="\(691,1\)">\(691,1\)</span>, <span class="math" data-tex="\(827,1\)">\(827,1\)</span>, <span class="math" data-tex="\(829,1\)">\(829,1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Here is a complete finite way to obtain that list. Enumerate the rational primes <span class="math" data-tex="\(2\le q\le B\)">\(2\le q\le B\)</span> by trial division. For <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>, the cyclotomic Frobenius is the class of <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\((\mathbf Z/p\mathbf Z)^\times/\{\pm1\}\)">\((\mathbf Z/p\mathbf Z)^\times/\{\pm1\}\)</span>, so <span class="math" data-tex="\(f\)">\(f\)</span> is the first positive integer with <span class="math" data-tex="\(q^f\equiv\pm1\pmod p\)">\(q^f\equiv\pm1\pmod p\)</span>. Retain the orbit exactly when <span class="math" data-tex="\(q^f\le B\)">\(q^f\le B\)</span>. At <span class="math" data-tex="\(q=p\)">\(q=p\)</span>, there is one totally ramified prime of norm <span class="math" data-tex="\(p\)">\(p\)</span>. These rules follow from the proved cyclotomic splitting and Frobenius theorems. For <span class="math" data-tex="\(p=23\)">\(p=23\)</span>, the real Galois group has prime order <span class="math" data-tex="\(11\)">\(11\)</span>; all non-split unramified primes have norm at least <span class="math" data-tex="\(2^{11}=2048&gt;900\)">\(2^{11}=2048&gt;900\)</span>. The split primes at most <span class="math" data-tex="\(900\)">\(900\)</span> are precisely the twelve listed above. For the smaller conductors the same bounded enumeration gives the displayed rows.</p>
+<p>The following integral elements prove that all the required orbits are principal. The table records signed field norms, not approximate absolute values.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(p\)">\(p\)</span></th>
+<th style="text-align:left">Generator <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> in the <span class="math" data-tex="\(b_j\)">\(b_j\)</span> basis</th>
+<th style="text-align:right"><span class="math" data-tex="\(N_{K^+/\mathbf Q}(\alpha)\)">\(N_{K^+/\mathbf Q}(\alpha)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:left"><span class="math" data-tex="\(1 -b_{1} -b_{4}\)">\(1 -b_{1} -b_{4}\)</span></td>
+<td style="text-align:right">16</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:left"><span class="math" data-tex="\(2 -b_{1}\)">\(2 -b_{1}\)</span></td>
+<td style="text-align:right">17</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:left"><span class="math" data-tex="\(2 -b_{1}\)">\(2 -b_{1}\)</span></td>
+<td style="text-align:right">19</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:left"><span class="math" data-tex="\(1 -b_{1} +b_{3}\)">\(1 -b_{1} +b_{3}\)</span></td>
+<td style="text-align:right">-37</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:left"><span class="math" data-tex="\(1 +b_{1} -b_{2}\)">\(1 +b_{1} -b_{2}\)</span></td>
+<td style="text-align:right">-113</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(2 -b_{1}\)">\(2 -b_{1}\)</span></td>
+<td style="text-align:right">23</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(1 +b_{1} -b_{3}\)">\(1 +b_{1} -b_{3}\)</span></td>
+<td style="text-align:right">47</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(1 -b_{1} +b_{7}\)">\(1 -b_{1} +b_{7}\)</span></td>
+<td style="text-align:right">-137</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(1 -b_{1} +b_{3}\)">\(1 -b_{1} +b_{3}\)</span></td>
+<td style="text-align:right">139</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(b_{1} +b_{2} -b_{3}\)">\(b_{1} +b_{2} -b_{3}\)</span></td>
+<td style="text-align:right">-229</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(1 -b_{1} -b_{2}\)">\(1 -b_{1} -b_{2}\)</span></td>
+<td style="text-align:right">-277</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(b_{1} +b_{3} -b_{4}\)">\(b_{1} +b_{3} -b_{4}\)</span></td>
+<td style="text-align:right">-367</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(b_{1} -b_{3} -b_{8}\)">\(b_{1} -b_{3} -b_{8}\)</span></td>
+<td style="text-align:right">-461</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(1 -b_{1} -b_{2} +b_{3}\)">\(1 -b_{1} -b_{2} +b_{3}\)</span></td>
+<td style="text-align:right">-599</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(b_{1} +b_{2} -b_{5}\)">\(b_{1} +b_{2} -b_{5}\)</span></td>
+<td style="text-align:right">-643</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(b_{1} -b_{3} +b_{4}\)">\(b_{1} -b_{3} +b_{4}\)</span></td>
+<td style="text-align:right">691</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(b_{1} +b_{4} +b_{5}\)">\(b_{1} +b_{4} +b_{5}\)</span></td>
+<td style="text-align:right">-827</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left"><span class="math" data-tex="\(1 -b_{1} -b_{3} +b_{8}\)">\(1 -b_{1} -b_{3} +b_{8}\)</span></td>
+<td style="text-align:right">-829</td>
+</tr>
+</tbody>
+</table>
+<p>Every norm in this table can be checked from the stated recurrence and integer matrices. Express <span class="math" data-tex="\(\alpha=g(t)\)">\(\alpha=g(t)\)</span>. Reduce <span class="math" data-tex="\(g(T)T^j\)">\(g(T)T^j\)</span>, <span class="math" data-tex="\(0\le j&lt;n\)">\(0\le j&lt;n\)</span>, by monic division by <span class="math" data-tex="\(F_p(T)\)">\(F_p(T)\)</span>; its coefficients give column <span class="math" data-tex="\(j\)">\(j\)</span> of the multiplication matrix. Its determinant is the norm by definition. Thus no integral-basis guess, floating-point root, class-number table or unproved unit calculation enters the check. For instance, the <span class="math" data-tex="\(p=17\)">\(p=17\)</span> element is <span class="math" data-tex="\(1-b_1-b_4=-t^4+4t^2-t-1\)">\(1-b_1-b_4=-t^4+4t^2-t-1\)</span>, and its matrix determinant is <span class="math" data-tex="\(16\)">\(16\)</span>. In every ramified row, the uniform formula gives <span class="math" data-tex="\(N(2-t)=F_p(2)=p\)">\(N(2-t)=F_p(2)=p\)</span>.</p>
+<p>If <span class="math" data-tex="\(|N(\alpha)|=q^f\)">\(|N(\alpha)|=q^f\)</span>, ideal-norm multiplicativity shows that <span class="math" data-tex="\((\alpha)\)">\((\alpha)\)</span> is one prime over <span class="math" data-tex="\(q\)">\(q\)</span>, with exponent one: all prime divisors lie over <span class="math" data-tex="\(q\)">\(q\)</span>, and every prime over <span class="math" data-tex="\(q\)">\(q\)</span> already has norm <span class="math" data-tex="\(q^f\)">\(q^f\)</span>. This includes the norm <span class="math" data-tex="\(16\)">\(16\)</span> row, where the two primes above <span class="math" data-tex="\(2\)">\(2\)</span> both have residue degree four. Galois transitivity then proves every other prime in that orbit principal, by conjugating <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. All Minkowski generators are therefore trivial, proving
+<span class="math math-display" data-tex="\[
+h^+=1\qquad(p=3,5,7,11,13,17,19,23).
+\tag{CN1}
+\]">\[
+h^+=1\qquad(p=3,5,7,11,13,17,19,23).
+\tag{CN1}
+\]</span></p>
+<p>The <a href="certificates/cyclotomic-real-class-numbers.json">integer certificate</a> includes every polynomial, exact bound, prime orbit and norm matrix. Its <a href="certificates/verify-cyclotomic-real-class-numbers.py">standard-library Python verifier</a> recomputes all of them from the recurrence and exact determinants.</p>
+<p><strong>The relative class numbers.</strong> The already proved special-value formula (A3) gives
+<span class="math math-display" data-tex="\[
+\frac h{h^+}=\frac p{2^{n-1}}\prod_{\chi(-1)=-1}L(0,\chi),
+\qquad L(0,\chi)=-\frac1p\sum_{a=1}^{p-1}a\chi(a).
+\]">\[
+\frac h{h^+}=\frac p{2^{n-1}}\prod_{\chi(-1)=-1}L(0,\chi),
+\qquad L(0,\chi)=-\frac1p\sum_{a=1}^{p-1}a\chi(a).
+\]</span>
+We turn this into one integer determinant. Write <span class="math" data-tex="\(r(x)\)">\(r(x)\)</span> for the representative of a nonzero residue <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(\{1,\ldots,p-1\}\)">\(\{1,\ldots,p-1\}\)</span>, and form
+<span class="math math-display" data-tex="\[
+H_{a,b}=2r(ab^{-1})-p\qquad(1\le a,b\le n).
+\tag{CN2}
+\]">\[
+H_{a,b}=2r(ab^{-1})-p\qquad(1\le a,b\le n).
+\tag{CN2}
+\]</span>
+On the vector space with basis <span class="math" data-tex="\(e_a\)">\(e_a\)</span>, indexed by <span class="math" data-tex="\(G=(\mathbf Z/p\mathbf Z)^\times\)">\(G=(\mathbf Z/p\mathbf Z)^\times\)</span>, let
+<span class="math" data-tex="\(T(e_b)=\sum_a r(ab^{-1})e_a\)">\(T(e_b)=\sum_a r(ab^{-1})e_a\)</span>.
+Its anti-invariant subspace for <span class="math" data-tex="\(e_a\mapsto e_{-a}\)">\(e_a\mapsto e_{-a}\)</span> has basis <span class="math" data-tex="\(u_b=e_b-e_{-b}\)">\(u_b=e_b-e_{-b}\)</span>, <span class="math" data-tex="\(1\le b\le n\)">\(1\le b\le n\)</span>. The coefficient at <span class="math" data-tex="\(e_a\)">\(e_a\)</span> of <span class="math" data-tex="\(T(u_b)\)">\(T(u_b)\)</span> is
+<span class="math" data-tex="\(r(ab^{-1})-r(-ab^{-1})=2r(ab^{-1})-p\)">\(r(ab^{-1})-r(-ab^{-1})=2r(ab^{-1})-p\)</span>, and the coefficient at <span class="math" data-tex="\(e_{-a}\)">\(e_{-a}\)</span> is its negative. Hence its matrix is exactly <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>The character eigenvectors in the augmentation proof form a full basis; exactly the odd characters lie in this anti-invariant subspace. The eigenvalues are <span class="math" data-tex="\(\sum_a r(a)\chi(a)^{-1}\)">\(\sum_a r(a)\chi(a)^{-1}\)</span>. Inversion permutes odd characters, so
+<span class="math math-display" data-tex="\[
+\det H=\prod_{\chi(-1)=-1}\sum_{a=1}^{p-1}a\chi(a),\qquad
+\frac h{h^+}=\frac{(-1)^n\det H}{(2p)^{n-1}}.
+\tag{CN3}
+\]">\[
+\det H=\prod_{\chi(-1)=-1}\sum_{a=1}^{p-1}a\chi(a),\qquad
+\frac h{h^+}=\frac{(-1)^n\det H}{(2p)^{n-1}}.
+\tag{CN3}
+\]</span>
+This argument also works for <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, where <span class="math" data-tex="\(H=(-1)\)">\(H=(-1)\)</span>. Exact integer determinants give:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(p\)">\(p\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\det H\)">\(\det H\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(h/h^+\)">\(h/h^+\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">-1</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">-196</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">-234256</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">11881376</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:right">52523350144</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:right">-4347792138496</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:right">-127262242448329728</td>
+<td style="text-align:right">3</td>
+</tr>
+</tbody>
+</table>
+<p>For reproducibility, the <a href="certificates/verify-cyclotomic-relative-class-numbers.py">relative determinant verifier</a> constructs (CN2) from modular inverses and uses exact rational Gaussian elimination; each determinant is an integer. Together with (CN1), (CN3) proves (15), including the full value at <span class="math" data-tex="\(23\)">\(23\)</span>. In particular <span class="math" data-tex="\(23\)">\(23\)</span> is regular even though its class group has order three. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-first-case-of-fermat-s-equation">The first case of Fermat's equation</h2>
+<p><strong>Theorem 13.3 (Kummer).</strong> If <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span> is regular, there are no integers <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span> satisfying
+<span class="math math-display" data-tex="\[
+x^p+y^p=z^p,\qquad p\nmid xyz.
+\tag{16}
+\]">\[
+x^p+y^p=z^p,\qquad p\nmid xyz.
+\tag{16}
+\]</span></p>
+<p>We prove two algebraic congruence facts before assembling the argument. Congruences modulo <span class="math" data-tex="\(p\)">\(p\)</span> below mean membership in the ideal <span class="math" data-tex="\(p\mathcal O_K\)">\(p\mathcal O_K\)</span>, rather than merely in <span class="math" data-tex="\(\lambda\mathcal O_K\)">\(\lambda\mathcal O_K\)</span>.</p>
+<p><strong>Power congruence.</strong> For every <span class="math" data-tex="\(\alpha\in\mathcal O_K\)">\(\alpha\in\mathcal O_K\)</span>, there is an integer <span class="math" data-tex="\(a\)">\(a\)</span> such that
+<span class="math math-display" data-tex="\[
+\alpha^p\equiv a\pmod{p\mathcal O_K},
+\qquad \overline\alpha^{\,p}\equiv a\pmod{p\mathcal O_K}.
+\tag{17}
+\]">\[
+\alpha^p\equiv a\pmod{p\mathcal O_K},
+\qquad \overline\alpha^{\,p}\equiv a\pmod{p\mathcal O_K}.
+\tag{17}
+\]</span>
+To prove this, write <span class="math" data-tex="\(\alpha=\sum_{j=0}^{p-2}a_j\zeta^j\)">\(\alpha=\sum_{j=0}^{p-2}a_j\zeta^j\)</span> in the integral basis. In any commutative ring of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, raising to the <span class="math" data-tex="\(p\)">\(p\)</span>-th power is additive. Since <span class="math" data-tex="\(\zeta^{jp}=1\)">\(\zeta^{jp}=1\)</span> and <span class="math" data-tex="\(a_j^p\equiv a_j\pmod p\)">\(a_j^p\equiv a_j\pmod p\)</span>, its <span class="math" data-tex="\(p\)">\(p\)</span>-th power is congruent to <span class="math" data-tex="\(a=\sum a_j\)">\(a=\sum a_j\)</span>. The same calculation for the conjugate has the same integer <span class="math" data-tex="\(a\)">\(a\)</span>. This does not require the quotient ring to be reduced; indeed (2) shows that it is not reduced.</p>
+<p><strong>Coefficient congruence.</strong> If <span class="math" data-tex="\(b_0,\ldots,b_{p-1}\in\mathbf Z\)">\(b_0,\ldots,b_{p-1}\in\mathbf Z\)</span>, then
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^{p-1}b_j\zeta^j\in p\mathcal O_K
+\quad\Longleftrightarrow\quad
+b_0\equiv b_1\equiv\cdots\equiv b_{p-1}\pmod p.
+\tag{18}
+\]">\[
+\sum_{j=0}^{p-1}b_j\zeta^j\in p\mathcal O_K
+\quad\Longleftrightarrow\quad
+b_0\equiv b_1\equiv\cdots\equiv b_{p-1}\pmod p.
+\tag{18}
+\]</span>
+Eliminate <span class="math" data-tex="\(\zeta^{p-1}\)">\(\zeta^{p-1}\)</span> using <span class="math" data-tex="\(\sum_{j=0}^{p-1}\zeta^j=0\)">\(\sum_{j=0}^{p-1}\zeta^j=0\)</span>. The result is
+<span class="math" data-tex="\(\sum_{j=0}^{p-2}(b_j-b_{p-1})\zeta^j\)">\(\sum_{j=0}^{p-2}(b_j-b_{p-1})\zeta^j\)</span>.
+Because these <span class="math" data-tex="\(p-1\)">\(p-1\)</span> powers are an integral basis, membership in <span class="math" data-tex="\(p\mathcal O_K\)">\(p\mathcal O_K\)</span> means exactly that each coefficient is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. This proves both directions of (18).</p>
+<p><strong>Proof of Theorem 13.3.</strong> Suppose (16) holds. Divide by the common greatest positive divisor of <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span>. Since <span class="math" data-tex="\(p\nmid xyz\)">\(p\nmid xyz\)</span>, this division preserves the first-case condition. The resulting triple is pairwise coprime: a prime dividing two entries also divides the third by the equation.</p>
+<p>We may also arrange
+<span class="math math-display" data-tex="\[
+x\not\equiv y\pmod p.
+\tag{19}
+\]">\[
+x\not\equiv y\pmod p.
+\tag{19}
+\]</span>
+For this, put <span class="math" data-tex="\(u=x,v=y,w=-z\)">\(u=x,v=y,w=-z\)</span>. Their nonzero residues satisfy <span class="math" data-tex="\(u+v+w=0\)">\(u+v+w=0\)</span> in <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>. If all three residues were equal, we would have <span class="math" data-tex="\(3u=0\)">\(3u=0\)</span>, impossible for <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span>. Choose two unequal residues, call the corresponding integers <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, and negate the remaining integer to obtain the new <span class="math" data-tex="\(z\)">\(z\)</span>. Since <span class="math" data-tex="\(p\)">\(p\)</span> is odd, the equation, pairwise coprimality and <span class="math" data-tex="\(p\nmid xyz\)">\(p\nmid xyz\)</span> all persist.</p>
+<p>Factor the equation in <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>:
+<span class="math math-display" data-tex="\[
+\prod_{i=0}^{p-1}(x+\zeta^i y)=z^p.
+\tag{20}
+\]">\[
+\prod_{i=0}^{p-1}(x+\zeta^i y)=z^p.
+\tag{20}
+\]</span>
+The principal ideals generated by its factors are pairwise relatively prime. To check this, suppose a prime ideal <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> divides the <span class="math" data-tex="\(i\)">\(i\)</span>-th and <span class="math" data-tex="\(j\)">\(j\)</span>-th factors, with <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. Their difference is <span class="math" data-tex="\((\zeta^i-\zeta^j)y\)">\((\zeta^i-\zeta^j)y\)</span>. Proposition 13.2 shows that <span class="math" data-tex="\(\zeta^i-\zeta^j\)">\(\zeta^i-\zeta^j\)</span> is <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> times a unit. If <span class="math" data-tex="\(\mathfrak q\nmid(p)\)">\(\mathfrak q\nmid(p)\)</span>, it follows that <span class="math" data-tex="\(y\in\mathfrak q\)">\(y\in\mathfrak q\)</span>, and then <span class="math" data-tex="\(x\in\mathfrak q\)">\(x\in\mathfrak q\)</span>. Bezout's identity for the coprime integers <span class="math" data-tex="\(x,y\)">\(x,y\)</span> would put <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>, a contradiction. If <span class="math" data-tex="\(\mathfrak q\mid(p)\)">\(\mathfrak q\mid(p)\)</span>, (2) gives <span class="math" data-tex="\(\mathfrak q=(\lambda)\)">\(\mathfrak q=(\lambda)\)</span>. Reduction of either factor yields <span class="math" data-tex="\(p\mid x+y\)">\(p\mid x+y\)</span>. But (16) modulo <span class="math" data-tex="\(p\)">\(p\)</span> gives <span class="math" data-tex="\(z\equiv x+y\pmod p\)">\(z\equiv x+y\pmod p\)</span>, contradicting <span class="math" data-tex="\(p\nmid z\)">\(p\nmid z\)</span>.</p>
+<p>Unique factorization of ideals applied to (20) now gives
+<span class="math math-display" data-tex="\[
+(x+\zeta y)=\mathfrak a^p
+\tag{21}
+\]">\[
+(x+\zeta y)=\mathfrak a^p
+\tag{21}
+\]</span>
+for an integral ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span>: every prime occurs in only one factor, and its exponent in the product is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. The class of <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> is killed by <span class="math" data-tex="\(p\)">\(p\)</span>. Regularity and finiteness of the class group make this class trivial. Write <span class="math" data-tex="\(\mathfrak a=(\alpha)\)">\(\mathfrak a=(\alpha)\)</span>, where <span class="math" data-tex="\(\alpha\in\mathcal O_K\)">\(\alpha\in\mathcal O_K\)</span>, since <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> is integral. Equality (21) then says
+<span class="math math-display" data-tex="\[
+x+\zeta y=\varepsilon\alpha^p=\zeta^r v\alpha^p,
+\qquad v\in E^+.
+\tag{22}
+\]">\[
+x+\zeta y=\varepsilon\alpha^p=\zeta^r v\alpha^p,
+\qquad v\in E^+.
+\tag{22}
+\]</span>
+Here equal nonzero principal ideals differ by a unit, and the last equality uses Proposition 13.1.</p>
+<p>Conjugating (22) and applying (17) gives, for the same integer <span class="math" data-tex="\(a\)">\(a\)</span>,
+<span class="math math-display" data-tex="\[
+x+\zeta y\equiv\zeta^r va,
+\qquad x+\zeta^{-1}y\equiv\zeta^{-r}va
+\pmod{p\mathcal O_K}.
+\]">\[
+x+\zeta y\equiv\zeta^r va,
+\qquad x+\zeta^{-1}y\equiv\zeta^{-r}va
+\pmod{p\mathcal O_K}.
+\]</span>
+No division by <span class="math" data-tex="\(a\)">\(a\)</span> is needed. Multiply the second congruence by <span class="math" data-tex="\(\zeta^{2r}\)">\(\zeta^{2r}\)</span> and subtract. If <span class="math" data-tex="\(s\equiv2r\pmod p\)">\(s\equiv2r\pmod p\)</span>, then
+<span class="math math-display" data-tex="\[
+x+y\zeta-x\zeta^s-y\zeta^{s-1}\equiv0
+\pmod{p\mathcal O_K}.
+\tag{23}
+\]">\[
+x+y\zeta-x\zeta^s-y\zeta^{s-1}\equiv0
+\pmod{p\mathcal O_K}.
+\tag{23}
+\]</span>
+Reduce all exponents modulo <span class="math" data-tex="\(p\)">\(p\)</span>. The left side has coefficients in at most four positions among <span class="math" data-tex="\(0,\ldots,p-1\)">\(0,\ldots,p-1\)</span>. Because <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span>, at least one position has coefficient zero. Equation (18) consequently forces every coefficient to be zero modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>If the four positions <span class="math" data-tex="\(0,1,s,s-1\)">\(0,1,s,s-1\)</span> are distinct, this would force <span class="math" data-tex="\(p\mid x\)">\(p\mid x\)</span> and <span class="math" data-tex="\(p\mid y\)">\(p\mid y\)</span>. A coincidence is possible only for <span class="math" data-tex="\(s=0,1,2\)">\(s=0,1,2\)</span>. Their polynomials, with exponents reduced modulo <span class="math" data-tex="\(p\)">\(p\)</span>, are respectively
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c}
+s&amp;x+yX-xX^s-yX^{s-1}&amp;\text{consequence}\\
+0&amp;y(X-X^{p-1})&amp;p\mid y\\
+1&amp;(x-y)(1-X)&amp;x\equiv y\pmod p\\
+2&amp;x(1-X^2)&amp;p\mid x.
+\end{array}
+\tag{24}
+\]">\[
+\begin{array}{c|c|c}
+s&amp;x+yX-xX^s-yX^{s-1}&amp;\text{consequence}\\
+0&amp;y(X-X^{p-1})&amp;p\mid y\\
+1&amp;(x-y)(1-X)&amp;x\equiv y\pmod p\\
+2&amp;x(1-X^2)&amp;p\mid x.
+\end{array}
+\tag{24}
+\]</span>
+The relevant two exponents in each row are distinct for <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span>. The first and third conclusions contradict <span class="math" data-tex="\(p\nmid xyz\)">\(p\nmid xyz\)</span>; the middle contradicts (19). This proves the theorem, including <span class="math" data-tex="\(p=5\)">\(p=5\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Regularity was used exactly once, when (21) had to become an element power. The proof does not require the class number to equal one. The first-case restriction was used to keep the factors coprime at the unique ramified prime. If <span class="math" data-tex="\(p\mid z\)">\(p\mid z\)</span>, the factors acquire the common ramified prime; when another coordinate is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, the later nonzero-residue argument requires a different treatment. The proof above supplies no second-case conclusion.</p>
+<h2 id="exercises-and-complete-solutions">Exercises and complete solutions</h2>
+<p><strong>Exercise 1.</strong> Show that <span class="math" data-tex="\(1+\zeta_5\)">\(1+\zeta_5\)</span> is a unit, and express it as a power of <span class="math" data-tex="\(\zeta_5\)">\(\zeta_5\)</span> times a real unit.</p>
+<p><strong>Solution 1.</strong> It is <span class="math" data-tex="\(u_2\)">\(u_2\)</span>. The inverse exponent <span class="math" data-tex="\(b=3\)">\(b=3\)</span> gives the explicit inverse <span class="math" data-tex="\(1+\zeta^2+\zeta^4\)">\(1+\zeta^2+\zeta^4\)</span>, because <span class="math" data-tex="\(2\cdot3\equiv1\pmod5\)">\(2\cdot3\equiv1\pmod5\)</span>. Multiplying yields <span class="math" data-tex="\(1\)">\(1\)</span> after using <span class="math" data-tex="\(1+\zeta+\cdots+\zeta^4=0\)">\(1+\zeta+\cdots+\zeta^4=0\)</span>. Equation (9) gives <span class="math" data-tex="\(1+\zeta=\zeta^3(-\phi)\)">\(1+\zeta=\zeta^3(-\phi)\)</span>. The real factor lies in <span class="math" data-tex="\(\mathbf Q(\sqrt5)\)">\(\mathbf Q(\sqrt5)\)</span> and has inverse <span class="math" data-tex="\(-\phi^{-1}=1-\phi\)">\(-\phi^{-1}=1-\phi\)</span>. Thus both the inverse and the real-unit decomposition are explicit.</p>
+<p><strong>Exercise 2.</strong> Under (16) and pairwise coprimality of <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span>, prove that the ideals <span class="math" data-tex="\((x+\zeta^i y)\)">\((x+\zeta^i y)\)</span>, <span class="math" data-tex="\(0\leq i&lt;p\)">\(0\leq i&lt;p\)</span>, are pairwise coprime. Identify the role of the first-case hypothesis.</p>
+<p><strong>Solution 2.</strong> A common prime <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> for two factors divides <span class="math" data-tex="\((\zeta^i-\zeta^j)y\)">\((\zeta^i-\zeta^j)y\)</span>. The first factor of this product is a unit times <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Away from <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, this forces <span class="math" data-tex="\(\mathfrak q\mid(y)\)">\(\mathfrak q\mid(y)\)</span>, then <span class="math" data-tex="\(\mathfrak q\mid(x)\)">\(\mathfrak q\mid(x)\)</span>, contrary to the integer Bezout identity. At <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, every factor reduces to <span class="math" data-tex="\(x+y\in\mathbf F_p\)">\(x+y\in\mathbf F_p\)</span>. A common divisor there requires <span class="math" data-tex="\(x+y\equiv0\pmod p\)">\(x+y\equiv0\pmod p\)</span>; the equation gives <span class="math" data-tex="\(z\equiv x+y\pmod p\)">\(z\equiv x+y\pmod p\)</span>, impossible in the first case. Therefore no common prime exists. The restriction <span class="math" data-tex="\(p\nmid z\)">\(p\nmid z\)</span> is exactly what excludes the common ramified prime; without it, many factors can acquire that divisor.</p>
+<p><strong>Exercise 3.</strong> Prove that every <span class="math" data-tex="\(\alpha\in\mathbf Z[\zeta_p]\)">\(\alpha\in\mathbf Z[\zeta_p]\)</span> has <span class="math" data-tex="\(\alpha^p\equiv a\pmod{p\mathbf Z[\zeta_p]}\)">\(\alpha^p\equiv a\pmod{p\mathbf Z[\zeta_p]}\)</span> for a rational integer <span class="math" data-tex="\(a\)">\(a\)</span>. Show that the same <span class="math" data-tex="\(a\)">\(a\)</span> works for its conjugate.</p>
+<p><strong>Solution 3.</strong> In the integral basis, write <span class="math" data-tex="\(\alpha=\sum_{j=0}^{p-2}a_j\zeta^j\)">\(\alpha=\sum_{j=0}^{p-2}a_j\zeta^j\)</span>. The binomial coefficients between the endpoints are divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, so repeated binomial expansion gives <span class="math" data-tex="\(\alpha^p\equiv\sum a_j^p\zeta^{jp}\equiv\sum a_j\)">\(\alpha^p\equiv\sum a_j^p\zeta^{jp}\equiv\sum a_j\)</span>. Replacing <span class="math" data-tex="\(j\)">\(j\)</span> by <span class="math" data-tex="\(-j\)">\(-j\)</span> gives the same sum for the conjugate. This establishes the full congruence modulo <span class="math" data-tex="\(p\mathcal O_K\)">\(p\mathcal O_K\)</span>, including its nilpotent elements, and proves (17).</p>
+<p><strong>Exercise 4.</strong> Complete the final congruence argument from (23). Explain why its normalization and the assumption <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span> are necessary.</p>
+<p><strong>Solution 4.</strong> Relation (18) says that all <span class="math" data-tex="\(p\)">\(p\)</span> coefficients of the polynomial in (23) are equal modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Its support has at most four positions; <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span> leaves a zero coefficient, forcing them all to vanish. If its positions are distinct, the coefficient at <span class="math" data-tex="\(0\)">\(0\)</span> is <span class="math" data-tex="\(x\)">\(x\)</span>, a contradiction. Otherwise comparing <span class="math" data-tex="\(0,1,s,s-1\)">\(0,1,s,s-1\)</span> gives exactly <span class="math" data-tex="\(s=0,1,2\)">\(s=0,1,2\)</span>, with the three reductions in (24). The middle case only forces <span class="math" data-tex="\(x\equiv y\)">\(x\equiv y\)</span>, which is why we first choose unequal residues. That choice is possible because a triple of equal nonzero residues with sum zero would give <span class="math" data-tex="\(3x=0\)">\(3x=0\)</span>, impossible for <span class="math" data-tex="\(p\geq5\)">\(p\geq5\)</span>. For <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, the support need not leave a zero position and this normalization also fails. The theorem as proved therefore starts at <span class="math" data-tex="\(5\)">\(5\)</span>. The separate first-case assertion for exponent <span class="math" data-tex="\(3\)">\(3\)</span> follows from cubes modulo <span class="math" data-tex="\(9\)">\(9\)</span>: a number prime to <span class="math" data-tex="\(3\)">\(3\)</span> has cube <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, and three such cubes cannot sum to zero modulo <span class="math" data-tex="\(9\)">\(9\)</span>.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The unit-index theorem (8), Bernoulli criterion (12), and full class numbers (15) have complete receiving proofs above. The analytic continuation and zero-leading-term proof are the exact later-course analytic inputs recorded in the criterion; the ordinary Hilbert-class-field theorem supplies the indicated class-field input. These arguments make no claim about the second case of Fermat's equation, irregular exponents, or cyclotomic-unit indices at general composite conductors. The earlier elementary field, ideal, unit and Minkowski results are used with the precise hypotheses stated above.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em>, v3.08</a>, Chapter 6, “Class numbers of cyclotomic fields,” printed p.101; “Units in cyclotomic fields,” Proposition 6.7, pp.101–102; “The first case of Fermat's last theorem for regular primes,” Theorem 6.8 and Lemmas 6.9–6.11, pp.102–104.</li>
+<li>Romyar Sharifi, <a href="https://math.ucla.edu/~sharifi/notes/iwasawa-ch04.html"><em>Iwasawa Theory</em>, Chapter 4</a>, §4.3, Definition 4.3.1 and Theorem 4.3.3, for the real cyclotomic-unit subgroup and its class-number index.</li>
+</ul>
+</article><nav><a href="src/units-and-class-numbers-of-cyclotomic-fields-kummers-theorem-for-regular-primes.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

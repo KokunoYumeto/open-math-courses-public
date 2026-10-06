@@ -1,0 +1,1105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entropy of finite-dimensional subalgebras · Entropy of automorphisms</title>
+<meta name="description" content="A lesson of the course Entropy of automorphisms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/entropy-of-automorphisms/entropy-of-finite-dimensional-subalgebras.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Entropy of automorphisms</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 6</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="entropy-of-finite-dimensional-subalgebras">Entropy of finite-dimensional subalgebras</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), September 2026, revised October 2026. The September text was spot-checked by Claude Opus 5.5 in a separate session; the October revisions are self-checked by the writing AI. Public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>In classical ergodic theory the entropy of a measure-preserving transformation <span class="math" data-tex="\(T\)">\(T\)</span> is built from the entropy
+<span class="math" data-tex="\(H(\mathcal P)=-\sum_A\mu(A)\log\mu(A)\)">\(H(\mathcal P)=-\sum_A\mu(A)\log\mu(A)\)</span> of a finite partition and from the join
+<span class="math" data-tex="\(\mathcal P\vee T^{-1}\mathcal P\vee\dots\vee T^{-k}\mathcal P\)">\(\mathcal P\vee T^{-1}\mathcal P\vee\dots\vee T^{-k}\mathcal P\)</span>. A finite partition amounts to a
+finite-dimensional subalgebra of <span class="math" data-tex="\(L^\infty(X,\mu)\)">\(L^\infty(X,\mu)\)</span>, and the join corresponds to the algebra that the pieces generate.
+In a noncommutative finite von Neumann algebra <span class="math" data-tex="\(R\)">\(R\)</span> with a trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, two finite-dimensional subalgebras usually
+generate an infinite-dimensional algebra, so there is no join. This lesson builds a replacement: a number
+<span class="math" data-tex="\(H(N_1,\dots,N_k)\)">\(H(N_1,\dots,N_k)\)</span> attached to any finite family of finite-dimensional subalgebras, which behaves like the entropy of
+the join, together with a relative entropy <span class="math" data-tex="\(H(N\mid P)\)">\(H(N\mid P)\)</span>.</p>
+<p>The lesson has three parts.</p>
+<ol>
+<li><strong>Definitions and algebraic properties</strong> (Sections 3–5). We define the joint entropy (Definition 3.1) and prove
+that it is monotone (Proposition 3.3), subadditive (Proposition 3.4), and does not grow when several arguments are
+merged into one algebra containing them (Proposition 3.5). For one algebra it is the entropy of the trace on a
+maximal family of orthogonal minimal projections (Theorem 4.1), and for commuting families it is the entropy of the
+generated algebra (Theorem 4.4). The relative entropy (Definition 5.1) satisfies a triangle inequality and controls
+the change of the joint entropy when the arguments are moved (Propositions 5.2 and 5.3). For commuting
+subalgebras we compute it (Theorem 5.5), and an example shows that one tempting identity fails (Example 5.6).</li>
+<li><strong>Perturbation of subalgebras</strong> (Section 6). If every element of the unit ball of <span class="math" data-tex="\(N\)">\(N\)</span> lies within <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, in
+the norm <span class="math" data-tex="\(\|x\|_2=\tau(x^*x)^{1/2}\)">\(\|x\|_2=\tau(x^*x)^{1/2}\)</span>, of the unit ball of <span class="math" data-tex="\(P\)">\(P\)</span>, then after cutting <span class="math" data-tex="\(N\)">\(N\)</span> by a large projection of
+its commutant and conjugating by a unitary close to <span class="math" data-tex="\(1\)">\(1\)</span> in norm, <span class="math" data-tex="\(N\)">\(N\)</span> becomes a cut-down of a
+subalgebra of <span class="math" data-tex="\(P\)">\(P\)</span> (Theorem 6.10).</li>
+<li><strong>Continuity</strong> (Section 7). The relative entropy <span class="math" data-tex="\(H(N\mid P)\)">\(H(N\mid P)\)</span> is small when <span class="math" data-tex="\(N\)">\(N\)</span> is nearly contained in <span class="math" data-tex="\(P\)">\(P\)</span>,
+uniformly in everything except <span class="math" data-tex="\(\dim N\)">\(\dim N\)</span> (Theorem 7.3). This is the key to the noncommutative Kolmogorov–Sinai
+theorem in the lesson &quot;The entropy of a trace-preserving automorphism&quot;.</li>
+</ol>
+<p>The later lessons of this course, &quot;The entropy of a trace-preserving automorphism&quot; and &quot;Dynamical entropy of
+C*-algebras and von Neumann algebras&quot;, use Definition 3.1, Remark 3.2, Propositions 3.3–3.5, Corollary 3.6,
+Theorem 4.1, Corollary 4.2, Theorem 4.4, Definition 5.1, Propositions 5.2 and 5.3, Theorem 5.5, Theorem 7.3 and
+Corollary 7.4.</p>
+<p><em>What is assumed.</em> Basic von Neumann algebra theory: traces, projections and their comparison, polar decomposition,
+the double commutant and Kaplansky density theorems, and the trace-preserving conditional expectation onto a
+subalgebra. We also use three classical inequalities of matrix analysis. The facts used are stated precisely in
+the next section, &quot;Results used from other lessons&quot;, with the place where each is proved.</p>
+<p>Basic references are [Connes–Størmer 1975] and [Connes 1994].</p>
+<h2 id="results-used-from-other-lessons">Results used from other lessons</h2>
+<p>Throughout, <span class="math" data-tex="\(R\)">\(R\)</span> denotes a von Neumann algebra with a faithful normal tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. &quot;Subalgebra&quot;
+always means a von Neumann subalgebra containing the unit of <span class="math" data-tex="\(R\)">\(R\)</span>. For <span class="math" data-tex="\(p\in[1,\infty)\)">\(p\in[1,\infty)\)</span> put
+<span class="math" data-tex="\(\|a\|_p=\tau(|a|^p)^{1/p}\)">\(\|a\|_p=\tau(|a|^p)^{1/p}\)</span>, and write <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span> for the operator norm.</p>
+<p><strong>(B1) Conditional expectations.</strong> For every subalgebra <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> there is a unique map
+<span class="math" data-tex="\(E_N:R\to N\)">\(E_N:R\to N\)</span> that is linear, positive, unital, <span class="math" data-tex="\(N\)">\(N\)</span>-bimodular (<span class="math" data-tex="\(E_N(bxc)=bE_N(x)c\)">\(E_N(bxc)=bE_N(x)c\)</span> for <span class="math" data-tex="\(b,c\in N\)">\(b,c\in N\)</span>) and
+satisfies <span class="math" data-tex="\(\tau\circ E_N=\tau\)">\(\tau\circ E_N=\tau\)</span>. It is normal and completely positive. If <span class="math" data-tex="\(N\subset P\)">\(N\subset P\)</span> then
+<span class="math" data-tex="\(E_N\circ E_P=E_N\)">\(E_N\circ E_P=E_N\)</span>. On <span class="math" data-tex="\(L^2(R,\tau)\)">\(L^2(R,\tau)\)</span> it is the orthogonal projection onto <span class="math" data-tex="\(L^2(N,\tau)\)">\(L^2(N,\tau)\)</span>; hence
+<span class="math" data-tex="\(\|x-E_N(x)\|_2\le\|x-y\|_2\)">\(\|x-E_N(x)\|_2\le\|x-y\|_2\)</span> for all <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span>, and <span class="math" data-tex="\(\|x\|_2^2=\|E_N(x)\|_2^2+\|x-E_N(x)\|_2^2\)">\(\|x\|_2^2=\|E_N(x)\|_2^2+\|x-E_N(x)\|_2^2\)</span>. Moreover
+<span class="math" data-tex="\(\|E_N(x)\|_1\le\|x\|_1\)">\(\|E_N(x)\|_1\le\|x\|_1\)</span>. Existence, uniqueness, normality, faithfulness, bimodularity and the formula
+<span class="math" data-tex="\(\tau(E_N(x)y)=\tau(xy)\)">\(\tau(E_N(x)y)=\tau(xy)\)</span> for <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span> are <a href="../traces-and-noncommutative-integration/integration-for-a-trace-the-commutation-theorem-and-applications.html">Integration for a trace, Theorem 9.1</a>; complete
+positivity is <span class="unlinked">Contractive retractions and the algebraic structure of expectations,
+§CE-006</span>. The rest follows: <span class="math" data-tex="\(E_N\circ E_P\)">\(E_N\circ E_P\)</span> is a <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-preserving normal projection
+of norm one onto <span class="math" data-tex="\(N\)">\(N\)</span>, hence equal to <span class="math" data-tex="\(E_N\)">\(E_N\)</span> by uniqueness; the formula says that <span class="math" data-tex="\(x-E_N(x)\)">\(x-E_N(x)\)</span> is orthogonal to <span class="math" data-tex="\(N\)">\(N\)</span> in
+<span class="math" data-tex="\(L^2(R,\tau)\)">\(L^2(R,\tau)\)</span>; and <span class="math" data-tex="\(\|E_N(x)\|_1=\sup\{|\tau(E_N(x)b)|:b\in N,\ \|b\|\le1\}=\sup\{|\tau(xb)|\}\le\|x\|_1\)">\(\|E_N(x)\|_1=\sup\{|\tau(E_N(x)b)|:b\in N,\ \|b\|\le1\}=\sup\{|\tau(xb)|\}\le\|x\|_1\)</span> by (B7).</p>
+<p><strong>(B2) Operator concavity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and Jensen's operator inequality.</strong> Let <span class="math" data-tex="\(\eta(t)=-t\log t\)">\(\eta(t)=-t\log t\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and
+<span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>. The function <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is operator concave on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>: for bounded positive operators <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and
+<span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span>, <span class="math" data-tex="\(\eta(ta+(1-t)b)\ge t\eta(a)+(1-t)\eta(b)\)">\(\eta(ta+(1-t)b)\ge t\eta(a)+(1-t)\eta(b)\)</span>. Moreover for every unital completely positive map
+<span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> between C*-algebras and every positive <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(\eta(\Phi(a))\ge\Phi(\eta(a))\)">\(\eta(\Phi(a))\ge\Phi(\eta(a))\)</span>. Proved in <a href="operator-convex-functions-and-the-continuity-of-entropy.html#section-2">Operator
+convex functions and the continuity of entropy, Theorem 2.2 and Corollary 3.2</a>, the lesson before this
+one, where Jensen's inequality is proved for all unital positive maps and every operator convex function. See also
+[Choi 1974] (free at Project Euclid).</p>
+<p><strong>(B3) Operator monotonicity of the logarithm</strong> (the Löwner–Heinz theorem for <span class="math" data-tex="\(\log\)">\(\log\)</span>). If <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are bounded
+invertible positive operators with <span class="math" data-tex="\(a\le b\)">\(a\le b\)</span>, then <span class="math" data-tex="\(\log a\le\log b\)">\(\log a\le\log b\)</span>. Proof: by the Löwner–Heinz inequality
+(<a href="../NCG-FOLIATIONS/companions/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-17">C*-algebras, continuous functional calculus, automatic continuity and positive cones, Theorem 9.1</a>),
+<span class="math" data-tex="\((a^\alpha-1)/\alpha\le(b^\alpha-1)/\alpha\)">\((a^\alpha-1)/\alpha\le(b^\alpha-1)/\alpha\)</span> for <span class="math" data-tex="\(0&lt;\alpha\le1\)">\(0&lt;\alpha\le1\)</span>; these tend in norm to <span class="math" data-tex="\(\log a\)">\(\log a\)</span> and <span class="math" data-tex="\(\log b\)">\(\log b\)</span> as
+<span class="math" data-tex="\(\alpha\to0\)">\(\alpha\to0\)</span>, uniformly on the spectra, which lie in a compact subset of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, and the positive cone is
+closed.</p>
+<p><strong>(B4) Joint convexity of relative entropy.</strong> Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be a C*-algebra of finite dimension with a faithful positive
+trace <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. For positive <span class="math" data-tex="\(a,b\in Q\)">\(a,b\in Q\)</span> with <span class="math" data-tex="\(\operatorname{supp}a\le\operatorname{supp}b\)">\(\operatorname{supp}a\le\operatorname{supp}b\)</span> put
+<span class="math" data-tex="\(S_\varphi(a\mid b)=\varphi(a\log a)-\varphi(a\log b)\)">\(S_\varphi(a\mid b)=\varphi(a\log a)-\varphi(a\log b)\)</span>, where <span class="math" data-tex="\(\log b\)">\(\log b\)</span> is computed on the support of <span class="math" data-tex="\(b\)">\(b\)</span> and
+<span class="math" data-tex="\(0\log0=0\)">\(0\log0=0\)</span>. If <span class="math" data-tex="\(a_1,\dots,a_r,b_1,\dots,b_r\)">\(a_1,\dots,a_r,b_1,\dots,b_r\)</span> are positive with <span class="math" data-tex="\(\operatorname{supp}a_j\le\operatorname{supp}b_j\)">\(\operatorname{supp}a_j\le\operatorname{supp}b_j\)</span>,
+then
+<span class="math math-display" data-tex="\[
+S_\varphi\Bigl(\sum_ja_j\Bigm|\sum_jb_j\Bigr)\le\sum_jS_\varphi(a_j\mid b_j).
+\]">\[
+S_\varphi\Bigl(\sum_ja_j\Bigm|\sum_jb_j\Bigr)\le\sum_jS_\varphi(a_j\mid b_j).
+\]</span>
+(This is joint convexity combined with the homogeneity <span class="math" data-tex="\(S(\lambda a\mid\lambda b)=\lambda S(a\mid b)\)">\(S(\lambda a\mid\lambda b)=\lambda S(a\mid b)\)</span>; on a direct
+sum of matrix algebras it reduces to the matrix case block by block.) Proved in <a href="entropy-defect-and-abelian-models.html#section-2">Entropy defect and abelian models,
+Theorem 2.3 and Proposition 2.5(a)</a>, a lesson of this course that does not use the present one: for
+positive <span class="math" data-tex="\(a\in Q\)">\(a\in Q\)</span>, the functional <span class="math" data-tex="\(\varphi(a\,\cdot\,)\)">\(\varphi(a\,\cdot\,)\)</span> has relative entropy <span class="math" data-tex="\(S_\varphi(a\mid b)\)">\(S_\varphi(a\mid b)\)</span> with respect to
+<span class="math" data-tex="\(\varphi(b\,\cdot\,)\)">\(\varphi(b\,\cdot\,)\)</span> by Theorem 2.3 there, because the scalars by which <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> differs from the canonical trace on
+the summands cancel, and Proposition 2.5(a) is the stated inequality. See also, e.g., [Lindblad 1974], [Lieb 1973]
+(free in the publisher's open archive).</p>
+<p><strong>(B5) Projections in a finite algebra.</strong> For projections <span class="math" data-tex="\(e,f\in R\)">\(e,f\in R\)</span>, Kaplansky's parallelogram law gives
+<span class="math" data-tex="\(e\vee f-f\sim e-e\wedge f\)">\(e\vee f-f\sim e-e\wedge f\)</span>, hence <span class="math" data-tex="\(\tau(e\vee f)+\tau(e\wedge f)=\tau(e)+\tau(f)\)">\(\tau(e\vee f)+\tau(e\wedge f)=\tau(e)+\tau(f)\)</span>. If <span class="math" data-tex="\(e\sim f\)">\(e\sim f\)</span> then
+<span class="math" data-tex="\(1-e\sim1-f\)">\(1-e\sim1-f\)</span>, because <span class="math" data-tex="\(R\)">\(R\)</span> is finite. The parallelogram law is <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-04">Projections and types of von Neumann algebras,
+Proposition 4.4</a>; equivalent projections have equal trace by <a href="../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html#OA-FND-TA-02">Traces on von Neumann algebras,
+Proposition 2.2</a>; the last statement is <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-18">Projections and types of von Neumann algebras, Proposition
+14.2</a>.</p>
+<p><strong>(B6) Finite-dimensional algebras.</strong> Every finite-dimensional von Neumann algebra <span class="math" data-tex="\(N\)">\(N\)</span> is isomorphic to
+<span class="math" data-tex="\(\bigoplus_{k=1}^sM_{n_k}(\mathbb C)\)">\(\bigoplus_{k=1}^sM_{n_k}(\mathbb C)\)</span>; it has a system of matrix units <span class="math" data-tex="\((e^{(k)}_{ij})\)">\((e^{(k)}_{ij})\)</span>,
+<span class="math" data-tex="\(1\le i,j\le n_k\)">\(1\le i,j\le n_k\)</span>, <span class="math" data-tex="\(1\le k\le s\)">\(1\le k\le s\)</span>, with <span class="math" data-tex="\(e^{(k)}_{ij}e^{(l)}_{rs}=\delta_{kl}\delta_{jr}e^{(k)}_{is}\)">\(e^{(k)}_{ij}e^{(l)}_{rs}=\delta_{kl}\delta_{jr}e^{(k)}_{is}\)</span>,
+<span class="math" data-tex="\((e^{(k)}_{ij})^*=e^{(k)}_{ji}\)">\((e^{(k)}_{ij})^*=e^{(k)}_{ji}\)</span> and <span class="math" data-tex="\(\sum_{k,i}e^{(k)}_{ii}=1\)">\(\sum_{k,i}e^{(k)}_{ii}=1\)</span>. A tracial linear functional on
+<span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span> is a scalar multiple of the matrix trace. Proved in <a href="../NCG-FOLIATIONS/companions/af-algebras.html#OA-FND-AF-01">AF-algebras, Theorem 2.4 and Definition
+2.1</a> for the structure and the matrix units, and Lemma 10.2 there for the traces.</p>
+<p><strong>(B7) Standard facts on the trace norms.</strong> <span class="math" data-tex="\(|\tau(ab)|\le\|a\|\,\|b\|_1\)">\(|\tau(ab)|\le\|a\|\,\|b\|_1\)</span>; <span class="math" data-tex="\(\|ab\|_p\le\|a\|\,\|b\|_p\)">\(\|ab\|_p\le\|a\|\,\|b\|_p\)</span> and
+<span class="math" data-tex="\(\|ab\|_p\le\|a\|_p\|b\|\)">\(\|ab\|_p\le\|a\|_p\|b\|\)</span>; <span class="math" data-tex="\(\|a^*\|_p=\|a\|_p\)">\(\|a^*\|_p=\|a\|_p\)</span>; <span class="math" data-tex="\(\|a\|_1\le\|a\|_2\le\|a\|\)">\(\|a\|_1\le\|a\|_2\le\|a\|\)</span>; for <span class="math" data-tex="\(a\)">\(a\)</span> in a subalgebra <span class="math" data-tex="\(Q\)">\(Q\)</span>,
+<span class="math" data-tex="\(\|a\|_1=\sup\{|\tau(ab)|:b\in Q,\ \|b\|\le1\}\)">\(\|a\|_1=\sup\{|\tau(ab)|:b\in Q,\ \|b\|\le1\}\)</span>. Every <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span> has a polar decomposition <span class="math" data-tex="\(a=w|a|\)">\(a=w|a|\)</span> in <span class="math" data-tex="\(R\)">\(R\)</span>,
+and spectral projections of self-adjoint elements of a subalgebra lie in that subalgebra. The image of a von Neumann
+algebra under a normal *-homomorphism is a von Neumann algebra. On bounded subsets of <span class="math" data-tex="\(R\)">\(R\)</span>, strong operator
+convergence implies convergence in <span class="math" data-tex="\(\|\cdot\|_2\)">\(\|\cdot\|_2\)</span>. The norm inequalities are proved in <a href="../OA-MOD/OA-MOD-TI.html#OA-MOD-TI-09">Trace densities and
+noncommutative integration, §§TI-09–TI-10</a> and, for <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, in <a href="../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html#OA-FND-TA-20">Traces on von Neumann
+algebras, Proposition 7.1</a>; the formula for <span class="math" data-tex="\(\|a\|_1\)">\(\|a\|_1\)</span> is the duality of <a href="../traces-and-noncommutative-integration/integration-for-a-trace-the-commutation-theorem-and-applications.html">Integration for a trace,
+Theorem 1.1</a>, applied to <span class="math" data-tex="\(Q\)">\(Q\)</span> with the restriction of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>; polar decompositions are in <a href="../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#OA-FND-BI-09">The
+double commutant theorem, Proposition 7.2</a>; a spectral projection of <span class="math" data-tex="\(x=x^*\in Q\)">\(x=x^*\in Q\)</span> commutes with
+every operator that commutes with <span class="math" data-tex="\(x\)">\(x\)</span> (<a href="../foundations-of-von-neumann-algebras/the-spectral-theorem-for-bounded-self-adjoint-operators.html#OA-FND-ST-03">The spectral theorem for bounded self-adjoint operators, Theorem
+3.1(5)</a>), so it lies in <span class="math" data-tex="\(Q&#x27;&#x27;=Q\)">\(Q&#x27;&#x27;=Q\)</span>; the image of a normal *-homomorphism is a von Neumann algebra by
+<a href="../tensor-products-of-operator-algebras/spatial-tensor-products-of-von-neumann-algebras.html">Spatial tensor products of von Neumann algebras, Theorem 8.2(1)</a>. For the last statement, <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is
+<span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-strongly continuous (<a href="../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-10">Compact and trace-class operators, Theorem 9.1(ii)</a>), so
+<span class="math" data-tex="\(\tau=\sum_n\langle\,\cdot\,\xi_n,\xi_n\rangle\)">\(\tau=\sum_n\langle\,\cdot\,\xi_n,\xi_n\rangle\)</span> with <span class="math" data-tex="\(\sum_n\|\xi_n\|^2&lt;\infty\)">\(\sum_n\|\xi_n\|^2&lt;\infty\)</span> (<a href="../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#OA-FND-BI-14">The double commutant theorem, Theorem
+10.1</a>), and <span class="math" data-tex="\(\|y_i\|_2^2=\sum_n\|y_i\xi_n\|^2\to0\)">\(\|y_i\|_2^2=\sum_n\|y_i\xi_n\|^2\to0\)</span> for a bounded net <span class="math" data-tex="\(y_i\to0\)">\(y_i\to0\)</span> strongly, by the tail
+estimate in the proof of Lemma 8.5 of the lesson on trace-class operators.</p>
+<p><strong>(B8) Kaplansky density theorem.</strong> If <span class="math" data-tex="\(A_0\subset R\)">\(A_0\subset R\)</span> is a unital *-subalgebra with <span class="math" data-tex="\(A_0&#x27;&#x27;=R\)">\(A_0&#x27;&#x27;=R\)</span>, then the unit ball
+of <span class="math" data-tex="\(A_0\)">\(A_0\)</span> is strongly dense in the unit ball of <span class="math" data-tex="\(R\)">\(R\)</span>. Proved in <a href="../foundations-of-von-neumann-algebras/kaplansky-s-density-theorem-and-its-consequences.html#OA-FND-KD-07">Kaplansky's density theorem and its
+consequences, Theorem 7.1</a>.</p>
+<h2 id="1-setting-and-notation">1. Setting and notation</h2>
+<p>Throughout, <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> is as in the Background section. We write <span class="math" data-tex="\(\tau\eta(a)\)">\(\tau\eta(a)\)</span> for <span class="math" data-tex="\(\tau(\eta(a))\)">\(\tau(\eta(a))\)</span> and
+<span class="math" data-tex="\(\eta\tau(a)\)">\(\eta\tau(a)\)</span> for <span class="math" data-tex="\(\eta(\tau(a))\)">\(\eta(\tau(a))\)</span>, for <span class="math" data-tex="\(a\in R_+\)">\(a\in R_+\)</span>. The following scalar facts are used constantly.</p>
+<ul>
+<li><span class="math" data-tex="\(\eta\)">\(\eta\)</span> is continuous and concave on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, <span class="math" data-tex="\(\eta\ge0\)">\(\eta\ge0\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, <span class="math" data-tex="\(\eta\le1/e\)">\(\eta\le1/e\)</span> everywhere.</li>
+<li>For <span class="math" data-tex="\(s,t\ge0\)">\(s,t\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\eta(st)=s\,\eta(t)+t\,\eta(s). \tag{1.1}
+\]">\[
+\eta(st)=s\,\eta(t)+t\,\eta(s). \tag{1.1}
+\]</span>
+The same identity holds for commuting positive operators: <span class="math" data-tex="\(\eta(ab)=\eta(a)b+a\eta(b)\)">\(\eta(ab)=\eta(a)b+a\eta(b)\)</span> if <span class="math" data-tex="\(ab=ba\)">\(ab=ba\)</span>. (Both
+sides are continuous functions on the joint spectrum, and they agree there.)</li>
+<li><span class="math" data-tex="\(\eta\)">\(\eta\)</span> is subadditive on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>: <span class="math" data-tex="\(\eta(s+t)\le\eta(s)+\eta(t)\)">\(\eta(s+t)\le\eta(s)+\eta(t)\)</span>, since a concave function <span class="math" data-tex="\(g\)">\(g\)</span> with
+<span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span> satisfies <span class="math" data-tex="\(g(s)\ge\frac{s}{s+t}g(s+t)\)">\(g(s)\ge\frac{s}{s+t}g(s+t)\)</span> and <span class="math" data-tex="\(g(t)\ge\frac{t}{s+t}g(s+t)\)">\(g(t)\ge\frac{t}{s+t}g(s+t)\)</span>.</li>
+<li>If <span class="math" data-tex="\(z_1,\dots,z_r\ge0\)">\(z_1,\dots,z_r\ge0\)</span> have pairwise orthogonal supports (<span class="math" data-tex="\(z_iz_j=0\)">\(z_iz_j=0\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>), then
+<span class="math" data-tex="\(\eta(\sum_iz_i)=\sum_i\eta(z_i)\)">\(\eta(\sum_iz_i)=\sum_i\eta(z_i)\)</span>.</li>
+<li>The binary entropy <span class="math" data-tex="\(h(t)=\eta(t)+\eta(1-t)\)">\(h(t)=\eta(t)+\eta(1-t)\)</span> is increasing on <span class="math" data-tex="\([0,\tfrac12]\)">\([0,\tfrac12]\)</span> and <span class="math" data-tex="\(h(t)\to0\)">\(h(t)\to0\)</span> as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>.</li>
+<li>Let <span class="math" data-tex="\(\tilde\eta(t)=\eta(t)\)">\(\tilde\eta(t)=\eta(t)\)</span> for <span class="math" data-tex="\(0\le t\le1/e\)">\(0\le t\le1/e\)</span> and <span class="math" data-tex="\(\tilde\eta(t)=1/e\)">\(\tilde\eta(t)=1/e\)</span> for <span class="math" data-tex="\(t\ge1/e\)">\(t\ge1/e\)</span>. Then
+<span class="math" data-tex="\(\tilde\eta\)">\(\tilde\eta\)</span> is concave, nondecreasing, <span class="math" data-tex="\(\eta\le\tilde\eta\)">\(\eta\le\tilde\eta\)</span>, and <span class="math" data-tex="\(\tilde\eta(t)\to0\)">\(\tilde\eta(t)\to0\)</span> as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>.</li>
+</ul>
+<p>For a projection <span class="math" data-tex="\(e\in R\)">\(e\in R\)</span> with <span class="math" data-tex="\(\tau(e)&gt;0\)">\(\tau(e)&gt;0\)</span>, the corner <span class="math" data-tex="\(eRe\)">\(eRe\)</span> with the tracial state <span class="math" data-tex="\(\tau_e=\tau(e)^{-1}\tau\)">\(\tau_e=\tau(e)^{-1}\tau\)</span> is
+again an algebra of our type. For <span class="math" data-tex="\(z\in(eRe)_+\)">\(z\in(eRe)_+\)</span> we have <span class="math" data-tex="\(\eta(z)\in eRe\)">\(\eta(z)\in eRe\)</span> and <span class="math" data-tex="\(\tau\eta(z)=\tau(e)\,\tau_e\eta(z)\)">\(\tau\eta(z)=\tau(e)\,\tau_e\eta(z)\)</span>.</p>
+<p><strong>Finite-dimensional subalgebras.</strong> Consider a finite-dimensional subalgebra <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> with matrix units
+<span class="math" data-tex="\((e^{(k)}_{ij})\)">\((e^{(k)}_{ij})\)</span> as in (B6), and let <span class="math" data-tex="\(c_k=\sum_ie^{(k)}_{ii}\)">\(c_k=\sum_ie^{(k)}_{ii}\)</span> be its minimal central projections. By (B6) the
+restriction of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to <span class="math" data-tex="\(Nc_k\cong M_{n_k}\)">\(Nc_k\cong M_{n_k}\)</span> is a multiple of the matrix trace, so all minimal projections of <span class="math" data-tex="\(N\)">\(N\)</span>
+below <span class="math" data-tex="\(c_k\)">\(c_k\)</span> have the same trace
+<span class="math math-display" data-tex="\[
+t_k=\tau(c_k)/n_k&gt;0 .
+\]">\[
+t_k=\tau(c_k)/n_k&gt;0 .
+\]</span>
+Every family of pairwise orthogonal minimal projections of <span class="math" data-tex="\(N\)">\(N\)</span> with sum <span class="math" data-tex="\(1\)">\(1\)</span> has exactly
+<span class="math math-display" data-tex="\[
+M(N)=\sum_kn_k\le\sum_kn_k^2=\dim N
+\]">\[
+M(N)=\sum_kn_k\le\sum_kn_k^2=\dim N
+\]</span>
+members, <span class="math" data-tex="\(n_k\)">\(n_k\)</span> of them below <span class="math" data-tex="\(c_k\)">\(c_k\)</span>. Let <span class="math" data-tex="\(\operatorname{Tr}_N\)">\(\operatorname{Tr}_N\)</span> be the trace on <span class="math" data-tex="\(N\)">\(N\)</span> that takes the value <span class="math" data-tex="\(1\)">\(1\)</span> on
+every minimal projection, so that <span class="math" data-tex="\(\operatorname{Tr}_N(1)=M(N)\)">\(\operatorname{Tr}_N(1)=M(N)\)</span>, and put
+<span class="math math-display" data-tex="\[
+D_N=\sum_kt_kc_k,\qquad L_N=\log D_N=\sum_k(\log t_k)\,c_k .
+\]">\[
+D_N=\sum_kt_kc_k,\qquad L_N=\log D_N=\sum_k(\log t_k)\,c_k .
+\]</span>
+Both lie in the center of <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(D_N\)">\(D_N\)</span> is invertible in <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(0\le D_N\le1\)">\(0\le D_N\le1\)</span> (as <span class="math" data-tex="\(t_k\le\tau(1)=1\)">\(t_k\le\tau(1)=1\)</span>), and
+<span class="math" data-tex="\(\tau(a)=\operatorname{Tr}_N(D_Na)\)">\(\tau(a)=\operatorname{Tr}_N(D_Na)\)</span> for <span class="math" data-tex="\(a\in N\)">\(a\in N\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> be finite-dimensional. For <span class="math" data-tex="\(X\in N_+\)">\(X\in N_+\)</span> put <span class="math" data-tex="\(\widehat X=D_NX\)">\(\widehat X=D_NX\)</span>. Then
+<span class="math" data-tex="\(\widehat X\ge0\)">\(\widehat X\ge0\)</span>, <span class="math" data-tex="\(\operatorname{Tr}_N(\widehat X)=\tau(X)\)">\(\operatorname{Tr}_N(\widehat X)=\tau(X)\)</span>, <span class="math" data-tex="\(\operatorname{Tr}_N|\widehat X-\widehat Y|=\|X-Y\|_1\)">\(\operatorname{Tr}_N|\widehat X-\widehat Y|=\|X-Y\|_1\)</span>
+for <span class="math" data-tex="\(X,Y\in N_+\)">\(X,Y\in N_+\)</span>, and
+<span class="math math-display" data-tex="\[
+\tau\eta(X)=\operatorname{Tr}_N\eta(\widehat X)+\tau(L_NX). \tag{1.2}
+\]">\[
+\tau\eta(X)=\operatorname{Tr}_N\eta(\widehat X)+\tau(L_NX). \tag{1.2}
+\]</span>
+If <span class="math" data-tex="\(0\le X\le1\)">\(0\le X\le1\)</span>, then <span class="math" data-tex="\(0\le\widehat X\le1\)">\(0\le\widehat X\le1\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(D_N\)">\(D_N\)</span> is central and positive, so <span class="math" data-tex="\(\widehat X=D_N^{1/2}XD_N^{1/2}\ge0\)">\(\widehat X=D_N^{1/2}XD_N^{1/2}\ge0\)</span> and
+<span class="math" data-tex="\(|D_N(X-Y)|=D_N|X-Y|\)">\(|D_N(X-Y)|=D_N|X-Y|\)</span>; applying <span class="math" data-tex="\(\operatorname{Tr}_N\)">\(\operatorname{Tr}_N\)</span> gives the two trace identities. Since <span class="math" data-tex="\(D_N\)">\(D_N\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span>
+commute, (1.1) gives <span class="math" data-tex="\(\eta(D_NX)=\eta(D_N)X+D_N\eta(X)\)">\(\eta(D_NX)=\eta(D_N)X+D_N\eta(X)\)</span>. Now <span class="math" data-tex="\(\eta(D_N)=-D_NL_N\)">\(\eta(D_N)=-D_NL_N\)</span>, so
+<span class="math" data-tex="\(\operatorname{Tr}_N(\eta(D_N)X)=-\operatorname{Tr}_N(D_NL_NX)=-\tau(L_NX)\)">\(\operatorname{Tr}_N(\eta(D_N)X)=-\operatorname{Tr}_N(D_NL_NX)=-\tau(L_NX)\)</span>, while
+<span class="math" data-tex="\(\operatorname{Tr}_N(D_N\eta(X))=\tau\eta(X)\)">\(\operatorname{Tr}_N(D_N\eta(X))=\tau\eta(X)\)</span>. This is (1.2). If <span class="math" data-tex="\(X\le1\)">\(X\le1\)</span> then
+<span class="math" data-tex="\(\widehat X=D_N^{1/2}XD_N^{1/2}\le D_N\le1\)">\(\widehat X=D_N^{1/2}XD_N^{1/2}\le D_N\le1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-trace-inequalities-for-the-function-eta">2. Trace inequalities for the function <span class="math" data-tex="\(\eta\)">\(\eta\)</span></h2>
+<p><strong>Lemma 2.1 (Jensen's inequality for conditional expectations).</strong> Let <span class="math" data-tex="\(N\subset P\subset R\)">\(N\subset P\subset R\)</span> be subalgebras and
+<span class="math" data-tex="\(a\in R_+\)">\(a\in R_+\)</span>. Then <span class="math" data-tex="\(\tau\eta(E_N(a))\ge\tau\eta(E_P(a))\)">\(\tau\eta(E_N(a))\ge\tau\eta(E_P(a))\)</span>. In particular (take <span class="math" data-tex="\(N=\mathbb C\)">\(N=\mathbb C\)</span>)
+<span class="math" data-tex="\(\tau\eta(a)\le\eta\tau(a)\)">\(\tau\eta(a)\le\eta\tau(a)\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(b=E_P(a)\in P_+\)">\(b=E_P(a)\in P_+\)</span>; then <span class="math" data-tex="\(E_N(a)=E_N(b)\)">\(E_N(a)=E_N(b)\)</span> by (B1). By (B2) applied to the unital completely positive
+map <span class="math" data-tex="\(E_N\)">\(E_N\)</span>, <span class="math" data-tex="\(\eta(E_N(b))\ge E_N(\eta(b))\)">\(\eta(E_N(b))\ge E_N(\eta(b))\)</span>. Apply <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and use <span class="math" data-tex="\(\tau\circ E_N=\tau\)">\(\tau\circ E_N=\tau\)</span>. For <span class="math" data-tex="\(N=\mathbb C\)">\(N=\mathbb C\)</span>,
+<span class="math" data-tex="\(E_{\mathbb C}(a)=\tau(a)1\)">\(E_{\mathbb C}(a)=\tau(a)1\)</span> and <span class="math" data-tex="\(E_R(a)=a\)">\(E_R(a)=a\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2 (subadditivity).</strong> Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a positive trace on a von Neumann algebra <span class="math" data-tex="\(A\)">\(A\)</span> with
+<span class="math" data-tex="\(\varphi(1)&lt;\infty\)">\(\varphi(1)&lt;\infty\)</span>. For <span class="math" data-tex="\(a,b\in A_+\)">\(a,b\in A_+\)</span>,
+<span class="math math-display" data-tex="\[
+\varphi\eta(a+b)\le\varphi\eta(a)+\varphi\eta(b).
+\]">\[
+\varphi\eta(a+b)\le\varphi\eta(a)+\varphi\eta(b).
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> put <span class="math" data-tex="\(a_\varepsilon=a+\varepsilon\)">\(a_\varepsilon=a+\varepsilon\)</span>, <span class="math" data-tex="\(b_\varepsilon=b+\varepsilon\)">\(b_\varepsilon=b+\varepsilon\)</span>,
+<span class="math" data-tex="\(c_\varepsilon=a_\varepsilon+b_\varepsilon\)">\(c_\varepsilon=a_\varepsilon+b_\varepsilon\)</span>. These are invertible and <span class="math" data-tex="\(a_\varepsilon\le c_\varepsilon\)">\(a_\varepsilon\le c_\varepsilon\)</span>, so
+<span class="math" data-tex="\(\log a_\varepsilon\le\log c_\varepsilon\)">\(\log a_\varepsilon\le\log c_\varepsilon\)</span> by (B3). Hence
+<span class="math math-display" data-tex="\[
+\varphi(a_\varepsilon\log c_\varepsilon)-\varphi(a_\varepsilon\log a_\varepsilon)
+=\varphi\bigl(a_\varepsilon^{1/2}(\log c_\varepsilon-\log a_\varepsilon)a_\varepsilon^{1/2}\bigr)\ge0,
+\]">\[
+\varphi(a_\varepsilon\log c_\varepsilon)-\varphi(a_\varepsilon\log a_\varepsilon)
+=\varphi\bigl(a_\varepsilon^{1/2}(\log c_\varepsilon-\log a_\varepsilon)a_\varepsilon^{1/2}\bigr)\ge0,
+\]</span>
+and the same with <span class="math" data-tex="\(b_\varepsilon\)">\(b_\varepsilon\)</span>. Adding the two inequalities gives
+<span class="math" data-tex="\(\varphi(a_\varepsilon\log a_\varepsilon)+\varphi(b_\varepsilon\log b_\varepsilon)\le\varphi(c_\varepsilon\log c_\varepsilon)\)">\(\varphi(a_\varepsilon\log a_\varepsilon)+\varphi(b_\varepsilon\log b_\varepsilon)\le\varphi(c_\varepsilon\log c_\varepsilon)\)</span>,
+that is <span class="math" data-tex="\(\varphi\eta(c_\varepsilon)\le\varphi\eta(a_\varepsilon)+\varphi\eta(b_\varepsilon)\)">\(\varphi\eta(c_\varepsilon)\le\varphi\eta(a_\varepsilon)+\varphi\eta(b_\varepsilon)\)</span>. As
+<span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span>, <span class="math" data-tex="\(\eta(a_\varepsilon)\to\eta(a)\)">\(\eta(a_\varepsilon)\to\eta(a)\)</span> in norm, because <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is uniformly continuous on
+<span class="math" data-tex="\([0,\|a\|+1]\)">\([0,\|a\|+1]\)</span>; the same holds for <span class="math" data-tex="\(b\)">\(b\)</span> and for <span class="math" data-tex="\(c_\varepsilon\to a+b\)">\(c_\varepsilon\to a+b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.3 (a lower bound for sums).</strong> Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a faithful positive trace on a C*-algebra <span class="math" data-tex="\(Q\)">\(Q\)</span> of
+finite dimension. For <span class="math" data-tex="\(A,C\in Q_+\)">\(A,C\in Q_+\)</span> with <span class="math" data-tex="\(\alpha=\varphi(A)&gt;0\)">\(\alpha=\varphi(A)&gt;0\)</span>, <span class="math" data-tex="\(\gamma=\varphi(C)&gt;0\)">\(\gamma=\varphi(C)&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\varphi\eta(A+C)\ge\varphi\eta(A)+\varphi\eta(C)+\eta(\alpha+\gamma)-\eta(\alpha)-\eta(\gamma).
+\]">\[
+\varphi\eta(A+C)\ge\varphi\eta(A)+\varphi\eta(C)+\eta(\alpha+\gamma)-\eta(\alpha)-\eta(\gamma).
+\]</span></p>
+<p><em>Proof.</em> By (1.1), <span class="math" data-tex="\(\varphi\eta(\lambda B)=\lambda\varphi\eta(B)+\eta(\lambda)\varphi(B)\)">\(\varphi\eta(\lambda B)=\lambda\varphi\eta(B)+\eta(\lambda)\varphi(B)\)</span> for <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. Hence
+<span class="math" data-tex="\(\varphi\eta(A)=\alpha\varphi\eta(A/\alpha)+\eta(\alpha)\)">\(\varphi\eta(A)=\alpha\varphi\eta(A/\alpha)+\eta(\alpha)\)</span>, and similarly for <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(A+C\)">\(A+C\)</span>. The function
+<span class="math" data-tex="\(B\mapsto\varphi\eta(B)\)">\(B\mapsto\varphi\eta(B)\)</span> is concave on <span class="math" data-tex="\(Q_+\)">\(Q_+\)</span> by (B2). Writing
+<span class="math" data-tex="\((A+C)/(\alpha+\gamma)=\frac{\alpha}{\alpha+\gamma}\frac A\alpha+\frac{\gamma}{\alpha+\gamma}\frac C\gamma\)">\((A+C)/(\alpha+\gamma)=\frac{\alpha}{\alpha+\gamma}\frac A\alpha+\frac{\gamma}{\alpha+\gamma}\frac C\gamma\)</span>,
+<span class="math math-display" data-tex="\[
+\varphi\eta(A+C)=(\alpha+\gamma)\varphi\eta\Bigl(\frac{A+C}{\alpha+\gamma}\Bigr)+\eta(\alpha+\gamma)
+\ge\alpha\varphi\eta\Bigl(\frac A\alpha\Bigr)+\gamma\varphi\eta\Bigl(\frac C\gamma\Bigr)+\eta(\alpha+\gamma),
+\]">\[
+\varphi\eta(A+C)=(\alpha+\gamma)\varphi\eta\Bigl(\frac{A+C}{\alpha+\gamma}\Bigr)+\eta(\alpha+\gamma)
+\ge\alpha\varphi\eta\Bigl(\frac A\alpha\Bigr)+\gamma\varphi\eta\Bigl(\frac C\gamma\Bigr)+\eta(\alpha+\gamma),
+\]</span>
+which is the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The next inequality is the engine behind the merging property of the joint entropy.</p>
+<p><strong>Lemma 2.4 (the two-index inequality).</strong> Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be a C*-algebra of finite dimension with a faithful positive trace
+<span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. Let <span class="math" data-tex="\((x_{ij})_{i\in I,j\in J}\)">\((x_{ij})_{i\in I,j\in J}\)</span> be a finite family in <span class="math" data-tex="\(Q_+\)">\(Q_+\)</span> with <span class="math" data-tex="\(\sum_{i,j}x_{ij}=1\)">\(\sum_{i,j}x_{ij}=1\)</span>, and put
+<span class="math" data-tex="\(x_i^{(1)}=\sum_jx_{ij}\)">\(x_i^{(1)}=\sum_jx_{ij}\)</span>, <span class="math" data-tex="\(x_j^{(2)}=\sum_ix_{ij}\)">\(x_j^{(2)}=\sum_ix_{ij}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sum_{i,j}\varphi\eta(x_{ij})\le\sum_i\varphi\eta(x^{(1)}_i)+\sum_j\varphi\eta(x^{(2)}_j). \tag{2.1}
+\]">\[
+\sum_{i,j}\varphi\eta(x_{ij})\le\sum_i\varphi\eta(x^{(1)}_i)+\sum_j\varphi\eta(x^{(2)}_j). \tag{2.1}
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(S=S_\varphi\)">\(S=S_\varphi\)</span> as in (B4). First we show: if <span class="math" data-tex="\(y_j\le x_j\)">\(y_j\le x_j\)</span> are positive with <span class="math" data-tex="\(\sum_jx_j=1\)">\(\sum_jx_j=1\)</span>, then
+<span class="math math-display" data-tex="\[
+\sum_j\varphi\bigl(y_j(\log x_j-\log y_j)\bigr)\le\varphi\eta\Bigl(\sum_jy_j\Bigr). \tag{2.2}
+\]">\[
+\sum_j\varphi\bigl(y_j(\log x_j-\log y_j)\bigr)\le\varphi\eta\Bigl(\sum_jy_j\Bigr). \tag{2.2}
+\]</span>
+Indeed <span class="math" data-tex="\(y_j\le x_j\)">\(y_j\le x_j\)</span> gives <span class="math" data-tex="\(\operatorname{supp}y_j\le\operatorname{supp}x_j\)">\(\operatorname{supp}y_j\le\operatorname{supp}x_j\)</span>, and (B4) gives
+<span class="math" data-tex="\(\sum_jS(y_j\mid x_j)\ge S(\sum_jy_j\mid1)=-\varphi\eta(\sum_jy_j)\)">\(\sum_jS(y_j\mid x_j)\ge S(\sum_jy_j\mid1)=-\varphi\eta(\sum_jy_j)\)</span>, which is (2.2).</p>
+<p>Next, for each <span class="math" data-tex="\(j\)">\(j\)</span> we have <span class="math" data-tex="\(x_{ij}\le x^{(2)}_j\)">\(x_{ij}\le x^{(2)}_j\)</span>, so <span class="math" data-tex="\(\log x^{(2)}_j\)">\(\log x^{(2)}_j\)</span> (on its support) may be paired with each
+<span class="math" data-tex="\(x_{ij}\)">\(x_{ij}\)</span>, and by linearity
+<span class="math" data-tex="\(\sum_i\varphi(x_{ij}\log x_j^{(2)})=\varphi(x^{(2)}_j\log x^{(2)}_j)=-\varphi\eta(x^{(2)}_j)\)">\(\sum_i\varphi(x_{ij}\log x_j^{(2)})=\varphi(x^{(2)}_j\log x^{(2)}_j)=-\varphi\eta(x^{(2)}_j)\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\sum_{i,j}\varphi\eta(x_{ij})-\sum_j\varphi\eta(x^{(2)}_j)=\sum_i\sum_j\varphi\bigl(x_{ij}(\log x^{(2)}_j-\log x_{ij})\bigr).
+\]">\[
+\sum_{i,j}\varphi\eta(x_{ij})-\sum_j\varphi\eta(x^{(2)}_j)=\sum_i\sum_j\varphi\bigl(x_{ij}(\log x^{(2)}_j-\log x_{ij})\bigr).
+\]</span>
+For fixed <span class="math" data-tex="\(i\)">\(i\)</span>, apply (2.2) with <span class="math" data-tex="\(y_j=x_{ij}\)">\(y_j=x_{ij}\)</span> and <span class="math" data-tex="\(x_j=x^{(2)}_j\)">\(x_j=x^{(2)}_j\)</span> (these satisfy <span class="math" data-tex="\(\sum_jx^{(2)}_j=1\)">\(\sum_jx^{(2)}_j=1\)</span>): the inner
+sum is at most <span class="math" data-tex="\(\varphi\eta(\sum_jx_{ij})=\varphi\eta(x^{(1)}_i)\)">\(\varphi\eta(\sum_jx_{ij})=\varphi\eta(x^{(1)}_i)\)</span>. Summing over <span class="math" data-tex="\(i\)">\(i\)</span> gives (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(Q=\mathbb C\)">\(Q=\mathbb C\)</span> and <span class="math" data-tex="\(\varphi=\mathrm{id}\)">\(\varphi=\mathrm{id}\)</span>, (2.1) is the classical inequality
+<span class="math" data-tex="\(H(I,J)\le H(I)+H(J)\)">\(H(I,J)\le H(I)+H(J)\)</span> for a probability array <span class="math" data-tex="\((p_{ij})\)">\((p_{ij})\)</span>.</p>
+<p><strong>Corollary 2.5.</strong> Let <span class="math" data-tex="\(Q,\varphi\)">\(Q,\varphi\)</span> be as in Lemma 2.4 and let <span class="math" data-tex="\((x_{\mathbf i})\)">\((x_{\mathbf i})\)</span>, <span class="math" data-tex="\(\mathbf i=(i_1,\dots,i_n)\in
+I_1\times\dots\times I_n\)">\(\mathbf i=(i_1,\dots,i_n)\in
+I_1\times\dots\times I_n\)</span>, be a finite family in <span class="math" data-tex="\(Q_+\)">\(Q_+\)</span> with sum <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(1\le l\le n\)">\(1\le l\le n\)</span> and <span class="math" data-tex="\(j\in I_l\)">\(j\in I_l\)</span> let
+<span class="math" data-tex="\(x^{(l)}_j=\sum_{\mathbf i:\,i_l=j}x_{\mathbf i}\)">\(x^{(l)}_j=\sum_{\mathbf i:\,i_l=j}x_{\mathbf i}\)</span>. Then
+<span class="math" data-tex="\(\sum_{\mathbf i}\varphi\eta(x_{\mathbf i})\le\sum_{l=1}^n\sum_{j\in I_l}\varphi\eta(x^{(l)}_j)\)">\(\sum_{\mathbf i}\varphi\eta(x_{\mathbf i})\le\sum_{l=1}^n\sum_{j\in I_l}\varphi\eta(x^{(l)}_j)\)</span>.</p>
+<p><em>Proof.</em> Induction on <span class="math" data-tex="\(n\)">\(n\)</span>; <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is an equality. For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> regard <span class="math" data-tex="\(\mathbf i\)">\(\mathbf i\)</span> as a pair
+<span class="math" data-tex="\((i_1,\mathbf i&#x27;)\)">\((i_1,\mathbf i&#x27;)\)</span> with <span class="math" data-tex="\(\mathbf i&#x27;\in I_2\times\dots\times I_n\)">\(\mathbf i&#x27;\in I_2\times\dots\times I_n\)</span> and apply (2.1): the left side is at most
+<span class="math" data-tex="\(\sum_{j\in I_1}\varphi\eta(x^{(1)}_j)+\sum_{\mathbf i&#x27;}\varphi\eta(y_{\mathbf i&#x27;})\)">\(\sum_{j\in I_1}\varphi\eta(x^{(1)}_j)+\sum_{\mathbf i&#x27;}\varphi\eta(y_{\mathbf i&#x27;})\)</span>, where
+<span class="math" data-tex="\(y_{\mathbf i&#x27;}=\sum_{i_1}x_{(i_1,\mathbf i&#x27;)}\)">\(y_{\mathbf i&#x27;}=\sum_{i_1}x_{(i_1,\mathbf i&#x27;)}\)</span>. The family <span class="math" data-tex="\((y_{\mathbf i&#x27;})\)">\((y_{\mathbf i&#x27;})\)</span> has sum <span class="math" data-tex="\(1\)">\(1\)</span> and its marginals are
+the <span class="math" data-tex="\(x^{(l)}_j\)">\(x^{(l)}_j\)</span>, <span class="math" data-tex="\(l\ge2\)">\(l\ge2\)</span>; apply the induction hypothesis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.6 (continuity of entropy in finite dimensions).</strong> Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be a C*-algebra of finite dimension, <span class="math" data-tex="\(M=M(Q)\)">\(M=M(Q)\)</span>,
+and <span class="math" data-tex="\(\operatorname{Tr}=\operatorname{Tr}_Q\)">\(\operatorname{Tr}=\operatorname{Tr}_Q\)</span> its canonical trace (value <span class="math" data-tex="\(1\)">\(1\)</span> on minimal projections). Put
+<span class="math math-display" data-tex="\[
+\omega_M(s)=2\tilde\eta(s/2)+(2+\log M)\,s\qquad(s\ge0).
+\]">\[
+\omega_M(s)=2\tilde\eta(s/2)+(2+\log M)\,s\qquad(s\ge0).
+\]</span>
+Then <span class="math" data-tex="\(\omega_M\)">\(\omega_M\)</span> is concave, nondecreasing, <span class="math" data-tex="\(\omega_M(0)=0\)">\(\omega_M(0)=0\)</span>, <span class="math" data-tex="\(\omega_M(s)\to0\)">\(\omega_M(s)\to0\)</span> as <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>, and for
+<span class="math" data-tex="\(A,B\in Q_+\)">\(A,B\in Q_+\)</span> with <span class="math" data-tex="\(\operatorname{Tr}A=\operatorname{Tr}B=1\)">\(\operatorname{Tr}A=\operatorname{Tr}B=1\)</span>,
+<span class="math math-display" data-tex="\[
+|\operatorname{Tr}\eta(A)-\operatorname{Tr}\eta(B)|\le\omega_M(\operatorname{Tr}|A-B|).
+\]">\[
+|\operatorname{Tr}\eta(A)-\operatorname{Tr}\eta(B)|\le\omega_M(\operatorname{Tr}|A-B|).
+\]</span></p>
+<p><em>Proof.</em> The properties of <span class="math" data-tex="\(\omega_M\)">\(\omega_M\)</span> follow from those of <span class="math" data-tex="\(\tilde\eta\)">\(\tilde\eta\)</span>. Every eigenvalue of <span class="math" data-tex="\(A\)">\(A\)</span> is at most
+<span class="math" data-tex="\(\operatorname{Tr}A=1\)">\(\operatorname{Tr}A=1\)</span>, so <span class="math" data-tex="\(0\le A\le1\)">\(0\le A\le1\)</span>, and likewise <span class="math" data-tex="\(0\le B\le1\)">\(0\le B\le1\)</span>. Put <span class="math" data-tex="\(C=B-A\)">\(C=B-A\)</span>; then <span class="math" data-tex="\(-1\le C\le1\)">\(-1\le C\le1\)</span>. Write
+<span class="math" data-tex="\(C=C_+-C_-\)">\(C=C_+-C_-\)</span> with <span class="math" data-tex="\(C_\pm\ge0\)">\(C_\pm\ge0\)</span>, <span class="math" data-tex="\(C_+C_-=0\)">\(C_+C_-=0\)</span>. Since <span class="math" data-tex="\(\operatorname{Tr}C=0\)">\(\operatorname{Tr}C=0\)</span>,
+<span class="math" data-tex="\(\operatorname{Tr}C_+=\operatorname{Tr}C_-=r\)">\(\operatorname{Tr}C_+=\operatorname{Tr}C_-=r\)</span>, where <span class="math" data-tex="\(2r=\operatorname{Tr}|C|\le2\)">\(2r=\operatorname{Tr}|C|\le2\)</span>. Put
+<span class="math" data-tex="\(Y=A+C_+=B+C_-\)">\(Y=A+C_+=B+C_-\)</span>.</p>
+<p><em>Claim.</em> If <span class="math" data-tex="\(A\ge0\)">\(A\ge0\)</span>, <span class="math" data-tex="\(\operatorname{Tr}A=1\)">\(\operatorname{Tr}A=1\)</span>, <span class="math" data-tex="\(0\le C&#x27;\le1\)">\(0\le C&#x27;\le1\)</span> and <span class="math" data-tex="\(\operatorname{Tr}C&#x27;=r\le1\)">\(\operatorname{Tr}C&#x27;=r\le1\)</span>, then
+<span class="math" data-tex="\(|\operatorname{Tr}\eta(A+C&#x27;)-\operatorname{Tr}\eta(A)|\le\eta(r)+(2+\log M)r\)">\(|\operatorname{Tr}\eta(A+C&#x27;)-\operatorname{Tr}\eta(A)|\le\eta(r)+(2+\log M)r\)</span>.</p>
+<p>For the upper bound, Lemma 2.2 gives <span class="math" data-tex="\(\operatorname{Tr}\eta(A+C&#x27;)\le\operatorname{Tr}\eta(A)+\operatorname{Tr}\eta(C&#x27;)\)">\(\operatorname{Tr}\eta(A+C&#x27;)\le\operatorname{Tr}\eta(A)+\operatorname{Tr}\eta(C&#x27;)\)</span>.
+Listing the <span class="math" data-tex="\(M\)">\(M\)</span> eigenvalues <span class="math" data-tex="\(\mu_1,\dots,\mu_M\)">\(\mu_1,\dots,\mu_M\)</span> of <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> with multiplicity, concavity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives
+<span class="math" data-tex="\(\operatorname{Tr}\eta(C&#x27;)=\sum_m\eta(\mu_m)\le M\eta(r/M)=\eta(r)+r\log M\)">\(\operatorname{Tr}\eta(C&#x27;)=\sum_m\eta(\mu_m)\le M\eta(r/M)=\eta(r)+r\log M\)</span>. For the lower bound we may assume
+<span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>; Lemma 2.3 gives
+<span class="math" data-tex="\(\operatorname{Tr}\eta(A+C&#x27;)\ge\operatorname{Tr}\eta(A)+\operatorname{Tr}\eta(C&#x27;)+\eta(1+r)-\eta(1)-\eta(r)\)">\(\operatorname{Tr}\eta(A+C&#x27;)\ge\operatorname{Tr}\eta(A)+\operatorname{Tr}\eta(C&#x27;)+\eta(1+r)-\eta(1)-\eta(r)\)</span>. Here
+<span class="math" data-tex="\(\operatorname{Tr}\eta(C&#x27;)\ge0\)">\(\operatorname{Tr}\eta(C&#x27;)\ge0\)</span> since the eigenvalues of <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> lie in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, <span class="math" data-tex="\(\eta(1)=0\)">\(\eta(1)=0\)</span>, and
+<span class="math" data-tex="\(\eta(1+r)=-(1+r)\log(1+r)\ge-(1+r)r\ge-2r\)">\(\eta(1+r)=-(1+r)\log(1+r)\ge-(1+r)r\ge-2r\)</span>. So
+<span class="math" data-tex="\(\operatorname{Tr}\eta(A+C&#x27;)\ge\operatorname{Tr}\eta(A)-2r-\eta(r)\)">\(\operatorname{Tr}\eta(A+C&#x27;)\ge\operatorname{Tr}\eta(A)-2r-\eta(r)\)</span>. This proves the claim.</p>
+<p>Apply the claim to <span class="math" data-tex="\((A,C_+)\)">\((A,C_+)\)</span> and to <span class="math" data-tex="\((B,C_-)\)">\((B,C_-)\)</span> (note <span class="math" data-tex="\(C_\pm\le\|C\|\le1\)">\(C_\pm\le\|C\|\le1\)</span>):
+<span class="math" data-tex="\(|\operatorname{Tr}\eta(A)-\operatorname{Tr}\eta(B)|\le|\operatorname{Tr}\eta(Y)-\operatorname{Tr}\eta(A)|+|\operatorname{Tr}\eta(Y)-\operatorname{Tr}\eta(B)|\le2\eta(r)+2(2+\log M)r\)">\(|\operatorname{Tr}\eta(A)-\operatorname{Tr}\eta(B)|\le|\operatorname{Tr}\eta(Y)-\operatorname{Tr}\eta(A)|+|\operatorname{Tr}\eta(Y)-\operatorname{Tr}\eta(B)|\le2\eta(r)+2(2+\log M)r\)</span>.
+With <span class="math" data-tex="\(r=\operatorname{Tr}|A-B|/2\)">\(r=\operatorname{Tr}|A-B|/2\)</span> and <span class="math" data-tex="\(\eta\le\tilde\eta\)">\(\eta\le\tilde\eta\)</span> this is at most <span class="math" data-tex="\(\omega_M(\operatorname{Tr}|A-B|)\)">\(\omega_M(\operatorname{Tr}|A-B|)\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Inequalities of this type go back to [Fannes 1973].</p>
+<h2 id="3-the-joint-entropy">3. The joint entropy</h2>
+<p><strong>Definition 3.1.</strong> For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> let <span class="math" data-tex="\(\mathcal S_k(R)\)">\(\mathcal S_k(R)\)</span> be the set of families <span class="math" data-tex="\(x=(x_{\mathbf i})\)">\(x=(x_{\mathbf i})\)</span> of elements of
+<span class="math" data-tex="\(R_+\)">\(R_+\)</span>, indexed by <span class="math" data-tex="\(\mathbf i=(i_1,\dots,i_k)\in I_1\times\dots\times I_k\)">\(\mathbf i=(i_1,\dots,i_k)\in I_1\times\dots\times I_k\)</span> for some finite sets <span class="math" data-tex="\(I_1,\dots,I_k\)">\(I_1,\dots,I_k\)</span>,
+such that <span class="math" data-tex="\(\sum_{\mathbf i}x_{\mathbf i}=1\)">\(\sum_{\mathbf i}x_{\mathbf i}=1\)</span>. For <span class="math" data-tex="\(1\le l\le k\)">\(1\le l\le k\)</span> and <span class="math" data-tex="\(j\in I_l\)">\(j\in I_l\)</span> the <strong>marginals</strong> are
+<span class="math math-display" data-tex="\[
+x^{(l)}_j=\sum_{\mathbf i:\ i_l=j}x_{\mathbf i}.
+\]">\[
+x^{(l)}_j=\sum_{\mathbf i:\ i_l=j}x_{\mathbf i}.
+\]</span>
+For finite-dimensional subalgebras <span class="math" data-tex="\(N_1,\dots,N_k\)">\(N_1,\dots,N_k\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(x\in\mathcal S_k(R)\)">\(x\in\mathcal S_k(R)\)</span> put
+<span class="math math-display" data-tex="\[
+\Phi_{N_1,\dots,N_k}(x)=\sum_{\mathbf i}\eta\tau(x_{\mathbf i})-\sum_{l=1}^k\sum_{j\in I_l}\tau\eta\bigl(E_{N_l}(x^{(l)}_j)\bigr),
+\tag{3.1}
+\]">\[
+\Phi_{N_1,\dots,N_k}(x)=\sum_{\mathbf i}\eta\tau(x_{\mathbf i})-\sum_{l=1}^k\sum_{j\in I_l}\tau\eta\bigl(E_{N_l}(x^{(l)}_j)\bigr),
+\tag{3.1}
+\]</span>
+and define the <strong>joint entropy</strong>
+<span class="math math-display" data-tex="\[
+H(N_1,\dots,N_k)=\sup_{x\in\mathcal S_k(R)}\Phi_{N_1,\dots,N_k}(x).
+\]">\[
+H(N_1,\dots,N_k)=\sup_{x\in\mathcal S_k(R)}\Phi_{N_1,\dots,N_k}(x).
+\]</span>
+For <span class="math" data-tex="\(k=1\)">\(k=1\)</span> this is the <strong>entropy</strong> <span class="math" data-tex="\(H(N)=\sup_{x\in\mathcal S_1(R)}\sum_i\bigl(\eta\tau(x_i)-\tau\eta(E_N(x_i))\bigr)\)">\(H(N)=\sup_{x\in\mathcal S_1(R)}\sum_i\bigl(\eta\tau(x_i)-\tau\eta(E_N(x_i))\bigr)\)</span>.</p>
+<p>The first term in (3.1) measures how finely the family <span class="math" data-tex="\(x\)">\(x\)</span> splits the trace; each subtracted term measures how much
+of that splitting survives when the pieces are seen only through one of the algebras. For a partition of unity by
+projections in a commutative situation the subtracted terms vanish exactly when the projections lie in the algebras
+(Example 4.5 below).</p>
+<p><strong>Remark 3.2.</strong> Let <span class="math" data-tex="\(N_1,\dots,N_k\)">\(N_1,\dots,N_k\)</span> be finite-dimensional subalgebras.</p>
+<p>(a) <span class="math" data-tex="\(H(N_1,\dots,N_k)\ge0\)">\(H(N_1,\dots,N_k)\ge0\)</span>: the one-element family <span class="math" data-tex="\(x=(1)\)">\(x=(1)\)</span> (all <span class="math" data-tex="\(I_l\)">\(I_l\)</span> singletons) gives <span class="math" data-tex="\(\Phi(x)=0\)">\(\Phi(x)=0\)</span>.
+Finiteness follows from Corollary 4.2 below.</p>
+<p>(b) <span class="math" data-tex="\(H\)">\(H\)</span> is symmetric in its arguments: permuting the algebras and the index sets together does not change (3.1).</p>
+<p>(c) <em>Invariance.</em> If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is an automorphism of <span class="math" data-tex="\(R\)">\(R\)</span> with <span class="math" data-tex="\(\tau\circ\theta=\tau\)">\(\tau\circ\theta=\tau\)</span>, then
+<span class="math" data-tex="\(H(\theta(N_1),\dots,\theta(N_k))=H(N_1,\dots,N_k)\)">\(H(\theta(N_1),\dots,\theta(N_k))=H(N_1,\dots,N_k)\)</span>. Indeed <span class="math" data-tex="\(E_{\theta(N)}=\theta\circ E_N\circ\theta^{-1}\)">\(E_{\theta(N)}=\theta\circ E_N\circ\theta^{-1}\)</span> by the
+uniqueness in (B1), <span class="math" data-tex="\(\eta(\theta(a))=\theta(\eta(a))\)">\(\eta(\theta(a))=\theta(\eta(a))\)</span>, and <span class="math" data-tex="\(x\mapsto(\theta(x_{\mathbf i}))\)">\(x\mapsto(\theta(x_{\mathbf i}))\)</span> is a bijection of
+<span class="math" data-tex="\(\mathcal S_k(R)\)">\(\mathcal S_k(R)\)</span> with <span class="math" data-tex="\(\Phi_{\theta(N_1),\dots}(\theta(x))=\Phi_{N_1,\dots}(x)\)">\(\Phi_{\theta(N_1),\dots}(\theta(x))=\Phi_{N_1,\dots}(x)\)</span>. This applies in particular to
+inner automorphisms <span class="math" data-tex="\(\operatorname{Ad}u\)">\(\operatorname{Ad}u\)</span>.</p>
+<p>(d) <em>Localization.</em> If <span class="math" data-tex="\(Q\subset R\)">\(Q\subset R\)</span> is a subalgebra containing <span class="math" data-tex="\(N_1,\dots,N_k\)">\(N_1,\dots,N_k\)</span>, the supremum may be taken over
+<span class="math" data-tex="\(\mathcal S_k(Q)\)">\(\mathcal S_k(Q)\)</span>. Indeed for <span class="math" data-tex="\(x\in\mathcal S_k(R)\)">\(x\in\mathcal S_k(R)\)</span> the family <span class="math" data-tex="\(E_Q(x)=(E_Q(x_{\mathbf i}))\)">\(E_Q(x)=(E_Q(x_{\mathbf i}))\)</span> lies in
+<span class="math" data-tex="\(\mathcal S_k(Q)\)">\(\mathcal S_k(Q)\)</span>, <span class="math" data-tex="\(\tau(E_Q(x_{\mathbf i}))=\tau(x_{\mathbf i})\)">\(\tau(E_Q(x_{\mathbf i}))=\tau(x_{\mathbf i})\)</span>, the marginals of <span class="math" data-tex="\(E_Q(x)\)">\(E_Q(x)\)</span> are the
+<span class="math" data-tex="\(E_Q(x^{(l)}_j)\)">\(E_Q(x^{(l)}_j)\)</span>, and <span class="math" data-tex="\(E_{N_l}\circ E_Q=E_{N_l}\)">\(E_{N_l}\circ E_Q=E_{N_l}\)</span>; so <span class="math" data-tex="\(\Phi(E_Q(x))=\Phi(x)\)">\(\Phi(E_Q(x))=\Phi(x)\)</span>. Consequently <span class="math" data-tex="\(H(N_1,\dots,N_k)\)">\(H(N_1,\dots,N_k)\)</span>
+depends only on the algebra <span class="math" data-tex="\(Q\)">\(Q\)</span> that the <span class="math" data-tex="\(N_l\)">\(N_l\)</span> generate and on the restriction of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to it.</p>
+<p><strong>Proposition 3.3 (monotonicity).</strong> If <span class="math" data-tex="\(N_j\subset P_j\)">\(N_j\subset P_j\)</span> are finite-dimensional subalgebras, <span class="math" data-tex="\(1\le j\le k\)">\(1\le j\le k\)</span>, then
+<span class="math" data-tex="\(H(N_1,\dots,N_k)\le H(P_1,\dots,P_k)\)">\(H(N_1,\dots,N_k)\le H(P_1,\dots,P_k)\)</span>.</p>
+<p><em>Proof.</em> By Lemma 2.1, <span class="math" data-tex="\(\tau\eta(E_{N_j}(y))\ge\tau\eta(E_{P_j}(y))\)">\(\tau\eta(E_{N_j}(y))\ge\tau\eta(E_{P_j}(y))\)</span> for every <span class="math" data-tex="\(y\in R_+\)">\(y\in R_+\)</span>. Hence
+<span class="math" data-tex="\(\Phi_{N_1,\dots,N_k}(x)\le\Phi_{P_1,\dots,P_k}(x)\)">\(\Phi_{N_1,\dots,N_k}(x)\le\Phi_{P_1,\dots,P_k}(x)\)</span> for every <span class="math" data-tex="\(x\in\mathcal S_k(R)\)">\(x\in\mathcal S_k(R)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.4 (subadditivity).</strong> For finite-dimensional subalgebras <span class="math" data-tex="\(N_1,\dots,N_p\)">\(N_1,\dots,N_p\)</span> and <span class="math" data-tex="\(1\le k&lt;p\)">\(1\le k&lt;p\)</span>,
+<span class="math math-display" data-tex="\[
+H(N_1,\dots,N_p)\le H(N_1,\dots,N_k)+H(N_{k+1},\dots,N_p).
+\]">\[
+H(N_1,\dots,N_p)\le H(N_1,\dots,N_k)+H(N_{k+1},\dots,N_p).
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(x\in\mathcal S_p(R)\)">\(x\in\mathcal S_p(R)\)</span> and write <span class="math" data-tex="\(\mathbf i=(\mathbf i&#x27;,\mathbf i&#x27;&#x27;)\)">\(\mathbf i=(\mathbf i&#x27;,\mathbf i&#x27;&#x27;)\)</span> with
+<span class="math" data-tex="\(\mathbf i&#x27;=(i_1,\dots,i_k)\)">\(\mathbf i&#x27;=(i_1,\dots,i_k)\)</span>, <span class="math" data-tex="\(\mathbf i&#x27;&#x27;=(i_{k+1},\dots,i_p)\)">\(\mathbf i&#x27;&#x27;=(i_{k+1},\dots,i_p)\)</span>. Put
+<span class="math" data-tex="\(x&#x27;_{\mathbf i&#x27;}=\sum_{\mathbf i&#x27;&#x27;}x_{(\mathbf i&#x27;,\mathbf i&#x27;&#x27;)}\)">\(x&#x27;_{\mathbf i&#x27;}=\sum_{\mathbf i&#x27;&#x27;}x_{(\mathbf i&#x27;,\mathbf i&#x27;&#x27;)}\)</span> and
+<span class="math" data-tex="\(x&#x27;&#x27;_{\mathbf i&#x27;&#x27;}=\sum_{\mathbf i&#x27;}x_{(\mathbf i&#x27;,\mathbf i&#x27;&#x27;)}\)">\(x&#x27;&#x27;_{\mathbf i&#x27;&#x27;}=\sum_{\mathbf i&#x27;}x_{(\mathbf i&#x27;,\mathbf i&#x27;&#x27;)}\)</span>. Then <span class="math" data-tex="\(x&#x27;\in\mathcal S_k(R)\)">\(x&#x27;\in\mathcal S_k(R)\)</span>,
+<span class="math" data-tex="\(x&#x27;&#x27;\in\mathcal S_{p-k}(R)\)">\(x&#x27;&#x27;\in\mathcal S_{p-k}(R)\)</span>, and the marginals of <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span> and <span class="math" data-tex="\(x&#x27;&#x27;\)">\(x&#x27;&#x27;\)</span> are exactly the marginals of <span class="math" data-tex="\(x\)">\(x\)</span> (those with
+<span class="math" data-tex="\(l\le k\)">\(l\le k\)</span>, respectively <span class="math" data-tex="\(l&gt;k\)">\(l&gt;k\)</span>). So the subtracted terms of <span class="math" data-tex="\(\Phi_{N_1,\dots,N_p}(x)\)">\(\Phi_{N_1,\dots,N_p}(x)\)</span> are the sum of those of
+<span class="math" data-tex="\(\Phi_{N_1,\dots,N_k}(x&#x27;)\)">\(\Phi_{N_1,\dots,N_k}(x&#x27;)\)</span> and <span class="math" data-tex="\(\Phi_{N_{k+1},\dots,N_p}(x&#x27;&#x27;)\)">\(\Phi_{N_{k+1},\dots,N_p}(x&#x27;&#x27;)\)</span>. For the first terms, the numbers
+<span class="math" data-tex="\(p_{\mathbf i&#x27;\mathbf i&#x27;&#x27;}=\tau(x_{(\mathbf i&#x27;,\mathbf i&#x27;&#x27;)})\)">\(p_{\mathbf i&#x27;\mathbf i&#x27;&#x27;}=\tau(x_{(\mathbf i&#x27;,\mathbf i&#x27;&#x27;)})\)</span> form a probability array with row sums
+<span class="math" data-tex="\(\tau(x&#x27;_{\mathbf i&#x27;})\)">\(\tau(x&#x27;_{\mathbf i&#x27;})\)</span> and column sums <span class="math" data-tex="\(\tau(x&#x27;&#x27;_{\mathbf i&#x27;&#x27;})\)">\(\tau(x&#x27;&#x27;_{\mathbf i&#x27;&#x27;})\)</span>, so Lemma 2.4 with <span class="math" data-tex="\(Q=\mathbb C\)">\(Q=\mathbb C\)</span> gives
+<span class="math" data-tex="\(\sum_{\mathbf i}\eta\tau(x_{\mathbf i})\le\sum_{\mathbf i&#x27;}\eta\tau(x&#x27;_{\mathbf i&#x27;})+\sum_{\mathbf i&#x27;&#x27;}\eta\tau(x&#x27;&#x27;_{\mathbf i&#x27;&#x27;})\)">\(\sum_{\mathbf i}\eta\tau(x_{\mathbf i})\le\sum_{\mathbf i&#x27;}\eta\tau(x&#x27;_{\mathbf i&#x27;})+\sum_{\mathbf i&#x27;&#x27;}\eta\tau(x&#x27;&#x27;_{\mathbf i&#x27;&#x27;})\)</span>.
+Hence <span class="math" data-tex="\(\Phi_{N_1,\dots,N_p}(x)\le\Phi_{N_1,\dots,N_k}(x&#x27;)+\Phi_{N_{k+1},\dots,N_p}(x&#x27;&#x27;)\le
+H(N_1,\dots,N_k)+H(N_{k+1},\dots,N_p)\)">\(\Phi_{N_1,\dots,N_p}(x)\le\Phi_{N_1,\dots,N_k}(x&#x27;)+\Phi_{N_{k+1},\dots,N_p}(x&#x27;&#x27;)\le
+H(N_1,\dots,N_k)+H(N_{k+1},\dots,N_p)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.5 (merging).</strong> Let <span class="math" data-tex="\(N_1,\dots,N_m\)">\(N_1,\dots,N_m\)</span> be finite-dimensional subalgebras, <span class="math" data-tex="\(1\le n\le m\)">\(1\le n\le m\)</span>, and suppose
+that a finite-dimensional subalgebra <span class="math" data-tex="\(P\)">\(P\)</span> contains <span class="math" data-tex="\(N_1,\dots,N_n\)">\(N_1,\dots,N_n\)</span>. Then
+<span class="math math-display" data-tex="\[
+H(N_1,\dots,N_n,N_{n+1},\dots,N_m)\le H(P,N_{n+1},\dots,N_m).
+\]">\[
+H(N_1,\dots,N_n,N_{n+1},\dots,N_m)\le H(P,N_{n+1},\dots,N_m).
+\]</span></p>
+<p><em>Proof.</em> By Proposition 3.3 it suffices to treat <span class="math" data-tex="\(N_1=\dots=N_n=P\)">\(N_1=\dots=N_n=P\)</span>. Let <span class="math" data-tex="\(x\in\mathcal S_m(R)\)">\(x\in\mathcal S_m(R)\)</span>, indexed by
+<span class="math" data-tex="\(I_1\times\dots\times I_m\)">\(I_1\times\dots\times I_m\)</span>. Put <span class="math" data-tex="\(J=I_1\times\dots\times I_n\)">\(J=I_1\times\dots\times I_n\)</span> and regard the same family as an element <span class="math" data-tex="\(X\)">\(X\)</span> of
+<span class="math" data-tex="\(\mathcal S_{m-n+1}(R)\)">\(\mathcal S_{m-n+1}(R)\)</span> indexed by <span class="math" data-tex="\(J\times I_{n+1}\times\dots\times I_m\)">\(J\times I_{n+1}\times\dots\times I_m\)</span>. The first terms of
+<span class="math" data-tex="\(\Phi_{P,\dots,P,N_{n+1},\dots}(x)\)">\(\Phi_{P,\dots,P,N_{n+1},\dots}(x)\)</span> and <span class="math" data-tex="\(\Phi_{P,N_{n+1},\dots}(X)\)">\(\Phi_{P,N_{n+1},\dots}(X)\)</span> coincide, and so do the terms for the
+marginals <span class="math" data-tex="\(l&gt;n\)">\(l&gt;n\)</span>. The first marginal of <span class="math" data-tex="\(X\)">\(X\)</span> is <span class="math" data-tex="\(x&#x27;_{\mathbf j}=\sum_{i_{n+1},\dots,i_m}x_{(\mathbf j,i_{n+1},\dots,i_m)}\)">\(x&#x27;_{\mathbf j}=\sum_{i_{n+1},\dots,i_m}x_{(\mathbf j,i_{n+1},\dots,i_m)}\)</span>,
+<span class="math" data-tex="\(\mathbf j\in J\)">\(\mathbf j\in J\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\Phi_{P,N_{n+1},\dots,N_m}(X)-\Phi_{P,\dots,P,N_{n+1},\dots,N_m}(x)
+=\sum_{l=1}^n\sum_{j\in I_l}\tau\eta\bigl(E_P(x^{(l)}_j)\bigr)-\sum_{\mathbf j\in J}\tau\eta\bigl(E_P(x&#x27;_{\mathbf j})\bigr).
+\]">\[
+\Phi_{P,N_{n+1},\dots,N_m}(X)-\Phi_{P,\dots,P,N_{n+1},\dots,N_m}(x)
+=\sum_{l=1}^n\sum_{j\in I_l}\tau\eta\bigl(E_P(x^{(l)}_j)\bigr)-\sum_{\mathbf j\in J}\tau\eta\bigl(E_P(x&#x27;_{\mathbf j})\bigr).
+\]</span>
+The family <span class="math" data-tex="\(y_{\mathbf j}=E_P(x&#x27;_{\mathbf j})\)">\(y_{\mathbf j}=E_P(x&#x27;_{\mathbf j})\)</span> lies in <span class="math" data-tex="\(P_+\)">\(P_+\)</span>, has sum <span class="math" data-tex="\(1\)">\(1\)</span>, and its <span class="math" data-tex="\(l\)">\(l\)</span>-th marginal is
+<span class="math" data-tex="\(E_P(x^{(l)}_j)\)">\(E_P(x^{(l)}_j)\)</span>. Corollary 2.5 in the finite-dimensional algebra <span class="math" data-tex="\(P\)">\(P\)</span> with the trace <span class="math" data-tex="\(\tau|_P\)">\(\tau|_P\)</span> shows that the
+right side is <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>. So <span class="math" data-tex="\(\Phi_{P,\dots,P,N_{n+1},\dots}(x)\le\Phi_{P,N_{n+1},\dots}(X)\le H(P,N_{n+1},\dots,N_m)\)">\(\Phi_{P,\dots,P,N_{n+1},\dots}(x)\le\Phi_{P,N_{n+1},\dots}(X)\le H(P,N_{n+1},\dots,N_m)\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.6.</strong> Let <span class="math" data-tex="\(N_1,\dots,N_{k+1},N,P\)">\(N_1,\dots,N_{k+1},N,P\)</span> be finite-dimensional subalgebras.</p>
+<ol>
+<li><span class="math" data-tex="\(H(N_1,\dots,N_k)\le H(N_1,\dots,N_k,N_{k+1})\)">\(H(N_1,\dots,N_k)\le H(N_1,\dots,N_k,N_{k+1})\)</span>.</li>
+<li><span class="math" data-tex="\(H(N_1,\dots,N_k,\mathbb C)=H(N_1,\dots,N_k)\)">\(H(N_1,\dots,N_k,\mathbb C)=H(N_1,\dots,N_k)\)</span> and <span class="math" data-tex="\(H(\mathbb C)=0\)">\(H(\mathbb C)=0\)</span>.</li>
+<li><span class="math" data-tex="\(H(N,N,\dots,N)=H(N)\)">\(H(N,N,\dots,N)=H(N)\)</span> for any number of repetitions.</li>
+<li>If <span class="math" data-tex="\(N_1,\dots,N_k\subset P\)">\(N_1,\dots,N_k\subset P\)</span>, then <span class="math" data-tex="\(H(N_1,\dots,N_k)\le H(P)\)">\(H(N_1,\dots,N_k)\le H(P)\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) Given <span class="math" data-tex="\(x\in\mathcal S_k(R)\)">\(x\in\mathcal S_k(R)\)</span>, extend it to <span class="math" data-tex="\(\mathcal S_{k+1}(R)\)">\(\mathcal S_{k+1}(R)\)</span> with <span class="math" data-tex="\(I_{k+1}=\{*\}\)">\(I_{k+1}=\{*\}\)</span> a singleton and
+the same entries. The new marginal is <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(\tau\eta(E_{N_{k+1}}(1))=0\)">\(\tau\eta(E_{N_{k+1}}(1))=0\)</span>; so the value of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is
+unchanged. (2) <span class="math" data-tex="\(H(\mathbb C)=0\)">\(H(\mathbb C)=0\)</span> because <span class="math" data-tex="\(\tau\eta(E_{\mathbb C}(x_i))=\eta\tau(x_i)\)">\(\tau\eta(E_{\mathbb C}(x_i))=\eta\tau(x_i)\)</span>. Then (1) and Proposition 3.4
+give <span class="math" data-tex="\(H(N_1,\dots,N_k)\le H(N_1,\dots,N_k,\mathbb C)\le H(N_1,\dots,N_k)+0\)">\(H(N_1,\dots,N_k)\le H(N_1,\dots,N_k,\mathbb C)\le H(N_1,\dots,N_k)+0\)</span>. (3) Proposition 3.5 with <span class="math" data-tex="\(P=N\)">\(P=N\)</span> gives
+<span class="math" data-tex="\(\le\)">\(\le\)</span>, and (1) gives <span class="math" data-tex="\(\ge\)">\(\ge\)</span>. (4) Proposition 3.5 with <span class="math" data-tex="\(n=m=k\)">\(n=m=k\)</span> gives <span class="math" data-tex="\(H(N_1,\dots,N_k)\le H(P)\)">\(H(N_1,\dots,N_k)\le H(P)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-computing-the-entropy">4. Computing the entropy</h2>
+<p><strong>Theorem 4.1.</strong> Let <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> be finite-dimensional and let <span class="math" data-tex="\((e_\alpha)_{\alpha\in A}\)">\((e_\alpha)_{\alpha\in A}\)</span> be pairwise orthogonal
+minimal projections of <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(\sum_\alpha e_\alpha=1\)">\(\sum_\alpha e_\alpha=1\)</span>. Then
+<span class="math math-display" data-tex="\[
+H(N)=\sum_{\alpha\in A}\eta\tau(e_\alpha)=\sum_kn_k\,\eta(t_k),
+\]">\[
+H(N)=\sum_{\alpha\in A}\eta\tau(e_\alpha)=\sum_kn_k\,\eta(t_k),
+\]</span>
+with the notation of Section 1. The supremum defining <span class="math" data-tex="\(H(N)\)">\(H(N)\)</span> is attained at the family <span class="math" data-tex="\((e_\alpha)\)">\((e_\alpha)\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(h=\sum_\alpha\eta\tau(e_\alpha)\)">\(h=\sum_\alpha\eta\tau(e_\alpha)\)</span>; there are <span class="math" data-tex="\(n_k\)">\(n_k\)</span> projections of trace <span class="math" data-tex="\(t_k\)">\(t_k\)</span> below <span class="math" data-tex="\(c_k\)">\(c_k\)</span>, so
+<span class="math" data-tex="\(h=\sum_kn_k\eta(t_k)=-\tau(L_N)\)">\(h=\sum_kn_k\eta(t_k)=-\tau(L_N)\)</span>.</p>
+<p><em>The family attains <span class="math" data-tex="\(h\)">\(h\)</span>.</em> <span class="math" data-tex="\(E_N(e_\alpha)=e_\alpha\)">\(E_N(e_\alpha)=e_\alpha\)</span> and <span class="math" data-tex="\(\eta(e_\alpha)=0\)">\(\eta(e_\alpha)=0\)</span>, so the value of the family is <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><em>Every family gives at most <span class="math" data-tex="\(h\)">\(h\)</span>.</em> Let <span class="math" data-tex="\(x\in\mathcal S_1(R)\)">\(x\in\mathcal S_1(R)\)</span> and put <span class="math" data-tex="\(X_i=E_N(x_i)\in N_+\)">\(X_i=E_N(x_i)\in N_+\)</span>. Then
+<span class="math" data-tex="\(\sum_iX_i=1\)">\(\sum_iX_i=1\)</span> and <span class="math" data-tex="\(\tau(X_i)=\tau(x_i)\)">\(\tau(X_i)=\tau(x_i)\)</span>, so the value of <span class="math" data-tex="\(x\)">\(x\)</span> is
+<span class="math" data-tex="\(\sum_i(\eta\tau(X_i)-\tau\eta(X_i))\)">\(\sum_i(\eta\tau(X_i)-\tau\eta(X_i))\)</span>. By Lemma 1.1, with <span class="math" data-tex="\(\widehat X_i=D_NX_i\)">\(\widehat X_i=D_NX_i\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_i\bigl(\eta\tau(X_i)-\tau\eta(X_i)\bigr)
+=\sum_i\bigl(\eta(\operatorname{Tr}_N\widehat X_i)-\operatorname{Tr}_N\eta(\widehat X_i)\bigr)-\tau\Bigl(L_N\sum_iX_i\Bigr).
+\]">\[
+\sum_i\bigl(\eta\tau(X_i)-\tau\eta(X_i)\bigr)
+=\sum_i\bigl(\eta(\operatorname{Tr}_N\widehat X_i)-\operatorname{Tr}_N\eta(\widehat X_i)\bigr)-\tau\Bigl(L_N\sum_iX_i\Bigr).
+\]</span>
+The last term is <span class="math" data-tex="\(-\tau(L_N)=h\)">\(-\tau(L_N)=h\)</span>. Each <span class="math" data-tex="\(\widehat X_i\)">\(\widehat X_i\)</span> satisfies <span class="math" data-tex="\(0\le\widehat X_i\le\sum_j\widehat X_j=D_N\le1\)">\(0\le\widehat X_i\le\sum_j\widehat X_j=D_N\le1\)</span>;
+if <span class="math" data-tex="\(\mu_1,\mu_2,\dots\)">\(\mu_1,\mu_2,\dots\)</span> are its eigenvalues (with multiplicity, in the blocks of <span class="math" data-tex="\(N\)">\(N\)</span>), subadditivity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives
+<span class="math" data-tex="\(\operatorname{Tr}_N\eta(\widehat X_i)=\sum_m\eta(\mu_m)\ge\eta(\sum_m\mu_m)=\eta(\operatorname{Tr}_N\widehat X_i)\)">\(\operatorname{Tr}_N\eta(\widehat X_i)=\sum_m\eta(\mu_m)\ge\eta(\sum_m\mu_m)=\eta(\operatorname{Tr}_N\widehat X_i)\)</span>.
+So the value of <span class="math" data-tex="\(x\)">\(x\)</span> is at most <span class="math" data-tex="\(h\)">\(h\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2.</strong> For finite-dimensional <span class="math" data-tex="\(N\)">\(N\)</span> with central weights <span class="math" data-tex="\(w_k=\tau(c_k)\)">\(w_k=\tau(c_k)\)</span>,
+<span class="math math-display" data-tex="\[
+H(N)=\sum_kw_k\log\frac{n_k}{w_k}=H(Z(N))+\sum_kw_k\log n_k,\qquad H(N)\le\log M(N)\le\log\dim N,
+\]">\[
+H(N)=\sum_kw_k\log\frac{n_k}{w_k}=H(Z(N))+\sum_kw_k\log n_k,\qquad H(N)\le\log M(N)\le\log\dim N,
+\]</span>
+where <span class="math" data-tex="\(Z(N)\)">\(Z(N)\)</span> is the center of <span class="math" data-tex="\(N\)">\(N\)</span>. For finite-dimensional <span class="math" data-tex="\(N_1,\dots,N_k\)">\(N_1,\dots,N_k\)</span>,
+<span class="math" data-tex="\(0\le H(N_1,\dots,N_k)\le\sum_jH(N_j)\le\sum_j\log\dim N_j&lt;\infty\)">\(0\le H(N_1,\dots,N_k)\le\sum_jH(N_j)\le\sum_j\log\dim N_j&lt;\infty\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(n_k\eta(w_k/n_k)=w_k\log(n_k/w_k)\)">\(n_k\eta(w_k/n_k)=w_k\log(n_k/w_k)\)</span>, and <span class="math" data-tex="\(Z(N)\)">\(Z(N)\)</span> is abelian with minimal projections <span class="math" data-tex="\(c_k\)">\(c_k\)</span>, so
+<span class="math" data-tex="\(H(Z(N))=\sum_k\eta(w_k)\)">\(H(Z(N))=\sum_k\eta(w_k)\)</span> by Theorem 4.1. The bound <span class="math" data-tex="\(H(N)\le\log M(N)\)">\(H(N)\le\log M(N)\)</span> is Jensen's inequality for the concave
+<span class="math" data-tex="\(\eta\)">\(\eta\)</span> applied to the <span class="math" data-tex="\(M(N)\)">\(M(N)\)</span> numbers <span class="math" data-tex="\(\tau(e_\alpha)\)">\(\tau(e_\alpha)\)</span>, which sum to <span class="math" data-tex="\(1\)">\(1\)</span>. The last chain follows from
+Proposition 3.4 and Remark 3.2(a). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 4.3.</strong> (a) For a projection <span class="math" data-tex="\(e\in R\)">\(e\in R\)</span> and <span class="math" data-tex="\(N=\mathbb Ce+\mathbb C(1-e)\)">\(N=\mathbb Ce+\mathbb C(1-e)\)</span>, <span class="math" data-tex="\(H(N)=h(\tau(e))\)">\(H(N)=h(\tau(e))\)</span>.
+(b) If <span class="math" data-tex="\(N\cong M_n(\mathbb C)\)">\(N\cong M_n(\mathbb C)\)</span> is a unital matrix subalgebra (for instance in a II₁ factor), every minimal
+projection has trace <span class="math" data-tex="\(1/n\)">\(1/n\)</span> and <span class="math" data-tex="\(H(N)=\log n\)">\(H(N)=\log n\)</span>.
+(c) If <span class="math" data-tex="\(R=L^\infty(X,\mu)\)">\(R=L^\infty(X,\mu)\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> is the algebra of functions constant on the atoms of a finite measurable
+partition <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, then <span class="math" data-tex="\(H(N)=-\sum_{A\in\mathcal P}\mu(A)\log\mu(A)\)">\(H(N)=-\sum_{A\in\mathcal P}\mu(A)\log\mu(A)\)</span> is the classical entropy of
+<span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>.</p>
+<p><strong>Theorem 4.4 (commuting families).</strong> Let <span class="math" data-tex="\(N_1,\dots,N_k\)">\(N_1,\dots,N_k\)</span> be finite-dimensional subalgebras and suppose there are
+pairwise commuting subalgebras <span class="math" data-tex="\(P_j\subset N_j\)">\(P_j\subset N_j\)</span> with <span class="math" data-tex="\((P_1\cup\dots\cup P_k)&#x27;&#x27;=(N_1\cup\dots\cup N_k)&#x27;&#x27;=:Q\)">\((P_1\cup\dots\cup P_k)&#x27;&#x27;=(N_1\cup\dots\cup N_k)&#x27;&#x27;=:Q\)</span>.
+Then <span class="math" data-tex="\(Q\)">\(Q\)</span> is finite-dimensional and
+<span class="math math-display" data-tex="\[
+H(N_1,\dots,N_k)=H(Q).
+\]">\[
+H(N_1,\dots,N_k)=H(Q).
+\]</span>
+In particular <span class="math" data-tex="\(H(N_1,\dots,N_k)=H((N_1\cup\dots\cup N_k)&#x27;&#x27;)\)">\(H(N_1,\dots,N_k)=H((N_1\cup\dots\cup N_k)&#x27;&#x27;)\)</span> whenever the <span class="math" data-tex="\(N_j\)">\(N_j\)</span> commute pairwise.</p>
+<p><em>Proof.</em> Since the <span class="math" data-tex="\(P_j\)">\(P_j\)</span> commute pairwise, the linear span of the products <span class="math" data-tex="\(p_1p_2\cdots p_k\)">\(p_1p_2\cdots p_k\)</span> (<span class="math" data-tex="\(p_j\in P_j\)">\(p_j\in P_j\)</span>) is a
+*-algebra; it is finite-dimensional, hence equal to <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><em>Upper bound.</em> Each <span class="math" data-tex="\(N_j\subset Q\)">\(N_j\subset Q\)</span>, so <span class="math" data-tex="\(H(N_1,\dots,N_k)\le H(Q)\)">\(H(N_1,\dots,N_k)\le H(Q)\)</span> by Corollary 3.6(4).</p>
+<p><em>Lower bound.</em> Choose a maximal abelian subalgebra <span class="math" data-tex="\(A_j\subset P_j\)">\(A_j\subset P_j\)</span> and let <span class="math" data-tex="\((e^{(j)}_i)_{i\in I_j}\)">\((e^{(j)}_i)_{i\in I_j}\)</span> be its minimal
+projections; they are pairwise orthogonal with sum <span class="math" data-tex="\(1\)">\(1\)</span>. We first check that each <span class="math" data-tex="\(e=e^{(j)}_i\)">\(e=e^{(j)}_i\)</span> is minimal in
+<span class="math" data-tex="\(P_j\)">\(P_j\)</span>. For <span class="math" data-tex="\(a\in A_j\)">\(a\in A_j\)</span> we have <span class="math" data-tex="\(ae=\lambda_ae\)">\(ae=\lambda_ae\)</span> for a scalar <span class="math" data-tex="\(\lambda_a\)">\(\lambda_a\)</span>, since <span class="math" data-tex="\(A_je\)">\(A_je\)</span> is a one-dimensional
+algebra. If <span class="math" data-tex="\(b\in eP_je\)">\(b\in eP_je\)</span>, then <span class="math" data-tex="\(ab=aeb=\lambda_ab\)">\(ab=aeb=\lambda_ab\)</span> and <span class="math" data-tex="\(ba=bea=\lambda_ab\)">\(ba=bea=\lambda_ab\)</span>, so <span class="math" data-tex="\(b\)">\(b\)</span> commutes with <span class="math" data-tex="\(A_j\)">\(A_j\)</span> and
+lies in <span class="math" data-tex="\(A_j\)">\(A_j\)</span> by maximality; thus <span class="math" data-tex="\(b\in eA_je=\mathbb Ce\)">\(b\in eA_je=\mathbb Ce\)</span>. Hence <span class="math" data-tex="\(eP_je=\mathbb Ce\)">\(eP_je=\mathbb Ce\)</span>.</p>
+<p>The products <span class="math" data-tex="\(x_{\mathbf i}=e^{(1)}_{i_1}e^{(2)}_{i_2}\cdots e^{(k)}_{i_k}\)">\(x_{\mathbf i}=e^{(1)}_{i_1}e^{(2)}_{i_2}\cdots e^{(k)}_{i_k}\)</span> are projections (the factors commute)
+with sum <span class="math" data-tex="\(1\)">\(1\)</span>, and their <span class="math" data-tex="\(l\)">\(l\)</span>-th marginals are <span class="math" data-tex="\(x^{(l)}_j=e^{(l)}_j\)">\(x^{(l)}_j=e^{(l)}_j\)</span>. Each nonzero <span class="math" data-tex="\(x_{\mathbf i}\)">\(x_{\mathbf i}\)</span> is minimal in
+<span class="math" data-tex="\(Q\)">\(Q\)</span>: for a spanning element <span class="math" data-tex="\(p_1\cdots p_k\)">\(p_1\cdots p_k\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span>,
+<span class="math math-display" data-tex="\[
+x_{\mathbf i}\,p_1\cdots p_k\,x_{\mathbf i}=\prod_j\bigl(e^{(j)}_{i_j}p_je^{(j)}_{i_j}\bigr)\in\mathbb Cx_{\mathbf i},
+\]">\[
+x_{\mathbf i}\,p_1\cdots p_k\,x_{\mathbf i}=\prod_j\bigl(e^{(j)}_{i_j}p_je^{(j)}_{i_j}\bigr)\in\mathbb Cx_{\mathbf i},
+\]</span>
+because all factors commute and <span class="math" data-tex="\(e^{(j)}_{i_j}P_je^{(j)}_{i_j}=\mathbb Ce^{(j)}_{i_j}\)">\(e^{(j)}_{i_j}P_je^{(j)}_{i_j}=\mathbb Ce^{(j)}_{i_j}\)</span>. By Proposition 3.3,
+<span class="math" data-tex="\(H(N_1,\dots,N_k)\ge H(A_1,\dots,A_k)\ge\Phi_{A_1,\dots,A_k}(x)\)">\(H(N_1,\dots,N_k)\ge H(A_1,\dots,A_k)\ge\Phi_{A_1,\dots,A_k}(x)\)</span>. In <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> the subtracted terms vanish, since
+<span class="math" data-tex="\(E_{A_l}(e^{(l)}_j)=e^{(l)}_j\)">\(E_{A_l}(e^{(l)}_j)=e^{(l)}_j\)</span> is a projection. So <span class="math" data-tex="\(\Phi_{A_1,\dots,A_k}(x)=\sum_{\mathbf i}\eta\tau(x_{\mathbf i})\)">\(\Phi_{A_1,\dots,A_k}(x)=\sum_{\mathbf i}\eta\tau(x_{\mathbf i})\)</span>,
+which is <span class="math" data-tex="\(H(Q)\)">\(H(Q)\)</span> by Theorem 4.1 (the zero terms contribute <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 4.5 (the classical case).</strong> If <span class="math" data-tex="\(R=L^\infty(X,\mu)\)">\(R=L^\infty(X,\mu)\)</span> and <span class="math" data-tex="\(N_j\)">\(N_j\)</span> corresponds to a finite partition
+<span class="math" data-tex="\(\mathcal P_j\)">\(\mathcal P_j\)</span>, then Theorem 4.4 and Example 4.3(c) give
+<span class="math" data-tex="\(H(N_1,\dots,N_k)=H(\mathcal P_1\vee\dots\vee\mathcal P_k)\)">\(H(N_1,\dots,N_k)=H(\mathcal P_1\vee\dots\vee\mathcal P_k)\)</span>. So the joint entropy extends the entropy of a join.</p>
+<p><strong>Example 4.6 (two masas in unbiased position).</strong> Let <span class="math" data-tex="\(R=M_2(\mathbb C)\)">\(R=M_2(\mathbb C)\)</span> with the normalized trace, <span class="math" data-tex="\(A\)">\(A\)</span> the
+diagonal matrices, <span class="math" data-tex="\(u=\frac1{\sqrt2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}\)">\(u=\frac1{\sqrt2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}\)</span>, and <span class="math" data-tex="\(B=uAu^*\)">\(B=uAu^*\)</span>. By Corollary 3.6,
+<span class="math" data-tex="\(\log2=H(A)\le H(A,B)\le H(M_2(\mathbb C))=\log2\)">\(\log2=H(A)\le H(A,B)\le H(M_2(\mathbb C))=\log2\)</span>. So <span class="math" data-tex="\(H(A,B)=\log2&lt;H(A)+H(B)=2\log2\)">\(H(A,B)=\log2&lt;H(A)+H(B)=2\log2\)</span>. Although <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> are
+&quot;independent&quot; in the sense that <span class="math" data-tex="\(\tau(ab)=\tau(a)\tau(b)\)">\(\tau(ab)=\tau(a)\tau(b)\)</span> for <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, their joint entropy is no more
+than that of the <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices they generate. This is the noncommutative effect that the definition is designed
+to capture.</p>
+<h2 id="5-relative-entropy">5. Relative entropy</h2>
+<p><strong>Definition 5.1.</strong> For subalgebras <span class="math" data-tex="\(N,P\subset R\)">\(N,P\subset R\)</span> (not necessarily finite-dimensional) put
+<span class="math math-display" data-tex="\[
+H(N\mid P)=\sup_{x\in\mathcal S_1(R)}\sum_i\Bigl(\tau\eta\bigl(E_P(x_i)\bigr)-\tau\eta\bigl(E_N(x_i)\bigr)\Bigr)\in[0,\infty].
+\]">\[
+H(N\mid P)=\sup_{x\in\mathcal S_1(R)}\sum_i\Bigl(\tau\eta\bigl(E_P(x_i)\bigr)-\tau\eta\bigl(E_N(x_i)\bigr)\Bigr)\in[0,\infty].
+\]</span>
+Note that <span class="math" data-tex="\(H(N\mid\mathbb C)=H(N)\)">\(H(N\mid\mathbb C)=H(N)\)</span> for finite-dimensional <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Proposition 5.2.</strong> Let <span class="math" data-tex="\(N,N&#x27;,P,P&#x27;,Q\)">\(N,N&#x27;,P,P&#x27;,Q\)</span> be subalgebras of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(H(N\mid P)\ge0\)">\(H(N\mid P)\ge0\)</span>, and <span class="math" data-tex="\(H(N\mid P)=0\)">\(H(N\mid P)=0\)</span> if <span class="math" data-tex="\(N\subset P\)">\(N\subset P\)</span>.</li>
+<li>If <span class="math" data-tex="\(N\subset N&#x27;\)">\(N\subset N&#x27;\)</span> and <span class="math" data-tex="\(P&#x27;\subset P\)">\(P&#x27;\subset P\)</span>, then <span class="math" data-tex="\(H(N\mid P)\le H(N&#x27;\mid P&#x27;)\)">\(H(N\mid P)\le H(N&#x27;\mid P&#x27;)\)</span>: the relative entropy increases in
+the first argument and decreases in the second.</li>
+<li><span class="math" data-tex="\(H(N\mid P)\le H(N)\)">\(H(N\mid P)\le H(N)\)</span> if <span class="math" data-tex="\(N\)">\(N\)</span> is finite-dimensional.</li>
+<li>(Triangle inequality) <span class="math" data-tex="\(H(N\mid Q)\le H(N\mid P)+H(P\mid Q)\)">\(H(N\mid Q)\le H(N\mid P)+H(P\mid Q)\)</span>.</li>
+<li>If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is a <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-preserving automorphism, <span class="math" data-tex="\(H(\theta(N)\mid\theta(P))=H(N\mid P)\)">\(H(\theta(N)\mid\theta(P))=H(N\mid P)\)</span>.</li>
+<li>(Localization) If <span class="math" data-tex="\(Q\)">\(Q\)</span> contains <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span>, the supremum may be taken over <span class="math" data-tex="\(\mathcal S_1(Q)\)">\(\mathcal S_1(Q)\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) The family <span class="math" data-tex="\((1)\)">\((1)\)</span> gives <span class="math" data-tex="\(0\)">\(0\)</span>. If <span class="math" data-tex="\(N\subset P\)">\(N\subset P\)</span>, each term is <span class="math" data-tex="\(\le0\)">\(\le0\)</span> by Lemma 2.1. (2) By Lemma 2.1,
+<span class="math" data-tex="\(\tau\eta(E_N(y))\ge\tau\eta(E_{N&#x27;}(y))\)">\(\tau\eta(E_N(y))\ge\tau\eta(E_{N&#x27;}(y))\)</span> and <span class="math" data-tex="\(\tau\eta(E_P(y))\le\tau\eta(E_{P&#x27;}(y))\)">\(\tau\eta(E_P(y))\le\tau\eta(E_{P&#x27;}(y))\)</span>. (3) Use (2) with
+<span class="math" data-tex="\(P&#x27;=\mathbb C\)">\(P&#x27;=\mathbb C\)</span>. (4) For <span class="math" data-tex="\(x\in\mathcal S_1(R)\)">\(x\in\mathcal S_1(R)\)</span>, split each term as
+<span class="math" data-tex="\([\tau\eta E_Q(x_i)-\tau\eta E_P(x_i)]+[\tau\eta E_P(x_i)-\tau\eta E_N(x_i)]\)">\([\tau\eta E_Q(x_i)-\tau\eta E_P(x_i)]+[\tau\eta E_P(x_i)-\tau\eta E_N(x_i)]\)</span>; all quantities are finite. (5) As in
+Remark 3.2(c). (6) As in Remark 3.2(d). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.3 (moving the arguments).</strong> For finite-dimensional subalgebras <span class="math" data-tex="\(N_j,P_j\)">\(N_j,P_j\)</span>, <span class="math" data-tex="\(1\le j\le k\)">\(1\le j\le k\)</span>,
+<span class="math math-display" data-tex="\[
+H(N_1,\dots,N_k)\le H(P_1,\dots,P_k)+\sum_{j=1}^kH(N_j\mid P_j).
+\]">\[
+H(N_1,\dots,N_k)\le H(P_1,\dots,P_k)+\sum_{j=1}^kH(N_j\mid P_j).
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(x\in\mathcal S_k(R)\)">\(x\in\mathcal S_k(R)\)</span>,
+<span class="math" data-tex="\(\Phi_{N_1,\dots,N_k}(x)=\Phi_{P_1,\dots,P_k}(x)+\sum_j\sum_{i\in I_j}\bigl(\tau\eta E_{P_j}(x^{(j)}_i)-\tau\eta E_{N_j}(x^{(j)}_i)\bigr)\)">\(\Phi_{N_1,\dots,N_k}(x)=\Phi_{P_1,\dots,P_k}(x)+\sum_j\sum_{i\in I_j}\bigl(\tau\eta E_{P_j}(x^{(j)}_i)-\tau\eta E_{N_j}(x^{(j)}_i)\bigr)\)</span>.
+For each <span class="math" data-tex="\(j\)">\(j\)</span> the marginal family <span class="math" data-tex="\((x^{(j)}_i)_{i\in I_j}\)">\((x^{(j)}_i)_{i\in I_j}\)</span> belongs to <span class="math" data-tex="\(\mathcal S_1(R)\)">\(\mathcal S_1(R)\)</span>, so the inner sum is at most
+<span class="math" data-tex="\(H(N_j\mid P_j)\)">\(H(N_j\mid P_j)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We now compute the relative entropy for commuting algebras. We need to localize at central projections.</p>
+<p><strong>Lemma 5.4 (localization at a central projection).</strong> Fix a subalgebra <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> and a projection
+<span class="math" data-tex="\(c\in N\cap N&#x27;\)">\(c\in N\cap N&#x27;\)</span> with <span class="math" data-tex="\(\tau(c)&gt;0\)">\(\tau(c)&gt;0\)</span>. Let <span class="math" data-tex="\(E^c_{Nc}\)">\(E^c_{Nc}\)</span> be the <span class="math" data-tex="\(\tau_c\)">\(\tau_c\)</span>-preserving conditional expectation of <span class="math" data-tex="\(cRc\)">\(cRc\)</span> onto
+<span class="math" data-tex="\(Nc\)">\(Nc\)</span>. Then <span class="math" data-tex="\(E_N(y)=E^c_{Nc}(y)\)">\(E_N(y)=E^c_{Nc}(y)\)</span> for <span class="math" data-tex="\(y\in cRc\)">\(y\in cRc\)</span>, and <span class="math" data-tex="\(E_N(y)c=E_N(cyc)\)">\(E_N(y)c=E_N(cyc)\)</span> for every <span class="math" data-tex="\(y\in R\)">\(y\in R\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(E_N(y)c=cE_N(y)c=E_N(cyc)\)">\(E_N(y)c=cE_N(y)c=E_N(cyc)\)</span> by bimodularity. For <span class="math" data-tex="\(y\in cRc\)">\(y\in cRc\)</span>, <span class="math" data-tex="\(E_N(y)=E_N(cyc)=cE_N(y)c\in Nc\)">\(E_N(y)=E_N(cyc)=cE_N(y)c\in Nc\)</span>, and for
+<span class="math" data-tex="\(b\in Nc\)">\(b\in Nc\)</span>, <span class="math" data-tex="\(\tau_c(E_N(y)b)=\tau_c(yb)\)">\(\tau_c(E_N(y)b)=\tau_c(yb)\)</span>. By uniqueness in (B1) (applied in <span class="math" data-tex="\(cRc\)">\(cRc\)</span>), <span class="math" data-tex="\(E_N(y)=E^c_{Nc}(y)\)">\(E_N(y)=E^c_{Nc}(y)\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.5 (commuting subalgebras).</strong> Let <span class="math" data-tex="\(N_1,N_2\subset R\)">\(N_1,N_2\subset R\)</span> be commuting finite-dimensional subalgebras and
+<span class="math" data-tex="\(Q=(N_1\cup N_2)&#x27;&#x27;\)">\(Q=(N_1\cup N_2)&#x27;&#x27;\)</span>. Then <span class="math" data-tex="\(Q\)">\(Q\)</span> is finite-dimensional and</p>
+<ol>
+<li><span class="math" data-tex="\(H(N_2\mid N_1)=H(Q)-H(N_1)\)">\(H(N_2\mid N_1)=H(Q)-H(N_1)\)</span>;</li>
+<li><span class="math" data-tex="\(H(Q\mid N_1)\ge H(Q)-H(N_1)\)">\(H(Q\mid N_1)\ge H(Q)-H(N_1)\)</span>, with equality when <span class="math" data-tex="\(N_1\)">\(N_1\)</span> is abelian.</li>
+</ol>
+<p><em>Proof.</em> <span class="math" data-tex="\(Q\)">\(Q\)</span> is the span of the products <span class="math" data-tex="\(ab\)">\(ab\)</span>, <span class="math" data-tex="\(a\in N_1\)">\(a\in N_1\)</span>, <span class="math" data-tex="\(b\in N_2\)">\(b\in N_2\)</span>, hence finite-dimensional. Let
+<span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be the set of minimal central projections <span class="math" data-tex="\(c\)">\(c\)</span> of <span class="math" data-tex="\(N_1\)">\(N_1\)</span>. Each <span class="math" data-tex="\(c\)">\(c\)</span> commutes with <span class="math" data-tex="\(N_1\)">\(N_1\)</span> and <span class="math" data-tex="\(N_2\)">\(N_2\)</span>,
+so <span class="math" data-tex="\(c\)">\(c\)</span> is central in <span class="math" data-tex="\(Q\)">\(Q\)</span>. For <span class="math" data-tex="\(c\in\mathcal C\)">\(c\in\mathcal C\)</span>, <span class="math" data-tex="\(N_1c\)">\(N_1c\)</span> is a factor <span class="math" data-tex="\(\cong M_{a_c}(\mathbb C)\)">\(\cong M_{a_c}(\mathbb C)\)</span>; let
+<span class="math" data-tex="\((f_{c,r})_{r=1}^{a_c}\)">\((f_{c,r})_{r=1}^{a_c}\)</span> be orthogonal minimal projections of <span class="math" data-tex="\(N_1c\)">\(N_1c\)</span> with sum <span class="math" data-tex="\(c\)">\(c\)</span>, so <span class="math" data-tex="\(\tau(f_{c,r})=\tau(c)/a_c\)">\(\tau(f_{c,r})=\tau(c)/a_c\)</span>.
+Let <span class="math" data-tex="\((g_s)_{s\in S}\)">\((g_s)_{s\in S}\)</span> be orthogonal minimal projections of <span class="math" data-tex="\(N_2\)">\(N_2\)</span> with sum <span class="math" data-tex="\(1\)">\(1\)</span>, and put
+<span class="math" data-tex="\(u_{c,s}=\tau(g_sc)/\tau(c)\)">\(u_{c,s}=\tau(g_sc)/\tau(c)\)</span>, so that <span class="math" data-tex="\(\sum_su_{c,s}=1\)">\(\sum_su_{c,s}=1\)</span>.</p>
+<p><em>Step 1: the number <span class="math" data-tex="\(H(Q)-H(N_1)\)">\(H(Q)-H(N_1)\)</span>.</em> For <span class="math" data-tex="\(g\in N_2\)">\(g\in N_2\)</span>, the functional <span class="math" data-tex="\(a\mapsto\tau(ag)\)">\(a\mapsto\tau(ag)\)</span> on <span class="math" data-tex="\(N_1c\)">\(N_1c\)</span> is tracial
+(<span class="math" data-tex="\(\tau(a_1a_2g)=\tau(a_2ga_1)=\tau(a_2a_1g)\)">\(\tau(a_1a_2g)=\tau(a_2ga_1)=\tau(a_2a_1g)\)</span>), so by (B6) it equals <span class="math" data-tex="\(\lambda\tau|_{N_1c}\)">\(\lambda\tau|_{N_1c}\)</span> with
+<span class="math" data-tex="\(\lambda=\tau(cg)/\tau(c)\)">\(\lambda=\tau(cg)/\tau(c)\)</span>:
+<span class="math math-display" data-tex="\[
+\tau(fg)=\tau(f)\,\tau(cg)/\tau(c)\qquad(f\in N_1c,\ g\in N_2). \tag{5.1}
+\]">\[
+\tau(fg)=\tau(f)\,\tau(cg)/\tau(c)\qquad(f\in N_1c,\ g\in N_2). \tag{5.1}
+\]</span>
+The projections <span class="math" data-tex="\(f_{c,r}g_s\)">\(f_{c,r}g_s\)</span> (for <span class="math" data-tex="\(c\in\mathcal C\)">\(c\in\mathcal C\)</span>, <span class="math" data-tex="\(r\le a_c\)">\(r\le a_c\)</span>, <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>) have sum <span class="math" data-tex="\(1\)">\(1\)</span>, and each nonzero one
+is minimal in <span class="math" data-tex="\(Q\)">\(Q\)</span>: for <span class="math" data-tex="\(a\in N_1\)">\(a\in N_1\)</span>, <span class="math" data-tex="\(b\in N_2\)">\(b\in N_2\)</span>,
+<span class="math" data-tex="\(f_{c,r}g_s\,ab\,f_{c,r}g_s=(f_{c,r}af_{c,r})(g_sbg_s)\in\mathbb Cf_{c,r}g_s\)">\(f_{c,r}g_s\,ab\,f_{c,r}g_s=(f_{c,r}af_{c,r})(g_sbg_s)\in\mathbb Cf_{c,r}g_s\)</span>. By Theorem 4.1 and (5.1),
+<span class="math math-display" data-tex="\[
+H(Q)=\sum_{c,s}a_c\,\eta\Bigl(\frac{\tau(c)}{a_c}u_{c,s}\Bigr)
+=\sum_{c}\Bigl(\tau(c)\sum_s\eta(u_{c,s})+a_c\eta\Bigl(\frac{\tau(c)}{a_c}\Bigr)\Bigr),
+\]">\[
+H(Q)=\sum_{c,s}a_c\,\eta\Bigl(\frac{\tau(c)}{a_c}u_{c,s}\Bigr)
+=\sum_{c}\Bigl(\tau(c)\sum_s\eta(u_{c,s})+a_c\eta\Bigl(\frac{\tau(c)}{a_c}\Bigr)\Bigr),
+\]</span>
+using (1.1) and <span class="math" data-tex="\(\sum_su_{c,s}=1\)">\(\sum_su_{c,s}=1\)</span>. Since <span class="math" data-tex="\(H(N_1)=\sum_ca_c\eta(\tau(c)/a_c)\)">\(H(N_1)=\sum_ca_c\eta(\tau(c)/a_c)\)</span>,
+<span class="math math-display" data-tex="\[
+H(Q)-H(N_1)=\sum_{c\in\mathcal C}\tau(c)\sum_{s\in S}\eta(u_{c,s}). \tag{5.2}
+\]">\[
+H(Q)-H(N_1)=\sum_{c\in\mathcal C}\tau(c)\sum_{s\in S}\eta(u_{c,s}). \tag{5.2}
+\]</span></p>
+<p><em>Step 2: <span class="math" data-tex="\(H(N_2\mid N_1)\ge\)">\(H(N_2\mid N_1)\ge\)</span> (5.2).</em> Use the family <span class="math" data-tex="\((g_s)\)">\((g_s)\)</span>. Since <span class="math" data-tex="\(g_s\in N_2\)">\(g_s\in N_2\)</span>, <span class="math" data-tex="\(\eta(E_{N_2}(g_s))=\eta(g_s)=0\)">\(\eta(E_{N_2}(g_s))=\eta(g_s)=0\)</span>.
+Since <span class="math" data-tex="\(g_s\)">\(g_s\)</span> commutes with <span class="math" data-tex="\(N_1\)">\(N_1\)</span>, so does <span class="math" data-tex="\(E_{N_1}(g_s)\)">\(E_{N_1}(g_s)\)</span> (for a unitary <span class="math" data-tex="\(v\in N_1\)">\(v\in N_1\)</span>,
+<span class="math" data-tex="\(vE_{N_1}(g_s)v^*=E_{N_1}(vg_sv^*)=E_{N_1}(g_s)\)">\(vE_{N_1}(g_s)v^*=E_{N_1}(vg_sv^*)=E_{N_1}(g_s)\)</span>), so <span class="math" data-tex="\(E_{N_1}(g_s)\)">\(E_{N_1}(g_s)\)</span> is central in <span class="math" data-tex="\(N_1\)">\(N_1\)</span>:
+<span class="math" data-tex="\(E_{N_1}(g_s)=\sum_cu_{c,s}c\)">\(E_{N_1}(g_s)=\sum_cu_{c,s}c\)</span>. Hence <span class="math" data-tex="\(\sum_s\tau\eta(E_{N_1}(g_s))=\sum_{c,s}\tau(c)\eta(u_{c,s})\)">\(\sum_s\tau\eta(E_{N_1}(g_s))=\sum_{c,s}\tau(c)\eta(u_{c,s})\)</span>, which is (5.2).</p>
+<p><em>Step 3: <span class="math" data-tex="\(H(N_2\mid N_1)\le\)">\(H(N_2\mid N_1)\le\)</span> (5.2).</em> Let <span class="math" data-tex="\(\widetilde N_2=(N_2\cup\{c:c\in\mathcal C\})&#x27;&#x27;\)">\(\widetilde N_2=(N_2\cup\{c:c\in\mathcal C\})&#x27;&#x27;\)</span>; every <span class="math" data-tex="\(c\in\mathcal C\)">\(c\in\mathcal C\)</span> is
+central in <span class="math" data-tex="\(\widetilde N_2\)">\(\widetilde N_2\)</span> and <span class="math" data-tex="\(\widetilde N_2c=N_2c\)">\(\widetilde N_2c=N_2c\)</span>. By Proposition 5.2(2),
+<span class="math" data-tex="\(H(N_2\mid N_1)\le H(\widetilde N_2\mid N_1)\)">\(H(N_2\mid N_1)\le H(\widetilde N_2\mid N_1)\)</span>. By Proposition 5.2(6) we may use families <span class="math" data-tex="\(x\in\mathcal S_1(Q)\)">\(x\in\mathcal S_1(Q)\)</span>. For
+such <span class="math" data-tex="\(x\)">\(x\)</span>, the elements <span class="math" data-tex="\(x_ic\)">\(x_ic\)</span> lie in <span class="math" data-tex="\(cRc\)">\(cRc\)</span> and <span class="math" data-tex="\(\sum_ix_ic=c\)">\(\sum_ix_ic=c\)</span>. By Lemma 5.4 (applied to <span class="math" data-tex="\(N_1\)">\(N_1\)</span> and to
+<span class="math" data-tex="\(\widetilde N_2\)">\(\widetilde N_2\)</span>), <span class="math" data-tex="\(E_{N_1}(x_i)=\sum_cE^c_{N_1c}(x_ic)\)">\(E_{N_1}(x_i)=\sum_cE^c_{N_1c}(x_ic)\)</span> and <span class="math" data-tex="\(E_{\widetilde N_2}(x_i)=\sum_cE^c_{N_2c}(x_ic)\)">\(E_{\widetilde N_2}(x_i)=\sum_cE^c_{N_2c}(x_ic)\)</span>,
+orthogonal sums. Therefore
+<span class="math math-display" data-tex="\[
+\sum_i\bigl(\tau\eta E_{N_1}(x_i)-\tau\eta E_{\widetilde N_2}(x_i)\bigr)
+=\sum_c\tau(c)\sum_i\bigl(\tau_c\eta E^c_{N_1c}(x_ic)-\tau_c\eta E^c_{N_2c}(x_ic)\bigr)
+\le\sum_c\tau(c)H_c(N_2c\mid N_1c),
+\]">\[
+\sum_i\bigl(\tau\eta E_{N_1}(x_i)-\tau\eta E_{\widetilde N_2}(x_i)\bigr)
+=\sum_c\tau(c)\sum_i\bigl(\tau_c\eta E^c_{N_1c}(x_ic)-\tau_c\eta E^c_{N_2c}(x_ic)\bigr)
+\le\sum_c\tau(c)H_c(N_2c\mid N_1c),
+\]</span>
+where <span class="math" data-tex="\(H_c\)">\(H_c\)</span> denotes relative entropy in <span class="math" data-tex="\((cRc,\tau_c)\)">\((cRc,\tau_c)\)</span>. By Proposition 5.2(3) and Theorem 4.1 in <span class="math" data-tex="\((cRc,\tau_c)\)">\((cRc,\tau_c)\)</span>,
+<span class="math" data-tex="\(H_c(N_2c\mid N_1c)\le H_c(N_2c)=\sum_s\eta(\tau_c(g_sc))=\sum_s\eta(u_{c,s})\)">\(H_c(N_2c\mid N_1c)\le H_c(N_2c)=\sum_s\eta(\tau_c(g_sc))=\sum_s\eta(u_{c,s})\)</span>. (The nonzero <span class="math" data-tex="\(g_sc\)">\(g_sc\)</span> are minimal
+projections of <span class="math" data-tex="\(N_2c\)">\(N_2c\)</span> with sum <span class="math" data-tex="\(c\)">\(c\)</span>, because <span class="math" data-tex="\(b\mapsto bc\)">\(b\mapsto bc\)</span> maps <span class="math" data-tex="\(N_2\)">\(N_2\)</span> onto <span class="math" data-tex="\(N_2c\)">\(N_2c\)</span> with kernel a direct summand.)
+This proves (1).</p>
+<p><em>Step 4: part (2).</em> <span class="math" data-tex="\(N_2\subset Q\)">\(N_2\subset Q\)</span>, so <span class="math" data-tex="\(H(Q\mid N_1)\ge H(N_2\mid N_1)\)">\(H(Q\mid N_1)\ge H(N_2\mid N_1)\)</span> by Proposition 5.2(2). If <span class="math" data-tex="\(N_1\)">\(N_1\)</span> is
+abelian, then <span class="math" data-tex="\(a_c=1\)">\(a_c=1\)</span>, <span class="math" data-tex="\(N_1c=\mathbb Cc\)">\(N_1c=\mathbb Cc\)</span>, and as in Step 3 (with <span class="math" data-tex="\(Q\)">\(Q\)</span> in place of <span class="math" data-tex="\(\widetilde N_2\)">\(\widetilde N_2\)</span>),
+<span class="math" data-tex="\(H(Q\mid N_1)\le\sum_c\tau(c)H_c(Qc)\)">\(H(Q\mid N_1)\le\sum_c\tau(c)H_c(Qc)\)</span>. By Theorem 4.1 and (1.1),
+<span class="math" data-tex="\(H(Q)=\sum_c\bigl(\tau(c)H_c(Qc)+\eta(\tau(c))\bigr)\)">\(H(Q)=\sum_c\bigl(\tau(c)H_c(Qc)+\eta(\tau(c))\bigr)\)</span> and <span class="math" data-tex="\(H(N_1)=\sum_c\eta(\tau(c))\)">\(H(N_1)=\sum_c\eta(\tau(c))\)</span>. So
+<span class="math" data-tex="\(H(Q\mid N_1)\le H(Q)-H(N_1)\)">\(H(Q\mid N_1)\le H(Q)-H(N_1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(N_1\)">\(N_1\)</span> is not abelian, the inequality in (2) can be strict.</p>
+<p><strong>Example 5.6.</strong> Let <span class="math" data-tex="\(R=M_2(\mathbb C)\otimes M_2(\mathbb C)\)">\(R=M_2(\mathbb C)\otimes M_2(\mathbb C)\)</span> with the normalized trace, <span class="math" data-tex="\(N_1=M_2\otimes1\)">\(N_1=M_2\otimes1\)</span>,
+<span class="math" data-tex="\(N_2=1\otimes M_2\)">\(N_2=1\otimes M_2\)</span>, so <span class="math" data-tex="\(Q=R\)">\(Q=R\)</span>, <span class="math" data-tex="\(H(Q)=\log4\)">\(H(Q)=\log4\)</span> and <span class="math" data-tex="\(H(N_1)=\log2\)">\(H(N_1)=\log2\)</span>. Let <span class="math" data-tex="\(\varepsilon_1,\varepsilon_2\)">\(\varepsilon_1,\varepsilon_2\)</span> be the standard
+basis of <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> and consider the four unit vectors
+<span class="math math-display" data-tex="\[
+\xi_\pm=\tfrac1{\sqrt2}(\varepsilon_1\otimes\varepsilon_1\pm\varepsilon_2\otimes\varepsilon_2),\qquad
+\zeta_\pm=\tfrac1{\sqrt2}(\varepsilon_1\otimes\varepsilon_2\pm\varepsilon_2\otimes\varepsilon_1).
+\]">\[
+\xi_\pm=\tfrac1{\sqrt2}(\varepsilon_1\otimes\varepsilon_1\pm\varepsilon_2\otimes\varepsilon_2),\qquad
+\zeta_\pm=\tfrac1{\sqrt2}(\varepsilon_1\otimes\varepsilon_2\pm\varepsilon_2\otimes\varepsilon_1).
+\]</span>
+They form an orthonormal basis, and each satisfies <span class="math" data-tex="\(\langle(a\otimes1)\xi,\xi\rangle=\frac12(a_{11}+a_{22})\)">\(\langle(a\otimes1)\xi,\xi\rangle=\frac12(a_{11}+a_{22})\)</span> for
+<span class="math" data-tex="\(a\in M_2\)">\(a\in M_2\)</span>. Let <span class="math" data-tex="\(q_1,\dots,q_4\)">\(q_1,\dots,q_4\)</span> be the corresponding rank-one projections. Then
+<span class="math" data-tex="\(\tau(q_m(a\otimes1))=\frac14\cdot\frac12(a_{11}+a_{22})=\tau(\tfrac14(a\otimes1))\)">\(\tau(q_m(a\otimes1))=\frac14\cdot\frac12(a_{11}+a_{22})=\tau(\tfrac14(a\otimes1))\)</span>, so <span class="math" data-tex="\(E_{N_1}(q_m)=\frac14\)">\(E_{N_1}(q_m)=\frac14\)</span>. The
+family <span class="math" data-tex="\((q_m)\)">\((q_m)\)</span> gives
+<span class="math math-display" data-tex="\[
+H(Q\mid N_1)\ge\sum_{m=1}^4\bigl(\tau\eta(E_{N_1}(q_m))-\tau\eta(q_m)\bigr)=4\,\eta(\tfrac14)=\log4 .
+\]">\[
+H(Q\mid N_1)\ge\sum_{m=1}^4\bigl(\tau\eta(E_{N_1}(q_m))-\tau\eta(q_m)\bigr)=4\,\eta(\tfrac14)=\log4 .
+\]</span>
+Since <span class="math" data-tex="\(H(Q\mid N_1)\le H(Q)=\log4\)">\(H(Q\mid N_1)\le H(Q)=\log4\)</span>, we get <span class="math" data-tex="\(H(Q\mid N_1)=\log4\)">\(H(Q\mid N_1)=\log4\)</span>, while
+<span class="math" data-tex="\(H(N_2\mid N_1)=H(Q)-H(N_1)=\log2\)">\(H(N_2\mid N_1)=H(Q)-H(N_1)=\log2\)</span>.</p>
+<p><em>Reference:</em> [Connes–Størmer 1975] states <span class="math" data-tex="\(H(N_2\mid N_1)=H((N_1\cup N_2)&#x27;&#x27;\mid N_1)=H((N_1\cup N_2)&#x27;&#x27;)-H(N_1)\)">\(H(N_2\mid N_1)=H((N_1\cup N_2)&#x27;&#x27;\mid N_1)=H((N_1\cup N_2)&#x27;&#x27;)-H(N_1)\)</span> for
+all commuting finite-dimensional <span class="math" data-tex="\(N_1,N_2\)">\(N_1,N_2\)</span>; in Example 5.6, where <span class="math" data-tex="\(N_1\)">\(N_1\)</span> and <span class="math" data-tex="\(N_2\)">\(N_2\)</span> are full matrix algebras, the
+middle term is larger than the other two, so we prove Theorem 5.5 instead.</p>
+<p>Next we introduce the operation used to compare a subalgebra with a slightly smaller version of itself.</p>
+<p><strong>Definition 5.7.</strong> For a subalgebra <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> and a projection <span class="math" data-tex="\(f\in N&#x27;\cap R\)">\(f\in N&#x27;\cap R\)</span>, put
+<span class="math math-display" data-tex="\[
+N^f=\{xf+\lambda(1-f):x\in N,\ \lambda\in\mathbb C\}.
+\]">\[
+N^f=\{xf+\lambda(1-f):x\in N,\ \lambda\in\mathbb C\}.
+\]</span>
+It is the image of <span class="math" data-tex="\(N\oplus\mathbb C\)">\(N\oplus\mathbb C\)</span> under the normal *-homomorphism <span class="math" data-tex="\((x,\lambda)\mapsto xf+\lambda(1-f)\)">\((x,\lambda)\mapsto xf+\lambda(1-f)\)</span>, hence a
+subalgebra (B7). It contains <span class="math" data-tex="\(f\)">\(f\)</span>, and <span class="math" data-tex="\(N^ff=Nf\)">\(N^ff=Nf\)</span>. If <span class="math" data-tex="\(N\)">\(N\)</span> is finite-dimensional, <span class="math" data-tex="\(\dim N^f\le\dim N+1\)">\(\dim N^f\le\dim N+1\)</span> and
+<span class="math" data-tex="\(M(N^f)\le M(N)+1\)">\(M(N^f)\le M(N)+1\)</span>. For a unitary <span class="math" data-tex="\(u\in R\)">\(u\in R\)</span>, <span class="math" data-tex="\(uN^fu^*=(uNu^*)^{ufu^*}\)">\(uN^fu^*=(uNu^*)^{ufu^*}\)</span>.</p>
+<p><strong>Proposition 5.8 (adjoining commuting abelian pieces).</strong> Fix a subalgebra <span class="math" data-tex="\(P\subset R\)">\(P\subset R\)</span> and a finite-dimensional
+abelian subalgebra <span class="math" data-tex="\(A\subset P&#x27;\cap R\)">\(A\subset P&#x27;\cap R\)</span> with minimal projections <span class="math" data-tex="\(a_1,\dots,a_r\)">\(a_1,\dots,a_r\)</span>. Then
+<span class="math math-display" data-tex="\[
+H\bigl((P\cup A)&#x27;&#x27;\mid P\bigr)\le\sum_{j=1}^r\tau\eta\bigl(E_P(a_j)\bigr)\le H(A).
+\]">\[
+H\bigl((P\cup A)&#x27;&#x27;\mid P\bigr)\le\sum_{j=1}^r\tau\eta\bigl(E_P(a_j)\bigr)\le H(A).
+\]</span>
+In particular, for a projection <span class="math" data-tex="\(f\in P&#x27;\cap R\)">\(f\in P&#x27;\cap R\)</span>, <span class="math" data-tex="\(H(P^f\mid P)\le h(\tau(f))\)">\(H(P^f\mid P)\le h(\tau(f))\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(Q=(P\cup A)&#x27;&#x27;\)">\(Q=(P\cup A)&#x27;&#x27;\)</span>. The map <span class="math" data-tex="\(\pi:(p_j)_j\mapsto\sum_jp_ja_j\)">\(\pi:(p_j)_j\mapsto\sum_jp_ja_j\)</span> from <span class="math" data-tex="\(P^{\oplus r}\)">\(P^{\oplus r}\)</span> to <span class="math" data-tex="\(R\)">\(R\)</span> is a normal
+*-homomorphism (the <span class="math" data-tex="\(a_j\)">\(a_j\)</span> are orthogonal projections commuting with <span class="math" data-tex="\(P\)">\(P\)</span>); its image is a subalgebra containing <span class="math" data-tex="\(P\)">\(P\)</span>
+and <span class="math" data-tex="\(A\)">\(A\)</span>, so it equals <span class="math" data-tex="\(Q\)">\(Q\)</span>. If <span class="math" data-tex="\(y=\pi((p_j))\ge0\)">\(y=\pi((p_j))\ge0\)</span>, then also <span class="math" data-tex="\(y=\pi(((p_j+p_j^*)/2)_+)\)">\(y=\pi(((p_j+p_j^*)/2)_+)\)</span>; so every <span class="math" data-tex="\(y\in Q_+\)">\(y\in Q_+\)</span> has
+the form <span class="math" data-tex="\(y=\sum_jp_ja_j\)">\(y=\sum_jp_ja_j\)</span> with <span class="math" data-tex="\(p_j\in P_+\)">\(p_j\in P_+\)</span>.</p>
+<p>Put <span class="math" data-tex="\(c_j=E_P(a_j)\)">\(c_j=E_P(a_j)\)</span>. For a unitary <span class="math" data-tex="\(v\in P\)">\(v\in P\)</span>, <span class="math" data-tex="\(vc_jv^*=E_P(va_jv^*)=c_j\)">\(vc_jv^*=E_P(va_jv^*)=c_j\)</span>, so <span class="math" data-tex="\(c_j\)">\(c_j\)</span> lies in the center of <span class="math" data-tex="\(P\)">\(P\)</span>;
+also <span class="math" data-tex="\(c_j\ge0\)">\(c_j\ge0\)</span> and <span class="math" data-tex="\(\sum_jc_j=1\)">\(\sum_jc_j=1\)</span>. For <span class="math" data-tex="\(y=\sum_jp_ja_j\in Q_+\)">\(y=\sum_jp_ja_j\in Q_+\)</span>:</p>
+<ul>
+<li>the <span class="math" data-tex="\(p_ja_j\)">\(p_ja_j\)</span> have orthogonal supports and <span class="math" data-tex="\(\eta(p_ja_j)=\eta(p_j)a_j\)">\(\eta(p_ja_j)=\eta(p_j)a_j\)</span> by (1.1) (as <span class="math" data-tex="\(\eta(a_j)=0\)">\(\eta(a_j)=0\)</span>), so
+<span class="math" data-tex="\(\tau\eta(y)=\sum_j\tau(\eta(p_j)a_j)=\sum_j\tau(\eta(p_j)c_j)\)">\(\tau\eta(y)=\sum_j\tau(\eta(p_j)a_j)=\sum_j\tau(\eta(p_j)c_j)\)</span>, using <span class="math" data-tex="\(\tau(ba_j)=\tau(bE_P(a_j))\)">\(\tau(ba_j)=\tau(bE_P(a_j))\)</span> for
+<span class="math" data-tex="\(b\in P\)">\(b\in P\)</span>;</li>
+<li><span class="math" data-tex="\(E_P(y)=\sum_jp_jc_j\)">\(E_P(y)=\sum_jp_jc_j\)</span>, and by Lemma 2.2 and (1.1) (the <span class="math" data-tex="\(p_j\)">\(p_j\)</span> and <span class="math" data-tex="\(c_j\)">\(c_j\)</span> commute),
+<span class="math" data-tex="\(\tau\eta(E_P(y))\le\sum_j\tau\eta(p_jc_j)=\sum_j\bigl(\tau(\eta(p_j)c_j)+\tau(p_j\eta(c_j))\bigr)\)">\(\tau\eta(E_P(y))\le\sum_j\tau\eta(p_jc_j)=\sum_j\bigl(\tau(\eta(p_j)c_j)+\tau(p_j\eta(c_j))\bigr)\)</span>.</li>
+</ul>
+<p>Hence <span class="math" data-tex="\(\tau\eta(E_P(y))-\tau\eta(E_Q(y))\le\sum_j\tau(p_j\eta(c_j))\)">\(\tau\eta(E_P(y))-\tau\eta(E_Q(y))\le\sum_j\tau(p_j\eta(c_j))\)</span> for <span class="math" data-tex="\(y\in Q_+\)">\(y\in Q_+\)</span>.</p>
+<p>The right side depends only on <span class="math" data-tex="\(y\)">\(y\)</span>: if <span class="math" data-tex="\(q\in P\)">\(q\in P\)</span> and <span class="math" data-tex="\(qa_j=0\)">\(qa_j=0\)</span>, then <span class="math" data-tex="\(qc_j=E_P(qa_j)=0\)">\(qc_j=E_P(qa_j)=0\)</span>, hence <span class="math" data-tex="\(qc_j^m=0\)">\(qc_j^m=0\)</span> for all
+<span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, and <span class="math" data-tex="\(q\eta(c_j)=0\)">\(q\eta(c_j)=0\)</span> because <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a uniform limit on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> of polynomials vanishing at <span class="math" data-tex="\(0\)">\(0\)</span>.
+Now let <span class="math" data-tex="\(x\in\mathcal S_1(Q)\)">\(x\in\mathcal S_1(Q)\)</span> (this suffices by Proposition 5.2(6)), <span class="math" data-tex="\(x_i=\sum_jp_{ij}a_j\)">\(x_i=\sum_jp_{ij}a_j\)</span>. Then
+<span class="math" data-tex="\((\sum_ip_{ij}-1)a_j=0\)">\((\sum_ip_{ij}-1)a_j=0\)</span>, so <span class="math" data-tex="\(\sum_ip_{ij}\eta(c_j)=\eta(c_j)\)">\(\sum_ip_{ij}\eta(c_j)=\eta(c_j)\)</span>, and
+<span class="math math-display" data-tex="\[
+\sum_i\bigl(\tau\eta E_P(x_i)-\tau\eta(x_i)\bigr)\le\sum_j\tau\eta(c_j)\le\sum_j\eta\tau(c_j)=\sum_j\eta\tau(a_j)=H(A),
+\]">\[
+\sum_i\bigl(\tau\eta E_P(x_i)-\tau\eta(x_i)\bigr)\le\sum_j\tau\eta(c_j)\le\sum_j\eta\tau(c_j)=\sum_j\eta\tau(a_j)=H(A),
+\]</span>
+by Lemma 2.1 and Theorem 4.1. For the last claim take <span class="math" data-tex="\(A=\mathbb Cf+\mathbb C(1-f)\)">\(A=\mathbb Cf+\mathbb C(1-f)\)</span> and note
+<span class="math" data-tex="\(P^f\subset(P\cup A)&#x27;&#x27;\)">\(P^f\subset(P\cup A)&#x27;&#x27;\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.9 (collapsing a corner).</strong> Let <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> be finite-dimensional and <span class="math" data-tex="\(E\in N&#x27;\cap R\)">\(E\in N&#x27;\cap R\)</span> a projection.
+Then
+<span class="math math-display" data-tex="\[
+H(N\mid N^E)\le H\bigl((N\cup\{E\})&#x27;&#x27;\mid N^E\bigr)\le\tau(1-E)\log M(N).
+\]">\[
+H(N\mid N^E)\le H\bigl((N\cup\{E\})&#x27;&#x27;\mid N^E\bigr)\le\tau(1-E)\log M(N).
+\]</span></p>
+<p><em>Proof.</em> The first inequality is Proposition 5.2(2). If <span class="math" data-tex="\(E=1\)">\(E=1\)</span> both sides vanish, so let <span class="math" data-tex="\(e=1-E\ne0\)">\(e=1-E\ne0\)</span>. Put
+<span class="math" data-tex="\(Q=(N\cup\{E\})&#x27;&#x27;=NE+Ne\)">\(Q=(N\cup\{E\})&#x27;&#x27;=NE+Ne\)</span>; <span class="math" data-tex="\(E\)">\(E\)</span> is central in <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(N^E=NE+\mathbb Ce\)">\(N^E=NE+\mathbb Ce\)</span>. For <span class="math" data-tex="\(y\in Q\)">\(y\in Q\)</span>,
+<span class="math math-display" data-tex="\[
+E_{N^E}(y)=yE+\tau_e(ye)\,e .
+\]">\[
+E_{N^E}(y)=yE+\tau_e(ye)\,e .
+\]</span>
+Indeed the right side lies in <span class="math" data-tex="\(N^E\)">\(N^E\)</span> (as <span class="math" data-tex="\(yE\in NE\)">\(yE\in NE\)</span>), and for <span class="math" data-tex="\(z=bE+\lambda e\in N^E\)">\(z=bE+\lambda e\in N^E\)</span> both <span class="math" data-tex="\(y\)">\(y\)</span> and the right side
+have trace <span class="math" data-tex="\(\tau(ybE)+\lambda\tau(ye)\)">\(\tau(ybE)+\lambda\tau(ye)\)</span> against <span class="math" data-tex="\(z\)">\(z\)</span>. For <span class="math" data-tex="\(y\in Q_+\)">\(y\in Q_+\)</span> the pieces <span class="math" data-tex="\(yE\)">\(yE\)</span> and <span class="math" data-tex="\(ye\)">\(ye\)</span> have orthogonal
+supports, so
+<span class="math math-display" data-tex="\[
+\tau\eta(E_{N^E}(y))-\tau\eta(y)=\tau(e)\bigl(\eta\tau_e(ye)-\tau_e\eta(ye)\bigr).
+\]">\[
+\tau\eta(E_{N^E}(y))-\tau\eta(y)=\tau(e)\bigl(\eta\tau_e(ye)-\tau_e\eta(ye)\bigr).
+\]</span>
+For <span class="math" data-tex="\(x\in\mathcal S_1(Q)\)">\(x\in\mathcal S_1(Q)\)</span>, the family <span class="math" data-tex="\((x_ie)_i\)">\((x_ie)_i\)</span> lies in <span class="math" data-tex="\((Ne)_+\)">\((Ne)_+\)</span> and has sum <span class="math" data-tex="\(e\)">\(e\)</span>, so it belongs to
+<span class="math" data-tex="\(\mathcal S_1(eRe)\)">\(\mathcal S_1(eRe)\)</span>, and <span class="math" data-tex="\(E^e_{Ne}(x_ie)=x_ie\)">\(E^e_{Ne}(x_ie)=x_ie\)</span>. Therefore
+<span class="math" data-tex="\(\sum_i(\eta\tau_e(x_ie)-\tau_e\eta(x_ie))\le H_e(Ne)\)">\(\sum_i(\eta\tau_e(x_ie)-\tau_e\eta(x_ie))\le H_e(Ne)\)</span>, the entropy of <span class="math" data-tex="\(Ne\)">\(Ne\)</span> in <span class="math" data-tex="\((eRe,\tau_e)\)">\((eRe,\tau_e)\)</span>. By Corollary 4.2,
+<span class="math" data-tex="\(H_e(Ne)\le\log M(Ne)\le\log M(N)\)">\(H_e(Ne)\le\log M(Ne)\le\log M(N)\)</span> (the map <span class="math" data-tex="\(b\mapsto be\)">\(b\mapsto be\)</span> sends <span class="math" data-tex="\(N\)">\(N\)</span> onto <span class="math" data-tex="\(Ne\)">\(Ne\)</span> and kills a direct summand). By
+Proposition 5.2(6) this bounds <span class="math" data-tex="\(H(Q\mid N^E)\)">\(H(Q\mid N^E)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-perturbing-a-finite-dimensional-subalgebra-into-another">6. Perturbing a finite-dimensional subalgebra into another</h2>
+<p>A reference for this section is [Connes–Størmer 1975].</p>
+<p><strong>Definition 6.1.</strong> For subalgebras <span class="math" data-tex="\(N,P\subset R\)">\(N,P\subset R\)</span> and <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> write <span class="math" data-tex="\(N\overset{\delta}{\subset}P\)">\(N\overset{\delta}{\subset}P\)</span> if for every
+<span class="math" data-tex="\(x\in N\)">\(x\in N\)</span> with <span class="math" data-tex="\(\|x\|\le1\)">\(\|x\|\le1\)</span> there is <span class="math" data-tex="\(y\in P\)">\(y\in P\)</span> with <span class="math" data-tex="\(\|y\|\le1\)">\(\|y\|\le1\)</span> and <span class="math" data-tex="\(\|x-y\|_2&lt;\delta\)">\(\|x-y\|_2&lt;\delta\)</span>.</p>
+<p><strong>Lemma 6.2 (meets of projections).</strong> If <span class="math" data-tex="\(f_1,\dots,f_r\)">\(f_1,\dots,f_r\)</span> are projections below a projection <span class="math" data-tex="\(q\)">\(q\)</span>, then
+<span class="math" data-tex="\(\tau(q-f_1\wedge\dots\wedge f_r)\le\sum_i\tau(q-f_i)\)">\(\tau(q-f_1\wedge\dots\wedge f_r)\le\sum_i\tau(q-f_i)\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, (B5) gives <span class="math" data-tex="\(\tau(q-f_1\wedge f_2)=\tau(q)-\tau(f_1)-\tau(f_2)+\tau(f_1\vee f_2)\)">\(\tau(q-f_1\wedge f_2)=\tau(q)-\tau(f_1)-\tau(f_2)+\tau(f_1\vee f_2)\)</span>, and
+<span class="math" data-tex="\(\tau(f_1\vee f_2)\le\tau(q)\)">\(\tau(f_1\vee f_2)\le\tau(q)\)</span>. Induction on <span class="math" data-tex="\(r\)">\(r\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.3 (spectral cut).</strong> Let <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span> be self-adjoint, <span class="math" data-tex="\(e\in R\)">\(e\in R\)</span> a projection, and
+<span class="math" data-tex="\(q=\chi_{[1/2,\infty)}(a)\)">\(q=\chi_{[1/2,\infty)}(a)\)</span>. Then <span class="math" data-tex="\(\|a-q\|_2\le\|a-e\|_2\)">\(\|a-q\|_2\le\|a-e\|_2\)</span> and <span class="math" data-tex="\(\|q-e\|_2\le2\|a-e\|_2\)">\(\|q-e\|_2\le2\|a-e\|_2\)</span>. If <span class="math" data-tex="\(a\)">\(a\)</span> lies in a
+subalgebra <span class="math" data-tex="\(P\)">\(P\)</span>, so does <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(b=1-2a\)">\(b=1-2a\)</span>, so <span class="math" data-tex="\(q=\chi_{(-\infty,0]}(b)\)">\(q=\chi_{(-\infty,0]}(b)\)</span> and <span class="math" data-tex="\(bq=-b_-\)">\(bq=-b_-\)</span>. Expanding the squares,
+<span class="math" data-tex="\(\|a-e\|_2^2-\|a-q\|_2^2=\tau(be)-\tau(bq)\)">\(\|a-e\|_2^2-\|a-q\|_2^2=\tau(be)-\tau(bq)\)</span>. Now <span class="math" data-tex="\(\tau(be)=\tau(eb_+e)-\tau(b_-^{1/2}eb_-^{1/2})\ge-\tau(b_-)=\tau(bq)\)">\(\tau(be)=\tau(eb_+e)-\tau(b_-^{1/2}eb_-^{1/2})\ge-\tau(b_-)=\tau(bq)\)</span>.
+The second inequality follows from the triangle inequality. The last claim is (B7). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.4 (truncated polar decompositions).</strong></p>
+<p>(a) Let <span class="math" data-tex="\(e\in R\)">\(e\in R\)</span> be a projection and <span class="math" data-tex="\(y\in R\)">\(y\in R\)</span> with <span class="math" data-tex="\(y^*y\le e\)">\(y^*y\le e\)</span>. Put <span class="math" data-tex="\(\kappa=\|y^*y-e\|_2\)">\(\kappa=\|y^*y-e\|_2\)</span>, let <span class="math" data-tex="\(y=w|y|\)">\(y=w|y|\)</span> be the
+polar decomposition and <span class="math" data-tex="\(f=\chi_{[1/2,1]}(|y|)\)">\(f=\chi_{[1/2,1]}(|y|)\)</span>. Then <span class="math" data-tex="\(f\le e\)">\(f\le e\)</span>, <span class="math" data-tex="\(\|f-e\|_2\le2\sqrt\kappa\)">\(\|f-e\|_2\le2\sqrt\kappa\)</span> and
+<span class="math" data-tex="\(\|wf-y\|_2\le\sqrt\kappa\)">\(\|wf-y\|_2\le\sqrt\kappa\)</span>.</p>
+<p>(b) Let <span class="math" data-tex="\(P\subset R\)">\(P\subset R\)</span> be a subalgebra, <span class="math" data-tex="\(z\in P\)">\(z\in P\)</span> with <span class="math" data-tex="\(\|z\|\le1\)">\(\|z\|\le1\)</span>, and <span class="math" data-tex="\(u\in R\)">\(u\in R\)</span> a partial isometry with
+<span class="math" data-tex="\(u^*u=e\)">\(u^*u=e\)</span>. Suppose <span class="math" data-tex="\(\beta=\|z-u\|_2\le1\)">\(\beta=\|z-u\|_2\le1\)</span>. Let <span class="math" data-tex="\(z=w|z|\)">\(z=w|z|\)</span> be the polar decomposition and
+<span class="math" data-tex="\(g=\chi_{[1/2,1]}(|z|)\)">\(g=\chi_{[1/2,1]}(|z|)\)</span>. Then <span class="math" data-tex="\(g\in P\)">\(g\in P\)</span>, <span class="math" data-tex="\(v=wg\in P\)">\(v=wg\in P\)</span> is a partial isometry with <span class="math" data-tex="\(v^*v=g\)">\(v^*v=g\)</span>, <span class="math" data-tex="\(g\)">\(g\)</span> is below the
+support of <span class="math" data-tex="\(|z|\)">\(|z|\)</span>, <span class="math" data-tex="\(vv^*\)">\(vv^*\)</span> is below the range projection of <span class="math" data-tex="\(z\)">\(z\)</span>, and
+<span class="math math-display" data-tex="\[
+\|g-e\|_2\le2\sqrt{3\beta},\qquad\|v-u\|_2\le\sqrt{3\beta}+\beta .
+\]">\[
+\|g-e\|_2\le2\sqrt{3\beta},\qquad\|v-u\|_2\le\sqrt{3\beta}+\beta .
+\]</span></p>
+<p><em>Proof.</em> (a) From <span class="math" data-tex="\(y^*y\le e\)">\(y^*y\le e\)</span> we get <span class="math" data-tex="\(y^*y=ey^*ye\)">\(y^*y=ey^*ye\)</span>, so <span class="math" data-tex="\(|y|\)">\(|y|\)</span> commutes with <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(0\le|y|\le e\)">\(0\le|y|\le e\)</span>; in
+particular <span class="math" data-tex="\(f\le e\)">\(f\le e\)</span>. Since <span class="math" data-tex="\(e-|y|\)">\(e-|y|\)</span> and <span class="math" data-tex="\(e+|y|\)">\(e+|y|\)</span> are commuting positive elements with <span class="math" data-tex="\(e-|y|\le e+|y|\)">\(e-|y|\le e+|y|\)</span>,
+<span class="math" data-tex="\(\|e-|y|\|_2^2=\tau((e-|y|)^2)\le\tau((e-|y|)(e+|y|))=\tau(e-y^*y)\le\|e-y^*y\|_1\le\kappa\)">\(\|e-|y|\|_2^2=\tau((e-|y|)^2)\le\tau((e-|y|)(e+|y|))=\tau(e-y^*y)\le\|e-y^*y\|_1\le\kappa\)</span>. By Lemma 6.3,
+<span class="math" data-tex="\(\|f-|y|\|_2\le\sqrt\kappa\)">\(\|f-|y|\|_2\le\sqrt\kappa\)</span> and <span class="math" data-tex="\(\|f-e\|_2\le2\sqrt\kappa\)">\(\|f-e\|_2\le2\sqrt\kappa\)</span>. Finally <span class="math" data-tex="\(\|wf-y\|_2=\|w(f-|y|)\|_2\le\sqrt\kappa\)">\(\|wf-y\|_2=\|w(f-|y|)\|_2\le\sqrt\kappa\)</span>.</p>
+<p>(b) First, <span class="math" data-tex="\(\||z|-e\|_2^2\le3\beta\)">\(\||z|-e\|_2^2\le3\beta\)</span>. Indeed, <span class="math" data-tex="\(\||z|-e\|_2^2=\tau(z^*z)-2\tau(e|z|e)+\tau(e)\)">\(\||z|-e\|_2^2=\tau(z^*z)-2\tau(e|z|e)+\tau(e)\)</span>, and
+<span class="math" data-tex="\(|z|\ge|z|^2=z^*z\)">\(|z|\ge|z|^2=z^*z\)</span> (as <span class="math" data-tex="\(\|z\|\le1\)">\(\|z\|\le1\)</span>) gives <span class="math" data-tex="\(\tau(e|z|e)\ge\tau(ez^*ze)\)">\(\tau(e|z|e)\ge\tau(ez^*ze)\)</span>. So
+<span class="math math-display" data-tex="\[
+\||z|-e\|_2^2\le\bigl(\tau(z^*z)-\tau(ez^*ze)\bigr)+\bigl(\tau(e)-\tau(ez^*ze)\bigr)
+=\|z(1-e)\|_2^2+\bigl(\|ue\|_2^2-\|ze\|_2^2\bigr).
+\]">\[
+\||z|-e\|_2^2\le\bigl(\tau(z^*z)-\tau(ez^*ze)\bigr)+\bigl(\tau(e)-\tau(ez^*ze)\bigr)
+=\|z(1-e)\|_2^2+\bigl(\|ue\|_2^2-\|ze\|_2^2\bigr).
+\]</span>
+Here <span class="math" data-tex="\(z(1-e)=(z-u)(1-e)\)">\(z(1-e)=(z-u)(1-e)\)</span> has <span class="math" data-tex="\(\|\cdot\|_2\le\beta\)">\(\|\cdot\|_2\le\beta\)</span>, and
+<span class="math" data-tex="\(\|ue\|_2^2-\|ze\|_2^2\le(\|ue\|_2+\|ze\|_2)\,\|(u-z)e\|_2\le2\beta\)">\(\|ue\|_2^2-\|ze\|_2^2\le(\|ue\|_2+\|ze\|_2)\,\|(u-z)e\|_2\le2\beta\)</span>. So <span class="math" data-tex="\(\||z|-e\|_2^2\le\beta^2+2\beta\le3\beta\)">\(\||z|-e\|_2^2\le\beta^2+2\beta\le3\beta\)</span>.</p>
+<p>The projection <span class="math" data-tex="\(g\)">\(g\)</span> lies in <span class="math" data-tex="\(P\)">\(P\)</span> and is below the support <span class="math" data-tex="\(w^*w\)">\(w^*w\)</span> of <span class="math" data-tex="\(|z|\)">\(|z|\)</span>; hence <span class="math" data-tex="\(v^*v=gw^*wg=g\)">\(v^*v=gw^*wg=g\)</span>, and
+<span class="math" data-tex="\(vv^*\le ww^*\)">\(vv^*\le ww^*\)</span>. By Lemma 6.3, <span class="math" data-tex="\(\|g-|z|\|_2\le\sqrt{3\beta}\)">\(\|g-|z|\|_2\le\sqrt{3\beta}\)</span> and <span class="math" data-tex="\(\|g-e\|_2\le2\sqrt{3\beta}\)">\(\|g-e\|_2\le2\sqrt{3\beta}\)</span>. Finally
+<span class="math" data-tex="\(\|v-u\|_2\le\|w(g-|z|)\|_2+\|z-u\|_2\le\sqrt{3\beta}+\beta\)">\(\|v-u\|_2\le\|w(g-|z|)\|_2+\|z-u\|_2\le\sqrt{3\beta}+\beta\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.5 (orthogonal projections).</strong> For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> define <span class="math" data-tex="\(\delta_1(\varepsilon)=\varepsilon/2\)">\(\delta_1(\varepsilon)=\varepsilon/2\)</span>
+and <span class="math" data-tex="\(\delta_m(\varepsilon)=\min\{\varepsilon/4,\delta_{m-1}(\varepsilon/(8m))\}\)">\(\delta_m(\varepsilon)=\min\{\varepsilon/4,\delta_{m-1}(\varepsilon/(8m))\}\)</span>.</p>
+<p>(i) Let <span class="math" data-tex="\(e_1,\dots,e_m\in R\)">\(e_1,\dots,e_m\in R\)</span> be pairwise orthogonal projections, <span class="math" data-tex="\(P\subset R\)">\(P\subset R\)</span> a subalgebra, and
+<span class="math" data-tex="\(a_1,\dots,a_m\in P\)">\(a_1,\dots,a_m\in P\)</span> with <span class="math" data-tex="\(\|a_i\|\le1\)">\(\|a_i\|\le1\)</span> and <span class="math" data-tex="\(\|a_i-e_i\|_2&lt;\delta_m(\varepsilon)\)">\(\|a_i-e_i\|_2&lt;\delta_m(\varepsilon)\)</span>. Then there are pairwise
+orthogonal projections <span class="math" data-tex="\(q_1,\dots,q_m\in P\)">\(q_1,\dots,q_m\in P\)</span> with <span class="math" data-tex="\(\|q_i-e_i\|_2&lt;\varepsilon\)">\(\|q_i-e_i\|_2&lt;\varepsilon\)</span>.</p>
+<p>(ii) If moreover <span class="math" data-tex="\(\sum_ie_i=1\)">\(\sum_ie_i=1\)</span>, <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, and <span class="math" data-tex="\(\|a_i-e_i\|_2&lt;\delta_{m-1}(\varepsilon/m)\)">\(\|a_i-e_i\|_2&lt;\delta_{m-1}(\varepsilon/m)\)</span> for <span class="math" data-tex="\(i&lt;m\)">\(i&lt;m\)</span>, the
+<span class="math" data-tex="\(q_i\)">\(q_i\)</span> can be chosen with <span class="math" data-tex="\(\sum_iq_i=1\)">\(\sum_iq_i=1\)</span>.</p>
+<p>In particular, if <span class="math" data-tex="\(\mathcal A\subset R\)">\(\mathcal A\subset R\)</span> is an abelian subalgebra with minimal projections <span class="math" data-tex="\(e_1,\dots,e_m\)">\(e_1,\dots,e_m\)</span> and
+<span class="math" data-tex="\(\mathcal A\overset{\delta}{\subset}P\)">\(\mathcal A\overset{\delta}{\subset}P\)</span> with <span class="math" data-tex="\(\delta\le\delta_{m-1}(\varepsilon/m)\)">\(\delta\le\delta_{m-1}(\varepsilon/m)\)</span>, there are projections
+<span class="math" data-tex="\(q_i\in P\)">\(q_i\in P\)</span> with <span class="math" data-tex="\(\sum_iq_i=1\)">\(\sum_iq_i=1\)</span> and <span class="math" data-tex="\(\|q_i-e_i\|_2&lt;\varepsilon\)">\(\|q_i-e_i\|_2&lt;\varepsilon\)</span>.</p>
+<p><em>Proof.</em> (i) Induction on <span class="math" data-tex="\(m\)">\(m\)</span>. Replacing <span class="math" data-tex="\(a_i\)">\(a_i\)</span> by <span class="math" data-tex="\((a_i+a_i^*)/2\)">\((a_i+a_i^*)/2\)</span> keeps <span class="math" data-tex="\(\|a_i\|\le1\)">\(\|a_i\|\le1\)</span> and does not increase
+<span class="math" data-tex="\(\|a_i-e_i\|_2\)">\(\|a_i-e_i\|_2\)</span>, so let the <span class="math" data-tex="\(a_i\)">\(a_i\)</span> be self-adjoint. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, Lemma 6.3 gives <span class="math" data-tex="\(q_1=\chi_{[1/2,\infty)}(a_1)\)">\(q_1=\chi_{[1/2,\infty)}(a_1)\)</span> with
+<span class="math" data-tex="\(\|q_1-e_1\|_2\le2\|a_1-e_1\|_2&lt;\varepsilon\)">\(\|q_1-e_1\|_2\le2\|a_1-e_1\|_2&lt;\varepsilon\)</span>. Let <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span> and <span class="math" data-tex="\(\varepsilon_1=\varepsilon/(8m)\)">\(\varepsilon_1=\varepsilon/(8m)\)</span>. Since
+<span class="math" data-tex="\(\delta_m(\varepsilon)\le\delta_{m-1}(\varepsilon_1)\)">\(\delta_m(\varepsilon)\le\delta_{m-1}(\varepsilon_1)\)</span>, the induction hypothesis gives orthogonal projections
+<span class="math" data-tex="\(q_1,\dots,q_{m-1}\in P\)">\(q_1,\dots,q_{m-1}\in P\)</span> with <span class="math" data-tex="\(\|q_i-e_i\|_2&lt;\varepsilon_1\)">\(\|q_i-e_i\|_2&lt;\varepsilon_1\)</span>. Put <span class="math" data-tex="\(r=1-\sum_{i&lt;m}q_i\in P\)">\(r=1-\sum_{i&lt;m}q_i\in P\)</span>,
+<span class="math" data-tex="\(r_0=1-\sum_{i&lt;m}e_i\)">\(r_0=1-\sum_{i&lt;m}e_i\)</span>, so <span class="math" data-tex="\(e_m=r_0e_mr_0\)">\(e_m=r_0e_mr_0\)</span> and <span class="math" data-tex="\(\|r-r_0\|_2&lt;(m-1)\varepsilon_1\)">\(\|r-r_0\|_2&lt;(m-1)\varepsilon_1\)</span>. Let <span class="math" data-tex="\(b=ra_mr\in P\)">\(b=ra_mr\in P\)</span>. Then
+<span class="math math-display" data-tex="\[
+b-e_m=(r-r_0)a_mr+r_0(a_m-e_m)r+r_0e_m(r-r_0),
+\]">\[
+b-e_m=(r-r_0)a_mr+r_0(a_m-e_m)r+r_0e_m(r-r_0),
+\]</span>
+so <span class="math" data-tex="\(\|b-e_m\|_2&lt;2(m-1)\varepsilon_1+\delta_m(\varepsilon)\)">\(\|b-e_m\|_2&lt;2(m-1)\varepsilon_1+\delta_m(\varepsilon)\)</span>. Let <span class="math" data-tex="\(q_m=\chi_{[1/2,\infty)}(b)\in P\)">\(q_m=\chi_{[1/2,\infty)}(b)\in P\)</span>. Since
+<span class="math" data-tex="\(b(1-r)=0\)">\(b(1-r)=0\)</span>, <span class="math" data-tex="\(q_m\le r\)">\(q_m\le r\)</span>, so <span class="math" data-tex="\(q_m\)">\(q_m\)</span> is orthogonal to <span class="math" data-tex="\(q_1,\dots,q_{m-1}\)">\(q_1,\dots,q_{m-1}\)</span>. By Lemma 6.3,
+<span class="math" data-tex="\(\|q_m-e_m\|_2&lt;4(m-1)\varepsilon_1+2\delta_m(\varepsilon)\le\varepsilon/2+\varepsilon/2\)">\(\|q_m-e_m\|_2&lt;4(m-1)\varepsilon_1+2\delta_m(\varepsilon)\le\varepsilon/2+\varepsilon/2\)</span>.</p>
+<p>(ii) Apply (i) to <span class="math" data-tex="\(e_1,\dots,e_{m-1}\)">\(e_1,\dots,e_{m-1}\)</span> with <span class="math" data-tex="\(\varepsilon/m\)">\(\varepsilon/m\)</span>, and put <span class="math" data-tex="\(q_m=1-\sum_{i&lt;m}q_i\)">\(q_m=1-\sum_{i&lt;m}q_i\)</span>. Then
+<span class="math" data-tex="\(\|q_m-e_m\|_2=\|\sum_{i&lt;m}(e_i-q_i)\|_2&lt;(m-1)\varepsilon/m\)">\(\|q_m-e_m\|_2=\|\sum_{i&lt;m}(e_i-q_i)\|_2&lt;(m-1)\varepsilon/m\)</span>. The last statement follows, taking <span class="math" data-tex="\(a_i\in P\)">\(a_i\in P\)</span> with
+<span class="math" data-tex="\(\|a_i\|\le1\)">\(\|a_i\|\le1\)</span> and <span class="math" data-tex="\(\|a_i-e_i\|_2&lt;\delta\)">\(\|a_i-e_i\|_2&lt;\delta\)</span> (the case <span class="math" data-tex="\(m=1\)">\(m=1\)</span> is trivial). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.6 (approximate matrix units).</strong> Let <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> be a subalgebra with <span class="math" data-tex="\(\dim N\le n\)">\(\dim N\le n\)</span> and
+matrix units <span class="math" data-tex="\((e^{(k)}_{ij})\)">\((e^{(k)}_{ij})\)</span>, and let <span class="math" data-tex="\(M=M(N)\)">\(M=M(N)\)</span>. Let <span class="math" data-tex="\(0&lt;\varepsilon_1\le1/9\)">\(0&lt;\varepsilon_1\le1/9\)</span> and
+<span class="math" data-tex="\(0&lt;\delta\le\min\{\varepsilon_1,\delta_M(\varepsilon_1)\}\)">\(0&lt;\delta\le\min\{\varepsilon_1,\delta_M(\varepsilon_1)\}\)</span>. If <span class="math" data-tex="\(N\overset{\delta}{\subset}P\)">\(N\overset{\delta}{\subset}P\)</span>, there are
+<span class="math" data-tex="\(p^{(k)}_{ij}\in P\)">\(p^{(k)}_{ij}\in P\)</span> satisfying the relations of matrix units,
+<span class="math" data-tex="\(p^{(k)}_{ij}p^{(l)}_{rs}=\delta_{kl}\delta_{jr}p^{(k)}_{is}\)">\(p^{(k)}_{ij}p^{(l)}_{rs}=\delta_{kl}\delta_{jr}p^{(k)}_{is}\)</span>, <span class="math" data-tex="\((p^{(k)}_{ij})^*=p^{(k)}_{ji}\)">\((p^{(k)}_{ij})^*=p^{(k)}_{ji}\)</span> (but possibly
+<span class="math" data-tex="\(\sum_{k,i}p^{(k)}_{ii}\ne1\)">\(\sum_{k,i}p^{(k)}_{ii}\ne1\)</span>), such that
+<span class="math math-display" data-tex="\[
+\|p^{(k)}_{j1}-e^{(k)}_{j1}\|_2\le11\sqrt{n\varepsilon_1}\qquad\text{for all }j,k .
+\]">\[
+\|p^{(k)}_{j1}-e^{(k)}_{j1}\|_2\le11\sqrt{n\varepsilon_1}\qquad\text{for all }j,k .
+\]</span>
+Consequently, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, depending only on <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, such that
+<span class="math" data-tex="\(N\overset{\delta}{\subset}P\)">\(N\overset{\delta}{\subset}P\)</span> and <span class="math" data-tex="\(\dim N\le n\)">\(\dim N\le n\)</span> give such <span class="math" data-tex="\(p^{(k)}_{ij}\)">\(p^{(k)}_{ij}\)</span> with
+<span class="math" data-tex="\(\|p^{(k)}_{j1}-e^{(k)}_{j1}\|_2&lt;\varepsilon\)">\(\|p^{(k)}_{j1}-e^{(k)}_{j1}\|_2&lt;\varepsilon\)</span>.</p>
+<p><em>Proof.</em> <em>Diagonal.</em> The <span class="math" data-tex="\(M\)">\(M\)</span> projections <span class="math" data-tex="\(e^{(k)}_{ii}\)">\(e^{(k)}_{ii}\)</span> are orthogonal and lie in the unit ball of <span class="math" data-tex="\(N\)">\(N\)</span>. By
+Definition 6.1 and Lemma 6.5(i) there are orthogonal projections <span class="math" data-tex="\(q^{(k)}_i\in P\)">\(q^{(k)}_i\in P\)</span> with
+<span class="math" data-tex="\(\|q^{(k)}_i-e^{(k)}_{ii}\|_2&lt;\varepsilon_1\)">\(\|q^{(k)}_i-e^{(k)}_{ii}\|_2&lt;\varepsilon_1\)</span>.</p>
+<p><em>Off-diagonal.</em> Fix <span class="math" data-tex="\(k\)">\(k\)</span>, drop it from the notation, and let <span class="math" data-tex="\(2\le j\le n_k\)">\(2\le j\le n_k\)</span>. Choose <span class="math" data-tex="\(y\in P\)">\(y\in P\)</span>, <span class="math" data-tex="\(\|y\|\le1\)">\(\|y\|\le1\)</span>, with
+<span class="math" data-tex="\(\|y-e_{j1}\|_2&lt;\delta\)">\(\|y-e_{j1}\|_2&lt;\delta\)</span>, and put <span class="math" data-tex="\(z_j=q_jyq_1\in P\)">\(z_j=q_jyq_1\in P\)</span>. Since <span class="math" data-tex="\(e_{j1}=e_{jj}e_{j1}e_{11}\)">\(e_{j1}=e_{jj}e_{j1}e_{11}\)</span>,
+<span class="math math-display" data-tex="\[
+\|z_j-e_{j1}\|_2\le\|(q_j-e_{jj})yq_1\|_2+\|e_{jj}(y-e_{j1})q_1\|_2+\|e_{j1}(q_1-e_{11})\|_2&lt;3\varepsilon_1=:\beta .
+\]">\[
+\|z_j-e_{j1}\|_2\le\|(q_j-e_{jj})yq_1\|_2+\|e_{jj}(y-e_{j1})q_1\|_2+\|e_{j1}(q_1-e_{11})\|_2&lt;3\varepsilon_1=:\beta .
+\]</span>
+Apply Lemma 6.4(b) to <span class="math" data-tex="\(z_j\)">\(z_j\)</span> and <span class="math" data-tex="\(u=e_{j1}\)">\(u=e_{j1}\)</span> (with <span class="math" data-tex="\(u^*u=e_{11}\)">\(u^*u=e_{11}\)</span>). We get a projection <span class="math" data-tex="\(g_j\in P\)">\(g_j\in P\)</span> and a partial
+isometry <span class="math" data-tex="\(v_j\in P\)">\(v_j\in P\)</span> with <span class="math" data-tex="\(v_j^*v_j=g_j\le q_1\)">\(v_j^*v_j=g_j\le q_1\)</span> (the support of <span class="math" data-tex="\(|z_j|\)">\(|z_j|\)</span> is below <span class="math" data-tex="\(q_1\)">\(q_1\)</span>),
+<span class="math" data-tex="\(v_jv_j^*\le q_j\)">\(v_jv_j^*\le q_j\)</span> (the range of <span class="math" data-tex="\(z_j\)">\(z_j\)</span> is below <span class="math" data-tex="\(q_j\)">\(q_j\)</span>), and, using <span class="math" data-tex="\(\sqrt{3\beta}=3\sqrt{\varepsilon_1}\)">\(\sqrt{3\beta}=3\sqrt{\varepsilon_1}\)</span> and
+<span class="math" data-tex="\(3\varepsilon_1\le\sqrt{\varepsilon_1}\)">\(3\varepsilon_1\le\sqrt{\varepsilon_1}\)</span>,
+<span class="math math-display" data-tex="\[
+\|g_j-e_{11}\|_2\le6\sqrt{\varepsilon_1},\qquad\|v_j-e_{j1}\|_2\le4\sqrt{\varepsilon_1}.
+\]">\[
+\|g_j-e_{11}\|_2\le6\sqrt{\varepsilon_1},\qquad\|v_j-e_{j1}\|_2\le4\sqrt{\varepsilon_1}.
+\]</span></p>
+<p><em>Correcting the initial projections.</em> Put <span class="math" data-tex="\(p_{11}=q_1\wedge g_2\wedge\dots\wedge g_{n_k}\in P\)">\(p_{11}=q_1\wedge g_2\wedge\dots\wedge g_{n_k}\in P\)</span> (so <span class="math" data-tex="\(p_{11}=q_1\)">\(p_{11}=q_1\)</span> if
+<span class="math" data-tex="\(n_k=1\)">\(n_k=1\)</span>). Since <span class="math" data-tex="\(\|q_1-g_j\|_2\le\varepsilon_1+6\sqrt{\varepsilon_1}\le7\sqrt{\varepsilon_1}\)">\(\|q_1-g_j\|_2\le\varepsilon_1+6\sqrt{\varepsilon_1}\le7\sqrt{\varepsilon_1}\)</span> and
+<span class="math" data-tex="\(q_1-g_j\)">\(q_1-g_j\)</span> is a projection, Lemma 6.2 gives
+<span class="math" data-tex="\(\tau(q_1-p_{11})\le\sum_{j\ge2}\tau(q_1-g_j)\le49n\varepsilon_1\)">\(\tau(q_1-p_{11})\le\sum_{j\ge2}\tau(q_1-g_j)\le49n\varepsilon_1\)</span>. Hence <span class="math" data-tex="\(\|q_1-p_{11}\|_2\le7\sqrt{n\varepsilon_1}\)">\(\|q_1-p_{11}\|_2\le7\sqrt{n\varepsilon_1}\)</span>,
+<span class="math" data-tex="\(\|p_{11}-e_{11}\|_2\le8\sqrt{n\varepsilon_1}\)">\(\|p_{11}-e_{11}\|_2\le8\sqrt{n\varepsilon_1}\)</span>, and <span class="math" data-tex="\(\|g_j-p_{11}\|_2\le7\sqrt{n\varepsilon_1}\)">\(\|g_j-p_{11}\|_2\le7\sqrt{n\varepsilon_1}\)</span> since
+<span class="math" data-tex="\(p_{11}\le g_j\le q_1\)">\(p_{11}\le g_j\le q_1\)</span>. Put <span class="math" data-tex="\(p_{j1}=v_jp_{11}\)">\(p_{j1}=v_jp_{11}\)</span> for <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>, and <span class="math" data-tex="\(p_{ij}=p_{i1}p_{j1}^*\)">\(p_{ij}=p_{i1}p_{j1}^*\)</span>. Then
+<span class="math math-display" data-tex="\[
+\|p_{j1}-e_{j1}\|_2\le\|v_j(p_{11}-g_j)\|_2+\|v_j-e_{j1}\|_2\le7\sqrt{n\varepsilon_1}+4\sqrt{\varepsilon_1}\le11\sqrt{n\varepsilon_1}.
+\]">\[
+\|p_{j1}-e_{j1}\|_2\le\|v_j(p_{11}-g_j)\|_2+\|v_j-e_{j1}\|_2\le7\sqrt{n\varepsilon_1}+4\sqrt{\varepsilon_1}\le11\sqrt{n\varepsilon_1}.
+\]</span></p>
+<p><em>Relations.</em> <span class="math" data-tex="\(p_{j1}^*p_{j1}=p_{11}g_jp_{11}=p_{11}\)">\(p_{j1}^*p_{j1}=p_{11}g_jp_{11}=p_{11}\)</span>, and <span class="math" data-tex="\(p_{j1}p_{j1}^*\le q_j\)">\(p_{j1}p_{j1}^*\le q_j\)</span> (also for <span class="math" data-tex="\(j=1\)">\(j=1\)</span>). As the <span class="math" data-tex="\(q\)">\(q\)</span>'s
+are orthogonal (also across different <span class="math" data-tex="\(k\)">\(k\)</span>), <span class="math" data-tex="\(p_{i1}^*p_{j1}=p_{i1}^*q_iq_jp_{j1}=\delta_{ij}p_{11}\)">\(p_{i1}^*p_{j1}=p_{i1}^*q_iq_jp_{j1}=\delta_{ij}p_{11}\)</span>, and products
+from different blocks vanish. Then <span class="math" data-tex="\(p_{ij}p_{rs}=p_{i1}(p_{j1}^*p_{r1})p_{s1}^*=\delta_{jr}p_{i1}p_{11}p_{s1}^*=\delta_{jr}p_{is}\)">\(p_{ij}p_{rs}=p_{i1}(p_{j1}^*p_{r1})p_{s1}^*=\delta_{jr}p_{i1}p_{11}p_{s1}^*=\delta_{jr}p_{is}\)</span>,
+and <span class="math" data-tex="\(p_{ij}^*=p_{ji}\)">\(p_{ij}^*=p_{ji}\)</span>.</p>
+<p>For the last statement choose <span class="math" data-tex="\(\varepsilon_1\le1/9\)">\(\varepsilon_1\le1/9\)</span> with <span class="math" data-tex="\(11\sqrt{n\varepsilon_1}&lt;\varepsilon\)">\(11\sqrt{n\varepsilon_1}&lt;\varepsilon\)</span> and
+<span class="math" data-tex="\(\delta=\min\{\varepsilon_1,\delta_1(\varepsilon_1),\dots,\delta_n(\varepsilon_1)\}\)">\(\delta=\min\{\varepsilon_1,\delta_1(\varepsilon_1),\dots,\delta_n(\varepsilon_1)\}\)</span>; note <span class="math" data-tex="\(M\le n\)">\(M\le n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 6.7 (intertwining partial isometry).</strong> Let <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> be finite-dimensional with matrix units
+<span class="math" data-tex="\((e^{(k)}_{ij})\)">\((e^{(k)}_{ij})\)</span>, and let <span class="math" data-tex="\((p^{(k)}_{ij})\)">\((p^{(k)}_{ij})\)</span> be elements of a subalgebra <span class="math" data-tex="\(P\)">\(P\)</span> satisfying the relations of matrix
+units, with
+<span class="math math-display" data-tex="\[
+\gamma:=\sum_{k,j}\|p^{(k)}_{j1}-e^{(k)}_{j1}\|_2\le1 .
+\]">\[
+\gamma:=\sum_{k,j}\|p^{(k)}_{j1}-e^{(k)}_{j1}\|_2\le1 .
+\]</span>
+Let <span class="math" data-tex="\(\psi:N\to P\)">\(\psi:N\to P\)</span> be the *-homomorphism with <span class="math" data-tex="\(\psi(e^{(k)}_{ij})=p^{(k)}_{ij}\)">\(\psi(e^{(k)}_{ij})=p^{(k)}_{ij}\)</span>, <span class="math" data-tex="\(p_0=\psi(1)\)">\(p_0=\psi(1)\)</span>, and
+<span class="math" data-tex="\(\widetilde N=\psi(N)+\mathbb C(1-p_0)\subset P\)">\(\widetilde N=\psi(N)+\mathbb C(1-p_0)\subset P\)</span>, a subalgebra with <span class="math" data-tex="\(\dim\widetilde N\le\dim N+1\)">\(\dim\widetilde N\le\dim N+1\)</span>. Then there is a
+partial isometry <span class="math" data-tex="\(w\in R\)">\(w\in R\)</span> such that, with <span class="math" data-tex="\(f=w^*w\)">\(f=w^*w\)</span> and <span class="math" data-tex="\(\tilde f=ww^*\)">\(\tilde f=ww^*\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(wx=\psi(x)w\)">\(wx=\psi(x)w\)</span> for <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>; <span class="math" data-tex="\(f\in N&#x27;\cap R\)">\(f\in N&#x27;\cap R\)</span>, <span class="math" data-tex="\(\tilde f\le p_0\)">\(\tilde f\le p_0\)</span>, <span class="math" data-tex="\(\tilde f\in\widetilde N&#x27;\cap R\)">\(\tilde f\in\widetilde N&#x27;\cap R\)</span>, and
+<span class="math" data-tex="\(wxw^*=\psi(x)\tilde f\)">\(wxw^*=\psi(x)\tilde f\)</span> for <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>;</li>
+<li><span class="math" data-tex="\(\|w-1\|_2\le3\sqrt\gamma\)">\(\|w-1\|_2\le3\sqrt\gamma\)</span> and <span class="math" data-tex="\(\|1-f\|_2\le\sqrt{2\gamma}\)">\(\|1-f\|_2\le\sqrt{2\gamma}\)</span>;</li>
+<li>if <span class="math" data-tex="\(E\in N&#x27;\cap R\)">\(E\in N&#x27;\cap R\)</span> is a projection with <span class="math" data-tex="\(E\le f\)">\(E\le f\)</span>, then <span class="math" data-tex="\(F=wEw^*\)">\(F=wEw^*\)</span> is a projection in <span class="math" data-tex="\(\widetilde N&#x27;\cap R\)">\(\widetilde N&#x27;\cap R\)</span> and
+<span class="math" data-tex="\((wE)x(wE)^*=\psi(x)F\)">\((wE)x(wE)^*=\psi(x)F\)</span> for <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>;</li>
+<li>there is a unitary <span class="math" data-tex="\(u\in R\)">\(u\in R\)</span> with <span class="math" data-tex="\(uf=w\)">\(uf=w\)</span>, <span class="math" data-tex="\(ufu^*=\tilde f\)">\(ufu^*=\tilde f\)</span>, <span class="math" data-tex="\(uN^fu^*=\widetilde N^{\tilde f}\)">\(uN^fu^*=\widetilde N^{\tilde f}\)</span>, and
+<span class="math" data-tex="\(\|u-1\|_2\le3\sqrt\gamma+3\sqrt{2\gamma}\)">\(\|u-1\|_2\le3\sqrt\gamma+3\sqrt{2\gamma}\)</span>.</li>
+</ol>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(z=\sum_{k,j}p^{(k)}_{j1}e^{(k)}_{1j}\)">\(z=\sum_{k,j}p^{(k)}_{j1}e^{(k)}_{1j}\)</span>. By the matrix unit relations of both systems,
+<span class="math" data-tex="\(ze^{(k)}_{ij}=p^{(k)}_{i1}e^{(k)}_{1j}=p^{(k)}_{ij}z\)">\(ze^{(k)}_{ij}=p^{(k)}_{i1}e^{(k)}_{1j}=p^{(k)}_{ij}z\)</span>, so <span class="math" data-tex="\(zx=\psi(x)z\)">\(zx=\psi(x)z\)</span> for all <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>. Also
+<span class="math" data-tex="\(z^*z=\sum_{k,j}e^{(k)}_{j1}p^{(k)}_{11}e^{(k)}_{1j}\)">\(z^*z=\sum_{k,j}e^{(k)}_{j1}p^{(k)}_{11}e^{(k)}_{1j}\)</span>, a sum of positive operators
+<span class="math" data-tex="\(T_{kj}\le e^{(k)}_{jj}\)">\(T_{kj}\le e^{(k)}_{jj}\)</span> living under the orthogonal projections <span class="math" data-tex="\(e^{(k)}_{jj}\)">\(e^{(k)}_{jj}\)</span>; so <span class="math" data-tex="\(z^*z\le1\)">\(z^*z\le1\)</span> and <span class="math" data-tex="\(\|z\|\le1\)">\(\|z\|\le1\)</span>.
+Since <span class="math" data-tex="\(1=\sum_{k,j}e^{(k)}_{j1}e^{(k)}_{1j}\)">\(1=\sum_{k,j}e^{(k)}_{j1}e^{(k)}_{1j}\)</span>,
+<span class="math" data-tex="\(\|z-1\|_2\le\sum_{k,j}\|(p^{(k)}_{j1}-e^{(k)}_{j1})e^{(k)}_{1j}\|_2\le\gamma\)">\(\|z-1\|_2\le\sum_{k,j}\|(p^{(k)}_{j1}-e^{(k)}_{j1})e^{(k)}_{1j}\|_2\le\gamma\)</span>.</p>
+<p>(1) <span class="math" data-tex="\(z^*z\)">\(z^*z\)</span> commutes with <span class="math" data-tex="\(N\)">\(N\)</span>: <span class="math" data-tex="\(z^*zx=z^*\psi(x)z=(\psi(x^*)z)^*z=(zx^*)^*z=xz^*z\)">\(z^*zx=z^*\psi(x)z=(\psi(x^*)z)^*z=(zx^*)^*z=xz^*z\)</span>. Hence <span class="math" data-tex="\(|z|\)">\(|z|\)</span> and its support
+<span class="math" data-tex="\(f\)">\(f\)</span> lie in <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>. Let <span class="math" data-tex="\(z=w|z|\)">\(z=w|z|\)</span>. Then <span class="math" data-tex="\((wx-\psi(x)w)|z|=zx-\psi(x)z=0\)">\((wx-\psi(x)w)|z|=zx-\psi(x)z=0\)</span>, so <span class="math" data-tex="\(wx-\psi(x)w\)">\(wx-\psi(x)w\)</span> vanishes on the range
+of <span class="math" data-tex="\(f\)">\(f\)</span>; and <span class="math" data-tex="\((wx-\psi(x)w)(1-f)=w(1-f)x-\psi(x)w(1-f)=0\)">\((wx-\psi(x)w)(1-f)=w(1-f)x-\psi(x)w(1-f)=0\)</span>. So <span class="math" data-tex="\(wx=\psi(x)w\)">\(wx=\psi(x)w\)</span>. Taking adjoints,
+<span class="math" data-tex="\(xw^*=w^*\psi(x)\)">\(xw^*=w^*\psi(x)\)</span>; hence <span class="math" data-tex="\(wxw^*=\psi(x)ww^*=\psi(x)\tilde f\)">\(wxw^*=\psi(x)ww^*=\psi(x)\tilde f\)</span>, and <span class="math" data-tex="\(\tilde f\psi(x)=wxw^*=\psi(x)\tilde f\)">\(\tilde f\psi(x)=wxw^*=\psi(x)\tilde f\)</span>. Since
+<span class="math" data-tex="\(z=p_0z\)">\(z=p_0z\)</span>, <span class="math" data-tex="\(\tilde f\le p_0\)">\(\tilde f\le p_0\)</span>; so <span class="math" data-tex="\(\tilde f\)">\(\tilde f\)</span> commutes with <span class="math" data-tex="\(\psi(N)\)">\(\psi(N)\)</span> and with <span class="math" data-tex="\(1-p_0\)">\(1-p_0\)</span>.</p>
+<p>(2) Since <span class="math" data-tex="\(0\le|z|\le1\)">\(0\le|z|\le1\)</span>, <span class="math" data-tex="\((1-t)^2\le1-t^2\)">\((1-t)^2\le1-t^2\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> gives
+<span class="math" data-tex="\(\|1-|z|\|_2^2\le\tau(1-z^*z)=2\operatorname{Re}\tau(1-z)-\|1-z\|_2^2\le2\|1-z\|_2\le2\gamma\)">\(\|1-|z|\|_2^2\le\tau(1-z^*z)=2\operatorname{Re}\tau(1-z)-\|1-z\|_2^2\le2\|1-z\|_2\le2\gamma\)</span>. Since
+<span class="math" data-tex="\((1-f)|z|=0\)">\((1-f)|z|=0\)</span>, <span class="math" data-tex="\(1-f=(1-f)(1-|z|)\)">\(1-f=(1-f)(1-|z|)\)</span> and <span class="math" data-tex="\(\|1-f\|_2\le\sqrt{2\gamma}\)">\(\|1-f\|_2\le\sqrt{2\gamma}\)</span>. Finally
+<span class="math" data-tex="\(w-1=w(1-|z|)+(z-1)\)">\(w-1=w(1-|z|)+(z-1)\)</span>, so <span class="math" data-tex="\(\|w-1\|_2\le\sqrt{2\gamma}+\gamma\le3\sqrt\gamma\)">\(\|w-1\|_2\le\sqrt{2\gamma}+\gamma\le3\sqrt\gamma\)</span>.</p>
+<p>(3) <span class="math" data-tex="\(wE\)">\(wE\)</span> is a partial isometry with <span class="math" data-tex="\((wE)^*wE=EfE=E\)">\((wE)^*wE=EfE=E\)</span>, so <span class="math" data-tex="\(F\)">\(F\)</span> is a projection. For <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>,
+<span class="math" data-tex="\((wE)x(wE)^*=wxEw^*=\psi(x)wEw^*=\psi(x)F\)">\((wE)x(wE)^*=wxEw^*=\psi(x)wEw^*=\psi(x)F\)</span>. Taking <span class="math" data-tex="\(x\)">\(x\)</span> unitary shows <span class="math" data-tex="\(F\)">\(F\)</span> commutes with <span class="math" data-tex="\(\psi(N)\)">\(\psi(N)\)</span>; and
+<span class="math" data-tex="\(F\le\tilde f\le p_0\)">\(F\le\tilde f\le p_0\)</span>.</p>
+<p>(4) Since <span class="math" data-tex="\(f\sim\tilde f\)">\(f\sim\tilde f\)</span>, (B5) gives a partial isometry <span class="math" data-tex="\(w&#x27;\)">\(w&#x27;\)</span> with <span class="math" data-tex="\(w&#x27;^*w&#x27;=1-f\)">\(w&#x27;^*w&#x27;=1-f\)</span>, <span class="math" data-tex="\(w&#x27;w&#x27;^*=1-\tilde f\)">\(w&#x27;w&#x27;^*=1-\tilde f\)</span>. Put
+<span class="math" data-tex="\(u=w+w&#x27;\)">\(u=w+w&#x27;\)</span>; it is a unitary (the initial and final projections of <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(w&#x27;\)">\(w&#x27;\)</span> are complementary), <span class="math" data-tex="\(uf=w\)">\(uf=w\)</span> and
+<span class="math" data-tex="\(ufu^*=\tilde f\)">\(ufu^*=\tilde f\)</span>. For <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, <span class="math" data-tex="\(u(xf)u^*=ufxfu^*=wxw^*=\psi(x)\tilde f\)">\(u(xf)u^*=ufxfu^*=wxw^*=\psi(x)\tilde f\)</span>, and <span class="math" data-tex="\(u(1-f)u^*=1-\tilde f\)">\(u(1-f)u^*=1-\tilde f\)</span>; so
+<span class="math" data-tex="\(uN^fu^*=\{\psi(x)\tilde f+\lambda(1-\tilde f)\}=\widetilde N^{\tilde f}\)">\(uN^fu^*=\{\psi(x)\tilde f+\lambda(1-\tilde f)\}=\widetilde N^{\tilde f}\)</span> (for <span class="math" data-tex="\(y=\psi(x)+\mu(1-p_0)\in\widetilde N\)">\(y=\psi(x)+\mu(1-p_0)\in\widetilde N\)</span>,
+<span class="math" data-tex="\(y\tilde f=\psi(x)\tilde f\)">\(y\tilde f=\psi(x)\tilde f\)</span>). Finally <span class="math" data-tex="\(\|u-1\|_2\le\|w-f\|_2+\|w&#x27;-(1-f)\|_2\le(\|w-1\|_2+\|1-f\|_2)+(\|w&#x27;\|_2+\|1-f\|_2)\)">\(\|u-1\|_2\le\|w-f\|_2+\|w&#x27;-(1-f)\|_2\le(\|w-1\|_2+\|1-f\|_2)+(\|w&#x27;\|_2+\|1-f\|_2)\)</span>
+and <span class="math" data-tex="\(\|w&#x27;\|_2=\|1-f\|_2\)">\(\|w&#x27;\|_2=\|1-f\|_2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.8 (shrinking a projection into the commutant).</strong> Let <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> be finite-dimensional, <span class="math" data-tex="\(M=M(N)\)">\(M=M(N)\)</span> and
+<span class="math" data-tex="\(K_M=2^MM!\)">\(K_M=2^MM!\)</span>. There is a finite group <span class="math" data-tex="\(G\)">\(G\)</span> of unitaries of <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(|G|\le K_M\)">\(|G|\le K_M\)</span> and <span class="math" data-tex="\(G&#x27;\cap R=N&#x27;\cap R\)">\(G&#x27;\cap R=N&#x27;\cap R\)</span>.
+Consequently, for every projection <span class="math" data-tex="\(e\in R\)">\(e\in R\)</span>, the projection <span class="math" data-tex="\(E=\bigwedge_{g\in G}geg^*\)">\(E=\bigwedge_{g\in G}geg^*\)</span> lies in <span class="math" data-tex="\(N&#x27;\cap R\)">\(N&#x27;\cap R\)</span>,
+<span class="math" data-tex="\(E\le e\)">\(E\le e\)</span>, and <span class="math" data-tex="\(\tau(1-E)\le K_M\,\tau(1-e)\)">\(\tau(1-E)\le K_M\,\tau(1-e)\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(G\)">\(G\)</span> be the set of unitaries <span class="math" data-tex="\(\sum_k\sum_i\epsilon_{k,i}e^{(k)}_{\sigma_k(i)i}\)">\(\sum_k\sum_i\epsilon_{k,i}e^{(k)}_{\sigma_k(i)i}\)</span> with signs
+<span class="math" data-tex="\(\epsilon_{k,i}\in\{\pm1\}\)">\(\epsilon_{k,i}\in\{\pm1\}\)</span> and permutations <span class="math" data-tex="\(\sigma_k\)">\(\sigma_k\)</span> of <span class="math" data-tex="\(\{1,\dots,n_k\}\)">\(\{1,\dots,n_k\}\)</span>: the block diagonal signed
+permutation matrices. It is a group of order <span class="math" data-tex="\(\prod_k2^{n_k}n_k!\le2^MM!\)">\(\prod_k2^{n_k}n_k!\le2^MM!\)</span>. It contains <span class="math" data-tex="\(1-2e^{(k)}_{ii}\)">\(1-2e^{(k)}_{ii}\)</span> (one sign
+flipped), so the algebra it generates contains every <span class="math" data-tex="\(e^{(k)}_{ii}\)">\(e^{(k)}_{ii}\)</span>; it contains the transposition matrix <span class="math" data-tex="\(g\)">\(g\)</span> of
+<span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> in block <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(e^{(k)}_{ii}g=e^{(k)}_{ij}\)">\(e^{(k)}_{ii}g=e^{(k)}_{ij}\)</span>. So <span class="math" data-tex="\(G\)">\(G\)</span> generates <span class="math" data-tex="\(N\)">\(N\)</span> as an algebra and
+<span class="math" data-tex="\(G&#x27;\cap R=N&#x27;\cap R\)">\(G&#x27;\cap R=N&#x27;\cap R\)</span>. For <span class="math" data-tex="\(h\in G\)">\(h\in G\)</span>, <span class="math" data-tex="\(hEh^*=\bigwedge_ghgeg^*h^*=E\)">\(hEh^*=\bigwedge_ghgeg^*h^*=E\)</span>, so <span class="math" data-tex="\(E\in G&#x27;=N&#x27;\)">\(E\in G&#x27;=N&#x27;\)</span>. Clearly <span class="math" data-tex="\(E\le e\)">\(E\le e\)</span>, and
+Lemma 6.2 with <span class="math" data-tex="\(q=1\)">\(q=1\)</span> gives <span class="math" data-tex="\(\tau(1-E)\le\sum_g\tau(1-geg^*)=|G|\,\tau(1-e)\)">\(\tau(1-E)\le\sum_g\tau(1-geg^*)=|G|\,\tau(1-e)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.9 (from a partial isometry to a unitary).</strong> Let <span class="math" data-tex="\(E\in R\)">\(E\in R\)</span> be a projection and <span class="math" data-tex="\(x\in R\)">\(x\in R\)</span> a partial isometry
+with <span class="math" data-tex="\(x^*x=E\)">\(x^*x=E\)</span> and <span class="math" data-tex="\(\|x-E\|\le d_0\le1/4\)">\(\|x-E\|\le d_0\le1/4\)</span>. Then there is a unitary <span class="math" data-tex="\(v\in R\)">\(v\in R\)</span> with <span class="math" data-tex="\(vE=x\)">\(vE=x\)</span>, <span class="math" data-tex="\(vEv^*=xx^*\)">\(vEv^*=xx^*\)</span> and
+<span class="math" data-tex="\(\|v-1\|\le5d_0\)">\(\|v-1\|\le5d_0\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(F=xx^*\)">\(F=xx^*\)</span>. From <span class="math" data-tex="\(F-E=(x-E)x^*+E(x-E)^*\)">\(F-E=(x-E)x^*+E(x-E)^*\)</span>, <span class="math" data-tex="\(d:=\|F-E\|\le2d_0\le1/2\)">\(d:=\|F-E\|\le2d_0\le1/2\)</span>. Let
+<span class="math" data-tex="\(T=(1-E)(1-F)(1-E)=(1-E)-(1-E)F(1-E)\)">\(T=(1-E)(1-F)(1-E)=(1-E)-(1-E)F(1-E)\)</span>. Since <span class="math" data-tex="\(F(1-E)=(F-E)(1-E)\)">\(F(1-E)=(F-E)(1-E)\)</span> has norm <span class="math" data-tex="\(\le d\)">\(\le d\)</span>,
+<span class="math" data-tex="\(T\ge(1-d^2)(1-E)\)">\(T\ge(1-d^2)(1-E)\)</span>; so <span class="math" data-tex="\(T\)">\(T\)</span> is invertible in <span class="math" data-tex="\((1-E)R(1-E)\)">\((1-E)R(1-E)\)</span>, with inverse square root <span class="math" data-tex="\(T^{-1/2}\)">\(T^{-1/2}\)</span> there. Put
+<span class="math" data-tex="\(y=(1-F)(1-E)T^{-1/2}\)">\(y=(1-F)(1-E)T^{-1/2}\)</span>. Then <span class="math" data-tex="\(y^*y=1-E\)">\(y^*y=1-E\)</span>. Also <span class="math" data-tex="\(y=(1-F)y\)">\(y=(1-F)y\)</span>, and <span class="math" data-tex="\(yy^*\)">\(yy^*\)</span> is the range projection of
+<span class="math" data-tex="\((1-F)(1-E)\)">\((1-F)(1-E)\)</span>, which is <span class="math" data-tex="\(1-F\)">\(1-F\)</span> because <span class="math" data-tex="\((1-F)(1-E)(1-F)\ge(1-d^2)(1-F)\)">\((1-F)(1-E)(1-F)\ge(1-d^2)(1-F)\)</span> by the same argument. So <span class="math" data-tex="\(yy^*=1-F\)">\(yy^*=1-F\)</span>.
+Moreover <span class="math" data-tex="\(\|y-(1-E)\|\le\|T^{-1/2}-(1-E)\|+\|(1-F)(1-E)-(1-E)\|\le\bigl((1-d^2)^{-1/2}-1\bigr)+d\le2d\)">\(\|y-(1-E)\|\le\|T^{-1/2}-(1-E)\|+\|(1-F)(1-E)-(1-E)\|\le\bigl((1-d^2)^{-1/2}-1\bigr)+d\le2d\)</span>, using
+<span class="math" data-tex="\((1-s)^{-1/2}-1\le s/(1-s)\le\frac43s\)">\((1-s)^{-1/2}-1\le s/(1-s)\le\frac43s\)</span> for <span class="math" data-tex="\(s=d^2\le\frac14\)">\(s=d^2\le\frac14\)</span> and <span class="math" data-tex="\(\frac43d^2\le d\)">\(\frac43d^2\le d\)</span>.</p>
+<p>Put <span class="math" data-tex="\(v=x+y\)">\(v=x+y\)</span>. Since <span class="math" data-tex="\(x=Fx=xE\)">\(x=Fx=xE\)</span> and <span class="math" data-tex="\(y=(1-F)y=y(1-E)\)">\(y=(1-F)y=y(1-E)\)</span>, the cross terms <span class="math" data-tex="\(x^*y\)">\(x^*y\)</span> and <span class="math" data-tex="\(xy^*\)">\(xy^*\)</span> vanish, so
+<span class="math" data-tex="\(v^*v=E+(1-E)=1\)">\(v^*v=E+(1-E)=1\)</span> and <span class="math" data-tex="\(vv^*=F+(1-F)=1\)">\(vv^*=F+(1-F)=1\)</span>. Also <span class="math" data-tex="\(vE=x\)">\(vE=x\)</span>, <span class="math" data-tex="\(vEv^*=xx^*\)">\(vEv^*=xx^*\)</span>, and
+<span class="math" data-tex="\(\|v-1\|\le\|x-E\|+\|y-(1-E)\|\le d_0+4d_0\)">\(\|v-1\|\le\|x-E\|+\|y-(1-E)\|\le d_0+4d_0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.10 (perturbation theorem).</strong> For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(\varepsilon&#x27;\in(0,1]\)">\(\varepsilon&#x27;\in(0,1]\)</span> there is <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>,
+depending only on <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(\varepsilon&#x27;\)">\(\varepsilon&#x27;\)</span>, with the following property. Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be as above and
+<span class="math" data-tex="\(N,P\subset R\)">\(N,P\subset R\)</span> subalgebras with <span class="math" data-tex="\(\dim N\le n\)">\(\dim N\le n\)</span> and <span class="math" data-tex="\(N\overset{\delta}{\subset}P\)">\(N\overset{\delta}{\subset}P\)</span>. Then there are a projection
+<span class="math" data-tex="\(E\in N&#x27;\cap R\)">\(E\in N&#x27;\cap R\)</span> with <span class="math" data-tex="\(\tau(1-E)\le\varepsilon&#x27;\)">\(\tau(1-E)\le\varepsilon&#x27;\)</span>, a unitary <span class="math" data-tex="\(v\in R\)">\(v\in R\)</span> with <span class="math" data-tex="\(\|v-1\|\le\varepsilon&#x27;\)">\(\|v-1\|\le\varepsilon&#x27;\)</span>, and a
+subalgebra <span class="math" data-tex="\(\widetilde N\subset P\)">\(\widetilde N\subset P\)</span> with <span class="math" data-tex="\(\dim\widetilde N\le n+1\)">\(\dim\widetilde N\le n+1\)</span>, such that <span class="math" data-tex="\(F=vEv^*\in\widetilde N&#x27;\)">\(F=vEv^*\in\widetilde N&#x27;\)</span> and
+<span class="math math-display" data-tex="\[
+vN^Ev^*=\widetilde N^{F}.
+\]">\[
+vN^Ev^*=\widetilde N^{F}.
+\]</span></p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(K=2^nn!\)">\(K=2^nn!\)</span>, <span class="math" data-tex="\(\alpha=(\varepsilon&#x27;/5)^2\)">\(\alpha=(\varepsilon&#x27;/5)^2\)</span>, <span class="math" data-tex="\(\gamma=\alpha\varepsilon&#x27;/(11K)\)">\(\gamma=\alpha\varepsilon&#x27;/(11K)\)</span>,
+<span class="math" data-tex="\(\varepsilon_1=\min\{1/9,\ \gamma^2/(121n^3)\}\)">\(\varepsilon_1=\min\{1/9,\ \gamma^2/(121n^3)\}\)</span>, and <span class="math" data-tex="\(\delta=\min\{\varepsilon_1,\delta_1(\varepsilon_1),\dots,\delta_n(\varepsilon_1)\}\)">\(\delta=\min\{\varepsilon_1,\delta_1(\varepsilon_1),\dots,\delta_n(\varepsilon_1)\}\)</span>.
+Let <span class="math" data-tex="\(N\overset{\delta}{\subset}P\)">\(N\overset{\delta}{\subset}P\)</span>, <span class="math" data-tex="\(\dim N\le n\)">\(\dim N\le n\)</span>, <span class="math" data-tex="\(M=M(N)\le n\)">\(M=M(N)\le n\)</span>, with matrix units <span class="math" data-tex="\((e^{(k)}_{ij})\)">\((e^{(k)}_{ij})\)</span>.</p>
+<p><em>Step 1.</em> Lemma 6.6 gives matrix units <span class="math" data-tex="\((p^{(k)}_{ij})\)">\((p^{(k)}_{ij})\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span> with
+<span class="math" data-tex="\(\sum_{k,j}\|p^{(k)}_{j1}-e^{(k)}_{j1}\|_2\le M\cdot11\sqrt{n\varepsilon_1}\le11n^{3/2}\sqrt{\varepsilon_1}\le\gamma\)">\(\sum_{k,j}\|p^{(k)}_{j1}-e^{(k)}_{j1}\|_2\le M\cdot11\sqrt{n\varepsilon_1}\le11n^{3/2}\sqrt{\varepsilon_1}\le\gamma\)</span>.</p>
+<p><em>Step 2.</em> Proposition 6.7 gives <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, <span class="math" data-tex="\(\widetilde N\subset P\)">\(\widetilde N\subset P\)</span> (<span class="math" data-tex="\(\dim\widetilde N\le n+1\)">\(\dim\widetilde N\le n+1\)</span>) and a partial isometry
+<span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(\|w-1\|_2^2\le9\gamma\)">\(\|w-1\|_2^2\le9\gamma\)</span>, <span class="math" data-tex="\(\tau(1-f)=\|1-f\|_2^2\le2\gamma\)">\(\tau(1-f)=\|1-f\|_2^2\le2\gamma\)</span>, where <span class="math" data-tex="\(f=w^*w\in N&#x27;\)">\(f=w^*w\in N&#x27;\)</span>.</p>
+<p><em>Step 3.</em> Let <span class="math" data-tex="\(h=(w-1)^*(w-1)\)">\(h=(w-1)^*(w-1)\)</span> and <span class="math" data-tex="\(e_0=\chi_{[0,\alpha]}(h)\)">\(e_0=\chi_{[0,\alpha]}(h)\)</span>. Since <span class="math" data-tex="\(h\ge\alpha(1-e_0)\)">\(h\ge\alpha(1-e_0)\)</span>,
+<span class="math" data-tex="\(\tau(1-e_0)\le\tau(h)/\alpha\le9\gamma/\alpha\)">\(\tau(1-e_0)\le\tau(h)/\alpha\le9\gamma/\alpha\)</span>, and <span class="math" data-tex="\(\|(w-1)e_0\|^2=\|e_0he_0\|\le\alpha\)">\(\|(w-1)e_0\|^2=\|e_0he_0\|\le\alpha\)</span>. Put
+<span class="math" data-tex="\(e=e_0\wedge f\)">\(e=e_0\wedge f\)</span>; by Lemma 6.2, <span class="math" data-tex="\(\tau(1-e)\le9\gamma/\alpha+2\gamma\le11\gamma/\alpha\)">\(\tau(1-e)\le9\gamma/\alpha+2\gamma\le11\gamma/\alpha\)</span>. Lemma 6.8 gives a projection
+<span class="math" data-tex="\(E\in N&#x27;\cap R\)">\(E\in N&#x27;\cap R\)</span> with <span class="math" data-tex="\(E\le e\)">\(E\le e\)</span> and <span class="math" data-tex="\(\tau(1-E)\le K\cdot11\gamma/\alpha=\varepsilon&#x27;\)">\(\tau(1-E)\le K\cdot11\gamma/\alpha=\varepsilon&#x27;\)</span>.</p>
+<p><em>Step 4.</em> Put <span class="math" data-tex="\(x=wE\)">\(x=wE\)</span>. Since <span class="math" data-tex="\(E\le f\)">\(E\le f\)</span>, <span class="math" data-tex="\(x^*x=E\)">\(x^*x=E\)</span>; and <span class="math" data-tex="\(\|x-E\|=\|(w-1)e_0E\|\le\sqrt\alpha=\varepsilon&#x27;/5\le1/4\)">\(\|x-E\|=\|(w-1)e_0E\|\le\sqrt\alpha=\varepsilon&#x27;/5\le1/4\)</span>.
+Lemma 6.9 gives a unitary <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(vE=x\)">\(vE=x\)</span>, <span class="math" data-tex="\(F:=vEv^*=wEw^*\)">\(F:=vEv^*=wEw^*\)</span>, and <span class="math" data-tex="\(\|v-1\|\le5\sqrt\alpha=\varepsilon&#x27;\)">\(\|v-1\|\le5\sqrt\alpha=\varepsilon&#x27;\)</span>.</p>
+<p><em>Step 5.</em> By Proposition 6.7(3), <span class="math" data-tex="\(F\in\widetilde N&#x27;\)">\(F\in\widetilde N&#x27;\)</span> and for <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span>,
+<span class="math" data-tex="\(v(yE)v^*=(vE)y(vE)^*=(wE)y(wE)^*=\psi(y)F\)">\(v(yE)v^*=(vE)y(vE)^*=(wE)y(wE)^*=\psi(y)F\)</span>; also <span class="math" data-tex="\(v(1-E)v^*=1-F\)">\(v(1-E)v^*=1-F\)</span>. Hence
+<span class="math" data-tex="\(vN^Ev^*=\{\psi(y)F+\lambda(1-F)\}=\widetilde N^F\)">\(vN^Ev^*=\{\psi(y)F+\lambda(1-F)\}=\widetilde N^F\)</span>, since <span class="math" data-tex="\(F\le p_0\)">\(F\le p_0\)</span> gives <span class="math" data-tex="\((\psi(y)+\mu(1-p_0))F=\psi(y)F\)">\((\psi(y)+\mu(1-p_0))F=\psi(y)F\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-continuity-of-the-relative-entropy">7. Continuity of the relative entropy</h2>
+<p><strong>Proposition 7.1 (conjugation by a unitary close to 1).</strong> Let <span class="math" data-tex="\(Q\subset R\)">\(Q\subset R\)</span> be finite-dimensional, <span class="math" data-tex="\(M=M(Q)\)">\(M=M(Q)\)</span>, and
+<span class="math" data-tex="\(v\in R\)">\(v\in R\)</span> unitary. Then
+<span class="math math-display" data-tex="\[
+H(Q\mid vQv^*)\le\omega_M\bigl(2\|v-1\|\bigr),
+\]">\[
+H(Q\mid vQv^*)\le\omega_M\bigl(2\|v-1\|\bigr),
+\]</span>
+with <span class="math" data-tex="\(\omega_M\)">\(\omega_M\)</span> as in Lemma 2.6. In particular, for every <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(\varepsilon&#x27;&gt;0\)">\(\varepsilon&#x27;&gt;0\)</span> such
+that <span class="math" data-tex="\(H(Q\mid vQv^*)&lt;\varepsilon\)">\(H(Q\mid vQv^*)&lt;\varepsilon\)</span> whenever <span class="math" data-tex="\(\dim Q\le m\)">\(\dim Q\le m\)</span> and <span class="math" data-tex="\(\|v-1\|&lt;\varepsilon&#x27;\)">\(\|v-1\|&lt;\varepsilon&#x27;\)</span>.</p>
+<p><em>Proof.</em> The map <span class="math" data-tex="\(y\mapsto vE_Q(v^*yv)v^*\)">\(y\mapsto vE_Q(v^*yv)v^*\)</span> is the <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-preserving conditional expectation onto <span class="math" data-tex="\(vQv^*\)">\(vQv^*\)</span> (it is
+positive, unital, <span class="math" data-tex="\(vQv^*\)">\(vQv^*\)</span>-bimodular and preserves <span class="math" data-tex="\(\tau\)">\(\tau\)</span>), so <span class="math" data-tex="\(\tau\eta(E_{vQv^*}(y))=\tau\eta(E_Q(v^*yv))\)">\(\tau\eta(E_{vQv^*}(y))=\tau\eta(E_Q(v^*yv))\)</span>.
+Let <span class="math" data-tex="\(x\in\mathcal S_1(R)\)">\(x\in\mathcal S_1(R)\)</span> and put <span class="math" data-tex="\(X_i=E_Q(x_i)\)">\(X_i=E_Q(x_i)\)</span>, <span class="math" data-tex="\(X&#x27;_i=E_Q(v^*x_iv)\)">\(X&#x27;_i=E_Q(v^*x_iv)\)</span>, <span class="math" data-tex="\(s_i=\tau(x_i)\)">\(s_i=\tau(x_i)\)</span>. Then <span class="math" data-tex="\(X_i,X&#x27;_i\in Q_+\)">\(X_i,X&#x27;_i\in Q_+\)</span>,
+<span class="math" data-tex="\(\sum_iX_i=\sum_iX&#x27;_i=1\)">\(\sum_iX_i=\sum_iX&#x27;_i=1\)</span>, <span class="math" data-tex="\(\tau(X_i)=\tau(X&#x27;_i)=s_i\)">\(\tau(X_i)=\tau(X&#x27;_i)=s_i\)</span>, <span class="math" data-tex="\(\sum_is_i=1\)">\(\sum_is_i=1\)</span>, and by (B1), (B7),
+<span class="math math-display" data-tex="\[
+\|X_i-X&#x27;_i\|_1\le\|x_i-v^*x_iv\|_1\le\|(1-v^*)x_i\|_1+\|v^*x_i(1-v)\|_1\le2\|v-1\|\,s_i .
+\]">\[
+\|X_i-X&#x27;_i\|_1\le\|x_i-v^*x_iv\|_1\le\|(1-v^*)x_i\|_1+\|v^*x_i(1-v)\|_1\le2\|v-1\|\,s_i .
+\]</span>
+The quantity to bound is <span class="math" data-tex="\(\sum_i(\tau\eta(X&#x27;_i)-\tau\eta(X_i))\)">\(\sum_i(\tau\eta(X&#x27;_i)-\tau\eta(X_i))\)</span>. By Lemma 1.1 (in <span class="math" data-tex="\(Q\)">\(Q\)</span>),
+<span class="math math-display" data-tex="\[
+\sum_i\bigl(\tau\eta(X&#x27;_i)-\tau\eta(X_i)\bigr)=\sum_i\bigl(\operatorname{Tr}_Q\eta(\widehat{X&#x27;_i})-\operatorname{Tr}_Q\eta(\widehat X_i)\bigr)+\tau\Bigl(L_Q\sum_i(X&#x27;_i-X_i)\Bigr),
+\]">\[
+\sum_i\bigl(\tau\eta(X&#x27;_i)-\tau\eta(X_i)\bigr)=\sum_i\bigl(\operatorname{Tr}_Q\eta(\widehat{X&#x27;_i})-\operatorname{Tr}_Q\eta(\widehat X_i)\bigr)+\tau\Bigl(L_Q\sum_i(X&#x27;_i-X_i)\Bigr),
+\]</span>
+and the last term is <span class="math" data-tex="\(\tau(L_Q(1-1))=0\)">\(\tau(L_Q(1-1))=0\)</span>. For <span class="math" data-tex="\(s_i=0\)">\(s_i=0\)</span> we have <span class="math" data-tex="\(X_i=X&#x27;_i=0\)">\(X_i=X&#x27;_i=0\)</span>. For <span class="math" data-tex="\(s_i&gt;0\)">\(s_i&gt;0\)</span>, (1.1) gives
+<span class="math" data-tex="\(\operatorname{Tr}_Q\eta(\widehat X_i)=s_i\operatorname{Tr}_Q\eta(\widehat X_i/s_i)+\eta(s_i)\)">\(\operatorname{Tr}_Q\eta(\widehat X_i)=s_i\operatorname{Tr}_Q\eta(\widehat X_i/s_i)+\eta(s_i)\)</span>, and the same for
+<span class="math" data-tex="\(X&#x27;_i\)">\(X&#x27;_i\)</span> with the same <span class="math" data-tex="\(\eta(s_i)\)">\(\eta(s_i)\)</span>. By Lemma 2.6 and Lemma 1.1,
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_Q\eta(\widehat{X&#x27;_i})-\operatorname{Tr}_Q\eta(\widehat X_i)\le s_i\,\omega_M\bigl(\|X_i-X&#x27;_i\|_1/s_i\bigr).
+\]">\[
+\operatorname{Tr}_Q\eta(\widehat{X&#x27;_i})-\operatorname{Tr}_Q\eta(\widehat X_i)\le s_i\,\omega_M\bigl(\|X_i-X&#x27;_i\|_1/s_i\bigr).
+\]</span>
+Since <span class="math" data-tex="\(\omega_M\)">\(\omega_M\)</span> is concave and nondecreasing and <span class="math" data-tex="\(\sum_is_i=1\)">\(\sum_is_i=1\)</span>,
+<span class="math" data-tex="\(\sum_is_i\omega_M(\|X_i-X&#x27;_i\|_1/s_i)\le\omega_M(\sum_i\|X_i-X&#x27;_i\|_1)\le\omega_M(2\|v-1\|)\)">\(\sum_is_i\omega_M(\|X_i-X&#x27;_i\|_1/s_i)\le\omega_M(\sum_i\|X_i-X&#x27;_i\|_1)\le\omega_M(2\|v-1\|)\)</span>. For the last
+statement use <span class="math" data-tex="\(M(Q)\le\dim Q\le m\)">\(M(Q)\le\dim Q\le m\)</span>, monotonicity of <span class="math" data-tex="\(\omega_M\)">\(\omega_M\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(\omega_m(s)\to0\)">\(\omega_m(s)\to0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 7.2.</strong> The cancellation of the term <span class="math" data-tex="\(\tau(L_Q\,\cdot\,)\)">\(\tau(L_Q\,\cdot\,)\)</span> over the whole family is essential. For a single
+positive <span class="math" data-tex="\(x\)">\(x\)</span>, the absolute value of <span class="math" data-tex="\(\tau\eta(E_{vQv^*}(x))-\tau\eta(E_Q(x))\)">\(\tau\eta(E_{vQv^*}(x))-\tau\eta(E_Q(x))\)</span> is <em>not</em> bounded by
+<span class="math" data-tex="\(c\,\tau(x)\)">\(c\,\tau(x)\)</span> with <span class="math" data-tex="\(c\)">\(c\)</span> depending only on <span class="math" data-tex="\(\dim Q\)">\(\dim Q\)</span> and <span class="math" data-tex="\(\|v-1\|\)">\(\|v-1\|\)</span>: Exercise 8.5 gives, for <span class="math" data-tex="\(\dim Q=2\)">\(\dim Q=2\)</span> and a fixed
+<span class="math" data-tex="\(\|v-1\|\)">\(\|v-1\|\)</span>, examples where the ratio to <span class="math" data-tex="\(\tau(x)\)">\(\tau(x)\)</span> is arbitrarily large in absolute value. The reason is that <span class="math" data-tex="\(L_Q\)">\(L_Q\)</span> is large on
+minimal projections of small trace.</p>
+<p><strong>Theorem 7.3 (continuity of relative entropy).</strong> For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>,
+depending only on <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, such that for every finite von Neumann algebra <span class="math" data-tex="\(R\)">\(R\)</span> with a faithful normal
+tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and all subalgebras <span class="math" data-tex="\(N,P\subset R\)">\(N,P\subset R\)</span>,
+<span class="math math-display" data-tex="\[
+\dim N\le n\ \text{ and }\ N\overset{\delta}{\subset}P\quad\Longrightarrow\quad H(N\mid P)&lt;\varepsilon .
+\]">\[
+\dim N\le n\ \text{ and }\ N\overset{\delta}{\subset}P\quad\Longrightarrow\quad H(N\mid P)&lt;\varepsilon .
+\]</span></p>
+<p><em>Proof.</em> Choose <span class="math" data-tex="\(\varepsilon&#x27;\in(0,\tfrac12]\)">\(\varepsilon&#x27;\in(0,\tfrac12]\)</span> with
+<span class="math math-display" data-tex="\[
+\varepsilon&#x27;\log n+\omega_{n+1}(2\varepsilon&#x27;)+h(\varepsilon&#x27;)&lt;\varepsilon,
+\]">\[
+\varepsilon&#x27;\log n+\omega_{n+1}(2\varepsilon&#x27;)+h(\varepsilon&#x27;)&lt;\varepsilon,
+\]</span>
+which is possible since each term tends to <span class="math" data-tex="\(0\)">\(0\)</span> with <span class="math" data-tex="\(\varepsilon&#x27;\)">\(\varepsilon&#x27;\)</span>. Let <span class="math" data-tex="\(\delta\)">\(\delta\)</span> be given by Theorem 6.10 for
+<span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(\varepsilon&#x27;\)">\(\varepsilon&#x27;\)</span>. If <span class="math" data-tex="\(\dim N\le n\)">\(\dim N\le n\)</span> and <span class="math" data-tex="\(N\overset{\delta}{\subset}P\)">\(N\overset{\delta}{\subset}P\)</span>, take <span class="math" data-tex="\(E\)">\(E\)</span>, <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(\widetilde N\)">\(\widetilde N\)</span>
+and <span class="math" data-tex="\(F=vEv^*\)">\(F=vEv^*\)</span> as in Theorem 6.10. By the triangle inequality (Proposition 5.2(4)),
+<span class="math math-display" data-tex="\[
+H(N\mid P)\le H(N\mid N^E)+H(N^E\mid vN^Ev^*)+H(\widetilde N^F\mid\widetilde N)+H(\widetilde N\mid P),
+\]">\[
+H(N\mid P)\le H(N\mid N^E)+H(N^E\mid vN^Ev^*)+H(\widetilde N^F\mid\widetilde N)+H(\widetilde N\mid P),
+\]</span>
+where we used <span class="math" data-tex="\(vN^Ev^*=\widetilde N^F\)">\(vN^Ev^*=\widetilde N^F\)</span>. We bound the four terms.</p>
+<ul>
+<li><span class="math" data-tex="\(H(N\mid N^E)\le\tau(1-E)\log M(N)\le\varepsilon&#x27;\log n\)">\(H(N\mid N^E)\le\tau(1-E)\log M(N)\le\varepsilon&#x27;\log n\)</span> by Proposition 5.9.</li>
+<li><span class="math" data-tex="\(H(N^E\mid vN^Ev^*)\le\omega_{M(N^E)}(2\|v-1\|)\le\omega_{n+1}(2\varepsilon&#x27;)\)">\(H(N^E\mid vN^Ev^*)\le\omega_{M(N^E)}(2\|v-1\|)\le\omega_{n+1}(2\varepsilon&#x27;)\)</span> by Proposition 7.1, since
+<span class="math" data-tex="\(M(N^E)\le M(N)+1\le n+1\)">\(M(N^E)\le M(N)+1\le n+1\)</span>.</li>
+<li><span class="math" data-tex="\(H(\widetilde N^F\mid\widetilde N)\le h(\tau(F))=h(\tau(1-E))\le h(\varepsilon&#x27;)\)">\(H(\widetilde N^F\mid\widetilde N)\le h(\tau(F))=h(\tau(1-E))\le h(\varepsilon&#x27;)\)</span> by Proposition 5.8, because
+<span class="math" data-tex="\(F\in\widetilde N&#x27;\)">\(F\in\widetilde N&#x27;\)</span>, <span class="math" data-tex="\(\tau(1-F)=\tau(1-E)\le\varepsilon&#x27;\le\frac12\)">\(\tau(1-F)=\tau(1-E)\le\varepsilon&#x27;\le\frac12\)</span>, and <span class="math" data-tex="\(h\)">\(h\)</span> is symmetric and increasing on
+<span class="math" data-tex="\([0,\frac12]\)">\([0,\frac12]\)</span>.</li>
+<li><span class="math" data-tex="\(H(\widetilde N\mid P)=0\)">\(H(\widetilde N\mid P)=0\)</span> by Proposition 5.2(1), since <span class="math" data-tex="\(\widetilde N\subset P\)">\(\widetilde N\subset P\)</span>.</li>
+</ul>
+<p>The sum is less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Connes–Størmer 1975, Theorem 1 of Section 3].</p>
+<p><strong>Corollary 7.4.</strong> Let <span class="math" data-tex="\(P_1\subset P_2\subset\cdots\)">\(P_1\subset P_2\subset\cdots\)</span> be subalgebras of <span class="math" data-tex="\(R\)">\(R\)</span> with
+<span class="math" data-tex="\(\bigl(\bigcup_qP_q\bigr)&#x27;&#x27;=R\)">\(\bigl(\bigcup_qP_q\bigr)&#x27;&#x27;=R\)</span>. Then <span class="math" data-tex="\(H(N\mid P_q)\)">\(H(N\mid P_q)\)</span> decreases to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(q\to\infty\)">\(q\to\infty\)</span>, for every finite-dimensional
+subalgebra <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span>.</p>
+<p><em>Proof.</em> The sequence decreases by Proposition 5.2(2). Let <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, <span class="math" data-tex="\(n=\dim N\)">\(n=\dim N\)</span>, and <span class="math" data-tex="\(\delta\)">\(\delta\)</span> as in
+Theorem 7.3. The unit ball of <span class="math" data-tex="\(N\)">\(N\)</span> is norm compact; choose <span class="math" data-tex="\(x_1,\dots,x_r\)">\(x_1,\dots,x_r\)</span> in it such that every <span class="math" data-tex="\(x\)">\(x\)</span> in the unit
+ball of <span class="math" data-tex="\(N\)">\(N\)</span> has <span class="math" data-tex="\(\|x-x_s\|&lt;\delta/3\)">\(\|x-x_s\|&lt;\delta/3\)</span> for some <span class="math" data-tex="\(s\)">\(s\)</span>. The union <span class="math" data-tex="\(A_0=\bigcup_qP_q\)">\(A_0=\bigcup_qP_q\)</span> is a unital *-algebra with
+<span class="math" data-tex="\(A_0&#x27;&#x27;=R\)">\(A_0&#x27;&#x27;=R\)</span>. By (B8) and (B7), for each <span class="math" data-tex="\(s\)">\(s\)</span> there is <span class="math" data-tex="\(y_s\)">\(y_s\)</span> in the unit ball of <span class="math" data-tex="\(A_0\)">\(A_0\)</span> with
+<span class="math" data-tex="\(\|x_s-y_s\|_2&lt;\delta/3\)">\(\|x_s-y_s\|_2&lt;\delta/3\)</span>; since the <span class="math" data-tex="\(P_q\)">\(P_q\)</span> increase, all <span class="math" data-tex="\(y_s\)">\(y_s\)</span> lie in one <span class="math" data-tex="\(P_{q_0}\)">\(P_{q_0}\)</span>. For <span class="math" data-tex="\(q\ge q_0\)">\(q\ge q_0\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> in
+the unit ball of <span class="math" data-tex="\(N\)">\(N\)</span>, pick <span class="math" data-tex="\(s\)">\(s\)</span> as above: <span class="math" data-tex="\(\|x-y_s\|_2\le\|x-x_s\|+\|x_s-y_s\|_2&lt;\delta\)">\(\|x-y_s\|_2\le\|x-x_s\|+\|x_s-y_s\|_2&lt;\delta\)</span>. So
+<span class="math" data-tex="\(N\overset{\delta}{\subset}P_q\)">\(N\overset{\delta}{\subset}P_q\)</span>, and <span class="math" data-tex="\(H(N\mid P_q)&lt;\varepsilon\)">\(H(N\mid P_q)&lt;\varepsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>Exercise 8.1.</strong> Let <span class="math" data-tex="\(N\)">\(N\)</span> be finite-dimensional with central weights <span class="math" data-tex="\(w_k=\tau(c_k)\)">\(w_k=\tau(c_k)\)</span> and block sizes <span class="math" data-tex="\(n_k\)">\(n_k\)</span>.
+Show that <span class="math" data-tex="\(H(Z(N))\le H(N)\le\log M(N)\)">\(H(Z(N))\le H(N)\le\log M(N)\)</span>, and that <span class="math" data-tex="\(H(N)=\log M(N)\)">\(H(N)=\log M(N)\)</span> exactly when every minimal projection of <span class="math" data-tex="\(N\)">\(N\)</span>
+has trace <span class="math" data-tex="\(1/M(N)\)">\(1/M(N)\)</span>.</p>
+<p><em>Solution.</em> By Corollary 4.2, <span class="math" data-tex="\(H(N)=H(Z(N))+\sum_kw_k\log n_k\ge H(Z(N))\)">\(H(N)=H(Z(N))+\sum_kw_k\log n_k\ge H(Z(N))\)</span>. By Theorem 4.1,
+<span class="math" data-tex="\(H(N)=\sum_\alpha\eta(\tau(e_\alpha))\)">\(H(N)=\sum_\alpha\eta(\tau(e_\alpha))\)</span>, a sum of <span class="math" data-tex="\(M=M(N)\)">\(M=M(N)\)</span> terms with <span class="math" data-tex="\(\sum_\alpha\tau(e_\alpha)=1\)">\(\sum_\alpha\tau(e_\alpha)=1\)</span>. Strict
+concavity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives <span class="math" data-tex="\(\frac1M\sum_\alpha\eta(\tau(e_\alpha))\le\eta(1/M)\)">\(\frac1M\sum_\alpha\eta(\tau(e_\alpha))\le\eta(1/M)\)</span>, with equality if and only if all
+<span class="math" data-tex="\(\tau(e_\alpha)\)">\(\tau(e_\alpha)\)</span> equal <span class="math" data-tex="\(1/M\)">\(1/M\)</span>. Since <span class="math" data-tex="\(M\eta(1/M)=\log M\)">\(M\eta(1/M)=\log M\)</span>, the claims follow.</p>
+<p><strong>Exercise 8.2.</strong> Let <span class="math" data-tex="\(N\subset R\)">\(N\subset R\)</span> be finite-dimensional and <span class="math" data-tex="\(P\subset R\)">\(P\subset R\)</span> any subalgebra. Show that
+<span class="math" data-tex="\(H(N\mid P)=0\)">\(H(N\mid P)=0\)</span> if and only if <span class="math" data-tex="\(N\subset P\)">\(N\subset P\)</span>.</p>
+<p><em>Solution.</em> If <span class="math" data-tex="\(N\subset P\)">\(N\subset P\)</span> use Proposition 5.2(1). Conversely, let <span class="math" data-tex="\(H(N\mid P)=0\)">\(H(N\mid P)=0\)</span> and let <span class="math" data-tex="\(e\in N\)">\(e\in N\)</span> be a
+projection. The family <span class="math" data-tex="\((e,1-e)\)">\((e,1-e)\)</span> gives
+<span class="math" data-tex="\(0\ge\tau\eta(E_P(e))+\tau\eta(E_P(1-e))-\tau\eta(e)-\tau\eta(1-e)=\tau\eta(E_P(e))+\tau\eta(1-E_P(e))\)">\(0\ge\tau\eta(E_P(e))+\tau\eta(E_P(1-e))-\tau\eta(e)-\tau\eta(1-e)=\tau\eta(E_P(e))+\tau\eta(1-E_P(e))\)</span>. Since
+<span class="math" data-tex="\(0\le E_P(e)\le1\)">\(0\le E_P(e)\le1\)</span> and <span class="math" data-tex="\(\eta\ge0\)">\(\eta\ge0\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, both terms are <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>, so <span class="math" data-tex="\(\tau(\eta(E_P(e)))=0\)">\(\tau(\eta(E_P(e)))=0\)</span>. As <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is
+faithful and <span class="math" data-tex="\(\eta(E_P(e))\ge0\)">\(\eta(E_P(e))\ge0\)</span>, <span class="math" data-tex="\(\eta(E_P(e))=0\)">\(\eta(E_P(e))=0\)</span>; so the spectrum of <span class="math" data-tex="\(E_P(e)\)">\(E_P(e)\)</span> lies in <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span> and <span class="math" data-tex="\(E_P(e)\)">\(E_P(e)\)</span>
+is a projection. Then <span class="math" data-tex="\(\|E_P(e)\|_2^2=\tau(E_P(e))=\tau(e)=\|e\|_2^2\)">\(\|E_P(e)\|_2^2=\tau(E_P(e))=\tau(e)=\|e\|_2^2\)</span>, and by (B1)
+<span class="math" data-tex="\(\|e-E_P(e)\|_2^2=\|e\|_2^2-\|E_P(e)\|_2^2=0\)">\(\|e-E_P(e)\|_2^2=\|e\|_2^2-\|E_P(e)\|_2^2=0\)</span>, so <span class="math" data-tex="\(e=E_P(e)\in P\)">\(e=E_P(e)\in P\)</span>. Since <span class="math" data-tex="\(N\)">\(N\)</span> is spanned by its projections,
+<span class="math" data-tex="\(N\subset P\)">\(N\subset P\)</span>.</p>
+<p><strong>Exercise 8.3.</strong> With <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(B\)">\(B\)</span> as in Example 4.6, show that <span class="math" data-tex="\(H(A\mid B)=\log2\)">\(H(A\mid B)=\log2\)</span>.</p>
+<p><em>Solution.</em> <span class="math" data-tex="\(H(A\mid B)\le H(A)=\log2\)">\(H(A\mid B)\le H(A)=\log2\)</span> by Proposition 5.2(3). Let <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> be the diagonal matrix units and
+<span class="math" data-tex="\(f_j=ue_ju^*\)">\(f_j=ue_ju^*\)</span>. Since <span class="math" data-tex="\(|\langle u\varepsilon_j,\varepsilon_i\rangle|^2=\frac12\)">\(|\langle u\varepsilon_j,\varepsilon_i\rangle|^2=\frac12\)</span>, <span class="math" data-tex="\(\tau(e_if_j)=\frac14\)">\(\tau(e_if_j)=\frac14\)</span>, and
+<span class="math" data-tex="\(E_B(e_i)=\sum_j\frac{\tau(e_if_j)}{\tau(f_j)}f_j=\frac12\)">\(E_B(e_i)=\sum_j\frac{\tau(e_if_j)}{\tau(f_j)}f_j=\frac12\)</span>. The family <span class="math" data-tex="\((e_1,e_2)\)">\((e_1,e_2)\)</span> gives
+<span class="math" data-tex="\(\sum_i(\tau\eta(\tfrac12)-\tau\eta(e_i))=2\cdot\frac12\log2=\log2\)">\(\sum_i(\tau\eta(\tfrac12)-\tau\eta(e_i))=2\cdot\frac12\log2=\log2\)</span>.</p>
+<p><strong>Exercise 8.4 (splitting a unitary).</strong> Let <span class="math" data-tex="\(u\in R\)">\(u\in R\)</span> be a unitary with <span class="math" data-tex="\(\|u-1\|_2\le\alpha\le1\)">\(\|u-1\|_2\le\alpha\le1\)</span>. Show that there are
+unitaries <span class="math" data-tex="\(v,v&#x27;\in R\)">\(v,v&#x27;\in R\)</span> with <span class="math" data-tex="\(u=vv&#x27;\)">\(u=vv&#x27;\)</span>, <span class="math" data-tex="\(\|v-1\|\le\alpha^{1/2}\)">\(\|v-1\|\le\alpha^{1/2}\)</span>, and <span class="math" data-tex="\(\tau(\operatorname{supp}(v&#x27;-1))\le\alpha\)">\(\tau(\operatorname{supp}(v&#x27;-1))\le\alpha\)</span>.</p>
+<p><em>Solution.</em> If <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, then <span class="math" data-tex="\(\|u-1\|_2=0\)">\(\|u-1\|_2=0\)</span>, so <span class="math" data-tex="\(u=1\)">\(u=1\)</span> because <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful, and <span class="math" data-tex="\(v=v&#x27;=1\)">\(v=v&#x27;=1\)</span> will do.
+Let <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, and let <span class="math" data-tex="\(e&#x27;\)">\(e&#x27;\)</span> denote the spectral projection of the normal operator <span class="math" data-tex="\(u\)">\(u\)</span> for the set
+<span class="math" data-tex="\(\{\lambda\in\mathbb T:|\lambda-1|^2\ge\alpha\}\)">\(\{\lambda\in\mathbb T:|\lambda-1|^2\ge\alpha\}\)</span>. It commutes with <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(|u-1|^2\ge\alpha e&#x27;\)">\(|u-1|^2\ge\alpha e&#x27;\)</span>, so
+<span class="math" data-tex="\(\alpha\tau(e&#x27;)\le\tau(|u-1|^2)=\|u-1\|_2^2\le\alpha^2\)">\(\alpha\tau(e&#x27;)\le\tau(|u-1|^2)=\|u-1\|_2^2\le\alpha^2\)</span> and <span class="math" data-tex="\(\tau(e&#x27;)\le\alpha\)">\(\tau(e&#x27;)\le\alpha\)</span>. Put <span class="math" data-tex="\(v=u(1-e&#x27;)+e&#x27;\)">\(v=u(1-e&#x27;)+e&#x27;\)</span> and
+<span class="math" data-tex="\(v&#x27;=(1-e&#x27;)+ue&#x27;\)">\(v&#x27;=(1-e&#x27;)+ue&#x27;\)</span>. Both are unitaries, since <span class="math" data-tex="\(u\)">\(u\)</span> commutes with <span class="math" data-tex="\(e&#x27;\)">\(e&#x27;\)</span>, and <span class="math" data-tex="\(vv&#x27;=u(1-e&#x27;)+ue&#x27;=u\)">\(vv&#x27;=u(1-e&#x27;)+ue&#x27;=u\)</span>. Now
+<span class="math" data-tex="\(v-1=(u-1)(1-e&#x27;)\)">\(v-1=(u-1)(1-e&#x27;)\)</span> and <span class="math" data-tex="\(|u-1|^2(1-e&#x27;)\le\alpha(1-e&#x27;)\)">\(|u-1|^2(1-e&#x27;)\le\alpha(1-e&#x27;)\)</span>, so <span class="math" data-tex="\(\|v-1\|\le\alpha^{1/2}\)">\(\|v-1\|\le\alpha^{1/2}\)</span>. Finally <span class="math" data-tex="\(v&#x27;-1=(u-1)e&#x27;\)">\(v&#x27;-1=(u-1)e&#x27;\)</span>, whose
+support is below <span class="math" data-tex="\(e&#x27;\)">\(e&#x27;\)</span>.</p>
+<p><strong>Exercise 8.5 (no pointwise estimate in Proposition 7.1).</strong> Let <span class="math" data-tex="\(K\ge3\)">\(K\ge3\)</span>, let <span class="math" data-tex="\(R\)">\(R\)</span> contain a unital copy of
+<span class="math" data-tex="\(M_K(\mathbb C)\)">\(M_K(\mathbb C)\)</span> (for example <span class="math" data-tex="\(R=M_K(\mathbb C)\)">\(R=M_K(\mathbb C)\)</span>, or the hyperfinite II₁ factor when <span class="math" data-tex="\(K\)">\(K\)</span> is a power of <span class="math" data-tex="\(2\)">\(2\)</span>),
+with <span class="math" data-tex="\(\tau\)">\(\tau\)</span> restricting to the normalized trace. Let <span class="math" data-tex="\(\xi_1,\dots,\xi_K\)">\(\xi_1,\dots,\xi_K\)</span> be an orthonormal basis of
+<span class="math" data-tex="\(\mathbb C^K\)">\(\mathbb C^K\)</span>, <span class="math" data-tex="\(e\)">\(e\)</span> the projection onto <span class="math" data-tex="\(\mathbb C\xi_1\)">\(\mathbb C\xi_1\)</span>, <span class="math" data-tex="\(Q=\mathbb Ce+\mathbb C(1-e)\)">\(Q=\mathbb Ce+\mathbb C(1-e)\)</span>, <span class="math" data-tex="\(x\)">\(x\)</span> the projection onto
+<span class="math" data-tex="\(\mathbb C\xi_2\)">\(\mathbb C\xi_2\)</span>, and <span class="math" data-tex="\(v\)">\(v\)</span> the rotation by an angle <span class="math" data-tex="\(\theta\)">\(\theta\)</span> in the plane of <span class="math" data-tex="\(\xi_1,\xi_2\)">\(\xi_1,\xi_2\)</span> (the identity on the
+other basis vectors). Show that
+<span class="math math-display" data-tex="\[
+\frac{\tau\eta(E_{vQv^*}(x))-\tau\eta(E_Q(x))}{\tau(x)}=h(\sin^2\theta)-\sin^2\theta\,\log(K-1),
+\]">\[
+\frac{\tau\eta(E_{vQv^*}(x))-\tau\eta(E_Q(x))}{\tau(x)}=h(\sin^2\theta)-\sin^2\theta\,\log(K-1),
+\]</span>
+and that, for fixed <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with <span class="math" data-tex="\(\sin\theta\ne0\)">\(\sin\theta\ne0\)</span> (for example <span class="math" data-tex="\(0&lt;\theta&lt;\pi/2\)">\(0&lt;\theta&lt;\pi/2\)</span>), it tends to <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> as
+<span class="math" data-tex="\(K\to\infty\)">\(K\to\infty\)</span>, while <span class="math" data-tex="\(\|v-1\|=2|\sin(\theta/2)|\)">\(\|v-1\|=2|\sin(\theta/2)|\)</span> and <span class="math" data-tex="\(\dim Q=2\)">\(\dim Q=2\)</span> are fixed. (For <span class="math" data-tex="\(\sin\theta=0\)">\(\sin\theta=0\)</span> both sides are
+<span class="math" data-tex="\(0\)">\(0\)</span>.)</p>
+<p><em>Solution.</em> For <span class="math" data-tex="\(y\in R\)">\(y\in R\)</span>, <span class="math" data-tex="\(E_Q(y)=K\tau(ye)\,e+\frac K{K-1}\tau(y(1-e))(1-e)\)">\(E_Q(y)=K\tau(ye)\,e+\frac K{K-1}\tau(y(1-e))(1-e)\)</span>. Since <span class="math" data-tex="\(\tau(xe)=0\)">\(\tau(xe)=0\)</span> and
+<span class="math" data-tex="\(\tau(x)=1/K\)">\(\tau(x)=1/K\)</span>, <span class="math" data-tex="\(E_Q(x)=\frac1{K-1}(1-e)\)">\(E_Q(x)=\frac1{K-1}(1-e)\)</span> and <span class="math" data-tex="\(\tau\eta(E_Q(x))=\frac{K-1}K\eta(\frac1{K-1})=\frac1K\log(K-1)\)">\(\tau\eta(E_Q(x))=\frac{K-1}K\eta(\frac1{K-1})=\frac1K\log(K-1)\)</span>. As in
+the proof of Proposition 7.1, <span class="math" data-tex="\(\tau\eta(E_{vQv^*}(x))=\tau\eta(E_Q(v^*xv))\)">\(\tau\eta(E_{vQv^*}(x))=\tau\eta(E_Q(v^*xv))\)</span>. The projection <span class="math" data-tex="\(v^*xv\)">\(v^*xv\)</span> projects onto
+<span class="math" data-tex="\(v^*\xi_2=\sin\theta\,\xi_1+\cos\theta\,\xi_2\)">\(v^*\xi_2=\sin\theta\,\xi_1+\cos\theta\,\xi_2\)</span> (up to the sign convention of the rotation), so
+<span class="math" data-tex="\(\tau(v^*xve)=\sin^2\theta/K\)">\(\tau(v^*xve)=\sin^2\theta/K\)</span> and <span class="math" data-tex="\(E_Q(v^*xv)=\sin^2\theta\,e+\frac{\cos^2\theta}{K-1}(1-e)\)">\(E_Q(v^*xv)=\sin^2\theta\,e+\frac{\cos^2\theta}{K-1}(1-e)\)</span>. Hence, by (1.1),
+<span class="math math-display" data-tex="\[
+\tau\eta(E_Q(v^*xv))=\frac1K\eta(\sin^2\theta)+\frac{K-1}K\eta\Bigl(\frac{\cos^2\theta}{K-1}\Bigr)
+=\frac1K\Bigl(\eta(\sin^2\theta)+\eta(\cos^2\theta)+\cos^2\theta\log(K-1)\Bigr).
+\]">\[
+\tau\eta(E_Q(v^*xv))=\frac1K\eta(\sin^2\theta)+\frac{K-1}K\eta\Bigl(\frac{\cos^2\theta}{K-1}\Bigr)
+=\frac1K\Bigl(\eta(\sin^2\theta)+\eta(\cos^2\theta)+\cos^2\theta\log(K-1)\Bigr).
+\]</span>
+Subtracting and dividing by <span class="math" data-tex="\(\tau(x)=1/K\)">\(\tau(x)=1/K\)</span> gives the formula. Finally <span class="math" data-tex="\(\|v-1\|=\max|\lambda-1|\)">\(\|v-1\|=\max|\lambda-1|\)</span> over the eigenvalues
+<span class="math" data-tex="\(1,e^{\pm i\theta}\)">\(1,e^{\pm i\theta}\)</span> of <span class="math" data-tex="\(v\)">\(v\)</span>, which is <span class="math" data-tex="\(2|\sin(\theta/2)|\)">\(2|\sin(\theta/2)|\)</span>.</p>
+<p>The difference can also be made large and positive. Put <span class="math" data-tex="\(v_1=v^*\)">\(v_1=v^*\)</span> and <span class="math" data-tex="\(x_1=v^*xv\)">\(x_1=v^*xv\)</span>, so <span class="math" data-tex="\(\tau(x_1)=1/K\)">\(\tau(x_1)=1/K\)</span> and
+<span class="math" data-tex="\(\|v_1-1\|=\|v-1\|\)">\(\|v_1-1\|=\|v-1\|\)</span>. Then <span class="math" data-tex="\(E_{v_1Qv_1^*}(x_1)=v^*E_Q(x)v\)">\(E_{v_1Qv_1^*}(x_1)=v^*E_Q(x)v\)</span>, so
+<span class="math" data-tex="\(\tau\eta(E_{v_1Qv_1^*}(x_1))-\tau\eta(E_Q(x_1))=\tau\eta(E_Q(x))-\tau\eta(E_Q(v^*xv))\)">\(\tau\eta(E_{v_1Qv_1^*}(x_1))-\tau\eta(E_Q(x_1))=\tau\eta(E_Q(x))-\tau\eta(E_Q(v^*xv))\)</span>, and the ratio to
+<span class="math" data-tex="\(\tau(x_1)\)">\(\tau(x_1)\)</span> is <span class="math" data-tex="\(\sin^2\theta\,\log(K-1)-h(\sin^2\theta)\)">\(\sin^2\theta\,\log(K-1)-h(\sin^2\theta)\)</span>, which tends to <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> when <span class="math" data-tex="\(\sin\theta\ne0\)">\(\sin\theta\ne0\)</span>. So not
+even a one-sided pointwise bound holds.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Connes–Størmer 1975] A. Connes and E. Størmer, Entropy for automorphisms of II₁ von Neumann algebras, Acta Math.
+134 (1975), no. 3–4, 289–306. Free at https://doi.org/10.1007/BF02392105</li>
+<li>[Connes 1994] A. Connes, <em>Noncommutative geometry</em>, Academic Press, San Diego, CA, 1994. Free at
+https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf</li>
+<li>[Lieb 1973] E. H. Lieb, Convex trace functions and the Wigner–Yanase–Dyson conjecture, Advances in Math. 11
+(1973), 267–288. https://doi.org/10.1016/0001-8708(73)90011-X. Free at https://doi.org/10.1016/0001-8708(73)90011-x</li>
+<li>[Lindblad 1974] G. Lindblad, Expectations and entropy inequalities for finite quantum systems, Comm. Math. Phys.
+39 (1974), 111–119. https://doi.org/10.1007/BF01608390. Free at https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-39/issue-2/Expectations-and-entropy-inequalities-for-finite-quantum-systems/cmp/1103860161.full</li>
+<li>[Choi 1974] M.-D. Choi, A Schwarz inequality for positive linear maps on C*-algebras, Illinois J. Math. 18 (1974),
+565–574. https://doi.org/10.1215/ijm/1256051007</li>
+<li>[Fannes 1973] M. Fannes, A continuity property of the entropy density for spin lattice systems, Comm. Math. Phys.
+31 (1973), 291–294. https://doi.org/10.1007/BF01646490. Free at https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-31/issue-4/A-continuity-property-of-the-entropy-density-for-spin-lattice/cmp/1103859037.full</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="operator-convex-functions-and-the-continuity-of-entropy.html">← Operator convex functions and the continuity of entropy</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-entropy-of-a-trace-preserving-automorphism.html">The entropy of a trace-preserving automorphism →</a></span></nav>
+<p class="small source-link"><a href="src/entropy-of-finite-dimensional-subalgebras.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/entropy-of-automorphisms">Repository</a></nav>
+</footer>
+</body>
+</html>

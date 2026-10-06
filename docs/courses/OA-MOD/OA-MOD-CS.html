@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finite weight domains and GNS · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-CS.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 100 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="finite-domains-and-the-gns-space-of-a-c--weight">Finite domains and the GNS space of a C*-weight</h1>
+<p><em>GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. This lesson is a draft awaiting course-level mathematical review.</em></p>
+<p>A positive functional is finite everywhere, but a weight can take the value <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. Its GNS construction must therefore begin with the elements whose squares have finite weight. We work with any complex <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra, including the zero and nonunital cases, and use inner products linear in the first variable. The free comparison is <a href="https://arxiv.org/abs/math/9901063">Kustermans–Vaes, <em>Weight theory for C*-algebraic quantum groups</em>, §1.1, Definitions 1.1–1.2 and the intervening finite-domain discussion, page 4</a>. The elementary construction below applies to every weight; it does not assume the proper-weight hypotheses used later in that paper. The order and square-root inputs are proved in <a href="notes/analytic-programme/abstract-cstar-order.html">AC1–4</a> and <a href="OA-MOD-UZ.html">UZ06–07</a>. <a href="OA-MOD-BK.html#oa-mod-bk-01">BK01</a> constructs the Hilbert completion, bounded extensions and adjoints. The current reconstruction and additional details are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0; the earlier credit is retained.</p>
+<h2 id="the-algebra-of-finite-elements">The algebra of finite elements</h2>
+<p>A weight <span class="math" data-tex="\(\varphi:A_+\to[0,\infty]\)">\(\varphi:A_+\to[0,\infty]\)</span> is additive and homogeneous for nonnegative scalars, with <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+F_\varphi=\{a\in A_+:\varphi(a)&lt;\infty\},\qquad
+\mathfrak n_\varphi=\{x\in A:x^*x\in F_\varphi\},\qquad
+\mathfrak m_\varphi=\operatorname{span}_{\mathbb C}F_\varphi.
+\tag{CS.1}
+\]">\[
+F_\varphi=\{a\in A_+:\varphi(a)&lt;\infty\},\qquad
+\mathfrak n_\varphi=\{x\in A:x^*x\in F_\varphi\},\qquad
+\mathfrak m_\varphi=\operatorname{span}_{\mathbb C}F_\varphi.
+\tag{CS.1}
+\]</span>
+<p>Additivity makes <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> monotone: if <span class="math" data-tex="\(0\leq b\leq a\)">\(0\leq b\leq a\)</span>, then
+<span class="math" data-tex="\(\varphi(a)=\varphi(b)+\varphi(a-b)\)">\(\varphi(a)=\varphi(b)+\varphi(a-b)\)</span>.
+Consequently <span class="math" data-tex="\(F_\varphi\)">\(F_\varphi\)</span> is a hereditary cone, stable under finite positive sums. The operator inequalities</p>
+<span class="math math-display" data-tex="\[
+(x+y)^*(x+y)\leq2x^*x+2y^*y,\qquad
+x^*a^*ax\leq\|a\|^2x^*x
+\tag{CS.2}
+\]">\[
+(x+y)^*(x+y)\leq2x^*x+2y^*y,\qquad
+x^*a^*ax\leq\|a\|^2x^*x
+\tag{CS.2}
+\]</span>
+<p>show that <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span> is a linear left ideal. To justify the inequalities in the abstract algebra, the difference in the first is <span class="math" data-tex="\((x-y)^*(x-y)\geq0\)">\((x-y)^*(x-y)\geq0\)</span>. For the second, AC4 gives <span class="math" data-tex="\(a^*a\leq\|a\|^2 1\)">\(a^*a\leq\|a\|^2 1\)</span> in the forced unitization, and conjugation by <span class="math" data-tex="\(x\)">\(x\)</span> preserves order. Both resulting elements lie in the original algebra, whose cone is inherited by UZ07. Scalar multiplication preserves the finite domain because <span class="math" data-tex="\((\lambda x)^*(\lambda x)=|\lambda|^2x^*x\)">\((\lambda x)^*(\lambda x)=|\lambda|^2x^*x\)</span>, including the zero scalar.</p>
+<p>There is a unique positive complex-linear extension <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span> of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> to <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>. On the real span of <span class="math" data-tex="\(F_\varphi\)">\(F_\varphi\)</span>, set
+<span class="math" data-tex="\(\varphi_0(a-b)=\varphi(a)-\varphi(b)\)">\(\varphi_0(a-b)=\varphi(a)-\varphi(b)\)</span>.
+If <span class="math" data-tex="\(a-b=c-d\)">\(a-b=c-d\)</span>, then <span class="math" data-tex="\(a+d=c+b\)">\(a+d=c+b\)</span>, so additivity gives the same value from both presentations. Complexification gives a linear functional. If <span class="math" data-tex="\(a-b\geq0\)">\(a-b\geq0\)</span>, then <span class="math" data-tex="\(0\leq a-b\leq a\)">\(0\leq a-b\leq a\)</span>, making <span class="math" data-tex="\(a-b\)">\(a-b\)</span> finite and <span class="math" data-tex="\(\varphi_0(a-b)=\varphi(a-b)\geq0\)">\(\varphi_0(a-b)=\varphi(a-b)\geq0\)</span>. This proves positivity, not just well-definedness. Every self-adjoint element in the complex span of the finite cone is in its real span: take the real part of any finite complex linear combination. Combining its nonnegative and negative real coefficients writes it as <span class="math" data-tex="\(a-b\)">\(a-b\)</span> with <span class="math" data-tex="\(a,b\in F_\varphi\)">\(a,b\in F_\varphi\)</span>. The argument just given therefore proves the exact identity <span class="math" data-tex="\(\mathfrak m_\varphi\cap A_+=F_\varphi\)">\(\mathfrak m_\varphi\cap A_+=F_\varphi\)</span>, and also verifies that the complex extension has the unique required values on every positive element of its domain.</p>
+<p>Finite squares and polarization yield</p>
+<span class="math math-display" data-tex="\[
+\mathfrak m_\varphi
+=\operatorname{span}_{\mathbb C}
+\{y^*x:x,y\in\mathfrak n_\varphi\}.
+\tag{CS.3}
+\]">\[
+\mathfrak m_\varphi
+=\operatorname{span}_{\mathbb C}
+\{y^*x:x,y\in\mathfrak n_\varphi\}.
+\tag{CS.3}
+\]</span>
+<p>One inclusion follows by polarizing <span class="math" data-tex="\((x+\lambda y)^*(x+\lambda y)\)">\((x+\lambda y)^*(x+\lambda y)\)</span>. For the other, <span class="math" data-tex="\(a\in F_\varphi\)">\(a\in F_\varphi\)</span> has <span class="math" data-tex="\(a^{1/2}\in\mathfrak n_\varphi\)">\(a^{1/2}\in\mathfrak n_\varphi\)</span> and <span class="math" data-tex="\(a=(a^{1/2})^*a^{1/2}\)">\(a=(a^{1/2})^*a^{1/2}\)</span>. The product
+<span class="math" data-tex="\((x^*y)(u^*v)=x^*(yu^*v)\)">\((x^*y)(u^*v)=x^*(yu^*v)\)</span>
+is again of the form in (CS.3), since <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span> is a left ideal. Thus <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span> is a *-subalgebra, although it need not be a two-sided ideal in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>The weight is <strong>norm densely defined</strong> when <span class="math" data-tex="\(\overline{\mathfrak n_\varphi}^{\,\|\cdot\|}=A\)">\(\overline{\mathfrak n_\varphi}^{\,\|\cdot\|}=A\)</span>, equivalently when <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span> is norm dense. If <span class="math" data-tex="\(\mathfrak n_\varphi\)">\(\mathfrak n_\varphi\)</span> is dense, approximate <span class="math" data-tex="\(a^{1/2}\)">\(a^{1/2}\)</span> for <span class="math" data-tex="\(a\in A_+\)">\(a\in A_+\)</span> and use the squares of those approximants to approximate <span class="math" data-tex="\(a\)">\(a\)</span> by finite positive elements. The estimate</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|x^*x-y^*y\|\\
+&amp;\quad\leq(\|x\|+\|y\|)\|x-y\|.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|x^*x-y^*y\|\\
+&amp;\quad\leq(\|x\|+\|y\|)\|x-y\|.
+\end{aligned}
+\]</span>
+<p>follows by adding and subtracting <span class="math" data-tex="\(x^*y\)">\(x^*y\)</span>. It proves the required convergence. AC4 and UZ07 express every element of the original algebra as a linear combination of positive elements, so density in the positive cone implies density of its complex span. Conversely, (CS.3) and the left-ideal property give <span class="math" data-tex="\(\mathfrak m_\varphi\subseteq\mathfrak n_\varphi\)">\(\mathfrak m_\varphi\subseteq\mathfrak n_\varphi\)</span>.</p>
+<p>An order property sometimes required of a weight is</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sup\{\varphi(b):0\leq b\leq a,\ b\in F_\varphi\}.
+\tag{CS.4}
+\]">\[
+\varphi(a)=\sup\{\varphi(b):0\leq b\leq a,\ b\in F_\varphi\}.
+\tag{CS.4}
+\]</span>
+<p>This is a separate assertion until an equivalence with norm density has been proved under the relevant hypotheses. Merely finding a nonzero finite <span class="math" data-tex="\(b\leq a\)">\(b\leq a\)</span> does not establish the equality.</p>
+<h2 id="the-gns-quotient-and-its-exact-domain">The GNS quotient and its exact domain</h2>
+<p>For <span class="math" data-tex="\(x,y\in\mathfrak n_\varphi\)">\(x,y\in\mathfrak n_\varphi\)</span>, put
+<span class="math" data-tex="\([x,y]_\varphi=\varphi_0(y^*x)\)">\([x,y]_\varphi=\varphi_0(y^*x)\)</span>.
+Positivity of <span class="math" data-tex="\([x+ty,x+ty]_\varphi\)">\([x+ty,x+ty]_\varphi\)</span> for every <span class="math" data-tex="\(t\in\mathbb C\)">\(t\in\mathbb C\)</span> gives Cauchy–Schwarz:</p>
+<span class="math math-display" data-tex="\[
+|[x,y]_\varphi|^2\leq[x,x]_\varphi[y,y]_\varphi.
+\tag{CS.5}
+\]">\[
+|[x,y]_\varphi|^2\leq[x,x]_\varphi[y,y]_\varphi.
+\tag{CS.5}
+\]</span>
+<p>Here the quadratic is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;[x+ty,x+ty]_\varphi\\
+&amp;\quad=[x,x]_\varphi\\
+&amp;\qquad+2\operatorname{Re}(\overline t[x,y]_\varphi)\\
+&amp;\qquad+|t|^2[y,y]_\varphi.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;[x+ty,x+ty]_\varphi\\
+&amp;\quad=[x,x]_\varphi\\
+&amp;\qquad+2\operatorname{Re}(\overline t[x,y]_\varphi)\\
+&amp;\qquad+|t|^2[y,y]_\varphi.
+\end{aligned}
+\]</span>
+<p>The finite extension is self-adjoint, because it is real on its real self-adjoint part; this justifies the two conjugate cross terms. If <span class="math" data-tex="\([y,y]_\varphi=0\)">\([y,y]_\varphi=0\)</span> but <span class="math" data-tex="\([x,y]_\varphi\ne0\)">\([x,y]_\varphi\ne0\)</span>, setting <span class="math" data-tex="\(t=-r[x,y]_\varphi\)">\(t=-r[x,y]_\varphi\)</span> for arbitrarily large positive <span class="math" data-tex="\(r\)">\(r\)</span> makes the quadratic negative. Otherwise its minimum is obtained at <span class="math" data-tex="\(t=-[x,y]_\varphi/[y,y]_\varphi\)">\(t=-[x,y]_\varphi/[y,y]_\varphi\)</span>, and gives (CS.5).</p>
+<p>The null space <span class="math" data-tex="\(\mathcal Z_\varphi=\{x:\varphi(x^*x)=0\}\)">\(\mathcal Z_\varphi=\{x:\varphi(x^*x)=0\}\)</span> is a left ideal by (CS.2). It is linear by the same sum and scaling inequalities. Cauchy–Schwarz makes every null vector orthogonal to every vector, so the pairing is independent of both quotient representatives and is positive definite after quotienting. Complete the inner-product quotient <span class="math" data-tex="\(\mathfrak n_\varphi/\mathcal Z_\varphi\)">\(\mathfrak n_\varphi/\mathcal Z_\varphi\)</span> to obtain <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>, and write <span class="math" data-tex="\(\Lambda_\varphi\)">\(\Lambda_\varphi\)</span> for the quotient map. Left multiplication defines</p>
+<span class="math math-display" data-tex="\[
+\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+=\varphi_0(y^*x),\qquad
+\pi_\varphi(a)\Lambda_\varphi(x)=\Lambda_\varphi(ax).
+\tag{CS.6}
+\]">\[
+\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+=\varphi_0(y^*x),\qquad
+\pi_\varphi(a)\Lambda_\varphi(x)=\Lambda_\varphi(ax).
+\tag{CS.6}
+\]</span>
+<p>The second inequality in (CS.2) proves that this operator is well-defined and has norm at most <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>. Multiplication on the dense quotient domain gives
+<span class="math" data-tex="\(\pi_\varphi(ab)=\pi_\varphi(a)\pi_\varphi(b)\)">\(\pi_\varphi(ab)=\pi_\varphi(a)\pi_\varphi(b)\)</span>, while</p>
+<span class="math math-display" data-tex="\[
+\langle\pi_\varphi(a)\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+=\varphi_0(y^*ax)
+=\langle\Lambda_\varphi(x),\pi_\varphi(a^*)\Lambda_\varphi(y)\rangle.
+\]">\[
+\langle\pi_\varphi(a)\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+=\varphi_0(y^*ax)
+=\langle\Lambda_\varphi(x),\pi_\varphi(a^*)\Lambda_\varphi(y)\rangle.
+\]</span>
+<p>Hence <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span> is a *-representation. The range of <span class="math" data-tex="\(\Lambda_\varphi\)">\(\Lambda_\varphi\)</span> is dense by construction; this does not produce a single cyclic vector. The triple is unique up to its uniquely determined unitary: for a second triple <span class="math" data-tex="\((K,\rho,L)\)">\((K,\rho,L)\)</span>, send <span class="math" data-tex="\(\Lambda_\varphi(x)\)">\(\Lambda_\varphi(x)\)</span> to <span class="math" data-tex="\(L(x)\)">\(L(x)\)</span>. Equality of the pairings makes this map well-defined and isometric. It extends by BK01 to an isometry of the completions; its range is closed, since an isometric image of a complete space is complete, and dense by the defining property of <span class="math" data-tex="\(L\)">\(L\)</span>. Hence it is onto. The formulas on the dense quotient show that this unitary intertwines the representations. If the finite-energy domain is zero, the Hilbert space and representation are zero and all these assertions still hold.</p>
+<p>The weight is faithful exactly when <span class="math" data-tex="\(\mathcal Z_\varphi=\{0\}\)">\(\mathcal Z_\varphi=\{0\}\)</span>. Indeed, <span class="math" data-tex="\(\varphi(a)=0\)">\(\varphi(a)=0\)</span> for <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> puts <span class="math" data-tex="\(a^{1/2}\)">\(a^{1/2}\)</span> in the null space, and <span class="math" data-tex="\(\varphi(x^*x)=0\)">\(\varphi(x^*x)=0\)</span> detects its elements. Faithfulness of the weight alone does not make <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span> faithful if too few elements have finite weight.</p>
+<p><strong>Example.</strong> On <span class="math" data-tex="\(A=\mathbb C^2\)">\(A=\mathbb C^2\)</span>, define <span class="math" data-tex="\(\varphi(a,b)=a\)">\(\varphi(a,b)=a\)</span> for <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span> with <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, and <span class="math" data-tex="\(\varphi(a,b)=+\infty\)">\(\varphi(a,b)=+\infty\)</span> when <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. This is a faithful weight, but <span class="math" data-tex="\(\mathfrak n_\varphi=\mathbb C\oplus0\)">\(\mathfrak n_\varphi=\mathbb C\oplus0\)</span>. Its GNS space is one-dimensional and <span class="math" data-tex="\(\pi_\varphi(a,b)\)">\(\pi_\varphi(a,b)\)</span> acts by <span class="math" data-tex="\(a\)">\(a\)</span>, so the faithful weight has a nonfaithful GNS representation. An even more extreme weight can have <span class="math" data-tex="\(\mathfrak n_\varphi=\{0\}\)">\(\mathfrak n_\varphi=\{0\}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Johan Kustermans and Stefaan Vaes, <a href="https://arxiv.org/abs/math/9901063"><em>Weight theory for C*-algebraic quantum groups</em>, arXiv:math/9901063</a>, §1.1, page 4. The full finite-domain and GNS proofs, including the arbitrary-weight cases, are written above.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-UZ.html">← Forced C*-unitization</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-BG.html">Bounded functionals and cyclic vectors →</a></span></nav>
+<p class="small source-link"><a href="src/cstar-finite-domain-gns.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

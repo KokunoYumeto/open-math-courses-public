@@ -1,0 +1,262 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Extending maps, splittings and exact functors</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="extending-maps-splittings-and-exact-functors">Extending maps, splittings and exact functors</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Original text public domain (CC0); referenced Stacks proofs retain GFDL-1.2 and linked course proofs retain their stated component terms. The ordinary arrow-projectivity proof is supplied in full below.</em></p>
+<p>An injective object lets a map defined on a subobject extend to the containing object. Applying that property to its own identity makes every short exact sequence beginning with it split. This explains both the finite closure properties of injectives and why a quotient of an injective object can fail to be injective: the kernel must supply the splitting.</p>
+<p>Work in locally small abelian categories, with all diagrams small in a fixed universe. We use choice for vector-space bases. The complete prerequisites are <a href="testing-exactness-with-doubled-objects.html#1-witnesses-for-a-kernel-or-a-quotient">Testing exactness with doubled objects, Sections 1 and 3</a>, for Hom and finite exactness tests; <a href="splittings-support-and-sequential-exactness.html#1-a-split-complex-is-a-biproduct-decomposition">Splittings, support and sequential exactness, Section 1</a>, for compatible splitting maps; and <a href="locally-nilpotent-operators-and-coinduced-duals.html#1-evaluation-represents-a-linear-dual">Locally nilpotent operators and coinduced duals, Section 1</a>, for the full linear-dual adjunction and its field-valued injectivity proof. These proofs retain their original scope.</p>
+<h2 id="1-retain-the-exactness-tests">1. Retain the exactness tests</h2>
+<p>Let <span class="math" data-tex="\(F:\mathcal A\to\mathcal B\)">\(F:\mathcal A\to\mathcal B\)</span> be additive. The complete proofs in <a href="testing-exactness-with-doubled-objects.html#3-testing-one-side-of-exactness">Testing exactness, Sections 1 and 3</a>, and <a href="https://stacks.math.columbia.edu/tag/010M">Stacks, Lemma 12.7.2</a>, give the following equivalent descriptions. Left exactness is preservation of kernels, hence of finite limits. Right exactness is preservation of cokernels, hence of finite colimits. The respective sequence tests are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\text{left: }0\to A\to B\to C,\\
+0\to FA\to FB\to FC,\\
+\text{right: }A\to B\to C\to0,\\
+FA\to FB\to FC\to0.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\text{left: }0\to A\to B\to C,\\
+0\to FA\to FB\to FC,\\
+\text{right: }A\to B\to C\to0,\\
+FA\to FB\to FC\to0.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>Within each pair, exactness of the first sequence is assumed and exactness of its image in the next line is required. Testing only short exact sequences also suffices, using the left or right three terms of their images. Full exactness is equivalent to preserving every three-term sequence exact at its middle object, including sequences with a zero endpoint; the image factorization and converse endpoint tests are proved in Section 1 of that prerequisite.</p>
+<p>For a contravariant additive functor <span class="math" data-tex="\(G:\mathcal A\to\mathcal B\)">\(G:\mathcal A\to\mathcal B\)</span>, apply these statements to <span class="math" data-tex="\(\mathcal A^{\mathrm{op}}\)">\(\mathcal A^{\mathrm{op}}\)</span>. Thus left exactness takes <span class="math" data-tex="\(A\to B\to C\to0\)">\(A\to B\to C\to0\)</span> to <span class="math" data-tex="\(0\to GC\to GB\to GA\)">\(0\to GC\to GB\to GA\)</span>. Right exactness takes <span class="math" data-tex="\(0\to A\to B\to C\)">\(0\to A\to B\to C\)</span> to <span class="math" data-tex="\(GC\to GB\to GA\to0\)">\(GC\to GB\to GA\to0\)</span>. In particular, <span class="math" data-tex="\(\operatorname{Hom}(-,T)\)">\(\operatorname{Hom}(-,T)\)</span> and <span class="math" data-tex="\(\operatorname{Hom}(T,-)\)">\(\operatorname{Hom}(T,-)\)</span> are left exact, by the full Hom universal-property proofs in the prerequisite. For an adjunction between abelian categories, the left adjoint is right exact and the right adjoint is left exact. Retain the complete preservation-of-colimits proof of <a href="https://stacks.math.columbia.edu/tag/0038">Stacks, Lemma 4.24.5</a> and its finite-limit dual; <a href="https://stacks.math.columbia.edu/tag/0039">Lemma 4.24.6</a> gives precisely this interface. No exactness of both adjoints is implied.</p>
+<p>Preserving individual monomorphisms and epimorphisms is weaker. For a field <span class="math" data-tex="\(k\)">\(k\)</span>, put <span class="math" data-tex="\(A=k[x]\)">\(A=k[x]\)</span> and <span class="math" data-tex="\(F(M)=xM\)">\(F(M)=xM\)</span>, with morphisms restricted to these images. <a href="splittings-support-and-sequential-exactness.html#2-when-multiplication-images-preserve-exactness">Splittings, Section 2, Theorem 2.1</a> proves the stronger criterion for every commutative ring and scalar: this functor preserves monomorphisms and epimorphisms, and is left or right exact precisely when the scalar generates an idempotent ideal. In the present case it sends the short exact sequence with submodule <span class="math" data-tex="\(xA\)">\(xA\)</span> to</p>
+<span class="math math-display" data-tex="\[
+0\to x^2A\to xA\to0\to0.
+\tag{1.2}
+\]">\[
+0\to x^2A\to xA\to0\to0.
+\tag{1.2}
+\]</span>
+<p>The inclusion <span class="math" data-tex="\(x^2A\subset xA\)">\(x^2A\subset xA\)</span> is proper: no polynomial multiplied by <span class="math" data-tex="\(x^2\)">\(x^2\)</span> equals <span class="math" data-tex="\(x\)">\(x\)</span>. Consequently neither three-term exactness test holds at <span class="math" data-tex="\(xA\)">\(xA\)</span>. This is the precise specialization of the retained theorem.</p>
+<h2 id="2-a-splitting-survives-every-additive-functor">2. A splitting survives every additive functor</h2>
+<p>Fix a short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to A\xrightarrow f E\xrightarrow g Q\to0.
+\tag{2.1}
+\]">\[
+0\to A\xrightarrow f E\xrightarrow g Q\to0.
+\tag{2.1}
+\]</span>
+<p>It is <em>split</em> if it has any of these equivalent structures: a section of <span class="math" data-tex="\(g\)">\(g\)</span>; a retraction of <span class="math" data-tex="\(f\)">\(f\)</span>; maps <span class="math" data-tex="\(r:E\to A\)">\(r:E\to A\)</span> and <span class="math" data-tex="\(s:Q\to E\)">\(s:Q\to E\)</span> with <span class="math" data-tex="\(fr+sg=1_E\)">\(fr+sg=1_E\)</span>; mutually inverse maps <span class="math" data-tex="\([f,s]:A\oplus Q\to E\)">\([f,s]:A\oplus Q\to E\)</span> and <span class="math" data-tex="\([r,g]:E\to A\oplus Q\)">\([r,g]:E\to A\oplus Q\)</span>; surjectivity of <span class="math" data-tex="\(\operatorname{Hom}(T,E)\to\operatorname{Hom}(T,Q)\)">\(\operatorname{Hom}(T,E)\to\operatorname{Hom}(T,Q)\)</span> for every <span class="math" data-tex="\(T\)">\(T\)</span>; or surjectivity of <span class="math" data-tex="\(\operatorname{Hom}(E,T)\to\operatorname{Hom}(A,T)\)">\(\operatorname{Hom}(E,T)\to\operatorname{Hom}(A,T)\)</span> for every <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>Retain the full equivalence proof of <a href="splittings-support-and-sequential-exactness.html#1-a-split-complex-is-a-biproduct-decomposition">Splittings, Theorem 1.1 and its following paragraph</a>. Here is the exact interface with the six structures just listed. If <span class="math" data-tex="\(fr+sg=1_E\)">\(fr+sg=1_E\)</span>, composing with <span class="math" data-tex="\(g\)">\(g\)</span> and canceling the epimorphism <span class="math" data-tex="\(g\)">\(g\)</span> gives <span class="math" data-tex="\(gs=1_Q\)">\(gs=1_Q\)</span>; composing with <span class="math" data-tex="\(f\)">\(f\)</span> and canceling the monomorphism <span class="math" data-tex="\(f\)">\(f\)</span> gives <span class="math" data-tex="\(rf=1_A\)">\(rf=1_A\)</span>. Thus the sum identity alone supplies the compatible maps of that theorem. The two surjectivity conditions give a section by testing <span class="math" data-tex="\(T=Q\)">\(T=Q\)</span> and a retraction by testing <span class="math" data-tex="\(T=A\)">\(T=A\)</span>, respectively. Conversely a section or retraction gives the indicated lifts by composition. Middle exactness and endpoint injectivity of the Hom sequences are already the universal Hom tests.</p>
+<p>The compatible maps satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+rf=1_A,\qquad gs=1_Q,\\
+rs=0,\qquad fr+sg=1_E.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+rf=1_A,\qquad gs=1_Q,\\
+rs=0,\qquad fr+sg=1_E.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>An additive functor preserves these equations and the specified biproduct maps. Its image of (2.1) is therefore a split biproduct row, hence short exact. This proves preservation of split short exact sequences even for a functor that fails both general exactness tests. Exercise 2 describes the possible compatible maps rather than treating a splitting as unique.</p>
+<h2 id="3-extending-maps-is-the-injective-test">3. Extending maps is the injective test</h2>
+<p>An object <span class="math" data-tex="\(I\)">\(I\)</span> is <em>injective</em> if the contravariant functor <span class="math" data-tex="\(\operatorname{Hom}(-,I)\)">\(\operatorname{Hom}(-,I)\)</span> is exact. The category has <em>enough injectives</em> if every object admits a monomorphism into some injective object. Dually, <span class="math" data-tex="\(P\)">\(P\)</span> is <em>projective</em> if <span class="math" data-tex="\(\operatorname{Hom}(P,-)\)">\(\operatorname{Hom}(P,-)\)</span> is exact, and there are <em>enough projectives</em> if every object is an epimorphic image of a projective object. Equivalently these full subcategories are, respectively, cogenerating and generating. These definitions make no claim that an arbitrary abelian category has either supply.</p>
+<p><strong>Proposition 3.1.</strong> An object <span class="math" data-tex="\(I\)">\(I\)</span> is injective if and only if every map <span class="math" data-tex="\(a:A\to I\)">\(a:A\to I\)</span> extends along every monomorphism <span class="math" data-tex="\(f:A\hookrightarrow E\)">\(f:A\hookrightarrow E\)</span>.</p>
+<p><strong>Proof.</strong> Complete <span class="math" data-tex="\(f\)">\(f\)</span> to (2.1) by its cokernel. The contravariant Hom functor is left exact, so its image is already exact at its first two positions. The only missing condition for a short exact sequence is surjectivity of the restriction map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}(E,I)\longrightarrow\operatorname{Hom}(A,I),\\
+b\longmapsto bf.
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}(E,I)\longrightarrow\operatorname{Hom}(A,I),\\
+b\longmapsto bf.
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>That is precisely extension of each <span class="math" data-tex="\(a\)">\(a\)</span>. The short-exact test in Section 1 proves both directions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Passing to the opposite category gives the projective test: every map <span class="math" data-tex="\(P\to Q\)">\(P\to Q\)</span> lifts through every epimorphism <span class="math" data-tex="\(E\twoheadrightarrow Q\)">\(E\twoheadrightarrow Q\)</span>. It is the same proof with the arrows reversed, using covariant Hom left exactness and surjectivity at the last position.</p>
+<p><strong>Corollary 3.2.</strong> A short exact sequence beginning with an injective object splits. A short exact sequence ending with a projective object splits.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(A=I\)">\(A=I\)</span> is injective, extend <span class="math" data-tex="\(1_I\)">\(1_I\)</span> along <span class="math" data-tex="\(f\)">\(f\)</span> to obtain a retraction. If <span class="math" data-tex="\(Q=P\)">\(Q=P\)</span> is projective, lift <span class="math" data-tex="\(1_P\)">\(1_P\)</span> through <span class="math" data-tex="\(g\)">\(g\)</span> to obtain a section. Section 2 identifies either structure with a splitting. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every additive functor sends these sequences to split short exact sequences. It need not preserve other short exact sequences, nor send the injective or projective object itself to an injective or projective object. Exercise 3 identifies an adjunction hypothesis that does preserve them.</p>
+<h2 id="4-finite-sums-summands-and-quotient-conditions">4. Finite sums, summands and quotient conditions</h2>
+<p><strong>Proposition 4.1.</strong> A finite biproduct is injective if and only if every summand is injective. Every retract of an injective object is injective.</p>
+<p><strong>Proof.</strong> For a binary biproduct <span class="math" data-tex="\(I_1\oplus I_2\)">\(I_1\oplus I_2\)</span>, a map from <span class="math" data-tex="\(A\)">\(A\)</span> is its pair of component maps. If both targets are injective, extend the components along <span class="math" data-tex="\(A\hookrightarrow E\)">\(A\hookrightarrow E\)</span> and combine the extensions. Conversely, suppose <span class="math" data-tex="\(I_1\oplus I_2\)">\(I_1\oplus I_2\)</span> is injective. Compose a map <span class="math" data-tex="\(A\to I_1\)">\(A\to I_1\)</span> with the first inclusion, extend to <span class="math" data-tex="\(E\)">\(E\)</span>, then compose with the first projection. This extends the original map to <span class="math" data-tex="\(I_1\)">\(I_1\)</span>. The second summand is identical with the indices interchanged. The zero object is injective because its Hom groups vanish; induction proves the finite statement, including the empty biproduct.</p>
+<p>More generally, if <span class="math" data-tex="\(j:I\to J\)">\(j:I\to J\)</span> and <span class="math" data-tex="\(p:J\to I\)">\(p:J\to I\)</span> satisfy <span class="math" data-tex="\(pj=1_I\)">\(pj=1_I\)</span>, extend <span class="math" data-tex="\(ja\)">\(ja\)</span> to <span class="math" data-tex="\(b:E\to J\)">\(b:E\to J\)</span> and take <span class="math" data-tex="\(pb\)">\(pb\)</span>. Its restriction is <span class="math" data-tex="\(pja=a\)">\(pja=a\)</span>. This proves the retract assertion without requiring a chosen complementary object. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof in the opposite category gives the corresponding finite and retract assertions for projectives.</p>
+<p><strong>Corollary 4.2.</strong> If</p>
+<span class="math math-display" data-tex="\[
+0\to I&#x27;\to I\to Q\to0
+\tag{4.1}
+\]">\[
+0\to I&#x27;\to I\to Q\to0
+\tag{4.1}
+\]</span>
+<p>is short exact and both <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span> and <span class="math" data-tex="\(I\)">\(I\)</span> are injective, then <span class="math" data-tex="\(Q\)">\(Q\)</span> is injective.</p>
+<p><strong>Proof.</strong> Injectivity of <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span> splits the sequence by Corollary 3.2. Hence <span class="math" data-tex="\(Q\)">\(Q\)</span> is a retract of <span class="math" data-tex="\(I\)">\(I\)</span>, so Proposition 4.1 applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The premise on <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span> matters. Exercise 1 gives an injective module with a quotient that is not injective. This argument also makes no assertion about infinite coproducts of injectives: a map into such a coproduct does not have a finite family of components to extend by this proof.</p>
+<h2 id="5-semisimple-categories-and-choice">5. Semisimple categories and choice</h2>
+<p>An abelian category is <em>semisimple</em> if every short exact sequence splits. Section 2 then shows that every additive functor from it to an abelian category is exact. Indeed it preserves all short exact sequences, so the retained short-exact test applies. Equivalently every object is injective, or every object is projective: splitting every row makes both Hom functors exact; conversely injectivity of the first term, or projectivity of the last, splits each row by Corollary 3.2.</p>
+<p>For <span class="math" data-tex="\(k\)">\(k\)</span> a field, every vector space is injective by the basis-extension argument retained in <a href="locally-nilpotent-operators-and-coinduced-duals.html#1-evaluation-represents-a-linear-dual">Locally nilpotent operators, Section 1</a>: take <span class="math" data-tex="\(R=k\)">\(R=k\)</span>, when evaluation identifies <span class="math" data-tex="\(D_k(V)\)">\(D_k(V)\)</span> with <span class="math" data-tex="\(V\)">\(V\)</span>. Hence every short exact sequence of vector spaces splits, and the category is semisimple. This includes infinite-dimensional spaces in the chosen universe. The resulting splittings are choices; they are not asserted to be natural in all short exact sequences.</p>
+<p>The category of abelian groups is not semisimple. For any integer <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, consider</p>
+<span class="math math-display" data-tex="\[
+0\to\mathbb Z\xrightarrow{n}\mathbb Z\to\mathbb Z/n\to0.
+\tag{5.1}
+\]">\[
+0\to\mathbb Z\xrightarrow{n}\mathbb Z\to\mathbb Z/n\to0.
+\tag{5.1}
+\]</span>
+<p>A section would send the class of one to an integer killed by <span class="math" data-tex="\(n\)">\(n\)</span>, hence to zero. Its reduction modulo <span class="math" data-tex="\(n\)">\(n\)</span> could not be the class of one. Thus this sequence has no section and does not split. The special case <span class="math" data-tex="\(n=2\)">\(n=2\)</span> already distinguishes an abelian category from a semisimple one.</p>
+<h2 id="6-four-graded-exercises-with-full-solutions">6. Four graded exercises with full solutions</h2>
+<p><strong>Exercise 1 (warm-up: an injective module with a bad quotient).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field of any characteristic and <span class="math" data-tex="\(R=k[\varepsilon]/(\varepsilon^2)\)">\(R=k[\varepsilon]/(\varepsilon^2)\)</span>. Show that the regular module <span class="math" data-tex="\(R\)">\(R\)</span> is both injective and projective, while <span class="math" data-tex="\(K=R/(\varepsilon)\)">\(K=R/(\varepsilon)\)</span> is neither. Identify which hypothesis of Corollary 4.2 fails for <span class="math" data-tex="\(0\to\varepsilon R\to R\to K\to0\)">\(0\to\varepsilon R\to R\to K\to0\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(\lambda:R\to k\)">\(\lambda:R\to k\)</span> extract the coefficient of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi:R\longrightarrow D_R(k),\\
+\Phi(b)(a)=\lambda(ab).
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+\Phi:R\longrightarrow D_R(k),\\
+\Phi(b)(a)=\lambda(ab).
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>The retained dual action is <span class="math" data-tex="\((c\xi)(a)=\xi(ac)\)">\((c\xi)(a)=\xi(ac)\)</span>, so <span class="math" data-tex="\(\Phi(cb)(a)=\lambda(acb)=(c\Phi(b))(a)\)">\(\Phi(cb)(a)=\lambda(acb)=(c\Phi(b))(a)\)</span>. Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is <span class="math" data-tex="\(R\)">\(R\)</span>-linear. If <span class="math" data-tex="\(b=u+v\varepsilon\)">\(b=u+v\varepsilon\)</span>, its values on <span class="math" data-tex="\(1,\varepsilon\)">\(1,\varepsilon\)</span> are <span class="math" data-tex="\(v,u\)">\(v,u\)</span>. These two values give every linear functional uniquely, so <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is an isomorphism in every characteristic. The complete field-valued injectivity proof for <span class="math" data-tex="\(D_R(k)\)">\(D_R(k)\)</span> in the prerequisite proves that <span class="math" data-tex="\(R\)">\(R\)</span> is injective. The complete arbitrary-ring finite-support lifting proof in <a href="testing-injectivity-on-generators-and-constructing-enough-injectives.html#3-ordinary-modules-and-the-field-case">Ordinary modules, Section 3</a> proves projectivity of the regular left module <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>The map <span class="math" data-tex="\(\varepsilon R\to K\)">\(\varepsilon R\to K\)</span> taking <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> to the class of one is <span class="math" data-tex="\(R\)">\(R\)</span>-linear, since <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> kills both source and target. An extension <span class="math" data-tex="\(R\to K\)">\(R\to K\)</span> would have to send <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> to <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> times its value at one, which is zero. Therefore <span class="math" data-tex="\(K\)">\(K\)</span> is not injective. A section of <span class="math" data-tex="\(R\twoheadrightarrow K\)">\(R\twoheadrightarrow K\)</span> would send the class of one to <span class="math" data-tex="\(u+v\varepsilon\)">\(u+v\varepsilon\)</span> with <span class="math" data-tex="\(u=1\)">\(u=1\)</span>, while <span class="math" data-tex="\(R\)">\(R\)</span>-linearity would require <span class="math" data-tex="\(\varepsilon(u+v\varepsilon)=0\)">\(\varepsilon(u+v\varepsilon)=0\)</span>, giving <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. No section exists, so <span class="math" data-tex="\(K\)">\(K\)</span> is not projective. Finally <span class="math" data-tex="\(\varepsilon R\simeq K\)">\(\varepsilon R\simeq K\)</span> by <span class="math" data-tex="\(\varepsilon\mapsto\overline1\)">\(\varepsilon\mapsto\overline1\)</span>, so the kernel is not injective. The middle term alone does not supply Corollary 4.2.</p>
+<p><strong>Exercise 2 (intermediate: all compatible splittings).</strong> In (2.1), assume <span class="math" data-tex="\(A\)">\(A\)</span> is injective. Choose compatible maps <span class="math" data-tex="\(r,s\)">\(r,s\)</span> as in (2.2). Parametrize all compatible pairs <span class="math" data-tex="\(r&#x27;,s&#x27;\)">\(r&#x27;,s&#x27;\)</span>, and describe the resulting idempotents on <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Solution.</strong> For every <span class="math" data-tex="\(a:Q\to A\)">\(a:Q\to A\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r_a=r+ag,\\
+s_a=s-fa.
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+r_a=r+ag,\\
+s_a=s-fa.
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>The equations <span class="math" data-tex="\(gf=0\)">\(gf=0\)</span>, <span class="math" data-tex="\(rf=1\)">\(rf=1\)</span>, <span class="math" data-tex="\(gs=1\)">\(gs=1\)</span>, <span class="math" data-tex="\(rs=0\)">\(rs=0\)</span> give <span class="math" data-tex="\(r_af=1\)">\(r_af=1\)</span>, <span class="math" data-tex="\(gs_a=1\)">\(gs_a=1\)</span>, <span class="math" data-tex="\(r_as_a=-a+a=0\)">\(r_as_a=-a+a=0\)</span>, and <span class="math" data-tex="\(fr_a+s_ag=1\)">\(fr_a+s_ag=1\)</span>. Thus these pairs are compatible. Conversely, <span class="math" data-tex="\((r&#x27;-r)f=0\)">\((r&#x27;-r)f=0\)</span>, so the cokernel property of <span class="math" data-tex="\(g\)">\(g\)</span> gives a unique <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(r&#x27;-r=ag\)">\(r&#x27;-r=ag\)</span>. Since <span class="math" data-tex="\(g(s&#x27;-s)=0\)">\(g(s&#x27;-s)=0\)</span>, the kernel property of <span class="math" data-tex="\(f\)">\(f\)</span> gives a unique <span class="math" data-tex="\(b:Q\to A\)">\(b:Q\to A\)</span> with <span class="math" data-tex="\(s&#x27;-s=fb\)">\(s&#x27;-s=fb\)</span>. The equation <span class="math" data-tex="\(r&#x27;s&#x27;=0\)">\(r&#x27;s&#x27;=0\)</span> now reads <span class="math" data-tex="\(a+b=0\)">\(a+b=0\)</span>. Hence <span class="math" data-tex="\(b=-a\)">\(b=-a\)</span>, and the displayed pairs are all the compatible pairs, uniquely parametrized by <span class="math" data-tex="\(\operatorname{Hom}(Q,A)\)">\(\operatorname{Hom}(Q,A)\)</span>. This is a torsor description: choosing <span class="math" data-tex="\(r,s\)">\(r,s\)</span> chooses an origin.</p>
+<p>The endomorphism <span class="math" data-tex="\(e_a=fr_a\)">\(e_a=fr_a\)</span> is idempotent, since <span class="math" data-tex="\(r_af=1\)">\(r_af=1\)</span>. It acts as the identity on the specified subobject <span class="math" data-tex="\(f(A)\)">\(f(A)\)</span>, and <span class="math" data-tex="\(1-e_a=s_ag\)">\(1-e_a=s_ag\)</span>. Its image is <span class="math" data-tex="\(f(A)\)">\(f(A)\)</span>, and its kernel is the image of <span class="math" data-tex="\(s_a\)">\(s_a\)</span>: for a map <span class="math" data-tex="\(t:T\to E\)">\(t:T\to E\)</span> killed by <span class="math" data-tex="\(e_a\)">\(e_a\)</span>, the identity <span class="math" data-tex="\(1-e_a=s_ag\)">\(1-e_a=s_ag\)</span> gives <span class="math" data-tex="\(t=s_agt\)">\(t=s_agt\)</span>, uniquely because <span class="math" data-tex="\(gs_a=1\)">\(gs_a=1\)</span>. Distinct <span class="math" data-tex="\(a\)">\(a\)</span> give distinct idempotents: <span class="math" data-tex="\(f(a-a&#x27;)g=0\)">\(f(a-a&#x27;)g=0\)</span> implies <span class="math" data-tex="\(a=a&#x27;\)">\(a=a&#x27;\)</span> by monicity of <span class="math" data-tex="\(f\)">\(f\)</span> and epicity of <span class="math" data-tex="\(g\)">\(g\)</span>. The decomposition is specified but generally not unique.</p>
+<p><strong>Exercise 3 (hard: transfer through an adjunction).</strong> Let additive functors <span class="math" data-tex="\(L:\mathcal A\to\mathcal B\)">\(L:\mathcal A\to\mathcal B\)</span> and <span class="math" data-tex="\(R:\mathcal B\to\mathcal A\)">\(R:\mathcal B\to\mathcal A\)</span> satisfy <span class="math" data-tex="\(L\dashv R\)">\(L\dashv R\)</span>. Prove that exactness of <span class="math" data-tex="\(L\)">\(L\)</span> makes <span class="math" data-tex="\(R\)">\(R\)</span> preserve injectives. If <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> has enough injectives, prove the converse. State and prove the corresponding projective assertion, including which category needs enough projectives.</p>
+<p><strong>Solution.</strong> The adjunction is natural in the first variable:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal B}(LX,J)\\
+\simeq\operatorname{Hom}_{\mathcal A}(X,RJ).
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal B}(LX,J)\\
+\simeq\operatorname{Hom}_{\mathcal A}(X,RJ).
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p>If <span class="math" data-tex="\(L\)">\(L\)</span> is exact and <span class="math" data-tex="\(J\)">\(J\)</span> is injective, applying <span class="math" data-tex="\(L\)">\(L\)</span> and then <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal B}(-,J)\)">\(\operatorname{Hom}_{\mathcal B}(-,J)\)</span> takes any short exact sequence to a short exact sequence of groups. Naturality in (6.3) identifies its arrows with the Hom arrows for <span class="math" data-tex="\(RJ\)">\(RJ\)</span>. Hence <span class="math" data-tex="\(RJ\)">\(RJ\)</span> is injective.</p>
+<p>Conversely, assume <span class="math" data-tex="\(R\)">\(R\)</span> preserves injectives and <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> has enough of them. Let <span class="math" data-tex="\(i:X\hookrightarrow Y\)">\(i:X\hookrightarrow Y\)</span>. Choose a monomorphism <span class="math" data-tex="\(j:LX\hookrightarrow J\)">\(j:LX\hookrightarrow J\)</span> with <span class="math" data-tex="\(J\)">\(J\)</span> injective. Its adjoint <span class="math" data-tex="\(X\to RJ\)">\(X\to RJ\)</span> extends to <span class="math" data-tex="\(Y\to RJ\)">\(Y\to RJ\)</span>, because <span class="math" data-tex="\(RJ\)">\(RJ\)</span> is injective. The adjoint <span class="math" data-tex="\(h:LY\to J\)">\(h:LY\to J\)</span> then satisfies <span class="math" data-tex="\(hLi=j\)">\(hLi=j\)</span>, by naturality. A map whose composite is monic is monic, so <span class="math" data-tex="\(Li\)">\(Li\)</span> is monic. The left adjoint <span class="math" data-tex="\(L\)">\(L\)</span> is right exact by the retained adjoint theorem. For a short exact sequence, right exactness already gives exactness of its last three terms; the preservation of its first monomorphism adds the remaining condition. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is exact.</p>
+<p>Dually, exactness of <span class="math" data-tex="\(R\)">\(R\)</span> makes <span class="math" data-tex="\(L\)">\(L\)</span> preserve projectives: the covariant adjunction <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal B}(LP,Y)\simeq\operatorname{Hom}_{\mathcal A}(P,RY)\)">\(\operatorname{Hom}_{\mathcal B}(LP,Y)\simeq\operatorname{Hom}_{\mathcal A}(P,RY)\)</span> identifies the two exact Hom sequences. For the converse assume <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has enough projectives and <span class="math" data-tex="\(L\)">\(L\)</span> preserves them. For an epimorphism <span class="math" data-tex="\(q:Y \twoheadrightarrow Z\)">\(q:Y \twoheadrightarrow Z\)</span> in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, choose <span class="math" data-tex="\(p:P \twoheadrightarrow RZ\)">\(p:P \twoheadrightarrow RZ\)</span> with <span class="math" data-tex="\(P\)">\(P\)</span> projective. Its adjoint <span class="math" data-tex="\(LP\to Z\)">\(LP\to Z\)</span> lifts through <span class="math" data-tex="\(q\)">\(q\)</span>, since <span class="math" data-tex="\(LP\)">\(LP\)</span> is projective. The adjoint lift <span class="math" data-tex="\(t:P\to RY\)">\(t:P\to RY\)</span> satisfies <span class="math" data-tex="\(Rq\,t=p\)">\(Rq\,t=p\)</span>. Since this composite is epic, <span class="math" data-tex="\(Rq\)">\(Rq\)</span> is epic. The right adjoint <span class="math" data-tex="\(R\)">\(R\)</span> is left exact, and adding preservation of the final epimorphism to the left three terms makes every short exact sequence exact. Thus <span class="math" data-tex="\(R\)">\(R\)</span> is exact. The converse injective test needs enough injectives in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>; the converse projective test needs enough projectives in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>.</p>
+<p><strong>Exercise 4 (advanced: projectivity of a linear arrow).</strong> In the abelian category of arrows <span class="math" data-tex="\(d:V\to W\)">\(d:V\to W\)</span> of <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces, show that an arrow is projective exactly when <span class="math" data-tex="\(d\)">\(d\)</span> is monic. Give a projective epimorphism onto every arrow. Combine this with the retained injective classification to determine the objects that are both injective and projective.</p>
+<p><strong>Solution.</strong> We prove the ordinary arrow statements, including arbitrary small coproducts, directly.</p>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field. Work with vector spaces, linear maps and indexing sets in a fixed universe, using choice for bases and simultaneous lifts. Write <span class="math" data-tex="\(\mathsf{Arr}(k)\)">\(\mathsf{Arr}(k)\)</span> for the category whose objects are linear maps <span class="math" data-tex="\(d:V\to W\)">\(d:V\to W\)</span>. A morphism</p>
+<span class="math math-display" data-tex="\[
+(a,b):(V\xrightarrow d W)\longrightarrow(X\xrightarrow e Y)
+\]">\[
+(a,b):(V\xrightarrow d W)\longrightarrow(X\xrightarrow e Y)
+\]</span>
+<p>is a pair of linear maps satisfying <span class="math" data-tex="\(bd=ea\)">\(bd=ea\)</span>. The word <em>projective</em> concerns this object of <span class="math" data-tex="\(\mathsf{Arr}(k)\)">\(\mathsf{Arr}(k)\)</span>; the word <em>injective</em> in the criterion below concerns the linear map <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>Kernels and cokernels of <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> are the induced arrows <span class="math" data-tex="\(\ker a\to\ker b\)">\(\ker a\to\ker b\)</span> and <span class="math" data-tex="\(\operatorname{coker}a\to\operatorname{coker}b\)">\(\operatorname{coker}a\to\operatorname{coker}b\)</span>. Their universal properties follow by factoring the two components; commutativity persists under these factors. Zero objects and finite biproducts are componentwise. The componentwise coimage–image isomorphisms form an isomorphism of arrows, so <span class="math" data-tex="\(\mathsf{Arr}(k)\)">\(\mathsf{Arr}(k)\)</span> is abelian. A sequence is exact precisely when its two component sequences are exact. In particular, an epimorphism has two surjective components. Small coproducts are componentwise direct sums: maps out of either sum are exactly the families of component maps, and the square commutes precisely when every summand square does.</p>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+P_1=(k\xrightarrow{1_k}k),\qquad P_0=(0\to k).
+\]">\[
+P_1=(k\xrightarrow{1_k}k),\qquad P_0=(0\to k).
+\]</span>
+<p>For any <span class="math" data-tex="\(D=(V\xrightarrow d W)\)">\(D=(V\xrightarrow d W)\)</span>, evaluation gives natural linear isomorphisms</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathsf{Arr}(k)}(P_1,D)\simeq V,
+\qquad
+\operatorname{Hom}_{\mathsf{Arr}(k)}(P_0,D)\simeq W.
+\]">\[
+\operatorname{Hom}_{\mathsf{Arr}(k)}(P_1,D)\simeq V,
+\qquad
+\operatorname{Hom}_{\mathsf{Arr}(k)}(P_0,D)\simeq W.
+\]</span>
+<p>The first sends a commuting pair <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> to <span class="math" data-tex="\(a(1)\)">\(a(1)\)</span>. Its inverse sends <span class="math" data-tex="\(v\)">\(v\)</span> to the pair <span class="math" data-tex="\(a(\lambda)=\lambda v\)">\(a(\lambda)=\lambda v\)</span>, <span class="math" data-tex="\(b(\lambda)=\lambda d(v)\)">\(b(\lambda)=\lambda d(v)\)</span>, which is forced by <span class="math" data-tex="\(b=da\)">\(b=da\)</span>. The second sends <span class="math" data-tex="\((0,b)\)">\((0,b)\)</span> to <span class="math" data-tex="\(b(1)\)">\(b(1)\)</span>, with inverse <span class="math" data-tex="\(b(\lambda)=\lambda w\)">\(b(\lambda)=\lambda w\)</span>. Composition with a morphism of target arrows acts by its corresponding component, proving naturality. Component exactness therefore makes both Hom functors exact, so <span class="math" data-tex="\(P_1\)">\(P_1\)</span> and <span class="math" data-tex="\(P_0\)">\(P_0\)</span> are projective.</p>
+<p>Here is the complete lifting proof for arbitrary small coproducts, including mixed coproducts. For small sets <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, their coproduct has the form</p>
+<span class="math math-display" data-tex="\[
+S(A,B)=\left(k^{(A)}\xrightarrow{\iota_1}
+k^{(A)}\oplus k^{(B)}\right).
+\]">\[
+S(A,B)=\left(k^{(A)}\xrightarrow{\iota_1}
+k^{(A)}\oplus k^{(B)}\right).
+\]</span>
+<p>Take an epimorphism</p>
+<span class="math math-display" data-tex="\[
+q=(q_X,q_Y):(X\xrightarrow e Y)\twoheadrightarrow
+(X&#x27;\xrightarrow{e&#x27;}Y&#x27;)
+\]">\[
+q=(q_X,q_Y):(X\xrightarrow e Y)\twoheadrightarrow
+(X&#x27;\xrightarrow{e&#x27;}Y&#x27;)
+\]</span>
+<p>and a morphism <span class="math" data-tex="\(f=(f_X,f_Y):S(A,B)\to(X&#x27;\xrightarrow{e&#x27;}Y&#x27;)\)">\(f=(f_X,f_Y):S(A,B)\to(X&#x27;\xrightarrow{e&#x27;}Y&#x27;)\)</span>. For each <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, choose <span class="math" data-tex="\(x_a\in X\)">\(x_a\in X\)</span> with <span class="math" data-tex="\(q_Xx_a=f_X(e_a)\)">\(q_Xx_a=f_X(e_a)\)</span>. For each <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, choose <span class="math" data-tex="\(y_b\in Y\)">\(y_b\in Y\)</span> with <span class="math" data-tex="\(q_Yy_b=f_Y(0,e_b)\)">\(q_Yy_b=f_Y(0,e_b)\)</span>. Surjectivity and choice supply these families. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\ell_X(e_a)&amp;=x_a,\\
+\ell_Y(e_a,0)&amp;=e(x_a),\\
+\ell_Y(0,e_b)&amp;=y_b.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\ell_X(e_a)&amp;=x_a,\\
+\ell_Y(e_a,0)&amp;=e(x_a),\\
+\ell_Y(0,e_b)&amp;=y_b.
+\end{aligned}
+\]</span>
+<p>Extend linearly using finite supports. Then <span class="math" data-tex="\(\ell_Y\iota_1=e\ell_X\)">\(\ell_Y\iota_1=e\ell_X\)</span>. On each first-block basis vector,</p>
+<span class="math math-display" data-tex="\[
+q_Ye(x_a)=e&#x27;q_X(x_a)=e&#x27;f_X(e_a)=f_Y(e_a,0),
+\]">\[
+q_Ye(x_a)=e&#x27;q_X(x_a)=e&#x27;f_X(e_a)=f_Y(e_a,0),
+\]</span>
+<p>and on each second-block basis vector the lift equation is the defining choice of <span class="math" data-tex="\(y_b\)">\(y_b\)</span>. Thus <span class="math" data-tex="\(q\ell=f\)">\(q\ell=f\)</span>. This proves projectivity of <span class="math" data-tex="\(S(A,B)\)">\(S(A,B)\)</span> by the projective lifting test. If either set is empty, the corresponding formulas impose no choices. If both are empty, the object and its unique lift are zero.</p>
+<p><strong>Proposition.</strong> The arrow object <span class="math" data-tex="\(D=(V\xrightarrow d W)\)">\(D=(V\xrightarrow d W)\)</span> is projective if and only if the linear map <span class="math" data-tex="\(d\)">\(d\)</span> is injective. Every arrow is an epimorphic image of a projective arrow.</p>
+<p><strong>Proof.</strong> For every <span class="math" data-tex="\(d\)">\(d\)</span>, consider</p>
+<span class="math math-display" data-tex="\[
+Q=\left(V\xrightarrow{\iota_1}V\oplus W\right),
+\qquad
+q=(1_V,t):Q\twoheadrightarrow D,
+\qquad t(v,w)=d(v)+w.
+\tag{6.4}
+\]">\[
+Q=\left(V\xrightarrow{\iota_1}V\oplus W\right),
+\qquad
+q=(1_V,t):Q\twoheadrightarrow D,
+\qquad t(v,w)=d(v)+w.
+\tag{6.4}
+\]</span>
+<p>It is a morphism because <span class="math" data-tex="\(t\iota_1=d\)">\(t\iota_1=d\)</span>, and is epic because both components are onto. If <span class="math" data-tex="\(D\)">\(D\)</span> is projective, lift <span class="math" data-tex="\(1_D\)">\(1_D\)</span> through <span class="math" data-tex="\(q\)">\(q\)</span>, obtaining a section <span class="math" data-tex="\((1_V,b)\)">\((1_V,b)\)</span>. Its commuting-square equation is <span class="math" data-tex="\(bd=\iota_1\)">\(bd=\iota_1\)</span>. Consequently <span class="math" data-tex="\((\pi_Vb)d=1_V\)">\((\pi_Vb)d=1_V\)</span>, so <span class="math" data-tex="\(d\)">\(d\)</span> is injective.</p>
+<p>Conversely, suppose <span class="math" data-tex="\(d\)">\(d\)</span> is injective. Choose a complement <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(W=d(V)\oplus C\)">\(W=d(V)\oplus C\)</span>. The pair <span class="math" data-tex="\((1_V,h)\)">\((1_V,h)\)</span>, where <span class="math" data-tex="\(h(v,c)=d(v)+c\)">\(h(v,c)=d(v)+c\)</span>, is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\left(V\xrightarrow{\iota_1}V\oplus C\right)
+\xrightarrow{\sim}(V\xrightarrow d W).
+\]">\[
+\left(V\xrightarrow{\iota_1}V\oplus C\right)
+\xrightarrow{\sim}(V\xrightarrow d W).
+\]</span>
+<p>Its square commutes, and both components are invertible. Choose bases <span class="math" data-tex="\(A\)">\(A\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\(C\)">\(C\)</span>; their basis isomorphisms identify its source with <span class="math" data-tex="\(S(A,B)\)">\(S(A,B)\)</span>. The lifting proof above makes that source projective. Projectivity transports across an isomorphism: precompose a given map with the isomorphism, lift it, and compose the lift with the inverse. Hence <span class="math" data-tex="\(D\)">\(D\)</span> is projective.</p>
+<p>The same basis construction, with bases of <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span>, identifies <span class="math" data-tex="\(Q\)">\(Q\)</span> with a projective <span class="math" data-tex="\(S(A,B)\)">\(S(A,B)\)</span>. Thus the displayed <span class="math" data-tex="\(q\)">\(q\)</span> supplies enough projectives. Zero spaces and empty bases satisfy the same formulas, including the zero arrow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For injectivity retain <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/derived-categories-and-sheaf-operations--sheaves-of-modules-and-their-derived-categories.html#exercises">the complete Sierpiński arrow proof, Exercise 3</a>, together with <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/derived-categories-and-sheaf-operations--sheaves-of-modules-and-their-derived-categories.html#sh-fnd-dc-14">the sheaf-to-arrow equivalence, Example 6</a>. On the Sierpiński space with opens <span class="math" data-tex="\(\varnothing,\{o\},S\)">\(\varnothing,\{o\},S\)</span>, a sheaf is precisely its linear restriction arrow <span class="math" data-tex="\(F(S)\to F(\{o\})\)">\(F(S)\to F(\{o\})\)</span>, with commuting pairs as morphisms. This equivalence matches the two component vector spaces and their exact sequences. The linked complete proof says precisely that such an arrow is injective if and only if it is onto. Combining this with the projective criterion just proved, the objects that are both are exactly the isomorphism arrows. An arrow can have injective and projective component spaces while possessing neither property as a diagram; any linear map that is neither monic nor epic gives such an example.</p>
+<h2 id="7-references">7. References</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/010M">Additive functors, Section 12.7</a>, Lemmas 12.7.1–2, and <a href="https://stacks.math.columbia.edu/tag/0038">Adjoint functors, Lemma 4.24.5</a>. The complete indicated proofs remain under <a href="https://github.com/stacks/stacks-project/blob/master/COPYING">GNU Free Documentation License 1.2</a>; their text has not been copied into this lesson.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Sections 5.2–5.3, for exact functors, split exact sequences and injective objects.</li>
+<li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#2-functorial-injective-embeddings">Injective modules and bounded below derived functors, Section 2, Lemmas 2.1–2.2</a>, for the complete ordinary Baer and functorial module embedding proofs. Separately, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/derived-categories-and-sheaf-operations--sheaves-of-modules-and-their-derived-categories.html#exercises">the exact public support body's Exercise 3</a> and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/derived-categories-and-sheaf-operations--sheaves-of-modules-and-their-derived-categories.html#sh-fnd-dc-14">Example 6</a> supply the Sierpiński arrow injectivity and sheaf equivalence used above; field coefficients and choice are retained.</li>
+<li><a href="testing-injectivity-on-generators-and-constructing-enough-injectives.html#3-ordinary-modules-and-the-field-case">Ordinary modules, Section 3</a>, for the complete arbitrary-ring free-module lift used in Exercise 1. Exercise 4 supplies its full ordinary arrow and coproduct projectivity proof here, including commuting lifts and empty bases.</li>
+</ul>
+</main></body></html>

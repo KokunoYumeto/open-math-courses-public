@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A parameter gain from polynomial commutators</title><link rel="stylesheet" href="style.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,tags:'ams'},chtml:{fontURL:'assets/mathjax/output/chtml/fonts/woff-v2'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><header><a href="index.html">Subellipticity and unique continuation</a> · Self-checked by the writing AI</header><main><h1 id="a-parameter-gain-from-polynomial-commutators">A parameter gain from polynomial commutators</h1>
+<p>A large multiplication term can sometimes be removed by a phase. What remains must then be measured by the commutators of the two operators. For polynomial coefficients, the full derivative jet makes this measurement uniform throughout a fixed rectangle, even where the coefficient of the spatial derivative vanishes.</p>
+<p>This lesson proves a power gain in a large parameter. We first turn the polynomial jet into two exact operator identities. We then prove the energy estimate with a parameter Sobolev norm. Its only operator estimates are Fourier multiplier estimates proved here. This avoids allowing an unrecorded dependence on the large parameter in an ordinary Sobolev bound.</p>
+<p>The algebraic prerequisite is <a href="polynomial-brackets-and-the-residual-jet.html">Polynomial brackets and the residual jet</a>, Theorem 1.1 and Sections 2–5. The energy argument develops the commutator method of Kohn and of Oleĭnik and Radkevič, used in <a href="brackets-and-general-hypoellipticity.html">Brackets and general hypoellipticity</a>, Lemma 4.2. We also use Plancherel's identity, Young's convolution inequality and elementary polynomial Taylor formulas. Basic references for commutator methods are Bramanti [B] and Hörmander [H]. The proof below supplies all the additional parameter estimates.</p>
+<h2 id="1-the-gain-and-the-phase">1. The gain and the phase</h2>
+<p>Write <span class="math" data-tex="\(D_t=-i\partial_t,D_z=-i\partial_z\)">\(D_t=-i\partial_t,D_z=-i\partial_z\)</span>, and use the canonical convention
+<span class="math" data-tex="\(\{\tau,t\}=\{\eta,z\}=1\)">\(\{\tau,t\}=\{\eta,z\}=1\)</span>. Fix positive integers <span class="math" data-tex="\(n\leq M\)">\(n\leq M\)</span>. Give <span class="math" data-tex="\(t,z\)">\(t,z\)</span> weights <span class="math" data-tex="\(1,n\)">\(1,n\)</span>. Let <span class="math" data-tex="\(F(t,z),G(t)\)">\(F(t,z),G(t)\)</span> be real polynomials with</p>
+<span class="math math-display" data-tex="\[
+\deg_{\mathrm{wt}}F&lt;M,\qquad \deg G&lt;n.
+\tag{1.1}
+\]">\[
+\deg_{\mathrm{wt}}F&lt;M,\qquad \deg G&lt;n.
+\tag{1.1}
+\]</span>
+<p>For a fixed <span class="math" data-tex="\(C_0\geq1\)">\(C_0\geq1\)</span>, assume</p>
+<span class="math math-display" data-tex="\[
+\max_j|G^{(j)}(0)|\leq C_0,\qquad
+\max_j|G^{(j)}(0)|\geq C_0^{-1}.
+\tag{1.2}
+\]">\[
+\max_j|G^{(j)}(0)|\leq C_0,\qquad
+\max_j|G^{(j)}(0)|\geq C_0^{-1}.
+\tag{1.2}
+\]</span>
+<p>There is no bound on the coefficients of <span class="math" data-tex="\(F\)">\(F\)</span>. Set
+<span class="math" data-tex="\(L_1=\tau,L_2=F+G\eta\)">\(L_1=\tau,L_2=F+G\eta\)</span>. Define left-nested words by
+<span class="math" data-tex="\(L_{(a)}=L_a,L_{(a,I)}=\{L_a,L_I\}\)">\(L_{(a)}=L_a,L_{(a,I)}=\{L_a,L_I\}\)</span>. Their length <span class="math" data-tex="\(|I|\)">\(|I|\)</span> counts leaves. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal B(t,z,\eta)
+=\max_{1\leq|I|\leq M}|L_I(t,z,0,\eta)|,\\
+\rho=\min_{\eta\in\mathbb R}\mathcal B(0,0,\eta),
+\qquad \varepsilon=2^{1-M},\\
+Q=\{(t,z):|t|&lt;1,\ |z|&lt;1\}.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+\mathcal B(t,z,\eta)
+=\max_{1\leq|I|\leq M}|L_I(t,z,0,\eta)|,\\
+\rho=\min_{\eta\in\mathbb R}\mathcal B(0,0,\eta),
+\qquad \varepsilon=2^{1-M},\\
+Q=\{(t,z):|t|&lt;1,\ |z|&lt;1\}.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>Words longer than <span class="math" data-tex="\(M\)">\(M\)</span> vanish by the algebraic prerequisite. The minimum in (1.3) exists, as we will also check below.</p>
+<p><strong>Theorem 1.1 (uniform polynomial parameter gain).</strong> There are <span class="math" data-tex="\(C,\rho_0\)">\(C,\rho_0\)</span>, depending only on <span class="math" data-tex="\(M,n,C_0\)">\(M,n,C_0\)</span>, such that, if <span class="math" data-tex="\(\rho\geq\rho_0\)">\(\rho\geq\rho_0\)</span>, then every <span class="math" data-tex="\(u\in C_c^\infty(Q)\)">\(u\in C_c^\infty(Q)\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\rho^\varepsilon\|u\|
+\leq C\bigl(\|D_tu\|+
+\|(F+GD_z)u\|\bigr).
+\tag{1.4}
+\]">\[
+\rho^\varepsilon\|u\|
+\leq C\bigl(\|D_tu\|+
+\|(F+GD_z)u\|\bigr).
+\tag{1.4}
+\]</span>
+<p>All norms without a subscript are on <span class="math" data-tex="\(L^2(\mathbb R^2)\)">\(L^2(\mathbb R^2)\)</span>. In particular, the constant is independent of the unbounded coefficients of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Here is the stronger norm estimate used in the proof. Choose an index <span class="math" data-tex="\(s&lt;n\)">\(s&lt;n\)</span> with <span class="math" data-tex="\(|G^{(s)}(0)|\geq C_0^{-1}\)">\(|G^{(s)}(0)|\geq C_0^{-1}\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H(z)=F^{(s)}(0,z)/G^{(s)}(0),\\
+R=F-GH,\qquad
+\Phi(z)=\int_0^zH(y)\,dy,\\
+\Lambda_\rho=(\rho^2+D_z^2)^{1/2},\qquad
+\|v\|_{a,\rho}=\|\Lambda_\rho^a v\|.
+\end{gathered}
+\tag{1.5}
+\]">\[
+\begin{gathered}
+H(z)=F^{(s)}(0,z)/G^{(s)}(0),\\
+R=F-GH,\qquad
+\Phi(z)=\int_0^zH(y)\,dy,\\
+\Lambda_\rho=(\rho^2+D_z^2)^{1/2},\qquad
+\|v\|_{a,\rho}=\|\Lambda_\rho^a v\|.
+\end{gathered}
+\tag{1.5}
+\]</span>
+<p>For <span class="math" data-tex="\(\rho\geq1\)">\(\rho\geq1\)</span> one has</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|e^{i\Phi}u\|_{\varepsilon,\rho}\\
+\leq C\bigl(\|D_tu\|+
+\|(F+GD_z)u\|+\|u\|\bigr).
+\end{gathered}
+\tag{1.6}
+\]">\[
+\begin{gathered}
+\|e^{i\Phi}u\|_{\varepsilon,\rho}\\
+\leq C\bigl(\|D_tu\|+
+\|(F+GD_z)u\|+\|u\|\bigr).
+\end{gathered}
+\tag{1.6}
+\]</span>
+<p>The Sobolev norm in (1.6) is taken after the phase change. A large <span class="math" data-tex="\(H\)">\(H\)</span> need not act boundedly on the original Sobolev norm with a constant independent of <span class="math" data-tex="\(F\)">\(F\)</span>. The phase is unitary on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, which is all that (1.4) requires.</p>
+<p>The integer weights in this theorem have a mathematical role. Section 7 gives a complete replacement for real weights and an explicit test showing why the exponent cannot simply be extended to every real value of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h2 id="2-the-full-jet-gives-uniformly-bounded-coefficients">2. The full jet gives uniformly bounded coefficients</h2>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+E=G F_t-FG&#x27;=G R_t-RG&#x27;,\qquad
+\mathcal J(P)=\sum_\alpha|\partial_{t,z}^\alpha P|.
+\tag{2.1}
+\]">\[
+E=G F_t-FG&#x27;=G R_t-RG&#x27;,\qquad
+\mathcal J(P)=\sum_\alpha|\partial_{t,z}^\alpha P|.
+\tag{2.1}
+\]</span>
+<p>The sums are finite polynomial jets. The prerequisite theorem gives, on every fixed bounded rectangle,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal B(t,z,\eta)
+\asymp |\eta+H(z)|+\mathcal J(E)(t,z),\\
+\mathcal J(R)(t,z)\asymp\mathcal J(E)(t,z).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\mathcal B(t,z,\eta)
+\asymp |\eta+H(z)|+\mathcal J(E)(t,z),\\
+\mathcal J(R)(t,z)\asymp\mathcal J(E)(t,z).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>The constants depend only on the degree bounds, <span class="math" data-tex="\(C_0\)">\(C_0\)</span> and the rectangle. In the first comparison the original and shifted word families agree under the canonical change <span class="math" data-tex="\(\eta_* =\eta+H(z)\)">\(\eta_* =\eta+H(z)\)</span>.</p>
+<p>At the origin the bracket maximum is a continuous function of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Its lower bound in (2.2) tends to infinity as <span class="math" data-tex="\(|\eta|\to\infty\)">\(|\eta|\to\infty\)</span>; therefore its minimum is attained. Taking that minimum, and taking <span class="math" data-tex="\(\eta=-H(0)\)">\(\eta=-H(0)\)</span> for the opposite bound, gives</p>
+<span class="math math-display" data-tex="\[
+\rho\asymp\mathcal J(E)(0,0).
+\tag{2.3}
+\]">\[
+\rho\asymp\mathcal J(E)(0,0).
+\tag{2.3}
+\]</span>
+<p>Polynomial Taylor translation in both directions gives
+<span class="math" data-tex="\(\mathcal J(E)(t,z)\asymp\mathcal J(E)(0,0)\)">\(\mathcal J(E)(t,z)\asymp\mathcal J(E)(0,0)\)</span> on <span class="math" data-tex="\(|t|,|z|\leq2\)">\(|t|,|z|\leq2\)</span>. For example, each derivative at <span class="math" data-tex="\((t,z)\)">\((t,z)\)</span> is a finite sum of derivatives at zero times <span class="math" data-tex="\(t^a z^b/(a!b!)\)">\(t^a z^b/(a!b!)\)</span>; translating by <span class="math" data-tex="\((-t,-z)\)">\((-t,-z)\)</span> gives the reverse inequality. Consequently, on that rectangle,</p>
+<span class="math math-display" data-tex="\[
+c\rho\leq\mathcal J(E)\leq C\rho,
+\qquad \mathcal J(R)\leq C\rho.
+\tag{2.4}
+\]">\[
+c\rho\leq\mathcal J(E)\leq C\rho,
+\qquad \mathcal J(R)\leq C\rho.
+\tag{2.4}
+\]</span>
+<p>The derivatives of <span class="math" data-tex="\(R\)">\(R\)</span> at zero are its coefficients times factorials. Thus every coefficient of <span class="math" data-tex="\(R/\rho\)">\(R/\rho\)</span> is bounded. Every derivative of <span class="math" data-tex="\(R/\rho\)">\(R/\rho\)</span>, <span class="math" data-tex="\(E/\rho\)">\(E/\rho\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span>, of any fixed order, is uniformly bounded on the rectangle. This supplies the coefficient bounds for the analysis.</p>
+<p>The phase change is exact. If <span class="math" data-tex="\(u=e^{-i\Phi}v\)">\(u=e^{-i\Phi}v\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_tu=e^{-i\Phi}D_tv,\\
+(F+GD_z)u=e^{-i\Phi}(R+GD_z)v.
+\end{gathered}
+\tag{2.5}
+\]">\[
+\begin{gathered}
+D_tu=e^{-i\Phi}D_tv,\\
+(F+GD_z)u=e^{-i\Phi}(R+GD_z)v.
+\end{gathered}
+\tag{2.5}
+\]</span>
+<p>The support and <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm are preserved. Nilpotence was proved in the original coordinates and is transferred by the canonical change. The shifted polynomial <span class="math" data-tex="\(R\)">\(R\)</span> can have a larger weighted degree; we do not apply (1.1) anew to it.</p>
+<h2 id="3-two-exact-identities-on-the-rectangle">3. Two exact identities on the rectangle</h2>
+<p>We next show that multiplication by <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and then <span class="math" data-tex="\(D_z\)">\(D_z\)</span>, are bounded-coefficient combinations of the word operators. This is stronger than a pointwise lower bound on their symbols.</p>
+<p>Choose fixed real cutoffs <span class="math" data-tex="\(\gamma(t),\chi(z)\)">\(\gamma(t),\chi(z)\)</span>, equal to one on a neighborhood of <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, with support in <span class="math" data-tex="\((-2,2)\)">\((-2,2)\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(a)=aD_z-\frac{i}{2}a_z,\\
+P_1=D_t,\qquad
+P_2=S(\gamma\chi G)+\gamma\chi R,\\
+P_{(a)}=P_a,\qquad
+P_{(a,I)}=i[P_a,P_I].
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+S(a)=aD_z-\frac{i}{2}a_z,\\
+P_1=D_t,\qquad
+P_2=S(\gamma\chi G)+\gamma\chi R,\\
+P_{(a)}=P_a,\qquad
+P_{(a,I)}=i[P_a,P_I].
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>For real <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(S(a)\)">\(S(a)\)</span> is symmetric on Schwartz functions. All the <span class="math" data-tex="\(P_I\)">\(P_I\)</span> are symmetric there. On <span class="math" data-tex="\(Q\)">\(Q\)</span>, <span class="math" data-tex="\(P_2=R+GD_z\)">\(P_2=R+GD_z\)</span>. The correction <span class="math" data-tex="\(-ia_z/2\)">\(-ia_z/2\)</span> is globally bounded independently of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and is zero on <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>For any two real coefficient pairs, direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+i[S(a)+\rho b,S(c)+\rho d]\\
+=S(ac_z-ca_z)+\rho(ad_z-cb_z),\\
+i[D_t,S(a)+\rho b]
+=S(a_t)+\rho b_t.
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+i[S(a)+\rho b,S(c)+\rho d]\\
+=S(ac_z-ca_z)+\rho(ad_z-cb_z),\\
+i[D_t,S(a)+\rho b]
+=S(a_t)+\rho b_t.
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>These are exactly the Weyl quantizations of the corresponding Poisson brackets. They also show why an intercept of size <span class="math" data-tex="\(\rho\)">\(\rho\)</span> produces no term of size <span class="math" data-tex="\(\rho^2\)">\(\rho^2\)</span>: multiplication operators commute. Induction proves that every word except the single leaf <span class="math" data-tex="\(P_1\)">\(P_1\)</span> has the form <span class="math" data-tex="\(S(a_I)+\rho b_I\)">\(S(a_I)+\rho b_I\)</span>, with <span class="math" data-tex="\(a_I,b_I\)">\(a_I,b_I\)</span> in bounded sets of smooth compactly supported functions for every fixed maximum length. The same holds for their time derivatives. On <span class="math" data-tex="\(Q\)">\(Q\)</span> their symbols are the canonically shifted <span class="math" data-tex="\(L_I\)">\(L_I\)</span>, so words longer than <span class="math" data-tex="\(M\)">\(M\)</span> are zero there as differential operators.</p>
+<p>Let <span class="math" data-tex="\(U_r=i^r\operatorname{ad}_{P_1}^{,r}P_2\)">\(U_r=i^r\operatorname{ad}_{P_1}^{,r}P_2\)</span>, including <span class="math" data-tex="\(U_0=P_2\)">\(U_0=P_2\)</span>. On <span class="math" data-tex="\(Q\)">\(Q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+U_r=R^{(r)}+G^{(r)}D_z,\qquad
+E=G U_1-G&#x27;U_0.
+\tag{3.3}
+\]">\[
+U_r=R^{(r)}+G^{(r)}D_z,\qquad
+E=G U_1-G&#x27;U_0.
+\tag{3.3}
+\]</span>
+<p>The second identity is an identity of operators with a multiplication operator on its left. Repeated commutation with <span class="math" data-tex="\(D_t\)">\(D_t\)</span> expresses each <span class="math" data-tex="\(\partial_t^iE\)">\(\partial_t^iE\)</span> as a linear combination of words, with coefficients polynomial in derivatives of <span class="math" data-tex="\(G(t)\)">\(G(t)\)</span>. For a multiplication operator <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+i[U_r,h]=G^{(r)}\partial_z h.
+\tag{3.4}
+\]">\[
+i[U_r,h]=G^{(r)}\partial_z h.
+\tag{3.4}
+\]</span>
+<p>The coefficients just described depend on <span class="math" data-tex="\(t\)">\(t\)</span>, so they commute with <span class="math" data-tex="\(U_r\)">\(U_r\)</span>. Applying (3.4) <span class="math" data-tex="\(j\)">\(j\)</span> times therefore expresses
+<span class="math" data-tex="\((G^{(r)})^j\partial_z^j\partial_t^iE\)">\((G^{(r)})^j\partial_z^j\partial_t^iE\)</span> as another finite word combination with such coefficients.</p>
+<p>Here and below words can first appear with arbitrary binary bracketing. Jacobi converts them into left-nested words of the same leaf count: the identity
+<span class="math" data-tex="\(\operatorname{ad}_{[A,B]}=[\operatorname{ad}_A,\operatorname{ad}_B]\)">\(\operatorname{ad}_{[A,B]}=[\operatorname{ad}_A,\operatorname{ad}_B]\)</span> expands an inner bracket into two terms; repeating it reduces the non-left-nested brackets. For each fixed length the expansion is finite, with integer coefficients. The factors <span class="math" data-tex="\(i\)">\(i\)</span> in (3.1) only change fixed signs. Terms of length greater than <span class="math" data-tex="\(M\)">\(M\)</span> vanish on <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>We need smooth coefficients, rather than a choice of a nonzero derivative at each point. Taylor's formula for a derivative with <span class="math" data-tex="\(|G^{(s)}(0)|\geq C_0^{-1}\)">\(|G^{(s)}(0)|\geq C_0^{-1}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{r=0}^{n-1}|G^{(r)}(t)|^2\geq c&gt;0
+\quad (|t|\leq2).
+\tag{3.5}
+\]">\[
+\sum_{r=0}^{n-1}|G^{(r)}(t)|^2\geq c&gt;0
+\quad (|t|\leq2).
+\tag{3.5}
+\]</span>
+<p>For each nonnegative integer <span class="math" data-tex="\(j\)">\(j\)</span>, put
+<span class="math" data-tex="\(T_j(t)=\sum_{r=0}^{n-1}(G^{(r)}(t))^{2j}\)">\(T_j(t)=\sum_{r=0}^{n-1}(G^{(r)}(t))^{2j}\)</span>; take <span class="math" data-tex="\(T_0=n\)">\(T_0=n\)</span>. Equation (3.5) gives a uniform positive lower bound for each of the finitely many <span class="math" data-tex="\(T_j\)">\(T_j\)</span> needed. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\partial_t^i\partial_z^jE\\
+=\sum_{r=0}^{n-1}\frac{(G^{(r)})^j}{T_j}
+\bigl((G^{(r)})^j\partial_t^i\partial_z^jE\bigr)
+\end{gathered}
+\tag{3.6}
+\]">\[
+\begin{gathered}
+\partial_t^i\partial_z^jE\\
+=\sum_{r=0}^{n-1}\frac{(G^{(r)})^j}{T_j}
+\bigl((G^{(r)})^j\partial_t^i\partial_z^jE\bigr)
+\end{gathered}
+\tag{3.6}
+\]</span>
+<p>is a word combination with coefficients bounded in every smooth seminorm. This includes <span class="math" data-tex="\(j=0\)">\(j=0\)</span>.</p>
+<p>List all the derivatives in the full jet as <span class="math" data-tex="\(h_\alpha=\partial^\alpha E\)">\(h_\alpha=\partial^\alpha E\)</span>, and set <span class="math" data-tex="\(T_E=\sum_\alpha h_\alpha^2\)">\(T_E=\sum_\alpha h_\alpha^2\)</span>. There are only finitely many. By (2.4) and equivalence of the finite sum and square-sum norms,</p>
+<span class="math math-display" data-tex="\[
+T_E\geq c\rho^2,
+\qquad
+\rho=\sum_\alpha\frac{\rho h_\alpha}{T_E}h_\alpha
+\quad (|t|,|z|\leq2).
+\tag{3.7}
+\]">\[
+T_E\geq c\rho^2,
+\qquad
+\rho=\sum_\alpha\frac{\rho h_\alpha}{T_E}h_\alpha
+\quad (|t|,|z|\leq2).
+\tag{3.7}
+\]</span>
+<p>Each coefficient <span class="math" data-tex="\(\rho h_\alpha/T_E\)">\(\rho h_\alpha/T_E\)</span> is uniformly smooth there: write it as <span class="math" data-tex="\((h_\alpha/\rho)/(T_E/\rho^2)\)">\((h_\alpha/\rho)/(T_E/\rho^2)\)</span> and differentiate a reciprocal with a uniform positive denominator. Combining (3.6) and (3.7), then multiplying the coefficients by fixed cutoffs equal to one near <span class="math" data-tex="\(Q\)">\(Q\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\rho=\sum_{1\leq|I|\leq M}c_I(t,z)P_I
+\quad\text{on }Q.
+\tag{3.8}
+\]">\[
+\rho=\sum_{1\leq|I|\leq M}c_I(t,z)P_I
+\quad\text{on }Q.
+\tag{3.8}
+\]</span>
+<p>The <span class="math" data-tex="\(c_I\)">\(c_I\)</span> are uniformly smooth and compactly supported. The jet has no common zero anywhere: if all derivatives of a polynomial vanish at a point, its Taylor polynomial is zero. Hence the reciprocal used here is well-defined on a neighborhood of the cutoff support. Uniform bounds are required only on that fixed support.</p>
+<p>Finally, with <span class="math" data-tex="\(T_1\)">\(T_1\)</span> from (3.5), (3.3) gives on <span class="math" data-tex="\(Q\)">\(Q\)</span></p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_z=\sum_{r=0}^{n-1}\frac{G^{(r)}}{T_1}U_r-B,\\
+B=\sum_{r=0}^{n-1}\frac{G^{(r)}}{T_1}R^{(r)}.
+\end{gathered}
+\tag{3.9}
+\]">\[
+\begin{gathered}
+D_z=\sum_{r=0}^{n-1}\frac{G^{(r)}}{T_1}U_r-B,\\
+B=\sum_{r=0}^{n-1}\frac{G^{(r)}}{T_1}R^{(r)}.
+\end{gathered}
+\tag{3.9}
+\]</span>
+<p>The multiplication coefficient <span class="math" data-tex="\(B/\rho\)">\(B/\rho\)</span> is uniformly smooth. Substitute <span class="math" data-tex="\(B=(B/\rho)\rho\)">\(B=(B/\rho)\rho\)</span> and then (3.8). After another fixed coefficient cutoff, we obtain</p>
+<span class="math math-display" data-tex="\[
+D_z=\sum_{1\leq|I|\leq M}d_I(t,z)P_I
+\quad\text{on }Q,
+\tag{3.10}
+\]">\[
+D_z=\sum_{1\leq|I|\leq M}d_I(t,z)P_I
+\quad\text{on }Q,
+\tag{3.10}
+\]</span>
+<p>with uniformly smooth compactly supported <span class="math" data-tex="\(d_I\)">\(d_I\)</span>. No division by <span class="math" data-tex="\(G(t)\)">\(G(t)\)</span> occurred. Every identity remains valid at its zeros.</p>
+<h2 id="4-uniform-multiplier-bounds-proved-by-fourier-analysis">4. Uniform multiplier bounds proved by Fourier analysis</h2>
+<p>For <span class="math" data-tex="\(\rho\geq1\)">\(\rho\geq1\)</span>, write <span class="math" data-tex="\(w(\eta)=(\rho^2+\eta^2)^{1/2}\)">\(w(\eta)=(\rho^2+\eta^2)^{1/2}\)</span>. The elementary inequalities</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w(\eta)\leq w(\zeta)+|\eta-\zeta|,\\
+\frac{w(\eta)}{w(\zeta)}
+\leq1+|\eta-\zeta|,\qquad w\geq\rho\geq1
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+w(\eta)\leq w(\zeta)+|\eta-\zeta|,\\
+\frac{w(\eta)}{w(\zeta)}
+\leq1+|\eta-\zeta|,\qquad w\geq\rho\geq1
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>also hold with <span class="math" data-tex="\(\eta,\zeta\)">\(\eta,\zeta\)</span> reversed. The constants do not depend on <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</p>
+<p><strong>Lemma 4.1 (multiplication and its multiplier commutator).</strong> Let <span class="math" data-tex="\(b(t,z)\)">\(b(t,z)\)</span> range over a bounded set of smooth functions with support in a fixed compact <span class="math" data-tex="\(z\)">\(z\)</span>-interval. Uniformly in <span class="math" data-tex="\(t,\rho\geq1\)">\(t,\rho\geq1\)</span>, multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> is bounded on <span class="math" data-tex="\(H^q_\rho\)">\(H^q_\rho\)</span> for every real <span class="math" data-tex="\(q\)">\(q\)</span>. Moreover, for all real <span class="math" data-tex="\(q,k\)">\(q,k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|[\Lambda_\rho^k,b]v\|_{q-k+1,\rho}
+\leq C_{q,k}\|v\|_{q,\rho}.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\|[\Lambda_\rho^k,b]v\|_{q-k+1,\rho}
+\leq C_{q,k}\|v\|_{q,\rho}.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>Only finitely many coefficient derivatives are needed for each choice of <span class="math" data-tex="\(q,k\)">\(q,k\)</span>. The same bounds hold with time derivatives of <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><strong>Proof.</strong> Integrating the Fourier transform of <span class="math" data-tex="\(b\)">\(b\)</span> by parts gives
+<span class="math" data-tex="\(|\widehat b(t,\theta)|\leq C_N(1+|\theta|)^{-N}\)">\(|\widehat b(t,\theta)|\leq C_N(1+|\theta|)^{-N}\)</span> for every fixed <span class="math" data-tex="\(N\)">\(N\)</span>, uniformly in <span class="math" data-tex="\(t\)">\(t\)</span>. The weighted Fourier kernel of multiplication is
+<span class="math" data-tex="\(w(\eta)^q\widehat b(t,\eta-\zeta)w(\zeta)^{-q}\)">\(w(\eta)^q\widehat b(t,\eta-\zeta)w(\zeta)^{-q}\)</span>. By (4.1), its absolute value is bounded by
+<span class="math" data-tex="\(C_N(1+|\eta-\zeta|)^{|q|-N}\)">\(C_N(1+|\eta-\zeta|)^{|q|-N}\)</span>. Choose <span class="math" data-tex="\(N&gt;|q|+1\)">\(N&gt;|q|+1\)</span>. This is an integrable convolution kernel, so Young's inequality and Plancherel prove the first assertion.</p>
+<p>For the commutator, the additional factor is <span class="math" data-tex="\(w(\eta)^k-w(\zeta)^k\)">\(w(\eta)^k-w(\zeta)^k\)</span>. The derivative of <span class="math" data-tex="\(w(x)^k\)">\(w(x)^k\)</span> has absolute value at most <span class="math" data-tex="\(|k|w(x)^{k-1}\)">\(|k|w(x)^{k-1}\)</span>. Along the segment from <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> to <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, both ratios of <span class="math" data-tex="\(w(x)\)">\(w(x)\)</span> and <span class="math" data-tex="\(w(\zeta)\)">\(w(\zeta)\)</span> are bounded by <span class="math" data-tex="\(1+|\eta-\zeta|\)">\(1+|\eta-\zeta|\)</span>, by (4.1). The mean-value formula therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|w(\eta)^k-w(\zeta)^k|\\
+\leq |k|\,|\eta-\zeta|
+(1+|\eta-\zeta|)^{|k-1|}
+w(\zeta)^{k-1}.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+|w(\eta)^k-w(\zeta)^k|\\
+\leq |k|\,|\eta-\zeta|
+(1+|\eta-\zeta|)^{|k-1|}
+w(\zeta)^{k-1}.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>For <span class="math" data-tex="\(k=0\)">\(k=0\)</span> the difference is zero. Multiply this bound by
+<span class="math" data-tex="\(w(\eta)^{q-k+1}w(\zeta)^{-q}\)">\(w(\eta)^{q-k+1}w(\zeta)^{-q}\)</span>. The remaining powers at <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> cancel; the ratio costs only another fixed power of <span class="math" data-tex="\(1+|\eta-\zeta|\)">\(1+|\eta-\zeta|\)</span>. Increasing <span class="math" data-tex="\(N\)">\(N\)</span> makes the resulting kernel integrable. Young and Plancherel prove (4.2). Integration in <span class="math" data-tex="\(t\)">\(t\)</span> gives the corresponding two-variable norm estimates. ∎</p>
+<p>Every transverse word <span class="math" data-tex="\(T=S(a)+\rho b\)">\(T=S(a)+\rho b\)</span> in (3.2), and every fixed time derivative of it, now satisfies</p>
+<span class="math math-display" data-tex="\[
+\|Tv\|_{q-1,\rho}\leq C_q\|v\|_{q,\rho}.
+\tag{4.4}
+\]">\[
+\|Tv\|_{q-1,\rho}\leq C_q\|v\|_{q,\rho}.
+\tag{4.4}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(D_z:H^q_\rho\to H^{q-1}_\rho\)">\(D_z:H^q_\rho\to H^{q-1}_\rho\)</span>, multiplication is bounded, and <span class="math" data-tex="\(\rho\|v\|_{q-1,\rho}\leq\|v\|_{q,\rho}\)">\(\rho\|v\|_{q-1,\rho}\leq\|v\|_{q,\rho}\)</span>. This last inequality also controls the term <span class="math" data-tex="\(\rho b\)">\(\rho b\)</span>.</p>
+<p>We will need one more consequence. If <span class="math" data-tex="\(C\)">\(C\)</span> is a transverse word of the same form, put
+<span class="math" data-tex="\(A=\Lambda_\rho^k C\)">\(A=\Lambda_\rho^k C\)</span>. Then <span class="math" data-tex="\(A\)">\(A\)</span> maps <span class="math" data-tex="\(H^q_\rho\)">\(H^q_\rho\)</span> to <span class="math" data-tex="\(H^{q-k-1}_\rho\)">\(H^{q-k-1}_\rho\)</span>, and, for <span class="math" data-tex="\(T=P_1\)">\(T=P_1\)</span> or any fixed transverse word,</p>
+<span class="math math-display" data-tex="\[
+\|[T,A]v\|_{q-k-1,\rho}
+\leq C\|v\|_{q,\rho}.
+\tag{4.5}
+\]">\[
+\|[T,A]v\|_{q-k-1,\rho}
+\leq C\|v\|_{q,\rho}.
+\tag{4.5}
+\]</span>
+<p>To check this, expand
+<span class="math" data-tex="\([T,A]=[T,\Lambda_\rho^k]C+\Lambda_\rho^k[T,C]\)">\([T,A]=[T,\Lambda_\rho^k]C+\Lambda_\rho^k[T,C]\)</span>. If <span class="math" data-tex="\(T=D_t\)">\(T=D_t\)</span>, the first term is zero and the second is controlled by time derivatives and (4.4). If <span class="math" data-tex="\(T=S(a)+\rho b\)">\(T=S(a)+\rho b\)</span>, its commutator with <span class="math" data-tex="\(\Lambda_\rho^k\)">\(\Lambda_\rho^k\)</span> consists of
+<span class="math" data-tex="\([a,\Lambda_\rho^k]D_z\)">\([a,\Lambda_\rho^k]D_z\)</span>, <span class="math" data-tex="\(-i[a_z,\Lambda_\rho^k]/2\)">\(-i[a_z,\Lambda_\rho^k]/2\)</span>, and <span class="math" data-tex="\(\rho[b,\Lambda_\rho^k]\)">\(\rho[b,\Lambda_\rho^k]\)</span>. By (4.2), these map <span class="math" data-tex="\(H^q_\rho\)">\(H^q_\rho\)</span> to <span class="math" data-tex="\(H^{q-k}_\rho\)">\(H^{q-k}_\rho\)</span>: for the last term use <span class="math" data-tex="\(\rho\leq w\)">\(\rho\leq w\)</span>, and for the middle term use <span class="math" data-tex="\(w\geq1\)">\(w\geq1\)</span>. Equation (3.2) puts <span class="math" data-tex="\([T,C]\)">\([T,C]\)</span> back in the class (4.4). Combining these bounds proves (4.5).</p>
+<p>Thus the commutator with <span class="math" data-tex="\(A\)">\(A\)</span> has the same order <span class="math" data-tex="\(k+1\)">\(k+1\)</span> as <span class="math" data-tex="\(A\)">\(A\)</span>, with a constant independent of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. We have proved the precise bounds the energy identity requires, including negative norm indices.</p>
+<h2 id="5-each-extra-leaf-halves-the-gain">5. Each extra leaf halves the gain</h2>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\mathcal R(v)=\|P_1v\|+\|P_2v\|+\|v\|.
+\tag{5.1}
+\]">\[
+\mathcal R(v)=\|P_1v\|+\|P_2v\|+\|v\|.
+\tag{5.1}
+\]</span>
+<p>We claim that, for every word of length <span class="math" data-tex="\(r\leq M\)">\(r\leq M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|P_Iv\|_{a_r-1,\rho}
+\leq C_r\mathcal R(v),
+\qquad a_r=2^{1-r},
+\tag{5.2}
+\]">\[
+\|P_Iv\|_{a_r-1,\rho}
+\leq C_r\mathcal R(v),
+\qquad a_r=2^{1-r},
+\tag{5.2}
+\]</span>
+<p>for smooth <span class="math" data-tex="\(v\)">\(v\)</span> compactly supported in <span class="math" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span> and Schwartz in <span class="math" data-tex="\(z\)">\(z\)</span>. It is enough to prove the claim for the finite word family used above. The cutoffs make all coefficient bounds global in <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>The case <span class="math" data-tex="\(r=1\)">\(r=1\)</span> is the definition of <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>. Suppose the claim holds for <span class="math" data-tex="\(P=P_I\)">\(P=P_I\)</span>, with gain <span class="math" data-tex="\(a\leq1\)">\(a\leq1\)</span>, and let <span class="math" data-tex="\(T=P_j\)">\(T=P_j\)</span>, <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+b=a/2,\qquad C=i[T,P],\qquad
+A=\Lambda_\rho^{2b-2}C.
+\tag{5.3}
+\]">\[
+b=a/2,\qquad C=i[T,P],\qquad
+A=\Lambda_\rho^{2b-2}C.
+\tag{5.3}
+\]</span>
+<p>The commutator <span class="math" data-tex="\(C\)">\(C\)</span> is transverse, including the case where <span class="math" data-tex="\(P\)">\(P\)</span> or <span class="math" data-tex="\(T\)">\(T\)</span> is the time leaf. If the two leaves are equal it is zero, and there is nothing to prove. Its coefficients satisfy (3.2). The operator <span class="math" data-tex="\(A\)">\(A\)</span> has order <span class="math" data-tex="\(2b-1=a-1\)">\(2b-1=a-1\)</span> in the estimates of Section 4.</p>
+<p>All integrations below are legitimate: <span class="math" data-tex="\(Cv\)">\(Cv\)</span> and <span class="math" data-tex="\(Av\)">\(Av\)</span> are Schwartz in <span class="math" data-tex="\(z\)">\(z\)</span>, and <span class="math" data-tex="\(\Lambda_\rho\)">\(\Lambda_\rho\)</span> does not spread the time support. The symmetric operators have no boundary terms. Positivity of the Fourier multiplier gives</p>
+<span class="math math-display" data-tex="\[
+\|Cv\|_{b-1,\rho}^2=(Cv,Av).
+\tag{5.4}
+\]">\[
+\|Cv\|_{b-1,\rho}^2=(Cv,Av).
+\tag{5.4}
+\]</span>
+<p>Use <span class="math" data-tex="\(C=i[T,P]\)">\(C=i[T,P]\)</span>, move the symmetric <span class="math" data-tex="\(T,P\)">\(T,P\)</span> across the pairing, and take absolute values. This yields</p>
+<span class="math math-display" data-tex="\[
+|(Cv,Av)|
+\leq |(Pv,TAv)|+|(Tv,PAv)|.
+\tag{5.5}
+\]">\[
+|(Cv,Av)|
+\leq |(Pv,TAv)|+|(Tv,PAv)|.
+\tag{5.5}
+\]</span>
+<p>For the first term, expand <span class="math" data-tex="\(TA=AT+[T,A]\)">\(TA=AT+[T,A]\)</span>. Equations (4.4)–(4.5), with <span class="math" data-tex="\(k=a-2\)">\(k=a-2\)</span>, give</p>
+<span class="math math-display" data-tex="\[
+\|TAv\|_{1-a,\rho}
+\leq C(\|Tv\|+\|v\|).
+\tag{5.6}
+\]">\[
+\|TAv\|_{1-a,\rho}
+\leq C(\|Tv\|+\|v\|).
+\tag{5.6}
+\]</span>
+<p>For the second term use <span class="math" data-tex="\(PA=AP+[P,A]\)">\(PA=AP+[P,A]\)</span>. The first part maps <span class="math" data-tex="\(H^{a-1}_\rho\)">\(H^{a-1}_\rho\)</span> to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, while the second maps <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to <span class="math" data-tex="\(H^{1-a}_\rho\)">\(H^{1-a}_\rho\)</span>. Since <span class="math" data-tex="\(1-a\geq0\)">\(1-a\geq0\)</span> and <span class="math" data-tex="\(w\geq1\)">\(w\geq1\)</span>, that latter norm bounds the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm. Thus</p>
+<span class="math math-display" data-tex="\[
+\|PAv\|
+\leq C(\|Pv\|_{a-1,\rho}+\|v\|).
+\tag{5.7}
+\]">\[
+\|PAv\|
+\leq C(\|Pv\|_{a-1,\rho}+\|v\|).
+\tag{5.7}
+\]</span>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> is the time leaf, (4.5) gives the same commutator bound; <span class="math" data-tex="\(APv\)">\(APv\)</span> is controlled by its known <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm. No estimate of a second time derivative has been inserted.</p>
+<p>The dual norm pairing
+<span class="math" data-tex="\(|(f,g)|\leq\|f\|_{a-1,\rho}\|g\|_{1-a,\rho}\)">\(|(f,g)|\leq\|f\|_{a-1,\rho}\|g\|_{1-a,\rho}\)</span> follows directly from Plancherel. Apply it to the first term in (5.5), and ordinary Cauchy–Schwarz to the second. Equations (5.6)–(5.7) give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|Cv\|_{b-1,\rho}^2\\
+\leq C\|Pv\|_{a-1,\rho}(\|Tv\|+\|v\|)\\
+\quad+C\|Tv\|(\|Pv\|_{a-1,\rho}+\|v\|)\\
+\leq C&#x27;\mathcal R(v)^2.
+\end{gathered}
+\tag{5.8}
+\]">\[
+\begin{gathered}
+\|Cv\|_{b-1,\rho}^2\\
+\leq C\|Pv\|_{a-1,\rho}(\|Tv\|+\|v\|)\\
+\quad+C\|Tv\|(\|Pv\|_{a-1,\rho}+\|v\|)\\
+\leq C&#x27;\mathcal R(v)^2.
+\end{gathered}
+\tag{5.8}
+\]</span>
+<p>The induction is complete. The proof uses uniform bounds for only a finite list of coefficient seminorms at every step. The number of steps is fixed by <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>For an arbitrarily bracketed word one may expand it by Jacobi into left-nested words of the same length and apply (5.2) term by term. This also explains why the leaf count must be specified when using the exponent.</p>
+<h2 id="6-recover-the-derivative-and-absorb-the-zeroth-norm">6. Recover the derivative and absorb the zeroth norm</h2>
+<p>Now let <span class="math" data-tex="\(v\in C_c^\infty(Q)\)">\(v\in C_c^\infty(Q)\)</span>. For <span class="math" data-tex="\(|I|\leq M\)">\(|I|\leq M\)</span>, <span class="math" data-tex="\(\varepsilon\leq a_{|I|}\)">\(\varepsilon\leq a_{|I|}\)</span>. Since <span class="math" data-tex="\(w\geq1\)">\(w\geq1\)</span>, (5.2) implies</p>
+<span class="math math-display" data-tex="\[
+\|P_Iv\|_{\varepsilon-1,\rho}
+\leq C\mathcal R(v).
+\tag{6.1}
+\]">\[
+\|P_Iv\|_{\varepsilon-1,\rho}
+\leq C\mathcal R(v).
+\tag{6.1}
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(c_I,d_I\)">\(c_I,d_I\)</span> in (3.8)–(3.10) is bounded on this negative Sobolev space by Lemma 4.1. The differential word outputs have support in <span class="math" data-tex="\(Q\)">\(Q\)</span>, so the local identities apply to them exactly. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\rho v\|_{\varepsilon-1,\rho}
++\|D_zv\|_{\varepsilon-1,\rho}
+\leq C\mathcal R(v).
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+\|\rho v\|_{\varepsilon-1,\rho}
++\|D_zv\|_{\varepsilon-1,\rho}
+\leq C\mathcal R(v).
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>Plancherel gives the exact identity</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|v\|_{\varepsilon,\rho}^2
+=\|\rho v\|_{\varepsilon-1,\rho}^2
++\|D_zv\|_{\varepsilon-1,\rho}^2.
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+\|v\|_{\varepsilon,\rho}^2
+=\|\rho v\|_{\varepsilon-1,\rho}^2
++\|D_zv\|_{\varepsilon-1,\rho}^2.
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\|v\|_{\varepsilon,\rho}\leq C\mathcal R(v)\)">\(\|v\|_{\varepsilon,\rho}\leq C\mathcal R(v)\)</span>. For <span class="math" data-tex="\(v=e^{i\Phi}u\)">\(v=e^{i\Phi}u\)</span>, the two derivative norms in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> are precisely the norms in (1.6), by (2.5) and the fact that the cutoffs equal one near <span class="math" data-tex="\(Q\)">\(Q\)</span>. This proves (1.6).</p>
+<p>Finally <span class="math" data-tex="\(\rho^\varepsilon\|v\|\leq\|v\|_{\varepsilon,\rho}\)">\(\rho^\varepsilon\|v\|\leq\|v\|_{\varepsilon,\rho}\)</span>. Choose <span class="math" data-tex="\(\rho_0\geq1\)">\(\rho_0\geq1\)</span> so that <span class="math" data-tex="\(C\rho_0^{-\varepsilon}\leq1/2\)">\(C\rho_0^{-\varepsilon}\leq1/2\)</span>. The last <span class="math" data-tex="\(C\|v\|\)">\(C\|v\|\)</span> in the estimate can then be moved to the left. Since the phase preserves the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm, (1.4) follows. This completes the proof of Theorem 1.1. ∎</p>
+<p>The gain is not asserted to be optimal. Halving is a robust energy argument; a specific model may admit a larger gain.</p>
+<h2 id="7-real-weights-a-valid-replacement-and-a-limiting-test">7. Real weights, a valid replacement and a limiting test</h2>
+<p>Suppose now that the original weights are arbitrary positive real numbers <span class="math" data-tex="\(m_2\leq m_1\)">\(m_2\leq m_1\)</span>, with
+<span class="math" data-tex="\(\deg_{(1,m_2)}F&lt;m_1\)">\(\deg_{(1,m_2)}F&lt;m_1\)</span> and <span class="math" data-tex="\(\deg G&lt;m_2\)">\(\deg G&lt;m_2\)</span>. Define the finite set and integers</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal A=\{(a,b)\in\mathbb N^2:a+m_2b&lt;m_1\},\\
+n=\lceil m_2\rceil,\qquad
+d=\max_{(a,b)\in\mathcal A}(a+nb),\\
+M=\max(n,d+1).
+\end{gathered}
+\tag{7.1}
+\]">\[
+\begin{gathered}
+\mathcal A=\{(a,b)\in\mathbb N^2:a+m_2b&lt;m_1\},\\
+n=\lceil m_2\rceil,\qquad
+d=\max_{(a,b)\in\mathcal A}(a+nb),\\
+M=\max(n,d+1).
+\end{gathered}
+\tag{7.1}
+\]</span>
+<p>The set contains <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> and is finite. These integers depend only on the original real weights. Every allowed <span class="math" data-tex="\(F\)">\(F\)</span> has <span class="math" data-tex="\((1,n)\)">\((1,n)\)</span>-weighted degree less than <span class="math" data-tex="\(M\)">\(M\)</span>, and every allowed <span class="math" data-tex="\(G\)">\(G\)</span> has degree less than <span class="math" data-tex="\(n\)">\(n\)</span>. Therefore all words longer than <span class="math" data-tex="\(M\)">\(M\)</span> vanish.</p>
+<p><strong>Corollary 7.1 (real-weight replacement).</strong> Under the normalization (1.2), define <span class="math" data-tex="\(\rho\)">\(\rho\)</span> by the full word family, equivalently by the maximum through length <span class="math" data-tex="\(M\)">\(M\)</span> in (7.1). For sufficiently large <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, (1.4) holds with <span class="math" data-tex="\(\varepsilon=2^{1-M}\)">\(\varepsilon=2^{1-M}\)</span>. Its constants depend only on <span class="math" data-tex="\(m_1,m_2,C_0\)">\(m_1,m_2,C_0\)</span>.</p>
+<p><strong>Proof.</strong> Apply Theorem 1.1 to <span class="math" data-tex="\((M,n)\)">\((M,n)\)</span>. The word family itself is unchanged; only a valid finite upper bound for its lengths has been supplied. ∎</p>
+<p>For original integer weights (7.1) gives <span class="math" data-tex="\(M=m_1,n=m_2\)">\(M=m_1,n=m_2\)</span>, so it recovers the theorem exactly. It is not valid to round only the leaf count while silently increasing the spatial weight of a monomial; (7.1) checks both changes.</p>
+<p>Here is a complete obstruction to a claimed exponent for all real weights. Take</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m_1=5/2,\quad m_2=3/2,\\
+F=\rho z,\qquad G=t,\qquad
+q=\rho z+t\eta.
+\end{gathered}
+\tag{7.2}
+\]">\[
+\begin{gathered}
+m_1=5/2,\quad m_2=3/2,\\
+F=\rho z,\qquad G=t,\qquad
+q=\rho z+t\eta.
+\end{gathered}
+\tag{7.2}
+\]</span>
+<p>The strict polynomial weights and normalized <span class="math" data-tex="\(G\)">\(G\)</span> jet hold. The nonzero words, apart from the leaves and sign changes, are</p>
+<span class="math math-display" data-tex="\[
+\{\tau,q\}=\eta,\qquad
+\{q,\eta\}=-\rho.
+\tag{7.3}
+\]">\[
+\{\tau,q\}=\eta,\qquad
+\{q,\eta\}=-\rho.
+\tag{7.3}
+\]</span>
+<p>All words with four or more leaves vanish. At <span class="math" data-tex="\(t=z=\tau=0\)">\(t=z=\tau=0\)</span>, the full bracket maximum is <span class="math" data-tex="\(\max(|\eta|,\rho)\)">\(\max(|\eta|,\rho)\)</span>, whose minimum is exactly <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. In particular a nonzero three-leaf word has length greater than <span class="math" data-tex="\(5/2\)">\(5/2\)</span>.</p>
+<p>Choose a nonzero <span class="math" data-tex="\(\varphi\in C_c^\infty(Q)\)">\(\varphi\in C_c^\infty(Q)\)</span> with norm one, and define</p>
+<span class="math math-display" data-tex="\[
+v_\rho(t,z)=\rho^{1/2}
+\varphi(\rho^{1/3}t,\rho^{2/3}z).
+\tag{7.4}
+\]">\[
+v_\rho(t,z)=\rho^{1/2}
+\varphi(\rho^{1/3}t,\rho^{2/3}z).
+\tag{7.4}
+\]</span>
+<p>Its support lies in <span class="math" data-tex="\(Q\)">\(Q\)</span> for <span class="math" data-tex="\(\rho\geq1\)">\(\rho\geq1\)</span>, and its norm is one: the Jacobian is <span class="math" data-tex="\(\rho^{-1}\)">\(\rho^{-1}\)</span>. With <span class="math" data-tex="\(T=\rho^{1/3}t,Z=\rho^{2/3}z\)">\(T=\rho^{1/3}t,Z=\rho^{2/3}z\)</span>, exact differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|D_tv_\rho\|=\rho^{1/3}\|D_T\varphi\|,\\
+\|(\rho z+tD_z)v_\rho\|
+=\rho^{1/3}\|(Z+TD_Z)\varphi\|.
+\end{gathered}
+\tag{7.5}
+\]">\[
+\begin{gathered}
+\|D_tv_\rho\|=\rho^{1/3}\|D_T\varphi\|,\\
+\|(\rho z+tD_z)v_\rho\|
+=\rho^{1/3}\|(Z+TD_Z)\varphi\|.
+\end{gathered}
+\tag{7.5}
+\]</span>
+<p>Thus no uniform estimate by these two energy norms, even with an additional <span class="math" data-tex="\(\|v_\rho\|\)">\(\|v_\rho\|\)</span>, can have gain <span class="math" data-tex="\(\rho^a\)">\(\rho^a\)</span> for <span class="math" data-tex="\(a&gt;1/3\)">\(a&gt;1/3\)</span>. The proposed real-weight exponent <span class="math" data-tex="\(2^{1-5/2}=1/(2\sqrt2)\)">\(2^{1-5/2}=1/(2\sqrt2)\)</span> is greater than <span class="math" data-tex="\(1/3\)">\(1/3\)</span>, because <span class="math" data-tex="\(3&gt;2\sqrt2\)">\(3&gt;2\sqrt2\)</span>. Dividing a purported estimate by <span class="math" data-tex="\(\rho^{1/3}\)">\(\rho^{1/3}\)</span> makes its left side tend to infinity and its right side stay bounded. This refutes that exponent for the complete real-weight hypothesis, not just a preliminary bracket count. If one instead truncates the bracket family at length at most <span class="math" data-tex="\(m_1\)">\(m_1\)</span>, this example has minimum zero and does not satisfy that different finite-type hypothesis.</p>
+<p><em>Reference:</em> [H, Lemma 27.5.3] states the cutoff and exponent for positive real weights; (7.2)–(7.5) show that scope fails, while Theorem 1.1 proves its integer case and Corollary 7.1 supplies a valid real-weight estimate.</p>
+<p><img src="assets/AN05-L040/polynomial-parameter-gain-CF5944E71F164AE6295AC14487F4532C3E235DCEA74D6950612A353B94050203.png" alt="The three-leaf commutator chain and the exact packet scales for the linear polynomial model" class="course-figure" width="2100" height="1456" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="polynomial-parameter-gain" data-asset-sha256="CF5944E71F164AE6295AC14487F4532C3E235DCEA74D6950612A353B94050203"></p>
+<p><strong>Figure 7.1.</strong> The model is exactly <span class="math" data-tex="\(q=\rho z+t\eta\)">\(q=\rho z+t\eta\)</span>, with <span class="math" data-tex="\(\{\tau,t\}=\{\eta,z\}=1\)">\(\{\tau,t\}=\{\eta,z\}=1\)</span>. The upper chain records all its nonzero commutators up to sign. The nested rectangles illustrate the support enclosure <span class="math" data-tex="\(|t|&lt;\rho^{-1/3},|z|&lt;\rho^{-2/3}\)">\(|t|&lt;\rho^{-1/3},|z|&lt;\rho^{-2/3}\)</span> for (7.4), not a characteristic surface. Both energy norms scale as <span class="math" data-tex="\(\rho^{1/3}\)">\(\rho^{1/3}\)</span> by (7.5). The lower comparison distinguishes the impossible exponent <span class="math" data-tex="\(1/(2\sqrt2)\)">\(1/(2\sqrt2)\)</span> from the valid halving exponent <span class="math" data-tex="\(1/4\)">\(1/4\)</span> supplied by <span class="math" data-tex="\(M=3\)">\(M=3\)</span>. Proof: (7.2)–(7.5) and Corollary 7.1. The drawing is original; the conflicting statement is attributed to [H].</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — basic.</strong> Take <span class="math" data-tex="\(F=\rho t,G=1\)">\(F=\rho t,G=1\)</span>. Use integer weights <span class="math" data-tex="\(n=1,M=2\)">\(n=1,M=2\)</span>. Compute the central bracket parameter and explain what (1.4) says. Show directly that a gain larger than <span class="math" data-tex="\(1/2\)">\(1/2\)</span> is impossible for this model.</p>
+<p><strong>Solution.</strong> The strict weights hold, and <span class="math" data-tex="\(G(0)=1\)">\(G(0)=1\)</span>. The symbols are <span class="math" data-tex="\(\tau,\rho t+\eta\)">\(\tau,\rho t+\eta\)</span>, with <span class="math" data-tex="\(\{\tau,\rho t+\eta\}=\rho\)">\(\{\tau,\rho t+\eta\}=\rho\)</span>; all longer words vanish. At the origin the maximum is <span class="math" data-tex="\(\max(|\eta|,\rho)\)">\(\max(|\eta|,\rho)\)</span>, so its minimum is <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. The theorem gives <span class="math" data-tex="\(\rho^{1/2}\|u\|\leq C(\|D_tu\|+\|(\rho t+D_z)u\|)\)">\(\rho^{1/2}\|u\|\leq C(\|D_tu\|+\|(\rho t+D_z)u\|)\)</span>.</p>
+<p>Choose fixed normalized compactly supported <span class="math" data-tex="\(f(t),g(z)\)">\(f(t),g(z)\)</span>, and put <span class="math" data-tex="\(u_\rho=\rho^{1/4}f(\rho^{1/2}t)g(z)\)">\(u_\rho=\rho^{1/4}f(\rho^{1/2}t)g(z)\)</span>. Its norm is one. The time derivative and the multiplication by <span class="math" data-tex="\(\rho t\)">\(\rho t\)</span> have norms of order <span class="math" data-tex="\(\rho^{1/2}\)">\(\rho^{1/2}\)</span>, while <span class="math" data-tex="\(D_zg\)">\(D_zg\)</span> has a fixed norm. The energy is <span class="math" data-tex="\(O(\rho^{1/2})\)">\(O(\rho^{1/2})\)</span>, so a larger uniform parameter exponent is impossible. This example happens to attain the halving gain.</p>
+<p><strong>Exercise 2 — intermediate.</strong> For <span class="math" data-tex="\(F=\rho z,G=t\)">\(F=\rho z,G=t\)</span>, compute the phase prescribed by <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, the Wronskian, and the exact operator identity that recovers multiplication by <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Compare the valid halving gain with the limiting test in Section 7.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(F_t=0\)">\(F_t=0\)</span> and <span class="math" data-tex="\(G&#x27;(0)=1\)">\(G&#x27;(0)=1\)</span>, <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, so <span class="math" data-tex="\(R=F\)">\(R=F\)</span> and <span class="math" data-tex="\(\Phi=0\)">\(\Phi=0\)</span>. The Wronskian is <span class="math" data-tex="\(E=-\rho z\)">\(E=-\rho z\)</span>, whose spatial derivative is <span class="math" data-tex="\(-\rho\)">\(-\rho\)</span>. On <span class="math" data-tex="\(Q\)">\(Q\)</span>, <span class="math" data-tex="\(P_2=\rho z+tD_z\)">\(P_2=\rho z+tD_z\)</span>, <span class="math" data-tex="\(i[D_t,P_2]=D_z\)">\(i[D_t,P_2]=D_z\)</span>, and <span class="math" data-tex="\(i[P_2,D_z]=-\rho\)">\(i[P_2,D_z]=-\rho\)</span>. Thus <span class="math" data-tex="\(\rho=-P_{(2,1,2)}\)">\(\rho=-P_{(2,1,2)}\)</span> in the nested convention. Integer weights <span class="math" data-tex="\(n=2,M=3\)">\(n=2,M=3\)</span> give gain <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. Equation (7.5) rules out gains greater than <span class="math" data-tex="\(1/3\)">\(1/3\)</span>, and makes no claim that every gain up to <span class="math" data-tex="\(1/3\)">\(1/3\)</span> has been proved. The theorem's <span class="math" data-tex="\(1/4\)">\(1/4\)</span> is compatible with that obstruction.</p>
+<p><strong>Exercise 3 — intermediate.</strong> Let <span class="math" data-tex="\(G=t^2\)">\(G=t^2\)</span>, normalized using <span class="math" data-tex="\(G&#x27;&#x27;(0)=2\)">\(G&#x27;&#x27;(0)=2\)</span>, and consider the smooth division in (3.6). Why does it work at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> although division by <span class="math" data-tex="\(G\)">\(G\)</span> does not? Verify the identity for <span class="math" data-tex="\(j=1\)">\(j=1\)</span>.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(n=3\)">\(n=3\)</span> and <span class="math" data-tex="\(C_0=2\)">\(C_0=2\)</span>. The denominator is <span class="math" data-tex="\(T_1=t^4+4t^2+4\geq4\)">\(T_1=t^4+4t^2+4\geq4\)</span>. At zero the nonzero derivative is <span class="math" data-tex="\(G&#x27;&#x27;=2\)">\(G&#x27;&#x27;=2\)</span>, and the entire denominator stays uniformly positive. For any <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{t^2}{T_1}(t^2h)
++\frac{2t}{T_1}(2th)
++\frac2{T_1}(2h)=h.
+\]">\[
+\frac{t^2}{T_1}(t^2h)
++\frac{2t}{T_1}(2th)
++\frac2{T_1}(2h)=h.
+\]</span>
+<p>Every coefficient is smooth at zero. The direct quotient <span class="math" data-tex="\(h/G\)">\(h/G\)</span> would be undefined there. This is why a full jet, rather than a nonvanishing function value, suffices.</p>
+<p><strong>Exercise 4 — advanced.</strong> Show why merely bounding <span class="math" data-tex="\(R\)">\(R\)</span> by <span class="math" data-tex="\(C\rho\)">\(C\rho\)</span> does not allow one to discard it as a zeroth-order perturbation in this theorem. Contrast that attempt with the use of <span class="math" data-tex="\(B\)">\(B\)</span> in (3.9).</p>
+<p><strong>Solution.</strong> A perturbation estimate would produce a residual term <span class="math" data-tex="\(C\rho\|v\|\)">\(C\rho\|v\|\)</span>. For <span class="math" data-tex="\(\varepsilon&lt;1\)">\(\varepsilon&lt;1\)</span>, its ratio to <span class="math" data-tex="\(\rho^\varepsilon\|v\|\)">\(\rho^\varepsilon\|v\|\)</span> grows as <span class="math" data-tex="\(\rho^{1-\varepsilon}\)">\(\rho^{1-\varepsilon}\)</span>, so it cannot be absorbed with a fixed constant for large <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. In (3.9), <span class="math" data-tex="\(B\)">\(B\)</span> also has size <span class="math" data-tex="\(O(\rho)\)">\(O(\rho)\)</span>, but one does not estimate it that way. The exact identity (3.8) writes <span class="math" data-tex="\(B=(B/\rho)\sum c_IP_I\)">\(B=(B/\rho)\sum c_IP_I\)</span>. The multiplier <span class="math" data-tex="\(B/\rho\)">\(B/\rho\)</span> is uniformly smooth and bounded on the required negative Sobolev space. Each word is controlled by the energy induction. This turns the large multiplication term into controlled commutators before taking norms.</p>
+<p><strong>Exercise 5 — advanced.</strong> For <span class="math" data-tex="\(m_1=9/2,m_2=2\)">\(m_1=9/2,m_2=2\)</span>, apply (7.1). Then take <span class="math" data-tex="\(F=\rho z^2/2,G=t\)">\(F=\rho z^2/2,G=t\)</span> and exhibit a nonzero five-leaf word. Does this alone refute the claimed real-weight operator exponent?</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(n=2\)">\(n=2\)</span>. The allowed integer monomials satisfy <span class="math" data-tex="\(a+2b&lt;9/2\)">\(a+2b&lt;9/2\)</span>, so their maximum integer weight is <span class="math" data-tex="\(d=4\)">\(d=4\)</span>. Hence <span class="math" data-tex="\(M=5\)">\(M=5\)</span> and the valid replacement gain is <span class="math" data-tex="\(1/16\)">\(1/16\)</span>. Starting with <span class="math" data-tex="\(q=\rho z^2/2+t\eta\)">\(q=\rho z^2/2+t\eta\)</span>, the successive brackets are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\{\tau,q\}=\eta,\quad
+\{q,\eta\}=-\rho z,\\
+\{q,-\rho z\}=-\rho t,\quad
+\{\tau,-\rho t\}=-\rho.
+\end{gathered}
+\tag{8.1}
+\]">\[
+\begin{gathered}
+\{\tau,q\}=\eta,\quad
+\{q,\eta\}=-\rho z,\\
+\{q,-\rho z\}=-\rho t,\quad
+\{\tau,-\rho t\}=-\rho.
+\end{gathered}
+\tag{8.1}
+\]</span>
+<p>The final word has five leaves, greater than <span class="math" data-tex="\(9/2\)">\(9/2\)</span>; it refutes that cutoff. It does not itself refute an operator exponent. A norm estimate needs a test family such as (7.4)–(7.5), or a proof; a nonzero word only identifies algebraic information. Section 7 uses a different model to refute an actual exponent.</p>
+<p><strong>Exercise 6 — advanced.</strong> Let <span class="math" data-tex="\(F=G(t)K(z)\)">\(F=G(t)K(z)\)</span>, with the strict integer weights satisfied and <span class="math" data-tex="\(G\)">\(G\)</span> normalized. Compute the central bracket parameter. Can the theorem give a large-parameter estimate just because the coefficients of <span class="math" data-tex="\(K\)">\(K\)</span> are large?</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(H=K\)">\(H=K\)</span>, <span class="math" data-tex="\(R=0\)">\(R=0\)</span> and <span class="math" data-tex="\(E=0\)">\(E=0\)</span>. After the phase change the symbols are <span class="math" data-tex="\(\tau,G(t)\eta_*\)">\(\tau,G(t)\eta_*\)</span>. At the origin choose <span class="math" data-tex="\(\tau=\eta_*=0\)">\(\tau=\eta_*=0\)</span>. Every word then vanishes there: words with one spatial leaf are derivatives of <span class="math" data-tex="\(G\)">\(G\)</span> times <span class="math" data-tex="\(\eta_*\)">\(\eta_*\)</span>, and two spatial leaves commute because their coefficients depend only on <span class="math" data-tex="\(t\)">\(t\)</span>. Thus <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>, also as follows from (2.3). The hypothesis of a large bracket parameter fails. Large coefficients that can be removed entirely by a phase do not force the gain in (1.4). For <span class="math" data-tex="\(M=n=1\)">\(M=n=1\)</span>, both <span class="math" data-tex="\(F,G\)">\(F,G\)</span> are constant and this is the only case, so the large-<span class="math" data-tex="\(\rho\)">\(\rho\)</span> assertion is vacuous.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[B]</strong> Marco Bramanti, “On the proof of Hörmander's hypoellipticity theorem,” <em>Le Matematiche</em> <strong>75</strong> (2020), 3–26. <a href="https://lematematiche.dmi.unict.it/index.php/lematematiche/article/view/1954">Open journal article</a>, DOI 10.4418/2020.75.1.1. CC BY 4.0. Its commutator discussion is a reference for the energy method; the full parameter multiplier bounds and polynomial recovery identities are proved above.</li>
+<li><strong>[H]</strong> Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators</em>, Springer, 2009 reprint. <a href="https://link.springer.com/book/10.1007/978-3-642-00136-9">Publisher's record</a>. <strong>P</strong>. Section 27.5 is a reference for polynomial models. Theorem 1.1, Corollary 7.1 and the limiting test state the precise scope used here.</li>
+</ul>
+<p><strong>Access notice.</strong> P indicates a publisher record whose full book requires subscription, institutional access or purchase. Its preview does not supply the complete book. The proofs, exercises and exact internal algebraic prerequisite are supplied in this course.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<details class="figure-provenance"><summary>Figure credits and source locators</summary><p>These credits cover the illustrations only. They do not change the lesson’s proof status.</p><ul><li><strong>polynomial-parameter-gain</strong> — GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026; CC0.<p>Original mathematical diagram with reproducible Python source. Self-checked by the writing AI.</p><ul><li>Section7,(7.2)–(7.5),Corollary7.1; Hörmander, The Analysis of Linear Partial Differential Operators IV, Lemma27.5.3. Exact commutator signs, compact packet supports, Jacobian, energy scale and exponent obstruction proved in the lesson.</li><li>Reproducible source: figures/polynomial_parameter_gain.py</li></ul><p>Figure SHA-256: <code>CF5944E71F164AE6295AC14487F4532C3E235DCEA74D6950612A353B94050203</code></p></li></ul></details></main><footer>Original lessons: CC0. Mathematics rendered with MathJax 3.2.2, Apache License 2.0; <a href="assets/mathjax/LICENSE">license</a>.</footer></body></html>

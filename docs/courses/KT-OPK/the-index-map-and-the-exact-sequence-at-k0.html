@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The index map and the exact sequence at K_0 · K-theory of C*-algebras</title>
+<meta name="description" content="A lesson of the course K-theory of C*-algebras. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../index.html">Courses</a>
+<a href="sources.html">Licensing</a>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">K-theory of C*-algebras</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by the writing AI.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (3)</summary><ul><li><a href="invertibles-unitaries-and-k1.html">Invertibles, unitaries and <span class="math" data-tex="\(K_1\)">\(K_1\)</span></a></li><li><a href="nonunital-algebras-unitization-relative-classes-and-half-exactness.html">Nonunital algebras: unitization, relative classes and half-exactness</a></li><li><a href="idempotents-projections-and-their-equivalences.html">Idempotents, projections and their equivalences</a></li></ul></details>
+<article class="lesson">
+<h1 id="the-index-map-and-the-exact-sequence-at-k_0">The index map and the exact sequence at <span class="math" data-tex="\(K_0\)">\(K_0\)</span></h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, at Ultra. Independently authored CC0 lesson; self-checked by the writing AI.</em></p>
+<p>An invertible matrix in a quotient can fail to lift to an invertible matrix upstairs. Its inverse nevertheless allows a doubled lift. Conjugating a fixed scalar idempotent by that lift produces a class in the ideal's <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. This class measures the obstruction to an invertible lift after identity stabilization.</p>
+<p>We use <a href="invertibles-unitaries-and-k1.html">Invertibles, unitaries and <span class="math" data-tex="\(K_1\)">\(K_1\)</span></a>, the normal form and half-exactness in <a href="nonunital-algebras-unitization-relative-classes-and-half-exactness.html">Nonunital algebras: unitization, relative classes and half-exactness</a>, and the stable idempotent and path-conjugation results of <a href="idempotents-projections-and-their-equivalences.html">Idempotents, projections and their equivalences</a>. The Fredholm results are those of <em>Fredholm operators and the stable index</em>: Theorem 1.1, Corollary 1.2, Theorem 3.2 and Corollary 3.3. Their convention is cokernel minus kernel; the connecting map below has the opposite sign.</p>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a complex Banach algebra, <span class="math" data-tex="\(J\)">\(J\)</span> a closed two-sided ideal and <span class="math" data-tex="\(B=A/J\)">\(B=A/J\)</span>, with quotient <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and inclusion <span class="math" data-tex="\(\iota\)">\(\iota\)</span>. The C*-case uses *-homomorphisms. We always use the external unitizations and the unital surjection</p>
+<span class="math math-display" data-tex="\[
+\pi^+:A^+\longrightarrow B^+,
+\qquad \ker\pi^+=J.
+\tag{0.1}
+\]">\[
+\pi^+:A^+\longrightarrow B^+,
+\qquad \ker\pi^+=J.
+\tag{0.1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(J^+\)">\(J^+\)</span> embeds in <span class="math" data-tex="\(A^+\)">\(A^+\)</span> by <span class="math" data-tex="\(j+\lambda1\mapsto j+\lambda1\)">\(j+\lambda1\mapsto j+\lambda1\)</span>, even if <span class="math" data-tex="\(J\)">\(J\)</span> or <span class="math" data-tex="\(A\)">\(A\)</span> already has a unit. A normalized invertible has scalar part the identity, as in the preceding lesson. The finite-matrix arguments also apply to normed local Banach algebras when every matrix unitization of <span class="math" data-tex="\(A,J,B\)">\(A,J,B\)</span> is closed under holomorphic functional calculus in its completion, and the stated quotient map is surjective and bounded with kernel <span class="math" data-tex="\(J\)">\(J\)</span>. This is the local setting used below; completeness itself is not required by the algebraic stabilization arguments.</p>
+<h2 id="1-two-ways-to-obtain-an-invertible-lift">1. Two ways to obtain an invertible lift</h2>
+<p><strong>Lemma 1.1 (lifting an identity component).</strong> Every normalized invertible in the identity component of <span class="math" data-tex="\(GL_n(B^+)\)">\(GL_n(B^+)\)</span> has a normalized invertible lift in the identity component of <span class="math" data-tex="\(GL_n(A^+)\)">\(GL_n(A^+)\)</span>.</p>
+<p><em>Proof.</em> First normalize a path from 1 to the given invertible by dividing out its scalar image, as in the preceding lesson, Proposition 1.2; this preserves its endpoints. The exponential-component prerequisite, Recall 1.1 of <em>Invertible components and exponential laws</em>, writes an identity-component invertible as a product of exponentials. We can take the exponents in <span class="math" data-tex="\(M_n(B)\)">\(M_n(B)\)</span>: subdivide the normalized path so that each consecutive ratio is sufficiently close to 1, and take its logarithm. Each logarithm has scalar part zero. Lift these finitely many exponents entrywise to <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>. The product of their exponentials lifts the given invertible, is normalized and is connected to 1 by multiplying the paths <span class="math" data-tex="\(\exp(t a)\)">\(\exp(t a)\)</span> one factor at a time. In the normed local setting the same small-ratio logarithms and exponentials belong to the matrix algebra by holomorphic functional calculus; their paths are norm continuous. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is an endpoint lifting statement. The individual quotient invertible outside the identity component need not lift.</p>
+<p>For <span class="math" data-tex="\(u\in G_n^1(B)\)">\(u\in G_n^1(B)\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+E(a)=\begin{pmatrix}1&amp;a\\0&amp;1\end{pmatrix},\qquad
+F(b)=\begin{pmatrix}1&amp;0\\-b&amp;1\end{pmatrix},\qquad
+L=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}.
+\]">\[
+E(a)=\begin{pmatrix}1&amp;a\\0&amp;1\end{pmatrix},\qquad
+F(b)=\begin{pmatrix}1&amp;0\\-b&amp;1\end{pmatrix},\qquad
+L=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}.
+\]</span>
+<p>The four-factor identity is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{diag}(u,u^{-1})=E(u)F(u^{-1})E(u)L.
+\tag{1.1}
+\]">\[
+\operatorname{diag}(u,u^{-1})=E(u)F(u^{-1})E(u)L.
+\tag{1.1}
+\]</span>
+<p>Choose arbitrary matrix lifts <span class="math" data-tex="\(a,b\in M_n(A^+)\)">\(a,b\in M_n(A^+)\)</span> of <span class="math" data-tex="\(u,u^{-1}\)">\(u,u^{-1}\)</span>, each of scalar part 1. Then</p>
+<span class="math math-display" data-tex="\[
+w=E(a)F(b)E(a)L
+\tag{1.2}
+\]">\[
+w=E(a)F(b)E(a)L
+\tag{1.2}
+\]</span>
+<p>is invertible, since the triangular factors have inverses <span class="math" data-tex="\(E(-a),F(-b)\)">\(E(-a),F(-b)\)</span>, and <span class="math" data-tex="\(L^{-1}=-L\)">\(L^{-1}=-L\)</span>. Its quotient is <span class="math" data-tex="\(\operatorname{diag}(u,u^{-1})\)">\(\operatorname{diag}(u,u^{-1})\)</span>. Its scalar part is also 1, by applying (1.1) to the scalar identity. Neither <span class="math" data-tex="\(a\)">\(a\)</span> nor <span class="math" data-tex="\(b\)">\(b\)</span> needs to be invertible. This is the elementary lifting construction already used in the fourth lesson; Exercise 7.1 checks every product and gives its expanded form.</p>
+<h2 id="2-the-idempotent-associated-to-a-doubled-lift">2. The idempotent associated to a doubled lift</h2>
+<p>Put <span class="math" data-tex="\(P_n=\operatorname{diag}(1_n,0_n)\)">\(P_n=\operatorname{diag}(1_n,0_n)\)</span>. For a normalized lift <span class="math" data-tex="\(w\)">\(w\)</span> as above, let <span class="math" data-tex="\(e=wP_nw^{-1}\)">\(e=wP_nw^{-1}\)</span>. The quotient of <span class="math" data-tex="\(e\)">\(e\)</span> is <span class="math" data-tex="\(P_n\)">\(P_n\)</span>, since <span class="math" data-tex="\(\operatorname{diag}(u,u^{-1})\)">\(\operatorname{diag}(u,u^{-1})\)</span> commutes with <span class="math" data-tex="\(P_n\)">\(P_n\)</span>. Hence <span class="math" data-tex="\(e-P_n\in M_{2n}(J)\)">\(e-P_n\in M_{2n}(J)\)</span>, and both idempotents belong to <span class="math" data-tex="\(M_{2n}(J^+)\)">\(M_{2n}(J^+)\)</span> with scalar part <span class="math" data-tex="\(P_n\)">\(P_n\)</span>.</p>
+<p><strong>Definition 2.1.</strong> The index connecting map is</p>
+<span class="math math-display" data-tex="\[
+\partial:K_1(B)\longrightarrow K_0(J),
+\qquad \partial[u]=[wP_nw^{-1}]-[P_n].
+\tag{2.1}
+\]">\[
+\partial:K_1(B)\longrightarrow K_0(J),
+\qquad \partial[u]=[wP_nw^{-1}]-[P_n].
+\tag{2.1}
+\]</span>
+<p>The difference is taken in the scalar kernel defining <span class="math" data-tex="\(K_0(J)\)">\(K_0(J)\)</span>. It is not a claim that the first idempotent belongs to <span class="math" data-tex="\(M_{2n}(J)\)">\(M_{2n}(J)\)</span>.</p>
+<p><strong>Theorem 2.2.</strong> Definition (2.1) is a well-defined natural group homomorphism.</p>
+<p><em>Proof: choice of lift.</em> If <span class="math" data-tex="\(w&#x27;\)">\(w&#x27;\)</span> is another lift, <span class="math" data-tex="\(z=w&#x27;w^{-1}\)">\(z=w&#x27;w^{-1}\)</span> has quotient 1, so <span class="math" data-tex="\(z\in G_{2n}^1(J)\)">\(z\in G_{2n}^1(J)\)</span>. The new idempotent is <span class="math" data-tex="\(zez^{-1}\)">\(zez^{-1}\)</span>. Similarity in <span class="math" data-tex="\(J^+\)">\(J^+\)</span> preserves its stable idempotent class, so the difference in (2.1) is unchanged.</p>
+<p><em>Proof: homotopy of representatives.</em> Suppose normalized <span class="math" data-tex="\(u,u&#x27;\)">\(u,u&#x27;\)</span> are joined by a path at a common size. Then <span class="math" data-tex="\(v=u^{-1}u&#x27;\)">\(v=u^{-1}u&#x27;\)</span> is in the normalized identity component, as is <span class="math" data-tex="\(uv^{-1}u^{-1}\)">\(uv^{-1}u^{-1}\)</span>. Lemma 1.1 supplies normalized invertible lifts <span class="math" data-tex="\(a,b\)">\(a,b\)</span> of these two elements. The matrix <span class="math" data-tex="\(w\operatorname{diag}(a,b)\)">\(w\operatorname{diag}(a,b)\)</span> lifts</p>
+<span class="math math-display" data-tex="\[
+\operatorname{diag}(u,u^{-1})
+\operatorname{diag}(v,uv^{-1}u^{-1})
+=\operatorname{diag}(u&#x27;,u&#x27;^{-1}).
+\]">\[
+\operatorname{diag}(u,u^{-1})
+\operatorname{diag}(v,uv^{-1}u^{-1})
+=\operatorname{diag}(u&#x27;,u&#x27;^{-1}).
+\]</span>
+<p>Right multiplication by <span class="math" data-tex="\(\operatorname{diag}(a,b)\)">\(\operatorname{diag}(a,b)\)</span> leaves <span class="math" data-tex="\(wP_nw^{-1}\)">\(wP_nw^{-1}\)</span> exactly unchanged, since that block matrix commutes with <span class="math" data-tex="\(P_n\)">\(P_n\)</span>. Thus homotopic representatives give equal boundary classes. Adding an identity block to <span class="math" data-tex="\(u\)">\(u\)</span> adds the same scalar idempotent to both terms of (2.1), after a scalar permutation of coordinates. It therefore leaves their difference unchanged. The finite stable-path definition of <span class="math" data-tex="\(K_1\)">\(K_1\)</span> now proves independence of representatives.</p>
+<p><em>Proof: addition and naturality.</em> A direct sum of two doubled lifts, followed by the permutation grouping their selected blocks together, is a doubled lift for <span class="math" data-tex="\(u\oplus v\)">\(u\oplus v\)</span>. Its idempotent and reference idempotent are the direct sums of the two original pairs. Therefore <span class="math" data-tex="\(\partial[u\oplus v]=\partial[u]+\partial[v]\)">\(\partial[u\oplus v]=\partial[u]+\partial[v]\)</span>. Block sum is the group law on <span class="math" data-tex="\(K_1\)">\(K_1\)</span>, so <span class="math" data-tex="\(\partial\)">\(\partial\)</span> is a homomorphism.</p>
+<p>If <span class="math" data-tex="\(\phi:A\to A&#x27;\)">\(\phi:A\to A&#x27;\)</span> sends <span class="math" data-tex="\(J\)">\(J\)</span> into <span class="math" data-tex="\(J&#x27;\)">\(J&#x27;\)</span>, it induces <span class="math" data-tex="\(\phi_J:J\to J&#x27;\)">\(\phi_J:J\to J&#x27;\)</span> and <span class="math" data-tex="\(\bar\phi:B\to B&#x27;\)">\(\bar\phi:B\to B&#x27;\)</span>. The external extension <span class="math" data-tex="\(\phi^+\)">\(\phi^+\)</span> sends <span class="math" data-tex="\(w\)">\(w\)</span> to an invertible lift of the doubled image representative and sends <span class="math" data-tex="\(P_n\)">\(P_n\)</span> to <span class="math" data-tex="\(P_n\)">\(P_n\)</span>. Applying it to (2.1) gives</p>
+<span class="math math-display" data-tex="\[
+(\phi_J)_*\partial=\partial&#x27;(\bar\phi)_*.
+\tag{2.2}
+\]">\[
+(\phi_J)_*\partial=\partial&#x27;(\bar\phi)_*.
+\tag{2.2}
+\]</span>
+<p>This proves naturality, including nonunital morphisms of extensions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-what-a-zero-k_0--difference-provides">3. What a zero <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-difference provides</h2>
+<p>The passage from a group equality to a conjugator requires stabilization. We isolate it before proving exactness.</p>
+<p><strong>Lemma 3.1 (identity and zero padding).</strong> Let <span class="math" data-tex="\(D\)">\(D\)</span> be a unital Banach algebra in the stated setting. If idempotents <span class="math" data-tex="\(e,f\)">\(e,f\)</span> have equal classes in <span class="math" data-tex="\(K_0(D)\)">\(K_0(D)\)</span>, then, after adding the same identity and zero blocks to each, they are joined by an idempotent path in one finite matrix algebra over <span class="math" data-tex="\(D\)">\(D\)</span>. Consequently a conjugator in its invertible identity component carries one padded idempotent to the other.</p>
+<p><em>Proof.</em> In a group completion, <span class="math" data-tex="\([e]=[f]\)">\([e]=[f]\)</span> means that a finite stable idempotent class <span class="math" data-tex="\([c]\)">\([c]\)</span> satisfies <span class="math" data-tex="\([e]+[c]=[f]+[c]\)">\([e]+[c]=[f]+[c]\)</span> in the monoid. Add the complementary idempotent <span class="math" data-tex="\(1-c\)">\(1-c\)</span> on both sides. Since <span class="math" data-tex="\(c\oplus(1-c)\)">\(c\oplus(1-c)\)</span> is algebraically equivalent to an identity block, we get <span class="math" data-tex="\([e]+[1_l]=[f]+[1_l]\)">\([e]+[1_l]=[f]+[1_l]\)</span> for some finite <span class="math" data-tex="\(l\)">\(l\)</span>. The complementary-summand identity follows either from the identity-denominator proof in the third lesson or directly from the maps <span class="math" data-tex="\(x\mapsto(cx,(1-c)x)\)">\(x\mapsto(cx,(1-c)x)\)</span> and <span class="math" data-tex="\((y,z)\mapsto y+z\)">\((y,z)\mapsto y+z\)</span>.</p>
+<p>Thus <span class="math" data-tex="\(e\oplus1_l\)">\(e\oplus1_l\)</span> and <span class="math" data-tex="\(f\oplus1_l\)">\(f\oplus1_l\)</span> are algebraically equivalent after finite zero padding. The first lesson, §3, turns this equivalence into an idempotent homotopy after further zero padding. Its Theorem 2.4 transports that path by an invertible path starting at 1. The final invertible is the asserted conjugator. No cancellation hypothesis on the monoid has been used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2 (removing the scalar conjugator).</strong> Suppose <span class="math" data-tex="\(e,P\in M_m(J^+)\)">\(e,P\in M_m(J^+)\)</span> are idempotents with the same scalar matrix <span class="math" data-tex="\(P\)">\(P\)</span>, where <span class="math" data-tex="\(P\)">\(P\)</span> itself is a scalar idempotent. If <span class="math" data-tex="\(xPx^{-1}=e\)">\(xPx^{-1}=e\)</span>, then <span class="math" data-tex="\(a=\epsilon_J(x)\)">\(a=\epsilon_J(x)\)</span> commutes with <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(y=xa^{-1}\)">\(y=xa^{-1}\)</span> has scalar part 1 and still satisfies <span class="math" data-tex="\(yPy^{-1}=e\)">\(yPy^{-1}=e\)</span>.</p>
+<p><em>Proof.</em> Apply augmentation to the conjugation identity: <span class="math" data-tex="\(aPa^{-1}=P\)">\(aPa^{-1}=P\)</span>. Therefore <span class="math" data-tex="\(a\)">\(a\)</span> commutes with <span class="math" data-tex="\(P\)">\(P\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+(xa^{-1})P(ax^{-1})=xPx^{-1}=e.
+\]">\[
+(xa^{-1})P(ax^{-1})=xPx^{-1}=e.
+\]</span>
+<p>The scalar part of <span class="math" data-tex="\(xa^{-1}\)">\(xa^{-1}\)</span> is 1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same normalization works in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. If the conjugator <span class="math" data-tex="\(x\)">\(x\)</span> was obtained from an invertible path <span class="math" data-tex="\(x(t)\)">\(x(t)\)</span> starting at 1, normalize the entire path by <span class="math" data-tex="\(x(t)\epsilon_A(x(t))^{-1}\)">\(x(t)\epsilon_A(x(t))^{-1}\)</span>. Its final value still conjugates <span class="math" data-tex="\(P\)">\(P\)</span> to <span class="math" data-tex="\(e\)">\(e\)</span> when their scalar matrices agree, and it belongs to the normalized identity component.</p>
+<h2 id="4-exactness-at-the-four-interior-groups">4. Exactness at the four interior groups</h2>
+<p><strong>Theorem 4.1.</strong> The spliced sequence</p>
+<span class="math math-display" data-tex="\[
+K_1(J)\xrightarrow{\iota_*}K_1(A)
+\xrightarrow{\pi_*}K_1(B)
+\xrightarrow{\partial}K_0(J)
+\xrightarrow{\iota_*}K_0(A)
+\xrightarrow{\pi_*}K_0(B)
+\tag{4.1}
+\]">\[
+K_1(J)\xrightarrow{\iota_*}K_1(A)
+\xrightarrow{\pi_*}K_1(B)
+\xrightarrow{\partial}K_0(J)
+\xrightarrow{\iota_*}K_0(A)
+\xrightarrow{\pi_*}K_0(B)
+\tag{4.1}
+\]</span>
+<p>is exact at <span class="math" data-tex="\(K_1(A),K_1(B),K_0(J),K_0(A)\)">\(K_1(A),K_1(B),K_0(J),K_0(A)\)</span>. This makes no endpoint injectivity or surjectivity assertion.</p>
+<p><em>At <span class="math" data-tex="\(K_1(A)\)">\(K_1(A)\)</span>.</em> The composite from <span class="math" data-tex="\(J\)">\(J\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span> is zero, so its induced composite is zero. Conversely represent a kernel class by normalized <span class="math" data-tex="\(u\)">\(u\)</span> over <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. After identity stabilization its quotient is in the normalized identity component over <span class="math" data-tex="\(B^+\)">\(B^+\)</span>. Lemma 1.1 gives a normalized lift <span class="math" data-tex="\(v\)">\(v\)</span> in the identity component over <span class="math" data-tex="\(A^+\)">\(A^+\)</span> with <span class="math" data-tex="\(\pi^+(v)=\pi^+(u)\)">\(\pi^+(v)=\pi^+(u)\)</span>. Then <span class="math" data-tex="\(v^{-1}u\in G^1(J)\)">\(v^{-1}u\in G^1(J)\)</span> and <span class="math" data-tex="\([v^{-1}u]=[u]\)">\([v^{-1}u]=[u]\)</span> in <span class="math" data-tex="\(K_1(A)\)">\(K_1(A)\)</span>, since <span class="math" data-tex="\([v]=0\)">\([v]=0\)</span>. This realizes every kernel class from <span class="math" data-tex="\(K_1(J)\)">\(K_1(J)\)</span>.</p>
+<p><em>At <span class="math" data-tex="\(K_1(B)\)">\(K_1(B)\)</span>: the easy inclusion.</em> If a representative <span class="math" data-tex="\(u\)">\(u\)</span> has an invertible lift <span class="math" data-tex="\(c\)">\(c\)</span>, use <span class="math" data-tex="\(\operatorname{diag}(c,c^{-1})\)">\(\operatorname{diag}(c,c^{-1})\)</span> in (2.1). It commutes with <span class="math" data-tex="\(P_n\)">\(P_n\)</span>, so its boundary is zero. Consequently <span class="math" data-tex="\(\partial\pi_*=0\)">\(\partial\pi_*=0\)</span>.</p>
+<p><em>At <span class="math" data-tex="\(K_1(B)\)">\(K_1(B)\)</span>: a zero boundary gives an exact lift.</em> Suppose <span class="math" data-tex="\(\partial[u]=0\)">\(\partial[u]=0\)</span>, with doubled lift <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(e=wP_nw^{-1}\)">\(e=wP_nw^{-1}\)</span>. Then <span class="math" data-tex="\([e]=[P_n]\)">\([e]=[P_n]\)</span> in <span class="math" data-tex="\(K_0(J^+)\)">\(K_0(J^+)\)</span>. Lemma 3.1 supplies equal identity and zero padding making <span class="math" data-tex="\(e\)">\(e\)</span> conjugate to the padded scalar idempotent. Add an identity block to <span class="math" data-tex="\(w\)">\(w\)</span> on every added coordinate, so it still conjugates the padded reference to the padded <span class="math" data-tex="\(e\)">\(e\)</span>. A common scalar permutation puts the reference in the form <span class="math" data-tex="\(P=\operatorname{diag}(1_r,0_s)\)">\(P=\operatorname{diag}(1_r,0_s)\)</span>. The quotient of the padded lift is then</p>
+<span class="math math-display" data-tex="\[
+\pi^+(w)=\operatorname{diag}(u\oplus1_l,u^{-1}\oplus1_k)
+\]">\[
+\pi^+(w)=\operatorname{diag}(u\oplus1_l,u^{-1}\oplus1_k)
+\]</span>
+<p>for some <span class="math" data-tex="\(l,k\geq0\)">\(l,k\geq0\)</span>; the first block has size <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>Let <span class="math" data-tex="\(x\in GL_{r+s}(J^+)\)">\(x\in GL_{r+s}(J^+)\)</span> conjugate <span class="math" data-tex="\(P\)">\(P\)</span> to this padded <span class="math" data-tex="\(e\)">\(e\)</span>. Lemma 3.2 replaces it by <span class="math" data-tex="\(y\in G_{r+s}^1(J)\)">\(y\in G_{r+s}^1(J)\)</span> with the same conjugation. Then <span class="math" data-tex="\(y^{-1}w\)">\(y^{-1}w\)</span> commutes with <span class="math" data-tex="\(P\)">\(P\)</span>. Relative to the two scalar summands it is therefore block diagonal, say <span class="math" data-tex="\(\operatorname{diag}(c,d)\)">\(\operatorname{diag}(c,d)\)</span>, with both blocks invertible. Its quotient is unchanged, because <span class="math" data-tex="\(\pi^+(y)=1\)">\(\pi^+(y)=1\)</span>. The first block <span class="math" data-tex="\(c\)">\(c\)</span> is an exact normalized invertible lift of <span class="math" data-tex="\(u\oplus1_l\)">\(u\oplus1_l\)</span>. Thus <span class="math" data-tex="\([u]\)">\([u]\)</span> is in the image of <span class="math" data-tex="\(K_1(A)\)">\(K_1(A)\)</span>. This proves <span class="math" data-tex="\(\ker\partial=\operatorname{im}\pi_*\)">\(\ker\partial=\operatorname{im}\pi_*\)</span>, and proves the stronger representative lifting statement used in Exercise 7.5.</p>
+<p><em>At <span class="math" data-tex="\(K_0(J)\)">\(K_0(J)\)</span>: the easy inclusion.</em> The two idempotents in (2.1) are conjugate over <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. Their difference is zero there. Since <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> is a subgroup of <span class="math" data-tex="\(K_0(A^+)\)">\(K_0(A^+)\)</span>, this says <span class="math" data-tex="\(\iota_*\partial=0\)">\(\iota_*\partial=0\)</span>.</p>
+<p><em>At <span class="math" data-tex="\(K_0(J)\)">\(K_0(J)\)</span>: a kernel difference is a boundary.</em> By the fourth lesson's normal form, represent a class by <span class="math" data-tex="\([e]-[P]\)">\([e]-[P]\)</span>, where <span class="math" data-tex="\(e\in M_m(J^+)\)">\(e\in M_m(J^+)\)</span>, <span class="math" data-tex="\(P=\operatorname{diag}(1_r,0_{m-r})\)">\(P=\operatorname{diag}(1_r,0_{m-r})\)</span> and <span class="math" data-tex="\(\epsilon_J(e)=P\)">\(\epsilon_J(e)=P\)</span>. Suppose its image in <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> is zero. Thus <span class="math" data-tex="\([e]=[P]\)">\([e]=[P]\)</span> over <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. Lemma 3.1 gives common identity and zero padding and a conjugator <span class="math" data-tex="\(w\)">\(w\)</span> in the invertible identity component over <span class="math" data-tex="\(A^+\)">\(A^+\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+e=wPw^{-1}.
+\tag{4.2}
+\]">\[
+e=wPw^{-1}.
+\tag{4.2}
+\]</span>
+<p>Here and in the rest of this argument the symbols denote the padded matrices. Normalize <span class="math" data-tex="\(w\)">\(w\)</span> by its scalar part as in Lemma 3.2 and the paragraph following it. The scalar part commutes with <span class="math" data-tex="\(P\)">\(P\)</span>, and the normalized <span class="math" data-tex="\(w\)">\(w\)</span> remains in the normalized identity component. Since <span class="math" data-tex="\(\pi^+(e)=P\)">\(\pi^+(e)=P\)</span>, its quotient commutes with <span class="math" data-tex="\(P\)">\(P\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\pi^+(w)=\operatorname{diag}(c,d),
+\qquad [c]+[d]=0\quad\hbox{in }K_1(B).
+\tag{4.3}
+\]">\[
+\pi^+(w)=\operatorname{diag}(c,d),
+\qquad [c]+[d]=0\quad\hbox{in }K_1(B).
+\tag{4.3}
+\]</span>
+<p>Add identities to the selected block of both <span class="math" data-tex="\(e,P\)">\(e,P\)</span>, and zeros to their complementary block, extending <span class="math" data-tex="\(w\)">\(w\)</span> by identities. Such padding preserves the difference. It lets us make the sizes of <span class="math" data-tex="\(c,d\)">\(c,d\)</span> equal. Since <span class="math" data-tex="\([d]=[c^{-1}]\)">\([d]=[c^{-1}]\)</span>, further identity stabilization makes <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span> connected in a common normalized invertible group. Thus <span class="math" data-tex="\(d^{-1}c^{-1}\)">\(d^{-1}c^{-1}\)</span> is in that group's identity component. Lemma 1.1 gives an invertible normalized lift <span class="math" data-tex="\(V\)">\(V\)</span> of it. Now use</p>
+<span class="math math-display" data-tex="\[
+z=w\operatorname{diag}(1,V).
+\tag{4.4}
+\]">\[
+z=w\operatorname{diag}(1,V).
+\tag{4.4}
+\]</span>
+<p>The correcting matrix is on the right and commutes with <span class="math" data-tex="\(P\)">\(P\)</span>. Consequently <span class="math" data-tex="\(zPz^{-1}=e\)">\(zPz^{-1}=e\)</span> exactly. Its quotient is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{diag}(c,d)\operatorname{diag}(1,d^{-1}c^{-1})
+=\operatorname{diag}(c,c^{-1}).
+\]">\[
+\operatorname{diag}(c,d)\operatorname{diag}(1,d^{-1}c^{-1})
+=\operatorname{diag}(c,c^{-1}).
+\]</span>
+<p>So <span class="math" data-tex="\(z\)">\(z\)</span> is a doubled lift for <span class="math" data-tex="\(c\)">\(c\)</span>, and (2.1) gives <span class="math" data-tex="\([e]-[P]=\partial[c]\)">\([e]-[P]=\partial[c]\)</span>. This proves <span class="math" data-tex="\(\ker\iota_*=\operatorname{im}\partial\)">\(\ker\iota_*=\operatorname{im}\partial\)</span>.</p>
+<p><em>At <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>.</em> This is exactly the half-exactness theorem of the fourth lesson, Theorem 3.1. Its proof uses finite idempotent equivalences, identity complements and the elementary doubled lift, so it applies to the stated normed local setting as well. The preceding arguments use only those same finite-matrix facts and the logarithmic lifting of Lemma 1.1. This completes exactness in all the stated cases. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2 (split extensions).</strong> If <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has a bounded homomorphic section <span class="math" data-tex="\(s:B\to A\)">\(s:B\to A\)</span>, then <span class="math" data-tex="\(\partial=0\)">\(\partial=0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow K_1(J)\longrightarrow K_1(A)
+\longrightarrow K_1(B)\longrightarrow0
+\tag{4.5}
+\]">\[
+0\longrightarrow K_1(J)\longrightarrow K_1(A)
+\longrightarrow K_1(B)\longrightarrow0
+\tag{4.5}
+\]</span>
+<p>is split exact. The corresponding split <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-sequence is the fourth lesson's Theorem 4.1.</p>
+<p><em>Proof.</em> The unital extension <span class="math" data-tex="\(s^+\)">\(s^+\)</span> lifts every normalized invertible, so (2.1) gives <span class="math" data-tex="\(\partial=0\)">\(\partial=0\)</span>; also <span class="math" data-tex="\(\pi_*s_*=1\)">\(\pi_*s_*=1\)</span>. To prove injectivity on the left, suppose a normalized matrix over <span class="math" data-tex="\(J^+\)">\(J^+\)</span> becomes nullhomotopic over <span class="math" data-tex="\(A^+\)">\(A^+\)</span>, after stabilization. Let <span class="math" data-tex="\(h(t)\)">\(h(t)\)</span> be a normalized path from that matrix to 1. Then</p>
+<span class="math math-display" data-tex="\[
+s^+(\pi^+(h(t)))^{-1}h(t)
+\]">\[
+s^+(\pi^+(h(t)))^{-1}h(t)
+\]</span>
+<p>is a normalized invertible path over <span class="math" data-tex="\(J^+\)">\(J^+\)</span> with the same endpoints, since its quotient is 1. Thus the original <span class="math" data-tex="\(J\)">\(J\)</span>-class was zero. Middle exactness is Theorem 4.1, and the section supplies the splitting. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-partial-isometry-formula">5. The partial-isometry formula</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a C*-algebra. Suppose normalized unitary <span class="math" data-tex="\(u\)">\(u\)</span> over <span class="math" data-tex="\(B^+\)">\(B^+\)</span> has a partial-isometry lift <span class="math" data-tex="\(v\in M_n(A^+)\)">\(v\in M_n(A^+)\)</span>. Its scalar part is 1. Write</p>
+<span class="math math-display" data-tex="\[
+p=1-vv^*,\qquad q=1-v^*v.
+\]">\[
+p=1-vv^*,\qquad q=1-v^*v.
+\]</span>
+<p>These are projections in <span class="math" data-tex="\(M_n(J)\)">\(M_n(J)\)</span>, since the quotient of <span class="math" data-tex="\(v\)">\(v\)</span> is unitary. Put</p>
+<span class="math math-display" data-tex="\[
+W=\begin{pmatrix}v&amp;p\\q&amp;v^*\end{pmatrix}.
+\tag{5.1}
+\]">\[
+W=\begin{pmatrix}v&amp;p\\q&amp;v^*\end{pmatrix}.
+\tag{5.1}
+\]</span>
+<p><strong>Proposition 5.1.</strong> The matrix <span class="math" data-tex="\(W\)">\(W\)</span> is a normalized unitary lift of <span class="math" data-tex="\(\operatorname{diag}(u,u^*)\)">\(\operatorname{diag}(u,u^*)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\partial[u]=[1-v^*v]-[1-vv^*]=[q]-[p].
+\tag{5.2}
+\]">\[
+\partial[u]=[1-v^*v]-[1-vv^*]=[q]-[p].
+\tag{5.2}
+\]</span>
+<p><em>Proof.</em> The partial-isometry relations give <span class="math" data-tex="\(pv=0\)">\(pv=0\)</span>, <span class="math" data-tex="\(vq=0\)">\(vq=0\)</span>, and their adjoints <span class="math" data-tex="\(v^*p=0\)">\(v^*p=0\)</span>, <span class="math" data-tex="\(qv^*=0\)">\(qv^*=0\)</span>. Both <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are idempotent. Thus</p>
+<span class="math math-display" data-tex="\[
+W^*W=
+\begin{pmatrix}v^*v+q&amp;0\\0&amp;p+vv^*\end{pmatrix}=1,
+\qquad
+WW^*=
+\begin{pmatrix}vv^*+p&amp;0\\0&amp;q+v^*v\end{pmatrix}=1.
+\]">\[
+W^*W=
+\begin{pmatrix}v^*v+q&amp;0\\0&amp;p+vv^*\end{pmatrix}=1,
+\qquad
+WW^*=
+\begin{pmatrix}vv^*+p&amp;0\\0&amp;q+v^*v\end{pmatrix}=1.
+\]</span>
+<p>The off-diagonal entries in the quotient vanish, giving the required doubled quotient; scalar augmentation gives the identity. Moreover</p>
+<span class="math math-display" data-tex="\[
+WP_nW^*=\operatorname{diag}(vv^*,q).
+\]">\[
+WP_nW^*=\operatorname{diag}(vv^*,q).
+\]</span>
+<p>To simplify the resulting difference in <span class="math" data-tex="\(K_0(J)\)">\(K_0(J)\)</span>, note that <span class="math" data-tex="\(p\)">\(p\)</span> belongs to <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(vv^*=1-p\)">\(vv^*=1-p\)</span> belongs to <span class="math" data-tex="\(J^+\)">\(J^+\)</span>. The complementary-summand identity in <span class="math" data-tex="\(J^+\)">\(J^+\)</span> gives <span class="math" data-tex="\([vv^*]+[p]=[1_n]\)">\([vv^*]+[p]=[1_n]\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+[WP_nW^*]-[P_n]=[vv^*]+[q]-[1_n]=[q]-[p],
+\]">\[
+[WP_nW^*]-[P_n]=[vv^*]+[q]-[1_n]=[q]-[p],
+\]</span>
+<p>as asserted. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a unital extension and an ordinary unitary <span class="math" data-tex="\(u\in M_n(B)\)">\(u\in M_n(B)\)</span> with ordinary partial-isometry lift <span class="math" data-tex="\(v\in M_n(A)\)">\(v\in M_n(A)\)</span>, apply this calculation directly with the ordinary units. Equivalently, replace <span class="math" data-tex="\(v\)">\(v\)</span> in the external unitization by <span class="math" data-tex="\(v+(1_{\mathrm{ext}}-1_A)1_n\)">\(v+(1_{\mathrm{ext}}-1_A)1_n\)</span>. The resulting defect projections are the same ordinary <span class="math" data-tex="\(1_A-v^*v\)">\(1_A-v^*v\)</span> and <span class="math" data-tex="\(1_A-vv^*\)">\(1_A-vv^*\)</span> in <span class="math" data-tex="\(J\)">\(J\)</span>, and the two unitization conventions agree by the fourth and sixth lessons.</p>
+<p>A partial-isometry lift is an additional hypothesis in this proposition. Definition 2.1 works without it, by the elementary invertible lift.</p>
+<h2 id="6-the-fredholm-sign-and-a-cone-extension">6. The Fredholm sign and a cone extension</h2>
+<p><strong>Theorem 6.1.</strong> For an infinite-dimensional Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>, the extension</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal K(H)\longrightarrow B(H)
+\xrightarrow{\pi}Q(H)\longrightarrow0
+\]">\[
+0\longrightarrow\mathcal K(H)\longrightarrow B(H)
+\xrightarrow{\pi}Q(H)\longrightarrow0
+\]</span>
+<p>has connecting map</p>
+<span class="math math-display" data-tex="\[
+\partial[\pi(T)]
+=\dim\ker T-\dim\ker T^*
+=\operatorname{Ind}(T)
+\tag{6.1}
+\]">\[
+\partial[\pi(T)]
+=\dim\ker T-\dim\ker T^*
+=\operatorname{Ind}(T)
+\tag{6.1}
+\]</span>
+<p>under the rank normalization <span class="math" data-tex="\(K_0(\mathcal K(H))\cong\mathbb Z\)">\(K_0(\mathcal K(H))\cong\mathbb Z\)</span>, for every Fredholm <span class="math" data-tex="\(T\)">\(T\)</span>, and for finite matrices by acting on <span class="math" data-tex="\(H^n\)">\(H^n\)</span>. Thus <span class="math" data-tex="\(\partial=-\kappa_*\)">\(\partial=-\kappa_*\)</span> in the notation of the preceding lesson.</p>
+<p><em>Proof.</em> The Fredholm prerequisite gives closed range and finite-dimensional defects. In the polar decomposition <span class="math" data-tex="\(T=v|T|\)">\(T=v|T|\)</span>, the projections <span class="math" data-tex="\(1-v^*v\)">\(1-v^*v\)</span> and <span class="math" data-tex="\(1-vv^*\)">\(1-vv^*\)</span> are precisely the kernel and cokernel projections, so they are finite rank. In the quotient, <span class="math" data-tex="\(\pi(v)\)">\(\pi(v)\)</span> is unitary and <span class="math" data-tex="\(\pi(|T|)\)">\(\pi(|T|)\)</span> is positive invertible, by its Corollary 1.2. The positive logarithm joins <span class="math" data-tex="\(\pi(|T|)\)">\(\pi(|T|)\)</span> to 1, so <span class="math" data-tex="\([\pi(T)]=[\pi(v)]\)">\([\pi(T)]=[\pi(v)]\)</span>. Proposition 5.1 applies to <span class="math" data-tex="\(v\)">\(v\)</span>. The fourth lesson identifies a finite-rank projection's class with its rank, giving (6.1). The proof uses no separability assumption. Changing the Fredholm lift by a compact operator leaves the index unchanged by the prerequisite's Corollary 3.3, in agreement with the lift independence already proved for <span class="math" data-tex="\(\partial\)">\(\partial\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On <span class="math" data-tex="\(\ell^2(\mathbb N_0)\)">\(\ell^2(\mathbb N_0)\)</span>, let <span class="math" data-tex="\(S\varepsilon_j=\varepsilon_{j+1}\)">\(S\varepsilon_j=\varepsilon_{j+1}\)</span>. Then <span class="math" data-tex="\(S^*S=1\)">\(S^*S=1\)</span> and <span class="math" data-tex="\(SS^*=1-p_0\)">\(SS^*=1-p_0\)</span>, where <span class="math" data-tex="\(p_0\)">\(p_0\)</span> is rank one. Therefore</p>
+<span class="math math-display" data-tex="\[
+\partial[\pi(S)]=-[p_0]=-1.
+\tag{6.2}
+\]">\[
+\partial[\pi(S)]=-[p_0]=-1.
+\tag{6.2}
+\]</span>
+<p>The preceding lesson proves <span class="math" data-tex="\(K_1(B(H))=0\)">\(K_1(B(H))=0\)</span> and <span class="math" data-tex="\(K_1(Q(H))\cong\mathbb Z\)">\(K_1(Q(H))\cong\mathbb Z\)</span>. Thus the quotient map on <span class="math" data-tex="\(K_1\)">\(K_1\)</span> is not surjective. In fact (6.1) and the preceding lesson's Calkin computation make this connecting map an isomorphism, with the sign in (6.2).</p>
+<p>For any C*-algebra <span class="math" data-tex="\(D\)">\(D\)</span>, define its cone and suspension by</p>
+<span class="math math-display" data-tex="\[
+CD=\{f\in C([0,1],D):f(0)=0\},
+\qquad
+SD=\{f\in C([0,1],D):f(0)=f(1)=0\}.
+\tag{6.3}
+\]">\[
+CD=\{f\in C([0,1],D):f(0)=0\},
+\qquad
+SD=\{f\in C([0,1],D):f(0)=f(1)=0\}.
+\tag{6.3}
+\]</span>
+<p>Evaluation at 1 gives the exact cone extension</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow SD\longrightarrow CD
+\xrightarrow{\operatorname{ev}_1}D\longrightarrow0.
+\tag{6.4}
+\]">\[
+0\longrightarrow SD\longrightarrow CD
+\xrightarrow{\operatorname{ev}_1}D\longrightarrow0.
+\tag{6.4}
+\]</span>
+<p>Surjectivity follows by lifting <span class="math" data-tex="\(d\)">\(d\)</span> to the continuous function <span class="math" data-tex="\(t\mapsto td\)">\(t\mapsto td\)</span>; this is a linear lift, not a claimed homomorphic section. The cone contracts through homomorphisms <span class="math" data-tex="\(f(t)\mapsto f(st)\)">\(f(t)\mapsto f(st)\)</span>, so its <span class="math" data-tex="\(K_0\)">\(K_0\)</span> and <span class="math" data-tex="\(K_1\)">\(K_1\)</span> vanish by homotopy invariance. Theorem 4.1 consequently makes the cone boundary an isomorphism</p>
+<span class="math math-display" data-tex="\[
+K_1(D)\xrightarrow{\ \cong\ }K_0(SD).
+\tag{6.5}
+\]">\[
+K_1(D)\xrightarrow{\ \cong\ }K_0(SD).
+\tag{6.5}
+\]</span>
+<p>This prepares the next lesson's suspension picture. With the endpoint convention in (6.3), a doubled lift is a path starting at the identity at 0 and ending at <span class="math" data-tex="\(\operatorname{diag}(u,u^{-1})\)">\(\operatorname{diag}(u,u^{-1})\)</span> at 1. Its conjugated idempotent has the same scalar endpoint <span class="math" data-tex="\(P_n\)">\(P_n\)</span> at both ends, exactly as required for a class in <span class="math" data-tex="\(K_0(SD)\)">\(K_0(SD)\)</span>.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 7.1 — Multiplying the four factors (basic).</strong> Verify (1.1), and expand its lifted version for arbitrary lifts <span class="math" data-tex="\(a,b\)">\(a,b\)</span>.</p>
+<p><em>Solution.</em> First multiply</p>
+<span class="math math-display" data-tex="\[
+E(u)F(u^{-1})
+=\begin{pmatrix}0&amp;u\\-u^{-1}&amp;1\end{pmatrix}.
+\]">\[
+E(u)F(u^{-1})
+=\begin{pmatrix}0&amp;u\\-u^{-1}&amp;1\end{pmatrix}.
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(E(u)\)">\(E(u)\)</span> then gives <span class="math" data-tex="\(\begin{psmallmatrix}0&amp;u\\-u^{-1}&amp;0\end{psmallmatrix}\)">\(\begin{psmallmatrix}0&amp;u\\-u^{-1}&amp;0\end{psmallmatrix}\)</span>; multiplication by <span class="math" data-tex="\(L\)">\(L\)</span> gives <span class="math" data-tex="\(\operatorname{diag}(u,u^{-1})\)">\(\operatorname{diag}(u,u^{-1})\)</span>. Both inverse identities <span class="math" data-tex="\(uu^{-1}=u^{-1}u=1\)">\(uu^{-1}=u^{-1}u=1\)</span> have been used. With arbitrary lifts, the same ordered multiplication gives</p>
+<span class="math math-display" data-tex="\[
+E(a)F(b)E(a)L
+=\begin{pmatrix}a(2-ba)&amp;ab-1\\1-ba&amp;b\end{pmatrix}.
+\tag{7.1}
+\]">\[
+E(a)F(b)E(a)L
+=\begin{pmatrix}a(2-ba)&amp;ab-1\\1-ba&amp;b\end{pmatrix}.
+\tag{7.1}
+\]</span>
+<p>This formula holds without assuming <span class="math" data-tex="\(ab=ba\)">\(ab=ba\)</span>. Its inverse is the reversed product</p>
+<span class="math math-display" data-tex="\[
+L^{-1}E(-a)F(-b)E(-a),
+\]">\[
+L^{-1}E(-a)F(-b)E(-a),
+\]</span>
+<p>so the lifted matrix is invertible regardless of the defects <span class="math" data-tex="\(1-ab,1-ba\)">\(1-ab,1-ba\)</span>. In the quotient those defects vanish and the first diagonal entry is <span class="math" data-tex="\(u(2-u^{-1}u)=u\)">\(u(2-u^{-1}u)=u\)</span>, giving (1.1). If both lifts have scalar part 1, the expanded matrix has scalar diagonal entries 1 and scalar off-diagonal entries zero. This also verifies normalization explicitly.</p>
+<p><strong>Exercise 7.2 — Powers of the shift (basic).</strong> Compute <span class="math" data-tex="\(\partial[\pi(S^k)]\)">\(\partial[\pi(S^k)]\)</span> and <span class="math" data-tex="\(\partial[\pi((S^*)^k)]\)">\(\partial[\pi((S^*)^k)]\)</span> for <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math" data-tex="\(p_k\)">\(p_k\)</span> project onto <span class="math" data-tex="\(\operatorname{span}\{\varepsilon_0,\ldots,\varepsilon_{k-1}\}\)">\(\operatorname{span}\{\varepsilon_0,\ldots,\varepsilon_{k-1}\}\)</span>, with <span class="math" data-tex="\(p_0=0\)">\(p_0=0\)</span>. The shift powers satisfy</p>
+<span class="math math-display" data-tex="\[
+(S^k)^*S^k=1,\qquad S^k(S^k)^*=1-p_k.
+\]">\[
+(S^k)^*S^k=1,\qquad S^k(S^k)^*=1-p_k.
+\]</span>
+<p>Their initial defect is zero and their final defect is <span class="math" data-tex="\(p_k\)">\(p_k\)</span>. Proposition 5.1 therefore gives</p>
+<span class="math math-display" data-tex="\[
+\partial[\pi(S^k)]=-[p_k]=-k.
+\]">\[
+\partial[\pi(S^k)]=-[p_k]=-k.
+\]</span>
+<p>For <span class="math" data-tex="\((S^*)^k\)">\((S^*)^k\)</span>, the initial defect is <span class="math" data-tex="\(p_k\)">\(p_k\)</span> and the final defect is zero, so</p>
+<span class="math math-display" data-tex="\[
+\partial[\pi((S^*)^k)]=[p_k]=k.
+\]">\[
+\partial[\pi((S^*)^k)]=[p_k]=k.
+\]</span>
+<p>Both are zero for <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. This agrees with additivity, since the quotient shift is unitary and its adjoint represents its inverse class. The formula uses kernel minus cokernel throughout.</p>
+<p><strong>Exercise 7.3 — Naturality, including nonunital maps (intermediate).</strong> Prove that the connecting maps commute with a morphism of extensions.</p>
+<p><em>Solution.</em> Suppose <span class="math" data-tex="\(\phi:A\to A&#x27;\)">\(\phi:A\to A&#x27;\)</span> maps <span class="math" data-tex="\(J\)">\(J\)</span> into <span class="math" data-tex="\(J&#x27;\)">\(J&#x27;\)</span>, and <span class="math" data-tex="\(\pi&#x27;\phi=\bar\phi\pi\)">\(\pi&#x27;\phi=\bar\phi\pi\)</span>. External extension makes the same square commute on unitizations, even if <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is nonunital. For normalized <span class="math" data-tex="\(u\)">\(u\)</span> choose an invertible doubled lift <span class="math" data-tex="\(w\)">\(w\)</span>. Then <span class="math" data-tex="\(\phi^+(w)\)">\(\phi^+(w)\)</span> has quotient</p>
+<span class="math math-display" data-tex="\[
+\operatorname{diag}(\bar\phi^+(u),\bar\phi^+(u)^{-1}).
+\]">\[
+\operatorname{diag}(\bar\phi^+(u),\bar\phi^+(u)^{-1}).
+\]</span>
+<p>Since <span class="math" data-tex="\(\phi^+\)">\(\phi^+\)</span> is unital, it fixes every scalar entry of <span class="math" data-tex="\(P_n\)">\(P_n\)</span>, and it preserves inverses. Its restriction to <span class="math" data-tex="\(J^+\)">\(J^+\)</span> is <span class="math" data-tex="\(\phi_J^+\)">\(\phi_J^+\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\phi_J)_*\bigl([wP_nw^{-1}]-[P_n]\bigr)
+&amp;=[\phi^+(w)P_n\phi^+(w)^{-1}]-[P_n]\\
+&amp;=\partial&#x27;(\bar\phi)_*[u].
+\end{aligned}
+\]">\[
+\begin{aligned}
+(\phi_J)_*\bigl([wP_nw^{-1}]-[P_n]\bigr)
+&amp;=[\phi^+(w)P_n\phi^+(w)^{-1}]-[P_n]\\
+&amp;=\partial&#x27;(\bar\phi)_*[u].
+\end{aligned}
+\]</span>
+<p>Lift independence and stabilization, already proved, make this equality valid on all classes. This is (2.2). The other arrows in the exact sequence commute by functoriality of <span class="math" data-tex="\(K_0,K_1\)">\(K_0,K_1\)</span>, so this gives a natural morphism of the entire spliced sequence.</p>
+<p><strong>Exercise 7.4 — Checking the partial-isometry lift (intermediate).</strong> Verify that (5.1) is unitary, compute its conjugated idempotent and derive the defect formula.</p>
+<p><em>Solution.</em> Put <span class="math" data-tex="\(p=1-vv^*\)">\(p=1-vv^*\)</span>, <span class="math" data-tex="\(q=1-v^*v\)">\(q=1-v^*v\)</span>. Partial isometry means <span class="math" data-tex="\(vv^*v=v\)">\(vv^*v=v\)</span>; hence <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are projections and <span class="math" data-tex="\(pv=vq=0\)">\(pv=vq=0\)</span>. Taking adjoints gives <span class="math" data-tex="\(v^*p=qv^*=0\)">\(v^*p=qv^*=0\)</span>. Since</p>
+<span class="math math-display" data-tex="\[
+W^*=\begin{pmatrix}v^*&amp;q\\p&amp;v\end{pmatrix},
+\]">\[
+W^*=\begin{pmatrix}v^*&amp;q\\p&amp;v\end{pmatrix},
+\]</span>
+<p>the upper-left block of <span class="math" data-tex="\(W^*W\)">\(W^*W\)</span> is <span class="math" data-tex="\(v^*v+q^2=1\)">\(v^*v+q^2=1\)</span>, the lower-right block is <span class="math" data-tex="\(p^2+vv^*=1\)">\(p^2+vv^*=1\)</span>, and the off-diagonal blocks are <span class="math" data-tex="\(v^*p+qv^*=0\)">\(v^*p+qv^*=0\)</span> and <span class="math" data-tex="\(pv+vq=0\)">\(pv+vq=0\)</span>. Similarly <span class="math" data-tex="\(WW^*\)">\(WW^*\)</span> has diagonal blocks <span class="math" data-tex="\(vv^*+p^2=1\)">\(vv^*+p^2=1\)</span>, <span class="math" data-tex="\(q^2+v^*v=1\)">\(q^2+v^*v=1\)</span>, and off-diagonal blocks <span class="math" data-tex="\(vq+pv=0\)">\(vq+pv=0\)</span>, <span class="math" data-tex="\(qv^*+v^*p=0\)">\(qv^*+v^*p=0\)</span>. Thus <span class="math" data-tex="\(W^{-1}=W^*\)">\(W^{-1}=W^*\)</span>.</p>
+<p>Multiplying the first column by its adjoint gives</p>
+<span class="math math-display" data-tex="\[
+WP_nW^*
+=\begin{pmatrix}vv^*&amp;vq\\qv^*&amp;q^2\end{pmatrix}
+=\operatorname{diag}(vv^*,q).
+\]">\[
+WP_nW^*
+=\begin{pmatrix}vv^*&amp;vq\\qv^*&amp;q^2\end{pmatrix}
+=\operatorname{diag}(vv^*,q).
+\]</span>
+<p>Both defects lie in <span class="math" data-tex="\(J\)">\(J\)</span>, since <span class="math" data-tex="\(\pi(v)=u\)">\(\pi(v)=u\)</span> is unitary. In <span class="math" data-tex="\(J^+\)">\(J^+\)</span>, <span class="math" data-tex="\(vv^*=1-p\)">\(vv^*=1-p\)</span>, so <span class="math" data-tex="\([vv^*]-[1_n]=-[p]\)">\([vv^*]-[1_n]=-[p]\)</span>. Subtracting <span class="math" data-tex="\([P_n]\)">\([P_n]\)</span> from the computed idempotent class yields <span class="math" data-tex="\([q]-[p]\)">\([q]-[p]\)</span>, namely the formula (5.2). The calculation makes no assumption that every quotient unitary has such a partial-isometry lift; this exercise uses the stated lift hypothesis.</p>
+<p><strong>Exercise 7.5 — Zero boundary and a stabilized unitary lift (advanced).</strong> Let <span class="math" data-tex="\(u\)">\(u\)</span> be a normalized unitary over <span class="math" data-tex="\(B^+\)">\(B^+\)</span>. Show that <span class="math" data-tex="\(\partial[u]=0\)">\(\partial[u]=0\)</span> if and only if, for some finite <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(u\oplus1_{N-n}\)">\(u\oplus1_{N-n}\)</span> has an exact normalized unitary lift in <span class="math" data-tex="\(M_N(A^+)\)">\(M_N(A^+)\)</span>, where <span class="math" data-tex="\(u\)">\(u\)</span> has size <span class="math" data-tex="\(n\)">\(n\)</span>. For a unital extension one may use ordinary unitaries and obtain a lift in <span class="math" data-tex="\(M_N(A)\)">\(M_N(A)\)</span>.</p>
+<p><em>Solution.</em> If a unitary lift exists, it is an invertible lift. Its doubled matrix commutes with the reference scalar projection, so (2.1) gives boundary zero. Identity stabilization leaves the boundary unchanged; this proves necessity.</p>
+<p>Conversely, the proof of exactness at <span class="math" data-tex="\(K_1(B)\)">\(K_1(B)\)</span> in Theorem 4.1 produces an actual normalized invertible <span class="math" data-tex="\(c\in M_N(A^+)\)">\(c\in M_N(A^+)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\pi^+(c)=u\oplus1_{N-n}=:u_N.
+\]">\[
+\pi^+(c)=u\oplus1_{N-n}=:u_N.
+\]</span>
+<p>It obtains this exact representative by removing the normalized <span class="math" data-tex="\(J\)">\(J\)</span>-conjugator from a padded doubled lift; it does not merely assert a lift of a homotopy class. Take its polar unitary</p>
+<span class="math math-display" data-tex="\[
+v=c(c^*c)^{-1/2}.
+\tag{7.2}
+\]">\[
+v=c(c^*c)^{-1/2}.
+\tag{7.2}
+\]</span>
+<p>Continuous functional calculus makes <span class="math" data-tex="\(v\)">\(v\)</span> unitary. Both scalar augmentation and the quotient map commute with the positive inverse square root. Since the scalar part of <span class="math" data-tex="\(c\)">\(c\)</span> is 1, the scalar part of <span class="math" data-tex="\(v\)">\(v\)</span> is 1. Since <span class="math" data-tex="\(u_N\)">\(u_N\)</span> is unitary,</p>
+<span class="math math-display" data-tex="\[
+\pi^+(v)=u_N(u_N^*u_N)^{-1/2}=u_N.
+\]">\[
+\pi^+(v)=u_N(u_N^*u_N)^{-1/2}=u_N.
+\]</span>
+<p>This is the required exact normalized unitary lift. The size <span class="math" data-tex="\(N\)">\(N\)</span> depends on the finite group-completion and homotopy witnesses; boundary zero does not assert a lift at an arbitrarily prescribed smaller size.</p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> is unital and <span class="math" data-tex="\(u\)">\(u\)</span> is an ordinary unitary in <span class="math" data-tex="\(M_n(B)\)">\(M_n(B)\)</span>, replace it first by its normalized external representative, as in the preceding lesson, Proposition 1.2. The first component of <span class="math" data-tex="\(A^+\cong A\oplus\mathbb C\)">\(A^+\cong A\oplus\mathbb C\)</span> sends the normalized lift just constructed to an ordinary unitary in <span class="math" data-tex="\(M_N(A)\)">\(M_N(A)\)</span>, whose quotient is <span class="math" data-tex="\(u\oplus1\)">\(u\oplus1\)</span>. This proves the asserted unital version and the requested formulation using unitizations. For a nonunital algebra the normalized formulation is the precise meaning of the same statement.</p>
+<h2 id="references-and-convention-checks">References and convention checks</h2>
+<p>The invertible-lift boundary in (2.1) is the convention of Blackadar [B98, Definition 8.3.1] and [B06, V.1.2.12]. The proof here expands the required group-completion stabilization and keeps the correcting block on the right in (4.4), so the idempotent equality is retained literally. The partial-isometry formula is [B98, §8.3.2], [B06, V.1.2.13] and [E24, Lemma 8.6.1].</p>
+<p>The existing lesson <em>Frequency calculus for an action of Euclidean space</em> in <em>Cyclic cohomology and noncommutative geometry</em> uses this boundary in formula (7.1), with kernel-minus-cokernel sign. <em>Hilbert modules and fields on the leaf space</em> in <em>Noncommutative geometry of foliations</em> uses the expanded parametrix factorization in formula (11) and the same sign in formula (12). Exercise 7.1 verifies that common finite-matrix construction. Neither specialized symbol calculus nor a general Hilbert-module index theorem is needed to prove the exact sequence here.</p>
+<ul>
+<li>[B98] B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Cambridge University Press, 1998, §8.3, printed pp. 62–64, especially Definition 8.3.1 and Propositions 8.3.3, 8.3.4 and 8.3.6. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</li>
+<li>[B06] B. Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Springer, 2006, revised author version 2017, V.1.2.10–V.1.2.17.</li>
+<li>[E24] H. Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser, 2024, §§8.4–8.6, especially Theorem 8.5.11, Lemmas 8.6.1–8.6.2 and Corollary 8.6.3. Its relative-excision construction is not assumed in the direct proof above; the course's relative comparison is proved in the six-term-sequence lesson.</li>
+<li><em>Fredholm operators and the stable index</em>, in <em>Foundations of von Neumann algebras: remaining topics</em>, Theorem 1.1 and Corollary 1.2 for the Fredholm polar facts, and Corollary 3.3 for compact-perturbation invariance. Its <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is the negative of <span class="math" data-tex="\(\operatorname{Ind}\)">\(\operatorname{Ind}\)</span> in (6.1), as already fixed in the preceding lesson.</li>
+</ul>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="invertibles-unitaries-and-k1.html">← Invertibles, unitaries and <span class="math" data-tex="\(K_1\)">\(K_1\)</span></a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="suspension-higher-k-groups-and-the-long-exact-sequence.html">Suspension, higher K-groups and the long exact sequence →</a></span></nav>
+<p class="small source-link"><a href="src/KT-OPK-07.md">Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer"><p>This course’s original exposition and solutions use CC0 1.0. Human mathematical sources are credited in each lesson. See <a href="sources.html">sources, authorship and component terms</a>.</p><p><a href="../../index.html">Open Mathematics Courses</a> · <a href="preparation.html">Preparation</a></p></footer>
+</body>
+</html>

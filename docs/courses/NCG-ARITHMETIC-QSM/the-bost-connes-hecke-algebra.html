@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bost–Connes Hecke algebra · Operator-algebraic statistical mechanics and the Bost–Connes system</title>
+<meta name="description" content="A lesson of the course Operator-algebraic statistical mechanics and the Bost–Connes system. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-ARITHMETIC-QSM/the-bost-connes-hecke-algebra.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Operator-algebraic statistical mechanics and the Bost–Connes system</a> <span aria-hidden="true">›</span> <span>The Bost–Connes Hecke algebra</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), September 2026, with Ultra reasoning effort. Self-checked by the writing AI. Public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-bost-connes-hecke-algebra">The Bost–Connes Hecke algebra</h1>
+<p>A subgroup can be close enough to normal to admit convolution, yet fail to be normal in a measurable way. The Bost–Connes algebra turns that failure into time evolution. Its translation operators remember roots of unity. Its dilation operators remember positive integers. These two kinds of operators interact through averaging over roots, which will make the Riemann zeta function appear in equilibrium states.</p>
+<p>We first construct the algebra from finite coset counts. We then obtain its generators and both its time and arithmetic symmetries. The presentation also lets us prove that every bounded *-representation is controlled by the regular representation. The proof uses averaging over a compact group of phases.</p>
+<p>The prerequisites are discrete groups and cosets, bounded operators on Hilbert space, C*-algebras and states, finite Fourier analysis, inverse limits of finite sets, and integration against product probability measures on countable products of circles. Sections 7–8 also use the normalized valuation on <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, its valuation ring <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>, and the restricted-product topology, as specified in [Milne ANT]. We prove the particular lattice and tree facts used here. Section 10 derives the general local-field modulus and compact valuation ring from the topological-field hypotheses, using the exact Haar and Radon results named there and the fundamental theorem of algebra. For the KMS step we use <a href="../analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html">Analytic elements and strip arguments</a>, Theorem 10.3, with the sign and scale specified below. Basic references are [Bost–Connes] and [Connes–Marcolli].</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), September 2026, with Ultra reasoning effort. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<h2 id="1-counting-before-completing">1. Counting before completing</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a discrete group and <span class="math" data-tex="\(H\subset G\)">\(H\subset G\)</span> a subgroup. Call <span class="math" data-tex="\((G,H)\)">\((G,H)\)</span> a <strong>Hecke pair</strong> if every orbit of <span class="math" data-tex="\(H\)">\(H\)</span> on <span class="math" data-tex="\(G/H\)">\(G/H\)</span> is finite. For <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+L(g)=[H:H\cap gHg^{-1}],\qquad
+R(g)=[H:H\cap g^{-1}Hg].
+\]">\[
+L(g)=[H:H\cap gHg^{-1}],\qquad
+R(g)=[H:H\cap g^{-1}Hg].
+\]</span>
+<p>Thus <span class="math" data-tex="\(HgH\)">\(HgH\)</span> is a union of <span class="math" data-tex="\(L(g)\)">\(L(g)\)</span> right cosets and <span class="math" data-tex="\(R(g)\)">\(R(g)\)</span> left cosets. Here a right coset means <span class="math" data-tex="\(gH\)">\(gH\)</span>, and a left coset means <span class="math" data-tex="\(Hg\)">\(Hg\)</span>. The names <span class="math" data-tex="\(L,R\)">\(L,R\)</span> record the left and right actions, rather than the names of the cosets. Inversion interchanges the two counts.</p>
+<p>Let <span class="math" data-tex="\(\mathcal H(G,H)\)">\(\mathcal H(G,H)\)</span> be the vector space of complex, <span class="math" data-tex="\(H\)">\(H\)</span>-bi-invariant functions on <span class="math" data-tex="\(G\)">\(G\)</span> supported on finitely many double cosets. Define</p>
+<span class="math math-display" data-tex="\[
+(f*k)(x)=\sum_{Hy\in H\backslash G}f(xy^{-1})k(y),\qquad
+f^*(x)=\overline{f(x^{-1})}.
+\tag{1.1}
+\]">\[
+(f*k)(x)=\sum_{Hy\in H\backslash G}f(xy^{-1})k(y),\qquad
+f^*(x)=\overline{f(x^{-1})}.
+\tag{1.1}
+\]</span>
+<p>Changing the representative <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(hy\)">\(hy\)</span> changes the first argument to <span class="math" data-tex="\(xy^{-1}h^{-1}\)">\(xy^{-1}h^{-1}\)</span>, and leaves both factors unchanged. The sum is finite because the support of <span class="math" data-tex="\(k\)">\(k\)</span> contains finitely many left cosets. The product is bi-invariant. Its support is contained in the product of the supports of <span class="math" data-tex="\(f,k\)">\(f,k\)</span>, which is a finite union of double cosets: decompose the first support into finitely many right cosets and the second into finitely many left cosets.</p>
+<p><strong>Theorem 1.1 (Regular convolution).</strong> On <span class="math" data-tex="\(\ell^2(H\backslash G)\)">\(\ell^2(H\backslash G)\)</span>, the formula</p>
+<span class="math math-display" data-tex="\[
+(\lambda(f)\xi)(Hx)=\sum_{Hy}f(xy^{-1})\xi(Hy)
+\tag{1.2}
+\]">\[
+(\lambda(f)\xi)(Hx)=\sum_{Hy}f(xy^{-1})\xi(Hy)
+\tag{1.2}
+\]</span>
+<p>defines a faithful *-representation of the unital algebra (1.1). If</p>
+<span class="math math-display" data-tex="\[
+A_L(f)=\sum_{HgH}|f(g)|L(g),\qquad
+A_R(f)=\sum_{HgH}|f(g)|R(g),
+\]">\[
+A_L(f)=\sum_{HgH}|f(g)|L(g),\qquad
+A_R(f)=\sum_{HgH}|f(g)|R(g),
+\]</span>
+<p>then <span class="math" data-tex="\(\|\lambda(f)\|\le\sqrt{A_L(f)A_R(f)}\)">\(\|\lambda(f)\|\le\sqrt{A_L(f)A_R(f)}\)</span>.</p>
+<p><strong>Proof.</strong> In a fixed row of the matrix (1.2), substitute <span class="math" data-tex="\(z=xy^{-1}\)">\(z=xy^{-1}\)</span>. Left cosets <span class="math" data-tex="\(Hy\)">\(Hy\)</span> correspond to right cosets <span class="math" data-tex="\(zH\)">\(zH\)</span>, so the absolute row sum is <span class="math" data-tex="\(A_L(f)\)">\(A_L(f)\)</span>. In a fixed column, <span class="math" data-tex="\(Hx\mapsto Hxy^{-1}\)">\(Hx\mapsto Hxy^{-1}\)</span> is a bijection of left coset spaces, so the absolute column sum is <span class="math" data-tex="\(A_R(f)\)">\(A_R(f)\)</span>. For a finitely supported vector, weighted Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+\sum_x\left|\sum_y f(xy^{-1})\xi_y\right|^2
+\le A_L(f)\sum_{x,y}|f(xy^{-1})||\xi_y|^2
+\le A_L(f)A_R(f)\|\xi\|^2.
+\]">\[
+\sum_x\left|\sum_y f(xy^{-1})\xi_y\right|^2
+\le A_L(f)\sum_{x,y}|f(xy^{-1})||\xi_y|^2
+\le A_L(f)A_R(f)\|\xi\|^2.
+\]</span>
+<p>The operator therefore extends uniquely to the Hilbert space. Reversing the matrix indices proves the adjoint formula. Multiplying the two matrices and substituting <span class="math" data-tex="\(Hz\mapsto Hzy^{-1}\)">\(Hz\mapsto Hzy^{-1}\)</span> proves <span class="math" data-tex="\(\lambda(f)\lambda(k)=\lambda(f*k)\)">\(\lambda(f)\lambda(k)=\lambda(f*k)\)</span>. All sums in this calculation are finite for fixed indices. Also <span class="math" data-tex="\(\lambda(f)\delta_H\)">\(\lambda(f)\delta_H\)</span> has value <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> at <span class="math" data-tex="\(Hx\)">\(Hx\)</span>, so the representation is injective. Operator associativity now proves associativity of (1.1). The identity is <span class="math" data-tex="\(1_H\)">\(1_H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The <strong>reduced Hecke C*-algebra</strong> <span class="math" data-tex="\(A_r(G,H)\)">\(A_r(G,H)\)</span> is the norm closure of this representation.</p>
+<h2 id="2-the-imbalance-is-multiplicative">2. The imbalance is multiplicative</h2>
+<p>Neither <span class="math" data-tex="\(L\)">\(L\)</span> nor <span class="math" data-tex="\(R\)">\(R\)</span> need be multiplicative. Their ratio is.</p>
+<p><strong>Lemma 2.1.</strong> The function <span class="math" data-tex="\(d(g)=R(g)/L(g)\)">\(d(g)=R(g)/L(g)\)</span> is a homomorphism <span class="math" data-tex="\(G\to\mathbb Q_{&gt;0}^{\times}\)">\(G\to\mathbb Q_{&gt;0}^{\times}\)</span>, trivial on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof.</strong> Two subgroups <span class="math" data-tex="\(K_1,K_2\)">\(K_1,K_2\)</span> are commensurable if their intersection has finite index in both. Set</p>
+<span class="math math-display" data-tex="\[
+j(K_1,K_2)=\frac{[K_1:K_1\cap K_2]}{[K_2:K_1\cap K_2]}.
+\]">\[
+j(K_1,K_2)=\frac{[K_1:K_1\cap K_2]}{[K_2:K_1\cap K_2]}.
+\]</span>
+<p>For three pairwise commensurable subgroups their common intersection <span class="math" data-tex="\(J\)">\(J\)</span> has finite index in each, and <span class="math" data-tex="\(j(K_1,K_2)=[K_1:J]/[K_2:J]\)">\(j(K_1,K_2)=[K_1:J]/[K_2:J]\)</span>. Hence <span class="math" data-tex="\(j(K_1,K_3)=j(K_1,K_2)j(K_2,K_3)\)">\(j(K_1,K_3)=j(K_1,K_2)j(K_2,K_3)\)</span>. Conjugation preserves this ratio. Apply the identity to <span class="math" data-tex="\(H,gHg^{-1},ghHh^{-1}g^{-1}\)">\(H,gHg^{-1},ghHh^{-1}g^{-1}\)</span>. Since <span class="math" data-tex="\(j(H,gHg^{-1})=L(g)/R(g)\)">\(j(H,gHg^{-1})=L(g)/R(g)\)</span>, taking reciprocals gives <span class="math" data-tex="\(d(gh)=d(g)d(h)\)">\(d(gh)=d(g)d(h)\)</span>. For <span class="math" data-tex="\(g\in H\)">\(g\in H\)</span>, both counts are one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (Time from cosets).</strong> There is a unique norm-continuous-on-each-orbit group of automorphisms of <span class="math" data-tex="\(A_r(G,H)\)">\(A_r(G,H)\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\alpha_t(f)(g)=d(g)^{it}f(g).
+\tag{2.1}
+\]">\[
+\alpha_t(f)(g)=d(g)^{it}f(g).
+\tag{2.1}
+\]</span>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(\ell^2(H\backslash G)\)">\(\ell^2(H\backslash G)\)</span>, let <span class="math" data-tex="\(V_t\delta_{Hx}=d(x)^{it}\delta_{Hx}\)">\(V_t\delta_{Hx}=d(x)^{it}\delta_{Hx}\)</span>. This is well-defined and unitary. Directly from the matrix entries,</p>
+<span class="math math-display" data-tex="\[
+V_t\lambda(f)V_t^*=\lambda(\alpha_t(f)).
+\]">\[
+V_t\lambda(f)V_t^*=\lambda(\alpha_t(f)).
+\]</span>
+<p>It follows that (2.1) preserves the algebra, its norm and its involution. Each finite double-coset sum has a norm-continuous orbit. Approximation and isometry extend that assertion to its norm closure. Uniqueness follows from density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The vector state</p>
+<span class="math math-display" data-tex="\[
+\phi(a)=\langle a\delta_H,\delta_H\rangle
+\tag{2.2}
+\]">\[
+\phi(a)=\langle a\delta_H,\delta_H\rangle
+\tag{2.2}
+\]</span>
+<p>has <span class="math" data-tex="\(\phi(\lambda(f))=f(1)\)">\(\phi(\lambda(f))=f(1)\)</span>. Inner products are linear in the first variable.</p>
+<p>Our <strong>physical KMS convention</strong> at <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span> is</p>
+<span class="math math-display" data-tex="\[
+F_{a,b}(t)=\omega(a\alpha_t(b)),\qquad
+F_{a,b}(t+i\beta)=\omega(\alpha_t(b)a),
+\tag{2.3}
+\]">\[
+F_{a,b}(t)=\omega(a\alpha_t(b)),\qquad
+F_{a,b}(t+i\beta)=\omega(\alpha_t(b)a),
+\tag{2.3}
+\]</span>
+<p>with <span class="math" data-tex="\(F\)">\(F\)</span> bounded and continuous on the closed strip and holomorphic inside. The analytic criterion we use is</p>
+<span class="math math-display" data-tex="\[
+\omega(ab)=\omega(b\alpha_{i\beta}(a))
+\tag{2.4}
+\]">\[
+\omega(ab)=\omega(b\alpha_{i\beta}(a))
+\tag{2.4}
+\]</span>
+<p>on a norm-dense invariant algebra of entire elements, with <span class="math" data-tex="\(b\)">\(b\)</span> arbitrary. It follows from Theorem 10.3 of <em>Analytic elements and strip arguments</em>: apply that theorem to the group <span class="math" data-tex="\(s\mapsto\alpha_{-\beta s}\)">\(s\mapsto\alpha_{-\beta s}\)</span>. Its analytic identity becomes <span class="math" data-tex="\(\omega(\alpha_{-i\beta}(x)y)=\omega(yx)\)">\(\omega(\alpha_{-i\beta}(x)y)=\omega(yx)\)</span>; substitute <span class="math" data-tex="\(x=\alpha_{i\beta}(a)\)">\(x=\alpha_{i\beta}(a)\)</span>. Rescaling and reversing the strip converts its boundary condition into (2.3). This convention makes a Hamiltonian flow <span class="math" data-tex="\(\alpha_t=\operatorname{Ad}e^{itK}\)">\(\alpha_t=\operatorname{Ad}e^{itK}\)</span> have density proportional to <span class="math" data-tex="\(e^{-\beta K}\)">\(e^{-\beta K}\)</span>.</p>
+<p><strong>Proposition 2.3 (The canonical equilibrium state).</strong> The state (2.2) is KMS at inverse temperature one for (2.1).</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(c_X=1_{HgH}\)">\(c_X=1_{HgH}\)</span>. Formula (1.1) at the identity gives, for every <span class="math" data-tex="\(k\in\mathcal H(G,H)\)">\(k\in\mathcal H(G,H)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\phi(c_X*k)=L(g)k(g^{-1}),\qquad
+\phi(k*c_X)=R(g)k(g^{-1}).
+\]">\[
+\phi(c_X*k)=L(g)k(g^{-1}),\qquad
+\phi(k*c_X)=R(g)k(g^{-1}).
+\]</span>
+<p>As <span class="math" data-tex="\(\alpha_i(c_X)=d(g)^{-1}c_X\)">\(\alpha_i(c_X)=d(g)^{-1}c_X\)</span>, these are precisely (2.4). Linearity proves the identity on the Hecke algebra; norm continuity in <span class="math" data-tex="\(k\)">\(k\)</span> extends it to arbitrary <span class="math" data-tex="\(b\in A_r(G,H)\)">\(b\in A_r(G,H)\)</span>. Each <span class="math" data-tex="\(c_X\)">\(c_X\)</span> is an entire eigenvector and their span is dense and invariant. The analytic criterion proves (2.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(H\)">\(H\)</span> is normal, <span class="math" data-tex="\(L=R=1\)">\(L=R=1\)</span>, the evolution is trivial and this state is a trace. A nonnormal subgroup can therefore carry a canonical equilibrium state without an arbitrarily chosen Hamiltonian.</p>
+<h2 id="3-viewing-the-same-algebra-from-the-other-coset-space">3. Viewing the same algebra from the other coset space</h2>
+<p>There is a useful second realization. On <span class="math" data-tex="\(\ell^2(G/H)\)">\(\ell^2(G/H)\)</span>, let <span class="math" data-tex="\(U_g\delta_{xH}=\delta_{gxH}\)">\(U_g\delta_{xH}=\delta_{gxH}\)</span>. Inversion defines a linear unitary</p>
+<span class="math math-display" data-tex="\[
+I:\ell^2(H\backslash G)\longrightarrow\ell^2(G/H),\qquad
+I\delta_{Hx}=\delta_{x^{-1}H}.
+\]">\[
+I:\ell^2(H\backslash G)\longrightarrow\ell^2(G/H),\qquad
+I\delta_{Hx}=\delta_{x^{-1}H}.
+\]</span>
+<p><strong>Proposition 3.1 (Coefficients in the commutant).</strong> A bounded operator <span class="math" data-tex="\(T\)">\(T\)</span> commuting with all <span class="math" data-tex="\(U_g\)">\(U_g\)</span> is determined by</p>
+<span class="math math-display" data-tex="\[
+f_T(g)=\langle T\delta_H,\delta_{g^{-1}H}\rangle.
+\]">\[
+f_T(g)=\langle T\delta_H,\delta_{g^{-1}H}\rangle.
+\]</span>
+<p>This function is bi-invariant and satisfies</p>
+<span class="math math-display" data-tex="\[
+\sum_{Hg\in H\backslash G}|f_T(g)|^2=\|T\delta_H\|^2,
+\quad f_{T^*}(g)=\overline{f_T(g^{-1})},
+\]">\[
+\sum_{Hg\in H\backslash G}|f_T(g)|^2=\|T\delta_H\|^2,
+\quad f_{T^*}(g)=\overline{f_T(g^{-1})},
+\]</span>
+<span class="math math-display" data-tex="\[
+f_{ST}(g)=\sum_{zH\in G/H}f_S(gz)f_T(z^{-1}).
+\tag{3.1}
+\]">\[
+f_{ST}(g)=\sum_{zH\in G/H}f_S(gz)f_T(z^{-1}).
+\tag{3.1}
+\]</span>
+<p>The last series is absolutely convergent. For finite double-coset support <span class="math" data-tex="\(f\)">\(f\)</span>, the operator <span class="math" data-tex="\(r(f)=I\lambda(f)I^*\)">\(r(f)=I\lambda(f)I^*\)</span> lies in this commutant and has coefficient <span class="math" data-tex="\(f\)">\(f\)</span>. Moreover,</p>
+<span class="math math-display" data-tex="\[
+\overline{r(\mathcal H(G,H))\delta_H}
+=\{\xi:U_h\xi=\xi\text{ for every }h\in H\}.
+\tag{3.2}
+\]">\[
+\overline{r(\mathcal H(G,H))\delta_H}
+=\{\xi:U_h\xi=\xi\text{ for every }h\in H\}.
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> Commutation implies <span class="math" data-tex="\(T\delta_{yH}=U_yT\delta_H\)">\(T\delta_{yH}=U_yT\delta_H\)</span>. Thus <span class="math" data-tex="\(T\delta_H\)">\(T\delta_H\)</span> determines every column. Its <span class="math" data-tex="\(H\)">\(H\)</span>-invariance proves the two-sided invariance of <span class="math" data-tex="\(f_T\)">\(f_T\)</span>, and the matrix entry in row <span class="math" data-tex="\(xH\)">\(xH\)</span>, column <span class="math" data-tex="\(yH\)">\(yH\)</span>, is <span class="math" data-tex="\(f_T(x^{-1}y)\)">\(f_T(x^{-1}y)\)</span>. Parseval proves the norm identity. Taking adjoints gives the displayed involution. Matrix multiplication at <span class="math" data-tex="\(x=g^{-1},y=1\)">\(x=g^{-1},y=1\)</span> gives (3.1); the row of <span class="math" data-tex="\(S\)">\(S\)</span> and column of <span class="math" data-tex="\(T\)">\(T\)</span> belong to <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, so Cauchy–Schwarz proves absolute convergence.</p>
+<p>Conjugating (1.2) by <span class="math" data-tex="\(I\)">\(I\)</span> gives exactly the kernel <span class="math" data-tex="\(f(x^{-1}y)\)">\(f(x^{-1}y)\)</span>. It is unchanged under simultaneous left translation of <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, hence commutes with <span class="math" data-tex="\(U_g\)">\(U_g\)</span>. This also proves that <span class="math" data-tex="\(r\)">\(r\)</span> is an isometric *-isomorphism onto the C*-algebra generated by these kernels. It does not assert that this C*-algebra is the entire commutant.</p>
+<p>Finally an <span class="math" data-tex="\(H\)">\(H\)</span>-invariant vector is constant on each <span class="math" data-tex="\(H\)">\(H\)</span>-orbit in <span class="math" data-tex="\(G/H\)">\(G/H\)</span>. All these orbits are finite. Their normalized indicators form an orthonormal basis of the invariant subspace. Each indicator is <span class="math" data-tex="\(r(c_X)\delta_H\)">\(r(c_X)\delta_H\)</span> for the inverse double coset <span class="math" data-tex="\(X\)">\(X\)</span>. Conversely each <span class="math" data-tex="\(r(f)\delta_H\)">\(r(f)\delta_H\)</span> is <span class="math" data-tex="\(H\)">\(H\)</span>-invariant. Taking closed spans proves (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-rational-dilations-and-translations">4. Rational dilations and translations</h2>
+<p>Use the matrices</p>
+<span class="math math-display" data-tex="\[
+g(b,q)=\begin{pmatrix}1&amp;b\\0&amp;q\end{pmatrix},\qquad
+b\in\mathbb Q,\quad q\in\mathbb Q_{&gt;0}.
+\]">\[
+g(b,q)=\begin{pmatrix}1&amp;b\\0&amp;q\end{pmatrix},\qquad
+b\in\mathbb Q,\quad q\in\mathbb Q_{&gt;0}.
+\]</span>
+<p>Their multiplication is</p>
+<span class="math math-display" data-tex="\[
+g(b,q)g(c,r)=g(c+br,qr).
+\tag{4.1}
+\]">\[
+g(b,q)g(c,r)=g(c+br,qr).
+\tag{4.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be this group and <span class="math" data-tex="\(H=\{g(k,1):k\in\mathbb Z\}\)">\(H=\{g(k,1):k\in\mathbb Z\}\)</span>. This convention identifies the matrix with the affine map <span class="math" data-tex="\(x\mapsto(x+b)/q\)">\(x\mapsto(x+b)/q\)</span>; choosing the alternative matrix for <span class="math" data-tex="\(x\mapsto qx+b\)">\(x\mapsto qx+b\)</span> reciprocates the dilation parameter.</p>
+<p><strong>Lemma 4.1 (Exact orbit sizes).</strong> If <span class="math" data-tex="\(q=m/n\)">\(q=m/n\)</span> in lowest terms with <span class="math" data-tex="\(m,n&gt;0\)">\(m,n&gt;0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+Hg(b,q)H=\{g(b+k/n,q):k\in\mathbb Z\},\qquad
+L(g)=n,\quad R(g)=m,\quad d(g)=q.
+\tag{4.2}
+\]">\[
+Hg(b,q)H=\{g(b+k/n,q):k\in\mathbb Z\},\qquad
+L(g)=n,\quad R(g)=m,\quad d(g)=q.
+\tag{4.2}
+\]</span>
+<p>In particular <span class="math" data-tex="\((G,H)\)">\((G,H)\)</span> is a Hecke pair.</p>
+<p><strong>Proof.</strong> Multiplying on the two sides by integral translations changes <span class="math" data-tex="\(b\)">\(b\)</span> by an element of <span class="math" data-tex="\(\mathbb Z+q\mathbb Z=(1/n)\mathbb Z\)">\(\mathbb Z+q\mathbb Z=(1/n)\mathbb Z\)</span>. Right cosets identify <span class="math" data-tex="\(b\)">\(b\)</span> modulo <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, giving <span class="math" data-tex="\(n\)">\(n\)</span> possibilities. Left cosets identify <span class="math" data-tex="\(b\)">\(b\)</span> modulo <span class="math" data-tex="\(q\mathbb Z=(m/n)\mathbb Z\)">\(q\mathbb Z=(m/n)\mathbb Z\)</span>, giving <span class="math" data-tex="\(m\)">\(m\)</span> possibilities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define <span class="math" data-tex="\(e(r)=1_{Hg(r,1)H}\)">\(e(r)=1_{Hg(r,1)H}\)</span> for <span class="math" data-tex="\(r\in\mathbb Q/\mathbb Z\)">\(r\in\mathbb Q/\mathbb Z\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mu_n=n^{-1/2}1_{Hg(0,n)H}\quad(n\ge1).
+\tag{4.3}
+\]">\[
+\mu_n=n^{-1/2}1_{Hg(0,n)H}\quad(n\ge1).
+\tag{4.3}
+\]</span>
+<p>Then <span class="math" data-tex="\(\alpha_t(e(r))=e(r)\)">\(\alpha_t(e(r))=e(r)\)</span> and <span class="math" data-tex="\(\alpha_t(\mu_n)=n^{it}\mu_n\)">\(\alpha_t(\mu_n)=n^{it}\mu_n\)</span>.</p>
+<p><strong>Theorem 4.2 (Generators and relations).</strong> The algebra <span class="math" data-tex="\(\mathcal H(G,H)\)">\(\mathcal H(G,H)\)</span> is generated by <span class="math" data-tex="\(e(r),\mu_n\)">\(e(r),\mu_n\)</span>, with the following presentation:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e(0)=1,\quad e(r)e(s)=e(r+s),\quad e(r)^*=e(-r),\\
+\mu_1=1,\quad\mu_n^*\mu_n=1,\quad\mu_n\mu_m=\mu_{nm},\\
+\mu_n\mu_m^*=\mu_m^*\mu_n\quad\text{if }\gcd(n,m)=1,\\
+e(r)\mu_n=\mu_ne(nr),\qquad
+\mu_ne(r)\mu_n^*=\frac1n\sum_{ns=r}e(s).
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+e(0)=1,\quad e(r)e(s)=e(r+s),\quad e(r)^*=e(-r),\\
+\mu_1=1,\quad\mu_n^*\mu_n=1,\quad\mu_n\mu_m=\mu_{nm},\\
+\mu_n\mu_m^*=\mu_m^*\mu_n\quad\text{if }\gcd(n,m)=1,\\
+e(r)\mu_n=\mu_ne(nr),\qquad
+\mu_ne(r)\mu_n^*=\frac1n\sum_{ns=r}e(s).
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>For coprime <span class="math" data-tex="\(n,m\)">\(n,m\)</span>, the elements</p>
+<span class="math math-display" data-tex="\[
+\mu_ne(r)\mu_m^*
+=(nm)^{-1/2}1_{Hg(r/m,n/m)H},\qquad r\in\mathbb Q/\mathbb Z,
+\tag{4.5}
+\]">\[
+\mu_ne(r)\mu_m^*
+=(nm)^{-1/2}1_{Hg(r/m,n/m)H},\qquad r\in\mathbb Q/\mathbb Z,
+\tag{4.5}
+\]</span>
+<p>form a vector-space basis as <span class="math" data-tex="\(n,m,r\)">\(n,m,r\)</span> vary.</p>
+<p><em>Reference:</em> [Bost–Connes, Section 4, equation (7)] displays the translation parameter <span class="math" data-tex="\(r\)">\(r\)</span>. With the generators in (4.3), multiplication gives <span class="math" data-tex="\(r/m\)">\(r/m\)</span>, as in (4.5).</p>
+<p><strong>Proof.</strong> An equivalent form of (1.1), obtained by <span class="math" data-tex="\(z=xy^{-1}\)">\(z=xy^{-1}\)</span>, is</p>
+<span class="math math-display" data-tex="\[
+(f*k)(x)=\sum_{zH\in G/H}f(z)k(z^{-1}x).
+\tag{4.6}
+\]">\[
+(f*k)(x)=\sum_{zH\in G/H}f(z)k(z^{-1}x).
+\tag{4.6}
+\]</span>
+<p>The supports of <span class="math" data-tex="\(e(r)\)">\(e(r)\)</span> and <span class="math" data-tex="\(1_{Hg(0,n)H}\)">\(1_{Hg(0,n)H}\)</span> each consist of one right coset. Consequently convolution on the left by either function substitutes respectively <span class="math" data-tex="\(g(-r,1)x\)">\(g(-r,1)x\)</span> or <span class="math" data-tex="\(g(0,n^{-1})x\)">\(g(0,n^{-1})x\)</span>, with the latter carrying the scalar <span class="math" data-tex="\(n^{-1/2}\)">\(n^{-1/2}\)</span>. These substitutions prove the group law for <span class="math" data-tex="\(e\)">\(e\)</span>, the semigroup law for <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and the covariance with <span class="math" data-tex="\(e(r)\)">\(e(r)\)</span>.</p>
+<p>The inverse dilation class consists of the <span class="math" data-tex="\(n\)">\(n\)</span> right cosets represented by <span class="math" data-tex="\(g(j/n,1/n)\)">\(g(j/n,1/n)\)</span>, <span class="math" data-tex="\(0\le j&lt;n\)">\(0\le j&lt;n\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+(\mu_n^**f)(x)=n^{-1/2}\sum_{j=0}^{n-1}f(g(-j,n)x).
+\tag{4.7}
+\]">\[
+(\mu_n^**f)(x)=n^{-1/2}\sum_{j=0}^{n-1}f(g(-j,n)x).
+\tag{4.7}
+\]</span>
+<p>Applying (4.7) to <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> gives one at <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span> and zero elsewhere: all <span class="math" data-tex="\(n\)">\(n\)</span> terms contribute <span class="math" data-tex="\(1/n\)">\(1/n\)</span> at <span class="math" data-tex="\(H\)">\(H\)</span>. Thus <span class="math" data-tex="\(\mu_n^*\mu_n=1\)">\(\mu_n^*\mu_n=1\)</span>. In <span class="math" data-tex="\(\mu_m^*\mu_n\)">\(\mu_m^*\mu_n\)</span>, the possible translation residues are <span class="math" data-tex="\(nj/m\)">\(nj/m\)</span> modulo <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. When <span class="math" data-tex="\(n,m\)">\(n,m\)</span> are coprime, these run once through the <span class="math" data-tex="\(m\)">\(m\)</span> residues <span class="math" data-tex="\(j/m\)">\(j/m\)</span>. Comparing with <span class="math" data-tex="\(\mu_n\mu_m^*\)">\(\mu_n\mu_m^*\)</span> proves the commutation relation.</p>
+<p>For <span class="math" data-tex="\(\mu_ne(r)\mu_n^*\)">\(\mu_ne(r)\mu_n^*\)</span>, the support has dilation one and translation residues <span class="math" data-tex="\((r+j)/n\)">\((r+j)/n\)</span>, <span class="math" data-tex="\(0\le j&lt;n\)">\(0\le j&lt;n\)</span>, each with coefficient <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. They are precisely the solutions of <span class="math" data-tex="\(ns=r\)">\(ns=r\)</span>, which proves the last relation.</p>
+<p>To show the relations are complete, consider the abstract *-algebra they define. Let <span class="math" data-tex="\(t_{n,m,r}=\mu_ne(r)\mu_m^*\)">\(t_{n,m,r}=\mu_ne(r)\mu_m^*\)</span>. Adjoints interchange <span class="math" data-tex="\(n,m\)">\(n,m\)</span> and negate <span class="math" data-tex="\(r\)">\(r\)</span>. If <span class="math" data-tex="\(q=\gcd(n,m)\)">\(q=\gcd(n,m)\)</span>, the last relation reduces <span class="math" data-tex="\(t_{n,m,r}\)">\(t_{n,m,r}\)</span> to</p>
+<span class="math math-display" data-tex="\[
+\frac1q\sum_{qs=r}t_{n/q,m/q,s}.
+\tag{4.8}
+\]">\[
+\frac1q\sum_{qs=r}t_{n/q,m/q,s}.
+\tag{4.8}
+\]</span>
+<p>For <span class="math" data-tex="\(q=\gcd(m_1,n_2)\)">\(q=\gcd(m_1,n_2)\)</span>, cancellation of <span class="math" data-tex="\(\mu_q^*\mu_q\)">\(\mu_q^*\mu_q\)</span>, coprime commutation and covariance give</p>
+<span class="math math-display" data-tex="\[
+t_{n_1,m_1,r_1}t_{n_2,m_2,r_2}
+=t_{n_1n_2/q,\,m_1m_2/q,\,(n_2/q)r_1+(m_1/q)r_2}.
+\tag{4.9}
+\]">\[
+t_{n_1,m_1,r_1}t_{n_2,m_2,r_2}
+=t_{n_1n_2/q,\,m_1m_2/q,\,(n_2/q)r_1+(m_1/q)r_2}.
+\tag{4.9}
+\]</span>
+<p>Equation (4.8) then reduces this product to coprime terms. Their span is therefore a unital *-algebra containing every generator.</p>
+<p>In the concrete algebra, use the single right coset of <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> and of <span class="math" data-tex="\(e(r)\)">\(e(r)\)</span> in (4.6), followed by the support of <span class="math" data-tex="\(\mu_m^*\)">\(\mu_m^*\)</span>. This gives (4.5). For a fixed ratio <span class="math" data-tex="\(n/m\)">\(n/m\)</span> in lowest terms, (4.2) identifies the translation parameter modulo <span class="math" data-tex="\((1/m)\mathbb Z\)">\((1/m)\mathbb Z\)</span>, so <span class="math" data-tex="\(r/m\)">\(r/m\)</span>, with <span class="math" data-tex="\(r\in\mathbb Q/\mathbb Z\)">\(r\in\mathbb Q/\mathbb Z\)</span>, labels the double cosets without repetition. Thus the abstract spanning family maps bijectively to the double-coset basis, and there are no additional relations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example,</p>
+<span class="math math-display" data-tex="\[
+\mu_3e(1/2)\mu_3^*
+=\tfrac13\bigl(e(1/6)+e(1/2)+e(5/6)\bigr).
+\]">\[
+\mu_3e(1/2)\mu_3^*
+=\tfrac13\bigl(e(1/6)+e(1/2)+e(5/6)\bigr).
+\]</span>
+<p>The division by three is essential: the operator is an average, rather than a sum of three unitaries.</p>
+<h2 id="5-why-the-regular-norm-is-already-universal">5. Why the regular norm is already universal</h2>
+<p>Let <span class="math" data-tex="\(D\subset A_r(G,H)\)">\(D\subset A_r(G,H)\)</span> be the C*-algebra generated by the <span class="math" data-tex="\(e(r)\)">\(e(r)\)</span>. Every finite collection of rational residues lies in a finite cyclic subgroup. The corresponding unitaries have precisely the norm supplied by its finite Fourier transform. Indeed the subspace indexed by the cosets <span class="math" data-tex="\(Hg(b,1)\)">\(Hg(b,1)\)</span>, <span class="math" data-tex="\(b\in\mathbb Q/\mathbb Z\)">\(b\in\mathbb Q/\mathbb Z\)</span>, is invariant under <span class="math" data-tex="\(D\)">\(D\)</span>, and on it the <span class="math" data-tex="\(e(r)\)">\(e(r)\)</span> act by the regular translations. A representation of a cyclic group of order <span class="math" data-tex="\(N\)">\(N\)</span> decomposes into the eigenspaces of its generator, so its norm is at most the maximum of the same Fourier values. The regular representation attains all of them.</p>
+<p>It follows, by taking the union over <span class="math" data-tex="\(N\)">\(N\)</span>, that</p>
+<span class="math math-display" data-tex="\[
+D=C^*(\mathbb Q/\mathbb Z)=C(\widehat{\mathbb Z}).
+\tag{5.1}
+\]">\[
+D=C^*(\mathbb Q/\mathbb Z)=C(\widehat{\mathbb Z}).
+\tag{5.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\widehat{\mathbb Z}=\varprojlim_N\mathbb Z/N\mathbb Z\)">\(\widehat{\mathbb Z}=\varprojlim_N\mathbb Z/N\mathbb Z\)</span>, and <span class="math" data-tex="\(e(a/N)\)">\(e(a/N)\)</span> is the function <span class="math" data-tex="\(z\mapsto\exp(2\pi i a(z\bmod N)/N)\)">\(z\mapsto\exp(2\pi i a(z\bmod N)/N)\)</span>. Cylinder functions are dense in this continuous-function algebra: uniform continuity on the compact inverse limit gives a finite quotient on whose fibres a given continuous function oscillates by less than any prescribed positive tolerance.</p>
+<p><strong>Theorem 5.1 (All representations extend).</strong> Every unital *-representation of (4.4) by bounded operators extends uniquely to <span class="math" data-tex="\(A_r(G,H)\)">\(A_r(G,H)\)</span>.</p>
+<p><strong>Proof.</strong> Every <span class="math" data-tex="\(t_{n,m,r}\)">\(t_{n,m,r}\)</span> is represented by a contraction. Therefore the supremum over representations of the norm of any finite linear combination is finite. Complete the algebra for this supremum to obtain its universal C*-algebra <span class="math" data-tex="\(A_u\)">\(A_u\)</span>. The regular representation gives a surjection <span class="math" data-tex="\(\pi:A_u\to A_r\)">\(\pi:A_u\to A_r\)</span>. The finite Fourier argument above shows that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is injective on its diagonal <span class="math" data-tex="\(D_u\)">\(D_u\)</span>, and identifies <span class="math" data-tex="\(D_u\)">\(D_u\)</span> with (5.1).</p>
+<p>Let <span class="math" data-tex="\(K=\prod_p\mathbb T\)">\(K=\prod_p\mathbb T\)</span>, with <span class="math" data-tex="\(p\)">\(p\)</span> ranging over primes. A point <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span> defines <span class="math" data-tex="\(z(n)=\prod_p z_p^{v_p(n)}\)">\(z(n)=\prod_p z_p^{v_p(n)}\)</span>, extended to positive rationals by <span class="math" data-tex="\(z(n/m)=z(n)/z(m)\)">\(z(n/m)=z(n)/z(m)\)</span>. The assignments</p>
+<span class="math math-display" data-tex="\[
+\gamma_z(\mu_n)=z(n)\mu_n,\qquad\gamma_z(e(r))=e(r)
+\]">\[
+\gamma_z(\mu_n)=z(n)\mu_n,\qquad\gamma_z(e(r))=e(r)
+\]</span>
+<p>preserve (4.4), hence define automorphisms of <span class="math" data-tex="\(A_u\)">\(A_u\)</span>. The action is continuous on polynomials and thus on the completion. Integrating against the product of the normalized circle measures gives a positive contractive map</p>
+<span class="math math-display" data-tex="\[
+E_u(a)=\int_K\gamma_z(a)\,dz.
+\]">\[
+E_u(a)=\int_K\gamma_z(a)\,dz.
+\]</span>
+<p>The integral can first be formed on continuous finite-coordinate functions and then by uniform approximation; this also defines it for the continuous Banach-valued orbit. On <span class="math" data-tex="\(t_{n,m,r}\)">\(t_{n,m,r}\)</span>, the integral vanishes unless <span class="math" data-tex="\(n=m\)">\(n=m\)</span>, by prime factorization. If <span class="math" data-tex="\(n=m\)">\(n=m\)</span>, (4.4) puts the term in <span class="math" data-tex="\(D_u\)">\(D_u\)</span>. Density shows that <span class="math" data-tex="\(E_u\)">\(E_u\)</span> maps into <span class="math" data-tex="\(D_u\)">\(D_u\)</span> and is the identity there.</p>
+<p>This expectation is faithful. If <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span> and <span class="math" data-tex="\(E_u(a)=0\)">\(E_u(a)=0\)</span>, every state <span class="math" data-tex="\(\rho\)">\(\rho\)</span> gives a continuous nonnegative function <span class="math" data-tex="\(z\mapsto\rho(\gamma_z(a))\)">\(z\mapsto\rho(\gamma_z(a))\)</span> with zero integral. Product circle measure gives positive measure to every nonempty open set, so that function is zero everywhere. Its value at the identity is <span class="math" data-tex="\(\rho(a)=0\)">\(\rho(a)=0\)</span>. States detect positive elements, hence <span class="math" data-tex="\(a=0\)">\(a=0\)</span>.</p>
+<p>The same action exists on <span class="math" data-tex="\(A_r\)">\(A_r\)</span>. One can see its isometry directly on the Hecke representation: multiply the coset vector indexed by <span class="math" data-tex="\(Hx\)">\(Hx\)</span> by <span class="math" data-tex="\(z(d(x))\)">\(z(d(x))\)</span>. It implements the prescribed action. Thus <span class="math" data-tex="\(\pi E_u=E_r\pi\)">\(\pi E_u=E_r\pi\)</span>. If <span class="math" data-tex="\(\pi(a)=0\)">\(\pi(a)=0\)</span>, then <span class="math" data-tex="\(\pi(E_u(a^*a))=0\)">\(\pi(E_u(a^*a))=0\)</span>. Injectivity on <span class="math" data-tex="\(D_u\)">\(D_u\)</span> gives <span class="math" data-tex="\(E_u(a^*a)=0\)">\(E_u(a^*a)=0\)</span>, faithfulness gives <span class="math" data-tex="\(a^*a=0\)">\(a^*a=0\)</span>, and <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Therefore <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is an isomorphism. Uniqueness of an extension follows from density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A representation with <span class="math" data-tex="\(\pi(1)\ne1\)">\(\pi(1)\ne1\)</span> has all its generators supported on the projection <span class="math" data-tex="\(\pi(1)\)">\(\pi(1)\)</span>. Restricting to its range and adjoining the zero representation on its orthogonal complement gives the same extension assertion.</p>
+<p><strong>Proposition 5.2 (The time-fixed algebra and centralizer).</strong> The fixed algebra <span class="math" data-tex="\(A_r^\alpha\)">\(A_r^\alpha\)</span> is <span class="math" data-tex="\(D\)">\(D\)</span>. It also equals</p>
+<span class="math math-display" data-tex="\[
+\{a\in A_r:\phi(ab)=\phi(ba)\text{ for all }b\in A_r\}.
+\tag{5.2}
+\]">\[
+\{a\in A_r:\phi(ab)=\phi(ba)\text{ for all }b\in A_r\}.
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> Average <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> over <span class="math" data-tex="\([-T,T]\)">\([-T,T]\)</span>. On <span class="math" data-tex="\(t_{n,m,r}\)">\(t_{n,m,r}\)</span> this multiplies by</p>
+<span class="math math-display" data-tex="\[
+\frac1{2T}\int_{-T}^T(n/m)^{it}\,dt,
+\]">\[
+\frac1{2T}\int_{-T}^T(n/m)^{it}\,dt,
+\]</span>
+<p>which tends to zero if <span class="math" data-tex="\(n\ne m\)">\(n\ne m\)</span> and is one otherwise. On polynomials the average therefore converges to <span class="math" data-tex="\(E_r\)">\(E_r\)</span>; its norm is at most one, so approximation extends convergence to every <span class="math" data-tex="\(a\in A_r\)">\(a\in A_r\)</span>. A fixed element equals its average and hence lies in <span class="math" data-tex="\(D\)">\(D\)</span>. Conversely every <span class="math" data-tex="\(e(r)\)">\(e(r)\)</span> is fixed.</p>
+<p>For <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>, approximate by translation polynomials. Each translation class has <span class="math" data-tex="\(L=R=1\)">\(L=R=1\)</span>, so the calculation in Proposition 2.3 gives <span class="math" data-tex="\(\phi(db)=\phi(bd)\)">\(\phi(db)=\phi(bd)\)</span>.</p>
+<p>For the converse, use the realization <span class="math" data-tex="\(r\)">\(r\)</span> in Section 3 and regard <span class="math" data-tex="\(a\)">\(a\)</span> as an operator on <span class="math" data-tex="\(\ell^2(G/H)\)">\(\ell^2(G/H)\)</span>. By norm approximation, the same calculation gives, for every double coset <span class="math" data-tex="\(X=HgH\)">\(X=HgH\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\phi(c_Xa)=L(g)f_a(g^{-1}),\qquad
+\phi(ac_X)=R(g)f_a(g^{-1}).
+\]">\[
+\phi(c_Xa)=L(g)f_a(g^{-1}),\qquad
+\phi(ac_X)=R(g)f_a(g^{-1}).
+\]</span>
+<p>If <span class="math" data-tex="\(a\)">\(a\)</span> satisfies (5.2), these coefficients vanish whenever <span class="math" data-tex="\(L(g)\ne R(g)\)">\(L(g)\ne R(g)\)</span>, equivalently <span class="math" data-tex="\(d(g)\ne1\)">\(d(g)\ne1\)</span>. Time evolution multiplies the coefficient at <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(d(g)^{it}\)">\(d(g)^{it}\)</span>, as follows either from its diagonal implementer or from norm approximation. Hence <span class="math" data-tex="\(\alpha_t(a)\)">\(\alpha_t(a)\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> have identical coefficient functions. Proposition 3.1 says they are equal. The fixed-algebra assertion now finishes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-arithmetic-symmetries">6. Arithmetic symmetries</h2>
+<p>Let <span class="math" data-tex="\(W=\widehat{\mathbb Z}^{\times}\)">\(W=\widehat{\mathbb Z}^{\times}\)</span>, the inverse limit of the groups <span class="math" data-tex="\((\mathbb Z/N\mathbb Z)^{\times}\)">\((\mathbb Z/N\mathbb Z)^{\times}\)</span>. It acts on <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span>: if <span class="math" data-tex="\(r=a/N\)">\(r=a/N\)</span>, multiply <span class="math" data-tex="\(a\)">\(a\)</span> by the residue of <span class="math" data-tex="\(u\)">\(u\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Theorem 6.1.</strong> The assignments</p>
+<span class="math math-display" data-tex="\[
+\theta_u(e(r))=e(ur),\qquad\theta_u(\mu_n)=\mu_n
+\tag{6.1}
+\]">\[
+\theta_u(e(r))=e(ur),\qquad\theta_u(\mu_n)=\mu_n
+\tag{6.1}
+\]</span>
+<p>define a pointwise norm-continuous action of <span class="math" data-tex="\(W\)">\(W\)</span> on <span class="math" data-tex="\(A_r\)">\(A_r\)</span>. It commutes with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, preserves <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and satisfies</p>
+<span class="math math-display" data-tex="\[
+A_r^W=C^*(\mu_n:n\ge1).
+\tag{6.2}
+\]">\[
+A_r^W=C^*(\mu_n:n\ge1).
+\tag{6.2}
+\]</span>
+<p>On <span class="math" data-tex="\(D=C(\widehat{\mathbb Z})\)">\(D=C(\widehat{\mathbb Z})\)</span>, it is <span class="math" data-tex="\(\theta_u(f)(z)=f(uz)\)">\(\theta_u(f)(z)=f(uz)\)</span>.</p>
+<p><strong>Proof.</strong> Multiplication by <span class="math" data-tex="\(u\)">\(u\)</span> is an automorphism of <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span> and permutes the solutions of <span class="math" data-tex="\(ns=r\)">\(ns=r\)</span>. Thus it preserves every relation (4.4); Theorem 5.1 gives the automorphism and its inverse. Each translation generator has a locally constant orbit depending on a finite quotient of <span class="math" data-tex="\(W\)">\(W\)</span>. The dilation generators are fixed. Approximation proves continuity. The generator formulas also prove commutation with time, and the character formula in (5.1) proves the action on <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>The canonical state on a normal monomial is</p>
+<span class="math math-display" data-tex="\[
+\phi(\mu_ne(r)\mu_m^*)=
+\begin{cases}1/n,&amp;n=m\text{ and }r=0,\\0,&amp;\text{otherwise.}\end{cases}
+\tag{6.3}
+\]">\[
+\phi(\mu_ne(r)\mu_m^*)=
+\begin{cases}1/n,&amp;n=m\text{ and }r=0,\\0,&amp;\text{otherwise.}\end{cases}
+\tag{6.3}
+\]</span>
+<p>For <span class="math" data-tex="\(n\ne m\)">\(n\ne m\)</span>, its dilation support misses the identity. For <span class="math" data-tex="\(n=m\)">\(n=m\)</span>, the last relation in (4.4) has a zero residue precisely when <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Formula (6.3) is unchanged by <span class="math" data-tex="\(r\mapsto ur\)">\(r\mapsto ur\)</span>, proving state invariance.</p>
+<p>It remains to compute the fixed algebra. Under (5.1),</p>
+<span class="math math-display" data-tex="\[
+P_n=\mu_n\mu_n^*=1_{n\widehat{\mathbb Z}}.
+\tag{6.4}
+\]">\[
+P_n=\mu_n\mu_n^*=1_{n\widehat{\mathbb Z}}.
+\tag{6.4}
+\]</span>
+<p>This follows by summing the <span class="math" data-tex="\(n\)">\(n\)</span> characters <span class="math" data-tex="\(e(j/n)\)">\(e(j/n)\)</span>: their average is one exactly on the residues divisible by <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>On <span class="math" data-tex="\(\mathbb Z/N\mathbb Z\)">\(\mathbb Z/N\mathbb Z\)</span>, two residues are in the same orbit of its unit group exactly when they have the same greatest common divisor with <span class="math" data-tex="\(N\)">\(N\)</span>. To see the nontrivial direction, work modulo each prime power dividing <span class="math" data-tex="\(N\)">\(N\)</span>. Equal valuations allow multiplication by a unit to carry one residue to the other; choose these units simultaneously by the Chinese remainder theorem. The indicators <span class="math" data-tex="\(1_{d\mid z}\)">\(1_{d\mid z}\)</span>, <span class="math" data-tex="\(d\mid N\)">\(d\mid N\)</span>, span the invariant functions: the indicator of the orbit with greatest common divisor <span class="math" data-tex="\(d\)">\(d\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\sum_{k\mid N/d}\mu(k)1_{dk\mid z},
+\]">\[
+\sum_{k\mid N/d}\mu(k)1_{dk\mid z},
+\]</span>
+<p>where <span class="math" data-tex="\(\mu(k)\)">\(\mu(k)\)</span> is the Möbius function. Thus the invariant cylinder functions belong to the algebra generated by the <span class="math" data-tex="\(P_n\)">\(P_n\)</span>. Averaging a uniformly close cylinder approximation to an invariant continuous function proves that <span class="math" data-tex="\(D^W\)">\(D^W\)</span> is exactly that algebra.</p>
+<p>Averaging (6.1) over <span class="math" data-tex="\(W\)">\(W\)</span> sends <span class="math" data-tex="\(t_{n,m,r}\)">\(t_{n,m,r}\)</span> to <span class="math" data-tex="\(\mu_n E_W(e(r))\mu_m^*\)">\(\mu_n E_W(e(r))\mu_m^*\)</span>, which belongs to <span class="math" data-tex="\(C^*(\mu_n)\)">\(C^*(\mu_n)\)</span>. The averaging is contractive, and polynomials are dense, so its range is contained in this algebra. Every invariant element equals its average. The reverse inclusion follows because every <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> is fixed. This proves (6.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The symmetry group is compact, but it acts nontrivially on the equilibrium states at low temperature. The distinction between fixing the time evolution and fixing each individual equilibrium state will matter in <span class="unlinked">Phase transition in the Bost–Connes system</span>.</p>
+<h2 id="7-the-adelic-realization-of-the-symmetry">7. The adelic realization of the symmetry</h2>
+<p>The compact group in Section 6 is also the finite idele class group. We now identify its action on the regular Hecke representation. Keeping the matrices explicit determines which action is indexed by a unit and which by its inverse.</p>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+\mathbb A_f=\prod_p&#x27;(\mathbb Q_p,\mathbb Z_p),\qquad
+R=\prod_p\mathbb Z_p=\widehat{\mathbb Z},\qquad
+\mathbb A_f^\times=\prod_p&#x27;(\mathbb Q_p^\times,\mathbb Z_p^\times).
+\tag{7.1}
+\]">\[
+\mathbb A_f=\prod_p&#x27;(\mathbb Q_p,\mathbb Z_p),\qquad
+R=\prod_p\mathbb Z_p=\widehat{\mathbb Z},\qquad
+\mathbb A_f^\times=\prod_p&#x27;(\mathbb Q_p^\times,\mathbb Z_p^\times).
+\tag{7.1}
+\]</span>
+<p>The first restricted product is the finite adele ring; <span class="math" data-tex="\(R\)">\(R\)</span> is its compact open subring. The second carries the restricted-product <strong>idele topology</strong>, with <span class="math" data-tex="\(\prod_p\mathbb Z_p^\times\)">\(\prod_p\mathbb Z_p^\times\)</span> open. We use the usual inverse-limit construction of <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>, its field of fractions <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, valuations and the Chinese remainder theorem.</p>
+<p><strong>Lemma 7.1 (Rational representatives and the idele split).</strong> The diagonal rational embedding satisfies</p>
+<span class="math math-display" data-tex="\[
+\overline{\mathbb Q}=\mathbb A_f,\qquad
+\mathbb Q\cap R=\mathbb Z,\qquad
+\mathbb A_f/R\simeq\mathbb Q/\mathbb Z.
+\tag{7.2}
+\]">\[
+\overline{\mathbb Q}=\mathbb A_f,\qquad
+\mathbb Q\cap R=\mathbb Z,\qquad
+\mathbb A_f/R\simeq\mathbb Q/\mathbb Z.
+\tag{7.2}
+\]</span>
+<p>Every finite idele has a unique factorization</p>
+<span class="math math-display" data-tex="\[
+a=q u,\quad q\in\mathbb Q_{&gt;0},\quad
+u\in W=\prod_p\mathbb Z_p^\times,\qquad
+q=\prod_p p^{v_p(a_p)}.
+\tag{7.3}
+\]">\[
+a=q u,\quad q\in\mathbb Q_{&gt;0},\quad
+u\in W=\prod_p\mathbb Z_p^\times,\qquad
+q=\prod_p p^{v_p(a_p)}.
+\tag{7.3}
+\]</span>
+<p>This is a topological product decomposition
+<span class="math" data-tex="\(\mathbb A_f^\times\simeq\mathbb Q_{&gt;0}^{\mathrm{discrete}}\times W\)">\(\mathbb A_f^\times\simeq\mathbb Q_{&gt;0}^{\mathrm{discrete}}\times W\)</span>.
+In particular its quotient by <span class="math" data-tex="\(\mathbb Q_{&gt;0}\)">\(\mathbb Q_{&gt;0}\)</span> is <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p><strong>Proof.</strong> A basic adele neighborhood prescribes finitely many congruences
+<span class="math" data-tex="\(x_p-a_p\in p^{k_p}\mathbb Z_p\)">\(x_p-a_p\in p^{k_p}\mathbb Z_p\)</span>, for <span class="math" data-tex="\(p\)">\(p\)</span> in a finite set <span class="math" data-tex="\(S\)">\(S\)</span>, and integrality outside <span class="math" data-tex="\(S\)">\(S\)</span>. Enlarge <span class="math" data-tex="\(S\)">\(S\)</span> to contain every nonintegral coordinate of <span class="math" data-tex="\(a\)">\(a\)</span>. Choose
+<span class="math" data-tex="\(D=\prod_{p\in S}p^{d_p}\)">\(D=\prod_{p\in S}p^{d_p}\)</span>
+so that <span class="math" data-tex="\(Da_p\in\mathbb Z_p\)">\(Da_p\in\mathbb Z_p\)</span> and <span class="math" data-tex="\(k_p+d_p\ge0\)">\(k_p+d_p\ge0\)</span>. The Chinese remainder theorem gives an integer <span class="math" data-tex="\(b\)">\(b\)</span> with
+<span class="math" data-tex="\(b\equiv Da_p\pmod{p^{k_p+d_p}}\)">\(b\equiv Da_p\pmod{p^{k_p+d_p}}\)</span>
+at every prescribed prime. Then <span class="math" data-tex="\(b/D\)">\(b/D\)</span> lies in the neighborhood, and is integral at every other prime. This proves density.</p>
+<p>A rational number integral at every prime has no denominator prime, hence is an integer. Applying the same approximation to the open coset <span class="math" data-tex="\(a+R\)">\(a+R\)</span> gives a rational representative. Its ambiguity is exactly <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, proving the last assertion of (7.2).</p>
+<p>Only finitely many valuations of an idele are nonzero, so the product in (7.3) is a positive rational. Its <span class="math" data-tex="\(p\)">\(p\)</span>-valuation is <span class="math" data-tex="\(v_p(a_p)\)">\(v_p(a_p)\)</span>; therefore <span class="math" data-tex="\(a/q\)">\(a/q\)</span> is a unit at every prime. A positive rational with all valuations zero is one, proving uniqueness. On each restricted-product neighborhood all but finitely many valuations are fixed at zero, and each remaining valuation is locally constant. Thus the map to <span class="math" data-tex="\(q\)">\(q\)</span>, with its discrete topology, is continuous. Its kernel is <span class="math" data-tex="\(W\)">\(W\)</span>; multiplication and the inverse factorization are continuous, proving the topological assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define the locally compact affine group and its compact open subgroup by</p>
+<span class="math math-display" data-tex="\[
+P=\{g(b,a):b\in\mathbb A_f,\ a\in\mathbb A_f^\times\},
+\qquad
+K=\{g(b,u):b\in R,\ u\in W\},
+\tag{7.4}
+\]">\[
+P=\{g(b,a):b\in\mathbb A_f,\ a\in\mathbb A_f^\times\},
+\qquad
+K=\{g(b,u):b\in R,\ u\in W\},
+\tag{7.4}
+\]</span>
+<p>using exactly the matrix <span class="math" data-tex="\(g\)">\(g\)</span> and multiplication (4.1). The rational group <span class="math" data-tex="\(G\)">\(G\)</span> of Section 4 sits inside <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Proposition 7.2 (The coset space and the commutant action).</strong> There is a bijection</p>
+<span class="math math-display" data-tex="\[
+P/K=G/H=\Delta,
+\tag{7.5}
+\]">\[
+P/K=G/H=\Delta,
+\tag{7.5}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\overline G=\{g(b,q):b\in\mathbb A_f,\
+q\in\mathbb Q_{&gt;0}\}\ \triangleleft P,\qquad
+P/\overline G\simeq W.
+\tag{7.6}
+\]">\[
+\overline G=\{g(b,q):b\in\mathbb A_f,\
+q\in\mathbb Q_{&gt;0}\}\ \triangleleft P,\qquad
+P/\overline G\simeq W.
+\tag{7.6}
+\]</span>
+<p>Left translation gives a strongly continuous unitary representation <span class="math" data-tex="\(L\)">\(L\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span> on <span class="math" data-tex="\(\ell^2(\Delta)\)">\(\ell^2(\Delta)\)</span>. It induces a strongly continuous action on <span class="math" data-tex="\(L(G)&#x27;\)">\(L(G)&#x27;\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\Theta_u(X)=L(g(0,u))X L(g(0,u))^*.
+\tag{7.7}
+\]">\[
+\Theta_u(X)=L(g(0,u))X L(g(0,u))^*.
+\tag{7.7}
+\]</span>
+<p>This depends only on the class in <span class="math" data-tex="\(P/\overline G\)">\(P/\overline G\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(a=q u\)">\(a=q u\)</span> as in (7.3). Right multiplication of <span class="math" data-tex="\(g(b,a)\)">\(g(b,a)\)</span> by <span class="math" data-tex="\(g(c,u^{-1})\in K\)">\(g(c,u^{-1})\in K\)</span> gives <span class="math" data-tex="\(g(c+b/u,q)\)">\(g(c+b/u,q)\)</span>. By (7.2), choose <span class="math" data-tex="\(c\in R\)">\(c\in R\)</span> so that <span class="math" data-tex="\(c+b/u\)">\(c+b/u\)</span> is rational. Thus every <span class="math" data-tex="\(P/K\)">\(P/K\)</span>-coset has a representative in <span class="math" data-tex="\(G\)">\(G\)</span>. Its stabilizer is <span class="math" data-tex="\(G\cap K=H\)">\(G\cap K=H\)</span>, since a rational integral translation is an integer and a positive rational unit is one. This proves (7.5).</p>
+<p>The positive rational multiplicative factor is closed and discrete in (7.3). Density of the rational translations gives the closure in (7.6). The map from <span class="math" data-tex="\(P\)">\(P\)</span> to <span class="math" data-tex="\(W\)">\(W\)</span> taking its multiplicative coordinate to <span class="math" data-tex="\(u\)">\(u\)</span> is a homomorphism with this kernel: translations do not affect it, and the multiplicative group is abelian. Hence the closure is normal and the quotient is <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>The stabilizer of every coset is an open conjugate of <span class="math" data-tex="\(K\)">\(K\)</span>. Orbit maps of basis vectors are therefore locally constant. Approximation by finitely supported vectors proves strong continuity of <span class="math" data-tex="\(L\)">\(L\)</span>. Strong density gives <span class="math" data-tex="\(L(G)&#x27;=L(\overline G)&#x27;\)">\(L(G)&#x27;=L(\overline G)&#x27;\)</span>. Normality of <span class="math" data-tex="\(\overline G\)">\(\overline G\)</span> shows that conjugation by <span class="math" data-tex="\(L(P)\)">\(L(P)\)</span> preserves this commutant. Changing a representative by <span class="math" data-tex="\(\overline G\)">\(\overline G\)</span> has no effect on its elements. The continuous unit representative <span class="math" data-tex="\(g(0,u)\)">\(g(0,u)\)</span> then proves the stated continuity of the quotient action. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We identify <span class="math" data-tex="\(A_r\)">\(A_r\)</span> with its faithful commutant realization <span class="math" data-tex="\(r(A_r)\)">\(r(A_r)\)</span> from Section 3.</p>
+<p><strong>Theorem 7.3 (Exact conjugation formula).</strong> On this realization,</p>
+<span class="math math-display" data-tex="\[
+\Theta_u(r(\mu_n))=r(\mu_n),\qquad
+\Theta_u(r(e(\gamma)))=r(e(u^{-1}\gamma)).
+\tag{7.8}
+\]">\[
+\Theta_u(r(\mu_n))=r(\mu_n),\qquad
+\Theta_u(r(e(\gamma)))=r(e(u^{-1}\gamma)).
+\tag{7.8}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+\Theta_u|_{r(A_r)}=r\theta_{u^{-1}}r^{-1},
+\qquad
+\Theta_u(f)(z)=f(u^{-1}z)\quad(f\in C(R)).
+\tag{7.9}
+\]">\[
+\Theta_u|_{r(A_r)}=r\theta_{u^{-1}}r^{-1},
+\qquad
+\Theta_u(f)(z)=f(u^{-1}z)\quad(f\in C(R)).
+\tag{7.9}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> preserves the regular Hecke C*-algebra, is pointwise norm continuous there, commutes with time evolution, preserves the canonical state, and has fixed algebra <span class="math" data-tex="\(r(C^*(\mu_n:n\ge1))\)">\(r(C^*(\mu_n:n\ge1))\)</span>.</p>
+<p><strong>Proof.</strong> There is a direct coset proof that each dilation commutes with all of <span class="math" data-tex="\(P\)">\(P\)</span>, requiring no tree model. Put <span class="math" data-tex="\(g_n=g(0,n)\)">\(g_n=g(0,n)\)</span>. The map</p>
+<span class="math math-display" data-tex="\[
+F_n:\Delta\to\Delta,\qquad F_n(xK)=xg_nK
+\tag{7.10}
+\]">\[
+F_n:\Delta\to\Delta,\qquad F_n(xK)=xg_nK
+\tag{7.10}
+\]</span>
+<p>is well defined: <span class="math" data-tex="\(g_n^{-1}Kg_n\subset K\)">\(g_n^{-1}Kg_n\subset K\)</span>, because conjugation multiplies a translation in <span class="math" data-tex="\(R\)">\(R\)</span> by <span class="math" data-tex="\(n\)">\(n\)</span>. It is <span class="math" data-tex="\(P\)">\(P\)</span>-equivariant. Every fiber has
+<span class="math" data-tex="\([g_n K g_n^{-1}:K]=[n^{-1}R:R]=n\)">\([g_n K g_n^{-1}:K]=[n^{-1}R:R]=n\)</span>
+points; the last index is <span class="math" data-tex="\(|R/nR|=n\)">\(|R/nR|=n\)</span>, by the finite Chinese remainder decomposition.</p>
+<p>The operator <span class="math" data-tex="\(S_n\delta_{xK}=\delta_{F_n(xK)}\)">\(S_n\delta_{xK}=\delta_{F_n(xK)}\)</span> has norm <span class="math" data-tex="\(\sqrt n\)">\(\sqrt n\)</span>. Indeed, each output coefficient is the sum of the <span class="math" data-tex="\(n\)">\(n\)</span> input coefficients in its fiber, so Cauchy–Schwarz gives that bound, with equality on a normalized constant fiber vector. Also <span class="math" data-tex="\(S_nS_n^*=n1\)">\(S_nS_n^*=n1\)</span>, and <span class="math" data-tex="\(S_n\)">\(S_n\)</span> commutes with <span class="math" data-tex="\(L(P)\)">\(L(P)\)</span>.</p>
+<p>The coefficient kernel of Section 3 gives</p>
+<span class="math math-display" data-tex="\[
+r(\mu_n^*)\delta_K=n^{-1/2}\delta_{g_nK}.
+\]">\[
+r(\mu_n^*)\delta_K=n^{-1/2}\delta_{g_nK}.
+\]</span>
+<p>Both <span class="math" data-tex="\(r(\mu_n^*)\)">\(r(\mu_n^*)\)</span> and <span class="math" data-tex="\(n^{-1/2}S_n\)">\(n^{-1/2}S_n\)</span> commute with <span class="math" data-tex="\(L(G)\)">\(L(G)\)</span> and have this value on <span class="math" data-tex="\(\delta_K\)">\(\delta_K\)</span>. That vector is cyclic for <span class="math" data-tex="\(L(G)\)">\(L(G)\)</span>, by (7.5), so the two operators coincide. This proves dilation invariance in (7.8).</p>
+<p>The same coefficient kernel gives
+<span class="math" data-tex="\(r(e(\gamma))\delta_K=\delta_{g(-\gamma,1)K}\)">\(r(e(\gamma))\delta_K=\delta_{g(-\gamma,1)K}\)</span>.
+The unit <span class="math" data-tex="\(g(0,u)\in K\)">\(g(0,u)\in K\)</span> fixes <span class="math" data-tex="\(\delta_K\)">\(\delta_K\)</span>. Its conjugation of a translation is</p>
+<span class="math math-display" data-tex="\[
+g(0,u)g(b,1)g(0,u^{-1})=g(b/u,1).
+\tag{7.11}
+\]">\[
+g(0,u)g(b,1)g(0,u^{-1})=g(b/u,1).
+\tag{7.11}
+\]</span>
+<p>Therefore <span class="math" data-tex="\(\Theta_u(r(e(\gamma)))\delta_K=
+\delta_{g(-u^{-1}\gamma,1)K}\)">\(\Theta_u(r(e(\gamma)))\delta_K=
+\delta_{g(-u^{-1}\gamma,1)K}\)</span>.
+The inverse multiplication on <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is well defined through (7.2), even when <span class="math" data-tex="\(u\)">\(u\)</span> is not rational. Both operators in the second equality of (7.8) belong to <span class="math" data-tex="\(L(G)&#x27;\)">\(L(G)&#x27;\)</span>; the cyclic-vector argument again proves equality.</p>
+<p>The first equality of (7.9) now follows on the generators, and hence on the C*-algebra. For the second, Section 5's Fourier identification is</p>
+<span class="math math-display" data-tex="\[
+e(a/N)(z)=\exp(2\pi i a z_N/N).
+\tag{7.12}
+\]">\[
+e(a/N)(z)=\exp(2\pi i a z_N/N).
+\tag{7.12}
+\]</span>
+<p>Replacing <span class="math" data-tex="\(a/N\)">\(a/N\)</span> by <span class="math" data-tex="\(u^{-1}a/N\)">\(u^{-1}a/N\)</span> in that character is exactly precomposition by <span class="math" data-tex="\(z\mapsto u^{-1}z\)">\(z\mapsto u^{-1}z\)</span>. Density of the characters proves the formula for every <span class="math" data-tex="\(f\in C(R)\)">\(f\in C(R)\)</span>.</p>
+<p>All remaining assertions follow from Theorem 6.1, since inversion is a continuous automorphism of the abelian compact group <span class="math" data-tex="\(W\)">\(W\)</span>. State preservation also follows directly from (7.7), because its unit representatives fix the canonical vector <span class="math" data-tex="\(\delta_K\)">\(\delta_K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equations (6.1) and (7.7) use reciprocal indices: the abstract action <span class="math" data-tex="\(\theta_u\)">\(\theta_u\)</span> is adelic conjugation by <span class="math" data-tex="\(g(0,u^{-1})\)">\(g(0,u^{-1})\)</span>. This convention changes neither the fixed algebra nor the symmetry group, but it matters when evaluating a character or labeling an equilibrium state.</p>
+<h2 id="8-local-trees-and-the-restricted-product">8. Local trees and the restricted product</h2>
+<p>The coset space in Section 7 has a geometry at each prime. The following construction identifies that geometry without assuming a tree theorem. It also specifies the simplicial structure on the product: several prime coordinates can move at once, so the global space has higher dimensional simplices.</p>
+<p>Fix a prime <span class="math" data-tex="\(p\)">\(p\)</span>, write <span class="math" data-tex="\(F=\mathbb Q_p\)">\(F=\mathbb Q_p\)</span> and <span class="math" data-tex="\(O=\mathbb Z_p\)">\(O=\mathbb Z_p\)</span>, and normalize <span class="math" data-tex="\(v_p(p)=1\)">\(v_p(p)=1\)</span>, with <span class="math" data-tex="\(v_p(0)=+\infty\)">\(v_p(0)=+\infty\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+P_p=\{g(b,a):b\in F,\ a\in F^\times\},
+\qquad K_p=\{g(b,u):b\in O,\ u\in O^\times\}.
+\]">\[
+P_p=\{g(b,a):b\in F,\ a\in F^\times\},
+\qquad K_p=\{g(b,u):b\in O,\ u\in O^\times\}.
+\]</span>
+<p>For <span class="math" data-tex="\(x\in F\)">\(x\in F\)</span> and <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>, denote the ball <span class="math" data-tex="\(x+p^kO\)">\(x+p^kO\)</span> by <span class="math" data-tex="\(B(x,k)\)">\(B(x,k)\)</span>. Its exponent <span class="math" data-tex="\(k\)">\(k\)</span> is uniquely determined, and its center is determined modulo <span class="math" data-tex="\(p^kO\)">\(p^kO\)</span>.</p>
+<p><strong>Theorem 8.1 (The local coset tree).</strong> There is a canonical identification of <span class="math" data-tex="\(P_p/K_p\)">\(P_p/K_p\)</span> with the balls <span class="math" data-tex="\(B(x,k)\)">\(B(x,k)\)</span>. Join each ball to its parent <span class="math" data-tex="\(B(x,k-1)\)">\(B(x,k-1)\)</span>. This is a tree of degree <span class="math" data-tex="\(p+1\)">\(p+1\)</span>, with distance</p>
+<span class="math math-display" data-tex="\[
+d(B(x,k),B(y,l))=k+l-2h,
+\qquad h=\min\{k,l,v_p(x-y)\}.
+\tag{8.1}
+\]">\[
+d(B(x,k),B(y,l))=k+l-2h,
+\qquad h=\min\{k,l,v_p(x-y)\}.
+\tag{8.1}
+\]</span>
+<p>It is also the lattice tree of <span class="math" data-tex="\(\mathrm{SL}_2(F)\)">\(\mathrm{SL}_2(F)\)</span>: its vertices are homothety classes of full lattices in <span class="math" data-tex="\(F^2\)">\(F^2\)</span>, and adjacent classes admit representatives <span class="math" data-tex="\(L,L&#x27;\)">\(L,L&#x27;\)</span> with <span class="math" data-tex="\(pL\subset L&#x27;\subset L\)">\(pL\subset L&#x27;\subset L\)</span> and <span class="math" data-tex="\([L:L&#x27;]=p\)">\([L:L&#x27;]=p\)</span>. The <span class="math" data-tex="\(P_p\)">\(P_p\)</span>-action is by isometries and preserves the end obtained by repeatedly taking parents.</p>
+<p><strong>Proof.</strong> With the matrix convention (4.1), <span class="math" data-tex="\(g(b,a)\)">\(g(b,a)\)</span> acts on <span class="math" data-tex="\(F\)">\(F\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\varphi_g(t)=\frac{t+b}{a}.
+\tag{8.2}
+\]">\[
+\varphi_g(t)=\frac{t+b}{a}.
+\tag{8.2}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(\varphi_{g(b,a)}\varphi_{g(c,r)}=\varphi_{g(c+br,ar)}\)">\(\varphi_{g(b,a)}\varphi_{g(c,r)}=\varphi_{g(c+br,ar)}\)</span>. The stabilizer of the ball <span class="math" data-tex="\(O\)">\(O\)</span> consists exactly of <span class="math" data-tex="\(a\in O^\times,b\in O\)">\(a\in O^\times,b\in O\)</span>: the image ball is <span class="math" data-tex="\(b/a+a^{-1}O\)">\(b/a+a^{-1}O\)</span>, whose radius agrees with that of <span class="math" data-tex="\(O\)">\(O\)</span> precisely when <span class="math" data-tex="\(v_p(a)=0\)">\(v_p(a)=0\)</span>, and whose center must then lie in <span class="math" data-tex="\(O\)">\(O\)</span>. Conversely, <span class="math" data-tex="\(B(x,k)\)">\(B(x,k)\)</span> is the image of <span class="math" data-tex="\(O\)">\(O\)</span> under <span class="math" data-tex="\(g(p^{-k}x,p^{-k})\)">\(g(p^{-k}x,p^{-k})\)</span>. Thus orbit and stabilizer give the claimed coset bijection.</p>
+<p>The children of <span class="math" data-tex="\(B(x,k)\)">\(B(x,k)\)</span> are exactly</p>
+<span class="math math-display" data-tex="\[
+B(x+c p^k,k+1),\qquad c=0,\ldots,p-1.
+\tag{8.3}
+\]">\[
+B(x+c p^k,k+1),\qquad c=0,\ldots,p-1.
+\tag{8.3}
+\]</span>
+<p>These are its distinct cosets modulo <span class="math" data-tex="\(p^{k+1}O\)">\(p^{k+1}O\)</span>; the ball has a unique parent and these <span class="math" data-tex="\(p\)">\(p\)</span> children. Two balls have the first common ancestor <span class="math" data-tex="\(B(x,h)=B(y,h)\)">\(B(x,h)=B(y,h)\)</span>, where <span class="math" data-tex="\(h\)">\(h\)</span> is as in (8.1). Their parent paths therefore connect them, with length <span class="math" data-tex="\(k+l-2h\)">\(k+l-2h\)</span>. There can be no finite simple cycle: a vertex in a cycle with maximal exponent would have both its neighbors as parents, whereas its parent is unique. Hence the graph is a tree and the connected path just described is its unique simple path. This proves the distance formula.</p>
+<p>We next prove the lattice identification explicitly. Associate to a ball the lattice</p>
+<span class="math math-display" data-tex="\[
+L(x,k)=O(p^k,0)+O(x,1).
+\tag{8.4}
+\]">\[
+L(x,k)=O(p^k,0)+O(x,1).
+\tag{8.4}
+\]</span>
+<p>Changing <span class="math" data-tex="\(x\)">\(x\)</span> modulo <span class="math" data-tex="\(p^kO\)">\(p^kO\)</span> leaves the lattice unchanged. Every full, finitely generated <span class="math" data-tex="\(O\)">\(O\)</span>-submodule <span class="math" data-tex="\(L\subset F^2\)">\(L\subset F^2\)</span> lies between <span class="math" data-tex="\(p^NO^2\)">\(p^NO^2\)</span> and <span class="math" data-tex="\(p^{-N}O^2\)">\(p^{-N}O^2\)</span> for some <span class="math" data-tex="\(N\)">\(N\)</span>. For the upper inclusion, bound the coordinates of its finitely many generators. For the lower inclusion, choose two independent vectors of <span class="math" data-tex="\(L\)">\(L\)</span>; the inverse of their coordinate matrix has bounded denominators.</p>
+<p>The second-coordinate image of <span class="math" data-tex="\(L\)">\(L\)</span> is a nonzero, finitely generated fractional ideal of <span class="math" data-tex="\(O\)">\(O\)</span>. Taking the smallest valuation of its generators shows that it equals <span class="math" data-tex="\(p^sO\)">\(p^sO\)</span>. Rescale <span class="math" data-tex="\(L\)">\(L\)</span> by <span class="math" data-tex="\(p^{-s}\)">\(p^{-s}\)</span> to make that image <span class="math" data-tex="\(O\)">\(O\)</span>. Its first-coordinate kernel is now a nonzero <span class="math" data-tex="\(O\)">\(O\)</span>-submodule of <span class="math" data-tex="\(F\)">\(F\)</span>, with valuations bounded below by the preceding inclusions. An element with minimum valuation generates it, so the kernel is <span class="math" data-tex="\(p^kO\)">\(p^kO\)</span> for some integer <span class="math" data-tex="\(k\)">\(k\)</span>. Choose <span class="math" data-tex="\((x,1)\)">\((x,1)\)</span> in the lattice. Subtracting a multiple of this vector from any lattice vector proves (8.4).</p>
+<p>If two such normalized lattices are homothetic, their homothety scalar has valuation zero, since both second-coordinate images are <span class="math" data-tex="\(O\)">\(O\)</span>. Multiplication by a unit leaves any <span class="math" data-tex="\(O\)">\(O\)</span>-module unchanged. Thus their <span class="math" data-tex="\(k\)">\(k\)</span>'s agree and their centers agree modulo <span class="math" data-tex="\(p^kO\)">\(p^kO\)</span>. We have proved a bijection between balls and lattice classes.</p>
+<p>The intermediate lattices <span class="math" data-tex="\(pL\subset L&#x27;\subset L\)">\(pL\subset L&#x27;\subset L\)</span> of index <span class="math" data-tex="\(p\)">\(p\)</span> correspond to the lines of <span class="math" data-tex="\(L/pL\simeq\mathbb F_p^2\)">\(L/pL\simeq\mathbb F_p^2\)</span>. In the basis <span class="math" data-tex="\((p^k,0),(x,1)\)">\((p^k,0),(x,1)\)</span>, the <span class="math" data-tex="\(p\)">\(p\)</span> lines generated by <span class="math" data-tex="\((c,1)\)">\((c,1)\)</span> give precisely the child lattices in (8.3). The remaining line, generated by <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+O(p^k,0)+O(px,p)=pL(x,k-1),
+\]">\[
+O(p^k,0)+O(px,p)=pL(x,k-1),
+\]</span>
+<p>the class of the parent. These exhaust the <span class="math" data-tex="\(p+1\)">\(p+1\)</span> lines. Thus the lattice adjacency relation is exactly the ball adjacency relation.</p>
+<p>For clarity, it also gives the usual lattice distance, with no factor of two. Transform the first ball to <span class="math" data-tex="\(O\)">\(O\)</span>; write the second as <span class="math" data-tex="\(B(y,l)\)">\(B(y,l)\)</span> and now put <span class="math" data-tex="\(h=\min\{0,l,v_p(y)\}\)">\(h=\min\{0,l,v_p(y)\}\)</span>. The representative</p>
+<span class="math math-display" data-tex="\[
+p^{-h}L(y,l)
+=O(p^{\,l-h},0)+O(p^{-h}y,p^{-h})
+\tag{8.5}
+\]">\[
+p^{-h}L(y,l)
+=O(p^{\,l-h},0)+O(p^{-h}y,p^{-h})
+\tag{8.5}
+\]</span>
+<p>is contained in <span class="math" data-tex="\(O^2\)">\(O^2\)</span>, and contains a primitive vector, because at least one of <span class="math" data-tex="\(l-h,v_p(y)-h,-h\)">\(l-h,v_p(y)-h,-h\)</span> is zero. It is therefore not contained in <span class="math" data-tex="\(pO^2\)">\(pO^2\)</span>. Its index is <span class="math" data-tex="\(p^{l-2h}\)">\(p^{l-2h}\)</span>, from the determinant of the displayed basis. A primitive vector can be completed to an <span class="math" data-tex="\(O\)">\(O\)</span>-basis of <span class="math" data-tex="\(O^2\)">\(O^2\)</span>, since one of its coordinates is a unit. In this basis the quotient by (8.5) is <span class="math" data-tex="\(O/p^{l-2h}O\)">\(O/p^{l-2h}O\)</span>. Consequently its cyclic quotient exponent is exactly the graph distance in (8.1). Any homothetic representative that is contained in <span class="math" data-tex="\(O^2\)">\(O^2\)</span> and not in <span class="math" data-tex="\(pO^2\)">\(pO^2\)</span> must have this same scaling valuation, proving the normalization used by that distance.</p>
+<p>An invertible linear map preserves homothety, intermediate-lattice inclusions and their indices, and therefore acts by tree isometries. The action of our upper triangular matrix on (8.4), rescaled by <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>, is</p>
+<span class="math math-display" data-tex="\[
+a^{-1}g(b,a)L(x,k)
+=O(p^k/a,0)+O((x+b)/a,1).
+\tag{8.6}
+\]">\[
+a^{-1}g(b,a)L(x,k)
+=O(p^k/a,0)+O((x+b)/a,1).
+\tag{8.6}
+\]</span>
+<p>It is exactly the ball action (8.2). Affine maps preserve inclusion and the index between a ball and its parent. All parent rays eventually merge, because every two balls have a common ancestor. They therefore define a single end, fixed by <span class="math" data-tex="\(P_p\)">\(P_p\)</span>. In the lattice model the parent ray based at <span class="math" data-tex="\(O^2\)">\(O^2\)</span> can be represented by <span class="math" data-tex="\(O(1,0)+p^rO(0,1)\)">\(O(1,0)+p^rO(0,1)\)</span>, <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>; its limiting direction is the line <span class="math" data-tex="\(F(1,0)\)">\(F(1,0)\)</span>, fixed by the upper triangular group. This completes the identification with the tree and its distinguished end. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(T_p\)">\(T_p\)</span> be this tree with base vertex <span class="math" data-tex="\(o_p=O\)">\(o_p=O\)</span>. Its restricted product of vertex sets is</p>
+<span class="math math-display" data-tex="\[
+\prod_p&#x27;(T_p,o_p)
+=\{(v_p)_p:v_p=o_p\text{ for all but finitely many }p\}.
+\tag{8.7}
+\]">\[
+\prod_p&#x27;(T_p,o_p)
+=\{(v_p)_p:v_p=o_p\text{ for all but finitely many }p\}.
+\tag{8.7}
+\]</span>
+<p><strong>Theorem 8.2 (The global geometry and the parent operators).</strong> The adelic coset space and its permutation Hilbert space have canonical identifications</p>
+<span class="math math-display" data-tex="\[
+\Delta=P/K\simeq\prod_p&#x27;(T_p,o_p),
+\qquad
+\ell^2(\Delta)\simeq
+\bigotimes_p&#x27;(\ell^2(T_p),\delta_{o_p}).
+\tag{8.8}
+\]">\[
+\Delta=P/K\simeq\prod_p&#x27;(T_p,o_p),
+\qquad
+\ell^2(\Delta)\simeq
+\bigotimes_p&#x27;(\ell^2(T_p),\delta_{o_p}).
+\tag{8.8}
+\]</span>
+<p>The <span class="math" data-tex="\(P\)">\(P\)</span>-action is simplicial for the triangulation defined below. The rational affine subgroup acts transitively, with stabilizer <span class="math" data-tex="\(H\)">\(H\)</span>, as in (7.5). If <span class="math" data-tex="\(S_p\delta_B=\delta_{\operatorname{parent}(B)}\)">\(S_p\delta_B=\delta_{\operatorname{parent}(B)}\)</span> on <span class="math" data-tex="\(\ell^2(T_p)\)">\(\ell^2(T_p)\)</span>, then, in (8.8),</p>
+<span class="math math-display" data-tex="\[
+r(\mu_p^*)=p^{-1/2}
+\bigl(1\otimes\cdots\otimes S_p\otimes\cdots\bigr).
+\tag{8.9}
+\]">\[
+r(\mu_p^*)=p^{-1/2}
+\bigl(1\otimes\cdots\otimes S_p\otimes\cdots\bigr).
+\tag{8.9}
+\]</span>
+<p>In particular each normalized local adjoint <span class="math" data-tex="\(p^{-1/2}S_p^*\)">\(p^{-1/2}S_p^*\)</span> is an isometry.</p>
+<p><strong>Proof.</strong> The group <span class="math" data-tex="\(P\)">\(P\)</span> is the restricted product of <span class="math" data-tex="\(P_p\)">\(P_p\)</span> with respect to <span class="math" data-tex="\(K_p\)">\(K_p\)</span>, and <span class="math" data-tex="\(K=\prod_pK_p\)">\(K=\prod_pK_p\)</span>. Sending an adelic coset to its local cosets produces (8.7). Every tuple there has a representative with finitely many nonidentity components; if two representatives give the same tuple, their relative element lies in <span class="math" data-tex="\(K_p\)">\(K_p\)</span> at every prime and hence in <span class="math" data-tex="\(K\)">\(K\)</span>. This proves the first bijection in (8.8), and it intertwines the coordinatewise action. A restricted-product group element sends a restricted tuple to another such tuple, since its <span class="math" data-tex="\(K_p\)">\(K_p\)</span>-components fix <span class="math" data-tex="\(o_p\)">\(o_p\)</span> at all but finitely many primes.</p>
+<p>Here is an explicit invariant simplicial structure. First form finite dimensional cubes by selecting an edge in each of finitely many prime coordinates and fixing all other coordinates at vertices. Orient every selected edge from its child to its parent. A cube with <span class="math" data-tex="\(d\)">\(d\)</span> selected coordinates has vertices labeled by subsets of those coordinates: a coordinate belongs to the subset when it has moved to its parent. Triangulate that cube by declaring each strictly increasing chain of subsets to be a simplex. This is the usual triangulation of <span class="math" data-tex="\([0,1]^d\)">\([0,1]^d\)</span> by orderings of its coordinates: a point lies in a simplex by sorting its coordinate values. The triangulations agree on faces, because fixing a coordinate at zero or one restricts the same subset order. Thus they give a simplicial complex with exactly the vertex set (8.7).</p>
+<p>Each <span class="math" data-tex="\(P_p\)">\(P_p\)</span>-action preserves parent orientation by Theorem 8.1. The coordinatewise <span class="math" data-tex="\(P\)">\(P\)</span>-action therefore sends cubes to cubes and increasing chains to increasing chains. It is simplicial. The restricted product need not itself be a tree: two different prime edges form a square, with two triangles in this structure. Rational transitivity and the base stabilizer are the already proved Proposition 7.2.</p>
+<p>For the Hilbert-space assertion, send the basis vector of <span class="math" data-tex="\((v_p)_p\)">\((v_p)_p\)</span> to <span class="math" data-tex="\(\bigotimes_p\delta_{v_p}\)">\(\bigotimes_p\delta_{v_p}\)</span>. The tensors differ from the reference tensors at only finitely many primes. Their inner products agree with those of the coset basis, and their span is dense in the restricted tensor product by its definition. This gives the second unitary in (8.8), intertwining the permutation actions.</p>
+<p>Finally consider <span class="math" data-tex="\(F_p(xK)=xg(0,p)K\)">\(F_p(xK)=xg(0,p)K\)</span> from (7.10). At any prime <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>, <span class="math" data-tex="\(g(0,p)\in K_q\)">\(g(0,p)\in K_q\)</span>, so that coordinate is unchanged. At <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(g(0,p)K_p\)">\(g(0,p)K_p\)</span> corresponds to the parent ball <span class="math" data-tex="\(p^{-1}O\)">\(p^{-1}O\)</span>. Since the local action preserves parents, the <span class="math" data-tex="\(p\)">\(p\)</span>-coordinate of <span class="math" data-tex="\(F_p(xK)\)">\(F_p(xK)\)</span> is the parent of the <span class="math" data-tex="\(p\)">\(p\)</span>-coordinate of <span class="math" data-tex="\(xK\)">\(xK\)</span>. Thus the global <span class="math" data-tex="\(S_p\)">\(S_p\)</span> of Section 7 is exactly the single-coordinate parent operator in (8.9). Each parent has <span class="math" data-tex="\(p\)">\(p\)</span> children, so <span class="math" data-tex="\(S_pS_p^*=p1\)">\(S_pS_p^*=p1\)</span>. Equation (8.9) follows from the already proved relation <span class="math" data-tex="\(r(\mu_p^*)=p^{-1/2}S_p\)">\(r(\mu_p^*)=p^{-1/2}S_p\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This geometry explains why the arithmetic dilation of a prime is independent of the local translation and unit coordinates: every affine transformation preserves the same parent relation. The direct coset argument of Section 7 and the local tree argument here give the same normalized operator.</p>
+<h2 id="9-the-adelic-group-corner">9. The adelic group corner</h2>
+<p>The full affine group averages both integral translations and local units. Its compact-subgroup corner consequently retains the prime shifts, with no independent cyclotomic observables. We prove this for the full group C*-algebra, and also prove faithfulness of its regular corner. This avoids needing a general amenability theorem for this particular identification.</p>
+<p>First record the precise universal property of the shift algebra <span class="math" data-tex="\(\mathcal T=C^*(\mu_n:n\ge1)\)">\(\mathcal T=C^*(\mu_n:n\ge1)\)</span>, whose faithful integer representation was proved in <span class="unlinked">Phase transition in the Bost–Connes system</span>, Proposition 11.2.</p>
+<p><strong>Lemma 9.1 (The prime-shift universal property).</strong> A family of isometries <span class="math" data-tex="\(s_p\)">\(s_p\)</span>, one for each prime, satisfying</p>
+<span class="math math-display" data-tex="\[
+s_ps_q=s_qs_p,\qquad
+s_p^*s_q=s_qs_p^*\quad(p\ne q)
+\tag{9.1}
+\]">\[
+s_ps_q=s_qs_p,\qquad
+s_p^*s_q=s_qs_p^*\quad(p\ne q)
+\tag{9.1}
+\]</span>
+<p>defines a unique unital *-homomorphism from <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> sending <span class="math" data-tex="\(\mu_p\)">\(\mu_p\)</span> to <span class="math" data-tex="\(s_p\)">\(s_p\)</span>.</p>
+<p><strong>Proof.</strong> Form the universal C*-algebra <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> for (9.1). It exists by taking the supremum of representation norms on polynomials: every word is a contraction, so each finite linear combination has a finite supremum norm. The concrete prime shifts provide a representation and a quotient map <span class="math" data-tex="\(\pi:\mathcal U\to\mathcal T\)">\(\pi:\mathcal U\to\mathcal T\)</span>.</p>
+<p>Write <span class="math" data-tex="\(s_n=\prod_ps_p^{v_p(n)}\)">\(s_n=\prod_ps_p^{v_p(n)}\)</span>. Every word reduces, using (9.1) and <span class="math" data-tex="\(s_p^*s_p=1\)">\(s_p^*s_p=1\)</span>, to <span class="math" data-tex="\(s_ns_m^*\)">\(s_ns_m^*\)</span>. Thus the compact gauge group <span class="math" data-tex="\(\prod_p\mathbb T\)">\(\prod_p\mathbb T\)</span>, acting by <span class="math" data-tex="\(s_p\mapsto z_ps_p\)">\(s_p\mapsto z_ps_p\)</span>, has fixed algebra</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_{\mathcal U}=C^*(P_n:n\ge1),
+\qquad P_n=s_ns_n^*.
+\tag{9.2}
+\]">\[
+\mathcal D_{\mathcal U}=C^*(P_n:n\ge1),
+\qquad P_n=s_ns_n^*.
+\tag{9.2}
+\]</span>
+<p>Indeed, averaging a monomial kills it unless <span class="math" data-tex="\(n=m\)">\(n=m\)</span>. The average is faithful by the full-support argument in Theorem 5.1.</p>
+<p>The map <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is injective on this diagonal. To check it, take finitely many primes and maximal exponents <span class="math" data-tex="\(M_p\)">\(M_p\)</span>. The projections <span class="math" data-tex="\(P_{p^j}\)">\(P_{p^j}\)</span>, <span class="math" data-tex="\(0\le j\le M_p\)">\(0\le j\le M_p\)</span>, form decreasing chains, and different prime chains commute. The atoms of their finite dimensional algebra are products of</p>
+<span class="math math-display" data-tex="\[
+P_{p^j}-P_{p^{j+1}}\quad(0\le j&lt;M_p),
+\qquad P_{p^{M_p}}.
+\tag{9.3}
+\]">\[
+P_{p^j}-P_{p^{j+1}}\quad(0\le j&lt;M_p),
+\qquad P_{p^{M_p}}.
+\tag{9.3}
+\]</span>
+<p>They are orthogonal projections with sum one. In the integer shift representation every atom is nonzero: choose an integer with exactly the specified valuations for the differences, and valuation at least <span class="math" data-tex="\(M_p\)">\(M_p\)</span> for a last projection. A linear combination of atoms has norm the largest absolute coefficient, both before and after <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Taking the increasing union proves diagonal injectivity.</p>
+<p>The concrete gauge action is implemented by <span class="math" data-tex="\(\delta_k\mapsto z(k)\delta_k\)">\(\delta_k\mapsto z(k)\delta_k\)</span>, so <span class="math" data-tex="\(\pi\)">\(\pi\)</span> intertwines the faithful averages. If <span class="math" data-tex="\(\pi(x)=0\)">\(\pi(x)=0\)</span>, diagonal injectivity applied to the average of <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span> gives <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Thus <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is an isomorphism, proving the universal property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(dg=db\,d^\times a\)">\(dg=db\,d^\times a\)</span> be left Haar measure on <span class="math" data-tex="\(P\)">\(P\)</span>, normalized by <span class="math" data-tex="\(dg(K)=1\)">\(dg(K)=1\)</span>. Additive Haar measure gives <span class="math" data-tex="\(R\)">\(R\)</span> measure one, and multiplicative Haar measure gives <span class="math" data-tex="\(W\)">\(W\)</span> measure one. With our matrix convention, left multiplication translates <span class="math" data-tex="\(b\)">\(b\)</span> at fixed <span class="math" data-tex="\(a\)">\(a\)</span> and multiplies the idele coordinate. Right multiplication by <span class="math" data-tex="\(g(c,r)\)">\(g(c,r)\)</span> multiplies the additive coordinate by <span class="math" data-tex="\(r\)">\(r\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+d(xg)=\delta(g)\,dx,\qquad
+\delta(g(b,a))=|a|_f:=\prod_p|a_p|_p.
+\tag{9.4}
+\]">\[
+d(xg)=\delta(g)\,dx,\qquad
+\delta(g(b,a))=|a|_f:=\prod_p|a_p|_p.
+\tag{9.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is specified by this change-of-variables convention. On the full group C*-algebra <span class="math" data-tex="\(B=C^*(P)\)">\(B=C^*(P)\)</span>, write <span class="math" data-tex="\(U_g\)">\(U_g\)</span> for the canonical multiplier unitaries. The group algebra uses left convolution and involution
+<span class="math" data-tex="\(f^*(g)=\overline{f(g^{-1})}\delta(g^{-1})\)">\(f^*(g)=\overline{f(g^{-1})}\delta(g^{-1})\)</span>.
+Put <span class="math" data-tex="\(e=1_K=\int_KU_k\,dk\)">\(e=1_K=\int_KU_k\,dk\)</span>. Its image in any unitary representation is the orthogonal projection onto the <span class="math" data-tex="\(K\)">\(K\)</span>-fixed vectors.</p>
+<p><strong>Theorem 9.2 (Corner and dynamics).</strong> There is a canonical isomorphism</p>
+<span class="math math-display" data-tex="\[
+\mathcal T\longrightarrow eBe,\qquad
+\mu_n\longmapsto V_n:=U_{g(0,n)}e.
+\tag{9.5}
+\]">\[
+\mathcal T\longrightarrow eBe,\qquad
+\mu_n\longmapsto V_n:=U_{g(0,n)}e.
+\tag{9.5}
+\]</span>
+<p>The regular representation of <span class="math" data-tex="\(P\)">\(P\)</span> is faithful on this corner, so the same identification holds with <span class="math" data-tex="\(eC_r^*(P)e\)">\(eC_r^*(P)e\)</span>. The modular-character dynamics</p>
+<span class="math math-display" data-tex="\[
+\sigma_t(U_g)=\delta(g)^{-it}U_g
+\tag{9.6}
+\]">\[
+\sigma_t(U_g)=\delta(g)^{-it}U_g
+\tag{9.6}
+\]</span>
+<p>fixes <span class="math" data-tex="\(e\)">\(e\)</span> and restricts to <span class="math" data-tex="\(\sigma_t(V_n)=n^{it}V_n\)">\(\sigma_t(V_n)=n^{it}V_n\)</span>, exactly the prime-shift evolution.</p>
+<p><strong>Proof.</strong> Haar probability on the compact subgroup gives <span class="math" data-tex="\(e=e^*=e^2\)">\(e=e^*=e^2\)</span>. Since <span class="math" data-tex="\(K\)">\(K\)</span> is open, its characteristic function lies in <span class="math" data-tex="\(C_c(P)\)">\(C_c(P)\)</span>, so this projection belongs to <span class="math" data-tex="\(B\)">\(B\)</span>, rather than merely its multiplier algebra.</p>
+<p>For <span class="math" data-tex="\(g_n=g(0,n)\)">\(g_n=g(0,n)\)</span>, the inclusion <span class="math" data-tex="\(g_n^{-1}Kg_n\subset K\)">\(g_n^{-1}Kg_n\subset K\)</span> was proved in Section 7. A smaller compact subgroup has a larger fixed-vector projection. Hence</p>
+<span class="math math-display" data-tex="\[
+U_{g_n}^{*}eU_{g_n}\ge e,\qquad
+eU_{g_n}e=U_{g_n}e.
+\]">\[
+U_{g_n}^{*}eU_{g_n}\ge e,\qquad
+eU_{g_n}e=U_{g_n}e.
+\]</span>
+<p>Thus <span class="math" data-tex="\(V_n\in eBe\)">\(V_n\in eBe\)</span>, <span class="math" data-tex="\(V_n^*V_n=e\)">\(V_n^*V_n=e\)</span>, and <span class="math" data-tex="\(V_nV_m=V_{nm}\)">\(V_nV_m=V_{nm}\)</span>.</p>
+<p>For a prime <span class="math" data-tex="\(p\)">\(p\)</span>, replace the rational idele <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(g_p\)">\(g_p\)</span> by the idele whose <span class="math" data-tex="\(p\)">\(p\)</span>-component is <span class="math" data-tex="\(p\)">\(p\)</span> and whose other components are one. Their quotient lies in <span class="math" data-tex="\(W\)">\(W\)</span>, so multiplying <span class="math" data-tex="\(e\)">\(e\)</span> makes no change to <span class="math" data-tex="\(V_p\)">\(V_p\)</span>. Averaging <span class="math" data-tex="\(K=\prod_qK_q\)">\(K=\prod_qK_q\)</span> factors into its compact subgroup averages. Operators and averages belonging to distinct prime coordinates commute. This gives <span class="math" data-tex="\(V_p^*V_q=V_qV_p^*\)">\(V_p^*V_q=V_qV_p^*\)</span> for <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>. Lemma 9.1 therefore gives a homomorphism <span class="math" data-tex="\(\mathcal T\to eBe\)">\(\mathcal T\to eBe\)</span>.</p>
+<p>We prove its surjectivity by explicit compact functions. Multiplication of the three factors <span class="math" data-tex="\(U_{g_n}eU_{g_m}^{*}\)">\(U_{g_n}eU_{g_m}^{*}\)</span>, with the right-translation Haar change in (9.4), gives</p>
+<span class="math math-display" data-tex="\[
+(V_nV_m^*)(g(b,a))
+=\frac1m\,1_{\{\,a\in(n/m)W,\ b\in m^{-1}R\,\}}.
+\tag{9.7}
+\]">\[
+(V_nV_m^*)(g(b,a))
+=\frac1m\,1_{\{\,a\in(n/m)W,\ b\in m^{-1}R\,\}}.
+\tag{9.7}
+\]</span>
+<p>This is an equality of compactly supported <span class="math" data-tex="\(L^1\)">\(L^1\)</span> functions representing the indicated group-algebra elements. At one prime, the factor for exponents <span class="math" data-tex="\(i=v_p(n),j=v_p(m)\)">\(i=v_p(n),j=v_p(m)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+F_{i,j}(b,a)
+=p^{-j}1_{\{v_p(a)=i-j,\ b\in p^{-j}O\}}.
+\tag{9.8}
+\]">\[
+F_{i,j}(b,a)
+=p^{-j}1_{\{v_p(a)=i-j,\ b\in p^{-j}O\}}.
+\tag{9.8}
+\]</span>
+<p>To see that these factors span every local double-coset function, use the ball chart of Section 8. At fixed ball exponent <span class="math" data-tex="\(k=j-i\)">\(k=j-i\)</span>, the <span class="math" data-tex="\(K_p\)">\(K_p\)</span>-orbits are classified by</p>
+<span class="math math-display" data-tex="\[
+h=\min\{0,k,v_p(x)\},\qquad B=B(x,k).
+\tag{9.9}
+\]">\[
+h=\min\{0,k,v_p(x)\},\qquad B=B(x,k).
+\tag{9.9}
+\]</span>
+<p>For <span class="math" data-tex="\(h=\min\{0,k\}\)">\(h=\min\{0,k\}\)</span>, this is one orbit: when <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>, integral translations are transitive on the balls inside <span class="math" data-tex="\(O\)">\(O\)</span>; when <span class="math" data-tex="\(k&lt;0\)">\(k&lt;0\)</span>, the ball is the single ancestor <span class="math" data-tex="\(p^kO\)">\(p^kO\)</span>. For <span class="math" data-tex="\(h&lt;\min\{0,k\}\)">\(h&lt;\min\{0,k\}\)</span>, its centers have valuation <span class="math" data-tex="\(h\)">\(h\)</span>; multiplying by a unit carries any such center to any other. Conversely integral translation and unit multiplication preserve the displayed minimum. This proves the orbit classification.</p>
+<p>The support of <span class="math" data-tex="\(F_{i,j}\)">\(F_{i,j}\)</span> in the ball chart is <span class="math" data-tex="\(v_p(x)\ge-i\)">\(v_p(x)\ge-i\)</span>, because <span class="math" data-tex="\(x=b/a\)">\(x=b/a\)</span>. For
+<span class="math" data-tex="\(i_0=\max\{0,-k\}\)">\(i_0=\max\{0,-k\}\)</span>, <span class="math" data-tex="\(j_0=i_0+k\)">\(j_0=i_0+k\)</span>,
+the function <span class="math" data-tex="\(F_{i_0,j_0}\)">\(F_{i_0,j_0}\)</span> is a nonzero constant on the first orbit in (9.9). For each <span class="math" data-tex="\(i&gt;i_0\)">\(i&gt;i_0\)</span>, with <span class="math" data-tex="\(j=i+k\)">\(j=i+k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+F_{i,j}-p^{-1}F_{i-1,j-1}
+\tag{9.10}
+\]">\[
+F_{i,j}-p^{-1}F_{i-1,j-1}
+\tag{9.10}
+\]</span>
+<p>is a nonzero constant exactly on the orbit <span class="math" data-tex="\(h=-i\)">\(h=-i\)</span>. Therefore the local orbit indicators are in their linear span.</p>
+<p>A global double coset is a product of such local double cosets, equal to <span class="math" data-tex="\(K_p\)">\(K_p\)</span> outside finitely many primes. Taking products of (9.8) and (9.10) shows that all its characteristic functions lie in the span of <span class="math" data-tex="\(V_nV_m^*\)">\(V_nV_m^*\)</span>. For <span class="math" data-tex="\(f\in C_c(P)\)">\(f\in C_c(P)\)</span>, the compact function <span class="math" data-tex="\(efe\)">\(efe\)</span> is <span class="math" data-tex="\(K\)">\(K\)</span>-bi-invariant and constant on finitely many double cosets: those cosets are open, and its compact support meets only finitely many in the discrete quotient. Thus <span class="math" data-tex="\(eC_c(P)e\)">\(eC_c(P)e\)</span> is contained in this span. Since <span class="math" data-tex="\(C_c(P)\)">\(C_c(P)\)</span> is dense in the group C*-algebra, the homomorphism is surjective.</p>
+<p>We next prove injectivity, including the regular assertion. The quasi-regular action <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(\ell^2(\Delta)\)">\(\ell^2(\Delta)\)</span> from Section 7 is a subrepresentation of the left regular action on <span class="math" data-tex="\(L^2(P,dg)\)">\(L^2(P,dg)\)</span>: send <span class="math" data-tex="\(\delta_{gK}\)">\(\delta_{gK}\)</span> to <span class="math" data-tex="\(1_{gK}\)">\(1_{gK}\)</span>. These functions are orthonormal because each left coset has Haar measure one. This map intertwines the actions. On the <span class="math" data-tex="\(K\)">\(K\)</span>-fixed subspace let <span class="math" data-tex="\(v_p=L(g_p)e\)">\(v_p=L(g_p)e\)</span>.</p>
+<p>For the base vector <span class="math" data-tex="\(\delta_K\)">\(\delta_K\)</span>, averaging the <span class="math" data-tex="\(p^j\)">\(p^j\)</span> descendants of <span class="math" data-tex="\(O\)">\(O\)</span>, and then translating them by <span class="math" data-tex="\(g_p^j\)">\(g_p^j\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\langle v_p^jv_p^{*j}\delta_K,\delta_K\rangle=p^{-j}.
+\tag{9.11}
+\]">\[
+\langle v_p^jv_p^{*j}\delta_K,\delta_K\rangle=p^{-j}.
+\tag{9.11}
+\]</span>
+<p>Explicitly, <span class="math" data-tex="\(v_p^{*j}\delta_K\)">\(v_p^{*j}\delta_K\)</span> is <span class="math" data-tex="\(p^{-j}\)">\(p^{-j}\)</span> times the sum of the <span class="math" data-tex="\(p^j\)">\(p^j\)</span> balls of exponent <span class="math" data-tex="\(j\)">\(j\)</span> inside <span class="math" data-tex="\(O\)">\(O\)</span>, and <span class="math" data-tex="\(v_p^j\)">\(v_p^j\)</span> takes them to the balls of exponent zero with centers in <span class="math" data-tex="\(p^{-j}O/O\)">\(p^{-j}O/O\)</span>. The base center occurs once. The restricted tensor description (8.8) makes expectations for distinct primes multiply. Thus the expectation of every finite diagonal atom (9.3) is a product of strictly positive numbers <span class="math" data-tex="\(p^{-j}-p^{-j-1}\)">\(p^{-j}-p^{-j-1}\)</span> and <span class="math" data-tex="\(p^{-M_p}\)">\(p^{-M_p}\)</span>. Its image is nonzero, so the represented map is injective on the diagonal by the same atom-norm argument as Lemma 9.1.</p>
+<p>The diagonal unitaries</p>
+<span class="math math-display" data-tex="\[
+Z_z\delta_{g(b,a)K}
+=\left(\prod_pz_p^{v_p(a_p)}\right)\delta_{g(b,a)K}
+\tag{9.12}
+\]">\[
+Z_z\delta_{g(b,a)K}
+=\left(\prod_pz_p^{v_p(a_p)}\right)\delta_{g(b,a)K}
+\tag{9.12}
+\]</span>
+<p>are well defined, since changing a coset representative changes <span class="math" data-tex="\(a\)">\(a\)</span> only by a unit idele. They commute with the <span class="math" data-tex="\(K\)">\(K\)</span>-average and satisfy <span class="math" data-tex="\(Z_zv_pZ_z^*=z_pv_p\)">\(Z_zv_pZ_z^*=z_pv_p\)</span>. The representation therefore intertwines the gauge averages. Their faithfulness and diagonal injectivity imply its injectivity on all of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Since this representation factors through the left regular group representation, both the full corner map and its regular version are injective.</p>
+<p>Finally, <span class="math" data-tex="\(\delta(g)^{-it}\)">\(\delta(g)^{-it}\)</span> is a continuous unitary character. Twisting any unitary representation by it gives (9.6) as an isometric automorphism of <span class="math" data-tex="\(B\)">\(B\)</span>. Dominated convergence on <span class="math" data-tex="\(L^1(P)\)">\(L^1(P)\)</span>, then density, proves norm continuity in <span class="math" data-tex="\(t\)">\(t\)</span>. The character is one on <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(e\)">\(e\)</span> is fixed. Since <span class="math" data-tex="\(|n|_f=1/n\)">\(|n|_f=1/n\)</span>, equation (9.6) gives <span class="math" data-tex="\(\sigma_t(V_n)=n^{it}V_n\)">\(\sigma_t(V_n)=n^{it}V_n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The word <em>corner</em> in (9.5) refers to the projection <span class="math" data-tex="\(e\)">\(e\)</span>, whether one starts with the full or the reduced group algebra. Formula (9.7) also specifies the normalization of the compact functions used in subsequent lattice-module computations.</p>
+<h2 id="10-recovering-a-local-field-from-its-haar-modulus">10. Recovering a local field from its Haar modulus</h2>
+<p>The rational prime constructions use <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, but the compact-ring statement behind them has a wider scope. Here <span class="math" data-tex="\(K\)">\(K\)</span> is any <strong>nondiscrete commutative Hausdorff locally compact topological field</strong>: its addition, multiplication and inversion on <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span> are continuous. An absolute value is not assumed in the hypotheses.</p>
+<p>We use <a href="../NCG-FOLIATIONS/companions/haar-functional.html">Haar measure on locally compact groups</a>, Theorem 2.2 for Radon representation and its compact-set regularity formula, Proposition 7.1(5) for quotients by closed subgroups, Proposition 7.3 for uniform continuity on compact supports, and Theorems 8.3 and 9.2 for existence and uniqueness of Haar measure. The following argument is the classical one for local fields; see [Milne ANT], Chapter 7. Its characteristic-independent compact-ring steps are proved explicitly.</p>
+<p>Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be additive Haar measure. Multiplication by <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span> is an additive automorphism, so uniqueness defines
+<span class="math math-display" data-tex="\[
+\mu(aE)=m(a)\mu(E),\qquad m(a)&gt;0;\qquad m(0)=0.
+\tag{10.1}
+\]">\[
+\mu(aE)=m(a)\mu(E),\qquad m(a)&gt;0;\qquad m(0)=0.
+\tag{10.1}
+\]</span>
+The choice of scalar normalization of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> cancels. Composition gives <span class="math" data-tex="\(m(ab)=m(a)m(b)\)">\(m(ab)=m(a)m(b)\)</span>, and <span class="math" data-tex="\(m(-1)=1\)">\(m(-1)=1\)</span>.</p>
+<p><strong>Lemma 10.1 (Proper modulus and the original topology).</strong> The map <span class="math" data-tex="\(m:K\to[0,\infty)\)">\(m:K\to[0,\infty)\)</span> is continuous and proper. The sets <span class="math" data-tex="\(\{x:m(x)&lt;\varepsilon\}\)">\(\{x:m(x)&lt;\varepsilon\}\)</span>, <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, are a neighborhood basis at zero for the given topology.</p>
+<p><strong>Proof.</strong> An additive Haar point mass is zero. Otherwise an infinite compact neighborhood, containing arbitrarily many different points, would have arbitrarily large measure. A finite neighborhood would make the additive group discrete, contrary to the hypothesis.</p>
+<p>Choose a compact neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of zero. It has positive finite measure. Given <span class="math" data-tex="\(a\in K\)">\(a\in K\)</span> and <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, outer regularity gives an open <span class="math" data-tex="\(U\supset aV\)">\(U\supset aV\)</span> with <span class="math" data-tex="\(\mu(U)&lt;\mu(aV)+\eta\)">\(\mu(U)&lt;\mu(aV)+\eta\)</span>. For <span class="math" data-tex="\(a=0\)">\(a=0\)</span> use <span class="math" data-tex="\(\mu(\{0\})=0\)">\(\mu(\{0\})=0\)</span>. Continuity of multiplication and compactness of <span class="math" data-tex="\(V\)">\(V\)</span> give a neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(a\)">\(a\)</span> such that <span class="math" data-tex="\(WV\subset U\)">\(WV\subset U\)</span>. Thus for <span class="math" data-tex="\(x\in W\)">\(x\in W\)</span>,
+<span class="math math-display" data-tex="\[
+m(x)\le m(a)+\eta/\mu(V).
+\tag{10.2}
+\]">\[
+m(x)\le m(a)+\eta/\mu(V).
+\tag{10.2}
+\]</span>
+This proves continuity at zero and upper semicontinuity everywhere. On <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>, the identity <span class="math" data-tex="\(m(x)=m(x^{-1})^{-1}\)">\(m(x)=m(x^{-1})^{-1}\)</span> supplies lower semicontinuity, so <span class="math" data-tex="\(m\)">\(m\)</span> is continuous.</p>
+<p>Compactness also supplies a neighborhood <span class="math" data-tex="\(U_0\)">\(U_0\)</span> of zero with <span class="math" data-tex="\(U_0V\subset\operatorname{int}V\)">\(U_0V\subset\operatorname{int}V\)</span>. By nondiscreteness and continuity of <span class="math" data-tex="\(m\)">\(m\)</span> at zero, choose <span class="math" data-tex="\(c\in U_0\cap V\)">\(c\in U_0\cap V\)</span>, <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, with <span class="math" data-tex="\(m(c)&lt;1\)">\(m(c)&lt;1\)</span>. Then <span class="math" data-tex="\(cV\subset\operatorname{int}V\)">\(cV\subset\operatorname{int}V\)</span> and all positive powers of <span class="math" data-tex="\(c\)">\(c\)</span> lie in <span class="math" data-tex="\(V\)">\(V\)</span>. Every cluster point of those powers has modulus zero, hence is zero. Compactness forces <span class="math" data-tex="\(c^n\to0\)">\(c^n\to0\)</span>: an infinite subsequence outside a neighborhood of zero would have a cluster point outside it. In particular <span class="math" data-tex="\(c^nx\to0\)">\(c^nx\to0\)</span> for every <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, and the sets <span class="math" data-tex="\(c^{-n}V\)">\(c^{-n}V\)</span> increase and cover <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Set <span class="math" data-tex="\(Q=\overline{V\setminus cV}\)">\(Q=\overline{V\setminus cV}\)</span>. This is compact and excludes zero, since <span class="math" data-tex="\(cV\)">\(cV\)</span> is a neighborhood of zero. If <span class="math" data-tex="\(x\notin V\)">\(x\notin V\)</span>, let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> be the first integer with <span class="math" data-tex="\(c^nx\in V\)">\(c^nx\in V\)</span>. Then <span class="math" data-tex="\(c^nx\in V\setminus cV\)">\(c^nx\in V\setminus cV\)</span>, so
+<span class="math math-display" data-tex="\[
+0&lt;\min_Qm\le m(c)^n m(x).
+\tag{10.3}
+\]">\[
+0&lt;\min_Qm\le m(c)^n m(x).
+\tag{10.3}
+\]</span>
+For <span class="math" data-tex="\(m(x)\le r\)">\(m(x)\le r\)</span>, this bounds <span class="math" data-tex="\(n\)">\(n\)</span> by a constant depending only on <span class="math" data-tex="\(r\)">\(r\)</span>. Hence the closed set <span class="math" data-tex="\(B_r=\{m\le r\}\)">\(B_r=\{m\le r\}\)</span> lies in one compact set <span class="math" data-tex="\(c^{-N}V\)">\(c^{-N}V\)</span> and is compact. This proves properness.</p>
+<p>Finally let <span class="math" data-tex="\(V_1\)">\(V_1\)</span> be a compact neighborhood of zero within any prescribed neighborhood. Choose <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with <span class="math" data-tex="\(V_1\subset B_r\)">\(V_1\subset B_r\)</span>. The compact set <span class="math" data-tex="\(B_r\setminus\operatorname{int}V_1\)">\(B_r\setminus\operatorname{int}V_1\)</span> excludes zero, so its modulus has a positive minimum if it is nonempty. A modulus ball of radius less than both that minimum and <span class="math" data-tex="\(r\)">\(r\)</span> lies in <span class="math" data-tex="\(V_1\)">\(V_1\)</span>. If the compact difference is empty, any radius at most <span class="math" data-tex="\(r\)">\(r\)</span> suffices. Continuity already makes the strict modulus balls open. This proves the asserted equality of topologies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We next justify why the nonarchimedean case covers all fields here except the real and complex fields. This step cannot be replaced by a theorem which starts with an already specified valuation.</p>
+<p><strong>Lemma 10.2 (The archimedean alternative).</strong> Either
+<span class="math math-display" data-tex="\[
+m(x+y)\le\max\{m(x),m(y)\}\quad(x,y\in K),
+\tag{10.4}
+\]">\[
+m(x+y)\le\max\{m(x),m(y)\}\quad(x,y\in K),
+\tag{10.4}
+\]</span>
+or <span class="math" data-tex="\(K\)">\(K\)</span> is topologically isomorphic to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p><strong>Proof.</strong> Properness makes
+<span class="math math-display" data-tex="\[
+C=\max_{m(x)\le1}m(1+x)\ge1
+\]">\[
+C=\max_{m(x)\le1}m(1+x)\ge1
+\]</span>
+finite. Dividing the smaller-modulus summand by the larger shows that
+<span class="math math-display" data-tex="\[
+m(x+y)\le C\max\{m(x),m(y)\}.
+\tag{10.5}
+\]">\[
+m(x+y)\le C\max\{m(x),m(y)\}.
+\tag{10.5}
+\]</span>
+Iterating this inequality in a balanced binary sum gives, for <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+m\left(\sum_{i=1}^Nz_i\right)
+\le C^{\lceil\log_2N\rceil}\max_i m(z_i).
+\tag{10.6}
+\]">\[
+m\left(\sum_{i=1}^Nz_i\right)
+\le C^{\lceil\log_2N\rceil}\max_i m(z_i).
+\tag{10.6}
+\]</span>
+Padding by zeros to the next power of two proves this bound without a linear loss in <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Suppose first that the moduli of the nonnegative integers, interpreted in <span class="math" data-tex="\(K\)">\(K\)</span>, are bounded by <span class="math" data-tex="\(B\)">\(B\)</span>. For <span class="math" data-tex="\(m(x)\le1\)">\(m(x)\le1\)</span>, expand <span class="math" data-tex="\((1+x)^n\)">\((1+x)^n\)</span> by the binomial theorem and use (10.6):
+<span class="math math-display" data-tex="\[
+m(1+x)^n\le C^{\lceil\log_2(n+1)\rceil}B.
+\tag{10.7}
+\]">\[
+m(1+x)^n\le C^{\lceil\log_2(n+1)\rceil}B.
+\tag{10.7}
+\]</span>
+Taking <span class="math" data-tex="\(n\)">\(n\)</span>-th roots gives <span class="math" data-tex="\(m(1+x)\le1\)">\(m(1+x)\le1\)</span>, hence <span class="math" data-tex="\(C=1\)">\(C=1\)</span> and (10.4). This includes every positive-characteristic field, since its prime subfield is finite.</p>
+<p>If <span class="math" data-tex="\(C&gt;1\)">\(C&gt;1\)</span>, the integer moduli are therefore unbounded, and <span class="math" data-tex="\(K\)">\(K\)</span> has characteristic zero. Pick an integer <span class="math" data-tex="\(b\ge2\)">\(b\ge2\)</span> with <span class="math" data-tex="\(m(b)&gt;1\)">\(m(b)&gt;1\)</span>. For each integer <span class="math" data-tex="\(a\ge2\)">\(a\ge2\)</span>, expand <span class="math" data-tex="\(a^n\)">\(a^n\)</span> in base <span class="math" data-tex="\(b\)">\(b\)</span>. There are <span class="math" data-tex="\(L=\lfloor n\log_ba\rfloor+1\)">\(L=\lfloor n\log_ba\rfloor+1\)</span> digits, and their moduli are bounded by the fixed maximum <span class="math" data-tex="\(B_b\)">\(B_b\)</span> over <span class="math" data-tex="\(0,\ldots,b-1\)">\(0,\ldots,b-1\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+m(a)^n\le C^{\lceil\log_2L\rceil}B_b\,m(b)^{L-1}.
+\]">\[
+m(a)^n\le C^{\lceil\log_2L\rceil}B_b\,m(b)^{L-1}.
+\]</span>
+Taking roots gives <span class="math" data-tex="\(m(a)\le m(b)^{\log_ba}\)">\(m(a)\le m(b)^{\log_ba}\)</span>. If <span class="math" data-tex="\(m(a)\le1\)">\(m(a)\le1\)</span>, expanding <span class="math" data-tex="\(b^n\)">\(b^n\)</span> in base <span class="math" data-tex="\(a\)">\(a\)</span> would instead bound its modulus by a polynomial in <span class="math" data-tex="\(n\)">\(n\)</span>, contradicting <span class="math" data-tex="\(m(b)&gt;1\)">\(m(b)&gt;1\)</span>. Thus <span class="math" data-tex="\(m(a)&gt;1\)">\(m(a)&gt;1\)</span>. Interchanging <span class="math" data-tex="\(a,b\)">\(a,b\)</span> in the first bound proves
+<span class="math math-display" data-tex="\[
+m(a)=a^s,\qquad
+m(r)=|r|^s\quad(r\in\mathbb Q),\qquad
+s=\frac{\log m(b)}{\log b}&gt;0.
+\tag{10.8}
+\]">\[
+m(a)=a^s,\qquad
+m(r)=|r|^s\quad(r\in\mathbb Q),\qquad
+s=\frac{\log m(b)}{\log b}&gt;0.
+\tag{10.8}
+\]</span>
+The rational assertion follows from multiplicativity and <span class="math" data-tex="\(m(-1)=1\)">\(m(-1)=1\)</span>.</p>
+<p>Every additive Cauchy sequence in a locally compact group converges: after subtracting one term its tail lies in a compact neighborhood; it has a cluster point, and the Cauchy condition makes the entire tail converge to that point. Formula (10.8) and Lemma 10.1 therefore extend the inclusion of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> to a topological field embedding of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> into <span class="math" data-tex="\(K\)">\(K\)</span>, by taking limits of rational Cauchy sequences. The result is independent of the approximations; continuity of field operations preserves sums, products and inverses. It is injective because its extended modulus is <span class="math" data-tex="\(|r|^s\)">\(|r|^s\)</span>. This equality also proves continuity in both directions on the image. Hence <span class="math" data-tex="\(K\)">\(K\)</span> is a locally compact real topological vector space.</p>
+<p>We give the finite-dimensional step, including its measure normalization. In a real topological vector space, every neighborhood of zero contains a balanced neighborhood <span class="math" data-tex="\(U\)">\(U\)</span>, meaning <span class="math" data-tex="\([-1,1]U\subset U\)">\([-1,1]U\subset U\)</span>. To construct one, compactness of <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> gives <span class="math" data-tex="\(U_1\)">\(U_1\)</span> with <span class="math" data-tex="\([-1,1]U_1\)">\([-1,1]U_1\)</span> inside the prescribed neighborhood; take <span class="math" data-tex="\(U=\bigcup_{|t|\le1}tU_1\)">\(U=\bigcup_{|t|\le1}tU_1\)</span>.</p>
+<p>For a finite-dimensional subspace <span class="math" data-tex="\(W\subset K\)">\(W\subset K\)</span> with a chosen algebraic basis, the linear map <span class="math" data-tex="\(F:\mathbb R^d\to W\)">\(F:\mathbb R^d\to W\)</span> is continuous. The image of the Euclidean unit sphere is compact and excludes zero. Choose a balanced neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> disjoint from this image. If <span class="math" data-tex="\(F(\lambda)\in U\)">\(F(\lambda)\in U\)</span> and <span class="math" data-tex="\(\|\lambda\|\ge1\)">\(\|\lambda\|\ge1\)</span>, balance would put <span class="math" data-tex="\(F(\lambda/\|\lambda\|)\)">\(F(\lambda/\|\lambda\|)\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span>, a contradiction. Scaling <span class="math" data-tex="\(U\)">\(U\)</span> proves continuity of <span class="math" data-tex="\(F^{-1}\)">\(F^{-1}\)</span> at zero. Thus <span class="math" data-tex="\(W\)">\(W\)</span> has its Euclidean topology and is closed in <span class="math" data-tex="\(K\)">\(K\)</span>: a convergent net in <span class="math" data-tex="\(K\)">\(K\)</span> with terms in <span class="math" data-tex="\(W\)">\(W\)</span> has a Cauchy coordinate net, whose Euclidean limit lies in <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>The quotient <span class="math" data-tex="\(Q=K/W\)">\(Q=K/W\)</span> is locally compact and Hausdorff and is again a real topological vector space. Choose additive Haar measures on <span class="math" data-tex="\(W\)">\(W\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>. The integral
+<span class="math math-display" data-tex="\[
+I(f)=\int_Q\left(\int_W f(x+w)\,d\mu_W(w)\right)d\mu_Q(x+W),
+\qquad f\in C_c(K),
+\tag{10.9}
+\]">\[
+I(f)=\int_Q\left(\int_W f(x+w)\,d\mu_W(w)\right)d\mu_Q(x+W),
+\qquad f\in C_c(K),
+\tag{10.9}
+\]</span>
+is well defined independently of representatives. The inner integral is continuous: for <span class="math" data-tex="\(x\)">\(x\)</span> in a fixed compact neighborhood of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, the relevant <span class="math" data-tex="\(w\)">\(w\)</span>'s lie in the intersection of <span class="math" data-tex="\(W\)">\(W\)</span> with a fixed compact set, and uniform continuity of <span class="math" data-tex="\(f\)">\(f\)</span> bounds the difference of the integrals. Its support on <span class="math" data-tex="\(Q\)">\(Q\)</span> is contained in the compact image of <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>. Therefore (10.9) is a nonzero positive translation-invariant functional; Radon representation and Haar uniqueness identify it, after one scalar normalization, with additive Haar integration on <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>For real <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>, let <span class="math" data-tex="\(m_Q(r)\)">\(m_Q(r)\)</span> be the quotient Haar modulus of scalar multiplication. Changing variables in both integrals of (10.9) gives
+<span class="math math-display" data-tex="\[
+m(r)=|r|^d m_Q(r).
+\tag{10.10}
+\]">\[
+m(r)=|r|^d m_Q(r).
+\tag{10.10}
+\]</span>
+If <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>, its modulus is one. If <span class="math" data-tex="\(Q\ne0\)">\(Q\ne0\)</span>, it is nondiscrete: for nonzero <span class="math" data-tex="\(v\in Q\)">\(v\in Q\)</span>, the distinct vectors <span class="math" data-tex="\(rv\)">\(rv\)</span> approach zero as <span class="math" data-tex="\(r\to0\)">\(r\to0\)</span>. Its Haar point masses vanish. The compact-neighborhood argument of (10.2), now for the continuous scalar action on <span class="math" data-tex="\(Q\)">\(Q\)</span>, gives <span class="math" data-tex="\(m_Q(r)\to0\)">\(m_Q(r)\to0\)</span> as <span class="math" data-tex="\(r\to0\)">\(r\to0\)</span>. Since <span class="math" data-tex="\(m_Q(2^{-n})=m_Q(1/2)^n\)">\(m_Q(2^{-n})=m_Q(1/2)^n\)</span>, this implies <span class="math" data-tex="\(m_Q(1/2)&lt;1\)">\(m_Q(1/2)&lt;1\)</span>. In either case (10.8) and (10.10) yield
+<span class="math math-display" data-tex="\[
+2^{-s}=2^{-d}m_Q(1/2)\le2^{-d},\qquad d\le s.
+\]">\[
+2^{-s}=2^{-d}m_Q(1/2)\le2^{-d},\qquad d\le s.
+\]</span>
+All finite-dimensional subspaces of <span class="math" data-tex="\(K\)">\(K\)</span> have this fixed dimension bound, so <span class="math" data-tex="\(K\)">\(K\)</span> is finite dimensional over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+<p>Finally a finite field extension of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Indeed the fundamental theorem of algebra makes every irreducible real polynomial have degree one or two. An element outside <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> thus generates a copy of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, over which no further algebraic extension is possible. The finite-dimensional topology just proved makes the resulting field isomorphism a homeomorphism. This proves the alternative. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 10.3 (The compact valuation ring).</strong> Suppose <span class="math" data-tex="\(K\)">\(K\)</span> is not topologically isomorphic to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Define
+<span class="math math-display" data-tex="\[
+R_K=\{x:m(x)\le1\},\quad
+R_K^\times=\{x:m(x)=1\},\quad
+J_K=\{x:m(x)&lt;1\}.
+\tag{10.11}
+\]">\[
+R_K=\{x:m(x)\le1\},\quad
+R_K^\times=\{x:m(x)=1\},\quad
+J_K=\{x:m(x)&lt;1\}.
+\tag{10.11}
+\]</span>
+Then <span class="math" data-tex="\(R_K\)">\(R_K\)</span> is the unique maximal compact subring of <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(R_K^\times\)">\(R_K^\times\)</span> is its unit group, and <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is its unique maximal ideal. There is <span class="math" data-tex="\(\pi\in J_K\setminus\{0\}\)">\(\pi\in J_K\setminus\{0\}\)</span> such that <span class="math" data-tex="\(J_K=\pi R_K=R_K\pi\)">\(J_K=\pi R_K=R_K\pi\)</span>. The residue field <span class="math" data-tex="\(k=R_K/J_K\)">\(k=R_K/J_K\)</span> is finite, of some characteristic prime <span class="math" data-tex="\(p\)">\(p\)</span>, and, for <span class="math" data-tex="\(q=|k|\)">\(q=|k|\)</span>,
+<span class="math math-display" data-tex="\[
+m(\pi)=q^{-1},\qquad m(K^\times)=q^{\mathbb Z}.
+\tag{10.12}
+\]">\[
+m(\pi)=q^{-1},\qquad m(K^\times)=q^{\mathbb Z}.
+\tag{10.12}
+\]</span>
+The image in <span class="math" data-tex="\(K\)">\(K\)</span> of the integer <span class="math" data-tex="\(p\)">\(p\)</span> has modulus less than one. The metric <span class="math" data-tex="\(d(x,y)=m(x-y)\)">\(d(x,y)=m(x-y)\)</span> is an ultrametric giving the original topology, with <span class="math" data-tex="\(\pi^nR_K\)">\(\pi^nR_K\)</span> a neighborhood basis at zero.</p>
+<p><strong>Proof.</strong> Lemma 10.2 gives the ultrametric inequality for <span class="math" data-tex="\(m\)">\(m\)</span>. Thus <span class="math" data-tex="\(R_K\)">\(R_K\)</span> is a subring, compact by Lemma 10.1; <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is an ideal. An element of <span class="math" data-tex="\(R_K\)">\(R_K\)</span> is invertible there exactly when its modulus is one. Every proper ideal excludes these units and so lies in <span class="math" data-tex="\(J_K\)">\(J_K\)</span>; since <span class="math" data-tex="\(R_K/J_K\)">\(R_K/J_K\)</span> is a field, <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is the unique maximal ideal.</p>
+<p>For <span class="math" data-tex="\(m(y)&lt;1\)">\(m(y)&lt;1\)</span>, the ultrametric inequality in both directions, using <span class="math" data-tex="\(1=(1+y)-y\)">\(1=(1+y)-y\)</span>, gives <span class="math" data-tex="\(m(1+y)=1\)">\(m(1+y)=1\)</span>. Hence the unit set is open: around a unit <span class="math" data-tex="\(u\)">\(u\)</span>, the neighborhood <span class="math" data-tex="\(u+uJ_K\)">\(u+uJ_K\)</span> consists of units. The set <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is open by continuity, and its complement in <span class="math" data-tex="\(R_K\)">\(R_K\)</span> is open too. Therefore <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is compact as well as open. It contains a nonzero element, by continuity at zero and nondiscreteness. The positive maximum
+<span class="math math-display" data-tex="\[
+\lambda=\max_{x\in J_K}m(x)&lt;1
+\]">\[
+\lambda=\max_{x\in J_K}m(x)&lt;1
+\]</span>
+is attained. Choose <span class="math" data-tex="\(\pi\)">\(\pi\)</span> attaining it. For <span class="math" data-tex="\(x\in J_K\)">\(x\in J_K\)</span>, <span class="math" data-tex="\(m(x/\pi)\le1\)">\(m(x/\pi)\le1\)</span>, and conversely every element of <span class="math" data-tex="\(\pi R_K\)">\(\pi R_K\)</span> has modulus at most <span class="math" data-tex="\(\lambda&lt;1\)">\(\lambda&lt;1\)</span>. Thus <span class="math" data-tex="\(J_K=\pi R_K\)">\(J_K=\pi R_K\)</span>, without assuming a discrete value group in advance.</p>
+<p>There is no modulus value strictly between <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and one. For any <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, choose the integer <span class="math" data-tex="\(n\)">\(n\)</span> such that
+<span class="math" data-tex="\(\lambda^{n+1}&lt;m(x)\le\lambda^n\)">\(\lambda^{n+1}&lt;m(x)\le\lambda^n\)</span>.
+Then <span class="math" data-tex="\(\lambda&lt;m(\pi^{-n}x)\le1\)">\(\lambda&lt;m(\pi^{-n}x)\le1\)</span>, so this last value is one, and <span class="math" data-tex="\(m(x)=\lambda^n\)">\(m(x)=\lambda^n\)</span>. This proves <span class="math" data-tex="\(m(K^\times)=\lambda^{\mathbb Z}\)">\(m(K^\times)=\lambda^{\mathbb Z}\)</span>.</p>
+<p>The quotient <span class="math" data-tex="\(k\)">\(k\)</span> is discrete because <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is open, and compact because <span class="math" data-tex="\(R_K\)">\(R_K\)</span> is compact. It is therefore a finite field. Its characteristic is a prime <span class="math" data-tex="\(p\)">\(p\)</span>, and its cardinality <span class="math" data-tex="\(q=p^f\)">\(q=p^f\)</span> is a prime power, by viewing it as a finite vector space over its prime subfield. If <span class="math" data-tex="\(K\)">\(K\)</span> has positive characteristic, the quotient map preserves the prime subfield, so that characteristic is also <span class="math" data-tex="\(p\)">\(p\)</span>. The image of <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span> lies in <span class="math" data-tex="\(J_K\)">\(J_K\)</span>. In characteristic <span class="math" data-tex="\(p\)">\(p\)</span> it is zero, so its modulus is zero; in characteristic zero it is nonzero of modulus less than one.</p>
+<p>The <span class="math" data-tex="\(q\)">\(q\)</span> disjoint additive cosets of <span class="math" data-tex="\(\pi R_K\)">\(\pi R_K\)</span> in <span class="math" data-tex="\(R_K\)">\(R_K\)</span> have equal Haar measure. Consequently
+<span class="math math-display" data-tex="\[
+\mu(R_K)=q\,\mu(\pi R_K)
+=q\,m(\pi)\mu(R_K),
+\]">\[
+\mu(R_K)=q\,\mu(\pi R_K)
+=q\,m(\pi)\mu(R_K),
+\]</span>
+proving (10.12). Each nonzero <span class="math" data-tex="\(x\)">\(x\)</span> now has a unique integer <span class="math" data-tex="\(v(x)\)">\(v(x)\)</span> with <span class="math" data-tex="\(m(x)=q^{-v(x)}\)">\(m(x)=q^{-v(x)}\)</span>; set <span class="math" data-tex="\(v(0)=+\infty\)">\(v(0)=+\infty\)</span>. The ultrametric inequality and Lemma 10.1 give the claimed metric and topology. In particular
+<span class="math" data-tex="\(\pi^nR_K=\{m\le q^{-n}\}\)">\(\pi^nR_K=\{m\le q^{-n}\}\)</span>,
+and these open additive ideals form the stated neighborhood basis. They are open because the value group has a gap above each <span class="math" data-tex="\(q^{-n}\)">\(q^{-n}\)</span>.</p>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> is any compact subring, <span class="math" data-tex="\(m\)">\(m\)</span> is bounded on <span class="math" data-tex="\(B\)">\(B\)</span>. For <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span> with <span class="math" data-tex="\(m(x)&gt;1\)">\(m(x)&gt;1\)</span>, all powers <span class="math" data-tex="\(x^n\)">\(x^n\)</span> would lie in <span class="math" data-tex="\(B\)">\(B\)</span> and have unbounded modulus, a contradiction. Thus every compact subring is contained in <span class="math" data-tex="\(R_K\)">\(R_K\)</span>, proving its unique maximality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The integer prime and the uniformizer have different roles. In characteristic zero write <span class="math" data-tex="\(p=u\pi^e\)">\(p=u\pi^e\)</span>, with <span class="math" data-tex="\(u\in R_K^\times\)">\(u\in R_K^\times\)</span> and <span class="math" data-tex="\(e=v(p)\ge1\)">\(e=v(p)\ge1\)</span>. Then <span class="math" data-tex="\(m(p)=q^{-e}\)">\(m(p)=q^{-e}\)</span>. In positive characteristic <span class="math" data-tex="\(p=0\)">\(p=0\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>, so this expression with a finite <span class="math" data-tex="\(e\)">\(e\)</span> is not asserted. A unit <span class="math" data-tex="\(u\)">\(u\)</span> need not be a rational integer.</p>
+<p>The same modulus is the affine-group module used in the course. In our matrix coordinates <span class="math" data-tex="\(g(b,a)=\begin{pmatrix}1&amp;b\\0&amp;a\end{pmatrix}\)">\(g(b,a)=\begin{pmatrix}1&amp;b\\0&amp;a\end{pmatrix}\)</span>, let <span class="math" data-tex="\(db\)">\(db\)</span> be additive Haar measure and
+<span class="math" data-tex="\(d^\times a=da/m(a)\)">\(d^\times a=da/m(a)\)</span>
+be multiplicative Haar measure. Its invariance follows by the two cancelling factors <span class="math" data-tex="\(m(r)\)">\(m(r)\)</span> when <span class="math" data-tex="\(a\mapsto ra\)">\(a\mapsto ra\)</span>. The product <span class="math" data-tex="\(db\,d^\times a\)">\(db\,d^\times a\)</span> is left Haar measure on <span class="math" data-tex="\(P_K\)">\(P_K\)</span>, because left multiplication is
+<span class="math" data-tex="\((b,a)\mapsto(b+b_0a,a_0a)\)">\((b,a)\mapsto(b+b_0a,a_0a)\)</span>.
+Right multiplication by <span class="math" data-tex="\(g(c,r)\)">\(g(c,r)\)</span> is
+<span class="math" data-tex="\((b,a)\mapsto(c+br,ar)\)">\((b,a)\mapsto(c+br,ar)\)</span>,
+and multiplies the measure by <span class="math" data-tex="\(m(r)\)">\(m(r)\)</span>. Thus, with exactly the right-translation convention of Section 9,
+<span class="math math-display" data-tex="\[
+\delta(g(b,a))=m(a).
+\tag{10.13}
+\]">\[
+\delta(g(b,a))=m(a).
+\tag{10.13}
+\]</span>
+In <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, <span class="math" data-tex="\(q=p\)">\(q=p\)</span> and <span class="math" data-tex="\(\pi=p\)">\(\pi=p\)</span>, giving <span class="math" data-tex="\(m(x)=|x|_p\)">\(m(x)=|x|_p\)</span>. For the complex field the same Haar definition gives <span class="math" data-tex="\(m(z)=|z|^2\)">\(m(z)=|z|^2\)</span>; the modulus itself then fails the triangle inequality. This explains why Lemma 10.1 did not initially assume a metric from <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>As a positive-characteristic example, take <span class="math" data-tex="\(K=\mathbb F_4((t))\)">\(K=\mathbb F_4((t))\)</span>. Its compact ring is the product of the finite coefficient sets in <span class="math" data-tex="\(\mathbb F_4[[t]]\)">\(\mathbb F_4[[t]]\)</span>, and <span class="math" data-tex="\(tR_K\)">\(tR_K\)</span> has index four. The normalized coefficient-product Haar measure therefore gives <span class="math" data-tex="\(m(t)=1/4\)">\(m(t)=1/4\)</span>. Here the residue prime is two, but the integer two is zero in the field.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 (Foundations, 3 points).</strong> For <span class="math" data-tex="\(q=10/21\)">\(q=10/21\)</span>, compute the two orbit counts, the number of translation parameters in its double coset modulo <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and its time eigenvalue. Repeat for the inverse.</p>
+<p><em>Solution.</em> Lowest terms give <span class="math" data-tex="\(L=21,R=10\)">\(L=21,R=10\)</span>. The translation parameters differ by multiples of <span class="math" data-tex="\(1/21\)">\(1/21\)</span>, so there are 21 modulo <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The time multiplier is <span class="math" data-tex="\((10/21)^{it}\)">\((10/21)^{it}\)</span>. Inversion gives <span class="math" data-tex="\(q^{-1}=21/10\)">\(q^{-1}=21/10\)</span>, <span class="math" data-tex="\(L=10,R=21\)">\(L=10,R=21\)</span>, ten translation parameters and multiplier <span class="math" data-tex="\((21/10)^{it}\)">\((21/10)^{it}\)</span>.</p>
+<p><strong>Exercise 2 (Calculation, 4 points).</strong> Reduce <span class="math" data-tex="\(\mu_6e(1/5)\mu_4^*\)">\(\mu_6e(1/5)\mu_4^*\)</span> to coprime normal terms. Find the correct double-coset translation parameter for <span class="math" data-tex="\(\mu_3e(2/7)\mu_2^*\)">\(\mu_3e(2/7)\mu_2^*\)</span>.</p>
+<p><em>Solution.</em> The common divisor is two. The two residues with <span class="math" data-tex="\(2s=1/5\)">\(2s=1/5\)</span> are <span class="math" data-tex="\(1/10,3/5\)">\(1/10,3/5\)</span>. Equation (4.8) gives</p>
+<span class="math math-display" data-tex="\[
+\mu_6e(1/5)\mu_4^*
+=\tfrac12\mu_3e(1/10)\mu_2^*
++\tfrac12\mu_3e(3/5)\mu_2^*.
+\]">\[
+\mu_6e(1/5)\mu_4^*
+=\tfrac12\mu_3e(1/10)\mu_2^*
++\tfrac12\mu_3e(3/5)\mu_2^*.
+\]</span>
+<p>For the second monomial, (4.5) gives dilation <span class="math" data-tex="\(3/2\)">\(3/2\)</span> and translation <span class="math" data-tex="\((2/7)/2=1/7\)">\((2/7)/2=1/7\)</span>, modulo <span class="math" data-tex="\((1/2)\mathbb Z\)">\((1/2)\mathbb Z\)</span>. Its coefficient is <span class="math" data-tex="\(1/\sqrt6\)">\(1/\sqrt6\)</span>.</p>
+<p><strong>Exercise 3 (Proof, 5 points).</strong> Explain why the canonical KMS state need not be a trace. Exhibit two positive products with different state values, using a dilation with <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math" data-tex="\(a=\mu_n\)">\(a=\mu_n\)</span>. Then <span class="math" data-tex="\(a^*a=1\)">\(a^*a=1\)</span>, so <span class="math" data-tex="\(\phi(a^*a)=1\)">\(\phi(a^*a)=1\)</span>. Equations (6.3) and (6.4) give <span class="math" data-tex="\(\phi(aa^*)=1/n\)">\(\phi(aa^*)=1/n\)</span>. A trace would assign equal values to these products. The KMS identity holds because <span class="math" data-tex="\(\alpha_i(a)=n^{-1}a\)">\(\alpha_i(a)=n^{-1}a\)</span>: <span class="math" data-tex="\(\phi(aa^*)=\phi(a^*\alpha_i(a))=1/n\)">\(\phi(aa^*)=\phi(a^*\alpha_i(a))=1/n\)</span>.</p>
+<p><strong>Exercise 4 (Arithmetic symmetry, 5 points).</strong> In the quotient <span class="math" data-tex="\(\mathbb Z/12\mathbb Z\)">\(\mathbb Z/12\mathbb Z\)</span>, express the indicator of the unit orbit containing <span class="math" data-tex="\(4\)">\(4\)</span> as a linear combination of divisibility indicators. Identify the corresponding projection expression in <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><em>Solution.</em> The orbit is <span class="math" data-tex="\(\{4,8\}\)">\(\{4,8\}\)</span>, the residues with greatest common divisor four with 12. They are divisible by four and are not divisible by twelve. Its indicator is <span class="math" data-tex="\(1_{4\mid z}-1_{12\mid z}\)">\(1_{4\mid z}-1_{12\mid z}\)</span>, corresponding to <span class="math" data-tex="\(P_4-P_{12}\)">\(P_4-P_{12}\)</span>. This is a projection because <span class="math" data-tex="\(P_{12}\le P_4\)">\(P_{12}\le P_4\)</span>. It is fixed by <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p><strong>Exercise 5 (Analysis, 6 points).</strong> Let <span class="math" data-tex="\(x\)">\(x\)</span> be an element of a C*-algebra with a continuous action of <span class="math" data-tex="\(K=\prod_p\mathbb T\)">\(K=\prod_p\mathbb T\)</span>. Prove that averaging against product circle measure is faithful on positive elements. Explain which part fails if the averaging measure is supported only at a single point of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><em>Solution.</em> If <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> and its average is zero, a state <span class="math" data-tex="\(\rho\)">\(\rho\)</span> gives a continuous nonnegative scalar function <span class="math" data-tex="\(\rho(\gamma_z(x))\)">\(\rho(\gamma_z(x))\)</span> with integral zero. Every open neighbourhood contains a cylinder neighbourhood, which has positive product measure. A positive value anywhere would therefore force a positive integral. The function vanishes at the identity, so <span class="math" data-tex="\(\rho(x)=0\)">\(\rho(x)=0\)</span> for every state, and <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. A single-point measure has no full-support property; the conclusion that the function vanishes everywhere fails. Its averaging map is nevertheless an automorphism and hence faithful, but this particular integral argument no longer supplies that conclusion.</p>
+<p><strong>Exercise 6 (Adelic fiber size, 7 points).</strong> Compute the fiber size and the norm of <span class="math" data-tex="\(S_{12}\)">\(S_{12}\)</span> in (7.10). Explain why its normalized adjoint is an isometry.</p>
+<p><em>Solution.</em> The local indices are <span class="math" data-tex="\(2^2=4\)">\(2^2=4\)</span> at the prime two and <span class="math" data-tex="\(3\)">\(3\)</span> at the prime three; every other local index is one. Thus <span class="math" data-tex="\([12^{-1}R:R]=12\)">\([12^{-1}R:R]=12\)</span>, and <span class="math" data-tex="\(\|S_{12}\|=\sqrt{12}\)">\(\|S_{12}\|=\sqrt{12}\)</span>. The identity <span class="math" data-tex="\(S_{12}S_{12}^*=12\,1\)">\(S_{12}S_{12}^*=12\,1\)</span> gives
+<span class="math" data-tex="\((12^{-1/2}S_{12}^*)^*(12^{-1/2}S_{12}^*)=1\)">\((12^{-1/2}S_{12}^*)^*(12^{-1/2}S_{12}^*)=1\)</span>.
+It is the isometry <span class="math" data-tex="\(r(\mu_{12})\)">\(r(\mu_{12})\)</span>.</p>
+<p><strong>Exercise 7 (The reciprocal unit, 6 points).</strong> Choose <span class="math" data-tex="\(u\in W\)">\(u\in W\)</span> with residue two modulo five. Evaluate <span class="math" data-tex="\(\theta_u(e(1/5))\)">\(\theta_u(e(1/5))\)</span> and <span class="math" data-tex="\(\Theta_u(e(1/5))\)">\(\Theta_u(e(1/5))\)</span> at <span class="math" data-tex="\(z=1\in R\)">\(z=1\in R\)</span>, using the Fourier identification. Why can these two actions not be indexed identically?</p>
+<p><em>Solution.</em> The residue inverse of two modulo five is three. Thus the abstract action gives <span class="math" data-tex="\(e(2/5)(1)=\exp(4\pi i/5)\)">\(e(2/5)(1)=\exp(4\pi i/5)\)</span>, whereas conjugation by <span class="math" data-tex="\(g(0,u)\)">\(g(0,u)\)</span> gives <span class="math" data-tex="\(e(3/5)(1)=\exp(6\pi i/5)\)">\(e(3/5)(1)=\exp(6\pi i/5)\)</span>. They differ. The equality is <span class="math" data-tex="\(\theta_u=\Theta_{u^{-1}}\)">\(\theta_u=\Theta_{u^{-1}}\)</span> on the identified regular algebra. Such a unit exists, for example with <span class="math" data-tex="\(u_5=2\)">\(u_5=2\)</span> and all other prime coordinates equal to one.</p>
+<p><strong>Exercise 8 (Local distance, 6 points).</strong> In <span class="math" data-tex="\(T_3\)">\(T_3\)</span>, find the common ancestor and distance of <span class="math" data-tex="\(B(0,2)\)">\(B(0,2)\)</span> and <span class="math" data-tex="\(B(3,1)\)">\(B(3,1)\)</span>. List the children of their common ancestor. Check the distance using the normalized lattice quotient.</p>
+<p><em>Solution.</em> Here <span class="math" data-tex="\(v_3(0-3)=1\)">\(v_3(0-3)=1\)</span>, so <span class="math" data-tex="\(h=\min\{2,1,1\}=1\)">\(h=\min\{2,1,1\}=1\)</span>. The common ancestor is <span class="math" data-tex="\(3\mathbb Z_3=B(0,1)=B(3,1)\)">\(3\mathbb Z_3=B(0,1)=B(3,1)\)</span>, and the distance is <span class="math" data-tex="\(2+1-2=1\)">\(2+1-2=1\)</span>. Its children are <span class="math" data-tex="\(B(0,2),B(3,2),B(6,2)\)">\(B(0,2),B(3,2),B(6,2)\)</span>. In the parent basis <span class="math" data-tex="\((3,0),(0,1)\)">\((3,0),(0,1)\)</span>, the lattice for <span class="math" data-tex="\(B(0,2)\)">\(B(0,2)\)</span> is generated by <span class="math" data-tex="\((3,0),(0,1)\)">\((3,0),(0,1)\)</span> in coordinate form; its quotient is <span class="math" data-tex="\(\mathbb Z_3/3\mathbb Z_3\)">\(\mathbb Z_3/3\mathbb Z_3\)</span>, again giving distance one.</p>
+<p><strong>Exercise 9 (The lattice chart, 7 points).</strong> Describe the normalized lattice and all neighbors of <span class="math" data-tex="\(B(1/2,0)\)">\(B(1/2,0)\)</span> in <span class="math" data-tex="\(T_2\)">\(T_2\)</span>. Why is this a valid vertex even though its center is not integral?</p>
+<p><em>Solution.</em> Formula (8.4) gives <span class="math" data-tex="\(L=\mathbb Z_2(1,0)+\mathbb Z_2(1/2,1)\)">\(L=\mathbb Z_2(1,0)+\mathbb Z_2(1/2,1)\)</span>; its second-coordinate image is <span class="math" data-tex="\(\mathbb Z_2\)">\(\mathbb Z_2\)</span>. Its children are <span class="math" data-tex="\(B(1/2,1)\)">\(B(1/2,1)\)</span> and <span class="math" data-tex="\(B(3/2,1)\)">\(B(3/2,1)\)</span>, and its parent is <span class="math" data-tex="\(B(1/2,-1)=2^{-1}\mathbb Z_2\)">\(B(1/2,-1)=2^{-1}\mathbb Z_2\)</span>. The three corresponding index-two intermediate lattices are the two child lattices and <span class="math" data-tex="\(2L(1/2,-1)\)">\(2L(1/2,-1)\)</span>. The center can be any element of <span class="math" data-tex="\(\mathbb Q_2\)">\(\mathbb Q_2\)</span>; normalization requires the second-coordinate image to be <span class="math" data-tex="\(\mathbb Z_2\)">\(\mathbb Z_2\)</span>, and places no integrality condition on the first coordinate of <span class="math" data-tex="\((x,1)\)">\((x,1)\)</span>.</p>
+<p><strong>Exercise 10 (Two prime coordinates, 8 points).</strong> Select one child-parent edge in <span class="math" data-tex="\(T_2\)">\(T_2\)</span> and one in <span class="math" data-tex="\(T_3\)">\(T_3\)</span>, fixing every other coordinate. List the maximal simplices in their product. Compute the norm and coisometry relation of the operator that takes both parents, and identify the corresponding Hecke generator.</p>
+<p><em>Solution.</em> Label a vertex by which coordinates have reached their parents. The maximal chains are
+<span class="math" data-tex="\(\varnothing\subset\{2\}\subset\{2,3\}\)">\(\varnothing\subset\{2\}\subset\{2,3\}\)</span>
+and
+<span class="math" data-tex="\(\varnothing\subset\{3\}\subset\{2,3\}\)">\(\varnothing\subset\{3\}\subset\{2,3\}\)</span>;
+they give the two triangles in the square. The simultaneous parent operator is <span class="math" data-tex="\(S_2\otimes S_3\)">\(S_2\otimes S_3\)</span>, with six preimages for every vertex, norm <span class="math" data-tex="\(\sqrt6\)">\(\sqrt6\)</span>, and product with its adjoint equal to <span class="math" data-tex="\(6\,1\)">\(6\,1\)</span>. Its normalization by <span class="math" data-tex="\(6^{-1/2}\)">\(6^{-1/2}\)</span> is <span class="math" data-tex="\(r(\mu_6^*)\)">\(r(\mu_6^*)\)</span>, since <span class="math" data-tex="\(\mu_6=\mu_2\mu_3\)">\(\mu_6=\mu_2\mu_3\)</span> and the two coordinate operators commute. Its normalized adjoint is the Hecke isometry <span class="math" data-tex="\(r(\mu_6)\)">\(r(\mu_6)\)</span>.</p>
+<p><strong>Exercise 11 (A shell in the local corner, 8 points).</strong> At a prime <span class="math" data-tex="\(p\)">\(p\)</span>, express the indicator of the double coset with <span class="math" data-tex="\(v_p(a)=0,v_p(b)=-2\)">\(v_p(a)=0,v_p(b)=-2\)</span> in terms of <span class="math" data-tex="\(F_{i,j}\)">\(F_{i,j}\)</span>. Give the value of its Toeplitz KMS state at inverse temperature <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span>.</p>
+<p><em>Solution.</em> Since <span class="math" data-tex="\(a\)">\(a\)</span> is a unit, <span class="math" data-tex="\(x=b/a\)">\(x=b/a\)</span> has valuation <span class="math" data-tex="\(-2\)">\(-2\)</span>. Equation (9.10) gives
+<span class="math math-display" data-tex="\[
+1_{\{v_p(a)=0,\ v_p(b)=-2\}}
+=p^2F_{2,2}-pF_{1,1}.
+\]">\[
+1_{\{v_p(a)=0,\ v_p(b)=-2\}}
+=p^2F_{2,2}-pF_{1,1}.
+\]</span>
+The functions correspond to <span class="math" data-tex="\(V_p^2V_p^{*2}\)">\(V_p^2V_p^{*2}\)</span> and <span class="math" data-tex="\(V_pV_p^*\)">\(V_pV_p^*\)</span>. The Toeplitz KMS values from the phase lesson, Theorem 11.3, are <span class="math" data-tex="\(p^{-2\beta}\)">\(p^{-2\beta}\)</span> and <span class="math" data-tex="\(p^{-\beta}\)">\(p^{-\beta}\)</span>. Thus the answer is <span class="math" data-tex="\(p^{2-2\beta}-p^{1-\beta}\)">\(p^{2-2\beta}-p^{1-\beta}\)</span>. This can be negative for <span class="math" data-tex="\(\beta&gt;1\)">\(\beta&gt;1\)</span>: a nonnegative group convolution function need not represent a positive C*-algebra element.</p>
+<p><strong>Exercise 12 (The defect and the Haar convention, 6 points).</strong> Compute the expectation of <span class="math" data-tex="\(e-V_pV_p^*\)">\(e-V_pV_p^*\)</span> in the base-vector representation of the corner, and compare it with the <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-KMS value. Explain the sign of the time eigenvalue of <span class="math" data-tex="\(V_p\)">\(V_p\)</span>.</p>
+<p><em>Solution.</em> Equation (9.11) gives <span class="math" data-tex="\(1-p^{-1}&gt;0\)">\(1-p^{-1}&gt;0\)</span>, proving that the corner isometry is not unitary. Its <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-KMS value is <span class="math" data-tex="\(1-p^{-\beta}\)">\(1-p^{-\beta}\)</span>. Right multiplication has measure factor <span class="math" data-tex="\(\delta(g_p)=|p|_p=p^{-1}\)">\(\delta(g_p)=|p|_p=p^{-1}\)</span>, while the chosen dynamics uses <span class="math" data-tex="\(\delta^{-it}\)">\(\delta^{-it}\)</span>. Consequently <span class="math" data-tex="\(\sigma_t(V_p)=p^{it}V_p\)">\(\sigma_t(V_p)=p^{it}V_p\)</span>, in agreement with the prime occupation energy <span class="math" data-tex="\(\log p\)">\(\log p\)</span>.</p>
+<p><strong>Exercise 13 (Residue size and ramification, 6 points).</strong> A local field of characteristic zero has residue field of size nine and <span class="math" data-tex="\(v(3)=2\)">\(v(3)=2\)</span>. Compute <span class="math" data-tex="\(m(\pi)\)">\(m(\pi)\)</span>, <span class="math" data-tex="\(m(3)\)">\(m(3)\)</span>, <span class="math" data-tex="\(m(1/3)\)">\(m(1/3)\)</span>, and <span class="math" data-tex="\([R_K:\pi^4R_K]\)">\([R_K:\pi^4R_K]\)</span>. Which integer primes have modulus less than one?</p>
+<p><em>Solution.</em> Here <span class="math" data-tex="\(m(\pi)=1/9\)">\(m(\pi)=1/9\)</span>, <span class="math" data-tex="\(m(3)=9^{-2}=1/81\)">\(m(3)=9^{-2}=1/81\)</span>, and <span class="math" data-tex="\(m(1/3)=81\)">\(m(1/3)=81\)</span>. Each successive additive quotient has nine elements, by multiplication by a power of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, so the index is <span class="math" data-tex="\(9^4=6561\)">\(9^4=6561\)</span>. The residue field has characteristic three. Every other integer prime has nonzero image in its prime subfield, hence is a unit and has modulus one.</p>
+<p><strong>Exercise 14 (Positive characteristic, 6 points).</strong> In <span class="math" data-tex="\(\mathbb F_4((t))\)">\(\mathbb F_4((t))\)</span>, compute the modulus of <span class="math" data-tex="\(t^3+t^5\)">\(t^3+t^5\)</span>, the index of <span class="math" data-tex="\(t^2R_K\)">\(t^2R_K\)</span> in <span class="math" data-tex="\(R_K\)">\(R_K\)</span>, and the modulus of the integer two. Why is two not a uniformizer?</p>
+<p><em>Solution.</em> The leading exponent is three, and <span class="math" data-tex="\(1+t^2\)">\(1+t^2\)</span> is a unit, so the modulus is <span class="math" data-tex="\(4^{-3}=1/64\)">\(4^{-3}=1/64\)</span>. The quotient by <span class="math" data-tex="\(t^2\)">\(t^2\)</span> is described by the two coefficients of <span class="math" data-tex="\(1,t\)">\(1,t\)</span>, giving <span class="math" data-tex="\(4^2=16\)">\(4^2=16\)</span> elements. Two is zero, of modulus zero; a uniformizer is nonzero and has modulus <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. The distinguished residue prime need not be a nonzero element of the field.</p>
+<p><strong>Exercise 15 (Why compactness forces maximality, 7 points).</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be a compact subring of <span class="math" data-tex="\(K\)">\(K\)</span>. Prove <span class="math" data-tex="\(B\subset R_K\)">\(B\subset R_K\)</span> without assuming that <span class="math" data-tex="\(B\)">\(B\)</span> is an ideal or that it contains <span class="math" data-tex="\(1\)">\(1\)</span>. Show that <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is principal without starting from discreteness of the value group.</p>
+<p><em>Solution.</em> Continuity makes <span class="math" data-tex="\(m(B)\)">\(m(B)\)</span> bounded. If <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span> had modulus greater than one, the powers <span class="math" data-tex="\(x^n\in B\)">\(x^n\in B\)</span> would contradict boundedness. Hence <span class="math" data-tex="\(B\subset R_K\)">\(B\subset R_K\)</span>. For the ideal assertion, the ultrametric inequality makes the unit set open, so <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is compact and open. Its nonzero maximum modulus <span class="math" data-tex="\(\lambda&lt;1\)">\(\lambda&lt;1\)</span> is attained at some <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Every <span class="math" data-tex="\(x\in J_K\)">\(x\in J_K\)</span> satisfies <span class="math" data-tex="\(m(x/\pi)\le1\)">\(m(x/\pi)\le1\)</span>, and every element of <span class="math" data-tex="\(\pi R_K\)">\(\pi R_K\)</span> has modulus at most <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Thus <span class="math" data-tex="\(J_K=\pi R_K\)">\(J_K=\pi R_K\)</span>. Discreteness follows afterward from the gap <span class="math" data-tex="\((\lambda,1)\)">\((\lambda,1)\)</span>.</p>
+<p><strong>Exercise 16 (A modulus is not always a metric, 7 points).</strong> Compute the Haar modulus of multiplication by two on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Check the triangle inequality for <span class="math" data-tex="\(m(z-w)\)">\(m(z-w)\)</span> on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> using <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>. What is the affine module and time character of <span class="math" data-tex="\(g(0,\pi)\)">\(g(0,\pi)\)</span> in the nonarchimedean case?</p>
+<p><em>Solution.</em> The real length factor is two, and the complex area factor is four. On <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, <span class="math" data-tex="\(m(2-0)=4\)">\(m(2-0)=4\)</span>, whereas <span class="math" data-tex="\(m(2-1)+m(1-0)=2\)">\(m(2-1)+m(1-0)=2\)</span>, so the triangle inequality fails. The square root of that modulus gives the usual complex metric, but the Haar modulus retains its area normalization. In the nonarchimedean case (10.13) gives <span class="math" data-tex="\(\delta(g(0,\pi))=1/q\)">\(\delta(g(0,\pi))=1/q\)</span>; dynamics using <span class="math" data-tex="\(\delta^{-it}\)">\(\delta^{-it}\)</span> has character <span class="math" data-tex="\(q^{it}\)">\(q^{it}\)</span>, matching an occupation energy <span class="math" data-tex="\(\log q\)">\(\log q\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Bost–Connes] J.-B. Bost and A. Connes, <em>Hecke algebras, type III factors and phase transitions with spontaneous symmetry breaking in number theory</em>, Selecta Mathematica (N.S.) 1 (1995), 411–457. <a href="https://alainconnes.org/wp-content/uploads/bostconnesscan.pdf">Author-hosted article</a>.</li>
+<li>[Connes–Marcolli] A. Connes and M. Marcolli, <em>From physics to number theory via noncommutative geometry</em>, in Frontiers in Number Theory, Physics, and Geometry I, Springer, 2006. <a href="https://www.its.caltech.edu/~matilde/QSMQlattLesHouches.pdf">Open exposition</a>.</li>
+<li>[Milne ANT] J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, course notes, for local fields, finite adeles and ideles.</li>
+<li>[Casselman] B. Casselman, <a href="https://personal.math.ubc.ca/~cass/research/pdf/Tree.pdf"><em>Geometry of the tree</em></a>, from <em>Essays in harmonic analysis on p-adic SL(2)</em>, revised 10 April 2019, §§3–4, for the lattice tree over a p-adic field.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/the-bost-connes-hecke-algebra.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NCG-ARITHMETIC-QSM">Repository</a></nav>
+</footer>
+</body>
+</html>

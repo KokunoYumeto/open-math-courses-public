@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cauchy kernels and distributional boundary limits</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="cauchy-kernels-and-distributional-boundary-limits">Cauchy kernels and distributional boundary limits</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>A holomorphic function can grow without having ordinary values on the edge of its domain. Integration against a test function can still have a limit. The test absorbs enough derivatives to balance the growth. The Cauchy kernel shows what this limit remembers: approaching a real pole from above or below gives the same principal value and opposite concentrated terms.</p>
+<p><a href="https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_12.html">Avi Zeff’s lecture on Pompeiu’s formula</a>, Section 2, is a primary human reference for the complex Green identity and punctured-circle argument. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Dyatlov 2026</a>, Proposition 9.8, states the fundamental solution of the Cauchy–Riemann operator. We give the kernel and finite-order boundary proofs here. We use <a href="boundary-flux-and-weak-identities.html">Boundary flux and weak identities</a> for Green’s formula and pointwise-to-weak equations, and <a href="referenced-prerequisite-statements.html#reference-949c4a966f6c">Order, positivity and distributional limits</a> for finite-regularity tests. We use the elliptic regularity theorem in <a href="geometric-microlocal-calculus.html#AN03-GEO-009">Elliptic tests and intrinsic wavefront</a>; Section 2 checks its hypotheses for this operator. Entry prerequisites are multivariable calculus, dominated convergence and elementary geometric series.</p>
+<h2 id="a-small-circle-detects-the-cauchy-kernel">A small circle detects the Cauchy kernel</h2>
+<p>Write <span class="math" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>, <span class="math" data-tex="\(dA=dx\,dy\)">\(dA=dx\,dy\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\bar\partial=\frac12(\partial_x+i\partial_y).
+\tag{1.1}
+\]">\[
+\bar\partial=\frac12(\partial_x+i\partial_y).
+\tag{1.1}
+\]</span>
+<p>Distributions pair linearly with their tests; there is no complex conjugation in the pairing. An oriented boundary is positive when the region lies to the left as it is traversed. In particular the outer boundary of a disk is counterclockwise, while the inner boundary of a punctured disk is clockwise. Complex Green’s formula, proved in the boundary lesson, reads</p>
+<span class="math math-display" data-tex="\[
+2\int_Y\bar\partial v\,dA
+=-i\int_{\partial_XY}v\,dz
+\quad(v\in C_c^1(X)).
+\tag{1.2}
+\]">\[
+2\int_Y\bar\partial v\,dA
+=-i\int_{\partial_XY}v\,dz
+\quad(v\in C_c^1(X)).
+\tag{1.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(Y\subset X\subset\mathbb C\)">\(Y\subset X\subset\mathbb C\)</span> is open with a relative <span class="math" data-tex="\(C^1\)">\(C^1\)</span> boundary. Compact support makes the boundary integral finite even if <span class="math" data-tex="\(Y\)">\(Y\)</span> is unbounded.</p>
+<p><strong>Theorem 1.1 (Cauchy–Pompeiu with a relative boundary).</strong> If <span class="math" data-tex="\(\phi\in C_c^1(X)\)">\(\phi\in C_c^1(X)\)</span> and <span class="math" data-tex="\(\zeta\in Y\)">\(\zeta\in Y\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\phi(\zeta)=
+\frac{1}{2\pi i}\int_{\partial_XY}
+\frac{\phi(z)}{z-\zeta}\,dz
+-\frac1\pi\int_Y
+\frac{\bar\partial\phi(z)}{z-\zeta}\,dA(z).
+\tag{1.3}
+\]">\[
+\phi(\zeta)=
+\frac{1}{2\pi i}\int_{\partial_XY}
+\frac{\phi(z)}{z-\zeta}\,dz
+-\frac1\pi\int_Y
+\frac{\bar\partial\phi(z)}{z-\zeta}\,dA(z).
+\tag{1.3}
+\]</span>
+<p>Both integrals are ordinary integrals. The area kernel is locally integrable at <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>.</p>
+<p><strong>Proof.</strong> Polar coordinates give <span class="math" data-tex="\(\int_{|z-\zeta|&lt;r}|z-\zeta|^{-1}\,dA=2\pi r\)">\(\int_{|z-\zeta|&lt;r}|z-\zeta|^{-1}\,dA=2\pi r\)</span>. Choose <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> so that the closed disk about <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> of radius <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> lies in <span class="math" data-tex="\(Y\)">\(Y\)</span>. On its complement the function <span class="math" data-tex="\(\phi(z)/(z-\zeta)\)">\(\phi(z)/(z-\zeta)\)</span> is <span class="math" data-tex="\(C^1\)">\(C^1\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\bar\partial\left(\frac{\phi(z)}{z-\zeta}\right)
+=\frac{\bar\partial\phi(z)}{z-\zeta}.
+\tag{1.4}
+\]">\[
+\bar\partial\left(\frac{\phi(z)}{z-\zeta}\right)
+=\frac{\bar\partial\phi(z)}{z-\zeta}.
+\tag{1.4}
+\]</span>
+<p>To apply (1.2) literally to a compact <span class="math" data-tex="\(C^1\)">\(C^1\)</span> function on <span class="math" data-tex="\(X\)">\(X\)</span>, multiply the quotient by a smooth radial cutoff which is zero for <span class="math" data-tex="\(|z-\zeta|\leq\varepsilon/2\)">\(|z-\zeta|\leq\varepsilon/2\)</span> and one for <span class="math" data-tex="\(|z-\zeta|\geq3\varepsilon/4\)">\(|z-\zeta|\geq3\varepsilon/4\)</span>. This does not change the function or its derivatives on the punctured region <span class="math" data-tex="\(Y\setminus\overline{B(\zeta,\varepsilon)}\)">\(Y\setminus\overline{B(\zeta,\varepsilon)}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span> denote the circle with its counterclockwise orientation. Formula (1.2), with the clockwise inner orientation of the punctured region, gives</p>
+<span class="math math-display" data-tex="\[
+\frac{1}{2\pi i}\int_{C_\varepsilon}
+\frac{\phi(z)}{z-\zeta}\,dz
+=\frac{1}{2\pi i}\int_{\partial_XY}
+\frac{\phi(z)}{z-\zeta}\,dz
+-\frac1\pi\int_{Y\setminus\overline{B(\zeta,\varepsilon)}}
+\frac{\bar\partial\phi(z)}{z-\zeta}\,dA.
+\tag{1.5}
+\]">\[
+\frac{1}{2\pi i}\int_{C_\varepsilon}
+\frac{\phi(z)}{z-\zeta}\,dz
+=\frac{1}{2\pi i}\int_{\partial_XY}
+\frac{\phi(z)}{z-\zeta}\,dz
+-\frac1\pi\int_{Y\setminus\overline{B(\zeta,\varepsilon)}}
+\frac{\bar\partial\phi(z)}{z-\zeta}\,dA.
+\tag{1.5}
+\]</span>
+<p>Parametrizing <span class="math" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span> by <span class="math" data-tex="\(z=\zeta+\varepsilon e^{i\theta}\)">\(z=\zeta+\varepsilon e^{i\theta}\)</span>, its left side is <span class="math" data-tex="\((2\pi)^{-1}\int_0^{2\pi}\phi(\zeta+\varepsilon e^{i\theta})\,d\theta\)">\((2\pi)^{-1}\int_0^{2\pi}\phi(\zeta+\varepsilon e^{i\theta})\,d\theta\)</span>, which tends to <span class="math" data-tex="\(\phi(\zeta)\)">\(\phi(\zeta)\)</span>. The removed area integral has absolute value at most <span class="math" data-tex="\(2\varepsilon\|\bar\partial\phi\|_\infty\)">\(2\varepsilon\|\bar\partial\phi\|_\infty\)</span>. Passing to the limit proves (1.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.2 (fundamental solution, including the normalization).</strong> On <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>,</p>
+<span class="math math-display" data-tex="\[
+E_\zeta(z)=\frac{1}{\pi(z-\zeta)},
+\qquad \bar\partial E_\zeta=\delta_\zeta.
+\tag{1.6}
+\]">\[
+E_\zeta(z)=\frac{1}{\pi(z-\zeta)},
+\qquad \bar\partial E_\zeta=\delta_\zeta.
+\tag{1.6}
+\]</span>
+<p>The same equality holds after restricting to an open <span class="math" data-tex="\(X\)">\(X\)</span> containing <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>.</p>
+<p><strong>Proof.</strong> For a compact smooth test choose a disk containing both its support and <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. The boundary term in (1.3) is zero. Thus <span class="math" data-tex="\(-\int E_\zeta\bar\partial\phi\,dA=\phi(\zeta)\)">\(-\int E_\zeta\bar\partial\phi\,dA=\phi(\zeta)\)</span>, which is exactly the distributional derivative convention in (1.6). A test compactly supported in an arbitrary <span class="math" data-tex="\(X\)">\(X\)</span> extends smoothly by zero to <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, so restriction gives the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The point source in (1.6) comes from the shrinking circle. The classical derivative is zero away from that point, and deleting the circle without keeping its boundary integral would delete the entire source.</p>
+<h2 id="weak-cauchyriemann-solutions-are-holomorphic">Weak Cauchy–Riemann solutions are holomorphic</h2>
+<p>We use the following consequence of the linked elliptic-regularity theorem: if <span class="math" data-tex="\(P\)">\(P\)</span> is a properly supported classical elliptic operator and <span class="math" data-tex="\(Pu\)">\(Pu\)</span> is smooth, then a distribution <span class="math" data-tex="\(u\)">\(u\)</span> is smooth. The linked proof constructs a local inverse up to a smooth kernel; its wavefront formulation allows any fixed operator order. We need only a constant-coefficient differential operator of order one on an arbitrary open subset of <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>.</p>
+<p><strong>Proposition 2.1 (exact regularity specialization).</strong> If <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span> and <span class="math" data-tex="\(\bar\partial u=0\)">\(\bar\partial u=0\)</span>, then <span class="math" data-tex="\(u\)">\(u\)</span> is the distribution of a holomorphic function on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Proof.</strong> Under the convention <span class="math" data-tex="\(D_j=-i\partial_j\)">\(D_j=-i\partial_j\)</span>, the principal symbol of (1.1) is</p>
+<span class="math math-display" data-tex="\[
+p(\xi_x,\xi_y)=\frac{i\xi_x-\xi_y}{2},
+\qquad |p(\xi)|=\frac{|\xi|}{2}.
+\tag{2.1}
+\]">\[
+p(\xi_x,\xi_y)=\frac{i\xi_x-\xi_y}{2},
+\qquad |p(\xi)|=\frac{|\xi|}{2}.
+\tag{2.1}
+\]</span>
+<p>It is a scalar classical symbol of order one and is nonzero at every nonzero real covector. A differential operator has kernel supported on the diagonal; both projections of this support are proper on every open <span class="math" data-tex="\(X\)">\(X\)</span>. Hence the stated elliptic theorem applies and gives a smooth representative <span class="math" data-tex="\(h\)">\(h\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span>. The equation becomes <span class="math" data-tex="\(h_x+ih_y=0\)">\(h_x+ih_y=0\)</span> pointwise, or <span class="math" data-tex="\(h_y=ih_x\)">\(h_y=ih_x\)</span>.</p>
+<p>Real differentiability now gives, for a small complex increment <span class="math" data-tex="\(a+ib\)">\(a+ib\)</span>,</p>
+<span class="math math-display" data-tex="\[
+h(z+a+ib)-h(z)
+=h_x(z)(a+ib)+o(|a+ib|).
+\tag{2.2}
+\]">\[
+h(z+a+ib)-h(z)
+=h_x(z)(a+ib)+o(|a+ib|).
+\tag{2.2}
+\]</span>
+<p>Thus the complex derivative exists and equals <span class="math" data-tex="\(h_x\)">\(h_x\)</span>; <span class="math" data-tex="\(h\)">\(h\)</span> is holomorphic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is no preliminary boundedness or continuity assumption on the distribution in this proposition.</p>
+<p><strong>Corollary 2.2 (complex differentiability is enough).</strong> A function which is complex differentiable at every point of <span class="math" data-tex="\(X\)">\(X\)</span> is smooth, satisfies (1.1) pointwise, and has a convergent power series in each disk whose closure lies in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Proof.</strong> Complex differentiability implies continuity and real differentiability at each point, with <span class="math" data-tex="\(h_y=ih_x\)">\(h_y=ih_x\)</span>. Apply the pointwise-to-weak first-order identity of the boundary lesson with coefficients <span class="math" data-tex="\(a_1=1/2\)">\(a_1=1/2\)</span>, <span class="math" data-tex="\(a_2=i/2\)">\(a_2=i/2\)</span>, zero zeroth-order coefficient and zero right side. It yields <span class="math" data-tex="\(\bar\partial h=0\)">\(\bar\partial h=0\)</span> weakly even before derivative continuity is known. Proposition 2.1 gives a smooth representative, which agrees with the original continuous function everywhere.</p>
+<p>For a closed disk <span class="math" data-tex="\(\overline{B(a,R)}\subset X\)">\(\overline{B(a,R)}\subset X\)</span>, choose a compact smooth cutoff equal to one on a neighborhood of this disk. Apply (1.3) to the disk and to the cutoff times <span class="math" data-tex="\(h\)">\(h\)</span>. The area term is zero, so</p>
+<span class="math math-display" data-tex="\[
+h(\zeta)=\frac{1}{2\pi i}
+\int_{|z-a|=R}\frac{h(z)}{z-\zeta}\,dz
+\quad(|\zeta-a|&lt;R).
+\tag{2.3}
+\]">\[
+h(\zeta)=\frac{1}{2\pi i}
+\int_{|z-a|=R}\frac{h(z)}{z-\zeta}\,dz
+\quad(|\zeta-a|&lt;R).
+\tag{2.3}
+\]</span>
+<p>On <span class="math" data-tex="\(|\zeta-a|\leq r&lt;R\)">\(|\zeta-a|\leq r&lt;R\)</span>, expand the denominator by its uniformly convergent geometric series. Termwise integration gives</p>
+<span class="math math-display" data-tex="\[
+h(\zeta)=\sum_{j=0}^{\infty}c_j(\zeta-a)^j,
+\qquad c_j=\frac{1}{2\pi i}
+\int_{|z-a|=R}\frac{h(z)}{(z-a)^{j+1}}\,dz.
+\tag{2.4}
+\]">\[
+h(\zeta)=\sum_{j=0}^{\infty}c_j(\zeta-a)^j,
+\qquad c_j=\frac{1}{2\pi i}
+\int_{|z-a|=R}\frac{h(z)}{(z-a)^{j+1}}\,dz.
+\tag{2.4}
+\]</span>
+<p>If <span class="math" data-tex="\(M=\max_{|z-a|=R}|h(z)|\)">\(M=\max_{|z-a|=R}|h(z)|\)</span>, then <span class="math" data-tex="\(|c_j|\leq MR^{-j}\)">\(|c_j|\leq MR^{-j}\)</span>. This proves convergence on every smaller disk. The same estimate with the polynomial factors from differentiation permits differentiation of the series on smaller disks. Its coefficients are therefore <span class="math" data-tex="\(c_j=h^{(j)}(a)/j!\)">\(c_j=h^{(j)}(a)/j!\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="test-derivatives-balance-polynomial-growth">Test derivatives balance polynomial growth</h2>
+<p>Let <span class="math" data-tex="\(I\subset\mathbb R\)">\(I\subset\mathbb R\)</span> be an open interval, <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>, and let <span class="math" data-tex="\(f\)">\(f\)</span> be holomorphic on <span class="math" data-tex="\(I+i(0,\gamma)\)">\(I+i(0,\gamma)\)</span>. Assume, for an integer <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|f(x+iy)|\leq C y^{-N}
+\quad(x\in I,\ 0&lt;y&lt;\gamma).
+\tag{3.1}
+\]">\[
+|f(x+iy)|\leq C y^{-N}
+\quad(x\in I,\ 0&lt;y&lt;\gamma).
+\tag{3.1}
+\]</span>
+<p>For <span class="math" data-tex="\(\phi\in C_c^{N+1}(I)\)">\(\phi\in C_c^{N+1}(I)\)</span>, its pairing at positive height is an ordinary integral. The function <span class="math" data-tex="\(f\)">\(f\)</span> need not have a pointwise limit at height zero.</p>
+<p><strong>Theorem 3.1 (boundary limit on finite-regularity tests).</strong> The limit</p>
+<span class="math math-display" data-tex="\[
+\langle f_+,\phi\rangle
+=\lim_{\varepsilon\downarrow0}
+\int_I f(x+i\varepsilon)\phi(x)\,dx
+\tag{3.2}
+\]">\[
+\langle f_+,\phi\rangle
+=\lim_{\varepsilon\downarrow0}
+\int_I f(x+i\varepsilon)\phi(x)\,dx
+\tag{3.2}
+\]</span>
+<p>exists for every <span class="math" data-tex="\(\phi\in C_c^{N+1}(I)\)">\(\phi\in C_c^{N+1}(I)\)</span>. On smooth tests it defines a distribution of order at most <span class="math" data-tex="\(N+1\)">\(N+1\)</span>. For each compact support set <span class="math" data-tex="\(K\Subset I\)">\(K\Subset I\)</span>, the positive-height pairings have a common bound in the <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span> norm for all sufficiently small heights.</p>
+<p><strong>Proof.</strong> Extend <span class="math" data-tex="\(\phi\)">\(\phi\)</span> by zero along the real axis, and put</p>
+<span class="math math-display" data-tex="\[
+\Phi(x,s)=\sum_{j=0}^N
+\frac{(is)^j}{j!}\phi^{(j)}(x).
+\tag{3.3}
+\]">\[
+\Phi(x,s)=\sum_{j=0}^N
+\frac{(is)^j}{j!}\phi^{(j)}(x).
+\tag{3.3}
+\]</span>
+<p>This compactly supported <span class="math" data-tex="\(C^1\)">\(C^1\)</span> function has an almost vanishing Cauchy–Riemann derivative:</p>
+<span class="math math-display" data-tex="\[
+\bar\partial\Phi(x,s)
+=\frac{(is)^N}{2N!}\phi^{(N+1)}(x).
+\tag{3.4}
+\]">\[
+\bar\partial\Phi(x,s)
+=\frac{(is)^N}{2N!}\phi^{(N+1)}(x).
+\tag{3.4}
+\]</span>
+<p>Indeed the <span class="math" data-tex="\(x\)">\(x\)</span>-derivative of term <span class="math" data-tex="\(j\)">\(j\)</span> cancels the <span class="math" data-tex="\(i\partial_s\)">\(i\partial_s\)</span> derivative of term <span class="math" data-tex="\(j+1\)">\(j+1\)</span>, leaving precisely the last term. This calculation also holds for <span class="math" data-tex="\(N=0\)">\(N=0\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(0&lt;T&lt;\gamma\)">\(0&lt;T&lt;\gamma\)</span> and take <span class="math" data-tex="\(0&lt;\varepsilon&lt;\gamma-T\)">\(0&lt;\varepsilon&lt;\gamma-T\)</span>. Differentiating <span class="math" data-tex="\(A_\varepsilon(s)=\int_I f(x+i(\varepsilon+s))\Phi(x,s)\,dx\)">\(A_\varepsilon(s)=\int_I f(x+i(\varepsilon+s))\Phi(x,s)\,dx\)</span> and integrating by parts in <span class="math" data-tex="\(x\)">\(x\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+A_\varepsilon&#x27;(s)
+=-2i\int_I f(x+i(\varepsilon+s))\bar\partial\Phi(x,s)\,dx
+=-\frac{i^{N+1}s^N}{N!}
+\int_I f(x+i(\varepsilon+s))\phi^{(N+1)}(x)\,dx.
+\tag{3.5}
+\]">\[
+A_\varepsilon&#x27;(s)
+=-2i\int_I f(x+i(\varepsilon+s))\bar\partial\Phi(x,s)\,dx
+=-\frac{i^{N+1}s^N}{N!}
+\int_I f(x+i(\varepsilon+s))\phi^{(N+1)}(x)\,dx.
+\tag{3.5}
+\]</span>
+<p>No end terms occur since every derivative of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is supported in the same compact set. The first equality uses <span class="math" data-tex="\(f_y=if_x\)">\(f_y=if_x\)</span>. Integrating (3.5) from zero to <span class="math" data-tex="\(T\)">\(T\)</span> yields the exact identity</p>
+<span class="math math-display" data-tex="\[
+\int_I f(x+i\varepsilon)\phi(x)\,dx
+=\int_I f(x+i(\varepsilon+T))\Phi(x,T)\,dx
++\frac{i^{N+1}}{N!}\int_0^T s^N
+\int_I f(x+i(\varepsilon+s))\phi^{(N+1)}(x)\,dx\,ds.
+\tag{3.6}
+\]">\[
+\int_I f(x+i\varepsilon)\phi(x)\,dx
+=\int_I f(x+i(\varepsilon+T))\Phi(x,T)\,dx
++\frac{i^{N+1}}{N!}\int_0^T s^N
+\int_I f(x+i(\varepsilon+s))\phi^{(N+1)}(x)\,dx\,ds.
+\tag{3.6}
+\]</span>
+<p>Choose a compact interval <span class="math" data-tex="\(K\Subset I\)">\(K\Subset I\)</span> containing the support. In the second term, (3.1) gives</p>
+<span class="math math-display" data-tex="\[
+s^N|f(x+i(\varepsilon+s))|
+\leq C\left(\frac{s}{\varepsilon+s}\right)^N
+\leq C.
+\tag{3.7}
+\]">\[
+s^N|f(x+i(\varepsilon+s))|
+\leq C\left(\frac{s}{\varepsilon+s}\right)^N
+\leq C.
+\tag{3.7}
+\]</span>
+<p>For <span class="math" data-tex="\(N=0\)">\(N=0\)</span> the ratio to the zeroth power is one. The integrable majorant is constant on <span class="math" data-tex="\(K\times(0,T)\)">\(K\times(0,T)\)</span>. Dominated convergence therefore passes the second term to its limit; the first converges by smoothness at height <span class="math" data-tex="\(T\)">\(T\)</span>. In particular the limit is</p>
+<span class="math math-display" data-tex="\[
+\langle f_+,\phi\rangle
+=\int_I f(x+iT)\Phi(x,T)\,dx
++\frac{i^{N+1}}{N!}\int_0^T s^N
+\int_I f(x+is)\phi^{(N+1)}(x)\,dx\,ds.
+\tag{3.8}
+\]">\[
+\langle f_+,\phi\rangle
+=\int_I f(x+iT)\Phi(x,T)\,dx
++\frac{i^{N+1}}{N!}\int_0^T s^N
+\int_I f(x+is)\phi^{(N+1)}(x)\,dx\,ds.
+\tag{3.8}
+\]</span>
+<p>Every integral on the right is absolutely convergent. Formula (3.6) also gives, writing <span class="math" data-tex="\(|K|\)">\(|K|\)</span> for the length of the containing interval,</p>
+<span class="math math-display" data-tex="\[
+\left|\int_I f(x+i\varepsilon)\phi(x)\,dx\right|
+\leq C|K|\left(
+T^{-N}\sum_{j=0}^N\frac{T^j}{j!}
++\frac{T}{N!}\right)
+\|\phi\|_{C^{N+1}},
+\tag{3.9}
+\]">\[
+\left|\int_I f(x+i\varepsilon)\phi(x)\,dx\right|
+\leq C|K|\left(
+T^{-N}\sum_{j=0}^N\frac{T^j}{j!}
++\frac{T}{N!}\right)
+\|\phi\|_{C^{N+1}},
+\tag{3.9}
+\]</span>
+<p>where <span class="math" data-tex="\(\|\phi\|_{C^{N+1}}=\max_{0\leq j\leq N+1}\|\phi^{(j)}\|_\infty\)">\(\|\phi\|_{C^{N+1}}=\max_{0\leq j\leq N+1}\|\phi^{(j)}\|_\infty\)</span>. This proves the uniform bound and distributional continuity of the limit. The value in (3.8) is independent of <span class="math" data-tex="\(T\)">\(T\)</span> because it is the limit of the same left side of (3.6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The order bound is a sufficient bound, and can exceed the actual order. For instance a function which extends smoothly across the interval has an order-zero boundary distribution regardless of a larger exponent chosen in (3.1).</p>
+<p><strong>Corollary 3.2 (moving tests and the lower side).</strong> If <span class="math" data-tex="\(\phi_\varepsilon\)">\(\phi_\varepsilon\)</span> have a common compact support in <span class="math" data-tex="\(I\)">\(I\)</span> and converge to <span class="math" data-tex="\(\phi\)">\(\phi\)</span> in <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\int_I f(x+i\varepsilon)\phi_\varepsilon(x)\,dx
+\longrightarrow\langle f_+,\phi\rangle.
+\tag{3.10}
+\]">\[
+\int_I f(x+i\varepsilon)\phi_\varepsilon(x)\,dx
+\longrightarrow\langle f_+,\phi\rangle.
+\tag{3.10}
+\]</span>
+<p>For a holomorphic function on <span class="math" data-tex="\(I+i(-\gamma,0)\)">\(I+i(-\gamma,0)\)</span> satisfying <span class="math" data-tex="\(|f(x-iy)|\leq Cy^{-N}\)">\(|f(x-iy)|\leq Cy^{-N}\)</span>, the lower limit <span class="math" data-tex="\(f_-\)">\(f_-\)</span> exists on the same tests and obeys (3.9). Its version of (3.8) uses <span class="math" data-tex="\(\Phi_-(x,s)=\sum_{j=0}^N(-is)^j\phi^{(j)}(x)/j!\)">\(\Phi_-(x,s)=\sum_{j=0}^N(-is)^j\phi^{(j)}(x)/j!\)</span>, height <span class="math" data-tex="\(-T\)">\(-T\)</span>, and coefficient <span class="math" data-tex="\((-i)^{N+1}/N!\)">\((-i)^{N+1}/N!\)</span>.</p>
+<p><strong>Proof.</strong> Subtract the fixed-test pairing from the moving-test pairing. Estimate their difference by (3.9), which tends to zero; Theorem 3.1 handles the remaining fixed test. For the lower side put <span class="math" data-tex="\(g(w)=f(-w)\)">\(g(w)=f(-w)\)</span>. This is holomorphic in the reflected upper strip and has the same bound. Apply the upper theorem with test <span class="math" data-tex="\(\psi(t)=\phi(-t)\)">\(\psi(t)=\phi(-t)\)</span>, then substitute <span class="math" data-tex="\(x=-t\)">\(x=-t\)</span>. Each test derivative contributes <span class="math" data-tex="\((-1)^j\)">\((-1)^j\)</span>, giving the stated lower polynomial and coefficient. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Local bounds suffice as well: to obtain the limit on a compact subinterval, apply the proof in a slightly larger relatively compact interval where (3.1) holds with one constant. Uniqueness of limits makes the resulting local distributions agree on overlaps.</p>
+<h2 id="a-real-pole-remembers-the-side-of-approach">A real pole remembers the side of approach</h2>
+<p>For a smooth compact test on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, define the principal value by symmetric deletion:</p>
+<span class="math math-display" data-tex="\[
+\left\langle\operatorname{pv}\frac1x,\phi\right\rangle
+=\lim_{r\downarrow0}\int_{|x|&gt;r}\frac{\phi(x)}x\,dx
+=\int_0^\infty\frac{\phi(x)-\phi(-x)}x\,dx.
+\tag{4.1}
+\]">\[
+\left\langle\operatorname{pv}\frac1x,\phi\right\rangle
+=\lim_{r\downarrow0}\int_{|x|&gt;r}\frac{\phi(x)}x\,dx
+=\int_0^\infty\frac{\phi(x)-\phi(-x)}x\,dx.
+\tag{4.1}
+\]</span>
+<p>The last integrand is bounded at zero by <span class="math" data-tex="\(2\|\phi&#x27;\|_\infty\)">\(2\|\phi&#x27;\|_\infty\)</span>; it has compact support at infinity. This proves existence and an order-at-most-one estimate on each fixed support interval.</p>
+<p><strong>Theorem 4.1 (individual pole limits and their jump).</strong> In <span class="math" data-tex="\(\mathcal D&#x27;(\mathbb R)\)">\(\mathcal D&#x27;(\mathbb R)\)</span>, and also on compact <span class="math" data-tex="\(C^1\)">\(C^1\)</span> tests,</p>
+<span class="math math-display" data-tex="\[
+\frac1{x+i0}=\operatorname{pv}\frac1x-i\pi\delta_0,
+\qquad
+\frac1{x-i0}=\operatorname{pv}\frac1x+i\pi\delta_0.
+\tag{4.2}
+\]">\[
+\frac1{x+i0}=\operatorname{pv}\frac1x-i\pi\delta_0,
+\qquad
+\frac1{x-i0}=\operatorname{pv}\frac1x+i\pi\delta_0.
+\tag{4.2}
+\]</span>
+<p>In particular their difference is <span class="math" data-tex="\(-2\pi i\delta_0\)">\(-2\pi i\delta_0\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, separate the real and imaginary kernels:</p>
+<span class="math math-display" data-tex="\[
+\frac1{x+iy}=\frac{x}{x^2+y^2}
+-i\frac{y}{x^2+y^2}.
+\tag{4.3}
+\]">\[
+\frac1{x+iy}=\frac{x}{x^2+y^2}
+-i\frac{y}{x^2+y^2}.
+\tag{4.3}
+\]</span>
+<p>The pairing of the real part is <span class="math" data-tex="\(\int_0^\infty x[\phi(x)-\phi(-x)]/(x^2+y^2)\,dx\)">\(\int_0^\infty x[\phi(x)-\phi(-x)]/(x^2+y^2)\,dx\)</span>. On a fixed support interval it is dominated by <span class="math" data-tex="\(2\|\phi&#x27;\|_\infty\)">\(2\|\phi&#x27;\|_\infty\)</span>, since <span class="math" data-tex="\(|\phi(x)-\phi(-x)|\leq2x\|\phi&#x27;\|_\infty\)">\(|\phi(x)-\phi(-x)|\leq2x\|\phi&#x27;\|_\infty\)</span>. Its limit is (4.1). For the imaginary part, substitute <span class="math" data-tex="\(x=yt\)">\(x=yt\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}\frac{y\phi(x)}{x^2+y^2}\,dx
+=\int_{\mathbb R}\frac{\phi(yt)}{1+t^2}\,dt
+\longrightarrow\pi\phi(0).
+\tag{4.4}
+\]">\[
+\int_{\mathbb R}\frac{y\phi(x)}{x^2+y^2}\,dx
+=\int_{\mathbb R}\frac{\phi(yt)}{1+t^2}\,dt
+\longrightarrow\pi\phi(0).
+\tag{4.4}
+\]</span>
+<p>Dominated convergence uses <span class="math" data-tex="\(\|\phi\|_\infty/(1+t^2)\)">\(\|\phi\|_\infty/(1+t^2)\)</span>; the integral of <span class="math" data-tex="\((1+t^2)^{-1}\)">\((1+t^2)^{-1}\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. This proves the upper limit. Replacing <span class="math" data-tex="\(iy\)">\(iy\)</span> by <span class="math" data-tex="\(-iy\)">\(-iy\)</span> reverses only the sign of the imaginary part, proving the lower limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span> define the finite-part distribution</p>
+<span class="math math-display" data-tex="\[
+\operatorname{pf}\frac1{x^m}
+=\frac{(-1)^{m-1}}{(m-1)!}
+\partial_x^{m-1}\left(\operatorname{pv}\frac1x\right).
+\tag{4.5}
+\]">\[
+\operatorname{pf}\frac1{x^m}
+=\frac{(-1)^{m-1}}{(m-1)!}
+\partial_x^{m-1}\left(\operatorname{pv}\frac1x\right).
+\tag{4.5}
+\]</span>
+<p>This definition agrees with <span class="math" data-tex="\(x^{-m}\)">\(x^{-m}\)</span> away from zero, but for <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span> it is not an ordinary integral across zero. The derivative definition fixes its normalization.</p>
+<p><strong>Corollary 4.2 (higher poles).</strong> For each integer <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac1{(x\pm i0)^m}
+=\operatorname{pf}\frac1{x^m}
+\mp i\pi\frac{(-1)^{m-1}}{(m-1)!}\delta_0^{(m-1)}.
+\tag{4.6}
+\]">\[
+\frac1{(x\pm i0)^m}
+=\operatorname{pf}\frac1{x^m}
+\mp i\pi\frac{(-1)^{m-1}}{(m-1)!}\delta_0^{(m-1)}.
+\tag{4.6}
+\]</span>
+<p>Their jump is <span class="math" data-tex="\(-2\pi i(-1)^{m-1}\delta_0^{(m-1)}/(m-1)!\)">\(-2\pi i(-1)^{m-1}\delta_0^{(m-1)}/(m-1)!\)</span>. These limits exist on all compact <span class="math" data-tex="\(C^m\)">\(C^m\)</span> tests.</p>
+<p><strong>Proof.</strong> At positive height, ordinary differentiation gives</p>
+<span class="math math-display" data-tex="\[
+(x\pm iy)^{-m}
+=\frac{(-1)^{m-1}}{(m-1)!}
+\partial_x^{m-1}(x\pm iy)^{-1}.
+\]">\[
+(x\pm iy)^{-m}
+=\frac{(-1)^{m-1}}{(m-1)!}
+\partial_x^{m-1}(x\pm iy)^{-1}.
+\]</span>
+<p>Pairing with a test and integrating by parts gives <span class="math" data-tex="\(1/(m-1)!\)">\(1/(m-1)!\)</span> times the simple-pole pairing with <span class="math" data-tex="\(\phi^{(m-1)}\)">\(\phi^{(m-1)}\)</span>. Theorem 4.1 applies when this derivative is <span class="math" data-tex="\(C^1\)">\(C^1\)</span>, which is precisely ensured by <span class="math" data-tex="\(\phi\in C_c^m\)">\(\phi\in C_c^m\)</span>. Passing to the limit yields (4.5)–(4.6), with the distributional derivative sign intact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, the upper formula is <span class="math" data-tex="\(\operatorname{pf}(1/x^2)+i\pi\delta&#x27;_0\)">\(\operatorname{pf}(1/x^2)+i\pi\delta&#x27;_0\)</span>; the jump pairs with <span class="math" data-tex="\(\phi\)">\(\phi\)</span> as <span class="math" data-tex="\(-2\pi i\phi&#x27;(0)\)">\(-2\pi i\phi&#x27;(0)\)</span>. This is a useful sign check because <span class="math" data-tex="\(\langle\delta&#x27;_0,\phi\rangle=-\phi&#x27;(0)\)">\(\langle\delta&#x27;_0,\phi\rangle=-\phi&#x27;(0)\)</span>.</p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (basic: the inner orientation).</strong> Put <span class="math" data-tex="\(\zeta=0\)">\(\zeta=0\)</span>. Let a compact <span class="math" data-tex="\(C^1\)">\(C^1\)</span> test equal one on a disk around zero. Compute the counterclockwise integral of <span class="math" data-tex="\(\phi(z)/z\)">\(\phi(z)/z\)</span> on a sufficiently small circle, and the corresponding inner-boundary integral on the punctured region. Explain which distributional source is lost if the inner-boundary term is discarded.</p>
+<p><strong>Exercise 2 (intermediate: testing a pole away from the origin).</strong> For real <span class="math" data-tex="\(a\)">\(a\)</span>, find the upper and lower boundary distributions of <span class="math" data-tex="\((z-a)^{-1}\)">\((z-a)^{-1}\)</span>. Pair their difference with a compact smooth test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Does the jump vanish when the support of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> misses <span class="math" data-tex="\(a\)">\(a\)</span>?</p>
+<p><strong>Exercise 3 (intermediate: a rational principal part).</strong> Let <span class="math" data-tex="\(f(z)=2/(z-a)^3-3/(z-a)\)">\(f(z)=2/(z-a)^3-3/(z-a)\)</span>, where <span class="math" data-tex="\(a\)">\(a\)</span> is real. Compute its upper boundary distribution, lower boundary distribution and jump. Express the jump pairing in terms of <span class="math" data-tex="\(\phi(a)\)">\(\phi(a)\)</span> and <span class="math" data-tex="\(\phi&#x27;&#x27;(a)\)">\(\phi&#x27;&#x27;(a)\)</span>, retaining all signs.</p>
+<p><strong>Exercise 4 (advanced: the finite test norm matters).</strong> Under (3.1), fix <span class="math" data-tex="\(K\Subset I\)">\(K\Subset I\)</span> and <span class="math" data-tex="\(0&lt;T&lt;\gamma\)">\(0&lt;T&lt;\gamma\)</span>. Prove that a family <span class="math" data-tex="\(\phi_\varepsilon\)">\(\phi_\varepsilon\)</span> supported in <span class="math" data-tex="\(K\)">\(K\)</span>, with <span class="math" data-tex="\(\|\phi_\varepsilon\|_{C^{N+1}}\leq\varepsilon^{1/3}\)">\(\|\phi_\varepsilon\|_{C^{N+1}}\leq\varepsilon^{1/3}\)</span>, has positive-height pairings tending to zero. Identify the exact step in the proof which uses the <span class="math" data-tex="\((N+1)\)">\((N+1)\)</span>-st derivative, and explain why this proof alone gives no uniform estimate in the <span class="math" data-tex="\(C^N\)">\(C^N\)</span> norm.</p>
+<p><strong>Exercise 5 (intermediate: holomorphicity before derivative continuity).</strong> Suppose <span class="math" data-tex="\(h\)">\(h\)</span> is complex differentiable everywhere on an open <span class="math" data-tex="\(X\)">\(X\)</span>. State the two separate results that make <span class="math" data-tex="\(h\)">\(h\)</span> a smooth weak Cauchy–Riemann solution, and check the ellipticity and properness hypotheses. Derive the estimate <span class="math" data-tex="\(|h^{(j)}(a)|\leq j!M/R^j\)">\(|h^{(j)}(a)|\leq j!M/R^j\)</span> for a closed disk in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Exercise 6 (advanced: a finite part has a concentrated correction).</strong> Prove <span class="math" data-tex="\(x\,\operatorname{pv}(1/x)=1\)">\(x\,\operatorname{pv}(1/x)=1\)</span> and <span class="math" data-tex="\(x\,\operatorname{pf}(1/x^2)=\operatorname{pv}(1/x)\)">\(x\,\operatorname{pf}(1/x^2)=\operatorname{pv}(1/x)\)</span>. Then prove <span class="math" data-tex="\(x(x\pm i0)^{-2}=(x\pm i0)^{-1}\)">\(x(x\pm i0)^{-2}=(x\pm i0)^{-1}\)</span>, including the point-supported terms. Explain why using <span class="math" data-tex="\(x\delta&#x27;_0=0\)">\(x\delta&#x27;_0=0\)</span> would give a wrong conclusion.</p>
+<h2 id="complete-solutions">Complete solutions</h2>
+<p><strong>Solution 1.</strong> Parametrize the counterclockwise circle by <span class="math" data-tex="\(z=re^{i\theta}\)">\(z=re^{i\theta}\)</span>. Since <span class="math" data-tex="\(\phi=1\)">\(\phi=1\)</span> there, the integral is <span class="math" data-tex="\(\int_0^{2\pi}i\,d\theta=2\pi i\)">\(\int_0^{2\pi}i\,d\theta=2\pi i\)</span>. The clockwise inner orientation contributes <span class="math" data-tex="\(-2\pi i\)">\(-2\pi i\)</span>. It is this term in (1.5) which leaves <span class="math" data-tex="\(\phi(0)\)">\(\phi(0)\)</span> in the limit. Omitting it would incorrectly assert that <span class="math" data-tex="\(\bar\partial(1/(\pi z))\)">\(\bar\partial(1/(\pi z))\)</span> is zero; its actual source is <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>.</p>
+<p><strong>Solution 2.</strong> Substitute <span class="math" data-tex="\(t=x-a\)">\(t=x-a\)</span> in Theorem 4.1. The upper value is <span class="math" data-tex="\(\operatorname{pv}(1/(x-a))-i\pi\delta_a\)">\(\operatorname{pv}(1/(x-a))-i\pi\delta_a\)</span>; the lower value has <span class="math" data-tex="\(+i\pi\delta_a\)">\(+i\pi\delta_a\)</span>. Their difference pairs as <span class="math" data-tex="\(-2\pi i\phi(a)\)">\(-2\pi i\phi(a)\)</span>. A test whose support misses <span class="math" data-tex="\(a\)">\(a\)</span> has <span class="math" data-tex="\(\phi(a)=0\)">\(\phi(a)=0\)</span>, so its jump pairing is zero. The two boundary distributions coincide with the same smooth function away from <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><strong>Solution 3.</strong> For <span class="math" data-tex="\(m=3\)">\(m=3\)</span>, the coefficient of <span class="math" data-tex="\(\delta_a&#x27;&#x27;\)">\(\delta_a&#x27;&#x27;\)</span> in the upper pole is <span class="math" data-tex="\(-i\pi/2\)">\(-i\pi/2\)</span>. Thus the upper boundary is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_+={}&amp;2\operatorname{pf}\frac1{(x-a)^3}
+-3\operatorname{pv}\frac1{x-a}\\
+&amp;-i\pi\delta_a&#x27;&#x27;+3i\pi\delta_a.
+\end{aligned}
+\]">\[
+\begin{aligned}
+f_+={}&amp;2\operatorname{pf}\frac1{(x-a)^3}
+-3\operatorname{pv}\frac1{x-a}\\
+&amp;-i\pi\delta_a&#x27;&#x27;+3i\pi\delta_a.
+\end{aligned}
+\]</span>
+<p>The lower boundary has the same finite parts and the opposite concentrated terms. The jump is <span class="math" data-tex="\(-2i\pi\delta_a&#x27;&#x27;+6i\pi\delta_a\)">\(-2i\pi\delta_a&#x27;&#x27;+6i\pi\delta_a\)</span>, pairing as <span class="math" data-tex="\(-2i\pi\phi&#x27;&#x27;(a)+6i\pi\phi(a)\)">\(-2i\pi\phi&#x27;&#x27;(a)+6i\pi\phi(a)\)</span>. The second delta derivative has a positive pairing sign, since its derivative order is even.</p>
+<p><strong>Solution 4.</strong> Enlarge <span class="math" data-tex="\(K\)">\(K\)</span> to one compact interval inside <span class="math" data-tex="\(I\)">\(I\)</span>, and use its length in (3.9). Its right side is a fixed constant times <span class="math" data-tex="\(\varepsilon^{1/3}\)">\(\varepsilon^{1/3}\)</span>, which tends to zero for <span class="math" data-tex="\(\varepsilon&lt;\gamma-T\)">\(\varepsilon&lt;\gamma-T\)</span>. Cancellation in (3.4) leaves <span class="math" data-tex="\(s^N\phi^{(N+1)}\)">\(s^N\phi^{(N+1)}\)</span>. This cancels the singular factor of size <span class="math" data-tex="\(s^{-N}\)">\(s^{-N}\)</span> after the vertical integration in (3.6). A <span class="math" data-tex="\(C^N\)">\(C^N\)</span> norm does not control that remaining derivative, so (3.9) cannot be asserted with that smaller norm from this calculation. The exercise makes no assertion that a sharper estimate is impossible for a particular <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>Solution 5.</strong> Complex differentiability implies continuity, real differentiability and the pointwise equation <span class="math" data-tex="\((h_x+ih_y)/2=0\)">\((h_x+ih_y)/2=0\)</span>. The pointwise-to-weak theorem with constant coefficients gives that equation distributionally. The cited elliptic regularity theorem then makes its distribution smooth. Its continuous representative is <span class="math" data-tex="\(h\)">\(h\)</span> itself. Formula (2.1) gives a nonzero principal symbol with magnitude <span class="math" data-tex="\(|\xi|/2\)">\(|\xi|/2\)</span>, and the diagonal kernel of a differential operator is proper on <span class="math" data-tex="\(X\)">\(X\)</span>. Cauchy’s formula and the circle coefficient calculation in (2.4) give <span class="math" data-tex="\(|c_j|\leq M/R^j\)">\(|c_j|\leq M/R^j\)</span> and <span class="math" data-tex="\(h^{(j)}(a)=j!c_j\)">\(h^{(j)}(a)=j!c_j\)</span>, which prove the estimate.</p>
+<p><strong>Solution 6.</strong> Symmetric deletion gives <span class="math" data-tex="\(\langle x\operatorname{pv}(1/x),\phi\rangle=\lim_{r\downarrow0}\int_{|x|&gt;r}\phi(x)\,dx=\int\phi\)">\(\langle x\operatorname{pv}(1/x),\phi\rangle=\lim_{r\downarrow0}\int_{|x|&gt;r}\phi(x)\,dx=\int\phi\)</span>. Put <span class="math" data-tex="\(v=\operatorname{pv}(1/x)\)">\(v=\operatorname{pv}(1/x)\)</span>; then <span class="math" data-tex="\(\operatorname{pf}(1/x^2)=-v&#x27;\)">\(\operatorname{pf}(1/x^2)=-v&#x27;\)</span>. The product rule <span class="math" data-tex="\((xv)&#x27;=v+xv&#x27;\)">\((xv)&#x27;=v+xv&#x27;\)</span>, together with <span class="math" data-tex="\((xv)&#x27;=1&#x27;=0\)">\((xv)&#x27;=1&#x27;=0\)</span>, gives <span class="math" data-tex="\(-xv&#x27;=v\)">\(-xv&#x27;=v\)</span>. Finally <span class="math" data-tex="\(\langle x\delta&#x27;_0,\phi\rangle=-(x\phi)&#x27;(0)=-\phi(0)\)">\(\langle x\delta&#x27;_0,\phi\rangle=-(x\phi)&#x27;(0)=-\phi(0)\)</span>, so <span class="math" data-tex="\(x\delta&#x27;_0=-\delta_0\)">\(x\delta&#x27;_0=-\delta_0\)</span>. Multiply the <span class="math" data-tex="\(m=2\)">\(m=2\)</span> formula (4.6) by <span class="math" data-tex="\(x\)">\(x\)</span>: the upper value becomes <span class="math" data-tex="\(v-i\pi\delta_0\)">\(v-i\pi\delta_0\)</span>, and the lower becomes <span class="math" data-tex="\(v+i\pi\delta_0\)">\(v+i\pi\delta_0\)</span>. These are exactly the simple-pole values. Setting <span class="math" data-tex="\(x\delta&#x27;_0\)">\(x\delta&#x27;_0\)</span> to zero would incorrectly remove their concentrated terms.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_12.html">Avi Zeff, <em>Lecture 12: Pompeiu’s formula</em>, March 6, 2026</a>. Section 2 gives the complex Green and Cauchy–Pompeiu formulas on planar domains.</li>
+<li><a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications</em> (2026)</a>. Proposition 9.8 states <span class="math" data-tex="\(\bar\partial(1/(\pi z))=\delta_0\)">\(\bar\partial(1/(\pi z))=\delta_0\)</span>; the proof is assigned there as an exercise and is supplied here in Section 1.</li>
+<li><a href="geometric-microlocal-calculus.html#AN03-GEO-009"><em>Elliptic tests and intrinsic wavefront</em>, equation (G27)</a>. The stronger elliptic-regularity result used in Proposition 2.1, with its exact symbol specialization in (2.1). The linked lesson is licensed under GFDL 1.2.</li>
+</ul>
+<footer><p>Original text: CC0.</p><p><a href="src/cauchy-kernels-and-boundary-limits.md">Editable original Markdown</a>. Source commit 9fc48b587b87030c99db50f4d2bf237a4901627b.</p></footer></main></body></html>

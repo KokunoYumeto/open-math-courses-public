@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>p-adic analysis for linear forms in logarithms · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-09.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 9 of 10</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="p-adic-analysis-for-linear-forms-in-logarithms">p-adic analysis for linear forms in logarithms</h1>
+<p><em>Draft. Public domain (CC0).</em></p>
+<p>A congruence such as <span class="math" data-tex="\(16^k\equiv1\pmod{5^s}\)">\(16^k\equiv1\pmod{5^s}\)</span> says that a power is close to one in a nonarchimedean metric. Its precision is measured by <span class="math" data-tex="\(v_5(16^k-1)\)">\(v_5(16^k-1)\)</span>. Taking a p-adic logarithm turns powers into multiples, but only after checking the convergence domain. This lesson proves those checks, the Schwarz estimate for a power series, and a height bound for the precision of <span class="math" data-tex="\(\alpha^m-1\)">\(\alpha^m-1\)</span>.</p>
+<p>The field prerequisites are the proved lessons <a href="../NT-LOC/NT-LOC-02.html#completing-a-field">Completions</a>, <a href="../NT-LOC/NT-LOC-04.html#3-an-integral-basis-from-residue-digits">Extensions of complete valued fields</a>, and <a href="../NT-LOC/NT-LOC-05.html#3-finite-places-and-prime-ideals">Places and the product formula</a>. The arithmetic prerequisite is <a href="../TR-TRANS/TR-TRANS-02.html#4-height-arithmetic-and-finite-sets">Heights of algebraic numbers</a>, Theorem 2.4, Proposition 2.5 and Theorem 2.8. The analytic arguments are written out below. Keith Conrad's freely available notes [Conrad] are a useful companion for the exponential and logarithm; in particular, they explain why convergence must be checked before composing their series.</p>
+<p>Here <span class="math" data-tex="\(p\)">\(p\)</span> is a rational prime. The symbol <span class="math" data-tex="\(\log\)">\(\log\)</span> denotes the p-adic logarithm when its argument is a p-adic unit; <span class="math" data-tex="\(\ln\)">\(\ln\)</span> denotes the real natural logarithm in heights and real-valued bounds.</p>
+<h2 id="1-valuations-local-degrees-and-the-complete-ambient-field">1. Valuations, local degrees and the complete ambient field</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field and <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> a prime above <span class="math" data-tex="\(p\)">\(p\)</span>. The discrete valuation <span class="math" data-tex="\(\operatorname{ord}_{\mathfrak P}\)">\(\operatorname{ord}_{\mathfrak P}\)</span> assigns value one to a uniformizer. If <span class="math" data-tex="\(e=e_{\mathfrak P}\)">\(e=e_{\mathfrak P}\)</span>, then <span class="math" data-tex="\(\operatorname{ord}_{\mathfrak P}(p)=e\)">\(\operatorname{ord}_{\mathfrak P}(p)=e\)</span>. Throughout this course we use</p>
+<span class="math math-display" data-tex="\[
+v_p(x)=\frac{\operatorname{ord}_{\mathfrak P}(x)}e,
+\qquad v_p(p)=1,
+\qquad |x|_p=p^{-v_p(x)},
+\qquad v_p(0)=+\infty.
+\tag{9.1}
+\]">\[
+v_p(x)=\frac{\operatorname{ord}_{\mathfrak P}(x)}e,
+\qquad v_p(p)=1,
+\qquad |x|_p=p^{-v_p(x)},
+\qquad v_p(0)=+\infty.
+\tag{9.1}
+\]</span>
+<p>The selected prime, or equivalently the selected embedding into an algebraic extension of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, is part of the data. At its completion <span class="math" data-tex="\(L=K_{\mathfrak P}\)">\(L=K_{\mathfrak P}\)</span>, write <span class="math" data-tex="\(f=[\kappa_L:\mathbb F_p]\)">\(f=[\kappa_L:\mathbb F_p]\)</span>. The earlier local-field lessons prove</p>
+<span class="math math-display" data-tex="\[
+v_p(L^\times)=\frac1e\mathbb Z,
+\qquad |\kappa_L|=p^f,
+\qquad [L:\mathbb Q_p]=ef\le [K:\mathbb Q].
+\tag{9.2}
+\]">\[
+v_p(L^\times)=\frac1e\mathbb Z,
+\qquad |\kappa_L|=p^f,
+\qquad [L:\mathbb Q_p]=ef\le [K:\mathbb Q].
+\tag{9.2}
+\]</span>
+<p>The equality of local degree and <span class="math" data-tex="\(ef\)">\(ef\)</span> is NT-LOC-04, Theorem 3.1; the comparison with the global degree is NT-LOC-05, Corollary 2.2 and Proposition 3.1. In particular a positive valuation in <span class="math" data-tex="\(L\)">\(L\)</span> is at least <span class="math" data-tex="\(1/e\)">\(1/e\)</span>.</p>
+<p>The unique extensions of the absolute value to finite extensions, proved in NT-LOC-04, Theorem 1.1, are compatible on their overlaps. They give an absolute value on an algebraic closure <span class="math" data-tex="\(\overline{\mathbb Q}_p\)">\(\overline{\mathbb Q}_p\)</span>. Define <span class="math" data-tex="\(\mathbb C_p\)">\(\mathbb C_p\)</span> to be its completion, using NT-LOC-02, Theorem 2.1. Every series argument below works in any complete valued extension of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>. Whenever algebraic roots or an infinite residue field are needed, we work in <span class="math" data-tex="\(\mathbb C_p\)">\(\mathbb C_p\)</span>.</p>
+<p>For reference, the precise proximity statement available in the programme is <strong>Krasner's lemma</strong>, NT-LOC-04, <a href="../NT-LOC/NT-LOC-04.html#4-when-proximity-forces-containment">Theorem 4.1</a>: if <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is separable over a complete nonarchimedean field <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is algebraic, and</p>
+<span class="math math-display" data-tex="\[
+|\beta-\alpha|&lt;|\alpha&#x27;-\alpha|
+\quad\text{for every other }F\text{-conjugate }\alpha&#x27;\text{ of }\alpha,
+\]">\[
+|\beta-\alpha|&lt;|\alpha&#x27;-\alpha|
+\quad\text{for every other }F\text{-conjugate }\alpha&#x27;\text{ of }\alpha,
+\]</span>
+<p>then <span class="math" data-tex="\(F(\alpha)\subseteq F(\beta)\)">\(F(\alpha)\subseteq F(\beta)\)</span>. The cited programme lesson supplies the proof, including the uniqueness-of-valuation input.</p>
+<h2 id="2-convergence-and-legitimate-substitution">2. Convergence and legitimate substitution</h2>
+<p><strong>Lemma 9.1 (summing small terms).</strong> In a complete nonarchimedean field <span class="math" data-tex="\(F\)">\(F\)</span>, a series <span class="math" data-tex="\(\sum_{n\ge0}a_n\)">\(\sum_{n\ge0}a_n\)</span> converges if and only if <span class="math" data-tex="\(a_n\to0\)">\(a_n\to0\)</span>. Its absolute value is at most <span class="math" data-tex="\(\max_n|a_n|\)">\(\max_n|a_n|\)</span>. More generally, a countable family can be summed in any order, and grouped into finite or countable subfamilies, provided that for each <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> only finitely many terms have absolute value at least <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p><strong>Proof.</strong> Necessity follows by subtracting consecutive partial sums. For sufficiency, a tail of any finite partial sum has absolute value at most the largest term in that tail. If the terms tend to zero, the partial sums are Cauchy and hence converge. The same estimate proves the asserted bound. For the family statement, include the finite set of terms of size at least <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> in a finite partial sum. Adding or removing any other finite collection changes the sum by less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. These finite sums have a unique limit by completeness, independently of the enumeration. Grouped sums satisfy the same estimate; the finite large-term set lies in finitely many groups. Thus grouping and subsequent summation give the same limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a positive real <span class="math" data-tex="\(r\)">\(r\)</span>, let <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> consist of the series <span class="math" data-tex="\(F(X)=\sum a_nX^n\)">\(F(X)=\sum a_nX^n\)</span> satisfying <span class="math" data-tex="\(|a_n|r^n\to0\)">\(|a_n|r^n\to0\)</span>. Give it the Gauss norm</p>
+<span class="math math-display" data-tex="\[
+\|F\|_r=\max_{n\ge0}|a_n|r^n.
+\tag{9.3}
+\]">\[
+\|F\|_r=\max_{n\ge0}|a_n|r^n.
+\tag{9.3}
+\]</span>
+<p>The maximum exists, unless the series is zero, because its terms tend to zero. Evaluation at <span class="math" data-tex="\(|x|\le r\)">\(|x|\le r\)</span> converges and has absolute value at most this norm.</p>
+<p><strong>Lemma 9.2 (a complete coefficient algebra).</strong> The normed algebra <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> is complete, and <span class="math" data-tex="\(\|FG\|_r\le\|F\|_r\|G\|_r\)">\(\|FG\|_r\le\|F\|_r\|G\|_r\)</span>. If <span class="math" data-tex="\(G(0)=0\)">\(G(0)=0\)</span>, <span class="math" data-tex="\(\|G\|_r\le s\)">\(\|G\|_r\le s\)</span>, and <span class="math" data-tex="\(F(Y)=\sum b_nY^n\in\mathcal A_s\)">\(F(Y)=\sum b_nY^n\in\mathcal A_s\)</span>, then <span class="math" data-tex="\(\sum b_nG(X)^n\)">\(\sum b_nG(X)^n\)</span> converges in <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>. Its coefficients are those of the formal substitution <span class="math" data-tex="\(F(G(X))\)">\(F(G(X))\)</span>, and its values equal <span class="math" data-tex="\(F(G(x))\)">\(F(G(x))\)</span> on <span class="math" data-tex="\(|x|\le r\)">\(|x|\le r\)</span>. The same assertions hold for finitely many variables, with weight <span class="math" data-tex="\(r^{\text{total degree}}\)">\(r^{\text{total degree}}\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(G=\sum c_nX^n\)">\(G=\sum c_nX^n\)</span>, the coefficient of <span class="math" data-tex="\(X^k\)">\(X^k\)</span> in <span class="math" data-tex="\(FG\)">\(FG\)</span> is <span class="math" data-tex="\(\sum_{i+j=k}a_ic_j\)">\(\sum_{i+j=k}a_ic_j\)</span>. Each summand, multiplied in absolute value by <span class="math" data-tex="\(r^k\)">\(r^k\)</span>, is at most <span class="math" data-tex="\(\|F\|_r\|G\|_r\)">\(\|F\|_r\|G\|_r\)</span>. These weighted coefficients tend to zero: in a pair with large <span class="math" data-tex="\(i+j\)">\(i+j\)</span>, at least one index is large, and that factor has a uniformly small weighted coefficient while the other factor is bounded.</p>
+<p>A Cauchy sequence in the norm is Cauchy in every coefficient. Let its coefficient limits be <span class="math" data-tex="\(a_n\)">\(a_n\)</span>. Approximate the sequence by one fixed member within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>; beyond a sufficiently large index that member has weighted coefficients below <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Passing to coefficient limits bounds the corresponding coefficients of the limit by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The limit belongs to <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>, and the original Cauchy estimates, passed to each coefficient, give convergence in norm.</p>
+<p>Now <span class="math" data-tex="\(\|b_nG^n\|_r\le |b_n|s^n\to0\)">\(\|b_nG^n\|_r\le |b_n|s^n\to0\)</span>. Lemma 9.1, with the norm estimate in this complete algebra, permits its summation. Because the constant term of <span class="math" data-tex="\(G\)">\(G\)</span> is zero, the coefficient of each fixed degree receives contributions from only finitely many powers of <span class="math" data-tex="\(G\)">\(G\)</span>. It is therefore the formal substitution coefficient. Evaluation is continuous, so it commutes with this limit and gives the stated numerical substitution. For several variables, there are finitely many monomials of bounded total degree. The same coefficient and tail proofs apply verbatim with total degrees in place of indices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This lemma will justify the formal identities used in the next section. An identity of formal series alone does not guarantee that a numerical composition represents it on a proposed disc.</p>
+<h2 id="3-the-exponential-and-the-logarithm">3. The exponential and the logarithm</h2>
+<p>Counting the multiples of <span class="math" data-tex="\(p^j\)">\(p^j\)</span> in a factorial gives</p>
+<span class="math math-display" data-tex="\[
+v_p(n!)=\sum_{j\ge1}\left\lfloor\frac n{p^j}\right\rfloor
+=\frac{n-s_p(n)}{p-1}\le\frac{n-1}{p-1}\quad(n\ge1),
+\qquad
+v_p(n)\le\frac{n-1}{p-1},
+\tag{9.4}
+\]">\[
+v_p(n!)=\sum_{j\ge1}\left\lfloor\frac n{p^j}\right\rfloor
+=\frac{n-s_p(n)}{p-1}\le\frac{n-1}{p-1}\quad(n\ge1),
+\qquad
+v_p(n)\le\frac{n-1}{p-1},
+\tag{9.4}
+\]</span>
+<p>where <span class="math" data-tex="\(s_p(n)\)">\(s_p(n)\)</span> is the sum of the base-<span class="math" data-tex="\(p\)">\(p\)</span> digits of <span class="math" data-tex="\(n\)">\(n\)</span>. To prove the middle equality, write <span class="math" data-tex="\(n=\sum_i d_ip^i\)">\(n=\sum_i d_ip^i\)</span> and sum <span class="math" data-tex="\(\sum_{j=1}^i d_ip^{i-j}=d_i(p^i-1)/(p-1)\)">\(\sum_{j=1}^i d_ip^{i-j}=d_i(p^i-1)/(p-1)\)</span> over <span class="math" data-tex="\(i\)">\(i\)</span>. For the last inequality put <span class="math" data-tex="\(a=v_p(n)\)">\(a=v_p(n)\)</span>. Then <span class="math" data-tex="\(n\ge p^a\ge1+a(p-1)\)">\(n\ge p^a\ge1+a(p-1)\)</span>, the second inequality following by induction on <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\exp z=\sum_{n\ge0}\frac{z^n}{n!},
+\qquad
+\log(1+z)=\sum_{n\ge1}\frac{(-1)^{n+1}z^n}{n}.
+\tag{9.5}
+\]">\[
+\exp z=\sum_{n\ge0}\frac{z^n}{n!},
+\qquad
+\log(1+z)=\sum_{n\ge1}\frac{(-1)^{n+1}z^n}{n}.
+\tag{9.5}
+\]</span>
+<p><strong>Proposition 9.3 (exact domains and first-term dominance).</strong> The exponential converges exactly when <span class="math" data-tex="\(v_p(z)&gt;1/(p-1)\)">\(v_p(z)&gt;1/(p-1)\)</span>. The logarithm converges exactly when <span class="math" data-tex="\(v_p(z)&gt;0\)">\(v_p(z)&gt;0\)</span>. Their radii in absolute-value notation are</p>
+<span class="math math-display" data-tex="\[
+R_{\exp}=p^{-1/(p-1)},\qquad R_{\log}=1,
+\tag{9.6}
+\]">\[
+R_{\exp}=p^{-1/(p-1)},\qquad R_{\log}=1,
+\tag{9.6}
+\]</span>
+<p>and neither series converges on its boundary. On the smaller disc, including zero with the usual infinite-valuation convention,</p>
+<span class="math math-display" data-tex="\[
+v_p(\exp z-1)=v_p(z),
+\qquad v_p(\log(1+z))=v_p(z).
+\tag{9.7}
+\]">\[
+v_p(\exp z-1)=v_p(z),
+\qquad v_p(\log(1+z))=v_p(z).
+\tag{9.7}
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(c=v_p(z)\)">\(c=v_p(z)\)</span> when <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>. The exponential term has valuation <span class="math" data-tex="\(nc-v_p(n!)\)">\(nc-v_p(n!)\)</span>. If <span class="math" data-tex="\(c&gt;1/(p-1)\)">\(c&gt;1/(p-1)\)</span>, (9.4) makes this tend to infinity. For <span class="math" data-tex="\(n=p^j\)">\(n=p^j\)</span>, its valuation is</p>
+<span class="math math-display" data-tex="\[
+p^j\left(c-\frac1{p-1}\right)+\frac1{p-1}.
+\]">\[
+p^j\left(c-\frac1{p-1}\right)+\frac1{p-1}.
+\]</span>
+<p>It stays constant on the boundary and tends to minus infinity below it. Lemma 9.1 proves the exact convergence claim. A logarithm term has valuation <span class="math" data-tex="\(nc-v_p(n)\)">\(nc-v_p(n)\)</span>. Since <span class="math" data-tex="\(v_p(n)\le\ln n/\ln p\)">\(v_p(n)\le\ln n/\ln p\)</span>, this tends to infinity for <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. At <span class="math" data-tex="\(n=p^j\)">\(n=p^j\)</span> it is <span class="math" data-tex="\(p^jc-j\)">\(p^jc-j\)</span>, which fails to tend to infinity when <span class="math" data-tex="\(c\le0\)">\(c\le0\)</span>.</p>
+<p>When <span class="math" data-tex="\(c&gt;1/(p-1)\)">\(c&gt;1/(p-1)\)</span>, the valuation of every term after the linear term in either series is strictly larger than <span class="math" data-tex="\(c\)">\(c\)</span>, by (9.4): the difference is at least <span class="math" data-tex="\((n-1)(c-1/(p-1))&gt;0\)">\((n-1)(c-1/(p-1))&gt;0\)</span>. The linear term uniquely has smallest valuation, and summing the convergent remainder preserves its valuation. The case <span class="math" data-tex="\(z=0\)">\(z=0\)</span> follows directly from the definitions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 9.4 (analytic identities).</strong> Let <span class="math" data-tex="\(D=\{z:v_p(z)&gt;1/(p-1)\}\)">\(D=\{z:v_p(z)&gt;1/(p-1)\}\)</span>, and <span class="math" data-tex="\(U=\{u:v_p(u-1)&gt;0\}\)">\(U=\{u:v_p(u-1)&gt;0\}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\exp(x+y)=\exp x\exp y\quad(x,y\in D),
+\qquad
+\log(uv)=\log u+\log v\quad(u,v\in U).
+\tag{9.8}
+\]">\[
+\exp(x+y)=\exp x\exp y\quad(x,y\in D),
+\qquad
+\log(uv)=\log u+\log v\quad(u,v\in U).
+\tag{9.8}
+\]</span>
+<p>The maps <span class="math" data-tex="\(\exp:D\to1+D\)">\(\exp:D\to1+D\)</span> and <span class="math" data-tex="\(\log:1+D\to D\)">\(\log:1+D\to D\)</span> are inverse isometries. In particular <span class="math" data-tex="\(\log(u^n)=n\log u\)">\(\log(u^n)=n\log u\)</span> for every <span class="math" data-tex="\(u\in U\)">\(u\in U\)</span> and <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(0&lt;r&lt;p^{-1/(p-1)}\)">\(0&lt;r&lt;p^{-1/(p-1)}\)</span>. Proposition 9.3's coefficient estimates give <span class="math" data-tex="\(\exp X-1\in\mathcal A_r\)">\(\exp X-1\in\mathcal A_r\)</span> with norm <span class="math" data-tex="\(r\)">\(r\)</span>, and <span class="math" data-tex="\(\log(1+X)\in\mathcal A_r\)">\(\log(1+X)\in\mathcal A_r\)</span> with norm <span class="math" data-tex="\(r\)">\(r\)</span>. Since the outer logarithm converges in <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> for <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>, and the outer exponential for <span class="math" data-tex="\(r&lt;p^{-1/(p-1)}\)">\(r&lt;p^{-1/(p-1)}\)</span>, Lemma 9.2 justifies both compositions on <span class="math" data-tex="\(|x|\le r\)">\(|x|\le r\)</span>.</p>
+<p>In formal series over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, differentiating coefficient by coefficient gives <span class="math" data-tex="\((\exp X)&#x27;=\exp X\)">\((\exp X)&#x27;=\exp X\)</span> and <span class="math" data-tex="\((\log(1+X))&#x27;=1/(1+X)\)">\((\log(1+X))&#x27;=1/(1+X)\)</span>. The derivative of <span class="math" data-tex="\(\log(\exp X)\)">\(\log(\exp X)\)</span> is one and its constant term is zero, so its coefficients give exactly <span class="math" data-tex="\(X\)">\(X\)</span>. For <span class="math" data-tex="\(F(X)=\exp(\log(1+X))\)">\(F(X)=\exp(\log(1+X))\)</span>, the formal identity is <span class="math" data-tex="\((1+X)F&#x27;=F\)">\((1+X)F&#x27;=F\)</span> with <span class="math" data-tex="\(F(0)=1\)">\(F(0)=1\)</span>. If <span class="math" data-tex="\(F=\sum a_nX^n\)">\(F=\sum a_nX^n\)</span>, its coefficient recurrence is <span class="math" data-tex="\(a_1=a_0=1\)">\(a_1=a_0=1\)</span> and <span class="math" data-tex="\((n+1)a_{n+1}=(1-n)a_n\)">\((n+1)a_{n+1}=(1-n)a_n\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Thus <span class="math" data-tex="\(F=1+X\)">\(F=1+X\)</span>. These formal calculations involve only finitely many terms in each coefficient; the already justified compositions turn them into numerical inverse identities.</p>
+<p>In two variables the binomial formula gives the formal identity <span class="math" data-tex="\(\exp(X+Y)=\exp X\exp Y\)">\(\exp(X+Y)=\exp X\exp Y\)</span>. It is also an identity in the complete coefficient algebra of Lemma 9.2 on a closed bidisc of radius <span class="math" data-tex="\(r&lt;p^{-1/(p-1)}\)">\(r&lt;p^{-1/(p-1)}\)</span>. Indeed <span class="math" data-tex="\(\|X+Y\|_r\le r\)">\(\|X+Y\|_r\le r\)</span>, so the outer exponential converges. Evaluation proves the first identity in (9.8).</p>
+<p>For the second identity fix any <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>. In the two-variable coefficient algebra, <span class="math" data-tex="\(G=X+Y+XY\)">\(G=X+Y+XY\)</span> has norm at most <span class="math" data-tex="\(r\)">\(r\)</span>. The outer logarithm converges because <span class="math" data-tex="\(|1/n|_p r^n\le nr^n\to0\)">\(|1/n|_p r^n\le nr^n\to0\)</span>. Lemma 9.2 therefore justifies the composition <span class="math" data-tex="\(\log(1+X+Y+XY)\)">\(\log(1+X+Y+XY)\)</span>. Its formal <span class="math" data-tex="\(X\)">\(X\)</span>-derivative is <span class="math" data-tex="\((1+Y)/((1+X)(1+Y))=1/(1+X)\)">\((1+Y)/((1+X)(1+Y))=1/(1+X)\)</span>; its <span class="math" data-tex="\(Y\)">\(Y\)</span>-derivative is <span class="math" data-tex="\(1/(1+Y)\)">\(1/(1+Y)\)</span>. Subtract <span class="math" data-tex="\(\log(1+X)+\log(1+Y)\)">\(\log(1+X)+\log(1+Y)\)</span>. Both partial derivatives are zero, so characteristic zero makes every nonconstant coefficient zero. Its constant is also zero. Evaluation at <span class="math" data-tex="\(X=u-1,Y=v-1\)">\(X=u-1,Y=v-1\)</span>, choosing <span class="math" data-tex="\(r\ge\max(|u-1|,|v-1|)\)">\(r\ge\max(|u-1|,|v-1|)\)</span>, proves the product identity on all of <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>The set <span class="math" data-tex="\(U\)">\(U\)</span> is a group: <span class="math" data-tex="\(|u|=1\)">\(|u|=1\)</span>, <span class="math" data-tex="\(uv-1=(u-1)v+(v-1)\)">\(uv-1=(u-1)v+(v-1)\)</span>, and <span class="math" data-tex="\(u^{-1}-1=(1-u)/u\)">\(u^{-1}-1=(1-u)/u\)</span>. Induction and inverses now give the integer-power identity. Finally,</p>
+<span class="math math-display" data-tex="\[
+|\exp x-\exp y|=|\exp y|\,|\exp(x-y)-1|=|x-y|,
+\]">\[
+|\exp x-\exp y|=|\exp y|\,|\exp(x-y)-1|=|x-y|,
+\]</span>
+<p>by (9.7) and <span class="math" data-tex="\(|\exp y|=1\)">\(|\exp y|=1\)</span>. For <span class="math" data-tex="\(u,v\in1+D\)">\(u,v\in1+D\)</span>, the product identity and (9.7) give <span class="math" data-tex="\(|\log u-\log v|=|\log(u/v)|=|u/v-1|=|u-v|\)">\(|\log u-\log v|=|\log(u/v)|=|u/v-1|=|u-v|\)</span>. This proves both isometries. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, the exponential on <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> has domain <span class="math" data-tex="\(p\mathbb Z_p\)">\(p\mathbb Z_p\)</span> when <span class="math" data-tex="\(p\)">\(p\)</span> is odd, and <span class="math" data-tex="\(4\mathbb Z_2\)">\(4\mathbb Z_2\)</span> when <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. The logarithm on <span class="math" data-tex="\(\mathbb Q_2\)">\(\mathbb Q_2\)</span> converges on <span class="math" data-tex="\(1+2\mathbb Z_2\)">\(1+2\mathbb Z_2\)</span>, but it is not injective there: <span class="math" data-tex="\(2\log(-1)=\log1=0\)">\(2\log(-1)=\log1=0\)</span>, so <span class="math" data-tex="\(\log(-1)=0\)">\(\log(-1)=0\)</span>.</p>
+<h2 id="4-taking-powers-until-the-exponential-applies">4. Taking powers until the exponential applies</h2>
+<p><strong>Lemma 9.5 (one power step).</strong> Suppose <span class="math" data-tex="\(0&lt;c=v_p(\xi-1)&lt;+\infty\)">\(0&lt;c=v_p(\xi-1)&lt;+\infty\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+v_p(\xi^p-1)=
+\begin{cases}
+pc,&amp;0&lt;c&lt;1/(p-1),\\
+c+1,&amp;c&gt;1/(p-1),
+\end{cases}
+\quad\text{and at }c=1/(p-1)\text{ it is at least }p/(p-1).
+\tag{9.9}
+\]">\[
+v_p(\xi^p-1)=
+\begin{cases}
+pc,&amp;0&lt;c&lt;1/(p-1),\\
+c+1,&amp;c&gt;1/(p-1),
+\end{cases}
+\quad\text{and at }c=1/(p-1)\text{ it is at least }p/(p-1).
+\tag{9.9}
+\]</span>
+<p>If <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span>, then <span class="math" data-tex="\(v_p(\xi^n-1)=c\)">\(v_p(\xi^n-1)=c\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(z=\xi-1\)">\(z=\xi-1\)</span>. In <span class="math" data-tex="\((1+z)^p-1\)">\((1+z)^p-1\)</span>, the first term <span class="math" data-tex="\(pz\)">\(pz\)</span> has valuation <span class="math" data-tex="\(1+c\)">\(1+c\)</span>, and the last term <span class="math" data-tex="\(z^p\)">\(z^p\)</span> has valuation <span class="math" data-tex="\(pc\)">\(pc\)</span>. For <span class="math" data-tex="\(1&lt;j&lt;p\)">\(1&lt;j&lt;p\)</span>, the coefficient <span class="math" data-tex="\(\binom pj\)">\(\binom pj\)</span> is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, so the intermediate term has valuation at least <span class="math" data-tex="\(1+jc\)">\(1+jc\)</span>, strictly greater than the smaller of the first and last valuations. When <span class="math" data-tex="\(c\ne1/(p-1)\)">\(c\ne1/(p-1)\)</span>, the smaller of those two is unique, proving equality. At the boundary they coincide, and the ultrametric inequality gives the stated lower bound, allowing <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. For a prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> exponent <span class="math" data-tex="\(n\)">\(n\)</span>, the first term <span class="math" data-tex="\(nz\)">\(nz\)</span> has valuation <span class="math" data-tex="\(c\)">\(c\)</span>; all later terms have valuation at least <span class="math" data-tex="\(2c\)">\(2c\)</span>, since their binomial coefficients are integers. This proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 9.6 (an explicit entrance time).</strong> Let <span class="math" data-tex="\(c=v_p(\xi-1)&gt;0\)">\(c=v_p(\xi-1)&gt;0\)</span>, and let <span class="math" data-tex="\(t\)">\(t\)</span> be the smallest nonnegative integer with</p>
+<span class="math math-display" data-tex="\[
+p^tc&gt;\frac1{p-1}.
+\tag{9.10}
+\]">\[
+p^tc&gt;\frac1{p-1}.
+\tag{9.10}
+\]</span>
+<p>Then <span class="math" data-tex="\(\xi^{p^t}=1\)">\(\xi^{p^t}=1\)</span> or <span class="math" data-tex="\(v_p(\xi^{p^t}-1)&gt;1/(p-1)\)">\(v_p(\xi^{p^t}-1)&gt;1/(p-1)\)</span>. If <span class="math" data-tex="\(\xi\)">\(\xi\)</span> lies in a finite extension of ramification index <span class="math" data-tex="\(e\)">\(e\)</span>, the choice of the least <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(p^t&gt;e/(p-1)\)">\(p^t&gt;e/(p-1)\)</span> works uniformly and satisfies <span class="math" data-tex="\(p^t\le2e\)">\(p^t\le2e\)</span>.</p>
+<p><strong>Proof.</strong> Before reaching the threshold the valuation is multiplied by <span class="math" data-tex="\(p\)">\(p\)</span> at each step of Lemma 9.5. If a step lands exactly on the threshold, the next step is already strictly above it, unless the power is one. After the valuation is strictly above the threshold, each further step adds one. Thus the strict inequality in (9.10) guarantees entrance. In a finite extension, <span class="math" data-tex="\(c\ge1/e\)">\(c\ge1/e\)</span>. If the uniform <span class="math" data-tex="\(t\)">\(t\)</span> is zero, <span class="math" data-tex="\(p^t=1\le2e\)">\(p^t=1\le2e\)</span>. Otherwise its minimality gives <span class="math" data-tex="\(p^{t-1}\le e/(p-1)\)">\(p^{t-1}\le e/(p-1)\)</span>, so <span class="math" data-tex="\(p^t\le pe/(p-1)\le2e\)">\(p^t\le pe/(p-1)\le2e\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><img src="figures/padic-squaring.png" alt="The exact two branches of the 2-adic power-step valuation, with the boundary inequality and algebraic examples." class="course-figure" width="1836" height="1139" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="padic-squaring" data-asset-sha256="E53B84D792F74AA928B299BA6EF568CB19C32E2B91E665A111435606BDB276A1"></p>
+<p><em>Figure.</em> For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, plot <span class="math" data-tex="\(c=v_2(\xi-1)\)">\(c=v_2(\xi-1)\)</span> against <span class="math" data-tex="\(c&#x27;=v_2(\xi^2-1)\)">\(c&#x27;=v_2(\xi^2-1)\)</span>. Lemma 9.5 proves the branches <span class="math" data-tex="\(c&#x27;=2c\)">\(c&#x27;=2c\)</span> for <span class="math" data-tex="\(0&lt;c&lt;1\)">\(0&lt;c&lt;1\)</span> and <span class="math" data-tex="\(c&#x27;=c+1\)">\(c&#x27;=c+1\)</span> for <span class="math" data-tex="\(c&gt;1\)">\(c&gt;1\)</span>. At <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, the vertical dashed ray displays the bound <span class="math" data-tex="\(c&#x27;\ge2\)">\(c&#x27;\ge2\)</span>, including infinity; it does not assert that every real point on the ray is attained. The labels mark exact examples: <span class="math" data-tex="\(\xi=3\)">\(\xi=3\)</span> gives <span class="math" data-tex="\(1\mapsto3\)">\(1\mapsto3\)</span>, <span class="math" data-tex="\(\xi=-1\)">\(\xi=-1\)</span> gives <span class="math" data-tex="\(1\mapsto+\infty\)">\(1\mapsto+\infty\)</span>, and <span class="math" data-tex="\(\xi=5\)">\(\xi=5\)</span> gives <span class="math" data-tex="\(2\mapsto3\)">\(2\mapsto3\)</span>. In <span class="math" data-tex="\(\mathbb Q_2(\sqrt2)\)">\(\mathbb Q_2(\sqrt2)\)</span>, <span class="math" data-tex="\(\xi=1+\sqrt2\)">\(\xi=1+\sqrt2\)</span> gives <span class="math" data-tex="\(1/2\mapsto1\mapsto5/2\)">\(1/2\mapsto1\mapsto5/2\)</span>, as checked in Solution 8. This is a graph of scalar valuations, rather than a Euclidean model of <span class="math" data-tex="\(\mathbb C_2\)">\(\mathbb C_2\)</span>. Original figure: GPT-6.1 Sol (OpenAI), Ultra, CC0. <a href="figure_sources/padic_squaring.py">Figure program</a>.</p>
+<p>Corollary 9.6 also determines the logarithm's kernel on <span class="math" data-tex="\(U\)">\(U\)</span>: it consists exactly of roots of unity of <span class="math" data-tex="\(p\)">\(p\)</span>-power order. Indeed, <span class="math" data-tex="\(\log\xi=0\)">\(\log\xi=0\)</span> implies <span class="math" data-tex="\(\log(\xi^{p^t})=0\)">\(\log(\xi^{p^t})=0\)</span>; after entrance, the inverse exponential forces <span class="math" data-tex="\(\xi^{p^t}=1\)">\(\xi^{p^t}=1\)</span>. Conversely, such a root reduces to one in the residue field, since in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(X^{p^t}-1=(X-1)^{p^t}\)">\(X^{p^t}-1=(X-1)^{p^t}\)</span>. Its logarithm is defined, and <span class="math" data-tex="\(p^t\log\xi=0\)">\(p^t\log\xi=0\)</span> forces it to vanish.</p>
+<h2 id="5-cyclotomic-ramification-and-distances-between-roots">5. Cyclotomic ramification and distances between roots</h2>
+<p><strong>Proposition 9.7 (the cyclotomic scale).</strong> If <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> has exact order <span class="math" data-tex="\(p^u\)">\(p^u\)</span>, with <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+v_p(\zeta-1)=\frac1{p^{u-1}(p-1)},
+\qquad
+[\mathbb Q_p(\zeta):\mathbb Q_p]=e=p^{u-1}(p-1),
+\qquad f=1.
+\tag{9.11}
+\]">\[
+v_p(\zeta-1)=\frac1{p^{u-1}(p-1)},
+\qquad
+[\mathbb Q_p(\zeta):\mathbb Q_p]=e=p^{u-1}(p-1),
+\qquad f=1.
+\tag{9.11}
+\]</span>
+<p>Moreover,</p>
+<span class="math math-display" data-tex="\[
+\sum_{\substack{\zeta\text{ of exact}\\\text{order }p^u}}v_p(1-\zeta)=1,
+\qquad
+\sum_{\substack{\zeta^{p^u}=1\\\zeta\ne1}}v_p(1-\zeta)=u.
+\tag{9.12}
+\]">\[
+\sum_{\substack{\zeta\text{ of exact}\\\text{order }p^u}}v_p(1-\zeta)=1,
+\qquad
+\sum_{\substack{\zeta^{p^u}=1\\\zeta\ne1}}v_p(1-\zeta)=u.
+\tag{9.12}
+\]</span>
+<p><strong>Proof.</strong> Roots of <span class="math" data-tex="\(X^{p^u}-1\)">\(X^{p^u}-1\)</span> exist in the algebraic closure and are distinct in characteristic zero. The quotient</p>
+<span class="math math-display" data-tex="\[
+\Phi_{p^u}(X)=\frac{X^{p^u}-1}{X^{p^{u-1}}-1}
+=\sum_{j=0}^{p-1}X^{jp^{u-1}}
+\]">\[
+\Phi_{p^u}(X)=\frac{X^{p^u}-1}{X^{p^{u-1}}-1}
+=\sum_{j=0}^{p-1}X^{jp^{u-1}}
+\]</span>
+<p>has precisely the roots of exact order <span class="math" data-tex="\(p^u\)">\(p^u\)</span>, and degree <span class="math" data-tex="\(n=p^{u-1}(p-1)\)">\(n=p^{u-1}(p-1)\)</span>. For the shifted polynomial <span class="math" data-tex="\(\Phi_{p^u}(1+T)\)">\(\Phi_{p^u}(1+T)\)</span>, the leading coefficient is one and the constant is <span class="math" data-tex="\(p\)">\(p\)</span>. Modulo <span class="math" data-tex="\(p\)">\(p\)</span>, the binomial identity <span class="math" data-tex="\((1+T)^{p^{u-1}}=1+T^{p^{u-1}}\)">\((1+T)^{p^{u-1}}=1+T^{p^{u-1}}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^{p-1}(1+T^{p^{u-1}})^j
+=T^{p^{u-1}(p-1)}.
+\]">\[
+\sum_{j=0}^{p-1}(1+T^{p^{u-1}})^j
+=T^{p^{u-1}(p-1)}.
+\]</span>
+<p>For the last equality, multiply by <span class="math" data-tex="\(T^{p^{u-1}}\)">\(T^{p^{u-1}}\)</span> and use <span class="math" data-tex="\((1+T^{p^{u-1}})^p-1=T^{p^u}\)">\((1+T^{p^{u-1}})^p-1=T^{p^u}\)</span> in <span class="math" data-tex="\(\mathbb F_p[T]\)">\(\mathbb F_p[T]\)</span>; cancellation is legitimate in this polynomial domain. Thus every lower nonconstant coefficient of the shifted polynomial is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, while its constant has valuation exactly one.</p>
+<p>A root <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is a unit, since <span class="math" data-tex="\(\zeta^{p^u}=1\)">\(\zeta^{p^u}=1\)</span>, and its residue is one in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. Put <span class="math" data-tex="\(c=v_p(\zeta-1)&gt;0\)">\(c=v_p(\zeta-1)&gt;0\)</span>. If <span class="math" data-tex="\(nc&lt;1\)">\(nc&lt;1\)</span>, the leading term of the shifted polynomial at <span class="math" data-tex="\(T=\zeta-1\)">\(T=\zeta-1\)</span> uniquely has smallest valuation: every intermediate term has valuation at least <span class="math" data-tex="\(1+jc&gt;nc\)">\(1+jc&gt;nc\)</span>. If <span class="math" data-tex="\(nc&gt;1\)">\(nc&gt;1\)</span>, its constant uniquely has smallest valuation. Neither is consistent with a zero sum. Consequently <span class="math" data-tex="\(nc=1\)">\(nc=1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(L=\mathbb Q_p(\zeta)\)">\(L=\mathbb Q_p(\zeta)\)</span>. Since <span class="math" data-tex="\(1/n\in(1/e)\mathbb Z\)">\(1/n\in(1/e)\mathbb Z\)</span>, we have <span class="math" data-tex="\(n\mid e\)">\(n\mid e\)</span>. On the other hand <span class="math" data-tex="\(e\le[L:\mathbb Q_p]\le n\)">\(e\le[L:\mathbb Q_p]\le n\)</span>, the last inequality coming from the polynomial just displayed. Hence the degree and <span class="math" data-tex="\(e\)">\(e\)</span> are both <span class="math" data-tex="\(n\)">\(n\)</span>, and (9.2) gives <span class="math" data-tex="\(f=1\)">\(f=1\)</span>. This also proves the irreducibility of the displayed cyclotomic polynomial over <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(\Phi_{p^u}(1)=p\)">\(\Phi_{p^u}(1)=p\)</span>. Factor it into its distinct primitive roots and take valuations to obtain the first sum in (9.12). Each nontrivial <span class="math" data-tex="\(p^u\)">\(p^u\)</span>-th root has exact order <span class="math" data-tex="\(p^j\)">\(p^j\)</span> for one <span class="math" data-tex="\(1\le j\le u\)">\(1\le j\le u\)</span>. Adding the first sum for these <span class="math" data-tex="\(u\)">\(u\)</span> orders gives the second. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The factorization of <span class="math" data-tex="\(X^{p^u}-1\)">\(X^{p^u}-1\)</span> also gives, whenever <span class="math" data-tex="\(\xi^{p^u}\ne1\)">\(\xi^{p^u}\ne1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+v_p(\xi^{p^u}-1)=\sum_{\zeta^{p^u}=1}v_p(\xi-\zeta).
+\tag{9.13}
+\]">\[
+v_p(\xi^{p^u}-1)=\sum_{\zeta^{p^u}=1}v_p(\xi-\zeta).
+\tag{9.13}
+\]</span>
+<p>This is an exact finite sum, not an estimate. Distinct roots at the same cyclotomic scale explain the cancellation allowed at the boundary of Lemma 9.5.</p>
+<h2 id="6-analytic-powers-on-larger-discs">6. Analytic powers on larger discs</h2>
+<p><strong>Proposition 9.8 (the power function).</strong> Let <span class="math" data-tex="\(\theta\ge0\)">\(\theta\ge0\)</span> be real and suppose <span class="math" data-tex="\(v_p(x-1)&gt;\theta+1/(p-1)\)">\(v_p(x-1)&gt;\theta+1/(p-1)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+x^z:=\exp(z\log x)
+=\sum_{n\ge0}\frac{(\log x)^n}{n!}z^n
+\quad\text{is analytic on }v_p(z)\ge-\theta.
+\tag{9.14}
+\]">\[
+x^z:=\exp(z\log x)
+=\sum_{n\ge0}\frac{(\log x)^n}{n!}z^n
+\quad\text{is analytic on }v_p(z)\ge-\theta.
+\tag{9.14}
+\]</span>
+<p>The convergence is uniform on this closed disc. For every integer <span class="math" data-tex="\(z\)">\(z\)</span>, it agrees with the usual power of <span class="math" data-tex="\(x\)">\(x\)</span>, including negative powers.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(x=1\)">\(x=1\)</span>, the series is the constant one. Otherwise, because <span class="math" data-tex="\(\theta\ge0\)">\(\theta\ge0\)</span>, the hypothesis places <span class="math" data-tex="\(x\)">\(x\)</span> in the inverse disc of Proposition 9.4. Put <span class="math" data-tex="\(c=v_p(\log x)=v_p(x-1)\)">\(c=v_p(\log x)=v_p(x-1)\)</span>. At radius <span class="math" data-tex="\(R=p^\theta\)">\(R=p^\theta\)</span>, the weighted coefficient valuation for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> is <span class="math" data-tex="\(n(c-\theta)-v_p(n!)\)">\(n(c-\theta)-v_p(n!)\)</span>, which tends to infinity by (9.4). Thus the series belongs to <span class="math" data-tex="\(\mathcal A_R\)">\(\mathcal A_R\)</span>; its tails are uniformly small by Lemma 9.1. Every <span class="math" data-tex="\(z\)">\(z\)</span> in the stated disc has <span class="math" data-tex="\(v_p(z\log x)&gt;1/(p-1)\)">\(v_p(z\log x)&gt;1/(p-1)\)</span>, so the exponential is defined. Since <span class="math" data-tex="\(x=\exp(\log x)\)">\(x=\exp(\log x)\)</span>, its group law proves the integer-power assertion by induction and inverses. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The restriction on <span class="math" data-tex="\(\theta\)">\(\theta\)</span> matters. For a smaller disc, corresponding to <span class="math" data-tex="\(\theta&lt;0\)">\(\theta&lt;0\)</span>, a sufficient hypothesis is <span class="math" data-tex="\(v_p(x-1)&gt;\max\{1/(p-1),\theta+1/(p-1)\}\)">\(v_p(x-1)&gt;\max\{1/(p-1),\theta+1/(p-1)\}\)</span>. The first term of that maximum ensures that <span class="math" data-tex="\(\log x\)">\(\log x\)</span> has the valuation of <span class="math" data-tex="\(x-1\)">\(x-1\)</span>. For instance, <span class="math" data-tex="\(x=-1\)">\(x=-1\)</span> at <span class="math" data-tex="\(p=2\)">\(p=2\)</span> has valuation <span class="math" data-tex="\(v_2(x-1)=1\)">\(v_2(x-1)=1\)</span> but <span class="math" data-tex="\(\log x=0\)">\(\log x=0\)</span>.</p>
+<h2 id="7-schwarz-s-lemma-and-the-meaning-of-the-norm">7. Schwarz's lemma and the meaning of the norm</h2>
+<p><strong>Theorem 9.9 (p-adic Schwarz lemma).</strong> Suppose <span class="math" data-tex="\(\Psi(X)=\sum a_nX^n\in\mathcal A_R\)">\(\Psi(X)=\sum a_nX^n\in\mathcal A_R\)</span>, and <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> has a zero of order at least an integer <span class="math" data-tex="\(T\ge0\)">\(T\ge0\)</span> at zero, meaning <span class="math" data-tex="\(a_0=\cdots=a_{T-1}=0\)">\(a_0=\cdots=a_{T-1}=0\)</span>. For <span class="math" data-tex="\(0&lt;r\le R\)">\(0&lt;r\le R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\Psi\|_r\le\left(\frac rR\right)^T\|\Psi\|_R.
+\tag{9.15}
+\]">\[
+\|\Psi\|_r\le\left(\frac rR\right)^T\|\Psi\|_R.
+\tag{9.15}
+\]</span>
+<p>Over <span class="math" data-tex="\(\mathbb C_p\)">\(\mathbb C_p\)</span> the Gauss norm equals the supremum of the values on the closed disc. Thus (9.15) also reads</p>
+<span class="math math-display" data-tex="\[
+\sup_{|z|_p\le r}|\Psi(z)|_p
+\le\left(\frac rR\right)^T\sup_{|z|_p\le R}|\Psi(z)|_p.
+\tag{9.16}
+\]">\[
+\sup_{|z|_p\le r}|\Psi(z)|_p
+\le\left(\frac rR\right)^T\sup_{|z|_p\le R}|\Psi(z)|_p.
+\tag{9.16}
+\]</span>
+<p><strong>Proof.</strong> For each <span class="math" data-tex="\(n\ge T\)">\(n\ge T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|a_n|r^n=|a_n|R^n\left(\frac rR\right)^n
+\le\|\Psi\|_R\left(\frac rR\right)^T.
+\]">\[
+|a_n|r^n=|a_n|R^n\left(\frac rR\right)^n
+\le\|\Psi\|_R\left(\frac rR\right)^T.
+\]</span>
+<p>Taking the maximum proves (9.15) over any complete extension. This proof also includes <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, and the zero series.</p>
+<p>We prove the claimed equality with the supremum, rather than assume it for every field. First, the residue field of <span class="math" data-tex="\(\mathbb C_p\)">\(\mathbb C_p\)</span> is infinite. For arbitrarily large positive <span class="math" data-tex="\(N\)">\(N\)</span> prime to <span class="math" data-tex="\(p\)">\(p\)</span>, all <span class="math" data-tex="\(N\)">\(N\)</span> distinct roots of <span class="math" data-tex="\(X^N-1\)">\(X^N-1\)</span> lie in the algebraic closure and are units. Their residues are distinct: if two had the same residue, their ratio <span class="math" data-tex="\(\eta\ne1\)">\(\eta\ne1\)</span> would satisfy <span class="math" data-tex="\(v_p(\eta-1)&gt;0\)">\(v_p(\eta-1)&gt;0\)</span> and <span class="math" data-tex="\(\eta^N=1\)">\(\eta^N=1\)</span>, contradicting Lemma 9.5's prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> assertion. These roots provide arbitrarily many residue classes.</p>
+<p>Suppose first that <span class="math" data-tex="\(R=|b|_p\)">\(R=|b|_p\)</span> for some <span class="math" data-tex="\(b\in\mathbb C_p^\times\)">\(b\in\mathbb C_p^\times\)</span>, and <span class="math" data-tex="\(\Psi\ne0\)">\(\Psi\ne0\)</span>. Choose a coefficient <span class="math" data-tex="\(a_k\)">\(a_k\)</span> attaining the Gauss norm. The series <span class="math" data-tex="\(H(Y)=\Psi(bY)/(a_kb^k)\)">\(H(Y)=\Psi(bY)/(a_kb^k)\)</span> has integral coefficients, at least one unit coefficient, and coefficients tending to zero. Reducing them gives a nonzero polynomial over the residue field: only finitely many coefficients are units. A polynomial of degree <span class="math" data-tex="\(d\)">\(d\)</span> has at most <span class="math" data-tex="\(d\)">\(d\)</span> roots, by repeated division by <span class="math" data-tex="\(Y-c\)">\(Y-c\)</span>. Choose a nonzero residue outside these finitely many roots, and lift it to a unit <span class="math" data-tex="\(y\)">\(y\)</span>. Then <span class="math" data-tex="\(|H(y)|_p=1\)">\(|H(y)|_p=1\)</span>, so <span class="math" data-tex="\(|\Psi(by)|_p=\|\Psi\|_R\)">\(|\Psi(by)|_p=\|\Psi\|_R\)</span>. Evaluation always gives the opposite inequality, proving equality.</p>
+<p>For an arbitrary positive real <span class="math" data-tex="\(R\)">\(R\)</span>, the value group contains <span class="math" data-tex="\(p^{\mathbb Q}\)">\(p^{\mathbb Q}\)</span>: roots of <span class="math" data-tex="\(p\)">\(p\)</span> of every positive integer order are already in the algebraic closure. Choose radii <span class="math" data-tex="\(R_j\)">\(R_j\)</span> in this dense subgroup increasing to <span class="math" data-tex="\(R\)">\(R\)</span>. If <span class="math" data-tex="\(a_k\)">\(a_k\)</span> attains <span class="math" data-tex="\(\|\Psi\|_R\)">\(\|\Psi\|_R\)</span>, then <span class="math" data-tex="\(\|\Psi\|_{R_j}\ge|a_k|R_j^k\to\|\Psi\|_R\)">\(\|\Psi\|_{R_j}\ge|a_k|R_j^k\to\|\Psi\|_R\)</span>. Applying the already proved equality on the smaller discs gives a supremum on the <span class="math" data-tex="\(R\)">\(R\)</span>-disc at least <span class="math" data-tex="\(\|\Psi\|_R\)">\(\|\Psi\|_R\)</span>. The reverse inequality is the evaluation bound. This proves the equality for all real radii and completes (9.16). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The field matters in the last step. On <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>, the polynomial <span class="math" data-tex="\(X^p-X\)">\(X^p-X\)</span> has Gauss norm one at radius one, but all its values have absolute value at most <span class="math" data-tex="\(p^{-1}\)">\(p^{-1}\)</span>. Its reduction vanishes on the entire finite residue field. Thus a coefficient norm and a pointwise supremum should not be interchanged over a finite extension without an additional argument.</p>
+<h2 id="8-a-height-bound-for-one-p-adic-logarithm">8. A height bound for one p-adic logarithm</h2>
+<p>Let <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span> be algebraic of degree <span class="math" data-tex="\(d\)">\(d\)</span>, with a fixed p-adic embedding, and let <span class="math" data-tex="\(h(\alpha)\)">\(h(\alpha)\)</span> be the absolute logarithmic Weil height. The earlier height lesson proves, for <span class="math" data-tex="\(\gamma\in\mathbb Q(\alpha)^\times\)">\(\gamma\in\mathbb Q(\alpha)^\times\)</span> and <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+v_p(\gamma)\ln p\le d\,h(\gamma),
+\qquad h(\alpha^N)=Nh(\alpha),
+\qquad h(\alpha^N-1)\le Nh(\alpha)+\ln2.
+\tag{9.17}
+\]">\[
+v_p(\gamma)\ln p\le d\,h(\gamma),
+\qquad h(\alpha^N)=Nh(\alpha),
+\qquad h(\alpha^N-1)\le Nh(\alpha)+\ln2.
+\tag{9.17}
+\]</span>
+<p>The first inequality is its one-place Liouville inequality with the local degree bounded below by one. It remains true when its left side is negative.</p>
+<p><strong>Theorem 9.10 (one-logarithm height bound).</strong> If <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-tex="\(\alpha^m\ne1\)">\(\alpha^m\ne1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+v_p(\alpha^m-1)
+\le v_p(m)+\frac{2d(p^d-1)h(\alpha)+d\ln2}{\ln p}.
+\tag{9.18}
+\]">\[
+v_p(\alpha^m-1)
+\le v_p(m)+\frac{2d(p^d-1)h(\alpha)+d\ln2}{\ln p}.
+\tag{9.18}
+\]</span>
+<p>In particular, for <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+v_p(\alpha^m-1)
+\le\frac{\ln m}{\ln p}
++\frac{2d(p^d-1)}{\ln p}h(\alpha)
++\frac{2d\ln2}{\ln p}.
+\tag{9.19}
+\]">\[
+v_p(\alpha^m-1)
+\le\frac{\ln m}{\ln p}
++\frac{2d(p^d-1)}{\ln p}h(\alpha)
++\frac{2d\ln2}{\ln p}.
+\tag{9.19}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(v_p(\alpha)&gt;0\)">\(v_p(\alpha)&gt;0\)</span>, then <span class="math" data-tex="\(v_p(\alpha^m-1)=0\)">\(v_p(\alpha^m-1)=0\)</span>. If <span class="math" data-tex="\(v_p(\alpha)&lt;0\)">\(v_p(\alpha)&lt;0\)</span>, the valuation is <span class="math" data-tex="\(m v_p(\alpha)&lt;0\)">\(m v_p(\alpha)&lt;0\)</span>. Both satisfy (9.18), whose right side is nonnegative. We may assume that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a unit in the completion <span class="math" data-tex="\(L\)">\(L\)</span> of <span class="math" data-tex="\(K=\mathbb Q(\alpha)\)">\(K=\mathbb Q(\alpha)\)</span>. Use <span class="math" data-tex="\(e,f\)">\(e,f\)</span> from (9.2), so <span class="math" data-tex="\(ef\le d\)">\(ef\le d\)</span>.</p>
+<p>Let <span class="math" data-tex="\(q\)">\(q\)</span> be the order of the nonzero residue of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> in <span class="math" data-tex="\(\kappa_L^\times\)">\(\kappa_L^\times\)</span>. Then <span class="math" data-tex="\(q\mid p^f-1\)">\(q\mid p^f-1\)</span>, in particular <span class="math" data-tex="\(p\nmid q\)">\(p\nmid q\)</span> and <span class="math" data-tex="\(q\le p^f-1\)">\(q\le p^f-1\)</span>. To recall the finite-group argument, the subgroup generated by an element partitions the group into cosets of equal size, namely its order. If <span class="math" data-tex="\(q\nmid m\)">\(q\nmid m\)</span>, the residue of <span class="math" data-tex="\(\alpha^m-1\)">\(\alpha^m-1\)</span> is nonzero, so its valuation is zero and the bound holds.</p>
+<p>Suppose first that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is not a root of unity and <span class="math" data-tex="\(q\mid m\)">\(q\mid m\)</span>. Put <span class="math" data-tex="\(\beta=\alpha^q\)">\(\beta=\alpha^q\)</span>, with <span class="math" data-tex="\(c_0=v_p(\beta-1)\ge1/e\)">\(c_0=v_p(\beta-1)\ge1/e\)</span>. Let <span class="math" data-tex="\(t\)">\(t\)</span> be the least nonnegative integer satisfying <span class="math" data-tex="\(p^t&gt;e/(p-1)\)">\(p^t&gt;e/(p-1)\)</span>, and put <span class="math" data-tex="\(N=qp^t\)">\(N=qp^t\)</span>. Corollary 9.6 gives a finite valuation <span class="math" data-tex="\(c_t=v_p(\alpha^N-1)&gt;1/(p-1)\)">\(c_t=v_p(\alpha^N-1)&gt;1/(p-1)\)</span>. The exponent is bounded by</p>
+<span class="math math-display" data-tex="\[
+N\le2e(p^f-1)\le2(p^{ef}-1)\le2(p^d-1).
+\tag{9.20}
+\]">\[
+N\le2e(p^f-1)\le2(p^{ef}-1)\le2(p^d-1).
+\tag{9.20}
+\]</span>
+<p>The middle inequality follows from <span class="math" data-tex="\(x^e-1=(x-1)(1+x+\cdots+x^{e-1})\ge e(x-1)\)">\(x^e-1=(x-1)(1+x+\cdots+x^{e-1})\ge e(x-1)\)</span> for <span class="math" data-tex="\(x=p^f\ge1\)">\(x=p^f\ge1\)</span>.</p>
+<p>Write <span class="math" data-tex="\(m=q p^a\ell\)">\(m=q p^a\ell\)</span>, where <span class="math" data-tex="\(p\nmid\ell\)">\(p\nmid\ell\)</span>. Since <span class="math" data-tex="\(p\nmid q\)">\(p\nmid q\)</span>, <span class="math" data-tex="\(a=v_p(m)\)">\(a=v_p(m)\)</span>. Lemma 9.5 says that the prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> factor <span class="math" data-tex="\(\ell\)">\(\ell\)</span> preserves the valuation. If <span class="math" data-tex="\(a\ge t\)">\(a\ge t\)</span>, every further <span class="math" data-tex="\(p\)">\(p\)</span>-power adds one, so the valuation is <span class="math" data-tex="\(c_t+a-t\)">\(c_t+a-t\)</span>. If <span class="math" data-tex="\(a&lt;t\)">\(a&lt;t\)</span>, the earlier valuations are at most <span class="math" data-tex="\(c_t\)">\(c_t\)</span>, since every <span class="math" data-tex="\(p\)">\(p\)</span>-step strictly increases a positive finite valuation. Therefore in both cases</p>
+<span class="math math-display" data-tex="\[
+v_p(\alpha^m-1)\le v_p(m)+c_t,
+\qquad
+c_t\ln p\le d\bigl(Nh(\alpha)+\ln2\bigr).
+\tag{9.21}
+\]">\[
+v_p(\alpha^m-1)\le v_p(m)+c_t,
+\qquad
+c_t\ln p\le d\bigl(Nh(\alpha)+\ln2\bigr).
+\tag{9.21}
+\]</span>
+<p>The second inequality is (9.17) applied to <span class="math" data-tex="\(\alpha^N-1\ne0\)">\(\alpha^N-1\ne0\)</span>. Combining (9.20) and (9.21) proves (9.18) in this case.</p>
+<p>Now suppose that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a root of unity. Its height is zero: if <span class="math" data-tex="\(\alpha^b=1\)">\(\alpha^b=1\)</span>, the height-power identity gives <span class="math" data-tex="\(b h(\alpha)=h(1)=0\)">\(b h(\alpha)=h(1)=0\)</span>. When <span class="math" data-tex="\(v_p(\alpha^m-1)&gt;0\)">\(v_p(\alpha^m-1)&gt;0\)</span>, the nontrivial root <span class="math" data-tex="\(\zeta=\alpha^m\)">\(\zeta=\alpha^m\)</span> has <span class="math" data-tex="\(p\)">\(p\)</span>-power order. Indeed, if its order is <span class="math" data-tex="\(p^u s\)">\(p^u s\)</span> with <span class="math" data-tex="\(p\nmid s\)">\(p\nmid s\)</span>, then <span class="math" data-tex="\(\eta=\zeta^{p^u}\)">\(\eta=\zeta^{p^u}\)</span> has order dividing <span class="math" data-tex="\(s\)">\(s\)</span> and is congruent to one. If <span class="math" data-tex="\(\eta\ne1\)">\(\eta\ne1\)</span>, Lemma 9.5 would give a finite value for <span class="math" data-tex="\(v_p(\eta^s-1)\)">\(v_p(\eta^s-1)\)</span>, a contradiction. Hence <span class="math" data-tex="\(\zeta^{p^u}=1\)">\(\zeta^{p^u}=1\)</span>. Proposition 9.7 now yields</p>
+<span class="math math-display" data-tex="\[
+v_p(\alpha^m-1)\le\frac1{p-1}\le\frac{d\ln2}{\ln p}.
+\tag{9.22}
+\]">\[
+v_p(\alpha^m-1)\le\frac1{p-1}\le\frac{d\ln2}{\ln p}.
+\tag{9.22}
+\]</span>
+<p>For the second inequality, <span class="math" data-tex="\(p\le2^{p-1}\)">\(p\le2^{p-1}\)</span> follows by induction on the integer <span class="math" data-tex="\(p\ge2\)">\(p\ge2\)</span>, and thus <span class="math" data-tex="\(\ln p\le(p-1)\ln2\)">\(\ln p\le(p-1)\ln2\)</span>. This proves (9.18) for torsion too, including the cases in which a power used in the preceding argument would have become exactly one.</p>
+<p>Finally, <span class="math" data-tex="\(p^{v_p(m)}\le m\)">\(p^{v_p(m)}\le m\)</span>, so <span class="math" data-tex="\(v_p(m)\le\ln m/\ln p\)">\(v_p(m)\le\ln m/\ln p\)</span>. Replacing <span class="math" data-tex="\(d\ln2\)">\(d\ln2\)</span> by the larger <span class="math" data-tex="\(2d\ln2\)">\(2d\ln2\)</span> gives (9.19). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The factor <span class="math" data-tex="\(p^d-1\)">\(p^d-1\)</span> in this proof comes from two explicit operations: annihilating the residue-class order and taking enough <span class="math" data-tex="\(p\)">\(p\)</span>-powers to enter the exponential disc. The residue-field factor and the ramification factor combine through (9.20). The proof does not presume that <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is an integer or that its local ramification index is one.</p>
+<h2 id="9-lifting-the-exponent-and-two-exact-examples">9. Lifting the exponent and two exact examples</h2>
+<p><strong>Corollary 9.11 (lifting the exponent).</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be odd, and let <span class="math" data-tex="\(a,b\)">\(a,b\)</span> be integers with <span class="math" data-tex="\(p\nmid ab\)">\(p\nmid ab\)</span> and <span class="math" data-tex="\(p\mid a-b\)">\(p\mid a-b\)</span>. For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+v_p(a^n-b^n)=v_p(a-b)+v_p(n).
+\tag{9.23}
+\]">\[
+v_p(a^n-b^n)=v_p(a-b)+v_p(n).
+\tag{9.23}
+\]</span>
+<p>If <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, both sides are infinite and the assertion has that interpretation. More generally, for a p-adic unit <span class="math" data-tex="\(\xi\)">\(\xi\)</span> with <span class="math" data-tex="\(v_p(\xi-1)&gt;1/(p-1)\)">\(v_p(\xi-1)&gt;1/(p-1)\)</span>, the identical argument gives <span class="math" data-tex="\(v_p(\xi^n-1)=v_p(\xi-1)+v_p(n)\)">\(v_p(\xi^n-1)=v_p(\xi-1)+v_p(n)\)</span>, allowing <span class="math" data-tex="\(\xi=1\)">\(\xi=1\)</span>.</p>
+<p><strong>Proof.</strong> When <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span>, put <span class="math" data-tex="\(\xi=a/b\)">\(\xi=a/b\)</span>. Then <span class="math" data-tex="\(c=v_p(\xi-1)=v_p(a-b)\ge1&gt;1/(p-1)\)">\(c=v_p(\xi-1)=v_p(a-b)\ge1&gt;1/(p-1)\)</span>, since <span class="math" data-tex="\(p\)">\(p\)</span> is odd and <span class="math" data-tex="\(b\)">\(b\)</span> is a unit. Decompose <span class="math" data-tex="\(n=p^s\ell\)">\(n=p^s\ell\)</span>, <span class="math" data-tex="\(p\nmid\ell\)">\(p\nmid\ell\)</span>. Lemma 9.5 adds one on each of the <span class="math" data-tex="\(s\)">\(s\)</span> successive <span class="math" data-tex="\(p\)">\(p\)</span>-steps and leaves the value unchanged on the last <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-step. Multiplication by <span class="math" data-tex="\(b^n\)">\(b^n\)</span> does not change it. The same proof works for any unit initially in the deeper disc. The equal-base case is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, <span class="math" data-tex="\(16-1=15\)">\(16-1=15\)</span> has 5-adic valuation one and <span class="math" data-tex="\(729-1=728=7\cdot104\)">\(729-1=728=7\cdot104\)</span> has 7-adic valuation one. Hence for <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+v_5(16^k-1)=1+v_5(k),
+\qquad v_7(729^k-1)=1+v_7(k).
+\tag{9.24}
+\]">\[
+v_5(16^k-1)=1+v_5(k),
+\qquad v_7(729^k-1)=1+v_7(k).
+\tag{9.24}
+\]</span>
+<p>For example <span class="math" data-tex="\(16^{25}-1\)">\(16^{25}-1\)</span> has valuation three at 5, and <span class="math" data-tex="\(729^{49}-1\)">\(729^{49}-1\)</span> has valuation three at 7. These exponents may make the ordinary integers enormous while their valuations are obtained exactly from the small exponent.</p>
+<p>At <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the deeper-disc condition is <span class="math" data-tex="\(c&gt;1\)">\(c&gt;1\)</span>. It gives <span class="math" data-tex="\(v_2(5^k-1)=2+v_2(k)\)">\(v_2(5^k-1)=2+v_2(k)\)</span>. It cannot be weakened to <span class="math" data-tex="\(c\ge1\)">\(c\ge1\)</span>: <span class="math" data-tex="\(v_2(3-1)=1\)">\(v_2(3-1)=1\)</span>, but <span class="math" data-tex="\(v_2(3^2-1)=3\)">\(v_2(3^2-1)=3\)</span>. If <span class="math" data-tex="\(k\)">\(k\)</span> is odd, Lemma 9.5 gives <span class="math" data-tex="\(v_2(3^k-1)=1\)">\(v_2(3^k-1)=1\)</span>; if <span class="math" data-tex="\(k\)">\(k\)</span> is even, apply the deeper-disc formula to <span class="math" data-tex="\(9^{k/2}\)">\(9^{k/2}\)</span> to obtain <span class="math" data-tex="\(v_2(3^k-1)=2+v_2(k)\)">\(v_2(3^k-1)=2+v_2(k)\)</span>.</p>
+<p>The included <a href="verification/padic_examples.py">exact-arithmetic program</a> checks these examples, the factorial digit identity and small cyclotomic shifted polynomials. The general statements are proved above.</p>
+<h2 id="10-exercises">10. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Derive (9.23) directly from the two parts of Lemma 9.5. Calculate <span class="math" data-tex="\(v_5(16^{125}-1)\)">\(v_5(16^{125}-1)\)</span> and <span class="math" data-tex="\(v_7(729^{343}-1)\)">\(v_7(729^{343}-1)\)</span>.</li>
+<li><strong>Medium.</strong> Prove that the exponential radius is exactly <span class="math" data-tex="\(p^{-1/(p-1)}\)">\(p^{-1/(p-1)}\)</span>, including divergence on the boundary. What happens to the terms with indices <span class="math" data-tex="\(p^j\)">\(p^j\)</span>?</li>
+<li><strong>Medium.</strong> Prove Proposition 9.7 for <span class="math" data-tex="\(u=1\)">\(u=1\)</span>, including the ramification degree and the sum over primitive roots.</li>
+<li><strong>Hard.</strong> Prove both norm versions of Schwarz's lemma, explaining the role of the residue field. Give a series for which the inequality is an equality at every pair of radii.</li>
+<li><strong>Medium.</strong> Prove that a root of unity congruent to one has <span class="math" data-tex="\(p\)">\(p\)</span>-power order. Deduce the full kernel of the logarithm on <span class="math" data-tex="\(U\)">\(U\)</span>.</li>
+<li><strong>Easy.</strong> Verify <span class="math" data-tex="\(v_5(99!)=22\)">\(v_5(99!)=22\)</span> using the base-5 digits, and also by counting multiples of successive powers of 5.</li>
+<li><strong>Medium.</strong> Translate (9.18) into the <span class="math" data-tex="\(\operatorname{ord}_{\mathfrak P}\)">\(\operatorname{ord}_{\mathfrak P}\)</span> normalization. Identify the coefficient of <span class="math" data-tex="\(v_p(m)\)">\(v_p(m)\)</span>, and explain why omitting it changes the bound.</li>
+<li><strong>Medium.</strong> In <span class="math" data-tex="\(\mathbb Q_2(\sqrt2)\)">\(\mathbb Q_2(\sqrt2)\)</span>, calculate the first two squaring steps for <span class="math" data-tex="\(\xi=1+\sqrt2\)">\(\xi=1+\sqrt2\)</span>. Determine the uniform entrance exponent from Corollary 9.6 and its contribution to (9.20).</li>
+<li><strong>Medium.</strong> Compute the Gauss norm and the pointwise supremum of <span class="math" data-tex="\(X^p-X\)">\(X^p-X\)</span> on <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>. Explain why the corresponding supremum on the unit disc of <span class="math" data-tex="\(\mathbb C_p\)">\(\mathbb C_p\)</span> is different.</li>
+<li><strong>Medium.</strong> Apply the stronger estimate (9.18) to <span class="math" data-tex="\(\alpha=-1\)">\(\alpha=-1\)</span>, <span class="math" data-tex="\(p=2\)">\(p=2\)</span> and odd <span class="math" data-tex="\(m\)">\(m\)</span>. Why would the nontorsion part of its proof be invalid if used alone?</li>
+</ol>
+<h2 id="11-complete-solutions">11. Complete solutions</h2>
+<p><strong>Solution 1.</strong> Let <span class="math" data-tex="\(\xi=a/b\)">\(\xi=a/b\)</span>, whose valuation is zero and whose distance from one has integer valuation <span class="math" data-tex="\(c\ge1\)">\(c\ge1\)</span>. For an odd prime, <span class="math" data-tex="\(c&gt;1/(p-1)\)">\(c&gt;1/(p-1)\)</span>. Writing <span class="math" data-tex="\(n=p^s\ell\)">\(n=p^s\ell\)</span>, <span class="math" data-tex="\(p\nmid\ell\)">\(p\nmid\ell\)</span>, the <span class="math" data-tex="\(p\)">\(p\)</span>-power clause adds one at each of <span class="math" data-tex="\(s\)">\(s\)</span> steps, while the prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> clause leaves the result unchanged. This gives <span class="math" data-tex="\(c+s\)">\(c+s\)</span>, and <span class="math" data-tex="\(b^n\)">\(b^n\)</span> has valuation zero. In the two examples the initial values are one, so <span class="math" data-tex="\(v_5(16^{125}-1)=1+3=4\)">\(v_5(16^{125}-1)=1+3=4\)</span>, and <span class="math" data-tex="\(v_7(729^{343}-1)=1+3=4\)">\(v_7(729^{343}-1)=1+3=4\)</span>.</p>
+<p><strong>Solution 2.</strong> For <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, write <span class="math" data-tex="\(c=v_p(z)\)">\(c=v_p(z)\)</span>. Formula (9.4) gives <span class="math" data-tex="\(v_p(z^n/n!)\ge n(c-1/(p-1))+1/(p-1)\)">\(v_p(z^n/n!)\ge n(c-1/(p-1))+1/(p-1)\)</span>, so the terms tend to zero if <span class="math" data-tex="\(c&gt;1/(p-1)\)">\(c&gt;1/(p-1)\)</span>. At <span class="math" data-tex="\(n=p^j\)">\(n=p^j\)</span>, the digit sum is one, and the valuation is exactly <span class="math" data-tex="\(p^j(c-1/(p-1))+1/(p-1)\)">\(p^j(c-1/(p-1))+1/(p-1)\)</span>. It is constant on the boundary and tends to minus infinity outside. By Lemma 9.1, convergence holds exactly in the asserted open disc. Boundary points exist in <span class="math" data-tex="\(\mathbb C_p\)">\(\mathbb C_p\)</span>, for instance a <span class="math" data-tex="\((p-1)\)">\((p-1)\)</span>-st root of <span class="math" data-tex="\(p\)">\(p\)</span>. Thus the radius is exact, rather than merely a sufficient convergence radius.</p>
+<p><strong>Solution 3.</strong> Here <span class="math" data-tex="\(\Phi_p(1+T)=((1+T)^p-1)/T=p+\binom p2T+\cdots+T^{p-1}\)">\(\Phi_p(1+T)=((1+T)^p-1)/T=p+\binom p2T+\cdots+T^{p-1}\)</span>. The constant has valuation one, all intervening coefficients are divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, and the leading coefficient is one. A primitive root has reduction one; at <span class="math" data-tex="\(c=v_p(\zeta-1)&gt;0\)">\(c=v_p(\zeta-1)&gt;0\)</span>, a unique smallest term would occur unless <span class="math" data-tex="\((p-1)c=1\)">\((p-1)c=1\)</span>. Its value group therefore forces <span class="math" data-tex="\(p-1\mid e\)">\(p-1\mid e\)</span>. The polynomial degree gives <span class="math" data-tex="\([\mathbb Q_p(\zeta):\mathbb Q_p]\le p-1\)">\([\mathbb Q_p(\zeta):\mathbb Q_p]\le p-1\)</span>, while the degree is at least <span class="math" data-tex="\(e\)">\(e\)</span>. Thus <span class="math" data-tex="\(e=[\mathbb Q_p(\zeta):\mathbb Q_p]=p-1\)">\(e=[\mathbb Q_p(\zeta):\mathbb Q_p]=p-1\)</span>, and <span class="math" data-tex="\(f=1\)">\(f=1\)</span>. There are <span class="math" data-tex="\(p-1\)">\(p-1\)</span> primitive roots, each with valuation <span class="math" data-tex="\(1/(p-1)\)">\(1/(p-1)\)</span>, so their sum is one. Equivalently their product <span class="math" data-tex="\(\prod(1-\zeta)=\Phi_p(1)=p\)">\(\prod(1-\zeta)=\Phi_p(1)=p\)</span> gives that sum.</p>
+<p><strong>Solution 4.</strong> Vanishing to order at least <span class="math" data-tex="\(T\)">\(T\)</span> means the coefficients below <span class="math" data-tex="\(T\)">\(T\)</span> vanish. For every remaining coefficient, multiply its radius-<span class="math" data-tex="\(R\)">\(R\)</span> bound by <span class="math" data-tex="\((r/R)^n\le(r/R)^T\)">\((r/R)^n\le(r/R)^T\)</span>, and take the maximum. This proves the Gauss version. To obtain the pointwise version on <span class="math" data-tex="\(\mathbb C_p\)">\(\mathbb C_p\)</span>, for radii in the value group scale the variable and divide by a coefficient of maximal weighted norm. Reduction gives a nonzero polynomial, because the scaled coefficients tend to zero. The residue field is infinite by the distinct reductions of arbitrarily many prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> roots of unity, proved in Section 7. A residue outside the polynomial's roots lifts to a point attaining the Gauss norm. Radii in <span class="math" data-tex="\(p^{\mathbb Q}\)">\(p^{\mathbb Q}\)</span> approximate any real radius from below; a maximizing coefficient shows the corresponding norms tend to the norm at that radius. Thus the supremum equals the Gauss norm for all real radii. The series <span class="math" data-tex="\(aX^T\)">\(aX^T\)</span>, with <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, gives equality in both versions.</p>
+<p><strong>Solution 5.</strong> If the root <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> has order <span class="math" data-tex="\(p^u s\)">\(p^u s\)</span>, <span class="math" data-tex="\(p\nmid s\)">\(p\nmid s\)</span>, then <span class="math" data-tex="\(\eta=\zeta^{p^u}\)">\(\eta=\zeta^{p^u}\)</span> is congruent to one and <span class="math" data-tex="\(\eta^s=1\)">\(\eta^s=1\)</span>. Unless <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span>, the prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> power clause of Lemma 9.5 would preserve a positive finite valuation and contradict <span class="math" data-tex="\(\eta^s=1\)">\(\eta^s=1\)</span>. Thus <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> has <span class="math" data-tex="\(p\)">\(p\)</span>-power order. Such roots have logarithm zero by the integer-power identity and characteristic zero. Conversely if <span class="math" data-tex="\(\log\xi=0\)">\(\log\xi=0\)</span> with <span class="math" data-tex="\(\xi\in U\)">\(\xi\in U\)</span>, Corollary 9.6 puts some <span class="math" data-tex="\(\xi^{p^t}\)">\(\xi^{p^t}\)</span> in <span class="math" data-tex="\(1+D\)">\(1+D\)</span> or makes it one. In <span class="math" data-tex="\(1+D\)">\(1+D\)</span>, the inverse identity gives <span class="math" data-tex="\(\xi^{p^t}=\exp(p^t\log\xi)=1\)">\(\xi^{p^t}=\exp(p^t\log\xi)=1\)</span>. Hence precisely the <span class="math" data-tex="\(p\)">\(p\)</span>-power roots comprise the kernel.</p>
+<p><strong>Solution 6.</strong> The base-5 expansion is <span class="math" data-tex="\(99=3\cdot25+4\cdot5+4\)">\(99=3\cdot25+4\cdot5+4\)</span>, with digit sum 11. Thus <span class="math" data-tex="\(v_5(99!)=(99-11)/4=22\)">\(v_5(99!)=(99-11)/4=22\)</span>. Directly, there are <span class="math" data-tex="\(\lfloor99/5\rfloor=19\)">\(\lfloor99/5\rfloor=19\)</span> multiples of 5, and <span class="math" data-tex="\(\lfloor99/25\rfloor=3\)">\(\lfloor99/25\rfloor=3\)</span> further factors of 5 contributed by multiples of 25. There are no multiples of 125. The sum is again 22.</p>
+<p><strong>Solution 7.</strong> Multiply every term of (9.18) by <span class="math" data-tex="\(e\)">\(e\)</span>. The result is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ord}_{\mathfrak P}(\alpha^m-1)
+\le e\,v_p(m)+\frac{e\bigl(2d(p^d-1)h(\alpha)+d\ln2\bigr)}{\ln p}.
+\]">\[
+\operatorname{ord}_{\mathfrak P}(\alpha^m-1)
+\le e\,v_p(m)+\frac{e\bigl(2d(p^d-1)h(\alpha)+d\ln2\bigr)}{\ln p}.
+\]</span>
+<p>Here <span class="math" data-tex="\(\operatorname{ord}_{\mathfrak P}(m)=e\,v_p(m)\)">\(\operatorname{ord}_{\mathfrak P}(m)=e\,v_p(m)\)</span>. Each additional factor of <span class="math" data-tex="\(p\)">\(p\)</span> in an exponent therefore contributes <span class="math" data-tex="\(e\)">\(e\)</span> uniformizer units after entrance, rather than one. Retaining <span class="math" data-tex="\(v_p(p)=1\)">\(v_p(p)=1\)</span> on one side and using a uniformizer normalization on the other would lose that factor.</p>
+<p><strong>Solution 8.</strong> The valuation of <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so the local ramification index is at least two. The degree of <span class="math" data-tex="\(X^2-2\)">\(X^2-2\)</span> is two, and (9.2) forces degree and ramification index two and residue degree one. With <span class="math" data-tex="\(\xi=1+\sqrt2\)">\(\xi=1+\sqrt2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\xi^2-1=2+2\sqrt2=2(1+\sqrt2),
+\qquad
+\xi^4-1=16+12\sqrt2=4\sqrt2(3+2\sqrt2).
+\]">\[
+\xi^2-1=2+2\sqrt2=2(1+\sqrt2),
+\qquad
+\xi^4-1=16+12\sqrt2=4\sqrt2(3+2\sqrt2).
+\]</span>
+<p>The parenthesized factors are units, so these valuations are one and <span class="math" data-tex="\(5/2\)">\(5/2\)</span>. Thus the first step lands on the boundary, and the second has greater valuation than the boundary lower bound two. The uniform entrance choice is the least <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(2^t&gt;2\)">\(2^t&gt;2\)</span>, namely <span class="math" data-tex="\(t=2\)">\(t=2\)</span>, so <span class="math" data-tex="\(2^t=4=2e\)">\(2^t=4=2e\)</span>. The residue of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is one, hence <span class="math" data-tex="\(q=1\)">\(q=1\)</span> and <span class="math" data-tex="\(N=4\)">\(N=4\)</span>. The exponent bound (9.20) here is <span class="math" data-tex="\(4\le2(2^2-1)=6\)">\(4\le2(2^2-1)=6\)</span>.</p>
+<p><strong>Solution 9.</strong> The two nonzero coefficients have absolute value one, so the Gauss norm at radius one is one. Every residue in <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> satisfies <span class="math" data-tex="\(a^p=a\)">\(a^p=a\)</span>: for <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, the coset proof of Lagrange's theorem gives <span class="math" data-tex="\(a^{p-1}=1\)">\(a^{p-1}=1\)</span>, and zero is immediate. Consequently <span class="math" data-tex="\(x^p-x\in p\mathbb Z_p\)">\(x^p-x\in p\mathbb Z_p\)</span> for every <span class="math" data-tex="\(x\in\mathbb Z_p\)">\(x\in\mathbb Z_p\)</span>. At <span class="math" data-tex="\(x=p\)">\(x=p\)</span>, its valuation is one, since <span class="math" data-tex="\(p^p-p=p(p^{p-1}-1)\)">\(p^p-p=p(p^{p-1}-1)\)</span>. The supremum on <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is therefore <span class="math" data-tex="\(p^{-1}\)">\(p^{-1}\)</span>. The residue field of <span class="math" data-tex="\(\mathbb C_p\)">\(\mathbb C_p\)</span> is infinite; choose a residue which is not a root of <span class="math" data-tex="\(X^p-X\)">\(X^p-X\)</span>. A unit lift gives value of absolute value one, so the supremum on its unit disc is one.</p>
+<p><strong>Solution 10.</strong> The degree is one and the height is zero. If <span class="math" data-tex="\(m\)">\(m\)</span> is odd, <span class="math" data-tex="\(v_2(m)=0\)">\(v_2(m)=0\)</span> and <span class="math" data-tex="\(\alpha^m-1=-2\)">\(\alpha^m-1=-2\)</span> has valuation one. The right side of (9.18) is <span class="math" data-tex="\(\ln2/\ln2=1\)">\(\ln2/\ln2=1\)</span>, so equality holds. But the uniform entrance power for <span class="math" data-tex="\(e=1,p=2\)">\(e=1,p=2\)</span> is <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(\alpha^2-1=0\)">\(\alpha^2-1=0\)</span>. A Liouville bound for this zero would be meaningless. The separate torsion argument in (9.22) is essential.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Conrad] Keith Conrad, <em>Infinite series in p-adic fields</em>, freely available <a href="https://kconrad.math.uconn.edu/blurbs/gradnumthy/infseriespadic.pdf">author's notes</a>. Sections 2, 4 and 8 treat convergence, the exponential, the logarithm and the justification of inverse identities. The local-field and height inputs used here have complete proofs in the programme lessons linked in Sections 1 and 8.</li>
+</ul>
+<h2 id="editable-source">Editable source</h2>
+<p><a href="sources/TR-BAKER-09.tex">LaTeX source</a> · <a href="src/TR-BAKER-09.md">Markdown source</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-08.html">← Linear forms in many logarithms: the modern estimates and how to use them</a><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-BAKER-10.html">Two p-adic logarithms: determinant bounds →</a></span></nav>
+<p class="small source-link"><a href="sources/TR-BAKER-09.tex" download>Editable LaTeX source of this lesson</a> · <a href="src/TR-BAKER-09.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

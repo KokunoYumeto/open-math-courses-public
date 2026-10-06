@@ -1,0 +1,184 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MF-06: narrow scalar and vector integration bridge · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-WH04-WEIGHT.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-MF-SB.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original independently reconstructed scalar bridge by GPT-6 Astra (OpenAI), Ultra; complete independent mathematical review at actual earlier CF/SC/FF/SF proofs. Human review and formal verification are not asserted.</p><h1 id="mf-06-narrow-scalar-and-vector-integration-bridge">MF-06: narrow scalar and vector integration bridge</h1>
+<p>Original proof with independently reconstructed earlier inputs, 2026-10-04. This bridge proves the scalar kernel, continuous-function Fourier uniqueness and vectorwise integrals used in the modular fundamental theorem. Its mathematical inputs are actual earlier local proof bodies. New exposition and the original illustration are CC0-1.0 to the extent of rights held.</p>
+<p><a id="oa-flow.mf-sb.1"></a></p>
+<h2 id="OA-FLOW.MF-SB.1">Exact earlier local proofs</h2>
+<p>Every input used below is a complete proof in one of the following earlier notes.</p>
+<table>
+<thead>
+<tr>
+<th>Local proof</th>
+<th>Exact scope used here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="unlinked">CF Section 1</span></td>
+<td>Continuous Banach-valued Riemann integrals, norm bounds, bounded-map commutation and the fundamental theorem</td>
+</tr>
+<tr>
+<td><a href="OA-FLOW-SC.html#sc-02">SC-02–05</a></td>
+<td>Normalized Lebesgue measure, affine changes of variables, complex integration and monotone/dominated convergence</td>
+</tr>
+<tr>
+<td><a href="OA-FLOW-SC.html#sc-08">SC-08–09</a></td>
+<td>Continuous Riemann/Lebesgue agreement, oriented substitution and dominated scalar differentiation</td>
+</tr>
+<tr>
+<td><span class="unlinked">FF scalar interchange</span></td>
+<td>Interchange on sigma-finite real Borel spaces; the complex case only after absolute integrability is checked</td>
+</tr>
+<tr>
+<td><span class="unlinked">FF-1</span></td>
+<td>Gaussian normalization, transform and concentration, proved from disk sections and scalar calculus</td>
+</tr>
+<tr>
+<td><a href="OA-FLOW-SF.html#oa-flow.sf4.rectangle-cauchy">SF-4</a></td>
+<td>Rectangle Cauchy theorem, the directly computed small-square integral, and the local rectangle criterion for holomorphy</td>
+</tr>
+</tbody>
+</table>
+<p>These proofs use the earlier CF/SC foundations and explicit scalar/set conventions. All double integrals below concern the real line and Lebesgue measure, so the stated real-Borel interchange theorem supplies exactly their required generality. No theorem about product measures on arbitrary spaces is imported. Hilbert spaces remain arbitrary.</p>
+<p><a id="oa-flow.mf-sb.2"></a></p>
+<h2 id="OA-FLOW.MF-SB.2">SB-1. Absolutely convergent vectorwise integrals</h2>
+<p>Let <span class="math" data-tex="$X$">$X$</span> be a Banach space and <span class="math" data-tex="$F:\mathbb R\to X$">$F:\mathbb R\to X$</span> continuous, with the continuous scalar function <span class="math" data-tex="$\|F\|$">$\|F\|$</span> integrable for Lebesgue measure. CF Section 1 constructs the Riemann integral of <span class="math" data-tex="$F$">$F$</span> on every compact interval; SC-08 identifies the integral of its continuous norm with the corresponding Lebesgue integral. If <span class="math" data-tex="$b&gt;a&gt;0$">$b&gt;a&gt;0$</span>, then</p>
+<p><span class="math math-display" data-tex="$$
+ \left\|\int_{-b}^{b}F(t)\,dt-\int_{-a}^{a}F(t)\,dt\right\|
+ \leq\int_{|t|&gt;a}\|F(t)\|\,dt.
+$$">$$
+ \left\|\int_{-b}^{b}F(t)\,dt-\int_{-a}^{a}F(t)\,dt\right\|
+ \leq\int_{|t|&gt;a}\|F(t)\|\,dt.
+$$</span></p>
+<p>The right side tends to zero by integrability and MCT/DCT. Completeness gives an improper integral independent of the compact exhaustion, with norm at most the scalar integral of the norm. Compact linearity and commutation with a bounded complex-linear map pass to the limit. In particular inner-product pairings commute with these Hilbert-valued integrals, with the appropriate convention in the second variable. Commutation is not asserted for a lone anti-linear map; a scalar coefficient must then be conjugated.</p>
+<p>If <span class="math" data-tex="$F_n$">$F_n$</span> and <span class="math" data-tex="$F$">$F$</span> are continuous, <span class="math" data-tex="$F_n(t)\to F(t)$">$F_n(t)\to F(t)$</span> in norm for every <span class="math" data-tex="$t$">$t$</span>, and <span class="math" data-tex="$\|F_n(t)\|,\|F(t)\|\leq g(t)$">$\|F_n(t)\|,\|F(t)\|\leq g(t)$</span> for an integrable nonnegative scalar <span class="math" data-tex="$g$">$g$</span>, DCT applied to <span class="math" data-tex="$\|F_n-F\|\leq2g$">$\|F_n-F\|\leq2g$</span> gives</p>
+<p><span class="math math-display" data-tex="$$
+ \left\|\int F_n-\int F\right\|\leq\int\|F_n-F\|\longrightarrow0.
+\tag{SB.1}
+$$">$$
+ \left\|\int F_n-\int F\right\|\leq\int\|F_n-F\|\longrightarrow0.
+\tag{SB.1}
+$$</span></p>
+<p>The same proof applies to operator-norm continuous <span class="math" data-tex="$B(H)$">$B(H)$</span>-valued functions. For a strongly continuous operator function <span class="math" data-tex="$A(t)$">$A(t)$</span> with <span class="math" data-tex="$\|A(t)\|\leq g(t)$">$\|A(t)\|\leq g(t)$</span>, define <span class="math" data-tex="$Tq=\int A(t)q\,dt$">$Tq=\int A(t)q\,dt$</span> for every <span class="math" data-tex="$q$">$q$</span> in <span class="math" data-tex="$H$">$H$</span>. The vector construction proves that <span class="math" data-tex="$T$">$T$</span> is complex-linear and bounded with <span class="math" data-tex="$\|T\|\leq\int g$">$\|T\|\leq\int g$</span>. Pairings and bounded left/right multiplication commute with it: for <span class="math" data-tex="$B,C$">$B,C$</span> in <span class="math" data-tex="$B(H)$">$B(H)$</span>, <span class="math" data-tex="$(BTC)q=B\int A(t)Cq\,dt$">$(BTC)q=B\int A(t)Cq\,dt$</span>. A strongly continuous integrand need not be continuous in operator norm. No separability of <span class="math" data-tex="$H$">$H$</span> is used, since each individual vector integral is constructed by compact Riemann sums. The same argument yields strong convergence of such integrals under pointwise strong convergence and a common integrable operator bound.</p>
+<p><a id="oa-flow.mf-sb.3"></a></p>
+<h2 id="OA-FLOW.MF-SB.3">SB-2. The single simple-pole calculation actually needed</h2>
+<p>For real <span class="math" data-tex="$x$">$x$</span> put</p>
+<p><span class="math math-display" data-tex="$$
+ I(x)=\int_{\mathbb R}\frac{e^{ixt}}{2\cosh(\pi t)}\,dt.
+$$">$$
+ I(x)=\int_{\mathbb R}\frac{e^{ixt}}{2\cosh(\pi t)}\,dt.
+$$</span></p>
+<p>The integral converges absolutely, since <span class="math" data-tex="$1/(2\cosh(\pi t))\leq e^{-\pi|t|}$">$1/(2\cosh(\pi t))\leq e^{-\pi|t|}$</span>. Suppose first <span class="math" data-tex="$x\geq0$">$x\geq0$</span> and let <span class="math" data-tex="$p=i/2$">$p=i/2$</span>. On the convex strip <span class="math" data-tex="$V=\{z:-1/4&lt;\operatorname{Im}z&lt;5/4\}$">$V=\{z:-1/4&lt;\operatorname{Im}z&lt;5/4\}$</span>, the only zero of <span class="math" data-tex="$\cosh(\pi z)$">$\cosh(\pi z)$</span> is <span class="math" data-tex="$p$">$p$</span>. Indeed its vanishing is equivalent to <span class="math" data-tex="$e^{2\pi z}=-1$">$e^{2\pi z}=-1$</span>, so its zeros are <span class="math" data-tex="$i(n+1/2)$">$i(n+1/2)$</span>; these are the elementary exponential identities from the scalar conventions of SF, SB-0. Its derivative at <span class="math" data-tex="$p$">$p$</span> is <span class="math" data-tex="$\pi\sinh(\pi p)=\pi i$">$\pi\sinh(\pi p)=\pi i$</span>.</p>
+<p>We subtract the principal part explicitly. Put</p>
+<p><span class="math math-display" data-tex="$$
+ q(z)=\frac{e^{ixz}}{2\cosh(\pi z)}-
+       \frac{e^{-x/2}}{2\pi i(z-p)}\quad(z\ne p).
+$$">$$
+ q(z)=\frac{e^{ixz}}{2\cosh(\pi z)}-
+       \frac{e^{-x/2}}{2\pi i(z-p)}\quad(z\ne p).
+$$</span></p>
+<p>This <span class="math" data-tex="$q$">$q$</span> has a continuous extension at <span class="math" data-tex="$p$">$p$</span>. To verify that assertion without any removable-singularity theorem, write <span class="math" data-tex="$z=p+u$">$z=p+u$</span>. Repeated differentiation of elementary exponentials at zero gives</p>
+<p><span class="math math-display" data-tex="$$
+ e^{ixu}=1+ixu+O(|u|^2),\qquad
+ \sinh(\pi u)=\pi u+O(|u|^3),\qquad
+ \cosh(\pi(p+u))=i\sinh(\pi u).
+$$">$$
+ e^{ixu}=1+ixu+O(|u|^2),\qquad
+ \sinh(\pi u)=\pi u+O(|u|^3),\qquad
+ \cosh(\pi(p+u))=i\sinh(\pi u).
+$$</span></p>
+<p>These remainder bounds follow from repeated scalar FTC along the segment 0 to <span class="math" data-tex="$u$">$u$</span>, using CF Section 1, and boundedness of the exponential derivatives on a small disk. Consequently <span class="math" data-tex="$q(p+u)$">$q(p+u)$</span> tends to <span class="math" data-tex="$e^{-x/2}x/(2\pi)$">$e^{-x/2}x/(2\pi)$</span>. This is its value at <span class="math" data-tex="$p$">$p$</span>. Thus <span class="math" data-tex="$q$">$q$</span> is continuous throughout <span class="math" data-tex="$V$">$V$</span> and holomorphic off <span class="math" data-tex="$p$">$p$</span>. We now prove the contour conclusion directly from SF-4. Choose a closed axis-parallel rectangle contained in <span class="math" data-tex="$V$">$V$</span> with <span class="math" data-tex="$p$">$p$</span> in its interior, and remove the centered square of half-side <span class="math" data-tex="$\rho$">$\rho$</span>, smaller than every distance from <span class="math" data-tex="$p$">$p$</span> to the rectangle's sides. The remainder splits into four rectangles away from <span class="math" data-tex="$p$">$p$</span>. SF-4's rectangle Cauchy theorem for <span class="math" data-tex="$q$">$q$</span> makes their interior edges cancel. The outer positively oriented integral equals the small square's positively oriented integral. The latter has modulus at most <span class="math" data-tex="$8\rho$">$8\rho$</span> times the supremum of <span class="math" data-tex="$|q|$">$|q|$</span> near <span class="math" data-tex="$p$">$p$</span> and tends to zero. The outer integral is therefore zero. Rectangles avoiding <span class="math" data-tex="$p$">$p$</span> already have zero integral. If <span class="math" data-tex="$p$">$p$</span> is on a rectangle's boundary, translate the rectangle by arbitrarily small vectors so <span class="math" data-tex="$p$">$p$</span> is not on that boundary; continuity of <span class="math" data-tex="$q$">$q$</span> and the compact integral norm bound let the integrals pass to the limit. Thus all rectangles compactly contained in <span class="math" data-tex="$V$">$V$</span> have zero integral.</p>
+<p>The local rectangle criterion in SF-4 now proves that <span class="math" data-tex="$q$">$q$</span> is holomorphic also at <span class="math" data-tex="$p$">$p$</span>. For completeness it also gives the original closed-path conclusion on the whole strip: fix a base point in <span class="math" data-tex="$V$">$V$</span> and integrate <span class="math" data-tex="$q$">$q$</span> first horizontally at its height and then vertically. Comparing two such paths by their connecting rectangle shows that a small endpoint increment is <span class="math" data-tex="$hq(z)+o(|h|)$">$hq(z)+o(|h|)$</span>, so this function has derivative <span class="math" data-tex="$q$">$q$</span>. Its composition with a piecewise continuously differentiable path has derivative <span class="math" data-tex="$q(z)$">$q(z)$</span> times the path derivative, by the real chain rule. The fundamental theorem proves that <span class="math" data-tex="$q$">$q$</span> has integral zero around every such closed path in <span class="math" data-tex="$V$">$V$</span>. No index or general residue theorem is needed.</p>
+<p>Let <span class="math" data-tex="$\Gamma_R$">$\Gamma_R$</span> be the positively oriented boundary of <span class="math" data-tex="$[-R,R]+i[0,1]$">$[-R,R]+i[0,1]$</span>, <span class="math" data-tex="$R&gt;0$">$R&gt;0$</span>. Apply the same four-rectangle cancellation to <span class="math" data-tex="$1/(z-p)$">$1/(z-p)$</span>, with a centered square of half-side <span class="math" data-tex="$\rho&lt;\min(R,1/2)$">$\rho&lt;\min(R,1/2)$</span>. The outer integral equals the small-square integral <span class="math" data-tex="$2\pi i$">$2\pi i$</span> computed explicitly in SF-4. Integrating the definition of <span class="math" data-tex="$q$">$q$</span> therefore gives</p>
+<p><span class="math math-display" data-tex="$$
+ \int_{\Gamma_R}\frac{e^{ixz}}{2\cosh(\pi z)}\,dz
+ =2\pi i\,\frac{e^{-x/2}}{2\pi i}
+ =e^{-x/2}.
+\tag{SB.2}
+$$">$$
+ \int_{\Gamma_R}\frac{e^{ixz}}{2\cosh(\pi z)}\,dz
+ =2\pi i\,\frac{e^{-x/2}}{2\pi i}
+ =e^{-x/2}.
+\tag{SB.2}
+$$</span></p>
+<p>On either vertical side, <span class="math" data-tex="$|\cosh(\pi(\pm R+iy))|\geq\sinh(\pi R)$">$|\cosh(\pi(\pm R+iy))|\geq\sinh(\pi R)$</span> for <span class="math" data-tex="$0\leq y\leq1$">$0\leq y\leq1$</span>, while <span class="math" data-tex="$|e^{ix(\pm R+iy)}|=e^{-xy}\leq1$">$|e^{ix(\pm R+iy)}|=e^{-xy}\leq1$</span>. The total absolute value of their integrals is at most <span class="math" data-tex="$1/\sinh(\pi R)$">$1/\sinh(\pi R)$</span>, which tends to zero. The upper-edge integrand is <span class="math" data-tex="$-e^{-x}$">$-e^{-x}$</span> times the lower-edge integrand; the upper path is traversed right to left. Hence its contribution is <span class="math" data-tex="$+e^{-x}$">$+e^{-x}$</span> times the lower integral. Letting <span class="math" data-tex="$R$">$R$</span> tend to infinity in (SB.2), DCT gives</p>
+<p><span class="math math-display" data-tex="$$
+ (1+e^{-x})I(x)=e^{-x/2},\qquad
+ I(x)=\frac1{2\cosh(x/2)}.
+\tag{SB.3}
+$$">$$
+ (1+e^{-x})I(x)=e^{-x/2},\qquad
+ I(x)=\frac1{2\cosh(x/2)}.
+\tag{SB.3}
+$$</span></p>
+<p>For <span class="math" data-tex="$x&lt;0$">$x&lt;0$</span> complex conjugation gives <span class="math" data-tex="$I(x)=\overline{I(-x)}$">$I(x)=\overline{I(-x)}$</span>; the right side is real and even, so (SB.3) holds for all real <span class="math" data-tex="$x$">$x$</span>.</p>
+<p>For <span class="math" data-tex="$s&gt;0$">$s&gt;0$</span> define <span class="math" data-tex="$k_s(t)=s^{-1/2}e^{-it\log s}/(2\cosh(\pi t))$">$k_s(t)=s^{-1/2}e^{-it\log s}/(2\cosh(\pi t))$</span>. Substituting <span class="math" data-tex="$x=\log(a/b)-\log s$">$x=\log(a/b)-\log s$</span> into (SB.3) proves, for <span class="math" data-tex="$a,b&gt;0$">$a,b&gt;0$</span>,</p>
+<p><span class="math math-display" data-tex="$$
+ \int_{\mathbb R}k_s(t)e^{it\log(a/b)}\,dt
+ =\frac{\sqrt{ab}}{a+sb},\qquad
+ \int_{\mathbb R}|k_s(t)|\,dt=\frac1{2\sqrt s}.
+\tag{SB.4}
+$$">$$
+ \int_{\mathbb R}k_s(t)e^{it\log(a/b)}\,dt
+ =\frac{\sqrt{ab}}{a+sb},\qquad
+ \int_{\mathbb R}|k_s(t)|\,dt=\frac1{2\sqrt s}.
+\tag{SB.4}
+$$</span></p>
+<p>This computes precisely the kernel used in MF equations (21)–(25), with its sign and constant.</p>
+<p><a id="oa-flow.mf-sb.4"></a></p>
+<h2 id="OA-FLOW.MF-SB.4">SB-3. Continuous L1 Fourier uniqueness</h2>
+<p>For <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span> put <span class="math" data-tex="$g_r(v)=\sqrt{r/\pi}\,e^{-rv^2}$">$g_r(v)=\sqrt{r/\pi}\,e^{-rv^2}$</span>. FF-1, by rescaling its Gaussian, proves <span class="math" data-tex="$\int g_r=1$">$\int g_r=1$</span> and concentration at zero as <span class="math" data-tex="$r$">$r$</span> tends to infinity. The same proved Gaussian transform, now with <span class="math" data-tex="$x=a/(2\sqrt r)$">$x=a/(2\sqrt r)$</span> and with <span class="math" data-tex="$a$">$a$</span> treated as frequency, gives the exact pointwise formula</p>
+<p><span class="math math-display" data-tex="$$
+ g_r(v)=\frac1{2\pi}\int_{\mathbb R}
+            e^{-a^2/(4r)}e^{iav}\,da.
+\tag{SB.5}
+$$">$$
+ g_r(v)=\frac1{2\pi}\int_{\mathbb R}
+            e^{-a^2/(4r)}e^{iav}\,da.
+\tag{SB.5}
+$$</span></p>
+<p>This is a direct evaluation of a Gaussian integral, not an invocation of a Fourier inversion theorem.</p>
+<p>Let <span class="math" data-tex="$f:\mathbb R\to\mathbb C$">$f:\mathbb R\to\mathbb C$</span> be continuous and integrable, and assume its transform <span class="math" data-tex="$\widehat f(a)=\int e^{-iau}f(u)\,du$">$\widehat f(a)=\int e^{-iau}f(u)\,du$</span> vanishes for every real <span class="math" data-tex="$a$">$a$</span>. Fix <span class="math" data-tex="$t$">$t$</span>. Substitute (SB.5) into <span class="math" data-tex="$\int f(u)g_r(t-u)\,du$">$\int f(u)g_r(t-u)\,du$</span>. The absolute value of the double integrand is <span class="math" data-tex="$|f(u)|e^{-a^2/(4r)}/(2\pi)$">$|f(u)|e^{-a^2/(4r)}/(2\pi)$</span>, whose double integral is finite. FF scalar interchange therefore permits interchange of the two scalar integrals and yields</p>
+<p><span class="math math-display" data-tex="$$
+ (f*g_r)(t)=\frac1{2\pi}\int_{\mathbb R}
+             e^{-a^2/(4r)}e^{iat}\widehat f(a)\,da=0.
+\tag{SB.6}
+$$">$$
+ (f*g_r)(t)=\frac1{2\pi}\int_{\mathbb R}
+             e^{-a^2/(4r)}e^{iat}\widehat f(a)\,da=0.
+\tag{SB.6}
+$$</span></p>
+<p>These convolution integrals exist absolutely at every <span class="math" data-tex="$t$">$t$</span>, because <span class="math" data-tex="$g_r$">$g_r$</span> is bounded. Translation and reflection invariance from SC-02 rewrite their difference from <span class="math" data-tex="$f(t)$">$f(t)$</span> as <span class="math" data-tex="$\int g_r(v)(f(t-v)-f(t))\,dv$">$\int g_r(v)(f(t-v)-f(t))\,dv$</span>. Given <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, continuity at <span class="math" data-tex="$t$">$t$</span> supplies <span class="math" data-tex="$\delta&gt;0$">$\delta&gt;0$</span> such that the absolute value of the difference inside <span class="math" data-tex="$|v|&lt;\delta$">$|v|&lt;\delta$</span> is less than <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>. Its integral there is at most <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>. Outside that interval, its absolute integral is at most</p>
+<p><span class="math math-display" data-tex="$$
+ \|f\|_1\sqrt{r/\pi}\,e^{-r\delta^2}
+       +|f(t)|\int_{|v|\geq\delta}g_r(v)\,dv,
+$$">$$
+ \|f\|_1\sqrt{r/\pi}\,e^{-r\delta^2}
+       +|f(t)|\int_{|v|\geq\delta}g_r(v)\,dv,
+$$</span></p>
+<p>which tends to zero by the Gaussian concentration theorem and the elementary exponential estimate. Thus <span class="math" data-tex="$(f*g_r)(t)\to f(t)$">$(f*g_r)(t)\to f(t)$</span>, so <span class="math" data-tex="$f(t)=0$">$f(t)=0$</span>. This holds for every <span class="math" data-tex="$t$">$t$</span>, with no assumption that a continuous <span class="math" data-tex="$L^1$">$L^1$</span> function is globally bounded.</p>
+<p>The same conclusion holds for a continuous <span class="math" data-tex="$F:\mathbb R\to H$">$F:\mathbb R\to H$</span> with integrable norm and vanishing vector Fourier integrals: apply the scalar proof to <span class="math" data-tex="$f(t)=\langle F(t),q\rangle$">$f(t)=\langle F(t),q\rangle$</span> for each <span class="math" data-tex="$q$">$q$</span> in <span class="math" data-tex="$H$">$H$</span>, using SB-1 to commute the pairing with the integral. Hilbert pairings separate vectors, giving <span class="math" data-tex="$F(t)=0$">$F(t)=0$</span> for every <span class="math" data-tex="$t$">$t$</span>. No Banach-valued Fourier theorem or Hahn–Banach extension is needed for that conclusion.</p>
+<p><a id="oa-flow.mf-sb.5"></a></p>
+<h2 id="OA-FLOW.MF-SB.5">SB-4. The exact Fourier use in MF-06</h2>
+<p>If <span class="math" data-tex="$A(t)$">$A(t)$</span> and <span class="math" data-tex="$B(t)$">$B(t)$</span> are continuous <span class="math" data-tex="$H$">$H$</span>-valued functions bounded in norm, and</p>
+<p><span class="math math-display" data-tex="$$
+ \int k_s(t)(A(t)-B(t))\,dt=0\quad\hbox{for every }s&gt;0,
+$$">$$
+ \int k_s(t)(A(t)-B(t))\,dt=0\quad\hbox{for every }s&gt;0,
+$$</span></p>
+<p>write <span class="math" data-tex="$s=e^r$">$s=e^r$</span> and cancel the scalar <span class="math" data-tex="$e^{-r/2}$">$e^{-r/2}$</span>. The continuous integrable function <span class="math" data-tex="$F(t)=(A(t)-B(t))/(2\cosh(\pi t))$">$F(t)=(A(t)-B(t))/(2\cosh(\pi t))$</span> has zero Fourier transform at every <span class="math" data-tex="$r$">$r$</span>. SB-3 gives <span class="math" data-tex="$A(t)=B(t)$">$A(t)=B(t)$</span> for every <span class="math" data-tex="$t$">$t$</span>. This is exactly the passage from MF (26) to (27). In that application <span class="math" data-tex="$A(t)=U_tR_wU_{-t}Jz$">$A(t)=U_tR_wU_{-t}Jz$</span> and <span class="math" data-tex="$B(t)=(JR_zJ)U_tw$">$B(t)=(JR_zJ)U_tw$</span>, which are norm continuous as Hilbert vectors and bounded; <span class="math" data-tex="$JR_zJ$">$JR_zJ$</span> is complex-linear, so SB-1 applies with no scalar-conjugation change.</p>
+<p><a id="oa-flow.mf-sb.7"></a></p>
+<h2 id="OA-FLOW.MF-SB.7">The contour mechanism</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="A rectangle and a shrinking square with the same positive contour orientation" src="assets/mf-scalar-reconstruction/assets/kernel-contour.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>The drawing uses <span class="math" data-tex="$R=2$">$R=2$</span> and <span class="math" data-tex="$\rho=0.12$">$\rho=0.12$</span>. Both boundaries are counterclockwise. Cancellation on the four intervening rectangles equates their integrals for a function holomorphic away from <span class="math" data-tex="$p=i/2$">$p=i/2$</span>. For <span class="math" data-tex="$q$">$q$</span> the inner integral tends to zero by continuity; for <span class="math" data-tex="$1/(z-p)$">$1/(z-p)$</span> it is exactly <span class="math" data-tex="$2\pi i$">$2\pi i$</span>. On the upper edge, the displayed factor includes the reversal of traversal, so its contribution is <span class="math" data-tex="$+e^{-x}$">$+e^{-x}$</span> times the lower integral for <span class="math" data-tex="$x\geq0$">$x\geq0$</span>. The vertical-edge bound vanishes as <span class="math" data-tex="$R$">$R$</span> tends to infinity. These are the actual cancellations used in SB-2; the full proof applies to every <span class="math" data-tex="$R&gt;0$">$R&gt;0$</span>.</p>
+<p>The exact contour source is retained in <a href="assets/mf-scalar-reconstruction/render_kernel_contour.py">render_kernel_contour.py</a>. The earlier local SF contour proof was independently developed with the freely accessible <a href="https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_9.html">Vizeff Lecture 9</a> and <a href="https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_11.html">Lecture 11</a>. The Gaussian comparison is the freely accessible <a href="https://math.mit.edu/~jerison/103/handouts/fourierint1.13.pdf">MIT Fourier handout</a>. These references supplement the written earlier proofs.</p>
+<p><a id="oa-flow.mf-sb.6"></a></p>
+<h2 id="OA-FLOW.MF-SB.6">Exact scope</h2>
+<p>SB-1–SB-4 and all six numbered identities are retained. Every scalar input now has a written earlier CF, SC, SF or FF proof; no historical contour, compact-trace or product-measure provider is a premise. This closes the bounded analytic input route for the general Hilbert-algebra argument. It does not prove the separate arbitrary-weight GNS and Hilbert-algebra correspondence.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-WH04-WEIGHT.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-MF-SB.md">Lesson source</a></nav></main></body></html>

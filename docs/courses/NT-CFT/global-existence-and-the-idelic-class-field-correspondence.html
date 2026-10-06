@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global existence and the idèlic class field correspondence · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/global-existence-and-the-idelic-class-field-correspondence.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 17 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed"><summary>What this lesson assumes (7)</summary><ul><li><a href="hilberts-theorem-90-and-kummer-theory.html">Hilbert's Theorem 90 and Kummer theory</a></li><li><a href="the-reciprocity-law-and-the-class-field-correspondence.html">The reciprocity law and the class field correspondence</a></li><li><a href="local-reciprocity-and-norm-groups.html">Local reciprocity and norm groups</a></li><li><a href="explicit-local-reciprocity-and-existence.html">Explicit local reciprocity and the existence theorem</a></li><li><a href="the-herbrand-quotient-of-the-idele-class-group.html">The Herbrand quotient of the idèle class group</a></li><li><a href="the-norm-index-bound-and-hasses-norm-theorem.html">The norm index bound and Hasse's norm theorem</a></li><li><a href="the-global-reciprocity-law.html">The global reciprocity law</a></li></ul></details>
+<article class="lesson">
+<h1 id="global-existence-and-the-idèlic-class-field-correspondence">Global existence and the idèlic class field correspondence</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p><strong>Lesson 17.</strong> The preceding lesson associates a reciprocity map to every abelian extension already given. Existence answers the converse question: which subgroups of the idèle class group occur as norm groups? Every open subgroup of finite index does. Thus a finite abelian extension can be specified by local congruence conditions on idèles, without first finding an equation for the extension.</p>
+<p>There is a topological distinction between the two kinds of global fields. For a number field, reciprocity maps onto the abelianized absolute Galois group and kills exactly the connected component of the idèle class group. For a function field it is injective, and its image has integral constant-field degree. Giving those integer cosets the discrete topology identifies the class group with an abelianized Weil group. We prove the function-field assertion, including the wild characteristic case.</p>
+<p>The prerequisites are <a href="the-norm-index-bound-and-hasses-norm-theorem.html">The norm index bound and Hasse’s norm theorem</a>, especially its full S-unit radical and additive duality, and <a href="the-global-reciprocity-law.html">The global reciprocity law</a>. We use the compactness of norm-one classes from lesson 14 and the local class field correspondence from lesson 6. The higher-dimensional Hasse–Minkowski theorem is not an input.</p>
+<p>Write <span class="math" data-tex="\(J_K\)">\(J_K\)</span> for idèles, <span class="math" data-tex="\(C_K=J_K/K^\times\)">\(C_K=J_K/K^\times\)</span>, and <span class="math" data-tex="\(B_K=G_K^{\mathrm{ab}}=\operatorname{Gal}(K^{\mathrm{ab}}/K)\)">\(B_K=G_K^{\mathrm{ab}}=\operatorname{Gal}(K^{\mathrm{ab}}/K)\)</span>. All reciprocity maps use arithmetic Frobenius. For a finite extension put
+<span class="math math-display" data-tex="\[
+N_{L/K}C_L=\operatorname{im}(N_{L/K}:C_L\longrightarrow C_K).
+\]">\[
+N_{L/K}C_L=\operatorname{im}(N_{L/K}:C_L\longrightarrow C_K).
+\]</span>
+The symbol <span class="math" data-tex="\(D_K\)">\(D_K\)</span> will denote the connected component of <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. When temporarily discussing universal norms, we use a different symbol <span class="math" data-tex="\(\mathcal N_K\)">\(\mathcal N_K\)</span>.</p>
+<h2 id="1-norm-groups-and-the-existence-theorem">1. Norm groups and the existence theorem</h2>
+<p><strong>Theorem 17.1 (global existence).</strong> If <span class="math" data-tex="\(K\)">\(K\)</span> is a global field and <span class="math" data-tex="\(H\subseteq C_K\)">\(H\subseteq C_K\)</span> is open of finite index, there is a unique finite abelian extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, inside the fixed separable closure, with
+<span class="math math-display" data-tex="\[
+H=N_{L/K}C_L.
+\tag{1}
+\]">\[
+H=N_{L/K}C_L.
+\tag{1}
+\]</span></p>
+<p>An open subgroup is closed, since its other cosets are open. Conversely a closed subgroup of finite index is open: its complement is a finite union of closed cosets. These observations explain why either formulation is often used. The finite-index hypothesis remains essential for a <em>finite</em> class field; for example the degree-zero subgroup of a function-field class group has infinite index.</p>
+<p>We first prove existence for number fields. The function-field proof, including characteristic-power indices, is given in sections 5–8.</p>
+<h3 id="cofinal-kummer-norm-groups">Cofinal Kummer norm groups</h3>
+<p>Let <span class="math" data-tex="\(n=\ell^a\)">\(n=\ell^a\)</span> and suppose <span class="math" data-tex="\(\mu_n\subset K\)">\(\mu_n\subset K\)</span>. Choose a finite set <span class="math" data-tex="\(S\)">\(S\)</span> containing the infinite places and the places dividing <span class="math" data-tex="\(n\)">\(n\)</span>, large enough that <span class="math" data-tex="\(J_K=K^\times J_K^S\)">\(J_K=K^\times J_K^S\)</span>. With <span class="math" data-tex="\(E_S\)">\(E_S\)</span> the S-unit group, put
+<span class="math math-display" data-tex="\[
+M=K(E_S^{1/n}),\qquad
+I(S)=\prod_{v\in S}K_v^{\times n}\times\prod_{v\notin S}\mathcal O_v^\times,
+\qquad C(S)=\operatorname{im}(I(S)\to C_K).
+\tag{2}
+\]">\[
+M=K(E_S^{1/n}),\qquad
+I(S)=\prod_{v\in S}K_v^{\times n}\times\prod_{v\notin S}\mathcal O_v^\times,
+\qquad C(S)=\operatorname{im}(I(S)\to C_K).
+\tag{2}
+\]</span>
+If <span class="math" data-tex="\(s=|S|\)">\(s=|S|\)</span>, the S-unit theorem and Kummer pairing give
+<span class="math" data-tex="\(\operatorname{Gal}(M/K)\simeq(\mathbf Z/n)^s\)">\(\operatorname{Gal}(M/K)\simeq(\mathbf Z/n)^s\)</span>. This full radical is unramified outside <span class="math" data-tex="\(S\)">\(S\)</span>: adjoining roots of units of order prime to the residue characteristic is unramified there. Proposition 15.2 applies with <span class="math" data-tex="\(r=s\)">\(r=s\)</span>, so its auxiliary set <span class="math" data-tex="\(T\)">\(T\)</span> is empty. It proves
+<span class="math math-display" data-tex="\[
+C(S)\subseteq N_{M/K}C_M,\qquad [C_K:C(S)]=n^s=[M:K].
+\]">\[
+C(S)\subseteq N_{M/K}C_M,\qquad [C_K:C(S)]=n^s=[M:K].
+\]</span>
+Reciprocity, Theorem 16.4, gives the same index for the norm group. Consequently
+<span class="math math-display" data-tex="\[
+C(S)=N_{M/K}C_M.
+\tag{3}
+\]">\[
+C(S)=N_{M/K}C_M.
+\tag{3}
+\]</span></p>
+<p>Suppose <span class="math" data-tex="\(C_K/H\)">\(C_K/H\)</span> is an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-group of exponent dividing <span class="math" data-tex="\(n\)">\(n\)</span>. Then <span class="math" data-tex="\(C_K^n\subseteq H\)">\(C_K^n\subseteq H\)</span>. Openness of the inverse image of <span class="math" data-tex="\(H\)">\(H\)</span> in <span class="math" data-tex="\(J_K\)">\(J_K\)</span> also puts
+<span class="math math-display" data-tex="\[
+U^S=\{x\in J_K:x_v=1\ (v\in S),\ x_v\in\mathcal O_v^\times\ (v\notin S)\}
+\tag{4}
+\]">\[
+U^S=\{x\in J_K:x_v=1\ (v\in S),\ x_v\in\mathcal O_v^\times\ (v\notin S)\}
+\tag{4}
+\]</span>
+inside that inverse image after enlarging <span class="math" data-tex="\(S\)">\(S\)</span>. Every element of <span class="math" data-tex="\(I(S)\)">\(I(S)\)</span> is a product of an idèle <span class="math" data-tex="\(n\)">\(n\)</span>th power and an element of <span class="math" data-tex="\(U^S\)">\(U^S\)</span>. Therefore (3) is a norm group contained in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>If <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> is not in <span class="math" data-tex="\(K\)">\(K\)</span>, set <span class="math" data-tex="\(K&#x27;=K(\mu_n)\)">\(K&#x27;=K(\mu_n)\)</span>. Enlarge <span class="math" data-tex="\(S\)">\(S\)</span> until the full set <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> above it satisfies <span class="math" data-tex="\(J_{K&#x27;}=K&#x27;^\times J_{K&#x27;}^{S&#x27;}\)">\(J_{K&#x27;}=K&#x27;^\times J_{K&#x27;}^{S&#x27;}\)</span>. This is possible by adding the projections of finitely many class-group generating primes of <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>. Apply (3) over <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> to <span class="math" data-tex="\(M=K&#x27;(E_{S&#x27;}^{1/n})\)">\(M=K&#x27;(E_{S&#x27;}^{1/n})\)</span>. The local norm of an <span class="math" data-tex="\(n\)">\(n\)</span>th power is an <span class="math" data-tex="\(n\)">\(n\)</span>th power, and the local norm of a unit is a unit. Hence
+<span class="math math-display" data-tex="\[
+N_{K&#x27;/K}C(S&#x27;)\subseteq C(S),\qquad
+N_{M/K}C_M\subseteq C(S)\subseteq H.
+\tag{5}
+\]">\[
+N_{K&#x27;/K}C(S&#x27;)\subseteq C(S),\qquad
+N_{M/K}C_M\subseteq C(S)\subseteq H.
+\tag{5}
+\]</span>
+Replace <span class="math" data-tex="\(M\)">\(M\)</span> by a Galois closure <span class="math" data-tex="\(\widetilde M/K\)">\(\widetilde M/K\)</span>; tower norms only shrink the image, so it still lies in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>For a general finite quotient <span class="math" data-tex="\(A=C_K/H\)">\(A=C_K/H\)</span>, let <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span> be the kernel of its projection to the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-primary factor. Construct a finite Galois norm group inside each <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span>. The compositum of these finitely many extensions has its norm group inside <span class="math" data-tex="\(\bigcap_\ell H_\ell=H\)">\(\bigcap_\ell H_\ell=H\)</span>.</p>
+<h3 id="from-a-contained-norm-group-to-the-desired-field">From a contained norm group to the desired field</h3>
+<p>We have obtained a finite Galois <span class="math" data-tex="\(M/K\)">\(M/K\)</span> with <span class="math" data-tex="\(N_{M/K}C_M\subseteq H\)">\(N_{M/K}C_M\subseteq H\)</span>. Norm limitation, proved in lesson 5 and applied in lesson 16, replaces <span class="math" data-tex="\(M\)">\(M\)</span> by its maximal abelian subextension <span class="math" data-tex="\(A/K\)">\(A/K\)</span>, without changing that norm group. Reciprocity identifies
+<span class="math math-display" data-tex="\[
+C_K/N_{A/K}C_A\simeq\operatorname{Gal}(A/K).
+\]">\[
+C_K/N_{A/K}C_A\simeq\operatorname{Gal}(A/K).
+\]</span>
+Let <span class="math" data-tex="\(L\)">\(L\)</span> be the fixed field of the subgroup corresponding to <span class="math" data-tex="\(H/N_{A/K}C_A\)">\(H/N_{A/K}C_A\)</span>. Restriction compatibility and Theorem 16.4 identify the kernel for <span class="math" data-tex="\(L/K\)">\(L/K\)</span> with exactly <span class="math" data-tex="\(H\)">\(H\)</span>. This proves existence over number fields. Uniqueness follows from the same reciprocity kernels: the fixed field of the closure of the image of <span class="math" data-tex="\(H\)">\(H\)</span> in <span class="math" data-tex="\(B_K\)">\(B_K\)</span> is determined by <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>This argument also treats function-field quotients of order prime to the characteristic. It does not treat characteristic-power quotients by pretending that the missing roots of unity exist. Sections 5–8 supply that case.</p>
+<h2 id="2-the-class-field-correspondence-and-local-information">2. The class field correspondence and local information</h2>
+<p><strong>Theorem 17.2.</strong> Finite abelian extensions of <span class="math" data-tex="\(K\)">\(K\)</span> correspond, with reversed inclusions, to open subgroups of finite index of <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. The group for <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is its norm group, and
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(L/K)\simeq C_K/N_{L/K}C_L.
+\tag{6}
+\]">\[
+\operatorname{Gal}(L/K)\simeq C_K/N_{L/K}C_L.
+\tag{6}
+\]</span>
+If <span class="math" data-tex="\(i_v:K_v^\times\to C_K\)">\(i_v:K_v^\times\to C_K\)</span> inserts a component at <span class="math" data-tex="\(v\)">\(v\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v\text{ is unramified in }L&amp;\iff i_v(\mathcal O_v^\times)\subseteq N_{L/K}C_L
+&amp;&amp;\text{for finite }v,\\
+v\text{ splits completely in }L&amp;\iff i_v(K_v^\times)\subseteq N_{L/K}C_L.
+\end{aligned}
+\tag{7}
+\]">\[
+\begin{aligned}
+v\text{ is unramified in }L&amp;\iff i_v(\mathcal O_v^\times)\subseteq N_{L/K}C_L
+&amp;&amp;\text{for finite }v,\\
+v\text{ splits completely in }L&amp;\iff i_v(K_v^\times)\subseteq N_{L/K}C_L.
+\end{aligned}
+\tag{7}
+\]</span>
+At a real place, ramification means becoming complex; this happens exactly when the class of a negative local element is not in the norm group.</p>
+<p><strong>Proof.</strong> Existence and uniqueness are Theorem 17.1. If <span class="math" data-tex="\(L_1\subseteq L_2\)">\(L_1\subseteq L_2\)</span>, tower norms put <span class="math" data-tex="\(N_{L_2/K}C_{L_2}\subseteq N_{L_1/K}C_{L_1}\)">\(N_{L_2/K}C_{L_2}\subseteq N_{L_1/K}C_{L_1}\)</span>. Conversely the inclusion of these kernels reverses the inclusion of their fixed fields in <span class="math" data-tex="\(K^{\mathrm{ab}}\)">\(K^{\mathrm{ab}}\)</span>. Equation (6) is reciprocity.</p>
+<p>Local compatibility in Theorem 16.4 identifies the image of <span class="math" data-tex="\(K_v^\times\)">\(K_v^\times\)</span> with the decomposition group and the image of <span class="math" data-tex="\(\mathcal O_v^\times\)">\(\mathcal O_v^\times\)</span> with its inertia subgroup. Their triviality is exactly complete splitting and absence of ramification. At a real place the local quotient for <span class="math" data-tex="\(\mathbf C/\mathbf R\)">\(\mathbf C/\mathbf R\)</span> is the sign group. These arguments concern the <em>images</em> under <span class="math" data-tex="\(i_v\)">\(i_v\)</span>; they require no injectivity assertion about that map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, requiring all finite unit groups to lie in <span class="math" data-tex="\(H\)">\(H\)</span> produces an extension unramified at every finite prime. Requiring positive real components rather than all real components allows real places to become complex. Deep principal-unit conditions will give the ray class fields in the next lesson.</p>
+<h2 id="3-connected-components-and-number-field-reciprocity">3. Connected components and number-field reciprocity</h2>
+<p>We record two elementary topological facts, so that the kernel description does not hide a topology theorem.</p>
+<p><strong>Compact-group lemma.</strong> In a compact Hausdorff abelian group <span class="math" data-tex="\(A\)">\(A\)</span>, the identity component <span class="math" data-tex="\(A^0\)">\(A^0\)</span> is the intersection of the open subgroups of finite index. The quotient <span class="math" data-tex="\(A/A^0\)">\(A/A^0\)</span> is profinite. If a locally compact abelian group has a neighborhood basis of compact open profinite subgroups, every quotient by a closed subgroup is totally disconnected and has such a basis.</p>
+<p><strong>Proof.</strong> First, in a compact Hausdorff space, the intersection <span class="math" data-tex="\(Q\)">\(Q\)</span> of all clopen neighborhoods of a point is its connected component. To see the nontrivial inclusion, suppose <span class="math" data-tex="\(Q\)">\(Q\)</span> is separated into two nonempty closed parts, and choose disjoint open neighborhoods of those compact parts. The compact complement of their union is excluded by finitely many clopen neighborhoods of the original point. Their intersection is a clopen set containing <span class="math" data-tex="\(Q\)">\(Q\)</span> and lying in that union. Its portion in the open neighborhood of the part containing the point is clopen and misses the other part, contradicting the definition of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Thus <span class="math" data-tex="\(Q\)">\(Q\)</span> is connected.</p>
+<p>For <span class="math" data-tex="\(a\notin A^0\)">\(a\notin A^0\)</span>, choose a clopen set <span class="math" data-tex="\(V\)">\(V\)</span> containing <span class="math" data-tex="\(1\)">\(1\)</span> and missing <span class="math" data-tex="\(a\)">\(a\)</span>. Its translation stabilizer is an open subgroup: compactness of <span class="math" data-tex="\(V\)">\(V\)</span> and its complement gives a neighborhood of <span class="math" data-tex="\(1\)">\(1\)</span> whose translations preserve both sets. More explicitly, cover each of the two compact sets by finitely many neighborhoods on which all translations from a common sufficiently small identity neighborhood stay in the same set. This common neighborhood lies in the stabilizer. The stabilizer has finite index by compactness, and misses <span class="math" data-tex="\(a\)">\(a\)</span>, since an element stabilizing <span class="math" data-tex="\(V\)">\(V\)</span> carries <span class="math" data-tex="\(1\in V\)">\(1\in V\)</span> into <span class="math" data-tex="\(V\)">\(V\)</span>. Connected sets cannot cross its clopen cosets. This proves the asserted intersection. The map of <span class="math" data-tex="\(A/A^0\)">\(A/A^0\)</span> into the product of these finite quotients is continuous and injective; compactness makes it a homeomorphism onto a closed subgroup, proving profiniteness.</p>
+<p>For the last assertion let <span class="math" data-tex="\(q:G\to G/H\)">\(q:G\to G/H\)</span> be the quotient by a closed subgroup. If <span class="math" data-tex="\(P\subseteq G\)">\(P\subseteq G\)</span> is compact open profinite, then <span class="math" data-tex="\(q(P)\)">\(q(P)\)</span> is compact and open, and equals <span class="math" data-tex="\(P/(P\cap H)\)">\(P/(P\cap H)\)</span>, a profinite group. A quotient of a profinite abelian group by a closed subgroup is profinite: its closed subgroup is separated from any outside point by a finite quotient, using compactness and a basis of open finite-index subgroups. Given a neighborhood in <span class="math" data-tex="\(G/H\)">\(G/H\)</span>, choose <span class="math" data-tex="\(P\)">\(P\)</span> inside its inverse image. The images <span class="math" data-tex="\(q(P)\)">\(q(P)\)</span> therefore form the required basis. In particular the quotient is totally disconnected. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 17.3.</strong> For a number field, the map
+<span class="math math-display" data-tex="\[
+\operatorname{rec}_K:C_K\longrightarrow B_K
+\]">\[
+\operatorname{rec}_K:C_K\longrightarrow B_K
+\]</span>
+is onto and has kernel
+<span class="math math-display" data-tex="\[
+D_K=\bigcap_{H\text{ open, finite index}}H
+=\overline{\operatorname{im}\left(\prod_{v\mid\infty}(K_v^\times)^0\longrightarrow C_K\right)}.
+\tag{8}
+\]">\[
+D_K=\bigcap_{H\text{ open, finite index}}H
+=\overline{\operatorname{im}\left(\prod_{v\mid\infty}(K_v^\times)^0\longrightarrow C_K\right)}.
+\tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> Surjectivity was proved in lesson 16: finite-quotient surjectivity gives density, the divisible positive-real content factor is killed, and the remaining norm-one group <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span> is compact. Existence and finite reciprocity identify the kernel with the intersection in (8). The decomposition <span class="math" data-tex="\(C_K=C_K^1\times\mathbf R_{&gt;0}\)">\(C_K=C_K^1\times\mathbf R_{&gt;0}\)</span> reduces this intersection to the compact-group lemma. Indeed an open finite-index subgroup contains the connected positive-real factor, and open finite-index subgroups of <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span> detect its identity component. Thus the intersection is precisely <span class="math" data-tex="\(D_K\)">\(D_K\)</span>.</p>
+<p>Let <span class="math" data-tex="\(A_\infty^0=\prod_{v\mid\infty}(K_v^\times)^0\)">\(A_\infty^0=\prod_{v\mid\infty}(K_v^\times)^0\)</span>, embedded as archimedean idèles, and let <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span> be the closure of its image. Its image is connected, so <span class="math" data-tex="\(D_\infty\subseteq D_K\)">\(D_\infty\subseteq D_K\)</span>. The quotient of <span class="math" data-tex="\(J_K\)">\(J_K\)</span> by <span class="math" data-tex="\(A_\infty^0\)">\(A_\infty^0\)</span> is
+<span class="math math-display" data-tex="\[
+\{\pm1\}^{r_1}\times J_{K,f}.
+\tag{9}
+\]">\[
+\{\pm1\}^{r_1}\times J_{K,f}.
+\tag{9}
+\]</span>
+This group has a basis of compact open profinite subgroups: at finitely many finite places use deep units, elsewhere full units, and use the discrete sign factors. Now <span class="math" data-tex="\(C_K/D_\infty\)">\(C_K/D_\infty\)</span> is (9) modulo the closure of the projected principal subgroup. The last part of the lemma makes it totally disconnected. The image of the connected group <span class="math" data-tex="\(D_K\)">\(D_K\)</span> in that quotient is trivial. Therefore <span class="math" data-tex="\(D_K\subseteq D_\infty\)">\(D_K\subseteq D_\infty\)</span>, proving equality. It is a <em>closure</em>: this argument does not assert that the archimedean image is closed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-rational-idèles-and-a-quadratic-class-field">4. Rational idèles and a quadratic class field</h2>
+<p>There is a useful explicit decomposition
+<span class="math math-display" data-tex="\[
+C_{\mathbf Q}\simeq\mathbf R_{&gt;0}\times\widehat{\mathbf Z}^{\,\times}.
+\tag{10}
+\]">\[
+C_{\mathbf Q}\simeq\mathbf R_{&gt;0}\times\widehat{\mathbf Z}^{\,\times}.
+\tag{10}
+\]</span>
+For an idèle <span class="math" data-tex="\(x\)">\(x\)</span>, divide it by the positive rational number
+<span class="math" data-tex="\(r=\prod_p p^{v_p(x_p)}\)">\(r=\prod_p p^{v_p(x_p)}\)</span>. All finite components become units. Multiply the representative by <span class="math" data-tex="\(-1\)">\(-1\)</span> if necessary to make its real component positive. The resulting positive real component and unit tuple are unique: a rational number which is a unit at every finite prime is <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, and positivity fixes the sign. This normalization and its inverse are continuous on restricted-product neighborhoods, proving (10).</p>
+<p>The unit group in (10) is profinite. Hence
+<span class="math math-display" data-tex="\[
+D_{\mathbf Q}=\mathbf R_{&gt;0}.
+\tag{11}
+\]">\[
+D_{\mathbf Q}=\mathbf R_{&gt;0}.
+\tag{11}
+\]</span>
+For the extension <span class="math" data-tex="\(\mathbf Q(\zeta_m)/\mathbf Q\)">\(\mathbf Q(\zeta_m)/\mathbf Q\)</span>, the normalized unit tuple <span class="math" data-tex="\(u\)">\(u\)</span> acts through <span class="math" data-tex="\(\zeta_m\mapsto\zeta_m^{u^{-1}\bmod m}\)">\(\zeta_m\mapsto\zeta_m^{u^{-1}\bmod m}\)</span>. This is the local cyclotomic formula of Corollary 9.5, multiplied over the prime divisors of <span class="math" data-tex="\(m\)">\(m\)</span>; the positive real component is trivial.</p>
+<p>Consider
+<span class="math math-display" data-tex="\[
+H=\mathbf R_{&gt;0}\times
+\{u\in\widehat{\mathbf Z}^{\,\times}:u_5\equiv\pm1\pmod5\}.
+\tag{12}
+\]">\[
+H=\mathbf R_{&gt;0}\times
+\{u\in\widehat{\mathbf Z}^{\,\times}:u_5\equiv\pm1\pmod5\}.
+\tag{12}
+\]</span>
+It has index <span class="math" data-tex="\(2\)">\(2\)</span>. Its image in <span class="math" data-tex="\(\operatorname{Gal}(\mathbf Q(\zeta_5)/\mathbf Q)\)">\(\operatorname{Gal}(\mathbf Q(\zeta_5)/\mathbf Q)\)</span> is the subgroup <span class="math" data-tex="\(\{\pm1\}\)">\(\{\pm1\}\)</span>; taking inverses does not change that subgroup. Its fixed field is
+<span class="math math-display" data-tex="\[
+\mathbf Q(\zeta_5+\zeta_5^{-1})=\mathbf Q(\sqrt5).
+\tag{13}
+\]">\[
+\mathbf Q(\zeta_5+\zeta_5^{-1})=\mathbf Q(\sqrt5).
+\tag{13}
+\]</span>
+Indeed <span class="math" data-tex="\(z=\zeta_5+\zeta_5^{-1}\)">\(z=\zeta_5+\zeta_5^{-1}\)</span> satisfies <span class="math" data-tex="\(z^2+z-1=0\)">\(z^2+z-1=0\)</span>, so <span class="math" data-tex="\((2z+1)^2=5\)">\((2z+1)^2=5\)</span>. Thus (12) is the norm group of <span class="math" data-tex="\(\mathbf Q(\sqrt5)\)">\(\mathbf Q(\sqrt5)\)</span>. This example uses one cyclotomic extension, not the later assertion that every abelian extension of <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> is cyclotomic.</p>
+<h2 id="5-logarithmic-differentials-in-characteristic-p">5. Logarithmic differentials in characteristic <span class="math" data-tex="\(p\)">\(p\)</span></h2>
+<p>For the rest of the proof let <span class="math" data-tex="\(F\)">\(F\)</span> be a global function field with full constant field <span class="math" data-tex="\(k=\mathbf F_q\)">\(k=\mathbf F_q\)</span>, of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. Put <span class="math" data-tex="\(C_F^1=\ker(\deg:C_F\to\mathbf Z)\)">\(C_F^1=\ker(\deg:C_F\to\mathbf Z)\)</span>. It is compact by lesson 14, and <span class="math" data-tex="\(\deg\)">\(\deg\)</span> is onto by lesson 16. We need to show that the universal norm subgroup
+<span class="math math-display" data-tex="\[
+\mathcal N_F=\ker(\operatorname{rec}_F:C_F\to B_F)
+=\bigcap_{L/F\text{ finite separable}}N_{L/F}C_L
+\tag{14}
+\]">\[
+\mathcal N_F=\ker(\operatorname{rec}_F:C_F\to B_F)
+=\bigcap_{L/F\text{ finite separable}}N_{L/F}C_L
+\tag{14}
+\]</span>
+is trivial. Equality follows from finite reciprocity and norm limitation: Galois closures are cofinal, and their norms equal those of their maximal abelian subextensions. All constant-extension norms occur in this intersection. The norm degree formula forces the degree of an element of <span class="math" data-tex="\(\mathcal N_F\)">\(\mathcal N_F\)</span> to be divisible by every positive integer. Thus <span class="math" data-tex="\(\mathcal N_F\)">\(\mathcal N_F\)</span> is a closed subgroup of compact <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span>.</p>
+<p>Here is the needed algebraic logarithmic-differential criterion, with its proof. If a characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> field <span class="math" data-tex="\(E\)">\(E\)</span> satisfies <span class="math" data-tex="\([E:E^p]=p\)">\([E:E^p]=p\)</span>, choose a p-basis <span class="math" data-tex="\(t\)">\(t\)</span>, so <span class="math" data-tex="\(E=\bigoplus_{i=0}^{p-1}E^p t^i\)">\(E=\bigoplus_{i=0}^{p-1}E^p t^i\)</span>. Let <span class="math" data-tex="\(\partial t=1\)">\(\partial t=1\)</span>, <span class="math" data-tex="\(\partial E^p=0\)">\(\partial E^p=0\)</span>. For
+<span class="math math-display" data-tex="\[
+y=\sum_{i=0}^{p-1}y_i^p t^i,
+\qquad \omega=y\,dt,
+\]">\[
+y=\sum_{i=0}^{p-1}y_i^p t^i,
+\qquad \omega=y\,dt,
+\]</span>
+define the Cartier operator by
+<span class="math math-display" data-tex="\[
+\mathcal C(\omega)=y_{p-1}\,dt.
+\tag{15}
+\]">\[
+\mathcal C(\omega)=y_{p-1}\,dt.
+\tag{15}
+\]</span></p>
+<p><strong>Logarithmic-differential lemma.</strong> This definition is independent of the p-basis, and
+<span class="math math-display" data-tex="\[
+\mathcal C(\omega)=\omega\quad\Longleftrightarrow\quad
+\omega=db/b\text{ for some }b\in E^\times.
+\tag{16}
+\]">\[
+\mathcal C(\omega)=\omega\quad\Longleftrightarrow\quad
+\omega=db/b\text{ for some }b\in E^\times.
+\tag{16}
+\]</span></p>
+<p><strong>Proof.</strong> We have <span class="math" data-tex="\(\partial^p=0\)">\(\partial^p=0\)</span>. Let <span class="math" data-tex="\(T=\partial-y\)">\(T=\partial-y\)</span>, an <span class="math" data-tex="\(E^p\)">\(E^p\)</span>-linear operator on the <span class="math" data-tex="\(p\)">\(p\)</span>-dimensional space <span class="math" data-tex="\(E\)">\(E\)</span>. For multiplication by <span class="math" data-tex="\(f\)">\(f\)</span>, its commutator with <span class="math" data-tex="\(T\)">\(T\)</span> is multiplication by <span class="math" data-tex="\(\partial f\)">\(\partial f\)</span>. In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\((\operatorname{ad}T)^p=\operatorname{ad}(T^p)\)">\((\operatorname{ad}T)^p=\operatorname{ad}(T^p)\)</span>, by expanding the repeated commutator and cancelling the intermediate binomial coefficients. Hence <span class="math" data-tex="\(T^p\)">\(T^p\)</span> commutes with every multiplication operator and is itself multiplication by <span class="math" data-tex="\(T^p(1)\)">\(T^p(1)\)</span>.</p>
+<p>We compute that scalar explicitly. For a derivation <span class="math" data-tex="\(\partial\)">\(\partial\)</span> and a multiplication term <span class="math" data-tex="\(h\)">\(h\)</span>, repeated application of <span class="math" data-tex="\(\partial+h\)">\(\partial+h\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> gives
+<span class="math math-display" data-tex="\[
+\sum_{\sum j m_j=n}
+\frac{n!}{\prod_j m_j!\,(j!)^{m_j}}
+\prod_j(\partial^{j-1}h)^{m_j}.
+\tag{17}
+\]">\[
+\sum_{\sum j m_j=n}
+\frac{n!}{\prod_j m_j!\,(j!)^{m_j}}
+\prod_j(\partial^{j-1}h)^{m_j}.
+\tag{17}
+\]</span>
+One proof counts partitions of <span class="math" data-tex="\(n\)">\(n\)</span> labelled elements: applying the multiplication term creates a new singleton block, and differentiating an existing factor adds the new element to that block. This gives the recurrence <span class="math" data-tex="\(P_{n+1}=\partial P_n+hP_n\)">\(P_{n+1}=\partial P_n+hP_n\)</span>, with <span class="math" data-tex="\(P_0=1\)">\(P_0=1\)</span>, and the displayed partition counts. At <span class="math" data-tex="\(n=p\)">\(n=p\)</span>, all coefficients are divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, except the partition into <span class="math" data-tex="\(p\)">\(p\)</span> singletons and the single block of size <span class="math" data-tex="\(p\)">\(p\)</span>; every other denominator is prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Taking <span class="math" data-tex="\(h=-y\)">\(h=-y\)</span> gives
+<span class="math math-display" data-tex="\[
+T^p=-\bigl(y^p+\partial^{p-1}y\bigr)
+=-\bigl(y^p-y_{p-1}^p\bigr).
+\tag{18}
+\]">\[
+T^p=-\bigl(y^p+\partial^{p-1}y\bigr)
+=-\bigl(y^p-y_{p-1}^p\bigr).
+\tag{18}
+\]</span>
+The last equality uses <span class="math" data-tex="\((p-1)!=-1\)">\((p-1)!=-1\)</span> in <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>; pairing each nonzero element with its inverse proves this, with only <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> left unpaired (and gives the same identity for <span class="math" data-tex="\(p=2\)">\(p=2\)</span>).</p>
+<p>Thus <span class="math" data-tex="\(\mathcal C\omega=\omega\)">\(\mathcal C\omega=\omega\)</span> exactly when <span class="math" data-tex="\(T^p=0\)">\(T^p=0\)</span>. A nilpotent endomorphism of a nonzero finite-dimensional space has a nonzero kernel vector <span class="math" data-tex="\(b\)">\(b\)</span>. For that vector <span class="math" data-tex="\(\partial b=yb\)">\(\partial b=yb\)</span>, giving <span class="math" data-tex="\(db/b=\omega\)">\(db/b=\omega\)</span>. Conversely, if <span class="math" data-tex="\(y=\partial b/b\)">\(y=\partial b/b\)</span>, then <span class="math" data-tex="\(T=b\partial b^{-1}\)">\(T=b\partial b^{-1}\)</span>, so <span class="math" data-tex="\(T^p=0\)">\(T^p=0\)</span>, proving (16).</p>
+<p>The definition gives <span class="math" data-tex="\(\mathcal C(df)=0\)">\(\mathcal C(df)=0\)</span> and <span class="math" data-tex="\(\mathcal C(f^p\omega)=f\mathcal C(\omega)\)">\(\mathcal C(f^p\omega)=f\mathcal C(\omega)\)</span>. For any other p-basis <span class="math" data-tex="\(u\)">\(u\)</span>, (16) gives <span class="math" data-tex="\(\mathcal C(d\log u)=d\log u\)">\(\mathcal C(d\log u)=d\log u\)</span>, and hence
+<span class="math" data-tex="\(\mathcal C(u^{p-1}du)=du\)">\(\mathcal C(u^{p-1}du)=du\)</span>. These properties determine the operator in the <span class="math" data-tex="\(u\)">\(u\)</span>-basis: the terms <span class="math" data-tex="\(u^i du\)">\(u^i du\)</span>, <span class="math" data-tex="\(i&lt;p-1\)">\(i&lt;p-1\)</span>, are exact, and the last term has the just computed image. They give exactly (15) with <span class="math" data-tex="\(u\)">\(u\)</span> in place of <span class="math" data-tex="\(t\)">\(t\)</span>. This proves independence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Both <span class="math" data-tex="\(F\)">\(F\)</span> and each completion <span class="math" data-tex="\(F_v\)">\(F_v\)</span> satisfy the lemma. For a separating parameter <span class="math" data-tex="\(t\)">\(t\)</span>, if <span class="math" data-tex="\([F:k(t)]=d\)">\([F:k(t)]=d\)</span>, Frobenius gives <span class="math" data-tex="\([F^p:k(t^p)]=d\)">\([F^p:k(t^p)]=d\)</span>, whereas <span class="math" data-tex="\([F:k(t^p)]=pd\)">\([F:k(t^p)]=pd\)</span>. Therefore <span class="math" data-tex="\([F:F^p]=p\)">\([F:F^p]=p\)</span>. Separability shows <span class="math" data-tex="\(t\notin F^p\)">\(t\notin F^p\)</span>. Locally <span class="math" data-tex="\(F_v=\kappa(v)((u))\)">\(F_v=\kappa(v)((u))\)</span>, so <span class="math" data-tex="\([F_v:F_v^p]=p\)">\([F_v:F_v^p]=p\)</span>. The same separating <span class="math" data-tex="\(t\)">\(t\)</span> is a local p-basis: in the base completion <span class="math" data-tex="\(dt\ne0\)">\(dt\ne0\)</span>, since a finite prime polynomial has nonzero derivative, and this remains true in a finite separable extension of completed fields. Thus the global and local Cartier operators agree on global differentials.</p>
+<h2 id="6-artin-schreier-symbols-and-the-residue-pairing">6. Artin–Schreier symbols and the residue pairing</h2>
+<p>For a finite field <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> and <span class="math" data-tex="\(E=\kappa((u))\)">\(E=\kappa((u))\)</span>, the arithmetic local symbol for <span class="math" data-tex="\(\theta^p-\theta=a\)">\(\theta^p-\theta=a\)</span> is
+<span class="math math-display" data-tex="\[
+\operatorname{rec}_E(b)(\theta)-\theta
+=\operatorname{Tr}_{\kappa/\mathbf F_p}\operatorname{res}_u(a\,db/b)
+\quad(a\in E,\ b\in E^\times).
+\tag{19}
+\]">\[
+\operatorname{rec}_E(b)(\theta)-\theta
+=\operatorname{Tr}_{\kappa/\mathbf F_p}\operatorname{res}_u(a\,db/b)
+\quad(a\in E,\ b\in E^\times).
+\tag{19}
+\]</span>
+The right side is in <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>, regarded as the translation subgroup of this Artin–Schreier extension. If the equation already splits, both sides are zero. We derive this formula from the global reciprocity already proved in lesson 16, using only the rational function field; no global existence theorem is needed.</p>
+<p>Modulo <span class="math" data-tex="\(\wp E=\{z^p-z:z\in E\}\)">\(\wp E=\{z^p-z:z\in E\}\)</span>, every <span class="math" data-tex="\(a\)">\(a\)</span> has a representative
+<span class="math math-display" data-tex="\[
+a_0+\sum_{d&gt;0,\ p\nmid d}a_d u^{-d},
+\qquad a_d\in\kappa,
+\tag{20}
+\]">\[
+a_0+\sum_{d&gt;0,\ p\nmid d}a_d u^{-d},
+\qquad a_d\in\kappa,
+\tag{20}
+\]</span>
+with finitely many summands. Eliminate a highest pole whose order is divisible by <span class="math" data-tex="\(p\)">\(p\)</span> by subtracting <span class="math" data-tex="\(\wp(cu^{-d/p})\)">\(\wp(cu^{-d/p})\)</span>; perfection of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> supplies its coefficient root and the remaining pole has smaller order. The positive-power part <span class="math" data-tex="\(a_+\)">\(a_+\)</span> is <span class="math" data-tex="\(\wp(-\sum_{r\geq0}a_+^{p^r})\)">\(\wp(-\sum_{r\geq0}a_+^{p^r})\)</span>, a convergent series. This proves the reduction.</p>
+<p>The representative (20) is rational over <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Form its explicit Artin–Schreier extension of <span class="math" data-tex="\(\kappa(u)\)">\(\kappa(u)\)</span>, as in lesson 3. At every place <span class="math" data-tex="\(P\ne(u)\)">\(P\ne(u)\)</span>, including infinity, <span class="math" data-tex="\(a\)">\(a\)</span> is integral. The extension is unramified there, and arithmetic Frobenius translates a root by
+<span class="math" data-tex="\(\operatorname{Tr}_{\kappa(P)/\mathbf F_p}(a(P))\)">\(\operatorname{Tr}_{\kappa(P)/\mathbf F_p}(a(P))\)</span>: iterating <span class="math" data-tex="\(\theta^p=\theta+a(P)\)">\(\theta^p=\theta+a(P)\)</span> through <span class="math" data-tex="\([\kappa(P):\mathbf F_p]\)">\([\kappa(P):\mathbf F_p]\)</span> steps gives this identity. Thus the symbol of a rational <span class="math" data-tex="\(b\)">\(b\)</span> at <span class="math" data-tex="\(P\)">\(P\)</span> is its valuation times this trace. On the other hand,
+<span class="math math-display" data-tex="\[
+\operatorname{res}_P(a\,db/b)=v_P(b)a(P)
+\quad(P\ne(u)),
+\]">\[
+\operatorname{res}_P(a\,db/b)=v_P(b)a(P)
+\quad(P\ne(u)),
+\]</span>
+because the logarithmic derivative of a local unit is an integral differential. The partial-fraction residue theorem on <span class="math" data-tex="\(\kappa(u)\)">\(\kappa(u)\)</span>, proved in lesson 15, says that the sum of the residue traces, including infinity, is zero. The global principal product of Theorem 16.4 says that the sum of the local translation symbols is zero. Comparing these two sums proves (19) at <span class="math" data-tex="\(u=0\)">\(u=0\)</span> for rational <span class="math" data-tex="\(b\)">\(b\)</span>. Rational elements are dense in the completion; both the symbol and the residue functional are continuous in <span class="math" data-tex="\(b\)">\(b\)</span>, so the formula holds for all local <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>It remains to justify invariance when replacing <span class="math" data-tex="\(a\)">\(a\)</span> by its representative. In Laurent coordinates,
+<span class="math math-display" data-tex="\[
+\mathcal C\left(\sum_j c_j u^jdu\right)
+=\sum_m c_{pm+p-1}^{1/p}u^mdu.
+\tag{21}
+\]">\[
+\mathcal C\left(\sum_j c_j u^jdu\right)
+=\sum_m c_{pm+p-1}^{1/p}u^mdu.
+\tag{21}
+\]</span>
+For <span class="math" data-tex="\(h\in E\)">\(h\in E\)</span>, coefficient multiplication gives
+<span class="math math-display" data-tex="\[
+\operatorname{res}(h^p\omega)
+=\bigl(\operatorname{res}(h\mathcal C\omega)\bigr)^p.
+\]">\[
+\operatorname{res}(h^p\omega)
+=\bigl(\operatorname{res}(h\mathcal C\omega)\bigr)^p.
+\]</span>
+Indeed if <span class="math" data-tex="\(h=\sum b_j u^j\)">\(h=\sum b_j u^j\)</span>, the two sides before taking the <span class="math" data-tex="\(p\)">\(p\)</span>th power have coefficients <span class="math" data-tex="\(\sum b_j c_{-pj-1}^{1/p}\)">\(\sum b_j c_{-pj-1}^{1/p}\)</span>. The residue sum is finite. Taking the finite-field trace removes the <span class="math" data-tex="\(p\)">\(p\)</span>th power. Since <span class="math" data-tex="\(\mathcal C(d\log b)=d\log b\)">\(\mathcal C(d\log b)=d\log b\)</span>, the residue trace of <span class="math" data-tex="\((h^p-h)d\log b\)">\((h^p-h)d\log b\)</span> is zero. Changing <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(\wp h\)">\(\wp h\)</span> also changes the chosen root by <span class="math" data-tex="\(h\)">\(h\)</span> and leaves its translation character unchanged. This completes the proof of (19).</p>
+<p>We now obtain the global residue pairing without assuming a differential trace-residue theorem. Choose a separating <span class="math" data-tex="\(t\in F\)">\(t\in F\)</span>, and set <span class="math" data-tex="\(\omega_0=d\log t\)">\(\omega_0=d\log t\)</span>. It is nonzero in every completion. Define an additive character of <span class="math" data-tex="\(\mathbb A_F\)">\(\mathbb A_F\)</span> by
+<span class="math math-display" data-tex="\[
+\Phi(x)=\exp\left(\frac{2\pi i}{p}
+\sum_v\operatorname{Tr}_{\kappa(v)/\mathbf F_p}
+\operatorname{res}_v(x_v\omega_0)\right).
+\tag{22}
+\]">\[
+\Phi(x)=\exp\left(\frac{2\pi i}{p}
+\sum_v\operatorname{Tr}_{\kappa(v)/\mathbf F_p}
+\operatorname{res}_v(x_v\omega_0)\right).
+\tag{22}
+\]</span>
+Only finitely many terms are nonzero. Outside finitely many places, <span class="math" data-tex="\(t\)">\(t\)</span> is a unit and <span class="math" data-tex="\(dt\)">\(dt\)</span> is a unit differential: this follows at the unramified places over <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span>, where an irreducible prime polynomial has unit derivative. Thus (22) is continuous, and its local component is nontrivial at every place by the Laurent coefficient pairing and nondegeneracy of the finite-field trace.</p>
+<p>For <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span>, apply (19) to the explicit global extension <span class="math" data-tex="\(\theta^p-\theta=a\)">\(\theta^p-\theta=a\)</span> and to the principal element <span class="math" data-tex="\(t\)">\(t\)</span>. Global reciprocity makes the sum in (22) zero. Therefore <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is trivial on <span class="math" data-tex="\(F\)">\(F\)</span>. Section 5 of lesson 15 proved a trace-based self-duality <span class="math" data-tex="\((x,z)\mapsto\Psi_F(xz)\)">\((x,z)\mapsto\Psi_F(xz)\)</span> of <span class="math" data-tex="\(\mathbb A_F\)">\(\mathbb A_F\)</span>, with exact annihilator <span class="math" data-tex="\(F\)">\(F\)</span>. By that self-duality <span class="math" data-tex="\(\Phi(x)=\Psi_F(cx)\)">\(\Phi(x)=\Psi_F(cx)\)</span> for a unique adèle <span class="math" data-tex="\(c\)">\(c\)</span>. Triviality on <span class="math" data-tex="\(F\)">\(F\)</span> forces <span class="math" data-tex="\(c\in F\)">\(c\in F\)</span>; nontriviality forces <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>. Multiplication by this global nonzero scalar preserves <span class="math" data-tex="\(F\)">\(F\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\mathbb A_F\text{ is self-dual under }(x,z)\mapsto\Phi(xz),
+\qquad F^\perp=F.
+\tag{23}
+\]">\[
+\mathbb A_F\text{ is self-dual under }(x,z)\mapsto\Phi(xz),
+\qquad F^\perp=F.
+\tag{23}
+\]</span>
+This deduction explains why no unproved residue-trace compatibility is hidden in the argument.</p>
+<h2 id="7-universal-norms-are-trivial">7. Universal norms are trivial</h2>
+<p>Take <span class="math" data-tex="\([x]\in\mathcal N_F\)">\([x]\in\mathcal N_F\)</span>, represented by an idèle <span class="math" data-tex="\(x\)">\(x\)</span>. For every <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span>, its reciprocity symbol in <span class="math" data-tex="\(F(\wp^{-1}a)/F\)">\(F(\wp^{-1}a)/F\)</span> is trivial. Formula (19) gives
+<span class="math math-display" data-tex="\[
+\sum_v\operatorname{Tr}_{\kappa(v)/\mathbf F_p}
+\operatorname{res}_v(a\,d\log x_v)=0.
+\tag{24}
+\]">\[
+\sum_v\operatorname{Tr}_{\kappa(v)/\mathbf F_p}
+\operatorname{res}_v(a\,d\log x_v)=0.
+\tag{24}
+\]</span>
+Write <span class="math" data-tex="\(d\log x_v=y_v\omega_0\)">\(d\log x_v=y_v\omega_0\)</span>. The <span class="math" data-tex="\(y_v\)">\(y_v\)</span> form an adèle: at almost all places <span class="math" data-tex="\(x_v\)">\(x_v\)</span> is a unit and <span class="math" data-tex="\(\omega_0\)">\(\omega_0\)</span> is a unit differential, so <span class="math" data-tex="\(y_v\)">\(y_v\)</span> is integral. Equations (23)–(24) force <span class="math" data-tex="\(y\in F\)">\(y\in F\)</span>. We have therefore obtained a single global differential <span class="math" data-tex="\(\omega=y\omega_0\)">\(\omega=y\omega_0\)</span> whose local image is <span class="math" data-tex="\(d\log x_v\)">\(d\log x_v\)</span> everywhere. The local logarithmic differentials are Cartier-fixed, and global-local compatibility of (15) shows <span class="math" data-tex="\(\mathcal C\omega=\omega\)">\(\mathcal C\omega=\omega\)</span>. Lemma (16) supplies <span class="math" data-tex="\(b\in F^\times\)">\(b\in F^\times\)</span> with <span class="math" data-tex="\(\omega=d\log b\)">\(\omega=d\log b\)</span>. Hence
+<span class="math math-display" data-tex="\[
+d\log(x_v/b)=0\quad\text{at every }v.
+\]">\[
+d\log(x_v/b)=0\quad\text{at every }v.
+\]</span>
+The kernel of the local derivative is <span class="math" data-tex="\(F_v^p\)">\(F_v^p\)</span>, as the Laurent expansion shows. Thus each <span class="math" data-tex="\(x_v/b\)">\(x_v/b\)</span> has a unique <span class="math" data-tex="\(p\)">\(p\)</span>th root. These roots are units almost everywhere, and form an idèle. We have proved
+<span class="math math-display" data-tex="\[
+\mathcal N_F\subseteq C_F^p.
+\tag{25}
+\]">\[
+\mathcal N_F\subseteq C_F^p.
+\tag{25}
+\]</span>
+This alone does not yet prove that <span class="math" data-tex="\(\mathcal N_F\)">\(\mathcal N_F\)</span> is <span class="math" data-tex="\(p\)">\(p\)</span>-divisible <em>inside itself</em>. The following compactness step supplies that distinction.</p>
+<p><strong>Universal-norm lifting lemma.</strong> For every finite separable <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, norm maps <span class="math" data-tex="\(\mathcal N_E\)">\(\mathcal N_E\)</span> onto <span class="math" data-tex="\(\mathcal N_F\)">\(\mathcal N_F\)</span>.</p>
+<p><strong>Proof.</strong> The norm of a universal norm is a universal norm: to test against a finite extension of <span class="math" data-tex="\(F\)">\(F\)</span>, form its compositum with <span class="math" data-tex="\(E\)">\(E\)</span> and use tower norms. For surjectivity fix <span class="math" data-tex="\(x\in\mathcal N_F\)">\(x\in\mathcal N_F\)</span>. For each finite separable <span class="math" data-tex="\(L/E\)">\(L/E\)</span>, consider
+<span class="math math-display" data-tex="\[
+Y_L=\{y\in N_{L/E}C_L^1:N_{E/F}y=x\}.
+\tag{26}
+\]">\[
+Y_L=\{y\in N_{L/E}C_L^1:N_{E/F}y=x\}.
+\tag{26}
+\]</span>
+This is a compact set, since <span class="math" data-tex="\(C_L^1\)">\(C_L^1\)</span> is compact. It is nonempty: <span class="math" data-tex="\(x\)">\(x\)</span> is a norm from <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, and its norm preimage has degree zero by the formula
+<span class="math" data-tex="\(\deg_F N_{L/F}z=[k_L:k_F]\deg_L z\)">\(\deg_F N_{L/F}z=[k_L:k_F]\deg_L z\)</span>. Its norm to <span class="math" data-tex="\(E\)">\(E\)</span> belongs to (26). A compositum contains any finite collection of the <span class="math" data-tex="\(L\)">\(L\)</span>'s and gives a set contained in their intersection. Compactness in <span class="math" data-tex="\(C_E^1\)">\(C_E^1\)</span> gives a point of all the <span class="math" data-tex="\(Y_L\)">\(Y_L\)</span>, which is a universal norm in <span class="math" data-tex="\(E\)">\(E\)</span> mapping to <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply (25) over every finite <span class="math" data-tex="\(E/F\)">\(E/F\)</span>. Lift <span class="math" data-tex="\(x\in\mathcal N_F\)">\(x\in\mathcal N_F\)</span> to <span class="math" data-tex="\(y\in\mathcal N_E\)">\(y\in\mathcal N_E\)</span>, write <span class="math" data-tex="\(y=z^p\)">\(y=z^p\)</span>, and norm <span class="math" data-tex="\(z\)">\(z\)</span> down. Degrees show <span class="math" data-tex="\(z\in C_E^1\)">\(z\in C_E^1\)</span>. Thus the compact sets
+<span class="math math-display" data-tex="\[
+R_E=\{r\in N_{E/F}C_E^1:r^p=x\}
+\tag{27}
+\]">\[
+R_E=\{r\in N_{E/F}C_E^1:r^p=x\}
+\tag{27}
+\]</span>
+are nonempty. They have the finite-intersection property by composita. Their intersection contains a <span class="math" data-tex="\(p\)">\(p\)</span>th root of <span class="math" data-tex="\(x\)">\(x\)</span> belonging to every finite norm image, hence to <span class="math" data-tex="\(\mathcal N_F\)">\(\mathcal N_F\)</span>. This proves internal <span class="math" data-tex="\(p\)">\(p\)</span>-divisibility.</p>
+<p>For a prime <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, first work over a finite extension <span class="math" data-tex="\(E\)">\(E\)</span> containing <span class="math" data-tex="\(\mu_\ell\)">\(\mu_\ell\)</span>. For every sufficiently large finite <span class="math" data-tex="\(S\)">\(S\)</span>, (3), valid also for these function fields, gives
+<span class="math math-display" data-tex="\[
+\mathcal N_E\subseteq C_E^\ell\operatorname{im}(U^S).
+\tag{28}
+\]">\[
+\mathcal N_E\subseteq C_E^\ell\operatorname{im}(U^S).
+\tag{28}
+\]</span>
+The tail groups <span class="math" data-tex="\(U^S\)">\(U^S\)</span> approach <span class="math" data-tex="\(1\)">\(1\)</span>: every idèle neighborhood restricts only finitely many places, and choosing <span class="math" data-tex="\(S\)">\(S\)</span> to include them makes their components exactly <span class="math" data-tex="\(1\)">\(1\)</span>. All their classes have degree zero. If an element of <span class="math" data-tex="\(\mathcal N_E\)">\(\mathcal N_E\)</span> is a product in (28), its power factor also has degree zero, so its root has degree zero. The image <span class="math" data-tex="\((C_E^1)^\ell\)">\((C_E^1)^\ell\)</span> is compact and closed. Intersecting (28) over these <span class="math" data-tex="\(S\)">\(S\)</span> therefore proves
+<span class="math" data-tex="\(\mathcal N_E\subseteq(C_E^1)^\ell\)">\(\mathcal N_E\subseteq(C_E^1)^\ell\)</span>: a point outside that closed power image has a neighborhood disjoint from it, which a sufficiently small tail group cannot bridge. Universal-norm lifting and the compact root-set argument (27), with <span class="math" data-tex="\(\ell\)">\(\ell\)</span> in place of <span class="math" data-tex="\(p\)">\(p\)</span>, now prove internal <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-divisibility of <span class="math" data-tex="\(\mathcal N_F\)">\(\mathcal N_F\)</span>. Extensions containing <span class="math" data-tex="\(\mu_\ell\)">\(\mu_\ell\)</span> are cofinal among finite separable extensions, so the intersection still tests all norm images.</p>
+<p>Finally <span class="math" data-tex="\(C_F\)">\(C_F\)</span> is totally disconnected. The finite idèle group has compact open profinite neighborhood subgroups, the principal subgroup is closed, and the quotient assertion of the compact-group lemma applies. Its compact subgroup <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span>, and hence the closed subgroup <span class="math" data-tex="\(\mathcal N_F\)">\(\mathcal N_F\)</span>, are profinite. A profinite group divisible by every prime has no nontrivial finite quotient: if a finite quotient has order <span class="math" data-tex="\(m\)">\(m\)</span>, divisibility by the prime factors of <span class="math" data-tex="\(m\)">\(m\)</span> makes the <span class="math" data-tex="\(m\)">\(m\)</span>-power map onto, whereas that map is identically <span class="math" data-tex="\(1\)">\(1\)</span>. Finite quotients separate points of a profinite group. Therefore
+<span class="math math-display" data-tex="\[
+\mathcal N_F=1.
+\tag{29}
+\]">\[
+\mathcal N_F=1.
+\tag{29}
+\]</span>
+Reciprocity for function fields is injective, including all characteristic-power extensions.</p>
+<h2 id="8-function-field-existence-and-weil-topology">8. Function-field existence and Weil topology</h2>
+<p>Choose a class <span class="math" data-tex="\(c\in C_F\)">\(c\in C_F\)</span> of degree <span class="math" data-tex="\(1\)">\(1\)</span>, whose existence was proved in lesson 16, and put <span class="math" data-tex="\(\gamma=\operatorname{rec}_F(c)\)">\(\gamma=\operatorname{rec}_F(c)\)</span>. Let
+<span class="math math-display" data-tex="\[
+\delta:B_F\longrightarrow\widehat{\mathbf Z}
+\]">\[
+\delta:B_F\longrightarrow\widehat{\mathbf Z}
+\]</span>
+be restriction to the full constant-field extension. The continuous power map <span class="math" data-tex="\(z\mapsto\gamma^z\)">\(z\mapsto\gamma^z\)</span> on <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span> is a section of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, since <span class="math" data-tex="\(\delta(\gamma)=1\)">\(\delta(\gamma)=1\)</span>. In particular it is injective. The compact subgroup <span class="math" data-tex="\(\operatorname{rec}_F(C_F^1)\)">\(\operatorname{rec}_F(C_F^1)\)</span>, multiplied by this section, is closed and contains the dense reciprocity image from lesson 16. It is therefore all of <span class="math" data-tex="\(B_F\)">\(B_F\)</span>. Taking constant-degree kernels gives
+<span class="math math-display" data-tex="\[
+C_F^1\xrightarrow{\sim}\ker\delta,
+\qquad
+\operatorname{rec}_F(C_F)=\delta^{-1}(\mathbf Z).
+\tag{30}
+\]">\[
+C_F^1\xrightarrow{\sim}\ker\delta,
+\qquad
+\operatorname{rec}_F(C_F)=\delta^{-1}(\mathbf Z).
+\tag{30}
+\]</span>
+The first map is a homeomorphism, by (29) and compactness. Give the group on the right of the second equality the topology with <span class="math" data-tex="\(\ker\delta\)">\(\ker\delta\)</span> compact open and its integer cosets discrete. Then (30) is a homeomorphism from <span class="math" data-tex="\(C_F=C_F^1\times c^{\mathbf Z}\)">\(C_F=C_F^1\times c^{\mathbf Z}\)</span>. This topology is finer than its subspace topology in the profinite group <span class="math" data-tex="\(B_F\)">\(B_F\)</span>. Its image is dense and proper in <span class="math" data-tex="\(B_F\)">\(B_F\)</span>, because <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> is dense and proper in <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(H\subseteq C_F\)">\(H\subseteq C_F\)</span> be open of finite index. Put <span class="math" data-tex="\(H_0=H\cap C_F^1\)">\(H_0=H\cap C_F^1\)</span>; it is compact open in <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span>, and <span class="math" data-tex="\(\deg H=d\mathbf Z\)">\(\deg H=d\mathbf Z\)</span> for a positive integer <span class="math" data-tex="\(d\)">\(d\)</span>. Choose <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Every element of <span class="math" data-tex="\(H\)">\(H\)</span> is uniquely a product of an element of <span class="math" data-tex="\(H_0\)">\(H_0\)</span> and a power of <span class="math" data-tex="\(h\)">\(h\)</span>. In <span class="math" data-tex="\(B_F\)">\(B_F\)</span>,
+<span class="math math-display" data-tex="\[
+\overline{\operatorname{rec}_F(H)}
+=\operatorname{rec}_F(H_0)\cdot
+\{\operatorname{rec}_F(h)^z:z\in\widehat{\mathbf Z}\}.
+\tag{31}
+\]">\[
+\overline{\operatorname{rec}_F(H)}
+=\operatorname{rec}_F(H_0)\cdot
+\{\operatorname{rec}_F(h)^z:z\in\widehat{\mathbf Z}\}.
+\tag{31}
+\]</span>
+The power group is compact and its projection is <span class="math" data-tex="\(d\widehat{\mathbf Z}\)">\(d\widehat{\mathbf Z}\)</span>; multiplication by <span class="math" data-tex="\(d\)">\(d\)</span> there is injective, so its constant-degree kernel is trivial. Thus (31) has kernel <span class="math" data-tex="\(\operatorname{rec}_F(H_0)\)">\(\operatorname{rec}_F(H_0)\)</span> under constant degree and is an open finite-index subgroup of <span class="math" data-tex="\(B_F\)">\(B_F\)</span>. To verify openness explicitly, (30) splits <span class="math" data-tex="\(B_F\)">\(B_F\)</span> as <span class="math" data-tex="\(\ker\delta\times\widehat{\mathbf Z}\)">\(\ker\delta\times\widehat{\mathbf Z}\)</span>; on the clopen part with second coordinate in <span class="math" data-tex="\(d\widehat{\mathbf Z}\)">\(d\widehat{\mathbf Z}\)</span>, division by <span class="math" data-tex="\(d\)">\(d\)</span> is continuous and (31) imposes membership in the open subgroup <span class="math" data-tex="\(\operatorname{rec}_F(H_0)\)">\(\operatorname{rec}_F(H_0)\)</span> after a continuous translation.</p>
+<p>Its inverse image in <span class="math" data-tex="\(C_F\)">\(C_F\)</span> is exactly <span class="math" data-tex="\(H\)">\(H\)</span>. Indeed an integer in <span class="math" data-tex="\(d\widehat{\mathbf Z}\)">\(d\widehat{\mathbf Z}\)</span> belongs to <span class="math" data-tex="\(d\mathbf Z\)">\(d\mathbf Z\)</span>, and its uniquely determined exponent in the power group of (31) is that ordinary integer divided by <span class="math" data-tex="\(d\)">\(d\)</span>. The remaining factor must lie in <span class="math" data-tex="\(H_0\)">\(H_0\)</span>. Galois correspondence gives a finite abelian extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span> with Galois kernel (31). Finite reciprocity then gives <span class="math" data-tex="\(N_{L/F}C_L=H\)">\(N_{L/F}C_L=H\)</span>. This finishes the function-field proof of Theorem 17.1 and the correspondence of Theorem 17.2.</p>
+<h3 id="the-absolute-weil-group">The absolute Weil group</h3>
+<p>Let <span class="math" data-tex="\(G=G_F\)">\(G=G_F\)</span>, let <span class="math" data-tex="\(I\)">\(I\)</span> be the kernel of its constant-field map to <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>, and choose <span class="math" data-tex="\(\varphi\in G\)">\(\varphi\in G\)</span> of degree <span class="math" data-tex="\(1\)">\(1\)</span>. Define
+<span class="math math-display" data-tex="\[
+W_F=\{g\in G:\deg g\in\mathbf Z\}=I\rtimes\varphi^{\mathbf Z},
+\tag{32}
+\]">\[
+W_F=\{g\in G:\deg g\in\mathbf Z\}=I\rtimes\varphi^{\mathbf Z},
+\tag{32}
+\]</span>
+with <span class="math" data-tex="\(I\)">\(I\)</span> compact open and the integer quotient discrete. It is dense in <span class="math" data-tex="\(G\)">\(G\)</span>. Let <span class="math" data-tex="\(P=\overline{[G,G]}\)">\(P=\overline{[G,G]}\)</span>. All commutators have degree zero, so <span class="math" data-tex="\(P\subseteq I\)">\(P\subseteq I\)</span>. Density and continuity of commutators show
+<span class="math math-display" data-tex="\[
+\overline{[W_F,W_F]}^{\,W_F}=P.
+\tag{33}
+\]">\[
+\overline{[W_F,W_F]}^{\,W_F}=P.
+\tag{33}
+\]</span>
+For clarity, approximate each of the finitely many factors in a product of commutators in <span class="math" data-tex="\(G\)">\(G\)</span> by elements of <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. Their commutators converge inside <span class="math" data-tex="\(I\)">\(I\)</span>, whose topology is the same in both groups. This proves that the two closures are equal; the reverse containment is immediate.</p>
+<p>The quotient <span class="math" data-tex="\(W_F/P\)">\(W_F/P\)</span> is consequently the Hausdorff abelianization of <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. Its map to <span class="math" data-tex="\(G/P=B_F\)">\(G/P=B_F\)</span> is injective with image <span class="math" data-tex="\(\delta^{-1}(\mathbf Z)\)">\(\delta^{-1}(\mathbf Z)\)</span>. Its degree-zero subgroup is <span class="math" data-tex="\(I/P\simeq\ker\delta\)">\(I/P\simeq\ker\delta\)</span>, a compact open group, and its degree cosets are discrete. Comparing with (30) proves the full topological identification
+<span class="math math-display" data-tex="\[
+C_F\xrightarrow{\sim}W_F^{\mathrm{ab}}.
+\tag{34}
+\]">\[
+C_F\xrightarrow{\sim}W_F^{\mathrm{ab}}.
+\tag{34}
+\]</span>
+It is the <em>abelianization</em>, not the generally nonabelian group <span class="math" data-tex="\(W_F\)">\(W_F\)</span>, that is identified with <span class="math" data-tex="\(C_F\)">\(C_F\)</span>. This proves the global function-field Weil assertion used in <a href="weil-groups-and-one-dimensional-representations.html">Weil groups and one-dimensional representations</a>.</p>
+<p>The local compatibility also follows. A chosen embedding of a local decomposition group takes a local Weil element of integer Frobenius degree <span class="math" data-tex="\(m\)">\(m\)</span> to global constant degree <span class="math" data-tex="\(m\deg(v)\)">\(m\deg(v)\)</span>, so it maps into (32). On Hausdorff abelianizations its map agrees with insertion <span class="math" data-tex="\(F_v^\times\to C_F\)">\(F_v^\times\to C_F\)</span>: Theorem 16.4 proves agreement in every finite abelian quotient, and those quotients separate the image in <span class="math" data-tex="\(B_F\)">\(B_F\)</span>. Thus (34) respects local reciprocity, local inertia and the arithmetic Frobenius normalization.</p>
+<h2 id="9-exercises-and-complete-solutions">9. Exercises and complete solutions</h2>
+<h3 id="exercise-1-congruence-neighborhoods-over-the-rationals-easy">Exercise 1 — Congruence neighborhoods over the rationals (easy)</h3>
+<p>Show that every open finite-index subgroup of <span class="math" data-tex="\(C_{\mathbf Q}\)">\(C_{\mathbf Q}\)</span> contains the image of
+<span class="math math-display" data-tex="\[
+U_m=\mathbf R_{&gt;0}\times
+\prod_{p\mid m}(1+p^{v_p(m)}\mathbf Z_p)
+\times\prod_{p\nmid m}\mathbf Z_p^\times
+\subseteq J_{\mathbf Q}
+\]">\[
+U_m=\mathbf R_{&gt;0}\times
+\prod_{p\mid m}(1+p^{v_p(m)}\mathbf Z_p)
+\times\prod_{p\nmid m}\mathbf Z_p^\times
+\subseteq J_{\mathbf Q}
+\]</span>
+for some positive integer <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Solution.</strong> The connected positive-real factor is contained in the subgroup, since its map to the discrete finite quotient is trivial. Under (10), openness in the unit product supplies a neighborhood restricting finitely many primes. At each restricted prime choose <span class="math" data-tex="\(1+p^{a_p}\mathbf Z_p\)">\(1+p^{a_p}\mathbf Z_p\)</span> inside that neighborhood, increasing <span class="math" data-tex="\(a_p\geq1\)">\(a_p\geq1\)</span> if necessary. With <span class="math" data-tex="\(m=\prod p^{a_p}\)">\(m=\prod p^{a_p}\)</span>, its product with the unrestricted unit factors and the positive-real factor is the stated image of <span class="math" data-tex="\(U_m\)">\(U_m\)</span>. One may take <span class="math" data-tex="\(m=1\)">\(m=1\)</span> when no prime restrictions are needed.</p>
+<h3 id="exercise-2-the-kernel-as-an-intersection-medium">Exercise 2 — The kernel as an intersection (medium)</h3>
+<p>For either kind of global field prove
+<span class="math math-display" data-tex="\[
+\ker\operatorname{rec}_K=\bigcap_{H\text{ open, finite index}}H.
+\]">\[
+\ker\operatorname{rec}_K=\bigcap_{H\text{ open, finite index}}H.
+\]</span>
+Explain why it is not the same nontrivial group in both cases.</p>
+<p><strong>Solution.</strong> The profinite group <span class="math" data-tex="\(B_K\)">\(B_K\)</span> is the inverse limit of its finite abelian Galois quotients. Their kernels pulled back to <span class="math" data-tex="\(C_K\)">\(C_K\)</span> are exactly the finite abelian norm groups, by Theorem 16.4. Theorem 17.1 says that these are precisely all open finite-index subgroups. Intersecting their kernels gives the assertion. Over number fields Proposition 17.3 identifies the intersection with the connected component, which contains the positive-real content factor. Over function fields (29) makes it trivial; the idèle class group is totally disconnected and its reciprocity map is injective, although not onto <span class="math" data-tex="\(B_K\)">\(B_K\)</span>.</p>
+<h3 id="exercise-3-the-real-quadratic-field-of-conductor-five-medium">Exercise 3 — The real quadratic field of conductor five (medium)</h3>
+<p>Determine the class field of the subgroup (12).</p>
+<p><strong>Solution.</strong> Reciprocity on <span class="math" data-tex="\(\mathbf Q(\zeta_5)\)">\(\mathbf Q(\zeta_5)\)</span> sends the normalized unit tuple to its inverse modulo <span class="math" data-tex="\(5\)">\(5\)</span>. The inverse image of the subgroup <span class="math" data-tex="\(\{1,-1\}\subseteq(\mathbf Z/5)^\times\)">\(\{1,-1\}\subseteq(\mathbf Z/5)^\times\)</span> is exactly (12). Its fixed field is generated by <span class="math" data-tex="\(z=\zeta_5+\zeta_5^{-1}\)">\(z=\zeta_5+\zeta_5^{-1}\)</span>. Dividing <span class="math" data-tex="\(1+\zeta_5+\cdots+\zeta_5^4=0\)">\(1+\zeta_5+\cdots+\zeta_5^4=0\)</span> by <span class="math" data-tex="\(\zeta_5^2\)">\(\zeta_5^2\)</span> gives <span class="math" data-tex="\(z^2+z-1=0\)">\(z^2+z-1=0\)</span>, whence <span class="math" data-tex="\((2z+1)^2=5\)">\((2z+1)^2=5\)</span>. This quadratic field is <span class="math" data-tex="\(\mathbf Q(\sqrt5)\)">\(\mathbf Q(\sqrt5)\)</span>, and finite reciprocity identifies (12) with its norm group. The index is <span class="math" data-tex="\(4/2=2\)">\(4/2=2\)</span>, as required.</p>
+<h3 id="exercise-4-existence-with-roots-of-unity-hard">Exercise 4 — Existence with roots of unity (hard)</h3>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a global field, <span class="math" data-tex="\(n=\ell^a\)">\(n=\ell^a\)</span> prime to its characteristic, and <span class="math" data-tex="\(\mu_n\subset K\)">\(\mu_n\subset K\)</span>. Suppose <span class="math" data-tex="\(H\subseteq C_K\)">\(H\subseteq C_K\)</span> is open of finite index and <span class="math" data-tex="\(C_K^n\subseteq H\)">\(C_K^n\subseteq H\)</span>. Prove existence of its class field using the full S-unit radical.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(S\)">\(S\)</span> containing the infinite places, the divisors of <span class="math" data-tex="\(n\)">\(n\)</span>, class-group generators, and every component restricted by an identity neighborhood in the inverse image of <span class="math" data-tex="\(H\)">\(H\)</span>. Then <span class="math" data-tex="\(U^S\)">\(U^S\)</span> lies in that inverse image and <span class="math" data-tex="\(J_K=K^\times J_K^S\)">\(J_K=K^\times J_K^S\)</span>. Every element of <span class="math" data-tex="\(I(S)\)">\(I(S)\)</span> in (2) is an idèle <span class="math" data-tex="\(n\)">\(n\)</span>th power times an element of <span class="math" data-tex="\(U^S\)">\(U^S\)</span>, so <span class="math" data-tex="\(C(S)\subseteq H\)">\(C(S)\subseteq H\)</span>. S-unit Kummer theory gives <span class="math" data-tex="\(M=K(E_S^{1/n})\)">\(M=K(E_S^{1/n})\)</span> with group <span class="math" data-tex="\((\mathbf Z/n)^{|S|}\)">\((\mathbf Z/n)^{|S|}\)</span>. Proposition 15.2 with <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span> proves that <span class="math" data-tex="\(C(S)\)">\(C(S)\)</span> is contained in its norm group and has index <span class="math" data-tex="\([M:K]\)">\([M:K]\)</span>; finite reciprocity makes these groups equal. In <span class="math" data-tex="\(\operatorname{Gal}(M/K)\)">\(\operatorname{Gal}(M/K)\)</span>, take the subgroup corresponding to <span class="math" data-tex="\(H/C(S)\)">\(H/C(S)\)</span>, and let <span class="math" data-tex="\(L\)">\(L\)</span> be its fixed field. Restriction of reciprocity has kernel exactly <span class="math" data-tex="\(H\)">\(H\)</span>, and its norm-kernel theorem gives <span class="math" data-tex="\(H=N_{L/K}C_L\)">\(H=N_{L/K}C_L\)</span>. This proof uses the exact principal-intersection and index calculation of Proposition 15.2; just saying that Kummer radicals exist would not identify the norm group.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>The number-field S-unit existence argument and norm descent are retained. The characteristic-p radical and residue separation proof is written here, together with the complete function-field Weil extension and its topology.</p>
+<ul>
+<li><a href="https://www.mathi.uni-heidelberg.de/~schmidt/Neukirch-en/Neukirch_cft_02_may15.pdf">Jürgen Neukirch, Class Field Theory — The Bonn Lectures, Online Edition 2.0 (May 2015), edited by Alexander Schmidt</a>.</li>
+<li><a href="https://kskedlaya.org/cft/sec_abstractcft1.html">Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition</a>.</li>
+<li><a href="https://ncatlab.org/nlab/files/TateNumberTheory.pdf">John Tate, Number theoretic background (1979), freely available paper</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="the-global-reciprocity-law.html">← The global reciprocity law</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="ray-class-fields-conductors-and-ideal-reciprocity.html">Ray class fields, conductors and ideal reciprocity →</a></span></nav>
+<p class="small source-link"><a href="files/global-existence-and-the-idelic-class-field-correspondence.md">Markdown source of this lesson</a> · <a download href="files/global-existence-and-the-idelic-class-field-correspondence.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

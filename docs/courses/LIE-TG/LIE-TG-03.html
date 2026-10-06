@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One-parameter groups · Lie&#x27;s theory of transformation groups</title>
+<meta name="description" content="A lesson of the course Lie&#x27;s theory of transformation groups. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LIE-TG/LIE-TG-03.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Lie&#x27;s theory of transformation groups</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="one-parameter-groups">One-parameter groups</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).</em></p>
+<p>A vector field specifies a velocity at every point. Its flow is the finite transformation obtained by following those velocities. For analytic fields, repeated differentiation gives a convergent series for the transformation. For a finite-dimensional transformation group, every element sufficiently close to the identity is obtained from these flows.</p>
+<p>We use <a href="LIE-TG-02.html">The fundamental differential equations</a>, the analytic inverse-function theorem, and elementary complex analysis. We prove the local analytic flow statement needed here, including parameter dependence, so that the convergence assertions have explicit hypotheses. Basic references are [Kunzinger], [Lie–Engel I], and [Merker]. Composition of maps is written in the ordinary operator order: in <span class="math" data-tex="$A\circ B$">$A\circ B$</span>, <span class="math" data-tex="$B$">$B$</span> acts first. Our bracket is <span class="math" data-tex="$[X,Y]F=X(YF)-Y(XF)$">$[X,Y]F=X(YF)-Y(XF)$</span>.</p>
+<h2 id="1-analytic-flows-and-their-domain">1. Analytic flows and their domain</h2>
+<p>For <span class="math" data-tex="$X=\sum_i\xi^i(x)\partial_{x_i}$">$X=\sum_i\xi^i(x)\partial_{x_i}$</span>, a flow solves</p>
+<span class="math math-display" data-tex="$$
+\frac{d}{dt}\Phi_X^t(x)=\xi(\Phi_X^t(x)),\qquad \Phi_X^0(x)=x.
+\tag{1.1}
+$$">$$
+\frac{d}{dt}\Phi_X^t(x)=\xi(\Phi_X^t(x)),\qquad \Phi_X^0(x)=x.
+\tag{1.1}
+$$</span>
+<p><strong>Lemma 1.1.</strong> An analytic vector field has a unique analytic local flow. Time, initial point, and any additional analytic parameters can be chosen in product neighbourhoods. On a possibly smaller neighbourhood,</p>
+<span class="math math-display" data-tex="$$
+\Phi_X^{s+t}(x)=\Phi_X^t(\Phi_X^s(x)),\qquad
+(\Phi_X^t)^{-1}=\Phi_X^{-t}.
+\tag{1.2}
+$$">$$
+\Phi_X^{s+t}(x)=\Phi_X^t(\Phi_X^s(x)),\qquad
+(\Phi_X^t)^{-1}=\Phi_X^{-t}.
+\tag{1.2}
+$$</span>
+<p><strong>Proof.</strong> First work over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. Choose concentric coordinate polydiscs whose closures lie in the domain of <span class="math" data-tex="$\xi$">$\xi$</span>. On the larger one, bound <span class="math" data-tex="$\|\xi\|$">$\|\xi\|$</span> by <span class="math" data-tex="$M$">$M$</span> and <span class="math" data-tex="$\|D\xi\|$">$\|D\xi\|$</span> by <span class="math" data-tex="$L$">$L$</span>. Initial points lie in the smaller disc, at distance <span class="math" data-tex="$\delta&gt;0$">$\delta&gt;0$</span> from the larger boundary. Choose <span class="math" data-tex="$T&gt;0$">$T&gt;0$</span> with <span class="math" data-tex="$TM&lt;\delta$">$TM&lt;\delta$</span> and <span class="math" data-tex="$TL&lt;1$">$TL&lt;1$</span>.</p>
+<p>Starting with <span class="math" data-tex="$y_0(t,x)=x$">$y_0(t,x)=x$</span>, iterate</p>
+<span class="math math-display" data-tex="$$
+y_{k+1}(t,x)=x+\int_0^t\xi(y_k(s,x))\,ds.
+$$">$$
+y_{k+1}(t,x)=x+\int_0^t\xi(y_k(s,x))\,ds.
+$$</span>
+<p>The integral is along a segment in the time disc; its holomorphic integrand also gives a holomorphic primitive. Each iterate stays within distance <span class="math" data-tex="$TM$">$TM$</span> of the initial point. On the space of such bounded holomorphic maps, the iteration is a contraction in the uniform norm, with factor at most <span class="math" data-tex="$TL$">$TL$</span>. Its uniformly convergent limit is holomorphic in <span class="math" data-tex="$(t,x)$">$(t,x)$</span> and satisfies the integral equation. Differentiating proves (1.1). The same Lipschitz estimate proves uniqueness, shrinking the common domain if required. Additional parameters can be included in the initial polydisc and in the uniform bounds, proving analytic dependence on them.</p>
+<p>A real-analytic field extends holomorphically near a real point. The construction above restricted to real data has real values by uniqueness and complex conjugation, giving the real-analytic statement.</p>
+<p>For fixed <span class="math" data-tex="$s$">$s$</span>, both sides of the first equation in (1.2), viewed as functions of <span class="math" data-tex="$t$">$t$</span>, solve the same differential equation with initial value <span class="math" data-tex="$\Phi_X^s(x)$">$\Phi_X^s(x)$</span>. Uniqueness proves equality. Setting <span class="math" data-tex="$s=-t$">$s=-t$</span> gives the inverse. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is local existence. The field <span class="math" data-tex="$x^2\partial_x$">$x^2\partial_x$</span> has trajectories that blow up in finite real time, so it need not give transformations for all <span class="math" data-tex="$t$">$t$</span> on one fixed domain.</p>
+<h2 id="2-lie-series-with-a-convergence-proof">2. Lie series with a convergence proof</h2>
+<p>Write <span class="math" data-tex="$\exp(tX)$">$\exp(tX)$</span> for the map <span class="math" data-tex="$\Phi_X^t$">$\Phi_X^t$</span>. Let <span class="math" data-tex="$F$">$F$</span> be an analytic function, and let <span class="math" data-tex="$X^kF$">$X^kF$</span> mean repeated application of the differential operator <span class="math" data-tex="$X$">$X$</span>, with <span class="math" data-tex="$X^0F=F$">$X^0F=F$</span>.</p>
+<p><strong>Theorem 2.1 (Lie series).</strong> On sufficiently small product neighbourhoods,</p>
+<span class="math math-display" data-tex="$$
+F(\exp(tX)(x))=\sum_{k=0}^\infty\frac{t^k}{k!}(X^kF)(x).
+\tag{2.1}
+$$">$$
+F(\exp(tX)(x))=\sum_{k=0}^\infty\frac{t^k}{k!}(X^kF)(x).
+\tag{2.1}
+$$</span>
+<p>The convergence is locally uniform in <span class="math" data-tex="$x$">$x$</span> and <span class="math" data-tex="$t$">$t$</span>.</p>
+<p><strong>Proof.</strong> By Lemma 1.1, <span class="math" data-tex="$G(t,x)=F(\Phi_X^t(x))$">$G(t,x)=F(\Phi_X^t(x))$</span> is holomorphic after complexifying real-analytic data if needed. The chain rule gives</p>
+<span class="math math-display" data-tex="$$
+\partial_tG(t,x)=(XF)(\Phi_X^t(x)).
+$$">$$
+\partial_tG(t,x)=(XF)(\Phi_X^t(x)).
+$$</span>
+<p>Repeated differentiation gives <span class="math" data-tex="$\partial_t^kG(0,x)=X^kF(x)$">$\partial_t^kG(0,x)=X^kF(x)$</span>. Choose a smaller compact initial-point polydisc and a time radius <span class="math" data-tex="$R&gt;0$">$R&gt;0$</span> such that <span class="math" data-tex="$G$">$G$</span> is holomorphic on a neighbourhood of the product with <span class="math" data-tex="$|t|\le R$">$|t|\le R$</span>. Let <span class="math" data-tex="$C$">$C$</span> bound <span class="math" data-tex="$|G|$">$|G|$</span> there. Cauchy's formula in time gives</p>
+<span class="math math-display" data-tex="$$
+\frac{|X^kF(x)|}{k!}\le CR^{-k}.
+$$">$$
+\frac{|X^kF(x)|}{k!}\le CR^{-k}.
+$$</span>
+<p>For <span class="math" data-tex="$|t|\le r&lt;R$">$|t|\le r&lt;R$</span>, the series is dominated uniformly by <span class="math" data-tex="$\sum_kC(r/R)^k$">$\sum_kC(r/R)^k$</span>. Its sum is the Taylor expansion of <span class="math" data-tex="$G$">$G$</span> in time, which proves (2.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Applying (2.1) to each coordinate function gives the flow itself. Analyticity is essential for this Taylor-series conclusion. Existence of a smooth flow alone does not imply that its Taylor series in time represents it.</p>
+<p><strong>Example 2.2.</strong> For <span class="math" data-tex="$X=x^2\partial_x$">$X=x^2\partial_x$</span>, induction gives <span class="math" data-tex="$X^kx=k!x^{k+1}$">$X^kx=k!x^{k+1}$</span>. Thus</p>
+<span class="math math-display" data-tex="$$
+\exp(tX)(x)=x\sum_{k=0}^\infty(tx)^k=\frac{x}{1-tx},\qquad |tx|&lt;1.
+$$">$$
+\exp(tX)(x)=x\sum_{k=0}^\infty(tx)^k=\frac{x}{1-tx},\qquad |tx|&lt;1.
+$$</span>
+<p>Solving <span class="math" data-tex="$\dot x=x^2$">$\dot x=x^2$</span> gives the same expression wherever its denominator is nonzero. The series domain and the maximal rational expression's domain are not the same assertion.</p>
+<p>For <span class="math" data-tex="$X=x\partial_x$">$X=x\partial_x$</span>, <span class="math" data-tex="$X^kx=x$">$X^kx=x$</span> for <span class="math" data-tex="$k\ge1$">$k\ge1$</span>, giving <span class="math" data-tex="$e^t x$">$e^t x$</span>. For <span class="math" data-tex="$X=-y\partial_x+x\partial_y$">$X=-y\partial_x+x\partial_y$</span>, the powers alternate between <span class="math" data-tex="$(x,y)$">$(x,y)$</span>, <span class="math" data-tex="$(-y,x)$">$(-y,x)$</span>, <span class="math" data-tex="$(-x,-y)$">$(-x,-y)$</span>, and <span class="math" data-tex="$(y,-x)$">$(y,-x)$</span>, giving the rotation matrix from the first lesson.</p>
+<h2 id="3-straightening-and-invariants">3. Straightening and invariants</h2>
+<p><strong>Theorem 3.1.</strong> If <span class="math" data-tex="$X(p)\ne0$">$X(p)\ne0$</span>, there are analytic coordinates <span class="math" data-tex="$(t,z_2,\ldots,z_n)$">$(t,z_2,\ldots,z_n)$</span> near <span class="math" data-tex="$p$">$p$</span> in which <span class="math" data-tex="$X=\partial_t$">$X=\partial_t$</span>. Every analytic first integral of <span class="math" data-tex="$X$">$X$</span> is locally a function of <span class="math" data-tex="$z_2,\ldots,z_n$">$z_2,\ldots,z_n$</span>.</p>
+<p><strong>Proof.</strong> Choose an analytic hypersurface <span class="math" data-tex="$q(z)$">$q(z)$</span> through <span class="math" data-tex="$p$">$p$</span> whose tangent space is complementary to the line <span class="math" data-tex="$\mathbb K X(p)$">$\mathbb K X(p)$</span>. Consider</p>
+<span class="math math-display" data-tex="$$
+H(t,z)=\Phi_X^t(q(z)).
+$$">$$
+H(t,z)=\Phi_X^t(q(z)).
+$$</span>
+<p>Its derivative at <span class="math" data-tex="$(0,z(p))$">$(0,z(p))$</span> has first column <span class="math" data-tex="$X(p)$">$X(p)$</span> and remaining columns spanning the chosen transverse hypersurface. It is invertible. The analytic inverse-function theorem makes <span class="math" data-tex="$H$">$H$</span> a coordinate chart. Equation (1.2) says <span class="math" data-tex="$\Phi_X^s(H(t,z))=H(t+s,z)$">$\Phi_X^s(H(t,z))=H(t+s,z)$</span>, hence <span class="math" data-tex="$X=\partial_t$">$X=\partial_t$</span>. The equation <span class="math" data-tex="$XF=0$">$XF=0$</span> becomes <span class="math" data-tex="$\partial_tF=0$">$\partial_tF=0$</span>, so <span class="math" data-tex="$F$">$F$</span> is a function of <span class="math" data-tex="$z$">$z$</span> on a product coordinate neighbourhood. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For the dilation field <span class="math" data-tex="$x\partial_x+y\partial_y$">$x\partial_x+y\partial_y$</span> on the real region <span class="math" data-tex="$x&gt;0$">$x&gt;0$</span>, take <span class="math" data-tex="$t=\log x$">$t=\log x$</span> and <span class="math" data-tex="$z=y/x$">$z=y/x$</span>. Then <span class="math" data-tex="$Xt=1$">$Xt=1$</span>, <span class="math" data-tex="$Xz=0$">$Xz=0$</span>. Near any complex point with <span class="math" data-tex="$x\ne0$">$x\ne0$</span>, a local branch of <span class="math" data-tex="$\log x$">$\log x$</span> gives the same construction. A point with <span class="math" data-tex="$x=0$">$x=0$</span>, <span class="math" data-tex="$y\ne0$">$y\ne0$</span> uses the corresponding chart with <span class="math" data-tex="$y$">$y$</span> instead. The zero of the field at the origin is excluded from the straightening theorem.</p>
+<h2 id="4-the-bracket-is-a-commutator-of-motions">4. The bracket is a commutator of motions</h2>
+<p>For vector fields with coefficient columns <span class="math" data-tex="$\xi$">$\xi$</span> and <span class="math" data-tex="$\eta$">$\eta$</span>,</p>
+<span class="math math-display" data-tex="$$
+[X,Y](x)=D\eta(x)\xi(x)-D\xi(x)\eta(x).
+\tag{4.1}
+$$">$$
+[X,Y](x)=D\eta(x)\xi(x)-D\xi(x)\eta(x).
+\tag{4.1}
+$$</span>
+<p><strong>Theorem 4.1.</strong> With map composition interpreted as above,</p>
+<span class="math math-display" data-tex="$$
+\Phi_Y^{-s}\circ\Phi_X^{-t}\circ\Phi_Y^s\circ\Phi_X^t(x)
+=x+st[X,Y](x)+O\bigl(|st|(|s|+|t|)\bigr).
+\tag{4.2}
+$$">$$
+\Phi_Y^{-s}\circ\Phi_X^{-t}\circ\Phi_Y^s\circ\Phi_X^t(x)
+=x+st[X,Y](x)+O\bigl(|st|(|s|+|t|)\bigr).
+\tag{4.2}
+$$</span>
+<p>The remainder bound is uniform on compact subsets of a sufficiently small coordinate neighbourhood.</p>
+<p><strong>Proof.</strong> The composition is analytic in <span class="math" data-tex="$(s,t,x)$">$(s,t,x)$</span> and is the identity when <span class="math" data-tex="$s=0$">$s=0$</span> or <span class="math" data-tex="$t=0$">$t=0$</span>. Thus every nonconstant Taylor monomial contains both <span class="math" data-tex="$s$">$s$</span> and <span class="math" data-tex="$t$">$t$</span>. To find the mixed coefficient, retain only terms of degree at most one in each parameter. The first two motions give</p>
+<span class="math math-display" data-tex="$$
+x+t\xi+s\eta+stD\eta\,\xi.
+$$">$$
+x+t\xi+s\eta+stD\eta\,\xi.
+$$</span>
+<p>Applying <span class="math" data-tex="$\Phi_X^{-t}$">$\Phi_X^{-t}$</span> cancels <span class="math" data-tex="$t\xi$">$t\xi$</span> and adds the mixed term <span class="math" data-tex="$-stD\xi\,\eta$">$-stD\xi\,\eta$</span>. Applying <span class="math" data-tex="$\Phi_Y^{-s}$">$\Phi_Y^{-s}$</span> cancels <span class="math" data-tex="$s\eta$">$s\eta$</span>; it creates no further term of degree <span class="math" data-tex="$st$">$st$</span> because the pure <span class="math" data-tex="$t$">$t$</span> term has already vanished. The remaining mixed coefficient is (4.1). Analyticity bounds the remaining terms by the stated expression on compact subsets. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>As a sign check, take <span class="math" data-tex="$X=\partial_x$">$X=\partial_x$</span> and <span class="math" data-tex="$Y=x\partial_x$">$Y=x\partial_x$</span>. The four maps send</p>
+<span class="math math-display" data-tex="$$
+x\longmapsto x+t\longmapsto e^s(x+t)
+\longmapsto e^s(x+t)-t\longmapsto x+t-te^{-s}.
+$$">$$
+x\longmapsto x+t\longmapsto e^s(x+t)
+\longmapsto e^s(x+t)-t\longmapsto x+t-te^{-s}.
+$$</span>
+<p>This is <span class="math" data-tex="$x+st+O(|t||s|^2)$">$x+st+O(|t||s|^2)$</span>, consistent with <span class="math" data-tex="$[X,Y]=\partial_x$">$[X,Y]=\partial_x$</span>. Reversing the two positive motions reverses the leading sign.</p>
+<h2 id="5-one-parameter-subgroups-inside-a-local-group">5. One-parameter subgroups inside a local group</h2>
+<p>Let <span class="math" data-tex="$B_j$">$B_j$</span> be the parameter-space frame of the preceding lesson. For <span class="math" data-tex="$v\in T_eG$">$v\in T_eG$</span>, write <span class="math" data-tex="$B_v=\sum_jv_jB_j$">$B_v=\sum_jv_jB_j$</span>.</p>
+<p><strong>Lemma 5.1.</strong> The solution <span class="math" data-tex="$a_v(t)$">$a_v(t)$</span> of <span class="math" data-tex="$\dot a=B_v(a)$">$\dot a=B_v(a)$</span>, <span class="math" data-tex="$a(0)=e$">$a(0)=e$</span>, satisfies</p>
+<span class="math math-display" data-tex="$$
+a_v(s+t)=m(a_v(s),a_v(t)).
+\tag{5.1}
+$$">$$
+a_v(s+t)=m(a_v(s),a_v(t)).
+\tag{5.1}
+$$</span>
+<p>Its action on <span class="math" data-tex="$M$">$M$</span> is the flow of <span class="math" data-tex="$X_v=\sum_jv_jX_j$">$X_v=\sum_jv_jX_j$</span>.</p>
+<p><strong>Proof.</strong> Differentiating local associativity shows that left multiplication <span class="math" data-tex="$L_a(b)=m(a,b)$">$L_a(b)=m(a,b)$</span> carries <span class="math" data-tex="$B_v(b)$">$B_v(b)$</span> to <span class="math" data-tex="$B_v(m(a,b))$">$B_v(m(a,b))$</span>. For fixed <span class="math" data-tex="$s$">$s$</span>, the right side of (5.1), as a curve in <span class="math" data-tex="$t$">$t$</span>, therefore solves the <span class="math" data-tex="$B_v$">$B_v$</span> equation with initial value <span class="math" data-tex="$a_v(s)$">$a_v(s)$</span>. So does <span class="math" data-tex="$a_v(s+t)$">$a_v(s+t)$</span>. Uniqueness proves (5.1). The fundamental differential equations in geometric form give</p>
+<span class="math math-display" data-tex="$$
+\frac{d}{dt}f(x,a_v(t))=X_v(f(x,a_v(t))),
+$$">$$
+\frac{d}{dt}f(x,a_v(t))=X_v(f(x,a_v(t))),
+$$</span>
+<p>with initial value <span class="math" data-tex="$x$">$x$</span>, hence the last assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 5.2 (canonical coordinates).</strong> Let an effective analytic local group have dimension <span class="math" data-tex="$r$">$r$</span>, with generators <span class="math" data-tex="$X_1,\ldots,X_r$">$X_1,\ldots,X_r$</span>. Near the identity its transformations are precisely</p>
+<span class="math math-display" data-tex="$$
+x\longmapsto\exp\left(\sum_{j=1}^r v_jX_j\right)(x),
+\tag{5.2}
+$$">$$
+x\longmapsto\exp\left(\sum_{j=1}^r v_jX_j\right)(x),
+\tag{5.2}
+$$</span>
+<p>for <span class="math" data-tex="$v$">$v$</span> near zero. The parameters <span class="math" data-tex="$v$">$v$</span> are essential. Ordered products of <span class="math" data-tex="$r$">$r$</span> basis flows also give local coordinates.</p>
+<p><strong>Proof.</strong> Define <span class="math" data-tex="$E(v)=a_v(1)$">$E(v)=a_v(1)$</span> for <span class="math" data-tex="$v$">$v$</span> small. This is legitimate although Lemma 1.1 first provides a short time interval: the field <span class="math" data-tex="$B_v$">$B_v$</span> tends uniformly to zero with <span class="math" data-tex="$v$">$v$</span>, so its flow exists through time one for <span class="math" data-tex="$v$">$v$</span> in a sufficiently small neighbourhood. Analytic dependence makes <span class="math" data-tex="$E$">$E$</span> analytic. Its expansion is <span class="math" data-tex="$E(v)=e+v+O(|v|^2)$">$E(v)=e+v+O(|v|^2)$</span> in identity coordinates, since <span class="math" data-tex="$B_j(e)=\partial_{a_j}$">$B_j(e)=\partial_{a_j}$</span>. Thus <span class="math" data-tex="$DE(0)$">$DE(0)$</span> is the identity. The inverse-function theorem makes <span class="math" data-tex="$E$">$E$</span> a parameter chart, and Lemma 5.1 gives (5.2). Essentiality is preserved by this invertible coordinate change.</p>
+<p>For ordered products, the map</p>
+<span class="math math-display" data-tex="$$
+(t_1,\ldots,t_r)\longmapsto
+m(\cdots m(a_{e_1}(t_1),a_{e_2}(t_2))\cdots,a_{e_r}(t_r))
+$$">$$
+(t_1,\ldots,t_r)\longmapsto
+m(\cdots m(a_{e_1}(t_1),a_{e_2}(t_2))\cdots,a_{e_r}(t_r))
+$$</span>
+<p>also has derivative the identity at zero. It is a chart by the same theorem, and its action is <span class="math" data-tex="$\Phi_{X_r}^{t_r}\circ\cdots\circ\Phi_{X_1}^{t_1}$">$\Phi_{X_r}^{t_r}\circ\cdots\circ\Phi_{X_1}^{t_1}$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For a one-dimensional local group, <span class="math" data-tex="$E$">$E$</span> gives an additive parameter: (5.1) identifies multiplication with addition of times. For higher dimensions, canonical parameters do not generally add; their product records the brackets studied in the next lessons.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 1 (introductory).</strong> Derive the flow of <span class="math" data-tex="$x^2\partial_x$">$x^2\partial_x$</span> by both the Lie series and separation of variables. State the domains of each derivation.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Straighten <span class="math" data-tex="$X=y\partial_x-x\partial_y$">$X=y\partial_x-x\partial_y$</span> near <span class="math" data-tex="$(1,0)$">$(1,0)$</span> and identify one independent invariant.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Verify (4.2) for <span class="math" data-tex="$X=\partial_x$">$X=\partial_x$</span>, <span class="math" data-tex="$Y=x\partial_x$">$Y=x\partial_x$</span>, including its sign and error term.</p>
+<p><strong>Exercise 4 (intermediate).</strong> Show that the flow of <span class="math" data-tex="$(a+bx+cx^2)\partial_x$">$(a+bx+cx^2)\partial_x$</span> is projective. Give a matrix formula and explain why all projective maps near the identity arise this way.</p>
+<p><strong>Exercise 5 (advanced).</strong> On a compact initial-point polydisc, establish an explicit geometric majorant for (2.1) using the time radius <span class="math" data-tex="$R$">$R$</span> and bound <span class="math" data-tex="$C$">$C$</span> in its proof. Explain why a formal exponential without this argument would not prove convergence.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>Solution 1.</strong> Since <span class="math" data-tex="$X^kx=k!x^{k+1}$">$X^kx=k!x^{k+1}$</span>, the Lie series is <span class="math" data-tex="$x\sum_{k\ge0}(tx)^k$">$x\sum_{k\ge0}(tx)^k$</span>, convergent for <span class="math" data-tex="$|tx|&lt;1$">$|tx|&lt;1$</span> and locally uniformly on strict subregions. For <span class="math" data-tex="$x\ne0$">$x\ne0$</span>, separation gives <span class="math" data-tex="$-1/x(t)=t-1/x(0)$">$-1/x(t)=t-1/x(0)$</span> and hence <span class="math" data-tex="$x(t)=x(0)/(1-tx(0))$">$x(t)=x(0)/(1-tx(0))$</span>. The solution with initial value zero is constant. This rational expression continues the solution wherever its denominator is nonzero; it does not remove a finite-time pole.</p>
+<p><strong>Solution 2.</strong> Near <span class="math" data-tex="$(1,0)$">$(1,0)$</span> choose <span class="math" data-tex="$r=\sqrt{x^2+y^2}$">$r=\sqrt{x^2+y^2}$</span> and a local angle <span class="math" data-tex="$\theta=\arctan(y/x)$">$\theta=\arctan(y/x)$</span>. Then <span class="math" data-tex="$Xr=0$">$Xr=0$</span> and <span class="math" data-tex="$X\theta=-1$">$X\theta=-1$</span>. The coordinates <span class="math" data-tex="$t=-\theta$">$t=-\theta$</span>, <span class="math" data-tex="$z=r$">$z=r$</span> have independent derivatives there and give <span class="math" data-tex="$X=\partial_t$">$X=\partial_t$</span>. The independent invariant is <span class="math" data-tex="$r$">$r$</span>, or equivalently <span class="math" data-tex="$r^2$">$r^2$</span> on this neighbourhood.</p>
+<p><strong>Solution 3.</strong> The exact composition is <span class="math" data-tex="$x+t(1-e^{-s})$">$x+t(1-e^{-s})$</span>. Expanding <span class="math" data-tex="$1-e^{-s}=s-s^2/2+O(s^3)$">$1-e^{-s}=s-s^2/2+O(s^3)$</span> gives <span class="math" data-tex="$x+st+O(|t||s|^2)$">$x+st+O(|t||s|^2)$</span>, which satisfies the remainder bound in (4.2). Since <span class="math" data-tex="$[\partial_x,x\partial_x]=\partial_x$">$[\partial_x,x\partial_x]=\partial_x$</span>, the sign is positive.</p>
+<p><strong>Solution 4.</strong> Let</p>
+<span class="math math-display" data-tex="$$
+A=\begin{pmatrix}b/2&amp;a\\-c&amp;-b/2\end{pmatrix},\qquad M(t)=\exp(tA).
+$$">$$
+A=\begin{pmatrix}b/2&amp;a\\-c&amp;-b/2\end{pmatrix},\qquad M(t)=\exp(tA).
+$$</span>
+<p>If <span class="math" data-tex="$x(t)$">$x(t)$</span> is the ratio of the two components of a vector satisfying <span class="math" data-tex="$\dot v=Av$">$\dot v=Av$</span>, differentiating the ratio gives <span class="math" data-tex="$\dot x=a+bx+cx^2$">$\dot x=a+bx+cx^2$</span>. Thus <span class="math" data-tex="$x(t)=T_{M(t)}(x(0))$">$x(t)=T_{M(t)}(x(0))$</span> on the chart where the denominator is nonzero. The three matrices obtained by varying <span class="math" data-tex="$a,b,c$">$a,b,c$</span> independently form a basis of <span class="math" data-tex="$\mathfrak{sl}_2$">$\mathfrak{sl}_2$</span>. The derivative at zero of <span class="math" data-tex="$(a,b,c)\mapsto[\exp A]$">$(a,b,c)\mapsto[\exp A]$</span> is invertible in the three-dimensional projective matrix chart. The inverse-function theorem therefore gives all projective transformations near the identity. This is a local assertion; it does not assert that every global real projective matrix has a real logarithm.</p>
+<p><strong>Solution 5.</strong> For <span class="math" data-tex="$|t|\le r&lt;R$">$|t|\le r&lt;R$</span>, Cauchy's estimate gives <span class="math" data-tex="$|t^kX^kF(x)/k!|\le C(r/R)^k$">$|t^kX^kF(x)/k!|\le C(r/R)^k$</span>, uniformly on the compact initial-point set. The tail beginning at <span class="math" data-tex="$N$">$N$</span> is at most <span class="math" data-tex="$C(r/R)^N/(1-r/R)$">$C(r/R)^N/(1-r/R)$</span>. This proves uniform convergence and a quantitative error estimate. A formal series gives neither this bound nor a positive radius of convergence; the analytic flow supplies the required holomorphic time disc.</p>
+<h2 id="what-this-lesson-assumes">What this lesson assumes</h2>
+<p>The analytic inverse-function theorem, elementary uniform convergence of holomorphic functions, and Cauchy's integral formula are assumed. Local analytic flow existence, its group law, Lie-series convergence, straightening, the commutator formula, and canonical parameter charts are proved here. No completeness or global exponential-surjectivity assertion is made.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Michael Kunzinger, <em>Lie Transformation Groups: An Introduction to Symmetry Group Analysis of Differential Equations</em>, 2015, corrected December 2024, Section 3.1. <a href="https://www.mat.univie.ac.at/~mike/teaching/ss15/ltg.pdf">Author's text</a>.</li>
+<li>Sophus Lie, with Friedrich Engel, <em>Theorie der Transformationsgruppen</em>, Volume I, 1888, Chapters 3 and 4.</li>
+<li>Joël Merker, <em>Theory of Transformation Groups, by S. Lie and F. Engel (Vol. I, 1888): Modern Presentation and English Translation</em>, 2010, discussions of flows, exponential formulas, and generation by one-term groups. <a href="https://arxiv.org/abs/1003.3202">Author's preprint</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LIE-TG-02.html">← The fundamental differential equations</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LIE-TG-04.html">Complete systems and invariants →</a></span></nav>
+<p class="small source-link"><a href="src/LIE-TG-03.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LIE-TG">Repository</a></nav>
+</footer>
+</body>
+</html>

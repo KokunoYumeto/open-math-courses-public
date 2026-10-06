@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Artin&#x27;s induction theorem and rationality · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/artins-induction-theorem-and-rationality.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="frobenius-groups-and-frobeniuss-theorem.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-10.md" download>Editable source</a><a href="brauers-induction-theorem.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#lemma-1-1">Lemma 1.1</a></li><li><a href="#theorem-1-2">Theorem 1.2</a></li><li><a href="#corollary-1-3">Corollary 1.3</a></li><li><a href="#lemma-2-1">Lemma 2.1</a></li><li><a href="#theorem-2-2">Theorem 2.2</a></li><li><a href="#corollary-2-3">Corollary 2.3</a></li><li><a href="#lemma-3-1">Lemma 3.1</a></li><li><a href="#lemma-3-2">Lemma 3.2</a></li><li><a href="#theorem-4-1">Theorem 4.1</a></li><li><a href="#proposition-5-1">Proposition 5.1</a></li></ul></details><h1 id="artin-s-induction-theorem-and-rationality">Artin's induction theorem and rationality</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the AI that wrote it. Public domain (CC0).</em></p>
+<p>A representation can have rational traces even when no choice of basis makes its matrices rational. The quaternion group supplies an example. This makes two questions worth separating: which character values are rational, and which representations have a model over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>?</p>
+<p>We first examine eigenvalues and the fields they generate. We then count irreducible rational models using permutation representations. Finally, a function supported on the generators of a cyclic group gives a constructive proof of Artin's induction theorem. The proof supplies the integer multiplier <span class="math" data-tex="\(|G|\)">\(|G|\)</span>, for every virtual complex character.</p>
+<p>Basic references are Igusa's <em>Algebra II: Representations of Groups</em> and Gruson–Serganova's <em>A Journey Through Representation Theory</em>. We use complete reducibility and Schur's lemma from <a href="representations-and-complete-reducibility.html">Representations and complete reducibility</a>, the character inner product from <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a>, central idempotents from <a href="the-group-algebra-and-fourier-analysis-on-a-finite-group.html">The group algebra and Fourier analysis on a finite group</a>, and the real-form criterion from <a href="tensor-products-duals-and-real-representations.html">Tensor products, duals and real representations</a>. The arithmetic and induction tools come from <a href="integrality-of-characters-and-burnsides-theorem.html">Integrality of characters and Burnside's <span class="math" data-tex="\(p^a q^b\)">\(p^a q^b\)</span> theorem</a> and <a href="induced-representations-and-frobenius-reciprocity.html">Induced representations and Frobenius reciprocity</a>.</p>
+<p>Throughout, <span class="math" data-tex="\(G\)">\(G\)</span> is finite. Write <span class="math" data-tex="\(R(G)\)">\(R(G)\)</span> for the ring of integer linear combinations of irreducible complex characters. A <strong>rational model</strong> is a representation on a finite-dimensional <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-vector space. Write <span class="math" data-tex="\(R_{\mathbb Q}(G)\subseteq R(G)\)">\(R_{\mathbb Q}(G)\subseteq R(G)\)</span> for the integer span of the characters of rational models after extending scalars to <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. An actual rational model has an actual character; allowing formal differences is what makes <span class="math" data-tex="\(R_{\mathbb Q}(G)\)">\(R_{\mathbb Q}(G)\)</span> a group.</p>
+<h2 id="1-powers-of-eigenvalues-and-powers-of-roots-of-unity">1. Powers of eigenvalues and powers of roots of unity</h2>
+<p>Let <span class="math" data-tex="\(m\)">\(m\)</span> be the exponent of <span class="math" data-tex="\(G\)">\(G\)</span>, the least common multiple of its element orders. Each representing matrix satisfies <span class="math" data-tex="\(A^m=I\)">\(A^m=I\)</span>. Since <span class="math" data-tex="\(X^m-1\)">\(X^m-1\)</span> has distinct complex roots, <span class="math" data-tex="\(A\)">\(A\)</span> is diagonalizable and all its eigenvalues belong to</p>
+<span class="math math-display" data-tex="\[
+K=\mathbb Q(\zeta_m),\qquad \zeta_m=e^{2\pi i/m}.
+\]">\[
+K=\mathbb Q(\zeta_m),\qquad \zeta_m=e^{2\pi i/m}.
+\]</span>
+<p>We need the cyclotomic automorphisms for composite <span class="math" data-tex="\(m\)">\(m\)</span> as well as prime <span class="math" data-tex="\(m\)">\(m\)</span>. Here is the arithmetic argument.</p>
+<p id="lemma-1-1" class="result-link"><strong>Lemma 1.1 (cyclotomic fields).</strong> For every <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, the polynomial</p>
+<span class="math math-display" data-tex="\[
+\Phi_n(X)=\prod_{\substack{1\leq a\leq n\\ \gcd(a,n)=1}}(X-e^{2\pi ia/n})
+\]">\[
+\Phi_n(X)=\prod_{\substack{1\leq a\leq n\\ \gcd(a,n)=1}}(X-e^{2\pi ia/n})
+\]</span>
+<p>belongs to <span class="math" data-tex="\(\mathbb Z[X]\)">\(\mathbb Z[X]\)</span> and is irreducible over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Consequently <span class="math" data-tex="\([\mathbb Q(\zeta_n):\mathbb Q]=\varphi(n)\)">\([\mathbb Q(\zeta_n):\mathbb Q]=\varphi(n)\)</span>, and its automorphisms are exactly</p>
+<span class="math math-display" data-tex="\[
+\sigma_a(\zeta_n)=\zeta_n^a,\qquad a\in(\mathbb Z/n\mathbb Z)^\times.
+\tag{1}
+\]">\[
+\sigma_a(\zeta_n)=\zeta_n^a,\qquad a\in(\mathbb Z/n\mathbb Z)^\times.
+\tag{1}
+\]</span>
+<p>An element fixed by all these automorphisms belongs to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>.</p>
+<p><strong>Proof.</strong> Partitioning roots according to their exact orders gives</p>
+<span class="math math-display" data-tex="\[
+X^n-1=\prod_{d\mid n}\Phi_d(X).
+\tag{2}
+\]">\[
+X^n-1=\prod_{d\mid n}\Phi_d(X).
+\tag{2}
+\]</span>
+<p>Induct on <span class="math" data-tex="\(n\)">\(n\)</span> to prove integrality of the coefficients. The product for proper divisors is a monic integer polynomial. Divide <span class="math" data-tex="\(X^n-1\)">\(X^n-1\)</span> by it using monic polynomial division in <span class="math" data-tex="\(\mathbb Z[X]\)">\(\mathbb Z[X]\)</span>. Equation (2) says that the remainder is zero over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and the quotient is <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span>. The base case is <span class="math" data-tex="\(\Phi_1=X-1\)">\(\Phi_1=X-1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(f\in\mathbb Q[X]\)">\(f\in\mathbb Q[X]\)</span> be the monic irreducible factor of <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span> having <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span> as a root. Put <span class="math" data-tex="\(h=(X^n-1)/f\)">\(h=(X^n-1)/f\)</span>. Both <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> have rational coefficients; their coefficients are elementary symmetric functions of roots of unity and hence algebraic integers. The arithmetic lemma in the integrality lesson makes those coefficients integers.</p>
+<p>Suppose <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a root of <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span> is prime. If <span class="math" data-tex="\(\alpha^p\)">\(\alpha^p\)</span> were not a root of <span class="math" data-tex="\(f\)">\(f\)</span>, it would be a root of <span class="math" data-tex="\(h\)">\(h\)</span>. The minimal polynomial property would then give <span class="math" data-tex="\(f(X)\mid h(X^p)\)">\(f(X)\mid h(X^p)\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and monic division gives an integer quotient. Reduce modulo <span class="math" data-tex="\(p\)">\(p\)</span>. In <span class="math" data-tex="\(\mathbb F_p[X]\)">\(\mathbb F_p[X]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\overline{h(X^p)}=\overline h(X)^p.
+\]">\[
+\overline{h(X^p)}=\overline h(X)^p.
+\]</span>
+<p>Choose an irreducible factor of the nonconstant monic polynomial <span class="math" data-tex="\(\overline f\)">\(\overline f\)</span>. It divides <span class="math" data-tex="\(\overline h\)">\(\overline h\)</span> as well. Thus its square divides <span class="math" data-tex="\(\overline f\,\overline h=X^n-1\)">\(\overline f\,\overline h=X^n-1\)</span>. This is impossible: the derivative <span class="math" data-tex="\(nX^{n-1}\)">\(nX^{n-1}\)</span> is relatively prime to <span class="math" data-tex="\(X^n-1\)">\(X^n-1\)</span> when <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span>. Therefore <span class="math" data-tex="\(\alpha^p\)">\(\alpha^p\)</span> is a root of <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Every positive integer relatively prime to <span class="math" data-tex="\(n\)">\(n\)</span> is a product of primes not dividing <span class="math" data-tex="\(n\)">\(n\)</span>. Repeatedly applying the preceding conclusion shows that every primitive <span class="math" data-tex="\(n\)">\(n\)</span>-th root is a root of <span class="math" data-tex="\(f\)">\(f\)</span>. Hence <span class="math" data-tex="\(f=\Phi_n\)">\(f=\Phi_n\)</span>.</p>
+<p>Sending <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span> to any primitive root now defines a field homomorphism by the presentation <span class="math" data-tex="\(\mathbb Q[X]/(\Phi_n)\)">\(\mathbb Q[X]/(\Phi_n)\)</span>. It is onto: if <span class="math" data-tex="\(ab\equiv1\pmod n\)">\(ab\equiv1\pmod n\)</span>, then <span class="math" data-tex="\((\zeta_n^a)^b=\zeta_n\)">\((\zeta_n^a)^b=\zeta_n\)</span>. Conversely an automorphism preserves the exact order of <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>, so these are all the automorphisms. Their composition corresponds to multiplying <span class="math" data-tex="\(a\)">\(a\)</span>'s.</p>
+<p>For completeness, the fixed-field assertion follows from a trace calculation. Use the basis <span class="math" data-tex="\(1,\zeta_n,\ldots,\zeta_n^{\varphi(n)-1}\)">\(1,\zeta_n,\ldots,\zeta_n^{\varphi(n)-1}\)</span>. The matrix with rows</p>
+<span class="math math-display" data-tex="\[
+(1,\zeta_n^a,\ldots,(\zeta_n^a)^{\varphi(n)-1})
+\]">\[
+(1,\zeta_n^a,\ldots,(\zeta_n^a)^{\varphi(n)-1})
+\]</span>
+<p>is invertible by the Vandermonde determinant. If <span class="math" data-tex="\(M_y\)">\(M_y\)</span> is the rational matrix of multiplication by <span class="math" data-tex="\(y\in\mathbb Q(\zeta_n)\)">\(y\in\mathbb Q(\zeta_n)\)</span>, these rows conjugate <span class="math" data-tex="\(M_y\)">\(M_y\)</span> to the diagonal matrix with entries <span class="math" data-tex="\(\sigma_a(y)\)">\(\sigma_a(y)\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\sum_a\sigma_a(y)=\operatorname{tr}(M_y)\in\mathbb Q.
+\]">\[
+\sum_a\sigma_a(y)=\operatorname{tr}(M_y)\in\mathbb Q.
+\]</span>
+<p>If all the summands equal <span class="math" data-tex="\(y\)">\(y\)</span>, this says <span class="math" data-tex="\(\varphi(n)y\in\mathbb Q\)">\(\varphi(n)y\in\mathbb Q\)</span>, and hence <span class="math" data-tex="\(y\in\mathbb Q\)">\(y\in\mathbb Q\)</span>. The argument includes <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-1-2" class="result-link"><strong>Theorem 1.2 (Galois action on characters).</strong> For any complex character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and any <span class="math" data-tex="\(a\)">\(a\)</span> relatively prime to <span class="math" data-tex="\(m\)">\(m\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sigma_a(\chi(g))=\chi(g^a).
+\tag{3}
+\]">\[
+\sigma_a(\chi(g))=\chi(g^a).
+\tag{3}
+\]</span>
+<p>Applying <span class="math" data-tex="\(\sigma_a\)">\(\sigma_a\)</span> to values permutes the irreducible characters. The same operation preserves actual characters and virtual characters.</p>
+<p><strong>Proof.</strong> If the eigenvalues of <span class="math" data-tex="\(g\)">\(g\)</span> are <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_d\)">\(\lambda_1,\ldots,\lambda_d\)</span>, all are <span class="math" data-tex="\(m\)">\(m\)</span>-th roots of unity. The two sides of (3) are both <span class="math" data-tex="\(\sum_j\lambda_j^a\)">\(\sum_j\lambda_j^a\)</span>.</p>
+<p>To verify irreducibility without assuming that <span class="math" data-tex="\(K\)">\(K\)</span> is a splitting field, use the central idempotents already proved in the group-algebra lesson:</p>
+<span class="math math-display" data-tex="\[
+e_\chi=\frac{\chi(1)}{|G|}\sum_{g\in G}\chi(g^{-1})g
+\qquad(\chi\in\operatorname{Irr}(G)).
+\tag{4}
+\]">\[
+e_\chi=\frac{\chi(1)}{|G|}\sum_{g\in G}\chi(g^{-1})g
+\qquad(\chi\in\operatorname{Irr}(G)).
+\tag{4}
+\]</span>
+<p>All coefficients lie in <span class="math" data-tex="\(K\)">\(K\)</span>. These idempotents form a <span class="math" data-tex="\(K\)">\(K\)</span>-basis of <span class="math" data-tex="\(Z(K[G])\)">\(Z(K[G])\)</span>: they are linearly independent, and the dimension of the centre is the number of conjugacy classes, equal to <span class="math" data-tex="\(|\operatorname{Irr}(G)|\)">\(|\operatorname{Irr}(G)|\)</span>. Their multiplication is <span class="math" data-tex="\(e_\chi e_\psi=\delta_{\chi,\psi}e_\chi\)">\(e_\chi e_\psi=\delta_{\chi,\psi}e_\chi\)</span>. Therefore they are exactly the primitive idempotents of this centre over <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Applying <span class="math" data-tex="\(\sigma_a\)">\(\sigma_a\)</span> to the coefficients is a semilinear algebra automorphism of <span class="math" data-tex="\(K[G]\)">\(K[G]\)</span>. It permutes those primitive central idempotents. Suppose it sends <span class="math" data-tex="\(e_\chi\)">\(e_\chi\)</span> to <span class="math" data-tex="\(e_\psi\)">\(e_\psi\)</span>. The coefficient of the identity in (4) is <span class="math" data-tex="\(\chi(1)^2/|G|\)">\(\chi(1)^2/|G|\)</span>, a positive rational number. It follows that <span class="math" data-tex="\(\chi(1)=\psi(1)\)">\(\chi(1)=\psi(1)\)</span>. Comparing the remaining coefficients now gives <span class="math" data-tex="\(\sigma_a(\chi(g))=\psi(g)\)">\(\sigma_a(\chi(g))=\psi(g)\)</span> for every <span class="math" data-tex="\(g\)">\(g\)</span>. This proves the permutation assertion. Applying it to a sum of irreducibles with nonnegative integer coefficients, or with arbitrary integer coefficients, proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="corollary-1-3" class="result-link"><strong>Corollary 1.3 (generators have equal rational traces).</strong> If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has rational values and <span class="math" data-tex="\(\langle g\rangle=\langle h\rangle\)">\(\langle g\rangle=\langle h\rangle\)</span>, then <span class="math" data-tex="\(\chi(g)=\chi(h)\)">\(\chi(g)=\chi(h)\)</span>. In particular this holds for the character of every rational model, whose values are integers.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(h=g^b\)">\(h=g^b\)</span>, with <span class="math" data-tex="\(b\)">\(b\)</span> relatively prime to the order <span class="math" data-tex="\(d\)">\(d\)</span> of <span class="math" data-tex="\(g\)">\(g\)</span>. Apply the eigenvalue argument of (3) in <span class="math" data-tex="\(\mathbb Q(\zeta_d)\)">\(\mathbb Q(\zeta_d)\)</span>. Its automorphism <span class="math" data-tex="\(\zeta_d\mapsto\zeta_d^b\)">\(\zeta_d\mapsto\zeta_d^b\)</span> fixes the rational number <span class="math" data-tex="\(\chi(g)\)">\(\chi(g)\)</span>.</p>
+<p>For a rational model, each trace is rational because the matrix is rational. It is an algebraic integer by character integrality, and therefore an integer. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Call two elements <strong>rationally conjugate</strong> when the cyclic subgroups they generate are conjugate in <span class="math" data-tex="\(G\)">\(G\)</span>. This is an equivalence relation. Its classes correspond to conjugacy classes of cyclic subgroups, including the trivial subgroup. Corollary 1.3 says that a rational-valued character is constant on these classes.</p>
+<h2 id="2-counting-rational-models-with-fixed-cosets">2. Counting rational models with fixed cosets</h2>
+<p>The character of a rational irreducible need not have complex norm one. Its commuting algebra can have dimension greater than one. Nevertheless distinct rational irreducibles still give independent characters.</p>
+<p id="lemma-2-1" class="result-link"><strong>Lemma 2.1 (intertwiners survive extension of scalars).</strong> For rational models <span class="math" data-tex="\(U,V\)">\(U,V\)</span>, put <span class="math" data-tex="\(U_{\mathbb C}=\mathbb C\otimes_{\mathbb Q}U\)">\(U_{\mathbb C}=\mathbb C\otimes_{\mathbb Q}U\)</span>, and similarly for <span class="math" data-tex="\(V\)">\(V\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\mathbb C\otimes_{\mathbb Q}\operatorname{Hom}_{\mathbb Q[G]}(U,V)
+\ \cong\
+\operatorname{Hom}_{\mathbb C[G]}(U_{\mathbb C},V_{\mathbb C}).
+\tag{5}
+\]">\[
+\mathbb C\otimes_{\mathbb Q}\operatorname{Hom}_{\mathbb Q[G]}(U,V)
+\ \cong\
+\operatorname{Hom}_{\mathbb C[G]}(U_{\mathbb C},V_{\mathbb C}).
+\tag{5}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+\langle\chi_{V_{\mathbb C}},\chi_{U_{\mathbb C}}\rangle_G
+=\dim_{\mathbb Q}\operatorname{Hom}_{\mathbb Q[G]}(U,V).
+\tag{6}
+\]">\[
+\langle\chi_{V_{\mathbb C}},\chi_{U_{\mathbb C}}\rangle_G
+=\dim_{\mathbb Q}\operatorname{Hom}_{\mathbb Q[G]}(U,V).
+\tag{6}
+\]</span>
+<p><strong>Proof.</strong> Choose rational bases. Intertwiners are precisely the solutions of</p>
+<span class="math math-display" data-tex="\[
+T\rho_U(g)-\rho_V(g)T=0\qquad(g\in G),
+\]">\[
+T\rho_U(g)-\rho_V(g)T=0\qquad(g\in G),
+\]</span>
+<p>a finite system of homogeneous linear equations with rational coefficients in the entries of <span class="math" data-tex="\(T\)">\(T\)</span>. Row reduction over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> gives a rational basis of its kernel; the same pivot equations give the complex kernel after extending scalars. This proves (5). Complex character orthogonality and complete reducibility identify the dimension of the complex Hom space with the left side of (6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There are finitely many rational irreducible types. Indeed, for a nonzero vector <span class="math" data-tex="\(v\)">\(v\)</span> in a rational irreducible <span class="math" data-tex="\(S\)">\(S\)</span>, the map <span class="math" data-tex="\(\mathbb Q[G]\to S\)">\(\mathbb Q[G]\to S\)</span>, <span class="math" data-tex="\(a\mapsto av\)">\(a\mapsto av\)</span>, is onto. Maschke's theorem over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> splits it, so <span class="math" data-tex="\(S\)">\(S\)</span> occurs in the rational regular representation.</p>
+<p>Let the distinct rational irreducibles be <span class="math" data-tex="\(S_1,\ldots,S_r\)">\(S_1,\ldots,S_r\)</span>. By Schur's lemma and (6), their complexified characters are orthogonal for different indices, and each has positive squared norm</p>
+<span class="math math-display" data-tex="\[
+\langle\chi_{S_i},\chi_{S_i}\rangle_G
+=\dim_{\mathbb Q}\operatorname{End}_{\mathbb Q[G]}(S_i)\geq1.
+\tag{7}
+\]">\[
+\langle\chi_{S_i},\chi_{S_i}\rangle_G
+=\dim_{\mathbb Q}\operatorname{End}_{\mathbb Q[G]}(S_i)\geq1.
+\tag{7}
+\]</span>
+<p>Here and below <span class="math" data-tex="\(\chi_{S_i}\)">\(\chi_{S_i}\)</span> denotes the complexified character. These <span class="math" data-tex="\(r\)">\(r\)</span> characters are therefore linearly independent.</p>
+<p>For a cyclic subgroup <span class="math" data-tex="\(C\)">\(C\)</span>, the permutation module <span class="math" data-tex="\(\mathbb Q[G/C]\)">\(\mathbb Q[G/C]\)</span> supplies the character</p>
+<span class="math math-display" data-tex="\[
+P_C=\operatorname{Ind}_C^G1_C.
+\]">\[
+P_C=\operatorname{Ind}_C^G1_C.
+\]</span>
+<p>Its value at <span class="math" data-tex="\(g\)">\(g\)</span> is the number of cosets fixed by <span class="math" data-tex="\(g\)">\(g\)</span>, namely</p>
+<span class="math math-display" data-tex="\[
+P_C(g)=\frac1{|C|}
+\bigl|\{x\in G:x^{-1}gx\in C\}\bigr|.
+\tag{8}
+\]">\[
+P_C(g)=\frac1{|C|}
+\bigl|\{x\in G:x^{-1}gx\in C\}\bigr|.
+\tag{8}
+\]</span>
+<p id="theorem-2-2" class="result-link"><strong>Theorem 2.2 (the rational irreducible count).</strong> The number of irreducible rational models, up to isomorphism, is the number of conjugacy classes of cyclic subgroups of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Proof.</strong> Let that latter number be <span class="math" data-tex="\(k\)">\(k\)</span>. The space <span class="math" data-tex="\(F\)">\(F\)</span> of complex-valued functions constant on rational conjugacy classes has dimension <span class="math" data-tex="\(k\)">\(k\)</span>. The <span class="math" data-tex="\(r\)">\(r\)</span> independent characters in (7) belong to <span class="math" data-tex="\(F\)">\(F\)</span>, by Corollary 1.3. Thus <span class="math" data-tex="\(r\leq k\)">\(r\leq k\)</span>.</p>
+<p>Choose representatives <span class="math" data-tex="\(C_1,\ldots,C_k\)">\(C_1,\ldots,C_k\)</span>, ordered by increasing size, and a generator <span class="math" data-tex="\(c_i\)">\(c_i\)</span> of each <span class="math" data-tex="\(C_i\)">\(C_i\)</span>. Consider the <span class="math" data-tex="\(k\times k\)">\(k\times k\)</span> matrix</p>
+<span class="math math-display" data-tex="\[
+M_{ij}=P_{C_j}(c_i).
+\]">\[
+M_{ij}=P_{C_j}(c_i).
+\]</span>
+<p>Equation (8) makes this zero unless <span class="math" data-tex="\(C_i\)">\(C_i\)</span> is conjugate to a subgroup of <span class="math" data-tex="\(C_j\)">\(C_j\)</span>. In particular it is zero when <span class="math" data-tex="\(|C_i|&gt;|C_j|\)">\(|C_i|&gt;|C_j|\)</span>. For distinct representatives of equal size it is also zero, since containment would imply conjugacy. On the diagonal,</p>
+<span class="math math-display" data-tex="\[
+M_{ii}=\frac{|N_G(C_i)|}{|C_i|}&gt;0:
+\]">\[
+M_{ii}=\frac{|N_G(C_i)|}{|C_i|}&gt;0:
+\]</span>
+<p>the condition <span class="math" data-tex="\(x^{-1}c_ix\in C_i\)">\(x^{-1}c_ix\in C_i\)</span> says exactly that <span class="math" data-tex="\(x\)">\(x\)</span> normalizes <span class="math" data-tex="\(C_i\)">\(C_i\)</span>. The matrix is upper triangular with nonzero diagonal. Hence <span class="math" data-tex="\(P_{C_1},\ldots,P_{C_k}\)">\(P_{C_1},\ldots,P_{C_k}\)</span> are linearly independent.</p>
+<p>Each is the character of a rational model. Complete reducibility over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> expresses it as a nonnegative integer combination of <span class="math" data-tex="\(\chi_{S_1},\ldots,\chi_{S_r}\)">\(\chi_{S_1},\ldots,\chi_{S_r}\)</span>. Therefore <span class="math" data-tex="\(k\leq r\)">\(k\leq r\)</span>, proving equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="corollary-2-3" class="result-link"><strong>Corollary 2.3 (a rational permutation basis).</strong> The characters <span class="math" data-tex="\(P_{C_i}\)">\(P_{C_i}\)</span> form a basis of <span class="math" data-tex="\(F\)">\(F\)</span>. Every rational-valued class function constant on rational conjugacy classes is a rational linear combination of them.</p>
+<p><strong>Proof.</strong> They are <span class="math" data-tex="\(k\)">\(k\)</span> independent elements of the <span class="math" data-tex="\(k\)">\(k\)</span>-dimensional space <span class="math" data-tex="\(F\)">\(F\)</span>. For the second assertion, evaluate at the chosen generators. The resulting system has integer matrix <span class="math" data-tex="\(M\)">\(M\)</span> with nonzero determinant and rational right side. Solving it gives rational coefficients. Equality at those generators implies equality everywhere by constancy on rational conjugacy classes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This corollary concerns rational linear combinations. It does not promise a rational model with a specified character in its original dimension.</p>
+<h2 id="3-a-cyclic-function-that-selects-generators">3. A cyclic function that selects generators</h2>
+<p>Define the arithmetic Möbius function by <span class="math" data-tex="\(\mu(1)=1\)">\(\mu(1)=1\)</span>, <span class="math" data-tex="\(\mu(t)=0\)">\(\mu(t)=0\)</span> if a prime square divides <span class="math" data-tex="\(t\)">\(t\)</span>, and <span class="math" data-tex="\(\mu(t)=(-1)^s\)">\(\mu(t)=(-1)^s\)</span> if <span class="math" data-tex="\(t\)">\(t\)</span> is a product of <span class="math" data-tex="\(s\)">\(s\)</span> distinct primes. Expansion of <span class="math" data-tex="\(\prod_{p\mid t}(1-1)\)">\(\prod_{p\mid t}(1-1)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{e\mid t}\mu(e)=
+\begin{cases}1&amp;t=1,\\0&amp;t&gt;1.\end{cases}
+\tag{9}
+\]">\[
+\sum_{e\mid t}\mu(e)=
+\begin{cases}1&amp;t=1,\\0&amp;t&gt;1.\end{cases}
+\tag{9}
+\]</span>
+<p>For <span class="math" data-tex="\(C=\langle c\rangle\)">\(C=\langle c\rangle\)</span> of order <span class="math" data-tex="\(n\)">\(n\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\theta_C(x)=
+\begin{cases}
+n&amp;\langle x\rangle=C,\\
+0&amp;\langle x\rangle\ne C.
+\end{cases}
+\tag{10}
+\]">\[
+\theta_C(x)=
+\begin{cases}
+n&amp;\langle x\rangle=C,\\
+0&amp;\langle x\rangle\ne C.
+\end{cases}
+\tag{10}
+\]</span>
+<p>For <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span> this function is zero at the identity. It cannot be an actual nonzero character. We will need it as a virtual character.</p>
+<p id="lemma-3-1" class="result-link"><strong>Lemma 3.1 (integral generator selector).</strong> Let <span class="math" data-tex="\(C_d\leq C\)">\(C_d\leq C\)</span> have order <span class="math" data-tex="\(d\)">\(d\)</span>, for every <span class="math" data-tex="\(d\mid n\)">\(d\mid n\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\theta_C=\sum_{d\mid n}d\,\mu(n/d)\operatorname{Ind}_{C_d}^C1_{C_d}.
+\tag{11}
+\]">\[
+\theta_C=\sum_{d\mid n}d\,\mu(n/d)\operatorname{Ind}_{C_d}^C1_{C_d}.
+\tag{11}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\theta_C\)">\(\theta_C\)</span> is an integral virtual character, even an integer combination of permutation characters. For <span class="math" data-tex="\(\lambda_j(c)=e^{2\pi ij/n}\)">\(\lambda_j(c)=e^{2\pi ij/n}\)</span>, its coefficient at <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\langle\theta_C,\lambda_j\rangle_C
+=\sum_{d\mid\gcd(n,j)}d\,\mu(n/d).
+\tag{12}
+\]">\[
+\langle\theta_C,\lambda_j\rangle_C
+=\sum_{d\mid\gcd(n,j)}d\,\mu(n/d).
+\tag{12}
+\]</span>
+<p><strong>Proof.</strong> In the abelian group <span class="math" data-tex="\(C\)">\(C\)</span>, every coset of <span class="math" data-tex="\(C_d\)">\(C_d\)</span> is fixed by <span class="math" data-tex="\(x\in C_d\)">\(x\in C_d\)</span>, and none is fixed by <span class="math" data-tex="\(x\notin C_d\)">\(x\notin C_d\)</span>. Thus <span class="math" data-tex="\(\operatorname{Ind}_{C_d}^C1=(n/d)1_{C_d}\)">\(\operatorname{Ind}_{C_d}^C1=(n/d)1_{C_d}\)</span>. If <span class="math" data-tex="\(x\)">\(x\)</span> has order <span class="math" data-tex="\(e\)">\(e\)</span>, the right side of (11) is</p>
+<span class="math math-display" data-tex="\[
+n\sum_{\substack{d\mid n\\e\mid d}}\mu(n/d)
+=n\sum_{t\mid n/e}\mu(t).
+\]">\[
+n\sum_{\substack{d\mid n\\e\mid d}}\mu(n/d)
+=n\sum_{t\mid n/e}\mu(t).
+\]</span>
+<p>Equation (9) makes this <span class="math" data-tex="\(n\)">\(n\)</span> exactly when <span class="math" data-tex="\(e=n\)">\(e=n\)</span>, and zero otherwise. This proves (11) and its integral-character assertion.</p>
+<p>By Frobenius reciprocity, the coefficient of <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> in <span class="math" data-tex="\(\operatorname{Ind}_{C_d}^C1\)">\(\operatorname{Ind}_{C_d}^C1\)</span> is one if its restriction to <span class="math" data-tex="\(C_d\)">\(C_d\)</span> is trivial, and zero otherwise. The restriction is trivial exactly when <span class="math" data-tex="\(d\mid j\)">\(d\mid j\)</span>. Substitution in (11) gives (12). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same coefficient is the Ramanujan sum <span class="math" data-tex="\(\sum_{(a,n)=1}e^{-2\pi iaj/n}\)">\(\sum_{(a,n)=1}e^{-2\pi iaj/n}\)</span>, by taking the inner product directly in (10). Formula (12) proves its integrality without a field-theoretic shortcut.</p>
+<p id="lemma-3-2" class="result-link"><strong>Lemma 3.2 (the induced selectors add to a constant).</strong> Summing over all cyclic subgroups, including the trivial subgroup, gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{\substack{C\leq G\\ C\text{ cyclic}}}
+\operatorname{Ind}_C^G\theta_C=|G|\,1_G.
+\tag{13}
+\]">\[
+\sum_{\substack{C\leq G\\ C\text{ cyclic}}}
+\operatorname{Ind}_C^G\theta_C=|G|\,1_G.
+\tag{13}
+\]</span>
+<p>For a fixed <span class="math" data-tex="\(C\)">\(C\)</span>, the summand takes the value <span class="math" data-tex="\(|N_G(C)|\)">\(|N_G(C)|\)</span> at <span class="math" data-tex="\(g\)">\(g\)</span> if <span class="math" data-tex="\(\langle g\rangle\)">\(\langle g\rangle\)</span> is conjugate to <span class="math" data-tex="\(C\)">\(C\)</span>, and zero otherwise.</p>
+<p><strong>Proof.</strong> The induction formula cancels the factor <span class="math" data-tex="\(|C|\)">\(|C|\)</span> in (10):</p>
+<span class="math math-display" data-tex="\[
+(\operatorname{Ind}_C^G\theta_C)(g)
+=\bigl|\{x\in G:\langle x^{-1}gx\rangle=C\}\bigr|.
+\tag{14}
+\]">\[
+(\operatorname{Ind}_C^G\theta_C)(g)
+=\bigl|\{x\in G:\langle x^{-1}gx\rangle=C\}\bigr|.
+\tag{14}
+\]</span>
+<p>For each <span class="math" data-tex="\(x\)">\(x\)</span>, there is exactly one cyclic subgroup in this condition, namely <span class="math" data-tex="\(\langle x^{-1}gx\rangle\)">\(\langle x^{-1}gx\rangle\)</span>. Summing (14) over <span class="math" data-tex="\(C\)">\(C\)</span> therefore counts each of the <span class="math" data-tex="\(|G|\)">\(|G|\)</span> elements <span class="math" data-tex="\(x\)">\(x\)</span> once. If a particular <span class="math" data-tex="\(C\)">\(C\)</span> occurs, the <span class="math" data-tex="\(x\)">\(x\)</span>'s that carry <span class="math" data-tex="\(\langle g\rangle\)">\(\langle g\rangle\)</span> to <span class="math" data-tex="\(C\)">\(C\)</span> form a coset of its normalizer and have cardinality <span class="math" data-tex="\(|N_G(C)|\)">\(|N_G(C)|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-artin-s-theorem-with-an-explicit-multiplier">4. Artin's theorem with an explicit multiplier</h2>
+<p id="theorem-4-1" class="result-link"><strong>Theorem 4.1 (Artin induction).</strong> For every <span class="math" data-tex="\(\chi\in R(G)\)">\(\chi\in R(G)\)</span>, the virtual character <span class="math" data-tex="\(|G|\chi\)">\(|G|\chi\)</span> is an integer linear combination of</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_C^G\lambda,\qquad
+C\leq G\text{ cyclic},\quad \lambda:C\to\mathbb C^\times\text{ linear}.
+\]">\[
+\operatorname{Ind}_C^G\lambda,\qquad
+C\leq G\text{ cyclic},\quad \lambda:C\to\mathbb C^\times\text{ linear}.
+\]</span>
+<p>Consequently every virtual character is a rational linear combination of these induced characters.</p>
+<p><strong>Proof.</strong> Multiply (13) by <span class="math" data-tex="\(\chi\)">\(\chi\)</span> in the representation ring. The projection formula proved in the induction lesson yields the explicit identity</p>
+<span class="math math-display" data-tex="\[
+|G|\chi=
+\sum_{C\text{ cyclic}}
+\operatorname{Ind}_C^G
+\bigl(\theta_C\,\operatorname{Res}_C^G\chi\bigr).
+\tag{15}
+\]">\[
+|G|\chi=
+\sum_{C\text{ cyclic}}
+\operatorname{Ind}_C^G
+\bigl(\theta_C\,\operatorname{Res}_C^G\chi\bigr).
+\tag{15}
+\]</span>
+<p>By Lemma 3.1, <span class="math" data-tex="\(\theta_C\in R(C)\)">\(\theta_C\in R(C)\)</span>. Restriction and multiplication preserve virtual characters. All complex irreducibles of the abelian group <span class="math" data-tex="\(C\)">\(C\)</span> are linear, so each product inside (15) is an integer linear combination of its linear characters. Expanding those products proves the first assertion. Dividing by the nonzero integer <span class="math" data-tex="\(|G|\)">\(|G|\)</span> proves the second. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument applies to arbitrary complex virtual characters; it imposes no rational-value hypothesis. It also gives a useful identity entirely in terms of permutation characters. Substitute (11) in (13), use induction in stages, and collect terms for the same subgroup <span class="math" data-tex="\(D\)">\(D\)</span>:</p>
+<span class="math math-display" data-tex="\[
+|G|\,1_G=
+\sum_{D\text{ cyclic}}
+|D|\left(\sum_{\substack{C\text{ cyclic}\\D\leq C}}
+\mu([C:D])\right)P_D.
+\tag{16}
+\]">\[
+|G|\,1_G=
+\sum_{D\text{ cyclic}}
+|D|\left(\sum_{\substack{C\text{ cyclic}\\D\leq C}}
+\mu([C:D])\right)P_D.
+\tag{16}
+\]</span>
+<p>Every coefficient in this expression is an integer. Negative coefficients are essential in general.</p>
+<p>There are two distinct rational statements here. Corollary 2.3 uses rational-valued functions and induced <strong>trivial</strong> characters. Theorem 4.1 uses all virtual complex characters and induced <strong>linear</strong> characters, which may have nonrational values.</p>
+<h2 id="5-three-examples-of-the-distinction">5. Three examples of the distinction</h2>
+<h3 id="cyclic-groups-over-mathbb-q">Cyclic groups over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span></h3>
+<p id="proposition-5-1" class="result-link"><strong>Proposition 5.1.</strong> If <span class="math" data-tex="\(C_n=\langle c\rangle\)">\(C_n=\langle c\rangle\)</span>, its irreducible rational models are</p>
+<span class="math math-display" data-tex="\[
+V_d=\mathbb Q[X]/(\Phi_d(X))=\mathbb Q(\zeta_d),
+\qquad d\mid n,
+\tag{17}
+\]">\[
+V_d=\mathbb Q[X]/(\Phi_d(X))=\mathbb Q(\zeta_d),
+\qquad d\mid n,
+\tag{17}
+\]</span>
+<p>where <span class="math" data-tex="\(c\)">\(c\)</span> acts by multiplication by <span class="math" data-tex="\(\zeta_d\)">\(\zeta_d\)</span>. Their dimensions are <span class="math" data-tex="\(\varphi(d)\)">\(\varphi(d)\)</span>. After complexification, <span class="math" data-tex="\(V_d\)">\(V_d\)</span> is the sum of the distinct linear characters that send <span class="math" data-tex="\(c\)">\(c\)</span> to a primitive <span class="math" data-tex="\(d\)">\(d\)</span>-th root.</p>
+<p><strong>Proof.</strong> A rational model of <span class="math" data-tex="\(C_n\)">\(C_n\)</span> is a rational vector space with an operator <span class="math" data-tex="\(T\)">\(T\)</span> satisfying <span class="math" data-tex="\(T^n=I\)">\(T^n=I\)</span>. In an irreducible model, any nonzero <span class="math" data-tex="\(v\)">\(v\)</span> generates under <span class="math" data-tex="\(\mathbb Q[T]\)">\(\mathbb Q[T]\)</span>. It identifies the model with <span class="math" data-tex="\(\mathbb Q[X]/I\)">\(\mathbb Q[X]/I\)</span>, where <span class="math" data-tex="\(I\)">\(I\)</span> is the kernel of <span class="math" data-tex="\(p\mapsto p(T)v\)">\(p\mapsto p(T)v\)</span>. Polynomial division makes <span class="math" data-tex="\(I=(f)\)">\(I=(f)\)</span> for a monic polynomial <span class="math" data-tex="\(f\)">\(f\)</span>. Irreducibility says that this quotient has no proper nonzero submodules, hence <span class="math" data-tex="\(f\)">\(f\)</span> is irreducible: a proper factor would give a proper nonzero ideal in the quotient. Also <span class="math" data-tex="\(f\mid X^n-1\)">\(f\mid X^n-1\)</span>.</p>
+<p>By (2) and Lemma 1.1 the possible <span class="math" data-tex="\(f\)">\(f\)</span>'s are exactly the distinct <span class="math" data-tex="\(\Phi_d\)">\(\Phi_d\)</span>, <span class="math" data-tex="\(d\mid n\)">\(d\mid n\)</span>. Conversely each quotient in (17) is a field, so a subspace stable under <span class="math" data-tex="\(c\)">\(c\)</span> and rational scalars is an ideal in that field. It is zero or the whole field. Different <span class="math" data-tex="\(\Phi_d\)">\(\Phi_d\)</span>'s give different minimal polynomials, hence nonisomorphic models. The dimension is their degree. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, the operator has the distinct roots of <span class="math" data-tex="\(\Phi_d\)">\(\Phi_d\)</span> as eigenvalues, each once, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus <span class="math" data-tex="\(C_p\)">\(C_p\)</span> for prime <span class="math" data-tex="\(p\)">\(p\)</span> has two rational irreducibles, of dimensions <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, although it has <span class="math" data-tex="\(p\)">\(p\)</span> complex irreducibles. The larger rational irreducible has trace <span class="math" data-tex="\(p-1\)">\(p-1\)</span> at the identity and <span class="math" data-tex="\(-1\)">\(-1\)</span> elsewhere.</p>
+<h3 id="the-permutations-of-three-objects">The permutations of three objects</h3>
+<p>The trivial model, the sign model, and the rational plane</p>
+<span class="math math-display" data-tex="\[
+U=\{(x_1,x_2,x_3)\in\mathbb Q^3:x_1+x_2+x_3=0\}
+\]">\[
+U=\{(x_1,x_2,x_3)\in\mathbb Q^3:x_1+x_2+x_3=0\}
+\]</span>
+<p>are irreducible and pairwise nonisomorphic over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. For the plane, its complexification has the irreducible standard character <span class="math" data-tex="\(u\)">\(u\)</span>, so a proper rational submodule would give a proper complex submodule. The three conjugacy classes of cyclic subgroups are represented by <span class="math" data-tex="\(1,C_2,C_3\)">\(1,C_2,C_3\)</span>. Theorem 2.2 now proves completeness.</p>
+<p>Let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> be the nontrivial character of <span class="math" data-tex="\(C_2\)">\(C_2\)</span>, and let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> send a generator of <span class="math" data-tex="\(C_3\)">\(C_3\)</span> to <span class="math" data-tex="\(e^{2\pi i/3}\)">\(e^{2\pi i/3}\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R&amp;=\operatorname{Ind}_1^{S_3}1,&amp;
+P&amp;=\operatorname{Ind}_{C_2}^{S_3}1,&amp;
+Q&amp;=\operatorname{Ind}_{C_2}^{S_3}\varepsilon,\\
+T&amp;=\operatorname{Ind}_{C_3}^{S_3}1,&amp;
+J&amp;=\operatorname{Ind}_{C_3}^{S_3}\omega,&amp;
+J&#x27;&amp;=\operatorname{Ind}_{C_3}^{S_3}\omega^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+R&amp;=\operatorname{Ind}_1^{S_3}1,&amp;
+P&amp;=\operatorname{Ind}_{C_2}^{S_3}1,&amp;
+Q&amp;=\operatorname{Ind}_{C_2}^{S_3}\varepsilon,\\
+T&amp;=\operatorname{Ind}_{C_3}^{S_3}1,&amp;
+J&amp;=\operatorname{Ind}_{C_3}^{S_3}\omega,&amp;
+J&#x27;&amp;=\operatorname{Ind}_{C_3}^{S_3}\omega^2.
+\end{aligned}
+\]</span>
+<p>Frobenius reciprocity, or the induction formula, gives the following values.</p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th style="text-align:right">Identity</th>
+<th style="text-align:right">Transposition</th>
+<th style="text-align:right">Three-cycle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(R=1+\mathrm{sgn}+2u\)">\(R=1+\mathrm{sgn}+2u\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(P=1+u\)">\(P=1+u\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(Q=\mathrm{sgn}+u\)">\(Q=\mathrm{sgn}+u\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(T=1+\mathrm{sgn}\)">\(T=1+\mathrm{sgn}\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(J=J&#x27;=u\)">\(J=J&#x27;=u\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For example, <span class="math" data-tex="\(u|_{C_2}=1+\varepsilon\)">\(u|_{C_2}=1+\varepsilon\)</span> and <span class="math" data-tex="\(u|_{C_3}=\omega+\omega^2\)">\(u|_{C_3}=\omega+\omega^2\)</span>; the trivial and sign characters both restrict trivially to <span class="math" data-tex="\(C_3\)">\(C_3\)</span>. These restrictions and reciprocity prove every decomposition in the table.</p>
+<p>The three subgroups of order two and the single subgroup of order three turn (16) into</p>
+<span class="math math-display" data-tex="\[
+6\,1=-3R+6P+3T.
+\tag{18}
+\]">\[
+6\,1=-3R+6P+3T.
+\tag{18}
+\]</span>
+<p>This also follows by reading each column of the table. For the standard character, (15) gives</p>
+<span class="math math-display" data-tex="\[
+6u=2R-2T+J+J&#x27;.
+\tag{19}
+\]">\[
+6u=2R-2T+J+J&#x27;.
+\tag{19}
+\]</span>
+<p>Indeed, the trivial subgroup contributes <span class="math" data-tex="\(2R\)">\(2R\)</span>. For an order-two subgroup, <span class="math" data-tex="\(\theta=1-\varepsilon\)">\(\theta=1-\varepsilon\)</span>, so <span class="math" data-tex="\(\theta\,u|_{C_2}=(1-\varepsilon)(1+\varepsilon)=0\)">\(\theta\,u|_{C_2}=(1-\varepsilon)(1+\varepsilon)=0\)</span>. For <span class="math" data-tex="\(C_3\)">\(C_3\)</span>, <span class="math" data-tex="\(\theta=2-\omega-\omega^2\)">\(\theta=2-\omega-\omega^2\)</span>; multiplying by <span class="math" data-tex="\(\omega+\omega^2\)">\(\omega+\omega^2\)</span> gives <span class="math" data-tex="\(\omega+\omega^2-2\)">\(\omega+\omega^2-2\)</span>, which induces to the remaining terms of (19).</p>
+<p>Here the multiplier can even be removed:</p>
+<span class="math math-display" data-tex="\[
+u=J,\qquad 1=P-J,\qquad \mathrm{sgn}=Q-J.
+\]">\[
+u=J,\qquad 1=P-J,\qquad \mathrm{sgn}=Q-J.
+\]</span>
+<p>The universal multiplier <span class="math" data-tex="\(|G|\)">\(|G|\)</span> in Artin's theorem need not be minimal.</p>
+<h3 id="the-quaternion-group">The quaternion group</h3>
+<p>For <span class="math" data-tex="\(Q_8=\{\pm1,\pm i,\pm j,\pm k\}\)">\(Q_8=\{\pm1,\pm i,\pm j,\pm k\}\)</span>, the degree-two complex irreducible <span class="math" data-tex="\(\psi\)">\(\psi\)</span> has values</p>
+<span class="math math-display" data-tex="\[
+\psi(1)=2,\qquad \psi(-1)=-2,\qquad
+\psi(\pm i)=\psi(\pm j)=\psi(\pm k)=0.
+\]">\[
+\psi(1)=2,\qquad \psi(-1)=-2,\qquad
+\psi(\pm i)=\psi(\pm j)=\psi(\pm k)=0.
+\]</span>
+<p>Its values are integers. Its Frobenius–Schur indicator is nevertheless</p>
+<span class="math math-display" data-tex="\[
+\nu(\psi)=\frac{2\psi(1)+6\psi(-1)}8=-1,
+\]">\[
+\nu(\psi)=\frac{2\psi(1)+6\psi(-1)}8=-1,
+\]</span>
+<p>because the six order-four elements square to <span class="math" data-tex="\(-1\)">\(-1\)</span>. The real-form theorem proves that <span class="math" data-tex="\(\psi\)">\(\psi\)</span> has no real model, and hence no rational model.</p>
+<p>There is a rational model of character <span class="math" data-tex="\(2\psi\)">\(2\psi\)</span>. Take the four-dimensional rational quaternion algebra</p>
+<span class="math math-display" data-tex="\[
+\mathbb H_{\mathbb Q}
+=\mathbb Q\,1\oplus\mathbb Q\,i\oplus\mathbb Q\,j\oplus\mathbb Q\,k
+\]">\[
+\mathbb H_{\mathbb Q}
+=\mathbb Q\,1\oplus\mathbb Q\,i\oplus\mathbb Q\,j\oplus\mathbb Q\,k
+\]</span>
+<p>and let <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span> act by left multiplication. A nonzero quaternion <span class="math" data-tex="\(q=a+bi+cj+dk\)">\(q=a+bi+cj+dk\)</span> has inverse</p>
+<span class="math math-display" data-tex="\[
+q^{-1}=\frac{a-bi-cj-dk}{a^2+b^2+c^2+d^2}.
+\]">\[
+q^{-1}=\frac{a-bi-cj-dk}{a^2+b^2+c^2+d^2}.
+\]</span>
+<p>The denominator is positive for rational <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span> not all zero. An invariant rational subspace is stable under all rational linear combinations of <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>, so it is a left ideal of this division algebra. Any such ideal containing a nonzero <span class="math" data-tex="\(q\)">\(q\)</span> also contains <span class="math" data-tex="\(q^{-1}q=1\)">\(q^{-1}q=1\)</span>, and is the whole algebra. The model is therefore rationally irreducible. Left multiplication has traces <span class="math" data-tex="\(4,-4,0,0,0\)">\(4,-4,0,0,0\)</span> on the five complex conjugacy classes, giving <span class="math" data-tex="\(2\psi\)">\(2\psi\)</span>.</p>
+<p>There are five cyclic subgroups up to conjugacy: <span class="math" data-tex="\(1,\{\pm1\},\langle i\rangle,\langle j\rangle,\langle k\rangle\)">\(1,\{\pm1\},\langle i\rangle,\langle j\rangle,\langle k\rangle\)</span>. The four rational linear characters and this four-dimensional model are consequently all the rational irreducibles. Its complex squared norm is <span class="math" data-tex="\(4\)">\(4\)</span>, in agreement with (7). A full theory of Schur indices and central division algebras goes beyond this lesson; the concrete obstruction and its rational replacement are proved here.</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> Show that every character of <span class="math" data-tex="\(S_n\)">\(S_n\)</span> is rational-valued. Deduce integer values for virtual characters. Explain why this argument alone does not construct rational matrices.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(a\)">\(a\)</span> is relatively prime to the exponent of <span class="math" data-tex="\(S_n\)">\(S_n\)</span>, it is relatively prime to every cycle length of a permutation <span class="math" data-tex="\(g\)">\(g\)</span>. Taking the <span class="math" data-tex="\(a\)">\(a\)</span>-th power of a cycle of length <span class="math" data-tex="\(d\)">\(d\)</span> leaves it a single cycle of length <span class="math" data-tex="\(d\)">\(d\)</span>: addition by <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(\mathbb Z/d\mathbb Z\)">\(\mathbb Z/d\mathbb Z\)</span> has one orbit. Thus <span class="math" data-tex="\(g^a\)">\(g^a\)</span> has the same cycle type as <span class="math" data-tex="\(g\)">\(g\)</span> and is conjugate to it. Theorem 1.2 gives <span class="math" data-tex="\(\sigma_a(\chi(g))=\chi(g^a)=\chi(g)\)">\(\sigma_a(\chi(g))=\chi(g^a)=\chi(g)\)</span> for every cyclotomic automorphism. Lemma 1.1 makes <span class="math" data-tex="\(\chi(g)\)">\(\chi(g)\)</span> rational. Character integrality makes it an integer, and integer combinations preserve this property.</p>
+<p>This determines traces. It gives no descent of a complex vector space or its matrices to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The quaternion example shows why a trace argument cannot supply that conclusion for general groups. Rational models for the irreducibles of <span class="math" data-tex="\(S_n\)">\(S_n\)</span> will be constructed in the lesson on Young symmetrizers. The cases <span class="math" data-tex="\(n=0,1\)">\(n=0,1\)</span> are the trivial group and satisfy the same conclusion directly.</p>
+<p><strong>Exercise 2.</strong> For a cyclic group of arbitrary order, prove that the generator selector is an integral virtual character and that its induced selectors sum to <span class="math" data-tex="\(|G|1_G\)">\(|G|1_G\)</span>. Then compute its full expansion for <span class="math" data-tex="\(C_{12}=\langle c\rangle\)">\(C_{12}=\langle c\rangle\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(C\)">\(C\)</span> has order <span class="math" data-tex="\(n\)">\(n\)</span>, its permutation character from the subgroup of order <span class="math" data-tex="\(d\)">\(d\)</span> is <span class="math" data-tex="\((n/d)1_{C_d}\)">\((n/d)1_{C_d}\)</span>. At an element of order <span class="math" data-tex="\(e\)">\(e\)</span>, the combination</p>
+<span class="math math-display" data-tex="\[
+\sum_{d\mid n}d\mu(n/d)\operatorname{Ind}_{C_d}^C1
+\]">\[
+\sum_{d\mid n}d\mu(n/d)\operatorname{Ind}_{C_d}^C1
+\]</span>
+<p>has value <span class="math" data-tex="\(n\sum_{t\mid n/e}\mu(t)\)">\(n\sum_{t\mid n/e}\mu(t)\)</span>, equal to <span class="math" data-tex="\(n\)">\(n\)</span> if <span class="math" data-tex="\(e=n\)">\(e=n\)</span> and zero otherwise. This proves the claimed selector formula with integer coefficients, hence integrality as a virtual character. Its linear-character coefficient is <span class="math" data-tex="\(\sum_{d\mid\gcd(n,j)}d\mu(n/d)\)">\(\sum_{d\mid\gcd(n,j)}d\mu(n/d)\)</span>, since <span class="math" data-tex="\(\lambda_j|_{C_d}\)">\(\lambda_j|_{C_d}\)</span> is trivial exactly when <span class="math" data-tex="\(d\mid j\)">\(d\mid j\)</span>.</p>
+<p>After induction to <span class="math" data-tex="\(G\)">\(G\)</span>, the value at <span class="math" data-tex="\(g\)">\(g\)</span> counts <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span> for which <span class="math" data-tex="\(x^{-1}gx\)">\(x^{-1}gx\)</span> generates the chosen cyclic subgroup. Each <span class="math" data-tex="\(x\)">\(x\)</span> chooses exactly one subgroup, so summing counts <span class="math" data-tex="\(|G|\)">\(|G|\)</span> elements, for every <span class="math" data-tex="\(g\)">\(g\)</span>. This proves the required constant identity, including <span class="math" data-tex="\(g=1\)">\(g=1\)</span> and <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+<p>For <span class="math" data-tex="\(n=12\)">\(n=12\)</span>, the only nonzero terms in (12) come from <span class="math" data-tex="\(d=2,4,6,12\)">\(d=2,4,6,12\)</span>. Thus the coefficient at <span class="math" data-tex="\(\lambda_j(c)=e^{2\pi ij/12}\)">\(\lambda_j(c)=e^{2\pi ij/12}\)</span> is</p>
+<span class="math math-display" data-tex="\[
+2\,1_{2\mid j}-4\,1_{4\mid j}
+-6\,1_{6\mid j}+12\,1_{12\mid j}.
+\]">\[
+2\,1_{2\mid j}-4\,1_{4\mid j}
+-6\,1_{6\mid j}+12\,1_{12\mid j}.
+\]</span>
+<p>The full expansion is</p>
+<span class="math math-display" data-tex="\[
+\theta_{C_{12}}
+=4\lambda_0+2\lambda_2-2\lambda_4
+-4\lambda_6-2\lambda_8+2\lambda_{10},
+\]">\[
+\theta_{C_{12}}
+=4\lambda_0+2\lambda_2-2\lambda_4
+-4\lambda_6-2\lambda_8+2\lambda_{10},
+\]</span>
+<p>with zero coefficients at all odd indices. It has degree <span class="math" data-tex="\(4+2-2-4-2+2=0\)">\(4+2-2-4-2+2=0\)</span>, as required, and value <span class="math" data-tex="\(12\)">\(12\)</span> precisely at <span class="math" data-tex="\(c,c^5,c^7,c^{11}\)">\(c,c^5,c^7,c^{11}\)</span>.</p>
+<p><strong>Exercise 3.</strong> Determine all irreducible rational models of <span class="math" data-tex="\(C_{12}\)">\(C_{12}\)</span>, with dimensions and a rational matrix for its generator in the four-dimensional model.</p>
+<p><strong>Solution.</strong> Proposition 5.1 gives one model for each divisor <span class="math" data-tex="\(d\)">\(d\)</span> of <span class="math" data-tex="\(12\)">\(12\)</span>. The complete list is:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(d\)">\(d\)</span></th>
+<th>Minimal polynomial of the generator</th>
+<th style="text-align:right">Dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(X-1\)">\(X-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\(X+1\)">\(X+1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(X^2+X+1\)">\(X^2+X+1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td><span class="math" data-tex="\(X^2+1\)">\(X^2+1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td><span class="math" data-tex="\(X^2-X+1\)">\(X^2-X+1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(12\)">\(12\)</span></td>
+<td><span class="math" data-tex="\(X^4-X^2+1\)">\(X^4-X^2+1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These polynomials follow successively from (2), or by multiplying the displayed factors to obtain <span class="math" data-tex="\(X^{12}-1\)">\(X^{12}-1\)</span>. Their irreducibility follows from Lemma 1.1. Distinct minimal polynomials distinguish the models, and the cyclic-module argument in Proposition 5.1 proves completeness.</p>
+<p>On the basis <span class="math" data-tex="\(1,\zeta_{12},\zeta_{12}^2,\zeta_{12}^3\)">\(1,\zeta_{12},\zeta_{12}^2,\zeta_{12}^3\)</span>, multiplication by <span class="math" data-tex="\(\zeta_{12}\)">\(\zeta_{12}\)</span> has matrix</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+0&amp;0&amp;0&amp;-1\\
+1&amp;0&amp;0&amp;0\\
+0&amp;1&amp;0&amp;1\\
+0&amp;0&amp;1&amp;0
+\end{pmatrix}.
+\]">\[
+\begin{pmatrix}
+0&amp;0&amp;0&amp;-1\\
+1&amp;0&amp;0&amp;0\\
+0&amp;1&amp;0&amp;1\\
+0&amp;0&amp;1&amp;0
+\end{pmatrix}.
+\]</span>
+<p>The last column uses <span class="math" data-tex="\(\zeta_{12}^4=\zeta_{12}^2-1\)">\(\zeta_{12}^4=\zeta_{12}^2-1\)</span>. The matrix satisfies <span class="math" data-tex="\(\Phi_{12}(T)=0\)">\(\Phi_{12}(T)=0\)</span> and <span class="math" data-tex="\(T^{12}=I\)">\(T^{12}=I\)</span>. After complexification its eigenvalues are <span class="math" data-tex="\(\zeta_{12},\zeta_{12}^5,\zeta_{12}^7,\zeta_{12}^{11}\)">\(\zeta_{12},\zeta_{12}^5,\zeta_{12}^7,\zeta_{12}^{11}\)</span>. The six dimensions sum to <span class="math" data-tex="\(12\)">\(12\)</span>. Each field quotient occurs once in the rational regular representation: its complexification contains each linear character once, and the six sets of eigencharacters partition those twelve characters.</p>
+<p><strong>Exercise 4.</strong> Prove the rational irreducible count for an arbitrary finite group using intertwiners and fixed cosets. Explain explicitly why replacing rational irreducibles by rational-valued complex irreducibles would invalidate the argument.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be the number of conjugacy classes of cyclic subgroups. Rational model characters are constant on the corresponding <span class="math" data-tex="\(k\)">\(k\)</span> rational conjugacy classes, by applying cyclotomic automorphisms to their rational traces. For distinct rational irreducibles <span class="math" data-tex="\(S,T\)">\(S,T\)</span>, Schur's lemma gives <span class="math" data-tex="\(\operatorname{Hom}_{\mathbb Q[G]}(S,T)=0\)">\(\operatorname{Hom}_{\mathbb Q[G]}(S,T)=0\)</span>; the self-Hom space contains the identity. The equations defining Hom are rational linear equations, so extending scalars preserves their dimensions. Complex character theory therefore makes the distinct rational irreducible characters orthogonal with positive self-norms. They are independent, so their number <span class="math" data-tex="\(r\)">\(r\)</span> is at most <span class="math" data-tex="\(k\)">\(k\)</span>. All these types occur in the rational regular representation by the surjection <span class="math" data-tex="\(a\mapsto av\)">\(a\mapsto av\)</span> and Maschke's theorem, so the list is finite.</p>
+<p>For the reverse inequality choose one cyclic subgroup <span class="math" data-tex="\(C\)">\(C\)</span> from each conjugacy class. The rational permutation character <span class="math" data-tex="\(P_C\)">\(P_C\)</span> counts fixed cosets. Evaluate these <span class="math" data-tex="\(k\)">\(k\)</span> characters at generators of the chosen subgroups <span class="math" data-tex="\(D\)">\(D\)</span>, ordering by size. A value can be nonzero only if <span class="math" data-tex="\(D\)">\(D\)</span> is conjugate into <span class="math" data-tex="\(C\)">\(C\)</span>. Equal sizes force the two representatives to coincide. The diagonal entry is <span class="math" data-tex="\(|N_G(C)|/|C|&gt;0\)">\(|N_G(C)|/|C|&gt;0\)</span>. This triangular matrix is invertible, so the <span class="math" data-tex="\(k\)">\(k\)</span> permutation characters are independent. Complete reducibility over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> puts them in the span of the <span class="math" data-tex="\(r\)">\(r\)</span> rational irreducible characters. Thus <span class="math" data-tex="\(k\leq r\)">\(k\leq r\)</span> and <span class="math" data-tex="\(r=k\)">\(r=k\)</span>.</p>
+<p>The crucial second step decomposes rational permutation modules into rational irreducibles. A rational-valued complex irreducible need not be one of these models. For <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>, the rational-valued character <span class="math" data-tex="\(\psi\)">\(\psi\)</span> has no rational model; the corresponding rational irreducible has character <span class="math" data-tex="\(2\psi\)">\(2\psi\)</span>. Its positive self-norm is <span class="math" data-tex="\(4\)">\(4\)</span>, rather than <span class="math" data-tex="\(1\)">\(1\)</span>. The proof uses independence and positivity, and never replaces that norm by <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="7-earlier-results-used-without-proof">7. Earlier results used without proof</h2>
+<p>Complete reducibility over every characteristic-zero field and Schur's lemma are Theorems 2.3 and 3.1 of <em>Representations and complete reducibility</em>. Character multiplicities, the character basis and the inner-product description of Hom are proved in §§2–4 of <em>Characters and the orthogonality relations</em>. The primitive central idempotent formula is Theorem 3.1 of <em>The group algebra and Fourier analysis on a finite group</em>. The Frobenius–Schur real-form criterion is Theorem 3.1 of <em>Tensor products, duals and real representations</em>.</p>
+<p>We use the algebraic-integer ring properties and rational-integral criterion of Lemma 1.1, and character-value integrality of Proposition 2.1, in <em>Integrality of characters and Burnside's <span class="math" data-tex="\(p^a q^b\)">\(p^a q^b\)</span> theorem</em>. The induction formula, Frobenius reciprocity, induction in stages and the projection formula are proved in §§1–4 of <em>Induced representations and Frobenius reciprocity</em>. Polynomial division, row reduction, and the Vandermonde determinant are basic linear algebra and polynomial algebra. All further field and rational-representation assertions needed here have been proved above.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>K. Igusa</strong>, <a href="https://people.brandeis.edu/~igusa/Math101bS07/Math101b_notesD3c.pdf"><em>Algebra II, Part D: Representations of Groups</em></a>, §3.3, Theorem 3.18 and its proof, for induction from subgroup families meeting every conjugacy class.</li>
+<li><strong>C. Gruson and V. Serganova</strong>, <em>A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras</em>, Universitext, Springer, 2018, Chapter 2 §§11–12, for extension of scalars, rational models and Artin induction.</li>
+</ul>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

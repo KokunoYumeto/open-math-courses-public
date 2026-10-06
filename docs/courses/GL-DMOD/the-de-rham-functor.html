@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The de Rham functor · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/the-de-rham-functor.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>The de Rham functor</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-de-rham-functor">The de Rham functor</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A connection gives a differential on forms with coefficients. Its horizontal sections are the first part of that complex, but a singular differential system can also contribute higher cohomology. The de Rham functor retains the whole complex. We compute it at a puncture, prove its compatibility with proper direct images, and distinguish the information retained by ordinary sheaves from the information lost at an irregular boundary.</p>
+<p>Our algebraic varieties are smooth and separated, with pure dimension <span class="math" data-tex="$d_X$">$d_X$</span>, over a field of characteristic zero. Analytic assertions use <span class="math" data-tex="$k=\mathbb C$">$k=\mathbb C$</span>. Modules are left <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>-modules, quasi-coherent over <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>. Write <span class="math" data-tex="$\mathbb D_X$">$\mathbb D_X$</span> for D-module duality and <span class="math" data-tex="$\mathbf D_X$">$\mathbf D_X$</span> for Verdier duality on <span class="math" data-tex="$X^{an}$">$X^{an}$</span>. The map operations have the conventions of <a href="adjunctions-base-change-and-the-projection-formula.html">Adjunctions, base change and the projection formula</a>; their preservation of holonomicity was proved in <a href="preservation-of-holonomicity-and-minimal-extensions.html">Preservation of holonomicity and minimal extensions</a>. Cohomological shifts satisfy <span class="math" data-tex="$\mathcal H^q(K[r])=\mathcal H^{q+r}(K)$">$\mathcal H^q(K[r])=\mathcal H^{q+r}(K)$</span>.</p>
+<h2 id="1-two-de-rham-complexes-and-one-normalization">1. Two de Rham complexes and one normalization</h2>
+<p>For a module <span class="math" data-tex="$M$">$M$</span>, its unshifted algebraic complex is
+<span class="math math-display" data-tex="\[
+\operatorname{DR}^0_{alg,X}(M)=
+\bigl[M\xrightarrow{\nabla}\Omega_X^1\otimes M
+\longrightarrow\cdots\longrightarrow\Omega_X^{d_X}\otimes M\bigr],
+\tag{1.1}
+\]">\[
+\operatorname{DR}^0_{alg,X}(M)=
+\bigl[M\xrightarrow{\nabla}\Omega_X^1\otimes M
+\longrightarrow\cdots\longrightarrow\Omega_X^{d_X}\otimes M\bigr],
+\tag{1.1}
+\]</span>
+in degrees <span class="math" data-tex="$0,\ldots,d_X$">$0,\ldots,d_X$</span>. Tensor products here are over <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>. For a local form <span class="math" data-tex="$\alpha$">$\alpha$</span>,
+<span class="math math-display" data-tex="\[
+d_M(\alpha\otimes m)
+=d\alpha\otimes m+\sum_a dx_a\wedge\alpha\otimes\partial_a m.
+\tag{1.2}
+\]">\[
+d_M(\alpha\otimes m)
+=d\alpha\otimes m+\sum_a dx_a\wedge\alpha\otimes\partial_a m.
+\tag{1.2}
+\]</span>
+The Leibniz rule makes this well defined, and commuting coordinate derivatives give <span class="math" data-tex="$d_M^2=0$">$d_M^2=0$</span>. The intrinsic connection formula shows independence of coordinates. These differentials are <span class="math" data-tex="$k$">$k$</span>-linear, usually not <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>-linear. Thus the complex is a complex of sheaves of <span class="math" data-tex="$k$">$k$</span>-vector spaces.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_{alg,X}(M)=\operatorname{DR}^0_{alg,X}(M)[d_X].
+\tag{1.3}
+\]">\[
+\operatorname{DR}_{alg,X}(M)=\operatorname{DR}^0_{alg,X}(M)[d_X].
+\tag{1.3}
+\]</span>
+For a bounded complex, take its total complex with the usual Koszul signs. Analytification is
+<span class="math math-display" data-tex="\[
+M^{an}=\mathcal D_{X^{an}}\otimes_{\iota^{-1}\mathcal D_X}\iota^{-1}M
+\simeq \mathcal O_{X^{an}}\otimes_{\iota^{-1}\mathcal O_X}\iota^{-1}M.
+\tag{1.4}
+\]">\[
+M^{an}=\mathcal D_{X^{an}}\otimes_{\iota^{-1}\mathcal D_X}\iota^{-1}M
+\simeq \mathcal O_{X^{an}}\otimes_{\iota^{-1}\mathcal O_X}\iota^{-1}M.
+\tag{1.4}
+\]</span>
+It is exact: the analytic local rings are flat over the algebraic local rings, and the order filtration identifies the two descriptions. The <em>analytic</em> de Rham functor used below is
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_X(M)
+=\operatorname{DR}^0_{X^{an}}(M^{an})[d_X].
+\tag{1.5}
+\]">\[
+\operatorname{DR}_X(M)
+=\operatorname{DR}^0_{X^{an}}(M^{an})[d_X].
+\tag{1.5}
+\]</span>
+It takes values in complexes of sheaves of <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>-vector spaces on the analytic topology.</p>
+<p><strong>Proposition 1.1.</strong> In either setting, with <span class="math" data-tex="$\omega_X$">$\omega_X$</span> carrying its canonical right D-action,
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_{alg,X}(M)\simeq
+\omega_X\otimes_{\mathcal D_X}^{L}M.
+\tag{1.6}
+\]">\[
+\operatorname{DR}_{alg,X}(M)\simeq
+\omega_X\otimes_{\mathcal D_X}^{L}M.
+\tag{1.6}
+\]</span>
+The analogous formula holds analytically.</p>
+<p><strong>Proof.</strong> The right Spencer complex has terms <span class="math" data-tex="$\Omega_X^p\otimes_{\mathcal O_X}\mathcal D_X$">$\Omega_X^p\otimes_{\mathcal O_X}\mathcal D_X$</span> in degree <span class="math" data-tex="$p-d_X$">$p-d_X$</span>, and augments to <span class="math" data-tex="$\omega_X$">$\omega_X$</span> by its right action. In coordinates its differential is <span class="math" data-tex="$(-1)^{d_X}$">$(-1)^{d_X}$</span> times the expression (1.2), with <span class="math" data-tex="$m$">$m$</span> replaced by <span class="math" data-tex="$P\in\mathcal D_X$">$P\in\mathcal D_X$</span>. This common sign fixes the shift convention in (1.3). It is right D-linear; for instance differentiating a coefficient moved between the two tensor factors gives the same Leibniz term.</p>
+<p>Filter its degree-<span class="math" data-tex="$p$">$p$</span> term by operators of order at most <span class="math" data-tex="$a+p$">$a+p$</span>. The associated graded differential is exterior multiplication by <span class="math" data-tex="$\sum dx_a\,\xi_a$">$\sum dx_a\,\xi_a$</span>. This is the cochain Koszul complex for the regular sequence <span class="math" data-tex="$\xi_1,\ldots,\xi_{d_X}$">$\xi_1,\ldots,\xi_{d_X}$</span> in <span class="math" data-tex="$\operatorname{Sym}T_X$">$\operatorname{Sym}T_X$</span>. Its only augmented cohomology is the top exterior form with all <span class="math" data-tex="$\xi_a$">$\xi_a$</span> set to zero. Exactness of the filtered complex follows by successively lowering the finite order of a representative; its filtration is bounded below in each term. Its terms are locally free right D-modules. Tensoring this resolution with <span class="math" data-tex="$M$">$M$</span> gives exactly (1.1) with shift (1.3). The same symbol calculation works for holomorphic coefficients. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We normalize the contravariant solution functor as
+<span class="math math-display" data-tex="\[
+\operatorname{Sol}_X(M)=
+R\mathcal Hom_{\mathcal D_{X^{an}}}(M^{an},\mathcal O_{X^{an}})[d_X].
+\tag{1.7}
+\]">\[
+\operatorname{Sol}_X(M)=
+R\mathcal Hom_{\mathcal D_{X^{an}}}(M^{an},\mathcal O_{X^{an}})[d_X].
+\tag{1.7}
+\]</span>
+For bounded D-coherent complexes,
+<span class="math math-display" data-tex="\[
+\operatorname{Sol}_X(M)\simeq\operatorname{DR}_X(\mathbb D_XM).
+\tag{1.8}
+\]">\[
+\operatorname{Sol}_X(M)\simeq\operatorname{DR}_X(\mathbb D_XM).
+\tag{1.8}
+\]</span>
+Here is the algebra behind the identity. Locally resolve <span class="math" data-tex="$M$">$M$</span> by a bounded finite projective D-complex <span class="math" data-tex="$P$">$P$</span>. Put <span class="math" data-tex="$Q=\mathcal Hom_{\mathcal D}(P,\mathcal D)$">$Q=\mathcal Hom_{\mathcal D}(P,\mathcal D)$</span>, a right D-complex. Duality is the left side change of <span class="math" data-tex="$Q[d_X]$">$Q[d_X]$</span>. The side-change identity
+<span class="math math-display" data-tex="\[
+\omega_X\otimes_{\mathcal D}^{L}
+(\omega_X^{-1}\otimes_{\mathcal O} Q)
+\simeq Q\otimes_{\mathcal D}^{L}\mathcal O_X
+\]">\[
+\omega_X\otimes_{\mathcal D}^{L}
+(\omega_X^{-1}\otimes_{\mathcal O} Q)
+\simeq Q\otimes_{\mathcal D}^{L}\mathcal O_X
+\]</span>
+is checked using the negative Lie-derivative action on <span class="math" data-tex="$\omega_X$">$\omega_X$</span>. Since <span class="math" data-tex="$P$">$P$</span> is finite projective, the last tensor is <span class="math" data-tex="$\mathcal Hom_{\mathcal D}(P,\mathcal O_X)$">$\mathcal Hom_{\mathcal D}(P,\mathcal O_X)$</span>. This proves (1.8), including its shift. Finite projective resolutions and coherent biduality are the prerequisites established in <em>Holonomic D-modules and duality</em>. Flat analytification commutes with this calculation.</p>
+<p><strong>Proposition 1.2, holomorphic Poincaré lemma.</strong>
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_X(\mathcal O_X)=\mathbb C_{X^{an}}[d_X].
+\tag{1.9}
+\]">\[
+\operatorname{DR}_X(\mathcal O_X)=\mathbb C_{X^{an}}[d_X].
+\tag{1.9}
+\]</span>
+More generally, for a finite flat bundle <span class="math" data-tex="$E$">$E$</span> with horizontal local system <span class="math" data-tex="$L$">$L$</span>, <span class="math" data-tex="$\operatorname{DR}_X(E)=L[d_X]$">$\operatorname{DR}_X(E)=L[d_X]$</span>.</p>
+<p><strong>Proof.</strong> Work in a star-shaped coordinate polydisc centered at zero. For a holomorphic <span class="math" data-tex="$p$">$p$</span>-form with <span class="math" data-tex="$p&gt;0$">$p&gt;0$</span>, define
+<span class="math math-display" data-tex="\[
+(H\alpha)_z(v_1,\ldots,v_{p-1})
+=\int_0^1 t^{p-1}\alpha_{tz}(z,v_1,\ldots,v_{p-1})\,dt.
+\tag{1.10}
+\]">\[
+(H\alpha)_z(v_1,\ldots,v_{p-1})
+=\int_0^1 t^{p-1}\alpha_{tz}(z,v_1,\ldots,v_{p-1})\,dt.
+\tag{1.10}
+\]</span>
+Differentiation under the integral, or the identity for dilation and contraction by the radial vector field, gives <span class="math" data-tex="$dH+Hd=1$">$dH+Hd=1$</span> in positive degree. In degree zero it gives <span class="math" data-tex="$Hd(f)=f-f(0)$">$Hd(f)=f-f(0)$</span>. The integral is holomorphic, as follows either from uniformly convergent power series on smaller polydiscs or differentiation under the integral. Hence the only cohomology sheaf of the unshifted complex is the constant sheaf in degree zero. A flat bundle has a horizontal analytic frame by the local flat-connection theorem proved in <em>D-modules, flat connections and local systems</em>. In that frame its differential is <span class="math" data-tex="$d\otimes1_L$">$d\otimes1_L$</span>, so the same homotopy proves the assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="2-calculations-at-an-ordinary-puncture">2. Calculations at an ordinary puncture</h2>
+<p>Write <span class="math" data-tex="$A=\mathbb C\langle x,\partial\rangle$">$A=\mathbb C\langle x,\partial\rangle$</span>, <span class="math" data-tex="$\theta=x\partial$">$\theta=x\partial$</span>, and let <span class="math" data-tex="$j:\mathbb C^*\hookrightarrow\mathbb C$">$j:\mathbb C^*\hookrightarrow\mathbb C$</span>. On the line the normalized de Rham complex is <span class="math" data-tex="$[M\xrightarrow{\partial}M\,dx][1]$">$[M\xrightarrow{\partial}M\,dx][1]$</span>, with terms in degrees <span class="math" data-tex="$-1,0$">$-1,0$</span>.</p>
+<p>The point module <span class="math" data-tex="$\delta_0=A/Ax$">$\delta_0=A/Ax$</span> has basis <span class="math" data-tex="$1,\partial,\partial^2,\ldots$">$1,\partial,\partial^2,\ldots$</span>. Its analytic sheaf is supported at zero, where this basis still describes its finite normal derivatives. Multiplication by <span class="math" data-tex="$\partial$">$\partial$</span> is injective and has one-dimensional cokernel. Therefore
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_{\mathbb A^1}(\delta_0)=\mathbb C_0,
+\tag{2.1}
+\]">\[
+\operatorname{DR}_{\mathbb A^1}(\delta_0)=\mathbb C_0,
+\tag{2.1}
+\]</span>
+with no extra shift.</p>
+<p>The algebraic direct image <span class="math" data-tex="$j_*\mathcal O_{\mathbb G_m}$">$j_*\mathcal O_{\mathbb G_m}$</span> is the Laurent module <span class="math" data-tex="$L=\mathbb C[x,x^{-1}]$">$L=\mathbb C[x,x^{-1}]$</span> with ordinary differentiation. Its analytification near zero is <span class="math" data-tex="$\mathcal O^{an}(*0)$">$\mathcal O^{an}(*0)$</span>, consisting of holomorphic germs with a finite-order pole. If <span class="math" data-tex="$g=\sum_{n\ge-N}a_nx^n$">$g=\sum_{n\ge-N}a_nx^n$</span>, differentiation kills precisely the constants; a meromorphic one-form has a meromorphic primitive precisely when its residue is zero. Dividing its other Laurent coefficients by <span class="math" data-tex="$n+1$">$n+1$</span> preserves convergence and finite pole order. Thus its stalk de Rham cohomology is <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> in degrees <span class="math" data-tex="$-1$">$-1$</span> and <span class="math" data-tex="$0$">$0$</span>.</p>
+<p>Restriction followed by the Poincaré quasi-isomorphism defines a comparison
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_{\mathbb A^1}(L)\longrightarrow Rj_*\mathbb C_{\mathbb C^*}[1].
+\tag{2.2}
+\]">\[
+\operatorname{DR}_{\mathbb A^1}(L)\longrightarrow Rj_*\mathbb C_{\mathbb C^*}[1].
+\tag{2.2}
+\]</span>
+Off zero it is an isomorphism. At zero, a punctured disc retracts onto a circle, so the right side has the same two cohomology groups. The constant class maps to the constant class; the class of <span class="math" data-tex="$dx/x$">$dx/x$</span> maps to a nonzero circle class, with period <span class="math" data-tex="$2\pi i$">$2\pi i$</span>. Consequently (2.2) is a quasi-isomorphism. This proves this particular nonproper comparison directly.</p>
+<p>Consider now
+<span class="math math-display" data-tex="\[
+Q_\lambda=A/A(\theta-\lambda).
+\tag{2.3}
+\]">\[
+Q_\lambda=A/A(\theta-\lambda).
+\tag{2.3}
+\]</span>
+Its connection off zero has <span class="math" data-tex="$\partial e=\lambda x^{-1}e$">$\partial e=\lambda x^{-1}e$</span>. Horizontal sections are <span class="math" data-tex="$x^{-\lambda}e$">$x^{-\lambda}e$</span>; the corresponding rank-one local system <span class="math" data-tex="$L_\lambda$">$L_\lambda$</span> has monodromy
+<span class="math math-display" data-tex="\[
+T_\lambda=e^{-2\pi i\lambda}.
+\tag{2.4}
+\]">\[
+T_\lambda=e^{-2\pi i\lambda}.
+\tag{2.4}
+\]</span>
+Solutions of the <em>defining scalar equation</em> <span class="math" data-tex="$\theta u=\lambda u$">$\theta u=\lambda u$</span> instead have monodromy <span class="math" data-tex="$e^{2\pi i\lambda}$">$e^{2\pi i\lambda}$</span>. This is the contravariant solution convention.</p>
+<p>Right multiplication by <span class="math" data-tex="$\theta-\lambda$">$\theta-\lambda$</span> gives a free D-resolution of <span class="math" data-tex="$Q_\lambda$">$Q_\lambda$</span>. Formal adjoint sends this operator to <span class="math" data-tex="$-(\theta+\lambda+1)$">$-(\theta+\lambda+1)$</span>. By (1.8), its analytic de Rham complex is consequently represented by
+<span class="math math-display" data-tex="\[
+\bigl[\mathcal O^{an}\xrightarrow{\theta+\lambda+1}\mathcal O^{an}\bigr][1].
+\tag{2.5}
+\]">\[
+\bigl[\mathcal O^{an}\xrightarrow{\theta+\lambda+1}\mathcal O^{an}\bigr][1].
+\tag{2.5}
+\]</span>
+On a convergent Taylor series the displayed operator multiplies <span class="math" data-tex="$x^n$">$x^n$</span> by <span class="math" data-tex="$n+\lambda+1$">$n+\lambda+1$</span>. If <span class="math" data-tex="$-\lambda-1$">$-\lambda-1$</span> is not a nonnegative integer, every multiplier is nonzero, and their reciprocals grow at most polynomially; the inverse therefore preserves holomorphic germs. If <span class="math" data-tex="$-\lambda-1=m\ge0$">$-\lambda-1=m\ge0$</span>, both kernel and cokernel at zero are spanned by <span class="math" data-tex="$x^m$">$x^m$</span>. This determines the stalks, but we also determine the gluing:
+<span class="math math-display" data-tex="\[
+\operatorname{DR}(Q_\lambda)\simeq
+\begin{cases}
+j_!L_\lambda[1]\simeq Rj_*L_\lambda[1],
+ &amp;\lambda\notin\mathbb Z,\\
+Rj_*\mathbb C_{\mathbb C^*}[1],
+ &amp;\lambda\in\mathbb Z_{&lt;0},\\
+j_!\mathbb C_{\mathbb C^*}[1],
+ &amp;\lambda\in\mathbb Z_{\ge0}.
+\end{cases}
+\tag{2.6}
+\]">\[
+\operatorname{DR}(Q_\lambda)\simeq
+\begin{cases}
+j_!L_\lambda[1]\simeq Rj_*L_\lambda[1],
+ &amp;\lambda\notin\mathbb Z,\\
+Rj_*\mathbb C_{\mathbb C^*}[1],
+ &amp;\lambda\in\mathbb Z_{&lt;0},\\
+j_!\mathbb C_{\mathbb C^*}[1],
+ &amp;\lambda\in\mathbb Z_{\ge0}.
+\end{cases}
+\tag{2.6}
+\]</span>
+For the first case, punctured-disc cohomology is computed by <span class="math" data-tex="$[\mathbb C\xrightarrow{T_\lambda-1}\mathbb C]$">$[\mathbb C\xrightarrow{T_\lambda-1}\mathbb C]$</span> and vanishes. Thus the natural <span class="math" data-tex="$j_!\to Rj_*$">$j_!\to Rj_*$</span> map is an isomorphism, and (2.5) identifies the extension by its zero stalk at the origin. For negative integral <span class="math" data-tex="$\lambda$">$\lambda$</span>, the algebraic identification <span class="math" data-tex="$Q_\lambda\simeq L$">$Q_\lambda\simeq L$</span> from <em>Holonomic D-modules and duality</em> and (2.2) prove the second case. For nonnegative integral <span class="math" data-tex="$\lambda$">$\lambda$</span>, (2.5) has zero origin stalk and the trivial local system elsewhere. The adjunction map from <span class="math" data-tex="$j_!\mathbb C[1]$">$j_!\mathbb C[1]$</span> is a quasi-isomorphism on every stalk, proving the third.</p>
+<p>In particular, integral residues do not make all cyclic presentations the same module. <span class="math" data-tex="$L=A/A(\partial x)$">$L=A/A(\partial x)$</span> and <span class="math" data-tex="$J=A/A(x\partial)$">$J=A/A(x\partial)$</span> have different boundary extensions; their de Rham complexes are respectively the star and shriek extensions in (2.6).</p>
+<h2 id="3-closed-embeddings-and-proper-direct-images">3. Closed embeddings and proper direct images</h2>
+<p><strong>Proposition 3.1.</strong> For a closed embedding <span class="math" data-tex="$i:Z\hookrightarrow X$">$i:Z\hookrightarrow X$</span> and a bounded D-coherent complex <span class="math" data-tex="$M$">$M$</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_X(i_*M)\simeq Ri_*\,\operatorname{DR}_Z(M).
+\tag{3.1}
+\]">\[
+\operatorname{DR}_X(i_*M)\simeq Ri_*\,\operatorname{DR}_Z(M).
+\tag{3.1}
+\]</span>
+The same assertion holds for the algebraic complexes as sheaves of <span class="math" data-tex="$k$">$k$</span>-vector spaces.</p>
+<p><strong>Proof.</strong> In adapted coordinates <span class="math" data-tex="$(z,t_1,\ldots,t_c)$">$(z,t_1,\ldots,t_c)$</span>, the transfer description from <em>Kashiwara's equivalence and singular spaces</em> gives
+<span class="math math-display" data-tex="\[
+i_*M\simeq i_*\bigl(M\otimes_k k[u_1,\ldots,u_c]\bigr),
+\qquad u_a=\partial_{t_a}.
+\tag{3.2}
+\]">\[
+i_*M\simeq i_*\bigl(M\otimes_k k[u_1,\ldots,u_c]\bigr),
+\qquad u_a=\partial_{t_a}.
+\tag{3.2}
+\]</span>
+Normal differentiation acts by multiplication by <span class="math" data-tex="$u_a$">$u_a$</span>, while the tangential differential is that of <span class="math" data-tex="$M$">$M$</span>. The normal de Rham factor is the Koszul cochain complex
+<span class="math math-display" data-tex="\[
+\bigl[k[u]\longrightarrow\cdots
+\longrightarrow k[u]\,dt_1\wedge\cdots\wedge dt_c\bigr].
+\]">\[
+\bigl[k[u]\longrightarrow\cdots
+\longrightarrow k[u]\,dt_1\wedge\cdots\wedge dt_c\bigr].
+\]</span>
+Its cohomology is <span class="math" data-tex="$k$">$k$</span> only in degree <span class="math" data-tex="$c$">$c$</span>: successively divide a polynomial by each variable <span class="math" data-tex="$u_a$">$u_a$</span>, or tensor the one-variable injective complexes with cokernel <span class="math" data-tex="$k$">$k$</span>. Total de Rham normalization shifts by <span class="math" data-tex="$d_X=d_Z+c$">$d_X=d_Z+c$</span>, so the normal degree <span class="math" data-tex="$c$">$c$</span> cancels, leaving the shift <span class="math" data-tex="$d_Z$">$d_Z$</span>.</p>
+<p>The surviving normal top form contracts with the conormal determinant in the transfer module. This is why the local quotient is canonically the complex on <span class="math" data-tex="$Z$">$Z$</span>, rather than that complex tensored with a coordinate-dependent line. Coordinate changes respect the transfer action, this contraction and the Spencer differential, so the identifications glue. Closed sheaf pushforward is exact. The bounded totalization proves the result for complexes as well as modules. Holomorphic coefficients give the identical argument; (3.2) also shows that algebraic and analytic closed D-pushforward commute. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We use the following algebraic-geometry comparison prerequisite. For a proper complex algebraic morphism <span class="math" data-tex="$h$">$h$</span> and a quasi-coherent sheaf <span class="math" data-tex="$F$">$F$</span>,
+<span class="math math-display" data-tex="\[
+(Rh_*F)^{an}\simeq Rh^{an}_*(F^{an}).
+\tag{3.3}
+\]">\[
+(Rh_*F)^{an}\simeq Rh^{an}_*(F^{an}).
+\tag{3.3}
+\]</span>
+This is the quasi-coherent extension of relative GAGA, not just the comparison for finite flat bundles. A precise formulation is Liu, <em>Quasi-coherent GAGA</em>, Proposition 3.1. The coherent case is relative GAGA; the extension writes <span class="math" data-tex="$F$">$F$</span> as a filtered union of coherent subsheaves and uses commutation of higher direct images with filtered colimits on the algebraic side and for proper analytic maps. We use these comparison and sheaf-cohomology prerequisites, rather than assuming a D-coherent module is <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-coherent.</p>
+<p><strong>Lemma 3.2, comparison with proper support.</strong> Let <span class="math" data-tex="$p:W\to Y$">$p:W\to Y$</span> be an algebraic morphism and <span class="math" data-tex="$S\subset W$">$S\subset W$</span> a closed subset proper over <span class="math" data-tex="$Y$">$Y$</span>. For a quasi-coherent <span class="math" data-tex="$F$">$F$</span> supported on <span class="math" data-tex="$S$">$S$</span>, (3.3) holds with <span class="math" data-tex="$p$">$p$</span> in place of <span class="math" data-tex="$h$">$h$</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="$F=\varinjlim F_a$">$F=\varinjlim F_a$</span> with <span class="math" data-tex="$F_a$">$F_a$</span> coherent. On the noetherian, quasi-compact scheme <span class="math" data-tex="$W$">$W$</span>, a power of the ideal of <span class="math" data-tex="$S$">$S$</span> annihilates each <span class="math" data-tex="$F_a$">$F_a$</span>, since its support lies in <span class="math" data-tex="$S$">$S$</span>. Thus each is a coherent sheaf on a finite thickening of <span class="math" data-tex="$S$">$S$</span>, still proper over <span class="math" data-tex="$Y$">$Y$</span>. Relative GAGA applies there. Algebraic higher pushforward commutes with this union by a finite affine Čech computation.</p>
+<p>On the analytic side all the underlying sheaves have support in the same proper closed set. Identify them with their closed pushforwards from <span class="math" data-tex="$S^{an}$">$S^{an}$</span> as sheaves of abelian groups. Higher direct image on that support commutes with filtered colimits for a proper map: proper base change reduces the claim stalkwise to cohomology on a compact fiber, where finite covers and their refinements compute the filtered-colimit comparison. Applying this to <span class="math" data-tex="$F_a^{an}$">$F_a^{an}$</span>, and using exact analytification, identifies the colimits of the coherent GAGA isomorphisms with the claimed isomorphism. Bounded cohomological dimension gives the corresponding derived assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.3.</strong> For a proper morphism <span class="math" data-tex="$f:X\to Y$">$f:X\to Y$</span> of smooth separated complex algebraic varieties and <span class="math" data-tex="$M\in D^b_{\mathrm{coh}}(\mathcal D_X)$">$M\in D^b_{\mathrm{coh}}(\mathcal D_X)$</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_Y(f_*M)\simeq
+Rf^{an}_*\,\operatorname{DR}_X(M).
+\tag{3.4}
+\]">\[
+\operatorname{DR}_Y(f_*M)\simeq
+Rf^{an}_*\,\operatorname{DR}_X(M).
+\tag{3.4}
+\]</span>
+In particular this holds for all holonomic complexes, without regularity.</p>
+<p><strong>Proof.</strong> Factor <span class="math" data-tex="$f$">$f$</span> as its closed graph <span class="math" data-tex="$\gamma:X\hookrightarrow X\times Y$">$\gamma:X\hookrightarrow X\times Y$</span> followed by the projection <span class="math" data-tex="$p:X\times Y\to Y$">$p:X\times Y\to Y$</span>, and put <span class="math" data-tex="$N=\gamma_*M$">$N=\gamma_*M$</span>. The graph is proper over <span class="math" data-tex="$Y$">$Y$</span> because <span class="math" data-tex="$f$">$f$</span> is proper. Composition of D-direct images identifies <span class="math" data-tex="$f_*M=p_*N$">$f_*M=p_*N$</span>.</p>
+<p>First, relative Spencer gives
+<span class="math math-display" data-tex="\[
+p_*N=Rp_*\bigl[\Omega_X^\bullet\boxtimes\mathcal O_Y
+\otimes_{\mathcal O_{X\times Y}}N\bigr][d_X].
+\tag{3.5}
+\]">\[
+p_*N=Rp_*\bigl[\Omega_X^\bullet\boxtimes\mathcal O_Y
+\otimes_{\mathcal O_{X\times Y}}N\bigr][d_X].
+\tag{3.5}
+\]</span>
+Every term is quasi-coherent and has support in the graph. Lemma 3.2 applies term by term. Its comparisons commute with the relative differential: the latter is a finite-order differential operator over the base, obtained from the algebraic D-action by the Leibniz rule, and analytic extension gives exactly that same operator on analytic coefficients. Equivalently, factor each such operator through its finite principal-parts sheaf, whose formation commutes with analytification. Resolve pushforward, filter the finite relative complex by degree, and compare its terms; the resulting morphism of spectral sequences proves
+<span class="math math-display" data-tex="\[
+(p_*N)^{an}\simeq p^{an}_*(N^{an})
+\tag{3.6}
+\]">\[
+(p_*N)^{an}\simeq p^{an}_*(N^{an})
+\tag{3.6}
+\]</span>
+as D-complexes. Horizontal vector fields also commute with the comparison, so this is a comparison of D-actions, not only vector spaces.</p>
+<p>Second, on <span class="math" data-tex="$X^{an}\times Y^{an}$">$X^{an}\times Y^{an}$</span>, absolute forms split into horizontal and vertical forms. The absolute de Rham differential is the total differential of the corresponding double complex: commuting X- and Y-vector fields give the anticommutation after the Koszul sign. Applying the Y-de Rham functor to the analytic version of (3.5) therefore gives
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_{Y^{an}}(p^{an}_*N^{an})
+\simeq Rp^{an}_*\operatorname{DR}_{X^{an}\times Y^{an}}(N^{an}).
+\tag{3.7}
+\]">\[
+\operatorname{DR}_{Y^{an}}(p^{an}_*N^{an})
+\simeq Rp^{an}_*\operatorname{DR}_{X^{an}\times Y^{an}}(N^{an}).
+\tag{3.7}
+\]</span>
+To check the derived exchange explicitly, trivialize the finitely many locally free bundles <span class="math" data-tex="$\Omega_Y^a$">$\Omega_Y^a$</span> on a coordinate open set and move their finite tensor factors through <span class="math" data-tex="$Rp^{an}_*$">$Rp^{an}_*$</span>. Take an acyclic resolution for pushforward and totalize. The horizontal derivative on that resolution is induced by the Y-action in (3.5); its differential is the horizontal part of the absolute connection. The total shift is <span class="math" data-tex="$d_X+d_Y$">$d_X+d_Y$</span>, precisely the absolute de Rham normalization. This proves (3.7) and its compatibility on overlaps.</p>
+<p>Finally (3.1) and the closed analytification comparison give
+<span class="math math-display" data-tex="\[
+Rp^{an}_*\operatorname{DR}(N^{an})
+\simeq Rp^{an}_*R\gamma^{an}_*\operatorname{DR}_X(M)
+=Rf^{an}_*\operatorname{DR}_X(M).
+\]">\[
+Rp^{an}_*\operatorname{DR}(N^{an})
+\simeq Rp^{an}_*R\gamma^{an}_*\operatorname{DR}_X(M)
+=Rf^{an}_*\operatorname{DR}_X(M).
+\]</span>
+Combine this with (3.6) and (3.7). Bounded complexes follow by finite truncation triangles. Proper coherence of <span class="math" data-tex="$f_*M$">$f_*M$</span>, used to stay in the D-coherent category, is the theorem recorded in the preceding adjunction lesson. The argument itself never factors a general proper morphism through projective space. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is the de Rham form of the comparison between algebraic and analytic direct images along a proper map. Properness is used in the comparison (3.6). Analytic direct image along a nonproper map can contain holomorphic functions with essential singularities which are absent from the analytification of algebraic direct image.</p>
+<h2 id="4-constructibility-perversity-and-the-limits-of-compatibility">4. Constructibility, perversity and the limits of compatibility</h2>
+<p>The analytic theorems used here have the following exact form.</p>
+<p><strong>Kashiwara's constructibility and perversity theorem, stated.</strong> If <span class="math" data-tex="$M$">$M$</span> is holonomic on a complex manifold of dimension <span class="math" data-tex="$d$">$d$</span>, then <span class="math" data-tex="$R\mathcal Hom_{\mathcal D}(M,\mathcal O)[d]$">$R\mathcal Hom_{\mathcal D}(M,\mathcal O)[d]$</span> is a constructible perverse complex. See M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §§9.2 and 9.5. For algebraic holonomic modules their analytic de Rham and solution complexes are constructible with respect to an algebraic stratification. Exact holonomic duality and (1.8) give
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_X(M)\in\operatorname{Perv}(X^{an}).
+\tag{4.1}
+\]">\[
+\operatorname{DR}_X(M)\in\operatorname{Perv}(X^{an}).
+\tag{4.1}
+\]</span>
+This is an assertion for a module in degree zero. A bounded complex with holonomic cohomology has a bounded constructible de Rham complex, and its standard module cohomology corresponds to perverse cohomology by truncation triangles.</p>
+<p>Recall the middle-perversity conditions from <a href="../GL-PERV/the-perverse-t-structure.html">The perverse t-structure</a>. On a smooth complex stratum <span class="math" data-tex="$S$">$S$</span> of dimension <span class="math" data-tex="$s$">$s$</span>, a perverse complex <span class="math" data-tex="$K$">$K$</span> satisfies
+<span class="math math-display" data-tex="\[
+\mathcal H^q(i_S^*K)=0\quad(q&gt;-s),\qquad
+\mathcal H^q(i_S^!K)=0\quad(q&lt;-s).
+\tag{4.2}
+\]">\[
+\mathcal H^q(i_S^*K)=0\quad(q&gt;-s),\qquad
+\mathcal H^q(i_S^!K)=0\quad(q&lt;-s).
+\tag{4.2}
+\]</span>
+For instance, on the line <span class="math" data-tex="$\mathbb C[1]$">$\mathbb C[1]$</span> has a point stalk in degree <span class="math" data-tex="$-1$">$-1$</span> and point costalk <span class="math" data-tex="$\mathbb C[-1]$">$\mathbb C[-1]$</span> in degree <span class="math" data-tex="$1$">$1$</span>; both inequalities hold. The point sheaf <span class="math" data-tex="$\mathbb C_0$">$\mathbb C_0$</span> has stalk and costalk in degree zero. These explain why (1.9) and (2.1) use different shifts.</p>
+<p><strong>Duality compatibility, stated.</strong> For <span class="math" data-tex="$M\in D^b_h(\mathcal D_X)$">$M\in D^b_h(\mathcal D_X)$</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_X(\mathbb D_XM)
+\simeq \mathbf D_X\operatorname{DR}_X(M).
+\tag{4.3}
+\]">\[
+\operatorname{DR}_X(\mathbb D_XM)
+\simeq \mathbf D_X\operatorname{DR}_X(M).
+\tag{4.3}
+\]</span>
+For this statement see V. Ginzburg, <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em></a>, on duality for holonomic modules. Here <span class="math" data-tex="$\mathbf D_XK=R\mathcal Hom_{\mathbb C}(K,\mathbb C[2d_X])$">$\mathbf D_XK=R\mathcal Hom_{\mathbb C}(K,\mathbb C[2d_X])$</span> uses the canonical complex orientation. Verdier duality is developed in <span class="unlinked">Microlocal sheaves</span>.</p>
+<p><strong>Inverse-image compatibility, stated with its hypothesis.</strong> For every morphism of smooth algebraic varieties and every <em>regular holonomic</em> complex <span class="math" data-tex="$N$">$N$</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_X(f^!N)
+\simeq (f^{an})^!\operatorname{DR}_Y(N).
+\tag{4.4}
+\]">\[
+\operatorname{DR}_X(f^!N)
+\simeq (f^{an})^!\operatorname{DR}_Y(N).
+\tag{4.4}
+\]</span>
+This is part of the Riemann–Hilbert correspondence for regular holonomic complexes, which gives both direct-image and both inverse-image comparisons; see M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §9.2. For an arbitrary coherent module with non-characteristic <span class="math" data-tex="$f$">$f$</span>, Cauchy–Kowalevski–Kashiwara gives the more restricted comparison
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_X(Lf^*N)
+\simeq (f^{an})^{-1}\operatorname{DR}_Y(N)[d_X-d_Y].
+\tag{4.5}
+\]">\[
+\operatorname{DR}_X(Lf^*N)
+\simeq (f^{an})^{-1}\operatorname{DR}_Y(N)[d_X-d_Y].
+\tag{4.5}
+\]</span>
+See Proposition 4.7.6 and Kashiwara–Schapira, Theorem 11.3.5, the latter expressed using unshifted solutions. Since <span class="math" data-tex="$f^!=Lf^*[d_X-d_Y]$">$f^!=Lf^*[d_X-d_Y]$</span>, (4.5) has total shift <span class="math" data-tex="$2(d_X-d_Y)$">$2(d_X-d_Y)$</span> when written for <span class="math" data-tex="$f^!$">$f^!$</span>. For smooth <span class="math" data-tex="$f$">$f$</span> this matches the oriented real relative dimension in sheaf <span class="math" data-tex="$f^!$">$f^!$</span>. Formula (4.4) at an arbitrary characteristic embedding cannot be inferred from (4.5) by dropping non-characteristicness.</p>
+<p>Regular singularities and the full Riemann–Hilbert correspondence are the subjects of the next two lessons. The analytic constructibility proof belongs to analytic sheaf theory, specifically Kashiwara–Schapira, Chapter XI. None of these stated analytic theorems is substituted for the proper direct-image proof in Section 3.</p>
+<h2 id="5-algebraic-cohomology-and-an-exponential-warning">5. Algebraic cohomology and an exponential warning</h2>
+<p>Algebraic de Rham cohomology has its unshifted convention
+<span class="math math-display" data-tex="\[
+H^q_{dR}(X/k)=
+\mathbb H^q(X,\Omega_X^\bullet).
+\tag{5.1}
+\]">\[
+H^q_{dR}(X/k)=
+\mathbb H^q(X,\Omega_X^\bullet).
+\tag{5.1}
+\]</span>
+See <a href="https://stacks.math.columbia.edu/tag/0FL6">Stacks, Tag 0FL6</a>; on an affine scheme it is the cohomology of global algebraic forms [Stacks, Tag 0FLW]. Thus
+<span class="math math-display" data-tex="\[
+H^qR\Gamma(X,\operatorname{DR}_{alg,X}(\mathcal O_X))
+=H^{q+d_X}_{dR}(X/k).
+\tag{5.2}
+\]">\[
+H^qR\Gamma(X,\operatorname{DR}_{alg,X}(\mathcal O_X))
+=H^{q+d_X}_{dR}(X/k).
+\tag{5.2}
+\]</span></p>
+<p><strong>Grothendieck's algebraic de Rham comparison, stated.</strong> For smooth separated <span class="math" data-tex="$X$">$X$</span> of finite type over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, the natural analytic comparison induces functorial isomorphisms
+<span class="math math-display" data-tex="\[
+H^q_{dR}(X/\mathbb C)\simeq
+H^q(X^{an},\mathbb C).
+\tag{5.3}
+\]">\[
+H^q_{dR}(X/\mathbb C)\simeq
+H^q(X^{an},\mathbb C).
+\tag{5.3}
+\]</span>
+See Grothendieck, <em>On the de Rham cohomology of algebraic varieties</em>, Theorems 1 and 1′, pp. 95–96. The affine assertion is Theorem 1; Theorem 1′ states the hypercohomology form. For proper smooth <span class="math" data-tex="$X$">$X$</span>, (5.3) follows already from coherent GAGA on the finitely many form bundles and Proposition 1.2. The general nonproper comparison is the additional theorem.</p>
+<p>It concerns <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span> with its trivial connection. It does not say that arbitrary irregular coefficients have the same algebraic and analytic cohomology. Let
+<span class="math math-display" data-tex="\[
+E=\mathcal O_{\mathbb A^1}e,\qquad \partial e=e.
+\tag{5.4}
+\]">\[
+E=\mathcal O_{\mathbb A^1}e,\qquad \partial e=e.
+\tag{5.4}
+\]</span>
+Thus the coefficient differential is <span class="math" data-tex="$g\mapsto g&#x27;+g$">$g\mapsto g&#x27;+g$</span>. The everywhere nonzero holomorphic section <span class="math" data-tex="$e^{-x}e$">$e^{-x}e$</span> is horizontal, giving
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_{\mathbb A^1}(E)=\mathbb C_{\mathbb C}[1].
+\tag{5.5}
+\]">\[
+\operatorname{DR}_{\mathbb A^1}(E)=\mathbb C_{\mathbb C}[1].
+\tag{5.5}
+\]</span>
+Algebraically, <span class="math" data-tex="$1+\partial$">$1+\partial$</span> is bijective on <span class="math" data-tex="$\mathbb C[x]$">$\mathbb C[x]$</span>, with inverse on each polynomial given by the finite sum <span class="math" data-tex="$\sum_{a\ge0}(-\partial)^a$">$\sum_{a\ge0}(-\partial)^a$</span>. Hence its algebraic de Rham cohomology is zero in every degree.</p>
+<p>In particular, for <span class="math" data-tex="$p:\mathbb A^1\to\mathrm{pt}$">$p:\mathbb A^1\to\mathrm{pt}$</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_{\mathrm{pt}}(p_*E)=0,\qquad
+Rp^{an}_*\operatorname{DR}_{\mathbb A^1}(E)=\mathbb C[1].
+\tag{5.6}
+\]">\[
+\operatorname{DR}_{\mathrm{pt}}(p_*E)=0,\qquad
+Rp^{an}_*\operatorname{DR}_{\mathbb A^1}(E)=\mathbb C[1].
+\tag{5.6}
+\]</span>
+This is an explicit failure of nonproper direct-image compatibility on all holonomic modules. <span class="math" data-tex="$E$">$E$</span> is an algebraic flat bundle and is holonomic. At infinity, with <span class="math" data-tex="$y=1/x$">$y=1/x$</span>, its connection coefficient is <span class="math" data-tex="$-dy/y^2$">$-dy/y^2$</span>, an irregular pole. Ordinary de Rham sheaves on the affine line do not record that boundary behavior.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 12.1, easy.</strong> Compute <span class="math" data-tex="$H^*_{dR}(\mathbb G_m)$">$H^*_{dR}(\mathbb G_m)$</span> using algebraic forms, including a representative of its nonzero degree-one class.</p>
+<p><strong>Exercise 12.2, easy.</strong> Compute <span class="math" data-tex="$\operatorname{DR}(\delta_0)$">$\operatorname{DR}(\delta_0)$</span> on <span class="math" data-tex="$\mathbb A^n$">$\mathbb A^n$</span> and explain why its degree does not depend on <span class="math" data-tex="$n$">$n$</span>.</p>
+<p><strong>Exercise 12.3, medium.</strong> Prove (2.2) by a stalk calculation, and explain why agreement of dimensions alone would be insufficient.</p>
+<p><strong>Exercise 12.4, medium.</strong> Determine the analytic de Rham complex of <span class="math" data-tex="$Q_\lambda$">$Q_\lambda$</span> for every complex <span class="math" data-tex="$\lambda$">$\lambda$</span>, including the sign of its monodromy and the distinction between negative and nonnegative integral parameters.</p>
+<p><strong>Exercise 12.5, hard.</strong> Prove that <span class="math" data-tex="$E$">$E$</span> in (5.4) and <span class="math" data-tex="$\mathcal O_{\mathbb A^1}$">$\mathcal O_{\mathbb A^1}$</span> are nonisomorphic algebraic D-modules with isomorphic de Rham complexes. Determine the algebraic Hom spaces in both directions and deduce that de Rham is not fully faithful on all holonomic modules.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>12.1.</strong> Affine acyclicity reduces the answer to
+<span class="math math-display" data-tex="\[
+\mathbb C[x,x^{-1}]\xrightarrow{d}
+\mathbb C[x,x^{-1}]\,dx.
+\]">\[
+\mathbb C[x,x^{-1}]\xrightarrow{d}
+\mathbb C[x,x^{-1}]\,dx.
+\]</span>
+Here <span class="math" data-tex="$d(x^m)=m x^{m-1}dx$">$d(x^m)=m x^{m-1}dx$</span>. The kernel consists of constants, and every monomial one-form is a derivative except <span class="math" data-tex="$x^{-1}dx$">$x^{-1}dx$</span>. Consequently <span class="math" data-tex="$H^0=\mathbb C$">$H^0=\mathbb C$</span>, <span class="math" data-tex="$H^1=\mathbb C[dx/x]$">$H^1=\mathbb C[dx/x]$</span>, and all other groups vanish. Under (5.3), <span class="math" data-tex="$(2\pi i)^{-1}dx/x$">$(2\pi i)^{-1}dx/x$</span> has circle period one.</p>
+<p><strong>12.2.</strong> The normal PBW basis identifies <span class="math" data-tex="$\delta_0$">$\delta_0$</span> with <span class="math" data-tex="$\mathbb C[u_1,\ldots,u_n]$">$\mathbb C[u_1,\ldots,u_n]$</span>, where <span class="math" data-tex="$\partial_a$">$\partial_a$</span> acts as <span class="math" data-tex="$u_a$">$u_a$</span>. Its unshifted de Rham complex is the Koszul cochain complex for the sequence <span class="math" data-tex="$u_1,\ldots,u_n$">$u_1,\ldots,u_n$</span>. Each one-variable factor has zero kernel and cokernel <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> in degree one. Tensoring these exact calculations over a field gives only top cohomology <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> in degree <span class="math" data-tex="$n$">$n$</span>. The normalization <span class="math" data-tex="$[n]$">$[n]$</span> puts it in degree zero. Its support is the origin, so the result is the point sheaf <span class="math" data-tex="$\mathbb C_0$">$\mathbb C_0$</span>. This also follows by (3.1) from de Rham on a point.</p>
+<p><strong>12.3.</strong> Near zero the analytic algebraic direct image consists of meromorphic germs with finite principal part, not arbitrary punctured-disc holomorphic germs. For a Laurent series, termwise integration converges for every nonresidue term and retains a finite principal part. Thus the de Rham kernel is constants and the cokernel is residue. The restriction comparison to punctured-disc cohomology sends <span class="math" data-tex="$1$">$1$</span> to <span class="math" data-tex="$1$">$1$</span> and <span class="math" data-tex="$dx/x$">$dx/x$</span> to a class whose period is <span class="math" data-tex="$2\pi i$">$2\pi i$</span>. Both induced maps are isomorphisms. Off zero the comparison is the Poincaré quasi-isomorphism, so it is a quasi-isomorphism everywhere. Two arbitrary complexes with stalk cohomology of equal dimension need not have the same restriction maps or gluing; the explicitly nonzero residue comparison supplies the required morphism.</p>
+<p><strong>12.4.</strong> Resolve by right multiplication with <span class="math" data-tex="$\theta-\lambda$">$\theta-\lambda$</span>. Its formal adjoint is <span class="math" data-tex="$-\theta-\lambda-1$">$-\theta-\lambda-1$</span>, so the dual-resolution computation gives (2.5). For a germ <span class="math" data-tex="$\sum a_nx^n$">$\sum a_nx^n$</span>, a preimage has coefficients <span class="math" data-tex="$a_n/(n+\lambda+1)$">$a_n/(n+\lambda+1)$</span> except at a possible resonant index. For nonintegral <span class="math" data-tex="$\lambda$">$\lambda$</span> there is no resonant nonnegative index, and this series converges on each smaller disc. The origin stalk is zero. Off zero, solving the connection equation gives <span class="math" data-tex="$x^{-\lambda}e$">$x^{-\lambda}e$</span>, hence monodromy <span class="math" data-tex="$e^{-2\pi i\lambda}$">$e^{-2\pi i\lambda}$</span>. The local circle complex has invertible <span class="math" data-tex="$T_\lambda-1$">$T_\lambda-1$</span>, so <span class="math" data-tex="$j_!L_\lambda[1]=Rj_*L_\lambda[1]$">$j_!L_\lambda[1]=Rj_*L_\lambda[1]$</span>.</p>
+<p>For <span class="math" data-tex="$\lambda\ge0$">$\lambda\ge0$</span> integral there is still no resonant index; the stalk is zero and the punctured local system is trivial. Adjunction from its shriek extension gives the desired global isomorphism. For <span class="math" data-tex="$\lambda&lt;0$">$\lambda&lt;0$</span> integral, put <span class="math" data-tex="$m=-\lambda-1\ge0$">$m=-\lambda-1\ge0$</span>. Kernel and cokernel of (2.5) at zero are both the class <span class="math" data-tex="$x^m$">$x^m$</span>. The already proved cyclic-module identification with <span class="math" data-tex="$L$">$L$</span> and the nonzero residue map in 12.3 identify its gluing with <span class="math" data-tex="$Rj_*\mathbb C[1]$">$Rj_*\mathbb C[1]$</span>. These are precisely the three cases in (2.6). In the Laurent connection model, horizontal and residue representatives are respectively <span class="math" data-tex="$x^{-\lambda}e$">$x^{-\lambda}e$</span> and <span class="math" data-tex="$x^{-\lambda-1}e\,dx$">$x^{-\lambda-1}e\,dx$</span>; their exponents differ because the second represents a one-form.</p>
+<p><strong>12.5.</strong> An algebraic D-map <span class="math" data-tex="$\mathcal O\to E$">$\mathcal O\to E$</span> sends <span class="math" data-tex="$1$">$1$</span> to <span class="math" data-tex="$g(x)e$">$g(x)e$</span> with <span class="math" data-tex="$g&#x27;+g=0$">$g&#x27;+g=0$</span>. A nonzero polynomial cannot satisfy this equation: its highest-degree term survives in <span class="math" data-tex="$g$">$g$</span> and has no cancellation in <span class="math" data-tex="$g&#x27;$">$g&#x27;$</span>. Thus this Hom space is zero. A D-map <span class="math" data-tex="$E\to\mathcal O$">$E\to\mathcal O$</span> sends <span class="math" data-tex="$e$">$e$</span> to <span class="math" data-tex="$h(x)$">$h(x)$</span> and requires <span class="math" data-tex="$h&#x27;=h$">$h&#x27;=h$</span>; the same degree argument makes it zero. In particular no algebraic isomorphism exists.</p>
+<p>Analytically, multiplication by the horizontal section <span class="math" data-tex="$e^{-x}e$">$e^{-x}e$</span> identifies the two flat bundles, so Proposition 1.2 gives both de Rham complexes as <span class="math" data-tex="$\mathbb C[1]$">$\mathbb C[1]$</span>. Their sheaf-complex Hom space contains the nonzero identity of <span class="math" data-tex="$\mathbb C[1]$">$\mathbb C[1]$</span>, while the corresponding algebraic D-Hom space is zero. Therefore the de Rham functor is not full, and hence not fully faithful, on all holonomic modules. This argument does not claim that it sends a nonzero algebraic module to zero: the lost datum here is an algebraic morphism and the irregular behavior at infinity.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The analytic Cauchy–Kowalevski–Kashiwara theorem, constructibility and perversity theorem, and Verdier-duality comparison are stated with their locators. Arbitrary inverse-image and nonproper direct-image compatibility are stated for regular holonomic complexes, not for every holonomic complex. Grothendieck's nonproper algebraic de Rham comparison and the relative GAGA and proper sheaf-cohomology prerequisites in Section 3 are used as external algebraic-geometry and sheaf-theory results. The Spencer identification, holomorphic Poincaré lemma, all singular-point computations, closed and proper direct-image comparisons, and all five exercises are proved here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §§9.2, 9.5 and 10.2: constructibility and perversity of solution complexes, and non-characteristic systems.</li>
+<li>V. Ginzburg, <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em></a>: de Rham and solution functors, holonomic duality and the comparison theorems.</li>
+<li>Bhatt–Blickle–Lyubeznik–Singh–Zhang, <a href="https://arxiv.org/abs/2308.03155"><em>Applications of perverse sheaves in commutative algebra</em></a>, Section 2, theorem labeled “RH,” parts (1)–(3): the regular holonomic correspondence and normalization.</li>
+<li>Frenkel, <a href="https://arxiv.org/abs/hep-th/0512172"><em>Lectures on the Langlands program and conformal field theory</em></a>, Sections 3.4–3.6: systems, Euler examples and the two functor conventions.</li>
+<li>Grothendieck, <a href="https://pmihes.centre-mersenne.org/articles/10.1007/BF02684807/"><em>On the de Rham cohomology of algebraic varieties</em></a>, Theorems 1 and 1′, pp. 95–96.</li>
+<li>Liu, <a href="https://irma.math.unistra.fr/~liu/qchGAGA.pdf"><em>Quasi-coherent GAGA</em></a>, Proposition 3.1: relative comparison for quasi-coherent coefficients.</li>
+<li><a href="https://stacks.math.columbia.edu/tag/0FL6">Stacks, Tag 0FL6</a> and <a href="https://stacks.math.columbia.edu/tag/0FLW">Tag 0FLW</a>: algebraic de Rham cohomology and its affine computation.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/the-de-rham-functor.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

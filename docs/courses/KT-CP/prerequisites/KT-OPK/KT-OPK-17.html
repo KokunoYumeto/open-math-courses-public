@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="A3534565BD3E0FB88CF121F9CB3F2C3A2C0B251879D476EF02EED2D231489A89">
+<title>The mapping torus — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-KT-OPK/KT-OPK-17</span></nav>
+<article id="lesson" class="lesson"><h1 id="the-mapping-torus">The mapping torus</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A mapping torus carries an algebra once around an interval and glues its endpoints by an automorphism. Its K-theory measures the classes fixed by that automorphism and the classes left after quotienting by its change. The endpoint extension determines the connecting maps, including their signs. This also gives the torsion class in the K-theory of the Klein bottle.</p>
+<p>All algebras are complex C*-algebras, with external unitizations for nonunital constructions. Fix an automorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>. We import the natural six-term sequence and positive exponential boundary from <a href="KT-OPK-11.html">Lesson 11, Theorems 1.1 and 2.1</a>. Our two suspension identifications are</p>
+<span id="equation-0-1"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\theta_A &amp;:K_1(A)\longrightarrow K_0(SA),\\
+\beta_A &amp;:K_0(A)\longrightarrow K_1(SA).
+\end{aligned}
+\tag{0.1}
+\]">\[
+\begin{aligned}
+\theta_A &amp;:K_1(A)\longrightarrow K_0(SA),\\
+\beta_A &amp;:K_0(A)\longrightarrow K_1(SA).
+\end{aligned}
+\tag{0.1}
+\]</span>
+<p>They are the isomorphisms proved in <a href="KT-OPK-08.html#2-the-idempotent-loop-of-an-invertible">Lesson 8, Theorem 2.1</a> and <a href="KT-OPK-10.html#4-the-boundary-proves-periodicity-and-fixes-its-sign">Lesson 10, Theorem 4.1</a>. The first is the index boundary for the cone vanishing at 0, evaluated at 1. The second sends a projection <span class="math" data-tex="\(p\)">\(p\)</span> in a unital algebra to the positive loop <span class="math" data-tex="\(t\mapsto e^{2\pi itp}\)">\(t\mapsto e^{2\pi itp}\)</span>. These conventions will give <span class="math" data-tex="\(\alpha_*-1\)">\(\alpha_*-1\)</span> in both degrees.</p>
+<h2 id="1-an-extension-obtained-by-gluing-endpoints">1. An extension obtained by gluing endpoints</h2>
+<p>Define</p>
+<span id="equation-1-1"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+M_\alpha&amp;=\{f\in C([0,1],A):\\
+&amp;\qquad f(1)=\alpha(f(0))\},\\
+SA&amp;=\{f\in C([0,1],A):\\
+&amp;\qquad f(0)=f(1)=0\}.
+\end{aligned}
+\tag{1.1}
+\]">\[
+\begin{aligned}
+M_\alpha&amp;=\{f\in C([0,1],A):\\
+&amp;\qquad f(1)=\alpha(f(0))\},\\
+SA&amp;=\{f\in C([0,1],A):\\
+&amp;\qquad f(0)=f(1)=0\}.
+\end{aligned}
+\tag{1.1}
+\]</span>
+<p>The endpoint condition is preserved by sums, products and adjoints, and is closed under uniform limits. Thus <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span> is a C*-algebra in the supremum norm. An equivalent description uses continuous functions on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> satisfying <span class="math" data-tex="\(f(t+1)=\alpha(f(t))\)">\(f(t+1)=\alpha(f(t))\)</span>: extend from the interval by <span class="math" data-tex="\(f(n+t)=\alpha^n(f(t))\)">\(f(n+t)=\alpha^n(f(t))\)</span>. The endpoint condition makes this extension continuous at every integer, and automorphisms are isometric.</p>
+<p><span id="proposition-1-1"></span><strong>Proposition 1.1.</strong> Evaluation at 0 gives an extension</p>
+<span id="equation-1-2"></span><span class="math math-display" data-tex="\[
+0\longrightarrow SA\xrightarrow{j}M_\alpha
+\xrightarrow{q=\operatorname{ev}_0}A\longrightarrow0.
+\tag{1.2}
+\]">\[
+0\longrightarrow SA\xrightarrow{j}M_\alpha
+\xrightarrow{q=\operatorname{ev}_0}A\longrightarrow0.
+\tag{1.2}
+\]</span>
+<p><em>Proof.</em> Evaluation is a *-homomorphism. Given <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, the continuous function</p>
+<span id="equation-1-3"></span><span class="math math-display" data-tex="\[
+b_a(t)=(1-t)a+t\alpha(a)
+\tag{1.3}
+\]">\[
+b_a(t)=(1-t)a+t\alpha(a)
+\tag{1.3}
+\]</span>
+<p>belongs to <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span> and has value <span class="math" data-tex="\(a\)">\(a\)</span> at 0, so evaluation is onto. This is a bounded linear lift, sufficient for surjectivity; it is generally not multiplicative. If <span class="math" data-tex="\(q(f)=0\)">\(q(f)=0\)</span>, the endpoint condition gives <span class="math" data-tex="\(f(1)=0\)">\(f(1)=0\)</span>, so its kernel is exactly <span class="math" data-tex="\(SA\)">\(SA\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\((M_\alpha)^+\)">\((M_\alpha)^+\)</span> consists of <span class="math" data-tex="\(A^+\)">\(A^+\)</span>-valued continuous functions whose scalar part is constant and whose endpoints satisfy <span class="math" data-tex="\(f(1)=\alpha^+(f(0))\)">\(f(1)=\alpha^+(f(0))\)</span>. Indeed, subtracting that constant scalar leaves a function in <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span>. This is smaller than allowing an arbitrary scalar function around the circle.</p>
+<h2 id="2-both-connecting-maps-with-their-signs">2. Both connecting maps, with their signs</h2>
+<p>Write <span class="math" data-tex="\(\varepsilon_\alpha:K_0(A)\to K_1(SA)\)">\(\varepsilon_\alpha:K_0(A)\to K_1(SA)\)</span> for the exponential boundary of (1.2), and <span class="math" data-tex="\(\delta_\alpha:K_1(A)\to K_0(SA)\)">\(\delta_\alpha:K_1(A)\to K_0(SA)\)</span> for its index boundary.</p>
+<p><span id="theorem-2-1"></span><strong>Theorem 2.1.</strong> Under the identifications (0.1),</p>
+<span id="equation-2-1"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\varepsilon_\alpha&amp;=\beta_A(\alpha_{*,0}-1),\\
+\delta_\alpha&amp;=\theta_A(\alpha_{*,1}-1).
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+\varepsilon_\alpha&amp;=\beta_A(\alpha_{*,0}-1),\\
+\delta_\alpha&amp;=\theta_A(\alpha_{*,1}-1).
+\end{aligned}
+\tag{2.1}
+\]</span>
+<p><em>Proof.</em> First consider the endpoint extension</p>
+<span id="equation-2-2"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+0&amp;\longrightarrow SA\longrightarrow C([0,1],A)\\
+&amp;\xrightarrow{r}A\oplus A\longrightarrow0,
+\end{aligned}\\
+r(f)=(f(0),f(1)).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+0&amp;\longrightarrow SA\longrightarrow C([0,1],A)\\
+&amp;\xrightarrow{r}A\oplus A\longrightarrow0,
+\end{aligned}\\
+r(f)=(f(0),f(1)).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>The quotient is onto by linear interpolation. Let its exponential and index boundaries be <span class="math" data-tex="\(E_0\)">\(E_0\)</span> and <span class="math" data-tex="\(E_1\)">\(E_1\)</span>, respectively. We use the canonical coordinate identification <span class="math" data-tex="\(K_i(A\oplus A)=K_i(A)\oplus K_i(A)\)">\(K_i(A\oplus A)=K_i(A)\oplus K_i(A)\)</span>; taking coordinate projections or invertibles gives this identification, including scalar kernels in the nonunital case.</p>
+<p>The right cone <span class="math" data-tex="\(CA=\{f:f(0)=0\}\)">\(CA=\{f:f(0)=0\}\)</span> includes into the middle algebra of (2.2). This gives a morphism from its cone extension to (2.2), with identity ideal map and quotient map <span class="math" data-tex="\(a\mapsto(0,a)\)">\(a\mapsto(0,a)\)</span>. By index-boundary naturality and the definition of <span class="math" data-tex="\(\theta_A\)">\(\theta_A\)</span>,</p>
+<span id="equation-2-3"></span><span class="math math-display" data-tex="\[
+E_1(0,y)=\theta_A(y).
+\tag{2.3}
+\]">\[
+E_1(0,y)=\theta_A(y).
+\tag{2.3}
+\]</span>
+<p>Its exponential boundary is <span class="math" data-tex="\(\beta_A\)">\(\beta_A\)</span>. For a projection <span class="math" data-tex="\(p\)">\(p\)</span> in a unital algebra, the self-adjoint cone lift <span class="math" data-tex="\(t p\)">\(t p\)</span> gives the unitary <span class="math" data-tex="\(e^{2\pi itp}\)">\(e^{2\pi itp}\)</span>, exactly the positive Bott loop. Projection differences generate <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, so this proves the equality for unital algebras. For arbitrary <span class="math" data-tex="\(A\)">\(A\)</span>, include into <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. The split extension <span class="math" data-tex="\(0\to A\to A^+\to\mathbb C\to0\)">\(0\to A\to A^+\to\mathbb C\to0\)</span>, and its suspension, make the ideal K-group inclusions injective. Naturality and the restriction defining <span class="math" data-tex="\(\beta_A\)">\(\beta_A\)</span> therefore prove the same equality on <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>. Consequently</p>
+<span id="equation-2-4"></span><span class="math math-display" data-tex="\[
+E_0(0,x)=\beta_A(x).
+\tag{2.4}
+\]">\[
+E_0(0,x)=\beta_A(x).
+\tag{2.4}
+\]</span>
+<p>The diagonal map <span class="math" data-tex="\(a\mapsto(a,a)\)">\(a\mapsto(a,a)\)</span> lifts multiplicatively by constant functions. Exactness therefore says <span class="math" data-tex="\(E_i(x,x)=0\)">\(E_i(x,x)=0\)</span> in each degree. Additivity, using <span class="math" data-tex="\((x_0,x_1)=(x_0,x_0)+(0,x_1-x_0)\)">\((x_0,x_1)=(x_0,x_0)+(0,x_1-x_0)\)</span>, now gives</p>
+<span id="equation-2-5"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+E_0(x_0,x_1)&amp;=\beta_A(x_1-x_0),\\
+E_1(y_0,y_1)&amp;=\theta_A(y_1-y_0).
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+E_0(x_0,x_1)&amp;=\beta_A(x_1-x_0),\\
+E_1(y_0,y_1)&amp;=\theta_A(y_1-y_0).
+\end{aligned}
+\tag{2.5}
+\]</span>
+<p>Finally, inclusion <span class="math" data-tex="\(M_\alpha\to C([0,1],A)\)">\(M_\alpha\to C([0,1],A)\)</span> gives a morphism of extensions from (1.2) to (2.2). Its ideal map is identity and its quotient map is</p>
+<span id="equation-2-6"></span><span class="math math-display" data-tex="\[
+a\longmapsto(a,\alpha(a)).
+\tag{2.6}
+\]">\[
+a\longmapsto(a,\alpha(a)).
+\tag{2.6}
+\]</span>
+<p>Applying boundary naturality and (2.5) proves both assertions in (2.1). This proof determines the index sign directly from the cone, without appealing to an unspecified suspended sign convention. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>An explicit exponential check.</strong> For unital <span class="math" data-tex="\(A\)">\(A\)</span>, lift a projection <span class="math" data-tex="\(p\)">\(p\)</span> by <span class="math" data-tex="\(b_p(t)=(1-t)p+t\alpha(p)\)">\(b_p(t)=(1-t)p+t\alpha(p)\)</span>. Its endpoints are projections, so <span class="math" data-tex="\(e^{2\pi ib_p(t)}\)">\(e^{2\pi ib_p(t)}\)</span> is a based unitary loop and represents <span class="math" data-tex="\(\varepsilon_\alpha[p]\)">\(\varepsilon_\alpha[p]\)</span>. For a relative projection <span class="math" data-tex="\(p\in M_n(A^+)\)">\(p\in M_n(A^+)\)</span> with scalar projection <span class="math" data-tex="\(P\)">\(P\)</span>, use the same lift with <span class="math" data-tex="\(\alpha^+\)">\(\alpha^+\)</span>. Its scalar part is <span class="math" data-tex="\(P\)">\(P\)</span>, hence its exponential has scalar part identity; Lesson 11 gives</p>
+<span id="equation-2-7"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+b_p(t)=(1-t)p+t\alpha^+(p),\\
+\varepsilon_\alpha([p]-[P])=[e^{2\pi i b_p}].
+\end{gathered}
+\tag{2.7}
+\]">\[
+\begin{gathered}
+b_p(t)=(1-t)p+t\alpha^+(p),\\
+\varepsilon_\alpha([p]-[P])=[e^{2\pi i b_p}].
+\end{gathered}
+\tag{2.7}
+\]</span>
+<p>No commutativity between these projections is assumed. Subtracting <span class="math" data-tex="\(P\)">\(P\)</span> inside this exponential, or replacing it by the exponential of a difference of projections, does not in general preserve its endpoint values.</p>
+<p>For example, let <span class="math" data-tex="\(p=e_{11}\)">\(p=e_{11}\)</span> in <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, and let <span class="math" data-tex="\(q=\alpha(p)=\frac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)">\(q=\alpha(p)=\frac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)</span> under a unitary conjugation. Direct multiplication gives <span class="math" data-tex="\((p-q)^2=\frac12 I_2\)">\((p-q)^2=\frac12 I_2\)</span>, so <span class="math" data-tex="\(p-q\)">\(p-q\)</span> has eigenvalues <span class="math" data-tex="\(\pm1/\sqrt2\)">\(\pm1/\sqrt2\)</span>. Therefore <span class="math" data-tex="\(e^{2\pi i(p-q)}\ne I_2\)">\(e^{2\pi i(p-q)}\ne I_2\)</span>. The path <span class="math" data-tex="\(e^{2\pi it(p-q)}\)">\(e^{2\pi it(p-q)}\)</span> is not a based loop, whereas (2.7) has identity at both endpoints. A difference of projections can represent a K-group difference without being a projection or having integral spectrum as an operator.</p>
+<p>For a sign check, take <span class="math" data-tex="\(A=\mathbb C^2\)">\(A=\mathbb C^2\)</span>, let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> exchange the coordinates, and put <span class="math" data-tex="\(p=(1,0)\)">\(p=(1,0)\)</span>. Formula (2.7) is</p>
+<span id="equation-2-8"></span><span class="math math-display" data-tex="\[
+t\longmapsto(e^{-2\pi it},e^{2\pi it}),
+\tag{2.8}
+\]">\[
+t\longmapsto(e^{-2\pi it},e^{2\pi it}),
+\tag{2.8}
+\]</span>
+<p>which has winding pair <span class="math" data-tex="\((-1,1)=\alpha_*[p]-[p]\)">\((-1,1)=\alpha_*[p]-[p]\)</span>. The reversed lift <span class="math" data-tex="\(tp+(1-t)\alpha(p)\)">\(tp+(1-t)\alpha(p)\)</span> has endpoints <span class="math" data-tex="\(\alpha(p),p\)">\(\alpha(p),p\)</span>. It belongs to <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span> only when <span class="math" data-tex="\(\alpha^2(p)=p\)">\(\alpha^2(p)=p\)</span>; a cyclic permutation of three coordinate projections shows the general failure.</p>
+<p>The conventional expression <span class="math" data-tex="\(1-\alpha_*\)">\(1-\alpha_*\)</span> has the same kernels and images as <span class="math" data-tex="\(\alpha_*-1\)">\(\alpha_*-1\)</span>. Replacing each suspension identification by its negative converts (2.1) to that expression. For this course's positive identifications we retain (2.1), because naturality and explicit representatives require the actual map.</p>
+<p><strong>Reversing the interval.</strong> The map <span class="math" data-tex="\(Rf(t)=f(1-t)\)">\(Rf(t)=f(1-t)\)</span> is an isometric *-isomorphism from <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span> onto <span class="math" data-tex="\(M_{\alpha^{-1}}\)">\(M_{\alpha^{-1}}\)</span>. Indeed, its last value is <span class="math" data-tex="\(f(0)=\alpha^{-1}(f(1))\)">\(f(0)=\alpha^{-1}(f(1))\)</span>, and applying reversal again is its inverse. Its quotient map at 0 is <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, since <span class="math" data-tex="\(q_0 Rf=f(1)=\alpha(q_0 f)\)">\(q_0 Rf=f(1)=\alpha(q_0 f)\)</span>. Its ideal map is the suspension reversal <span class="math" data-tex="\(\rho(g)(t)=g(1-t)\)">\(\rho(g)(t)=g(1-t)\)</span>.</p>
+<p>Reversal acts by minus identity under both of our suspension identifications. To verify this without guessing an orientation, reverse the middle functions in the endpoint extension (2.2). This swaps the two quotient coordinates and induces <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on the ideal. By naturality, (2.3) and (2.5) give</p>
+<span id="equation-2-9"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\rho_*\theta_A(y)&amp;=E_1(y,0)=-\theta_A(y),\\
+\rho_*\beta_A(x)&amp;=E_0(x,0)=-\beta_A(x).
+\end{aligned}
+\tag{2.9}
+\]">\[
+\begin{aligned}
+\rho_*\theta_A(y)&amp;=E_1(y,0)=-\theta_A(y),\\
+\rho_*\beta_A(x)&amp;=E_0(x,0)=-\beta_A(x).
+\end{aligned}
+\tag{2.9}
+\]</span>
+<p>The morphism of mapping-torus extensions induced by <span class="math" data-tex="\(R\)">\(R\)</span> therefore intertwines the boundary of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, followed by <span class="math" data-tex="\(\rho_*\)">\(\rho_*\)</span>, with the boundary of <span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span>, preceded by <span class="math" data-tex="\(\alpha_*\)">\(\alpha_*\)</span>. On coefficient groups the required identity is</p>
+<span id="equation-2-10"></span><span class="math math-display" data-tex="\[
+(\alpha_*^{-1}-1)\alpha_*=-(\alpha_*-1),
+\tag{2.10}
+\]">\[
+(\alpha_*^{-1}-1)\alpha_*=-(\alpha_*-1),
+\tag{2.10}
+\]</span>
+<p>exactly as (2.1) predicts. Thus changing the gluing direction also changes the quotient identification and the suspension orientation. Although <span class="math" data-tex="\(1-\alpha_*^{-1}\)">\(1-\alpha_*^{-1}\)</span>, <span class="math" data-tex="\(1-\alpha_*\)">\(1-\alpha_*\)</span> and <span class="math" data-tex="\(\alpha_*-1\)">\(\alpha_*-1\)</span> have the same kernels and images, their formulas record these different choices. The explicit maps above specify how to compare them and how to transport a representative between the two mapping tori.</p>
+<h2 id="3-kernels-cokernels-and-the-splitting-question">3. Kernels, cokernels, and the splitting question</h2>
+<p>The six-term sequence, rewritten using (0.1), runs cyclically as</p>
+<span id="equation-3-1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+K_1(A)\xrightarrow{\alpha_{*,1}-1}K_1(A),\\
+K_1(A)\xrightarrow{j_*\theta_A}K_0(M_\alpha),\\
+K_0(M_\alpha)\xrightarrow{q_*}K_0(A),\\
+K_0(A)\xrightarrow{\alpha_{*,0}-1}K_0(A),\\
+K_0(A)\xrightarrow{j_*\beta_A}K_1(M_\alpha),\\
+K_1(M_\alpha)\xrightarrow{q_*}K_1(A).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+K_1(A)\xrightarrow{\alpha_{*,1}-1}K_1(A),\\
+K_1(A)\xrightarrow{j_*\theta_A}K_0(M_\alpha),\\
+K_0(M_\alpha)\xrightarrow{q_*}K_0(A),\\
+K_0(A)\xrightarrow{\alpha_{*,0}-1}K_0(A),\\
+K_0(A)\xrightarrow{j_*\beta_A}K_1(M_\alpha),\\
+K_1(M_\alpha)\xrightarrow{q_*}K_1(A).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>The final arrow is followed by the first one. For compact notation put <span class="math" data-tex="\(\sigma_0=\theta_A\)">\(\sigma_0=\theta_A\)</span> and <span class="math" data-tex="\(\sigma_1=\beta_A\)">\(\sigma_1=\beta_A\)</span>, so <span class="math" data-tex="\(\sigma_i:K_{1-i}(A)\to K_i(SA)\)">\(\sigma_i:K_{1-i}(A)\to K_i(SA)\)</span>.</p>
+<p><span id="corollary-3-1"></span><strong>Corollary 3.1.</strong> For <span class="math" data-tex="\(i=0,1\)">\(i=0,1\)</span>, there is a natural short exact sequence</p>
+<span id="equation-3-2"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+C_i=\frac{K_{1-i}(A)}{(\alpha_{*,1-i}-1)K_{1-i}(A)},\\
+\begin{aligned}
+0&amp;\longrightarrow C_i
+\xrightarrow{\overline{j_*\sigma_i}}K_i(M_\alpha)\\
+&amp;\xrightarrow{q_*}\ker(\alpha_{*,i}-1)\longrightarrow0.
+\end{aligned}
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+C_i=\frac{K_{1-i}(A)}{(\alpha_{*,1-i}-1)K_{1-i}(A)},\\
+\begin{aligned}
+0&amp;\longrightarrow C_i
+\xrightarrow{\overline{j_*\sigma_i}}K_i(M_\alpha)\\
+&amp;\xrightarrow{q_*}\ker(\alpha_{*,i}-1)\longrightarrow0.
+\end{aligned}
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p><em>Proof.</em> Exactness of (3.1) says that <span class="math" data-tex="\(j_*\sigma_i\)">\(j_*\sigma_i\)</span> has kernel precisely the displayed image of <span class="math" data-tex="\(\alpha_*-1\)">\(\alpha_*-1\)</span>, so it induces an injective map from the quotient. Its image equals the kernel of <span class="math" data-tex="\(q_*\)">\(q_*\)</span>. The image of <span class="math" data-tex="\(q_*\)">\(q_*\)</span> equals the displayed kernel, proving surjectivity onto that subgroup. These three statements prove (3.2). If <span class="math" data-tex="\(\phi:A\to B\)">\(\phi:A\to B\)</span> satisfies <span class="math" data-tex="\(\phi\alpha=\beta\phi\)">\(\phi\alpha=\beta\phi\)</span>, pointwise application gives <span class="math" data-tex="\(M_\alpha\to M_\beta\)">\(M_\alpha\to M_\beta\)</span>. Together with <span class="math" data-tex="\(S\phi\)">\(S\phi\)</span> and <span class="math" data-tex="\(\phi\)">\(\phi\)</span> it is a morphism of extensions. Boundary naturality and naturality of <span class="math" data-tex="\(\theta,\beta\)">\(\theta,\beta\)</span> prove the asserted naturality on the kernels and quotients. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A short exact sequence of abelian groups need not split. If its right-hand group is free abelian, choose a basis and a lift of each basis element. Sending each integral linear combination to the same combination of lifts defines a section. This proves a splitting in that case, but it depends on the lifts.</p>
+<p>For <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span>, constant functions supply a specified section <span class="math" data-tex="\(c:A\to M_1\)">\(c:A\to M_1\)</span> of evaluation. Hence, in the chosen interval coordinate,</p>
+<span id="equation-3-3"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+K_0(M_1)&amp;\cong K_0(A)\oplus K_1(A),\\
+K_1(M_1)&amp;\cong K_1(A)\oplus K_0(A).
+\end{aligned}
+\tag{3.3}
+\]">\[
+\begin{aligned}
+K_0(M_1)&amp;\cong K_0(A)\oplus K_1(A),\\
+K_1(M_1)&amp;\cong K_1(A)\oplus K_0(A).
+\end{aligned}
+\tag{3.3}
+\]</span>
+<p>Explicitly, <span class="math" data-tex="\((x,y)\mapsto c_*x+j_*\sigma_i y\)">\((x,y)\mapsto c_*x+j_*\sigma_i y\)</span> is the degree-<span class="math" data-tex="\(i\)">\(i\)</span> isomorphism. This agrees with the coefficient-circle result of <a href="KT-OPK-12.html#5-adding-circles-with-arbitrary-coefficients">Lesson 12, Theorem 5.1</a>. For a general automorphism, the kernel and cokernel alone do not determine the extension class of (3.2).</p>
+<h2 id="4-moving-the-gluing-automorphism-continuously">4. Moving the gluing automorphism continuously</h2>
+<p>A path of automorphisms is <strong>point-norm continuous</strong> if <span class="math" data-tex="\(s\mapsto\alpha_s(a)\)">\(s\mapsto\alpha_s(a)\)</span> is norm continuous for every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>.</p>
+<p><span id="theorem-4-1"></span><strong>Theorem 4.1 (isomorphism under homotopy and conjugacy).</strong> Suppose <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span> is such a path from <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(\gamma^{-1}\beta\gamma\)">\(\gamma^{-1}\beta\gamma\)</span>, where <span class="math" data-tex="\(\beta,\gamma\in\operatorname{Aut}(A)\)">\(\beta,\gamma\in\operatorname{Aut}(A)\)</span>. Then <span class="math" data-tex="\(M_\alpha\cong M_\beta\)">\(M_\alpha\cong M_\beta\)</span> as C*-algebras.</p>
+<p><em>Proof.</em> Define</p>
+<span id="equation-4-1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta_t=\beta^{-1}\gamma\alpha_t,\\
+\eta_0=\beta^{-1}\gamma\alpha,
+\qquad\eta_1=\gamma,\\
+(\Phi f)(t)=\eta_t(f(t)).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+\eta_t=\beta^{-1}\gamma\alpha_t,\\
+\eta_0=\beta^{-1}\gamma\alpha,
+\qquad\eta_1=\gamma,\\
+(\Phi f)(t)=\eta_t(f(t)).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>This function is continuous. At <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, use isometry to bound its difference by</p>
+<span id="equation-4-2"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|f(t)-f(t_0)\|\\
+&amp;\quad+\|\eta_t(f(t_0))-\eta_{t_0}(f(t_0))\|,
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+&amp;\|f(t)-f(t_0)\|\\
+&amp;\quad+\|\eta_t(f(t_0))-\eta_{t_0}(f(t_0))\|,
+\end{aligned}
+\tag{4.2}
+\]</span>
+<p>which tends to zero. Its boundary satisfies</p>
+<span id="equation-4-3"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\beta((\Phi f)(0))
+&amp;=\gamma\alpha(f(0))\\
+&amp;=\gamma(f(1))=(\Phi f)(1).
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+\beta((\Phi f)(0))
+&amp;=\gamma\alpha(f(0))\\
+&amp;=\gamma(f(1))=(\Phi f)(1).
+\end{aligned}
+\tag{4.3}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> maps into <span class="math" data-tex="\(M_\beta\)">\(M_\beta\)</span>, preserves pointwise algebra operations and adjoints, and is isometric in the supremum norm.</p>
+<p>The inverses also form a point-norm continuous path: for fixed <span class="math" data-tex="\(a\)">\(a\)</span>,</p>
+<span id="equation-4-4"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\eta_t^{-1}(a)-\eta_{t_0}^{-1}(a)\|\\
+=\|a-\eta_t\eta_{t_0}^{-1}(a)\|\longrightarrow0.
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+\|\eta_t^{-1}(a)-\eta_{t_0}^{-1}(a)\|\\
+=\|a-\eta_t\eta_{t_0}^{-1}(a)\|\longrightarrow0.
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>The same continuity estimate as (4.2) therefore applies to <span class="math" data-tex="\(f(t)=\eta_t^{-1}(g(t))\)">\(f(t)=\eta_t^{-1}(g(t))\)</span>. For <span class="math" data-tex="\(g\in M_\beta\)">\(g\in M_\beta\)</span>, its endpoints obey</p>
+<span id="equation-4-5"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+f(0)&amp;=\alpha^{-1}\gamma^{-1}\beta(g(0)),\\
+f(1)&amp;=\gamma^{-1}(g(1))\\
+&amp;=\gamma^{-1}\beta(g(0))=\alpha(f(0)).
+\end{aligned}
+\tag{4.5}
+\]">\[
+\begin{aligned}
+f(0)&amp;=\alpha^{-1}\gamma^{-1}\beta(g(0)),\\
+f(1)&amp;=\gamma^{-1}(g(1))\\
+&amp;=\gamma^{-1}\beta(g(0))=\alpha(f(0)).
+\end{aligned}
+\tag{4.5}
+\]</span>
+<p>So this is an inverse into <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span>, proving the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The quotient map at 0 intertwines <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> with <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span>, not generally with <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> itself. Their induced K-maps agree because <span class="math" data-tex="\(\eta_t\)">\(\eta_t\)</span> is a homotopy from <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> to <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The proof needs a path of automorphisms: a homotopy through arbitrary homomorphisms does not provide the pointwise inverse used above.</p>
+<p>Two useful special cases have simpler formulas. If <span class="math" data-tex="\(\beta=\gamma\alpha\gamma^{-1}\)">\(\beta=\gamma\alpha\gamma^{-1}\)</span>, constant pointwise application <span class="math" data-tex="\(f\mapsto\gamma\circ f\)">\(f\mapsto\gamma\circ f\)</span> gives the isomorphism. If</p>
+<span id="equation-4-6"></span><span class="math math-display" data-tex="\[
+\beta=\operatorname{Ad}(u)\alpha,
+\qquad u\in U_0(M(A)),
+\tag{4.6}
+\]">\[
+\beta=\operatorname{Ad}(u)\alpha,
+\qquad u\in U_0(M(A)),
+\tag{4.6}
+\]</span>
+<p>choose a norm-continuous unitary path <span class="math" data-tex="\(u_t\)">\(u_t\)</span> from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(u\)">\(u\)</span>. Here <span class="math" data-tex="\(M(A)\)">\(M(A)\)</span> denotes the multiplier algebra, and for unital <span class="math" data-tex="\(A\)">\(A\)</span> we may use <span class="math" data-tex="\(A\)">\(A\)</span> itself. Then</p>
+<span id="equation-4-7"></span><span class="math math-display" data-tex="\[
+(\Psi f)(t)=u_t f(t)u_t^*
+\tag{4.7}
+\]">\[
+(\Psi f)(t)=u_t f(t)u_t^*
+\tag{4.7}
+\]</span>
+<p>is an isomorphism <span class="math" data-tex="\(M_\alpha\to M_\beta\)">\(M_\alpha\to M_\beta\)</span>: its values at 0 and 1 are <span class="math" data-tex="\(f(0)\)">\(f(0)\)</span> and <span class="math" data-tex="\(u\alpha(f(0))u^*\)">\(u\alpha(f(0))u^*\)</span>. Continuity follows from norm continuity of <span class="math" data-tex="\(u_t\)">\(u_t\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span>; conjugation preserves <span class="math" data-tex="\(A\)">\(A\)</span>. Conjugation by <span class="math" data-tex="\(u_t^*\)">\(u_t^*\)</span> gives the inverse, whose endpoint condition follows by reversing the same computation. Membership of <span class="math" data-tex="\(u\)">\(u\)</span> in the identity component supplies the required path.</p>
+<h3 id="from-mapping-tori-to-crossed-products">From mapping tori to crossed products</h3>
+<p>The preceding isomorphism also controls crossed-product K-groups, even when the coefficient groups have torsion. We now use three complete proofs already written in this programme: <a href="../../KT-CP-07.html"><em>Green's imprimitivity theorem</em>, Theorem 7.4 and equations (7.45)–(7.47)</a>, <a href="../hilbert-c-star-modules-and-morita-equivalence/morita-invariance-of-k-theory-and-correspondence-maps.html"><em>Morita invariance of K-theory and correspondence maps</em>, Theorem 2.4 and Corollary 2.5</a>, and <a href="../../KT-CP-11.html"><em>The Connes–Thom isomorphism</em>, Theorem 11.3</a>. Their proofs cover arbitrary C*-algebras. The Morita proof obtains the actual linking-corner maps, first for separable full corners and then by directed continuity; it does not require a countable approximate identity in the present algebra. The Thom proof makes both Wiener–Hopf boundaries bijective. We retain those precise maps and prove their application to our endpoint convention below. All crossed products in this comparison are full crossed products.</p>
+<p><span id="proposition-4-2"></span><strong>Proposition 4.2 (the crossed-product comparison).</strong> For every C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> and every <span class="math" data-tex="\(\alpha\in\operatorname{Aut}(A)\)">\(\alpha\in\operatorname{Aut}(A)\)</span>, there are isomorphisms</p>
+<span id="equation-4-8"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\Xi_{\alpha,i}:K_i(A\rtimes_\alpha\mathbb Z)\\
+\longrightarrow K_{i-1}(M_\alpha),\\
+i=0,1,
+\end{gathered}
+\tag{4.8}
+\]">\[
+\begin{gathered}
+\Xi_{\alpha,i}:K_i(A\rtimes_\alpha\mathbb Z)\\
+\longrightarrow K_{i-1}(M_\alpha),\\
+i=0,1,
+\end{gathered}
+\tag{4.8}
+\]</span>
+<p>with degrees read modulo two.</p>
+<p><em>Proof.</em> Extend <span class="math" data-tex="\(F\in M_\alpha\)">\(F\in M_\alpha\)</span> to the real line as in Section 1 and set</p>
+<span id="equation-4-9"></span><span class="math math-display" data-tex="\[
+(\tau_rF)(t)=F(t+r).
+\tag{4.9}
+\]">\[
+(\tau_rF)(t)=F(t+r).
+\tag{4.9}
+\]</span>
+<p>Since <span class="math" data-tex="\(F(t+1)=\alpha(F(t))\)">\(F(t+1)=\alpha(F(t))\)</span>, the translated function has the same covariance and belongs to <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span>. Translation preserves pointwise algebra operations and adjoints, and <span class="math" data-tex="\(\tau_{-r}\)">\(\tau_{-r}\)</span> is its inverse. The continuous function <span class="math" data-tex="\(t\mapsto\|F(t)\|\)">\(t\mapsto\|F(t)\|\)</span> is one-periodic; its supremum on any interval of length one is therefore <span class="math" data-tex="\(\|F\|\)">\(\|F\|\)</span>. Thus each <span class="math" data-tex="\(\tau_r\)">\(\tau_r\)</span> is isometric. Uniform continuity of <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\([-1,2]\)">\([-1,2]\)</span> gives <span class="math" data-tex="\(\|\tau_rF-F\|\to0\)">\(\|\tau_rF-F\|\to0\)</span> as <span class="math" data-tex="\(r\to0\)">\(r\to0\)</span>. The group law and isometry give continuity at every <span class="math" data-tex="\(r\)">\(r\)</span>, so this is a point-norm continuous real action, with no separability hypothesis.</p>
+<p>For Green's theorem choose <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span>, <span class="math" data-tex="\(H=\mathbb Z\)">\(H=\mathbb Z\)</span> and the action <span class="math" data-tex="\(n\mapsto\alpha^n\)">\(n\mapsto\alpha^n\)</span>. Its induced algebra consists of continuous functions <span class="math" data-tex="\(f\)">\(f\)</span> such that <span class="math" data-tex="\(f(t+n)=\alpha^{-n}(f(t))\)">\(f(t+n)=\alpha^{-n}(f(t))\)</span>. The norm on the compact quotient is bounded automatically. Reflection <span class="math" data-tex="\(F(t)=f(-t)\)">\(F(t)=f(-t)\)</span> identifies it isometrically with <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span>: indeed <span class="math" data-tex="\(F(t+n)=\alpha^n(F(t))\)">\(F(t+n)=\alpha^n(F(t))\)</span>. The inverse is the same reflection after the quasi-periodic extension. Green's left translation <span class="math" data-tex="\((\operatorname{lt}_rf)(t)=f(t-r)\)">\((\operatorname{lt}_rf)(t)=f(t-r)\)</span> becomes exactly (4.9), since</p>
+<span id="equation-4-10"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+(\operatorname{lt}_rf)(-t)&amp;=f(-t-r)\\
+&amp;=F(t+r).
+\end{aligned}
+\tag{4.10}
+\]">\[
+\begin{aligned}
+(\operatorname{lt}_rf)(-t)&amp;=f(-t-r)\\
+&amp;=F(t+r).
+\end{aligned}
+\tag{4.10}
+\]</span>
+<p>Consequently the cited complete imprimitivity proof supplies an equivalence between</p>
+<span id="equation-4-11"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+B&amp;=A\rtimes_\alpha\mathbb Z,\\
+C&amp;=M_\alpha\rtimes_\tau\mathbb R.
+\end{aligned}
+\tag{4.11}
+\]">\[
+\begin{aligned}
+B&amp;=A\rtimes_\alpha\mathbb Z,\\
+C&amp;=M_\alpha\rtimes_\tau\mathbb R.
+\end{aligned}
+\tag{4.11}
+\]</span>
+<p>Orient its bimodule as a <span class="math" data-tex="\(B\)">\(B\)</span>–<span class="math" data-tex="\(C\)">\(C\)</span> module <span class="math" data-tex="\(X\)">\(X\)</span>, taking the conjugate Green module if necessary. Its linking algebra is <span class="math" data-tex="\(L=\mathcal K(X\oplus C)\)">\(L=\mathcal K(X\oplus C)\)</span>, with full diagonal corner inclusions <span class="math" data-tex="\(i_B,i_C\)">\(i_B,i_C\)</span>. Corollary 2.5 of the Morita lesson proves that both corner K-maps are invertible and that <span class="math" data-tex="\(\mu_{X,i}=(i_{C*})^{-1}i_{B*}:K_i(B)\to K_i(C)\)">\(\mu_{X,i}=(i_{C*})^{-1}i_{B*}:K_i(B)\to K_i(C)\)</span> is an isomorphism. Theorem 11.3 of the Thom lesson proves that the degree-<span class="math" data-tex="\(i\)">\(i\)</span> Wiener–Hopf boundary <span class="math" data-tex="\(\partial_i^\tau:K_i(C)\to K_{i-1}(M_\alpha)\)">\(\partial_i^\tau:K_i(C)\to K_{i-1}(M_\alpha)\)</span> is an isomorphism. Define</p>
+<span id="equation-4-12"></span><span class="math math-display" data-tex="\[
+\Xi_{\alpha,i}=\partial_i^\tau\,\mu_{X,i}.
+\tag{4.12}
+\]">\[
+\Xi_{\alpha,i}=\partial_i^\tau\,\mu_{X,i}.
+\tag{4.12}
+\]</span>
+<p>This is a composition of the two specified isomorphisms. Reflection (4.10) fixes which gluing automorphism and real flow they use; no replacement of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by its inverse is implicit. This proves (4.8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="corollary-4-3"></span><strong>Corollary 4.3 (homotopy of automorphisms).</strong> Under the hypotheses of Theorem 4.1, for both degrees,</p>
+<span id="equation-4-13"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+K_i(A\rtimes_\alpha\mathbb Z)
+\\\cong K_i(A\rtimes_\beta\mathbb Z).
+\end{gathered}
+\tag{4.13}
+\]">\[
+\begin{gathered}
+K_i(A\rtimes_\alpha\mathbb Z)
+\\\cong K_i(A\rtimes_\beta\mathbb Z).
+\end{gathered}
+\tag{4.13}
+\]</span>
+<p><em>Proof.</em> Theorem 4.1 gives the actual isomorphism <span class="math" data-tex="\(\Phi:M_\alpha\to M_\beta\)">\(\Phi:M_\alpha\to M_\beta\)</span>, hence an isomorphism on each mapping-torus K-group. The required isomorphism is the composition <span class="math" data-tex="\(\Xi_{\beta,i}^{-1}\,\Phi_*\,\Xi_{\alpha,i}\)">\(\Xi_{\beta,i}^{-1}\,\Phi_*\,\Xi_{\alpha,i}\)</span>. Every factor has an inverse. No freeness, unitality or countability condition is used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This conclusion uses a path through automorphisms, including its pointwise inverse in Theorem 4.1. Equality of the induced coefficient K-maps alone does not give that path or split the sequences (3.2). Moreover <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> need not intertwine the translation flows. Formula (4.13) compares their K-groups through the mapping tori; it does not apply crossed-product functoriality to a nonequivariant <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, or assert an isomorphism of the crossed-product algebras. These distinctions allow the same argument to handle torsion in Lessons 21 and 23.</p>
+<h2 id="5-gluing-spaces-the-torus-and-the-klein-bottle">5. Gluing spaces: the torus and the Klein bottle</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be compact Hausdorff and <span class="math" data-tex="\(\varphi:X\to X\)">\(\varphi:X\to X\)</span> a homeomorphism. Set <span class="math" data-tex="\(\alpha=\varphi^*\)">\(\alpha=\varphi^*\)</span>, meaning <span class="math" data-tex="\(\alpha(a)(x)=a(\varphi(x))\)">\(\alpha(a)(x)=a(\varphi(x))\)</span>, and form</p>
+<span id="equation-5-1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+X_\varphi=(X\times[0,1])/\!\sim,\\
+(x,1)\sim(\varphi(x),0).
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+X_\varphi=(X\times[0,1])/\!\sim,\\
+(x,1)\sim(\varphi(x),0).
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>The equivalence relation is closed: it consists of the diagonal and the two closed endpoint graphs. The quotient is compact Hausdorff. A norm-continuous function <span class="math" data-tex="\(f:[0,1]\to C(X)\)">\(f:[0,1]\to C(X)\)</span> corresponds to the continuous function <span class="math" data-tex="\(F(x,t)=f(t)(x)\)">\(F(x,t)=f(t)(x)\)</span>. Joint continuity follows from uniform norm continuity in <span class="math" data-tex="\(t\)">\(t\)</span> and continuity in <span class="math" data-tex="\(x\)">\(x\)</span>. Conversely, a continuous function on the compact product is norm continuous as a <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>-valued function: continuity near each point of a fixed slice, followed by a finite cover of <span class="math" data-tex="\(X\)">\(X\)</span>, bounds the difference uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>. The gluing condition is exactly</p>
+<span id="equation-5-2"></span><span class="math math-display" data-tex="\[
+F(x,1)=F(\varphi(x),0).
+\tag{5.2}
+\]">\[
+F(x,1)=F(\varphi(x),0).
+\tag{5.2}
+\]</span>
+<p>Such functions descend continuously through the quotient, and all quotient functions pull back this way. Suprema agree and operations are pointwise, proving an isometric *-isomorphism</p>
+<span id="equation-5-3"></span><span class="math math-display" data-tex="\[
+M_{\varphi^*}\cong C(X_\varphi).
+\tag{5.3}
+\]">\[
+M_{\varphi^*}\cong C(X_\varphi).
+\tag{5.3}
+\]</span>
+<p>For <span class="math" data-tex="\(\varphi=1\)">\(\varphi=1\)</span> and <span class="math" data-tex="\(X=S^1\)">\(X=S^1\)</span>, the space is the two-dimensional torus. The identity case (3.3), with <span class="math" data-tex="\(K_0(C(S^1))=K_1(C(S^1))=\mathbb Z\)">\(K_0(C(S^1))=K_1(C(S^1))=\mathbb Z\)</span>, gives <span class="math" data-tex="\(K^0(T^2)=K^1(T^2)=\mathbb Z^2\)">\(K^0(T^2)=K^1(T^2)=\mathbb Z^2\)</span>. Rank and positive winding are the generators of the coefficient groups, by <a href="KT-OPK-06.html#5-components-detected-by-spectra-winding-and-index">Lesson 6, Theorem 5.2</a>.</p>
+<p><span id="proposition-5-1"></span><strong>Proposition 5.1 (Klein bottle).</strong> For the Klein bottle <span class="math" data-tex="\(\mathcal K=X_\varphi\)">\(\mathcal K=X_\varphi\)</span>, where <span class="math" data-tex="\(X=S^1\)">\(X=S^1\)</span> and <span class="math" data-tex="\(\varphi(z)=\overline z\)">\(\varphi(z)=\overline z\)</span>,</p>
+<span id="equation-5-4"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+K^0(\mathcal K)&amp;=\mathbb Z\oplus\mathbb Z/2,\\
+K^1(\mathcal K)&amp;=\mathbb Z.
+\end{aligned}
+\tag{5.4}
+\]">\[
+\begin{aligned}
+K^0(\mathcal K)&amp;=\mathbb Z\oplus\mathbb Z/2,\\
+K^1(\mathcal K)&amp;=\mathbb Z.
+\end{aligned}
+\tag{5.4}
+\]</span>
+<p><em>Proof.</em> On <span class="math" data-tex="\(K_0(C(S^1))\)">\(K_0(C(S^1))\)</span>, <span class="math" data-tex="\(\alpha_*\)">\(\alpha_*\)</span> is identity: it fixes the rank-one generator. On <span class="math" data-tex="\(K_1\)">\(K_1\)</span>, it sends the coordinate unitary <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(\overline z=z^{-1}\)">\(\overline z=z^{-1}\)</span>, which has winding <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus <span class="math" data-tex="\(\alpha_*-1\)">\(\alpha_*-1\)</span> is zero in degree 0 and multiplication by <span class="math" data-tex="\(-2\)">\(-2\)</span> in degree 1. Formula (3.2) becomes</p>
+<span id="equation-5-5"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\longrightarrow\mathbb Z/2\longrightarrow K_0(M_\alpha)\\
+&amp;\xrightarrow{q_*}\mathbb Z\longrightarrow0,\\
+0&amp;\longrightarrow\mathbb Z\xrightarrow{j_*\beta_A}K_1(M_\alpha)\\
+&amp;\longrightarrow0\longrightarrow0.
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+0&amp;\longrightarrow\mathbb Z/2\longrightarrow K_0(M_\alpha)\\
+&amp;\xrightarrow{q_*}\mathbb Z\longrightarrow0,\\
+0&amp;\longrightarrow\mathbb Z\xrightarrow{j_*\beta_A}K_1(M_\alpha)\\
+&amp;\longrightarrow0\longrightarrow0.
+\end{aligned}
+\tag{5.5}
+\]</span>
+<p>The first sequence splits by <span class="math" data-tex="\(n\mapsto n[1_{M_\alpha}]\)">\(n\mapsto n[1_{M_\alpha}]\)</span>, since evaluation sends the unit to the coefficient generator. Its injected torsion generator is <span class="math" data-tex="\(j_*\theta_A[z]\)">\(j_*\theta_A[z]\)</span>, of exact order 2 because the induced map from the cokernel is injective. The second sequence identifies its group with <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, generated by the base-circle unitary</p>
+<span id="equation-5-6"></span><span class="math math-display" data-tex="\[
+w(t)=e^{2\pi it}1_A.
+\tag{5.6}
+\]">\[
+w(t)=e^{2\pi it}1_A.
+\tag{5.6}
+\]</span>
+<p>Its endpoints are identity, so it is a based loop over <span class="math" data-tex="\(SA\)">\(SA\)</span> and its image is in <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span>. The rank-one class and the order-two class prove the first isomorphism; the second sequence proves the second. Equation (5.3) and the definition of topological K-theory in <a href="KT-OPK-12.html">Lesson 12</a> finish the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-five-exercises-with-complete-solutions">6. Five exercises with complete solutions</h2>
+<p><strong>Exercise 17.1 (identity and coefficients).</strong> Identify <span class="math" data-tex="\(M_1\)">\(M_1\)</span>, and give both coefficient-circle isomorphisms with their maps.</p>
+<p><em>Solution.</em> When <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span>, (1.1) consists precisely of continuous functions on the interval with equal endpoints. The quotient <span class="math" data-tex="\([0,1]/\{0,1\}\cong S^1\)">\([0,1]/\{0,1\}\cong S^1\)</span> identifies this algebra isometrically with <span class="math" data-tex="\(C(S^1,A)\)">\(C(S^1,A)\)</span>. Evaluation has the *-homomorphic section of constant functions <span class="math" data-tex="\(c\)">\(c\)</span>, so both boundaries vanish. For degree <span class="math" data-tex="\(i\)">\(i\)</span>, the map <span class="math" data-tex="\((x,y)\mapsto c_*x+j_*\sigma_i y\)">\((x,y)\mapsto c_*x+j_*\sigma_i y\)</span> has inverse as follows: send <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\(q_*h\)">\(q_*h\)</span> in its first coordinate. The difference <span class="math" data-tex="\(h-c_*q_*h\)">\(h-c_*q_*h\)</span> lies in <span class="math" data-tex="\(\ker q_*\)">\(\ker q_*\)</span>, which equals the image of the injective <span class="math" data-tex="\(j_*\sigma_i\)">\(j_*\sigma_i\)</span>; use its unique preimage as the second coordinate. This proves both maps are mutually inverse and recovers (3.3) without making a splitting choice.</p>
+<p><strong>Exercise 17.2 (Klein bottle generators).</strong> Compute the groups, the evaluation maps and explicit generators of the Klein bottle.</p>
+<p><em>Solution.</em> Complex conjugation acts by <span class="math" data-tex="\(+1\)">\(+1\)</span> on rank and <span class="math" data-tex="\(-1\)">\(-1\)</span> on winding, so the two change maps are <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(-2\)">\(-2\)</span>. In degree 0 the cokernel of the winding change is <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>, and the kernel of the rank change is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The unit supplies a lift of 1 in the latter, so every class is uniquely <span class="math" data-tex="\(n[1]+e\,j_*\theta[z]\)">\(n[1]+e\,j_*\theta[z]\)</span>, with <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span> and <span class="math" data-tex="\(e\in\{0,1\}\)">\(e\in\{0,1\}\)</span>. Evaluation gives <span class="math" data-tex="\(n\)">\(n\)</span>, and the second summand has exact order 2 by injectivity from the cokernel. In degree 1 the cokernel of the rank change is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, while the kernel of multiplication by <span class="math" data-tex="\(-2\)">\(-2\)</span> is zero. Thus <span class="math" data-tex="\(j_*\beta\)">\(j_*\beta\)</span> is an isomorphism, every class is an integer multiple of <span class="math" data-tex="\([w]\)">\([w]\)</span> in (5.6), and evaluation in degree 1 is zero. These determine the maps as well as the groups.</p>
+<p><strong>Exercise 17.3 (the automorphism-homotopy theorem).</strong> Prove Blackadar's Proposition 10.5.1, including its conjugacy version and continuity of the inverse.</p>
+<p><em>Solution.</em> Let <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> join <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(\gamma^{-1}\beta\gamma\)">\(\gamma^{-1}\beta\gamma\)</span>. Put <span class="math" data-tex="\(\eta_t=\beta^{-1}\gamma\alpha_t\)">\(\eta_t=\beta^{-1}\gamma\alpha_t\)</span> and <span class="math" data-tex="\(\Phi(f)(t)=\eta_t(f(t))\)">\(\Phi(f)(t)=\eta_t(f(t))\)</span>. Estimate (4.2) proves continuity using only point-norm continuity. Its endpoints obey <span class="math" data-tex="\(\beta\eta_0=\gamma\alpha\)">\(\beta\eta_0=\gamma\alpha\)</span> and <span class="math" data-tex="\(\eta_1=\gamma\)">\(\eta_1=\gamma\)</span>, hence <span class="math" data-tex="\(\beta\Phi(f)(0)=\Phi(f)(1)\)">\(\beta\Phi(f)(0)=\Phi(f)(1)\)</span>. It is a pointwise *-homomorphism and an isometry. Formula (4.4) proves point-norm continuity of the inverses, and the same estimate proves continuity of <span class="math" data-tex="\(\eta_t^{-1}(g(t))\)">\(\eta_t^{-1}(g(t))\)</span>. Equation (4.5) verifies the inverse's endpoint condition. Pointwise composition in both orders is identity. With <span class="math" data-tex="\(\gamma=1\)">\(\gamma=1\)</span> this proves the homotopy case; the general construction proves the conjugacy version. No finite-dimensional or unital hypothesis was used.</p>
+<p><strong>Exercise 17.4 (conjugation and an inner perturbation).</strong> Give direct isomorphisms for conjugate automorphisms and for <span class="math" data-tex="\(\beta=\operatorname{Ad}(u)\alpha\)">\(\beta=\operatorname{Ad}(u)\alpha\)</span> with <span class="math" data-tex="\(u\in U_0(M(A))\)">\(u\in U_0(M(A))\)</span>.</p>
+<p><em>Solution.</em> In the conjugate case <span class="math" data-tex="\(\beta=\gamma\alpha\gamma^{-1}\)">\(\beta=\gamma\alpha\gamma^{-1}\)</span>, use <span class="math" data-tex="\(\Phi(f)(t)=\gamma(f(t))\)">\(\Phi(f)(t)=\gamma(f(t))\)</span>. Its last value is <span class="math" data-tex="\(\gamma\alpha(f(0))=\beta\gamma(f(0))\)">\(\gamma\alpha(f(0))=\beta\gamma(f(0))\)</span>; applying <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span> pointwise gives the inverse. In the inner case choose a norm-continuous path <span class="math" data-tex="\(u_t\)">\(u_t\)</span> from 1 to <span class="math" data-tex="\(u\)">\(u\)</span> and use (4.7). Its last value is <span class="math" data-tex="\(u\alpha(f(0))u^*=\beta(f(0))\)">\(u\alpha(f(0))u^*=\beta(f(0))\)</span>, and its first is <span class="math" data-tex="\(f(0)\)">\(f(0)\)</span>. For <span class="math" data-tex="\(g\in M_\beta\)">\(g\in M_\beta\)</span>, the proposed inverse has first value <span class="math" data-tex="\(g(0)\)">\(g(0)\)</span> and last value <span class="math" data-tex="\(u^*\beta(g(0))u=\alpha(g(0))\)">\(u^*\beta(g(0))u=\alpha(g(0))\)</span>, so it belongs to <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span>. Both maps preserve products and adjoints, are continuous isometries, and compose to identity. The path makes the construction valid in the multiplier algebra because its conjugations preserve the essential ideal <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Exercise 17.5 (a two-point circle and the sign).</strong> Let <span class="math" data-tex="\(A=\mathbb C^2\)">\(A=\mathbb C^2\)</span> and let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> exchange the coordinates. Identify its mapping torus, compute its groups and maps, and verify explicitly that <span class="math" data-tex="\(j_*\beta([p]-[q])=0\)">\(j_*\beta([p]-[q])=0\)</span> for <span class="math" data-tex="\(p=(1,0),q=(0,1)\)">\(p=(1,0),q=(0,1)\)</span>.</p>
+<p><em>Solution.</em> Write <span class="math" data-tex="\(f(t)=(f_1(t),f_2(t))\)">\(f(t)=(f_1(t),f_2(t))\)</span>. The conditions are <span class="math" data-tex="\(f_1(1)=f_2(0)\)">\(f_1(1)=f_2(0)\)</span> and <span class="math" data-tex="\(f_2(1)=f_1(0)\)">\(f_2(1)=f_1(0)\)</span>. Concatenate <span class="math" data-tex="\(f_1\)">\(f_1\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and <span class="math" data-tex="\(f_2\)">\(f_2\)</span> on <span class="math" data-tex="\([1,2]\)">\([1,2]\)</span>; these conditions give a continuous function on the circle <span class="math" data-tex="\(\mathbb R/2\mathbb Z\)">\(\mathbb R/2\mathbb Z\)</span>. Concatenation and restriction are inverse isometric *-homomorphisms. Therefore both K-groups are <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p>In degree 0, evaluation sends rank <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\((n,n)\)">\((n,n)\)</span>. The image of <span class="math" data-tex="\(\alpha_*-1\)">\(\alpha_*-1\)</span> on <span class="math" data-tex="\(K_0(A)=\mathbb Z^2\)">\(K_0(A)=\mathbb Z^2\)</span> is <span class="math" data-tex="\(\mathbb Z(1,-1)\)">\(\mathbb Z(1,-1)\)</span>, with kernel the diagonal. Its cokernel is identified with <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> by the sum of coordinates. Since <span class="math" data-tex="\(K_1(A)=0\)">\(K_1(A)=0\)</span>, (3.2) makes evaluation in degree 0 an isomorphism onto that diagonal, and makes <span class="math" data-tex="\(j_*\beta\)">\(j_*\beta\)</span> in degree 1 the sum map. Directly, the two based loops for ranks <span class="math" data-tex="\(a,b\)">\(a,b\)</span> concatenate with total winding <span class="math" data-tex="\(a+b\)">\(a+b\)</span>.</p>
+<p>For the requested nullhomotopy, put <span class="math" data-tex="\(h(t)=(t,1-t)\)">\(h(t)=(t,1-t)\)</span>. Its last value is the exchange of its first, so <span class="math" data-tex="\(h\in M_\alpha\)">\(h\in M_\alpha\)</span>. The unitaries</p>
+<span id="equation-6-1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+U_s(t)=\exp(2\pi i s h(t)),\\
+0\leq s\leq1,
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+U_s(t)=\exp(2\pi i s h(t)),\\
+0\leq s\leq1,
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>belong to <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span>, because functional calculus preserves the endpoint condition. At <span class="math" data-tex="\(s=0\)">\(s=0\)</span> they are identity; at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> they are <span class="math" data-tex="\((e^{2\pi it},e^{-2\pi it})\)">\((e^{2\pi it},e^{-2\pi it})\)</span>, the representative of <span class="math" data-tex="\(j_*\beta([p]-[q])\)">\(j_*\beta([p]-[q])\)</span>. Thus that nonzero coefficient class dies after inclusion, as also predicted by exactness. Finally the connecting loop for <span class="math" data-tex="\([p]\)">\([p]\)</span> is (2.8), giving <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> and confirming the sign in Theorem 2.1. This example also explains why a subgroup of a suspension K-group cannot automatically be regarded as an injected subgroup of the mapping torus's K-group.</p>
+<h2 id="sources-and-precise-imports">Sources and precise imports</h2>
+<ul>
+<li>B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition (1998), §§10.3–10.5, printed pp. 74–77: mapping-torus definition, Proposition 10.4.1 on its boundary, and Proposition 10.5.1 on homotopy and conjugacy. Both boundary signs, the full mapping-torus homotopy theorem, and the crossed-product K comparison of Corollary 10.5.2 are proved above using exact programme prerequisites. The proposed reversed projection lift in the boundary argument is replaced by (1.3); relative exponentials use (2.7). <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</li>
+<li>J. Rosenberg, “Examples and applications of noncommutative geometry and K-theory,” in <em>Topics in Noncommutative Geometry</em> (2012), §2.5, printed p. 108: the mapping-torus sequence and its place in the crossed-product computation. The mapping-torus part is proved directly; Proposition 4.2 uses the complete Green, linking-corner and Wiener–Hopf proofs in the three programme lessons named there.</li>
+<li>The complete programme proofs used in Section 4 were checked at their published source versions: <a href="../../KT-CP-07.html">Green's theorem</a>, <a href="../hilbert-c-star-modules-and-morita-equivalence/morita-invariance-of-k-theory-and-correspondence-maps.html">arbitrary Morita invariance</a>, and <a href="../../KT-CP-11.html">the Thom theorem</a>. The endpoint reflection, continuous real action and composition of actual K-maps are proved here. This supplies the asserted group comparison; the separate Kasparov-equivalence context in Lesson 21 retains its own proof obligation.</li>
+<li>Lessons 8, 10 and 11 supply the exact suspension maps, positive exponential formula, boundary naturality and six-term exactness. Lessons 6 and 12 supply circle generators and the definition of topological K-theory. These exact imports are used rather than reproved.</li>
+</ul>
+<p>The kernel-cokernel sequences describe the possible extension of groups; a splitting is asserted only when a section or basis-lifting argument has been given. The compact-space identification uses the stated pullback convention <span class="math" data-tex="\(\varphi^*a=a\circ\varphi\)">\(\varphi^*a=a\circ\varphi\)</span>. These choices keep endpoint directions, signs and generators consistent throughout.</p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/KT-OPK/KT-OPK-17.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

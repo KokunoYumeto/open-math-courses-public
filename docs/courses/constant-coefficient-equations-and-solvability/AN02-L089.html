@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Constant strength, regularity, and the directions of singularities</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="constant-strength-regularity-and-the-directions-of-singularities">Constant strength, regularity, and the directions of singularities</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Original expression: CC0.</em></p>
+<p>A frozen operator can control a variable-coefficient equation when every frozen symbol measures the same derivatives. Here that agreement has a stronger consequence. If one frozen operator removes all singularities from homogeneous solutions, the variable equation gains its full symbol weight, and it preserves exactly the singular directions of its right-hand side. The necessity proof explains why: a rapidly modulated point source would otherwise leave a nonconstant limiting equation supported at a single point.</p>
+<p>Read <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a>, <a href="AN02-L003.html">Local regularity, sharp embeddings, and compactness</a>, <a href="AN02-L006.html">Rescaled symbols and stable strength</a>, <a href="AN02-L007.html">Freezing coefficients without losing strength</a>, <a href="AN02-L021.html">Hypoellipticity and complex zeros</a>, <a href="AN02-L018.html">Symbols at infinity</a>.</p>
+<p>The wave-front assertions assume the Fourier cutoff definition of the smooth wave front set and its projection onto singular support. The Gaussian comparison uses tensor products, differentiation of compact distribution pairings, and the real Gaussian Fourier formula. A kernel-composition theorem for wave fronts is not an input: the proof gives its own angular-weight argument.</p>
+<h2 id="a-point-source-detects-a-bad-frozen-symbol">A point source detects a bad frozen symbol</h2>
+<p>Use <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> and <span class="math" data-tex="\(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\)">\(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\)</span>. The coefficients are smooth on a nonempty open set <span class="math" data-tex="\(X\)">\(X\)</span>. Constant strength means that the nonzero frozen polynomials <span class="math" data-tex="\(A(x,\cdot)\)">\(A(x,\cdot)\)</span>, for <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, have equivalent full derivative norms. At a chosen <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, write the fixed weaker-polynomial expansion
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(\xi)\\
+=A(x_0,\xi),\\
+A(x,D)\\
+=P(D)+\sum_{\nu=1}^q c_\nu(x)Q_\nu(D),\\
+S_P(\xi,T)^2\\
+=\sum_{\alpha}T^{2|\alpha|}|\partial^\alpha P(\xi)|^2,
+\\
+S_P(\xi)\\
+=S_P(\xi,1).
+\end{gathered}
+\tag{HE1}
+\]">\[
+\begin{gathered}
+P(\xi)\\
+=A(x_0,\xi),\\
+A(x,D)\\
+=P(D)+\sum_{\nu=1}^q c_\nu(x)Q_\nu(D),\\
+S_P(\xi,T)^2\\
+=\sum_{\alpha}T^{2|\alpha|}|\partial^\alpha P(\xi)|^2,
+\\
+S_P(\xi)\\
+=S_P(\xi,1).
+\end{gathered}
+\tag{HE1}
+\]</span>
+Here <span class="math" data-tex="\(c_\nu(x_0)=0\)">\(c_\nu(x_0)=0\)</span>, <span class="math" data-tex="\(Q_\nu\prec P\)">\(Q_\nu\prec P\)</span>, and the sum of derivative norms is finite. A nonzero highest derivative gives a positive constant lower bound for <span class="math" data-tex="\(S_P\)">\(S_P\)</span>. Uniform rescaled comparison says that <span class="math" data-tex="\(S_Q(\xi,T)\le C_Q S_P(\xi,T)\)">\(S_Q(\xi,T)\le C_Q S_P(\xi,T)\)</span> for every <span class="math" data-tex="\(Q\prec P\)">\(Q\prec P\)</span> and <span class="math" data-tex="\(T\ge1\)">\(T\ge1\)</span>. The finite-dimensional proof in the rescaled-symbol lesson is the input for this assertion.</p>
+<p><strong>Lemma 1 (necessity from a point source).</strong> Suppose that <span class="math" data-tex="\(A\)">\(A\)</span> is hypoelliptic on <span class="math" data-tex="\(X\)">\(X\)</span>, in the sense that its singular support agrees with that of its argument. Every coefficient limit
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P_j(\xi)=\frac{P(\xi+\eta_j)}{S_P(\eta_j)}\longrightarrow Q_0(\xi),
+\\
+\qquad |\eta_j|\longrightarrow\infty,
+\end{gathered}
+\tag{HE2}
+\]">\[
+\begin{gathered}
+P_j(\xi)=\frac{P(\xi+\eta_j)}{S_P(\eta_j)}\longrightarrow Q_0(\xi),
+\\
+\qquad |\eta_j|\longrightarrow\infty,
+\end{gathered}
+\tag{HE2}
+\]</span>
+is a nonzero constant. Consequently, for every positive multi-index order,
+<span class="math" data-tex="\(\partial^\alpha P(\eta)/P(\eta)\to0\)">\(\partial^\alpha P(\eta)/P(\eta)\to0\)</span> on real frequencies going to infinity, and <span class="math" data-tex="\(P\)">\(P\)</span> is eventually nonzero there.</p>
+<p><strong>Proof.</strong> The one-weight-independent inverse theorem gives a small neighborhood <span class="math" data-tex="\(Y\Subset X\)">\(Y\Subset X\)</span> of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, a compact global output, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u=E\delta_{x_0}\in B_{\infty,S_P},\\
+\qquad Au=\delta_{x_0}\\
+\quad\hbox{on }Y.
+\end{gathered}
+\tag{HE3}
+\]">\[
+\begin{gathered}
+u=E\delta_{x_0}\in B_{\infty,S_P},\\
+\qquad Au=\delta_{x_0}\\
+\quad\hbox{on }Y.
+\end{gathered}
+\tag{HE3}
+\]</span>
+Restrict this global distribution to <span class="math" data-tex="\(X\)">\(X\)</span>. Hypoellipticity on <span class="math" data-tex="\(X\)">\(X\)</span> makes it smooth on <span class="math" data-tex="\(Y\setminus\{x_0\}\)">\(Y\setminus\{x_0\}\)</span>, since its right-hand side is smooth there. We need no assertion about extending an arbitrary distribution on <span class="math" data-tex="\(Y\)">\(Y\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>The coefficients of <span class="math" data-tex="\(P_j\)">\(P_j\)</span> in(HE2) have bounded degree and bounded size. Moreover <span class="math" data-tex="\(S_{P_j}(0)=1\)">\(S_{P_j}(0)=1\)</span>; thus a coefficient limit exists along a subsequence and is nonzero. For each fixed weaker basis polynomial take the simultaneous coefficient limit
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q_{\nu,j}(\xi)\\
+=\frac{Q_\nu(\xi+\eta_j)}{S_P(\eta_j)}\\
+\longrightarrow Q_{\nu,\infty}(\xi),\\
+v_j\\
+=S_P(\eta_j)e^{-i(x-x_0)\cdot\eta_j}u.
+\end{gathered}
+\tag{HE4}
+\]">\[
+\begin{gathered}
+Q_{\nu,j}(\xi)\\
+=\frac{Q_\nu(\xi+\eta_j)}{S_P(\eta_j)}\\
+\longrightarrow Q_{\nu,\infty}(\xi),\\
+v_j\\
+=S_P(\eta_j)e^{-i(x-x_0)\cdot\eta_j}u.
+\end{gathered}
+\tag{HE4}
+\]</span>
+Weak comparison bounds the finitely many coefficients of all these polynomials, so one subsequence suffices for the finite list.</p>
+<p>For every <span class="math" data-tex="\(\chi\in C_c^\infty(Y)\)">\(\chi\in C_c^\infty(Y)\)</span>, weighted multiplication and the moderation of <span class="math" data-tex="\(S_P\)">\(S_P\)</span> give, with <span class="math" data-tex="\(m=\deg P\)">\(m=\deg P\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\widehat{\chi v_j}(\xi)|
+\\
+\le C_\chi\frac{S_P(\eta_j)}{S_P(\eta_j+\xi)}
+\\
+\le C&#x27;_\chi(1+|\xi|)^m.
+\end{gathered}
+\tag{HE5}
+\]">\[
+\begin{gathered}
+|\widehat{\chi v_j}(\xi)|
+\\
+\le C_\chi\frac{S_P(\eta_j)}{S_P(\eta_j+\xi)}
+\\
+\le C&#x27;_\chi(1+|\xi|)^m.
+\end{gathered}
+\tag{HE5}
+\]</span>
+The modulus of the constant centered phase is one. Compactness in the local weighted-space lesson, from the weight <span class="math" data-tex="\((1+|\xi|)^{-m}\)">\((1+|\xi|)^{-m}\)</span> to <span class="math" data-tex="\((1+|\xi|)^{-m-1}\)">\((1+|\xi|)^{-m-1}\)</span>, applies to these fixed compact supports. Use a countable exhaustion of <span class="math" data-tex="\(Y\)">\(Y\)</span> by compact cutoffs and a diagonal subsequence. We obtain <span class="math" data-tex="\(v_j\to v\)">\(v_j\to v\)</span> locally in distributions, with locally uniform Fourier convergence for every cutoff. On overlapping cutoffs the limits agree because distribution limits are unique.</p>
+<p>The exact identity
+<span class="math" data-tex="\(S_P(\eta_j+\xi)/S_P(\eta_j)=S_{P_j}(\xi)\)">\(S_P(\eta_j+\xi)/S_P(\eta_j)=S_{P_j}(\xi)\)</span>
+and the first estimate in(HE5) imply
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_{Q_0}(\xi)|\widehat{\chi v}(\xi)|\\
+\le C_\chi,\\
+\left(Q_0(D)+\sum_{\nu=1}^q c_\nu(x)Q_{\nu,\infty}(D)\right)v\\
+=\delta_{x_0}\\
+\hbox{on }Y.
+\end{gathered}
+\tag{HE6}
+\]">\[
+\begin{gathered}
+S_{Q_0}(\xi)|\widehat{\chi v}(\xi)|\\
+\le C_\chi,\\
+\left(Q_0(D)+\sum_{\nu=1}^q c_\nu(x)Q_{\nu,\infty}(D)\right)v\\
+=\delta_{x_0}\\
+\hbox{on }Y.
+\end{gathered}
+\tag{HE6}
+\]</span>
+For the equation, conjugate <span class="math" data-tex="\(Au=\delta_{x_0}\)">\(Au=\delta_{x_0}\)</span> by the centered modulation in(HE4) and divide the operator by <span class="math" data-tex="\(S_P(\eta_j)\)">\(S_P(\eta_j)\)</span>. Its right-hand side remains exactly <span class="math" data-tex="\(\delta_{x_0}\)">\(\delta_{x_0}\)</span>. Its coefficients and all their local derivatives converge to those displayed. The polynomial Fourier bound in(HE5) also gives a common local finite-order distribution bound: Fourier inversion against a test is bounded by a sufficiently high test seminorm. This bound permits passage to the limit even when the transposed test operator varies with <span class="math" data-tex="\(j\)">\(j\)</span>. In particular <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>.</p>
+<p>If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is supported away from <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, then <span class="math" data-tex="\(\chi u\)">\(\chi u\)</span> is compact and smooth. Its Fourier transform is rapidly decreasing, and <span class="math" data-tex="\(S_P(\eta_j)\le C\langle\eta_j\rangle^m\)">\(S_P(\eta_j)\le C\langle\eta_j\rangle^m\)</span>. For any fixed test, repeated integration by parts in the modulated smooth function shows <span class="math" data-tex="\(\chi v_j\to0\)">\(\chi v_j\to0\)</span>. Thus <span class="math" data-tex="\(\operatorname{supp}v\subset\{x_0\}\)">\(\operatorname{supp}v\subset\{x_0\}\)</span>.</p>
+<p>We spell out the point-support step. A distribution supported at one point has finite order <span class="math" data-tex="\(r\)">\(r\)</span> on a compact neighborhood. Subtract from a test its degree-<span class="math" data-tex="\(r\)">\(r\)</span> Taylor polynomial times a fixed cutoff equal to one there. The remainder has derivatives of order <span class="math" data-tex="\(|\alpha|\le r\)">\(|\alpha|\le r\)</span> equal to <span class="math" data-tex="\(o(|x-x_0|^{r-|\alpha|})\)">\(o(|x-x_0|^{r-|\alpha|})\)</span>. Multiply it by a cutoff of radius <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>; Leibniz's formula shows its <span class="math" data-tex="\(C^r\)">\(C^r\)</span> norm tends to zero. Support at the point makes the original remainder pairing equal to this cutoff pairing, so the pairing vanishes. The distribution therefore depends only on the finite Taylor jet, and is a finite linear combination of delta derivatives. For a cutoff one near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat{\chi v}(\xi)\\
+=e^{-ix_0\cdot\xi}R(\xi),\\
+R\ne0\text{ a polynomial},\\
+|Q_0(\xi)R(\xi)|\\
+\le S_{Q_0}(\xi)|R(\xi)|\\
+\le C.
+\end{gathered}
+\tag{HE7}
+\]">\[
+\begin{gathered}
+\widehat{\chi v}(\xi)\\
+=e^{-ix_0\cdot\xi}R(\xi),\\
+R\ne0\text{ a polynomial},\\
+|Q_0(\xi)R(\xi)|\\
+\le S_{Q_0}(\xi)|R(\xi)|\\
+\le C.
+\end{gathered}
+\tag{HE7}
+\]</span>
+A polynomial bounded on all real space is constant: restrict its highest nonzero homogeneous part to a real direction where it does not vanish and let the radius increase. Since the polynomial ring has no zero divisors, <span class="math" data-tex="\(Q_0R\)">\(Q_0R\)</span> is nonzero and its degree is the sum of the degrees. Both factors must be nonzero constants.</p>
+<p>This applies to every normalized coefficient limit in(HE2). If some positive-order normalized derivative failed to tend to zero, coefficient compactness would supply a limit with a nonzero coefficient of positive order, a contradiction. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{\partial^\alpha P(\eta)}{S_P(\eta)}\longrightarrow0\\
+\quad(|\alpha|\ge1),
+\\
+\qquad
+\frac{|P(\eta)|}{S_P(\eta)}\longrightarrow1.
+\end{gathered}
+\tag{HE8}
+\]">\[
+\begin{gathered}
+\frac{\partial^\alpha P(\eta)}{S_P(\eta)}\longrightarrow0\\
+\quad(|\alpha|\ge1),
+\\
+\qquad
+\frac{|P(\eta)|}{S_P(\eta)}\longrightarrow1.
+\end{gathered}
+\tag{HE8}
+\]</span>
+The second limit makes <span class="math" data-tex="\(P\)">\(P\)</span> eventually nonzero and converts the first into the claimed derivative ratios. This also covers a nonzero constant <span class="math" data-tex="\(P\)">\(P\)</span>, for which the positive derivatives vanish. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="distance-to-zeros-pays-for-every-commutator">Distance to zeros pays for every commutator</h2>
+<p>For nonconstant <span class="math" data-tex="\(P\)">\(P\)</span>, let <span class="math" data-tex="\(d_P(\xi)\)">\(d_P(\xi)\)</span> be the Euclidean distance from the real vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> to its complex zero set. This zero set is nonempty: restricting a nonconstant polynomial to a suitable complex line yields a nonconstant one-variable polynomial. The distance is finite and 1-Lipschitz. If <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span> is hypoelliptic, apply Lemma 1 with the constant operator <span class="math" data-tex="\(A=P\)">\(A=P\)</span>. The derivative criterion and Theorem 2.1 of the complex-zero lesson give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Delta(\xi)\\
+=1+d_P(\xi)\\
+\ge c\langle\xi\rangle^a\\
+\hbox{for some }a,c&gt;0\text{ and all real }\xi.
+\end{gathered}
+\tag{HE9}
+\]">\[
+\begin{gathered}
+\Delta(\xi)\\
+=1+d_P(\xi)\\
+\ge c\langle\xi\rangle^a\\
+\hbox{for some }a,c&gt;0\text{ and all real }\xi.
+\end{gathered}
+\tag{HE9}
+\]</span>
+The extension from large frequencies to all frequencies uses <span class="math" data-tex="\(\Delta\ge1\)">\(\Delta\ge1\)</span> and compactness. The finite bootstrap below needs this positive power. Mere divergence of an arbitrary function would not be enough. Here the power follows from the written semialgebraic distance argument and its stated asymptotic prerequisites.</p>
+<p>For every <span class="math" data-tex="\(Q\prec P\)">\(Q\prec P\)</span>, every <span class="math" data-tex="\(T\ge1\)">\(T\ge1\)</span> has the rescaled comparison in(HE1). Take <span class="math" data-tex="\(T=\Delta\)">\(T=\Delta\)</span>. When <span class="math" data-tex="\(d_P\ge1\)">\(d_P\ge1\)</span>, the distance-derivative estimate gives
+<span class="math" data-tex="\(|\partial^\alpha P|\le C_\alpha |P|d_P^{-|\alpha|}\)">\(|\partial^\alpha P|\le C_\alpha |P|d_P^{-|\alpha|}\)</span>,
+and <span class="math" data-tex="\(\Delta\le2d_P\)">\(\Delta\le2d_P\)</span>. When <span class="math" data-tex="\(d_P\le1\)">\(d_P\le1\)</span>, use <span class="math" data-tex="\(\Delta\le2\)">\(\Delta\le2\)</span> directly in the finite derivative norm. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_P(\xi,\Delta(\xi))\\
+\le C S_P(\xi),\\
+|\partial^\alpha Q(\xi)|\\
+\le C_Q S_P(\xi)\Delta(\xi)^{-|\alpha|},\\
+S_{\partial^\alpha Q}(\xi)\\
+\le C_Q\frac{S_P(\xi)}{\Delta(\xi)}\\
+(|\alpha|\\
+\ge1).
+\end{gathered}
+\tag{HE10}
+\]">\[
+\begin{gathered}
+S_P(\xi,\Delta(\xi))\\
+\le C S_P(\xi),\\
+|\partial^\alpha Q(\xi)|\\
+\le C_Q S_P(\xi)\Delta(\xi)^{-|\alpha|},\\
+S_{\partial^\alpha Q}(\xi)\\
+\le C_Q\frac{S_P(\xi)}{\Delta(\xi)}\\
+(|\alpha|\\
+\ge1).
+\end{gathered}
+\tag{HE10}
+\]</span>
+The last assertion applies the preceding estimate to all derivatives of <span class="math" data-tex="\(\partial^\alpha Q\)">\(\partial^\alpha Q\)</span> and uses <span class="math" data-tex="\(\Delta\ge1\)">\(\Delta\ge1\)</span>. Identically zero derivative polynomials are simply omitted. The bounded-distance argument includes real zeros; no ratio by <span class="math" data-tex="\(P(\xi)\)">\(P(\xi)\)</span> is used there.</p>
+<p>This estimate also transfers the required power to every equally strong frozen polynomial <span class="math" data-tex="\(F\)">\(F\)</span>. Indeed <span class="math" data-tex="\(S_F\asymp S_P\)">\(S_F\asymp S_P\)</span>, and(HE10) for <span class="math" data-tex="\(Q=F\)">\(Q=F\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{\sum_{|\alpha|\ge1}|\partial^\alpha F(\xi)|^2}{S_F(\xi)^2}
+\\
+\le C\Delta(\xi)^{-2},\\
+|F(\xi)|\\
+\ge\tfrac12 S_F(\xi)\\
+\hbox{for sufficiently large }|\xi|.
+\end{gathered}
+\tag{HE11}
+\]">\[
+\begin{gathered}
+\frac{\sum_{|\alpha|\ge1}|\partial^\alpha F(\xi)|^2}{S_F(\xi)^2}
+\\
+\le C\Delta(\xi)^{-2},\\
+|F(\xi)|\\
+\ge\tfrac12 S_F(\xi)\\
+\hbox{for sufficiently large }|\xi|.
+\end{gathered}
+\tag{HE11}
+\]</span>
+For each positive derivative order its ratio to <span class="math" data-tex="\(F\)">\(F\)</span> is <span class="math" data-tex="\(O(\Delta^{-|\alpha|})\)">\(O(\Delta^{-|\alpha|})\)</span>. Lemma 1.1 of the complex-zero lesson bounds the distance below by a constant divided by the sum of the corresponding fractional derivative ratios. Therefore <span class="math" data-tex="\(1+d_F\ge c_F\Delta\)">\(1+d_F\ge c_F\Delta\)</span> for large frequencies, and, after adjusting a positive constant on a compact set, everywhere. Equal strength preserves degree. If that degree is zero, all frozen symbols are nonzero constants instead and the scalar argument below applies.</p>
+<p><strong>Theorem 2 (the full local symbol gain; Hörmander, 13.4.1).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> has smooth coefficients and constant strength on <span class="math" data-tex="\(X\)">\(X\)</span>, and one frozen polynomial <span class="math" data-tex="\(P\)">\(P\)</span> is hypoelliptic, then for every moderate <span class="math" data-tex="\(k\)">\(k\)</span>, every <span class="math" data-tex="\(1\le p\le\infty\)">\(1\le p\le\infty\)</span>, and every <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Au\in B_{p,k}^{\mathrm{loc}}(X)
+\\
+\quad\Longrightarrow\\
+\quad
+u\in B_{p,kS_P}^{\mathrm{loc}}(X).
+\end{gathered}
+\tag{HE12}
+\]">\[
+\begin{gathered}
+Au\in B_{p,k}^{\mathrm{loc}}(X)
+\\
+\quad\Longrightarrow\\
+\quad
+u\in B_{p,kS_P}^{\mathrm{loc}}(X).
+\end{gathered}
+\tag{HE12}
+\]</span>
+In particular smoothness of <span class="math" data-tex="\(Au\)">\(Au\)</span> on an open subset implies smoothness of <span class="math" data-tex="\(u\)">\(u\)</span> there.</p>
+<p><strong>Proof.</strong> Work first near a point with its own frozen polynomial, relabelled <span class="math" data-tex="\(P\)">\(P\)</span>. Equations(HE9)–(HE11) give the positive power and(HE10) for that polynomial. Equivalent symbol norms will finally give the statement with the originally chosen frozen polynomial. Shrink to a neighborhood <span class="math" data-tex="\(Y\)">\(Y\)</span> on which the one-inverse theorem and its compact-input gain apply. Every distribution has a finite-order bound on a slightly larger compact neighborhood. Choose <span class="math" data-tex="\(L\)">\(L\)</span> so large that, with <span class="math" data-tex="\(k_* =\langle\xi\rangle^{-L}\)">\(k_* =\langle\xi\rangle^{-L}\)</span>, every compact localization of <span class="math" data-tex="\(u\)">\(u\)</span> belongs to <span class="math" data-tex="\(B_{p,k_*}\)">\(B_{p,k_*}\)</span>; for finite <span class="math" data-tex="\(p\)">\(p\)</span> take <span class="math" data-tex="\(L\)">\(L\)</span> larger than the Fourier growth order plus <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. Set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K=kS_P,\\
+\qquad k_j=\min(K,\Delta^j k_*),\\
+\quad j=0,1,\ldots.
+\end{gathered}
+\tag{HE13}
+\]">\[
+\begin{gathered}
+K=kS_P,\\
+\qquad k_j=\min(K,\Delta^j k_*),\\
+\quad j=0,1,\ldots.
+\end{gathered}
+\tag{HE13}
+\]</span>
+The distance weight is moderate since <span class="math" data-tex="\(\Delta(\xi+h)\le\Delta(\xi)(1+|h|)\)">\(\Delta(\xi+h)\le\Delta(\xi)(1+|h|)\)</span>, and the minimum, product, and powers of positive moderate weights are moderate. In particular all the spaces used here are among those in the inverse theorem. Initially <span class="math" data-tex="\(u\in B_{p,k_0}^{\mathrm{loc}}(Y)\)">\(u\in B_{p,k_0}^{\mathrm{loc}}(Y)\)</span>. Pointwise,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k_{j+1}\le K,\\
+\qquad k_{j+1}\le\Delta k_j,
+\\
+\qquad
+\frac{k_{j+1}}{S_P}\le C\frac{k_j}{S_{\partial^\alpha Q_\nu}}\\
+\quad(|\alpha|\ge1)
+\end{gathered}
+\tag{HE14}
+\]">\[
+\begin{gathered}
+k_{j+1}\le K,\\
+\qquad k_{j+1}\le\Delta k_j,
+\\
+\qquad
+\frac{k_{j+1}}{S_P}\le C\frac{k_j}{S_{\partial^\alpha Q_\nu}}\\
+\quad(|\alpha|\ge1)
+\end{gathered}
+\tag{HE14}
+\]</span>
+for nonzero derivative polynomials, by(HE10). Include <span class="math" data-tex="\(Q_0=P,c_0=1\)">\(Q_0=P,c_0=1\)</span> in the finite list.</p>
+<p>Assume <span class="math" data-tex="\(u\in B_{p,k_j}^{\mathrm{loc}}(Y)\)">\(u\in B_{p,k_j}^{\mathrm{loc}}(Y)\)</span>. For <span class="math" data-tex="\(\chi\in C_c^\infty(Y)\)">\(\chi\in C_c^\infty(Y)\)</span>, the exact product formula with <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(\chi u)\\
+=\chi Au+
+\sum_{\nu=0}^q\sum_{|\alpha|\ge1}
+\frac{c_\nu(x)D^\alpha\chi(x)}{\alpha!}
+(\partial_\xi^\alpha Q_\nu)(D)u.
+\end{gathered}
+\tag{HE15}
+\]">\[
+\begin{gathered}
+A(\chi u)\\
+=\chi Au+
+\sum_{\nu=0}^q\sum_{|\alpha|\ge1}
+\frac{c_\nu(x)D^\alpha\chi(x)}{\alpha!}
+(\partial_\xi^\alpha Q_\nu)(D)u.
+\end{gathered}
+\tag{HE15}
+\]</span>
+Each term is compactly supported. Local differential estimates put the differentiated <span class="math" data-tex="\(u\)">\(u\)</span> in the weight <span class="math" data-tex="\(k_j/S_{\partial^\alpha Q_\nu}\)">\(k_j/S_{\partial^\alpha Q_\nu}\)</span>; compact smooth multiplication and(HE14) put the resulting term in <span class="math" data-tex="\(B_{p,k_{j+1}/S_P}\)">\(B_{p,k_{j+1}/S_P}\)</span>. The data term has the same membership because <span class="math" data-tex="\(k_{j+1}/S_P\le k\)">\(k_{j+1}/S_P\le k\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(\chi u)\in B_{p,k_{j+1}/S_P}
+\\
+\quad\Longrightarrow\\
+\quad
+\chi u\in B_{p,k_{j+1}},
+\end{gathered}
+\tag{HE16}
+\]">\[
+\begin{gathered}
+A(\chi u)\in B_{p,k_{j+1}/S_P}
+\\
+\quad\Longrightarrow\\
+\quad
+\chi u\in B_{p,k_{j+1}},
+\end{gathered}
+\tag{HE16}
+\]</span>
+by the compact-input inverse corollary. This proves the next local membership for every cutoff. There is no infinite shrinkage of neighborhoods: all cutoffs are taken in the same smaller inverse neighborhood.</p>
+<p>Moderation gives <span class="math" data-tex="\(K\le C\langle\xi\rangle^{N+m}\)">\(K\le C\langle\xi\rangle^{N+m}\)</span> for some <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span>. Choose an integer <span class="math" data-tex="\(J\)">\(J\)</span> with <span class="math" data-tex="\(aJ-L\ge N+m\)">\(aJ-L\ge N+m\)</span>. Equation(HE9) then yields
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K\le C_J\Delta^J k_*,\\
+\qquad
+C_J&#x27;{}^{-1}K\le k_J\le K,
+\\
+\quad C_J&#x27;=\max(1,C_J).
+\end{gathered}
+\tag{HE17}
+\]">\[
+\begin{gathered}
+K\le C_J\Delta^J k_*,\\
+\qquad
+C_J&#x27;{}^{-1}K\le k_J\le K,
+\\
+\quad C_J&#x27;=\max(1,C_J).
+\end{gathered}
+\tag{HE17}
+\]</span>
+After these finitely many steps <span class="math" data-tex="\(u\in B_{p,K}^{\mathrm{loc}}(Y)\)">\(u\in B_{p,K}^{\mathrm{loc}}(Y)\)</span>. The comparison is equivalence of weights; the minimum need not equal <span class="math" data-tex="\(K\)">\(K\)</span> exactly. Cover the coefficient open set by these neighborhoods. At different points the frozen full symbol norms are equivalent by constant strength, so their gain weights agree as local spaces. Both endpoints were included in every multiplication, differentiation, and inverse estimate.</p>
+<p>If the frozen degree is zero, constant strength forces <span class="math" data-tex="\(A=a(x)\)">\(A=a(x)\)</span> with <span class="math" data-tex="\(a(x)\ne0\)">\(a(x)\ne0\)</span>. Locally <span class="math" data-tex="\(u=(Au)/a\)">\(u=(Au)/a\)</span>; smooth multiplication proves(HE12) directly. Finally compact smooth data belong to every polynomially increasing Fourier weight. Applying(HE12) for those weights makes each localization of <span class="math" data-tex="\(u\)">\(u\)</span> rapidly decreasing in Fourier space and hence smooth by Fourier inversion. This proves the stated smooth conclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="an-angular-weight-preserves-a-regular-direction">An angular weight preserves a regular direction</h2>
+<p><strong>Theorem 3 (Hörmander, 13.4.2).</strong> Under Theorem 2's hypotheses,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{WF}(u)\\
+=\operatorname{WF}(Au),\\
+\operatorname{sing\,supp}u\\
+=\operatorname{sing\,supp}Au.
+\end{gathered}
+\tag{HE18}
+\]">\[
+\begin{gathered}
+\operatorname{WF}(u)\\
+=\operatorname{WF}(Au),\\
+\operatorname{sing\,supp}u\\
+=\operatorname{sing\,supp}Au.
+\end{gathered}
+\tag{HE18}
+\]</span></p>
+<p>We prove the needed directional mapping before using the inverse. Suppose a compact distribution <span class="math" data-tex="\(f\)">\(f\)</span> has rapid Fourier decrease in a cone <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span>. Choose a smaller cone <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span> whose spherical closure lies inside <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span>. For each desired integer <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, choose <span class="math" data-tex="\(M\)">\(M\)</span> larger than the global polynomial growth order of <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span>, and a smooth angular function <span class="math" data-tex="\(b\)">\(b\)</span> equal to <span class="math" data-tex="\(N\)">\(N\)</span> on <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span>, equal to <span class="math" data-tex="\(-M\)">\(-M\)</span> outside <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span>, and between these values elsewhere. The transition lies in <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span>. Smooth Euclidean cutoffs on an annulus give this angular function also when <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Let <span class="math" data-tex="\(\beta(r)=0\)">\(\beta(r)=0\)</span> for <span class="math" data-tex="\(r\le1\)">\(r\le1\)</span>, <span class="math" data-tex="\(\beta(r)=1\)">\(\beta(r)=1\)</span> for <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k_N(\xi)\\
+= \exp\!\left(\beta(|\xi|)b(\xi/|\xi|)\log\langle\xi\rangle\right),\\
+k_N\\
+=1\\
+\hbox{near }0.
+\end{gathered}
+\tag{HE19}
+\]">\[
+\begin{gathered}
+k_N(\xi)\\
+= \exp\!\left(\beta(|\xi|)b(\xi/|\xi|)\log\langle\xi\rangle\right),\\
+k_N\\
+=1\\
+\hbox{near }0.
+\end{gathered}
+\tag{HE19}
+\]</span>
+This is a moderate weight, despite its different powers in different directions. Indeed <span class="math" data-tex="\(\ell=\log k_N\)">\(\ell=\log k_N\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\ell(\xi)|\\
+\le B\log\langle\xi\rangle,\\
+|\nabla\ell(\xi)|\\
+\le B&#x27;\frac{\log(e+|\xi|)}{1+|\xi|},\\
+|\ell(\xi+h)-\ell(\xi)|\\
+\le C\log(1+|h|).
+\end{gathered}
+\tag{HE20}
+\]">\[
+\begin{gathered}
+|\ell(\xi)|\\
+\le B\log\langle\xi\rangle,\\
+|\nabla\ell(\xi)|\\
+\le B&#x27;\frac{\log(e+|\xi|)}{1+|\xi|},\\
+|\ell(\xi+h)-\ell(\xi)|\\
+\le C\log(1+|h|).
+\end{gathered}
+\tag{HE20}
+\]</span>
+For the last bound let <span class="math" data-tex="\(H=|h|\)">\(H=|h|\)</span>. If <span class="math" data-tex="\(H\le1\)">\(H\le1\)</span>, the globally bounded gradient gives <span class="math" data-tex="\(CH\)">\(CH\)</span>, bounded by a constant times <span class="math" data-tex="\(\log(1+H)\)">\(\log(1+H)\)</span>. If <span class="math" data-tex="\(H\ge1\)">\(H\ge1\)</span> and <span class="math" data-tex="\(|\xi|\le2H\)">\(|\xi|\le2H\)</span>, use the first bound at both endpoints, whose radii are at most <span class="math" data-tex="\(3H\)">\(3H\)</span>. In the remaining case <span class="math" data-tex="\(|\xi|&gt;2H\)">\(|\xi|&gt;2H\)</span>, the segment stays at radius at least <span class="math" data-tex="\(|\xi|/2\)">\(|\xi|/2\)</span>; the gradient bound gives <span class="math" data-tex="\(C H\log(e+|\xi|)/(1+|\xi|)\)">\(C H\log(e+|\xi|)/(1+|\xi|)\)</span>. The function <span class="math" data-tex="\(\log(e+r)/(1+r)\)">\(\log(e+r)/(1+r)\)</span> is decreasing, so this is at most a constant times <span class="math" data-tex="\(\log(1+H)\)">\(\log(1+H)\)</span>. Exponentiating proves the required polynomial shift bound with no fixed excess factor at <span class="math" data-tex="\(h=0\)">\(h=0\)</span>.</p>
+<p>The compact datum belongs to <span class="math" data-tex="\(B_{\infty,k_N}\)">\(B_{\infty,k_N}\)</span>: use its global polynomial bound outside <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span>, its rapid decrease throughout the transition cone, and bounded frequencies separately. Apply the same inverse <span class="math" data-tex="\(E\)">\(E\)</span> from the freezing theorem to all these weights. For any compact smooth output cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Ef\in B_{\infty,k_NS_P},\\
+|\widehat{\chi Ef}(\xi)|\\
+\le C_{N,\chi}\langle\xi\rangle^{-N}\\
+(\xi\in\Gamma_1).
+\end{gathered}
+\tag{HE21}
+\]">\[
+\begin{gathered}
+Ef\in B_{\infty,k_NS_P},\\
+|\widehat{\chi Ef}(\xi)|\\
+\le C_{N,\chi}\langle\xi\rangle^{-N}\\
+(\xi\in\Gamma_1).
+\end{gathered}
+\tag{HE21}
+\]</span>
+Smooth multiplication preserves the weighted space, and <span class="math" data-tex="\(S_P\)">\(S_P\)</span> has a positive constant lower bound. The cone <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span> is fixed while <span class="math" data-tex="\(N\)">\(N\)</span> varies. Thus every output base point is regular in those directions. This intermediate statement preserves directions; it does not assert that the inverse preserves base points.</p>
+<p><strong>Proof of Theorem 3.</strong> Fix <span class="math" data-tex="\((x_0,\xi_0)\notin\operatorname{WF}(Au)\)">\((x_0,\xi_0)\notin\operatorname{WF}(Au)\)</span>. Within an inverse neighborhood choose <span class="math" data-tex="\(\chi\)">\(\chi\)</span> compact and one near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, and then <span class="math" data-tex="\(\phi\)">\(\phi\)</span> compact and one near <span class="math" data-tex="\(x_0\)">\(x_0\)</span> with support where <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>. The cutoff-stable Fourier definition allows <span class="math" data-tex="\(\phi\)">\(\phi\)</span> to be chosen so that <span class="math" data-tex="\(\widehat{\phi Au}\)">\(\widehat{\phi Au}\)</span> is rapidly decreasing in a cone <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span> containing <span class="math" data-tex="\(\xi_0\)">\(\xi_0\)</span>. The compact left inverse gives on that neighborhood
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\chi u=E A(\chi u)=E f_0+E f_1,
+\\
+\qquad f_0=\phi Au,
+\\
+\qquad f_1=(1-\phi)A(\chi u).
+\end{gathered}
+\tag{HE22}
+\]">\[
+\begin{gathered}
+\chi u=E A(\chi u)=E f_0+E f_1,
+\\
+\qquad f_0=\phi Au,
+\\
+\qquad f_1=(1-\phi)A(\chi u).
+\end{gathered}
+\tag{HE22}
+\]</span>
+Here <span class="math" data-tex="\(\phi A(\chi u)=\phi Au\)">\(\phi A(\chi u)=\phi Au\)</span> because its support lies where <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>. Both data are compact. Equation(HE21) shows that <span class="math" data-tex="\(Ef_0\)">\(Ef_0\)</span> has no wave front in a smaller cone containing <span class="math" data-tex="\(\xi_0\)">\(\xi_0\)</span>. The right inverse identity gives <span class="math" data-tex="\(A Ef_1=f_1=0\)">\(A Ef_1=f_1=0\)</span> near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Theorem 2 makes <span class="math" data-tex="\(Ef_1\)">\(Ef_1\)</span> smooth there. Therefore <span class="math" data-tex="\((x_0,\xi_0)\notin\operatorname{WF}(u)\)">\((x_0,\xi_0)\notin\operatorname{WF}(u)\)</span>.</p>
+<p>For completeness, the reverse differential decrease uses only elementary Fourier estimates. If <span class="math" data-tex="\(\chi_0u\)">\(\chi_0u\)</span> has rapid Fourier decrease in <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span> and <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span> is supported where <span class="math" data-tex="\(\chi_0=1\)">\(\chi_0=1\)</span>, every term of <span class="math" data-tex="\(\chi_1Au\)">\(\chi_1Au\)</span> has transform
+<span class="math math-display" data-tex="\[
+(2\pi)^{-n}\widehat{\chi_1a_\alpha}*
+\big(\eta^\alpha\widehat{\chi_0u}(\eta)\big)(\xi).
+\tag{HE23}
+\]">\[
+(2\pi)^{-n}\widehat{\chi_1a_\alpha}*
+\big(\eta^\alpha\widehat{\chi_0u}(\eta)\big)(\xi).
+\tag{HE23}
+\]</span>
+For <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in a smaller cone, split the integration variable <span class="math" data-tex="\(\eta\)">\(\eta\)</span> into <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span> and its complement. On the cone, the second factor has arbitrary polynomial decay; Peetre's inequality and the Schwartz first factor give arbitrary decay of the integral. Off the cone, angular separation gives <span class="math" data-tex="\(|\xi-\eta|\ge c(|\xi|+|\eta|)\)">\(|\xi-\eta|\ge c(|\xi|+|\eta|)\)</span>; the arbitrarily high decay of the first factor absorbs the global polynomial growth of the second and the integration volume. Bounded frequencies cause no difficulty. Thus <span class="math" data-tex="\(\chi_1Au\)">\(\chi_1Au\)</span> has rapid decay in the smaller cone. This proves <span class="math" data-tex="\(\operatorname{WF}(Au)\subset\operatorname{WF}(u)\)">\(\operatorname{WF}(Au)\subset\operatorname{WF}(u)\)</span>. Projecting the equality onto the base proves equality of singular supports. In the scalar case multiply by the smooth functions <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(1/a\)">\(1/a\)</span> locally for both inclusions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-frozen-criterion-and-the-definitions">The frozen criterion and the definitions</h2>
+<p><strong>Definition 4 (Hörmander, 13.4.3).</strong> A smooth differential operator is hypoelliptic on <span class="math" data-tex="\(X\)">\(X\)</span> if <span class="math" data-tex="\(\operatorname{sing\,supp}u=\operatorname{sing\,supp}Au\)">\(\operatorname{sing\,supp}u=\operatorname{sing\,supp}Au\)</span> for every <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span>. It is microhypoelliptic if the corresponding wave front sets are equal. Differential decrease shows that only the inclusion from the right-hand side back to the solution needs proof. Microhypoellipticity implies hypoellipticity by projection.</p>
+<p><strong>Theorem 5 (Hörmander, 13.4.4).</strong> For a smooth operator of constant strength on <span class="math" data-tex="\(X\)">\(X\)</span>, the following conditions are equivalent:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A\text{ is hypoelliptic};\\
+A\text{ is microhypoelliptic};\\
+A(x,D)\text{ is hypoelliptic}\\
+\text{as a constant operator}\\
+\text{for every }x\in X;\\
+A(x,D)\text{ is hypoelliptic}\\
+\text{for one }x\in X.
+\end{gathered}
+\tag{HE24}
+\]">\[
+\begin{gathered}
+A\text{ is hypoelliptic};\\
+A\text{ is microhypoelliptic};\\
+A(x,D)\text{ is hypoelliptic}\\
+\text{as a constant operator}\\
+\text{for every }x\in X;\\
+A(x,D)\text{ is hypoelliptic}\\
+\text{for one }x\in X.
+\end{gathered}
+\tag{HE24}
+\]</span></p>
+<p><strong>Proof.</strong> One frozen hypoelliptic symbol gives(HE9), its equally strong fellows satisfy(HE11), and Theorems2–3 prove the two variable-coefficient properties. In particular applying Theorem 2 to each constant frozen operator makes each of them hypoelliptic. Conversely if <span class="math" data-tex="\(A\)">\(A\)</span> is hypoelliptic, Lemma 1 at each point gives the derivative criterion(HE8). The complex-zero theorem converts that criterion into(HE9). Apply the proof of Theorem 2 to the constant operator with that polynomial: the proof uses precisely the distance power, the derivative estimate, and the compact inverse, so it proves its hypoellipticity without presupposing it. This gives every frozen hypoelliptic symbol. Microhypoellipticity implies hypoellipticity as in Definition 4, and the remaining implication from every point to one point is immediate. The scalar case was proved directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The restriction to constant strength matters. The last example proves it by an explicit kernel rather than by an appeal to an unspecified regularity theorem.</p>
+<p><strong>Corollary (the source's elliptic comparison).</strong> A smooth elliptic operator of fixed order <span class="math" data-tex="\(m\)">\(m\)</span> has the conclusions of Theorems2–3, with symbol gain equivalent to <span class="math" data-tex="\(\langle\xi\rangle^m\)">\(\langle\xi\rangle^m\)</span>. Indeed each frozen principal part has a positive minimum in absolute value on the real unit sphere. Outside a ball its full polynomial has absolute value at least <span class="math" data-tex="\(c|\xi|^m\)">\(c|\xi|^m\)</span>, while every derivative of positive order is <span class="math" data-tex="\(O(\langle\xi\rangle^{m-|\alpha|})\)">\(O(\langle\xi\rangle^{m-|\alpha|})\)</span>. Its derivative ratios satisfy the distance criterion. The constant-operator proof of Theorem 2 therefore makes it hypoelliptic. Its full derivative norm is equivalent to <span class="math" data-tex="\(\langle\xi\rangle^m\)">\(\langle\xi\rangle^m\)</span>, including bounded frequencies by the positive highest-jet lower bound. All frozen symbols are consequently equally strong. Theorems2–3 apply to the variable operator. Order zero is the nowhere-zero scalar case. This proves the comparison for every smooth elliptic operator of fixed order, rather than only for the example in Exercise 1.</p>
+<h2 id="graded-exercises-with-complete-solutions">Graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (entry: check a familiar gain).</strong> For <span class="math" data-tex="\(P(\xi)=1+|\xi|^2\)">\(P(\xi)=1+|\xi|^2\)</span>, identify <span class="math" data-tex="\(S_P\)">\(S_P\)</span>, its zero-distance growth, and the gain in(HE12) for <span class="math" data-tex="\(k=\langle\xi\rangle^s\)">\(k=\langle\xi\rangle^s\)</span>.</p>
+<p><strong>Solution.</strong> The value is <span class="math" data-tex="\(1+|\xi|^2\)">\(1+|\xi|^2\)</span>, the first derivatives are <span class="math" data-tex="\(2\xi_j\)">\(2\xi_j\)</span>, and the only nonzero second derivatives are the <span class="math" data-tex="\(n\)">\(n\)</span> diagonal constants2. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_P(\xi)^2\\
+=(1+|\xi|^2)^2+4|\xi|^2+4n\\
+\asymp\langle\xi\rangle^4.
+\end{gathered}
+\tag{HE25}
+\]">\[
+\begin{gathered}
+S_P(\xi)^2\\
+=(1+|\xi|^2)^2+4|\xi|^2+4n\\
+\asymp\langle\xi\rangle^4.
+\end{gathered}
+\tag{HE25}
+\]</span>
+The complex zero equation is <span class="math" data-tex="\(\zeta\cdot\zeta=-1\)">\(\zeta\cdot\zeta=-1\)</span>. Write <span class="math" data-tex="\(\zeta=a+ib\)">\(\zeta=a+ib\)</span> with <span class="math" data-tex="\(a\cdot b=0\)">\(a\cdot b=0\)</span> and <span class="math" data-tex="\(|b|^2=1+|a|^2\)">\(|b|^2=1+|a|^2\)</span>. For real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, its squared distance is <span class="math" data-tex="\(|\xi-a|^2+1+|a|^2\)">\(|\xi-a|^2+1+|a|^2\)</span>. This is at least <span class="math" data-tex="\(1+|\xi|^2/2\)">\(1+|\xi|^2/2\)</span> by completing the square in <span class="math" data-tex="\(a\)">\(a\)</span>, so <span class="math" data-tex="\(d_P\ge c\langle\xi\rangle\)">\(d_P\ge c\langle\xi\rangle\)</span>. A fixed zero gives the upper bound <span class="math" data-tex="\(d_P\le C\langle\xi\rangle\)">\(d_P\le C\langle\xi\rangle\)</span>; these bounds suffice in every dimension, including <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. The weighted gain is from <span class="math" data-tex="\(B_{p,\langle\xi\rangle^s}\)">\(B_{p,\langle\xi\rangle^s}\)</span> to <span class="math" data-tex="\(B_{p,\langle\xi\rangle^{s+2}}\)">\(B_{p,\langle\xi\rangle^{s+2}}\)</span>, locally. No Hilbert restriction on <span class="math" data-tex="\(p\)">\(p\)</span> is needed.</p>
+<p><strong>Exercise 2 (intermediate: nonelliptic anisotropy).</strong> Let <span class="math" data-tex="\(P(\xi,\tau)=\xi^2+i\tau\)">\(P(\xi,\tau)=\xi^2+i\tau\)</span> in two real frequency variables. Show directly that the derivative criterion holds. Explain what the full gain measures.</p>
+<p><strong>Solution.</strong> For real frequencies,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_P(\xi,\tau)^2\\
+=\xi^4+\tau^2+4\xi^2+5,\\
+S_P(\xi,\tau)\\
+\asymp1+\xi^2+|\tau|.
+\end{gathered}
+\tag{HE26}
+\]">\[
+\begin{gathered}
+S_P(\xi,\tau)^2\\
+=\xi^4+\tau^2+4\xi^2+5,\\
+S_P(\xi,\tau)\\
+\asymp1+\xi^2+|\tau|.
+\end{gathered}
+\tag{HE26}
+\]</span>
+The positive derivatives are <span class="math" data-tex="\(2\xi,i,2\)">\(2\xi,i,2\)</span>. The constant derivatives divided by <span class="math" data-tex="\(P\)">\(P\)</span> tend to zero. For the linear derivative, <span class="math" data-tex="\(|2\xi/P|\le2/|\xi|\)">\(|2\xi/P|\le2/|\xi|\)</span> when <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span> is large, while it tends to zero with <span class="math" data-tex="\(|\tau|\)">\(|\tau|\)</span> when <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span> is bounded. Splitting into these two regions proves the limit along every unbounded real sequence. The criterion and the constant-operator case of Theorem 2 prove hypoellipticity. The gain weights one time frequency like two spatial frequencies, rather than using only the total degree. Multiplying the weighted transform by <span class="math" data-tex="\(\xi^2\)">\(\xi^2\)</span> or <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is bounded relative to <span class="math" data-tex="\(S_P\)">\(S_P\)</span>, so the conclusion controls those derivatives in the data weight locally.</p>
+<p><strong>Exercise 3 (intermediate: count the bootstrap steps).</strong> Suppose <span class="math" data-tex="\(\Delta\ge c\langle\xi\rangle^{1/3}\)">\(\Delta\ge c\langle\xi\rangle^{1/3}\)</span>, <span class="math" data-tex="\(S_P\le C\langle\xi\rangle^4\)">\(S_P\le C\langle\xi\rangle^4\)</span>, <span class="math" data-tex="\(k\le C\langle\xi\rangle^2\)">\(k\le C\langle\xi\rangle^2\)</span>, and the initial local weight is <span class="math" data-tex="\(k_*=\langle\xi\rangle^{-7}\)">\(k_*=\langle\xi\rangle^{-7}\)</span>. Give a sufficient step count, and say whether <span class="math" data-tex="\(k_J=K\)">\(k_J=K\)</span> is automatic.</p>
+<p><strong>Solution.</strong> We need <span class="math" data-tex="\(J/3-7\ge6\)">\(J/3-7\ge6\)</span>, so <span class="math" data-tex="\(J=39\)">\(J=39\)</span> suffices. Indeed
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K\le C\langle\xi\rangle^6\le C&#x27;\Delta^{39}\langle\xi\rangle^{-7},
+\\
+\qquad \min(K,\Delta^{39}k_*)\asymp K.
+\end{gathered}
+\tag{HE27}
+\]">\[
+\begin{gathered}
+K\le C\langle\xi\rangle^6\le C&#x27;\Delta^{39}\langle\xi\rangle^{-7},
+\\
+\qquad \min(K,\Delta^{39}k_*)\asymp K.
+\end{gathered}
+\tag{HE27}
+\]</span>
+The constant contains <span class="math" data-tex="\(c^{-39}\)">\(c^{-39}\)</span>. Exact equality of the minimum to <span class="math" data-tex="\(K\)">\(K\)</span> is not automatic, since this comparison constant can exceed one. Equivalence proves the required weighted membership and is all that the proof uses.</p>
+<p><strong>Exercise 4 (advanced: locate both essential steps in necessity).</strong> Why is the centered modulation needed? Why does point support alone not force the limiting polynomial to be constant?</p>
+<p><strong>Solution.</strong> At the source, <span class="math" data-tex="\(e^{-i(x-x_0)\cdot\eta_j}\delta_{x_0}=\delta_{x_0}\)">\(e^{-i(x-x_0)\cdot\eta_j}\delta_{x_0}=\delta_{x_0}\)</span>. An uncentered phase would put <span class="math" data-tex="\(e^{-ix_0\cdot\eta_j}\delta_{x_0}\)">\(e^{-ix_0\cdot\eta_j}\delta_{x_0}\)</span> on the right; its limit could depend on an additional subsequence and phase. Centering keeps the nonzero right-hand side fixed and immediately proves <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. Point support alone gives a polynomial Fourier factor <span class="math" data-tex="\(R\)">\(R\)</span>; it does not bound that polynomial. The separate weighted limit in(HE6) gives <span class="math" data-tex="\(S_{Q_0}|R|\le C\)">\(S_{Q_0}|R|\le C\)</span>. The bounded nonzero polynomial product <span class="math" data-tex="\(Q_0R\)">\(Q_0R\)</span> in(HE7), together with degree additivity, is what forces both factors to be constant. Dropping either the nonzero equation or the weighted bound breaks the argument.</p>
+<h2 id="kolmogorov-s-comparison-smoothing-produced-by-variable-drift">Kolmogorov's comparison: smoothing produced by variable drift</h2>
+<p>Use coordinates <span class="math" data-tex="\(p=(v,x,t)\)">\(p=(v,x,t)\)</span> and the real operator
+<span class="math math-display" data-tex="\[
+\mathcal K=\partial_t+v\partial_x-\partial_v^2.
+\tag{KG1}
+\]">\[
+\mathcal K=\partial_t+v\partial_x-\partial_v^2.
+\tag{KG1}
+\]</span>
+The source's <span class="math" data-tex="\(-D_1^2+x_1iD_2-iD_3\)">\(-D_1^2+x_1iD_2-iD_3\)</span>, with <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, is <span class="math" data-tex="\(\partial_v^2+v\partial_x-\partial_t\)">\(\partial_v^2+v\partial_x-\partial_t\)</span>. Multiplication by minus one and reflection of the spatial coordinate turn it into(KG1). A nonzero scalar and an invertible reflection preserve the local smoothness question by the chain rule. We prove that <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> is hypoelliptic although none of its frozen operators is.</p>
+<p>For <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>, define the probability density
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_\tau(w,z)\\
+=\frac{\sqrt3}{2\pi\tau^2}
+\exp\!\left(-\frac{w^2}{4\tau}
+-\frac{3(z-\tau w/2)^2}{\tau^3}\right),\\
+G(w,z,\tau)\\
+=\mathbf1_{\{\tau&gt;0\}}H_\tau(w,z).
+\end{gathered}
+\tag{KG2}
+\]">\[
+\begin{gathered}
+H_\tau(w,z)\\
+=\frac{\sqrt3}{2\pi\tau^2}
+\exp\!\left(-\frac{w^2}{4\tau}
+-\frac{3(z-\tau w/2)^2}{\tau^3}\right),\\
+G(w,z,\tau)\\
+=\mathbf1_{\{\tau&gt;0\}}H_\tau(w,z).
+\end{gathered}
+\tag{KG2}
+\]</span>
+The indicator is interpreted as a locally integrable distribution; its value at <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span> is irrelevant. Integrate first in <span class="math" data-tex="\(z\)">\(z\)</span>, then <span class="math" data-tex="\(w\)">\(w\)</span>; the elementary one-dimensional Gaussian integral gives mass1. On bounded time intervals this mass also proves local integrability in all three variables. Its covariance and spatial Fourier transform are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Sigma_\tau=
+\begin{pmatrix}2\tau&amp;\tau^2\\\tau^2&amp;2\tau^3/3\end{pmatrix},
+\\
+\qquad \det\Sigma_\tau=\tau^4/3&gt;0,
+\\
+\qquad
+\widehat H_\tau(\alpha,\beta)
+=e^{-\tau\alpha^2-\tau^2\alpha\beta-\tau^3\beta^2/3}.
+\end{gathered}
+\tag{KG3}
+\]">\[
+\begin{gathered}
+\Sigma_\tau=
+\begin{pmatrix}2\tau&amp;\tau^2\\\tau^2&amp;2\tau^3/3\end{pmatrix},
+\\
+\qquad \det\Sigma_\tau=\tau^4/3&gt;0,
+\\
+\qquad
+\widehat H_\tau(\alpha,\beta)
+=e^{-\tau\alpha^2-\tau^2\alpha\beta-\tau^3\beta^2/3}.
+\end{gathered}
+\tag{KG3}
+\]</span>
+Here the Fourier transform acts only on <span class="math" data-tex="\((w,z)\)">\((w,z)\)</span>. These formulas follow by completing the square in(KG2), or by setting <span class="math" data-tex="\(w=\sqrt\tau W\)">\(w=\sqrt\tau W\)</span>, <span class="math" data-tex="\(z=\tau^{3/2}Z\)">\(z=\tau^{3/2}Z\)</span> and doing the two one-dimensional Gaussian integrals. For the Fourier Gaussian integral itself, differentiating its transform in frequency and integrating by parts gives the first-order equation <span class="math" data-tex="\(F&#x27;(a)=-2c aF(a)\)">\(F&#x27;(a)=-2c aF(a)\)</span>; its value at zero fixes the constant. Thus no stochastic assertion is an input to this proof.</p>
+<p>Direct differentiation of the last expression in(KG3) gives both equations
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\partial_\tau-\beta\partial_\alpha+\alpha^2)\widehat H_\tau=0,
+\\
+\qquad
+(\partial_\tau+(\alpha+\tau\beta)^2)\widehat H_\tau=0.
+\end{gathered}
+\tag{KG4}
+\]">\[
+\begin{gathered}
+(\partial_\tau-\beta\partial_\alpha+\alpha^2)\widehat H_\tau=0,
+\\
+\qquad
+(\partial_\tau+(\alpha+\tau\beta)^2)\widehat H_\tau=0.
+\end{gathered}
+\tag{KG4}
+\]</span>
+Spatial Fourier inversion yields the forward and backward spatial equations. Also <span class="math" data-tex="\(H_\tau\to\delta_{(0,0)}\)">\(H_\tau\to\delta_{(0,0)}\)</span> as <span class="math" data-tex="\(\tau\downarrow0\)">\(\tau\downarrow0\)</span>: use the displayed scaling and dominated convergence against a compact test. Integrating by parts in time from <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> and passing to zero gives the boundary mass. Therefore, as distributions,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\partial_\tau+w\partial_z-\partial_w^2)G\\
+=\delta_0,\\
+\big(\partial_\tau-(\partial_w+\tau\partial_z)^2\big)G\\
+=\delta_0.
+\end{gathered}
+\tag{KG5}
+\]">\[
+\begin{gathered}
+(\partial_\tau+w\partial_z-\partial_w^2)G\\
+=\delta_0,\\
+\big(\partial_\tau-(\partial_w+\tau\partial_z)^2\big)G\\
+=\delta_0.
+\end{gathered}
+\tag{KG5}
+\]</span>
+The spatial terms have no time derivative and acquire no additional boundary term. Each time derivative has jump coefficient equal to the spatial delta just proved.</p>
+<p>For a source <span class="math" data-tex="\(y=(v_0,x_0,s)\)">\(y=(v_0,x_0,s)\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g(p,y)\\
+=G(v-v_0,\ x-x_0-(t-s)v_0,\ t-s).
+\end{gathered}
+\tag{KG6}
+\]">\[
+\begin{gathered}
+g(p,y)\\
+=G(v-v_0,\ x-x_0-(t-s)v_0,\ t-s).
+\end{gathered}
+\tag{KG6}
+\]</span>
+This is defined as a distribution on pairs of points by the smooth change of variables <span class="math" data-tex="\((p,y)\leftrightarrow(w,z,\tau,y)\)">\((p,y)\leftrightarrow(w,z,\tau,y)\)</span>, of Jacobian1. In the output variables, <span class="math" data-tex="\(\partial_t+v\partial_x\)">\(\partial_t+v\partial_x\)</span> becomes <span class="math" data-tex="\(\partial_\tau+w\partial_z\)">\(\partial_\tau+w\partial_z\)</span>. In the source variables, <span class="math" data-tex="\(\partial_s+v_0\partial_{x_0}\)">\(\partial_s+v_0\partial_{x_0}\)</span> becomes <span class="math" data-tex="\(-\partial_\tau\)">\(-\partial_\tau\)</span>, and <span class="math" data-tex="\(\partial_{v_0}\)">\(\partial_{v_0}\)</span> becomes <span class="math" data-tex="\(-\partial_w-\tau\partial_z\)">\(-\partial_w-\tau\partial_z\)</span>. The bilinear formal transpose is <span class="math" data-tex="\(\mathcal K_y^t=-\partial_s-v_0\partial_{x_0}-\partial_{v_0}^2\)">\(\mathcal K_y^t=-\partial_s-v_0\partial_{x_0}-\partial_{v_0}^2\)</span>, since the drift has zero divergence. Thus(KG5) proves
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal K_p g(p,y)=\delta(p-y),\\
+\qquad
+\mathcal K_y^t g(p,y)=\delta(p-y).
+\end{gathered}
+\tag{KG7}
+\]">\[
+\begin{gathered}
+\mathcal K_p g(p,y)=\delta(p-y),\\
+\qquad
+\mathcal K_y^t g(p,y)=\delta(p-y).
+\end{gathered}
+\tag{KG7}
+\]</span>
+Both signs and the source-drift dependence matter: a right fundamental kernel alone would not give the localized left identity used below.</p>
+<p>We give a precise distributional meaning to its action on a compact datum. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(v,x,t)\circ(w,z,\tau)
+\\
+=(v+w,\ x+z+\tau v,\ t+\tau),\\
+(v,x,t)^{-1}\\
+=(-v,-x+tv,-t).
+\end{gathered}
+\tag{KG8}
+\]">\[
+\begin{gathered}
+(v,x,t)\circ(w,z,\tau)
+\\
+=(v+w,\ x+z+\tau v,\ t+\tau),\\
+(v,x,t)^{-1}\\
+=(-v,-x+tv,-t).
+\end{gathered}
+\tag{KG8}
+\]</span>
+This associative smooth multiplication has identity0; direct expansion verifies associativity. Both left and right translation have Jacobian1. Equation(KG6) is <span class="math" data-tex="\(g(p,y)=G(y^{-1}\circ p)\)">\(g(p,y)=G(y^{-1}\circ p)\)</span>. For <span class="math" data-tex="\(f\in\mathcal E&#x27;(\mathbb R^3)\)">\(f\in\mathcal E&#x27;(\mathbb R^3)\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle Tf,\psi\rangle
+\\
+=\langle f(y)\otimes G(q),\ \psi(y\circ q)\rangle,\\
+\mathcal K Tf\\
+=f,\\
+T\mathcal K f\\
+=f.
+\end{gathered}
+\tag{KG9}
+\]">\[
+\begin{gathered}
+\langle Tf,\psi\rangle
+\\
+=\langle f(y)\otimes G(q),\ \psi(y\circ q)\rangle,\\
+\mathcal K Tf\\
+=f,\\
+T\mathcal K f\\
+=f.
+\end{gathered}
+\tag{KG9}
+\]</span>
+The pairing includes a compact cutoff equal to one near the relevant supports. This is legitimate and independent of that cutoff: if <span class="math" data-tex="\(y\)">\(y\)</span> is in a fixed compact neighborhood of <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span> and <span class="math" data-tex="\(y\circ q\)">\(y\circ q\)</span> lies in <span class="math" data-tex="\(\operatorname{supp}\psi\)">\(\operatorname{supp}\psi\)</span>, then <span class="math" data-tex="\(q=y^{-1}\circ p\)">\(q=y^{-1}\circ p\)</span> lies in a compact set. The written tensor-product theorem therefore supplies a continuous distribution pairing, without multiplying two singular distributions in a common variable. Here is a direct check of both identities on the moving test <span class="math" data-tex="\(\psi(y\circ q)\)">\(\psi(y\circ q)\)</span>. Applying <span class="math" data-tex="\(\mathcal K_p^t\)">\(\mathcal K_p^t\)</span> to <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and then substituting <span class="math" data-tex="\(p=y\circ q\)">\(p=y\circ q\)</span> is the same as applying <span class="math" data-tex="\(-\partial_\tau-w\partial_z-\partial_w^2\)">\(-\partial_\tau-w\partial_z-\partial_w^2\)</span> to that moving test, with <span class="math" data-tex="\(y\)">\(y\)</span> fixed. Integration by parts against <span class="math" data-tex="\(G\)">\(G\)</span> uses the first identity in(KG5) and gives <span class="math" data-tex="\(\langle f,\psi\rangle\)">\(\langle f,\psi\rangle\)</span>. For the left identity, moving <span class="math" data-tex="\(\mathcal K f\)">\(\mathcal K f\)</span> onto the test in the <span class="math" data-tex="\(y\)">\(y\)</span> variables, with <span class="math" data-tex="\(q\)">\(q\)</span> fixed, gives <span class="math" data-tex="\(-\partial_\tau-(\partial_w+\tau\partial_z)^2\)">\(-\partial_\tau-(\partial_w+\tau\partial_z)^2\)</span> acting in <span class="math" data-tex="\(q\)">\(q\)</span>. Indeed <span class="math" data-tex="\(\partial_s+v_0\partial_{x_0}\)">\(\partial_s+v_0\partial_{x_0}\)</span> on the moving test is <span class="math" data-tex="\(\partial_\tau\)">\(\partial_\tau\)</span> in <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(\partial_{v_0}\)">\(\partial_{v_0}\)</span> is <span class="math" data-tex="\(\partial_w+\tau\partial_z\)">\(\partial_w+\tau\partial_z\)</span>. Integrating this expression against <span class="math" data-tex="\(G\)">\(G\)</span> uses the second identity in(KG5) and gives the same pairing. Cutoffs are one on the full compact pairing region, so their derivatives contribute zero. This proves(KG9) for compact distributions directly. No claim that <span class="math" data-tex="\(Tf\)">\(Tf\)</span> is compact is needed.</p>
+<p>Two smoothing properties of <span class="math" data-tex="\(T\)">\(T\)</span> now suffice. First, if <span class="math" data-tex="\(f\)">\(f\)</span> is compact and smooth, changing from <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(q=y^{-1}\circ p\)">\(q=y^{-1}\circ p\)</span>, again with Jacobian1, gives <span class="math" data-tex="\(Tf(p)=\langle G(q),f(p\circ q^{-1})\rangle\)">\(Tf(p)=\langle G(q),f(p\circ q^{-1})\rangle\)</span>. For <span class="math" data-tex="\(p\)">\(p\)</span> in a compact set these moving smooth tests have a common compact support in <span class="math" data-tex="\(q\)">\(q\)</span>. The smooth-parameter pairing lemma makes <span class="math" data-tex="\(Tf\)">\(Tf\)</span> smooth.</p>
+<p>Second, <span class="math" data-tex="\(g(p,y)\)">\(g(p,y)\)</span> is smooth off the diagonal. It is already smooth where <span class="math" data-tex="\(\tau\ne0\)">\(\tau\ne0\)</span>. At <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span>, away from the diagonal, <span class="math" data-tex="\((w,z)\ne(0,0)\)">\((w,z)\ne(0,0)\)</span>. For <span class="math" data-tex="\(0&lt;\tau\le1\)">\(0&lt;\tau\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{w^2}{4\tau}+\frac{3(z-\tau w/2)^2}{\tau^3}
+\\
+\ge\frac{w^2+z^2}{12\tau}.
+\end{gathered}
+\tag{KG10}
+\]">\[
+\begin{gathered}
+\frac{w^2}{4\tau}+\frac{3(z-\tau w/2)^2}{\tau^3}
+\\
+\ge\frac{w^2+z^2}{12\tau}.
+\end{gathered}
+\tag{KG10}
+\]</span>
+Indeed <span class="math" data-tex="\(z^2\le2(z-\tau w/2)^2+\tau^2w^2/2\)">\(z^2\le2(z-\tau w/2)^2+\tau^2w^2/2\)</span>, which bounds <span class="math" data-tex="\(w^2+z^2\)">\(w^2+z^2\)</span> by <span class="math" data-tex="\(3w^2/2+2(z-\tau w/2)^2\)">\(3w^2/2+2(z-\tau w/2)^2\)</span>; the displayed constant is smaller than the resulting valid constants for both terms. On a compact set with <span class="math" data-tex="\(w^2+z^2\ge\epsilon^2\)">\(w^2+z^2\ge\epsilon^2\)</span>, every derivative of(KG2) is bounded by a finite negative power of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> times <span class="math" data-tex="\(e^{-\epsilon^2/(12\tau)}\)">\(e^{-\epsilon^2/(12\tau)}\)</span>. Derivatives in both source and output variables have the same property on compact sets, by(KG6). All such derivatives tend to zero as <span class="math" data-tex="\(\tau\downarrow0\)">\(\tau\downarrow0\)</span>, so extending by zero for negative time is smooth there. For a compact distribution supported away from an output neighborhood, pairing this smooth off-diagonal kernel with the datum is smooth on that neighborhood, by the same smooth-parameter lemma.</p>
+<p><strong>Proposition 6 (the full comparison).</strong> The operator <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> is hypoelliptic. Its frozen operators are all nonhypoelliptic, and it fails constant strength on every nonempty open set.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\mathcal Ku\)">\(\mathcal Ku\)</span> is smooth near a point, choose <span class="math" data-tex="\(\chi\)">\(\chi\)</span> compact and one near it. The left identity gives <span class="math" data-tex="\(\chi u=T\mathcal K(\chi u)\)">\(\chi u=T\mathcal K(\chi u)\)</span>. Choose a second cutoff <span class="math" data-tex="\(\phi\)">\(\phi\)</span> one near that point, supported where <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>. Split the compact datum into <span class="math" data-tex="\(\phi\mathcal Ku\)">\(\phi\mathcal Ku\)</span>, which is smooth, and <span class="math" data-tex="\((1-\phi)\mathcal K(\chi u)\)">\((1-\phi)\mathcal K(\chi u)\)</span>, whose support avoids the point. The two smoothing properties just proved make both images smooth near it. Hence <span class="math" data-tex="\(u\)">\(u\)</span> is smooth there. A differential operator cannot introduce singular support, so the singular supports agree for every distribution on every coefficient open set.</p>
+<p>At a frozen velocity <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, the operator is <span class="math" data-tex="\(\mathcal K_{v_0}=\partial_t+v_0\partial_x-\partial_v^2\)">\(\mathcal K_{v_0}=\partial_t+v_0\partial_x-\partial_v^2\)</span>. The nonsmooth distribution <span class="math" data-tex="\(\delta(x-v_0t)\)">\(\delta(x-v_0t)\)</span>, independent of <span class="math" data-tex="\(v\)">\(v\)</span>, solves its homogeneous equation. This can be checked in the linear coordinates <span class="math" data-tex="\((v,x-v_0t,t)\)">\((v,x-v_0t,t)\)</span>: transport is differentiation in the last coordinate and the distribution is constant there and in <span class="math" data-tex="\(v\)">\(v\)</span>. Thus no frozen operator is hypoelliptic. Its polynomial and derivative norm satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P_{v_0}(\xi_v,\xi_x,\tau)\\
+=\xi_v^2+i(\tau+v_0\xi_x),\\
+S_{P_{v_0}}^2\\
+=|P_{v_0}|^2+4\xi_v^2+v_0^2+5.
+\end{gathered}
+\tag{KG11}
+\]">\[
+\begin{gathered}
+P_{v_0}(\xi_v,\xi_x,\tau)\\
+=\xi_v^2+i(\tau+v_0\xi_x),\\
+S_{P_{v_0}}^2\\
+=|P_{v_0}|^2+4\xi_v^2+v_0^2+5.
+\end{gathered}
+\tag{KG11}
+\]</span>
+For two distinct velocities <span class="math" data-tex="\(v_0,v_1\)">\(v_0,v_1\)</span>, take frequencies <span class="math" data-tex="\((0,R,-v_0R)\)">\((0,R,-v_0R)\)</span>. The norm for <span class="math" data-tex="\(v_0\)">\(v_0\)</span> is the constant <span class="math" data-tex="\(\sqrt{v_0^2+5}\)">\(\sqrt{v_0^2+5}\)</span>, while that for <span class="math" data-tex="\(v_1\)">\(v_1\)</span> grows like <span class="math" data-tex="\(|v_1-v_0||R|\)">\(|v_1-v_0||R|\)</span>. They are not equally strong. Every nonempty open set contains two distinct velocity values, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The kernel illustrates the mechanism: velocity has variance proportional to <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, while spatial position has variance proportional to <span class="math" data-tex="\(\tau^3\)">\(\tau^3\)</span>, with a nonzero covariance. Variable drift transports the diffusion into the spatial direction. Freezing that drift removes this transfer, leaving a nonsmooth invariant distribution.</p>
+<h2 id="two-exercises-for-the-comparison">Two exercises for the comparison</h2>
+<p><strong>Exercise 5 (intermediate: exact covariance and contours).</strong> Recover the covariance in(KG3) directly from(KG2), and describe its exponent-one contour at <span class="math" data-tex="\(\tau=1\)">\(\tau=1\)</span>.</p>
+<p><strong>Solution.</strong> Complete the square as already displayed. The marginal <span class="math" data-tex="\(w\)">\(w\)</span> has mean0 and variance <span class="math" data-tex="\(2\tau\)">\(2\tau\)</span>. Conditional on <span class="math" data-tex="\(w\)">\(w\)</span>, <span class="math" data-tex="\(z\)">\(z\)</span> has mean <span class="math" data-tex="\(\tau w/2\)">\(\tau w/2\)</span> and independent residual variance <span class="math" data-tex="\(\tau^3/6\)">\(\tau^3/6\)</span>. Thus <span class="math" data-tex="\(\operatorname{Cov}(w,z)=\tau^2\)">\(\operatorname{Cov}(w,z)=\tau^2\)</span>, and <span class="math" data-tex="\(\operatorname{Var}z=\tau^2(2\tau)/4+\tau^3/6=2\tau^3/3\)">\(\operatorname{Var}z=\tau^2(2\tau)/4+\tau^3/6=2\tau^3/3\)</span>. At time1 the exponent-one contour has exact parametrization
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w=2\cos\theta,\\
+\qquad
+z=\cos\theta+\frac{\sin\theta}{\sqrt3},\\
+\quad0\le\theta\le2\pi.
+\end{gathered}
+\tag{KG12}
+\]">\[
+\begin{gathered}
+w=2\cos\theta,\\
+\qquad
+z=\cos\theta+\frac{\sin\theta}{\sqrt3},\\
+\quad0\le\theta\le2\pi.
+\end{gathered}
+\tag{KG12}
+\]</span>
+Substitution gives <span class="math" data-tex="\(w^2/4+3(z-w/2)^2=1\)">\(w^2/4+3(z-w/2)^2=1\)</span>. It is a density contour, with value <span class="math" data-tex="\(\sqrt3e^{-1}/(2\pi)\)">\(\sqrt3e^{-1}/(2\pi)\)</span>, rather than a support boundary. The density is positive at every spatial point for every positive time.</p>
+<p><strong>Exercise 6 (advanced: a localization trap).</strong> In the proof of Proposition 6, why can the commutator datum be smoothed by the off-diagonal kernel, while <span class="math" data-tex="\(\mathcal K(\chi u)\)">\(\mathcal K(\chi u)\)</span> as a whole cannot be treated that way? Why does freezing at <span class="math" data-tex="\(v_0\)">\(v_0\)</span> not preserve the argument?</p>
+<p><strong>Solution.</strong> The whole datum can contain a singularity at the output point, where the kernel is singular on the diagonal. After splitting by <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, the remainder has compact support separated from a smaller output neighborhood; every source-output pair is off the diagonal, and all kernel derivatives can be paired against that fixed compact distribution. The part <span class="math" data-tex="\(\phi\mathcal Ku\)">\(\phi\mathcal Ku\)</span> is handled by smooth-input pairing, which does not need a smooth kernel at the diagonal. For the frozen operator, the spatial motion is the deterministic drift <span class="math" data-tex="\(v_0\tau\)">\(v_0\tau\)</span>, so its retarded kernel has a delta factor on <span class="math" data-tex="\(x-x_0=v_0\tau\)">\(x-x_0=v_0\tau\)</span> for positive time. It is singular off the full diagonal, and the second smoothing property fails. The explicit homogeneous distribution in Proposition 6 gives the resulting obstruction directly.</p>
+<h2 id="figure-the-two-mechanisms">Figure: the two mechanisms</h2>
+<p><a href="assets/AN02-L089/constant-strength-hypoellipticity-4F2B6BC2B7C14937C9B50C12A51EA6BC2658CA8E82669521B2AFF7723CC3FAE6.png" title="Open full-size figure"><img src="assets/AN02-L089/constant-strength-hypoellipticity-4F2B6BC2B7C14937C9B50C12A51EA6BC2658CA8E82669521B2AFF7723CC3FAE6.png" alt="An angular regularity cone and the exact Kolmogorov Gaussian contour" class="course-figure" width="2400" height="1200" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="constant-strength-hypoellipticity" data-asset-sha256="4F2B6BC2B7C14937C9B50C12A51EA6BC2658CA8E82669521B2AFF7723CC3FAE6"></a><br><a href="assets/AN02-L089/constant-strength-hypoellipticity-4F2B6BC2B7C14937C9B50C12A51EA6BC2658CA8E82669521B2AFF7723CC3FAE6.png">Open full-size figure</a></p>
+<p><strong>Figure 1.</strong> Left: a two-dimensional frequency section of(HE19)–(HE21), with <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span> having half-angle <span class="math" data-tex="\(\pi/12\)">\(\pi/12\)</span> and <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span> half-angle <span class="math" data-tex="\(\pi/6\)">\(\pi/6\)</span> about <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>. For the plotted example <span class="math" data-tex="\(N=4,M=3\)">\(N=4,M=3\)</span>, at radius at least2 the outer region has the power <span class="math" data-tex="\(-3\)">\(-3\)</span>, the inner region has the power4, and the transition is inside the larger regularity cone. The circles of radii1 and2 mark the radial cutoff zone, and <span class="math" data-tex="\(k_N=1\)">\(k_N=1\)</span> at radius at most1; these are chosen plotting weights, not universal constants in the theorem. Right: the exact exponent-one contour(KG12), together with its positive-time images <span class="math" data-tex="\((w,z)=(\sqrt\tau W,\tau^{3/2}Z)\)">\((w,z)=(\sqrt\tau W,\tau^{3/2}Z)\)</span> at <span class="math" data-tex="\(\tau=1/4,1\)">\(\tau=1/4,1\)</span>. The dashed line <span class="math" data-tex="\(z=w/2\)">\(z=w/2\)</span> is the conditional mean at time1; the covariance is <span class="math" data-tex="\(\Sigma_1\)">\(\Sigma_1\)</span> in(KG3). These curves are density contours, not support bounds or sampled wave fronts. The frozen invariant <span class="math" data-tex="\(x-v_0t\)">\(x-v_0t\)</span> and the contrast with the variable drift are proved in(KG11) and Proposition 6. Reproducible figure sources and exact metadata accompany this lesson; human source comparison is Hörmander's section 13.4.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, sections 13.3–13.5.</li>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture notes, University of Copenhagen, 2007–2008, <a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture-note index</a>.</li>
+
+<li>Francesca Anceschi and Sergio Polidoro, <em>A survey on the classical theory for Kolmogorov equation</em>, <a href="https://arxiv.org/abs/1907.05155">arXiv:1907.05155</a>. Section 1 presents the explicit Gaussian fundamental solution that Kolmogorov found in 1934 for this degenerate equation; Section 2 treats Kolmogorov operators with constant coefficients, their fundamental solutions and their hypoellipticity.</li>
+</ul>
+</main></body></html>

@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Characteristic cycles from supported microlocal identities · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/characteristic-cycles-from-supported-microlocal-identities.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Characteristic cycles from supported microlocal identities</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Original text by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Source-scope and reader repairs by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the revising AI. New original text is public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="characteristic-cycles-from-supported-microlocal-identities">Characteristic cycles from supported microlocal identities</h1>
+<p>A characteristic cycle is a trace of the identity after its directional information has been retained. The trace takes values in a dualizing coefficient and carries a support condition. Forgetting that condition too early can erase a nonzero cycle. We construct the actual supported map, prove its product formula and microlocal invariance, and calculate its normalization for finite complexes at a point.</p>
+<p><em>Original text by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Source-scope and reader repairs by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the revising AI. New original text is public domain (CC0).</em></p>
+<p>Use <a href="../analytic-boundaries-and-constructible-traces/constructible-traces-and-local-euler-indices.html">Constructible traces and local Euler indices</a> for the diagonal external-Hom map, its ordinary restriction and the graded contraction. <a href="../sheaf-proof-readings/SH03-perfect-operations-and-finite-microlocal-coefficients.html">Perfect operations and finite microlocal coefficients</a> supplies bounded constructible microlocal Hom. <a href="lagrangian-cycles-and-proper-cotangent-images.html">Lagrangian cycles and proper cotangent images</a> supplies its cycle coefficient and the lowest supported dualizing sheaf. The exact current SH-02 prerequisites are ordinary microlocal-Hom recovery, its kernel unit and two commuting actions, the external microlocal product, the point-localized morphism theorem and the proper cone-cutoff kernel.</p>
+<p>This lesson treats the definition of characteristic cycles through supported microlocal identities, the product formula, microlocal invariance and the cycle of a point; the characteristic cycle of a constructible sheaf goes back to M. Kashiwara, <a href="https://www.numdam.org/item/AST_1985__130__193_0/"><em>Index theorem for constructible sheaves</em></a>, Astérisque 130 (1985). The closed-point calculation below is an application of the normalized closed trace. Cotangent transport, the general conormal normalization, antipodal duality, integrality, additivity and the half-line and Lorentz-cone examples are treated in later lessons.</p>
+<h2 id="the-coefficient-and-the-supported-identity">The coefficient and the supported identity</h2>
+<p>Fix a field <span class="math" data-tex="\(k\)">\(k\)</span> of characteristic zero. The chain and Lagrangian-cycle constructions in the preceding lessons allow a commutative ring of finite global dimension; the characteristic-cycle results here use the stated field hypothesis. Let <span class="math" data-tex="\(X\)">\(X\)</span> be real analytic, Hausdorff and countable at infinity, with the standing finite uniform dimension bound, and let</p>
+<span class="math math-display" data-tex="\[
+F\in D^b_{\mathbb R\text{-c}}(k_X),\qquad
+\Lambda=\operatorname{SS}(F),\qquad
+E_X=\pi_X^{-1}\omega_X.
+\qquad\text{(1)}
+\]">\[
+F\in D^b_{\mathbb R\text{-c}}(k_X),\qquad
+\Lambda=\operatorname{SS}(F),\qquad
+E_X=\pi_X^{-1}\omega_X.
+\qquad\text{(1)}
+\]</span>
+<p>Constructibility includes finite perfect stalks. Its previously proved geometric criterion makes <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> a closed conic subanalytic isotropic carrier. Thus supported degree-zero classes with coefficient <span class="math" data-tex="\(E_X\)">\(E_X\)</span> give sections of <span class="math" data-tex="\(\mathcal L_X\)">\(\mathcal L_X\)</span>. We do not infer the support of the final cycle is all of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\delta:X\hookrightarrow X^2\)">\(\delta:X\hookrightarrow X^2\)</span> be the closed diagonal. With projections <span class="math" data-tex="\(q_1,q_2\)">\(q_1,q_2\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+K_F=F\boxtimes D_XF,\qquad
+\mathsf M(F,F)=\mu_{\Delta_X}
+R\mathcal Hom(q_2^{-1}F,q_1^!F).
+\qquad\text{(2)}
+\]">\[
+K_F=F\boxtimes D_XF,\qquad
+\mathsf M(F,F)=\mu_{\Delta_X}
+R\mathcal Hom(q_2^{-1}F,q_1^!F).
+\qquad\text{(2)}
+\]</span>
+<p>The diagonal conormal is identified by
+<span class="math" data-tex="\((x,x;\xi,-\xi)\mapsto(x;\xi)\)">\((x,x;\xi,-\xi)\mapsto(x;\xi)\)</span>.
+The actual constructible external-Hom comparison identifies
+<span class="math" data-tex="\(K_F\)">\(K_F\)</span> with the Hom kernel in (2). Its exceptional diagonal restriction identifies
+<span class="math" data-tex="\(\delta^!K_F\)">\(\delta^!K_F\)</span> with <span class="math" data-tex="\(R\mathcal Hom(F,F)\)">\(R\mathcal Hom(F,F)\)</span>, since both projection–diagonal composites are the identity.</p>
+<p>The identity of <span class="math" data-tex="\(F\)">\(F\)</span>, under these actual adjunctions, gives a kernel morphism</p>
+<span class="math math-display" data-tex="\[
+u_F:k_{\Delta_X}\longrightarrow K_F.
+\qquad\text{(3)}
+\]">\[
+u_F:k_{\Delta_X}\longrightarrow K_F.
+\qquad\text{(3)}
+\]</span>
+<p>Indeed
+<span class="math" data-tex="\(\operatorname{Hom}(k_{\Delta_X},K_F)
+=\operatorname{Hom}(k_X,\delta^!K_F)
+=\operatorname{Hom}(F,F)\)">\(\operatorname{Hom}(k_{\Delta_X},K_F)
+=\operatorname{Hom}(k_X,\delta^!K_F)
+=\operatorname{Hom}(F,F)\)</span>.
+Apply diagonal microlocalization. The center-supported formula sends <span class="math" data-tex="\(k_{\Delta_X}\)">\(k_{\Delta_X}\)</span> to <span class="math" data-tex="\(k_{T^*X}\)">\(k_{T^*X}\)</span>, without a shift, so (3) becomes the canonical unit</p>
+<span class="math math-display" data-tex="\[
+e_F:k_{T^*X}\longrightarrow\mathsf M(F,F).
+\qquad\text{(4)}
+\]">\[
+e_F:k_{T^*X}\longrightarrow\mathsf M(F,F).
+\qquad\text{(4)}
+\]</span>
+<p>Ordinary recovery <span class="math" data-tex="\(R\pi_{X*}\mathsf M(F,F)\simeq R\mathcal Hom(F,F)\)">\(R\pi_{X*}\mathsf M(F,F)\simeq R\mathcal Hom(F,F)\)</span> carries (4) back to <span class="math" data-tex="\(\mathrm{id}_F\)">\(\mathrm{id}_F\)</span>. This follows from the zero-direction recovery and the same kernel adjunction defining (3); it is a statement about the particular identity, rather than just an equality of objects. Here <span class="math" data-tex="\(R\mathcal Hom\)">\(R\mathcal Hom\)</span> is a sheaf on <span class="math" data-tex="\(X\)">\(X\)</span>; taking derived global sections gives the global endomorphism group.</p>
+<p>The support estimate gives
+<span class="math" data-tex="\(\operatorname{supp}\mathsf M(F,F)\subset\Lambda\)">\(\operatorname{supp}\mathsf M(F,F)\subset\Lambda\)</span>.
+In fact the canonical unit detects the whole microsupport: if its germ at <span class="math" data-tex="\(p\)">\(p\)</span> is zero, the point-localized morphism theorem says the identity of <span class="math" data-tex="\(F\)">\(F\)</span> is zero in <span class="math" data-tex="\(D^b(k_X;p)\)">\(D^b(k_X;p)\)</span>. The object is then zero in that category, equivalently <span class="math" data-tex="\(p\notin\operatorname{SS}(F)\)">\(p\notin\operatorname{SS}(F)\)</span>. Only after the trace below can cancellation reduce the support.</p>
+<h2 id="ordinary-restriction-and-the-unique-supported-trace">Ordinary restriction and the unique supported trace</h2>
+<p>Use the order</p>
+<span class="math math-display" data-tex="\[
+t_F:F\otimes D_XF
+\xrightarrow{\text{graded symmetry}}D_XF\otimes F
+\xrightarrow{\mathrm{evaluation}}\omega_X.
+\qquad\text{(5)}
+\]">\[
+t_F:F\otimes D_XF
+\xrightarrow{\text{graded symmetry}}D_XF\otimes F
+\xrightarrow{\mathrm{evaluation}}\omega_X.
+\qquad\text{(5)}
+\]</span>
+<p>The symmetry includes the Koszul sign. The kernel map to be microlocalized is</p>
+<span class="math math-display" data-tex="\[
+v_F:K_F\longrightarrow
+\delta_*\delta^{-1}K_F
+=\delta_*(F\otimes D_XF)
+\xrightarrow{\delta_*t_F}\delta_*\omega_X.
+\qquad\text{(6)}
+\]">\[
+v_F:K_F\longrightarrow
+\delta_*\delta^{-1}K_F
+=\delta_*(F\otimes D_XF)
+\xrightarrow{\delta_*t_F}\delta_*\omega_X.
+\qquad\text{(6)}
+\]</span>
+<p>Its first arrow is the ordinary closed-embedding unit. It is not an exceptional restriction. The center-supported microlocalization formula identifies
+<span class="math" data-tex="\(\mu_{\Delta_X}(\delta_*\omega_X)=E_X\)">\(\mu_{\Delta_X}(\delta_*\omega_X)=E_X\)</span>:
+specialization has coefficient <span class="math" data-tex="\(\omega_X\)">\(\omega_X\)</span> on the zero normal section; that section has zero pairing with every covector, and its Fourier-kernel projection is the identity. The orientation and shift already lie in <span class="math" data-tex="\(\omega_X\)">\(\omega_X\)</span>.</p>
+<p>Consequently (6) gives <span class="math" data-tex="\(T_F:\mathsf M(F,F)\to E_X\)">\(T_F:\mathsf M(F,F)\to E_X\)</span>. The source is supported on the closed <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, so its support-localization map is invertible. Apply support localization to <span class="math" data-tex="\(T_F\)">\(T_F\)</span> and invert that source map:</p>
+<span class="math math-display" data-tex="\[
+\kappa_F:\mathsf M(F,F)
+\xrightarrow{\sim}R\Gamma_\Lambda\mathsf M(F,F)
+\xrightarrow{R\Gamma_\Lambda T_F}R\Gamma_\Lambda E_X.
+\qquad\text{(7)}
+\]">\[
+\kappa_F:\mathsf M(F,F)
+\xrightarrow{\sim}R\Gamma_\Lambda\mathsf M(F,F)
+\xrightarrow{R\Gamma_\Lambda T_F}R\Gamma_\Lambda E_X.
+\qquad\text{(7)}
+\]</span>
+<p>This is the unique lift of <span class="math" data-tex="\(T_F\)">\(T_F\)</span> from a source supported on <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Uniqueness uses the right-adjoint support functor and that supported source. Vanishing of a map outside <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, without such a source, would not by itself provide a unique lift.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CC}(F)
+=[\kappa_Fe_F]\in H^0_\Lambda(T^*X;E_X)
+\subset\Gamma(T^*X;\mathcal L_X).
+\qquad\text{(8)}
+\]">\[
+\operatorname{CC}(F)
+=[\kappa_Fe_F]\in H^0_\Lambda(T^*X;E_X)
+\subset\Gamma(T^*X;\mathcal L_X).
+\qquad\text{(8)}
+\]</span>
+<p>This constructs the supported characteristic class from ordinary Hom recovery, support on microsupport, the actual external-Hom kernel, ordinary diagonal restriction, graded evaluation, and the center-supported coefficient. All maps restrict to their counterparts on an open subset. Enlarging <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> to another allowed closed carrier composes (7) with its support-enlargement map.</p>
+<p>On an <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional component, the earlier cycle comparison identifies
+<span class="math" data-tex="\(R\Gamma_\Lambda E_X\)">\(R\Gamma_\Lambda E_X\)</span> with
+<span class="math" data-tex="\(j_{\Lambda*}(\omega_\Lambda\otimes B_X|_\Lambda)[-n]\)">\(j_{\Lambda*}(\omega_\Lambda\otimes B_X|_\Lambda)[-n]\)</span>.
+Since <span class="math" data-tex="\(\dim\Lambda\leq n\)">\(\dim\Lambda\leq n\)</span>, this complex has no negative cohomology. Thus</p>
+<span class="math math-display" data-tex="\[
+H^0_\Lambda(T^*X;E_X)
+=\Gamma\bigl(T^*X;H^0R\Gamma_\Lambda E_X\bigr).
+\qquad\text{(9)}
+\]">\[
+H^0_\Lambda(T^*X;E_X)
+=\Gamma\bigl(T^*X;H^0R\Gamma_\Lambda E_X\bigr).
+\qquad\text{(9)}
+\]</span>
+<p>This explains why equality of cycle germs proves equality of the corresponding global degree-zero sections. It also explains why forgetting the support in (8) can lose information: the map to ordinary <span class="math" data-tex="\(H^0(T^*X;E_X)\)">\(H^0(T^*X;E_X)\)</span> need not be injective.</p>
+<h2 id="products-retain-the-actual-graded-kernel-maps">Products retain the actual graded kernel maps</h2>
+<p>For bounded constructible <span class="math" data-tex="\(F,G\)">\(F,G\)</span> on <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, respectively,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CC}(F\boxtimes G)
+=\operatorname{CC}(F)\boxtimes\operatorname{CC}(G).
+\qquad\text{(10)}
+\]">\[
+\operatorname{CC}(F\boxtimes G)
+=\operatorname{CC}(F)\boxtimes\operatorname{CC}(G).
+\qquad\text{(10)}
+\]</span>
+<p>The right side uses the supported cycle product and its ordered dualizing coefficient. Its carrier is
+<span class="math" data-tex="\(\operatorname{SS}(F)\times\operatorname{SS}(G)\)">\(\operatorname{SS}(F)\times\operatorname{SS}(G)\)</span>.
+This is closed, conic, subanalytic and isotropic; the external microsupport estimate puts the left side inside that carrier.</p>
+<p><strong>Proof.</strong> Reorder <span class="math" data-tex="\((X\times Y)^2\)">\((X\times Y)^2\)</span> as <span class="math" data-tex="\(X^2\times Y^2\)">\(X^2\times Y^2\)</span>; the diagonal becomes <span class="math" data-tex="\(\Delta_X\times\Delta_Y\)">\(\Delta_X\times\Delta_Y\)</span>. Constructible product duality and the graded permutation give the actual comparison from <span class="math" data-tex="\(K_F\boxtimes K_G\)">\(K_F\boxtimes K_G\)</span> to <span class="math" data-tex="\(K_{F\boxtimes G}\)">\(K_{F\boxtimes G}\)</span>. Under exceptional diagonal restriction and internal Hom adjunction, the tensor of the kernel units (3) represents
+<span class="math" data-tex="\(\mathrm{id}_F\otimes\mathrm{id}_G=\mathrm{id}_{F\boxtimes G}\)">\(\mathrm{id}_F\otimes\mathrm{id}_G=\mathrm{id}_{F\boxtimes G}\)</span>.
+Hence it is the kernel unit of the product with these identifications.</p>
+<p>The external microlocal comparison</p>
+<span class="math math-display" data-tex="\[
+\mu_{\Delta_X}K_F\boxtimes
+\mu_{\Delta_Y}K_G
+\longrightarrow
+\mu_{\Delta_X\times\Delta_Y}(K_F\boxtimes K_G)
+\qquad\text{(11)}
+\]">\[
+\mu_{\Delta_X}K_F\boxtimes
+\mu_{\Delta_Y}K_G
+\longrightarrow
+\mu_{\Delta_X\times\Delta_Y}(K_F\boxtimes K_G)
+\qquad\text{(11)}
+\]</span>
+<p>comes from the product normal deformation, its two independent positive scalings and the Fourier product kernel. On the center-supported unit kernels, its map sends <span class="math" data-tex="\(1\otimes1\)">\(1\otimes1\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>: both zero-normal kernel projections are identities. Thus (11), followed by the actual external-Hom comparison, carries <span class="math" data-tex="\(e_F\boxtimes e_G\)">\(e_F\boxtimes e_G\)</span> to <span class="math" data-tex="\(e_{F\boxtimes G}\)">\(e_{F\boxtimes G}\)</span>.</p>
+<p>Ordinary diagonal restriction is compatible with products. Tensor the evaluations in (5), permute the factors to the displayed product order and use
+<span class="math" data-tex="\(\omega_X\boxtimes\omega_Y\simeq\omega_{X\times Y}\)">\(\omega_X\boxtimes\omega_Y\simeq\omega_{X\times Y}\)</span>.
+Tensor–Hom adjunction says this is exactly the evaluation of the product dual. This verifies the evaluated kernel square, including its graded permutations. Naturality of (11) then makes the same square commute after microlocalization. On the final center-supported objects its comparison is the ordered map
+<span class="math" data-tex="\(E_X\boxtimes E_Y\to E_{X\times Y}\)">\(E_X\boxtimes E_Y\to E_{X\times Y}\)</span>.</p>
+<p>All these maps have sources supported on the product carrier. Their unique supported lifts therefore agree by the adjunction used in (7). Applying them to the product units proves (10) with its support condition. We have used the external comparison as a map; no general invertibility of (11) is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="naturality-of-evaluation-proves-microlocal-invariance">Naturality of evaluation proves microlocal invariance</h2>
+<p>First take an ordinary degree-zero morphism <span class="math" data-tex="\(h:F\to G\)">\(h:F\to G\)</span> between bounded constructible complexes. On <span class="math" data-tex="\(T^*X\)">\(T^*X\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+A=\mathsf M(G,F),\quad B=\mathsf M(F,F),\quad
+C=\mathsf M(G,G),\quad D=\mathsf M(F,G).
+\qquad\text{(12)}
+\]">\[
+A=\mathsf M(G,F),\quad B=\mathsf M(F,F),\quad
+C=\mathsf M(G,G),\quad D=\mathsf M(F,G).
+\qquad\text{(12)}
+\]</span>
+<p>Precomposition acts on the first argument; postcomposition acts on the second. Their square commutes:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+A&amp;\xrightarrow{\mathrm{pre}\,h}&amp;B\\
+\downarrow{\mathrm{post}\,h}&amp;&amp;\downarrow{\mathrm{post}\,h}\\
+C&amp;\xrightarrow{\mathrm{pre}\,h}&amp;D.
+\end{array}
+\qquad
+(\mathrm{post}\,h)e_F=(\mathrm{pre}\,h)e_G.
+\qquad\text{(13)}
+\]">\[
+\begin{array}{ccc}
+A&amp;\xrightarrow{\mathrm{pre}\,h}&amp;B\\
+\downarrow{\mathrm{post}\,h}&amp;&amp;\downarrow{\mathrm{post}\,h}\\
+C&amp;\xrightarrow{\mathrm{pre}\,h}&amp;D.
+\end{array}
+\qquad
+(\mathrm{post}\,h)e_F=(\mathrm{pre}\,h)e_G.
+\qquad\text{(13)}
+\]</span>
+<p>Both statements follow before microlocalization from pre- and postcomposition of the actual Hom kernels. The equality for the units is the fact that both sides represent <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>There is also an equality of trace maps from <span class="math" data-tex="\(A\)">\(A\)</span>. Its constructible kernel is <span class="math" data-tex="\(F\boxtimes D_XG\)">\(F\boxtimes D_XG\)</span>. The two routes apply <span class="math" data-tex="\(h\)">\(h\)</span> to the first factor or <span class="math" data-tex="\(D_Xh\)">\(D_Xh\)</span> to the second. On the diagonal, naturality of Verdier evaluation gives</p>
+<span class="math math-display" data-tex="\[
+t_G(h\otimes1_{D_XG})
+=t_F(1_F\otimes D_Xh).
+\qquad\text{(14)}
+\]">\[
+t_G(h\otimes1_{D_XG})
+=t_F(1_F\otimes D_Xh).
+\qquad\text{(14)}
+\]</span>
+<p>The same ordinary diagonal restriction precedes both maps. Apply microlocalization and lift to a common allowed carrier
+<span class="math" data-tex="\(\Lambda_0=\operatorname{SS}(F)\cup\operatorname{SS}(G)\)">\(\Lambda_0=\operatorname{SS}(F)\cup\operatorname{SS}(G)\)</span>.
+The cross source <span class="math" data-tex="\(A\)">\(A\)</span> is supported there, so uniqueness of the supported lift gives</p>
+<span class="math math-display" data-tex="\[
+\kappa_G^{\Lambda_0}(\mathrm{post}\,h)
+=\kappa_F^{\Lambda_0}(\mathrm{pre}\,h):
+A\longrightarrow R\Gamma_{\Lambda_0}E_X.
+\qquad\text{(15)}
+\]">\[
+\kappa_G^{\Lambda_0}(\mathrm{post}\,h)
+=\kappa_F^{\Lambda_0}(\mathrm{pre}\,h):
+A\longrightarrow R\Gamma_{\Lambda_0}E_X.
+\qquad\text{(15)}
+\]</span>
+<p>This is equality of the particular evaluated trace maps, not just an isomorphism between endomorphism objects.</p>
+<p>Suppose <span class="math" data-tex="\(\operatorname{SS}(\operatorname{Cone}h)\)">\(\operatorname{SS}(\operatorname{Cone}h)\)</span> avoids an open <span class="math" data-tex="\(\Omega\subset T^*X\)">\(\Omega\subset T^*X\)</span>. Exactness and the microlocal-Hom support estimate make all four arrows in (13) isomorphisms on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Put
+<span class="math" data-tex="\(w=(\mathrm{pre}\,h)^{-1}e_F:k_\Omega\to A|_\Omega\)">\(w=(\mathrm{pre}\,h)^{-1}e_F:k_\Omega\to A|_\Omega\)</span>.
+The square and the unit equality in (13) imply
+<span class="math" data-tex="\((\mathrm{post}\,h)w=e_G\)">\((\mathrm{post}\,h)w=e_G\)</span>: apply the invertible bottom precomposition to both sides and use the square. Equation (15), applied to <span class="math" data-tex="\(w\)">\(w\)</span>, now proves</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CC}(F)|_\Omega
+=\operatorname{CC}(G)|_\Omega
+\quad\text{for an ordinary constructible denominator }h.
+\qquad\text{(16)}
+\]">\[
+\operatorname{CC}(F)|_\Omega
+=\operatorname{CC}(G)|_\Omega
+\quad\text{for an ordinary constructible denominator }h.
+\qquad\text{(16)}
+\]</span>
+<p>We extend this to an isomorphism in the full localized category <span class="math" data-tex="\(D^b(k_X;\Omega)\)">\(D^b(k_X;\Omega)\)</span>. Its intermediate objects need not initially be constructible, so this extension requires a representative argument.</p>
+<p>Fix <span class="math" data-tex="\(p\in\Omega\)">\(p\in\Omega\)</span> with nonzero covector, and work in a vector-space chart. The point-localized morphism theorem represents a chosen isomorphism from <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(G\)">\(G\)</span> by</p>
+<span class="math math-display" data-tex="\[
+F\ \xleftarrow{\,a\,}\ Q_{U,\gamma}F\
+\xrightarrow{\,b\,}\ G,\qquad
+Q_{U,\gamma}F=(P_\gamma(F_U))_U,
+\qquad\text{(17)}
+\]">\[
+F\ \xleftarrow{\,a\,}\ Q_{U,\gamma}F\
+\xrightarrow{\,b\,}\ G,\qquad
+Q_{U,\gamma}F=(P_\gamma(F_U))_U,
+\qquad\text{(17)}
+\]</span>
+<p>where <span class="math" data-tex="\(a\)">\(a\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-denominator and
+<span class="math" data-tex="\(P_\gamma=\phi_\gamma^{-1}R\phi_{\gamma*}\)">\(P_\gamma=\phi_\gamma^{-1}R\phi_{\gamma*}\)</span>.
+Choose relatively compact subanalytic <span class="math" data-tex="\(U\)">\(U\)</span> and a closed proper polyhedral cone <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, with the chosen covector strictly negative on its nonzero vectors. These choices suffice in the cone-stalk system: compact unit directions permit a finite polyhedral enlargement of a permitted cone while retaining strict negativity; its polar is the corresponding angular refinement. Shrinking <span class="math" data-tex="\(U\)">\(U\)</span> gives the required simultaneous refinements.</p>
+<p>The object in the middle of (17) is constructible. To check the nonproper operation, use its actual difference kernel</p>
+<span class="math math-display" data-tex="\[
+P_\gamma(F_U)=Rd_*(k_\gamma\boxtimes F_U),
+\qquad d(v,z)=z-v.
+\qquad\text{(18)}
+\]">\[
+P_\gamma(F_U)=Rd_*(k_\gamma\boxtimes F_U),
+\qquad d(v,z)=z-v.
+\qquad\text{(18)}
+\]</span>
+<p>The closed support of <span class="math" data-tex="\(F_U\)">\(F_U\)</span> lies in compact <span class="math" data-tex="\(\overline U\)">\(\overline U\)</span>. Over a compact target set <span class="math" data-tex="\(K\)">\(K\)</span>, an incidence satisfies
+<span class="math" data-tex="\(z\in\operatorname{supp}(F_U)\)">\(z\in\operatorname{supp}(F_U)\)</span> and <span class="math" data-tex="\(v=z-x\)">\(v=z-x\)</span>, <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>.
+Both variables are bounded, and the inverse image in the closed kernel support is closed in that compact product. Thus <span class="math" data-tex="\(d\)">\(d\)</span> is proper on this support. The kernel is bounded constructible with perfect coefficients, so the proper constructible-image theorem applies; it also identifies <span class="math" data-tex="\(Rd_*\)">\(Rd_*\)</span> with <span class="math" data-tex="\(Rd_!\)">\(Rd_!\)</span> on this kernel. The outer subanalytic open extension preserves bounded constructibility. Extending from the chart to <span class="math" data-tex="\(X\)">\(X\)</span> retains it.</p>
+<p>The fraction represents an isomorphism at <span class="math" data-tex="\(p\)">\(p\)</span>; since <span class="math" data-tex="\(a\)">\(a\)</span> is invertible there, <span class="math" data-tex="\(b\)">\(b\)</span> is invertible there too. Saturation of the denominator system implies that both cones have microsupport avoiding <span class="math" data-tex="\(p\)">\(p\)</span>. Closedness gives a smaller cotangent neighborhood on which both avoid it. Apply (16) to each arrow of (17), obtaining equality of the two cycle germs at <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>At a zero covector, the localized category is the ordinary germ category: an invisible cone vanishes on an ordinary neighborhood of the base point. A representative of the isomorphism therefore gives an ordinary local derived isomorphism after shrinking, with constructible inputs. The ordinary isomorphism naturality of (3)–(7) proves the same equality there. Finally (9) turns equality of all the germs into</p>
+<span class="math math-display" data-tex="\[
+F\simeq G\text{ in }D^b(k_X;\Omega)
+\quad\Longrightarrow\quad
+\operatorname{CC}(F)|_\Omega=\operatorname{CC}(G)|_\Omega.
+\qquad\text{(19)}
+\]">\[
+F\simeq G\text{ in }D^b(k_X;\Omega)
+\quad\Longrightarrow\quad
+\operatorname{CC}(F)|_\Omega=\operatorname{CC}(G)|_\Omega.
+\qquad\text{(19)}
+\]</span>
+<p>This proof retains the identities and their evaluated supported maps. It also checks constructibility of the pointwise roofs instead of assigning a characteristic cycle to an arbitrary bounded intermediate object. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="a-finite-point-coefficient-fixes-the-normalization">A finite point coefficient fixes the normalization</h2>
+<p>For <span class="math" data-tex="\(X=\mathrm{pt}\)">\(X=\mathrm{pt}\)</span>, all diagonal and microlocal operations in (3)–(8) are identities and <span class="math" data-tex="\(E_X=k\)">\(E_X=k\)</span>. Represent <span class="math" data-tex="\(V\)">\(V\)</span> by a bounded finite-dimensional complex <span class="math" data-tex="\(P\)">\(P\)</span>. With its ordinary complex dual, the actual tensor–Hom map is</p>
+<span class="math math-display" data-tex="\[
+P\otimes P^\vee\longrightarrow\operatorname{Hom}^{\bullet}(P,P),
+\qquad p\otimes\varphi\longmapsto(q\mapsto p\,\varphi(q)).
+\qquad\text{(20)}
+\]">\[
+P\otimes P^\vee\longrightarrow\operatorname{Hom}^{\bullet}(P,P),
+\qquad p\otimes\varphi\longmapsto(q\mapsto p\,\varphi(q)).
+\qquad\text{(20)}
+\]</span>
+<p>The dual differential makes this a chain map. For homogeneous bases <span class="math" data-tex="\(e_{r,s}\)">\(e_{r,s}\)</span> of <span class="math" data-tex="\(P^r\)">\(P^r\)</span>, its inverse carries the identity to
+<span class="math" data-tex="\(\sum_{r,s}e_{r,s}\otimes e_{r,s}^*\)">\(\sum_{r,s}e_{r,s}\otimes e_{r,s}^*\)</span>.
+The symmetry in (5) contributes
+<span class="math" data-tex="\((-1)^{r(-r)}=(-1)^r\)">\((-1)^{r(-r)}=(-1)^r\)</span>.
+Evaluation therefore gives
+<span class="math" data-tex="\(\sum_r(-1)^r\dim P^r\)">\(\sum_r(-1)^r\dim P^r\)</span>.
+The finite exact sequences for boundaries, cycles and cohomology cancel each boundary in two consecutive degrees, proving</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CC}(V)=\chi(V)[\mathrm{pt}],
+\qquad \chi(V)=\sum_r(-1)^r\dim_k H^r(V)\in\mathbb Z.
+\qquad\text{(21)}
+\]">\[
+\operatorname{CC}(V)=\chi(V)[\mathrm{pt}],
+\qquad \chi(V)=\sum_r(-1)^r\dim_k H^r(V)\in\mathbb Z.
+\qquad\text{(21)}
+\]</span>
+<p>The integer is viewed in <span class="math" data-tex="\(k\)">\(k\)</span>. Characteristic zero makes that coefficient map injective.</p>
+<p>There is also a direct calculation for a closed point <span class="math" data-tex="\(i:\{x\}\hookrightarrow X\)">\(i:\{x\}\hookrightarrow X\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CC}(i_*V)
+=\chi(V)[T_{\{x\}}^*X].
+\qquad\text{(22)}
+\]">\[
+\operatorname{CC}(i_*V)
+=\chi(V)[T_{\{x\}}^*X].
+\qquad\text{(22)}
+\]</span>
+<p>Here <span class="math" data-tex="\(D_X(i_*V)=i_*V^\vee\)">\(D_X(i_*V)=i_*V^\vee\)</span>, by the actual closed duality and
+<span class="math" data-tex="\(i^!\omega_X=k\)">\(i^!\omega_X=k\)</span>.
+The external kernel is supported at <span class="math" data-tex="\((x,x)\)">\((x,x)\)</span>. Its diagonal specialization is on the zero normal vector over <span class="math" data-tex="\(x\)">\(x\)</span>; its Fourier transform is constant on the full cotangent fibre with coefficient <span class="math" data-tex="\(V\otimes V^\vee\)">\(V\otimes V^\vee\)</span>, without an integration shift. The kernel unit (3) becomes the identity tensor there. Since the kernel is already supported on the diagonal, its ordinary diagonal restriction in (6) is the identity on that supported object. The remaining evaluation is the point contraction followed by the actual closed trace
+<span class="math" data-tex="\(i_*k\to\omega_X\)">\(i_*k\to\omega_X\)</span>.
+Thus its center-supported microlocalization is the pullback of this closed trace to the full fibre, multiplied by the supertrace (21).</p>
+<p>The normalized point conormal in the preceding cotangent lessons is exactly that pullback: the direct-image coefficient is Cartesian proper-support base change followed by the same closed point trace. This proves (22) with coefficient <span class="math" data-tex="\(+1\)">\(+1\)</span> when <span class="math" data-tex="\(V=k\)">\(V=k\)</span>. No assertion about general conormal normalization or general cycle transport has been used.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="an-acyclic-pair-contributes-no-point-trace">An acyclic pair contributes no point trace</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>At a point, take a complex which is the direct sum of <span class="math" data-tex="\(k^3\)">\(k^3\)</span> in degree <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(k^2\)">\(k^2\)</span> in degree <span class="math" data-tex="\(1\)">\(1\)</span>, and the two-term complex <span class="math" data-tex="\(k\xrightarrow{\mathrm{id}}k\)">\(k\xrightarrow{\mathrm{id}}k\)</span> in degrees <span class="math" data-tex="\(2,3\)">\(2,3\)</span>. Compute its characteristic cycle from both the chain terms and the cohomology.</p>
+<p><strong>Solution.</strong> The term dimensions are <span class="math" data-tex="\(3,2,1,1\)">\(3,2,1,1\)</span>, so the graded identity contraction is <span class="math" data-tex="\(3-2+1-1=1\)">\(3-2+1-1=1\)</span>. The identity differential in the last two degrees gives zero cohomology there. The other cohomology groups are <span class="math" data-tex="\(k^3\)">\(k^3\)</span> and <span class="math" data-tex="\(k^2\)">\(k^2\)</span> in degrees zero and one, giving <span class="math" data-tex="\(3-2=1\)">\(3-2=1\)</span>. Thus the cycle is <span class="math" data-tex="\([\mathrm{pt}]\)">\([\mathrm{pt}]\)</span>. The odd-degree minus signs come from the symmetry between a basis vector of degree <span class="math" data-tex="\(r\)">\(r\)</span> and its dual of degree <span class="math" data-tex="\(-r\)">\(-r\)</span>, not from an ungraded trace of the total underlying vector space, which would count <span class="math" data-tex="\(7\)">\(7\)</span>.</p>
+<h3 id="a-nonzero-complex-can-have-zero-characteristic-cycle">A nonzero complex can have zero characteristic cycle</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(i:\{x\}\hookrightarrow X\)">\(i:\{x\}\hookrightarrow X\)</span> be a closed point in a positive-dimensional manifold, and take <span class="math" data-tex="\(F=i_*(k\oplus k[1])\)">\(F=i_*(k\oplus k[1])\)</span>. Compute its characteristic cycle and its microsupport.</p>
+<p><strong>Solution.</strong> The point coefficient has cohomology <span class="math" data-tex="\(k\)">\(k\)</span> in degrees zero and minus one. Its Euler coefficient is <span class="math" data-tex="\(1-1=0\)">\(1-1=0\)</span>, so (22) gives <span class="math" data-tex="\(\operatorname{CC}(F)=0\)">\(\operatorname{CC}(F)=0\)</span>. The object is nonzero. The closed-embedding microsupport formula gives its microsupport as the full cotangent fibre <span class="math" data-tex="\(T_x^*X\)">\(T_x^*X\)</span>, since the point coefficient has nonzero cohomology. The identity unit detects that whole fibre, but the evaluated trace cancels its two shifted coefficients. Therefore the support of the characteristic cycle can be strictly smaller than microsupport, even empty.</p>
+<h3 id="evaluation-naturality-does-not-identify-two-arbitrary-identities">Evaluation naturality does not identify two arbitrary identities</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>At a point, let <span class="math" data-tex="\(F=k^2\)">\(F=k^2\)</span>, <span class="math" data-tex="\(G=k\)">\(G=k\)</span>, <span class="math" data-tex="\(h(a,b)=a\)">\(h(a,b)=a\)</span>, and <span class="math" data-tex="\(w(c)=(c,0)\)">\(w(c)=(c,0)\)</span>. Check (14) on <span class="math" data-tex="\(w\)">\(w\)</span>, and explain why it does not assert <span class="math" data-tex="\(\operatorname{CC}(F)=\operatorname{CC}(G)\)">\(\operatorname{CC}(F)=\operatorname{CC}(G)\)</span>.</p>
+<p><strong>Solution.</strong> Precomposition sends <span class="math" data-tex="\(w:G\to F\)">\(w:G\to F\)</span> to <span class="math" data-tex="\(wh:F\to F\)">\(wh:F\to F\)</span>, the matrix <span class="math" data-tex="\(\mathrm{diag}(1,0)\)">\(\mathrm{diag}(1,0)\)</span>. Postcomposition sends it to <span class="math" data-tex="\(hw:G\to G\)">\(hw:G\to G\)</span>, the identity. Their ordinary traces are both <span class="math" data-tex="\(1\)">\(1\)</span>, which is (14) in degree zero. The identity of <span class="math" data-tex="\(F\)">\(F\)</span> has trace <span class="math" data-tex="\(2\)">\(2\)</span>, while the identity of <span class="math" data-tex="\(G\)">\(G\)</span> has trace <span class="math" data-tex="\(1\)">\(1\)</span>. The map <span class="math" data-tex="\(h\)">\(h\)</span> is not invertible: its kernel is a one-dimensional point coefficient. Its cone is nonzero at the only cotangent point, so <span class="math" data-tex="\(h\)">\(h\)</span> is not a denominator. In (16) invertibility is what constructs an inverse image of the identity under precomposition; the present <span class="math" data-tex="\(w\)">\(w\)</span> only gives a projection on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<h3 id="a-constant-summand-is-invisible-at-a-nonzero-point-covector">A constant summand is invisible at a nonzero point covector</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>On <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span>, let <span class="math" data-tex="\(F=k_{\{0\}}\)">\(F=k_{\{0\}}\)</span>, <span class="math" data-tex="\(G=F\oplus k_X\)">\(G=F\oplus k_X\)</span>, and let <span class="math" data-tex="\(h:F\to G\)">\(h:F\to G\)</span> be the summand inclusion. Work at <span class="math" data-tex="\(p=(0;dt)\)">\(p=(0;dt)\)</span>. Identify the denominator and determine the characteristic-cycle germ of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Solution.</strong> The cone of the inclusion is <span class="math" data-tex="\(k_X\)">\(k_X\)</span>, whose microsupport is the zero section. It avoids a small cotangent neighborhood of the nonzero covector <span class="math" data-tex="\(p\)">\(p\)</span>. Thus <span class="math" data-tex="\(h\)">\(h\)</span> is an ordinary constructible denominator there. The trace-map proof (13)–(16) gives equal characteristic-cycle germs for <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span>. Formula (22) gives the germ of the normalized point conormal with coefficient <span class="math" data-tex="\(1\)">\(1\)</span>. The extra constant summand has changed the ordinary sheaf near zero, but it contributes no directional information at <span class="math" data-tex="\(p\)">\(p\)</span>. At the zero covector <span class="math" data-tex="\((0;0)\)">\((0;0)\)</span> the cone is visible, so this denominator argument supplies no equality there. We have not used a general additivity or constant-zero-section formula.</p>
+<h3 id="the-compact-cutoff-kernel-is-proper-on-its-support">The compact cutoff kernel is proper on its support</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>In <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, take <span class="math" data-tex="\(F=k_{[0,\infty)}\)">\(F=k_{[0,\infty)}\)</span>, <span class="math" data-tex="\(U=(-a,a)\)">\(U=(-a,a)\)</span> with <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and <span class="math" data-tex="\(\gamma=(-\infty,0]\)">\(\gamma=(-\infty,0]\)</span>. Verify the support-properness of the kernel in (18), and calculate its coefficient near the origin. Use the covector <span class="math" data-tex="\(dt\)">\(dt\)</span>.</p>
+<p><strong>Solution.</strong> The restricted and extended coefficient is <span class="math" data-tex="\(F_U=k_{[0,a)}\)">\(F_U=k_{[0,a)}\)</span>; its closed support is <span class="math" data-tex="\([0,a]\)">\([0,a]\)</span>, including the endpoint with zero stalk. A kernel incidence over <span class="math" data-tex="\(x\)">\(x\)</span> has <span class="math" data-tex="\(z\in[0,a]\)">\(z\in[0,a]\)</span>, <span class="math" data-tex="\(v\leq0\)">\(v\leq0\)</span>, and <span class="math" data-tex="\(x=z-v\)">\(x=z-v\)</span>. For <span class="math" data-tex="\(x\)">\(x\)</span> in a compact set <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(v=z-x\)">\(v=z-x\)</span> lies in a bounded interval. The incidence in the closed support is closed in the product of these compact intervals and is compact. Thus the difference map is proper on the closed kernel support, despite its noncompact unrestricted fibres.</p>
+<p>For <span class="math" data-tex="\(x&lt;0\)">\(x&lt;0\)</span> close to zero, the condition <span class="math" data-tex="\(z\leq x\)">\(z\leq x\)</span> gives no coefficient. For <span class="math" data-tex="\(0\leq x&lt;a\)">\(0\leq x&lt;a\)</span>, the coefficient fibre is the compact interval <span class="math" data-tex="\(0\leq z\leq x\)">\(0\leq z\leq x\)</span>, with constant coefficient <span class="math" data-tex="\(k\)">\(k\)</span>. Its cohomology is <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero, including the single point at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Restriction between these compact intervals preserves <span class="math" data-tex="\(1\)">\(1\)</span>, so proper base change and these maps give the closed positive-ray coefficient near zero. The outer restriction to <span class="math" data-tex="\(U\)">\(U\)</span> leaves that germ unchanged. The covector <span class="math" data-tex="\(dt\)">\(dt\)</span> is strictly negative on the nonzero vectors of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, so it lies in the interior of the required negative polar. The cutoff counit consequently is a denominator at <span class="math" data-tex="\((0;dt)\)">\((0;dt)\)</span>. This example checks a constructible compact cutoff without replacing a nonproper ordinary direct image by a proper one on its whole domain.</p>
+<h3 id="a-graded-product-has-the-product-of-the-two-supertraces">A graded product has the product of the two supertraces</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>At points take <span class="math" data-tex="\(P=k^2\oplus k[-1]\)">\(P=k^2\oplus k[-1]\)</span> and <span class="math" data-tex="\(Q=k^2[1]\oplus k[-2]\)">\(Q=k^2[1]\oplus k[-2]\)</span>, with zero differentials. Calculate their two characteristic cycles and that of <span class="math" data-tex="\(P\otimes Q\)">\(P\otimes Q\)</span>, and reconcile the tensor degree count with (10).</p>
+<p><strong>Solution.</strong> The nonzero degrees of <span class="math" data-tex="\(P\)">\(P\)</span> are <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, with dimensions <span class="math" data-tex="\(2,1\)">\(2,1\)</span>, so <span class="math" data-tex="\(\chi(P)=1\)">\(\chi(P)=1\)</span>. Those of <span class="math" data-tex="\(Q\)">\(Q\)</span> are <span class="math" data-tex="\(-1,2\)">\(-1,2\)</span>, with dimensions <span class="math" data-tex="\(2,1\)">\(2,1\)</span>, so <span class="math" data-tex="\(\chi(Q)=-2+1=-1\)">\(\chi(Q)=-2+1=-1\)</span>. Their tensor has dimensions <span class="math" data-tex="\(4,2,2,1\)">\(4,2,2,1\)</span> in degrees <span class="math" data-tex="\(-1,0,2,3\)">\(-1,0,2,3\)</span>, respectively. Its supertrace is
+<span class="math math-display" data-tex="\[
+ -4+2+2-1=-1=1\cdot(-1).
+ \qquad\text{(23)}
+\]">\[
+ -4+2+2-1=-1=1\cdot(-1).
+ \qquad\text{(23)}
+\]</span>
+Thus the product cycle is <span class="math" data-tex="\(-[\mathrm{pt}]\)">\(-[\mathrm{pt}]\)</span>, as (10) predicts. In the kernel product proof, the permutation grouping the two identity tensors and the permutation in their graded evaluation retain the same tensor degree signs. An ungraded contraction would instead count all <span class="math" data-tex="\(9\)">\(9\)</span> tensor basis vectors and fail this calculation.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/characteristic-cycles-from-supported-microlocal-identities.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

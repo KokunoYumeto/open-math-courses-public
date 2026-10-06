@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Riemann hypothesis implies the Lindelöf hypothesis · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-18.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 18 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-riemann-hypothesis-implies-the-lindelöf-hypothesis">The Riemann hypothesis implies the Lindelöf hypothesis</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-check is by the writing AI. Original exposition, proofs and figure sources are public domain (CC0).</em></p>
+<p>The Riemann hypothesis constrains zeros; the Lindelöf hypothesis constrains values. A zero-free region permits a holomorphic logarithm, and interpolation then improves its growth. Obtaining Littlewood's sharper estimate on the critical line requires more: we will retain the constants in a smoothed explicit formula and use the positivity of the zero terms under RH. The same calculation controls the integrated argument and therefore the argument itself. Finally, we prove Backlund's characterization of Lindelöf by local zero counts and the zero-density consequence of Lindelöf.</p>
+<p>We use the Euler logarithm and Möbius series from <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, the Chebyshev estimate <span class="math" data-tex="$\psi(x)\ll x$">$\psi(x)\ll x$</span> from <a href="NT-ZETA-02.html">Counting primes by elementary means</a>, and the gamma estimates from <a href="NT-ZETA-03.html">The Gamma function and Stirling's formula</a>. The Hadamard product and Borel–Carathéodory inequality are proved in <a href="NT-ZETA-05.html">Entire functions and the Hadamard product</a>, Theorem 2.1 and Corollary 5.2. Convexity and continuity of the growth exponent <span class="math" data-tex="$\mu$">$\mu$</span> are proved in <a href="NT-ZETA-06.html">Growth in the critical strip</a>, Theorem 3.2. We also use the local partial fractions in <a href="NT-ZETA-08.html">Nonvanishing and a zero-free region</a>, Theorem 2.2, the argument normalization and horizontal integral identity in <a href="NT-ZETA-10.html">Counting the zeros</a>, Theorems 1.1 and 5.1, and the polynomial mean value and divisor-square bound in <a href="NT-ZETA-16.html">Mean values</a>, Theorem 2.1 and (5.1). Every additional analytic estimate used below is proved here.</p>
+<p>Write <span class="math" data-tex="$\rho=\beta+i\gamma$">$\rho=\beta+i\gamma$</span> for nontrivial zeros, with multiplicities, and <span class="math" data-tex="$N(\sigma,T)=\#\{\rho:\beta\ge\sigma,\ 0&lt;\gamma\le T\}$">$N(\sigma,T)=\#\{\rho:\beta\ge\sigma,\ 0&lt;\gamma\le T\}$</span>. RH means that every <span class="math" data-tex="$\beta=1/2$">$\beta=1/2$</span>. LH means that, for every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, <span class="math" data-tex="$\zeta(1/2+it)\ll_\varepsilon (|t|+4)^\varepsilon$">$\zeta(1/2+it)\ll_\varepsilon (|t|+4)^\varepsilon$</span>. Statements explicitly assuming RH or LH retain that hypothesis throughout their proofs.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-a-logarithm-in-a-zero-free-half-plane">1. A logarithm in a zero-free half-plane</h2>
+<p>Assume RH. On the simply connected region <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>, <span class="math" data-tex="$\Im s&gt;1$">$\Im s&gt;1$</span>, zeta is holomorphic and nonzero: its pole is outside the region and its zeros are on the boundary. There is therefore a unique holomorphic function <span class="math" data-tex="$F=\log\zeta$">$F=\log\zeta$</span> that agrees with the absolutely convergent Euler logarithm on <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span>.</p>
+<p><strong>Lemma 1.1.</strong> For <span class="math" data-tex="$0&lt;d\le1/4$">$0&lt;d\le1/4$</span>, <span class="math" data-tex="$A\ge2$">$A\ge2$</span>, and <span class="math" data-tex="$t\ge2A+10$">$t\ge2A+10$</span>, set
+<span class="math math-display" data-tex="$$
+c=A+it,\qquad R=A-\tfrac12-d/2,\qquad r=A-\tfrac12-d.
+$$">$$
+c=A+it,\qquad R=A-\tfrac12-d/2,\qquad r=A-\tfrac12-d.
+$$</span>
+Then
+<span class="math math-display" data-tex="$$
+\max_{|s-c|\le r}|F(s)|\le C(1+A/d)\log t,
+\tag{1.1}
+$$">$$
+\max_{|s-c|\le r}|F(s)|\le C(1+A/d)\log t,
+\tag{1.1}
+$$</span>
+with an absolute <span class="math" data-tex="$C$">$C$</span>.</p>
+<p><strong>Proof.</strong> The radius-<span class="math" data-tex="$R$">$R$</span> disk lies strictly in the logarithm's domain. On it, <span class="math" data-tex="$\Re s\ge1/2+d/2$">$\Re s\ge1/2+d/2$</span> and <span class="math" data-tex="$t/2\le\Im s\le3t/2$">$t/2\le\Im s\le3t/2$</span>. The height truncation from lesson six bounds <span class="math" data-tex="$|\zeta(s)|$">$|\zeta(s)|$</span> by <span class="math" data-tex="$C\sqrt t\log t$">$C\sqrt t\log t$</span> when <span class="math" data-tex="$1/2\le\Re s\le2$">$1/2\le\Re s\le2$</span>; for larger real parts use the absolute series. Hence <span class="math" data-tex="$\Re F\le C\log t$">$\Re F\le C\log t$</span>. At the center, <span class="math" data-tex="$|F(c)|\le\log\zeta(A)\le\log\zeta(2)$">$|F(c)|\le\log\zeta(A)\le\log\zeta(2)$</span>. Apply Borel–Carathéodory to <span class="math" data-tex="$F(s)-F(c)$">$F(s)-F(c)$</span> with <span class="math" data-tex="$R-r=d/2$">$R-r=d/2$</span> and <span class="math" data-tex="$r\le A$">$r\le A$</span>. This proves (1.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>In particular, each fixed <span class="math" data-tex="$\delta&gt;0$">$\delta&gt;0$</span> gives <span class="math" data-tex="$|\log\zeta(\sigma+it)|\ll_\delta\log t$">$|\log\zeta(\sigma+it)|\ll_\delta\log t$</span> uniformly for <span class="math" data-tex="$1/2+\delta\le\sigma\le2$">$1/2+\delta\le\sigma\le2$</span>. The dependence on the distance <span class="math" data-tex="$d$">$d$</span> has been displayed. Substituting <span class="math" data-tex="$d=1/\log\log t$">$d=1/\log\log t$</span> in this estimate alone would increase its upper bound; it would not prove Littlewood's refinement.</p>
+<h2 id="2-three-circles-and-a-smaller-logarithmic-exponent">2. Three circles and a smaller logarithmic exponent</h2>
+<p><strong>Theorem 2.1 (Hadamard's three circles).</strong> Let <span class="math" data-tex="$f$">$f$</span> be holomorphic on a neighborhood of <span class="math" data-tex="$|z|\le R$">$|z|\le R$</span>, and let <span class="math" data-tex="$M(r)=\max_{|z|=r}|f(z)|$">$M(r)=\max_{|z|=r}|f(z)|$</span>. If <span class="math" data-tex="$0&lt;r_1&lt;r&lt;r_2\le R$">$0&lt;r_1&lt;r&lt;r_2\le R$</span>, then
+<span class="math math-display" data-tex="$$
+M(r)\le M(r_1)^{1-\lambda}M(r_2)^\lambda,
+\qquad \lambda=\frac{\log(r/r_1)}{\log(r_2/r_1)}.
+\tag{2.1}
+$$">$$
+M(r)\le M(r_1)^{1-\lambda}M(r_2)^\lambda,
+\qquad \lambda=\frac{\log(r/r_1)}{\log(r_2/r_1)}.
+\tag{2.1}
+$$</span>
+Thus <span class="math" data-tex="$\log M(r)$">$\log M(r)$</span> is convex as a function of <span class="math" data-tex="$\log r$">$\log r$</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="$f\equiv0$">$f\equiv0$</span>, the conclusion is immediate. Otherwise <span class="math" data-tex="$M(r_1),M(r_2)&gt;0$">$M(r_1),M(r_2)&gt;0$</span>. Choose real <span class="math" data-tex="$a,b$">$a,b$</span> so that <span class="math" data-tex="$a\log r_j+b=\log M(r_j)$">$a\log r_j+b=\log M(r_j)$</span>, <span class="math" data-tex="$j=1,2$">$j=1,2$</span>. The function
+<span class="math" data-tex="$u(z)=\log|f(z)|-a\log|z|-b$">$u(z)=\log|f(z)|-a\log|z|-b$</span> is harmonic away from zeros in the annulus and tends to <span class="math" data-tex="$-\infty$">$-\infty$</span> at a zero. Its boundary values are at most zero. Remove small disks around its finitely many zeros; on their boundaries <span class="math" data-tex="$u&lt;0$">$u&lt;0$</span> when their radii are sufficiently small. The harmonic maximum principle on the remaining compact region gives <span class="math" data-tex="$u\le0$">$u\le0$</span>. Let the deleted radii tend to zero. Taking the maximum on the intermediate circle gives (2.1). The same proof applies when some zeros lie on a boundary, by limits of radii or by the upper semicontinuity of <span class="math" data-tex="$\log|f|$">$\log|f|$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 2.2.</strong> Under RH, for every fixed <span class="math" data-tex="$\delta&gt;0$">$\delta&gt;0$</span> and <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\log\zeta(\sigma+it)\ll_{\delta,\varepsilon}
+(\log t)^{2-2\sigma+\varepsilon},
+\qquad \tfrac12+\delta\le\sigma\le1,
+\tag{2.2}
+$$">$$
+\log\zeta(\sigma+it)\ll_{\delta,\varepsilon}
+(\log t)^{2-2\sigma+\varepsilon},
+\qquad \tfrac12+\delta\le\sigma\le1,
+\tag{2.2}
+$$</span>
+for all sufficiently large <span class="math" data-tex="$t$">$t$</span>.</p>
+<p><strong>Proof.</strong> Empty ranges need no proof. Reduce to <span class="math" data-tex="$0&lt;\varepsilon\le1$">$0&lt;\varepsilon\le1$</span>, and put
+<span class="math" data-tex="$\eta=\min(1/10,\varepsilon/100)$">$\eta=\min(1/10,\varepsilon/100)$</span> and <span class="math" data-tex="$d=\min(\delta/4,\varepsilon/100)$">$d=\min(\delta/4,\varepsilon/100)$</span>. Choose a fixed <span class="math" data-tex="$A\ge\max(10,8/\varepsilon)$">$A\ge\max(10,8/\varepsilon)$</span>. Around <span class="math" data-tex="$A+it$">$A+it$</span>, take
+<span class="math math-display" data-tex="$$
+r_1=A-1-\eta,\qquad r_2=A-\tfrac12-d,\qquad r=A-\sigma.
+\tag{2.3}
+$$">$$
+r_1=A-1-\eta,\qquad r_2=A-\tfrac12-d,\qquad r=A-\sigma.
+\tag{2.3}
+$$</span>
+The inner disk has real parts at least <span class="math" data-tex="$1+\eta$">$1+\eta$</span>, so <span class="math" data-tex="$M_F(r_1)\le\log\zeta(1+\eta)$">$M_F(r_1)\le\log\zeta(1+\eta)$</span>. Lemma 1.1 bounds <span class="math" data-tex="$M_F(r_2)$">$M_F(r_2)$</span> by <span class="math" data-tex="$C(1+A/d)\log t$">$C(1+A/d)\log t$</span>. Also <span class="math" data-tex="$r_1&lt;r&lt;r_2$">$r_1&lt;r&lt;r_2$</span>. The exponent in three circles satisfies
+<span class="math math-display" data-tex="$$
+\lambda
+=\frac{\int_\sigma^{1+\eta}(A-u)^{-1}du}
+ {\int_{1/2+d}^{1+\eta}(A-u)^{-1}du}
+\le\frac{1+\eta-\sigma}{1/2+\eta-d}\frac A{A-1.1}.
+$$">$$
+\lambda
+=\frac{\int_\sigma^{1+\eta}(A-u)^{-1}du}
+ {\int_{1/2+d}^{1+\eta}(A-u)^{-1}du}
+\le\frac{1+\eta-\sigma}{1/2+\eta-d}\frac A{A-1.1}.
+$$</span>
+Here the first ratio is at most one, and <span class="math" data-tex="$A/(A-1.1)\le1+2/A$">$A/(A-1.1)\le1+2/A$</span>. Moreover
+<span class="math math-display" data-tex="$$
+\frac{1+\eta-\sigma}{1/2+\eta-d}-2(1-\sigma)
+=\frac{\eta(2\sigma-1)+2d(1-\sigma)}{1/2+\eta-d}
+\le3(\eta+d).
+$$">$$
+\frac{1+\eta-\sigma}{1/2+\eta-d}-2(1-\sigma)
+=\frac{\eta(2\sigma-1)+2d(1-\sigma)}{1/2+\eta-d}
+\le3(\eta+d).
+$$</span>
+Consequently <span class="math" data-tex="$\lambda\le2-2\sigma+\varepsilon$">$\lambda\le2-2\sigma+\varepsilon$</span>, uniformly in the stated range. Insert the two disk bounds into (2.1). Their constants are fixed once <span class="math" data-tex="$\delta,\varepsilon$">$\delta,\varepsilon$</span> are fixed, proving (2.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Example 2.3.</strong> At <span class="math" data-tex="$\sigma=3/4$">$\sigma=3/4$</span>, take <span class="math" data-tex="$\eta=d=1/100$">$\eta=d=1/100$</span> and <span class="math" data-tex="$A=100$">$A=100$</span>. The radii are <span class="math" data-tex="$98.99,99.25,99.49$">$98.99,99.25,99.49$</span>, and
+<span class="math math-display" data-tex="$$
+\lambda=\frac{\log(99.25/98.99)}{\log(99.49/98.99)}\simeq0.52063.
+$$">$$
+\lambda=\frac{\log(99.25/98.99)}{\log(99.49/98.99)}\simeq0.52063.
+$$</span>
+Moving the center farther right approaches <span class="math" data-tex="$(1.01-.75)/(.5+.01-.01)=.52$">$(1.01-.75)/(.5+.01-.01)=.52$</span>. Taking <span class="math" data-tex="$\eta,d$">$\eta,d$</span> smaller approaches the exponent <span class="math" data-tex="$1/2$">$1/2$</span> in (2.2). The circles control the holomorphic function <span class="math" data-tex="$\log\zeta$">$\log\zeta$</span>, so the resulting power is a power of <span class="math" data-tex="$\log t$">$\log t$</span>.</p>
+<figure><img src="figures/NT-ZETA-18/three_circles.png" alt="The three nested disks for the logarithm and the improvement of their interpolation exponent as the center moves right" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. Left: the exact disks (2.3) for <span class="math" data-tex="$A=3$">$A=3$</span>, <span class="math" data-tex="$\sigma=3/4$">$\sigma=3/4$</span>, <span class="math" data-tex="$\eta=d=.01$">$\eta=d=.01$</span>, plotted in the translated coordinates <span class="math" data-tex="$(\Re s,\Im s-t)$">$(\Re s,\Im s-t)$</span>. Their radii are <span class="math" data-tex="$r_1=1.99$">$r_1=1.99$</span>, <span class="math" data-tex="$r=2.25$">$r=2.25$</span>, <span class="math" data-tex="$r_2=2.49$">$r_2=2.49$</span>; the dotted line is <span class="math" data-tex="$\Re s=1/2$">$\Re s=1/2$</span>. Right: the exact formula for <span class="math" data-tex="$\lambda(A)$">$\lambda(A)$</span>, with the same fixed offsets. Its limit is <span class="math" data-tex="$.52$">$.52$</span>; the numerical value at <span class="math" data-tex="$A=100$">$A=100$</span> agrees with Example 2.3. Decreasing both offsets subsequently gives the limiting exponent <span class="math" data-tex="$1/2$">$1/2$</span>. Original CC0 figure and reproducible calculation; the curve illustrates the analytic exponent and asserts no numerical information about zeros.</em></p>
+<p><strong>Corollary 2.4.</strong> RH implies LH. Under RH, for each fixed <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span> and each <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, both
+<span class="math math-display" data-tex="$$
+\zeta(\sigma+it)\ll_{\sigma,\varepsilon}|t|^\varepsilon,
+\qquad \zeta(\sigma+it)^{-1}\ll_{\sigma,\varepsilon}|t|^\varepsilon
+\quad(|t|\ge2).
+\tag{2.4}
+$$">$$
+\zeta(\sigma+it)\ll_{\sigma,\varepsilon}|t|^\varepsilon,
+\qquad \zeta(\sigma+it)^{-1}\ll_{\sigma,\varepsilon}|t|^\varepsilon
+\quad(|t|\ge2).
+\tag{2.4}
+$$</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$1/2&lt;\sigma\le1$">$1/2&lt;\sigma\le1$</span>, choose the exponent loss in (2.2) smaller than <span class="math" data-tex="$2\sigma-1$">$2\sigma-1$</span>. Then <span class="math" data-tex="$|F|=o(\log t)$">$|F|=o(\log t)$</span>, and <span class="math" data-tex="$\exp(\pm\Re F)\le\exp(|F|)\ll_\varepsilon t^\varepsilon$">$\exp(\pm\Re F)\le\exp(|F|)\ll_\varepsilon t^\varepsilon$</span>. For <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span> the Euler series and its reciprocal give bounded values. Conjugation treats negative heights. Thus <span class="math" data-tex="$\mu(\sigma)=0$">$\mu(\sigma)=0$</span> for every <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>, using its nonnegativity from lesson six. Its continuity gives <span class="math" data-tex="$\mu(1/2)=0$">$\mu(1/2)=0$</span>, which is LH. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="3-a-smoothed-logarithmic-derivative-with-its-constants">3. A smoothed logarithmic derivative with its constants</h2>
+<p>For <span class="math" data-tex="$X&gt;1$">$X&gt;1$</span> write <span class="math" data-tex="$L=\log X$">$L=\log X$</span> and define
+<span class="math math-display" data-tex="$$
+\Lambda_X(n)=\begin{cases}
+\Lambda(n),&amp;n\le X,\\
+\Lambda(n)\log(X^2/n)/L,&amp;X&lt;n\le X^2,\\
+0,&amp;n&gt;X^2,
+\end{cases}
+\qquad
+K_X(w)=\frac{X^{2w}-X^w}{Lw^2}.
+\tag{3.1}
+$$">$$
+\Lambda_X(n)=\begin{cases}
+\Lambda(n),&amp;n\le X,\\
+\Lambda(n)\log(X^2/n)/L,&amp;X&lt;n\le X^2,\\
+0,&amp;n&gt;X^2,
+\end{cases}
+\qquad
+K_X(w)=\frac{X^{2w}-X^w}{Lw^2}.
+\tag{3.1}
+$$</span>
+The kernel has a simple pole at zero, of residue one. Put <span class="math" data-tex="$A(s)=-\zeta&#x27;(s)/\zeta(s)$">$A(s)=-\zeta&#x27;(s)/\zeta(s)$</span> and <span class="math" data-tex="$D_X(s)=\sum\Lambda_X(n)n^{-s}$">$D_X(s)=\sum\Lambda_X(n)n^{-s}$</span>.</p>
+<p><strong>Lemma 3.1 (smoothed explicit formula).</strong> For <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>, <span class="math" data-tex="$\Im s\ge2$">$\Im s\ge2$</span>, away from zeros,
+<span class="math math-display" data-tex="$$
+A(s)=D_X(s)-K_X(1-s)
+ +\sum_\rho K_X(\rho-s)+\sum_{k\ge1}K_X(-2k-s).
+\tag{3.2}
+$$">$$
+A(s)=D_X(s)-K_X(1-s)
+ +\sum_\rho K_X(\rho-s)+\sum_{k\ge1}K_X(-2k-s).
+\tag{3.2}
+$$</span>
+Both sums converge absolutely locally away from their indicated singularities. This identity itself does not assume RH.</p>
+<p><strong>Proof.</strong> On a vertical line <span class="math" data-tex="$\Re w=c$">$\Re w=c$</span> with <span class="math" data-tex="$\Re(s)+c&gt;1$">$\Re(s)+c&gt;1$</span>, insert the absolutely convergent series for <span class="math" data-tex="$A(s+w)$">$A(s+w)$</span> into
+<span class="math math-display" data-tex="$$
+\frac1{2\pi i}\int_{(c)}A(s+w)
+ \frac{X^{2w}-X^w}{Lw^2}\,dw.
+\tag{3.3}
+$$">$$
+\frac1{2\pi i}\int_{(c)}A(s+w)
+ \frac{X^{2w}-X^w}{Lw^2}\,dw.
+\tag{3.3}
+$$</span>
+The inverse integral of <span class="math" data-tex="$y^w/w^2$">$y^w/w^2$</span> is <span class="math" data-tex="$\max(\log y,0)$">$\max(\log y,0)$</span>: close to the right for <span class="math" data-tex="$y&lt;1$">$y&lt;1$</span> and to the left for <span class="math" data-tex="$y&gt;1$">$y&gt;1$</span>, where the residue at zero is <span class="math" data-tex="$\log y$">$\log y$</span>. At <span class="math" data-tex="$y=1$">$y=1$</span> the integral is zero. The integrals are absolutely convergent on the vertical line; horizontal sides vanish by their <span class="math" data-tex="$w^{-2}$">$w^{-2}$</span> factor. Subtracting the two kernels gives exactly the coefficients (3.1), so (3.3) equals <span class="math" data-tex="$D_X(s)$">$D_X(s)$</span>.</p>
+<p>Shift the line left. The residues are <span class="math" data-tex="$A(s)$">$A(s)$</span> at <span class="math" data-tex="$w=0$">$w=0$</span>, <span class="math" data-tex="$K_X(1-s)$">$K_X(1-s)$</span> at the pole of zeta, and <span class="math" data-tex="$-K_X(\rho-s)$">$-K_X(\rho-s)$</span> at every nontrivial zero. A zero of multiplicity <span class="math" data-tex="$m$">$m$</span> contributes <span class="math" data-tex="$-mK_X(\rho-s)$">$-mK_X(\rho-s)$</span>. The trivial zeros contribute <span class="math" data-tex="$-K_X(-2k-s)$">$-K_X(-2k-s)$</span>.</p>
+<p>Here are bounds justifying the infinite shift. For each fixed left boundary choose horizontal heights tending to infinity at distance at least <span class="math" data-tex="$c_0/\log U$">$c_0/\log U$</span> from every zero ordinate near their endpoints. The local count from lesson eight makes this possible in each of two unit intervals: the excluded lengths can be made less than one by choosing <span class="math" data-tex="$c_0$">$c_0$</span> small. Its local partial fractions give <span class="math" data-tex="$A=O(\log^2 U)$">$A=O(\log^2 U)$</span> on the portions with real parts in a fixed bounded strip. The functional equation and vertical gamma estimates give the same bound on any remaining fixed portions to the left. The horizontal integrals are therefore <span class="math" data-tex="$O_{X,s,B}(\log^2U/U^2)$">$O_{X,s,B}(\log^2U/U^2)$</span> and tend to zero, where <span class="math" data-tex="$-B$">$-B$</span> is the left boundary in the <span class="math" data-tex="$w$">$w$</span> plane.</p>
+<p>Take the left boundaries so that <span class="math" data-tex="$\Re(s+w)=-2m-1$">$\Re(s+w)=-2m-1$</span>. They remain uniformly away from the trivial zeros. The functional equation, gamma recurrence and the reflection formula bound <span class="math" data-tex="$A(s+w)$">$A(s+w)$</span> there by <span class="math" data-tex="$C\log(|\Im(s+w)|+m+4)$">$C\log(|\Im(s+w)|+m+4)$</span>. Thus their integrals have modulus at most
+<span class="math" data-tex="$C_s X^{-B}\log(B+|s|+4)/B$">$C_s X^{-B}\log(B+|s|+4)/B$</span>, tending to zero as <span class="math" data-tex="$B\to\infty$">$B\to\infty$</span>. The zero count <span class="math" data-tex="$O(\log(|\gamma|+4))$">$O(\log(|\gamma|+4))$</span> in unit windows implies absolute convergence of the nontrivial residue sum, whose summands are <span class="math" data-tex="$O_{X,s}((1+|\gamma|)^{-2})$">$O_{X,s}((1+|\gamma|)^{-2})$</span>. The trivial residue sum converges geometrically. Rearrange the resulting equality for <span class="math" data-tex="$D_X$">$D_X$</span> to obtain (3.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Assume RH again. For <span class="math" data-tex="$v&gt;0$">$v&gt;0$</span> put
+<span class="math math-display" data-tex="$$
+\mathcal F(v,t)=\sum_\rho\frac{v}{v^2+(t-\gamma)^2}.
+\tag{3.4}
+$$">$$
+\mathcal F(v,t)=\sum_\rho\frac{v}{v^2+(t-\gamma)^2}.
+\tag{3.4}
+$$</span>
+The real partial fractions and Stirling, already proved in lessons three, five and eight, give
+<span class="math math-display" data-tex="$$
+\Re A(1/2+v+it)=Q(1/2+v+it)-\mathcal F(v,t),
+\tag{3.5}
+$$">$$
+\Re A(1/2+v+it)=Q(1/2+v+it)-\mathcal F(v,t),
+\tag{3.5}
+$$</span>
+where
+<span class="math math-display" data-tex="$$
+Q(s)=\Re\frac1{s-1}-\tfrac12\log\pi
+ +\tfrac12\Re\frac{\Gamma&#x27;}{\Gamma}(1+s/2).
+$$">$$
+Q(s)=\Re\frac1{s-1}-\tfrac12\log\pi
+ +\tfrac12\Re\frac{\Gamma&#x27;}{\Gamma}(1+s/2).
+$$</span>
+Uniformly for <span class="math" data-tex="$0\le v\le1$">$0\le v\le1$</span>, <span class="math" data-tex="$t\ge2$">$t\ge2$</span>, <span class="math" data-tex="$Q=\tfrac12\log(t/(2\pi))+O(1)$">$Q=\tfrac12\log(t/(2\pi))+O(1)$</span>; in particular <span class="math" data-tex="$|Q|\le C\log t$">$|Q|\le C\log t$</span>.</p>
+<p><strong>Lemma 3.2.</strong> Suppose <span class="math" data-tex="$t$">$t$</span> is sufficiently large, <span class="math" data-tex="$X=\log t$">$X=\log t$</span>, <span class="math" data-tex="$L=\log\log t$">$L=\log\log t$</span>, and <span class="math" data-tex="$v_1=1/L$">$v_1=1/L$</span>. Then
+<span class="math math-display" data-tex="$$
+\mathcal F(v_1,t)\ll\log t.
+\tag{3.6}
+$$">$$
+\mathcal F(v_1,t)\ll\log t.
+\tag{3.6}
+$$</span>
+All constants are absolute.</p>
+<p><strong>Proof.</strong> Chebyshev's bound and partial summation show, for <span class="math" data-tex="$j=0,1,2$">$j=0,1,2$</span> and <span class="math" data-tex="$Y\ge16$">$Y\ge16$</span>,
+<span class="math math-display" data-tex="$$
+\sum_{2\le n\le Y}\frac{\Lambda(n)}{\sqrt n(\log n)^j}
+ \ll_j\frac{\sqrt Y}{(\log Y)^j}.
+\tag{3.7}
+$$">$$
+\sum_{2\le n\le Y}\frac{\Lambda(n)}{\sqrt n(\log n)^j}
+ \ll_j\frac{\sqrt Y}{(\log Y)^j}.
+\tag{3.7}
+$$</span>
+For completeness, the range <span class="math" data-tex="$n\le\sqrt Y$">$n\le\sqrt Y$</span> contributes <span class="math" data-tex="$O_j(Y^{1/4})$">$O_j(Y^{1/4})$</span> by <span class="math" data-tex="$\psi(u)\ll u$">$\psi(u)\ll u$</span> and partial summation. On <span class="math" data-tex="$\sqrt Y&lt;n\le Y$">$\sqrt Y&lt;n\le Y$</span> replace <span class="math" data-tex="$(\log n)^{-j}$">$(\log n)^{-j}$</span> by <span class="math" data-tex="$O_j((\log Y)^{-j})$">$O_j((\log Y)^{-j})$</span> and use <span class="math" data-tex="$\sum\Lambda(n)/\sqrt n\ll\sqrt Y$">$\sum\Lambda(n)/\sqrt n\ll\sqrt Y$</span>. Enlarge the constant for the bounded initial range. This proves (3.7).</p>
+<p>At <span class="math" data-tex="$s_1=1/2+v_1+it$">$s_1=1/2+v_1+it$</span>, <span class="math" data-tex="$|D_X(s_1)|\le C X$">$|D_X(s_1)|\le C X$</span>. Under RH,
+<span class="math math-display" data-tex="$$
+\left|\sum_\rho K_X(\rho-s_1)\right|
+\le\frac{e^{-2}+e^{-1}}L
+ \sum_\rho\frac1{v_1^2+(t-\gamma)^2}
+=(e^{-2}+e^{-1})\mathcal F(v_1,t).
+\tag{3.8}
+$$">$$
+\left|\sum_\rho K_X(\rho-s_1)\right|
+\le\frac{e^{-2}+e^{-1}}L
+ \sum_\rho\frac1{v_1^2+(t-\gamma)^2}
+=(e^{-2}+e^{-1})\mathcal F(v_1,t).
+\tag{3.8}
+$$</span>
+The pole term is <span class="math" data-tex="$O(X/(t^2L))$">$O(X/(t^2L))$</span> since <span class="math" data-tex="$|1-s_1|\ge t$">$|1-s_1|\ge t$</span>; the trivial-zero sum is <span class="math" data-tex="$O(X^{-5/2}/L)$">$O(X^{-5/2}/L)$</span>. Combining (3.2), (3.5) and (3.8) gives
+<span class="math math-display" data-tex="$$
+(1-e^{-1}-e^{-2})\mathcal F(v_1,t)
+ \le C(\log t+X+1).
+$$">$$
+(1-e^{-1}-e^{-2})\mathcal F(v_1,t)
+ \le C(\log t+X+1).
+$$</span>
+The coefficient on the left is positive: <span class="math" data-tex="$e^{-1}+e^{-2}&lt;.51$">$e^{-1}+e^{-2}&lt;.51$</span>. Since <span class="math" data-tex="$X=\log t$">$X=\log t$</span>, this proves (3.6). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The zero contribution has been absorbed with a fixed coefficient smaller than one. An unspecified constant in (3.8) would not suffice for this step.</p>
+<h2 id="4-littlewood-s-bounds-on-the-line-and-for-the-argument">4. Littlewood's bounds on the line and for the argument</h2>
+<p><strong>Theorem 4.1 (Littlewood).</strong> Under RH, for all sufficiently large <span class="math" data-tex="$t$">$t$</span>,
+<span class="math math-display" data-tex="$$
+\log|\zeta(1/2+it)|\le C\frac{\log t}{\log\log t}.
+\tag{4.1}
+$$">$$
+\log|\zeta(1/2+it)|\le C\frac{\log t}{\log\log t}.
+\tag{4.1}
+$$</span>
+At a zero the left side is <span class="math" data-tex="$-\infty$">$-\infty$</span>. With the argument branch of lesson ten,
+<span class="math math-display" data-tex="$$
+|S(t)|\le C\frac{\log t}{\log\log t},
+\tag{4.2}
+$$">$$
+|S(t)|\le C\frac{\log t}{\log\log t},
+\tag{4.2}
+$$</span>
+including its averaged values at zero ordinates. The constants are absolute.</p>
+<p><strong>Proof of (4.1).</strong> Keep <span class="math" data-tex="$X=\log t$">$X=\log t$</span>, <span class="math" data-tex="$L=\log\log t$">$L=\log\log t$</span>, <span class="math" data-tex="$v_1=1/L$">$v_1=1/L$</span>. On the zero-free horizontal ray,
+<span class="math math-display" data-tex="$$
+\log\zeta(1/2+v_1+it)=\int_{v_1}^\infty A(1/2+v+it)\,dv.
+\tag{4.3}
+$$">$$
+\log\zeta(1/2+v_1+it)=\int_{v_1}^\infty A(1/2+v+it)\,dv.
+\tag{4.3}
+$$</span>
+Integrate (3.2). The prime term has modulus at most
+<span class="math" data-tex="$\sum_{n\le X^2}\Lambda(n)/(\sqrt n\log n)\ll X/L$">$\sum_{n\le X^2}\Lambda(n)/(\sqrt n\log n)\ll X/L$</span> by (3.7). For a zero, put <span class="math" data-tex="$u=Lv$">$u=Lv$</span>, <span class="math" data-tex="$q=L(\gamma-t)$">$q=L(\gamma-t)$</span>. Then
+<span class="math math-display" data-tex="$$
+\int_{v_1}^\infty|K_X(-v+i(\gamma-t))|dv
+\le\int_1^\infty\frac{e^{-u}+e^{-2u}}{u^2+q^2}du
+\le\frac C{1+q^2}.
+$$">$$
+\int_{v_1}^\infty|K_X(-v+i(\gamma-t))|dv
+\le\int_1^\infty\frac{e^{-u}+e^{-2u}}{u^2+q^2}du
+\le\frac C{1+q^2}.
+$$</span>
+The sum of these bounds is <span class="math" data-tex="$C\mathcal F(v_1,t)/L$">$C\mathcal F(v_1,t)/L$</span>, hence <span class="math" data-tex="$O(\log t/L)$">$O(\log t/L)$</span> by (3.6). The pole term, integrated over the whole ray, is <span class="math" data-tex="$O(X/(t^2L^2))$">$O(X/(t^2L^2))$</span>, and the trivial terms have an absolutely convergent smaller bound. Thus
+<span class="math math-display" data-tex="$$
+|\log\zeta(1/2+v_1+it)|\ll\log t/L.
+\tag{4.4}
+$$">$$
+|\log\zeta(1/2+v_1+it)|\ll\log t/L.
+\tag{4.4}
+$$</span>
+For <span class="math" data-tex="$0&lt;v\le v_1$">$0&lt;v\le v_1$</span>, (3.5) says <span class="math" data-tex="$\partial_v\log|\zeta|=\mathcal F-Q$">$\partial_v\log|\zeta|=\mathcal F-Q$</span>. Since <span class="math" data-tex="$\mathcal F\ge0$">$\mathcal F\ge0$</span>, integration gives
+<span class="math math-display" data-tex="$$
+\log|\zeta(1/2+it)|
+\le\log|\zeta(1/2+v_1+it)|+C v_1\log t.
+$$">$$
+\log|\zeta(1/2+it)|
+\le\log|\zeta(1/2+v_1+it)|+C v_1\log t.
+$$</span>
+This holds by a limit at the boundary; at a zero the limit is <span class="math" data-tex="$-\infty$">$-\infty$</span>. Insert (4.4) to obtain (4.1).</p>
+<p><strong>Proof of (4.2).</strong> We need an extra factor <span class="math" data-tex="$1/L$">$1/L$</span> before averaging in height. Define
+<span class="math math-display" data-tex="$$
+I(t)=\int_{1/2}^\infty\log|\zeta(\sigma+it)|\,d\sigma.
+$$">$$
+I(t)=\int_{1/2}^\infty\log|\zeta(\sigma+it)|\,d\sigma.
+$$</span>
+We claim
+<span class="math math-display" data-tex="$$
+|I(t)|\ll\frac{\log t}{L^2}.
+\tag{4.5}
+$$">$$
+|I(t)|\ll\frac{\log t}{L^2}.
+\tag{4.5}
+$$</span>
+For a nonordinate, horizontal integration of (4.3), now starting at any positive <span class="math" data-tex="$v$">$v$</span>, gives
+<span class="math math-display" data-tex="$$
+I(t)=\Re\int_0^\infty v A(1/2+v+it)\,dv.
+\tag{4.6}
+$$">$$
+I(t)=\Re\int_0^\infty v A(1/2+v+it)\,dv.
+\tag{4.6}
+$$</span>
+The weighted prime term in (3.2) is at most
+<span class="math" data-tex="$\sum\Lambda(n)/(\sqrt n(\log n)^2)\ll X/L^2$">$\sum\Lambda(n)/(\sqrt n(\log n)^2)\ll X/L^2$</span> by (3.7). For a zero, the scaled absolute integral is
+<span class="math math-display" data-tex="$$
+\int_0^\infty v|K_X(-v+i(\gamma-t))|dv
+=\frac1L\int_0^\infty
+ \frac{u|e^{-2u+2iq}-e^{-u+iq}|}{u^2+q^2}du
+\le\frac4{L(1+q^2)}.
+\tag{4.7}
+$$">$$
+\int_0^\infty v|K_X(-v+i(\gamma-t))|dv
+=\frac1L\int_0^\infty
+ \frac{u|e^{-2u+2iq}-e^{-u+iq}|}{u^2+q^2}du
+\le\frac4{L(1+q^2)}.
+\tag{4.7}
+$$</span>
+To verify the last inequality when <span class="math" data-tex="$|q|\ge1$">$|q|\ge1$</span>, bound the numerator by <span class="math" data-tex="$u(e^{-u}+e^{-2u})$">$u(e^{-u}+e^{-2u})$</span> and the denominator below by <span class="math" data-tex="$q^2$">$q^2$</span>. When <span class="math" data-tex="$|q|\le1$">$|q|\le1$</span>, use
+<span class="math" data-tex="$|e^{-u+iq}-1|\le|-u+iq|$">$|e^{-u+iq}-1|\le|-u+iq|$</span> for <span class="math" data-tex="$0\le u\le1$">$0\le u\le1$</span>: the integral representation <span class="math" data-tex="$e^z-1=z\int_0^1e^{az}da$">$e^z-1=z\int_0^1e^{az}da$</span> proves this because <span class="math" data-tex="$\Re z\le0$">$\Re z\le0$</span>. The integrand on this range is at most <span class="math" data-tex="$u/\sqrt{u^2+q^2}\le1$">$u/\sqrt{u^2+q^2}\le1$</span>; the remaining range is bounded by an exponential integral. This proves (4.7), also for <span class="math" data-tex="$q=0$">$q=0$</span>.</p>
+<p>Summing (4.7) gives <span class="math" data-tex="$C\mathcal F(v_1,t)/L^2\ll\log t/L^2$">$C\mathcal F(v_1,t)/L^2\ll\log t/L^2$</span>. The weighted pole integral is <span class="math" data-tex="$O(X/(t^2L^3))$">$O(X/(t^2L^3))$</span>, and the weighted trivial-zero sum is smaller. These estimates justify all changes of integration and summation in (4.6) and prove (4.5). At an ordinate, the local logarithmic singularities are integrable. Equivalently the factor <span class="math" data-tex="$v$">$v$</span> in (4.6) cancels a boundary pole of <span class="math" data-tex="$A$">$A$</span>. The continuity of <span class="math" data-tex="$I$">$I$</span>, proved in lesson ten, extends (4.5) to these heights.</p>
+<p>That lesson also proved the exact identity
+<span class="math math-display" data-tex="$$
+I(b)-I(a)=\pi\int_a^b S(u)\,du.
+\tag{4.8}
+$$">$$
+I(b)-I(a)=\pi\int_a^b S(u)\,du.
+\tag{4.8}
+$$</span>
+For nonordinates <span class="math" data-tex="$u\ge t$">$u\ge t$</span>, monotonicity of <span class="math" data-tex="$N$">$N$</span> and <span class="math" data-tex="$N=1+\vartheta/\pi+S$">$N=1+\vartheta/\pi+S$</span> give
+<span class="math" data-tex="$S(u)\ge S(t)-C(u-t)\log t$">$S(u)\ge S(t)-C(u-t)\log t$</span> on <span class="math" data-tex="$[t,t+1]$">$[t,t+1]$</span>, since <span class="math" data-tex="$\vartheta&#x27;=O(\log t)$">$\vartheta&#x27;=O(\log t)$</span>. Hence, for <span class="math" data-tex="$0&lt;h\le1$">$0&lt;h\le1$</span>,
+<span class="math math-display" data-tex="$$
+S(t)\le\frac1h\int_t^{t+h}S(u)du+C h\log t.
+$$">$$
+S(t)\le\frac1h\int_t^{t+h}S(u)du+C h\log t.
+$$</span>
+The analogous inequality on <span class="math" data-tex="$[t-h,t]$">$[t-h,t]$</span> bounds <span class="math" data-tex="$-S(t)$">$-S(t)$</span>. Take <span class="math" data-tex="$h=1/L$">$h=1/L$</span> and use (4.5) at <span class="math" data-tex="$t,t-h,t+h$">$t,t-h,t+h$</span> in (4.8). Both resulting bounds are <span class="math" data-tex="$O(\log t/L)$">$O(\log t/L)$</span>. The one-sided limits obey the same bound, so their average does too. This proves (4.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The scales in this proof are explicit: <span class="math" data-tex="$X=\log t$">$X=\log t$</span>, the prime polynomial has length <span class="math" data-tex="$(\log t)^2$">$(\log t)^2$</span>, the horizontal offset is <span class="math" data-tex="$v_1=1/\log\log t$">$v_1=1/\log\log t$</span>, and the height average has width <span class="math" data-tex="$h=1/\log\log t$">$h=1/\log\log t$</span>. They give a uniform estimate as the horizontal offset shrinks. The fixed-<span class="math" data-tex="$\delta$">$\delta$</span> estimate (2.2) has a different role, providing the qualitative implication by interpolation.</p>
+<h2 id="5-backlund-s-characterization-by-local-zero-counts">5. Backlund's characterization by local zero counts</h2>
+<p>This section is unconditional as an equivalence: neither direction assumes RH.</p>
+<p><strong>Theorem 5.1 (Backlund).</strong> LH holds if and only if, for every fixed <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>,
+<span class="math math-display" data-tex="$$
+N(\sigma,T+1)-N(\sigma,T)=o(\log T).
+\tag{5.1}
+$$">$$
+N(\sigma,T+1)-N(\sigma,T)=o(\log T).
+\tag{5.1}
+$$</span></p>
+<p><strong>Proof, from LH to the count.</strong> Under LH the strip interpolation in lesson six gives <span class="math" data-tex="$|\zeta(u+iv)|\ll_\varepsilon (|v|+4)^\varepsilon$">$|\zeta(u+iv)|\ll_\varepsilon (|v|+4)^\varepsilon$</span> uniformly on each fixed strip <span class="math" data-tex="$u\ge1/2$">$u\ge1/2$</span>. Fix <span class="math" data-tex="$1/2&lt;\sigma&lt;1$">$1/2&lt;\sigma&lt;1$</span>. Choose <span class="math" data-tex="$A&gt;2$">$A&gt;2$</span> sufficiently large that
+<span class="math math-display" data-tex="$$
+r=\sqrt{(A-\sigma)^2+1/4}&lt;A-1/2.
+$$">$$
+r=\sqrt{(A-\sigma)^2+1/4}&lt;A-1/2.
+$$</span>
+Choose a fixed <span class="math" data-tex="$R$">$R$</span> strictly between these two quantities. Every zero with <span class="math" data-tex="$\beta\ge\sigma$">$\beta\ge\sigma$</span>, <span class="math" data-tex="$T&lt;\gamma\le T+1$">$T&lt;\gamma\le T+1$</span> is in the radius-<span class="math" data-tex="$r$">$r$</span> disk centered at <span class="math" data-tex="$A+i(T+1/2)$">$A+i(T+1/2)$</span>. The radius-<span class="math" data-tex="$R$">$R$</span> disk has all real parts greater than <span class="math" data-tex="$1/2$">$1/2$</span>, and for large <span class="math" data-tex="$T$">$T$</span> it contains no pole. Jensen's formula bounds the number in the smaller disk by
+<span class="math math-display" data-tex="$$
+\frac{\log M_\zeta(R)-\log|\zeta(A+i(T+1/2))|}{\log(R/r)}.
+$$">$$
+\frac{\log M_\zeta(R)-\log|\zeta(A+i(T+1/2))|}{\log(R/r)}.
+$$</span>
+The center modulus is at least <span class="math" data-tex="$1/\zeta(A)$">$1/\zeta(A)$</span> by the reciprocal Euler series. LH makes the numerator at most <span class="math" data-tex="$\varepsilon\log T+O_{A,\varepsilon}(1)$">$\varepsilon\log T+O_{A,\varepsilon}(1)$</span> for every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>. Dividing by <span class="math" data-tex="$\log T$">$\log T$</span>, taking a limsup and then <span class="math" data-tex="$\varepsilon\downarrow0$">$\varepsilon\downarrow0$</span> proves (5.1). For <span class="math" data-tex="$\sigma\ge1$">$\sigma\ge1$</span> the count is zero.</p>
+<p><strong>Proof, from the count to LH.</strong> Fix <span class="math" data-tex="$0&lt;\delta&lt;1/10$">$0&lt;\delta&lt;1/10$</span> and <span class="math" data-tex="$A\ge4$">$A\ge4$</span>. At each sufficiently large height <span class="math" data-tex="$t$">$t$</span>, choose a radius
+<span class="math math-display" data-tex="$$
+A-\tfrac12-\delta\le R\le A-\tfrac12-\delta/2
+$$">$$
+A-\tfrac12-\delta\le R\le A-\tfrac12-\delta/2
+$$</span>
+whose circle contains no zero. There are only finitely many excluded radii. Every zero in this disk has <span class="math" data-tex="$\beta&gt;1/2+\delta/2$">$\beta&gt;1/2+\delta/2$</span> and <span class="math" data-tex="$|\gamma-t|\le A$">$|\gamma-t|\le A$</span>. Covering this height interval by a fixed number of unit windows and applying (5.1) shows that the number <span class="math" data-tex="$m$">$m$</span> of such zeros, with multiplicities, is <span class="math" data-tex="$o(\log t)$">$o(\log t)$</span>.</p>
+<p>In coordinates <span class="math" data-tex="$z=s-(A+it)$">$z=s-(A+it)$</span>, let <span class="math" data-tex="$a_j$">$a_j$</span> be these zeros. Define their disk Blaschke factors
+<span class="math math-display" data-tex="$$
+B_j(z)=\omega_j\frac{R(z-a_j)}{R^2-\overline{a_j}z},\qquad
+|\omega_j|=1,
+$$">$$
+B_j(z)=\omega_j\frac{R(z-a_j)}{R^2-\overline{a_j}z},\qquad
+|\omega_j|=1,
+$$</span>
+with the rotations chosen so that <span class="math" data-tex="$B_j(0)&gt;0$">$B_j(0)&gt;0$</span>. They have modulus one on <span class="math" data-tex="$|z|=R$">$|z|=R$</span> and at most one inside. Their denominators have no pole in the disk, since <span class="math" data-tex="$|a_j|&lt;R$">$|a_j|&lt;R$</span>. Thus
+<span class="math math-display" data-tex="$$
+h(z)=\zeta(A+it+z)\prod_{j=1}^m B_j(z)^{-1}
+$$">$$
+h(z)=\zeta(A+it+z)\prod_{j=1}^m B_j(z)^{-1}
+$$</span>
+extends to a holomorphic nonzero function on the closed disk. Choose a logarithm <span class="math" data-tex="$H=\log h$">$H=\log h$</span> with
+<span class="math" data-tex="$H(0)=\log\zeta(A+it)-\sum_j\log B_j(0)$">$H(0)=\log\zeta(A+it)-\sum_j\log B_j(0)$</span>, using the Euler logarithm and real logarithms in this expression. Since <span class="math" data-tex="$|a_j|\ge A-1$">$|a_j|\ge A-1$</span>,
+<span class="math math-display" data-tex="$$
+\frac{A-1}{R}\le B_j(0)&lt;1,
+\qquad |H(0)|\le C_A(1+m)=o(\log t).
+\tag{5.2}
+$$">$$
+\frac{A-1}{R}\le B_j(0)&lt;1,
+\qquad |H(0)|\le C_A(1+m)=o(\log t).
+\tag{5.2}
+$$</span>
+On the outer circle <span class="math" data-tex="$\Re H=\log|\zeta|\le C_A\log t$">$\Re H=\log|\zeta|\le C_A\log t$</span> by the unconditional polynomial bound. Borel–Carathéodory therefore gives
+<span class="math math-display" data-tex="$$
+\max_{|z|\le r_2}|H(z)|\ll_{A,\delta}\log t,
+\qquad r_2=A-\tfrac12-2\delta.
+\tag{5.3}
+$$">$$
+\max_{|z|\le r_2}|H(z)|\ll_{A,\delta}\log t,
+\qquad r_2=A-\tfrac12-2\delta.
+\tag{5.3}
+$$</span></p>
+<p>Set <span class="math" data-tex="$r_1=A-1-\delta$">$r_1=A-1-\delta$</span>. On <span class="math" data-tex="$|z|\le r_1$">$|z|\le r_1$</span> all real parts of <span class="math" data-tex="$A+it+z$">$A+it+z$</span> are at least <span class="math" data-tex="$1+\delta$">$1+\delta$</span>, so its Euler logarithm is bounded. Each factor has a logarithm on this smaller disk, agreeing with the real logarithm at zero, and this logarithm is bounded by a constant depending only on <span class="math" data-tex="$A,\delta$">$A,\delta$</span>. To see the latter directly, expand
+<span class="math" data-tex="$\log(1-z/a_j)$">$\log(1-z/a_j)$</span> and <span class="math" data-tex="$-\log(1-\overline{a_j}z/R^2)$">$-\log(1-\overline{a_j}z/R^2)$</span>: their ratios have modulus at most <span class="math" data-tex="$r_1/(A-1)&lt;1$">$r_1/(A-1)&lt;1$</span> and <span class="math" data-tex="$r_1/R&lt;1$">$r_1/R&lt;1$</span>, respectively, uniformly in <span class="math" data-tex="$j,t$">$j,t$</span>. Add the bounded center logarithm. Consequently
+<span class="math math-display" data-tex="$$
+\max_{|z|\le r_1}|H(z)|\le C_{A,\delta}(1+m)=o(\log t).
+\tag{5.4}
+$$">$$
+\max_{|z|\le r_1}|H(z)|\le C_{A,\delta}(1+m)=o(\log t).
+\tag{5.4}
+$$</span>
+Apply three circles between <span class="math" data-tex="$r_1$">$r_1$</span> and <span class="math" data-tex="$r_2$">$r_2$</span>. For each fixed <span class="math" data-tex="$\sigma\ge1/2+3\delta$">$\sigma\ge1/2+3\delta$</span> with <span class="math" data-tex="$\sigma\le1$">$\sigma\le1$</span>, the radius <span class="math" data-tex="$A-\sigma$">$A-\sigma$</span> is strictly below <span class="math" data-tex="$r_2$">$r_2$</span>, so its interpolation exponent is strictly less than one. Equations (5.3)–(5.4) give
+<span class="math" data-tex="$H(\sigma-A)=o(\log t)$">$H(\sigma-A)=o(\log t)$</span>. Since every <span class="math" data-tex="$|B_j|\le1$">$|B_j|\le1$</span>,
+<span class="math math-display" data-tex="$$
+\log|\zeta(\sigma+it)|\le\Re H(\sigma-A)=o(\log t).
+$$">$$
+\log|\zeta(\sigma+it)|\le\Re H(\sigma-A)=o(\log t).
+$$</span>
+This inequality also holds if zeta vanishes at the target point. Thus <span class="math" data-tex="$\mu(\sigma)=0$">$\mu(\sigma)=0$</span> for every such <span class="math" data-tex="$\sigma$">$\sigma$</span>. Letting <span class="math" data-tex="$\delta$">$\delta$</span> be any sufficiently small fixed number proves this for every <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>. Continuity of <span class="math" data-tex="$\mu$">$\mu$</span> at <span class="math" data-tex="$1/2$">$1/2$</span> then proves LH. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The local condition uses an <span class="math" data-tex="$o(\log T)$">$o(\log T)$</span> count at every sufficiently large height, not merely a small total count up to <span class="math" data-tex="$T$">$T$</span>. Its converse works by removing the few zeros on the right of a fixed line before interpolating a logarithm. There is no assertion here that LH locates each zero on the critical line.</p>
+<h2 id="6-lindelöf-implies-the-density-hypothesis">6. Lindelöf implies the density hypothesis</h2>
+<p>The detector used here will recur in the final lesson with unconditional moment bounds. We include its elementary sampling estimate to account for the fact that zeros are points rather than a continuous mean value.</p>
+<p><strong>Lemma 6.1 (sampling and partial sums).</strong> Suppose <span class="math" data-tex="$t_j\in[T,2T]$">$t_j\in[T,2T]$</span> are separated by at least one and <span class="math" data-tex="$P(t)=\sum_{n\le N}b_n n^{-it}$">$P(t)=\sum_{n\le N}b_n n^{-it}$</span>, <span class="math" data-tex="$N\ge2$">$N\ge2$</span>. Then
+<span class="math math-display" data-tex="$$
+\sum_j|P(t_j)|^2\ll (T+N)\log(2N)\sum_{n\le N}|b_n|^2.
+\tag{6.1}
+$$">$$
+\sum_j|P(t_j)|^2\ll (T+N)\log(2N)\sum_{n\le N}|b_n|^2.
+\tag{6.1}
+$$</span>
+For <span class="math" data-tex="$P_u(t)=\sum_{n\le u}b_n n^{-it}$">$P_u(t)=\sum_{n\le u}b_n n^{-it}$</span>,
+<span class="math math-display" data-tex="$$
+\sum_j\max_{u\le N}|P_u(t_j)|^2
+\ll (T+N)\log^3(2N)\sum_{n\le N}|b_n|^2.
+\tag{6.2}
+$$">$$
+\sum_j\max_{u\le N}|P_u(t_j)|^2
+\ll (T+N)\log^3(2N)\sum_{n\le N}|b_n|^2.
+\tag{6.2}
+$$</span></p>
+<p><strong>Proof.</strong> The intervals <span class="math" data-tex="$J_j=[t_j-1/4,t_j+1/4]$">$J_j=[t_j-1/4,t_j+1/4]$</span> have disjoint interiors. The fundamental theorem of calculus gives
+<span class="math math-display" data-tex="$$
+|P(t_j)|^2\le2\int_{J_j}|P(u)|^2du
+ +2\int_{J_j}|P(u)P&#x27;(u)|du.
+$$">$$
+|P(t_j)|^2\le2\int_{J_j}|P(u)|^2du
+ +2\int_{J_j}|P(u)P&#x27;(u)|du.
+$$</span>
+Sum and apply Cauchy–Schwarz. The polynomial mean value from lesson sixteen bounds <span class="math" data-tex="$\|P\|_2^2$">$\|P\|_2^2$</span> by <span class="math" data-tex="$C(T+N)\sum|b_n|^2$">$C(T+N)\sum|b_n|^2$</span> on <span class="math" data-tex="$[T-1/4,2T+1/4]$">$[T-1/4,2T+1/4]$</span>, and bounds <span class="math" data-tex="$\|P&#x27;\|_2^2$">$\|P&#x27;\|_2^2$</span> by the same expression times <span class="math" data-tex="$\log^2 N$">$\log^2 N$</span>. This proves (6.1).</p>
+<p>Pad the sequence with zeros to a length <span class="math" data-tex="$2^k&lt;2N$">$2^k&lt;2N$</span>. Any initial interval of integers is the disjoint union of at most <span class="math" data-tex="$k+1$">$k+1$</span> binary blocks. Cauchy–Schwarz therefore bounds its polynomial's square by <span class="math" data-tex="$(k+1)$">$(k+1)$</span> times the sum of the squared polynomials over those blocks, and hence over all binary blocks. Apply (6.1) to each block polynomial. At each of the <span class="math" data-tex="$k+1$">$k+1$</span> levels the blocks partition the coefficients, so the sum of their coefficient norms is <span class="math" data-tex="$\sum|b_n|^2$">$\sum|b_n|^2$</span>. Since <span class="math" data-tex="$k+1\ll\log(2N)$">$k+1\ll\log(2N)$</span>, the two extra factors prove (6.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 6.2 (Ingham's conditional density theorem).</strong> Under LH, for every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+N(\sigma,T)\ll_\varepsilon
+T^{2(1-\sigma)+\varepsilon},
+\qquad 1/2\le\sigma\le1,\quad T\ge2.
+\tag{6.3}
+$$">$$
+N(\sigma,T)\ll_\varepsilon
+T^{2(1-\sigma)+\varepsilon},
+\qquad 1/2\le\sigma\le1,\quad T\ge2.
+\tag{6.3}
+$$</span>
+This is the density hypothesis. RH would instead give <span class="math" data-tex="$N(\sigma,T)=0$">$N(\sigma,T)=0$</span> for every <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>.</p>
+<p><strong>Proof.</strong> It suffices to take <span class="math" data-tex="$0&lt;\varepsilon&lt;1/2$">$0&lt;\varepsilon&lt;1/2$</span>. If <span class="math" data-tex="$\sigma\le1/2+\varepsilon/8$">$\sigma\le1/2+\varepsilon/8$</span>, the bound <span class="math" data-tex="$N(T)\ll T\log T$">$N(T)\ll T\log T$</span> from lesson ten already gives (6.3). Suppose <span class="math" data-tex="$\sigma\ge1/2+\varepsilon/8$">$\sigma\ge1/2+\varepsilon/8$</span>, and write <span class="math" data-tex="$\delta=\varepsilon/8$">$\delta=\varepsilon/8$</span>.</p>
+<p>We first count zeros in <span class="math" data-tex="$T&lt;\gamma\le2T$">$T&lt;\gamma\le2T$</span>. Put <span class="math" data-tex="$X=\lfloor T\rfloor$">$X=\lfloor T\rfloor$</span>, <span class="math" data-tex="$Y=T$">$Y=T$</span>, and
+<span class="math math-display" data-tex="$$
+M_X(s)=\sum_{d\le X}\mu(d)d^{-s},\qquad
+a(n)=\sum_{\substack{d\mid n\\d\le X}}\mu(d).
+$$">$$
+M_X(s)=\sum_{d\le X}\mu(d)d^{-s},\qquad
+a(n)=\sum_{\substack{d\mid n\\d\le X}}\mu(d).
+$$</span>
+Then <span class="math" data-tex="$a(1)=1$">$a(1)=1$</span>, <span class="math" data-tex="$a(n)=0$">$a(n)=0$</span> for <span class="math" data-tex="$2\le n\le X$">$2\le n\le X$</span>, and <span class="math" data-tex="$|a(n)|\le d(n)$">$|a(n)|\le d(n)$</span>. On the absolutely convergent line, Mellin inversion of <span class="math" data-tex="$e^{-u}$">$e^{-u}$</span> gives
+<span class="math math-display" data-tex="$$
+\sum_{n\ge1}a(n)n^{-s}e^{-n/Y}
+=\frac1{2\pi i}\int_{(2)}\zeta(s+w)M_X(s+w)\Gamma(w)Y^w dw.
+\tag{6.4}
+$$">$$
+\sum_{n\ge1}a(n)n^{-s}e^{-n/Y}
+=\frac1{2\pi i}\int_{(2)}\zeta(s+w)M_X(s+w)\Gamma(w)Y^w dw.
+\tag{6.4}
+$$</span>
+To justify the inversion, put <span class="math" data-tex="$g(v)=e^{-e^v}e^{cv}$">$g(v)=e^{-e^v}e^{cv}$</span>, <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span>. The gamma integral gives <span class="math" data-tex="$\Gamma(c+iu)=\int_{\mathbb R}g(v)e^{iuv}dv$">$\Gamma(c+iu)=\int_{\mathbb R}g(v)e^{iuv}dv$</span>. Both <span class="math" data-tex="$g$">$g$</span> and this transform are integrable, the latter by Stirling. Insert a factor <span class="math" data-tex="$e^{-h u^2}$">$e^{-h u^2}$</span> in the inverse integral and interchange the integrals. The Gaussian integral evaluates it as the convolution of <span class="math" data-tex="$g$">$g$</span> with <span class="math" data-tex="$(4\pi h)^{-1/2}e^{-v^2/(4h)}$">$(4\pi h)^{-1/2}e^{-v^2/(4h)}$</span>. As <span class="math" data-tex="$h\downarrow0$">$h\downarrow0$</span> this convolution tends to <span class="math" data-tex="$g$">$g$</span> at every point, by continuity and the Gaussian approximate-identity estimate. Dominated convergence on the transform side removes the inserted factor. Evaluating at <span class="math" data-tex="$v=\log(n/Y)$">$v=\log(n/Y)$</span> and dividing by <span class="math" data-tex="$(n/Y)^c$">$(n/Y)^c$</span> proves the inversion used in (6.4).</p>
+<p>At a zero <span class="math" data-tex="$s=\rho$">$s=\rho$</span> with <span class="math" data-tex="$\beta\ge\sigma$">$\beta\ge\sigma$</span>, shift (6.4) to <span class="math" data-tex="$\Re w=1/2-\beta$">$\Re w=1/2-\beta$</span>. This line is between <span class="math" data-tex="$-1/2$">$-1/2$</span> and <span class="math" data-tex="$-\delta$">$-\delta$</span>. The apparent residue at <span class="math" data-tex="$w=0$">$w=0$</span> is <span class="math" data-tex="$\zeta(\rho)M_X(\rho)=0$">$\zeta(\rho)M_X(\rho)=0$</span>. The pole at <span class="math" data-tex="$w=1-\rho$">$w=1-\rho$</span> contributes <span class="math" data-tex="$M_X(1)\Gamma(1-\rho)Y^{1-\rho}$">$M_X(1)\Gamma(1-\rho)Y^{1-\rho}$</span>, exponentially small in <span class="math" data-tex="$T$">$T$</span>. No negative integer gamma pole is crossed. The horizontal integrals tend to zero by vertical Stirling and the polynomial growth of zeta. Thus
+<span class="math math-display" data-tex="$$
+e^{-1/Y}+\sum_{n&gt;X}a(n)n^{-\rho}e^{-n/Y}
+=O(e^{-cT})+\mathcal I_\rho,
+\tag{6.5}
+$$">$$
+e^{-1/Y}+\sum_{n&gt;X}a(n)n^{-\rho}e^{-n/Y}
+=O(e^{-cT})+\mathcal I_\rho,
+\tag{6.5}
+$$</span>
+where
+<span class="math math-display" data-tex="$$
+\mathcal I_\rho=\frac{Y^{1/2-\beta}}{2\pi}
+\int_{\mathbb R}\Gamma(1/2-\beta+iv)Y^{iv}
+\zeta(1/2+i(\gamma+v))M_X(1/2+i(\gamma+v))dv.
+\tag{6.6}
+$$">$$
+\mathcal I_\rho=\frac{Y^{1/2-\beta}}{2\pi}
+\int_{\mathbb R}\Gamma(1/2-\beta+iv)Y^{iv}
+\zeta(1/2+i(\gamma+v))M_X(1/2+i(\gamma+v))dv.
+\tag{6.6}
+$$</span>
+Let <span class="math" data-tex="$N=\lceil T\log^2T\rceil$">$N=\lceil T\log^2T\rceil$</span>. The portion <span class="math" data-tex="$n&gt;N$">$n&gt;N$</span> in (6.5) is <span class="math" data-tex="$O(T^{-100})$">$O(T^{-100})$</span> for large <span class="math" data-tex="$T$">$T$</span>: use <span class="math" data-tex="$d(n)\le n$">$d(n)\le n$</span>, and compare its exponentially decaying tail with an integral. Hence each zero makes either the polynomial over <span class="math" data-tex="$X&lt;n\le N$">$X&lt;n\le N$</span> or <span class="math" data-tex="$|\mathcal I_\rho|$">$|\mathcal I_\rho|$</span> at least <span class="math" data-tex="$1/3$">$1/3$</span>.</p>
+<p>Choose a maximal subset of these zeros whose ordinates are separated by at least one, with one representative when several zeros share an ordinate. Every zero is within one of a selected ordinate. The local count from lesson eight shows that the full count, including multiplicities, is at most <span class="math" data-tex="$C\log T$">$C\log T$</span> times the number of selected points. Divide those points between the two alternatives.</p>
+<p>For the polynomial alternative use
+<span class="math" data-tex="$b_n=a(n)e^{-n/T}n^{-\sigma}\mathbf1_{n&gt;X}$">$b_n=a(n)e^{-n/T}n^{-\sigma}\mathbf1_{n&gt;X}$</span>. Partial summation against the decreasing weight <span class="math" data-tex="$n^{-(\beta-\sigma)}$">$n^{-(\beta-\sigma)}$</span> bounds the modulus at <span class="math" data-tex="$\beta$">$\beta$</span> by <span class="math" data-tex="$\max_u|\sum_{n\le u}b_n n^{-i\gamma}|$">$\max_u|\sum_{n\le u}b_n n^{-i\gamma}|$</span>. The coefficient norm obeys
+<span class="math math-display" data-tex="$$
+\sum_{X&lt;n\le N}|b_n|^2\ll T^{1-2\sigma}\log^3T.
+\tag{6.7}
+$$">$$
+\sum_{X&lt;n\le N}|b_n|^2\ll T^{1-2\sigma}\log^3T.
+\tag{6.7}
+$$</span>
+Indeed split into <span class="math" data-tex="$kT&lt;n\le(k+1)T$">$kT&lt;n\le(k+1)T$</span>, <span class="math" data-tex="$k\ge1$">$k\ge1$</span>, using <span class="math" data-tex="$X\asymp T$">$X\asymp T$</span> for the first segment, <span class="math" data-tex="$e^{-2n/T}\le e^{-2k}$">$e^{-2n/T}\le e^{-2k}$</span> thereafter, and <span class="math" data-tex="$\sum_{n\le u}d(n)^2\ll u\log^3(2u)$">$\sum_{n\le u}d(n)^2\ll u\log^3(2u)$</span> from lesson sixteen. The resulting <span class="math" data-tex="$k$">$k$</span> sum converges uniformly for <span class="math" data-tex="$1/2\le\sigma\le1$">$1/2\le\sigma\le1$</span>. Apply (6.2) and <span class="math" data-tex="$T+N\ll T\log^2T$">$T+N\ll T\log^2T$</span>. The number <span class="math" data-tex="$R_1$">$R_1$</span> of polynomial points is
+<span class="math math-display" data-tex="$$
+R_1\ll T^{2-2\sigma}\log^8T.
+\tag{6.8}
+$$">$$
+R_1\ll T^{2-2\sigma}\log^8T.
+\tag{6.8}
+$$</span></p>
+<p>For the integral alternative, Stirling and compactness on the real parts <span class="math" data-tex="$[-1/2,-\delta]$">$[-1/2,-\delta]$</span> give <span class="math" data-tex="$|\Gamma(1/2-\beta+iv)|\le C_\delta e^{-|v|}$">$|\Gamma(1/2-\beta+iv)|\le C_\delta e^{-|v|}$</span>, uniformly in <span class="math" data-tex="$\beta$">$\beta$</span>. Weighted Cauchy–Schwarz in (6.6) gives
+<span class="math math-display" data-tex="$$
+|\mathcal I_\rho|^2\le C_\delta T^{1-2\beta}
+\int_{\mathbb R}e^{-|v|}|\zeta(1/2+i(\gamma+v))M_X(1/2+i(\gamma+v))|^2dv.
+\tag{6.9}
+$$">$$
+|\mathcal I_\rho|^2\le C_\delta T^{1-2\beta}
+\int_{\mathbb R}e^{-|v|}|\zeta(1/2+i(\gamma+v))M_X(1/2+i(\gamma+v))|^2dv.
+\tag{6.9}
+$$</span>
+One may decrease the exponential rate slightly to obtain this displayed bound; Stirling actually gives rate <span class="math" data-tex="$\pi/2&gt;1$">$\pi/2&gt;1$</span>, so both its integral and the required comparison are bounded. Under LH, <span class="math" data-tex="$|\zeta(1/2+iu)|^2\ll_\eta (|u|+4)^{2\eta}$">$|\zeta(1/2+iu)|^2\ll_\eta (|u|+4)^{2\eta}$</span> for any fixed <span class="math" data-tex="$\eta&gt;0$">$\eta&gt;0$</span>. On <span class="math" data-tex="$|v|\le T/2$">$|v|\le T/2$</span> this costs <span class="math" data-tex="$T^{2\eta}$">$T^{2\eta}$</span>. On the remaining range use <span class="math" data-tex="$|M_X|\le2\sqrt X$">$|M_X|\le2\sqrt X$</span>, the unconditional polynomial bound for zeta, and the exponential weight to get a total <span class="math" data-tex="$O(T^{-100})$">$O(T^{-100})$</span> after summing over at most <span class="math" data-tex="$O(T\log T)$">$O(T\log T)$</span> selected points.</p>
+<p>For one-separated ordinates, <span class="math" data-tex="$\sum_j e^{-|u-\gamma_j|}\le C$">$\sum_j e^{-|u-\gamma_j|}\le C$</span>: at most a fixed number of them occur in each unit window about <span class="math" data-tex="$u$">$u$</span>. Sum (6.9), change variables to <span class="math" data-tex="$u=\gamma_j+v$">$u=\gamma_j+v$</span>, and apply this bound. The mean value theorem gives
+<span class="math math-display" data-tex="$$
+\int_{T/2}^{3T}|M_X(1/2+iu)|^2du
+\ll (T+X)\sum_{n\le X}\frac1n\ll T\log T.
+$$">$$
+\int_{T/2}^{3T}|M_X(1/2+iu)|^2du
+\ll (T+X)\sum_{n\le X}\frac1n\ll T\log T.
+$$</span>
+Consequently the number of integral points satisfies
+<span class="math" data-tex="$R_2\ll_{\delta,\eta}T^{2-2\sigma+2\eta}\log T$">$R_2\ll_{\delta,\eta}T^{2-2\sigma+2\eta}\log T$</span>.</p>
+<p>Restoring the local multiplicity factor gives a bound
+<span class="math" data-tex="$C_{\varepsilon,\eta}T^{2-2\sigma+2\eta}\log^9 T$">$C_{\varepsilon,\eta}T^{2-2\sigma+2\eta}\log^9 T$</span> for the original dyadic count. Take <span class="math" data-tex="$\eta=\varepsilon/8$">$\eta=\varepsilon/8$</span> and absorb logarithms with exponent <span class="math" data-tex="$\varepsilon/4$">$\varepsilon/4$</span>, so this is <span class="math" data-tex="$O_\varepsilon(T^{2-2\sigma+\varepsilon/2})$">$O_\varepsilon(T^{2-2\sigma+\varepsilon/2})$</span>. Sum dyadic height intervals down to a fixed bounded height. Their sum is at most <span class="math" data-tex="$O(\log T)$">$O(\log T)$</span> times the largest bound, including when <span class="math" data-tex="$\sigma$">$\sigma$</span> is close to one; absorb this last logarithm in the remaining exponent <span class="math" data-tex="$\varepsilon/2$">$\varepsilon/2$</span>. The finitely many low zeros can be absorbed uniformly. This proves (6.3). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Show that <span class="math" data-tex="$\mu(\sigma)=0$">$\mu(\sigma)=0$</span> for all <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span> implies <span class="math" data-tex="$\mu(1/2)=0$">$\mu(1/2)=0$</span>. Explain why a bound only at a single <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span> would not give the same conclusion.</p>
+<p><strong>Solution.</strong> The finite convex function <span class="math" data-tex="$\mu$">$\mu$</span> is continuous by lesson six. Therefore <span class="math" data-tex="$\mu(1/2)=\lim_{h\downarrow0}\mu(1/2+h)=0$">$\mu(1/2)=\lim_{h\downarrow0}\mu(1/2+h)=0$</span>. One zero value at <span class="math" data-tex="$1/2+h$">$1/2+h$</span> permits a convex function to be positive farther left; for example the unconditional chord bound permits <span class="math" data-tex="$\mu(1/2)&gt;0$">$\mu(1/2)&gt;0$</span>. The quantifier over arbitrarily small <span class="math" data-tex="$h$">$h$</span> supplies the limiting information.</p>
+<p><strong>Exercise 2 (medium).</strong> Prove three circles by applying the maximum principle to <span class="math" data-tex="$\log|f|-a\log|z|$">$\log|f|-a\log|z|$</span>. Identify the treatment of zeros.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="$a=(\log M(r_2)-\log M(r_1))/\log(r_2/r_1)$">$a=(\log M(r_2)-\log M(r_1))/\log(r_2/r_1)$</span> and <span class="math" data-tex="$b=\log M(r_1)-a\log r_1$">$b=\log M(r_1)-a\log r_1$</span>. Then <span class="math" data-tex="$\log|f|-a\log|z|-b\le0$">$\log|f|-a\log|z|-b\le0$</span> on both boundary circles. This function is harmonic except at zeros, where it tends to <span class="math" data-tex="$-\infty$">$-\infty$</span>. Delete small zero disks, apply the harmonic maximum principle, and let their radii shrink. On the radius-<span class="math" data-tex="$r$">$r$</span> circle, the resulting bound is <span class="math" data-tex="$\log M(r)\le a\log r+b$">$\log M(r)\le a\log r+b$</span>, precisely (2.1). For <span class="math" data-tex="$f\equiv0$">$f\equiv0$</span> the inequality is immediate.</p>
+<p><strong>Exercise 3 (medium).</strong> Under RH prove <span class="math" data-tex="$1/\zeta(\sigma+it)\ll_{\sigma,\varepsilon}|t|^\varepsilon$">$1/\zeta(\sigma+it)\ll_{\sigma,\varepsilon}|t|^\varepsilon$</span> for each fixed <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>. Specify the branch and its range.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="$1/2&lt;\sigma\le1$">$1/2&lt;\sigma\le1$</span>, use the Euler-normalized holomorphic logarithm on <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>, <span class="math" data-tex="$\Im s&gt;1$">$\Im s&gt;1$</span>. Choose the loss in (2.2) smaller than <span class="math" data-tex="$2\sigma-1$">$2\sigma-1$</span>, giving <span class="math" data-tex="$|\log\zeta|=o(\log t)$">$|\log\zeta|=o(\log t)$</span>. Hence <span class="math" data-tex="$|1/\zeta|=e^{-\Re\log\zeta}\le e^{|\log\zeta|}\ll_\varepsilon t^\varepsilon$">$|1/\zeta|=e^{-\Re\log\zeta}\le e^{|\log\zeta|}\ll_\varepsilon t^\varepsilon$</span>. On <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span> use the absolutely convergent Möbius series. Conjugation treats negative heights. This gives the fixed-line assertion; uniformity on <span class="math" data-tex="$\sigma\ge\sigma_0&gt;1/2$">$\sigma\ge\sigma_0&gt;1/2$</span> follows either from the uniform estimate on <span class="math" data-tex="$[\sigma_0,1]$">$[\sigma_0,1]$</span> or from lesson fourteen, Theorem 3.2. At one the reciprocal has a removable zero rather than a pole.</p>
+<p><strong>Exercise 4 (medium).</strong> Deduce from Exercise 3 and Perron's formula that RH implies <span class="math" data-tex="$M(x)\ll_\varepsilon x^{1/2+\varepsilon}$">$M(x)\ll_\varepsilon x^{1/2+\varepsilon}$</span>.</p>
+<p><strong>Solution.</strong> It suffices to take <span class="math" data-tex="$0&lt;\varepsilon&lt;1/2$">$0&lt;\varepsilon&lt;1/2$</span>. Let <span class="math" data-tex="$y=\lfloor x\rfloor+1/2$">$y=\lfloor x\rfloor+1/2$</span>, <span class="math" data-tex="$T=y$">$T=y$</span>, <span class="math" data-tex="$a=1+1/\log y$">$a=1+1/\log y$</span>, <span class="math" data-tex="$b=1/2+\varepsilon/4$">$b=1/2+\varepsilon/4$</span>. The bounded-coefficient Perron estimate in <a href="NT-ZETA-12.html">The classical error term</a>, Lemma 3.1, gives
+<span class="math math-display" data-tex="$$
+M(x)=\frac1{2\pi i}\int_{a-iT}^{a+iT}\frac{y^s}{s\zeta(s)}ds+O(y\log y/T).
+$$">$$
+M(x)=\frac1{2\pi i}\int_{a-iT}^{a+iT}\frac{y^s}{s\zeta(s)}ds+O(y\log y/T).
+$$</span>
+RH permits shifting to <span class="math" data-tex="$b$">$b$</span> with no residue; <span class="math" data-tex="$1/\zeta$">$1/\zeta$</span> is holomorphic across one. The uniform reciprocal bound from Exercise 3, with exponent <span class="math" data-tex="$\varepsilon/4$">$\varepsilon/4$</span>, bounds the vertical integral by
+<span class="math" data-tex="$C_\varepsilon y^b\int_0^T(t+4)^{\varepsilon/4}/(b+t)dt\ll_\varepsilon y^{1/2+\varepsilon/2}$">$C_\varepsilon y^b\int_0^T(t+4)^{\varepsilon/4}/(b+t)dt\ll_\varepsilon y^{1/2+\varepsilon/2}$</span>. The two horizontal integrals are at most
+<span class="math" data-tex="$C_\varepsilon T^{\varepsilon/4-1}\int_b^a y^\sigma d\sigma\ll_\varepsilon y^{\varepsilon/4}/\log y$">$C_\varepsilon T^{\varepsilon/4-1}\int_b^a y^\sigma d\sigma\ll_\varepsilon y^{\varepsilon/4}/\log y$</span>. The truncation error is <span class="math" data-tex="$O(\log y)$">$O(\log y)$</span>. They are all <span class="math" data-tex="$O_\varepsilon(x^{1/2+\varepsilon})$">$O_\varepsilon(x^{1/2+\varepsilon})$</span> after enlarging the constant for bounded <span class="math" data-tex="$x$">$x$</span>. The half-integer cutoff has exactly the integers <span class="math" data-tex="$n\le x$">$n\le x$</span> below it, so no jump correction is needed. This is also the exact forward proof in lesson fourteen, Theorem 4.1.</p>
+<p><strong>Exercise 5 (hard).</strong> Under RH prove <span class="math" data-tex="$S(T)\ll\log T/\log\log T$">$S(T)\ll\log T/\log\log T$</span>, using the argument normalization of lesson ten.</p>
+<p><strong>Solution.</strong> Use the smoothed kernel (3.1), <span class="math" data-tex="$X=\log T$">$X=\log T$</span> and <span class="math" data-tex="$L=\log\log T$">$L=\log\log T$</span>. Equations (3.5)–(3.8) give <span class="math" data-tex="$\mathcal F(1/L,T)\ll\log T$">$\mathcal F(1/L,T)\ll\log T$</span>, with the positive coefficient <span class="math" data-tex="$1-e^{-1}-e^{-2}$">$1-e^{-1}-e^{-2}$</span> retained. Weighted horizontal integration (4.6) gives <span class="math" data-tex="$|I(T)|\ll\log T/L^2$">$|I(T)|\ll\log T/L^2$</span>: the prime sum is bounded by (3.7) with <span class="math" data-tex="$j=2$">$j=2$</span>, and (4.7) makes the full zero contribution at most <span class="math" data-tex="$C\mathcal F(1/L,T)/L^2$">$C\mathcal F(1/L,T)/L^2$</span>. Pole and trivial terms are smaller. Monotonicity of <span class="math" data-tex="$N$">$N$</span> bounds <span class="math" data-tex="$S(T)$">$S(T)$</span> above by its average over <span class="math" data-tex="$[T,T+1/L]$">$[T,T+1/L]$</span> plus <span class="math" data-tex="$O(\log T/L)$">$O(\log T/L)$</span>, and bounds it below using <span class="math" data-tex="$[T-1/L,T]$">$[T-1/L,T]$</span>. The exact relation <span class="math" data-tex="$\pi\int_a^bS=I(b)-I(a)$">$\pi\int_a^bS=I(b)-I(a)$</span> bounds each average by <span class="math" data-tex="$O(\log T/L)$">$O(\log T/L)$</span>. This proves the assertion at nonordinates. Its two limiting values satisfy the same estimate, so their prescribed average does as well. The complete kernel estimates and boundary justification are in Theorem 4.1.</p>
+<h2 id="freely-readable-sources-and-attribution">Freely readable sources and attribution</h2>
+<ul>
+<li>C. T. McMullen, <a href="https://people.math.harvard.edu/~ctm/home/text/class/harvard/213a/23/html/home/course/course.pdf"><em>Advanced Complex Analysis</em></a>, freely readable Harvard lecture notes, 30 November 2023, Theorem 3.5, printed page 75: three circles. The annulus proof is supplied in Theorem 2.1 here.</li>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, freely readable author preliminary version, Lemma 8.5. The real-part inequality used here is proved in lesson five.</li>
+<li>R. C. Vaughan, <a href="https://personal.science.psu.edu/rcv4/568s20/568chapter10.pdf"><em>Analytic Number Theory</em>, Chapter 10 lecture notes</a>, freely supplied by the author, Exercises 20–21, printed pages 321–323: the Backlund characterization and Littlewood converse compared with the complete proof in Section 5.</li>
+<li>H. L. Montgomery and R. C. Vaughan, <a href="https://personal.science.psu.edu/rcv4/Vol3/Vol3.pdf"><em>Multiplicative Number Theory III</em></a>, freely readable author-hosted 367-page draft, Chapters 24, 26 and 28: growth, moments and density comparisons. Sections 3–6 here prove the contour, interpolation, sampling and zero-count arguments used in this lesson.</li>
+<li>A. Connes, <a href="https://arxiv.org/pdf/2602.04022v1"><em>The Riemann Hypothesis: Past, Present and a Letter Through Time</em></a>, freely readable arXiv v1 survey, subsection “The Lindelöf Hypothesis”: context for the growth exponents.</li>
+</ul>
+<p>Littlewood’s conditional bounds are proved in Theorem 4.1. The exposition, proofs, solutions and figure source in this lesson are CC0. The figure checks its elementary interpolation formula; it supplies no proof of RH, LH or an all-height zero assertion.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-17.html">← Zeros on the critical line: Hardy&#x27;s theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-19.html">Zero-density estimates and primes in short intervals →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-18.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

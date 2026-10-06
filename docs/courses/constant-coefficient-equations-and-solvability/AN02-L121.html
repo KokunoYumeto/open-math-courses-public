@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Counting cycles with rational periods</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}</style></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="counting-cycles-with-rational-periods">Counting cycles with rational periods</h1>
+<p>A residue counts a positive circle around a puncture. Products of these circles let us read the coefficients of higher-dimensional cycles. The following complete lesson carries that calculation through a projective hypersurface arrangement, including the sign of its normal tube and the affine-to-projective comparison used in AN02.</p>
+<p>Read PR1 for the exact objects and result. PR2–PR3 establish the actual integral basis with finite chains. PR4 explains why its rational periods also span smooth cohomology. PR5 translates the forms into homogeneous C8 coordinates. PR6–PR7 compute the normal tube, and PR9 checks the affine representative without assuming a global logarithm.</p>
+<p>The three original coordinate diagrams display the cover, phase map and period matrix; none replaces a proof.</p>
+<p>This is a bounded proof for a concrete class of projective hypersurface complements. It supplies an explicit rational top-degree period basis, an injective primitive integral normal-tube map, and the exact affine/projective tube comparison for this family. These are receiving statements needed by the AN02 C8 cycle argument. The proof does not establish them for an arbitrary homogeneous polynomial or prove component constancy. Ordinary finite singular chains are used throughout. The coefficient rings and orientation conventions are stated below.</p>
+<h2 id="pr1-objects-coefficients-and-the-theorem">PR1. Objects, coefficients and the theorem</h2>
+<p>Put <span class="math" data-tex="\(n=d+1\geq2\)">\(n=d+1\geq2\)</span>. Give <span class="math" data-tex="\(\mathbb P^d(\mathbb C)\)">\(\mathbb P^d(\mathbb C)\)</span> homogeneous coordinates <span class="math" data-tex="\([z_0:\cdots:z_d]\)">\([z_0:\cdots:z_d]\)</span>. For every <span class="math" data-tex="\(1\leq j\leq d\)">\(1\leq j\leq d\)</span>, choose a finite nonempty set <span class="math" data-tex="\(S_j\subset\mathbb R\)">\(S_j\subset\mathbb R\)</span> of distinct numbers, positive integers <span class="math" data-tex="\(e_{j,a}\)">\(e_{j,a}\)</span>, and a real number <span class="math" data-tex="\(c\neq0\)">\(c\neq0\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+ F(z)=c\prod_{j=1}^{d}\prod_{a\in S_j}(z_j-a z_0)^{e_{j,a}},
+ \qquad r_j=\sum_{a\in S_j}e_{j,a},\qquad m=\sum_j r_j. \tag{PR1}
+\]">\[
+ F(z)=c\prod_{j=1}^{d}\prod_{a\in S_j}(z_j-a z_0)^{e_{j,a}},
+ \qquad r_j=\sum_{a\in S_j}e_{j,a},\qquad m=\sum_j r_j. \tag{PR1}
+\]</span>
+<p>The zero set is taken without multiplicities when forming complements. Write</p>
+<span class="math math-display" data-tex="\[
+ X=\{z_0=0\},\quad U=\mathbb P^d\setminus\{F=0\},\quad
+ Y=X\cap U,\quad V=U\setminus Y,\quad R=\prod_j|S_j|. \tag{PR2}
+\]">\[
+ X=\{z_0=0\},\quad U=\mathbb P^d\setminus\{F=0\},\quad
+ Y=X\cap U,\quad V=U\setminus Y,\quad R=\prod_j|S_j|. \tag{PR2}
+\]</span>
+<p>Here <span class="math" data-tex="\(Y\)">\(Y\)</span> is a closed complex hypersurface of the smooth manifold <span class="math" data-tex="\(U\)">\(U\)</span>, even if the deleted divisor is singular. In the affine chart <span class="math" data-tex="\(z_0=1\)">\(z_0=1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+ V=\prod_{j=1}^{d}(\mathbb C\setminus S_j),\qquad t_j=z_j/z_0. \tag{PR3}
+\]">\[
+ V=\prod_{j=1}^{d}(\mathbb C\setminus S_j),\qquad t_j=z_j/z_0. \tag{PR3}
+\]</span>
+<p>On <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(F=c\prod_j z_j^{r_j}\)">\(F=c\prod_j z_j^{r_j}\)</span>. Thus every point of <span class="math" data-tex="\(Y\)">\(Y\)</span> has <span class="math" data-tex="\(z_d\neq0\)">\(z_d\neq0\)</span>, and the chart <span class="math" data-tex="\(z_d=1\)">\(z_d=1\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+ Y\cong(\mathbb C^*)^{d-1},\qquad w_j=z_j/z_d\ (j&lt;d). \tag{PR4}
+\]">\[
+ Y\cong(\mathbb C^*)^{d-1},\qquad w_j=z_j/z_d\ (j&lt;d). \tag{PR4}
+\]</span>
+<p>For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, the right side means a single point and its ordinary <span class="math" data-tex="\(H_0\)">\(H_0\)</span> is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. This is a statement about the normal tube of that point. A Petrowsky cycle in reduced degree zero has its separate reduced-homology convention; the two conventions are not interchanged.</p>
+<p>Choose small counterclockwise circles <span class="math" data-tex="\(\gamma_{j,a}\)">\(\gamma_{j,a}\)</span> centered at <span class="math" data-tex="\(a\)">\(a\)</span>, enclosing no other point of <span class="math" data-tex="\(S_j\)">\(S_j\)</span>. The product torus
+<span class="math" data-tex="\(T_{\mathbf a}=\gamma_{1,a_1}\times\cdots\times\gamma_{d,a_d}\)">\(T_{\mathbf a}=\gamma_{1,a_1}\times\cdots\times\gamma_{d,a_d}\)</span>
+has orientation in that displayed order. Smooth products are represented by finite singular chains using a triangulation of the parameter torus. Let</p>
+<span class="math math-display" data-tex="\[
+ \Omega_{\mathbf a}=\bigwedge_{j=1}^{d}\frac{dt_j}{t_j-a_j},
+ \qquad \mathbf a\in\prod_jS_j. \tag{PR5}
+\]">\[
+ \Omega_{\mathbf a}=\bigwedge_{j=1}^{d}\frac{dt_j}{t_j-a_j},
+ \qquad \mathbf a\in\prod_jS_j. \tag{PR5}
+\]</span>
+<p><strong>Theorem PR.</strong> The classes <span class="math" data-tex="\([T_{\mathbf a}]\)">\([T_{\mathbf a}]\)</span> are an integral basis of <span class="math" data-tex="\(H_d(V;\mathbb Z)\)">\(H_d(V;\mathbb Z)\)</span>, and this group has rank <span class="math" data-tex="\(R\)">\(R\)</span>. The <span class="math" data-tex="\(R\)">\(R\)</span> closed rational forms <span class="math" data-tex="\(\Omega_{\mathbf a}\)">\(\Omega_{\mathbf a}\)</span> represent a basis of the ordinary smooth complex de Rham group <span class="math" data-tex="\(H^d_{\mathrm{dR}}(V;\mathbb C)\)">\(H^d_{\mathrm{dR}}(V;\mathbb C)\)</span>. Their periods are</p>
+<span class="math math-display" data-tex="\[
+ \int_{T_{\mathbf b}}\Omega_{\mathbf a}=(2\pi i)^d\,\delta_{\mathbf a,\mathbf b}. \tag{PR6}
+\]">\[
+ \int_{T_{\mathbf b}}\Omega_{\mathbf a}=(2\pi i)^d\,\delta_{\mathbf a,\mathbf b}. \tag{PR6}
+\]</span>
+<p>The normal tube, with its positively oriented normal circle placed first, is well defined over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and satisfies</p>
+<span class="math math-display" data-tex="\[
+ \tau:H_{d-1}(Y;\mathbb Z)\longrightarrow H_d(V;\mathbb Z),\qquad
+ \tau[B]=(-1)^d\sum_{\mathbf a}[T_{\mathbf a}], \tag{PR7}
+\]">\[
+ \tau:H_{d-1}(Y;\mathbb Z)\longrightarrow H_d(V;\mathbb Z),\qquad
+ \tau[B]=(-1)^d\sum_{\mathbf a}[T_{\mathbf a}], \tag{PR7}
+\]</span>
+<p>where <span class="math" data-tex="\(B=\{|w_1|=\cdots=|w_{d-1}|=1\}\)">\(B=\{|w_1|=\cdots=|w_{d-1}|=1\}\)</span> is oriented in the order <span class="math" data-tex="\(w_1,\ldots,w_{d-1}\)">\(w_1,\ldots,w_{d-1}\)</span>; for <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\([B]\)">\([B]\)</span> is the positive point. In particular <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is injective and its image is primitive. The homology basis and tube statements also hold with coefficients in <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, or any field, by the same chain proof. The differential forms and their de Rham comparison are over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The assertion about integral detection uses the explicit free group in this example; complex periods do not generally detect torsion.</p>
+<h2 id="pr2-the-finite-chain-tools-actually-used">PR2. The finite-chain tools actually used</h2>
+<p>We spell out the homological mechanism rather than import a product or cellular homology theorem. The chain tools also occur in the fully written, owner-admitted WT035 and CD034 proofs. They are ordinary, unaugmented singular chains except when an augmentation is explicitly mentioned. There is no compact-support restriction on differential forms, and chains always have finite support.</p>
+<p>For a homotopy <span class="math" data-tex="\(H:A\times[0,1]\to B\)">\(H:A\times[0,1]\to B\)</span>, triangulate <span class="math" data-tex="\(\Delta^q\times[0,1]\)">\(\Delta^q\times[0,1]\)</span> with the <span class="math" data-tex="\(q+1\)">\(q+1\)</span> ordered simplices
+<span class="math" data-tex="\([v_0^0,\ldots,v_j^0,v_j^1,\ldots,v_q^1]\)">\([v_0^0,\ldots,v_j^0,v_j^1,\ldots,v_q^1]\)</span>, with alternating coefficients <span class="math" data-tex="\((-1)^j\)">\((-1)^j\)</span>. Composing with <span class="math" data-tex="\(H\circ(\sigma\times1)\)">\(H\circ(\sigma\times1)\)</span> gives the prism operator. The top and bottom faces and the paired interior faces give</p>
+<span class="math math-display" data-tex="\[
+ \partial P+P\partial=H_{1\#}-H_{0\#}. \tag{PR8}
+\]">\[
+ \partial P+P\partial=H_{1\#}-H_{0\#}. \tag{PR8}
+\]</span>
+<p>Consequently homotopic maps induce the same homology map, and a contractible space has <span class="math" data-tex="\(H_0=\mathbb Z\)">\(H_0=\mathbb Z\)</span> and zero higher homology. The assertion for a point can also be checked directly: its sole <span class="math" data-tex="\(q\)">\(q\)</span>-simplex has boundary coefficient <span class="math" data-tex="\(\sum_{j=0}^q(-1)^j\)">\(\sum_{j=0}^q(-1)^j\)</span>, so the positive-degree chain complex is exact.</p>
+<p>Here is the finite-chain proof of the open-cover tool. For a two-set open cover <span class="math" data-tex="\(A\cup B=M\)">\(A\cup B=M\)</span>, let <span class="math" data-tex="\(C_*^{A,B}(M)\)">\(C_*^{A,B}(M)\)</span> be the subcomplex generated by simplices carried by one of the two sets. The following explicit recursions construct the needed operators. Temporarily augment linear chains by the empty simplex in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. Coning to a point <span class="math" data-tex="\(b\)">\(b\)</span>, with <span class="math" data-tex="\(b*[v_0,\ldots,v_q]=[b,v_0,\ldots,v_q]\)">\(b*[v_0,\ldots,v_q]=[b,v_0,\ldots,v_q]\)</span>, satisfies <span class="math" data-tex="\(\partial(b*c)=c-b*(\partial c)\)">\(\partial(b*c)=c-b*(\partial c)\)</span>, including the augmented zero-dimensional case. For the ordered linear simplex <span class="math" data-tex="\(e\)">\(e\)</span>, with barycenter <span class="math" data-tex="\(b_e\)">\(b_e\)</span>, set
+<span class="math math-display" data-tex="\[
+ S(e)=b_e*S(\partial e),\qquad
+ T(e)=b_e*(e-T(\partial e)),\qquad
+ S[\varnothing]=[\varnothing],\quad T[\varnothing]=0.
+\]">\[
+ S(e)=b_e*S(\partial e),\qquad
+ T(e)=b_e*(e-T(\partial e)),\qquad
+ S[\varnothing]=[\varnothing],\quad T[\varnothing]=0.
+\]</span>
+All face terms are embedded in the same simplex before these operations. The cone identity and induction give
+<span class="math" data-tex="\(\partial S(e)=S(\partial e)\)">\(\partial S(e)=S(\partial e)\)</span> and
+<span class="math" data-tex="\(\partial T(e)=e-S(e)-T(\partial e)\)">\(\partial T(e)=e-S(e)-T(\partial e)\)</span>:
+for the second identity the coned boundary in its definition is
+<span class="math" data-tex="\(\partial e-\partial T(\partial e)=S(\partial e)\)">\(\partial e-\partial T(\partial e)=S(\partial e)\)</span>, whose cone is <span class="math" data-tex="\(S(e)\)">\(S(e)\)</span>.
+For a singular simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, compose the corresponding chains in its standard parameter simplex with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. These definitions commute with face restrictions, so
+<span class="math" data-tex="\(\mathrm{Sd}(\sigma)=\sigma_\#S(\Delta^q)\)">\(\mathrm{Sd}(\sigma)=\sigma_\#S(\Delta^q)\)</span> is a chain map and
+<span class="math" data-tex="\(D(\sigma)=-\sigma_\#T(\Delta^q)\)">\(D(\sigma)=-\sigma_\#T(\Delta^q)\)</span> satisfies
+<span class="math" data-tex="\(\mathrm{Sd}-1=\partial D+D\partial\)">\(\mathrm{Sd}-1=\partial D+D\partial\)</span>.
+The augmentation can then be dropped since <span class="math" data-tex="\(T\)">\(T\)</span> vanishes in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. These are finite integer operators and they stay inside any carrier containing the simplex image.</p>
+<p>The vertices in a subdivided simplex are barycenters of nested faces. If faces have respectively <span class="math" data-tex="\(i+1\)">\(i+1\)</span> and <span class="math" data-tex="\(j+1\)">\(j+1\)</span> vertices, the larger barycenter is
+<span class="math" data-tex="\((i+1)/(j+1)\)">\((i+1)/(j+1)\)</span> times the smaller one plus
+<span class="math" data-tex="\((j-i)/(j+1)\)">\((j-i)/(j+1)\)</span> times the barycenter of the remaining vertices. Their distance is at most <span class="math" data-tex="\((j-i)/(j+1)\)">\((j-i)/(j+1)\)</span> times the original diameter, hence at most <span class="math" data-tex="\(q/(q+1)\)">\(q/(q+1)\)</span> times it. This proves the mesh bound for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>; a point is already small. The preimage cover of each simplex image has a Lebesgue number, so for each finite chain one integer <span class="math" data-tex="\(N\)">\(N\)</span> makes <span class="math" data-tex="\(\mathrm{Sd}^N\)">\(\mathrm{Sd}^N\)</span> of it small for this cover.</p>
+<p>Every cycle is homologous to its small subdivision. If a small cycle is a boundary, subdivide its finite bounding chain sufficiently far; the difference between the cycle and its subdivided cycle is already a boundary in the small subcomplex because the carried homotopy stays small. This proves that the inclusion of small chains induces an isomorphism on homology, including injectivity. No locally finite infinite chains are involved.</p>
+<p>The short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow C_*(A\cap B)
+ \xrightarrow{c\mapsto(c,-c)} C_*(A)\oplus C_*(B)
+ \xrightarrow{(a,b)\mapsto a+b} C_*^{A,B}(M)\longrightarrow0 \tag{PR9}
+\]">\[
+0\longrightarrow C_*(A\cap B)
+ \xrightarrow{c\mapsto(c,-c)} C_*(A)\oplus C_*(B)
+ \xrightarrow{(a,b)\mapsto a+b} C_*^{A,B}(M)\longrightarrow0 \tag{PR9}
+\]</span>
+<p>is exact on the actual simplex bases. Its connecting map sends a small cycle <span class="math" data-tex="\(z=a+b\)">\(z=a+b\)</span> to <span class="math" data-tex="\([\partial a]\)">\([\partial a]\)</span>. Indeed <span class="math" data-tex="\(\partial a=-\partial b\)">\(\partial a=-\partial b\)</span> is carried by the intersection. A different split changes it by an intersection boundary; changing a cycle by a boundary does the same. Exactness at the other terms follows directly: a connecting class zero permits subtracting an intersection chain to make both summands cycles, and a pair of cycles with zero sum class is reduced by a split bounding chain to a cycle of the form <span class="math" data-tex="\((c,-c)\)">\((c,-c)\)</span>. At the intersection term, if <span class="math" data-tex="\((c,-c)\)">\((c,-c)\)</span> is a boundary of <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, then <span class="math" data-tex="\(a+b\)">\(a+b\)</span> is a cycle whose connecting image is <span class="math" data-tex="\([c]\)">\([c]\)</span>. This proves the complete Mayer–Vietoris sequence over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, with the signs in (PR9). Tensoring this chain argument, rather than a homology formula, gives the same sequence over any coefficient ring.</p>
+<p>Finally finite products of smooth chains are defined explicitly by the ordered staircase triangulation of <span class="math" data-tex="\(\Delta^p\times\Delta^q\)">\(\Delta^p\times\Delta^q\)</span>. For each path of unit horizontal/vertical steps from <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> to <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span>, take its ordered vertices <span class="math" data-tex="\((v_i,w_j)\)">\((v_i,w_j)\)</span>, and give its simplex coefficient <span class="math" data-tex="\((-1)^I\)">\((-1)^I\)</span>, where <span class="math" data-tex="\(I\)">\(I\)</span> counts pairs consisting of a vertical step preceding a horizontal step. These signs give the first-factor-before-second-factor product orientation. Two paths differing by interchange of adjacent horizontal and vertical steps share their intervening facet with opposite coefficients; all interior facets consequently cancel. The remaining first-factor boundary facets have the first factor's usual signs, and moving a second-factor boundary normal past its <span class="math" data-tex="\(p\)">\(p\)</span> first-factor coordinates adds <span class="math" data-tex="\((-1)^p\)">\((-1)^p\)</span>. Thus the exterior facets give</p>
+<span class="math math-display" data-tex="\[
+ \partial(C\times D)=\partial C\times D+(-1)^{\dim C}C\times\partial D. \tag{PR10}
+\]">\[
+ \partial(C\times D)=\partial C\times D+(-1)^{\dim C}C\times\partial D. \tag{PR10}
+\]</span>
+<p>This is the chain-level product used below. The preceding prisms prove invariance under homotopies of the parameter maps. Inherited CD034 proves that the use of smooth chains for integration induces the same homology as continuous singular chains over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Integral topological computations here use continuous chains and explicit smooth representatives, so no integral smoothing theorem is required.</p>
+<h2 id="pr3-a-cover-of-a-punctured-plane-with-explicit-contractions">PR3. A cover of a punctured plane with explicit contractions</h2>
+<p>Let <span class="math" data-tex="\(S=\{a_1&lt;\cdots&lt;a_r\}\subset\mathbb R\)">\(S=\{a_1&lt;\cdots&lt;a_r\}\subset\mathbb R\)</span> and <span class="math" data-tex="\(P=\mathbb C\setminus S\)">\(P=\mathbb C\setminus S\)</span>. Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> smaller than half the distance between distinct points; for one point any <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> works. Define</p>
+<span class="math math-display" data-tex="\[
+ A=\mathbb C\setminus\bigcup_{a\in S}\{a+iy:y\leq0\},\qquad
+ B_a=\{x+iy:|x-a|&lt;\delta,\ y&lt;0\},\qquad B=\coprod_a B_a. \tag{PR11}
+\]">\[
+ A=\mathbb C\setminus\bigcup_{a\in S}\{a+iy:y\leq0\},\qquad
+ B_a=\{x+iy:|x-a|&lt;\delta,\ y&lt;0\},\qquad B=\coprod_a B_a. \tag{PR11}
+\]</span>
+<p>These are open subsets of <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(A\cup B=P\)">\(A\cup B=P\)</span>. Each <span class="math" data-tex="\(B_a\)">\(B_a\)</span> is convex. Each <span class="math" data-tex="\(A\cap B_a\)">\(A\cap B_a\)</span> has two convex components, denoted <span class="math" data-tex="\(L_a\)">\(L_a\)</span> and <span class="math" data-tex="\(R_a\)">\(R_a\)</span> according to <span class="math" data-tex="\(x&lt;a\)">\(x&lt;a\)</span> and <span class="math" data-tex="\(x&gt;a\)">\(x&gt;a\)</span>. To contract <span class="math" data-tex="\(A\)">\(A\)</span>, first use
+<span class="math" data-tex="\((x,y)\mapsto(x,(1-s)y+s\max\{y,1\})\)">\((x,y)\mapsto(x,(1-s)y+s\max\{y,1\})\)</span>.
+At <span class="math" data-tex="\(x=a\)">\(x=a\)</span> the initial <span class="math" data-tex="\(y\)">\(y\)</span> is positive and remains positive; at other <span class="math" data-tex="\(x\)">\(x\)</span> no removed ray can be met. At <span class="math" data-tex="\(s=1\)">\(s=1\)</span> the image lies in <span class="math" data-tex="\(y\geq1\)">\(y\geq1\)</span>. A straight homotopy in this half-plane then contracts it to <span class="math" data-tex="\(i\)">\(i\)</span>. This proves the needed contraction without asserting that a general plane domain is contractible. Figure 1 shows the exact cover for two real punctures.</p>
+<p>For any space <span class="math" data-tex="\(Z\)">\(Z\)</span>, the projections <span class="math" data-tex="\(Z\times A\to Z\)">\(Z\times A\to Z\)</span>, <span class="math" data-tex="\(Z\times B_a\to Z\)">\(Z\times B_a\to Z\)</span>, and <span class="math" data-tex="\(Z\times L_a, Z\times R_a\to Z\)">\(Z\times L_a, Z\times R_a\to Z\)</span> are homotopy equivalences by the stated contractions and (PR8). With <span class="math" data-tex="\(G_k=H_k(Z;\mathbb Z)\)">\(G_k=H_k(Z;\mathbb Z)\)</span>, the intersection-to-cover homology map in (PR9) is</p>
+<span class="math math-display" data-tex="\[
+ \psi_k:G_k^{2r}\longrightarrow G_k\oplus G_k^r,
+ \qquad (u_a,v_a)_a\longmapsto
+ \left(\sum_a(u_a+v_a),\; (-(u_a+v_a))_a\right). \tag{PR12}
+\]">\[
+ \psi_k:G_k^{2r}\longrightarrow G_k\oplus G_k^r,
+ \qquad (u_a,v_a)_a\longmapsto
+ \left(\sum_a(u_a+v_a),\; (-(u_a+v_a))_a\right). \tag{PR12}
+\]</span>
+<p>These signs come from the minus sign in the second map of (PR9). All inclusions act as the identity on the <span class="math" data-tex="\(Z\)">\(Z\)</span> factor up to the displayed contractions. For any abelian group <span class="math" data-tex="\(G_k\)">\(G_k\)</span>, not just a field,
+<span class="math" data-tex="\(\ker\psi_k=\{(u_a,-u_a)_a\}\cong G_k^r\)">\(\ker\psi_k=\{(u_a,-u_a)_a\}\cong G_k^r\)</span>,
+and <span class="math" data-tex="\(\operatorname{coker}\psi_k\cong G_k\)">\(\operatorname{coker}\psi_k\cong G_k\)</span>, via <span class="math" data-tex="\((g,(h_a))\mapsto g+\sum_a h_a\)">\((g,(h_a))\mapsto g+\sum_a h_a\)</span>. The image of <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span> is exactly the kernel of this last map: if the sum is zero, take <span class="math" data-tex="\(u_a=-h_a,v_a=0\)">\(u_a=-h_a,v_a=0\)</span>.</p>
+<p>The exact sequence therefore yields</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow H_k(Z;\mathbb Z)\longrightarrow H_k(Z\times P;\mathbb Z)
+ \xrightarrow{\delta}H_{k-1}(Z;\mathbb Z)^r\longrightarrow0 \tag{PR13}
+\]">\[
+0\longrightarrow H_k(Z;\mathbb Z)\longrightarrow H_k(Z\times P;\mathbb Z)
+ \xrightarrow{\delta}H_{k-1}(Z;\mathbb Z)^r\longrightarrow0 \tag{PR13}
+\]</span>
+<p>for <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>. We use (PR13) in a degree in which its left term vanishes, so a choice of splitting is unnecessary. Both <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> are path connected when <span class="math" data-tex="\(Z\)">\(Z\)</span> is a nonempty product of these planes, so their product has <span class="math" data-tex="\(H_0=\mathbb Z\)">\(H_0=\mathbb Z\)</span>.</p>
+<p>Start with the point as a product of zero planes. Induction on the number <span class="math" data-tex="\(d\)">\(d\)</span> of factors in (PR13) proves that <span class="math" data-tex="\(H_k(V;\mathbb Z)=0\)">\(H_k(V;\mathbb Z)=0\)</span> for <span class="math" data-tex="\(k&gt;d\)">\(k&gt;d\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+ H_d(V;\mathbb Z)\cong\mathbb Z^{\prod_j|S_j|}. \tag{PR14}
+\]">\[
+ H_d(V;\mathbb Z)\cong\mathbb Z^{\prod_j|S_j|}. \tag{PR14}
+\]</span>
+<p>We now identify the actual basis, rather than only the abstract rank. Take a small counterclockwise circle around <span class="math" data-tex="\(a\)">\(a\)</span>. Its lower arc, from its left side to its right side, lies in <span class="math" data-tex="\(B_a\)">\(B_a\)</span>; its complementary arc lies in <span class="math" data-tex="\(A\)">\(A\)</span>. Choose the two meeting points below the real axis in <span class="math" data-tex="\(L_a,R_a\)">\(L_a,R_a\)</span>, moving them slightly from the semicircle endpoints if needed. The boundary of the <span class="math" data-tex="\(A\)">\(A\)</span>-arc is left point minus right point. Thus the connecting map sends the positive circle to <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span> in the <span class="math" data-tex="\(a\)">\(a\)</span>-th pair, and to zero in the other pairs. For a <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-cycle <span class="math" data-tex="\(C\)">\(C\)</span> in the first <span class="math" data-tex="\(d-1\)">\(d-1\)</span> factors, (PR10) gives</p>
+<span class="math math-display" data-tex="\[
+ \delta[C\times\gamma_{d,a}]=(-1)^{d-1}(0,\ldots,[C],\ldots,0). \tag{PR15}
+\]">\[
+ \delta[C\times\gamma_{d,a}]=(-1)^{d-1}(0,\ldots,[C],\ldots,0). \tag{PR15}
+\]</span>
+<p>The sign is common to every basis vector and is a unit in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. By induction the product circles in (PR5) map to a basis under the isomorphism (PR13) in degree <span class="math" data-tex="\(d\)">\(d\)</span>. They are consequently exactly an integral basis in (PR14). This computation also works directly over any field and does not invoke a Künneth theorem, a cellular comparison theorem, or a Stein homology bound.</p>
+<p><a href="reproduce/L121/figures/punctured-plane-cover.png" title="Open full-size figure"><img src="reproduce/L121/figures/punctured-plane-cover.png" alt="The exact open cover and integral intersection map" class="course-figure" width="2520" height="1080" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="punctured-plane-cover" data-asset-sha256="F61781F8E37EAAE7BCC8568E3922F2E522836EBE52B409DA60611590C9316524"></a><br><a href="reproduce/L121/figures/punctured-plane-cover.png">Open full-size figure</a></p>
+<p><em>Figure 1. A window of the exact cover for <span class="math" data-tex="\(S=\{-1,1\}\)">\(S=\{-1,1\}\)</span>, <span class="math" data-tex="\(\delta=0.65\)">\(\delta=0.65\)</span>, and counterclockwise circle radius <span class="math" data-tex="\(0.45\)">\(0.45\)</span>. Dashed rays are excluded from <span class="math" data-tex="\(A\)">\(A\)</span>, included in <span class="math" data-tex="\(B\)">\(B\)</span> below their excluded endpoints. Each intersection has left and right components. The matrix is the actual integral map in PR12, whose kernel vectors are the two positive circles. Proof: PR3, PR11–PR15. Original diagram; chain-method context is Hatcher's freely readable Chapter 2 and the fully written PR2.</em></p>
+<h2 id="pr4-the-rational-forms-and-their-completeness-in-top-degree">PR4. The rational forms and their completeness in top degree</h2>
+<p>Each <span class="math" data-tex="\(\Omega_{\mathbf a}\)">\(\Omega_{\mathbf a}\)</span> is a holomorphic differential form of maximal complex degree <span class="math" data-tex="\(d\)">\(d\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>; its exterior derivative is zero. On one small circle the direct parametrization <span class="math" data-tex="\(t=a+\rho e^{i\theta}\)">\(t=a+\rho e^{i\theta}\)</span> gives <span class="math" data-tex="\(dt/(t-a)=i\,d\theta\)">\(dt/(t-a)=i\,d\theta\)</span>. For another puncture <span class="math" data-tex="\(a&#x27;\neq a\)">\(a&#x27;\neq a\)</span>, the denominator is nonzero on the filled disk around <span class="math" data-tex="\(a\)">\(a\)</span>, so the integral is zero by the one-variable primitive (or its uniformly convergent geometric series on a sufficiently small disk). With product orientation and iterated integration, these facts prove (PR6).</p>
+<p>We use one explicit transitive prerequisite: owner-admitted CD034, CD6.2 and CD8.4, proves that integration of ordinary smooth complex differential forms is an isomorphism to singular cohomology and that the latter equals <span class="math" data-tex="\(\operatorname{Hom}_{\mathbb C}(H_d(V;\mathbb C),\mathbb C)\)">\(\operatorname{Hom}_{\mathbb C}(H_d(V;\mathbb C),\mathbb C)\)</span> in degree <span class="math" data-tex="\(d\)">\(d\)</span>. That proof includes the local Poincaré homotopy, finite small-chain comparison, cover elimination and actual integration map; it is not a rational-form comparison theorem. Here its smooth comparison is sufficient because we have already computed a finite integral homology basis and the complete diagonal periods of the specific rational forms.</p>
+<p>For any closed smooth complex <span class="math" data-tex="\(d\)">\(d\)</span>-form <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+ c_{\mathbf a}=(2\pi i)^{-d}\int_{T_{\mathbf a}}\eta,
+ \qquad \eta_0=\eta-\sum_{\mathbf a}c_{\mathbf a}\Omega_{\mathbf a}. \tag{PR16}
+\]">\[
+ c_{\mathbf a}=(2\pi i)^{-d}\int_{T_{\mathbf a}}\eta,
+ \qquad \eta_0=\eta-\sum_{\mathbf a}c_{\mathbf a}\Omega_{\mathbf a}. \tag{PR16}
+\]</span>
+<p>Every period of <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> is zero because (PR14) is an actual basis and (PR6) cancels its periods. CD034 then makes <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> exact as an ordinary smooth form. Conversely (PR6) makes the classes of the <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>'s linearly independent. This proves the top-degree rational completeness asserted in Theorem PR, by a specialized argument. It does not prove that the full algebraic differential complex is quasi-isomorphic to the smooth complex in every degree.</p>
+<p>For a finite integral, rational or complex <span class="math" data-tex="\(d\)">\(d\)</span>-cycle <span class="math" data-tex="\(z\)">\(z\)</span>, write its homology class uniquely as <span class="math" data-tex="\(\sum b_{\mathbf a}[T_{\mathbf a}]\)">\(\sum b_{\mathbf a}[T_{\mathbf a}]\)</span>. The coefficients are recovered exactly by</p>
+<span class="math math-display" data-tex="\[
+ b_{\mathbf a}=(2\pi i)^{-d}\int_z\Omega_{\mathbf a}. \tag{PR17}
+\]">\[
+ b_{\mathbf a}=(2\pi i)^{-d}\int_z\Omega_{\mathbf a}. \tag{PR17}
+\]</span>
+<p>In particular vanishing of these <span class="math" data-tex="\(R\)">\(R\)</span> periods is equivalent to bounding by a finite chain over the coefficient ring in question. For the integral assertion the coefficients in the unique integral basis are integers, and the absence of torsion in (PR14) is essential. WT035 demonstrates why the same conclusion about an arbitrary integral cycle would be false.</p>
+<h2 id="pr5-the-precise-homogeneous-form-and-c8-degree-receiver">PR5. The precise homogeneous form and C8 degree receiver</h2>
+<p>Use the standard homogeneous form</p>
+<span class="math math-display" data-tex="\[
+ \omega=\sum_{j=0}^{d}(-1)^jz_j\,dz_0\wedge\cdots\widehat{dz_j}\cdots\wedge dz_d. \tag{PR18}
+\]">\[
+ \omega=\sum_{j=0}^{d}(-1)^jz_j\,dz_0\wedge\cdots\widehat{dz_j}\cdots\wedge dz_d. \tag{PR18}
+\]</span>
+<p>It is the contraction of the standard <span class="math" data-tex="\(n\)">\(n\)</span>-form with the radial vector field, is horizontal, and scales with degree <span class="math" data-tex="\(n=d+1\)">\(n=d+1\)</span>. In <span class="math" data-tex="\(z_0=1\)">\(z_0=1\)</span> its pullback is <span class="math" data-tex="\(dt_1\wedge\cdots\wedge dt_d\)">\(dt_1\wedge\cdots\wedge dt_d\)</span>. For every <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span>, the polynomial
+<span class="math" data-tex="\(P_{\mathbf a}=F/\prod_j(z_j-a_jz_0)\)">\(P_{\mathbf a}=F/\prod_j(z_j-a_jz_0)\)</span>
+is well defined even when factors occur with multiplicity, and has degree <span class="math" data-tex="\(m-d\geq0\)">\(m-d\geq0\)</span>. The equality of rational projective forms is</p>
+<span class="math math-display" data-tex="\[
+ \Omega_{\mathbf a}=\frac{\omega}{z_0\prod_j(z_j-a_jz_0)}
+ =\frac{P_{\mathbf a}\,\omega}{Fz_0}. \tag{PR19}
+\]">\[
+ \Omega_{\mathbf a}=\frac{\omega}{z_0\prod_j(z_j-a_jz_0)}
+ =\frac{P_{\mathbf a}\,\omega}{Fz_0}. \tag{PR19}
+\]</span>
+<p>The scale exponent in the last expression is <span class="math" data-tex="\((m-d)+(d+1)-m-1=0\)">\((m-d)+(d+1)-m-1=0\)</span>, and horizontality is inherited from <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, so it descends to projective space. Equality is checked in the dense affine chart <span class="math" data-tex="\(z_0=1\)">\(z_0=1\)</span>, hence holds as rational forms.</p>
+<p>In the frozen C8 notation, after the orientation-preserving coordinate relabeling <span class="math" data-tex="\(z_0=\zeta_1,z_1=\zeta_2,\ldots,z_d=\zeta_n\)">\(z_0=\zeta_1,z_1=\zeta_2,\ldots,z_d=\zeta_n\)</span>, choose the linear form <span class="math" data-tex="\(x\zeta=z_0\)">\(x\zeta=z_0\)</span>. The C8 form for the <span class="math" data-tex="\(k\)">\(k\)</span>-th power of <span class="math" data-tex="\(F\)">\(F\)</span> has</p>
+<span class="math math-display" data-tex="\[
+ q=mk-n-|\alpha|,\qquad
+ (iz_0)^q\frac{z^\alpha}{F^k}\omega,\qquad q&lt;0. \tag{PR20}
+\]">\[
+ q=mk-n-|\alpha|,\qquad
+ (iz_0)^q\frac{z^\alpha}{F^k}\omega,\qquad q&lt;0. \tag{PR20}
+\]</span>
+<p>Each monomial of <span class="math" data-tex="\(P_{\mathbf a}\)">\(P_{\mathbf a}\)</span> has degree <span class="math" data-tex="\(m-d=m-n+1\)">\(m-d=m-n+1\)</span>. For <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, this gives <span class="math" data-tex="\(q=-1\)">\(q=-1\)</span>. Thus (PR19) is a finite linear combination of exactly those C8 rational top forms, with the scalar <span class="math" data-tex="\(i\)">\(i\)</span> compensating for <span class="math" data-tex="\((iz_0)^{-1}=i^{-1}z_0^{-1}\)">\((iz_0)^{-1}=i^{-1}z_0^{-1}\)</span>. No pole-order theorem for a general divisor is used. For a general homogeneous numerator <span class="math" data-tex="\(P\)">\(P\)</span>, the projective expression <span class="math" data-tex="\(P\omega/(F^k L^s)\)">\(P\omega/(F^k L^s)\)</span>, <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, has the C8 degree exactly when
+<span class="math" data-tex="\(\deg P=mk+s-n\)">\(\deg P=mk+s-n\)</span>. The numerical prefactor in the fundamental-solution formula is separate from this identification of differential forms and is not asserted to be one.</p>
+<p>This arrangement is a real homogeneous hyperbolic example. For <span class="math" data-tex="\(N=(0,1,\ldots,1)\)">\(N=(0,1,\ldots,1)\)</span>, every linear factor evaluated on <span class="math" data-tex="\(N\)">\(N\)</span> is one, and
+<span class="math" data-tex="\(F(\xi+tN)=c\prod_{j,a}(\xi_j-a\xi_0+t)^{e_{j,a}}\)">\(F(\xi+tN)=c\prod_{j,a}(\xi_j-a\xi_0+t)^{e_{j,a}}\)</span>
+has only real zeros for every real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Also <span class="math" data-tex="\(F(N)=c\neq0\)">\(F(N)=c\neq0\)</span>. The degree or multiplicity of <span class="math" data-tex="\(F\)">\(F\)</span> is unrestricted above <span class="math" data-tex="\(d\)">\(d\)</span>. The linear form <span class="math" data-tex="\(z_0\)">\(z_0\)</span> specifies the receiving hyperplane. It does not assert that this <span class="math" data-tex="\(x\)">\(x\)</span> satisfies every region condition for the actual C8 fundamental-solution cycle; that is a separate geometric receiver.</p>
+<h2 id="pr6-a-normal-tube-on-every-finite-chain">PR6. A normal tube on every finite chain</h2>
+<p>The chart <span class="math" data-tex="\(z_d=1\)">\(z_d=1\)</span> contains all of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Write <span class="math" data-tex="\(h=z_0/z_d\)">\(h=z_0/z_d\)</span>, <span class="math" data-tex="\(w_j=z_j/z_d\)">\(w_j=z_j/z_d\)</span> for <span class="math" data-tex="\(j&lt;d\)">\(j&lt;d\)</span>. In this chart <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\(h=0\)">\(h=0\)</span> with every <span class="math" data-tex="\(w_j\neq0\)">\(w_j\neq0\)</span>. The complex coordinate <span class="math" data-tex="\(h\)">\(h\)</span> trivializes its normal direction. Let a finite chain in <span class="math" data-tex="\(Y\)">\(Y\)</span> have image in a compact set <span class="math" data-tex="\(K\)">\(K\)</span>. There is a positive lower bound <span class="math" data-tex="\(b\)">\(b\)</span> for all <span class="math" data-tex="\(|w_j|\)">\(|w_j|\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, with <span class="math" data-tex="\(b=1\)">\(b=1\)</span> if <span class="math" data-tex="\(d=1\)">\(d=1\)</span> has no such coordinates. Let
+<span class="math" data-tex="\(A_*=\max\{1,|a|:a\in S_1\cup\cdots\cup S_d\}\)">\(A_*=\max\{1,|a|:a\in S_1\cup\cdots\cup S_d\}\)</span>.
+Choose</p>
+<span class="math math-display" data-tex="\[
+ 0&lt;\varepsilon&lt;\min\{b,1\}/(2A_*),\qquad
+ (e^{i\phi},w)\longmapsto[\varepsilon e^{i\phi}:w_1:\cdots:w_{d-1}:1]. \tag{PR21}
+\]">\[
+ 0&lt;\varepsilon&lt;\min\{b,1\}/(2A_*),\qquad
+ (e^{i\phi},w)\longmapsto[\varepsilon e^{i\phi}:w_1:\cdots:w_{d-1}:1]. \tag{PR21}
+\]</span>
+<p>Indeed, for <span class="math" data-tex="\(j&lt;d\)">\(j&lt;d\)</span>, <span class="math" data-tex="\(|w_j-a h|\geq b-A_*\varepsilon&gt;b/2\)">\(|w_j-a h|\geq b-A_*\varepsilon&gt;b/2\)</span>, and for <span class="math" data-tex="\(j=d\)">\(j=d\)</span>, <span class="math" data-tex="\(|1-a h|&gt;1/2\)">\(|1-a h|&gt;1/2\)</span>. Also <span class="math" data-tex="\(h\neq0\)">\(h\neq0\)</span>. Thus this map takes the circle times the chain into <span class="math" data-tex="\(V\)">\(V\)</span>. Orient the circle counterclockwise and place it before the base-chain coordinates. By (PR10) the tube of a cycle is a cycle, and the tube of a bounding chain has boundary minus the tube of its boundary. That minus sign has no effect on whether a cycle bounds; it is retained in the orientation convention.</p>
+<p>Any two sufficiently small positive radii are joined through radii obeying the same bound. The prism (PR8) proves their tubes homologous. For homologous cycles, choose one radius valid on the combined finite bounding chain and both cycles. The preceding boundary identity then proves that their classes have the same tube. These two arguments prove a well-defined integral homology homomorphism <span class="math" data-tex="\(\tau\)">\(\tau\)</span>; they also permit different initially chosen radii. The construction covers every finite chain in <span class="math" data-tex="\(Y\)">\(Y\)</span> because all of <span class="math" data-tex="\(Y\)">\(Y\)</span> lies in this single chart. There is no implicit appeal to a general tubular-neighborhood or Thom-isomorphism theorem.</p>
+<p>The radial homotopy <span class="math" data-tex="\(w\mapsto w\,|w|^{-s}\)">\(w\mapsto w\,|w|^{-s}\)</span> retracts each <span class="math" data-tex="\(\mathbb C^*\)">\(\mathbb C^*\)</span> to its counterclockwise unit circle, fixing that circle. Applying PR3 with the one-puncture sets <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, or applying its identical circle calculation after this homotopy, proves</p>
+<span class="math math-display" data-tex="\[
+ H_{d-1}(Y;\mathbb Z)=\mathbb Z[B]. \tag{PR22}
+\]">\[
+ H_{d-1}(Y;\mathbb Z)=\mathbb Z[B]. \tag{PR22}
+\]</span>
+<p>This includes <span class="math" data-tex="\(d=1\)">\(d=1\)</span> with the positive point. It suffices to evaluate the tube on this actual generator.</p>
+<h2 id="pr7-its-phase-matrix-sign-and-primitive-image">PR7. Its phase matrix, sign and primitive image</h2>
+<p>For <span class="math" data-tex="\(B\)">\(B\)</span>, choose <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> so that <span class="math" data-tex="\(L=1/\varepsilon&gt;A_*\)">\(L=1/\varepsilon&gt;A_*\)</span>. In affine coordinates <span class="math" data-tex="\(z_0=1\)">\(z_0=1\)</span>, the tube (PR21) is</p>
+<span class="math math-display" data-tex="\[
+ t_j=L e^{i(\theta_j-\phi)}\ (j&lt;d),\qquad t_d=L e^{-i\phi}. \tag{PR23}
+\]">\[
+ t_j=L e^{i(\theta_j-\phi)}\ (j&lt;d),\qquad t_d=L e^{-i\phi}. \tag{PR23}
+\]</span>
+<p>Thus it is the large product torus <span class="math" data-tex="\(T_L=\{|t_1|=\cdots=|t_d|=L\}\)">\(T_L=\{|t_1|=\cdots=|t_d|=L\}\)</span>, with phase variables related by</p>
+<span class="math math-display" data-tex="\[
+ (\alpha_1,\ldots,\alpha_d)
+ =(\theta_1-\phi,\ldots,\theta_{d-1}-\phi,-\phi),\qquad
+ \det\frac{\partial\alpha}{\partial(\phi,\theta_1,\ldots,\theta_{d-1})}=(-1)^d. \tag{PR24}
+\]">\[
+ (\alpha_1,\ldots,\alpha_d)
+ =(\theta_1-\phi,\ldots,\theta_{d-1}-\phi,-\phi),\qquad
+ \det\frac{\partial\alpha}{\partial(\phi,\theta_1,\ldots,\theta_{d-1})}=(-1)^d. \tag{PR24}
+\]</span>
+<p>To check the sign, move the first column, consisting of minus ones, to the last position using <span class="math" data-tex="\(d-1\)">\(d-1\)</span> swaps. The resulting matrix has top-left identity and last diagonal entry <span class="math" data-tex="\(-1\)">\(-1\)</span>, hence determinant <span class="math" data-tex="\((-1)^{d-1}(-1)=(-1)^d\)">\((-1)^{d-1}(-1)=(-1)^d\)</span>. The map is a torus diffeomorphism: its inverse is <span class="math" data-tex="\(\phi=-\alpha_d\)">\(\phi=-\alpha_d\)</span>, <span class="math" data-tex="\(\theta_j=\alpha_j-\alpha_d\)">\(\theta_j=\alpha_j-\alpha_d\)</span> modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. It therefore carries the circle-first orientation to <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span> times the product orientation. Figure 2 gives the actual <span class="math" data-tex="\(d=2\)">\(d=2\)</span> coordinate map; it is an angle diagram, not a drawing of a four-real-dimensional ambient complement.</p>
+<p>The large counterclockwise circle in coordinate <span class="math" data-tex="\(j\)">\(j\)</span> represents <span class="math" data-tex="\(\sum_{a\in S_j}[\gamma_{j,a}]\)">\(\sum_{a\in S_j}[\gamma_{j,a}]\)</span>. One finite oriented planar surface proves this: take its filled disk, remove the interiors of the small disjoint disks, and triangulate the remaining compact surface. Its boundary is the large positive circle minus all small positive circles. Curved boundary arcs can be triangulated as smooth parametrized simplices by finitely many coordinate patches; paired interior edges cancel. Alternatively its coefficients follow from the already-proved one-variable basis and the periods in PR4. Taking finite products and using (PR10) allows replacing one coordinate circle at a time in a product cycle. Multilinearity gives</p>
+<span class="math math-display" data-tex="\[
+ [T_L]=\sum_{\mathbf a}[T_{\mathbf a}],\qquad
+ \int_{\tau B}\Omega_{\mathbf a}=(-1)^d(2\pi i)^d\quad\hbox{for every }\mathbf a. \tag{PR25}
+\]">\[
+ [T_L]=\sum_{\mathbf a}[T_{\mathbf a}],\qquad
+ \int_{\tau B}\Omega_{\mathbf a}=(-1)^d(2\pi i)^d\quad\hbox{for every }\mathbf a. \tag{PR25}
+\]</span>
+<p>Equations (PR23)–(PR25) prove (PR7). The vector of coefficients is <span class="math" data-tex="\((-1)^d(1,\ldots,1)\)">\((-1)^d(1,\ldots,1)\)</span>. Its first coordinate already makes the map from <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> injective. Its image is primitive: subtract its first-coordinate multiple from any vector to make the first coordinate zero. This expresses the quotient as a free group <span class="math" data-tex="\(\mathbb Z^{R-1}\)">\(\mathbb Z^{R-1}\)</span>. Over any field the same first coordinate is a unit, so injection persists, including in characteristic two. This conclusion concerns this tube; it does not contradict WT035's torsion computation in a different affine complement.</p>
+<p><a href="reproduce/L121/figures/normal-tube-phase-map.png" title="Open full-size figure"><img src="reproduce/L121/figures/normal-tube-phase-map.png" alt="Normal circle first and the exact two-dimensional phase map" class="course-figure" width="2520" height="1116" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="normal-tube-phase-map" data-asset-sha256="D1A96575118FAEBAA542ED1CBE7D26AD143A5F123B3E57868F0D7B1B3641B72D"></a><br><a href="reproduce/L121/figures/normal-tube-phase-map.png">Open full-size figure</a></p>
+<p><em>Figure 2. For <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, the map <span class="math" data-tex="\((\alpha_1,\alpha_2)=(\theta-\phi,-\phi)\)">\((\alpha_1,\alpha_2)=(\theta-\phi,-\phi)\)</span> sends a representative input angle square to the displayed parallelogram. The arrows are its actual columns <span class="math" data-tex="\((-1,-1)\)">\((-1,-1)\)</span> and <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, and the determinant is <span class="math" data-tex="\(+1\)">\(+1\)</span>. All phases are identified modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>; the output is an unwrapped angle diagram. Its coordinate formulas are <span class="math" data-tex="\(h=\varepsilon e^{i\phi}\)">\(h=\varepsilon e^{i\phi}\)</span>, <span class="math" data-tex="\(w=e^{i\theta}\)">\(w=e^{i\theta}\)</span>, <span class="math" data-tex="\(t_1=L e^{i(\theta-\phi)}\)">\(t_1=L e^{i(\theta-\phi)}\)</span>, <span class="math" data-tex="\(t_2=L e^{-i\phi}\)">\(t_2=L e^{-i\phi}\)</span>. Proof: PR6–PR7, PR21–PR24. Original diagram; normal-tube context is compared with Atiyah–Bott–Gårding II, Lemma 8.1.</em></p>
+<h2 id="pr8-three-computed-examples">PR8. Three computed examples</h2>
+<p><strong>Example 1: the point at infinity and two punctures.</strong> Let <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(S_1=\{-1,1\}\)">\(S_1=\{-1,1\}\)</span>, <span class="math" data-tex="\(F=z_1^2-z_0^2\)">\(F=z_1^2-z_0^2\)</span>. Then <span class="math" data-tex="\(V=\mathbb C\setminus\{-1,1\}\)">\(V=\mathbb C\setminus\{-1,1\}\)</span>, <span class="math" data-tex="\(Y\)">\(Y\)</span> is the point <span class="math" data-tex="\([0:1]\)">\([0:1]\)</span>, and
+<span class="math" data-tex="\(\Omega_-=(z_1+z_0)\omega/(Fz_0)=dt/(t+1)\)">\(\Omega_-=(z_1+z_0)\omega/(Fz_0)=dt/(t+1)\)</span>,
+<span class="math" data-tex="\(\Omega_+=(z_1-z_0)\omega/(Fz_0)=dt/(t-1)\)">\(\Omega_+=(z_1-z_0)\omega/(Fz_0)=dt/(t-1)\)</span>.
+The period matrix on the two positive small circles is <span class="math" data-tex="\(2\pi i\,I_2\)">\(2\pi i\,I_2\)</span>. A positive normal circle <span class="math" data-tex="\(h=\varepsilon e^{i\phi}\)">\(h=\varepsilon e^{i\phi}\)</span> has <span class="math" data-tex="\(t=h^{-1}=L e^{-i\phi}\)">\(t=h^{-1}=L e^{-i\phi}\)</span>, so <span class="math" data-tex="\(\tau[\mathrm{point}]=-[\gamma_-]-[\gamma_+]\)">\(\tau[\mathrm{point}]=-[\gamma_-]-[\gamma_+]\)</span>. The sign is essential. A reduced zero-cycle on an affine C8 equator is a different object.</p>
+<p><strong>Example 2: four independent periods.</strong> Let <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, <span class="math" data-tex="\(S_1=\{-1,1\}\)">\(S_1=\{-1,1\}\)</span>, <span class="math" data-tex="\(S_2=\{0,2\}\)">\(S_2=\{0,2\}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+ F=(z_1^2-z_0^2)z_2(z_2-2z_0),\qquad
+ P_{a,b}=\frac{F}{(z_1-a z_0)(z_2-b z_0)}. \tag{PR26}
+\]">\[
+ F=(z_1^2-z_0^2)z_2(z_2-2z_0),\qquad
+ P_{a,b}=\frac{F}{(z_1-a z_0)(z_2-b z_0)}. \tag{PR26}
+\]</span>
+<p>Here <span class="math" data-tex="\(m=4,n=3\)">\(m=4,n=3\)</span>, each <span class="math" data-tex="\(P_{a,b}\)">\(P_{a,b}\)</span> has degree two and <span class="math" data-tex="\(q=-1\)">\(q=-1\)</span>. In the order <span class="math" data-tex="\((-1,0),(-1,2),(1,0),(1,2)\)">\((-1,0),(-1,2),(1,0),(1,2)\)</span>, the period matrix is <span class="math" data-tex="\((2\pi i)^2 I_4=-4\pi^2I_4\)">\((2\pi i)^2 I_4=-4\pi^2I_4\)</span>. The normal-circle-first tube has phase matrix <span class="math" data-tex="\(\begin{psmallmatrix}-1&amp;1\\-1&amp;0\end{psmallmatrix}\)">\(\begin{psmallmatrix}-1&amp;1\\-1&amp;0\end{psmallmatrix}\)</span>, determinant <span class="math" data-tex="\(+1\)">\(+1\)</span>, and coefficient vector <span class="math" data-tex="\((1,1,1,1)\)">\((1,1,1,1)\)</span>. If a cycle has coefficients <span class="math" data-tex="\((2,-1,0,3)\)">\((2,-1,0,3)\)</span>, its four normalized periods are exactly those integers. Figure 3 shows this diagonal matrix and the separate tube vector.</p>
+<p><strong>Example 3: a three-torus and repeated factors.</strong> Let <span class="math" data-tex="\(d=3\)">\(d=3\)</span>, <span class="math" data-tex="\(S_j=\{0\}\)">\(S_j=\{0\}\)</span>, and <span class="math" data-tex="\(F=z_1^2z_2z_3^3\)">\(F=z_1^2z_2z_3^3\)</span>. Then <span class="math" data-tex="\(m=6,n=4\)">\(m=6,n=4\)</span>, <span class="math" data-tex="\(V=(\mathbb C^*)^3\)">\(V=(\mathbb C^*)^3\)</span>, <span class="math" data-tex="\(Y=(\mathbb C^*)^2\)">\(Y=(\mathbb C^*)^2\)</span>, and
+<span class="math" data-tex="\(P=z_1z_3^2\)">\(P=z_1z_3^2\)</span> has degree three. The sole period form is
+<span class="math" data-tex="\(P\omega/(Fz_0)=\omega/(z_0z_1z_2z_3)\)">\(P\omega/(Fz_0)=\omega/(z_0z_1z_2z_3)\)</span>.
+Its period on the positive product three-torus is <span class="math" data-tex="\((2\pi i)^3\)">\((2\pi i)^3\)</span>, and <span class="math" data-tex="\(\tau[B]=-[T]\)">\(\tau[B]=-[T]\)</span>. Changing any positive multiplicities in <span class="math" data-tex="\(F\)">\(F\)</span> changes the homogeneous numerator required in PR5 but changes neither complement nor period basis nor tube sign. This is a useful singular-divisor example covered by the proof.</p>
+<p><a href="reproduce/L121/figures/period-basis-and-tube.png" title="Open full-size figure"><img src="reproduce/L121/figures/period-basis-and-tube.png" alt="The complete normalized period matrix and primitive tube vector" class="course-figure" width="2700" height="990" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="period-basis-and-tube" data-asset-sha256="A9A57AD43E236F837CC3FE6F68155E826D7EBF261449C5B27D4A48101B411B1F"></a><br><a href="reproduce/L121/figures/period-basis-and-tube.png">Open full-size figure</a></p>
+<p><em>Figure 3. In Example 2's pair order, the matrix records exactly <span class="math" data-tex="\((2\pi i)^{-2}\int_{T_{\mathbf b}}\Omega_{\mathbf a}\)">\((2\pi i)^{-2}\int_{T_{\mathbf b}}\Omega_{\mathbf a}\)</span>. Its diagonal entries are one and off-diagonal entries zero. The separate vector is the normal-circle-first tube of the actual positive base circle, with all coordinates one. The sample cycle has normalized periods <span class="math" data-tex="\((2,-1,0,3)\)">\((2,-1,0,3)\)</span>. Proof: PR4, PR7 and Example 2, PR6, PR17, PR25–PR26. Original diagram; PR11 states the comparison with the broader primary rational-form theorem.</em></p>
+<h2 id="pr9-the-affine-c8-tube-comparison-for-this-arrangement">PR9. The affine C8 tube comparison for this arrangement</h2>
+<p>There is a further exact receiver available in this model. In vector coordinates let <span class="math" data-tex="\(H=\{z_0=0\}\)">\(H=\{z_0=0\}\)</span>, <span class="math" data-tex="\(M_H=H\setminus\{F=0\}=(\mathbb C^*)^d\)">\(M_H=H\setminus\{F=0\}=(\mathbb C^*)^d\)</span>, and let <span class="math" data-tex="\(p:M_H\to Y\)">\(p:M_H\to Y\)</span> be projectivization. Thus <span class="math" data-tex="\(p(k)\)">\(p(k)\)</span> has coordinates <span class="math" data-tex="\(w_j=k_j/k_d\)">\(w_j=k_j/k_d\)</span>. Let <span class="math" data-tex="\(k\)">\(k\)</span> be any finite smooth integral <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-cycle in <span class="math" data-tex="\(M_H\)">\(M_H\)</span>, and take the counterclockwise circle <span class="math" data-tex="\(z=\rho e^{i\phi}\)">\(z=\rho e^{i\phi}\)</span>, first in the orientation. For sufficiently small <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, define the affine C8-type projective tube</p>
+<span class="math math-display" data-tex="\[
+ C_\rho(k):(z,k)\longmapsto[z:k_1:\cdots:k_d]\in V,
+ \qquad [C_\rho(k)]=\tau(p_*[k]). \tag{PR27}
+\]">\[
+ C_\rho(k):(z,k)\longmapsto[z:k_1:\cdots:k_d]\in V,
+ \qquad [C_\rho(k)]=\tau(p_*[k]). \tag{PR27}
+\]</span>
+<p>The asserted homology identity includes its sign and has coefficient one. It is not assumed from a general tube theorem. On the compact support of <span class="math" data-tex="\(k\)">\(k\)</span>, all <span class="math" data-tex="\(|k_j|\)">\(|k_j|\)</span> have a positive lower bound; hence <span class="math" data-tex="\(|k_j-a z|&gt;0\)">\(|k_j-a z|&gt;0\)</span> for every factor at sufficiently small radius. The chain product and (PR10) prove that <span class="math" data-tex="\(C_\rho(k)\)">\(C_\rho(k)\)</span> is a cycle. A radial homotopy proves its class and all its closed-form periods independent of sufficiently small <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</p>
+<p>To prove the equality in (PR27), compute these periods using the complete basis in PR4. The affine target coordinates are <span class="math" data-tex="\(t_j=k_j/z\)">\(t_j=k_j/z\)</span>. The pullback of (PR5) is</p>
+<span class="math math-display" data-tex="\[
+ \bigwedge_{j=1}^{d}
+ \frac{dk_j-k_j\,dz/z}{k_j-a_j z}
+ =\bigwedge_{j=1}^{d}
+ \frac{d\log k_j-dz/z}{1-a_j z/k_j}. \tag{PR28}
+\]">\[
+ \bigwedge_{j=1}^{d}
+ \frac{dk_j-k_j\,dz/z}{k_j-a_j z}
+ =\bigwedge_{j=1}^{d}
+ \frac{d\log k_j-dz/z}{1-a_j z/k_j}. \tag{PR28}
+\]</span>
+<p>Here <span class="math" data-tex="\(d\log k_j\)">\(d\log k_j\)</span> means <span class="math" data-tex="\(dk_j/k_j\)">\(dk_j/k_j\)</span>, with no choice of a logarithm. On each of the finitely many smooth parameter simplices, the denominators tend uniformly to one as <span class="math" data-tex="\(\rho\downarrow0\)">\(\rho\downarrow0\)</span>, and derivatives of the maps are bounded. The normal factor is <span class="math" data-tex="\(dz/z=i\,d\phi\)">\(dz/z=i\,d\phi\)</span>. It follows by finite iterated integration that the period tends to that of the wedge without its denominators. Put
+<span class="math" data-tex="\(\lambda_j=d\log(k_j/k_d)\)">\(\lambda_j=d\log(k_j/k_d)\)</span> for <span class="math" data-tex="\(j&lt;d\)">\(j&lt;d\)</span> and <span class="math" data-tex="\(\gamma=d\log k_d-dz/z\)">\(\gamma=d\log k_d-dz/z\)</span>. This limiting wedge is</p>
+<span class="math math-display" data-tex="\[
+ (\lambda_1+\gamma)\wedge\cdots\wedge(\lambda_{d-1}+\gamma)\wedge\gamma
+ =\lambda_1\wedge\cdots\wedge\lambda_{d-1}\wedge\gamma.
+ \tag{PR29}
+\]">\[
+ (\lambda_1+\gamma)\wedge\cdots\wedge(\lambda_{d-1}+\gamma)\wedge\gamma
+ =\lambda_1\wedge\cdots\wedge\lambda_{d-1}\wedge\gamma.
+ \tag{PR29}
+\]</span>
+<p>The term containing <span class="math" data-tex="\(d\log k_d\)">\(d\log k_d\)</span> is a <span class="math" data-tex="\(d\)">\(d\)</span>-form from a <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-dimensional base and pulls back to zero. Moving <span class="math" data-tex="\(dz/z\)">\(dz/z\)</span> first in the remaining term gives <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span>. Independence of radius therefore turns the limit into the exact identity</p>
+<span class="math math-display" data-tex="\[
+ \int_{C_\rho(k)}\Omega_{\mathbf a}
+ =(-1)^d\,2\pi i\int_{p_*k}
+       \frac{dw_1}{w_1}\wedge\cdots\wedge\frac{dw_{d-1}}{w_{d-1}}
+ =(-1)^d(2\pi i)^d\,b,
+ \quad p_*[k]=b[B]. \tag{PR30}
+\]">\[
+ \int_{C_\rho(k)}\Omega_{\mathbf a}
+ =(-1)^d\,2\pi i\int_{p_*k}
+       \frac{dw_1}{w_1}\wedge\cdots\wedge\frac{dw_{d-1}}{w_{d-1}}
+ =(-1)^d(2\pi i)^d\,b,
+ \quad p_*[k]=b[B]. \tag{PR30}
+\]</span>
+<p>For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, the empty wedge is the constant zero-form <span class="math" data-tex="\(1\)">\(1\)</span>; its integral over a zero-chain is its total coefficient. The base coefficient <span class="math" data-tex="\(b\)">\(b\)</span> is an integer by (PR22), and the logarithmic form has period <span class="math" data-tex="\((2\pi i)^{d-1}\)">\((2\pi i)^{d-1}\)</span> on the displayed actual base torus. The right side of (PR30) is precisely the period of <span class="math" data-tex="\(\tau(p_*[k])\)">\(\tau(p_*[k])\)</span> from (PR25). By the integral basis and (PR17), equality of all these periods is equality of the two integral classes. This proves (PR27), including when the phase of <span class="math" data-tex="\(k_d\)">\(k_d\)</span> has no global logarithm. Assuming such a logarithm merely to reparametrize a whole cycle would have been unjustified.</p>
+<p>For the exact C8 signed centers, suppose the original region and deformation hypotheses have furnished finite smooth center cycles <span class="math" data-tex="\(k^-\)">\(k^-\)</span> and <span class="math" data-tex="\(k^+\)">\(k^+\)</span> in <span class="math" data-tex="\(M_H\)">\(M_H\)</span>. Specifically they are the images of the equator under <span class="math" data-tex="\(\xi\mapsto\xi-i\varepsilon\Theta(\xi)\)">\(\xi\mapsto\xi-i\varepsilon\Theta(\xi)\)</span> and <span class="math" data-tex="\(\xi\mapsto\xi+i\varepsilon\Theta(\xi)\)">\(\xi\mapsto\xi+i\varepsilon\Theta(\xi)\)</span>, with the equator oriented as the boundary of the negative hemisphere, as in C8 and AH032-2. With <span class="math" data-tex="\(x=e_0\)">\(x=e_0\)</span>, the C8 vector map is <span class="math" data-tex="\(z e_0+k^\pm\)">\(z e_0+k^\pm\)</span>; its normal scalar is <span class="math" data-tex="\(x\cdot x=1\)">\(x\cdot x=1\)</span>. Formula (83)'s cycle therefore has the identity</p>
+<span class="math math-display" data-tex="\[
+ [\alpha_-]=[C_\rho(k^-)]+(-1)^d[C_\rho(k^+)]
+ =\tau\bigl(p_*([k^-]+(-1)^d[k^+])\bigr). \tag{PR31}
+\]">\[
+ [\alpha_-]=[C_\rho(k^-)]+(-1)^d[C_\rho(k^+)]
+ =\tau\bigl(p_*([k^-]+(-1)^d[k^+])\bigr). \tag{PR31}
+\]</span>
+<p>There is no extra factor two in this tube identity. The distinct hemisphere-boundary identity in C8 is
+<span class="math" data-tex="\(\partial\widetilde\alpha_+=-2(k^-+(-1)^d k^+)\)">\(\partial\widetilde\alpha_+=-2(k^-+(-1)^d k^+)\)</span>;
+its factor belongs to that boundary relation. In particular vanishing of all the periods of (PR19) on <span class="math" data-tex="\(\alpha_-\)">\(\alpha_-\)</span> implies
+<span class="math" data-tex="\(p_*([k^-]+(-1)^d[k^+])=0\)">\(p_*([k^-]+(-1)^d[k^+])=0\)</span> integrally in this arrangement, by PR7. With rational coefficients and the additional AH032-2 logarithmic-period hypotheses, its admitted smooth splitting can then be applied to the signed affine center. A reduced zero-cycle retains its augmentation convention in dimension <span class="math" data-tex="\(n=2\)">\(n=2\)</span>. The proof does not produce permitted centers at a point failing the C8 hypotheses, determine their class in every component, or promote this conditional identification to a general polynomial.</p>
+<h2 id="pr10-conditional-receiver-for-the-general-c8-argument">PR10. Conditional receiver for the general C8 argument</h2>
+<p>For a general real homogeneous <span class="math" data-tex="\(F\)">\(F\)</span>, put <span class="math" data-tex="\(d=n-1\)">\(d=n-1\)</span>, <span class="math" data-tex="\(L(\zeta)=x\zeta\)">\(L(\zeta)=x\zeta\)</span>, <span class="math" data-tex="\(U=\mathbb P^d\setminus\{F=0\}\)">\(U=\mathbb P^d\setminus\{F=0\}\)</span>, <span class="math" data-tex="\(Y=\{L=0\}\cap U\)">\(Y=\{L=0\}\cap U\)</span>, and <span class="math" data-tex="\(V=U\setminus Y\)">\(V=U\setminus Y\)</span>. Suppose two additional statements have actually been justified for those objects:</p>
+<ol>
+<li>Rational top forms <span class="math" data-tex="\(P\omega/(F^k L^s)\)">\(P\omega/(F^k L^s)\)</span>, with <span class="math" data-tex="\(k,s&gt;0\)">\(k,s&gt;0\)</span> and <span class="math" data-tex="\(\deg P=mk+s-n\)">\(\deg P=mk+s-n\)</span>, span ordinary <span class="math" data-tex="\(H^d_{\mathrm{dR}}(V;\mathbb C)\)">\(H^d_{\mathrm{dR}}(V;\mathbb C)\)</span>.</li>
+<li>The correctly oriented normal tube <span class="math" data-tex="\(\tau:H_{d-1}(Y;\mathbb Q)\to H_d(V;\mathbb Q)\)">\(\tau:H_{d-1}(Y;\mathbb Q)\to H_d(V;\mathbb Q)\)</span> is injective.</li>
+</ol>
+<p>If <span class="math" data-tex="\(\beta\in H_{d-1}(Y;\mathbb Q)\)">\(\beta\in H_{d-1}(Y;\mathbb Q)\)</span> has zero periods of every such form on <span class="math" data-tex="\(\tau\beta\)">\(\tau\beta\)</span>, then smooth period detection CD034 first gives <span class="math" data-tex="\((\tau\beta)\otimes1=0\)">\((\tau\beta)\otimes1=0\)</span> over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. CD034's faithful extension <span class="math" data-tex="\(\mathbb Q\to\mathbb C\)">\(\mathbb Q\to\mathbb C\)</span> gives <span class="math" data-tex="\(\tau\beta=0\)">\(\tau\beta=0\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and the assumed injection gives <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>. This is the precise logical use of the two receivers; it does not assert their hypotheses in the general case. PR1–PR7 prove both receivers, and even integral injection, for the stated arrangement family.</p>
+<p>To combine this with AH032-2 for an actual affine cycle <span class="math" data-tex="\(k_x\)">\(k_x\)</span>, one additionally needs the exact identification of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with the appropriately oriented projective class <span class="math" data-tex="\(p_*[k_x]\)">\(p_*[k_x]\)</span>, and the actual affine/projective C8 tube multiplicity and scalar. AH032-2's ordinary smooth splitting and logarithmic-period calculation then supply their stated relative bridge. PR9 proves the identity for this arrangement and its stated centers; it does not make that identification for all <span class="math" data-tex="\(F\)">\(F\)</span> or replace the AH032-2 hypotheses by a generic topological slogan. Openness of permitted deformations alone also does not establish constancy on an entire component.</p>
+<h2 id="pr11-free-primary-comparison-and-retained-prerequisites">PR11. Free primary comparison and retained prerequisites</h2>
+<p>The free primary proof of Atiyah–Bott–Gårding I, printed p.187 (PDF p.79), states the rational-form spanning and tube-kernel ingredients before Theorem 10.9 and derives Corollary 10.10 from Theorems 10.3 and 10.9. This locates the general component receiver precisely. The free primary proof of Atiyah–Bott–Gårding II, Lemma 8.1, printed p.176 (PDF p.32), proves tube injection by compact-support Poincaré duality and a Stein homology vanishing theorem. With <span class="math" data-tex="\(d=n-1\)">\(d=n-1\)</span>, its preceding group is <span class="math" data-tex="\(H_c^{d-1}(U)\)">\(H_c^{d-1}(U)\)</span>, dual to <span class="math" data-tex="\(H_{d+1}(U)\)">\(H_{d+1}(U)\)</span>; the latter vanishes for a Stein manifold of complex dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Those degrees, rather than ordinary <span class="math" data-tex="\(H^{d-1}(U)\)">\(H^{d-1}(U)\)</span>, matter. A written general proof would have to supply the correct compact-support exact sequence/duality and the Stein homology bound with all hypotheses, or retain them as explicit external prerequisites.</p>
+<p>The fuller free primary route appears in Atiyah–Bott–Gårding II, §4, printed pp.156–161 (PDF pp.12–17), culminating in Theorem 4.4, and in its homogeneous top-form consequence Proposition 5.1, printed p.163 (PDF p.19). The proof uses normal-crossing local reduction, coherent-sheaf vanishing, projective comparison and resolution of singularities; these remain explicit external prerequisites of the general route. Grothendieck's free primary paper <em>On the de Rham cohomology of algebraic varieties</em>, Theorem 1 and Theorem 1′ (NUMDAM PDF pp.2–3), supplies the general smooth-affine algebraic/analytic comparison. This manuscript does not reprove those general results or label the receiver recursively closed. The specialized top-degree completeness in PR4 uses CD034 plus the explicit period basis instead. Private H2 is a statement and coefficient-convention comparison only; no proof or illustration is copied from it or required here. WT035's actual order-two class also does not settle that source's unstated coefficient convention.</p>
+<p>The bibliography and dependency ledger bind the exact free primary pages and the inherited written proofs. Our figures are original coordinate diagrams drawn from PR11, PR24 and PR26; no source media are reused.</p>
+<h2 id="pr12-exercises-and-complete-solutions">PR12. Exercises and complete solutions</h2>
+<p><strong>Exercise 1 — introductory: check the projective degree.</strong> For <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, <span class="math" data-tex="\(m=5\)">\(m=5\)</span>, take a homogeneous numerator <span class="math" data-tex="\(P\)">\(P\)</span> of degree three. Which <span class="math" data-tex="\(s\)">\(s\)</span> makes <span class="math" data-tex="\(P\omega/(Fz_0^s)\)">\(P\omega/(Fz_0^s)\)</span> descend? Find the associated <span class="math" data-tex="\(q\)">\(q\)</span> in C8.</p>
+<p><strong>Solution.</strong> Horizontality follows from <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. The scaling degree is <span class="math" data-tex="\(3+3-5-s=1-s\)">\(3+3-5-s=1-s\)</span>, so <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. C8 gives <span class="math" data-tex="\(q=m-n-|\alpha|=5-3-3=-1\)">\(q=m-n-|\alpha|=5-3-3=-1\)</span> for each monomial in <span class="math" data-tex="\(P\)">\(P\)</span>, agreeing with the denominator. Descending depends on the whole form's scaling, not just the numerator.</p>
+<p><strong>Exercise 2 — introductory: verify hyperbolicity.</strong> For the polynomial in Example 2, compute <span class="math" data-tex="\(F(\xi+tN)\)">\(F(\xi+tN)\)</span> with <span class="math" data-tex="\(N=(0,1,1)\)">\(N=(0,1,1)\)</span>, identify its four real roots and verify <span class="math" data-tex="\(F(N)\neq0\)">\(F(N)\neq0\)</span>.</p>
+<p><strong>Solution.</strong> It equals <span class="math" data-tex="\(((\xi_1+t)^2-\xi_0^2)(\xi_2+t)(\xi_2+t-2\xi_0)\)">\(((\xi_1+t)^2-\xi_0^2)(\xi_2+t)(\xi_2+t-2\xi_0)\)</span>. The roots are <span class="math" data-tex="\(-\xi_1+\xi_0,-\xi_1-\xi_0,-\xi_2,-\xi_2+2\xi_0\)">\(-\xi_1+\xi_0,-\xi_1-\xi_0,-\xi_2,-\xi_2+2\xi_0\)</span>, with coincidences permitted. All are real. At <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(z_0=0,z_1=z_2=1\)">\(z_0=0,z_1=z_2=1\)</span>, so <span class="math" data-tex="\(F(N)=1\)">\(F(N)=1\)</span>. This is exactly the homogeneous real-root definition used in PR5.</p>
+<p><strong>Exercise 3 — intermediate: recover a class from periods.</strong> In Example 2, a finite integral two-cycle has periods <span class="math" data-tex="\((-8\pi^2,4\pi^2,0,-12\pi^2)\)">\((-8\pi^2,4\pi^2,0,-12\pi^2)\)</span> in the stated form order. Determine its class and decide whether it bounds integrally.</p>
+<p><strong>Solution.</strong> Divide by <span class="math" data-tex="\((2\pi i)^2=-4\pi^2\)">\((2\pi i)^2=-4\pi^2\)</span>. Its coefficient vector is <span class="math" data-tex="\((2,-1,0,3)\)">\((2,-1,0,3)\)</span>. Since the four product tori are an actual integral basis, this is a nonzero class and it does not bound integrally. It also does not bound rationally or complexly. This conclusion uses PR14, not a generic rule about complex periods and integral homology.</p>
+<p><strong>Exercise 4 — intermediate: track the normal-circle sign.</strong> In dimension <span class="math" data-tex="\(d=3\)">\(d=3\)</span>, write the phase matrix of PR24 in the input order <span class="math" data-tex="\((\phi,\theta_1,\theta_2)\)">\((\phi,\theta_1,\theta_2)\)</span>. Find its inverse modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> and its determinant. What changes if the circle is put last?</p>
+<p><strong>Solution.</strong> The matrix is <span class="math" data-tex="\(\begin{psmallmatrix}-1&amp;1&amp;0\\-1&amp;0&amp;1\\-1&amp;0&amp;0\end{psmallmatrix}\)">\(\begin{psmallmatrix}-1&amp;1&amp;0\\-1&amp;0&amp;1\\-1&amp;0&amp;0\end{psmallmatrix}\)</span>. The inverse formula is <span class="math" data-tex="\(\phi=-\alpha_3\)">\(\phi=-\alpha_3\)</span>, <span class="math" data-tex="\(\theta_1=\alpha_1-\alpha_3\)">\(\theta_1=\alpha_1-\alpha_3\)</span>, <span class="math" data-tex="\(\theta_2=\alpha_2-\alpha_3\)">\(\theta_2=\alpha_2-\alpha_3\)</span>. Its determinant is <span class="math" data-tex="\(-1=(-1)^3\)">\(-1=(-1)^3\)</span>, so the tube class is minus the sum of positive product tori. Moving the circle past two base variables gives the factor <span class="math" data-tex="\((-1)^2=1\)">\((-1)^2=1\)</span>, so in this dimension the sign is unchanged. In general that permutation contributes <span class="math" data-tex="\((-1)^{d-1}\)">\((-1)^{d-1}\)</span>; one must specify the order before quoting a tube sign.</p>
+<p><strong>Exercise 5 — advanced: prove primitivity and explain the coefficient limit.</strong> Prove directly that the subgroup generated by <span class="math" data-tex="\((1,\ldots,1)\)">\((1,\ldots,1)\)</span> in <span class="math" data-tex="\(\mathbb Z^R\)">\(\mathbb Z^R\)</span> has torsion-free quotient. Explain why this argument cannot be transferred to WT035's affine wave sphere without a new homology calculation.</p>
+<p><strong>Solution.</strong> The quotient map <span class="math" data-tex="\(v\mapsto(v_2-v_1,\ldots,v_R-v_1)\)">\(v\mapsto(v_2-v_1,\ldots,v_R-v_1)\)</span> is surjective onto <span class="math" data-tex="\(\mathbb Z^{R-1}\)">\(\mathbb Z^{R-1}\)</span>, and its kernel consists exactly of the constant vectors, the subgroup generated by <span class="math" data-tex="\((1,\ldots,1)\)">\((1,\ldots,1)\)</span>. For <span class="math" data-tex="\(R=1\)">\(R=1\)</span>, its target is zero and the same statement holds. Changing the generator's sign gives the same subgroup. WT035 computes a different homology group, <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>, with an actual nonzero sphere class of order two. Complex periods vanish on that torsion class; no free-coordinate basis of the kind used here exists there. Neither this arrangement nor that torsion example chooses an unstated historical coefficient convention.</p>
+<p><strong>Exercise 6 — advanced: audit the general receiver.</strong> A proof for an arbitrary <span class="math" data-tex="\(F\)">\(F\)</span> cites only CD034 and local openness of permitted deformations, then concludes that zero periods of C8 rational forms force the projective center to vanish everywhere on a component. Identify the missing mathematical steps and state the valid conditional conclusion.</p>
+<p><strong>Solution.</strong> CD034 detects a class from all closed smooth forms, so one must first prove that the specific rational top forms span the needed smooth de Rham group. One then needs an injective projective tube map on the specified coefficient ring, an exact orientation/multiplicity identification of the actual C8 tube with that tube map applied to the projected center, and the geometric/analytic argument carrying the condition throughout a component. Local openness alone supplies the last conclusion only locally. Under the first two hypotheses of PR10, zero rational periods on <span class="math" data-tex="\(\tau\beta\)">\(\tau\beta\)</span> imply <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>; applying this to <span class="math" data-tex="\(p_*[k_x]\)">\(p_*[k_x]\)</span> additionally requires the stated identification. PR1–PR7 prove the first two hypotheses for the separated arrangement, and PR9 supplies its affine tube identity. The general algebraic de Rham and Stein/duality routes remain explicit free external prerequisites until their needed proofs are supplied.</p>
+<h2 id="free-human-sources">Free human sources</h2>
+<ul>
+<li>M. F. Atiyah, R. Bott and L. Gårding, <a href="https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02394570">Lacunas for hyperbolic differential operators with constant coefficients I</a>, Acta Mathematica 124 (1970), 109–189: the period argument preceding Theorem 10.9 and Corollary 10.10.</li>
+<li>The same authors, <a href="https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02392039">Part II</a>, Acta Mathematica 131 (1973), 145–206: algebraic de Rham argument, §4; homogeneous top forms and Proposition 5.1; tube injection, Lemma 8.1.</li>
+<li>A. Grothendieck, <a href="https://www.numdam.org/article/PMIHES_1966__29__95_0.pdf">On the de Rham cohomology of algebraic varieties</a>, Publications Mathématiques de l'IHÉS 29 (1966), 95–103: Theorem 1, PDF p.2 / printed p.95 (continuous footer 351); Theorem 1′, PDF p.3 / printed p.96 (footer 352); Theorem 2 and its corollary, PDF p.4 / printed p.97 (footer 353).</li>
+<li>A. Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf">Algebraic Topology, Chapter 2</a>: the singular-chain prism, subdivision and Mayer–Vietoris construction in §§2.1–2.2. The needed finite-chain arguments are written above and in the admitted WT035/CD034 proofs.</li>
+</ul>
+<p>The portable figure source is make_figures.py; figures/geometry.json records the exact coordinates and proof locators. The technical companion is projective-rational-periods-working-proof.md. All of its 31 labeled equations, twelve proof sections, three examples and six full solutions are preserved in this learner version.</p>
+<hr />
+<h2 id="complete-formal-proof-pr1-pr31">Complete formal proof PR1–PR31</h2>
+<p>The unchanged mathematical proof follows in full, including all twelve sections, three examples, six solutions and every conditional receiver.</p>
+<h1 id="rational-periods-and-normal-tubes-for-separated-projective-arrangements">Rational periods and normal tubes for separated projective arrangements</h1>
+<p>This is a bounded proof for a concrete class of projective hypersurface complements. It supplies an explicit rational top-degree period basis, an injective primitive integral normal-tube map, and the exact affine/projective tube comparison for this family. These are receiving statements needed by the AN02 C8 cycle argument. The proof does not establish them for an arbitrary homogeneous polynomial or prove component constancy. Ordinary finite singular chains are used throughout. The coefficient rings and orientation conventions are stated below.</p>
+<h2 id="pr1-objects-coefficients-and-the-theorem-2">PR1. Objects, coefficients and the theorem</h2>
+<p>Put <span class="math" data-tex="\(n=d+1\geq2\)">\(n=d+1\geq2\)</span>. Give <span class="math" data-tex="\(\mathbb P^d(\mathbb C)\)">\(\mathbb P^d(\mathbb C)\)</span> homogeneous coordinates <span class="math" data-tex="\([z_0:\cdots:z_d]\)">\([z_0:\cdots:z_d]\)</span>. For every <span class="math" data-tex="\(1\leq j\leq d\)">\(1\leq j\leq d\)</span>, choose a finite nonempty set <span class="math" data-tex="\(S_j\subset\mathbb R\)">\(S_j\subset\mathbb R\)</span> of distinct numbers, positive integers <span class="math" data-tex="\(e_{j,a}\)">\(e_{j,a}\)</span>, and a real number <span class="math" data-tex="\(c\neq0\)">\(c\neq0\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+ F(z)=c\prod_{j=1}^{d}\prod_{a\in S_j}(z_j-a z_0)^{e_{j,a}},
+ \qquad r_j=\sum_{a\in S_j}e_{j,a},\qquad m=\sum_j r_j. \tag{PR1}
+\]">\[
+ F(z)=c\prod_{j=1}^{d}\prod_{a\in S_j}(z_j-a z_0)^{e_{j,a}},
+ \qquad r_j=\sum_{a\in S_j}e_{j,a},\qquad m=\sum_j r_j. \tag{PR1}
+\]</span>
+<p>The zero set is taken without multiplicities when forming complements. Write</p>
+<span class="math math-display" data-tex="\[
+ X=\{z_0=0\},\quad U=\mathbb P^d\setminus\{F=0\},\quad
+ Y=X\cap U,\quad V=U\setminus Y,\quad R=\prod_j|S_j|. \tag{PR2}
+\]">\[
+ X=\{z_0=0\},\quad U=\mathbb P^d\setminus\{F=0\},\quad
+ Y=X\cap U,\quad V=U\setminus Y,\quad R=\prod_j|S_j|. \tag{PR2}
+\]</span>
+<p>Here <span class="math" data-tex="\(Y\)">\(Y\)</span> is a closed complex hypersurface of the smooth manifold <span class="math" data-tex="\(U\)">\(U\)</span>, even if the deleted divisor is singular. In the affine chart <span class="math" data-tex="\(z_0=1\)">\(z_0=1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+ V=\prod_{j=1}^{d}(\mathbb C\setminus S_j),\qquad t_j=z_j/z_0. \tag{PR3}
+\]">\[
+ V=\prod_{j=1}^{d}(\mathbb C\setminus S_j),\qquad t_j=z_j/z_0. \tag{PR3}
+\]</span>
+<p>On <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(F=c\prod_j z_j^{r_j}\)">\(F=c\prod_j z_j^{r_j}\)</span>. Thus every point of <span class="math" data-tex="\(Y\)">\(Y\)</span> has <span class="math" data-tex="\(z_d\neq0\)">\(z_d\neq0\)</span>, and the chart <span class="math" data-tex="\(z_d=1\)">\(z_d=1\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+ Y\cong(\mathbb C^*)^{d-1},\qquad w_j=z_j/z_d\ (j&lt;d). \tag{PR4}
+\]">\[
+ Y\cong(\mathbb C^*)^{d-1},\qquad w_j=z_j/z_d\ (j&lt;d). \tag{PR4}
+\]</span>
+<p>For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, the right side means a single point and its ordinary <span class="math" data-tex="\(H_0\)">\(H_0\)</span> is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. This is a statement about the normal tube of that point. A Petrowsky cycle in reduced degree zero has its separate reduced-homology convention; the two conventions are not interchanged.</p>
+<p>Choose small counterclockwise circles <span class="math" data-tex="\(\gamma_{j,a}\)">\(\gamma_{j,a}\)</span> centered at <span class="math" data-tex="\(a\)">\(a\)</span>, enclosing no other point of <span class="math" data-tex="\(S_j\)">\(S_j\)</span>. The product torus
+<span class="math" data-tex="\(T_{\mathbf a}=\gamma_{1,a_1}\times\cdots\times\gamma_{d,a_d}\)">\(T_{\mathbf a}=\gamma_{1,a_1}\times\cdots\times\gamma_{d,a_d}\)</span>
+has orientation in that displayed order. Smooth products are represented by finite singular chains using a triangulation of the parameter torus. Let</p>
+<span class="math math-display" data-tex="\[
+ \Omega_{\mathbf a}=\bigwedge_{j=1}^{d}\frac{dt_j}{t_j-a_j},
+ \qquad \mathbf a\in\prod_jS_j. \tag{PR5}
+\]">\[
+ \Omega_{\mathbf a}=\bigwedge_{j=1}^{d}\frac{dt_j}{t_j-a_j},
+ \qquad \mathbf a\in\prod_jS_j. \tag{PR5}
+\]</span>
+<p><strong>Theorem PR.</strong> The classes <span class="math" data-tex="\([T_{\mathbf a}]\)">\([T_{\mathbf a}]\)</span> are an integral basis of <span class="math" data-tex="\(H_d(V;\mathbb Z)\)">\(H_d(V;\mathbb Z)\)</span>, and this group has rank <span class="math" data-tex="\(R\)">\(R\)</span>. The <span class="math" data-tex="\(R\)">\(R\)</span> closed rational forms <span class="math" data-tex="\(\Omega_{\mathbf a}\)">\(\Omega_{\mathbf a}\)</span> represent a basis of the ordinary smooth complex de Rham group <span class="math" data-tex="\(H^d_{\mathrm{dR}}(V;\mathbb C)\)">\(H^d_{\mathrm{dR}}(V;\mathbb C)\)</span>. Their periods are</p>
+<span class="math math-display" data-tex="\[
+ \int_{T_{\mathbf b}}\Omega_{\mathbf a}=(2\pi i)^d\,\delta_{\mathbf a,\mathbf b}. \tag{PR6}
+\]">\[
+ \int_{T_{\mathbf b}}\Omega_{\mathbf a}=(2\pi i)^d\,\delta_{\mathbf a,\mathbf b}. \tag{PR6}
+\]</span>
+<p>The normal tube, with its positively oriented normal circle placed first, is well defined over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and satisfies</p>
+<span class="math math-display" data-tex="\[
+ \tau:H_{d-1}(Y;\mathbb Z)\longrightarrow H_d(V;\mathbb Z),\qquad
+ \tau[B]=(-1)^d\sum_{\mathbf a}[T_{\mathbf a}], \tag{PR7}
+\]">\[
+ \tau:H_{d-1}(Y;\mathbb Z)\longrightarrow H_d(V;\mathbb Z),\qquad
+ \tau[B]=(-1)^d\sum_{\mathbf a}[T_{\mathbf a}], \tag{PR7}
+\]</span>
+<p>where <span class="math" data-tex="\(B=\{|w_1|=\cdots=|w_{d-1}|=1\}\)">\(B=\{|w_1|=\cdots=|w_{d-1}|=1\}\)</span> is oriented in the order <span class="math" data-tex="\(w_1,\ldots,w_{d-1}\)">\(w_1,\ldots,w_{d-1}\)</span>; for <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\([B]\)">\([B]\)</span> is the positive point. In particular <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is injective and its image is primitive. The homology basis and tube statements also hold with coefficients in <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, or any field, by the same chain proof. The differential forms and their de Rham comparison are over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The assertion about integral detection uses the explicit free group in this example; complex periods do not generally detect torsion.</p>
+<h2 id="pr2-the-finite-chain-tools-actually-used-2">PR2. The finite-chain tools actually used</h2>
+<p>We spell out the homological mechanism rather than import a product or cellular homology theorem. The chain tools also occur in the fully written, owner-admitted WT035 and CD034 proofs. They are ordinary, unaugmented singular chains except when an augmentation is explicitly mentioned. There is no compact-support restriction on differential forms, and chains always have finite support.</p>
+<p>For a homotopy <span class="math" data-tex="\(H:A\times[0,1]\to B\)">\(H:A\times[0,1]\to B\)</span>, triangulate <span class="math" data-tex="\(\Delta^q\times[0,1]\)">\(\Delta^q\times[0,1]\)</span> with the <span class="math" data-tex="\(q+1\)">\(q+1\)</span> ordered simplices
+<span class="math" data-tex="\([v_0^0,\ldots,v_j^0,v_j^1,\ldots,v_q^1]\)">\([v_0^0,\ldots,v_j^0,v_j^1,\ldots,v_q^1]\)</span>, with alternating coefficients <span class="math" data-tex="\((-1)^j\)">\((-1)^j\)</span>. Composing with <span class="math" data-tex="\(H\circ(\sigma\times1)\)">\(H\circ(\sigma\times1)\)</span> gives the prism operator. The top and bottom faces and the paired interior faces give</p>
+<span class="math math-display" data-tex="\[
+ \partial P+P\partial=H_{1\#}-H_{0\#}. \tag{PR8}
+\]">\[
+ \partial P+P\partial=H_{1\#}-H_{0\#}. \tag{PR8}
+\]</span>
+<p>Consequently homotopic maps induce the same homology map, and a contractible space has <span class="math" data-tex="\(H_0=\mathbb Z\)">\(H_0=\mathbb Z\)</span> and zero higher homology. The assertion for a point can also be checked directly: its sole <span class="math" data-tex="\(q\)">\(q\)</span>-simplex has boundary coefficient <span class="math" data-tex="\(\sum_{j=0}^q(-1)^j\)">\(\sum_{j=0}^q(-1)^j\)</span>, so the positive-degree chain complex is exact.</p>
+<p>Here is the finite-chain proof of the open-cover tool. For a two-set open cover <span class="math" data-tex="\(A\cup B=M\)">\(A\cup B=M\)</span>, let <span class="math" data-tex="\(C_*^{A,B}(M)\)">\(C_*^{A,B}(M)\)</span> be the subcomplex generated by simplices carried by one of the two sets. The following explicit recursions construct the needed operators. Temporarily augment linear chains by the empty simplex in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. Coning to a point <span class="math" data-tex="\(b\)">\(b\)</span>, with <span class="math" data-tex="\(b*[v_0,\ldots,v_q]=[b,v_0,\ldots,v_q]\)">\(b*[v_0,\ldots,v_q]=[b,v_0,\ldots,v_q]\)</span>, satisfies <span class="math" data-tex="\(\partial(b*c)=c-b*(\partial c)\)">\(\partial(b*c)=c-b*(\partial c)\)</span>, including the augmented zero-dimensional case. For the ordered linear simplex <span class="math" data-tex="\(e\)">\(e\)</span>, with barycenter <span class="math" data-tex="\(b_e\)">\(b_e\)</span>, set
+<span class="math math-display" data-tex="\[
+ S(e)=b_e*S(\partial e),\qquad
+ T(e)=b_e*(e-T(\partial e)),\qquad
+ S[\varnothing]=[\varnothing],\quad T[\varnothing]=0.
+\]">\[
+ S(e)=b_e*S(\partial e),\qquad
+ T(e)=b_e*(e-T(\partial e)),\qquad
+ S[\varnothing]=[\varnothing],\quad T[\varnothing]=0.
+\]</span>
+All face terms are embedded in the same simplex before these operations. The cone identity and induction give
+<span class="math" data-tex="\(\partial S(e)=S(\partial e)\)">\(\partial S(e)=S(\partial e)\)</span> and
+<span class="math" data-tex="\(\partial T(e)=e-S(e)-T(\partial e)\)">\(\partial T(e)=e-S(e)-T(\partial e)\)</span>:
+for the second identity the coned boundary in its definition is
+<span class="math" data-tex="\(\partial e-\partial T(\partial e)=S(\partial e)\)">\(\partial e-\partial T(\partial e)=S(\partial e)\)</span>, whose cone is <span class="math" data-tex="\(S(e)\)">\(S(e)\)</span>.
+For a singular simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, compose the corresponding chains in its standard parameter simplex with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. These definitions commute with face restrictions, so
+<span class="math" data-tex="\(\mathrm{Sd}(\sigma)=\sigma_\#S(\Delta^q)\)">\(\mathrm{Sd}(\sigma)=\sigma_\#S(\Delta^q)\)</span> is a chain map and
+<span class="math" data-tex="\(D(\sigma)=-\sigma_\#T(\Delta^q)\)">\(D(\sigma)=-\sigma_\#T(\Delta^q)\)</span> satisfies
+<span class="math" data-tex="\(\mathrm{Sd}-1=\partial D+D\partial\)">\(\mathrm{Sd}-1=\partial D+D\partial\)</span>.
+The augmentation can then be dropped since <span class="math" data-tex="\(T\)">\(T\)</span> vanishes in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. These are finite integer operators and they stay inside any carrier containing the simplex image.</p>
+<p>The vertices in a subdivided simplex are barycenters of nested faces. If faces have respectively <span class="math" data-tex="\(i+1\)">\(i+1\)</span> and <span class="math" data-tex="\(j+1\)">\(j+1\)</span> vertices, the larger barycenter is
+<span class="math" data-tex="\((i+1)/(j+1)\)">\((i+1)/(j+1)\)</span> times the smaller one plus
+<span class="math" data-tex="\((j-i)/(j+1)\)">\((j-i)/(j+1)\)</span> times the barycenter of the remaining vertices. Their distance is at most <span class="math" data-tex="\((j-i)/(j+1)\)">\((j-i)/(j+1)\)</span> times the original diameter, hence at most <span class="math" data-tex="\(q/(q+1)\)">\(q/(q+1)\)</span> times it. This proves the mesh bound for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>; a point is already small. The preimage cover of each simplex image has a Lebesgue number, so for each finite chain one integer <span class="math" data-tex="\(N\)">\(N\)</span> makes <span class="math" data-tex="\(\mathrm{Sd}^N\)">\(\mathrm{Sd}^N\)</span> of it small for this cover.</p>
+<p>Every cycle is homologous to its small subdivision. If a small cycle is a boundary, subdivide its finite bounding chain sufficiently far; the difference between the cycle and its subdivided cycle is already a boundary in the small subcomplex because the carried homotopy stays small. This proves that the inclusion of small chains induces an isomorphism on homology, including injectivity. No locally finite infinite chains are involved.</p>
+<p>The short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow C_*(A\cap B)
+ \xrightarrow{c\mapsto(c,-c)} C_*(A)\oplus C_*(B)
+ \xrightarrow{(a,b)\mapsto a+b} C_*^{A,B}(M)\longrightarrow0 \tag{PR9}
+\]">\[
+0\longrightarrow C_*(A\cap B)
+ \xrightarrow{c\mapsto(c,-c)} C_*(A)\oplus C_*(B)
+ \xrightarrow{(a,b)\mapsto a+b} C_*^{A,B}(M)\longrightarrow0 \tag{PR9}
+\]</span>
+<p>is exact on the actual simplex bases. Its connecting map sends a small cycle <span class="math" data-tex="\(z=a+b\)">\(z=a+b\)</span> to <span class="math" data-tex="\([\partial a]\)">\([\partial a]\)</span>. Indeed <span class="math" data-tex="\(\partial a=-\partial b\)">\(\partial a=-\partial b\)</span> is carried by the intersection. A different split changes it by an intersection boundary; changing a cycle by a boundary does the same. Exactness at the other terms follows directly: a connecting class zero permits subtracting an intersection chain to make both summands cycles, and a pair of cycles with zero sum class is reduced by a split bounding chain to a cycle of the form <span class="math" data-tex="\((c,-c)\)">\((c,-c)\)</span>. At the intersection term, if <span class="math" data-tex="\((c,-c)\)">\((c,-c)\)</span> is a boundary of <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, then <span class="math" data-tex="\(a+b\)">\(a+b\)</span> is a cycle whose connecting image is <span class="math" data-tex="\([c]\)">\([c]\)</span>. This proves the complete Mayer–Vietoris sequence over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, with the signs in (PR9). Tensoring this chain argument, rather than a homology formula, gives the same sequence over any coefficient ring.</p>
+<p>Finally finite products of smooth chains are defined explicitly by the ordered staircase triangulation of <span class="math" data-tex="\(\Delta^p\times\Delta^q\)">\(\Delta^p\times\Delta^q\)</span>. For each path of unit horizontal/vertical steps from <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> to <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span>, take its ordered vertices <span class="math" data-tex="\((v_i,w_j)\)">\((v_i,w_j)\)</span>, and give its simplex coefficient <span class="math" data-tex="\((-1)^I\)">\((-1)^I\)</span>, where <span class="math" data-tex="\(I\)">\(I\)</span> counts pairs consisting of a vertical step preceding a horizontal step. These signs give the first-factor-before-second-factor product orientation. Two paths differing by interchange of adjacent horizontal and vertical steps share their intervening facet with opposite coefficients; all interior facets consequently cancel. The remaining first-factor boundary facets have the first factor's usual signs, and moving a second-factor boundary normal past its <span class="math" data-tex="\(p\)">\(p\)</span> first-factor coordinates adds <span class="math" data-tex="\((-1)^p\)">\((-1)^p\)</span>. Thus the exterior facets give</p>
+<span class="math math-display" data-tex="\[
+ \partial(C\times D)=\partial C\times D+(-1)^{\dim C}C\times\partial D. \tag{PR10}
+\]">\[
+ \partial(C\times D)=\partial C\times D+(-1)^{\dim C}C\times\partial D. \tag{PR10}
+\]</span>
+<p>This is the chain-level product used below. The preceding prisms prove invariance under homotopies of the parameter maps. Inherited CD034 proves that the use of smooth chains for integration induces the same homology as continuous singular chains over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Integral topological computations here use continuous chains and explicit smooth representatives, so no integral smoothing theorem is required.</p>
+<h2 id="pr3-a-cover-of-a-punctured-plane-with-explicit-contractions-2">PR3. A cover of a punctured plane with explicit contractions</h2>
+<p>Let <span class="math" data-tex="\(S=\{a_1&lt;\cdots&lt;a_r\}\subset\mathbb R\)">\(S=\{a_1&lt;\cdots&lt;a_r\}\subset\mathbb R\)</span> and <span class="math" data-tex="\(P=\mathbb C\setminus S\)">\(P=\mathbb C\setminus S\)</span>. Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> smaller than half the distance between distinct points; for one point any <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> works. Define</p>
+<span class="math math-display" data-tex="\[
+ A=\mathbb C\setminus\bigcup_{a\in S}\{a+iy:y\leq0\},\qquad
+ B_a=\{x+iy:|x-a|&lt;\delta,\ y&lt;0\},\qquad B=\coprod_a B_a. \tag{PR11}
+\]">\[
+ A=\mathbb C\setminus\bigcup_{a\in S}\{a+iy:y\leq0\},\qquad
+ B_a=\{x+iy:|x-a|&lt;\delta,\ y&lt;0\},\qquad B=\coprod_a B_a. \tag{PR11}
+\]</span>
+<p>These are open subsets of <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(A\cup B=P\)">\(A\cup B=P\)</span>. Each <span class="math" data-tex="\(B_a\)">\(B_a\)</span> is convex. Each <span class="math" data-tex="\(A\cap B_a\)">\(A\cap B_a\)</span> has two convex components, denoted <span class="math" data-tex="\(L_a\)">\(L_a\)</span> and <span class="math" data-tex="\(R_a\)">\(R_a\)</span> according to <span class="math" data-tex="\(x&lt;a\)">\(x&lt;a\)</span> and <span class="math" data-tex="\(x&gt;a\)">\(x&gt;a\)</span>. To contract <span class="math" data-tex="\(A\)">\(A\)</span>, first use
+<span class="math" data-tex="\((x,y)\mapsto(x,(1-s)y+s\max\{y,1\})\)">\((x,y)\mapsto(x,(1-s)y+s\max\{y,1\})\)</span>.
+At <span class="math" data-tex="\(x=a\)">\(x=a\)</span> the initial <span class="math" data-tex="\(y\)">\(y\)</span> is positive and remains positive; at other <span class="math" data-tex="\(x\)">\(x\)</span> no removed ray can be met. At <span class="math" data-tex="\(s=1\)">\(s=1\)</span> the image lies in <span class="math" data-tex="\(y\geq1\)">\(y\geq1\)</span>. A straight homotopy in this half-plane then contracts it to <span class="math" data-tex="\(i\)">\(i\)</span>. This proves the needed contraction without asserting that a general plane domain is contractible. Figure 1 shows the exact cover for two real punctures.</p>
+<p>For any space <span class="math" data-tex="\(Z\)">\(Z\)</span>, the projections <span class="math" data-tex="\(Z\times A\to Z\)">\(Z\times A\to Z\)</span>, <span class="math" data-tex="\(Z\times B_a\to Z\)">\(Z\times B_a\to Z\)</span>, and <span class="math" data-tex="\(Z\times L_a, Z\times R_a\to Z\)">\(Z\times L_a, Z\times R_a\to Z\)</span> are homotopy equivalences by the stated contractions and (PR8). With <span class="math" data-tex="\(G_k=H_k(Z;\mathbb Z)\)">\(G_k=H_k(Z;\mathbb Z)\)</span>, the intersection-to-cover homology map in (PR9) is</p>
+<span class="math math-display" data-tex="\[
+ \psi_k:G_k^{2r}\longrightarrow G_k\oplus G_k^r,
+ \qquad (u_a,v_a)_a\longmapsto
+ \left(\sum_a(u_a+v_a),\; (-(u_a+v_a))_a\right). \tag{PR12}
+\]">\[
+ \psi_k:G_k^{2r}\longrightarrow G_k\oplus G_k^r,
+ \qquad (u_a,v_a)_a\longmapsto
+ \left(\sum_a(u_a+v_a),\; (-(u_a+v_a))_a\right). \tag{PR12}
+\]</span>
+<p>These signs come from the minus sign in the second map of (PR9). All inclusions act as the identity on the <span class="math" data-tex="\(Z\)">\(Z\)</span> factor up to the displayed contractions. For any abelian group <span class="math" data-tex="\(G_k\)">\(G_k\)</span>, not just a field,
+<span class="math" data-tex="\(\ker\psi_k=\{(u_a,-u_a)_a\}\cong G_k^r\)">\(\ker\psi_k=\{(u_a,-u_a)_a\}\cong G_k^r\)</span>,
+and <span class="math" data-tex="\(\operatorname{coker}\psi_k\cong G_k\)">\(\operatorname{coker}\psi_k\cong G_k\)</span>, via <span class="math" data-tex="\((g,(h_a))\mapsto g+\sum_a h_a\)">\((g,(h_a))\mapsto g+\sum_a h_a\)</span>. The image of <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span> is exactly the kernel of this last map: if the sum is zero, take <span class="math" data-tex="\(u_a=-h_a,v_a=0\)">\(u_a=-h_a,v_a=0\)</span>.</p>
+<p>The exact sequence therefore yields</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow H_k(Z;\mathbb Z)\longrightarrow H_k(Z\times P;\mathbb Z)
+ \xrightarrow{\delta}H_{k-1}(Z;\mathbb Z)^r\longrightarrow0 \tag{PR13}
+\]">\[
+0\longrightarrow H_k(Z;\mathbb Z)\longrightarrow H_k(Z\times P;\mathbb Z)
+ \xrightarrow{\delta}H_{k-1}(Z;\mathbb Z)^r\longrightarrow0 \tag{PR13}
+\]</span>
+<p>for <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>. We use (PR13) in a degree in which its left term vanishes, so a choice of splitting is unnecessary. Both <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> are path connected when <span class="math" data-tex="\(Z\)">\(Z\)</span> is a nonempty product of these planes, so their product has <span class="math" data-tex="\(H_0=\mathbb Z\)">\(H_0=\mathbb Z\)</span>.</p>
+<p>Start with the point as a product of zero planes. Induction on the number <span class="math" data-tex="\(d\)">\(d\)</span> of factors in (PR13) proves that <span class="math" data-tex="\(H_k(V;\mathbb Z)=0\)">\(H_k(V;\mathbb Z)=0\)</span> for <span class="math" data-tex="\(k&gt;d\)">\(k&gt;d\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+ H_d(V;\mathbb Z)\cong\mathbb Z^{\prod_j|S_j|}. \tag{PR14}
+\]">\[
+ H_d(V;\mathbb Z)\cong\mathbb Z^{\prod_j|S_j|}. \tag{PR14}
+\]</span>
+<p>We now identify the actual basis, rather than only the abstract rank. Take a small counterclockwise circle around <span class="math" data-tex="\(a\)">\(a\)</span>. Its lower arc, from its left side to its right side, lies in <span class="math" data-tex="\(B_a\)">\(B_a\)</span>; its complementary arc lies in <span class="math" data-tex="\(A\)">\(A\)</span>. Choose the two meeting points below the real axis in <span class="math" data-tex="\(L_a,R_a\)">\(L_a,R_a\)</span>, moving them slightly from the semicircle endpoints if needed. The boundary of the <span class="math" data-tex="\(A\)">\(A\)</span>-arc is left point minus right point. Thus the connecting map sends the positive circle to <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span> in the <span class="math" data-tex="\(a\)">\(a\)</span>-th pair, and to zero in the other pairs. For a <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-cycle <span class="math" data-tex="\(C\)">\(C\)</span> in the first <span class="math" data-tex="\(d-1\)">\(d-1\)</span> factors, (PR10) gives</p>
+<span class="math math-display" data-tex="\[
+ \delta[C\times\gamma_{d,a}]=(-1)^{d-1}(0,\ldots,[C],\ldots,0). \tag{PR15}
+\]">\[
+ \delta[C\times\gamma_{d,a}]=(-1)^{d-1}(0,\ldots,[C],\ldots,0). \tag{PR15}
+\]</span>
+<p>The sign is common to every basis vector and is a unit in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. By induction the product circles in (PR5) map to a basis under the isomorphism (PR13) in degree <span class="math" data-tex="\(d\)">\(d\)</span>. They are consequently exactly an integral basis in (PR14). This computation also works directly over any field and does not invoke a Künneth theorem, a cellular comparison theorem, or a Stein homology bound.</p>
+<h2 id="pr4-the-rational-forms-and-their-completeness-in-top-degree-2">PR4. The rational forms and their completeness in top degree</h2>
+<p>Each <span class="math" data-tex="\(\Omega_{\mathbf a}\)">\(\Omega_{\mathbf a}\)</span> is a holomorphic differential form of maximal complex degree <span class="math" data-tex="\(d\)">\(d\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>; its exterior derivative is zero. On one small circle the direct parametrization <span class="math" data-tex="\(t=a+\rho e^{i\theta}\)">\(t=a+\rho e^{i\theta}\)</span> gives <span class="math" data-tex="\(dt/(t-a)=i\,d\theta\)">\(dt/(t-a)=i\,d\theta\)</span>. For another puncture <span class="math" data-tex="\(a&#x27;\neq a\)">\(a&#x27;\neq a\)</span>, the denominator is nonzero on the filled disk around <span class="math" data-tex="\(a\)">\(a\)</span>, so the integral is zero by the one-variable primitive (or its uniformly convergent geometric series on a sufficiently small disk). With product orientation and iterated integration, these facts prove (PR6).</p>
+<p>We use one explicit transitive prerequisite: owner-admitted CD034, CD6.2 and CD8.4, proves that integration of ordinary smooth complex differential forms is an isomorphism to singular cohomology and that the latter equals <span class="math" data-tex="\(\operatorname{Hom}_{\mathbb C}(H_d(V;\mathbb C),\mathbb C)\)">\(\operatorname{Hom}_{\mathbb C}(H_d(V;\mathbb C),\mathbb C)\)</span> in degree <span class="math" data-tex="\(d\)">\(d\)</span>. That proof includes the local Poincaré homotopy, finite small-chain comparison, cover elimination and actual integration map; it is not a rational-form comparison theorem. Here its smooth comparison is sufficient because we have already computed a finite integral homology basis and the complete diagonal periods of the specific rational forms.</p>
+<p>For any closed smooth complex <span class="math" data-tex="\(d\)">\(d\)</span>-form <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+ c_{\mathbf a}=(2\pi i)^{-d}\int_{T_{\mathbf a}}\eta,
+ \qquad \eta_0=\eta-\sum_{\mathbf a}c_{\mathbf a}\Omega_{\mathbf a}. \tag{PR16}
+\]">\[
+ c_{\mathbf a}=(2\pi i)^{-d}\int_{T_{\mathbf a}}\eta,
+ \qquad \eta_0=\eta-\sum_{\mathbf a}c_{\mathbf a}\Omega_{\mathbf a}. \tag{PR16}
+\]</span>
+<p>Every period of <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> is zero because (PR14) is an actual basis and (PR6) cancels its periods. CD034 then makes <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> exact as an ordinary smooth form. Conversely (PR6) makes the classes of the <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>'s linearly independent. This proves the top-degree rational completeness asserted in Theorem PR, by a specialized argument. It does not prove that the full algebraic differential complex is quasi-isomorphic to the smooth complex in every degree.</p>
+<p>For a finite integral, rational or complex <span class="math" data-tex="\(d\)">\(d\)</span>-cycle <span class="math" data-tex="\(z\)">\(z\)</span>, write its homology class uniquely as <span class="math" data-tex="\(\sum b_{\mathbf a}[T_{\mathbf a}]\)">\(\sum b_{\mathbf a}[T_{\mathbf a}]\)</span>. The coefficients are recovered exactly by</p>
+<span class="math math-display" data-tex="\[
+ b_{\mathbf a}=(2\pi i)^{-d}\int_z\Omega_{\mathbf a}. \tag{PR17}
+\]">\[
+ b_{\mathbf a}=(2\pi i)^{-d}\int_z\Omega_{\mathbf a}. \tag{PR17}
+\]</span>
+<p>In particular vanishing of these <span class="math" data-tex="\(R\)">\(R\)</span> periods is equivalent to bounding by a finite chain over the coefficient ring in question. For the integral assertion the coefficients in the unique integral basis are integers, and the absence of torsion in (PR14) is essential. WT035 demonstrates why the same conclusion about an arbitrary integral cycle would be false.</p>
+<h2 id="pr5-the-precise-homogeneous-form-and-c8-degree-receiver-2">PR5. The precise homogeneous form and C8 degree receiver</h2>
+<p>Use the standard homogeneous form</p>
+<span class="math math-display" data-tex="\[
+ \omega=\sum_{j=0}^{d}(-1)^jz_j\,dz_0\wedge\cdots\widehat{dz_j}\cdots\wedge dz_d. \tag{PR18}
+\]">\[
+ \omega=\sum_{j=0}^{d}(-1)^jz_j\,dz_0\wedge\cdots\widehat{dz_j}\cdots\wedge dz_d. \tag{PR18}
+\]</span>
+<p>It is the contraction of the standard <span class="math" data-tex="\(n\)">\(n\)</span>-form with the radial vector field, is horizontal, and scales with degree <span class="math" data-tex="\(n=d+1\)">\(n=d+1\)</span>. In <span class="math" data-tex="\(z_0=1\)">\(z_0=1\)</span> its pullback is <span class="math" data-tex="\(dt_1\wedge\cdots\wedge dt_d\)">\(dt_1\wedge\cdots\wedge dt_d\)</span>. For every <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span>, the polynomial
+<span class="math" data-tex="\(P_{\mathbf a}=F/\prod_j(z_j-a_jz_0)\)">\(P_{\mathbf a}=F/\prod_j(z_j-a_jz_0)\)</span>
+is well defined even when factors occur with multiplicity, and has degree <span class="math" data-tex="\(m-d\geq0\)">\(m-d\geq0\)</span>. The equality of rational projective forms is</p>
+<span class="math math-display" data-tex="\[
+ \Omega_{\mathbf a}=\frac{\omega}{z_0\prod_j(z_j-a_jz_0)}
+ =\frac{P_{\mathbf a}\,\omega}{Fz_0}. \tag{PR19}
+\]">\[
+ \Omega_{\mathbf a}=\frac{\omega}{z_0\prod_j(z_j-a_jz_0)}
+ =\frac{P_{\mathbf a}\,\omega}{Fz_0}. \tag{PR19}
+\]</span>
+<p>The scale exponent in the last expression is <span class="math" data-tex="\((m-d)+(d+1)-m-1=0\)">\((m-d)+(d+1)-m-1=0\)</span>, and horizontality is inherited from <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, so it descends to projective space. Equality is checked in the dense affine chart <span class="math" data-tex="\(z_0=1\)">\(z_0=1\)</span>, hence holds as rational forms.</p>
+<p>In the frozen C8 notation, after the orientation-preserving coordinate relabeling <span class="math" data-tex="\(z_0=\zeta_1,z_1=\zeta_2,\ldots,z_d=\zeta_n\)">\(z_0=\zeta_1,z_1=\zeta_2,\ldots,z_d=\zeta_n\)</span>, choose the linear form <span class="math" data-tex="\(x\zeta=z_0\)">\(x\zeta=z_0\)</span>. The C8 form for the <span class="math" data-tex="\(k\)">\(k\)</span>-th power of <span class="math" data-tex="\(F\)">\(F\)</span> has</p>
+<span class="math math-display" data-tex="\[
+ q=mk-n-|\alpha|,\qquad
+ (iz_0)^q\frac{z^\alpha}{F^k}\omega,\qquad q&lt;0. \tag{PR20}
+\]">\[
+ q=mk-n-|\alpha|,\qquad
+ (iz_0)^q\frac{z^\alpha}{F^k}\omega,\qquad q&lt;0. \tag{PR20}
+\]</span>
+<p>Each monomial of <span class="math" data-tex="\(P_{\mathbf a}\)">\(P_{\mathbf a}\)</span> has degree <span class="math" data-tex="\(m-d=m-n+1\)">\(m-d=m-n+1\)</span>. For <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, this gives <span class="math" data-tex="\(q=-1\)">\(q=-1\)</span>. Thus (PR19) is a finite linear combination of exactly those C8 rational top forms, with the scalar <span class="math" data-tex="\(i\)">\(i\)</span> compensating for <span class="math" data-tex="\((iz_0)^{-1}=i^{-1}z_0^{-1}\)">\((iz_0)^{-1}=i^{-1}z_0^{-1}\)</span>. No pole-order theorem for a general divisor is used. For a general homogeneous numerator <span class="math" data-tex="\(P\)">\(P\)</span>, the projective expression <span class="math" data-tex="\(P\omega/(F^k L^s)\)">\(P\omega/(F^k L^s)\)</span>, <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, has the C8 degree exactly when
+<span class="math" data-tex="\(\deg P=mk+s-n\)">\(\deg P=mk+s-n\)</span>. The numerical prefactor in the fundamental-solution formula is separate from this identification of differential forms and is not asserted to be one.</p>
+<p>This arrangement is a real homogeneous hyperbolic example. For <span class="math" data-tex="\(N=(0,1,\ldots,1)\)">\(N=(0,1,\ldots,1)\)</span>, every linear factor evaluated on <span class="math" data-tex="\(N\)">\(N\)</span> is one, and
+<span class="math" data-tex="\(F(\xi+tN)=c\prod_{j,a}(\xi_j-a\xi_0+t)^{e_{j,a}}\)">\(F(\xi+tN)=c\prod_{j,a}(\xi_j-a\xi_0+t)^{e_{j,a}}\)</span>
+has only real zeros for every real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Also <span class="math" data-tex="\(F(N)=c\neq0\)">\(F(N)=c\neq0\)</span>. The degree or multiplicity of <span class="math" data-tex="\(F\)">\(F\)</span> is unrestricted above <span class="math" data-tex="\(d\)">\(d\)</span>. The linear form <span class="math" data-tex="\(z_0\)">\(z_0\)</span> specifies the receiving hyperplane. It does not assert that this <span class="math" data-tex="\(x\)">\(x\)</span> satisfies every region condition for the actual C8 fundamental-solution cycle; that is a separate geometric receiver.</p>
+<h2 id="pr6-a-normal-tube-on-every-finite-chain-2">PR6. A normal tube on every finite chain</h2>
+<p>The chart <span class="math" data-tex="\(z_d=1\)">\(z_d=1\)</span> contains all of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Write <span class="math" data-tex="\(h=z_0/z_d\)">\(h=z_0/z_d\)</span>, <span class="math" data-tex="\(w_j=z_j/z_d\)">\(w_j=z_j/z_d\)</span> for <span class="math" data-tex="\(j&lt;d\)">\(j&lt;d\)</span>. In this chart <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\(h=0\)">\(h=0\)</span> with every <span class="math" data-tex="\(w_j\neq0\)">\(w_j\neq0\)</span>. The complex coordinate <span class="math" data-tex="\(h\)">\(h\)</span> trivializes its normal direction. Let a finite chain in <span class="math" data-tex="\(Y\)">\(Y\)</span> have image in a compact set <span class="math" data-tex="\(K\)">\(K\)</span>. There is a positive lower bound <span class="math" data-tex="\(b\)">\(b\)</span> for all <span class="math" data-tex="\(|w_j|\)">\(|w_j|\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, with <span class="math" data-tex="\(b=1\)">\(b=1\)</span> if <span class="math" data-tex="\(d=1\)">\(d=1\)</span> has no such coordinates. Let
+<span class="math" data-tex="\(A_*=\max\{1,|a|:a\in S_1\cup\cdots\cup S_d\}\)">\(A_*=\max\{1,|a|:a\in S_1\cup\cdots\cup S_d\}\)</span>.
+Choose</p>
+<span class="math math-display" data-tex="\[
+ 0&lt;\varepsilon&lt;\min\{b,1\}/(2A_*),\qquad
+ (e^{i\phi},w)\longmapsto[\varepsilon e^{i\phi}:w_1:\cdots:w_{d-1}:1]. \tag{PR21}
+\]">\[
+ 0&lt;\varepsilon&lt;\min\{b,1\}/(2A_*),\qquad
+ (e^{i\phi},w)\longmapsto[\varepsilon e^{i\phi}:w_1:\cdots:w_{d-1}:1]. \tag{PR21}
+\]</span>
+<p>Indeed, for <span class="math" data-tex="\(j&lt;d\)">\(j&lt;d\)</span>, <span class="math" data-tex="\(|w_j-a h|\geq b-A_*\varepsilon&gt;b/2\)">\(|w_j-a h|\geq b-A_*\varepsilon&gt;b/2\)</span>, and for <span class="math" data-tex="\(j=d\)">\(j=d\)</span>, <span class="math" data-tex="\(|1-a h|&gt;1/2\)">\(|1-a h|&gt;1/2\)</span>. Also <span class="math" data-tex="\(h\neq0\)">\(h\neq0\)</span>. Thus this map takes the circle times the chain into <span class="math" data-tex="\(V\)">\(V\)</span>. Orient the circle counterclockwise and place it before the base-chain coordinates. By (PR10) the tube of a cycle is a cycle, and the tube of a bounding chain has boundary minus the tube of its boundary. That minus sign has no effect on whether a cycle bounds; it is retained in the orientation convention.</p>
+<p>Any two sufficiently small positive radii are joined through radii obeying the same bound. The prism (PR8) proves their tubes homologous. For homologous cycles, choose one radius valid on the combined finite bounding chain and both cycles. The preceding boundary identity then proves that their classes have the same tube. These two arguments prove a well-defined integral homology homomorphism <span class="math" data-tex="\(\tau\)">\(\tau\)</span>; they also permit different initially chosen radii. The construction covers every finite chain in <span class="math" data-tex="\(Y\)">\(Y\)</span> because all of <span class="math" data-tex="\(Y\)">\(Y\)</span> lies in this single chart. There is no implicit appeal to a general tubular-neighborhood or Thom-isomorphism theorem.</p>
+<p>The radial homotopy <span class="math" data-tex="\(w\mapsto w\,|w|^{-s}\)">\(w\mapsto w\,|w|^{-s}\)</span> retracts each <span class="math" data-tex="\(\mathbb C^*\)">\(\mathbb C^*\)</span> to its counterclockwise unit circle, fixing that circle. Applying PR3 with the one-puncture sets <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, or applying its identical circle calculation after this homotopy, proves</p>
+<span class="math math-display" data-tex="\[
+ H_{d-1}(Y;\mathbb Z)=\mathbb Z[B]. \tag{PR22}
+\]">\[
+ H_{d-1}(Y;\mathbb Z)=\mathbb Z[B]. \tag{PR22}
+\]</span>
+<p>This includes <span class="math" data-tex="\(d=1\)">\(d=1\)</span> with the positive point. It suffices to evaluate the tube on this actual generator.</p>
+<h2 id="pr7-its-phase-matrix-sign-and-primitive-image-2">PR7. Its phase matrix, sign and primitive image</h2>
+<p>For <span class="math" data-tex="\(B\)">\(B\)</span>, choose <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> so that <span class="math" data-tex="\(L=1/\varepsilon&gt;A_*\)">\(L=1/\varepsilon&gt;A_*\)</span>. In affine coordinates <span class="math" data-tex="\(z_0=1\)">\(z_0=1\)</span>, the tube (PR21) is</p>
+<span class="math math-display" data-tex="\[
+ t_j=L e^{i(\theta_j-\phi)}\ (j&lt;d),\qquad t_d=L e^{-i\phi}. \tag{PR23}
+\]">\[
+ t_j=L e^{i(\theta_j-\phi)}\ (j&lt;d),\qquad t_d=L e^{-i\phi}. \tag{PR23}
+\]</span>
+<p>Thus it is the large product torus <span class="math" data-tex="\(T_L=\{|t_1|=\cdots=|t_d|=L\}\)">\(T_L=\{|t_1|=\cdots=|t_d|=L\}\)</span>, with phase variables related by</p>
+<span class="math math-display" data-tex="\[
+ (\alpha_1,\ldots,\alpha_d)
+ =(\theta_1-\phi,\ldots,\theta_{d-1}-\phi,-\phi),\qquad
+ \det\frac{\partial\alpha}{\partial(\phi,\theta_1,\ldots,\theta_{d-1})}=(-1)^d. \tag{PR24}
+\]">\[
+ (\alpha_1,\ldots,\alpha_d)
+ =(\theta_1-\phi,\ldots,\theta_{d-1}-\phi,-\phi),\qquad
+ \det\frac{\partial\alpha}{\partial(\phi,\theta_1,\ldots,\theta_{d-1})}=(-1)^d. \tag{PR24}
+\]</span>
+<p>To check the sign, move the first column, consisting of minus ones, to the last position using <span class="math" data-tex="\(d-1\)">\(d-1\)</span> swaps. The resulting matrix has top-left identity and last diagonal entry <span class="math" data-tex="\(-1\)">\(-1\)</span>, hence determinant <span class="math" data-tex="\((-1)^{d-1}(-1)=(-1)^d\)">\((-1)^{d-1}(-1)=(-1)^d\)</span>. The map is a torus diffeomorphism: its inverse is <span class="math" data-tex="\(\phi=-\alpha_d\)">\(\phi=-\alpha_d\)</span>, <span class="math" data-tex="\(\theta_j=\alpha_j-\alpha_d\)">\(\theta_j=\alpha_j-\alpha_d\)</span> modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. It therefore carries the circle-first orientation to <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span> times the product orientation. Figure 2 gives the actual <span class="math" data-tex="\(d=2\)">\(d=2\)</span> coordinate map; it is an angle diagram, not a drawing of a four-real-dimensional ambient complement.</p>
+<p>The large counterclockwise circle in coordinate <span class="math" data-tex="\(j\)">\(j\)</span> represents <span class="math" data-tex="\(\sum_{a\in S_j}[\gamma_{j,a}]\)">\(\sum_{a\in S_j}[\gamma_{j,a}]\)</span>. One finite oriented planar surface proves this: take its filled disk, remove the interiors of the small disjoint disks, and triangulate the remaining compact surface. Its boundary is the large positive circle minus all small positive circles. Curved boundary arcs can be triangulated as smooth parametrized simplices by finitely many coordinate patches; paired interior edges cancel. Alternatively its coefficients follow from the already-proved one-variable basis and the periods in PR4. Taking finite products and using (PR10) allows replacing one coordinate circle at a time in a product cycle. Multilinearity gives</p>
+<span class="math math-display" data-tex="\[
+ [T_L]=\sum_{\mathbf a}[T_{\mathbf a}],\qquad
+ \int_{\tau B}\Omega_{\mathbf a}=(-1)^d(2\pi i)^d\quad\hbox{for every }\mathbf a. \tag{PR25}
+\]">\[
+ [T_L]=\sum_{\mathbf a}[T_{\mathbf a}],\qquad
+ \int_{\tau B}\Omega_{\mathbf a}=(-1)^d(2\pi i)^d\quad\hbox{for every }\mathbf a. \tag{PR25}
+\]</span>
+<p>Equations (PR23)–(PR25) prove (PR7). The vector of coefficients is <span class="math" data-tex="\((-1)^d(1,\ldots,1)\)">\((-1)^d(1,\ldots,1)\)</span>. Its first coordinate already makes the map from <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> injective. Its image is primitive: subtract its first-coordinate multiple from any vector to make the first coordinate zero. This expresses the quotient as a free group <span class="math" data-tex="\(\mathbb Z^{R-1}\)">\(\mathbb Z^{R-1}\)</span>. Over any field the same first coordinate is a unit, so injection persists, including in characteristic two. This conclusion concerns this tube; it does not contradict WT035's torsion computation in a different affine complement.</p>
+<h2 id="pr8-three-computed-examples-2">PR8. Three computed examples</h2>
+<p><strong>Example 1: the point at infinity and two punctures.</strong> Let <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(S_1=\{-1,1\}\)">\(S_1=\{-1,1\}\)</span>, <span class="math" data-tex="\(F=z_1^2-z_0^2\)">\(F=z_1^2-z_0^2\)</span>. Then <span class="math" data-tex="\(V=\mathbb C\setminus\{-1,1\}\)">\(V=\mathbb C\setminus\{-1,1\}\)</span>, <span class="math" data-tex="\(Y\)">\(Y\)</span> is the point <span class="math" data-tex="\([0:1]\)">\([0:1]\)</span>, and
+<span class="math" data-tex="\(\Omega_-=(z_1+z_0)\omega/(Fz_0)=dt/(t+1)\)">\(\Omega_-=(z_1+z_0)\omega/(Fz_0)=dt/(t+1)\)</span>,
+<span class="math" data-tex="\(\Omega_+=(z_1-z_0)\omega/(Fz_0)=dt/(t-1)\)">\(\Omega_+=(z_1-z_0)\omega/(Fz_0)=dt/(t-1)\)</span>.
+The period matrix on the two positive small circles is <span class="math" data-tex="\(2\pi i\,I_2\)">\(2\pi i\,I_2\)</span>. A positive normal circle <span class="math" data-tex="\(h=\varepsilon e^{i\phi}\)">\(h=\varepsilon e^{i\phi}\)</span> has <span class="math" data-tex="\(t=h^{-1}=L e^{-i\phi}\)">\(t=h^{-1}=L e^{-i\phi}\)</span>, so <span class="math" data-tex="\(\tau[\mathrm{point}]=-[\gamma_-]-[\gamma_+]\)">\(\tau[\mathrm{point}]=-[\gamma_-]-[\gamma_+]\)</span>. The sign is essential. A reduced zero-cycle on an affine C8 equator is a different object.</p>
+<p><strong>Example 2: four independent periods.</strong> Let <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, <span class="math" data-tex="\(S_1=\{-1,1\}\)">\(S_1=\{-1,1\}\)</span>, <span class="math" data-tex="\(S_2=\{0,2\}\)">\(S_2=\{0,2\}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+ F=(z_1^2-z_0^2)z_2(z_2-2z_0),\qquad
+ P_{a,b}=\frac{F}{(z_1-a z_0)(z_2-b z_0)}. \tag{PR26}
+\]">\[
+ F=(z_1^2-z_0^2)z_2(z_2-2z_0),\qquad
+ P_{a,b}=\frac{F}{(z_1-a z_0)(z_2-b z_0)}. \tag{PR26}
+\]</span>
+<p>Here <span class="math" data-tex="\(m=4,n=3\)">\(m=4,n=3\)</span>, each <span class="math" data-tex="\(P_{a,b}\)">\(P_{a,b}\)</span> has degree two and <span class="math" data-tex="\(q=-1\)">\(q=-1\)</span>. In the order <span class="math" data-tex="\((-1,0),(-1,2),(1,0),(1,2)\)">\((-1,0),(-1,2),(1,0),(1,2)\)</span>, the period matrix is <span class="math" data-tex="\((2\pi i)^2 I_4=-4\pi^2I_4\)">\((2\pi i)^2 I_4=-4\pi^2I_4\)</span>. The normal-circle-first tube has phase matrix <span class="math" data-tex="\(\begin{psmallmatrix}-1&amp;1\\-1&amp;0\end{psmallmatrix}\)">\(\begin{psmallmatrix}-1&amp;1\\-1&amp;0\end{psmallmatrix}\)</span>, determinant <span class="math" data-tex="\(+1\)">\(+1\)</span>, and coefficient vector <span class="math" data-tex="\((1,1,1,1)\)">\((1,1,1,1)\)</span>. If a cycle has coefficients <span class="math" data-tex="\((2,-1,0,3)\)">\((2,-1,0,3)\)</span>, its four normalized periods are exactly those integers. Figure 3 shows this diagonal matrix and the separate tube vector.</p>
+<p><strong>Example 3: a three-torus and repeated factors.</strong> Let <span class="math" data-tex="\(d=3\)">\(d=3\)</span>, <span class="math" data-tex="\(S_j=\{0\}\)">\(S_j=\{0\}\)</span>, and <span class="math" data-tex="\(F=z_1^2z_2z_3^3\)">\(F=z_1^2z_2z_3^3\)</span>. Then <span class="math" data-tex="\(m=6,n=4\)">\(m=6,n=4\)</span>, <span class="math" data-tex="\(V=(\mathbb C^*)^3\)">\(V=(\mathbb C^*)^3\)</span>, <span class="math" data-tex="\(Y=(\mathbb C^*)^2\)">\(Y=(\mathbb C^*)^2\)</span>, and
+<span class="math" data-tex="\(P=z_1z_3^2\)">\(P=z_1z_3^2\)</span> has degree three. The sole period form is
+<span class="math" data-tex="\(P\omega/(Fz_0)=\omega/(z_0z_1z_2z_3)\)">\(P\omega/(Fz_0)=\omega/(z_0z_1z_2z_3)\)</span>.
+Its period on the positive product three-torus is <span class="math" data-tex="\((2\pi i)^3\)">\((2\pi i)^3\)</span>, and <span class="math" data-tex="\(\tau[B]=-[T]\)">\(\tau[B]=-[T]\)</span>. Changing any positive multiplicities in <span class="math" data-tex="\(F\)">\(F\)</span> changes the homogeneous numerator required in PR5 but changes neither complement nor period basis nor tube sign. This is a useful singular-divisor example covered by the proof.</p>
+<h2 id="pr9-the-affine-c8-tube-comparison-for-this-arrangement-2">PR9. The affine C8 tube comparison for this arrangement</h2>
+<p>There is a further exact receiver available in this model. In vector coordinates let <span class="math" data-tex="\(H=\{z_0=0\}\)">\(H=\{z_0=0\}\)</span>, <span class="math" data-tex="\(M_H=H\setminus\{F=0\}=(\mathbb C^*)^d\)">\(M_H=H\setminus\{F=0\}=(\mathbb C^*)^d\)</span>, and let <span class="math" data-tex="\(p:M_H\to Y\)">\(p:M_H\to Y\)</span> be projectivization. Thus <span class="math" data-tex="\(p(k)\)">\(p(k)\)</span> has coordinates <span class="math" data-tex="\(w_j=k_j/k_d\)">\(w_j=k_j/k_d\)</span>. Let <span class="math" data-tex="\(k\)">\(k\)</span> be any finite smooth integral <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-cycle in <span class="math" data-tex="\(M_H\)">\(M_H\)</span>, and take the counterclockwise circle <span class="math" data-tex="\(z=\rho e^{i\phi}\)">\(z=\rho e^{i\phi}\)</span>, first in the orientation. For sufficiently small <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, define the affine C8-type projective tube</p>
+<span class="math math-display" data-tex="\[
+ C_\rho(k):(z,k)\longmapsto[z:k_1:\cdots:k_d]\in V,
+ \qquad [C_\rho(k)]=\tau(p_*[k]). \tag{PR27}
+\]">\[
+ C_\rho(k):(z,k)\longmapsto[z:k_1:\cdots:k_d]\in V,
+ \qquad [C_\rho(k)]=\tau(p_*[k]). \tag{PR27}
+\]</span>
+<p>The asserted homology identity includes its sign and has coefficient one. It is not assumed from a general tube theorem. On the compact support of <span class="math" data-tex="\(k\)">\(k\)</span>, all <span class="math" data-tex="\(|k_j|\)">\(|k_j|\)</span> have a positive lower bound; hence <span class="math" data-tex="\(|k_j-a z|&gt;0\)">\(|k_j-a z|&gt;0\)</span> for every factor at sufficiently small radius. The chain product and (PR10) prove that <span class="math" data-tex="\(C_\rho(k)\)">\(C_\rho(k)\)</span> is a cycle. A radial homotopy proves its class and all its closed-form periods independent of sufficiently small <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</p>
+<p>To prove the equality in (PR27), compute these periods using the complete basis in PR4. The affine target coordinates are <span class="math" data-tex="\(t_j=k_j/z\)">\(t_j=k_j/z\)</span>. The pullback of (PR5) is</p>
+<span class="math math-display" data-tex="\[
+ \bigwedge_{j=1}^{d}
+ \frac{dk_j-k_j\,dz/z}{k_j-a_j z}
+ =\bigwedge_{j=1}^{d}
+ \frac{d\log k_j-dz/z}{1-a_j z/k_j}. \tag{PR28}
+\]">\[
+ \bigwedge_{j=1}^{d}
+ \frac{dk_j-k_j\,dz/z}{k_j-a_j z}
+ =\bigwedge_{j=1}^{d}
+ \frac{d\log k_j-dz/z}{1-a_j z/k_j}. \tag{PR28}
+\]</span>
+<p>Here <span class="math" data-tex="\(d\log k_j\)">\(d\log k_j\)</span> means <span class="math" data-tex="\(dk_j/k_j\)">\(dk_j/k_j\)</span>, with no choice of a logarithm. On each of the finitely many smooth parameter simplices, the denominators tend uniformly to one as <span class="math" data-tex="\(\rho\downarrow0\)">\(\rho\downarrow0\)</span>, and derivatives of the maps are bounded. The normal factor is <span class="math" data-tex="\(dz/z=i\,d\phi\)">\(dz/z=i\,d\phi\)</span>. It follows by finite iterated integration that the period tends to that of the wedge without its denominators. Put
+<span class="math" data-tex="\(\lambda_j=d\log(k_j/k_d)\)">\(\lambda_j=d\log(k_j/k_d)\)</span> for <span class="math" data-tex="\(j&lt;d\)">\(j&lt;d\)</span> and <span class="math" data-tex="\(\gamma=d\log k_d-dz/z\)">\(\gamma=d\log k_d-dz/z\)</span>. This limiting wedge is</p>
+<span class="math math-display" data-tex="\[
+ (\lambda_1+\gamma)\wedge\cdots\wedge(\lambda_{d-1}+\gamma)\wedge\gamma
+ =\lambda_1\wedge\cdots\wedge\lambda_{d-1}\wedge\gamma.
+ \tag{PR29}
+\]">\[
+ (\lambda_1+\gamma)\wedge\cdots\wedge(\lambda_{d-1}+\gamma)\wedge\gamma
+ =\lambda_1\wedge\cdots\wedge\lambda_{d-1}\wedge\gamma.
+ \tag{PR29}
+\]</span>
+<p>The term containing <span class="math" data-tex="\(d\log k_d\)">\(d\log k_d\)</span> is a <span class="math" data-tex="\(d\)">\(d\)</span>-form from a <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-dimensional base and pulls back to zero. Moving <span class="math" data-tex="\(dz/z\)">\(dz/z\)</span> first in the remaining term gives <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span>. Independence of radius therefore turns the limit into the exact identity</p>
+<span class="math math-display" data-tex="\[
+ \int_{C_\rho(k)}\Omega_{\mathbf a}
+ =(-1)^d\,2\pi i\int_{p_*k}
+       \frac{dw_1}{w_1}\wedge\cdots\wedge\frac{dw_{d-1}}{w_{d-1}}
+ =(-1)^d(2\pi i)^d\,b,
+ \quad p_*[k]=b[B]. \tag{PR30}
+\]">\[
+ \int_{C_\rho(k)}\Omega_{\mathbf a}
+ =(-1)^d\,2\pi i\int_{p_*k}
+       \frac{dw_1}{w_1}\wedge\cdots\wedge\frac{dw_{d-1}}{w_{d-1}}
+ =(-1)^d(2\pi i)^d\,b,
+ \quad p_*[k]=b[B]. \tag{PR30}
+\]</span>
+<p>For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, the empty wedge is the constant zero-form <span class="math" data-tex="\(1\)">\(1\)</span>; its integral over a zero-chain is its total coefficient. The base coefficient <span class="math" data-tex="\(b\)">\(b\)</span> is an integer by (PR22), and the logarithmic form has period <span class="math" data-tex="\((2\pi i)^{d-1}\)">\((2\pi i)^{d-1}\)</span> on the displayed actual base torus. The right side of (PR30) is precisely the period of <span class="math" data-tex="\(\tau(p_*[k])\)">\(\tau(p_*[k])\)</span> from (PR25). By the integral basis and (PR17), equality of all these periods is equality of the two integral classes. This proves (PR27), including when the phase of <span class="math" data-tex="\(k_d\)">\(k_d\)</span> has no global logarithm. Assuming such a logarithm merely to reparametrize a whole cycle would have been unjustified.</p>
+<p>For the exact C8 signed centers, suppose the original region and deformation hypotheses have furnished finite smooth center cycles <span class="math" data-tex="\(k^-\)">\(k^-\)</span> and <span class="math" data-tex="\(k^+\)">\(k^+\)</span> in <span class="math" data-tex="\(M_H\)">\(M_H\)</span>. Specifically they are the images of the equator under <span class="math" data-tex="\(\xi\mapsto\xi-i\varepsilon\Theta(\xi)\)">\(\xi\mapsto\xi-i\varepsilon\Theta(\xi)\)</span> and <span class="math" data-tex="\(\xi\mapsto\xi+i\varepsilon\Theta(\xi)\)">\(\xi\mapsto\xi+i\varepsilon\Theta(\xi)\)</span>, with the equator oriented as the boundary of the negative hemisphere, as in C8 and AH032-2. With <span class="math" data-tex="\(x=e_0\)">\(x=e_0\)</span>, the C8 vector map is <span class="math" data-tex="\(z e_0+k^\pm\)">\(z e_0+k^\pm\)</span>; its normal scalar is <span class="math" data-tex="\(x\cdot x=1\)">\(x\cdot x=1\)</span>. Formula (83)'s cycle therefore has the identity</p>
+<span class="math math-display" data-tex="\[
+ [\alpha_-]=[C_\rho(k^-)]+(-1)^d[C_\rho(k^+)]
+ =\tau\bigl(p_*([k^-]+(-1)^d[k^+])\bigr). \tag{PR31}
+\]">\[
+ [\alpha_-]=[C_\rho(k^-)]+(-1)^d[C_\rho(k^+)]
+ =\tau\bigl(p_*([k^-]+(-1)^d[k^+])\bigr). \tag{PR31}
+\]</span>
+<p>There is no extra factor two in this tube identity. The distinct hemisphere-boundary identity in C8 is
+<span class="math" data-tex="\(\partial\widetilde\alpha_+=-2(k^-+(-1)^d k^+)\)">\(\partial\widetilde\alpha_+=-2(k^-+(-1)^d k^+)\)</span>;
+its factor belongs to that boundary relation. In particular vanishing of all the periods of (PR19) on <span class="math" data-tex="\(\alpha_-\)">\(\alpha_-\)</span> implies
+<span class="math" data-tex="\(p_*([k^-]+(-1)^d[k^+])=0\)">\(p_*([k^-]+(-1)^d[k^+])=0\)</span> integrally in this arrangement, by PR7. With rational coefficients and the additional AH032-2 logarithmic-period hypotheses, its admitted smooth splitting can then be applied to the signed affine center. A reduced zero-cycle retains its augmentation convention in dimension <span class="math" data-tex="\(n=2\)">\(n=2\)</span>. The proof does not produce permitted centers at a point failing the C8 hypotheses, determine their class in every component, or promote this conditional identification to a general polynomial.</p>
+<h2 id="pr10-conditional-receiver-for-the-general-c8-argument-2">PR10. Conditional receiver for the general C8 argument</h2>
+<p>For a general real homogeneous <span class="math" data-tex="\(F\)">\(F\)</span>, put <span class="math" data-tex="\(d=n-1\)">\(d=n-1\)</span>, <span class="math" data-tex="\(L(\zeta)=x\zeta\)">\(L(\zeta)=x\zeta\)</span>, <span class="math" data-tex="\(U=\mathbb P^d\setminus\{F=0\}\)">\(U=\mathbb P^d\setminus\{F=0\}\)</span>, <span class="math" data-tex="\(Y=\{L=0\}\cap U\)">\(Y=\{L=0\}\cap U\)</span>, and <span class="math" data-tex="\(V=U\setminus Y\)">\(V=U\setminus Y\)</span>. Suppose two additional statements have actually been justified for those objects:</p>
+<ol>
+<li>Rational top forms <span class="math" data-tex="\(P\omega/(F^k L^s)\)">\(P\omega/(F^k L^s)\)</span>, with <span class="math" data-tex="\(k,s&gt;0\)">\(k,s&gt;0\)</span> and <span class="math" data-tex="\(\deg P=mk+s-n\)">\(\deg P=mk+s-n\)</span>, span ordinary <span class="math" data-tex="\(H^d_{\mathrm{dR}}(V;\mathbb C)\)">\(H^d_{\mathrm{dR}}(V;\mathbb C)\)</span>.</li>
+<li>The correctly oriented normal tube <span class="math" data-tex="\(\tau:H_{d-1}(Y;\mathbb Q)\to H_d(V;\mathbb Q)\)">\(\tau:H_{d-1}(Y;\mathbb Q)\to H_d(V;\mathbb Q)\)</span> is injective.</li>
+</ol>
+<p>If <span class="math" data-tex="\(\beta\in H_{d-1}(Y;\mathbb Q)\)">\(\beta\in H_{d-1}(Y;\mathbb Q)\)</span> has zero periods of every such form on <span class="math" data-tex="\(\tau\beta\)">\(\tau\beta\)</span>, then smooth period detection CD034 first gives <span class="math" data-tex="\((\tau\beta)\otimes1=0\)">\((\tau\beta)\otimes1=0\)</span> over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. CD034's faithful extension <span class="math" data-tex="\(\mathbb Q\to\mathbb C\)">\(\mathbb Q\to\mathbb C\)</span> gives <span class="math" data-tex="\(\tau\beta=0\)">\(\tau\beta=0\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and the assumed injection gives <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>. This is the precise logical use of the two receivers; it does not assert their hypotheses in the general case. PR1–PR7 prove both receivers, and even integral injection, for the stated arrangement family.</p>
+<p>To combine this with AH032-2 for an actual affine cycle <span class="math" data-tex="\(k_x\)">\(k_x\)</span>, one additionally needs the exact identification of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with the appropriately oriented projective class <span class="math" data-tex="\(p_*[k_x]\)">\(p_*[k_x]\)</span>, and the actual affine/projective C8 tube multiplicity and scalar. AH032-2's ordinary smooth splitting and logarithmic-period calculation then supply their stated relative bridge. PR9 proves the identity for this arrangement and its stated centers; it does not make that identification for all <span class="math" data-tex="\(F\)">\(F\)</span> or replace the AH032-2 hypotheses by a generic topological slogan. Openness of permitted deformations alone also does not establish constancy on an entire component.</p>
+<h2 id="pr11-free-primary-comparison-and-retained-prerequisites-2">PR11. Free primary comparison and retained prerequisites</h2>
+<p>The free primary proof of Atiyah–Bott–Gårding I, printed p.187 (PDF p.79), states the rational-form spanning and tube-kernel ingredients before Theorem 10.9 and derives Corollary 10.10 from Theorems 10.3 and 10.9. This locates the general component receiver precisely. The free primary proof of Atiyah–Bott–Gårding II, Lemma 8.1, printed p.176 (PDF p.32), proves tube injection by compact-support Poincaré duality and a Stein homology vanishing theorem. With <span class="math" data-tex="\(d=n-1\)">\(d=n-1\)</span>, its preceding group is <span class="math" data-tex="\(H_c^{d-1}(U)\)">\(H_c^{d-1}(U)\)</span>, dual to <span class="math" data-tex="\(H_{d+1}(U)\)">\(H_{d+1}(U)\)</span>; the latter vanishes for a Stein manifold of complex dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Those degrees, rather than ordinary <span class="math" data-tex="\(H^{d-1}(U)\)">\(H^{d-1}(U)\)</span>, matter. A written general proof would have to supply the correct compact-support exact sequence/duality and the Stein homology bound with all hypotheses, or retain them as explicit external prerequisites.</p>
+<p>The fuller free primary route appears in Atiyah–Bott–Gårding II, §4, printed pp.156–161 (PDF pp.12–17), culminating in Theorem 4.4, and in its homogeneous top-form consequence Proposition 5.1, printed p.163 (PDF p.19). The proof uses normal-crossing local reduction, coherent-sheaf vanishing, projective comparison and resolution of singularities; these remain explicit external prerequisites of the general route. Grothendieck's free primary paper <em>On the de Rham cohomology of algebraic varieties</em>, Theorem 1 and Theorem 1′ (NUMDAM PDF pp.2–3), supplies the general smooth-affine algebraic/analytic comparison. This manuscript does not reprove those general results or label the receiver recursively closed. The specialized top-degree completeness in PR4 uses CD034 plus the explicit period basis instead. Private H2 is a statement and coefficient-convention comparison only; no proof or illustration is copied from it or required here. WT035's actual order-two class also does not settle that source's unstated coefficient convention.</p>
+<p>The bibliography and dependency ledger bind the exact free primary pages and the inherited written proofs. Our figures are original coordinate diagrams drawn from PR11, PR24 and PR26; no source media are reused.</p>
+<h2 id="pr12-exercises-and-complete-solutions-2">PR12. Exercises and complete solutions</h2>
+<p><strong>Exercise 1 — introductory: check the projective degree.</strong> For <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, <span class="math" data-tex="\(m=5\)">\(m=5\)</span>, take a homogeneous numerator <span class="math" data-tex="\(P\)">\(P\)</span> of degree three. Which <span class="math" data-tex="\(s\)">\(s\)</span> makes <span class="math" data-tex="\(P\omega/(Fz_0^s)\)">\(P\omega/(Fz_0^s)\)</span> descend? Find the associated <span class="math" data-tex="\(q\)">\(q\)</span> in C8.</p>
+<p><strong>Solution.</strong> Horizontality follows from <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. The scaling degree is <span class="math" data-tex="\(3+3-5-s=1-s\)">\(3+3-5-s=1-s\)</span>, so <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. C8 gives <span class="math" data-tex="\(q=m-n-|\alpha|=5-3-3=-1\)">\(q=m-n-|\alpha|=5-3-3=-1\)</span> for each monomial in <span class="math" data-tex="\(P\)">\(P\)</span>, agreeing with the denominator. Descending depends on the whole form's scaling, not just the numerator.</p>
+<p><strong>Exercise 2 — introductory: verify hyperbolicity.</strong> For the polynomial in Example 2, compute <span class="math" data-tex="\(F(\xi+tN)\)">\(F(\xi+tN)\)</span> with <span class="math" data-tex="\(N=(0,1,1)\)">\(N=(0,1,1)\)</span>, identify its four real roots and verify <span class="math" data-tex="\(F(N)\neq0\)">\(F(N)\neq0\)</span>.</p>
+<p><strong>Solution.</strong> It equals <span class="math" data-tex="\(((\xi_1+t)^2-\xi_0^2)(\xi_2+t)(\xi_2+t-2\xi_0)\)">\(((\xi_1+t)^2-\xi_0^2)(\xi_2+t)(\xi_2+t-2\xi_0)\)</span>. The roots are <span class="math" data-tex="\(-\xi_1+\xi_0,-\xi_1-\xi_0,-\xi_2,-\xi_2+2\xi_0\)">\(-\xi_1+\xi_0,-\xi_1-\xi_0,-\xi_2,-\xi_2+2\xi_0\)</span>, with coincidences permitted. All are real. At <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(z_0=0,z_1=z_2=1\)">\(z_0=0,z_1=z_2=1\)</span>, so <span class="math" data-tex="\(F(N)=1\)">\(F(N)=1\)</span>. This is exactly the homogeneous real-root definition used in PR5.</p>
+<p><strong>Exercise 3 — intermediate: recover a class from periods.</strong> In Example 2, a finite integral two-cycle has periods <span class="math" data-tex="\((-8\pi^2,4\pi^2,0,-12\pi^2)\)">\((-8\pi^2,4\pi^2,0,-12\pi^2)\)</span> in the stated form order. Determine its class and decide whether it bounds integrally.</p>
+<p><strong>Solution.</strong> Divide by <span class="math" data-tex="\((2\pi i)^2=-4\pi^2\)">\((2\pi i)^2=-4\pi^2\)</span>. Its coefficient vector is <span class="math" data-tex="\((2,-1,0,3)\)">\((2,-1,0,3)\)</span>. Since the four product tori are an actual integral basis, this is a nonzero class and it does not bound integrally. It also does not bound rationally or complexly. This conclusion uses PR14, not a generic rule about complex periods and integral homology.</p>
+<p><strong>Exercise 4 — intermediate: track the normal-circle sign.</strong> In dimension <span class="math" data-tex="\(d=3\)">\(d=3\)</span>, write the phase matrix of PR24 in the input order <span class="math" data-tex="\((\phi,\theta_1,\theta_2)\)">\((\phi,\theta_1,\theta_2)\)</span>. Find its inverse modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> and its determinant. What changes if the circle is put last?</p>
+<p><strong>Solution.</strong> The matrix is <span class="math" data-tex="\(\begin{psmallmatrix}-1&amp;1&amp;0\\-1&amp;0&amp;1\\-1&amp;0&amp;0\end{psmallmatrix}\)">\(\begin{psmallmatrix}-1&amp;1&amp;0\\-1&amp;0&amp;1\\-1&amp;0&amp;0\end{psmallmatrix}\)</span>. The inverse formula is <span class="math" data-tex="\(\phi=-\alpha_3\)">\(\phi=-\alpha_3\)</span>, <span class="math" data-tex="\(\theta_1=\alpha_1-\alpha_3\)">\(\theta_1=\alpha_1-\alpha_3\)</span>, <span class="math" data-tex="\(\theta_2=\alpha_2-\alpha_3\)">\(\theta_2=\alpha_2-\alpha_3\)</span>. Its determinant is <span class="math" data-tex="\(-1=(-1)^3\)">\(-1=(-1)^3\)</span>, so the tube class is minus the sum of positive product tori. Moving the circle past two base variables gives the factor <span class="math" data-tex="\((-1)^2=1\)">\((-1)^2=1\)</span>, so in this dimension the sign is unchanged. In general that permutation contributes <span class="math" data-tex="\((-1)^{d-1}\)">\((-1)^{d-1}\)</span>; one must specify the order before quoting a tube sign.</p>
+<p><strong>Exercise 5 — advanced: prove primitivity and explain the coefficient limit.</strong> Prove directly that the subgroup generated by <span class="math" data-tex="\((1,\ldots,1)\)">\((1,\ldots,1)\)</span> in <span class="math" data-tex="\(\mathbb Z^R\)">\(\mathbb Z^R\)</span> has torsion-free quotient. Explain why this argument cannot be transferred to WT035's affine wave sphere without a new homology calculation.</p>
+<p><strong>Solution.</strong> The quotient map <span class="math" data-tex="\(v\mapsto(v_2-v_1,\ldots,v_R-v_1)\)">\(v\mapsto(v_2-v_1,\ldots,v_R-v_1)\)</span> is surjective onto <span class="math" data-tex="\(\mathbb Z^{R-1}\)">\(\mathbb Z^{R-1}\)</span>, and its kernel consists exactly of the constant vectors, the subgroup generated by <span class="math" data-tex="\((1,\ldots,1)\)">\((1,\ldots,1)\)</span>. For <span class="math" data-tex="\(R=1\)">\(R=1\)</span>, its target is zero and the same statement holds. Changing the generator's sign gives the same subgroup. WT035 computes a different homology group, <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>, with an actual nonzero sphere class of order two. Complex periods vanish on that torsion class; no free-coordinate basis of the kind used here exists there. Neither this arrangement nor that torsion example chooses an unstated historical coefficient convention.</p>
+<p><strong>Exercise 6 — advanced: audit the general receiver.</strong> A proof for an arbitrary <span class="math" data-tex="\(F\)">\(F\)</span> cites only CD034 and local openness of permitted deformations, then concludes that zero periods of C8 rational forms force the projective center to vanish everywhere on a component. Identify the missing mathematical steps and state the valid conditional conclusion.</p>
+<p><strong>Solution.</strong> CD034 detects a class from all closed smooth forms, so one must first prove that the specific rational top forms span the needed smooth de Rham group. One then needs an injective projective tube map on the specified coefficient ring, an exact orientation/multiplicity identification of the actual C8 tube with that tube map applied to the projected center, and the geometric/analytic argument carrying the condition throughout a component. Local openness alone supplies the last conclusion only locally. Under the first two hypotheses of PR10, zero rational periods on <span class="math" data-tex="\(\tau\beta\)">\(\tau\beta\)</span> imply <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>; applying this to <span class="math" data-tex="\(p_*[k_x]\)">\(p_*[k_x]\)</span> additionally requires the stated identification. PR1–PR7 prove the first two hypotheses for the separated arrangement, and PR9 supplies its affine tube identity. The general algebraic de Rham and Stein/duality routes remain explicit free external prerequisites until their needed proofs are supplied.</p>
+<p><a href="reproduce-AN02-L121.html">Reproduction guide, exact original learner and formal proof downloads, credits and terms</a> · <span class="unlinked">Download the complete assembled source</span>.</p>
+<p>Written supporting receivers: <a href="AN02-L116.html">Smooth de Rham cycle detection CD034</a> · <a href="AN02-L119.html">The separate affine wave torsion computation WT035</a>. The general projective, affine and component receivers retain their stated hypotheses.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

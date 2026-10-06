@@ -1,0 +1,344 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Hecke L-functions and the Dedekind zeta function</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/course.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="index.html">Course contents</a> · Lesson 10 of 12</nav><aside class="notice"><p>Author-self-checked draft. Independent programme review is pending.</p><p>Lessons 1 and 4, as revised adaptations: CC BY-NC-SA 4.0; their previously original CC0 components retain that dedication. Other original course text: CC0. The marked edge-stabilizer adaptation in lesson 11: CC BY 4.0. Source credits and changes appear in the lessons. Prerequisite snapshots retain their edition-specific notices. MathJax and font licences are retained in the assets folder.</p><p>The five separate prerequisites <a href="prerequisites/HA-LCA-02.md">HA-LCA-02</a>, <a href="prerequisites/HA-LCA-03.md">HA-LCA-03</a>, <a href="prerequisites/HA-LCA-09.md">HA-LCA-09</a>, <a href="prerequisites/HA-LCA-10.md">HA-LCA-10</a>, <a href="prerequisites/HA-LCA-11.md">HA-LCA-11</a> are Design Science License adaptations of D. H. Fremlin. Their exact editable lessons retain all human-source credits, copyright, adaptation, change and warranty notices. Their <a href="prerequisites/assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">full licence</a> and <span class="unlinked">unchanged author source package</span> are bundled. The archive retains all auxiliary notices. These separate components retain their own terms; independent NT-ADL lesson licences remain as stated.</p></aside><article class="lesson"><h1 id="hecke-l-functions-and-the-dedekind-zeta-function">Hecke L-functions and the Dedekind zeta function</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The global integral has already been continued. We now choose its test function so that the integral is exactly an Euler product with Gamma factors. This identifies the conductor in the functional equation. A separate computation of the multiplicative quotient measure then turns the two residues of the integral into arithmetic formulas.</p>
+<p>Throughout, <span class="math" data-tex="\(K\)">\(K\)</span> is a number field, <span class="math" data-tex="\(D=|d_K|\)">\(D=|d_K|\)</span>, and <span class="math" data-tex="\(r_1,r_2\)">\(r_1,r_2\)</span> are its real and complex place counts. Write <span class="math" data-tex="\(m=r_1+r_2\)">\(m=r_1+r_2\)</span>, <span class="math" data-tex="\(h=h_K\)">\(h=h_K\)</span>, and <span class="math" data-tex="\(w=w_K\)">\(w=w_K\)</span>. The regulator <span class="math" data-tex="\(R=R_K\)">\(R=R_K\)</span> uses the weighted logarithms <span class="math" data-tex="\(\log|u|_v\)">\(\log|u|_v\)</span>, with <span class="math" data-tex="\(|z|_v=|z|^2\)">\(|z|_v=|z|^2\)</span> at a complex place, and the determinant obtained by deleting one coordinate. Set <span class="math" data-tex="\(R=1\)">\(R=1\)</span> when <span class="math" data-tex="\(m=1\)">\(m=1\)</span>. The unit-lattice theorem and the finiteness of the class group were proved in <em>Idèles and the idèle class group</em>.</p>
+<h2 id="two-completions-and-the-standard-test">Two completions and the standard test</h2>
+<p>Let <span class="math" data-tex="\(\omega:C_K\to S^1\)">\(\omega:C_K\to S^1\)</span> be a continuous unitary Hecke character. At a finite place its conductor exponent <span class="math" data-tex="\(a_v\)">\(a_v\)</span> is zero if <span class="math" data-tex="\(\omega_v\)">\(\omega_v\)</span> is trivial on <span class="math" data-tex="\(\mathcal O_v^\times\)">\(\mathcal O_v^\times\)</span>, and otherwise is the least positive integer for which it is trivial on <span class="math" data-tex="\(1+\mathfrak p_v^{a_v}\)">\(1+\mathfrak p_v^{a_v}\)</span>. There are only finitely many positive exponents. Define the intrinsic conductor and its analytic scale by</p>
+<span class="math math-display" data-tex="\[
+\mathfrak f=\prod_{v&lt;\infty}\mathfrak p_v^{a_v},\qquad
+Q=D\,N\mathfrak f.
+\tag{1}
+\]">\[
+\mathfrak f=\prod_{v&lt;\infty}\mathfrak p_v^{a_v},\qquad
+Q=D\,N\mathfrak f.
+\tag{1}
+\]</span>
+<p>This conductor belongs to the character itself. Describing the same character with a larger ray modulus does not change (1).</p>
+<p>At real places write <span class="math" data-tex="\(\omega_v(x)=\operatorname{sgn}(x)^{\epsilon_v}|x|^{it_v}\)">\(\omega_v(x)=\operatorname{sgn}(x)^{\epsilon_v}|x|^{it_v}\)</span>, where <span class="math" data-tex="\(\epsilon_v\in\{0,1\}\)">\(\epsilon_v\in\{0,1\}\)</span>. At complex places write <span class="math" data-tex="\(\omega_v(z)=(z/|z|)^{n_v}|z|_v^{it_v}\)">\(\omega_v(z)=(z/|z|)^{n_v}|z|_v^{it_v}\)</span>, where <span class="math" data-tex="\(n_v\in\mathbb Z\)">\(n_v\in\mathbb Z\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(s,\omega)&amp;=\prod_{\substack{v&lt;\infty\\a_v=0}}
+(1-\omega_v(\pi_v)q_v^{-s})^{-1},\\
+\Gamma_\infty(s,\omega)&amp;=
+\prod_{v\text{ real}}\Gamma_{\mathbb R}(s+it_v+\epsilon_v)
+\prod_{v\text{ complex}}\Gamma_{\mathbb C}(s+it_v+|n_v|/2),\\
+L^*(s,\omega)&amp;=\Gamma_\infty(s,\omega)L(s,\omega),\qquad
+\Lambda(s,\omega)=Q^{s/2}L^*(s,\omega).
+\end{aligned}
+\tag{2}
+\]">\[
+\begin{aligned}
+L(s,\omega)&amp;=\prod_{\substack{v&lt;\infty\\a_v=0}}
+(1-\omega_v(\pi_v)q_v^{-s})^{-1},\\
+\Gamma_\infty(s,\omega)&amp;=
+\prod_{v\text{ real}}\Gamma_{\mathbb R}(s+it_v+\epsilon_v)
+\prod_{v\text{ complex}}\Gamma_{\mathbb C}(s+it_v+|n_v|/2),\\
+L^*(s,\omega)&amp;=\Gamma_\infty(s,\omega)L(s,\omega),\qquad
+\Lambda(s,\omega)=Q^{s/2}L^*(s,\omega).
+\end{aligned}
+\tag{2}
+\]</span>
+<p>Here <span class="math" data-tex="\(\Gamma_{\mathbb R}(z)=\pi^{-z/2}\Gamma(z/2)\)">\(\Gamma_{\mathbb R}(z)=\pi^{-z/2}\Gamma(z/2)\)</span> and <span class="math" data-tex="\(\Gamma_{\mathbb C}(z)=2(2\pi)^{-z}\Gamma(z)\)">\(\Gamma_{\mathbb C}(z)=2(2\pi)^{-z}\Gamma(z)\)</span>. Distinguishing <span class="math" data-tex="\(L^*\)">\(L^*\)</span> from <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> fixes where the power of <span class="math" data-tex="\(Q\)">\(Q\)</span> appears.</p>
+<p>Keep the global trace additive character of <em>Additive characters, self-dual measures and Poisson summation on the adèles</em>. Its real component has negative exponential sign. Finite additive measures are self-dual; finite multiplicative unit groups have mass one. The infinite multiplicative measures are <span class="math" data-tex="\(dx/|x|\)">\(dx/|x|\)</span> and <span class="math" data-tex="\(2\,du\,dv/(\pi|z|^2)\)">\(2\,du\,dv/(\pi|z|^2)\)</span>.</p>
+<p>Choose the following local functions. If <span class="math" data-tex="\(a_v=0\)">\(a_v=0\)</span>, use <span class="math" data-tex="\(f_v=1_{\mathcal O_v}\)">\(f_v=1_{\mathcal O_v}\)</span>. If <span class="math" data-tex="\(a_v&gt;0\)">\(a_v&gt;0\)</span>, set <span class="math" data-tex="\(\eta_v=\omega_v|_{\mathcal O_v^\times}\)">\(\eta_v=\omega_v|_{\mathcal O_v^\times}\)</span> and use <span class="math" data-tex="\(f_v=\eta_v^{-1}1_{\mathcal O_v^\times}\)">\(f_v=\eta_v^{-1}1_{\mathcal O_v^\times}\)</span>. At a real place use <span class="math" data-tex="\(x^{\epsilon_v}e^{-\pi x^2}\)">\(x^{\epsilon_v}e^{-\pi x^2}\)</span>. At a complex place use <span class="math" data-tex="\(\bar z^{n_v}e^{-2\pi|z|^2}\)">\(\bar z^{n_v}e^{-2\pi|z|^2}\)</span> for <span class="math" data-tex="\(n_v\geq0\)">\(n_v\geq0\)</span>, and <span class="math" data-tex="\(z^{-n_v}e^{-2\pi|z|^2}\)">\(z^{-n_v}e^{-2\pi|z|^2}\)</span> for <span class="math" data-tex="\(n_v&lt;0\)">\(n_v&lt;0\)</span>. Their product is a global Schwartz function. The finite local theory gives respectively the Euler factor and one; the infinite local theory gives the Gamma factors in (2). Absolute Euler factorization in <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span> therefore gives the exact equality</p>
+<span class="math math-display" data-tex="\[
+Z(f,\omega,s)=L^*(s,\omega).
+\tag{3}
+\]">\[
+Z(f,\omega,s)=L^*(s,\omega).
+\tag{3}
+\]</span>
+<p>There is no unspecified constant or exponential in this normalization.</p>
+<h2 id="the-conductor-and-the-root-number">The conductor and the root number</h2>
+<p><strong>Theorem 10.1.</strong> Both completions in (2) continue meromorphically, and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L^*(s,\omega)&amp;=W(\omega)Q^{1/2-s}L^*(1-s,\bar\omega),\\
+\Lambda(s,\omega)&amp;=W(\omega)\Lambda(1-s,\bar\omega),
+\qquad |W(\omega)|=1.
+\end{aligned}
+\tag{4}
+\]">\[
+\begin{aligned}
+L^*(s,\omega)&amp;=W(\omega)Q^{1/2-s}L^*(1-s,\bar\omega),\\
+\Lambda(s,\omega)&amp;=W(\omega)\Lambda(1-s,\bar\omega),
+\qquad |W(\omega)|=1.
+\end{aligned}
+\tag{4}
+\]</span>
+<p>They are entire unless <span class="math" data-tex="\(\omega=|\cdot|^{i\tau}\)">\(\omega=|\cdot|^{i\tau}\)</span> for some real <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. In that exceptional case their only poles are simple poles at <span class="math" data-tex="\(-i\tau\)">\(-i\tau\)</span> and <span class="math" data-tex="\(1-i\tau\)">\(1-i\tau\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(d_v\)">\(d_v\)</span> be the local different exponent. The finite local formula in <em>Tate's local theory at the finite places</em>, applied to <span class="math" data-tex="\(c_v=\omega_v|\cdot|_v^s\)">\(c_v=\omega_v|\cdot|_v^s\)</span>, reads</p>
+<span class="math math-display" data-tex="\[
+\varepsilon_v(c_v)=W_vq_v^{(a_v+d_v)(1/2-s)}.
+\tag{5}
+\]">\[
+\varepsilon_v(c_v)=W_vq_v^{(a_v+d_v)(1/2-s)}.
+\tag{5}
+\]</span>
+<p>For an unramified place take any generator <span class="math" data-tex="\(\delta_v\)">\(\delta_v\)</span> of the different and put <span class="math" data-tex="\(W_v=\omega_v(\delta_v)\)">\(W_v=\omega_v(\delta_v)\)</span>. For a ramified place choose <span class="math" data-tex="\(b_v\)">\(b_v\)</span> of valuation <span class="math" data-tex="\(a_v+d_v\)">\(a_v+d_v\)</span>. With representatives of the unit classes modulo <span class="math" data-tex="\(\mathfrak p_v^{a_v}\)">\(\mathfrak p_v^{a_v}\)</span>, the formula is</p>
+<span class="math math-display" data-tex="\[
+W_v=\omega_v(b_v)q_v^{-a_v/2}
+\sum_{u\in(\mathcal O_v/\mathfrak p_v^{a_v})^\times}
+\eta_v(u)^{-1}\psi_v(u/b_v).
+\tag{6}
+\]">\[
+W_v=\omega_v(b_v)q_v^{-a_v/2}
+\sum_{u\in(\mathcal O_v/\mathfrak p_v^{a_v})^\times}
+\eta_v(u)^{-1}\psi_v(u/b_v).
+\tag{6}
+\]</span>
+<p>The sum is well-defined because <span class="math" data-tex="\(\psi_v\)">\(\psi_v\)</span> is trivial on <span class="math" data-tex="\(\mathfrak p_v^{-d_v}\)">\(\mathfrak p_v^{-d_v}\)</span>. The local proof establishes independence of the choices, and gives its absolute value <span class="math" data-tex="\(q_v^{a_v/2}\)">\(q_v^{a_v/2}\)</span>. Thus <span class="math" data-tex="\(|W_v|=1\)">\(|W_v|=1\)</span>. Formula (5) follows directly from the self-dual additive volume <span class="math" data-tex="\(q_v^{-d_v/2}\)">\(q_v^{-d_v/2}\)</span>: its unramified expression is <span class="math" data-tex="\(q_v^{-d_v/2}q_v^{d_v}c_v(\delta_v)\)">\(q_v^{-d_v/2}q_v^{d_v}c_v(\delta_v)\)</span>; its ramified expression is the same initial scalar times <span class="math" data-tex="\(c_v(b_v)\)">\(c_v(b_v)\)</span> times the sum in (6). This checks the exponent and the inverse unit character without a convention change.</p>
+<p>At infinity the corresponding constants, for our negative trace character, are</p>
+<span class="math math-display" data-tex="\[
+W_v=(-i)^{\epsilon_v}\quad(v\text{ real}),\qquad
+W_v=(-i)^{|n_v|}\quad(v\text{ complex}).
+\tag{7}
+\]">\[
+W_v=(-i)^{\epsilon_v}\quad(v\text{ real}),\qquad
+W_v=(-i)^{|n_v|}\quad(v\text{ complex}).
+\tag{7}
+\]</span>
+<p>Imaginary norm twists replace <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(s+it_v\)">\(s+it_v\)</span> in the local Gamma factors; the phases (7) remain the same. All but finitely many constants (5) are one. Since the norm of the different is <span class="math" data-tex="\(D\)">\(D\)</span>, multiplication gives</p>
+<span class="math math-display" data-tex="\[
+\prod_v\varepsilon_v(c_v)=W(\omega)Q^{1/2-s},
+\qquad W(\omega)=\prod_vW_v.
+\tag{8}
+\]">\[
+\prod_v\varepsilon_v(c_v)=W(\omega)Q^{1/2-s},
+\qquad W(\omega)=\prod_vW_v.
+\tag{8}
+\]</span>
+<p>The global factor in (8) is independent of rescaling the trace character by a diagonal <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>. Replace <span class="math" data-tex="\(\psi_v(x)\)">\(\psi_v(x)\)</span> by <span class="math" data-tex="\(\psi_v(ax)\)">\(\psi_v(ax)\)</span> and its self-dual measure by <span class="math" data-tex="\(|a|_v^{1/2}dx_v\)">\(|a|_v^{1/2}dx_v\)</span>. The transformed test is then <span class="math" data-tex="\(|a|_v^{1/2}\widehat f_v(ay)\)">\(|a|_v^{1/2}\widehat f_v(ay)\)</span>. Substitution in its local zeta integral, or Proposition 7.4 at finite places, multiplies the local epsilon factor by <span class="math" data-tex="\(\omega_v(a)|a|_v^{s-1/2}\)">\(\omega_v(a)|a|_v^{s-1/2}\)</span>. Their product is one: <span class="math" data-tex="\(\omega(a)=1\)">\(\omega(a)=1\)</span> and <span class="math" data-tex="\(\prod_v|a|_v=1\)">\(\prod_v|a|_v=1\)</span>. Thus the global factor, including <span class="math" data-tex="\(W(\omega)\)">\(W(\omega)\)</span>, is unchanged. This connects the local dependence on auxiliary choices to the global character and product formula.</p>
+<p>The local functional equations and (3) yield
+<span class="math" data-tex="\(Z(\widehat f,\bar\omega,1-s)=W(\omega)Q^{1/2-s}L^*(1-s,\bar\omega)\)">\(Z(\widehat f,\bar\omega,1-s)=W(\omega)Q^{1/2-s}L^*(1-s,\bar\omega)\)</span>.
+One can first factor the left-hand integral in <span class="math" data-tex="\(\Re s&lt;0\)">\(\Re s&lt;0\)</span>, where it converges absolutely, and then use the meromorphic local identities. The global functional equation identifies its continuation with <span class="math" data-tex="\(Z(f,\omega,s)\)">\(Z(f,\omega,s)\)</span>. There is no assumption that the two original global convergence regions overlap. This proves the first line of (4); multiplication by <span class="math" data-tex="\(Q^{s/2}\)">\(Q^{s/2}\)</span> proves the second.</p>
+<p>The global pole criterion says that <span class="math" data-tex="\(Z(f,\omega,s)\)">\(Z(f,\omega,s)\)</span> is entire if <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is nontrivial on <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span>. Characters trivial there are exactly the pure norm twists. This proves the claimed entireness by (3). Actual poles in the exceptional case will follow from the positive arithmetic volume below. For later comparison, a pure norm twist has <span class="math" data-tex="\(\mathfrak f=\mathcal O_K\)">\(\mathfrak f=\mathcal O_K\)</span>, <span class="math" data-tex="\(W(\omega)=D^{-i\tau}\)">\(W(\omega)=D^{-i\tau}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\Lambda(s,|\cdot|^{i\tau})=D^{-i\tau/2}\Lambda_K(s+i\tau).
+\tag{9}
+\]">\[
+\Lambda(s,|\cdot|^{i\tau})=D^{-i\tau/2}\Lambda_K(s+i\tau).
+\tag{9}
+\]</span>
+<p>Indeed its finite central constants multiply to <span class="math" data-tex="\(\prod_vq_v^{-it_vd_v}=D^{-i\tau}\)">\(\prod_vq_v^{-it_vd_v}=D^{-i\tau}\)</span>, with <span class="math" data-tex="\(t_v=\tau\)">\(t_v=\tau\)</span>, and its infinite phases are one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Deleting additional Euler factors produces an imprimitive function. Each deletion multiplies (2) by <span class="math" data-tex="\(1-\omega_v(\pi_v)q_v^{-s}\)">\(1-\omega_v(\pi_v)q_v^{-s}\)</span>; these polynomials must themselves be transformed in a functional equation. The unchanged primitive equation (4) does not apply to that altered product.</p>
+<h2 id="computing-the-norm-one-volume">Computing the norm-one volume</h2>
+<p>Write <span class="math" data-tex="\(\kappa=\operatorname{vol}(C_K^1)\)">\(\kappa=\operatorname{vol}(C_K^1)\)</span> for the measure obtained by quotienting the fixed idèle measure by counting measure on <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>, and then dividing the norm direction by <span class="math" data-tex="\(dt/t\)">\(dt/t\)</span>. The section independence of this measure was established in <em>Tate's global theory: continuation and functional equation</em>.</p>
+<p><strong>Proposition 10.3.</strong> With precisely these measures,</p>
+<span class="math math-display" data-tex="\[
+\kappa=\frac{2^{r_1+r_2}hR}{w}.
+\tag{10}
+\]">\[
+\kappa=\frac{2^{r_1+r_2}hR}{w}.
+\tag{10}
+\]</span>
+<p><strong>Proof.</strong> The valuation map from idèles to fractional ideals induces a surjection <span class="math" data-tex="\(C_K\to\mathrm{Cl}_K\)">\(C_K\to\mathrm{Cl}_K\)</span>. Its kernel is
+<span class="math" data-tex="\((K_\infty^\times\times\widehat{\mathcal O}_K^\times)/\mathcal O_K^\times\)">\((K_\infty^\times\times\widehat{\mathcal O}_K^\times)/\mathcal O_K^\times\)</span>: a principal finite ideal can be removed by a field element, and the field elements preserving finite units are exactly global units. Intersecting with norm one gives the exact sequence</p>
+<span class="math math-display" data-tex="\[
+1\longrightarrow B^1\longrightarrow C_K^1
+\longrightarrow\mathrm{Cl}_K\longrightarrow1.
+\tag{11}
+\]">\[
+1\longrightarrow B^1\longrightarrow C_K^1
+\longrightarrow\mathrm{Cl}_K\longrightarrow1.
+\tag{11}
+\]</span>
+<p>Surjectivity still holds because an arbitrary class representative can be multiplied by an infinite positive scalar of prescribed norm. The subgroup <span class="math" data-tex="\(B^1\)">\(B^1\)</span> is open and has index <span class="math" data-tex="\(h\)">\(h\)</span>, so its volume, multiplied by <span class="math" data-tex="\(h\)">\(h\)</span>, is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
+<p>For <span class="math" data-tex="\(x\in K_\infty^\times\)">\(x\in K_\infty^\times\)</span> use the logarithmic coordinates <span class="math" data-tex="\(\ell_v=\log|x_v|_v\)">\(\ell_v=\log|x_v|_v\)</span>. At a real place each sign has counting mass one and <span class="math" data-tex="\(dr/r=d\ell_v\)">\(dr/r=d\ell_v\)</span>. At a complex place, polar coordinates in the fixed measure give</p>
+<span class="math math-display" data-tex="\[
+\frac{2\,du\,dv}{\pi|z|^2}
+=4\frac{dr}{r}\frac{d\theta}{2\pi}
+=2\,d\ell_v\frac{d\theta}{2\pi}.
+\tag{12}
+\]">\[
+\frac{2\,du\,dv}{\pi|z|^2}
+=4\frac{dr}{r}\frac{d\theta}{2\pi}
+=2\,d\ell_v\frac{d\theta}{2\pi}.
+\tag{12}
+\]</span>
+<p>Thus the angular group has total mass <span class="math" data-tex="\(2^m\)">\(2^m\)</span>, and the finite unit group has mass one. The logarithm of the idèle norm is <span class="math" data-tex="\(T=\sum_v\ell_v\)">\(T=\sum_v\ell_v\)</span>. The linear coordinate change
+<span class="math" data-tex="\((\ell_1,\ldots,\ell_m)\mapsto(\ell_1,\ldots,\ell_{m-1},T)\)">\((\ell_1,\ldots,\ell_m)\mapsto(\ell_1,\ldots,\ell_{m-1},T)\)</span>
+has determinant one. Consequently the measure on the hyperplane <span class="math" data-tex="\(H:T=0\)">\(H:T=0\)</span> is deleted-coordinate Lebesgue measure. This conclusion holds also for the balanced norm section: translating each fibre preserves that measure.</p>
+<p>Choose units whose logarithms form a basis of the full unit lattice in <span class="math" data-tex="\(H\)">\(H\)</span>. Its half-open parallelepiped has volume <span class="math" data-tex="\(R\)">\(R\)</span>. These units freely generate a subgroup <span class="math" data-tex="\(E\)">\(E\)</span> of <span class="math" data-tex="\(\mathcal O_K^\times\)">\(\mathcal O_K^\times\)</span>, and <span class="math" data-tex="\(\mathcal O_K^\times=\mu_K\times E\)">\(\mathcal O_K^\times=\mu_K\times E\)</span>: any unit can have its logarithm removed by an element of <span class="math" data-tex="\(E\)">\(E\)</span>, leaving an element of the logarithmic kernel <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span>. Angular and finite-unit translations preserve measure. A domain consisting of the parallelepiped times the angular and finite-unit groups therefore gives volume <span class="math" data-tex="\(2^mR\)">\(2^mR\)</span> after quotienting by <span class="math" data-tex="\(E\)">\(E\)</span>. The remaining group <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span>, of order <span class="math" data-tex="\(w\)">\(w\)</span>, acts freely. Quotient Haar measure for counting measure on a finite free subgroup divides the volume by <span class="math" data-tex="\(w\)">\(w\)</span>. This can be checked on disjoint translates of an injective quotient neighbourhood and then by a measurable partition. Hence
+<span class="math" data-tex="\(\operatorname{vol}(B^1)=2^mR/w\)">\(\operatorname{vol}(B^1)=2^mR/w\)</span>, proving (10). When <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, <span class="math" data-tex="\(H\)">\(H\)</span> is the zero vector space with mass one, so the same argument uses <span class="math" data-tex="\(R=1\)">\(R=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is positive. It differs from the zeta residue because that residue also contains the finite additive different volumes and the infinite Gamma values.</p>
+<h2 id="the-dedekind-equation-and-both-residues">The Dedekind equation and both residues</h2>
+<p><strong>Theorem 10.2.</strong> The function</p>
+<span class="math math-display" data-tex="\[
+\Lambda_K(s)=D^{s/2}\Gamma_{\mathbb R}(s)^{r_1}
+\Gamma_{\mathbb C}(s)^{r_2}\zeta_K(s)
+\tag{13}
+\]">\[
+\Lambda_K(s)=D^{s/2}\Gamma_{\mathbb R}(s)^{r_1}
+\Gamma_{\mathbb C}(s)^{r_2}\zeta_K(s)
+\tag{13}
+\]</span>
+<p>continues meromorphically, satisfies <span class="math" data-tex="\(\Lambda_K(s)=\Lambda_K(1-s)\)">\(\Lambda_K(s)=\Lambda_K(1-s)\)</span>, and has exactly two poles, simple, at zero and one. Their residues are respectively <span class="math" data-tex="\(-\kappa\)">\(-\kappa\)</span> and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
+<p><strong>Proof.</strong> For the trivial character, (3) uses the integral-ring indicators at every finite place and the ordinary infinite Gaussians. Ideal factorization identifies its Euler product with <span class="math" data-tex="\(\zeta_K\)">\(\zeta_K\)</span> in <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>. All central constants in (6)–(7) are one, proving the equation by (4).</p>
+<p>The value of this test at zero is one. Its Fourier transform at zero is its additive integral. Every infinite Gaussian has integral one in the self-dual measures, whereas the finite indicator has integral <span class="math" data-tex="\(q_v^{-d_v/2}\)">\(q_v^{-d_v/2}\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+f(0)=1,\qquad \widehat f(0)=D^{-1/2}.
+\tag{14}
+\]">\[
+f(0)=1,\qquad \widehat f(0)=D^{-1/2}.
+\tag{14}
+\]</span>
+<p>The global residue formula gives residues <span class="math" data-tex="\(-\kappa\)">\(-\kappa\)</span> and <span class="math" data-tex="\(\kappa D^{-1/2}\)">\(\kappa D^{-1/2}\)</span> for <span class="math" data-tex="\(L_K^*\)">\(L_K^*\)</span>. Multiplying by the entire nonzero factor <span class="math" data-tex="\(D^{s/2}\)">\(D^{s/2}\)</span> gives the stated residues for (13). Positivity of (10) proves that neither pole cancels. The global theorem permits no others. This also completes the exceptional-pole assertion in Theorem 10.1 by (9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 10.4.</strong> The arithmetic residue and the leading term at zero are</p>
+<span class="math math-display" data-tex="\[
+\operatorname*{Res}_{s=1}\zeta_K(s)
+=\frac{2^{r_1}(2\pi)^{r_2}hR}{w\sqrt D},
+\qquad
+\zeta_K(s)=-\frac{hR}{w}s^{m-1}+O(s^m).
+\tag{15}
+\]">\[
+\operatorname*{Res}_{s=1}\zeta_K(s)
+=\frac{2^{r_1}(2\pi)^{r_2}hR}{w\sqrt D},
+\qquad
+\zeta_K(s)=-\frac{hR}{w}s^{m-1}+O(s^m).
+\tag{15}
+\]</span>
+<p><strong>Proof.</strong> The Gamma values are <span class="math" data-tex="\(\Gamma_{\mathbb R}(1)=1\)">\(\Gamma_{\mathbb R}(1)=1\)</span> and <span class="math" data-tex="\(\Gamma_{\mathbb C}(1)=1/\pi\)">\(\Gamma_{\mathbb C}(1)=1/\pi\)</span>. Dividing the residue at one in (13) by <span class="math" data-tex="\(\sqrt D\,\pi^{-r_2}\)">\(\sqrt D\,\pi^{-r_2}\)</span>, and using (10), proves the first formula. At zero, each Gamma factor equals <span class="math" data-tex="\(2/s+O(1)\)">\(2/s+O(1)\)</span>. Hence (13) and its residue <span class="math" data-tex="\(-\kappa\)">\(-\kappa\)</span> imply
+<span class="math" data-tex="\(\zeta_K(s)=-\kappa s^{m-1}/2^m+O(s^m)\)">\(\zeta_K(s)=-\kappa s^{m-1}/2^m+O(s^m)\)</span>, proving the second. The leading coefficient is nonzero, so the zero order is exactly <span class="math" data-tex="\(m-1\)">\(m-1\)</span>. When <span class="math" data-tex="\(m=1\)">\(m=1\)</span> the order is zero: the zeta value is nonzero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="primitive-dirichlet-characters-and-their-phases">Primitive Dirichlet characters and their phases</h2>
+<p>Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be primitive modulo <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(\chi(-1)=(-1)^\epsilon\)">\(\chi(-1)=(-1)^\epsilon\)</span>. The idèlic character constructed in <em>Quasi-characters and Hecke characters</em> has finite unit restriction <span class="math" data-tex="\(\chi_p^{-1}\)">\(\chi_p^{-1}\)</span>, not <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span>. Its ideal character is <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, and its real parity is <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. For <span class="math" data-tex="\(p^{a_p}\Vert M\)">\(p^{a_p}\Vert M\)</span>, its uniformizer value is</p>
+<span class="math math-display" data-tex="\[
+\omega_p(p)=\prod_{r\mid M,\ r\ne p}\chi_r(p).
+\tag{16}
+\]">\[
+\omega_p(p)=\prod_{r\mid M,\ r\ne p}\chi_r(p).
+\tag{16}
+\]</span>
+<p>The standard rational finite additive character evaluates <span class="math" data-tex="\(u/p^{a_p}\)">\(u/p^{a_p}\)</span> as <span class="math" data-tex="\(e^{2\pi iu/p^{a_p}}\)">\(e^{2\pi iu/p^{a_p}}\)</span>. Thus its ramified factor (6) is
+<span class="math" data-tex="\(\omega_p(p)^{a_p}\tau(\chi_p)/\sqrt{p^{a_p}}\)">\(\omega_p(p)^{a_p}\tau(\chi_p)/\sqrt{p^{a_p}}\)</span>, where <span class="math" data-tex="\(\tau(\chi_p)=\sum_{u\bmod p^{a_p}}\chi_p(u)e^{2\pi iu/p^{a_p}}\)">\(\tau(\chi_p)=\sum_{u\bmod p^{a_p}}\chi_p(u)e^{2\pi iu/p^{a_p}}\)</span>, with <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span> zero on nonunits.</p>
+<p>To multiply the phases, put <span class="math" data-tex="\(M_p=M/p^{a_p}\)">\(M_p=M/p^{a_p}\)</span> and choose <span class="math" data-tex="\(t_pM_p\equiv1\pmod{p^{a_p}}\)">\(t_pM_p\equiv1\pmod{p^{a_p}}\)</span>. CRT represents a residue as <span class="math" data-tex="\(u=\sum_p M_pt_pu_p\)">\(u=\sum_p M_pt_pu_p\)</span>. Substituting this expression in the global Gauss sum, and replacing <span class="math" data-tex="\(t_pu_p\)">\(t_pu_p\)</span> by a new local variable, gives</p>
+<span class="math math-display" data-tex="\[
+\tau(\chi)=\prod_{p\mid M}\chi_p(M_p)\tau(\chi_p).
+\tag{17}
+\]">\[
+\tau(\chi)=\prod_{p\mid M}\chi_p(M_p)\tau(\chi_p).
+\tag{17}
+\]</span>
+<p>Meanwhile (16) gives
+<span class="math" data-tex="\(\prod_p\omega_p(p)^{a_p}=\prod_p\chi_p(M_p)\)">\(\prod_p\omega_p(p)^{a_p}=\prod_p\chi_p(M_p)\)</span>, by interchanging the two finite products. Multiplication with the real factor <span class="math" data-tex="\((-i)^\epsilon\)">\((-i)^\epsilon\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+W(\chi)=\frac{\tau(\chi)}{i^\epsilon\sqrt M},\qquad
+|\tau(\chi)|=\sqrt M.
+\tag{18}
+\]">\[
+W(\chi)=\frac{\tau(\chi)}{i^\epsilon\sqrt M},\qquad
+|\tau(\chi)|=\sqrt M.
+\tag{18}
+\]</span>
+<p>The absolute-value assertion follows also directly by multiplying the local Gauss-sum absolute values proved in the finite local theory. Primitivity ensures that each nontrivial local conductor is exactly <span class="math" data-tex="\(p^{a_p}\)">\(p^{a_p}\)</span>; the argument includes powers of two. For <span class="math" data-tex="\(M=1\)">\(M=1\)</span> use the empty product and <span class="math" data-tex="\(\tau=1\)">\(\tau=1\)</span>.</p>
+<p>Our completion is <span class="math" data-tex="\(M^{s/2}\Gamma_{\mathbb R}(s+\epsilon)L(s,\chi)\)">\(M^{s/2}\Gamma_{\mathbb R}(s+\epsilon)L(s,\chi)\)</span>. The commonly used expression</p>
+<span class="math math-display" data-tex="\[
+\Lambda_D(s,\chi)=(M/\pi)^{s/2}
+\Gamma((s+\epsilon)/2)L(s,\chi)
+\tag{19}
+\]">\[
+\Lambda_D(s,\chi)=(M/\pi)^{s/2}
+\Gamma((s+\epsilon)/2)L(s,\chi)
+\tag{19}
+\]</span>
+<p>is <span class="math" data-tex="\(\pi^{\epsilon/2}\)">\(\pi^{\epsilon/2}\)</span> times ours. The constant is the same for <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and <span class="math" data-tex="\(\bar\chi\)">\(\bar\chi\)</span>, so its functional equation has the same root number (18).</p>
+<h2 id="rational-and-gaussian-examples">Rational and Gaussian examples</h2>
+<p>For <span class="math" data-tex="\(K=\mathbb Q\)">\(K=\mathbb Q\)</span>, <span class="math" data-tex="\(h=R=1\)">\(h=R=1\)</span>, <span class="math" data-tex="\(w=2\)">\(w=2\)</span>, and <span class="math" data-tex="\(D=1\)">\(D=1\)</span>. Thus <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span>, and <span class="math" data-tex="\(\Gamma_{\mathbb R}(s)\zeta(s)\)">\(\Gamma_{\mathbb R}(s)\zeta(s)\)</span> has residues <span class="math" data-tex="\(-1,+1\)">\(-1,+1\)</span> and satisfies the Riemann equation. Formula (15) gives <span class="math" data-tex="\(\operatorname{Res}_1\zeta=1\)">\(\operatorname{Res}_1\zeta=1\)</span> and <span class="math" data-tex="\(\zeta(0)=-1/2\)">\(\zeta(0)=-1/2\)</span>.</p>
+<p>For <span class="math" data-tex="\(K=\mathbb Q(i)\)">\(K=\mathbb Q(i)\)</span>, the earlier Euclidean calculation gives <span class="math" data-tex="\(h=1\)">\(h=1\)</span>, <span class="math" data-tex="\(w=4\)">\(w=4\)</span>, <span class="math" data-tex="\(R=1\)">\(R=1\)</span>, and <span class="math" data-tex="\(D=4\)">\(D=4\)</span>. A prime <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span> splits, a prime <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span> is inert, and two ramifies. Indeed for odd <span class="math" data-tex="\(p\)">\(p\)</span>, reduction of <span class="math" data-tex="\(X^2+1\)">\(X^2+1\)</span> decides splitting; the quadratic character of <span class="math" data-tex="\(-1\)">\(-1\)</span> computed in the character lesson is <span class="math" data-tex="\((-1)^{(p-1)/2}\)">\((-1)^{(p-1)/2}\)</span>. Comparing every Euler factor therefore proves</p>
+<span class="math math-display" data-tex="\[
+\zeta_{\mathbb Q(i)}(s)=\zeta(s)L(s,\chi_{-4})
+\tag{20}
+\]">\[
+\zeta_{\mathbb Q(i)}(s)=\zeta(s)L(s,\chi_{-4})
+\tag{20}
+\]</span>
+<p>initially in <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>, and then meromorphically. The duplication identity <span class="math" data-tex="\(\Gamma_{\mathbb C}(s)=\Gamma_{\mathbb R}(s)\Gamma_{\mathbb R}(s+1)\)">\(\Gamma_{\mathbb C}(s)=\Gamma_{\mathbb R}(s)\Gamma_{\mathbb R}(s+1)\)</span> shows that its discriminant-completed function is the product of our rational completion and our conductor-completed <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span> function. Its Gauss sum is <span class="math" data-tex="\(i-(-i)=2i\)">\(i-(-i)=2i\)</span>; the finite factor at two is <span class="math" data-tex="\(i\)">\(i\)</span>, the real factor is <span class="math" data-tex="\(-i\)">\(-i\)</span>, and the global root is one. Finally,</p>
+<span class="math math-display" data-tex="\[
+\kappa_{\mathbb Q(i)}=1/2,\qquad
+\operatorname{Res}_1\zeta_{\mathbb Q(i)}=\pi/4,\qquad
+\zeta_{\mathbb Q(i)}(0)=-1/4.
+\tag{21}
+\]">\[
+\kappa_{\mathbb Q(i)}=1/2,\qquad
+\operatorname{Res}_1\zeta_{\mathbb Q(i)}=\pi/4,\qquad
+\zeta_{\mathbb Q(i)}(0)=-1/4.
+\tag{21}
+\]</span>
+<p>These unequal volume and residue values give a useful test of the measures.</p>
+<h2 id="nonvanishing-on-the-boundary">Nonvanishing on the boundary</h2>
+<p>The functional equation alone does not rule out zeros on the line <span class="math" data-tex="\(\Re s=1\)">\(\Re s=1\)</span>. The Euler product supplies the missing positivity.</p>
+<p><strong>Lemma 10.5.</strong> Let a nonnegative ideal Dirichlet series <span class="math" data-tex="\(F(s)=\sum_{\mathfrak a}c_{\mathfrak a}(N\mathfrak a)^{-s}\)">\(F(s)=\sum_{\mathfrak a}c_{\mathfrak a}(N\mathfrak a)^{-s}\)</span>, with <span class="math" data-tex="\(c_{\mathfrak a}\geq0\)">\(c_{\mathfrak a}\geq0\)</span>, converge absolutely for <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>. If <span class="math" data-tex="\(c_{\mathfrak b^2}\geq1\)">\(c_{\mathfrak b^2}\geq1\)</span> for every integral ideal <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span>, then <span class="math" data-tex="\(F\)">\(F\)</span> cannot extend to an entire function.</p>
+<p><strong>Proof.</strong> Suppose it were entire. Absolute convergence in a neighbourhood of <span class="math" data-tex="\(s=2\)">\(s=2\)</span> permits termwise differentiation of every order: powers of <span class="math" data-tex="\(\log N\mathfrak a\)">\(\log N\mathfrak a\)</span> are bounded by an arbitrarily small positive power of <span class="math" data-tex="\(N\mathfrak a\)">\(N\mathfrak a\)</span>. Its Taylor expansion at <span class="math" data-tex="\(2\)">\(2\)</span>, evaluated at <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, is</p>
+<span class="math math-display" data-tex="\[
+F(1/2)=\sum_{j\geq0}\frac{(3/2)^j}{j!}
+\sum_{\mathfrak a}c_{\mathfrak a}
+(\log N\mathfrak a)^j(N\mathfrak a)^{-2}
+=\sum_{\mathfrak a}c_{\mathfrak a}(N\mathfrak a)^{-1/2}.
+\]">\[
+F(1/2)=\sum_{j\geq0}\frac{(3/2)^j}{j!}
+\sum_{\mathfrak a}c_{\mathfrak a}
+(\log N\mathfrak a)^j(N\mathfrak a)^{-2}
+=\sum_{\mathfrak a}c_{\mathfrak a}(N\mathfrak a)^{-1/2}.
+\]</span>
+<p>Each summand of the double series is nonnegative, so exchanging the two sums is justified even before finiteness is known. The Taylor series is finite because its radius is infinite. But the last sum is at least <span class="math" data-tex="\(\sum_{\mathfrak b}(N\mathfrak b)^{-1}\)">\(\sum_{\mathfrak b}(N\mathfrak b)^{-1}\)</span>: ideal squaring is injective by unique prime-ideal factorization. That series diverges, since convergence would, by domination as real <span class="math" data-tex="\(s\downarrow1\)">\(s\downarrow1\)</span>, contradict the positive pole of <span class="math" data-tex="\(\zeta_K(s)\)">\(\zeta_K(s)\)</span> in Corollary 10.4. This contradiction proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 10.6.</strong> For every unitary Hecke character <span class="math" data-tex="\(\omega\)">\(\omega\)</span> and real <span class="math" data-tex="\(t\)">\(t\)</span>, the finite <span class="math" data-tex="\(L\)">\(L\)</span>-function has no zero at <span class="math" data-tex="\(1+it\)">\(1+it\)</span>. It is holomorphic and nonzero there unless <span class="math" data-tex="\(\omega=|\cdot|^{-it}\)">\(\omega=|\cdot|^{-it}\)</span>, in which case it has a simple pole.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\mu=\omega|\cdot|^{it}\)">\(\mu=\omega|\cdot|^{it}\)</span>. The finite Euler products give <span class="math" data-tex="\(L(s,\mu)=L(s+it,\omega)\)">\(L(s,\mu)=L(s+it,\omega)\)</span>, first absolutely and then meromorphically. Thus it suffices to analyse <span class="math" data-tex="\(L(1,\mu)\)">\(L(1,\mu)\)</span>.</p>
+<p>The reciprocal Gamma factors are entire, and the archimedean factors in this course are finite and nonzero on <span class="math" data-tex="\(\Re s=1\)">\(\Re s=1\)</span>. Theorem 10.1 therefore shows that <span class="math" data-tex="\(L(s,\nu)\)">\(L(s,\nu)\)</span> can have a pole at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> only if <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span>; the norm-twist identity reduces every exceptional case to the unique pole of <span class="math" data-tex="\(\zeta_K\)">\(\zeta_K\)</span>. In particular <span class="math" data-tex="\(L(s,\mu)\)">\(L(s,\mu)\)</span> is entire when <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is a nontrivial quadratic character: a finite-order norm character is trivial, because the norm maps onto <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span>.</p>
+<p>For this quadratic case, expand <span class="math" data-tex="\(F(s)=\zeta_K(s)L(s,\mu)\)">\(F(s)=\zeta_K(s)L(s,\mu)\)</span> into its ideal Euler product. At an unramified prime its factor is <span class="math" data-tex="\((1-T)^{-2}\)">\((1-T)^{-2}\)</span> if <span class="math" data-tex="\(\mu(\pi)=1\)">\(\mu(\pi)=1\)</span>, and <span class="math" data-tex="\((1-T^2)^{-1}\)">\((1-T^2)^{-1}\)</span> if <span class="math" data-tex="\(\mu(\pi)=-1\)">\(\mu(\pi)=-1\)</span>, where <span class="math" data-tex="\(T=(N\mathfrak p)^{-s}\)">\(T=(N\mathfrak p)^{-s}\)</span>. At a ramified prime the factor is <span class="math" data-tex="\((1-T)^{-1}\)">\((1-T)^{-1}\)</span>. All coefficients are nonnegative, and every squared ideal has coefficient at least one. If <span class="math" data-tex="\(L(1,\mu)=0\)">\(L(1,\mu)=0\)</span>, this zero cancels the only pole of <span class="math" data-tex="\(\zeta_K\)">\(\zeta_K\)</span>, making <span class="math" data-tex="\(F\)">\(F\)</span> entire. There are no other poles: Theorem 10.2 permits only zero and one in the completed function, and Corollary 10.4 shows that the finite zeta function is regular at zero. Lemma 10.5 forbids that, so <span class="math" data-tex="\(L(1,\mu)\ne0\)">\(L(1,\mu)\ne0\)</span>.</p>
+<p>Now suppose <span class="math" data-tex="\(\mu^2\ne1\)">\(\mu^2\ne1\)</span>. Remove a finite set <span class="math" data-tex="\(S\)">\(S\)</span> of primes containing the conductor primes of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and use the same omitted primes in all three Euler products. Write <span class="math" data-tex="\(\zeta_{K,S}\)">\(\zeta_{K,S}\)</span> and <span class="math" data-tex="\(L_S\)">\(L_S\)</span> for them. For real <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, logarithmic expansion gives</p>
+<span class="math math-display" data-tex="\[
+\log\!\left(\zeta_{K,S}(\sigma)^3
+|L_S(\sigma,\mu)|^4|L_S(\sigma,\mu^2)|\right)
+=\sum_{\mathfrak p\notin S}\sum_{j\geq1}
+\frac{3+4\Re(\mu(\pi_{\mathfrak p})^j)
++\Re(\mu(\pi_{\mathfrak p})^{2j})}
+{j(N\mathfrak p)^{j\sigma}}\geq0.
+\]">\[
+\log\!\left(\zeta_{K,S}(\sigma)^3
+|L_S(\sigma,\mu)|^4|L_S(\sigma,\mu^2)|\right)
+=\sum_{\mathfrak p\notin S}\sum_{j\geq1}
+\frac{3+4\Re(\mu(\pi_{\mathfrak p})^j)
++\Re(\mu(\pi_{\mathfrak p})^{2j})}
+{j(N\mathfrak p)^{j\sigma}}\geq0.
+\]</span>
+<p>Indeed, writing the unit-modulus value as <span class="math" data-tex="\(e^{i\theta}\)">\(e^{i\theta}\)</span>, the numerator is <span class="math" data-tex="\(3+4\cos\theta+\cos2\theta=2(1+\cos\theta)^2\)">\(3+4\cos\theta+\cos2\theta=2(1+\cos\theta)^2\)</span>. The expansions are absolutely convergent, so all products and logarithms used here are justified. Their displayed product is consequently at least one.</p>
+<p>If <span class="math" data-tex="\(L(1,\mu)\)">\(L(1,\mu)\)</span> vanished to order <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, the finite omitted Euler factors would preserve that order: none vanish on <span class="math" data-tex="\(\Re s=1\)">\(\Re s=1\)</span>. Meanwhile <span class="math" data-tex="\(L_S(s,\mu^2)\)">\(L_S(s,\mu^2)\)</span> is bounded near <span class="math" data-tex="\(1\)">\(1\)</span>, because <span class="math" data-tex="\(\mu^2\ne1\)">\(\mu^2\ne1\)</span>, and <span class="math" data-tex="\(\zeta_{K,S}\)">\(\zeta_{K,S}\)</span> has a simple pole. The displayed product would then be <span class="math" data-tex="\(O((\sigma-1)^{4k-3})\)">\(O((\sigma-1)^{4k-3})\)</span>, tending to zero as <span class="math" data-tex="\(\sigma\downarrow1\)">\(\sigma\downarrow1\)</span>. This contradicts its lower bound one.</p>
+<p>The remaining case <span class="math" data-tex="\(\mu=1\)">\(\mu=1\)</span> is exactly the simple pole of <span class="math" data-tex="\(\zeta_K\)">\(\zeta_K\)</span>. Together with the quadratic case this exhausts all unitary characters. Twisting back proves the stated exception and all boundary nonvanishing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exercises-and-complete-solutions">Exercises and complete solutions</h2>
+<ol>
+<li><strong>Easy.</strong> Verify both residue formulas for <span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span> and <span class="math" data-tex="\(\mathbb Q(\sqrt2)\)">\(\mathbb Q(\sqrt2)\)</span>. Determine the latter's ring of integers, class number and regulator rather than assuming them.</li>
+<li><strong>Medium.</strong> Compute the root number from local factors for the quadratic characters <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span> and <span class="math" data-tex="\(\chi_8\)">\(\chi_8\)</span>, including the finite and infinite phases separately.</li>
+<li><strong>Medium.</strong> Evaluate <span class="math" data-tex="\(\zeta_K(0)\)">\(\zeta_K(0)\)</span> for every imaginary quadratic field.</li>
+<li><strong>Hard.</strong> Reconstruct the norm-one volume from the unit lattice. Explain precisely the angular factor, the quotient by roots of unity, and the determinant used on the norm hyperplane.</li>
+</ol>
+<p><strong>Solution 1.</strong> The Gaussian case is (21). For the real quadratic case, an integral <span class="math" data-tex="\(a+b\sqrt2\)">\(a+b\sqrt2\)</span>, with rational <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, has integral trace <span class="math" data-tex="\(A=2a\)">\(A=2a\)</span>, integral norm, and hence integral discriminant <span class="math" data-tex="\(8b^2\)">\(8b^2\)</span>. Writing <span class="math" data-tex="\(b\)">\(b\)</span> in lowest terms shows that its denominator divides two; write <span class="math" data-tex="\(b=B/2\)">\(b=B/2\)</span>. Integrality of <span class="math" data-tex="\((A^2-2B^2)/4\)">\((A^2-2B^2)/4\)</span> forces <span class="math" data-tex="\(B\)">\(B\)</span> even, since odd <span class="math" data-tex="\(B\)">\(B\)</span> makes the numerator two or three modulo four; then it forces <span class="math" data-tex="\(A\)">\(A\)</span> even. Consequently the ring is <span class="math" data-tex="\(\mathbb Z[\sqrt2]\)">\(\mathbb Z[\sqrt2]\)</span>. Its trace matrix in the basis <span class="math" data-tex="\(1,\sqrt2\)">\(1,\sqrt2\)</span> is <span class="math" data-tex="\(\operatorname{diag}(2,4)\)">\(\operatorname{diag}(2,4)\)</span>, giving discriminant eight.</p>
+<p>Rounding both coefficients of a quotient gives a remainder <span class="math" data-tex="\(x+y\sqrt2\)">\(x+y\sqrt2\)</span> with <span class="math" data-tex="\(|x|,|y|\leq1/2\)">\(|x|,|y|\leq1/2\)</span>, and
+<span class="math" data-tex="\(|x^2-2y^2|\leq1/2&lt;1\)">\(|x^2-2y^2|\leq1/2&lt;1\)</span>. The absolute norm is therefore Euclidean, so <span class="math" data-tex="\(h=1\)">\(h=1\)</span>. The only roots of unity in a real field are <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, giving <span class="math" data-tex="\(w=2\)">\(w=2\)</span>. Let <span class="math" data-tex="\(e=1+\sqrt2\)">\(e=1+\sqrt2\)</span>, a unit of norm <span class="math" data-tex="\(-1\)">\(-1\)</span>. There is no positive unit <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(1&lt;u&lt;e\)">\(1&lt;u&lt;e\)</span>: writing its conjugate as <span class="math" data-tex="\(u&#x27;=\pm u^{-1}\)">\(u&#x27;=\pm u^{-1}\)</span>, the integer <span class="math" data-tex="\(a=(u+u&#x27;)/2\)">\(a=(u+u&#x27;)/2\)</span> is positive and less than two, so is one; the integer <span class="math" data-tex="\(b=(u-u&#x27;)/(2\sqrt2)\)">\(b=(u-u&#x27;)/(2\sqrt2)\)</span> is positive, and <span class="math" data-tex="\(a^2-2b^2=\pm1\)">\(a^2-2b^2=\pm1\)</span> then forces <span class="math" data-tex="\(b=1\)">\(b=1\)</span>, giving the excluded endpoint <span class="math" data-tex="\(e\)">\(e\)</span>. Dividing any positive unit by a suitable power of <span class="math" data-tex="\(e\)">\(e\)</span> puts it in <span class="math" data-tex="\([1,e)\)">\([1,e)\)</span>, so it equals that power. Negative units are its negatives. Thus <span class="math" data-tex="\(R=\log e\)">\(R=\log e\)</span>. Formulas (10) and (15) yield</p>
+<span class="math math-display" data-tex="\[
+\kappa_{\mathbb Q(\sqrt2)}=2\log(1+\sqrt2),\quad
+\operatorname{Res}_1\zeta_{\mathbb Q(\sqrt2)}
+=\frac{\log(1+\sqrt2)}{\sqrt2},\quad
+\zeta_{\mathbb Q(\sqrt2)}(s)
+=-\frac{\log(1+\sqrt2)}2s+O(s^2).
+\tag{22}
+\]">\[
+\kappa_{\mathbb Q(\sqrt2)}=2\log(1+\sqrt2),\quad
+\operatorname{Res}_1\zeta_{\mathbb Q(\sqrt2)}
+=\frac{\log(1+\sqrt2)}{\sqrt2},\quad
+\zeta_{\mathbb Q(\sqrt2)}(s)
+=-\frac{\log(1+\sqrt2)}2s+O(s^2).
+\tag{22}
+\]</span>
+<p><strong>Solution 2.</strong> Modulo four the nonzero character values at one and three are one and minus one. They give <span class="math" data-tex="\(\tau=2i\)">\(\tau=2i\)</span>, so the two-adic factor is <span class="math" data-tex="\(\tau/\sqrt4=i\)">\(\tau/\sqrt4=i\)</span>. Its real parity is odd, giving <span class="math" data-tex="\(-i\)">\(-i\)</span>; their product is one. Modulo eight, <span class="math" data-tex="\(\chi_8\)">\(\chi_8\)</span> has values <span class="math" data-tex="\(1,-1,-1,1\)">\(1,-1,-1,1\)</span> at <span class="math" data-tex="\(1,3,5,7\)">\(1,3,5,7\)</span>. These define a multiplicative character on the unit group; it is primitive because the values at one and five differ although those residues agree modulo four. Its parity is even. Direct summation gives
+<span class="math" data-tex="\(e^{\pi i/4}-e^{3\pi i/4}-e^{5\pi i/4}+e^{7\pi i/4}=2\sqrt2\)">\(e^{\pi i/4}-e^{3\pi i/4}-e^{5\pi i/4}+e^{7\pi i/4}=2\sqrt2\)</span>.
+Thus its two-adic factor is <span class="math" data-tex="\(2\sqrt2/\sqrt8=1\)">\(2\sqrt2/\sqrt8=1\)</span>, its real factor is one, and again <span class="math" data-tex="\(W=1\)">\(W=1\)</span>. Both uniformizer values are one because there is only one ramified prime in (16).</p>
+<p><strong>Solution 3.</strong> An imaginary quadratic field has <span class="math" data-tex="\(r_1=0\)">\(r_1=0\)</span>, <span class="math" data-tex="\(r_2=1\)">\(r_2=1\)</span>, and unit rank zero. With <span class="math" data-tex="\(R=1\)">\(R=1\)</span>, (15) has exponent zero and gives <span class="math" data-tex="\(\zeta_K(0)=-h_K/w_K\)">\(\zeta_K(0)=-h_K/w_K\)</span>. In particular it is a value rather than a positive-order zero. Its discriminant affects the residue at one, but cancels from this value at zero.</p>
+<p><strong>Solution 4.</strong> Represent the identity ideal class by <span class="math" data-tex="\(K_\infty^\times\times\widehat{\mathcal O}_K^\times\)">\(K_\infty^\times\times\widehat{\mathcal O}_K^\times\)</span>, whose intersection with the diagonal field is the unit group. Pass to norm one. In weighted logarithms the norm is their sum, and deleting the last logarithm while retaining this sum has determinant one. The norm-one logarithmic measure is therefore exactly the measure defining <span class="math" data-tex="\(R\)">\(R\)</span>. Real signs each have mass one; each complex circle has mass two by (12); their total is <span class="math" data-tex="\(2^{r_1+r_2}\)">\(2^{r_1+r_2}\)</span>. The finite units have mass one. A logarithmic fundamental parallelepiped for a lifted free unit basis contributes <span class="math" data-tex="\(R\)">\(R\)</span>, despite any angular or finite-unit translations in those lifts. Quotient by the remaining <span class="math" data-tex="\(w\)">\(w\)</span> roots of unity divides this mass by <span class="math" data-tex="\(w\)">\(w\)</span>, because the action is free and the subgroup uses counting measure. Finally (11) gives <span class="math" data-tex="\(h\)">\(h\)</span> disjoint cosets of equal mass. This proves (10), including unit rank zero. It also explains why replacing (10) by the analytic residue would insert factors absent from the actual multiplicative measure.</p>
+<h2 id="sources-and-scope">Sources and scope</h2>
+<p>The mathematical inputs from this course are the character construction, the two local functional equations, global continuation with its exact residues, and the ideal-class and unit-lattice results. Their applications and every displayed assertion above are proved here. A. V. Sutherland, <a href="https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/mit18_785f21_lec19.pdf"><em>The analytic class number formula</em></a>, MIT 18.785, Lecture 19, Theorem 19.12, gives the ideal-theoretic class-number comparison, and E. Hecke, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0006/LOG_0008.pdf"><em>Eine neue Art von Zetafunktionen und ihre Beziehungen zur Verteilung der Primzahlen (Zweite Mitteilung)</em></a>, Mathematische Zeitschrift 6 (1920), §6, gives the Hecke-series comparison. Bjorn Poonen, <a href="https://math.mit.edu/~poonen/786/notes.pdf"><em>Tate’s Thesis</em>, MIT 18.786, Spring 2015</a>, §5.11, Theorem 5.22, gives the Tate-integral comparison.</p>
+<p>The classical theta method developed by Hecke offers a useful second way to organize the same mathematics. In Hecke's paper, §4 treats primitive residue-class characters and their Gauss-type sums, §5 proves the transformation formula of the corresponding theta series, and §6 averages over a logarithmic fundamental domain of the units before taking a Mellin transform. The transformation and the two parts of the Mellin integral, split at <span class="math" data-tex="\(u=1\)">\(u=1\)</span>, give the functional equation (44) there, with analytic scale <span class="math" data-tex="\(D\,N(\mathfrak f)\)">\(D\,N(\mathfrak f)\)</span>. This comparison treats arbitrary number fields and keeps the complex embeddings and unit contribution; the complete adèlic proof (4) remains the one used here.</p>
+<p>P. Deligne, <a href="https://publications.ias.edu/sites/default/files/Number20.pdf"><em>Les constantes des équations fonctionnelles des fonctions L</em>, IAS edition</a>, §§3.3–3.4, 3.11 and 5.3–5.9 532 and 548–550, provides the rank-one local-constant and global product comparison. Its positive infinite basic-character convention requires the conversion used in (7). Poonen, Remark 5.21, and James-Michael Leahy, <a href="https://www.math.mcgill.ca/darmon/theses/leahy/thesis.pdf"><em>An introduction to Tate’s Thesis</em> (2010)</a>, Proposition 4.6.1 and the proof of Theorem 4.10.4, distinguish Haar scaling from character rescaling. For the full local character <span class="math" data-tex="\(c=\omega_v|\cdot|_v^s\)">\(c=\omega_v|\cdot|_v^s\)</span>, the multiplier at fixed additive measure is <span class="math" data-tex="\(c(a)|a|_v^{-1}=\omega_v(a)|a|_v^{s-1}\)">\(c(a)|a|_v^{-1}=\omega_v(a)|a|_v^{s-1}\)</span>. Updating that measure to remain self-dual contributes <span class="math" data-tex="\(|a|_v^{1/2}\)">\(|a|_v^{1/2}\)</span>, giving <span class="math" data-tex="\(\omega_v(a)|a|_v^{s-1/2}\)">\(\omega_v(a)|a|_v^{s-1/2}\)</span>. The product over a diagonal <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> is one by diagonal triviality and the product formula, as proved above.</p>
+<p>The boundary statement is proved in Theorem 10.6, using Euler-product positivity in addition to analytic continuation. Sutherland, Lecture 19, Theorem 19.16, gives the narrower Dirichlet nonvanishing assertion at one. The positive-coefficient argument in Lemma 10.5 is Landau’s argument: a Taylor expansion at a regular boundary point, followed by positivity and monotone summation, would force convergence to the left of the abscissa. The full ideal-series argument and the unitary-character boundary proof are supplied here. Higher-dimensional local constants, an explicit formula, and an Artin–Hecke comparison remain further directions.</p>
+<p>Leahy, §4.10, Theorem 4.10.4, and §4.11, Theorem 4.11.3 give another local-to-global and quotient-volume comparison. With the multiplicative measures displayed by Poonen and Leahy, the corresponding norm-one volume is <span class="math" data-tex="\(\pi^{r_2}\kappa/\sqrt D\)">\(\pi^{r_2}\kappa/\sqrt D\)</span>. Leahy’s complex <span class="math" data-tex="\(L\)">\(L\)</span>-factor in (4.10) is half of our <span class="math" data-tex="\(\Gamma_{\mathbb C}\)">\(\Gamma_{\mathbb C}\)</span>; the constant <span class="math" data-tex="\(2^{r_2}\)">\(2^{r_2}\)</span> relating completions cancels from their functional equations. Formula (10) and both Dedekind residues above retain our measure and Gamma normalization.</p>
+</article><nav class="pager"><a rel="prev" href="NT-ADL-09.html">Previous lesson</a><a href="index.html">Course contents</a><a rel="next" href="NT-ADL-11.html">Next lesson</a></nav><p><a href="src/NT-ADL-10.md">Markdown source</a></p></main></body></html>

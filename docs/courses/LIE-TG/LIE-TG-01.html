@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transformation groups and their parameters · Lie&#x27;s theory of transformation groups</title>
+<meta name="description" content="A lesson of the course Lie&#x27;s theory of transformation groups. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LIE-TG/LIE-TG-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Lie&#x27;s theory of transformation groups</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="transformation-groups-and-their-parameters">Transformation groups and their parameters</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).</em></p>
+<p>A transformation can have many formulas without having many degrees of freedom. The map <span class="math" data-tex="$x\mapsto x+a+b$">$x\mapsto x+a+b$</span>, for example, depends on two displayed numbers but only on their sum. Before differentiating a family of transformations, we need to identify its actual parameters. We also need to distinguish a group from a family closed under composition. The latter need not contain an identity or inverses.</p>
+<p>We work over <span class="math" data-tex="$\mathbb K=\mathbb R$">$\mathbb K=\mathbb R$</span> or <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, with analytic maps; over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> this means holomorphic maps. The prerequisite courses are <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B50">Multivariable Calculus</a>, <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50">Complex Analysis</a>, and <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D50">Smooth Manifolds and Differential Geometry</a>. The analytic facts actually used are stated, with verified proof locators, at the end. The parameter arguments use finite measurements of a family, so that no inverse-function theorem on an infinite-dimensional space is needed.</p>
+<h2 id="1-composition-identity-and-domains">1. Composition, identity, and domains</h2>
+<p>Let <span class="math" data-tex="$M$">$M$</span> be an analytic manifold. A local transformation is an analytic diffeomorphism between open subsets of <span class="math" data-tex="$M$">$M$</span>. Its inverse exists on its image. This does not say that the inverse belongs to a specified family.</p>
+<p>An analytic local Lie group is an analytic manifold <span class="math" data-tex="$G$">$G$</span> with a distinguished point <span class="math" data-tex="$e$">$e$</span>, an analytic multiplication <span class="math" data-tex="$m(a,b)$">$m(a,b)$</span> defined on an open neighbourhood of <span class="math" data-tex="$(e,e)$">$(e,e)$</span>, and an analytic inverse <span class="math" data-tex="$\iota(a)$">$\iota(a)$</span> defined near <span class="math" data-tex="$e$">$e$</span>. We require</p>
+<span class="math math-display" data-tex="$$
+m(e,a)=a=m(a,e),\qquad
+m(a,\iota(a))=e=m(\iota(a),a).
+$$">$$
+m(e,a)=a=m(a,e),\qquad
+m(a,\iota(a))=e=m(\iota(a),a).
+$$</span>
+<p>Associativity holds whenever both sides of</p>
+<span class="math math-display" data-tex="$$
+m(m(a,b),c)=m(a,m(b,c))
+$$">$$
+m(m(a,b),c)=m(a,m(b,c))
+$$</span>
+<p>are defined near <span class="math" data-tex="$(e,e,e)$">$(e,e,e)$</span>. A restriction to a smaller neighbourhood is allowed. In particular, a local group need not have a single neighbourhood closed under every product.</p>
+<p>For this course an action is a <strong>right action</strong>. Write <span class="math" data-tex="$T_a(x)=f(x,a)$">$T_a(x)=f(x,a)$</span>. Its equations are</p>
+<span class="math math-display" data-tex="$$
+T_e(x)=x,\qquad T_b(T_a(x))=T_{m(a,b)}(x).
+\tag{1.1}
+$$">$$
+T_e(x)=x,\qquad T_b(T_a(x))=T_{m(a,b)}(x).
+\tag{1.1}
+$$</span>
+<p>They hold on an open neighbourhood of <span class="math" data-tex="$(x,e,e)$">$(x,e,e)$</span> on which the displayed expressions are defined. The map <span class="math" data-tex="$(x,a)\mapsto T_a(x)$">$(x,a)\mapsto T_a(x)$</span> is analytic. Each <span class="math" data-tex="$T_a$">$T_a$</span> is a local diffeomorphism. The action may have stabilizers: different parameters can act alike at one point while acting differently on a neighbourhood.</p>
+<p><strong>Example 1.1 (affine transformations).</strong> Put</p>
+<span class="math math-display" data-tex="$$
+T_{(\alpha,\beta)}(x)=\alpha x+\beta,\qquad \alpha\ne0.
+$$">$$
+T_{(\alpha,\beta)}(x)=\alpha x+\beta,\qquad \alpha\ne0.
+$$</span>
+<p>For <span class="math" data-tex="$a=(\alpha,\beta)$">$a=(\alpha,\beta)$</span> and <span class="math" data-tex="$b=(\gamma,\delta)$">$b=(\gamma,\delta)$</span>,</p>
+<span class="math math-display" data-tex="$$
+m(a,b)=(\gamma\alpha,\gamma\beta+\delta),\quad
+e=(1,0),\quad
+\iota(a)=(\alpha^{-1},-\beta/\alpha).
+\tag{1.2}
+$$">$$
+m(a,b)=(\gamma\alpha,\gamma\beta+\delta),\quad
+e=(1,0),\quad
+\iota(a)=(\alpha^{-1},-\beta/\alpha).
+\tag{1.2}
+$$</span>
+<p>Substitution checks both inverse equations. Associativity follows either by substituting into (1.2) or by composing three affine maps. On the real line, parameters near <span class="math" data-tex="$(1,0)$">$(1,0)$</span> have <span class="math" data-tex="$\alpha&gt;0$">$\alpha&gt;0$</span>; the component with negative slope is not part of this identity neighbourhood.</p>
+<p><strong>Example 1.2 (translations and rotations).</strong> Translations on <span class="math" data-tex="$\mathbb K^n$">$\mathbb K^n$</span> have <span class="math" data-tex="$T_a(x)=x+a$">$T_a(x)=x+a$</span> and <span class="math" data-tex="$m(a,b)=a+b$">$m(a,b)=a+b$</span>. On <span class="math" data-tex="$\mathbb R^2$">$\mathbb R^2$</span>, rotations have</p>
+<span class="math math-display" data-tex="$$
+T_t(x,y)=(x\cos t-y\sin t,\ x\sin t+y\cos t).
+$$">$$
+T_t(x,y)=(x\cos t-y\sin t,\ x\sin t+y\cos t).
+$$</span>
+<p>The addition formulas give <span class="math" data-tex="$T_s\circ T_t=T_{t+s}$">$T_s\circ T_t=T_{t+s}$</span>. The angle is an essential local parameter near zero. Globally <span class="math" data-tex="$t$">$t$</span> and <span class="math" data-tex="$t+2\pi$">$t+2\pi$</span> represent the same rotation; this discrete redundancy does not reduce the local dimension.</p>
+<h2 id="2-measuring-a-family-by-finite-jets">2. Measuring a family by finite jets</h2>
+<p>Consider an analytic family</p>
+<span class="math math-display" data-tex="$$
+f:\Omega\times A\longrightarrow\mathbb K^n,
+$$">$$
+f:\Omega\times A\longrightarrow\mathbb K^n,
+$$</span>
+<p>where <span class="math" data-tex="$\Omega\subset\mathbb K^n$">$\Omega\subset\mathbb K^n$</span> and <span class="math" data-tex="$A\subset\mathbb K^r$">$A\subset\mathbb K^r$</span> are connected open sets. Assume <span class="math" data-tex="$D_xf$">$D_xf$</span> is invertible. Fix <span class="math" data-tex="$x_0\in\Omega$">$x_0\in\Omega$</span>. For every component <span class="math" data-tex="$i$">$i$</span> and multi-index <span class="math" data-tex="$\nu$">$\nu$</span>, let</p>
+<span class="math math-display" data-tex="$$
+c_{i,\nu}(a)=\frac{1}{\nu!}\partial_x^\nu f_i(x_0,a).
+$$">$$
+c_{i,\nu}(a)=\frac{1}{\nu!}\partial_x^\nu f_i(x_0,a).
+$$</span>
+<p>These coefficients determine the germ of <span class="math" data-tex="$f(\cdot,a)$">$f(\cdot,a)$</span> at <span class="math" data-tex="$x_0$">$x_0$</span>. Define <span class="math" data-tex="$q$">$q$</span> to be the largest rank attained by the derivative of any finite tuple of these coefficient functions on <span class="math" data-tex="$A$">$A$</span>. Thus <span class="math" data-tex="$0\le q\le r$">$0\le q\le r$</span>. If <span class="math" data-tex="$q&gt;0$">$q&gt;0$</span>, choose <span class="math" data-tex="$q$">$q$</span> coefficients whose derivative has rank <span class="math" data-tex="$q$">$q$</span> at a point <span class="math" data-tex="$a_0$">$a_0$</span>. This rank remains <span class="math" data-tex="$q$">$q$</span> on a neighbourhood of <span class="math" data-tex="$a_0$">$a_0$</span>.</p>
+<p>The points where such a maximal minor does not vanish form an open dense set: a nonzero real-analytic or holomorphic function cannot vanish on an open subset of a connected domain. We call these parameter points regular. Statements about essential parameters below concern a regular neighbourhood, not an arbitrary critical point.</p>
+<p><strong>Theorem 2.1 (finite-jet reduction).</strong> Near a regular parameter point there are analytic coordinates <span class="math" data-tex="$(u,v)$">$(u,v)$</span> on <span class="math" data-tex="$A$">$A$</span>, with <span class="math" data-tex="$u\in\mathbb K^q$">$u\in\mathbb K^q$</span>, such that</p>
+<span class="math math-display" data-tex="$$
+f(x,a)=g(x,u(a)).
+\tag{2.1}
+$$">$$
+f(x,a)=g(x,u(a)).
+\tag{2.1}
+$$</span>
+<p>The reduced family <span class="math" data-tex="$g$">$g$</span> has <span class="math" data-tex="$q$">$q$</span> essential parameters. No analytic reparametrization by fewer than <span class="math" data-tex="$q$">$q$</span> parameters represents the same family on this neighbourhood.</p>
+<p><strong>Proof.</strong> Choose maximal-rank coefficients <span class="math" data-tex="$c_1,\ldots,c_q$">$c_1,\ldots,c_q$</span> and a nonzero <span class="math" data-tex="$q\times q$">$q\times q$</span> minor of their derivative at the regular point. Adjoin the <span class="math" data-tex="$r-q$">$r-q$</span> original parameter coordinates outside the columns of that minor. The resulting map <span class="math" data-tex="$a\mapsto(u,v)$">$a\mapsto(u,v)$</span>, with <span class="math" data-tex="$u_j=c_j$">$u_j=c_j$</span>, has invertible derivative, so the analytic inverse theorem makes it a coordinate chart after shrinking. For any other coefficient <span class="math" data-tex="$c$">$c$</span>, the derivative of <span class="math" data-tex="$(c_1,\ldots,c_q,c)$">$(c_1,\ldots,c_q,c)$</span> has rank at most <span class="math" data-tex="$q$">$q$</span> by the definition of <span class="math" data-tex="$q$">$q$</span>. Therefore <span class="math" data-tex="$dc$">$dc$</span> lies in the span of <span class="math" data-tex="$du_1,\ldots,du_q$">$du_1,\ldots,du_q$</span> at every point in the chosen neighbourhood. In coordinates, <span class="math" data-tex="$\partial c/\partial v_\ell=0$">$\partial c/\partial v_\ell=0$</span>.</p>
+<p>Take a product coordinate neighbourhood, so that each <span class="math" data-tex="$v$">$v$</span>-fibre is connected. Every coefficient is constant on each fibre. For two parameter values with the same <span class="math" data-tex="$u$">$u$</span>, the Taylor series of <span class="math" data-tex="$f$">$f$</span> at <span class="math" data-tex="$x_0$">$x_0$</span> are identical. Analyticity gives equality near <span class="math" data-tex="$x_0$">$x_0$</span>, and uniqueness of analytic continuation gives equality on <span class="math" data-tex="$\Omega$">$\Omega$</span>. Fixing one value <span class="math" data-tex="$v_*$">$v_*$</span> defines <span class="math" data-tex="$g(x,u)=f(x,(u,v_*))$">$g(x,u)=f(x,(u,v_*))$</span>, which proves (2.1). If necessary, shrink the <span class="math" data-tex="$x$">$x$</span> and parameter neighbourhoods together to keep this expression defined.</p>
+<p>Conversely, if <span class="math" data-tex="$f(x,a)=h(x,w(a))$">$f(x,a)=h(x,w(a))$</span> with <span class="math" data-tex="$w\in\mathbb K^s$">$w\in\mathbb K^s$</span>, every finite coefficient map factors through <span class="math" data-tex="$w$">$w$</span>. The chain rule bounds its derivative rank by <span class="math" data-tex="$s$">$s$</span>. The chosen rank-<span class="math" data-tex="$q$">$q$</span> coefficient map forces <span class="math" data-tex="$s\ge q$">$s\ge q$</span>. Applying this to <span class="math" data-tex="$g$">$g$</span> proves its essentiality. If <span class="math" data-tex="$q=0$">$q=0$</span>, all coefficient derivatives vanish, and the same argument says that <span class="math" data-tex="$f$">$f$</span> is locally independent of <span class="math" data-tex="$a$">$a$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 2.2 (infinitesimal test for essentiality).</strong> On a regular neighbourhood, the following are equivalent:</p>
+<ol>
+<li>The family has <span class="math" data-tex="$r$">$r$</span> essential parameters.</li>
+<li>Some finite tuple of its Taylor coefficients has derivative rank <span class="math" data-tex="$r$">$r$</span>.</li>
+<li>There is no nonzero analytic parameter vector field <span class="math" data-tex="$\chi=\sum_{k=1}^r\chi_k(a)\partial_{a_k}$">$\chi=\sum_{k=1}^r\chi_k(a)\partial_{a_k}$</span> satisfying</li>
+</ol>
+<span class="math math-display" data-tex="$$
+\sum_{k=1}^r\chi_k(a)\frac{\partial f_i}{\partial a_k}(x,a)=0
+\quad\text{for every }i\text{ and every }x.
+\tag{2.2}
+$$">$$
+\sum_{k=1}^r\chi_k(a)\frac{\partial f_i}{\partial a_k}(x,a)=0
+\quad\text{for every }i\text{ and every }x.
+\tag{2.2}
+$$</span>
+<p>Here nonzero means not identically zero on the neighbourhood.</p>
+<p><strong>Proof.</strong> Theorem 2.1 gives the equivalence of the first two conditions. If a coefficient tuple has full rank, differentiating (2.2) in <span class="math" data-tex="$x$">$x$</span> shows that its derivative kills <span class="math" data-tex="$\chi$">$\chi$</span>, hence <span class="math" data-tex="$\chi=0$">$\chi=0$</span>. If the maximal rank is <span class="math" data-tex="$q&lt;r$">$q&lt;r$</span>, the coordinates <span class="math" data-tex="$(u,v)$">$(u,v)$</span> constructed above give a nonzero field <span class="math" data-tex="$\partial_{v_1}$">$\partial_{v_1}$</span> that kills <span class="math" data-tex="$f$">$f$</span>. Its expression in the original coordinates supplies analytic coefficients in (2.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The criterion concerns independence as functions of <span class="math" data-tex="$x$">$x$</span>. It does not require <span class="math" data-tex="$r$">$r$</span> independent tangent vectors at a single <span class="math" data-tex="$x$">$x$</span>. The projective group of a line will have three essential parameters, although the tangent space of the line has dimension one.</p>
+<p>The choice of <span class="math" data-tex="$x_0$">$x_0$</span> does not change the reduced dimension. An identity between analytic transformations on a neighbourhood of one point holds on the connected domain, so reduction at one base point is reduction at any other. Applying Theorem 2.1 at both base points and using its minimality proves equality of the dimensions.</p>
+<p><strong>Example 2.3 (critical parameters).</strong> For <span class="math" data-tex="$f(x,a,b)=x+ab$">$f(x,a,b)=x+ab$</span>, the coefficient <span class="math" data-tex="$ab$">$ab$</span> has derivative <span class="math" data-tex="$(b,a)$">$(b,a)$</span>. Its generic rank is one. Thus the family has one essential parameter <span class="math" data-tex="$u=ab$">$u=ab$</span> near every point with <span class="math" data-tex="$(a,b)\ne(0,0)$">$(a,b)\ne(0,0)$</span>. At <span class="math" data-tex="$(0,0)$">$(0,0)$</span> this coefficient has rank zero, so <span class="math" data-tex="$ab$">$ab$</span> cannot be used as a coordinate there. The formula still factors through <span class="math" data-tex="$ab$">$ab$</span>; what fails there is a regular coordinate reduction. For <span class="math" data-tex="$f(x,a,b)=x+a+b$">$f(x,a,b)=x+a+b$</span>, the reduction <span class="math" data-tex="$u=a+b$">$u=a+b$</span>, <span class="math" data-tex="$v=a-b$">$v=a-b$</span> is regular everywhere.</p>
+<h2 id="3-the-projective-line-has-three-parameters">3. The projective line has three parameters</h2>
+<p>An invertible matrix</p>
+<span class="math math-display" data-tex="$$
+M=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}
+$$">$$
+M=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}
+$$</span>
+<p>acts on an affine chart of the projective line by</p>
+<span class="math math-display" data-tex="$$
+T_M(x)=\frac{ax+b}{cx+d},\qquad ad-bc\ne0.
+\tag{3.1}
+$$">$$
+T_M(x)=\frac{ax+b}{cx+d},\qquad ad-bc\ne0.
+\tag{3.1}
+$$</span>
+<p>The denominator must be nonzero at the points under consideration. Near any such point the derivative is <span class="math" data-tex="$(ad-bc)/(cx+d)^2$">$(ad-bc)/(cx+d)^2$</span>, so the map is locally invertible. Matrix inversion gives the inverse transformation. Multiplying <span class="math" data-tex="$M$">$M$</span> by a nonzero scalar gives the same transformation.</p>
+<p><strong>Proposition 3.1.</strong> The family (3.1) has exactly three essential parameters near every projective transformation.</p>
+<p><strong>Proof.</strong> Near the identity, <span class="math" data-tex="$d\ne0$">$d\ne0$</span>, and scaling gives the representative</p>
+<span class="math math-display" data-tex="$$
+M=\begin{pmatrix}\alpha&amp;\beta\\\gamma&amp;1\end{pmatrix}.
+$$">$$
+M=\begin{pmatrix}\alpha&amp;\beta\\\gamma&amp;1\end{pmatrix}.
+$$</span>
+<p>At <span class="math" data-tex="$(\alpha,\beta,\gamma)=(1,0,0)$">$(\alpha,\beta,\gamma)=(1,0,0)$</span> the three parameter derivatives of <span class="math" data-tex="$T_M$">$T_M$</span> are <span class="math" data-tex="$x$">$x$</span>, <span class="math" data-tex="$1$">$1$</span>, and <span class="math" data-tex="$-x^2$">$-x^2$</span>. They are independent as analytic functions on every open subset of the line. Theorem 2.2 therefore gives three essential parameters near the identity.</p>
+<p>Composition with a fixed invertible projective transformation is an analytic invertible operation on transformation germs and an analytic coordinate change on projective matrix classes. It preserves the minimal number of parameters, giving the assertion near any matrix class.</p>
+<p>For completeness, no further continuous ambiguity is hidden in the matrix description. If <span class="math" data-tex="$M$">$M$</span> and <span class="math" data-tex="$N$">$N$</span> have the same transformation on an open set, <span class="math" data-tex="$N^{-1}M$">$N^{-1}M$</span> fixes every point of that set. Writing it as <span class="math" data-tex="$\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}$">$\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}$</span> gives <span class="math" data-tex="$Cx^2+(D-A)x-B=0$">$Cx^2+(D-A)x-B=0$</span> on an open set. All three coefficients vanish, so <span class="math" data-tex="$C=B=0$">$C=B=0$</span>, <span class="math" data-tex="$A=D$">$A=D$</span>, and the matrix is scalar. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>With the right-action convention (1.1), the parameter product represented by matrices is <span class="math" data-tex="$[M]\cdot[N]=[NM]$">$[M]\cdot[N]=[NM]$</span>. This order follows from <span class="math" data-tex="$T_N\circ T_M=T_{NM}$">$T_N\circ T_M=T_{NM}$</span>.</p>
+<h2 id="4-a-finite-semigroup-behaves-differently">4. A finite semigroup behaves differently</h2>
+<p><strong>Proposition 4.1.</strong> A finite nonempty subset <span class="math" data-tex="$S$">$S$</span> of a group, closed under multiplication, is a subgroup.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$s\in S$">$s\in S$</span>, all positive powers lie in <span class="math" data-tex="$S$">$S$</span>. Finiteness gives <span class="math" data-tex="$s^i=s^j$">$s^i=s^j$</span> with <span class="math" data-tex="$1\le i&lt;j$">$1\le i&lt;j$</span>. Cancellation in the ambient group gives <span class="math" data-tex="$s^{j-i}=e$">$s^{j-i}=e$</span>, hence <span class="math" data-tex="$e\in S$">$e\in S$</span>. If <span class="math" data-tex="$j-i&gt;1$">$j-i&gt;1$</span>, then <span class="math" data-tex="$s^{j-i-1}\in S$">$s^{j-i-1}\in S$</span> is the inverse of <span class="math" data-tex="$s$">$s$</span>. If <span class="math" data-tex="$j-i=1$">$j-i=1$</span>, then <span class="math" data-tex="$s=e$">$s=e$</span> and its inverse is already in <span class="math" data-tex="$S$">$S$</span>. This works for every <span class="math" data-tex="$s$">$s$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Finiteness is essential. The maps</p>
+<span class="math math-display" data-tex="$$
+x\longmapsto zx,\qquad 0&lt;|z|&lt;1,
+\tag{4.1}
+$$">$$
+x\longmapsto zx,\qquad 0&lt;|z|&lt;1,
+\tag{4.1}
+$$</span>
+<p>are biholomorphisms of <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> and are closed under composition. Their multipliers multiply. They contain no identity, and the inverse multiplier <span class="math" data-tex="$1/z$">$1/z$</span> never belongs to the family. They have one essential parameter because <span class="math" data-tex="$\partial_z(zx)=x$">$\partial_z(zx)=x$</span> is not the zero function.</p>
+<p>The zero multiplier must be excluded. Including it would make (4.1) cease to be a family of local diffeomorphisms.</p>
+<h2 id="5-an-analytic-parameter-chart-that-cannot-be-continued">5. An analytic parameter chart that cannot be continued</h2>
+<p>The example (4.1) embeds in the multiplicative group <span class="math" data-tex="$\mathbb C^*$">$\mathbb C^*$</span>. Engel's historical example addresses a subtler question: can a chosen analytic <strong>parameter chart and its multiplication law</strong> be continued to reach the identity? We give a version with an explicit verified chart. This distinction prevents a coordinate obstruction from being mistaken for an intrinsic obstruction to embedding transformations in a group.</p>
+<p>Let <span class="math" data-tex="$D=\{z:|z|&lt;1\}$">$D=\{z:|z|&lt;1\}$</span> and define</p>
+<span class="math math-display" data-tex="$$
+h(z)=z+\frac14\sum_{k=1}^\infty\frac{z^{2^k}}{4^k}.
+\tag{5.1}
+$$">$$
+h(z)=z+\frac14\sum_{k=1}^\infty\frac{z^{2^k}}{4^k}.
+\tag{5.1}
+$$</span>
+<p><strong>Lemma 5.1.</strong> The map <span class="math" data-tex="$h$">$h$</span> is holomorphic and injective on <span class="math" data-tex="$D$">$D$</span>, extends continuously and injectively to <span class="math" data-tex="$\overline D$">$\overline D$</span>, has <span class="math" data-tex="$h&#x27;(z)\ne0$">$h&#x27;(z)\ne0$</span> on <span class="math" data-tex="$\overline D$">$\overline D$</span>, and admits no holomorphic continuation across any point of <span class="math" data-tex="$\partial D$">$\partial D$</span>.</p>
+<p><strong>Proof.</strong> The series for <span class="math" data-tex="$h$">$h$</span> and for</p>
+<span class="math math-display" data-tex="$$
+h&#x27;(z)=1+\frac14\sum_{k=1}^\infty\frac{z^{2^k-1}}{2^k}
+$$">$$
+h&#x27;(z)=1+\frac14\sum_{k=1}^\infty\frac{z^{2^k-1}}{2^k}
+$$</span>
+<p>converge uniformly on the closed disc. Consequently <span class="math" data-tex="$|h&#x27;(z)-1|\le1/4$">$|h&#x27;(z)-1|\le1/4$</span>. For <span class="math" data-tex="$z,w\in D$">$z,w\in D$</span>, integration along the straight segment gives</p>
+<span class="math math-display" data-tex="$$
+|h(z)-h(w)-(z-w)|\le\frac14|z-w|.
+$$">$$
+|h(z)-h(w)-(z-w)|\le\frac14|z-w|.
+$$</span>
+<p>Continuity extends this inequality to <span class="math" data-tex="$\overline D$">$\overline D$</span>. Thus <span class="math" data-tex="$h$">$h$</span> is injective there, with <span class="math" data-tex="$|h(z)-h(w)|\ge3|z-w|/4$">$|h(z)-h(w)|\ge3|z-w|/4$</span>, and <span class="math" data-tex="$h&#x27;$">$h&#x27;$</span> is nonzero.</p>
+<p>Now let <span class="math" data-tex="$\zeta$">$\zeta$</span> be any root of unity whose order is a power of two. For all sufficiently large <span class="math" data-tex="$k$">$k$</span>, <span class="math" data-tex="$\zeta^{2^k}=1$">$\zeta^{2^k}=1$</span>. Inside <span class="math" data-tex="$D$">$D$</span>,</p>
+<span class="math math-display" data-tex="$$
+h&#x27;&#x27;(z)=\frac14\sum_{k=1}^\infty(1-2^{-k})z^{2^k-2}.
+$$">$$
+h&#x27;&#x27;(z)=\frac14\sum_{k=1}^\infty(1-2^{-k})z^{2^k-2}.
+$$</span>
+<p>At <span class="math" data-tex="$z=r\zeta$">$z=r\zeta$</span>, after multiplying by <span class="math" data-tex="$\zeta^2$">$\zeta^2$</span>, all sufficiently late summands are the positive real numbers <span class="math" data-tex="$(1-2^{-k})r^{2^k-2}/4$">$(1-2^{-k})r^{2^k-2}/4$</span>. Their sum tends to <span class="math" data-tex="$+\infty$">$+\infty$</span> as <span class="math" data-tex="$r\uparrow1$">$r\uparrow1$</span>: for any fixed number of late terms each tends to at least <span class="math" data-tex="$1/8$">$1/8$</span>, and that number can be arbitrarily large. The finitely many earlier terms stay bounded. Hence <span class="math" data-tex="$h&#x27;&#x27;$">$h&#x27;&#x27;$</span> is unbounded along this radius. A holomorphic extension across <span class="math" data-tex="$\zeta$">$\zeta$</span> would have bounded second derivative on a smaller neighbourhood, a contradiction.</p>
+<p>These roots of unity are dense in the unit circle. An extension across any other boundary point would also extend across a nearby such root, since an open disc about that point contains an arc of the circle. Thus no boundary point permits an extension. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Put <span class="math" data-tex="$\Lambda=h(D)$">$\Lambda=h(D)$</span> and <span class="math" data-tex="$\chi=h^{-1}:\Lambda\to D$">$\chi=h^{-1}:\Lambda\to D$</span>. The inverse is holomorphic by the inverse-function theorem. Since <span class="math" data-tex="$h$">$h$</span> is injective on the compact closed disc, it is a homeomorphism onto its image there. In particular, <span class="math" data-tex="$\partial\Lambda=h(\partial D)$">$\partial\Lambda=h(\partial D)$</span>.</p>
+<p><strong>Lemma 5.2.</strong> The function <span class="math" data-tex="$\chi$">$\chi$</span> has no holomorphic extension across a point of <span class="math" data-tex="$\partial\Lambda$">$\partial\Lambda$</span>.</p>
+<p><strong>Proof.</strong> Suppose it extends across <span class="math" data-tex="$\lambda_0=h(\zeta)$">$\lambda_0=h(\zeta)$</span>, <span class="math" data-tex="$|\zeta|=1$">$|\zeta|=1$</span>. Along <span class="math" data-tex="$\lambda=h(r\zeta)$">$\lambda=h(r\zeta)$</span>, continuity gives <span class="math" data-tex="$\chi(\lambda)\to\zeta$">$\chi(\lambda)\to\zeta$</span> and</p>
+<span class="math math-display" data-tex="$$
+\chi&#x27;(\lambda)=\frac1{h&#x27;(r\zeta)}\longrightarrow\frac1{h&#x27;(\zeta)}\ne0.
+$$">$$
+\chi&#x27;(\lambda)=\frac1{h&#x27;(r\zeta)}\longrightarrow\frac1{h&#x27;(\zeta)}\ne0.
+$$</span>
+<p>The extension therefore takes value <span class="math" data-tex="$\zeta$">$\zeta$</span> and has nonzero derivative at <span class="math" data-tex="$\lambda_0$">$\lambda_0$</span>. Its local inverse extends <span class="math" data-tex="$h$">$h$</span> across <span class="math" data-tex="$\zeta$">$\zeta$</span>, contradicting Lemma 5.1. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 5.3 (Engel-type family).</strong> On <span class="math" data-tex="$\Lambda^*=\Lambda\setminus\{0\}$">$\Lambda^*=\Lambda\setminus\{0\}$</span>, the family</p>
+<span class="math math-display" data-tex="$$
+T_\lambda(x)=\chi(\lambda)x
+$$">$$
+T_\lambda(x)=\chi(\lambda)x
+$$</span>
+<p>has one essential parameter and is closed under composition with analytic law</p>
+<span class="math math-display" data-tex="$$
+\phi(\lambda,\mu)=h\bigl(\chi(\lambda)\chi(\mu)\bigr).
+\tag{5.2}
+$$">$$
+\phi(\lambda,\mu)=h\bigl(\chi(\lambda)\chi(\mu)\bigr).
+\tag{5.2}
+$$</span>
+<p>It contains neither identity nor inverses. The law (5.2) cannot be holomorphically extended across any point of <span class="math" data-tex="$\partial\Lambda$">$\partial\Lambda$</span> in either parameter. In particular, it cannot reach the identity while retaining this parameter chart. After the reparametrization <span class="math" data-tex="$z=\chi(\lambda)$">$z=\chi(\lambda)$</span>, the same transformations are a subfamily of <span class="math" data-tex="$\mathbb C^*$">$\mathbb C^*$</span>.</p>
+<p><strong>Proof.</strong> Nonzero multipliers of modulus less than one multiply to another such multiplier. This proves closure and the formula. Since <span class="math" data-tex="$\chi&#x27;\ne0$">$\chi&#x27;\ne0$</span>, the derivative <span class="math" data-tex="$\chi&#x27;(\lambda)x$">$\chi&#x27;(\lambda)x$</span> is not identically zero, proving essentiality. The identity has multiplier one, and an inverse multiplier has modulus greater than one, proving their absence.</p>
+<p>Fix <span class="math" data-tex="$\mu\in\Lambda^*$">$\mu\in\Lambda^*$</span> and set <span class="math" data-tex="$w=\chi(\mu)$">$w=\chi(\mu)$</span>. Then <span class="math" data-tex="$0&lt;|w|&lt;1$">$0&lt;|w|&lt;1$</span>.</p>
+<p>Suppose <span class="math" data-tex="$\phi(\lambda,\mu)$">$\phi(\lambda,\mu)$</span> extends across <span class="math" data-tex="$\lambda_0=h(\zeta)\in\partial\Lambda$">$\lambda_0=h(\zeta)\in\partial\Lambda$</span>. Its limiting value there is <span class="math" data-tex="$h(\zeta w)$">$h(\zeta w)$</span>, an interior point of <span class="math" data-tex="$\Lambda$">$\Lambda$</span>. On a sufficiently small neighbourhood the extended values remain in <span class="math" data-tex="$\Lambda$">$\Lambda$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+\frac1w\chi\bigl(\phi(\lambda,\mu)\bigr)
+$$">$$
+\frac1w\chi\bigl(\phi(\lambda,\mu)\bigr)
+$$</span>
+<p>extends <span class="math" data-tex="$\chi(\lambda)$">$\chi(\lambda)$</span> across <span class="math" data-tex="$\lambda_0$">$\lambda_0$</span>, contrary to Lemma 5.2. The argument in the other parameter is identical. Reparametrizing by <span class="math" data-tex="$z$">$z$</span> gives exactly (4.1), which lies in <span class="math" data-tex="$\mathbb C^*$">$\mathbb C^*$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The useful conclusion is that closure alone supplies neither the identity axiom nor the inverse axiom. The statement that such a family cannot belong to any larger one-parameter group would be false. In the next lessons we work near a specified identity and derive the infinitesimal structure there.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 1 (introductory).</strong> For <span class="math" data-tex="$T_{(\alpha,\beta)}(x)=\alpha x+\beta$">$T_{(\alpha,\beta)}(x)=\alpha x+\beta$</span>, derive the product, identity, and inverse using (1.1). Compute the commutator of a translation by <span class="math" data-tex="$b$">$b$</span> and a dilation by <span class="math" data-tex="$\alpha$">$\alpha$</span>.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Near the identity in (3.1), show that the value, first derivative, and second derivative at zero already detect all three essential parameters.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Reduce <span class="math" data-tex="$x\mapsto x+ab$">$x\mapsto x+ab$</span> near <span class="math" data-tex="$(a,b)=(2,0)$">$(a,b)=(2,0)$</span> and explain why the same coordinate choice fails at <span class="math" data-tex="$(0,0)$">$(0,0)$</span>.</p>
+<p><strong>Exercise 4 (intermediate).</strong> Give a proof of Proposition 4.1 using the injectivity of left multiplication on the finite set <span class="math" data-tex="$S$">$S$</span>.</p>
+<p><strong>Exercise 5 (advanced).</strong> Replace <span class="math" data-tex="$1/4$">$1/4$</span> in (5.1) by a real number <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> with <span class="math" data-tex="$0&lt;\varepsilon&lt;1$">$0&lt;\varepsilon&lt;1$</span>. Prove all assertions of Theorem 5.3 and explain which conclusions fail when the puncture is filled.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>Solution 1.</strong> Substitution gives <span class="math" data-tex="$\gamma(\alpha x+\beta)+\delta$">$\gamma(\alpha x+\beta)+\delta$</span>, so the product is (1.2). Solving <span class="math" data-tex="$\alpha x+\beta=y$">$\alpha x+\beta=y$</span> gives the inverse <span class="math" data-tex="$y/\alpha-\beta/\alpha$">$y/\alpha-\beta/\alpha$</span>. Let <span class="math" data-tex="$A(x)=x+b$">$A(x)=x+b$</span> and <span class="math" data-tex="$B(x)=\alpha x$">$B(x)=\alpha x$</span>. With the explicitly specified commutator <span class="math" data-tex="$B^{-1}\circ A^{-1}\circ B\circ A$">$B^{-1}\circ A^{-1}\circ B\circ A$</span>, the successive images are <span class="math" data-tex="$x+b$">$x+b$</span>, <span class="math" data-tex="$\alpha x+\alpha b$">$\alpha x+\alpha b$</span>, <span class="math" data-tex="$\alpha x+\alpha b-b$">$\alpha x+\alpha b-b$</span>, and <span class="math" data-tex="$x+b-b/\alpha$">$x+b-b/\alpha$</span>. Thus it is translation by <span class="math" data-tex="$b(1-1/\alpha)$">$b(1-1/\alpha)$</span>. This also shows that translations and dilations need not commute.</p>
+<p><strong>Solution 2.</strong> In the chart <span class="math" data-tex="$d=1$">$d=1$</span>,</p>
+<span class="math math-display" data-tex="$$
+T(0)=\beta,\quad T&#x27;(0)=\alpha-\beta\gamma,\quad
+T&#x27;&#x27;(0)=-2\gamma(\alpha-\beta\gamma).
+$$">$$
+T(0)=\beta,\quad T&#x27;(0)=\alpha-\beta\gamma,\quad
+T&#x27;&#x27;(0)=-2\gamma(\alpha-\beta\gamma).
+$$</span>
+<p>Because <span class="math" data-tex="$T&#x27;(0)\ne0$">$T&#x27;(0)\ne0$</span>, these data recover <span class="math" data-tex="$\beta=T(0)$">$\beta=T(0)$</span>, <span class="math" data-tex="$\gamma=-T&#x27;&#x27;(0)/(2T&#x27;(0))$">$\gamma=-T&#x27;&#x27;(0)/(2T&#x27;(0))$</span>, and <span class="math" data-tex="$\alpha=T&#x27;(0)+\beta\gamma$">$\alpha=T&#x27;(0)+\beta\gamma$</span>. They are analytic local coordinates on the three-parameter family. Scalar matrix ambiguity has already removed the fourth parameter.</p>
+<p><strong>Solution 3.</strong> Set <span class="math" data-tex="$u=ab$">$u=ab$</span>, <span class="math" data-tex="$v=a$">$v=a$</span>. The Jacobian determinant of <span class="math" data-tex="$(u,v)$">$(u,v)$</span> with respect to <span class="math" data-tex="$(a,b)$">$(a,b)$</span> is <span class="math" data-tex="$-a$">$-a$</span>, which is nonzero near <span class="math" data-tex="$(2,0)$">$(2,0)$</span>. The family becomes <span class="math" data-tex="$x\mapsto x+u$">$x\mapsto x+u$</span>. At <span class="math" data-tex="$(0,0)$">$(0,0)$</span> every first derivative of <span class="math" data-tex="$ab$">$ab$</span> vanishes, so <span class="math" data-tex="$(ab,a)$">$(ab,a)$</span> is not a coordinate chart. The generic essential dimension remains one; it is not computed by the rank at this critical point.</p>
+<p><strong>Solution 4.</strong> For <span class="math" data-tex="$s\in S$">$s\in S$</span>, the map <span class="math" data-tex="$L_s:S\to S$">$L_s:S\to S$</span> is injective by cancellation, hence surjective by finiteness. Some <span class="math" data-tex="$t\in S$">$t\in S$</span> satisfies <span class="math" data-tex="$st=s$">$st=s$</span>. Cancelling <span class="math" data-tex="$s$">$s$</span> in the ambient group gives <span class="math" data-tex="$t=e$">$t=e$</span>, so <span class="math" data-tex="$e\in S$">$e\in S$</span>. Surjectivity again gives <span class="math" data-tex="$u\in S$">$u\in S$</span> with <span class="math" data-tex="$su=e$">$su=e$</span>, and <span class="math" data-tex="$u=s^{-1}$">$u=s^{-1}$</span>. Hence <span class="math" data-tex="$S$">$S$</span> is a subgroup.</p>
+<p><strong>Solution 5.</strong> The derivative bound becomes <span class="math" data-tex="$|h&#x27;-1|\le\varepsilon$">$|h&#x27;-1|\le\varepsilon$</span>, and the lower Lipschitz bound is <span class="math" data-tex="$(1-\varepsilon)|z-w|$">$(1-\varepsilon)|z-w|$</span>. Both remain positive. At a dyadic root of unity the tail of <span class="math" data-tex="$\zeta^2h&#x27;&#x27;(r\zeta)$">$\zeta^2h&#x27;&#x27;(r\zeta)$</span> is a positive sum with coefficients <span class="math" data-tex="$\varepsilon(1-2^{-k})$">$\varepsilon(1-2^{-k})$</span>, so it diverges exactly as before. Lemmas 5.1 and 5.2 follow, and the fixed-<span class="math" data-tex="$\mu$">$\mu$</span> argument proves the multiplication-law obstruction. Filling the puncture adds <span class="math" data-tex="$T_0(x)=0$">$T_0(x)=0$</span>. This map has zero derivative, so it is not a local diffeomorphism and has no inverse. The family is still a semigroup, now with an absorbing element, but no longer consists entirely of transformations in the sense of Section 1.</p>
+<h2 id="what-this-lesson-assumes">What this lesson assumes</h2>
+<p><strong>Local analytic inverse theorem.</strong> If <span class="math" data-tex="$F:U\subset\mathbb K^r\to\mathbb K^r$">$F:U\subset\mathbb K^r\to\mathbb K^r$</span> is analytic and <span class="math" data-tex="$\det DF(a_0)\ne0$">$\det DF(a_0)\ne0$</span>, there are open neighbourhoods <span class="math" data-tex="$V$">$V$</span> of <span class="math" data-tex="$a_0$">$a_0$</span> and <span class="math" data-tex="$W$">$W$</span> of <span class="math" data-tex="$F(a_0)$">$F(a_0)$</span> such that <span class="math" data-tex="$F:V\to W$">$F:V\to W$</span> is bijective with analytic inverse. Its derivative at <span class="math" data-tex="$F(a)$">$F(a)$</span> is <span class="math" data-tex="$DF(a)^{-1}$">$DF(a)^{-1}$</span>. In one complex variable, this is [Lebl, <em>Guide to Cultivating Complex Analysis</em>, Theorem 2.2.8, p. 36]. The underlying real <span class="math" data-tex="$C^1$">$C^1$</span> theorem, including its contraction proof, is Theorem B.3.16, pp. 289–291; the contraction theorem is B.3.15, p. 288.</p>
+<p>Here is the analytic upgrade needed in several variables. For holomorphic <span class="math" data-tex="$F$">$F$</span>, the real determinant is <span class="math" data-tex="$|\det DF|^2$">$|\det DF|^2$</span> [Lebl, <em>Tasty Bits of Several Complex Variables</em>, Proposition 1.3.7, p. 27]. The real inverse theorem therefore gives a <span class="math" data-tex="$C^1$">$C^1$</span> inverse. Its differential is the inverse of a complex-linear map and hence is complex-linear; the Cauchy–Riemann equations make the inverse holomorphic. This proves the inverse statement asked for in Exercise 1.3.6, p. 27, by the same route as Theorem 1.3.8 there. A real-analytic <span class="math" data-tex="$F$">$F$</span> extends locally holomorphically by its convergent power series [Proposition 3.1.3, p. 87]. Its derivative at a real point remains invertible over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. The holomorphic inverse commutes with conjugation by uniqueness, so its restriction to real points is real analytic. Thus a smooth inverse theorem alone is not the analytic justification.</p>
+<p><strong>Finite-rank coordinate consequence.</strong> If <span class="math" data-tex="$q$">$q$</span> analytic scalar functions have independent differentials at a point of <span class="math" data-tex="$\mathbb K^r$">$\mathbb K^r$</span>, they can serve as the first <span class="math" data-tex="$q$">$q$</span> coordinates of an analytic chart. The proof is precisely the minor-and-adjoined-coordinates argument in Theorem 2.1. If every additional coefficient has differential in their span, its derivatives in the remaining coordinates vanish. This is the entire constant-rank consequence used here.</p>
+<p><strong>Connected-domain analytic identity theorem.</strong> An analytic scalar function on a connected open subset of <span class="math" data-tex="$\mathbb K^n$">$\mathbb K^n$</span> that vanishes on a nonempty open subset vanishes everywhere. The holomorphic theorem and proof are [Lebl, <em>Tasty Bits</em>, Theorem 1.2.6, p. 21]; its real-analytic version is Exercise 3.1.1, p. 87. For either field, take the set of points where every derivative vanishes. It is nonempty and closed by continuity, and open because the convergent Taylor series is zero there. Connectedness makes it the entire domain. Applying this to the difference of two functions gives the uniqueness used in Section 2.</p>
+<p>All parameter-reduction and semigroup assertions used here are proved in the lesson. No theorem about infinite-dimensional analytic manifolds or existence of a Riemann map is used.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Michael Kunzinger, <em>Lie Transformation Groups: An Introduction to Symmetry Group Analysis of Differential Equations</em>, lecture notes, 2015, corrected version December 2024, Chapter 3, Section 3.1. <a href="https://www.mat.univie.ac.at/~mike/teaching/ss15/ltg.pdf">Author's text</a>.</li>
+<li>Sophus Lie, with Friedrich Engel, <em>Theorie der Transformationsgruppen</em>, Volume I, 1888, Chapter 1, §§1–5, pp. 11–26; Chapter 9, §44, pp. 163–165, for the inverse axiom and Engel's example. The construction in Section 5 uses a different explicitly checked series.</li>
+<li>Joël Merker, <em>Theory of Transformation Groups, by S. Lie and F. Engel (Vol. I, 1888): Modern Presentation and English Translation</em>, 2010, introductory discussion of the inverse axiom. <a href="https://arxiv.org/abs/1003.3202">Author's preprint</a>.</li>
+<li>Jiří Lebl, <em>Guide to Cultivating Complex Analysis</em>, Theorem 2.2.8, p. 36, and Theorems B.3.15–B.3.16, pp. 288–291. <a href="https://www.jirka.org/ca/ca.pdf">Author's text</a>.</li>
+<li>Jiří Lebl, <em>Tasty Bits of Several Complex Variables</em>, version 3.4 (2020), Theorem 1.2.6, p. 21; Proposition 1.3.7, Theorem 1.3.8 and Exercise 1.3.6, p. 27; Proposition 3.1.3 and Exercise 3.1.1, p. 87. <a href="https://www.jirka.org/scv/scv-3.4.pdf">Author's text</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LIE-TG-02.html">The fundamental differential equations →</a></span></nav>
+<p class="small source-link"><a href="src/LIE-TG-01.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LIE-TG">Repository</a></nav>
+</footer>
+</body>
+</html>

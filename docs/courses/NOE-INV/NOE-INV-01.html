@@ -1,0 +1,1466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Covariants of binary and ternary forms · Invariants and finiteness</title>
+<meta name="description" content="A lesson of the course Invariants and finiteness. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-INV/NOE-INV-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Invariants and finiteness</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 5</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="covariants-of-binary-and-ternary-forms">Covariants of binary and ternary forms</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Original exposition and proofs are CC0. This evolving lesson is being checked by its writing AI; no independent review is recorded.</em></p>
+<p>A form is a polynomial together with a choice of coordinates. An invariant detects a feature that survives changing those coordinates; a covariant produces another form that changes in a compatible way. Computing a Hessian already illustrates the distinction. We will begin with the action and its signs, obtain a differential test for covariance, and then use a single equivariant differential operator to build examples.</p>
+<p>Throughout this lesson <span class="math" data-tex="\(k\)">\(k\)</span> has characteristic zero. We use polynomial rings, differentiation and elementary matrix operations from the algebra prerequisites. The later lesson <a href="NOE-INV-02.html">Forms in several variables and Hilbert finiteness</a> supplies general finite generation; <a href="NOE-INV-04.html">Polarization and invariants of many vectors</a> supplies the vector first fundamental theorem used by the general symbolic method. These are written lessons in this same course. The calculations here identify exactly where their conclusions enter.</p>
+<h2 id="1-coordinates-substitution-and-determinant-weight">1. Coordinates, substitution and determinant weight</h2>
+<p>Write a binary form of degree <span class="math" data-tex="\(d\)">\(d\)</span> as
+<span class="math math-display" data-tex="\[
+f(x,y)=\sum_{i=0}^d\binom di a_i x^{d-i}y^i.
+\]">\[
+f(x,y)=\sum_{i=0}^d\binom di a_i x^{d-i}y^i.
+\]</span>
+The binomial factors are convenient over a characteristic-zero field. They require separate treatment over the integers in the final lesson.</p>
+<p>For <span class="math" data-tex="\(g\in\operatorname{GL}_2(k)\)">\(g\in\operatorname{GL}_2(k)\)</span>, fix the left action
+<span class="math math-display" data-tex="\[
+(g\cdot f)(v)=f(g^{-1}v),\qquad v=(x,y)^{\mathsf t}.
+\]">\[
+(g\cdot f)(v)=f(g^{-1}v),\qquad v=(x,y)^{\mathsf t}.
+\]</span>
+A polynomial <span class="math" data-tex="\(C(a,x,y)\)">\(C(a,x,y)\)</span>, homogeneous of coefficient degree <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and variable order <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, is a <strong>covariant of weight <span class="math" data-tex="\(w\)">\(w\)</span></strong> if
+<span class="math math-display" data-tex="\[
+C(g\cdot f,gv)=\det(g)^{-w}C(f,v).
+\tag{1}
+\]">\[
+C(g\cdot f,gv)=\det(g)^{-w}C(f,v).
+\tag{1}
+\]</span>
+An invariant is a covariant of order zero. The inverse determinant in (1) is part of our convention: it makes classical weights positive for the inverse-substitution action. For the special linear group the determinant factor disappears.</p>
+<p>For <span class="math" data-tex="\(n\)">\(n\)</span> variables, use the same definition with <span class="math" data-tex="\(g\in\operatorname{GL}_n\)">\(g\in\operatorname{GL}_n\)</span>. A form of degree <span class="math" data-tex="\(d\)">\(d\)</span> is <span class="math" data-tex="\(\sum_{|\alpha|=d}(d!/\alpha!)a_\alpha x^\alpha\)">\(\sum_{|\alpha|=d}(d!/\alpha!)a_\alpha x^\alpha\)</span>. Systems of forms can be graded separately in the coefficients of each member. A <strong>contravariant</strong> has auxiliary variables transforming in the dual representation; it must not be silently treated as a covariant with the same variable action.</p>
+<p><strong>Proposition 1.1 (degree, order and weight).</strong> A nonzero bihomogeneous binary special-linear covariant extends to (1), with
+<span class="math math-display" data-tex="\[
+w=\frac{d\delta-\omega}{2}\in\mathbb Z_{\geq0}.
+\]">\[
+w=\frac{d\delta-\omega}{2}\in\mathbb Z_{\geq0}.
+\]</span></p>
+<p><strong>Proof.</strong> The scalar matrix <span class="math" data-tex="\(\lambda I\)">\(\lambda I\)</span> multiplies the coefficients by <span class="math" data-tex="\(\lambda^{-d}\)">\(\lambda^{-d}\)</span> and the variables by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Hence the left side of (1) scales by <span class="math" data-tex="\(\lambda^{-d\delta+\omega}\)">\(\lambda^{-d\delta+\omega}\)</span>. A determinant weight must therefore satisfy <span class="math" data-tex="\(2w=d\delta-\omega\)">\(2w=d\delta-\omega\)</span>.</p>
+<p>To prove integrality and nonnegativity without assuming them, use <span class="math" data-tex="\(\operatorname{diag}(t,t^{-1})\in\operatorname{SL}_2\)">\(\operatorname{diag}(t,t^{-1})\in\operatorname{SL}_2\)</span>. Its coefficient action is <span class="math" data-tex="\(a_i\mapsto t^{2i-d}a_i\)">\(a_i\mapsto t^{2i-d}a_i\)</span>. Let <span class="math" data-tex="\(c(a)\)">\(c(a)\)</span> be the coefficient of <span class="math" data-tex="\(x^\omega\)">\(x^\omega\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>. It is nonzero: if <span class="math" data-tex="\(C(a,1,0)\)">\(C(a,1,0)\)</span> vanished for every coefficient vector, transitivity of <span class="math" data-tex="\(\operatorname{SL}_2\)">\(\operatorname{SL}_2\)</span> on nonzero vectors, together with covariance, would make <span class="math" data-tex="\(C\)">\(C\)</span> vanish everywhere. Since <span class="math" data-tex="\(k\)">\(k\)</span> is infinite, that would make the polynomial zero.</p>
+<p>Every coefficient monomial in <span class="math" data-tex="\(c\)">\(c\)</span> has torus weight <span class="math" data-tex="\(-\omega\)">\(-\omega\)</span>. Its weight is a sum of <span class="math" data-tex="\(\delta\)">\(\delta\)</span> integers <span class="math" data-tex="\(2i-d\)">\(2i-d\)</span>, so lies between <span class="math" data-tex="\(-d\delta\)">\(-d\delta\)</span> and <span class="math" data-tex="\(d\delta\)">\(d\delta\)</span>, and is congruent to <span class="math" data-tex="\(d\delta\)">\(d\delta\)</span> modulo two. Thus <span class="math" data-tex="\(\omega\leq d\delta\)">\(\omega\leq d\delta\)</span> and <span class="math" data-tex="\(d\delta-\omega\)">\(d\delta-\omega\)</span> is even.</p>
+<p>Over an algebraic closure choose <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with <span class="math" data-tex="\(\lambda^2=\det g\)">\(\lambda^2=\det g\)</span> and write <span class="math" data-tex="\(g=\lambda s\)">\(g=\lambda s\)</span>, <span class="math" data-tex="\(s\in\operatorname{SL}_2\)">\(s\in\operatorname{SL}_2\)</span>. Scalar scaling and special-linear covariance now give (1). The resulting equality of polynomials descends to <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a multidegree <span class="math" data-tex="\((\delta_j)\)">\((\delta_j)\)</span> in forms of degrees <span class="math" data-tex="\(d_j\)">\(d_j\)</span>, the same scalar calculation gives <span class="math" data-tex="\(nw=\sum_jd_j\delta_j-\omega\)">\(nw=\sum_jd_j\delta_j-\omega\)</span> in <span class="math" data-tex="\(n\)">\(n\)</span> variables whenever a determinant-weight covariant exists.</p>
+<h2 id="2-a-differential-test-for-covariance">2. A differential test for covariance</h2>
+<p>Let <span class="math" data-tex="\(E_0=\left(\begin{smallmatrix}0&amp;1\\0&amp;0\end{smallmatrix}\right)\)">\(E_0=\left(\begin{smallmatrix}0&amp;1\\0&amp;0\end{smallmatrix}\right)\)</span> and <span class="math" data-tex="\(F_0=\left(\begin{smallmatrix}0&amp;0\\1&amp;0\end{smallmatrix}\right)\)">\(F_0=\left(\begin{smallmatrix}0&amp;0\\1&amp;0\end{smallmatrix}\right)\)</span>. The simultaneous action on coefficients and variables induces
+<span class="math math-display" data-tex="\[
+E=y\frac{\partial}{\partial x}
+-\sum_{i=1}^d i a_{i-1}\frac{\partial}{\partial a_i},
+\qquad
+F=x\frac{\partial}{\partial y}
+-\sum_{i=0}^{d-1}(d-i)a_{i+1}\frac{\partial}{\partial a_i}.
+\tag{2}
+\]">\[
+E=y\frac{\partial}{\partial x}
+-\sum_{i=1}^d i a_{i-1}\frac{\partial}{\partial a_i},
+\qquad
+F=x\frac{\partial}{\partial y}
+-\sum_{i=0}^{d-1}(d-i)a_{i+1}\frac{\partial}{\partial a_i}.
+\tag{2}
+\]</span>
+For a system, sum the coefficient parts over all its forms. The variable parts appear only once.</p>
+<p>To check the first formula, substitute <span class="math" data-tex="\(x-ty\)">\(x-ty\)</span> into <span class="math" data-tex="\(f\)">\(f\)</span>. The coefficient derivative is
+<span class="math math-display" data-tex="\[
+-(d-i+1)\frac{\binom d{i-1}}{\binom di}a_{i-1}=-i a_{i-1}.
+\]">\[
+-(d-i+1)\frac{\binom d{i-1}}{\binom di}a_{i-1}=-i a_{i-1}.
+\]</span>
+Meanwhile the simultaneous variable action is <span class="math" data-tex="\(x\mapsto x+ty\)">\(x\mapsto x+ty\)</span>. The second formula follows by exchanging <span class="math" data-tex="\(x,y\)">\(x,y\)</span> and reversing the coefficient indices. This derivation fixes the signs; a criterion written for another action convention can have different signs.</p>
+<p><strong>Theorem 2.1 (infinitesimal criterion).</strong> A polynomial <span class="math" data-tex="\(C(a,x,y)\)">\(C(a,x,y)\)</span> is special-linear invariant under the simultaneous action if and only if <span class="math" data-tex="\(EC=FC=0\)">\(EC=FC=0\)</span>.</p>
+<p><strong>Proof.</strong> Invariance under the upper and lower unipotent one-parameter subgroups implies these two derivative conditions at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>.</p>
+<p>Conversely, the action of each subgroup on a polynomial is a polynomial in <span class="math" data-tex="\(t\)">\(t\)</span>. Its derivative is the translate of <span class="math" data-tex="\(EC\)">\(EC\)</span>, or of <span class="math" data-tex="\(FC\)">\(FC\)</span>, by the chain rule and the subgroup law. If the corresponding derivation kills <span class="math" data-tex="\(C\)">\(C\)</span>, that derivative vanishes identically. In characteristic zero a polynomial with zero derivative is constant. Its value at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is <span class="math" data-tex="\(C\)">\(C\)</span>, so <span class="math" data-tex="\(C\)">\(C\)</span> is invariant under both subgroups.</p>
+<p>They generate <span class="math" data-tex="\(\operatorname{SL}_2(k)\)">\(\operatorname{SL}_2(k)\)</span>. Gaussian row operations reduce any determinant-one matrix to a diagonal matrix, using these elementary matrices. If
+<span class="math math-display" data-tex="\[
+U(t)=\begin{pmatrix}1&amp;t\\0&amp;1\end{pmatrix},
+\quad L(t)=\begin{pmatrix}1&amp;0\\t&amp;1\end{pmatrix},
+\]">\[
+U(t)=\begin{pmatrix}1&amp;t\\0&amp;1\end{pmatrix},
+\quad L(t)=\begin{pmatrix}1&amp;0\\t&amp;1\end{pmatrix},
+\]</span>
+then <span class="math" data-tex="\(W(t)=U(t)L(-t^{-1})U(t)=\left(\begin{smallmatrix}0&amp;t\\-t^{-1}&amp;0\end{smallmatrix}\right)\)">\(W(t)=U(t)L(-t^{-1})U(t)=\left(\begin{smallmatrix}0&amp;t\\-t^{-1}&amp;0\end{smallmatrix}\right)\)</span> for <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, and <span class="math" data-tex="\(W(t)W(1)^{-1}=\operatorname{diag}(t,t^{-1})\)">\(W(t)W(1)^{-1}=\operatorname{diag}(t,t^{-1})\)</span>. This includes the diagonal matrices in the generated group, proving the criterion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof uses unipotent subgroups and polynomial differentiation, rather than an unstated assertion about connected Lie groups. It works over every characteristic-zero field.</p>
+<h2 id="3-transvectants-contracting-two-variable-pairs">3. Transvectants: contracting two variable pairs</h2>
+<p>Use independent binary pairs <span class="math" data-tex="\(v=(x,y)\)">\(v=(x,y)\)</span> and <span class="math" data-tex="\(u=(X,Y)\)">\(u=(X,Y)\)</span>. Define
+<span class="math math-display" data-tex="\[
+\Omega_{v,u}=\partial_x\partial_Y-\partial_y\partial_X.
+\]">\[
+\Omega_{v,u}=\partial_x\partial_Y-\partial_y\partial_X.
+\]</span>
+For forms <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> of orders <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, fix the normalized transvectant
+<span class="math math-display" data-tex="\[
+(P,Q)_r=
+\frac{(m-r)!(n-r)!}{m!\,n!}
+\left.\Omega_{v,u}^{\,r}\bigl(P(v)Q(u)\bigr)\right|_{u=v},
+\qquad 0\leq r\leq\min(m,n).
+\tag{3}
+\]">\[
+(P,Q)_r=
+\frac{(m-r)!(n-r)!}{m!\,n!}
+\left.\Omega_{v,u}^{\,r}\bigl(P(v)Q(u)\bigr)\right|_{u=v},
+\qquad 0\leq r\leq\min(m,n).
+\tag{3}
+\]</span>
+All constants in later computations refer to (3); rescaled classical invariants will be identified explicitly.</p>
+<p>Expanding the operator gives the usable formula
+<span class="math math-display" data-tex="\[
+(P,Q)_r=\frac{(m-r)!(n-r)!}{m!\,n!}
+\sum_{j=0}^r(-1)^j\binom rj
+\frac{\partial^rP}{\partial x^{r-j}\partial y^j}
+\frac{\partial^rQ}{\partial x^j\partial y^{r-j}}.
+\tag{4}
+\]">\[
+(P,Q)_r=\frac{(m-r)!(n-r)!}{m!\,n!}
+\sum_{j=0}^r(-1)^j\binom rj
+\frac{\partial^rP}{\partial x^{r-j}\partial y^j}
+\frac{\partial^rQ}{\partial x^j\partial y^{r-j}}.
+\tag{4}
+\]</span></p>
+<p><strong>Theorem 3.1 (covariance of transvection).</strong> If <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> are covariants of coefficient degrees <span class="math" data-tex="\(\delta_1,\delta_2\)">\(\delta_1,\delta_2\)</span>, orders <span class="math" data-tex="\(m,n\)">\(m,n\)</span> and weights <span class="math" data-tex="\(w_1,w_2\)">\(w_1,w_2\)</span>, then <span class="math" data-tex="\((P,Q)_r\)">\((P,Q)_r\)</span> is a covariant of degree <span class="math" data-tex="\(\delta_1+\delta_2\)">\(\delta_1+\delta_2\)</span>, order <span class="math" data-tex="\(m+n-2r\)">\(m+n-2r\)</span>, and weight <span class="math" data-tex="\(w_1+w_2+r\)">\(w_1+w_2+r\)</span>, unless it is zero.</p>
+<p><strong>Proof.</strong> The chain rule shows that contracting two derivatives by their alternating determinant picks up a factor <span class="math" data-tex="\(\det g\)">\(\det g\)</span> when both variable pairs are replaced by <span class="math" data-tex="\(gv,gu\)">\(gv,gu\)</span>:
+<span class="math math-display" data-tex="\[
+\Omega_{v,u}\bigl(P(gv)Q(gu)\bigr)
+=\det(g)\,(\Omega_{v,u}(P(v)Q(u)))\big|_{v\mapsto gv,\ u\mapsto gu}.
+\]">\[
+\Omega_{v,u}\bigl(P(gv)Q(gu)\bigr)
+=\det(g)\,(\Omega_{v,u}(P(v)Q(u)))\big|_{v\mapsto gv,\ u\mapsto gu}.
+\]</span>
+This identity is checked by multiplying the two Jacobian matrices; their alternating product is the determinant. The derivatives commute, so iteration gives <span class="math" data-tex="\(\det(g)^r\)">\(\det(g)^r\)</span>. Apply it to the covariance identity for the product of <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>, then divide by that factor. The diagonal restriction <span class="math" data-tex="\(u=v\)">\(u=v\)</span> commutes with simultaneous substitution. This gives determinant exponent <span class="math" data-tex="\(-(w_1+w_2+r)\)">\(-(w_1+w_2+r)\)</span>. Differentiation removes <span class="math" data-tex="\(r\)">\(r\)</span> variables from each factor, and coefficient multiplication adds the degrees. The scalar normalization changes none of these assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Exchanging the factors reverses the alternating contraction:
+<span class="math math-display" data-tex="\[
+(Q,P)_r=(-1)^r(P,Q)_r.
+\]">\[
+(Q,P)_r=(-1)^r(P,Q)_r.
+\]</span>
+Thus every odd self-transvectant vanishes. In particular, computing a nonzero <span class="math" data-tex="\((f,f)_1\)">\((f,f)_1\)</span> would expose a sign or implementation error.</p>
+<h2 id="4-reading-a-covariant-from-its-leading-coefficient">4. Reading a covariant from its leading coefficient</h2>
+<p>The computations to follow will give <strong>complete systems</strong>: every polynomial covariant is a polynomial in the displayed ones. To prove this, we first turn covariance into a problem about a derivation on the coefficient ring.</p>
+<p>For a covariant <span class="math" data-tex="\(C\)">\(C\)</span> of order <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, write
+<span class="math math-display" data-tex="\[
+C=c_0x^\omega+c_1x^{\omega-1}y+\cdots+c_\omega y^\omega.
+\]">\[
+C=c_0x^\omega+c_1x^{\omega-1}y+\cdots+c_\omega y^\omega.
+\]</span>
+The coefficient of <span class="math" data-tex="\(x^\omega\)">\(x^\omega\)</span> in <span class="math" data-tex="\(EC=0\)">\(EC=0\)</span> is
+<span class="math math-display" data-tex="\[
+\mathcal D c_0=0,\qquad
+\mathcal D=\sum_{i=1}^d i a_{i-1}\partial_{a_i}.
+\tag{5}
+\]">\[
+\mathcal D c_0=0,\qquad
+\mathcal D=\sum_{i=1}^d i a_{i-1}\partial_{a_i}.
+\tag{5}
+\]</span>
+The leading-coefficient map <span class="math" data-tex="\(C\mapsto C(a,1,0)\)">\(C\mapsto C(a,1,0)\)</span> is injective on the algebra of special-linear covariants, including sums of different orders. Indeed, if that evaluation is zero, covariance and the transitivity of <span class="math" data-tex="\(\operatorname{SL}_2(k)\)">\(\operatorname{SL}_2(k)\)</span> on nonzero vectors make <span class="math" data-tex="\(C(a,v)=0\)">\(C(a,v)=0\)</span> for every <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> and every coefficient vector. A polynomial vanishing there is zero because <span class="math" data-tex="\(k\)">\(k\)</span> is infinite.</p>
+<p>For degrees two, three and four, abbreviate the coefficients by <span class="math" data-tex="\(a,b,c,d,e\)">\(a,b,c,d,e\)</span>, omitting those not present. Set
+<span class="math math-display" data-tex="\[
+h=ac-b^2,\qquad t=a^2d-3abc+2b^3.
+\]">\[
+h=ac-b^2,\qquad t=a^2d-3abc+2b^3.
+\]</span>
+Direct differentiation gives <span class="math" data-tex="\(\mathcal Da=\mathcal Dh=\mathcal Dt=0\)">\(\mathcal Da=\mathcal Dh=\mathcal Dt=0\)</span>. For a cubic also put
+<span class="math math-display" data-tex="\[
+D=a^2d^2-6abcd+4ac^3+4b^3d-3b^2c^2;
+\]">\[
+D=a^2d^2-6abcd+4ac^3+4b^3d-3b^2c^2;
+\]</span>
+for a quartic put
+<span class="math math-display" data-tex="\[
+i=ae-4bd+3c^2,\qquad
+j=ace+2bcd-ad^2-b^2e-c^3.
+\]">\[
+i=ae-4bd+3c^2,\qquad
+j=ace+2bcd-ad^2-b^2e-c^3.
+\]</span>
+These too are killed by <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>.</p>
+<p><strong>Theorem 4.1 (three coefficient kernels).</strong> In characteristic zero,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\ker(\mathcal D:k[a,b,c]\to k[a,b,c])&amp;=k[a,h],\\
+\ker(\mathcal D:k[a,b,c,d]\to k[a,b,c,d])
+&amp;\cong k[a,h,t,D]/(a^2D-t^2-4h^3),\\
+\ker(\mathcal D:k[a,b,c,d,e]\to k[a,b,c,d,e])
+&amp;\cong k[a,h,t,i,j]/(t^2+4h^3-ia^2h+ja^3).
+\end{aligned}
+\tag{6}
+\]">\[
+\begin{aligned}
+\ker(\mathcal D:k[a,b,c]\to k[a,b,c])&amp;=k[a,h],\\
+\ker(\mathcal D:k[a,b,c,d]\to k[a,b,c,d])
+&amp;\cong k[a,h,t,D]/(a^2D-t^2-4h^3),\\
+\ker(\mathcal D:k[a,b,c,d,e]\to k[a,b,c,d,e])
+&amp;\cong k[a,h,t,i,j]/(t^2+4h^3-ia^2h+ja^3).
+\end{aligned}
+\tag{6}
+\]</span>
+The isomorphisms send the formal generators to the polynomials just defined.</p>
+<p><strong>Proof.</strong> Invert <span class="math" data-tex="\(a\)">\(a\)</span>, and use <span class="math" data-tex="\(s=b/a\)">\(s=b/a\)</span>. Then <span class="math" data-tex="\(\mathcal Ds=1\)">\(\mathcal Ds=1\)</span>. The inverse coordinate substitutions are
+<span class="math math-display" data-tex="\[
+b=as,\quad c=h/a+as^2,\quad
+d=t/a^2+3hs/a+as^3,
+\tag{7}
+\]">\[
+b=as,\quad c=h/a+as^2,\quad
+d=t/a^2+3hs/a+as^3,
+\tag{7}
+\]</span>
+and, in degree four,
+<span class="math math-display" data-tex="\[
+e=i/a+4st/a^2+6hs^2/a+as^4-3h^2/a^3.
+\tag{8}
+\]">\[
+e=i/a+4st/a^2+6hs^2/a+as^4-3h^2/a^3.
+\tag{8}
+\]</span>
+Use only the available equations in each degree. These substitutions show that the localized polynomial rings have coordinates
+<span class="math math-display" data-tex="\[
+(a^{\pm1},h,s),\quad (a^{\pm1},h,t,s),\quad
+(a^{\pm1},h,t,i,s),
+\]">\[
+(a^{\pm1},h,s),\quad (a^{\pm1},h,t,s),\quad
+(a^{\pm1},h,t,i,s),
+\]</span>
+respectively. In these coordinates <span class="math" data-tex="\(\mathcal D=\partial_s\)">\(\mathcal D=\partial_s\)</span>. Its kernel consists of the polynomials independent of <span class="math" data-tex="\(s\)">\(s\)</span>; this uses characteristic zero.</p>
+<p>Expanding the definitions gives
+<span class="math math-display" data-tex="\[
+a^2D=t^2+4h^3,\qquad
+t^2+4h^3-ia^2h+ja^3=0.
+\tag{9}
+\]">\[
+a^2D=t^2+4h^3,\qquad
+t^2+4h^3-ia^2h+ja^3=0.
+\tag{9}
+\]</span>
+Here is also a way to verify the second expansion with fewer terms: substitute (7)–(8) into the definition of <span class="math" data-tex="\(j\)">\(j\)</span>; it becomes
+<span class="math" data-tex="\(j=(ia^2h-t^2-4h^3)/a^3\)">\(j=(ia^2h-t^2-4h^3)/a^3\)</span>.
+An equality after inverting <span class="math" data-tex="\(a\)">\(a\)</span> is an equality in the original polynomial ring.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> denote the corresponding proposed ring on the right of (6). Each of the two relations is primitive and linear in its last generator, <span class="math" data-tex="\(D\)">\(D\)</span> or <span class="math" data-tex="\(j\)">\(j\)</span>. Its leading coefficient, <span class="math" data-tex="\(a^2\)">\(a^2\)</span> or <span class="math" data-tex="\(a^3\)">\(a^3\)</span>, has no common factor with its constant coefficient, since the latter remains a nonzero polynomial modulo <span class="math" data-tex="\(a\)">\(a\)</span>. Gauss's lemma makes the relation irreducible in the polynomial ring, so <span class="math" data-tex="\(S\)">\(S\)</span> is a domain. Gauss's lemma is proved in the algebra lesson <a href="../AG-CA/AG-CA-05.html">Integral extensions, lying over, going up and going down, Proposition 2.3</a>. After inverting <span class="math" data-tex="\(a\)">\(a\)</span>, equations (7)–(9) identify <span class="math" data-tex="\(S[a^{-1}]\)">\(S[a^{-1}]\)</span> with the localized kernel. Because <span class="math" data-tex="\(S\)">\(S\)</span> is a domain, this also proves that <span class="math" data-tex="\(S\)">\(S\)</span> embeds in the original coefficient ring <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>We must check that no denominator in <span class="math" data-tex="\(a\)">\(a\)</span> creates a new polynomial invariant. The necessary check is the injectivity of <span class="math" data-tex="\(S/(a)\to R/(a)\)">\(S/(a)\to R/(a)\)</span>.</p>
+<p>For the quadratic it is <span class="math" data-tex="\(k[h]\to k[b,c]\)">\(k[h]\to k[b,c]\)</span>, <span class="math" data-tex="\(h\mapsto-b^2\)">\(h\mapsto-b^2\)</span>, which is injective. For the cubic,
+<span class="math math-display" data-tex="\[
+S/(a)=k[h,t,D]/(t^2+4h^3),
+\quad h\mapsto-b^2,\quad t\mapsto2b^3,
+\quad D\mapsto4b^3d-3b^2c^2.
+\]">\[
+S/(a)=k[h,t,D]/(t^2+4h^3),
+\quad h\mapsto-b^2,\quad t\mapsto2b^3,
+\quad D\mapsto4b^3d-3b^2c^2.
+\]</span>
+Every element has a unique representative <span class="math" data-tex="\(P(h,D)+tQ(h,D)\)">\(P(h,D)+tQ(h,D)\)</span>, by division by the monic relation in <span class="math" data-tex="\(t\)">\(t\)</span>. The elements <span class="math" data-tex="\(b,D\)">\(b,D\)</span> are algebraically independent: over <span class="math" data-tex="\(k(b)\)">\(k(b)\)</span>, the expression for <span class="math" data-tex="\(D\)">\(D\)</span> solves for <span class="math" data-tex="\(d\)">\(d\)</span>, with <span class="math" data-tex="\(c\)">\(c\)</span> still free. After substitution, the first summand uses even powers of <span class="math" data-tex="\(b\)">\(b\)</span>, the second odd powers. Their sum is zero only if both polynomials are zero. Thus this map is injective.</p>
+<p>For the quartic the same normal form is <span class="math" data-tex="\(P(h,i,j)+tQ(h,i,j)\)">\(P(h,i,j)+tQ(h,i,j)\)</span>, with
+<span class="math math-display" data-tex="\[
+h=-b^2,\quad t=2b^3,\quad
+i=-4bd+3c^2,\quad j=2bcd-b^2e-c^3
+\]">\[
+h=-b^2,\quad t=2b^3,\quad
+i=-4bd+3c^2,\quad j=2bcd-b^2e-c^3
+\]</span>
+modulo <span class="math" data-tex="\(a\)">\(a\)</span>. Now <span class="math" data-tex="\(b,i,j\)">\(b,i,j\)</span> are algebraically independent. Over <span class="math" data-tex="\(k(b)\)">\(k(b)\)</span>, the equation for <span class="math" data-tex="\(i\)">\(i\)</span> solves for <span class="math" data-tex="\(d\)">\(d\)</span>, and the equation for <span class="math" data-tex="\(j\)">\(j\)</span> solves for <span class="math" data-tex="\(e\)">\(e\)</span>, while <span class="math" data-tex="\(c\)">\(c\)</span> remains free. The even/odd argument in <span class="math" data-tex="\(b\)">\(b\)</span> again proves injectivity.</p>
+<p>Consequently, if <span class="math" data-tex="\(u\in S\)">\(u\in S\)</span> is divisible by <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(R\)">\(R\)</span>, its class in <span class="math" data-tex="\(S/(a)\)">\(S/(a)\)</span> is zero, so <span class="math" data-tex="\(u\in aS\)">\(u\in aS\)</span>. If <span class="math" data-tex="\(u/a^N\in S[a^{-1}]\)">\(u/a^N\in S[a^{-1}]\)</span> belongs to <span class="math" data-tex="\(R\)">\(R\)</span>, repeat this observation <span class="math" data-tex="\(N\)">\(N\)</span> times to obtain <span class="math" data-tex="\(u/a^N\in S\)">\(u/a^N\in S\)</span>. Thus
+<span class="math" data-tex="\(S[a^{-1}]\cap R=S\)">\(S[a^{-1}]\cap R=S\)</span>.
+Every element of <span class="math" data-tex="\(\ker\mathcal D\)">\(\ker\mathcal D\)</span> lies in that intersection, proving (6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The last part of the proof is often called <strong>saturation</strong>: divisibility seen in the larger ring was already divisibility in the proposed kernel. It is what upgrades a computation on the open set <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span> to a global presentation.</p>
+<h2 id="5-quadratics-and-cubics">5. Quadratics and cubics</h2>
+<h3 id="the-quadratic">The quadratic</h3>
+<p>Let <span class="math" data-tex="\(f=ax^2+2bxy+cy^2\)">\(f=ax^2+2bxy+cy^2\)</span>. Its basic invariant is <span class="math" data-tex="\(h=ac-b^2\)">\(h=ac-b^2\)</span>. The complete covariant algebra is
+<span class="math math-display" data-tex="\[
+k[f,h].
+\tag{10}
+\]">\[
+k[f,h].
+\tag{10}
+\]</span>
+To see generation, take a covariant of coefficient degree <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and order <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Its leading coefficient belongs to <span class="math" data-tex="\(k[a,h]\)">\(k[a,h]\)</span> by Theorem 4.1. Select the component of that expression having coefficient degree <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and torus weight <span class="math" data-tex="\(-\omega\)">\(-\omega\)</span>. The weights of <span class="math" data-tex="\(a,h\)">\(a,h\)</span> are <span class="math" data-tex="\(-2,0\)">\(-2,0\)</span>; their coefficient degrees are <span class="math" data-tex="\(1,2\)">\(1,2\)</span>. Replacing <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(h\)">\(h\)</span> therefore gives a covariant of the same degree and order with the same leading coefficient. Injectivity proves equality. Algebraic independence of <span class="math" data-tex="\(a,h\)">\(a,h\)</span> proves that (10) has no relation.</p>
+<p>The matrix of the quadratic is
+<span class="math math-display" data-tex="\[
+Q=\begin{pmatrix}a&amp;b\\b&amp;c\end{pmatrix}.
+\]">\[
+Q=\begin{pmatrix}a&amp;b\\b&amp;c\end{pmatrix}.
+\]</span>
+Inverse substitution sends <span class="math" data-tex="\(Q\)">\(Q\)</span> to <span class="math" data-tex="\(g^{-\mathsf t}Qg^{-1}\)">\(g^{-\mathsf t}Qg^{-1}\)</span>; its determinant <span class="math" data-tex="\(h\)">\(h\)</span> scales by <span class="math" data-tex="\(\det(g)^{-2}\)">\(\det(g)^{-2}\)</span>, as required by weight two. If
+<span class="math" data-tex="\(f=(u_1x+v_1y)(u_2x+v_2y)\)">\(f=(u_1x+v_1y)(u_2x+v_2y)\)</span>, coefficient comparison gives
+<span class="math math-display" data-tex="\[
+h=-\tfrac14(u_1v_2-v_1u_2)^2.
+\tag{11}
+\]">\[
+h=-\tfrac14(u_1v_2-v_1u_2)^2.
+\tag{11}
+\]</span>
+Thus <span class="math" data-tex="\(h=0\)">\(h=0\)</span> is exactly the repeated-root locus over an algebraic closure. For the usual univariate coefficients the discriminant is <span class="math" data-tex="\(-4h\)">\(-4h\)</span>.</p>
+<h3 id="the-cubic">The cubic</h3>
+<p>Write
+<span class="math math-display" data-tex="\[
+f=ax^3+3bx^2y+3cxy^2+dy^3,\quad
+H=(f,f)_2,\quad T=(f,H)_1,\quad \Delta=(H,H)_2.
+\]">\[
+f=ax^3+3bx^2y+3cxy^2+dy^3,\quad
+H=(f,f)_2,\quad T=(f,H)_1,\quad \Delta=(H,H)_2.
+\]</span>
+Formula (4) gives
+<span class="math math-display" data-tex="\[
+H=2\bigl((ac-b^2)x^2+(ad-bc)xy+(bd-c^2)y^2\bigr),
+\qquad \Delta=-2D.
+\tag{12}
+\]">\[
+H=2\bigl((ac-b^2)x^2+(ad-bc)xy+(bd-c^2)y^2\bigr),
+\qquad \Delta=-2D.
+\tag{12}
+\]</span>
+The leading coefficients of <span class="math" data-tex="\(f,H/2,T,\Delta\)">\(f,H/2,T,\Delta\)</span> are <span class="math" data-tex="\(a,h,t,-2D\)">\(a,h,t,-2D\)</span>. Their orders are <span class="math" data-tex="\(3,2,3,0\)">\(3,2,3,0\)</span>, and their coefficient degrees are <span class="math" data-tex="\(1,2,3,4\)">\(1,2,3,4\)</span>.</p>
+<p><strong>Theorem 5.1 (the cubic system).</strong> The covariant algebra is generated by <span class="math" data-tex="\(f,H,T,\Delta\)">\(f,H,T,\Delta\)</span>, with exactly one relation:
+<span class="math math-display" data-tex="\[
+2T^2+H^3+\Delta f^2=0.
+\tag{13}
+\]">\[
+2T^2+H^3+\Delta f^2=0.
+\tag{13}
+\]</span></p>
+<p><strong>Proof.</strong> The left side is a covariant, and its leading coefficient is
+<span class="math" data-tex="\(2t^2+8h^3-2Da^2=0\)">\(2t^2+8h^3-2Da^2=0\)</span> by (9). Leading-coefficient injectivity proves (13), including every coefficient of the forms.</p>
+<p>For generation, Theorem 4.1 expresses the leading coefficient of any covariant in <span class="math" data-tex="\(a,h,t,D\)">\(a,h,t,D\)</span>. The torus weights are minus the orders just listed. As in the quadratic case, select its coefficient-degree and torus-weight component, then replace these four generators by <span class="math" data-tex="\(f,H/2,T,-\Delta/2\)">\(f,H/2,T,-\Delta/2\)</span>. Every monomial has the desired order and degree, so injectivity identifies the resulting covariant with the original one. Finally, the kernel presentation in (6) proves that every relation is a multiple of (13), after the indicated rescaling. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(f=x^3+y^3\)">\(f=x^3+y^3\)</span>, the normalization gives
+<span class="math math-display" data-tex="\[
+H=2xy,\quad T=x^3-y^3,\quad \Delta=-2.
+\]">\[
+H=2xy,\quad T=x^3-y^3,\quad \Delta=-2.
+\]</span>
+Relation (13) becomes
+<span class="math" data-tex="\(2(x^3-y^3)^2+8x^3y^3-2(x^3+y^3)^2=0\)">\(2(x^3-y^3)^2+8x^3y^3-2(x^3+y^3)^2=0\)</span>.
+For <span class="math" data-tex="\(f=x^2y\)">\(f=x^2y\)</span>, remembering that <span class="math" data-tex="\(b=1/3\)">\(b=1/3\)</span>, it gives
+<span class="math math-display" data-tex="\[
+H=-\tfrac29x^2,\quad T=\tfrac2{27}x^3,\quad\Delta=0.
+\]">\[
+H=-\tfrac29x^2,\quad T=\tfrac2{27}x^3,\quad\Delta=0.
+\]</span></p>
+<p>If <span class="math" data-tex="\(f=\ell_1\ell_2\ell_3\)">\(f=\ell_1\ell_2\ell_3\)</span>, with
+<span class="math" data-tex="\(\ell_r=u_rx+v_ry\)">\(\ell_r=u_rx+v_ry\)</span> and <span class="math" data-tex="\([rs]=u_rv_s-v_ru_s\)">\([rs]=u_rv_s-v_ru_s\)</span>, then
+<span class="math math-display" data-tex="\[
+\Delta=\tfrac2{27}[12]^2[13]^2[23]^2.
+\tag{14}
+\]">\[
+\Delta=\tfrac2{27}[12]^2[13]^2[23]^2.
+\tag{14}
+\]</span>
+Here is a proof that fixes both the root meaning and the constant. For distinct root lines, a projective linear transformation sends their ordered triple to the root lines of <span class="math" data-tex="\(xy(x-y)\)">\(xy(x-y)\)</span>. This follows by sending the first two lines to the coordinate axes, then using a diagonal matrix to send the third to <span class="math" data-tex="\(x-y\)">\(x-y\)</span>. On replacing <span class="math" data-tex="\(\ell_r\)">\(\ell_r\)</span> by <span class="math" data-tex="\(\lambda_r\ell_r\)">\(\lambda_r\ell_r\)</span>, both sides of (14) scale by <span class="math" data-tex="\((\lambda_1\lambda_2\lambda_3)^4\)">\((\lambda_1\lambda_2\lambda_3)^4\)</span>; under inverse substitution both have determinant weight six. It is therefore enough to check <span class="math" data-tex="\(xy(x-y)\)">\(xy(x-y)\)</span>. Its coefficients are <span class="math" data-tex="\(a=d=0,b=1/3,c=-1/3\)">\(a=d=0,b=1/3,c=-1/3\)</span>, so <span class="math" data-tex="\(D=-1/27\)">\(D=-1/27\)</span> and <span class="math" data-tex="\(\Delta=2/27\)">\(\Delta=2/27\)</span>; the bracket product squared is one. This proves (14) on the dense open set of triples with distinct root lines, and therefore as a polynomial identity everywhere. The ordinary discriminant is <span class="math" data-tex="\((27/2)\Delta\)">\((27/2)\Delta\)</span>. In particular, its vanishing means precisely that the cubic has a repeated root.</p>
+<h2 id="6-quartics-and-the-cross-ratio-of-four-roots">6. Quartics and the cross-ratio of four roots</h2>
+<p>Write
+<span class="math math-display" data-tex="\[
+f=ax^4+4bx^3y+6cx^2y^2+4dxy^3+ey^4,\quad
+H=(f,f)_2,\quad T=(f,H)_1.
+\]">\[
+f=ax^4+4bx^3y+6cx^2y^2+4dxy^3+ey^4,\quad
+H=(f,f)_2,\quad T=(f,H)_1.
+\]</span>
+Use the explicitly rescaled invariants
+<span class="math math-display" data-tex="\[
+i=\tfrac12(f,f)_4=ae-4bd+3c^2,\qquad
+j=\tfrac16(f,H)_4=ace+2bcd-ad^2-b^2e-c^3.
+\tag{15}
+\]">\[
+i=\tfrac12(f,f)_4=ae-4bd+3c^2,\qquad
+j=\tfrac16(f,H)_4=ace+2bcd-ad^2-b^2e-c^3.
+\tag{15}
+\]</span>
+The factors <span class="math" data-tex="\(1/2\)">\(1/2\)</span> and <span class="math" data-tex="\(1/6\)">\(1/6\)</span> matter: applying (3) without them would give <span class="math" data-tex="\(2i,6j\)">\(2i,6j\)</span>, and would change the usual discriminant formula.</p>
+<p>The Hessian in this normalization is
+<span class="math math-display" data-tex="\[
+\begin{split}
+H=2\bigl(&amp; (ac-b^2)x^4+2(ad-bc)x^3y\\
+&amp;+(ae+2bd-3c^2)x^2y^2
++2(be-cd)xy^3+(ce-d^2)y^4\bigr).
+\end{split}
+\tag{16}
+\]">\[
+\begin{split}
+H=2\bigl(&amp; (ac-b^2)x^4+2(ad-bc)x^3y\\
+&amp;+(ae+2bd-3c^2)x^2y^2
++2(be-cd)xy^3+(ce-d^2)y^4\bigr).
+\end{split}
+\tag{16}
+\]</span>
+Its leading coefficient is <span class="math" data-tex="\(2h\)">\(2h\)</span>, and that of <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><strong>Theorem 6.1 (the quartic system).</strong> The covariant algebra has generators <span class="math" data-tex="\(f,H,T,i,j\)">\(f,H,T,i,j\)</span> and exactly one relation:
+<span class="math math-display" data-tex="\[
+2T^2+H^3-if^2H+2jf^3=0.
+\tag{17}
+\]">\[
+2T^2+H^3-if^2H+2jf^3=0.
+\tag{17}
+\]</span></p>
+<p><strong>Proof.</strong> Its leading coefficient is twice the quartic relation in (9). All terms are covariants of coefficient degree six and order twelve, so leading-coefficient injectivity proves the identity. For generation and the absence of further relations, use the quartic kernel in Theorem 4.1. Its generators have coefficient degrees <span class="math" data-tex="\(1,2,3,2,3\)">\(1,2,3,2,3\)</span> and torus weights <span class="math" data-tex="\(-4,-4,-6,0,0\)">\(-4,-4,-6,0,0\)</span>. Select the required degree and weight component, and lift by <span class="math" data-tex="\(a,h,t,i,j\mapsto f,H/2,T,i,j\)">\(a,h,t,i,j\mapsto f,H/2,T,i,j\)</span>. This repeats the already proved argument for the cubic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular the quartic invariant ring is <span class="math" data-tex="\(k[i,j]\)">\(k[i,j]\)</span>: a covariant of order zero can only use the generators of order zero. The kernel proof also shows that <span class="math" data-tex="\(i,j\)">\(i,j\)</span> are algebraically independent.</p>
+<p>The ordinary discriminant is
+<span class="math math-display" data-tex="\[
+\operatorname{disc}(f)=256(i^3-27j^2).
+\tag{18}
+\]">\[
+\operatorname{disc}(f)=256(i^3-27j^2).
+\tag{18}
+\]</span>
+To prove this, factor <span class="math" data-tex="\(f=\prod_{r=1}^4\ell_r\)">\(f=\prod_{r=1}^4\ell_r\)</span>. The root discriminant <span class="math" data-tex="\(\prod_{r&lt;s}[rs]^2\)">\(\prod_{r&lt;s}[rs]^2\)</span> has coefficient degree six and determinant weight twelve. On the open set of four distinct root lines, projective substitution and rescaling of the factors reduce the calculation to
+<span class="math math-display" data-tex="\[
+f_\lambda=xy(x-y)(x-\lambda y),\qquad \lambda\ne0,1.
+\]">\[
+f_\lambda=xy(x-y)(x-\lambda y),\qquad \lambda\ne0,1.
+\]</span>
+Formula (15) gives
+<span class="math math-display" data-tex="\[
+i=\frac{\lambda^2-\lambda+1}{12},\qquad
+j=\frac{(\lambda+1)(2\lambda^2-5\lambda+2)}{432}.
+\]">\[
+i=\frac{\lambda^2-\lambda+1}{12},\qquad
+j=\frac{(\lambda+1)(2\lambda^2-5\lambda+2)}{432}.
+\]</span>
+Substitution yields <span class="math" data-tex="\(256(i^3-27j^2)=\lambda^2(1-\lambda)^2\)">\(256(i^3-27j^2)=\lambda^2(1-\lambda)^2\)</span>, which is also its bracket product squared. Both sides transform with the same weight and degree, so they agree on that open set, and polynomial density proves (18) for every quartic. Consequently the discriminant vanishes exactly on the repeated-root locus.</p>
+<p>For a quartic with four distinct roots, define the absolute invariant
+<span class="math math-display" data-tex="\[
+J(f)=\frac{i^3}{i^3-27j^2}.
+\]">\[
+J(f)=\frac{i^3}{i^3-27j^2}.
+\]</span>
+It is unchanged by <span class="math" data-tex="\(\operatorname{GL}_2\)">\(\operatorname{GL}_2\)</span> and by multiplying the form by a nonzero scalar. For the displayed normal form,
+<span class="math math-display" data-tex="\[
+J(\lambda)=\frac4{27}
+\frac{(\lambda^2-\lambda+1)^3}{\lambda^2(\lambda-1)^2}.
+\tag{19}
+\]">\[
+J(\lambda)=\frac4{27}
+\frac{(\lambda^2-\lambda+1)^3}{\lambda^2(\lambda-1)^2}.
+\tag{19}
+\]</span>
+This equals the conventional elliptic <span class="math" data-tex="\(j\)">\(j\)</span>-invariant divided by <span class="math" data-tex="\(1728\)">\(1728\)</span>. To check the normalization, the double cover of the root line is
+<span class="math" data-tex="\(y^2=x(x-1)(x-\lambda)\)">\(y^2=x(x-1)(x-\lambda)\)</span>. Put <span class="math" data-tex="\(x=X+(\lambda+1)/3\)">\(x=X+(\lambda+1)/3\)</span>, <span class="math" data-tex="\(Y=2y\)">\(Y=2y\)</span>. Expansion gives
+<span class="math math-display" data-tex="\[
+Y^2=4X^3-g_2X-g_3,\qquad
+g_2=\frac43(\lambda^2-\lambda+1),\quad
+g_3=\frac4{27}(\lambda+1)(2\lambda^2-5\lambda+2).
+\]">\[
+Y^2=4X^3-g_2X-g_3,\qquad
+g_2=\frac43(\lambda^2-\lambda+1),\quad
+g_3=\frac4{27}(\lambda+1)(2\lambda^2-5\lambda+2).
+\]</span>
+Here <span class="math" data-tex="\(g_2^3-27g_3^2=16\lambda^2(\lambda-1)^2\)">\(g_2^3-27g_3^2=16\lambda^2(\lambda-1)^2\)</span>. The conventional definition
+<span class="math" data-tex="\(j_{\rm ell}=1728g_2^3/(g_2^3-27g_3^2)\)">\(j_{\rm ell}=1728g_2^3/(g_2^3-27g_3^2)\)</span> therefore gives exactly <span class="math" data-tex="\(1728J(\lambda)\)">\(1728J(\lambda)\)</span>.</p>
+<p><strong>Proposition 6.2 (separation of the four-root configurations).</strong> Over an algebraic closure, two quartics with nonzero discriminant have the same <span class="math" data-tex="\(J\)">\(J\)</span> if and only if their unordered root sets are projectively equivalent. Equivalently, they differ by a linear change of variables and a nonzero scalar.</p>
+<p><strong>Proof.</strong> The six possible values of the cross-ratio of an unordered four-point configuration are
+<span class="math math-display" data-tex="\[
+\lambda,\quad1-\lambda,\quad1/\lambda,\quad
+1/(1-\lambda),\quad\lambda/(\lambda-1),\quad(\lambda-1)/\lambda.
+\tag{20}
+\]">\[
+\lambda,\quad1-\lambda,\quad1/\lambda,\quad
+1/(1-\lambda),\quad\lambda/(\lambda-1),\quad(\lambda-1)/\lambda.
+\tag{20}
+\]</span>
+For example, interchanging two entries in an ordered cross-ratio yields <span class="math" data-tex="\(1-\lambda\)">\(1-\lambda\)</span> or <span class="math" data-tex="\(1/\lambda\)">\(1/\lambda\)</span>; these two operations generate the list. The other permutations leave one of these six values. Conversely, choosing three of the points as <span class="math" data-tex="\(0,1,\infty\)">\(0,1,\infty\)</span> gives precisely these possibilities for the fourth, by the unique projective transformation taking one ordered triple to another.</p>
+<p>Formula (19) is unchanged by the two generating transformations, by direct substitution. For a proof of the converse that includes exceptional configurations with extra symmetries, use a variable <span class="math" data-tex="\(z\)">\(z\)</span>. Clearing denominators in <span class="math" data-tex="\(J(z)=J(\lambda)\)">\(J(z)=J(\lambda)\)</span> gives the degree-six polynomial
+<span class="math math-display" data-tex="\[
+P_\lambda(z)=
+\lambda^2(\lambda-1)^2(z^2-z+1)^3
+-(\lambda^2-\lambda+1)^3z^2(z-1)^2.
+\]">\[
+P_\lambda(z)=
+\lambda^2(\lambda-1)^2(z^2-z+1)^3
+-(\lambda^2-\lambda+1)^3z^2(z-1)^2.
+\]</span>
+For a generic <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> its six distinct roots are the entries of (20), and its leading coefficient is <span class="math" data-tex="\(\lambda^2(\lambda-1)^2\)">\(\lambda^2(\lambda-1)^2\)</span>. Hence
+<span class="math math-display" data-tex="\[
+P_\lambda(z)=\lambda^2(\lambda-1)^2
+\prod_{\rho\text{ in }(20)}(z-\rho)
+\tag{21}
+\]">\[
+P_\lambda(z)=\lambda^2(\lambda-1)^2
+\prod_{\rho\text{ in }(20)}(z-\rho)
+\tag{21}
+\]</span>
+as an identity in <span class="math" data-tex="\(k(\lambda)[z]\)">\(k(\lambda)[z]\)</span>. The generic argument proves equality of rational functions, so it specializes for every <span class="math" data-tex="\(\lambda\ne0,1\)">\(\lambda\ne0,1\)</span>. The repetitions in the product then give the correct multiplicities at special values. Thus equality of <span class="math" data-tex="\(J\)">\(J\)</span> forces the other cross-ratio to be in (20). The description of ordered triples proves projective equivalence. The reverse implication was invariance. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Over a field that is not algebraically closed, <span class="math" data-tex="\(J\)">\(J\)</span> separates geometric orbits; it does not assert that the required transformation has coefficients in that field. This distinction already occurs for quadratics.</p>
+<p>For <span class="math" data-tex="\(x^4+y^4\)">\(x^4+y^4\)</span> one has <span class="math" data-tex="\(i=1,j=0\)">\(i=1,j=0\)</span>, so <span class="math" data-tex="\(J=1\)">\(J=1\)</span>; it is a harmonic configuration. For <span class="math" data-tex="\(x^3y\)">\(x^3y\)</span>, <span class="math" data-tex="\(b=1/4\)">\(b=1/4\)</span> and the other coefficients vanish, giving <span class="math" data-tex="\(i=j=0\)">\(i=j=0\)</span> and zero discriminant. For distinct roots, <span class="math" data-tex="\(j=0\)">\(j=0\)</span> describes the harmonic configurations: in the normal form it means <span class="math" data-tex="\(\lambda\in\{-1,2,1/2\}\)">\(\lambda\in\{-1,2,1/2\}\)</span>. Likewise <span class="math" data-tex="\(i=0\)">\(i=0\)</span> means <span class="math" data-tex="\(\lambda^2-\lambda+1=0\)">\(\lambda^2-\lambda+1=0\)</span>, the equianharmonic configurations. Formula (21) accounts for the smaller numbers of distinct cross-ratios in both cases.</p>
+<figure><img src="figures/cross-ratio-orbit.png" alt="Six cross-ratios of the unordered root configuration zero, one, three and infinity: three, one third, minus two, minus one half, three halves and two thirds. Every value gives J equal to 343 over 243." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p>The six displayed values form one orbit under (20), and (19) has the same value at each. This illustrates Proposition 6.2 at a configuration without extra symmetry; the polynomial identity (21) also covers the exceptional harmonic and equianharmonic orbits. Editable diagram.</p>
+<h2 id="7-symbols-that-stand-for-coefficients">7. Symbols that stand for coefficients</h2>
+<p>The expression <span class="math" data-tex="\(f=a_x^d\)">\(f=a_x^d\)</span> in classical invariant theory is <strong>symbolic</strong>. It does not assert that a general form is a power of a linear form. Introduce a row of independent symbol variables <span class="math" data-tex="\(a=(a_1,\ldots,a_n)\)">\(a=(a_1,\ldots,a_n)\)</span>, and write <span class="math" data-tex="\(a_x=\sum a_rx_r\)">\(a_x=\sum a_rx_r\)</span>. The linear <strong>umbral evaluation</strong> for this letter sends
+<span class="math math-display" data-tex="\[
+a^\alpha\longmapsto A_\alpha\quad (|\alpha|=d),
+\]">\[
+a^\alpha\longmapsto A_\alpha\quad (|\alpha|=d),
+\]</span>
+where
+<span class="math" data-tex="\(f=\sum_{|\alpha|=d}(d!/\alpha!)A_\alpha x^\alpha\)">\(f=\sum_{|\alpha|=d}(d!/\alpha!)A_\alpha x^\alpha\)</span>.
+Then <span class="math" data-tex="\(U(a_x^d)=f\)">\(U(a_x^d)=f\)</span>.</p>
+<p>For several distinct letters of degree <span class="math" data-tex="\(d\)">\(d\)</span>, apply this rule to each letter and multiply their images. Thus, for binary forms,
+<span class="math math-display" data-tex="\[
+U(a_1^{d-r}a_2^r b_1^{d-s}b_2^s)=A_rA_s.
+\tag{22}
+\]">\[
+U(a_1^{d-r}a_2^r b_1^{d-s}b_2^s)=A_rA_s.
+\tag{22}
+\]</span>
+For a system of forms, assign each letter to one of the forms and use that form's degree and coefficients. The map is defined on the subspace having exactly the assigned degree in each letter. It is linear, and it respects products that use disjoint sets of letters. It is generally not multiplicative on arbitrary symbolic polynomials involving the same letter.</p>
+<p>Use the determinants
+<span class="math math-display" data-tex="\[
+[ab]=a_1b_2-a_2b_1,\qquad
+[abc]=\det\begin{pmatrix}a_1&amp;a_2&amp;a_3\\b_1&amp;b_2&amp;b_3\\c_1&amp;c_2&amp;c_3\end{pmatrix}
+\]">\[
+[ab]=a_1b_2-a_2b_1,\qquad
+[abc]=\det\begin{pmatrix}a_1&amp;a_2&amp;a_3\\b_1&amp;b_2&amp;b_3\\c_1&amp;c_2&amp;c_3\end{pmatrix}
+\]</span>
+in dimensions two and three, respectively. The <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional bracket has <span class="math" data-tex="\(n\)">\(n\)</span> covector rows.</p>
+<p><strong>Theorem 7.1 (equivariant evaluation).</strong> Umbral evaluation intertwines changes of coordinates. A product of brackets and factors <span class="math" data-tex="\(a_x\)">\(a_x\)</span>, having the assigned degree in each letter, evaluates to a covariant. Its determinant weight is the number of brackets, counted with multiplicity.</p>
+<p><strong>Proof.</strong> A change <span class="math" data-tex="\(g\)">\(g\)</span> acts on every letter by <span class="math" data-tex="\(a\mapsto ag^{-1}\)">\(a\mapsto ag^{-1}\)</span>. For one letter the identity
+<span class="math math-display" data-tex="\[
+U_f((ag^{-1}x)^d)=f(g^{-1}x)
+\]">\[
+U_f((ag^{-1}x)^d)=f(g^{-1}x)
+\]</span>
+follows by expanding the power. Comparing the coefficients of <span class="math" data-tex="\(x^\alpha\)">\(x^\alpha\)</span> proves the intertwining identity on the basis of degree-<span class="math" data-tex="\(d\)">\(d\)</span> symbol monomials. Tensoring these identities proves it for several letters, because their evaluations multiply. Each bracket scales by <span class="math" data-tex="\(\det(g)^{-1}\)">\(\det(g)^{-1}\)</span>, while <span class="math" data-tex="\((ag^{-1})\cdot(gx)=a_x\)">\((ag^{-1})\cdot(gx)=a_x\)</span>. Apply the intertwining identity to the bracket product. This gives (1) with the stated weight. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular the normalized Hessian has the symbolic expression
+<span class="math math-display" data-tex="\[
+(f,f)_2=U\bigl([ab]^2a_x^{d-2}b_x^{d-2}\bigr).
+\tag{23}
+\]">\[
+(f,f)_2=U\bigl([ab]^2a_x^{d-2}b_x^{d-2}\bigr).
+\tag{23}
+\]</span>
+For a direct proof, apply <span class="math" data-tex="\(\Omega^2\)">\(\Omega^2\)</span> to <span class="math" data-tex="\(a_x^db_X^d\)">\(a_x^db_X^d\)</span>. It gives
+<span class="math" data-tex="\(d^2(d-1)^2[ab]^2a_x^{d-2}b_X^{d-2}\)">\(d^2(d-1)^2[ab]^2a_x^{d-2}b_X^{d-2}\)</span>;
+the factorial factor in (3) cancels that coefficient. Evaluation and differentiation commute, and then <span class="math" data-tex="\(X=x\)">\(X=x\)</span> gives (23).</p>
+<p>Symbolic descriptions are not unique. For four binary letters, expansion of the <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> determinants gives
+<span class="math math-display" data-tex="\[
+[ab][cd]-[ac][bd]+[ad][bc]=0.
+\tag{24}
+\]">\[
+[ab][cd]-[ac][bd]+[ad][bc]=0.
+\tag{24}
+\]</span>
+For example, the coefficient of <span class="math" data-tex="\(a_1b_2c_1d_2\)">\(a_1b_2c_1d_2\)</span> in the first two terms is <span class="math" data-tex="\(1-1\)">\(1-1\)</span>, and the same cancellation, after permuting the letters and indices, cancels every monomial.</p>
+<p>The converse to Theorem 7.1 is also useful: every polynomial covariant is a linear combination of these evaluations. Its precise input is the first fundamental theorem for vectors and dual vectors, proved in the later lesson <em>Polarization and invariants of many vectors</em>, in the section <strong>Vectors and dual vectors</strong>. To see how the input applies, polarize a degree-<span class="math" data-tex="\(\delta\)">\(\delta\)</span> polynomial in the coefficients into <span class="math" data-tex="\(\delta\)">\(\delta\)</span> separate coefficient slots. In each slot replace a degree-<span class="math" data-tex="\(d\)">\(d\)</span> form by <span class="math" data-tex="\(a_x^d\)">\(a_x^d\)</span>, using a new letter. Powers span the space of forms: expanding <span class="math" data-tex="\((t_1x_1+\cdots+t_nx_n)^d\)">\((t_1x_1+\cdots+t_nx_n)^d\)</span> and comparing the coefficients of the <span class="math" data-tex="\(t_r\)">\(t_r\)</span> proves this, since the multinomial coefficients are nonzero. The polarized covariant therefore becomes an invariant polynomial in covector letters and the vector <span class="math" data-tex="\(x\)">\(x\)</span>. The mixed first fundamental theorem writes that polynomial in covector determinants and pairings <span class="math" data-tex="\(a_x\)">\(a_x\)</span>; a determinant of vector slots is zero when all those slots are the single repeated vector <span class="math" data-tex="\(x\)">\(x\)</span>. Keep the specified multidegree in the letters, then evaluate and restitute the coefficient slots. This recovers the original covariant. In dimension two, the same conclusion follows directly from the vector theorem by identifying <span class="math" data-tex="\(x\)">\(x\)</span> with the covector <span class="math" data-tex="\((-y,x)\)">\((-y,x)\)</span>.</p>
+<p>The determinant identity (24) is proved here. The full statement that the Plücker relations generate the relation ideal belongs to the straightening argument in <em>Polarization and invariants of many vectors</em>, and to its integral version in the final lesson.</p>
+<h2 id="8-finite-generation-and-a-finite-set-of-integer-solutions">8. Finite generation and a finite set of integer solutions</h2>
+<p><strong>Lemma 8.1 (Dickson).</strong> Every subset of <span class="math" data-tex="\(\mathbb N^m\)">\(\mathbb N^m\)</span>, ordered componentwise, has finitely many minimal elements. More strongly, every infinite sequence in <span class="math" data-tex="\(\mathbb N^m\)">\(\mathbb N^m\)</span> contains indices <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span> with <span class="math" data-tex="\(v_r\leq v_s\)">\(v_r\leq v_s\)</span>.</p>
+<p><strong>Proof.</strong> A sequence of nonnegative integers has an infinite nondecreasing subsequence. If some value occurs infinitely often, take that constant subsequence. Otherwise every bounded set of values occurs at only finitely many indices, so choose successively larger values at larger indices. For the assertion in <span class="math" data-tex="\(\mathbb N^m\)">\(\mathbb N^m\)</span>, argue by induction on <span class="math" data-tex="\(m\)">\(m\)</span>. Take an infinite subsequence nondecreasing in the last coordinate, and apply induction to the first <span class="math" data-tex="\(m-1\)">\(m-1\)</span> coordinates. The resulting pair is comparable in every coordinate. An infinite set of distinct minimal elements would give an infinite sequence without such a pair. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 8.2 (Gordan's lemma).</strong> For an integer matrix <span class="math" data-tex="\(A\)">\(A\)</span>, the additive monoid
+<span class="math math-display" data-tex="\[
+M=\{v\in\mathbb N^m:Av=0\}
+\]">\[
+M=\{v\in\mathbb N^m:Av=0\}
+\]</span>
+is generated by its finitely many minimal nonzero elements.</p>
+<p><strong>Proof.</strong> They form an antichain, so Lemma 8.1 makes them finite. For <span class="math" data-tex="\(v\in M\setminus\{0\}\)">\(v\in M\setminus\{0\}\)</span>, the finite box <span class="math" data-tex="\(\{u:0\leq u\leq v\}\)">\(\{u:0\leq u\leq v\}\)</span> contains a minimal nonzero solution <span class="math" data-tex="\(b\)">\(b\)</span>. It is minimal in all of <span class="math" data-tex="\(M\)">\(M\)</span>, since any smaller solution would still belong to the box. Linearity gives <span class="math" data-tex="\(A(v-b)=0\)">\(A(v-b)=0\)</span>, and <span class="math" data-tex="\(v-b\)">\(v-b\)</span> is nonnegative. Repeating subtraction strictly decreases the sum of the coordinates and therefore terminates at zero. The subtracted elements express <span class="math" data-tex="\(v\)">\(v\)</span> as the required sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This lemma controls exponent patterns in symbolic constructions. It does not by itself prove finiteness when the number of symbolic letters is allowed to grow; that additional reduction must be supplied.</p>
+<p><strong>Theorem 8.3 (Gordan's finiteness theorem).</strong> The covariant algebra of a finite system of binary forms over a characteristic-zero field is finitely generated.</p>
+<p><strong>Proof.</strong> Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, apply the finite-generation theorem in the next lesson, <strong>Hilbert finiteness for the special linear group</strong>, to the polynomial ring in all coefficient variables and <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. The special linear group acts linearly on this finite-dimensional space of variables. Its invariant ring is exactly the covariant algebra. This is the stated theorem of that lesson, including the extra variable representation, rather than a claim that coefficient invariants alone suffice.</p>
+<p>To pass to any characteristic-zero field, first work over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. In each total degree the covariant subspace is the simultaneous kernel of the two rational matrices for <span class="math" data-tex="\(E,F\)">\(E,F\)</span> in (2). Extension of scalars commutes with that kernel, since it is the solution space of finitely many linear equations. Finite generation over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> gives a bound <span class="math" data-tex="\(N\)">\(N\)</span> on the total degrees of a set of generators. Choose a rational basis of the covariant spaces through degree <span class="math" data-tex="\(N\)">\(N\)</span>, and let <span class="math" data-tex="\(B_0\)">\(B_0\)</span> be the algebra they generate. In every degree, the quotient of the rational covariant space by the corresponding component of <span class="math" data-tex="\(B_0\)">\(B_0\)</span> becomes zero after tensoring with <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>; hence it was zero. Thus <span class="math" data-tex="\(B_0\)">\(B_0\)</span> is the rational covariant algebra. Tensoring with <span class="math" data-tex="\(k\)">\(k\)</span>, and applying the same kernel argument in each degree, proves the theorem over <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses the complete Reynolds-and-Hilbert argument supplied in the next lesson. Gordan's original proof instead reduces iterated transvectants and uses finiteness of their admissible exponent patterns. Kung and Rota's <em>The invariant theory of binary forms</em>, Section 6, gives two constructive symbolic proofs; their Section 6.4, Proposition 6.3 and Lemma 6.6, treats the integer-solution lemma. The kernel argument in Sections 4–6 above supplies an independent completeness proof for the small forms.</p>
+<h2 id="9-ternary-forms-and-the-scope-of-noether-s-computation">9. Ternary forms and the scope of Noether's computation</h2>
+<p>For a ternary form, symbolic letters have three coordinates, and brackets are <span class="math" data-tex="\([abc]\)">\([abc]\)</span>. A bracket consumes one degree from each of three letters. For a quartic letter every symbolic expression must still use exactly four degrees of that letter before evaluation. The first lesson's scalar calculation becomes
+<span class="math math-display" data-tex="\[
+3w=4\delta-\omega
+\]">\[
+3w=4\delta-\omega
+\]</span>
+for a ternary quartic covariant of coefficient degree <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and vector-variable order <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. A concomitant with dual-variable order <span class="math" data-tex="\(\nu\)">\(\nu\)</span> instead has <span class="math" data-tex="\(3w=4\delta-\omega+\nu\)">\(3w=4\delta-\omega+\nu\)</span>, since the dual variables scale inversely. These formulas refer to our inverse-substitution convention.</p>
+<p>For example, the ternary Hessian <span class="math" data-tex="\(\det(f_{x_ix_j})\)">\(\det(f_{x_ix_j})\)</span> has coefficient degree three and order six, so weight two. The chain rule gives its covariance directly:
+the Hessian matrix after inverse substitution is
+<span class="math" data-tex="\(g^{-\mathsf t}\operatorname{Hess}(f)(g^{-1}x)g^{-1}\)">\(g^{-\mathsf t}\operatorname{Hess}(f)(g^{-1}x)g^{-1}\)</span>;
+taking its determinant gives the factor <span class="math" data-tex="\(\det(g)^{-2}\)">\(\det(g)^{-2}\)</span>. The cubic-degree quartic invariant
+<span class="math math-display" data-tex="\[
+U([abc]^4)
+\]">\[
+U([abc]^4)
+\]</span>
+uses degree four in each of three letters and has weight four. Its nonvanishing can be checked on <span class="math" data-tex="\(x^4+y^4+z^4\)">\(x^4+y^4+z^4\)</span>: each letter must use a single coordinate to degree four, so the six determinant-permutation terms survive, each with positive sign, giving value six.</p>
+<h3 id="a-ternary-quadratic">A ternary quadratic</h3>
+<p>For a quadratic <span class="math" data-tex="\(f=x^{\mathsf t}Qx\)">\(f=x^{\mathsf t}Qx\)</span> with symmetric <span class="math" data-tex="\(3\times3\)">\(3\times3\)</span> matrix <span class="math" data-tex="\(Q\)">\(Q\)</span>, <span class="math" data-tex="\(\det Q\)">\(\det Q\)</span> is an invariant of coefficient degree three and weight two. It generates the invariant ring.</p>
+<p><strong>Proof.</strong> Over an algebraic closure, diagonalize a nondegenerate symmetric form by congruence: completing a square splits off a nonzero diagonal entry, and induction diagonalizes its orthogonal complement. A nonzero diagonal entry can be arranged whenever the form is nonzero, because the associated bilinear form is recovered from quadratic values by polarization and <span class="math" data-tex="\(2\ne0\)">\(2\ne0\)</span>. Taking square roots of the nonzero diagonal entries shows that two nondegenerate forms are general-linearly congruent. If their determinants agree, a congruence between them has determinant <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. In the latter case compose it with a reflection isometry of one diagonalized form, which has determinant <span class="math" data-tex="\(-1\)">\(-1\)</span>; the congruence is then special-linear.</p>
+<p>For an invariant polynomial <span class="math" data-tex="\(F(Q)\)">\(F(Q)\)</span>, put <span class="math" data-tex="\(h(t)=F(\operatorname{diag}(t,1,1))\)">\(h(t)=F(\operatorname{diag}(t,1,1))\)</span>. This is a polynomial. The orbit assertion gives <span class="math" data-tex="\(F(Q)=h(\det Q)\)">\(F(Q)=h(\det Q)\)</span> on the dense nondegenerate locus, so the equality is global. Descent to <span class="math" data-tex="\(k\)">\(k\)</span> follows by evaluating <span class="math" data-tex="\(h\)">\(h\)</span> on that same diagonal slice; its coefficients belong to <span class="math" data-tex="\(k\)">\(k\)</span>. Thus the invariant ring is <span class="math" data-tex="\(k[\det Q]\)">\(k[\det Q]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="relative-completeness-in-the-ternary-quartic">Relative completeness in the ternary quartic</h3>
+<p>Noether's 1907 note and 1908 dissertation study a system containing covariants, contravariants and mixed forms of a general ternary quartic. The original term “biquadratic” here means degree four. Her count is <strong>331 forms and subsystems, complete relative to two quadratic forms</strong>. It is not the size of an absolutely complete covariant system, and it is not a list of 331 generators of the scalar invariant ring.</p>
+<p>The distinction is explicit in the 1908 introduction, printed page 25: the relatively complete system is formed modulo the pair <span class="math" data-tex="\((\rho,t)\)">\((\rho,t)\)</span>, and transvection with the system of that pair to obtain an absolutely complete system is left for further work. The closing summary on printed page 89 again states relative completeness for 331 forms and subsystems. The 1907 note describes the same termination at a pair of quadratic forms.</p>
+<p>A relative system supplies reduction expressions with additional moduli still present. Completing the calculation requires the simultaneous system of those moduli and the relevant foldings with the relative system. Merely counting the surviving forms before that last step cannot establish absolute completeness. The distinction is already visible in our elementary coefficient proof: computations after inverting <span class="math" data-tex="\(a\)">\(a\)</span> gave the localized kernel; the separate saturation argument was needed to obtain the full polynomial kernel.</p>
+<h3 id="modern-scalar-invariants">Modern scalar invariants</h3>
+<p>The scalar invariant ring of ternary quartics has seven homogeneous parameters of degrees
+<span class="math math-display" data-tex="\[
+3,6,9,12,15,18,27,
+\]">\[
+3,6,9,12,15,18,27,
+\]</span>
+and thirteen algebra generators of degrees
+<span class="math math-display" data-tex="\[
+3,6,9,9,12,12,15,15,18,18,21,21,27.
+\]">\[
+3,6,9,9,12,12,15,15,18,18,21,21,27.
+\]</span>
+These are different assertions. A homogeneous system of parameters gives a polynomial subalgebra over which the ring is finite; it need not itself generate the algebra.</p>
+<p>Dixmier proved the parameter assertion in <em>On the projective invariants of quartic plane curves</em> (1987). Ohno supplied the thirteen-generator result, and Elsenhans gave an explicit computational verification and another generator system in <em>Explicit computations of invariants of plane quartic curves</em>, Sections 5–6 (2015). His verification computes lower ranks by evaluations modulo a prime and compares them with the Hilbert-series dimensions through a proved degree bound. <a href="https://math.uni-paderborn.de/fileadmin/mathematik/AG-Computeralgebra/Publications-elsenhans/inv_pl_quart_5a.pdf">Elsenhans's primary paper</a></p>
+<p>The seven-parameter theorem is proved in Section 10 below, and the full thirteen-generator theorem is proved in Section 11 with exact all-degree and finite independence certificates. The consulted primary papers supply attribution and checks of the stated results; their free availability is not an open reuse licence.</p>
+<h2 id="10-seven-parameters-for-a-ternary-quartic">10. Seven parameters for a ternary quartic</h2>
+<p>We now prove the seven-parameter assertion, including the finite calculations on which it depends. This is Dixmier's theorem. The singular-form reduction also appears in Lercier, Liu, Lorenzo García and Ritzenthaler, <a href="https://arxiv.org/pdf/1803.05816v5"><em>Reduction type of smooth plane quartics</em>, Theorem 4.1</a>. The argument below uses independently written contractions, polynomial identities and a Jacobian certificate. The primary papers and their ancillary software are not included in the independent source package.</p>
+<p>Write a quartic with <strong>ordinary</strong>, rather than multinomially normalized, coefficients:
+<span class="math math-display" data-tex="\[
+F(x,y,z)=\sum_{i+j+k=4}c_{ijk}x^iy^jz^k.
+\]">\[
+F(x,y,z)=\sum_{i+j+k=4}c_{ijk}x^iy^jz^k.
+\]</span>
+Put <span class="math" data-tex="\(R=k[c_{ijk}]^{\operatorname{SL}_3}\)">\(R=k[c_{ijk}]^{\operatorname{SL}_3}\)</span>. A <strong>homogeneous system of parameters</strong> here means algebraically independent homogeneous invariants <span class="math" data-tex="\(q_1,\ldots,q_7\)">\(q_1,\ldots,q_7\)</span> such that <span class="math" data-tex="\(R\)">\(R\)</span> is a finite module over <span class="math" data-tex="\(k[q_1,\ldots,q_7]\)">\(k[q_1,\ldots,q_7]\)</span>. Establishing independence alone would not establish this conclusion.</p>
+<h3 id="the-contractions-defining-six-parameters">The contractions defining six parameters</h3>
+<p>For forms occupying dual variable spaces, write <span class="math" data-tex="\(A\mathbin{\lrcorner}B=A(\partial)B\)">\(A\mathbin{\lrcorner}B=A(\partial)B\)</span>. For example,
+<span class="math math-display" data-tex="\[
+\left(\sum a_{ijk}x^iy^jz^k\right)\mathbin{\lrcorner}B(u,v,w)
+=\sum a_{ijk}\partial_u^i\partial_v^j\partial_w^kB.
+\]">\[
+\left(\sum a_{ijk}x^iy^jz^k\right)\mathbin{\lrcorner}B(u,v,w)
+=\sum a_{ijk}\partial_u^i\partial_v^j\partial_w^kB.
+\]</span>
+This is an equivariant contraction: the chain rule cancels the transformations of the variables against those of the derivatives.</p>
+<p>Take vectors <span class="math" data-tex="\(r,s\)">\(r,s\)</span>, and restrict <span class="math" data-tex="\(F\)">\(F\)</span> to their plane:
+<span class="math math-display" data-tex="\[
+F(rX+sY)=aX^4+bX^3Y+cX^2Y^2+dXY^3+eY^4.
+\]">\[
+F(rX+sY)=aX^4+bX^3Y+cX^2Y^2+dXY^3+eY^4.
+\]</span>
+The binary quartic invariants in our earlier normalization are
+<span class="math math-display" data-tex="\[
+i=ae-\frac{bd}{4}+\frac{c^2}{12},\qquad
+j=\frac{ace}{6}+\frac{bcd}{48}-\frac{ad^2+b^2e}{16}-\frac{c^3}{216}.
+\]">\[
+i=ae-\frac{bd}{4}+\frac{c^2}{12},\qquad
+j=\frac{ace}{6}+\frac{bcd}{48}-\frac{ad^2+b^2e}{16}-\frac{c^3}{216}.
+\]</span>
+Define the ternary contravariants <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> by
+<span class="math math-display" data-tex="\[
+\sigma(r\times s)=i(F(rX+sY)),\qquad
+\psi(r\times s)=j(F(rX+sY)).
+\tag{25}
+\]">\[
+\sigma(r\times s)=i(F(rX+sY)),\qquad
+\psi(r\times s)=j(F(rX+sY)).
+\tag{25}
+\]</span>
+They have coefficient degrees two and three, and dual-variable orders four and six.</p>
+<p>Here is why these definitions give polynomials. Two plane bases with the same nonzero cross product differ by a determinant-one binary change of basis, so their values of <span class="math" data-tex="\(i,j\)">\(i,j\)</span> agree. Scaling the cross product scales them to the fourth and sixth powers. On the chart <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>, use
+<span class="math" data-tex="\(r=(-v,u,0)\)">\(r=(-v,u,0)\)</span>, <span class="math" data-tex="\(s=(-w,0,u)\)">\(s=(-w,0,u)\)</span>; their cross product is <span class="math" data-tex="\(u(u,v,w)\)">\(u(u,v,w)\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\sigma(u,v,w)=\frac{i(F(-vX-wY,uX,uY))}{u^4},\qquad
+\psi(u,v,w)=\frac{j(F(-vX-wY,uX,uY))}{u^6}.
+\tag{26}
+\]">\[
+\sigma(u,v,w)=\frac{i(F(-vX-wY,uX,uY))}{u^4},\qquad
+\psi(u,v,w)=\frac{j(F(-vX-wY,uX,uY))}{u^6}.
+\tag{26}
+\]</span>
+The corresponding constructions on <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> and <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span> agree on overlaps. A denominator in the first chart could only have the irreducible factor <span class="math" data-tex="\(u\)">\(u\)</span>. Regularity on the second chart excludes a pole at the generic point of <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, so this factor cancels. This proves that (26) is polynomial in the coefficients and dual variables. Homogeneity gives the stated orders. Applying <span class="math" data-tex="\(g\in\operatorname{SL}_3\)">\(g\in\operatorname{SL}_3\)</span> to a plane basis sends its cross product to <span class="math" data-tex="\(g^{-\mathsf t}(r\times s)\)">\(g^{-\mathsf t}(r\times s)\)</span>; hence (25) proves contravariance.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+\rho=\frac{F\mathbin{\lrcorner}\psi}{144},\qquad
+\tau=\frac{\rho\mathbin{\lrcorner}F}{12}.
+\tag{27}
+\]">\[
+\rho=\frac{F\mathbin{\lrcorner}\psi}{144},\qquad
+\tau=\frac{\rho\mathbin{\lrcorner}F}{12}.
+\tag{27}
+\]</span>
+The first is a quadratic contravariant of coefficient degree four; the second is a quadratic covariant of degree five. Write
+<span class="math" data-tex="\(\rho=u^{\mathsf t}Au\)">\(\rho=u^{\mathsf t}Au\)</span>, <span class="math" data-tex="\(\tau=x^{\mathsf t}Bx\)">\(\tau=x^{\mathsf t}Bx\)</span>, using symmetric matrices with half the mixed-term coefficient in each off-diagonal entry. Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I_3&amp;=\frac{F\mathbin{\lrcorner}\sigma}{72},&amp;
+I_9&amp;=\operatorname{tr}(BA),\\
+I_{12}&amp;=\det A,&amp; I_{15}&amp;=\det B,\\
+I_{18}&amp;=\operatorname{tr}(\operatorname{adj}B\operatorname{adj}A).
+\end{aligned}
+\tag{28}
+\]">\[
+\begin{aligned}
+I_3&amp;=\frac{F\mathbin{\lrcorner}\sigma}{72},&amp;
+I_9&amp;=\operatorname{tr}(BA),\\
+I_{12}&amp;=\det A,&amp; I_{15}&amp;=\det B,\\
+I_{18}&amp;=\operatorname{tr}(\operatorname{adj}B\operatorname{adj}A).
+\end{aligned}
+\tag{28}
+\]</span>
+For <span class="math" data-tex="\(I_6\)">\(I_6\)</span>, put <span class="math" data-tex="\(a_\alpha=c_\alpha\alpha!/4!\)">\(a_\alpha=c_\alpha\alpha!/4!\)</span>, and index a six-by-six matrix by the degree-two monomials:
+<span class="math math-display" data-tex="\[
+I_6=\det(a_{\alpha+\beta})_{|\alpha|=|\beta|=2}.
+\tag{29}
+\]">\[
+I_6=\det(a_{\alpha+\beta})_{|\alpha|=|\beta|=2}.
+\tag{29}
+\]</span>
+This is the catalecticant determinant. In particular, its entries use normalized coefficients even though <span class="math" data-tex="\(F\)">\(F\)</span> was written with ordinary coefficients.</p>
+<p>All six expressions are invariants. Under <span class="math" data-tex="\(g\in\operatorname{SL}_3\)">\(g\in\operatorname{SL}_3\)</span>, the quadratic matrices become <span class="math" data-tex="\(A\mapsto gAg^{\mathsf t}\)">\(A\mapsto gAg^{\mathsf t}\)</span> and <span class="math" data-tex="\(B\mapsto g^{-\mathsf t}Bg^{-1}\)">\(B\mapsto g^{-\mathsf t}Bg^{-1}\)</span>, so the traces, determinants and adjugate trace in (28) are unchanged. The catalecticant is a bilinear form on a symmetric-square space; its determinant changes by the square of <span class="math" data-tex="\(\det(\operatorname{Sym}^2g)=\det(g)^4=1\)">\(\det(\operatorname{Sym}^2g)=\det(g)^4=1\)</span>. The identity for this last determinant follows first on diagonal matrices, where each diagonal entry occurs with total exponent four, and then on elementary matrices, whose symmetric-square matrices are unipotent. These generate the special linear group. The remaining contraction in (28) is equivariant and has order zero. Their coefficient degrees are precisely their subscripts. On <span class="math" data-tex="\(F=x^4+y^4+z^4\)">\(F=x^4+y^4+z^4\)</span>, <span class="math" data-tex="\(I_3=1\)">\(I_3=1\)</span>, fixing the normalization.</p>
+<h3 id="a-degree-27-discriminant-with-a-determinant-formula">A degree-27 discriminant, with a determinant formula</h3>
+<p>We need both the zero set and a computable formula for the seventh parameter. We give the requisite resultant argument explicitly.</p>
+<p><strong>Lemma 10.1 (three cubics).</strong> There is a polynomial <span class="math" data-tex="\(\operatorname{Res}(g_1,g_2,g_3)\)">\(\operatorname{Res}(g_1,g_2,g_3)\)</span>, of degree nine in each cubic's coefficients, whose vanishing is equivalent to the three homogeneous cubics having a common point of <span class="math" data-tex="\(\mathbb P^2\)">\(\mathbb P^2\)</span>. Normalize it to take value one on <span class="math" data-tex="\((x^3,y^3,z^3)\)">\((x^3,y^3,z^3)\)</span>. It is a determinant quotient of the degree-seven part of the cubic Koszul complex.</p>
+<p><strong>Proof.</strong> Work first over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and let <span class="math" data-tex="\(S_d\)">\(S_d\)</span> denote the space of ternary forms of degree <span class="math" data-tex="\(d\)">\(d\)</span>. We spell out the elementary dimension facts used here. Dimension of an irreducible coefficient variety means the transcendence degree of its function field. An image parametrized by <span class="math" data-tex="\(r\)">\(r\)</span> independent coordinates has dimension at most <span class="math" data-tex="\(r\)">\(r\)</span>, because its coordinate functions lie in that rational function field. A Jacobian of rank <span class="math" data-tex="\(r\)">\(r\)</span> gives the reverse bound: differentiating a polynomial relation of least degree would otherwise give a nonzero relation of smaller degree.</p>
+<p>An irreducible closed subset of <span class="math" data-tex="\(\mathbb A^n\)">\(\mathbb A^n\)</span> of dimension <span class="math" data-tex="\(n-1\)">\(n-1\)</span> has a single irreducible defining polynomial. To see this, take an irreducible factor <span class="math" data-tex="\(q\)">\(q\)</span> of a nonzero polynomial in its prime ideal. A linear coordinate change makes <span class="math" data-tex="\(q\)">\(q\)</span> monic in the last coordinate: choose that coordinate's direction where the highest homogeneous part of <span class="math" data-tex="\(q\)">\(q\)</span> is nonzero. If the prime ideal contained <span class="math" data-tex="\(h\notin(q)\)">\(h\notin(q)\)</span>, the nonzero Sylvester resultant of <span class="math" data-tex="\(q,h\)">\(q,h\)</span> in the last coordinate would give a relation among the other <span class="math" data-tex="\(n-1\)">\(n-1\)</span> coordinates. It is nonzero by Gauss's lemma, since <span class="math" data-tex="\(q\)">\(q\)</span> is irreducible and monic; the Sylvester adjugate gives an identity expressing it as a combination of <span class="math" data-tex="\(q,h\)">\(q,h\)</span>. The other coordinates would then have transcendence degree at most <span class="math" data-tex="\(n-2\)">\(n-2\)</span>, and the last is algebraic over them by the monic equation <span class="math" data-tex="\(q\)">\(q\)</span>. This contradicts dimension <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. Thus the prime ideal is <span class="math" data-tex="\((q)\)">\((q)\)</span>. These observations justify the parameter counts and hypersurface assertions below.</p>
+<p>The incidence set
+<span class="math math-display" data-tex="\[
+Z=\{(g_1,g_2,g_3,P):g_1(P)=g_2(P)=g_3(P)=0\}
+\]">\[
+Z=\{(g_1,g_2,g_3,P):g_1(P)=g_2(P)=g_3(P)=0\}
+\]</span>
+is irreducible of dimension 29. Indeed, over each point of <span class="math" data-tex="\(\mathbb P^2\)">\(\mathbb P^2\)</span> the three evaluations impose three independent linear equations on the 30 coefficients. On a coordinate chart this is a trivial affine bundle of dimension 27 over a two-dimensional chart, and the charts have dense overlaps.</p>
+<p>Its image in coefficient space is closed. To check this without assuming an elimination theorem, a triple outside the image has affine common zero set consisting only of the origin. The Nullstellensatz implies <span class="math" data-tex="\((x,y,z)^N\subset(g_1,g_2,g_3)\)">\((x,y,z)^N\subset(g_1,g_2,g_3)\)</span> for some <span class="math" data-tex="\(N\)">\(N\)</span>. Surjectivity of
+<span class="math" data-tex="\(S_{N-3}^3\to S_N\)">\(S_{N-3}^3\to S_N\)</span>, <span class="math" data-tex="\((h_i)\mapsto\sum h_ig_i\)">\((h_i)\mapsto\sum h_ig_i\)</span>, is an open matrix-rank condition. Conversely, surjectivity excludes a projective common zero. The complement of the image is the union of these open sets, and is therefore open.</p>
+<p>The image has dimension 29. For example, <span class="math" data-tex="\(g_1=x^3-z^3\)">\(g_1=x^3-z^3\)</span>, <span class="math" data-tex="\(g_2=y^3-z^3\)">\(g_2=y^3-z^3\)</span> meet in nine distinct points, and one can choose <span class="math" data-tex="\(g_3\)">\(g_3\)</span> to vanish at exactly one of them. At that point the first two equations have an invertible Jacobian in the two affine point coordinates. Locally they solve for the point, and the third equation imposes one independent condition on the coefficient space. Thus the image is an irreducible hypersurface. Since the coefficient ring is a unique factorization domain, it has an irreducible defining polynomial <span class="math" data-tex="\(D\)">\(D\)</span>, unique up to a constant.</p>
+<p>For a general fixed pair of cubics, there are nine distinct intersection points. Here is the degree count. Coprime cubics form a regular sequence of length two: the first is nonzero, and coprimality makes the second a nonzerodivisor modulo the first, by unique factorization. The two multiplication exact sequences give
+<span class="math math-display" data-tex="\[
+\operatorname{Hilb}_{S/(g_1,g_2)}(t)=\frac{(1-t^3)^2}{(1-t)^3}.
+\]">\[
+\operatorname{Hilb}_{S/(g_1,g_2)}(t)=\frac{(1-t^3)^2}{(1-t)^3}.
+\]</span>
+Its coefficients are eventually nine. For distinct transverse projective zeros the eventual coefficient equals their number. Homogeneous interpolation separates the points. Transversality identifies the localized ideal with the reduced point ideal at each of them. The difference between the complete-intersection ideal and the intersection of these point ideals is consequently supported only at the origin; the Nullstellensatz makes a power of <span class="math" data-tex="\((x,y,z)\)">\((x,y,z)\)</span> annihilate this finitely generated difference, so its graded pieces eventually vanish. Transversality is an open condition, and the displayed pair exhibits it. For this general pair, <span class="math" data-tex="\(D\)">\(D\)</span>, viewed as a polynomial in <span class="math" data-tex="\(g_3\)">\(g_3\)</span>, vanishes on the nine distinct evaluation hyperplanes <span class="math" data-tex="\(g_3(P)=0\)">\(g_3(P)=0\)</span>. Each occurs with multiplicity one: at a triple having just one common point, the preceding implicit-function calculation makes that evaluation the local defining equation, with nonzero derivative in a coefficient of <span class="math" data-tex="\(g_3\)">\(g_3\)</span>. We may choose a smooth point of the irreducible hypersurface here: in characteristic zero an irreducible polynomial cannot divide all its nonzero partial derivatives, so its smooth locus is dense. Hence <span class="math" data-tex="\(D\)">\(D\)</span> has degree nine in that group of coefficients. Symmetry gives degree nine in each group.</p>
+<p>The promised determinant description supplies a rational formula and its coefficient field. Consider
+<span class="math math-display" data-tex="\[
+S_1^3\xrightarrow{K}S_4^3\xrightarrow{M}S_7,
+\qquad M(h_1,h_2,h_3)=\sum h_ig_i,
+\tag{30}
+\]">\[
+S_1^3\xrightarrow{K}S_4^3\xrightarrow{M}S_7,
+\qquad M(h_1,h_2,h_3)=\sum h_ig_i,
+\tag{30}
+\]</span>
+where the three components of <span class="math" data-tex="\(K\)">\(K\)</span> send a linear form <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, for a pair <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, to the tuple with <span class="math" data-tex="\(g_j\ell\)">\(g_j\ell\)</span> in slot <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(-g_i\ell\)">\(-g_i\ell\)</span> in slot <span class="math" data-tex="\(j\)">\(j\)</span>, and zero elsewhere. Its dimensions are <span class="math" data-tex="\(9,45,36\)">\(9,45,36\)</span>, and <span class="math" data-tex="\(MK=0\)">\(MK=0\)</span>. At <span class="math" data-tex="\((x^3,y^3,z^3)\)">\((x^3,y^3,z^3)\)</span>, <span class="math" data-tex="\(M\)">\(M\)</span> is surjective, because a monomial of degree seven must be divisible by one of <span class="math" data-tex="\(x^3,y^3,z^3\)">\(x^3,y^3,z^3\)</span>. Also <span class="math" data-tex="\(K\)">\(K\)</span> is injective. Thus the generic complex is exact.</p>
+<p>The elementary complementary-minor identity for an exact complex says
+<span class="math math-display" data-tex="\[
+\det M_J=\varepsilon_J T\det K_{J^c}
+\tag{31}
+\]">\[
+\det M_J=\varepsilon_J T\det K_{J^c}
+\tag{31}
+\]</span>
+for every set <span class="math" data-tex="\(J\)">\(J\)</span> of 36 domain basis elements, where <span class="math" data-tex="\(\varepsilon_J\)">\(\varepsilon_J\)</span> is the basis-shuffle sign and <span class="math" data-tex="\(T\)">\(T\)</span> is a common rational function. To prove the identity, choose a basis of the kernel of <span class="math" data-tex="\(M\)">\(M\)</span> from the columns of <span class="math" data-tex="\(K\)">\(K\)</span>, complete it to a basis of the middle space, and take the top exterior power. Expanding that wedge in the original basis gives exactly the complementary minors and their shuffle signs.</p>
+<p>In fact <span class="math" data-tex="\(T\)">\(T\)</span> is polynomial. The nine-row minors of <span class="math" data-tex="\(K\)">\(K\)</span> have no common irreducible factor. Whenever <span class="math" data-tex="\(g_1,g_2\)">\(g_1,g_2\)</span> are coprime, <span class="math" data-tex="\(K\)">\(K\)</span> is injective: its third-slot equation is a syzygy between <span class="math" data-tex="\(g_1,g_2\)">\(g_1,g_2\)</span> with linear coefficients; divisibility forces both coefficients to be zero because the cubics have degree three, and the remaining coefficient is then zero. The locus of noncoprime pairs has codimension at least two. For a common factor of degree one, two or three, its dimension in the 20-dimensional pair space is at most
+<span class="math math-display" data-tex="\[
+2+6+6=14,\quad 5+3+3=11,\quad 9+1+1=11,
+\]">\[
+2+6+6=14,\quad 5+3+3=11,\quad 9+1+1=11,
+\]</span>
+respectively: choose the common factor up to scalar and the two remaining factors. Consequently no hypersurface can divide all those minors. If the rational function <span class="math" data-tex="\(T\)">\(T\)</span> had an irreducible denominator after cancellation, (31) would force that denominator to divide every minor of <span class="math" data-tex="\(K\)">\(K\)</span>, a contradiction.</p>
+<p>Choose <span class="math" data-tex="\(J\)">\(J\)</span> as follows: for every degree-seven monomial, take the multiple of the first <span class="math" data-tex="\(g_i\)">\(g_i\)</span> for which its exponent in variable <span class="math" data-tex="\(i\)">\(i\)</span> is at least three. This selects 15, 12 and 9 domain elements in the three slots. In the complementary minor of <span class="math" data-tex="\(K\)">\(K\)</span>, the remaining three rows in slot two involve <span class="math" data-tex="\(g_1\)">\(g_1\)</span>, and the remaining six rows in slot three give three further <span class="math" data-tex="\(g_1\)">\(g_1\)</span> factors and three <span class="math" data-tex="\(g_2\)">\(g_2\)</span> factors. Equivalently its block form is triangular by the pairs <span class="math" data-tex="\((1,2),(1,3),(2,3)\)">\((1,2),(1,3),(2,3)\)</span>. Thus its multidegree is <span class="math" data-tex="\((6,3,0)\)">\((6,3,0)\)</span>, whereas <span class="math" data-tex="\(\det M_J\)">\(\det M_J\)</span> has multidegree <span class="math" data-tex="\((15,12,9)\)">\((15,12,9)\)</span>. It follows that <span class="math" data-tex="\(T\)">\(T\)</span> has multidegree <span class="math" data-tex="\((9,9,9)\)">\((9,9,9)\)</span>.</p>
+<p>At a general triple with a common point, evaluation at that point annihilates the image of <span class="math" data-tex="\(M\)">\(M\)</span>, so all its maximal minors vanish; <span class="math" data-tex="\(K\)">\(K\)</span> still has rank nine. Therefore <span class="math" data-tex="\(T\)">\(T\)</span> vanishes on the irreducible incidence hypersurface, and <span class="math" data-tex="\(D\)">\(D\)</span> divides <span class="math" data-tex="\(T\)">\(T\)</span>. Their equal multidegrees make the quotient a nonzero constant. Normalize the sign and constant at the three pure cubes. This gives <span class="math" data-tex="\(\operatorname{Res}\)">\(\operatorname{Res}\)</span>, proves the formula, and proves the zero-set assertion everywhere, including multiple intersections. The matrices and normalization are rational, so the resulting polynomial is rational. The zero-set assertion extends to every characteristic-zero field as well. The finitely generated field of the given coefficients embeds in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. For each degree, surjectivity of the multiplication matrix used above is preserved under extension of fields. The Nullstellensatz's equivalence between some such surjectivity and absence of a projective zero therefore transfers the assertion to any algebraic closure of the coefficient field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define
+<span class="math math-display" data-tex="\[
+I_{27}(F)=\frac{\operatorname{Res}(F_x,F_y,F_z)}{4^{27}}.
+\tag{32}
+\]">\[
+I_{27}(F)=\frac{\operatorname{Res}(F_x,F_y,F_z)}{4^{27}}.
+\tag{32}
+\]</span>
+Euler's equation <span class="math" data-tex="\(4F=xF_x+yF_y+zF_z\)">\(4F=xF_x+yF_y+zF_z\)</span> shows that its zero set is exactly the singular quartics. Its degree is 27, and its value on <span class="math" data-tex="\(x^4+y^4+z^4\)">\(x^4+y^4+z^4\)</span> is one.</p>
+<p>It is an invariant. Changes of variables and invertible combinations of the three cubic equations preserve the resultant hypersurface, so the irreducible polynomial in Lemma 10.1 transforms by a character. On either special linear group that character is trivial. Indeed, its restriction to an elementary one-parameter subgroup is a regular character <span class="math" data-tex="\(\mathbb G_a\to\mathbb G_m\)">\(\mathbb G_a\to\mathbb G_m\)</span>; the only units in <span class="math" data-tex="\(\mathbb C[t]\)">\(\mathbb C[t]\)</span> are nonzero constants, and the identity value is one. Elementary matrices generate <span class="math" data-tex="\(\operatorname{SL}_3\)">\(\operatorname{SL}_3\)</span>. The chain rule for the three partial derivatives uses these two special linear actions, proving the assertion.</p>
+<h3 id="the-exact-elimination-certificates">The exact elimination certificates</h3>
+<p>Some coefficients below are large, but the calculation is finite. The editable source package contains <code>quartic_algebra.py</code>, the construction scripts and every polynomial certificate used here. In particular, the certificates record the following rule for every contraction:
+<span class="math math-display" data-tex="\[
+(a_\alpha x^\alpha)\mathbin{\lrcorner}(b_\beta u^\beta)
+=a_\alpha b_\beta\frac{\beta!}{(\beta-\alpha)!}u^{\beta-\alpha}
+\quad(\beta\geq\alpha),
+\tag{33}
+\]">\[
+(a_\alpha x^\alpha)\mathbin{\lrcorner}(b_\beta u^\beta)
+=a_\alpha b_\beta\frac{\beta!}{(\beta-\alpha)!}u^{\beta-\alpha}
+\quad(\beta\geq\alpha),
+\tag{33}
+\]</span>
+with zero contribution otherwise. Equations (26)–(29) and (33) completely specify the calculation; no source-paper software is called.</p>
+<p>We use two elementary certificate principles. If two univariate polynomials have a common root, their Sylvester determinant is zero. Evaluation at that root gives a nonzero vector annihilated by the transpose of the Sylvester map <span class="math" data-tex="\((a,b)\mapsto ap+bq\)">\((a,b)\mapsto ap+bq\)</span>; this argument remains valid if a leading coefficient specializes to zero. Iterating this observation permits elimination in two stages. If several univariate polynomials vanish at the same value, their monic greatest common divisor also vanishes there: the Euclidean algorithm expresses that greatest common divisor as their polynomial linear combination.</p>
+<p>For an ideal-membership certificate, the data consist simply of polynomials <span class="math" data-tex="\(h_i\)">\(h_i\)</span> and the checked equality <span class="math" data-tex="\(q=\sum h_ip_i\)">\(q=\sum h_ip_i\)</span>. This forces <span class="math" data-tex="\(q=0\)">\(q=0\)</span> at every common zero of the input polynomials. The stored branch identities use rational coefficients and are verified by exact multiplication. They do not require an assumption that numerical sample points exhaust a variety.</p>
+<p><strong>Lemma 10.2 (the distinct-tangent calculation).</strong> For
+<span class="math math-display" data-tex="\[
+F=xyz^2+(x^3+y^3)z+Ay^4+Bxy^3-\frac92x^2y^2+Dx^3y+Ex^4,
+\tag{34}
+\]">\[
+F=xyz^2+(x^3+y^3)z+Ay^4+Bxy^3-\frac92x^2y^2+Dx^3y+Ex^4,
+\tag{34}
+\]</span>
+the equations <span class="math" data-tex="\(I_6=I_9=I_{12}=I_{15}=I_{18}=0\)">\(I_6=I_9=I_{12}=I_{15}=I_{18}=0\)</span> imply either
+<span class="math math-display" data-tex="\[
+A=E=-\frac32,\quad B=D=-\frac{15}{4},
+\tag{35}
+\]">\[
+A=E=-\frac32,\quad B=D=-\frac{15}{4},
+\tag{35}
+\]</span>
+or
+<span class="math math-display" data-tex="\[
+4A^2-6A+9=0,\quad E=\frac32-A,\quad
+B=\frac{15}{4}-\frac52A,\quad D=\frac52A.
+\tag{36}
+\]">\[
+4A^2-6A+9=0,\quad E=\frac32-A,\quad
+B=\frac{15}{4}-\frac52A,\quad D=\frac52A.
+\tag{36}
+\]</span></p>
+<p><strong>Proof.</strong> Equation (29) gives <span class="math" data-tex="\(I_6=(4AE-9)/82944\)">\(I_6=(4AE-9)/82944\)</span>, so <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span> and <span class="math" data-tex="\(E=9/(4A)\)">\(E=9/(4A)\)</span>. Substitute this value into the four expressions of degrees 9, 12, 15 and 18. Clear the denominators, obtaining <span class="math" data-tex="\(p_0,p_1,p_2,p_3\in\mathbb Q[D,B,A]\)">\(p_0,p_1,p_2,p_3\in\mathbb Q[D,B,A]\)</span>, in this order. The coefficient lists are in <code>case-2.1-resultants.json</code>; they are derived from (26)–(29), not supplied as unexplained inputs.</p>
+<p>Put <span class="math" data-tex="\(r_i=\operatorname{Res}_D(p_0,p_i)\)">\(r_i=\operatorname{Res}_D(p_0,p_i)\)</span>, for <span class="math" data-tex="\(i=1,2,3\)">\(i=1,2,3\)</span>, then form <span class="math" data-tex="\(\operatorname{Res}_B(r_i,r_j)\)">\(\operatorname{Res}_B(r_i,r_j)\)</span>, for the three pairs. Their degrees in <span class="math" data-tex="\(A\)">\(A\)</span> are 204, 262 and 298. Exact Euclidean division gives their monic greatest common divisor
+<span class="math math-display" data-tex="\[
+\frac{A^{66}(2A+3)^8(4A^2-6A+9)^8}{2^{24}}.
+\tag{37}
+\]">\[
+\frac{A^{66}(2A+3)^8(4A^2-6A+9)^8}{2^{24}}.
+\tag{37}
+\]</span>
+Every common zero of the original equations makes all three final resultants vanish, so (37), together with <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, forces <span class="math" data-tex="\(2A+3=0\)">\(2A+3=0\)</span> or <span class="math" data-tex="\(4A^2-6A+9=0\)">\(4A^2-6A+9=0\)</span>.</p>
+<p>For the first branch, substitute <span class="math" data-tex="\(A=E=-3/2\)">\(A=E=-3/2\)</span> into the original four polynomial equations. Exact ideal-membership identities give
+<span class="math math-display" data-tex="\[
+B+D+\frac{15}{2}=0,\qquad
+\left(B+\frac{15}{4}\right)^2=0.
+\]">\[
+B+D+\frac{15}{2}=0,\qquad
+\left(B+\frac{15}{4}\right)^2=0.
+\]</span>
+These imply (35). For the second branch, include <span class="math" data-tex="\(4A^2-6A+9\)">\(4A^2-6A+9\)</span> among the input equations and substitute <span class="math" data-tex="\(E=3/2-A\)">\(E=3/2-A\)</span>. The corresponding identities give
+<span class="math math-display" data-tex="\[
+\frac23AB-5A-B+D=0,\qquad
+\left(B-\frac{15}{4}+\frac52A\right)^2=0.
+\]">\[
+\frac23AB-5A-B+D=0,\qquad
+\left(B-\frac{15}{4}+\frac52A\right)^2=0.
+\]</span>
+The square determines <span class="math" data-tex="\(B\)">\(B\)</span>; reducing the linear equation modulo <span class="math" data-tex="\(4A^2-6A+9\)">\(4A^2-6A+9\)</span> determines <span class="math" data-tex="\(D\)">\(D\)</span>. This proves (36). The full multipliers witnessing both pairs of identities are in <code>branch-identities.json</code>, and the verification is direct substitution and multiplication. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Both forms in this lemma are a line times a cubic with a flex on that line. For (35),
+<span class="math math-display" data-tex="\[
+F=-\frac14(3x+3y-2z)
+(2x^3+3x^2y+3xy^2+2y^3+2xyz).
+\tag{38}
+\]">\[
+F=-\frac14(3x+3y-2z)
+(2x^3+3x^2y+3xy^2+2y^3+2xyz).
+\tag{38}
+\]</span>
+At <span class="math" data-tex="\(P=(-1,1,0)\)">\(P=(-1,1,0)\)</span> the cubic gradient is <span class="math" data-tex="\((3,3,-2)\)">\((3,3,-2)\)</span>, and restricting the cubic to <span class="math" data-tex="\(z=3(x+y)/2\)">\(z=3(x+y)/2\)</span> gives <span class="math" data-tex="\(2(x+y)^3\)">\(2(x+y)^3\)</span>. Thus it is smooth at <span class="math" data-tex="\(P\)">\(P\)</span> and the line meets it three times there.</p>
+<p>For (36), put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L&amp;=x+(2A/3-1)y+4Az/9,\\
+Q&amp;=x^3+(A-3/2)x^2y-Axy^2+y^3+xyz.
+\end{aligned}
+\]">\[
+\begin{aligned}
+L&amp;=x+(2A/3-1)y+4Az/9,\\
+Q&amp;=x^3+(A-3/2)x^2y-Axy^2+y^3+xyz.
+\end{aligned}
+\]</span>
+Exact multiplication modulo <span class="math" data-tex="\(4A^2-6A+9\)">\(4A^2-6A+9\)</span> gives <span class="math" data-tex="\(F=(3/2-A)LQ\)">\(F=(3/2-A)LQ\)</span>. At <span class="math" data-tex="\(P=(1-2A/3,1,0)\)">\(P=(1-2A/3,1,0)\)</span>, the gradient of <span class="math" data-tex="\(Q\)">\(Q\)</span> is
+<span class="math" data-tex="\((-A,3/2,1-2A/3)=-A\nabla L\)">\((-A,3/2,1-2A/3)=-A\nabla L\)</span>, which is nonzero. Substitution of <span class="math" data-tex="\(L=0\)">\(L=0\)</span> into <span class="math" data-tex="\(Q\)">\(Q\)</span> gives <span class="math" data-tex="\((x+(2A/3-1)y)^3\)">\((x+(2A/3-1)y)^3\)</span>. This verifies the flex and all scalar factors in the factorizations.</p>
+<h3 id="why-their-common-zeros-are-the-null-cone">Why their common zeros are the null cone</h3>
+<p>A convenient sufficient condition for a form to lie in the null cone is the following. If integers <span class="math" data-tex="\((w_x,w_y,w_z)\)">\((w_x,w_y,w_z)\)</span> sum to zero and every monomial in <span class="math" data-tex="\(F\)">\(F\)</span> has positive weight <span class="math" data-tex="\(iw_x+jw_y+kw_z\)">\(iw_x+jw_y+kw_z\)</span>, then
+<span class="math" data-tex="\(F(t^{w_x}x,t^{w_y}y,t^{w_z}z)\to0\)">\(F(t^{w_x}x,t^{w_y}y,t^{w_z}z)\to0\)</span> as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>. This substitution is the inverse action of a determinant-one diagonal matrix. Every positive-degree homogeneous invariant therefore vanishes on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Lemma 10.3 (quartic common zeros).</strong> The common zero set of <span class="math" data-tex="\(I_3,I_6,I_9,I_{12},I_{15},I_{18},I_{27}\)">\(I_3,I_6,I_9,I_{12},I_{15},I_{18},I_{27}\)</span> is the null cone.</p>
+<p><strong>Proof.</strong> We work over an algebraically closed characteristic-zero field. The zero form causes no difficulty. For a nonzero common zero, (32) supplies a singular point. General linear coordinate changes and nonzero scalar multiples preserve the vanishing of homogeneous invariants: over this field a general linear matrix is a scalar times a special linear matrix. Move the singular point to <span class="math" data-tex="\((0,0,1)\)">\((0,0,1)\)</span>. The coefficients of <span class="math" data-tex="\(z^4,xz^3,yz^3\)">\(z^4,xz^3,yz^3\)</span> vanish, so
+<span class="math math-display" data-tex="\[
+F=q_2(x,y)z^2+q_3(x,y)z+q_4(x,y).
+\tag{39}
+\]">\[
+F=q_2(x,y)z^2+q_3(x,y)z+q_4(x,y).
+\tag{39}
+\]</span>
+If <span class="math" data-tex="\(q_2=0\)">\(q_2=0\)</span>, the point has multiplicity at least three; weights <span class="math" data-tex="\((1,1,-2)\)">\((1,1,-2)\)</span> are positive on every monomial in (39). Hence this form is in the null cone.</p>
+<p>Suppose the tangent quadratic has rank one. Normalize it to <span class="math" data-tex="\(x^2\)">\(x^2\)</span>. If the coefficient of <span class="math" data-tex="\(y^3\)">\(y^3\)</span> in <span class="math" data-tex="\(q_3\)">\(q_3\)</span> is zero, the form has the shape
+<span class="math math-display" data-tex="\[
+F=x^2z^2+(Lxy^2+Mx^2y+Nx^3)z
++Ay^4+Bxy^3+Cx^2y^2+Dx^3y+Ex^4.
+\tag{40}
+\]">\[
+F=x^2z^2+(Lxy^2+Mx^2y+Nx^3)z
++Ay^4+Bxy^3+Cx^2y^2+Dx^3y+Ex^4.
+\tag{40}
+\]</span>
+Direct use of (26)–(29) gives
+<span class="math math-display" data-tex="\[
+I_3=(6A+L^2)/72,\qquad
+I_6=L^2(24A-L^2)/746496.
+\]">\[
+I_3=(6A+L^2)/72,\qquad
+I_6=L^2(24A-L^2)/746496.
+\]</span>
+Thus <span class="math" data-tex="\(A=-L^2/6\)">\(A=-L^2/6\)</span>, and <span class="math" data-tex="\(I_6=-5L^4/746496\)">\(I_6=-5L^4/746496\)</span> forces <span class="math" data-tex="\(A=L=0\)">\(A=L=0\)</span>. Weights <span class="math" data-tex="\((4,-1,-3)\)">\((4,-1,-3)\)</span> are now positive on all the remaining monomials in (40).</p>
+<p>If the coefficient of <span class="math" data-tex="\(y^3\)">\(y^3\)</span> is nonzero, scale it to one. Replacing <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(y-Lx/3\)">\(y-Lx/3\)</span> removes <span class="math" data-tex="\(xy^2z\)">\(xy^2z\)</span>; subsequently replacing <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(z+bx+cy\)">\(z+bx+cy\)</span>, with suitable <span class="math" data-tex="\(b,c\)">\(b,c\)</span>, removes <span class="math" data-tex="\(x^3z,x^2yz\)">\(x^3z,x^2yz\)</span>. The resulting shape is
+<span class="math math-display" data-tex="\[
+F=x^2z^2+y^3z+Ay^4+Bxy^3+Cx^2y^2+Dx^3y+Ex^4.
+\tag{41}
+\]">\[
+F=x^2z^2+y^3z+Ay^4+Bxy^3+Cx^2y^2+Dx^3y+Ex^4.
+\tag{41}
+\]</span>
+Here <span class="math" data-tex="\(I_3=A/12\)">\(I_3=A/12\)</span> and <span class="math" data-tex="\(I_6=C/20736\)">\(I_6=C/20736\)</span>, so <span class="math" data-tex="\(A=C=0\)">\(A=C=0\)</span>. With these substitutions,
+<span class="math math-display" data-tex="\[
+I_{15}=\frac{1125D^2}{165112971264},\qquad
+I_9=\frac{801B^2+585E}{2985984}.
+\]">\[
+I_{15}=\frac{1125D^2}{165112971264},\qquad
+I_9=\frac{801B^2+585E}{2985984}.
+\]</span>
+Thus <span class="math" data-tex="\(D=0\)">\(D=0\)</span>, <span class="math" data-tex="\(E=-89B^2/65\)">\(E=-89B^2/65\)</span>. Substitution into <span class="math" data-tex="\(I_{18}\)">\(I_{18}\)</span> gives
+<span class="math math-display" data-tex="\[
+I_{18}=\frac{6251B^4}{114831654912},
+\]">\[
+I_{18}=\frac{6251B^4}{114831654912},
+\]</span>
+forcing <span class="math" data-tex="\(B=E=0\)">\(B=E=0\)</span>. The remaining form <span class="math" data-tex="\(x^2z^2+y^3z\)">\(x^2z^2+y^3z\)</span> has positive weights <span class="math" data-tex="\((-3,-1,4)\)">\((-3,-1,4)\)</span>.</p>
+<p>It remains to treat rank two. Normalize <span class="math" data-tex="\(q_2=xy\)">\(q_2=xy\)</span>, and shift <span class="math" data-tex="\(z\)">\(z\)</span> by a linear form to remove the terms <span class="math" data-tex="\(xy^2z,x^2yz\)">\(xy^2z,x^2yz\)</span>. Write
+<span class="math math-display" data-tex="\[
+F=xyz^2+(sy^3+tx^3)z+Ay^4+Bxy^3+Cx^2y^2+Dx^3y+Ex^4.
+\tag{42}
+\]">\[
+F=xyz^2+(sy^3+tx^3)z+Ay^4+Bxy^3+Cx^2y^2+Dx^3y+Ex^4.
+\tag{42}
+\]</span>
+If <span class="math" data-tex="\(s,t\ne0\)">\(s,t\ne0\)</span>, diagonal scaling makes both one. Explicitly, choose <span class="math" data-tex="\(\alpha^3/\beta^3=s/t\)">\(\alpha^3/\beta^3=s/t\)</span> and <span class="math" data-tex="\(\gamma=s\beta^2/\alpha\)">\(\gamma=s\beta^2/\alpha\)</span>; substitution by <span class="math" data-tex="\((\alpha x,\beta y,\gamma z)\)">\((\alpha x,\beta y,\gamma z)\)</span>, followed by division by <span class="math" data-tex="\(\alpha\beta\gamma^2\)">\(\alpha\beta\gamma^2\)</span>, does so. The equation <span class="math" data-tex="\(I_3=0\)">\(I_3=0\)</span> gives <span class="math" data-tex="\(C=-9/2\)">\(C=-9/2\)</span>, and Lemma 10.2 applies. Its factorizations show a line <span class="math" data-tex="\(L\)">\(L\)</span> times a cubic smooth at a point where <span class="math" data-tex="\(L\)">\(L\)</span> has triple contact. Send that point to <span class="math" data-tex="\((0,0,1)\)">\((0,0,1)\)</span> and the line to <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Smoothness and triple contact put the product in (40) with <span class="math" data-tex="\(A=L=0\)">\(A=L=0\)</span>: the cubic has a nonzero <span class="math" data-tex="\(xz^2\)">\(xz^2\)</span> coefficient, no <span class="math" data-tex="\(yz^2,y^2z\)">\(yz^2,y^2z\)</span> terms, and restricts to a multiple of <span class="math" data-tex="\(y^3\)">\(y^3\)</span> on <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. The same weights <span class="math" data-tex="\((4,-1,-3)\)">\((4,-1,-3)\)</span> prove null-cone membership.</p>
+<p>If precisely one of <span class="math" data-tex="\(s,t\)">\(s,t\)</span> is nonzero, exchange <span class="math" data-tex="\(x,y\)">\(x,y\)</span> if necessary and scale to <span class="math" data-tex="\(s=0,t=1\)">\(s=0,t=1\)</span>. The first two parameter equations give
+<span class="math math-display" data-tex="\[
+C=0,\qquad AE=0.
+\]">\[
+C=0,\qquad AE=0.
+\]</span>
+If <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, <span class="math" data-tex="\(I_9=0\)">\(I_9=0\)</span> forces <span class="math" data-tex="\(B^2E=0\)">\(B^2E=0\)</span>. Assuming <span class="math" data-tex="\(B\ne0\)">\(B\ne0\)</span> would give <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, and <span class="math" data-tex="\(I_{12}=0\)">\(I_{12}=0\)</span> then gives <span class="math" data-tex="\(D^2=3B\)">\(D^2=3B\)</span>. The remaining degree-18 equation is a nonzero scalar times <span class="math" data-tex="\(B^3D(9B+D^2)=0\)">\(B^3D(9B+D^2)=0\)</span>; hence <span class="math" data-tex="\(D=0\)">\(D=0\)</span>, contradicting <span class="math" data-tex="\(B\ne0\)">\(B\ne0\)</span>. Therefore <span class="math" data-tex="\(B=0\)">\(B=0\)</span>.</p>
+<p>If instead <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, then <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, and <span class="math" data-tex="\(I_9=I_{15}=0\)">\(I_9=I_{15}=0\)</span> give
+<span class="math math-display" data-tex="\[
+B=\frac{2D^2}{45},\qquad A^2=\frac{42}{125}B^2D.
+\]">\[
+B=\frac{2D^2}{45},\qquad A^2=\frac{42}{125}B^2D.
+\]</span>
+After these substitutions the numerator of <span class="math" data-tex="\(-34828517376I_{12}\)">\(-34828517376I_{12}\)</span> is <span class="math" data-tex="\(5216D^6/375\)">\(5216D^6/375\)</span>. Thus <span class="math" data-tex="\(D=B=0\)">\(D=B=0\)</span>, then <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, a contradiction. We have proved <span class="math" data-tex="\(A=B=C=0\)">\(A=B=C=0\)</span> in this case. The form has multiplicity at least three at <span class="math" data-tex="\((0,1,0)\)">\((0,1,0)\)</span>, and weights <span class="math" data-tex="\((1,-2,1)\)">\((1,-2,1)\)</span> give the required limit.</p>
+<p>Finally, if <span class="math" data-tex="\(s=t=0\)">\(s=t=0\)</span>, the equations of degrees 3, 6 and 12 give
+<span class="math math-display" data-tex="\[
+C=0,\qquad AE=0,\qquad BD=0;
+\]">\[
+C=0,\qquad AE=0,\qquad BD=0;
+\]</span>
+the degree-nine equation gives <span class="math" data-tex="\(AD^2+B^2E=0\)">\(AD^2+B^2E=0\)</span>. If <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, then <span class="math" data-tex="\(E=D=0\)">\(E=D=0\)</span>. If <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, either <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, or <span class="math" data-tex="\(B\ne0\)">\(B\ne0\)</span> forces <span class="math" data-tex="\(E=D=0\)">\(E=D=0\)</span>. Consequently either <span class="math" data-tex="\(A=B=0\)">\(A=B=0\)</span> or <span class="math" data-tex="\(E=D=0\)">\(E=D=0\)</span>. Exchanging <span class="math" data-tex="\(x,y\)">\(x,y\)</span> reduces the second alternative to the first, and weights <span class="math" data-tex="\((1,-2,1)\)">\((1,-2,1)\)</span> again apply.</p>
+<p>These exhaust (39). Thus every common zero is in the null cone. Conversely, all seven expressions are homogeneous positive-degree invariants, so they vanish on the null cone by its definition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="independence-and-module-finiteness">Independence and module finiteness</h3>
+<p><strong>Theorem 10.4 (Dixmier's parameters).</strong> Over every characteristic-zero field the seven invariants (28), (29) and (32) are a homogeneous system of parameters for ternary quartics. Their degrees are <span class="math" data-tex="\(3,6,9,12,15,18,27\)">\(3,6,9,12,15,18,27\)</span>.</p>
+<p><strong>Proof.</strong> Lemma 10.3 and <a href="NOE-INV-02.html#5-equations-for-the-nullcone-give-module-finiteness">Hilbert's nullcone finiteness theorem, Theorem 5.1 in the second lesson</a>, prove module finiteness over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. It remains to prove algebraic independence; the following small exact witness does so without a quotient-dimension assumption.</p>
+<p>Order the ordinary coefficients by the monomials
+<span class="math math-display" data-tex="\[
+x^4,x^3y,x^3z,x^2y^2,x^2yz,x^2z^2,xy^3,
+xy^2z,xyz^2,xz^3,y^4,y^3z,y^2z^2,yz^3,z^4.
+\]">\[
+x^4,x^3y,x^3z,x^2y^2,x^2yz,x^2z^2,xy^3,
+xy^2z,xyz^2,xz^3,y^4,y^3z,y^2z^2,yz^3,z^4.
+\]</span>
+Evaluate at the integer coefficient vector
+<span class="math math-display" data-tex="\[
+(-4,-5,9,3,4,3,-7,7,2,-1,7,-1,-9,6,-3).
+\tag{43}
+\]">\[
+(-4,-5,9,3,4,3,-7,7,2,-1,7,-1,-9,6,-3).
+\tag{43}
+\]</span>
+Take the first seven columns of the seven-parameter Jacobian in parameter order <span class="math" data-tex="\(3,6,9,12,15,18,27\)">\(3,6,9,12,15,18,27\)</span>. All denominators of its rational entries are prime to 101. Reduction modulo 101 gives
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+63&amp;55&amp;90&amp;49&amp;92&amp;14&amp;37\\
+26&amp;43&amp;98&amp;63&amp;99&amp;97&amp;90\\
+90&amp;62&amp;48&amp;57&amp;87&amp;86&amp;36\\
+5&amp;98&amp;56&amp;87&amp;24&amp;69&amp;97\\
+17&amp;58&amp;82&amp;52&amp;33&amp;21&amp;60\\
+85&amp;70&amp;97&amp;88&amp;4&amp;96&amp;56\\
+54&amp;76&amp;72&amp;40&amp;70&amp;79&amp;23
+\end{pmatrix},
+\qquad\det\equiv47\pmod{101}.
+\tag{44}
+\]">\[
+\begin{pmatrix}
+63&amp;55&amp;90&amp;49&amp;92&amp;14&amp;37\\
+26&amp;43&amp;98&amp;63&amp;99&amp;97&amp;90\\
+90&amp;62&amp;48&amp;57&amp;87&amp;86&amp;36\\
+5&amp;98&amp;56&amp;87&amp;24&amp;69&amp;97\\
+17&amp;58&amp;82&amp;52&amp;33&amp;21&amp;60\\
+85&amp;70&amp;97&amp;88&amp;4&amp;96&amp;56\\
+54&amp;76&amp;72&amp;40&amp;70&amp;79&amp;23
+\end{pmatrix},
+\qquad\det\equiv47\pmod{101}.
+\tag{44}
+\]</span>
+The first six rows follow directly from the contractions. To specify the last row completely, form the matrices in (30), selecting the 36 domain monomials by the rule in Lemma 10.1 and taking the complementary nine rows of <span class="math" data-tex="\(K\)">\(K\)</span>. Both selected determinants are nonzero at (43). If their matrices are <span class="math" data-tex="\(M_0,K_0\)">\(M_0,K_0\)</span>, the derivative of their quotient in coefficient direction <span class="math" data-tex="\(h\)">\(h\)</span> is
+<span class="math math-display" data-tex="\[
+I_{27}(F)\left(\operatorname{tr}(M_0^{-1}M_h)
+-\operatorname{tr}(K_0^{-1}K_h)\right).
+\tag{45}
+\]">\[
+I_{27}(F)\left(\operatorname{tr}(M_0^{-1}M_h)
+-\operatorname{tr}(K_0^{-1}K_h)\right).
+\tag{45}
+\]</span>
+This is the usual determinant derivative, obtained by expanding <span class="math" data-tex="\(\det(I+tA)=1+t\operatorname{tr}A+O(t^2)\)">\(\det(I+tA)=1+t\operatorname{tr}A+O(t^2)\)</span>. Normalize the quotient by its value at the Fermat quartic, as in (32). The certificate <code>parameter-independence.json</code> contains the integer matrices, all rational derivatives and the minor; <code>check_quartic_independence.py</code> constructs them from (25)–(33). Thus (44) is an exact rational nonvanishing certificate, although its compact display uses a finite field.</p>
+<p>A nonzero Jacobian minor proves independence in characteristic zero. For completeness, choose a nonzero polynomial relation of least total degree, if one exists. Differentiate it after substitution of the seven parameters. Full Jacobian rank forces all its partial derivatives, after that same substitution, to vanish. Some partial derivative is a nonzero polynomial of smaller degree, contradicting the choice of the relation.</p>
+<p>Finally, descend finiteness from <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and extend to <span class="math" data-tex="\(k\)">\(k\)</span>. In each coefficient degree, invariants are the simultaneous kernels of the six rational elementary-matrix derivations for <span class="math" data-tex="\(\operatorname{SL}_3\)">\(\operatorname{SL}_3\)</span>; the unipotent argument of Theorem 2.1, with Gaussian elimination in dimension three, proves this criterion. These finite kernels commute with field extension. The quotient by the ideal generated by the seven parameters also commutes with field extension degree by degree. Its complex dimension is finite, so its rational dimension is finite. Choose homogeneous rational lifts of a basis of that quotient; the degree induction in the second lesson's Theorem 5.1 makes them module generators. Extending scalars gives finiteness over <span class="math" data-tex="\(k\)">\(k\)</span>, while (44), as a rational nonzero determinant, gives independence over every characteristic-zero field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The parameter theorem is complete. The next section proves the full generator theorem by identifying an explicit free module basis.</p>
+<h2 id="11-thirteen-generators-for-a-ternary-quartic">11. Thirteen generators for a ternary quartic</h2>
+<p>The parameter theorem leaves a concrete question: which elements generate its finite module? We answer it by constructing fifty independent elements with exactly the Hilbert-series degrees. This also proves algebra generation. The calculation below is an exact finite certificate, followed by an argument that applies in every degree and over every characteristic-zero field.</p>
+<p>Dixmier supplied the seven parameters; Ohno supplied the additional generators and the fifty monomials used below. Compare <a href="https://aeb.win.tue.nl/math/ohno-preprint.2007.05.15.pdf">Ohno's primary preprint, Definition 3.1 and Theorem 4.1</a>, and <a href="https://math.uni-paderborn.de/fileadmin/mathematik/AG-Computeralgebra/Publications-elsenhans/inv_pl_quart_5a.pdf">Elsenhans, Sections 5–6</a>. We give an independent proof and independently authored arithmetic certificates. Neither primary-paper software nor protected prose is reproduced.</p>
+<h3 id="six-additional-contractions">Six additional contractions</h3>
+<p>Retain the conventions and contractions (25)–(33). Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H&amp;=\frac{\det(F_{x_i x_j})}{1728},&amp;
+\xi&amp;=\frac{\sigma\mathbin{\lrcorner}H}{72},&amp;
+\pi&amp;=\frac{\rho\mathbin{\lrcorner}H}{2},\\
+\eta&amp;=\frac{\xi\mathbin{\lrcorner}\sigma}{12},&amp;
+\nu&amp;=\frac{\eta\mathbin{\lrcorner}\pi}{4}.
+\end{aligned}
+\tag{46}
+\]">\[
+\begin{aligned}
+H&amp;=\frac{\det(F_{x_i x_j})}{1728},&amp;
+\xi&amp;=\frac{\sigma\mathbin{\lrcorner}H}{72},&amp;
+\pi&amp;=\frac{\rho\mathbin{\lrcorner}H}{2},\\
+\eta&amp;=\frac{\xi\mathbin{\lrcorner}\sigma}{12},&amp;
+\nu&amp;=\frac{\eta\mathbin{\lrcorner}\pi}{4}.
+\end{aligned}
+\tag{46}
+\]</span>
+The Hessian <span class="math" data-tex="\(H\)">\(H\)</span> is a degree-three covariant of order six. Indeed, the chain rule transforms its Hessian matrix by congruence, and the two determinant factors equal one on the special linear group. The forms <span class="math" data-tex="\(\xi,\pi,\eta,\nu\)">\(\xi,\pi,\eta,\nu\)</span> have coefficient degrees <span class="math" data-tex="\(5,7,7,14\)">\(5,7,7,14\)</span> and orders <span class="math" data-tex="\(2,4,2,2\)">\(2,4,2,2\)</span>, respectively. The first and last are covariants, <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a contravariant, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a covariant. These types follow by alternating the dual spaces in each equivariant contraction.</p>
+<p>Write their quadratic matrices as <span class="math" data-tex="\(C,E,N\)">\(C,E,N\)</span>, so <span class="math" data-tex="\(\xi=x^{\mathsf t}Cx\)">\(\xi=x^{\mathsf t}Cx\)</span>, <span class="math" data-tex="\(\eta=u^{\mathsf t}Eu\)">\(\eta=u^{\mathsf t}Eu\)</span>, <span class="math" data-tex="\(\nu=x^{\mathsf t}Nx\)">\(\nu=x^{\mathsf t}Nx\)</span>. With <span class="math" data-tex="\(A,B\)">\(A,B\)</span> still the matrices of <span class="math" data-tex="\(\rho,\tau\)">\(\rho,\tau\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_9&amp;=\operatorname{tr}(CA),&amp;J_{12}&amp;=\operatorname{tr}(BE),\\
+J_{15}&amp;=\det C,&amp;J_{18}&amp;=\operatorname{tr}(\operatorname{adj}C\operatorname{adj}A),\\
+J_{21}^{a}&amp;=\det E,&amp;J_{21}^{b}&amp;=\operatorname{tr}(NE).
+\end{aligned}
+\tag{47}
+\]">\[
+\begin{aligned}
+J_9&amp;=\operatorname{tr}(CA),&amp;J_{12}&amp;=\operatorname{tr}(BE),\\
+J_{15}&amp;=\det C,&amp;J_{18}&amp;=\operatorname{tr}(\operatorname{adj}C\operatorname{adj}A),\\
+J_{21}^{a}&amp;=\det E,&amp;J_{21}^{b}&amp;=\operatorname{tr}(NE).
+\end{aligned}
+\tag{47}
+\]</span>
+The congruence and inverse-congruence calculation following (29) proves that all six are invariants. Their subscripts give their coefficient degrees. In particular, (46)–(47) are definitions over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, with no choice of roots or auxiliary normal form. The script <code>quartic_generators.py</code> implements precisely these contractions.</p>
+<h3 id="the-hilbert-series-in-all-degrees">The Hilbert series in all degrees</h3>
+<p><strong>Lemma 11.1 (the quartic character calculation).</strong> For <span class="math" data-tex="\(R=\mathbb C[c_{ijk}]^{\operatorname{SL}_3}\)">\(R=\mathbb C[c_{ijk}]^{\operatorname{SL}_3}\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Hilb}_R(t)=
+\frac{N(t)}{(1-t^3)(1-t^6)(1-t^9)(1-t^{12})(1-t^{15})(1-t^{18})(1-t^{27})},
+\tag{48}
+\]">\[
+\operatorname{Hilb}_R(t)=
+\frac{N(t)}{(1-t^3)(1-t^6)(1-t^9)(1-t^{12})(1-t^{15})(1-t^{18})(1-t^{27})},
+\tag{48}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N(t)={}&amp;1+t^9+t^{12}+t^{15}+2t^{18}+3t^{21}+2t^{24}+3t^{27}\\
+&amp;+4t^{30}+3t^{33}+4t^{36}+4t^{39}+3t^{42}+4t^{45}\\
+&amp;+3t^{48}+2t^{51}+3t^{54}+2t^{57}+t^{60}+t^{63}+t^{66}+t^{75}.
+\end{aligned}
+\tag{49}
+\]">\[
+\begin{aligned}
+N(t)={}&amp;1+t^9+t^{12}+t^{15}+2t^{18}+3t^{21}+2t^{24}+3t^{27}\\
+&amp;+4t^{30}+3t^{33}+4t^{36}+4t^{39}+3t^{42}+4t^{45}\\
+&amp;+3t^{48}+2t^{51}+3t^{54}+2t^{57}+t^{60}+t^{63}+t^{66}+t^{75}.
+\end{aligned}
+\tag{49}
+\]</span></p>
+<p><strong>Proof.</strong> Averaging over <span class="math" data-tex="\(\operatorname{SU}(3)\)">\(\operatorname{SU}(3)\)</span> projects each finite-dimensional coefficient-degree space onto its special-linear invariants, by the density and Reynolds arguments in <a href="NOE-INV-02.html#2-compact-averaging-and-the-unitary-trick">the second lesson, Sections 2–3</a>. The trace of that projection is its rank. A torus element <span class="math" data-tex="\(\operatorname{diag}(x,y,(xy)^{-1})\)">\(\operatorname{diag}(x,y,(xy)^{-1})\)</span> has the fifteen weights
+<span class="math math-display" data-tex="\[
+\mathcal W=\{(i-k,j-k):i,j,k\geq0,\ i+j+k=4\}.
+\]">\[
+\mathcal W=\{(i-k,j-k):i,j,k\geq0,\ i+j+k=4\}.
+\]</span>
+The symmetric-algebra character is therefore
+<span class="math" data-tex="\(\prod_{(a,b)\in\mathcal W}(1-tx^ay^b)^{-1}\)">\(\prod_{(a,b)\in\mathcal W}(1-tx^ay^b)^{-1}\)</span>, as follows by multiplying the geometric series of its fifteen generators. For <span class="math" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span> this series converges uniformly on the unit torus, so its averaging can be performed term by term.</p>
+<p>We justify the torus integration factor here. Every unitary matrix is unitarily diagonalizable. For matrices with three distinct eigenvalues, the map from a conjugating flag and a diagonal matrix to its conjugate is six to one, the six choices being the eigenvalue order. In the tangent plane corresponding to a pair of eigenvectors <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, its differential multiplies the two-dimensional real area by <span class="math" data-tex="\(|z_i-z_j|^2\)">\(|z_i-z_j|^2\)</span>: in complex coordinates it is multiplication by <span class="math" data-tex="\(z_j-z_i\)">\(z_j-z_i\)</span>. Thus its Jacobian is <span class="math" data-tex="\(\prod_{i&lt;j}|z_i-z_j|^2\)">\(\prod_{i&lt;j}|z_i-z_j|^2\)</span>. Matrices with a repeated eigenvalue form a lower-dimensional set and have measure zero; this follows also from the nonzero discriminant equation in real coordinate charts. Change of variables for the invariant volume consequently expresses a class-function integral as a constant times its torus integral with this Jacobian. The constant is determined by the integral of one. Expanding the determinant <span class="math" data-tex="\(\det(z_i^{j-1})\)">\(\det(z_i^{j-1})\)</span> and its conjugate shows that the constant term of their squared modulus is six: the only matching exponent permutations are equal permutations, modulo the common determinant-one exponent shift. Hence the normalized factor is <span class="math" data-tex="\(1/6\)">\(1/6\)</span>.</p>
+<p>Put
+<span class="math math-display" data-tex="\[
+D_+=(1-x^{-1}y)(1-x^{-2}y^{-1})(1-x^{-1}y^{-2}).
+\]">\[
+D_+=(1-x^{-1}y)(1-x^{-2}y^{-1})(1-x^{-1}y^{-2}).
+\]</span>
+The squared Vandermonde on the unit torus is the product of these factors and their inverses in <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. Direct expansion gives
+<span class="math" data-tex="\(\sum_{w\in S_3}wD_+=\prod_{i\ne j}(1-z_i/z_j)\)">\(\sum_{w\in S_3}wD_+=\prod_{i\ne j}(1-z_i/z_j)\)</span>.
+For a symmetric torus character, all six constant terms in that sum are equal. Therefore normalized averaging is the single constant term
+<span class="math math-display" data-tex="\[
+\operatorname{Hilb}_R(t)=\operatorname{CT}_{x,y}
+\frac{D_+}{\prod_{(a,b)\in\mathcal W}(1-tx^ay^b)}.
+\tag{50}
+\]">\[
+\operatorname{Hilb}_R(t)=\operatorname{CT}_{x,y}
+\frac{D_+}{\prod_{(a,b)\in\mathcal W}(1-tx^ay^b)}.
+\tag{50}
+\]</span>
+This establishes the counting formula without assuming a freeness or Cohen–Macaulay theorem.</p>
+<p>Here is a finite rational evaluation of (50), specifying the calculation rather than extrapolating a list of low degrees. First hold <span class="math" data-tex="\(|y|=1\)">\(|y|=1\)</span> and take <span class="math" data-tex="\(|t|\)">\(|t|\)</span> sufficiently small. The poles inside the <span class="math" data-tex="\(x\)">\(x\)</span>-circle come from the six weights
+<span class="math math-display" data-tex="\[
+(-1,-1),\ (-2,-3),\ (-1,2),\ (-2,0),\ (-3,-2),\ (-4,-4).
+\]">\[
+(-1,-1),\ (-2,-3),\ (-1,2),\ (-2,0),\ (-3,-2),\ (-4,-4).
+\]</span>
+There is no pole at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>: clearing the six negative-weight denominators gives total <span class="math" data-tex="\(x\)">\(x\)</span>-exponent thirteen, whereas <span class="math" data-tex="\(D_+\)">\(D_+\)</span> has negative exponent at most four; after the additional <span class="math" data-tex="\(1/x\)">\(1/x\)</span> the exponent is still at least eight. A weight <span class="math" data-tex="\((-r,b)\)">\((-r,b)\)</span> gives roots <span class="math" data-tex="\(\alpha^r=ty^b\)">\(\alpha^r=ty^b\)</span>. Its residue in the integrand divided by <span class="math" data-tex="\(x\)">\(x\)</span> is
+<span class="math math-display" data-tex="\[
+\frac1r\frac{D_+(\alpha,y)}{
+\prod_{(a,c)\ne(-r,b)}(1-t\alpha^ay^c)}.
+\tag{51}
+\]">\[
+\frac1r\frac{D_+(\alpha,y)}{
+\prod_{(a,c)\ne(-r,b)}(1-t\alpha^ay^c)}.
+\tag{51}
+\]</span>
+Sum these <span class="math" data-tex="\(r\)">\(r\)</span> residues by reducing the fraction in the algebra
+<span class="math" data-tex="\(\mathbb Q(t,y)[\alpha]/(\alpha^r-ty^b)\)">\(\mathbb Q(t,y)[\alpha]/(\alpha^r-ty^b)\)</span>.
+The normalized trace is its coefficient of <span class="math" data-tex="\(1\)">\(1\)</span>: the other basis monomials have trace zero. To compute that coefficient, form the <span class="math" data-tex="\(r\)">\(r\)</span>-by-<span class="math" data-tex="\(r\)">\(r\)</span> matrix for multiplication by the denominator, and solve against the numerator by Cramer's rule. All <span class="math" data-tex="\(r\)">\(r\)</span> are at most four. Negative powers are reduced using <span class="math" data-tex="\(\alpha^r=ty^b\)">\(\alpha^r=ty^b\)</span>; multiplication by a common monomial clears them. This is the complete algorithm in <code>quartic_hilbert.py</code>.</p>
+<p>Adding the six rational functions and cancelling their polynomial greatest common divisors gives a numerator with 294 terms and a denominator with 726 terms in <span class="math" data-tex="\(\mathbb Q[t,y]\)">\(\mathbb Q[t,y]\)</span>. Their full coefficients are in <code>hilbert-series.json</code>. Factoring the latter denominator, its factors whose roots tend to zero with <span class="math" data-tex="\(t\)">\(t\)</span> are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t-y,\quad t+y^2,\quad t^2-y,\quad t^2+ty+y^2,\\
+t^2+ty^2+y^4,\quad t^5-y^4,\quad t^5-y^7,\quad t^7-y^8,
+\end{gathered}
+\tag{52}
+\]">\[
+\begin{gathered}
+t-y,\quad t+y^2,\quad t^2-y,\quad t^2+ty+y^2,\\
+t^2+ty^2+y^4,\quad t^5-y^4,\quad t^5-y^7,\quad t^7-y^8,
+\end{gathered}
+\tag{52}
+\]</span>
+each once, and <span class="math" data-tex="\(t-y^2\)">\(t-y^2\)</span> twice. All other nonconstant <span class="math" data-tex="\(y\)">\(y\)</span>-factors have roots tending to infinity; factors involving only <span class="math" data-tex="\(t\)">\(t\)</span> create no <span class="math" data-tex="\(y\)">\(y\)</span>-pole. These assertions follow by substituting <span class="math" data-tex="\(y=t^{a/b}v\)">\(y=t^{a/b}v\)</span> in each binomial or homogeneous cyclotomic factor; they also determine the inside roots without numerical root finding.</p>
+<p>There is now also the residue at <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. If the first rational function is <span class="math" data-tex="\(n(y)/d(y)\)">\(n(y)/d(y)\)</span>, it is <span class="math" data-tex="\(n(0)/d(0)\)">\(n(0)/d(0)\)</span>. For any monic inside factor <span class="math" data-tex="\(q\)">\(q\)</span> of multiplicity <span class="math" data-tex="\(m\)">\(m\)</span>, write <span class="math" data-tex="\(d=q^m h\)">\(d=q^m h\)</span>, and put <span class="math" data-tex="\(\phi=n/(yh)\)">\(\phi=n/(yh)\)</span>. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the sum of the residues is the trace of <span class="math" data-tex="\(\phi/q&#x27;\)">\(\phi/q&#x27;\)</span> in <span class="math" data-tex="\(\mathbb Q(t)[y]/q\)">\(\mathbb Q(t)[y]/q\)</span>. For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, it is the trace of
+<span class="math math-display" data-tex="\[
+\frac{\phi&#x27;}{(q&#x27;)^2}-\frac{\phi q&#x27;&#x27;}{(q&#x27;)^3}.
+\tag{53}
+\]">\[
+\frac{\phi&#x27;}{(q&#x27;)^2}-\frac{\phi q&#x27;&#x27;}{(q&#x27;)^3}.
+\tag{53}
+\]</span>
+Indeed, at a simple root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, write <span class="math" data-tex="\(q=(y-\alpha)q_1\)">\(q=(y-\alpha)q_1\)</span>; then <span class="math" data-tex="\(q_1(\alpha)=q&#x27;(\alpha)\)">\(q_1(\alpha)=q&#x27;(\alpha)\)</span> and <span class="math" data-tex="\(q_1&#x27;(\alpha)=q&#x27;&#x27;(\alpha)/2\)">\(q_1&#x27;(\alpha)=q&#x27;&#x27;(\alpha)/2\)</span>. Taking the derivative of <span class="math" data-tex="\(\phi/q_1^2\)">\(\phi/q_1^2\)</span> proves (53). The derivative <span class="math" data-tex="\(\phi&#x27;\)">\(\phi&#x27;\)</span> is computed before reducing modulo <span class="math" data-tex="\(q\)">\(q\)</span>. Inverses are obtained by the polynomial Euclidean algorithm, and a trace is the sum of the diagonal entries of the multiplication matrix. These quotient degrees are at most eight.</p>
+<p>The script <code>quartic_hilbert_second.py</code> performs those nine traces and the zero residue with rational polynomial pairs. Its certificate contains every traced fraction. Adding them gives <span class="math" data-tex="\(n_*(t)/d_*(t)\)">\(n_*(t)/d_*(t)\)</span>; exact multiplication verifies
+<span class="math math-display" data-tex="\[
+n_*(t)\prod_{d\in\{3,6,9,12,15,18,27\}}(1-t^d)
+=d_*(t)N(t).
+\tag{54}
+\]">\[
+n_*(t)\prod_{d\in\{3,6,9,12,15,18,27\}}(1-t^d)
+=d_*(t)N(t).
+\tag{54}
+\]</span>
+Thus the rational functions are equal. Equality for sufficiently small complex <span class="math" data-tex="\(t\)">\(t\)</span> gives equality of their Taylor series and proves (48) in all degrees. This is the classical Hilbert series credited to Shioda in Ohno's Theorem 1.1; (50)–(54) give its full independent verification here. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="fifty-monomials-with-the-required-degrees">Fifty monomials with the required degrees</h3>
+<p>For this table only, abbreviate the six additional invariants by
+<span class="math math-display" data-tex="\[
+(u,v,w,r,s,h)=(J_9,J_{12},J_{15},J_{18},J_{21}^{a},J_{21}^{b}).
+\]">\[
+(u,v,w,r,s,h)=(J_9,J_{12},J_{15},J_{18},J_{21}^{a},J_{21}^{b}).
+\]</span>
+Each entry in the right column is a separate candidate secondary <span class="math" data-tex="\(W\)">\(W\)</span>. We order by increasing degree, with the displayed left-to-right order within each row. There are fifty entries, including one.</p>
+<table>
+<thead>
+<tr>
+<th>Degree</th>
+<th>Secondary monomials</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td>9</td>
+<td><span class="math" data-tex="\(u\)">\(u\)</span></td>
+</tr>
+<tr>
+<td>12</td>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+</tr>
+<tr>
+<td>15</td>
+<td><span class="math" data-tex="\(w\)">\(w\)</span></td>
+</tr>
+<tr>
+<td>18</td>
+<td><span class="math" data-tex="\(u^2,r\)">\(u^2,r\)</span></td>
+</tr>
+<tr>
+<td>21</td>
+<td><span class="math" data-tex="\(uv,s,h\)">\(uv,s,h\)</span></td>
+</tr>
+<tr>
+<td>24</td>
+<td><span class="math" data-tex="\(uw,v^2\)">\(uw,v^2\)</span></td>
+</tr>
+<tr>
+<td>27</td>
+<td><span class="math" data-tex="\(u^3,ur,vw\)">\(u^3,ur,vw\)</span></td>
+</tr>
+<tr>
+<td>30</td>
+<td><span class="math" data-tex="\(u^2v,us,uh,vr\)">\(u^2v,us,uh,vr\)</span></td>
+</tr>
+<tr>
+<td>33</td>
+<td><span class="math" data-tex="\(u^2w,uv^2,wr\)">\(u^2w,uv^2,wr\)</span></td>
+</tr>
+<tr>
+<td>36</td>
+<td><span class="math" data-tex="\(u^2r,uvw,ws,wh\)">\(u^2r,uvw,ws,wh\)</span></td>
+</tr>
+<tr>
+<td>39</td>
+<td><span class="math" data-tex="\(u^3v,u^2s,u^2h,rh\)">\(u^3v,u^2s,u^2h,rh\)</span></td>
+</tr>
+<tr>
+<td>42</td>
+<td><span class="math" data-tex="\(uwr,v^2r,sh\)">\(uwr,v^2r,sh\)</span></td>
+</tr>
+<tr>
+<td>45</td>
+<td><span class="math" data-tex="\(u^2vw,uws,uwh,vwr\)">\(u^2vw,uws,uwh,vwr\)</span></td>
+</tr>
+<tr>
+<td>48</td>
+<td><span class="math" data-tex="\(u^3s,u^3h,urh\)">\(u^3s,u^3h,urh\)</span></td>
+</tr>
+<tr>
+<td>51</td>
+<td><span class="math" data-tex="\(u^2wr,ush\)">\(u^2wr,ush\)</span></td>
+</tr>
+<tr>
+<td>54</td>
+<td><span class="math" data-tex="\(u^2ws,u^2wh,wrh\)">\(u^2ws,u^2wh,wrh\)</span></td>
+</tr>
+<tr>
+<td>57</td>
+<td><span class="math" data-tex="\(u^2rh,wsh\)">\(u^2rh,wsh\)</span></td>
+</tr>
+<tr>
+<td>60</td>
+<td><span class="math" data-tex="\(u^2sh\)">\(u^2sh\)</span></td>
+</tr>
+<tr>
+<td>63</td>
+<td><span class="math" data-tex="\(uwrh\)">\(uwrh\)</span></td>
+</tr>
+<tr>
+<td>66</td>
+<td><span class="math" data-tex="\(uwsh\)">\(uwsh\)</span></td>
+</tr>
+<tr>
+<td>75</td>
+<td><span class="math" data-tex="\(u^2wsh\)">\(u^2wsh\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Counting the entries of each degree gives exactly (49). The assertion that they are independent over the parameter ring is the substantive issue, proved next.</p>
+<h3 id="why-a-nonsingular-finite-field-fibre-proves-independence">Why a nonsingular finite-field fibre proves independence</h3>
+<p><strong>Lemma 11.2 (lifting an independence certificate).</strong> Let <span class="math" data-tex="\(q_1,\ldots,q_m\)">\(q_1,\ldots,q_m\)</span> and <span class="math" data-tex="\(W_1,\ldots,W_\ell\)">\(W_1,\ldots,W_\ell\)</span> be rational polynomials in <span class="math" data-tex="\(n\)">\(n\)</span> variables whose coefficient denominators are prime to a prime <span class="math" data-tex="\(p\)">\(p\)</span>. Suppose a finite reduced algebra over <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> supplies points all having the same <span class="math" data-tex="\(q\)">\(q\)</span>-tuple <span class="math" data-tex="\(c\in\mathbb F_p^m\)">\(c\in\mathbb F_p^m\)</span>. Suppose the <span class="math" data-tex="\(q\)">\(q\)</span>-Jacobian has rank <span class="math" data-tex="\(m\)">\(m\)</span> at every point, and the <span class="math" data-tex="\(\ell\)">\(\ell\)</span> functions <span class="math" data-tex="\(W_i\)">\(W_i\)</span> are linearly independent in that finite algebra. Then the <span class="math" data-tex="\(W_i\)">\(W_i\)</span> are linearly independent over <span class="math" data-tex="\(\mathbb Q[q_1,\ldots,q_m]\)">\(\mathbb Q[q_1,\ldots,q_m]\)</span>.</p>
+<p><strong>Proof.</strong> A squarefree polynomial quotient splits into a product of fields over a finite extension, by the Euclidean algorithm and the Chinese remainder identity. More generally the assumed reduced finite algebra splits into a product of copies of a finite extension: each finite field extension is separable because finite fields are perfect, as the Frobenius map is bijective. After adjoining all point coordinates, the evaluations of the <span class="math" data-tex="\(W_i\)">\(W_i\)</span> still have column rank <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Select <span class="math" data-tex="\(\ell\)">\(\ell\)</span> evaluation rows with a nonzero square determinant.</p>
+<p>We describe the elementary characteristic-zero lifting step. Let <span class="math" data-tex="\(\mathbb Z_p=\varprojlim_a\mathbb Z/p^a\mathbb Z\)">\(\mathbb Z_p=\varprojlim_a\mathbb Z/p^a\mathbb Z\)</span>. Successive residues give a unique base-<span class="math" data-tex="\(p\)">\(p\)</span> expansion; its first nonzero digit shows that this is a domain of characteristic zero, with units precisely the elements nonzero modulo <span class="math" data-tex="\(p\)">\(p\)</span>. For a finite residue field <span class="math" data-tex="\(\mathbb F_{p^f}\)">\(\mathbb F_{p^f}\)</span>, choose its monic irreducible defining polynomial and any monic integer lift. The algebra obtained by adjoining a root over <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is complete, free of rank <span class="math" data-tex="\(f\)">\(f\)</span>, and has that residue field. Every element not divisible by <span class="math" data-tex="\(p\)">\(p\)</span> is a unit: lift its residue inverse and invert <span class="math" data-tex="\(1-pa\)">\(1-pa\)</span> by the convergent geometric series. Factoring out the first nonzero <span class="math" data-tex="\(p\)">\(p\)</span>-power from each element shows that products of nonzero elements are nonzero. Denote this complete characteristic-zero domain by <span class="math" data-tex="\(O\)">\(O\)</span>.</p>
+<p>At each selected point choose <span class="math" data-tex="\(m\)">\(m\)</span> variable directions with invertible Jacobian minor, and lift the other coordinates arbitrarily to <span class="math" data-tex="\(O\)">\(O\)</span>. Choose the same integer lift <span class="math" data-tex="\(\widetilde c\)">\(\widetilde c\)</span> of the primary tuple for every point. If a current coordinate tuple solves <span class="math" data-tex="\(q=\widetilde c\)">\(q=\widetilde c\)</span> modulo <span class="math" data-tex="\(p^a\)">\(p^a\)</span>, a correction <span class="math" data-tex="\(p^a v\)">\(p^a v\)</span> solves it modulo <span class="math" data-tex="\(p^{a+1}\)">\(p^{a+1}\)</span> by the invertible Jacobian and the first-order polynomial expansion. Start modulo <span class="math" data-tex="\(p\)">\(p\)</span> and repeat. Completeness gives a tuple with <span class="math" data-tex="\(q=\widetilde c\)">\(q=\widetilde c\)</span> exactly. The chosen minor remains a unit.</p>
+<p>Now introduce independent formal variables <span class="math" data-tex="\(z_1,\ldots,z_m\)">\(z_1,\ldots,z_m\)</span> and solve
+<span class="math" data-tex="\(q=\widetilde c+z\)">\(q=\widetilde c+z\)</span> over <span class="math" data-tex="\(O[[z_1,\ldots,z_m]]\)">\(O[[z_1,\ldots,z_m]]\)</span> at each of these lifted points. The same linear correction, this time by total formal degree, constructs the solution recursively: after degrees below <span class="math" data-tex="\(a\)">\(a\)</span> have been solved, the degree-<span class="math" data-tex="\(a\)">\(a\)</span> error is removed by the invertible constant Jacobian. The square evaluation matrix of <span class="math" data-tex="\(W\)">\(W\)</span> has unit constant determinant, since its reduction modulo <span class="math" data-tex="\(p\)">\(p\)</span> is the selected nonzero determinant. It is therefore invertible over this formal power-series ring.</p>
+<p>If <span class="math" data-tex="\(\sum f_i(q)W_i=0\)">\(\sum f_i(q)W_i=0\)</span> with <span class="math" data-tex="\(f_i\in\mathbb Q[T_1,\ldots,T_m]\)">\(f_i\in\mathbb Q[T_1,\ldots,T_m]\)</span>, clear their common integer denominator. Evaluation at all these formal tuples and inversion of the matrix gives <span class="math" data-tex="\(f_i(\widetilde c+z)=0\)">\(f_i(\widetilde c+z)=0\)</span>. Translation by a constant is injective on polynomial rings over the characteristic-zero domain <span class="math" data-tex="\(O\)">\(O\)</span>; hence all <span class="math" data-tex="\(f_i\)">\(f_i\)</span> vanish. This proves independence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The full-rank Jacobian hypothesis is essential. A rank calculation in an arbitrary specialized fibre alone need not justify a characteristic-zero conclusion.</p>
+<h3 id="the-exact-fibre-and-its-rank-certificate">The exact fibre and its rank certificate</h3>
+<p>Work modulo <span class="math" data-tex="\(101\)">\(101\)</span>, where all contraction denominators are units. Use the family
+<span class="math math-display" data-tex="\[
+F_{A,B,D}=xyz^2+(x^3+y^3)z+Ay^4+Bxy^3-\frac92x^2y^2+Dx^3y+\frac9{4A}x^4.
+\tag{55}
+\]">\[
+F_{A,B,D}=xyz^2+(x^3+y^3)z+Ay^4+Bxy^3-\frac92x^2y^2+Dx^3y+\frac9{4A}x^4.
+\tag{55}
+\]</span>
+Here <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>; the contraction table for (34) gives <span class="math" data-tex="\(I_3=I_6=0\)">\(I_3=I_6=0\)</span>. Let <span class="math" data-tex="\(q_d=I_d(F_{A,B,D})\)">\(q_d=I_d(F_{A,B,D})\)</span>. Take the numerator <span class="math" data-tex="\(p_0\)">\(p_0\)</span> of <span class="math" data-tex="\(q_9\)">\(q_9\)</span> and the numerator <span class="math" data-tex="\(p_1\)">\(p_1\)</span> of <span class="math" data-tex="\(q_{18}\)">\(q_{18}\)</span>, in reduced rational form with integer coefficients. Require
+<span class="math math-display" data-tex="\[
+p_0=p_1=0,\qquad q_{12}^5-q_{15}^4=0,\qquad q_{12}q_{15}\ne0.
+\tag{56}
+\]">\[
+p_0=p_1=0,\qquad q_{12}^5-q_{15}^4=0,\qquad q_{12}q_{15}\ne0.
+\tag{56}
+\]</span>
+The complete reduced numerators and denominators are supplied by <code>case-2.1.json</code> and the substitution <span class="math" data-tex="\(E=9/(4A)\)">\(E=9/(4A)\)</span>, so (28)–(29) also define them without relying on that table. Put <span class="math" data-tex="\(a=q_{12}/q_{15}\)">\(a=q_{12}/q_{15}\)</span>. Then (56) gives <span class="math" data-tex="\(a^4q_{12}=a^5q_{15}=1\)">\(a^4q_{12}=a^5q_{15}=1\)</span>. Choose <span class="math" data-tex="\(\lambda^3=a\)">\(\lambda^3=a\)</span> over a finite extension and scale <span class="math" data-tex="\(F\)">\(F\)</span> by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Its seven parameter values become
+<span class="math math-display" data-tex="\[
+(I_3,I_6,I_9,I_{12},I_{15},I_{18},I_{27})=(0,0,0,1,1,0,0).
+\tag{57}
+\]">\[
+(I_3,I_6,I_9,I_{12},I_{15},I_{18},I_{27})=(0,0,0,1,1,0,0).
+\tag{57}
+\]</span>
+For a secondary of degree <span class="math" data-tex="\(d\)">\(d\)</span>, its scaled value is <span class="math" data-tex="\(a^{d/3}W(F)\)">\(a^{d/3}W(F)\)</span>; every displayed secondary degree is divisible by three, so no root choice enters these values.</p>
+<p>Here are the precise finite data and checks. The generator certificate manifest links the full polynomial arrays and their hashes. <code>fibre-secondary-rank.json</code> supplies a monic polynomial <span class="math" data-tex="\(G(A)\)">\(G(A)\)</span> of degree 300, together with coefficient arrays for <span class="math" data-tex="\(B=b(A)\)">\(B=b(A)\)</span> and <span class="math" data-tex="\(D=d(A)\)">\(D=d(A)\)</span> in
+<span class="math math-display" data-tex="\[
+\mathcal A=\mathbb F_{101}[A]/(G).
+\tag{58}
+\]">\[
+\mathcal A=\mathbb F_{101}[A]/(G).
+\tag{58}
+\]</span>
+Array index <span class="math" data-tex="\(i\)">\(i\)</span> is the coefficient of <span class="math" data-tex="\(A^i\)">\(A^i\)</span>; every coefficient is an integer between zero and 100. Direct polynomial remainder calculations verify (56). They also verify that <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(q_{12}\)">\(q_{12}\)</span>, <span class="math" data-tex="\(q_{15}\)">\(q_{15}\)</span>, and the following two polynomials are units in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J&amp;=\det\frac{\partial(p_0,p_1,q_{12}^5-q_{15}^4)}{\partial(A,B,D)},\\
+\Delta_h&amp;=\operatorname{Res}_U(h,h&#x27;),\\
+h(U)&amp;=AU^6-9U^5-4ADU^4+20AU^3-4ABU^2-4A^2U+A.
+\end{aligned}
+\tag{59}
+\]">\[
+\begin{aligned}
+J&amp;=\det\frac{\partial(p_0,p_1,q_{12}^5-q_{15}^4)}{\partial(A,B,D)},\\
+\Delta_h&amp;=\operatorname{Res}_U(h,h&#x27;),\\
+h(U)&amp;=AU^6-9U^5-4ADU^4+20AU^3-4ABU^2-4A^2U+A.
+\end{aligned}
+\tag{59}
+\]</span>
+For every claimed unit the certificate includes its inverse array; multiplication and reduction give one. It additionally checks the unit coefficient of the linear <span class="math" data-tex="\(D\)">\(D\)</span>-remainder used in constructing the fibre. The inverse of <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span> proves that <span class="math" data-tex="\(G\)">\(G\)</span> is squarefree, so (58) is reduced.</p>
+<p>The construction is short enough to reproduce. Eliminate <span class="math" data-tex="\(D\)">\(D\)</span> from <span class="math" data-tex="\(p_0,p_1\)">\(p_0,p_1\)</span> by a Sylvester resultant. After discarding the factor <span class="math" data-tex="\(A^2\)">\(A^2\)</span>, its degree in <span class="math" data-tex="\(B\)">\(B\)</span> is twelve. Division of <span class="math" data-tex="\(p_1\)">\(p_1\)</span> by <span class="math" data-tex="\(p_0\)">\(p_0\)</span> gives a remainder linear in <span class="math" data-tex="\(D\)">\(D\)</span>, so <span class="math" data-tex="\(D=-M(A,B)/L(A,B)\)">\(D=-M(A,B)/L(A,B)\)</span> in <span class="math" data-tex="\(\mathbb F_{101}(A)[B]/R\)">\(\mathbb F_{101}(A)[B]/R\)</span>. Reduce <span class="math" data-tex="\(q_{12}^5-q_{15}^4\)">\(q_{12}^5-q_{15}^4\)</span> in this degree-twelve algebra and take the determinant of its multiplication matrix. The resulting rational norm has numerator degree 396 and denominator degree 198 in <span class="math" data-tex="\(A\)">\(A\)</span>. A Euclidean remainder of degree one in <span class="math" data-tex="\(B\)">\(B\)</span> gives its rational coordinate. Taking the squarefree numerator, removing denominator factors and removing zeros of the two normalizing invariants leaves exactly degree 300. Original-equation remainders, <span class="math" data-tex="\(J\)">\(J\)</span>, and <span class="math" data-tex="\(\Delta_h\)">\(\Delta_h\)</span> then pass directly. <code>quartic_fibre.py</code> implements this construction; the verifier does not assume its elimination steps are correct, because it recomputes all retained equations and units directly in (58).</p>
+<p>We explain why these unit checks supply the Jacobian hypothesis of Lemma 11.2. First allow the coefficient <span class="math" data-tex="\(C\)">\(C\)</span> of <span class="math" data-tex="\(x^2y^2\)">\(x^2y^2\)</span>, the coefficient <span class="math" data-tex="\(E\)">\(E\)</span> of <span class="math" data-tex="\(x^4\)">\(x^4\)</span>, and the scalar <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to vary. In the distinct-tangent family,
+<span class="math" data-tex="\(I_3=(2C+9)/144\)">\(I_3=(2C+9)/144\)</span>; at <span class="math" data-tex="\(C=-9/2\)">\(C=-9/2\)</span>,
+<span class="math" data-tex="\(I_6=(4AE-9)/82944\)">\(I_6=(4AE-9)/82944\)</span>.
+Thus <span class="math" data-tex="\(I_3,I_6\)">\(I_3,I_6\)</span> successively solve for <span class="math" data-tex="\(C,E\)">\(C,E\)</span>, with derivatives <span class="math" data-tex="\(1/72\)">\(1/72\)</span> and <span class="math" data-tex="\(A/20736\)">\(A/20736\)</span>, both units. On that slice, <span class="math" data-tex="\(p_0,p_1\)">\(p_0,p_1\)</span> are unit multiples of <span class="math" data-tex="\(q_9,q_{18}\)">\(q_9,q_{18}\)</span> at their zeros. The unit <span class="math" data-tex="\(J\)">\(J\)</span> says that their differentials together with
+<span class="math" data-tex="\(5q_{12}^4dq_{12}-4q_{15}^3dq_{15}\)">\(5q_{12}^4dq_{12}-4q_{15}^3dq_{15}\)</span> have rank three in <span class="math" data-tex="\(A,B,D\)">\(A,B,D\)</span>. Scalar variation adds the vector proportional to <span class="math" data-tex="\((12q_{12},15q_{15})\)">\((12q_{12},15q_{15})\)</span> in the <span class="math" data-tex="\(q_{12},q_{15}\)">\(q_{12},q_{15}\)</span> coordinates. It is nonzero, and the last displayed differential annihilates it by (56). Consequently the four functions <span class="math" data-tex="\(I_9,I_{18},I_{12},I_{15}\)">\(I_9,I_{18},I_{12},I_{15}\)</span> have rank four after the scalar direction is added. Together with <span class="math" data-tex="\(I_3,I_6\)">\(I_3,I_6\)</span>, their rank is six.</p>
+<p>Finally, (55) has an ordinary node at <span class="math" data-tex="\((0:0:1)\)">\((0:0:1)\)</span>, since its affine quadratic term is <span class="math" data-tex="\(xy\)">\(xy\)</span>. There is no other singularity on <span class="math" data-tex="\(xy=0\)">\(xy=0\)</span>, because there <span class="math" data-tex="\(F_z=x^3+y^3\)">\(F_z=x^3+y^3\)</span> is nonzero away from that point. On the chart <span class="math" data-tex="\(y=1,x=U\ne0\)">\(y=1,x=U\ne0\)</span>, completing the square in <span class="math" data-tex="\(z\)">\(z\)</span> gives the binary polynomial <span class="math" data-tex="\(h(U)/A\)">\(h(U)/A\)</span>. A further singularity is equivalent to a repeated root of <span class="math" data-tex="\(h\)">\(h\)</span>. Hence the unit <span class="math" data-tex="\(\Delta_h\)">\(\Delta_h\)</span> proves that this is the unique singular point.</p>
+<p>At a quartic with a unique ordinary node, the discriminant has nonzero differential in the <span class="math" data-tex="\(z^4\)">\(z^4\)</span>-coefficient direction. Locally solve the two affine critical-point equations by the invertible <span class="math" data-tex="\(xy\)">\(xy\)</span>-Hessian. Euler's equation makes the remaining derivative equation four times the value of <span class="math" data-tex="\(F\)">\(F\)</span> at that critical point. Changing the <span class="math" data-tex="\(z^4\)">\(z^4\)</span> coefficient changes that value to first order by one. In the incidence construction of Lemma 10.1, the unique common point and its two transverse equations give a smooth local hypersurface with precisely this equation. The resultant is its reduced defining polynomial, so this local factor has multiplicity one.</p>
+<p>For clarity, the same resultant argument applies over <span class="math" data-tex="\(\overline{\mathbb F}_{101}\)">\(\overline{\mathbb F}_{101}\)</span>. The incidence bundle is irreducible of dimension 29; the pair <span class="math" data-tex="\(x^3-z^3,y^3-z^3\)">\(x^3-z^3,y^3-z^3\)</span> still has nine distinct transverse points, so the multidegree and reduced simple-zero calculation are unchanged. The determinant quotient in (31) is integral before normalization: in the unique factorization ring of integer coefficient polynomials, a denominator would divide every maximal minor of <span class="math" data-tex="\(K\)">\(K\)</span>. No nonconstant polynomial can do so by the coprime-pair argument, and no integer prime can do so because at the three pure cubes a complementary minor is one. Thus the normalized quotient reduces to the same resultant modulo 101. Only the normalization <span class="math" data-tex="\(4^{27}\)">\(4^{27}\)</span> is inverted. This proves the asserted nonzero discriminant derivative also in the field used by the certificate.</p>
+<p>The six family directions preserve the fixed node and thus annihilate <span class="math" data-tex="\(dI_{27}\)">\(dI_{27}\)</span>. The extra <span class="math" data-tex="\(z^4\)">\(z^4\)</span> direction supplies the seventh rank. The full seven-parameter Jacobian therefore has rank seven at every point of the reduced fibre (58), including after scaling by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p>Evaluate the fifty scaled secondaries in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and write their coefficient vectors as columns of a <span class="math" data-tex="\(300\)">\(300\)</span>-by-<span class="math" data-tex="\(50\)">\(50\)</span> matrix <span class="math" data-tex="\(V\)">\(V\)</span>. The complete columns are in <code>fibre-secondary-rank.json</code>. Its rows numbered
+<span class="math math-display" data-tex="\[
+0,3,6,\ldots,147
+\]">\[
+0,3,6,\ldots,147
+\]</span>
+form a square minor, with
+<span class="math math-display" data-tex="\[
+\det V_{\{0,3,\ldots,147\},\{1,\ldots,50\}}=70\quad\text{in }\mathbb F_{101}.
+\tag{60}
+\]">\[
+\det V_{\{0,3,\ldots,147\},\{1,\ldots,50\}}=70\quad\text{in }\mathbb F_{101}.
+\tag{60}
+\]</span>
+These are zero-based polynomial coefficient indices; the columns use the monomial table's order. <code>verify_quartic_generators.py</code> reconstructs (55), all twelve contractions, all original equations and unit witnesses, the fifty columns, and (60). Gaussian elimination modulo 101 uses only row operations and inverses of nonzero field elements. The nonzero determinant proves independence in the reduced algebra; it is an exact calculation, not a probabilistic sample or a numerical tolerance test. Lemma 11.2 and the full Jacobian just proved give independence of all fifty monomials over the rational parameter ring.</p>
+<h3 id="completion-of-the-generator-theorem">Completion of the generator theorem</h3>
+<p><strong>Theorem 11.3 (Dixmier–Ohno generation).</strong> Over every field <span class="math" data-tex="\(k\)">\(k\)</span> of characteristic zero,
+<span class="math math-display" data-tex="\[
+k[c_{ijk}]^{\operatorname{SL}_3}=
+k[I_3,I_6,I_9,I_{12},I_{15},I_{18},I_{27},
+J_9,J_{12},J_{15},J_{18},J_{21}^{a},J_{21}^{b}].
+\tag{61}
+\]">\[
+k[c_{ijk}]^{\operatorname{SL}_3}=
+k[I_3,I_6,I_9,I_{12},I_{15},I_{18},I_{27},
+J_9,J_{12},J_{15},J_{18},J_{21}^{a},J_{21}^{b}].
+\tag{61}
+\]</span>
+Moreover the fifty displayed secondary monomials are a free basis over the polynomial ring in the seven parameters.</p>
+<p><strong>Proof.</strong> Work first over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Theorem 10.4 makes the parameter ring <span class="math" data-tex="\(P\)">\(P\)</span> a polynomial ring. Lemma 11.2 and (55)–(60) make the graded map
+<span class="math" data-tex="\(\bigoplus_{W}P[-\deg W]\to R\)">\(\bigoplus_{W}P[-\deg W]\to R\)</span>, sending a basis element to <span class="math" data-tex="\(W\)">\(W\)</span>, injective. The table and Lemma 11.1 give exactly the same Hilbert series for its domain and codomain. Each graded piece is finite-dimensional; an injective map between spaces of equal finite dimension is surjective. Therefore <span class="math" data-tex="\(R=\bigoplus_W PW\)">\(R=\bigoplus_W PW\)</span>. Every <span class="math" data-tex="\(W\)">\(W\)</span> is a monomial in the six additional invariants, so (61) follows.</p>
+<p>For any characteristic-zero extension, the invariant spaces commute with scalar extension degree by degree, by the finite rational derivation kernels established in Theorem 10.4. The same is true of the displayed free <span class="math" data-tex="\(P\)">\(P\)</span>-module. Extending the rational equality proves both assertions over <span class="math" data-tex="\(k\)">\(k\)</span>. Thus no external degree bound, unproved regular-sequence assertion or specialization shortcut is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the full thirteen-generator theorem and identifies a concrete finite module basis. The course's ternary-quartic proof obligations are now complete. The certificate package includes the all-degree character calculation as well as the finite independence calculation, and its reproduction instructions keep the two logical steps separate.</p>
+<h2 id="exercises-and-solutions">Exercises and solutions</h2>
+<p><strong>Exercise 1 — A quadratic by two methods.</strong> Prove that <span class="math" data-tex="\(h=ac-b^2\)">\(h=ac-b^2\)</span> is invariant under <span class="math" data-tex="\(\operatorname{SL}_2\)">\(\operatorname{SL}_2\)</span> and has determinant weight two. Use both the differential criterion and a matrix computation.</p>
+<p><strong>Solution.</strong> With no variable dependence, (2) becomes
+<span class="math math-display" data-tex="\[
+E=-a\partial_b-2b\partial_c,\qquad
+F=-2b\partial_a-c\partial_b.
+\]">\[
+E=-a\partial_b-2b\partial_c,\qquad
+F=-2b\partial_a-c\partial_b.
+\]</span>
+Consequently <span class="math" data-tex="\(Eh=-a(-2b)-2ba=0\)">\(Eh=-a(-2b)-2ba=0\)</span> and
+<span class="math" data-tex="\(Fh=-2bc-c(-2b)=0\)">\(Fh=-2bc-c(-2b)=0\)</span>. Theorem 2.1 gives special-linear invariance. The coefficient degree is two and order zero, so Proposition 1.1 gives weight two. Directly, inverse substitution sends <span class="math" data-tex="\(Q\)">\(Q\)</span> to <span class="math" data-tex="\(g^{-\mathsf t}Qg^{-1}\)">\(g^{-\mathsf t}Qg^{-1}\)</span>, and taking its determinant gives
+<span class="math" data-tex="\(h(g\cdot f)=\det(g)^{-2}h(f)\)">\(h(g\cdot f)=\det(g)^{-2}h(f)\)</span>.</p>
+<p><strong>Exercise 2 — Two cubic root types.</strong> Compute <span class="math" data-tex="\(H,T,\Delta\)">\(H,T,\Delta\)</span> for <span class="math" data-tex="\(x^3+y^3\)">\(x^3+y^3\)</span> and <span class="math" data-tex="\(x^2y\)">\(x^2y\)</span>, and verify (13).</p>
+<p><strong>Solution.</strong> The values from (12) are <span class="math" data-tex="\(2xy,x^3-y^3,-2\)">\(2xy,x^3-y^3,-2\)</span> in the first case. Their substitution into (13) gives the expansion displayed in Section 5. In the second case <span class="math" data-tex="\(a=c=d=0,b=1/3\)">\(a=c=d=0,b=1/3\)</span>, so <span class="math" data-tex="\(H=-2x^2/9\)">\(H=-2x^2/9\)</span>. Formula (4), with orders three and two, gives <span class="math" data-tex="\(T=2x^3/27\)">\(T=2x^3/27\)</span>; since <span class="math" data-tex="\(H\)">\(H\)</span> is a square, <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span>. Thus <span class="math" data-tex="\(2T^2+H^3=(8/729-8/729)x^6=0\)">\(2T^2+H^3=(8/729-8/729)x^6=0\)</span>. Formula (14) explains the discriminant difference.</p>
+<p><strong>Exercise 3 — Balancing four coordinates.</strong> Prove Dickson's lemma and find the minimal generators of
+<span class="math" data-tex="\(\{v\in\mathbb N^4:v_1+v_2=v_3+v_4\}\)">\(\{v\in\mathbb N^4:v_1+v_2=v_3+v_4\}\)</span>.</p>
+<p><strong>Solution.</strong> The nondecreasing-subsequence induction in Lemma 8.1 is a proof of Dickson's lemma for every <span class="math" data-tex="\(m\)">\(m\)</span>. For this monoid the minimal nonzero solutions are
+<span class="math math-display" data-tex="\[
+(1,0,1,0),\quad(1,0,0,1),\quad
+(0,1,1,0),\quad(0,1,0,1).
+\]">\[
+(1,0,1,0),\quad(1,0,0,1),\quad
+(0,1,1,0),\quad(0,1,0,1).
+\]</span>
+If a solution is nonzero, some coordinate on each side of the equality is positive. Subtract the corresponding displayed vector, preserving nonnegativity and the equality. Continue until all coordinates vanish. Each displayed vector has coordinate sum two, the smallest possible nonzero sum, so none can be decomposed or omitted.</p>
+<p><strong>Exercise 4 — Signs and a quartic Hessian.</strong> Prove the vanishing of odd self-transvectants and compute the general quartic Hessian.</p>
+<p><strong>Solution.</strong> Exchange the two variable pairs in <span class="math" data-tex="\(\Omega^r\)">\(\Omega^r\)</span>; each <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> changes sign, so
+<span class="math" data-tex="\((Q,P)_r=(-1)^r(P,Q)_r\)">\((Q,P)_r=(-1)^r(P,Q)_r\)</span>. For <span class="math" data-tex="\(P=Q\)">\(P=Q\)</span> and odd <span class="math" data-tex="\(r\)">\(r\)</span>, this says that the transvectant equals its negative; characteristic zero forces zero. For a quartic,
+<span class="math math-display" data-tex="\[
+(f,f)_2=\frac{f_{xx}f_{yy}-f_{xy}^2}{72}.
+\]">\[
+(f,f)_2=\frac{f_{xx}f_{yy}-f_{xy}^2}{72}.
+\]</span>
+Indeed (4) has factor <span class="math" data-tex="\(1/144\)">\(1/144\)</span> and numerator
+<span class="math" data-tex="\(2f_{xx}f_{yy}-2f_{xy}^2\)">\(2f_{xx}f_{yy}-2f_{xy}^2\)</span>.
+Now
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_{xx}&amp;=12(ax^2+2bxy+cy^2),\\
+f_{xy}&amp;=12(bx^2+2cxy+dy^2),\\
+f_{yy}&amp;=12(cx^2+2dxy+ey^2).
+\end{aligned}
+\]">\[
+\begin{aligned}
+f_{xx}&amp;=12(ax^2+2bxy+cy^2),\\
+f_{xy}&amp;=12(bx^2+2cxy+dy^2),\\
+f_{yy}&amp;=12(cx^2+2dxy+ey^2).
+\end{aligned}
+\]</span>
+Multiplying these quadratic polynomials gives exactly (16).</p>
+<p><strong>Exercise 5 — Two quartic bracket expressions.</strong> Evaluate <span class="math" data-tex="\([ab]^4\)">\([ab]^4\)</span> and <span class="math" data-tex="\([ab]^2[ac]^2[bc]^2\)">\([ab]^2[ac]^2[bc]^2\)</span> for letters assigned to the same quartic.</p>
+<p><strong>Solution.</strong> Distinguish the symbol letters from the coefficient names <span class="math" data-tex="\(a,b,c,d,e\)">\(a,b,c,d,e\)</span>. The first expansion gives
+<span class="math math-display" data-tex="\[
+U([ab]^4)=
+\sum_{r=0}^4(-1)^r\binom4r A_rA_{4-r}
+=2ae-8bd+6c^2=2i.
+\]">\[
+U([ab]^4)=
+\sum_{r=0}^4(-1)^r\binom4r A_rA_{4-r}
+=2ae-8bd+6c^2=2i.
+\]</span>
+The second evaluation is an invariant of coefficient degree three. Since the quartic invariant ring is <span class="math" data-tex="\(k[i,j]\)">\(k[i,j]\)</span>, it is a scalar multiple of <span class="math" data-tex="\(j\)">\(j\)</span>. To determine the scalar, use <span class="math" data-tex="\(f=6x^2y^2\)">\(f=6x^2y^2\)</span>, so only <span class="math" data-tex="\(A_2=1\)">\(A_2=1\)</span> is nonzero and <span class="math" data-tex="\(j=-1\)">\(j=-1\)</span>. The coefficient of
+<span class="math" data-tex="\(a_1^2a_2^2b_1^2b_2^2c_1^2c_2^2\)">\(a_1^2a_2^2b_1^2b_2^2c_1^2c_2^2\)</span>
+in the bracket product is
+<span class="math math-display" data-tex="\[
+\sum_{r=0}^2(-1)^r\binom2r^3=1-8+1=-6.
+\]">\[
+\sum_{r=0}^2(-1)^r\binom2r^3=1-8+1=-6.
+\]</span>
+To obtain this sum, select the second-index exponents <span class="math" data-tex="\(r,2-r,r\)">\(r,2-r,r\)</span> in the three brackets <span class="math" data-tex="\([ab]^2,[ac]^2,[bc]^2\)">\([ab]^2,[ac]^2,[bc]^2\)</span>; these are exactly the choices giving degree two in each coordinate of each letter. Hence
+<span class="math" data-tex="\(U([ab]^2[ac]^2[bc]^2)=6j\)">\(U([ab]^2[ac]^2[bc]^2)=6j\)</span>.</p>
+<h2 id="sources-and-current-proof-scope">Sources and current proof scope</h2>
+<p>The action, infinitesimal criterion, small complete systems, root discriminants, symbolic evaluation and integer-solution lemma have been proved above. General Gordan finiteness uses the precise Reynolds-and-Hilbert proof in <a href="NOE-INV-02.html">Forms in several variables and Hilbert finiteness</a>. General symbolic completeness uses the vector and mixed-vector proofs in <a href="NOE-INV-04.html">Polarization and invariants of many vectors</a>; Theorem 4.2 there also proves the full bracket relation ideal over every coefficient ring. These are actual written proofs. The ternary-quartic parameter theorem has its full proof in Section 10, and Section 11 proves the thirteen-generator theorem over every characteristic-zero field.</p>
+<p>For classical comparison, Kung and Rota's <em>The invariant theory of binary forms</em>, Sections 2.2–2.3 and 6.4–6.6, treats umbral evaluation, integer-solution finiteness and the cubic system; its explicit conventions differ from ours. Dolgachev's <em>Classical Algebraic Geometry: A Modern View</em>, Section 1.5.1, Examples 1.5.1–1.5.2, is a privately consulted check of the cubic and quartic formulas, and Section 6.4 records the earlier state of the ternary-quartic problem. No protected prose or figures from these references is included. The historical statements were checked against Noether's own original journal pages and the English edition.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NOE-INV-02.html">Forms in several variables and Hilbert finiteness →</a></span></nav>
+<p class="small source-link"><a href="src/NOE-INV-01.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-INV">Repository</a></nav>
+</footer>
+</body>
+</html>

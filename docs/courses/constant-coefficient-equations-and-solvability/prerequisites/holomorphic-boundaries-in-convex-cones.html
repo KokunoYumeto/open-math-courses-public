@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Holomorphic boundaries in convex cones</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="holomorphic-boundaries-in-convex-cones">Holomorphic boundaries in convex cones</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>In several variables a boundary can be approached through many imaginary directions. A proof along each fixed ray does not by itself prove that the same limit exists as the ray moves toward the edge of a cone. Convexity supplies a useful replacement: add one fixed interior direction to every approach, then use a test polynomial along that direction. The resulting integral has a bound independent of the approaching direction.</p>
+<p>We use <a href="cauchy-kernels-and-boundary-limits.html">Cauchy kernels and distributional boundary limits</a> for the one-variable finite-test calculation and circle formula, and <a href="referenced-prerequisite-statements.html#reference-c19edc49b22d">Gluing holomorphic sides</a> for one-variable zero-boundary uniqueness. <a href="https://math.sci.uwo.ca/~shafikov/papers/MathZ2017.pdf">Chakrabarti and Shafikov 2017</a>, Introduction and §2.6, provides primary human context for distributional holomorphic boundaries and their relation to weak Cauchy–Riemann derivatives. We prove the convex-cone boundary theorem directly below. Entry prerequisites are ordinary convex geometry, multivariable calculus and dominated convergence.</p>
+<p>Basic references are Chakrabarti and Shafikov’s paper cited below and Avi Zeff’s <em>Lecture 12: Pompeiu’s formula</em> (2026), for the complex integral identity.</p>
+<h2 id="an-interior-direction-separates-a-proper-cone-from-its-opposite">An interior direction separates a proper cone from its opposite</h2>
+<p>Let <span class="math" data-tex="\(\Gamma\subset\mathbb R^n\)">\(\Gamma\subset\mathbb R^n\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, be a nonempty open convex cone. By a cone we mean that <span class="math" data-tex="\(t\Gamma=\Gamma\)">\(t\Gamma=\Gamma\)</span> for every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Convexity and scaling give <span class="math" data-tex="\(\Gamma+\Gamma\subset\Gamma\)">\(\Gamma+\Gamma\subset\Gamma\)</span>. There are two cases. If <span class="math" data-tex="\(0\in\Gamma\)">\(0\in\Gamma\)</span>, a ball about zero lies in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and scaling that ball gives <span class="math" data-tex="\(\Gamma=\mathbb R^n\)">\(\Gamma=\mathbb R^n\)</span>. Otherwise we call the cone proper here; this word does not require its closure to contain no lines.</p>
+<p><strong>Lemma 1.1 (one uniform separation bound).</strong> If <span class="math" data-tex="\(0\notin\Gamma\)">\(0\notin\Gamma\)</span> and <span class="math" data-tex="\(Y\in\Gamma\)">\(Y\in\Gamma\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+d=\operatorname{dist}(-Y,\overline\Gamma)&gt;0,
+\qquad |y+tY|\geq dt
+\quad(y\in\Gamma,\ t&gt;0).
+\tag{1.1}
+\]">\[
+d=\operatorname{dist}(-Y,\overline\Gamma)&gt;0,
+\qquad |y+tY|\geq dt
+\quad(y\in\Gamma,\ t&gt;0).
+\tag{1.1}
+\]</span>
+<p>In particular <span class="math" data-tex="\(t\leq d^{-1}|y+tY|\)">\(t\leq d^{-1}|y+tY|\)</span>, uniformly for every direction <span class="math" data-tex="\(y\)">\(y\)</span> in the cone.</p>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(\Gamma+\overline\Gamma\subset\Gamma\)">\(\Gamma+\overline\Gamma\subset\Gamma\)</span>. To see this, fix <span class="math" data-tex="\(v\in\Gamma\)">\(v\in\Gamma\)</span> and <span class="math" data-tex="\(w\in\overline\Gamma\)">\(w\in\overline\Gamma\)</span>. Choose a ball about <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and a sequence <span class="math" data-tex="\(w_j\in\Gamma\)">\(w_j\in\Gamma\)</span> tending to <span class="math" data-tex="\(w\)">\(w\)</span>. For large <span class="math" data-tex="\(j\)">\(j\)</span>, the vector <span class="math" data-tex="\(v+w-w_j\)">\(v+w-w_j\)</span> lies in that ball. Adding <span class="math" data-tex="\(w_j\)">\(w_j\)</span> shows that <span class="math" data-tex="\(v+w\in\Gamma\)">\(v+w\in\Gamma\)</span>. If <span class="math" data-tex="\(-Y\in\overline\Gamma\)">\(-Y\in\overline\Gamma\)</span>, this property would give <span class="math" data-tex="\(0=Y-Y\in\Gamma\)">\(0=Y-Y\in\Gamma\)</span>, a contradiction. Since <span class="math" data-tex="\(\overline\Gamma\)">\(\overline\Gamma\)</span> is closed, a point outside it has a positive distance from it. Finally <span class="math" data-tex="\(y/t\in\Gamma\)">\(y/t\in\Gamma\)</span>, so <span class="math" data-tex="\(|y+tY|=t|y/t+Y|\geq td\)">\(|y+tY|=t|y/t+Y|\geq td\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the first quadrant in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, taking <span class="math" data-tex="\(Y=(1,1)\)">\(Y=(1,1)\)</span> gives <span class="math" data-tex="\(d=\sqrt2\)">\(d=\sqrt2\)</span>. The bound remains valid for <span class="math" data-tex="\(y=(r,r^2)\)">\(y=(r,r^2)\)</span> as <span class="math" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>, although the direction of this vector tends to the edge of the quadrant.</p>
+<h2 id="one-test-polynomial-handles-every-direction-of-approach">One test polynomial handles every direction of approach</h2>
+<p>Let <span class="math" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be open, let <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>, and consider the tube</p>
+<span class="math math-display" data-tex="\[
+T_\Gamma(X,\gamma)=
+\{x+iy:x\in X,\ y\in\Gamma,\ |y|&lt;\gamma\}.
+\tag{2.1}
+\]">\[
+T_\Gamma(X,\gamma)=
+\{x+iy:x\in X,\ y\in\Gamma,\ |y|&lt;\gamma\}.
+\tag{2.1}
+\]</span>
+<p>We use holomorphic functions on this open subset of <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. The calculations require the ordinary Cauchy–Riemann relations in each coordinate, and their local power-series consequence is recalled in Section 3. Suppose that for an integer <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|f(x+iy)|\leq C|y|^{-N}
+\quad(x+iy\in T_\Gamma(X,\gamma),\ y\ne0).
+\tag{2.2}
+\]">\[
+|f(x+iy)|\leq C|y|^{-N}
+\quad(x+iy\in T_\Gamma(X,\gamma),\ y\ne0).
+\tag{2.2}
+\]</span>
+<p><strong>Theorem 2.1 (full cone boundary limit).</strong> For every <span class="math" data-tex="\(\phi\in C_c^{N+1}(X)\)">\(\phi\in C_c^{N+1}(X)\)</span>, the limit</p>
+<span class="math math-display" data-tex="\[
+\langle f_0,\phi\rangle
+=\lim_{y\in\Gamma,\ |y|\to0}
+\int_X f(x+iy)\phi(x)\,dx
+\tag{2.3}
+\]">\[
+\langle f_0,\phi\rangle
+=\lim_{y\in\Gamma,\ |y|\to0}
+\int_X f(x+iy)\phi(x)\,dx
+\tag{2.3}
+\]</span>
+<p>exists. All directions and paths inside <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> are allowed. On smooth tests this is a distribution of order at most <span class="math" data-tex="\(N+1\)">\(N+1\)</span>. The pairings have a common <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span> norm bound on each fixed compact support for every sufficiently small <span class="math" data-tex="\(y\in\Gamma\)">\(y\in\Gamma\)</span>.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(0\notin\Gamma\)">\(0\notin\Gamma\)</span>. Fix any <span class="math" data-tex="\(Y\in\Gamma\)">\(Y\in\Gamma\)</span>, take its constant <span class="math" data-tex="\(d\)">\(d\)</span> from Lemma 1.1, and choose <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span> with <span class="math" data-tex="\(T|Y|&lt;\gamma/2\)">\(T|Y|&lt;\gamma/2\)</span>. Restrict approaching vectors to <span class="math" data-tex="\(|y|&lt;\gamma/2\)">\(|y|&lt;\gamma/2\)</span> and, if necessary, to a still smaller neighborhood ensuring <span class="math" data-tex="\(|y|+T|Y|&lt;\gamma\)">\(|y|+T|Y|&lt;\gamma\)</span>. Put <span class="math" data-tex="\(D_Y=Y\cdot\nabla_x\)">\(D_Y=Y\cdot\nabla_x\)</span> and define</p>
+<span class="math math-display" data-tex="\[
+\Phi_Y(x,t)=\sum_{j=0}^N
+\frac{(it)^j}{j!}D_Y^j\phi(x).
+\tag{2.4}
+\]">\[
+\Phi_Y(x,t)=\sum_{j=0}^N
+\frac{(it)^j}{j!}D_Y^j\phi(x).
+\tag{2.4}
+\]</span>
+<p>The imaginary path <span class="math" data-tex="\(y+tY\)">\(y+tY\)</span> stays in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and within the tube height for <span class="math" data-tex="\(0\leq t\leq T\)">\(0\leq t\leq T\)</span>. Real support stays in <span class="math" data-tex="\(X\)">\(X\)</span>. Differentiation of
+<span class="math" data-tex="\(A_y(t)=\int_X f(x+i(y+tY))\Phi_Y(x,t)\,dx\)">\(A_y(t)=\int_X f(x+i(y+tY))\Phi_Y(x,t)\,dx\)</span>, using the directional Cauchy–Riemann equation and compact-support integration by parts, gives the exact cancellation</p>
+<span class="math math-display" data-tex="\[
+A_y&#x27;(t)=
+-\frac{i^{N+1}t^N}{N!}
+\int_X f(x+i(y+tY))D_Y^{N+1}\phi(x)\,dx.
+\tag{2.5}
+\]">\[
+A_y&#x27;(t)=
+-\frac{i^{N+1}t^N}{N!}
+\int_X f(x+i(y+tY))D_Y^{N+1}\phi(x)\,dx.
+\tag{2.5}
+\]</span>
+<p>Indeed its integrand after integration by parts is <span class="math" data-tex="\(f(\partial_t\Phi_Y-iD_Y\Phi_Y)\)">\(f(\partial_t\Phi_Y-iD_Y\Phi_Y)\)</span>; every term but the last cancels. This computation uses only derivatives through <span class="math" data-tex="\(N+1\)">\(N+1\)</span>, so it applies to the finite-regularity tests stated in the theorem. Integrating (2.5) yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_X f(x+iy)\phi(x)\,dx
+={}&amp;\int_X f(x+i(y+TY))\Phi_Y(x,T)\,dx\\
+&amp;+\frac{i^{N+1}}{N!}\int_0^T t^N
+\int_X f(x+i(y+tY))D_Y^{N+1}\phi(x)\,dx\,dt.
+\end{aligned}
+\tag{2.6}
+\]">\[
+\begin{aligned}
+\int_X f(x+iy)\phi(x)\,dx
+={}&amp;\int_X f(x+i(y+TY))\Phi_Y(x,T)\,dx\\
+&amp;+\frac{i^{N+1}}{N!}\int_0^T t^N
+\int_X f(x+i(y+tY))D_Y^{N+1}\phi(x)\,dx\,dt.
+\end{aligned}
+\tag{2.6}
+\]</span>
+<p>By (2.2) and Lemma 1.1,</p>
+<span class="math math-display" data-tex="\[
+t^N|f(x+i(y+tY))|\leq Cd^{-N}.
+\tag{2.7}
+\]">\[
+t^N|f(x+i(y+tY))|\leq Cd^{-N}.
+\tag{2.7}
+\]</span>
+<p>This is a common integrable majorant on the test support times <span class="math" data-tex="\((0,T)\)">\((0,T)\)</span>, independent of the direction of <span class="math" data-tex="\(y\)">\(y\)</span>. At each positive <span class="math" data-tex="\(t\)">\(t\)</span>, continuity of <span class="math" data-tex="\(f\)">\(f\)</span> gives convergence to <span class="math" data-tex="\(f(x+itY)\)">\(f(x+itY)\)</span>. The top term converges to its value at <span class="math" data-tex="\(iTY\)">\(iTY\)</span>, a fixed interior height. Dominated convergence thus proves (2.3), with the explicit formula</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle f_0,\phi\rangle
+={}&amp;\int_X f(x+iTY)\Phi_Y(x,T)\,dx\\
+&amp;+\frac{i^{N+1}}{N!}\int_0^T t^N
+\int_X f(x+itY)D_Y^{N+1}\phi(x)\,dx\,dt.
+\end{aligned}
+\tag{2.8}
+\]">\[
+\begin{aligned}
+\langle f_0,\phi\rangle
+={}&amp;\int_X f(x+iTY)\Phi_Y(x,T)\,dx\\
+&amp;+\frac{i^{N+1}}{N!}\int_0^T t^N
+\int_X f(x+itY)D_Y^{N+1}\phi(x)\,dx\,dt.
+\end{aligned}
+\tag{2.8}
+\]</span>
+<p>To make the order bound explicit, let the support lie in a compact <span class="math" data-tex="\(K\Subset X\)">\(K\Subset X\)</span>, write <span class="math" data-tex="\(|K|\)">\(|K|\)</span> for its Lebesgue volume and put <span class="math" data-tex="\(b=\sum_j|Y_j|\)">\(b=\sum_j|Y_j|\)</span>. The multinomial theorem gives <span class="math" data-tex="\(\|D_Y^j\phi\|_\infty\leq b^j\|\phi\|_{C^{N+1}}\)">\(\|D_Y^j\phi\|_\infty\leq b^j\|\phi\|_{C^{N+1}}\)</span>. The top height has magnitude at least <span class="math" data-tex="\(dT\)">\(dT\)</span>. Formula (2.6) therefore gives</p>
+<span class="math math-display" data-tex="\[
+\left|\int_X f(x+iy)\phi(x)\,dx\right|
+\leq C|K|\left(
+(dT)^{-N}\sum_{j=0}^N\frac{(Tb)^j}{j!}
++\frac{Td^{-N}b^{N+1}}{N!}
+\right)\|\phi\|_{C^{N+1}}.
+\tag{2.9}
+\]">\[
+\left|\int_X f(x+iy)\phi(x)\,dx\right|
+\leq C|K|\left(
+(dT)^{-N}\sum_{j=0}^N\frac{(Tb)^j}{j!}
++\frac{Td^{-N}b^{N+1}}{N!}
+\right)\|\phi\|_{C^{N+1}}.
+\tag{2.9}
+\]</span>
+<p>For <span class="math" data-tex="\(N=0\)">\(N=0\)</span> every zeroth power is one. This proves the uniform test bound and continuity of the limit. Neither <span class="math" data-tex="\(Y\)">\(Y\)</span> nor <span class="math" data-tex="\(T\)">\(T\)</span> affects the resulting distribution, since (2.8) is the limit of the same actual pairings. The argument proves the limit for every sequence or path tending to zero in the cone; equivalently, its epsilon-neighborhood definition follows by contradicting it with a sequence.</p>
+<p>If <span class="math" data-tex="\(0\in\Gamma\)">\(0\in\Gamma\)</span>, then <span class="math" data-tex="\(\Gamma=\mathbb R^n\)">\(\Gamma=\mathbb R^n\)</span>, and the tube already contains <span class="math" data-tex="\(X\)">\(X\)</span> at real height. Smoothness makes <span class="math" data-tex="\(f(x+iy)\)">\(f(x+iy)\)</span> converge uniformly to <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> on every compact real support. Its boundary is the ordinary order-zero trace. This proves the remaining case and the claimed weaker order bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.2 (moving tests).</strong> If <span class="math" data-tex="\(\phi_y\)">\(\phi_y\)</span> have a common compact support and converge to <span class="math" data-tex="\(\phi\)">\(\phi\)</span> in <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span> as <span class="math" data-tex="\(y\in\Gamma\)">\(y\in\Gamma\)</span> tends to zero, then their pairings in (2.3) tend to <span class="math" data-tex="\(\langle f_0,\phi\rangle\)">\(\langle f_0,\phi\rangle\)</span>.</p>
+<p><strong>Proof.</strong> The common bound (2.9), or the local order-zero bound in the full-space case, makes the pairing with <span class="math" data-tex="\(\phi_y-\phi\)">\(\phi_y-\phi\)</span> tend to zero. Theorem 2.1 handles the fixed test. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Bounds local in the real coordinate also suffice for local limits, provided each slightly larger compact real neighborhood has one bound valid for <strong>all</strong> small imaginary directions in the cone. The proof can then be applied to its tests, and uniqueness of limits glues the local distributions.</p>
+<h2 id="a-zero-boundary-cannot-conceal-a-holomorphic-function">A zero boundary cannot conceal a holomorphic function</h2>
+<p>We first record the elementary several-variable identity principle used below. On a polydisk whose closure lies in a holomorphic domain, apply the one-variable Cauchy formula successively in each variable. The integrations are over a compact product of circles, so Fubini applies to their bounded continuous integrands. Expanding each denominator by its geometric series gives</p>
+<span class="math math-display" data-tex="\[
+f(z)=\sum_{\alpha\in\mathbb N^n}
+c_\alpha(z-a)^\alpha,
+\qquad |c_\alpha|\leq M\prod_{j=1}^n r_j^{-\alpha_j},
+\tag{3.1}
+\]">\[
+f(z)=\sum_{\alpha\in\mathbb N^n}
+c_\alpha(z-a)^\alpha,
+\qquad |c_\alpha|\leq M\prod_{j=1}^n r_j^{-\alpha_j},
+\tag{3.1}
+\]</span>
+<p>where <span class="math" data-tex="\(M\)">\(M\)</span> bounds <span class="math" data-tex="\(f\)">\(f\)</span> on the circle product and <span class="math" data-tex="\(r_j\)">\(r_j\)</span> are its radii. On every smaller polydisk, the product of the geometric majorants is summable; the same holds after any fixed number of derivatives, using the resulting polynomial factors in <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Thus the series and all of its differentiated series converge there uniformly, and <span class="math" data-tex="\(c_\alpha=\partial_z^\alpha f(a)/\alpha!\)">\(c_\alpha=\partial_z^\alpha f(a)/\alpha!\)</span>. This argument also proves the power-series conclusion directly for a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> function satisfying each coordinate Cauchy–Riemann equation, without assuming a separate Hartogs theorem.</p>
+<p><strong>Lemma 3.1 (identity principle in the tube).</strong> A holomorphic function on a connected open complex domain which is zero on a nonempty open subset is zero everywhere.</p>
+<p><strong>Proof.</strong> The set where every complex derivative, including the function, vanishes is closed by continuity. Formula (3.1) makes it open, because all coefficients vanish at each of its points. It is nonempty by the given open zero set. Connectedness makes it the whole domain. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (uniqueness, including local boundary vanishing).</strong> Under (2.2), if <span class="math" data-tex="\(f_0=0\)">\(f_0=0\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, then <span class="math" data-tex="\(f=0\)">\(f=0\)</span> throughout the tube. If <span class="math" data-tex="\(f_0\)">\(f_0\)</span> vanishes on a nonempty open <span class="math" data-tex="\(X_0\subset X\)">\(X_0\subset X\)</span>, then <span class="math" data-tex="\(f=0\)">\(f=0\)</span> over <span class="math" data-tex="\(X_0\)">\(X_0\)</span>. If in addition <span class="math" data-tex="\(X\)">\(X\)</span> is connected, it follows that <span class="math" data-tex="\(f=0\)">\(f=0\)</span> throughout the tube and <span class="math" data-tex="\(f_0=0\)">\(f_0=0\)</span> throughout <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Proof.</strong> First take a proper cone and assume the boundary is zero on <span class="math" data-tex="\(X\)">\(X\)</span>. Fix any <span class="math" data-tex="\(y\in\Gamma\)">\(y\in\Gamma\)</span> with <span class="math" data-tex="\(|y|&lt;\gamma\)">\(|y|&lt;\gamma\)</span>, and any <span class="math" data-tex="\(\phi\in C_c^\infty(X)\)">\(\phi\in C_c^\infty(X)\)</span>. Choose <span class="math" data-tex="\(d_0&gt;0\)">\(d_0&gt;0\)</span> so that translating its support by any vector of length less than <span class="math" data-tex="\(d_0\)">\(d_0\)</span> stays compactly inside <span class="math" data-tex="\(X\)">\(X\)</span>. Define a function of one complex variable,</p>
+<span class="math math-display" data-tex="\[
+Q(w)=\int_X\phi(x)f(x+wy)\,dx,
+\quad |operatorname{Re}w|&lt;\frac{d_0}{|y|},
+\quad 0&lt;\operatorname{Im}w&lt;\frac\gamma{|y|}.
+\tag{3.2}
+\]">\[
+Q(w)=\int_X\phi(x)f(x+wy)\,dx,
+\quad |operatorname{Re}w|&lt;\frac{d_0}{|y|},
+\quad 0&lt;\operatorname{Im}w&lt;\frac\gamma{|y|}.
+\tag{3.2}
+\]</span>
+<p>The support and height remain in the tube. On compact subsets of this rectangle, differentiation under the integral is justified by smoothness and a common compact integration support; hence <span class="math" data-tex="\(Q\)">\(Q\)</span> is holomorphic. Its growth is bounded by <span class="math" data-tex="\(C\|\phi\|_{L^1}|y|^{-N}(\operatorname{Im}w)^{-N}\)">\(C\|\phi\|_{L^1}|y|^{-N}(\operatorname{Im}w)^{-N}\)</span>.</p>
+<p>For real <span class="math" data-tex="\(a\)">\(a\)</span> in the indicated interval and <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, change the real variable to obtain</p>
+<span class="math math-display" data-tex="\[
+Q(a+ib)=\int_X\phi(t-ay)f(t+iby)\,dt.
+\tag{3.3}
+\]">\[
+Q(a+ib)=\int_X\phi(t-ay)f(t+iby)\,dt.
+\tag{3.3}
+\]</span>
+<p>For each fixed <span class="math" data-tex="\(a\)">\(a\)</span>, Theorem 2.1 makes this tend to <span class="math" data-tex="\(\langle f_0,\phi(\cdot-ay)\rangle=0\)">\(\langle f_0,\phi(\cdot-ay)\rangle=0\)</span>. On each compact interval of <span class="math" data-tex="\(a\)">\(a\)</span>, these translated tests have a common compact support and uniformly bounded <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span> norms. The common estimate (2.9) therefore bounds <span class="math" data-tex="\(Q(a+ib)\)">\(Q(a+ib)\)</span> uniformly there as <span class="math" data-tex="\(b\downarrow0\)">\(b\downarrow0\)</span>. Dominated convergence shows that the one-variable distributional boundary of <span class="math" data-tex="\(Q\)">\(Q\)</span> is zero on every compact test, including the <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span> tests of the one-variable boundary theorem. The zero-boundary uniqueness theorem in the gluing lesson applies on this rectangle and gives <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>.</p>
+<p>In particular <span class="math" data-tex="\(w=i\)">\(w=i\)</span> is inside the rectangle, since <span class="math" data-tex="\(|y|&lt;\gamma\)">\(|y|&lt;\gamma\)</span>. Thus <span class="math" data-tex="\(\int_X\phi(x)f(x+iy)\,dx=0\)">\(\int_X\phi(x)f(x+iy)\,dx=0\)</span> for every smooth compact <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. The continuous function <span class="math" data-tex="\(f(\cdot+iy)\)">\(f(\cdot+iy)\)</span> is zero everywhere. Since <span class="math" data-tex="\(y\)">\(y\)</span> was arbitrary, <span class="math" data-tex="\(f\)">\(f\)</span> is zero throughout the tube.</p>
+<p>For the full-space cone, the boundary is <span class="math" data-tex="\(f|_X\)">\(f|_X\)</span>. If this is zero, every real derivative on <span class="math" data-tex="\(X\)">\(X\)</span> is zero as well. The Cauchy–Riemann equations identify its complex derivatives with those real derivatives. Formula (3.1) therefore makes <span class="math" data-tex="\(f\)">\(f\)</span> zero on a complex neighborhood of every point of <span class="math" data-tex="\(X\)">\(X\)</span>. For each component of <span class="math" data-tex="\(X\)">\(X\)</span>, the corresponding tube is connected: the component is polygonally connected, and the imaginary ball is convex. Lemma 3.1 proves zero on that component’s tube. This gives the global assertion for the full-space case too.</p>
+<p>If the boundary vanishes only on <span class="math" data-tex="\(X_0\)">\(X_0\)</span>, restrict the entire argument to that open set; it proves zero over <span class="math" data-tex="\(X_0\)">\(X_0\)</span>. When <span class="math" data-tex="\(X\)">\(X\)</span> is connected, it is polygonally connected as any connected open Euclidean set is: the points reachable from a given point by polygonal paths form a relatively open and closed subset. The set <span class="math" data-tex="\(\Gamma\cap\{|y|&lt;\gamma\}\)">\(\Gamma\cap\{|y|&lt;\gamma\}\)</span> is convex and connected. Consequently the real-coordinate product describing the tube is connected. Its nonempty open zero region over <span class="math" data-tex="\(X_0\)">\(X_0\)</span> then propagates by Lemma 3.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof reduces uniqueness to a scalar holomorphic function only after establishing the uniform cone test bound. Pointwise limits for individual translated tests without that bound would not justify the dominated convergence step in (3.3).</p>
+<h2 id="a-slanted-pole-and-a-growth-hypothesis-that-cannot-be-dropped">A slanted pole and a growth hypothesis that cannot be dropped</h2>
+<p>In the first quadrant <span class="math" data-tex="\(\Gamma=\{y_1&gt;0,y_2&gt;0\}\)">\(\Gamma=\{y_1&gt;0,y_2&gt;0\}\)</span>, consider <span class="math" data-tex="\(f(z_1,z_2)=(z_1+z_2)^{-m}\)">\(f(z_1,z_2)=(z_1+z_2)^{-m}\)</span>, <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>. Since <span class="math" data-tex="\(y_1+y_2\geq|y|\)">\(y_1+y_2\geq|y|\)</span>, it satisfies (2.2) with <span class="math" data-tex="\(N=m\)">\(N=m\)</span>. Use real coordinates <span class="math" data-tex="\(s=x_1+x_2\)">\(s=x_1+x_2\)</span>, <span class="math" data-tex="\(t=x_2\)">\(t=x_2\)</span>, whose inverse has absolute Jacobian one. For a compact smooth test put</p>
+<span class="math math-display" data-tex="\[
+\psi(s)=\int_{\mathbb R}\phi(s-t,t)\,dt.
+\tag{4.1}
+\]">\[
+\psi(s)=\int_{\mathbb R}\phi(s-t,t)\,dt.
+\tag{4.1}
+\]</span>
+<p>Then the height pairing is the one-variable pairing of <span class="math" data-tex="\((s+i(y_1+y_2))^{-m}\)">\((s+i(y_1+y_2))^{-m}\)</span> with <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Its boundary is therefore the upper finite-part pole from the Cauchy-kernel lesson, acting on this <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the concentrated term is <span class="math" data-tex="\(-i\pi\int\phi(-t,t)\,dt\)">\(-i\pi\int\phi(-t,t)\,dt\)</span>, on the slanted line <span class="math" data-tex="\(x_1+x_2=0\)">\(x_1+x_2=0\)</span>. Its ordinary Euclidean arclength element is <span class="math" data-tex="\(\sqrt2\,dt\)">\(\sqrt2\,dt\)</span>, so the measure in that concentrated term is arclength divided by <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>. No unchecked general distributional pullback is needed for this coordinate calculation.</p>
+<p>By contrast, on the full half-space cone <span class="math" data-tex="\(\{y_n&gt;0\}\)">\(\{y_n&gt;0\}\)</span>, the function <span class="math" data-tex="\(1/z_n\)">\(1/z_n\)</span> has the bound <span class="math" data-tex="\(|f|\leq y_n^{-1}\)">\(|f|\leq y_n^{-1}\)</span>, but not a bound <span class="math" data-tex="\(C|y|^{-1}\)">\(C|y|^{-1}\)</span> valid for all directions when <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> and the real base includes <span class="math" data-tex="\(x_n=0\)">\(x_n=0\)</span>. Tangential imaginary components can dominate <span class="math" data-tex="\(y_n\)">\(y_n\)</span>. This function can have boundary values, but the radial growth hypothesis of Theorem 2.1 cannot be justified by its normal-component bound alone.</p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (basic: cone separation).</strong> For the first quadrant and <span class="math" data-tex="\(Y=(2,1)\)">\(Y=(2,1)\)</span>, compute <span class="math" data-tex="\(\operatorname{dist}(-Y,\overline\Gamma)\)">\(\operatorname{dist}(-Y,\overline\Gamma)\)</span>. Check (1.1) directly, and explain why the proof does not require the cone closure to contain no lines.</p>
+<p><strong>Exercise 2 (intermediate: a direction tending to an edge).</strong> Let <span class="math" data-tex="\(y(r)=(r,r^3)\)">\(y(r)=(r,r^3)\)</span> in the first quadrant. For <span class="math" data-tex="\(f(z_1,z_2)=1/(z_1+z_2)\)">\(f(z_1,z_2)=1/(z_1+z_2)\)</span>, express its height pairing using (4.1), and give its boundary limit. Identify the parameter that tends to zero in the one-variable pole formula.</p>
+<p><strong>Exercise 3 (advanced: the directional cancellation).</strong> Expand (2.4) for <span class="math" data-tex="\(N=2\)">\(N=2\)</span> and verify <span class="math" data-tex="\(\partial_t\Phi_Y-iD_Y\Phi_Y=-i^3t^2D_Y^3\phi/2\)">\(\partial_t\Phi_Y-iD_Y\Phi_Y=-i^3t^2D_Y^3\phi/2\)</span>. Derive (2.6), keeping the top-minus-bottom integration direction and its resulting plus sign.</p>
+<p><strong>Exercise 4 (intermediate: normal growth versus radial growth).</strong> In dimension two, take the half-space cone <span class="math" data-tex="\(y_2&gt;0\)">\(y_2&gt;0\)</span>, <span class="math" data-tex="\(f(z)=1/z_2\)">\(f(z)=1/z_2\)</span>, and real coordinate <span class="math" data-tex="\(x_2=0\)">\(x_2=0\)</span>. Find an approach <span class="math" data-tex="\(y(r)\to0\)">\(y(r)\to0\)</span> showing that no fixed bound <span class="math" data-tex="\(C|y|^{-1}\)">\(C|y|^{-1}\)</span> can hold. Explain which hypothesis fails and which conclusion cannot be inferred from this theorem alone.</p>
+<p><strong>Exercise 5 (advanced: the translated-test step).</strong> In (3.3), let <span class="math" data-tex="\(a\)">\(a\)</span> vary in a compact subinterval of its domain. Prove that the translated tests have one common compact support in <span class="math" data-tex="\(X\)">\(X\)</span> and one common <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span> bound. Use these facts to show that <span class="math" data-tex="\(Q\)">\(Q\)</span> has zero distributional boundary on that interval.</p>
+<p><strong>Exercise 6 (intermediate: the slanted delta coefficient).</strong> For <span class="math" data-tex="\(m=1\)">\(m=1\)</span> in (4.1), compute the concentrated part of the boundary pairing on a product test <span class="math" data-tex="\(\phi(x_1,x_2)=u(x_1)v(x_2)\)">\(\phi(x_1,x_2)=u(x_1)v(x_2)\)</span>. Compare its measure to Euclidean arclength on the line. Then give the concentrated term for <span class="math" data-tex="\(m=2\)">\(m=2\)</span> as a pairing with <span class="math" data-tex="\(\psi&#x27;(0)\)">\(\psi&#x27;(0)\)</span>, checking the delta-derivative sign.</p>
+<h2 id="complete-solutions">Complete solutions</h2>
+<p><strong>Solution 1.</strong> The point <span class="math" data-tex="\(-Y=(-2,-1)\)">\(-Y=(-2,-1)\)</span> has closest point <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> in the closed first quadrant, so its distance is <span class="math" data-tex="\(\sqrt5\)">\(\sqrt5\)</span>. For positive <span class="math" data-tex="\(y_1,y_2,t\)">\(y_1,y_2,t\)</span>, each coordinate of <span class="math" data-tex="\(y+tY\)">\(y+tY\)</span> is larger than the corresponding coordinate of <span class="math" data-tex="\(tY\)">\(tY\)</span>, so its squared norm is at least <span class="math" data-tex="\(5t^2\)">\(5t^2\)</span>. Thus (1.1) holds with <span class="math" data-tex="\(d=\sqrt5\)">\(d=\sqrt5\)</span>. In general the argument only excludes <span class="math" data-tex="\(-Y\)">\(-Y\)</span> from the closure; an open half-space cone, whose closure contains tangential lines, also satisfies this separation for each interior <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p><strong>Solution 2.</strong> Changing to <span class="math" data-tex="\(s=x_1+x_2\)">\(s=x_1+x_2\)</span>, <span class="math" data-tex="\(t=x_2\)">\(t=x_2\)</span>, gives <span class="math" data-tex="\(\int (s+i(r+r^3))^{-1}\psi(s)\,ds\)">\(\int (s+i(r+r^3))^{-1}\psi(s)\,ds\)</span>. The positive height parameter is <span class="math" data-tex="\(r+r^3\)">\(r+r^3\)</span>, which tends to zero. Its limit is <span class="math" data-tex="\(\langle\operatorname{pv}(1/s),\psi\rangle-i\pi\psi(0)\)">\(\langle\operatorname{pv}(1/s),\psi\rangle-i\pi\psi(0)\)</span>, where <span class="math" data-tex="\(\psi(0)=\int\phi(-t,t)\,dt\)">\(\psi(0)=\int\phi(-t,t)\,dt\)</span>. Although the direction of <span class="math" data-tex="\(y(r)\)">\(y(r)\)</span> tends to the horizontal edge, its height parameter is positive and the full cone bound applies uniformly.</p>
+<p><strong>Solution 3.</strong> The polynomial is <span class="math" data-tex="\(\Phi_Y=\phi+itD_Y\phi-t^2D_Y^2\phi/2\)">\(\Phi_Y=\phi+itD_Y\phi-t^2D_Y^2\phi/2\)</span>. Its <span class="math" data-tex="\(t\)">\(t\)</span>-derivative is <span class="math" data-tex="\(iD_Y\phi-tD_Y^2\phi\)">\(iD_Y\phi-tD_Y^2\phi\)</span>, while <span class="math" data-tex="\(iD_Y\Phi_Y=iD_Y\phi-tD_Y^2\phi-it^2D_Y^3\phi/2\)">\(iD_Y\Phi_Y=iD_Y\phi-tD_Y^2\phi-it^2D_Y^3\phi/2\)</span>. Subtracting leaves <span class="math" data-tex="\(it^2D_Y^3\phi/2=-i^3t^2D_Y^3\phi/2\)">\(it^2D_Y^3\phi/2=-i^3t^2D_Y^3\phi/2\)</span>. Therefore <span class="math" data-tex="\(A_y(T)-A_y(0)=-i^3\int_0^T t^2\int fD_Y^3\phi/2\)">\(A_y(T)-A_y(0)=-i^3\int_0^T t^2\int fD_Y^3\phi/2\)</span>. Solving for <span class="math" data-tex="\(A_y(0)\)">\(A_y(0)\)</span> puts that last integral on the other side with coefficient <span class="math" data-tex="\(+i^3/2\)">\(+i^3/2\)</span>, which is (2.6) at <span class="math" data-tex="\(N=2\)">\(N=2\)</span>.</p>
+<p><strong>Solution 4.</strong> Set <span class="math" data-tex="\(y(r)=(r,r^2)\)">\(y(r)=(r,r^2)\)</span>, with <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>. At <span class="math" data-tex="\(x_2=0\)">\(x_2=0\)</span>, <span class="math" data-tex="\(|f|=r^{-2}\)">\(|f|=r^{-2}\)</span>, whereas <span class="math" data-tex="\(|y(r)|=r\sqrt{1+r^2}\)">\(|y(r)|=r\sqrt{1+r^2}\)</span>. The product <span class="math" data-tex="\(|y(r)||f|=\sqrt{1+r^2}/r\)">\(|y(r)||f|=\sqrt{1+r^2}/r\)</span> is unbounded. Hence no fixed <span class="math" data-tex="\(C\)">\(C\)</span> gives the radial exponent-one bound. The normal-coordinate bound <span class="math" data-tex="\(|f|\leq y_2^{-1}\)">\(|f|\leq y_2^{-1}\)</span> remains true, but it is not (2.2). This theorem alone consequently does not establish a full-cone boundary limit for that example; the exercise does not assert nonexistence of such a limit by other methods.</p>
+<p><strong>Solution 5.</strong> If <span class="math" data-tex="\(|a|\leq A&lt;d_0/|y|\)">\(|a|\leq A&lt;d_0/|y|\)</span>, the union of the supports is contained in the continuous image of <span class="math" data-tex="\(\operatorname{supp}\phi\times[-A,A]\)">\(\operatorname{supp}\phi\times[-A,A]\)</span> under <span class="math" data-tex="\((x,a)\mapsto x+ay\)">\((x,a)\mapsto x+ay\)</span>. This is a compact set inside <span class="math" data-tex="\(X\)">\(X\)</span> by the choice of <span class="math" data-tex="\(d_0\)">\(d_0\)</span>. Translation preserves each global derivative supremum, so its <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span> norms all equal the norm of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Formula (2.9) now bounds <span class="math" data-tex="\(Q(a+ib)\)">\(Q(a+ib)\)</span> uniformly for small <span class="math" data-tex="\(b\)">\(b\)</span>, while its pointwise limit is zero because <span class="math" data-tex="\(f_0=0\)">\(f_0=0\)</span>. For any compact test <span class="math" data-tex="\(\theta(a)\)">\(\theta(a)\)</span> in this interval, the integrands <span class="math" data-tex="\(Q(a+ib)\theta(a)\)">\(Q(a+ib)\theta(a)\)</span> have an integrable fixed majorant and converge pointwise to zero. Dominated convergence gives their integral tending to zero, which is the zero one-variable boundary distribution.</p>
+<p><strong>Solution 6.</strong> For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the concentrated pairing is <span class="math" data-tex="\(-i\pi\psi(0)=-i\pi\int u(-t)v(t)\,dt\)">\(-i\pi\psi(0)=-i\pi\int u(-t)v(t)\,dt\)</span>. The line parametrization <span class="math" data-tex="\((-t,t)\)">\((-t,t)\)</span> has speed <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, so its parameter measure is <span class="math" data-tex="\(dS/\sqrt2\)">\(dS/\sqrt2\)</span>, not <span class="math" data-tex="\(dS\)">\(dS\)</span>. For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, the upper pole contains <span class="math" data-tex="\(+i\pi\delta&#x27;_0\)">\(+i\pi\delta&#x27;_0\)</span> in the <span class="math" data-tex="\(s\)">\(s\)</span> coordinate. Its pairing is <span class="math" data-tex="\(-i\pi\psi&#x27;(0)\)">\(-i\pi\psi&#x27;(0)\)</span>, since the first delta derivative pairs with a negative derivative. Here <span class="math" data-tex="\(\psi&#x27;(0)=\int u&#x27;(-t)v(t)\,dt\)">\(\psi&#x27;(0)=\int u&#x27;(-t)v(t)\,dt\)</span>, giving the concentrated term explicitly.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://math.sci.uwo.ca/~shafikov/papers/MathZ2017.pdf">Debraj Chakrabarti and Rasul Shafikov, <em>Distributional boundary values of holomorphic functions on product domains</em>, Mathematische Zeitschrift 286 (2017), 1145–1171</a>. The introduction and §2.6 discuss the boundary-current setting and its Cauchy–Riemann derivative relation. That theorem concerns generic corners and currents; the finite-test cone limit and uniqueness above have their own proofs.</li>
+<li><a href="cauchy-kernels-and-boundary-limits.html"><em>Cauchy kernels and distributional boundary limits</em></a>, Theorem 3.1 and Corollary 4.2. The one-variable cancellation and normalized pole limits used here.</li>
+<li><a href="referenced-prerequisite-statements.html#reference-c19edc49b22d"><em>Gluing holomorphic sides</em></a>, Corollary 3.3. The exact one-variable zero-boundary result used for <span class="math" data-tex="\(Q\)">\(Q\)</span> in (3.2).</li>
+<li><a href="https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_12.html">Avi Zeff, <em>Lecture 12: Pompeiu’s formula</em>, March 6, 2026</a>. The complex integral identity underlying the one-variable prerequisites.</li>
+</ul>
+<footer><p>Original text: CC0.</p><p><a href="src/holomorphic-boundaries-in-convex-cones.md">Editable original Markdown</a>. Source commit 9fc48b587b87030c99db50f4d2bf237a4901627b.</p></footer></main></body></html>

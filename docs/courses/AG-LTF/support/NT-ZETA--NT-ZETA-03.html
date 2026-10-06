@@ -1,0 +1,796 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Gamma function and Stirling&#x27;s formula</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="the-gamma-function-and-stirling-s-formula">The Gamma function and Stirling's formula</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The gamma function supplies the archimedean factor in the functional equation of zeta. Its exponential decay will control contour integrals, while the argument of its logarithm will account for the main term in counting zeros. We therefore need more than a real factorial approximation: we need a fixed logarithm, a uniform complex estimate, and identities that remain valid after continuation.</p>
+<p>We assume the holomorphic convergence, identity theorem, residue theorem and existence of logarithms on simply connected domains from <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50">Complex Analysis</a>. Euler's constant is
+<span class="math math-display" data-tex="$$
+\gamma=\lim_{N\to\infty}\left(\sum_{n=1}^N\frac1n-\log N\right).
+$$">$$
+\gamma=\lim_{N\to\infty}\left(\sum_{n=1}^N\frac1n-\log N\right).
+$$</span>
+Its existence follows by comparing the decreasing function <span class="math" data-tex="$1/u$">$1/u$</span> on successive unit intervals; the same comparison gives an error <span class="math" data-tex="$O(1/N)$">$O(1/N)$</span>. Free comparison sources are McMullen’s 2023 lecture notes and Koukoulopoulos’s author preliminary version listed below. The proofs below do not require consulting them.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="../support/NT-ZETA--NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="from-an-integral-to-an-entire-reciprocal">From an integral to an entire reciprocal</h2>
+<p>For <span class="math" data-tex="$\Re z&gt;0$">$\Re z&gt;0$</span>, put
+<span class="math math-display" data-tex="$$
+\Gamma(z)=\int_0^\infty e^{-u}u^{z-1}\,du,
+\qquad u^{z-1}=\exp((z-1)\log u).
+\tag{1}
+$$">$$
+\Gamma(z)=\int_0^\infty e^{-u}u^{z-1}\,du,
+\qquad u^{z-1}=\exp((z-1)\log u).
+\tag{1}
+$$</span>
+On a compact subset of this half-plane, powers of <span class="math" data-tex="$|\log u|$">$|\log u|$</span> times <span class="math" data-tex="$u^{\Re z-1}$">$u^{\Re z-1}$</span> are integrable near zero, and the exponential controls them near infinity. Dominated differentiation proves that (1) is holomorphic. Integration by parts gives
+<span class="math math-display" data-tex="$$
+\Gamma(z+1)=z\Gamma(z),\qquad \Gamma(1)=1.
+\tag{2}
+$$">$$
+\Gamma(z+1)=z\Gamma(z),\qquad \Gamma(1)=1.
+\tag{2}
+$$</span>
+In particular, <span class="math" data-tex="$\Gamma(n+1)=n!$">$\Gamma(n+1)=n!$</span> for every integer <span class="math" data-tex="$n\ge0$">$n\ge0$</span>.</p>
+<p><strong>Theorem 1.1 (continuation and residues).</strong> The function <span class="math" data-tex="$\Gamma$">$\Gamma$</span> extends meromorphically to <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. Its only poles are the simple poles <span class="math" data-tex="$0,-1,-2,\ldots$">$0,-1,-2,\ldots$</span>, and
+<span class="math math-display" data-tex="$$
+\mathop{\rm Res}_{z=-n}\Gamma(z)=\frac{(-1)^n}{n!}.
+\tag{3}
+$$">$$
+\mathop{\rm Res}_{z=-n}\Gamma(z)=\frac{(-1)^n}{n!}.
+\tag{3}
+$$</span></p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="$\Re z&gt;-k$">$\Re z&gt;-k$</span>, use
+<span class="math math-display" data-tex="$$
+\Gamma(z)=\frac{\Gamma(z+k)}{z(z+1)\cdots(z+k-1)}.
+$$">$$
+\Gamma(z)=\frac{\Gamma(z+k)}{z(z+1)\cdots(z+k-1)}.
+$$</span>
+Equation (2) makes these expressions agree on overlaps. They cover the plane and introduce no poles away from the nonpositive integers. Near <span class="math" data-tex="$-n$">$-n$</span>, choose <span class="math" data-tex="$k=n+1$">$k=n+1$</span>. The numerator tends to <span class="math" data-tex="$\Gamma(1)=1$">$\Gamma(1)=1$</span>, and the product of the denominator factors other than <span class="math" data-tex="$z+n$">$z+n$</span> tends to <span class="math" data-tex="$(-1)^n n!$">$(-1)^n n!$</span>. This proves both simplicity and (3). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Finite products reveal an additional fact that recurrence alone does not establish: there are no zeros.</p>
+<p><strong>Theorem 1.2 (Gauss's limit and Euler's product).</strong> Locally uniformly away from the poles,
+<span class="math math-display" data-tex="$$
+\Gamma(z)=\lim_{N\to\infty}
+ \frac{N!\,N^z}{z(z+1)\cdots(z+N)}.
+\tag{4}
+$$">$$
+\Gamma(z)=\lim_{N\to\infty}
+ \frac{N!\,N^z}{z(z+1)\cdots(z+N)}.
+\tag{4}
+$$</span>
+The reciprocal is the entire function
+<span class="math math-display" data-tex="$$
+\frac1{\Gamma(z)}
+=z e^{\gamma z}\prod_{n=1}^\infty
+ \left(1+\frac zn\right)e^{-z/n}.
+\tag{5}
+$$">$$
+\frac1{\Gamma(z)}
+=z e^{\gamma z}\prod_{n=1}^\infty
+ \left(1+\frac zn\right)e^{-z/n}.
+\tag{5}
+$$</span>
+Its zeros are exactly <span class="math" data-tex="$0,-1,-2,\ldots$">$0,-1,-2,\ldots$</span>, each simple. The meromorphic function <span class="math" data-tex="$\Gamma$">$\Gamma$</span> has no zeros.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$\Re z&gt;0$">$\Re z&gt;0$</span>, repeated integration by parts gives
+<span class="math math-display" data-tex="$$
+\int_0^1 t^{z-1}(1-t)^N\,dt
+=\frac{N!}{z(z+1)\cdots(z+N)}.
+$$">$$
+\int_0^1 t^{z-1}(1-t)^N\,dt
+=\frac{N!}{z(z+1)\cdots(z+N)}.
+$$</span>
+After <span class="math" data-tex="$u=Nt$">$u=Nt$</span>, multiplying by <span class="math" data-tex="$N^z$">$N^z$</span> turns the integral into
+<span class="math math-display" data-tex="$$
+\int_0^N u^{z-1}(1-u/N)^N\,du.
+$$">$$
+\int_0^N u^{z-1}(1-u/N)^N\,du.
+$$</span>
+Here <span class="math" data-tex="$(1-u/N)^N\le e^{-u}$">$(1-u/N)^N\le e^{-u}$</span>. If <span class="math" data-tex="$a\le\Re z\le b$">$a\le\Re z\le b$</span> with <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>, the integrands are dominated by
+<span class="math" data-tex="$e^{-u}(u^{a-1}+u^{b-1})$">$e^{-u}(u^{a-1}+u^{b-1})$</span> independently of <span class="math" data-tex="$N$">$N$</span> and <span class="math" data-tex="$z$">$z$</span>. Dominated convergence, also applied to the supremum of the difference on a compact set, proves (4) in the right half-plane.</p>
+<p>Write <span class="math" data-tex="$H_N=\sum_{n=1}^N1/n$">$H_N=\sum_{n=1}^N1/n$</span>. The reciprocal finite product in (4) is
+<span class="math math-display" data-tex="$$
+Q_N(z)=z e^{z(H_N-\log N)}
+ \prod_{n=1}^N(1+z/n)e^{-z/n}.
+$$">$$
+Q_N(z)=z e^{z(H_N-\log N)}
+ \prod_{n=1}^N(1+z/n)e^{-z/n}.
+$$</span>
+On <span class="math" data-tex="$|z|\le R$">$|z|\le R$</span> and <span class="math" data-tex="$n&gt;2R$">$n&gt;2R$</span>, the analytic logarithm of a tail factor satisfies
+<span class="math math-display" data-tex="$$
+\log(1+z/n)-z/n=O_R(n^{-2}).
+$$">$$
+\log(1+z/n)-z/n=O_R(n^{-2}).
+$$</span>
+Thus the tail logarithms converge uniformly on compact sets. Together with <span class="math" data-tex="$H_N-\log N\to\gamma$">$H_N-\log N\to\gamma$</span>, this proves local uniform convergence of <span class="math" data-tex="$Q_N$">$Q_N$</span> to the entire function <span class="math" data-tex="$Q$">$Q$</span> in (5). At a point other than <span class="math" data-tex="$0,-1,-2,\ldots$">$0,-1,-2,\ldots$</span>, finitely many factors are nonzero and the tail is the exponential of a convergent sum, so <span class="math" data-tex="$Q$">$Q$</span> is nonzero. At each listed point exactly one factor vanishes simply; the remaining product is nonzero.</p>
+<p>In the right half-plane, <span class="math" data-tex="$Q_N$">$Q_N$</span> and the finite expressions in (4) have product one. Taking limits gives <span class="math" data-tex="$\Gamma Q=1$">$\Gamma Q=1$</span>, so the identity theorem gives this identity meromorphically on the whole plane. It proves the assertion about zeros of <span class="math" data-tex="$\Gamma$">$\Gamma$</span>. On a compact set avoiding its poles, <span class="math" data-tex="$Q$">$Q$</span> is bounded away from zero, and therefore <span class="math" data-tex="$1/Q_N\to1/Q=\Gamma$">$1/Q_N\to1/Q=\Gamma$</span> uniformly. This also proves the asserted full domain of (4). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="two-integrals-and-three-functional-identities">Two integrals and three functional identities</h2>
+<p>The beta integral separates a scale variable from a ratio variable. This is the source of both reflection and duplication.</p>
+<p><strong>Proposition 2.1 (beta integral).</strong> If <span class="math" data-tex="$\Re a,\Re b&gt;0$">$\Re a,\Re b&gt;0$</span>, then
+<span class="math math-display" data-tex="$$
+B(a,b):=\int_0^1 t^{a-1}(1-t)^{b-1}\,dt
+=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}.
+\tag{6}
+$$">$$
+B(a,b):=\int_0^1 t^{a-1}(1-t)^{b-1}\,dt
+=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}.
+\tag{6}
+$$</span></p>
+<p><strong>Proof.</strong> The product of the two integrals (1) is an absolutely convergent double integral. Substitute <span class="math" data-tex="$u=rt$">$u=rt$</span>, <span class="math" data-tex="$v=r(1-t)$">$v=r(1-t)$</span>, with <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span>, <span class="math" data-tex="$0&lt;t&lt;1$">$0&lt;t&lt;1$</span>. The Jacobian is <span class="math" data-tex="$r$">$r$</span>, so the integral factors as <span class="math" data-tex="$\Gamma(a+b)B(a,b)$">$\Gamma(a+b)B(a,b)$</span>. Division is permitted by Theorem 1.2. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 2.2 (reflection).</strong> As an identity of meromorphic functions,
+<span class="math math-display" data-tex="$$
+\Gamma(z)\Gamma(1-z)=\frac\pi{\sin\pi z}.
+\tag{7}
+$$">$$
+\Gamma(z)\Gamma(1-z)=\frac\pi{\sin\pi z}.
+\tag{7}
+$$</span>
+Consequently <span class="math" data-tex="$\Gamma(1/2)=\sqrt\pi$">$\Gamma(1/2)=\sqrt\pi$</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$0&lt;\Re z&lt;1$">$0&lt;\Re z&lt;1$</span>, substitute <span class="math" data-tex="$t=v/(1+v)$">$t=v/(1+v)$</span> in (6) to obtain
+<span class="math math-display" data-tex="$$
+\Gamma(z)\Gamma(1-z)=\int_0^\infty\frac{v^{z-1}}{1+v}\,dv=:I(z).
+$$">$$
+\Gamma(z)\Gamma(1-z)=\int_0^\infty\frac{v^{z-1}}{1+v}\,dv=:I(z).
+$$</span>
+Integrate <span class="math" data-tex="$w^{z-1}/(1+w)$">$w^{z-1}/(1+w)$</span> around a keyhole contour about the positive real axis, using <span class="math" data-tex="$0&lt;\arg w&lt;2\pi$">$0&lt;\arg w&lt;2\pi$</span>. On its upper bank the argument is zero and the direction is outward; on its lower bank the argument is <span class="math" data-tex="$2\pi$">$2\pi$</span> and the direction is inward. Their contributions tend to <span class="math" data-tex="$(1-e^{2\pi iz})I(z)$">$(1-e^{2\pi iz})I(z)$</span>. The outer circle contributes <span class="math" data-tex="$O_z(R^{\Re z-1})$">$O_z(R^{\Re z-1})$</span>, and the inner circle contributes <span class="math" data-tex="$O_z(\varepsilon^{\Re z})$">$O_z(\varepsilon^{\Re z})$</span>, so both disappear. The sole pole is <span class="math" data-tex="$w=-1$">$w=-1$</span>, with residue <span class="math" data-tex="$e^{i\pi(z-1)}$">$e^{i\pi(z-1)}$</span>. Therefore
+<span class="math math-display" data-tex="$$
+(1-e^{2\pi iz})I(z)
+=2\pi i e^{i\pi(z-1)}=-2\pi i e^{i\pi z}.
+$$">$$
+(1-e^{2\pi iz})I(z)
+=2\pi i e^{i\pi(z-1)}=-2\pi i e^{i\pi z}.
+$$</span>
+Since <span class="math" data-tex="$1-e^{2\pi iz}=-2i e^{i\pi z}\sin\pi z$">$1-e^{2\pi iz}=-2i e^{i\pi z}\sin\pi z$</span>, this gives (7) in the strip and then everywhere by continuation. At <span class="math" data-tex="$z=1/2$">$z=1/2$</span> the square is <span class="math" data-tex="$\pi$">$\pi$</span>; positivity of the integral (1) selects <span class="math" data-tex="$\sqrt\pi$">$\sqrt\pi$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 2.3 (duplication).</strong> Meromorphically on <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>,
+<span class="math math-display" data-tex="$$
+\Gamma(z)\Gamma(z+1/2)
+=2^{1-2z}\sqrt\pi\,\Gamma(2z).
+\tag{8}
+$$">$$
+\Gamma(z)\Gamma(z+1/2)
+=2^{1-2z}\sqrt\pi\,\Gamma(2z).
+\tag{8}
+$$</span></p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="$\Re z&gt;0$">$\Re z&gt;0$</span>. The substitution <span class="math" data-tex="$t=(1+v)/2$">$t=(1+v)/2$</span> gives
+<span class="math math-display" data-tex="$$
+B(z,z)=2^{1-2z}\int_{-1}^1(1-v^2)^{z-1}\,dv
+=2^{1-2z}B(1/2,z).
+$$">$$
+B(z,z)=2^{1-2z}\int_{-1}^1(1-v^2)^{z-1}\,dv
+=2^{1-2z}B(1/2,z).
+$$</span>
+For the last equality use evenness and then <span class="math" data-tex="$w=v^2$">$w=v^2$</span>. Insert (6), cancel the nonzero factor <span class="math" data-tex="$\Gamma(z)$">$\Gamma(z)$</span>, and use <span class="math" data-tex="$\Gamma(1/2)=\sqrt\pi$">$\Gamma(1/2)=\sqrt\pi$</span>. Analytic continuation proves (8) globally. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Example 2.4 (exact decay on two vertical lines).</strong> Conjugation of (1), followed by continuation, gives <span class="math" data-tex="$\Gamma(\overline z)=\overline{\Gamma(z)}$">$\Gamma(\overline z)=\overline{\Gamma(z)}$</span>. Reflection at <span class="math" data-tex="$z=1/2+it$">$z=1/2+it$</span> therefore yields
+<span class="math math-display" data-tex="$$
+|\Gamma(1/2+it)|^2=\frac\pi{\cosh\pi t}
+\qquad(t\in\mathbb R).
+\tag{9}
+$$">$$
+|\Gamma(1/2+it)|^2=\frac\pi{\cosh\pi t}
+\qquad(t\in\mathbb R).
+\tag{9}
+$$</span>
+Reflection at <span class="math" data-tex="$z=it$">$z=it$</span> and recurrence give, for real <span class="math" data-tex="$t\ne0$">$t\ne0$</span>,
+<span class="math math-display" data-tex="$$
+(-it)|\Gamma(it)|^2=\frac\pi{i\sinh\pi t},
+\qquad
+|\Gamma(it)|^2=\frac\pi{t\sinh\pi t}.
+\tag{10}
+$$">$$
+(-it)|\Gamma(it)|^2=\frac\pi{i\sinh\pi t},
+\qquad
+|\Gamma(it)|^2=\frac\pi{t\sinh\pi t}.
+\tag{10}
+$$</span>
+The denominator in (10) is positive for both signs of <span class="math" data-tex="$t$">$t$</span>. The exclusion of zero matters because <span class="math" data-tex="$\Gamma$">$\Gamma$</span> has a pole there.</p>
+<h2 id="a-logarithm-with-a-controlled-remainder">A logarithm with a controlled remainder</h2>
+<p>Let
+<span class="math math-display" data-tex="$$
+\mathcal D=\mathbb C\setminus(-\infty,0].
+$$">$$
+\mathcal D=\mathbb C\setminus(-\infty,0].
+$$</span>
+Write <span class="math" data-tex="$\operatorname{Log}z$">$\operatorname{Log}z$</span> for the principal logarithm on <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span>. Since <span class="math" data-tex="$\Gamma$">$\Gamma$</span> is holomorphic and nonzero there, it has a unique holomorphic logarithm <span class="math" data-tex="$L(z)=\log\Gamma(z)$">$L(z)=\log\Gamma(z)$</span> that is real on the positive real axis. In particular <span class="math" data-tex="$L(1)=0$">$L(1)=0$</span>. This <span class="math" data-tex="$L$">$L$</span> need not be the principal logarithm of the complex number <span class="math" data-tex="$\Gamma(z)$">$\Gamma(z)$</span>.</p>
+<p>Define the periodic functions
+<span class="math math-display" data-tex="$$
+b(u)=\{u\}-\frac12,\qquad
+F(u)=\int_0^u b(v)\,dv
+=\frac12\{u\}^2-\frac12\{u\}.
+\tag{11}
+$$">$$
+b(u)=\{u\}-\frac12,\qquad
+F(u)=\int_0^u b(v)\,dv
+=\frac12\{u\}^2-\frac12\{u\}.
+\tag{11}
+$$</span>
+The mean of <span class="math" data-tex="$b$">$b$</span> on every unit interval is zero. Its continuous primitive <span class="math" data-tex="$F$">$F$</span> satisfies <span class="math" data-tex="$-1/8\le F\le0$">$-1/8\le F\le0$</span> and <span class="math" data-tex="$F(n)=0$">$F(n)=0$</span> at integers. Cancellation in <span class="math" data-tex="$b$">$b$</span>, rather than absolute integration of <span class="math" data-tex="$|b|$">$|b|$</span>, is what makes the following remainder small.</p>
+<p><img src="assets/NT-ZETA-03/bernoulli-remainder-5FEAB8A3F19703DEAA8A12F1DD4F1BF5906DE883B90BA39CBD3B4E1AC49B2664.png" alt="The mean-zero Bernoulli sawtooth and its continuous periodic primitive between minus one eighth and zero." class="course-figure" width="1332" height="936" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="bernoulli-remainder" data-asset-sha256="5FEAB8A3F19703DEAA8A12F1DD4F1BF5906DE883B90BA39CBD3B4E1AC49B2664"></p>
+<p><em>The cancellation used in (13): the upper graph has zero integral on each unit interval; its primitive in the lower graph returns to zero at every integer. The exact bound <span class="math" data-tex="$|F|\le1/8$">$|F|\le1/8$</span> produces the sector estimate (14).</em></p>
+<p><strong>Theorem 3.1 (Stirling with an exact remainder).</strong> For every <span class="math" data-tex="$z\in\mathcal D$">$z\in\mathcal D$</span>,
+<span class="math math-display" data-tex="$$
+L(z)=(z-1/2)\operatorname{Log}z-z
+ +\frac12\log(2\pi)+R(z),
+\tag{12}
+$$">$$
+L(z)=(z-1/2)\operatorname{Log}z-z
+ +\frac12\log(2\pi)+R(z),
+\tag{12}
+$$</span>
+where
+<span class="math math-display" data-tex="$$
+R(z)=-\lim_{A\to\infty}\int_0^A\frac{b(u)}{u+z}\,du
+=-\int_0^\infty\frac{F(u)}{(u+z)^2}\,du.
+\tag{13}
+$$">$$
+R(z)=-\lim_{A\to\infty}\int_0^A\frac{b(u)}{u+z}\,du
+=-\int_0^\infty\frac{F(u)}{(u+z)^2}\,du.
+\tag{13}
+$$</span>
+The second integral is absolutely convergent. If <span class="math" data-tex="$0&lt;\delta&lt;\pi$">$0&lt;\delta&lt;\pi$</span>, <span class="math" data-tex="$r=|z|&gt;0$">$r=|z|&gt;0$</span> and <span class="math" data-tex="$|\arg z|\le\pi-\delta$">$|\arg z|\le\pi-\delta$</span>, then
+<span class="math math-display" data-tex="$$
+|R(z)|\le\frac{1}{8\sin^2(\delta/2)\,r}.
+\tag{14}
+$$">$$
+|R(z)|\le\frac{1}{8\sin^2(\delta/2)\,r}.
+\tag{14}
+$$</span>
+In particular, uniformly in that sector for <span class="math" data-tex="$|z|\ge1$">$|z|\ge1$</span>,
+<span class="math math-display" data-tex="$$
+L(z)=(z-1/2)\operatorname{Log}z-z
++\tfrac12\log(2\pi)+O_\delta(|z|^{-1}),
+\tag{15}
+$$">$$
+L(z)=(z-1/2)\operatorname{Log}z-z
++\tfrac12\log(2\pi)+O_\delta(|z|^{-1}),
+\tag{15}
+$$</span>
+and
+<span class="math math-display" data-tex="$$
+\frac{\Gamma&#x27;}{\Gamma}(z)
+=\operatorname{Log}z-\frac1{2z}+O_\delta(|z|^{-2}).
+\tag{16}
+$$">$$
+\frac{\Gamma&#x27;}{\Gamma}(z)
+=\operatorname{Log}z-\frac1{2z}+O_\delta(|z|^{-2}).
+\tag{16}
+$$</span></p>
+<p><strong>Proof.</strong> We first find the form of the expansion, leaving its constant undetermined. Set
+<span class="math math-display" data-tex="$$
+C_N=\log N!-(N+1/2)\log N+N.
+$$">$$
+C_N=\log N!-(N+1/2)\log N+N.
+$$</span>
+Taylor's theorem gives
+<span class="math math-display" data-tex="$$
+C_{N+1}-C_N
+=1-(N+1/2)\log(1+1/N)=O(N^{-2}).
+$$">$$
+C_{N+1}-C_N
+=1-(N+1/2)\log(1+1/N)=O(N^{-2}).
+$$</span>
+Hence <span class="math" data-tex="$C_N$">$C_N$</span> has a finite limit <span class="math" data-tex="$C$">$C$</span>, with <span class="math" data-tex="$C_N=C+O(1/N)$">$C_N=C+O(1/N)$</span>.</p>
+<p>We need an exact finite summation formula. For a continuously differentiable <span class="math" data-tex="$f$">$f$</span> on <span class="math" data-tex="$[0,N]$">$[0,N]$</span>, integration by parts on each unit interval gives
+<span class="math math-display" data-tex="$$
+\sum_{k=0}^N f(k)
+=\int_0^N f(u)\,du+\frac{f(0)+f(N)}2
+ +\int_0^N b(u)f&#x27;(u)\,du.
+\tag{17}
+$$">$$
+\sum_{k=0}^N f(k)
+=\int_0^N f(u)\,du+\frac{f(0)+f(N)}2
+ +\int_0^N b(u)f&#x27;(u)\,du.
+\tag{17}
+$$</span>
+Indeed, on <span class="math" data-tex="$[k,k+1]$">$[k,k+1]$</span> the last integral equals <span class="math" data-tex="$(f(k)+f(k+1))/2-\int_k^{k+1}f$">$(f(k)+f(k+1))/2-\int_k^{k+1}f$</span>. Summing proves (17), including its endpoint weights.</p>
+<p>Apply (17) to <span class="math" data-tex="$f(u)=\operatorname{Log}(z+u)$">$f(u)=\operatorname{Log}(z+u)$</span> for <span class="math" data-tex="$z\in\mathcal D$">$z\in\mathcal D$</span>. Direct integration yields
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\sum_{k=0}^N\operatorname{Log}(z+k)
+={}&amp;(z+N+1/2)\operatorname{Log}(z+N)\\
+&amp;-(z-1/2)\operatorname{Log}z-N
++\int_0^N\frac{b(u)}{z+u}\,du.
+\end{aligned}
+\tag{18}
+$$">$$
+\begin{aligned}
+\sum_{k=0}^N\operatorname{Log}(z+k)
+={}&amp;(z+N+1/2)\operatorname{Log}(z+N)\\
+&amp;-(z-1/2)\operatorname{Log}z-N
++\int_0^N\frac{b(u)}{z+u}\,du.
+\end{aligned}
+\tag{18}
+$$</span>
+Gauss's formula, with the branches normalized on the positive axis, implies
+<span class="math math-display" data-tex="$$
+L(z)=\lim_{N\to\infty}
+\left(\log N!+z\log N-
+\sum_{k=0}^N\operatorname{Log}(z+k)\right).
+\tag{19}
+$$">$$
+L(z)=\lim_{N\to\infty}
+\left(\log N!+z\log N-
+\sum_{k=0}^N\operatorname{Log}(z+k)\right).
+\tag{19}
+$$</span>
+For clarity, the exponentials in (19) converge locally uniformly on <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span> by Theorem 1.2. Their logarithmic derivatives also converge locally uniformly. At <span class="math" data-tex="$z=1$">$z=1$</span> their real logarithms tend to zero. Integrating these derivatives along paths proves local uniform convergence to the specified <span class="math" data-tex="$L$">$L$</span>, without an ambiguity of <span class="math" data-tex="$2\pi i$">$2\pi i$</span>.</p>
+<p>Integration by parts gives, for arbitrary <span class="math" data-tex="$A&gt;0$">$A&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\int_0^A\frac{b(u)}{u+z}\,du
+=\frac{F(A)}{A+z}+\int_0^A\frac{F(u)}{(u+z)^2}\,du.
+\tag{20}
+$$">$$
+\int_0^A\frac{b(u)}{u+z}\,du
+=\frac{F(A)}{A+z}+\int_0^A\frac{F(u)}{(u+z)^2}\,du.
+\tag{20}
+$$</span>
+The boundary term tends to zero, and the second integral converges absolutely and locally uniformly on <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span>. Thus the improper integral in (13) exists even when <span class="math" data-tex="$A$">$A$</span> is not an integer. Inserting (18) into (19), and using
+<span class="math math-display" data-tex="$$
+(N+z+1/2)(\log N-\operatorname{Log}(N+z))\longrightarrow-z,
+$$">$$
+(N+z+1/2)(\log N-\operatorname{Log}(N+z))\longrightarrow-z,
+$$</span>
+proves
+<span class="math math-display" data-tex="$$
+L(z)=(z-1/2)\operatorname{Log}z-z+C+R(z).
+\tag{21}
+$$">$$
+L(z)=(z-1/2)\operatorname{Log}z-z+C+R(z).
+\tag{21}
+$$</span></p>
+<p>The sector estimate is geometric. If <span class="math" data-tex="$z=re^{i\phi}$">$z=re^{i\phi}$</span>, then
+<span class="math math-display" data-tex="$$
+|u+z|^2=(u+r)^2\cos^2(\phi/2)
++(u-r)^2\sin^2(\phi/2)
+\ge\sin^2(\delta/2)(u+r)^2.
+$$">$$
+|u+z|^2=(u+r)^2\cos^2(\phi/2)
++(u-r)^2\sin^2(\phi/2)
+\ge\sin^2(\delta/2)(u+r)^2.
+$$</span>
+Using <span class="math" data-tex="$|F|\le1/8$">$|F|\le1/8$</span> in (13) gives (14). Differentiation under the absolutely convergent integral gives
+<span class="math math-display" data-tex="$$
+R&#x27;(z)=2\int_0^\infty\frac{F(u)}{(u+z)^3}\,du,
+\qquad
+|R&#x27;(z)|\le\frac{1}{8\sin^3(\delta/2)r^2}.
+\tag{22}
+$$">$$
+R&#x27;(z)=2\int_0^\infty\frac{F(u)}{(u+z)^3}\,du,
+\qquad
+|R&#x27;(z)|\le\frac{1}{8\sin^3(\delta/2)r^2}.
+\tag{22}
+$$</span>
+The bound follows from <span class="math" data-tex="$\int_0^\infty(u+r)^{-3}du=1/(2r^2)$">$\int_0^\infty(u+r)^{-3}du=1/(2r^2)$</span>.</p>
+<p>It remains to identify <span class="math" data-tex="$C$">$C$</span>. For positive <span class="math" data-tex="$x\to\infty$">$x\to\infty$</span>, (21) and (14) imply
+<span class="math math-display" data-tex="$$
+L(x)+L(x+1/2)
+=(2x-1/2)\log x-2x+2C+O(1/x).
+$$">$$
+L(x)+L(x+1/2)
+=(2x-1/2)\log x-2x+2C+O(1/x).
+$$</span>
+Taking real logarithms in duplication gives instead
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+L(x)+L(x+1/2)
+&amp;=(1-2x)\log2+\tfrac12\log\pi+L(2x)\\
+&amp;=(2x-1/2)\log x-2x+C+\tfrac12\log(2\pi)+O(1/x).
+\end{aligned}
+$$">$$
+\begin{aligned}
+L(x)+L(x+1/2)
+&amp;=(1-2x)\log2+\tfrac12\log\pi+L(2x)\\
+&amp;=(2x-1/2)\log x-2x+C+\tfrac12\log(2\pi)+O(1/x).
+\end{aligned}
+$$</span>
+Comparison gives <span class="math" data-tex="$C=\tfrac12\log(2\pi)$">$C=\tfrac12\log(2\pi)$</span>. This proves (12) and (15); differentiating (12) and using (22) proves (16). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For real <span class="math" data-tex="$z&gt;0$">$z&gt;0$</span>, (13) gives <span class="math" data-tex="$R(z)&gt;0$">$R(z)&gt;0$</span>. With the primitive <span class="math" data-tex="$F$">$F$</span> as in (11), the final remainder displayed in the proof of [Koukoulopoulos preliminary version, Theorem 1.13] has the opposite sign; (20) determines the minus sign in (13).</p>
+<p><strong>Example 3.2 (a complex factorial approximation).</strong> At <span class="math" data-tex="$z=10+10i$">$z=10+10i$</span>, the two sides of (15), before discarding the remainder, give
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+L(z)&amp;\simeq8.23613175045+23.94870341378i,\\
+(z-1/2)\operatorname{Log}z-z+\tfrac12\log(2\pi)
+&amp;\simeq8.23196439033+23.95286938502i.
+\end{aligned}
+$$">$$
+\begin{aligned}
+L(z)&amp;\simeq8.23613175045+23.94870341378i,\\
+(z-1/2)\operatorname{Log}z-z+\tfrac12\log(2\pi)
+&amp;\simeq8.23196439033+23.95286938502i.
+\end{aligned}
+$$</span>
+Exponentiating gives
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\Gamma(z)&amp;\simeq1423.85194179-3496.08197331i,\\
+\sqrt{2\pi}\,\exp((z-1/2)\operatorname{Log}z-z)
+&amp;\simeq1432.42224592-3475.60560410i.
+\end{aligned}
+$$">$$
+\begin{aligned}
+\Gamma(z)&amp;\simeq1423.85194179-3496.08197331i,\\
+\sqrt{2\pi}\,\exp((z-1/2)\operatorname{Log}z-z)
+&amp;\simeq1432.42224592-3475.60560410i.
+\end{aligned}
+$$</span>
+The relative error of the second expression is about <span class="math" data-tex="$0.00588029$">$0.00588029$</span>. The logarithmic error is about <span class="math" data-tex="$0.00416736-0.00416597i$">$0.00416736-0.00416597i$</span>. In particular, the imaginary part of <span class="math" data-tex="$L(z)$">$L(z)$</span> here is not confined to <span class="math" data-tex="$(-\pi,\pi]$">$(-\pi,\pi]$</span>.</p>
+<h2 id="vertical-decay-and-the-size-of-the-reciprocal">Vertical decay and the size of the reciprocal</h2>
+<p><strong>Corollary 4.1 (uniform vertical estimate).</strong> For <span class="math" data-tex="$\sigma$">$\sigma$</span> in any fixed bounded real interval,
+<span class="math math-display" data-tex="$$
+|\Gamma(\sigma+it)|
+=\sqrt{2\pi}\,|t|^{\sigma-1/2}e^{-\pi|t|/2}
+ \bigl(1+O(|t|^{-1})\bigr)
+\tag{23}
+$$">$$
+|\Gamma(\sigma+it)|
+=\sqrt{2\pi}\,|t|^{\sigma-1/2}e^{-\pi|t|/2}
+ \bigl(1+O(|t|^{-1})\bigr)
+\tag{23}
+$$</span>
+uniformly as <span class="math" data-tex="$|t|\to\infty$">$|t|\to\infty$</span>. The implicit bound can be chosen to hold for all <span class="math" data-tex="$|t|\ge1$">$|t|\ge1$</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$z=\sigma+it$">$z=\sigma+it$</span> with large <span class="math" data-tex="$|t|$">$|t|$</span>, a fixed sector, for instance <span class="math" data-tex="$|\arg z|\le3\pi/4$">$|\arg z|\le3\pi/4$</span>, contains all such points. Uniformly for bounded <span class="math" data-tex="$\sigma$">$\sigma$</span>,
+<span class="math math-display" data-tex="$$
+\log|z|=\log|t|+O(t^{-2}),\qquad
+\arg z=\operatorname{sgn}(t)\frac\pi2-\frac\sigma t+O(|t|^{-3}).
+$$">$$
+\log|z|=\log|t|+O(t^{-2}),\qquad
+\arg z=\operatorname{sgn}(t)\frac\pi2-\frac\sigma t+O(|t|^{-3}).
+$$</span>
+The real part of the leading terms in (12) is
+<span class="math math-display" data-tex="$$
+(\sigma-1/2)\log|z|-t\arg z-\sigma
+=(\sigma-1/2)\log|t|-\frac\pi2|t|+O(t^{-2}).
+$$">$$
+(\sigma-1/2)\log|z|-t\arg z-\sigma
+=(\sigma-1/2)\log|t|-\frac\pi2|t|+O(t^{-2}).
+$$</span>
+The <span class="math" data-tex="$+\sigma$">$+\sigma$</span> from <span class="math" data-tex="$-t\arg z$">$-t\arg z$</span> cancels the displayed <span class="math" data-tex="$-\sigma$">$-\sigma$</span>. Since <span class="math" data-tex="$R(z)=O(1/|t|)$">$R(z)=O(1/|t|)$</span>, taking real parts and exponentiating proves (23). On the remaining compact sets <span class="math" data-tex="$1\le|t|\le T$">$1\le|t|\le T$</span>, the ratio in (23) is continuous and finite, so enlargement of the constant covers them too. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>An entire function <span class="math" data-tex="$Q$">$Q$</span> has order
+<span class="math math-display" data-tex="$$
+\rho=\limsup_{r\to\infty}
+\frac{\log\log M_Q(r)}{\log r},
+\qquad M_Q(r)=\max_{|z|=r}|Q(z)|.
+$$">$$
+\rho=\limsup_{r\to\infty}
+\frac{\log\log M_Q(r)}{\log r},
+\qquad M_Q(r)=\max_{|z|=r}|Q(z)|.
+$$</span>
+For order one its exponential type is <span class="math" data-tex="$\tau=\limsup_{r\to\infty}\log M_Q(r)/r$">$\tau=\limsup_{r\to\infty}\log M_Q(r)/r$</span>. Infinite type is also called maximal type.</p>
+<p><strong>Proposition 4.2 (radial growth of the reciprocal).</strong> The entire function <span class="math" data-tex="$Q=1/\Gamma$">$Q=1/\Gamma$</span> satisfies
+<span class="math math-display" data-tex="$$
+\log M_Q(r)=r\log r+O(r)\qquad(r\to\infty).
+\tag{24}
+$$">$$
+\log M_Q(r)=r\log r+O(r)\qquad(r\to\infty).
+\tag{24}
+$$</span>
+Thus <span class="math" data-tex="$\log M_Q(r)/(r\log r)\to1$">$\log M_Q(r)/(r\log r)\to1$</span> for all real radii tending to infinity. The function has order one and infinite type.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$r\ge2$">$r\ge2$</span> and <span class="math" data-tex="$m=\lceil2r\rceil$">$m=\lceil2r\rceil$</span>. In (5), for <span class="math" data-tex="$|z|\le r$">$|z|\le r$</span> and <span class="math" data-tex="$n\le m$">$n\le m$</span>, bound the modulus of the <span class="math" data-tex="$n$">$n$</span>th factor by <span class="math" data-tex="$(1+r/n)e^{r/n}$">$(1+r/n)e^{r/n}$</span>. For <span class="math" data-tex="$n&gt;m$">$n&gt;m$</span>, the analytic logarithm of the tail factor satisfies
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+|\log(1+z/n)-z/n|
+&amp;\le\sum_{k\ge2}\frac{(r/n)^k}{k}\\
+&amp;\le\frac{r^2}{2n^2(1-r/n)}\le\frac{r^2}{n^2}.
+\end{aligned}
+$$">$$
+\begin{aligned}
+|\log(1+z/n)-z/n|
+&amp;\le\sum_{k\ge2}\frac{(r/n)^k}{k}\\
+&amp;\le\frac{r^2}{2n^2(1-r/n)}\le\frac{r^2}{n^2}.
+\end{aligned}
+$$</span>
+Retaining the initial factor <span class="math" data-tex="$z e^{\gamma z}$">$z e^{\gamma z}$</span> and writing <span class="math" data-tex="$H_m=\sum_{n=1}^m1/n$">$H_m=\sum_{n=1}^m1/n$</span>, we obtain
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\log M_Q(r)\le{}&amp;\log r+|\gamma|r
+ +\sum_{n=1}^m\log(1+r/n)\\
+&amp;+rH_m+r^2\sum_{n&gt;m}n^{-2}.
+\end{aligned}
+$$">$$
+\begin{aligned}
+\log M_Q(r)\le{}&amp;\log r+|\gamma|r
+ +\sum_{n=1}^m\log(1+r/n)\\
+&amp;+rH_m+r^2\sum_{n&gt;m}n^{-2}.
+\end{aligned}
+$$</span>
+The product modulus bound remains valid when a finite factor vanishes. Integral comparison gives <span class="math" data-tex="$\log(m!)\ge m\log m-m+1$">$\log(m!)\ge m\log m-m+1$</span>, and hence
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\sum_{n=1}^m\log(1+r/n)
+&amp;\le m\log(m+r)-\log(m!)\\
+&amp;\le m\log(1+r/m)+m-1=O(r).
+\end{aligned}
+$$">$$
+\begin{aligned}
+\sum_{n=1}^m\log(1+r/n)
+&amp;\le m\log(m+r)-\log(m!)\\
+&amp;\le m\log(1+r/m)+m-1=O(r).
+\end{aligned}
+$$</span>
+Also <span class="math" data-tex="$H_m=\log m+\gamma+O(1/m)$">$H_m=\log m+\gamma+O(1/m)$</span>, so <span class="math" data-tex="$rH_m=r\log r+O(r)$">$rH_m=r\log r+O(r)$</span>, while the tail is at most <span class="math" data-tex="$r^2/m=O(r)$">$r^2/m=O(r)$</span>. Thus <span class="math" data-tex="$\log M_Q(r)\le r\log r+O(r)$">$\log M_Q(r)\le r\log r+O(r)$</span>.</p>
+<p>Reflection gives
+<span class="math math-display" data-tex="$$
+Q(-x)=-\frac{\sin\pi x}{\pi}\Gamma(1+x)
+\qquad(x&gt;0).
+\tag{25}
+$$">$$
+Q(-x)=-\frac{\sin\pi x}{\pi}\Gamma(1+x)
+\qquad(x&gt;0).
+\tag{25}
+$$</span>
+For an arbitrary <span class="math" data-tex="$r\ge2$">$r\ge2$</span>, choose <span class="math" data-tex="$x=\lfloor r-1/2\rfloor+1/2$">$x=\lfloor r-1/2\rfloor+1/2$</span>. Then <span class="math" data-tex="$x$">$x$</span> is a positive half-integer and <span class="math" data-tex="$0\le r-x&lt;1$">$0\le r-x&lt;1$</span>. The maximum-modulus theorem gives <span class="math" data-tex="$M_Q(r)\ge|Q(-x)|$">$M_Q(r)\ge|Q(-x)|$</span>. In (25) the sine has absolute value one. Recurrence and the exact real Stirling formula therefore give
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\log|Q(-x)|={}&amp;(x+1/2)\log x-x\\
+&amp;+\tfrac12\log(2/\pi)+R(x),\qquad 0&lt;R(x)\le\frac1{8x}.
+\end{aligned}
+\tag{26}
+$$">$$
+\begin{aligned}
+\log|Q(-x)|={}&amp;(x+1/2)\log x-x\\
+&amp;+\tfrac12\log(2/\pi)+R(x),\qquad 0&lt;R(x)\le\frac1{8x}.
+\end{aligned}
+\tag{26}
+$$</span>
+The bound on <span class="math" data-tex="$R(x)$">$R(x)$</span> follows directly from (13) and <span class="math" data-tex="$-1/8\le F\le0$">$-1/8\le F\le0$</span>. Since <span class="math" data-tex="$x=r+O(1)$">$x=r+O(1)$</span>, the mean-value theorem applied to <span class="math" data-tex="$u\log u-u$">$u\log u-u$</span> shows
+<span class="math math-display" data-tex="$$
+\log M_Q(r)\ge r\log r-r+O(\log r).
+$$">$$
+\log M_Q(r)\ge r\log r-r+O(\log r).
+$$</span>
+Together with the upper bound this proves (24). In particular,
+<span class="math math-display" data-tex="$$
+\frac{\log\log M_Q(r)}{\log r}
+=1+\frac{\log\log r+O(1/\log r)}{\log r}\longrightarrow1.
+$$">$$
+\frac{\log\log M_Q(r)}{\log r}
+=1+\frac{\log\log r+O(1/\log r)}{\log r}\longrightarrow1.
+$$</span>
+This quotient is strictly greater than one for every sufficiently large <span class="math" data-tex="$r$">$r$</span>; no monotonicity is asserted. Also <span class="math" data-tex="$\log M_Q(r)/r=\log r+O(1)\to\infty$">$\log M_Q(r)/r=\log r+O(1)\to\infty$</span>. These are the order and type conclusions. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The maximum on a circle must be distinguished from a pointwise estimate on the negative real axis. Equation (24) describes every sufficiently large radius, while (26) uses half-integers to rule out every bound of the form <span class="math" data-tex="$|Q(-x)|\le A e^{Cx}$">$|Q(-x)|\le A e^{Cx}$</span> for all sufficiently large positive <span class="math" data-tex="$x$">$x$</span>. There is no positive pointwise lower bound along all such <span class="math" data-tex="$x$">$x$</span>, because <span class="math" data-tex="$Q$">$Q$</span> vanishes at the negative integers.</p>
+<h2 id="logarithmic-derivatives-and-a-continuous-phase">Logarithmic derivatives and a continuous phase</h2>
+<p>We write the logarithmic derivative as <span class="math" data-tex="$\Gamma&#x27;/\Gamma$">$\Gamma&#x27;/\Gamma$</span>, reserving <span class="math" data-tex="$\psi(x)$">$\psi(x)$</span> for Chebyshev's prime-power sum.</p>
+<p><strong>Proposition 5.1.</strong> Away from the poles,
+<span class="math math-display" data-tex="$$
+\frac{\Gamma&#x27;}{\Gamma}(z)
+=-\gamma-\frac1z+
+\sum_{n=1}^\infty\left(\frac1n-\frac1{n+z}\right)
+=-\gamma+\sum_{n=0}^\infty
+\left(\frac1{n+1}-\frac1{n+z}\right).
+\tag{27}
+$$">$$
+\frac{\Gamma&#x27;}{\Gamma}(z)
+=-\gamma-\frac1z+
+\sum_{n=1}^\infty\left(\frac1n-\frac1{n+z}\right)
+=-\gamma+\sum_{n=0}^\infty
+\left(\frac1{n+1}-\frac1{n+z}\right).
+\tag{27}
+$$</span>
+For <span class="math" data-tex="$\Re z&gt;0$">$\Re z&gt;0$</span> this also equals
+<span class="math math-display" data-tex="$$
+-\gamma+\int_0^1\frac{1-y^{z-1}}{1-y}\,dy.
+\tag{28}
+$$">$$
+-\gamma+\int_0^1\frac{1-y^{z-1}}{1-y}\,dy.
+\tag{28}
+$$</span>
+In particular,
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\frac{\Gamma&#x27;}{\Gamma}(1)&amp;=-\gamma,\\
+\frac{\Gamma&#x27;}{\Gamma}(1/2)&amp;=-\gamma-2\log2,\\
+\frac{\Gamma&#x27;}{\Gamma}(1/4)&amp;=-\gamma-\frac\pi2-3\log2.
+\end{aligned}
+\tag{29}
+$$">$$
+\begin{aligned}
+\frac{\Gamma&#x27;}{\Gamma}(1)&amp;=-\gamma,\\
+\frac{\Gamma&#x27;}{\Gamma}(1/2)&amp;=-\gamma-2\log2,\\
+\frac{\Gamma&#x27;}{\Gamma}(1/4)&amp;=-\gamma-\frac\pi2-3\log2.
+\end{aligned}
+\tag{29}
+$$</span></p>
+<p><strong>Proof.</strong> Logarithmic differentiation of (5) is justified by the locally uniformly convergent tail series, and gives the first formula. Rearrangement of finite partial sums gives the second: the difference is a term tending to zero. For <span class="math" data-tex="$\Re z&gt;0$">$\Re z&gt;0$</span>, integrate
+<span class="math math-display" data-tex="$$
+\sum_{n=0}^N (y^n-y^{n+z-1})
+=\frac{1-y^{z-1}}{1-y}(1-y^{N+1}).
+$$">$$
+\sum_{n=0}^N (y^n-y^{n+z-1})
+=\frac{1-y^{z-1}}{1-y}(1-y^{N+1}).
+$$</span>
+The quotient is bounded near <span class="math" data-tex="$y=1$">$y=1$</span> and is <span class="math" data-tex="$O_z(1+y^{\Re z-1})$">$O_z(1+y^{\Re z-1})$</span> near zero. Dominated convergence proves (28). At <span class="math" data-tex="$z=1$">$z=1$</span> the integral vanishes.</p>
+<p>Put <span class="math" data-tex="$D(z)=\Gamma&#x27;(z)/\Gamma(z)$">$D(z)=\Gamma&#x27;(z)/\Gamma(z)$</span> temporarily. Differentiating (7) and (8) gives
+<span class="math math-display" data-tex="$$
+D(z)-D(1-z)=-\pi\cot\pi z,
+\qquad D(z)+D(z+1/2)=2D(2z)-2\log2.
+\tag{30}
+$$">$$
+D(z)-D(1-z)=-\pi\cot\pi z,
+\qquad D(z)+D(z+1/2)=2D(2z)-2\log2.
+\tag{30}
+$$</span>
+The second identity at <span class="math" data-tex="$z=1/2$">$z=1/2$</span> gives <span class="math" data-tex="$D(1/2)=-\gamma-2\log2$">$D(1/2)=-\gamma-2\log2$</span>. At <span class="math" data-tex="$z=1/4$">$z=1/4$</span> the two identities give, respectively,
+<span class="math math-display" data-tex="$$
+D(1/4)-D(3/4)=-\pi,
+\qquad D(1/4)+D(3/4)=-2\gamma-6\log2.
+$$">$$
+D(1/4)-D(3/4)=-\pi,
+\qquad D(1/4)+D(3/4)=-2\gamma-6\log2.
+$$</span>
+Adding and halving gives the last formula in (29). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Definition 5.2.</strong> The Riemann–Siegel theta function is the real continuous function
+<span class="math math-display" data-tex="$$
+\vartheta(t)=\Im L(1/4+it/2)-\frac t2\log\pi
+\qquad(t\in\mathbb R).
+\tag{31}
+$$">$$
+\vartheta(t)=\Im L(1/4+it/2)-\frac t2\log\pi
+\qquad(t\in\mathbb R).
+\tag{31}
+$$</span>
+We use <span class="math" data-tex="$\vartheta$">$\vartheta$</span> to distinguish this phase from both the prime sum <span class="math" data-tex="$\theta(x)$">$\theta(x)$</span> and the theta series in the next lesson. The branch fixed above gives <span class="math" data-tex="$\vartheta(0)=0$">$\vartheta(0)=0$</span>, and conjugation gives <span class="math" data-tex="$\vartheta(-t)=-\vartheta(t)$">$\vartheta(-t)=-\vartheta(t)$</span>.</p>
+<p><strong>Proposition 5.3.</strong> As <span class="math" data-tex="$t\to+\infty$">$t\to+\infty$</span>,
+<span class="math math-display" data-tex="$$
+\vartheta(t)=\frac t2\log\frac{t}{2\pi}
+-\frac t2-\frac\pi8+O(1/t).
+\tag{32}
+$$">$$
+\vartheta(t)=\frac t2\log\frac{t}{2\pi}
+-\frac t2-\frac\pi8+O(1/t).
+\tag{32}
+$$</span></p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="$a=1/4$">$a=1/4$</span>, <span class="math" data-tex="$b=t/2$">$b=t/2$</span> and <span class="math" data-tex="$z=a+ib$">$z=a+ib$</span>. Then
+<span class="math math-display" data-tex="$$
+\log|z|=\log b+O(b^{-2}),\qquad
+\arg z=\pi/2+O(b^{-1}).
+$$">$$
+\log|z|=\log b+O(b^{-2}),\qquad
+\arg z=\pi/2+O(b^{-1}).
+$$</span>
+Taking imaginary parts in (12) gives
+<span class="math math-display" data-tex="$$
+\Im L(z)=b\log|z|+(a-1/2)\arg z-b+O(b^{-1})
+=b\log b-b-\pi/8+O(b^{-1}).
+$$">$$
+\Im L(z)=b\log|z|+(a-1/2)\arg z-b+O(b^{-1})
+=b\log b-b-\pi/8+O(b^{-1}).
+$$</span>
+Subtracting <span class="math" data-tex="$b\log\pi$">$b\log\pi$</span> proves (32). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The continuous logarithm in (31) preserves the accumulated phase as <span class="math" data-tex="$t$">$t$</span> grows. Replacing it by the principal argument of <span class="math" data-tex="$\Gamma(1/4+it/2)$">$\Gamma(1/4+it/2)$</span> would introduce jumps and invalidate (32). The phase will reappear in the later lessons <em>The Riemann–von Mangoldt formula</em> and <em>Zeros on the critical line: Hardy's theorem</em>.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Prove (9), including <span class="math" data-tex="$t=0$">$t=0$</span>, and recover its large-<span class="math" data-tex="$|t|$">$|t|$</span> asymptotic directly from the hyperbolic cosine.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> For every positive integer <span class="math" data-tex="$m$">$m$</span>, prove Gauss's multiplication formula, as a meromorphic identity:
+<span class="math math-display" data-tex="$$
+\prod_{j=0}^{m-1}\Gamma(z+j/m)
+=(2\pi)^{(m-1)/2}m^{1/2-mz}\Gamma(mz).
+\tag{33}
+$$">$$
+\prod_{j=0}^{m-1}\Gamma(z+j/m)
+=(2\pi)^{(m-1)/2}m^{1/2-mz}\Gamma(mz).
+\tag{33}
+$$</span></p>
+</li>
+<li>
+<p><strong>Medium.</strong> Derive (32) from the sector form of Stirling, keeping track of the constant phase and the error.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Establish both the order and the infinite type of <span class="math" data-tex="$1/\Gamma$">$1/\Gamma$</span>. Explain precisely why it is not <span class="math" data-tex="$O(e^{Cx})$">$O(e^{Cx})$</span> on the negative real axis for any fixed <span class="math" data-tex="$C$">$C$</span> as <span class="math" data-tex="$x\to+\infty$">$x\to+\infty$</span>.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Derive the exact improper-integral remainder in (13) directly from Gauss's finite formula. Prove its sector bound, explain why absolute convergence must be applied after integrating by parts, and identify the Stirling constant.</p>
+</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> The values <span class="math" data-tex="$1/2+it$">$1/2+it$</span> and <span class="math" data-tex="$1/2-it$">$1/2-it$</span> are conjugate and avoid all poles. In (7),
+<span class="math" data-tex="$\sin(\pi/2+i\pi t)=\cosh\pi t$">$\sin(\pi/2+i\pi t)=\cosh\pi t$</span>, so their gamma product is <span class="math" data-tex="$\pi/\cosh\pi t$">$\pi/\cosh\pi t$</span>. This proves (9) for all real <span class="math" data-tex="$t$">$t$</span>, including zero. Since
+<span class="math math-display" data-tex="$$
+\cosh\pi t=\tfrac12 e^{\pi|t|}(1+e^{-2\pi|t|}),
+$$">$$
+\cosh\pi t=\tfrac12 e^{\pi|t|}(1+e^{-2\pi|t|}),
+$$</span>
+the positive square root gives
+<span class="math math-display" data-tex="$$
+|\Gamma(1/2+it)|=\sqrt{2\pi}\,e^{-\pi|t|/2}
+\bigl(1+O(e^{-2\pi|t|})\bigr).
+$$">$$
+|\Gamma(1/2+it)|=\sqrt{2\pi}\,e^{-\pi|t|/2}
+\bigl(1+O(e^{-2\pi|t|})\bigr).
+$$</span>
+This is stronger on this particular line than the general error in (23).</p>
+<p><strong>Solution 2.</strong> For <span class="math" data-tex="$\Re z&gt;0$">$\Re z&gt;0$</span> all factors are nonzero. With <span class="math" data-tex="$D=\Gamma&#x27;/\Gamma$">$D=\Gamma&#x27;/\Gamma$</span>, truncate the second series in (27) after <span class="math" data-tex="$N+1$">$N+1$</span> terms for each of the <span class="math" data-tex="$m$">$m$</span> shifts. Reindex the denominators by <span class="math" data-tex="$k=mn+j$">$k=mn+j$</span>; truncating <span class="math" data-tex="$mD(mz)$">$mD(mz)$</span> after <span class="math" data-tex="$m(N+1)$">$m(N+1)$</span> terms gives
+<span class="math math-display" data-tex="$$
+\sum_{j=0}^{m-1}D(z+j/m)-mD(mz)
+=m\lim_{N\to\infty}(H_{N+1}-H_{m(N+1)})
+=-m\log m.
+$$">$$
+\sum_{j=0}^{m-1}D(z+j/m)-mD(mz)
+=m\lim_{N\to\infty}(H_{N+1}-H_{m(N+1)})
+=-m\log m.
+$$</span>
+The equalities follow from convergence of the series and <span class="math" data-tex="$H_n=\log n+\gamma+O(1/n)$">$H_n=\log n+\gamma+O(1/n)$</span>; the <span class="math" data-tex="$-m\gamma$">$-m\gamma$</span> terms cancel. Therefore
+<span class="math math-display" data-tex="$$
+A_m(z)=\frac{m^{mz-1/2}\prod_{j=0}^{m-1}\Gamma(z+j/m)}{\Gamma(mz)}
+$$">$$
+A_m(z)=\frac{m^{mz-1/2}\prod_{j=0}^{m-1}\Gamma(z+j/m)}{\Gamma(mz)}
+$$</span>
+is holomorphic with zero logarithmic derivative in the connected right half-plane. It is a nonzero constant.</p>
+<p>For real <span class="math" data-tex="$x\to\infty$">$x\to\infty$</span> and fixed <span class="math" data-tex="$a$">$a$</span>, (12) gives
+<span class="math math-display" data-tex="$$
+L(x+a)=(x+a-1/2)\log x-x+\tfrac12\log(2\pi)+O_a(1/x).
+$$">$$
+L(x+a)=(x+a-1/2)\log x-x+\tfrac12\log(2\pi)+O_a(1/x).
+$$</span>
+The sum of the coefficients <span class="math" data-tex="$a=j/m$">$a=j/m$</span> is <span class="math" data-tex="$(m-1)/2$">$(m-1)/2$</span>, hence
+<span class="math math-display" data-tex="$$
+\sum_{j=0}^{m-1}L(x+j/m)
+=(mx-1/2)\log x-mx+\frac m2\log(2\pi)+O_m(1/x).
+$$">$$
+\sum_{j=0}^{m-1}L(x+j/m)
+=(mx-1/2)\log x-mx+\frac m2\log(2\pi)+O_m(1/x).
+$$</span>
+Subtract <span class="math" data-tex="$L(mx)$">$L(mx)$</span> and add <span class="math" data-tex="$(mx-1/2)\log m$">$(mx-1/2)\log m$</span>. All terms depending on <span class="math" data-tex="$x$">$x$</span> cancel, leaving <span class="math" data-tex="$(m-1)\log(2\pi)/2+O_m(1/x)$">$(m-1)\log(2\pi)/2+O_m(1/x)$</span>. Thus <span class="math" data-tex="$A_m=(2\pi)^{(m-1)/2}$">$A_m=(2\pi)^{(m-1)/2}$</span>, proving (33) in the half-plane. The identity theorem extends it meromorphically. For <span class="math" data-tex="$m=1$">$m=1$</span> it is the identity; for <span class="math" data-tex="$m=2$">$m=2$</span> it is duplication.</p>
+<p><strong>Solution 3.</strong> Write <span class="math" data-tex="$z=1/4+ib$">$z=1/4+ib$</span>, <span class="math" data-tex="$b=t/2&gt;0$">$b=t/2&gt;0$</span>. More explicitly,
+<span class="math math-display" data-tex="$$
+\log|z|=\log b+\tfrac12\log(1+1/(16b^2)),
+\qquad \arg z=\pi/2-\arctan(1/(4b)).
+$$">$$
+\log|z|=\log b+\tfrac12\log(1+1/(16b^2)),
+\qquad \arg z=\pi/2-\arctan(1/(4b)).
+$$</span>
+The first correction is <span class="math" data-tex="$O(b^{-2})$">$O(b^{-2})$</span>, so multiplication by <span class="math" data-tex="$b$">$b$</span> leaves <span class="math" data-tex="$O(b^{-1})$">$O(b^{-1})$</span>. The second correction is <span class="math" data-tex="$O(b^{-1})$">$O(b^{-1})$</span>, and its coefficient in the imaginary part of (12) is <span class="math" data-tex="$-1/4$">$-1/4$</span>. Thus
+<span class="math math-display" data-tex="$$
+\Im L(z)=b\log b-b-\pi/8+O(b^{-1}),
+$$">$$
+\Im L(z)=b\log b-b-\pi/8+O(b^{-1}),
+$$</span>
+where the remainder <span class="math" data-tex="$R$">$R$</span> is <span class="math" data-tex="$O(b^{-1})$">$O(b^{-1})$</span> in a fixed sector. Subtract <span class="math" data-tex="$b\log\pi$">$b\log\pi$</span> to obtain (32). The constant <span class="math" data-tex="$-\pi/8$">$-\pi/8$</span> comes from <span class="math" data-tex="$(\Re z-1/2)\arg z$">$(\Re z-1/2)\arg z$</span>, not from a choice of the argument of the value of <span class="math" data-tex="$\Gamma$">$\Gamma$</span>.</p>
+<p><strong>Solution 4.</strong> Split (5) at <span class="math" data-tex="$m=\lceil2r\rceil$">$m=\lceil2r\rceil$</span>. The finite factors contribute at most
+<span class="math math-display" data-tex="$$
+\log r+|\gamma|r+
+\sum_{n=1}^m\log(1+r/n)+rH_m.
+$$">$$
+\log r+|\gamma|r+
+\sum_{n=1}^m\log(1+r/n)+rH_m.
+$$</span>
+The logarithmic sum is at most <span class="math" data-tex="$m\log(m+r)-\log(m!)=O(r)$">$m\log(m+r)-\log(m!)=O(r)$</span> by integral comparison, and <span class="math" data-tex="$rH_m=r\log r+O(r)$">$rH_m=r\log r+O(r)$</span>. The remaining logarithms have total absolute value at most <span class="math" data-tex="$r^2\sum_{n&gt;m}n^{-2}\le r^2/m=O(r)$">$r^2\sum_{n&gt;m}n^{-2}\le r^2/m=O(r)$</span>, so <span class="math" data-tex="$\log M_Q(r)\le r\log r+O(r)$">$\log M_Q(r)\le r\log r+O(r)$</span>. For each real <span class="math" data-tex="$r\ge2$">$r\ge2$</span>, choose the half-integer <span class="math" data-tex="$x=\lfloor r-1/2\rfloor+1/2$">$x=\lfloor r-1/2\rfloor+1/2$</span>. Equations (25)–(26) and the maximum-modulus theorem give
+<span class="math math-display" data-tex="$$
+\log M_Q(r)\ge\log|Q(-x)|
+=r\log r-r+O(\log r).
+$$">$$
+\log M_Q(r)\ge\log|Q(-x)|
+=r\log r-r+O(\log r).
+$$</span>
+Thus (24) holds for every sufficiently large radius. Taking another logarithm proves the order is one, while division by <span class="math" data-tex="$r$">$r$</span> proves the type is infinite. Finally
+<span class="math math-display" data-tex="$$
+\log|Q(-x)|-Cx=x\log x-(1+C)x+O(\log x)\to\infty
+$$">$$
+\log|Q(-x)|-Cx=x\log x-(1+C)x+O(\log x)\to\infty
+$$</span>
+along these half-integers, contradicting any putative <span class="math" data-tex="$O(e^{Cx})$">$O(e^{Cx})$</span> bound. Such a subsequence is necessary: at positive integers <span class="math" data-tex="$x$">$x$</span> the reciprocal is zero.</p>
+<p><strong>Solution 5.</strong> Formula (17), proved by integration on each unit interval, applied to <span class="math" data-tex="$\operatorname{Log}(z+u)$">$\operatorname{Log}(z+u)$</span> gives (18). Inserting it into the logarithm of (4) gives
+<span class="math math-display" data-tex="$$
+L(z)=(z-1/2)\operatorname{Log}z-z+C
+-\lim_{A\to\infty}\int_0^A\frac{\{u\}-1/2}{u+z}\,du,
+$$">$$
+L(z)=(z-1/2)\operatorname{Log}z-z+C
+-\lim_{A\to\infty}\int_0^A\frac{\{u\}-1/2}{u+z}\,du,
+$$</span>
+where <span class="math" data-tex="$C=\lim C_N$">$C=\lim C_N$</span> exists because <span class="math" data-tex="$C_{N+1}-C_N=O(N^{-2})$">$C_{N+1}-C_N=O(N^{-2})$</span>. The passage from integer to arbitrary upper limits is justified by (20): its boundary term is <span class="math" data-tex="$O_z(1/A)$">$O_z(1/A)$</span>. Since <span class="math" data-tex="$F(0)=0$">$F(0)=0$</span> and <span class="math" data-tex="$|F|\le1/8$">$|F|\le1/8$</span>, integration by parts turns the remainder into the absolutely convergent negative integral in (13). For real <span class="math" data-tex="$z&gt;0$">$z&gt;0$</span>, the integral of <span class="math" data-tex="$|b(u)|/(u+z)$">$|b(u)|/(u+z)$</span> diverges: each full period has a fixed positive integral of <span class="math" data-tex="$|b|$">$|b|$</span>, and the resulting lower bound is a divergent harmonic sum. Taking absolute values before this integration by parts would lose the cancellation.</p>
+<p>If <span class="math" data-tex="$|\arg z|\le\pi-\delta$">$|\arg z|\le\pi-\delta$</span>, the exact identity for <span class="math" data-tex="$|u+z|^2$">$|u+z|^2$</span> used in Theorem 3.1 bounds it below by <span class="math" data-tex="$\sin^2(\delta/2)(u+|z|)^2$">$\sin^2(\delta/2)(u+|z|)^2$</span>. Therefore
+<span class="math math-display" data-tex="$$
+|R(z)|\le\frac1{8\sin^2(\delta/2)}
+\int_0^\infty\frac{du}{(u+|z|)^2}
+=\frac1{8\sin^2(\delta/2)|z|}.
+$$">$$
+|R(z)|\le\frac1{8\sin^2(\delta/2)}
+\int_0^\infty\frac{du}{(u+|z|)^2}
+=\frac1{8\sin^2(\delta/2)|z|}.
+$$</span>
+To finish the formula, use duplication on the positive real axis: the asymptotic left side has constant <span class="math" data-tex="$2C$">$2C$</span>, and its right side has constant <span class="math" data-tex="$C+\tfrac12\log(2\pi)$">$C+\tfrac12\log(2\pi)$</span>. Hence <span class="math" data-tex="$C=\tfrac12\log(2\pi)$">$C=\tfrac12\log(2\pi)$</span>. This identifies the constant and proves the full sector statement, including its branch and sign.</p>
+<h2 id="what-this-lesson-assumes">What this lesson assumes</h2>
+<p>We use the basic theorems of complex analysis listed in the introduction. All gamma identities and estimates asserted here are proved above. In particular reflection was obtained by a contour integral, without assuming a sine product or an entire-function factorization theorem.</p>
+<h2 id="freely-readable-sources">Freely readable sources</h2>
+<ul>
+<li>C. T. McMullen, <a href="https://people.math.harvard.edu/~ctm/home/text/class/harvard/213a/23/html/home/course/course.pdf"><em>Advanced Complex Analysis</em></a>, Harvard Math 213a lecture notes, 30 November 2023, 163 pages. Chapter 3, Theorems 3.19–3.25: gamma and Stirling.</li>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, freely readable author preliminary version, 367 pages. Chapter 1, Theorems 1.13–1.14. The remainder sign is proved directly in this lesson.</li>
+</ul>
+</article></main></body></html>

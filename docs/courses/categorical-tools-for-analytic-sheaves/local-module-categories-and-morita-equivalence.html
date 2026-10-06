@@ -1,0 +1,231 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local module categories and Morita equivalence</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="local-module-categories-and-morita-equivalence">Local module categories and Morita equivalence</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, September 2026. Self-checked; no independent review. Public domain (CC0).</em></p>
+<p>A sheaf of rings is one way to describe local linear algebra. It is not the only way. Different sheaves of rings can have equivalent categories of modules, compatibly on every smaller region. For example, a matrix algebra and its scalar ring describe the same module theory. This lesson identifies the object that implements such an equivalence: a bimodule with a tensor inverse. This will let us glue module categories even when the rings themselves do not glue.</p>
+<p>We assume categories, adjunctions, sheaves on a small Grothendieck site, and tensor products of modules. For topological spaces, the module-sheaf foundations are explained in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/sheaves-of-modules-on-a-ringed-space.html#2-the-abelian-category-of-module-sheaves">Sheaves of modules on a ringed space, Section 2, Theorem 2.1</a>. For a general site, use <a href="https://stacks.math.columbia.edu/tag/03D9">The abelian category of sheaves of modules</a> for the corresponding commutative foundations. The arguments below use sheafification and local sections, rather than points of the site. They allow noncommutative algebra sheaves.</p>
+<p>Basic references are [D'Agnolo–Polesello], [Stacks], and [Schapira, Sheaves]. The tensor description of functors is the sheaf version of the Eilenberg–Watts argument; the equivalence theorem is Morita theory.</p>
+<h2 id="1-keep-track-of-both-actions">1. Keep track of both actions</h2>
+<p>Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a small site. Write <span class="math" data-tex="\(X\)">\(X\)</span> for the terminal sheaf of its topos. Let <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> be a sheaf of commutative unital rings, and let <span class="math" data-tex="\(A,B\)">\(A,B\)</span> be sheaves of associative unital <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-algebras. The image of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is central in each algebra. All modules are left modules unless a right action is written explicitly. The same arguments apply over the sheaf of integers if no scalar ring is specified.</p>
+<p>Write <span class="math" data-tex="\(\mathsf{Mod}(A)(U)\)">\(\mathsf{Mod}(A)(U)\)</span> for the category of <span class="math" data-tex="\(A|_U\)">\(A|_U\)</span>-module sheaves on the slice site <span class="math" data-tex="\(\mathcal C/U\)">\(\mathcal C/U\)</span>. These categories, with restriction and its canonical comparison isomorphisms, form the stack <span class="math" data-tex="\(\mathsf{Mod}(A)\)">\(\mathsf{Mod}(A)\)</span>. A functor between such stacks includes coherent isomorphisms expressing its compatibility with restriction. An <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-linear functor acts linearly on morphism sheaves. Global modules are the compatible families of these slice modules: evaluate a family on each test object to recover its sheaf, and restrict a sheaf to obtain the inverse construction. Thus a stack equivalence also induces an equivalence on global modules. The notation <span class="math" data-tex="\(F_X\)">\(F_X\)</span> denotes this induced equivalence. This interpretation applies on every slice topos, even when its terminal sheaf is not represented by an object of the original site.</p>
+<p>An <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span>-bimodule <span class="math" data-tex="\(P\)">\(P\)</span> has a left <span class="math" data-tex="\(A\)">\(A\)</span>-action and a commuting right <span class="math" data-tex="\(B\)">\(B\)</span>-action, with the same <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-action on both sides. Equivalently it is a left module over <span class="math" data-tex="\(A\otimes_{\mathcal O}B^{\mathrm{op}}\)">\(A\otimes_{\mathcal O}B^{\mathrm{op}}\)</span>. Its tensor functor has the direction</p>
+<span class="math math-display" data-tex="\[
+P\otimes_B-:\mathsf{Mod}(B)\longrightarrow\mathsf{Mod}(A).
+\]">\[
+P\otimes_B-:\mathsf{Mod}(B)\longrightarrow\mathsf{Mod}(A).
+\]</span>
+<p>For an <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, the sheaf <span class="math" data-tex="\(\mathcal Hom_A(P,M)\)">\(\mathcal Hom_A(P,M)\)</span> is a left <span class="math" data-tex="\(B\)">\(B\)</span>-module by</p>
+<span class="math math-display" data-tex="\[
+(bq)(p)=q(pb).
+\]">\[
+(bq)(p)=q(pb).
+\]</span>
+<p>The ordinary tensor–Hom adjunction, on each slice, is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_A(P\otimes_B N,M)
+\simeq \operatorname{Hom}_B(N,\mathcal Hom_A(P,M)).
+\tag{1.1}
+\]">\[
+\operatorname{Hom}_A(P\otimes_B N,M)
+\simeq \operatorname{Hom}_B(N,\mathcal Hom_A(P,M)).
+\tag{1.1}
+\]</span>
+<p>To verify it, a map on the left sends <span class="math" data-tex="\(n\)">\(n\)</span> to the map <span class="math" data-tex="\(p\mapsto f(p\otimes n)\)">\(p\mapsto f(p\otimes n)\)</span>. Balancing gives <span class="math" data-tex="\(q_{bn}(p)=q_n(pb)\)">\(q_{bn}(p)=q_n(pb)\)</span>, which is exactly <span class="math" data-tex="\(B\)">\(B\)</span>-linearity. Conversely evaluate such a family at <span class="math" data-tex="\((p,n)\)">\((p,n)\)</span>. These constructions commute with restriction and are inverse.</p>
+<p>Set <span class="math" data-tex="\(P^\vee=\mathcal Hom_A(P,A)\)">\(P^\vee=\mathcal Hom_A(P,A)\)</span>. It is a <span class="math" data-tex="\((B,A)\)">\((B,A)\)</span>-bimodule, where <span class="math" data-tex="\((qa)(p)=q(p)a\)">\((qa)(p)=q(p)a\)</span>. The evaluation map has a fixed direction:</p>
+<span class="math math-display" data-tex="\[
+\varepsilon:P\otimes_B P^\vee\longrightarrow A,
+\qquad p\otimes q\longmapsto q(p).
+\tag{1.2}
+\]">\[
+\varepsilon:P\otimes_B P^\vee\longrightarrow A,
+\qquad p\otimes q\longmapsto q(p).
+\tag{1.2}
+\]</span>
+<p>It is balanced because <span class="math" data-tex="\(q(pb)=(bq)(p)\)">\(q(pb)=(bq)(p)\)</span>, and it respects both <span class="math" data-tex="\(A\)">\(A\)</span>-actions.</p>
+<h2 id="2-a-local-finite-presentation-produces-a-dual-basis">2. A local finite presentation produces a dual basis</h2>
+<p>An <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(P\)">\(P\)</span> is <em>flat</em> if <span class="math" data-tex="\(-\otimes_A P\)">\(-\otimes_A P\)</span>, on right <span class="math" data-tex="\(A\)">\(A\)</span>-module sheaves, is exact. It is <em>faithfully flat</em> if that functor is also faithful. These conditions are required on every slice. An object is <em>locally finitely presented</em> if a covering gives presentations <span class="math" data-tex="\(A^m\to A^n\to P\to0\)">\(A^m\to A^n\to P\to0\)</span> with finite <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, allowed to vary between covering pieces.</p>
+<p><strong>Lemma 2.1.</strong> If <span class="math" data-tex="\(P\)">\(P\)</span> is flat and locally finitely presented, then locally it is a direct summand of a finite free left <span class="math" data-tex="\(A\)">\(A\)</span>-module. Moreover, for every left <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, the map</p>
+<span class="math math-display" data-tex="\[
+P^\vee\otimes_A M\longrightarrow\mathcal Hom_A(P,M),
+\qquad q\otimes m\longmapsto\bigl(p\mapsto q(p)m\bigr)
+\tag{2.1}
+\]">\[
+P^\vee\otimes_A M\longrightarrow\mathcal Hom_A(P,M),
+\qquad q\otimes m\longmapsto\bigl(p\mapsto q(p)m\bigr)
+\tag{2.1}
+\]</span>
+<p>is an isomorphism of sheaves of abelian groups.</p>
+<p><strong>Proof.</strong> Work on a piece with finite presentation <span class="math" data-tex="\(A^m\to A^n\to P\to0\)">\(A^m\to A^n\to P\to0\)</span>. Applying <span class="math" data-tex="\(\mathcal Hom_A(-,A)\)">\(\mathcal Hom_A(-,A)\)</span> gives a left exact sequence of right modules. Tensoring it with the flat left module <span class="math" data-tex="\(P\)">\(P\)</span> preserves exactness. Compare it with the left exact sequence obtained by applying <span class="math" data-tex="\(\mathcal Hom_A(-,P)\)">\(\mathcal Hom_A(-,P)\)</span>. For a finite free module <span class="math" data-tex="\(L\)">\(L\)</span>, the map</p>
+<span class="math math-display" data-tex="\[
+\mathcal Hom_A(L,A)\otimes_A P\longrightarrow\mathcal Hom_A(L,P)
+\]">\[
+\mathcal Hom_A(L,A)\otimes_A P\longrightarrow\mathcal Hom_A(L,P)
+\]</span>
+<p>is an isomorphism: both sides are a finite product of copies of <span class="math" data-tex="\(P\)">\(P\)</span>, and evaluation identifies their coordinates. Taking kernels in the two sequences shows that</p>
+<span class="math math-display" data-tex="\[
+P^\vee\otimes_A P\simeq\mathcal End_A(P).
+\]">\[
+P^\vee\otimes_A P\simeq\mathcal End_A(P).
+\]</span>
+<p>The identity endomorphism is therefore locally the image of a finite sum <span class="math" data-tex="\(\sum_{i=1}^r q_i\otimes p_i\)">\(\sum_{i=1}^r q_i\otimes p_i\)</span>. A section of a sheaf tensor product has such a representation after a covering; further refine if necessary. We obtain</p>
+<span class="math math-display" data-tex="\[
+p=\sum_{i=1}^r q_i(p)p_i. \tag{2.2}
+\]">\[
+p=\sum_{i=1}^r q_i(p)p_i. \tag{2.2}
+\]</span>
+<p>The maps <span class="math" data-tex="\(P\to A^r\)">\(P\to A^r\)</span>, <span class="math" data-tex="\(p\mapsto(q_i(p))_i\)">\(p\mapsto(q_i(p))_i\)</span>, and <span class="math" data-tex="\(A^r\to P\)">\(A^r\to P\)</span>, <span class="math" data-tex="\((a_i)\mapsto\sum_i a_i p_i\)">\((a_i)\mapsto\sum_i a_i p_i\)</span>, have composite the identity on <span class="math" data-tex="\(P\)">\(P\)</span>. This proves the direct-summand assertion.</p>
+<p>For finite free <span class="math" data-tex="\(P\)">\(P\)</span>, (2.1) is an isomorphism by the same coordinate calculation. Both sides preserve finite direct-summand decompositions in <span class="math" data-tex="\(P\)">\(P\)</span>, so it is an isomorphism for a summand of <span class="math" data-tex="\(A^r\)">\(A^r\)</span>. The conclusion is local and hence holds on the site. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No commutativity of <span class="math" data-tex="\(A\)">\(A\)</span> was used. In (2.2), each coefficient <span class="math" data-tex="\(q_i(p)\)">\(q_i(p)\)</span> acts on the left. Moving it to the right would change the assertion.</p>
+<h2 id="3-the-sheaf-morita-theorem">3. The sheaf Morita theorem</h2>
+<p><strong>Theorem 3.1.</strong> For an <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span>-bimodule <span class="math" data-tex="\(P\)">\(P\)</span>, the following conditions are equivalent.</p>
+<ol>
+<li>There is a <span class="math" data-tex="\((B,A)\)">\((B,A)\)</span>-bimodule <span class="math" data-tex="\(Q\)">\(Q\)</span> and bimodule isomorphisms
+<span class="math math-display" data-tex="\[
+P\otimes_B Q\simeq A,\qquad Q\otimes_A P\simeq B.
+\]">\[
+P\otimes_B Q\simeq A,\qquad Q\otimes_A P\simeq B.
+\]</span></li>
+<li>The functor <span class="math" data-tex="\(P\otimes_B-\)">\(P\otimes_B-\)</span> is an equivalence of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-linear stacks of modules.</li>
+<li>As a left <span class="math" data-tex="\(A\)">\(A\)</span>-module, <span class="math" data-tex="\(P\)">\(P\)</span> is faithfully flat and locally finitely presented, and right multiplication induces an isomorphism
+<span class="math math-display" data-tex="\[
+B^{\mathrm{op}}\simeq\mathcal End_A(P).
+\]">\[
+B^{\mathrm{op}}\simeq\mathcal End_A(P).
+\]</span></li>
+</ol>
+<p>Under these conditions, one may take <span class="math" data-tex="\(Q=P^\vee\)">\(Q=P^\vee\)</span>. Evaluation (1.2) is an isomorphism. The inverse equivalence is</p>
+<span class="math math-display" data-tex="\[
+\mathcal Hom_A(P,-)\simeq P^\vee\otimes_A-.
+\tag{3.1}
+\]">\[
+\mathcal Hom_A(P,-)\simeq P^\vee\otimes_A-.
+\tag{3.1}
+\]</span>
+<p>Such a bimodule <span class="math" data-tex="\(P\)">\(P\)</span> is called <em>invertible</em>.</p>
+<p>There is also a symmetric criterion: <span class="math" data-tex="\(P\)">\(P\)</span> is faithfully flat and locally finitely presented as a right <span class="math" data-tex="\(B\)">\(B\)</span>-module, and <span class="math" data-tex="\(A\simeq\mathcal End_{B^{\mathrm{op}}}(P)\)">\(A\simeq\mathcal End_{B^{\mathrm{op}}}(P)\)</span>. Equivalently, one can require the left-module Hom functor in (3.1) to be an equivalence, the right-module tensor functor <span class="math" data-tex="\(-\otimes_A P\)">\(-\otimes_A P\)</span> to be an equivalence, or its right adjoint <span class="math" data-tex="\(\mathcal Hom_{B^{\mathrm{op}}}(P,-)\)">\(\mathcal Hom_{B^{\mathrm{op}}}(P,-)\)</span> to be an equivalence. These descriptions impose the same condition: an adjoint of an equivalence is its inverse, by uniqueness of adjoints.</p>
+<p><strong>Proof.</strong> Condition 1 implies condition 2 by associativity of tensor products. Tensoring first with <span class="math" data-tex="\(P\)">\(P\)</span>, then with <span class="math" data-tex="\(Q\)">\(Q\)</span>, gives the identity functor up to the stated isomorphisms; reversing their order gives the other identity. This is valid on every slice and commutes with restriction.</p>
+<p>Condition 2 also implies condition 1. Indeed, the tensor reconstruction argument in Section 4 uses only presentations, restriction adjunctions and equivalences; it does not use this theorem. Apply that argument to an inverse equivalence <span class="math" data-tex="\(G\)">\(G\)</span>, and put <span class="math" data-tex="\(Q=G(A)\)">\(Q=G(A)\)</span>. It gives <span class="math" data-tex="\(G\simeq Q\otimes_A-\)">\(G\simeq Q\otimes_A-\)</span>. Evaluating the two composite equivalences at the regular modules gives the isomorphisms in condition 1. Naturality with respect to right multiplication makes these isomorphisms bimodule maps.</p>
+<p>Under conditions 1 and 2, the right adjoint in (1.1) is an inverse equivalence. Its counit is the evaluation isomorphism</p>
+<span class="math math-display" data-tex="\[
+P\otimes_B\mathcal Hom_A(P,M)\simeq M.
+\tag{3.2}
+\]">\[
+P\otimes_B\mathcal Hom_A(P,M)\simeq M.
+\tag{3.2}
+\]</span>
+<p>Its unit, at <span class="math" data-tex="\(B\)">\(B\)</span>, identifies <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(\mathcal Hom_A(P,P)\)">\(\mathcal Hom_A(P,P)\)</span>, carrying <span class="math" data-tex="\(b\)">\(b\)</span> to right multiplication by <span class="math" data-tex="\(b\)">\(b\)</span>. As a ring of endomorphisms this is <span class="math" data-tex="\(B^{\mathrm{op}}\)">\(B^{\mathrm{op}}\)</span>: the composite of right multiplications by <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span>, in that order of composition, is right multiplication by <span class="math" data-tex="\(cb\)">\(cb\)</span>.</p>
+<p>The inverse <span class="math" data-tex="\(Q\otimes_A-\)">\(Q\otimes_A-\)</span> and this right adjoint are naturally isomorphic. Evaluating at <span class="math" data-tex="\(A\)">\(A\)</span>, and using naturality for its right multiplications, identifies <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(P^\vee\)">\(P^\vee\)</span> as a bimodule. Choose the resulting unit and counit of the adjunction. Locally the image of <span class="math" data-tex="\(1_B\)">\(1_B\)</span> under the unit <span class="math" data-tex="\(B\to P^\vee\otimes_A P\)">\(B\to P^\vee\otimes_A P\)</span> has a finite expression <span class="math" data-tex="\(\sum_i q_i\otimes p_i\)">\(\sum_i q_i\otimes p_i\)</span>. The triangle identity at <span class="math" data-tex="\(P\)">\(P\)</span> says precisely</p>
+<span class="math math-display" data-tex="\[
+p=\sum_i q_i(p)p_i.
+\]">\[
+p=\sum_i q_i(p)p_i.
+\]</span>
+<p>As in Lemma 2.1, this splits <span class="math" data-tex="\(P\)">\(P\)</span> off a finite free left <span class="math" data-tex="\(A\)">\(A\)</span>-module. Hence <span class="math" data-tex="\(P\)">\(P\)</span> is locally finite projective, flat and finitely presented. Formula (2.1) now gives <span class="math" data-tex="\(\mathcal Hom_A(P,M)=P^\vee\otimes_A M\)">\(\mathcal Hom_A(P,M)=P^\vee\otimes_A M\)</span>. The counit at <span class="math" data-tex="\(A\)">\(A\)</span> and unit at <span class="math" data-tex="\(B\)">\(B\)</span> are the required tensor-inverse maps. Finally, if a right <span class="math" data-tex="\(A\)">\(A\)</span>-module sheaf <span class="math" data-tex="\(N\)">\(N\)</span> satisfies <span class="math" data-tex="\(N\otimes_A P=0\)">\(N\otimes_A P=0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+N\simeq N\otimes_A P\otimes_B P^\vee=0.
+\]">\[
+N\simeq N\otimes_A P\otimes_B P^\vee=0.
+\]</span>
+<p>Since <span class="math" data-tex="\(-\otimes_A P\)">\(-\otimes_A P\)</span> is exact, it is faithful: a morphism sent to zero has image sent to zero, so its image is zero. This proves condition 3 and condition 1.</p>
+<p>Now assume condition 3. Lemma 2.1 gives an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\delta:P^\vee\otimes_A P\simeq B.
+\tag{3.3}
+\]">\[
+\delta:P^\vee\otimes_A P\simeq B.
+\tag{3.3}
+\]</span>
+<p>It sends <span class="math" data-tex="\(q\otimes p&#x27;\)">\(q\otimes p&#x27;\)</span> to the unique <span class="math" data-tex="\(b\)">\(b\)</span> such that <span class="math" data-tex="\(x b=q(x)p&#x27;\)">\(x b=q(x)p&#x27;\)</span> for all local <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span>. The opposite ring in the hypothesis ensures that <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is a <span class="math" data-tex="\((B,B)\)">\((B,B)\)</span>-bimodule map. For example, replacing <span class="math" data-tex="\(q\)">\(q\)</span> by <span class="math" data-tex="\(b_0q\)">\(b_0q\)</span> replaces <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(b_0b\)">\(b_0b\)</span>; replacing <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> by <span class="math" data-tex="\(p&#x27;b_1\)">\(p&#x27;b_1\)</span> replaces it by <span class="math" data-tex="\(bb_1\)">\(bb_1\)</span>.</p>
+<p>Tensor evaluation <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> on the right with <span class="math" data-tex="\(P\)">\(P\)</span>. Its resulting map</p>
+<span class="math math-display" data-tex="\[
+P\otimes_B P^\vee\otimes_A P\longrightarrow P
+\]">\[
+P\otimes_B P^\vee\otimes_A P\longrightarrow P
+\]</span>
+<p>is the isomorphism induced by <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, because both maps send <span class="math" data-tex="\(p\otimes q\otimes p&#x27;\)">\(p\otimes q\otimes p&#x27;\)</span> to <span class="math" data-tex="\(q(p)p&#x27;=p\delta(q\otimes p&#x27;)\)">\(q(p)p&#x27;=p\delta(q\otimes p&#x27;)\)</span>. Faithful flatness of the left <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(P\)">\(P\)</span> reflects isomorphisms of right <span class="math" data-tex="\(A\)">\(A\)</span>-modules: exactness takes kernel and cokernel to those of the tensor map, and faithfulness detects their vanishing. Hence <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is an isomorphism. This proves condition 1.</p>
+<p>Apply the result just proved to <span class="math" data-tex="\(B^{\mathrm{op}},A^{\mathrm{op}}\)">\(B^{\mathrm{op}},A^{\mathrm{op}}\)</span> and the same underlying bimodule. It gives the symmetric criterion. Formula (3.1) follows from Lemma 2.1 and (1.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-recover-the-bimodule-from-an-equivalence">4. Recover the bimodule from an equivalence</h2>
+<p>We now show that Theorem 3.1 describes every linear equivalence of module stacks. The ability to restrict the equivalence is essential.</p>
+<p>For an object <span class="math" data-tex="\(U\)">\(U\)</span> of the site, define <span class="math" data-tex="\(A[U]\)">\(A[U]\)</span> by sheafifying</p>
+<span class="math math-display" data-tex="\[
+V\longmapsto\bigoplus_{a:V\to U} A(V).
+\]">\[
+V\longmapsto\bigoplus_{a:V\to U} A(V).
+\]</span>
+<p>Yoneda and sheafification give</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_A(A[U],M)\simeq M(U).
+\tag{4.1}
+\]">\[
+\operatorname{Hom}_A(A[U],M)\simeq M(U).
+\tag{4.1}
+\]</span>
+<p>Indeed a module map is determined by the section at the summand labeled by <span class="math" data-tex="\(\mathrm{id}_U\)">\(\mathrm{id}_U\)</span>. For <span class="math" data-tex="\(s\in M(U)\)">\(s\in M(U)\)</span>, send <span class="math" data-tex="\(b\)">\(b\)</span> in the summand labeled by <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\,s|_a\)">\(b\,s|_a\)</span>. This gives its inverse. Taking a coproduct over all pairs <span class="math" data-tex="\((U,s)\)">\((U,s)\)</span> gives an epimorphism onto any <span class="math" data-tex="\(M\)">\(M\)</span>, since each local section is in its image. Applying the same construction to its kernel gives a presentation by such coproducts.</p>
+<p>Restriction <span class="math" data-tex="\(j_U^*\)">\(j_U^*\)</span> to <span class="math" data-tex="\(\mathcal C/U\)">\(\mathcal C/U\)</span> has a left adjoint <span class="math" data-tex="\(j_{U!}\)">\(j_{U!}\)</span>. On a module sheaf <span class="math" data-tex="\(N\)">\(N\)</span> of the slice it is the sheafification of</p>
+<span class="math math-display" data-tex="\[
+V\longmapsto\bigoplus_{a:V\to U}N(V\xrightarrow{a}U).
+\]">\[
+V\longmapsto\bigoplus_{a:V\to U}N(V\xrightarrow{a}U).
+\]</span>
+<p>A map from this presheaf to <span class="math" data-tex="\(M\)">\(M\)</span> is precisely a map <span class="math" data-tex="\(N\to j_U^*M\)">\(N\to j_U^*M\)</span>; this proves the adjunction after sheafification. In particular <span class="math" data-tex="\(j_{U!}A|_U=A[U]\)">\(j_{U!}A|_U=A[U]\)</span>. Tensoring with a fixed bimodule commutes with this construction: tensor products distribute over the displayed sums and commute with sheafification.</p>
+<p><strong>Theorem 4.1.</strong> Let <span class="math" data-tex="\(F:\mathsf{Mod}(B)\to\mathsf{Mod}(A)\)">\(F:\mathsf{Mod}(B)\to\mathsf{Mod}(A)\)</span> be an <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-linear equivalence of stacks. Then <span class="math" data-tex="\(P=F(B)\)">\(P=F(B)\)</span> has a canonical <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span>-bimodule structure, and there is a natural isomorphism of stack functors</p>
+<span class="math math-display" data-tex="\[
+F\simeq P\otimes_B-.
+\tag{4.2}
+\]">\[
+F\simeq P\otimes_B-.
+\tag{4.2}
+\]</span>
+<p>The bimodule <span class="math" data-tex="\(P\)">\(P\)</span> satisfies Theorem 3.1.</p>
+<p><strong>Proof.</strong> On a slice, <span class="math" data-tex="\(b\in B(U)\)">\(b\in B(U)\)</span> gives the left <span class="math" data-tex="\(B\)">\(B\)</span>-linear map <span class="math" data-tex="\(r_b:B|_U\to B|_U\)">\(r_b:B|_U\to B|_U\)</span>, <span class="math" data-tex="\(x\mapsto xb\)">\(x\mapsto xb\)</span>. Define <span class="math" data-tex="\(pb=F(r_b)(p)\)">\(pb=F(r_b)(p)\)</span>. Since <span class="math" data-tex="\(r_c\circ r_b=r_{bc}\)">\(r_c\circ r_b=r_{bc}\)</span>, this is a right action. It commutes with the left <span class="math" data-tex="\(A\)">\(A\)</span>-action, and <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-linearity identifies the two scalar actions. Restriction compatibility makes the actions into sheaf actions.</p>
+<p>For <span class="math" data-tex="\(m\in M(U)\)">\(m\in M(U)\)</span>, let <span class="math" data-tex="\(\ell_m:B|_U\to M|_U\)">\(\ell_m:B|_U\to M|_U\)</span> send <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(bm\)">\(bm\)</span>. Define a map locally by</p>
+<span class="math math-display" data-tex="\[
+p\otimes m\longmapsto F(\ell_m)(p).
+\tag{4.3}
+\]">\[
+p\otimes m\longmapsto F(\ell_m)(p).
+\tag{4.3}
+\]</span>
+<p>It is additive in both variables. It is balanced because <span class="math" data-tex="\(\ell_{bm}=\ell_m\circ r_b\)">\(\ell_{bm}=\ell_m\circ r_b\)</span>. It is natural in <span class="math" data-tex="\(M\)">\(M\)</span>, compatible with restriction, and left <span class="math" data-tex="\(A\)">\(A\)</span>-linear. Thus it defines <span class="math" data-tex="\(\theta_M:P\otimes_B M\to F(M)\)">\(\theta_M:P\otimes_B M\to F(M)\)</span>.</p>
+<p>Choose an inverse equivalence <span class="math" data-tex="\(G\)">\(G\)</span>. The restriction isomorphisms for <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, together with the adjunction for <span class="math" data-tex="\(j_{U!}\)">\(j_{U!}\)</span>, give</p>
+<span class="math math-display" data-tex="\[
+F_Xj_{U!}\simeq j_{U!}F_U.
+\]">\[
+F_Xj_{U!}\simeq j_{U!}F_U.
+\]</span>
+<p>For clarity, maps from the left side to <span class="math" data-tex="\(L\)">\(L\)</span> correspond successively to maps from <span class="math" data-tex="\(j_{U!}N\)">\(j_{U!}N\)</span> to <span class="math" data-tex="\(G_XL\)">\(G_XL\)</span>, from <span class="math" data-tex="\(N\)">\(N\)</span> to <span class="math" data-tex="\(j_U^*G_XL\)">\(j_U^*G_XL\)</span>, from <span class="math" data-tex="\(N\)">\(N\)</span> to <span class="math" data-tex="\(G_Uj_U^*L\)">\(G_Uj_U^*L\)</span>, and from <span class="math" data-tex="\(j_{U!}F_UN\)">\(j_{U!}F_UN\)</span> to <span class="math" data-tex="\(L\)">\(L\)</span>. This proves the isomorphism and its naturality.</p>
+<p>Taking <span class="math" data-tex="\(N=B|_U\)">\(N=B|_U\)</span>, both sides of <span class="math" data-tex="\(\theta_{B[U]}\)">\(\theta_{B[U]}\)</span> identify with <span class="math" data-tex="\(j_{U!}P|_U\)">\(j_{U!}P|_U\)</span>. Under these identifications (4.3) is the identity: on the universal section labeled by <span class="math" data-tex="\(\mathrm{id}_U\)">\(\mathrm{id}_U\)</span>, it is <span class="math" data-tex="\(F(\mathrm{id}_B)\)">\(F(\mathrm{id}_B)\)</span>. Hence it is an isomorphism on these generators and their coproducts. Both functors preserve coproducts and cokernels, the first by tensor adjunction and the second because it is an equivalence. A presentation following (4.1) therefore proves that <span class="math" data-tex="\(\theta_M\)">\(\theta_M\)</span> is an isomorphism for every <span class="math" data-tex="\(M\)">\(M\)</span>. The same construction on slices proves (4.2) as a statement about stacks. Theorem 3.1 applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-matrices-and-line-bundles">5. Matrices and line bundles</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a commutative ring sheaf and <span class="math" data-tex="\(A=M_n(R)\)">\(A=M_n(R)\)</span>, with <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Take <span class="math" data-tex="\(P=R^n\)">\(P=R^n\)</span> as column vectors, an <span class="math" data-tex="\((A,R)\)">\((A,R)\)</span>-bimodule, and <span class="math" data-tex="\(Q=(R^n)^*\)">\(Q=(R^n)^*\)</span> as row vectors. Column times row induces</p>
+<span class="math math-display" data-tex="\[
+P\otimes_R Q\simeq M_n(R).
+\]">\[
+P\otimes_R Q\simeq M_n(R).
+\]</span>
+<p>The elementary columns and rows map to the matrix units, proving this isomorphism. Row times column induces <span class="math" data-tex="\(Q\otimes_A P\simeq R\)">\(Q\otimes_A P\simeq R\)</span>. In that tensor product, write every row and column using matrix units. Balancing reduces every tensor to a scalar multiple of <span class="math" data-tex="\(e_1^*\otimes e_1\)">\(e_1^*\otimes e_1\)</span>, and its pairing is that scalar. Thus the second map also is an isomorphism. Theorem 3.1 gives <span class="math" data-tex="\(\mathsf{Mod}(M_n(R))\simeq\mathsf{Mod}(R)\)">\(\mathsf{Mod}(M_n(R))\simeq\mathsf{Mod}(R)\)</span>. The rings need not be isomorphic.</p>
+<p>For another example, let <span class="math" data-tex="\(L\)">\(L\)</span> be a locally free <span class="math" data-tex="\(R\)">\(R\)</span>-module of rank one. Then <span class="math" data-tex="\(L^*=\mathcal Hom_R(L,R)\)">\(L^*=\mathcal Hom_R(L,R)\)</span> is its tensor inverse. The functor <span class="math" data-tex="\(L\otimes_R-\)">\(L\otimes_R-\)</span> is a linear autoequivalence. The line bundle is allowed to be globally nontrivial.</p>
+<p><strong>Corollary 5.1.</strong> On a locally ringed topological space with nonzero commutative stalk rings, every <span class="math" data-tex="\(R\)">\(R\)</span>-linear autoequivalence of <span class="math" data-tex="\(\mathsf{Mod}(R)\)">\(\mathsf{Mod}(R)\)</span> is tensoring with a line bundle, unique up to isomorphism.</p>
+<p><strong>Proof.</strong> By Theorem 4.1 it is tensoring with a bimodule <span class="math" data-tex="\(P\)">\(P\)</span>. The two <span class="math" data-tex="\(R\)">\(R\)</span>-actions agree by linearity. Locally <span class="math" data-tex="\(P\)">\(P\)</span> is finite projective. A finite projective module over a commutative local ring is free: lift a basis of its reduction modulo the maximal ideal, use Nakayama to get a surjection from a finite free module, split it, and apply Nakayama to the finitely generated complementary summand. If its rank were at least two, its matrix endomorphism ring would be noncommutative. Rank zero is excluded by faithful flatness. Since <span class="math" data-tex="\(\mathcal End_R(P)\simeq R\)">\(\mathcal End_R(P)\simeq R\)</span>, its rank is one. Evaluation at <span class="math" data-tex="\(R\)">\(R\)</span> recovers <span class="math" data-tex="\(P\)">\(P\)</span>, proving uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>To pass from a stalk basis to a neighborhood basis, use a finite splitting <span class="math" data-tex="\(P\subset R^n\)">\(P\subset R^n\)</span>. Lift the finitely many entries of a basis map and its inverse at the stalk to a neighborhood. Their composites are the identities at the stalk; shrink so the finitely many matrix entries of these identities agree on that neighborhood. This gives a basis there. On general ringed sites, the corresponding local-freeness statement requires a precise covering condition; <a href="https://stacks.math.columbia.edu/tag/0B8Q">Stacks, Invertible modules on locally ringed topoi</a> gives that formulation.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><strong>Exercise 6.1 (foundation).</strong> For left <span class="math" data-tex="\(B\)">\(B\)</span>-modules, determine the ring structure of <span class="math" data-tex="\(\operatorname{End}_B(B)\)">\(\operatorname{End}_B(B)\)</span>. Explain why <span class="math" data-tex="\(B\)">\(B\)</span>, rather than <span class="math" data-tex="\(B^{\mathrm{op}}\)">\(B^{\mathrm{op}}\)</span>, would give the wrong action in Theorem 3.1.</p>
+<p><strong>Solution.</strong> A left-linear map has the form <span class="math" data-tex="\(x\mapsto xb\)">\(x\mapsto xb\)</span>, where <span class="math" data-tex="\(b\)">\(b\)</span> is its value at <span class="math" data-tex="\(1\)">\(1\)</span>. The composite <span class="math" data-tex="\(r_b\circ r_c\)">\(r_b\circ r_c\)</span> has value <span class="math" data-tex="\(cb\)">\(cb\)</span>. Hence the endomorphism ring is <span class="math" data-tex="\(B^{\mathrm{op}}\)">\(B^{\mathrm{op}}\)</span>. On <span class="math" data-tex="\(P\)">\(P\)</span>, a left <span class="math" data-tex="\(B\)">\(B\)</span>-action obtained from these maps would reverse the multiplication law. A right <span class="math" data-tex="\(B\)">\(B\)</span>-action has exactly the required law <span class="math" data-tex="\((pb)c=p(bc)\)">\((pb)c=p(bc)\)</span>.</p>
+<p><strong>Exercise 6.2 (calculation).</strong> For <span class="math" data-tex="\(A=M_2(R)\)">\(A=M_2(R)\)</span>, compute the module corresponding to an <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>. Construct both maps of the equivalence without choosing generators for <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(e=E_{11}\)">\(e=E_{11}\)</span>. The inverse sends <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\(eM\)">\(eM\)</span>. The forward map <span class="math" data-tex="\(R^2\otimes_R eM\to M\)">\(R^2\otimes_R eM\to M\)</span> sends <span class="math" data-tex="\(e_i\otimes m\)">\(e_i\otimes m\)</span> to <span class="math" data-tex="\(E_{i1}m\)">\(E_{i1}m\)</span>. Its inverse sends <span class="math" data-tex="\(m\)">\(m\)</span> to <span class="math" data-tex="\(e_1\otimes E_{11}m+e_2\otimes E_{12}m\)">\(e_1\otimes E_{11}m+e_2\otimes E_{12}m\)</span>. Each second factor lies in <span class="math" data-tex="\(eM\)">\(eM\)</span>. Their composite on <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\((E_{11}+E_{21}E_{12})m=(E_{11}+E_{22})m=m\)">\((E_{11}+E_{21}E_{12})m=(E_{11}+E_{22})m=m\)</span>. On <span class="math" data-tex="\(e_i\otimes m\)">\(e_i\otimes m\)</span>, the reverse composite uses <span class="math" data-tex="\(E_{1j}E_{i1}=\delta_{ji}E_{11}\)">\(E_{1j}E_{i1}=\delta_{ji}E_{11}\)</span>, so it is the identity as well. These formulas respect restriction.</p>
+<p><strong>Exercise 6.3 (hypotheses).</strong> Over a field <span class="math" data-tex="\(k\)">\(k\)</span>, the module <span class="math" data-tex="\(P=k^2\)">\(P=k^2\)</span> is faithfully flat and finitely presented. Does <span class="math" data-tex="\(P\otimes_k-\)">\(P\otimes_k-\)</span> define an autoequivalence of <span class="math" data-tex="\(k\)">\(k\)</span>-modules?</p>
+<p><strong>Solution.</strong> No. The scalar map <span class="math" data-tex="\(k\to\operatorname{End}_k(k^2)=M_2(k)\)">\(k\to\operatorname{End}_k(k^2)=M_2(k)\)</span> is not onto; for instance <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> is not a scalar matrix. Thus condition 3 fails. Directly, the induced map from <span class="math" data-tex="\(\operatorname{End}_k(k)\)">\(\operatorname{End}_k(k)\)</span> to <span class="math" data-tex="\(\operatorname{End}_k(P)\)">\(\operatorname{End}_k(P)\)</span> is not onto, so the tensor functor is not full. Faithful flatness alone does not imply Morita equivalence.</p>
+<p><strong>Exercise 6.4 (synthesis).</strong> Suppose <span class="math" data-tex="\(P\)">\(P\)</span> implements an equivalence from <span class="math" data-tex="\(B\)">\(B\)</span>-modules to <span class="math" data-tex="\(A\)">\(A\)</span>-modules and <span class="math" data-tex="\(T\)">\(T\)</span> one from <span class="math" data-tex="\(C\)">\(C\)</span>-modules to <span class="math" data-tex="\(B\)">\(B\)</span>-modules. Describe the bimodule and inverse for the composite.</p>
+<p><strong>Solution.</strong> The bimodule is <span class="math" data-tex="\(P\otimes_B T\)">\(P\otimes_B T\)</span>, with its left <span class="math" data-tex="\(A\)">\(A\)</span>- and right <span class="math" data-tex="\(C\)">\(C\)</span>-actions. If <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> are inverses of <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span>, its inverse is <span class="math" data-tex="\(S\otimes_B Q\)">\(S\otimes_B Q\)</span>. Associativity gives
+<span class="math math-display" data-tex="\[
+(P\otimes_B T)\otimes_C(S\otimes_B Q)
+\simeq P\otimes_B B\otimes_B Q\simeq A.
+\]">\[
+(P\otimes_B T)\otimes_C(S\otimes_B Q)
+\simeq P\otimes_B B\otimes_B Q\simeq A.
+\]</span>
+Reversing the order gives <span class="math" data-tex="\(C\)">\(C\)</span>. Every map respects the outside actions. The composite equivalence follows from Theorem 3.1.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[D'Agnolo–Polesello]</strong> Andrea D'Agnolo and Pietro Polesello, <em>Stacks of twisted modules and integral transforms</em>, in <em>Geometric Aspects of Dwork Theory</em>, Walter de Gruyter, 2004. <a href="https://arxiv.org/abs/math/0307387">Open preprint</a>.</li>
+<li><strong>[Stacks]</strong> The Stacks Project Authors, <em>The Stacks Project</em>: <a href="https://stacks.math.columbia.edu/download/sites-modules.pdf">Modules on Sites</a>, <a href="https://stacks.math.columbia.edu/tag/0268">Stacks</a>, and <a href="https://stacks.math.columbia.edu/tag/01AG">sheaves of modules on ringed spaces</a>.</li>
+<li><strong>[Schapira, Sheaves]</strong> Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf"><em>An Introduction to Sheaves on Grothendieck Topologies</em></a>, lecture notes, version of 1 August 2026, Sections 2.5–2.6, for modules over sheaves of rings and ringed sites.</li>
+</ul>
+</main></body></html>

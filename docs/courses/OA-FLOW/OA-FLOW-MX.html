@@ -1,0 +1,296 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Normal operator filters and their relative topology · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L39.html">Previous lesson</a><a href="OA-FLOW-L80.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-MX.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original programme exposition in Codex (OpenAI), September2026; restoration and supporting proofs by GPT-6 Astra (OpenAI), Ultra, independent review by GPT-6.1 Sol (OpenAI), Ultra, and owner mathematical/source/expression review by GPT-6 Astra (OpenAI), Ultra, October2026. Human review and formal verification are not asserted.</p><h1 id="OA-FLOW.MX.0">Normal operator filters and their relative topology</h1>
+<p>This chapter supplies the exact operator-space foundation for the spectral sum and filtration theorems that follow. It retains the projective-tensor and preadjoint arguments from the preserved operator-module lesson, and binds them to the current complete Fourier and integration proofs. Normal operators are used as a norm-closed space with a specified relative topology; no full-dual or ambient weak-star-closed assertion is made.</p>
+<p><em>Written in Codex (OpenAI), 2026. No human review is claimed. Newly written original expression is dedicated under CC0.</em></p>
+<p>The earlier inputs are <span class="unlinked">BS0–4</span> for specified-dual vector actions, <span class="unlinked">BS6</span> for the preadjoint integration mechanism, <span class="unlinked">LF0–7</span> for Fourier products, local cutoffs and closed ideals, <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">L24 §§2–5</a> for Haar representatives, translations and full-domain integrals, <a href="OA-FLOW-HR.html#hr-05">HR5</a> for qualified Radon-product interchange, <a href="OA-FLOW-HARMONIC.html#l138-h1">H1</a> for Fourier uniqueness, and <a href="OA-FLOW-HARMONIC-LATE.html#l138-h2">H2–4</a> for the scalar Fourier unitary and paired dual Haar measure. Finite compact partitions are proved in <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a>. Norm separation uses <span class="unlinked">CF1</span>; the norm completion needed here is constructed in MX0.</p>
+<p>Throughout this packet, write</p>
+<p><a id="equation-mx1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \mathcal Fa(p)=\int_G a(t)(t,p)\,dt,\qquad
+ \alpha_f x=\int_G a(t)\alpha_t x\,dt\quad(f=\mathcal Fa).
+ \tag{MX1}
+\]">\[
+ \mathcal Fa(p)=\int_G a(t)(t,p)\,dt,\qquad
+ \alpha_f x=\int_G a(t)\alpha_t x\,dt\quad(f=\mathcal Fa).
+ \tag{MX1}
+\]</span>
+This is the positive-character convention. It is obtained from the negative-character LF/BS convention by replacing the frequency by its inverse. Reflection is an isometric algebra isomorphism, so it preserves every support, ideal and cutoff assertion with its frequency sets reflected. This is also the independently checked convention in AF0; no AF1–4 result is needed here. Haar integration uses L24's finite-exponent Borel representatives on sigma compact carriers and HR5's Radon product, never an unrestricted product-Borel identification.</p>
+<p><a id="mx-0"></a></p>
+<h2 id="mx0-preadjoints-and-the-operator-sigma-topology">MX0. Preadjoints and the operator sigma topology</h2>
+<p>Let <span class="math" data-tex="\(X=X_*^*\)">\(X=X_*^*\)</span> and <span class="math" data-tex="\(Y=Y_*^*\)">\(Y=Y_*^*\)</span> be complex Banach duals with their specified preduals. Denote by <span class="math" data-tex="\(\mathcal L_w(X,Y)\)">\(\mathcal L_w(X,Y)\)</span> the bounded linear maps <span class="math" data-tex="\(T:X\to Y\)">\(T:X\to Y\)</span> that are continuous from the specified weak-star topology of <span class="math" data-tex="\(X\)">\(X\)</span> to that of <span class="math" data-tex="\(Y\)">\(Y\)</span>. A bounded map lies in this space exactly when</p>
+<p><a id="equation-o1"></a></p>
+<p><span class="math math-display" data-tex="$$T^*(Y_*)\subset X_*. \tag{O1}$$">$$T^*(Y_*)\subset X_*. \tag{O1}$$</span></p>
+<p>Indeed, for <span class="math" data-tex="\(\psi\in Y_*\)">\(\psi\in Y_*\)</span>, the functional <span class="math" data-tex="\(x\mapsto\langle Tx,\psi\rangle\)">\(x\mapsto\langle Tx,\psi\rangle\)</span> is weak-star continuous precisely when it belongs to <span class="math" data-tex="\(X_*\)">\(X_*\)</span>. Condition (O1) therefore defines the preadjoint <span class="math" data-tex="\(T_*:Y_*\to X_*\)">\(T_*:Y_*\to X_*\)</span> by</p>
+<p><a id="equation-o2"></a></p>
+<p><span class="math math-display" data-tex="$$\langle Tx,\psi\rangle=\langle x,T_*\psi\rangle,\qquad
+\|T_*\|=\|T\|. \tag{O2}$$">$$\langle Tx,\psi\rangle=\langle x,T_*\psi\rangle,\qquad
+\|T_*\|=\|T\|. \tag{O2}$$</span></p>
+<p>Conversely every bounded <span class="math" data-tex="\(S:Y_*\to X_*\)">\(S:Y_*\to X_*\)</span> has adjoint <span class="math" data-tex="\(S^*:X\to Y\)">\(S^*:X\to Y\)</span> in <span class="math" data-tex="\(\mathcal L_w(X,Y)\)">\(\mathcal L_w(X,Y)\)</span>. Hence <span class="math" data-tex="\(T\mapsto T_*\)">\(T\mapsto T_*\)</span> is an isometric linear correspondence with <span class="math" data-tex="\(\mathcal L(Y_*,X_*)\)">\(\mathcal L(Y_*,X_*)\)</span>. It also proves that <span class="math" data-tex="\(\mathcal L_w(X,Y)\)">\(\mathcal L_w(X,Y)\)</span> is closed in the operator norm.</p>
+<p>Put <span class="math" data-tex="\(Q=X\widehat\otimes_\pi Y_*\)">\(Q=X\widehat\otimes_\pi Y_*\)</span>, the projective tensor product. We use its standard duality with bounded bilinear forms: a bounded <span class="math" data-tex="\(T:X\to Y=Y_*^*\)">\(T:X\to Y=Y_*^*\)</span> corresponds isometrically to the functional</p>
+<p><a id="equation-o3"></a></p>
+<p><span class="math math-display" data-tex="$$\langle T,x\otimes\psi\rangle_Q=\langle Tx,\psi\rangle,
+\qquad Q^*\cong\mathcal L(X,Y). \tag{O3}$$">$$\langle T,x\otimes\psi\rangle_Q=\langle Tx,\psi\rangle,
+\qquad Q^*\cong\mathcal L(X,Y). \tag{O3}$$</span></p>
+<p>The source's ambient relative topology is <span class="math" data-tex="\(\sigma_0=\sigma(Q^*,Q)|_{\mathcal L_w}\)">\(\sigma_0=\sigma(Q^*,Q)|_{\mathcal L_w}\)</span>. It agrees with pointwise weak-star convergence <strong>on norm-bounded sets</strong>: finite tensors give the point evaluations, and their projective-norm density extends convergence to every tensor when the operators have a uniform norm bound. No such extension is automatic for an arbitrary unbounded net.</p>
+<p>For an auxiliary completion put <span class="math" data-tex="\(V=\mathcal L_w(X,Y)\)">\(V=\mathcal L_w(X,Y)\)</span>, and define</p>
+<p><a id="equation-o3a"></a></p>
+<p><span class="math math-display" data-tex="$$\begin{aligned}
+\ell_{x,\psi}(T)&amp;=\langle Tx,\psi\rangle,\\
+\mathcal E&amp;=\overline{\operatorname{span}\{\ell_{x,\psi}:x\in X,\ \psi\in Y_*\}}^{\|\cdot\|_{V^*}},\\
+\sigma&amp;=\sigma(V,\mathcal E).
+\end{aligned} \tag{O3a}$$">$$\begin{aligned}
+\ell_{x,\psi}(T)&amp;=\langle Tx,\psi\rangle,\\
+\mathcal E&amp;=\overline{\operatorname{span}\{\ell_{x,\psi}:x\in X,\ \psi\in Y_*\}}^{\|\cdot\|_{V^*}},\\
+\sigma&amp;=\sigma(V,\mathcal E).
+\end{aligned} \tag{O3a}$$</span></p>
+<p>The pairing is norming: the specified dual norms imply <span class="math" data-tex="\(\|T\|=\sup_{\|x\|\le1,\|\psi\|\le1}|\ell_{x,\psi}(T)|\)">\(\|T\|=\sup_{\|x\|\le1,\|\psi\|\le1}|\ell_{x,\psi}(T)|\)</span>. Consequently <span class="math" data-tex="\(V\)">\(V\)</span> embeds isometrically in <span class="math" data-tex="\(\mathcal E^*\)">\(\mathcal E^*\)</span>, though no surjectivity or weak-star closedness of that image is asserted. The topology <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> agrees with <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span> and with pointwise weak-star convergence on norm-bounded sets, by norm approximation of their test functionals. Every tensor in <span class="math" data-tex="\(Q\)">\(Q\)</span> restricts to a member of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, so <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is at least as strong as <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span>. We prove filter continuity for both topologies. The operator spectral closures below and in the following lessons use the source topology <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span>.</p>
+<p>For clarity, the tensor duality used in (O3) needs only the following construction. On the algebraic tensor product put <span class="math" data-tex="\(\|q\|_\pi=\inf\sum_j\|x_j\|\|\psi_j\|\)">\(\|q\|_\pi=\inf\sum_j\|x_j\|\|\psi_j\|\)</span>, the infimum over finite representations of <span class="math" data-tex="\(q\)">\(q\)</span>. Bounded bilinear forms have bound at most this norm. They separate algebraic tensors: express a nonzero tensor using linearly independent finite families, choose coordinate functionals on their finite-dimensional spans, and extend them by Hahn–Banach. Thus this is a norm. Complete it to obtain <span class="math" data-tex="\(Q\)">\(Q\)</span>. Every bounded bilinear form extends uniquely to the completion with the same norm. Conversely a functional on <span class="math" data-tex="\(Q\)">\(Q\)</span> gives such a form by evaluating elementary tensors. Because <span class="math" data-tex="\(Y=Y_*^*\)">\(Y=Y_*^*\)</span>, each form is exactly <span class="math" data-tex="\(\langle Tx,\psi\rangle\)">\(\langle Tx,\psi\rangle\)</span> for a bounded operator <span class="math" data-tex="\(T:X\to Y\)">\(T:X\to Y\)</span>; taking the two unit-ball suprema gives its norm. This proves (O3), not a corresponding full-dual claim for its normal subspace.</p>
+<p>The elementary norm facts in that construction can be made explicit. A norm on a finite-dimensional span is bounded above by a constant times the Euclidean coordinate norm. On the Euclidean unit sphere it is continuous and positive, so CF1 compactness gives a positive minimum. Thus the coordinate functionals on the span are bounded, as required before Hahn–Banach is used. The completion of a normed space consists of its Cauchy sequences modulo differences tending to zero; addition and scalar multiplication are termwise and the norm is the limit of the original norms. These definitions are independent of representatives by the triangle inequality. Constant sequences embed the original space isometrically and densely, since a Cauchy sequence is arbitrarily close to each sufficiently late constant term. To verify completeness, take a Cauchy sequence of classes, retain a subsequence with consecutive distances at most <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>, and approximate its <span class="math" data-tex="\(j\)">\(j\)</span>-th term by an original-space vector to within <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>. The approximating vectors are Cauchy by the summable consecutive-distance bound. Their class is the limit of that subsequence, and then of the whole Cauchy sequence by its Cauchy property. Bounded functionals extend by taking limits along representatives, with unchanged norm. This justifies every completion assertion used for <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><a id="mx-1"></a></p>
+<h2 id="OA-FLOW.MX.1">MX1. Conjugation by two dual Banach actions</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be an arbitrary locally compact Hausdorff abelian group, <span class="math" data-tex="\(H=\widehat G\)">\(H=\widehat G\)</span>, and let <span class="math" data-tex="\(\alpha:G\to\operatorname{GL}(X)\)">\(\alpha:G\to\operatorname{GL}(X)\)</span>, <span class="math" data-tex="\(\beta:G\to\operatorname{GL}(Y)\)">\(\beta:G\to\operatorname{GL}(Y)\)</span> satisfy the specified-dual hypotheses of BS0–1: their operators are weak-star continuous, their predual orbits are norm continuous, and</p>
+<p><a id="equation-o4"></a></p>
+<p><span class="math math-display" data-tex="$$C_\alpha=\sup_t\|\alpha_t\|&lt;\infty,\qquad
+C_\beta=\sup_t\|\beta_t\|&lt;\infty. \tag{O4}$$">$$C_\alpha=\sup_t\|\alpha_t\|&lt;\infty,\qquad
+C_\beta=\sup_t\|\beta_t\|&lt;\infty. \tag{O4}$$</span></p>
+<p>Write <span class="math" data-tex="\(\alpha_{t,*}:X_*\to X_*\)">\(\alpha_{t,*}:X_*\to X_*\)</span> and <span class="math" data-tex="\(\beta_{t,*}:Y_*\to Y_*\)">\(\beta_{t,*}:Y_*\to Y_*\)</span> for the preadjoints, so <span class="math" data-tex="\(\langle\alpha_t x,\phi\rangle=\langle x,\alpha_{t,*}\phi\rangle\)">\(\langle\alpha_t x,\phi\rangle=\langle x,\alpha_{t,*}\phi\rangle\)</span>. Define</p>
+<p><a id="equation-o5"></a></p>
+<p><span class="math math-display" data-tex="$$\gamma_t(T)=\beta_tT\alpha_{-t},\qquad T\in\mathcal L_w(X,Y). \tag{O5}$$">$$\gamma_t(T)=\beta_tT\alpha_{-t},\qquad T\in\mathcal L_w(X,Y). \tag{O5}$$</span></p>
+<p>Composition of normal maps makes <span class="math" data-tex="\(\gamma_t(T)\)">\(\gamma_t(T)\)</span> normal. Since <span class="math" data-tex="\(G\)">\(G\)</span> is abelian, <span class="math" data-tex="\(\gamma_s\gamma_t=\gamma_{s+t}\)">\(\gamma_s\gamma_t=\gamma_{s+t}\)</span>, and <span class="math" data-tex="\(\sup_t\|\gamma_t\|\le C_\alpha C_\beta\)">\(\sup_t\|\gamma_t\|\le C_\alpha C_\beta\)</span>. For fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the tensor map <span class="math" data-tex="\(x\otimes\psi\mapsto\alpha_{-t}x\otimes\beta_{t,*}\psi\)">\(x\otimes\psi\mapsto\alpha_{-t}x\otimes\beta_{t,*}\psi\)</span> extends boundedly on <span class="math" data-tex="\(Q\)">\(Q\)</span> by the projective norm and proves <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span>-continuity of <span class="math" data-tex="\(\gamma_t\)">\(\gamma_t\)</span>. The map is also <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-continuous: its pullback on the finite evaluation span sends</p>
+<p><a id="equation-o6"></a></p>
+<p><span class="math math-display" data-tex="$$\ell_{x,\psi}\longmapsto\ell_{\alpha_{-t}x,\beta_{t,*}\psi}, \tag{O6}$$">$$\ell_{x,\psi}\longmapsto\ell_{\alpha_{-t}x,\beta_{t,*}\psi}, \tag{O6}$$</span></p>
+<p>and extends boundedly to <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, since <span class="math" data-tex="\(\gamma_t\)">\(\gamma_t\)</span> is bounded on <span class="math" data-tex="\(V\)">\(V\)</span>. Every orbit <span class="math" data-tex="\(t\mapsto\gamma_t(T)\)">\(t\mapsto\gamma_t(T)\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-continuous as well. For fixed <span class="math" data-tex="\(x,\psi\)">\(x,\psi\)</span>,</p>
+<p><a id="equation-o7"></a></p>
+<p><span class="math math-display" data-tex="$$\langle\gamma_t(T)x,\psi\rangle
+=\langle\alpha_{-t}x,T_*\beta_{t,*}\psi\rangle. \tag{O7}$$">$$\langle\gamma_t(T)x,\psi\rangle
+=\langle\alpha_{-t}x,T_*\beta_{t,*}\psi\rangle. \tag{O7}$$</span></p>
+<p>The second argument is norm continuous by the predual hypothesis and boundedness of <span class="math" data-tex="\(T_*\)">\(T_*\)</span>; the first is weak-star continuous and uniformly bounded. Splitting the difference of two pairings proves scalar continuity at every <span class="math" data-tex="\(t\)">\(t\)</span>. Norm density of the evaluation span in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> and the uniform bound on <span class="math" data-tex="\(\gamma_t(T)\)">\(\gamma_t(T)\)</span> extend continuity to all tests in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. The orbit need not be norm continuous in <span class="math" data-tex="\(V\)">\(V\)</span>, and its <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-continuity alone does not make it a Bochner-integrable operator-valued function.</p>
+<p><a id="mx-2"></a></p>
+<h2 id="OA-FLOW.MX.2">MX2. Full-domain integration and arbitrary-net filter continuity</h2>
+<p>Use the positive Fourier sign (MX1): for <span class="math" data-tex="\(a\in L^1(G)\)">\(a\in L^1(G)\)</span>, write <span class="math" data-tex="\(f=\mathcal Fa\in A(H)\)">\(f=\mathcal Fa\in A(H)\)</span>. We construct the operator filter</p>
+<p><a id="equation-o10"></a></p>
+<p><span class="math math-display" data-tex="$$\Gamma_f(T)=\int_G a(t)\gamma_t(T)\,dt \tag{O10}$$">$$\Gamma_f(T)=\int_G a(t)\gamma_t(T)\,dt \tag{O10}$$</span></p>
+<p>as a scalar integral against every test in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> and prove that it belongs to <span class="math" data-tex="\(\mathcal L_w(X,Y)\)">\(\mathcal L_w(X,Y)\)</span>. The notation agrees with the source's inverse-Fourier convention after replacing its kernel <span class="math" data-tex="\(\widetilde f(-t)\)">\(\widetilde f(-t)\)</span> by <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span>; the sign conversion is the reflection fixed in (MX1).</p>
+<p>Normality follows first from the actual preadjoint:</p>
+<p><a id="equation-o14"></a></p>
+<p><span class="math math-display" data-tex="$$\bigl(\Gamma_f(T)\bigr)_*\psi
+=\int_G a(t)\alpha_{-t,*}T_*\beta_{t,*}\psi\,dt\in X_*. \tag{O14}$$">$$\bigl(\Gamma_f(T)\bigr)_*\psi
+=\int_G a(t)\alpha_{-t,*}T_*\beta_{t,*}\psi\,dt\in X_*. \tag{O14}$$</span></p>
+<p>For <span class="math" data-tex="\(a\in C_c(G)\)">\(a\in C_c(G)\)</span>, this is a Bochner integral of a norm-continuous predual orbit. Its norm is at most <span class="math" data-tex="\(C_\alpha C_\beta\|a\|_1\|T\|\|\psi\|\)">\(C_\alpha C_\beta\|a\|_1\|T\|\|\psi\|\)</span>. Approximation in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> gives the same integral and bound for every <span class="math" data-tex="\(a\in L^1(G)\)">\(a\in L^1(G)\)</span>. Taking its adjoint defines <span class="math" data-tex="\(\Gamma_f(T)\in V\)">\(\Gamma_f(T)\in V\)</span>, and pairing with <span class="math" data-tex="\(x\)">\(x\)</span> gives (O10). In particular,</p>
+<p><a id="equation-o13"></a></p>
+<p><span class="math math-display" data-tex="$$\|\Gamma_f(T)\|\le C_\alpha C_\beta\|f\|_A\|T\|. \tag{O13}$$">$$\|\Gamma_f(T)\|\le C_\alpha C_\beta\|f\|_A\|T\|. \tag{O13}$$</span></p>
+<p>We next prove continuity for the full source topology <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span>.
+Take <span class="math" data-tex="\(a\in C_c(G)\)">\(a\in C_c(G)\)</span> and a compact set <span class="math" data-tex="\(K\)">\(K\)</span> containing its support.
+For fixed <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> and <span class="math" data-tex="\(\psi\in Y_*\)">\(\psi\in Y_*\)</span>, choose a finite nonnegative
+continuous partition <span class="math" data-tex="\(\mathcal P=(h_i,t_i)\)">\(\mathcal P=(h_i,t_i)\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, with
+<span class="math" data-tex="\(\sum_i h_i=1\)">\(\sum_i h_i=1\)</span>, such that
+<span class="math" data-tex="\(\|\beta_{t,*}\psi-\beta_{t_i,*}\psi\|&lt;\varepsilon_{\mathcal P}\)">\(\|\beta_{t,*}\psi-\beta_{t_i,*}\psi\|&lt;\varepsilon_{\mathcal P}\)</span>
+whenever <span class="math" data-tex="\(h_i(t)&gt;0\)">\(h_i(t)&gt;0\)</span>. Norm continuity on the compact set gives
+partitions with errors tending to zero. Form genuine tensors</p>
+<p><a id="equation-o11a"></a></p>
+<p><span class="math math-display" data-tex="$$\begin{aligned}
+x_i&amp;=\int_G a(t)h_i(t)\alpha_{-t}x\,dt\in X,\\
+q_{\mathcal P}(x,\psi)&amp;=\sum_i x_i\otimes\beta_{t_i,*}\psi\in Q.
+\end{aligned} \tag{O11a}$$">$$\begin{aligned}
+x_i&amp;=\int_G a(t)h_i(t)\alpha_{-t}x\,dt\in X,\\
+q_{\mathcal P}(x,\psi)&amp;=\sum_i x_i\otimes\beta_{t_i,*}\psi\in Q.
+\end{aligned} \tag{O11a}$$</span></p>
+<p>Extend each scalar kernel by zero outside <span class="math" data-tex="\(K\)">\(K\)</span>. Its weak-star integral
+exists by BS1. Directly from the projective norm,
+<span class="math" data-tex="\(\|q_{\mathcal P}(x,\psi)\|_\pi
+\le C_\alpha C_\beta\|a\|_1\|x\|\|\psi\|\)">\(\|q_{\mathcal P}(x,\psi)\|_\pi
+\le C_\alpha C_\beta\|a\|_1\|x\|\|\psi\|\)</span>.</p>
+<p>The essential step is convergence in the <strong>projective norm itself</strong>.
+For a second partition <span class="math" data-tex="\(\mathcal R=(k_j,s_j)\)">\(\mathcal R=(k_j,s_j)\)</span>, put
+<span class="math" data-tex="\(x_{ij}=\int a(t)h_i(t)k_j(t)\alpha_{-t}x\,dt\)">\(x_{ij}=\int a(t)h_i(t)k_j(t)\alpha_{-t}x\,dt\)</span>.
+Linearity of this integral and the two partition identities give</p>
+<p><a id="equation-o11b"></a></p>
+<p><span class="math math-display" data-tex="$$\begin{aligned}
+q_{\mathcal P}-q_{\mathcal R}
+ &amp;=\sum_{i,j}x_{ij}\otimes
+       (\beta_{t_i,*}\psi-\beta_{s_j,*}\psi),\\
+\|q_{\mathcal P}-q_{\mathcal R}\|_\pi
+ &amp;\le C_\alpha\|x\|\|a\|_1
+       (\varepsilon_{\mathcal P}+\varepsilon_{\mathcal R}).
+\end{aligned} \tag{O11b}$$">$$\begin{aligned}
+q_{\mathcal P}-q_{\mathcal R}
+ &amp;=\sum_{i,j}x_{ij}\otimes
+       (\beta_{t_i,*}\psi-\beta_{s_j,*}\psi),\\
+\|q_{\mathcal P}-q_{\mathcal R}\|_\pi
+ &amp;\le C_\alpha\|x\|\|a\|_1
+       (\varepsilon_{\mathcal P}+\varepsilon_{\mathcal R}).
+\end{aligned} \tag{O11b}$$</span></p>
+<p>Indeed, where <span class="math" data-tex="\(h_i k_j&gt;0\)">\(h_i k_j&gt;0\)</span>, each sampled vector is within its own
+partition error of <span class="math" data-tex="\(\beta_{t,*}\psi\)">\(\beta_{t,*}\psi\)</span>; and
+<span class="math" data-tex="\(\sum_{i,j}h_i k_j=1\)">\(\sum_{i,j}h_i k_j=1\)</span>. This estimate does not test an arbitrary
+bounded operator against a weak-star integral. It proves an intrinsic
+Cauchy limit <span class="math" data-tex="\(q_a(x,\psi)\in Q\)">\(q_a(x,\psi)\in Q\)</span>, independent of the partitions.</p>
+<p>Using common partitions for any finite collection of vectors <span class="math" data-tex="\(\psi\)">\(\psi\)</span>
+proves linearity in <span class="math" data-tex="\(\psi\)">\(\psi\)</span>; linearity in <span class="math" data-tex="\(x\)">\(x\)</span> follows from the
+integral. The bound above therefore gives a bounded linear map</p>
+<p><a id="equation-o11c"></a></p>
+<p><span class="math math-display" data-tex="$$
+R_a:Q\longrightarrow Q,\qquad
+R_a(x\otimes\psi)=q_a(x,\psi),\qquad
+\|R_a\|\le C_\alpha C_\beta\|a\|_1.
+\tag{O11c}
+$$">$$
+R_a:Q\longrightarrow Q,\qquad
+R_a(x\otimes\psi)=q_a(x,\psi),\qquad
+\|R_a\|\le C_\alpha C_\beta\|a\|_1.
+\tag{O11c}
+$$</span></p>
+<p>For <strong>normal</strong> <span class="math" data-tex="\(T\)">\(T\)</span>, passing <span class="math" data-tex="\(T\)">\(T\)</span> through the finitely many weak-star
+integrals in (O11a) is valid. Uniform approximation of the sampled
+predual vectors then identifies the limit:</p>
+<p><a id="equation-o11d"></a></p>
+<p><span class="math math-display" data-tex="$$
+\langle\Gamma_f(T),q\rangle_Q=\langle T,R_aq\rangle_Q
+\qquad(T\in V,\ q\in Q).
+\tag{O11d}
+$$">$$
+\langle\Gamma_f(T),q\rangle_Q=\langle T,R_aq\rangle_Q
+\qquad(T\in V,\ q\in Q).
+\tag{O11d}
+$$</span></p>
+<p>First this holds on elementary tensors, then on all <span class="math" data-tex="\(Q\)">\(Q\)</span> by the norm
+bounds. Common partitions also prove linearity in <span class="math" data-tex="\(a\)">\(a\)</span>; approximation
+by <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> extends <span class="math" data-tex="\(R_a\)">\(R_a\)</span> in operator norm and (O11d)
+to every <span class="math" data-tex="\(a\in L^1(G)\)">\(a\in L^1(G)\)</span>. Since <span class="math" data-tex="\(R_aq\)">\(R_aq\)</span> is an actual member of <span class="math" data-tex="\(Q\)">\(Q\)</span>,
+(O11d) proves filter continuity for every <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span>-convergent net,
+with no boundedness assumption on that net. No corresponding integral
+identity for nonnormal <span class="math" data-tex="\(T\)">\(T\)</span> is required or asserted.</p>
+<p>We also retain continuity for the completed evaluation topology.
+First take <span class="math" data-tex="\(a\in C_c(G)\)">\(a\in C_c(G)\)</span>. For <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, <span class="math" data-tex="\(\psi\in Y_*\)">\(\psi\in Y_*\)</span>, and a compact subset containing <span class="math" data-tex="\(\operatorname{supp}(a)\)">\(\operatorname{supp}(a)\)</span>, the map <span class="math" data-tex="\(t\mapsto\beta_{t,*}\psi\)">\(t\mapsto\beta_{t,*}\psi\)</span> is norm continuous. Choose finite continuous partitions of unity on that compact set to approximate it uniformly by <span class="math" data-tex="\(\sum_i h_i(t)\psi_i\)">\(\sum_i h_i(t)\psi_i\)</span>. For each <span class="math" data-tex="\(i\)">\(i\)</span>, the weak-star integral</p>
+<p><a id="equation-o11"></a></p>
+<p><span class="math math-display" data-tex="$$x_i=\int_G a(t)h_i(t)\alpha_{-t}x\,dt\in X \tag{O11}$$">$$x_i=\int_G a(t)h_i(t)\alpha_{-t}x\,dt\in X \tag{O11}$$</span></p>
+<p>exists by the predual integration construction of BS1. The finite sum <span class="math" data-tex="\(\sum_i\ell_{x_i,\psi_i}\)">\(\sum_i\ell_{x_i,\psi_i}\)</span> belongs to <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. Normality of <span class="math" data-tex="\(T\)">\(T\)</span> permits passing <span class="math" data-tex="\(T\)">\(T\)</span> through each integral in (O11). If the uniform approximation error to <span class="math" data-tex="\(\beta_{t,*}\psi\)">\(\beta_{t,*}\psi\)</span> is <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, the resulting error, tested against every <strong>normal</strong> <span class="math" data-tex="\(T\in V\)">\(T\in V\)</span> with <span class="math" data-tex="\(\|T\|\le1\)">\(\|T\|\le1\)</span>, is at most <span class="math" data-tex="\(C_\alpha\|x\|\|a\|_1\varepsilon\)">\(C_\alpha\|x\|\|a\|_1\varepsilon\)</span>. Thus these sums converge in the <span class="math" data-tex="\(V^*\)">\(V^*\)</span> norm to a member <span class="math" data-tex="\(S_a\ell_{x,\psi}\in\mathcal E\)">\(S_a\ell_{x,\psi}\in\mathcal E\)</span>, with</p>
+<p><a id="equation-o12"></a></p>
+<p><span class="math math-display" data-tex="$$\begin{aligned}
+(S_a\ell_{x,\psi})(T)
+&amp;=\int_G a(t)\langle T\alpha_{-t}x,\beta_{t,*}\psi\rangle\,dt,\\
+\|S_a\ell_{x,\psi}\|_{\mathcal E}
+&amp;\le C_\alpha C_\beta\|a\|_1\|x\|\|\psi\|.
+\end{aligned} \tag{O12}$$">$$\begin{aligned}
+(S_a\ell_{x,\psi})(T)
+&amp;=\int_G a(t)\langle T\alpha_{-t}x,\beta_{t,*}\psi\rangle\,dt,\\
+\|S_a\ell_{x,\psi}\|_{\mathcal E}
+&amp;\le C_\alpha C_\beta\|a\|_1\|x\|\|\psi\|.
+\end{aligned} \tag{O12}$$</span></p>
+<p>For a finite evaluation sum <span class="math" data-tex="\(q\)">\(q\)</span>, (O12) says <span class="math" data-tex="\((S_aq)(T)=q(\Gamma_f(T))\)">\((S_aq)(T)=q(\Gamma_f(T))\)</span>. The already proved bound (O13) therefore gives</p>
+<p><a id="equation-o12a"></a></p>
+<p><span class="math math-display" data-tex="$$\|S_aq\|_{\mathcal E}
+\le C_\alpha C_\beta\|a\|_1\|q\|_{\mathcal E}. \tag{O12a}$$">$$\|S_aq\|_{\mathcal E}
+\le C_\alpha C_\beta\|a\|_1\|q\|_{\mathcal E}. \tag{O12a}$$</span></p>
+<p>It also shows that the construction respects all linear relations between evaluations. Completion extends <span class="math" data-tex="\(S_a\)">\(S_a\)</span> to <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>; the same bound extends it from compactly supported kernels to all <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>. The identity <span class="math" data-tex="\(q(\Gamma_f(T))=(S_aq)(T)\)">\(q(\Gamma_f(T))=(S_aq)(T)\)</span>, now for every <span class="math" data-tex="\(q\in\mathcal E\)">\(q\in\mathcal E\)</span>, proves <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-continuity of the filter.</p>
+<p>This completed-evaluation proof and the projective-norm proof establish
+both continuity statements. Normality is used only to identify the
+operator integral with the pullback of tests. The norm construction
+(O11b) supplies the tensor limit independently and closes the full
+source-topology assertion.</p>
+<p>The group law and Fubini for compactly supported kernels give <span class="math" data-tex="\(\Gamma_f\Gamma_g=\Gamma_{fg}\)">\(\Gamma_f\Gamma_g=\Gamma_{fg}\)</span>, then the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bounds extend it to all <span class="math" data-tex="\(f,g\in A(H)\)">\(f,g\in A(H)\)</span>. The neighborhood approximate identities of BS1 satisfy</p>
+<p><a id="equation-o15"></a></p>
+<p><span class="math math-display" data-tex="$$\Gamma_{e_V}T\longrightarrow T\quad\text{in }\sigma\text{ and }\sigma_0. \tag{O15}$$">$$\Gamma_{e_V}T\longrightarrow T\quad\text{in }\sigma\text{ and }\sigma_0. \tag{O15}$$</span></p>
+<p>To see this, pair against <span class="math" data-tex="\(\ell_{x,\psi}\)">\(\ell_{x,\psi}\)</span>; the orbit scalar (O7) is continuous at zero, and the nonnegative kernel <span class="math" data-tex="\(a_V\)">\(a_V\)</span> has mass one and support in the identity neighborhood. The uniform bound <span class="math" data-tex="\(\|\Gamma_{e_V}T\|\le C_\alpha C_\beta\|T\|\)">\(\|\Gamma_{e_V}T\|\le C_\alpha C_\beta\|T\|\)</span> extends convergence from finite evaluation sums to every test in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. No norm convergence of the operator orbit is asserted.</p>
+<p>For an arbitrary <span class="math" data-tex="\(L^1\)">\(L^1\)</span> kernel, the last definition is independent of its representative and agrees with the full preadjoint Bochner integral: L24 places the scalar kernel on a sigma compact carrier; each compact part of the norm-continuous orbit has separable image, and the integral bound is <span class="math" data-tex="\(C_\alpha C_\beta|a(t)|\|T\|\|\psi\|\)">\(C_\alpha C_\beta|a(t)|\|T\|\|\psi\|\)</span>. The full Banach-valued integration proof of BS1 applies. Its adjoint has exactly the tested value (O10). Thus neither operator-valued Bochner measurability nor a barycenter theorem on arbitrary compact sets of normal operators is a premise.</p>
+<p>For (O11a), a finite continuous partition on the compact set can be chosen subordinate to the norm-continuity cover by H0. Restrict these Borel functions to that compact set and extend by zero when forming the kernels. The products with <span class="math" data-tex="\(a\)">\(a\)</span> are genuine <span class="math" data-tex="\(L^1\)">\(L^1\)</span> functions. Common refinements give (O11b) even if the partition functions do not extend continuously across the boundary of that compact set.</p>
+<p><a id="mx-3"></a></p>
+<h2 id="OA-FLOW.MX.3">MX3. Closed and open operator spectral spaces</h2>
+<p>For <span class="math" data-tex="\(T\in V=\mathcal L_w(X,Y)\)">\(T\in V=\mathcal L_w(X,Y)\)</span>, define</p>
+<p><a id="equation-mx2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ I_\gamma(T)=\{f\in A(H):\Gamma_f(T)=0\},\qquad
+ \operatorname{Sp}_\gamma(T)=h(I_\gamma(T)).
+ \tag{MX2}
+\]">\[
+ I_\gamma(T)=\{f\in A(H):\Gamma_f(T)=0\},\qquad
+ \operatorname{Sp}_\gamma(T)=h(I_\gamma(T)).
+ \tag{MX2}
+\]</span>
+The module law and (O13) make the annihilator a norm-closed ideal. Apply LF6 to this ideal. A compactly supported Fourier function whose support misses its hull belongs to the ideal; so does every Fourier function vanishing on a neighbourhood of that hull. If the hull is empty, the ideal is all of <span class="math" data-tex="\(A(H)\)">\(A(H)\)</span>, and (O15) gives <span class="math" data-tex="\(T=0\)">\(T=0\)</span>. Moreover</p>
+<p><a id="equation-mx3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{Sp}_\gamma(\Gamma_f T)
+ \subset\operatorname{Sp}_\gamma(T)\cap\operatorname{supp}f.
+ \tag{MX3}
+\]">\[
+ \operatorname{Sp}_\gamma(\Gamma_f T)
+ \subset\operatorname{Sp}_\gamma(T)\cap\operatorname{supp}f.
+ \tag{MX3}
+\]</span>
+For the first inclusion use <span class="math" data-tex="\(I_\gamma(T)\subset I_\gamma(\Gamma_fT)\)">\(I_\gamma(T)\subset I_\gamma(\Gamma_fT)\)</span>. For the second, a point outside <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span> has a compact local plateau <span class="math" data-tex="\(g\)">\(g\)</span> disjoint from that support; then <span class="math" data-tex="\(gf=0\)">\(gf=0\)</span> and <span class="math" data-tex="\(g\in I_\gamma(\Gamma_fT)\)">\(g\in I_\gamma(\Gamma_fT)\)</span>, excluding the point.</p>
+<p>For closed <span class="math" data-tex="\(E\subset H\)">\(E\subset H\)</span>, define <span class="math" data-tex="\(V_\gamma(E)=\{T:\operatorname{Sp}_\gamma(T)\subset E\}\)">\(V_\gamma(E)=\{T:\operatorname{Sp}_\gamma(T)\subset E\}\)</span>. Then</p>
+<p><a id="equation-mx4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ V_\gamma(E)=\bigcap_{\substack{g\in A_c(H)\\\operatorname{supp}g\cap E=\varnothing}}\ker\Gamma_g.
+ \tag{MX4}
+\]">\[
+ V_\gamma(E)=\bigcap_{\substack{g\in A_c(H)\\\operatorname{supp}g\cap E=\varnothing}}\ker\Gamma_g.
+ \tag{MX4}
+\]</span>
+One inclusion is LF6 applied to <span class="math" data-tex="\(I_\gamma(T)\)">\(I_\gamma(T)\)</span>. For the other, at each point outside <span class="math" data-tex="\(E\)">\(E\)</span> choose a compact plateau supported in its complement; its nonzero value excludes that point from the hull. Each kernel is <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span>-closed by (O11d), including for unbounded convergent nets. Thus <span class="math" data-tex="\(V_\gamma(E)\)">\(V_\gamma(E)\)</span> is a closed linear subspace in the relative topology.</p>
+<p>For open <span class="math" data-tex="\(U\)">\(U\)</span>, let <span class="math" data-tex="\(V_{\gamma,0}(U)\)">\(V_{\gamma,0}(U)\)</span> be the <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span>-closed linear span of <span class="math" data-tex="\(\Gamma_fT\)">\(\Gamma_fT\)</span> with <span class="math" data-tex="\(\operatorname{supp}f\subset U\)">\(\operatorname{supp}f\subset U\)</span>. If <span class="math" data-tex="\(U\subset E\subset W\)">\(U\subset E\subset W\)</span>, with <span class="math" data-tex="\(E\)">\(E\)</span> closed and <span class="math" data-tex="\(U,W\)">\(U,W\)</span> open, then</p>
+<p><a id="equation-mx5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ V_{\gamma,0}(U)\subset V_\gamma(E)\subset V_{\gamma,0}(W).
+ \tag{MX5}
+\]">\[
+ V_{\gamma,0}(U)\subset V_\gamma(E)\subset V_{\gamma,0}(W).
+ \tag{MX5}
+\]</span>
+The first inclusion follows from (MX3) and closedness. For the second let <span class="math" data-tex="\(T\in V_\gamma(E)\)">\(T\in V_\gamma(E)\)</span>, <span class="math" data-tex="\(g\in A_c(H)\)">\(g\in A_c(H)\)</span>, and <span class="math" data-tex="\(K=\operatorname{supp}g\)">\(K=\operatorname{supp}g\)</span>. LF4 supplies <span class="math" data-tex="\(c\in A_c(H)\)">\(c\in A_c(H)\)</span>, supported in <span class="math" data-tex="\(W\)">\(W\)</span>, equal to one near the compact <span class="math" data-tex="\(K\cap E\)">\(K\cap E\)</span>; take <span class="math" data-tex="\(c=0\)">\(c=0\)</span> if that intersection is empty. The compact support of <span class="math" data-tex="\(g-cg\)">\(g-cg\)</span> misses <span class="math" data-tex="\(E\)">\(E\)</span>, so (MX4) gives <span class="math" data-tex="\(\Gamma_gT=\Gamma_{cg}T\in V_{\gamma,0}(W)\)">\(\Gamma_gT=\Gamma_{cg}T\in V_{\gamma,0}(W)\)</span>. LF5 norm density and (O13) extend this membership to every <span class="math" data-tex="\(g\in A(H)\)">\(g\in A(H)\)</span>. Applying (O15) and closedness gives <span class="math" data-tex="\(T\in V_{\gamma,0}(W)\)">\(T\in V_{\gamma,0}(W)\)</span>.</p>
+<p>In particular the usual closed-neighbourhood formula holds:</p>
+<p><a id="equation-mx6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ V_\gamma(E)=\bigcap_{W\supset E,\ W\mathrm{\ open}}V_{\gamma,0}(W).
+ \tag{MX6}
+\]">\[
+ V_\gamma(E)=\bigcap_{W\supset E,\ W\mathrm{\ open}}V_{\gamma,0}(W).
+ \tag{MX6}
+\]</span>
+Indeed <span class="math" data-tex="\(V_{\gamma,0}(W)\subset V_\gamma(\overline W)\)">\(V_{\gamma,0}(W)\subset V_\gamma(\overline W)\)</span> by (MX3). For <span class="math" data-tex="\(p\notin E\)">\(p\notin E\)</span>, choose an open neighbourhood <span class="math" data-tex="\(O\)">\(O\)</span> of <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(\overline O\cap E=\varnothing\)">\(\overline O\cap E=\varnothing\)</span> and take <span class="math" data-tex="\(W=H\setminus\overline O\)">\(W=H\setminus\overline O\)</span>; the neighbourhood <span class="math" data-tex="\(O\)">\(O\)</span> keeps <span class="math" data-tex="\(p\)">\(p\)</span> out of <span class="math" data-tex="\(\overline W\)">\(\overline W\)</span>. Hence the intersection of these closed sets is <span class="math" data-tex="\(E\)">\(E\)</span>. The same arguments hold for <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-closures because the filters are also <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-continuous. None of these statements identifies the ideal of a general closed set with the closure of functions vanishing near it: arbitrary closed-set spectral synthesis is not used.</p>
+<p><a id="mx-4"></a></p>
+<h2 id="OA-FLOW.MX.4">MX4. The precise compact-frequency inverse domain</h2>
+<p>If <span class="math" data-tex="\(a\in L^1(G)\)">\(a\in L^1(G)\)</span> and <span class="math" data-tex="\(f=\mathcal Fa\in C_c(H)\)">\(f=\mathcal Fa\in C_c(H)\)</span>, then <span class="math" data-tex="\(a\in L^2(G)\)">\(a\in L^2(G)\)</span>, and its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Fourier transform is <span class="math" data-tex="\(f\)">\(f\)</span>. Here is the compatibility proof needed when an initially known <span class="math" data-tex="\(L^1\)">\(L^1\)</span> kernel is put into the Plancherel domain.</p>
+<p>Choose nonnegative <span class="math" data-tex="\(b_V\in C_c(G)\)">\(b_V\in C_c(G)\)</span> with integral one and support tending to zero, as in L24. The function <span class="math" data-tex="\(a*b_V\)">\(a*b_V\)</span> is in <span class="math" data-tex="\(L^1\cap L^2\)">\(L^1\cap L^2\)</span>. For the second membership, integrate the norm-continuous <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-valued function <span class="math" data-tex="\(t\mapsto L_tb_V\)">\(t\mapsto L_tb_V\)</span> against <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span>; the Bochner bound is <span class="math" data-tex="\(\|a\|_1\|b_V\|_2\)">\(\|a\|_1\|b_V\|_2\)</span>. Its equality with scalar convolution follows first against compact continuous test functions by HR5, then by local Radon uniqueness. The Fourier identity on <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and the already established <span class="math" data-tex="\(L^1\cap L^2\)">\(L^1\cap L^2\)</span> compatibility give</p>
+<p><a id="equation-mx7"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \mathcal F(a*b_V)=f\,\mathcal Fb_V.
+ \tag{MX7}
+\]">\[
+ \mathcal F(a*b_V)=f\,\mathcal Fb_V.
+ \tag{MX7}
+\]</span>
+On <span class="math" data-tex="\(K=\operatorname{supp}f\)">\(K=\operatorname{supp}f\)</span>, <span class="math" data-tex="\(\mathcal Fb_V\to1\)">\(\mathcal Fb_V\to1\)</span> uniformly. Indeed joint character evaluation and compactness of <span class="math" data-tex="\(K\)">\(K\)</span>, proved in H3, give</p>
+<p><a id="equation-mx8"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \sup_{p\in K}|\mathcal Fb_V(p)-1|
+ \le\sup_{t\in\operatorname{supp}b_V,\ p\in K}|(t,p)-1|\longrightarrow0.
+ \tag{MX8}
+\]">\[
+ \sup_{p\in K}|\mathcal Fb_V(p)-1|
+ \le\sup_{t\in\operatorname{supp}b_V,\ p\in K}|(t,p)-1|\longrightarrow0.
+ \tag{MX8}
+\]</span>
+Thus <span class="math" data-tex="\(f\mathcal Fb_V\to f\)">\(f\mathcal Fb_V\to f\)</span> in <span class="math" data-tex="\(L^2(H)\)">\(L^2(H)\)</span>; the inverse unitary gives <span class="math" data-tex="\(a*b_V\to v=\mathcal F^{-1}f\)">\(a*b_V\to v=\mathcal F^{-1}f\)</span> in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. Also <span class="math" data-tex="\(a*b_V\to a\)">\(a*b_V\to a\)</span> in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> by L24. For every <span class="math" data-tex="\(d\in C_c(G)\)">\(d\in C_c(G)\)</span>, the two limits give <span class="math" data-tex="\(\int a\overline d=\int v\overline d\)">\(\int a\overline d=\int v\overline d\)</span>, using respectively <span class="math" data-tex="\(\|d\|_\infty\)">\(\|d\|_\infty\)</span> and <span class="math" data-tex="\(\|d\|_2\)">\(\|d\|_2\)</span>. Local Radon uniqueness identifies them on each sigma compact open coset. Both have sigma compact carriers as finite-exponent classes; only countably many such cosets can meet their nonzero classes. Hence they are the same global Haar class, and <span class="math" data-tex="\(a\in L^2\)">\(a\in L^2\)</span>. H2's inverse integral supplies a continuous representative when required, with the sign in (MX1).</p>
+<p>For <span class="math" data-tex="\(f=\mathcal Fa,g=\mathcal Fb\in A_c(H)\)">\(f=\mathcal Fa,g=\mathcal Fb\in A_c(H)\)</span>, the full <span class="math" data-tex="\(L^2\)">\(L^2\)</span> product formula LF0, reflected to the positive convention, now gives</p>
+<p><a id="equation-mx9"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \mathcal F\bigl[b(t)a(-t)\bigr](q)
+ =\int_H g(r)f(r-q)\,dr.
+ \tag{MX9}
+\]">\[
+ \mathcal F\bigl[b(t)a(-t)\bigr](q)
+ =\int_H g(r)f(r-q)\,dr.
+ \tag{MX9}
+\]</span>
+The kernel on the left is <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by Cauchy–Schwarz. The integral on the right exists at every <span class="math" data-tex="\(q\)">\(q\)</span> and is continuous; LF0 proves the identity pointwise, not merely as an almost-everywhere statement. This is the exact domain and sign used in the filtration converse.</p>
+<p>The mathematical context is <a href="https://doi.org/10.1007/978-3-662-10451-4">Takesaki, Theory of Operator Algebras II</a>, XI §1. The proof here retains the programme's projective-norm construction of the filter pullback and its independent preadjoint construction. It does not import the book's compact-convex-hull theorem.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L39.html">Previous lesson</a><a href="OA-FLOW-L80.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-MX.md">Lesson source</a></nav></main></body></html>

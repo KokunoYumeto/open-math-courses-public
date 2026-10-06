@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Schneider–Lang criterion · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-07.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-schneider-lang-criterion">The Schneider–Lang criterion</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Original exposition, proofs and figures: public domain (CC0). The linked complex-analysis prerequisite retains its own licence.</em></p>
+<p>The exponential function solves a differential equation with rational coefficients, yet it rarely takes algebraic values at algebraic points. The Schneider–Lang criterion makes this tension precise for a whole ring of meromorphic functions. Differentiation controls the arithmetic of a high-order derivative. Many prescribed zeros control the same derivative analytically. Algebraic independence guarantees that the auxiliary function has a first nonzero derivative to compare.</p>
+<p>We use the house and integral-norm conventions of <a href="TR-TRANS-02.html">Heights of algebraic numbers</a>, and the number-field Siegel lemma, Lemma 5.2 of <a href="TR-TRANS-05.html">Siegel's lemma and the six exponentials theorem</a>. That lesson specifies the number-field prerequisites for integral bases and norms. Its maximum-modulus argument is also used here.</p>
+<p>For the analytic prerequisite, the <em>Complex Analysis</em> source is Jiří Lebl's freely available <a href="https://www.jirka.org/ca/ca.pdf"><em>Guide to Cultivating Complex Analysis</em></a>, version 1.9, July 11, 2026: Theorem 3.3.1 proves local Taylor expansion for holomorphic functions; Theorems 3.3.3–3.3.4 prove repeated differentiability and the Cauchy formula for derivatives; Theorem 5.3.2 proves the residue theorem. These exact open proofs cover the one-variable analytic inputs below. The book is dual licensed; the linked prerequisite is used under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. No text or figure from it is copied into this lesson. Several-variable estimates will be proved by iterating those one-variable formulas.</p>
+<h2 id="1-growth-and-differential-rings">1. Growth and differential rings</h2>
+<p>Throughout this lesson <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>. An entire function has <strong>strict order at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span></strong> if some constant <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+|f(z)|\leq \exp(CR^\rho)\qquad(|z|\leq R,\ R\geq1).
+\tag{7.1}
+\]">\[
+|f(z)|\leq \exp(CR^\rho)\qquad(|z|\leq R,\ R\geq1).
+\tag{7.1}
+\]</span>
+<p>A meromorphic function has this property if it is a quotient of two entire functions satisfying (7.1). Constants may differ between functions. A finite collection of sums and products of such entire functions again satisfies (7.1), after increasing <span class="math" data-tex="\(C\)">\(C\)</span>. The exponential <span class="math" data-tex="\(e^{az}\)">\(e^{az}\)</span> has strict order at most <span class="math" data-tex="\(1\)">\(1\)</span>; a polynomial satisfies (7.1) for every <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, since <span class="math" data-tex="\(\log R/R^\rho\to0\)">\(\log R/R^\rho\to0\)</span>. Strict order zero would mean a bounded entire function, so it is deliberately excluded from the estimates with <span class="math" data-tex="\(1/\rho\)">\(1/\rho\)</span>.</p>
+<p>Let <span class="math" data-tex="\(K\subset\mathbb C\)">\(K\subset\mathbb C\)</span> be a number field, and suppose</p>
+<span class="math math-display" data-tex="\[
+\mathcal R=K[f_1,\ldots,f_d],\qquad D\mathcal R\subseteq\mathcal R,
+\qquad D=\frac{d}{dz}.
+\]">\[
+\mathcal R=K[f_1,\ldots,f_d],\qquad D\mathcal R\subseteq\mathcal R,
+\qquad D=\frac{d}{dz}.
+\]</span>
+<p>Choose polynomials <span class="math" data-tex="\(P_i\in K[X_1,\ldots,X_d]\)">\(P_i\in K[X_1,\ldots,X_d]\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+Df_i=P_i(f_1,\ldots,f_d).
+\tag{7.2}
+\]">\[
+Df_i=P_i(f_1,\ldots,f_d).
+\tag{7.2}
+\]</span>
+<p>On the polynomial ring define</p>
+<span class="math math-display" data-tex="\[
+D^*=\sum_{i=1}^d P_i\frac{\partial}{\partial X_i}.
+\tag{7.3}
+\]">\[
+D^*=\sum_{i=1}^d P_i\frac{\partial}{\partial X_i}.
+\tag{7.3}
+\]</span>
+<p>It is a derivation: additivity and the product rule follow from those of each partial derivative. It kills <span class="math" data-tex="\(K\)">\(K\)</span>, takes <span class="math" data-tex="\(X_i\)">\(X_i\)</span> to <span class="math" data-tex="\(P_i\)">\(P_i\)</span>, and is the unique derivation with these properties. Indeed the product rule determines its value on every monomial. The chain rule gives</p>
+<span class="math math-display" data-tex="\[
+D^kP(f_1,\ldots,f_d)=(D^{*k}P)(f_1,\ldots,f_d).
+\tag{7.4}
+\]">\[
+D^kP(f_1,\ldots,f_d)=(D^{*k}P)(f_1,\ldots,f_d).
+\tag{7.4}
+\]</span>
+<p>Relations between the <span class="math" data-tex="\(f_i\)">\(f_i\)</span> cause no problem: (7.4) is an identity after evaluation, not an assertion that the evaluation homomorphism is injective.</p>
+<p>The derivation also extends to the fraction field by</p>
+<span class="math math-display" data-tex="\[
+D(u/v)=\frac{vD(u)-uD(v)}{v^2}.
+\]">\[
+D(u/v)=\frac{vD(u)-uD(v)}{v^2}.
+\]</span>
+<p>This is forced by differentiating <span class="math" data-tex="\(v(u/v)=u\)">\(v(u/v)=u\)</span>. If <span class="math" data-tex="\(u/v=u&#x27;/v&#x27;\)">\(u/v=u&#x27;/v&#x27;\)</span>, differentiate <span class="math" data-tex="\(uv&#x27;=u&#x27;v\)">\(uv&#x27;=u&#x27;v\)</span> and substitute that equality to verify equality of the two displayed expressions. Thus the extension is well defined; direct expansion proves its product rule.</p>
+<h2 id="2-coefficients-factorials-and-common-denominators">2. Coefficients, factorials and common denominators</h2>
+<p>For <span class="math" data-tex="\(P=\sum a_\mu X^\mu\in K[X_1,\ldots,X_d]\)">\(P=\sum a_\mu X^\mu\in K[X_1,\ldots,X_d]\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\operatorname{size}(P)=\max_\mu\overline{a_\mu},
+\qquad
+\overline a=\max_{\sigma:K\hookrightarrow\mathbb C}|\sigma(a)|.
+\]">\[
+\operatorname{size}(P)=\max_\mu\overline{a_\mu},
+\qquad
+\overline a=\max_{\sigma:K\hookrightarrow\mathbb C}|\sigma(a)|.
+\]</span>
+<p>The size of the zero polynomial is zero. A <strong>denominator</strong> <span class="math" data-tex="\(d(P)\)">\(d(P)\)</span> means a positive integer making every coefficient of <span class="math" data-tex="\(d(P)P\)">\(d(P)P\)</span> integral over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. We need an integer that clears a whole row of equations simultaneously; bounds for separate minimal denominators would not supply that.</p>
+<p>Write <span class="math" data-tex="\(P\prec Q\)">\(P\prec Q\)</span>, where <span class="math" data-tex="\(Q\)">\(Q\)</span> has nonnegative real coefficients, if each coefficient of every <span class="math" data-tex="\(\sigma(P)\)">\(\sigma(P)\)</span> has modulus at most the corresponding coefficient of <span class="math" data-tex="\(Q\)">\(Q\)</span>. The triangle inequality, the convolution formula for a product, and multiplication of a differentiated coefficient by a nonnegative integer give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P\prec Q,\ P&#x27;\prec Q&#x27;&amp;\Longrightarrow P+P&#x27;\prec Q+Q&#x27;,
+\quad PP&#x27;\prec QQ&#x27;,\\
+P\prec Q&amp;\Longrightarrow \partial_iP\prec\partial_iQ.
+\end{aligned}
+\tag{7.5}
+\]">\[
+\begin{aligned}
+P\prec Q,\ P&#x27;\prec Q&#x27;&amp;\Longrightarrow P+P&#x27;\prec Q+Q&#x27;,
+\quad PP&#x27;\prec QQ&#x27;,\\
+P\prec Q&amp;\Longrightarrow \partial_iP\prec\partial_iQ.
+\end{aligned}
+\tag{7.5}
+\]</span>
+<p>Let <span class="math" data-tex="\(S=1+X_1+\cdots+X_d\)">\(S=1+X_1+\cdots+X_d\)</span>. If <span class="math" data-tex="\(\deg P\leq r\)">\(\deg P\leq r\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+P\prec\operatorname{size}(P)S^r,
+\tag{7.6}
+\]">\[
+P\prec\operatorname{size}(P)S^r,
+\tag{7.6}
+\]</span>
+<p>because every monomial of total degree at most <span class="math" data-tex="\(r\)">\(r\)</span> occurs in <span class="math" data-tex="\(S^r\)">\(S^r\)</span> with coefficient at least one. Set</p>
+<span class="math math-display" data-tex="\[
+\delta=\max(1,\deg P_1,\ldots,\deg P_d),\qquad
+U=\max\left(1,\sum_i\operatorname{size}(P_i)\right).
+\]">\[
+\delta=\max(1,\deg P_1,\ldots,\deg P_d),\qquad
+U=\max\left(1,\sum_i\operatorname{size}(P_i)\right).
+\]</span>
+<p>Zero <span class="math" data-tex="\(P_i\)">\(P_i\)</span> can be omitted in the degree maximum. Since <span class="math" data-tex="\(\partial_iS^t=tS^{t-1}\prec tS^t\)">\(\partial_iS^t=tS^{t-1}\prec tS^t\)</span>, (7.5)–(7.6) imply, inductively,</p>
+<span class="math math-display" data-tex="\[
+D^{*k}P\prec\operatorname{size}(P)U^k
+\prod_{j=0}^{k-1}(r+j\delta)\,S^{r+k\delta}.
+\tag{7.7}
+\]">\[
+D^{*k}P\prec\operatorname{size}(P)U^k
+\prod_{j=0}^{k-1}(r+j\delta)\,S^{r+k\delta}.
+\tag{7.7}
+\]</span>
+<p>For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, the product is one. For <span class="math" data-tex="\(r=0,k&gt;0\)">\(r=0,k&gt;0\)</span>, the polynomial is constant and its derivative is zero. In all other cases,</p>
+<span class="math math-display" data-tex="\[
+\prod_{j=0}^{k-1}(r+j\delta)
+\leq\delta^k\frac{(r+k)!}{r!}
+=\delta^k k!\binom{r+k}{k}
+\leq\delta^k2^{r+k}k!.
+\tag{7.8}
+\]">\[
+\prod_{j=0}^{k-1}(r+j\delta)
+\leq\delta^k\frac{(r+k)!}{r!}
+=\delta^k k!\binom{r+k}{k}
+\leq\delta^k2^{r+k}k!.
+\tag{7.8}
+\]</span>
+<p>Here <span class="math" data-tex="\(r+j\delta\leq\delta(r+j+1)\)">\(r+j\delta\leq\delta(r+j+1)\)</span>, and the binomial coefficient is at most the sum <span class="math" data-tex="\(2^{r+k}\)">\(2^{r+k}\)</span> of its row. Thus, for example with <span class="math" data-tex="\(C_0=\max(2,2U\delta)\)">\(C_0=\max(2,2U\delta)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+D^{*k}P\prec\operatorname{size}(P)k!C_0^{r+k}S^{r+k\delta}.
+\tag{7.9}
+\]">\[
+D^{*k}P\prec\operatorname{size}(P)k!C_0^{r+k}S^{r+k\delta}.
+\tag{7.9}
+\]</span>
+<h3 id="lemma-7-1-derivative-estimates-with-a-common-clearing-integer">Lemma 7.1. Derivative estimates with a common clearing integer</h3>
+<p>Let <span class="math" data-tex="\(W\)">\(W\)</span> be a fixed finite set of points at which every <span class="math" data-tex="\(f_i\)">\(f_i\)</span> is holomorphic and <span class="math" data-tex="\(f_i(w)\in K\)">\(f_i(w)\in K\)</span>. There is a constant <span class="math" data-tex="\(C_1\geq1\)">\(C_1\geq1\)</span>, depending on the ring presentation and <span class="math" data-tex="\(W\)">\(W\)</span>, such that for every <span class="math" data-tex="\(\deg P\leq r\)">\(\deg P\leq r\)</span>, every <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, and every <span class="math" data-tex="\(w\in W\)">\(w\in W\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\overline{D^kP(f)(w)}
+\leq\operatorname{size}(P)k!C_1^{k+r}.
+\tag{7.10}
+\]">\[
+\overline{D^kP(f)(w)}
+\leq\operatorname{size}(P)k!C_1^{k+r}.
+\tag{7.10}
+\]</span>
+<p>More precisely, choose a positive integer <span class="math" data-tex="\(b\)">\(b\)</span> that clears all coefficients of the <span class="math" data-tex="\(P_i\)">\(P_i\)</span> and all numbers <span class="math" data-tex="\(f_i(w)\)">\(f_i(w)\)</span>, <span class="math" data-tex="\(w\in W\)">\(w\in W\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+d(P)b^{r+k(\delta+1)}D^kP(f)(w)\in\mathcal O_K.
+\tag{7.11}
+\]">\[
+d(P)b^{r+k(\delta+1)}D^kP(f)(w)\in\mathcal O_K.
+\tag{7.11}
+\]</span>
+<p>In particular, the displayed common denominator is at most <span class="math" data-tex="\(d(P)C_1^{k+r}\)">\(d(P)C_1^{k+r}\)</span> if <span class="math" data-tex="\(C_1\)">\(C_1\)</span> is also chosen at least <span class="math" data-tex="\(b^{\delta+1}\)">\(b^{\delta+1}\)</span>.</p>
+<p><strong>Proof.</strong> Put</p>
+<span class="math math-display" data-tex="\[
+B=\max_{w\in W,\,\sigma}\left(1+\sum_i|\sigma(f_i(w))|\right).
+\]">\[
+B=\max_{w\in W,\,\sigma}\left(1+\sum_i|\sigma(f_i(w))|\right).
+\]</span>
+<p>Evaluate (7.9) at the nonnegative absolute values of these conjugates. It gives (7.10), with <span class="math" data-tex="\(C_1\geq C_0B^\delta\)">\(C_1\geq C_0B^\delta\)</span>.</p>
+<p>For the arithmetic assertion, induction shows that the coefficients of <span class="math" data-tex="\(d(P)b^kD^{*k}P\)">\(d(P)b^kD^{*k}P\)</span> are integral: one application of (7.3) differentiates with integer multipliers and multiplies by a coefficient of some <span class="math" data-tex="\(P_i\)">\(P_i\)</span>, whose denominator is cleared by <span class="math" data-tex="\(b\)">\(b\)</span>. Its total degree is at most <span class="math" data-tex="\(r+k\delta\)">\(r+k\delta\)</span>. Evaluating a monomial of degree <span class="math" data-tex="\(t\leq r+k\delta\)">\(t\leq r+k\delta\)</span> at the <span class="math" data-tex="\(f_i(w)\)">\(f_i(w)\)</span> requires at most the additional factor <span class="math" data-tex="\(b^t\)">\(b^t\)</span>. Multiplication by <span class="math" data-tex="\(b^{r+k\delta}\)">\(b^{r+k\delta}\)</span> works for every monomial, at every point. The integral elements form a ring, proving (7.11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example.</strong> For <span class="math" data-tex="\(K=\mathbb Q\)">\(K=\mathbb Q\)</span>, <span class="math" data-tex="\(f(z)=e^{z/2}\)">\(f(z)=e^{z/2}\)</span>, <span class="math" data-tex="\(P_1(X)=X/2\)">\(P_1(X)=X/2\)</span>, and <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, take <span class="math" data-tex="\(b=2,\delta=1\)">\(b=2,\delta=1\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+D^kf^r(0)=(r/2)^k.
+\]">\[
+D^kf^r(0)=(r/2)^k.
+\]</span>
+<p>Its actual denominator divides <span class="math" data-tex="\(2^k\)">\(2^k\)</span>; (7.11) supplies the larger common integer <span class="math" data-tex="\(2^{r+2k}\)">\(2^{r+2k}\)</span>. The estimate deliberately sacrifices sharpness for a single integer valid for all monomials in an auxiliary polynomial.</p>
+<h2 id="3-the-one-variable-criterion">3. The one-variable criterion</h2>
+<h3 id="theorem-7-2-schneider-lang-with-constant-four">Theorem 7.2. Schneider–Lang with constant four</h3>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field of degree <span class="math" data-tex="\(D\)">\(D\)</span>. Let <span class="math" data-tex="\(f_1,\ldots,f_d\)">\(f_1,\ldots,f_d\)</span> be meromorphic on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, of strict order at most <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>. Suppose two of these functions are algebraically independent over <span class="math" data-tex="\(K\)">\(K\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dz}K[f_1,\ldots,f_d]\subseteq K[f_1,\ldots,f_d].
+\]">\[
+\frac{d}{dz}K[f_1,\ldots,f_d]\subseteq K[f_1,\ldots,f_d].
+\]</span>
+<p>If <span class="math" data-tex="\(w_1,\ldots,w_m\)">\(w_1,\ldots,w_m\)</span> are distinct, are not poles of any <span class="math" data-tex="\(f_i\)">\(f_i\)</span>, and satisfy <span class="math" data-tex="\(f_i(w_\nu)\in K\)">\(f_i(w_\nu)\in K\)</span> for every <span class="math" data-tex="\(i,\nu\)">\(i,\nu\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+m\leq4\rho D.
+\tag{7.12}
+\]">\[
+m\leq4\rho D.
+\tag{7.12}
+\]</span>
+<p><strong>Proof.</strong> Fix this finite set of points. All constants in the proof may depend on it, the functions, <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, but not on the forthcoming integers <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span>. Write <span class="math" data-tex="\(f,g\)">\(f,g\)</span> for the independent pair. For a large positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+r=\lceil\sqrt{2mn}\rceil,\qquad N=r^2,
+\qquad F=\sum_{i,j=1}^{r}a_{ij}f^ig^j.
+\tag{7.13}
+\]">\[
+r=\lceil\sqrt{2mn}\rceil,\qquad N=r^2,
+\qquad F=\sum_{i,j=1}^{r}a_{ij}f^ig^j.
+\tag{7.13}
+\]</span>
+<p>Impose <span class="math" data-tex="\(D^kF(w_\nu)=0\)">\(D^kF(w_\nu)=0\)</span> for <span class="math" data-tex="\(0\leq k&lt;n\)">\(0\leq k&lt;n\)</span> and <span class="math" data-tex="\(1\leq\nu\leq m\)">\(1\leq\nu\leq m\)</span>. There are <span class="math" data-tex="\(mn\)">\(mn\)</span> homogeneous equations over <span class="math" data-tex="\(K\)">\(K\)</span> in <span class="math" data-tex="\(N\geq2mn\)">\(N\geq2mn\)</span> unknowns. Lemma 7.1 clears every row by the same integer</p>
+<span class="math math-display" data-tex="\[
+b^{2r+n(\delta+1)}.
+\]">\[
+b^{2r+n(\delta+1)}.
+\]</span>
+<p>The resulting integral matrix entries have house at most</p>
+<span class="math math-display" data-tex="\[
+n!\exp(C(n+r)).
+\]">\[
+n!\exp(C(n+r)).
+\]</span>
+<p>Lemma 5.2 applies with exponent <span class="math" data-tex="\(mn/(N-mn)\leq1\)">\(mn/(N-mn)\leq1\)</span>. It supplies nonzero coefficients <span class="math" data-tex="\(a_{ij}\in\mathcal O_K\)">\(a_{ij}\in\mathcal O_K\)</span> with</p>
+<span class="math math-display" data-tex="\[
+A:=\max\left(1,\max_{i,j}\overline{a_{ij}}\right),\qquad
+\log A\leq n\log n+C(n+r+\log N).
+\tag{7.14}
+\]">\[
+A:=\max\left(1,\max_{i,j}\overline{a_{ij}}\right),\qquad
+\log A\leq n\log n+C(n+r+\log N).
+\tag{7.14}
+\]</span>
+<p>The constants from the fixed field and integral basis are absorbed in <span class="math" data-tex="\(C\)">\(C\)</span>. Algebraic independence makes <span class="math" data-tex="\(F\)">\(F\)</span> a nonzero meromorphic function. Its zeros at the <span class="math" data-tex="\(w_\nu\)">\(w_\nu\)</span> have finite orders. Let <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span> be the smallest of these orders, and relabel a point attaining it as <span class="math" data-tex="\(w_1\)">\(w_1\)</span>. Thus all derivatives of order less than <span class="math" data-tex="\(s\)">\(s\)</span> vanish at every point, and</p>
+<span class="math math-display" data-tex="\[
+V=\frac{D^sF(w_1)}{s!}\ne0.
+\tag{7.15}
+\]">\[
+V=\frac{D^sF(w_1)}{s!}\ne0.
+\tag{7.15}
+\]</span>
+<p>Because <span class="math" data-tex="\(r\leq C\sqrt n\leq C\sqrt s\)">\(r\leq C\sqrt n\leq C\sqrt s\)</span>, (7.14) gives</p>
+<span class="math math-display" data-tex="\[
+\log A\leq s\log s+Cs.
+\tag{7.16}
+\]">\[
+\log A\leq s\log s+Cs.
+\tag{7.16}
+\]</span>
+<p><strong>The arithmetic lower bound.</strong> Lemma 7.1 gives</p>
+<span class="math math-display" data-tex="\[
+\overline V\leq A C_1^{s+2r},\qquad
+T:=s!b^{2r+s(\delta+1)}V\in\mathcal O_K\setminus\{0\}.
+\]">\[
+\overline V\leq A C_1^{s+2r},\qquad
+T:=s!b^{2r+s(\delta+1)}V\in\mathcal O_K\setminus\{0\}.
+\]</span>
+<p>The nonzero integer norm of <span class="math" data-tex="\(T\)">\(T\)</span> has modulus at least one. Bound its other <span class="math" data-tex="\(D-1\)">\(D-1\)</span> conjugate factors by</p>
+<span class="math math-display" data-tex="\[
+s!b^{2r+s(\delta+1)}A C_1^{s+2r}.
+\]">\[
+s!b^{2r+s(\delta+1)}A C_1^{s+2r}.
+\]</span>
+<p>Dividing the resulting bound on the chosen factor by its clearing integer yields</p>
+<span class="math math-display" data-tex="\[
+\log|V|\geq-D\log(s!)-(D-1)\log A-Cs
+\geq-(2D-1)s\log s-Cs.
+\tag{7.17}
+\]">\[
+\log|V|\geq-D\log(s!)-(D-1)\log A-Cs
+\geq-(2D-1)s\log s-Cs.
+\tag{7.17}
+\]</span>
+<p>This also holds for <span class="math" data-tex="\(D=1\)">\(D=1\)</span>, when the product of the other conjugates is empty. The factorial in the denominator of the Taylor coefficient is part of the arithmetic cost.</p>
+<p><strong>Clearing meromorphic poles analytically.</strong> Write <span class="math" data-tex="\(f=a_1/b_1\)">\(f=a_1/b_1\)</span> and <span class="math" data-tex="\(g=a_2/b_2\)">\(g=a_2/b_2\)</span> with entire numerators and nonzero entire denominators of strict order at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. At each <span class="math" data-tex="\(w_\nu\)">\(w_\nu\)</span>, if <span class="math" data-tex="\(b_i\)">\(b_i\)</span> has a zero of order <span class="math" data-tex="\(t\)">\(t\)</span>, holomorphy of <span class="math" data-tex="\(f\)">\(f\)</span> or <span class="math" data-tex="\(g\)">\(g\)</span> forces its numerator to have order at least <span class="math" data-tex="\(t\)">\(t\)</span>. Divide both by the polynomial containing these finitely many denominator factors. The new numerator and denominator are entire, and the new denominator is nonzero at every <span class="math" data-tex="\(w_\nu\)">\(w_\nu\)</span>.</p>
+<p>Division by this fixed polynomial preserves (7.1). Indeed, on a sufficiently large circle <span class="math" data-tex="\(|z|=2R\)">\(|z|=2R\)</span> its modulus is bounded below by a positive constant times <span class="math" data-tex="\(R\)">\(R\)</span> to its degree. Bound the entire quotient on that circle and use maximum modulus inside; increasing <span class="math" data-tex="\(C\)">\(C\)</span> covers the remaining compact disc. Let <span class="math" data-tex="\(h\)">\(h\)</span> be the product of the two new denominators. Then <span class="math" data-tex="\(h,hf,hg\)">\(h,hf,hg\)</span> are entire of strict order at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and <span class="math" data-tex="\(h(w_\nu)\ne0\)">\(h(w_\nu)\ne0\)</span>.</p>
+<p><strong>The analytic upper bound.</strong> The function</p>
+<span class="math math-display" data-tex="\[
+H=h^{2r}F=
+\sum_{i,j=1}^{r}a_{ij}(hf)^i(hg)^j h^{2r-i-j}
+\]">\[
+H=h^{2r}F=
+\sum_{i,j=1}^{r}a_{ij}(hf)^i(hg)^j h^{2r-i-j}
+\]</span>
+<p>is entire and satisfies, for <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|H|_R\leq N A\exp(CrR^\rho).
+\]">\[
+|H|_R\leq N A\exp(CrR^\rho).
+\]</span>
+<p>Remove the prescribed zeros:</p>
+<span class="math math-display" data-tex="\[
+G(z)=\frac{H(z)}{\prod_{\nu=1}^m(z-w_\nu)^s}.
+\]">\[
+G(z)=\frac{H(z)}{\prod_{\nu=1}^m(z-w_\nu)^s}.
+\]</span>
+<p>It is entire, since all these singularities are removable. Put <span class="math" data-tex="\(W=\max_\nu|w_\nu|\)">\(W=\max_\nu|w_\nu|\)</span>. On <span class="math" data-tex="\(|z|=R&gt;2W+1\)">\(|z|=R&gt;2W+1\)</span>, every denominator factor has modulus at least <span class="math" data-tex="\(R-W\)">\(R-W\)</span>. Maximum modulus, followed by evaluation at <span class="math" data-tex="\(w_1\)">\(w_1\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+|V|=|G(w_1)|\,
+\frac{\prod_{\nu\ne1}|w_1-w_\nu|^s}{|h(w_1)|^{2r}}
+\leq NA\exp(CrR^\rho)(R-W)^{-ms}\exp(C(s+r)).
+\]">\[
+|V|=|G(w_1)|\,
+\frac{\prod_{\nu\ne1}|w_1-w_\nu|^s}{|h(w_1)|^{2r}}
+\leq NA\exp(CrR^\rho)(R-W)^{-ms}\exp(C(s+r)).
+\]</span>
+<p>The finite distances are nonzero; their logarithms are absorbed in the fixed constant. Choose</p>
+<span class="math math-display" data-tex="\[
+R=s^{1/(2\rho)}.
+\]">\[
+R=s^{1/(2\rho)}.
+\]</span>
+<p>For all large <span class="math" data-tex="\(n\)">\(n\)</span>, this is large enough for every <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span>. We have <span class="math" data-tex="\(rR^\rho\leq Cs\)">\(rR^\rho\leq Cs\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+-ms\log(R-W)=-\frac{m}{2\rho}s\log s+O(s).
+\]">\[
+-ms\log(R-W)=-\frac{m}{2\rho}s\log s+O(s).
+\]</span>
+<p>For example, <span class="math" data-tex="\(-\log(1-W/R)\leq2W/R\)">\(-\log(1-W/R)\leq2W/R\)</span> for <span class="math" data-tex="\(R&gt;2W\)">\(R&gt;2W\)</span>, which justifies the uniform error. Consequently</p>
+<span class="math math-display" data-tex="\[
+\log|V|\leq\log A-\frac{m}{2\rho}s\log s+Cs
+\leq\left(1-\frac{m}{2\rho}\right)s\log s+Cs.
+\tag{7.18}
+\]">\[
+\log|V|\leq\log A-\frac{m}{2\rho}s\log s+Cs
+\leq\left(1-\frac{m}{2\rho}\right)s\log s+Cs.
+\tag{7.18}
+\]</span>
+<p>Compare (7.17) and (7.18). If <span class="math" data-tex="\(m&gt;4\rho D\)">\(m&gt;4\rho D\)</span>, they imply</p>
+<span class="math math-display" data-tex="\[
+\left(\frac{m}{2\rho}-2D\right)s\log s\leq Cs.
+\]">\[
+\left(\frac{m}{2\rho}-2D\right)s\log s\leq Cs.
+\]</span>
+<p>The parenthesis is a fixed positive number, while <span class="math" data-tex="\(s\geq n\to\infty\)">\(s\geq n\to\infty\)</span>. This is impossible, proving (7.12). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The choice of <span class="math" data-tex="\(s\)">\(s\)</span>, rather than an assumed first derivative at order <span class="math" data-tex="\(n\)">\(n\)</span>, is essential. The constructed function can vanish to order larger than requested. Every estimate above remains uniform for that larger order.</p>
+<h2 id="4-two-classical-consequences-and-two-failed-hypotheses">4. Two classical consequences and two failed hypotheses</h2>
+<h3 id="lemma-7-3-independence-of-exponentials-and-a-coordinate">Lemma 7.3. Independence of exponentials and a coordinate</h3>
+<p>If <span class="math" data-tex="\(\beta\notin\mathbb Q\)">\(\beta\notin\mathbb Q\)</span>, the functions <span class="math" data-tex="\(e^z,e^{\beta z}\)">\(e^z,e^{\beta z}\)</span> are algebraically independent over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. If <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, the functions <span class="math" data-tex="\(z,e^{\alpha z}\)">\(z,e^{\alpha z}\)</span> are algebraically independent over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p><strong>Proof.</strong> A polynomial relation between the first pair becomes a finite linear relation among <span class="math" data-tex="\(e^{(i+j\beta)z}\)">\(e^{(i+j\beta)z}\)</span>. All the exponents are distinct: equality for two pairs of integers would make <span class="math" data-tex="\(\beta\)">\(\beta\)</span> rational unless the pairs coincide. For distinct <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_t\)">\(\lambda_1,\ldots,\lambda_t\)</span>, differentiating <span class="math" data-tex="\(\sum c_je^{\lambda_jz}=0\)">\(\sum c_je^{\lambda_jz}=0\)</span> at zero in orders <span class="math" data-tex="\(0,\ldots,t-1\)">\(0,\ldots,t-1\)</span> gives a Vandermonde system. Its determinant is <span class="math" data-tex="\(\prod_{i&lt;j}(\lambda_j-\lambda_i)\ne0\)">\(\prod_{i&lt;j}(\lambda_j-\lambda_i)\ne0\)</span>, so every <span class="math" data-tex="\(c_j=0\)">\(c_j=0\)</span>.</p>
+<p>For the second assertion a relation would be <span class="math" data-tex="\(\sum_{j=0}^J p_j(z)e^{j\alpha z}=0\)">\(\sum_{j=0}^J p_j(z)e^{j\alpha z}=0\)</span>, with <span class="math" data-tex="\(p_J\ne0\)">\(p_J\ne0\)</span>. Substitute <span class="math" data-tex="\(z=t/\alpha\)">\(z=t/\alpha\)</span>, <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> real, and divide by <span class="math" data-tex="\(e^{Jt}\)">\(e^{Jt}\)</span>. It follows that</p>
+<span class="math math-display" data-tex="\[
+p_J(t/\alpha)=-\sum_{j&lt;J}p_j(t/\alpha)e^{-(J-j)t}\longrightarrow0.
+\]">\[
+p_J(t/\alpha)=-\sum_{j&lt;J}p_j(t/\alpha)e^{-(J-j)t}\longrightarrow0.
+\]</span>
+<p>A nonzero polynomial evaluated on this ray cannot tend to zero: a nonzero constant has fixed modulus, and a polynomial of positive degree has modulus asymptotic to a positive constant times a positive power of <span class="math" data-tex="\(t\)">\(t\)</span>. This contradiction proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-7-4-hermite-lindemann">Corollary 7.4. Hermite–Lindemann</h3>
+<p>For algebraic <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, the number <span class="math" data-tex="\(e^\alpha\)">\(e^\alpha\)</span> is transcendental.</p>
+<p><strong>Proof.</strong> Suppose it were algebraic, and put <span class="math" data-tex="\(K=\mathbb Q(\alpha,e^\alpha)\)">\(K=\mathbb Q(\alpha,e^\alpha)\)</span>. The functions <span class="math" data-tex="\(f_1=z,f_2=e^{\alpha z}\)">\(f_1=z,f_2=e^{\alpha z}\)</span> are entire of strict order at most one, are independent by Lemma 7.3, and have derivatives <span class="math" data-tex="\(1,\alpha f_2\)">\(1,\alpha f_2\)</span> in <span class="math" data-tex="\(K[f_1,f_2]\)">\(K[f_1,f_2]\)</span>. At every positive integer <span class="math" data-tex="\(k\)">\(k\)</span>, their values <span class="math" data-tex="\(k,(e^\alpha)^k\)">\(k,(e^\alpha)^k\)</span> lie in <span class="math" data-tex="\(K\)">\(K\)</span>. Taking more than <span class="math" data-tex="\(4[K:\mathbb Q]\)">\(4[K:\mathbb Q]\)</span> of these points contradicts Theorem 7.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-7-5-gelfond-schneider-with-a-fixed-logarithm">Corollary 7.5. Gelfond–Schneider, with a fixed logarithm</h3>
+<p>Let <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> be algebraic, <span class="math" data-tex="\(\alpha\notin\{0,1\}\)">\(\alpha\notin\{0,1\}\)</span>, and <span class="math" data-tex="\(\beta\notin\mathbb Q\)">\(\beta\notin\mathbb Q\)</span>. For every logarithm <span class="math" data-tex="\(A\)">\(A\)</span> satisfying <span class="math" data-tex="\(e^A=\alpha\)">\(e^A=\alpha\)</span>, the number <span class="math" data-tex="\(e^{\beta A}\)">\(e^{\beta A}\)</span> is transcendental.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\gamma=e^{\beta A}\)">\(\gamma=e^{\beta A}\)</span> were algebraic, take <span class="math" data-tex="\(K=\mathbb Q(\alpha,\beta,\gamma)\)">\(K=\mathbb Q(\alpha,\beta,\gamma)\)</span>. The entire functions <span class="math" data-tex="\(e^z,e^{\beta z}\)">\(e^z,e^{\beta z}\)</span> have strict order at most one, derivatives <span class="math" data-tex="\(e^z,\beta e^{\beta z}\)">\(e^z,\beta e^{\beta z}\)</span> in their <span class="math" data-tex="\(K\)">\(K\)</span>-ring, and are independent by Lemma 7.3. At <span class="math" data-tex="\(z=kA\)">\(z=kA\)</span>, <span class="math" data-tex="\(k=1,2,\ldots\)">\(k=1,2,\ldots\)</span>, their values are <span class="math" data-tex="\(\alpha^k,\gamma^k\in K\)">\(\alpha^k,\gamma^k\in K\)</span>. These points are distinct since <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>. Theorem 7.2 again gives a contradiction. Integer powers use the same fixed logarithm, so the proof covers every branch. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are additional proofs of the theorems proved directly in <a href="TR-TRANS-04.html">Lindemann–Weierstrass</a> and <a href="TR-TRANS-06.html">Gelfond–Schneider</a>.</p>
+<p><strong>Dependence defeats the conclusion.</strong> For <span class="math" data-tex="\(f=e^z,g=e^{2z}\)">\(f=e^z,g=e^{2z}\)</span>, the ring <span class="math" data-tex="\(\mathbb Q[f,g]\)">\(\mathbb Q[f,g]\)</span> is stable under differentiation, and both functions have strict order at most one. At the infinitely many points <span class="math" data-tex="\(k\log2\)">\(k\log2\)</span>, their values are <span class="math" data-tex="\(2^k,4^k\in\mathbb Q\)">\(2^k,4^k\in\mathbb Q\)</span>. The missing hypothesis is independence: <span class="math" data-tex="\(g-f^2=0\)">\(g-f^2=0\)</span>.</p>
+<p><strong>An unstable ring also defeats it.</strong> For <span class="math" data-tex="\(f=z,g=2^z=e^{(\log2)z}\)">\(f=z,g=2^z=e^{(\log2)z}\)</span>, all values at integers are rational and the pair is independent by Lemma 7.3. Nevertheless <span class="math" data-tex="\(Dg=(\log2)g\)">\(Dg=(\log2)g\)</span> cannot belong to <span class="math" data-tex="\(K[z,g]\)">\(K[z,g]\)</span> for any number field <span class="math" data-tex="\(K\)">\(K\)</span>. Indeed, <span class="math" data-tex="\(\log2\)">\(\log2\)</span> is transcendental by Corollary 7.4, since its exponential is the algebraic number <span class="math" data-tex="\(2\)">\(2\)</span>. If <span class="math" data-tex="\(P(z,g)=(\log2)g\)">\(P(z,g)=(\log2)g\)</span> with <span class="math" data-tex="\(P\in K[X,Y]\)">\(P\in K[X,Y]\)</span>, independence over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> would force the polynomial <span class="math" data-tex="\(P(X,Y)-(\log2)Y\)">\(P(X,Y)-(\log2)Y\)</span> to be zero. Its <span class="math" data-tex="\(Y\)">\(Y\)</span>-coefficient cannot be zero because <span class="math" data-tex="\(\log2\notin K\)">\(\log2\notin K\)</span>. Thus no such <span class="math" data-tex="\(P\)">\(P\)</span> exists. Merely displaying a derivative with a transcendental coefficient would not, by itself, rule out a different polynomial representation; independence supplies that last step.</p>
+<p><strong>Lang's finite-order formulation.</strong> If the functions have finite order in the quotient sense, choose a common positive <span class="math" data-tex="\(\rho\)">\(\rho\)</span> for (7.1). If <span class="math" data-tex="\(K[f_1,\ldots,f_d]\)">\(K[f_1,\ldots,f_d]\)</span> has transcendence degree at least two, some pair of the given generators is independent over <span class="math" data-tex="\(K\)">\(K\)</span>. To see this, choose a maximal independent subset of the finite generating set; every other generator is algebraic over its fraction field, so the full fraction field is a finite algebraic extension of that field. Its transcendence degree is the subset's cardinality. Theorem 7.2 now proves that only finitely many common nonpole points can have all their values in <span class="math" data-tex="\(K\)">\(K\)</span>. This is the formulation of Soundararajan's notes, Theorem 22; the explicit bound here applies once a strict-order exponent has been chosen.</p>
+<h2 id="5-interpolation-on-a-product-grid">5. Interpolation on a product grid</h2>
+<p>The several-variable theorem is useful for Baker's theorem. A grid has many points, but their zeros cannot be removed by a single product in one variable. Repeated one-variable interpolation provides the replacement.</p>
+<p>Let <span class="math" data-tex="\(q,m\geq1\)">\(q,m\geq1\)</span>, and consider the nodes <span class="math" data-tex="\(0,1,\ldots,m-1\)">\(0,1,\ldots,m-1\)</span> in each coordinate of <span class="math" data-tex="\(\mathbb C^q\)">\(\mathbb C^q\)</span>. Put <span class="math" data-tex="\(A_0=m-1\)">\(A_0=m-1\)</span>, choose a fixed <span class="math" data-tex="\(B&gt;A_0\)">\(B&gt;A_0\)</span>, and write <span class="math" data-tex="\(|H|_R\)">\(|H|_R\)</span> for the supremum on <span class="math" data-tex="\(|z_j|\leq R\)">\(|z_j|\leq R\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>. To say that <span class="math" data-tex="\(H\)">\(H\)</span> vanishes to total order at least <span class="math" data-tex="\(s\)">\(s\)</span> at a node means</p>
+<span class="math math-display" data-tex="\[
+\partial^\alpha H=0\quad\text{there whenever }|\alpha|&lt;s,
+\qquad |\alpha|=\alpha_1+\cdots+\alpha_q.
+\]">\[
+\partial^\alpha H=0\quad\text{there whenever }|\alpha|&lt;s,
+\qquad |\alpha|=\alpha_1+\cdots+\alpha_q.
+\]</span>
+<h3 id="lemma-7-6-a-grid-estimate-from-repeated-nodes">Lemma 7.6. A grid estimate from repeated nodes</h3>
+<p>If an entire <span class="math" data-tex="\(H\)">\(H\)</span> has total order at least <span class="math" data-tex="\(s\)">\(s\)</span> at all <span class="math" data-tex="\(m^q\)">\(m^q\)</span> nodes of this product grid, then, for every sufficiently large <span class="math" data-tex="\(R\)">\(R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|H|_B\leq4^q |H|_R
+\left(\frac{2(B+A_0)}{R-A_0}\right)^{ms}.
+\tag{7.19}
+\]">\[
+|H|_B\leq4^q |H|_R
+\left(\frac{2(B+A_0)}{R-A_0}\right)^{ms}.
+\tag{7.19}
+\]</span>
+<p>The size needed for <span class="math" data-tex="\(R\)">\(R\)</span> depends only on <span class="math" data-tex="\(B,m\)">\(B,m\)</span>, not on <span class="math" data-tex="\(H\)">\(H\)</span> or <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>Proof.</strong> Repeat the node sequence cyclically: <span class="math" data-tex="\(a_t=t\bmod m\)">\(a_t=t\bmod m\)</span>, <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+B_0(z)=1,\qquad B_\ell(z)=\prod_{t=0}^{\ell-1}(z-a_t).
+\]">\[
+B_0(z)=1,\qquad B_\ell(z)=\prod_{t=0}^{\ell-1}(z-a_t).
+\]</span>
+<p>For <span class="math" data-tex="\(|z|\leq B\)">\(|z|\leq B\)</span>, <span class="math" data-tex="\(|\zeta|=R&gt;A_0\)">\(|\zeta|=R&gt;A_0\)</span>, telescoping gives the exact identity</p>
+<span class="math math-display" data-tex="\[
+\frac1{\zeta-z}=
+\sum_{\ell=0}^{L-1}\frac{B_\ell(z)}{B_{\ell+1}(\zeta)}
++\frac{B_L(z)}{B_L(\zeta)(\zeta-z)}.
+\tag{7.20}
+\]">\[
+\frac1{\zeta-z}=
+\sum_{\ell=0}^{L-1}\frac{B_\ell(z)}{B_{\ell+1}(\zeta)}
++\frac{B_L(z)}{B_L(\zeta)(\zeta-z)}.
+\tag{7.20}
+\]</span>
+<p>For verification, subtract two successive remainders: their difference is <span class="math" data-tex="\(B_\ell(z)/B_{\ell+1}(\zeta)\)">\(B_\ell(z)/B_{\ell+1}(\zeta)\)</span>. The last term tends uniformly to zero if</p>
+<span class="math math-display" data-tex="\[
+t:=\frac{B+A_0}{R-A_0}&lt;1,
+\]">\[
+t:=\frac{B+A_0}{R-A_0}&lt;1,
+\]</span>
+<p>because <span class="math" data-tex="\(|B_L(z)/B_L(\zeta)|\leq t^L\)">\(|B_L(z)/B_L(\zeta)|\leq t^L\)</span>. The series in (7.20) converges absolutely and uniformly on these contours.</p>
+<p>Apply the Cauchy formula successively in the <span class="math" data-tex="\(q\)">\(q\)</span> variables, substitute (7.20) in each kernel, and integrate the uniformly convergent product series. This gives</p>
+<span class="math math-display" data-tex="\[
+H(z)=\sum_{\nu\in\mathbb Z_{\geq0}^q}c_\nu
+\prod_{j=1}^q B_{\nu_j}(z_j),
+\qquad
+c_\nu=\frac1{(2\pi i)^q}
+\int\cdots\int
+\frac{H(\zeta)\,d\zeta_1\cdots d\zeta_q}
+{\prod_{j=1}^q B_{\nu_j+1}(\zeta_j)}.
+\tag{7.21}
+\]">\[
+H(z)=\sum_{\nu\in\mathbb Z_{\geq0}^q}c_\nu
+\prod_{j=1}^q B_{\nu_j}(z_j),
+\qquad
+c_\nu=\frac1{(2\pi i)^q}
+\int\cdots\int
+\frac{H(\zeta)\,d\zeta_1\cdots d\zeta_q}
+{\prod_{j=1}^q B_{\nu_j+1}(\zeta_j)}.
+\tag{7.21}
+\]</span>
+<p>Every circle in this integral has radius <span class="math" data-tex="\(R\)">\(R\)</span>. For each <span class="math" data-tex="\(j\)">\(j\)</span>, a pole at a node has multiplicity at most <span class="math" data-tex="\(\lfloor\nu_j/m\rfloor+1\)">\(\lfloor\nu_j/m\rfloor+1\)</span>. Successive residue formulas express <span class="math" data-tex="\(c_\nu\)">\(c_\nu\)</span> as a linear combination of mixed derivatives of <span class="math" data-tex="\(H\)">\(H\)</span> at grid nodes, whose total orders are at most <span class="math" data-tex="\(\sum_j\lfloor\nu_j/m\rfloor\)">\(\sum_j\lfloor\nu_j/m\rfloor\)</span>. This follows directly from the repeated-pole formula: a pole of multiplicity <span class="math" data-tex="\(u\)">\(u\)</span> uses derivatives of its numerator of orders at most <span class="math" data-tex="\(u-1\)">\(u-1\)</span>. Leibniz's rule may put some derivatives on the other denominator factors, reducing the order on <span class="math" data-tex="\(H\)">\(H\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+c_\nu=0\quad\text{if}\quad
+\sum_j\lfloor\nu_j/m\rfloor&lt;s.
+\tag{7.22}
+\]">\[
+c_\nu=0\quad\text{if}\quad
+\sum_j\lfloor\nu_j/m\rfloor&lt;s.
+\tag{7.22}
+\]</span>
+<p>In particular every surviving term has <span class="math" data-tex="\(|\nu|\geq ms\)">\(|\nu|\geq ms\)</span>. On the contours,</p>
+<span class="math math-display" data-tex="\[
+|c_\nu|\prod_j|B_{\nu_j}(z_j)|
+\leq |H|_R\left(\frac R{R-A_0}\right)^q t^{|\nu|}.
+\]">\[
+|c_\nu|\prod_j|B_{\nu_j}(z_j)|
+\leq |H|_R\left(\frac R{R-A_0}\right)^q t^{|\nu|}.
+\]</span>
+<p>There are <span class="math" data-tex="\(\binom{\ell+q-1}{q-1}\leq2^{\ell+q-1}\)">\(\binom{\ell+q-1}{q-1}\leq2^{\ell+q-1}\)</span> indices of total degree <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Choose <span class="math" data-tex="\(R\)">\(R\)</span> so that <span class="math" data-tex="\(R/(R-A_0)\leq2\)">\(R/(R-A_0)\leq2\)</span> and <span class="math" data-tex="\(t\leq1/4\)">\(t\leq1/4\)</span>. Summing over the possibly surviving indices bounds (7.21) by</p>
+<span class="math math-display" data-tex="\[
+|H|_R 2^q\sum_{\ell\geq ms}2^{\ell+q-1}t^\ell
+\leq4^q |H|_R(2t)^{ms}.
+\]">\[
+|H|_R 2^q\sum_{\ell\geq ms}2^{\ell+q-1}t^\ell
+\leq4^q |H|_R(2t)^{ms}.
+\]</span>
+<p>This is (7.19). No several-variable residue theorem is required: only successive one-variable formulas have been used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<figure><img src="figures/schneider-lang-grid.png" alt="Repeated-node coefficient indices: all blue indices vanish, and every possibly nonzero index has total degree at least six." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 7.1. The coefficient indices in (7.21) for <span class="math" data-tex="\(q=2,m=3,s=2\)">\(q=2,m=3,s=2\)</span>. Blue cells satisfy <span class="math" data-tex="\(\lfloor\nu_1/3\rfloor+\lfloor\nu_2/3\rfloor&lt;2\)">\(\lfloor\nu_1/3\rfloor+\lfloor\nu_2/3\rfloor&lt;2\)</span> and vanish by (7.22); amber cells may survive. The dashed line is <span class="math" data-tex="\(\nu_1+\nu_2=ms=6\)">\(\nu_1+\nu_2=ms=6\)</span>. The staircase is the exact repeated-node condition, and every amber index is on or above the line. These are integer coefficient indices, not a picture of all of <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>. The figure illustrates the proved contour mechanism of Lemma 7.6, which supports the several-variable theorem stated as Theorem 3.6 in Waldschmidt's “Auxiliary functions in transcendence proofs”.</em></p>
+<h2 id="6-the-several-variable-theorem">6. The several-variable theorem</h2>
+<h3 id="theorem-7-7-schneider-lang-for-a-subgroup-spanning-the-variables">Theorem 7.7. Schneider–Lang for a subgroup spanning the variables</h3>
+<p>Let <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>. Let <span class="math" data-tex="\(f_1,\ldots,f_d\)">\(f_1,\ldots,f_d\)</span> be entire functions on <span class="math" data-tex="\(\mathbb C^q\)">\(\mathbb C^q\)</span> of finite order of growth, and suppose at least <span class="math" data-tex="\(q+1\)">\(q+1\)</span> of them are algebraically independent over a number field <span class="math" data-tex="\(K\)">\(K\)</span>. Assume</p>
+<span class="math math-display" data-tex="\[
+\partial_{z_j}K[f_1,\ldots,f_d]\subseteq K[f_1,\ldots,f_d]
+\quad(1\leq j\leq q).
+\]">\[
+\partial_{z_j}K[f_1,\ldots,f_d]\subseteq K[f_1,\ldots,f_d]
+\quad(1\leq j\leq q).
+\]</span>
+<p>Let <span class="math" data-tex="\(\Gamma\subset\mathbb C^q\)">\(\Gamma\subset\mathbb C^q\)</span> be an additive subgroup containing a complex vector-space basis. Then the values <span class="math" data-tex="\(f_i(w)\)">\(f_i(w)\)</span>, for <span class="math" data-tex="\(1\leq i\leq d\)">\(1\leq i\leq d\)</span>, <span class="math" data-tex="\(w\in\Gamma\)">\(w\in\Gamma\)</span>, cannot all belong to <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Finite order here means that there is a positive <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and a constant <span class="math" data-tex="\(C\)">\(C\)</span> such that <span class="math" data-tex="\(|f_i(z)|\leq\exp(CR^\rho)\)">\(|f_i(z)|\leq\exp(CR^\rho)\)</span> on <span class="math" data-tex="\(|z_j|\leq R\)">\(|z_j|\leq R\)</span>, <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span>. This is equivalent to the usual finite limsup of <span class="math" data-tex="\(\log\log\max(e,|f_i|_R)/\log R\)">\(\log\log\max(e,|f_i|_R)/\log R\)</span>: choose <span class="math" data-tex="\(\rho\)">\(\rho\)</span> strictly larger than that limsup. Using a Euclidean ball instead of a polydisc only changes constants.</p>
+<p><strong>Proof.</strong> Suppose all those values lie in <span class="math" data-tex="\(K\)">\(K\)</span>, and fix such a growth exponent <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Let <span class="math" data-tex="\(D=[K:\mathbb Q]\)">\(D=[K:\mathbb Q]\)</span>. Choose a basis <span class="math" data-tex="\(\gamma_1,\ldots,\gamma_q\in\Gamma\)">\(\gamma_1,\ldots,\gamma_q\in\Gamma\)</span>, and a fixed integer</p>
+<span class="math math-display" data-tex="\[
+m&gt;4(q+1)\rho D.
+\tag{7.23}
+\]">\[
+m&gt;4(q+1)\rho D.
+\tag{7.23}
+\]</span>
+<p>The points</p>
+<span class="math math-display" data-tex="\[
+W=\left\{\sum_{j=1}^q t_j\gamma_j:0\leq t_j&lt;m,\ t_j\in\mathbb Z\right\}
+\]">\[
+W=\left\{\sum_{j=1}^q t_j\gamma_j:0\leq t_j&lt;m,\ t_j\in\mathbb Z\right\}
+\]</span>
+<p>are <span class="math" data-tex="\(m^q\)">\(m^q\)</span> distinct points of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. All constants below may depend on this fixed grid. Relabel <span class="math" data-tex="\(q+1\)">\(q+1\)</span> independent functions as <span class="math" data-tex="\(g_1,\ldots,g_{q+1}\)">\(g_1,\ldots,g_{q+1}\)</span>.</p>
+<p><strong>Arithmetic estimates in the original coordinates.</strong> For each partial derivation choose polynomial presentations <span class="math" data-tex="\(\partial_{z_j}f_i=P_{ji}(f)\)">\(\partial_{z_j}f_i=P_{ji}(f)\)</span> with coefficients in <span class="math" data-tex="\(K\)">\(K\)</span>. The proof of Lemma 7.1 works for any succession of <span class="math" data-tex="\(k\)">\(k\)</span> of these derivations: take a common <span class="math" data-tex="\(\delta\geq1\)">\(\delta\geq1\)</span>, a common domination constant, and a common clearing integer <span class="math" data-tex="\(b\)">\(b\)</span> for all presentations and all values at <span class="math" data-tex="\(W\)">\(W\)</span>. For a polynomial of degree at most <span class="math" data-tex="\(a\)">\(a\)</span>, it gives</p>
+<span class="math math-display" data-tex="\[
+\overline{\partial^\alpha P(f)(w)}
+\leq\operatorname{size}(P)|\alpha|!C^{|\alpha|+a},
+\qquad
+d(P)b^{a+|\alpha|(\delta+1)}\partial^\alpha P(f)(w)\in\mathcal O_K.
+\tag{7.24}
+\]">\[
+\overline{\partial^\alpha P(f)(w)}
+\leq\operatorname{size}(P)|\alpha|!C^{|\alpha|+a},
+\qquad
+d(P)b^{a+|\alpha|(\delta+1)}\partial^\alpha P(f)(w)\in\mathcal O_K.
+\tag{7.24}
+\]</span>
+<p>At each induction step the degree and clearing factors increase by the same bounds as before. The lifted derivations need not commute as operators on the polynomial ring; after evaluation their compositions are the actual mixed derivatives, which do commute.</p>
+<p><strong>Constructing a function with many zero jets.</strong> Impose <span class="math" data-tex="\(\partial^\alpha F(w)=0\)">\(\partial^\alpha F(w)=0\)</span> for all <span class="math" data-tex="\(w\in W\)">\(w\in W\)</span> and <span class="math" data-tex="\(|\alpha|&lt;n\)">\(|\alpha|&lt;n\)</span>. The number of equations is</p>
+<span class="math math-display" data-tex="\[
+J=m^q\binom{n+q-1}{q}.
+\]">\[
+J=m^q\binom{n+q-1}{q}.
+\]</span>
+<p>The binomial count follows by adding a slack coordinate to <span class="math" data-tex="\(|\alpha|\leq n-1\)">\(|\alpha|\leq n-1\)</span>. Take</p>
+<span class="math math-display" data-tex="\[
+L=\lceil(2J)^{1/(q+1)}\rceil,\quad
+N=(L+1)^{q+1}\geq2J,\quad
+F=\sum_{0\leq i_1,\ldots,i_{q+1}\leq L}
+a_i g_1^{i_1}\cdots g_{q+1}^{i_{q+1}}.
+\]">\[
+L=\lceil(2J)^{1/(q+1)}\rceil,\quad
+N=(L+1)^{q+1}\geq2J,\quad
+F=\sum_{0\leq i_1,\ldots,i_{q+1}\leq L}
+a_i g_1^{i_1}\cdots g_{q+1}^{i_{q+1}}.
+\]</span>
+<p>The polynomial degree is at most <span class="math" data-tex="\(a=(q+1)L\)">\(a=(q+1)L\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+L=O\bigl(n^{q/(q+1)}\bigr)=o(n).
+\tag{7.25}
+\]">\[
+L=O\bigl(n^{q/(q+1)}\bigr)=o(n).
+\tag{7.25}
+\]</span>
+<p>By (7.24), a common integer <span class="math" data-tex="\(b^{a+n(\delta+1)}\)">\(b^{a+n(\delta+1)}\)</span> clears the matrix; its integral entries have house at most <span class="math" data-tex="\(n!\exp(C(n+L))\)">\(n!\exp(C(n+L))\)</span>. Lemma 5.2, with <span class="math" data-tex="\(J/(N-J)\leq1\)">\(J/(N-J)\leq1\)</span>, gives a nonzero coefficient vector in <span class="math" data-tex="\(\mathcal O_K^N\)">\(\mathcal O_K^N\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+A:=\max(1,\max_i\overline{a_i}),\qquad
+\log A\leq n\log n+C(n+L+\log N).
+\tag{7.26}
+\]">\[
+A:=\max(1,\max_i\overline{a_i}),\qquad
+\log A\leq n\log n+C(n+L+\log N).
+\tag{7.26}
+\]</span>
+<p>Independence makes <span class="math" data-tex="\(F\)">\(F\)</span> nonzero. At any point its order is finite: if all mixed derivatives vanished, its local Taylor series would vanish, and continuation along complex lines would make the entire function zero everywhere. Let <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span> be the smallest total order at a point of <span class="math" data-tex="\(W\)">\(W\)</span>, and choose <span class="math" data-tex="\(w\in W\)">\(w\in W\)</span> and <span class="math" data-tex="\(|\alpha|=s\)">\(|\alpha|=s\)</span> with</p>
+<span class="math math-display" data-tex="\[
+V=\frac{\partial^\alpha F(w)}{\alpha!}\ne0,
+\qquad \alpha!=\alpha_1!\cdots\alpha_q!.
+\]">\[
+V=\frac{\partial^\alpha F(w)}{\alpha!}\ne0,
+\qquad \alpha!=\alpha_1!\cdots\alpha_q!.
+\]</span>
+<p>We have <span class="math" data-tex="\(a=O(s^{q/(q+1)})\)">\(a=O(s^{q/(q+1)})\)</span>, and <span class="math" data-tex="\(\log A\leq s\log s+Cs\)">\(\log A\leq s\log s+Cs\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+\frac{s!}{\alpha!}=\binom{s}{\alpha_1,\ldots,\alpha_q}\leq q^s,
+\]">\[
+\frac{s!}{\alpha!}=\binom{s}{\alpha_1,\ldots,\alpha_q}\leq q^s,
+\]</span>
+<p>as this multinomial coefficient is one term in <span class="math" data-tex="\((1+\cdots+1)^s\)">\((1+\cdots+1)^s\)</span>. Thus (7.24) bounds every conjugate of <span class="math" data-tex="\(V\)">\(V\)</span> by <span class="math" data-tex="\(A\exp(Cs)\)">\(A\exp(Cs)\)</span>. Its denominator is cleared by <span class="math" data-tex="\(\alpha!b^{a+s(\delta+1)}\)">\(\alpha!b^{a+s(\delta+1)}\)</span>. The same integral-norm argument as in (7.17), using <span class="math" data-tex="\(\log(\alpha!)\leq s\log s\)">\(\log(\alpha!)\leq s\log s\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\log|V|\geq-(2D-1)s\log s-Cs.
+\tag{7.27}
+\]">\[
+\log|V|\geq-(2D-1)s\log s-Cs.
+\tag{7.27}
+\]</span>
+<p><strong>Analysis in coordinates adapted to the grid.</strong> Let <span class="math" data-tex="\(T(u)=\sum_j u_j\gamma_j\)">\(T(u)=\sum_j u_j\gamma_j\)</span>, an invertible complex linear map, and put <span class="math" data-tex="\(H(u)=F(T(u))\)">\(H(u)=F(T(u))\)</span>. This coordinate change preserves total vanishing order. It transforms <span class="math" data-tex="\(W\)">\(W\)</span> into the product grid of Lemma 7.6, and the growth bound gives</p>
+<span class="math math-display" data-tex="\[
+|H|_R\leq N A\exp(CLR^\rho).
+\tag{7.28}
+\]">\[
+|H|_R\leq N A\exp(CLR^\rho).
+\tag{7.28}
+\]</span>
+<p>We do not use the transformed derivations for arithmetic: the coordinates of the <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span> need not be algebraic. Choose a fixed <span class="math" data-tex="\(B&gt;m-1\)">\(B&gt;m-1\)</span>. For all nodes there is a fixed <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> such that their original-coordinate polydiscs of radius <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> map under <span class="math" data-tex="\(T^{-1}\)">\(T^{-1}\)</span> into <span class="math" data-tex="\(|u_j|\leq B\)">\(|u_j|\leq B\)</span>. Iterated Cauchy estimates in those original-coordinate discs give</p>
+<span class="math math-display" data-tex="\[
+|V|\leq\varepsilon^{-s}|H|_B.
+\]">\[
+|V|\leq\varepsilon^{-s}|H|_B.
+\]</span>
+<p>Apply (7.19) and (7.28), and choose</p>
+<span class="math math-display" data-tex="\[
+R=s^{1/(2(q+1)\rho)}.
+\]">\[
+R=s^{1/(2(q+1)\rho)}.
+\]</span>
+<p>For every <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span> large enough, (7.25) implies</p>
+<span class="math math-display" data-tex="\[
+LR^\rho=O\bigl(s^{1-1/(2(q+1))}\bigr)=o(s).
+\]">\[
+LR^\rho=O\bigl(s^{1-1/(2(q+1))}\bigr)=o(s).
+\]</span>
+<p>All fixed factors in (7.19), including <span class="math" data-tex="\(\varepsilon^{-s}\)">\(\varepsilon^{-s}\)</span>, cost only <span class="math" data-tex="\(O(s)\)">\(O(s)\)</span> in the logarithm. Consequently</p>
+<span class="math math-display" data-tex="\[
+\log|V|\leq\log A-
+\frac{m}{2(q+1)\rho}s\log s+Cs
+\leq\left(1-\frac{m}{2(q+1)\rho}\right)s\log s+Cs.
+\tag{7.29}
+\]">\[
+\log|V|\leq\log A-
+\frac{m}{2(q+1)\rho}s\log s+Cs
+\leq\left(1-\frac{m}{2(q+1)\rho}\right)s\log s+Cs.
+\tag{7.29}
+\]</span>
+<p>Comparing (7.27) and (7.29) contradicts (7.23) as <span class="math" data-tex="\(s\geq n\to\infty\)">\(s\geq n\to\infty\)</span>. This proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constant in (7.23) is a convenient sufficient choice for this proof. It is not presented as a sharp several-variable bound. The conclusion applies to any subgroup containing a basis, with no discreteness or algebraicity assumption on its basis vectors. Keeping arithmetic in the original coordinates is what preserves that generality.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy — distinct frequencies.</strong> Prove the first assertion of Lemma 7.3 when <span class="math" data-tex="\(\beta\notin\mathbb Q\)">\(\beta\notin\mathbb Q\)</span>, allowing complex <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Give a polynomial relation when <span class="math" data-tex="\(\beta=p/q\)">\(\beta=p/q\)</span> is rational, including negative <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+</li>
+<li>
+<p><strong>Easy — the ring hypothesis.</strong> Explain precisely why <span class="math" data-tex="\(z,2^z\)">\(z,2^z\)</span> take rational values at all integers but their ring over any number field is not stable under differentiation. Why is observing the coefficient <span class="math" data-tex="\(\log2\)">\(\log2\)</span> alone insufficient?</p>
+</li>
+<li>
+<p><strong>Medium — domination and denominators.</strong> Prove each rule in (7.5), and prove (7.7)–(7.11), including constant polynomials. Explain why separate denominator bounds would not suffice for the matrix in (7.13).</p>
+</li>
+<li>
+<p><strong>Medium — ratios of logarithms.</strong> For algebraic <span class="math" data-tex="\(\alpha,\beta\notin\{0,1\}\)">\(\alpha,\beta\notin\{0,1\}\)</span>, fix any logarithms <span class="math" data-tex="\(A,B\)">\(A,B\)</span> with <span class="math" data-tex="\(e^A=\alpha,e^B=\beta\)">\(e^A=\alpha,e^B=\beta\)</span>. Use the criterion to prove that <span class="math" data-tex="\(A/B\)">\(A/B\)</span> is rational or transcendental.</p>
+</li>
+<li>
+<p><strong>Hard — the constant and the first nonzero derivative.</strong> Track the coefficients, denominator of the Taylor coefficient, conjugates and radius in Theorem 7.2 to recover the constant <span class="math" data-tex="\(4\)">\(4\)</span>. Prove the estimates uniformly for every possible first nonzero order <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span>. Compare with the bound <span class="math" data-tex="\((\rho_1+\rho_2)[K:\mathbb Q]\)">\((\rho_1+\rho_2)[K:\mathbb Q]\)</span> in Waldschmidt's <em>Transcendence Methods</em>, Theorem 2.2.1, and explain what changes if a radius <span class="math" data-tex="\(R=s^t\)">\(R=s^t\)</span> with <span class="math" data-tex="\(0&lt;t&lt;1/(2\rho)\)">\(0&lt;t&lt;1/(2\rho)\)</span> is used instead.</p>
+</li>
+</ol>
+<h2 id="8-solutions">8. Solutions</h2>
+<ol>
+<li>
+<p>In a polynomial relation, different monomials give different frequencies <span class="math" data-tex="\(i+j\beta\)">\(i+j\beta\)</span>: equality with <span class="math" data-tex="\(j\ne j&#x27;\)">\(j\ne j&#x27;\)</span> would give <span class="math" data-tex="\(\beta=(i&#x27;-i)/(j-j&#x27;)\in\mathbb Q\)">\(\beta=(i&#x27;-i)/(j-j&#x27;)\in\mathbb Q\)</span>. Different <span class="math" data-tex="\(j\)">\(j\)</span> therefore cannot coincide, and equal <span class="math" data-tex="\(j\)">\(j\)</span> forces equal <span class="math" data-tex="\(i\)">\(i\)</span>. Differentiating at zero through one less than the number of frequencies gives the invertible Vandermonde matrix, as in Lemma 7.3. This argument uses no reality assumption. If <span class="math" data-tex="\(\beta=p/q\)">\(\beta=p/q\)</span> with <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, then for <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span> the relation is <span class="math" data-tex="\(Y^q-X^p=0\)">\(Y^q-X^p=0\)</span>, and for <span class="math" data-tex="\(p&lt;0\)">\(p&lt;0\)</span> it is <span class="math" data-tex="\(X^{-p}Y^q-1=0\)">\(X^{-p}Y^q-1=0\)</span>. These are nonzero polynomials vanishing at <span class="math" data-tex="\(X=e^z,Y=e^{\beta z}\)">\(X=e^z,Y=e^{\beta z}\)</span>, including <span class="math" data-tex="\(p=0\)">\(p=0\)</span>.</p>
+</li>
+<li>
+<p>At an integer <span class="math" data-tex="\(k\)">\(k\)</span>, the values are <span class="math" data-tex="\(k,2^k\in\mathbb Q\)">\(k,2^k\in\mathbb Q\)</span>, even for negative <span class="math" data-tex="\(k\)">\(k\)</span>. The functions are independent over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> by Lemma 7.3 with <span class="math" data-tex="\(\alpha=\log2\ne0\)">\(\alpha=\log2\ne0\)</span>. Corollary 7.4 implies <span class="math" data-tex="\(\log2\)">\(\log2\)</span> is transcendental, so no number field contains it. A representation of <span class="math" data-tex="\(D(2^z)\)">\(D(2^z)\)</span> in <span class="math" data-tex="\(K[z,2^z]\)">\(K[z,2^z]\)</span> would force a zero polynomial <span class="math" data-tex="\(P(X,Y)-(\log2)Y\)">\(P(X,Y)-(\log2)Y\)</span>, whose coefficient of <span class="math" data-tex="\(Y\)">\(Y\)</span> cannot vanish. The forbidden coefficient is thus essential; without independence, relations between generators could allow a different polynomial representation of the same function.</p>
+</li>
+<li>
+<p>For each embedding, addition of coefficients uses <span class="math" data-tex="\(|a+b|\leq|a|+|b|\)">\(|a+b|\leq|a|+|b|\)</span>. A product coefficient is a sum of <span class="math" data-tex="\(a_\mu b_\nu\)">\(a_\mu b_\nu\)</span>, so its modulus is bounded by the corresponding convolution of the nonnegative dominating coefficients. Differentiation multiplies the coefficient of <span class="math" data-tex="\(X^\mu\)">\(X^\mu\)</span> by <span class="math" data-tex="\(\mu_i\geq0\)">\(\mu_i\geq0\)</span> and shifts its exponent; this proves all three rules. Formula (7.6) starts the induction. If the current bound has exponent <span class="math" data-tex="\(r+k\delta\)">\(r+k\delta\)</span>, (7.3) multiplies it by at most <span class="math" data-tex="\(U(r+k\delta)\)">\(U(r+k\delta)\)</span> and increases its exponent by at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, giving (7.7). The binomial estimate (7.8) then gives (7.9). Evaluation at the absolute values of all conjugates gives (7.10). Integral coefficients acquire at most one factor <span class="math" data-tex="\(b\)">\(b\)</span> per derivation, and evaluation acquires at most one per unit of total degree, giving (7.11). For <span class="math" data-tex="\(r=0,k&gt;0\)">\(r=0,k&gt;0\)</span>, the derivative vanishes; for <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, the empty product gives the original evaluation bound. Finally, numbers whose separate denominators are at most <span class="math" data-tex="\(Q\)">\(Q\)</span> can have a common least multiple much larger than <span class="math" data-tex="\(Q\)">\(Q\)</span>. For example denominators <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span> are both at most <span class="math" data-tex="\(3\)">\(3\)</span>, but their common multiple is <span class="math" data-tex="\(6\)">\(6\)</span>. The explicit common power of <span class="math" data-tex="\(b\)">\(b\)</span> avoids this error.</p>
+</li>
+<li>
+<p>Both <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> are nonzero because their exponentials are not one. Suppose <span class="math" data-tex="\(\eta=A/B\)">\(\eta=A/B\)</span> is algebraic and irrational, and take <span class="math" data-tex="\(K=\mathbb Q(\alpha,\beta,\eta)\)">\(K=\mathbb Q(\alpha,\beta,\eta)\)</span>. The functions <span class="math" data-tex="\(e^z,e^{\eta z}\)">\(e^z,e^{\eta z}\)</span> are independent and of strict order at most one; their derivatives stay in the <span class="math" data-tex="\(K\)">\(K\)</span>-ring. At the distinct points <span class="math" data-tex="\(kB\)">\(kB\)</span> they take values <span class="math" data-tex="\(\beta^k,\alpha^k\in K\)">\(\beta^k,\alpha^k\in K\)</span>. Arbitrarily many such points violate Theorem 7.2. Therefore an algebraic ratio must be rational; every other ratio is transcendental. The proof fixes the chosen logarithms from beginning to end and so allows all their branches.</p>
+</li>
+<li>
+<p>Take <span class="math" data-tex="\(r=\lceil\sqrt{2mn}\rceil\)">\(r=\lceil\sqrt{2mn}\rceil\)</span>, so the Siegel exponent is at most one. Row clearing and entry sizes give <span class="math" data-tex="\(\log A\leq n\log n+O(n+r+\log(r^2))\)">\(\log A\leq n\log n+O(n+r+\log(r^2))\)</span>. For every <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span>, this is at most <span class="math" data-tex="\(s\log s+O(s)\)">\(s\log s+O(s)\)</span>, while <span class="math" data-tex="\(r=O(\sqrt s)\)">\(r=O(\sqrt s)\)</span>. The nonzero Taylor coefficient <span class="math" data-tex="\(V=F^{(s)}(w)/s!\)">\(V=F^{(s)}(w)/s!\)</span> has house at most <span class="math" data-tex="\(A\exp(O(s))\)">\(A\exp(O(s))\)</span> and a clearing integer <span class="math" data-tex="\(s!\exp(O(s))\)">\(s!\exp(O(s))\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\log|V|\geq-D\log(s!)-(D-1)\log A-O(s).
+\]">\[
+\log|V|\geq-D\log(s!)-(D-1)\log A-O(s).
+\]</span>
+<p>At <span class="math" data-tex="\(R=s^{1/(2\rho)}\)">\(R=s^{1/(2\rho)}\)</span>, analytic growth costs <span class="math" data-tex="\(O(rR^\rho)=O(s)\)">\(O(rR^\rho)=O(s)\)</span>, while zero removal gains <span class="math" data-tex="\(-m s\log R\)">\(-m s\log R\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\log|V|\leq\log A-\frac{m}{2\rho}s\log s+O(s).
+\]">\[
+\log|V|\leq\log A-\frac{m}{2\rho}s\log s+O(s).
+\]</span>
+<p>Comparison gives</p>
+<span class="math math-display" data-tex="\[
+\frac{m}{2\rho}s\log s
+\leq D\log A+D\log(s!)+O(s)
+\leq2D s\log s+O(s).
+\]">\[
+\frac{m}{2\rho}s\log s
+\leq D\log A+D\log(s!)+O(s)
+\leq2D s\log s+O(s).
+\]</span>
+<p>This proves <span class="math" data-tex="\(m\leq4\rho D\)">\(m\leq4\rho D\)</span>, with integer parameters and common denominators made explicit. A fixed positive gap above this bound gives a contradiction for all sufficiently large <span class="math" data-tex="\(s\)">\(s\)</span>, and hence for all possible <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span> once <span class="math" data-tex="\(n\)">\(n\)</span> is large. With <span class="math" data-tex="\(R=s^t\)">\(R=s^t\)</span>, <span class="math" data-tex="\(0&lt;t&lt;1/(2\rho)\)">\(0&lt;t&lt;1/(2\rho)\)</span>, the growth cost is <span class="math" data-tex="\(O(s^{1/2+t\rho})=o(s)\)">\(O(s^{1/2+t\rho})=o(s)\)</span>, but the gain is only <span class="math" data-tex="\(-mt s\log s\)">\(-mt s\log s\)</span>. The sufficient contradiction condition becomes <span class="math" data-tex="\(mt&gt;2D\)">\(mt&gt;2D\)</span>. This yields the weaker bound <span class="math" data-tex="\(m\leq2D/t\)">\(m\leq2D/t\)</span>; taking <span class="math" data-tex="\(t\)">\(t\)</span> up to the endpoint recovers <span class="math" data-tex="\(4\rho D\)">\(4\rho D\)</span>. For comparison, Waldschmidt's Theorem 2.2.1 states the smaller bound <span class="math" data-tex="\((\rho_1+\rho_2)D\)">\((\rho_1+\rho_2)D\)</span> for functions of orders at most <span class="math" data-tex="\(\rho_1\)">\(\rho_1\)</span> and <span class="math" data-tex="\(\rho_2\)">\(\rho_2\)</span>, which is <span class="math" data-tex="\(2\rho D\)">\(2\rho D\)</span> when both orders are at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</p>
+</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li>Michel Waldschmidt, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/QueensPaper52.pdf"><em>Transcendence Methods</em></a>, Queen's Papers in Pure and Applied Mathematics 52, Queen's University, Kingston, 1979: §2.2, Theorem 2.2.1 and Lemma 2.2.5, for the Schneider–Lang criterion and the arithmetic estimates for derivatives; Lecture 10, §10.2, for Bombieri's several-variable theorem. Michel Waldschmidt, <a href="https://arxiv.org/abs/0908.4024"><em>Auxiliary functions in transcendence proofs</em></a>, arXiv:0908.4024, 2009, §§3.1.3–3.1.4, Theorems 3.4 and 3.6: the one-variable criterion and the several-variable criterion for Cartesian products.</li>
+<li>K. Soundararajan, <a href="https://math.stanford.edu/~ksound/TransNotes.pdf"><em>Transcendental Number Theory</em></a>, Math 249A course notes, Stanford University, Fall 2010, written up by I. Petrow, §§12–13, Theorem 22, for Lang's finite-order differential-ring formulation.</li>
+<li>Jiří Lebl, <a href="https://www.jirka.org/ca/ca.pdf"><em>Guide to Cultivating Complex Analysis</em></a>, version 1.9, July 11, 2026: Theorems 3.3.1, 3.3.3–3.3.4 and 5.3.2, exact open complex-analysis prerequisites. Copyright © 2019–2026 Jiří Lebl; dual CC BY-NC-SA 4.0 / CC BY-SA 4.0, with CC BY-SA used for the linked proof provider. The attribution does not change the CC0 dedication of this independently authored lesson.</li>
+<li>Schneider's method of 1949 and Lang's simplifications and several-variable extension are described in Waldschmidt's <em>Auxiliary functions in transcendence proofs</em>, §§3.1.3–3.1.4.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="TR-TRANS-06.html">← Gelfond–Schneider and Hilbert&#x27;s seventh problem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-TRANS-10.html">The index method for rational approximation →</a></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-07.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

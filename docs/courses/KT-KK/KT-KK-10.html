@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homotopy, associativity, the index pairing and KK-equivalence · Kasparov’s KK-theory</title>
+<meta name="description" content="A lesson of the course Kasparov&#x27;s KK-theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Kasparov&#x27;s KK-theory</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson"><p><strong>Draft.</strong> Self-checked by the writing AI. English · CC0 1.0.</p></aside>
+
+<article class="lesson">
+<h1 id="homotopy-associativity-the-index-pairing-and-kk-equivalence">Homotopy, associativity, the index pairing and KK-equivalence</h1>
+<p><em>Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>The product constructed in the preceding lesson makes cycles composable. Three further facts give the composition its force: an arbitrary module homotopy can be replaced by an operator homotopy, products associate, and composition with an odd Fredholm class is the familiar compression index. We prove these facts with their signs and countability conditions.</p>
+<p>We use the graded cycle, tensor and compact-operator conventions of the preceding lessons. Products are written in execution order:
+<span class="math" data-tex="\(x\widehat\otimes_D y\)">\(x\widehat\otimes_D y\)</span> first applies <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(y\)">\(y\)</span>.
+The connection calculus, product existence and operator-homotopy uniqueness used below are Lemmas 1.1–1.2 and Theorems 3.1–4.2 of <em>Connections and the existence of the Kasparov product</em>. The graded technical theorem is Theorem 3.1 of <em>Kasparov's technical theorem</em>.</p>
+<h2 id="1-moving-an-evaluation-by-an-operator-homotopy">1. Moving an evaluation by an operator homotopy</h2>
+<p>Let <span class="math" data-tex="\(I=[0,1]\)">\(I=[0,1]\)</span>, and let <span class="math" data-tex="\(e_t:C(I)\to\mathbb C\)">\(e_t:C(I)\to\mathbb C\)</span> be evaluation. The usual homotopy <span class="math" data-tex="\(t\mapsto e_t\)">\(t\mapsto e_t\)</span> changes the representation. We need a homotopy that keeps a representation fixed and changes only its operator.</p>
+<p><strong>Lemma 1.1 (the evaluation bridge).</strong> The cycles of <span class="math" data-tex="\(e_0,e_1\)">\(e_0,e_1\)</span> have the same operator-homotopy class.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(H=L^2([0,2\pi])\)">\(H=L^2([0,2\pi])\)</span>, use the periodic Fourier basis and the bounded skew-adjoint operator
+<span class="math math-display" data-tex="\[
+De_n=i\,\operatorname{sign}(n)e_n,\qquad De_0=0.
+\]">\[
+De_n=i\,\operatorname{sign}(n)e_n,\qquad De_0=0.
+\]</span>
+Thus <span class="math" data-tex="\(D^*=-D\)">\(D^*=-D\)</span> and <span class="math" data-tex="\(D^2=-1+p_0\)">\(D^2=-1+p_0\)</span>, with <span class="math" data-tex="\(p_0\)">\(p_0\)</span> rank one. The commutator of <span class="math" data-tex="\(D\)">\(D\)</span> with multiplication by a periodic continuous function is compact. For a monomial it is finite rank, because a fixed shift crosses the sign change at only finitely many Fourier coordinates; uniform trigonometric approximation proves the assertion.</p>
+<p>Choose a continuous function <span class="math" data-tex="\(h:[0,2\pi]\to[-1,1]\)">\(h:[0,2\pi]\to[-1,1]\)</span> with
+<span class="math" data-tex="\(h(0)=1,h(2\pi)=-1\)">\(h(0)=1,h(2\pi)=-1\)</span>, and put <span class="math" data-tex="\(k=(1-h^2)^{1/2}\)">\(k=(1-h^2)^{1/2}\)</span>.
+Define
+<span class="math math-display" data-tex="\[
+T_h=M_h-M_kD.
+\tag{1.1}
+\]">\[
+T_h=M_h-M_kD.
+\tag{1.1}
+\]</span>
+The function <span class="math" data-tex="\(k\)">\(k\)</span> is periodic, with endpoint value zero. For any continuous interval function <span class="math" data-tex="\(g\)">\(g\)</span>, both <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(kg\)">\(kg\)</span> are periodic. The identity
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M_k[D,M_g]&amp;=[D,M_{kg}]\\
+&amp;\quad-[D,M_k]M_g
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+M_k[D,M_g]&amp;=[D,M_{kg}]\\
+&amp;\quad-[D,M_k]M_g
+\end{aligned}
+\tag{1.2}
+\]</span>
+therefore proves its left side compact, even when <span class="math" data-tex="\(g\)">\(g\)</span> has different endpoint values.</p>
+<p>The operator <span class="math" data-tex="\(T_h\)">\(T_h\)</span> is essentially unitary. Indeed, using <span class="math" data-tex="\([D,M_k]\)">\([D,M_k]\)</span> compact,
+<span class="math math-display" data-tex="\[
+T_h^*T_h\equiv M_{h^2}+M_k[D,M_h]-M_{k^2}D^2\equiv1
+\pmod{\mathcal K(H)}.
+\]">\[
+T_h^*T_h\equiv M_{h^2}+M_k[D,M_h]-M_{k^2}D^2\equiv1
+\pmod{\mathcal K(H)}.
+\]</span>
+The analogous expansion gives <span class="math" data-tex="\(T_hT_h^*\equiv1\)">\(T_hT_h^*\equiv1\)</span>. Also
+<span class="math" data-tex="\([T_h,M_g]=-M_k[D,M_g]\)">\([T_h,M_g]=-M_k[D,M_g]\)</span> is compact by (1.2). The assignment <span class="math" data-tex="\(h\mapsto T_h\)">\(h\mapsto T_h\)</span> is norm-continuous in the uniform norm.</p>
+<p>Its index is one. The space of the allowed <span class="math" data-tex="\(h\)">\(h\)</span>'s is convex, so all these indices agree. For <span class="math" data-tex="\(h(\theta)=\cos(\theta/2)\)">\(h(\theta)=\cos(\theta/2)\)</span>, <span class="math" data-tex="\(k=\sin(\theta/2)\)">\(k=\sin(\theta/2)\)</span>, direct computation gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_h1&amp;=\cos(\theta/2),\\
+T_h\cos(n\theta)&amp;=\cos((n-\tfrac12)\theta),\\
+T_h\sin(n\theta)&amp;=\sin((n-\tfrac12)\theta)\quad(n\geq1).
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+T_h1&amp;=\cos(\theta/2),\\
+T_h\cos(n\theta)&amp;=\cos((n-\tfrac12)\theta),\\
+T_h\sin(n\theta)&amp;=\sin((n-\tfrac12)\theta)\quad(n\geq1).
+\end{aligned}
+\tag{1.3}
+\]</span>
+The half-integer sine and cosine functions form an orthogonal complete system, since their complex combinations are the Fourier basis multiplied by <span class="math" data-tex="\(e^{i\theta/2}\)">\(e^{i\theta/2}\)</span>. All noninitial modes in (1.3) map isometrically after normalization. The constant and first cosine have the same image, giving kernel <span class="math" data-tex="\(\mathbb C(1-\cos\theta)\)">\(\mathbb C(1-\cos\theta)\)</span>; their image spans the first half-integer cosine. Hence <span class="math" data-tex="\(T_h\)">\(T_h\)</span> is onto and has exactly that one-dimensional kernel.</p>
+<p>Choose <span class="math" data-tex="\(r:[0,2\pi]\to I\)">\(r:[0,2\pi]\to I\)</span> constant zero on <span class="math" data-tex="\([0,\pi/3]\)">\([0,\pi/3]\)</span>, constant one on <span class="math" data-tex="\([5\pi/3,2\pi]\)">\([5\pi/3,2\pi]\)</span>, and affine between them. On <span class="math" data-tex="\(H\oplus H^{\mathrm{op}}\)">\(H\oplus H^{\mathrm{op}}\)</span> use the fixed representation
+<span class="math math-display" data-tex="\[
+\rho(g)=\operatorname{diag}(M_{g\circ r},M_{g\circ r}).
+\]">\[
+\rho(g)=\operatorname{diag}(M_{g\circ r},M_{g\circ r}).
+\]</span>
+The odd self-adjoint operator with bottom-left part <span class="math" data-tex="\(T_h\)">\(T_h\)</span> is a cycle by the preceding calculations.</p>
+<p>Choose <span class="math" data-tex="\(h_0=-1\)">\(h_0=-1\)</span> on <span class="math" data-tex="\([\pi/3,2\pi]\)">\([\pi/3,2\pi]\)</span>, and <span class="math" data-tex="\(h_1=1\)">\(h_1=1\)</span> on <span class="math" data-tex="\([0,5\pi/3]\)">\([0,5\pi/3]\)</span>, with the stipulated endpoint values. Let <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> be the multiplication projections of the two constant end intervals. The functions <span class="math" data-tex="\(k_0,k_1\)">\(k_0,k_1\)</span> are supported in these intervals. Since <span class="math" data-tex="\([M_{k_i},D]\)">\([M_{k_i},D]\)</span> is compact, replacing the endpoint operators by
+<span class="math math-display" data-tex="\[
+T&#x27;_0=PT_{h_0}P-(1-P),\qquad
+T&#x27;_1=QT_{h_1}Q+(1-Q)
+\tag{1.4}
+\]">\[
+T&#x27;_0=PT_{h_0}P-(1-P),\qquad
+T&#x27;_1=QT_{h_1}Q+(1-Q)
+\tag{1.4}
+\]</span>
+is a compact perturbation. For example
+<span class="math" data-tex="\(M_{k_0}D(1-P)=[M_{k_0},D](1-P)\)">\(M_{k_0}D(1-P)=[M_{k_0},D](1-P)\)</span> is compact, and the other off-diagonal block vanishes. Thus these are valid endpoint perturbation paths.</p>
+<p>The complementary cycles in (1.4) are exactly degenerate. The corner at <span class="math" data-tex="\(P\)">\(P\)</span> has scalar representation <span class="math" data-tex="\(e_0\)">\(e_0\)</span> and Fredholm index one; that at <span class="math" data-tex="\(Q\)">\(Q\)</span> has scalar representation <span class="math" data-tex="\(e_1\)">\(e_1\)</span> and the same index. A Hilbert-space Fredholm operator in a scalar represented cycle is compactly perturbable to its polar partial isometry. Its invertible complement is a degenerate cycle, and its finite kernel/cokernel cycle reduces, by cancellation of opposite parity pairs, to its index times the one-dimensional evaluation cycle. Thus the two corners represent <span class="math" data-tex="\(e_0,e_1\)">\(e_0,e_1\)</span>.</p>
+<p>The path <span class="math" data-tex="\(h_t=(1-t)h_0+th_1\)">\(h_t=(1-t)h_0+th_1\)</span>, with the compact endpoint perturbations just described, is an operator homotopy on the fixed <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. It proves the result after addition of the displayed degenerate cycles. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The endpoint block corrections in (1.4) matter: the original <span class="math" data-tex="\(T_{h_i}\)">\(T_{h_i}\)</span> need not commute exactly with <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>. Compact commutation supplies the correction; exact block invariance is then true.</p>
+<h2 id="2-homotopy-and-operator-homotopy">2. Homotopy and operator homotopy</h2>
+<p><strong>Lemma 2.1 (products of operator paths).</strong> Suppose two input cycles vary by norm-continuous operator paths on fixed represented modules, with separable first source and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital intermediate algebra. Their endpoint products are operator homotopic.</p>
+<p><strong>Proof.</strong> Normalize the two operator paths by the pointwise self-adjoint contraction construction. Continuous functional calculus preserves norm continuity. The fixed stabilization in the connection-existence proof gives a norm-continuous family <span class="math" data-tex="\(G_t\)">\(G_t\)</span> of connections. In the product-existence construction, generate <span class="math" data-tex="\(A_2\)">\(A_2\)</span> using all the defects
+<span class="math math-display" data-tex="\[
+G_t^2-1,\quad G_t-G_t^*,\quad
+[G_t,\phi(a)]_{\mathrm{gr}},\quad
+[F_{1,t}\widehat\otimes1,G_t]_{\mathrm{gr}}.
+\]">\[
+G_t^2-1,\quad G_t-G_t^*,\quad
+[G_t,\phi(a)]_{\mathrm{gr}},\quad
+[F_{1,t}\widehat\otimes1,G_t]_{\mathrm{gr}}.
+\]</span>
+Their norm-continuous dependence allows <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> to be restricted to countable dense sets in forming the algebra. Add the compact ideal as before. The separable derivating space includes the full two operator families and <span class="math" data-tex="\(\phi(A)\)">\(\phi(A)\)</span>. Every product and derivation hypothesis is exactly the one checked in the preceding lesson.</p>
+<p>A single technical-theorem partition <span class="math" data-tex="\(M,N\)">\(M,N\)</span> now works for all <span class="math" data-tex="\(t\)">\(t\)</span>. The operators
+<span class="math math-display" data-tex="\[
+F_t=M^{1/4}(F_{1,t}\widehat\otimes1)M^{1/4}
++N^{1/4}G_tN^{1/4}
+\tag{2.1}
+\]">\[
+F_t=M^{1/4}(F_{1,t}\widehat\otimes1)M^{1/4}
++N^{1/4}G_tN^{1/4}
+\tag{2.1}
+\]</span>
+are norm-continuous and satisfy the product axioms for each <span class="math" data-tex="\(t\)">\(t\)</span>. Their endpoints give the required products; product uniqueness takes care of any originally chosen endpoint representatives. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2 (a degenerate right factor).</strong> A product with a degenerate second cycle is operator homotopic to a degenerate cycle.</p>
+<p><strong>Proof.</strong> Exact graded commutation of its second operator with the intermediate algebra defines <span class="math" data-tex="\(1\widehat\otimes F_2\)">\(1\widehat\otimes F_2\)</span>, as in Solution 10.1 of the preceding lesson. Its adjoint and square defects vanish on the tensor module: multiplying those defects by any creation operator reduces them to the exact localized defects of the degenerate second cycle. The creation ranges span the tensor module. It also graded commutes exactly with the first representation and with <span class="math" data-tex="\(F_1\widehat\otimes1\)">\(F_1\widehat\otimes1\)</span>. Thus it is both a degenerate cycle and a product operator, whose positivity bracket is zero. Product uniqueness proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.3 (comparison of homotopies).</strong> For separable graded <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital graded <span class="math" data-tex="\(B\)">\(B\)</span>, the map
+<span class="math math-display" data-tex="\[
+KK_{\mathrm{oh}}(A,B)\longrightarrow KK_h(A,B)
+\tag{2.2}
+\]">\[
+KK_{\mathrm{oh}}(A,B)\longrightarrow KK_h(A,B)
+\tag{2.2}
+\]</span>
+is an isomorphism.</p>
+<p><strong>Proof.</strong> An operator path is an interval-module cycle, so the map is defined and onto. For injectivity let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be a cycle over <span class="math" data-tex="\((A,C(I,B))\)">\((A,C(I,B))\)</span>, with endpoint cycles <span class="math" data-tex="\(\alpha_0,\alpha_1\)">\(\alpha_0,\alpha_1\)</span>.</p>
+<p>Tensor the evaluation bridge of Lemma 1.1 externally with <span class="math" data-tex="\(B\)">\(B\)</span>. The resulting fixed represented module is the graded Hilbert module
+<span class="math" data-tex="\((H\oplus H^{\mathrm{op}})\widehat\otimes B\)">\((H\oplus H^{\mathrm{op}})\widehat\otimes B\)</span>, countably generated because <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. Its operator path has endpoint classes
+<span class="math math-display" data-tex="\[
+[\operatorname{ev}_0]\oplus d_0,\qquad
+[\operatorname{ev}_1]\oplus d_1
+\]">\[
+[\operatorname{ev}_0]\oplus d_0,\qquad
+[\operatorname{ev}_1]\oplus d_1
+\]</span>
+under operator homotopy, where <span class="math" data-tex="\(d_i\)">\(d_i\)</span> are degenerate.
+All compact-defect assertions survive tensoring after source multiplication: approximate an element of <span class="math" data-tex="\(C(I,B)\)">\(C(I,B)\)</span> by finite sums <span class="math" data-tex="\(g(t)b\)">\(g(t)b\)</span>, and use a Hilbert-space compact tensor multiplication by <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>Apply Lemma 2.1 to the fixed first cycle <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and this second operator path. Its endpoint products are operator homotopic. By Lemma 2.2 their degenerate summands contribute zero. Products with evaluations are the coefficient pushforward cycles, by Theorem 5.2 of the preceding lesson; uniqueness identifies their operator-homotopy classes with <span class="math" data-tex="\(\alpha_0,\alpha_1\)">\(\alpha_0,\alpha_1\)</span>. Hence the endpoints of every module homotopy are equal in <span class="math" data-tex="\(KK_{\mathrm{oh}}\)">\(KK_{\mathrm{oh}}\)</span>. This proves injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.4 (the scalar and extension identifications).</strong> For trivially graded <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital <span class="math" data-tex="\(B\)">\(B\)</span>,
+<span class="math math-display" data-tex="\[
+KK^i(\mathbb C,B)\cong K_i(B),\qquad i=0,1.
+\tag{2.3}
+\]">\[
+KK^i(\mathbb C,B)\cong K_i(B),\qquad i=0,1.
+\tag{2.3}
+\]</span>
+For trivially graded separable <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital <span class="math" data-tex="\(B\)">\(B\)</span>,
+<span class="math math-display" data-tex="\[
+KK^1(A,B)\cong\operatorname{Ext}(A,B)^{-1}.
+\tag{2.4}
+\]">\[
+KK^1(A,B)\cong\operatorname{Ext}(A,B)^{-1}.
+\tag{2.4}
+\]</span></p>
+<p><strong>Proof.</strong> The even and odd scalar computations in Theorems 2.2 and 3.2 of <em>Pictures of KK</em> compute <span class="math" data-tex="\(KK_{\mathrm{oh}}\)">\(KK_{\mathrm{oh}}\)</span> by the stable Calkin boundary maps. Theorem 2.3 transfers them to <span class="math" data-tex="\(KK_h\)">\(KK_h\)</span>. The odd map sends a self-adjoint <span class="math" data-tex="\(T\)">\(T\)</span> to the projection <span class="math" data-tex="\(q((1+T)/2)\)">\(q((1+T)/2)\)</span>, then uses the positive exponential boundary. The second boundary isomorphism uses the ordinary K-theory periodicity in the stated stable-Calkin prerequisite.</p>
+<p>For extensions, Theorem 5.2 of <em>Pictures of KK</em> proves the full separable comparison with <span class="math" data-tex="\(KK_c\)">\(KK_c\)</span>, and its Theorem 9.4 proves <span class="math" data-tex="\(KK_c=KK_{\mathrm{oh}}\)">\(KK_c=KK_{\mathrm{oh}}\)</span>. Apply Theorem 2.3. These are precisely the separability hypotheses used here; no nonseparable compact-homology identification is inferred. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-connection-calculation-for-three-factors">3. The connection calculation for three factors</h2>
+<p>For three cycles <span class="math" data-tex="\((E_i,\phi_i,F_i)\)">\((E_i,\phi_i,F_i)\)</span>, write
+<span class="math math-display" data-tex="\[
+E_{12}=E_1\widehat\otimes_{\phi_2}E_2,\quad
+E_{23}=E_2\widehat\otimes_{\phi_3}E_3,\quad
+E=E_{12}\widehat\otimes_{\phi_3}E_3
+\cong E_1\widehat\otimes E_{23}.
+\]">\[
+E_{12}=E_1\widehat\otimes_{\phi_2}E_2,\quad
+E_{23}=E_2\widehat\otimes_{\phi_3}E_3,\quad
+E=E_{12}\widehat\otimes_{\phi_3}E_3
+\cong E_1\widehat\otimes E_{23}.
+\]</span>
+The identification is the inner-product-preserving map on elementary tensors. Let <span class="math" data-tex="\(F_{12}\)">\(F_{12}\)</span> be an <span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection, <span class="math" data-tex="\(F_{23}\)">\(F_{23}\)</span> an <span class="math" data-tex="\(F_3\)">\(F_3\)</span>-connection and <span class="math" data-tex="\(F\)">\(F\)</span> an <span class="math" data-tex="\(F_{23}\)">\(F_{23}\)</span>-connection, all odd and self-adjoint. By composition of connections, <span class="math" data-tex="\(F\)">\(F\)</span> is also an <span class="math" data-tex="\(F_3\)">\(F_3\)</span>-connection for <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>.</p>
+<p><strong>Lemma 3.1 (the bracket is a connection).</strong> Put
+<span class="math math-display" data-tex="\[
+S_{12}=F_{12}\widehat\otimes1,\quad S_2=F_2\widehat\otimes1.
+\]">\[
+S_{12}=F_{12}\widehat\otimes1,\quad S_2=F_2\widehat\otimes1.
+\]</span>
+Then <span class="math" data-tex="\([S_{12},F]_{\mathrm{gr}}\)">\([S_{12},F]_{\mathrm{gr}}\)</span> is a
+<span class="math" data-tex="\([S_2,F_{23}]_{\mathrm{gr}}\)">\([S_2,F_{23}]_{\mathrm{gr}}\)</span>-connection for <span class="math" data-tex="\(E_1\)">\(E_1\)</span>.</p>
+<p><strong>Proof.</strong> For homogeneous <span class="math" data-tex="\(x\in E_1\)">\(x\in E_1\)</span>, degree <span class="math" data-tex="\(p\)">\(p\)</span>, the <span class="math" data-tex="\(F_{12}\)">\(F_{12}\)</span>-connection condition gives
+<span class="math math-display" data-tex="\[
+S_{12}T_x=(-1)^pT_xS_2+C_x\widehat\otimes1,
+\]">\[
+S_{12}T_x=(-1)^pT_xS_2+C_x\widehat\otimes1,
+\]</span>
+where <span class="math" data-tex="\(C_x\in\mathcal K(E_2,E_{12})\)">\(C_x\in\mathcal K(E_2,E_{12})\)</span> has degree <span class="math" data-tex="\(p+1\)">\(p+1\)</span>. The other connection gives
+<span class="math" data-tex="\(FT_x=(-1)^pT_xF_{23}+K_x\)">\(FT_x=(-1)^pT_xF_{23}+K_x\)</span>, with <span class="math" data-tex="\(K_x\)">\(K_x\)</span> compact on the final modules. Expanding the anticommutator using these two identities gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\left[S_{12},F\right]_{\mathrm{gr}}T_x
+-T_x[S_2,F_{23}]_{\mathrm{gr}}
+&amp;\equiv F(C_x\widehat\otimes1)\\
+&amp;\quad+(-1)^p(C_x\widehat\otimes1)F_{23}
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+\left[S_{12},F\right]_{\mathrm{gr}}T_x
+-T_x[S_2,F_{23}]_{\mathrm{gr}}
+&amp;\equiv F(C_x\widehat\otimes1)\\
+&amp;\quad+(-1)^p(C_x\widehat\otimes1)F_{23}
+\end{aligned}
+\tag{3.1}
+\]</span>
+modulo final compact operators.</p>
+<p>Regard <span class="math" data-tex="\(F_{23}\oplus F\)">\(F_{23}\oplus F\)</span> as an <span class="math" data-tex="\(F_3\)">\(F_3\)</span>-connection on
+<span class="math" data-tex="\((E_2\oplus E_{12})\widehat\otimes E_3\)">\((E_2\oplus E_{12})\widehat\otimes E_3\)</span>. Lemma 1.1 of the preceding lesson says it graded commutes modulo compacts with every first-factor compact matrix, including the off-diagonal <span class="math" data-tex="\(C_x\)">\(C_x\)</span>. Its degree <span class="math" data-tex="\(p+1\)">\(p+1\)</span> gives exactly the plus sign on the right of (3.1). That side is compact. Taking adjoints proves the second creation condition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also need a localized positivity fact.</p>
+<p><strong>Lemma 3.2 (the negative part).</strong> If <span class="math" data-tex="\(F_{23}\)">\(F_{23}\)</span> is a product of <span class="math" data-tex="\(F_2,F_3\)">\(F_2,F_3\)</span>, the negative part of
+<span class="math math-display" data-tex="\[
+K=[S_2,F_{23}]_{\mathrm{gr}}
+\]">\[
+K=[S_2,F_{23}]_{\mathrm{gr}}
+\]</span>
+is locally compact for the source action of <span class="math" data-tex="\(D_1\)">\(D_1\)</span>. Consequently the negative part of
+<span class="math" data-tex="\(H=[S_{12},F]_{\mathrm{gr}}\)">\(H=[S_{12},F]_{\mathrm{gr}}\)</span> is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection for <span class="math" data-tex="\(E_1\)">\(E_1\)</span>. It is also a <span class="math" data-tex="\(0\)">\(0\)</span>-connection for <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>.</p>
+<p><strong>Proof.</strong> The even self-adjoint <span class="math" data-tex="\(K\)">\(K\)</span> commutes with the source modulo compacts. Expand its commutator with <span class="math" data-tex="\(\phi_2(d)\)">\(\phi_2(d)\)</span>: the term involving <span class="math" data-tex="\([F_{23},\phi_2(d)]_{\mathrm{gr}}\)">\([F_{23},\phi_2(d)]_{\mathrm{gr}}\)</span> is compact; the other is the graded commutator of <span class="math" data-tex="\(F_{23}\)">\(F_{23}\)</span> with
+<span class="math" data-tex="\([F_2,\phi_2(d)]_{\mathrm{gr}}\widehat\otimes1\)">\([F_2,\phi_2(d)]_{\mathrm{gr}}\widehat\otimes1\)</span>, also compact by its connection property.
+The product positivity says
+<span class="math" data-tex="\(\phi_2(d)K\phi_2(d)^*\geq0\)">\(\phi_2(d)K\phi_2(d)^*\geq0\)</span> modulo compacts. The negative-part calculation of Proposition 3.3 in the cycle lesson therefore gives <span class="math" data-tex="\(K_-\phi_2(d)\)">\(K_-\phi_2(d)\)</span> and <span class="math" data-tex="\(\phi_2(d)K_-\)">\(\phi_2(d)K_-\)</span> compact.</p>
+<p>By Lemma 3.1 and continuous functional calculus, <span class="math" data-tex="\(H_-\)">\(H_-\)</span> is a <span class="math" data-tex="\(K_-\)">\(K_-\)</span>-connection. Local compactness of <span class="math" data-tex="\(K_-\)">\(K_-\)</span> makes its creation products compact, by the creation compactness test; hence this is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection for <span class="math" data-tex="\(E_1\)">\(E_1\)</span>.
+Since <span class="math" data-tex="\(F\)">\(F\)</span> is an <span class="math" data-tex="\(F_3\)">\(F_3\)</span>-connection for <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>, its graded commutator with the first-factor <span class="math" data-tex="\(F_{12}\)">\(F_{12}\)</span> is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection for <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>. Thus <span class="math" data-tex="\(H\)">\(H\)</span> annihilates its compact first-factor ideal modulo final compacts. Continuous functional calculus with <span class="math" data-tex="\(t\mapsto t_-\)">\(t\mapsto t_-\)</span>, which vanishes at zero, keeps that annihilation property. This proves the second assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-full-associativity">4. Full associativity</h2>
+<p><strong>Theorem 4.1 (associativity).</strong> Let <span class="math" data-tex="\(A,D_1\)">\(A,D_1\)</span> be separable graded C*-algebras, let <span class="math" data-tex="\(D_2\)">\(D_2\)</span> be <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital, and let <span class="math" data-tex="\(B\)">\(B\)</span> be a graded C*-algebra. For
+<span class="math math-display" data-tex="\[
+x\in KK(A,D_1),\quad y\in KK(D_1,D_2),\quad
+z\in KK(D_2,B),
+\]">\[
+x\in KK(A,D_1),\quad y\in KK(D_1,D_2),\quad
+z\in KK(D_2,B),
+\]</span>
+one has
+<span class="math math-display" data-tex="\[
+x\widehat\otimes_{D_1}(y\widehat\otimes_{D_2}z)
+=(x\widehat\otimes_{D_1}y)\widehat\otimes_{D_2}z.
+\tag{4.1}
+\]">\[
+x\widehat\otimes_{D_1}(y\widehat\otimes_{D_2}z)
+=(x\widehat\otimes_{D_1}y)\widehat\otimes_{D_2}z.
+\tag{4.1}
+\]</span></p>
+<p><strong>Proof.</strong> Choose normalized cycles and self-adjoint product operators
+<span class="math" data-tex="\(F_{12},F_{23},F\)">\(F_{12},F_{23},F\)</span>, where <span class="math" data-tex="\(F\)">\(F\)</span> represents the left side. On <span class="math" data-tex="\(E\)">\(E\)</span> set
+<span class="math math-display" data-tex="\[
+S_1=F_1\widehat\otimes1\widehat\otimes1,\qquad
+S_{12}=F_{12}\widehat\otimes1,\qquad J=\mathcal K(E).
+\]">\[
+S_1=F_1\widehat\otimes1\widehat\otimes1,\qquad
+S_{12}=F_{12}\widehat\otimes1,\qquad J=\mathcal K(E).
+\]</span>
+Let <span class="math" data-tex="\(I_1,I_{12}\)">\(I_1,I_{12}\)</span> be the images of <span class="math" data-tex="\(\mathcal K(E_1)\)">\(\mathcal K(E_1)\)</span> and <span class="math" data-tex="\(\mathcal K(E_{12})\)">\(\mathcal K(E_{12})\)</span>, each tensored with identity on the remaining factors. The algebra
+<span class="math math-display" data-tex="\[
+A_1=C^*(J,I_1,I_{12})
+\]">\[
+A_1=C^*(J,I_1,I_{12})
+\]</span>
+is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. Indeed <span class="math" data-tex="\(I_1\)">\(I_1\)</span> normalizes <span class="math" data-tex="\(I_{12}\)">\(I_{12}\)</span>, since it comes from an adjointable operator on <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>, so <span class="math" data-tex="\(I_{12}+I_1\)">\(I_{12}+I_1\)</span> is a closed C*-algebra; adding the ideal <span class="math" data-tex="\(J\)">\(J\)</span> retains closedness. A sum of strictly positive elements of these three images is strictly positive in <span class="math" data-tex="\(A_1\)">\(A_1\)</span>.</p>
+<p>Put <span class="math" data-tex="\(H=[S_{12},F]_{\mathrm{gr}}\)">\(H=[S_{12},F]_{\mathrm{gr}}\)</span> and
+<span class="math math-display" data-tex="\[
+A_2=C^*(J,H_-,[S_1,F]_{\mathrm{gr}}).
+\]">\[
+A_2=C^*(J,H_-,[S_1,F]_{\mathrm{gr}}).
+\]</span>
+Both extra generators annihilate <span class="math" data-tex="\(I_1\)">\(I_1\)</span> and <span class="math" data-tex="\(I_{12}\)">\(I_{12}\)</span> modulo <span class="math" data-tex="\(J\)">\(J\)</span>. For <span class="math" data-tex="\(H_-\)">\(H_-\)</span> this is Lemma 3.2. For <span class="math" data-tex="\([S_1,F]_{\mathrm{gr}}\)">\([S_1,F]_{\mathrm{gr}}\)</span>, apply the first-factor commutator rule once to the <span class="math" data-tex="\(F_{23}\)">\(F_{23}\)</span>-connection and once to the <span class="math" data-tex="\(F_3\)">\(F_3\)</span>-connection. Hence <span class="math" data-tex="\(A_1A_2\subset J\)">\(A_1A_2\subset J\)</span>, and <span class="math" data-tex="\(A_2\)">\(A_2\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital by adjoining its finite generating set to <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>The space spanned by <span class="math" data-tex="\(F,S_1,S_{12},\phi(A)\)">\(F,S_1,S_{12},\phi(A)\)</span> derives <span class="math" data-tex="\(A_1\)">\(A_1\)</span>.
+The operator <span class="math" data-tex="\(F\)">\(F\)</span> commutes graded with both compact images modulo <span class="math" data-tex="\(J\)">\(J\)</span>. The operators <span class="math" data-tex="\(S_1,\phi(A)\)">\(S_1,\phi(A)\)</span> act adjointably on both first modules. The operator <span class="math" data-tex="\(S_{12}\)">\(S_{12}\)</span> normalizes <span class="math" data-tex="\(I_{12}\)">\(I_{12}\)</span> and has graded commutators with <span class="math" data-tex="\(I_1\)">\(I_1\)</span> in <span class="math" data-tex="\(I_{12}\)">\(I_{12}\)</span>, by the <span class="math" data-tex="\(F_{12}\)">\(F_{12}\)</span>-connection property before the last tensoring. These facts verify the full derivation condition.</p>
+<p>Apply the technical theorem and form
+<span class="math math-display" data-tex="\[
+F&#x27;=M^{1/2}S_1+N^{1/2}F,\qquad M+N=1.
+\tag{4.2}
+\]">\[
+F&#x27;=M^{1/2}S_1+N^{1/2}F,\qquad M+N=1.
+\tag{4.2}
+\]</span>
+Use the globally compact self-adjoint sandwich correction if necessary.
+The product-existence calculation makes <span class="math" data-tex="\((E,\phi,F&#x27;)\)">\((E,\phi,F&#x27;)\)</span> a cycle: <span class="math" data-tex="\(M\)">\(M\)</span> kills the localized first-input defects in <span class="math" data-tex="\(I_1\)">\(I_1\)</span>, <span class="math" data-tex="\(N\)">\(N\)</span> kills the cross bracket, and the defects of <span class="math" data-tex="\(F\)">\(F\)</span> were already source-localized compacts.
+Moreover
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\phi(a)[F,F&#x27;]_{\mathrm{gr}}\phi(a)^*
+&amp;\equiv\phi(a)M^{1/2}[F,S_1]_{\mathrm{gr}}\phi(a)^*\\
+&amp;\quad+2\phi(a)N^{1/2}\phi(a)^*\geq0\pmod J.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\phi(a)[F,F&#x27;]_{\mathrm{gr}}\phi(a)^*
+&amp;\equiv\phi(a)M^{1/2}[F,S_1]_{\mathrm{gr}}\phi(a)^*\\
+&amp;\quad+2\phi(a)N^{1/2}\phi(a)^*\geq0\pmod J.
+\end{aligned}
+\]</span>
+The first term is positive by the original product alignment of <span class="math" data-tex="\(F\)">\(F\)</span>, since <span class="math" data-tex="\(M\)">\(M\)</span> commutes with the sandwich modulo <span class="math" data-tex="\(J\)">\(J\)</span>. Thus <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> is operator homotopic to <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>It remains to show that <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> is a product of <span class="math" data-tex="\(F_{12},F_3\)">\(F_{12},F_3\)</span>. The <span class="math" data-tex="\(M^{1/2}S_1\)">\(M^{1/2}S_1\)</span> term is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection for <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>, since <span class="math" data-tex="\(M\)">\(M\)</span> annihilates <span class="math" data-tex="\(I_{12}\)">\(I_{12}\)</span>. The other term differs from <span class="math" data-tex="\(F\)">\(F\)</span>, an <span class="math" data-tex="\(F_3\)">\(F_3\)</span>-connection for <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>, by a <span class="math" data-tex="\(0\)">\(0\)</span>-connection. This proves the creation conditions.</p>
+<p>For positivity the actual expression is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\phi(a)[S_{12},F&#x27;]_{\mathrm{gr}}\phi(a)^*
+&amp;\equiv\phi(a)M^{1/2}[S_{12},S_1]_{\mathrm{gr}}\phi(a)^*\\
+&amp;\quad+\phi(a)N^{1/2}H\phi(a)^*.
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+\phi(a)[S_{12},F&#x27;]_{\mathrm{gr}}\phi(a)^*
+&amp;\equiv\phi(a)M^{1/2}[S_{12},S_1]_{\mathrm{gr}}\phi(a)^*\\
+&amp;\quad+\phi(a)N^{1/2}H\phi(a)^*.
+\end{aligned}
+\tag{4.3}
+\]</span>
+Both terms are positive modulo <span class="math" data-tex="\(J\)">\(J\)</span>. For the second, <span class="math" data-tex="\(N^{1/2}H_-\in J\)">\(N^{1/2}H_-\in J\)</span>, so only the positive part remains, commuting with the cutoff modulo <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>For the first, before tensoring with the final identity, the product positivity of <span class="math" data-tex="\(F_{12}\)">\(F_{12}\)</span> says that
+<span class="math" data-tex="\(\phi_1(a)[F_{12},F_1\widehat\otimes1]_{\mathrm{gr}}\phi_1(a)^*\)">\(\phi_1(a)[F_{12},F_1\widehat\otimes1]_{\mathrm{gr}}\phi_1(a)^*\)</span>
+is positive modulo <span class="math" data-tex="\(\mathcal K(E_{12})\)">\(\mathcal K(E_{12})\)</span>. Write that localized bracket as <span class="math" data-tex="\(P-C\)">\(P-C\)</span>, where <span class="math" data-tex="\(P\geq0\)">\(P\geq0\)</span> is its positive part and <span class="math" data-tex="\(C\in\mathcal K(E_{12})\)">\(C\in\mathcal K(E_{12})\)</span> is its negative part. Under the final tensor homomorphism, <span class="math" data-tex="\(C\)">\(C\)</span> lands in <span class="math" data-tex="\(I_{12}\)">\(I_{12}\)</span>, so <span class="math" data-tex="\(M^{1/2}\)">\(M^{1/2}\)</span> kills this error modulo <span class="math" data-tex="\(J\)">\(J\)</span>. The first term of (4.3) is consequently the class of the actual positive operator <span class="math" data-tex="\(M^{1/4}(P\widehat\otimes1)M^{1/4}\)">\(M^{1/4}(P\widehat\otimes1)M^{1/4}\)</span>: commutation of <span class="math" data-tex="\(M\)">\(M\)</span> with the localized bracket modulo <span class="math" data-tex="\(J\)">\(J\)</span> passes to its positive part by continuous functional calculus. This proves positivity of that term. It need not vanish: annihilating the compact negative part gives no reason to annihilate the positive part. Both terms of (4.3) are retained in the associativity argument.</p>
+<p>Thus <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> is a product of <span class="math" data-tex="\(F_{12},F_3\)">\(F_{12},F_3\)</span>, while representing the same class as <span class="math" data-tex="\(F\)">\(F\)</span>. Uniqueness proves (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular the theorem includes the cases where any factor is a homomorphism or an imprimitivity bimodule. Its proof uses the three-module compact ideals; it does not assume the tensor of an arbitrary first-factor compact operator is a compact operator on the final module.</p>
+<p>In fact the same proof works for <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital <span class="math" data-tex="\(D_1\)">\(D_1\)</span> whenever the requisite binary product operators exist. Separability of <span class="math" data-tex="\(D_1\)">\(D_1\)</span> in the theorem guarantees existence of the inner product <span class="math" data-tex="\(y\widehat\otimes_{D_2}z\)">\(y\widehat\otimes_{D_2}z\)</span>; no other step uses it. In particular the explicit compact-left correspondence products give this existence for the Morita reductions used below, even with a nonseparable intermediate algebra.</p>
+<h2 id="5-naturality-composition-and-rings">5. Naturality, composition and rings</h2>
+<p><strong>Proposition 5.1 (naturality).</strong> Whenever the displayed products satisfy the preceding separability and countability hypotheses, graded homomorphisms <span class="math" data-tex="\(f:A&#x27;\to A\)">\(f:A&#x27;\to A\)</span>, <span class="math" data-tex="\(g:B\to B&#x27;\)">\(g:B\to B&#x27;\)</span>, <span class="math" data-tex="\(h:D\to D&#x27;\)">\(h:D\to D&#x27;\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f^*(x\widehat\otimes_D y)&amp;=f^*x\widehat\otimes_D y,\\
+g_*(x\widehat\otimes_D y)&amp;=x\widehat\otimes_D g_*y,\\
+h_*x\widehat\otimes_{D&#x27;}z&amp;=x\widehat\otimes_D h^*z.
+\end{aligned}
+\tag{5.1}
+\]">\[
+\begin{aligned}
+f^*(x\widehat\otimes_D y)&amp;=f^*x\widehat\otimes_D y,\\
+g_*(x\widehat\otimes_D y)&amp;=x\widehat\otimes_D g_*y,\\
+h_*x\widehat\otimes_{D&#x27;}z&amp;=x\widehat\otimes_D h^*z.
+\end{aligned}
+\tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong> A product operator remains a product after precomposing its representation with <span class="math" data-tex="\(f\)">\(f\)</span>. Its source conditions and positivity are tested on the represented elements <span class="math" data-tex="\(f(a&#x27;)\)">\(f(a&#x27;)\)</span>.</p>
+<p>For the second identity tensor the product module and operator with <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span> along <span class="math" data-tex="\(g\)">\(g\)</span>. Compact operators descend to compact operators: a rank-one operator becomes the product of two compact creation operators from <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span>. The associating tensor unitary identifies this module with <span class="math" data-tex="\(E_1\widehat\otimes(E_2\widehat\otimes_g B&#x27;)\)">\(E_1\widehat\otimes(E_2\widehat\otimes_g B&#x27;)\)</span>. The creation errors are the original errors tensored with <span class="math" data-tex="\(1\)">\(1\)</span>, still compact. The induced homomorphism on adjointable operators preserves the positive quotient sandwich. Thus it is the desired product.</p>
+<p>For the third identity the unitary is
+<span class="math math-display" data-tex="\[
+(E_1\widehat\otimes_h D&#x27;)\widehat\otimes_{\psi&#x27;}E_2&#x27;
+\longrightarrow E_1\widehat\otimes_{\psi&#x27;h}E_2&#x27;,\qquad
+(x\widehat\otimes d&#x27;)\widehat\otimes y
+\longmapsto x\widehat\otimes\psi&#x27;(d&#x27;)y.
+\tag{5.2}
+\]">\[
+(E_1\widehat\otimes_h D&#x27;)\widehat\otimes_{\psi&#x27;}E_2&#x27;
+\longrightarrow E_1\widehat\otimes_{\psi&#x27;h}E_2&#x27;,\qquad
+(x\widehat\otimes d&#x27;)\widehat\otimes y
+\longmapsto x\widehat\otimes\psi&#x27;(d&#x27;)y.
+\tag{5.2}
+\]</span>
+It preserves the defining inner products. Its range is dense even for a degenerate <span class="math" data-tex="\(\psi&#x27;\)">\(\psi&#x27;\)</span>: approximate <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(xu_n\)">\(xu_n\)</span>, with <span class="math" data-tex="\(u_n\)">\(u_n\)</span> an approximate identity of <span class="math" data-tex="\(D\)">\(D\)</span>, and move <span class="math" data-tex="\(h(u_n)\)">\(h(u_n)\)</span> to the second vector. A creation operator on the left corresponds to <span class="math" data-tex="\(T_x\psi&#x27;(d&#x27;)\)">\(T_x\psi&#x27;(d&#x27;)\)</span> on the right. The connection error is the original error multiplied by <span class="math" data-tex="\(\psi&#x27;(d&#x27;)\)">\(\psi&#x27;(d&#x27;)\)</span>, plus <span class="math" data-tex="\(T_x\)">\(T_x\)</span> times the compact graded commutator of <span class="math" data-tex="\(F_2&#x27;\)">\(F_2&#x27;\)</span> with <span class="math" data-tex="\(\psi&#x27;(d&#x27;)\)">\(\psi&#x27;(d&#x27;)\)</span>, with its Koszul sign. Both are compact. Taking adjoints proves the second creation condition. The first operator and representation coincide under (5.2), so positivity is unchanged. Uniqueness proves all three identities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (the category and its endomorphism rings).</strong> Separable graded C*-algebras, with morphism groups <span class="math" data-tex="\(KK(A,B)\)">\(KK(A,B)\)</span> and composition the Kasparov product, form an additive category. The identity at <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\((A,\operatorname{id},0)\)">\((A,\operatorname{id},0)\)</span>. For every such <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(KK(A,A)\)">\(KK(A,A)\)</span> is a unital ring. In particular
+<span class="math math-display" data-tex="\[
+KK(\mathbb C,\mathbb C)\cong\mathbb Z
+\quad\text{as unital rings}.
+\tag{5.3}
+\]">\[
+KK(\mathbb C,\mathbb C)\cong\mathbb Z
+\quad\text{as unital rings}.
+\tag{5.3}
+\]</span>
+For homomorphisms <span class="math" data-tex="\(f:A\to D\)">\(f:A\to D\)</span>, <span class="math" data-tex="\(g:D\to B\)">\(g:D\to B\)</span>, composition gives
+<span class="math" data-tex="\([f]\widehat\otimes_D[g]=[g f]\)">\([f]\widehat\otimes_D[g]=[g f]\)</span>.</p>
+<p><strong>Proof.</strong> The previous lesson proves bilinearity and both identity actions; Theorem 4.1 proves associativity. These are the category axioms and the distributive ring axioms. The identity assertion for homomorphisms follows directly by tensoring the two homomorphism cycles. The tensor <span class="math" data-tex="\(D\widehat\otimes_g B\)">\(D\widehat\otimes_g B\)</span> identifies with <span class="math" data-tex="\(B_g=\overline{g(D)B}\)">\(B_g=\overline{g(D)B}\)</span>, with source action <span class="math" data-tex="\(g f\)">\(g f\)</span> and zero operator. Its essential source submodule is <span class="math" data-tex="\(\overline{g f(A)B}\)">\(\overline{g f(A)B}\)</span>, the same as for the homomorphism cycle of <span class="math" data-tex="\(g f\)">\(g f\)</span>. Proposition 5.1 of the preceding lesson joins each cycle to that common support cycle. Thus their homotopy classes agree; no orthogonal complement of the support module is assumed.</p>
+<p>The scalar additive calculation identifies the class of
+<span class="math" data-tex="\((\mathbb C,\operatorname{id},0)\)">\((\mathbb C,\operatorname{id},0)\)</span> with <span class="math" data-tex="\(1\in\mathbb Z\)">\(1\in\mathbb Z\)</span>. Every scalar class is an integer multiple of this class. Bilinearity and its identity action make their product <span class="math" data-tex="\(m n\)">\(m n\)</span>, proving (5.3).</p>
+<p>To see additivity on objects, <span class="math" data-tex="\(A\oplus D\)">\(A\oplus D\)</span> has the evident inclusion and projection homomorphisms. The two cross compositions are zero and the two diagonal compositions are identities. The sum of the two inclusion-projection endomorphisms is the identity: its homomorphism cycle decomposes as the direct sum on the right module <span class="math" data-tex="\(A\oplus D\)">\(A\oplus D\)</span>. These identities exhibit <span class="math" data-tex="\(A\oplus D\)">\(A\oplus D\)</span> as a biproduct. The zero algebra is a zero object. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For completeness, the general product is obtained from ordinary products by dilation:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+KK(A_1,B_1\widehat\otimes D)\times
+KK(D\widehat\otimes A_2,B_2)\\
+\longrightarrow KK(A_1\widehat\otimes A_2,B_1\widehat\otimes B_2).
+\end{aligned}
+\tag{5.4}
+\]">\[
+\begin{aligned}
+KK(A_1,B_1\widehat\otimes D)\times
+KK(D\widehat\otimes A_2,B_2)\\
+\longrightarrow KK(A_1\widehat\otimes A_2,B_1\widehat\otimes B_2).
+\end{aligned}
+\tag{5.4}
+\]</span>
+Explicitly dilate the first class by <span class="math" data-tex="\(A_2\)">\(A_2\)</span>, the second on the left by <span class="math" data-tex="\(B_1\)">\(B_1\)</span>, and compose over <span class="math" data-tex="\(B_1\widehat\otimes D\widehat\otimes A_2\)">\(B_1\widehat\otimes D\widehat\otimes A_2\)</span>. For separable <span class="math" data-tex="\(A_1,A_2\)">\(A_1,A_2\)</span> and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital <span class="math" data-tex="\(B_1,D\)">\(B_1,D\)</span>, all displayed modules and the intermediate algebra meet the countability hypotheses. Theorem 4.1 and Proposition 5.1 give its associativity and naturality by the canonical tensor-associating and signed-flip maps. This includes the external product of the preceding lesson.</p>
+<p>Here dilation respects product operators by a direct check. Under its canonical tensor unitary, the creation operator for <span class="math" data-tex="\(x\widehat\otimes c\)">\(x\widehat\otimes c\)</span> is <span class="math" data-tex="\(T_x\widehat\otimes L_c\)">\(T_x\widehat\otimes L_c\)</span>. A compact creation error becomes the original compact tensored with <span class="math" data-tex="\(L_c\in\mathcal K(C)\)">\(L_c\in\mathcal K(C)\)</span>, hence is compact; the adjoint error is the same calculation. Source multiplication likewise inserts a compact <span class="math" data-tex="\(C\)">\(C\)</span>-factor in each cycle defect.</p>
+<p>For positivity, the even bracket <span class="math" data-tex="\([S,F]_{\mathrm{gr}}\)">\([S,F]_{\mathrm{gr}}\)</span> commutes with the source modulo compacts. Expand that commutator: the term involving the compact source commutator of <span class="math" data-tex="\(F\)">\(F\)</span> is compact, and the other is the graded commutator of <span class="math" data-tex="\(F\)">\(F\)</span> with the compact first-factor operator <span class="math" data-tex="\([F_1,\phi_1(a)]_{\mathrm{gr}}\widehat\otimes1\)">\([F_1,\phi_1(a)]_{\mathrm{gr}}\widehat\otimes1\)</span>. Lemma 3.2's negative-part argument consequently makes the bracket's negative part locally compact for the source. After dilation its product with a finite source sum <span class="math" data-tex="\(\sum_i a_i\widehat\otimes c_i\)">\(\sum_i a_i\widehat\otimes c_i\)</span> is compact, because each term is a source-localized compact tensored with <span class="math" data-tex="\(L_{c_i}\)">\(L_{c_i}\)</span>. Its positive part, tensored with identity, is positive in the faithful graded matrix model. Thus every finite source sum has a positive quotient sandwich; norm closure gives all source tests. Dilation therefore carries binary products to binary products. The canonical regrouping of a triple dilation reduces its two composition orders exactly to (4.1), proving the asserted associativity of (5.4); precomposition, coefficient pushforward and the balancing identity reduce its naturality to (5.1).</p>
+<p><strong>Theorem 5.3 (symmetry of the external product).</strong> For graded cycles the external product is preserved by the signed flips of the source and coefficient factors. For trivially graded algebras and parity classes this becomes
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x\boxtimes y=(-1)^{pq}\,\sigma^*\tau_*(y\boxtimes x),\\
+x\in KK^p(A_1,B_1),\\
+y\in KK^q(A_2,B_2),
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+x\boxtimes y=(-1)^{pq}\,\sigma^*\tau_*(y\boxtimes x),\\
+x\in KK^p(A_1,B_1),\\
+y\in KK^q(A_2,B_2),
+\end{gathered}
+\tag{5.5}
+\]</span>
+where <span class="math" data-tex="\(\sigma:A_1\otimes A_2\to A_2\otimes A_1\)">\(\sigma:A_1\otimes A_2\to A_2\otimes A_1\)</span> and
+<span class="math" data-tex="\(\tau:B_2\otimes B_1\to B_1\otimes B_2\)">\(\tau:B_2\otimes B_1\to B_1\otimes B_2\)</span> are the ordinary flips.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(E=E_1\widehat\otimes E_2\)">\(E=E_1\widehat\otimes E_2\)</span> put
+<span class="math" data-tex="\(S_1=F_1\widehat\otimes1\)">\(S_1=F_1\widehat\otimes1\)</span>, <span class="math" data-tex="\(S_2=1\widehat\otimes F_2\)">\(S_2=1\widehat\otimes F_2\)</span>.
+Normalize the inputs. These operators anticommute exactly. Let <span class="math" data-tex="\(J=\mathcal K(E)\)">\(J=\mathcal K(E)\)</span>, and let
+<span class="math math-display" data-tex="\[
+I_1=\mathcal K(E_1)\widehat\otimes\phi_2(A_2),\qquad
+I_2=\phi_1(A_1)\widehat\otimes\mathcal K(E_2)
+\]">\[
+I_1=\mathcal K(E_1)\widehat\otimes\phi_2(A_2),\qquad
+I_2=\phi_1(A_1)\widehat\otimes\mathcal K(E_2)
+\]</span>
+denote their represented closed images. They are <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital under the external-product hypotheses, and <span class="math" data-tex="\(I_1I_2\subset J\)">\(I_1I_2\subset J\)</span>, by the exterior compact-operator formula.</p>
+<p>Apply the technical theorem to <span class="math" data-tex="\(I_1+J,I_2+J\)">\(I_1+J,I_2+J\)</span>, including
+<span class="math" data-tex="\(S_1,S_2,\phi(A_1\widehat\otimes A_2)\)">\(S_1,S_2,\phi(A_1\widehat\otimes A_2)\)</span> in its derivating space. The first operators preserve the corresponding compact first-factor ideals; a crossed derivation produces an original compact source commutator tensored with a compact operator, hence lands in <span class="math" data-tex="\(J\)">\(J\)</span>. The source representation preserves each ideal. These observations verify every hypothesis. Obtain <span class="math" data-tex="\(M,N\)">\(M,N\)</span> with <span class="math" data-tex="\(M I_1,N I_2\subset J\)">\(M I_1,N I_2\subset J\)</span>, <span class="math" data-tex="\(M+N=1\)">\(M+N=1\)</span>, and the stipulated compact commutators.</p>
+<p>The operator
+<span class="math math-display" data-tex="\[
+F=M^{1/2}S_1+N^{1/2}S_2
+\]">\[
+F=M^{1/2}S_1+N^{1/2}S_2
+\]</span>
+is a cycle. For a source tensor, its weighted square and commutator defects lie respectively in <span class="math" data-tex="\(MI_1\)">\(MI_1\)</span> and <span class="math" data-tex="\(NI_2\)">\(NI_2\)</span>; the cross square term is zero by exact anticommutation. The self-adjoint sandwich correction is globally compact.</p>
+<p>It is a product for either ordering. For the first ordering the compact first-factor algebra is <span class="math" data-tex="\(I_1\)">\(I_1\)</span>. The operator <span class="math" data-tex="\(S_2\)">\(S_2\)</span> is a connection: its creation error for <span class="math" data-tex="\(x\widehat\otimes a_2\)">\(x\widehat\otimes a_2\)</span> is, with the Koszul sign, <span class="math" data-tex="\(R_x\widehat\otimes[F_2,\phi_2(a_2)]_{\mathrm{gr}}\)">\(R_x\widehat\otimes[F_2,\phi_2(a_2)]_{\mathrm{gr}}\)</span>, where <span class="math" data-tex="\(R_x:B_1\to E_1\)">\(R_x:B_1\to E_1\)</span> is compact because <span class="math" data-tex="\(R_x^*R_x=\langle x,x\rangle\in\mathcal K(B_1)\)">\(R_x^*R_x=\langle x,x\rangle\in\mathcal K(B_1)\)</span>. The error is thus compact. The <span class="math" data-tex="\(M^{1/2}S_1\)">\(M^{1/2}S_1\)</span> term is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection since <span class="math" data-tex="\(M\)">\(M\)</span> kills <span class="math" data-tex="\(I_1\)">\(I_1\)</span>; <span class="math" data-tex="\(N^{1/2}-1\)">\(N^{1/2}-1\)</span> is a <span class="math" data-tex="\(0\)">\(0\)</span>-connection, so the second term retains the connection. The positivity bracket is <span class="math" data-tex="\(2M^{1/2}S_1^2\)">\(2M^{1/2}S_1^2\)</span>; after a source sandwich it equals <span class="math" data-tex="\(2\phi(a)M^{1/2}\phi(a)^*\)">\(2\phi(a)M^{1/2}\phi(a)^*\)</span> modulo <span class="math" data-tex="\(J\)">\(J\)</span>, hence is positive. For the reverse ordering use <span class="math" data-tex="\(I_2,N,S_2\)">\(I_2,N,S_2\)</span> in the same computation. The signed module flip carries its operators and representations to this very module. Uniqueness therefore proves symmetry for the graded cycles.</p>
+<p>For parity classes dilate their coefficient Cliffords and then use the matrix Morita reduction. When <span class="math" data-tex="\(p=q=1\)">\(p=q=1\)</span>, exchanging the two Clifford generators in <span class="math" data-tex="\(C_2\)">\(C_2\)</span> is implemented by the odd unitary <span class="math" data-tex="\((\sigma_1+\sigma_2)/\sqrt2\)">\((\sigma_1+\sigma_2)/\sqrt2\)</span>. It reverses the spinor grading, because it conjugates <span class="math" data-tex="\(\sigma_3\)">\(\sigma_3\)</span> to <span class="math" data-tex="\(-\sigma_3\)">\(-\sigma_3\)</span>. Reversing the grading of an even cycle with trivially graded source gives its negative: conjugating its operator by the original grading changes <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(-F\)">\(-F\)</span> and leaves the representation fixed, giving the inverse-cycle formula. Thus this exchange contributes <span class="math" data-tex="\(-1\)">\(-1\)</span>. If either parity is zero there is no odd Clifford exchange and the sign is <span class="math" data-tex="\(+1\)">\(+1\)</span>. These four parity cases prove (5.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-odd-product-is-the-compression-index">6. The odd product is the compression index</h2>
+<p>We fix the scalar odd identification by the <strong>positive exponential boundary</strong>:
+a quotient projection <span class="math" data-tex="\(p\)">\(p\)</span> with self-adjoint lift <span class="math" data-tex="\(a\)">\(a\)</span> gives
+<span class="math" data-tex="\([\exp(2\pi i a)]\in K_1(B)\)">\([\exp(2\pi i a)]\in K_1(B)\)</span>.
+The even scalar index is kernel minus cokernel. These are the conventions of <em>Pictures of KK</em> and <em>The index pairing between K-theory and K-homology</em>.</p>
+<p>The odd-by-odd product uses right Clifford dilation of the second factor and then the ordered <span class="math" data-tex="\(C_2\)">\(C_2\)</span>-matrix Morita correspondence. Before an even unitary rotation, the second cycle's original Clifford generator is <span class="math" data-tex="\(\sigma_1\)">\(\sigma_1\)</span>, and the auxiliary first cycle's generator is <span class="math" data-tex="\(\sigma_2\)">\(\sigma_2\)</span>, with grading <span class="math" data-tex="\(\sigma_3\)">\(\sigma_3\)</span>. After the even rotation they become <span class="math" data-tex="\(-\sigma_2,\sigma_1\)">\(-\sigma_2,\sigma_1\)</span>, the convention used for the two-circle example in the preceding lesson.</p>
+<p><strong>Lemma 6.1 (an essential odd Hilbert-space representative).</strong> An odd Fredholm class has a representative <span class="math" data-tex="\((H,\pi,r)\)">\((H,\pi,r)\)</span> with <span class="math" data-tex="\(\pi\)">\(\pi\)</span> essential and <span class="math" data-tex="\(r=r^*=r^{-1}\)">\(r=r^*=r^{-1}\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> project onto <span class="math" data-tex="\(\overline{\pi(B)H}\)">\(\overline{\pi(B)H}\)</span>. It commutes with <span class="math" data-tex="\(\pi(B)\)">\(\pi(B)\)</span>. The off-diagonal operator is source-locally compact, because
+<span class="math math-display" data-tex="\[
+(1-Q_0)F\pi(b)=(1-Q_0)[F,\pi(b)]
+\]">\[
+(1-Q_0)F\pi(b)=(1-Q_0)[F,\pi(b)]
+\]</span>
+is compact; taking adjoints gives the other block. Thus removing the zero-representation complement and compressing gives a cycle with essential representation. Normalize its operator to a self-adjoint contraction <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Here the coefficient is <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, so Hilbert-space range projections are available. They can be constructed without discontinuous norm functional calculus: for <span class="math" data-tex="\(f_+=\max(f,0)\)">\(f_+=\max(f,0)\)</span>, the increasing contractions
+<span class="math" data-tex="\(f_+(f_++1/n)^{-1}\)">\(f_+(f_++1/n)^{-1}\)</span> converge strongly to the projection <span class="math" data-tex="\(P_+\)">\(P_+\)</span> onto <span class="math" data-tex="\(\overline{\operatorname{Ran}f_+}\)">\(\overline{\operatorname{Ran}f_+}\)</span>. Indeed bounded monotone positive operators converge strongly, since
+<span class="math" data-tex="\(\|(a_n-a_m)\xi\|^2\leq2\langle(a_n-a_m)\xi,\xi\rangle\)">\(\|(a_n-a_m)\xi\|^2\leq2\langle(a_n-a_m)\xi,\xi\rangle\)</span>; their action tends to the identity on <span class="math" data-tex="\(\operatorname{Ran}f_+\)">\(\operatorname{Ran}f_+\)</span> and is zero on its orthogonal complement. Construct <span class="math" data-tex="\(P_-\)">\(P_-\)</span> similarly from <span class="math" data-tex="\(f_-=\max(-f,0)\)">\(f_-=\max(-f,0)\)</span>. They are orthogonal and commute with <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Put <span class="math" data-tex="\(P_0=1-P_+-P_-\)">\(P_0=1-P_+-P_-\)</span> and <span class="math" data-tex="\(r=P_+-P_-+P_0\)">\(r=P_+-P_-+P_0\)</span>. Then <span class="math" data-tex="\(r\)">\(r\)</span> is a self-adjoint involution, and
+<span class="math math-display" data-tex="\[
+(r-f)^2\leq1-f^2.
+\]">\[
+(r-f)^2\leq1-f^2.
+\]</span>
+For every <span class="math" data-tex="\(b\)">\(b\)</span>, sandwich this inequality by <span class="math" data-tex="\(\pi(b)\)">\(\pi(b)\)</span>. Its right side is compact. In a compact-operator quotient a positive element dominated by zero is zero, so
+<span class="math" data-tex="\((r-f)\pi(b)\)">\((r-f)\pi(b)\)</span> is compact; adjoints give the other side. The locally compact perturbation rule therefore replaces <span class="math" data-tex="\(f\)">\(f\)</span> by <span class="math" data-tex="\(r\)">\(r\)</span> on the same essential representation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2 (the odd index formula).</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be trivially graded and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. For an odd scalar class <span class="math" data-tex="\(x\in KK^1(\mathbb C,B)\)">\(x\in KK^1(\mathbb C,B)\)</span> and an odd Hilbert-space class <span class="math" data-tex="\(y\in KK^1(B,\mathbb C)\)">\(y\in KK^1(B,\mathbb C)\)</span>, let <span class="math" data-tex="\(u\)">\(u\)</span> be the K-theory class corresponding to <span class="math" data-tex="\(x\)">\(x\)</span>. Then
+<span class="math math-display" data-tex="\[
+x\widehat\otimes_B y
+=\operatorname{index}\bigl(P\pi(u)P\bigr)
+\in KK(\mathbb C,\mathbb C)=\mathbb Z,
+\tag{6.1}
+\]">\[
+x\widehat\otimes_B y
+=\operatorname{index}\bigl(P\pi(u)P\bigr)
+\in KK(\mathbb C,\mathbb C)=\mathbb Z,
+\tag{6.1}
+\]</span>
+where <span class="math" data-tex="\(P=(1+r)/2\)">\(P=(1+r)/2\)</span> for an involution representative of <span class="math" data-tex="\(y\)">\(y\)</span>, with matrix amplification and unitization understood. The right side has kernel-minus-cokernel sign.</p>
+<p><strong>Proof.</strong> First work in the stable algebra <span class="math" data-tex="\(J=B\otimes\mathcal K\)">\(J=B\otimes\mathcal K\)</span>. The scalar odd Calkin picture supplies a projection <span class="math" data-tex="\(p\in M(J)/J\)">\(p\in M(J)/J\)</span> and a self-adjoint contraction <span class="math" data-tex="\(s\in M(J)\)">\(s\in M(J)\)</span> with <span class="math" data-tex="\(q(s)=2p-1\)">\(q(s)=2p-1\)</span>. Put
+<span class="math math-display" data-tex="\[
+a=(1+s)/2,\qquad t=(1-s^2)^{1/2}\in J,\qquad v=t+is\in M(J).
+\tag{6.2}
+\]">\[
+a=(1+s)/2,\qquad t=(1-s^2)^{1/2}\in J,\qquad v=t+is\in M(J).
+\tag{6.2}
+\]</span>
+The element <span class="math" data-tex="\(v\)">\(v\)</span> is unitary, since <span class="math" data-tex="\(s,t\)">\(s,t\)</span> commute and <span class="math" data-tex="\(s^2+t^2=1\)">\(s^2+t^2=1\)</span>. Its square has scalar quotient <span class="math" data-tex="\(-1\)">\(-1\)</span>, so <span class="math" data-tex="\(-v^2\in1+J\)">\(-v^2\in1+J\)</span>.</p>
+<p>Represent the odd class on <span class="math" data-tex="\(J\)">\(J\)</span> by an essential <span class="math" data-tex="\(\Phi:J\to\mathcal L(H)\)">\(\Phi:J\to\mathcal L(H)\)</span> and involution <span class="math" data-tex="\(r=2P-1\)">\(r=2P-1\)</span>, using Lemma 6.1. Extend <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to <span class="math" data-tex="\(M(J)\)">\(M(J)\)</span> by <a href="KT-KK-05.html#lemma-2-0-compact-module-operators-and-their-multipliers">Lesson 05, Lemma 2.0</a>. In the decomposition <span class="math" data-tex="\(H=PH\oplus(1-P)H\)">\(H=PH\oplus(1-P)H\)</span>, write its multiplier blocks as
+<span class="math math-display" data-tex="\[
+\Phi(m)=
+\begin{pmatrix}\alpha(m)&amp;\beta(m)\\
+\gamma(m)&amp;\delta(m)\end{pmatrix}.
+\]">\[
+\Phi(m)=
+\begin{pmatrix}\alpha(m)&amp;\beta(m)\\
+\gamma(m)&amp;\delta(m)\end{pmatrix}.
+\]</span>
+The off-diagonal blocks are compact for <span class="math" data-tex="\(m\in J\)">\(m\in J\)</span>, because <span class="math" data-tex="\([r,\Phi(m)]\)">\([r,\Phi(m)]\)</span> is compact. They need not be compact for arbitrary multipliers.</p>
+<p>In the ordered Clifford model the first operator is <span class="math" data-tex="\(\Phi(s)\sigma_2\)">\(\Phi(s)\sigma_2\)</span>, the second connection is <span class="math" data-tex="\(r\sigma_1\)">\(r\sigma_1\)</span>, and the special formula of Theorem 6.1 in the preceding lesson gives
+<span class="math math-display" data-tex="\[
+F=\Phi(s)\sigma_2+\Phi(t)r\sigma_1.
+\tag{6.3}
+\]">\[
+F=\Phi(s)\sigma_2+\Phi(t)r\sigma_1.
+\tag{6.3}
+\]</span>
+Its scalar source commutator is zero. The second operator is a connection: under the essential identification
+<span class="math" data-tex="\((J\widehat\otimes C_1)\widehat\otimes_\psi E_2\cong E_2\)">\((J\widehat\otimes C_1)\widehat\otimes_\psi E_2\cong E_2\)</span>,
+its creation errors are exactly its compact commutators with <span class="math" data-tex="\(\psi(J\widehat\otimes C_1)\)">\(\psi(J\widehat\otimes C_1)\)</span>. Thus that theorem identifies (6.3) with the product class, even though the special formula itself need not be a product connection.</p>
+<p>The bottom-left part from even to odd is
+<span class="math math-display" data-tex="\[
+T=\Phi(t)r+i\Phi(s)
+=\begin{pmatrix}
+\alpha(v)&amp;-\beta(v^*)\\
+\gamma(v)&amp;-\delta(v^*)
+\end{pmatrix}.
+\tag{6.4}
+\]">\[
+T=\Phi(t)r+i\Phi(s)
+=\begin{pmatrix}
+\alpha(v)&amp;-\beta(v^*)\\
+\gamma(v)&amp;-\delta(v^*)
+\end{pmatrix}.
+\tag{6.4}
+\]</span>
+It is Fredholm because (6.3) is a scalar cycle. Multiplication on the left by the actual unitary <span class="math" data-tex="\(\Phi(v)\)">\(\Phi(v)\)</span> does not change its index. The identities <span class="math" data-tex="\(\Phi(v)\Phi(v^*)=1\)">\(\Phi(v)\Phi(v^*)=1\)</span> give the exact calculation
+<span class="math math-display" data-tex="\[
+\Phi(v)T=
+\begin{pmatrix}\alpha(v^2)&amp;0\\
+\gamma(v^2)&amp;-1\end{pmatrix}.
+\tag{6.5}
+\]">\[
+\Phi(v)T=
+\begin{pmatrix}\alpha(v^2)&amp;0\\
+\gamma(v^2)&amp;-1\end{pmatrix}.
+\tag{6.5}
+\]</span>
+Since <span class="math" data-tex="\(v^2\in J^+\)">\(v^2\in J^+\)</span>, its lower-left block is compact. Therefore
+<span class="math math-display" data-tex="\[
+\operatorname{index}T=\operatorname{index}\alpha(v^2)
+=\operatorname{index}\alpha(-v^2).
+\tag{6.6}
+\]">\[
+\operatorname{index}T=\operatorname{index}\alpha(v^2)
+=\operatorname{index}\alpha(-v^2).
+\tag{6.6}
+\]</span></p>
+<p>The K-class of <span class="math" data-tex="\(-v^2\)">\(-v^2\)</span> is the positive exponential class of <span class="math" data-tex="\(p\)">\(p\)</span>. On the spectrum <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> of <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math math-display" data-tex="\[
+-v^2=\exp\bigl(i(2\arcsin s+\pi)\bigr).
+\]">\[
+-v^2=\exp\bigl(i(2\arcsin s+\pi)\bigr).
+\]</span>
+Interpolate its real phase with <span class="math" data-tex="\(\pi(s+1)\)">\(\pi(s+1)\)</span>. At <span class="math" data-tex="\(s=-1\)">\(s=-1\)</span> both phases are zero, and at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> both are <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. Thus throughout the interpolation the quotient unitary is one, giving a norm-continuous path in <span class="math" data-tex="\(1+J\)">\(1+J\)</span> to
+<span class="math" data-tex="\(\exp(2\pi i a)\)">\(\exp(2\pi i a)\)</span>. The compressed operators along it are Fredholm, since their quotient images are unitaries and the compression commutators are compact. Their indices agree. This proves (6.1) for that exponential representative.</p>
+<p>Every K-class <span class="math" data-tex="\(u\in K_1(J)\)">\(u\in K_1(J)\)</span> is such a boundary class by the scalar Calkin boundary isomorphism used in Corollary 2.4. Equality in <span class="math" data-tex="\(K_1(J)\)">\(K_1(J)\)</span> is a matrix-stabilized norm unitary homotopy; compression along it is again a Fredholm path. Hence the formula holds for every representative <span class="math" data-tex="\(u\)">\(u\)</span>, including formal stabilization and unitization.</p>
+<p>Finally pass from <span class="math" data-tex="\(J\)">\(J\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span> through the standard matrix Morita equivalence. Its inverse classes and product identities were proved in the preceding lesson; associativity shows that the scalar product is unchanged. The stabilized representation and projection give precisely the usual matrix amplification of <span class="math" data-tex="\(P\pi(u)P\)">\(P\pi(u)P\)</span>. This proves the general formula and its sign. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the positive coordinate unitary on the circle, the Hardy compression is the unilateral shift, so the formula gives <span class="math" data-tex="\(-1\)">\(-1\)</span>, in agreement with the earlier odd index pairing. The Fourier circle representative with <span class="math" data-tex="\(r=2P-1\)">\(r=2P-1\)</span>, <span class="math" data-tex="\(P\)">\(P\)</span> projecting onto nonnegative modes, differs locally compactly from its bounded Dirac transform. Thus the examples have the same sign convention.</p>
+<h2 id="7-kk-equivalences">7. KK-equivalences</h2>
+<p>Two algebras <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are <strong>KK-equivalent</strong> if there are
+<span class="math math-display" data-tex="\[
+x\in KK(A,B),\quad y\in KK(B,A),\qquad
+x\widehat\otimes_B y=1_A,\quad
+y\widehat\otimes_A x=1_B.
+\tag{7.1}
+\]">\[
+x\in KK(A,B),\quad y\in KK(B,A),\qquad
+x\widehat\otimes_B y=1_A,\quad
+y\widehat\otimes_A x=1_B.
+\tag{7.1}
+\]</span></p>
+<p><strong>Proposition 7.1 (consequences and examples).</strong> A KK-equivalence induces isomorphisms of all KK groups in either variable, and hence of K-theory and K-homology. Morita equivalent <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital algebras are KK-equivalent. In particular <span class="math" data-tex="\(A,M_n(A)\)">\(A,M_n(A)\)</span> and <span class="math" data-tex="\(A\otimes\mathcal K\)">\(A\otimes\mathcal K\)</span> are KK-equivalent. Homotopy-equivalent separable algebras are KK-equivalent.</p>
+<p><strong>Proof.</strong> Right multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> has inverse right multiplication by <span class="math" data-tex="\(y\)">\(y\)</span>, by associativity and (7.1). Left multiplication similarly has its stated inverse. Apply these statements to scalar K-theory and K-homology, with the Clifford dilation for degree one.</p>
+<p>For a Morita equivalence take the bimodule cycle and its conjugate. The two inner-product tensor unitaries in Proposition 7.1 of the preceding lesson give exactly (7.1). The finite column module <span class="math" data-tex="\(A^n\)">\(A^n\)</span> and the standard module <span class="math" data-tex="\(H_A\)">\(H_A\)</span> give the matrix and compact-operator cases: their compact left algebras are <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> and <span class="math" data-tex="\(A\otimes\mathcal K\)">\(A\otimes\mathcal K\)</span>, and their dual row modules have the required inverse tensor products.</p>
+<p>This Morita assertion also covers <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital algebras beyond the separable category. The two inverse products have explicit zero-operator representatives with compact left action, so they exist without a general product-existence theorem for nonseparable sources. Tensoring cycles with the bimodules and their duals gives inverse homotopy functors by the same two tensor unitaries. Thus the resulting KK and K-group isomorphisms retain that full <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital generality.</p>
+<p>For homotopy equivalence use the two homomorphism classes. Their products are the classes of the composed maps by Theorem 5.2, and homotopy of homomorphisms gives equality of KK classes by the interval construction. Thus the two compositions have the identity classes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 7.2 (cones are K-contractible).</strong> For a separable <span class="math" data-tex="\(A\)">\(A\)</span>, the cone <span class="math" data-tex="\(CA=C_0((0,1],A)\)">\(CA=C_0((0,1],A)\)</span> has identity class zero. Consequently
+<span class="math math-display" data-tex="\[
+KK(CA,D)=0,\qquad KK(D,CA)=0
+\]">\[
+KK(CA,D)=0,\qquad KK(D,CA)=0
+\]</span>
+whenever the products used to express the identity actions are defined.</p>
+<p><strong>Proof.</strong> Extend <span class="math" data-tex="\(f\in CA\)">\(f\in CA\)</span> continuously by <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>. The homomorphisms
+<span class="math math-display" data-tex="\[
+(\rho_t f)(s)=f(ts),\quad0\leq t\leq1,
+\]">\[
+(\rho_t f)(s)=f(ts),\quad0\leq t\leq1,
+\]</span>
+join zero to the identity in pointwise norm. Uniform continuity of <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> proves this continuity in the cone norm. Their classes therefore agree, so <span class="math" data-tex="\(1_{CA}=0\)">\(1_{CA}=0\)</span>. Every class with source or target <span class="math" data-tex="\(CA\)">\(CA\)</span> is its product with this identity; bilinearity makes it zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Bott and Dirac constructions in the lesson <em>Bott periodicity in KK: the Bott and Dirac elements</em> provide classes between <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> and <span class="math" data-tex="\(C_0(\mathbb R^2)\)">\(C_0(\mathbb R^2)\)</span> satisfying (7.1). That lesson must supply the construction and the two explicit product identities. The present proposition supplies their consequences once those identities are established.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>8.1. Composed homomorphisms.</strong> Prove directly on tensor cycles that
+<span class="math" data-tex="\([f]\widehat\otimes_D[g]=[g f]\)">\([f]\widehat\otimes_D[g]=[g f]\)</span>, including nonunital maps.</p>
+<p><strong>8.2. A homomorphism in the middle.</strong> For <span class="math" data-tex="\(h:D\to D&#x27;\)">\(h:D\to D&#x27;\)</span>, prove
+<span class="math math-display" data-tex="\[
+(x\widehat\otimes_D[h])\widehat\otimes_{D&#x27;}z
+=x\widehat\otimes_D([h]\widehat\otimes_{D&#x27;}z)
+\]">\[
+(x\widehat\otimes_D[h])\widehat\otimes_{D&#x27;}z
+=x\widehat\otimes_D([h]\widehat\otimes_{D&#x27;}z)
+\]</span>
+by the tensor unitary and connection conditions.</p>
+<p><strong>8.3. Isomorphisms from equivalence.</strong> For <span class="math" data-tex="\(x,y\)">\(x,y\)</span> satisfying (7.1), write the induced K-theory and K-homology maps and verify the two inverse compositions, in both parities.</p>
+<p><strong>8.4. The odd unitary test.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be unital, <span class="math" data-tex="\(u\in M_n(B)\)">\(u\in M_n(B)\)</span> unitary and <span class="math" data-tex="\((H,\pi,r)\)">\((H,\pi,r)\)</span> an odd Fredholm representative with <span class="math" data-tex="\(r^2=1\)">\(r^2=1\)</span>. Prove that the product of the K-class of <span class="math" data-tex="\(u\)">\(u\)</span> with this odd class is
+<span class="math" data-tex="\(\operatorname{index}(P_n\pi_n(u)P_n)\)">\(\operatorname{index}(P_n\pi_n(u)P_n)\)</span>, where <span class="math" data-tex="\(P_n\)">\(P_n\)</span> is the matrix amplification of <span class="math" data-tex="\((1+r)/2\)">\((1+r)/2\)</span>. Fix the sign by the circle coordinate.</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>Solution to 8.1.</strong> The tensor map
+<span class="math" data-tex="\(d\widehat\otimes b\mapsto g(d)b\)">\(d\widehat\otimes b\mapsto g(d)b\)</span> is an inner-product isometry from
+<span class="math" data-tex="\(D\widehat\otimes_g B\)">\(D\widehat\otimes_g B\)</span> onto <span class="math" data-tex="\(B_g=\overline{g(D)B}\)">\(B_g=\overline{g(D)B}\)</span>. The first source acts there by <span class="math" data-tex="\(g f\)">\(g f\)</span>. Both operators are zero, so the product conditions reduce to compact left action. The image of <span class="math" data-tex="\(g(d)\)">\(g(d)\)</span> is compact on <span class="math" data-tex="\(B_g\)">\(B_g\)</span>, using the rank-one approximations <span class="math" data-tex="\(g(u_k)g(d)g(u_k)\)">\(g(u_k)g(d)g(u_k)\)</span> from the homomorphism theorem. The tensor cycle and the cycle of <span class="math" data-tex="\(g f\)">\(g f\)</span> have the common essential source submodule <span class="math" data-tex="\(\overline{g f(A)B}\)">\(\overline{g f(A)B}\)</span>. The essential-replacement interval construction, with zero connection, joins both to its zero-operator cycle. They therefore give <span class="math" data-tex="\([g f]\)">\([g f]\)</span>, even when that support has no adjointable complement.</p>
+<p><strong>Solution to 8.2.</strong> Represent <span class="math" data-tex="\(x\)">\(x\)</span> on <span class="math" data-tex="\(E_1\)">\(E_1\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span> on <span class="math" data-tex="\(E_2&#x27;\)">\(E_2&#x27;\)</span>. The two tensor modules are identified by (5.2), with the same first operator and first source representation. For a dense elementary first vector <span class="math" data-tex="\(x\widehat\otimes d&#x27;\)">\(x\widehat\otimes d&#x27;\)</span>, its creation operator is <span class="math" data-tex="\(T_x\psi&#x27;(d&#x27;)\)">\(T_x\psi&#x27;(d&#x27;)\)</span>. Move the second operator first across <span class="math" data-tex="\(\psi&#x27;(d&#x27;)\)">\(\psi&#x27;(d&#x27;)\)</span>, giving its compact graded source commutator, and then across <span class="math" data-tex="\(T_x\)">\(T_x\)</span>, giving the product's compact creation error. The combined sign is <span class="math" data-tex="\((-1)^{|x|+|d&#x27;|}\)">\((-1)^{|x|+|d&#x27;|}\)</span>. Taking adjoints proves the other condition. Positivity is identical under the module unitary. Thus the same final operator is a product in both constructions, and uniqueness proves the equality. Countable generation and range density hold as in Proposition 5.1, including degenerate homomorphisms.</p>
+<p><strong>Solution to 8.3.</strong> On K-theory use <span class="math" data-tex="\(v\mapsto v\widehat\otimes_A x\)">\(v\mapsto v\widehat\otimes_A x\)</span>; its inverse is <span class="math" data-tex="\(w\mapsto w\widehat\otimes_B y\)">\(w\mapsto w\widehat\otimes_B y\)</span>. Associativity makes their composition
+<span class="math" data-tex="\(v\mapsto v\widehat\otimes_A(x\widehat\otimes_B y)=v\)">\(v\mapsto v\widehat\otimes_A(x\widehat\otimes_B y)=v\)</span>.
+The other composition uses <span class="math" data-tex="\(y\widehat\otimes_A x=1_B\)">\(y\widehat\otimes_A x=1_B\)</span>. On K-homology from <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span>, use <span class="math" data-tex="\(q\mapsto y\widehat\otimes_A q\)">\(q\mapsto y\widehat\otimes_A q\)</span>, whose inverse is <span class="math" data-tex="\(r\mapsto x\widehat\otimes_B r\)">\(r\mapsto x\widehat\otimes_B r\)</span>. The same identities prove both inverse compositions. For degree one dilate the equivalence classes by <span class="math" data-tex="\(C_1\)">\(C_1\)</span> on the coefficient or insert the corresponding source Clifford factor; the tensor unitary and the identity correspondence preserve the product equations. Thus both parity maps are isomorphisms.</p>
+<p><strong>Solution to 8.4.</strong> Stabilize <span class="math" data-tex="\(B\)">\(B\)</span> and choose a quotient projection <span class="math" data-tex="\(p\)">\(p\)</span> whose positive exponential boundary is <span class="math" data-tex="\([u]\)">\([u]\)</span>, using the stable Calkin scalar identification. Lift <span class="math" data-tex="\(2p-1\)">\(2p-1\)</span> to a self-adjoint contraction <span class="math" data-tex="\(s\)">\(s\)</span>. With <span class="math" data-tex="\(t=(1-s^2)^{1/2}\)">\(t=(1-s^2)^{1/2}\)</span>, <span class="math" data-tex="\(v=t+is\)">\(v=t+is\)</span>, Theorem 6.2 constructs the product operator with bottom-left Fredholm map (6.4). The exact unitary multiplication (6.5) reduces its index to the compression of <span class="math" data-tex="\(-v^2\)">\(-v^2\)</span>.</p>
+<p>The phase interpolation
+<span class="math math-display" data-tex="\[
+(1-\lambda)(2\arcsin s+\pi)+\lambda\pi(s+1)
+\]">\[
+(1-\lambda)(2\arcsin s+\pi)+\lambda\pi(s+1)
+\]</span>
+keeps the quotient exponential equal to one and joins <span class="math" data-tex="\(-v^2\)">\(-v^2\)</span> to the positive boundary unitary. The latter and <span class="math" data-tex="\(u\)">\(u\)</span>, after finite matrix stabilization, are unitary homotopic by equality of their K-classes. Compress every unitary along these norm paths by <span class="math" data-tex="\(P_n\)">\(P_n\)</span>; all compressed operators are Fredholm because the off-diagonal blocks are compact. Their indices are constant. This gives exactly
+<span class="math" data-tex="\(\operatorname{index}(P_n\pi_n(u)P_n)\)">\(\operatorname{index}(P_n\pi_n(u)P_n)\)</span>.
+For <span class="math" data-tex="\(B=C(\mathbb T)\)">\(B=C(\mathbb T)\)</span>, the coordinate <span class="math" data-tex="\(u(z)=z\)">\(u(z)=z\)</span>, and nonnegative-mode <span class="math" data-tex="\(P\)">\(P\)</span>, the compression is the unilateral shift with zero kernel and one-dimensional cokernel. The product is therefore <span class="math" data-tex="\(-1\)">\(-1\)</span>, fixing the kernel-minus-cokernel sign.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The scalar Calkin boundary isomorphisms are the precise Hilbert-module prerequisite already stated in <em>Pictures of KK</em>: vanishing of the two K-groups of the stable multiplier algebra and the resulting index and positive exponential boundary isomorphisms. The odd isomorphism uses the programme's ordinary K-theory Bott theorem. The nondegenerate multiplier extension is proved in <a href="KT-KK-05.html#lemma-2-0-compact-module-operators-and-their-multipliers">Lesson 05, Lemma 2.0</a>. These are prerequisites in <em>Hilbert C*-modules and Morita equivalence</em>.</p>
+<p>The separable scalar and extension computations used in Corollary 2.4 are proved in <em>Pictures of KK</em>, at Theorems 2.2, 3.2 and 5.2. Its compact-homology comparison is Theorem 9.4. Their exact separable scope is sufficient here; the arbitrary-source compact-homology extension comparison remains a separate obligation of that lesson.</p>
+<p>Bott and Dirac inverses, the Thom isomorphism and the universal coefficient theorem are treated in the following lessons. No one of them is used to prove associativity or the index formula here.</p>
+<h2 id="references-and-source-credit">References and source credit</h2>
+<ul>
+<li>B. Blackadar, <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf"><em>K-Theory for Operator Algebras</em>, author-posted corrected second edition</a>. The <a href="https://www.bruceblackadar.com/mathpubs.html">author identifies this freely downloadable version</a> as a slightly corrected second edition. The source retains its author copyright and the usage terms stated on that page. Sections 18.5–18.8 and 18.11, printed pp. 175–179 and 181–184, for homotopy comparison, associativity, naturality and the index pairing. The required proofs and all exercise solutions are given in this lesson and its exact preceding programme prerequisites.</li>
+</ul>
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="KT-KK-09.html">← Connections and the existence of the Kasparov product</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="KT-KK-12.html">Bott periodicity in KK: the Bott and Dirac elements →</a></span></nav>
+<p class="small source-link"><a href="KT-KK-10.tex">Complete LaTeX source of this lesson</a> · <span class="unlinked">Editable source package</span></p>
+<p class="small source-link"><span class="unlinked">Complete available text as a PDF</span> · <a href="sources.html">Sources and component terms</a></p>
+</main>
+<footer class="site-footer"><p>Course text, solutions and original figures: CC0 1.0.</p></footer>
+</body>
+</html>

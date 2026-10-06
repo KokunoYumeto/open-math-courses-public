@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Principal bundles and associated bundles</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math"><main id="main">
+<nav aria-label="Chapter contents"><details><summary>Chapter contents</summary><ol><li><a href="#a-coordinates-gluing-and-a-distinguished-point-in-each-fibre">A. Coordinates, gluing and a distinguished point in each fibre</a></li>
+<li><a href="#b-moving-a-model-fibre-with-the-frames">B. Moving a model fibre with the frames</a></li>
+<li><a href="#c-vector-frames-tensors-and-the-adjoint-fibre">C. Vector frames, tensors and the adjoint fibre</a></li>
+<li><a href="#d-reductions-restricting-the-allowed-frames">D. Reductions: restricting the allowed frames</a></li>
+<li><a href="#e-one-bundle-with-two-coordinate-descriptions">E. One bundle with two coordinate descriptions</a></li>
+<li><a href="#f-exercises-with-complete-solutions">F. Exercises with complete solutions</a></li>
+<li><a href="#free-construction-source">Free construction source</a></li></ol></details></nav>
+<article class="lesson"><h1 id="principal-bundles-and-associated-bundles">Principal bundles and associated bundles</h1>
+<p>Differential geometry foundations</p>
+<p>A frame identifies an abstract vector space with one particular fibre. Changing that frame changes coordinates, while the vector itself stays fixed. A principal bundle records the possible frames; an associated bundle uses those frames to carry vectors, tensors or points of another manifold. We construct both objects from their coordinate changes and then interpret metrics and orientations as restrictions on the allowed frames.</p>
+<p>All manifolds and Lie groups here are finite dimensional, Hausdorff, second countable, smooth and without boundary. A Lie group has smooth multiplication and inversion. Its identity is <span class="math" data-tex="\(e\)">\(e\)</span>. Vector bundles have constant finite rank; rank zero is allowed. Unless a complex bundle is specified, vector spaces are real. We use the usual real and complex number systems and the axiom of choice.</p>
+<p>The earlier programme lesson <a href="local-tools-for-bundles-and-transport.html">Local tools for bundles and transport</a>, abbreviated <strong>Local tools</strong>, proves the analytic facts used below: finite linear algebra and norms in 0.2, differentiation and the fundamental theorem of calculus in 0.3, smooth matrix inversion in 0.4, inverse and implicit functions in 1.2–1.3, partitions of unity in 3.1, and the quotient by a closed embedded Lie subgroup in 4.1. Its 0.0 proves existence of positive square roots; smoothness on the positive real axis follows from 1.2 applied to <span class="math" data-tex="\(t\mapsto t^2\)">\(t\mapsto t^2\)</span>, whose derivative is <span class="math" data-tex="\(2t\ne0\)">\(2t\ne0\)</span>. These are programme proofs, not external references in place of proofs.</p>
+<h2 id="a-coordinates-gluing-and-a-distinguished-point-in-each-fibre">A. Coordinates, gluing and a distinguished point in each fibre</h2>
+<p>If <span class="math" data-tex="\(U\subset M\)">\(U\subset M\)</span> is open, write <span class="math" data-tex="\(P|_U=\pi^{-1}(U)\)">\(P|_U=\pi^{-1}(U)\)</span>. A <strong>principal right <span class="math" data-tex="\(G\)">\(G\)</span>-bundle</strong> is a smooth manifold <span class="math" data-tex="\(P\)">\(P\)</span>, a smooth map <span class="math" data-tex="\(\pi:P\to M\)">\(\pi:P\to M\)</span>, and a smooth right action <span class="math" data-tex="\(p\mapsto pa\)">\(p\mapsto pa\)</span>, with an open cover on which there are diffeomorphisms
+<span class="math math-display" data-tex="\[
+\Phi_i:U_i\times G\longrightarrow P|_{U_i},
+\qquad \pi\Phi_i(x,a)=x,\qquad
+\Phi_i(x,ab)=\Phi_i(x,a)b.
+\]">\[
+\Phi_i:U_i\times G\longrightarrow P|_{U_i},
+\qquad \pi\Phi_i(x,a)=x,\qquad
+\Phi_i(x,ab)=\Phi_i(x,a)b.
+\]</span>
+In particular the action is free and transitive on each fibre: in these coordinates it is right multiplication on <span class="math" data-tex="\(G\)">\(G\)</span>. The projection is a surjective submersion because it is the product projection in every chart. A section on <span class="math" data-tex="\(U\)">\(U\)</span> is a smooth <span class="math" data-tex="\(s:U\to P\)">\(s:U\to P\)</span> with <span class="math" data-tex="\(\pi s(x)=x\)">\(\pi s(x)=x\)</span>.</p>
+<p id="theorem-a-1"><strong>Theorem A.1 (constructing the total space).</strong> Let <span class="math" data-tex="\((U_i)\)">\((U_i)\)</span> be an open cover of <span class="math" data-tex="\(M\)">\(M\)</span>, and let smooth maps <span class="math" data-tex="\(g_{ij}:U_i\cap U_j\to G\)">\(g_{ij}:U_i\cap U_j\to G\)</span> satisfy
+<span class="math math-display" data-tex="\[
+g_{ii}=e,\qquad g_{ij}g_{jk}=g_{ik}.
+\tag{A.1}
+\]">\[
+g_{ii}=e,\qquad g_{ij}g_{jk}=g_{ik}.
+\tag{A.1}
+\]</span>
+There is a principal <span class="math" data-tex="\(G\)">\(G\)</span>-bundle with local sections <span class="math" data-tex="\(s_i\)">\(s_i\)</span> satisfying <span class="math" data-tex="\(s_j=s_i g_{ij}\)">\(s_j=s_i g_{ij}\)</span>. Its total space has the quotient topology obtained by identifying
+<span class="math math-display" data-tex="\[
+(j,x,a)\sim(i,x,g_{ij}(x)a)
+\quad\hbox{in}\quad\bigsqcup_i\{i\}\times U_i\times G.
+\tag{A.2}
+\]">\[
+(j,x,a)\sim(i,x,g_{ij}(x)a)
+\quad\hbox{in}\quad\bigsqcup_i\{i\}\times U_i\times G.
+\tag{A.2}
+\]</span></p>
+<p><strong>Proof.</strong> The relations in (A.1) imply <span class="math" data-tex="\(g_{ji}=g_{ij}^{-1}\)">\(g_{ji}=g_{ij}^{-1}\)</span>. Reflexivity, symmetry and transitivity of (A.2) follow respectively from <span class="math" data-tex="\(g_{ii}=e\)">\(g_{ii}=e\)</span>, this inverse identity, and the triple identity. Let <span class="math" data-tex="\(P\)">\(P\)</span> be the set of classes and define <span class="math" data-tex="\(\pi[i,x,a]=x\)">\(\pi[i,x,a]=x\)</span>. For <span class="math" data-tex="\(x\in U_i\)">\(x\in U_i\)</span> each class over <span class="math" data-tex="\(x\)">\(x\)</span> has exactly one representative with index <span class="math" data-tex="\(i\)">\(i\)</span>; hence <span class="math" data-tex="\(\Phi_i(x,a)=[i,x,a]\)">\(\Phi_i(x,a)=[i,x,a]\)</span> is a bijection onto <span class="math" data-tex="\(P|_{U_i}\)">\(P|_{U_i}\)</span>.</p>
+<p>The quotient map is open. Indeed, if <span class="math" data-tex="\(W\)">\(W\)</span> is open in the disjoint union, its saturation in the <span class="math" data-tex="\(i\)">\(i\)</span>-th component is the union over <span class="math" data-tex="\(j\)">\(j\)</span> of the images of <span class="math" data-tex="\(W\cap(\{j\}\times(U_i\cap U_j)\times G)\)">\(W\cap(\{j\}\times(U_i\cap U_j)\times G)\)</span> under
+<span class="math" data-tex="\((x,a)\mapsto(x,g_{ij}(x)a)\)">\((x,a)\mapsto(x,g_{ij}(x)a)\)</span>. These maps are diffeomorphisms of the corresponding open products, with inverses given by <span class="math" data-tex="\(g_{ji}\)">\(g_{ji}\)</span>, so that union is open. The definition of the quotient topology now proves the assertion. Thus every <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span> is a homeomorphism onto an open set. The projection <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is continuous, since its composite with the quotient map is continuous on each component.</p>
+<p>Two total-space points over different base points have disjoint neighbourhoods pulled back from disjoint base neighbourhoods. Two distinct points over the same base point lie in one open product <span class="math" data-tex="\(P|_{U_i}\)">\(P|_{U_i}\)</span>; disjoint product neighbourhoods there are also open in <span class="math" data-tex="\(P\)">\(P\)</span>. This proves that <span class="math" data-tex="\(P\)">\(P\)</span> is Hausdorff.</p>
+<p>For countability, a second countable space has a countable subcover of any open cover: from a countable basis, keep the members contained in at least one cover member and choose one such cover member for each; these choices cover every point. Apply this to <span class="math" data-tex="\((U_i)\)">\((U_i)\)</span>. Each resulting <span class="math" data-tex="\(U_i\times G\)">\(U_i\times G\)</span> is second countable, using products of the two countable bases. The union of those countably many bases, transported by the open homeomorphisms <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span>, is a countable basis for <span class="math" data-tex="\(P\)">\(P\)</span>. The countability of a countable union is proved explicitly after Local tools 2.3.</p>
+<p>Finally
+<span class="math math-display" data-tex="\[
+\Phi_i^{-1}\Phi_j(x,a)=(x,g_{ij}(x)a)
+\tag{A.3}
+\]">\[
+\Phi_i^{-1}\Phi_j(x,a)=(x,g_{ij}(x)a)
+\tag{A.3}
+\]</span>
+is smooth. Combining these product charts with the ordinary manifold charts on <span class="math" data-tex="\(U_i\)">\(U_i\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span> supplies a smooth atlas. The right action <span class="math" data-tex="\([i,x,a]b=[i,x,ab]\)">\([i,x,a]b=[i,x,ab]\)</span> is well defined because the identifications multiply on the left; it is smooth in these charts. The sections <span class="math" data-tex="\(s_i(x)=[i,x,e]\)">\(s_i(x)=[i,x,e]\)</span> have <span class="math" data-tex="\(s_j=s_i g_{ij}\)">\(s_j=s_i g_{ij}\)</span>, as claimed. □</p>
+<p id="theorem-a-2"><strong>Theorem A.2 (sections, division and changes of coordinates).</strong> In a principal bundle there is a smooth division map
+<span class="math math-display" data-tex="\[
+\delta:P\times_M P\longrightarrow G,\qquad q=p\,\delta(p,q).
+\tag{A.4}
+\]">\[
+\delta:P\times_M P\longrightarrow G,\qquad q=p\,\delta(p,q).
+\tag{A.4}
+\]</span>
+Every smooth local section gives a principal trivialization <span class="math" data-tex="\((x,a)\mapsto s(x)a\)">\((x,a)\mapsto s(x)a\)</span>. A global section exists exactly when <span class="math" data-tex="\(P\)">\(P\)</span> is isomorphic, over <span class="math" data-tex="\(M\)">\(M\)</span> and equivariantly, to <span class="math" data-tex="\(M\times G\)">\(M\times G\)</span>. If <span class="math" data-tex="\(s_j=s_i g_{ij}\)">\(s_j=s_i g_{ij}\)</span> and <span class="math" data-tex="\(s_i'=s_i h_i\)">\(s_i'=s_i h_i\)</span>, then
+<span class="math math-display" data-tex="\[
+g_{ij}'=h_i^{-1}g_{ij}h_j.
+\tag{A.5}
+\]">\[
+g_{ij}'=h_i^{-1}g_{ij}h_j.
+\tag{A.5}
+\]</span>
+The construction in A.1 recovers every principal bundle, and cocycles related by (A.5) give isomorphic bundles.</p>
+<p><strong>Proof.</strong> The fibre product in (A.4) has local coordinates <span class="math" data-tex="\((x,a,b)\)">\((x,a,b)\)</span> from any bundle chart; the transition maps use the same base coordinate on the two factors, so these are smooth compatible charts. They agree with its subspace topology in <span class="math" data-tex="\(P\times P\)">\(P\times P\)</span>: in product charts the only restriction is equality of the two base points, whose diagonal is parametrized by <span class="math" data-tex="\(x\mapsto(x,x)\)">\(x\mapsto(x,x)\)</span>. In these coordinates <span class="math" data-tex="\(\delta=a^{-1}b\)">\(\delta=a^{-1}b\)</span>. This is smooth, is independent of the chart, and is the unique element satisfying (A.4). It also gives
+<span class="math math-display" data-tex="\[
+\delta(pa,qb)=a^{-1}\delta(p,q)b.
+\tag{A.6}
+\]">\[
+\delta(pa,qb)=a^{-1}\delta(p,q)b.
+\tag{A.6}
+\]</span></p>
+<p>In an existing chart <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span>, a section has the form <span class="math" data-tex="\(s(x)=\Phi_i(x,c(x))\)">\(s(x)=\Phi_i(x,c(x))\)</span> with smooth <span class="math" data-tex="\(c\)">\(c\)</span>. Its proposed trivialization is <span class="math" data-tex="\((x,a)\mapsto\Phi_i(x,c(x)a)\)">\((x,a)\mapsto\Phi_i(x,c(x)a)\)</span>, with inverse <span class="math" data-tex="\(p\mapsto(\pi(p),c(\pi(p))^{-1}a_i(p))\)">\(p\mapsto(\pi(p),c(\pi(p))^{-1}a_i(p))\)</span>, where <span class="math" data-tex="\(a_i(p)\)">\(a_i(p)\)</span> is the original group coordinate. Both maps are smooth. A global section therefore gives the asserted product isomorphism; conversely an equivariant product isomorphism transports <span class="math" data-tex="\((x,e)\)">\((x,e)\)</span> to a section.</p>
+<p>For sections on a cover, <span class="math" data-tex="\(g_{ij}(x)=\delta(s_i(x),s_j(x))\)">\(g_{ij}(x)=\delta(s_i(x),s_j(x))\)</span> is smooth and uniqueness of division proves (A.1). Equation <span class="math" data-tex="\(s_j'=s_i'g_{ij}'\)">\(s_j'=s_i'g_{ij}'\)</span> becomes <span class="math" data-tex="\(s_i g_{ij}h_j=s_i h_i g_{ij}'\)">\(s_i g_{ij}h_j=s_i h_i g_{ij}'\)</span>, proving (A.5) by freeness. For a bundle given in advance, the maps <span class="math" data-tex="\([i,x,a]\mapsto s_i(x)a\)">\([i,x,a]\mapsto s_i(x)a\)</span> are well defined by its transitions and are diffeomorphisms in every local chart; they give the claimed recovery. If (A.5) holds between two cocycles, the map from the primed gluing to the unprimed gluing is
+<span class="math math-display" data-tex="\[
+[i,x,a]'\longmapsto[i,x,h_i(x)a].
+\]">\[
+[i,x,a]'\longmapsto[i,x,h_i(x)a].
+\]</span>
+On an overlap, <span class="math" data-tex="\(h_i g_{ij}'=g_{ij}h_j\)">\(h_i g_{ij}'=g_{ij}h_j\)</span>, so it is well defined. Its chart inverse uses <span class="math" data-tex="\(h_i^{-1}\)">\(h_i^{-1}\)</span>; it is smooth and equivariant. Passing to an intersection cover handles different initial covers, because the recovery map just constructed also identifies any restricted gluing with the original one. □</p>
+<p id="lemma-a-3"><strong>Lemma A.3 (pullback and maps over the base).</strong> For smooth <span class="math" data-tex="\(f:N\to M\)">\(f:N\to M\)</span>, the set
+<span class="math math-display" data-tex="\[
+f^*P=\{(y,p)\in N\times P:f(y)=\pi(p)\}
+\]">\[
+f^*P=\{(y,p)\in N\times P:f(y)=\pi(p)\}
+\]</span>
+is a principal <span class="math" data-tex="\(G\)">\(G\)</span>-bundle over <span class="math" data-tex="\(N\)">\(N\)</span>, with action on <span class="math" data-tex="\(p\)">\(p\)</span>. Its transitions are <span class="math" data-tex="\(g_{ij}\circ f\)">\(g_{ij}\circ f\)</span>. Any smooth equivariant map <span class="math" data-tex="\(T:P\to Q\)">\(T:P\to Q\)</span> covering the identity of <span class="math" data-tex="\(M\)">\(M\)</span> is a principal-bundle isomorphism.</p>
+<p><strong>Proof.</strong> Above <span class="math" data-tex="\(f^{-1}(U_i)\)">\(f^{-1}(U_i)\)</span> the parametrization <span class="math" data-tex="\((y,a)\mapsto(y,s_i(f(y))a)\)">\((y,a)\mapsto(y,s_i(f(y))a)\)</span> has inverse obtained by the group coordinate of <span class="math" data-tex="\(p\)">\(p\)</span>. It is a homeomorphism for the subspace topology: both directions are restrictions of continuous maps in the ambient product charts. These charts have precisely the stated smooth transitions; they cover the set and give the action its required product form. Hausdorffness follows either from the subspace topology or the separation argument of A.1; second countability follows by restriction of a countable ambient basis. The projection to <span class="math" data-tex="\(P\)">\(P\)</span> is smooth in these coordinates.</p>
+<p>For the final assertion, choose sections <span class="math" data-tex="\(s\)">\(s\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span> on a common neighbourhood. There is a unique smooth <span class="math" data-tex="\(c(x)\)">\(c(x)\)</span> with <span class="math" data-tex="\(T(s(x))=t(x)c(x)\)">\(T(s(x))=t(x)c(x)\)</span>, by A.2. Equivariance says <span class="math" data-tex="\(T(s(x)a)=t(x)c(x)a\)">\(T(s(x)a)=t(x)c(x)a\)</span>; hence the chart formula for <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\((x,a)\mapsto(x,c(x)a)\)">\((x,a)\mapsto(x,c(x)a)\)</span>. The inverse <span class="math" data-tex="\((x,b)\mapsto(x,c(x)^{-1}b)\)">\((x,b)\mapsto(x,c(x)^{-1}b)\)</span> is smooth. Such inverses agree on overlaps by uniqueness and give a global inverse. □</p>
+<h2 id="b-moving-a-model-fibre-with-the-frames">B. Moving a model fibre with the frames</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a nonempty manifold with a smooth left action of <span class="math" data-tex="\(G\)">\(G\)</span>. On <span class="math" data-tex="\(P\times F\)">\(P\times F\)</span> use the right action
+<span class="math math-display" data-tex="\[
+(p,v)a=(pa,a^{-1}v),
+\]">\[
+(p,v)a=(pa,a^{-1}v),
+\]</span>
+and write <span class="math" data-tex="\([p,v]\)">\([p,v]\)</span> for its orbit. The relation can also be written <span class="math" data-tex="\([pa,v]=[p,av]\)">\([pa,v]=[p,av]\)</span>. This convention fixes every transition and equivariance sign below.</p>
+<p id="theorem-b-1"><strong>Theorem B.1 (associated bundles and their quotient maps).</strong> The orbit space
+<span class="math" data-tex="\(P\times_G F\)">\(P\times_G F\)</span>, with its quotient topology, is a smooth fibre bundle over <span class="math" data-tex="\(M\)">\(M\)</span> with fibre <span class="math" data-tex="\(F\)">\(F\)</span>. If <span class="math" data-tex="\(s_j=s_i g_{ij}\)">\(s_j=s_i g_{ij}\)</span>, its coordinates are
+<span class="math math-display" data-tex="\[
+\Psi_i(x,v)=[s_i(x),v],\qquad
+\Psi_i^{-1}\Psi_j(x,v)=(x,g_{ij}(x)v).
+\tag{B.1}
+\]">\[
+\Psi_i(x,v)=[s_i(x),v],\qquad
+\Psi_i^{-1}\Psi_j(x,v)=(x,g_{ij}(x)v).
+\tag{B.1}
+\]</span>
+The quotient map <span class="math" data-tex="\(q:P\times F\to P\times_G F\)">\(q:P\times F\to P\times_G F\)</span> is smooth and a submersion. In fact it is itself a principal <span class="math" data-tex="\(G\)">\(G\)</span>-bundle for the displayed right action. If the action on a finite dimensional vector space <span class="math" data-tex="\(V\)">\(V\)</span> is a smooth linear representation, <span class="math" data-tex="\(P\times_G V\)">\(P\times_G V\)</span> is a vector bundle.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(p=s_i(x)a\)">\(p=s_i(x)a\)</span>, then <span class="math" data-tex="\([p,v]=[s_i(x),av]\)">\([p,v]=[s_i(x),av]\)</span>. The coordinate <span class="math" data-tex="\(av\)">\(av\)</span> is unique, since two orbit representatives whose first entries equal <span class="math" data-tex="\(s_i(x)\)">\(s_i(x)\)</span> can be related only by <span class="math" data-tex="\(e\)">\(e\)</span>, by freeness on <span class="math" data-tex="\(P\)">\(P\)</span>. This proves the bijectivity and transition formula in (B.1).</p>
+<p>The orbit map <span class="math" data-tex="\(q\)">\(q\)</span> is open: the saturation of any open <span class="math" data-tex="\(W\subset P\times F\)">\(W\subset P\times F\)</span> is the union of its images under the diffeomorphisms <span class="math" data-tex="\((p,v)\mapsto(pa,a^{-1}v)\)">\((p,v)\mapsto(pa,a^{-1}v)\)</span>, for <span class="math" data-tex="\(a\in G\)">\(a\in G\)</span>. The inverse image of the part of the orbit space over <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is the open set <span class="math" data-tex="\(P|_{U_i}\times F\)">\(P|_{U_i}\times F\)</span>, so the restricted map is again a quotient map. In coordinates on that set its proposed quotient coordinate is
+<span class="math math-display" data-tex="\[
+(x,a,v)\longmapsto(x,av).
+\]">\[
+(x,a,v)\longmapsto(x,av).
+\]</span>
+It is continuous and constant on orbits, and therefore induces a continuous inverse for <span class="math" data-tex="\(\Psi_i\)">\(\Psi_i\)</span>. The map <span class="math" data-tex="\(\Psi_i\)">\(\Psi_i\)</span> itself is continuous by its definition through <span class="math" data-tex="\(q\)">\(q\)</span>. Consequently its image is an open product chart for the actual quotient topology. The separation and countability proofs in A.1 apply with <span class="math" data-tex="\(F\)">\(F\)</span> in place of <span class="math" data-tex="\(G\)">\(G\)</span>, giving a Hausdorff, second countable smooth total space with atlas (B.1).</p>
+<p>There is a particularly useful change of coordinates before quotienting:
+<span class="math math-display" data-tex="\[
+(x,a,v)\longmapsto(x,w=av,a).
+\tag{B.2}
+\]">\[
+(x,a,v)\longmapsto(x,w=av,a).
+\tag{B.2}
+\]</span>
+It is a diffeomorphism, with inverse <span class="math" data-tex="\((x,w,a)\mapsto(x,a,a^{-1}w)\)">\((x,w,a)\mapsto(x,a,a^{-1}w)\)</span>. Under (B.2), <span class="math" data-tex="\(q\)">\(q\)</span> is <span class="math" data-tex="\((x,w,a)\mapsto(x,w)\)">\((x,w,a)\mapsto(x,w)\)</span>, proving smoothness and the submersion claim. The right action becomes <span class="math" data-tex="\((x,w,a)b=(x,w,ab)\)">\((x,w,a)b=(x,w,ab)\)</span>, proving the principal-bundle assertion without requiring a general theorem about free actions.</p>
+<p>For a representation, transitions <span class="math" data-tex="\(v\mapsto g_{ij}v\)">\(v\mapsto g_{ij}v\)</span> are invertible linear maps. Thus the local additions and scalar multiplications agree on overlaps and define the vector operations on the fibres. They are smooth in the displayed charts. This is the definition of a smooth vector bundle. □</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (sections and equivariant functions).</strong> Smooth sections of <span class="math" data-tex="\(P\times_G F\)">\(P\times_G F\)</span> correspond bijectively to smooth functions <span class="math" data-tex="\(u:P\to F\)">\(u:P\to F\)</span> satisfying
+<span class="math math-display" data-tex="\[
+u(pa)=a^{-1}u(p).
+\tag{B.3}
+\]">\[
+u(pa)=a^{-1}u(p).
+\tag{B.3}
+\]</span>
+The section associated with <span class="math" data-tex="\(u\)">\(u\)</span> is <span class="math" data-tex="\(x\mapsto[p,u(p)]\)">\(x\mapsto[p,u(p)]\)</span> for any <span class="math" data-tex="\(p\in P_x\)">\(p\in P_x\)</span>. A smooth equivariant map <span class="math" data-tex="\(r:F\to F'\)">\(r:F\to F'\)</span> induces a smooth map <span class="math" data-tex="\([p,v]\mapsto[p,r(v)]\)">\([p,v]\mapsto[p,r(v)]\)</span> of associated bundles.</p>
+<p><strong>Proof.</strong> Equation (B.3) makes <span class="math" data-tex="\([pa,u(pa)]=[p,a\,u(pa)]=[p,u(p)]\)">\([pa,u(pa)]=[p,a\,u(pa)]=[p,u(p)]\)</span>. In the <span class="math" data-tex="\(i\)">\(i\)</span>-th chart the proposed section is <span class="math" data-tex="\(x\mapsto(x,u(s_i(x)))\)">\(x\mapsto(x,u(s_i(x)))\)</span>, so it is smooth. Conversely write a section in that chart as <span class="math" data-tex="\([s_i(x),v_i(x)]\)">\([s_i(x),v_i(x)]\)</span>. Every <span class="math" data-tex="\(p=s_i(x)a\)">\(p=s_i(x)a\)</span> has a unique <span class="math" data-tex="\(u(p)\)">\(u(p)\)</span> with the same section value equal to <span class="math" data-tex="\([p,u(p)]\)">\([p,u(p)]\)</span>, namely
+<span class="math math-display" data-tex="\[
+u(s_i(x)a)=a^{-1}v_i(x).
+\tag{B.4}
+\]">\[
+u(s_i(x)a)=a^{-1}v_i(x).
+\tag{B.4}
+\]</span>
+This is smooth, satisfies (B.3), and gives the same function in another chart because it was characterized uniquely by the section value. The two constructions undo one another pointwise. Finally <span class="math" data-tex="\(r(av)=a\,r(v)\)">\(r(av)=a\,r(v)\)</span> ensures <span class="math" data-tex="\([pa,r(v)]=[p,r(av)]\)">\([pa,r(v)]=[p,r(av)]\)</span>, so the proposed bundle map is well defined. In (B.1) its formula is <span class="math" data-tex="\((x,v)\mapsto(x,r(v))\)">\((x,v)\mapsto(x,r(v))\)</span>, which proves smoothness. □</p>
+<h2 id="c-vector-frames-tensors-and-the-adjoint-fibre">C. Vector frames, tensors and the adjoint fibre</h2>
+<p>A vector bundle can be specified by charts <span class="math" data-tex="\(E|_{U_i}\cong U_i\times\mathbb R^r\)">\(E|_{U_i}\cong U_i\times\mathbb R^r\)</span> whose changes are <span class="math" data-tex="\((x,v)\mapsto(x,t_{ij}(x)v)\)">\((x,v)\mapsto(x,t_{ij}(x)v)\)</span> for smooth <span class="math" data-tex="\(t_{ij}:U_i\cap U_j\to\mathrm{GL}(r,\mathbb R)\)">\(t_{ij}:U_i\cap U_j\to\mathrm{GL}(r,\mathbb R)\)</span>. Equivalently a local frame is a smoothly varying isomorphism <span class="math" data-tex="\(e_i(x):\mathbb R^r\to E_x\)">\(e_i(x):\mathbb R^r\to E_x\)</span>. Its chart sends <span class="math" data-tex="\((x,v)\)">\((x,v)\)</span> to <span class="math" data-tex="\(e_i(x)v\)">\(e_i(x)v\)</span>; hence <span class="math" data-tex="\(e_j=e_i t_{ij}\)">\(e_j=e_i t_{ij}\)</span>.</p>
+<p id="theorem-c-1"><strong>Theorem C.1 (the frame bundle recovers the vector bundle).</strong> Let
+<span class="math math-display" data-tex="\[
+\operatorname{Fr}(E)_x=\{\text{linear isomorphisms }p:\mathbb R^r\to E_x\}.
+\]">\[
+\operatorname{Fr}(E)_x=\{\text{linear isomorphisms }p:\mathbb R^r\to E_x\}.
+\]</span>
+With right action <span class="math" data-tex="\(pa=p\circ a\)">\(pa=p\circ a\)</span>, this is a principal <span class="math" data-tex="\(\mathrm{GL}(r,\mathbb R)\)">\(\mathrm{GL}(r,\mathbb R)\)</span>-bundle. Its associated standard vector bundle is canonically isomorphic to <span class="math" data-tex="\(E\)">\(E\)</span> by
+<span class="math math-display" data-tex="\[
+[p,v]\longmapsto p(v).
+\tag{C.1}
+\]">\[
+[p,v]\longmapsto p(v).
+\tag{C.1}
+\]</span>
+Smooth sections of <span class="math" data-tex="\(\operatorname{Fr}(E)\)">\(\operatorname{Fr}(E)\)</span> are exactly smooth frames of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Proof.</strong> A frame over <span class="math" data-tex="\(U_i\)">\(U_i\)</span> has a unique expression <span class="math" data-tex="\(e_i(x)a\)">\(e_i(x)a\)</span>, where <span class="math" data-tex="\(a\)">\(a\)</span> is invertible. This gives its smooth product chart; on overlaps its coordinates change by <span class="math" data-tex="\((x,a)\mapsto(x,t_{ij}(x)a)\)">\((x,a)\mapsto(x,t_{ij}(x)a)\)</span>. A.1 therefore supplies its topology and principal-bundle structure. This topology also agrees with that obtained as the open subset of the bundle of <span class="math" data-tex="\(r\)">\(r\)</span>-tuples of vectors consisting of bases: in a vector chart the tuple is a square matrix, and invertible matrices form an open set by the Neumann argument in Local tools 0.4. The group operations are matrix multiplication and the smooth inverse proved there. Local tools 0.2 proves the finite dimensional basis and inverse criteria used here.</p>
+<p>The map (C.1) respects <span class="math" data-tex="\([pa,v]=[p,av]\)">\([pa,v]=[p,av]\)</span>. In a frame chart it is <span class="math" data-tex="\([e_i(x),v]\mapsto e_i(x)v\)">\([e_i(x),v]\mapsto e_i(x)v\)</span>, exactly the original vector-bundle chart, so it is a smooth fibrewise linear bijection with a smooth inverse. A section of <span class="math" data-tex="\(\operatorname{Fr}(E)\)">\(\operatorname{Fr}(E)\)</span> is locally a smooth invertible matrix <span class="math" data-tex="\(a(x)\)">\(a(x)\)</span>; its columns under <span class="math" data-tex="\(e_i(x)\)">\(e_i(x)\)</span> are a smooth basis in every fibre. Conversely such columns give a smooth matrix in <span class="math" data-tex="\(\mathrm{GL}(r)\)">\(\mathrm{GL}(r)\)</span>, hence a section. Rank zero uses the unique empty basis and the one-element group <span class="math" data-tex="\(\mathrm{GL}(0)\)">\(\mathrm{GL}(0)\)</span>; the same conclusions hold. □</p>
+<p id="lemma-c-2"><strong>Lemma C.2 (tensor coordinates and the tangent frame).</strong> Duals, tensor products, mixed tensors and exterior powers of <span class="math" data-tex="\(E\)">\(E\)</span> are associated to <span class="math" data-tex="\(\operatorname{Fr}(E)\)">\(\operatorname{Fr}(E)\)</span> by their natural representations. For <span class="math" data-tex="\(E=TM\)">\(E=TM\)</span>, the coordinate tangent bases give precisely these frame-bundle transitions; consequently cotangent vectors and differential forms are associated tensors.</p>
+<p><strong>Proof.</strong> For a vector space <span class="math" data-tex="\(V\)">\(V\)</span>, define <span class="math" data-tex="\(V^*\)">\(V^*\)</span> as its linear functionals. In a basis <span class="math" data-tex="\(v_1,\dots,v_r\)">\(v_1,\dots,v_r\)</span>, the functionals <span class="math" data-tex="\(v^j(v_i)=\delta_i^j\)">\(v^j(v_i)=\delta_i^j\)</span> form a basis: linearity says every functional is uniquely the sum of its values on <span class="math" data-tex="\(v_i\)">\(v_i\)</span> times <span class="math" data-tex="\(v^i\)">\(v^i\)</span>. An invertible <span class="math" data-tex="\(a:V\to V\)">\(a:V\to V\)</span> acts on <span class="math" data-tex="\(V^*\)">\(V^*\)</span> by <span class="math" data-tex="\(\lambda\mapsto\lambda\circ a^{-1}\)">\(\lambda\mapsto\lambda\circ a^{-1}\)</span>; two successive actions by <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> give <span class="math" data-tex="\(\lambda\circ b^{-1}a^{-1}=\lambda\circ(ab)^{-1}\)">\(\lambda\circ b^{-1}a^{-1}=\lambda\circ(ab)^{-1}\)</span>, the action by <span class="math" data-tex="\(ab\)">\(ab\)</span>. Its matrix is the inverse transpose, a smooth function of <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>For clarity, the algebraic tensor space <span class="math" data-tex="\(V\otimes W\)">\(V\otimes W\)</span> may be constructed as the vector space with formal basis <span class="math" data-tex="\(v_i\otimes w_j\)">\(v_i\otimes w_j\)</span>, with the bilinear symbol
+<span class="math" data-tex="\((\sum_i x_iv_i)\otimes(\sum_j y_jw_j)=\sum_{i,j}x_i y_j(v_i\otimes w_j)\)">\((\sum_i x_iv_i)\otimes(\sum_j y_jw_j)=\sum_{i,j}x_i y_j(v_i\otimes w_j)\)</span>. Any bilinear map has a unique linear extension from these basis values; this proves that a change of basis gives a unique isomorphism independent of the chosen presentation. The same construction with lists of indices gives every finite tensor power. A map <span class="math" data-tex="\(a\otimes b\)">\(a\otimes b\)</span> acts separately on each factor. Its entries are products of matrix entries and its inverse is <span class="math" data-tex="\(a^{-1}\otimes b^{-1}\)">\(a^{-1}\otimes b^{-1}\)</span>; composition on pure tensors proves the composition law on the whole space, since those tensors span.</p>
+<p>For <span class="math" data-tex="\(\Lambda^k V\)">\(\Lambda^k V\)</span>, use the basis <span class="math" data-tex="\(v_{i_1}\wedge\cdots\wedge v_{i_k}\)">\(v_{i_1}\wedge\cdots\wedge v_{i_k}\)</span> indexed by strictly increasing <span class="math" data-tex="\(k\)">\(k\)</span>-tuples. Define the wedge of <span class="math" data-tex="\(k\)">\(k\)</span> arbitrary vectors by multilinear expansion, discarding repeated indices and using the sign of the permutation that orders the distinct indices. An adjacent swap reverses the sign, so the map is alternating. Conversely, the values of an alternating multilinear map on the increasing basis tuples determine all its values by these same rules. This proves the universal property and independence of the basis construction. When <span class="math" data-tex="\(k&gt;r\)">\(k&gt;r\)</span> the space is zero; for <span class="math" data-tex="\(k=0\)">\(k=0\)</span> it is the scalar field. Define <span class="math" data-tex="\(\Lambda^k a\)">\(\Lambda^k a\)</span> by applying <span class="math" data-tex="\(a\)">\(a\)</span> to every factor. The just-proved universal property makes it a linear map. Composition and inversion are checked on wedges, which span, and its entries are finite polynomials in entries of <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>It follows that <span class="math" data-tex="\(a\)">\(a\)</span> acts smoothly on each mixed tensor
+<span class="math math-display" data-tex="\[
+(\mathbb R^r)^{\otimes p}\otimes((\mathbb R^r)^*)^{\otimes q}
+\]">\[
+(\mathbb R^r)^{\otimes p}\otimes((\mathbb R^r)^*)^{\otimes q}
+\]</span>
+and on each exterior power. A frame <span class="math" data-tex="\(p:\mathbb R^r\to E_x\)">\(p:\mathbb R^r\to E_x\)</span> transports vectors by <span class="math" data-tex="\(p\)">\(p\)</span>, covectors by composition with <span class="math" data-tex="\(p^{-1}\)">\(p^{-1}\)</span>, and the other tensors factor by factor. The composition laws just proved say that replacing <span class="math" data-tex="\(p\)">\(p\)</span> by <span class="math" data-tex="\(pa\)">\(pa\)</span> transports a tensor exactly as first applying the representation of <span class="math" data-tex="\(a\)">\(a\)</span> and then <span class="math" data-tex="\(p\)">\(p\)</span>. Thus these maps descend from the associated bundles. In each frame chart they are the identity on tensor coordinates, so they and their inverses are smooth. This proves the assertions about the bundles.</p>
+<p>Finally, define a tangent vector at <span class="math" data-tex="\(x\)">\(x\)</span> by its coordinate velocity, with velocities related under a chart change <span class="math" data-tex="\(y=y(z)\)">\(y=y(z)\)</span> by <span class="math" data-tex="\(v_y=D y(z)v_z\)">\(v_y=D y(z)v_z\)</span>. The chain rule in Local tools 0.3 proves the cocycle identities for these invertible Jacobians; the derivative of the inverse chart proves invertibility. A.1 and B.1 therefore construct <span class="math" data-tex="\(TM\)">\(TM\)</span> from these vector transitions. The <span class="math" data-tex="\(z\)">\(z\)</span>-coordinate tangent basis, expressed in the <span class="math" data-tex="\(y\)">\(y\)</span>-basis, has columns <span class="math" data-tex="\(\partial y^i/\partial z^j\)">\(\partial y^i/\partial z^j\)</span>, so its frame transition is that same Jacobian. The covector bundle is its dual and the bundle of <span class="math" data-tex="\(k\)">\(k\)</span>-forms is <span class="math" data-tex="\(\Lambda^k T^*M\)">\(\Lambda^k T^*M\)</span>, with the transformations already proved. □</p>
+<p id="lemma-c-3"><strong>Lemma C.3 (the Lie bracket and its adjoint action).</strong> The vector space <span class="math" data-tex="\(\mathfrak g=T_eG\)">\(\mathfrak g=T_eG\)</span> has a Lie bracket defined by left invariant vector fields. The maps
+<span class="math math-display" data-tex="\[
+\operatorname{Ad}(a)=d(c_a)_e,\qquad c_a(b)=aba^{-1},
+\tag{C.2}
+\]">\[
+\operatorname{Ad}(a)=d(c_a)_e,\qquad c_a(b)=aba^{-1},
+\tag{C.2}
+\]</span>
+form a smooth linear representation of <span class="math" data-tex="\(G\)">\(G\)</span> preserving that bracket. Hence <span class="math" data-tex="\(\operatorname{ad}(P)=P\times_G\mathfrak g\)">\(\operatorname{ad}(P)=P\times_G\mathfrak g\)</span> is a vector bundle with a smooth fibrewise Lie bracket.</p>
+<p><strong>Proof.</strong> We include the differential facts needed to define the bracket. For a smooth scalar function <span class="math" data-tex="\(f\)">\(f\)</span> in a coordinate rectangle, apply the one-variable fundamental theorem twice to its rectangular increment
+<span class="math math-display" data-tex="\[
+f(x+he_i+ke_j)-f(x+he_i)-f(x+ke_j)+f(x).
+\]">\[
+f(x+he_i+ke_j)-f(x+he_i)-f(x+ke_j)+f(x).
+\]</span>
+Computing the two successive increments in either order writes this same number as the respective iterated integral of <span class="math" data-tex="\(\partial_j\partial_i f\)">\(\partial_j\partial_i f\)</span> and <span class="math" data-tex="\(\partial_i\partial_j f\)">\(\partial_i\partial_j f\)</span>. Divide by <span class="math" data-tex="\(hk\)">\(hk\)</span>, for <span class="math" data-tex="\(h,k&gt;0\)">\(h,k&gt;0\)</span>, and let both tend to zero. Continuity makes each average tend to the derivative at <span class="math" data-tex="\(x\)">\(x\)</span>: the error is at most the maximum deviation of that continuous derivative from its value at <span class="math" data-tex="\(x\)">\(x\)</span> on the shrinking rectangle. Thus the two mixed partials agree. This uses only Local tools 0.3 and continuity, not an interchange theorem for integrals.</p>
+<p>For vector fields <span class="math" data-tex="\(X=\sum X^i\partial_i\)">\(X=\sum X^i\partial_i\)</span> and <span class="math" data-tex="\(Y=\sum Y^i\partial_i\)">\(Y=\sum Y^i\partial_i\)</span>, the product rule and this equality show that their operator commutator on smooth functions is
+<span class="math math-display" data-tex="\[
+(XY-YX)f
+=\sum_j\left(\sum_i X^i\partial_iY^j-Y^i\partial_iX^j\right)\partial_j f.
+\tag{C.3}
+\]">\[
+(XY-YX)f
+=\sum_j\left(\sum_i X^i\partial_iY^j-Y^i\partial_iX^j\right)\partial_j f.
+\tag{C.3}
+\]</span>
+This is a smooth vector field. It is independent of the chart because the expression <span class="math" data-tex="\(X(Yf)-Y(Xf)\)">\(X(Yf)-Y(Xf)\)</span> is independent of it, and a vector is determined by its values on the local coordinate functions. Denote it by <span class="math" data-tex="\([X,Y]\)">\([X,Y]\)</span>. Bilinearity and antisymmetry are immediate from the commutator. Its Jacobi identity follows by expanding
+<span class="math" data-tex="\([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]\)">\([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]\)</span>: each of the six products of three operators occurs once with each sign and cancels. Applying this identity to local coordinate functions proves it as an identity of vector fields.</p>
+<p>A diffeomorphism <span class="math" data-tex="\(T\)">\(T\)</span> preserves this bracket under pushforward. Indeed the chain rule gives
+<span class="math math-display" data-tex="\[
+((T_*X)f)\circ T=X(f\circ T);
+\]">\[
+((T_*X)f)\circ T=X(f\circ T);
+\]</span>
+applying it twice gives
+<span class="math" data-tex="\(( [T_*X,T_*Y]f)\circ T=[X,Y](f\circ T)\)">\(( [T_*X,T_*Y]f)\circ T=[X,Y](f\circ T)\)</span>.
+Again coordinate functions determine the fields. For <span class="math" data-tex="\(v\in T_eG\)">\(v\in T_eG\)</span>, let <span class="math" data-tex="\(X_v(b)=d(L_b)_e v\)">\(X_v(b)=d(L_b)_e v\)</span>. It is smooth because multiplication is smooth. Differentiating <span class="math" data-tex="\(L_aL_b=L_{ab}\)">\(L_aL_b=L_{ab}\)</span> proves left invariance. Every left invariant field has this form, by evaluating its invariance at <span class="math" data-tex="\(e\)">\(e\)</span>; consequently the bracket of two such fields is left invariant, by the pushforward identity for <span class="math" data-tex="\(L_a\)">\(L_a\)</span>. Define
+<span class="math" data-tex="\([v,w]=[X_v,X_w](e)\)">\([v,w]=[X_v,X_w](e)\)</span>. The bijection <span class="math" data-tex="\(v\mapsto X_v\)">\(v\mapsto X_v\)</span> transports bilinearity, antisymmetry and Jacobi to this bracket.</p>
+<p>The identities <span class="math" data-tex="\(c_{ab}=c_a c_b\)">\(c_{ab}=c_a c_b\)</span> and <span class="math" data-tex="\(c_{a^{-1}}=c_a^{-1}\)">\(c_{a^{-1}}=c_a^{-1}\)</span> imply that (C.2) is a representation into invertible linear maps. It is smooth: in coordinate charts near each <span class="math" data-tex="\((a,e)\)">\((a,e)\)</span>, its matrix entries are the partial derivatives in the second variable of the jointly smooth conjugation map. These matrices transform by fixed tangent-coordinate changes at <span class="math" data-tex="\(e\)">\(e\)</span>. Differentiating <span class="math" data-tex="\(c_a L_b=L_{c_a(b)}c_a\)">\(c_a L_b=L_{c_a(b)}c_a\)</span> gives <span class="math" data-tex="\((c_a)_*X_v=X_{\operatorname{Ad}(a)v}\)">\((c_a)_*X_v=X_{\operatorname{Ad}(a)v}\)</span>. Bracket preservation by the diffeomorphism <span class="math" data-tex="\(c_a\)">\(c_a\)</span> therefore yields
+<span class="math math-display" data-tex="\[
+\operatorname{Ad}(a)[v,w]=[\operatorname{Ad}(a)v,\operatorname{Ad}(a)w].
+\tag{C.4}
+\]">\[
+\operatorname{Ad}(a)[v,w]=[\operatorname{Ad}(a)v,\operatorname{Ad}(a)w].
+\tag{C.4}
+\]</span></p>
+<p>B.1 gives the associated vector bundle. If two elements in one fibre are written as <span class="math" data-tex="\([p,v]\)">\([p,v]\)</span> and <span class="math" data-tex="\([p,w]\)">\([p,w]\)</span>, define their bracket to be <span class="math" data-tex="\([p,[v,w]]\)">\([p,[v,w]]\)</span>. They can always be expressed using the same <span class="math" data-tex="\(p\)">\(p\)</span>, by transitivity of the principal action. Replacing <span class="math" data-tex="\(p\)">\(p\)</span> by <span class="math" data-tex="\(pa\)">\(pa\)</span> replaces both coordinates by <span class="math" data-tex="\(\operatorname{Ad}(a^{-1})\)">\(\operatorname{Ad}(a^{-1})\)</span>; (C.4) proves independence of this choice. In every trivialization the operation has the fixed bilinear structure coefficients of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, so it is smooth and satisfies the Lie algebra identities. □</p>
+<h2 id="d-reductions-restricting-the-allowed-frames">D. Reductions: restricting the allowed frames</h2>
+<p>Let <span class="math" data-tex="\(H\subset G\)">\(H\subset G\)</span> be a <strong>closed embedded Lie subgroup</strong>. The embedded hypothesis is explicit; no closed-subgroup theorem is being used without proof. Local tools 4.1 supplies the smooth quotient <span class="math" data-tex="\(G/H\)">\(G/H\)</span>, its quotient topology, the smooth left <span class="math" data-tex="\(G\)">\(G\)</span>-action, and smooth local sections of <span class="math" data-tex="\(G\to G/H\)">\(G\to G/H\)</span>.</p>
+<p>An <strong><span class="math" data-tex="\(H\)">\(H\)</span>-reduction</strong> of <span class="math" data-tex="\(P\)">\(P\)</span> is an embedded submanifold <span class="math" data-tex="\(Q\subset P\)">\(Q\subset P\)</span>, preserved by the right <span class="math" data-tex="\(H\)">\(H\)</span>-action, for which <span class="math" data-tex="\(Q\to M\)">\(Q\to M\)</span> is a principal <span class="math" data-tex="\(H\)">\(H\)</span>-bundle with this action. In particular, each <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span> is one right <span class="math" data-tex="\(H\)">\(H\)</span>-orbit inside <span class="math" data-tex="\(P_x\)">\(P_x\)</span>.</p>
+<p id="theorem-d-1"><strong>Theorem D.1 (reductions and sections of the quotient bundle).</strong> The space <span class="math" data-tex="\(P/H\)">\(P/H\)</span> of right <span class="math" data-tex="\(H\)">\(H\)</span>-orbits is naturally the associated bundle <span class="math" data-tex="\(P\times_G(G/H)\)">\(P\times_G(G/H)\)</span>. Its smooth sections correspond bijectively to <span class="math" data-tex="\(H\)">\(H\)</span>-reductions of <span class="math" data-tex="\(P\)">\(P\)</span>, by
+<span class="math math-display" data-tex="\[
+\sigma\longmapsto Q_\sigma=\{p\in P:pH=\sigma(\pi(p))\},
+\qquad
+Q\longmapsto\bigl(x\mapsto Q_x\bigr).
+\tag{D.1}
+\]">\[
+\sigma\longmapsto Q_\sigma=\{p\in P:pH=\sigma(\pi(p))\},
+\qquad
+Q\longmapsto\bigl(x\mapsto Q_x\bigr).
+\tag{D.1}
+\]</span></p>
+<p><strong>Proof.</strong> The map <span class="math" data-tex="\([p,aH]\mapsto paH\)">\([p,aH]\mapsto paH\)</span> is well defined: replacing <span class="math" data-tex="\((p,aH)\)">\((p,aH)\)</span> by <span class="math" data-tex="\((pb,b^{-1}aH)\)">\((pb,b^{-1}aH)\)</span> leaves <span class="math" data-tex="\(paH\)">\(paH\)</span> unchanged. It is bijective, with inverse <span class="math" data-tex="\(pH\mapsto[p,H]\)">\(pH\mapsto[p,H]\)</span>. On the <span class="math" data-tex="\(i\)">\(i\)</span>-th principal chart the quotient by <span class="math" data-tex="\(H\)">\(H\)</span> is <span class="math" data-tex="\(U_i\times(G/H)\)">\(U_i\times(G/H)\)</span>. To see this with the quotient topology, <span class="math" data-tex="\(G\to G/H\)">\(G\to G/H\)</span> is open, since the saturation of an open set is its union of right translates by <span class="math" data-tex="\(H\)">\(H\)</span>; hence its product with <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is open on basic open products and therefore on every open set. It is a continuous open surjection, so a quotient map. The orbit map <span class="math" data-tex="\(P\to P/H\)">\(P\to P/H\)</span> is also open by the same saturation argument. Thus these local product identifications describe the actual quotient topology. They identify our bijection with the identity in the B.1 charts, proving it is a diffeomorphism.</p>
+<p>In a principal chart, a section <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is a smooth <span class="math" data-tex="\(c:U\to G/H\)">\(c:U\to G/H\)</span>. For every <span class="math" data-tex="\(x_0\in U\)">\(x_0\in U\)</span>, take a local section <span class="math" data-tex="\(\ell:W\to G\)">\(\ell:W\to G\)</span> of <span class="math" data-tex="\(G\to G/H\)">\(G\to G/H\)</span> around <span class="math" data-tex="\(c(x_0)\)">\(c(x_0)\)</span>, and shrink <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(c^{-1}(W)\)">\(c^{-1}(W)\)</span>. The map <span class="math" data-tex="\(a(x)=\ell(c(x))\)">\(a(x)=\ell(c(x))\)</span> is a smooth lift. In these coordinates
+<span class="math math-display" data-tex="\[
+Q_\sigma|_U=\{s(x)a(x)h:x\in U,\ h\in H\}.
+\tag{D.2}
+\]">\[
+Q_\sigma|_U=\{s(x)a(x)h:x\in U,\ h\in H\}.
+\tag{D.2}
+\]</span>
+The diffeomorphism <span class="math" data-tex="\((x,g)\mapsto(x,a(x)^{-1}g)\)">\((x,g)\mapsto(x,a(x)^{-1}g)\)</span> of <span class="math" data-tex="\(U\times G\)">\(U\times G\)</span> carries this subset to <span class="math" data-tex="\(U\times H\)">\(U\times H\)</span>. Because <span class="math" data-tex="\(H\)">\(H\)</span> is embedded, (D.2) is an embedded submanifold with its subspace topology, and <span class="math" data-tex="\((x,h)\mapsto s(x)a(x)h\)">\((x,h)\mapsto s(x)a(x)h\)</span> is a principal <span class="math" data-tex="\(H\)">\(H\)</span>-trivialization. If two such local sections are used, their relative group element is smooth into <span class="math" data-tex="\(G\)">\(G\)</span> by A.2 and takes values in <span class="math" data-tex="\(H\)">\(H\)</span>; it is smooth as an <span class="math" data-tex="\(H\)">\(H\)</span>-valued map. Here is the embedded-submanifold fact just used: in a submanifold chart a map with image in <span class="math" data-tex="\(H\)">\(H\)</span> has coordinates <span class="math" data-tex="\((h_1,\dots,h_k,0,\dots,0)\)">\((h_1,\dots,h_k,0,\dots,0)\)</span>; its first <span class="math" data-tex="\(k\)">\(k\)</span> coordinates are smooth, and continuity for the subspace topology places its image locally in that chart. This proves the fact without another quotient theorem. It follows that all the local <span class="math" data-tex="\(H\)">\(H\)</span>-charts agree smoothly. Thus <span class="math" data-tex="\(Q_\sigma\)">\(Q_\sigma\)</span> is a reduction.</p>
+<p>Conversely, choose a local section <span class="math" data-tex="\(t:U\to Q\)">\(t:U\to Q\)</span> of an <span class="math" data-tex="\(H\)">\(H\)</span>-reduction. The coset <span class="math" data-tex="\(t(x)H\)">\(t(x)H\)</span> is independent of the chosen section, since all elements of <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span> differ by right multiplication in <span class="math" data-tex="\(H\)">\(H\)</span>. It is smooth as a map to <span class="math" data-tex="\(P/H\)">\(P/H\)</span>, by the smooth inclusion <span class="math" data-tex="\(Q\to P\)">\(Q\to P\)</span> and the quotient charts. These local maps glue to a section. Its inverse image in <span class="math" data-tex="\(P\)">\(P\)</span> is exactly <span class="math" data-tex="\(Q\)">\(Q\)</span>, since each <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span> is one entire <span class="math" data-tex="\(H\)">\(H\)</span>-orbit. Conversely the coset of <span class="math" data-tex="\(Q_{\sigma,x}\)">\(Q_{\sigma,x}\)</span> is <span class="math" data-tex="\(\sigma(x)\)">\(\sigma(x)\)</span>. This proves both inverse identities in (D.1). □</p>
+<p id="theorem-d-2"><strong>Theorem D.2 (metrics and orthonormal reductions).</strong> A smooth positive definite inner product on a real rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle <span class="math" data-tex="\(E\)">\(E\)</span> determines an <span class="math" data-tex="\(\mathrm O(r)\)">\(\mathrm O(r)\)</span>-reduction of <span class="math" data-tex="\(\operatorname{Fr}(E)\)">\(\operatorname{Fr}(E)\)</span>, namely its orthonormal frames. Every such reduction determines a unique metric, and the constructions are inverse. Every smooth vector bundle over <span class="math" data-tex="\(M\)">\(M\)</span> has a smooth positive definite metric.</p>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(\mathrm O(r)=\{a:a^{\mathsf T}a=I\}\)">\(\mathrm O(r)=\{a:a^{\mathsf T}a=I\}\)</span> is a closed embedded Lie subgroup of <span class="math" data-tex="\(\mathrm{GL}(r)\)">\(\mathrm{GL}(r)\)</span>. Closedness follows by continuity. To verify embeddedness, consider <span class="math" data-tex="\(F(a)=a^{\mathsf T}a\)">\(F(a)=a^{\mathsf T}a\)</span> valued in the vector space of symmetric matrices. Its derivative is <span class="math" data-tex="\(dF_a(b)=a^{\mathsf T}b+b^{\mathsf T}a\)">\(dF_a(b)=a^{\mathsf T}b+b^{\mathsf T}a\)</span>, by the product rule. At <span class="math" data-tex="\(a\in\mathrm O(r)\)">\(a\in\mathrm O(r)\)</span>, every symmetric <span class="math" data-tex="\(S\)">\(S\)</span> is attained by <span class="math" data-tex="\(b=aS/2\)">\(b=aS/2\)</span>; thus this derivative is surjective. Choose a linear complement of its kernel by Local tools 0.2. The map which lists the kernel coordinate together with <span class="math" data-tex="\(F\)">\(F\)</span> has an invertible derivative, so Local tools 1.2 makes these local coordinates; the level <span class="math" data-tex="\(F=I\)">\(F=I\)</span> is therefore an embedded submanifold. Multiplication and inverse restrict smoothly, since <span class="math" data-tex="\(a^{-1}=a^{\mathsf T}\)">\(a^{-1}=a^{\mathsf T}\)</span>. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> the assertion describes the one-point manifold and requires no derivative argument.</p>
+<p>Given a metric <span class="math" data-tex="\(\langle\, ,\,\rangle_x\)">\(\langle\, ,\,\rangle_x\)</span> and a local frame <span class="math" data-tex="\(e_1,\dots,e_r\)">\(e_1,\dots,e_r\)</span>, define successively
+<span class="math math-display" data-tex="\[
+v_j=e_j-\sum_{k&lt;j}\langle e_j,u_k\rangle\,u_k,\qquad
+u_j=\frac{v_j}{\sqrt{\langle v_j,v_j\rangle}}.
+\tag{D.3}
+\]">\[
+v_j=e_j-\sum_{k&lt;j}\langle e_j,u_k\rangle\,u_k,\qquad
+u_j=\frac{v_j}{\sqrt{\langle v_j,v_j\rangle}}.
+\tag{D.3}
+\]</span>
+Induction shows that the preceding <span class="math" data-tex="\(u_k\)">\(u_k\)</span> are orthonormal, that <span class="math" data-tex="\(v_j\)">\(v_j\)</span> is perpendicular to them, and that <span class="math" data-tex="\(u_1,\dots,u_{j-1}\)">\(u_1,\dots,u_{j-1}\)</span> span <span class="math" data-tex="\(e_1,\dots,e_{j-1}\)">\(e_1,\dots,e_{j-1}\)</span>. Thus <span class="math" data-tex="\(v_j\ne0\)">\(v_j\ne0\)</span>, by independence of the original frame, and its norm is positive. The positive square root is smooth as proved in the introduction, so the <span class="math" data-tex="\(u_j\)">\(u_j\)</span> are smooth. Formula (D.3) gives a smooth orthonormal local frame <span class="math" data-tex="\(u\)">\(u\)</span>. Every other orthonormal frame is uniquely <span class="math" data-tex="\(ua\)">\(ua\)</span> with <span class="math" data-tex="\(a^{\mathsf T}a=I\)">\(a^{\mathsf T}a=I\)</span>, because the inner products of its columns are the entries of <span class="math" data-tex="\(a^{\mathsf T}a\)">\(a^{\mathsf T}a\)</span>. In the frame-bundle chart based on <span class="math" data-tex="\(u\)">\(u\)</span>, the orthonormal subset is <span class="math" data-tex="\(U\times\mathrm O(r)\)">\(U\times\mathrm O(r)\)</span>. It is therefore an embedded principal <span class="math" data-tex="\(\mathrm O(r)\)">\(\mathrm O(r)\)</span>-subbundle.</p>
+<p>Conversely, if <span class="math" data-tex="\(Q\)">\(Q\)</span> is an <span class="math" data-tex="\(\mathrm O(r)\)">\(\mathrm O(r)\)</span>-reduction, declare <span class="math" data-tex="\(p:\mathbb R^r\to E_x\)">\(p:\mathbb R^r\to E_x\)</span> to be an isometry for any <span class="math" data-tex="\(p\in Q_x\)">\(p\in Q_x\)</span>:
+<span class="math math-display" data-tex="\[
+\langle v,w\rangle_x=(p^{-1}v)^{\mathsf T}(p^{-1}w).
+\tag{D.4}
+\]">\[
+\langle v,w\rangle_x=(p^{-1}v)^{\mathsf T}(p^{-1}w).
+\tag{D.4}
+\]</span>
+Another choice is <span class="math" data-tex="\(pa\)">\(pa\)</span> for <span class="math" data-tex="\(a\in\mathrm O(r)\)">\(a\in\mathrm O(r)\)</span>; multiplication of both coordinates by <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> preserves this expression. Local sections of <span class="math" data-tex="\(Q\)">\(Q\)</span> make (D.4) smooth. It is positive definite, and its orthonormal frames are exactly <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span>, because every frame is <span class="math" data-tex="\(pb\)">\(pb\)</span> and (D.4) makes it orthonormal exactly when <span class="math" data-tex="\(b^{\mathsf T}b=I\)">\(b^{\mathsf T}b=I\)</span>. This also proves uniqueness and the inverse assertions.</p>
+<p>For existence, put the Euclidean metric on each local vector chart. Take a smooth partition of unity <span class="math" data-tex="\((\phi_i)\)">\((\phi_i)\)</span> subordinate to a locally finite refinement of these charts, provided by Local tools 3.1. Define
+<span class="math" data-tex="\(\langle v,w\rangle_x=\sum_i\phi_i(x)\langle v,w\rangle_{i,x}\)">\(\langle v,w\rangle_x=\sum_i\phi_i(x)\langle v,w\rangle_{i,x}\)</span>.
+Each summand extends by zero outside its chart: near a point outside that chart its coefficient has support disjoint from a neighbourhood of the point. Locally only finitely many summands occur, so the sum is smooth. At any <span class="math" data-tex="\(x\)">\(x\)</span>, the coefficients are nonnegative and sum to one; for <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, at least one positive coefficient multiplies a strictly positive <span class="math" data-tex="\(\langle v,v\rangle_{i,x}\)">\(\langle v,v\rangle_{i,x}\)</span>. The sum is therefore positive. In rank zero the zero bilinear form is the unique metric, with positivity understood for nonzero vectors, of which there are none. □</p>
+<p id="theorem-d-3"><strong>Theorem D.3 (orientation and positive orthonormal frames).</strong> For <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, orientations of <span class="math" data-tex="\(E\)">\(E\)</span> correspond to <span class="math" data-tex="\(\mathrm{GL}^+(r,\mathbb R)\)">\(\mathrm{GL}^+(r,\mathbb R)\)</span>-reductions of its frame bundle. A metric and an orientation together correspond to an <span class="math" data-tex="\(\mathrm{SO}(r)\)">\(\mathrm{SO}(r)\)</span>-reduction. For rank zero there is one frame, one canonical orientation, and all these groups are trivial.</p>
+<p><strong>Proof.</strong> We specify the determinant facts used here. For a square matrix <span class="math" data-tex="\(a\)">\(a\)</span>, define
+<span class="math math-display" data-tex="\[
+\det(a)=\sum_{\sigma\in S_r}\operatorname{sgn}(\sigma)
+ \prod_{j=1}^r a_{\sigma(j),j}.
+\tag{D.5}
+\]">\[
+\det(a)=\sum_{\sigma\in S_r}\operatorname{sgn}(\sigma)
+ \prod_{j=1}^r a_{\sigma(j),j}.
+\tag{D.5}
+\]</span>
+The permutation sign is the parity of its number of inversions. Adjacent interchanges reverse that parity; sorting a permutation into increasing order proves both that this sign is well defined and that signs multiply under composition. Formula (D.5) is multilinear in columns. Interchanging two columns reverses its sign by reindexing the permutations, and repeated columns give zero by pairing the terms. Any alternating multilinear function of <span class="math" data-tex="\(r\)">\(r\)</span> columns is its value at the standard ordered basis times (D.5): expand every column in that basis, discard repeated indices, and order the remaining indices. Apply this uniqueness to the alternating multilinear function <span class="math" data-tex="\((v_1,\dots,v_r)\mapsto\det(av_1,\dots,av_r)\)">\((v_1,\dots,v_r)\mapsto\det(av_1,\dots,av_r)\)</span>; its value on the standard basis is <span class="math" data-tex="\(\det a\)">\(\det a\)</span>. It follows that <span class="math" data-tex="\(\det(ab)=\det(a)\det(b)\)">\(\det(ab)=\det(a)\det(b)\)</span>. An invertible matrix therefore has nonzero determinant, since <span class="math" data-tex="\(\det I=1\)">\(\det I=1\)</span>; a noninvertible matrix has dependent columns by Local tools 0.2 and its determinant vanishes by multilinearity. Triangular matrices have determinant the product of diagonal entries, because only the identity permutation can give a nonzero term, successively from the first constrained row or column.</p>
+<p>Reindexing (D.5) by <span class="math" data-tex="\(\sigma^{-1}\)">\(\sigma^{-1}\)</span>, which has the same sign, also gives <span class="math" data-tex="\(\det(a^{\mathsf T})=\det(a)\)">\(\det(a^{\mathsf T})=\det(a)\)</span>. The group <span class="math" data-tex="\(\mathrm{GL}^+(r)=\{a:\det a&gt;0\}\)">\(\mathrm{GL}^+(r)=\{a:\det a&gt;0\}\)</span> is an open embedded subgroup of <span class="math" data-tex="\(\mathrm{GL}(r)\)">\(\mathrm{GL}(r)\)</span> and also closed there, since its complement is <span class="math" data-tex="\(\{\det a&lt;0\}\)">\(\{\det a&lt;0\}\)</span>, which is open. There are exactly two equivalence classes of bases under positive-determinant changes: relative to a fixed basis every basis is given by an invertible matrix, and its determinant is either positive or negative; multiplication by <span class="math" data-tex="\(\operatorname{diag}(-1,1,\dots,1)\)">\(\operatorname{diag}(-1,1,\dots,1)\)</span> switches the two. An orientation of a fibre means a choice of one class. A smooth orientation means that locally a smooth frame lies in the chosen class at every point. This does not assume a theorem identifying connected components of <span class="math" data-tex="\(\mathrm{GL}(r)\)">\(\mathrm{GL}(r)\)</span>.</p>
+<p>The positive frames of such an orientation form <span class="math" data-tex="\(U\times\mathrm{GL}^+(r)\)">\(U\times\mathrm{GL}^+(r)\)</span> in every positive local frame chart. This is an embedded principal reduction. Conversely a reduction supplies positive local sections; all changes between them have positive determinant, so they define a consistent smooth orientation. The two constructions are inverse fibre by fibre.</p>
+<p>For a metric and an orientation, apply (D.3) to a positive local frame. Each <span class="math" data-tex="\(u_j\)">\(u_j\)</span> is a linear combination of <span class="math" data-tex="\(e_1,\dots,e_j\)">\(e_1,\dots,e_j\)</span>, with coefficient <span class="math" data-tex="\(1/\sqrt{\langle v_j,v_j\rangle}&gt;0\)">\(1/\sqrt{\langle v_j,v_j\rangle}&gt;0\)</span> on <span class="math" data-tex="\(e_j\)">\(e_j\)</span>. Thus the change matrix is triangular with positive diagonal and positive determinant. The resulting orthonormal frame remains positive. Its changes are in
+<span class="math" data-tex="\(\mathrm{SO}(r)=\mathrm O(r)\cap\mathrm{GL}^+(r)\)">\(\mathrm{SO}(r)=\mathrm O(r)\cap\mathrm{GL}^+(r)\)</span>.
+For an orthogonal matrix, determinant multiplicativity gives <span class="math" data-tex="\((\det a)^2=1\)">\((\det a)^2=1\)</span>, so this is precisely <span class="math" data-tex="\(\{a\in\mathrm O(r):\det a=1\}\)">\(\{a\in\mathrm O(r):\det a=1\}\)</span>. It is an open and closed embedded subgroup of <span class="math" data-tex="\(\mathrm O(r)\)">\(\mathrm O(r)\)</span>, hence an embedded subgroup of <span class="math" data-tex="\(\mathrm{GL}(r)\)">\(\mathrm{GL}(r)\)</span>; it is closed there by the equations <span class="math" data-tex="\(a^{\mathsf T}a=I,\det a=1\)">\(a^{\mathsf T}a=I,\det a=1\)</span>. The positive orthonormal frames give its principal reduction, just as in D.2. Conversely an <span class="math" data-tex="\(\mathrm{SO}(r)\)">\(\mathrm{SO}(r)\)</span>-reduction defines the metric by (D.4), independently of the chosen frame, and the orientation by its determinant sign. Its fibre is exactly all positive orthonormal frames, so the constructions are inverse. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, use determinant <span class="math" data-tex="\(1\)">\(1\)</span> for the empty matrix and the empty basis, which verifies the stated convention directly. □</p>
+<h2 id="e-one-bundle-with-two-coordinate-descriptions">E. One bundle with two coordinate descriptions</h2>
+<p id="example-e-1"><strong>Example E.1 (the Hopf bundle and its associated line).</strong> The unit vectors in <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> form a principal <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>-bundle over <span class="math" data-tex="\(\mathbb {CP}^1\)">\(\mathbb {CP}^1\)</span>. With the convention <span class="math" data-tex="\(s_1=s_0 g_{01}\)">\(s_1=s_0 g_{01}\)</span>, its transition is
+<span class="math math-display" data-tex="\[
+g_{01}(w)=\frac{|w|}{w},\qquad w\ne0.
+\tag{E.1}
+\]">\[
+g_{01}(w)=\frac{|w|}{w},\qquad w\ne0.
+\tag{E.1}
+\]</span>
+The base is diffeomorphic to the unit sphere <span class="math" data-tex="\(S^2\)">\(S^2\)</span>, and the associated standard complex line is the tautological line.</p>
+<p><strong>Proof.</strong> Regard <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> as <span class="math" data-tex="\(\mathbb R^{2n}\)">\(\mathbb R^{2n}\)</span>; conjugation, real and imaginary parts, and complex multiplication are real polynomial maps. The derivative of <span class="math" data-tex="\(\sum |z_i|^2\)">\(\sum |z_i|^2\)</span> at a unit vector is nonzero (evaluate it on that vector). The implicit-function argument of Local tools 1.3 therefore makes its level set <span class="math" data-tex="\(S^{2n-1}\)">\(S^{2n-1}\)</span> an embedded smooth manifold. In particular <span class="math" data-tex="\(S^3\)">\(S^3\)</span> and <span class="math" data-tex="\(U(1)=\{a\in\mathbb C:|a|=1\}\)">\(U(1)=\{a\in\mathbb C:|a|=1\}\)</span> are smooth, Hausdorff and second countable. On <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>, multiplication and inverse <span class="math" data-tex="\(a^{-1}=\bar a\)">\(a^{-1}=\bar a\)</span> are smooth.</p>
+<p>Define <span class="math" data-tex="\(\mathbb {CP}^1\)">\(\mathbb {CP}^1\)</span> as the complex lines in <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, with the quotient topology from <span class="math" data-tex="\(\mathbb C^2\setminus\{0\}\)">\(\mathbb C^2\setminus\{0\}\)</span> under nonzero complex scaling. The lines with <span class="math" data-tex="\(z_0\ne0\)">\(z_0\ne0\)</span> have coordinate <span class="math" data-tex="\(w=z_1/z_0\)">\(w=z_1/z_0\)</span>; those with <span class="math" data-tex="\(z_1\ne0\)">\(z_1\ne0\)</span> have coordinate <span class="math" data-tex="\(v=z_0/z_1\)">\(v=z_0/z_1\)</span>. These are actual topological charts: the quotient map is open by taking the union of nonzero scalar translates of an open set; the coordinate maps on each saturated part are continuous, and their inverse maps are <span class="math" data-tex="\(w\mapsto[1:w]\)">\(w\mapsto[1:w]\)</span>, <span class="math" data-tex="\(v\mapsto[v:1]\)">\(v\mapsto[v:1]\)</span>, the composites of continuous maps with the quotient. Their change <span class="math" data-tex="\(v=1/w\)">\(v=1/w\)</span> is smooth off zero.</p>
+<p>To verify separation and the full smooth structure directly, set
+<span class="math math-display" data-tex="\[
+\Theta([z_0:z_1])=
+\frac{(2\operatorname{Re}(\bar z_0z_1),\
+2\operatorname{Im}(\bar z_0z_1),\
+|z_0|^2-|z_1|^2)}{|z_0|^2+|z_1|^2}.
+\tag{E.2}
+\]">\[
+\Theta([z_0:z_1])=
+\frac{(2\operatorname{Re}(\bar z_0z_1),\
+2\operatorname{Im}(\bar z_0z_1),\
+|z_0|^2-|z_1|^2)}{|z_0|^2+|z_1|^2}.
+\tag{E.2}
+\]</span>
+Scaling numerator and denominator by the same <span class="math" data-tex="\(|a|^2\)">\(|a|^2\)</span> proves well-definedness. The identity
+<span class="math" data-tex="\(4|z_0|^2|z_1|^2+(|z_0|^2-|z_1|^2)^2=(|z_0|^2+|z_1|^2)^2\)">\(4|z_0|^2|z_1|^2+(|z_0|^2-|z_1|^2)^2=(|z_0|^2+|z_1|^2)^2\)</span>
+puts its image on <span class="math" data-tex="\(S^2\)">\(S^2\)</span>. In the first chart its formula is
+<span class="math math-display" data-tex="\[
+w\longmapsto\frac{(2\operatorname{Re}w,2\operatorname{Im}w,1-|w|^2)}
+ {1+|w|^2},
+\]">\[
+w\longmapsto\frac{(2\operatorname{Re}w,2\operatorname{Im}w,1-|w|^2)}
+ {1+|w|^2},
+\]</span>
+with inverse <span class="math" data-tex="\(w=(X+iY)/(1+Z)\)">\(w=(X+iY)/(1+Z)\)</span> on the sphere minus <span class="math" data-tex="\((0,0,-1)\)">\((0,0,-1)\)</span>. In the second chart it is
+<span class="math math-display" data-tex="\[
+v\longmapsto\frac{(2\operatorname{Re}v,-2\operatorname{Im}v,|v|^2-1)}
+ {1+|v|^2},
+\]">\[
+v\longmapsto\frac{(2\operatorname{Re}v,-2\operatorname{Im}v,|v|^2-1)}
+ {1+|v|^2},
+\]</span>
+with inverse <span class="math" data-tex="\(v=(X-iY)/(1-Z)\)">\(v=(X-iY)/(1-Z)\)</span> off <span class="math" data-tex="\((0,0,1)\)">\((0,0,1)\)</span>. Substitution verifies both inverse identities, using <span class="math" data-tex="\(X^2+Y^2=1-Z^2\)">\(X^2+Y^2=1-Z^2\)</span>. These maps cover the sphere and agree on the overlap. Thus <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> is a homeomorphism and a diffeomorphism in the displayed charts. In particular the base is Hausdorff and second countable.</p>
+<p>The projection <span class="math" data-tex="\(\pi:S^3\to\mathbb {CP}^1\)">\(\pi:S^3\to\mathbb {CP}^1\)</span> sends a unit vector to its line. Define
+<span class="math math-display" data-tex="\[
+s_0(w)=\frac{(1,w)}{\sqrt{1+|w|^2}},
+\qquad
+s_1(v)=\frac{(v,1)}{\sqrt{1+|v|^2}}.
+\tag{E.3}
+\]">\[
+s_0(w)=\frac{(1,w)}{\sqrt{1+|w|^2}},
+\qquad
+s_1(v)=\frac{(v,1)}{\sqrt{1+|v|^2}}.
+\tag{E.3}
+\]</span>
+Both are smooth unit vectors. For <span class="math" data-tex="\(z_0\ne0\)">\(z_0\ne0\)</span>, the equations
+<span class="math math-display" data-tex="\[
+(z_0,z_1)=s_0(w)a,\qquad
+w=z_1/z_0,\quad a=z_0/|z_0|
+\]">\[
+(z_0,z_1)=s_0(w)a,\qquad
+w=z_1/z_0,\quad a=z_0/|z_0|
+\]</span>
+follow from <span class="math" data-tex="\(|z_0|^2(1+|w|^2)=1\)">\(|z_0|^2(1+|w|^2)=1\)</span>; they give smooth mutually inverse maps between <span class="math" data-tex="\(\pi^{-1}(U_0)\)">\(\pi^{-1}(U_0)\)</span> and <span class="math" data-tex="\(U_0\times U(1)\)">\(U_0\times U(1)\)</span>. For <span class="math" data-tex="\(z_1\ne0\)">\(z_1\ne0\)</span> the same verification uses <span class="math" data-tex="\(v=z_0/z_1\)">\(v=z_0/z_1\)</span>, <span class="math" data-tex="\(a=z_1/|z_1|\)">\(a=z_1/|z_1|\)</span>. They are equivariant for right scalar multiplication on <span class="math" data-tex="\(S^3\)">\(S^3\)</span>. This proves the principal-bundle assertion, including smoothness and submersion of its projection. On the overlap,
+<span class="math math-display" data-tex="\[
+s_1(1/w)
+=\frac{(|w|/w,\ |w|)}{\sqrt{1+|w|^2}}
+=s_0(w)\frac{|w|}{w},
+\]">\[
+s_1(1/w)
+=\frac{(|w|/w,\ |w|)}{\sqrt{1+|w|^2}}
+=s_0(w)\frac{|w|}{w},
+\]</span>
+which proves (E.1). On the equator <span class="math" data-tex="\(|w|=1\)">\(|w|=1\)</span> the transition is <span class="math" data-tex="\(w\mapsto\bar w\)">\(w\mapsto\bar w\)</span>. Orient the circle by the positive tangent <span class="math" data-tex="\(iw\)">\(iw\)</span> at <span class="math" data-tex="\(w\)">\(w\)</span>. The derivative of conjugation sends <span class="math" data-tex="\(iw\)">\(iw\)</span> to <span class="math" data-tex="\(-i\bar w\)">\(-i\bar w\)</span>, the negative tangent at the image. Conjugation is a diffeomorphism with itself as inverse, so it traverses that circle once with reversed orientation. This proves the negative transition sign without invoking a classification by winding numbers.</p>
+<p>The tautological line has fibre the line <span class="math" data-tex="\(\ell\)">\(\ell\)</span> itself over <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Its local vector charts are <span class="math" data-tex="\((w,\xi)\mapsto(\ell_w,\xi s_0(w))\)">\((w,\xi)\mapsto(\ell_w,\xi s_0(w))\)</span> and the analogous second chart. They are smooth, with inverse coefficient recovered by the ordinary Hermitian inner product with the unit vector <span class="math" data-tex="\(s_i\)">\(s_i\)</span>. The map from the associated line is
+<span class="math math-display" data-tex="\[
+[(z_0,z_1),\xi]\longmapsto
+\bigl([z_0:z_1],\,\xi(z_0,z_1)\bigr).
+\tag{E.4}
+\]">\[
+[(z_0,z_1),\xi]\longmapsto
+\bigl([z_0:z_1],\,\xi(z_0,z_1)\bigr).
+\tag{E.4}
+\]</span>
+The relation <span class="math" data-tex="\((z,\xi)a=(za,a^{-1}\xi)\)">\((z,\xi)a=(za,a^{-1}\xi)\)</span> preserves the product <span class="math" data-tex="\(\xi z\)">\(\xi z\)</span>, proving it is well defined. In the two vector charts it is the identity on <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, so it is a smooth linear isomorphism. Its first Chern number, with the complex orientation of this base, is <span class="math" data-tex="\(-1\)">\(-1\)</span>; a complete curvature computation and integration proof is <a href="supporting/DG-CHAR-8e0b5f71efec/DG-CHAR-17.html#exercise-v-4">DG-CHAR-17, Exercise V.4</a>. That earlier programme computation uses the same local spanning vector <span class="math" data-tex="\((1,w)\)">\((1,w)\)</span>, hence the same tautological bundle. □</p>
+<h2 id="f-exercises-with-complete-solutions">F. Exercises with complete solutions</h2>
+<p id="exercise-f-1"><strong>Exercise F.1 (two choices of origin).</strong> Given two global sections <span class="math" data-tex="\(s,t\)">\(s,t\)</span> of a principal bundle, determine the unique <span class="math" data-tex="\(h:M\to G\)">\(h:M\to G\)</span> with <span class="math" data-tex="\(t=sh\)">\(t=sh\)</span>, and the coordinate change between their product trivializations.</p>
+<p><strong>Solution.</strong> A.2 gives <span class="math" data-tex="\(h(x)=\delta(s(x),t(x))\)">\(h(x)=\delta(s(x),t(x))\)</span>, smooth and unique. If a point has coordinates <span class="math" data-tex="\(a\)">\(a\)</span> using <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> using <span class="math" data-tex="\(t\)">\(t\)</span>, then <span class="math" data-tex="\(s(x)a=t(x)b=s(x)h(x)b\)">\(s(x)a=t(x)b=s(x)h(x)b\)</span>. Freeness implies <span class="math" data-tex="\(a=hb\)">\(a=hb\)</span>, so <span class="math" data-tex="\(b=h^{-1}a\)">\(b=h^{-1}a\)</span>. Conversely these formulas reconstruct the same point, proving both directions of the coordinate change. □</p>
+<p id="exercise-f-2"><strong>Exercise F.2 (adjoint-valued functions).</strong> Describe a section of <span class="math" data-tex="\(\operatorname{ad}(P)\)">\(\operatorname{ad}(P)\)</span> by a function on <span class="math" data-tex="\(P\)">\(P\)</span>, by its functions in local sections, and by its fibrewise bracket with another section.</p>
+<p><strong>Solution.</strong> C.3 supplies the representation and bracket, and B.2 gives exactly the functions <span class="math" data-tex="\(u:P\to\mathfrak g\)">\(u:P\to\mathfrak g\)</span> with <span class="math" data-tex="\(u(pa)=\operatorname{Ad}(a^{-1})u(p)\)">\(u(pa)=\operatorname{Ad}(a^{-1})u(p)\)</span>. Put <span class="math" data-tex="\(u_i(x)=u(s_i(x))\)">\(u_i(x)=u(s_i(x))\)</span>. From <span class="math" data-tex="\(s_j=s_i g_{ij}\)">\(s_j=s_i g_{ij}\)</span> follows <span class="math" data-tex="\(u_j=\operatorname{Ad}(g_{ij}^{-1})u_i\)">\(u_j=\operatorname{Ad}(g_{ij}^{-1})u_i\)</span>, or equivalently <span class="math" data-tex="\(u_i=\operatorname{Ad}(g_{ij})u_j\)">\(u_i=\operatorname{Ad}(g_{ij})u_j\)</span>. Conversely such functions define <span class="math" data-tex="\(u(s_i(x)a)=\operatorname{Ad}(a^{-1})u_i(x)\)">\(u(s_i(x)a)=\operatorname{Ad}(a^{-1})u_i(x)\)</span>, and the transition equation proves agreement between charts. For a second such function <span class="math" data-tex="\(v\)">\(v\)</span>, (C.4) gives
+<span class="math math-display" data-tex="\[
+[u(pa),v(pa)]
+=\operatorname{Ad}(a^{-1})[u(p),v(p)].
+\]">\[
+[u(pa),v(pa)]
+=\operatorname{Ad}(a^{-1})[u(p),v(p)].
+\]</span>
+Thus the bracket function is equivariant and corresponds to the smooth fibrewise bracket of the sections. Jacobi and bilinearity hold in every fibre by C.3. □</p>
+<p id="exercise-f-3"><strong>Exercise F.3 (a varying metric with a global orthonormal frame).</strong> In the coordinate tangent frame on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, take the metric matrix
+<span class="math math-display" data-tex="\[
+Q(x)=
+\begin{pmatrix}e^{2x_1}&amp;0\\0&amp;e^{-2x_1}\end{pmatrix}.
+\]">\[
+Q(x)=
+\begin{pmatrix}e^{2x_1}&amp;0\\0&amp;e^{-2x_1}\end{pmatrix}.
+\]</span>
+Find its full orthonormal-frame reduction and describe its embedding in the coordinate frame bundle.</p>
+<p><strong>Solution.</strong> The scalar exponential is positive and smooth, and <span class="math" data-tex="\(e^{t}e^{-t}=1\)">\(e^{t}e^{-t}=1\)</span>, by Local tools 0.5. The frame
+<span class="math math-display" data-tex="\[
+u_1=e^{-x_1}\partial_{x_1},\qquad
+u_2=e^{x_1}\partial_{x_2}
+\]">\[
+u_1=e^{-x_1}\partial_{x_1},\qquad
+u_2=e^{x_1}\partial_{x_2}
+\]</span>
+has squared norms <span class="math" data-tex="\(e^{-2x_1}e^{2x_1}=1\)">\(e^{-2x_1}e^{2x_1}=1\)</span> and <span class="math" data-tex="\(e^{2x_1}e^{-2x_1}=1\)">\(e^{2x_1}e^{-2x_1}=1\)</span>, and inner product zero. In the coordinate frame write <span class="math" data-tex="\(D(x)=\operatorname{diag}(e^{-x_1},e^{x_1})\)">\(D(x)=\operatorname{diag}(e^{-x_1},e^{x_1})\)</span>. Then <span class="math" data-tex="\(D^{\mathsf T}QD=I\)">\(D^{\mathsf T}QD=I\)</span>. A general frame matrix <span class="math" data-tex="\(B\)">\(B\)</span> is orthonormal precisely when <span class="math" data-tex="\(B^{\mathsf T}QB=I\)">\(B^{\mathsf T}QB=I\)</span>. Writing <span class="math" data-tex="\(B=DA\)">\(B=DA\)</span>, which is possible and unique since <span class="math" data-tex="\(D\)">\(D\)</span> is invertible, transforms this equation to <span class="math" data-tex="\(A^{\mathsf T}A=I\)">\(A^{\mathsf T}A=I\)</span>. Hence the entire reduction is
+<span class="math math-display" data-tex="\[
+(x,A)\longmapsto(x,D(x)A),\qquad
+\mathbb R^2\times\mathrm O(2)\longrightarrow
+\mathbb R^2\times\mathrm{GL}(2,\mathbb R).
+\]">\[
+(x,A)\longmapsto(x,D(x)A),\qquad
+\mathbb R^2\times\mathrm O(2)\longrightarrow
+\mathbb R^2\times\mathrm{GL}(2,\mathbb R).
+\]</span>
+Its inverse onto its image is <span class="math" data-tex="\((x,B)\mapsto(x,D(x)^{-1}B)\)">\((x,B)\mapsto(x,D(x)^{-1}B)\)</span>, smooth and equivariant. D.2 proves it is the metric reduction. It is a trivial principal bundle, but the matrices <span class="math" data-tex="\(D(x)\mathrm O(2)\)">\(D(x)\mathrm O(2)\)</span> describing its fibre inside the coordinate frame bundle vary with <span class="math" data-tex="\(x_1\)">\(x_1\)</span>. □</p>
+<p id="exercise-f-4"><strong>Exercise F.4 (combine orientation and metric).</strong> Prove that a rank-<span class="math" data-tex="\(r\)">\(r\)</span> vector bundle admits a reduction to <span class="math" data-tex="\(\mathrm{GL}^+(r)\)">\(\mathrm{GL}^+(r)\)</span> exactly when it is orientable. For a specified metric and orientation, identify the reduction that preserves both.</p>
+<p><strong>Solution.</strong> If a smooth orientation is specified, the positive frames form a <span class="math" data-tex="\(\mathrm{GL}^+(r)\)">\(\mathrm{GL}^+(r)\)</span>-reduction by D.3. Conversely local sections of such a reduction choose positive bases with positive-determinant changes, which is exactly a consistent smooth orientation; the proof and both inverse identities are in D.3. For the specified metric, take its orthonormal frames from D.2 and intersect with the positive frames. D.3 verifies, using the explicit triangular change in Gram–Schmidt, that this intersection has local smooth sections, is embedded, and has fibre <span class="math" data-tex="\(\mathrm{SO}(r)\)">\(\mathrm{SO}(r)\)</span>. It is therefore the required reduction. Conversely an <span class="math" data-tex="\(\mathrm{SO}(r)\)">\(\mathrm{SO}(r)\)</span>-reduction reconstructs both structures by declaring its frames orthonormal and positive; D.2–D.3 prove that its entire fibre, not merely its chosen sections, is recovered. Rank zero uses the canonical orientation and the trivial group, as in D.3. □</p>
+<h2 id="free-construction-source">Free construction source</h2>
+<p>Peter W. Michor, <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf"><em>Topics in Differential Geometry</em>, freely accessible author draft</a>, Sections 3.4, 4.11, 4.13 and 4.24 for the bracket and adjoint action; 8.3, 8.5 and 8.8 for gluing and vector constructions; 18.1–18.2, 18.7–18.9, 18.11–18.12 and 18.14 for principal bundles, associated bundles, frames, sections and reductions. The proofs above include the topology, smoothness and algebra needed for these constructions. The closed-subgroup theorem, a general quotient theorem for free actions, and classification theorems are not prerequisites. The Hopf coordinates are computed directly, and the stated Chern number is proved in the linked earlier programme lesson.</p>
+<p>Original exposition: GPT-6 Astra (OpenAI), October 2026, CC0 1.0. The human construction source is credited above. No source prose, diagrams or PDFs are reproduced; earlier programme lessons retain their own source credits and licences.</p>
+</article>
+<footer class="source-link"><p><a href="src/principal-bundles-and-associated-bundles.md">Chapter source</a> ·
+<a href="local-tools-for-bundles-and-transport.html">Local tools and earlier proofs</a></p>
+<p>Original exposition: CC0 1.0. Human construction sources are credited in the chapter.</p>
+<p>Rendering software: <a href="assets/mathjax/LICENSE">MathJax Apache 2.0 licence</a>;
+<a href="assets/mathjax/FONT-LICENSES.txt">font notices and licences</a>.</p></footer>
+</main></body></html>

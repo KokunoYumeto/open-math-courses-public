@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bernstein-Sato polynomials · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/bernstein-sato-polynomials.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 10</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="bernstein-sato-polynomials">Bernstein–Sato polynomials</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Differentiating <span class="math" data-tex="$x^{s+1}$">$x^{s+1}$</span> produces <span class="math" data-tex="$(s+1)x^s$">$(s+1)x^s$</span>. For a general polynomial <span class="math" data-tex="$f$">$f$</span>, a suitable differential operator still lowers the formal exponent by one, but the scalar factor becomes a polynomial in <span class="math" data-tex="$s$">$s$</span>. The smallest such scalar factor is the Bernstein–Sato polynomial. Its existence follows from a growth estimate and finite length, even when no useful operator is apparent. The same estimate proves that allowing arbitrary powers of <span class="math" data-tex="$f$">$f$</span> in denominators preserves holonomicity.</p>
+<p>Throughout, <span class="math" data-tex="$k$">$k$</span> has characteristic zero, <span class="math" data-tex="$R=k[x_1,\ldots,x_n]$">$R=k[x_1,\ldots,x_n]$</span>, <span class="math" data-tex="$A=A_n(k)$">$A=A_n(k)$</span>, and <span class="math" data-tex="$0\ne f\in R$">$0\ne f\in R$</span>. Put <span class="math" data-tex="$d=\deg f$">$d=\deg f$</span> and <span class="math" data-tex="$R_f=R[f^{-1}]$">$R_f=R[f^{-1}]$</span>. Modules are left modules. The prerequisite is <a href="the-bernstein-filtration-and-holonomic-modules.html">The Bernstein filtration and holonomic modules over the Weyl algebra</a>: we use Bernstein's inequality, positive integral multiplicity, and finite length. No analytic correspondence is needed for the existence theorem or localization.</p>
+<h2 id="1-giving-meaning-to-the-exponent">1. Giving meaning to the exponent</h2>
+<p>The notation <span class="math" data-tex="$f^s$">$f^s$</span> initially means a basis symbol, not a choice of logarithm. Define the free rank-one <span class="math" data-tex="$R_f[s]$">$R_f[s]$</span>-module</p>
+<span class="math math-display" data-tex="\[
+\mathcal L_s=R_f[s]\,e_s,\qquad e_s=f^s.
+\]">\[
+\mathcal L_s=R_f[s]\,e_s,\qquad e_s=f^s.
+\]</span>
+<p>Let <span class="math" data-tex="$s$">$s$</span> commute with <span class="math" data-tex="$A$">$A$</span>. Coordinates act by multiplication, and derivatives act by</p>
+<span class="math math-display" data-tex="\[
+\partial_i(g e_s)=
+\left(\partial_i g+s\,g\frac{\partial_i f}{f}\right)e_s.
+\tag{1.1}
+\]">\[
+\partial_i(g e_s)=
+\left(\partial_i g+s\,g\frac{\partial_i f}{f}\right)e_s.
+\tag{1.1}
+\]</span>
+<p>This defines an <span class="math" data-tex="$A[s]$">$A[s]$</span>-module. The commutator with <span class="math" data-tex="$x_j$">$x_j$</span> is <span class="math" data-tex="$\delta_{ij}$">$\delta_{ij}$</span> by the product rule. The derivative operators commute: writing <span class="math" data-tex="$a_i=(\partial_i f)/f$">$a_i=(\partial_i f)/f$</span>, their commutator is multiplication by <span class="math" data-tex="$s(\partial_i a_j-\partial_j a_i)$">$s(\partial_i a_j-\partial_j a_i)$</span>, which is zero because</p>
+<span class="math math-display" data-tex="\[
+\partial_i a_j=\frac{f\,\partial_i\partial_j f-(\partial_i f)(\partial_j f)}{f^2}
+=\partial_j a_i.
+\]">\[
+\partial_i a_j=\frac{f\,\partial_i\partial_j f-(\partial_i f)(\partial_j f)}{f^2}
+=\partial_j a_i.
+\]</span>
+<p>For every integer <span class="math" data-tex="$r$">$r$</span> write <span class="math" data-tex="$f^{s+r}=f^r e_s$">$f^{s+r}=f^r e_s$</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\partial_i(g f^{s+r})=
+(\partial_i g)f^{s+r}
++(s+r)g(\partial_i f)f^{s+r-1}.
+\tag{1.2}
+\]">\[
+\partial_i(g f^{s+r})=
+(\partial_i g)f^{s+r}
++(s+r)g(\partial_i f)f^{s+r-1}.
+\tag{1.2}
+\]</span>
+<p>The cyclic submodule <span class="math" data-tex="$A[s]e_s$">$A[s]e_s$</span> need not equal the ambient module <span class="math" data-tex="$\mathcal L_s$">$\mathcal L_s$</span>. For <span class="math" data-tex="$f=x$">$f=x$</span>, specialize <span class="math" data-tex="$s=0$">$s=0$</span>: the cyclic submodule maps to <span class="math" data-tex="$A_1\cdot1=k[x]$">$A_1\cdot1=k[x]$</span>, while the ambient module maps to <span class="math" data-tex="$k[x,x^{-1}]$">$k[x,x^{-1}]$</span>. In particular <span class="math" data-tex="$x^{-1}e_s$">$x^{-1}e_s$</span> cannot belong to <span class="math" data-tex="$A_1[s]e_s$">$A_1[s]e_s$</span>. We will work in the ambient module and construct an identity relating two of its cyclic submodules.</p>
+<p>Now extend the coefficient field to</p>
+<span class="math math-display" data-tex="\[
+K=k(s),\qquad A_K=K\otimes_k A,\qquad
+\mathcal L_K=K[x,f^{-1}]e_s.
+\tag{1.3}
+\]">\[
+K=k(s),\qquad A_K=K\otimes_k A,\qquad
+\mathcal L_K=K[x,f^{-1}]e_s.
+\tag{1.3}
+\]</span>
+<p>This is localization in the central parameter <span class="math" data-tex="$s$">$s$</span>, separate from localization in <span class="math" data-tex="$f$">$f$</span>. The map <span class="math" data-tex="$\mathcal L_s\to\mathcal L_K$">$\mathcal L_s\to\mathcal L_K$</span> is injective, since <span class="math" data-tex="$\mathcal L_s$">$\mathcal L_s$</span> has no <span class="math" data-tex="$k[s]$">$k[s]$</span>-torsion.</p>
+<h2 id="2-a-growth-criterion-without-a-good-filtration">2. A growth criterion without a good filtration</h2>
+<p>We first close a finite-generation issue. An exhaustive filtration with a small dimension bound is useful even if it is not known to be good.</p>
+<h3 id="lemma-2-1-bounded-holonomic-growth">Lemma 2.1. Bounded holonomic growth</h3>
+<p>Let <span class="math" data-tex="$L$">$L$</span> be an arbitrary <span class="math" data-tex="$A_n(k)$">$A_n(k)$</span>-module with an exhaustive increasing filtration <span class="math" data-tex="$F_pL$">$F_pL$</span>, <span class="math" data-tex="$p\geq0$">$p\geq0$</span>, such that</p>
+<span class="math math-display" data-tex="\[
+B_aA_n\,F_bL\subseteq F_{a+b}L,\qquad
+\dim_kF_pL\leq C p^n+O(p^{n-1}).
+\tag{2.1}
+\]">\[
+B_aA_n\,F_bL\subseteq F_{a+b}L,\qquad
+\dim_kF_pL\leq C p^n+O(p^{n-1}).
+\tag{2.1}
+\]</span>
+<p>Then <span class="math" data-tex="$L$">$L$</span> is finitely generated and holonomic, and</p>
+<span class="math math-display" data-tex="\[
+e(L)\leq n!C,\qquad \operatorname{length}L\leq n!C.
+\tag{2.2}
+\]">\[
+e(L)\leq n!C,\qquad \operatorname{length}L\leq n!C.
+\tag{2.2}
+\]</span>
+<p>The zero module is included.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$N\subseteq L$">$N\subseteq L$</span> be a finitely generated nonzero submodule. Choose a finite generating space <span class="math" data-tex="$V\subseteq F_aL$">$V\subseteq F_aL$</span>. Its good Bernstein filtration <span class="math" data-tex="$B_pV$">$B_pV$</span> satisfies <span class="math" data-tex="$B_pV\subseteq F_{p+a}L$">$B_pV\subseteq F_{p+a}L$</span>. Thus <span class="math" data-tex="$d(N)\leq n$">$d(N)\leq n$</span>, and Bernstein's inequality gives <span class="math" data-tex="$d(N)=n$">$d(N)=n$</span>. Comparing leading coefficients gives the positive integer bound <span class="math" data-tex="$e(N)\leq n!C$">$e(N)\leq n!C$</span>. Its length is at most <span class="math" data-tex="$e(N)$">$e(N)$</span> by the preceding chapter.</p>
+<p>If <span class="math" data-tex="$L\ne0$">$L\ne0$</span>, there are nonzero finitely generated submodules, and their multiplicities are positive integers in a bounded set. Choose one, <span class="math" data-tex="$N$">$N$</span>, with largest multiplicity. For any <span class="math" data-tex="$v\in L$">$v\in L$</span>, the submodule <span class="math" data-tex="$N&#x27;=N+Av$">$N&#x27;=N+Av$</span> is finitely generated and hence holonomic by the argument just given. If <span class="math" data-tex="$N&#x27;\ne N$">$N&#x27;\ne N$</span>, its nonzero holonomic quotient has positive multiplicity, so</p>
+<span class="math math-display" data-tex="\[
+e(N&#x27;)=e(N)+e(N&#x27;/N)&gt;e(N),
+\]">\[
+e(N&#x27;)=e(N)+e(N&#x27;/N)&gt;e(N),
+\]</span>
+<p>contradicting maximality. Consequently <span class="math" data-tex="$v\in N$">$v\in N$</span> for every <span class="math" data-tex="$v$">$v$</span>, and <span class="math" data-tex="$L=N$">$L=N$</span>. This proves finite generation, holonomicity, and both bounds. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This argument uses multiplicity on the finite submodules before asserting that the ambient module is finite. It does not apply a Noetherian or finite-length conclusion prematurely.</p>
+<h3 id="proposition-2-2-the-generic-formal-power-module-is-holonomic">Proposition 2.2. The generic formal-power module is holonomic</h3>
+<p>Over the field <span class="math" data-tex="$K=k(s)$">$K=k(s)$</span>, <span class="math" data-tex="$\mathcal L_K$">$\mathcal L_K$</span> is holonomic.</p>
+<p><strong>Proof.</strong> Define</p>
+<span class="math math-display" data-tex="\[
+F_p\mathcal L_K=
+\{g f^{s-p}:g\in K[x],\ \deg g\leq(d+1)p\}.
+\tag{2.3}
+\]">\[
+F_p\mathcal L_K=
+\{g f^{s-p}:g\in K[x],\ \deg g\leq(d+1)p\}.
+\tag{2.3}
+\]</span>
+<p>These are vector spaces. They are increasing, since multiplying a numerator by <span class="math" data-tex="$f$">$f$</span> changes denominator depth from <span class="math" data-tex="$p$">$p$</span> to <span class="math" data-tex="$p+1$">$p+1$</span> and increases its degree by at most <span class="math" data-tex="$d$">$d$</span>.</p>
+<p>Multiplication by <span class="math" data-tex="$x_i$">$x_i$</span>, expressed at depth <span class="math" data-tex="$p+1$">$p+1$</span>, changes <span class="math" data-tex="$g$">$g$</span> to <span class="math" data-tex="$x_i g f$">$x_i g f$</span>, of degree at most <span class="math" data-tex="$(d+1)(p+1)$">$(d+1)(p+1)$</span>. By (1.2), differentiation, at that same depth, changes the numerator to</p>
+<span class="math math-display" data-tex="\[
+f\,\partial_i g+(s-p)g\,\partial_i f.
+\tag{2.4}
+\]">\[
+f\,\partial_i g+(s-p)g\,\partial_i f.
+\tag{2.4}
+\]</span>
+<p>Its degree is at most <span class="math" data-tex="$(d+1)p+d-1$">$(d+1)p+d-1$</span> when derivatives are nonzero, so it also lies in the required next piece. Since <span class="math" data-tex="$B_1$">$B_1$</span> generates the Bernstein filtration, these checks prove compatibility for every <span class="math" data-tex="$B_a$">$B_a$</span>.</p>
+<p>Every element of the ambient module is a finite sum of terms <span class="math" data-tex="$h f^{s-q}$">$h f^{s-q}$</span>. For sufficiently large <span class="math" data-tex="$p\geq q$">$p\geq q$</span>, rewrite such a term as <span class="math" data-tex="$h f^{p-q}f^{s-p}$">$h f^{p-q}f^{s-p}$</span>; the numerator degree is <span class="math" data-tex="$\deg h+d(p-q)\leq(d+1)p$">$\deg h+d(p-q)\leq(d+1)p$</span>. Thus the filtration is exhaustive. Finally multiplication by <span class="math" data-tex="$f^{-p}e_s$">$f^{-p}e_s$</span> is injective on <span class="math" data-tex="$K[x]$">$K[x]$</span>, so</p>
+<span class="math math-display" data-tex="\[
+\dim_K F_p\mathcal L_K=\binom{(d+1)p+n}{n}
+=\frac{(d+1)^n}{n!}p^n+O(p^{n-1}).
+\tag{2.5}
+\]">\[
+\dim_K F_p\mathcal L_K=\binom{(d+1)p+n}{n}
+=\frac{(d+1)^n}{n!}p^n+O(p^{n-1}).
+\tag{2.5}
+\]</span>
+<p>Lemma 2.1, over the characteristic-zero field <span class="math" data-tex="$K$">$K$</span>, proves the assertion, and also gives <span class="math" data-tex="$e(\mathcal L_K)\leq(d+1)^n$">$e(\mathcal L_K)\leq(d+1)^n$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="3-existence-and-the-minimal-polynomial">3. Existence and the minimal polynomial</h2>
+<h3 id="theorem-3-1-bernstein-s-functional-equation">Theorem 3.1. Bernstein's functional equation</h3>
+<p>There exist a nonzero <span class="math" data-tex="$b(s)\in k[s]$">$b(s)\in k[s]$</span> and <span class="math" data-tex="$P(s)\in A[s]$">$P(s)\in A[s]$</span> such that</p>
+<span class="math math-display" data-tex="\[
+P(s)f^{s+1}=b(s)f^s
+\quad\text{in }\mathcal L_s.
+\tag{3.1}
+\]">\[
+P(s)f^{s+1}=b(s)f^s
+\quad\text{in }\mathcal L_s.
+\tag{3.1}
+\]</span>
+<p><strong>Proof.</strong> In the holonomic <span class="math" data-tex="$A_K$">$A_K$</span>-module <span class="math" data-tex="$\mathcal L_K$">$\mathcal L_K$</span>, consider the descending chain</p>
+<span class="math math-display" data-tex="\[
+C_0=A_K e_s\supseteq C_1=A_K f e_s
+\supseteq C_2=A_K f^2e_s\supseteq\cdots.
+\tag{3.2}
+\]">\[
+C_0=A_K e_s\supseteq C_1=A_K f e_s
+\supseteq C_2=A_K f^2e_s\supseteq\cdots.
+\tag{3.2}
+\]</span>
+<p>Finite length gives <span class="math" data-tex="$C_r=C_{r+1}$">$C_r=C_{r+1}$</span> for some <span class="math" data-tex="$r\geq0$">$r\geq0$</span>. We need to translate this equality to exponent zero; multiplication by <span class="math" data-tex="$f^{-r}$">$f^{-r}$</span> alone would not commute with derivatives.</p>
+<p>For an integer <span class="math" data-tex="$a$">$a$</span>, define the bijective semilinear map</p>
+<span class="math math-display" data-tex="\[
+T_a(g(s,x)e_s)=g(s+a,x)f^a e_s.
+\tag{3.3}
+\]">\[
+T_a(g(s,x)e_s)=g(s+a,x)f^a e_s.
+\tag{3.3}
+\]</span>
+<p>Its inverse is <span class="math" data-tex="$T_{-a}$">$T_{-a}$</span>. It commutes with coordinates and derivatives, as (1.1) shows: the extra derivative of <span class="math" data-tex="$f^a$">$f^a$</span> exactly replaces <span class="math" data-tex="$s$">$s$</span> by <span class="math" data-tex="$s+a$">$s+a$</span>. Its coefficient-field action is the automorphism <span class="math" data-tex="$s\mapsto s+a$">$s\mapsto s+a$</span>, and therefore</p>
+<span class="math math-display" data-tex="\[
+T_a(P(s)v)=P(s+a)T_a(v).
+\tag{3.4}
+\]">\[
+T_a(P(s)v)=P(s+a)T_a(v).
+\tag{3.4}
+\]</span>
+<p>Applying <span class="math" data-tex="$T_{-r}$">$T_{-r}$</span> to <span class="math" data-tex="$C_r=C_{r+1}$">$C_r=C_{r+1}$</span> gives <span class="math" data-tex="$C_0=C_1$">$C_0=C_1$</span>. Hence some <span class="math" data-tex="$Q(s)\in A_K$">$Q(s)\in A_K$</span> satisfies <span class="math" data-tex="$Q(s)f^{s+1}=e_s$">$Q(s)f^{s+1}=e_s$</span>. Write its finitely many normal-form coefficients as rational functions of <span class="math" data-tex="$s$">$s$</span> and choose a common nonzero polynomial denominator <span class="math" data-tex="$b(s)$">$b(s)$</span>. Then <span class="math" data-tex="$P(s)=b(s)Q(s)$">$P(s)=b(s)Q(s)$</span> lies in <span class="math" data-tex="$A[s]$">$A[s]$</span> and satisfies (3.1) in <span class="math" data-tex="$\mathcal L_K$">$\mathcal L_K$</span>. Both sides belong to <span class="math" data-tex="$\mathcal L_s$">$\mathcal L_s$</span>, which injects into <span class="math" data-tex="$\mathcal L_K$">$\mathcal L_K$</span>, so the equality holds there too. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The set</p>
+<span class="math math-display" data-tex="\[
+I_f=\{b(s)\in k[s]:b(s)f^s\in A[s]f^{s+1}\}
+\tag{3.5}
+\]">\[
+I_f=\{b(s)\in k[s]:b(s)f^s\in A[s]f^{s+1}\}
+\tag{3.5}
+\]</span>
+<p>is an ideal: add the corresponding operators for a sum, and multiply them by a scalar polynomial for a multiple. It is nonzero by Theorem 3.1. Its unique monic generator is the <strong>Bernstein–Sato polynomial</strong> <span class="math" data-tex="$b_f(s)$">$b_f(s)$</span>. A displayed functional equation establishes divisibility <span class="math" data-tex="$b_f\mid b$">$b_f\mid b$</span>, not automatically equality.</p>
+<p>If <span class="math" data-tex="$f=c\in k^\times$">$f=c\in k^\times$</span>, the operator <span class="math" data-tex="$c^{-1}$">$c^{-1}$</span> gives <span class="math" data-tex="$b_f=1$">$b_f=1$</span>. Otherwise <span class="math" data-tex="$b_f$">$b_f$</span> has at least one specified root.</p>
+<h3 id="proposition-3-2-the-root--1">Proposition 3.2. The root <span class="math" data-tex="$-1$">$-1$</span></h3>
+<p>For nonconstant <span class="math" data-tex="$f$">$f$</span>, <span class="math" data-tex="$(s+1)\mid b_f(s)$">$(s+1)\mid b_f(s)$</span>.</p>
+<p><strong>Proof.</strong> Specialization at any integer <span class="math" data-tex="$a$">$a$</span> is the <span class="math" data-tex="$A$">$A$</span>-linear map</p>
+<span class="math math-display" data-tex="\[
+\mathcal L_s\longrightarrow R_f,\qquad
+g(s,x)e_s\longmapsto g(a,x)f^a.
+\tag{3.6}
+\]">\[
+\mathcal L_s\longrightarrow R_f,\qquad
+g(s,x)e_s\longmapsto g(a,x)f^a.
+\tag{3.6}
+\]</span>
+<p>The derivative rule (1.1) verifies linearity. At <span class="math" data-tex="$a=-1$">$a=-1$</span>, a functional equation becomes</p>
+<span class="math math-display" data-tex="\[
+P(-1)\cdot1=b(-1)f^{-1}.
+\tag{3.7}
+\]">\[
+P(-1)\cdot1=b(-1)f^{-1}.
+\tag{3.7}
+\]</span>
+<p>The left side is a polynomial. Thus <span class="math" data-tex="$f$">$f$</span> divides the scalar <span class="math" data-tex="$b(-1)$">$b(-1)$</span> in <span class="math" data-tex="$R$">$R$</span>. A nonconstant polynomial cannot divide a nonzero scalar, so <span class="math" data-tex="$b(-1)=0$">$b(-1)=0$</span>. Apply this to <span class="math" data-tex="$b_f$">$b_f$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We will also use two invariance facts. An invertible linear coordinate change transports functions, derivatives, and (3.1), hence preserves <span class="math" data-tex="$b_f$">$b_f$</span>. Multiplying <span class="math" data-tex="$f$">$f$</span> by a nonzero scalar preserves its logarithmic derivatives in (1.1), and rescales the operator in (3.1); it too preserves the ideal.</p>
+<p>Finally <span class="math" data-tex="$b_f$">$b_f$</span> is unchanged by extending the field. To prove this, let <span class="math" data-tex="$k\subseteq L$">$k\subseteq L$</span> and suppose an equation has coefficients in <span class="math" data-tex="$L$">$L$</span>. The finitely many coefficients of its operator and scalar polynomial lie in a finite-dimensional <span class="math" data-tex="$k$">$k$</span>-subspace of <span class="math" data-tex="$L$">$L$</span>. Express them in a <span class="math" data-tex="$k$">$k$</span>-linearly independent basis. Comparing the basis coefficients in <span class="math" data-tex="$L\otimes_k\mathcal L_s$">$L\otimes_k\mathcal L_s$</span> gives equations over <span class="math" data-tex="$k$">$k$</span> for each component polynomial. Each component is divisible by <span class="math" data-tex="$b_f$">$b_f$</span> over <span class="math" data-tex="$k$">$k$</span>, so their sum over <span class="math" data-tex="$L$">$L$</span> is divisible by it over <span class="math" data-tex="$L$">$L$</span>. The converse inclusion follows by extending a defining equation over <span class="math" data-tex="$k$">$k$</span>. Thus the monic generators coincide.</p>
+<h2 id="4-localization-of-every-holonomic-weyl-module">4. Localization of every holonomic Weyl module</h2>
+<p>For an <span class="math" data-tex="$A$">$A$</span>-module <span class="math" data-tex="$M$">$M$</span>, define <span class="math" data-tex="$M_f=R_f\otimes_RM$">$M_f=R_f\otimes_RM$</span>. The product rule extends its derivative action by</p>
+<span class="math math-display" data-tex="\[
+\partial_i\!\left(\frac{m}{f^p}\right)
+=\frac{f\,\partial_i m-p(\partial_i f)m}{f^{p+1}}.
+\tag{4.1}
+\]">\[
+\partial_i\!\left(\frac{m}{f^p}\right)
+=\frac{f\,\partial_i m-p(\partial_i f)m}{f^{p+1}}.
+\tag{4.1}
+\]</span>
+<p>This is well defined. One way to check it is to use the ordinary derivation on <span class="math" data-tex="$R_f$">$R_f$</span> and set <span class="math" data-tex="$\partial_i(a\otimes m)=(\partial_i a)\otimes m+a\otimes\partial_i m$">$\partial_i(a\otimes m)=(\partial_i a)\otimes m+a\otimes\partial_i m$</span>; the balancing relation follows from the Leibniz rule on <span class="math" data-tex="$M$">$M$</span>. The commutation relations follow on tensors.</p>
+<h3 id="theorem-4-1-holonomic-localization">Theorem 4.1. Holonomic localization</h3>
+<p>If <span class="math" data-tex="$M$">$M$</span> is holonomic over <span class="math" data-tex="$A_n(k)$">$A_n(k)$</span>, then <span class="math" data-tex="$M_f$">$M_f$</span> is finitely generated and holonomic, or zero.</p>
+<p><strong>Proof.</strong> The zero case is immediate. Choose a good Bernstein filtration <span class="math" data-tex="$\Gamma$">$\Gamma$</span> of <span class="math" data-tex="$M$">$M$</span>, indexed so that <span class="math" data-tex="$\Gamma_p=0$">$\Gamma_p=0$</span> for <span class="math" data-tex="$p&lt;0$">$p&lt;0$</span>. Put <span class="math" data-tex="$a=d+1$">$a=d+1$</span> and define</p>
+<span class="math math-display" data-tex="\[
+\Lambda_p M_f=
+\left\{\frac{m}{f^p}:m\in\Gamma_{ap}M\right\}.
+\tag{4.2}
+\]">\[
+\Lambda_p M_f=
+\left\{\frac{m}{f^p}:m\in\Gamma_{ap}M\right\}.
+\tag{4.2}
+\]</span>
+<p>These are images of finite-dimensional spaces; numerator torsion causes no difficulty. They are increasing because <span class="math" data-tex="$f\Gamma_{ap}\subseteq\Gamma_{ap+d}\subseteq\Gamma_{a(p+1)}$">$f\Gamma_{ap}\subseteq\Gamma_{ap+d}\subseteq\Gamma_{a(p+1)}$</span>. Multiplication by a coordinate, at denominator depth <span class="math" data-tex="$p+1$">$p+1$</span>, has numerator <span class="math" data-tex="$fx_i m$">$fx_i m$</span>, in <span class="math" data-tex="$\Gamma_{ap+d+1}$">$\Gamma_{ap+d+1}$</span>. In (4.1) the numerator has the same bound: <span class="math" data-tex="$f\partial_i m$">$f\partial_i m$</span> has degree increase at most <span class="math" data-tex="$d+1$">$d+1$</span>, and <span class="math" data-tex="$(\partial_i f)m$">$(\partial_i f)m$</span> at most <span class="math" data-tex="$d-1$">$d-1$</span>. Thus the filtration is Bernstein compatible.</p>
+<p>To see exhaustiveness, write an element as <span class="math" data-tex="$m/f^q$">$m/f^q$</span>, with <span class="math" data-tex="$m\in\Gamma_tM$">$m\in\Gamma_tM$</span>. At depth <span class="math" data-tex="$p\geq q$">$p\geq q$</span> its numerator is <span class="math" data-tex="$f^{p-q}m\in\Gamma_{t+d(p-q)}M$">$f^{p-q}m\in\Gamma_{t+d(p-q)}M$</span>. This is in <span class="math" data-tex="$\Gamma_{ap}$">$\Gamma_{ap}$</span> once <span class="math" data-tex="$p$">$p$</span> is sufficiently large. Finally</p>
+<span class="math math-display" data-tex="\[
+\dim_k\Lambda_pM_f\leq\dim_k\Gamma_{ap}M
+=\frac{e(M)a^n}{n!}p^n+O(p^{n-1}).
+\tag{4.3}
+\]">\[
+\dim_k\Lambda_pM_f\leq\dim_k\Gamma_{ap}M
+=\frac{e(M)a^n}{n!}p^n+O(p^{n-1}).
+\tag{4.3}
+\]</span>
+<p>Lemma 2.1 proves finite generation and holonomicity. It also gives the useful bound <span class="math" data-tex="$e(M_f)\leq e(M)(d+1)^n$">$e(M_f)\leq e(M)(d+1)^n$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>In particular <span class="math" data-tex="$R_f$">$R_f$</span> is holonomic, since <span class="math" data-tex="$R$">$R$</span> is holonomic. The b-function additionally specifies a single generating denominator.</p>
+<h3 id="proposition-4-2-one-denominator-suffices-for-r_f">Proposition 4.2. One denominator suffices for <span class="math" data-tex="$R_f$">$R_f$</span></h3>
+<p>Choose an integer <span class="math" data-tex="$N\geq0$">$N\geq0$</span> so that <span class="math" data-tex="$b_f(-q)\ne0$">$b_f(-q)\ne0$</span> for every integer <span class="math" data-tex="$q&gt;N$">$q&gt;N$</span>. Then</p>
+<span class="math math-display" data-tex="\[
+R_f=A\cdot f^{-N}.
+\tag{4.4}
+\]">\[
+R_f=A\cdot f^{-N}.
+\tag{4.4}
+\]</span>
+<p><strong>Proof.</strong> Such an <span class="math" data-tex="$N$">$N$</span> exists because a nonzero polynomial has finitely many roots. Specialize (3.1) at <span class="math" data-tex="$s=-q$">$s=-q$</span>, for <span class="math" data-tex="$q&gt;N$">$q&gt;N$</span>, to obtain</p>
+<span class="math math-display" data-tex="\[
+P(-q)f^{1-q}=b_f(-q)f^{-q}.
+\tag{4.5}
+\]">\[
+P(-q)f^{1-q}=b_f(-q)f^{-q}.
+\tag{4.5}
+\]</span>
+<p>The scalar on the right is invertible in <span class="math" data-tex="$k$">$k$</span>. Starting with <span class="math" data-tex="$f^{-N}$">$f^{-N}$</span>, this produces <span class="math" data-tex="$f^{-N-1}$">$f^{-N-1}$</span>, then every deeper inverse power. Shallower inverse powers and all numerators are obtained by multiplying by polynomials. These elements span <span class="math" data-tex="$R_f$">$R_f$</span>, proving the equality. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Theorem 4.1 does not require a torsion-free module or an injective map <span class="math" data-tex="$M\to M_f$">$M\to M_f$</span>. For example, the point module at a zero of <span class="math" data-tex="$f$">$f$</span> can localize to zero.</p>
+<h2 id="5-explicit-polynomials-and-minimality">5. Explicit polynomials and minimality</h2>
+<h3 id="a-coordinate-and-a-power">A coordinate and a power</h3>
+<p>For <span class="math" data-tex="$f=x$">$f=x$</span>,</p>
+<span class="math math-display" data-tex="\[
+\partial x^{s+1}=(s+1)x^s.
+\]">\[
+\partial x^{s+1}=(s+1)x^s.
+\]</span>
+<p>Proposition 3.2 then proves <span class="math" data-tex="$b_x=s+1$">$b_x=s+1$</span>.</p>
+<p>For <span class="math" data-tex="$f=x^m$">$f=x^m$</span>, <span class="math" data-tex="$m\geq1$">$m\geq1$</span>, repeated differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\partial^m(x^m)^{s+1}
+=\prod_{r=0}^{m-1}(m(s+1)-r)(x^m)^s
+=m^m\prod_{j=1}^m\left(s+\frac jm\right)(x^m)^s.
+\tag{5.1}
+\]">\[
+\partial^m(x^m)^{s+1}
+=\prod_{r=0}^{m-1}(m(s+1)-r)(x^m)^s
+=m^m\prod_{j=1}^m\left(s+\frac jm\right)(x^m)^s.
+\tag{5.1}
+\]</span>
+<p>Thus the monic product is an admissible b-function. To prove minimality, write any <span class="math" data-tex="$P(s)$">$P(s)$</span> in normal form as a finite sum of <span class="math" data-tex="$c_{ab}(s)x^a\partial^b$">$c_{ab}(s)x^a\partial^b$</span>. Dividing its action on <span class="math" data-tex="$(x^m)^{s+1}$">$(x^m)^{s+1}$</span> by <span class="math" data-tex="$(x^m)^s$">$(x^m)^s$</span>, each summand has Laurent coefficient</p>
+<span class="math math-display" data-tex="\[
+c_{ab}(s)\,(m(s+1))_b\,x^{m+a-b},
+\qquad (z)_b=z(z-1)\cdots(z-b+1).
+\tag{5.2}
+\]">\[
+c_{ab}(s)\,(m(s+1))_b\,x^{m+a-b},
+\qquad (z)_b=z(z-1)\cdots(z-b+1).
+\tag{5.2}
+\]</span>
+<p>The coefficient of <span class="math" data-tex="$x^0$">$x^0$</span> can only come from <span class="math" data-tex="$b=m+a\geq m$">$b=m+a\geq m$</span>. Its falling factorial contains the first <span class="math" data-tex="$m$">$m$</span> factors in (5.1). Therefore any polynomial <span class="math" data-tex="$b(s)$">$b(s)$</span> in a functional equation is divisible by the monic product. Laurent monomials are independent, so cancellations of the other coefficients cannot alter this conclusion. We have proved</p>
+<span class="math math-display" data-tex="\[
+b_{x^m}(s)=\prod_{j=1}^m\left(s+\frac jm\right).
+\tag{5.3}
+\]">\[
+b_{x^m}(s)=\prod_{j=1}^m\left(s+\frac jm\right).
+\tag{5.3}
+\]</span>
+<p>In extra variables, derivatives in those variables kill the formal symbol; comparing their coordinate coefficients gives the same answer.</p>
+<h3 id="a-nondegenerate-quadratic-form">A nondegenerate quadratic form</h3>
+<p>Let <span class="math" data-tex="$q=x_1^2+\cdots+x_n^2$">$q=x_1^2+\cdots+x_n^2$</span>, <span class="math" data-tex="$n\geq1$">$n\geq1$</span>, and <span class="math" data-tex="$\Delta=\sum_i\partial_i^2$">$\Delta=\sum_i\partial_i^2$</span>. Direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\partial_i^2 q^{s+1}
+=2(s+1)q^s+4s(s+1)x_i^2q^{s-1}.
+\]">\[
+\partial_i^2 q^{s+1}
+=2(s+1)q^s+4s(s+1)x_i^2q^{s-1}.
+\]</span>
+<p>After summing,</p>
+<span class="math math-display" data-tex="\[
+\frac14\Delta q^{s+1}
+=(s+1)\left(s+\frac n2\right)q^s.
+\tag{5.4}
+\]">\[
+\frac14\Delta q^{s+1}
+=(s+1)\left(s+\frac n2\right)q^s.
+\tag{5.4}
+\]</span>
+<p>We now prove that neither factor can be omitted, including its repeated occurrence for <span class="math" data-tex="$n=2$">$n=2$</span>.</p>
+<p>For <span class="math" data-tex="$n=1$">$n=1$</span>, (5.3) with <span class="math" data-tex="$m=2$">$m=2$</span> gives precisely the answer. For <span class="math" data-tex="$n=2$">$n=2$</span>, work first over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> and set <span class="math" data-tex="$u=x_1+ix_2$">$u=x_1+ix_2$</span>, <span class="math" data-tex="$v=x_1-ix_2$">$v=x_1-ix_2$</span>, so <span class="math" data-tex="$q=uv$">$q=uv$</span>. The identity <span class="math" data-tex="$\partial_u\partial_v(uv)^{s+1}=(s+1)^2(uv)^s$">$\partial_u\partial_v(uv)^{s+1}=(s+1)^2(uv)^s$</span> is minimal: for a normal-form term <span class="math" data-tex="$u^a v^b\partial_u^c\partial_v^h$">$u^a v^b\partial_u^c\partial_v^h$</span> to contribute to the constant Laurent coefficient after dividing by <span class="math" data-tex="$(uv)^s$">$(uv)^s$</span>, one must have <span class="math" data-tex="$c=a+1$">$c=a+1$</span> and <span class="math" data-tex="$h=b+1$">$h=b+1$</span>. Its coefficient therefore contains an <span class="math" data-tex="$s+1$">$s+1$</span> factor from each derivative string. Every contribution is divisible by <span class="math" data-tex="$(s+1)^2$">$(s+1)^2$</span>. Coordinate invariance proves the result for <span class="math" data-tex="$q$">$q$</span> over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>.</p>
+<p>For <span class="math" data-tex="$n\geq3$">$n\geq3$</span>, Proposition 3.2 supplies the root <span class="math" data-tex="$-1$">$-1$</span>. We show that every admissible polynomial also vanishes at <span class="math" data-tex="$-n/2$">$-n/2$</span> by an elementary integral. Work over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, using the real slice <span class="math" data-tex="$\mathbb R^n$">$\mathbb R^n$</span> on which <span class="math" data-tex="$q=|x|^2$">$q=|x|^2$</span>. Choose <span class="math" data-tex="$\phi\in C_c^\infty(\mathbb R^n)$">$\phi\in C_c^\infty(\mathbb R^n)$</span> equal to one on a ball of radius <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>. Initially for <span class="math" data-tex="$\operatorname{Re}s&gt;-n/2$">$\operatorname{Re}s&gt;-n/2$</span>, let</p>
+<span class="math math-display" data-tex="\[
+J(s)=\int_{\mathbb R^n}q(x)^s\phi(x)\,dx.
+\]">\[
+J(s)=\int_{\mathbb R^n}q(x)^s\phi(x)\,dx.
+\]</span>
+<p>The contribution from that ball, in polar coordinates, is</p>
+<span class="math math-display" data-tex="\[
+\frac{\omega_{n-1}\varepsilon^{\,2s+n}}{2s+n},
+\tag{5.5}
+\]">\[
+\frac{\omega_{n-1}\varepsilon^{\,2s+n}}{2s+n},
+\tag{5.5}
+\]</span>
+<p>where <span class="math" data-tex="$\omega_{n-1}&gt;0$">$\omega_{n-1}&gt;0$</span> is the area of the unit sphere. The remaining integral is entire, since its compact domain stays away from zero. Hence <span class="math" data-tex="$J$">$J$</span> extends meromorphically and has a simple pole at <span class="math" data-tex="$s=-n/2$">$s=-n/2$</span> with nonzero residue.</p>
+<p>For any equation <span class="math" data-tex="$P(s)q^{s+1}=b(s)q^s$">$P(s)q^{s+1}=b(s)q^s$</span>, integration by parts for sufficiently large <span class="math" data-tex="$\operatorname{Re}s$">$\operatorname{Re}s$</span> gives</p>
+<span class="math math-display" data-tex="\[
+b(s)J(s)=
+\int_{\mathbb R^n}q(x)^{s+1}\bigl(P(s)^{\mathsf t}\phi\bigr)(x)\,dx.
+\tag{5.6}
+\]">\[
+b(s)J(s)=
+\int_{\mathbb R^n}q(x)^{s+1}\bigl(P(s)^{\mathsf t}\phi\bigr)(x)\,dx.
+\tag{5.6}
+\]</span>
+<p>The superscript <span class="math" data-tex="$\mathsf t$">$\mathsf t$</span> denotes the formal transpose for the real volume form, reversing products, fixing coordinates and sending <span class="math" data-tex="$\partial_i$">$\partial_i$</span> to <span class="math" data-tex="$-\partial_i$">$-\partial_i$</span>. The right side is holomorphic on <span class="math" data-tex="$\operatorname{Re}s&gt;-n/2-1$">$\operatorname{Re}s&gt;-n/2-1$</span>. Indeed, its test function and all its parameter derivatives are bounded on a fixed compact support; the radial powers and their logarithmic derivatives are integrable uniformly on smaller half-planes. Identity continuation in that half-plane shows that <span class="math" data-tex="$b(s)J(s)$">$b(s)J(s)$</span> has no pole at <span class="math" data-tex="$-n/2$">$-n/2$</span>. The nonzero residue in (5.5) forces <span class="math" data-tex="$b(-n/2)=0$">$b(-n/2)=0$</span>.</p>
+<p>These roots are distinct for <span class="math" data-tex="$n\geq3$">$n\geq3$</span>. Together with (5.4), they prove</p>
+<span class="math math-display" data-tex="\[
+b_q(s)=(s+1)\left(s+\frac n2\right).
+\tag{5.7}
+\]">\[
+b_q(s)=(s+1)\left(s+\frac n2\right).
+\tag{5.7}
+\]</span>
+<p>This polynomial has rational coefficients. Field invariance from Section 3 first proves the assertion over <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span> from its extension to <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, and then over every characteristic-zero field. The integral argument only establishes the needed quadratic root; it assumes no general theorem on meromorphic distributions.</p>
+<h3 id="the-cusp-a-stated-computation">The cusp: a stated computation</h3>
+<p>For <span class="math" data-tex="$f=x^2+y^3$">$f=x^2+y^3$</span>, the answer is</p>
+<span class="math math-display" data-tex="\[
+b_f(s)=(s+1)\left(s+\frac56\right)\left(s+\frac76\right).
+\tag{5.8}
+\]">\[
+b_f(s)=(s+1)\left(s+\frac56\right)\left(s+\frac76\right).
+\tag{5.8}
+\]</span>
+<p>This computation is stated here, as assigned, rather than proved. See M. Popa, <a href="https://people.math.harvard.edu/~mpopa/notes/Bernstein-Sato-notes.pdf"><em>The Bernstein–Sato polynomial</em></a>, Example 1.10(2) and Theorem 2.4. For orientation, the weights are <span class="math" data-tex="$1/2,1/3$">$1/2,1/3$</span> and the Jacobian algebra is <span class="math" data-tex="$k[x,y]/(x,y^2)$">$k[x,y]/(x,y^2)$</span>, with basis <span class="math" data-tex="$1,y$">$1,y$</span> of weights <span class="math" data-tex="$0,1/3$">$0,1/3$</span>. The stated weighted-homogeneous formula gives the shifts <span class="math" data-tex="$5/6$">$5/6$</span> and <span class="math" data-tex="$7/6$">$7/6$</span>. That general formula and its minimality theorem are not proved in this chapter.</p>
+<h2 id="6-two-analytic-statements">6. Two analytic statements</h2>
+<p>The following facts explain what the algebraic polynomial detects. Neither is an input to our existence or localization proof.</p>
+<p><strong>Negative rational roots — statement.</strong> For a nonconstant complex polynomial, every root of <span class="math" data-tex="$b_f$">$b_f$</span> is a strictly negative rational number. More generally the local b-function of a nonzero holomorphic germ has this property unless it is the constant polynomial one. This is Kashiwara's theorem; see <a href="https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/Bfunct.pdf"><em>B-functions and holonomic systems</em></a>, Corollary (5.2) and Popa's Theorem 3.1 for the algebraic formulation. Its proof uses substantially more than finite length and is not given here.</p>
+<p>The characteristic-zero version follows from this statement and the field invariance proved above. The finitely many coefficients of <span class="math" data-tex="$f$">$f$</span> lie in a finitely generated subfield of <span class="math" data-tex="$k$">$k$</span>, which embeds into <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. Extend to <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, apply the stated theorem, and extend back to <span class="math" data-tex="$k$">$k$</span>. In particular the monic polynomial has coefficients in <span class="math" data-tex="$\mathbb Q$">$\mathbb Q$</span> under the canonical inclusion into <span class="math" data-tex="$k$">$k$</span>.</p>
+<p><strong>Distributional continuation — statement.</strong> For a nonzero real polynomial, <span class="math" data-tex="$|f|^s$">$|f|^s$</span>, initially a locally integrable distribution for <span class="math" data-tex="$\operatorname{Re}s&gt;0$">$\operatorname{Re}s&gt;0$</span>, has a meromorphic distribution-valued continuation to all <span class="math" data-tex="$s\in\mathbb C$">$s\in\mathbb C$</span>. Bernstein's <a href="https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/Bern-a-cont-FAN.pdf"><em>The analytic continuation of generalized functions with respect to a parameter</em></a>, Theorem 1, treats the powers extended by zero from a region where a polynomial is positive; applying it on the positive and negative regions gives this absolute-value version. The poles lie in finitely many progressions with step <span class="math" data-tex="$-1$">$-1$</span>.</p>
+<p>For a complex polynomial on <span class="math" data-tex="$\mathbb C^n$">$\mathbb C^n$</span>, the standard normalization is <span class="math" data-tex="$|f|^{2s}$">$|f|^{2s}$</span>. For every smooth compactly supported test function <span class="math" data-tex="$\phi$">$\phi$</span>, the integral <span class="math" data-tex="$\int_{\mathbb C^n}|f|^{2s}\phi$">$\int_{\mathbb C^n}|f|^{2s}\phi$</span> continues meromorphically, with possible poles <span class="math" data-tex="$\alpha-j$">$\alpha-j$</span>, where <span class="math" data-tex="$\alpha$">$\alpha$</span> is a root of <span class="math" data-tex="$b_f$">$b_f$</span> and <span class="math" data-tex="$j\in\mathbb Z_{\geq0}$">$j\in\mathbb Z_{\geq0}$</span>; see Popa, Theorem 5.2. For the exponent <span class="math" data-tex="$|f|^s$">$|f|^s$</span> on that same complex space, rescaling the parameter gives possible poles <span class="math" data-tex="$2(\alpha-j)$">$2(\alpha-j)$</span>. This factor of two depends on the exponent convention.</p>
+<p>The distribution theory belongs to the analysis lessons <em>Finite parts of singular powers</em> and <em>Complex powers at a boundary</em>. Here the formal symbol <span class="math" data-tex="$f^s$">$f^s$</span> and its algebraic equation are defined without a branch choice, a test function, or an analytic continuation.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<h3 id="exercise-7-1-easy-powers-of-a-coordinate">Exercise 7.1 — easy: powers of a coordinate</h3>
+<p>Find an operator giving a monic functional equation for <span class="math" data-tex="$f=x^m$">$f=x^m$</span>, and prove that its polynomial is minimal.</p>
+<p><strong>Solution.</strong> The operator is <span class="math" data-tex="$m^{-m}\partial^m$">$m^{-m}\partial^m$</span>, and (5.1) gives the monic polynomial <span class="math" data-tex="$\prod_{j=1}^m(s+j/m)$">$\prod_{j=1}^m(s+j/m)$</span>. In any other normal-form operator, the only terms contributing to Laurent exponent zero in (5.2) have <span class="math" data-tex="$b=m+a$">$b=m+a$</span>. Their derivative factors all contain <span class="math" data-tex="$\prod_{r=0}^{m-1}(m(s+1)-r)$">$\prod_{r=0}^{m-1}(m(s+1)-r)$</span>, a nonzero scalar multiple of that monic polynomial. Thus every admissible scalar polynomial is divisible by it, proving minimality.</p>
+<h3 id="exercise-7-2-easy-one-generator-for-laurent-polynomials">Exercise 7.2 — easy: one generator for Laurent polynomials</h3>
+<p>Prove <span class="math" data-tex="$k[x,x^{-1}]=A_1x^{-1}$">$k[x,x^{-1}]=A_1x^{-1}$</span> and determine its length.</p>
+<p><strong>Solution.</strong> Repeated differentiation gives <span class="math" data-tex="$\partial^r x^{-1}=(-1)^r r!x^{-r-1}$">$\partial^r x^{-1}=(-1)^r r!x^{-r-1}$</span>, with nonzero coefficient in characteristic zero. Multiplication by <span class="math" data-tex="$x$">$x$</span> gives all nonnegative and shallower powers. Thus the indicated vector generates every Laurent monomial. The preceding chapters proved</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow k[x]\longrightarrow k[x,x^{-1}]
+\longrightarrow\delta_0\longrightarrow0,
+\]">\[
+0\longrightarrow k[x]\longrightarrow k[x,x^{-1}]
+\longrightarrow\delta_0\longrightarrow0,
+\]</span>
+<p>with nonzero simple end terms. Hence the length is two. The Euler presentation <span class="math" data-tex="$A_1/A_1(x\partial+1)$">$A_1/A_1(x\partial+1)$</span> gives Bernstein multiplicity two, so the previous chapter's bound is attained.</p>
+<h3 id="exercise-7-3-medium-the-quadratic-identity-and-its-repeated-root">Exercise 7.3 — medium: the quadratic identity and its repeated root</h3>
+<p>Verify (5.4). Explain why a verification of that identity alone does not prove (5.7), and why <span class="math" data-tex="$n=2$">$n=2$</span> requires an additional multiplicity argument.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="$\partial_iq=2x_i$">$\partial_iq=2x_i$</span>, the first derivative is <span class="math" data-tex="$2(s+1)x_iq^s$">$2(s+1)x_iq^s$</span>, and a second derivative is <span class="math" data-tex="$2(s+1)q^s+4s(s+1)x_i^2q^{s-1}$">$2(s+1)q^s+4s(s+1)x_i^2q^{s-1}$</span>. Summing and dividing by four gives <span class="math" data-tex="$(s+1)(s+n/2)q^s$">$(s+1)(s+n/2)q^s$</span>. This proves divisibility of the minimal polynomial into the displayed product. For <span class="math" data-tex="$n\ne2$">$n\ne2$</span>, Section 5 supplies both distinct roots: monomial minimality when <span class="math" data-tex="$n=1$">$n=1$</span>, and the root <span class="math" data-tex="$-1$">$-1$</span> together with the radial integral root when <span class="math" data-tex="$n\geq3$">$n\geq3$</span>. For <span class="math" data-tex="$n=2$">$n=2$</span>, those two root locations coincide. The normal-crossings calculation in <span class="math" data-tex="$u,v$">$u,v$</span> proves that every admissible polynomial is divisible by <span class="math" data-tex="$(s+1)^2$">$(s+1)^2$</span>, which is the missing multiplicity assertion.</p>
+<h3 id="exercise-7-4-medium-localizing-a-module-with-torsion">Exercise 7.4 — medium: localizing a module with torsion</h3>
+<p>Prove holonomicity of <span class="math" data-tex="$M_f$">$M_f$</span> for arbitrary holonomic <span class="math" data-tex="$M$">$M$</span>, without assuming that <span class="math" data-tex="$M\to M_f$">$M\to M_f$</span> is injective. For <span class="math" data-tex="$M=\delta_0$">$M=\delta_0$</span> on the line, compute <span class="math" data-tex="$M_x$">$M_x$</span> and <span class="math" data-tex="$M_{x-1}$">$M_{x-1}$</span>.</p>
+<p><strong>Solution.</strong> Use the images (4.2), not an inclusion of <span class="math" data-tex="$M$">$M$</span> in its localization. Their dimensions are at most <span class="math" data-tex="$\dim\Gamma_{(d+1)p}M$">$\dim\Gamma_{(d+1)p}M$</span>, even if numerators have nonzero kernel. The product and derivative computations in Theorem 4.1 make these spaces a compatible exhaustive filtration with growth degree at most <span class="math" data-tex="$n$">$n$</span>. Lemma 2.1 then proves finite generation and holonomicity, including the zero case.</p>
+<p>Every basis vector <span class="math" data-tex="$\partial^j\delta$">$\partial^j\delta$</span> is killed by <span class="math" data-tex="$x^{j+1}$">$x^{j+1}$</span>, so every vector of <span class="math" data-tex="$\delta_0$">$\delta_0$</span> is <span class="math" data-tex="$x$">$x$</span>-power torsion; hence <span class="math" data-tex="$M_x=0$">$M_x=0$</span>. Conversely <span class="math" data-tex="$x$">$x$</span> is locally nilpotent on this module, so <span class="math" data-tex="$x-1$">$x-1$</span> is invertible: its inverse on any vector is the finite sum <span class="math" data-tex="$-(1+x+x^2+\cdots)$">$-(1+x+x^2+\cdots)$</span>, stopped once powers of <span class="math" data-tex="$x$">$x$</span> kill that vector. This supplies the unique extended <span class="math" data-tex="$(x-1)^{-1}$">$(x-1)^{-1}$</span> action. The natural map <span class="math" data-tex="$M\to M_{x-1}$">$M\to M_{x-1}$</span> is therefore an isomorphism, so that localization remains the nonzero holonomic point module.</p>
+<h3 id="exercise-7-5-hard-the-unavoidable-factor">Exercise 7.5 — hard: the unavoidable factor</h3>
+<p>Show that every admissible polynomial for a nonconstant <span class="math" data-tex="$f$">$f$</span> vanishes at <span class="math" data-tex="$-1$">$-1$</span>. Explain what changes for a nonzero constant <span class="math" data-tex="$f$">$f$</span>.</p>
+<p><strong>Solution.</strong> The specialization map (3.6), with <span class="math" data-tex="$a=-1$">$a=-1$</span>, changes <span class="math" data-tex="$f^{s+1}$">$f^{s+1}$</span> to <span class="math" data-tex="$1$">$1$</span> and <span class="math" data-tex="$f^s$">$f^s$</span> to <span class="math" data-tex="$f^{-1}$">$f^{-1}$</span>, and commutes with every derivative by the ordinary chain rule. Thus (3.7) holds. Since polynomial differential operators send <span class="math" data-tex="$1$">$1$</span> to a polynomial, it forces <span class="math" data-tex="$f\mid b(-1)$">$f\mid b(-1)$</span>. Nonconstancy implies <span class="math" data-tex="$b(-1)=0$">$b(-1)=0$</span>. For a nonzero constant, this divisibility imposes no vanishing condition and the scalar inverse gives an equation with <span class="math" data-tex="$b=1$">$b=1$</span>, which is the minimal polynomial.</p>
+<h3 id="exercise-7-6-hard-the-parameter-shift">Exercise 7.6 — hard: the parameter shift</h3>
+<p>Why cannot one deduce <span class="math" data-tex="$C_0=C_1$">$C_0=C_1$</span> from a stable equality <span class="math" data-tex="$C_r=C_{r+1}$">$C_r=C_{r+1}$</span> by simply multiplying by <span class="math" data-tex="$f^{-r}$">$f^{-r}$</span>? Verify the corrected semilinear operation.</p>
+<p><strong>Solution.</strong> Multiplication by <span class="math" data-tex="$f^{-r}$">$f^{-r}$</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\partial_i(f^{-r}v)=f^{-r}\partial_i v
+-r f^{-r-1}(\partial_i f)v.
+\]">\[
+\partial_i(f^{-r}v)=f^{-r}\partial_i v
+-r f^{-r-1}(\partial_i f)v.
+\]</span>
+<p>It therefore fails to be <span class="math" data-tex="$A_K$">$A_K$</span>-linear unless the extra term vanishes. For <span class="math" data-tex="$T_a$">$T_a$</span> in (3.3), differentiating the factor <span class="math" data-tex="$f^a$">$f^a$</span> adds <span class="math" data-tex="$a(\partial_i f)/f$">$a(\partial_i f)/f$</span>, precisely the change in the connection coefficient when <span class="math" data-tex="$s$">$s$</span> is replaced by <span class="math" data-tex="$s+a$">$s+a$</span>. This proves commutation with derivatives and coordinates, while coefficient scalars are transformed by <span class="math" data-tex="$s\mapsto s+a$">$s\mapsto s+a$</span>. As <span class="math" data-tex="$T_{-r}$">$T_{-r}$</span> is bijective and sends <span class="math" data-tex="$f^re_s$">$f^re_s$</span> to <span class="math" data-tex="$e_s$">$e_s$</span> and <span class="math" data-tex="$f^{r+1}e_s$">$f^{r+1}e_s$</span> to <span class="math" data-tex="$fe_s$">$fe_s$</span>, it sends their generated submodules to <span class="math" data-tex="$C_0,C_1$">$C_0,C_1$</span>. Equality is therefore preserved, giving the required conclusion.</p>
+<h2 id="references-and-what-this-lesson-does-not-prove">References and what this lesson does not prove</h2>
+<p>The growth criterion, holonomicity over <span class="math" data-tex="$k(s)$">$k(s)$</span>, Bernstein's existence theorem, field invariance, the factor <span class="math" data-tex="$s+1$">$s+1$</span>, localization of arbitrary holonomic Weyl modules, a generating denominator for <span class="math" data-tex="$R_f$">$R_f$</span>, and the coordinate-power and quadratic minimal polynomials are proved here. All six exercises are solved. The cusp computation, Kashiwara's negative-rational-root theorem, and the general distributional continuation statements are explicitly stated external results.</p>
+<p>R. Bezrukavnikov, <a href="https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/mit18_706_s23_full_lec.pdf"><em>Noncommutative Algebra</em>, MIT 18.706</a>, Sections 24.1 and 24.6, supplies the broader growth context. V. Ginzburg, <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em></a>, Section 4.2, especially Theorem 4.2.9.2, treats localization by a Bernstein growth estimate. The proof above counts cumulative filtered dimensions, uses only an upper bound for a possibly nongood localization filtration, and establishes finite generation before invoking finite length on the ambient module.</p>
+<p>The analytic results have the exact locators given in Section 6. The formula for the cusp has the exact locators in Section 5. The algebraic existence and localization proofs depend only on the preceding chapter's growth and finite-length theorems.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="the-bernstein-filtration-and-holonomic-modules.html">← The Bernstein filtration and holonomic modules over the Weyl algebra</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="kashiwaras-equivalence-and-singular-spaces.html">Kashiwara&#x27;s equivalence and D-modules on singular spaces →</a></span></nav>
+<p class="small source-link"><a href="src/bernstein-sato-polynomials.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

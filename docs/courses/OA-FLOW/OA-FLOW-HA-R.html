@@ -1,0 +1,280 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bounded vectors, affiliated multipliers and the complete dual Hilbert algebra · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><span class="unlinked">Previous lesson</span><a href="OA-FLOW-WH04.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-HA-R.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original reconstruction by GPT-6 Astra (OpenAI), Ultra; independently owner-reviewed at the exact earlier inputs. Human review and formal verification are not asserted.</p><h1 id="bounded-vectors-affiliated-multipliers-and-the-complete-dual-hilbert-algebra">Bounded vectors, affiliated multipliers and the complete dual Hilbert algebra</h1>
+<p><em>Fresh local proof by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights in this exposition.</em></p>
+<p>The Hilbert space is arbitrary. Inner products are linear in the first variable. The inputs are <a href="OA-FLOW-CI.html#oa-flow.ci.1">CI-1–3</a>, <a href="OA-FLOW-BD.html#oa-flow.bd.1">BD-1–4</a>, their exact spectral inputs, and only the closed-form representation proved in <span class="unlinked">FF-4</span>. In particular the Fourier and modular parts of those later applications are not inputs here. The earlier Hilbert facts are <a href="OA-FLOW-SF.html#oa-flow.shared-foundations.sf-0">SF-0</a> and <a href="OA-FLOW-SF.html#OA-FLOW.SF.SB0">SB-0</a>; the full spectral-domain proof is <a href="OA-FLOW-SF.html#OA-FLOW.SF.SB1">SB-1–SB-6</a>. Scalar spectral convergence uses <a href="OA-FLOW-SC.html#sc-04">SC-04–05</a>.</p>
+<p>A free human development route is <a href="https://uwspace.uwaterloo.ca/bitstreams/245c2a41-48ee-4c8d-ad38-95a8353dc3d1/download#page=31">Boey's institutional thesis, Definitions 4.1/4.3 and Lemmas 4.6–4.10, printed pp.25–31</a>. The proof below supplies the graph-core, closed-range-support, cutoff membership and full-domain arguments needed by the modular application.</p>
+<p><a id="oa-flow.ha-r.1"></a></p>
+<h2 id="OA-FLOW.HA-R.1">HA-R1. The initial algebra and its bounded right vectors</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be a dense complex algebra in <span class="math" data-tex="\(H\)">\(H\)</span>, with a conjugate-linear involution <span class="math" data-tex="\(a\mapsto a^\#\)">\(a\mapsto a^\#\)</span>, such that <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span> is dense, each left multiplication <span class="math" data-tex="\(\lambda_a b=ab\)">\(\lambda_a b=ab\)</span> is bounded in the Hilbert norm, <span class="math" data-tex="\(\langle ab,c\rangle=\langle b,a^\#c\rangle\)">\(\langle ab,c\rangle=\langle b,a^\#c\rangle\)</span>, and the involution is closable. Here <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span> means the linear span of products. Then
+<span class="math" data-tex="\(\lambda_{ab}=\lambda_a\lambda_b\)">\(\lambda_{ab}=\lambda_a\lambda_b\)</span> and <span class="math" data-tex="\(\lambda_{a^\#}=\lambda_a^*\)">\(\lambda_{a^\#}=\lambda_a^*\)</span>. The representation is nondegenerate because the span of its ranges contains <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span>. It is faithful: if <span class="math" data-tex="\(\lambda_a=0\)">\(\lambda_a=0\)</span>, then <span class="math" data-tex="\(b^\#a^\#=0\)">\(b^\#a^\#=0\)</span> for all <span class="math" data-tex="\(b\)">\(b\)</span>; nondegeneracy makes the common kernel zero, hence <span class="math" data-tex="\(a^\#=a=0\)">\(a^\#=a=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(M=\lambda(\mathcal A)''\)">\(M=\lambda(\mathcal A)''\)</span>, <span class="math" data-tex="\(N=M'\)">\(N=M'\)</span>, <span class="math" data-tex="\(S=\overline{\#}\)">\(S=\overline{\#}\)</span> and <span class="math" data-tex="\(F=S^*\)">\(F=S^*\)</span>. CI proves that both <span class="math" data-tex="\(S,F\)">\(S,F\)</span> are closed densely defined conjugate-linear involutions. Call <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span> right bounded when the map <span class="math" data-tex="\(a\mapsto\lambda_a\eta\)">\(a\mapsto\lambda_a\eta\)</span> on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is bounded in <span class="math" data-tex="\(\|a\|_H\)">\(\|a\|_H\)</span>; denote its extension by <span class="math" data-tex="\(R_\eta\)">\(R_\eta\)</span>. Write <span class="math" data-tex="\(B_r\)">\(B_r\)</span> for these vectors. Associativity on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> gives <span class="math" data-tex="\(R_\eta\in N\)">\(R_\eta\in N\)</span>. The map <span class="math" data-tex="\(\eta\mapsto R_\eta\)">\(\eta\mapsto R_\eta\)</span> is injective, because <span class="math" data-tex="\(R_\eta=0\)">\(R_\eta=0\)</span> implies <span class="math" data-tex="\(\lambda_a\eta=0\)">\(\lambda_a\eta=0\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>. For <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>,
+<span class="math math-display" data-tex="\[
+x\eta\in B_r,\qquad R_{x\eta}=xR_\eta.
+\tag{HR1}
+\]">\[
+x\eta\in B_r,\qquad R_{x\eta}=xR_\eta.
+\tag{HR1}
+\]</span>
+Consequently <span class="math" data-tex="\(I=\{R_\eta:\eta\in B_r\}\)">\(I=\{R_\eta:\eta\in B_r\}\)</span> is a linear left ideal of <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><a id="oa-flow.ha-r.2"></a></p>
+<h2 id="OA-FLOW.HA-R.2">HA-R2. Adjoint products and the candidate dual algebra</h2>
+<p>For <span class="math" data-tex="\(\eta,\zeta\in B_r\)">\(\eta,\zeta\in B_r\)</span>, one has
+<span class="math math-display" data-tex="\[
+R_\eta^*\zeta\in D(F),\qquad F(R_\eta^*\zeta)=R_\zeta^*\eta.
+\tag{HR2}
+\]">\[
+R_\eta^*\zeta\in D(F),\qquad F(R_\eta^*\zeta)=R_\zeta^*\eta.
+\tag{HR2}
+\]</span>
+Indeed for <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>,
+<span class="math math-display" data-tex="\[
+\langle R_\eta^*\zeta,Sa\rangle
+=\langle\zeta,\lambda_{a^\#}\eta\rangle
+=\langle\lambda_a\zeta,\eta\rangle
+=\langle a,R_\zeta^*\eta\rangle.
+\]">\[
+\langle R_\eta^*\zeta,Sa\rangle
+=\langle\zeta,\lambda_{a^\#}\eta\rangle
+=\langle\lambda_a\zeta,\eta\rangle
+=\langle a,R_\zeta^*\eta\rangle.
+\]</span>
+Since <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a graph core for <span class="math" data-tex="\(S\)">\(S\)</span>, the identity extends to <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> and is exactly the conjugate-linear adjoint criterion. By (HR1), this vector is also right bounded, with multiplier <span class="math" data-tex="\(R_\eta^*R_\zeta\)">\(R_\eta^*R_\zeta\)</span>.</p>
+<p>Put <span class="math" data-tex="\(\mathcal D=B_r\cap D(F)\)">\(\mathcal D=B_r\cap D(F)\)</span>. For <span class="math" data-tex="\(\eta\in\mathcal D\)">\(\eta\in\mathcal D\)</span>, the identity
+<span class="math" data-tex="\(\langle R_\eta a,b\rangle=\langle\eta,a^\#b\rangle
+=\langle b^\#a,F\eta\rangle=\langle a,\lambda_bF\eta\rangle\)">\(\langle R_\eta a,b\rangle=\langle\eta,a^\#b\rangle
+=\langle b^\#a,F\eta\rangle=\langle a,\lambda_bF\eta\rangle\)</span>
+shows that
+<span class="math math-display" data-tex="\[
+F\eta\in B_r,\qquad R_{F\eta}=R_\eta^*.
+\tag{HR3}
+\]">\[
+F\eta\in B_r,\qquad R_{F\eta}=R_\eta^*.
+\tag{HR3}
+\]</span>
+Thus <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is invariant under the involution <span class="math" data-tex="\(F\)">\(F\)</span>. Define
+<span class="math math-display" data-tex="\[
+\eta\zeta=R_\zeta\eta\quad(\eta,\zeta\in\mathcal D),\qquad
+R_{\eta\zeta}=R_\zeta R_\eta.
+\tag{HR4}
+\]">\[
+\eta\zeta=R_\zeta\eta\quad(\eta,\zeta\in\mathcal D),\qquad
+R_{\eta\zeta}=R_\zeta R_\eta.
+\tag{HR4}
+\]</span>
+Membership in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> follows before any involution calculation: the vector is <span class="math" data-tex="\(R_{F\zeta}^*\eta\)">\(R_{F\zeta}^*\eta\)</span>, to which (HR2) applies. That formula then gives
+<span class="math math-display" data-tex="\[
+F(\eta\zeta)=R_\eta^*F\zeta=(F\zeta)(F\eta).
+\tag{HR5}
+\]">\[
+F(\eta\zeta)=R_\eta^*F\zeta=(F\zeta)(F\eta).
+\tag{HR5}
+\]</span>
+Associativity follows either by applying the bounded multipliers or by their injective reversed representation. Right multiplication is bounded, and its adjoint is right multiplication by <span class="math" data-tex="\(F\zeta\)">\(F\zeta\)</span>, by (HR3). Also
+<span class="math math-display" data-tex="\[
+I^*I\subseteq R(\mathcal D).
+\tag{HR6}
+\]">\[
+I^*I\subseteq R(\mathcal D).
+\tag{HR6}
+\]</span>
+Here and below products of linear operator spaces denote finite sums of products. Density and the core assertion will be proved, rather than included in the definition of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>.</p>
+<p><a id="oa-flow.ha-r.3"></a></p>
+<h2 id="OA-FLOW.HA-R.3">HA-R3. The closed multiplier associated to any adjoint-domain vector</h2>
+<p>For <span class="math" data-tex="\(\eta\in D(F)\)">\(\eta\in D(F)\)</span>, define <span class="math" data-tex="\(T_\eta^0a=\lambda_a\eta\)">\(T_\eta^0a=\lambda_a\eta\)</span> on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. The same adjoint pairing as above gives
+<span class="math math-display" data-tex="\[
+\mathcal A\subseteq D((T_\eta^0)^*),\qquad
+(T_\eta^0)^*a=\lambda_aF\eta.
+\tag{HR7}
+\]">\[
+\mathcal A\subseteq D((T_\eta^0)^*),\qquad
+(T_\eta^0)^*a=\lambda_aF\eta.
+\tag{HR7}
+\]</span>
+Thus <span class="math" data-tex="\(T_\eta^0\)">\(T_\eta^0\)</span> is closable. Write <span class="math" data-tex="\(T_\eta=\overline{T_\eta^0}\)">\(T_\eta=\overline{T_\eta^0}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\mathcal A\subseteq D(T_\eta)\cap D(T_\eta^*),\qquad
+T_\eta a=\lambda_a\eta,\quad T_\eta^*a=\lambda_aF\eta.
+\tag{HR8}
+\]">\[
+\mathcal A\subseteq D(T_\eta)\cap D(T_\eta^*),\qquad
+T_\eta a=\lambda_a\eta,\quad T_\eta^*a=\lambda_aF\eta.
+\tag{HR8}
+\]</span>
+The second formula uses equality of the adjoints of an operator and its closure. It does not assert that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a core for <span class="math" data-tex="\(T_\eta^*\)">\(T_\eta^*\)</span>, or that <span class="math" data-tex="\(T_{F\eta}=T_\eta^*\)">\(T_{F\eta}=T_\eta^*\)</span>.</p>
+<p>The graph of <span class="math" data-tex="\(T_\eta^0\)">\(T_\eta^0\)</span>, and then its closure, is invariant under every <span class="math" data-tex="\(\lambda_b\oplus\lambda_b\)">\(\lambda_b\oplus\lambda_b\)</span>, by associativity and boundedness. It is invariant under their adjoints as well. Hence its orthogonal projection has all four entries in <span class="math" data-tex="\(N\)">\(N\)</span>. It therefore commutes with <span class="math" data-tex="\(x\oplus x\)">\(x\oplus x\)</span> for <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>. For every unitary <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>,
+<span class="math math-display" data-tex="\[
+xD(T_\eta)=D(T_\eta),\qquad T_\eta x=xT_\eta.
+\tag{HR9}
+\]">\[
+xD(T_\eta)=D(T_\eta),\qquad T_\eta x=xT_\eta.
+\tag{HR9}
+\]</span>
+This is affiliation with <span class="math" data-tex="\(N\)">\(N\)</span>. Taking adjoints gives the corresponding statement for <span class="math" data-tex="\(T_\eta^*\)">\(T_\eta^*\)</span>.</p>
+<p>BD-1 supplies a net <span class="math" data-tex="\(\lambda_{a_i}\to I\)">\(\lambda_{a_i}\to I\)</span> strongly; no norm bound is needed here. Testing only the fixed vectors <span class="math" data-tex="\(\eta,F\eta\)">\(\eta,F\eta\)</span> in (HR8) gives
+<span class="math math-display" data-tex="\[
+T_\eta a_i\longrightarrow\eta,\qquad
+T_\eta^*a_i\longrightarrow F\eta.
+\tag{HR10}
+\]">\[
+T_\eta a_i\longrightarrow\eta,\qquad
+T_\eta^*a_i\longrightarrow F\eta.
+\tag{HR10}
+\]</span>
+Thus <span class="math" data-tex="\(\eta\in\overline{\operatorname{Ran}T_\eta}\)">\(\eta\in\overline{\operatorname{Ran}T_\eta}\)</span> and
+<span class="math" data-tex="\(F\eta\in\overline{\operatorname{Ran}T_\eta^*}\)">\(F\eta\in\overline{\operatorname{Ran}T_\eta^*}\)</span>. Actual range membership is neither proved nor used.</p>
+<p><a id="oa-flow.ha-r.4"></a></p>
+<h2 id="OA-FLOW.HA-R.4">HA-R4. Closed linear polar decomposition with its domains</h2>
+<p>We supply the precise unbounded linear polar result needed next. Let <span class="math" data-tex="\(T\)">\(T\)</span> be any closed densely defined linear operator on <span class="math" data-tex="\(H\)">\(H\)</span>. Its closed form <span class="math" data-tex="\(q(v,w)=\langle Tv,Tw\rangle\)">\(q(v,w)=\langle Tv,Tw\rangle\)</span> on <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> has, by FF-4, a positive self-adjoint representative <span class="math" data-tex="\(A\)">\(A\)</span> with
+<span class="math math-display" data-tex="\[
+D(A^{1/2})=D(T),\qquad
+\langle Tv,Tw\rangle=\langle A^{1/2}v,A^{1/2}w\rangle.
+\tag{HR11}
+\]">\[
+D(A^{1/2})=D(T),\qquad
+\langle Tv,Tw\rangle=\langle A^{1/2}v,A^{1/2}w\rangle.
+\tag{HR11}
+\]</span>
+The representative satisfies <span class="math" data-tex="\(v\in D(A)\)">\(v\in D(A)\)</span> exactly when <span class="math" data-tex="\(v\in D(A^{1/2})\)">\(v\in D(A^{1/2})\)</span> and there is <span class="math" data-tex="\(z\in H\)">\(z\in H\)</span> such that <span class="math" data-tex="\(q(v,w)=\langle z,w\rangle\)">\(q(v,w)=\langle z,w\rangle\)</span> for every <span class="math" data-tex="\(w\in D(A^{1/2})\)">\(w\in D(A^{1/2})\)</span>, and then <span class="math" data-tex="\(Av=z\)">\(Av=z\)</span>. To check the nontrivial implication directly, test on each spectral subspace <span class="math" data-tex="\(E_A([0,n])H\)">\(E_A([0,n])H\)</span>. One obtains <span class="math" data-tex="\(E_A([0,n])z=A E_A([0,n])v\)">\(E_A([0,n])z=A E_A([0,n])v\)</span>. These norms are bounded by <span class="math" data-tex="\(\|z\|\)">\(\|z\|\)</span>; spectral monotone convergence gives <span class="math" data-tex="\(v\in D(A)\)">\(v\in D(A)\)</span> and <span class="math" data-tex="\(Av=z\)">\(Av=z\)</span>. Applied to <span class="math" data-tex="\(q\)">\(q\)</span>, this criterion is exactly <span class="math" data-tex="\(Tv\in D(T^*)\)">\(Tv\in D(T^*)\)</span>, with <span class="math" data-tex="\(z=T^*Tv\)">\(z=T^*Tv\)</span>. Hence <span class="math" data-tex="\(A=T^*T\)">\(A=T^*T\)</span> on the full product domain.</p>
+<p>Set <span class="math" data-tex="\(h=A^{1/2}\)">\(h=A^{1/2}\)</span>. The rule <span class="math" data-tex="\(u(hv)=Tv\)">\(u(hv)=Tv\)</span> defines an isometry from <span class="math" data-tex="\(\operatorname{Ran}h\)">\(\operatorname{Ran}h\)</span> onto <span class="math" data-tex="\(\operatorname{Ran}T\)">\(\operatorname{Ran}T\)</span>, extends to their closures, and is set to zero on <span class="math" data-tex="\(\ker h\)">\(\ker h\)</span>. The resulting partial isometry has initial space <span class="math" data-tex="\((\ker T)^\perp\)">\((\ker T)^\perp\)</span> and final space <span class="math" data-tex="\(\overline{\operatorname{Ran}T}\)">\(\overline{\operatorname{Ran}T}\)</span>. The adjoint pairing gives
+<span class="math math-display" data-tex="\[
+T=uh,\qquad T^*=hu^*,\qquad
+D(T^*)=\{w:u^*w\in D(h)\}.
+\tag{HR12}
+\]">\[
+T=uh,\qquad T^*=hu^*,\qquad
+D(T^*)=\{w:u^*w\in D(h)\}.
+\tag{HR12}
+\]</span>
+Write <span class="math" data-tex="\(p=u^*u,q=uu^*\)">\(p=u^*u,q=uu^*\)</span>. Transport <span class="math" data-tex="\(h|_{pH}\)">\(h|_{pH}\)</span> by the unitary <span class="math" data-tex="\(u:pH\to qH\)">\(u:pH\to qH\)</span>, and set it equal to zero on <span class="math" data-tex="\(q^\perp H\)">\(q^\perp H\)</span>. This defines a positive self-adjoint <span class="math" data-tex="\(k\)">\(k\)</span>. Direct substitution in (HR12) shows <span class="math" data-tex="\(k^2=TT^*\)">\(k^2=TT^*\)</span>, with the full product domain, so <span class="math" data-tex="\(k=(TT^*)^{1/2}\)">\(k=(TT^*)^{1/2}\)</span>. It also proves
+<span class="math math-display" data-tex="\[
+T=ku,\qquad u f(h)=f(k)u
+\tag{HR13}
+\]">\[
+T=ku,\qquad u f(h)=f(k)u
+\tag{HR13}
+\]</span>
+for Borel functions with <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, including equality of the transported domains. The first equality has domain <span class="math" data-tex="\(\{v:uv\in D(k)\}=D(h)=D(T)\)">\(\{v:uv\in D(k)\}=D(h)=D(T)\)</span>; the kernel summands cause no loss.</p>
+<p>If <span class="math" data-tex="\(T\)">\(T\)</span> is affiliated with <span class="math" data-tex="\(N\)">\(N\)</span>, every unitary of <span class="math" data-tex="\(N'\)">\(N'\)</span> commutes with <span class="math" data-tex="\(T,T^*\)">\(T,T^*\)</span>, their positive products and their spectral projections. Uniqueness of the isometry defined on <span class="math" data-tex="\(\operatorname{Ran}h\)">\(\operatorname{Ran}h\)</span> makes it commute with <span class="math" data-tex="\(u\)">\(u\)</span> as well. The commutant-unitary test proved in SF-0 then gives <span class="math" data-tex="\(u,p,q\in N\)">\(u,p,q\in N\)</span>, and <span class="math" data-tex="\(h,k\)">\(h,k\)</span> are affiliated with <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><a id="oa-flow.ha-r.5"></a></p>
+<h2 id="OA-FLOW.HA-R.5">HA-R5. Cutoffs, their actual algebra membership and the graph core</h2>
+<p>Apply HA-R4 to <span class="math" data-tex="\(T=T_\eta\)">\(T=T_\eta\)</span>, where <span class="math" data-tex="\(\eta\in D(F)\)">\(\eta\in D(F)\)</span>. Let <span class="math" data-tex="\(f\in C_c((0,\infty))\)">\(f\in C_c((0,\infty))\)</span>, extended to be zero at zero. All bounded functions of <span class="math" data-tex="\(h,k\)">\(h,k\)</span> used below lie in <span class="math" data-tex="\(N\)">\(N\)</span>. For <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>, commutation with <span class="math" data-tex="\(\lambda_a\)">\(\lambda_a\)</span>, (HR8), and (HR13) give
+<span class="math math-display" data-tex="\[
+\begin{split}
+\lambda_a f(k)\eta&amp;=k f(k)u a,\\
+\lambda_a f(h)F\eta&amp;=h f(h)u^*a.
+\end{split}
+\qquad
+\begin{split}
+R_{f(k)\eta}&amp;=k f(k)u,\\
+R_{f(h)F\eta}&amp;=h f(h)u^*.
+\end{split}
+\tag{HR14}
+\]">\[
+\begin{split}
+\lambda_a f(k)\eta&amp;=k f(k)u a,\\
+\lambda_a f(h)F\eta&amp;=h f(h)u^*a.
+\end{split}
+\qquad
+\begin{split}
+R_{f(k)\eta}&amp;=k f(k)u,\\
+R_{f(h)F\eta}&amp;=h f(h)u^*.
+\end{split}
+\tag{HR14}
+\]</span>
+The left formulas are first tested on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>; the boundedness of the right operators proves the asserted right boundedness and then their equality everywhere. No identity between two unbounded adjoints beyond (HR8) is assumed.</p>
+<p>It follows that <span class="math" data-tex="\(hf(h)=u^*R_{f(k)\eta}\)">\(hf(h)=u^*R_{f(k)\eta}\)</span> and <span class="math" data-tex="\(kf(k)=uR_{f(h)F\eta}\)">\(kf(k)=uR_{f(h)F\eta}\)</span> belong to <span class="math" data-tex="\(I\)">\(I\)</span>. Choose <span class="math" data-tex="\(g\in C_c((0,\infty))\)">\(g\in C_c((0,\infty))\)</span> with <span class="math" data-tex="\(g(t)=1/t\)">\(g(t)=1/t\)</span> on <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>. Then <span class="math" data-tex="\(f(h)=g(h)hf(h)\in I\)">\(f(h)=g(h)hf(h)\in I\)</span>, and likewise <span class="math" data-tex="\(f(k)\in I\)">\(f(k)\in I\)</span>. Choose real <span class="math" data-tex="\(f_1\in C_c((0,\infty))\)">\(f_1\in C_c((0,\infty))\)</span> equal to one on <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>, and write <span class="math" data-tex="\(f=\overline{f_1}f_2\)">\(f=\overline{f_1}f_2\)</span>, <span class="math" data-tex="\(f_2=f\)">\(f_2=f\)</span>. The factors <span class="math" data-tex="\(f_j(h)\)">\(f_j(h)\)</span> and <span class="math" data-tex="\(f_j(k)\)">\(f_j(k)\)</span> lie in <span class="math" data-tex="\(I\)">\(I\)</span>, so
+<span class="math" data-tex="\(f(h),f(k)\in I^*I\subseteq R(\mathcal D)\)">\(f(h),f(k)\in I^*I\subseteq R(\mathcal D)\)</span>.
+Factoring once more, with the two factors already in the *-algebra <span class="math" data-tex="\(R(\mathcal D)\)">\(R(\mathcal D)\)</span>, also puts them in <span class="math" data-tex="\(R(\mathcal D^2)\)">\(R(\mathcal D^2)\)</span>.</p>
+<p>The vector membership needed for the involution formula is equally essential. Factor <span class="math" data-tex="\(f=\overline{f_1}f_2\)">\(f=\overline{f_1}f_2\)</span> as above. By (HR14),
+<span class="math" data-tex="\(R_{f(h)F\eta}=f_1(h)^*R_{f_2(h)F\eta}\in I^*I\)">\(R_{f(h)F\eta}=f_1(h)^*R_{f_2(h)F\eta}\in I^*I\)</span>.
+Injectivity of <span class="math" data-tex="\(R\)">\(R\)</span> therefore gives <span class="math" data-tex="\(f(h)F\eta\in\mathcal D\)">\(f(h)F\eta\in\mathcal D\)</span>, and the same argument gives <span class="math" data-tex="\(f(k)\eta\in\mathcal D\)">\(f(k)\eta\in\mathcal D\)</span>. Repeat the factorization, now with the vector factor already in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> and the operator factor in <span class="math" data-tex="\(R(\mathcal D)\)">\(R(\mathcal D)\)</span>. The product convention (HR4) then yields
+<span class="math" data-tex="\(f(h)F\eta,f(k)\eta\in\mathcal D^2\)">\(f(h)F\eta,f(k)\eta\in\mathcal D^2\)</span>.
+For real <span class="math" data-tex="\(f\)">\(f\)</span>, taking adjoints in (HR14), using (HR13), and then (HR3) proves
+<span class="math math-display" data-tex="\[
+F(f(k)\eta)=f(h)F\eta.
+\tag{HR15}
+\]">\[
+F(f(k)\eta)=f(h)F\eta.
+\tag{HR15}
+\]</span>
+All vectors in this formula have already been proved to lie in its domains.</p>
+<p>Define <span class="math" data-tex="\(g(t)=1\)">\(g(t)=1\)</span> for <span class="math" data-tex="\(0&lt;t\leq1\)">\(0&lt;t\leq1\)</span>, <span class="math" data-tex="\(g(t)=2-t\)">\(g(t)=2-t\)</span> for <span class="math" data-tex="\(1\leq t\leq2\)">\(1\leq t\leq2\)</span>, and <span class="math" data-tex="\(g(t)=0\)">\(g(t)=0\)</span> for <span class="math" data-tex="\(t\geq2\)">\(t\geq2\)</span>. Let <span class="math" data-tex="\(f_n(t)=g(t/n)g(1/(nt))\)">\(f_n(t)=g(t/n)g(1/(nt))\)</span>. Then <span class="math" data-tex="\(f_n\in C_c((0,\infty))\)">\(f_n\in C_c((0,\infty))\)</span>, with support in <span class="math" data-tex="\([1/(2n),2n]\)">\([1/(2n),2n]\)</span>; <span class="math" data-tex="\(0\leq f_n\leq1\)">\(0\leq f_n\leq1\)</span>, and <span class="math" data-tex="\(f_n(t)\uparrow1\)">\(f_n(t)\uparrow1\)</span> for every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Formula (HR10) says exactly that the relevant vectors have zero spectral mass at zero. Spectral dominated convergence and (HR15) give
+<span class="math math-display" data-tex="\[
+f_n(k)\eta\longrightarrow\eta,\qquad
+F(f_n(k)\eta)=f_n(h)F\eta\longrightarrow F\eta.
+\tag{HR16}
+\]">\[
+f_n(k)\eta\longrightarrow\eta,\qquad
+F(f_n(k)\eta)=f_n(h)F\eta\longrightarrow F\eta.
+\tag{HR16}
+\]</span>
+The approximants lie in <span class="math" data-tex="\(\mathcal D^2\)">\(\mathcal D^2\)</span>. Thus both <span class="math" data-tex="\(\mathcal D^2\)">\(\mathcal D^2\)</span> and <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> are graph cores for <span class="math" data-tex="\(F\)">\(F\)</span>. In particular they are dense in <span class="math" data-tex="\(H\)">\(H\)</span>. No separability of <span class="math" data-tex="\(H\)">\(H\)</span> was used: the single sequence is constructed separately for each <span class="math" data-tex="\(\eta\)">\(\eta\)</span> by scalar functional calculus.</p>
+<p><a id="oa-flow.ha-r.6"></a></p>
+<h2 id="OA-FLOW.HA-R.6">HA-R6. The represented dual generates the whole commutant</h2>
+<p>The algebra <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, with its involution <span class="math" data-tex="\(F\)">\(F\)</span>, is now a right Hilbert algebra: all its algebra/adjoint axioms were proved in HA-R2, its products are dense by HA-R5, and its involution has closure <span class="math" data-tex="\(F\)">\(F\)</span>. Its right representation is nondegenerate. BD-3 gives positive contractions <span class="math" data-tex="\(c_i\in R(\mathcal D)\)">\(c_i\in R(\mathcal D)\)</span> converging strongly to <span class="math" data-tex="\(I\)">\(I\)</span>. For <span class="math" data-tex="\(x\in N_+\)">\(x\in N_+\)</span>, (HR1) gives <span class="math" data-tex="\(x^{1/2}c_i\in I\)">\(x^{1/2}c_i\in I\)</span>, so
+<span class="math math-display" data-tex="\[
+c_i x c_i=(x^{1/2}c_i)^*(x^{1/2}c_i)\in I^*I\subseteq R(\mathcal D).
+\tag{HR17}
+\]">\[
+c_i x c_i=(x^{1/2}c_i)^*(x^{1/2}c_i)\in I^*I\subseteq R(\mathcal D).
+\tag{HR17}
+\]</span>
+The common bound on <span class="math" data-tex="\(c_i\)">\(c_i\)</span> makes <span class="math" data-tex="\(c_i x c_i\to x\)">\(c_i x c_i\to x\)</span> strongly. Every element of <span class="math" data-tex="\(N\)">\(N\)</span> is a complex linear combination of four positive elements, by the positive/negative spectral parts of its real and imaginary parts. The reverse inclusion was established in HA-R1. Hence
+<span class="math math-display" data-tex="\[
+R(\mathcal D)''=N=M'.
+\tag{HR18}
+\]">\[
+R(\mathcal D)''=N=M'.
+\tag{HR18}
+\]</span></p>
+<p><a id="oa-flow.ha-r.7"></a></p>
+<h2 id="OA-FLOW.HA-R.7">HA-R7. The original product core and the full adjoint intersection</h2>
+<p>We still need the graph core of the original products; using only their Hilbert density would be insufficient. Fix <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>, rescaling so that <span class="math" data-tex="\(\|\lambda_a\|\leq1\)">\(\|\lambda_a\|\leq1\)</span>. Let <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span> be the projection onto <span class="math" data-tex="\(\overline{\operatorname{Ran}\lambda_a}\)">\(\overline{\operatorname{Ran}\lambda_a}\)</span>. For <span class="math" data-tex="\(d\in\mathcal D\)">\(d\in\mathcal D\)</span>, <span class="math" data-tex="\(R_da=\lambda_a d\in pH\)">\(R_da=\lambda_a d\in pH\)</span>. Since <span class="math" data-tex="\(p\)">\(p\)</span> commutes with <span class="math" data-tex="\(R_d\)">\(R_d\)</span>, this implies <span class="math" data-tex="\(R_d(pa-a)=0\)">\(R_d(pa-a)=0\)</span> for every <span class="math" data-tex="\(d\)">\(d\)</span>. Nondegeneracy of <span class="math" data-tex="\(R(\mathcal D)\)">\(R(\mathcal D)\)</span> makes its common kernel zero, so <span class="math" data-tex="\(pa=a\)">\(pa=a\)</span>. Applying the same argument to <span class="math" data-tex="\(a^\#\)">\(a^\#\)</span> gives the corresponding support statement for <span class="math" data-tex="\(\lambda_a^*\)">\(\lambda_a^*\)</span>.</p>
+<p>Put <span class="math" data-tex="\(p_n(t)=1-(1-t)^n\)">\(p_n(t)=1-(1-t)^n\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. These polynomials vanish at zero and increase to one on <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>. Algebraic expansion gives
+<span class="math math-display" data-tex="\[
+a_n=p_n(\lambda_a\lambda_a^*)a\in\mathcal A^2,\qquad
+a_n^\#=p_n(\lambda_a^*\lambda_a)a^\#.
+\tag{HR19}
+\]">\[
+a_n=p_n(\lambda_a\lambda_a^*)a\in\mathcal A^2,\qquad
+a_n^\#=p_n(\lambda_a^*\lambda_a)a^\#.
+\tag{HR19}
+\]</span>
+For the second identity, a monomial on the left is <span class="math" data-tex="\((aa^\#)^j a\)">\((aa^\#)^j a\)</span>; its involution is <span class="math" data-tex="\(a^\#(aa^\#)^j=(a^\#a)^j a^\#\)">\(a^\#(aa^\#)^j=(a^\#a)^j a^\#\)</span>. The support statements and spectral dominated convergence show <span class="math" data-tex="\(a_n\to a\)">\(a_n\to a\)</span>, <span class="math" data-tex="\(a_n^\#\to a^\#\)">\(a_n^\#\to a^\#\)</span>. As <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> itself is a core for <span class="math" data-tex="\(S\)">\(S\)</span>, a diagonal choice of these approximants proves that <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span> is a graph core for <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(\eta,\zeta\in B_r\)">\(\eta,\zeta\in B_r\)</span> and <span class="math" data-tex="\(R_\eta^*=R_\zeta\)">\(R_\eta^*=R_\zeta\)</span>. For <span class="math" data-tex="\(b,c\in\mathcal A\)">\(b,c\in\mathcal A\)</span>,
+<span class="math math-display" data-tex="\[
+\langle\eta,b^\#c\rangle
+=\langle R_\eta b,c\rangle
+=\langle b,R_\zeta c\rangle
+=\langle c^\#b,\zeta\rangle.
+\tag{HR20}
+\]">\[
+\langle\eta,b^\#c\rangle
+=\langle R_\eta b,c\rangle
+=\langle b,R_\zeta c\rangle
+=\langle c^\#b,\zeta\rangle.
+\tag{HR20}
+\]</span>
+Set <span class="math" data-tex="\(a=c^\#b\)">\(a=c^\#b\)</span>; linearity extends this to the span <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span>. The preceding graph core extends it to all <span class="math" data-tex="\(a\in D(S)\)">\(a\in D(S)\)</span>, proving <span class="math" data-tex="\(\eta\in D(F)\)">\(\eta\in D(F)\)</span> and <span class="math" data-tex="\(F\eta=\zeta\)">\(F\eta=\zeta\)</span>. Together with (HR3), this gives the exact operator-space equality
+<span class="math math-display" data-tex="\[
+R(\mathcal D)=I\cap I^*.
+\tag{HR21}
+\]">\[
+R(\mathcal D)=I\cap I^*.
+\tag{HR21}
+\]</span></p>
+<p><a id="oa-flow.ha-r.8"></a></p>
+<h2 id="OA-FLOW.HA-R.8">HA-R8. Exact modular uses and the arbitrary-weight boundary</h2>
+<p>HA-R1–2 and HA-R7 supply the bounded-vector ideal, adjoint-product and adjoint-intersection inputs previously taken from HA-05, HA-08 and RD-07. HA-R3–6 supply the affiliated multiplier, its test-domain adjoint formulas, both polar decompositions, cutoff involution identity, graph-core density and commutant-generation inputs previously taken from RD-02–06. The opposite-algebra version has the same proof with left and right exchanged; it uses the same arbitrary Hilbert space and no countability assumption.</p>
+<p>In the later application, the WH-04 proof supplies the second-dual fullness statement and equality of its closed involution with <span class="math" data-tex="\(S\)">\(S\)</span>. Applied to a full left Hilbert algebra, HA-R3–5 give precisely the closed left-multiplier and cutoff identities needed in MF-06's resolvent argument; CI supplies its polar and imaginary-power facts. Thus the replacement preserves the general Hilbert-algebra scope of those analytic inputs. It does not replace the MF-06 resolvent/Gaussian proof itself.</p>
+<p>These constructions do not assert that an arbitrary n.s.f. weight's finite-star GNS algebra satisfies the initial Hilbert-algebra axioms, do not reconstruct a weight from a full left Hilbert algebra, and do not prove the order/ultraweak characterization of arbitrary normal weights. The later <a href="OA-FLOW-WF.html#oa-flow.wf.6">WF construction and domain transport</a>, <a href="OA-FLOW-EW.html#ew-5">all-weight normality</a> and <span class="unlinked">faithful finite-star closability</span>–<span class="unlinked">reverse/opposite finite-cone correspondence</span> supply these separate branches. They are not premises of this pure Hilbert-algebra provider.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact graph spectrum and cutoff functions" src="assets/modular-ancestry/assets/graph-polar-cutoff.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>Original CC0 illustration. The left panel shows the reciprocal scalar spectrum in CI-2–3; the right panel shows the exact compact cutoff functions of HA-R5, HR14–HR16. The bottom row retains both Hilbert spaces and the full graph-domain identities. The sampled curves illustrate the proved formulas. <a href="assets/modular-ancestry/render_graph_polar_cutoff.py">Reproduction source</a> and <a href="assets/modular-ancestry/assets/graph-polar-cutoff.svg">editable SVG</a>.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><span class="unlinked">Previous lesson</span><a href="OA-FLOW-WH04.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-HA-R.md">Lesson source</a></nav></main></body></html>

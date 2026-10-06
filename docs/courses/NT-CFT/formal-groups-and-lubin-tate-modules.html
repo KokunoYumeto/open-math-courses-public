@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formal groups and Lubin–Tate modules · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/formal-groups-and-lubin-tate-modules.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (3)</summary><ul><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-02">Completions, the p-adic numbers and complete discretely valued fields</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-04">Extensions of complete valued fields</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-07">Unramified and totally ramified extensions</a></li></ul></details>
+<article class="lesson">
+<h1 id="formal-groups-and-lubin-tate-modules">Formal groups and Lubin–Tate modules</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p>The multiplicative expression <span class="math" data-tex="\(X+Y+XY\)">\(X+Y+XY\)</span> becomes a group law near zero because <span class="math" data-tex="\(1+(X+Y+XY)=(1+X)(1+Y)\)">\(1+(X+Y+XY)=(1+X)(1+Y)\)</span>. A formal group retains such a law as a power series, before choosing the elements on which it will be evaluated. Lubin–Tate theory builds one whose multiplication by a uniformizer reduces to Frobenius. Its division points will furnish explicit abelian extensions in the next lesson.</p>
+<p>Two congruences drive the construction. The linear coefficient is a uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, while reduction of the entire series is <span class="math" data-tex="\(X^q\)">\(X^q\)</span>. One controls the coefficient to be solved; the other makes the obstruction divisible by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. We prove that coefficient calculation, derive the group and its scalar action, and then compare different uniformizers using Frobenius on the completed unramified tower.</p>
+<p>We use <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-02">Completions, the p-adic numbers and complete discretely valued fields</a>, Theorem 2.1 and Proposition 2.2, for completion, extension of isometries and integer approximation in <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>; <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-04">Extensions of complete valued fields</a>, Theorem 1.2, for completeness of finite extensions and their uniquely extended valuation; and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-07">Unramified and totally ramified extensions</a>, Theorem 2.1 and Corollary 3.1, for the unramified tower and its arithmetic Frobenius. The construction is algebraic in its power-series variables; convergence will enter only when we evaluate them or complete a coefficient ring.</p>
+<p><strong>Prerequisite proof availability.</strong> The named results below identify specific programme lessons. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-7">prerequisite record</a> distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.</p>
+<h2 id="1-formal-laws-and-their-inverses">1. Formal laws and their inverses</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a commutative ring with 1. A <strong>one-dimensional commutative formal group law</strong> is <span class="math" data-tex="\(F(X,Y)\in R[[X,Y]]\)">\(F(X,Y)\in R[[X,Y]]\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(X,Y)=X+Y+\text{terms of total degree at least 2},\\
+F(X,0)=X,\quad F(0,Y)=Y,\quad F(X,Y)=F(Y,X),\\
+F(F(X,Y),Z)=F(X,F(Y,Z)).
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+F(X,Y)=X+Y+\text{terms of total degree at least 2},\\
+F(X,0)=X,\quad F(0,Y)=Y,\quad F(X,Y)=F(Y,X),\\
+F(F(X,Y),Z)=F(X,F(Y,Z)).
+\end{gathered}
+\tag{1}
+\]</span>
+<p>Substitution of series with zero constant term is well defined: a coefficient of a given total degree involves only finitely many terms. No analytic convergence is needed for these identities.</p>
+<p>A series <span class="math" data-tex="\(h(X)=cX+\cdots\)">\(h(X)=cX+\cdots\)</span> with <span class="math" data-tex="\(c\in R^\times\)">\(c\in R^\times\)</span> has a unique compositional inverse. Solve <span class="math" data-tex="\(h(k(X))=X\)">\(h(k(X))=X\)</span> degree by degree: <span class="math" data-tex="\(k_1=c^{-1}\)">\(k_1=c^{-1}\)</span>, and at degree <span class="math" data-tex="\(m\)">\(m\)</span> the unknown coefficient of <span class="math" data-tex="\(k\)">\(k\)</span> has coefficient <span class="math" data-tex="\(c\)">\(c\)</span>, hence has a unique value. The same recursion constructs a left inverse; associativity of substitution identifies left and right inverses. If one starts with the linear, commutative and associative conditions alone, the identity conditions in (1) follow: <span class="math" data-tex="\(h(X)=F(X,0)\)">\(h(X)=F(X,0)\)</span> satisfies <span class="math" data-tex="\(h\circ h=h\)">\(h\circ h=h\)</span>, and its invertible linear coefficient is 1, so composing with its inverse gives <span class="math" data-tex="\(h=X\)">\(h=X\)</span>. The other identity follows by commutativity.</p>
+<h3 id="proposition-7-1-the-formal-group-inverse">Proposition 7.1. The formal group inverse</h3>
+<p>There is a unique <span class="math" data-tex="\(\iota_F(X)=-X+\cdots\in R[[X]]\)">\(\iota_F(X)=-X+\cdots\in R[[X]]\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+F(X,\iota_F(X))=0.
+\tag{2}
+\]">\[
+F(X,\iota_F(X))=0.
+\tag{2}
+\]</span>
+<p>It also satisfies <span class="math" data-tex="\(F(\iota_F(X),X)=0\)">\(F(\iota_F(X),X)=0\)</span>.</p>
+<p><strong>Proof.</strong> The degree-one term forces <span class="math" data-tex="\(-X\)">\(-X\)</span>. Once coefficients below degree <span class="math" data-tex="\(m\)">\(m\)</span> are chosen, adding a new term <span class="math" data-tex="\(bX^m\)">\(bX^m\)</span> to that truncation adds exactly <span class="math" data-tex="\(bX^m\)">\(bX^m\)</span> to <span class="math" data-tex="\(F(X,\iota_F(X))\)">\(F(X,\iota_F(X))\)</span> in degree <span class="math" data-tex="\(m\)">\(m\)</span>. The coefficient comes from the linear <span class="math" data-tex="\(Y\)">\(Y\)</span> term; every nonlinear term involving the change has higher degree. Choose <span class="math" data-tex="\(b\)">\(b\)</span> to cancel the known coefficient. This recursion works over any <span class="math" data-tex="\(R\)">\(R\)</span>, proves uniqueness, and commutativity proves the other identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(S\)">\(S\)</span> is a separated complete <span class="math" data-tex="\(R\)">\(R\)</span>-algebra for the powers of an ideal <span class="math" data-tex="\(I\)">\(I\)</span>, evaluation on <span class="math" data-tex="\(x,y\in I\)">\(x,y\in I\)</span> converges in the <span class="math" data-tex="\(I\)">\(I\)</span>-adic topology. Its degree-<span class="math" data-tex="\(m\)">\(m\)</span> terms lie in <span class="math" data-tex="\(I^m\)">\(I^m\)</span>. The identities (1)–(2) make <span class="math" data-tex="\(I\)">\(I\)</span> an abelian group, denoted <span class="math" data-tex="\(F(I)\)">\(F(I)\)</span>, with operation <span class="math" data-tex="\(x+_F y=F(x,y)\)">\(x+_F y=F(x,y)\)</span>. In a finite extension of a complete valued field, integral coefficients likewise converge on its maximal ideal, since terms of increasing degree have valuation tending to infinity.</p>
+<p>The additive law is <span class="math" data-tex="\(G_a(X,Y)=X+Y\)">\(G_a(X,Y)=X+Y\)</span>. The multiplicative law is
+<span class="math" data-tex="\(G_m(X,Y)=X+Y+XY\)">\(G_m(X,Y)=X+Y+XY\)</span>; associativity and commutativity follow from multiplication of <span class="math" data-tex="\(1+X,1+Y,1+Z\)">\(1+X,1+Y,1+Z\)</span>, and its inverse is <span class="math" data-tex="\(-X/(1+X)\)">\(-X/(1+X)\)</span>.</p>
+<p>A homomorphism <span class="math" data-tex="\(h:F\to H\)">\(h:F\to H\)</span> is a zero-constant series satisfying
+<span class="math math-display" data-tex="\[
+h(F(X,Y))=H(h(X),h(Y)).
+\]">\[
+h(F(X,Y))=H(h(X),h(Y)).
+\]</span>
+It is an isomorphism if its linear coefficient is a unit, since its compositional inverse then satisfies the reverse homomorphism identity by substitution. The endomorphisms of <span class="math" data-tex="\(F\)">\(F\)</span> form a ring, with sum <span class="math" data-tex="\(F(h(X),k(X))\)">\(F(h(X),k(X))\)</span>, product <span class="math" data-tex="\(h\circ k\)">\(h\circ k\)</span>, zero series 0 and identity <span class="math" data-tex="\(X\)">\(X\)</span>. Associativity of <span class="math" data-tex="\(F\)">\(F\)</span> supplies additive associativity; <span class="math" data-tex="\(\iota_F\circ h\)">\(\iota_F\circ h\)</span> supplies the negative; the homomorphism identity and associativity of composition give distributivity. This ring need not be commutative for an arbitrary formal group.</p>
+<h2 id="2-the-coefficient-lemma">2. The coefficient lemma</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a nonarchimedean local field, <span class="math" data-tex="\(\mathcal O=\mathcal O_K\)">\(\mathcal O=\mathcal O_K\)</span>, <span class="math" data-tex="\(\pi\)">\(\pi\)</span> a uniformizer, and <span class="math" data-tex="\(\mathcal O/\pi\mathcal O=\mathbf F_q\)">\(\mathcal O/\pi\mathcal O=\mathbf F_q\)</span>. A <strong>Lubin–Tate series for <span class="math" data-tex="\(\pi\)">\(\pi\)</span></strong> is <span class="math" data-tex="\(f\in\mathcal O[[X]]\)">\(f\in\mathcal O[[X]]\)</span> with</p>
+<span class="math math-display" data-tex="\[
+f(X)\equiv\pi X\pmod{\text{degree }2},
+\qquad f(X)\equiv X^q\pmod\pi.
+\tag{3}
+\]">\[
+f(X)\equiv\pi X\pmod{\text{degree }2},
+\qquad f(X)\equiv X^q\pmod\pi.
+\tag{3}
+\]</span>
+<p>Write <span class="math" data-tex="\(\mathcal F_\pi\)">\(\mathcal F_\pi\)</span> for their set. The series <span class="math" data-tex="\(\pi X+X^q\)">\(\pi X+X^q\)</span> is an example.</p>
+<h3 id="lemma-7-2-the-lubin-tate-coefficient-lemma">Lemma 7.2. The Lubin–Tate coefficient lemma</h3>
+<p>For <span class="math" data-tex="\(f,g\in\mathcal F_\pi\)">\(f,g\in\mathcal F_\pi\)</span> and <span class="math" data-tex="\(L(X_1,\ldots,X_d)=\sum_i a_iX_i\)">\(L(X_1,\ldots,X_d)=\sum_i a_iX_i\)</span>, <span class="math" data-tex="\(a_i\in\mathcal O\)">\(a_i\in\mathcal O\)</span>, there is a unique zero-constant series <span class="math" data-tex="\(H\in\mathcal O[[X_1,\ldots,X_d]]\)">\(H\in\mathcal O[[X_1,\ldots,X_d]]\)</span> with linear part <span class="math" data-tex="\(L\)">\(L\)</span> and</p>
+<span class="math math-display" data-tex="\[
+f(H(X))=H(g(X_1),\ldots,g(X_d)).
+\tag{4}
+\]">\[
+f(H(X))=H(g(X_1),\ldots,g(X_d)).
+\tag{4}
+\]</span>
+<p><strong>Proof.</strong> Suppose a polynomial <span class="math" data-tex="\(H_{&lt;m}\)">\(H_{&lt;m}\)</span> with the prescribed linear part satisfies (4) through degrees below <span class="math" data-tex="\(m\)">\(m\)</span>, where <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>. Let <span class="math" data-tex="\(E_m\)">\(E_m\)</span> be the homogeneous degree-<span class="math" data-tex="\(m\)">\(m\)</span> part of the left side minus the right side. Its coefficients are divisible by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Indeed, reducing either side modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span> gives
+<span class="math" data-tex="\(\overline H_{&lt;m}(X)^q\)">\(\overline H_{&lt;m}(X)^q\)</span> and <span class="math" data-tex="\(\overline H_{&lt;m}(X_1^q,\ldots,X_d^q)\)">\(\overline H_{&lt;m}(X_1^q,\ldots,X_d^q)\)</span>, which agree: in characteristic <span class="math" data-tex="\(p\)">\(p\)</span> the <span class="math" data-tex="\(q\)">\(q\)</span>-th power respects sums, and each coefficient in <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span> satisfies <span class="math" data-tex="\(a^q=a\)">\(a^q=a\)</span>.</p>
+<p>Adding a homogeneous polynomial <span class="math" data-tex="\(C_m\)">\(C_m\)</span> of degree <span class="math" data-tex="\(m\)">\(m\)</span> changes this error in degree <span class="math" data-tex="\(m\)">\(m\)</span> by</p>
+<span class="math math-display" data-tex="\[
+(\pi-\pi^m)C_m.
+\]">\[
+(\pi-\pi^m)C_m.
+\]</span>
+<p>On the left only the linear coefficient of <span class="math" data-tex="\(f\)">\(f\)</span> contributes the change in that degree; on the right substitute the linear terms <span class="math" data-tex="\(\pi X_i\)">\(\pi X_i\)</span> into <span class="math" data-tex="\(C_m\)">\(C_m\)</span>. Nonlinear terms contribute only to later degrees. The unique correction is</p>
+<span class="math math-display" data-tex="\[
+C_m=-\frac{E_m}{\pi(1-\pi^{m-1})}.
+\tag{5}
+\]">\[
+C_m=-\frac{E_m}{\pi(1-\pi^{m-1})}.
+\tag{5}
+\]</span>
+<p>It has integral coefficients because <span class="math" data-tex="\(E_m\)">\(E_m\)</span> is divisible by <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and <span class="math" data-tex="\(1-\pi^{m-1}\)">\(1-\pi^{m-1}\)</span> is a unit. The initial linear equation holds because multiplication by <span class="math" data-tex="\(\pi\)">\(\pi\)</span> commutes with <span class="math" data-tex="\(L\)">\(L\)</span>. Induction constructs every homogeneous part and proves (4). If two solutions first differ in degree <span class="math" data-tex="\(m\)">\(m\)</span>, their difference there is killed by <span class="math" data-tex="\(\pi-\pi^m\)">\(\pi-\pi^m\)</span>, a nonzero element of the domain <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>; hence that difference is zero. This also proves uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The coefficients are determined by algebraic degree induction. We are not substituting large elements into the series or assuming that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is an invertible coefficient.</p>
+<p><strong>Computing the first nonlinear part.</strong> For <span class="math" data-tex="\(f=g=\pi X+X^q\)">\(f=g=\pi X+X^q\)</span>, let <span class="math" data-tex="\(F\)">\(F\)</span> be the solution with linear part <span class="math" data-tex="\(X+Y\)">\(X+Y\)</span>. All homogeneous parts of degrees <span class="math" data-tex="\(2,\ldots,q-1\)">\(2,\ldots,q-1\)</span> are zero: the initial error has no terms in those degrees, and (5) then gives zero at each step. In degree <span class="math" data-tex="\(q\)">\(q\)</span> the initial error is
+<span class="math" data-tex="\((X+Y)^q-X^q-Y^q\)">\((X+Y)^q-X^q-Y^q\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+F(X,Y)=X+Y+
+\frac{\displaystyle\sum_{j=1}^{q-1}\binom qj X^jY^{q-j}}
+     {\pi^q-\pi}
+\pmod{\text{degree }q+1}.
+\]">\[
+F(X,Y)=X+Y+
+\frac{\displaystyle\sum_{j=1}^{q-1}\binom qj X^jY^{q-j}}
+     {\pi^q-\pi}
+\pmod{\text{degree }q+1}.
+\]</span>
+Each displayed coefficient is integral: reduction modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span> kills the numerator, and <span class="math" data-tex="\((\pi^q-\pi)/\pi\)">\((\pi^q-\pi)/\pi\)</span> is a unit. In equal characteristic the numerator is identically zero. Indeed, in that case the full additive law commutes with <span class="math" data-tex="\(\pi X+X^q\)">\(\pi X+X^q\)</span>, so uniqueness proves <span class="math" data-tex="\(F=X+Y\)">\(F=X+Y\)</span> in every degree. Over <span class="math" data-tex="\(\mathbf Q_2\)">\(\mathbf Q_2\)</span> with <span class="math" data-tex="\(\pi=2\)">\(\pi=2\)</span>, the formula gives the coefficient 1 of <span class="math" data-tex="\(XY\)">\(XY\)</span>. Here <span class="math" data-tex="\(2X+X^2=(1+X)^2-1\)">\(2X+X^2=(1+X)^2-1\)</span> commutes with <span class="math" data-tex="\(X+Y+XY\)">\(X+Y+XY\)</span>, and uniqueness proves that this is the full law. The same coefficient construction thus yields different group laws in the two characteristics.</p>
+<h2 id="3-the-group-and-its-scalar-action">3. The group and its scalar action</h2>
+<p>For <span class="math" data-tex="\(f\in\mathcal F_\pi\)">\(f\in\mathcal F_\pi\)</span>, apply the lemma with two variables, source series <span class="math" data-tex="\(f\)">\(f\)</span> and linear form <span class="math" data-tex="\(X+Y\)">\(X+Y\)</span>. Denote the resulting series by <span class="math" data-tex="\(F_f(X,Y)\)">\(F_f(X,Y)\)</span>. For <span class="math" data-tex="\(f,g\in\mathcal F_\pi\)">\(f,g\in\mathcal F_\pi\)</span> and <span class="math" data-tex="\(a\in\mathcal O\)">\(a\in\mathcal O\)</span>, let <span class="math" data-tex="\([a]_{f,g}\)">\([a]_{f,g}\)</span> be the one-variable solution with target <span class="math" data-tex="\(f\)">\(f\)</span>, source <span class="math" data-tex="\(g\)">\(g\)</span>, and linear term <span class="math" data-tex="\(aX\)">\(aX\)</span>. Put <span class="math" data-tex="\([a]_f=[a]_{f,f}\)">\([a]_f=[a]_{f,f}\)</span>.</p>
+<h3 id="theorem-7-3-lubin-tate-formal-modules">Theorem 7.3. Lubin–Tate formal modules</h3>
+<p>The series <span class="math" data-tex="\(F_f\)">\(F_f\)</span> is a formal group law, and</p>
+<span class="math math-display" data-tex="\[
+\mathcal O\longrightarrow\operatorname{End}_{\mathcal O}(F_f),
+\qquad a\longmapsto[a]_f
+\tag{6}
+\]">\[
+\mathcal O\longrightarrow\operatorname{End}_{\mathcal O}(F_f),
+\qquad a\longmapsto[a]_f
+\tag{6}
+\]</span>
+<p>is an injective ring homomorphism with <span class="math" data-tex="\([\pi]_f=f\)">\([\pi]_f=f\)</span>. Each <span class="math" data-tex="\([a]_{f,g}:F_g\to F_f\)">\([a]_{f,g}:F_g\to F_f\)</span> is a homomorphism compatible with these scalar actions. When <span class="math" data-tex="\(a\)">\(a\)</span> is a unit it is an isomorphism. In particular, all <span class="math" data-tex="\(F_f\)">\(F_f\)</span>, <span class="math" data-tex="\(f\in\mathcal F_\pi\)">\(f\in\mathcal F_\pi\)</span>, are isomorphic over <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>.</p>
+<p><strong>Proof.</strong> In the following comparisons, the coefficient lemma applies to the indicated linear part and the indicated source series.</p>
+<p>The two series <span class="math" data-tex="\(F_f(X,Y)\)">\(F_f(X,Y)\)</span> and <span class="math" data-tex="\(F_f(Y,X)\)">\(F_f(Y,X)\)</span> satisfy (4) with target <span class="math" data-tex="\(f\)">\(f\)</span>, source <span class="math" data-tex="\(f\)">\(f\)</span> and linear part <span class="math" data-tex="\(X+Y\)">\(X+Y\)</span>. They are equal. The specialization <span class="math" data-tex="\(F_f(X,0)\)">\(F_f(X,0)\)</span> and the identity <span class="math" data-tex="\(X\)">\(X\)</span> both commute with <span class="math" data-tex="\(f\)">\(f\)</span> and have linear term <span class="math" data-tex="\(X\)">\(X\)</span>, so they agree. Finally,
+<span class="math" data-tex="\(F_f(F_f(X,Y),Z)\)">\(F_f(F_f(X,Y),Z)\)</span> and <span class="math" data-tex="\(F_f(X,F_f(Y,Z))\)">\(F_f(X,F_f(Y,Z))\)</span> both commute with simultaneous substitution of <span class="math" data-tex="\(f\)">\(f\)</span> in the three variables and have linear part <span class="math" data-tex="\(X+Y+Z\)">\(X+Y+Z\)</span>. Uniqueness gives associativity. Thus <span class="math" data-tex="\(F_f\)">\(F_f\)</span> satisfies (1), and Proposition 7.1 supplies its inverse.</p>
+<p>The homomorphism identity for <span class="math" data-tex="\(h=[a]_{f,g}\)">\(h=[a]_{f,g}\)</span> follows by comparing
+<span class="math math-display" data-tex="\[
+h(F_g(X,Y))\quad\text{and}\quad F_f(h(X),h(Y)).
+\]">\[
+h(F_g(X,Y))\quad\text{and}\quad F_f(h(X),h(Y)).
+\]</span>
+Both have linear part <span class="math" data-tex="\(a(X+Y)\)">\(a(X+Y)\)</span>, target <span class="math" data-tex="\(f\)">\(f\)</span> and simultaneous source <span class="math" data-tex="\(g\)">\(g\)</span>. For the first, commute <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(g,f\)">\(g,f\)</span> and use the defining identity for <span class="math" data-tex="\(F_g\)">\(F_g\)</span>; for the second, use it for <span class="math" data-tex="\(F_f\)">\(F_f\)</span>. The lemma makes them equal.</p>
+<p>Likewise, the identities</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+[a+b]_{f,g}&amp;=F_f([a]_{f,g},[b]_{f,g}),\\
+[a]_{f,g}\circ[b]_{g,h}&amp;=[ab]_{f,h}
+\end{aligned}
+\tag{7}
+\]">\[
+\begin{aligned}
+[a+b]_{f,g}&amp;=F_f([a]_{f,g},[b]_{f,g}),\\
+[a]_{f,g}\circ[b]_{g,h}&amp;=[ab]_{f,h}
+\end{aligned}
+\tag{7}
+\]</span>
+<p>follow by comparing their linear parts and commuting equations. Explicitly, for the composition, <span class="math" data-tex="\(f[a]_{f,g}[b]_{g,h}=[a]_{f,g}g[b]_{g,h}=[a]_{f,g}[b]_{g,h}h\)">\(f[a]_{f,g}[b]_{g,h}=[a]_{f,g}g[b]_{g,h}=[a]_{f,g}[b]_{g,h}h\)</span>; the sum commutes because <span class="math" data-tex="\(f\)">\(f\)</span> is an endomorphism of <span class="math" data-tex="\(F_f\)">\(F_f\)</span>. The solutions of linear parts <span class="math" data-tex="\(0,X,\pi X\)">\(0,X,\pi X\)</span> for target and source <span class="math" data-tex="\(f\)">\(f\)</span> are respectively <span class="math" data-tex="\(0,X,f\)">\(0,X,f\)</span>. These facts prove the ring assertions in (6); injectivity follows by reading the linear coefficient.</p>
+<p>Equation (7) also gives
+<span class="math" data-tex="\([a]_{f,g}[b]_g=[ab]_{f,g}=[b]_f[a]_{f,g}\)">\([a]_{f,g}[b]_g=[ab]_{f,g}=[b]_f[a]_{f,g}\)</span>,
+so scalar actions are respected. If <span class="math" data-tex="\(a\)">\(a\)</span> is a unit, <span class="math" data-tex="\([a^{-1}]_{g,f}\)">\([a^{-1}]_{g,f}\)</span> is the inverse by (7). Taking <span class="math" data-tex="\(a=1\)">\(a=1\)</span> gives the final isomorphism assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A formal <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-module means a formal group with an <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-action whose scalar <span class="math" data-tex="\(a\)">\(a\)</span> has linear coefficient <span class="math" data-tex="\(a\)">\(a\)</span>. The construction is unique for prescribed <span class="math" data-tex="\(f=[\pi]\)">\(f=[\pi]\)</span>: its law must satisfy (4) with linear part <span class="math" data-tex="\(X+Y\)">\(X+Y\)</span>, and its scalar series must commute with <span class="math" data-tex="\([\pi]\)">\([\pi]\)</span> and have the prescribed linear coefficient. The lemma determines both. We write <span class="math" data-tex="\(F_f[\pi^n]\)">\(F_f[\pi^n]\)</span> for its <span class="math" data-tex="\(\pi^n\)">\(\pi^n\)</span>-division points when the series are evaluated in algebraic maximal ideals.</p>
+<h2 id="4-frobenius-on-the-completed-unramified-ring">4. Frobenius on the completed unramified ring</h2>
+<p>Let <span class="math" data-tex="\(\widehat{K^{\mathrm{ur}}}\)">\(\widehat{K^{\mathrm{ur}}}\)</span> be the completion of the maximal unramified extension and <span class="math" data-tex="\(\widehat{\mathcal O}\)">\(\widehat{\mathcal O}\)</span> its valuation ring. The uniformizer remains <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, its residue field is <span class="math" data-tex="\(\overline{\mathbf F}_q\)">\(\overline{\mathbf F}_q\)</span>, and its value group is <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. To see that completion does not alter these assertions, a Cauchy sequence representing a nonzero element of the completion has eventually constant valuation, and an integral Cauchy sequence has eventually constant residue. Conversely every algebraic residue element appears in a finite unramified extension. These observations also show that <span class="math" data-tex="\(\widehat{\mathcal O}\)">\(\widehat{\mathcal O}\)</span> is a complete discrete valuation ring.</p>
+<p>Arithmetic Frobenius is an isometry on the unramified union, so it extends, together with its inverse, to an automorphism <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> of the completion. It fixes <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and reduces to <span class="math" data-tex="\(x\mapsto x^q\)">\(x\mapsto x^q\)</span>.</p>
+<h3 id="lemma-7-4-additive-and-multiplicative-frobenius-equations">Lemma 7.4. Additive and multiplicative Frobenius equations</h3>
+<p>The maps</p>
+<span class="math math-display" data-tex="\[
+x\longmapsto\varphi(x)-x
+\quad\text{on }\widehat{\mathcal O},\qquad
+x\longmapsto\varphi(x)/x
+\quad\text{on }\widehat{\mathcal O}^{\times}
+\tag{8}
+\]">\[
+x\longmapsto\varphi(x)-x
+\quad\text{on }\widehat{\mathcal O},\qquad
+x\longmapsto\varphi(x)/x
+\quad\text{on }\widehat{\mathcal O}^{\times}
+\tag{8}
+\]</span>
+<p>are surjective. Their kernels are <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> and <span class="math" data-tex="\(\mathcal O_K^\times\)">\(\mathcal O_K^\times\)</span>, respectively.</p>
+<p><strong>Proof.</strong> For an additive target <span class="math" data-tex="\(c\)">\(c\)</span>, solve <span class="math" data-tex="\(y^q-y=\bar c\)">\(y^q-y=\bar c\)</span> in the algebraically closed residue field. Lift a solution to <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. If <span class="math" data-tex="\(\varphi(x_r)-x_r-c\in\pi^r\widehat{\mathcal O}\)">\(\varphi(x_r)-x_r-c\in\pi^r\widehat{\mathcal O}\)</span>, solve <span class="math" data-tex="\(y^q-y=b\)">\(y^q-y=b\)</span>, where <span class="math" data-tex="\(b\)">\(b\)</span> is the negative residue of <span class="math" data-tex="\(\pi^{-r}(\varphi(x_r)-x_r-c)\)">\(\pi^{-r}(\varphi(x_r)-x_r-c)\)</span>. A correction <span class="math" data-tex="\(\pi^r y\)">\(\pi^r y\)</span> removes that error modulo <span class="math" data-tex="\(\pi^{r+1}\)">\(\pi^{r+1}\)</span>. Inductively the error tends to zero, the corrections tend to zero, and completeness gives an exact solution.</p>
+<p>For a unit target <span class="math" data-tex="\(c\)">\(c\)</span>, first solve <span class="math" data-tex="\(y^{q-1}=\bar c\)">\(y^{q-1}=\bar c\)</span> with <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span> and lift to a unit <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Its quotient <span class="math" data-tex="\(\varphi(x_0)/x_0\)">\(\varphi(x_0)/x_0\)</span> matches <span class="math" data-tex="\(c\)">\(c\)</span> modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. If the residual target ratio is <span class="math" data-tex="\(1+\pi^r b\)">\(1+\pi^r b\)</span> modulo <span class="math" data-tex="\(\pi^{r+1}\)">\(\pi^{r+1}\)</span>, multiply the tentative solution by <span class="math" data-tex="\(1+\pi^r y\)">\(1+\pi^r y\)</span>. Its Frobenius ratio is
+<span class="math math-display" data-tex="\[
+1+\pi^r(\varphi(y)-y)\pmod{\pi^{r+1}}.
+\]">\[
+1+\pi^r(\varphi(y)-y)\pmod{\pi^{r+1}}.
+\]</span>
+Solving <span class="math" data-tex="\(y^q-y=\bar b\)">\(y^q-y=\bar b\)</span> improves the agreement. The successive unit corrections form a convergent product, giving an exact preimage of <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>For the kernels, suppose <span class="math" data-tex="\(\varphi(x)=x\)">\(\varphi(x)=x\)</span>, <span class="math" data-tex="\(x\in\widehat{\mathcal O}\)">\(x\in\widehat{\mathcal O}\)</span>. Its residue lies in <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, so choose <span class="math" data-tex="\(a_0\in\mathcal O_K\)">\(a_0\in\mathcal O_K\)</span> with that residue. Then <span class="math" data-tex="\(x=a_0+\pi x_1\)">\(x=a_0+\pi x_1\)</span>, and <span class="math" data-tex="\(x_1\)">\(x_1\)</span> is again fixed. Repeat to express <span class="math" data-tex="\(x\)">\(x\)</span> as the convergent series <span class="math" data-tex="\(\sum_{r\geq0}\pi^r a_r\)">\(\sum_{r\geq0}\pi^r a_r\)</span>, with all <span class="math" data-tex="\(a_r\)">\(a_r\)</span> chosen in a fixed finite set of residue representatives in <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. Completeness of <span class="math" data-tex="\(K\)">\(K\)</span> puts its limit in <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. The reverse inclusion is fixed by <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. For a unit, the same assertion gives precisely <span class="math" data-tex="\(\mathcal O_K^\times\)">\(\mathcal O_K^\times\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>It is the completion that guarantees convergence of the corrections. Their residues can lie in larger and larger finite fields, so there is no reason for the limit to belong to the algebraic unramified union.</p>
+<h2 id="5-changing-the-uniformizer">5. Changing the uniformizer</h2>
+<p>We need a twisted version of the coefficient lemma. Let <span class="math" data-tex="\(\pi,\pi&#x27;\)">\(\pi,\pi&#x27;\)</span> be uniformizers, <span class="math" data-tex="\(f\in\mathcal F_\pi\)">\(f\in\mathcal F_\pi\)</span>, <span class="math" data-tex="\(f&#x27;\in\mathcal F_{\pi&#x27;}\)">\(f&#x27;\in\mathcal F_{\pi&#x27;}\)</span>, and let <span class="math" data-tex="\(L(X)\)">\(L(X)\)</span> be a linear form over <span class="math" data-tex="\(\widehat{\mathcal O}\)">\(\widehat{\mathcal O}\)</span> such that
+<span class="math math-display" data-tex="\[
+\pi&#x27;L=\pi L^\varphi.
+\tag{9}
+\]">\[
+\pi&#x27;L=\pi L^\varphi.
+\tag{9}
+\]</span>
+Superscript <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> means that it acts on coefficients, leaving variables alone. Then there is a unique series <span class="math" data-tex="\(H\)">\(H\)</span> with linear part <span class="math" data-tex="\(L\)">\(L\)</span> satisfying
+<span class="math math-display" data-tex="\[
+f&#x27;(H(X))=H^\varphi(f(X_1),\ldots,f(X_d)).
+\tag{10}
+\]">\[
+f&#x27;(H(X))=H^\varphi(f(X_1),\ldots,f(X_d)).
+\tag{10}
+\]</span></p>
+<p>Here is the full additional coefficient calculation. In degree <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, the error is divisible by <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span>: modulo the maximal ideal the two sides are <span class="math" data-tex="\(\overline H(X)^q\)">\(\overline H(X)^q\)</span> and <span class="math" data-tex="\(\overline H^\varphi(X_1^q,\ldots,X_d^q)\)">\(\overline H^\varphi(X_1^q,\ldots,X_d^q)\)</span>, equal because <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> raises residue coefficients to the <span class="math" data-tex="\(q\)">\(q\)</span>-th power. For a correction coefficient <span class="math" data-tex="\(a\)">\(a\)</span>, the equation is</p>
+<span class="math math-display" data-tex="\[
+\pi&#x27;a-\pi^m\varphi(a)=-e_m,\qquad e_m\in\pi&#x27;\widehat{\mathcal O}.
+\]">\[
+\pi&#x27;a-\pi^m\varphi(a)=-e_m,\qquad e_m\in\pi&#x27;\widehat{\mathcal O}.
+\]</span>
+<p>Put <span class="math" data-tex="\(\alpha=\pi^m/\pi&#x27;\)">\(\alpha=\pi^m/\pi&#x27;\)</span>, <span class="math" data-tex="\(b=-e_m/\pi&#x27;\)">\(b=-e_m/\pi&#x27;\)</span>. Since <span class="math" data-tex="\(v(\alpha)=m-1&gt;0\)">\(v(\alpha)=m-1&gt;0\)</span>, the unique solution of <span class="math" data-tex="\(a-\alpha\varphi(a)=b\)">\(a-\alpha\varphi(a)=b\)</span> is</p>
+<span class="math math-display" data-tex="\[
+a=\sum_{j\geq0}\alpha^j\varphi^j(b).
+\tag{11}
+\]">\[
+a=\sum_{j\geq0}\alpha^j\varphi^j(b).
+\tag{11}
+\]</span>
+<p>The coefficients <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> are fixed by <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, so substitution telescopes and proves the equation. The terms tend to zero and the ring is complete. A difference of two solutions would satisfy <span class="math" data-tex="\(a=\alpha\varphi(a)\)">\(a=\alpha\varphi(a)\)</span>, impossible for a nonzero element because <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> preserves valuation. This proves existence and uniqueness in every homogeneous degree. Condition (9) is exactly the degree-one equation. We have proved (10) without appealing to a formal logarithm.</p>
+<h3 id="theorem-7-5-comparison-over-the-completed-unramified-extension">Theorem 7.5. Comparison over the completed unramified extension</h3>
+<p>Suppose <span class="math" data-tex="\(\pi&#x27;=u\pi\)">\(\pi&#x27;=u\pi\)</span>, <span class="math" data-tex="\(u\in\mathcal O_K^\times\)">\(u\in\mathcal O_K^\times\)</span>. For any <span class="math" data-tex="\(f\in\mathcal F_\pi\)">\(f\in\mathcal F_\pi\)</span> and <span class="math" data-tex="\(f&#x27;\in\mathcal F_{\pi&#x27;}\)">\(f&#x27;\in\mathcal F_{\pi&#x27;}\)</span>, there is an isomorphism of formal <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>-modules</p>
+<span class="math math-display" data-tex="\[
+\theta:F_f\longrightarrow F_{f&#x27;}
+\quad\text{over }\widehat{\mathcal O}
+\]">\[
+\theta:F_f\longrightarrow F_{f&#x27;}
+\quad\text{over }\widehat{\mathcal O}
+\]</span>
+<p>with linear term <span class="math" data-tex="\(\varepsilon X\)">\(\varepsilon X\)</span>, where <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is a unit satisfying
+<span class="math math-display" data-tex="\[
+\varphi(\varepsilon)=u\varepsilon.
+\]">\[
+\varphi(\varepsilon)=u\varepsilon.
+\]</span>
+It satisfies</p>
+<span class="math math-display" data-tex="\[
+\theta^\varphi=\theta\circ[u]_f.
+\tag{12}
+\]">\[
+\theta^\varphi=\theta\circ[u]_f.
+\tag{12}
+\]</span>
+<p><strong>Proof.</strong> Lemma 7.4 supplies <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Equation (9) holds for <span class="math" data-tex="\(L=\varepsilon X\)">\(L=\varepsilon X\)</span>, so the twisted lemma constructs <span class="math" data-tex="\(\theta\)">\(\theta\)</span> satisfying <span class="math" data-tex="\(f&#x27;\theta=\theta^\varphi f\)">\(f&#x27;\theta=\theta^\varphi f\)</span>.</p>
+<p>Compare <span class="math" data-tex="\(\theta(F_f(X,Y))\)">\(\theta(F_f(X,Y))\)</span> and <span class="math" data-tex="\(F_{f&#x27;}(\theta(X),\theta(Y))\)">\(F_{f&#x27;}(\theta(X),\theta(Y))\)</span>. The coefficients of <span class="math" data-tex="\(F_f,F_{f&#x27;}\)">\(F_f,F_{f&#x27;}\)</span> are fixed by <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. Their commuting identities and <span class="math" data-tex="\(f&#x27;\theta=\theta^\varphi f\)">\(f&#x27;\theta=\theta^\varphi f\)</span> therefore show that both compared series satisfy (10), with linear part <span class="math" data-tex="\(\varepsilon(X+Y)\)">\(\varepsilon(X+Y)\)</span>. Uniqueness proves the formal group homomorphism identity. Likewise, <span class="math" data-tex="\(\theta[a]_f\)">\(\theta[a]_f\)</span> and <span class="math" data-tex="\([a]_{f&#x27;}\theta\)">\([a]_{f&#x27;}\theta\)</span> satisfy (10) with linear term <span class="math" data-tex="\(\varepsilon aX\)">\(\varepsilon aX\)</span>, so they agree for every <span class="math" data-tex="\(a\in\mathcal O_K\)">\(a\in\mathcal O_K\)</span>. Since <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is a unit, the formal compositional inverse exists and makes <span class="math" data-tex="\(\theta\)">\(\theta\)</span> an isomorphism.</p>
+<p>Finally, <span class="math" data-tex="\(\theta^\varphi\)">\(\theta^\varphi\)</span> satisfies (10) by applying <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> to its defining equality. The series <span class="math" data-tex="\(\theta[u]_f\)">\(\theta[u]_f\)</span> satisfies the same equation because <span class="math" data-tex="\([u]_f\)">\([u]_f\)</span> commutes with <span class="math" data-tex="\(f\)">\(f\)</span> and has fixed coefficients. Their linear terms agree, <span class="math" data-tex="\(\varphi(\varepsilon)X=\varepsilon uX\)">\(\varphi(\varepsilon)X=\varepsilon uX\)</span>, so uniqueness gives (12). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The direction matters: with <span class="math" data-tex="\(\pi&#x27;=u\pi\)">\(\pi&#x27;=u\pi\)</span>, the source of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is the group for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and <span class="math" data-tex="\([u]_f\)">\([u]_f\)</span> in (12) acts on that source. Inverting the direction changes the corresponding unit equation.</p>
+<h2 id="6-the-multiplicative-example-over-mathbf-z_p">6. The multiplicative example over <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span></h2>
+<p>For <span class="math" data-tex="\(a\in\mathbf Z_p\)">\(a\in\mathbf Z_p\)</span>, the binomial series</p>
+<span class="math math-display" data-tex="\[
+[a](X)=(1+X)^a-1=\sum_{j\geq1}\binom aj X^j
+\tag{13}
+\]">\[
+[a](X)=(1+X)^a-1=\sum_{j\geq1}\binom aj X^j
+\tag{13}
+\]</span>
+<p>has integral coefficients. For fixed <span class="math" data-tex="\(j\)">\(j\)</span>, <span class="math" data-tex="\(\binom aj\)">\(\binom aj\)</span> is a continuous polynomial function of <span class="math" data-tex="\(a\)">\(a\)</span> over <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span>. Approximate <span class="math" data-tex="\(a\)">\(a\)</span> by nonnegative integers, whose binomial coefficients are integral; closedness of <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span> proves the assertion.</p>
+<p>For nonnegative integers, (13) respects <span class="math" data-tex="\(G_m\)">\(G_m\)</span> by the ordinary power identity. Taking coefficientwise limits proves the homomorphism identity for <span class="math" data-tex="\(a\in\mathbf Z_p\)">\(a\in\mathbf Z_p\)</span>, since each coefficient of a substituted identity depends on finitely many coefficients. The same reasoning applied to integer pairs gives
+<span class="math math-display" data-tex="\[
+[a+b]=G_m([a],[b]),\qquad [ab]=[a]\circ[b].
+\]">\[
+[a+b]=G_m([a],[b]),\qquad [ab]=[a]\circ[b].
+\]</span>
+The series <span class="math" data-tex="\(f=(1+X)^p-1\)">\(f=(1+X)^p-1\)</span> has linear term <span class="math" data-tex="\(pX\)">\(pX\)</span> and reduction <span class="math" data-tex="\(X^p\)">\(X^p\)</span>, so belongs to <span class="math" data-tex="\(\mathcal F_p\)">\(\mathcal F_p\)</span>. The group <span class="math" data-tex="\(G_m\)">\(G_m\)</span> and its series (13) satisfy the defining equations of Theorem 7.3; uniqueness identifies them with <span class="math" data-tex="\(F_f\)">\(F_f\)</span> and <span class="math" data-tex="\([a]_f\)">\([a]_f\)</span>. The other choice <span class="math" data-tex="\(pX+X^p\)">\(pX+X^p\)</span> therefore yields a formal group isomorphic to <span class="math" data-tex="\(G_m\)">\(G_m\)</span> over <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>.</p>
+<p>Every endomorphism <span class="math" data-tex="\(h\)">\(h\)</span> of <span class="math" data-tex="\(G_m\)">\(G_m\)</span> over <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span> commutes with its integer multiplication <span class="math" data-tex="\([p]\)">\([p]\)</span>, because a homomorphism preserves a repeated group sum. If its linear coefficient is <span class="math" data-tex="\(a\)">\(a\)</span>, Lemma 7.2 makes it the unique series commuting with <span class="math" data-tex="\(f=[p]\)">\(f=[p]\)</span> and starting with <span class="math" data-tex="\(aX\)">\(aX\)</span>. Thus it is (13), proving</p>
+<span class="math math-display" data-tex="\[
+\operatorname{End}_{\mathbf Z_p}(G_m)=\mathbf Z_p
+\]">\[
+\operatorname{End}_{\mathbf Z_p}(G_m)=\mathbf Z_p
+\]</span>
+<p>with the ring operations already described. This argument does not assert an analogous derivative classification for arbitrary formal groups in positive characteristic.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Verify the formal group identities for <span class="math" data-tex="\(G_m\)">\(G_m\)</span>, its inverse, and the integral scalar series <span class="math" data-tex="\((1+X)^a-1\)">\((1+X)^a-1\)</span>, <span class="math" data-tex="\(a\in\mathbf Z_p\)">\(a\in\mathbf Z_p\)</span>.</li>
+<li><strong>Medium.</strong> Construct the formal inverse of an arbitrary <span class="math" data-tex="\(F\)">\(F\)</span> over an arbitrary commutative ring, proving uniqueness without division by integers.</li>
+<li><strong>Medium.</strong> Prove that every endomorphism of <span class="math" data-tex="\(G_m\)">\(G_m\)</span> over <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span> is <span class="math" data-tex="\((1+X)^a-1\)">\((1+X)^a-1\)</span> for a unique <span class="math" data-tex="\(a\in\mathbf Z_p\)">\(a\in\mathbf Z_p\)</span>.</li>
+<li><strong>Hard.</strong> Prove both surjectivities in Lemma 7.4, identify both kernels, and explain why completing the unramified union is part of the argument.</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<ol>
+<li>Multiplying <span class="math" data-tex="\(1+X,1+Y\)">\(1+X,1+Y\)</span> yields <span class="math" data-tex="\(1+G_m(X,Y)\)">\(1+G_m(X,Y)\)</span>, so commutativity, associativity and the identity follow from multiplication in <span class="math" data-tex="\(R[[X,Y,Z]]\)">\(R[[X,Y,Z]]\)</span>. The inverse is <span class="math" data-tex="\(-X/(1+X)=-X+X^2-\cdots\)">\(-X/(1+X)=-X+X^2-\cdots\)</span>. For fixed <span class="math" data-tex="\(j\)">\(j\)</span>, the continuous polynomial <span class="math" data-tex="\(\binom aj\)">\(\binom aj\)</span> takes integral values at nonnegative integers dense in <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>; its value at <span class="math" data-tex="\(a\)">\(a\)</span> is therefore integral. The integer power identity gives the scalar homomorphism identity, and coefficientwise continuity extends it to every <span class="math" data-tex="\(a\)">\(a\)</span>. The same extension for addition and composition gives the scalar ring action.</li>
+<li>Write the desired inverse as <span class="math" data-tex="\(-X+\sum_{m\geq2}b_mX^m\)">\(-X+\sum_{m\geq2}b_mX^m\)</span>. After coefficients below <span class="math" data-tex="\(m\)">\(m\)</span> are set, the degree-<span class="math" data-tex="\(m\)">\(m\)</span> coefficient of <span class="math" data-tex="\(F(X,\iota(X))\)">\(F(X,\iota(X))\)</span> is a known element plus <span class="math" data-tex="\(b_m\)">\(b_m\)</span>. A new <span class="math" data-tex="\(b_mX^m\)">\(b_mX^m\)</span> entering a nonlinear term has degree at least <span class="math" data-tex="\(m+1\)">\(m+1\)</span>, so its only contribution at degree <span class="math" data-tex="\(m\)">\(m\)</span> comes from the linear <span class="math" data-tex="\(Y\)">\(Y\)</span>. Set <span class="math" data-tex="\(b_m\)">\(b_m\)</span> to the negative of the known coefficient. This recursion uses no division and gives existence and uniqueness in every degree. Commutativity gives the left inverse identity as well.</li>
+<li>An endomorphism preserves <span class="math" data-tex="\(p\)">\(p\)</span> repeated sums, hence commutes with <span class="math" data-tex="\(f=(1+X)^p-1\)">\(f=(1+X)^p-1\)</span>. Its linear coefficient <span class="math" data-tex="\(a\)">\(a\)</span> lies in <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>. Lemma 7.2 with one variable says that exactly one series with linear part <span class="math" data-tex="\(aX\)">\(aX\)</span> commutes with <span class="math" data-tex="\(f\)">\(f\)</span>. The integral series (13) is such a series, so it is the endomorphism. Conversely all those series are endomorphisms by solution 1. Linear coefficients distinguish <span class="math" data-tex="\(a\)">\(a\)</span>, and the addition and composition identities identify the endomorphism ring with <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>.</li>
+<li>Reduce an additive target modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and solve <span class="math" data-tex="\(y^q-y=c\)">\(y^q-y=c\)</span> in <span class="math" data-tex="\(\overline{\mathbf F}_q\)">\(\overline{\mathbf F}_q\)</span>; successive corrections <span class="math" data-tex="\(\pi^r y_r\)">\(\pi^r y_r\)</span> solve the next residue error, producing a Cauchy sequence. For a unit target, first solve <span class="math" data-tex="\(y^{q-1}=c\)">\(y^{q-1}=c\)</span> with <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, then correct with factors <span class="math" data-tex="\(1+\pi^r y_r\)">\(1+\pi^r y_r\)</span>. Their Frobenius quotients have residue correction <span class="math" data-tex="\(y_r^q-y_r\)">\(y_r^q-y_r\)</span>, so this also improves the error one depth at a time. The product is Cauchy and remains a unit; continuity gives the exact solution. A fixed integral element has residue in <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>; subtract its ground-field representative, divide by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and repeat. Its resulting ground-field digit series converges in <span class="math" data-tex="\(K\)">\(K\)</span>, proving the additive kernel is <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, and the unit kernel is <span class="math" data-tex="\(\mathcal O_K^\times\)">\(\mathcal O_K^\times\)</span>. The correction residues need not stay in one finite residue extension, so their limit is guaranteed in the completion, not in the uncompleted algebraic union.</li>
+</ol>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>Sections 1–3 prove inversion, coefficient correction, every formal-group identity and scalar compatibility. The first nonlinear coefficients are computed explicitly. Sections 4–6 prove the Frobenius equations and the twisted construction over the completed unramified ring.</p>
+<ul>
+<li><a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">J. S. Milne, Class Field Theory, version 4.03</a>.</li>
+<li><a href="https://arxiv.org/abs/math/0606108v2">Teruyoshi Yoshida, Local class field theory via Lubin–Tate theory, arXiv:math/0606108v2</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="local-reciprocity-and-norm-groups.html">← Local reciprocity and norm groups</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="lubin-tate-division-fields.html">Lubin–Tate division fields →</a></span></nav>
+<p class="small source-link"><a href="files/formal-groups-and-lubin-tate-modules.md">Markdown source of this lesson</a> · <a download href="files/formal-groups-and-lubin-tate-modules.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

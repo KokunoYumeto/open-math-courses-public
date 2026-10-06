@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Operator strength and local inverses</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="operator-strength-and-local-inverses">Operator strength and local inverses</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>The degree of a polynomial does not by itself measure the regularity of its equation. The operators with symbols <span class="math" data-tex="\(\xi_1^2+i\xi_2\)">\(\xi_1^2+i\xi_2\)</span> and <span class="math" data-tex="\(\xi_1^2+\xi_2^2\)">\(\xi_1^2+\xi_2^2\)</span> both have degree two, but they control different derivatives. The relevant comparison uses all derivatives of the symbols. We develop that comparison, prove that it is forced by solvability with regularity, and build an inverse on a bounded open set without a boundary smoothness assumption.</p>
+<p>The prerequisites are <a href="AN02-L004.html">Regular kernels and changes in the equation</a>, <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a>, and <a href="AN02-L003.html">Local regularity, sharp embeddings, and compactness</a>. We use Plancherel's theorem to identify <span class="math" data-tex="\(B_{2,1}\)">\(B_{2,1}\)</span> with <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Basic references are Grubb's open notes [Grubb], Melrose's open differential-analysis course [Melrose], and Malgrange's existence and approximation paper [Malgrange].</p>
+<p>Throughout, <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span>, <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, and
+<span class="math math-display" data-tex="\[
+S_P(\xi)=\left(\sum_\alpha|\partial^\alpha P(\xi)|^2\right)^{1/2}.
+\]">\[
+S_P(\xi)=\left(\sum_\alpha|\partial^\alpha P(\xi)|^2\right)^{1/2}.
+\]</span>
+We write <span class="math" data-tex="\(\mathcal E&#x27;(X)\)">\(\mathcal E&#x27;(X)\)</span> for distributions whose support is a compact subset of the open set <span class="math" data-tex="\(X\)">\(X\)</span>. Such distributions extend by zero to <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. A function with support merely in <span class="math" data-tex="\(\overline X\)">\(\overline X\)</span> need not belong to <span class="math" data-tex="\(\mathcal E&#x27;(X)\)">\(\mathcal E&#x27;(X)\)</span>.</p>
+<h2 id="comparing-what-two-equations-control">Comparing what two equations control</h2>
+<p>We say that <span class="math" data-tex="\(Q\)">\(Q\)</span> is <strong>weaker than</strong> <span class="math" data-tex="\(P\)">\(P\)</span>, and write <span class="math" data-tex="\(Q\prec P\)">\(Q\prec P\)</span>, if
+<span class="math math-display" data-tex="\[
+S_Q(\xi)\leq C S_P(\xi)\qquad(\xi\in\mathbb R^n).
+\tag{1}
+\]">\[
+S_Q(\xi)\leq C S_P(\xi)\qquad(\xi\in\mathbb R^n).
+\tag{1}
+\]</span>
+The zero polynomial is weaker than every nonzero polynomial. Two nonzero polynomials have <strong>equal strength</strong> if each is weaker than the other. The resulting comparison is transitive, and equal strength is an equivalence relation.</p>
+<p><strong>Lemma 1.1.</strong> A polynomial <span class="math" data-tex="\(Q\)">\(Q\)</span> is weaker than <span class="math" data-tex="\(P\)">\(P\)</span> if and only if
+<span class="math math-display" data-tex="\[
+|Q(\xi)|\leq C S_P(\xi)\qquad(\xi\in\mathbb R^n).
+\tag{2}
+\]">\[
+|Q(\xi)|\leq C S_P(\xi)\qquad(\xi\in\mathbb R^n).
+\tag{2}
+\]</span>
+Every polynomial weaker than a polynomial of degree <span class="math" data-tex="\(m\)">\(m\)</span> has degree at most <span class="math" data-tex="\(m\)">\(m\)</span>. The set of weaker polynomials is a finite-dimensional complex vector space.</p>
+<p><strong>Proof.</strong> Equation (1) immediately implies (2). Conversely, let <span class="math" data-tex="\(d=\deg Q\)">\(d=\deg Q\)</span>. On the finite-dimensional space of polynomials of degree at most <span class="math" data-tex="\(d\)">\(d\)</span>, the supremum over the real unit ball is a norm: if the supremum is zero, the polynomial vanishes on an open set and all its coefficients vanish. Equivalence of finite-dimensional norms gives
+<span class="math math-display" data-tex="\[
+\left(\sum_\alpha|\partial^\alpha q(0)|^2\right)^{1/2}
+\leq C_d\sup_{|h|\leq1}|q(h)|.
+\]">\[
+\left(\sum_\alpha|\partial^\alpha q(0)|^2\right)^{1/2}
+\leq C_d\sup_{|h|\leq1}|q(h)|.
+\]</span>
+Apply this to <span class="math" data-tex="\(q(h)=Q(\xi+h)\)">\(q(h)=Q(\xi+h)\)</span>. Using (2) and the moderate shift estimate for <span class="math" data-tex="\(S_P\)">\(S_P\)</span>,
+<span class="math math-display" data-tex="\[
+S_Q(\xi)\leq C_d\sup_{|h|\leq1}|Q(\xi+h)|
+\leq C&#x27;\sup_{|h|\leq1}S_P(\xi+h)
+\leq C&#x27;&#x27;S_P(\xi).
+\]">\[
+S_Q(\xi)\leq C_d\sup_{|h|\leq1}|Q(\xi+h)|
+\leq C&#x27;\sup_{|h|\leq1}S_P(\xi+h)
+\leq C&#x27;&#x27;S_P(\xi).
+\]</span>
+This proves (1).</p>
+<p>The polynomial derivative norm satisfies <span class="math" data-tex="\(S_P(\xi)\leq C_P(1+|\xi|)^m\)">\(S_P(\xi)\leq C_P(1+|\xi|)^m\)</span>. If <span class="math" data-tex="\(Q\)">\(Q\)</span> had degree <span class="math" data-tex="\(d&gt;m\)">\(d&gt;m\)</span>, choose a real vector <span class="math" data-tex="\(a\)">\(a\)</span> on which its highest homogeneous part is nonzero. Then <span class="math" data-tex="\(|Q(ta)|\)">\(|Q(ta)|\)</span> grows like <span class="math" data-tex="\(|t|^d\)">\(|t|^d\)</span>, contradicting (2). Thus every weaker polynomial belongs to the finite-dimensional space of degree at most <span class="math" data-tex="\(m\)">\(m\)</span>. That set is closed under addition and scalar multiplication by the triangle inequality for its derivative vector, so it is a vector subspace. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 1.2.</strong> Every derivative polynomial <span class="math" data-tex="\(\partial^\alpha P\)">\(\partial^\alpha P\)</span> is weaker than <span class="math" data-tex="\(P\)">\(P\)</span>: its derivative vector consists of some of the entries already present in the derivative vector of <span class="math" data-tex="\(P\)">\(P\)</span>. Lower degree alone is insufficient. For <span class="math" data-tex="\(P(\xi_1,\xi_2)=\xi_1\)">\(P(\xi_1,\xi_2)=\xi_1\)</span>, the polynomial <span class="math" data-tex="\(Q=\xi_2\)">\(Q=\xi_2\)</span> is not weaker, since <span class="math" data-tex="\(S_P(0,t)=1\)">\(S_P(0,t)=1\)</span> while <span class="math" data-tex="\(|Q(0,t)|=|t|\)">\(|Q(0,t)|=|t|\)</span>.</p>
+<p><strong>Example 1.3.</strong> Let <span class="math" data-tex="\(P(\xi_1,\xi_2)=\xi_1^2+i\xi_2\)">\(P(\xi_1,\xi_2)=\xi_1^2+i\xi_2\)</span>. Its derivative norm is
+<span class="math math-display" data-tex="\[
+S_P^2=\xi_1^4+\xi_2^2+4\xi_1^2+5.
+\]">\[
+S_P^2=\xi_1^4+\xi_2^2+4\xi_1^2+5.
+\]</span>
+The weaker polynomials are exactly
+<span class="math math-display" data-tex="\[
+Q=a\xi_1^2+b\xi_2+c\xi_1+d,
+\qquad a,b,c,d\in\mathbb C.
+\tag{3}
+\]">\[
+Q=a\xi_1^2+b\xi_2+c\xi_1+d,
+\qquad a,b,c,d\in\mathbb C.
+\tag{3}
+\]</span>
+Each displayed term is bounded by a constant multiple of <span class="math" data-tex="\(S_P\)">\(S_P\)</span>, so these polynomials are weaker. For the converse, Lemma 1.1 reduces <span class="math" data-tex="\(Q\)">\(Q\)</span> to degree at most two. Along <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span>, the bound (2) excludes its <span class="math" data-tex="\(\xi_2^2\)">\(\xi_2^2\)</span> coefficient. If its <span class="math" data-tex="\(\xi_1\xi_2\)">\(\xi_1\xi_2\)</span> coefficient were nonzero, set <span class="math" data-tex="\(\xi_1=t\)">\(\xi_1=t\)</span>, <span class="math" data-tex="\(\xi_2=t^2\)">\(\xi_2=t^2\)</span>. That term grows like <span class="math" data-tex="\(t^3\)">\(t^3\)</span>, while the remaining terms and <span class="math" data-tex="\(S_P\)">\(S_P\)</span> grow at most like <span class="math" data-tex="\(t^2\)">\(t^2\)</span>. Its coefficient must therefore vanish as well. This leaves (3).</p>
+<h2 id="the-exact-gain-for-compact-data">The exact gain for compact data</h2>
+<p>Fix a regular fundamental solution <span class="math" data-tex="\(E\)">\(E\)</span> of <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span>. For every compactly supported distribution <span class="math" data-tex="\(f\)">\(f\)</span>, the convolution <span class="math" data-tex="\(E*f\)">\(E*f\)</span> exists and satisfies <span class="math" data-tex="\(P(D)(E*f)=f\)">\(P(D)(E*f)=f\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> If <span class="math" data-tex="\(f\in\mathcal E&#x27;(\mathbb R^n)\cap B_{p,k}\)">\(f\in\mathcal E&#x27;(\mathbb R^n)\cap B_{p,k}\)</span>, where <span class="math" data-tex="\(k\)">\(k\)</span> is moderate and <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>, then
+<span class="math math-display" data-tex="\[
+u=E*f\in B_{p,kS_P}^{\mathrm{loc}}(\mathbb R^n).
+\tag{4}
+\]">\[
+u=E*f\in B_{p,kS_P}^{\mathrm{loc}}(\mathbb R^n).
+\tag{4}
+\]</span>
+For fixed compact data support and a fixed output cutoff, the map in (4) is bounded. If <span class="math" data-tex="\(Q\prec P\)">\(Q\prec P\)</span>, then
+<span class="math math-display" data-tex="\[
+Q(D)u\in B_{p,k}^{\mathrm{loc}}.
+\tag{5}
+\]">\[
+Q(D)u\in B_{p,k}^{\mathrm{loc}}.
+\tag{5}
+\]</span></p>
+<p><strong>Proof.</strong> For an output cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, choose <span class="math" data-tex="\(\psi\in C_c^\infty\)">\(\psi\in C_c^\infty\)</span> equal to one on a neighborhood of <span class="math" data-tex="\(\operatorname{supp}\chi-\operatorname{supp}f\)">\(\operatorname{supp}\chi-\operatorname{supp}f\)</span>. On a neighborhood of <span class="math" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span>,
+<span class="math math-display" data-tex="\[
+E*f=(\psi E)*f.
+\]">\[
+E*f=(\psi E)*f.
+\]</span>
+The compact kernel <span class="math" data-tex="\(\psi E\)">\(\psi E\)</span> belongs to <span class="math" data-tex="\(B_{\infty,S_P}\)">\(B_{\infty,S_P}\)</span>. The weighted convolution estimate yields
+<span class="math math-display" data-tex="\[
+\|(\psi E)*f\|_{p,kS_P}
+\leq\|\psi E\|_{\infty,S_P}\|f\|_{p,k}.
+\]">\[
+\|(\psi E)*f\|_{p,kS_P}
+\leq\|\psi E\|_{\infty,S_P}\|f\|_{p,k}.
+\]</span>
+Multiplication by <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is bounded in this weighted space. This proves (4), including the stated continuity. The differential-operator estimate then places <span class="math" data-tex="\(Q(D)u\)">\(Q(D)u\)</span> in <span class="math" data-tex="\(B_{p,kS_P/S_Q}^{\mathrm{loc}}\)">\(B_{p,kS_P/S_Q}^{\mathrm{loc}}\)</span> for <span class="math" data-tex="\(Q\ne0\)">\(Q\ne0\)</span>. Under (1) that space continuously embeds in <span class="math" data-tex="\(B_{p,k}^{\mathrm{loc}}\)">\(B_{p,k}^{\mathrm{loc}}\)</span>. The zero operator is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> For <span class="math" data-tex="\(u\in\mathcal E&#x27;(\mathbb R^n)\)">\(u\in\mathcal E&#x27;(\mathbb R^n)\)</span>,
+<span class="math math-display" data-tex="\[
+u\in B_{p,kS_P}
+\quad\Longleftrightarrow\quad
+P(D)u\in B_{p,k}.
+\tag{6}
+\]">\[
+u\in B_{p,kS_P}
+\quad\Longleftrightarrow\quad
+P(D)u\in B_{p,k}.
+\tag{6}
+\]</span>
+Consequently, if <span class="math" data-tex="\(P(D)u\in B_{p,k}\)">\(P(D)u\in B_{p,k}\)</span>, then
+<span class="math math-display" data-tex="\[
+P(D)(\chi u)\in B_{p,k}\qquad(\chi\in C_c^\infty).
+\tag{7}
+\]">\[
+P(D)(\chi u)\in B_{p,k}\qquad(\chi\in C_c^\infty).
+\tag{7}
+\]</span></p>
+<p><strong>Proof.</strong> The forward implication is the differential-operator estimate. For the reverse implication, the compact convolution identities give
+<span class="math math-display" data-tex="\[
+E*P(D)u=P(D)E*u=\delta_0*u=u.
+\]">\[
+E*P(D)u=P(D)E*u=\delta_0*u=u.
+\]</span>
+Apply Theorem 2.1 to <span class="math" data-tex="\(f=P(D)u\)">\(f=P(D)u\)</span>. This puts <span class="math" data-tex="\(u\)">\(u\)</span> in the local space in (4). Since its support is compact, its local and global weighted memberships agree, proving (6). For (7), first use (6), then the cutoff estimate in <span class="math" data-tex="\(B_{p,kS_P}\)">\(B_{p,kS_P}\)</span>, and then the forward implication of (6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Compact support is a real hypothesis here. A homogeneous solution can be irregular in uncontrolled directions, as the final exercises of the regular-kernels lesson show. Equation (6) should not be applied to an arbitrary global distributional solution.</p>
+<h2 id="why-weaker-operators-are-necessary">Why weaker operators are necessary</h2>
+<p>The previous results provide regular solutions. Their converses do not require a common solution operator or a uniform estimate assumed in advance.</p>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be nonempty and open. Fix one moderate weight <span class="math" data-tex="\(k\)">\(k\)</span> and one <span class="math" data-tex="\(p\in[1,\infty]\)">\(p\in[1,\infty]\)</span>. The following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(Q\prec P\)">\(Q\prec P\)</span>.</li>
+<li>For every <span class="math" data-tex="\(f\in\mathcal E&#x27;(X)\cap B_{p,k}\)">\(f\in\mathcal E&#x27;(X)\cap B_{p,k}\)</span>, there is <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span> satisfying <span class="math" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span> and <span class="math" data-tex="\(Q(D)u\in B_{p,k}^{\mathrm{loc}}(X)\)">\(Q(D)u\in B_{p,k}^{\mathrm{loc}}(X)\)</span>.</li>
+<li>Every <span class="math" data-tex="\(u\in\mathcal E&#x27;(X)\)">\(u\in\mathcal E&#x27;(X)\)</span> with <span class="math" data-tex="\(P(D)u\in B_{p,k}\)">\(P(D)u\in B_{p,k}\)</span> also satisfies <span class="math" data-tex="\(Q(D)u\in B_{p,k}\)">\(Q(D)u\in B_{p,k}\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> The zero polynomial <span class="math" data-tex="\(Q\)">\(Q\)</span> satisfies all three assertions. Assume <span class="math" data-tex="\(Q\ne0\)">\(Q\ne0\)</span>. Theorem 2.1 proves that (1) implies (2), by restricting <span class="math" data-tex="\(E*f\)">\(E*f\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span>. Theorem 2.2 and the differential-operator estimate show that (1) implies (3).</p>
+<p>Assume (2). In <span class="math" data-tex="\(X\)">\(X\)</span>, commutation gives
+<span class="math math-display" data-tex="\[
+Q(D)f=P(D)Q(D)u\in B_{p,k/S_P}^{\mathrm{loc}}(X).
+\]">\[
+Q(D)f=P(D)Q(D)u\in B_{p,k/S_P}^{\mathrm{loc}}(X).
+\]</span>
+The left side has compact support in <span class="math" data-tex="\(X\)">\(X\)</span>, so it belongs globally to <span class="math" data-tex="\(B_{p,k/S_P}\)">\(B_{p,k/S_P}\)</span>. Apply Theorem 2.2 with <span class="math" data-tex="\(Q\)">\(Q\)</span> in place of <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(k/S_P\)">\(k/S_P\)</span> in place of <span class="math" data-tex="\(k\)">\(k\)</span>. We conclude that every <span class="math" data-tex="\(f\in\mathcal E&#x27;(X)\cap B_{p,k}\)">\(f\in\mathcal E&#x27;(X)\cap B_{p,k}\)</span> lies in <span class="math" data-tex="\(B_{p,kS_Q/S_P}\)">\(B_{p,kS_Q/S_P}\)</span>. The sharp weight-inclusion criterion of the local-regularity lesson forces
+<span class="math math-display" data-tex="\[
+k(\xi)\frac{S_Q(\xi)}{S_P(\xi)}\leq Ck(\xi).
+\]">\[
+k(\xi)\frac{S_Q(\xi)}{S_P(\xi)}\leq Ck(\xi).
+\]</span>
+Since <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, this is (1).</p>
+<p>Assume (3). By Theorem 2.2 its premise is equivalent to <span class="math" data-tex="\(u\in B_{p,kS_P}\)">\(u\in B_{p,kS_P}\)</span>, and its conclusion is equivalent to <span class="math" data-tex="\(u\in B_{p,kS_Q}\)">\(u\in B_{p,kS_Q}\)</span>. Thus (3) is a compact-support membership inclusion between these two weighted spaces on the nonempty open set <span class="math" data-tex="\(X\)">\(X\)</span>. The same weight criterion gives <span class="math" data-tex="\(kS_Q\leq CkS_P\)">\(kS_Q\leq CkS_P\)</span>, again proving (1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The criterion is independent of the chosen <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span>. Those choices describe the desired regularity, but the obstruction to preserving it is the polynomial comparison itself. The necessity argument uses only existence for each datum; it does not assume that the solutions were chosen linearly.</p>
+<h2 id="a-bounded-inverse-on-an-arbitrary-bounded-open-set">A bounded inverse on an arbitrary bounded open set</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> now be bounded and open. Its boundary may be irregular and it may have several connected components. Extend <span class="math" data-tex="\(f\in L^2(X)\)">\(f\in L^2(X)\)</span> by zero to <span class="math" data-tex="\(f_0\in L^2(\mathbb R^n)\)">\(f_0\in L^2(\mathbb R^n)\)</span>, and define
+<span class="math math-display" data-tex="\[
+Tf=(E*f_0)|_X.
+\tag{8}
+\]">\[
+Tf=(E*f_0)|_X.
+\tag{8}
+\]</span>
+The support of <span class="math" data-tex="\(f_0\)">\(f_0\)</span> lies in the compact set <span class="math" data-tex="\(\overline X\)">\(\overline X\)</span>, so this convolution is defined.</p>
+<p><strong>Theorem 4.1.</strong> The map <span class="math" data-tex="\(T:L^2(X)\to L^2(X)\)">\(T:L^2(X)\to L^2(X)\)</span> is bounded and satisfies
+<span class="math math-display" data-tex="\[
+P(D)Tf=f\quad\hbox{in }\mathcal D&#x27;(X).
+\tag{9}
+\]">\[
+P(D)Tf=f\quad\hbox{in }\mathcal D&#x27;(X).
+\tag{9}
+\]</span>
+For every <span class="math" data-tex="\(Q\prec P\)">\(Q\prec P\)</span>, <span class="math" data-tex="\(Q(D)T\)">\(Q(D)T\)</span> is a bounded operator on <span class="math" data-tex="\(L^2(X)\)">\(L^2(X)\)</span>. Moreover,
+<span class="math math-display" data-tex="\[
+TP(D)u=u
+\quad\hbox{if }u\in\mathcal E&#x27;(X)\hbox{ and }P(D)u\in L^2(X).
+\tag{10}
+\]">\[
+TP(D)u=u
+\quad\hbox{if }u\in\mathcal E&#x27;(X)\hbox{ and }P(D)u\in L^2(X).
+\tag{10}
+\]</span>
+More precisely, one may choose a constant <span class="math" data-tex="\(C_X\)">\(C_X\)</span>, depending on the chosen regular kernel and a cutoff, such that
+<span class="math math-display" data-tex="\[
+\|Q(D)Tf\|_{L^2(X)}
+\leq C_X\sup_{\xi\in\mathbb R^n}
+\frac{|Q(\xi)|}{S_P(\xi)}\,\|f\|_{L^2(X)}.
+\tag{11}
+\]">\[
+\|Q(D)Tf\|_{L^2(X)}
+\leq C_X\sup_{\xi\in\mathbb R^n}
+\frac{|Q(\xi)|}{S_P(\xi)}\,\|f\|_{L^2(X)}.
+\tag{11}
+\]</span></p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(\psi\in C_c^\infty(\mathbb R^n)\)">\(\psi\in C_c^\infty(\mathbb R^n)\)</span> equal to one near the compact set <span class="math" data-tex="\(\overline X-\overline X\)">\(\overline X-\overline X\)</span>, and put <span class="math" data-tex="\(F=\psi E\)">\(F=\psi E\)</span>. On <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(E*f_0=F*f_0\)">\(E*f_0=F*f_0\)</span>. Regularity gives <span class="math" data-tex="\(F\in B_{\infty,S_P}\)">\(F\in B_{\infty,S_P}\)</span>, hence
+<span class="math math-display" data-tex="\[
+\sup_\xi |Q(\xi)\widehat F(\xi)|
+\leq\|F\|_{\infty,S_P}
+\sup_\xi\frac{|Q(\xi)|}{S_P(\xi)}.
+\]">\[
+\sup_\xi |Q(\xi)\widehat F(\xi)|
+\leq\|F\|_{\infty,S_P}
+\sup_\xi\frac{|Q(\xi)|}{S_P(\xi)}.
+\]</span>
+By Plancherel, convolution by <span class="math" data-tex="\(Q(D)F\)">\(Q(D)F\)</span> is an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Fourier multiplier with the displayed bound. Restriction to <span class="math" data-tex="\(X\)">\(X\)</span> and zero extension from <span class="math" data-tex="\(X\)">\(X\)</span> both have norm at most one. This proves (11) with <span class="math" data-tex="\(C_X=\|F\|_{\infty,S_P}\)">\(C_X=\|F\|_{\infty,S_P}\)</span>. The polynomial <span class="math" data-tex="\(1\)">\(1\)</span> is weaker than <span class="math" data-tex="\(P\)">\(P\)</span>, since <span class="math" data-tex="\(S_P\)">\(S_P\)</span> has a positive global lower bound. Taking <span class="math" data-tex="\(Q=1\)">\(Q=1\)</span> proves boundedness of <span class="math" data-tex="\(T\)">\(T\)</span> itself.</p>
+<p>Using the original expression (8), the fundamental-solution identity gives (9). For (10), extend <span class="math" data-tex="\(u\)">\(u\)</span> by zero. Because its support is a compact subset of <span class="math" data-tex="\(X\)">\(X\)</span>, this extension commutes with differentiation, and the zero extension of <span class="math" data-tex="\(P(D)u\)">\(P(D)u\)</span> is exactly <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span> of the extended distribution. Thus
+<span class="math math-display" data-tex="\[
+E*(P(D)u)_0=E*P(D)u_0=u_0.
+\]">\[
+E*(P(D)u)_0=E*P(D)u_0=u_0.
+\]</span>
+Restrict to <span class="math" data-tex="\(X\)">\(X\)</span>. Theorem 2.2 also ensures that this <span class="math" data-tex="\(u\)">\(u\)</span> lies in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, so the equality is in the claimed space. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The inverse has no prescribed boundary values. It solves the equation on <span class="math" data-tex="\(X\)">\(X\)</span> and recovers compactly supported inputs through (10). To impose a boundary condition requires a separate problem and additional compatibility or geometric hypotheses.</p>
+<p>The quantitative bound (11) is useful when perturbing coefficients. For example, if
+<span class="math math-display" data-tex="\[
+R(x,D)=\sum_{\nu=1}^N b_\nu(x)Q_\nu(D),
+\qquad Q_\nu\prec P,
+\]">\[
+R(x,D)=\sum_{\nu=1}^N b_\nu(x)Q_\nu(D),
+\qquad Q_\nu\prec P,
+\]</span>
+with bounded measurable <span class="math" data-tex="\(b_\nu\)">\(b_\nu\)</span>, then
+<span class="math math-display" data-tex="\[
+\|RT\|_{L^2(X)\to L^2(X)}
+\leq C_X\sum_\nu\|b_\nu\|_\infty
+\sup_\xi\frac{|Q_\nu(\xi)|}{S_P(\xi)}.
+\tag{12}
+\]">\[
+\|RT\|_{L^2(X)\to L^2(X)}
+\leq C_X\sum_\nu\|b_\nu\|_\infty
+\sup_\xi\frac{|Q_\nu(\xi)|}{S_P(\xi)}.
+\tag{12}
+\]</span>
+Each <span class="math" data-tex="\(Q_\nu(D)Tf\)">\(Q_\nu(D)Tf\)</span> is an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function, so the multiplication in this formula is defined. If the right side is less than one, the Neumann series for <span class="math" data-tex="\((I+RT)^{-1}\)">\((I+RT)^{-1}\)</span> converges in operator norm, and
+<span class="math math-display" data-tex="\[
+T_R=T(I+RT)^{-1}
+\]">\[
+T_R=T(I+RT)^{-1}
+\]</span>
+satisfies <span class="math" data-tex="\((P(D)+R(x,D))T_Rf=f\)">\((P(D)+R(x,D))T_Rf=f\)</span>. This gives a right inverse for a sufficiently small perturbation on the chosen set. It asserts no constant-strength conclusion for large perturbations.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 (entry).</strong> Classify all polynomials weaker than <span class="math" data-tex="\(P(\xi)=iv\cdot\xi+c\)">\(P(\xi)=iv\cdot\xi+c\)</span>, where <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> is real and <span class="math" data-tex="\(c\)">\(c\)</span> is complex.</p>
+<p><strong>Solution.</strong> Lemma 1.1 gives degree at most one. Write <span class="math" data-tex="\(Q(\xi)=a\cdot\xi+b\)">\(Q(\xi)=a\cdot\xi+b\)</span> with <span class="math" data-tex="\(a\in\mathbb C^n\)">\(a\in\mathbb C^n\)</span>. On every real line <span class="math" data-tex="\(\xi=t\eta\)">\(\xi=t\eta\)</span> with <span class="math" data-tex="\(v\cdot\eta=0\)">\(v\cdot\eta=0\)</span>, the weight <span class="math" data-tex="\(S_P\)">\(S_P\)</span> is constant. The bound for <span class="math" data-tex="\(Q\)">\(Q\)</span> forces <span class="math" data-tex="\(a\cdot\eta=0\)">\(a\cdot\eta=0\)</span>. Both the real and imaginary parts of <span class="math" data-tex="\(a\)">\(a\)</span> are therefore real multiples of <span class="math" data-tex="\(v\)">\(v\)</span>, so <span class="math" data-tex="\(a=\lambda v\)">\(a=\lambda v\)</span> with <span class="math" data-tex="\(\lambda\in\mathbb C\)">\(\lambda\in\mathbb C\)</span>. Conversely, every <span class="math" data-tex="\(Q=\lambda v\cdot\xi+b\)">\(Q=\lambda v\cdot\xi+b\)</span> is bounded by a constant multiple of <span class="math" data-tex="\(1+|v\cdot\xi|\)">\(1+|v\cdot\xi|\)</span>, which is comparable to <span class="math" data-tex="\(S_P\)">\(S_P\)</span>. These are exactly the weaker polynomials.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Compare the strengths of <span class="math" data-tex="\(P(\xi_1,\xi_2)=\xi_1^2+i\xi_2\)">\(P(\xi_1,\xi_2)=\xi_1^2+i\xi_2\)</span> and <span class="math" data-tex="\(R(\xi_1,\xi_2)=\xi_1^2+\xi_2^2\)">\(R(\xi_1,\xi_2)=\xi_1^2+\xi_2^2\)</span>. Give a frequency sequence that proves a strict comparison.</p>
+<p><strong>Solution.</strong> We have <span class="math" data-tex="\(S_R\geq c(1+|\xi|^2)\)">\(S_R\geq c(1+|\xi|^2)\)</span>, while <span class="math" data-tex="\(S_P\leq C(1+|\xi|^2)\)">\(S_P\leq C(1+|\xi|^2)\)</span>. Thus <span class="math" data-tex="\(P\prec R\)">\(P\prec R\)</span>. Along <span class="math" data-tex="\((0,t)\)">\((0,t)\)</span>, <span class="math" data-tex="\(S_R\)">\(S_R\)</span> grows like <span class="math" data-tex="\(t^2\)">\(t^2\)</span> and <span class="math" data-tex="\(S_P\)">\(S_P\)</span> grows like <span class="math" data-tex="\(|t|\)">\(|t|\)</span>, so <span class="math" data-tex="\(S_R/S_P\to\infty\)">\(S_R/S_P\to\infty\)</span>. Hence <span class="math" data-tex="\(R\not\prec P\)">\(R\not\prec P\)</span>. Equal degrees do not give equal strength.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be any bounded open set, <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span>, and <span class="math" data-tex="\(Q_1,\ldots,Q_N\prec P\)">\(Q_1,\ldots,Q_N\prec P\)</span>. Show that for every <span class="math" data-tex="\(f\in L^2(X)\)">\(f\in L^2(X)\)</span>, one can solve <span class="math" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span> so that every <span class="math" data-tex="\(Q_\nu(D)u\)">\(Q_\nu(D)u\)</span> belongs to <span class="math" data-tex="\(L^2(X)\)">\(L^2(X)\)</span>. Does the theorem give a uniqueness statement?</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(u=Tf\)">\(u=Tf\)</span>. Equation (9) solves the equation, and (11) gives every requested derivative with its quantitative bound. Uniqueness is not claimed: one may add any <span class="math" data-tex="\(L^2\)">\(L^2\)</span> homogeneous solution having the indicated derivatives. For the transport equation on a rectangle, constants in the transport direction give elementary examples when its zero-order coefficient vanishes. Boundary or normalization conditions would be needed to select a unique solution.</p>
+<p><strong>Exercise 4 (advanced).</strong> For <span class="math" data-tex="\(P(D)=D_1^2+iD_2\)">\(P(D)=D_1^2+iD_2\)</span> on a bounded open <span class="math" data-tex="\(X\subset\mathbb R^2\)">\(X\subset\mathbb R^2\)</span>, consider
+<span class="math math-display" data-tex="\[
+A=P(D)+b_1(x)D_1^2+b_2(x)D_2+b_3(x)D_1+b_4(x).
+\]">\[
+A=P(D)+b_1(x)D_1^2+b_2(x)D_2+b_3(x)D_1+b_4(x).
+\]</span>
+Give an explicit sufficient condition, in terms of (11), for an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> right inverse. Explain why the same argument does not admit an arbitrary term <span class="math" data-tex="\(b_5(x)D_2^2\)">\(b_5(x)D_2^2\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(Q_1=\xi_1^2\)">\(Q_1=\xi_1^2\)</span>, <span class="math" data-tex="\(Q_2=\xi_2\)">\(Q_2=\xi_2\)</span>, <span class="math" data-tex="\(Q_3=\xi_1\)">\(Q_3=\xi_1\)</span>, <span class="math" data-tex="\(Q_4=1\)">\(Q_4=1\)</span>, and
+<span class="math" data-tex="\(M_\nu=\sup|Q_\nu|/S_P&lt;\infty\)">\(M_\nu=\sup|Q_\nu|/S_P&lt;\infty\)</span>. A sufficient condition is
+<span class="math math-display" data-tex="\[
+C_X\sum_{\nu=1}^4M_\nu\|b_\nu\|_\infty&lt;1.
+\]">\[
+C_X\sum_{\nu=1}^4M_\nu\|b_\nu\|_\infty&lt;1.
+\]</span>
+Then (12) gives a convergent Neumann series and the right inverse <span class="math" data-tex="\(T(I+RT)^{-1}\)">\(T(I+RT)^{-1}\)</span>. The polynomial <span class="math" data-tex="\(\xi_2^2\)">\(\xi_2^2\)</span> is not weaker than <span class="math" data-tex="\(P\)">\(P\)</span>; along <span class="math" data-tex="\((0,t)\)">\((0,t)\)</span>, its ratio to <span class="math" data-tex="\(S_P\)">\(S_P\)</span> tends to infinity. Theorem 3.1 shows that one cannot obtain the required derivative for every compact <span class="math" data-tex="\(L^2\)">\(L^2\)</span> datum under this equation. In particular, making <span class="math" data-tex="\(b_5\)">\(b_5\)</span> small does not supply the missing bounded multiplier estimate for <span class="math" data-tex="\(D_2^2T\)">\(D_2^2T\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Grubb] Gerd Grubb, <em>Distributions and Operators</em>, open lecture-note versions, 2007–2008, sections on Fourier transformation and convolution. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Author's lecture-note index</a>.</li>
+<li>[Melrose] Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004, sections on constant-coefficient operators and Sobolev estimates. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>[Malgrange] Bernard Malgrange, <em>Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution</em>, Annales de l'Institut Fourier <strong>6</strong> (1956), 271–355. <a href="https://aif.centre-mersenne.org/articles/10.5802/aif.65/">Original article</a>.</li>
+</ul>
+</main></body></html>

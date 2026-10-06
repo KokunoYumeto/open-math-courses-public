@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Graded modules and Hilbert–Samuel functions · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/graded-modules-and-hilbert-samuel-functions.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="CC0-1.0.txt">CC0-1.0</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1 id="graded-modules-and-hilbertsamuel-functions">Graded modules and
+Hilbert–Samuel functions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October
+2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A grading lets us count equations and functions one degree at a time.
+In a local ring, powers of an ideal give a related count: the length of
+a module after discarding terms of sufficiently high order. The first
+count eventually becomes a polynomial; summing its layers gives the
+second. Its degree will be a dimension invariant, and its leading
+coefficient records multiplicity.</p>
+<p>Rings are commutative with identity. A finite module is finitely
+generated. Graded rings in this lesson have <strong>nonnegative</strong>
+gradings; graded modules may have integer gradings. A local ring is not
+assumed Noetherian unless stated. We use Hilbert basis, the
+finite-length and Artinian criteria, radical-power containment, and
+Artin–Rees from <a href="AG-CA-03.html">Noetherian and Artinian
+rings</a>, Theorem 2.1, Proposition 2.2, and Theorems 3.3, 4.2 and 5.1.
+We also use Nakayama from <a href="AG-CA-02.html">Localization, local
+properties and support</a>, Theorem 4.2. No dimension theorem for
+Noetherian local rings is assumed here.</p>
+<h2 id="finite-generation-and-homogeneous-pieces">1. Finite generation
+and homogeneous pieces</h2>
+<p>A graded ring is a decomposition <span
+class="math inline">\(S=\bigoplus_{n\geq0}S_n\)</span> with <span
+class="math inline">\(1\in S_0\)</span> and <span
+class="math inline">\(S_iS_j\subseteq S_{i+j}\)</span>. Its positive
+part <span class="math inline">\(S_+=\bigoplus_{n&gt;0}S_n\)</span> is
+an ideal, and <span class="math inline">\(S/S_+=S_0\)</span>. A graded
+module <span class="math inline">\(M=\bigoplus_{n\in\mathbb
+Z}M_n\)</span> satisfies <span class="math inline">\(S_iM_j\subseteq
+M_{i+j}\)</span>. Elements in a single piece are homogeneous. A graded
+submodule contains the homogeneous components of each of its elements.
+Maps of degree zero preserve pieces; kernels, images and quotients
+inherit gradings, and their sequences are exact piece by piece.</p>
+<p><strong>Theorem 1.1.</strong> Such an <span
+class="math inline">\(S\)</span> is Noetherian if and only if <span
+class="math inline">\(S_0\)</span> is Noetherian and <span
+class="math inline">\(S\)</span> is a finite-type <span
+class="math inline">\(S_0\)</span>-algebra.</p>
+<p><strong>Proof.</strong> If <span class="math inline">\(S\)</span> is
+Noetherian, its quotient <span class="math inline">\(S_0\)</span> is
+Noetherian. Choose finite ideal generators of <span
+class="math inline">\(S_+\)</span>, and replace them by all their
+homogeneous components. The replacement still generates the ideal: it
+contains the original generators in its span, and all its elements lie
+in <span class="math inline">\(S_+\)</span>. Denote the resulting
+homogeneous elements by <span
+class="math inline">\(x_1,\ldots,x_r\)</span>, all of positive
+degree.</p>
+<p>They generate <span class="math inline">\(S\)</span> as an algebra
+over <span class="math inline">\(S_0\)</span>. Indeed, induct on the
+degree of a homogeneous <span class="math inline">\(s\)</span>. Degree
+zero is already in the base ring. In degree <span
+class="math inline">\(d&gt;0\)</span>, an ideal expression for <span
+class="math inline">\(s\)</span>, followed by taking its degree-<span
+class="math inline">\(d\)</span> component, gives <span
+class="math display">\[
+s=\sum_i a_i x_i,\qquad a_i\in S_{d-\deg x_i},
+\]</span> where terms with negative subscripts vanish. Every remaining
+coefficient has smaller degree and belongs to <span
+class="math inline">\(S_0[x_1,\ldots,x_r]\)</span> by induction. Every
+element is a finite sum of homogeneous ones, so the algebra assertion
+follows. Conversely, a finite-type algebra over the Noetherian ring
+<span class="math inline">\(S_0\)</span> is Noetherian by Hilbert basis.
+<span class="math inline">\(\square\)</span></p>
+<p><strong>Proposition 1.2.</strong> If <span
+class="math inline">\(S\)</span> is of finite type over <span
+class="math inline">\(S_0\)</span> and <span
+class="math inline">\(M\)</span> is finite and graded, each <span
+class="math inline">\(M_n\)</span> is finite over <span
+class="math inline">\(S_0\)</span>, and <span
+class="math inline">\(M_n=0\)</span> for sufficiently negative <span
+class="math inline">\(n\)</span>. If <span
+class="math inline">\(S_0\)</span> is Artinian, each piece has finite
+length over <span class="math inline">\(S_0\)</span>.</p>
+<p><strong>Proof.</strong> Decomposing a finite algebra generating list
+into homogeneous components produces a finite homogeneous list. Its
+degree-zero members can be omitted, leaving positive-degree generators.
+In any fixed degree, only finitely many monomials in them occur: their
+positive weights bound every exponent. Thus each <span
+class="math inline">\(S_n\)</span> is finite over <span
+class="math inline">\(S_0\)</span>.</p>
+<p>Likewise, decomposing module generators gives homogeneous generators
+<span class="math inline">\(m_i\)</span>, of degrees <span
+class="math inline">\(a_i\)</span>. There is a surjection <span
+class="math display">\[
+\bigoplus_i S_{n-a_i}\longrightarrow M_n.
+\tag{1}
+\]</span> This proves finiteness of the pieces and vanishing below <span
+class="math inline">\(\min_i a_i\)</span>. An Artinian commutative ring
+has finite length over itself by the earlier Artinian criterion. Its
+finite modules are quotients of finite sums of that ring, so have finite
+length. <span class="math inline">\(\square\)</span></p>
+<p>The shift <span class="math inline">\(M(a)\)</span> has <span
+class="math inline">\(M(a)_n=M_{n+a}\)</span>. In particular, a
+degree-<span class="math inline">\(a\)</span> generator is the image of
+the degree-<span class="math inline">\(a\)</span> element <span
+class="math inline">\(1\)</span> in <span
+class="math inline">\(S(-a)\)</span>. This explains (1) as the degree
+part of a map between graded modules.</p>
+<h2 id="discrete-integration">2. Discrete integration</h2>
+<p>A <strong>numerical polynomial</strong> is a polynomial in <span
+class="math inline">\(\mathbb Q[t]\)</span> taking integer values at all
+sufficiently large integers. This is weaker than having integer
+coefficients in the power basis. For example, <span
+class="math inline">\(t(t-1)/2\)</span> is numerical.</p>
+<p>Write <span class="math display">\[
+B_i(t)=\binom ti=\frac{t(t-1)\cdots(t-i+1)}{i!},\qquad B_0(t)=1.
+\]</span> The forward difference is <span class="math inline">\(\Delta
+P(t)=P(t+1)-P(t)\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> A polynomial is numerical exactly when it
+is an integer linear combination of the <span
+class="math inline">\(B_i\)</span>. It then takes integer values at
+every integer. Moreover <span class="math inline">\(\Delta
+B_i=B_{i-1}\)</span> for <span
+class="math inline">\(i\geq1\)</span>.</p>
+<p><strong>Proof.</strong> For nonnegative integers the binomial values
+are integers, and for a negative integer <span
+class="math inline">\(t\)</span>, <span class="math display">\[
+\binom ti=(-1)^i\binom{i-t-1}{i},
+\]</span> which is again integral. The difference identity follows from
+Pascal’s identity at nonnegative integers, hence holds as a polynomial
+identity. The <span class="math inline">\(B_i\)</span> have distinct
+degrees and nonzero leading coefficients, so <span
+class="math inline">\(B_0,\ldots,B_d\)</span> form a rational basis of
+the polynomials of degree at most <span
+class="math inline">\(d\)</span>.</p>
+<p>Suppose <span class="math inline">\(P=\sum_{i=0}^d c_iB_i\)</span> is
+numerical. Induct on <span class="math inline">\(d\)</span>. For
+constants the assertion is immediate. Its difference is numerical of
+smaller degree and has expansion <span
+class="math inline">\(\sum_{i=1}^d c_iB_{i-1}\)</span>. Induction and
+uniqueness of the rational basis expansion show that <span
+class="math inline">\(c_1,\ldots,c_d\)</span> are integers. Evaluating
+<span class="math inline">\(P\)</span> at one sufficiently large integer
+then shows that <span class="math inline">\(c_0\)</span> is integral.
+The converse follows from the integer values of each <span
+class="math inline">\(B_i\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Lemma 2.2.</strong> If an integer-valued function <span
+class="math inline">\(h\)</span> satisfies <span class="math display">\[
+h(n)-h(n-1)=Q(n)
+\tag{2}
+\]</span> for all sufficiently large <span
+class="math inline">\(n\)</span>, with <span
+class="math inline">\(Q\)</span> numerical, then <span
+class="math inline">\(h\)</span> is eventually a numerical polynomial.
+If <span class="math inline">\(Q\neq0\)</span> has degree <span
+class="math inline">\(s\)</span>, that polynomial has degree <span
+class="math inline">\(s+1\)</span>. If <span
+class="math inline">\(Q=0\)</span>, the function is eventually
+constant.</p>
+<p><strong>Proof.</strong> Express <span class="math inline">\(Q(t)=\sum
+c_i\binom ti\)</span> with integral coefficients. Set <span
+class="math inline">\(F(t)=\sum c_i\binom{t+1}{i+1}\)</span>. Pascal’s
+identity gives <span class="math inline">\(F(n)-F(n-1)=Q(n)\)</span>.
+Thus <span class="math inline">\(h(n)-F(n)\)</span> is constant on the
+sufficiently large integers. That constant is integral, proving the
+claim. For nonzero <span class="math inline">\(Q\)</span>, its highest
+coefficient produces the unique term of degree <span
+class="math inline">\(s+1\)</span> in <span
+class="math inline">\(F\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>Throughout, the degree of the zero polynomial is <span
+class="math inline">\(-\infty\)</span>. An eventual polynomial is
+unique, since a nonzero polynomial cannot vanish at infinitely many
+integers. Lemma 2.1 also shows that a numerical polynomial of degree
+<span class="math inline">\(d\)</span> has leading coefficient <span
+class="math inline">\(c/d!\)</span> for a nonzero integer <span
+class="math inline">\(c\)</span>.</p>
+<h2 id="hilbertserre-by-multiplication">3. Hilbert–Serre by
+multiplication</h2>
+<p>Call <span class="math inline">\(S\)</span> <strong>standard
+graded</strong> over <span class="math inline">\(S_0\)</span> if it is
+generated by finitely many degree-one elements. For a finite graded
+module over such a ring with <span class="math inline">\(S_0\)</span>
+Artinian, define its Hilbert function by <span class="math display">\[
+h_M(n)=\ell_{S_0}(M_n).
+\]</span></p>
+<p><strong>Theorem 3.1 (Hilbert–Serre).</strong> Suppose <span
+class="math inline">\(S\)</span> is generated over an Artinian <span
+class="math inline">\(S_0\)</span> by <span
+class="math inline">\(r\)</span> degree-one elements. For every finite
+graded <span class="math inline">\(S\)</span>-module <span
+class="math inline">\(M\)</span>, the function <span
+class="math inline">\(h_M(n)\)</span> agrees eventually with a numerical
+polynomial of degree at most <span class="math inline">\(r-1\)</span> if
+<span class="math inline">\(r\geq1\)</span>. If <span
+class="math inline">\(r=0\)</span>, it is eventually zero.</p>
+<p><strong>Proof.</strong> Let <span
+class="math inline">\(A=S_0[X_1,\ldots,X_r]\)</span> with each variable
+of degree one, mapping onto <span class="math inline">\(S\)</span>. Then
+<span class="math inline">\(M\)</span> is finite and graded over <span
+class="math inline">\(A\)</span>; this polynomial ring is Noetherian by
+Theorem 1.1. Induct on <span class="math inline">\(r\)</span>. For <span
+class="math inline">\(r=0\)</span>, a finite homogeneous generating list
+over <span class="math inline">\(S_0\)</span> has only finitely many
+degrees, so all large pieces vanish.</p>
+<p>For <span class="math inline">\(r&gt;0\)</span>, let <span
+class="math inline">\(x\)</span> act as <span
+class="math inline">\(X_r\)</span>, and put <span
+class="math display">\[
+L=(0:_M x),\qquad C=M/xM.
+\]</span> Both are finite graded modules: finiteness of the submodule
+<span class="math inline">\(L\)</span> uses Noetherianity. Both are
+killed by <span class="math inline">\(X_r\)</span>, so are finite over
+<span class="math inline">\(S_0[X_1,\ldots,X_{r-1}]\)</span>. Taking
+degree parts of multiplication gives the exact sequence <span
+class="math display">\[
+0\longrightarrow L_{n-1}\longrightarrow M_{n-1}
+\xrightarrow{x}M_n\longrightarrow C_n\longrightarrow0.
+\tag{3}
+\]</span> Length additivity therefore yields <span
+class="math display">\[
+h_M(n)-h_M(n-1)=h_C(n)-h_L(n-1).
+\tag{4}
+\]</span> If <span class="math inline">\(r=1\)</span>, induction makes
+the right side eventually zero, so <span
+class="math inline">\(h_M\)</span> is eventually constant. If <span
+class="math inline">\(r\geq2\)</span>, that side is eventually a
+numerical polynomial of degree at most <span
+class="math inline">\(r-2\)</span>: a translate of a numerical
+polynomial remains numerical. Lemma 2.2 gives the degree bound <span
+class="math inline">\(r-1\)</span>, including the possibility that the
+difference or the resulting polynomial is zero. <span
+class="math inline">\(\square\)</span></p>
+<p>Multiplication need not be injective. The kernel term in (3) is what
+makes the proof work for arbitrary finite modules, including modules
+with torsion. There is also a version without the Artinian assumption,
+retaining module classes in place of their lengths.</p>
+<p><strong>Proposition 3.2 (Hilbert–Serre with module classes).</strong>
+Let <span class="math inline">\(S_0\)</span> be Noetherian and let <span
+class="math inline">\(S\)</span> be generated by <span
+class="math inline">\(r\)</span> degree-one elements. In the
+Grothendieck group <span class="math inline">\(G_0(S_0)\)</span> of
+finite modules, generated by classes <span
+class="math inline">\([N]\)</span> with relations <span
+class="math inline">\([N]=[N&#39;]+[N&#39;&#39;]\)</span> for short
+exact sequences, every finite graded <span
+class="math inline">\(S\)</span>-module satisfies <span
+class="math display">\[
+\sum_n[M_n]t^n=\frac{Q(t)}{(1-t)^r},
+\tag{4a}
+\]</span> with <span class="math inline">\(Q\)</span> a Laurent
+polynomial over <span class="math inline">\(G_0(S_0)\)</span>. Its
+classes consequently have an eventual expression as a finite <span
+class="math inline">\(G_0(S_0)\)</span>-linear combination of binomial
+polynomials of degree at most <span class="math inline">\(r-1\)</span>,
+or are eventually zero if <span class="math inline">\(r=0\)</span>.</p>
+<p><strong>Proof.</strong> Every degree part is finite over <span
+class="math inline">\(S_0\)</span>, by the homogeneous finite generating
+list, and degrees are bounded below. In (3), the Grothendieck relation
+gives exactly <span
+class="math inline">\([M_n]-[M_{n-1}]=[C_n]-[L_{n-1}]\)</span>. Multiply
+by <span class="math inline">\(t^n\)</span> and sum formally. This
+yields <span class="math inline">\((1-t)H_M=H_C-tH_L\)</span>. Both
+modules on the right are finite graded modules over the polynomial ring
+with one fewer variable, just as in the proof of Theorem 3.1. Induction,
+starting with the finite number of nonzero degree parts when <span
+class="math inline">\(r=0\)</span>, proves (4a). Finally <span
+class="math inline">\((1-t)^{-r}=\sum_{n\ge0}\binom{n+r-1}{r-1}t^n\)</span>
+for <span class="math inline">\(r&gt;0\)</span>, as follows by
+multiplying <span class="math inline">\(r\)</span> geometric series and
+counting weak compositions. Coefficient comparison with the finite
+numerator gives the claimed eventual binomial expression. Applying the
+additive length homomorphism when <span
+class="math inline">\(S_0\)</span> is Artinian recovers the length
+version. <span class="math inline">\(\square\)</span></p>
+<p>For a polynomial ring <span
+class="math inline">\(k[x_0,\ldots,x_q]\)</span> over a field, its
+degree-<span class="math inline">\(t\)</span> monomials correspond to
+tuples of <span class="math inline">\(q+1\)</span> nonnegative exponents
+with sum <span class="math inline">\(t\)</span>. Placing <span
+class="math inline">\(q\)</span> dividers among <span
+class="math inline">\(t+q\)</span> positions gives <span
+class="math display">\[
+h(t)=\binom{t+q}{q}\qquad(t\geq0).
+\tag{5}
+\]</span> If <span class="math inline">\(0\neq f\in k[x,y,z]\)</span> is
+homogeneous of degree <span class="math inline">\(a\geq1\)</span>,
+multiplication by <span class="math inline">\(f\)</span> is injective in
+this polynomial domain. Hence the quotient <span
+class="math inline">\(S=k[x,y,z]/(f)\)</span> has <span
+class="math display">\[
+h_S(t)=\binom{t+2}{2}-\dim_k k[x,y,z]_{t-a}.
+\]</span> For <span class="math inline">\(t\geq\max(0,a-2)\)</span>, the
+second term equals the polynomial <span
+class="math inline">\(\binom{t-a+2}{2}\)</span>: at <span
+class="math inline">\(t-a=-2,-1\)</span>, both the piece and that
+polynomial are zero. Expanding gives <span class="math display">\[
+h_S(t)=at-\frac{a(a-3)}2.
+\tag{6}
+\]</span> Thus the degree of the homogeneous equation appears in the
+slope of the count. Degree-one generation matters: a single variable of
+degree two has one monomial in every even degree and none in odd degree.
+Exercise 9.6 proves why that function cannot eventually be
+polynomial.</p>
+<h2 id="from-an-ideal-filtration-to-a-graded-module">4. From an ideal
+filtration to a graded module</h2>
+<p>Let <span class="math inline">\((R,\mathfrak m)\)</span> be
+Noetherian local. An <strong>ideal of definition</strong> is a proper
+ideal <span class="math inline">\(I\)</span> with <span
+class="math inline">\(\sqrt I=\mathfrak m\)</span> [Stacks, Tag 07DU].
+Equivalently, <span class="math display">\[
+\mathfrak m^a\subseteq I\subseteq\mathfrak m
+\tag{7}
+\]</span> for some <span class="math inline">\(a\geq1\)</span>.
+Radical-power containment proves the forward implication, and taking
+radicals proves the converse. In particular, <span
+class="math inline">\(R/I^n\)</span> for <span
+class="math inline">\(n\geq1\)</span> is Noetherian and has only one
+prime, its maximal ideal. The earlier Artinian criterion makes it
+Artinian, so every finite module over it has finite length.</p>
+<p>For a finite <span class="math inline">\(R\)</span>-module <span
+class="math inline">\(M\)</span>, the <strong>Hilbert–Samuel
+function</strong> is <span class="math display">\[
+H_{I,M}(n)=\ell_R(M/I^nM)\qquad(n\geq0).
+\tag{8}
+\]</span> Here <span class="math inline">\(I^0M=M\)</span>, so <span
+class="math inline">\(H_{I,M}(0)=0\)</span>. Its consecutive layers are
+the pieces of <span class="math display">\[
+\operatorname{gr}_I(R)=\bigoplus_{j\geq0} I^j/I^{j+1},\qquad
+\operatorname{gr}_I(M)=\bigoplus_{j\geq0}I^jM/I^{j+1}M.
+\tag{9}
+\]</span> Multiplication is induced by multiplication in <span
+class="math inline">\(R\)</span> and its action on <span
+class="math inline">\(M\)</span>. Changing representatives introduces
+terms of one higher order, so these operations are well defined.</p>
+<p><strong>Lemma 4.1.</strong> The ring in (9) is standard graded over
+<span class="math inline">\(R/I\)</span>, which is Artinian, and its
+module is finite, generated in degree zero.</p>
+<p><strong>Proof.</strong> Choose ideal generators <span
+class="math inline">\(a_1,\ldots,a_r\)</span> of <span
+class="math inline">\(I\)</span>. Products of their classes in <span
+class="math inline">\(I/I^2\)</span> generate every ring piece over
+<span class="math inline">\(R/I\)</span>, because products of <span
+class="math inline">\(j\)</span> ideal generators generate <span
+class="math inline">\(I^j\)</span>. If <span
+class="math inline">\(m_1,\ldots,m_s\)</span> generate <span
+class="math inline">\(M\)</span>, each element of <span
+class="math inline">\(I^jM\)</span> is a sum of those same products
+times the <span class="math inline">\(m_i\)</span>. Thus their images in
+<span class="math inline">\(M/IM\)</span> generate the graded module.
+<span class="math inline">\(\square\)</span></p>
+<p>The <strong>Rees algebra</strong> retains the filtration before
+taking its consecutive quotients: <span class="math display">\[
+\mathcal R_I(R)=\bigoplus_{j\geq0}I^jT^j\subseteq R[T],\qquad
+\mathcal R_I(M)=\bigoplus_{j\geq0}I^jM T^j.
+\tag{10}
+\]</span> It is generated as an <span
+class="math inline">\(R\)</span>-algebra by <span
+class="math inline">\(a_iT\)</span>, so is Noetherian by Hilbert basis.
+Its module is generated by the <span class="math inline">\(m_i\)</span>
+in degree zero. Quotienting by the action of the degree-zero ideal <span
+class="math inline">\(I\)</span> gives precisely (9): the degree-<span
+class="math inline">\(j\)</span> denominator is <span
+class="math inline">\(I^{j+1}T^j\)</span>, or <span
+class="math inline">\(I^{j+1}M T^j\)</span> for the module. This
+distinguishes the Rees algebra from the associated graded ring. Neither
+requires a completion.</p>
+<p><strong>Theorem 4.2 (Hilbert–Samuel polynomial).</strong> For an
+ideal of definition <span class="math inline">\(I\)</span> and a finite
+<span class="math inline">\(M\)</span>, the function (8) is eventually a
+numerical polynomial <span class="math inline">\(P_{I,M}(t)\)</span>. If
+<span class="math inline">\(I\)</span> has <span
+class="math inline">\(r\)</span> generators, its degree is at most <span
+class="math inline">\(r\)</span>.</p>
+<p><strong>Proof.</strong> Apply Theorem 3.1 to (9), using Lemma 4.1.
+The layer length <span class="math display">\[
+g(j)=\ell_R(I^jM/I^{j+1}M)
+\]</span> is eventually numerical of degree at most <span
+class="math inline">\(r-1\)</span> for <span
+class="math inline">\(r\geq1\)</span>. Its length over <span
+class="math inline">\(R/I\)</span> is the same as its length over <span
+class="math inline">\(R\)</span>, because it is killed by <span
+class="math inline">\(I\)</span> and these actions have exactly the same
+submodules. The finite filtration of <span
+class="math inline">\(M/I^nM\)</span> gives <span
+class="math display">\[
+H_{I,M}(n)=\sum_{j=0}^{n-1}g(j),\qquad
+H_{I,M}(n)-H_{I,M}(n-1)=g(n-1).
+\tag{11}
+\]</span> Lemma 2.2 now proves the assertion and degree bound. If <span
+class="math inline">\(r=0\)</span>, then <span
+class="math inline">\(I=0\)</span>, <span
+class="math inline">\(R\)</span> is Artinian, and <span
+class="math inline">\(H(n)=\ell_R(M)\)</span> for every <span
+class="math inline">\(n\geq1\)</span>. This includes the zero module.
+<span class="math inline">\(\square\)</span></p>
+<h2 id="degree-and-multiplicity">5. Degree and multiplicity</h2>
+<p>If <span class="math inline">\(M\neq0\)</span>, Nakayama gives <span
+class="math inline">\(M/IM\neq0\)</span>. The function <span
+class="math inline">\(H_{I,M}\)</span> is nondecreasing and at least its
+positive value at one for <span class="math inline">\(n\geq1\)</span>.
+Its eventual polynomial is therefore nonzero and has positive leading
+coefficient. For <span class="math inline">\(M=0\)</span> it is zero, of
+degree <span class="math inline">\(-\infty\)</span>.</p>
+<p><strong>Theorem 5.1.</strong> The degree of <span
+class="math inline">\(P_{I,M}\)</span> is independent of the ideal of
+definition <span class="math inline">\(I\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math inline">\(I,J\)</span>
+are ideals of definition, (7) supplies positive integers <span
+class="math inline">\(a,b\)</span> with <span
+class="math inline">\(I^a\subseteq J\)</span> and <span
+class="math inline">\(J^b\subseteq I\)</span>. Raising these
+containments to the <span class="math inline">\(n\)</span>-th power and
+passing to quotient lengths gives <span class="math display">\[
+H_{J,M}(n)\leq H_{I,M}(an),\qquad
+H_{I,M}(n)\leq H_{J,M}(bn).
+\tag{12}
+\]</span> For <span class="math inline">\(M\neq0\)</span>, both eventual
+polynomials have positive leading coefficients. The first inequality
+prevents the degree for <span class="math inline">\(J\)</span> from
+exceeding that for <span class="math inline">\(I\)</span>: otherwise its
+higher power of <span class="math inline">\(n\)</span> eventually
+exceeds the other polynomial. The second gives the reverse comparison.
+For <span class="math inline">\(M=0\)</span>, both degrees are <span
+class="math inline">\(-\infty\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>Denote this degree by <span class="math inline">\(d(M)\)</span>. For
+nonzero <span class="math inline">\(M\)</span>, define its
+<strong>multiplicity with respect to <span
+class="math inline">\(I\)</span></strong> by <span
+class="math display">\[
+e_I(M)=d(M)!\,[t^{d(M)}]P_{I,M}(t).
+\tag{13}
+\]</span> It is a positive integer by Lemma 2.1. Set <span
+class="math inline">\(e_I(0)=0\)</span>. The eventual growth reads <span
+class="math inline">\(e_I(M)n^{d(M)}/d(M)!\)</span> plus lower-degree
+terms.</p>
+<p>The ideal remains part of multiplicity’s notation. For example, in
+<span class="math inline">\(R=k[t]_{(t)}\)</span>, the ideal <span
+class="math inline">\(I=(t^a)\)</span> gives <span
+class="math inline">\(H_{I,R}(n)=an\)</span>. Indeed the quotient has
+basis <span class="math inline">\(1,t,\ldots,t^{an-1}\)</span>, and its
+local composition factors are copies of <span
+class="math inline">\(k\)</span>. Thus <span
+class="math inline">\(d(R)=1\)</span> for every positive <span
+class="math inline">\(a\)</span>, but <span
+class="math inline">\(e_{(t^a)}(R)=a\)</span>.</p>
+<p>At this stage <span class="math inline">\(d(M)\)</span> is defined by
+growth. Its equality with the dimension of the support is proved in
+<em>Dimension theory of Noetherian local rings</em>. The current results
+neither assume nor need that equality.</p>
+<h2 id="exact-sequences-and-the-induced-filtration">6. Exact sequences
+and the induced filtration</h2>
+<p><strong>Theorem 6.1.</strong> In an exact sequence of finite modules
+over a Noetherian local ring, <span class="math display">\[
+0\longrightarrow M&#39;\longrightarrow M\longrightarrow
+M&#39;&#39;\longrightarrow0,
+\]</span> we have <span
+class="math inline">\(d(M)=\max\{d(M&#39;),d(M&#39;&#39;)\}\)</span>.</p>
+<p><strong>Proof.</strong> Identify <span
+class="math inline">\(M&#39;\)</span> with its image and fix an ideal of
+definition <span class="math inline">\(I\)</span>. The relevant quotient
+sequence is <span class="math display">\[
+0\longrightarrow M&#39;/(M&#39;\cap I^nM)\longrightarrow M/I^nM
+\longrightarrow M&#39;&#39;/I^nM&#39;&#39;\longrightarrow0.
+\tag{14}
+\]</span> The middle map is surjective. Its kernel consists of the image
+of <span class="math inline">\(M&#39;\)</span>, because the preimage of
+<span class="math inline">\(I^nM&#39;&#39;\)</span> is <span
+class="math inline">\(M&#39;+I^nM\)</span>. This proves (14), including
+its stated first term.</p>
+<p>Artin–Rees supplies <span class="math inline">\(c\geq0\)</span> such
+that for <span class="math inline">\(n\geq c\)</span>, <span
+class="math display">\[
+I^nM&#39;\subseteq M&#39;\cap I^nM
+=I^{n-c}(M&#39;\cap I^cM)\subseteq I^{n-c}M&#39;.
+\tag{15}
+\]</span> Quotient lengths and (14) therefore give <span
+class="math display">\[
+H_{I,M&#39;&#39;}(n)+H_{I,M&#39;}(n-c)
+\leq H_{I,M}(n)
+\leq H_{I,M&#39;&#39;}(n)+H_{I,M&#39;}(n).
+\tag{16}
+\]</span> If both end modules are zero, so is <span
+class="math inline">\(M\)</span>. Otherwise the two bounding eventual
+polynomials have the same degree, namely the maximum of the end degrees,
+and the same positive leading coefficient. Translation does not alter a
+polynomial’s degree or leading coefficient. Polynomial growth in (16)
+then forces the middle polynomial to have that same degree and leading
+coefficient. This includes degree zero, where translation leaves the
+constant polynomial unchanged, and includes one zero end module. <span
+class="math inline">\(\square\)</span></p>
+<p>For a fixed nonnegative degree <span
+class="math inline">\(d\)</span>, set <span class="math display">\[
+E_{I,d}(N)=
+\begin{cases}
+e_I(N),&amp;d(N)=d,\\
+0,&amp;d(N)&lt;d.
+\end{cases}
+\]</span> When <span class="math inline">\(d=d(M)\)</span>, the same
+proof yields <span class="math display">\[
+e_I(M)=E_{I,d}(M&#39;)+E_{I,d}(M&#39;&#39;).
+\tag{17}
+\]</span> Only contributions in the largest degree count. The whole
+Hilbert–Samuel polynomial need not be additive, because the induced
+filtration <span class="math inline">\(M&#39;\cap I^nM\)</span> need not
+equal <span class="math inline">\(I^nM&#39;\)</span>.</p>
+<p><strong>Corollary 6.2.</strong> For a nonzero finite module, <span
+class="math inline">\(d(M)=0\)</span> exactly when <span
+class="math inline">\(M\)</span> has finite length; then <span
+class="math inline">\(e_I(M)=\ell_R(M)\)</span>.</p>
+<p><strong>Proof.</strong> If <span
+class="math inline">\(d(M)=0\)</span>, the eventual function <span
+class="math inline">\(H(n)\)</span> is constant. By (11), <span
+class="math inline">\(I^nM/I^{n+1}M=0\)</span> for sufficiently large
+<span class="math inline">\(n\)</span>. The finite module <span
+class="math inline">\(I^nM\)</span> satisfies <span
+class="math inline">\(I(I^nM)=I^nM\)</span>, so Nakayama gives <span
+class="math inline">\(I^nM=0\)</span>. Thus <span
+class="math inline">\(M\)</span> is finite over the Artinian ring <span
+class="math inline">\(R/I^n\)</span>, and has finite length. Conversely,
+all simple factors of a finite-length module over the local ring are
+<span class="math inline">\(R/\mathfrak m\)</span>. A composition series
+of length <span class="math inline">\(l\)</span> shows successively that
+<span class="math inline">\(\mathfrak m^lM=0\)</span>. Therefore <span
+class="math inline">\(I^nM=0\)</span> for <span
+class="math inline">\(n\geq l\)</span>, and <span
+class="math inline">\(H(n)=\ell_R(M)\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="initial-forms-and-plane-hypersurfaces">7. Initial forms and
+plane hypersurfaces</h2>
+<p>Let <span class="math inline">\(A=k[x,y]_{(x,y)}\)</span>, with
+maximal ideal <span class="math inline">\(\mathfrak n=(x,y)A\)</span>.
+For a nonzero polynomial, its order is the least total degree of a
+nonzero homogeneous part. A fraction <span class="math inline">\(p/q\in
+A\)</span>, with <span class="math inline">\(q(0,0)\neq0\)</span>, has
+the order of <span class="math inline">\(p\)</span>. This is independent
+of its representation: equality <span
+class="math inline">\(pq&#39;=p&#39;q\)</span> gives equality of lowest
+degrees, and denominators have order zero. Its initial form is the
+lowest homogeneous part of <span class="math inline">\(p\)</span>,
+divided by <span class="math inline">\(q(0,0)\)</span>.</p>
+<p>These forms identify <span class="math display">\[
+\operatorname{gr}_{\mathfrak n}(A)=k[X,Y].
+\tag{18}
+\]</span> To check this, every fraction in <span
+class="math inline">\(\mathfrak n^j\)</span> has a numerator in <span
+class="math inline">\((x,y)^j\)</span>. Modulo <span
+class="math inline">\(\mathfrak n^{j+1}\)</span>, only its degree-<span
+class="math inline">\(j\)</span> numerator and the constant denominator
+remain. This proves surjectivity onto each piece. A nonzero homogeneous
+polynomial of degree <span class="math inline">\(j\)</span> cannot enter
+<span class="math inline">\(\mathfrak n^{j+1}\)</span> upon
+localization: multiplying it by a polynomial with nonzero constant term
+preserves its nonzero lowest degree. This proves injectivity. Products
+of nonzero initial forms in the polynomial domain are nonzero, so <span
+class="math display">\[
+\operatorname{ord}(uv)=\operatorname{ord}(u)+\operatorname{ord}(v)
+\tag{19}
+\]</span> for nonzero <span class="math inline">\(u,v\in A\)</span>.</p>
+<p><strong>Theorem 7.1.</strong> Let <span class="math inline">\(0\neq
+f\in(x,y)\subset k[x,y]\)</span>, let <span
+class="math inline">\(r=\operatorname{ord}(f)\)</span>, and let <span
+class="math inline">\(f_r\)</span> be its degree-<span
+class="math inline">\(r\)</span> homogeneous part. For <span
+class="math inline">\(R=A/(f)\)</span>, with maximal ideal <span
+class="math inline">\(\mathfrak m\)</span>, <span
+class="math display">\[
+\operatorname{gr}_{\mathfrak m}(R)=k[X,Y]/(f_r).
+\tag{20}
+\]</span> Its layer lengths are <span
+class="math inline">\(\min(j+1,r)\)</span> in degree <span
+class="math inline">\(j\geq0\)</span>. In particular, <span
+class="math display">\[
+\ell_R(R/\mathfrak m^n)=rn-\frac{r(r-1)}2
+\quad\text{for }n\geq\max(1,r-1),
+\tag{21}
+\]</span> so <span class="math inline">\(d(R)=1\)</span> and <span
+class="math inline">\(e_{\mathfrak m}(R)=r\)</span>.</p>
+<p><strong>Proof.</strong> The quotient map induces a surjection in (18)
+onto the graded ring of <span class="math inline">\(R\)</span>. In
+degree <span class="math inline">\(j\)</span>, its kernel is represented
+by elements <span class="math display">\[
+g\in\mathfrak n^j\cap\bigl((f)+\mathfrak n^{j+1}\bigr).
+\]</span> Write <span class="math inline">\(g=hf+b\)</span>, with <span
+class="math inline">\(b\in\mathfrak n^{j+1}\)</span>. If its
+degree-<span class="math inline">\(j\)</span> class is nonzero, then
+<span class="math inline">\(hf\)</span> has order exactly <span
+class="math inline">\(j\)</span>, and (19) identifies that class with
+the initial form of <span class="math inline">\(h\)</span> times <span
+class="math inline">\(f_r\)</span>. Conversely each homogeneous multiple
+of <span class="math inline">\(f_r\)</span> is the initial form of the
+corresponding polynomial multiple of <span
+class="math inline">\(f\)</span>, hence belongs to the kernel. This
+proves (20).</p>
+<p>Multiplication by the nonzero homogeneous <span
+class="math inline">\(f_r\)</span> is injective in <span
+class="math inline">\(k[X,Y]\)</span>. Consequently its degree-<span
+class="math inline">\(j\)</span> quotient has dimension <span
+class="math display">\[
+(j+1)-\max(0,j-r+1)=\min(j+1,r).
+\tag{22}
+\]</span> The residue field is <span class="math inline">\(k\)</span>,
+so a finite-dimensional layer has length equal to its <span
+class="math inline">\(k\)</span>-dimension: all its local simple factors
+are one-dimensional over <span class="math inline">\(k\)</span>. Summing
+(22) proves (21), since the deficit from the constant value <span
+class="math inline">\(r\)</span> is <span
+class="math inline">\((r-1)+(r-2)+\cdots+1=r(r-1)/2\)</span>. At <span
+class="math inline">\(n=r-1\)</span> this already gives the correct sum;
+for smaller <span class="math inline">\(n\)</span> the sum is <span
+class="math inline">\(n(n+1)/2\)</span>. Its eventual linear polynomial
+has leading coefficient <span class="math inline">\(r\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>For the cusp <span class="math inline">\(f=y^2-x^3\)</span>, the
+initial form is <span class="math inline">\(Y^2\)</span>. Thus its
+tangent graded algebra is <span
+class="math inline">\(k[X,Y]/(Y^2)\)</span>, and <span
+class="math inline">\(H(n)=2n-1\)</span> for every <span
+class="math inline">\(n\geq1\)</span>. The multiplicity is two. For
+<span class="math inline">\(f=y^2-x^2(x+1)\)</span>, the initial form is
+<span class="math inline">\(Y^2-X^2\)</span>, so the same function and
+multiplicity occur. In characteristic different from two, this form is
+the product of two distinct tangent lines, and the singularity is a
+node. In characteristic two the two factors coincide; the multiplicity
+calculation still holds, but the distinct-tangent description does
+not.</p>
+<p>Multiplicity therefore measures a count that need not distinguish
+different singularities. The graded algebras retain additional
+information: one example has a doubled tangent direction, while the
+other, in characteristic different from two, has two tangent
+directions.</p>
+<h2 id="what-this-lesson-does-not-prove">8. What this lesson does not
+prove</h2>
+<p>Hilbert basis, radical-power containment, finite-length and Artinian
+criteria, Artin–Rees and Nakayama are imported at the prerequisite
+locators given at the start. Every graded finiteness,
+numerical-polynomial, Hilbert–Serre, Hilbert–Samuel, degree and
+multiplicity assertion taught here is proved. Proposition 3.2 also
+proves the Grothendieck-group version of Hilbert–Serre [Stacks, Tag
+00K1]. Equality of <span class="math inline">\(d(M)\)</span> with
+support dimension belongs to <em>Dimension theory of Noetherian local
+rings</em>. Projective sheaf Hilbert polynomials require further
+geometric results and are not used in these proofs.</p>
+<h2 id="exercises">9. Exercises</h2>
+<p><strong>Exercise 9.1 (easy: three axes).</strong> With standard
+grading, compute the Hilbert function and polynomial of <span
+class="math inline">\(k[x,y,z]/(xy,yz,zx)\)</span>.</p>
+<p><strong>Exercise 9.2 (easy: a finite local algebra).</strong> For
+<span class="math inline">\(R=k[[x,y]]/(x^2,y^3)\)</span> and <span
+class="math inline">\(\mathfrak m=(x,y)R\)</span>, compute <span
+class="math inline">\(\ell(R/\mathfrak m^n)\)</span> for all <span
+class="math inline">\(n\geq0\)</span>, and its degree and
+multiplicity.</p>
+<p><strong>Exercise 9.3 (medium: comparison of ideals).</strong> Prove
+directly from power containments and polynomial growth that <span
+class="math inline">\(d(M)\)</span> is independent of the ideal of
+definition. Then compute the different multiplicities of <span
+class="math inline">\((t)\)</span> and <span
+class="math inline">\((t^3)\)</span> on <span
+class="math inline">\(k[t]_{(t)}\)</span>.</p>
+<p><strong>Exercise 9.4 (medium: the order of an equation).</strong> For
+a nonzero <span class="math inline">\(f\in(x,y)\)</span>, prove that the
+multiplicity of <span class="math inline">\(k[x,y]_{(x,y)}/(f)\)</span>
+is the lowest degree of its nonzero homogeneous parts. Compute the
+multiplicity for <span class="math inline">\(x^3+x^2y+y^5\)</span> over
+any field.</p>
+<p><strong>Exercise 9.5 (hard: top coefficients and filtration
+error).</strong> Starting with Artin–Rees, prove (17) in a short exact
+sequence. Show that additivity of the whole Hilbert–Samuel polynomial
+fails in <span class="math inline">\(0\to(t)\to k[t]_{(t)}\to
+k\to0\)</span>, with ideal of definition <span
+class="math inline">\((t)\)</span>. Identify the induced filtration that
+restores exact quotient lengths.</p>
+<p><strong>Exercise 9.6 (medium: a weighted grading).</strong> Grade
+<span class="math inline">\(k[u]\)</span> by <span
+class="math inline">\(\deg u=2\)</span>. Compute its Hilbert function,
+prove it is not eventually a polynomial, and compute the cumulative
+function <span class="math inline">\(\sum_{j=0}^{n-1}\dim_k
+k[u]_j\)</span>. Explain the role of standard grading.</p>
+<h2 id="solutions">10. Solutions</h2>
+<p><strong>Solution 9.1.</strong> The monomial ideal kills exactly the
+monomials involving two or more of the variables. Monomials are a
+vector-space basis of the polynomial ring, and the ideal is spanned by
+those divisible by one of its three generators, so the remaining
+monomials form a quotient basis. They are <span
+class="math inline">\(1\)</span>, and <span
+class="math inline">\(x^n,y^n,z^n\)</span> for each <span
+class="math inline">\(n\geq1\)</span>. Thus <span
+class="math inline">\(h(0)=1\)</span>, <span
+class="math inline">\(h(n)=3\)</span> for <span
+class="math inline">\(n\geq1\)</span>, and the eventual polynomial is
+the constant three, of degree zero. This degree is the graded Hilbert
+polynomial’s degree, not the Hilbert–Samuel degree of a local ring.</p>
+<p><strong>Solution 9.2.</strong> Every formal series reduces uniquely
+to a linear combination of <span class="math display">\[
+1,\ y,\ x,\ y^2,\ xy,\ xy^2.
+\]</span> Indeed every other monomial is divisible by <span
+class="math inline">\(x^2\)</span> or <span
+class="math inline">\(y^3\)</span>, and coefficient comparison shows
+that no combination of the displayed monomials lies in that ideal. The
+quotient is therefore six-dimensional over <span
+class="math inline">\(k\)</span>. Elements with nonzero constant
+coefficient are units, by a finite geometric series in the nilpotent
+maximal ideal; elements with zero constant coefficient form <span
+class="math inline">\(\mathfrak m\)</span>. Thus this is a local
+Artinian algebra with residue field <span
+class="math inline">\(k\)</span>.</p>
+<p>The displayed basis has total degrees <span
+class="math inline">\(0,1,1,2,2,3\)</span>. Products of <span
+class="math inline">\(n\)</span> elements of <span
+class="math inline">\(\mathfrak m\)</span> span exactly the surviving
+monomials of degree at least <span class="math inline">\(n\)</span>:
+every such monomial is a product of that many variables times another
+monomial, and every product has at least that degree. Hence the layer
+dimensions are <span class="math inline">\(1,2,2,1\)</span>, then zero.
+Cumulative lengths are <span class="math display">\[
+H(0)=0,\quad H(1)=1,\quad H(2)=3,\quad H(3)=5,\quad H(n)=6\ (n\geq4).
+\]</span> Lengths equal vector-space dimensions because every simple
+factor is <span class="math inline">\(k\)</span>. The eventual
+polynomial is six, so <span class="math inline">\(d(R)=0\)</span> and
+<span class="math inline">\(e_{\mathfrak m}(R)=6\)</span>.</p>
+<p><strong>Solution 9.3.</strong> Choose <span
+class="math inline">\(a,b\geq1\)</span> with <span
+class="math inline">\(I^a\subseteq J\)</span> and <span
+class="math inline">\(J^b\subseteq I\)</span>, using the powers of <span
+class="math inline">\(\mathfrak m\)</span> contained in each ideal and
+the containments <span class="math inline">\(I,J\subseteq\mathfrak
+m\)</span>. Then <span class="math inline">\(I^{an}M\subseteq
+J^nM\)</span> and <span class="math inline">\(J^{bn}M\subseteq
+I^nM\)</span>, giving (12). For nonzero <span
+class="math inline">\(M\)</span>, both eventual polynomials have
+positive leading terms, so the inequalities give both degree
+comparisons. The zero module has both degrees <span
+class="math inline">\(-\infty\)</span>. For the specified one-variable
+ring, the quotients by <span class="math inline">\((t)^n\)</span> and
+<span class="math inline">\((t^3)^n\)</span> have respective bases <span
+class="math inline">\(1,\ldots,t^{n-1}\)</span> and <span
+class="math inline">\(1,\ldots,t^{3n-1}\)</span>. Their polynomials are
+<span class="math inline">\(n\)</span> and <span
+class="math inline">\(3n\)</span>: the degree is one, while the
+multiplicities are one and three.</p>
+<p><strong>Solution 9.4.</strong> Set <span
+class="math inline">\(r=\operatorname{ord}(f)\)</span>. The initial-form
+product rule in (19) shows that every initial form of a nonzero multiple
+of <span class="math inline">\(f\)</span> is divisible by <span
+class="math inline">\(f_r\)</span>, and multiplying <span
+class="math inline">\(f\)</span> by homogeneous polynomials realizes all
+such homogeneous multiples. The kernel computation in Theorem 7.1
+therefore gives <span
+class="math inline">\(\operatorname{gr}(A/(f))=k[X,Y]/(f_r)\)</span>.
+Multiplication by <span class="math inline">\(f_r\)</span> in the
+polynomial domain is injective, so the degree-<span
+class="math inline">\(j\)</span> dimension is <span
+class="math inline">\(\min(j+1,r)\)</span>. Summation gives <span
+class="math inline">\(rn-r(r-1)/2\)</span> eventually, with degree one
+and multiplicity <span class="math inline">\(r\)</span>. For <span
+class="math inline">\(x^3+x^2y+y^5\)</span>, the nonzero lowest part is
+<span class="math inline">\(X^3+X^2Y\)</span>, of degree three in every
+characteristic, so the multiplicity is three. Its eventual function is
+<span class="math inline">\(3n-3\)</span>, valid for <span
+class="math inline">\(n\geq2\)</span>. The nonzero nonunit hypotheses
+ensure that this argument concerns a nonzero plane hypersurface local
+ring.</p>
+<p><strong>Solution 9.5.</strong> The quotient kernel is <span
+class="math inline">\(M&#39;/(M&#39;\cap I^nM)\)</span>. Artin–Rees
+bounds its length between <span
+class="math inline">\(H_{I,M&#39;}(n-c)\)</span> and <span
+class="math inline">\(H_{I,M&#39;}(n)\)</span>; adding the
+quotient-module length gives (16). Write the end polynomials in their
+largest occurring degree <span class="math inline">\(d\)</span>,
+assigning coefficient zero to any end of smaller degree. Translating
+<span class="math inline">\(n\)</span> to <span
+class="math inline">\(n-c\)</span> preserves that degree’s coefficient.
+Divide (16) by <span class="math inline">\(n^d\)</span> and take the
+limits of these polynomial expressions; for <span
+class="math inline">\(d=0\)</span> the expressions are eventual
+constants and the same conclusion holds. The middle leading coefficient
+equals the sum of the end coefficients. Multiplying by <span
+class="math inline">\(d!\)</span> proves (17). If both ends vanish,
+every module vanishes and there is no nonnegative degree to
+consider.</p>
+<p>Now put <span class="math inline">\(B=k[t]_{(t)}\)</span> and <span
+class="math inline">\(I=(t)\)</span>. Multiplication by <span
+class="math inline">\(t\)</span> identifies the module <span
+class="math inline">\((t)\)</span> with <span
+class="math inline">\(B\)</span>. Thus for <span
+class="math inline">\(n\geq1\)</span>, <span
+class="math inline">\(H_{I,(t)}(n)=n\)</span>, <span
+class="math inline">\(H_{I,B}(n)=n\)</span>, and <span
+class="math inline">\(H_{I,k}(n)=1\)</span>. The sum of the end
+polynomials is <span class="math inline">\(n+1\)</span>, not <span
+class="math inline">\(n\)</span>. Nevertheless their degree-one
+coefficients give <span class="math inline">\(1=1+0\)</span>, as
+required. The induced submodule filtration is <span
+class="math display">\[
+(t)\cap I^nB=(t^n),
+\]</span> whereas <span class="math inline">\(I^n(t)=(t^{n+1})\)</span>.
+The induced quotient <span class="math inline">\((t)/(t^n)\)</span> has
+length <span class="math inline">\(n-1\)</span>, including zero at <span
+class="math inline">\(n=1\)</span>. Its length plus that of <span
+class="math inline">\(k\)</span> is exactly <span
+class="math inline">\(n\)</span>. The discrepancy is the filtration, not
+a failure of length additivity.</p>
+<p><strong>Solution 9.6.</strong> The monomial <span
+class="math inline">\(u^a\)</span> has degree <span
+class="math inline">\(2a\)</span>, so the function is one in nonnegative
+even degrees and zero in odd degrees. If an eventual polynomial <span
+class="math inline">\(P\)</span> existed, it would vanish at all
+sufficiently large odd integers, forcing <span
+class="math inline">\(P=0\)</span>; its values at the even integers
+contradict this. The cumulative function counts nonnegative even
+integers strictly below <span class="math inline">\(n\)</span>, so is
+<span class="math inline">\(\lceil n/2\rceil\)</span>. It too is not
+eventually polynomial: on even integers it equals <span
+class="math inline">\(n/2\)</span>, which would force that polynomial
+everywhere, but its odd values differ by <span
+class="math inline">\(1/2\)</span>. Each residue class modulo two has a
+polynomial formula. Degree-one generation removes this periodic
+obstruction and is the hypothesis used by the difference step (3).</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project authors, <em>The Stacks project</em>, graded
+finiteness <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-graded-Noetherian">Tag
+00JW</a>, numerical polynomials <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-numerical-polynomial">Tag
+00JX</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-numerical-polynomial">Tag
+00JZ</a>, and Hilbert–Serre <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-graded-hilbert-polynomial">Tag
+00K1</a>.</li>
+<li>The same work, ideals of definition <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-ideal-definition">Tag
+07DU</a>, Hilbert–Samuel polynomial <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-hilbert-function-polynomial">Tag
+00K8</a>, degree independence <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-d-independent">Tag
+00K9</a>, exact-sequence degree <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-hilbert-ses-chi">Tag
+00KC</a>, and Rees algebras <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-section-blow-up">Section
+052P</a>. These links use the AI Integrated Stacks Project English
+reader described in the course introduction.</li>
+<li>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic
+Geometry</em>, public draft of 27 July 2024, Section 18.6, for the
+projective Hilbert-polynomial comparison and hypersurface calculation.
+<a
+href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">Author’s
+public draft</a>.</li>
+</ul>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="A4F2D00C94B05BE2C800CFE23E115EA0AAECD4CCD5A09B20BB97FB5DC953546E">
+<title>C*-dynamical systems and full crossed products — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Course contents</a><span aria-hidden="true"> / </span><span>KT-CP-01</span></nav>
+<article id="lesson" class="lesson"><h1 id="c--dynamical-systems-and-full-crossed-products">C*-dynamical systems and full crossed products</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Contributions by GPT-6 Astra (OpenAI). Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An action on an algebra describes how its observables change under a symmetry. A crossed product puts the observables and the operators implementing that symmetry into one algebra. Its defining relation is covariance. Its defining norm allows every continuous covariant representation, which explains the word <strong>full</strong>.</p>
+<p>This lesson develops the multiplier version of that construction, proves its universal property and exactness for invariant ideals, and computes several first examples. The translation action on a discrete group will turn into the algebra of compact operators. That calculation gives a concrete way to see how functions and translations produce matrix entries.</p>
+<p>Preparatory reading is <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>, <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D20">Functional Analysis</a>, and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups.html">Haar measure on locally compact groups</a>. We also use <a href="prerequisites/OA-FLOW/repaired-20261004/group-representations-and-completions.html">Unitary representations and the two group C* completions</a>, <a href="prerequisites/OA-FLOW/repaired-20261004/covariance-and-crossed-products.html">Covariance and crossed products with nonunital coefficients</a>, and <em>Compact operators, multipliers and the strict topology</em>. The precise statements used from these subjects are collected under “What this lesson does not prove”. Basic references are [Schulz-Baldes–Stoiber], [Connes], [Blackadar, Operator Algebras], and [Blackadar, K-Theory].</p>
+<p>Throughout, <span class="math" data-tex="\(G\)">\(G\)</span> is a locally compact Hausdorff group, <span class="math" data-tex="\(A\)">\(A\)</span> is a C*-algebra, and Haar measure is on the left. No separability, countability or unimodularity assumption is imposed. We fix the modular function by</p>
+<span class="math math-display" data-tex="\[
+\int_G h(rs)\,dr=\Delta(s)^{-1}\int_G h(r)\,dr.
+\]">\[
+\int_G h(rs)\,dr=\Delta(s)^{-1}\int_G h(r)\,dr.
+\]</span>
+<p>Consequently inversion contributes the factor <span class="math" data-tex="\(\Delta(t^{-1})\)">\(\Delta(t^{-1})\)</span>. Integrals of coefficient functions are Bochner integrals. The integrals of operators below are evaluated on vectors, or strictly in a multiplier algebra.</p>
+<h2 id="1-covariance-dictates-multiplication">1. Covariance dictates multiplication</h2>
+<p>A <strong>C*-dynamical system</strong> is a triple <span class="math" data-tex="\((A,G,\alpha)\)">\((A,G,\alpha)\)</span>, where <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(A)\)">\(\alpha:G\to\operatorname{Aut}(A)\)</span> is a homomorphism and <span class="math" data-tex="\(s\mapsto\alpha_s(a)\)">\(s\mapsto\alpha_s(a)\)</span> is norm continuous for each <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>. This continuity condition is called point-norm continuity.</p>
+<p>A <strong>covariant representation</strong> consists of a nondegenerate *-representation <span class="math" data-tex="\(\pi:A\to B(H)\)">\(\pi:A\to B(H)\)</span> and a strongly continuous unitary representation <span class="math" data-tex="\(U:G\to\mathcal U(H)\)">\(U:G\to\mathcal U(H)\)</span> satisfying</p>
+<span id="equation-1-1"></span><span class="math math-display" data-tex="\[
+U_s\pi(a)U_s^*=\pi(\alpha_s(a)).
+\tag{1.1}
+\]">\[
+U_s\pi(a)U_s^*=\pi(\alpha_s(a)).
+\tag{1.1}
+\]</span>
+<p>Nondegeneracy means <span class="math" data-tex="\(\overline{\pi(A)H}=H\)">\(\overline{\pi(A)H}=H\)</span>. It is essential for recovering both members of the pair from their integrated operators.</p>
+<p>For a continuous left action on a locally compact Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span>, the coefficient action is</p>
+<span id="equation-1-2"></span><span class="math math-display" data-tex="\[
+\alpha_s(a)(x)=a(s^{-1}x),\qquad a\in C_0(X).
+\tag{1.2}
+\]">\[
+\alpha_s(a)(x)=a(s^{-1}x),\qquad a\in C_0(X).
+\tag{1.2}
+\]</span>
+<p>This is point-norm continuous. For <span class="math" data-tex="\(a\in C_c(X)\)">\(a\in C_c(X)\)</span>, translations near the identity have their supports in a common compact set: if <span class="math" data-tex="\(W\)">\(W\)</span> is a compact identity neighborhood and <span class="math" data-tex="\(K=\operatorname{supp}a\)">\(K=\operatorname{supp}a\)</span>, that set is <span class="math" data-tex="\(WK\)">\(WK\)</span>. Joint continuity and a finite-cover argument give uniform convergence of the translates on it. Approximation of <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> by <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span>, and the isometry of each translate, give the assertion for all <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>Moving <span class="math" data-tex="\(\pi(b)\)">\(\pi(b)\)</span> past <span class="math" data-tex="\(U_s\)">\(U_s\)</span> in a product <span class="math" data-tex="\(\pi(a)U_s\pi(b)U_t\)">\(\pi(a)U_s\pi(b)U_t\)</span> produces <span class="math" data-tex="\(\pi(a\alpha_s(b))U_{st}\)">\(\pi(a\alpha_s(b))U_{st}\)</span>. Thus on <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span> define</p>
+<span id="equation-1-3"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+(f*g)(t)&amp;=\int_G f(s)\alpha_s(g(s^{-1}t))\,ds,\\
+f^*(t)&amp;=\Delta(t^{-1})\alpha_t(f(t^{-1})^*),\\
+\|f\|_1&amp;=\int_G\|f(s)\|\,ds.
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+(f*g)(t)&amp;=\int_G f(s)\alpha_s(g(s^{-1}t))\,ds,\\
+f^*(t)&amp;=\Delta(t^{-1})\alpha_t(f(t^{-1})^*),\\
+\|f\|_1&amp;=\int_G\|f(s)\|\,ds.
+\end{aligned}
+\tag{1.3}
+\]</span>
+<p><span id="proposition-1-1"></span><strong>Proposition 1.1.</strong> These operations make <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span> a *-algebra. They extend to its <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-completion, with</p>
+<span id="equation-1-4"></span><span class="math math-display" data-tex="\[
+\|f*g\|_1\leq\|f\|_1\|g\|_1,
+\qquad \|f^*\|_1=\|f\|_1.
+\tag{1.4}
+\]">\[
+\|f*g\|_1\leq\|f\|_1\|g\|_1,
+\qquad \|f^*\|_1=\|f\|_1.
+\tag{1.4}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(f,g\)">\(f,g\)</span> have supports <span class="math" data-tex="\(K,L\)">\(K,L\)</span>, the convolution has support in <span class="math" data-tex="\(KL\)">\(KL\)</span>. The integrand depends continuously on its parameters. Restriction to a compact integration set and uniform continuity there prove continuity of the convolution. The involution is continuous and has support in <span class="math" data-tex="\(K^{-1}\)">\(K^{-1}\)</span>.</p>
+<p>Both associative bracketings, after the left Haar substitution in the inner integral, equal</p>
+<span id="equation-1-5"></span><span class="math math-display" data-tex="\[
+\int_G\!\int_G f(r)\alpha_r(g(s))\alpha_{rs}(h(s^{-1}r^{-1}t))\,ds\,dr.
+\tag{1.5}
+\]">\[
+\int_G\!\int_G f(r)\alpha_r(g(s))\alpha_{rs}(h(s^{-1}r^{-1}t))\,ds\,dr.
+\tag{1.5}
+\]</span>
+<p>For compact supports this is an absolutely integrable Bochner integral. Fubini therefore applies. The same estimate integrated also in <span class="math" data-tex="\(t\)">\(t\)</span> bounds its absolute integral by <span class="math" data-tex="\(\|f\|_1\|g\|_1\|h\|_1\)">\(\|f\|_1\|g\|_1\|h\|_1\)</span>.</p>
+<p>Conjugate linearity is immediate, and multiplicativity of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> gives <span class="math" data-tex="\((f^*)^*=f\)">\((f^*)^*=f\)</span>. To check reversal of products, expansion gives</p>
+<span class="math math-display" data-tex="\[
+(g^**f^*)(t)=\Delta(t^{-1})
+\int_G\alpha_s(g(s^{-1})^*)\alpha_t(f(t^{-1}s)^*)\,ds.
+\]">\[
+(g^**f^*)(t)=\Delta(t^{-1})
+\int_G\alpha_s(g(s^{-1})^*)\alpha_t(f(t^{-1}s)^*)\,ds.
+\]</span>
+<p>Putting <span class="math" data-tex="\(s=tr\)">\(s=tr\)</span> turns this into the adjoint of the convolution at <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span>, followed by <span class="math" data-tex="\(\Delta(t^{-1})\alpha_t\)">\(\Delta(t^{-1})\alpha_t\)</span>. Hence it is <span class="math" data-tex="\((f*g)^*(t)\)">\((f*g)^*(t)\)</span>. Finally, isometry of <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span> and left invariance prove the product estimate in (1.4); inversion proves the involution estimate. Completion now extends all the algebra identities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(L^1(G,A)\)">\(L^1(G,A)\)</span> for this completion. For a covariant pair its <strong>integrated form</strong> is</p>
+<span id="equation-1-6"></span><span class="math math-display" data-tex="\[
+(\pi\rtimes U)(f)\xi=\int_G\pi(f(s))U_s\xi\,ds.
+\tag{1.6}
+\]">\[
+(\pi\rtimes U)(f)\xi=\int_G\pi(f(s))U_s\xi\,ds.
+\tag{1.6}
+\]</span>
+<p>The vector integrand is continuous on compact supports, and</p>
+<span id="equation-1-7"></span><span class="math math-display" data-tex="\[
+\|(\pi\rtimes U)(f)\xi\|
+\leq\int_G\|f(s)\|\|\xi\|\,ds.
+\tag{1.7}
+\]">\[
+\|(\pi\rtimes U)(f)\xi\|
+\leq\int_G\|f(s)\|\|\xi\|\,ds.
+\tag{1.7}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\|\pi\rtimes U(f)\|\leq\|f\|_1\)">\(\|\pi\rtimes U(f)\|\leq\|f\|_1\)</span>. Covariance and inversion show that (1.6) preserves products and adjoints; this integrated-form theorem and its nondegeneracy are supplied by the coefficient-recovery lesson. We use its converse too: every nondegenerate representation of <span class="math" data-tex="\(L^1(G,A)\)">\(L^1(G,A)\)</span> is the integrated form of exactly one such pair. We do not repeat the recovery argument.</p>
+<h2 id="2-the-universal-algebra-and-its-multipliers">2. The universal algebra and its multipliers</h2>
+<p>The universal norm is</p>
+<span id="equation-2-1"></span><span class="math math-display" data-tex="\[
+\|f\|_u=\sup_{(\pi,U)}\|(\pi\rtimes U)(f)\|.
+\tag{2.1}
+\]">\[
+\|f\|_u=\sup_{(\pi,U)}\|(\pi\rtimes U)(f)\|.
+\tag{2.1}
+\]</span>
+<p>It is finite by (1.7). The regular-faithfulness theorem in <em>Covariance and crossed products with nonunital coefficients</em> says that it is a norm, rather than only a seminorm. That lesson also establishes the set-sized interpretation of this supremum and the C*-identity. Its completion is the <strong>full crossed product</strong></p>
+<span class="math math-display" data-tex="\[
+C=A\rtimes_\alpha G.
+\]">\[
+C=A\rtimes_\alpha G.
+\]</span>
+<p>We use that established completion. Our task is to put its generators in <span class="math" data-tex="\(M(C)\)">\(M(C)\)</span> and formulate the universal property there.</p>
+<p>For a C*-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, a homomorphism <span class="math" data-tex="\(\pi:A\to M(B)\)">\(\pi:A\to M(B)\)</span> is nondegenerate when <span class="math" data-tex="\(\overline{\pi(A)B}=B\)">\(\overline{\pi(A)B}=B\)</span>. A unitary map <span class="math" data-tex="\(U:G\to\mathcal U(M(B))\)">\(U:G\to\mathcal U(M(B))\)</span> is <strong>strictly continuous</strong> when <span class="math" data-tex="\(U_sb\)">\(U_sb\)</span> and <span class="math" data-tex="\(bU_s\)">\(bU_s\)</span> vary in norm for every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>. A multiplier covariant pair satisfies (1.1) with values in <span class="math" data-tex="\(M(B)\)">\(M(B)\)</span>.</p>
+<p><span id="theorem-2-1"></span><strong>Theorem 2.1.</strong> There are a nondegenerate injective homomorphism <span class="math" data-tex="\(i_A:A\to M(C)\)">\(i_A:A\to M(C)\)</span> and a strictly continuous unitary homomorphism <span class="math" data-tex="\(i_G:G\to\mathcal U(M(C))\)">\(i_G:G\to\mathcal U(M(C))\)</span> satisfying covariance. If <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, the group homomorphism is injective. On <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span> their actions are</p>
+<span id="equation-2-2"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+(i_A(a)f)(t)&amp;=af(t),&amp; (fi_A(a))(t)&amp;=f(t)\alpha_t(a),\\
+(i_G(s)f)(t)&amp;=\alpha_s(f(s^{-1}t)),&amp;
+(fi_G(s))(t)&amp;=\Delta(s)^{-1}f(ts^{-1}).
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+(i_A(a)f)(t)&amp;=af(t),&amp; (fi_A(a))(t)&amp;=f(t)\alpha_t(a),\\
+(i_G(s)f)(t)&amp;=\alpha_s(f(s^{-1}t)),&amp;
+(fi_G(s))(t)&amp;=\Delta(s)^{-1}f(ts^{-1}).
+\end{aligned}
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> Realize <span class="math" data-tex="\(C\)">\(C\)</span> faithfully and nondegenerately by the direct sum of a set of covariant representations sufficient to compute (2.1). The set restriction and nondegeneracy are among the completion results just recalled. Let <span class="math" data-tex="\(P(a)\)">\(P(a)\)</span> and <span class="math" data-tex="\(V_s\)">\(V_s\)</span> be the direct sums of their coefficients and unitaries. Finite-summand approximation proves strong continuity of <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>Multiplying an integrated operator on its left or right by <span class="math" data-tex="\(P(a)\)">\(P(a)\)</span> or <span class="math" data-tex="\(V_s\)">\(V_s\)</span>, using covariance and a Haar substitution, gives precisely (2.2). Each resulting function is in <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span>. The four operations are bounded in universal norm: coefficient multiplication has bound <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>, and group multiplication is isometric. Their extensions therefore idealize the concrete algebra <span class="math" data-tex="\(C\)">\(C\)</span>. The multiplier idealizer theorem identifies <span class="math" data-tex="\(P(a),V_s\)">\(P(a),V_s\)</span> with elements of <span class="math" data-tex="\(M(C)\)">\(M(C)\)</span>. Their algebraic relations already hold in the faithful representation, so they give the claimed homomorphisms and covariance.</p>
+<p>If <span class="math" data-tex="\((e_j)\)">\((e_j)\)</span> is a contractive approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span>, then <span class="math" data-tex="\(e_jf(t)\to f(t)\)">\(e_jf(t)\to f(t)\)</span> uniformly on the compact norm image of <span class="math" data-tex="\(f\)">\(f\)</span>. Hence <span class="math" data-tex="\(i_A(e_j)f\to f\)">\(i_A(e_j)f\to f\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, and then in <span class="math" data-tex="\(C\)">\(C\)</span>. Uniform boundedness extends convergence to all of <span class="math" data-tex="\(C\)">\(C\)</span>, proving nondegeneracy of <span class="math" data-tex="\(i_A\)">\(i_A\)</span>.</p>
+<p>The two group formulas in (2.2) are continuous in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> as functions of <span class="math" data-tex="\(s\)">\(s\)</span>, by point-norm continuity, continuity on compact sets, and the Haar translation rules. Their norms are uniformly bounded in <span class="math" data-tex="\(C\)">\(C\)</span>. Density therefore proves strict continuity of <span class="math" data-tex="\(i_G\)">\(i_G\)</span>.</p>
+<p>To prove injectivity, use the existing regular covariant pair associated to a faithful nondegenerate <span class="math" data-tex="\(\rho:A\to B(K)\)">\(\rho:A\to B(K)\)</span>:</p>
+<span id="equation-2-3"></span><span class="math math-display" data-tex="\[
+[\widetilde\rho(a)\xi](r)=\rho(\alpha_{r^{-1}}(a))\xi(r),
+\qquad [\lambda_s\xi](r)=\xi(s^{-1}r).
+\tag{2.3}
+\]">\[
+[\widetilde\rho(a)\xi](r)=\rho(\alpha_{r^{-1}}(a))\xi(r),
+\qquad [\lambda_s\xi](r)=\xi(s^{-1}r).
+\tag{2.3}
+\]</span>
+<p>If <span class="math" data-tex="\(i_A(a)=0\)">\(i_A(a)=0\)</span>, then <span class="math" data-tex="\(\widetilde\rho(a)=0\)">\(\widetilde\rho(a)=0\)</span>. For <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, a vector detecting <span class="math" data-tex="\(\rho(a)\)">\(\rho(a)\)</span>, continuity near the identity, and a scalar compactly supported test function contradict this. Thus <span class="math" data-tex="\(i_A\)">\(i_A\)</span> is faithful. If <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, choose <span class="math" data-tex="\(K\ne0\)">\(K\ne0\)</span>. Distinct left translations act differently on a function supported in a small neighborhood whose two translates are disjoint. Consequently <span class="math" data-tex="\(\lambda_s\ne\lambda_t\)">\(\lambda_s\ne\lambda_t\)</span> for <span class="math" data-tex="\(s\ne t\)">\(s\ne t\)</span>, proving the assertion for <span class="math" data-tex="\(i_G\)">\(i_G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The group correspondence in <em>Unitary representations and the two group C</em> completions* integrates <span class="math" data-tex="\(i_G\)">\(i_G\)</span> to a nondegenerate homomorphism</p>
+<span id="equation-2-4"></span><span class="math math-display" data-tex="\[
+j_G:C^*(G)\longrightarrow M(C),\qquad
+j_G(\varphi)=\int_G\varphi(s)i_G(s)\,ds.
+\tag{2.4}
+\]">\[
+j_G:C^*(G)\longrightarrow M(C),\qquad
+j_G(\varphi)=\int_G\varphi(s)i_G(s)\,ds.
+\tag{2.4}
+\]</span>
+<p>Here nondegeneracy follows directly from integral-one functions with supports shrinking to the identity and strict continuity in Theorem 2.1. The bounded extension from <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> to <span class="math" data-tex="\(C^*(G)\)">\(C^*(G)\)</span> follows by composing with a faithful representation of <span class="math" data-tex="\(C\)">\(C\)</span> and applying the group universal norm. The map <span class="math" data-tex="\(j_G\)">\(j_G\)</span> is not asserted to be injective. Injectivity of the group elements and injectivity of their full group-algebra integration are different statements.</p>
+<p><span id="proposition-2-2"></span><strong>Proposition 2.2.</strong> For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and <span class="math" data-tex="\(\varphi\in C_c(G)\)">\(\varphi\in C_c(G)\)</span>,</p>
+<span id="equation-2-5"></span><span class="math math-display" data-tex="\[
+i_A(a)j_G(\varphi)=[t\mapsto\varphi(t)a]\in C.
+\tag{2.5}
+\]">\[
+i_A(a)j_G(\varphi)=[t\mapsto\varphi(t)a]\in C.
+\tag{2.5}
+\]</span>
+<p>These products have dense linear span in <span class="math" data-tex="\(C\)">\(C\)</span>. Also <span class="math" data-tex="\(i_A(a)j_G(x)\in C\)">\(i_A(a)j_G(x)\in C\)</span> for every <span class="math" data-tex="\(x\in C^*(G)\)">\(x\in C^*(G)\)</span>.</p>
+<p><strong>Proof.</strong> The equality follows by integration in the faithful realization above. For a general <span class="math" data-tex="\(f\in C_c(G,A)\)">\(f\in C_c(G,A)\)</span>, its compact norm image can be approximated uniformly by finitely many values <span class="math" data-tex="\(a_k\)">\(a_k\)</span>. Choose a finite partition of unity on its compact support, extended with compact support to a neighborhood, and approximate <span class="math" data-tex="\(f\)">\(f\)</span> by <span class="math" data-tex="\(\sum_k\varphi_k a_k\)">\(\sum_k\varphi_k a_k\)</span>. Include a region where the value is zero so the approximation also holds off the original support. All supports lie in a fixed compact set, so uniform error gives arbitrarily small <span class="math" data-tex="\(L^1\)">\(L^1\)</span> error. Since <span class="math" data-tex="\(\|\cdot\|_u\leq\|\cdot\|_1\)">\(\|\cdot\|_u\leq\|\cdot\|_1\)</span>, (2.5) proves density. Approximate <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(C^*(G)\)">\(C^*(G)\)</span> by <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> and use closedness of <span class="math" data-tex="\(C\subset M(C)\)">\(C\subset M(C)\)</span> for the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the meaning of generation by coefficients and group multipliers. For a nondiscrete group the individual generators need not belong to <span class="math" data-tex="\(C\)">\(C\)</span>; their integrated products do.</p>
+<p><span id="theorem-2-3"></span><strong>Theorem 2.3 (multiplier universal property).</strong> For every nondegenerate multiplier covariant pair <span class="math" data-tex="\((\pi,U)\)">\((\pi,U)\)</span> into <span class="math" data-tex="\(M(B)\)">\(M(B)\)</span>, there is a unique nondegenerate homomorphism</p>
+<span id="equation-2-6"></span><span class="math math-display" data-tex="\[
+\Phi=\pi\rtimes U:C\longrightarrow M(B)
+\tag{2.6}
+\]">\[
+\Phi=\pi\rtimes U:C\longrightarrow M(B)
+\tag{2.6}
+\]</span>
+<p>whose strict unital extension satisfies</p>
+<span id="equation-2-7"></span><span class="math math-display" data-tex="\[
+\overline\Phi(i_A(a))=\pi(a),\qquad
+\overline\Phi(i_G(s))=U_s.
+\tag{2.7}
+\]">\[
+\overline\Phi(i_A(a))=\pi(a),\qquad
+\overline\Phi(i_G(s))=U_s.
+\tag{2.7}
+\]</span>
+<p>Every nondegenerate homomorphism <span class="math" data-tex="\(C\to M(B)\)">\(C\to M(B)\)</span> arises from a unique pair this way.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(f\in C_c(G,A)\)">\(f\in C_c(G,A)\)</span> form the strict integral</p>
+<span class="math math-display" data-tex="\[
+T(f)=\int_G\pi(f(s))U_s\,ds.
+\]">\[
+T(f)=\int_G\pi(f(s))U_s\,ds.
+\]</span>
+<p>To specify it, multiply the integrand by <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> on either side and take norm integrals in <span class="math" data-tex="\(B\)">\(B\)</span>. These bounded left and right operations satisfy the double-centralizer relation, and their adjoints are supplied by the involution calculation. Hence they define a multiplier.</p>
+<p>Choose a faithful nondegenerate representation <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>. Its multiplier extension is faithful and isometric. The composed pair <span class="math" data-tex="\((\overline\sigma\pi,\overline\sigma U)\)">\((\overline\sigma\pi,\overline\sigma U)\)</span> is a nondegenerate Hilbert-space covariant pair, so</p>
+<span class="math math-display" data-tex="\[
+\|T(f)\|=\|\overline\sigma(T(f))\|\leq\|f\|_u.
+\]">\[
+\|T(f)\|=\|\overline\sigma(T(f))\|\leq\|f\|_u.
+\]</span>
+<p>The product and adjoint identities for integration therefore extend <span class="math" data-tex="\(T\)">\(T\)</span> to (2.6).</p>
+<p>For <span class="math" data-tex="\(\varphi_V\geq0\)">\(\varphi_V\geq0\)</span> of integral one supported in a shrinking identity neighborhood, strict continuity gives <span class="math" data-tex="\(U(\varphi_V)\to1\)">\(U(\varphi_V)\to1\)</span> strictly. Also <span class="math" data-tex="\(\pi(e_j)\to1\)">\(\pi(e_j)\to1\)</span> strictly by nondegeneracy. The bounded product net</p>
+<span class="math math-display" data-tex="\[
+T(\varphi_V e_j)=\pi(e_j)U(\varphi_V)\longrightarrow1
+\]">\[
+T(\varphi_V e_j)=\pi(e_j)U(\varphi_V)\longrightarrow1
+\]</span>
+<p>is strictly convergent. Thus <span class="math" data-tex="\(\Phi(C)B\)">\(\Phi(C)B\)</span> is dense in <span class="math" data-tex="\(B\)">\(B\)</span>. The multiplier extension theorem supplies <span class="math" data-tex="\(\overline\Phi\)">\(\overline\Phi\)</span>. Apply (2.2) inside the integral to obtain (2.7), first after multiplication by <span class="math" data-tex="\(\Phi(f)b\)">\(\Phi(f)b\)</span>, and then on a dense subspace of <span class="math" data-tex="\(B\)">\(B\)</span>. Equation (2.5) and its density prove uniqueness.</p>
+<p>Conversely extend a nondegenerate <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> strictly to <span class="math" data-tex="\(M(C)\)">\(M(C)\)</span>, and compose with <span class="math" data-tex="\(i_A,i_G\)">\(i_A,i_G\)</span>. Nondegeneracy of <span class="math" data-tex="\(i_A\)">\(i_A\)</span> and strict continuity of <span class="math" data-tex="\(i_G\)">\(i_G\)</span> give the required pair. Passing the strict extension through the integral on compact supports shows its integrated form is <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. This proves existence and uniqueness in the converse without repeating coefficient or group recovery from <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a Hilbert <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(E\)">\(E\)</span>, replace <span class="math" data-tex="\(M(B)\)">\(M(B)\)</span> by <span class="math" data-tex="\(\mathcal L(E)=M(\mathcal K(E))\)">\(\mathcal L(E)=M(\mathcal K(E))\)</span>. A nondegenerate coefficient representation and a unitary group continuous on every vector give such a pair. To see strict continuity, use the compact module operators <span class="math" data-tex="\(\theta_{x,y}(z)=x\langle y,z\rangle\)">\(\theta_{x,y}(z)=x\langle y,z\rangle\)</span>: the estimates for <span class="math" data-tex="\((U_s-U_t)\theta_{x,y}\)">\((U_s-U_t)\theta_{x,y}\)</span> and <span class="math" data-tex="\(\theta_{x,y}(U_s-U_t)\)">\(\theta_{x,y}(U_s-U_t)\)</span> are respectively bounded by <span class="math" data-tex="\(\|(U_s-U_t)x\|\|y\|\)">\(\|(U_s-U_t)x\|\|y\|\)</span> and <span class="math" data-tex="\(\|x\|\|(U_s^*-U_t^*)y\|\)">\(\|x\|\|(U_s^*-U_t^*)y\|\)</span>. The latter tends to zero because <span class="math" data-tex="\(U_s^*=U_{s^{-1}}\)">\(U_s^*=U_{s^{-1}}\)</span>. Finite sums are dense in <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>, and the operators are uniformly bounded, so both strict seminorms tend to zero. Theorem 2.3 applies with <span class="math" data-tex="\(B\)">\(B\)</span> replaced by <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>. This includes arbitrary Hilbert modules, with no countable-generation assumption.</p>
+<h2 id="3-passing-to-an-invariant-ideal-or-quotient">3. Passing to an invariant ideal or quotient</h2>
+<p>First consider an equivariant homomorphism <span class="math" data-tex="\(\theta:A\to B\)">\(\theta:A\to B\)</span>, with actions <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> and <span class="math" data-tex="\(\theta\alpha_s=\beta_s\theta\)">\(\theta\alpha_s=\beta_s\theta\)</span>. Pointwise application defines a *-homomorphism on compactly supported coefficient functions.</p>
+<p><span id="proposition-3-1"></span><strong>Proposition 3.1.</strong> There is a homomorphism</p>
+<span id="equation-3-1"></span><span class="math math-display" data-tex="\[
+\theta\rtimes G:A\rtimes_\alpha G\longrightarrow B\rtimes_\beta G,
+\qquad f\mapsto[t\mapsto\theta(f(t))].
+\tag{3.1}
+\]">\[
+\theta\rtimes G:A\rtimes_\alpha G\longrightarrow B\rtimes_\beta G,
+\qquad f\mapsto[t\mapsto\theta(f(t))].
+\tag{3.1}
+\]</span>
+<p>It respects identities and composition. It is nondegenerate if <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is nondegenerate, and is surjective if <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is surjective.</p>
+<p><strong>Proof.</strong> In a covariant representation <span class="math" data-tex="\((\sigma,V)\)">\((\sigma,V)\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>, the coefficient map <span class="math" data-tex="\(\sigma\theta\)">\(\sigma\theta\)</span> may be degenerate. Its essential space <span class="math" data-tex="\(H_0=\overline{\sigma\theta(A)H}\)">\(H_0=\overline{\sigma\theta(A)H}\)</span> is invariant under <span class="math" data-tex="\(V_s\)">\(V_s\)</span> and <span class="math" data-tex="\(V_s^*\)">\(V_s^*\)</span>, by equivariance. On <span class="math" data-tex="\(H_0\)">\(H_0\)</span> there is a nondegenerate covariant pair; on <span class="math" data-tex="\(H_0^\perp\)">\(H_0^\perp\)</span> every integrated coefficient is zero. Thus its norm is bounded by the full norm for <span class="math" data-tex="\(A\)">\(A\)</span>. Taking suprema proves that the pointwise map is contractive and extends to (3.1). Algebraic identities on the dense functions prove functoriality.</p>
+<p>If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is nondegenerate, <span class="math" data-tex="\(\theta(e_j)b\to b\)">\(\theta(e_j)b\to b\)</span>; uniform approximation on compact coefficient images proves nondegeneracy of (3.1). If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is surjective, every function <span class="math" data-tex="\(\varphi(t)b\)">\(\varphi(t)b\)</span> has a lift <span class="math" data-tex="\(\varphi(t)a\)">\(\varphi(t)a\)</span>. Such functions span a dense subspace by Proposition 2.2. A C*-homomorphism has closed range, so (3.1) is surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-3-2"></span><strong>Theorem 3.2 (full exactness).</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be a closed <span class="math" data-tex="\(G\)">\(G\)</span>-invariant ideal of <span class="math" data-tex="\(A\)">\(A\)</span>. With the restricted and quotient actions, the sequence</p>
+<span id="equation-3-2"></span><span class="math math-display" data-tex="\[
+0\longrightarrow I\rtimes G
+\overset{\iota\rtimes G}{\longrightarrow} A\rtimes G
+\overset{q\rtimes G}{\longrightarrow}(A/I)\rtimes G
+\longrightarrow0
+\tag{3.2}
+\]">\[
+0\longrightarrow I\rtimes G
+\overset{\iota\rtimes G}{\longrightarrow} A\rtimes G
+\overset{q\rtimes G}{\longrightarrow}(A/I)\rtimes G
+\longrightarrow0
+\tag{3.2}
+\]</span>
+<p>is exact.</p>
+<p><strong>Proof.</strong> We prove injectivity before identifying the kernel. Every nondegenerate representation <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span> extends uniquely to a representation <span class="math" data-tex="\(\widetilde\sigma\)">\(\widetilde\sigma\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> characterized by</p>
+<span id="equation-3-3"></span><span class="math math-display" data-tex="\[
+\widetilde\sigma(a)\sigma(i)\xi=\sigma(ai)\xi.
+\tag{3.3}
+\]">\[
+\widetilde\sigma(a)\sigma(i)\xi=\sigma(ai)\xi.
+\tag{3.3}
+\]</span>
+<p>The complete proof is <a href="prerequisites/hilbert-c-star-modules-and-morita-equivalence/compact-operators-multipliers-and-the-strict-topology.html#7-exercises-and-complete-solutions">Exercise 5 in Section 7 of the multiplier reading</a>. Apply it to the nondegenerate map <span class="math" data-tex="\(\sigma:I\to\mathcal L(H)=B(H)\)">\(\sigma:I\to\mathcal L(H)=B(H)\)</span>, viewing <span class="math" data-tex="\(H\)">\(H\)</span> as a Hilbert module over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, to obtain its multiplier extension <span class="math" data-tex="\(\overline\sigma:M(I)\to B(H)\)">\(\overline\sigma:M(I)\to B(H)\)</span>. The double-centralizer homomorphism is <span class="math" data-tex="\(\mu:A\to M(I)\)">\(\mu:A\to M(I)\)</span>, <span class="math" data-tex="\(a\mapsto(i\mapsto ai,\ i\mapsto ia)\)">\(a\mapsto(i\mapsto ai,\ i\mapsto ia)\)</span>. Their composition is <span class="math" data-tex="\(\widetilde\sigma=\overline\sigma\circ\mu:A\to B(H)\)">\(\widetilde\sigma=\overline\sigma\circ\mu:A\to B(H)\)</span>; the solution proves boundedness, the adjoint and product identities, and uniqueness on the dense span <span class="math" data-tex="\(\sigma(I)H\)">\(\sigma(I)H\)</span>. Neither unitality nor separability is required. If <span class="math" data-tex="\((\sigma,U)\)">\((\sigma,U)\)</span> is covariant for <span class="math" data-tex="\(I\)">\(I\)</span>, then (3.3), covariance on <span class="math" data-tex="\(I\)">\(I\)</span>, and density of <span class="math" data-tex="\(\sigma(I)H\)">\(\sigma(I)H\)</span> show that <span class="math" data-tex="\((\widetilde\sigma,U)\)">\((\widetilde\sigma,U)\)</span> is covariant for <span class="math" data-tex="\(A\)">\(A\)</span>. The extended coefficient map is nondegenerate because it contains <span class="math" data-tex="\(\sigma(I)\)">\(\sigma(I)\)</span>.</p>
+<p>In the other direction, a covariant representation of <span class="math" data-tex="\(A\)">\(A\)</span> restricts to a covariant representation of <span class="math" data-tex="\(I\)">\(I\)</span> on the essential space of <span class="math" data-tex="\(I\)">\(I\)</span>, which is reducing for both parts of the pair. Its integrated <span class="math" data-tex="\(I\)">\(I\)</span>-functions vanish on the complementary subspace. These two observations show that the universal norms on <span class="math" data-tex="\(C_c(G,I)\)">\(C_c(G,I)\)</span> agree. Therefore <span class="math" data-tex="\(\iota\rtimes G\)">\(\iota\rtimes G\)</span> is isometric.</p>
+<p>Its closed image</p>
+<span class="math math-display" data-tex="\[
+J=\overline{C_c(G,I)}^{\,A\rtimes G}
+\]">\[
+J=\overline{C_c(G,I)}^{\,A\rtimes G}
+\]</span>
+<p>is an ideal: convolution of an <span class="math" data-tex="\(A\)">\(A\)</span>-function with an <span class="math" data-tex="\(I\)">\(I\)</span>-function in either order remains <span class="math" data-tex="\(I\)">\(I\)</span>-valued. Invariance is used for the translated coefficient. Clearly <span class="math" data-tex="\(J\subseteq\ker(q\rtimes G)\)">\(J\subseteq\ker(q\rtimes G)\)</span>, and Proposition 3.1 makes <span class="math" data-tex="\(q\rtimes G\)">\(q\rtimes G\)</span> surjective.</p>
+<p>Now let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be a faithful nondegenerate representation of <span class="math" data-tex="\((A\rtimes G)/J\)">\((A\rtimes G)/J\)</span>, pulled back to <span class="math" data-tex="\(A\rtimes G\)">\(A\rtimes G\)</span>. Let <span class="math" data-tex="\((\pi,U)\)">\((\pi,U)\)</span> be its covariant pair. For <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0=\tau(t\mapsto\varphi_V(t)i)=\pi(i)U(\varphi_V).
+\]">\[
+0=\tau(t\mapsto\varphi_V(t)i)=\pi(i)U(\varphi_V).
+\]</span>
+<p>The group approximate identity satisfies <span class="math" data-tex="\(U(\varphi_V)\to1\)">\(U(\varphi_V)\to1\)</span> strongly, so <span class="math" data-tex="\(\pi(i)=0\)">\(\pi(i)=0\)</span>. Consequently <span class="math" data-tex="\(\pi\)">\(\pi\)</span> factors through a nondegenerate covariant coefficient representation of <span class="math" data-tex="\(A/I\)">\(A/I\)</span>. Theorem 2.3 factors <span class="math" data-tex="\(\tau\)">\(\tau\)</span> through the surjection</p>
+<span class="math math-display" data-tex="\[
+(A\rtimes G)/J\longrightarrow(A/I)\rtimes G.
+\]">\[
+(A\rtimes G)/J\longrightarrow(A/I)\rtimes G.
+\]</span>
+<p>Faithfulness of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> forces that surjection to be injective. Hence <span class="math" data-tex="\(\ker(q\rtimes G)=J\)">\(\ker(q\rtimes G)=J\)</span>, proving (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Connes].</p>
+<p>For example, if <span class="math" data-tex="\(Y\)">\(Y\)</span> is a closed invariant subset of a locally compact <span class="math" data-tex="\(G\)">\(G\)</span>-space <span class="math" data-tex="\(X\)">\(X\)</span>, use <span class="math" data-tex="\(I=C_0(X\setminus Y)\)">\(I=C_0(X\setminus Y)\)</span> and <span class="math" data-tex="\(A/I=C_0(Y)\)">\(A/I=C_0(Y)\)</span> in (3.2). The quotient identification follows by restriction of functions, using extension on the one-point compactifications. For the dilation action <span class="math" data-tex="\(\eta_a(f)(\xi)=f(\xi/a)\)">\(\eta_a(f)(\xi)=f(\xi/a)\)</span> of <span class="math" data-tex="\(G=\mathbb R^\times\)">\(G=\mathbb R^\times\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, the fixed subset <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> gives the quotient crossed product <span class="math" data-tex="\(\mathbb C\rtimes G=C^*(G)\)">\(\mathbb C\rtimes G=C^*(G)\)</span>. This is the exactness mechanism in <em>Phase transition in the Bost–Connes system</em>, Proposition 20.1 and equation (20.6). No condition on amenability is needed for full exactness.</p>
+<h2 id="4-when-is-there-an-identity">4. When is there an identity?</h2>
+<p><span id="theorem-4-1"></span><strong>Theorem 4.1.</strong> Suppose <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>. Then <span class="math" data-tex="\(A\rtimes_\alpha G\)">\(A\rtimes_\alpha G\)</span> is unital if and only if <span class="math" data-tex="\(A\)">\(A\)</span> is unital and <span class="math" data-tex="\(G\)">\(G\)</span> is discrete.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is discrete, let <span class="math" data-tex="\(m=\mu(\{e\})&gt;0\)">\(m=\mu(\{e\})&gt;0\)</span>. If <span class="math" data-tex="\(A\)">\(A\)</span> is unital, the function supported at <span class="math" data-tex="\(e\)">\(e\)</span> with value <span class="math" data-tex="\(m^{-1}1_A\)">\(m^{-1}1_A\)</span> is an identity for (1.3), and remains one in the completion. For counting measure its value is <span class="math" data-tex="\(1_A\)">\(1_A\)</span>.</p>
+<p>For the converse use the regular representation (2.3), with <span class="math" data-tex="\(\rho\)">\(\rho\)</span> faithful and <span class="math" data-tex="\(K\ne0\)">\(K\ne0\)</span>. Its integration <span class="math" data-tex="\(T\)">\(T\)</span> is nondegenerate, so a crossed-product identity would act as the identity on <span class="math" data-tex="\(L^2(G,K)\)">\(L^2(G,K)\)</span>.</p>
+<p>Assume first that <span class="math" data-tex="\(G\)">\(G\)</span> is nondiscrete. Haar measure has <span class="math" data-tex="\(\mu(\{e\})=0\)">\(\mu(\{e\})=0\)</span>: if its value were positive, every point would have that value, and a finite-measure compact neighborhood would contain only finitely many points, forcing the identity to be isolated. Regularity therefore gives relatively compact identity neighborhoods <span class="math" data-tex="\(V\)">\(V\)</span> with arbitrarily small positive measure. Keep all of them inside one relatively compact neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> on which <span class="math" data-tex="\(\Delta^{-1}\)">\(\Delta^{-1}\)</span> is bounded by <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(\eta\in K\)">\(\eta\in K\)</span> of norm one and set <span class="math" data-tex="\(\xi_V(r)=\mu(V)^{-1/2}1_V(r)\eta\)">\(\xi_V(r)=\mu(V)^{-1/2}1_V(r)\eta\)</span>. For <span class="math" data-tex="\(f\in C_c(G,A)\)">\(f\in C_c(G,A)\)</span>, with compact support <span class="math" data-tex="\(L\)">\(L\)</span>, (2.3) gives</p>
+<span class="math math-display" data-tex="\[
+\|[T(f)\xi_V](r)\|
+\leq\frac{\|f\|_\infty}{\sqrt{\mu(V)}}\mu(rV^{-1})
+\leq c\|f\|_\infty\sqrt{\mu(V)}.
+\]">\[
+\|[T(f)\xi_V](r)\|
+\leq\frac{\|f\|_\infty}{\sqrt{\mu(V)}}\mu(rV^{-1})
+\leq c\|f\|_\infty\sqrt{\mu(V)}.
+\]</span>
+<p>This vector function is supported in <span class="math" data-tex="\(LV\subset L\overline W\)">\(LV\subset L\overline W\)</span>. Thus</p>
+<span id="equation-4-1"></span><span class="math math-display" data-tex="\[
+\|T(f)\xi_V\|_2
+\leq c\|f\|_\infty\sqrt{\mu(L\overline W)}\sqrt{\mu(V)}\longrightarrow0.
+\tag{4.1}
+\]">\[
+\|T(f)\xi_V\|_2
+\leq c\|f\|_\infty\sqrt{\mu(L\overline W)}\sqrt{\mu(V)}\longrightarrow0.
+\tag{4.1}
+\]</span>
+<p>The inversion formula justifies <span class="math" data-tex="\(\mu(V^{-1})\leq c\mu(V)\)">\(\mu(V^{-1})\leq c\mu(V)\)</span>, so this argument also covers nonunimodular groups. If the crossed product had an identity, choose <span class="math" data-tex="\(f\)">\(f\)</span> within <span class="math" data-tex="\(1/2\)">\(1/2\)</span> of it in full norm. Contractivity of <span class="math" data-tex="\(T\)">\(T\)</span> would give <span class="math" data-tex="\(\|T(f)\xi_V\|_2&gt;1/2\)">\(\|T(f)\xi_V\|_2&gt;1/2\)</span> for every <span class="math" data-tex="\(V\)">\(V\)</span>, contradicting (4.1).</p>
+<p>It follows that <span class="math" data-tex="\(G\)">\(G\)</span> is discrete. Compress <span class="math" data-tex="\(T\)">\(T\)</span> to the coordinate at <span class="math" data-tex="\(e\)">\(e\)</span>, a copy of <span class="math" data-tex="\(K\)">\(K\)</span>, using its normalized coordinate embedding. For a finitely supported function the compression is <span class="math" data-tex="\(m\rho(f(e))\)">\(m\rho(f(e))\)</span>, where <span class="math" data-tex="\(m=\mu(\{e\})\)">\(m=\mu(\{e\})\)</span>. By continuity, compression of every element of the crossed product belongs to the norm-closed algebra <span class="math" data-tex="\(\rho(A)\)">\(\rho(A)\)</span>. Compression of an identity is <span class="math" data-tex="\(1_K\)">\(1_K\)</span>, so <span class="math" data-tex="\(1_K\in\rho(A)\)">\(1_K\in\rho(A)\)</span>. Faithfulness of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> implies that its preimage is an identity for <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, the crossed product is zero for every <span class="math" data-tex="\(G\)">\(G\)</span>. Whether one calls the zero algebra unital is a convention; it cannot be used to recover discreteness of <span class="math" data-tex="\(G\)">\(G\)</span>. Also, when <span class="math" data-tex="\(A\)">\(A\)</span> is unital but <span class="math" data-tex="\(G\)">\(G\)</span> is nondiscrete, (2.5) gives <span class="math" data-tex="\(j_G(C^*(G))\subset C\)">\(j_G(C^*(G))\subset C\)</span>, although the individual <span class="math" data-tex="\(i_G(s)\)">\(i_G(s)\)</span> still belong to its multipliers.</p>
+<h2 id="5-examples-controlled-by-the-universal-property">5. Examples controlled by the universal property</h2>
+<p><span id="theorem-5-1"></span><strong>Theorem 5.1 (trivial action).</strong> For every <span class="math" data-tex="\(A,G\)">\(A,G\)</span>,</p>
+<span id="equation-5-1"></span><span class="math math-display" data-tex="\[
+A\rtimes_{\mathrm{id}}G\cong A\otimes_{\max}C^*(G).
+\tag{5.1}
+\]">\[
+A\rtimes_{\mathrm{id}}G\cong A\otimes_{\max}C^*(G).
+\tag{5.1}
+\]</span>
+<p><strong>Proof.</strong> Covariance for the trivial action says that <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> commutes with every <span class="math" data-tex="\(U_s\)">\(U_s\)</span>. It therefore commutes with the integrated representation of <span class="math" data-tex="\(C^*(G)\)">\(C^*(G)\)</span>. Conversely, commuting nondegenerate representations of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(C^*(G)\)">\(C^*(G)\)</span> yield, by group recovery, a covariant pair for the trivial action: commutation with the recovered unitaries follows on the dense vectors generated by integrated group functions. The maximal tensor product is universal for precisely these commuting pairs by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/tensor-norms-and-independent-systems.html#1-recovering-the-two-actions">Theorem 1.1 and its essential-subspace paragraph</a> and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/tensor-norms-and-independent-systems.html#2-two-norms-from-two-kinds-of-representation">Propositions 2.1–2.2</a>. Restricting a product representation to its essential subspace leaves its norm unchanged; the two recovered factor representations there are nondegenerate. Thus allowing degenerate pairs in the maximal norm does not enlarge the supremum used here. On the dense simple coefficient functions the correspondence is</p>
+<span class="math math-display" data-tex="\[
+[t\mapsto\varphi(t)a]\longleftrightarrow a\otimes\varphi.
+\]">\[
+[t\mapsto\varphi(t)a]\longleftrightarrow a\otimes\varphi.
+\]</span>
+<p>Both universal norms are computed by the same pairs, so this correspondence is isometric. It respects products and adjoints for the trivial action. Its image is dense, and completion gives (5.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="proposition-5-2"></span><strong>Proposition 5.2 (finite groups).</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is finite of order <span class="math" data-tex="\(n\)">\(n\)</span>, its full crossed product embeds into <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>. For counting measure, the embedding sends <span class="math" data-tex="\(f\)">\(f\)</span> to</p>
+<span id="equation-5-2"></span><span class="math math-display" data-tex="\[
+R(f)_{r,t}=\alpha_{r^{-1}}(f(rt^{-1})),\qquad r,t\in G.
+\tag{5.2}
+\]">\[
+R(f)_{r,t}=\alpha_{r^{-1}}(f(rt^{-1})),\qquad r,t\in G.
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> Matrix multiplication and (1.3) show that <span class="math" data-tex="\(R\)">\(R\)</span> is a *-homomorphism. For any covariant pair <span class="math" data-tex="\((\pi,U)\)">\((\pi,U)\)</span>, define the isometry</p>
+<span class="math math-display" data-tex="\[
+V:H\longrightarrow\ell^2(G,H),\qquad
+(V\xi)(r)=n^{-1/2}U_r^*\xi.
+\]">\[
+V:H\longrightarrow\ell^2(G,H),\qquad
+(V\xi)(r)=n^{-1/2}U_r^*\xi.
+\]</span>
+<p>The finite regular pair built from <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has coefficient <span class="math" data-tex="\(\pi(\alpha_{r^{-1}}(a))\)">\(\pi(\alpha_{r^{-1}}(a))\)</span> at <span class="math" data-tex="\(r\)">\(r\)</span> and left translation. Covariance gives <span class="math" data-tex="\(\widetilde\pi(a)V=V\pi(a)\)">\(\widetilde\pi(a)V=V\pi(a)\)</span> and <span class="math" data-tex="\(\lambda_sV=VU_s\)">\(\lambda_sV=VU_s\)</span>. Consequently <span class="math" data-tex="\(\|\pi\rtimes U(f)\|\leq\|R(f)\|\)">\(\|\pi\rtimes U(f)\|\leq\|R(f)\|\)</span>. With <span class="math" data-tex="\(\pi\)">\(\pi\)</span> faithful, the regular integrated matrix is the faithful amplification of <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span>, giving the reverse inequality after taking the universal supremum. Thus <span class="math" data-tex="\(\|f\|_u=\|R(f)\|\)">\(\|f\|_u=\|R(f)\|\)</span>. Completion extends <span class="math" data-tex="\(R\)">\(R\)</span> isometrically into <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>. It is a subalgebra of that matrix algebra, not generally the whole matrix algebra. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here the argument is only a finite-group computation. The general reduced crossed product and Fell absorption are treated in <em>Reduced crossed products and Fell’s absorption principle</em>.</p>
+<p><span id="example-5-3"></span><strong>Example 5.3 (a homeomorphism).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be nonempty compact Hausdorff and <span class="math" data-tex="\(h:X\to X\)">\(h:X\to X\)</span> a homeomorphism. Set <span class="math" data-tex="\(\alpha_k(a)=a\circ h^{-k}\)">\(\alpha_k(a)=a\circ h^{-k}\)</span>. The crossed product is unital by Theorem 4.1. With <span class="math" data-tex="\(u=i_{\mathbb Z}(1)\)">\(u=i_{\mathbb Z}(1)\)</span>, its dense polynomials are <span class="math" data-tex="\(\sum_k a_ku^k\)">\(\sum_k a_ku^k\)</span>, and</p>
+<span id="equation-5-3"></span><span class="math math-display" data-tex="\[
+(a u^k)(b u^l)=a(b\circ h^{-k})u^{k+l},
+\qquad uau^*=a\circ h^{-1}.
+\tag{5.3}
+\]">\[
+(a u^k)(b u^l)=a(b\circ h^{-k})u^{k+l},
+\qquad uau^*=a\circ h^{-1}.
+\tag{5.3}
+\]</span>
+<p>A representation is exactly a unital representation of <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> with a unitary satisfying this relation. For instance, on the orbit of <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, the formulas</p>
+<span class="math math-display" data-tex="\[
+[\pi_x(a)\xi](m)=a(h^m x)\xi(m),\qquad
+[U\xi](m)=\xi(m-1)
+\]">\[
+[\pi_x(a)\xi](m)=a(h^m x)\xi(m),\qquad
+[U\xi](m)=\xi(m-1)
+\]</span>
+<p>give covariance on <span class="math" data-tex="\(\ell^2(\mathbb Z)\)">\(\ell^2(\mathbb Z)\)</span>. For <span class="math" data-tex="\(h(z)=\omega z\)">\(h(z)=\omega z\)</span> on the circle and the coordinate unitary <span class="math" data-tex="\(v(z)=z\)">\(v(z)=z\)</span>, the relation is <span class="math" data-tex="\(uvu^*=\overline\omega v\)">\(uvu^*=\overline\omega v\)</span>, equivalently <span class="math" data-tex="\(vu=\omega uv\)">\(vu=\omega uv\)</span>. This checks the sign fixed by (1.2).</p>
+<p><span id="theorem-5-4"></span><strong>Theorem 5.4 (discrete translation).</strong> Give a discrete group counting measure and let <span class="math" data-tex="\(\alpha_t(a)(s)=a(t^{-1}s)\)">\(\alpha_t(a)(s)=a(t^{-1}s)\)</span> on <span class="math" data-tex="\(c_0(G)\)">\(c_0(G)\)</span>. Then</p>
+<span id="equation-5-4"></span><span class="math math-display" data-tex="\[
+c_0(G)\rtimes_\alpha G\cong\mathcal K(\ell^2(G)).
+\tag{5.4}
+\]">\[
+c_0(G)\rtimes_\alpha G\cong\mathcal K(\ell^2(G)).
+\tag{5.4}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(p_s\)">\(p_s\)</span> be the coefficient indicator of <span class="math" data-tex="\(\{s\}\)">\(\{s\}\)</span>, and write <span class="math" data-tex="\(u_t=i_G(t)\)">\(u_t=i_G(t)\)</span>. The products <span class="math" data-tex="\(p_su_t\)">\(p_su_t\)</span> are crossed-product elements. Define</p>
+<span class="math math-display" data-tex="\[
+e_{s,r}=p_su_{sr^{-1}}.
+\]">\[
+e_{s,r}=p_su_{sr^{-1}}.
+\]</span>
+<p>Covariance says <span class="math" data-tex="\(u_tp_ru_t^*=p_{tr}\)">\(u_tp_ru_t^*=p_{tr}\)</span>. Therefore</p>
+<span id="equation-5-5"></span><span class="math math-display" data-tex="\[
+e_{s,r}e_{v,w}=\delta_{r,v}e_{s,w},\qquad
+e_{s,r}^*=e_{r,s}.
+\tag{5.5}
+\]">\[
+e_{s,r}e_{v,w}=\delta_{r,v}e_{s,w},\qquad
+e_{s,r}^*=e_{r,s}.
+\tag{5.5}
+\]</span>
+<p>Multiplication and left translation on <span class="math" data-tex="\(\ell^2(G)\)">\(\ell^2(G)\)</span> form a covariant pair, and their integration sends <span class="math" data-tex="\(e_{s,r}\)">\(e_{s,r}\)</span> to the rank-one matrix unit <span class="math" data-tex="\(E_{s,r}\)">\(E_{s,r}\)</span>. In particular none of the diagonal units is zero. For a finite subset <span class="math" data-tex="\(F\subset G\)">\(F\subset G\)</span>, the span of <span class="math" data-tex="\(e_{s,r}\)">\(e_{s,r}\)</span>, <span class="math" data-tex="\(s,r\in F\)">\(s,r\in F\)</span>, is thus a copy of <span class="math" data-tex="\(M_{|F|}(\mathbb C)\)">\(M_{|F|}(\mathbb C)\)</span>. Its norm is the usual matrix norm, since the displayed map on this finite-dimensional C*-algebra is injective.</p>
+<p>Every compactly supported group function has finitely many coefficients in <span class="math" data-tex="\(c_0(G)\)">\(c_0(G)\)</span>; approximating those coefficients by finitely supported ones proves that the union of these finite matrix spans is dense. The displayed integration is isometric on that union and its image is the finite matrix operators. Their norm closure is <span class="math" data-tex="\(\mathcal K(\ell^2(G))\)">\(\mathcal K(\ell^2(G))\)</span>, also for uncountable <span class="math" data-tex="\(G\)">\(G\)</span>. It therefore extends to (5.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Under (5.4), the group multipliers act by left translation. Thus <span class="math" data-tex="\(j_G\)">\(j_G\)</span> is the integrated left regular representation of <span class="math" data-tex="\(C^*(G)\)">\(C^*(G)\)</span>. For the free group on two generators, the strict full-versus-regular norm gap established in <em>Unitary representations and the two group C</em> completions*, section “A strict gap: the free group on two generators”, proves that this <span class="math" data-tex="\(j_G\)">\(j_G\)</span> is not injective. All distinct group elements still give distinct unitaries.</p>
+<p>In particular, if <span class="math" data-tex="\(\delta_s\)">\(\delta_s\)</span> denotes the coefficient point mass and <span class="math" data-tex="\(\delta_t\)">\(\delta_t\)</span> the group point mass, then</p>
+<span id="equation-5-6"></span><span class="math math-display" data-tex="\[
+\delta_s\otimes\delta_t=p_su_t\longmapsto E_{s,t^{-1}s}.
+\tag{5.6}
+\]">\[
+\delta_s\otimes\delta_t=p_su_t\longmapsto E_{s,t^{-1}s}.
+\tag{5.6}
+\]</span>
+<p>For <span class="math" data-tex="\(G=\mathbb Z/2\mathbb Z\)">\(G=\mathbb Z/2\mathbb Z\)</span>, this proves <span class="math" data-tex="\((\mathbb C\oplus\mathbb C)\rtimes_{\mathrm{flip}}G\cong M_2(\mathbb C)\)">\((\mathbb C\oplus\mathbb C)\rtimes_{\mathrm{flip}}G\cong M_2(\mathbb C)\)</span>: coefficient indicators give the diagonal projections, and their products with the flip give the off-diagonal matrix units.</p>
+<p>For any locally compact Hausdorff <span class="math" data-tex="\(G\)">\(G\)</span>, the corresponding statement is</p>
+<span id="equation-5-7"></span><span class="math math-display" data-tex="\[
+C_0(G)\rtimes_{\mathrm{lt}}G\cong\mathcal K(L^2(G)),
+\tag{5.7}
+\]">\[
+C_0(G)\rtimes_{\mathrm{lt}}G\cong\mathcal K(L^2(G)),
+\tag{5.7}
+\]</span>
+<p>via multiplication and left translation. We state (5.7) with the precise reference [Blackadar, Operator Algebras]. Its nondiscrete case is proved later in <em>Induced algebras and Green’s imprimitivity theorem</em>, using the subgroup <span class="math" data-tex="\(\{e\}\)">\(\{e\}\)</span>. The discrete matrix-unit proof above is not a proof of that case.</p>
+<p><span id="proposition-5-5"></span><strong>Proposition 5.5 (semidirect products).</strong> Let <span class="math" data-tex="\(N,H\)">\(N,H\)</span> be locally compact Hausdorff groups and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> a jointly continuous action of <span class="math" data-tex="\(H\)">\(H\)</span> by automorphisms of <span class="math" data-tex="\(N\)">\(N\)</span>. If <span class="math" data-tex="\(\beta_h\)">\(\beta_h\)</span> is the induced action on <span class="math" data-tex="\(C^*(N)\)">\(C^*(N)\)</span>, characterized on canonical group multipliers by <span class="math" data-tex="\(\beta_h(v_n)=v_{\theta_h(n)}\)">\(\beta_h(v_n)=v_{\theta_h(n)}\)</span>, then</p>
+<span id="equation-5-8"></span><span class="math math-display" data-tex="\[
+C^*(N\rtimes_\theta H)\cong C^*(N)\rtimes_\beta H.
+\tag{5.8}
+\]">\[
+C^*(N\rtimes_\theta H)\cong C^*(N)\rtimes_\beta H.
+\tag{5.8}
+\]</span>
+<p><strong>Proof.</strong> The induced action is point-norm continuous. Indeed, if <span class="math" data-tex="\(\mu_N(\theta_h E)=c(h)\mu_N(E)\)">\(\mu_N(\theta_h E)=c(h)\mu_N(E)\)</span>, transport on compactly supported functions is <span class="math" data-tex="\(f(n)\mapsto c(h)^{-1}f(\theta_{h^{-1}}(n))\)">\(f(n)\mapsto c(h)^{-1}f(\theta_{h^{-1}}(n))\)</span>. The modulus <span class="math" data-tex="\(c\)">\(c\)</span> is continuous, as follows by integrating a fixed nonzero nonnegative test function. Common compact supports near the identity give <span class="math" data-tex="\(L^1\)">\(L^1\)</span> continuity, hence full-norm continuity, and density extends it to <span class="math" data-tex="\(C^*(N)\)">\(C^*(N)\)</span>.</p>
+<p>A unitary representation <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(N\rtimes H\)">\(N\rtimes H\)</span> restricts to representations <span class="math" data-tex="\(V_n=W(n,e)\)">\(V_n=W(n,e)\)</span>, <span class="math" data-tex="\(U_h=W(e,h)\)">\(U_h=W(e,h)\)</span> with <span class="math" data-tex="\(U_hV_nU_h^*=V_{\theta_h(n)}\)">\(U_hV_nU_h^*=V_{\theta_h(n)}\)</span>. Integrate <span class="math" data-tex="\(V\)">\(V\)</span> to a representation of <span class="math" data-tex="\(C^*(N)\)">\(C^*(N)\)</span>; this is a covariant pair for <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Conversely a covariant pair gives the strongly continuous representation <span class="math" data-tex="\(W(n,h)=V_nU_h\)">\(W(n,h)=V_nU_h\)</span>, since</p>
+<span class="math math-display" data-tex="\[
+(n,h)(m,k)=(n\theta_h(m),hk).
+\]">\[
+(n,h)(m,k)=(n\theta_h(m),hk).
+\]</span>
+<p>The two operations are inverse. To check that the universal maps have values in the algebras themselves, rather than just in their multipliers, use left Haar measure <span class="math" data-tex="\(c(h)^{-1}\,dn\,dh\)">\(c(h)^{-1}\,dn\,dh\)</span> on <span class="math" data-tex="\(N\rtimes H\)">\(N\rtimes H\)</span>. Left translation preserves this measure: the change <span class="math" data-tex="\(n\mapsto n_0\theta_{h_0}(n)\)">\(n\mapsto n_0\theta_{h_0}(n)\)</span> multiplies <span class="math" data-tex="\(dn\)">\(dn\)</span> by <span class="math" data-tex="\(c(h_0)\)">\(c(h_0)\)</span>, which cancels the change in <span class="math" data-tex="\(c(h)^{-1}\)">\(c(h)^{-1}\)</span>. A product of integrated <span class="math" data-tex="\(N\)">\(N\)</span>- and <span class="math" data-tex="\(H\)">\(H\)</span>-functions corresponds to the group function <span class="math" data-tex="\(c(h)f(n)g(h)\)">\(c(h)f(n)g(h)\)</span>. These functions have dense span in <span class="math" data-tex="\(L^1(N\rtimes H)\)">\(L^1(N\rtimes H)\)</span>, by compact-support tensor approximation and multiplication by the positive continuous factor <span class="math" data-tex="\(c\)">\(c\)</span>. On the crossed-product side their images are exactly <span class="math" data-tex="\(i_{C^*(N)}(f)j_H(g)\)">\(i_{C^*(N)}(f)j_H(g)\)</span>, whose span is dense by Proposition 2.2 and density of <span class="math" data-tex="\(C_c(N)\)">\(C_c(N)\)</span> in <span class="math" data-tex="\(C^*(N)\)">\(C^*(N)\)</span>. The group universal property and Theorem 2.3 therefore give homomorphisms between the two algebras themselves. Their multiplier extensions preserve the canonical <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span> unitaries, so the two composites are identities by integration and density. This proves (5.8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Blackadar, K-Theory].</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<p><strong>Exercise 6.1 (basic).</strong> Give a discrete group counting measure. Prove associativity directly on elementary terms <span class="math" data-tex="\(a\delta_s\)">\(a\delta_s\)</span>, then on all finitely supported functions.</p>
+<p><strong>Solution.</strong> Formula (1.3) gives <span class="math" data-tex="\((a\delta_s)*(b\delta_t)=a\alpha_s(b)\delta_{st}\)">\((a\delta_s)*(b\delta_t)=a\alpha_s(b)\delta_{st}\)</span>. The left-associated product with <span class="math" data-tex="\(c\delta_r\)">\(c\delta_r\)</span> has coefficient <span class="math" data-tex="\(a\alpha_s(b)\alpha_{st}(c)\)">\(a\alpha_s(b)\alpha_{st}(c)\)</span>. The right-associated product has coefficient <span class="math" data-tex="\(a\alpha_s(b\alpha_t(c))\)">\(a\alpha_s(b\alpha_t(c))\)</span>, which is the same because <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span> is multiplicative and <span class="math" data-tex="\(\alpha_s\alpha_t=\alpha_{st}\)">\(\alpha_s\alpha_t=\alpha_{st}\)</span>. Both terms are supported at <span class="math" data-tex="\(str\)">\(str\)</span>. Bilinearity and finite expansion prove the general assertion.</p>
+<p><strong>Exercise 6.2 (basic).</strong> Compute the flip crossed product of <span class="math" data-tex="\(\mathbb C\oplus\mathbb C\)">\(\mathbb C\oplus\mathbb C\)</span> by <span class="math" data-tex="\(\mathbb Z/2\mathbb Z\)">\(\mathbb Z/2\mathbb Z\)</span>. Exhibit four matrix units and prove injectivity of the resulting map.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(p,q\)">\(p,q\)</span> for the two coefficient projections and <span class="math" data-tex="\(w\)">\(w\)</span> for the flip unitary. Then <span class="math" data-tex="\(wpw=q\)">\(wpw=q\)</span>, <span class="math" data-tex="\(wqw=p\)">\(wqw=p\)</span>, and <span class="math" data-tex="\(w^2=1\)">\(w^2=1\)</span>. Set <span class="math" data-tex="\(e_{11}=p\)">\(e_{11}=p\)</span>, <span class="math" data-tex="\(e_{22}=q\)">\(e_{22}=q\)</span>, <span class="math" data-tex="\(e_{12}=pw\)">\(e_{12}=pw\)</span>, <span class="math" data-tex="\(e_{21}=qw\)">\(e_{21}=qw\)</span>. Covariance and <span class="math" data-tex="\(pq=0\)">\(pq=0\)</span> give <span class="math" data-tex="\(e_{ij}e_{kl}=\delta_{jk}e_{il}\)">\(e_{ij}e_{kl}=\delta_{jk}e_{il}\)</span> and <span class="math" data-tex="\(e_{ij}^*=e_{ji}\)">\(e_{ij}^*=e_{ji}\)</span>. Represent <span class="math" data-tex="\(p,q\)">\(p,q\)</span> as the two coordinate projections on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, and <span class="math" data-tex="\(w\)">\(w\)</span> as their interchange. The four images are the usual matrix units, so they are linearly independent. Their span is a finite-dimensional closed algebra and contains every dense polynomial <span class="math" data-tex="\(a+bw\)">\(a+bw\)</span>. It is the entire crossed product, and the representation is an isomorphism onto <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>.</p>
+<p><strong>Exercise 6.3 (intermediate).</strong> Prove (3.2) using covariant representations. Explain separately why the ideal map is injective and why the quotient kernel is its image.</p>
+<p><strong>Solution.</strong> Extend a nondegenerate <span class="math" data-tex="\(I\)">\(I\)</span>-representation by (3.3). On vectors <span class="math" data-tex="\(\sigma(i)\xi\)">\(\sigma(i)\xi\)</span>, conjugating the extension by <span class="math" data-tex="\(U_s\)">\(U_s\)</span> gives multiplication by <span class="math" data-tex="\(\alpha_s(a)\)">\(\alpha_s(a)\)</span>; thus covariance extends. Conversely restrict an <span class="math" data-tex="\(A\)">\(A\)</span>-pair to the reducing essential space of <span class="math" data-tex="\(I\)">\(I\)</span>. Suprema over these pairs show equality of the two norms on <span class="math" data-tex="\(C_c(G,I)\)">\(C_c(G,I)\)</span>, so its completed inclusion is injective. Its image <span class="math" data-tex="\(J\)">\(J\)</span> is an ideal by convolution. The quotient map is onto because simple coefficient functions lift. Finally, if an integrated <span class="math" data-tex="\(A\)">\(A\)</span>-pair annihilates <span class="math" data-tex="\(J\)">\(J\)</span>, then <span class="math" data-tex="\(\pi(i)U(\varphi_V)=0\)">\(\pi(i)U(\varphi_V)=0\)</span>, so <span class="math" data-tex="\(\pi(I)=0\)">\(\pi(I)=0\)</span> by the group approximate identity. It factors through <span class="math" data-tex="\(A/I\)">\(A/I\)</span>. Apply this to a faithful representation of <span class="math" data-tex="\((A\rtimes G)/J\)">\((A\rtimes G)/J\)</span>: it proves that the induced surjection to <span class="math" data-tex="\((A/I)\rtimes G\)">\((A/I)\rtimes G\)</span> has zero kernel. These steps establish all three exactness assertions.</p>
+<p><strong>Exercise 6.4 (intermediate).</strong> Assume <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>. Prove the unitality criterion, and identify the role of this assumption.</p>
+<p><strong>Solution.</strong> For discrete <span class="math" data-tex="\(G\)">\(G\)</span> and unital <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(\mu(\{e\})^{-1}1_A\delta_e\)">\(\mu(\{e\})^{-1}1_A\delta_e\)</span> is an identity; with counting measure this is <span class="math" data-tex="\(1_A\delta_e\)">\(1_A\delta_e\)</span>. Conversely, in the faithful-coefficient regular representation, a crossed-product identity acts as the identity. If <span class="math" data-tex="\(G\)">\(G\)</span> were nondiscrete, the normalized vectors <span class="math" data-tex="\(\xi_V\)">\(\xi_V\)</span> in Theorem 4.1 would satisfy <span class="math" data-tex="\(\|T(f)\xi_V\|\to0\)">\(\|T(f)\xi_V\|\to0\)</span> for every fixed compactly supported <span class="math" data-tex="\(f\)">\(f\)</span>. Choosing <span class="math" data-tex="\(f\)">\(f\)</span> within <span class="math" data-tex="\(1/2\)">\(1/2\)</span> of the putative identity contradicts this. Thus <span class="math" data-tex="\(G\)">\(G\)</span> is discrete. Compression to its identity coordinate belongs to <span class="math" data-tex="\(\rho(A)\)">\(\rho(A)\)</span> by density and closedness and takes the identity to <span class="math" data-tex="\(1_K\)">\(1_K\)</span>. Its preimage under faithful <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is an identity for <span class="math" data-tex="\(A\)">\(A\)</span>. The hypothesis <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span> ensures <span class="math" data-tex="\(K\ne0\)">\(K\ne0\)</span> and hence the existence of the unit test vectors. For zero coefficients the crossed product is zero regardless of the group.</p>
+<p><strong>Exercise 6.5 (advanced).</strong> Prove (5.4) for an arbitrary discrete group and calculate the image of <span class="math" data-tex="\(\delta_s\otimes\delta_t\)">\(\delta_s\otimes\delta_t\)</span>. Include the injectivity argument.</p>
+<p><strong>Solution.</strong> Multiplication by <span class="math" data-tex="\(c_0(G)\)">\(c_0(G)\)</span> and left translation on <span class="math" data-tex="\(\ell^2(G)\)">\(\ell^2(G)\)</span> satisfy covariance. The element <span class="math" data-tex="\(p_su_t\)">\(p_su_t\)</span> takes the basis vector at <span class="math" data-tex="\(r\)">\(r\)</span> to the basis vector at <span class="math" data-tex="\(s\)">\(s\)</span> exactly when <span class="math" data-tex="\(tr=s\)">\(tr=s\)</span>. Its image is therefore <span class="math" data-tex="\(E_{s,t^{-1}s}\)">\(E_{s,t^{-1}s}\)</span>. Reindex by <span class="math" data-tex="\(e_{s,r}=p_su_{sr^{-1}}\)">\(e_{s,r}=p_su_{sr^{-1}}\)</span>. Covariance gives the matrix-unit identities (5.5). For each finite <span class="math" data-tex="\(F\)">\(F\)</span>, their span is a copy of <span class="math" data-tex="\(M_{|F|}\)">\(M_{|F|}\)</span> and the displayed representation is faithful on it, hence isometric. The union of these spans is dense by finite-support approximation in every coefficient. The representation is consequently isometric on a dense subalgebra and then on its completion. Its image is the closure of the finite matrix operators, which is exactly the compact operators. This proves surjectivity and injectivity, including when <span class="math" data-tex="\(G\)">\(G\)</span> is uncountable.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The general analysis used here includes Bochner integration and absolutely integrable Fubini, with the support hypotheses proved in <a href="prerequisites/exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#lemma-0-1">Lemma 0.1 of the GNS reading</a>. The locally compact cutoff and finite-partition proofs are in <a href="prerequisites/OA-FLOW/repaired-20261004/compact-topology-and-hilbert-tensors.html#h0-cutoffs-compact-partitions-and-product-approximation">Section H0 of the compact-topology reading</a>. The exact C*-algebra inputs are <a href="prerequisites/exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#theorem-4-2">Theorem 4.2 (contractivity)</a>, <a href="prerequisites/exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#corollary-4-6">Corollary 4.6 (faithful isometry)</a>, <a href="prerequisites/exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#corollary-15-4">Corollary 15.4 (closed range)</a>, <a href="prerequisites/exact/foundations-of-von-neumann-algebras/50F1FFA37C83/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#theorem-11-4">Theorem 11.4 (positive contractive approximate identities)</a>. A faithful nondegenerate representation is obtained from <a href="prerequisites/exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#theorem-7-2">Theorem 7.2 (faithful representations)</a> and <a href="prerequisites/exact/foundations-of-von-neumann-algebras/DD4372862B2D/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#proposition-1-4">Proposition 1.4 (restriction to the nondegenerate part)</a>. The extension of a nondegenerate ideal representation in (3.3) is the closed-ideal conclusion of <a href="prerequisites/hilbert-c-star-modules-and-morita-equivalence/compact-operators-multipliers-and-the-strict-topology.html#7-exercises-and-complete-solutions">Exercise 5 in Section 7 of the multiplier reading</a>, with its full solution. [Blackadar, Operator Algebras] is further reading for these constructions.</p>
+<p>The Haar prerequisites are existence, regularity and full support of left Haar measure, the modular and inversion formulas, translation continuity, and integral-one compactly supported approximate identities. Precise locators in <em>Haar measure on locally compact groups</em> are Proposition 2.3, Theorem 5.1 for the compact-support Fubini calculations, Theorem 8.3, §9, Theorems 10.1 and 11.1, and §§14–15. Our integrable functions are obtained by completion from compactly supported functions; no Fubini claim for arbitrary Borel functions on an unrestricted non-sigma-finite product is needed. A further reference is [Blackadar, Operator Algebras].</p>
+<p>The group representation correspondence, group approximate identity in a nondegenerate representation, and full group C*-algebra are used from <em>Unitary representations and the two group C</em> completions*, sections “Integrating a continuous unitary representation”, “Recovering a group action”, and “Full and reduced group completions”. Its section “A strict gap: the free group on two generators” supplies the free-group example mentioned after (5.4). For coefficients we use the exact correspondence, the regular pair (2.3), its faithfulness on <span class="math" data-tex="\(L^1(G,A)\)">\(L^1(G,A)\)</span>, and the full completion from <em>Covariance and crossed products with nonunital coefficients</em>, sections “Integrating a nondegenerate covariant pair”, “Recovering the two actions on an actual vector domain”, “The regular pair and its two faithfulness assertions”, and “Full and reduced crossed products and their canonical actions”. Faithfulness on the convolution algebra does not assert faithfulness on its full completion.</p>
+<p>The multiplier idealizer, strict topology, strict extension of nondegenerate homomorphisms, and <span class="math" data-tex="\(\mathcal L(E)=M(\mathcal K(E))\)">\(\mathcal L(E)=M(\mathcal K(E))\)</span> are assumed under the preparatory topic <em>Compact operators, multipliers and the strict topology</em>; the source statements used here are [Blackadar, Operator Algebras]. Strict continuity of the extension on bounded sets follows by testing on the dense products <span class="math" data-tex="\(\pi(a)b\)">\(\pi(a)b\)</span>: strict convergence <span class="math" data-tex="\(m_\lambda\to m\)">\(m_\lambda\to m\)</span> makes <span class="math" data-tex="\(\pi((m_\lambda-m)a)b\to0\)">\(\pi((m_\lambda-m)a)b\to0\)</span>, and uniform boundedness extends this to every <span class="math" data-tex="\(b\)">\(b\)</span>; the right products follow by taking adjoints. For the maximal tensor product's commuting-representation characterization, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/tensor-norms-and-independent-systems.html#1-recovering-the-two-actions">Theorem 1.1</a> proves nonunital recovery of both commuting actions, and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/tensor-norms-and-independent-systems.html#2-two-norms-from-two-kinds-of-representation">Propositions 2.1–2.2</a> prove the maximal norm and its universal property. These arguments require neither units nor separability; the essential-subspace paragraph includes degenerate representations. Blackadar, II.9.2.1–II.9.2.3, remains further reading.</p>
+<p>Finally, (5.7) for nondiscrete groups is stated from [Blackadar, Operator Algebras]. Its proof by Green's theorem is deferred to <em>Induced algebras and Green’s imprimitivity theorem</em>. General reduced-crossed-product arguments, amenability comparisons, expectations, simplicity, and duality belong to later lessons.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Schulz-Baldes–Stoiber]</strong> H. Schulz-Baldes and T. Stoiber, <em>Harmonic Analysis in Operator Algebras and its Applications to Index Theory and Topological Solid State Systems</em>, Springer, 2022, §1.1. <a href="https://arxiv.org/abs/2206.07781">Author manuscript</a>.</li>
+<li><strong>[Connes]</strong> A. Connes, <em>Noncommutative Geometry</em>, Academic Press, 1994, Chapter II, Appendix C, Definition 1 and Proposition 2. <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">Author's electronic edition</a>.</li>
+<li><strong>[Blackadar, Operator Algebras]</strong> B. Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Encyclopaedia of Mathematical Sciences 122, Springer, 2006; author's revised edition, 2017. <a href="https://bruceblackadar.com/Mathematics/Cycr.pdf">Author's revised edition, 2017</a>.</li>
+<li><strong>[Blackadar, K-Theory]</strong> B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, MSRI Publications 5, Cambridge University Press, 1998, §10.1. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's second edition</a>.</li>
+<li><strong>[Rosenberg]</strong> J. Rosenberg, “Examples and applications of noncommutative geometry and K-theory”, in G. Cortiñas, ed., <em>Topics in Noncommutative Geometry</em>, Clay Mathematics Proceedings 16, AMS and Clay Mathematics Institute, 2012, §2.2. <a href="https://www.claymath.org/wp-content/uploads/2022/03/cmip016c.pdf">Electronic volume</a>.</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="index.html">Course contents</a> <a class="pager-next" rel="next" href="KT-CP-02.html">Next lesson →</a></nav>
+<p class="source-link"><a href="src/KT-CP-01.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

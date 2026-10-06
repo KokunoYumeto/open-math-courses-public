@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Complex oblique derivatives for the wave equation</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="complex-oblique-derivatives-for-the-wave-equation">Complex oblique derivatives for the wave equation</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>An oblique boundary derivative can change the directions in which wave data propagate. Complex coefficients require more than the usual real sign test: their real and imaginary parts obey an exact Lorentz inequality. We prove the full coefficient classification, including null and purely imaginary endpoints, and compute the real propagation cone.</p>
+<p>Read <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>, <a href="AN02-L081.html">Extending a boundary time strip to its propagation cone</a>, <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies the Fourier convention and Gaussian formula; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies scalar calculus and cutoffs. <a href="prerequisites/stable-prerequisite-bridges.html">Polynomial and contour interfaces for stable boundary models</a> supplies finite scalar and polynomial algebra.</p>
+<p>The coefficient classification and explicit principal-cone calculations use the linked finite algebra, calculus and root-count proofs. Interpreting the cones as the supports of the general boundary kernels retains the two planned cone and analytic zero-order prerequisites of <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>. The explicit two-spatial-dimensional point-source support theorem is proved separately in <a href="AN02-L087.html">A reflected wave and its faster boundary pulse</a>.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's treatment of constant-coefficient equations. The linked lessons supply the prerequisite proofs used below.</p>
+<h2 id="the-system-and-the-two-coefficient-families">The system and the two coefficient families</h2>
+<p>Write <span class="math" data-tex="\(x=(a,z,t)\)">\(x=(a,z,t)\)</span>, <span class="math" data-tex="\(z\in\mathbb R^d\)">\(z\in\mathbb R^d\)</span>, d=n-2≥2. Use frequency variables <span class="math" data-tex="\((w,y,s)\)">\((w,y,s)\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(w,y,s)=w^2+|y|^2-s^2,\\
+\qquad
+ B(D)=D_a+\beta\cdot D_z+bD_t,\\
+\qquad
+                  \beta\in\mathbb C^d,\\
+\quad b\in\mathbb C .
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+P(w,y,s)=w^2+|y|^2-s^2,\\
+\qquad
+ B(D)=D_a+\beta\cdot D_z+bD_t,\\
+\qquad
+                  \beta\in\mathbb C^d,\\
+\quad b\in\mathbb C .
+\end{gathered}
+\tag{1}
+\]</span>
+Here <span class="math" data-tex="\(|y|^2=\sum y_j^2\)">\(|y|^2=\sum y_j^2\)</span> as a polynomial when y is complex, and D=-i∂. The normal derivative coefficient is exactly one. The time principal value is -1; the time roots for real spatial frequencies are real. There is one upper normal root on every lower-time line, so one boundary condition is the balanced count.</p>
+<p><strong>Theorem (full coefficient classification).</strong> This mixed system is hyperbolic in the zero-free-strip definition exactly when at least one of the following holds:
+<span class="math math-display" data-tex="\[
+ \begin{array}{ll}
+ \mathrm{A}:&amp; \beta,b\ \hbox{are real and }b&lt;1;\\[2mm]
+ \mathrm{B}:&amp; \begin{gathered}F\ \hbox{is future causal},\\
+\quad
+       1+[E,E]\ge0,\\
+\quad
+       [E,F]^2\le[F,F]\{1+[E,E]\}.\end{gathered}
+ \end{array}
+ \tag{2}
+\]">\[
+ \begin{array}{ll}
+ \mathrm{A}:&amp; \beta,b\ \hbox{are real and }b&lt;1;\\[2mm]
+ \mathrm{B}:&amp; \begin{gathered}F\ \hbox{is future causal},\\
+\quad
+       1+[E,E]\ge0,\\
+\quad
+       [E,F]^2\le[F,F]\{1+[E,E]\}.\end{gathered}
+ \end{array}
+ \tag{2}
+\]</span>
+In B the vectors and the Lorentz form are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\beta=p+iq,\\
+\quad b=\alpha+i\gamma,\\
+\quad
+ F=(p,-\alpha),\\
+\quad E=(q,-\gamma),\\
+\qquad
+ [v,v&#x27;]=v_t v&#x27;_t-v_z\cdot v&#x27;_z,\\
+\qquad
+ F_t\ge|F_z|.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+\beta=p+iq,\\
+\quad b=\alpha+i\gamma,\\
+\quad
+ F=(p,-\alpha),\\
+\quad E=(q,-\gamma),\\
+\qquad
+ [v,v&#x27;]=v_t v&#x27;_t-v_z\cdot v&#x27;_z,\\
+\qquad
+ F_t\ge|F_z|.
+\end{gathered}
+\tag{3}
+\]</span>
+“Future causal” includes the closed null cone and the zero vector. Families A and B may overlap. The separate condition <span class="math" data-tex="\(1+[E,E]\ge0\)">\(1+[E,E]\ge0\)</span> is essential when F is null or zero.</p>
+<h2 id="reducing-the-strip-test-to-a-quadratic">Reducing the strip test to a quadratic</h2>
+<p>For real y and <span class="math" data-tex="\(\operatorname{Im}s&lt;0\)">\(\operatorname{Im}s&lt;0\)</span>, choose the square root R of <span class="math" data-tex="\(s^2-|y|^2\)">\(s^2-|y|^2\)</span> whose imaginary part is negative. It is nonzero: if its square were a nonnegative real number, the imaginary part of s² would force <span class="math" data-tex="\(\operatorname{Re}s=0\)">\(\operatorname{Re}s=0\)</span>, but then <span class="math" data-tex="\(s^2-|y|^2&lt;0\)">\(s^2-|y|^2&lt;0\)</span>. This also gives the unique negative-imaginary root; continuity or the local simple-root expansion makes the choice analytic. The upper normal root is <span class="math" data-tex="\(\lambda=-R\)">\(\lambda=-R\)</span>. The residue determinant is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L(y,s)=\beta\cdot y+bs-R,\\
+\qquad
+                         L_0(0,1)=b-1 .
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+L(y,s)=\beta\cdot y+bs-R,\\
+\qquad
+                         L_0(0,1)=b-1 .
+\end{gathered}
+\tag{4}
+\]</span>
+At y=0, R=s. The principal value is therefore nonzero exactly when b≠1. Homogeneity implies that any zero with negative imaginary time can be scaled to arbitrarily negative time; conversely, if there is no such zero, every strictly lower line is zero-free. Thus the strip condition is exactly absence of zeros in that whole lower-time region.</p>
+<p>For y≠0 put <span class="math" data-tex="\(\rho=|y|\)">\(\rho=|y|\)</span>, <span class="math" data-tex="\(\theta=y/\rho\)">\(\theta=y/\rho\)</span>, <span class="math" data-tex="\(\zeta=s/\rho\)">\(\zeta=s/\rho\)</span>. On the slit plane <span class="math" data-tex="\(\mathbb C\setminus[-1,1]\)">\(\mathbb C\setminus[-1,1]\)</span>, use <span class="math" data-tex="\(R_1(\zeta)=\sqrt{\zeta^2-1}\)">\(R_1(\zeta)=\sqrt{\zeta^2-1}\)</span> with <span class="math" data-tex="\(R_1/\zeta\to1\)">\(R_1/\zeta\to1\)</span> at infinity. Equivalently, for the lower half-plane its imaginary part is negative. Its Joukowsky coordinate is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q_0=\zeta-R_1(\zeta),\\
+\qquad
+ 0&lt;|q_0|&lt;1,\\
+\quad\operatorname{Im}q_0&gt;0,\\
+\qquad
+ \zeta=\tfrac12(q_0+q_0^{-1}),\\
+\quad
+ R_1=\tfrac12(q_0^{-1}-q_0).
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+q_0=\zeta-R_1(\zeta),\\
+\qquad
+ 0&lt;|q_0|&lt;1,\\
+\quad\operatorname{Im}q_0&gt;0,\\
+\qquad
+ \zeta=\tfrac12(q_0+q_0^{-1}),\\
+\quad
+ R_1=\tfrac12(q_0^{-1}-q_0).
+\end{gathered}
+\tag{5}
+\]</span>
+These identities follow by multiplication of <span class="math" data-tex="\(\zeta\pm R_1\)">\(\zeta\pm R_1\)</span>. For a nonreal ζ, neither root q of <span class="math" data-tex="\(q+q^{-1}=2\zeta\)">\(q+q^{-1}=2\zeta\)</span> has modulus one, since a unit q gives real ζ. Their product is one, so exactly one lies inside the unit disk. The displayed inverse has imaginary part <span class="math" data-tex="\(\operatorname{Im}q(1-|q|^{-2})/2\)">\(\operatorname{Im}q(1-|q|^{-2})/2\)</span>; hence that inside root lies in the upper half-disk when ζ is in the lower half-plane. The root selected at large negative imaginary ζ is the same root throughout by continuity. This proves every branch and domain assertion in 5 without a conformal-mapping theorem.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_b(q_0)\\
+=\tfrac12\left\{\begin{gathered}(b+1)q_0\\
++(b-1)q_0^{-1}\end{gathered}\right\},
+ \\
+\qquad
+ L/\rho=T_b(q_0)+\beta\cdot\theta,\\
+\qquad
+ W=\{\beta\cdot\theta:|\theta|=1,\ \theta\in\mathbb R^d\}.
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+T_b(q_0)\\
+=\tfrac12\left\{\begin{gathered}(b+1)q_0\\
++(b-1)q_0^{-1}\end{gathered}\right\},
+ \\
+\qquad
+ L/\rho=T_b(q_0)+\beta\cdot\theta,\\
+\qquad
+ W=\{\beta\cdot\theta:|\theta|=1,\ \theta\in\mathbb R^d\}.
+\end{gathered}
+\tag{6}
+\]</span>
+The coefficient set W is centrally symmetric. Its exact geometry is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W\\
+=  \begin{cases}
+ \{0\},&amp;\operatorname{rank}(p,q)=0,\\
+ \begin{gathered}\hbox{a closed centered }\\
+\hbox{line segment}\end{gathered},&amp;\operatorname{rank}(p,q)=1,\\
+ \begin{gathered}\hbox{the boundary of a }\\
+\hbox{nondegenerate ellipse}\end{gathered},&amp;\begin{gathered}d=2,\ \\
+\operatorname{rank}(p,q)=2\end{gathered},\\
+ \begin{gathered}\hbox{the filled }\\
+\hbox{nondegenerate ellipse}\end{gathered},&amp;\begin{gathered}d&gt;2,\ \\
+\operatorname{rank}(p,q)=2 .\end{gathered}
+ \end{cases}
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+W\\
+=  \begin{cases}
+ \{0\},&amp;\operatorname{rank}(p,q)=0,\\
+ \begin{gathered}\hbox{a closed centered }\\
+\hbox{line segment}\end{gathered},&amp;\operatorname{rank}(p,q)=1,\\
+ \begin{gathered}\hbox{the boundary of a }\\
+\hbox{nondegenerate ellipse}\end{gathered},&amp;\begin{gathered}d=2,\ \\
+\operatorname{rank}(p,q)=2\end{gathered},\\
+ \begin{gathered}\hbox{the filled }\\
+\hbox{nondegenerate ellipse}\end{gathered},&amp;\begin{gathered}d&gt;2,\ \\
+\operatorname{rank}(p,q)=2 .\end{gathered}
+ \end{cases}
+\end{gathered}
+\tag{7}
+\]</span>
+To verify this, decompose a preimage orthogonally into the row space of the real map <span class="math" data-tex="\(\theta\mapsto(p\cdot\theta,q\cdot\theta)\)">\(\theta\mapsto(p\cdot\theta,q\cdot\theta)\)</span> and its kernel. The row-space preimage of a point is unique and of smallest norm. If the kernel is nonzero, any smallest norm at most one can be raised to one by adding a kernel vector of the required length. If the kernel is zero, only norm exactly one is allowed. In the rank-two case the squared smallest norm is a positive definite quadratic form on the image, giving precisely the ellipse and its boundary. The rank-one case gives the full interval because d≥2 leaves a nonzero kernel. This is also where the dimension assumption first enters.</p>
+<p>Oddness of T and symmetry of W make avoidance in the upper half-disk equivalent to avoidance in both nonreal halves of the disk. Therefore the complete coefficient test is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b\ne1,\\
+\qquad
+ W\cap\\
+T_b(\{q:0&lt;|q|&lt;1,\ \operatorname{Im}q\ne0\})=\varnothing .
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+b\ne1,\\
+\qquad
+ W\cap\\
+T_b(\{q:0&lt;|q|&lt;1,\ \operatorname{Im}q\ne0\})=\varnothing .
+\end{gathered}
+\tag{8}
+\]</span>
+For a proposed value <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, its preimages are the roots of
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(b+1)q^2-2\omega q+(b-1)=0,\\
+\qquad
+           q_1q_2=\frac{b-1}{b+1}\\
+\quad(b\ne-1).
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+(b+1)q^2-2\omega q+(b-1)=0,\\
+\qquad
+           q_1q_2=\frac{b-1}{b+1}\\
+\quad(b\ne-1).
+\end{gathered}
+\tag{9}
+\]</span>
+No root is zero when b≠1. For b=-1 the equation is linear and <span class="math" data-tex="\(T_{-1}(q)=-1/q\)">\(T_{-1}(q)=-1/q\)</span>.</p>
+<h2 id="unit-circle-images-and-exceptional-real-preimages">Unit-circle images and exceptional real preimages</h2>
+<p>On the unit circle,
+<span class="math math-display" data-tex="\[
+             T_b(e^{i\vartheta})
+                    =b\cos\vartheta+i\sin\vartheta .
+ \tag{10}
+\]">\[
+             T_b(e^{i\vartheta})
+                    =b\cos\vartheta+i\sin\vartheta .
+ \tag{10}
+\]</span>
+When α=<span class="math" data-tex="\(\operatorname{Re}b\ne0\)">\(\operatorname{Re}b\ne0\)</span>, this is a simple nondegenerate ellipse. Let <span class="math" data-tex="\(\mathcal E_b\)">\(\mathcal E_b\)</span> be its filled interior. In coordinates <span class="math" data-tex="\(\omega=u+iv\)">\(\omega=u+iv\)</span>, membership is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\omega\in\mathcal E_b
+       \\
+\quad\Longleftrightarrow\\
+\quad
+       (u/\alpha)^2+(v-\gamma u/\alpha)^2\le1 .
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+\omega\in\mathcal E_b
+       \\
+\quad\Longleftrightarrow\\
+\quad
+       (u/\alpha)^2+(v-\gamma u/\alpha)^2\le1 .
+\end{gathered}
+\tag{11}
+\]</span>
+The ellipse's interior and exterior are connected: the invertible real linear map <span class="math" data-tex="\((X,Y)\mapsto(\alpha X,\gamma X+Y)\)">\((X,Y)\mapsto(\alpha X,\gamma X+Y)\)</span> carries the disk and its complement to them.</p>
+<p>If α&lt;0 then <span class="math" data-tex="\(|(b-1)/(b+1)|&gt;1\)">\(|(b-1)/(b+1)|&gt;1\)</span>, so at most one quadratic root can be inside the unit circle. At <span class="math" data-tex="\(\omega=0\)">\(\omega=0\)</span> neither is inside, since their squares are <span class="math" data-tex="\((1-b)/(1+b)\)">\((1-b)/(1+b)\)</span>, of modulus greater than one. The argument-principle count is locally constant off the boundary ellipse. There are thus no inside roots throughout its interior. At large <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, <span class="math" data-tex="\(2|\omega|&gt;|b+1|+|b-1|\)">\(2|\omega|&gt;|b+1|+|b-1|\)</span> makes the linear term dominate the other two on the unit circle. Actual Rouché counting gives exactly one inside root. Hence throughout the connected exterior there is exactly one inside root. At a boundary value one root has modulus one and the other has modulus greater than one, so neither is strictly inside. The linear b=-1 case gives the same result directly:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha&lt;0:\\
+\quad
+ \begin{cases}
+ \text{no inside root},&amp;\omega\in\mathcal E_b,\\
+ \text{one inside root},&amp;\omega\notin\mathcal E_b .
+ \end{cases}
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+\alpha&lt;0:\\
+\quad
+ \begin{cases}
+ \text{no inside root},&amp;\omega\in\mathcal E_b,\\
+ \text{one inside root},&amp;\omega\notin\mathcal E_b .
+ \end{cases}
+\end{gathered}
+\tag{12}
+\]</span>
+The root-count step is the actual written argument principle on the unit disk; the compact unit contour has no zero along any parameter path off its image. Repeated roots outside the disk do not affect that count.</p>
+<p>An inside root is excluded from 8 only when it is real. For <span class="math" data-tex="\(q=r\)">\(q=r\)</span>, real and <span class="math" data-tex="\(0&lt;|r|&lt;1\)">\(0&lt;|r|&lt;1\)</span>, put <span class="math" data-tex="\(X=(r+r^{-1})/2\)">\(X=(r+r^{-1})/2\)</span>, <span class="math" data-tex="\(Y=(r-r^{-1})/2\)">\(Y=(r-r^{-1})/2\)</span>. Then <span class="math" data-tex="\(\omega=bX+Y\)">\(\omega=bX+Y\)</span> and <span class="math" data-tex="\(X^2-Y^2=1\)">\(X^2-Y^2=1\)</span>. If γ≠0 its image therefore lies on the hyperbola
+<span class="math math-display" data-tex="\[
+                  (v/\gamma)^2-(u-\alpha v/\gamma)^2=1 .
+ \tag{13}
+\]">\[
+                  (v/\gamma)^2-(u-\alpha v/\gamma)^2=1 .
+ \tag{13}
+\]</span>
+If γ=0 it lies on the real axis. These are the only exceptional inside-root images. The hyperbola does not pass through zero, and its quadratic form has one positive and one negative direction.</p>
+<p>We use the following elementary confinement observation several times. A centered nondegenerate ellipse boundary cannot have a nonempty open arc on that hyperbola. Parametrize the ellipse by <span class="math" data-tex="\(A(\cos\vartheta,\sin\vartheta)\)">\(A(\cos\vartheta,\sin\vartheta)\)</span>, with A invertible. If the quadratic identity holds on an open arc, its finite trigonometric polynomial is identically constant: after multiplication by <span class="math" data-tex="\(e^{2i\vartheta}\)">\(e^{2i\vartheta}\)</span> it is a polynomial of degree at most four with infinitely many roots. It then holds on the entire circle and implies
+<span class="math math-display" data-tex="\[
+                         A^{T}HA=I_2 ,
+ \tag{14}
+\]">\[
+                         A^{T}HA=I_2 ,
+ \tag{14}
+\]</span>
+where H is the hyperbola's indefinite quadratic matrix. This is impossible: choose a vector in a negative direction for H and pull it back by <span class="math" data-tex="\(A^{-1}\)">\(A^{-1}\)</span>. A nontrivial straight segment also cannot lie on the hyperbola; along a line through zero the expression is <span class="math" data-tex="\(r^2H(v)\)">\(r^2H(v)\)</span>, which cannot equal one on an interval. A filled ellipse cannot have an open part on this hyperbola because a nonzero quadratic polynomial cannot vanish on an open ball; restricting to coordinate lines proves that elementary fact. The same assertions for a line replacing the hyperbola are immediate from these parametrizations. Thus a W from 7 cannot protrude beyond a closed ellipse or segment while having every protruding point confined to these exceptional curves, except when the exceptional curve and W are the same real line segment.</p>
+<h2 id="all-time-coefficient-cases">All time-coefficient cases</h2>
+<p>Suppose first α&gt;0. The root-product modulus is less than one, so every value ω has at least one inside root. If b is nonreal, a missing value in 8 must lie on 13. Rank-zero and rank-one W contain zero, but zero is attained by nonreal inside roots: <span class="math" data-tex="\(q^2=(1-b)/(1+b)\)">\(q^2=(1-b)/(1+b)\)</span> is nonreal and has modulus less than one. A filled rank-two ellipse also contains zero. A rank-two ellipse boundary cannot lie on 13 by 14. No such nonreal b is admissible.</p>
+<p>If b is real and <span class="math" data-tex="\(0&lt;b&lt;1\)">\(0&lt;b&lt;1\)</span>, the product is negative. For real ω the quadratic discriminant is positive and all roots are real, so no admissible nonreal inside preimage exists. For nonreal ω, an inside root exists and cannot be real because T takes real roots to real values. Its nonreal image is therefore exactly the complement of the real axis. Avoidance is precisely <span class="math" data-tex="\(W\subset\mathbb R\)">\(W\subset\mathbb R\)</span>, equivalently β real. If b&gt;1, zero is attained by the inside nonreal roots <span class="math" data-tex="\(q^2=(1-b)/(1+b)&lt;0\)">\(q^2=(1-b)/(1+b)&lt;0\)</span>, so the W cases containing zero fail; a rank-two ellipse boundary cannot be confined to the real exceptional images. The value b=1 was already excluded. Consequently
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha&gt;0:\\
+\quad
+      \text{admissible exactly when }\\
+0&lt;b&lt;1,\\
+\quad\beta\in\mathbb R^d .
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+\alpha&gt;0:\\
+\quad
+      \text{admissible exactly when }\\
+0&lt;b&lt;1,\\
+\quad\beta\in\mathbb R^d .
+\end{gathered}
+\tag{15}
+\]</span></p>
+<p>Now let α=0. If γ≠0, the unit-circle image in 10 is the segment
+<span class="math math-display" data-tex="\[
+                      \mathcal E_{i\gamma}
+                 =i[-\sqrt{1+\gamma^2},\sqrt{1+\gamma^2}].
+ \tag{16}
+\]">\[
+                      \mathcal E_{i\gamma}
+                 =i[-\sqrt{1+\gamma^2},\sqrt{1+\gamma^2}].
+ \tag{16}
+\]</span>
+Every value on that segment has a unit root and, because the root-product modulus is one, its second root is also unit. There are no inside roots there. Off the segment the complement is connected; neither root is unit, and their product modulus is one, so exactly one is inside. The exceptional real inside root images lie on 13. The confinement observation forces <span class="math" data-tex="\(W\subset\mathcal E_{i\gamma}\)">\(W\subset\mathcal E_{i\gamma}\)</span>, and this inclusion is sufficient.</p>
+<p>When b=0, the unit image is <span class="math" data-tex="\(i[-1,1]\)">\(i[-1,1]\)</span>, and the exceptional real inside images comprise all nonzero real values. Thus the missing set is <span class="math" data-tex="\(\mathbb R\cup i[-1,1]\)">\(\mathbb R\cup i[-1,1]\)</span>. A rank-two W cannot be contained in these two lines. A rank-one centered segment must lie on one of the axes. Combining these cases yields
+<span class="math math-display" data-tex="\[
+ \alpha=0:\quad
+ \begin{cases}
+ b=0,\quad\beta\in\mathbb R^d; \quad\text{or}\\
+ p=0,\quad |q|^2\le1+\gamma^2 .
+ \end{cases}
+ \tag{17}
+\]">\[
+ \alpha=0:\quad
+ \begin{cases}
+ b=0,\quad\beta\in\mathbb R^d; \quad\text{or}\\
+ p=0,\quad |q|^2\le1+\gamma^2 .
+ \end{cases}
+ \tag{17}
+\]</span>
+In the second line γ may also be zero. This is exactly A's b=0 endpoint together with B's F=0 endpoint.</p>
+<p>Finally let α&lt;0. 12 says that any value outside <span class="math" data-tex="\(\mathcal E_b\)">\(\mathcal E_b\)</span> has one inside root. If γ≠0, every missing exterior value lies on 13; the confinement observation forces <span class="math" data-tex="\(W\subset\mathcal E_b\)">\(W\subset\mathcal E_b\)</span>. If γ=0, an exterior missing value must be real. Either W is entirely real, in which case every size of its centered segment is admissible, or the same confinement argument forces <span class="math" data-tex="\(W\subset\mathcal E_b\)">\(W\subset\mathcal E_b\)</span>. Sufficiency of ellipse inclusion follows directly from 12. For real β and real b&lt;0, any nonreal inside root at a real value would have its conjugate also inside, contradicting the at-most-one count; the linear b=-1 case has a real root directly. Every inside root is therefore real and excluded from the test. This proves the second sufficiency. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha&lt;0:\\
+\quad
+        \text{admissible iff }W\subset\mathcal E_b
+          \\
+\ \text{or }(\beta,b\ \text{both real}).
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+\alpha&lt;0:\\
+\quad
+        \text{admissible iff }W\subset\mathcal E_b
+          \\
+\ \text{or }(\beta,b\ \text{both real}).
+\end{gathered}
+\tag{18}
+\]</span>
+This includes b=-1. No coefficient case remains.</p>
+<h2 id="converting-ellipse-containment-to-the-lorentz-test">Converting ellipse containment to the Lorentz test</h2>
+<p>For α&lt;0, substitute <span class="math" data-tex="\(\omega=p\cdot\theta+i q\cdot\theta\)">\(\omega=p\cdot\theta+i q\cdot\theta\)</span> into 11. Containment is exactly
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|A\theta|^2\le1\ (|\theta|=1),\\
+\qquad
+ A=\begin{pmatrix}p^T/\alpha\\(q-\gamma p/\alpha)^T\end{pmatrix}.
+\end{gathered}
+\tag{19}
+\]">\[
+\begin{gathered}
+|A\theta|^2\le1\ (|\theta|=1),\\
+\qquad
+ A=\begin{pmatrix}p^T/\alpha\\(q-\gamma p/\alpha)^T\end{pmatrix}.
+\end{gathered}
+\tag{19}
+\]</span>
+This is equivalent to <span class="math" data-tex="\(I_2-AA^T\)">\(I_2-AA^T\)</span> being positive semidefinite. Indeed the Euclidean identity <span class="math" data-tex="\(|v|=\sup_{|e|=1}e\cdot v\)">\(|v|=\sup_{|e|=1}e\cdot v\)</span> gives equality of the operator norms of A and <span class="math" data-tex="\(A^T\)">\(A^T\)</span>, by two finite suprema and Cauchy's inequality. A matrix has norm at most one precisely when the corresponding quadratic inequality holds. No spectral-decomposition theorem is required.</p>
+<p>Put <span class="math" data-tex="\(\Delta=[F,F]\)">\(\Delta=[F,F]\)</span>, <span class="math" data-tex="\(R_E=1+[E,E]\)">\(R_E=1+[E,E]\)</span>, and <span class="math" data-tex="\(K_E=[E,F]\)">\(K_E=[E,F]\)</span>. Direct finite expansion gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Delta=\alpha^2-|p|^2,\\
+\quad
+ R_E=1+\gamma^2-|q|^2,\\
+\quad
+ K_E=\alpha\gamma-p\cdot q,\\
+\qquad
+ (I_2-AA^T)_{11}=\Delta/\alpha^2,\\
+\quad
+ \det(I_2-AA^T)\\
+=(\Delta R_E-K_E^2)/\alpha^2 .
+\end{gathered}
+\tag{20}
+\]">\[
+\begin{gathered}
+\Delta=\alpha^2-|p|^2,\\
+\quad
+ R_E=1+\gamma^2-|q|^2,\\
+\quad
+ K_E=\alpha\gamma-p\cdot q,\\
+\qquad
+ (I_2-AA^T)_{11}=\Delta/\alpha^2,\\
+\quad
+ \det(I_2-AA^T)\\
+=(\Delta R_E-K_E^2)/\alpha^2 .
+\end{gathered}
+\tag{20}
+\]</span>
+If <span class="math" data-tex="\(\Delta&gt;0\)">\(\Delta&gt;0\)</span>, nonnegative determinant and the positive first diagonal entry give positive semidefiniteness by completing the square. They also imply <span class="math" data-tex="\(R_E\ge0\)">\(R_E\ge0\)</span>. If <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span>, the determinant condition forces <span class="math" data-tex="\(K_E=0\)">\(K_E=0\)</span>. In that case the off-diagonal entry is zero, and the remaining diagonal entry is <span class="math" data-tex="\(R_E\)">\(R_E\)</span>. It must be tested separately. Conversely, if the matrix is positive semidefinite and <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span>, its off-diagonal entry must vanish (test vectors <span class="math" data-tex="\((1,r)\)">\((1,r)\)</span> for arbitrarily small signed r), so exactly these same conditions follow. Because α&lt;0, <span class="math" data-tex="\(\Delta\ge0\)">\(\Delta\ge0\)</span> is equivalent to F being future causal. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W\subset\mathcal E_b
+ \\
+\quad\Longleftrightarrow\\
+\quad
+ F\ \text{future causal},\\
+\quad R_E\ge0,\\
+\quad
+                                     K_E^2\le\Delta R_E .
+\end{gathered}
+\tag{21}
+\]">\[
+\begin{gathered}
+W\subset\mathcal E_b
+ \\
+\quad\Longleftrightarrow\\
+\quad
+ F\ \text{future causal},\\
+\quad R_E\ge0,\\
+\quad
+                                     K_E^2\le\Delta R_E .
+\end{gathered}
+\tag{21}
+\]</span>
+For α=0, future causality forces p=0, and this same criterion becomes precisely the second line of 17. For α&gt;0, F cannot be future causal. Combining 15, 17, 18 and 21 proves the complete theorem 2.</p>
+<h2 id="principal-cones-and-directional-propagation">Principal cones and directional propagation</h2>
+<p>The interior wave cone and its projection are, explicitly,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma=\{(w,y,s):s&gt;\sqrt{w^2+|y|^2}\},\\
+\quad
+ \Omega=\{(y,s):s&gt;|y|\},\\
+\qquad
+ C\\
+=\{(a,z,t):t\ge\sqrt{a^2+|z|^2}\}.
+\end{gathered}
+\tag{22}
+\]">\[
+\begin{gathered}
+\Gamma=\{(w,y,s):s&gt;\sqrt{w^2+|y|^2}\},\\
+\quad
+ \Omega=\{(y,s):s&gt;|y|\},\\
+\qquad
+ C\\
+=\{(a,z,t):t\ge\sqrt{a^2+|z|^2}\}.
+\end{gathered}
+\tag{22}
+\]</span>
+The cone C is their nonnegative-pairing polar: Cauchy's inequality proves nonnegative pairings, while a spatial covector opposite a proposed spatial vector proves the converse. Projection of Γ allows w=0 and is exactly Ω.</p>
+<p>For real family A the principal symbol on Ω is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_0(y,s)=\beta\cdot y+bs-\sqrt{s^2-|y|^2},\\
+\qquad
+ \Sigma\\
+=\left\{\begin{gathered}(y,s):s&gt;\\
+\sqrt{|y|^2+
+                       \max(0,\beta\cdot y+bs)^2}\end{gathered}\right\}.
+\end{gathered}
+\tag{23}
+\]">\[
+\begin{gathered}
+L_0(y,s)=\beta\cdot y+bs-\sqrt{s^2-|y|^2},\\
+\qquad
+ \Sigma\\
+=\left\{\begin{gathered}(y,s):s&gt;\\
+\sqrt{|y|^2+
+                       \max(0,\beta\cdot y+bs)^2}\end{gathered}\right\}.
+\end{gathered}
+\tag{23}
+\]</span>
+The local positive square root is the real continuation of the root at the time direction, as the elementary simple-root expansion verifies. Its sign cannot change on Ω. At time, <span class="math" data-tex="\(L_0=b-1&lt;0\)">\(L_0=b-1&lt;0\)</span>. The displayed inequality is exactly <span class="math" data-tex="\(L_0&lt;0\)">\(L_0&lt;0\)</span>: a nonpositive linear term needs no square test; a positive one may be squared without changing the inequality. Normalize by s&gt;0 to obtain the section
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K\\
+=\left\{\begin{gathered}v\in\mathbb R^d:\\
+|v|^2\\
++\max(0,\beta\cdot v+b)^2&lt;1\end{gathered}\right\},
+       \\
+\qquad (y,s)\in\Sigma\ \Longleftrightarrow\ y/s\in K .
+\end{gathered}
+\tag{24}
+\]">\[
+\begin{gathered}
+K\\
+=\left\{\begin{gathered}v\in\mathbb R^d:\\
+|v|^2\\
++\max(0,\beta\cdot v+b)^2&lt;1\end{gathered}\right\},
+       \\
+\qquad (y,s)\in\Sigma\ \Longleftrightarrow\ y/s\in K .
+\end{gathered}
+\tag{24}
+\]</span>
+The squared positive part of an affine function is convex: its derivative as a scalar function is nondecreasing, or its defining chord inequality follows by its two quadratic pieces. Adding the strictly convex squared norm makes this strict sublevel convex. It contains zero because b&lt;1, using the positive part when b&lt;0. Thus it is connected and is exactly the nonzero principal component containing time, not just a subset of that component. Its closure is the nonstrict sublevel: continuity gives one inclusion, and a point on level one is approached by its segments toward zero, where convexity and the strict value at zero give values below one.</p>
+<p>For unit spatial q define <span class="math" data-tex="\(h_K(-q)=\sup_{v\in\overline K}(-q)\cdot v\)">\(h_K(-q)=\sup_{v\in\overline K}(-q)\cdot v\)</span>. Since K contains a neighborhood of zero and is contained in the unit ball, this number is positive and at most one. The embedded boundary polar and directional speed bound are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_\partial\\
+=\{(0,z,t):t\ge h_K(-z)\},\\
+\qquad
+ v_{\rm bdry}(q)=1/h_K(-q),\\
+\qquad
+ v_{\rm bdry}(q)&gt;1\ \Longleftrightarrow\\
+\ b-\beta\cdot q&gt;0 .
+\end{gathered}
+\tag{25}
+\]">\[
+\begin{gathered}
+C_\partial\\
+=\{(0,z,t):t\ge h_K(-z)\},\\
+\qquad
+ v_{\rm bdry}(q)=1/h_K(-q),\\
+\qquad
+ v_{\rm bdry}(q)&gt;1\ \Longleftrightarrow\\
+\ b-\beta\cdot q&gt;0 .
+\end{gathered}
+\tag{25}
+\]</span>
+Here <span class="math" data-tex="\(h_K\)">\(h_K\)</span> is positively homogeneous; its definition for any z is the same finite compact supremum. The polar formula is the normalized pairing <span class="math" data-tex="\(t+z\cdot v\ge0\)">\(t+z\cdot v\ge0\)</span>. For the speed test, equality <span class="math" data-tex="\(h_K(-q)=1\)">\(h_K(-q)=1\)</span> can occur in the unit ball only at the unique maximizer v=-q. That point belongs to <span class="math" data-tex="\(\overline K\)">\(\overline K\)</span> exactly when <span class="math" data-tex="\(\beta\cdot(-q)+b\le0\)">\(\beta\cdot(-q)+b\le0\)</span>. If it fails this condition, compactness gives a strict smaller supremum. This proves the directional criterion including its equality case.</p>
+<p>Consequently every direction has increased boundary speed exactly when b&gt;|β|; no direction has increased speed exactly when b≤-|β|. The first is the interior forward Lorentz cone for <span class="math" data-tex="\((\beta,b)\)">\((\beta,b)\)</span>; the second is its closed backward cone. The other real coefficients can change a proper set of directions. These conclusions concern the sharp cone bound supplied by the principal symbol, not a claim that every datum attains every part of its support.</p>
+<p>For family B write <span class="math" data-tex="\(\eta=(y,s)\in\Omega\)">\(\eta=(y,s)\in\Omega\)</span>. Future causality gives <span class="math" data-tex="\([F,\eta]\ge0\)">\([F,\eta]\ge0\)</span>, by Cauchy's inequality. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_0(\eta)=-[F,\eta]-\sqrt{[\eta,\eta]}-i[E,\eta],
+       \\
+\qquad \operatorname{Re}L_0(\eta)&lt;0,\\
+\qquad \Sigma=\Omega .
+\end{gathered}
+\tag{26}
+\]">\[
+\begin{gathered}
+L_0(\eta)=-[F,\eta]-\sqrt{[\eta,\eta]}-i[E,\eta],
+       \\
+\qquad \operatorname{Re}L_0(\eta)&lt;0,\\
+\qquad \Sigma=\Omega .
+\end{gathered}
+\tag{26}
+\]</span>
+Its boundary polar is the ordinary tangent light cone, already contained in C. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_\partial\subset C,\\
+\qquad
+                 S=C+C_\partial=C\\
+\quad\text{in family B}.
+\end{gathered}
+\tag{27}
+\]">\[
+\begin{gathered}
+C_\partial\subset C,\\
+\qquad
+                 S=C+C_\partial=C\\
+\quad\text{in family B}.
+\end{gathered}
+\tag{27}
+\]</span>
+The conditions in B are invariant under real Lorentz maps preserving future orientation, since they consist only of the form and that cone. Such maps act on the complex tangent coefficient vector <span class="math" data-tex="\(F+iE\)">\(F+iE\)</span> and leave the coefficient of <span class="math" data-tex="\(D_a\)">\(D_a\)</span> equal to one. The unchanged real cone follows explicitly from 26–27; invariance alone is not used as a missing proof.</p>
+<p>For real isotropic <span class="math" data-tex="\(0&lt;b&lt;1,\ \beta=0\)">\(0&lt;b&lt;1,\ \beta=0\)</span>, put c=<span class="math" data-tex="\(\sqrt{1-b^2}\)">\(\sqrt{1-b^2}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Sigma=\{s&gt;|y|/c\},\\
+\quad
+ C_\partial\\
+=\{a=0,\ t\ge c|z|\},\\
+\quad
+              v_{\rm bdry}=1/c .
+\end{gathered}
+\tag{28}
+\]">\[
+\begin{gathered}
+\Sigma=\{s&gt;|y|/c\},\\
+\quad
+ C_\partial\\
+=\{a=0,\ t\ge c|z|\},\\
+\quad
+              v_{\rm bdry}=1/c .
+\end{gathered}
+\tag{28}
+\]</span>
+For the full combined cone S, minimize the sum of an interior time and a boundary time. For fixed normal a and tangent radius ρ=|z|, the triangle inequality bounds the boundary displacement below by the difference of the two tangent lengths. Equality is attained with aligned tangent vectors. An interior tangent length r&gt;ρ cannot minimize, since both terms then increase as r increases; opposite alignment only enlarges the boundary length. The exact minimum therefore reduces to
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_S(a,\rho)\\
+=\min_{0\le r\le\rho}\\
+                  \{\sqrt{a^2+r^2}+c(\rho-r)\}.
+\end{gathered}
+\tag{29}
+\]">\[
+\begin{gathered}
+T_S(a,\rho)\\
+=\min_{0\le r\le\rho}\\
+                  \{\sqrt{a^2+r^2}+c(\rho-r)\}.
+\end{gathered}
+\tag{29}
+\]</span>
+The derivative is <span class="math" data-tex="\(r/\sqrt{a^2+r^2}-c\)">\(r/\sqrt{a^2+r^2}-c\)</span>, increasing in r when a≠0. It vanishes at <span class="math" data-tex="\(r_*=c|a|/\sqrt{1-c^2}\)">\(r_*=c|a|/\sqrt{1-c^2}\)</span>. The a=0 case is the immediate minimum cρ at r=0. Therefore
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_S(a,\rho)\\
+=  \begin{cases}
+ \sqrt{a^2+\rho^2},&amp;\begin{gathered}\rho\le\\
+c|a|/\sqrt{1-c^2}\end{gathered},\\
+ \sqrt{1-c^2}|a|+c\rho,&amp;\begin{gathered}\rho\ge\\
+c|a|/\sqrt{1-c^2}\end{gathered}.
+ \end{cases}
+\end{gathered}
+\tag{30}
+\]">\[
+\begin{gathered}
+T_S(a,\rho)\\
+=  \begin{cases}
+ \sqrt{a^2+\rho^2},&amp;\begin{gathered}\rho\le\\
+c|a|/\sqrt{1-c^2}\end{gathered},\\
+ \sqrt{1-c^2}|a|+c\rho,&amp;\begin{gathered}\rho\ge\\
+c|a|/\sqrt{1-c^2}\end{gathered}.
+ \end{cases}
+\end{gathered}
+\tag{30}
+\]</span>
+Both formulas agree at the threshold with matching first derivative. This is an exact closed-cone computation. <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a> gives this S as a support bound for the boundary kernels relative to its two declared inputs.</p>
+<p>A source at positive normal position a0 has a direct unit-speed interior path and a path that reaches the boundary, uses its faster tangent cone, and returns into the half-space. Minimizing the two interior legs by the triangle inequality combines their normal lengths a0+a. Equality is attained by dividing their combined tangent displacement in the ratio a0:a; zero legs use the evident zero displacement, and when both are zero the tangent triangle inequality suffices. The geometric causal-path bound is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_{\rm paths}(a,\rho;a_0)\\
+=        \min\left\{\begin{gathered}\sqrt{(a-a_0)^2+\rho^2},\\
+\ T_S(a+a_0,\rho)\end{gathered}\right\},
+                   \\
+\qquad a,a_0\ge0 .
+\end{gathered}
+\tag{31}
+\]">\[
+\begin{gathered}
+T_{\rm paths}(a,\rho;a_0)\\
+=        \min\left\{\begin{gathered}\sqrt{(a-a_0)^2+\rho^2},\\
+\ T_S(a+a_0,\rho)\end{gathered}\right\},
+                   \\
+\qquad a,a_0\ge0 .
+\end{gathered}
+\tag{31}
+\]</span>
+This is a bound determined by the propagation cones. Proving that a specified forced Green function is nonzero on every part of this envelope requires a separate kernel argument; the picture alone does not prove that support equality. The explicit point-source argument is given in <a href="AN02-L087.html">A reflected wave and its faster boundary pulse</a>.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (entry: twice the speed of light).</strong> Find an admissible real isotropic boundary derivative whose boundary cone has speed two. Compute its combined cone front and contrast it with b=2.</p>
+<p><strong>Solution.</strong> Take β=0 and <span class="math" data-tex="\(b=\sqrt3/2&lt;1\)">\(b=\sqrt3/2&lt;1\)</span>. Family A holds and c=1/2. Equations 28–30 give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v_{\rm bdry}=2,\\
+\qquad
+ T_S(a,\rho)\\
+=  \begin{cases}\sqrt{a^2+\rho^2},&amp;\rho\le|a|/\sqrt3,\\
+ (\sqrt3/2)|a|+\rho/2,&amp;\rho\ge|a|/\sqrt3.
+ \end{cases}
+\end{gathered}
+\tag{32}
+\]">\[
+\begin{gathered}
+v_{\rm bdry}=2,\\
+\qquad
+ T_S(a,\rho)\\
+=  \begin{cases}\sqrt{a^2+\rho^2},&amp;\rho\le|a|/\sqrt3,\\
+ (\sqrt3/2)|a|+\rho/2,&amp;\rho\ge|a|/\sqrt3.
+ \end{cases}
+\end{gathered}
+\tag{32}
+\]</span>
+The faster branch begins exactly where the interior tangent slope equals one half. For b=2 and β=0, the quadratic at ω=0 has <span class="math" data-tex="\(q^2=-1/3\)">\(q^2=-1/3\)</span>; its inside imaginary root is admissible. It gives a negative-imaginary time zero for the actual determinant, so no lower strip can remain zero-free. A large positive real time coefficient is therefore not an admissible faster-speed parameter.</p>
+<p><strong>Exercise 2 (intermediate: the null Lorentz endpoint).</strong> Test the complex coefficients <span class="math" data-tex="\(\beta=(1/2+i/2,i/2)\)">\(\beta=(1/2+i/2,i/2)\)</span>, <span class="math" data-tex="\(b=-2+i\)">\(b=-2+i\)</span>. Then compare <span class="math" data-tex="\(\beta=(1-i,i)\)">\(\beta=(1-i,i)\)</span>, <span class="math" data-tex="\(b=-1+i\)">\(b=-1+i\)</span>, with the same β first component but second component 2i. Explain the role of the separate inequality in 2.</p>
+<p><strong>Solution.</strong> In the first system p=(1/2,0), q=(1/2,1/2), α=-2, γ=1. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}{}
+[F,F]=15/4,\\
+\quad 1+[E,E]=3/2,\\
+\quad [E,F]=-9/4,\\
+\qquad
+ [F,F](1+[E,E])\\
+-[E,F]^2=9/16&gt;0 .
+\end{gathered}
+\tag{33}
+\]">\[
+\begin{gathered}{}
+[F,F]=15/4,\\
+\quad 1+[E,E]=3/2,\\
+\quad [E,F]=-9/4,\\
+\qquad
+ [F,F](1+[E,E])\\
+-[E,F]^2=9/16&gt;0 .
+\end{gathered}
+\tag{33}
+\]</span>
+F is strictly future timelike because its time component is two and its spatial length is one half. The system is admissible in family B and its propagation cone is the ordinary light cone. Its finite containment matrix is <span class="math" data-tex="\(I_2-AA^T=\begin{pmatrix}15/16&amp;3/16\\3/16&amp;3/16\end{pmatrix}\)">\(I_2-AA^T=\begin{pmatrix}15/16&amp;3/16\\3/16&amp;3/16\end{pmatrix}\)</span>, with determinant 9/64; this agrees exactly with 20.</p>
+<p>For the second pair F=(1,0,1) is future null and E=(-1,1,-1), so
+<span class="math math-display" data-tex="\[
+\begin{gathered}{}
+[F,F]=0,\\
+\quad [E,F]=0,\\
+\quad1+[E,E]=0;
+ \\
+\qquad
+ \beta=(1-i,2i):\\
+\quad1+[E,E]=-3 .
+\end{gathered}
+\tag{34}
+\]">\[
+\begin{gathered}{}
+[F,F]=0,\\
+\quad [E,F]=0,\\
+\quad1+[E,E]=0;
+ \\
+\qquad
+ \beta=(1-i,2i):\\
+\quad1+[E,E]=-3 .
+\end{gathered}
+\tag{34}
+\]</span>
+The first null pair is admissible, including equality in both Lorentz inequalities. In the altered pair the determinant inequality still reads 0≤0, but the separate nonnegative condition fails. It is not admissible. In the corresponding containment matrix the zero first diagonal and off-diagonal entries leave precisely the remaining value <span class="math" data-tex="\(1+[E,E]\)">\(1+[E,E]\)</span>; dropping its sign would accept a negative quadratic direction.</p>
+<p><strong>Exercise 3 (advanced: a lower-dimensional exception).</strong> Take only one tangent spatial coordinate, so d=1 and n=3. Set <span class="math" data-tex="\(b=2+i\)">\(b=2+i\)</span>, <span class="math" data-tex="\(\beta=(14+13i)/5\)">\(\beta=(14+13i)/5\)</span>. Verify that this is hyperbolic even though it belongs to neither family in 2. Identify the failed geometric step if the n≥4 hypothesis were dropped.</p>
+<p><strong>Solution.</strong> W consists of the two points ±β, rather than an interval or a full ellipse. The quadratic preimages of β are
+<span class="math math-display" data-tex="\[
+                         T_b(q)=\beta:\qquad q=1/5,\ 2+i .
+ \tag{35}
+\]">\[
+                         T_b(q)=\beta:\qquad q=1/5,\ 2+i .
+ \tag{35}
+\]</span>
+Their product is <span class="math" data-tex="\((2+i)/5=(b-1)/(b+1)\)">\((2+i)/5=(b-1)/(b+1)\)</span>, and their sum is <span class="math" data-tex="\(2\beta/(b+1)\)">\(2\beta/(b+1)\)</span>, directly verifying the quadratic. The first root is real inside the unit disk, so is excluded from the nonreal test. The second lies outside the disk. For -β the roots are their negatives, with the same exclusions. Consequently no selected lower-time root gives a determinant zero. The time principal value b-1 is nonzero, and homogeneity gives the zero-free strip. Explicitly,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q=1/5:\\
+\quad\zeta=(q+q^{-1})/2=13/5\ \text{is real};
+                \\
+\qquad |2+i|=\sqrt5&gt;1 .
+\end{gathered}
+\tag{36}
+\]">\[
+\begin{gathered}
+q=1/5:\\
+\quad\zeta=(q+q^{-1})/2=13/5\ \text{is real};
+                \\
+\qquad |2+i|=\sqrt5&gt;1 .
+\end{gathered}
+\tag{36}
+\]</span>
+An exterior q can map to a nonreal ζ but is the wrong square-root branch; it cannot be substituted into the selected determinant. The system fails A because its coefficients are nonreal and fails B because <span class="math" data-tex="\(\operatorname{Re}b&gt;0\)">\(\operatorname{Re}b&gt;0\)</span>. There is no contradiction: in d=1, W has two isolated points and can sit on the exceptional real-preimage curve. The interval/ellipse confinement in 7–14 requires d≥2. The source dimension is retained exactly.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Open lecture notes</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

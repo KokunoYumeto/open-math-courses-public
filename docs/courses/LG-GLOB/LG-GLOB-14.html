@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The function-field case: Drinfeld and L. Lafforgue · Global Langlands conjectures and functoriality</title>
+<meta name="description" content="A lesson of the course Global Langlands conjectures and functoriality. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GLOB/LG-GLOB-14.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Global Langlands conjectures and functoriality</a> <span aria-hidden="true">›</span> <span>Lesson 14 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong></p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-function-field-case-drinfeld-and-l-lafforgue">The function-field case: Drinfeld and L. Lafforgue</h1>
+<p><em>Draft lesson. Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).</em></p>
+<p>For a function field, places are points of a curve and integral lattices glue into vector bundles. This changes the language of automorphic forms without changing their arithmetic meaning. We use this dictionary to prove a complete vanishing result for the projective line, then compare it with the Galois side. The deep correspondence theorems are stated, with their scope distinguished from the elementary arguments proved here.</p>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a smooth projective geometrically connected curve over <span class="math" data-tex="\(k=\mathbf F_q\)">\(k=\mathbf F_q\)</span>, let <span class="math" data-tex="\(F=k(X)\)">\(F=k(X)\)</span>, and let <span class="math" data-tex="\(\mathbf A\)">\(\mathbf A\)</span> be its ring of adèles. At a closed point <span class="math" data-tex="\(v\)">\(v\)</span>, write <span class="math" data-tex="\(R_v=\mathcal O_{X,v}\)">\(R_v=\mathcal O_{X,v}\)</span>, <span class="math" data-tex="\(F_v\)">\(F_v\)</span> for the completion and <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> for its valuation ring. Put <span class="math" data-tex="\(\mathcal O=\prod_v\mathcal O_v\)">\(\mathcal O=\prod_v\mathcal O_v\)</span>. The dictionary and the finite-cover argument are proved below. For coherent cohomology we use the earlier programme proofs in <a href="../AG-QC/cech-cohomology.html"><em>Čech cohomology</em>, Theorem 3.2</a>, <a href="../AG-QC/affine-cohomology-and-serres-criterion.html"><em>Cohomology of affine schemes and Serre's criterion</em>, Theorems 2.2 and 3.1</a>, and <a href="../AG-QC/serres-theorems-on-projective-schemes.html"><em>Coherent sheaves on projective schemes: Serre's theorems</em>, Theorem 2.2</a>. These prove the affine-cover calculation and finite-dimensionality used here. The correspondence statements are taken from the freely accessible texts of L. and V. Lafforgue specified below.</p>
+<h2 id="1-bundles-and-the-constant-term">1. Bundles and the constant term</h2>
+<p>Weil's dictionary identifies</p>
+<span class="math math-display" data-tex="\[
+GL_n(F)\backslash GL_n(\mathbf A)/GL_n(\mathcal O)
+\]">\[
+GL_n(F)\backslash GL_n(\mathbf A)/GL_n(\mathcal O)
+\]</span>
+<p>with isomorphism classes of rank-<span class="math" data-tex="\(n\)">\(n\)</span> vector bundles on <span class="math" data-tex="\(X\)">\(X\)</span>. Here is the lattice construction, including why completed local data give an algebraic bundle.</p>
+<p>For <span class="math" data-tex="\(g=(g_v)\in GL_n(\mathbf A)\)">\(g=(g_v)\in GL_n(\mathbf A)\)</span>, put <span class="math" data-tex="\(\Lambda_v=g_v\mathcal O_v^n\)">\(\Lambda_v=g_v\mathcal O_v^n\)</span>. These lattices equal <span class="math" data-tex="\(\mathcal O_v^n\)">\(\mathcal O_v^n\)</span> outside a finite set <span class="math" data-tex="\(S\)">\(S\)</span>. Since <span class="math" data-tex="\(F\)">\(F\)</span> is dense in its completion <span class="math" data-tex="\(F_v\)">\(F_v\)</span>, approximate the entries of <span class="math" data-tex="\(g_v\)">\(g_v\)</span> by a matrix <span class="math" data-tex="\(h_v\in M_n(F)\)">\(h_v\in M_n(F)\)</span> closely enough that
+<span class="math math-display" data-tex="\[
+g_v^{-1}h_v\in I_n+\mathfrak m_vM_n(\mathcal O_v)
+\subset GL_n(\mathcal O_v).
+\]">\[
+g_v^{-1}h_v\in I_n+\mathfrak m_vM_n(\mathcal O_v)
+\subset GL_n(\mathcal O_v).
+\]</span>
+Thus <span class="math" data-tex="\(h_v\in GL_n(F)\)">\(h_v\in GL_n(F)\)</span> and <span class="math" data-tex="\(h_v\mathcal O_v^n=\Lambda_v\)">\(h_v\mathcal O_v^n=\Lambda_v\)</span>. The local ring <span class="math" data-tex="\(R_v\)">\(R_v\)</span> is a DVR, and <span class="math" data-tex="\(F\cap\mathcal O_v=R_v\)">\(F\cap\mathcal O_v=R_v\)</span>; hence
+<span class="math math-display" data-tex="\[
+F^n\cap\Lambda_v=h_vR_v^n.
+\tag{1.1}
+\]">\[
+F^n\cap\Lambda_v=h_vR_v^n.
+\tag{1.1}
+\]</span>
+The DVR assertion and the finite torsion-free module argument are proved in <span class="unlinked"><em>Projective cohomology and smooth affine models</em>, Lemma 6.C and §6</span>.</p>
+<p>Trivialize on <span class="math" data-tex="\(U_0=X\setminus S\)">\(U_0=X\setminus S\)</span>. For each <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, choose an open <span class="math" data-tex="\(U_v\)">\(U_v\)</span> containing <span class="math" data-tex="\(v\)">\(v\)</span>, excluding the other points of <span class="math" data-tex="\(S\)">\(S\)</span> and every other zero or pole of the finitely many entries needed for <span class="math" data-tex="\(h_v,h_v^{-1}\)">\(h_v,h_v^{-1}\)</span>. On <span class="math" data-tex="\(U_v\setminus\{v\}\)">\(U_v\setminus\{v\}\)</span> both matrices are regular. Glue a free bundle on <span class="math" data-tex="\(U_v\)">\(U_v\)</span> to the trivial bundle on <span class="math" data-tex="\(U_0\)">\(U_0\)</span> by the matrix <span class="math" data-tex="\(h_v\)">\(h_v\)</span>. On <span class="math" data-tex="\(U_v\cap U_w\)">\(U_v\cap U_w\)</span>, the transition is <span class="math" data-tex="\(h_w^{-1}h_v\)">\(h_w^{-1}h_v\)</span>; the matrix products satisfy the cocycle equation. A section, in the common rational frame, is therefore exactly a rational vector integral in <span class="math" data-tex="\(\Lambda_v\)">\(\Lambda_v\)</span> at every point of its open domain. Formula (1.1) shows that the resulting completed stalk is <span class="math" data-tex="\(\Lambda_v\)">\(\Lambda_v\)</span>. It also shows independence of the approximating matrices and opens: two such constructions have identical local fractional modules inside <span class="math" data-tex="\(F^n\)">\(F^n\)</span>.</p>
+<p>Conversely, a basis of a bundle's generic fibre trivializes it on a nonempty open: spread the finitely many basis sections and their inverse frame to that open. Its complement is a finite set of closed points. At each remaining point a local frame gives an <span class="math" data-tex="\(R_v\)">\(R_v\)</span>-lattice, whose completion is <span class="math" data-tex="\(g_v\mathcal O_v^n\)">\(g_v\mathcal O_v^n\)</span>; choose <span class="math" data-tex="\(g_v=I_n\)">\(g_v=I_n\)</span> elsewhere. The preceding construction recovers the bundle because its stalks recover those lattices. An isomorphism of two bundles is generically a matrix <span class="math" data-tex="\(a\in GL_n(F)\)">\(a\in GL_n(F)\)</span> and carries each completed lattice to the other. Conversely, such a matrix carries their <span class="math" data-tex="\(R_v\)">\(R_v\)</span>-lattices to one another by (1.1), so it extends to an isomorphism. Finally, two matrices give the same local lattice precisely when they differ on the right by <span class="math" data-tex="\(GL_n(\mathcal O_v)\)">\(GL_n(\mathcal O_v)\)</span>. This proves the double-coset dictionary. Frenkel's freely accessible preprint, §3.2, gives its geometric interpretation.</p>
+<p>An unramified automorphic function can therefore be written <span class="math" data-tex="\(f(E)\)">\(f(E)\)</span>. For <span class="math" data-tex="\(GL_2\)">\(GL_2\)</span>, cusp forms satisfy</p>
+<span class="math math-display" data-tex="\[
+\int_{F\backslash\mathbf A}f\left(
+\begin{pmatrix}1&amp;u\\0&amp;1\end{pmatrix}g\right)\,du=0
+\qquad(g\in GL_2(\mathbf A)).
+\]">\[
+\int_{F\backslash\mathbf A}f\left(
+\begin{pmatrix}1&amp;u\\0&amp;1\end{pmatrix}g\right)\,du=0
+\qquad(g\in GL_2(\mathbf A)).
+\]</span>
+<p>The additive quotient is compact; the principal-parts calculation below proves this at the same time as the extension formula. Normalize its Haar measure to have total mass one. This is the upper-triangular constant term with left rational invariance and right integral invariance. In [Stacks, Tag 03VR] the invariances and unipotent action are on the opposite sides. Replacing the source function <span class="math" data-tex="\(h(g)\)">\(h(g)\)</span> by <span class="math" data-tex="\(f(g)=h(g^{-1})\)">\(f(g)=h(g^{-1})\)</span>, and replacing the integration variable by its negative, gives exactly our convention.</p>
+<p>Fix line bundles <span class="math" data-tex="\(L,M\)">\(L,M\)</span>. Upper-triangular gluing data with these diagonal bundles describe extensions</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow L\longrightarrow E\longrightarrow M\longrightarrow0.
+\]">\[
+0\longrightarrow L\longrightarrow E\longrightarrow M\longrightarrow0.
+\]</span>
+<p>Their equivalence classes, fixing the two ends, are</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^1(M,L)=H^1(X,L\otimes M^{-1}).
+\]">\[
+\operatorname{Ext}^1(M,L)=H^1(X,L\otimes M^{-1}).
+\]</span>
+<p>To prove the cohomology identification, choose a finite affine cover trivializing the ends. The sequence splits on each member: its quotient module is free, so lift a basis. Differences of splittings are sections of <span class="math" data-tex="\(A=L\otimes M^{-1}\)">\(A=L\otimes M^{-1}\)</span>, satisfying the Čech cocycle equation. Conversely these cocycles glue <span class="math" data-tex="\(L\oplus M\)">\(L\oplus M\)</span> to an extension. Changing splittings adds a coboundary; extension isomorphisms fixing the ends give exactly those changes. The affine-cover theorem quoted above identifies this quotient with <span class="math" data-tex="\(H^1(X,A)\)">\(H^1(X,A)\)</span>. The same proof works for a vector-bundle quotient <span class="math" data-tex="\(Q\)">\(Q\)</span>, replacing <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(\mathcal H om(Q,L)\)">\(\mathcal H om(Q,L)\)</span>.</p>
+<p>We can also identify the adèlic quotient explicitly. Choose a rational frame of <span class="math" data-tex="\(A\)">\(A\)</span>, and write its completed lattice as <span class="math" data-tex="\(A_v=c_v\mathcal O_v\subset F_v\)">\(A_v=c_v\mathcal O_v\subset F_v\)</span>. Let <span class="math" data-tex="\(\mathcal K_A\)">\(\mathcal K_A\)</span> be the sheaf of rational sections, with value <span class="math" data-tex="\(F\)">\(F\)</span> on each nonempty open. It is flasque, since its restriction maps are identities. There is an exact sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow A\longrightarrow\mathcal K_A
+\longrightarrow\bigoplus_{v\in|X|}i_{v*}(F_v/A_v)
+\longrightarrow0.
+\tag{1.2}
+\]">\[
+0\longrightarrow A\longrightarrow\mathcal K_A
+\longrightarrow\bigoplus_{v\in|X|}i_{v*}(F_v/A_v)
+\longrightarrow0.
+\tag{1.2}
+\]</span>
+Here <span class="math" data-tex="\(i_v\)">\(i_v\)</span> includes the closed point. At <span class="math" data-tex="\(v\)">\(v\)</span>, the quotient is <span class="math" data-tex="\(F/A_{R_v}\)">\(F/A_{R_v}\)</span>, and density identifies this with <span class="math" data-tex="\(F_v/A_v\)">\(F_v/A_v\)</span>: every principal part has a rational representative, and its kernel is precisely the local lattice. At every other stalk the corresponding skyscraper is zero. Rational sections have only finitely many poles, so the map lands in the direct sum. These observations prove exactness stalkwise. On a Noetherian open, a section of the direct sum has finite support, and restriction just discards points. Consequently this sheaf is flasque too. The long exact sequence gives
+<span class="math math-display" data-tex="\[
+H^1(X,A)=\mathbf A\big/\left(F+\prod_v A_v\right).
+\tag{1.3}
+\]">\[
+H^1(X,A)=\mathbf A\big/\left(F+\prod_v A_v\right).
+\tag{1.3}
+\]</span>
+Indeed quotienting the restricted product by its lattices gives exactly the finite-support principal parts in (1.2). The quotient is finite because coherent cohomology is finite-dimensional over the finite field <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>For diagonal representatives <span class="math" data-tex="\(g=\operatorname{diag}(\ell_v,m_v)_v\)">\(g=\operatorname{diag}(\ell_v,m_v)_v\)</span> of <span class="math" data-tex="\(L,M\)">\(L,M\)</span>, the local lattice of <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\((\ell_v/m_v)\mathcal O_v\)">\((\ell_v/m_v)\mathcal O_v\)</span>. A generic splitting of an extension and an integral splitting at <span class="math" data-tex="\(v\)">\(v\)</span> differ by an element <span class="math" data-tex="\(u_v\in F_v\)">\(u_v\in F_v\)</span>. They agree integrally at almost all points, so <span class="math" data-tex="\(u\)">\(u\)</span> is an adèle. Changing the generic splitting adds an element of <span class="math" data-tex="\(F\)">\(F\)</span>; changing integral splittings adds <span class="math" data-tex="\(\prod_v A_v\)">\(\prod_v A_v\)</span>. Conversely the upper-triangular lattices of <span class="math" data-tex="\(n(u)g\)">\(n(u)g\)</span> glue to that extension by the proved dictionary. This identifies (1.3) with the extension classes, including the rational and integral equivalences used in the constant term.</p>
+<p>Taking <span class="math" data-tex="\(A=\mathcal O_X\)">\(A=\mathcal O_X\)</span> in (1.3) makes <span class="math" data-tex="\(\mathbf A/(F+\mathcal O)\)">\(\mathbf A/(F+\mathcal O)\)</span> finite. The group <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is compact, since each <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> is the inverse limit of the finite rings <span class="math" data-tex="\(R_v/\mathfrak m_v^r\)">\(R_v/\mathfrak m_v^r\)</span>. The diagonal <span class="math" data-tex="\(F\)">\(F\)</span> is discrete: a rational function integral everywhere is in <span class="math" data-tex="\(k\)">\(k\)</span>, as proved below, and requiring positive valuation at one point removes every nonzero constant. A discrete subgroup of a Hausdorff topological group is closed: choose a neighbourhood whose difference meets the subgroup only at zero; every translate then meets the subgroup in at most one point, which also excludes any new closure point. Thus <span class="math" data-tex="\(\mathbf A/F\)">\(\mathbf A/F\)</span> is a Hausdorff quotient, covered by finitely many translates of the compact image of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, and is compact.</p>
+<p><strong>Lemma 1.1 (constant-term vanishing).</strong> Suppose <span class="math" data-tex="\(E\)">\(E\)</span> has a line subbundle <span class="math" data-tex="\(L\)">\(L\)</span>, with line-bundle quotient <span class="math" data-tex="\(M\)">\(M\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+H^1(X,L\otimes M^{-1})=0.
+\]">\[
+H^1(X,L\otimes M^{-1})=0.
+\]</span>
+<p>Every unramified cusp form on <span class="math" data-tex="\(GL_2(\mathbf A)\)">\(GL_2(\mathbf A)\)</span> vanishes at <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><em>Proof.</em> The extension group is zero, so <span class="math" data-tex="\(E\cong L\oplus M\)">\(E\cong L\oplus M\)</span>. Choose a diagonal adèle <span class="math" data-tex="\(g\)">\(g\)</span> representing the two summands. For every <span class="math" data-tex="\(u\in\mathbf A\)">\(u\in\mathbf A\)</span>, the upper-triangular adèle in the constant term represents an extension of <span class="math" data-tex="\(M\)">\(M\)</span> by <span class="math" data-tex="\(L\)">\(L\)</span>. Every such extension splits, so every underlying bundle is isomorphic to <span class="math" data-tex="\(E\)">\(E\)</span>. Rational and integral invariance make the integrand the constant value <span class="math" data-tex="\(f(E)\)">\(f(E)\)</span>. The integral equals <span class="math" data-tex="\(f(E)\)">\(f(E)\)</span> under our normalization, and cuspidality makes it zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument does not require counting bundles with automorphism weights: all extension classes have already collapsed to a single underlying bundle. Nor does it assert that every split bundle on every curve has zero value. The cohomology condition is essential.</p>
+<h2 id="2-a-splitting-theorem-from-maximal-line-subbundles">2. A splitting theorem from maximal line subbundles</h2>
+<p>We first record the small cohomology calculation that drives the proof. Use the affine cover of <span class="math" data-tex="\(\mathbf P^1_k\)">\(\mathbf P^1_k\)</span> with coordinates <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span>. With compatible frames for <span class="math" data-tex="\(\mathcal O(n)\)">\(\mathcal O(n)\)</span>, the first Čech cohomology is</p>
+<span class="math math-display" data-tex="\[
+H^1(\mathbf P^1,\mathcal O(n))
+=k[t,t^{-1}]\big/\bigl(k[t]+t^n k[t^{-1}]\bigr).
+\]">\[
+H^1(\mathbf P^1,\mathcal O(n))
+=k[t,t^{-1}]\big/\bigl(k[t]+t^n k[t^{-1}]\bigr).
+\]</span>
+<p>When <span class="math" data-tex="\(n\leq-2\)">\(n\leq-2\)</span>, the surviving monomials are <span class="math" data-tex="\(t^{n+1},\ldots,t^{-1}\)">\(t^{n+1},\ldots,t^{-1}\)</span>; when <span class="math" data-tex="\(n\geq-1\)">\(n\geq-1\)</span>, there are none. A global section is a polynomial whose exponents lie between zero and <span class="math" data-tex="\(n\)">\(n\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+h^0(\mathcal O(n))=\max(n+1,0),\qquad
+h^1(\mathcal O(n))=\max(-n-1,0).
+\]">\[
+h^0(\mathcal O(n))=\max(n+1,0),\qquad
+h^1(\mathcal O(n))=\max(-n-1,0).
+\]</span>
+<p>These calculations hold over any field. The cover is affine with affine intersection, so Čech cohomology computes coherent cohomology here.</p>
+<p>Every line bundle on <span class="math" data-tex="\(\mathbf P^1_k\)">\(\mathbf P^1_k\)</span> is <span class="math" data-tex="\(\mathcal O(n)\)">\(\mathcal O(n)\)</span> for a unique integer <span class="math" data-tex="\(n\)">\(n\)</span>. For completeness, choose a nonzero rational section and take its divisor. A closed point of the affine line is defined by an irreducible polynomial <span class="math" data-tex="\(P(t)\)">\(P(t)\)</span>; the divisor of <span class="math" data-tex="\(P\)">\(P\)</span> is that point minus <span class="math" data-tex="\((\deg P)\infty\)">\((\deg P)\infty\)</span>. Thus every divisor is linearly equivalent to its degree times <span class="math" data-tex="\(\infty\)">\(\infty\)</span>. Uniqueness follows from the degree of a principal divisor being zero.</p>
+<p><strong>Theorem 2.1 (Grothendieck splitting theorem, 1957).</strong> Every vector bundle <span class="math" data-tex="\(E\)">\(E\)</span> on <span class="math" data-tex="\(\mathbf P^1_k\)">\(\mathbf P^1_k\)</span> is isomorphic to</p>
+<span class="math math-display" data-tex="\[
+\mathcal O(a_1)\oplus\cdots\oplus\mathcal O(a_r).
+\]">\[
+\mathcal O(a_1)\oplus\cdots\oplus\mathcal O(a_r).
+\]</span>
+<p>The multiset of integers is uniquely determined by <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><em>Proof.</em> We prove existence by induction on <span class="math" data-tex="\(r\)">\(r\)</span>. For positive rank, there is a largest integer <span class="math" data-tex="\(a\)">\(a\)</span> for which <span class="math" data-tex="\(H^0(E(-a))\ne0\)">\(H^0(E(-a))\ne0\)</span>. Here is both existence and boundedness, without assuming a splitting theorem. A nonzero rational section has finitely many poles; twisting by their effective divisor makes it regular, so some twist has a section. Conversely, choose a rational basis of the dual bundle. After clearing all poles by one effective divisor <span class="math" data-tex="\(D\)">\(D\)</span>, this gives a generically injective map</p>
+<span class="math math-display" data-tex="\[
+E\longrightarrow\mathcal O(D)^r\cong\mathcal O(m)^r.
+\]">\[
+E\longrightarrow\mathcal O(D)^r\cong\mathcal O(m)^r.
+\]</span>
+<p>Its kernel is zero because a vector bundle on an integral curve has no torsion subsheaf. Therefore <span class="math" data-tex="\(H^0(E(-a))\)">\(H^0(E(-a))\)</span> injects into <span class="math" data-tex="\(H^0(\mathcal O(m-a)^r)\)">\(H^0(\mathcal O(m-a)^r)\)</span>, which vanishes for <span class="math" data-tex="\(a&gt;m\)">\(a&gt;m\)</span>.</p>
+<p>A nonzero section in the maximal twist gives <span class="math" data-tex="\(\mathcal O(a)\to E\)">\(\mathcal O(a)\to E\)</span>. Saturate its image. On a smooth curve a torsion-free sheaf is locally free; the saturation is a line subbundle <span class="math" data-tex="\(L\)">\(L\)</span>, and its quotient in <span class="math" data-tex="\(E\)">\(E\)</span> is a vector bundle. If the original section has a zero divisor <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span>, then <span class="math" data-tex="\(L\cong\mathcal O(a)(D&#x27;)\cong\mathcal O(a+\deg D&#x27;)\)">\(L\cong\mathcal O(a)(D&#x27;)\cong\mathcal O(a+\deg D&#x27;)\)</span>. Maximality of <span class="math" data-tex="\(a\)">\(a\)</span> forces <span class="math" data-tex="\(D&#x27;=0\)">\(D&#x27;=0\)</span>. We obtain</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal O(a)\longrightarrow E\longrightarrow Q\longrightarrow0.
+\]">\[
+0\longrightarrow\mathcal O(a)\longrightarrow E\longrightarrow Q\longrightarrow0.
+\]</span>
+<p>By induction <span class="math" data-tex="\(Q=\bigoplus_i\mathcal O(b_i)\)">\(Q=\bigoplus_i\mathcal O(b_i)\)</span>. Twist the sequence by <span class="math" data-tex="\(\mathcal O(-a-1)\)">\(\mathcal O(-a-1)\)</span>. Both <span class="math" data-tex="\(H^0(E(-a-1))\)">\(H^0(E(-a-1))\)</span> and <span class="math" data-tex="\(H^1(\mathcal O(-1))\)">\(H^1(\mathcal O(-1))\)</span> vanish. The long exact sequence therefore gives <span class="math" data-tex="\(H^0(Q(-a-1))=0\)">\(H^0(Q(-a-1))=0\)</span>. The explicit line-bundle calculation implies <span class="math" data-tex="\(b_i\leq a\)">\(b_i\leq a\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p>Finally,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^1(Q,\mathcal O(a))
+=\bigoplus_i H^1(\mathcal O(a-b_i))=0.
+\]">\[
+\operatorname{Ext}^1(Q,\mathcal O(a))
+=\bigoplus_i H^1(\mathcal O(a-b_i))=0.
+\]</span>
+<p>The sequence splits, completing the induction.</p>
+<p>For uniqueness, let <span class="math" data-tex="\(h_E(m)=\dim H^0(E(m))\)">\(h_E(m)=\dim H^0(E(m))\)</span>. A splitting gives</p>
+<span class="math math-display" data-tex="\[
+h_E(m)-h_E(m-1)=\#\{i:a_i+m\geq0\}.
+\]">\[
+h_E(m)-h_E(m-1)=\#\{i:a_i+m\geq0\}.
+\]</span>
+<p>The difference of these counts at consecutive integers recovers the number of summands of each degree. Since <span class="math" data-tex="\(h_E\)">\(h_E\)</span> depends only on <span class="math" data-tex="\(E\)">\(E\)</span>, so does the multiset. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof uses the cohomology of <span class="math" data-tex="\(\mathcal O(-1)\)">\(\mathcal O(-1)\)</span> at a specific point: it prevents the quotient from having a summand of degree larger than the maximal line subbundle. Merely taking a maximal line subbundle and declaring the extension split would miss this step.</p>
+<h2 id="3-the-automorphic-and-galois-vanishing-statements">3. The automorphic and Galois vanishing statements</h2>
+<p><strong>Corollary 3.1.</strong> For <span class="math" data-tex="\(F=\mathbf F_q(t)\)">\(F=\mathbf F_q(t)\)</span>, every <span class="math" data-tex="\(GL_2(\mathcal O)\)">\(GL_2(\mathcal O)\)</span>-invariant cusp form vanishes identically.</p>
+<p><em>Proof.</em> Every rank-two bundle is <span class="math" data-tex="\(\mathcal O(a)\oplus\mathcal O(b)\)">\(\mathcal O(a)\oplus\mathcal O(b)\)</span> with <span class="math" data-tex="\(a\geq b\)">\(a\geq b\)</span>. Take <span class="math" data-tex="\(L=\mathcal O(a)\)">\(L=\mathcal O(a)\)</span>, <span class="math" data-tex="\(M=\mathcal O(b)\)">\(M=\mathcal O(b)\)</span>. Then <span class="math" data-tex="\(H^1(LM^{-1})=H^1(\mathcal O(a-b))=0\)">\(H^1(LM^{-1})=H^1(\mathcal O(a-b))=0\)</span>. Lemma 1.1 gives vanishing at every bundle, and Weil's dictionary gives vanishing at every double coset. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This statement concerns everywhere unramified cusp forms. It does not exclude cusp forms with ramification at selected points of the projective line.</p>
+<p><strong>Proposition 3.2.</strong> Over <span class="math" data-tex="\(\overline{\mathbf F}_q\)">\(\overline{\mathbf F}_q\)</span>, the projective line has no connected finite étale cover of degree greater than one. Consequently an everywhere unramified continuous irreducible <span class="math" data-tex="\(\overline{\mathbf Q}_\ell\)">\(\overline{\mathbf Q}_\ell\)</span>-representation of <span class="math" data-tex="\(G_{\mathbf F_q(t)}\)">\(G_{\mathbf F_q(t)}\)</span>, defined over a finite extension of <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, has dimension one; here <span class="math" data-tex="\(\ell\ne\operatorname{char}(k)\)">\(\ell\ne\operatorname{char}(k)\)</span>.</p>
+<p><em>Proof.</em> First work over any algebraically closed field. Let <span class="math" data-tex="\(f:Y\to\mathbf P^1\)">\(f:Y\to\mathbf P^1\)</span> be connected, finite étale, of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Its source is a smooth proper curve. A connected smooth curve over this field is integral: its regular local rings are domains, so different irreducible components cannot meet; the finitely many components are therefore open and closed. Every global regular function on <span class="math" data-tex="\(Y\)">\(Y\)</span> is constant. Indeed it defines a map <span class="math" data-tex="\(Y\to\mathbf A^1\subset\mathbf P^1\)">\(Y\to\mathbf A^1\subset\mathbf P^1\)</span>. The map to <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> is proper: its graph is closed because <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> is separated, and the projection from <span class="math" data-tex="\(Y\times\mathbf P^1\)">\(Y\times\mathbf P^1\)</span> is a base change of the proper map <span class="math" data-tex="\(Y\to\operatorname{Spec}k\)">\(Y\to\operatorname{Spec}k\)</span>. Its image is thus closed and irreducible. If the function were nonconstant, the image would be all of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>, contradicting omission of infinity. Hence
+<span class="math math-display" data-tex="\[
+H^0(Y,\mathcal O_Y)=k.
+\tag{3.1}
+\]">\[
+H^0(Y,\mathcal O_Y)=k.
+\tag{3.1}
+\]</span></p>
+<p>The finite étale algebra <span class="math" data-tex="\(E=f_*\mathcal O_Y\)">\(E=f_*\mathcal O_Y\)</span> is a vector bundle of rank <span class="math" data-tex="\(d\)">\(d\)</span>. Its trace pairing
+<span class="math math-display" data-tex="\[
+E\otimes E\longrightarrow\mathcal O_{\mathbf P^1},
+\qquad a\otimes b\longmapsto\operatorname{Tr}(ab)
+\tag{3.2}
+\]">\[
+E\otimes E\longrightarrow\mathcal O_{\mathbf P^1},
+\qquad a\otimes b\longmapsto\operatorname{Tr}(ab)
+\tag{3.2}
+\]</span>
+is perfect. To check this at a geometric point, a finite étale fibre is a product of <span class="math" data-tex="\(d\)">\(d\)</span> copies of its algebraically closed residue field. Multiplication is coordinatewise, and its trace pairing is <span class="math" data-tex="\(\sum_{j=1}^d a_jb_j\)">\(\sum_{j=1}^d a_jb_j\)</span>. Its determinant is one. A matrix between equal-rank free local modules whose determinant is nonzero modulo the maximal ideal is invertible, proving perfection everywhere. Thus <span class="math" data-tex="\(E\cong E^\vee\)">\(E\cong E^\vee\)</span>, even when the characteristic divides <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>By Theorem 2.1 write <span class="math" data-tex="\(E=\bigoplus_j\mathcal O(a_j)\)">\(E=\bigoplus_j\mathcal O(a_j)\)</span>. Uniqueness of the splitting and self-duality give equality of the multisets <span class="math" data-tex="\(\{a_j\}=\{-a_j\}\)">\(\{a_j\}=\{-a_j\}\)</span>. On the other hand, (3.1) gives
+<span class="math math-display" data-tex="\[
+1=h^0(\mathbf P^1,E)=\sum_j\max(a_j+1,0).
+\tag{3.3}
+\]">\[
+1=h^0(\mathbf P^1,E)=\sum_j\max(a_j+1,0).
+\tag{3.3}
+\]</span>
+A positive <span class="math" data-tex="\(a_j\)">\(a_j\)</span> would contribute at least two. There can therefore be no positive degree, and symmetry rules out every negative degree too. All <span class="math" data-tex="\(a_j=0\)">\(a_j=0\)</span>, so (3.3) says <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. A finite étale algebra of rank one equals the base algebra: its unit is a basis on every fibre and hence locally a basis. Thus the cover is an isomorphism.</p>
+<p>Next let <span class="math" data-tex="\(k=\mathbf F_q\)">\(k=\mathbf F_q\)</span> and allow any finite étale cover <span class="math" data-tex="\(Y\to\mathbf P^1_k\)">\(Y\to\mathbf P^1_k\)</span>. After base change to <span class="math" data-tex="\(\bar k\)">\(\bar k\)</span>, each connected component is a copy of <span class="math" data-tex="\(\mathbf P^1_{\bar k}\)">\(\mathbf P^1_{\bar k}\)</span> over the base, by what we have just proved. All these isomorphisms and their inverses descend to some finite extension <span class="math" data-tex="\(K/k\)">\(K/k\)</span>: on the two affine charts their ring maps involve only finitely many algebraic coefficients. Let <span class="math" data-tex="\(S\)">\(S\)</span> be the finite set of components over <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(\Gamma=\operatorname{Gal}(K/k)\)">\(\Gamma=\operatorname{Gal}(K/k)\)</span>. The descent action permutes <span class="math" data-tex="\(S\)">\(S\)</span>. A map from one copy of <span class="math" data-tex="\(\mathbf P^1_K\)">\(\mathbf P^1_K\)</span> to another <strong>over</strong> <span class="math" data-tex="\(\mathbf P^1_K\)">\(\mathbf P^1_K\)</span> is forced to be the identity on the base coordinate. Thus the action on each chart algebra <span class="math" data-tex="\(K[t]^S\)">\(K[t]^S\)</span> is precisely coefficientwise Galois action combined with that permutation.</p>
+<p>Put <span class="math" data-tex="\(B=(K^S)^\Gamma\)">\(B=(K^S)^\Gamma\)</span>. On an orbit of <span class="math" data-tex="\(S\)">\(S\)</span>, choose <span class="math" data-tex="\(s\)">\(s\)</span> with stabilizer <span class="math" data-tex="\(H\subset\Gamma\)">\(H\subset\Gamma\)</span>. An invariant tuple is determined by its coordinate at <span class="math" data-tex="\(s\)">\(s\)</span>, which lies in <span class="math" data-tex="\(K^H\)">\(K^H\)</span>; all other coordinates are its conjugates. Consequently <span class="math" data-tex="\(B\)">\(B\)</span> is a product of finite separable extensions <span class="math" data-tex="\(K^H/k\)">\(K^H/k\)</span>. Also
+<span class="math math-display" data-tex="\[
+B\otimes_kK\cong K^S:
+\]">\[
+B\otimes_kK\cong K^S:
+\]</span>
+on each orbit this is the familiar separable splitting of <span class="math" data-tex="\(K^H\otimes_kK\)">\(K^H\otimes_kK\)</span>, obtained by factoring its primitive element's distinct conjugates and applying the Chinese remainder theorem. Polynomial coefficients can be compared separately, so
+<span class="math math-display" data-tex="\[
+(K[t]^S)^\Gamma=B\otimes_k k[t],\qquad
+(K[t^{-1}]^S)^\Gamma=B\otimes_k k[t^{-1}].
+\tag{3.4}
+\]">\[
+(K[t]^S)^\Gamma=B\otimes_k k[t],\qquad
+(K[t^{-1}]^S)^\Gamma=B\otimes_k k[t^{-1}].
+\tag{3.4}
+\]</span>
+For any <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(C\)">\(C\)</span>, <span class="math" data-tex="\((C\otimes_kK)^\Gamma=C\)">\((C\otimes_kK)^\Gamma=C\)</span>: expand an element in a <span class="math" data-tex="\(k\)">\(k\)</span>-basis of <span class="math" data-tex="\(C\)">\(C\)</span> and use <span class="math" data-tex="\(K^\Gamma=k\)">\(K^\Gamma=k\)</span> for each coefficient. Apply this to the original cover's finite chart algebras. Formula (3.4), with the identical calculation on <span class="math" data-tex="\(k[t,t^{-1}]\)">\(k[t,t^{-1}]\)</span>, identifies and glues them to give
+<span class="math math-display" data-tex="\[
+Y\cong\mathbf P^1_k\times_k\operatorname{Spec}B.
+\tag{3.5}
+\]">\[
+Y\cong\mathbf P^1_k\times_k\operatorname{Spec}B.
+\tag{3.5}
+\]</span>
+This proves finite-cover descent here directly. In particular, connected covers are exactly the constant-field covers <span class="math" data-tex="\(\mathbf P^1_{\mathbf F_{q^r}}\)">\(\mathbf P^1_{\mathbf F_{q^r}}\)</span>. Maps between them are the maps of their finite fields. Equivalently the category of finite covers, with its geometric fibre functor, is the category of finite continuous <span class="math" data-tex="\(G_k\)">\(G_k\)</span>-sets. By the definition of the étale fundamental group as the automorphism group of that functor,
+<span class="math math-display" data-tex="\[
+\pi_1(\mathbf P^1_k)\cong G_k\cong\widehat{\mathbf Z}.
+\tag{3.6}
+\]">\[
+\pi_1(\mathbf P^1_k)\cong G_k\cong\widehat{\mathbf Z}.
+\tag{3.6}
+\]</span>
+The last isomorphism follows because the finite extensions of <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span> are <span class="math" data-tex="\(\mathbf F_{q^r}\)">\(\mathbf F_{q^r}\)</span>, with cyclic Galois group generated by <span class="math" data-tex="\(x\mapsto x^q\)">\(x\mapsto x^q\)</span>, and taking their inverse limit gives <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>.</p>
+<p>We spell out why killing all inertia puts a finite Galois quotient among these covers. For a finite separable extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, normalize each chart <span class="math" data-tex="\(R=k[t]\)">\(R=k[t]\)</span> or <span class="math" data-tex="\(k[t^{-1}]\)">\(k[t^{-1}]\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span>. Its integral closure is finite: scale a primitive field generator to an integral element <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. The order <span class="math" data-tex="\(R[\theta]\)">\(R[\theta]\)</span> is a finite free lattice with nondegenerate field trace pairing. To see nondegeneracy, extend scalars to an algebraic closure of <span class="math" data-tex="\(F\)">\(F\)</span>: the primitive element's separable polynomial factors into distinct linear factors, so the Chinese remainder theorem identifies the algebra with a product of fields and its trace pairing with the coordinate dot product. Every integral element <span class="math" data-tex="\(b\)">\(b\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span> lies in the order's trace-dual lattice, since <span class="math" data-tex="\(\operatorname{Tr}(b\theta^j)\)">\(\operatorname{Tr}(b\theta^j)\)</span> is both integral over <span class="math" data-tex="\(R\)">\(R\)</span> and in <span class="math" data-tex="\(F\)">\(F\)</span>, hence in the integrally closed ring <span class="math" data-tex="\(R\)">\(R\)</span>. The trace-dual lattice is finite free, and its submodules are finite because <span class="math" data-tex="\(R\)">\(R\)</span> is Noetherian. Integral closure commutes with localization: multiply an integral equation's root by a large enough power of a denominator to obtain a monic equation over <span class="math" data-tex="\(R\)">\(R\)</span>. The two finite normalizations therefore glue.</p>
+<p>For clarity, the normal local rings of this normalization are DVRs. In a one-dimensional Noetherian normal local domain <span class="math" data-tex="\(A\)">\(A\)</span> with maximal ideal <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, choose <span class="math" data-tex="\(0\ne a\in\mathfrak m\)">\(0\ne a\in\mathfrak m\)</span>. Some power <span class="math" data-tex="\(\mathfrak m^r\)">\(\mathfrak m^r\)</span> lies in <span class="math" data-tex="\(aA\)">\(aA\)</span>. For the least such <span class="math" data-tex="\(r\)">\(r\)</span>, choose <span class="math" data-tex="\(b\in\mathfrak m^{r-1}\setminus aA\)">\(b\in\mathfrak m^{r-1}\setminus aA\)</span> and put <span class="math" data-tex="\(x=b/a\)">\(x=b/a\)</span>. Then <span class="math" data-tex="\(x\notin A\)">\(x\notin A\)</span> but <span class="math" data-tex="\(x\mathfrak m\subset A\)">\(x\mathfrak m\subset A\)</span>. If <span class="math" data-tex="\(x\mathfrak m\subset\mathfrak m\)">\(x\mathfrak m\subset\mathfrak m\)</span>, a finite generating set of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> and the determinant trick give a monic polynomial for <span class="math" data-tex="\(x\)">\(x\)</span>: write multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> as a matrix on those generators and apply its characteristic polynomial to a nonzero generator. Normality would give <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>, a contradiction. Thus <span class="math" data-tex="\(x\mathfrak m\)">\(x\mathfrak m\)</span> contains a unit, and <span class="math" data-tex="\(\mathfrak m=x^{-1}A\)">\(\mathfrak m=x^{-1}A\)</span> is principal. The DVR characterization quoted above applies. Localizing the finite normal algebra consequently gives these DVRs, so it is a Dedekind ring.</p>
+<p>At a closed point with local DVR <span class="math" data-tex="\(R_v\)">\(R_v\)</span>, the resulting algebra is finite and torsion-free, hence free. Its completion is the product of the integer rings of the completed fields at the points above <span class="math" data-tex="\(v\)">\(v\)</span>. Factor the parameter ideal in this Dedekind ring into powers of its distinct maximal ideals, apply the Chinese remainder theorem at every power, and take the inverse limit. Finite free modules commute with this completion. Each factor is the completed local DVR, hence the valuation ring of the corresponding completed field.</p>
+<p>If the quotient kills inertia, each such local field extension is unramified. Here inertia is the kernel of the local action on the maximal unramified extension. The proved equivalence in <a href="../NT-ADL/prerequisites/NT-LOC-07.html"><em>Unramified and totally ramified extensions</em>, Theorem 2.1</a> identifies its finite extensions with finite separable residue extensions and constructs their integer rings by a monic polynomial whose derivative is a unit. Thus the completed integer algebras are finite étale. Their special fibres are products of finite separable fields. Completion preserves the original special fibre, so the same holds before completion. The original finite free algebra is étale: its relative differentials vanish on these fibres and at the separable generic fibre, hence vanish by Nakayama. Finite presentation and flatness now give the criterion proved in <a href="../AG-FSE/etale-morphisms-and-their-local-structure.html"><em>Étale morphisms and their local structure</em>, Lemma 1.2 and Theorem 1.3</a>. This proves that the normalization is a finite étale cover at every point. In the Galois case it is a connected constant-field cover by (3.5).</p>
+<p>Finally, a continuous representation over a finite extension of <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span> has compact image and a stable integral lattice. Begin with any lattice: compactness bounds all its translates inside one larger lattice, and their sum is a stable finitely generated lattice containing the original one. Every reduction modulo a power of the coefficient uniformizer is a finite Galois quotient killing inertia. Its connected cover is constant-field, so every reduction is trivial on <span class="math" data-tex="\(G_{\bar k(t)}\)">\(G_{\bar k(t)}\)</span>. Intersection of all powers of the uniformizer is zero; the representation itself therefore factors through <span class="math" data-tex="\(G_k\)">\(G_k\)</span>.</p>
+<p>The image of the procyclic group is generated topologically by one operator <span class="math" data-tex="\(A\)">\(A\)</span>. Over an algebraically closed coefficient field, <span class="math" data-tex="\(A\)">\(A\)</span> has an eigenline. All integer powers of <span class="math" data-tex="\(A\)">\(A\)</span>, and then all their limits, preserve that line. Irreducibility forces it to be the entire space. In particular there is no irreducible two-dimensional representation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.3 (all ranks).</strong> For <span class="math" data-tex="\(F=\mathbf F_q(t)\)">\(F=\mathbf F_q(t)\)</span> and every <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, an everywhere unramified cusp function on <span class="math" data-tex="\(GL_n(F)\backslash GL_n(\mathbf A)/GL_n(\mathcal O)\)">\(GL_n(F)\backslash GL_n(\mathbf A)/GL_n(\mathcal O)\)</span> is zero. No central-character condition is required. On the Galois side there is no everywhere unramified irreducible representation of dimension <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> under the coefficient and continuity hypotheses of Proposition 3.2.</p>
+<p><em>Proof.</em> By the splitting theorem, write any bundle as <span class="math" data-tex="\(E=\bigoplus_{j=1}^n\mathcal O(a_j)\)">\(E=\bigoplus_{j=1}^n\mathcal O(a_j)\)</span>, with <span class="math" data-tex="\(a_1\ge\cdots\ge a_n\)">\(a_1\ge\cdots\ge a_n\)</span>. Set <span class="math" data-tex="\(L=\mathcal O(a_1)\)">\(L=\mathcal O(a_1)\)</span> and <span class="math" data-tex="\(Q=\bigoplus_{j=2}^n\mathcal O(a_j)\)">\(Q=\bigoplus_{j=2}^n\mathcal O(a_j)\)</span>. Choose diagonal lattice representatives <span class="math" data-tex="\(g=\operatorname{diag}(g_L,g_Q)\)">\(g=\operatorname{diag}(g_L,g_Q)\)</span>. The unipotent radical of the proper parabolic of block type <span class="math" data-tex="\((1,n-1)\)">\((1,n-1)\)</span> consists of
+<span class="math math-display" data-tex="\[
+n(u)=\begin{pmatrix}1&amp;u\\0&amp;I_{n-1}\end{pmatrix},\qquad
+u\in\mathbf A^{n-1}.
+\]">\[
+n(u)=\begin{pmatrix}1&amp;u\\0&amp;I_{n-1}\end{pmatrix},\qquad
+u\in\mathbf A^{n-1}.
+\]</span>
+Its rational quotient is <span class="math" data-tex="\((F\backslash\mathbf A)^{n-1}\)">\((F\backslash\mathbf A)^{n-1}\)</span>, with product measure of total mass one. The first coordinate of the lattice <span class="math" data-tex="\(n(u)g\)">\(n(u)g\)</span> gives <span class="math" data-tex="\(L\)">\(L\)</span>, and projection onto the remaining coordinates gives <span class="math" data-tex="\(Q\)">\(Q\)</span>. Thus every integrand in this constant term represents an extension of <span class="math" data-tex="\(Q\)">\(Q\)</span> by <span class="math" data-tex="\(L\)">\(L\)</span>. Its class lies in
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^1(Q,L)
+=\bigoplus_{j=2}^nH^1(\mathcal O(a_1-a_j))=0,
+\]">\[
+\operatorname{Ext}^1(Q,L)
+=\bigoplus_{j=2}^nH^1(\mathcal O(a_1-a_j))=0,
+\]</span>
+because every <span class="math" data-tex="\(a_1-a_j\ge0\)">\(a_1-a_j\ge0\)</span>. Every underlying bundle in the integral is therefore isomorphic to <span class="math" data-tex="\(E=L\oplus Q\)">\(E=L\oplus Q\)</span>. The constant term equals the constant value <span class="math" data-tex="\(f(E)\)">\(f(E)\)</span>, and cuspidality makes it zero. Since <span class="math" data-tex="\(E\)">\(E\)</span> was arbitrary, <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. Proposition 3.2 already proves the Galois assertion in every dimension greater than one: its eigenline argument does not depend on rank two. Rank one has no proper parabolic and is excluded. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-what-survives-on-a-curve-of-positive-genus">4. What survives on a curve of positive genus</h2>
+<p>The same constant-term argument bounds where cusp forms can be supported. Let <span class="math" data-tex="\(g\)">\(g\)</span> be the genus of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>We first justify the curve formulas at the finite-field scope needed here. The earlier <a href="../AG-QC/dualizing-sheaves-and-serre-duality-for-projective-schemes.html"><em>Dualizing sheaves and Serre duality for projective schemes</em>, Theorem 4.2 and Proposition 8.2</a> proves
+<span class="math math-display" data-tex="\[
+H^1(X,A)\cong H^0(X,\omega_X\otimes A^{-1})^\vee,
+\qquad \omega_X=\Omega_{X/k},
+\tag{4.1}
+\]">\[
+H^1(X,A)\cong H^0(X,\omega_X\otimes A^{-1})^\vee,
+\qquad \omega_X=\Omega_{X/k},
+\tag{4.1}
+\]</span>
+for every line bundle <span class="math" data-tex="\(A\)">\(A\)</span> on a smooth projective curve over any field. Smoothness gives the Cohen–Macaulay and equidimensional hypotheses of that proof. The following calculation supplies Riemann–Roch and the canonical degree without a further imported theorem.</p>
+<p>Coherent cohomology commutes with field extension here: a finite affine cover with affine intersections computes it, and tensoring its complex with the extension field is exact. Over <span class="math" data-tex="\(\bar k\)">\(\bar k\)</span>, two affine opens cover the curve. To construct them, choose a hyperplane section in a projective embedding, then another hyperplane avoiding its finitely many points; this is possible over the infinite field <span class="math" data-tex="\(\bar k\)">\(\bar k\)</span>. Their complements and intersection are affine. Hence cohomology vanishes above degree one, also over <span class="math" data-tex="\(k\)">\(k\)</span> by faithful scalar extension. The regular-function argument in Proposition 3.2 applies to <span class="math" data-tex="\(X_{\bar k}\)">\(X_{\bar k}\)</span>; geometric connectedness and the same scalar-extension calculation therefore give <span class="math" data-tex="\(H^0(X,\mathcal O_X)=k\)">\(H^0(X,\mathcal O_X)=k\)</span>. Define <span class="math" data-tex="\(g=h^1(X,\mathcal O_X)\)">\(g=h^1(X,\mathcal O_X)\)</span>.</p>
+<p>A rational section identifies any line bundle with <span class="math" data-tex="\(\mathcal O_X(D)\)">\(\mathcal O_X(D)\)</span>: its orders in the local DVR frames form a finite divisor, and the fractional modules <span class="math" data-tex="\(\varpi_v^{-\operatorname{ord}_vD}R_v\)">\(\varpi_v^{-\operatorname{ord}_vD}R_v\)</span> recover the bundle. For every closed point <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal O_X(D)\longrightarrow\mathcal O_X(D+v)
+\longrightarrow i_{v*}\kappa(v)\longrightarrow0.
+\tag{4.2}
+\]">\[
+0\longrightarrow\mathcal O_X(D)\longrightarrow\mathcal O_X(D+v)
+\longrightarrow i_{v*}\kappa(v)\longrightarrow0.
+\tag{4.2}
+\]</span>
+The last sheaf is flasque and has <span class="math" data-tex="\(k\)">\(k\)</span>-dimension <span class="math" data-tex="\([\kappa(v):k]\)">\([\kappa(v):k]\)</span> in degree zero. Finite-dimensionality and the long exact sequence make Euler characteristic additive. Adding or subtracting the points of <span class="math" data-tex="\(D\)">\(D\)</span> gives
+<span class="math math-display" data-tex="\[
+\chi(X,A)=\deg A+1-g.
+\tag{4.3}
+\]">\[
+\chi(X,A)=\deg A+1-g.
+\tag{4.3}
+\]</span>
+This also proves that the divisor degree is independent of the chosen rational section. A nonzero regular section has an effective divisor, so a line bundle of negative degree has no such section. Apply (4.1) to <span class="math" data-tex="\(A=\mathcal O_X\)">\(A=\mathcal O_X\)</span> and <span class="math" data-tex="\(A=\omega_X\)">\(A=\omega_X\)</span>: it gives <span class="math" data-tex="\(h^0(\omega_X)=g\)">\(h^0(\omega_X)=g\)</span> and <span class="math" data-tex="\(h^1(\omega_X)=1\)">\(h^1(\omega_X)=1\)</span>. Formula (4.3) now gives <span class="math" data-tex="\(\deg\omega_X=2g-2\)">\(\deg\omega_X=2g-2\)</span>.</p>
+<p>For a vector bundle <span class="math" data-tex="\(E\)">\(E\)</span>, saturate any rational line in its generic fibre. At each DVR this is the intersection with that line inside a free module; its quotient is torsion-free and hence free. The intersections glue to a line subbundle with vector-bundle quotient <span class="math" data-tex="\(Q\)">\(Q\)</span>. Locally split exact sequences give <span class="math" data-tex="\(\det E=\det L\otimes\det Q\)">\(\det E=\det L\otimes\det Q\)</span>, so degrees add. Induction on rank, additivity of Euler characteristic, and (4.3) prove
+<span class="math math-display" data-tex="\[
+\chi(X,E)=\deg E+\operatorname{rank}(E)(1-g).
+\tag{4.4}
+\]">\[
+\chi(X,E)=\deg E+\operatorname{rank}(E)(1-g).
+\tag{4.4}
+\]</span>
+Thus all the cohomological inputs to the support and finiteness argument below have actual proofs here or in the earlier duality lesson.</p>
+<p><strong>Proposition 4.1.</strong> If a rank-two bundle <span class="math" data-tex="\(E\)">\(E\)</span> has a line subbundle <span class="math" data-tex="\(L\)">\(L\)</span> with</p>
+<span class="math math-display" data-tex="\[
+2\deg L-\deg E&gt;2g-2,
+\]">\[
+2\deg L-\deg E&gt;2g-2,
+\]</span>
+<p>then every unramified cusp form vanishes at <span class="math" data-tex="\(E\)">\(E\)</span>. Up to tensoring by line bundles, the bundles at which an unramified cusp form can be nonzero belong to a finite set of isomorphism classes over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(M=E/L\)">\(M=E/L\)</span>. The degree of <span class="math" data-tex="\(LM^{-1}\)">\(LM^{-1}\)</span> is <span class="math" data-tex="\(2\deg L-\deg E\)">\(2\deg L-\deg E\)</span>. Serre duality identifies its <span class="math" data-tex="\(H^1\)">\(H^1\)</span> with the dual of</p>
+<span class="math math-display" data-tex="\[
+H^0(X,\omega_X\otimes L^{-1}M).
+\]">\[
+H^0(X,\omega_X\otimes L^{-1}M).
+\]</span>
+<p>The latter line bundle has negative degree under the displayed hypothesis. A nonzero section of a line bundle has an effective zero divisor and hence nonnegative degree, so this space vanishes. Lemma 1.1 applies.</p>
+<p>We give the boundedness argument needed for the finiteness assertion. Fix an <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>-defined line bundle <span class="math" data-tex="\(H\)">\(H\)</span> of positive degree <span class="math" data-tex="\(d\)">\(d\)</span>, for example an ample bundle. Tensoring by powers of <span class="math" data-tex="\(H\)">\(H\)</span> lets us arrange</p>
+<span class="math math-display" data-tex="\[
+0\leq e=\deg E&lt;2d.
+\]">\[
+0\leq e=\deg E&lt;2d.
+\]</span>
+<p>For a bundle with potentially nonzero cusp value, every line subbundle satisfies <span class="math" data-tex="\(\deg L\leq(e+2g-2)/2\)">\(\deg L\leq(e+2g-2)/2\)</span>. There is also a line subbundle of uniformly bounded degree below. Riemann–Roch gives</p>
+<span class="math math-display" data-tex="\[
+\chi(E\otimes H^m)=e+2md+2(1-g).
+\]">\[
+\chi(E\otimes H^m)=e+2md+2(1-g).
+\]</span>
+<p>Choose one integer <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span> making this positive for every <span class="math" data-tex="\(e\)">\(e\)</span> in the chosen interval. Since <span class="math" data-tex="\(h^0\geq\chi\)">\(h^0\geq\chi\)</span>, there is a nonzero section of <span class="math" data-tex="\(E\otimes H^m\)">\(E\otimes H^m\)</span>. Saturating it and undoing the twist gives a line subbundle <span class="math" data-tex="\(L\subset E\)">\(L\subset E\)</span> with <span class="math" data-tex="\(\deg L\geq-md\)">\(\deg L\geq-md\)</span>.</p>
+<p>Thus such an <span class="math" data-tex="\(E\)">\(E\)</span> fits into an extension of two line bundles <span class="math" data-tex="\(L,M\)">\(L,M\)</span> whose degrees range over finite intervals. There are finitely many line bundles of any fixed degree <span class="math" data-tex="\(a\)">\(a\)</span> over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>. Indeed choose <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(a+bd&gt;g-1\)">\(a+bd&gt;g-1\)</span>. Riemann–Roch gives a nonzero section of <span class="math" data-tex="\(L\otimes H^b\)">\(L\otimes H^b\)</span>, so it is <span class="math" data-tex="\(\mathcal O(D)\)">\(\mathcal O(D)\)</span> for an effective divisor of degree <span class="math" data-tex="\(a+bd\)">\(a+bd\)</span>. A curve over a finite field has finitely many closed points of degree at most this bound: such points occur in the finite sets <span class="math" data-tex="\(X(\mathbf F_{q^r})\)">\(X(\mathbf F_{q^r})\)</span> for bounded <span class="math" data-tex="\(r\)">\(r\)</span>. There are therefore finitely many such effective divisors, and hence finitely many <span class="math" data-tex="\(L\)">\(L\)</span>. For each pair <span class="math" data-tex="\((L,M)\)">\((L,M)\)</span>, the finite-dimensional <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>-vector space <span class="math" data-tex="\(H^1(LM^{-1})\)">\(H^1(LM^{-1})\)</span> has finitely many elements. Every possible <span class="math" data-tex="\(E\)">\(E\)</span> is represented among these finitely many extensions. This proves finiteness using Riemann–Roch and divisors alone. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-a-rational-l-function-that-can-be-calculated-completely">5. A rational L-function that can be calculated completely</h2>
+<p>Take <span class="math" data-tex="\(E_0/\mathbf F_5\)">\(E_0/\mathbf F_5\)</span> given by <span class="math" data-tex="\(y^2=x^3-x\)">\(y^2=x^3-x\)</span>, and form the constant elliptic curve over <span class="math" data-tex="\(\mathbf F_5(t)\)">\(\mathbf F_5(t)\)</span>. For <span class="math" data-tex="\(x=0,1,2,3,4\)">\(x=0,1,2,3,4\)</span>, the right-hand side is respectively <span class="math" data-tex="\(0,0,1,4,0\)">\(0,0,1,4,0\)</span>. The numbers of affine points over these coordinates are <span class="math" data-tex="\(1,1,2,2,1\)">\(1,1,2,2,1\)</span>. Including infinity gives eight points, so</p>
+<span class="math math-display" data-tex="\[
+a_5=5+1-8=-2,\qquad
+P(T)=1-a_5T+5T^2=1+2T+5T^2.
+\]">\[
+a_5=5+1-8=-2,\qquad
+P(T)=1-a_5T+5T^2=1+2T+5T^2.
+\]</span>
+<p>Let <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> have sum <span class="math" data-tex="\(-2\)">\(-2\)</span> and product <span class="math" data-tex="\(5\)">\(5\)</span>. At a closed point of degree <span class="math" data-tex="\(d\)">\(d\)</span>, the fibre Frobenius eigenvalues are <span class="math" data-tex="\(\alpha^d,\beta^d\)">\(\alpha^d,\beta^d\)</span>. The global Euler product is therefore</p>
+<span class="math math-display" data-tex="\[
+L(E_0/\mathbf F_5(t),T)
+=Z(\mathbf P^1,\alpha T)Z(\mathbf P^1,\beta T).
+\]">\[
+L(E_0/\mathbf F_5(t),T)
+=Z(\mathbf P^1,\alpha T)Z(\mathbf P^1,\beta T).
+\]</span>
+<p>Here <span class="math" data-tex="\(Z(\mathbf P^1,U)=((1-U)(1-5U))^{-1}\)">\(Z(\mathbf P^1,U)=((1-U)(1-5U))^{-1}\)</span>. This identity follows from <span class="math" data-tex="\(\#\mathbf P^1(\mathbf F_{5^m})=1+5^m\)">\(\#\mathbf P^1(\mathbf F_{5^m})=1+5^m\)</span> and the exponential definition of zeta. Hence</p>
+<span class="math math-display" data-tex="\[
+L(E_0/\mathbf F_5(t),T)
+=\frac{1}{(1+2T+5T^2)(1+10T+125T^2)}.
+\]">\[
+L(E_0/\mathbf F_5(t),T)
+=\frac{1}{(1+2T+5T^2)(1+10T+125T^2)}.
+\]</span>
+<p>This rational function has poles. The curve is constant, so its first cohomology contributes invariant sections and top-degree cohomology as well as the middle cohomology of the base curve. Polynomiality requires additional hypotheses, such as eliminating those invariant contributions.</p>
+<p>Here is the precise general rationality input. For a separated scheme <span class="math" data-tex="\(Y\)">\(Y\)</span> of finite type over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, a constructible <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>-sheaf <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, and <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, the Grothendieck trace formula gives</p>
+<span class="math math-display" data-tex="\[
+L(Y,\mathcal F,T)=
+\prod_i\det\left(1-T\operatorname{Frob}_q^{\mathrm{geom}}
+\mid H_c^i(Y_{\overline{\mathbf F}_q},\mathcal F)\right)^{(-1)^{i+1}}.
+\tag{5.1}
+\]">\[
+L(Y,\mathcal F,T)=
+\prod_i\det\left(1-T\operatorname{Frob}_q^{\mathrm{geom}}
+\mid H_c^i(Y_{\overline{\mathbf F}_q},\mathcal F)\right)^{(-1)^{i+1}}.
+\tag{5.1}
+\]</span>
+<p>Only finitely many finite-dimensional cohomology groups occur, so the right side is rational. The Euler product on the left uses geometric Frobenius on the stalk at a closed point of degree <span class="math" data-tex="\(d\)">\(d\)</span>, with <span class="math" data-tex="\(T^d\)">\(T^d\)</span> in its local factor. For an elliptic curve over <span class="math" data-tex="\(F\)">\(F\)</span>, take the first-cohomology local system <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> on its good-reduction open set <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span> and the constructible sheaf <span class="math" data-tex="\(j_*\mathcal F\)">\(j_*\mathcal F\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>; the stalks at the missing points give the inertia-invariant local factors.</p>
+<p>We recall why the trace formula implies (5.1). The coefficient of <span class="math" data-tex="\(T^m\)">\(T^m\)</span> in <span class="math" data-tex="\(T\,d\log L/dT\)">\(T\,d\log L/dT\)</span> is
+<span class="math" data-tex="\(\sum_{d\mid m}d\sum_{\deg x=d}\operatorname{Tr}((\operatorname{Frob}_x^{\mathrm{geom}})^{m/d}\mid\mathcal F_{\bar x})\)">\(\sum_{d\mid m}d\sum_{\deg x=d}\operatorname{Tr}((\operatorname{Frob}_x^{\mathrm{geom}})^{m/d}\mid\mathcal F_{\bar x})\)</span>.
+This is the sum of stalk traces over <span class="math" data-tex="\(Y(\mathbf F_{q^m})\)">\(Y(\mathbf F_{q^m})\)</span>. The trace formula makes it the alternating sum of the traces of <span class="math" data-tex="\((\operatorname{Frob}_q^{\mathrm{geom}})^m\)">\((\operatorname{Frob}_q^{\mathrm{geom}})^m\)</span> on <span class="math" data-tex="\(H_c^i\)">\(H_c^i\)</span>. Expanding the logarithmic derivative of the determinant product gives exactly that sum. Both series have constant term one, and logarithmic differentiation is injective on <span class="math" data-tex="\(1+T\mathbf Q_\ell[[T]]\)">\(1+T\mathbf Q_\ell[[T]]\)</span>, proving the equality. The trace formula and finite-dimensionality are proved in the earlier <a href="../AG-LTF/the-trace-formula-in-all-dimensions.html"><em>The trace formula in all dimensions</em>, Theorem 5.1</a>; the Euler-product passage is also proved in <a href="../AG-LTF/l-functions-rationality-and-the-functional-equation.html"><em>L-functions, rationality and the functional equation</em>, Theorem 2.1</a>. For a finite coefficient extension <span class="math" data-tex="\(E/\mathbf Q_\ell\)">\(E/\mathbf Q_\ell\)</span>, these statements use constructible adic sheaves with an integral model, exactly the coefficients of the elliptic-curve example.</p>
+<h2 id="6-the-correspondence-theorems-and-their-boundary">6. The correspondence theorems and their boundary</h2>
+<p>Fix <span class="math" data-tex="\(\ell\ne\operatorname{char}(k)\)">\(\ell\ne\operatorname{char}(k)\)</span> and an abstract field isomorphism <span class="math" data-tex="\(\iota:\overline{\mathbf Q}_\ell\to\mathbf C\)">\(\iota:\overline{\mathbf Q}_\ell\to\mathbf C\)</span> for comparing eigenvalues. Geometric Frobenius is the inverse of arithmetic Frobenius <span class="math" data-tex="\(x\mapsto x^{q_v}\)">\(x\mapsto x^{q_v}\)</span>. The two sources below use different Frobenius and Hecke conventions, which we state explicitly.</p>
+<p>First fix the raw Hecke operators. At a place <span class="math" data-tex="\(v\)">\(v\)</span>, put <span class="math" data-tex="\(K_v=GL_n(\mathcal O_v)\)">\(K_v=GL_n(\mathcal O_v)\)</span>, give it Haar mass one, and let
+<span class="math math-display" data-tex="\[
+H_{i,v}=1_{K_v\operatorname{diag}(\varpi_v I_i,I_{n-i})K_v},
+\qquad 0\le i\le n.
+\tag{6.2}
+\]">\[
+H_{i,v}=1_{K_v\operatorname{diag}(\varpi_v I_i,I_{n-i})K_v},
+\qquad 0\le i\le n.
+\tag{6.2}
+\]</span>
+Here <span class="math" data-tex="\(H_{0,v}=1_{K_v}\)">\(H_{0,v}=1_{K_v}\)</span> is the convolution identity, and <span class="math" data-tex="\(H_{n,v}\)">\(H_{n,v}\)</span> is invertible under convolution. On our right-invariant adelic functions use
+<span class="math math-display" data-tex="\[
+R(H)f(g)=\int H(a)f(ga)\,da.
+\]">\[
+R(H)f(g)=\int H(a)f(ga)\,da.
+\]</span>
+If <span class="math" data-tex="\(z_1,\ldots,z_n\)">\(z_1,\ldots,z_n\)</span> are the normalized Satake eigenvalues, the minuscule Satake calculation gives
+<span class="math math-display" data-tex="\[
+R(H_{i,v})f=q_v^{i(n-i)/2}e_i(z_1,\ldots,z_n)f,
+\qquad
+T_{i,v}=q_v^{-i(n-i)/2}H_{i,v}.
+\tag{6.3}
+\]">\[
+R(H_{i,v})f=q_v^{i(n-i)/2}e_i(z_1,\ldots,z_n)f,
+\qquad
+T_{i,v}=q_v^{-i(n-i)/2}H_{i,v}.
+\tag{6.3}
+\]</span>
+Thus <span class="math" data-tex="\(T_{i,v}\)">\(T_{i,v}\)</span> is the character operator for <span class="math" data-tex="\(\bigwedge^i\)">\(\bigwedge^i\)</span>. Here is the minuscule calculation in our convention. Write <span class="math" data-tex="\(q=q_v\)">\(q=q_v\)</span>, <span class="math" data-tex="\(\varpi=\varpi_v\)">\(\varpi=\varpi_v\)</span>, and give the upper-unipotent group <span class="math" data-tex="\(N(\mathcal O_v)\)">\(N(\mathcal O_v)\)</span> mass one. The normalized transform is
+<span class="math math-display" data-tex="\[
+S(H)(t)=\delta_B(t)^{1/2}\int_{N(F_v)}H(tu)\,du.
+\]">\[
+S(H)(t)=\delta_B(t)^{1/2}\int_{N(F_v)}H(tu)\,du.
+\]</span>
+For <span class="math" data-tex="\(t=\operatorname{diag}(\varpi^{\lambda_1},\ldots,\varpi^{\lambda_n})\)">\(t=\operatorname{diag}(\varpi^{\lambda_1},\ldots,\varpi^{\lambda_n})\)</span>, membership of <span class="math" data-tex="\(tu\)">\(tu\)</span> in the double coset of <span class="math" data-tex="\(H_i\)">\(H_i\)</span> says its lattice <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> satisfies <span class="math" data-tex="\(\varpi\mathcal O_v^n\subset\Lambda\subset\mathcal O_v^n\)">\(\varpi\mathcal O_v^n\subset\Lambda\subset\mathcal O_v^n\)</span>, with colength <span class="math" data-tex="\(i\)">\(i\)</span>. The diagonal entries of <span class="math" data-tex="\(tu\)">\(tu\)</span> and <span class="math" data-tex="\(\varpi(tu)^{-1}\)">\(\varpi(tu)^{-1}\)</span> therefore force <span class="math" data-tex="\(0\le\lambda_j\le1\)">\(0\le\lambda_j\le1\)</span>; the determinant forces <span class="math" data-tex="\(\sum_j\lambda_j=i\)">\(\sum_j\lambda_j=i\)</span>. Put <span class="math" data-tex="\(\epsilon_j=\lambda_j\)">\(\epsilon_j=\lambda_j\)</span>. Such lattices are exactly the lifts of the <span class="math" data-tex="\((n-i)\)">\((n-i)\)</span>-dimensional residue subspaces with echelon pivots at the indices <span class="math" data-tex="\(b\)">\(b\)</span> for which <span class="math" data-tex="\(\epsilon_b=0\)">\(\epsilon_b=0\)</span>. Their unique reduced echelon vectors are
+<span class="math math-display" data-tex="\[
+e_b+\sum_{a&lt;b,\,\epsilon_a=1}c_{ab}e_a,
+\qquad c_{ab}\in\kappa(v).
+\]">\[
+e_b+\sum_{a&lt;b,\,\epsilon_a=1}c_{ab}e_a,
+\qquad c_{ab}\in\kappa(v).
+\]</span>
+Together with <span class="math" data-tex="\(\varpi e_a\)">\(\varpi e_a\)</span> at the remaining indices, they give every lattice of this type. Thus their number is <span class="math" data-tex="\(q^c\)">\(q^c\)</span>, where
+<span class="math" data-tex="\(c=\#\{(a,b):a&lt;b,\epsilon_a=1,\epsilon_b=0\}\)">\(c=\#\{(a,b):a&lt;b,\epsilon_a=1,\epsilon_b=0\}\)</span>.
+They are represented by upper-unipotent matrices with entries <span class="math" data-tex="\(\varpi^{-1}\widetilde c_{ab}\)">\(\varpi^{-1}\widetilde c_{ab}\)</span> at these pairs. Two matrices represent the same lattice precisely when their ratio lies in <span class="math" data-tex="\(N(\mathcal O_v)\)">\(N(\mathcal O_v)\)</span>; each such right coset has measure one. The integral is consequently <span class="math" data-tex="\(q^c\)">\(q^c\)</span>. If <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span> counts the opposite pairs <span class="math" data-tex="\(\epsilon_a=0,\epsilon_b=1\)">\(\epsilon_a=0,\epsilon_b=1\)</span>, then
+<span class="math math-display" data-tex="\[
+\delta_B(t)^{1/2}=q^{-(c-c&#x27;)/2},\qquad
+c+c&#x27;=i(n-i).
+\]">\[
+\delta_B(t)^{1/2}=q^{-(c-c&#x27;)/2},\qquad
+c+c&#x27;=i(n-i).
+\]</span>
+Every coefficient is therefore <span class="math" data-tex="\(q^{i(n-i)/2}\)">\(q^{i(n-i)/2}\)</span>, and
+<span class="math" data-tex="\(S(H_i)=q^{i(n-i)/2}\sum_{|J|=i}\prod_{j\in J}z_j\)">\(S(H_i)=q^{i(n-i)/2}\sum_{|J|=i}\prod_{j\in J}z_j\)</span>, proving (6.3). This agrees with [Frenkel, §2.3, (2.7)–(2.8), p.31]. For a general dual-group representation <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(T_{V,v}\)">\(T_{V,v}\)</span> denotes the operator corresponding to its character under normalized Satake, as in <a href="LG-GLOB-02.html"><em>The Satake isomorphism for unramified groups and unramified L-factors</em></a>.</p>
+<p><strong>Theorem 6.1 (Drinfeld, 1978–1989; L. Lafforgue, 2002).</strong> There is a unique bijection between isomorphism classes of cuspidal automorphic representations of <span class="math" data-tex="\(GL_n(\mathbf A)\)">\(GL_n(\mathbf A)\)</span> with finite-order central character and continuous irreducible <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional <span class="math" data-tex="\(\overline{\mathbf Q}_\ell\)">\(\overline{\mathbf Q}_\ell\)</span>-representations of <span class="math" data-tex="\(G_F\)">\(G_F\)</span>, defined over a finite extension of <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, unramified outside finitely many places, and with finite-order determinant. Corresponding objects are unramified at exactly the same places. At each such <span class="math" data-tex="\(v\)">\(v\)</span>, the eigenvalues of geometric Frobenius, transported by <span class="math" data-tex="\(\iota\)">\(\iota\)</span>, are the unitary-normalized Satake eigenvalues for our right action. Rank one is class field theory; Drinfeld proved rank two and L. Lafforgue all ranks. The exact free locator is [L. Lafforgue, Théorème VI.9(i), p.158]. His local factor is defined using inverse Frobenius in Chapter VI, §1(a), p.152.</p>
+<p>The author's Hecke convention also needs translation. His displayed kernel on p.23 is <span class="math" data-tex="\(\sum_{\gamma\in GL_n(F)}H(g&#x27;^{-1}\gamma g)\)">\(\sum_{\gamma\in GL_n(F)}H(g&#x27;^{-1}\gamma g)\)</span>, the case <span class="math" data-tex="\(P=GL_n\)">\(P=GL_n\)</span> of that formula. Acting on a left-rational-invariant function and unfolding gives <span class="math" data-tex="\(\int H(g&#x27;^{-1}g)f(g&#x27;)\,dg&#x27;\)">\(\int H(g&#x27;^{-1}g)f(g&#x27;)\,dg&#x27;\)</span>. Set <span class="math" data-tex="\(g&#x27;=ga\)">\(g&#x27;=ga\)</span>; this is <span class="math" data-tex="\(R(\check H)f(g)\)">\(R(\check H)f(g)\)</span>, where <span class="math" data-tex="\(\check H(a)=H(a^{-1})\)">\(\check H(a)=H(a^{-1})\)</span>. Thus his normalized Hecke multiset is the inverse of ours, by (6.4)–(6.5). His definition of correspondence matches it with his arithmetic-Frobenius multiset [pp.152,158]. Inverting Frobenius gives exactly the geometric-Frobenius matching asserted here. Both inversions are needed to compare the same parameter.</p>
+<p><strong>Theorem 6.2 (V. Lafforgue, 2018).</strong> First let <span class="math" data-tex="\(G\)">\(G\)</span> be split connected reductive, with its split model over <span class="math" data-tex="\(X\)">\(X\)</span>. Let <span class="math" data-tex="\(N\subset X\)">\(N\subset X\)</span> be a finite level subscheme, <span class="math" data-tex="\(Z\)">\(Z\)</span> the centre, and <span class="math" data-tex="\(\Xi\subset\operatorname{Bun}_Z(\mathbf F_q)\)">\(\Xi\subset\operatorname{Bun}_Z(\mathbf F_q)\)</span> a subgroup of finite index. There is a canonical decomposition of the finite-dimensional space of compactly supported cuspidal functions</p>
+<span class="math math-display" data-tex="\[
+C_c^{\mathrm{cusp}}(\operatorname{Bun}_{G,N}(\mathbf F_q)/\Xi,
+\overline{\mathbf Q}_\ell)=\bigoplus_\sigma\mathcal H_\sigma.
+\tag{6.1}
+\]">\[
+C_c^{\mathrm{cusp}}(\operatorname{Bun}_{G,N}(\mathbf F_q)/\Xi,
+\overline{\mathbf Q}_\ell)=\bigoplus_\sigma\mathcal H_\sigma.
+\tag{6.1}
+\]</span>
+<p>The indices are <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>-conjugacy classes of continuous parameters
+<span class="math" data-tex="\(\sigma:\pi_1(X\setminus N,\bar\eta)\to\widehat G(\overline{\mathbf Q}_\ell)\)">\(\sigma:\pi_1(X\setminus N,\bar\eta)\to\widehat G(\overline{\mathbf Q}_\ell)\)</span>
+defined over finite extensions of <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>. Semisimplicity means that whenever the image lies in a parabolic subgroup, it lies in a Levi subgroup of that parabolic; in characteristic zero this is equivalent to reductivity of its Zariski closure. The nonzero summands are generalized eigenspaces for the commutative excursion algebra. In the author's arithmetic-Frobenius convention, his normalized spherical Hecke operator <span class="math" data-tex="\(T^{\mathrm{arith}}_{V,v}\)">\(T^{\mathrm{arith}}_{V,v}\)</span>, for a representation <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>, has eigenvalue
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}\bigl(\sigma(\operatorname{Frob}^{\mathrm{arith}}_v)\mid V\bigr)
+\qquad(v\notin N).
+\]">\[
+\operatorname{Tr}\bigl(\sigma(\operatorname{Frob}^{\mathrm{arith}}_v)\mid V\bigr)
+\qquad(v\notin N).
+\]</span>
+See [V. Lafforgue, §1.4 for arithmetic Frobenius; §2, p.7 for the central quotient; Definition 5.1, §6 and Theorem 8.4, pp.10–11,19–20].</p>
+<p>The construction also applies to nonsplit connected reductive <span class="math" data-tex="\(G/F\)">\(G/F\)</span>, after choosing a model and excluding its bad places from the unramified comparison. Parameters then take values in <span class="math" data-tex="\({}^LG\)">\({}^LG\)</span> with their prescribed Galois projection. The bundle/adèle comparison uses the disjoint union of adelic quotients of the pure inner forms indexed by
+<span class="math math-display" data-tex="\[
+\ker^1(F,G)=\ker\left(H^1(F,G)\longrightarrow\prod_v H^1(F_v,G)\right),
+\]">\[
+\ker^1(F,G)=\ker\left(H^1(F,G)\longrightarrow\prod_v H^1(F_v,G)\right),
+\]</span>
+rather than a single adelic quotient; the central quotient and level are imposed on these spaces. This qualification is explicit in [V. Lafforgue, immediately after (8.9), p.20]. The result supplies automorphic-to-Galois parameters and Hecke compatibility; it does not assert that every parameter occurs, a bijection, or a packet multiplicity formula.</p>
+<p>Here is the operator comparison for <span class="math" data-tex="\(GL_n\)">\(GL_n\)</span>, including its direction. Define <span class="math" data-tex="\(\check H(a)=H(a^{-1})\)">\(\check H(a)=H(a^{-1})\)</span>. Inverting the double coset in (6.2) and permuting its diagonal entries gives
+<span class="math math-display" data-tex="\[
+\check H_{i,v}=H_{n,v}^{-1}*H_{n-i,v},\qquad
+\check T_{i,v}=T_{n,v}^{-1}*T_{n-i,v}.
+\tag{6.4}
+\]">\[
+\check H_{i,v}=H_{n,v}^{-1}*H_{n-i,v},\qquad
+\check T_{i,v}=T_{n,v}^{-1}*T_{n-i,v}.
+\tag{6.4}
+\]</span>
+Indeed the inverse diagonal matrix is <span class="math" data-tex="\(\varpi_v^{-1}I_n\)">\(\varpi_v^{-1}I_n\)</span> times a permutation of <span class="math" data-tex="\(\operatorname{diag}(\varpi_v I_{n-i},I_i)\)">\(\operatorname{diag}(\varpi_v I_{n-i},I_i)\)</span>. Convolution with <span class="math" data-tex="\(H_{n,v}^{-1}=1_{\varpi_v^{-1}I_nK_v}\)">\(H_{n,v}^{-1}=1_{\varpi_v^{-1}I_nK_v}\)</span> is that central translation, with no volume factor because <span class="math" data-tex="\(K_v\)">\(K_v\)</span> has mass one. The normalization powers agree since <span class="math" data-tex="\(i(n-i)=(n-i)i\)">\(i(n-i)=(n-i)i\)</span>. The eigenvalue of <span class="math" data-tex="\(R(\check T_{i,v})\)">\(R(\check T_{i,v})\)</span> is therefore
+<span class="math math-display" data-tex="\[
+\frac{e_{n-i}(z)}{e_n(z)}=e_i(z_1^{-1},\ldots,z_n^{-1}).
+\tag{6.5}
+\]">\[
+\frac{e_{n-i}(z)}{e_n(z)}=e_i(z_1^{-1},\ldots,z_n^{-1}).
+\tag{6.5}
+\]</span>
+The central determinant factor <span class="math" data-tex="\(e_n(z)^{-1}\)">\(e_n(z)^{-1}\)</span> is essential, including at <span class="math" data-tex="\(i=n\)">\(i=n\)</span>. This is the character identity <span class="math" data-tex="\((\bigwedge^i V)^\vee=\det(V)^{-1}\otimes\bigwedge^{n-i}V\)">\((\bigwedge^i V)^\vee=\det(V)^{-1}\otimes\bigwedge^{n-i}V\)</span>.</p>
+<p>Changing sides is a separate operation. For a function <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\(K\backslash GL_n(\mathbf A)/GL_n(F)\)">\(K\backslash GL_n(\mathbf A)/GL_n(F)\)</span>, set <span class="math" data-tex="\(Jh(g)=h(g^{-1})\)">\(Jh(g)=h(g^{-1})\)</span>. Direct substitution gives
+<span class="math math-display" data-tex="\[
+J\left(\int H(a)h(a^{-1}x)\,da\right)=R(H)Jh,
+\qquad
+J\left(\int H(a)h(ax)\,da\right)=R(\check H)Jh.
+\tag{6.6}
+\]">\[
+J\left(\int H(a)h(a^{-1}x)\,da\right)=R(H)Jh,
+\qquad
+J\left(\int H(a)h(ax)\,da\right)=R(\check H)Jh.
+\tag{6.6}
+\]</span>
+For the second identity, <span class="math" data-tex="\((ga^{-1})^{-1}=ag^{-1}\)">\((ga^{-1})^{-1}=ag^{-1}\)</span>; changing <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> is allowed by inversion-invariance of Haar measure on <span class="math" data-tex="\(GL_n\)">\(GL_n\)</span>. The first identity follows from <span class="math" data-tex="\((ga)^{-1}=a^{-1}g^{-1}\)">\((ga)^{-1}=a^{-1}g^{-1}\)</span>. Thus changing sides alone does not decide whether to invert the Hecke function.</p>
+<p>V. Lafforgue's modification direction decides it. In his full paper, Construction 1.8 trivializes the <strong>target</strong> <span class="math" data-tex="\(\mathcal G_1\)">\(\mathcal G_1\)</span> of <span class="math" data-tex="\(\mathcal G_0\to\mathcal G_1\)">\(\mathcal G_0\to\mathcal G_1\)</span>; the source, transported by that map, gives the affine-Grassmannian point. His positive coweight orbit is <span class="math" data-tex="\(K_v\varpi_v^\lambda K_v/K_v\)">\(K_v\varpi_v^\lambda K_v/K_v\)</span> [V. Lafforgue, arXiv:1209.5352v10, Construction 1.8 and the orbit definition after Remark 1.11, pp.44–45]. For <span class="math" data-tex="\(\lambda=(1^i,0^{n-i})\)">\(\lambda=(1^i,0^{n-i})\)</span>, the source lattice is a sublattice of the target, with length-<span class="math" data-tex="\(i\)">\(i\)</span> quotient. Fixing the output source bundle <span class="math" data-tex="\(E(g)\)">\(E(g)\)</span>, his Hecke operator sums over the target superlattices <span class="math" data-tex="\(E(ga^{-1})\)">\(E(ga^{-1})\)</span>, <span class="math" data-tex="\(a\in K_v\operatorname{diag}(\varpi_v I_i,I)K_v\)">\(a\in K_v\operatorname{diag}(\varpi_v I_i,I)K_v\)</span>. The pullback is from the target and the pushforward to the source [ICM report, §5, pp.10–11]. Because each right <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-coset has mass one, this sum is <span class="math" data-tex="\(R(\check H_{i,v})\)">\(R(\check H_{i,v})\)</span>, rather than <span class="math" data-tex="\(R(H_{i,v})\)">\(R(H_{i,v})\)</span>. On the opposite quotient it is the second action in (6.6). Accordingly,
+<span class="math math-display" data-tex="\[
+T^{\mathrm{arith}}_{\wedge^i,v}
+=R(\check T_{i,v}).
+\tag{6.7}
+\]">\[
+T^{\mathrm{arith}}_{\wedge^i,v}
+=R(\check T_{i,v}).
+\tag{6.7}
+\]</span></p>
+<p>If <span class="math" data-tex="\(z\)">\(z\)</span> is the Satake class for our right action, (6.5) and Theorem 6.2 identify the eigenvalue multiset of <span class="math" data-tex="\(\sigma(\operatorname{Frob}^{\mathrm{arith}}_v)\)">\(\sigma(\operatorname{Frob}^{\mathrm{arith}}_v)\)</span> with <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>. Taking geometric Frobenius in the <strong>same</strong> parameter inverts that multiset again and gives <span class="math" data-tex="\(z\)">\(z\)</span>, as in Theorem 6.1. Thus both the Hecke inversion and the Frobenius inversion have been included in the comparison. One can also form <span class="math" data-tex="\(\sigma^\vee(g)={}^{t}\sigma(g)^{-1}\)">\(\sigma^\vee(g)={}^{t}\sigma(g)^{-1}\)</span>, but its matrix identity by itself does not perform the operator comparison, and no extra dualization is needed after both convention changes just computed. Writing only “Frobenius” or only “normalized Hecke operator” would hide these choices.</p>
+<p>The finite-order conditions in Theorem 6.1 remove unrestricted twists along the degree character. Dropping them changes the formulation. Nor can one replace Theorem 6.2 by a general-group bijection: the parameterization and the determination of packets are different assertions.</p>
+<p>Hecke operators can be interpreted as modifications of bundles. Section 1 proves the vector-bundle dictionary on the fixed curve, and the minuscule calculation above describes its local lattice modifications. Families of general-group modifications, their geometric realization and automorphic sheaves are developed in <em>From adèles to bundles</em> and the geometric Langlands course. The elementary vanishing arguments above do not prove a shtuka correspondence.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (basic).</strong> For <span class="math" data-tex="\(F=\mathbf F_q(t)\)">\(F=\mathbf F_q(t)\)</span>, identify the unramified <span class="math" data-tex="\(GL_1\)">\(GL_1\)</span> double quotient with <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, and explain how the degree arises from valuations.</p>
+<p><strong>Exercise 7.2 (intermediate).</strong> For a split rank-two bundle on <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>, choose the summand needed for Lemma 1.1 and prove vanishing, keeping track of the direction of the degree inequality.</p>
+<p><strong>Exercise 7.3 (intermediate).</strong> Prove that a connected finite étale cover of <span class="math" data-tex="\(\mathbf P^1_{\overline k}\)">\(\mathbf P^1_{\overline k}\)</span> has degree one. Deduce the arithmetic fundamental group and the absence of unramified irreducible representations of dimension two.</p>
+<p><strong>Exercise 7.4 (advanced).</strong> Prove the positive-genus support bound and finiteness modulo line-bundle twists. Explain why an upper bound on destabilizing line degrees alone does not yet prove finiteness.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 7.1.</strong> The divisor map sends an idèle <span class="math" data-tex="\((a_v)\)">\((a_v)\)</span> to <span class="math" data-tex="\(\sum_vv(a_v)[v]\)">\(\sum_vv(a_v)[v]\)</span>. It is surjective: a uniformizer in any one component gives that closed point. Its kernel is <span class="math" data-tex="\(\prod_v\mathcal O_v^\times\)">\(\prod_v\mathcal O_v^\times\)</span>. Quotienting by <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> further identifies principal divisors with zero, so the quotient is <span class="math" data-tex="\(\operatorname{Pic}(\mathbf P^1)\)">\(\operatorname{Pic}(\mathbf P^1)\)</span>. The divisor calculation in Section 2 identifies this group with <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, by degree. Explicitly the degree is <span class="math" data-tex="\(\sum_vv(a_v)\deg(v)\)">\(\sum_vv(a_v)\deg(v)\)</span>. With the convention that the bundle of the lattice <span class="math" data-tex="\(a_v\mathcal O_v\)">\(a_v\mathcal O_v\)</span> is <span class="math" data-tex="\(\mathcal O(-\sum_vv(a_v)[v])\)">\(\mathcal O(-\sum_vv(a_v)[v])\)</span>, this formula is the negative bundle degree; choosing the inverse lattice reverses that sign. In either convention the quotient is canonically the divisor-class group, with the stated sign translation.</p>
+<p><strong>Solution 7.2.</strong> Write <span class="math" data-tex="\(E=\mathcal O(a)\oplus\mathcal O(b)\)">\(E=\mathcal O(a)\oplus\mathcal O(b)\)</span>, <span class="math" data-tex="\(a\geq b\)">\(a\geq b\)</span>. The higher-degree summand must be used as <span class="math" data-tex="\(L\)">\(L\)</span>. Then <span class="math" data-tex="\(LM^{-1}=\mathcal O(a-b)\)">\(LM^{-1}=\mathcal O(a-b)\)</span> has zero first cohomology. The constant term is the constant value of the cusp form at <span class="math" data-tex="\(E\)">\(E\)</span>, so that value is zero. Choosing the lower-degree summand would give <span class="math" data-tex="\(\mathcal O(b-a)\)">\(\mathcal O(b-a)\)</span>, which can have nonzero first cohomology and would not justify the inference.</p>
+<p><strong>Solution 7.3.</strong> For a connected finite étale <span class="math" data-tex="\(f:Y\to\mathbf P^1_{\bar k}\)">\(f:Y\to\mathbf P^1_{\bar k}\)</span>, properness and connected smoothness give <span class="math" data-tex="\(H^0(Y,\mathcal O_Y)=\bar k\)">\(H^0(Y,\mathcal O_Y)=\bar k\)</span>, by the regular-function argument in Proposition 3.2. The rank-<span class="math" data-tex="\(d\)">\(d\)</span> bundle <span class="math" data-tex="\(f_*\mathcal O_Y\)">\(f_*\mathcal O_Y\)</span> has a perfect trace pairing, so it is self-dual. Its splitting degrees occur with their negatives. Since its space of global sections has dimension one, none can be positive; symmetry excludes negative degrees too. Every summand is <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, so that dimension equals <span class="math" data-tex="\(d\)">\(d\)</span>, forcing <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. Over <span class="math" data-tex="\(k=\mathbf F_q\)">\(k=\mathbf F_q\)</span>, a finite cover becomes a disjoint union of these copies. Galois descent only permutes them: a copy has no nonidentity automorphism over the base. The invariant chart algebras computed in (3.4) make the cover a constant-field cover. Hence the arithmetic fundamental group is <span class="math" data-tex="\(G_k=\widehat{\mathbf Z}\)">\(G_k=\widehat{\mathbf Z}\)</span>. An everywhere unramified Galois representation factors through it by the normalization and stable-lattice arguments in Proposition 3.2. A topological generator has an eigenline over the algebraically closed coefficient field, and its powers and their limits preserve that line. Irreducibility forces dimension one, excluding dimension two. The geometric cover calculation, the finite-field descent, and the passage from unramified Galois quotients to covers are all needed.</p>
+<p><strong>Solution 7.4.</strong> Serre duality kills <span class="math" data-tex="\(H^1(LM^{-1})\)">\(H^1(LM^{-1})\)</span> when its degree exceeds <span class="math" data-tex="\(2g-2\)">\(2g-2\)</span>, yielding the upper bound by Lemma 1.1. Normalize <span class="math" data-tex="\(\deg E\)">\(\deg E\)</span> into <span class="math" data-tex="\([0,2d)\)">\([0,2d)\)</span> by twisting with a fixed positive-degree line bundle. Riemann–Roch applied to one sufficiently large common twist gives a line subbundle of degree at least <span class="math" data-tex="\(-md\)">\(-md\)</span>. Combining this lower bound with the upper bound leaves finitely many possible degrees for <span class="math" data-tex="\(L,M\)">\(L,M\)</span>. For each degree <span class="math" data-tex="\(a\)">\(a\)</span>, another common twist makes each line bundle effective. There are finitely many effective divisors of the resulting fixed degree over the finite field, so there are finitely many line bundles. Each extension space is a finite vector space. This exhausts the bundles under consideration. Without the first Riemann–Roch lower bound, an unbounded sequence of line-bundle degrees would remain and the counting argument would fail.</p>
+<h2 id="proof-dependencies-and-correspondence-scope">Proof dependencies and correspondence scope</h2>
+<ul>
+<li><strong>Coherent cohomology and duality:</strong> the affine vanishing and affine-cover comparison are proved in <a href="../AG-QC/affine-cohomology-and-serres-criterion.html"><em>Cohomology of affine schemes and Serre's criterion</em>, Theorems 2.2 and 3.1</a>, using <a href="../AG-QC/cech-cohomology.html"><em>Čech cohomology</em>, Theorem 3.2</a>. Finite-dimensionality for our projective curves is <a href="../AG-QC/serres-theorems-on-projective-schemes.html"><em>Coherent sheaves on projective schemes: Serre's theorems</em>, Theorem 2.2</a>. For smooth projective curves over any field, the duality (4.1) is proved in <a href="../AG-QC/dualizing-sheaves-and-serre-duality-for-projective-schemes.html"><em>Dualizing sheaves and Serre duality for projective schemes</em>, Theorem 4.2 and Proposition 8.2</a>. Section 4 derives the canonical degree and Riemann–Roch, including vector bundles and nonrational closed points, from these earlier proofs.</li>
+<li><strong>Unramified local extensions:</strong> over a complete discretely valued field, finite unramified extensions correspond to finite separable residue extensions, with an integral primitive-element presentation having unit derivative. The needed proof is <a href="../NT-ADL/prerequisites/NT-LOC-07.html"><em>Unramified and totally ramified extensions</em>, Theorem 2.1</a>. The finite-presentation flat/unramified criterion is proved in <a href="../AG-FSE/etale-morphisms-and-their-local-structure.html"><em>Étale morphisms and their local structure</em>, Lemma 1.2 and Theorem 1.3</a>. Proposition 3.2 supplies the finite normalization and constant-field descent arguments used for the Galois vanishing statement.</li>
+<li><strong>Cohomological trace and elliptic-curve factors:</strong> for separated finite-type schemes over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span> and constructible <span class="math" data-tex="\(E\)">\(E\)</span>-sheaves with an integral model, <span class="math" data-tex="\(E/\mathbf Q_\ell\)">\(E/\mathbf Q_\ell\)</span> finite and <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, the trace formula and finite-dimensionality are proved in <a href="../AG-LTF/the-trace-formula-in-all-dimensions.html"><em>The trace formula in all dimensions</em>, Theorem 5.1</a>. The elliptic-curve eigenvalues have sum <span class="math" data-tex="\(q+1-\#E(\mathbf F_q)\)">\(q+1-\#E(\mathbf F_q)\)</span> and product <span class="math" data-tex="\(q\)">\(q\)</span> by the actual point-count and cup-pairing calculation in <a href="../AG-LTF/cycle-classes-and-the-lefschetz-fixed-point-formula-for-curves.html"><em>Cycle classes and the Lefschetz fixed-point formula for curves</em>, §6</a>. Our Section 5 calculates the resulting constant-curve rational function and proves the determinant deduction from the trace formula.</li>
+<li><strong>Correspondences:</strong> Theorems 6.1 and 6.2 are stated here with their full scope and precise locators in the free texts of L. and V. Lafforgue. Their shtuka and excursion-operator proofs are not supplied by the elementary arguments in this lesson.</li>
+<li><strong>Geometric Hecke constructions:</strong> V. Lafforgue's target trivialization and positive-coweight orbit definition are the geometric input to the lattice-direction comparison [arXiv:1209.5352v10, Construction 1.8, Remark 1.11 and the subsequent orbit definition, pp.44–45]; the pullback and pushforward directions are in his ICM report, §5, pp.10–11. The fixed-curve vector-bundle dictionary, the minuscule scaling (6.3), and the inversion and side-change formulas (6.4)–(6.7) are proved here. Families of general-group modifications and geometric Satake are outside these proofs.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>[Frenkel] E. Frenkel, <em>Lectures on the Langlands program and conformal field theory</em>, freely accessible preprint, arXiv:hep-th/0512172v1, 15 December 2005, §2.3, (2.7)–(2.8), p.31; §2.4, Theorem 1, p.31; and §3.2, pp.35–36. <a href="https://arxiv.org/abs/hep-th/0512172v1">Exact free version</a>.</li>
+<li>[Stacks] <em>The Stacks Project</em>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/trace.html#trace-section-automorphic">03VR, automorphic forms and sheaves</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/trace.html#trace-section-L-function">03UU, L-functions</a>, in the freely accessible AI Integrated Stacks Project edition, which retains upstream tags. This edition and the official Stacks text are separate works with their own licences. The proofs written in this lesson are original CC0 exposition; no licensed source text is reproduced.</li>
+<li>[L. Lafforgue] L. Lafforgue, <em>Chtoucas de Drinfeld et correspondance de Langlands</em>, 2002, freely accessible author's full text, the Hecke-kernel formula on p.23, Chapter VI, §1(a),(d), pp.152,157–158, especially Théorème VI.9(i), p.158. <a href="https://www.laurentlafforgue.org/math/fulltext.pdf">Free full text</a>.</li>
+<li>[V. Lafforgue] V. Lafforgue, <em>Shtukas for reductive groups and Langlands correspondence for function fields</em>, arXiv:1803.03791v1, 10 March 2018, Definition 5.1, §6, Theorem 8.4 and the extension following (8.9), pp.10–11,19–20. <a href="https://arxiv.org/abs/1803.03791v1">Exact free report</a>. His full free preprint, <em>Chtoucas pour les groupes réductifs et paramétrisation de Langlands globale</em>, arXiv:1209.5352v10, 10 January 2018, supplies Construction 1.8 and the orbit definition following Remark 1.11, pp.44–45. <a href="https://arxiv.org/abs/1209.5352v10">Exact free full version</a>.</li>
+<li>[Gaitsgory] D. Gaitsgory, <em>Local and global Langlands conjecture(s) over function fields</em>, arXiv:2509.24902v1, submitted 29 September 2025, manuscript dated 30 September 2025, Introduction and §1.1. This free preprint for the ICM 2026 plenary address offers further reading on the categorical formulation. <a href="https://arxiv.org/abs/2509.24902v1">Exact free version</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-GLOB-05.html">← The principle of functoriality</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/LG-GLOB-14.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GLOB">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,540 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{bookmark}
+\usepackage{enumitem}
+\setlist{itemsep=3pt,topsep=5pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcommand{\passthrough}[1]{#1}
+\newcommand{\pandocbounded}[1]{#1}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>0.75\textheight0.75\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\hypersetup{pdfauthor={OpenAI GPT-6.1 Sol, Codex, Ultra effort}}
+\begin{document}
+\section{Kronecker--Weber and the maximal abelian extension of the
+rationals}\label{kroneckerweber-and-the-maximal-abelian-extension-of-the-rationals}
+
+\emph{Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October
+2026. Self-checked by the writing AI; no independent review is claimed.
+Public domain (CC0).}
+
+\textbf{Lesson 20.} Every finite abelian extension of the rationals is
+contained in a cyclotomic field. The ray fields of \(\mathbf Q\) make
+this theorem a direct consequence of global class field theory. We
+identify those fields, compute the Artin map on arbitrary rational
+idèles, and derive the conductor--discriminant formula. These
+identifications also specify the Galois action on the roots of unity
+appearing in the Bost--Connes system.
+
+We use
+\href{../ray-class-fields-conductors-and-ideal-reciprocity.html}{Ray
+class fields, conductors and ideal reciprocity}, the explicit local
+cyclotomic symbol in Corollary 9.5 of
+\href{../explicit-local-reciprocity-and-existence.html}{Explicit local
+reciprocity and existence}, and the local conductor--discriminant
+theorem, Theorem 10.5 of
+\href{../abelian-ramification-conductors-and-hasse-arf.html}{Abelian
+ramification, conductors and Hasse--Arf}. Theorem 12.1 and Theorem 12.3
+of
+\href{https://kokunoyumeto.github.io/open-math-courses/courses/NT-CFT/proof-dependencies.html\#NT-ANT-12}{Cyclotomic
+fields} prove cyclotomic irreducibility, degrees, inertia and arithmetic
+Frobenius.
+\href{https://kokunoyumeto.github.io/open-math-courses/courses/NT-CFT/proof-dependencies.html\#NT-ADL-06}{Quasi-characters
+and Hecke characters}, especially Theorem 6.3, supplies the character
+terminology and its ideal/idèle convention. All these providers are
+written lessons.
+
+Fix \(\zeta_m=e^{2\pi i/m}\), put \(U_m=(\mathbf Z/m\mathbf Z)^\times\),
+and write \[
+\sigma_a(\zeta_m)=\zeta_m^a\quad(a\in U_m).
+\tag{1}
+\] The groups \(U_1,U_2\) are trivial. Arithmetic reciprocity sends an
+unramified uniformizer to arithmetic Frobenius. Geometric reciprocity is
+its inverse. The cyclotomic character always records the exponent in
+(1); its definition does not change when reciprocity is inverted.
+
+\textbf{Prerequisite proof availability.} The named results below
+identify specific programme lessons. The
+\href{https://kokunoyumeto.github.io/open-math-courses/courses/NT-CFT/proof-dependencies.html\#lesson-20}{prerequisite
+record} distinguishes published proofs, supplied owner texts awaiting
+publication, and missing full proofs. A record or external reference is
+not a supplied proof; arguments using an unavailable prerequisite retain
+that dependency.
+
+\subsection{1. The rational ray class
+fields}\label{the-rational-ray-class-fields}
+
+For an integer \(m\geq1\), the moduli \(m\infty\) and \(m\) differ by
+the real place condition. In the first, principal generators must be
+positive; in the second, either sign is allowed.
+
+\textbf{Proposition 20.1.} Their ray groups and fields are \[
+\begin{aligned}
+\operatorname{Cl}_{m\infty}(\mathbf Q)&\simeq U_m,&
+\mathbf Q_{m\infty}&=\mathbf Q(\zeta_m),\\
+\operatorname{Cl}_{m}(\mathbf Q)&\simeq U_m/\langle-1\rangle,&
+\mathbf Q_m&=\mathbf Q(\zeta_m)^+.
+\end{aligned}
+\tag{2}
+\] Here the superscript \(+\) means the subfield fixed by complex
+conjugation. The formulas include \(m=1,2\).
+
+\textbf{Proof.} Every fractional ideal of \(\mathbf Q\) prime to \(m\)
+has a unique positive rational generator \(a\), whose numerator and
+denominator are coprime to \(m\). Send that ideal to \(a\bmod m\). Every
+unit residue occurs, by taking a positive integral representative. Its
+kernel consists exactly of the ideals with positive generator congruent
+to \(1\) modulo \(m\), giving the first group in (2). If the generator
+may have either sign, an ideal is ray principal exactly when its
+positive generator is congruent to \(1\) or \(-1\); this gives the
+second group.
+
+Let \(E=\mathbf Q(\zeta_m)\). The local symbol proves its conductor
+divides \(m\infty\). Indeed, write \(m=p^a b\), \(p\nmid b\). At \(p\),
+the field generated by the \(b\)-th roots is unramified, so local units
+act trivially on them. Units congruent to \(1\pmod{p^a}\) act trivially
+on the \(p^a\)-th roots by Corollary 9.5. When \(a=0\), all units
+suffice. At the real place, positive numbers act trivially. Thus the
+entire modulus subgroup is in the global reciprocity kernel, by local
+compatibility. Theorem 18.4 places \(E\) in \(\mathbf Q_{m\infty}\).
+Both degrees are \(\varphi(m)\), the first by cyclotomic irreducibility
+and the second by the ray-group computation. They are equal.
+
+Dropping the real place adds the class of a negative real component to
+the norm subgroup. Its symbol on \(E\) is complex conjugation: local
+reciprocity at \(\mathbf R\) identifies the sign quotient with
+\(\operatorname{Gal}(\mathbf C/\mathbf R)\). Therefore the corresponding
+subfield is \(E^+\). Its group is the quotient by \(-1\) in (1). This
+proves the remaining field assertion, also when conjugation is already
+trivial. \(\square\)
+
+The modulus in (2) need not be the field's least conductor. For example
+\(\mathbf Q(\zeta_2)=\mathbf Q\), and for odd \(m\) the fields of orders
+\(m\) and \(2m\) are equal. A conductor is a minimal condition, whereas
+a ray modulus is a specified condition.
+
+\subsection{2. The Kronecker--Weber
+theorem}\label{the-kroneckerweber-theorem}
+
+\textbf{Theorem 20.2 (Kronecker--Weber).} Every finite abelian
+\(L/\mathbf Q\) lies in \(\mathbf Q(\zeta_m)\) for some positive integer
+\(m\). Consequently \[
+\mathbf Q^{\mathrm{ab}}=\mathbf Q^{\mathrm{cycl}}
+=\bigcup_{m\geq1}\mathbf Q(\zeta_m)=\mathbf Q(\mu_\infty).
+\tag{3}
+\]
+
+\textbf{Proof.} The extension has a finite global conductor, by
+Proposition 18.3. Enlarge it, if necessary, to a modulus \(m\infty\).
+The ray-field containment theorem and (2) give
+\(L\subseteq\mathbf Q_{m\infty}=\mathbf Q(\zeta_m)\). Every cyclotomic
+field is abelian by (1), so their union is contained in the maximal
+abelian extension. The reverse inclusion follows from the finite
+assertion, since every algebraic element in \(\mathbf Q^{\mathrm{ab}}\)
+belongs to a finite abelian extension. \(\square\)
+
+This proof identifies the containing field through its ray conditions.
+Section 7 gives a second proof using local Kronecker--Weber and finite
+inertia groups.
+
+\subsection{3. The explicit rational Artin
+map}\label{the-explicit-rational-artin-map}
+
+The normalization of idèles in lesson 17 gives a topological isomorphism
+\[
+C_{\mathbf Q}\simeq\mathbf R_{>0}\times\widehat{\mathbf Z}^{\times}.
+\tag{4}
+\] Explicitly, for an idèle \(x=(x_\infty,(x_p))\), set \[
+q=\prod_p p^{-v_p(x_p)}>0,\quad
+\epsilon=\operatorname{sgn}(x_\infty),\quad
+t=\epsilon qx_\infty>0,\quad u_p=\epsilon qx_p\in\mathbf Z_p^\times.
+\tag{5}
+\] Only finitely many factors define \(q\). Multiplication by the
+principal idèle \(\epsilon q\) yields the normalized representative
+\((t,u)\). A rational number that is a unit at every prime is \(\pm1\),
+and positivity fixes its sign; hence the representative is unique.
+Continuity holds on the restricted-product neighborhoods where the
+finitely many valuations and the real sign are fixed.
+
+\textbf{Proposition 20.3.} For \(u\in\widehat{\mathbf Z}^{\times}\),
+compatible exponent notation gives \[
+\operatorname{rec}_{\mathrm{arith}}(t,u)=\sigma_{u^{-1}},
+\qquad
+\operatorname{rec}_{\mathrm{geom}}(t,u)=\sigma_u.
+\tag{6}
+\] For a prime \(p\), the idèle \(\varpi_p\) equal to \(p\) at \(p\) and
+\(1\) elsewhere acts on \(\mathbf Q(\zeta_m)\), \(p\nmid m\), as
+\(\sigma_p\) in the arithmetic convention. The idèle equal to \(-1\) at
+the real place and \(1\) at every finite place acts as complex
+conjugation.
+
+\textbf{Proof.} A positive real component acts trivially by real local
+reciprocity. On \(p^a\)-th roots, the local component \(u_p\) acts with
+exponent \(u_p^{-1}\), by Corollary 9.5; every other finite unit
+component is unramified on those roots and acts trivially. Combining the
+prime-power roots gives the first formula on \(\mathbf Q(\zeta_m)\), for
+every \(m\). Local compatibility and (3) make it the full global
+formula. Inverting gives geometric reciprocity.
+
+For \(\varpi_p\), (5) gives \(t=1/p\), \(u_p=1\), and \(u_\ell=1/p\) for
+\(\ell\ne p\). Thus \(u^{-1}\equiv p\pmod m\) when \(p\nmid m\), proving
+the Frobenius assertion. No such residue \(p\pmod m\) defines a unit
+when \(p\mid m\); at the \(p\)-primary roots this particular idèle acts
+trivially, and at the prime-to-\(p\) roots it acts with exponent \(p\).
+
+For the negative real idèle, (5) gives \(t=1\), \(u_p=-1\) at every
+finite prime. Its inverse is itself, so (6) is \(\sigma_{-1}\), complex
+conjugation. \(\square\)
+
+\textbf{Corollary 20.4.} The cyclotomic character is a canonical
+topological isomorphism \[
+\chi_{\mathrm{cyc}}:\operatorname{Gal}(\mathbf Q^{\mathrm{ab}}/\mathbf Q)
+\xrightarrow{\sim}\widehat{\mathbf Z}^{\times},
+\qquad \sigma_a\longmapsto a.
+\tag{7}
+\] Arithmetic reciprocity induces an isomorphism from
+\(C_{\mathbf Q}/\mathbf R_{>0}\), and its composite with (7) is
+\(u\mapsto u^{-1}\).
+
+\textbf{Proof.} The finite isomorphisms (1) are compatible with
+reduction of exponents. Taking inverse limits, as proved in Proposition
+1.3, gives (7) for the cyclotomic union, which is (3). Formula (6) is
+onto and has kernel exactly the positive real factor: a unit tuple
+acting trivially on every root has residue \(1\) modulo every integer.
+Both (7) and its inverse are continuous by their finite quotient
+coordinates. \(\square\)
+
+\subsection{4. Dirichlet, Galois and Hecke
+characters}\label{dirichlet-galois-and-hecke-characters}
+
+A Dirichlet character means a character of some \(U_m\), with characters
+identified when they are inflations of the same primitive character. Its
+\textbf{finite conductor} \(f(\chi)\) is the least modulus of that
+primitive character. When values on integers are used, the primitive
+character is extended by zero precisely at integers not coprime to
+\(f(\chi)\).
+
+\textbf{Proposition 20.5.} Dirichlet characters correspond bijectively
+to continuous complex characters of
+\(\operatorname{Gal}(\mathbf Q^{\mathrm{ab}}/\mathbf Q)\), and to
+finite-order Hecke characters of \(\mathbf Q\), by \[
+\rho_\chi(\sigma_a)=\chi(a),\qquad
+\omega_\chi(t,u)=\chi(u^{-1}).
+\tag{8}
+\] The ideal character at an unramified prime is
+\(\omega_\chi(\varpi_p)=\chi(p)\). Their finite conductor exponents
+agree. If \(L/\mathbf Q\) is finite abelian and \(X(L)\) is its
+character group inflated to (7), then \[
+f_L=\operatorname{lcm}_{\chi\in X(L)}f(\chi)
+\tag{9}
+\] is its finite conductor and its least cyclotomic modulus. Its full
+global conductor includes \(\infty\) exactly when \(L\) is not totally
+real.
+
+\textbf{Proof.} A continuous character from a profinite group to
+\(\mathbf C^\times\) has open kernel. To check this, choose a small
+neighborhood of \(1\) containing no nontrivial subgroup, for example
+\(1/2<|z|<2\), \(|\arg z|<\pi/2\). All powers force a subgroup element's
+modulus to be \(1\), and a nonidentity circle element has a power
+outside that arc. A sufficiently small open subgroup of the profinite
+domain maps into this neighborhood and hence trivially. The resulting
+quotient is finite. Applying this to (7) shows that every character
+factors through some \(U_m\).
+
+A finite-order Hecke character kills \(\mathbf R_{>0}\), since a
+connected group's continuous image in a finite group is trivial.
+Conversely a finite-image character on the unit factor in (4) defines
+such a Hecke character. Formula (6) gives exactly the inverse in (8),
+and gives \(\chi(p)\) at \(p\nmid f(\chi)\). Its real sign is
+\(\chi(-1)\).
+
+For the conductor, the Chinese remainder decomposition of \(U_m\) gives
+a least exponent in each prime-power factor through which a character
+factors. These are the least exponents killing the local principal-unit
+groups; inversion changes neither the kernel nor the exponent. This
+proves agreement with local and Hecke conductors. The finite character
+lemma proved before section 4 of
+\href{../hilberts-theorem-90-and-kummer-theory.html}{Hilbert's theorem
+90 and Kummer theory} says that the characters of
+\(\operatorname{Gal}(L/\mathbf Q)\) separate its elements. Thus a local
+unit subgroup kills the field exactly when it kills every character. Its
+least exponent is their maximum, proving (9).
+
+Equivalently \(L\subseteq\mathbf Q(\zeta_m)\) precisely when every
+character factors modulo \(m\), by the annihilator description of a
+fixed field. The least local exponents show that this is equivalent to
+\(f_L\mid m\), proving minimality without assuming a chosen ambient
+modulus. Complex conjugation is \(-1\) under (7). It is trivial on the
+field exactly when every \(\chi\in X(L)\) is even, which is precisely
+that \(L\) is totally real. The real conductor statement follows.
+\(\square\)
+
+Multiplication in \(X(L)\) means multiplication after inflation to a
+common modulus, followed by taking the primitive representative.
+Multiplying zero-extended arithmetic functions would impose an incorrect
+conductor on the result.
+
+\subsection{5. The global conductor--discriminant
+formula}\label{the-global-conductordiscriminant-formula}
+
+\textbf{Theorem 20.6.} For a finite abelian number field
+\(L/\mathbf Q\), \[
+|d_L|=\prod_{\chi\in X(L)}f(\chi).
+\tag{10}
+\] The trivial character contributes \(1\). These are finite conductors;
+an infinity factor is not an integer factor of the discriminant.
+
+\textbf{Proof.} Fix a rational prime \(p\), and let \(D\) be its
+decomposition group in \(G=\operatorname{Gal}(L/\mathbf Q)\). Its
+completion \(E/\mathbf Q_p\) has group \(D\), and there are \(g=[G:D]\)
+primes above \(p\). Restriction \(\widehat G\to\widehat D\) is onto and
+each fiber has size \(g\): a character of a subgroup of a finite abelian
+group extends by successively choosing a root for the value of a newly
+adjoined generator. Its kernel is \(\widehat{G/D}\). The local conductor
+is computed by restriction to \(D\). Theorem 10.5 therefore gives \[
+\sum_{\chi\in X(L)}v_p(f(\chi))
+=g\sum_{\eta\in\widehat D}a(\eta)
+=g\,v_p(\mathfrak d_{E/\mathbf Q_p}).
+\tag{11}
+\]
+
+This is also \(v_p(d_L)\). To verify the local/global identification
+directly, tensor an integral basis and its trace matrix with
+\(\mathbf Z_p\). The Chinese remainder theorem on the quotients by
+\(p^n\), followed by completion, gives \[
+\mathcal O_L\otimes\mathbf Z_p\simeq
+\prod_{\mathfrak P\mid p}\mathcal O_{L_{\mathfrak P}}.
+\] Trace on this product is the sum of the local traces. Choosing a
+basis in each factor makes the trace pairing block diagonal, so its
+determinant valuation is the sum of the local discriminant valuations.
+Integral changes of \(\mathbf Z_p\)-basis have unit determinant and do
+not alter that valuation. In the Galois case all \(g\) local factors are
+isomorphic, giving the last term of (11). Equality of prime exponents
+proves (10); absolute value removes the archimedean signature sign.
+\(\square\)
+
+For \(L=\mathbf Q(\zeta_5)\), its four characters have conductors
+\(1,5,5,5\), so \(|d_L|=125\). For \(L=\mathbf Q(\zeta_{12})\), the four
+characters are \(1,\chi_{-3},\chi_{-4},\chi_{12}\), with conductors
+\(1,3,4,12\); their product is \(144\). Both agree with the
+discriminants calculated independently in the cyclotomic-fields lesson.
+
+\subsection{6. Cyclotomic values and the adelic component
+space}\label{cyclotomic-values-and-the-adelic-component-space}
+
+Put \(e(r)=\exp(2\pi ir)\) when it denotes a complex number. In the
+Bost--Connes algebra the same notation labels a diagonal arithmetic
+generator; its value in a cooled extremal phase indexed by
+\(v\in\widehat{\mathbf Z}^{\times}\) is \(e(vr)\). The construction and
+classification of those states are proved in
+\href{https://kokunoyumeto.github.io/open-math-courses/courses/NT-CFT/proof-dependencies.html\#QSM-L04}{Phase
+transition in the Bost--Connes system}, sections 3, 4, 6 and 18. We now
+specify the number theory in that formula.
+
+\textbf{Proposition 20.7.} The values \(e(a/N)=\zeta_N^a\), for rational
+residues \(a/N\), generate \(\mathbf Q^{\mathrm{ab}}\). For every
+compatible unit \(b\), \[
+\sigma_b\bigl(e(a/N)\bigr)=e(ba/N),\qquad
+\sigma_b\bigl(e(va/N)\bigr)=e(bva/N).
+\tag{12}
+\] The adelic component space used for the cyclotomic tower has a
+canonical topological identification \[
+\mathbf Q^\times\backslash
+\bigl(\mathbf A_f^\times\times\{\pm1\}\bigr)
+\simeq \mathbf A_f^\times/\mathbf Q_{>0}^\times
+\simeq\widehat{\mathbf Z}^{\times}.
+\tag{13}
+\] Here a rational \(q\) acts by
+\((a,\epsilon)\mapsto(qa,\operatorname{sgn}(q)\epsilon)\). It is the
+zero-dimensional space denoted
+\(\operatorname{Sh}(\mathrm{GL}_1,\{\pm1\})\) in the Bost--Connes
+discussion. With the geometric reciprocity convention, a normalized unit
+idèle \(b\) gives \(\sigma_b\); its action on cyclotomic embedding
+labels in (13) is multiplication by \(b\).
+
+\textbf{Proof.} The values contain \(\zeta_N=e(1/N)\) for every \(N\),
+and every displayed value is a root of unity. Thus their generated field
+is the cyclotomic union, equal to (3). Equations (12) are exactly
+exponent multiplication in (1), including after replacing \(a/N\) by a
+residue indexed by \(v\).
+
+For (13), every orbit has a representative with sign \(+1\), obtained by
+multiplication by \(-1\) when necessary. Two such representatives differ
+by a positive rational. For \(a\in\mathbf A_f^\times\), multiplication
+by \(q=\prod_p p^{-v_p(a_p)}\) produces a unit tuple. A positive
+rational unit everywhere is \(1\), so that tuple is unique. The
+normalization is continuous on neighborhoods with fixed valuations, and
+its inverse is the inclusion of the compact unit tuples. This proves the
+topological identifications, not just a set bijection. The unit group is
+totally disconnected, so every connected component of this space is a
+point.
+
+At level \(N\), reduction of its unit coordinate is the label
+\(v\in U_N\) of the embedding \(\zeta_N\mapsto\zeta_N^v\). This
+identifies its inverse system with the complex points of the cyclotomic
+tower \(\operatorname{Spec}\mathbf Q(\zeta_N)\). Composition with
+\(\sigma_b\) sends that embedding to the one labeled \(bv\), proving the
+Galois action. Deligne's chosen reciprocity sends a uniformizer to
+geometric Frobenius, so it is \(\operatorname{rec}_{\mathrm{geom}}\).
+Formula (6) identifies its unit coordinate with precisely \(\sigma_b\),
+as asserted. \(\square\)
+
+For the arithmetic normalization the same \(\sigma_b\) is the image of
+the unit idèle \(b^{-1}\). Thus (12) uses the cyclotomic exponent \(b\);
+substituting an arithmetic idèle coordinate for that exponent requires
+the inverse. The arithmetic symmetry formulas in
+\href{https://kokunoyumeto.github.io/open-math-courses/courses/NT-CFT/proof-dependencies.html\#QSM-L03}{The
+Bost--Connes Hecke algebra}, section 6, use the exponent coordinate.
+Their operator algebra and state proofs remain in those lessons.
+
+Hilbert's twelfth problem asks for explicit generators of abelian
+extensions through special values of functions. Roots of unity solve it
+over \(\mathbf Q\) by (3). Imaginary quadratic fields motivate elliptic
+functions and complex multiplication; their general generation theory is
+beyond this lesson. The preceding lesson obtains its particular ring
+class fields by independently checked radical equations.
+
+\subsection{7. Exercises and complete
+solutions}\label{exercises-and-complete-solutions}
+
+\subsubsection{Exercise 1 --- The least cyclotomic modulus
+(easy)}\label{exercise-1-the-least-cyclotomic-modulus-easy}
+
+Find the smallest \(m\) containing \(\mathbf Q(\sqrt{-7})\) and
+\(\mathbf Q(\sqrt3)\) in \(\mathbf Q(\zeta_m)\).
+
+\textbf{Solution.} Their fundamental discriminants are \(-7\) and
+\(12\). The quadratic conductor calculation in lesson 18 gives finite
+conductors \(7\) and \(12\), respectively. Proposition 20.5 proves that
+each is its least cyclotomic modulus. Inclusion at \(7\) is also
+exhibited by the quadratic Gauss sum \(\sum_{a\bmod7}(a/7)\zeta_7^a\),
+whose square is \(-7\), proved in Proposition 12.6 of \emph{Cyclotomic
+fields}. At \(12\), \(\zeta_{12}+\zeta_{12}^{-1}=\sqrt3\). The real
+factor of the first field's conductor is \(\infty\); it does not change
+the finite least modulus.
+
+Similarly \(\sqrt2=\zeta_8+\zeta_8^{-1}\), and \(\sqrt5\) belongs to
+\(\mathbf Q(\zeta_5)\) by its quadratic Gauss sum. Their least moduli
+are \(8\) and \(5\), as their conductors predict.
+
+\subsubsection{Exercise 2 --- The negative real idèle
+(medium)}\label{exercise-2-the-negative-real-iduxe8le-medium}
+
+Compute the Artin image of the idèle equal to \(-1\) at infinity and
+\(1\) at every finite prime, in both conventions.
+
+\textbf{Solution.} Its normalized representative under (5) is
+\((1,(-1)_p)\). Formula (6) sends it to \(\sigma_{-1}\) in either
+convention, because this unit tuple is its own inverse. It sends every
+root of unity to its inverse, hence is complex conjugation. This idèle
+is not the diagonal principal element \(-1\): the latter has \(-1\) at
+the finite primes too and has trivial global symbol. Their product
+displays explicitly the cancellation of the real and finite signs on a
+principal idèle.
+
+\subsubsection{Exercise 3 --- The real ray field
+(medium)}\label{exercise-3-the-real-ray-field-medium}
+
+Prove that \(\mathbf Q(\zeta_m)^+\) is the ray field for modulus \(m\),
+including \(m=1,2\).
+
+\textbf{Solution.} In the ideal ray group, a positive generator
+represents the same ideal as its negative. Removing the positivity
+condition therefore replaces \(U_m\) by \(U_m/\langle-1\rangle\). The
+full ray field for \(m\infty\) is \(\mathbf Q(\zeta_m)\). Passing to
+modulus \(m\) kills the image of the real sign, whose Artin symbol is
+\(\sigma_{-1}\). The fixed field of that subgroup is exactly the real
+subfield. When \(m>2\), this subgroup has order \(2\), so the degree is
+\(\varphi(m)/2\). When \(m=1,2\), both groups and fields are trivial,
+and taking a half of \(\varphi(m)\) would be incorrect.
+
+\subsubsection{Exercise 4 --- A proof from local Kronecker--Weber
+(hard)}\label{exercise-4-a-proof-from-local-kroneckerweber-hard}
+
+Prove the finite assertion in Theorem 20.2 using local Kronecker--Weber
+and the absence of a nontrivial abelian extension of \(\mathbf Q\)
+unramified at every finite prime.
+
+\textbf{Solution.} Let \(S\) contain the finite primes ramified in
+\(L/\mathbf Q\). At \(p\in S\), local Kronecker--Weber puts each
+completion of \(L\) in \(\mathbf Q_p(\zeta_{p^{n_p}},\zeta_{b_p})\),
+with \(p\nmid b_p\), for a sufficiently large \(n_p\). The second factor
+is unramified. Therefore, after adjoining the \(p^{n_p}\)-th roots, the
+compositum of the completion with that cyclotomic local field is
+unramified over it: it is a subextension of the base change of the
+unramified factor.
+
+Put \(m=\prod_{p\in S}p^{n_p}\), \(M=\mathbf Q(\zeta_m)\), and \(T=LM\).
+At \(p\in S\), the completion of \(M\) is the product of the totally
+ramified \(p\)-primary cyclotomic extension and unramified
+prime-to-\(p\) factors. The preceding observation makes \(T/M\)
+unramified there. Outside \(S\), both \(L\) and \(M\) are unramified, so
+their compositum is too. All these local assertions follow from
+separable residue-field extensions and their preservation under base
+change.
+
+The group \(G=\operatorname{Gal}(T/\mathbf Q)\) is abelian. Its inertia
+subgroup \(I_p\) maps isomorphically onto the inertia of
+\(M/\mathbf Q\): restriction is onto, and its kernel is relative inertia
+for \(T/M\), already trivial. The cyclotomic inertia theorem gives
+\(|I_p|=\varphi(p^{n_p})\). The subgroup \(J\) generated by these finite
+inertia groups has fixed field unramified at every finite prime over
+\(\mathbf Q\). Its fixed field is abelian, and is therefore
+\(\mathbf Q\), since the narrow Hilbert class group of \(\mathbf Q\) is
+trivial. Hence \(J=G\). Because \(G\) is abelian, multiplication of the
+finitely many inertia subgroups is onto, and \[
+|G|\leq\prod_{p\in S}|I_p|=\prod_{p\in S}\varphi(p^{n_p})
+=\varphi(m)=[M:\mathbf Q].
+\] But \(M\subseteq T\) gives the reverse degree inequality. Thus
+\(T=M\), so \(L\subseteq M\), as required. If \(S\) is empty, the narrow
+Hilbert argument already gives \(L=\mathbf Q\). This proof uses no
+assertion about the class number of \(M\); relative unramifiedness by
+itself would not imply \(T=M\).
+
+\subsection{Editable edition}\label{editable-edition}
+
+The reading edition provides the complete LaTeX source of this lesson,
+the cumulative course LaTeX and the editable source ZIP. The archive
+contains all twenty-four Markdown lessons, complete LaTeX bodies,
+original diagrams, metadata and reproduction instructions.
+
+\subsection{References}\label{references}
+
+The lesson proves both Kronecker--Weber routes, the rational Artin map,
+conductors and discriminants. Section 6 proves the cyclotomic values and
+the canonical topological component identification. The Bost--Connes
+state construction retains its separately identified programme
+prerequisite.
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.jmilne.org/math/CourseNotes/ANT.pdf}{J. S. Milne,
+  Algebraic Number Theory}.
+\item
+  \href{https://www.jmilne.org/math/CourseNotes/CFT.pdf}{J. S. Milne,
+  Class Field Theory, version 4.03}.
+\item
+  \href{https://alainconnes.org/wp-content/uploads/bookwebfinal-2.pdf}{Alain
+  Connes and Matilde Marcolli, Noncommutative Geometry, Quantum Fields
+  and Motives, author-posted draft}.
+\end{itemize}
+
+The arithmetic and geometric Frobenius conventions are compared in
+equations (6) and (13). The Connes--Marcolli reference is the
+author-posted draft, with its own section numbering and pagination.
+
+The \href{../free-proofs.html}{proof guide} gives the lesson sequence
+and the exact prerequisite record. External references accompany the
+written arguments.
+
+\end{document}

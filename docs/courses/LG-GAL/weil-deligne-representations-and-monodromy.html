@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weil–Deligne representations and Grothendieck’s monodromy theorem · Galois representations</title>
+<meta name="description" content="A lesson of the course Galois representations. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/weil-deligne-representations-and-monodromy.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Galois representations</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="weil-deligne-representations-and-grothendieck-s-monodromy-theorem">Weil–Deligne representations and Grothendieck’s monodromy theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A continuous representation can have infinite inertia image even when its coefficient characteristic differs from the residue characteristic. The infinite part is remarkably rigid: on a sufficiently small subgroup, one nilpotent matrix controls everything. A Weil–Deligne representation records that matrix separately from the representation with finite inertia image. This makes local factors and comparison between coefficient fields algebraic.</p>
+<h2 id="1-conventions-and-the-two-kinds-of-representation">1. Conventions and the two kinds of representation</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a nonarchimedean local field with residue characteristic <span class="math" data-tex="\(p\)">\(p\)</span> and residue field of size <span class="math" data-tex="\(q\)">\(q\)</span>. Write <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> for inertia and wild inertia. A geometric Frobenius lift <span class="math" data-tex="\(\Phi\in W_F\)">\(\Phi\in W_F\)</span> gives
+<span class="math math-display" data-tex="\[
+W_F=I\rtimes\langle\Phi\rangle,
+\qquad v(\Phi)=1,
+\qquad \|w\|=q^{-v(w)}.
+\tag{1}
+\]">\[
+W_F=I\rtimes\langle\Phi\rangle,
+\qquad v(\Phi)=1,
+\qquad \|w\|=q^{-v(w)}.
+\tag{1}
+\]</span>
+Here <span class="math" data-tex="\(I\)">\(I\)</span> has its profinite topology and <span class="math" data-tex="\(W_F/I=\mathbf Z\)">\(W_F/I=\mathbf Z\)</span> has the discrete topology. The local-field structure needed below is
+<span class="math math-display" data-tex="\[
+P\text{ is pro-}p,
+\qquad I/P\simeq\prod_{r\ne p}\mathbf Z_r(1),
+\qquad t_\ell(w\sigma w^{-1})=\|w\|t_\ell(\sigma).
+\tag{2}
+\]">\[
+P\text{ is pro-}p,
+\qquad I/P\simeq\prod_{r\ne p}\mathbf Z_r(1),
+\qquad t_\ell(w\sigma w^{-1})=\|w\|t_\ell(\sigma).
+\tag{2}
+\]</span>
+Choose a basis of <span class="math" data-tex="\(\mathbf Z_\ell(1)\)">\(\mathbf Z_\ell(1)\)</span>, so that the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-component of the tame character is written <span class="math" data-tex="\(t_\ell:I\to\mathbf Z_\ell\)">\(t_\ell:I\to\mathbf Z_\ell\)</span>. Throughout <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>.</p>
+<p>The Weil topology and splitting in (1) are Proposition 1.1 of the earlier lesson <em>Representations of Weil groups</em>. We now prove (2), using the finite-extension, Hensel and unramified-field proofs of §§0D–0F in the first lesson. No ramification structure theorem is left as an external citation.</p>
+<p><strong>Proposition 1.0 (wild and tame inertia).</strong> Let <span class="math" data-tex="\(F^{\mathrm{ur}}\)">\(F^{\mathrm{ur}}\)</span> be the unramified union and <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> a uniformizer of <span class="math" data-tex="\(F\)">\(F\)</span>. The maximal tame extension is
+<span class="math math-display" data-tex="\[
+F^t=\bigcup_{(m,p)=1}F^{\mathrm{ur}}(\varpi^{1/m}).
+\]">\[
+F^t=\bigcup_{(m,p)=1}F^{\mathrm{ur}}(\varpi^{1/m}).
+\]</span>
+Its inertia group is canonically <span class="math" data-tex="\(\varprojlim_{(m,p)=1}\mu_m\)">\(\varprojlim_{(m,p)=1}\mu_m\)</span>, with power transition maps. The kernel <span class="math" data-tex="\(P=\operatorname{Gal}(F^{\mathrm{sep}}/F^t)\)">\(P=\operatorname{Gal}(F^{\mathrm{sep}}/F^t)\)</span> is pro-<span class="math" data-tex="\(p\)">\(p\)</span>. In this tame quotient arithmetic Frobenius conjugates by the <span class="math" data-tex="\(q\)">\(q\)</span>-th power, and geometric Frobenius by its inverse. These assertions imply (2).</p>
+<p><strong>Proof.</strong> We first establish the finite ramification assertions used to identify this kernel. In a finite Galois extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, let <span class="math" data-tex="\(L_0\)">\(L_0\)</span> be the maximal unramified subfield. The first lesson constructs <span class="math" data-tex="\(L_0\)">\(L_0\)</span> by lifting a primitive residue element and proves that its degree is the residue degree. Thus <span class="math" data-tex="\(L/L_0\)">\(L/L_0\)</span> is totally ramified of degree <span class="math" data-tex="\(e\)">\(e\)</span>, its inertia group <span class="math" data-tex="\(G_0\)">\(G_0\)</span> fixes <span class="math" data-tex="\(L_0\)">\(L_0\)</span>, and <span class="math" data-tex="\(|G_0|=e\)">\(|G_0|=e\)</span>.</p>
+<p>If <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is an upper uniformizer, then <span class="math" data-tex="\(1,\pi,\ldots,\pi^{e-1}\)">\(1,\pi,\ldots,\pi^{e-1}\)</span> are linearly independent over <span class="math" data-tex="\(L_0\)">\(L_0\)</span>: the nonzero terms in such a relation have distinct valuations modulo <span class="math" data-tex="\(e\)">\(e\)</span>, so their minimum cannot cancel. There are <span class="math" data-tex="\(e\)">\(e\)</span> of them, hence they are a basis. An integral element expressed in this basis has coefficients in <span class="math" data-tex="\(\mathcal O_{L_0}\)">\(\mathcal O_{L_0}\)</span>, by the same distinct-valuation argument. Consequently <span class="math" data-tex="\(\mathcal O_L=\mathcal O_{L_0}[\pi]\)">\(\mathcal O_L=\mathcal O_{L_0}[\pi]\)</span>.</p>
+<p>For <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, define <span class="math" data-tex="\(G_j\)">\(G_j\)</span> to be the automorphisms acting trivially on <span class="math" data-tex="\(\mathcal O_L/\pi^{j+1}\mathcal O_L\)">\(\mathcal O_L/\pi^{j+1}\mathcal O_L\)</span>. The definition of <span class="math" data-tex="\(G_0\)">\(G_0\)</span> agrees with inertia. These are normal subgroups, because conjugation preserves the integral ring and valuation; they eventually become trivial, because each nonidentity automorphism moves some integral element and the group is finite. For <span class="math" data-tex="\(\sigma\in G_0\)">\(\sigma\in G_0\)</span>, the polynomial identity <span class="math" data-tex="\(f(Y)-f(X)=(Y-X)g(X,Y)\)">\(f(Y)-f(X)=(Y-X)g(X,Y)\)</span> and the preceding integral basis show
+<span class="math math-display" data-tex="\[
+\sigma\in G_j\quad\Longleftrightarrow\quad
+v_L(\sigma\pi-\pi)\ge j+1.
+\]">\[
+\sigma\in G_j\quad\Longleftrightarrow\quad
+v_L(\sigma\pi-\pi)\ge j+1.
+\]</span>
+Reduction of <span class="math" data-tex="\(\sigma\pi/\pi\)">\(\sigma\pi/\pi\)</span> is therefore an injective homomorphism <span class="math" data-tex="\(G_0/G_1\to k_L^\times\)">\(G_0/G_1\to k_L^\times\)</span>. For <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, its class in
+<span class="math" data-tex="\((1+\pi^j\mathcal O_L)/(1+\pi^{j+1}\mathcal O_L)\)">\((1+\pi^j\mathcal O_L)/(1+\pi^{j+1}\mathcal O_L)\)</span>
+is an injective homomorphism from <span class="math" data-tex="\(G_j/G_{j+1}\)">\(G_j/G_{j+1}\)</span>. Indeed, if <span class="math" data-tex="\(c_\sigma=\sigma\pi/\pi\)">\(c_\sigma=\sigma\pi/\pi\)</span>, then
+<span class="math" data-tex="\(c_{\sigma\tau}=\sigma(c_\tau)c_\sigma\)">\(c_{\sigma\tau}=\sigma(c_\tau)c_\sigma\)</span>; elements of <span class="math" data-tex="\(G_1\)">\(G_1\)</span> act trivially on this unit quotient. The latter quotient is the additive group of <span class="math" data-tex="\(k_L\)">\(k_L\)</span>, via <span class="math" data-tex="\(1+a\pi^j\mapsto\bar a\)">\(1+a\pi^j\mapsto\bar a\)</span>, since the product term has valuation at least <span class="math" data-tex="\(j+1\)">\(j+1\)</span>.</p>
+<p>It follows that <span class="math" data-tex="\(G_1\)">\(G_1\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-group and that <span class="math" data-tex="\(G_0/G_1\)">\(G_0/G_1\)</span> has order prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Thus <span class="math" data-tex="\(G_1\)">\(G_1\)</span> is the unique Sylow <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup of inertia. In particular <span class="math" data-tex="\(L^{G_1}/F\)">\(L^{G_1}/F\)</span> is tame. Conversely, a Galois tame subextension has inertia of order prime to <span class="math" data-tex="\(p\)">\(p\)</span>, so the image of <span class="math" data-tex="\(G_1\)">\(G_1\)</span> in it is trivial. This identifies the largest tame subextension of <span class="math" data-tex="\(L/F\)">\(L/F\)</span> as <span class="math" data-tex="\(L^{G_1}\)">\(L^{G_1}\)</span>, once the tame union is constructed.</p>
+<p>Now suppose <span class="math" data-tex="\(L/F\)">\(L/F\)</span> is finite and tame, with maximal unramified subfield <span class="math" data-tex="\(L_0\)">\(L_0\)</span>. In its totally ramified part choose an upper uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and write <span class="math" data-tex="\(\pi^e=\varpi u\)">\(\pi^e=\varpi u\)</span>, with <span class="math" data-tex="\(u\)">\(u\)</span> an upper unit and <span class="math" data-tex="\((e,p)=1\)">\((e,p)=1\)</span>. Choose a unit <span class="math" data-tex="\(u_0\in L_0\)">\(u_0\in L_0\)</span> with the same residue. Simple-root Hensel applied to <span class="math" data-tex="\(X^e-u/u_0\)">\(X^e-u/u_0\)</span> gives <span class="math" data-tex="\(b\equiv1\pmod\pi\)">\(b\equiv1\pmod\pi\)</span> with <span class="math" data-tex="\(b^e=u/u_0\)">\(b^e=u/u_0\)</span>. Hence <span class="math" data-tex="\(\gamma=\pi/b\)">\(\gamma=\pi/b\)</span> satisfies <span class="math" data-tex="\(\gamma^e=\varpi u_0\)">\(\gamma^e=\varpi u_0\)</span> and still generates <span class="math" data-tex="\(L/L_0\)">\(L/L_0\)</span> by the uniformizer basis argument.</p>
+<p>Every unit of <span class="math" data-tex="\(F^{\mathrm{ur}}\)">\(F^{\mathrm{ur}}\)</span> has an <span class="math" data-tex="\(m\)">\(m\)</span>-th root there if <span class="math" data-tex="\((m,p)=1\)">\((m,p)=1\)</span>. To prove this, put the unit in a complete finite unramified level, choose an <span class="math" data-tex="\(m\)">\(m\)</span>-th root of its residue in a finite residue extension, and lift its simple root by Hensel in the corresponding complete unramified field. This also puts <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span> in <span class="math" data-tex="\(F^{\mathrm{ur}}\)">\(F^{\mathrm{ur}}\)</span>. Applying it to <span class="math" data-tex="\(u_0\)">\(u_0\)</span> shows that <span class="math" data-tex="\(L\)">\(L\)</span> lies in <span class="math" data-tex="\(F^{\mathrm{ur}}(\varpi^{1/e})\)">\(F^{\mathrm{ur}}(\varpi^{1/e})\)</span>.</p>
+<p>Conversely, any finite set in <span class="math" data-tex="\(F^{\mathrm{ur}}(\varpi^{1/m})\)">\(F^{\mathrm{ur}}(\varpi^{1/m})\)</span> lies in <span class="math" data-tex="\(F_r(\varpi^{1/m})\)">\(F_r(\varpi^{1/m})\)</span>, where <span class="math" data-tex="\(F_r/F\)">\(F_r/F\)</span> is finite unramified and may be enlarged to contain <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>. Distinct valuation classes show that the radical extension has degree and ramification index <span class="math" data-tex="\(m\)">\(m\)</span>. Its intermediate fields therefore have ramification indices dividing <span class="math" data-tex="\(m\)">\(m\)</span>, so are tame; their residue fields are finite and hence separable. These radical fields are Galois over <span class="math" data-tex="\(F\)">\(F\)</span> after including <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>, since every conjugate radical is a root-of-unity multiple of the original. Their union is consequently Galois and is exactly the maximal tame field displayed in the statement.</p>
+<p>For the finite Galois <span class="math" data-tex="\(L/F\)">\(L/F\)</span> above, this proves <span class="math" data-tex="\(L\cap F^t=L^{G_1}\)">\(L\cap F^t=L^{G_1}\)</span>. The image of <span class="math" data-tex="\(P\)">\(P\)</span> in its finite Galois group is thus <span class="math" data-tex="\(G_1\)">\(G_1\)</span>, a <span class="math" data-tex="\(p\)">\(p\)</span>-group. Finite Galois quotients detect the topology of <span class="math" data-tex="\(P\)">\(P\)</span> by the first lesson's inverse-limit proof, so <span class="math" data-tex="\(P\)">\(P\)</span> is pro-<span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Choose compatible radicals <span class="math" data-tex="\(\varpi_n^{n/m}=\varpi_m\)">\(\varpi_n^{n/m}=\varpi_m\)</span>. Such choices exist along a cofinal sequence of indices, each dividing the next, by successively taking roots. Over <span class="math" data-tex="\(F^{\mathrm{ur}}\)">\(F^{\mathrm{ur}}\)</span>, the powers <span class="math" data-tex="\(1,\varpi_m,\ldots,\varpi_m^{m-1}\)">\(1,\varpi_m,\ldots,\varpi_m^{m-1}\)</span> have distinct valuations modulo <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, so the radical has degree <span class="math" data-tex="\(m\)">\(m\)</span>. Its conjugates are all <span class="math" data-tex="\(\zeta\varpi_m\)">\(\zeta\varpi_m\)</span>, with <span class="math" data-tex="\(\zeta\in\mu_m\)">\(\zeta\in\mu_m\)</span>, and the action ratio
+<span class="math math-display" data-tex="\[
+\sigma\longmapsto\frac{\sigma(\varpi_m)}{\varpi_m}
+\]">\[
+\sigma\longmapsto\frac{\sigma(\varpi_m)}{\varpi_m}
+\]</span>
+identifies its Galois group with <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>. Compatibility of radicals identifies restriction with the power map. Inverse limits give the asserted tame inertia group. Changing a radical multiplies it by a root of unity in the unramified field; changing <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> multiplies the radicals by prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> roots of a unit there. Inertia fixes these ratios, so the identification is independent of both changes. Decomposing each finite cyclic root group into its primary components gives <span class="math" data-tex="\(\prod_{r\ne p}\mathbb Z_r(1)\)">\(\prod_{r\ne p}\mathbb Z_r(1)\)</span>.</p>
+<p>Extend arithmetic Frobenius on <span class="math" data-tex="\(F^{\mathrm{ur}}\)">\(F^{\mathrm{ur}}\)</span> by fixing the compatible radicals. Unique coefficient expansions in each radical basis define this automorphism, and the extensions agree through the tower. It raises the prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> roots of unity to their <span class="math" data-tex="\(q\)">\(q\)</span>-th powers: this holds on residues and simple-root Hensel gives equality of the lifts. Conjugating an inertia automorphism therefore raises each action ratio to its <span class="math" data-tex="\(q\)">\(q\)</span>-th power. Every other Frobenius lift gives the same action, since tame inertia is abelian. Taking the inverse lift gives <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>, and an element <span class="math" data-tex="\(w=i\Phi^n\)">\(w=i\Phi^n\)</span> consequently acts on the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-component by <span class="math" data-tex="\(q^{-n}=\|w\|\)">\(q^{-n}=\|w\|\)</span>. This proves (2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A continuous <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic representation will initially have coefficients in a finite extension <span class="math" data-tex="\(E/\mathbf Q_\ell\)">\(E/\mathbf Q_\ell\)</span>. Statements over <span class="math" data-tex="\(\overline{\mathbf Q}_\ell\)">\(\overline{\mathbf Q}_\ell\)</span> mean scalar extensions of such representations. The finite-field-of-definition condition prevents a topology on the algebraic closure from silently changing the category.</p>
+<p><strong>Definition 1.1.</strong> Over a characteristic-zero field <span class="math" data-tex="\(E\)">\(E\)</span>, a Weil–Deligne representation is a pair <span class="math" data-tex="\((r,N)\)">\((r,N)\)</span> on a finite-dimensional vector space <span class="math" data-tex="\(V\)">\(V\)</span>, where <span class="math" data-tex="\(r:W_F\to\mathrm{GL}(V)\)">\(r:W_F\to\mathrm{GL}(V)\)</span> is smooth and
+<span class="math math-display" data-tex="\[
+r(w)Nr(w)^{-1}=\|w\|N.
+\tag{3}
+\]">\[
+r(w)Nr(w)^{-1}=\|w\|N.
+\tag{3}
+\]</span>
+Smooth means that the restriction to <span class="math" data-tex="\(I\)">\(I\)</span> is trivial on an open subgroup. A morphism intertwines <span class="math" data-tex="\(r\)">\(r\)</span> and commutes with <span class="math" data-tex="\(N\)">\(N\)</span>. One ordinarily includes nilpotence in the definition; the following observation makes it redundant.</p>
+<p><strong>Lemma 1.2.</strong> Relation (3) forces <span class="math" data-tex="\(N\)">\(N\)</span> to be nilpotent.</p>
+<p><em>Proof.</em> Over an algebraic closure, conjugate matrices have the same finite multiset of eigenvalues. Relation (3) for <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> therefore says that the spectrum of <span class="math" data-tex="\(N\)">\(N\)</span> is invariant under multiplication by <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>. A nonzero eigenvalue would have an infinite orbit, since <span class="math" data-tex="\(q\)">\(q\)</span> is not a root of unity in characteristic zero. Thus every eigenvalue is zero. Cayley–Hamilton gives <span class="math" data-tex="\(N^{\dim V}=0\)">\(N^{\dim V}=0\)</span>. ∎</p>
+<p>Define <span class="math" data-tex="\(\mathrm{Sp}(n)\)">\(\mathrm{Sp}(n)\)</span>, for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, by the basis <span class="math" data-tex="\(e_0,\ldots,e_{n-1}\)">\(e_0,\ldots,e_{n-1}\)</span> and
+<span class="math math-display" data-tex="\[
+r(w)e_j=\|w\|^j e_j,
+\qquad Ne_j=e_{j+1}\ (j&lt;n-1),
+\qquad Ne_{n-1}=0.
+\tag{4}
+\]">\[
+r(w)e_j=\|w\|^j e_j,
+\qquad Ne_j=e_{j+1}\ (j&lt;n-1),
+\qquad Ne_{n-1}=0.
+\tag{4}
+\]</span>
+The kernel is the last line, with character <span class="math" data-tex="\(\|\cdot\|^{n-1}\)">\(\|\cdot\|^{n-1}\)</span>. This direction of the shift will determine every factor below.</p>
+<h2 id="2-a-full-monodromy-proof">2. A full monodromy proof</h2>
+<p>The issue is compact inertia, rather than compactness of the entire Weil-group image. The latter can fail: the unramified character sending <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is continuous on <span class="math" data-tex="\(W_F\)">\(W_F\)</span>.</p>
+<p>We first isolate the compact-group argument needed to choose a subgroup invariant under every conjugation coming from <span class="math" data-tex="\(W_F\)">\(W_F\)</span>.</p>
+<p>We also record the linear algebra used by the choice and semisimplification arguments, including its descent to the original coefficient field.</p>
+<p><strong>Lemma 2.0 (primary spaces and Jordan components).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is an invertible operator over a characteristic-zero field <span class="math" data-tex="\(E\)">\(E\)</span>, its vector space is the direct sum of the kernels of the primary factors of its minimal polynomial. It has unique commuting factors <span class="math" data-tex="\(A=SU\)">\(A=SU\)</span>, where <span class="math" data-tex="\(S\)">\(S\)</span> is semisimple and <span class="math" data-tex="\(U\)">\(U\)</span> unipotent, and both factors are polynomials in <span class="math" data-tex="\(A\)">\(A\)</span> over <span class="math" data-tex="\(E\)">\(E\)</span>. The additive version <span class="math" data-tex="\(B=B_s+B_n\)">\(B=B_s+B_n\)</span>, with commuting semisimple and nilpotent parts, has the same properties. On <span class="math" data-tex="\(\operatorname{End}_E(V)\)">\(\operatorname{End}_E(V)\)</span>, the Jordan components of <span class="math" data-tex="\(\operatorname{Ad}(A)\)">\(\operatorname{Ad}(A)\)</span> are <span class="math" data-tex="\(\operatorname{Ad}(S)\)">\(\operatorname{Ad}(S)\)</span> and <span class="math" data-tex="\(\operatorname{Ad}(U)\)">\(\operatorname{Ad}(U)\)</span>.</p>
+<p><strong>Proof.</strong> Factor the minimal polynomial as <span class="math" data-tex="\(\prod_f f^{a_f}\)">\(\prod_f f^{a_f}\)</span> with distinct monic irreducible factors. The Euclidean algorithm makes these factors pairwise coprime. Its Chinese-remainder idempotents are polynomials in <span class="math" data-tex="\(A\)">\(A\)</span>, add to one, multiply pairwise to zero, and have images <span class="math" data-tex="\(\ker f(A)^{a_f}\)">\(\ker f(A)^{a_f}\)</span>. To verify the image assertion, use the congruences modulo each primary factor; the annihilating minimal polynomial then makes the polynomial identities hold on the vector space. This proves the primary decomposition over <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Take a finite Galois splitting field <span class="math" data-tex="\(K/E\)">\(K/E\)</span> of the minimal polynomial. Its irreducible factors are separable in characteristic zero. The preceding argument over <span class="math" data-tex="\(K\)">\(K\)</span> gives generalized eigenspaces <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>. Define <span class="math" data-tex="\(S\)">\(S\)</span> to be multiplication by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>. A polynomial with congruences
+<span class="math" data-tex="\(s(X)\equiv\lambda\pmod{(X-\lambda)^{a_\lambda}}\)">\(s(X)\equiv\lambda\pmod{(X-\lambda)^{a_\lambda}}\)</span>
+exists by the same Euclidean algorithm. Its unique remainder of degree below the minimal polynomial is fixed by <span class="math" data-tex="\(\operatorname{Gal}(K/E)\)">\(\operatorname{Gal}(K/E)\)</span>, because those automorphisms permute these congruences. It therefore has coefficients in <span class="math" data-tex="\(E\)">\(E\)</span>. This constructs <span class="math" data-tex="\(S=s(A)\)">\(S=s(A)\)</span> over <span class="math" data-tex="\(E\)">\(E\)</span>. On <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>, <span class="math" data-tex="\(A=\lambda1+D_\lambda\)">\(A=\lambda1+D_\lambda\)</span> with <span class="math" data-tex="\(D_\lambda\)">\(D_\lambda\)</span> nilpotent, so <span class="math" data-tex="\(U=S^{-1}A=1+\lambda^{-1}D_\lambda\)">\(U=S^{-1}A=1+\lambda^{-1}D_\lambda\)</span> is unipotent. The Euclidean algorithm also expresses <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> as a polynomial in <span class="math" data-tex="\(S\)">\(S\)</span>, since all eigenvalues are nonzero. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is a polynomial in <span class="math" data-tex="\(A\)">\(A\)</span>, and the factors commute.</p>
+<p>For uniqueness, any commuting semisimple and unipotent factors preserve the generalized eigenspaces of their product. Inside each simultaneous eigenspace of the semisimple factor, that product has the same unique eigenvalue as the semisimple factor. On <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span> that factor must consequently be <span class="math" data-tex="\(\lambda1\)">\(\lambda1\)</span>. The other factor is forced by division. This proves uniqueness over <span class="math" data-tex="\(K\)">\(K\)</span> and hence over <span class="math" data-tex="\(E\)">\(E\)</span>. Defining <span class="math" data-tex="\(B_s\)">\(B_s\)</span> to be the scalar <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on each generalized eigenspace of an arbitrary <span class="math" data-tex="\(B\)">\(B\)</span>, without requiring nonzero eigenvalues, gives the additive assertion by the same polynomial construction and uniqueness argument.</p>
+<p>After splitting <span class="math" data-tex="\(S\)">\(S\)</span>, the spaces <span class="math" data-tex="\(\operatorname{Hom}(V_\lambda,V_\mu)\)">\(\operatorname{Hom}(V_\lambda,V_\mu)\)</span> show that <span class="math" data-tex="\(\operatorname{Ad}(S)\)">\(\operatorname{Ad}(S)\)</span> is semisimple, with eigenvalues <span class="math" data-tex="\(\mu/\lambda\)">\(\mu/\lambda\)</span>. Left multiplication by <span class="math" data-tex="\(U\)">\(U\)</span> and right multiplication by <span class="math" data-tex="\(U^{-1}\)">\(U^{-1}\)</span> are commuting unipotent operators; their product is unipotent, since sums and products of their commuting nilpotent differences from one are nilpotent. Therefore <span class="math" data-tex="\(\operatorname{Ad}(U)\)">\(\operatorname{Ad}(U)\)</span> is unipotent. They commute and multiply to <span class="math" data-tex="\(\operatorname{Ad}(A)\)">\(\operatorname{Ad}(A)\)</span>. Uniqueness proves the last assertion. The same reasoning shows that any positive power of an invertible semisimple operator is semisimple, and that an invertible operator with a semisimple positive power is semisimple: on a generalized eigenspace, the linear coefficient of <span class="math" data-tex="\((\lambda+D)^m\)">\((\lambda+D)^m\)</span> in <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(m\lambda^{m-1}\ne0\)">\(m\lambda^{m-1}\ne0\)</span>, so a nonzero nilpotent part cannot disappear. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(H\subset\mathrm{GL}_d(E)\)">\(H\subset\mathrm{GL}_d(E)\)</span> be compact. Suppose <span class="math" data-tex="\(B\triangleleft H\)">\(B\triangleleft H\)</span> is the image of a pro-<span class="math" data-tex="\(p\)">\(p\)</span> group and <span class="math" data-tex="\(H/B\)">\(H/B\)</span> is abelian. Then <span class="math" data-tex="\(B\)">\(B\)</span> is finite, and <span class="math" data-tex="\(H\)">\(H\)</span> has a characteristic open abelian pro-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> subgroup contained in any prescribed sufficiently small congruence subgroup.</p>
+<p><em>Proof.</em> By the stable-lattice argument of the first lesson, conjugate <span class="math" data-tex="\(H\)">\(H\)</span> into <span class="math" data-tex="\(\mathrm{GL}(T)\)">\(\mathrm{GL}(T)\)</span>, where <span class="math" data-tex="\(T\)">\(T\)</span> is an <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span>-lattice. For sufficiently large <span class="math" data-tex="\(m\)">\(m\)</span>, the group
+<span class="math math-display" data-tex="\[
+U_m=1+\ell^m\mathrm{End}_{\mathcal O_E}(T)
+\tag{5}
+\]">\[
+U_m=1+\ell^m\mathrm{End}_{\mathcal O_E}(T)
+\tag{5}
+\]</span>
+is pro-<span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and logarithm and exponential are inverse on the corresponding matrix neighborhoods. We can take any integer <span class="math" data-tex="\(m&gt;1/(\ell-1)\)">\(m&gt;1/(\ell-1)\)</span>; increasing it meets a prescribed congruence neighborhood. These assertions follow directly from the series: the valuations of <span class="math" data-tex="\(X^k/k\)">\(X^k/k\)</span> and <span class="math" data-tex="\(X^k/k!\)">\(X^k/k!\)</span> tend to infinity for <span class="math" data-tex="\(X\in\ell^m\mathrm{End}(T)\)">\(X\in\ell^m\mathrm{End}(T)\)</span>, and the formal inverse identities hold by convergence. The finite successive congruence quotients are <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-groups, proving the pro-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> assertion.</p>
+<p>The group <span class="math" data-tex="\(B\cap U_m\)">\(B\cap U_m\)</span> is both pro-<span class="math" data-tex="\(p\)">\(p\)</span> and pro-<span class="math" data-tex="\(\ell\)">\(\ell\)</span>, so it is trivial. Consequently <span class="math" data-tex="\(B\)">\(B\)</span> injects into a finite congruence quotient and is finite. Put <span class="math" data-tex="\(J_0=H\cap U_m\)">\(J_0=H\cap U_m\)</span>. Commutators in <span class="math" data-tex="\(J_0\)">\(J_0\)</span> lie in <span class="math" data-tex="\(B\)">\(B\)</span>, because <span class="math" data-tex="\(H/B\)">\(H/B\)</span> is abelian; they also lie in <span class="math" data-tex="\(J_0\)">\(J_0\)</span>. Hence <span class="math" data-tex="\(J_0\)">\(J_0\)</span> is abelian.</p>
+<p>Logarithm identifies <span class="math" data-tex="\(J_0\)">\(J_0\)</span> with a closed additive subgroup of <span class="math" data-tex="\(\ell^m\mathrm{End}(T)\)">\(\ell^m\mathrm{End}(T)\)</span>. Commuting matrices satisfy <span class="math" data-tex="\(\log(xy)=\log x+\log y\)">\(\log(xy)=\log x+\log y\)</span>. Closed additive subgroups are <span class="math" data-tex="\(\mathbf Z_\ell\)">\(\mathbf Z_\ell\)</span>-submodules, since integer multiplication extends by continuity. This module is finitely generated over <span class="math" data-tex="\(\mathbf Z_\ell\)">\(\mathbf Z_\ell\)</span>, being a submodule of a finite free module. Thus <span class="math" data-tex="\(J_0\)">\(J_0\)</span>, and then its finite extension <span class="math" data-tex="\(H\)">\(H\)</span>, are topologically finitely generated.</p>
+<p>Let <span class="math" data-tex="\(a=[H:J_0]\)">\(a=[H:J_0]\)</span>. A topologically finitely generated profinite group has only finitely many open subgroups of index <span class="math" data-tex="\(a\)">\(a\)</span>: each such subgroup is a point stabilizer in a continuous action on <span class="math" data-tex="\(a\)">\(a\)</span> letters, and finitely many choices for the images of a fixed finite generating set give finitely many homomorphisms to <span class="math" data-tex="\(S_a\)">\(S_a\)</span>. The intersection <span class="math" data-tex="\(J\)">\(J\)</span> of all these subgroups is open and characteristic. Since <span class="math" data-tex="\(J_0\)">\(J_0\)</span> occurs in the intersection, <span class="math" data-tex="\(J\subset J_0\)">\(J\subset J_0\)</span>. It is abelian, pro-<span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and lies in the desired matrix neighborhood. ∎</p>
+<p><strong>Theorem 2.2 (Grothendieck’s monodromy theorem).</strong> If <span class="math" data-tex="\(\rho:W_F\to\mathrm{GL}(V)\)">\(\rho:W_F\to\mathrm{GL}(V)\)</span> is continuous and <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, there are an open subgroup <span class="math" data-tex="\(I_1\subset I\)">\(I_1\subset I\)</span> and a unique nilpotent endomorphism <span class="math" data-tex="\(N\)">\(N\)</span> such that
+<span class="math math-display" data-tex="\[
+\rho(\sigma)=\exp(t_\ell(\sigma)N)
+\qquad(\sigma\in I_1).
+\tag{6}
+\]">\[
+\rho(\sigma)=\exp(t_\ell(\sigma)N)
+\qquad(\sigma\in I_1).
+\tag{6}
+\]</span>
+Moreover <span class="math" data-tex="\(\rho(w)N\rho(w)^{-1}=\|w\|N\)">\(\rho(w)N\rho(w)^{-1}=\|w\|N\)</span> for every <span class="math" data-tex="\(w\in W_F\)">\(w\in W_F\)</span>.</p>
+<p><em>Proof.</em> Apply Lemma 2.1 to <span class="math" data-tex="\(H=\rho(I)\)">\(H=\rho(I)\)</span> and <span class="math" data-tex="\(B=\rho(P)\)">\(B=\rho(P)\)</span>. Compactness follows from compactness of <span class="math" data-tex="\(I\)">\(I\)</span>; the quotient is abelian by (2). Take the characteristic subgroup <span class="math" data-tex="\(J\)">\(J\)</span> in a logarithm neighborhood, and let <span class="math" data-tex="\(I_1\)">\(I_1\)</span> be its inverse image. Conjugation by <span class="math" data-tex="\(\rho(W_F)\)">\(\rho(W_F)\)</span> preserves <span class="math" data-tex="\(H\)">\(H\)</span>, so it preserves <span class="math" data-tex="\(J\)">\(J\)</span>. Thus <span class="math" data-tex="\(I_1\)">\(I_1\)</span> is normal in <span class="math" data-tex="\(W_F\)">\(W_F\)</span>.</p>
+<p>The map <span class="math" data-tex="\(I_1\to J\)">\(I_1\to J\)</span> kills <span class="math" data-tex="\(I_1\cap P\)">\(I_1\cap P\)</span>: its image is both pro-<span class="math" data-tex="\(p\)">\(p\)</span> and pro-<span class="math" data-tex="\(\ell\)">\(\ell\)</span>. It therefore factors through the open subgroup <span class="math" data-tex="\(I_1P/P\)">\(I_1P/P\)</span> of tame inertia. A continuous homomorphism from that subgroup to a pro-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> group kills its prime-to-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> components. Equivalently, it factors through
+<span class="math math-display" data-tex="\[
+t_\ell(I_1)=\ell^b\mathbf Z_\ell
+\tag{7}
+\]">\[
+t_\ell(I_1)=\ell^b\mathbf Z_\ell
+\tag{7}
+\]</span>
+for some <span class="math" data-tex="\(b\ge0\)">\(b\ge0\)</span>. To see the component assertion explicitly, an open subgroup of the procyclic product in (2) is a product of open subgroups of its prime components; a pro-<span class="math" data-tex="\(r\)">\(r\)</span> component with <span class="math" data-tex="\(r\ne\ell\)">\(r\ne\ell\)</span> has trivial image in every finite <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-quotient.</p>
+<p>Choose <span class="math" data-tex="\(\tau\in I_1\)">\(\tau\in I_1\)</span> with <span class="math" data-tex="\(t_\ell(\tau)=\ell^b\)">\(t_\ell(\tau)=\ell^b\)</span>, and set <span class="math" data-tex="\(N=\ell^{-b}\log\rho(\tau)\)">\(N=\ell^{-b}\log\rho(\tau)\)</span>. The additive logarithm homomorphism on (7) is determined by its value at the topological generator <span class="math" data-tex="\(\ell^b\)">\(\ell^b\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\log\rho(\sigma)=t_\ell(\sigma)N
+\qquad(\sigma\in I_1).
+\tag{8}
+\]">\[
+\log\rho(\sigma)=t_\ell(\sigma)N
+\qquad(\sigma\in I_1).
+\tag{8}
+\]</span>
+Conjugate (8) by <span class="math" data-tex="\(\rho(w)\)">\(\rho(w)\)</span>. Both inertia elements remain in <span class="math" data-tex="\(I_1\)">\(I_1\)</span>, and logarithm commutes with conjugation by its convergent power series. Equation (2) gives
+<span class="math math-display" data-tex="\[
+\rho(w)N\rho(w)^{-1}=\|w\|N.
+\tag{9}
+\]">\[
+\rho(w)N\rho(w)^{-1}=\|w\|N.
+\tag{9}
+\]</span>
+Lemma 1.2 makes <span class="math" data-tex="\(N\)">\(N\)</span> nilpotent. Exponentiating (8) proves (6), now with a finite polynomial exponential.</p>
+<p>For uniqueness, intersect two proposed open subgroups. Its tame image still contains <span class="math" data-tex="\(\ell^c\mathbf Z_\ell\)">\(\ell^c\mathbf Z_\ell\)</span> for some <span class="math" data-tex="\(c\)">\(c\)</span>. At an element with tame value <span class="math" data-tex="\(\ell^c\)">\(\ell^c\)</span>, apply the polynomial logarithm of a unipotent matrix to (6). It gives <span class="math" data-tex="\(\ell^cN=\ell^cN&#x27;\)">\(\ell^cN=\ell^cN&#x27;\)</span>, hence <span class="math" data-tex="\(N=N&#x27;\)">\(N=N&#x27;\)</span>. ∎</p>
+<p>This proof establishes quasi-unipotence of inertia: each <span class="math" data-tex="\(\rho(\sigma)\)">\(\rho(\sigma)\)</span> has a positive power in the unipotent subgroup <span class="math" data-tex="\(\rho(I_1)\)">\(\rho(I_1)\)</span>. It does not require eigenvalues of <span class="math" data-tex="\(\rho(\Phi)\)">\(\rho(\Phi)\)</span> to be <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic units.</p>
+<h2 id="3-removing-and-recovering-monodromy">3. Removing and recovering monodromy</h2>
+<p>Write <span class="math" data-tex="\(w=i\Phi^{v(w)}\)">\(w=i\Phi^{v(w)}\)</span>, and define <span class="math" data-tex="\(c(w)=t_\ell(i)\)">\(c(w)=t_\ell(i)\)</span>. The tame conjugation relation gives the cocycle identity
+<span class="math math-display" data-tex="\[
+c(ww&#x27;)=c(w)+\|w\|c(w&#x27;).
+\tag{10}
+\]">\[
+c(ww&#x27;)=c(w)+\|w\|c(w&#x27;).
+\tag{10}
+\]</span>
+This identity fixes the order of the exponential in the construction.</p>
+<p><strong>Theorem 3.1.</strong> For fixed <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> and <span class="math" data-tex="\(t_\ell\)">\(t_\ell\)</span>, the rules
+<span class="math math-display" data-tex="\[
+r(w)=\exp(-c(w)N)\rho(w),
+\qquad
+\rho(w)=\exp(c(w)N)r(w)
+\tag{11}
+\]">\[
+r(w)=\exp(-c(w)N)\rho(w),
+\qquad
+\rho(w)=\exp(c(w)N)r(w)
+\tag{11}
+\]</span>
+give inverse equivalences between continuous <span class="math" data-tex="\(E\)">\(E\)</span>-linear representations of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span>-linear Weil–Deligne representations.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, take <span class="math" data-tex="\(N\)">\(N\)</span> from Theorem 2.2. Relation (9) and (10) show
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r(w)r(w&#x27;)
+&amp;=\exp\bigl(-(c(w)+\|w\|c(w&#x27;))N\bigr)\rho(ww&#x27;)\\
+&amp;=r(ww&#x27;).
+\end{aligned}
+\tag{12}
+\]">\[
+\begin{aligned}
+r(w)r(w&#x27;)
+&amp;=\exp\bigl(-(c(w)+\|w\|c(w&#x27;))N\bigr)\rho(ww&#x27;)\\
+&amp;=r(ww&#x27;).
+\end{aligned}
+\tag{12}
+\]</span>
+On <span class="math" data-tex="\(I_1\)">\(I_1\)</span>, (6) makes <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, so <span class="math" data-tex="\(r\)">\(r\)</span> is smooth. Multiplying by an exponential in <span class="math" data-tex="\(N\)">\(N\)</span> does not change its conjugation action on <span class="math" data-tex="\(N\)">\(N\)</span>, proving (3).</p>
+<p>Conversely, begin with <span class="math" data-tex="\((r,N)\)">\((r,N)\)</span>. Relation (3) and (10) prove multiplicativity of the second rule in (11). Its restriction to <span class="math" data-tex="\(I\)">\(I\)</span> is continuous, because <span class="math" data-tex="\(r|_I\)">\(r|_I\)</span> is locally constant and the nilpotent exponential is a polynomial in the continuous tame character. The other components <span class="math" data-tex="\(I\Phi^n\)">\(I\Phi^n\)</span> are open, proving continuity on <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. On an open subgroup killing <span class="math" data-tex="\(r\)">\(r\)</span>, its inertia action is (6), so its monodromy is precisely <span class="math" data-tex="\(N\)">\(N\)</span>. Both constructions are inverse.</p>
+<p>An intertwiner of continuous representations intertwines their monodromy: on a common open subgroup, intertwine (6) and apply the polynomial logarithm at a nonzero tame value. It then intertwines <span class="math" data-tex="\(r\)">\(r\)</span> by (11). Conversely, a map intertwining <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> intertwines <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. This proves full faithfulness as well as essential surjectivity. ∎</p>
+<p>In the alternative decomposition <span class="math" data-tex="\(w=\Phi^n\sigma\)">\(w=\Phi^n\sigma\)</span>, (11) reads
+<span class="math math-display" data-tex="\[
+r(\Phi^n\sigma)=\rho(\Phi^n\sigma)\exp(-t_\ell(\sigma)N).
+\tag{13}
+\]">\[
+r(\Phi^n\sigma)=\rho(\Phi^n\sigma)\exp(-t_\ell(\sigma)N).
+\tag{13}
+\]</span>
+Indeed <span class="math" data-tex="\(c(\Phi^n\sigma)=q^{-n}t_\ell(\sigma)\)">\(c(\Phi^n\sigma)=q^{-n}t_\ell(\sigma)\)</span>. Moving the exponential from one side to the other without this factor would produce the wrong formula.</p>
+<p>There is a domain error in the displayed parametrization in Blasius's <strong>arXiv version 1</strong>, submitted November 1, 2005, §1.3. With that version's geometric convention <span class="math" data-tex="\(\|\Phi\|=q^{-1}\)">\(\|\Phi\|=q^{-1}\)</span>, its argument of <span class="math" data-tex="\(t_\ell\)">\(t_\ell\)</span> uses <span class="math" data-tex="\(\Phi^{-\log_q\|w\|}w\)">\(\Phi^{-\log_q\|w\|}w\)</span>; at <span class="math" data-tex="\(w=\Phi\)">\(w=\Phi\)</span> this is <span class="math" data-tex="\(\Phi^2\)">\(\Phi^2\)</span>, which is outside inertia. The required inertia element is <span class="math" data-tex="\(\Phi^{\log_q\|w\|}w\)">\(\Phi^{\log_q\|w\|}w\)</span>. Writing it as <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> gives (13). This comparison concerns that arXiv version; it makes no assertion about the published version.</p>
+<p><strong>Proposition 3.2 (independence of choices).</strong> The isomorphism class of the associated Weil–Deligne representation is independent of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> and of the basis used for the tame character.</p>
+<p><em>Proof.</em> First let <span class="math" data-tex="\(\Phi&#x27;=a\Phi\)">\(\Phi&#x27;=a\Phi\)</span> with <span class="math" data-tex="\(a\in I\)">\(a\in I\)</span>. Both cocycles restrict to <span class="math" data-tex="\(t_\ell\)">\(t_\ell\)</span> on <span class="math" data-tex="\(I\)">\(I\)</span>. Their difference factors through <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>; it is determined by its value on <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> using (10). With
+<span class="math math-display" data-tex="\[
+b=\frac{t_\ell(a)}{1-q^{-1}},
+\qquad c&#x27;(w)=c(w)+(\|w\|-1)b,
+\tag{14}
+\]">\[
+b=\frac{t_\ell(a)}{1-q^{-1}},
+\qquad c&#x27;(w)=c(w)+(\|w\|-1)b,
+\tag{14}
+\]</span>
+the cocycle on the right vanishes at <span class="math" data-tex="\(\Phi&#x27;\)">\(\Phi&#x27;\)</span>, so it is the new cocycle. Thus <span class="math" data-tex="\(r&#x27;(w)=h r(w)h^{-1}\)">\(r&#x27;(w)=h r(w)h^{-1}\)</span>, where <span class="math" data-tex="\(h=\exp(bN)\)">\(h=\exp(bN)\)</span>; also <span class="math" data-tex="\(hNh^{-1}=N\)">\(hNh^{-1}=N\)</span>.</p>
+<p>Now replace <span class="math" data-tex="\(t_\ell\)">\(t_\ell\)</span> by <span class="math" data-tex="\(u t_\ell\)">\(u t_\ell\)</span>, where <span class="math" data-tex="\(u\in\mathbf Z_\ell^\times\)">\(u\in\mathbf Z_\ell^\times\)</span>. Equations (6) and (11) replace <span class="math" data-tex="\(N\)">\(N\)</span> by <span class="math" data-tex="\(u^{-1}N\)">\(u^{-1}N\)</span> and leave <span class="math" data-tex="\(r\)">\(r\)</span> unchanged. We prove that <span class="math" data-tex="\((r,N)\simeq(r,dN)\)">\((r,N)\simeq(r,dN)\)</span> for every <span class="math" data-tex="\(d\in E^\times\)">\(d\in E^\times\)</span>, even when <span class="math" data-tex="\(r(\Phi)\)">\(r(\Phi)\)</span> is not semisimple.</p>
+<p>Choose <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> such that <span class="math" data-tex="\(T=r(\Phi)^m\)">\(T=r(\Phi)^m\)</span> centralizes the finite group <span class="math" data-tex="\(r(I)\)">\(r(I)\)</span>. It then centralizes <span class="math" data-tex="\(r(W_F)\)">\(r(W_F)\)</span>. Decompose <span class="math" data-tex="\(V\)">\(V\)</span> into primary spaces <span class="math" data-tex="\(V_f\)">\(V_f\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>, indexed by monic irreducible polynomials <span class="math" data-tex="\(f\in E[X]\)">\(f\in E[X]\)</span> with nonzero roots. They are <span class="math" data-tex="\(r(W_F)\)">\(r(W_F)\)</span>-stable. Relation <span class="math" data-tex="\(TN=q^{-m}NT\)">\(TN=q^{-m}NT\)</span> sends the primary space with roots <span class="math" data-tex="\(A\)">\(A\)</span> into the primary space with roots <span class="math" data-tex="\(q^{-m}A\)">\(q^{-m}A\)</span>. The corresponding operation on irreducible polynomials is
+<span class="math math-display" data-tex="\[
+f(X)\longmapsto q^{-m\deg f}f(q^mX).
+\tag{15}
+\]">\[
+f(X)\longmapsto q^{-m\deg f}f(q^mX).
+\tag{15}
+\]</span>
+Its orbits have no cycles: a cycle would make a finite nonzero root set invariant under a nontrivial power of <span class="math" data-tex="\(q^{-m}\)">\(q^{-m}\)</span>. Label each orbit by integers so that (15) raises the label by one. On the space with label <span class="math" data-tex="\(j\)">\(j\)</span>, let <span class="math" data-tex="\(h\)">\(h\)</span> be the scalar <span class="math" data-tex="\(d^j\)">\(d^j\)</span>. Then <span class="math" data-tex="\(h\)">\(h\)</span> commutes with <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(hNh^{-1}=dN\)">\(hNh^{-1}=dN\)</span>. This proves the desired isomorphism over <span class="math" data-tex="\(E\)">\(E\)</span> itself. ∎</p>
+<p>The fixed-choice functors are equivalences. Changing Frobenius gives the displayed natural conjugation; rescaling the tame character gives the same isomorphism classes, with an isomorphism supplied by the primary decomposition. No canonical choice of the latter grading is asserted.</p>
+<p><strong>Proposition 3.3 (extension to <span class="math" data-tex="\(G_F\)">\(G_F\)</span>).</strong> A continuous representation of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> extends continuously to <span class="math" data-tex="\(G_F\)">\(G_F\)</span> if and only if every eigenvalue of <span class="math" data-tex="\(\rho(\Phi)=r(\Phi)\)">\(\rho(\Phi)=r(\Phi)\)</span> is an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic unit.</p>
+<p><em>Proof.</em> Necessity follows from a <span class="math" data-tex="\(G_F\)">\(G_F\)</span>-stable lattice: Frobenius and its inverse preserve it, so its eigenvalues and their inverses are integral. For sufficiency, the characteristic polynomial of <span class="math" data-tex="\(A=\rho(\Phi)\)">\(A=\rho(\Phi)\)</span> is integral and has unit constant term. Cayley–Hamilton implies that the algebra <span class="math" data-tex="\(\mathcal O_E[A,A^{-1}]\)">\(\mathcal O_E[A,A^{-1}]\)</span> is finite over <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span>. Applying this algebra to any lattice constructs a lattice preserved by <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(A^{-1}\)">\(A^{-1}\)</span>. Thus <span class="math" data-tex="\(\{A^n:n\in\mathbf Z\}\)">\(\{A^n:n\in\mathbf Z\}\)</span> is bounded. The set <span class="math" data-tex="\(\rho(I)\)">\(\rho(I)\)</span> is compact, so <span class="math" data-tex="\(\rho(W_F)=\rho(I)\{A^n\}\)">\(\rho(W_F)=\rho(I)\{A^n\}\)</span> is bounded and has compact closure. A stable lattice for that closure identifies <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with compatible continuous homomorphisms into finite congruence quotients. The profinite completion of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> is <span class="math" data-tex="\(G_F\)">\(G_F\)</span>, so these homomorphisms extend uniquely; their inverse limit gives the extension. ∎</p>
+<p>For example <span class="math" data-tex="\(r(\Phi)=\ell\)">\(r(\Phi)=\ell\)</span>, <span class="math" data-tex="\(r(I)=1\)">\(r(I)=1\)</span>, <span class="math" data-tex="\(N=0\)">\(N=0\)</span> is a valid one-dimensional Weil–Deligne representation. It corresponds to a continuous Weil-group character, but cannot extend to <span class="math" data-tex="\(G_F\)">\(G_F\)</span>. Thus the commutation relation alone characterizes the Weil-group equivalence, rather than the Galois-group extension. Blasius's arXiv version 1, §1.3, omits this additional unit condition when asserting extension to the Galois group. Proposition 3.3 supplies it.</p>
+<h2 id="4-frobenius-semisimplification-retains-n">4. Frobenius semisimplification retains <span class="math" data-tex="\(N\)">\(N\)</span></h2>
+<p>The earlier Weil-group lesson proved its semisimplicity criterion over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. We need the following coefficient-field extension of that proof.</p>
+<p><strong>Lemma 4.0 (the coefficient-field bridge).</strong> For a smooth representation <span class="math" data-tex="\(r\)">\(r\)</span> over any characteristic-zero field <span class="math" data-tex="\(E\)">\(E\)</span>, the representation <span class="math" data-tex="\(r\)">\(r\)</span> is semisimple if and only if <span class="math" data-tex="\(r(\Phi)\)">\(r(\Phi)\)</span> is semisimple as a matrix.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(H=r(I)\)">\(H=r(I)\)</span>, a finite group, and <span class="math" data-tex="\(A=r(\Phi)\)">\(A=r(\Phi)\)</span>. Since conjugation by <span class="math" data-tex="\(A\)">\(A\)</span> permutes <span class="math" data-tex="\(H\)">\(H\)</span>, some <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> makes <span class="math" data-tex="\(T=A^m\)">\(T=A^m\)</span> centralize <span class="math" data-tex="\(H\)">\(H\)</span>. It also commutes with <span class="math" data-tex="\(A\)">\(A\)</span>, so it centralizes <span class="math" data-tex="\(r(W_F)\)">\(r(W_F)\)</span>.</p>
+<p>Suppose first that <span class="math" data-tex="\(A\)">\(A\)</span> is semisimple. Choose a finite Galois extension <span class="math" data-tex="\(K/E\)">\(K/E\)</span> containing all eigenvalues <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span> and elements <span class="math" data-tex="\(c_\lambda\)">\(c_\lambda\)</span> with <span class="math" data-tex="\(c_\lambda^m=\lambda\)">\(c_\lambda^m=\lambda\)</span>. These eigenvalues are nonzero. Over <span class="math" data-tex="\(K\)">\(K\)</span>, decompose <span class="math" data-tex="\(V_K\)">\(V_K\)</span> into the eigenspaces <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>. Each is stable under <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span>. On it put <span class="math" data-tex="\(B_\lambda=c_\lambda^{-1}A\)">\(B_\lambda=c_\lambda^{-1}A\)</span>. Then <span class="math" data-tex="\(B_\lambda^m=1\)">\(B_\lambda^m=1\)</span>, and <span class="math" data-tex="\(B_\lambda\)">\(B_\lambda\)</span> normalizes the image of <span class="math" data-tex="\(H\)">\(H\)</span>. The group generated by those two images is finite: each of its elements is <span class="math" data-tex="\(hB_\lambda^j\)">\(hB_\lambda^j\)</span>, with <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span> and <span class="math" data-tex="\(0\le j&lt;m\)">\(0\le j&lt;m\)</span>.</p>
+<p>Let <span class="math" data-tex="\(U\subset V\)">\(U\subset V\)</span> be a <span class="math" data-tex="\(W_F\)">\(W_F\)</span>-stable <span class="math" data-tex="\(E\)">\(E\)</span>-subspace. The spectral projectors of <span class="math" data-tex="\(T\)">\(T\)</span> preserve <span class="math" data-tex="\(U_K\)">\(U_K\)</span>, so <span class="math" data-tex="\(U_K=\bigoplus_\lambda(U_K\cap V_\lambda)\)">\(U_K=\bigoplus_\lambda(U_K\cap V_\lambda)\)</span>. On each <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>, average an arbitrary projection onto <span class="math" data-tex="\(U_K\cap V_\lambda\)">\(U_K\cap V_\lambda\)</span> over the finite group just constructed. Division by its order is valid in characteristic zero. The resulting projection commutes with <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(B_\lambda\)">\(B_\lambda\)</span>, and hence with <span class="math" data-tex="\(A\)">\(A\)</span>. Their direct sum is a <span class="math" data-tex="\(W_F\)">\(W_F\)</span>-equivariant <span class="math" data-tex="\(K\)">\(K\)</span>-linear projection <span class="math" data-tex="\(p:V_K\to U_K\)">\(p:V_K\to U_K\)</span>.</p>
+<p>For <span class="math" data-tex="\(\gamma\in\operatorname{Gal}(K/E)\)">\(\gamma\in\operatorname{Gal}(K/E)\)</span>, conjugate the coefficients of <span class="math" data-tex="\(p\)">\(p\)</span>. Since <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(U\)">\(U\)</span> are defined over <span class="math" data-tex="\(E\)">\(E\)</span>, every <span class="math" data-tex="\(\gamma(p)\)">\(\gamma(p)\)</span> remains equivariant, has image in <span class="math" data-tex="\(U_K\)">\(U_K\)</span>, and restricts to the identity on <span class="math" data-tex="\(U_K\)">\(U_K\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+p_E=\frac{1}{[K:E]}\sum_{\gamma\in\operatorname{Gal}(K/E)}\gamma(p)
+\]">\[
+p_E=\frac{1}{[K:E]}\sum_{\gamma\in\operatorname{Gal}(K/E)}\gamma(p)
+\]</span>
+has coefficients in <span class="math" data-tex="\(E\)">\(E\)</span>, has image in <span class="math" data-tex="\(U\)">\(U\)</span>, and is identity on <span class="math" data-tex="\(U\)">\(U\)</span>. It is a projection, whose kernel is an invariant complement. Every invariant subspace has such a complement, proving semisimplicity over <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Conversely, suppose that <span class="math" data-tex="\(r\)">\(r\)</span> is irreducible over <span class="math" data-tex="\(E\)">\(E\)</span>. The central operator <span class="math" data-tex="\(T\)">\(T\)</span> belongs to the division algebra <span class="math" data-tex="\(\operatorname{End}_{W_F}(V)\)">\(\operatorname{End}_{W_F}(V)\)</span>. Its finite-dimensional commutative subalgebra <span class="math" data-tex="\(E[T]\)">\(E[T]\)</span> has no zero divisors and is a field: multiplication by any nonzero element is injective, hence surjective. Thus the minimal polynomial <span class="math" data-tex="\(f\)">\(f\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span> is irreducible and separable over <span class="math" data-tex="\(E\)">\(E\)</span>. It has no zero root because <span class="math" data-tex="\(T\)">\(T\)</span> is invertible. The polynomial <span class="math" data-tex="\(f(X^m)\)">\(f(X^m)\)</span> annihilates <span class="math" data-tex="\(A\)">\(A\)</span> and is separable: at a root <span class="math" data-tex="\(x\)">\(x\)</span>, both <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span> and <span class="math" data-tex="\(f&#x27;(x^m)\ne0\)">\(f&#x27;(x^m)\ne0\)</span>, so its derivative <span class="math" data-tex="\(mx^{m-1}f&#x27;(x^m)\)">\(mx^{m-1}f&#x27;(x^m)\)</span> is nonzero. Hence <span class="math" data-tex="\(A\)">\(A\)</span> is semisimple. Apply this to each irreducible summand when <span class="math" data-tex="\(r\)">\(r\)</span> is semisimple. ∎</p>
+<p>Let <span class="math" data-tex="\(A=r(\Phi)=S U\)">\(A=r(\Phi)=S U\)</span> be its multiplicative Jordan decomposition: <span class="math" data-tex="\(S\)">\(S\)</span> is semisimple, <span class="math" data-tex="\(U\)">\(U\)</span> unipotent, and they commute. Lemma 2.0 proves that the components are polynomials in <span class="math" data-tex="\(A\)">\(A\)</span> over the characteristic-zero coefficient field.</p>
+<p><strong>Proposition 4.1.</strong> The unipotent component <span class="math" data-tex="\(U\)">\(U\)</span> centralizes <span class="math" data-tex="\(r(W_F)\)">\(r(W_F)\)</span> and commutes with <span class="math" data-tex="\(N\)">\(N\)</span>. The rule
+<span class="math math-display" data-tex="\[
+r^{\mathrm{F\!ss}}(w)=r(w)U^{-v(w)}
+\tag{16}
+\]">\[
+r^{\mathrm{F\!ss}}(w)=r(w)U^{-v(w)}
+\tag{16}
+\]</span>
+defines a smooth semisimple representation and a Weil–Deligne pair <span class="math" data-tex="\((r^{\mathrm{F\!ss}},N)\)">\((r^{\mathrm{F\!ss}},N)\)</span>. Its isomorphism class is independent of the Frobenius lift.</p>
+<p><em>Proof.</em> Some power <span class="math" data-tex="\(A^m\)">\(A^m\)</span> centralizes <span class="math" data-tex="\(r(I)\)">\(r(I)\)</span>. Its unipotent component is <span class="math" data-tex="\(U^m\)">\(U^m\)</span>, so <span class="math" data-tex="\(U^m\)">\(U^m\)</span>, a polynomial in <span class="math" data-tex="\(A^m\)">\(A^m\)</span>, centralizes <span class="math" data-tex="\(r(I)\)">\(r(I)\)</span>. Its unique unipotent <span class="math" data-tex="\(m\)">\(m\)</span>-th root is a polynomial in <span class="math" data-tex="\(U^m\)">\(U^m\)</span>, obtained from the finite logarithm and exponential. Hence <span class="math" data-tex="\(U\)">\(U\)</span> centralizes <span class="math" data-tex="\(r(I)\)">\(r(I)\)</span> and also <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>On <span class="math" data-tex="\(\mathrm{End}(V)\)">\(\mathrm{End}(V)\)</span>, the Jordan components of <span class="math" data-tex="\(\mathrm{Ad}(A)\)">\(\mathrm{Ad}(A)\)</span> are <span class="math" data-tex="\(\mathrm{Ad}(S)\)">\(\mathrm{Ad}(S)\)</span> and <span class="math" data-tex="\(\mathrm{Ad}(U)\)">\(\mathrm{Ad}(U)\)</span>. Relation (3) makes <span class="math" data-tex="\(N\)">\(N\)</span> an eigenvector with eigenvalue <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>, so the unipotent component acts trivially on <span class="math" data-tex="\(N\)">\(N\)</span>. Therefore <span class="math" data-tex="\(UN=NU\)">\(UN=NU\)</span>. Formula (16) is consequently multiplicative and preserves (3). Its Frobenius is <span class="math" data-tex="\(S\)">\(S\)</span>; Lemma 4.0 proves semisimplicity of its underlying representation over the original field <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>For a different lift <span class="math" data-tex="\(\Phi&#x27;=i\Phi\)">\(\Phi&#x27;=i\Phi\)</span>, write <span class="math" data-tex="\(r(\Phi&#x27;)=r(i)S U\)">\(r(\Phi&#x27;)=r(i)S U\)</span>. The matrix <span class="math" data-tex="\(r(i)S\)">\(r(i)S\)</span> is semisimple: some positive power lies in the group generated by a central semisimple power of <span class="math" data-tex="\(S\)">\(S\)</span> and a finite-order inertia element, and can be made a semisimple power of <span class="math" data-tex="\(S\)">\(S\)</span>. An invertible matrix with a semisimple positive power is semisimple in characteristic zero. Since <span class="math" data-tex="\(U\)">\(U\)</span> commutes with <span class="math" data-tex="\(r(i)S\)">\(r(i)S\)</span>, it remains the unipotent Jordan component of <span class="math" data-tex="\(r(\Phi&#x27;)\)">\(r(\Phi&#x27;)\)</span>. Thus (16) is unchanged. The conjugations in Proposition 3.2 also conjugate Jordan components, giving the assertion for the pair attached to <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. ∎</p>
+<p>Here is a worked example. Let <span class="math" data-tex="\(M=E^2\)">\(M=E^2\)</span>, let inertia act trivially, and put
+<span class="math math-display" data-tex="\[
+A_M=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},
+\qquad (r,N)=M\otimes\mathrm{Sp}(2),
+\qquad r(\Phi)=A_M\otimes\operatorname{diag}(1,q^{-1}),
+\quad N=1\otimes N_2.
+\tag{17}
+\]">\[
+A_M=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},
+\qquad (r,N)=M\otimes\mathrm{Sp}(2),
+\qquad r(\Phi)=A_M\otimes\operatorname{diag}(1,q^{-1}),
+\quad N=1\otimes N_2.
+\tag{17}
+\]</span>
+The Jordan components are <span class="math" data-tex="\(S=1\otimes\operatorname{diag}(1,q^{-1})\)">\(S=1\otimes\operatorname{diag}(1,q^{-1})\)</span> and <span class="math" data-tex="\(U=A_M\otimes1\)">\(U=A_M\otimes1\)</span>. Equation (16) gives <span class="math" data-tex="\(\mathrm{Sp}(2)\oplus\mathrm{Sp}(2)\)">\(\mathrm{Sp}(2)\oplus\mathrm{Sp}(2)\)</span>, with <span class="math" data-tex="\(N\)">\(N\)</span> still of rank two. In contrast, the ordinary semisimplification as a representation of the whole Weil–Deligne group has <span class="math" data-tex="\(N=0\)">\(N=0\)</span> and characters <span class="math" data-tex="\(1,1,\|\cdot\|,\|\cdot\|\)">\(1,1,\|\cdot\|,\|\cdot\|\)</span>. Frobenius semisimplification preserves the monodromy information needed by local factors.</p>
+<h2 id="5-classification-by-graded-nilpotent-chains">5. Classification by graded nilpotent chains</h2>
+<p><strong>Theorem 5.1.</strong> Every Frobenius-semisimple Weil–Deligne representation over a characteristic-zero field <span class="math" data-tex="\(E\)">\(E\)</span> is a direct sum of pairs
+<span class="math math-display" data-tex="\[
+\tau\otimes\mathrm{Sp}(n),
+\qquad \tau\text{ irreducible smooth},\quad n\ge1.
+\tag{18}
+\]">\[
+\tau\otimes\mathrm{Sp}(n),
+\qquad \tau\text{ irreducible smooth},\quad n\ge1.
+\tag{18}
+\]</span>
+Each such pair is indecomposable. The multiset of pairs is unique up to isomorphism and permutation.</p>
+<p><em>Proof.</em> The underlying <span class="math" data-tex="\(r\)">\(r\)</span> is semisimple by Lemma 4.0. Group its irreducible types into orbits under <span class="math" data-tex="\(\tau\mapsto\tau\|\cdot\|\)">\(\tau\mapsto\tau\|\cdot\|\)</span>. There are no nontrivial self-twists of this form: if <span class="math" data-tex="\(\tau\simeq\tau\|\cdot\|^j\)">\(\tau\simeq\tau\|\cdot\|^j\)</span>, taking determinants at <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> gives <span class="math" data-tex="\(q^{-j\dim\tau}=1\)">\(q^{-j\dim\tau}=1\)</span>, hence <span class="math" data-tex="\(j=0\)">\(j=0\)</span>.</p>
+<p>Fix an orbit representative <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, and write its isotypic spaces as <span class="math" data-tex="\(V_j\)">\(V_j\)</span>, of type <span class="math" data-tex="\(\tau\|\cdot\|^j\)">\(\tau\|\cdot\|^j\)</span>. Relation (3) implies
+<span class="math math-display" data-tex="\[
+N V_j\subset V_{j+1}.
+\tag{19}
+\]">\[
+N V_j\subset V_{j+1}.
+\tag{19}
+\]</span>
+Indeed applying <span class="math" data-tex="\(N\)">\(N\)</span> to an intertwining copy of <span class="math" data-tex="\(\tau\|\cdot\|^j\)">\(\tau\|\cdot\|^j\)</span> gives an intertwining map from <span class="math" data-tex="\(\tau\|\cdot\|^{j+1}\)">\(\tau\|\cdot\|^{j+1}\)</span>; zero is allowed. Distinct orbits therefore form direct summands of the pair.</p>
+<p>Over an algebraically closed field, write <span class="math" data-tex="\(V_j=\tau\|\cdot\|^j\otimes M_j\)">\(V_j=\tau\|\cdot\|^j\otimes M_j\)</span>. Schur’s lemma expresses <span class="math" data-tex="\(N\)">\(N\)</span> as the identity on <span class="math" data-tex="\(\tau\)">\(\tau\)</span> times a linear map <span class="math" data-tex="\(M_j\to M_{j+1}\)">\(M_j\to M_{j+1}\)</span>. We must classify a finite-dimensional graded vector space <span class="math" data-tex="\(M=\bigoplus_j M_j\)">\(M=\bigoplus_j M_j\)</span> with a nilpotent operator raising degree by one.</p>
+<p>Let <span class="math" data-tex="\(n\)">\(n\)</span> be the largest length of a nonzero chain. Choose a homogeneous <span class="math" data-tex="\(x\in M_a\)">\(x\in M_a\)</span> with <span class="math" data-tex="\(N^{n-1}x\ne0\)">\(N^{n-1}x\ne0\)</span>; then <span class="math" data-tex="\(N^n=0\)">\(N^n=0\)</span> on all of <span class="math" data-tex="\(M\)">\(M\)</span>. Choose a functional <span class="math" data-tex="\(f\)">\(f\)</span> supported in degree <span class="math" data-tex="\(a+n-1\)">\(a+n-1\)</span>, with <span class="math" data-tex="\(f(N^{n-1}x)=1\)">\(f(N^{n-1}x)=1\)</span>. Define
+<span class="math math-display" data-tex="\[
+\pi(y)=\sum_{k=0}^{n-1}f(N^{n-1-k}y)N^k x.
+\tag{20}
+\]">\[
+\pi(y)=\sum_{k=0}^{n-1}f(N^{n-1-k}y)N^k x.
+\tag{20}
+\]</span>
+For homogeneous <span class="math" data-tex="\(y\)">\(y\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>, the only possible nonzero term has <span class="math" data-tex="\(k=d-a\)">\(k=d-a\)</span>, so <span class="math" data-tex="\(\pi\)">\(\pi\)</span> preserves degrees. It is the identity on each <span class="math" data-tex="\(N^k x\)">\(N^k x\)</span>: the matching term is one, and all other terms vanish by degree. Finally <span class="math" data-tex="\(\pi N=N\pi\)">\(\pi N=N\pi\)</span>; shifting the sum proves this, with the extra end terms zero because <span class="math" data-tex="\(N^n=0\)">\(N^n=0\)</span>. Thus the chain generated by <span class="math" data-tex="\(x\)">\(x\)</span> has the graded, <span class="math" data-tex="\(N\)">\(N\)</span>-stable complement <span class="math" data-tex="\(\ker\pi\)">\(\ker\pi\)</span>. Induction on dimension splits <span class="math" data-tex="\(M\)">\(M\)</span> into chains. A chain from degrees <span class="math" data-tex="\(a\)">\(a\)</span> through <span class="math" data-tex="\(b\)">\(b\)</span> yields <span class="math" data-tex="\(\tau\|\cdot\|^a\otimes\mathrm{Sp}(b-a+1)\)">\(\tau\|\cdot\|^a\otimes\mathrm{Sp}(b-a+1)\)</span>.</p>
+<p>For uniqueness, set <span class="math" data-tex="\(R_{a,b}=\operatorname{rank}(N^{b-a}:M_a\to M_b)\)">\(R_{a,b}=\operatorname{rank}(N^{b-a}:M_a\to M_b)\)</span> for <span class="math" data-tex="\(a\le b\)">\(a\le b\)</span>. In a chain decomposition, it counts the intervals covering every degree from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>. Therefore the number of chains beginning exactly at <span class="math" data-tex="\(a\)">\(a\)</span> and ending exactly at <span class="math" data-tex="\(b\)">\(b\)</span> is
+<span class="math math-display" data-tex="\[
+R_{a,b}-R_{a-1,b}-R_{a,b+1}+R_{a-1,b+1}.
+\tag{21}
+\]">\[
+R_{a,b}-R_{a-1,b}-R_{a,b+1}+R_{a-1,b+1}.
+\tag{21}
+\]</span>
+These numbers are determined by the pair itself. A single chain has exactly one interval and admits no nontrivial direct-sum decomposition, proving indecomposability and uniqueness.</p>
+<p>For a general characteristic-zero field, let <span class="math" data-tex="\(D=\mathrm{End}_{W_F}(\tau)\)">\(D=\mathrm{End}_{W_F}(\tau)\)</span>, a finite-dimensional division algebra over <span class="math" data-tex="\(E\)">\(E\)</span>. The multiplicity spaces <span class="math" data-tex="\(M_j=\mathrm{Hom}_{W_F}(\tau\|\cdot\|^j,V_j)\)">\(M_j=\mathrm{Hom}_{W_F}(\tau\|\cdot\|^j,V_j)\)</span> are right <span class="math" data-tex="\(D\)">\(D\)</span>-vector spaces, and evaluation identifies <span class="math" data-tex="\(V_j=M_j\otimes_D\tau\|\cdot\|^j\)">\(V_j=M_j\otimes_D\tau\|\cdot\|^j\)</span>. Equation (19) induces right <span class="math" data-tex="\(D\)">\(D\)</span>-linear maps between them. The same chain proof applies: choose a right <span class="math" data-tex="\(D\)">\(D\)</span>-linear <span class="math" data-tex="\(f\)">\(f\)</span>, and write the projection as <span class="math" data-tex="\(\sum_k(N^k x)f(N^{n-1-k}y)\)">\(\sum_k(N^k x)f(N^{n-1-k}y)\)</span>. Every computation in (20) is unchanged. Use ranks over <span class="math" data-tex="\(D\)">\(D\)</span> in (21). This supplies the decomposition and uniqueness over <span class="math" data-tex="\(E\)">\(E\)</span>, without a descent assumption. ∎</p>
+<p>For an unramified pair over an algebraically closed field, every <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a character determined by a nonzero scalar <span class="math" data-tex="\(c=\tau(\Phi)\)">\(c=\tau(\Phi)\)</span>. Its blocks have Frobenius eigenvalues <span class="math" data-tex="\(c,cq^{-1},\ldots,cq^{-(n-1)}\)">\(c,cq^{-1},\ldots,cq^{-(n-1)}\)</span>, linked in that order by <span class="math" data-tex="\(N\)">\(N\)</span>. Listing the eigenvalues alone does not specify which chains occur; the ranks in (21) provide the missing information.</p>
+<h2 id="6-factors-and-explicit-blocks">6. Factors and explicit blocks</h2>
+<p>For a complex Weil–Deligne representation, set <span class="math" data-tex="\(K_N=(\ker N)^I\)">\(K_N=(\ker N)^I\)</span>. The local factors are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(s,(r,N))&amp;=\det(1-q^{-s}r(\Phi)\mid K_N)^{-1},\\
+\epsilon(s,(r,N),\psi,dx)
+&amp;=\epsilon(s,r,\psi,dx)\,
+\det(-q^{-s}r(\Phi)\mid V^I/K_N),\\
+a(r,N)&amp;=a(r)+\dim V^I-\dim K_N.
+\end{aligned}
+\tag{22}
+\]">\[
+\begin{aligned}
+L(s,(r,N))&amp;=\det(1-q^{-s}r(\Phi)\mid K_N)^{-1},\\
+\epsilon(s,(r,N),\psi,dx)
+&amp;=\epsilon(s,r,\psi,dx)\,
+\det(-q^{-s}r(\Phi)\mid V^I/K_N),\\
+a(r,N)&amp;=a(r)+\dim V^I-\dim K_N.
+\end{aligned}
+\tag{22}
+\]</span>
+The epsilon factor on the right is the smooth factor from the preceding lesson, with <span class="math" data-tex="\(\epsilon(s,r)=\epsilon(r\|\cdot\|^s)\)">\(\epsilon(s,r)=\epsilon(r\|\cdot\|^s)\)</span>. Determinants on zero-dimensional spaces are one. The subspace <span class="math" data-tex="\(K_N\)">\(K_N\)</span> is Frobenius-stable by (3). A change of Frobenius multiplies by an inertia element, which acts trivially on these invariant spaces; the factors are therefore independent of its lift. Conjugating the pair or multiplying <span class="math" data-tex="\(N\)">\(N\)</span> by a nonzero scalar preserves them. Direct sums give products, and conductors add.</p>
+<p><strong>Lemma 6.0 (an abstract coefficient-field isomorphism).</strong> The fields <span class="math" data-tex="\(\overline{\mathbb Q}_\ell\)">\(\overline{\mathbb Q}_\ell\)</span> and <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> are isomorphic as abstract fields. Such an isomorphism is a choice of algebraic field structure; the construction makes no assertion about the two topologies.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\mathfrak c=2^{\aleph_0}\)">\(\mathfrak c=2^{\aleph_0}\)</span>. The digit expansion of <span class="math" data-tex="\(\mathbb Q_\ell\)">\(\mathbb Q_\ell\)</span> gives cardinality <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span>: its elements are determined by a countable sequence from a finite digit set and an integer valuation, and the sequences using only the digits zero and one give <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span> distinct elements of <span class="math" data-tex="\(\mathbb Z_\ell\)">\(\mathbb Z_\ell\)</span>. Adjoining roots of all polynomials does not change this infinite cardinality: there are <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span> finite coefficient tuples and each polynomial has finitely many roots. Thus <span class="math" data-tex="\(|\overline{\mathbb Q}_\ell|=\mathfrak c\)">\(|\overline{\mathbb Q}_\ell|=\mathfrak c\)</span>. The real binary expansions, with the two expansions of a dyadic number identified, give <span class="math" data-tex="\(|\mathbb R|=\mathfrak c\)">\(|\mathbb R|=\mathfrak c\)</span>; taking pairs gives <span class="math" data-tex="\(|\mathbb C|=\mathfrak c\)">\(|\mathbb C|=\mathfrak c\)</span>.</p>
+<p>In either algebraically closed field, choose a maximal algebraically independent subset <span class="math" data-tex="\(S\)">\(S\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, by applying Zorn's lemma to the independent subsets ordered by inclusion. Its union along any chain is independent because a polynomial relation uses finitely many elements, contained in one member of that chain. Maximality implies that the entire field is algebraic over <span class="math" data-tex="\(\mathbb Q(S)\)">\(\mathbb Q(S)\)</span>: an element transcendental over it could be adjoined to the independent set. The rational function field <span class="math" data-tex="\(\mathbb Q(S)\)">\(\mathbb Q(S)\)</span>, and its algebraic closure, have cardinality <span class="math" data-tex="\(\max(\aleph_0,|S|)\)">\(\max(\aleph_0,|S|)\)</span>, by counting finite tuples, polynomials and their finite root sets. Since <span class="math" data-tex="\(\mathfrak c&gt;\aleph_0\)">\(\mathfrak c&gt;\aleph_0\)</span>, the preceding cardinalities force <span class="math" data-tex="\(|S|=\mathfrak c\)">\(|S|=\mathfrak c\)</span> in both fields.</p>
+<p>A bijection of these two bases induces an isomorphism of their rational function fields fixing <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Extend it to the algebraic closures by maximal extension of embeddings: if an algebraic element is missing from the domain, a root of the image of its minimal polynomial in the algebraically closed target extends the embedding, contradicting maximality. The resulting embedding is onto as well. Its image is algebraically closed, and the target is algebraic over that image because it is algebraic over the image rational function field; an algebraic extension of an algebraically closed field is trivial. This proves the isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic coefficients choose a field isomorphism supplied by Lemma 6.0, <span class="math" data-tex="\(\overline{\mathbf Q}_\ell\simeq\mathbf C\)">\(\overline{\mathbf Q}_\ell\simeq\mathbf C\)</span> and transport the algebraic pair, not its <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic topology. Its inertia image is finite, so the transported smooth representation is continuous in the complex topology. The isomorphism is a choice; independence across coefficient places requires compatibility, the topic of a later lesson.</p>
+<p><strong>Theorem 6.1.</strong> Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be unramified, let <span class="math" data-tex="\(c=\chi(\Phi)\)">\(c=\chi(\Phi)\)</span>, and let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> denote a block length. Then
+<span class="math math-display" data-tex="\[
+L(s,\chi\otimes\mathrm{Sp}(n))
+=\frac1{1-cq^{-s-(n-1)}}
+=L(s,\chi\|\cdot\|^{n-1}),
+\qquad a(\chi\otimes\mathrm{Sp}(n))=n-1.
+\tag{23}
+\]">\[
+L(s,\chi\otimes\mathrm{Sp}(n))
+=\frac1{1-cq^{-s-(n-1)}}
+=L(s,\chi\|\cdot\|^{n-1}),
+\qquad a(\chi\otimes\mathrm{Sp}(n))=n-1.
+\tag{23}
+\]</span>
+Let <span class="math" data-tex="\(h=n(\psi)\)">\(h=n(\psi)\)</span> denote the additive-character conductor convention of the preceding lesson: <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is trivial on <span class="math" data-tex="\(\varpi^{-h}\mathcal O_F\)">\(\varpi^{-h}\mathcal O_F\)</span> and nontrivial on <span class="math" data-tex="\(\varpi^{-h-1}\mathcal O_F\)">\(\varpi^{-h-1}\mathcal O_F\)</span>. Put <span class="math" data-tex="\(e_\chi=\epsilon(\chi,\psi,dx)\)">\(e_\chi=\epsilon(\chi,\psi,dx)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\epsilon(s,\chi\otimes\mathrm{Sp}(n),\psi,dx)
+=e_\chi^n(-c)^{n-1}
+q^{-h n(n-1)/2-(n-1)(n-2)/2}
+q^{-(nh+n-1)s}.
+\tag{24}
+\]">\[
+\epsilon(s,\chi\otimes\mathrm{Sp}(n),\psi,dx)
+=e_\chi^n(-c)^{n-1}
+q^{-h n(n-1)/2-(n-1)(n-2)/2}
+q^{-(nh+n-1)s}.
+\tag{24}
+\]</span></p>
+<p><em>Proof.</em> The kernel of <span class="math" data-tex="\(N\)">\(N\)</span> is <span class="math" data-tex="\(Ee_{n-1}\)">\(Ee_{n-1}\)</span>, on which Frobenius is <span class="math" data-tex="\(cq^{-(n-1)}\)">\(cq^{-(n-1)}\)</span>, proving (23). All inertia acts trivially, so the correction to the smooth conductor is <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. The underlying smooth representation is <span class="math" data-tex="\(\bigoplus_{j=0}^{n-1}\chi\|\cdot\|^j\)">\(\bigoplus_{j=0}^{n-1}\chi\|\cdot\|^j\)</span>. The unramified twist formula of the preceding lesson gives its epsilon factor
+<span class="math math-display" data-tex="\[
+e_\chi^n q^{-h n(n-1)/2}q^{-nhs}.
+\tag{25}
+\]">\[
+e_\chi^n q^{-h n(n-1)/2}q^{-nhs}.
+\tag{25}
+\]</span>
+The quotient in (22) has basis the classes of <span class="math" data-tex="\(e_0,\ldots,e_{n-2}\)">\(e_0,\ldots,e_{n-2}\)</span>, so its determinant is <span class="math" data-tex="\((-c)^{n-1}q^{-(n-1)(n-2)/2}q^{-(n-1)s}\)">\((-c)^{n-1}q^{-(n-1)(n-2)/2}q^{-(n-1)s}\)</span>. Multiply to obtain (24). ∎</p>
+<p>For the common normalization <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, <span class="math" data-tex="\(\operatorname{vol}(\mathcal O_F)=1\)">\(\operatorname{vol}(\mathcal O_F)=1\)</span>, the unramified formula gives <span class="math" data-tex="\(e_\chi=1\)">\(e_\chi=1\)</span>, and (24) becomes
+<span class="math math-display" data-tex="\[
+(-c)^{n-1}q^{-(n-1)(n-2)/2}q^{-(n-1)s}.
+\tag{26}
+\]">\[
+(-c)^{n-1}q^{-(n-1)(n-2)/2}q^{-(n-1)s}.
+\tag{26}
+\]</span>
+In particular,
+<span class="math math-display" data-tex="\[
+L(s,\mathrm{Sp}(2))=(1-q^{-s-1})^{-1},
+\qquad \epsilon(s,\mathrm{Sp}(2))=-q^{-s}.
+\tag{27}
+\]">\[
+L(s,\mathrm{Sp}(2))=(1-q^{-s-1})^{-1},
+\qquad \epsilon(s,\mathrm{Sp}(2))=-q^{-s}.
+\tag{27}
+\]</span>
+Twisting by <span class="math" data-tex="\(\|\cdot\|^{-1/2}\)">\(\|\cdot\|^{-1/2}\)</span> replaces <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(s-1/2\)">\(s-1/2\)</span>. Thus the normalized block has
+<span class="math math-display" data-tex="\[
+L(s,\mathrm{Sp}(2)\|\cdot\|^{-1/2})=(1-q^{-s-1/2})^{-1},
+\qquad \epsilon(s)=-q^{1/2-s}.
+\tag{28}
+\]">\[
+L(s,\mathrm{Sp}(2)\|\cdot\|^{-1/2})=(1-q^{-s-1/2})^{-1},
+\qquad \epsilon(s)=-q^{1/2-s}.
+\tag{28}
+\]</span>
+Its root number at <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span> is <span class="math" data-tex="\(-1\)">\(-1\)</span>. This is the block normalization used for the Steinberg parameter.</p>
+<p>If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is ramified, all invariant spaces in (22) vanish. Consequently the block has <span class="math" data-tex="\(L=1\)">\(L=1\)</span>, conductor <span class="math" data-tex="\(n a(\chi)\)">\(n a(\chi)\)</span>, and epsilon factor
+<span class="math math-display" data-tex="\[
+e_\chi^n q^{-(a(\chi)+h)n(n-1)/2}
+q^{-n(a(\chi)+h)s}.
+\tag{29}
+\]">\[
+e_\chi^n q^{-(a(\chi)+h)n(n-1)/2}
+q^{-n(a(\chi)+h)s}.
+\tag{29}
+\]</span>
+This follows by the same product calculation, with no monodromy determinant correction.</p>
+<h3 id="6a-the-geometric-tate-identification-before-use">6A. The geometric Tate identification before use</h3>
+<p>Let <span class="math" data-tex="\(Q\in F^\times\)">\(Q\in F^\times\)</span> have positive valuation <span class="math" data-tex="\(m\)">\(m\)</span>, and continue to assume <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>. We prove the uniformization and its Galois-module consequence here before identifying the block with an elliptic curve. The constructions work in both characteristics. The earlier Tate-module lesson supplies the already proved cubic group law and its divisor interpretation; the valuation, Hensel and tame-character facts are proved in the first lesson and Proposition 1.0 above.</p>
+<p>Put
+<span class="math math-display" data-tex="\[
+S_r(Q)=\sum_{n\ge1}\frac{n^rQ^n}{1-Q^n},\quad
+A_4=-5S_3(Q),\quad A_6=-\frac{5S_3(Q)+7S_5(Q)}{12}.
+\tag{6T8a}
+\]">\[
+S_r(Q)=\sum_{n\ge1}\frac{n^rQ^n}{1-Q^n},\quad
+A_4=-5S_3(Q),\quad A_6=-\frac{5S_3(Q)+7S_5(Q)}{12}.
+\tag{6T8a}
+\]</span>
+The coefficients of <span class="math" data-tex="\(A_6\)">\(A_6\)</span> are integers: <span class="math" data-tex="\(12\mid5n^3+7n^5\)">\(12\mid5n^3+7n^5\)</span>, because <span class="math" data-tex="\(n^3(n^2-1)\)">\(n^3(n^2-1)\)</span> is divisible by 12. Thus these are integral convergent power series, even at 2 and 3. Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X(z)&amp;=\sum_{n\in\mathbf Z}\frac{Q^nz}{(1-Q^nz)^2}-2S_1(Q),\\
+Y(z)&amp;=\sum_{n\in\mathbf Z}\frac{(Q^nz)^2}{(1-Q^nz)^3}+S_1(Q).
+\end{aligned}
+\tag{6T8b}
+\]">\[
+\begin{aligned}
+X(z)&amp;=\sum_{n\in\mathbf Z}\frac{Q^nz}{(1-Q^nz)^2}-2S_1(Q),\\
+Y(z)&amp;=\sum_{n\in\mathbf Z}\frac{(Q^nz)^2}{(1-Q^nz)^3}+S_1(Q).
+\end{aligned}
+\tag{6T8b}
+\]</span>
+They converge uniformly on closed annuli avoiding <span class="math" data-tex="\(Q^{\mathbf Z}\)">\(Q^{\mathbf Z}\)</span>. For negative <span class="math" data-tex="\(n\)">\(n\)</span>, replacing <span class="math" data-tex="\(Q^nz\)">\(Q^nz\)</span> by its reciprocal bounds the summand by a constant times <span class="math" data-tex="\(|Q|^{-n}\)">\(|Q|^{-n}\)</span>; for positive <span class="math" data-tex="\(n\)">\(n\)</span> the bound is a constant times <span class="math" data-tex="\(|Q|^n\)">\(|Q|^n\)</span>. Rearrangement gives
+<span class="math math-display" data-tex="\[
+X(Qz)=X(z)=X(z^{-1}),\quad
+Y(Qz)=Y(z),\quad Y(z^{-1})=-X(z)-Y(z).
+\tag{6T8c}
+\]">\[
+X(Qz)=X(z)=X(z^{-1}),\quad
+Y(Qz)=Y(z),\quad Y(z^{-1})=-X(z)-Y(z).
+\tag{6T8c}
+\]</span></p>
+<p><strong>Lemma 6.2 (the split Tate uniformization, in either characteristic).</strong> The equation
+<span class="math math-display" data-tex="\[
+E_Q:\quad y^2+xy=x^3+A_4x+A_6
+\tag{6T8d}
+\]">\[
+E_Q:\quad y^2+xy=x^3+A_4x+A_6
+\tag{6T8d}
+\]</span>
+is an elliptic curve. Sending <span class="math" data-tex="\(z\notin Q^{\mathbf Z}\)">\(z\notin Q^{\mathbf Z}\)</span> to <span class="math" data-tex="\((X(z),Y(z))\)">\((X(z),Y(z))\)</span> and <span class="math" data-tex="\(Q^{\mathbf Z}\)">\(Q^{\mathbf Z}\)</span> to its origin induces a Galois-equivariant group isomorphism
+<span class="math math-display" data-tex="\[
+E_Q(\bar F)\simeq\bar F^\times/Q^{\mathbf Z}.
+\tag{6T8}
+\]">\[
+E_Q(\bar F)\simeq\bar F^\times/Q^{\mathbf Z}.
+\tag{6T8}
+\]</span>
+<em>Proof.</em> Put <span class="math" data-tex="\(b_2=1,b_4=2A_4,b_6=4A_6,b_8=A_6-A_4^2\)">\(b_2=1,b_4=2A_4,b_6=4A_6,b_8=A_6-A_4^2\)</span>. The polynomial <span class="math" data-tex="\(\Delta=-b_2^2b_8-8b_4^3-27b_6^2+9b_2b_4b_6\)">\(\Delta=-b_2^2b_8-8b_4^3-27b_6^2+9b_2b_4b_6\)</span> detects a singular affine point. Here is the elimination in every characteristic. Write <span class="math" data-tex="\(a=A_4,b=A_6\)">\(a=A_4,b=A_6\)</span>. The derivative equations force <span class="math" data-tex="\(y=3x^2+a\)">\(y=3x^2+a\)</span> and <span class="math" data-tex="\(S=6x^2+x+2a=0\)">\(S=6x^2+x+2a=0\)</span>; substitution in the cubic gives <span class="math" data-tex="\(T=9x^4+2x^3+6ax^2+a^2-b=0\)">\(T=9x^4+2x^3+6ax^2+a^2-b=0\)</span>. In characteristic two these conditions reduce to <span class="math" data-tex="\(x=0,y=a,a^2-b=0\)">\(x=0,y=a,a^2-b=0\)</span>; in characteristic three they reduce to <span class="math" data-tex="\(x=a,y=a,-a^3+a^2-b=0\)">\(x=a,y=a,-a^3+a^2-b=0\)</span>. Those last expressions are exactly <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> in the respective characteristics. Otherwise, writing <span class="math" data-tex="\(r_1,r_2\)">\(r_1,r_2\)</span> for the two roots of <span class="math" data-tex="\(S\)">\(S\)</span>, counted with multiplicity, expansion gives <span class="math" data-tex="\(6^4T(r_1)T(r_2)=-3\Delta\)">\(6^4T(r_1)T(r_2)=-3\Delta\)</span>. Thus a common root exists exactly when <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span>. The origin at infinity is smooth by its nonzero homogeneous <span class="math" data-tex="\(Z\)">\(Z\)</span>-derivative. Substituting (6T8a) now gives the integer series <span class="math" data-tex="\(\Delta=Q+O(Q^2)\)">\(\Delta=Q+O(Q^2)\)</span>. For the complex argument restrict <span class="math" data-tex="\(Q\)">\(Q\)</span> to a sufficiently small punctured disc on which <span class="math" data-tex="\(\Delta\ne0\)">\(\Delta\ne0\)</span>; the cubic is therefore smooth before its group law is used. This open set suffices to establish the universal coefficient identities. Put <span class="math" data-tex="\(z=e^u\)">\(z=e^u\)</span> and <span class="math" data-tex="\(\Lambda=2\pi i\mathbf Z+\log(Q)\mathbf Z\)">\(\Lambda=2\pi i\mathbf Z+\log(Q)\mathbf Z\)</span>. The function <span class="math" data-tex="\(L(u)=X(e^u)+1/12\)">\(L(u)=X(e^u)+1/12\)</span> is periodic for this lattice, and has only double poles at its points. Expanding the geometric series in (6T8b) gives
+<span class="math math-display" data-tex="\[
+L(u)=u^{-2}+\left(\frac1{240}+S_3(Q)\right)u^2
+       +\left(-\frac1{6048}+\frac{S_5(Q)}{12}\right)u^4+O(u^6).
+\]">\[
+L(u)=u^{-2}+\left(\frac1{240}+S_3(Q)\right)u^2
+       +\left(-\frac1{6048}+\frac{S_5(Q)}{12}\right)u^4+O(u^6).
+\]</span>
+Its derivative is <span class="math" data-tex="\(H(u)=X(e^u)+2Y(e^u)\)">\(H(u)=X(e^u)+2Y(e^u)\)</span>. With
+<span class="math" data-tex="\(g_2=1/12+20S_3(Q)\)">\(g_2=1/12+20S_3(Q)\)</span>, <span class="math" data-tex="\(g_3=-1/216+(7/3)S_5(Q)\)">\(g_3=-1/216+(7/3)S_5(Q)\)</span>, the periodic function
+<span class="math" data-tex="\(H^2-4L^3+g_2L+g_3\)">\(H^2-4L^3+g_2L+g_3\)</span> has no poles: the displayed Laurent coefficients cancel its terms of degrees <span class="math" data-tex="\(-6,-2,0\)">\(-6,-2,0\)</span>. It is bounded on a compact period parallelogram and therefore on the plane, and hence constant. Here is the complex-analysis proof needed for that implication and for the following contour calculation. Every analytic function used here is locally a convergent power series, by expanding the denominators of (6T8b) on a sufficiently small disc avoiding their poles; their geometric bounds allow coefficient summation and convergence on that disc. Such a series has a local primitive by termwise integration. Subdivide a compact region avoiding poles into sufficiently small cells lying in these power-series discs; integrals around each cell vanish, and cancellation of common edges proves the contour theorem for that region. Removing a small disc about <span class="math" data-tex="\(a\)">\(a\)</span> and applying it to <span class="math" data-tex="\(F(u)/(u-a)\)">\(F(u)/(u-a)\)</span> gives
+<span class="math math-display" data-tex="\[
+F(a)=\frac1{2\pi i}\int_{|u-a|=R}\frac{F(u)}{u-a}\,du.
+\]">\[
+F(a)=\frac1{2\pi i}\int_{|u-a|=R}\frac{F(u)}{u-a}\,du.
+\]</span>
+Expanding the denominator for a variable point near <span class="math" data-tex="\(a\)">\(a\)</span> gives its Taylor coefficient formula and the bound <span class="math" data-tex="\(|c_n|\le \sup_{|u-a|=R}|F(u)|/R^n\)">\(|c_n|\le \sup_{|u-a|=R}|F(u)|/R^n\)</span>. If <span class="math" data-tex="\(F\)">\(F\)</span> is entire and bounded, let <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>; every positive-degree coefficient vanishes. It is constant. Applying this to the periodic expression above, its constant Laurent coefficient is zero, so it vanishes. Expanding gives exactly (6T8d).</p>
+<p>We also justify its addition law without assuming an analytic uniformization theorem. For a meromorphic <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-periodic function, its zeros and poles, counted with multiplicities, have equal number and the sum of their locations differs by a lattice point. Indeed near a zero or pole write <span class="math" data-tex="\(f(u)=(u-a)^m h(u)\)">\(f(u)=(u-a)^m h(u)\)</span>, with <span class="math" data-tex="\(h\)">\(h\)</span> nonvanishing. Its logarithmic derivative has residue <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(u f&#x27;/f\)">\(u f&#x27;/f\)</span> has residue <span class="math" data-tex="\(ma\)">\(ma\)</span>. The just-proved contour theorem, after removing small circles about these points, shows that their boundary integrals are <span class="math" data-tex="\(2\pi i\sum m\)">\(2\pi i\sum m\)</span> and <span class="math" data-tex="\(2\pi i\sum ma\)">\(2\pi i\sum ma\)</span>. For <span class="math" data-tex="\(f&#x27;/f\)">\(f&#x27;/f\)</span>, opposite sides of a period parallelogram cancel. For <span class="math" data-tex="\(u f&#x27;/f\)">\(u f&#x27;/f\)</span>, pairing them gives a period times the integral of <span class="math" data-tex="\(f&#x27;/f\)">\(f&#x27;/f\)</span> along each of the other two sides. Such a side integral is <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span> times an integer: if <span class="math" data-tex="\(J(t)\)">\(J(t)\)</span> is its integral up to time <span class="math" data-tex="\(t\)">\(t\)</span>, differentiating <span class="math" data-tex="\(e^{-J(t)}f(u(t))\)">\(e^{-J(t)}f(u(t))\)</span> makes it constant, and equality of the endpoint values of <span class="math" data-tex="\(f\)">\(f\)</span> gives <span class="math" data-tex="\(e^{J(1)}=1\)">\(e^{J(1)}=1\)</span>. Since the kernel of the complex exponential is <span class="math" data-tex="\(2\pi i\mathbf Z\)">\(2\pi i\mathbf Z\)</span>, the weighted integral belongs to <span class="math" data-tex="\(2\pi i\Lambda\)">\(2\pi i\Lambda\)</span>. These facts prove both assertions. Choose the parallelogram to avoid its finitely many zeros and poles on the boundary; isolated zeros follow from the first nonzero Taylor coefficient, so such a choice exists.</p>
+<p>The function <span class="math" data-tex="\(Y(e^u)-\lambda X(e^u)-\nu\)">\(Y(e^u)-\lambda X(e^u)-\nu\)</span> has a triple pole at the lattice origin and no other poles. Its three intersection parameters therefore sum to zero modulo <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. They give the three cubic intersection points for a generic line: <span class="math" data-tex="\(X-c\)">\(X-c\)</span> has just two zeros, since its only pole has order two, and these are the parameters <span class="math" data-tex="\(u,-u\)">\(u,-u\)</span> by (6T8c). Their <span class="math" data-tex="\(Y\)">\(Y\)</span>-values are opposite and distinct away from the finitely many zeros of <span class="math" data-tex="\(H=X+2Y\)">\(H=X+2Y\)</span>. Thus the parametrization is generically injective, so those three generic line zeros represent three distinct intersections. The divisor form of the cubic group law, proved in §1 of the earlier Tate-module lesson, and (6T8c) now show that multiplication of <span class="math" data-tex="\(z\)">\(z\)</span>'s is addition of points. Equivalently, for generic <span class="math" data-tex="\(z_1,z_2\)">\(z_1,z_2\)</span>, set
+<span class="math math-display" data-tex="\[
+\lambda=\frac{Y(z_2)-Y(z_1)}{X(z_2)-X(z_1)},\quad
+\nu=Y(z_1)-\lambda X(z_1),\quad
+x_3=\lambda^2+\lambda-X(z_1)-X(z_2).
+\]">\[
+\lambda=\frac{Y(z_2)-Y(z_1)}{X(z_2)-X(z_1)},\quad
+\nu=Y(z_1)-\lambda X(z_1),\quad
+x_3=\lambda^2+\lambda-X(z_1)-X(z_2).
+\]</span>
+The identities are <span class="math" data-tex="\(X(z_1z_2)=x_3\)">\(X(z_1z_2)=x_3\)</span> and <span class="math" data-tex="\(Y(z_1z_2)=-(\lambda+1)x_3-\nu\)">\(Y(z_1z_2)=-(\lambda+1)x_3-\nu\)</span>.</p>
+<p>These are universal identities, rather than assertions restricted to complex points. Write (6T8b) as power series in <span class="math" data-tex="\(Q\)">\(Q\)</span>; every coefficient is a rational function with integer coefficients in <span class="math" data-tex="\(z,z^{-1},(1-z)^{-1}\)">\(z,z^{-1},(1-z)^{-1}\)</span>. After clearing the displayed denominators, each coefficient of the curve and addition identities is a rational function that vanishes on an open set of complex parameters. Its numerator polynomial is therefore identically zero. Specializing their convergent series proves the identities over every complete nonarchimedean field here.</p>
+<p>The already computed integer series <span class="math" data-tex="\(\Delta=Q+O(Q^2)\)">\(\Delta=Q+O(Q^2)\)</span> has <span class="math" data-tex="\(v(\Delta)=m\)">\(v(\Delta)=m\)</span> in the nonarchimedean field, so the cubic is smooth. Its reduction is <span class="math" data-tex="\(y^2+xy=x^3\)">\(y^2+xy=x^3\)</span>, whose two tangent lines <span class="math" data-tex="\(y=0,y=-x\)">\(y=0,y=-x\)</span> are distinct even in characteristic 2. The map <span class="math" data-tex="\(\phi\)">\(\phi\)</span> defined by (6T8b) is periodic, and its preimage of the origin is exactly <span class="math" data-tex="\(Q^{\mathbf Z}\)">\(Q^{\mathbf Z}\)</span>, since its other values have finite affine coordinates.</p>
+<p>The generic addition identities extend to every pair. To see this without dividing by a vanishing slope denominator, observe that the image is infinite: at <span class="math" data-tex="\(z=1+Q^h\)">\(z=1+Q^h\)</span>, for sufficiently large positive integers <span class="math" data-tex="\(h\)">\(h\)</span>, the term <span class="math" data-tex="\(z/(1-z)^2\)">\(z/(1-z)^2\)</span> uniquely dominates <span class="math" data-tex="\(X(z)\)">\(X(z)\)</span>, and <span class="math" data-tex="\(|X(z)|=|Q|^{-2h}\)">\(|X(z)|=|Q|^{-2h}\)</span>. Given <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, choose <span class="math" data-tex="\(w\)">\(w\)</span> so that the three additions involving <span class="math" data-tex="\((w,a),(wa,b),(w,ab)\)">\((w,a),(wa,b),(w,ab)\)</span> all have distinct affine <span class="math" data-tex="\(x\)">\(x\)</span>-coordinates. Only finitely many image points are excluded: for the middle pair use the already valid identity <span class="math" data-tex="\(\phi(wa)=\phi(w)+\phi(a)\)">\(\phi(wa)=\phi(w)+\phi(a)\)</span>. Such a <span class="math" data-tex="\(w\)">\(w\)</span> exists by the infinite image. Comparing <span class="math" data-tex="\(\phi(wab)\)">\(\phi(wab)\)</span> by those identities and cancelling <span class="math" data-tex="\(\phi(w)\)">\(\phi(w)\)</span> proves <span class="math" data-tex="\(\phi(ab)=\phi(a)+\phi(b)\)">\(\phi(ab)=\phi(a)+\phi(b)\)</span>. Identity or inverse cases are covered by (6T8c) and the same auxiliary-point argument. This proves the homomorphism and its kernel.</p>
+<p>For surjectivity we need a power-series fact, whose proof is useful here. If
+<span class="math" data-tex="\(f(T)=T+\sum_{h\ge1}c_hT^{h+1}\)">\(f(T)=T+\sum_{h\ge1}c_hT^{h+1}\)</span> with <span class="math" data-tex="\(|c_h|\le\rho^h\)">\(|c_h|\le\rho^h\)</span>, formal recursive solution of <span class="math" data-tex="\(f(g(T))=T\)">\(f(g(T))=T\)</span> gives
+<span class="math" data-tex="\(g(T)=T+\sum_{h\ge1}d_hT^{h+1}\)">\(g(T)=T+\sum_{h\ge1}d_hT^{h+1}\)</span> with <span class="math" data-tex="\(|d_h|\le\rho^h\)">\(|d_h|\le\rho^h\)</span>. At each step the new coefficient is a sum of integer multiples of products of earlier coefficients with total weight <span class="math" data-tex="\(h\)">\(h\)</span>; the ultrametric inequality gives this bound by induction. Both series converge on <span class="math" data-tex="\(|T|&lt;\rho^{-1}\)">\(|T|&lt;\rho^{-1}\)</span>, their correction terms have smaller norm than <span class="math" data-tex="\(T\)">\(T\)</span>, and formal composition converges there. Thus <span class="math" data-tex="\(f\)">\(f\)</span> bijects that disc with itself, with inverse <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p>Let <span class="math" data-tex="\((x,y)\in E_Q(L)\)">\((x,y)\in E_Q(L)\)</span>, where <span class="math" data-tex="\(L/F\)">\(L/F\)</span> is any finite extension. Set <span class="math" data-tex="\(\rho=|Q|^{1/2}&lt;1\)">\(\rho=|Q|^{1/2}&lt;1\)</span>. First suppose <span class="math" data-tex="\(|x|&gt;\rho\)">\(|x|&gt;\rho\)</span>. Put <span class="math" data-tex="\(r=z+z^{-1}-2\)">\(r=z+z^{-1}-2\)</span>. The integer polynomials
+<span class="math" data-tex="\(F_n(r)=z^n+z^{-n}-2\)">\(F_n(r)=z^n+z^{-n}-2\)</span> satisfy
+<span class="math math-display" data-tex="\[
+F_0=0,\quad F_1=r,\quad
+F_{n+1}=(r+2)F_n-F_{n-1}+2r;
+\]">\[
+F_0=0,\quad F_1=r,\quad
+F_{n+1}=(r+2)F_n-F_{n-1}+2r;
+\]</span>
+they have degree <span class="math" data-tex="\(n\)">\(n\)</span>, zero constant term and integer coefficients. Expansion of (6T8b) consequently gives
+<span class="math math-display" data-tex="\[
+X(z)=r^{-1}+\sum_{h\ge1}a_h r^h,\qquad |a_h|\le|Q|^h.
+\]">\[
+X(z)=r^{-1}+\sum_{h\ge1}a_h r^h,\qquad |a_h|\le|Q|^h.
+\]</span>
+Its reciprocal is <span class="math" data-tex="\(r+\sum_{h\ge1}c_h r^{h+1}\)">\(r+\sum_{h\ge1}c_h r^{h+1}\)</span>, with <span class="math" data-tex="\(|c_h|\le\rho^h\)">\(|c_h|\le\rho^h\)</span>: the denominator terms have weights <span class="math" data-tex="\(h+1\)">\(h+1\)</span> and norms at most <span class="math" data-tex="\(|Q|^h\le\rho^{h+1}\)">\(|Q|^h\le\rho^{h+1}\)</span>. The inverse fact uniquely solves <span class="math" data-tex="\(1/x=1/X\)">\(1/x=1/X\)</span> for <span class="math" data-tex="\(|r|&lt;\rho^{-1}\)">\(|r|&lt;\rho^{-1}\)</span>. A root of <span class="math" data-tex="\(z^2-(r+2)z+1=0\)">\(z^2-(r+2)z+1=0\)</span> lies in an extension of degree at most two. Both roots have norms between <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and <span class="math" data-tex="\(\rho^{-1}\)">\(\rho^{-1}\)</span>, or both have norm one, by comparing the three terms of the quadratic. Thus the series expansions used are valid and give <span class="math" data-tex="\(X(z)=x\)">\(X(z)=x\)</span>.</p>
+<p>Second suppose <span class="math" data-tex="\(|x|&lt;1\)">\(|x|&lt;1\)</span>. Put <span class="math" data-tex="\(s=z+Q/z\)">\(s=z+Q/z\)</span>. The polynomials <span class="math" data-tex="\(G_n(s,Q)=z^n+(Q/z)^n\)">\(G_n(s,Q)=z^n+(Q/z)^n\)</span> satisfy
+<span class="math" data-tex="\(G_0=2,G_1=s,G_{n+1}=sG_n-QG_{n-1}\)">\(G_0=2,G_1=s,G_{n+1}=sG_n-QG_{n-1}\)</span>. On <span class="math" data-tex="\(|Q|&lt;|z|&lt;1\)">\(|Q|&lt;|z|&lt;1\)</span>, (6T8b) becomes
+<span class="math math-display" data-tex="\[
+X(z)=-2S_1(Q)+\sum_{n\ge1}\frac{n}{1-Q^n}G_n(s,Q)
+     =c_0+c_1s+\sum_{h\ge2}c_hs^h.
+\]">\[
+X(z)=-2S_1(Q)+\sum_{n\ge1}\frac{n}{1-Q^n}G_n(s,Q)
+     =c_0+c_1s+\sum_{h\ge2}c_hs^h.
+\]</span>
+The recurrence gives <span class="math" data-tex="\(|c_0|&lt;1\)">\(|c_0|&lt;1\)</span>, <span class="math" data-tex="\(c_1\in1+Q\mathcal O_L\)">\(c_1\in1+Q\mathcal O_L\)</span>, and <span class="math" data-tex="\(|c_h|\le1\)">\(|c_h|\le1\)</span>. Apply the inverse fact with <span class="math" data-tex="\(\rho=1\)">\(\rho=1\)</span> after subtracting <span class="math" data-tex="\(c_0\)">\(c_0\)</span> and dividing by <span class="math" data-tex="\(c_1\)">\(c_1\)</span>. It supplies <span class="math" data-tex="\(|s|&lt;1\)">\(|s|&lt;1\)</span> with this value <span class="math" data-tex="\(x\)">\(x\)</span>. The roots of <span class="math" data-tex="\(z^2-sz+Q=0\)">\(z^2-sz+Q=0\)</span> both have norm less than one: otherwise its quadratic term would uniquely dominate. Their product is <span class="math" data-tex="\(Q\)">\(Q\)</span>, so each also has norm greater than <span class="math" data-tex="\(|Q|\)">\(|Q|\)</span>. Hence this expansion applies and again <span class="math" data-tex="\(X(z)=x\)">\(X(z)=x\)</span>. The two cases cover every <span class="math" data-tex="\(x\)">\(x\)</span>, since <span class="math" data-tex="\(\rho&lt;1\)">\(\rho&lt;1\)</span>.</p>
+<p>The two points <span class="math" data-tex="\(\phi(z),\phi(z^{-1})\)">\(\phi(z),\phi(z^{-1})\)</span> have the same <span class="math" data-tex="\(x\)">\(x\)</span>-coordinate and are negatives by (6T8c); they are precisely the roots of the quadratic equation for <span class="math" data-tex="\(y\)">\(y\)</span>. Replace <span class="math" data-tex="\(z\)">\(z\)</span> by its inverse if necessary to obtain <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>. The quadratics used are separable, except for repeated roots already in <span class="math" data-tex="\(L\)">\(L\)</span> and one case if one also applies this construction to a complete field of characteristic 2: the second quadratic with <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, namely <span class="math" data-tex="\(z^2=Q\)">\(z^2=Q\)</span>. That case has direct descent. Periodicity gives <span class="math" data-tex="\(\phi(z^{-1})=\phi(z)\)">\(\phi(z^{-1})=\phi(z)\)</span>, since <span class="math" data-tex="\(z^{-1}=z/Q\)">\(z^{-1}=z/Q\)</span>; (6T8c) therefore forces <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, and (6T8d) gives <span class="math" data-tex="\(y^2=A_6(Q)\)">\(y^2=A_6(Q)\)</span>. In characteristic 2 separate the even and odd coefficients of its integer series to write
+<span class="math math-display" data-tex="\[
+A_6(Q)=c(Q)^2+Q b(Q)^2,
+\qquad b(Q)\in1+Q\mathbf F_2[[Q]],\quad c(Q)\in Q\mathbf F_2[[Q]].
+\]">\[
+A_6(Q)=c(Q)^2+Q b(Q)^2,
+\qquad b(Q)\in1+Q\mathbf F_2[[Q]],\quad c(Q)\in Q\mathbf F_2[[Q]].
+\]</span>
+Indeed each prime-field coefficient is its own square, and the coefficient of <span class="math" data-tex="\(Q\)">\(Q\)</span> in <span class="math" data-tex="\(A_6\)">\(A_6\)</span> is one. The convergent series <span class="math" data-tex="\(b,c\)">\(b,c\)</span> belong to <span class="math" data-tex="\(L\)">\(L\)</span>, and
+<span class="math" data-tex="\(z=(y+c(Q))/b(Q)\in L\)">\(z=(y+c(Q))/b(Q)\in L\)</span>, by uniqueness of a square root in characteristic 2. Thus no inseparable descent assertion is used.</p>
+<p>In all the remaining cases <span class="math" data-tex="\(z\)">\(z\)</span> lies in a finite separable extension of <span class="math" data-tex="\(L\)">\(L\)</span>. For any automorphism <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of its Galois closure over <span class="math" data-tex="\(L\)">\(L\)</span>, equivariance and the kernel imply <span class="math" data-tex="\(\sigma(z)/z=Q^a\)">\(\sigma(z)/z=Q^a\)</span>. An automorphism of a finite extension of a complete valued field preserves its unique extended absolute value, so <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Thus <span class="math" data-tex="\(z\in L\)">\(z\in L\)</span>. This proves surjectivity over every finite <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, and taking their union proves (6T8). All series coefficients lie in <span class="math" data-tex="\(F\)">\(F\)</span>, proving Galois equivariance.</p>
+<p>∎</p>
+<p>This proof reconstructs the actual constructions in Tate's freely accessible <em>A review of non-Archimedean elliptic functions</em>, first part, pp.2–12, including both inverse-series arguments. The formal identities, kernel and surjectivity have all been established above; the source link supplies a primary account, not an omitted implication.</p>
+<p><strong>Proposition 6.3 (the Galois extension and its Kummer cocycle).</strong> There is a short exact sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathbf Z_\ell(1)
+\longrightarrow T_\ell E_Q
+\longrightarrow\mathbf Z_\ell
+\longrightarrow0,
+\tag{6T9}
+\]">\[
+0\longrightarrow\mathbf Z_\ell(1)
+\longrightarrow T_\ell E_Q
+\longrightarrow\mathbf Z_\ell
+\longrightarrow0,
+\tag{6T9}
+\]</span>
+whose class is the Kummer class <span class="math" data-tex="\(\kappa(Q)\in H^1(G_F,\mathbf Z_\ell(1))\)">\(\kappa(Q)\in H^1(G_F,\mathbf Z_\ell(1))\)</span>. On inertia it satisfies
+<span class="math math-display" data-tex="\[
+\kappa(Q)(\sigma)=m\,t_\ell(\sigma).
+\tag{6T10}
+\]">\[
+\kappa(Q)(\sigma)=m\,t_\ell(\sigma).
+\tag{6T10}
+\]</span>
+Consequently the rational extension is nonsplit on inertia and the inertia image is infinite.</p>
+<p><em>Proof.</em> A class <span class="math" data-tex="\([z]\)">\([z]\)</span> in (6T8) is killed by <span class="math" data-tex="\(\ell^n\)">\(\ell^n\)</span> exactly when <span class="math" data-tex="\(z^{\ell^n}=Q^b\)">\(z^{\ell^n}=Q^b\)</span> for some integer <span class="math" data-tex="\(b\)">\(b\)</span>. Send it to <span class="math" data-tex="\(b\bmod\ell^n\)">\(b\bmod\ell^n\)</span>. Replacing <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(zQ^a\)">\(zQ^a\)</span> changes <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(a\ell^n\)">\(a\ell^n\)</span>, so this is well defined. Its kernel is the group of <span class="math" data-tex="\(\ell^n\)">\(\ell^n\)</span>-th roots of unity, and it is surjective by choosing a root of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Thus
+<span class="math math-display" data-tex="\[
+0\to\mu_{\ell^n}\to E_Q[\ell^n]\to\mathbf Z/\ell^n\to0.
+\tag{6T11}
+\]">\[
+0\to\mu_{\ell^n}\to E_Q[\ell^n]\to\mathbf Z/\ell^n\to0.
+\tag{6T11}
+\]</span>
+Choose compatible roots <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> with <span class="math" data-tex="\(Q_n^{\ell^n}=Q\)">\(Q_n^{\ell^n}=Q\)</span>, and compatible primitive roots <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>. They form a basis of (6T11); multiplication by <span class="math" data-tex="\(\ell\)">\(\ell\)</span> gives the compatible bases at the previous level. Taking the inverse limit proves (6T9) directly, including surjectivity from the compatible choices. With the first basis vector denoted <span class="math" data-tex="\(e_1\)">\(e_1\)</span> and the second <span class="math" data-tex="\(e_2\)">\(e_2\)</span>, write
+<span class="math math-display" data-tex="\[
+g(Q_n)/Q_n=\zeta_n^{\kappa_n(g)}.
+\]">\[
+g(Q_n)/Q_n=\zeta_n^{\kappa_n(g)}.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\rho(g)=\begin{pmatrix}\chi_\ell(g)&amp;\kappa(Q)(g)\\0&amp;1\end{pmatrix},
+\qquad
+\kappa(Q)(gg&#x27;)=\kappa(Q)(g)+\chi_\ell(g)\kappa(Q)(g&#x27;).
+\tag{6T12}
+\]">\[
+\rho(g)=\begin{pmatrix}\chi_\ell(g)&amp;\kappa(Q)(g)\\0&amp;1\end{pmatrix},
+\qquad
+\kappa(Q)(gg&#x27;)=\kappa(Q)(g)+\chi_\ell(g)\kappa(Q)(g&#x27;).
+\tag{6T12}
+\]</span>
+Changing the compatible roots adds a coboundary. This is precisely the Kummer cocycle and hence the extension class.</p>
+<p>Write <span class="math" data-tex="\(Q=\varpi^m u\)">\(Q=\varpi^m u\)</span>, with <span class="math" data-tex="\(u\in\mathcal O_F^\times\)">\(u\in\mathcal O_F^\times\)</span>. Every <span class="math" data-tex="\(\ell^n\)">\(\ell^n\)</span>-th root of <span class="math" data-tex="\(u\)">\(u\)</span> can be chosen in the maximal unramified extension: choose its residue root in <span class="math" data-tex="\(\bar k\)">\(\bar k\)</span> and lift by Hensel’s lemma, whose derivative is a unit because <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>. Compatible choices give trivial inertia action on these roots. The cocycle for <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> on inertia is the tame character, and the cocycle for <span class="math" data-tex="\(\varpi^m\)">\(\varpi^m\)</span> is its <span class="math" data-tex="\(m\)">\(m\)</span>-fold multiple. This proves (6T10). Inertia also acts trivially on <span class="math" data-tex="\(\mu_{\ell^n}\)">\(\mu_{\ell^n}\)</span>.</p>
+<p>Thus inertia has matrices <span class="math" data-tex="\(1+m t_\ell(\sigma)E_{12}\)">\(1+m t_\ell(\sigma)E_{12}\)</span>. Since <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span> and <span class="math" data-tex="\(t_\ell(I)=\mathbf Z_\ell\)">\(t_\ell(I)=\mathbf Z_\ell\)</span>, their image is infinite. A split extension over <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span> would have trivial inertia, because both endpoint characters are trivial there. Hence it is nonsplit. ∎</p>
+<p>The integral and residual conclusions differ. Reduction of (6T12) modulo <span class="math" data-tex="\(\ell\)">\(\ell\)</span> has nontrivial inertia exactly when <span class="math" data-tex="\(\ell\nmid m\)">\(\ell\nmid m\)</span>. If <span class="math" data-tex="\(\ell\mid m\)">\(\ell\mid m\)</span>, its inertia matrices are identity even though the rational inertia image is infinite. This distinction will matter for residual representations.</p>
+<p><strong>Corollary 6.4 (the covariant Tate-module pair).</strong> The Weil–Deligne pair of <span class="math" data-tex="\(V_\ell E_Q\)">\(V_\ell E_Q\)</span> is <span class="math" data-tex="\(\mathrm{Sp}(2)\)">\(\mathrm{Sp}(2)\)</span>.</p>
+<p><strong>Proof.</strong> Proposition 6.3 gives <span class="math" data-tex="\(\rho(\sigma)=1+m t_\ell(\sigma)E_{12}\)">\(\rho(\sigma)=1+m t_\ell(\sigma)E_{12}\)</span> on inertia, with <span class="math" data-tex="\(m=v(Q)&gt;0\)">\(m=v(Q)&gt;0\)</span>. Thus the monodromy is <span class="math" data-tex="\(N=mE_{12}\)">\(N=mE_{12}\)</span> in its displayed basis. The geometric Frobenius matrix is <span class="math" data-tex="\(\left(\begin{smallmatrix}q^{-1}&amp;b\\0&amp;1\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}q^{-1}&amp;b\\0&amp;1\end{smallmatrix}\right)\)</span>, since the cyclotomic action on geometric Frobenius is <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>, by the local calculation in the first lesson. The two eigenvalues differ. Replacing the quotient lift <span class="math" data-tex="\(e_2\)">\(e_2\)</span> by <span class="math" data-tex="\(e_2+d e_1\)">\(e_2+d e_1\)</span> with <span class="math" data-tex="\(d=-b/(q^{-1}-1)\)">\(d=-b/(q^{-1}-1)\)</span> makes Frobenius diagonal and leaves <span class="math" data-tex="\(N(e_2)=m e_1\)">\(N(e_2)=m e_1\)</span>. After replacing the cyclotomic vector by <span class="math" data-tex="\(m e_1\)">\(m e_1\)</span>, and ordering the basis as <span class="math" data-tex="\(e_2,m e_1\)">\(e_2,m e_1\)</span>, we have <span class="math" data-tex="\(Ne_0=e_1,Ne_1=0\)">\(Ne_0=e_1,Ne_1=0\)</span> and Frobenius eigenvalues <span class="math" data-tex="\(1,q^{-1}\)">\(1,q^{-1}\)</span>. The smooth inertia action in the equivalence of Theorem 3.1 is trivial, because its exponential monodromy factor removes exactly the displayed inertia matrices. This is the pair <span class="math" data-tex="\(\mathrm{Sp}(2)\)">\(\mathrm{Sp}(2)\)</span> defined in §5. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Corollary 6.4 proves that the split Tate curve has covariant Tate-module pair <span class="math" data-tex="\(\mathrm{Sp}(2)\)">\(\mathrm{Sp}(2)\)</span>. Its dual is isomorphic to <span class="math" data-tex="\(\|\cdot\|^{-1}\mathrm{Sp}(2)\)">\(\|\cdot\|^{-1}\mathrm{Sp}(2)\)</span>: dualize the two basis lines and reverse their order, rescaling one vector to absorb the sign of the dual monodromy. Its kernel has Frobenius eigenvalue one and hence factor <span class="math" data-tex="\((1-q^{-s})^{-1}\)">\((1-q^{-s})^{-1}\)</span>. This explains why the usual elliptic-curve factor belongs to the dual, cohomological convention when geometric Frobenius is used. The uniformization, geometric identification, block and dual calculations are therefore proved here before use.</p>
+<h2 id="7-what-this-lesson-does-not-prove">7. What this lesson does not prove</h2>
+<p>Proposition 1.0 proves (2), including the pro-<span class="math" data-tex="\(p\)">\(p\)</span> wild kernel, the entire tame radical tower and its Frobenius action, from the first lesson’s already proved Hensel, finite-extension and unramified-field facts. The profinite completion used in Proposition 3.3 is proved in Proposition 1.1 of the earlier Weil-group lesson. The free source [Milne, ANT, Chapter 7] supplies comparison ramification proofs; its citation does not replace Proposition 1.0.</p>
+<p>Stable lattices for compact matrix groups were proved in the first lesson. The complex smooth semisimplicity criterion was proved in the Weil-group lesson; Lemma 4.0 proves its extension to every characteristic-zero coefficient field, including nonsplit irreducibles. Lemma 2.0 proves primary decomposition, the polynomial construction and uniqueness of both Jordan decompositions over the original field, the conjugation components on endomorphisms, and the positive-power criterion. Those arguments supply the linear algebra used in Propositions 3.2 and 4.1.</p>
+<p>The smooth epsilon factors in (22) are supplied by the preceding lesson’s Theorem 3.0, whose §§3A–3D prove existence and Brauer-relation independence, followed by its uniqueness and transformation proofs. The new sharp and orthogonal reconstructions there and their earlier programme analytic inputs remain subject to integration/provenance review. Formula (22) is the definition of the extension to Weil–Deligne pairs, matching Deligne, §8.12. Lemma 6.2, Proposition 6.3 and Corollary 6.4 supply the Tate-curve uniformization, its Galois extension and its Weil–Deligne identification locally. The <span class="math" data-tex="\(p\)">\(p\)</span>-adic construction from potentially semistable representations, described in Berger, §II.5.2, uses period rings and lies outside the hypothesis <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span> of this monodromy proof.</p>
+<p>The theorem, equivalence, choice independence, classification and all block calculations required here have been proved above. Grothendieck’s theorem is recorded in Deligne, Theorem 8.2; Deligne’s §§8.3–8.6 supply the intrinsic and explicit parametrizations. Blasius's arXiv version 1, §§1.3–1.7, provides another organization of these objects, with a centered block convention differing by an unramified twist. The two corrections to its §1.3 used here are identified in §3 above.</p>
+<h2 id="8-graded-exercises-with-complete-solutions">8. Graded exercises with complete solutions</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Suppose <span class="math" data-tex="\(A N A^{-1}=q^{-1}N\)">\(A N A^{-1}=q^{-1}N\)</span> over a characteristic-zero field. Prove that <span class="math" data-tex="\(N\)">\(N\)</span> is nilpotent. Explain what fails if the scaling scalar is a root of unity.</p>
+<p><em>Solution.</em> After extending scalars, the spectrum is a finite multiset invariant under multiplication by <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>. A nonzero eigenvalue would generate infinitely many distinct eigenvalues, so the spectrum consists of zero. Cayley–Hamilton gives nilpotence. If the scalar is one, <span class="math" data-tex="\(A=N=1\)">\(A=N=1\)</span> is a counterexample. More generally, for a root of unity <span class="math" data-tex="\(z\)">\(z\)</span> of order <span class="math" data-tex="\(m\)">\(m\)</span>, take an invertible diagonal matrix with eigenvalues <span class="math" data-tex="\(1,z,\ldots,z^{m-1}\)">\(1,z,\ldots,z^{m-1}\)</span> and a cyclic permutation matrix conjugating it to <span class="math" data-tex="\(z\)">\(z\)</span> times itself. Finite nonzero scaling orbits are then possible.</p>
+<p><strong>Exercise 8.2 (medium).</strong> Prove choice independence in both steps of (11), including a representation with nonsemisimple Frobenius. State precisely the integrality condition for extending to <span class="math" data-tex="\(G_F\)">\(G_F\)</span>.</p>
+<p><em>Solution.</em> With <span class="math" data-tex="\(\Phi&#x27;=a\Phi\)">\(\Phi&#x27;=a\Phi\)</span>, the difference between the cocycles is <span class="math" data-tex="\((\|w\|-1)t_\ell(a)/(1-q^{-1})\)">\((\|w\|-1)t_\ell(a)/(1-q^{-1})\)</span>, by their values on inertia and the new Frobenius. Formula (11) gives conjugation by <span class="math" data-tex="\(\exp(t_\ell(a)N/(1-q^{-1}))\)">\(\exp(t_\ell(a)N/(1-q^{-1}))\)</span>. Rescaling <span class="math" data-tex="\(t_\ell\)">\(t_\ell\)</span> by <span class="math" data-tex="\(u\)">\(u\)</span> gives <span class="math" data-tex="\((r,u^{-1}N)\)">\((r,u^{-1}N)\)</span>. Use primary spaces of the central operator <span class="math" data-tex="\(r(\Phi)^m\)">\(r(\Phi)^m\)</span>, not just eigenspaces: label its irreducible-polynomial orbits under (15), and act on label <span class="math" data-tex="\(j\)">\(j\)</span> by <span class="math" data-tex="\(u^{-j}\)">\(u^{-j}\)</span>. This intertwines the pairs even with nontrivial Jordan blocks. The eigenvalues of <span class="math" data-tex="\(r(\Phi)\)">\(r(\Phi)\)</span> must all be <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic units for a Galois extension; sufficiency and necessity are Proposition 3.3. The unramified value <span class="math" data-tex="\(\ell\)">\(\ell\)</span> shows that this condition cannot be omitted.</p>
+<p><strong>Exercise 8.3 (medium).</strong> Compute the Frobenius semisimplification, ordinary semisimplification, conductor and <span class="math" data-tex="\(L\)">\(L\)</span>-factor of (17).</p>
+<p><em>Solution.</em> Its unipotent Frobenius component is <span class="math" data-tex="\(A_M\otimes1\)">\(A_M\otimes1\)</span>, so removing it gives two copies of <span class="math" data-tex="\(\mathrm{Sp}(2)\)">\(\mathrm{Sp}(2)\)</span>, with the same rank-two <span class="math" data-tex="\(N\)">\(N\)</span>. Ordinary semisimplification has four one-dimensional characters <span class="math" data-tex="\(1,1,\|\cdot\|,\|\cdot\|\)">\(1,1,\|\cdot\|,\|\cdot\|\)</span> and zero monodromy. Inertia is trivial for the original pair, while <span class="math" data-tex="\(\ker N=M\otimes Ee_1\)">\(\ker N=M\otimes Ee_1\)</span> has dimension two. Thus (22) gives conductor <span class="math" data-tex="\(4-2=2\)">\(4-2=2\)</span>. On that kernel, Frobenius is <span class="math" data-tex="\(q^{-1}A_M\)">\(q^{-1}A_M\)</span>, with characteristic polynomial <span class="math" data-tex="\((X-q^{-1})^2\)">\((X-q^{-1})^2\)</span>, hence <span class="math" data-tex="\(L(s)=(1-q^{-s-1})^{-2}\)">\(L(s)=(1-q^{-s-1})^{-2}\)</span>. Frobenius semisimplification has the same values. Ordinary semisimplification instead has conductor zero and factor <span class="math" data-tex="\((1-q^{-s})^{-2}(1-q^{-s-1})^{-2}\)">\((1-q^{-s})^{-2}(1-q^{-s-1})^{-2}\)</span>.</p>
+<p><strong>Exercise 8.4 (hard).</strong> Prove the indecomposable classification. Then classify an unramified pair with graded multiplicity dimensions <span class="math" data-tex="\((1,2,1)\)">\((1,2,1)\)</span> in degrees <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>, whose two successive maps have rank one. Assume the composite has rank one.</p>
+<p><em>Solution.</em> Decompose the semisimple underlying representation into orbits of distinct twists <span class="math" data-tex="\(\tau\|\cdot\|^j\)">\(\tau\|\cdot\|^j\)</span>. Relation (3) makes <span class="math" data-tex="\(N\)">\(N\)</span> a degree-one map on the multiplicity spaces. For a longest homogeneous chain, choose a functional at its last vector and construct (20); it is a graded projection commuting with <span class="math" data-tex="\(N\)">\(N\)</span>. Its kernel allows induction, giving interval chains. Formula (21) recovers every interval multiplicity from ranks, proving uniqueness; a single chain cannot split. For general coefficients use right vector spaces over <span class="math" data-tex="\(\mathrm{End}_{W_F}(\tau)\)">\(\mathrm{End}_{W_F}(\tau)\)</span>, with the same projection and ranks. This proves the full classification rather than only an unramified special case.</p>
+<p>In the stated example, the rank-one composite forces one chain covering <span class="math" data-tex="\([0,2]\)">\([0,2]\)</span>. It uses dimensions <span class="math" data-tex="\((1,1,1)\)">\((1,1,1)\)</span>, leaving a one-dimensional chain in degree one. If the degree-zero character has value <span class="math" data-tex="\(c\)">\(c\)</span>, the pair is <span class="math" data-tex="\(\chi_c\otimes\mathrm{Sp}(3)\oplus\chi_c\|\cdot\|\)">\(\chi_c\otimes\mathrm{Sp}(3)\oplus\chi_c\|\cdot\|\)</span>. The two blocks give
+<span class="math math-display" data-tex="\[
+L(s)=\frac1{(1-cq^{-s-2})(1-cq^{-s-1})},
+\qquad a=2.
+\tag{30}
+\]">\[
+L(s)=\frac1{(1-cq^{-s-2})(1-cq^{-s-1})},
+\qquad a=2.
+\tag{30}
+\]</span>
+If instead the composite were zero with the same successive ranks, (21) would give intervals <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and <span class="math" data-tex="\([1,2]\)">\([1,2]\)</span>. This demonstrates why dimensions and individual ranks alone need not identify a pair.</p>
+<h2 id="references-and-next-reading">References and next reading</h2>
+<ul>
+<li>J. Tate, <a href="https://web.ma.utexas.edu/users/voloch/Preprints/nonarch-ams.pdf"><em>A review of non-Archimedean elliptic functions</em>, free author-site copy</a>, first part, pp.2–12. Lemma 6.2 and Proposition 6.3 reconstruct the uniformization and Galois-module arguments before use.</li>
+<li>P. Deligne, <a href="https://publications.ias.edu/sites/default/files/Number20.pdf"><em>Les constantes des équations fonctionnelles des fonctions L</em>, free author-institution copy</a>, 1973, §§2.1–2.2, 8.1–8.6 and 8.12.</li>
+<li>D. Blasius, <em>Hilbert modular forms and the Ramanujan conjecture</em>, arXiv math/0511007v1, submitted November 1, 2005, §§1.1–1.7; <a href="https://arxiv.org/abs/math/0511007v1">version 1 manuscript</a>.</li>
+<li>J. R. Getz and H. Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em>, free author draft of 22 April 2022</a>, §12.2, for comparison with parameters using an algebraic <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span>.</li>
+<li>R. Taylor, <em>Galois representations</em>, Annales de la Faculté des Sciences de Toulouse (6) <strong>13</strong> (2004), §1; <a href="https://www.numdam.org/item/AFST_2004_6_13_1_73_0/">published article</a>.</li>
+<li>L. Berger, <a href="https://arxiv.org/abs/math/0210184"><em>An introduction to the theory of p-adic representations</em>, free author preprint</a>, §II.5.2, for the distinct construction using potentially semistable <span class="math" data-tex="\(p\)">\(p\)</span>-adic representations.</li>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em>, free author notes</a>, Chapter 7, especially Remark 7.56, Lemma 7.57, Theorem 7.58 and Corollary 7.59. Proposition 1.0 contains the tame and wild proofs used here.</li>
+</ul>
+<p>Continue with <em>Elliptic curves over local fields and their Weil–Deligne representations</em>: the abstract nilpotent chain will become the extension defined by a Tate parameter.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="local-l-factors-and-epsilon-factors.html">← Local L-factors and epsilon factors</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="elliptic-curves-over-local-fields.html">Elliptic curves over local fields and their Weil–Deligne representations →</a></span></nav>
+<p class="small source-link"><a href="src/weil-deligne-representations-and-monodromy.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GAL">Repository</a></nav>
+</footer>
+</body>
+</html>

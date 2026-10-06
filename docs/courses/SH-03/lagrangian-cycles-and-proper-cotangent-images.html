@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lagrangian cycles and proper cotangent images · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/lagrangian-cycles-and-proper-cotangent-images.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Lagrangian cycles and proper cotangent images</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Original text by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Source-scope and reader repairs by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the revising AI. New original text is public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="lagrangian-cycles-and-proper-cotangent-images">Lagrangian cycles and proper cotangent images</h1>
+<p>A Lagrangian cycle combines an <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional cycle in a <span class="math" data-tex="\(2n\)">\(2n\)</span>-dimensional cotangent bundle with the orientation of the cotangent fibres. The coefficient is essential on a nonorientable base. Singular carriers are allowed, but their regular pieces must satisfy the cycle conservation law. A cotangent direct image then uses properness on an incidence set, which can hold even when the base map is nonproper.</p>
+<p><em>Original text by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Source-scope and reader repairs by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the revising AI. New original text is public domain (CC0).</em></p>
+<p>Use <a href="subanalytic-chains-and-closed-cycle-supports.html">Subanalytic chains and closed cycle supports</a>, <a href="supports-products-and-proper-images-of-chains.html">Supports, products and proper images of chains</a> and <a href="the-dualizing-resolution-by-subanalytic-chains.html">The dualizing resolution by subanalytic chains</a> for singular dualizing bounds, finite-rank coefficient supports and the cycle complex. <a href="../sheaf-proof-readings/SH03-conic-subanalytic-images-and-isotropic-dimension.html">Conic subanalytic images and isotropic dimension</a> and <a href="../sheaf-proof-readings/SH03-isotropic-cotangent-transport-and-discrete-critical-values.html">Isotropic cotangent transport and discrete critical values</a> supply the geometric bounds and image theorem. The exact current SH-02 imports are the submersion/relative dualizing formula, closed support, proper-support base change and normalized trace.</p>
+<p>This lesson defines Lagrangian cycles and their proper cotangent direct images, in the framework of M. Kashiwara, <a href="https://www.numdam.org/item/AST_1985__130__193_0/"><em>Index theorem for constructible sheaves</em></a>, Astérisque 130 (1985), §§1–3. The pullback coefficient map and the section-intersection comparison are treated in <a href="pulling-back-lagrangian-cycles-through-a-graph.html">Pulling back Lagrangian cycles through a graph</a> and <a href="continuous-sections-and-supported-cycle-intersections.html">Continuous sections and supported cycle intersections</a>.</p>
+<h2 id="the-orientation-coefficient-fixes-the-dimension">The orientation coefficient fixes the dimension</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a commutative ring of finite global dimension. Throughout this lesson manifolds are real analytic, Hausdorff and countable at infinity, of uniformly bounded finite dimension. Work on a component <span class="math" data-tex="\(X\)">\(X\)</span> of dimension <span class="math" data-tex="\(n\)">\(n\)</span>, and write</p>
+<span class="math math-display" data-tex="\[
+\pi_X:T^*X\longrightarrow X,\qquad
+B_X=\operatorname{or}_{T^*X/X},\qquad
+E_X=\pi_X^{-1}\omega_X.
+\qquad\text{(1)}
+\]">\[
+\pi_X:T^*X\longrightarrow X,\qquad
+B_X=\operatorname{or}_{T^*X/X},\qquad
+E_X=\pi_X^{-1}\omega_X.
+\qquad\text{(1)}
+\]</span>
+<p>The relative sign line <span class="math" data-tex="\(B_X\)">\(B_X\)</span> is the orientation of the <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional cotangent fibre, with coefficients in <span class="math" data-tex="\(A\)">\(A\)</span>.
+The submersion formula and exceptional composition give</p>
+<span class="math math-display" data-tex="\[
+\omega_{T^*X}\simeq B_X[n]\otimes_A E_X,
+\qquad
+E_X\simeq\omega_{T^*X}\otimes_A B_X[-n].
+\qquad\text{(2)}
+\]">\[
+\omega_{T^*X}\simeq B_X[n]\otimes_A E_X,
+\qquad
+E_X\simeq\omega_{T^*X}\otimes_A B_X[-n].
+\qquad\text{(2)}
+\]</span>
+<p>The second map cancels the shifted invertible first factor of the first map, with the canonical integral square pairing <span class="math" data-tex="\(B_X\otimes B_X\simeq A\)">\(B_X\otimes B_X\simeq A\)</span>. The displayed ordering and the usual symmetry of shifted complexes specify the cancellation. This is the actual relative dualizing identification; a choice of unrelated orientation trivializations would not specify the same map.</p>
+<p>For a closed subanalytic <span class="math" data-tex="\(\Lambda\subset T^*X\)">\(\Lambda\subset T^*X\)</span> of dimension at most <span class="math" data-tex="\(n\)">\(n\)</span>, exceptional composition and finite local freeness give</p>
+<span class="math math-display" data-tex="\[
+H^0_\Lambda(E_X)
+\simeq j_{\Lambda*}H^{-n}(\omega_\Lambda\otimes B_X|_\Lambda)
+\simeq H^0_\Lambda\mathcal Z_n(B_X).
+\qquad\text{(3)}
+\]">\[
+H^0_\Lambda(E_X)
+\simeq j_{\Lambda*}H^{-n}(\omega_\Lambda\otimes B_X|_\Lambda)
+\simeq H^0_\Lambda\mathcal Z_n(B_X).
+\qquad\text{(3)}
+\]</span>
+<p>These are sheaves on <span class="math" data-tex="\(T^*X\)">\(T^*X\)</span>. The first term uses the sheaf support operation; the last is its actual closed-support subsheaf of cycles. The shift in (2) turns degree <span class="math" data-tex="\(-n\)">\(-n\)</span> into supported degree zero. It does not turn the geometric dimension into <span class="math" data-tex="\(2n\)">\(2n\)</span>.</p>
+<h2 id="closed-isotropic-carriers-form-a-directed-system">Closed isotropic carriers form a directed system</h2>
+<p>All conicity is with respect to strictly positive cotangent scaling. Let <span class="math" data-tex="\(\mathscr I_X\)">\(\mathscr I_X\)</span> be the family of closed, conic, subanalytic isotropic subsets of <span class="math" data-tex="\(T^*X\)">\(T^*X\)</span>. The canonical-form criterion gives
+<span class="math" data-tex="\(\dim\Lambda\leq n\)">\(\dim\Lambda\leq n\)</span> for every such subset.</p>
+<p>Finite unions remain closed, conic and subanalytic. They remain isotropic because vanishing of the canonical one-form on a finite union follows from the point-normal cone test. Thus <span class="math" data-tex="\(\mathscr I_X\)">\(\mathscr I_X\)</span> is directed by inclusion.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\mathcal L_X=
+\underset{\Lambda\in\mathscr I_X}{\operatorname{colim}}
+H^0_\Lambda(E_X)
+\ \subset\ \mathcal Z_n(B_X).
+\qquad\text{(4)}
+\]">\[
+\mathcal L_X=
+\underset{\Lambda\in\mathscr I_X}{\operatorname{colim}}
+H^0_\Lambda(E_X)
+\ \subset\ \mathcal Z_n(B_X).
+\qquad\text{(4)}
+\]</span>
+<p>The colimit is a filtered colimit of sheaves. Its maps are the closed-support maps. Formula (3) identifies each with the inclusion of cycles supported on <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, so they are injective and compatible with common upper carriers. Consequently (4) is an actual subsheaf of cycles. Every germ has a representative on one closed conic isotropic carrier. The assertion does not require a globally finite carrier presentation for every section.</p>
+<p>The notation <span class="math" data-tex="\(\mathcal L_X\)">\(\mathcal L_X\)</span> names the sheaf of Lagrangian cycles. Its allowed carriers can have singularities and components of smaller dimension. A nonzero cycle itself will have pure dimension <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>We will also use a closure fact. If a conic subanalytic isotropic <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is locally closed, then its closure is still conic, subanalytic and isotropic, with the same dimension bound.</p>
+<p><strong>Proof.</strong> Closure preserves subanalyticity and dimension, and commutes with positive scaling. For each ambient point <span class="math" data-tex="\(z\)">\(z\)</span>, the point normal cones of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and <span class="math" data-tex="\(\overline\Lambda\)">\(\overline\Lambda\)</span> coincide. Indeed, approximate a sequence <span class="math" data-tex="\(z_j\in\overline\Lambda\)">\(z_j\in\overline\Lambda\)</span>, with scales <span class="math" data-tex="\(c_j\to\infty\)">\(c_j\to\infty\)</span>, by points <span class="math" data-tex="\(w_j\in\Lambda\)">\(w_j\in\Lambda\)</span> within <span class="math" data-tex="\(1/(jc_j)\)">\(1/(jc_j)\)</span> in a fixed chart. The scaled differences have the same limit. The reverse inclusion is immediate. The canonical one-form kills those cones for <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, so the cone criterion makes it vanish on <span class="math" data-tex="\(\overline\Lambda\)">\(\overline\Lambda\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="locally-closed-support-retains-boundary-germs">Locally closed support retains boundary germs</h2>
+<p>For a locally closed conic subanalytic isotropic <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, the more general form of (3) is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0_\Lambda\mathcal L_X
+&amp;\simeq H^0_\Lambda(E_X)\\
+&amp;\simeq j_{\Lambda*}H^{-n}
+(\omega_\Lambda\otimes B_X|_\Lambda)
+\simeq H^0_\Lambda\mathcal Z_n(B_X).
+\end{aligned}
+\qquad\text{(5)}
+\]">\[
+\begin{aligned}
+H^0_\Lambda\mathcal L_X
+&amp;\simeq H^0_\Lambda(E_X)\\
+&amp;\simeq j_{\Lambda*}H^{-n}
+(\omega_\Lambda\otimes B_X|_\Lambda)
+\simeq H^0_\Lambda\mathcal Z_n(B_X).
+\end{aligned}
+\qquad\text{(5)}
+\]</span>
+<p>Here <span class="math" data-tex="\(H^0_\Lambda F=H^0R\mathcal Hom(A_\Lambda,F)\)">\(H^0_\Lambda F=H^0R\mathcal Hom(A_\Lambda,F)\)</span>, with the locally closed constant coefficient extended by zero. For a closed <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> it means the supported subsheaf. For a locally closed one it involves ordinary direct image from an open neighborhood in which <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is closed. It need not be a subsheaf embedded into <span class="math" data-tex="\(F\)">\(F\)</span> on the full ambient space.</p>
+<p><strong>Proof.</strong> For a closed <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, any cycle supported there is already one of the allowed terms in (4), by (3). This proves the two cycle-sheaf support identifications. The exceptional support formula <span class="math" data-tex="\(R\Gamma_\Lambda\omega_{T^*X}=j_{\Lambda*}\omega_\Lambda\)">\(R\Gamma_\Lambda\omega_{T^*X}=j_{\Lambda*}\omega_\Lambda\)</span>, together with (2), gives the middle description and the actual maps.</p>
+<p>For a locally closed <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, choose an open <span class="math" data-tex="\(O\)">\(O\)</span> in which it is closed. Its closure <span class="math" data-tex="\(\overline\Lambda\)">\(\overline\Lambda\)</span> is an allowed carrier. On <span class="math" data-tex="\(O\)">\(O\)</span>, the supported lowest sheaf on <span class="math" data-tex="\(\overline\Lambda\)">\(\overline\Lambda\)</span> restricts to that on <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, by open restriction of the dualizing object. Thus these same cycle germs occur in <span class="math" data-tex="\(\mathcal L_X|_O\)">\(\mathcal L_X|_O\)</span>. Conversely <span class="math" data-tex="\(\mathcal L_X\subset\mathcal Z_n(B_X)\)">\(\mathcal L_X\subset\mathcal Z_n(B_X)\)</span>, whose supported lowest-degree identity is already proved. The closed-case argument on <span class="math" data-tex="\(O\)">\(O\)</span>, followed by ordinary direct image, proves (5) on the original ambient space. All dualizing support objects involved start in degree <span class="math" data-tex="\(-n\)">\(-n\)</span>, so taking their lowest degree is exactly taking the degree-zero support of their lowest sheaf. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is smooth of dimension <span class="math" data-tex="\(n\)">\(n\)</span>, restriction to <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+(H^0_\Lambda\mathcal L_X)|_\Lambda
+\simeq\operatorname{or}_\Lambda\otimes_A B_X|_\Lambda.
+\qquad\text{(6)}
+\]">\[
+(H^0_\Lambda\mathcal L_X)|_\Lambda
+\simeq\operatorname{or}_\Lambda\otimes_A B_X|_\Lambda.
+\qquad\text{(6)}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\omega_\Lambda=\operatorname{or}_\Lambda[n]\)">\(\omega_\Lambda=\operatorname{or}_\Lambda[n]\)</span>.
+If its dimension is strictly less than <span class="math" data-tex="\(n\)">\(n\)</span>, the degree <span class="math" data-tex="\(-n\)">\(-n\)</span> sheaf is zero. The same vanishing holds on any smaller-dimensional singular carrier by the lowest-dualizing bound.</p>
+<p>Ordinary <span class="math" data-tex="\(j_{\Lambda*}\)">\(j_{\Lambda*}\)</span> in (5) retains approach germs at the frontier. Exercise 4 explains why these do not automatically give a closed global cycle on <span class="math" data-tex="\(\overline\Lambda\)">\(\overline\Lambda\)</span>.</p>
+<h2 id="a-cycle-has-pure-support-and-local-dilation-invariance">A cycle has pure support and local dilation invariance</h2>
+<p>Let <span class="math" data-tex="\(s\in\Gamma(U;\mathcal L_X)\)">\(s\in\Gamma(U;\mathcal L_X)\)</span>, for an open <span class="math" data-tex="\(U\subset T^*X\)">\(U\subset T^*X\)</span>.
+Its actual support is closed in <span class="math" data-tex="\(U\)">\(U\)</span>, subanalytic there and, if nonempty, pure of dimension <span class="math" data-tex="\(n\)">\(n\)</span>. It is isotropic and locally invariant under positive dilation. If <span class="math" data-tex="\(U\)">\(U\)</span> is conic, its support is conic for the full action.</p>
+<p><strong>Proof.</strong> The coefficient <span class="math" data-tex="\(B_X\)">\(B_X\)</span> is locally free of rank one, so the finite-rank chain support theorem applies to the inclusion (4). A local finite compatible cell refinement describes its nonzero coefficients on <span class="math" data-tex="\(n\)">\(n\)</span>-pieces; their closures give its closed subanalytic pure support. A germ has an allowed carrier <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, so its support near that germ is a subanalytic subset of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. The one-form subset rule proves isotropy.</p>
+<p>For dilation, a carrier and its regular locus are preserved by the positive analytic scaling maps. Away from the zero section, their regular <span class="math" data-tex="\(n\)">\(n\)</span>-pieces contain the radial direction, and their orientation coefficients are locally constant along it. The fibre sign line transports by positive scaling with sign plus. The cycle is determined by the coefficients on these regular pieces: its difference from another such description cannot be supported solely on a lower-dimensional frontier. Hence the cycle germs, and their vanishing, transport along a sufficiently small radial interval. Chaining those intervals proves support invariance along each connected portion of an orbit contained in <span class="math" data-tex="\(U\)">\(U\)</span>. Zero-section orbits are fixed points. If <span class="math" data-tex="\(U\)">\(U\)</span> is invariant under the action, each positive orbit in it is connected, giving full conicity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On a general open <span class="math" data-tex="\(U\)">\(U\)</span>, disjoint portions of the same dilation orbit can have independent coefficients. This is the local interpretation of conicity for such a restricted sheaf; Exercise 4 makes the distinction explicit.</p>
+<p>The cycle-support theorem proves pure isotropic support and local dilation invariance. Generalized involutivity requires a separate argument beyond the properties established here.</p>
+<h2 id="external-products-use-the-ordered-dualizing-comparison">External products use the ordered dualizing comparison</h2>
+<p>Let <span class="math" data-tex="\(Y\)">\(Y\)</span> have dimension <span class="math" data-tex="\(m\)">\(m\)</span>. Under
+<span class="math" data-tex="\(T^*(X\times Y)\simeq T^*X\times T^*Y\)">\(T^*(X\times Y)\simeq T^*X\times T^*Y\)</span>, product carriers
+<span class="math" data-tex="\(\Lambda_X\times\Lambda_Y\)">\(\Lambda_X\times\Lambda_Y\)</span> are closed, conic, subanalytic and isotropic. The canonical one-form is the sum of the two factor forms, so it vanishes on the product. The dimension bound is <span class="math" data-tex="\(n+m\)">\(n+m\)</span>.</p>
+<p>The supported external evaluation product, followed by the ordered dualizing product, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0_{\Lambda_X}(E_X)\boxtimes_A
+H^0_{\Lambda_Y}(E_Y)
+&amp;\longrightarrow
+H^0_{\Lambda_X\times\Lambda_Y}(E_X\boxtimes_A^L E_Y)\\
+&amp;\longrightarrow
+H^0_{\Lambda_X\times\Lambda_Y}
+(\pi_{X\times Y}^{-1}\omega_{X\times Y}).
+\end{aligned}
+\qquad\text{(7)}
+\]">\[
+\begin{aligned}
+H^0_{\Lambda_X}(E_X)\boxtimes_A
+H^0_{\Lambda_Y}(E_Y)
+&amp;\longrightarrow
+H^0_{\Lambda_X\times\Lambda_Y}(E_X\boxtimes_A^L E_Y)\\
+&amp;\longrightarrow
+H^0_{\Lambda_X\times\Lambda_Y}
+(\pi_{X\times Y}^{-1}\omega_{X\times Y}).
+\end{aligned}
+\qquad\text{(7)}
+\]</span>
+<p>The last map is inverse image of the actual ordered manifold product
+<span class="math" data-tex="\(\omega_X\boxtimes^L\omega_Y\simeq\omega_{X\times Y}\)">\(\omega_X\boxtimes^L\omega_Y\simeq\omega_{X\times Y}\)</span>.
+It is fixed as the mate of the two factor compact traces, integrated in factor order. All shifts and their graded symmetries stay in this comparison. We do not replace it by separately chosen unshifted orientation bases.</p>
+<p>Both supported factor objects begin in degree zero, by (3). Their degree-zero classes therefore have the indicated natural product into degree zero of the derived tensor; no flatness of those lowest support modules is required. The supported-evaluation construction keeps the product carrier. Taking common upper carriers in (4) makes (7) well defined and yields</p>
+<span class="math math-display" data-tex="\[
+\mathcal L_X\boxtimes_A\mathcal L_Y
+\longrightarrow\mathcal L_{X\times Y}.
+\qquad\text{(8)}
+\]">\[
+\mathcal L_X\boxtimes_A\mathcal L_Y
+\longrightarrow\mathcal L_{X\times Y}.
+\qquad\text{(8)}
+\]</span>
+<p>Its associativity follows from the associativity of evaluation, proper-support projection and the ordered traces that define the dualizing comparison. A zero-dimensional factor multiplies coefficients with its point trace. The product support can be smaller than the product of two nonzero supports when coefficients multiply to zero; Exercise 6 checks this.</p>
+<h2 id="a-direct-image-has-a-cotangent-incidence-domain">A direct image has a cotangent incidence domain</h2>
+<p>For an analytic <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_f=Y\times_XT^*X,\qquad \pi:C_f\to Y,\\
+f_\pi(y;\xi)=(f(y);\xi)\in T^*X,\qquad
+f_d(y;\xi)=(y;df_y^t\xi)\in T^*Y.
+\end{gathered}
+\qquad\text{(9)}
+\]">\[
+\begin{gathered}
+C_f=Y\times_XT^*X,\qquad \pi:C_f\to Y,\\
+f_\pi(y;\xi)=(f(y);\xi)\in T^*X,\qquad
+f_d(y;\xi)=(y;df_y^t\xi)\in T^*Y.
+\end{gathered}
+\qquad\text{(9)}
+\]</span>
+<p>Choose a closed conic subanalytic isotropic <span class="math" data-tex="\(\Lambda_Y\subset T^*Y\)">\(\Lambda_Y\subset T^*Y\)</span>.
+The required direct-image hypothesis is</p>
+<span class="math math-display" data-tex="\[
+f_\pi\text{ proper on }A_f=f_d^{-1}(\Lambda_Y).
+\qquad\text{(10)}
+\]">\[
+f_\pi\text{ proper on }A_f=f_d^{-1}(\Lambda_Y).
+\qquad\text{(10)}
+\]</span>
+<p>The geometric transport theorem proves that
+<span class="math" data-tex="\(\Lambda_X&#x27;=f_\pi(A_f)\)">\(\Lambda_X&#x27;=f_\pi(A_f)\)</span> is closed, conic, subanalytic and isotropic.
+The canonical-form equality
+<span class="math" data-tex="\(f_d^*\alpha_Y=f_\pi^*\alpha_X\)">\(f_d^*\alpha_Y=f_\pi^*\alpha_X\)</span> has no antipode or minus sign.
+Properness in (10) controls the actual incidence, including its zero covectors.</p>
+<p>We construct the operation by the full typed chain</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0_{\Lambda_Y}(T^*Y;E_Y)
+&amp;\longrightarrow H^0_{A_f}(C_f;\pi^{-1}\omega_Y)\\
+&amp;\longrightarrow H^0_{\Lambda_X&#x27;}(T^*X;Rf_{\pi!}\pi^{-1}\omega_Y)\\
+&amp;\longrightarrow H^0_{\Lambda_X&#x27;}(T^*X;E_X).
+\end{aligned}
+\qquad\text{(11)}
+\]">\[
+\begin{aligned}
+H^0_{\Lambda_Y}(T^*Y;E_Y)
+&amp;\longrightarrow H^0_{A_f}(C_f;\pi^{-1}\omega_Y)\\
+&amp;\longrightarrow H^0_{\Lambda_X&#x27;}(T^*X;Rf_{\pi!}\pi^{-1}\omega_Y)\\
+&amp;\longrightarrow H^0_{\Lambda_X&#x27;}(T^*X;E_X).
+\end{aligned}
+\qquad\text{(11)}
+\]</span>
+<p>The first arrow is supported inverse-image evaluation under <span class="math" data-tex="\(f_d\)">\(f_d\)</span>;
+<span class="math" data-tex="\(f_d^{-1}E_Y=\pi^{-1}\omega_Y\)">\(f_d^{-1}E_Y=\pi^{-1}\omega_Y\)</span>.
+For the second, sections supported on the closed <span class="math" data-tex="\(A_f\)">\(A_f\)</span> have proper support over <span class="math" data-tex="\(T^*X\)">\(T^*X\)</span>, by (10). On objects supported on <span class="math" data-tex="\(A_f\)">\(A_f\)</span>, proper and ordinary direct image agree. Thus supported global sections give the displayed map through <span class="math" data-tex="\(Rf_{\pi!}\)">\(Rf_{\pi!}\)</span>, with the closed output support <span class="math" data-tex="\(\Lambda_X&#x27;\)">\(\Lambda_X&#x27;\)</span> retained. This argument applies to derived supported sections, using the closed inclusion of <span class="math" data-tex="\(A_f\)">\(A_f\)</span>.</p>
+<p>The square with horizontal maps <span class="math" data-tex="\(f_\pi,f\)">\(f_\pi,f\)</span> and vertical maps
+<span class="math" data-tex="\(\pi,\pi_X\)">\(\pi,\pi_X\)</span> is Cartesian. Proper-support base change and the actual trace for <span class="math" data-tex="\(f\)">\(f\)</span> give the coefficient map</p>
+<span class="math math-display" data-tex="\[
+Rf_{\pi!}\pi^{-1}\omega_Y
+\simeq \pi_X^{-1}Rf_!\omega_Y
+\xrightarrow{\pi_X^{-1}\operatorname{tr}_f}
+\pi_X^{-1}\omega_X.
+\qquad\text{(12)}
+\]">\[
+Rf_{\pi!}\pi^{-1}\omega_Y
+\simeq \pi_X^{-1}Rf_!\omega_Y
+\xrightarrow{\pi_X^{-1}\operatorname{tr}_f}
+\pi_X^{-1}\omega_X.
+\qquad\text{(12)}
+\]</span>
+<p>Here <span class="math" data-tex="\(f^!\omega_X=\omega_Y\)">\(f^!\omega_X=\omega_Y\)</span> by exceptional composition. The trace is defined for the map even when it is not globally proper; the support condition governs the sections to which it is applied. The finite-dimensional proper-support base-change prerequisite applies to this actual Cartesian square and this bounded dualizing input.</p>
+<p>The output of (11) belongs to <span class="math" data-tex="\(\mathcal L_X\)">\(\mathcal L_X\)</span>, by its allowed carrier. This defines the direct image <span class="math" data-tex="\(f_*\)">\(f_*\)</span> of a Lagrangian cycle under (10). For <span class="math" data-tex="\(f=\operatorname{id}\)">\(f=\operatorname{id}\)</span>, both cotangent maps, the support comparisons and the trace are identities, so this is the identity operation. Enlarging a carrier compatibly leaves the result unchanged whenever the properness condition remains valid.</p>
+<p>The inverse cycle operation instead assumes properness of <span class="math" data-tex="\(f_d\)">\(f_d\)</span> on
+<span class="math" data-tex="\(f_\pi^{-1}(\Lambda_X)\)">\(f_\pi^{-1}(\Lambda_X)\)</span> and needs a different coefficient map. Its proof cannot be obtained merely by reversing (11). We retain that task for the next lesson.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="a-lower-dimensional-carrier-contributes-no-lagrangian-cycle">A lower-dimensional carrier contributes no Lagrangian cycle</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>For <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span>, compute the supported cycle sheaf on a cotangent fibre and on its single zero covector. On the cross consisting of the zero section and this fibre, calculate the conservation condition at their intersection using outward orientations on its four rays.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the fibre sign line is trivialized by increasing <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and a smooth full cotangent fibre is a one-manifold. Formula (6) gives its orientation coefficient <span class="math" data-tex="\(A\)">\(A\)</span>, with this fibre coefficient included. A single covector has dimension zero; its dualizing object begins in degree zero, so its degree-<span class="math" data-tex="\(-1\)">\(-1\)</span> term vanishes. It contributes no one-cycle to (3).</p>
+<p>The cross has four outgoing half-rays. Let their weights be
+<span class="math" data-tex="\((a,b,c,d)\)">\((a,b,c,d)\)</span>. The terminal-minus-initial boundary at their common vertex is
+<span class="math" data-tex="\(-(a+b+c+d)[0]\)">\(-(a+b+c+d)[0]\)</span>. Thus the supported cycle germ is
+<span class="math math-display" data-tex="\[
+ \{(a,b,c,d)\in A^4:a+b+c+d=0\}.
+ \qquad\text{(13)}
+\]">\[
+ \{(a,b,c,d)\in A^4:a+b+c+d=0\}.
+ \qquad\text{(13)}
+\]</span>
+It is isomorphic to <span class="math" data-tex="\(A^3\)">\(A^3\)</span>, by solving for the fourth coefficient; no division or field hypothesis is required. Its nonzero pieces remain one-dimensional. The vertex enforces the conservation law rather than furnishing an independent lower-dimensional cycle coefficient.</p>
+<h3 id="the-two-orientation-changes-cancel-on-the-zero-section">The two orientation changes cancel on the zero section</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>In dimension two, consider a base chart change that reflects one coordinate. Compute its signs on the base orientation, the cotangent-fibre orientation and the total cotangent orientation. Explain why a zero-section cycle with the coefficient <span class="math" data-tex="\(B_X\)">\(B_X\)</span> can be canonical even when the base is nonorientable.</p>
+<p><strong>Solution.</strong> A reflection has base determinant sign <span class="math" data-tex="\(-1\)">\(-1\)</span>. Its cotangent coordinate change uses the inverse transpose, which also has determinant sign <span class="math" data-tex="\(-1\)">\(-1\)</span>. The total cotangent change therefore has sign
+<span class="math" data-tex="\((-1)(-1)=+1\)">\((-1)(-1)=+1\)</span>. The fibre sign line <span class="math" data-tex="\(B_X\)">\(B_X\)</span> retains the second minus sign even though the total space orientation does not change.</p>
+<p>On the zero section <span class="math" data-tex="\(\Lambda=X\)">\(\Lambda=X\)</span>, its tangent orientation line is
+<span class="math" data-tex="\(\operatorname{or}_X\)">\(\operatorname{or}_X\)</span>, and the dual-frame identification gives
+<span class="math" data-tex="\(B_X|_\Lambda\simeq\operatorname{or}_X\)">\(B_X|_\Lambda\simeq\operatorname{or}_X\)</span>. Thus (6) has coefficient
+<span class="math math-display" data-tex="\[
+ \operatorname{or}_\Lambda\otimes B_X|_\Lambda
+        \simeq\operatorname{or}_X\otimes\operatorname{or}_X
+        \simeq A_X.
+ \qquad\text{(14)}
+\]">\[
+ \operatorname{or}_\Lambda\otimes B_X|_\Lambda
+        \simeq\operatorname{or}_X\otimes\operatorname{or}_X
+        \simeq A_X.
+ \qquad\text{(14)}
+\]</span>
+The two local minus signs cancel, so the section <span class="math" data-tex="\(1\)">\(1\)</span> of this coefficient glues across an orientation-reversing overlap. This produces a canonical twisted zero-section cycle on a nonorientable base. Dropping <span class="math" data-tex="\(B_X\)">\(B_X\)</span> would instead leave the orientation obstruction. Its later identification with the fundamental cycle defined by the inverse operation requires that operation's normalization.</p>
+<p>For this same dimension, <span class="math" data-tex="\(\omega_X=o_X[2]\)">\(\omega_X=o_X[2]\)</span>, while
+<span class="math" data-tex="\(\omega_{T^*X}\)">\(\omega_{T^*X}\)</span> has degree <span class="math" data-tex="\(-4\)">\(-4\)</span>. The shift <span class="math" data-tex="\([-2]\)">\([-2]\)</span> in (2) produces degree <span class="math" data-tex="\(-2\)">\(-2\)</span>, as required for the Lagrangian two-cycle interpretation. Total cotangent orientability does not erase that shift or the relative coefficient.</p>
+<h3 id="a-corner-can-balance-two-conic-rays">A corner can balance two conic rays</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>In <span class="math" data-tex="\(T^*\mathbb R\)">\(T^*\mathbb R\)</span>, take the right-hand zero-section ray
+<span class="math" data-tex="\(H=\{x\geq0,\xi=0\}\)">\(H=\{x\geq0,\xi=0\}\)</span> and the positive fibre ray
+<span class="math" data-tex="\(V=\{x=0,\xi\geq0\}\)">\(V=\{x=0,\xi\geq0\}\)</span>. Orient both away from the origin and trivialize <span class="math" data-tex="\(B_X\)">\(B_X\)</span> by the positive fibre orientation. Determine the weights that make their union a cycle. Is either ray alone a nonzero global cycle?</p>
+<p><strong>Solution.</strong> Both rays are closed, conic and semianalytic.
+The canonical form <span class="math" data-tex="\(\xi\,dx\)">\(\xi\,dx\)</span> vanishes on each: <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(dx=0\)">\(dx=0\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>. It also vanishes on their union by the finite-union rule. Their boundary weights are respectively <span class="math" data-tex="\(-a[0]\)">\(-a[0]\)</span> and <span class="math" data-tex="\(-b[0]\)">\(-b[0]\)</span>, so the union is a cycle exactly when <span class="math" data-tex="\(a+b=0\)">\(a+b=0\)</span>. In particular
+<span class="math math-display" data-tex="\[
+ [H]-[V]
+ \qquad\text{(15)}
+\]">\[
+ [H]-[V]
+ \qquad\text{(15)}
+\]</span>
+is a cycle, with support both rays when <span class="math" data-tex="\(1\ne0\)">\(1\ne0\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>.
+Each ray alone has a nonzero boundary for a nonzero coefficient, and is not a global cycle. Their two-dimensional ambient location does not change their one-dimensional boundary law.</p>
+<p>The corner is singular at its vertex, but its support is pure of dimension one and isotropic. This computation establishes the cycle and its support; it does not add a generalized involutivity assertion.</p>
+<h3 id="locally-closed-and-locally-conic-mean-different-things">Locally closed and locally conic mean different things</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Let <span class="math" data-tex="\(\Lambda=\{x=0,\xi&gt;0\}\subset T^*\mathbb R\)">\(\Lambda=\{x=0,\xi&gt;0\}\subset T^*\mathbb R\)</span>.
+Compare <span class="math" data-tex="\(H^0_\Lambda\mathcal L_X\)">\(H^0_\Lambda\mathcal L_X\)</span> with closed cycles supported on
+<span class="math" data-tex="\(\overline\Lambda\)">\(\overline\Lambda\)</span>. Then restrict the full fibre's cycle sheaf to
+<span class="math math-display" data-tex="\[
+ U=(-\epsilon,\epsilon)\times((1,2)\cup(3,4)).
+ \qquad\text{(16)}
+\]">\[
+ U=(-\epsilon,\epsilon)\times((1,2)\cup(3,4)).
+ \qquad\text{(16)}
+\]</span>
+Can its coefficients be <span class="math" data-tex="\(1\)">\(1\)</span> on the first fibre interval and <span class="math" data-tex="\(0\)">\(0\)</span> on the second?</p>
+<p><strong>Solution.</strong> The locally closed <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is a positively oriented one-manifold. Formula (5) gives the ordinary image of its rank-one orientation coefficient. That image has a nonzero germ at <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>, because every small neighborhood meets a connected positive fibre interval. Its section represented by weight <span class="math" data-tex="\(a\)">\(a\)</span> corresponds to the open ray chain with boundary <span class="math" data-tex="\(-a[0]\)">\(-a[0]\)</span>. The locally closed support functor retains this approach germ and permits this frontier.</p>
+<p>For the closed half-fibre <span class="math" data-tex="\(\overline\Lambda\)">\(\overline\Lambda\)</span>, a global cycle would require that endpoint boundary to vanish. Over <span class="math" data-tex="\(A\)">\(A\)</span>, the map on its endpoint is multiplication by <span class="math" data-tex="\(-1\)">\(-1\)</span>, so only the zero constant weight gives a global cycle on this sole carrier. Its lowest dualizing sheaf is the positive-ray orientation extended by zero, whose endpoint stalk is zero. Thus an ordinary-image approach germ is not a closed cycle germ on the full half-fibre.</p>
+<p>The two strips in (16) are disjoint. The full fibre's cycle coefficient is constant on each connected interval, and a sheaf section can independently choose <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>. Its support in <span class="math" data-tex="\(U\)">\(U\)</span> is the first fibre interval, closed relative to <span class="math" data-tex="\(U\)">\(U\)</span> and pure of dimension one. Dilation preserves that support along connected orbit portions inside <span class="math" data-tex="\(U\)">\(U\)</span>. A larger dilation can send a point of the first interval to the second while passing through the gap outside <span class="math" data-tex="\(U\)">\(U\)</span>; the section need not have the same weight there. Hence full orbit invariance on an arbitrary disconnected nonconic <span class="math" data-tex="\(U\)">\(U\)</span> would be too strong. On a conic open domain, (as proved above) the entire positive orbit lies in the domain and invariance is global along it.</p>
+<h3 id="proper-cotangent-incidence-for-a-nonproper-projection">Proper cotangent incidence for a nonproper projection</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>For <span class="math" data-tex="\(f:\mathbb R^2_{u,v}\to\mathbb R_x\)">\(f:\mathbb R^2_{u,v}\to\mathbb R_x\)</span>, <span class="math" data-tex="\(f(u,v)=u\)">\(f(u,v)=u\)</span>, compare
+<span class="math" data-tex="\(\Lambda_Y=T^*_{\{(0,0)\}}\mathbb R^2\)">\(\Lambda_Y=T^*_{\{(0,0)\}}\mathbb R^2\)</span> with the zero section of <span class="math" data-tex="\(T^*\mathbb R^2\)">\(T^*\mathbb R^2\)</span>. Compute the incidence and its direct-image carrier. Identify where the proof of (11) applies or fails.</p>
+<p><strong>Solution.</strong> Write a correspondence point as <span class="math" data-tex="\((u,v;\xi)\)">\((u,v;\xi)\)</span>.
+Then <span class="math" data-tex="\(f_d(u,v;\xi)=(u,v;\xi,0)\)">\(f_d(u,v;\xi)=(u,v;\xi,0)\)</span>, and
+<span class="math" data-tex="\(f_\pi(u,v;\xi)=(u;\xi)\)">\(f_\pi(u,v;\xi)=(u;\xi)\)</span>.
+For the point fibre,
+<span class="math math-display" data-tex="\[
+ A_f=\{u=v=0,\ \xi\in\mathbb R\},\qquad
+ f_\pi(A_f)=T^*_{\{0\}}\mathbb R.
+ \qquad\text{(17)}
+\]">\[
+ A_f=\{u=v=0,\ \xi\in\mathbb R\},\qquad
+ f_\pi(A_f)=T^*_{\{0\}}\mathbb R.
+ \qquad\text{(17)}
+\]</span>
+The restriction is a homeomorphism onto this closed target fibre and is proper. Its target compact inverse images are compact even though <span class="math" data-tex="\(f\)">\(f\)</span> itself has noncompact <span class="math" data-tex="\(v\)">\(v\)</span>-fibres. The point conormal is an allowed two-dimensional isotropic carrier, and (11) defines its cycle direct image on the displayed one-dimensional target carrier by supported pullback, proper incidence image and the coefficient trace (12).</p>
+<p>For the zero section, <span class="math" data-tex="\(df^t\xi=(\xi,0)\)">\(df^t\xi=(\xi,0)\)</span> must be zero, so
+<span class="math" data-tex="\(A_f=\{\xi=0,\ u,v\text{ arbitrary}\}\)">\(A_f=\{\xi=0,\ u,v\text{ arbitrary}\}\)</span>.
+Its fibre over <span class="math" data-tex="\((u_0;0)\)">\((u_0;0)\)</span> under <span class="math" data-tex="\(f_\pi\)">\(f_\pi\)</span> is the whole <span class="math" data-tex="\(v\)">\(v\)</span>-line, noncompact. The hypothesis (10) fails. Although the set image is the zero section of <span class="math" data-tex="\(T^*\mathbb R\)">\(T^*\mathbb R\)</span>, the second arrow of (11) cannot push arbitrary sections on this incidence with proper support. A familiar image set does not repair the missing support condition.</p>
+<p>These are direct-image incidence calculations. They do not verify the distinct properness condition for the inverse cycle operation.</p>
+<h3 id="point-factors-and-zero-divisor-coefficients">Point factors and zero-divisor coefficients</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Compute the Lagrangian cycle sheaf for a point and its external product with <span class="math" data-tex="\(\mathcal L_Y\)">\(\mathcal L_Y\)</span>. Then take <span class="math" data-tex="\(A=\mathbb Z\times\mathbb Z\)">\(A=\mathbb Z\times\mathbb Z\)</span> and two point cycles with weights <span class="math" data-tex="\(a=(1,0)\)">\(a=(1,0)\)</span>, <span class="math" data-tex="\(b=(0,1)\)">\(b=(0,1)\)</span>. Explain why their product has empty support despite two nonzero inputs.</p>
+<p><strong>Solution.</strong> For a point, <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the cotangent bundle is the point,
+<span class="math" data-tex="\(\omega=A\)">\(\omega=A\)</span>, and <span class="math" data-tex="\(B=A\)">\(B=A\)</span>. The single allowed carrier gives
+<span class="math" data-tex="\(\mathcal L_{\mathrm{pt}}=A\)">\(\mathcal L_{\mathrm{pt}}=A\)</span> in degree zero. Its trace is the identity. The ordered comparison (7) with this factor is therefore ordinary scalar multiplication:
+<span class="math math-display" data-tex="\[
+ a\boxtimes\lambda=a\lambda
+       \quad\text{under }\{\mathrm{pt}\}\times Y\simeq Y.
+ \qquad\text{(18)}
+\]">\[
+ a\boxtimes\lambda=a\lambda
+       \quad\text{under }\{\mathrm{pt}\}\times Y\simeq Y.
+ \qquad\text{(18)}
+\]</span>
+There is no nonzero degree to permute in the point factor.</p>
+<p>The product ring has finite global dimension one: its modules decompose by its two idempotents into pairs of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-modules, and projective resolutions and their length are computed in those two components. Thus it satisfies the standing coefficient condition. The two displayed weights are nonzero, but <span class="math" data-tex="\(ab=(0,0)\)">\(ab=(0,0)\)</span>. The external product of the two point cycles is zero and has empty support. Its support is contained in the product carrier as (7) requires; equality with the product of the input supports is not asserted. The pure-support theorem allows this zero case.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/lagrangian-cycles-and-proper-cotangent-images.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

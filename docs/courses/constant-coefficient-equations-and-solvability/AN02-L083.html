@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Boundary fundamental kernels and their propagation support</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="boundary-fundamental-kernels-and-their-propagation-support">Boundary fundamental kernels and their propagation support</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>An invertible boundary matrix prescribes one incoming normal mode for each boundary datum. We turn its inverse into distribution kernels, including repeated roots, and prove their propagation support. Boundary traces have the boundary dual-cone support. At positive normal position the whole kernel has the combined boundary and interior cone support; these two assertions must be distinguished.</p>
+<p>Read <a href="AN02-L082.html">Polynomial reciprocal bounds inside a mixed boundary tube</a>, <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a>, <a href="AN02-L075.html">Missing boundary rank produces a causal solution</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies the Fourier convention and Gaussian formula; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies scalar calculus and cutoffs. <a href="prerequisites/stable-prerequisite-bridges.html">Polynomial and contour interfaces for stable boundary models</a> supplies finite scalar and polynomial algebra. <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a> supplies compact parameter and tensor operations. <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a> supplies proper convolution.</p>
+<p>The general hyperbolic-cone and analytic zero-order theorems remain planned prerequisites, with precise statements in <a href="AN02-L072.html">Incoming normal roots at a flat boundary</a>. Their uses below are conditional on those proofs.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's treatment of constant-coefficient equations. The linked lessons supply the prerequisite proofs used below.</p>
+<h2 id="statement-and-the-inverse-residue-matrix">Statement and the inverse residue matrix</h2>
+<p>Use coordinates <span class="math" data-tex="\((a,x&#x27;)\)">\((a,x&#x27;)\)</span>, with <span class="math" data-tex="\(a\)">\(a\)</span> the normal position and <span class="math" data-tex="\(t=x&#x27;\cdot N&#x27;\)">\(t=x&#x27;\cdot N&#x27;\)</span> time. The time and normal covectors are independent. The polynomial <span class="math" data-tex="\(P\)">\(P\)</span>, normal counts <span class="math" data-tex="\(h,\ell\)">\(h,\ell\)</span>, transported factors <span class="math" data-tex="\(R_\pm\)">\(R_\pm\)</span>, determinant <span class="math" data-tex="\(L\)">\(L\)</span>, barrier <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span>, and cone <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> are those of <a href="AN02-L081.html">Extending a boundary time strip to its propagation cone</a>/<a href="AN02-L082.html">Polynomial reciprocal bounds inside a mixed boundary tube</a>. The balanced boundary symbols are <span class="math" data-tex="\(B_1,\ldots,B_h\)">\(B_1,\ldots,B_h\)</span>, and <span class="math" data-tex="\(\gamma_0\le\min(0,\tau_0)\)">\(\gamma_0\le\min(0,\tau_0)\)</span> is the chosen zero-free-strip bound.</p>
+<p>Write a polar with the nonnegative pairing convention, and embed the tangential polar in the full physical space at <span class="math" data-tex="\(a=0\)">\(a=0\)</span>:
+<span class="math math-display" data-tex="\[
+ C=\Gamma^\circ,\qquad
+ C_\partial=\{(0,x&#x27;):x&#x27;\in\Sigma^\circ\}.
+ \tag{1}
+\]">\[
+ C=\Gamma^\circ,\qquad
+ C_\partial=\{(0,x&#x27;):x&#x27;\in\Sigma^\circ\}.
+ \tag{1}
+\]</span>
+<strong>Theorem.</strong> There are <span class="math" data-tex="\(h\)">\(h\)</span> distribution-valued families <span class="math" data-tex="\(e_k(a,\cdot)\)">\(e_k(a,\cdot)\)</span>, <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, smooth with all one-sided normal derivatives, satisfying
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)e_k=0\\
+\quad(a&gt;0),\\
+\qquad
+ B_j(D)e_k|_{a=0}=\delta_{jk}\delta_0(x&#x27;),\\
+\qquad
+ \operatorname{supp}(\mathbf1_{a\ge0}e_k)
+                  \\
+\subset (C+C_\partial)\cap\{a\ge0\}.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+P(D)e_k=0\\
+\quad(a&gt;0),\\
+\qquad
+ B_j(D)e_k|_{a=0}=\delta_{jk}\delta_0(x&#x27;),\\
+\qquad
+ \operatorname{supp}(\mathbf1_{a\ge0}e_k)
+                  \\
+\subset (C+C_\partial)\cap\{a\ge0\}.
+\end{gathered}
+\tag{2}
+\]</span>
+The support includes the closure of the interior distributional support, and the boundary traces are those of the smooth distribution-valued family. No kernels are required when <span class="math" data-tex="\(h=0\)">\(h=0\)</span>; in the proof assume <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_{jr}(\zeta&#x27;)=\beta_{R_+}(B_j,w^r),
+       \\
+\quad 1\le j\le h,\\
+\quad0\le r&lt;h,\\
+\qquad
+ H_k(w,\zeta&#x27;)=\sum_{r=0}^{h-1}(M^{-1})_{rk}(\zeta&#x27;)w^r .
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+M_{jr}(\zeta&#x27;)=\beta_{R_+}(B_j,w^r),
+       \\
+\quad 1\le j\le h,\\
+\quad0\le r&lt;h,\\
+\qquad
+ H_k(w,\zeta&#x27;)=\sum_{r=0}^{h-1}(M^{-1})_{rk}(\zeta&#x27;)w^r .
+\end{gathered}
+\tag{3}
+\]</span>
+Index r denotes a zero-based polynomial coefficient; index k is the one-based datum. Then
+<span class="math" data-tex="\(\beta_{R_+}(B_j,H_k)=\delta_{jk}\)">\(\beta_{R_+}(B_j,H_k)=\delta_{jk}\)</span>.
+<a href="AN02-L082.html">Polynomial reciprocal bounds inside a mixed boundary tube</a> proves that all coefficients of <span class="math" data-tex="\(H_k\)">\(H_k\)</span> are holomorphic in the open zero-free tube and polynomially bounded on
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_\partial=\{\operatorname{Im}\zeta&#x27;
+              \in\delta N&#x27;-\overline\Sigma\},
+             \\
+\qquad \delta=\gamma_0-1 .
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+K_\partial=\{\operatorname{Im}\zeta&#x27;
+              \in\delta N&#x27;-\overline\Sigma\},
+             \\
+\qquad \delta=\gamma_0-1 .
+\end{gathered}
+\tag{4}
+\]</span>
+Their degrees in w are below h even at repeated roots.</p>
+<h2 id="construct-the-family-where-the-selected-roots-are-actually-upper">Construct the family where the selected roots are actually upper</h2>
+<p>Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V_\cap=\{\eta&#x27;:(0,\eta&#x27;)\in\Gamma\},\\
+\qquad
+ V=V_\cap\cap\Sigma .
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+V_\cap=\{\eta&#x27;:(0,\eta&#x27;)\in\Gamma\},\\
+\qquad
+ V=V_\cap\cap\Sigma .
+\end{gathered}
+\tag{5}
+\]</span>
+These are open convex cones containing <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>. For a frequency with
+<span class="math" data-tex="\(\operatorname{Im}\zeta&#x27;\in\delta N&#x27;-V\)">\(\operatorname{Im}\zeta&#x27;\in\delta N&#x27;-V\)</span>, the full zero normal representative is in the original <a href="AN02-L072.html">Incoming normal roots at a flat boundary</a> tube: its difference from the barrier is
+<span class="math" data-tex="\((\tau_0-\delta)N+(0,\eta&#x27;)\in\Gamma\)">\((\tau_0-\delta)N+(0,\eta&#x27;)\in\Gamma\)</span>.
+Thus the transported <span class="math" data-tex="\(R_+\)">\(R_+\)</span> is the actual upper factor there. Set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U_k(a,\zeta&#x27;)=\frac1{2\pi i}\\
+\int_{\mathcal C_+}
+              \frac{H_k(w,\zeta&#x27;)e^{iaw}}{R_+(w,\zeta&#x27;)}\,dw,
+                           \\
+\qquad a\ge0 .
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+U_k(a,\zeta&#x27;)=\frac1{2\pi i}\\
+\int_{\mathcal C_+}
+              \frac{H_k(w,\zeta&#x27;)e^{iaw}}{R_+(w,\zeta&#x27;)}\,dw,
+                           \\
+\qquad a\ge0 .
+\end{gathered}
+\tag{6}
+\]</span>
+The contour surrounds the entire upper root group with multiplicities. Locally a fixed finite contour remains away from all roots, so the expression is holomorphic in <span class="math" data-tex="\(\zeta&#x27;\)">\(\zeta&#x27;\)</span> and smooth in a, including all right derivatives at zero.</p>
+<p>The buffered q bound of <a href="AN02-L082.html">Polynomial reciprocal bounds inside a mixed boundary tube</a> and the transported coefficient bound give polynomial bounds for all roots and the coefficients of <span class="math" data-tex="\(H_k\)">\(H_k\)</span>. On the union-of-disks contour of <a href="AN02-L080.html">equation 7 in A necessary time strip for smooth mixed solvability</a>, radius between one and two, the denominator has modulus at least one, contour length is at most <span class="math" data-tex="\(4\pi h\)">\(4\pi h\)</span>, and imaginary height is at least minus two. Consequently for each fixed r,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|D_a^rU_k(a,\zeta&#x27;)|
+       \le C_r e^{2a}(1+|\zeta&#x27;|)^{M_r}
+       \\
+\quad(a\ge0,\ \operatorname{Im}\zeta&#x27;\in\delta N&#x27;-V).
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+|D_a^rU_k(a,\zeta&#x27;)|
+       \le C_r e^{2a}(1+|\zeta&#x27;|)^{M_r}
+       \\
+\quad(a\ge0,\ \operatorname{Im}\zeta&#x27;\in\delta N&#x27;-V).
+\end{gathered}
+\tag{7}
+\]</span>
+The constants are uniform over this entire affine tube. The same repeated-root contour argument proves the bound; no derivative of an individual root label is taken.</p>
+<p>Cancellation of the factor <span class="math" data-tex="\(R_+\)">\(R_+\)</span> in the interior polynomial leaves an entire integrand. At <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, the boundary pairing is 3. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D_a,\zeta&#x27;)U_k=0,\\
+\qquad
+ B_j(D_a,\zeta&#x27;)U_k(0,\zeta&#x27;)=\delta_{jk}.
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+P(D_a,\zeta&#x27;)U_k=0,\\
+\qquad
+ B_j(D_a,\zeta&#x27;)U_k(0,\zeta&#x27;)=\delta_{jk}.
+\end{gathered}
+\tag{8}
+\]</span>
+All derivatives and boundary operations can be passed through the fixed local contour.</p>
+<p>We use the affine version of <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a>'s proved flat-tube inverse. If F is holomorphic and uniformly polynomially bounded on the tube with imaginary part <span class="math" data-tex="\(\delta N&#x27;-V\)">\(\delta N&#x27;-V\)</span>, then
+<span class="math" data-tex="\(\widetilde F(z&#x27;)=F(z&#x27;+i\delta N&#x27;)\)">\(\widetilde F(z&#x27;)=F(z&#x27;+i\delta N&#x27;)\)</span> satisfies <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a> on the negative V tube. Its inverse <span class="math" data-tex="\(\widetilde T\)">\(\widetilde T\)</span> is tempered and supported in <span class="math" data-tex="\(V^\circ\)">\(V^\circ\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T=e^{-\delta t}\widetilde T,\\
+\qquad
+ \widehat{\,e^{\delta t}T\,}(z&#x27;)=
+                 F(z&#x27;+i\delta N&#x27;).
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+T=e^{-\delta t}\widetilde T,\\
+\qquad
+ \widehat{\,e^{\delta t}T\,}(z&#x27;)=
+                 F(z&#x27;+i\delta N&#x27;).
+\end{gathered}
+\tag{9}
+\]</span>
+This is an identity of Fourier–Laplace transforms; the sign follows from
+<span class="math" data-tex="\(\widehat{e^{\delta t}T}(z&#x27;)=\widehat T(z&#x27;+i\delta N&#x27;)\)">\(\widehat{e^{\delta t}T}(z&#x27;)=\widehat T(z&#x27;+i\delta N&#x27;)\)</span>.
+Multiplication by the nowhere zero exponential preserves ordinary distributional support.</p>
+<p>Apply this construction to 6 and every fixed derivative in 7. The compact-test integral defining <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a>'s inverse permits normal differentiation by its uniform polynomial bound on compact a-intervals, as proved in <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a>/<a href="AN02-L075.html">Missing boundary rank produces a causal solution</a>. This gives a smooth family <span class="math" data-tex="\(e_k(a,\cdot)\)">\(e_k(a,\cdot)\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{supp}e_k(a,\cdot)\subset V^\circ,\\
+\qquad
+ P(D)e_k=0\ (a&gt;0),\\
+\qquad
+ B_j(D)e_k|_{a=0}=\delta_{jk}\delta_0 .
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+\operatorname{supp}e_k(a,\cdot)\subset V^\circ,\\
+\qquad
+ P(D)e_k=0\ (a&gt;0),\\
+\qquad
+ B_j(D)e_k|_{a=0}=\delta_{jk}\delta_0 .
+\end{gathered}
+\tag{10}
+\]</span>
+The inverse and all its normal derivatives have a fixed finite Schwartz seminorm bound times <span class="math" data-tex="\(C_re^{2a}\)">\(C_re^{2a}\)</span> after multiplication by <span class="math" data-tex="\(e^{\delta t}\)">\(e^{\delta t}\)</span>. In particular all right traces at <span class="math" data-tex="\(a=0\)">\(a=0\)</span> exist. Since <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span> is interior in V, its polar satisfies <span class="math" data-tex="\(t\ge b|x&#x27;|\)">\(t\ge b|x&#x27;|\)</span> for some <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>: use a small ball about <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span> contained in V and minimize its pairing. Thus the initial family is causal. We have not asserted that its support at positive a lies in <span class="math" data-tex="\(\Sigma^\circ\)">\(\Sigma^\circ\)</span>.</p>
+<h2 id="every-boundary-jet-has-the-sharper-boundary-support">Every boundary jet has the sharper boundary support</h2>
+<p>For any fixed <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>, the normal trace transform is the finite Laurent coefficient
+<span class="math math-display" data-tex="\[
+ J_{rk}(\zeta&#x27;)
+       =[w^{-1}]\,\frac{w^rH_k(w,\zeta&#x27;)}{R_+(w,\zeta&#x27;)}.
+ \tag{11}
+\]">\[
+ J_{rk}(\zeta&#x27;)
+       =[w^{-1}]\,\frac{w^rH_k(w,\zeta&#x27;)}{R_+(w,\zeta&#x27;)}.
+ \tag{11}
+\]</span>
+It is holomorphic on the full projected zero-free tube. The Laurent recurrence uses only finitely many coefficients for each fixed r, so <a href="AN02-L082.html">Polynomial reciprocal bounds inside a mixed boundary tube</a>'s coefficient and inverse-matrix bounds make it uniformly polynomially bounded on <span class="math" data-tex="\(K_\partial\)">\(K_\partial\)</span>.</p>
+<p>Apply 9 now with <span class="math" data-tex="\(V=\Sigma\)">\(V=\Sigma\)</span>. It gives a distribution <span class="math" data-tex="\(T_{rk}\)">\(T_{rk}\)</span>, supported in <span class="math" data-tex="\(\Sigma^\circ\)">\(\Sigma^\circ\)</span>, with transform <span class="math" data-tex="\(J_{rk}\)">\(J_{rk}\)</span> on the affine boundary tube. On the smaller tube of 5 it has the same transform as the already constructed trace <span class="math" data-tex="\(D_a^re_k(0,\cdot)\)">\(D_a^re_k(0,\cdot)\)</span>. The affine <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a> inverse is unique, by actual Schwartz Fourier injectivity on any one common imaginary line. Therefore
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_a^re_k|_{a=0}=T_{rk},\\
+\qquad
+                   \operatorname{supp}T_{rk}\subset\Sigma^\circ .
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+D_a^re_k|_{a=0}=T_{rk},\\
+\qquad
+                   \operatorname{supp}T_{rk}\subset\Sigma^\circ .
+\end{gathered}
+\tag{12}
+\]</span>
+This works for every finite r needed by P or a boundary polynomial, and for repeated roots. Transported roots outside the intersection tube can be below the real axis; the finite Laurent trace, rather than an unjustified decaying-mode integral there, is what extends across that tube.</p>
+<h2 id="zero-extension-and-its-exact-boundary-forcing">Zero extension and its exact boundary forcing</h2>
+<p>Extend <span class="math" data-tex="\(e_k\)">\(e_k\)</span> by zero to <span class="math" data-tex="\(a&lt;0\)">\(a&lt;0\)</span>, as an ordinary distribution, and call it <span class="math" data-tex="\(\mathcal E_k\)">\(\mathcal E_k\)</span>. Its action on a compact test is the integral for <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span> of the smooth distribution-valued family. Write
+<span class="math" data-tex="\(P(w,\zeta&#x27;)=\sum_{r=0}^dp_r(\zeta&#x27;)w^r\)">\(P(w,\zeta&#x27;)=\sum_{r=0}^dp_r(\zeta&#x27;)w^r\)</span>.
+<a href="AN02-L075.html">Missing boundary rank produces a causal solution</a>'s full zero-extension calculation gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_a^r\mathcal E_k
+   \\
+=\mathbf1_{a\ge0}D_a^re_k+
+       \sum_{j=0}^{r-1}(-i)^{j+1}\delta^{(j)}(a)
+                                       \\
+\otimes T_{r-1-j,k}.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+D_a^r\mathcal E_k
+   \\
+=\mathbf1_{a\ge0}D_a^re_k+
+       \sum_{j=0}^{r-1}(-i)^{j+1}\delta^{(j)}(a)
+                                       \\
+\otimes T_{r-1-j,k}.
+\end{gathered}
+\tag{13}
+\]</span>
+It follows by ordinary integration by parts and multiplication by <span class="math" data-tex="\((-i)^r\)">\((-i)^r\)</span>. The right-smooth distribution-valued version is justified by compact-test differentiation, not point values in <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span>.</p>
+<p>Using the interior equation, obtain
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)\mathcal E_k=F_k,\\
+\qquad
+ F_k\\
+=\sum_{r=1}^d\sum_{j=0}^{r-1}(-i)^{j+1}
+           \\
+\delta^{(j)}(a)\otimes p_r(D&#x27;)T_{r-1-j,k},
+ \\
+\qquad \operatorname{supp}F_k\subset C_\partial .
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+P(D)\mathcal E_k=F_k,\\
+\qquad
+ F_k\\
+=\sum_{r=1}^d\sum_{j=0}^{r-1}(-i)^{j+1}
+           \\
+\delta^{(j)}(a)\otimes p_r(D&#x27;)T_{r-1-j,k},
+ \\
+\qquad \operatorname{supp}F_k\subset C_\partial .
+\end{gathered}
+\tag{14}
+\]</span>
+The transform of this finite boundary distribution is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathscr F_k(\zeta_a,\zeta&#x27;)
+       \\
+=-i\sum_{r=1}^d p_r(\zeta&#x27;)
+                     \sum_{j=0}^{r-1}\zeta_a^jJ_{r-1-j,k}(\zeta&#x27;).
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+\mathscr F_k(\zeta_a,\zeta&#x27;)
+       \\
+=-i\sum_{r=1}^d p_r(\zeta&#x27;)
+                     \sum_{j=0}^{r-1}\zeta_a^jJ_{r-1-j,k}(\zeta&#x27;).
+\end{gathered}
+\tag{15}
+\]</span>
+Indeed <span class="math" data-tex="\(\widehat{\delta^{(j)}}=(i\zeta_a)^j\)">\(\widehat{\delta^{(j)}}=(i\zeta_a)^j\)</span>, and
+<span class="math" data-tex="\((-i)^{j+1}(i\zeta_a)^j=-i\zeta_a^j\)">\((-i)^{j+1}(i\zeta_a)^j=-i\zeta_a^j\)</span>. The entire sum has the same phase, without a missing factor for higher derivatives. It is polynomial in normal frequency and holomorphic in the boundary frequency, with a uniform polynomial bound whenever the latter belongs to <span class="math" data-tex="\(K_\partial\)">\(K_\partial\)</span>.</p>
+<h2 id="identify-the-polar-of-the-combined-cone">Identify the polar of the combined cone</h2>
+<p>Set
+<span class="math math-display" data-tex="\[
+ W=\Gamma\cap\pi^{-1}\Sigma,\qquad
+                         S=C+C_\partial .
+ \tag{16}
+\]">\[
+ W=\Gamma\cap\pi^{-1}\Sigma,\qquad
+                         S=C+C_\partial .
+ \tag{16}
+\]</span>
+The cone W is open and convex and contains N. The two closed polar cones C and <span class="math" data-tex="\(C_\partial\)">\(C_\partial\)</span> each have a common proper time bound, <span class="math" data-tex="\(t\ge b_i|x|\)">\(t\ge b_i|x|\)</span>, since N and <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span> are interior in their primal cones. Thus S is closed: in a convergent sequence <span class="math" data-tex="\(c_j+d_j\)">\(c_j+d_j\)</span>, the nonnegative times of its two summands are bounded by the bounded sum times, so their full norms are bounded. Subsequence limits stay in the closed summand cones. S is also a convex cone.</p>
+<p>We give the finite-dimensional polar identity rather than importing an unproved cone-sum rule. A closed convex cone A equals its double polar. If <span class="math" data-tex="\(x\notin A\)">\(x\notin A\)</span>, take a nearest point y in A; it exists by minimizing distance in a sufficiently large compact ball. The variational inequality
+<span class="math" data-tex="\((x-y)\cdot(c-y)\le0\)">\((x-y)\cdot(c-y)\le0\)</span>, <span class="math" data-tex="\(c\in A\)">\(c\in A\)</span>, follows by differentiating squared distance along the segment from y to c. Using <span class="math" data-tex="\(c=0,2y\)">\(c=0,2y\)</span> gives <span class="math" data-tex="\((x-y)\cdot y=0\)">\((x-y)\cdot y=0\)</span>. Hence <span class="math" data-tex="\(y-x\)">\(y-x\)</span> is nonnegative on A and has negative pairing with x. It separates x from the double polar. The other inclusion follows from the definition. This proves the identity using only the actual finite-coordinate compactness and inner-product facts.</p>
+<p>The polar of S is
+<span class="math" data-tex="\(\overline\Gamma\cap\pi^{-1}\overline\Sigma\)">\(\overline\Gamma\cap\pi^{-1}\overline\Sigma\)</span>.
+For the boundary cone, the absence of any normal component makes its dual precisely the inverse image of the closed tangential primal cone. The closure of W equals this intersection: a point in the closed intersection plus <span class="math" data-tex="\(\epsilon N\)">\(\epsilon N\)</span> belongs to both open cones for every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, by the buffered-cone argument, and tends back to that point. Taking a second polar and using S's closedness proves
+<span class="math math-display" data-tex="\[
+ W^\circ=\Gamma^\circ+C_\partial=S .
+ \tag{17}
+\]">\[
+ W^\circ=\Gamma^\circ+C_\partial=S .
+ \tag{17}
+\]</span>
+All signs use nonnegative pairings. No closure of the sum is silently omitted.</p>
+<h2 id="a-full-tube-inverse-supplies-the-support-refinement">A full-tube inverse supplies the support refinement</h2>
+<p>Choose <span class="math" data-tex="\(\delta&#x27;=\gamma_0-2\)">\(\delta&#x27;=\gamma_0-2\)</span>. On the full affine tube with imaginary part
+<span class="math" data-tex="\(\delta&#x27;N-W\)">\(\delta&#x27;N-W\)</span>, the projected frequency lies in <span class="math" data-tex="\(K_\partial\)">\(K_\partial\)</span>:
+if <span class="math" data-tex="\(\eta\in W\)">\(\eta\in W\)</span>, its missing boundary cone vector is
+<span class="math" data-tex="\(N&#x27;+\pi\eta\in\Sigma\)">\(N&#x27;+\pi\eta\in\Sigma\)</span>. Therefore <span class="math" data-tex="\(\mathscr F_k\)">\(\mathscr F_k\)</span> is holomorphic and polynomially bounded there.</p>
+<p>There is a uniform denominator lower bound
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|P(\zeta)|\ge|P_m(N)|&gt;0,\\
+\qquad
+                     \operatorname{Im}\zeta\in\delta&#x27;N-W .
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+|P(\zeta)|\ge|P_m(N)|&gt;0,\\
+\qquad
+                     \operatorname{Im}\zeta\in\delta&#x27;N-W .
+\end{gathered}
+\tag{18}
+\]</span>
+To verify it, the polynomial <span class="math" data-tex="\(z\mapsto P(\zeta+zN)\)">\(z\mapsto P(\zeta+zN)\)</span> has degree m and leading coefficient <span class="math" data-tex="\(P_m(N)\)">\(P_m(N)\)</span>. If a root had imaginary part <span class="math" data-tex="\(b&lt;1\)">\(b&lt;1\)</span>, its full imaginary vector would be
+<span class="math" data-tex="\((\delta&#x27;+b)N-\eta\)">\((\delta&#x27;+b)N-\eta\)</span>. Its difference from the barrier is
+<span class="math" data-tex="\((\tau_0-\delta&#x27;-b)N+\eta\in\Gamma\)">\((\tau_0-\delta&#x27;-b)N+\eta\in\Gamma\)</span>, since
+<span class="math" data-tex="\(\tau_0-\delta&#x27;\ge2\)">\(\tau_0-\delta&#x27;\ge2\)</span> and <span class="math" data-tex="\(\eta\in W\subset\Gamma\)">\(\eta\in W\subset\Gamma\)</span>.
+This contradicts the interior zero exclusion. Every root has imaginary part at least one, so factoring at zero proves 18. Absorbing the real part of a root into the real frequency is permitted here.</p>
+<p>Apply the full-dimensional affine <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a> inverse to
+<span class="math math-display" data-tex="\[
+ G_k(\zeta)=\mathscr F_k(\zeta)/P(\zeta).
+ \tag{19}
+\]">\[
+ G_k(\zeta)=\mathscr F_k(\zeta)/P(\zeta).
+ \tag{19}
+\]</span>
+It is holomorphic and uniformly polynomially bounded by 15 and 18. The result is a distribution <span class="math" data-tex="\(v_k\)">\(v_k\)</span> with
+<span class="math" data-tex="\(P(D)v_k=F_k\)">\(P(D)v_k=F_k\)</span> and support in <span class="math" data-tex="\(W^\circ=S\)">\(W^\circ=S\)</span>.
+The equation follows from <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a>'s differentiation rule and its inverse uniqueness, since multiplication of the transform by P gives the transform of the actual boundary distribution 14.</p>
+<p>We identify this inverse with the constructed zero extension using a justified transform of that family. Choose <span class="math" data-tex="\(\lambda&gt;2\)">\(\lambda&gt;2\)</span>, then T sufficiently large that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda e_a+(T+\delta&#x27;)N\in W,\\
+\qquad
+ T+\delta&gt;0,\\
+\qquad
+ \eta_*=-\lambda e_a-TN .
+\end{gathered}
+\tag{20}
+\]">\[
+\begin{gathered}
+\lambda e_a+(T+\delta&#x27;)N\in W,\\
+\qquad
+ T+\delta&gt;0,\\
+\qquad
+ \eta_*=-\lambda e_a-TN .
+\end{gathered}
+\tag{20}
+\]</span>
+The first condition is possible because N is interior in W; the projection is a positive multiple of <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>, and the full vector tends in direction to N as T grows. This <span class="math" data-tex="\(\eta_*\)">\(\eta_*\)</span> is an admissible imaginary line of 19. The affine family estimate after 10 gives tempering of
+<span class="math" data-tex="\(e^{\eta_*\cdot x}\mathcal E_k\)">\(e^{\eta_*\cdot x}\mathcal E_k\)</span>: its fixed tangential Schwartz seminorm grows at most as <span class="math" data-tex="\(e^{2a}\)">\(e^{2a}\)</span>, while <span class="math" data-tex="\(e^{-\lambda a}\)">\(e^{-\lambda a}\)</span> is integrable. The extra time factor <span class="math" data-tex="\(e^{-(T+\delta)t}\)">\(e^{-(T+\delta)t}\)</span> has a globally smooth bounded-derivative extension on the causal support, by inserting a cutoff equal to one for <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> and zero for <span class="math" data-tex="\(t\le-1\)">\(t\le-1\)</span>.</p>
+<p>For a full Schwartz test, integrate the resulting finite tangential seminorm over <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>. The bound is a fixed full Schwartz seminorm times
+<span class="math" data-tex="\(\int_0^\infty e^{(2-\lambda)a}\,da&lt;\infty\)">\(\int_0^\infty e^{(2-\lambda)a}\,da&lt;\infty\)</span>.
+This proves a full tempered distribution, rather than postulating a transform of an arbitrary solution. Fubini and the actual Schwartz Fourier isomorphism give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat{\,e^{\eta_*\cdot x}\mathcal E_k\,}(\xi_a,\xi&#x27;)
+      \\
+=\int_0^\infty e^{-i\xi_a a-\lambda a}
+                           U_k(a,\xi&#x27;-iTN&#x27;)\,da .
+\end{gathered}
+\tag{21}
+\]">\[
+\begin{gathered}
+\widehat{\,e^{\eta_*\cdot x}\mathcal E_k\,}(\xi_a,\xi&#x27;)
+      \\
+=\int_0^\infty e^{-i\xi_a a-\lambda a}
+                           U_k(a,\xi&#x27;-iTN&#x27;)\,da .
+\end{gathered}
+\tag{21}
+\]</span>
+The integral and every fixed normal-frequency derivative have polynomial tangent growth, since extra powers of a are integrable.</p>
+<p>Transform 14 at this line. Its boundary transform is exactly 15, and its shifted interior multiplier is the nonzero polynomial <span class="math" data-tex="\(P(\xi+i\eta_*)\)">\(P(\xi+i\eta_*)\)</span>. Multiplication by its smooth reciprocal is valid on tempered distributions: Cauchy estimates on a small fixed imaginary neighborhood give polynomial bounds for every reciprocal derivative, using 18 on a possibly smaller interior tube. Hence
+<span class="math math-display" data-tex="\[
+ \widehat{\,e^{\eta_*\cdot x}\mathcal E_k\,}
+       =\frac{\mathscr F_k(\xi+i\eta_*)}{P(\xi+i\eta_*)}
+       =\widehat{\,e^{\eta_*\cdot x}v_k\,}.
+ \tag{22}
+\]">\[
+ \widehat{\,e^{\eta_*\cdot x}\mathcal E_k\,}
+       =\frac{\mathscr F_k(\xi+i\eta_*)}{P(\xi+i\eta_*)}
+       =\widehat{\,e^{\eta_*\cdot x}v_k\,}.
+ \tag{22}
+\]</span>
+The second equality is the affine <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a> inverse identity. Fourier injectivity and injectivity of the nonzero exponential multiplier in ordinary distributions give <span class="math" data-tex="\(\mathcal E_k=v_k\)">\(\mathcal E_k=v_k\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ \operatorname{supp}\mathcal E_k
+          \subset S\cap\{a\ge0\}.
+ \tag{23}
+\]">\[
+ \operatorname{supp}\mathcal E_k
+          \subset S\cap\{a\ge0\}.
+ \tag{23}
+\]</span>
+This completes 2, with all original boundary conditions, exact phases, repeated roots and the correct combined cone. It does not assert uniqueness for arbitrary-growth distribution solutions by the same transform.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (entry: Dirichlet and normal-derivative wave kernels).</strong> For <span class="math" data-tex="\(P(w,s)=(s-i)^2-w^2\)">\(P(w,s)=(s-i)^2-w^2\)</span>, construct the kernels for <span class="math" data-tex="\(B=1\)">\(B=1\)</span> and <span class="math" data-tex="\(B=w\)">\(B=w\)</span>. Check both boundary traces and the zero-extension forcing of the Dirichlet kernel.</p>
+<p><strong>Solution.</strong> The upper root is <span class="math" data-tex="\(\lambda=i-s\)">\(\lambda=i-s\)</span>. For Dirichlet, the scalar matrix is one and the mode is <span class="math" data-tex="\(e^{ia\lambda}\)">\(e^{ia\lambda}\)</span>. For the normal derivative the scalar matrix is <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, whose reciprocal is the transform of <span class="math" data-tex="\(-iH(t)e^{-t}\)">\(-iH(t)e^{-t}\)</span>. Therefore the kernels are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e_D(a,t)=e^{-a}\delta(t-a),\\
+\qquad
+ e_N(a,t)=-iH(t-a)e^{-t}.
+\end{gathered}
+\tag{24}
+\]">\[
+\begin{gathered}
+e_D(a,t)=e^{-a}\delta(t-a),\\
+\qquad
+ e_N(a,t)=-iH(t-a)e^{-t}.
+\end{gathered}
+\tag{24}
+\]</span>
+The Fourier–Laplace transform of <span class="math" data-tex="\(H(t)e^{-t}\)">\(H(t)e^{-t}\)</span> is
+<span class="math" data-tex="\(1/(1+is)=-i/(s-i)\)">\(1/(1+is)=-i/(s-i)\)</span>; multiplication by <span class="math" data-tex="\(-i\)">\(-i\)</span> gives <span class="math" data-tex="\(1/(i-s)\)">\(1/(i-s)\)</span>, confirming the phase. The Dirichlet trace is <span class="math" data-tex="\(\delta(t)\)">\(\delta(t)\)</span>.
+Since <span class="math" data-tex="\(\partial_a e_N=i\delta(t-a)e^{-t}\)">\(\partial_a e_N=i\delta(t-a)e^{-t}\)</span>, its <span class="math" data-tex="\(D_a=-i\partial_a\)">\(D_a=-i\partial_a\)</span> boundary trace is <span class="math" data-tex="\(\delta(t)\)">\(\delta(t)\)</span>. In the interior, writing either kernel as <span class="math" data-tex="\(e^{-t}\)">\(e^{-t}\)</span> times a distribution in <span class="math" data-tex="\(t-a\)">\(t-a\)</span> reduces P to the ordinary wave difference <span class="math" data-tex="\(-\partial_t^2+\partial_a^2\)">\(-\partial_t^2+\partial_a^2\)</span>, which vanishes.</p>
+<p>For Dirichlet, <span class="math" data-tex="\(D_ae_D|_0=i\delta(t)+i\delta&#x27;(t)\)">\(D_ae_D|_0=i\delta(t)+i\delta&#x27;(t)\)</span>. The normal leading coefficient of P is <span class="math" data-tex="\(-1\)">\(-1\)</span>, so 14 gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)(H(a)e_D)
+    =\delta&#x27;(a)\otimes\delta(t)
+       \\
+-\delta(a)\otimes\delta&#x27;(t)
+       \\
+-\delta(a)\otimes\delta(t),\\
+\qquad
+ \mathscr F_D=i\zeta_a-is-1 .
+\end{gathered}
+\tag{25}
+\]">\[
+\begin{gathered}
+P(D)(H(a)e_D)
+    =\delta&#x27;(a)\otimes\delta(t)
+       \\
+-\delta(a)\otimes\delta&#x27;(t)
+       \\
+-\delta(a)\otimes\delta(t),\\
+\qquad
+ \mathscr F_D=i\zeta_a-is-1 .
+\end{gathered}
+\tag{25}
+\]</span>
+Multiplying the normal transform
+<span class="math" data-tex="\(-i/(\zeta_a+s-i)\)">\(-i/(\zeta_a+s-i)\)</span> by P gives the same polynomial. Both kernels are supported in <span class="math" data-tex="\(t\ge a\)">\(t\ge a\)</span>, with the expected wave support; the Neumann kernel is not a point mass on the front.</p>
+<p><strong>Exercise 2 (intermediate: two traces at a repeated root).</strong> Square the preceding wave polynomial and take <span class="math" data-tex="\(B_1=1,B_2=w\)">\(B_1=1,B_2=w\)</span>. Compute the inverse residue matrix and both kernels.</p>
+<p><strong>Solution.</strong> The upper factor is <span class="math" data-tex="\((w-\lambda)^2\)">\((w-\lambda)^2\)</span>, <span class="math" data-tex="\(\lambda=i-s\)">\(\lambda=i-s\)</span>. The finite pairing gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M=\begin{pmatrix}0&amp;1\\1&amp;2\lambda\end{pmatrix},\\
+\qquad
+ M^{-1}=\begin{pmatrix}-2\lambda&amp;1\\1&amp;0\end{pmatrix},\\
+\qquad
+ H_1=w-2\lambda,\\
+\quad H_2=1 .
+\end{gathered}
+\tag{26}
+\]">\[
+\begin{gathered}
+M=\begin{pmatrix}0&amp;1\\1&amp;2\lambda\end{pmatrix},\\
+\qquad
+ M^{-1}=\begin{pmatrix}-2\lambda&amp;1\\1&amp;0\end{pmatrix},\\
+\qquad
+ H_1=w-2\lambda,\\
+\quad H_2=1 .
+\end{gathered}
+\tag{26}
+\]</span>
+The double-pole residues yield
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U_1(a,s)=e^{ia\lambda}(1-ia\lambda),\\
+\qquad
+ U_2(a,s)=ia\,e^{ia\lambda}.
+\end{gathered}
+\tag{27}
+\]">\[
+\begin{gathered}
+U_1(a,s)=e^{ia\lambda}(1-ia\lambda),\\
+\qquad
+ U_2(a,s)=ia\,e^{ia\lambda}.
+\end{gathered}
+\tag{27}
+\]</span>
+Their value traces are <span class="math" data-tex="\(1,0\)">\(1,0\)</span>, and their <span class="math" data-tex="\(D_a\)">\(D_a\)</span> traces are <span class="math" data-tex="\(0,1\)">\(0,1\)</span>; direct differentiation supplies those four values. The polynomial squared annihilates both interior modes because the upper normal factor does. Transforming the tangent terms gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e_1(a,t)\\
+=e^{-a}\left\{\begin{gathered}(1+a)\delta(t-a)\\
++a\delta&#x27;(t-a)\end{gathered}\right\},
+ \\
+\qquad e_2(a,t)=ia\,e^{-a}\delta(t-a).
+\end{gathered}
+\tag{28}
+\]">\[
+\begin{gathered}
+e_1(a,t)\\
+=e^{-a}\left\{\begin{gathered}(1+a)\delta(t-a)\\
++a\delta&#x27;(t-a)\end{gathered}\right\},
+ \\
+\qquad e_2(a,t)=ia\,e^{-a}\delta(t-a).
+\end{gathered}
+\tag{28}
+\]</span>
+Here <span class="math" data-tex="\(\widehat{\delta&#x27;}=is\)">\(\widehat{\delta&#x27;}=is\)</span>. Every normal derivative is a finite smooth coefficient combination of translated delta derivatives, so the family is smooth in distributions through <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Its support remains on <span class="math" data-tex="\(t=a\)">\(t=a\)</span>. A repeated root supplies an additional normal mode and a second prescribed trace, without any simple-root label.</p>
+<p><strong>Exercise 3 (advanced: the interior kernel need not have only boundary-cone support).</strong> Take <span class="math" data-tex="\(P(w,y,s)=s(w+s)-y^2\)">\(P(w,y,s)=s(w+s)-y^2\)</span>, <span class="math" data-tex="\(B_1=1\)">\(B_1=1\)</span>. Find its projected cone, boundary cone and combined dual cone, and compute the kernel for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Explain the distinction between trace support and positive-a support.</p>
+<p><strong>Solution.</strong> The full principal cone and its projected boundary cone are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma\\
+=\{(w,y,s):s&gt;0,\ w+s&gt;y^2/s\},\\
+\qquad
+ \Sigma=\Omega=\{(y,s):s&gt;0\}.
+\end{gathered}
+\tag{29}
+\]">\[
+\begin{gathered}
+\Gamma\\
+=\{(w,y,s):s&gt;0,\ w+s&gt;y^2/s\},\\
+\qquad
+ \Sigma=\Omega=\{(y,s):s&gt;0\}.
+\end{gathered}
+\tag{29}
+\]</span>
+The single normal root for real y and <span class="math" data-tex="\(\operatorname{Im}s&lt;0\)">\(\operatorname{Im}s&lt;0\)</span> is
+<span class="math" data-tex="\(\rho=y^2/s-s\)">\(\rho=y^2/s-s\)</span>, whose imaginary part is positive. Thus <span class="math" data-tex="\(h=1,L=1,\kappa=0\)">\(h=1,L=1,\kappa=0\)</span>, and the mixed system is hyperbolic. The boundary polar is
+<span class="math" data-tex="\(\Sigma^\circ=\{(z,t):z=0,t\ge0\}\)">\(\Sigma^\circ=\{(z,t):z=0,t\ge0\}\)</span>.
+For the full polar, minimizing <span class="math" data-tex="\(aw+zy+ts\)">\(aw+zy+ts\)</span> over <span class="math" data-tex="\(w&gt;y^2/s-s\)">\(w&gt;y^2/s-s\)</span> gives, for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the condition
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma^\circ\\
+=\{a&gt;0,\ t\\
+\ge a+z^2/(4a)\}
+              \ \cup\ \{a\\
+=0,z\\
+=0,t\\
+\ge0\}.
+\end{gathered}
+\tag{30}
+\]">\[
+\begin{gathered}
+\Gamma^\circ\\
+=\{a&gt;0,\ t\\
+\ge a+z^2/(4a)\}
+              \ \cup\ \{a\\
+=0,z\\
+=0,t\\
+\ge0\}.
+\end{gathered}
+\tag{30}
+\]</span>
+Indeed the infimum over y is
+<span class="math" data-tex="\(s(t-a-z^2/(4a))\)">\(s(t-a-z^2/(4a))\)</span>; a negative a would make the pairing unbounded below as w grows. At <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, arbitrary y forces z zero and then positive s forces <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>. Adding <span class="math" data-tex="\(C_\partial\)">\(C_\partial\)</span> does not enlarge this full cone, since its time ray is already contained in it.</p>
+<p>The transform of the kernel is
+<span class="math" data-tex="\(U(a,y,s)=\exp(ia(y^2/s-s))\)">\(U(a,y,s)=\exp(ia(y^2/s-s))\)</span>.
+At <span class="math" data-tex="\(s=-i\tau\)">\(s=-i\tau\)</span>, <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>, this is <span class="math" data-tex="\(e^{-a\tau}e^{-ay^2/\tau}\)">\(e^{-a\tau}e^{-ay^2/\tau}\)</span>.
+<a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a>'s Gaussian Fourier identity gives its inverse in z as
+<span class="math" data-tex="\(\sqrt{\tau/(4\pi a)}e^{-\tau(a+z^2/(4a))}\)">\(\sqrt{\tau/(4\pi a)}e^{-\tau(a+z^2/(4a))}\)</span>.
+Also the Gaussian integral gives
+<span class="math" data-tex="\(\int_0^\infty e^{-\tau r}r^{-1/2}\,dr=\sqrt\pi\,\tau^{-1/2}\)">\(\int_0^\infty e^{-\tau r}r^{-1/2}\,dr=\sqrt\pi\,\tau^{-1/2}\)</span>, by the substitution <span class="math" data-tex="\(r=u^2/\tau\)">\(r=u^2/\tau\)</span>.
+Thus the distributional time inverse is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e(a,z,t)=\frac1{2\pi\sqrt a}\,
+      \\
+\partial_t\left[
+        \frac{H(t-a-z^2/(4a))}{\sqrt{\,t-a-z^2/(4a)\,}}\right],
+                         \\
+\qquad a&gt;0 .
+\end{gathered}
+\tag{31}
+\]">\[
+\begin{gathered}
+e(a,z,t)=\frac1{2\pi\sqrt a}\,
+      \\
+\partial_t\left[
+        \frac{H(t-a-z^2/(4a))}{\sqrt{\,t-a-z^2/(4a)\,}}\right],
+                         \\
+\qquad a&gt;0 .
+\end{gathered}
+\tag{31}
+\]</span>
+The bracket is locally integrable, and its derivative is a distribution, including at its front; it is not a pointwise formula at the front. Its time Laplace transform is the preceding Gaussian inverse, so uniqueness on a fixed imaginary line verifies 31. The kernel has exact support <span class="math" data-tex="\(t\ge a+z^2/(4a)\)">\(t\ge a+z^2/(4a)\)</span>: it vanishes below that front and its ordinary derivative is nonzero at every strict point above it. Its boundary value is <span class="math" data-tex="\(\delta(z)\delta(t)\)">\(\delta(z)\delta(t)\)</span>, as given by the limit of U and the smooth constructed family.</p>
+<p>For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> this support includes nonzero z. It therefore has more than the boundary polar's <span class="math" data-tex="\(z=0\)">\(z=0\)</span> support. All boundary jets still have transforms <span class="math" data-tex="\(\rho^r=(y^2/s-s)^r\)">\(\rho^r=(y^2/s-s)^r\)</span>, finite polynomials in y with causal reciprocal powers of s; their support is <span class="math" data-tex="\(z=0,t\ge0\)">\(z=0,t\ge0\)</span>, as 12 proves. The combined cone in 23 is the accurate propagation statement.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Open lecture notes</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

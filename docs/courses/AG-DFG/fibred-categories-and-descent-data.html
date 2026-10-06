@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fibred categories and descent data · Descent and the étale fundamental group</title>
+<meta name="description" content="A lesson of the course Descent and the étale fundamental group. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-DFG/fibred-categories-and-descent-data.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Descent and the étale fundamental group</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 7</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="fibred-categories-and-descent-data">Fibred categories and descent data</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A vector bundle can be described by vector bundles on open pieces and change-of-coordinate maps on their overlaps. The maps must agree after three pieces are compared. Two questions remain: does the local description produce a global bundle, and do compatible local maps produce a global map? Descent separates these questions and applies them to objects whose bases vary.</p>
+<p>This lesson builds the language needed to ask those questions. We first study coherent restriction, then encode a local description, and finally construct the global quasi-coherent sheaf directly. We assume categories, natural transformations, fibre products of schemes, sheaves of modules, and the equivalence between modules over a ring and quasi-coherent sheaves on its affine scheme. Background on quasi-coherent sheaves belongs to <em>Schemes and sheaves</em>. The separate course <a href="../categorical-tools-for-analytic-sheaves/index.html">Categorical tools for analytic sheaves</a> studies categorical gluing on topological spaces; our base category consists of schemes, and the next lesson changes open coverings to faithfully flat coverings.</p>
+<p>A basic reference is [Stacks], in the edition called AI Integrated Stacks Project Stacks. We use its strongly cartesian convention. Categories and schemes are taken in fixed universes; hom collections are sets, and a larger universe is allowed for categories of functors. This makes the constructions below legitimate without identifying a proper class with a set.</p>
+<h2 id="1-what-restriction-must-remember">1. What restriction must remember</h2>
+<p>Let <span class="math" data-tex="\(p:\mathcal E\to\mathcal C\)">\(p:\mathcal E\to\mathcal C\)</span> be a functor. Its fibre <span class="math" data-tex="\(\mathcal E_U\)">\(\mathcal E_U\)</span> consists of objects mapped to <span class="math" data-tex="\(U\)">\(U\)</span> and morphisms mapped to <span class="math" data-tex="\(\operatorname{id}_U\)">\(\operatorname{id}_U\)</span>. A morphism in a fibre is called vertical.</p>
+<p>Suppose <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> and <span class="math" data-tex="\(x\in\mathcal E_U\)">\(x\in\mathcal E_U\)</span>. A candidate restriction is an arrow <span class="math" data-tex="\(\lambda:y\to x\)">\(\lambda:y\to x\)</span> over <span class="math" data-tex="\(f\)">\(f\)</span>. To behave as a pullback, it must solve the following problem for every <span class="math" data-tex="\(z\)">\(z\)</span>: an arrow <span class="math" data-tex="\(a:z\to x\)">\(a:z\to x\)</span> and an arrow <span class="math" data-tex="\(h:p(z)\to V\)">\(h:p(z)\to V\)</span> satisfying <span class="math" data-tex="\(p(a)=fh\)">\(p(a)=fh\)</span> should determine exactly one arrow <span class="math" data-tex="\(b:z\to y\)">\(b:z\to y\)</span> over <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(\lambda b=a\)">\(\lambda b=a\)</span>.</p>
+<p><strong>Definition 1.1.</strong> An arrow with this property is <strong>strongly cartesian</strong>. The functor <span class="math" data-tex="\(p\)">\(p\)</span> is a <strong>fibred category</strong> if such an arrow exists for every <span class="math" data-tex="\(x\)">\(x\)</span> and every <span class="math" data-tex="\(f:V\to p(x)\)">\(f:V\to p(x)\)</span>. We write a chosen one as</p>
+<span class="math math-display" data-tex="\[
+\lambda_{f,x}:f^*x\longrightarrow x.
+\]">\[
+\lambda_{f,x}:f^*x\longrightarrow x.
+\]</span>
+<p>Equivalently, the function</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathcal E}(z,y)\longrightarrow
+\operatorname{Hom}_{\mathcal E}(z,x)
+\times_{\operatorname{Hom}_{\mathcal C}(p(z),U)}
+\operatorname{Hom}_{\mathcal C}(p(z),V)
+\]">\[
+\operatorname{Hom}_{\mathcal E}(z,y)\longrightarrow
+\operatorname{Hom}_{\mathcal E}(z,x)
+\times_{\operatorname{Hom}_{\mathcal C}(p(z),U)}
+\operatorname{Hom}_{\mathcal C}(p(z),V)
+\]</span>
+<p>given by <span class="math" data-tex="\(b\mapsto(\lambda b,p(b))\)">\(b\mapsto(\lambda b,p(b))\)</span> is bijective. The qualifier “strongly” means that test objects may lie over any base, rather than only over <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p><strong>Proposition 1.2.</strong> Strongly cartesian arrows compose. Two strongly cartesian lifts of the same <span class="math" data-tex="\(f\)">\(f\)</span> with the same target have a unique vertical isomorphism commuting with their arrows to that target. A strongly cartesian arrow over an identity is an isomorphism.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(z\xrightarrow{\mu}y\xrightarrow{\lambda}x\)">\(z\xrightarrow{\mu}y\xrightarrow{\lambda}x\)</span>, factor a test arrow to <span class="math" data-tex="\(x\)">\(x\)</span> uniquely through <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, then factor the resulting arrow uniquely through <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. These two factorizations give exactly the universal property for <span class="math" data-tex="\(\lambda\mu\)">\(\lambda\mu\)</span>.</p>
+<p>For two lifts <span class="math" data-tex="\(y\to x\)">\(y\to x\)</span> and <span class="math" data-tex="\(y&#x27;\to x\)">\(y&#x27;\to x\)</span>, factor each arrow through the other over <span class="math" data-tex="\(\operatorname{id}_V\)">\(\operatorname{id}_V\)</span>. The composites are identities because the universal property gives only one endomorphism over <span class="math" data-tex="\(\operatorname{id}_V\)">\(\operatorname{id}_V\)</span> that preserves the arrow to <span class="math" data-tex="\(x\)">\(x\)</span>. This also proves uniqueness. For a lift over an identity, apply its universal property to <span class="math" data-tex="\(\operatorname{id}_x\)">\(\operatorname{id}_x\)</span> to obtain an inverse; uniqueness verifies both inverse equations. More generally the same argument applies to a strongly cartesian arrow over any base isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choose all lifts, taking identity lifts to be identities. Such a choice is a <strong>cleavage</strong>. If <span class="math" data-tex="\(a:x\to x&#x27;\)">\(a:x\to x&#x27;\)</span> is vertical, define <span class="math" data-tex="\(f^*a\)">\(f^*a\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\lambda_{f,x&#x27;}f^*a=a\lambda_{f,x}.
+\]">\[
+\lambda_{f,x&#x27;}f^*a=a\lambda_{f,x}.
+\]</span>
+<p>Uniqueness proves that this assignment preserves identities and compositions, so <span class="math" data-tex="\(f^*:\mathcal E_U\to\mathcal E_V\)">\(f^*:\mathcal E_U\to\mathcal E_V\)</span> is a functor. A cleavage selects representatives of pullbacks; it does not make iterated representatives equal.</p>
+<p>For <span class="math" data-tex="\(W\xrightarrow gV\xrightarrow fU\)">\(W\xrightarrow gV\xrightarrow fU\)</span>, the composite of the two chosen lifts is cartesian. Proposition 1.2 therefore gives a natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+c_{g,f}:g^*f^*\xrightarrow{\sim}(fg)^*.
+\]">\[
+c_{g,f}:g^*f^*\xrightarrow{\sim}(fg)^*.
+\]</span>
+<p>Naturality follows by composing either proposed naturality square with the cartesian arrow to <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span>: both resulting arrows coincide, so their unique factorizations coincide. For a third arrow <span class="math" data-tex="\(h:T\to W\)">\(h:T\to W\)</span>, coherence says</p>
+<span class="math math-display" data-tex="\[
+c_{h,fg}\circ h^*(c_{g,f})
+=c_{gh,f}\circ(c_{h,g}f^*)
+\quad\text{on }h^*g^*f^*.
+\tag{1.1}
+\]">\[
+c_{h,fg}\circ h^*(c_{g,f})
+=c_{gh,f}\circ(c_{h,g}f^*)
+\quad\text{on }h^*g^*f^*.
+\tag{1.1}
+\]</span>
+<p>Both sides are the unique isomorphism to <span class="math" data-tex="\((fgh)^*\)">\((fgh)^*\)</span> compatible with the composite cartesian lift to <span class="math" data-tex="\(x\)">\(x\)</span>, proving the equation. With our normalized cleavage, the comparisons involving an identity are identities. Without normalization there are unit isomorphisms <span class="math" data-tex="\(\operatorname{id}\simeq(\operatorname{id}_U)^*\)">\(\operatorname{id}\simeq(\operatorname{id}_U)^*\)</span>, and the same uniqueness argument proves the two unit equations.</p>
+<p>An assignment of categories and pullback functors with these natural comparisons and unit equations is a contravariant <strong>pseudofunctor</strong>. Equation (1.1) is the associativity constraint. Omitting it would leave no assurance that a calculation with four bases is independent of its parenthesization.</p>
+<h2 id="2-recovering-a-fibred-category-and-making-restrictions-strict">2. Recovering a fibred category and making restrictions strict</h2>
+<p>Start with a normalized pseudofunctor <span class="math" data-tex="\(F\)">\(F\)</span>. Form a category whose objects are pairs <span class="math" data-tex="\((U,x)\)">\((U,x)\)</span>, with <span class="math" data-tex="\(x\in F(U)\)">\(x\in F(U)\)</span>. An arrow from <span class="math" data-tex="\((V,y)\)">\((V,y)\)</span> to <span class="math" data-tex="\((U,x)\)">\((U,x)\)</span> is a pair</p>
+<span class="math math-display" data-tex="\[
+(f,a),\qquad f:V\to U,\quad a:y\to f^*x.
+\]">\[
+(f,a),\qquad f:V\to U,\quad a:y\to f^*x.
+\]</span>
+<p>For <span class="math" data-tex="\((g,b):(W,z)\to(V,y)\)">\((g,b):(W,z)\to(V,y)\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+(f,a)\circ(g,b)
+=\bigl(fg,\ c_{g,f}(x)\circ g^*(a)\circ b\bigr).
+\tag{2.1}
+\]">\[
+(f,a)\circ(g,b)
+=\bigl(fg,\ c_{g,f}(x)\circ g^*(a)\circ b\bigr).
+\tag{2.1}
+\]</span>
+<p>Naturality of <span class="math" data-tex="\(c\)">\(c\)</span> and equation (1.1) make the two expansions of a triple composite equal. Identity arrows are <span class="math" data-tex="\((\operatorname{id},\operatorname{id})\)">\((\operatorname{id},\operatorname{id})\)</span>. Projection to <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is a functor, and <span class="math" data-tex="\((f,\operatorname{id}):(V,f^*x)\to(U,x)\)">\((f,\operatorname{id}):(V,f^*x)\to(U,x)\)</span> is strongly cartesian: a test arrow over <span class="math" data-tex="\(fh\)">\(fh\)</span> factors by applying <span class="math" data-tex="\(c_{h,f}^{-1}\)">\(c_{h,f}^{-1}\)</span> to its vertical component. The factorization is unique because <span class="math" data-tex="\(c_{h,f}\)">\(c_{h,f}\)</span> is an isomorphism. This is the <strong>Grothendieck construction</strong>.</p>
+<p><strong>Theorem 2.2.</strong> A fibred category, together with a cleavage, is equivalent over <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> to the Grothendieck construction of its pullback pseudofunctor.</p>
+<p><strong>Proof.</strong> Send <span class="math" data-tex="\((U,x)\)">\((U,x)\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span> and send <span class="math" data-tex="\((f,a)\)">\((f,a)\)</span> to <span class="math" data-tex="\(\lambda_{f,x}a\)">\(\lambda_{f,x}a\)</span>. Every arrow over <span class="math" data-tex="\(f\)">\(f\)</span> factors in exactly this way, so the functor is bijective on hom sets and surjective on objects. The defining equation of <span class="math" data-tex="\(c_{g,f}\)">\(c_{g,f}\)</span> shows that it respects (2.1). It preserves cartesian arrows, since the distinguished cartesian arrows go to chosen lifts, and every cartesian arrow differs from a distinguished one by a vertical isomorphism. It is therefore an equivalence as a fibred category. Changing the cleavage gives the same equivalence through the original category. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An equivalence of fibred categories means an equivalence over the base that preserves strongly cartesian arrows. More generally, such arrow-preserving functors are the 1-morphisms of their 2-category; natural transformations over the identity of the base are its 2-morphisms. Under Theorem 2.2 they become functors between the fibres equipped with compatible isomorphisms commuting with pullback. The compatibility is the same equation as (1.1), now with the functors inserted. This explains why ordinary natural transformations of strict functors are too rigid for arbitrary pullback choices.</p>
+<p>There is a stronger replacement theorem. It changes the category rather than insisting that previously chosen pullbacks become equal.</p>
+<p><strong>Theorem 2.3 (strictification).</strong> Every fibred category is equivalent over <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> to the fibred category of a strict contravariant functor to categories.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(U\)">\(U\)</span>, let <span class="math" data-tex="\(H(U)\)">\(H(U)\)</span> be the category of cartesian sections on the slice <span class="math" data-tex="\(\mathcal C/U\)">\(\mathcal C/U\)</span>. Concretely, a section assigns to <span class="math" data-tex="\(a:T\to U\)">\(a:T\to U\)</span> an object <span class="math" data-tex="\(s(a)\)">\(s(a)\)</span> over <span class="math" data-tex="\(T\)">\(T\)</span>. A slice arrow <span class="math" data-tex="\(b:(T,a)\to(T&#x27;,a&#x27;)\)">\(b:(T,a)\to(T&#x27;,a&#x27;)\)</span>, meaning <span class="math" data-tex="\(a=a&#x27;b\)">\(a=a&#x27;b\)</span>, is sent to a strongly cartesian arrow <span class="math" data-tex="\(s(a)\to s(a&#x27;)\)">\(s(a)\to s(a&#x27;)\)</span> over <span class="math" data-tex="\(b\)">\(b\)</span>. The assignment is a functor. Morphisms of sections are natural transformations whose components are vertical.</p>
+<p>For <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span>, restriction means precomposition by</p>
+<span class="math math-display" data-tex="\[
+\mathcal C/V\longrightarrow\mathcal C/U,
+\qquad (a:T\to V)\longmapsto fa.
+\]">\[
+\mathcal C/V\longrightarrow\mathcal C/U,
+\qquad (a:T\to V)\longmapsto fa.
+\]</span>
+<p>These functors compose exactly and preserve identities exactly. Consequently <span class="math" data-tex="\(H\)">\(H\)</span> is a strict contravariant functor.</p>
+<p>Evaluation at <span class="math" data-tex="\(\operatorname{id}_U\)">\(\operatorname{id}_U\)</span> is an equivalence <span class="math" data-tex="\(H(U)\to\mathcal E_U\)">\(H(U)\to\mathcal E_U\)</span>. To see essential surjectivity, choose cartesian lifts of all arrows <span class="math" data-tex="\(a:T\to U\)">\(a:T\to U\)</span> with target <span class="math" data-tex="\(x\)">\(x\)</span>. For a slice arrow <span class="math" data-tex="\(b\)">\(b\)</span>, define its image as the unique factorization between these lifts. The factor is cartesian: to factor an arbitrary test arrow through it, first factor through the lift to <span class="math" data-tex="\(x\)">\(x\)</span>, then use uniqueness through the other lift. Uniqueness also proves identities and compositions, producing a cartesian section with value <span class="math" data-tex="\(x\)">\(x\)</span> at the terminal object.</p>
+<p>For full faithfulness, a vertical map between the values of two sections at <span class="math" data-tex="\(\operatorname{id}_U\)">\(\operatorname{id}_U\)</span> extends uniquely to each <span class="math" data-tex="\(a:T\to U\)">\(a:T\to U\)</span> by factoring through the cartesian arrow of the target section to its terminal value. The components commute with slice arrows by uniqueness. Conversely, naturality along the arrow from <span class="math" data-tex="\(a\)">\(a\)</span> to the terminal object forces these components, so evaluation is bijective on hom sets.</p>
+<p>Finally the Grothendieck construction of <span class="math" data-tex="\(H\)">\(H\)</span> maps to <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. An arrow represented by <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> and a transformation <span class="math" data-tex="\(s\to f^*t\)">\(s\to f^*t\)</span> is sent to the composite</p>
+<span class="math math-display" data-tex="\[
+s(\operatorname{id}_V)\longrightarrow t(f)
+\longrightarrow t(\operatorname{id}_U).
+\]">\[
+s(\operatorname{id}_V)\longrightarrow t(f)
+\longrightarrow t(\operatorname{id}_U).
+\]</span>
+<p>The second arrow is cartesian over <span class="math" data-tex="\(f\)">\(f\)</span>. Every arrow in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> over <span class="math" data-tex="\(f\)">\(f\)</span> factors uniquely through it, and the resulting vertical map extends uniquely to a transformation of sections. Thus the functor is fully faithful on the entire categories, not just on their fibres. It is essentially surjective by the evaluation equivalences. Composition follows from naturality of transformations and functoriality of sections; cartesian arrows are preserved. This proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For statements of these equivalences, see [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#categories-lemma-fibred">02XO</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#categories-definition-split-fibred-category">02XW</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#categories-lemma-fibred-strict">004A</a>]. Strictification is useful for formal reasoning. The original geometric pullbacks remain preferable for computations.</p>
+<h2 id="3-geometric-examples-and-their-morphisms">3. Geometric examples and their morphisms</h2>
+<p>For schemes over schemes, an object over <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(Y\to S\)">\(Y\to S\)</span>. A morphism over <span class="math" data-tex="\(f:T\to S\)">\(f:T\to S\)</span> is a commutative square with top arrow <span class="math" data-tex="\(Z\to Y\)">\(Z\to Y\)</span>. A cartesian lift is</p>
+<span class="math math-display" data-tex="\[
+Y\times_ST\longrightarrow Y.
+\]">\[
+Y\times_ST\longrightarrow Y.
+\]</span>
+<p>The universal property of the fibre product is precisely Definition 1.1. This is the target projection of the arrow category of schemes. The subcategory of finite étale morphisms is fibred because finite étale morphisms remain finite étale after base change. Morphisms in its fibres need not be invertible: a map from a two-point cover to a one-point cover is an example.</p>
+<p>The subcategory of closed subschemes is also fibred. Its fibres have at most one morphism between any two objects: such a morphism exists exactly when one closed subscheme is contained in the other. Pullback of a closed subscheme is defined by extending its ideal. The statement uses the scheme structure of the inverse image, not merely its underlying closed subset.</p>
+<p>For quasi-coherent sheaves, an object over <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(\mathcal M\in\operatorname{QCoh}(S)\)">\(\mathcal M\in\operatorname{QCoh}(S)\)</span>. A morphism over <span class="math" data-tex="\(f:T\to S\)">\(f:T\to S\)</span> is a map</p>
+<span class="math math-display" data-tex="\[
+\mathcal N\longrightarrow f^*\mathcal M.
+\]">\[
+\mathcal N\longrightarrow f^*\mathcal M.
+\]</span>
+<p>Composition uses the canonical comparison <span class="math" data-tex="\(g^*f^*\simeq(fg)^*\)">\(g^*f^*\simeq(fg)^*\)</span>. The distinguished arrow from <span class="math" data-tex="\(f^*\mathcal M\)">\(f^*\mathcal M\)</span> to <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> has identity vertical component and is cartesian. Pullback preserves quasi-coherence. Notice the variance: this description is the fibred category for pullback, and it does not describe a direct-image functor.</p>
+<p>If every fibre is a groupoid, the category is <strong>fibred in groupoids</strong>. Every arrow then factors as a cartesian lift preceded by a vertical isomorphism, so every arrow is cartesian. Conversely, cartesian arrows over identities are isomorphisms, so if every arrow is cartesian the fibres are groupoids.</p>
+<p>If every fibre is a discrete category, there is a unique cartesian lift of each base arrow to a fixed target, since the unique comparison between two lifts must be an identity. The fibres therefore form an honest presheaf of sets. Conversely, the category of elements of a presheaf is fibred in sets. For a scheme <span class="math" data-tex="\(Z\)">\(Z\)</span>, the presheaf <span class="math" data-tex="\(S\mapsto\operatorname{Hom}(S,Z)\)">\(S\mapsto\operatorname{Hom}(S,Z)\)</span> gives an example. The Yoneda lemma says that transformations from this presheaf to another presheaf <span class="math" data-tex="\(P\)">\(P\)</span> correspond to elements of <span class="math" data-tex="\(P(Z)\)">\(P(Z)\)</span>: evaluate a transformation at <span class="math" data-tex="\(\operatorname{id}_Z\)">\(\operatorname{id}_Z\)</span>, and recover its value on <span class="math" data-tex="\(a:S\to Z\)">\(a:S\to Z\)</span> by restriction along <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<h2 id="4-comparing-local-objects-on-two-and-three-bases">4. Comparing local objects on two and three bases</h2>
+<p>Fix maps <span class="math" data-tex="\(u_i:U_i\to U\)">\(u_i:U_i\to U\)</span>, and suppose their double and triple fibre products exist. Put</p>
+<span class="math math-display" data-tex="\[
+U_{ij}=U_i\times_UU_j,
+\qquad U_{ijk}=U_i\times_UU_j\times_UU_k.
+\]">\[
+U_{ij}=U_i\times_UU_j,
+\qquad U_{ijk}=U_i\times_UU_j\times_UU_k.
+\]</span>
+<p>A <strong>descent datum</strong> consists of objects <span class="math" data-tex="\(x_i\in\mathcal E_{U_i}\)">\(x_i\in\mathcal E_{U_i}\)</span> and isomorphisms</p>
+<span class="math math-display" data-tex="\[
+\theta_{ij}:p_i^*x_i\xrightarrow{\sim}p_j^*x_j
+\quad\text{over }U_{ij}
+\]">\[
+\theta_{ij}:p_i^*x_i\xrightarrow{\sim}p_j^*x_j
+\quad\text{over }U_{ij}
+\]</span>
+<p>such that</p>
+<span class="math math-display" data-tex="\[
+p_{jk}^*\theta_{jk}\circ p_{ij}^*\theta_{ij}
+=p_{ik}^*\theta_{ik}
+\quad\text{over }U_{ijk}.
+\tag{4.1}
+\]">\[
+p_{jk}^*\theta_{jk}\circ p_{ij}^*\theta_{ij}
+=p_{ik}^*\theta_{ik}
+\quad\text{over }U_{ijk}.
+\tag{4.1}
+\]</span>
+<p>The comparisons from Section 1 are understood in this equation. Each side has the first pullback as its source and the third pullback as its target. There is no assertion that their chosen representatives are literally equal before those comparisons are made.</p>
+<p>Pulling (4.1) back along the triple diagonal shows <span class="math" data-tex="\(\Delta_i^*\theta_{ii}\)">\(\Delta_i^*\theta_{ii}\)</span> is an invertible idempotent, hence the identity. Pulling it back along <span class="math" data-tex="\(U_{ij}\to U_{iji}\)">\(U_{ij}\to U_{iji}\)</span>, with the first and third coordinates equal, shows that the interchange pullback of <span class="math" data-tex="\(\theta_{ji}\)">\(\theta_{ji}\)</span> is <span class="math" data-tex="\(\theta_{ij}^{-1}\)">\(\theta_{ij}^{-1}\)</span>. These consequences explain how the triple equation includes the identity and inverse requirements. It does not force <span class="math" data-tex="\(\theta_{ii}\)">\(\theta_{ii}\)</span> to be the identity on all of <span class="math" data-tex="\(U_i\times_UU_i\)">\(U_i\times_UU_i\)</span>.</p>
+<p>A morphism of descent data consists of vertical arrows <span class="math" data-tex="\(a_i:x_i\to y_i\)">\(a_i:x_i\to y_i\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\eta_{ij}\circ p_i^*a_i=p_j^*a_j\circ\theta_{ij}.
+\tag{4.2}
+\]">\[
+\eta_{ij}\circ p_i^*a_i=p_j^*a_j\circ\theta_{ij}.
+\tag{4.2}
+\]</span>
+<p>These objects and morphisms form a category <span class="math" data-tex="\(\operatorname{Desc}(\{U_i\to U\})\)">\(\operatorname{Desc}(\{U_i\to U\})\)</span>. A global object <span class="math" data-tex="\(x\in\mathcal E_U\)">\(x\in\mathcal E_U\)</span> gives a canonical datum by restriction and the pullback comparisons. A datum is <strong>effective</strong> if it is isomorphic to one obtained this way.</p>
+<p>For a map <span class="math" data-tex="\(V\to U\)">\(V\to U\)</span>, replace <span class="math" data-tex="\(U_i\)">\(U_i\)</span> by <span class="math" data-tex="\(U_i\times_UV\)">\(U_i\times_UV\)</span> and pull back all objects and comparisons. Equation (4.1) pulls back to the new triple products, proving that this is again a datum. The same operation applies to morphisms. For a refinement <span class="math" data-tex="\(V_a\to U_{i(a)}\to U\)">\(V_a\to U_{i(a)}\to U\)</span>, restrict <span class="math" data-tex="\(x_{i(a)}\)">\(x_{i(a)}\)</span> to <span class="math" data-tex="\(V_a\)">\(V_a\)</span> and restrict <span class="math" data-tex="\(\theta_{i(a),i(b)}\)">\(\theta_{i(a),i(b)}\)</span> to <span class="math" data-tex="\(V_a\times_UV_b\)">\(V_a\times_UV_b\)</span>. The cocycle gives its triple equation. Successive restrictions or refinements agree up to the canonical coherent comparisons; strictification makes them strict if needed.</p>
+<p>For quasi-coherent sheaves, <span class="math" data-tex="\(\theta_{ij}\)">\(\theta_{ij}\)</span> is an isomorphism of pullback modules. For schemes over the base it is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+Y_i\times_UU_j\xrightarrow{\sim}U_i\times_UY_j
+\]">\[
+Y_i\times_UU_j\xrightarrow{\sim}U_i\times_UY_j
+\]</span>
+<p>over <span class="math" data-tex="\(U_{ij}\)">\(U_{ij}\)</span>, satisfying the same equation after one more base change. In the case of one map <span class="math" data-tex="\(U&#x27;\to U\)">\(U&#x27;\to U\)</span>, there is still a potentially nontrivial comparison on <span class="math" data-tex="\(U&#x27;\times_UU&#x27;\)">\(U&#x27;\times_UU&#x27;\)</span>. A one-member family does not dispense with descent information.</p>
+<p><strong>Proposition 4.3.</strong> For schemes over schemes, descent relative to a family <span class="math" data-tex="\(\{U_i\to U\}\)">\(\{U_i\to U\}\)</span> is equivalent to descent relative to the single map <span class="math" data-tex="\(U&#x27;=\coprod_iU_i\to U\)">\(U&#x27;=\coprod_iU_i\to U\)</span>.</p>
+<p><strong>Proof.</strong> An <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span>-scheme <span class="math" data-tex="\(Y&#x27;\)">\(Y&#x27;\)</span> decomposes into the open-and-closed inverse images <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> of the components <span class="math" data-tex="\(U_i\)">\(U_i\)</span>; conversely, their disjoint union is an <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span>-scheme. Moreover,</p>
+<span class="math math-display" data-tex="\[
+U&#x27;\times_UU&#x27;=\coprod_{i,j}U_{ij},
+\qquad
+U&#x27;\times_UU&#x27;\times_UU&#x27;=\coprod_{i,j,k}U_{ijk}.
+\]">\[
+U&#x27;\times_UU&#x27;=\coprod_{i,j}U_{ij},
+\qquad
+U&#x27;\times_UU&#x27;\times_UU&#x27;=\coprod_{i,j,k}U_{ijk}.
+\]</span>
+<p>An isomorphism on the double product is therefore exactly a family of isomorphisms <span class="math" data-tex="\(\theta_{ij}\)">\(\theta_{ij}\)</span>, and its cocycle is exactly (4.1) on every component of the triple product. Equation (4.2) is componentwise as well. Decomposition and disjoint union are inverse functors up to their canonical identifications. Taking a family with one member gives precisely the ordinary single-morphism definition. The same argument works for quasi-coherent sheaves because quasi-coherent sheaves on a disjoint union are families of quasi-coherent sheaves on the components. For a general fibred category that last property is an additional hypothesis; it does not follow merely from being fibred. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-when-local-descriptions-constitute-a-stack">5. When local descriptions constitute a stack</h2>
+<p>For <span class="math" data-tex="\(x,y\in\mathcal E_U\)">\(x,y\in\mathcal E_U\)</span>, define the morphism presheaf on <span class="math" data-tex="\(\mathcal C/U\)">\(\mathcal C/U\)</span> by</p>
+<span class="math math-display" data-tex="\[
+(f:V\to U)\longmapsto
+\operatorname{Hom}_{\mathcal E_V}(f^*x,f^*y).
+\]">\[
+(f:V\to U)\longmapsto
+\operatorname{Hom}_{\mathcal E_V}(f^*x,f^*y).
+\]</span>
+<p>The pullback comparisons define its restriction maps. We call <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> a <strong>prestack</strong> if each of these presheaves is a sheaf for the chosen coverings. We call it a <strong>stack</strong> if, in addition, every descent datum for a covering is effective. These are the conventions of <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/stacks.html#stacks-definition-stack">Stacks, Tag 026F</a>; they allow noninvertible arrows.</p>
+<p><strong>Theorem 5.1.</strong> A fibred category is a stack if and only if its restriction functor</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_U\longrightarrow
+\operatorname{Desc}(\{U_i\to U\})
+\tag{5.1}
+\]">\[
+\mathcal E_U\longrightarrow
+\operatorname{Desc}(\{U_i\to U\})
+\tag{5.1}
+\]</span>
+<p>is an equivalence for every covering.</p>
+<p><strong>Proof.</strong> For global <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, an arrow between their descent data is exactly a collection of local arrows satisfying (4.2), hence a matching family in the morphism presheaf. The sheaf condition asserts that it has a unique global arrow. Thus the prestack condition is exactly full faithfulness of (5.1), with the same argument on every slice base. Effectivity is exactly essential surjectivity. A fully faithful, essentially surjective functor is an equivalence. The converse recovers those two conditions from the equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In categories fibred in groupoids all vertical arrows are isomorphisms, so one can use isomorphism sheaves. For general fibred categories that replacement is false. Here is an explicit example. Let <span class="math" data-tex="\(U\)">\(U\)</span> be the disjoint union of two points. To every nonempty open subset assign a category with one object and endomorphism monoid <span class="math" data-tex="\((\mathbf N,+)\)">\((\mathbf N,+)\)</span>. Assign the terminal category to the empty set. Restrictions between nonempty opens are identities on the monoid. This is a strict presheaf of categories and hence gives a fibred category on the open subsets of <span class="math" data-tex="\(U\)">\(U\)</span>. Its only invertible endomorphism is <span class="math" data-tex="\(0\)">\(0\)</span>, so all isomorphism presheaves are one-point sheaves. All object descent data are effective, since every transition is the identity and there is one object on each base. Yet the endomorphism <span class="math" data-tex="\(0\)">\(0\)</span> on the first point and <span class="math" data-tex="\(1\)">\(1\)</span> on the second point cannot be the restrictions of one global natural number. Its morphism presheaf is not a sheaf, and (5.1) is not full.</p>
+<p>Effectivity alone does not assert uniqueness of global maps. The distinction is essential for <span class="math" data-tex="\(\operatorname{QCoh}\)">\(\operatorname{QCoh}\)</span>, whose fibre categories have many noninvertible arrows.</p>
+<h2 id="6-constructing-the-glued-quasi-coherent-sheaf">6. Constructing the glued quasi-coherent sheaf</h2>
+<p>Let <span class="math" data-tex="\(S=\bigcup_iU_i\)">\(S=\bigcup_iU_i\)</span> be an arbitrary open covering. On intersections the two pullbacks are restrictions, so write the descent maps as</p>
+<span class="math math-display" data-tex="\[
+\theta_{ij}:\mathcal M_i|_{U_i\cap U_j}
+\xrightarrow{\sim}\mathcal M_j|_{U_i\cap U_j}.
+\]">\[
+\theta_{ij}:\mathcal M_i|_{U_i\cap U_j}
+\xrightarrow{\sim}\mathcal M_j|_{U_i\cap U_j}.
+\]</span>
+<p>For every open <span class="math" data-tex="\(W\subseteq S\)">\(W\subseteq S\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\mathcal M(W)=
+\left\{(m_i)_i\in\prod_i\mathcal M_i(W\cap U_i):
+\theta_{ij}(m_i)=m_j\text{ on }W\cap U_i\cap U_j\right\}.
+\tag{6.1}
+\]">\[
+\mathcal M(W)=
+\left\{(m_i)_i\in\prod_i\mathcal M_i(W\cap U_i):
+\theta_{ij}(m_i)=m_j\text{ on }W\cap U_i\cap U_j\right\}.
+\tag{6.1}
+\]</span>
+<p>Restrictions are componentwise. Sections of <span class="math" data-tex="\(\mathcal O_S(W)\)">\(\mathcal O_S(W)\)</span> act by their restrictions on the components. The <span class="math" data-tex="\(\mathcal O_S\)">\(\mathcal O_S\)</span>-linearity of <span class="math" data-tex="\(\theta_{ij}\)">\(\theta_{ij}\)</span> ensures that the matching condition is preserved.</p>
+<p><strong>Theorem 6.2 (Zariski descent).</strong> Formula (6.1) defines a quasi-coherent <span class="math" data-tex="\(\mathcal O_S\)">\(\mathcal O_S\)</span>-module with the prescribed restrictions and transition maps. Restriction gives an equivalence between <span class="math" data-tex="\(\operatorname{QCoh}(S)\)">\(\operatorname{QCoh}(S)\)</span> and quasi-coherent descent data for <span class="math" data-tex="\(\{U_i\to S\}\)">\(\{U_i\to S\}\)</span>. There is no finiteness assumption on the covering or on the modules.</p>
+<p><strong>Proof.</strong> First verify the sheaf axioms. If two matching tuples agree after restriction to an open cover of <span class="math" data-tex="\(W\)">\(W\)</span>, their <span class="math" data-tex="\(i\)">\(i\)</span>-components agree after restriction to the induced open cover of <span class="math" data-tex="\(W\cap U_i\)">\(W\cap U_i\)</span>. The sheaf axiom for <span class="math" data-tex="\(\mathcal M_i\)">\(\mathcal M_i\)</span> makes those components equal. Conversely, matching tuples given on an open cover of <span class="math" data-tex="\(W\)">\(W\)</span> glue in every <span class="math" data-tex="\(\mathcal M_i\)">\(\mathcal M_i\)</span>. Their glued components still satisfy the transition equations because those equations hold on a cover of every double intersection. Thus they form a tuple in (6.1), proving existence and uniqueness of gluing.</p>
+<p>For <span class="math" data-tex="\(W\subseteq U_j\)">\(W\subseteq U_j\)</span>, projection to the <span class="math" data-tex="\(j\)">\(j\)</span>-component gives a map <span class="math" data-tex="\(\mathcal M(W)\to\mathcal M_j(W)\)">\(\mathcal M(W)\to\mathcal M_j(W)\)</span>. Its inverse sends <span class="math" data-tex="\(m_j\)">\(m_j\)</span> to the tuple whose <span class="math" data-tex="\(i\)">\(i\)</span>-component on <span class="math" data-tex="\(W\cap U_i\)">\(W\cap U_i\)</span> is <span class="math" data-tex="\(\theta_{ji}(m_j)\)">\(\theta_{ji}(m_j)\)</span>. The cocycle makes this tuple matching, and <span class="math" data-tex="\(\theta_{jj}=\operatorname{id}\)">\(\theta_{jj}=\operatorname{id}\)</span> on an open intersection makes the constructions inverse. Consequently <span class="math" data-tex="\(\mathcal M|_{U_j}\simeq\mathcal M_j\)">\(\mathcal M|_{U_j}\simeq\mathcal M_j\)</span>; these identifications induce exactly <span class="math" data-tex="\(\theta_{ij}\)">\(\theta_{ij}\)</span>.</p>
+<p>For completeness, quasi-coherence means local presentation by sheaves associated to modules on affine opens. Near any point choose <span class="math" data-tex="\(j\)">\(j\)</span>, then an affine neighbourhood inside <span class="math" data-tex="\(U_j\)">\(U_j\)</span> on which <span class="math" data-tex="\(\mathcal M_j\)">\(\mathcal M_j\)</span> has that form. The restriction isomorphism gives the same presentation for <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span>. Thus <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> is quasi-coherent. This argument uses the local definition and requires neither an affine total space nor a finite cover.</p>
+<p>Compatible local maps <span class="math" data-tex="\(a_i:\mathcal M_i\to\mathcal N_i\)">\(a_i:\mathcal M_i\to\mathcal N_i\)</span> send a matching tuple <span class="math" data-tex="\((m_i)\)">\((m_i)\)</span> to <span class="math" data-tex="\((a_i(m_i))\)">\((a_i(m_i))\)</span>, which is matching by (4.2). They therefore define a global sheaf map. A global map is uniquely determined by its restrictions, since sections of the target are determined on a cover. The construction is inverse to restriction on both objects and morphisms: for a global sheaf the usual sheaf axiom identifies its sections with (6.1). Hence restriction is an equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves both effectivity and morphism gluing, so <span class="math" data-tex="\(\operatorname{QCoh}\)">\(\operatorname{QCoh}\)</span> is a Zariski stack. The result agrees with <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/descent.html#descent-lemma-zariski-descent-effective">Stacks, Tag 023E</a>.</p>
+<p>Scheme-valued Zariski descent is effective too. Given schemes <span class="math" data-tex="\(Y_i\to U_i\)">\(Y_i\to U_i\)</span>, identify their open inverse images of the overlaps by the transition isomorphisms. The cocycle makes these identifications an equivalence relation. Give the quotient the topology in which a subset is open when its inverse image in every <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> is open. Each <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> embeds as an open subset: overlap identifications show its inverse image in any other piece is open, and identity and inverse equations make its map injective. Glue the structure sheaves by the matching-section construction. The resulting locally ringed space is locally a scheme because every point has an open neighbourhood in some <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span>; it is therefore a scheme. The maps to the <span class="math" data-tex="\(U_i\)">\(U_i\)</span> glue to a map to <span class="math" data-tex="\(S\)">\(S\)</span>. Compatible morphisms of the pieces glue uniquely, first as continuous maps and then as maps of structure sheaves. This construction proves existence and full faithfulness for scheme-valued open descent as well.</p>
+<h2 id="7-a-local-restriction-can-lose-a-global-object">7. A local restriction can lose a global object</h2>
+<p>Work over a field <span class="math" data-tex="\(k\)">\(k\)</span>. Cover <span class="math" data-tex="\(\mathbf P^1_k\)">\(\mathbf P^1_k\)</span> by <span class="math" data-tex="\(U_0=\operatorname{Spec}k[t]\)">\(U_0=\operatorname{Spec}k[t]\)</span> and <span class="math" data-tex="\(U_\infty=\operatorname{Spec}k[t^{-1}]\)">\(U_\infty=\operatorname{Spec}k[t^{-1}]\)</span>. Their overlap is <span class="math" data-tex="\(\operatorname{Spec}k[t,t^{-1}]\)">\(\operatorname{Spec}k[t,t^{-1}]\)</span>. Choose frames <span class="math" data-tex="\(e_0,e_\infty\)">\(e_0,e_\infty\)</span> and the identification</p>
+<span class="math math-display" data-tex="\[
+e_\infty=t e_0.
+\tag{7.1}
+\]">\[
+e_\infty=t e_0.
+\tag{7.1}
+\]</span>
+<p>Glue the trivial modules with this rule. In the tautological line in <span class="math" data-tex="\(k^2\)">\(k^2\)</span>, the local frames <span class="math" data-tex="\((1,t)\)">\((1,t)\)</span> and <span class="math" data-tex="\((t^{-1},1)\)">\((t^{-1},1)\)</span> satisfy <span class="math" data-tex="\((1,t)=t(t^{-1},1)\)">\((1,t)=t(t^{-1},1)\)</span>. Their dual frames satisfy (7.1); thus the glued line bundle is <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>.</p>
+<p>It cannot be globally trivial. A change of frame on <span class="math" data-tex="\(U_0\)">\(U_0\)</span> multiplies by a unit of <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span>, hence by a nonzero constant. The same is true on <span class="math" data-tex="\(U_\infty\)">\(U_\infty\)</span>. These changes cannot turn the transition <span class="math" data-tex="\(t\)">\(t\)</span> into <span class="math" data-tex="\(1\)">\(1\)</span>. A global trivialization would give exactly such two changes of frames, which is impossible.</p>
+<p>The full fibred subcategory of globally trivial line bundles is a Zariski prestack: maps between two such bundles are maps between their underlying sheaves, and these glue uniquely. It is not a stack, because the datum (7.1) is locally in the subcategory but its effective object in <span class="math" data-tex="\(\operatorname{QCoh}\)">\(\operatorname{QCoh}\)</span> is not globally trivial. One must distinguish a local property, such as being a line bundle, from a global property, such as admitting one global frame.</p>
+<p>As a positive example, on <span class="math" data-tex="\(\operatorname{Spec}k[x,y]\)">\(\operatorname{Spec}k[x,y]\)</span> glue <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> on <span class="math" data-tex="\(D(x)\)">\(D(x)\)</span> and <span class="math" data-tex="\(D(y)\)">\(D(y)\)</span> by the identity. Formula (6.1) produces <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> on <span class="math" data-tex="\(D(x)\cup D(y)\)">\(D(x)\cup D(y)\)</span>. The union need not be affine; Zariski descent concerns the union scheme and does not require it to be the spectrum of its global sections.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>Exercise 8.1 (easy).</strong> In a category fibred in groupoids, prove that every arrow is strongly cartesian. Explain why this does not imply that every arrow in the total category is an isomorphism.</p>
+<p><strong>Exercise 8.2 (medium).</strong> Write out the two parenthesizations of a triple composite in (2.1). Locate the naturality equation and the associativity constraint that make them equal. Recover the pullback pseudofunctor from the resulting fibred category.</p>
+<p><strong>Exercise 8.3 (medium).</strong> For each integer <span class="math" data-tex="\(d\)">\(d\)</span>, glue trivial lines on the two standard affine opens of <span class="math" data-tex="\(\mathbf P^1_k\)">\(\mathbf P^1_k\)</span> by <span class="math" data-tex="\(e_\infty=t^d e_0\)">\(e_\infty=t^d e_0\)</span>. Determine which of these descent data are effective inside the subcategory of globally trivial line bundles. Verify the prestack condition for that subcategory.</p>
+<p><strong>Exercise 8.4 (medium).</strong> In formula (6.1), replace the <span class="math" data-tex="\(\mathcal M_i\)">\(\mathcal M_i\)</span> by quasi-coherent algebras and the transition maps by algebra isomorphisms. Prove that the result is a quasi-coherent algebra and that compatible algebra homomorphisms glue uniquely.</p>
+<p><strong>Exercise 8.5 (hard).</strong> Prove the family-to-single-map equivalence for schemes, including the triple product and the morphisms of data. Give a fibred category for which the same assertion fails without an additional disjoint-union property.</p>
+<h3 id="solutions">Solutions</h3>
+<p><strong>8.1.</strong> Factor an arrow <span class="math" data-tex="\(a:y\to x\)">\(a:y\to x\)</span> over <span class="math" data-tex="\(f\)">\(f\)</span> through a chosen cartesian lift <span class="math" data-tex="\(f^*x\to x\)">\(f^*x\to x\)</span>. Its vertical factor <span class="math" data-tex="\(y\to f^*x\)">\(y\to f^*x\)</span> lies in a groupoid, hence is an isomorphism. An isomorphism is cartesian, and a composite of cartesian arrows is cartesian by Proposition 1.2. A cartesian arrow over a noninvertible base arrow need not be invertible: in the category of elements of the terminal presheaf, the total category is the base category itself and every arrow is cartesian.</p>
+<p><strong>8.2.</strong> Use arrows with vertical components <span class="math" data-tex="\(a:y\to f^*x\)">\(a:y\to f^*x\)</span>, <span class="math" data-tex="\(b:z\to g^*y\)">\(b:z\to g^*y\)</span>, and <span class="math" data-tex="\(d:w\to h^*z\)">\(d:w\to h^*z\)</span>. Composing the first two and then the third gives the vertical component</p>
+<span class="math math-display" data-tex="\[
+c_{h,fg}(x)\,h^*c_{g,f}(x)\,h^*g^*a\,h^*b\,d.
+\]">\[
+c_{h,fg}(x)\,h^*c_{g,f}(x)\,h^*g^*a\,h^*b\,d.
+\]</span>
+<p>Composing the last two first gives</p>
+<span class="math math-display" data-tex="\[
+c_{gh,f}(x)\,(gh)^*a\,c_{h,g}(y)\,h^*b\,d.
+\]">\[
+c_{gh,f}(x)\,(gh)^*a\,c_{h,g}(y)\,h^*b\,d.
+\]</span>
+<p>Naturality of <span class="math" data-tex="\(c_{h,g}\)">\(c_{h,g}\)</span> moves <span class="math" data-tex="\((gh)^*a\)">\((gh)^*a\)</span> across <span class="math" data-tex="\(c_{h,g}(y)\)">\(c_{h,g}(y)\)</span>, replacing that portion by <span class="math" data-tex="\(c_{h,g}(f^*x)h^*g^*a\)">\(c_{h,g}(f^*x)h^*g^*a\)</span>. Equation (1.1) identifies the remaining two initial comparison maps. Distinguished lifts <span class="math" data-tex="\((f,\operatorname{id})\)">\((f,\operatorname{id})\)</span> give the original pullback categories and functors. Their composite differs from the distinguished lift for <span class="math" data-tex="\(fg\)">\(fg\)</span> by exactly <span class="math" data-tex="\(c_{g,f}\)">\(c_{g,f}\)</span>, recovering the comparison isomorphisms as well.</p>
+<p><strong>8.3.</strong> A global trivialization would change both frames by nonzero constants, turning <span class="math" data-tex="\(t^d\)">\(t^d\)</span> into a constant. In <span class="math" data-tex="\(k[t,t^{-1}]\)">\(k[t,t^{-1}]\)</span>, this happens only when <span class="math" data-tex="\(d=0\)">\(d=0\)</span>. Conversely the identity transition for <span class="math" data-tex="\(d=0\)">\(d=0\)</span> glues to the globally trivial line. For arbitrary globally trivial line bundles on any base, compatible local maps glue as sheaf maps; the global map is still a morphism between the given trivial bundles. This proves full faithfulness of restriction and hence the prestack property, while <span class="math" data-tex="\(d=1\)">\(d=1\)</span> proves failure of effectivity in this subcategory.</p>
+<p><strong>8.4.</strong> Add and multiply tuples componentwise. Because the transitions preserve multiplication and the unit, the result remains matching and gives a sheaf of algebras. Its restriction to each <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is the prescribed algebra, by the inverse to projection in Theorem 6.2. Its underlying module is therefore quasi-coherent. Compatible algebra maps glue by the tuple construction; the algebra identities are local identities of sections and hence hold globally. Uniqueness follows from uniqueness for sheaf maps.</p>
+<p><strong>8.5.</strong> Decompose an <span class="math" data-tex="\(\coprod_iU_i\)">\(\coprod_iU_i\)</span>-scheme by inverse images of the components. Decompose its double base change by pairs <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>; an isomorphism on that base change is exactly the family <span class="math" data-tex="\(\theta_{ij}\)">\(\theta_{ij}\)</span>. Decompose the triple base change by triples <span class="math" data-tex="\((i,j,k)\)">\((i,j,k)\)</span>; equality of the two composites is precisely the cocycle on each triple. The commuting equations for a morphism likewise decompose by pairs. The inverse functor takes disjoint unions, proving equivalence. For failure in a general fibred category, use the category of open subsets of a two-point scheme <span class="math" data-tex="\(U\)">\(U\)</span>. Assign a discrete two-object category to every nonempty open and the terminal category to the empty open. Restrictions between nonempty opens are identity functors; restrictions to the empty open are unique. This is a strict contravariant functor. On the cover by the two points, the two local objects can be chosen independently, giving four descent data. Their cross comparisons exist uniquely on the empty overlap. For the single map <span class="math" data-tex="\(U=\coprod_iU_i\to U\)">\(U=\coprod_iU_i\to U\)</span>, descent is instead the discrete two-object category: the cocycle forces its one transition to be the identity. The two descent categories are not equivalent. Thus fibredness alone does not supply the disjoint-union equivalence.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use the existence and universal property of fibre products of schemes, the local definition of quasi-coherence and its preservation by pullback, and the equivalence between modules and quasi-coherent sheaves on an affine scheme. These are the results of <em>Schemes and sheaves</em>: [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#schemes-section-fibre-products">01JO</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/modules.html#modules-definition-quasi-coherent">01BE</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/modules.html#modules-lemma-pullback-quasi-coherent">01BG</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#schemes-lemma-equivalence-quasi-coherent">01IB</a>]. Stability of finite étale morphisms under base change is a result of <em>Flat, smooth and étale morphisms</em>: [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-base-change-finite">01WL</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-base-change-etale">02GO</a>]. We do not develop stackification, gerbes, or the general theory of sites. All descent assertions and categorical replacement assertions used in this lesson are proved above.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Stacks]</strong> The Stacks Project, <em>Categories</em>, sections on fibred categories and presheaves of categories; <em>Stacks</em>, descent data and stacks; <em>Descent</em>, descent of quasi-coherent sheaves and schemes. Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#categories-definition-cartesian-over-C">02XK</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#categories-lemma-fibred">02XO</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#categories-lemma-fibred-strict">004A</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/stacks.html#stacks-definition-stack">026F</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/descent.html#descent-lemma-zariski-descent-effective">023E</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/descent.html#descent-lemma-family-is-one">023X</a>. AI Integrated Stacks Project is an edition with AI-proposed corrections and AI-written additions; it is not reviewed by the maintainers of the <a href="https://stacks.math.columbia.edu/">official Stacks Project</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="faithfully-flat-descent.html">Faithfully flat descent →</a></span></nav>
+<p class="small source-link"><a href="src/fibred-categories-and-descent-data.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-DFG">Repository</a></nav>
+</footer>
+</body>
+</html>

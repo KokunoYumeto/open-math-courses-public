@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Other proofs, functoriality and the formal-degree formula · The local Langlands correspondence for GL_n</title>
+<meta name="description" content="A lesson of the course The local Langlands correspondence for GL_n. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-LLC/LG-LLC-12.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The local Langlands correspondence for GL_n</a> <span aria-hidden="true">›</span> <span>Lesson 11 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="other-proofs-functoriality-and-the-formal-degree-formula">Other proofs, functoriality and the formal-degree formula</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The existence theorem can be approached through geometric realization, through global constructions and numerical counting, or through a local trace characterization. These approaches establish the same factor-normalized correspondence. Further compatibility statements say what happens when one changes the field, induces a parameter, or applies a representation of the dual group.</p>
+<p>We state the other existence theorems and explain their mechanisms. We prove unramified base change and induction explicitly, calculate the rank-two exterior square, and verify the formal-degree formula for Steinberg. A depth-zero example checks the same normalization on a supercuspidal.</p>
+<h2 id="1-three-approaches-to-existence">1. Three approaches to existence</h2>
+<p>Throughout the characteristic-zero portions let <span class="math" data-tex="\(F/\mathbb Q_p\)">\(F/\mathbb Q_p\)</span> be finite. The reciprocity and geometric norm conventions are unchanged:
+<span class="math math-display" data-tex="\[
+\operatorname{Art}_F(\varpi_F)=\Phi_F,\qquad
+\|\Phi_F\|=q^{-1}.
+\]">\[
+\operatorname{Art}_F(\varpi_F)=\Phi_F,\qquad
+\|\Phi_F\|=q^{-1}.
+\]</span></p>
+<p><strong>Theorem 1.1 (Henniart, stated).</strong> The simultaneous local Langlands bijections for all <span class="math" data-tex="\(\mathrm{GL}_n(F)\)">\(\mathrm{GL}_n(F)\)</span> exist and preserve the pair <span class="math" data-tex="\(L\)">\(L\)</span>- and epsilon factors, central characters, twists and duals. Henniart's proof [Henniart 2001, §§2–5; Carayol 2000, §4] constructs the supercuspidal correspondence using global automorphic constructions, non-Galois automorphic induction and his numerical correspondence. It does not require the analysis of bad reduction used to realize the correspondence geometrically in Harris–Taylor.</p>
+<p>The author's detailed account [Henniart 2001, §1, Theorem 1.3; §§2–5] presents a variant of the original 2000 proof and specifies its relationship to it in §§2.4 and 4.5; [Carayol 2000, §4] gives another account of the method. These are accounts of the same existence result, not competing normalizations.</p>
+<p>One useful mechanism appears in [Henniart 2001, §§3.2–3.5]. Consider free abelian groups on irreducible Weil representations and on supercuspidals. Pair factors define bilinear forms through orders of poles at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. In each group the irreducible basis is orthonormal. The global construction produces a degree-preserving map compatible with those forms and factors. If an irreducible Weil representation maps to
+<span class="math math-display" data-tex="\[
+x=\sum_i a_i[\pi_i],\qquad a_i\in\mathbb Z,
+\]">\[
+x=\sum_i a_i[\pi_i],\qquad a_i\in\mathbb Z,
+\]</span>
+orthonormality gives
+<span class="math math-display" data-tex="\[
+1=(x,x)=\sum_i a_i^2.
+\tag{1.1}
+\]">\[
+1=(x,x)=\sum_i a_i^2.
+\tag{1.1}
+\]</span>
+Exactly one coefficient is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>; preserving the positive degree rules out the negative choice. Thus the virtual object is a genuine supercuspidal. Equality of the bilinear forms also gives injectivity. The numerical theorem then supplies surjectivity. The deep input is constructing the map and proving the factor comparisons; (1.1) explains why a virtual construction can give an actual representation.</p>
+<p>For positive characteristic write <span class="math" data-tex="\(F=\mathbb F_q((t))\)">\(F=\mathbb F_q((t))\)</span>, or more generally take a nonarchimedean local field of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Theorem 1.2 (Laumon–Rapoport–Stuhler, stated).</strong> The local Langlands correspondence for <span class="math" data-tex="\(\mathrm{GL}_n(F)\)">\(\mathrm{GL}_n(F)\)</span> exists in this case, with the same factor and operation compatibilities. [Laumon–Rapoport–Stuhler 1993, Theorem 15.7] first states it for supercuspidals with finite-order central character and <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic irreducible Galois representations with finite-order determinant. Remark 15.8 extends it by unramified twists and the representation classification to all irreducibles and Frobenius-semisimple Weil–Deligne parameters.</p>
+<p>Their global geometric objects are <span class="math" data-tex="\(D\)">\(D\)</span>-elliptic sheaves on a curve over a finite field, where <span class="math" data-tex="\(D\)">\(D\)</span> is a central division algebra over its function field. These are bundles with an order action, meromorphic Frobenius and periodicity conditions. The relevant moduli have dimension <span class="math" data-tex="\(n-1\)">\(n-1\)</span>; taking <span class="math" data-tex="\(D\)">\(D\)</span> to be a division algebra makes them projective. A Hecke–Frobenius fixed-point calculation identifies Galois representations in their cohomology. Globalizing the prescribed local data produces local factor comparison; numerical counting supplies surjectivity. The Introduction and §§14–15 explain these steps. This argument establishes local LLC in all ranks; it does not assert that the paper constructs every global cuspidal representation over a function field.</p>
+<h2 id="2-scholze-s-trace-characterization">2. Scholze's trace characterization</h2>
+<p>Scholze replaces a prescribed cohomological multiplicity by a family of local test functions. The deformation spaces here allow one-dimensional divisible <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>-modules with an étale part, as well as the connected formal modules of the Lubin–Tate tower.</p>
+<p>Let <span class="math" data-tex="\(F_r/F\)">\(F_r/F\)</span> be unramified of degree <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, and let <span class="math" data-tex="\(\tau\in W_F\)">\(\tau\in W_F\)</span> project to <span class="math" data-tex="\(\Phi_F^r\)">\(\Phi_F^r\)</span>. For a compactly supported locally constant function <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\(\mathrm{GL}_n(\mathcal O_F)\)">\(\mathrm{GL}_n(\mathcal O_F)\)</span>, the deformation and level spaces define a nearby-cycle test function <span class="math" data-tex="\(\phi_{\tau,h}\)">\(\phi_{\tau,h}\)</span> on <span class="math" data-tex="\(\mathrm{GL}_n(F_r)\)">\(\mathrm{GL}_n(F_r)\)</span>. Transfer of twisted orbital integrals gives <span class="math" data-tex="\(f_{\tau,h}\)">\(f_{\tau,h}\)</span> on <span class="math" data-tex="\(\mathrm{GL}_n(F)\)">\(\mathrm{GL}_n(F)\)</span>; its representative is not unique, but its representation traces are.</p>
+<p><strong>Theorem 2.1 (Scholze, stated).</strong> There is a unique semisimple <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional Weil representation <span class="math" data-tex="\(R_{\mathrm{tr}}(\pi)\)">\(R_{\mathrm{tr}}(\pi)\)</span> for each irreducible smooth <span class="math" data-tex="\(\pi\)">\(\pi\)</span> such that
+<span class="math math-display" data-tex="\[
+\operatorname{tr}\pi(f_{\tau,h})
+=\operatorname{tr}R_{\mathrm{tr}}(\pi)(\tau)\,
+\operatorname{tr}\pi(h)
+\tag{2.1}
+\]">\[
+\operatorname{tr}\pi(f_{\tau,h})
+=\operatorname{tr}R_{\mathrm{tr}}(\pi)(\tau)\,
+\operatorname{tr}\pi(h)
+\tag{2.1}
+\]</span>
+for all the preceding <span class="math" data-tex="\(\tau,h\)">\(\tau,h\)</span>. Put
+<span class="math math-display" data-tex="\[
+\sigma(\pi)=R_{\mathrm{tr}}(\pi)\otimes\|\cdot\|^{(1-n)/2}.
+\tag{2.2}
+\]">\[
+\sigma(\pi)=R_{\mathrm{tr}}(\pi)\otimes\|\cdot\|^{(1-n)/2}.
+\tag{2.2}
+\]</span>
+The assignment <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> commutes with normalized parabolic induction on supercuspidal support, gives a bijection from supercuspidals to irreducible Weil representations, and satisfies the standard twist, central-character, dual and pair-factor compatibilities.</p>
+<p>This is [Scholze, Introduction, Theorems 1.1–1.2]. The functions are defined from alternating nearby-cycle traces, with the transpose-inverse operation on <span class="math" data-tex="\(h\)">\(h\)</span> specified there. We have renamed the paper's trace assignment <span class="math" data-tex="\(R_{\mathrm{tr}}\)">\(R_{\mathrm{tr}}\)</span> to distinguish it from this course's rec. Its Tate twist in (2.2) is exactly the stated half norm in the geometric-Frobenius convention. Thus on a supercuspidal <span class="math" data-tex="\(\sigma(\pi)=\operatorname{rec}_F(\pi)\)">\(\sigma(\pi)=\operatorname{rec}_F(\pi)\)</span>; on a general irreducible, it is the semisimple underlying Weil representation and does not include <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>The proof uses geometry of inertia-invariant nearby cycles to establish bijectivity before the pair-factor comparison. This avoids reliance on the numerical local Langlands theorem for that step. The remaining local-factor identification uses global automorphic induction and ramified twisting [Scholze, §§12–14]. The trace test needs the cutoff <span class="math" data-tex="\(h\)">\(h\)</span>: a single compactly supported function cannot have the desired nonzero traces in every Bernstein component.</p>
+<p>Fargues and Scholze give a further geometric framework for general reductive groups over nonarchimedean local fields. Their stack <span class="math" data-tex="\(\operatorname{Bun}_G\)">\(\operatorname{Bun}_G\)</span> parametrizes <span class="math" data-tex="\(G\)">\(G\)</span>-bundles on the Fargues–Fontaine curve. Geometric Satake produces dual-group actions; Hecke and excursion operators produce semisimple Weil <span class="math" data-tex="\(L\)">\(L\)</span>-parameters for irreducible smooth representations.</p>
+<p><strong>Theorem 2.2 (Fargues–Scholze, stated).</strong> With algebraically closed <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic coefficients, <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, their construction attaches a continuous semisimple <span class="math" data-tex="\(L\)">\(L\)</span>-parameter to every irreducible smooth representation. It has the twist, central-character, dual, restriction-of-scalars and parabolic-induction properties in [Fargues–Scholze, Theorem I.9.6]. For <span class="math" data-tex="\(\mathrm{GL}_n\)">\(\mathrm{GL}_n\)</span> it agrees with usual LLC on supercuspidals and with its semisimple Weil parameter in general. Their spectral action is [Theorem I.10.1].</p>
+<p>The categorical equivalence in Conjecture I.10.2 is presented there as a conjecture. A constructed semisimple parameter and spectral action do not by themselves establish all packet identifications, monodromy information or that equivalence. These assertions give a precise entry point to the geometric theory.</p>
+<h2 id="3-conductors-and-cyclic-functoriality">3. Conductors and cyclic functoriality</h2>
+<p>Let <span class="math" data-tex="\(\rho=\operatorname{rec}_F(\pi)\)">\(\rho=\operatorname{rec}_F(\pi)\)</span>. The conductor attached to <span class="math" data-tex="\(\pi\)">\(\pi\)</span>'s standard local epsilon factor satisfies
+<span class="math math-display" data-tex="\[
+a(\pi)=a(\rho).
+\tag{3.1}
+\]">\[
+a(\pi)=a(\rho).
+\tag{3.1}
+\]</span>
+Indeed, for an additive character of conductor zero, the exponent of <span class="math" data-tex="\(q^{-s}\)">\(q^{-s}\)</span> in that epsilon factor is the conductor exponent. Pair compatibility with the trivial rank-one representation identifies it with the Artin–monodromy exponent on the right. For generic <span class="math" data-tex="\(\pi\)">\(\pi\)</span> this agrees with the newform conductor. For nongeneric representations, a statement about minimal fixed vectors under a newform subgroup would require a separate hypothesis; (3.1) is the factor conductor.</p>
+<p>For a cyclic finite extension <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, local cyclic base change and local automorphic induction are compatible with restriction and induction of parameters:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{rec}_E(\operatorname{BC}_{E/F}\pi)
+&amp;=\operatorname{rec}_F(\pi)|_{W&#x27;_E},\\
+\operatorname{rec}_F(\operatorname{AI}_{E/F}\pi_E)
+&amp;=\operatorname{Ind}_{W&#x27;_E}^{W&#x27;_F}\operatorname{rec}_E(\pi_E).
+\end{aligned}
+\tag{3.2}
+\]">\[
+\begin{aligned}
+\operatorname{rec}_E(\operatorname{BC}_{E/F}\pi)
+&amp;=\operatorname{rec}_F(\pi)|_{W&#x27;_E},\\
+\operatorname{rec}_F(\operatorname{AI}_{E/F}\pi_E)
+&amp;=\operatorname{Ind}_{W&#x27;_E}^{W&#x27;_F}\operatorname{rec}_E(\pi_E).
+\end{aligned}
+\tag{3.2}
+\]</span>
+One may express <span class="math" data-tex="\(W&#x27;_F\)">\(W&#x27;_F\)</span> as <span class="math" data-tex="\(W_F\times\mathrm{SL}_2(\mathbb C)\)">\(W_F\times\mathrm{SL}_2(\mathbb C)\)</span>; induction acts on the Weil part and retains the commuting <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span>-action. This specifies the monodromy normalization. Induction increases the dimension by <span class="math" data-tex="\([E:F]\)">\([E:F]\)</span>.</p>
+<p>The compatibility on semisimple Weil classes is [Henniart 2001, §§7.2–7.3, Properties 1–2]. That passage alone does not compare monodromy operators. The full-parameter formulation in (3.2) uses the usual extension of the cyclic operations to the segment classification: on each block <span class="math" data-tex="\(\sigma\otimes S_k\)">\(\sigma\otimes S_k\)</span>, restrict or induce <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and keep <span class="math" data-tex="\(S_k\)">\(S_k\)</span>, then form the corresponding Langlands quotient. Decomposing the resulting semisimple Weil representation gives the segment data, so the earlier classification verifies (3.2) for this extension, including its monodromy. The existence of the original cyclic representation-theoretic operations is the Arthur–Clozel/Henniart–Herb input identified in that passage. A base change can cease to be supercuspidal, and an automorphic induction can be a principal-series representation. Neither operation has a general irreducibility assertion on the underlying Weil representation.</p>
+<p>The global analogues carry a representation over <span class="math" data-tex="\(\mathbb A_F\)">\(\mathbb A_F\)</span> to one over <span class="math" data-tex="\(\mathbb A_E\)">\(\mathbb A_E\)</span>, or a representation over <span class="math" data-tex="\(\mathbb A_E\)">\(\mathbb A_E\)</span> to one over <span class="math" data-tex="\(\mathbb A_F\)">\(\mathbb A_F\)</span>, respectively. In prime cyclic degree, a cuspidal base change stays cuspidal precisely when there is no nontrivial self-twist by a character of the cyclic extension; automorphic induction stays cuspidal precisely when the inducing cuspidal representation is not invariant under its nontrivial Galois action. These are the global theorems discussed in [Getz–Hahn, §13.5], with the field of the inducing representation taken to be <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<h2 id="4-unramified-base-change-with-proof">4. Unramified base change, with proof</h2>
+<p><strong>Proposition 4.1.</strong> Let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be unramified of degree <span class="math" data-tex="\(f\)">\(f\)</span>. If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is unramified with <span class="math" data-tex="\(N=0\)">\(N=0\)</span> and Frobenius eigenvalues <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span>, its restriction has eigenvalues <span class="math" data-tex="\(\alpha_1^f,\ldots,\alpha_n^f\)">\(\alpha_1^f,\ldots,\alpha_n^f\)</span>, and
+<span class="math math-display" data-tex="\[
+L_E(s,\rho|_{W_E})
+=\prod_{i=1}^n(1-\alpha_i^f q^{-fs})^{-1}.
+\tag{4.1}
+\]">\[
+L_E(s,\rho|_{W_E})
+=\prod_{i=1}^n(1-\alpha_i^f q^{-fs})^{-1}.
+\tag{4.1}
+\]</span>
+Thus unramified base change raises the Satake parameters to the <span class="math" data-tex="\(f\)">\(f\)</span>-th power.</p>
+<p><strong>Proof.</strong> The inertia groups are equal, and a geometric Frobenius of <span class="math" data-tex="\(E\)">\(E\)</span> is <span class="math" data-tex="\(\Phi_F^f\)">\(\Phi_F^f\)</span> modulo inertia. Inertia acts trivially on <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, so its matrix is exactly <span class="math" data-tex="\(\rho(\Phi_F)^f\)">\(\rho(\Phi_F)^f\)</span>. Frobenius semisimplicity gives the asserted eigenvalues. The residue cardinality is <span class="math" data-tex="\(q_E=q^f\)">\(q_E=q^f\)</span>; applying the determinant definition of the local <span class="math" data-tex="\(L\)">\(L\)</span>-factor gives (4.1). Compatibility (3.2) identifies these with the Satake eigenvalues of the spherical base change. ∎</p>
+<p>For example an unramified rank-two parameter with eigenvalues <span class="math" data-tex="\(a,b\)">\(a,b\)</span> becomes <span class="math" data-tex="\((a^3,b^3)\)">\((a^3,b^3)\)</span> under degree-three unramified base change. The factor is <span class="math" data-tex="\((1-a^3q^{-3s})^{-1}(1-b^3q^{-3s})^{-1}\)">\((1-a^3q^{-3s})^{-1}(1-b^3q^{-3s})^{-1}\)</span>. It need not equal the old factor with the same variable and residue cardinality.</p>
+<h2 id="5-unramified-induction-with-proof">5. Unramified induction, with proof</h2>
+<p><strong>Proposition 5.1.</strong> Let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be unramified of degree <span class="math" data-tex="\(n\)">\(n\)</span> and let <span class="math" data-tex="\(\theta\)">\(\theta\)</span> be an unramified character of <span class="math" data-tex="\(E^\times\)">\(E^\times\)</span>. Put <span class="math" data-tex="\(a=\theta(\varpi_E)\ne0\)">\(a=\theta(\varpi_E)\ne0\)</span>. Then <span class="math" data-tex="\(\operatorname{Ind}_{W_E}^{W_F}\widehat\theta\)">\(\operatorname{Ind}_{W_E}^{W_F}\widehat\theta\)</span> is unramified, has zero monodromy, and its Frobenius characteristic polynomial and local factor are
+<span class="math math-display" data-tex="\[
+P_\Phi(T)=T^n-a,\qquad
+L_F(s,\operatorname{Ind}\widehat\theta)
+=(1-aq^{-ns})^{-1}
+=\prod_{\zeta^n=1}(1-\zeta a^{1/n}q^{-s})^{-1}.
+\tag{5.1}
+\]">\[
+P_\Phi(T)=T^n-a,\qquad
+L_F(s,\operatorname{Ind}\widehat\theta)
+=(1-aq^{-ns})^{-1}
+=\prod_{\zeta^n=1}(1-\zeta a^{1/n}q^{-s})^{-1}.
+\tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong> Choose coset representatives <span class="math" data-tex="\(1,\Phi_F,\ldots,\Phi_F^{n-1}\)">\(1,\Phi_F,\ldots,\Phi_F^{n-1}\)</span>. In a basis for induction compatible with these representatives, the Frobenius operator <span class="math" data-tex="\(A\)">\(A\)</span> is the cyclic shift
+<span class="math math-display" data-tex="\[
+Ae_j=e_{j+1}\ (0\le j&lt;n-1),\qquad Ae_{n-1}=a e_0.
+\tag{5.2}
+\]">\[
+Ae_j=e_{j+1}\ (0\le j&lt;n-1),\qquad Ae_{n-1}=a e_0.
+\tag{5.2}
+\]</span>
+Changing between the function and tensor models of induction may reverse the basis ordering; (5.2) is the companion matrix convention. It is determined by <span class="math" data-tex="\(A^n=a\)">\(A^n=a\)</span>, since <span class="math" data-tex="\(\Phi_F^n=\Phi_E\)">\(\Phi_F^n=\Phi_E\)</span> acts through <span class="math" data-tex="\(\widehat\theta(\Phi_E)=a\)">\(\widehat\theta(\Phi_E)=a\)</span>. Inertia fixes every basis vector because it lies in <span class="math" data-tex="\(W_E\)">\(W_E\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is trivial there.</p>
+<p>The vector <span class="math" data-tex="\(e_0\)">\(e_0\)</span> is cyclic, and <span class="math" data-tex="\(A^n e_0=a e_0\)">\(A^n e_0=a e_0\)</span>. Thus both the minimal and characteristic polynomial are <span class="math" data-tex="\(T^n-a\)">\(T^n-a\)</span>. It has distinct roots over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, namely <span class="math" data-tex="\(\zeta a^{1/n}\)">\(\zeta a^{1/n}\)</span>. The representation is therefore a direct sum of unramified one-dimensional characters with these Frobenius values. Taking <span class="math" data-tex="\(\det(1-q^{-s}A)^{-1}\)">\(\det(1-q^{-s}A)^{-1}\)</span> gives the product in (5.1), and the polynomial identity <span class="math" data-tex="\(\prod_{\zeta^n=1}(1-\zeta x)=1-x^n\)">\(\prod_{\zeta^n=1}(1-\zeta x)=1-x^n\)</span> gives its first expression. Choosing another <span class="math" data-tex="\(n\)">\(n\)</span>-th root merely permutes the factors. ∎</p>
+<p>For <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span> this induction is reducible as a Weil representation. Its automorphic induction is the spherical representation with those Satake parameters. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> they are <span class="math" data-tex="\(a^{1/2},-a^{1/2}\)">\(a^{1/2},-a^{1/2}\)</span>; their ratio is <span class="math" data-tex="\(-1\)">\(-1\)</span>, so their normalized principal series is irreducible by the rank-two reducibility criterion. This is consistent with the character's failure to be regular for the unramified extension: it is fixed by its Galois group.</p>
+<h2 id="6-formal-degrees-measure-and-two-complete-checks">6. Formal degrees: measure and two complete checks</h2>
+<p>For a unitary square-integrable representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the formal degree for a Haar measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(G/Z\)">\(G/Z\)</span> is defined by Schur orthogonality. For a unit vector <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+\int_{G/Z}|\langle\pi(g)v,v\rangle|^2\,d\mu(g)
+=d(\pi,\mu)^{-1}.
+\tag{6.1}
+\]">\[
+\int_{G/Z}|\langle\pi(g)v,v\rangle|^2\,d\mu(g)
+=d(\pi,\mu)^{-1}.
+\tag{6.1}
+\]</span>
+Multiplying <span class="math" data-tex="\(\mu\)">\(\mu\)</span> by <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> divides the formal degree by <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>For <span class="math" data-tex="\(G=\mathrm{GL}_n(F)\)">\(G=\mathrm{GL}_n(F)\)</span>, choose a conductor-zero additive character and the integral gauge measures on <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(Z=F^\times\)">\(Z=F^\times\)</span>, then take their quotient <span class="math" data-tex="\(\mu_\psi\)">\(\mu_\psi\)</span>. The maximal compact image <span class="math" data-tex="\(\overline K\)">\(\overline K\)</span> has volume
+<span class="math math-display" data-tex="\[
+\mu_\psi(\overline K)=\prod_{j=2}^n(1-q^{-j}).
+\tag{6.2}
+\]">\[
+\mu_\psi(\overline K)=\prod_{j=2}^n(1-q^{-j}).
+\tag{6.2}
+\]</span>
+To see the constant, the gauge volume of <span class="math" data-tex="\(\mathrm{GL}_n(\mathcal O_F)\)">\(\mathrm{GL}_n(\mathcal O_F)\)</span> is <span class="math" data-tex="\(\#\mathrm{GL}_n(\mathbb F_q)/q^{n^2}=\prod_{j=1}^n(1-q^{-j})\)">\(\#\mathrm{GL}_n(\mathbb F_q)/q^{n^2}=\prod_{j=1}^n(1-q^{-j})\)</span>. Dividing by the gauge volume <span class="math" data-tex="\(1-q^{-1}\)">\(1-q^{-1}\)</span> of <span class="math" data-tex="\(\mathcal O_F^\times\)">\(\mathcal O_F^\times\)</span> gives (6.2).</p>
+<p><strong>Theorem 6.1 (formal-degree theorem for <span class="math" data-tex="\(\mathrm{GL}_n\)">\(\mathrm{GL}_n\)</span>, stated).</strong> For a unitary square-integrable <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, with parameter <span class="math" data-tex="\(\rho\)">\(\rho\)</span>,
+<span class="math math-display" data-tex="\[
+d(\pi,\mu_\psi)=\frac1n\,|\gamma(0,\operatorname{Ad}\rho,\psi)|.
+\tag{6.3}
+\]">\[
+d(\pi,\mu_\psi)=\frac1n\,|\gamma(0,\operatorname{Ad}\rho,\psi)|.
+\tag{6.3}
+\]</span>
+Here <span class="math" data-tex="\(\operatorname{Ad}\)">\(\operatorname{Ad}\)</span> acts on <span class="math" data-tex="\(\mathfrak{sl}_n(\mathbb C)\)">\(\mathfrak{sl}_n(\mathbb C)\)</span>, removing the scalar endomorphisms. This is the general-linear-group case of [Hiraga–Ichino–Ikeda 2008, Theorem 3.1]. The gauge convention and an equivalent formula at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> are verified directly in [Ichino–Lapid–Mao, Notation and Theorem 2.1]. Their <span class="math" data-tex="\(d_\pi\)">\(d_\pi\)</span> denotes the Schur-normalized measure, rather than the numerical degree in (6.1); taking absolute values and using the gamma functional equation converts their formula to (6.3).</p>
+<p><strong>Proposition 6.2 (Steinberg check).</strong> For <span class="math" data-tex="\(\mathrm{St}_2\)">\(\mathrm{St}_2\)</span>, if <span class="math" data-tex="\(\mu_0(\overline K)=1\)">\(\mu_0(\overline K)=1\)</span>, then
+<span class="math math-display" data-tex="\[
+d(\mathrm{St}_2,\mu_0)=\frac{q-1}{2}.
+\tag{6.4}
+\]">\[
+d(\mathrm{St}_2,\mu_0)=\frac{q-1}{2}.
+\tag{6.4}
+\]</span>
+It satisfies (6.3) with <span class="math" data-tex="\(\mu_\psi=(1-q^{-2})\mu_0\)">\(\mu_\psi=(1-q^{-2})\mu_0\)</span>.</p>
+<p><strong>Proof.</strong> The representation-classification lesson, Section 5, proved the Iwahori double-coset description and coefficient formula. For a normalized coefficient <span class="math" data-tex="\(c\)">\(c\)</span> of its invariant line,
+<span class="math math-display" data-tex="\[
+|c(g)|=q^{-\ell(w)}\quad(g\in IwI).
+\]">\[
+|c(g)|=q^{-\ell(w)}\quad(g\in IwI).
+\]</span>
+There are two extended-affine-Weyl elements of length zero and four of every positive length. With <span class="math" data-tex="\(\mu_0(\overline K)=1\)">\(\mu_0(\overline K)=1\)</span>, the index <span class="math" data-tex="\([\overline K:I]=q+1\)">\([\overline K:I]=q+1\)</span> gives <span class="math" data-tex="\(\mu_0(I)=1/(q+1)\)">\(\mu_0(I)=1/(q+1)\)</span>, and <span class="math" data-tex="\(\mu_0(IwI)=q^{\ell(w)}/(q+1)\)">\(\mu_0(IwI)=q^{\ell(w)}/(q+1)\)</span>. Choose the invariant vector to be a unit vector in a unitary realization of Steinberg; its smooth dual coefficient is then this Hermitian coefficient. Hence
+<span class="math math-display" data-tex="\[
+\int|c|^2\,d\mu_0
+=\frac1{q+1}\left(2+4\sum_{r\ge1}q^{-r}\right)
+=\frac2{q-1}.
+\tag{6.5}
+\]">\[
+\int|c|^2\,d\mu_0
+=\frac1{q+1}\left(2+4\sum_{r\ge1}q^{-r}\right)
+=\frac2{q-1}.
+\tag{6.5}
+\]</span>
+Equation (6.1) proves (6.4).</p>
+<p>The parameter of Steinberg is <span class="math" data-tex="\(S_2\)">\(S_2\)</span>. Its adjoint parameter is the centered three-dimensional block <span class="math" data-tex="\(S_3\)">\(S_3\)</span>. The Frobenius weights are <span class="math" data-tex="\(\|\cdot\|^{-1},1,\|\cdot\|\)">\(\|\cdot\|^{-1},1,\|\cdot\|\)</span>, and <span class="math" data-tex="\(N\)">\(N\)</span> has one Jordan block with kernel on the last line. Thus
+<span class="math math-display" data-tex="\[
+L(s,\operatorname{Ad}S_2)=(1-q^{-s-1})^{-1}.
+\]">\[
+L(s,\operatorname{Ad}S_2)=(1-q^{-s-1})^{-1}.
+\]</span>
+The underlying Weil representation is unramified, so its epsilon factor is one. The monodromy determinant on the two-dimensional quotient by the kernel is
+<span class="math math-display" data-tex="\[
+\varepsilon(s,\operatorname{Ad}S_2,\psi)
+=(-q^{1-s})(-q^{-s})=q^{1-2s}.
+\]">\[
+\varepsilon(s,\operatorname{Ad}S_2,\psi)
+=(-q^{1-s})(-q^{-s})=q^{1-2s}.
+\]</span>
+This checks conductor two and both signs. The adjoint parameter is self-dual, giving
+<span class="math math-display" data-tex="\[
+\gamma(s,\operatorname{Ad}S_2,\psi)
+=q^{1-2s}\frac{1-q^{-s-1}}{1-q^{s-2}},
+\qquad
+\gamma(0,\operatorname{Ad}S_2,\psi)=\frac{q^2}{q+1}.
+\tag{6.6}
+\]">\[
+\gamma(s,\operatorname{Ad}S_2,\psi)
+=q^{1-2s}\frac{1-q^{-s-1}}{1-q^{s-2}},
+\qquad
+\gamma(0,\operatorname{Ad}S_2,\psi)=\frac{q^2}{q+1}.
+\tag{6.6}
+\]</span>
+On the other hand
+<span class="math math-display" data-tex="\[
+d(\mathrm{St}_2,\mu_\psi)
+=\frac{q-1}{2(1-q^{-2})}
+=\frac{q^2}{2(q+1)}.
+\]">\[
+d(\mathrm{St}_2,\mu_\psi)
+=\frac{q-1}{2(1-q^{-2})}
+=\frac{q^2}{2(q+1)}.
+\]</span>
+This is half of (6.6), as required. ∎</p>
+<p>For a depth-zero supercuspidal, take an unramified quadratic extension <span class="math" data-tex="\(E/F\)">\(E/F\)</span> and a regular unitary tame character <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. The dihedral-supercuspidal lesson supplies the type description
+<span class="math math-display" data-tex="\[
+\pi=\mathrm{c\!-\!Ind}_{F^\times K}^{G}\widetilde\tau,\qquad
+\dim\tau=q-1,
+\tag{6.7}
+\]">\[
+\pi=\mathrm{c\!-\!Ind}_{F^\times K}^{G}\widetilde\tau,\qquad
+\dim\tau=q-1,
+\tag{6.7}
+\]</span>
+where <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a cuspidal representation of <span class="math" data-tex="\(\mathrm{GL}_2(\mathbb F_q)\)">\(\mathrm{GL}_2(\mathbb F_q)\)</span>, inflated to <span class="math" data-tex="\(K\)">\(K\)</span>. Its parameter is induced from the tame character with the stated rectifier; the rectifier has no effect on the adjoint inertia calculation.</p>
+<p>We check the degree in (6.7) rather than assume it. A unit vector supported on <span class="math" data-tex="\(F^\times K\)">\(F^\times K\)</span> has coefficient zero outside this subgroup: distinct support cosets in compact induction are orthogonal. On its image in <span class="math" data-tex="\(G/Z\)">\(G/Z\)</span> the coefficient is that of the finite-dimensional type. Schur orthogonality for this compact group, with volume one, gives integral <span class="math" data-tex="\(1/\dim\tau\)">\(1/\dim\tau\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+d(\pi,\mu_0)=q-1,\qquad
+d(\pi,\mu_\psi)=\frac{q^2}{q+1}.
+\tag{6.8}
+\]">\[
+d(\pi,\mu_0)=q-1,\qquad
+d(\pi,\mu_\psi)=\frac{q^2}{q+1}.
+\tag{6.8}
+\]</span></p>
+<p>For its induced parameter <span class="math" data-tex="\(r\)">\(r\)</span>, the diagonal and off-diagonal endomorphisms give
+<span class="math math-display" data-tex="\[
+\operatorname{Ad}r=\eta_{E/F}\oplus
+\operatorname{Ind}_{W_E}^{W_F}(\theta/\theta^\sigma).
+\tag{6.9}
+\]">\[
+\operatorname{Ad}r=\eta_{E/F}\oplus
+\operatorname{Ind}_{W_E}^{W_F}(\theta/\theta^\sigma).
+\tag{6.9}
+\]</span>
+The quadratic <span class="math" data-tex="\(\eta_{E/F}\)">\(\eta_{E/F}\)</span> is unramified with Frobenius value <span class="math" data-tex="\(-1\)">\(-1\)</span>. Regularity makes <span class="math" data-tex="\(\theta/\theta^\sigma\)">\(\theta/\theta^\sigma\)</span> nontrivial on inertia. Consequently the second summand is tame with no inertia invariants, even when it splits into two ramified characters. Thus <span class="math" data-tex="\(a(\operatorname{Ad}r)=2\)">\(a(\operatorname{Ad}r)=2\)</span>,
+<span class="math math-display" data-tex="\[
+L(s,\operatorname{Ad}r)=(1+q^{-s})^{-1},\qquad
+|\varepsilon(s,\operatorname{Ad}r,\psi)|=q^{1-2s}
+\]">\[
+L(s,\operatorname{Ad}r)=(1+q^{-s})^{-1},\qquad
+|\varepsilon(s,\operatorname{Ad}r,\psi)|=q^{1-2s}
+\]</span>
+for real <span class="math" data-tex="\(s\)">\(s\)</span>. The unitary Gauss-sum root number has absolute value one, as in the earlier tame-factor calculation. It follows that
+<span class="math math-display" data-tex="\[
+|\gamma(0,\operatorname{Ad}r,\psi)|
+=q\,\frac2{1+q^{-1}}
+=\frac{2q^2}{q+1}.
+\tag{6.10}
+\]">\[
+|\gamma(0,\operatorname{Ad}r,\psi)|
+=q\,\frac2{1+q^{-1}}
+=\frac{2q^2}{q+1}.
+\tag{6.10}
+\]</span>
+Half of (6.10) is (6.8). For <span class="math" data-tex="\(q=3\)">\(q=3\)</span>, the two <span class="math" data-tex="\(\mu_0\)">\(\mu_0\)</span>-degrees are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, while their <span class="math" data-tex="\(\mu_\psi\)">\(\mu_\psi\)</span>-degrees are <span class="math" data-tex="\(9/8\)">\(9/8\)</span> and <span class="math" data-tex="\(9/4\)">\(9/4\)</span>. The measure conversion accounts for the difference completely.</p>
+<h2 id="7-exterior-and-symmetric-squares">7. Exterior and symmetric squares</h2>
+<p><strong>Theorem 7.1 (Cogdell–Shahidi–Tsai, stated).</strong> For <span class="math" data-tex="\(F/\mathbb Q_p\)">\(F/\mathbb Q_p\)</span> finite, any irreducible admissible <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(\mathrm{GL}_n(F)\)">\(\mathrm{GL}_n(F)\)</span>, its parameter <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and nontrivial additive <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, the analytic and arithmetic factors agree for <span class="math" data-tex="\(R=\Lambda^2,\operatorname{Sym}^2\)">\(R=\Lambda^2,\operatorname{Sym}^2\)</span>:
+<span class="math math-display" data-tex="\[
+\varepsilon(s,\pi,R,\psi)=\varepsilon(s,R\rho,\psi),\qquad
+L(s,\pi,R)=L(s,R\rho).
+\tag{7.1}
+\]">\[
+\varepsilon(s,\pi,R,\psi)=\varepsilon(s,R\rho,\psi),\qquad
+L(s,\pi,R)=L(s,R\rho).
+\tag{7.1}
+\]</span>
+The analytic factors are the Langlands–Shahidi factors, extended to nongeneric representations through the Langlands classification. This is [Cogdell–Shahidi–Tsai 2017, §1, Theorem 1.1]. Their proof combines multiplicativity, globalization, functional equations and stability under ramified twists. General pair compatibility alone does not formally separate the exterior and symmetric summands of <span class="math" data-tex="\(\rho\otimes\rho\)">\(\rho\otimes\rho\)</span>; (7.1) is an additional theorem.</p>
+<p>For a two-dimensional Weil–Deligne pair <span class="math" data-tex="\((r,N)\)">\((r,N)\)</span>, its exterior square is particularly explicit:
+<span class="math math-display" data-tex="\[
+\Lambda^2(r,N)=(\det r,0).
+\tag{7.2}
+\]">\[
+\Lambda^2(r,N)=(\det r,0).
+\tag{7.2}
+\]</span>
+Indeed the induced nilpotent operator on <span class="math" data-tex="\(v\wedge w\)">\(v\wedge w\)</span> is <span class="math" data-tex="\(Nv\wedge w+v\wedge Nw\)">\(Nv\wedge w+v\wedge Nw\)</span>; in a basis this acts by <span class="math" data-tex="\(\operatorname{tr}N=0\)">\(\operatorname{tr}N=0\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+a(\Lambda^2\rho)=a(\det r)=a(\omega_\pi).
+\tag{7.3}
+\]">\[
+a(\Lambda^2\rho)=a(\det r)=a(\omega_\pi).
+\tag{7.3}
+\]</span>
+For Steinberg with trivial central character, this conductor is zero although <span class="math" data-tex="\(a(S_2)=1\)">\(a(S_2)=1\)</span>. For a principal-series parameter <span class="math" data-tex="\(\widehat\chi_1\oplus\widehat\chi_2\)">\(\widehat\chi_1\oplus\widehat\chi_2\)</span>, it is <span class="math" data-tex="\(a(\chi_1\chi_2)\)">\(a(\chi_1\chi_2)\)</span>, not necessarily <span class="math" data-tex="\(a(\chi_1)+a(\chi_2)\)">\(a(\chi_1)+a(\chi_2)\)</span>. Cancellation in the determinant can lower it.</p>
+<h2 id="8-exercises-and-complete-solutions">8. Exercises and complete solutions</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Compute degree-<span class="math" data-tex="\(f\)">\(f\)</span> unramified base change of a spherical representation with Satake parameters <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span>.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(\Phi_E=\Phi_F^f\)">\(\Phi_E=\Phi_F^f\)</span> modulo inertia and inertia is trivial, diagonalizing <span class="math" data-tex="\(\rho(\Phi_F)\)">\(\rho(\Phi_F)\)</span> gives diagonal entries <span class="math" data-tex="\(\alpha_i^f\)">\(\alpha_i^f\)</span> on restriction. The new residue cardinality is <span class="math" data-tex="\(q^f\)">\(q^f\)</span>, so the factor is <span class="math" data-tex="\(\prod_i(1-\alpha_i^f q^{-fs})^{-1}\)">\(\prod_i(1-\alpha_i^f q^{-fs})^{-1}\)</span>. The determinant becomes <span class="math" data-tex="\((\prod_i\alpha_i)^f\)">\((\prod_i\alpha_i)^f\)</span>. These are precisely the spherical Satake data through base-change compatibility.</p>
+<p><strong>Exercise 8.2 (medium).</strong> Compute the factor of induction of an unramified character from degree-<span class="math" data-tex="\(n\)">\(n\)</span> unramified <span class="math" data-tex="\(E/F\)">\(E/F\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(a=\theta(\varpi_E)\)">\(a=\theta(\varpi_E)\)</span>. The coset basis in (5.2) has Frobenius matrix <span class="math" data-tex="\(A\)">\(A\)</span>, with a single cyclic wraparound entry <span class="math" data-tex="\(a\)">\(a\)</span>. A cyclic vector has minimal polynomial <span class="math" data-tex="\(T^n-a\)">\(T^n-a\)</span>, equal to the characteristic polynomial by dimension. Inertia is trivial. Its distinct eigenvalues are <span class="math" data-tex="\(\zeta a^{1/n}\)">\(\zeta a^{1/n}\)</span>, so the determinant formula gives the product in (5.1), and multiplying the factors gives <span class="math" data-tex="\((1-aq^{-ns})^{-1}\)">\((1-aq^{-ns})^{-1}\)</span>. The choice of the root only orders these eigenvalues. The induced parameter has zero monodromy and is a sum of unramified characters.</p>
+<p><strong>Exercise 8.3 (medium).</strong> Check the exterior-square conductor formula for every two-dimensional parameter, including nonzero monodromy.</p>
+<p><strong>Solution.</strong> For a basis <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span>, write <span class="math" data-tex="\(Ne_1=a e_1+c e_2\)">\(Ne_1=a e_1+c e_2\)</span>, <span class="math" data-tex="\(Ne_2=b e_1+d e_2\)">\(Ne_2=b e_1+d e_2\)</span>. Its action on <span class="math" data-tex="\(e_1\wedge e_2\)">\(e_1\wedge e_2\)</span> is <span class="math" data-tex="\((a+d)e_1\wedge e_2\)">\((a+d)e_1\wedge e_2\)</span>. Nilpotence gives <span class="math" data-tex="\(a+d=0\)">\(a+d=0\)</span>. The Weil action on that line is <span class="math" data-tex="\(\det r\)">\(\det r\)</span>, proving (7.2). A one-dimensional parameter with zero monodromy has its usual character conductor, so (7.3) follows from determinant–central-character compatibility. For <span class="math" data-tex="\(r=\widehat\chi S_2\)">\(r=\widehat\chi S_2\)</span>, its determinant is <span class="math" data-tex="\(\widehat\chi^2\)">\(\widehat\chi^2\)</span>, and the answer is <span class="math" data-tex="\(a(\chi^2)\)">\(a(\chi^2)\)</span>; for a principal sum it is <span class="math" data-tex="\(a(\chi_1\chi_2)\)">\(a(\chi_1\chi_2)\)</span>; for an irreducible Weil parameter it is likewise the character conductor of its determinant. Thus the same formula covers every rank-two type.</p>
+<p><strong>Exercise 8.4 (hard).</strong> Verify the Steinberg formal-degree formula, retaining Haar normalization.</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(\mu_0(\overline K)=1\)">\(\mu_0(\overline K)=1\)</span>, each Iwahori double coset of length <span class="math" data-tex="\(r\)">\(r\)</span> has volume <span class="math" data-tex="\(q^r/(q+1)\)">\(q^r/(q+1)\)</span>, and the invariant-line unit coefficient has squared absolute value <span class="math" data-tex="\(q^{-2r}\)">\(q^{-2r}\)</span>. The length counts give integral <span class="math" data-tex="\((2+4/(q-1))/(q+1)=2/(q-1)\)">\((2+4/(q-1))/(q+1)=2/(q-1)\)</span>. Schur orthogonality therefore gives <span class="math" data-tex="\((q-1)/2\)">\((q-1)/2\)</span>. The adjoint parameter is <span class="math" data-tex="\(S_3\)">\(S_3\)</span>; its kernel of <span class="math" data-tex="\(N\)">\(N\)</span> has Frobenius <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>, giving <span class="math" data-tex="\(L(s)=(1-q^{-s-1})^{-1}\)">\(L(s)=(1-q^{-s-1})^{-1}\)</span>, and its quotient by that kernel has determinant contribution <span class="math" data-tex="\(q^{1-2s}\)">\(q^{1-2s}\)</span>. Consequently <span class="math" data-tex="\(\gamma(0)=q^2/(q+1)\)">\(\gamma(0)=q^2/(q+1)\)</span>. Changing to <span class="math" data-tex="\(\mu_\psi=(1-q^{-2})\mu_0\)">\(\mu_\psi=(1-q^{-2})\mu_0\)</span> divides the formal degree by <span class="math" data-tex="\(1-q^{-2}\)">\(1-q^{-2}\)</span>, giving <span class="math" data-tex="\(q^2/[2(q+1)]\)">\(q^2/[2(q+1)]\)</span>, exactly <span class="math" data-tex="\(\gamma(0)/2\)">\(\gamma(0)/2\)</span>. Any further scalar change of measure divides the degree by that same scalar.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Henniart's global existence proof is outlined in [Carayol 2000, §4], with the author's precise variant and mechanism in [Henniart 2001, §§1–5]. The LRS positive-characteristic theorem is [Theorem 15.7 and Remark 15.8] of their paper; its geometric and trace-formula construction is stated. The Scholze trace characterization and bijectivity are [Theorems 1.1–1.2; §§12–14], with the half norm converted explicitly in (2.2). The Fargues–Scholze semisimple parameter, spectral action and categorical conjecture are respectively [Theorem I.9.6, Theorem I.10.1 and Conjecture I.10.2] of their manuscript.</p>
+<p>Cyclic base change and induction on semisimple Weil classes are the stated inputs [Henniart 2001, §§7.2–7.3]. The full-parameter formulation uses their extension through the earlier segment classification as described after (3.2). Proposition 4.1 and Proposition 5.1 prove their unramified parameter calculations. The standard factor conductor equality follows from the earlier pair-factor theorem.</p>
+<p>The general formal-degree theorem is [Hiraga–Ichino–Ikeda 2008, Theorem 3.1], with the exact gauge-normalized general-linear formulation in [Ichino–Lapid–Mao, Theorem 2.1]. Schur orthogonality is the defining harmonic-analysis input. The earlier representation-classification lesson proves the Steinberg double-coset coefficient calculation used here. We proved its numerical degree and adjoint-factor comparison. The depth-zero type construction and finite-field type dimension in (6.7) are the stated earlier dihedral and finite-group inputs; we proved its compact-induction degree calculation and adjoint-factor check.</p>
+<p>The exterior- and symmetric-square matching theorem is [Cogdell–Shahidi–Tsai 2017, Theorem 1.1]. The rank-two exterior-square parameter and conductor calculation are proved here. None of the geometric statements is a claim that the general reductive-group packet conjecture has thereby been proved.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Carayol 2000] Henri Carayol, <a href="https://www.numdam.org/item/SB_1998-1999__41__191_0/">“Preuve de la conjecture de Langlands locale pour GL_n : travaux de Harris–Taylor et Henniart”</a>, Séminaire Bourbaki, exposé 857 (1998–1999), <em>Astérisque</em> 266 (2000), 191–243, §4.</li>
+<li>[Henniart 2001] Guy Henniart, <a href="https://www.numdam.org/item/JTNB_2001__13_1_167_0/">“Sur la conjecture de Langlands locale pour GL_n”</a>, <em>Journal de Théorie des Nombres de Bordeaux</em> 13 (2001), 167–187, especially §§2–5 and §7.</li>
+<li>[Laumon–Rapoport–Stuhler 1993] Gérard Laumon, Michael Rapoport and Ulrich Stuhler, <a href="https://www.math.uni-bonn.de/people/rapoport/myalggeom/preprints/Dellipticsheaves.pdf"><em>D-elliptic sheaves and the Langlands correspondence</em></a>, <em>Inventiones mathematicae</em> 113 (1993), 217–338, Introduction, Theorem 15.7 and Remark 15.8.</li>
+<li>[Scholze] Peter Scholze, <a href="https://arxiv.org/abs/1010.1540"><em>The Local Langlands Correspondence for GL_n over p-adic Fields</em></a>, Introduction, Theorems 1.1–1.2, and §§12–14.</li>
+<li>[Fargues–Scholze] Laurent Fargues and Peter Scholze, <a href="https://arxiv.org/abs/2102.13459"><em>Geometrization of the local Langlands correspondence</em></a>, Introduction, §§I.9–I.10.</li>
+<li>[Hiraga–Ichino–Ikeda 2008] Kaoru Hiraga, Atsushi Ichino and Tamotsu Ikeda, <a href="https://www.ams.org/journals/jams/2008-21-01/S0894-0347-07-00567-X/S0894-0347-07-00567-X.pdf"><em>Formal degrees and adjoint gamma-factors</em></a>, <em>Journal of the American Mathematical Society</em> 21 (2008), 283–304, Theorem 3.1.</li>
+<li>[Ichino–Lapid–Mao] Atsushi Ichino, Erez Lapid and Zhengyu Mao, <a href="https://arxiv.org/abs/1404.2909"><em>On the formal degrees of square-integrable representations of odd special orthogonal and metaplectic groups</em></a>, Notation and §2, Theorem 2.1, the general-linear-group case.</li>
+<li>[Cogdell–Shahidi–Tsai 2017] James W. Cogdell, Freydoon Shahidi and Tien-Chi Tsai, <a href="https://arxiv.org/abs/1412.1448"><em>Local Langlands correspondence for GL_n and the exterior and symmetric square epsilon-factors</em></a>, <em>Duke Mathematical Journal</em> 166 (2017), §1, Theorem 1.1.</li>
+<li>[Getz–Hahn 2022] Jayce R. Getz and Heekyoung Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em></a>, draft of 22 April 2022, §§12.5 and 13.5.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-LLC-11.html">← Harris–Taylor: geometry, numerical counting and existence</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-LLC-13.html">Beyond general linear groups: parameters and packets →</a></span></nav>
+<p class="small source-link"><a href="src/LG-LLC-12.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-LLC">Repository</a></nav>
+</footer>
+</body>
+</html>

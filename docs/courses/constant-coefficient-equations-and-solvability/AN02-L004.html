@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Regular kernels and changes in the equation</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="regular-kernels-and-changes-in-the-equation">Regular kernels and changes in the equation</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Solving an equation is only part of the problem. We also want the solution to retain the regularity of the data, and we want estimates that survive a change in the coefficients. These two questions meet in the choice of a fundamental solution. A poorly chosen inverse can carry avoidable singularities. A regular inverse uses the full derivative norm of the polynomial to control its localized Fourier transform.</p>
+<p>Read <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a> and <a href="AN02-L003.html">Local regularity, sharp embeddings, and compactness</a> first. We also use the distributional convolution identities discussed in <a href="AN02-L001.html">Fundamental solutions and the directions an equation uses</a>. The additional prerequisite is holomorphic averaging for polynomials, stated precisely below. Its construction belongs to the theory of Fourier–Laplace transforms. Basic references are the open treatments of distributions by Grubb [Grubb] and Melrose [Melrose], Malgrange's original existence paper [Malgrange], Hörmander's survey of existence and regularity [Hormander 1971], and Mantlik's work on dependence on a parameter [Mantlik].</p>
+<p>We keep <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, the negative-exponential Fourier transform, and complex-linear distributional pairings. For a nonzero polynomial,
+<span class="math math-display" data-tex="\[
+S_P(\xi)=\left(\sum_\alpha|\partial^\alpha P(\xi)|^2\right)^{1/2}.
+\]">\[
+S_P(\xi)=\left(\sum_\alpha|\partial^\alpha P(\xi)|^2\right)^{1/2}.
+\]</span>
+All polynomial spaces in this lesson have a fixed maximum degree <span class="math" data-tex="\(m\)">\(m\)</span>. The actual degree may fall when the coefficients vary.</p>
+<p>The smooth polynomial averaging statement below is proved in <a href="AN02-L120.html">Averaging an entire function while avoiding polynomial zeros</a>, including compact averaging support, scalar homogeneity and the uniform denominator bound. The construction retains its declared scalar Taylor, finite-dimensional compactness, cutoff and Lebesgue/Fubini inputs; the other prerequisites and recursive closure of this lesson remain explicit.</p>
+<h2 id="what-a-regular-inverse-controls">What a regular inverse controls</h2>
+<p>A fundamental solution <span class="math" data-tex="\(E\)">\(E\)</span> of <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span> is <strong>regular</strong> if
+<span class="math math-display" data-tex="\[
+E\in B_{\infty,S_P}^{\mathrm{loc}}(\mathbb R^n).
+\]">\[
+E\in B_{\infty,S_P}^{\mathrm{loc}}(\mathbb R^n).
+\]</span>
+Thus every compactly supported smooth <span class="math" data-tex="\(\chi\)">\(\chi\)</span> gives a bounded function <span class="math" data-tex="\(S_P\widehat{\chi E}\)">\(S_P\widehat{\chi E}\)</span>. This is a local assertion. It makes no claim that <span class="math" data-tex="\(E\)">\(E\)</span> is tempered before a cutoff is applied.</p>
+<p>We shall use a simple Fourier estimate repeatedly. Suppose <span class="math" data-tex="\(a\)">\(a\)</span> is measurable and <span class="math" data-tex="\(\sup_\xi k(\xi)|a(\xi)|\leq A\)">\(\sup_\xi k(\xi)|a(\xi)|\leq A\)</span>, and let <span class="math" data-tex="\(g=\mathcal F^{-1}a\)">\(g=\mathcal F^{-1}a\)</span>. For <span class="math" data-tex="\(f\in\mathcal S\)">\(f\in\mathcal S\)</span>,
+<span class="math math-display" data-tex="\[
+\widehat{fg}(\eta)=(2\pi)^{-n}\int\widehat f(h)a(\eta-h)\,dh,
+\]">\[
+\widehat{fg}(\eta)=(2\pi)^{-n}\int\widehat f(h)a(\eta-h)\,dh,
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+\|fg\|_{\infty,k}\leq
+A(2\pi)^{-n}\int M_k(h)|\widehat f(h)|\,dh. \tag{1}
+\]">\[
+\|fg\|_{\infty,k}\leq
+A(2\pi)^{-n}\int M_k(h)|\widehat f(h)|\,dh. \tag{1}
+\]</span>
+Indeed <span class="math" data-tex="\(k(\eta)/k(\eta-h)\leq M_k(h)\)">\(k(\eta)/k(\eta-h)\leq M_k(h)\)</span>. Polynomial growth of <span class="math" data-tex="\(M_k\)">\(M_k\)</span> makes the integral finite. The formula first follows by testing against Schwartz functions and using absolute convergence; it then represents the Fourier transform by a bounded weighted function. In particular it applies when <span class="math" data-tex="\(g\)">\(g\)</span> is a tempered distribution rather than an ordinary function.</p>
+<p>The exponential denominator we use is
+<span class="math math-display" data-tex="\[
+w_\varepsilon(x)=\cosh(\varepsilon|x|).
+\]">\[
+w_\varepsilon(x)=\cosh(\varepsilon|x|).
+\]</span>
+It is smooth at the origin: its power series contains only powers of <span class="math" data-tex="\(|x|^2\)">\(|x|^2\)</span>. For fixed <span class="math" data-tex="\(0&lt;\rho&lt;\varepsilon\)">\(0&lt;\rho&lt;\varepsilon\)</span>, the functions
+<span class="math math-display" data-tex="\[
+f_z(x)=\frac{e^{ix\cdot z}}{w_\varepsilon(x)},
+\qquad z\in\mathbb C^n,\quad |z|\leq\rho,
+\tag{2}
+\]">\[
+f_z(x)=\frac{e^{ix\cdot z}}{w_\varepsilon(x)},
+\qquad z\in\mathbb C^n,\quad |z|\leq\rho,
+\tag{2}
+\]</span>
+form a bounded subset of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Every derivative is a sum of bounded powers of <span class="math" data-tex="\(z\)">\(z\)</span> times derivatives of <span class="math" data-tex="\(1/w_\varepsilon\)">\(1/w_\varepsilon\)</span>. Away from the origin those derivatives decay exponentially, and the factor <span class="math" data-tex="\(e^{ix\cdot z}\)">\(e^{ix\cdot z}\)</span> grows by at most <span class="math" data-tex="\(e^{\rho|x|}\)">\(e^{\rho|x|}\)</span>. The remaining decay is <span class="math" data-tex="\(e^{-(\varepsilon-\rho)|x|}\)">\(e^{-(\varepsilon-\rho)|x|}\)</span>, which absorbs every polynomial in <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<h2 id="holomorphic-averaging-as-a-starting-tool">Holomorphic averaging as a starting tool</h2>
+<p>Here is the precise prerequisite. Let <span class="math" data-tex="\(\mathcal P_m\)">\(\mathcal P_m\)</span> be the complex vector space of polynomials of degree at most <span class="math" data-tex="\(m\)">\(m\)</span>, and give it the norm
+<span class="math math-display" data-tex="\[
+|q|_J=\left(\sum_{|\alpha|\leq m}|\partial^\alpha q(0)|^2\right)^{1/2}.
+\]">\[
+|q|_J=\left(\sum_{|\alpha|\leq m}|\partial^\alpha q(0)|^2\right)^{1/2}.
+\]</span>
+For every <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, there is a nonnegative smooth function <span class="math" data-tex="\(\Phi(q,z)\)">\(\Phi(q,z)\)</span>, defined for <span class="math" data-tex="\(q\ne0\)">\(q\ne0\)</span> and <span class="math" data-tex="\(z\in\mathbb C^n\)">\(z\in\mathbb C^n\)</span>, with these properties:</p>
+<ol>
+<li>Its <span class="math" data-tex="\(z\)">\(z\)</span>-support is contained in a fixed compact subset of <span class="math" data-tex="\(\{|z|&lt;\rho\}\)">\(\{|z|&lt;\rho\}\)</span>.</li>
+<li><span class="math" data-tex="\(\Phi(aq,z)=\Phi(q,z)\)">\(\Phi(aq,z)=\Phi(q,z)\)</span> for every nonzero complex scalar <span class="math" data-tex="\(a\)">\(a\)</span>.</li>
+<li>For every entire holomorphic <span class="math" data-tex="\(H\)">\(H\)</span>,
+<span class="math math-display" data-tex="\[
+\int_{\mathbb C^n}H(z)\Phi(q,z)\,d\lambda(z)=H(0).
+\tag{3}
+\]">\[
+\int_{\mathbb C^n}H(z)\Phi(q,z)\,d\lambda(z)=H(0).
+\tag{3}
+\]</span></li>
+<li>There is a constant <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+|q(z)|\geq c|q|_J\quad\hbox{whenever }\Phi(q,z)\ne0.
+\tag{4}
+\]">\[
+|q(z)|\geq c|q|_J\quad\hbox{whenever }\Phi(q,z)\ne0.
+\tag{4}
+\]</span></li>
+</ol>
+<p>Here <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is real <span class="math" data-tex="\(2n\)">\(2n\)</span>-dimensional Lebesgue measure. The constants depend on <span class="math" data-tex="\(m,n,\rho\)">\(m,n,\rho\)</span>. The complete <a href="AN02-L120.html">polynomial averaging proof</a> supplies this lemma, including its smooth dependence on the real and imaginary coefficient coordinates and the denominator differentials below. The averaging construction is due to Hörmander; a reference for the existence and regularity method is [Hormander 1971]. The existence theorem it supports is the Malgrange–Ehrenpreis theorem. The argument below derives the stronger estimates from the stated averaging properties.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+A(q,z)=\frac{\Phi(q,z)}{q(z)}
+\]">\[
+A(q,z)=\frac{\Phi(q,z)}{q(z)}
+\]</span>
+where <span class="math" data-tex="\(q(z)\ne0\)">\(q(z)\ne0\)</span>, and define it to be zero near the zero set of <span class="math" data-tex="\(q(z)\)">\(q(z)\)</span>. This is a smooth definition. In fact (4) says that <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> vanishes on the open set <span class="math" data-tex="\(|q(z)|&lt;c|q|_J\)">\(|q(z)|&lt;c|q|_J\)</span>, including a neighborhood of every zero of <span class="math" data-tex="\(q(z)\)">\(q(z)\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For every <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, the real coefficient differential of <span class="math" data-tex="\(A\)">\(A\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\big|d^jA(q,z)[r_1,\ldots,r_j]\big|
+\leq C_j\frac{\prod_{\nu=1}^j|r_\nu|_J}{|q|_J^{j+1}}.
+\tag{5}
+\]">\[
+\big|d^jA(q,z)[r_1,\ldots,r_j]\big|
+\leq C_j\frac{\prod_{\nu=1}^j|r_\nu|_J}{|q|_J^{j+1}}.
+\tag{5}
+\]</span>
+The empty product is one. All these differentials have <span class="math" data-tex="\(z\)">\(z\)</span>-support in the same fixed compact set.</p>
+<p><strong>Proof.</strong> On the unit coefficient sphere <span class="math" data-tex="\(|q|_J=1\)">\(|q|_J=1\)</span>, the function <span class="math" data-tex="\(A\)">\(A\)</span> and all of its coefficient differentials are bounded on the fixed compact <span class="math" data-tex="\(z\)">\(z\)</span>-set. Smoothness across the division set was just established. Outside that set they vanish. If <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, then <span class="math" data-tex="\(A(tq,z)=t^{-1}A(q,z)\)">\(A(tq,z)=t^{-1}A(q,z)\)</span>. Differentiating this identity <span class="math" data-tex="\(j\)">\(j\)</span> times scales the differential by <span class="math" data-tex="\(t^{-j-1}\)">\(t^{-j-1}\)</span>. Normalize <span class="math" data-tex="\(q\)">\(q\)</span> to the unit sphere and use the operator norm of the resulting multilinear differential. This proves (5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a translated polynomial <span class="math" data-tex="\(P_\xi(z)=P(\xi+z)\)">\(P_\xi(z)=P(\xi+z)\)</span>, its coefficient norm is exactly <span class="math" data-tex="\(S_P(\xi)\)">\(S_P(\xi)\)</span>. Translation of the directions gives <span class="math" data-tex="\(|(Q_\nu)_\xi|_J=S_{Q_\nu}(\xi)\)">\(|(Q_\nu)_\xi|_J=S_{Q_\nu}(\xi)\)</span>. Therefore (5) becomes a frequency estimate, uniform over all nonzero <span class="math" data-tex="\(P\)">\(P\)</span>:
+<span class="math math-display" data-tex="\[
+\big|d^jA(P_\xi,z)[(Q_1)_\xi,\ldots,(Q_j)_\xi]\big|
+\leq C_j\frac{\prod_\nu S_{Q_\nu}(\xi)}{S_P(\xi)^{j+1}}.
+\tag{6}
+\]">\[
+\big|d^jA(P_\xi,z)[(Q_1)_\xi,\ldots,(Q_j)_\xi]\big|
+\leq C_j\frac{\prod_\nu S_{Q_\nu}(\xi)}{S_P(\xi)^{j+1}}.
+\tag{6}
+\]</span>
+No lower bound on an individual coefficient of <span class="math" data-tex="\(P\)">\(P\)</span> is needed.</p>
+<h2 id="a-smooth-family-with-small-exponential-growth">A smooth family with small exponential growth</h2>
+<p><strong>Theorem 3.1.</strong> Fix <span class="math" data-tex="\(m,n\)">\(m,n\)</span> and <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, and choose one averaging function with support in <span class="math" data-tex="\(|z|&lt;\rho\)">\(|z|&lt;\rho\)</span>. There is a real <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span> map
+<span class="math math-display" data-tex="\[
+P\longmapsto E_\rho(P),\qquad
+\mathcal P_m\setminus\{0\}\longrightarrow\mathcal D&#x27;(\mathbb R^n),
+\]">\[
+P\longmapsto E_\rho(P),\qquad
+\mathcal P_m\setminus\{0\}\longrightarrow\mathcal D&#x27;(\mathbb R^n),
+\]</span>
+such that <span class="math" data-tex="\(P(D)E_\rho(P)=\delta_0\)">\(P(D)E_\rho(P)=\delta_0\)</span>. For every <span class="math" data-tex="\(\varepsilon&gt;\rho\)">\(\varepsilon&gt;\rho\)</span>,
+<span class="math math-display" data-tex="\[
+\left\|\frac{E_\rho(P)}{w_\varepsilon}\right\|_{\infty,S_P}
+\leq C_0.
+\tag{7}
+\]">\[
+\left\|\frac{E_\rho(P)}{w_\varepsilon}\right\|_{\infty,S_P}
+\leq C_0.
+\tag{7}
+\]</span>
+For nonzero <span class="math" data-tex="\(Q_1,\ldots,Q_j\in\mathcal P_m\)">\(Q_1,\ldots,Q_j\in\mathcal P_m\)</span>, put
+<span class="math math-display" data-tex="\[
+F_j(\xi)=\frac{S_P(\xi)^{j+1}}{\prod_{\nu=1}^jS_{Q_\nu}(\xi)}.
+\]">\[
+F_j(\xi)=\frac{S_P(\xi)^{j+1}}{\prod_{\nu=1}^jS_{Q_\nu}(\xi)}.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\left\|\frac{E_\rho^{(j)}(P)[Q_1,\ldots,Q_j]}{w_\varepsilon}\right\|_{\infty,F_j}
+\leq C_j.
+\tag{8}
+\]">\[
+\left\|\frac{E_\rho^{(j)}(P)[Q_1,\ldots,Q_j]}{w_\varepsilon}\right\|_{\infty,F_j}
+\leq C_j.
+\tag{8}
+\]</span>
+The constants are independent of the coefficients of <span class="math" data-tex="\(P,Q_1,\ldots,Q_j\)">\(P,Q_1,\ldots,Q_j\)</span>. They depend on the fixed averaging choice, <span class="math" data-tex="\(m,n,j,\varepsilon\)">\(m,n,j,\varepsilon\)</span>. A zero direction makes the differential zero. Every <span class="math" data-tex="\(E_\rho(P)\)">\(E_\rho(P)\)</span> is regular and has support in the active subspace <span class="math" data-tex="\(V_P=N_P^\perp\)">\(V_P=N_P^\perp\)</span>.</p>
+<p><strong>Proof.</strong> Define the distribution by
+<span class="math math-display" data-tex="\[
+\langle E_\rho(P),\phi\rangle
+=(2\pi)^{-n}\int_{\mathbb R^n}\int_{\mathbb C^n}
+\widehat\phi(-\xi-z)A(P_\xi,z)\,d\lambda(z)\,d\xi,
+\qquad\phi\in C_c^\infty.
+\tag{9}
+\]">\[
+\langle E_\rho(P),\phi\rangle
+=(2\pi)^{-n}\int_{\mathbb R^n}\int_{\mathbb C^n}
+\widehat\phi(-\xi-z)A(P_\xi,z)\,d\lambda(z)\,d\xi,
+\qquad\phi\in C_c^\infty.
+\tag{9}
+\]</span>
+For a fixed <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span>, <span class="math" data-tex="\(S_P\)">\(S_P\)</span> is bounded below by a positive constant, because a derivative of its highest nonzero homogeneous part is a nonzero constant. The inner integrand is bounded by <span class="math" data-tex="\(C/S_P(\xi)\)">\(C/S_P(\xi)\)</span>, apart from the rapidly decreasing test transform. The transform <span class="math" data-tex="\(\widehat\phi(-\xi-z)\)">\(\widehat\phi(-\xi-z)\)</span> decreases faster than any power of <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span>, uniformly for <span class="math" data-tex="\(z\)">\(z\)</span> in the fixed compact set. This follows by integration by parts in <span class="math" data-tex="\(x\)">\(x\)</span>, with its imaginary-frequency growth bounded on <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span>. Thus (9) converges absolutely and defines a distribution.</p>
+<p>The Fourier–Laplace transform of <span class="math" data-tex="\(P(-D)\phi\)">\(P(-D)\phi\)</span>, evaluated at <span class="math" data-tex="\(-\xi-z\)">\(-\xi-z\)</span>, is <span class="math" data-tex="\(P(\xi+z)\widehat\phi(-\xi-z)\)">\(P(\xi+z)\widehat\phi(-\xi-z)\)</span>. Cancel that polynomial in (9) and apply (3) to the entire function <span class="math" data-tex="\(z\mapsto\widehat\phi(-\xi-z)\)">\(z\mapsto\widehat\phi(-\xi-z)\)</span>. Fourier inversion gives
+<span class="math math-display" data-tex="\[
+\langle P(D)E_\rho(P),\phi\rangle
+=(2\pi)^{-n}\int\widehat\phi(-\xi)\,d\xi
+=\phi(0).
+\]">\[
+\langle P(D)E_\rho(P),\phi\rangle
+=(2\pi)^{-n}\int\widehat\phi(-\xi)\,d\xi
+=\phi(0).
+\]</span></p>
+<p>For each <span class="math" data-tex="\(z\)">\(z\)</span>, let <span class="math" data-tex="\(g_z\)">\(g_z\)</span> be the tempered distribution with transform <span class="math" data-tex="\(A(P_\xi,z)\)">\(A(P_\xi,z)\)</span>. Formula (9) can also be written
+<span class="math math-display" data-tex="\[
+E_\rho(P)=\int e^{ix\cdot z}g_z\,d\lambda(z)
+\quad\hbox{in distributions}.
+\tag{10}
+\]">\[
+E_\rho(P)=\int e^{ix\cdot z}g_z\,d\lambda(z)
+\quad\hbox{in distributions}.
+\tag{10}
+\]</span>
+After division by <span class="math" data-tex="\(w_\varepsilon\)">\(w_\varepsilon\)</span>, the multiplier in (10) is the Schwartz function (2). Apply (1) with <span class="math" data-tex="\(k=S_P\)">\(k=S_P\)</span>, using (6) for <span class="math" data-tex="\(j=0\)">\(j=0\)</span>. The shift function <span class="math" data-tex="\(M_{S_P}\)">\(M_{S_P}\)</span> has a polynomial bound with constants depending only on <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, by Proposition 1.3 of the weighted-spaces lesson. The functions <span class="math" data-tex="\(f_z\)">\(f_z\)</span> are uniformly Schwartz, and the <span class="math" data-tex="\(z\)">\(z\)</span>-set has finite measure. Integrating (1) proves (7), and also shows that the quotient in (7) is tempered. Multiplication by <span class="math" data-tex="\(\chi w_\varepsilon\)">\(\chi w_\varepsilon\)</span>, for any <span class="math" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span>, proves local regularity.</p>
+<p>To differentiate (9), observe that on a compact subset of <span class="math" data-tex="\(\mathcal P_m\setminus\{0\}\)">\(\mathcal P_m\setminus\{0\}\)</span>,
+<span class="math math-display" data-tex="\[
+S_P(\xi)\geq C^{-1}(1+|\xi|)^{-m}S_P(0)
+\geq c_K(1+|\xi|)^{-m}.
+\]">\[
+S_P(\xi)\geq C^{-1}(1+|\xi|)^{-m}S_P(0)
+\geq c_K(1+|\xi|)^{-m}.
+\]</span>
+The first inequality is the reverse moderate shift estimate. For bounded coefficient directions, <span class="math" data-tex="\(S_Q(\xi)\)">\(S_Q(\xi)\)</span> is bounded by a fixed polynomial in <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span>. Consequently every order of coefficient differentiation in (9) has a polynomially bounded integrand before multiplication by the test transform. The rapid decrease of that transform justifies differentiation under the integrals. The same estimates are uniform on bounded sets of test functions with a common compact support. This proves smoothness in the strong distribution topology, as well as the formula obtained by replacing <span class="math" data-tex="\(A\)">\(A\)</span> by its corresponding differential.</p>
+<p>Now apply (1) to that differentiated formula. Estimate (6) bounds its Fourier coefficient by <span class="math" data-tex="\(C_j/F_j\)">\(C_j/F_j\)</span>. Products and reciprocals of the weights <span class="math" data-tex="\(S_Q\)">\(S_Q\)</span> are moderate. Their shift constants are uniform for degrees at most <span class="math" data-tex="\(m\)">\(m\)</span>, so
+<span class="math math-display" data-tex="\[
+M_{F_j}(h)\leq(1+C|h|)^{m(2j+1)}.
+\]">\[
+M_{F_j}(h)\leq(1+C|h|)^{m(2j+1)}.
+\]</span>
+Equations (1) and (2) therefore prove (8).</p>
+<p>Finally, split the Euclidean coordinates as <span class="math" data-tex="\(V_P\oplus N_P\)">\(V_P\oplus N_P\)</span>. The polynomial <span class="math" data-tex="\(P(\xi+z)\)">\(P(\xi+z)\)</span>, and hence the translated polynomial <span class="math" data-tex="\(P_\xi\)">\(P_\xi\)</span> as an element of <span class="math" data-tex="\(\mathcal P_m\)">\(\mathcal P_m\)</span>, is independent of the <span class="math" data-tex="\(N_P\)">\(N_P\)</span>-component of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. It follows that <span class="math" data-tex="\(\widehat g_z\)">\(\widehat g_z\)</span> is independent of that component. Its inverse transform is a distribution in the active coordinates tensored with <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> in the inactive coordinates. Thus <span class="math" data-tex="\(g_z\)">\(g_z\)</span>, every multiplier in (10), and their integral are supported in <span class="math" data-tex="\(V_P\)">\(V_P\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For any prescribed positive exponential rate <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, choose <span class="math" data-tex="\(\rho&lt;\varepsilon\)">\(\rho&lt;\varepsilon\)</span>. The theorem gives a family with the bound (7) at that rate. A fixed averaging choice has a fixed <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; the proof does not assert (7) for all smaller rates with that same choice. The parameter map is smooth in real coefficient coordinates. We have made no claim of holomorphic dependence on unrestricted complex coefficients.</p>
+<p>This support statement strengthens the existence result in the first lesson: the family now has both minimal active-subspace support and regularity. The minimality theorem there says that no real linear subspace smaller than <span class="math" data-tex="\(V_P\)">\(V_P\)</span> can support a fundamental solution.</p>
+<h2 id="how-differentiation-forces-the-weight">How differentiation forces the weight</h2>
+<p>The preceding estimate has a useful converse. It is independent of the averaging construction.</p>
+<p><strong>Proposition 4.1.</strong> Suppose <span class="math" data-tex="\(P\mapsto E(P)\)">\(P\mapsto E(P)\)</span> is a real <span class="math" data-tex="\(C^j\)">\(C^j\)</span> family of fundamental solutions on a neighborhood of <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> in <span class="math" data-tex="\(\mathcal P_m\)">\(\mathcal P_m\)</span>. For coefficient directions <span class="math" data-tex="\(Q_1,\ldots,Q_j\)">\(Q_1,\ldots,Q_j\)</span>,
+<span class="math math-display" data-tex="\[
+P(D)^{j+1}E^{(j)}(P)[Q_1,\ldots,Q_j]
+=(-1)^j j!\,Q_1(D)\cdots Q_j(D)\delta_0.
+\tag{11}
+\]">\[
+P(D)^{j+1}E^{(j)}(P)[Q_1,\ldots,Q_j]
+=(-1)^j j!\,Q_1(D)\cdots Q_j(D)\delta_0.
+\tag{11}
+\]</span></p>
+<p><strong>Proof.</strong> The case <span class="math" data-tex="\(j=0\)">\(j=0\)</span> is the defining equation. Assume the formula at order <span class="math" data-tex="\(j-1\)">\(j-1\)</span>, with the first <span class="math" data-tex="\(j-1\)">\(j-1\)</span> directions. Differentiate it in direction <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span>. Its right side is independent of <span class="math" data-tex="\(P\)">\(P\)</span>, while its left side gives
+<span class="math math-display" data-tex="\[
+jP(D)^{j-1}Q_j(D)E^{(j-1)}
++P(D)^jE^{(j)}=0.
+\]">\[
+jP(D)^{j-1}Q_j(D)E^{(j-1)}
++P(D)^jE^{(j)}=0.
+\]</span>
+Multiply by <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span> and substitute the induction formula for <span class="math" data-tex="\(P(D)^jE^{(j-1)}\)">\(P(D)^jE^{(j-1)}\)</span>. Commutation of all constant-coefficient operators yields (11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The regularity comparison in the next theorem uses the following consequence of convolution. If <span class="math" data-tex="\(Q\ne0\)">\(Q\ne0\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span> is a regular fundamental solution of <span class="math" data-tex="\(Q(D)\)">\(Q(D)\)</span>, and <span class="math" data-tex="\(h\)">\(h\)</span> is compactly supported with <span class="math" data-tex="\(h\in B_{p,l}\)">\(h\in B_{p,l}\)</span>, then
+<span class="math math-display" data-tex="\[
+G*h\in B_{p,lS_Q}^{\mathrm{loc}}.
+\tag{12}
+\]">\[
+G*h\in B_{p,lS_Q}^{\mathrm{loc}}.
+\tag{12}
+\]</span>
+For a cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, choose a compactly supported cutoff <span class="math" data-tex="\(\psi\)">\(\psi\)</span> equal to one near <span class="math" data-tex="\(\operatorname{supp}\chi-\operatorname{supp}h\)">\(\operatorname{supp}\chi-\operatorname{supp}h\)</span>. On <span class="math" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span>, <span class="math" data-tex="\(G*h=(\psi G)*h\)">\(G*h=(\psi G)*h\)</span>. The compact kernel <span class="math" data-tex="\(\psi G\)">\(\psi G\)</span> lies in <span class="math" data-tex="\(B_{\infty,S_Q}\)">\(B_{\infty,S_Q}\)</span>. The weighted convolution estimate and then the cutoff estimate prove (12), including <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>.</p>
+<p><strong>Theorem 4.2.</strong> Assume every direction <span class="math" data-tex="\(Q_\nu\)">\(Q_\nu\)</span> is nonzero. If the differential in Proposition 4.1 belongs to <span class="math" data-tex="\(B_{p,k}^{\mathrm{loc}}\)">\(B_{p,k}^{\mathrm{loc}}\)</span>, for a moderate weight <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>, then
+<span class="math math-display" data-tex="\[
+\frac{k}{F_j}\in L^p(\mathbb R^n),
+\qquad B_{\infty,F_j}\subset B_{p,k}
+\quad\hbox{continuously}.
+\tag{13}
+\]">\[
+\frac{k}{F_j}\in L^p(\mathbb R^n),
+\qquad B_{\infty,F_j}\subset B_{p,k}
+\quad\hbox{continuously}.
+\tag{13}
+\]</span>
+For <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, this says that every local <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> regularity assertion for a fundamental solution forces <span class="math" data-tex="\(k/S_P\in L^p\)">\(k/S_P\in L^p\)</span>.</p>
+<p><strong>Proof.</strong> The differential-operator estimate sends the left side of (11) into
+<span class="math" data-tex="\(B_{p,k/S_P^{j+1}}^{\mathrm{loc}}\)">\(B_{p,k/S_P^{j+1}}^{\mathrm{loc}}\)</span>. Therefore the compact distribution
+<span class="math" data-tex="\(h_0=Q_1(D)\cdots Q_j(D)\delta_0\)">\(h_0=Q_1(D)\cdots Q_j(D)\delta_0\)</span> belongs to that local space. Local and global membership agree for a distribution of fixed compact support.</p>
+<p>Choose a regular fundamental solution <span class="math" data-tex="\(G_\nu\)">\(G_\nu\)</span> for each <span class="math" data-tex="\(Q_\nu(D)\)">\(Q_\nu(D)\)</span>. Distributional convolution gives
+<span class="math math-display" data-tex="\[
+G_1*h_0=Q_2(D)\cdots Q_j(D)\delta_0.
+\]">\[
+G_1*h_0=Q_2(D)\cdots Q_j(D)\delta_0.
+\]</span>
+Although <span class="math" data-tex="\(G_1\)">\(G_1\)</span> need not have compact support, this convolution is defined because <span class="math" data-tex="\(h_0\)">\(h_0\)</span> does; the displayed identity shows that its result does have compact support. Equation (12) improves its weight by <span class="math" data-tex="\(S_{Q_1}\)">\(S_{Q_1}\)</span>. Repeat the argument for <span class="math" data-tex="\(G_2,\ldots,G_j\)">\(G_2,\ldots,G_j\)</span>, converting local to global membership at each compact result. We obtain
+<span class="math math-display" data-tex="\[
+\delta_0\in B_{p,k\prod_\nu S_{Q_\nu}/S_P^{j+1}}
+=B_{p,k/F_j}.
+\]">\[
+\delta_0\in B_{p,k\prod_\nu S_{Q_\nu}/S_P^{j+1}}
+=B_{p,k/F_j}.
+\]</span>
+Since <span class="math" data-tex="\(\widehat\delta_0=1\)">\(\widehat\delta_0=1\)</span>, this is exactly the first assertion of (13). If <span class="math" data-tex="\(u\in B_{\infty,F_j}\)">\(u\in B_{\infty,F_j}\)</span>, then
+<span class="math math-display" data-tex="\[
+\|u\|_{p,k}
+\leq(2\pi)^{-n/p}\|k/F_j\|_{L^p}\|u\|_{\infty,F_j},
+\]">\[
+\|u\|_{p,k}
+\leq(2\pi)^{-n/p}\|k/F_j\|_{L^p}\|u\|_{\infty,F_j},
+\]</span>
+with the factor interpreted as one for <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>. This proves the inclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The conclusion concerns weighted Fourier spaces. It does not assert that all fundamental solutions have the same wave front set or the same behavior at infinity. It also explains why the derivative norm <span class="math" data-tex="\(S_Q\)">\(S_Q\)</span>, rather than just <span class="math" data-tex="\(|Q|\)">\(|Q|\)</span>, appears in (8): the proof must invert the full operator <span class="math" data-tex="\(Q(D)\)">\(Q(D)\)</span>, even at frequencies where its symbol vanishes.</p>
+<h2 id="a-transport-model-with-a-visible-regularity-estimate">A transport model with a visible regularity estimate</h2>
+<p>Let <span class="math" data-tex="\(v\in\mathbb R^n\setminus\{0\}\)">\(v\in\mathbb R^n\setminus\{0\}\)</span>, <span class="math" data-tex="\(c\in\mathbb C\)">\(c\in\mathbb C\)</span>, and
+<span class="math math-display" data-tex="\[
+L=v\cdot\nabla+c=P(D),\qquad P(\xi)=iv\cdot\xi+c.
+\]">\[
+L=v\cdot\nabla+c=P(D),\qquad P(\xi)=iv\cdot\xi+c.
+\]</span>
+The forward kernel from the first lesson is
+<span class="math math-display" data-tex="\[
+\langle E_+,\phi\rangle=\int_0^\infty e^{-ct}\phi(tv)\,dt.
+\]">\[
+\langle E_+,\phi\rangle=\int_0^\infty e^{-ct}\phi(tv)\,dt.
+\]</span>
+Its support is the ray <span class="math" data-tex="\(\{tv:t\geq0\}\)">\(\{tv:t\geq0\}\)</span>, and <span class="math" data-tex="\(LE_+=\delta_0\)">\(LE_+=\delta_0\)</span>. This definition is valid for every <span class="math" data-tex="\(c\)">\(c\)</span>, because test functions have compact support along the ray.</p>
+<p>For <span class="math" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span>, put <span class="math" data-tex="\(h(t)=e^{-ct}\chi(tv)\)">\(h(t)=e^{-ct}\chi(tv)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\widehat{\chi E_+}(\xi)=\int_0^\infty h(t)e^{-itv\cdot\xi}\,dt.
+\]">\[
+\widehat{\chi E_+}(\xi)=\int_0^\infty h(t)e^{-itv\cdot\xi}\,dt.
+\]</span>
+The <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm of <span class="math" data-tex="\(h\)">\(h\)</span> bounds this integral. For <span class="math" data-tex="\(a=v\cdot\xi\ne0\)">\(a=v\cdot\xi\ne0\)</span>, integration by parts also gives
+<span class="math math-display" data-tex="\[
+\left|\int_0^\infty h(t)e^{-iat}\,dt\right|
+\leq\frac{|h(0)|+\|h&#x27;\|_{L^1(0,\infty)}}{|a|}.
+\]">\[
+\left|\int_0^\infty h(t)e^{-iat}\,dt\right|
+\leq\frac{|h(0)|+\|h&#x27;\|_{L^1(0,\infty)}}{|a|}.
+\]</span>
+Combining the two estimates yields a bound by <span class="math" data-tex="\(C/(1+|a|)\)">\(C/(1+|a|)\)</span>. Since
+<span class="math math-display" data-tex="\[
+S_P(\xi)^2=|iv\cdot\xi+c|^2+|v|^2,
+\]">\[
+S_P(\xi)^2=|iv\cdot\xi+c|^2+|v|^2,
+\]</span>
+the weight <span class="math" data-tex="\(S_P\)">\(S_P\)</span> is comparable to <span class="math" data-tex="\(1+|v\cdot\xi|\)">\(1+|v\cdot\xi|\)</span>. Hence <span class="math" data-tex="\(E_+\)">\(E_+\)</span> is regular. Its transform after a cutoff need not decay in the inactive frequency directions. The anisotropic weight records exactly that fact.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 (entry).</strong> For a nonzero constant <span class="math" data-tex="\(P=a\)">\(P=a\)</span>, identify the fundamental solution, the regularity weight, and the differentials in constant directions <span class="math" data-tex="\(Q_\nu=b_\nu\)">\(Q_\nu=b_\nu\)</span>.</p>
+<p><strong>Solution.</strong> The equation has the unique fundamental solution <span class="math" data-tex="\(E(a)=a^{-1}\delta_0\)">\(E(a)=a^{-1}\delta_0\)</span>. Here <span class="math" data-tex="\(S_P=|a|\)">\(S_P=|a|\)</span>, and
+<span class="math math-display" data-tex="\[
+E^{(j)}(a)[b_1,\ldots,b_j]
+=(-1)^j j!\frac{b_1\cdots b_j}{a^{j+1}}\delta_0.
+\]">\[
+E^{(j)}(a)[b_1,\ldots,b_j]
+=(-1)^j j!\frac{b_1\cdots b_j}{a^{j+1}}\delta_0.
+\]</span>
+Multiplication by <span class="math" data-tex="\(1/w_\varepsilon\)">\(1/w_\varepsilon\)</span> leaves <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> unchanged. The weight <span class="math" data-tex="\(F_j\)">\(F_j\)</span> is the constant <span class="math" data-tex="\(|a|^{j+1}/\prod|b_\nu|\)">\(|a|^{j+1}/\prod|b_\nu|\)</span>. Its weighted <span class="math" data-tex="\(B_\infty\)">\(B_\infty\)</span> norm times the coefficient of the delta is <span class="math" data-tex="\(j!\)">\(j!\)</span>, consistent with (8). For finite <span class="math" data-tex="\(p\)">\(p\)</span>, a positive constant weight is not integrable on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> when <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, so the delta belongs to none of the corresponding <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> spaces with constant positive <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Exercise 2 (intermediate).</strong> On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, take <span class="math" data-tex="\(L_a=\partial_x+a\)">\(L_a=\partial_x+a\)</span> and its forward kernel <span class="math" data-tex="\(E_a=1_{[0,\infty)}e^{-ax}\)">\(E_a=1_{[0,\infty)}e^{-ax}\)</span>. Differentiate with respect to <span class="math" data-tex="\(a\)">\(a\)</span> and verify (11) at order one directly.</p>
+<p><strong>Solution.</strong> The derivative is <span class="math" data-tex="\(\dot E_a=-x1_{[0,\infty)}e^{-ax}\)">\(\dot E_a=-x1_{[0,\infty)}e^{-ax}\)</span>. Since <span class="math" data-tex="\(L_aE_a=\delta_0\)">\(L_aE_a=\delta_0\)</span>, direct distributional differentiation gives <span class="math" data-tex="\(L_a\dot E_a=-E_a\)">\(L_a\dot E_a=-E_a\)</span>: the boundary term at zero vanishes because of the factor <span class="math" data-tex="\(x\)">\(x\)</span>. Applying <span class="math" data-tex="\(L_a\)">\(L_a\)</span> once more gives <span class="math" data-tex="\(L_a^2\dot E_a=-\delta_0\)">\(L_a^2\dot E_a=-\delta_0\)</span>, which is (11) with <span class="math" data-tex="\(Q=1\)">\(Q=1\)</span>. After localization, two integrations by parts show decay of the transform of <span class="math" data-tex="\(\dot E_a\)">\(\dot E_a\)</span> by <span class="math" data-tex="\((1+|\xi|)^{-2}\)">\((1+|\xi|)^{-2}\)</span>; the first boundary term vanishes, while the second contains the derivative of <span class="math" data-tex="\(-xe^{-ax}\chi(x)\)">\(-xe^{-ax}\chi(x)\)</span> at zero. Thus the gain predicted by <span class="math" data-tex="\(F_1=S_P^2\)">\(F_1=S_P^2\)</span> is visible in this model.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Prove that adding any distributional solution <span class="math" data-tex="\(H\)">\(H\)</span> of <span class="math" data-tex="\(P(D)H=0\)">\(P(D)H=0\)</span> to a fundamental solution preserves the fundamental-solution equation. Why does this observation alone give no regularity bound?</p>
+<p><strong>Solution.</strong> Linearity gives <span class="math" data-tex="\(P(D)(E+H)=\delta_0\)">\(P(D)(E+H)=\delta_0\)</span>. The homogeneous equation does not force arbitrary solutions into the regular inverse scale. For example, in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> with <span class="math" data-tex="\(P(\xi)=\xi_1\)">\(P(\xi)=\xi_1\)</span>, take <span class="math" data-tex="\(H=1\otimes D_2\delta_0(x_2)\)">\(H=1\otimes D_2\delta_0(x_2)\)</span>. It solves <span class="math" data-tex="\(D_1H=0\)">\(D_1H=0\)</span>. Choose <span class="math" data-tex="\(\chi(x)=\chi_1(x_1)\chi_2(x_2)\)">\(\chi(x)=\chi_1(x_1)\chi_2(x_2)\)</span>, with <span class="math" data-tex="\(\chi_2=1\)">\(\chi_2=1\)</span> near zero and nonzero <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span>. Its localized transform is <span class="math" data-tex="\(\xi_2\widehat\chi_1(\xi_1)\)">\(\xi_2\widehat\chi_1(\xi_1)\)</span>. Fix a <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span> where <span class="math" data-tex="\(\widehat\chi_1\)">\(\widehat\chi_1\)</span> is nonzero and let <span class="math" data-tex="\(|\xi_2|\to\infty\)">\(|\xi_2|\to\infty\)</span>. Multiplication by <span class="math" data-tex="\(S_P=(1+\xi_1^2)^{1/2}\)">\(S_P=(1+\xi_1^2)^{1/2}\)</span> remains unbounded. Thus adding this homogeneous solution to a regular fundamental solution destroys regularity.</p>
+<p><strong>Exercise 4 (advanced).</strong> Let <span class="math" data-tex="\(P_a(\xi_1,\xi_2)=\xi_1^2+i\xi_2+a\)">\(P_a(\xi_1,\xi_2)=\xi_1^2+i\xi_2+a\)</span>, with <span class="math" data-tex="\(a\)">\(a\)</span> a real parameter. For a smooth family of fundamental solutions, prove that local membership of its <span class="math" data-tex="\(j\)">\(j\)</span>-th parameter derivative in <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> forces <span class="math" data-tex="\(k/S_{P_a}^{j+1}\in L^p\)">\(k/S_{P_a}^{j+1}\in L^p\)</span>. Explain why an elliptic estimate with weight <span class="math" data-tex="\(\langle\xi\rangle^{2j+2}\)">\(\langle\xi\rangle^{2j+2}\)</span> cannot be substituted.</p>
+<p><strong>Solution.</strong> Every parameter direction is <span class="math" data-tex="\(Q=1\)">\(Q=1\)</span>, so <span class="math" data-tex="\(S_Q=1\)">\(S_Q=1\)</span> and Theorem 4.2 gives the asserted integrability. Along <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span>, the derivative norm is
+<span class="math" data-tex="\(S_{P_a}(0,\xi_2)^2=|i\xi_2+a|^2+5\)">\(S_{P_a}(0,\xi_2)^2=|i\xi_2+a|^2+5\)</span>, which grows like <span class="math" data-tex="\(\xi_2^2\)">\(\xi_2^2\)</span>, rather than <span class="math" data-tex="\(\xi_2^4\)">\(\xi_2^4\)</span>. Therefore <span class="math" data-tex="\(S_{P_a}^{j+1}\)">\(S_{P_a}^{j+1}\)</span> has growth of order <span class="math" data-tex="\(j+1\)">\(j+1\)</span> in that direction. The proposed isotropic weight has growth of order <span class="math" data-tex="\(2j+2\)">\(2j+2\)</span> and is not bounded by a constant multiple of the actual weight. The operator is not elliptic of order two, so that stronger uniform gain is unsupported.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Grubb] Gerd Grubb, <em>Distributions and Operators</em>, open lecture-note versions, 2007–2008, sections on Fourier transformation and convolution. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Author's lecture-note index</a>.</li>
+<li>[Melrose] Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004, sections on distributions and constant-coefficient operators. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>[Malgrange] Bernard Malgrange, <em>Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution</em>, Annales de l'Institut Fourier <strong>6</strong> (1956), 271–355. <a href="https://aif.centre-mersenne.org/articles/10.5802/aif.65/">Original article</a>.</li>
+<li>[Hormander 1971] Lars Hörmander, <em>On the existence and the regularity of solutions of linear pseudo-differential equations</em>, L'Enseignement Mathématique <strong>17</strong> (1971), 99–163. <a href="https://www.e-periodica.ch/digbib/view?lang=en&amp;pid=ens-001%3A1971%3A17%3A%3A213">Original article archive</a>.</li>
+<li>[Mantlik] Frank Mantlik, <em>Partial differential operators depending analytically on a parameter</em>, Annales de l'Institut Fourier <strong>41</strong> (1991), 577–599. <a href="https://www.numdam.org/item/10.5802/aif.1266/">Original article</a>.</li>
+</ul>
+</main></body></html>

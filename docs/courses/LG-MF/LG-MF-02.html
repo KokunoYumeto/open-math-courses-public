@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Congruence subgroups, cusps and elliptic points · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="congruence-subgroups-cusps-and-elliptic-points">Congruence subgroups, cusps and elliptic points</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A level condition remembers extra information about a lattice basis. It replaces the modular group by a subgroup of finite index. The resulting quotient has several ends, called cusps, and may retain some of the two exceptional symmetries of the modular quotient. We will count both using finite arithmetic.</p>
+<p>We use the group action and Bezout proof in <a href="LG-MF-01.html">The upper half-plane and the modular group</a>, especially Lemma 0.1. Freely accessible background texts are [Stein author PDF], [Voight open book] and [Best et al. v4]. The arithmetic lemmas below supply the Chinese remainder and finite-field facts used in the counts. Our central device is a bottom row modulo the level; it gives indices, cusp classification and elliptic points in one framework.</p>
+<h2 id="1-a-finite-set-that-remembers-the-level">1. A finite set that remembers the level</h2>
+<p><strong>Lemma 1.0 (the Chinese remainder construction).</strong> For coprime positive integers <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, reduction gives a bijection
+<span class="math" data-tex="\(\mathbb Z/AB\mathbb Z\to\mathbb Z/A\mathbb Z\times\mathbb Z/B\mathbb Z\)">\(\mathbb Z/AB\mathbb Z\to\mathbb Z/A\mathbb Z\times\mathbb Z/B\mathbb Z\)</span>.
+For arbitrary <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, residues <span class="math" data-tex="\(r,s\)">\(r,s\)</span> lift simultaneously exactly when <span class="math" data-tex="\(r\equiv s\pmod{\gcd(A,B)}\)">\(r\equiv s\pmod{\gcd(A,B)}\)</span>; the lift is unique modulo <span class="math" data-tex="\(\operatorname{lcm}(A,B)\)">\(\operatorname{lcm}(A,B)\)</span>.</p>
+<p><em>Proof.</em> In the coprime case choose <span class="math" data-tex="\(uA+vB=1\)">\(uA+vB=1\)</span> by Lemma 0.1 of the preceding lesson. The integer <span class="math" data-tex="\(suA+rvB\)">\(suA+rvB\)</span> is <span class="math" data-tex="\(r\)">\(r\)</span> modulo <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> modulo <span class="math" data-tex="\(B\)">\(B\)</span>. If two lifts agree at both moduli, their difference is divisible by <span class="math" data-tex="\(A\)">\(A\)</span>, say <span class="math" data-tex="\(At\)">\(At\)</span>, and <span class="math" data-tex="\(B\mid At\)">\(B\mid At\)</span>. Multiplying the Bezout identity by <span class="math" data-tex="\(t\)">\(t\)</span> shows <span class="math" data-tex="\(B\mid t\)">\(B\mid t\)</span>, so <span class="math" data-tex="\(AB\)">\(AB\)</span> divides the difference. For general moduli put <span class="math" data-tex="\(g=\gcd(A,B)\)">\(g=\gcd(A,B)\)</span>. A lift <span class="math" data-tex="\(r+At\)">\(r+At\)</span> exists exactly when <span class="math" data-tex="\((A/g)t\equiv(s-r)/g\pmod{B/g}\)">\((A/g)t\equiv(s-r)/g\pmod{B/g}\)</span>. Necessity of <span class="math" data-tex="\(g\mid s-r\)">\(g\mid s-r\)</span> is immediate, and coprimality of <span class="math" data-tex="\(A/g,B/g\)">\(A/g,B/g\)</span> makes this last congruence solvable and unique modulo <span class="math" data-tex="\(B/g\)">\(B/g\)</span>. The resulting uniqueness modulus is <span class="math" data-tex="\(AB/g\)">\(AB/g\)</span>. Iteration gives the prime-power decomposition used below. A residue modulo <span class="math" data-tex="\(N\)">\(N\)</span> is a unit exactly when its gcd with <span class="math" data-tex="\(N\)">\(N\)</span> is one, by the same Bezout identity. In particular there are <span class="math" data-tex="\(p^r-p^{r-1}\)">\(p^r-p^{r-1}\)</span> units modulo <span class="math" data-tex="\(p^r\)">\(p^r\)</span>, and multiplying these counts gives <span class="math" data-tex="\(\varphi(N)=N\prod_{p\mid N}(1-p^{-1})\)">\(\varphi(N)=N\prod_{p\mid N}(1-p^{-1})\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a positive integer <span class="math" data-tex="\(N\)">\(N\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Gamma(N)&amp;=\{\gamma\in\mathrm{SL}_2(\mathbb Z):\gamma\equiv I\pmod N\},\\
+\Gamma_1(N)&amp;=\left\{\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathrm{SL}_2(\mathbb Z):c\equiv0,\ a\equiv d\equiv1\pmod N\right\},\\
+\Gamma_0(N)&amp;=\left\{\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathrm{SL}_2(\mathbb Z):c\equiv0\pmod N\right\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Gamma(N)&amp;=\{\gamma\in\mathrm{SL}_2(\mathbb Z):\gamma\equiv I\pmod N\},\\
+\Gamma_1(N)&amp;=\left\{\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathrm{SL}_2(\mathbb Z):c\equiv0,\ a\equiv d\equiv1\pmod N\right\},\\
+\Gamma_0(N)&amp;=\left\{\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathrm{SL}_2(\mathbb Z):c\equiv0\pmod N\right\}.
+\end{aligned}
+\]</span>
+Thus <span class="math" data-tex="\(\Gamma(N)\subset\Gamma_1(N)\subset\Gamma_0(N)\)">\(\Gamma(N)\subset\Gamma_1(N)\subset\Gamma_0(N)\)</span>. A bar denotes the image in <span class="math" data-tex="\(G=\mathrm{PSL}_2(\mathbb Z)\)">\(G=\mathrm{PSL}_2(\mathbb Z)\)</span>. Every index used for a quotient surface is an index in <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>A row <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> over <span class="math" data-tex="\(R=\mathbb Z/N\mathbb Z\)">\(R=\mathbb Z/N\mathbb Z\)</span> is <em>primitive</em> if some <span class="math" data-tex="\(v,w\in R\)">\(v,w\in R\)</span> satisfy <span class="math" data-tex="\(vc+wd=1\)">\(vc+wd=1\)</span>. Equivalently, its two coordinates are not both divisible by any prime dividing <span class="math" data-tex="\(N\)">\(N\)</span>. The projective line <span class="math" data-tex="\(\mathbb P^1(R)\)">\(\mathbb P^1(R)\)</span> is the set of primitive rows modulo multiplication by <span class="math" data-tex="\(R^\times\)">\(R^\times\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Reduction <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\to\mathrm{SL}_2(R)\)">\(\mathrm{SL}_2(\mathbb Z)\to\mathrm{SL}_2(R)\)</span> is surjective.</p>
+<p><em>Proof.</em> Take an invertible determinant-one matrix over <span class="math" data-tex="\(R\)">\(R\)</span>, with bottom row <span class="math" data-tex="\((c_0,d_0)\)">\((c_0,d_0)\)</span>. Choose a nonzero integral lift <span class="math" data-tex="\(c\)">\(c\)</span> of <span class="math" data-tex="\(c_0\)">\(c_0\)</span>. For a prime <span class="math" data-tex="\(\ell\mid c\)">\(\ell\mid c\)</span> with <span class="math" data-tex="\(\ell\mid N\)">\(\ell\mid N\)</span>, every lift of <span class="math" data-tex="\(d_0\)">\(d_0\)</span> is nonzero modulo <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. For the finitely many primes <span class="math" data-tex="\(\ell\mid c\)">\(\ell\mid c\)</span> not dividing <span class="math" data-tex="\(N\)">\(N\)</span>, choose <span class="math" data-tex="\(t\)">\(t\)</span> so that <span class="math" data-tex="\(d=d_0+Nt\equiv1\pmod\ell\)">\(d=d_0+Nt\equiv1\pmod\ell\)</span>. The Chinese remainder theorem permits all these choices simultaneously. Then <span class="math" data-tex="\(\gcd(c,d)=1\)">\(\gcd(c,d)=1\)</span>. Choose <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with <span class="math" data-tex="\(ad-bc=1\)">\(ad-bc=1\)</span>.</p>
+<p>This gives the required bottom row but perhaps a different top row. In <span class="math" data-tex="\(R^2\)">\(R^2\)</span>, two top rows making determinant one with the same primitive bottom row differ by a multiple of that bottom row. To check this, express their difference in the basis supplied by either determinant-one matrix: its first coordinate is its determinant with the bottom row, which is zero. Left multiplication by <span class="math" data-tex="\(T^t\)">\(T^t\)</span> adds <span class="math" data-tex="\(t\)">\(t\)</span> times the bottom row to the top row. Choose an integral lift of the required <span class="math" data-tex="\(t\in R\)">\(t\in R\)</span>. The corrected integral matrix reduces to the prescribed one. For <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, surjectivity is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2.</strong> For <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+|\mathrm{SL}_2(R)|=N^3\prod_{p\mid N}(1-p^{-2}),\qquad
+[\mathrm{SL}_2(\mathbb Z):\Gamma_0(N)]=N\prod_{p\mid N}(1+p^{-1}),
+\]">\[
+|\mathrm{SL}_2(R)|=N^3\prod_{p\mid N}(1-p^{-2}),\qquad
+[\mathrm{SL}_2(\mathbb Z):\Gamma_0(N)]=N\prod_{p\mid N}(1+p^{-1}),
+\]</span>
+<span class="math math-display" data-tex="\[
+[\Gamma_0(N):\Gamma_1(N)]=\varphi(N),\qquad
+[\mathrm{SL}_2(\mathbb Z):\Gamma_1(N)]=N^2\prod_{p\mid N}(1-p^{-2}).
+\]">\[
+[\Gamma_0(N):\Gamma_1(N)]=\varphi(N),\qquad
+[\mathrm{SL}_2(\mathbb Z):\Gamma_1(N)]=N^2\prod_{p\mid N}(1-p^{-2}).
+\]</span></p>
+<p><em>Proof.</em> There are <span class="math" data-tex="\(p^{2r}-p^{2r-2}\)">\(p^{2r}-p^{2r-2}\)</span> primitive rows modulo <span class="math" data-tex="\(p^r\)">\(p^r\)</span>. For each, the determinant map from top rows to <span class="math" data-tex="\(\mathbb Z/p^r\mathbb Z\)">\(\mathbb Z/p^r\mathbb Z\)</span> is surjective, so its fiber at one has <span class="math" data-tex="\(p^r\)">\(p^r\)</span> elements. This gives <span class="math" data-tex="\(p^{3r}(1-p^{-2})\)">\(p^{3r}(1-p^{-2})\)</span>; multiply over prime powers by the Chinese remainder theorem.</p>
+<p>Left <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span>-cosets of integral determinant-one matrices correspond bijectively to primitive bottom rows modulo <span class="math" data-tex="\(N\)">\(N\)</span>. Equality of the rows means that the quotient of the matrices has bottom row <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>, and hence lies in <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span>. Surjectivity follows from Lemma 1.1. Left <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>-cosets similarly correspond to primitive rows modulo units, that is, <span class="math" data-tex="\(\mathbb P^1(R)\)">\(\mathbb P^1(R)\)</span>. The unit action is free: if <span class="math" data-tex="\(u(c,d)=(c,d)\)">\(u(c,d)=(c,d)\)</span>, multiply the coordinates by a Bezout combination to get <span class="math" data-tex="\(u=1\)">\(u=1\)</span>. Divide the number of primitive rows by <span class="math" data-tex="\(\varphi(N)=N\prod_{p\mid N}(1-p^{-1})\)">\(\varphi(N)=N\prod_{p\mid N}(1-p^{-1})\)</span>. Finally <span class="math" data-tex="\(\gamma\mapsto d\pmod N\)">\(\gamma\mapsto d\pmod N\)</span> maps <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> onto <span class="math" data-tex="\(R^\times\)">\(R^\times\)</span>, with kernel <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span>. Surjectivity also follows by lifting diagonal determinant-one matrices over <span class="math" data-tex="\(R\)">\(R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Since <span class="math" data-tex="\(-I\in\Gamma_0(N)\)">\(-I\in\Gamma_0(N)\)</span>, its special linear and projective indices agree. For <span class="math" data-tex="\(N\ge3\)">\(N\ge3\)</span>, <span class="math" data-tex="\(-I\notin\Gamma_1(N)\)">\(-I\notin\Gamma_1(N)\)</span>, so the projective index of <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span> is half its special linear index. At <span class="math" data-tex="\(N=1,2\)">\(N=1,2\)</span>, there is no such division.</p>
+<h2 id="2-a-cusp-is-a-cycle-of-a-translation">2. A cusp is a cycle of a translation</h2>
+<p>Every rational point, including <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, has the form <span class="math" data-tex="\(\alpha\infty\)">\(\alpha\infty\)</span> for <span class="math" data-tex="\(\alpha\in\mathrm{SL}_2(\mathbb Z)\)">\(\alpha\in\mathrm{SL}_2(\mathbb Z)\)</span>: write it as <span class="math" data-tex="\(a/c\)">\(a/c\)</span> with <span class="math" data-tex="\(\gcd(a,c)=1\)">\(\gcd(a,c)=1\)</span> and complete <span class="math" data-tex="\((a,c)^t\)">\((a,c)^t\)</span> to a determinant-one matrix. The stabilizer of <span class="math" data-tex="\(\infty\)">\(\infty\)</span> is <span class="math" data-tex="\(\{\pm T^n:n\in\mathbb Z\}\)">\(\{\pm T^n:n\in\mathbb Z\}\)</span>. Thus the cusps of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> are
+<span class="math math-display" data-tex="\[
+\Gamma\backslash\mathrm{SL}_2(\mathbb Z)/\langle-I,T\rangle.
+\]">\[
+\Gamma\backslash\mathrm{SL}_2(\mathbb Z)/\langle-I,T\rangle.
+\]</span>
+They are the cycles of right multiplication by <span class="math" data-tex="\(T\)">\(T\)</span> on the finite set <span class="math" data-tex="\(\bar{\Gamma}\backslash G\)">\(\bar{\Gamma}\backslash G\)</span>. The length of a cycle is the cusp's <em>projective width</em>: the least positive <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(\alpha T^h\alpha^{-1}\in\pm\Gamma\)">\(\alpha T^h\alpha^{-1}\in\pm\Gamma\)</span>.</p>
+<p><strong>Proposition 2.1.</strong> The sum of the cusp widths is <span class="math" data-tex="\([G:\bar{\Gamma}]\)">\([G:\bar{\Gamma}]\)</span>. If the first column of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is <span class="math" data-tex="\((a,c)^t\)">\((a,c)^t\)</span>, then the width for <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> is
+<span class="math math-display" data-tex="\[
+h=\frac{N}{\gcd(N,c^2)}.
+\]">\[
+h=\frac{N}{\gcd(N,c^2)}.
+\]</span></p>
+<p><em>Proof.</em> The cycles of a permutation partition its underlying set, proving the sum. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+\alpha T^h\alpha^{-1}=
+\begin{pmatrix}1-ach&amp;a^2h\\-c^2h&amp;1+ach\end{pmatrix}.
+\]">\[
+\alpha T^h\alpha^{-1}=
+\begin{pmatrix}1-ach&amp;a^2h\\-c^2h&amp;1+ach\end{pmatrix}.
+\]</span>
+Membership in <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> is exactly <span class="math" data-tex="\(N\mid c^2h\)">\(N\mid c^2h\)</span>, with least positive solution as stated. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (cusps at level <span class="math" data-tex="\(N\)">\(N\)</span>).</strong> The cusps of <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> are classified by
+<span class="math math-display" data-tex="\[
+\delta\mid N,\qquad t\in(\mathbb Z/h_\delta\mathbb Z)^\times,
+\qquad h_\delta=\gcd(\delta,N/\delta).
+\]">\[
+\delta\mid N,\qquad t\in(\mathbb Z/h_\delta\mathbb Z)^\times,
+\qquad h_\delta=\gcd(\delta,N/\delta).
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+c_0(N)=\sum_{\delta\mid N}\varphi(h_\delta).
+\]">\[
+c_0(N)=\sum_{\delta\mid N}\varphi(h_\delta).
+\]</span>
+Each cusp with denominator type <span class="math" data-tex="\(\delta\)">\(\delta\)</span> has width <span class="math" data-tex="\(N/\gcd(N,\delta^2)\)">\(N/\gcd(N,\delta^2)\)</span>, and it has a representative <span class="math" data-tex="\(a/\delta\)">\(a/\delta\)</span> with <span class="math" data-tex="\(a\)">\(a\)</span> prime to <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Among these normalized representatives, the invariant is <span class="math" data-tex="\(a^{-1}\pmod {h_\delta}\)">\(a^{-1}\pmod {h_\delta}\)</span>.</p>
+<p><em>Proof.</em> On <span class="math" data-tex="\(\mathbb P^1(R)\)">\(\mathbb P^1(R)\)</span>, right translation sends <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> to <span class="math" data-tex="\((c,d+mc)\)">\((c,d+mc)\)</span>. Unit scaling and translation preserve <span class="math" data-tex="\(\delta=\gcd(c,N)\)">\(\delta=\gcd(c,N)\)</span>. Scale <span class="math" data-tex="\(c\)">\(c\)</span> to <span class="math" data-tex="\(\delta\)">\(\delta\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>: <span class="math" data-tex="\(c/\delta\)">\(c/\delta\)</span> is invertible modulo <span class="math" data-tex="\(N/\delta\)">\(N/\delta\)</span>, and its inverse can be lifted to a unit modulo <span class="math" data-tex="\(N\)">\(N\)</span>, by choosing nonzero residues at the remaining primes. Once <span class="math" data-tex="\(c=\delta\)">\(c=\delta\)</span>, primitivity says exactly <span class="math" data-tex="\(\gcd(d,\delta)=1\)">\(\gcd(d,\delta)=1\)</span>.</p>
+<p>Translation now changes <span class="math" data-tex="\(d\)">\(d\)</span> by any multiple of <span class="math" data-tex="\(\delta\)">\(\delta\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>, so it leaves just a unit residue <span class="math" data-tex="\(d\pmod\delta\)">\(d\pmod\delta\)</span>. The remaining permitted scalings satisfy <span class="math" data-tex="\(u\delta=\delta\pmod N\)">\(u\delta=\delta\pmod N\)</span>, or <span class="math" data-tex="\(u=1\pmod {N/\delta}\)">\(u=1\pmod {N/\delta}\)</span>. Their residues modulo <span class="math" data-tex="\(\delta\)">\(\delta\)</span> are exactly the units congruent to one modulo <span class="math" data-tex="\(h_\delta\)">\(h_\delta\)</span>. One inclusion is immediate. For the other, solve <span class="math" data-tex="\(u=v\pmod\delta\)">\(u=v\pmod\delta\)</span> and <span class="math" data-tex="\(u=1\pmod {N/\delta}\)">\(u=1\pmod {N/\delta}\)</span>; the Chinese remainder criterion is <span class="math" data-tex="\(v=1\pmod {h_\delta}\)">\(v=1\pmod {h_\delta}\)</span>, and the solution is a unit at every prime dividing <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Two unit residues <span class="math" data-tex="\(d,d&#x27;\pmod\delta\)">\(d,d&#x27;\pmod\delta\)</span> therefore lie in the same orbit exactly when their ratio is one modulo <span class="math" data-tex="\(h_\delta\)">\(h_\delta\)</span>. The resulting invariant runs over all units modulo <span class="math" data-tex="\(h_\delta\)">\(h_\delta\)</span>; lifting such a unit to one modulo <span class="math" data-tex="\(\delta\)">\(\delta\)</span> again follows prime by prime. This proves the classification and count.</p>
+<p>Choose a lift <span class="math" data-tex="\(d\)">\(d\)</span> coprime to <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and <span class="math" data-tex="\(a\)">\(a\)</span> satisfying <span class="math" data-tex="\(ad=1\pmod\delta\)">\(ad=1\pmod\delta\)</span>. A matrix with first column <span class="math" data-tex="\((a,\delta)^t\)">\((a,\delta)^t\)</span> and bottom-right entry <span class="math" data-tex="\(d\)">\(d\)</span> represents the cusp <span class="math" data-tex="\(a/\delta\)">\(a/\delta\)</span>. Its invariant is <span class="math" data-tex="\(d=a^{-1}\pmod {h_\delta}\)">\(d=a^{-1}\pmod {h_\delta}\)</span>. Finally <span class="math" data-tex="\(\gcd(N,c^2)=\gcd(N,\delta^2)\)">\(\gcd(N,c^2)=\gcd(N,\delta^2)\)</span>, so Proposition 2.1 supplies its width. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The symbol <span class="math" data-tex="\(h_\delta\)">\(h_\delta\)</span> here measures the number of numerator classes; it is not the cusp width. Keeping these two integers separate prevents an easy counting error.</p>
+<h2 id="3-detecting-the-two-exceptional-symmetries">3. Detecting the two exceptional symmetries</h2>
+<p><strong>Lemma 3.0 (roots in a prime field).</strong> For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(x^2+1\)">\(x^2+1\)</span> has two roots if <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span> and no roots if <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span>. For <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>, <span class="math" data-tex="\(x^2+x+1\)">\(x^2+x+1\)</span> has two roots if <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span> and no roots if <span class="math" data-tex="\(p\equiv2\pmod3\)">\(p\equiv2\pmod3\)</span>.</p>
+<p><em>Proof.</em> We first show that <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span> is cyclic. Every element's order divides <span class="math" data-tex="\(p-1\)">\(p-1\)</span>: its cyclic subgroup's cosets partition the <span class="math" data-tex="\(p-1\)">\(p-1\)</span> nonzero elements into sets of equal size. Let <span class="math" data-tex="\(m\)">\(m\)</span> be the least common multiple of all element orders. For each prime power <span class="math" data-tex="\(\ell^a\)">\(\ell^a\)</span> dividing <span class="math" data-tex="\(m\)">\(m\)</span>, an element with order divisible by <span class="math" data-tex="\(\ell^a\)">\(\ell^a\)</span> has a power of order exactly <span class="math" data-tex="\(\ell^a\)">\(\ell^a\)</span>. The product of these elements has order <span class="math" data-tex="\(m\)">\(m\)</span>, because they commute and their orders are pairwise coprime: raising a relation to the product of the other orders isolates each factor. Every nonzero element is a root of <span class="math" data-tex="\(X^m-1\)">\(X^m-1\)</span>. A polynomial of degree <span class="math" data-tex="\(m\)">\(m\)</span> over a field has at most <span class="math" data-tex="\(m\)">\(m\)</span> roots, as repeated division by <span class="math" data-tex="\(X-r\)">\(X-r\)</span> proves. Hence <span class="math" data-tex="\(p-1\le m\)">\(p-1\le m\)</span>, while <span class="math" data-tex="\(m\mid p-1\)">\(m\mid p-1\)</span>; thus <span class="math" data-tex="\(m=p-1\)">\(m=p-1\)</span>.</p>
+<p>A root of <span class="math" data-tex="\(x^2+1\)">\(x^2+1\)</span> has order four, because <span class="math" data-tex="\(-1\ne1\)">\(-1\ne1\)</span>. Conversely the two elements of order four in a cyclic group square to its unique element of order two, namely <span class="math" data-tex="\(-1\)">\(-1\)</span>. Such elements exist exactly when <span class="math" data-tex="\(4\mid p-1\)">\(4\mid p-1\)</span>. For the second polynomial use <span class="math" data-tex="\((x-1)(x^2+x+1)=x^3-1\)">\((x-1)(x^2+x+1)=x^3-1\)</span>. When <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>, <span class="math" data-tex="\(x=1\)">\(x=1\)</span> is not a root of the quadratic. Its roots are exactly the two elements of order three, existing precisely when <span class="math" data-tex="\(3\mid p-1\)">\(3\mid p-1\)</span>. The exceptional primes are checked directly in Theorem 3.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(\varepsilon_2(N),\varepsilon_3(N)\)">\(\varepsilon_2(N),\varepsilon_3(N)\)</span> count elliptic points of orders two and three for <span class="math" data-tex="\(\bar{\Gamma}_0(N)\)">\(\bar{\Gamma}_0(N)\)</span>. Define the quadratic characters on primes by
+<span class="math math-display" data-tex="\[
+\chi_{-4}(2)=0,\quad\chi_{-4}(p)=\left(\frac{-1}{p}\right)\ (p\text{ odd}),
+\qquad
+\chi_{-3}(3)=0,\quad\chi_{-3}(p)=\left(\frac{-3}{p}\right)\ (p\ne3).
+\]">\[
+\chi_{-4}(2)=0,\quad\chi_{-4}(p)=\left(\frac{-1}{p}\right)\ (p\text{ odd}),
+\qquad
+\chi_{-3}(3)=0,\quad\chi_{-3}(p)=\left(\frac{-3}{p}\right)\ (p\ne3).
+\]</span>
+In particular <span class="math" data-tex="\(\chi_{-3}(2)=-1\)">\(\chi_{-3}(2)=-1\)</span>. These are the Kronecker characters for discriminants <span class="math" data-tex="\(-4,-3\)">\(-4,-3\)</span>; we do not redefine a symbol <span class="math" data-tex="\((-1/2)\)">\((-1/2)\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> Elliptic points of order two correspond to roots of <span class="math" data-tex="\(x^2+1=0\pmod N\)">\(x^2+1=0\pmod N\)</span>, and elliptic points of order three to roots of <span class="math" data-tex="\(x^2+x+1=0\pmod N\)">\(x^2+x+1=0\pmod N\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\varepsilon_2(N)=
+\begin{cases}0&amp;4\mid N,\\\prod_{p\mid N}(1+\chi_{-4}(p))&amp;4\nmid N,\end{cases}
+\qquad
+\varepsilon_3(N)=
+\begin{cases}0&amp;9\mid N,\\\prod_{p\mid N}(1+\chi_{-3}(p))&amp;9\nmid N.\end{cases}
+\]">\[
+\varepsilon_2(N)=
+\begin{cases}0&amp;4\mid N,\\\prod_{p\mid N}(1+\chi_{-4}(p))&amp;4\nmid N,\end{cases}
+\qquad
+\varepsilon_3(N)=
+\begin{cases}0&amp;9\mid N,\\\prod_{p\mid N}(1+\chi_{-3}(p))&amp;9\nmid N.\end{cases}
+\]</span></p>
+<p><em>Proof.</em> Points over the order-two orbit arise from cosets <span class="math" data-tex="\(\Gamma_0(N)\gamma\)">\(\Gamma_0(N)\gamma\)</span>, sending <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(\gamma i\)">\(\gamma i\)</span>. Such a point has nontrivial order-two stabilizer exactly when the coset is fixed by right multiplication by <span class="math" data-tex="\(S\)">\(S\)</span>. Two fixed cosets give the same point only when they agree: the ambiguity is right multiplication by the stabilizer <span class="math" data-tex="\(\langle S\rangle\)">\(\langle S\rangle\)</span>, which already fixes the coset. Thus fixed cosets count elliptic points once.</p>
+<p>On bottom rows, <span class="math" data-tex="\((c,d)S=(d,-c)\)">\((c,d)S=(d,-c)\)</span>. A projective row is fixed when <span class="math" data-tex="\((d,-c)=u(c,d)\)">\((d,-c)=u(c,d)\)</span> for a unit <span class="math" data-tex="\(u\)">\(u\)</span>. Then <span class="math" data-tex="\(d=uc\)">\(d=uc\)</span>, and primitivity forces <span class="math" data-tex="\(c\)">\(c\)</span> to be a unit. Normalize <span class="math" data-tex="\(c=1\)">\(c=1\)</span>; the condition becomes <span class="math" data-tex="\(u^2=-1\)">\(u^2=-1\)</span>.</p>
+<p>For <span class="math" data-tex="\(U=ST\)">\(U=ST\)</span>, the row becomes <span class="math" data-tex="\((d,d-c)\)">\((d,d-c)\)</span>. The identical argument yields <span class="math" data-tex="\(u^2-u+1=0\)">\(u^2-u+1=0\)</span>, equivalent under <span class="math" data-tex="\(x=-u\)">\(x=-u\)</span> to <span class="math" data-tex="\(x^2+x+1=0\)">\(x^2+x+1=0\)</span>. The order-three stabilizer ambiguity again fixes the coset, so each fixed coset gives exactly one elliptic point.</p>
+<p>Now count roots at prime powers. For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(x^2+1\)">\(x^2+1\)</span> has <span class="math" data-tex="\(1+(-1/p)\)">\(1+(-1/p)\)</span> roots modulo <span class="math" data-tex="\(p\)">\(p\)</span>, and each root lifts uniquely to every <span class="math" data-tex="\(p^r\)">\(p^r\)</span>: writing <span class="math" data-tex="\(x&#x27;=x+p^rt\)">\(x&#x27;=x+p^rt\)</span>, the next congruence is linear in <span class="math" data-tex="\(t\)">\(t\)</span>, with invertible coefficient <span class="math" data-tex="\(2x\)">\(2x\)</span>. Modulo two there is one root, but no root modulo four, since an odd square plus one is two modulo four.</p>
+<p>For <span class="math" data-tex="\(x^2+x+1\)">\(x^2+x+1\)</span>, primes <span class="math" data-tex="\(p\ne2,3\)">\(p\ne2,3\)</span> give <span class="math" data-tex="\(1+(-3/p)\)">\(1+(-3/p)\)</span> roots: multiplication by four rewrites the equation as <span class="math" data-tex="\((2x+1)^2=-3\)">\((2x+1)^2=-3\)</span>, and a nonzero square has exactly two square roots, differing by sign. Its derivative <span class="math" data-tex="\(2x+1\)">\(2x+1\)</span> cannot vanish at a root unless <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, so the same lifting argument applies. Modulo two there are no roots. Modulo three the sole root is one, and substitution of <span class="math" data-tex="\(1+3t\)">\(1+3t\)</span> gives three modulo nine, so it does not lift. The Chinese remainder theorem multiplies all counts and gives the stated formulas. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2.</strong> The groups <span class="math" data-tex="\(\bar{\Gamma}(N)\)">\(\bar{\Gamma}(N)\)</span> for <span class="math" data-tex="\(N\ge2\)">\(N\ge2\)</span>, and <span class="math" data-tex="\(\bar{\Gamma}_1(N)\)">\(\bar{\Gamma}_1(N)\)</span> for <span class="math" data-tex="\(N\ge4\)">\(N\ge4\)</span>, have no nonidentity finite-order elements.</p>
+<p><em>Proof.</em> Such an element has a special linear lift with trace <span class="math" data-tex="\(t\in\{-1,0,1\}\)">\(t\in\{-1,0,1\}\)</span>, by the fixed-point classification and integrality of trace. A lift in <span class="math" data-tex="\(\Gamma(N)\)">\(\Gamma(N)\)</span> is <span class="math" data-tex="\(I+NA\)">\(I+NA\)</span>. Expanding determinant one gives
+<span class="math math-display" data-tex="\[
+N^2\det A=2-t.
+\]">\[
+N^2\det A=2-t.
+\]</span>
+The left side is divisible by <span class="math" data-tex="\(N^2\ge4\)">\(N^2\ge4\)</span>, whereas <span class="math" data-tex="\(2-t\)">\(2-t\)</span> is one, two or three. This is impossible. A lift in <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span> has trace congruent to two modulo <span class="math" data-tex="\(N\)">\(N\)</span>. For <span class="math" data-tex="\(N\ge4\)">\(N\ge4\)</span>, none of <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span> is congruent to two. Scalar lifts represent the projective identity and do not affect either argument. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-when-a-cusp-changes-a-sign">4. When a cusp changes a sign</h2>
+<p>If <span class="math" data-tex="\(-I\notin\Gamma\)">\(-I\notin\Gamma\)</span>, a cusp of projective width <span class="math" data-tex="\(w\)">\(w\)</span> is <em>regular</em> when <span class="math" data-tex="\(\alpha T^w\alpha^{-1}\in\Gamma\)">\(\alpha T^w\alpha^{-1}\in\Gamma\)</span>, and <em>irregular</em> when only its negative belongs to <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. This distinction matters for modular forms of odd weight, although the underlying surface sees only <span class="math" data-tex="\(\bar{\Gamma}\)">\(\bar{\Gamma}\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> For <span class="math" data-tex="\(\Gamma_1(4)\)">\(\Gamma_1(4)\)</span>, the cusp <span class="math" data-tex="\(1/2\)">\(1/2\)</span> is irregular, with projective width one and positive-translation period two. Every cusp of <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span> for <span class="math" data-tex="\(N\ge5\)">\(N\ge5\)</span> is regular.</p>
+<p><em>Proof.</em> Take <span class="math" data-tex="\(\alpha=\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}\)">\(\alpha=\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\alpha T\alpha^{-1}=\begin{pmatrix}-1&amp;1\\-4&amp;3\end{pmatrix}.
+\]">\[
+\alpha T\alpha^{-1}=\begin{pmatrix}-1&amp;1\\-4&amp;3\end{pmatrix}.
+\]</span>
+Its negative has diagonal entries one modulo four and lower-left entry zero modulo four, whereas the displayed matrix does not. Its square lies in <span class="math" data-tex="\(\Gamma_1(4)\)">\(\Gamma_1(4)\)</span>, proving the two periods.</p>
+<p>In general, the negative of <span class="math" data-tex="\(\alpha T^w\alpha^{-1}\)">\(\alpha T^w\alpha^{-1}\)</span> can lie in <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span> only if <span class="math" data-tex="\(ach\equiv2\)">\(ach\equiv2\)</span> and <span class="math" data-tex="\(ach\equiv-2\pmod N\)">\(ach\equiv-2\pmod N\)</span>, with <span class="math" data-tex="\(h=w\)">\(h=w\)</span>. Hence <span class="math" data-tex="\(N\mid4\)">\(N\mid4\)</span>, impossible for <span class="math" data-tex="\(N\ge5\)">\(N\ge5\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2.</strong> If <span class="math" data-tex="\(N\ge5\)">\(N\ge5\)</span>, then
+<span class="math math-display" data-tex="\[
+c_1(N)=\frac12\sum_{\delta\mid N}\varphi(\delta)\varphi(N/\delta).
+\]">\[
+c_1(N)=\frac12\sum_{\delta\mid N}\varphi(\delta)\varphi(N/\delta).
+\]</span>
+A cusp represented by a first column <span class="math" data-tex="\((a,c)^t\)">\((a,c)^t\)</span> has width <span class="math" data-tex="\(N/\gcd(c,N)\)">\(N/\gcd(c,N)\)</span>.</p>
+<p><em>Proof.</em> Before identifying signs, use the primitive-row model for <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span>-cosets. For a fixed residue <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(\gcd(c,N)=\delta\)">\(\gcd(c,N)=\delta\)</span>, the translation cycles on <span class="math" data-tex="\(d\)">\(d\)</span> are its residues modulo <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Primitivity permits exactly <span class="math" data-tex="\(\varphi(\delta)\)">\(\varphi(\delta)\)</span> of these, and there are <span class="math" data-tex="\(\varphi(N/\delta)\)">\(\varphi(N/\delta)\)</span> residues <span class="math" data-tex="\(c\)">\(c\)</span> of this type. Thus the number of cycles is the sum in the formula.</p>
+<p>Negation acts on these cycles. A fixed cycle would require <span class="math" data-tex="\(2c=0\pmod N\)">\(2c=0\pmod N\)</span> and <span class="math" data-tex="\(2d=0\pmod\delta\)">\(2d=0\pmod\delta\)</span>. Since <span class="math" data-tex="\(d\)">\(d\)</span> is a unit modulo <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, the second condition gives <span class="math" data-tex="\(\delta\mid2\)">\(\delta\mid2\)</span>. The first gives <span class="math" data-tex="\(N/\delta\mid2\)">\(N/\delta\mid2\)</span>. Together they force <span class="math" data-tex="\(N\le4\)">\(N\le4\)</span>. For <span class="math" data-tex="\(N\ge5\)">\(N\ge5\)</span>, sign identification therefore halves the number of cycles.</p>
+<p>For the width, positive membership requires <span class="math" data-tex="\(N\mid c^2h\)">\(N\mid c^2h\)</span> and <span class="math" data-tex="\(N\mid ach\)">\(N\mid ach\)</span>. Since <span class="math" data-tex="\(\gcd(a,c)=1\)">\(\gcd(a,c)=1\)</span>, a Bezout combination shows that these conditions are equivalent to <span class="math" data-tex="\(N\mid ch\)">\(N\mid ch\)</span>. The least positive <span class="math" data-tex="\(h\)">\(h\)</span> is <span class="math" data-tex="\(N/\gcd(c,N)\)">\(N/\gcd(c,N)\)</span>; Proposition 4.1 shows that no negative membership shortens it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-small-levels-including-actual-tiles">5. Small levels, including actual tiles</h2>
+<p>For <span class="math" data-tex="\(\Gamma_0(2)\)">\(\Gamma_0(2)\)</span>, the index is three. The denominator types <span class="math" data-tex="\(1,2\)">\(1,2\)</span> give two cusps: <span class="math" data-tex="\(0\)">\(0\)</span> of width two and <span class="math" data-tex="\(\infty\)">\(\infty\)</span> of width one. The elliptic counts are <span class="math" data-tex="\(\varepsilon_2=1,\varepsilon_3=0\)">\(\varepsilon_2=1,\varepsilon_3=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(\Gamma_0(4)\)">\(\Gamma_0(4)\)</span>, the index is six. Types <span class="math" data-tex="\(1,2,4\)">\(1,2,4\)</span> give the cusps <span class="math" data-tex="\(0,1/2,\infty\)">\(0,1/2,\infty\)</span>, of widths four, one, one. Both elliptic counts vanish. For <span class="math" data-tex="\(\Gamma_0(11)\)">\(\Gamma_0(11)\)</span>, the index is twelve, with two cusps of widths eleven and one. Since <span class="math" data-tex="\(11\equiv3\pmod4\)">\(11\equiv3\pmod4\)</span> and <span class="math" data-tex="\(11\equiv2\pmod3\)">\(11\equiv2\pmod3\)</span>, both elliptic counts vanish.</p>
+<p>Here are explicit fundamental sets, described as unions of images of the closed domain <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. Boundaries are identified by the subgroup; the tile interiors are disjoint.</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Matrices whose images of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> are used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\Gamma_0(2)\)">\(\Gamma_0(2)\)</span></td>
+<td><span class="math" data-tex="\(I,S,ST\)">\(I,S,ST\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\Gamma_0(4)\)">\(\Gamma_0(4)\)</span></td>
+<td><span class="math" data-tex="\(I,S,ST,ST^2,ST^3,\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}\)">\(I,S,ST,ST^2,ST^3,\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\Gamma(2)\)">\(\Gamma(2)\)</span></td>
+<td><span class="math" data-tex="\(I,T,S,ST,TS,STS\)">\(I,T,S,ST,TS,STS\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>To verify the first two rows, inspect their bottom rows in <span class="math" data-tex="\(\mathbb P^1(\mathbb Z/2)\)">\(\mathbb P^1(\mathbb Z/2)\)</span> or <span class="math" data-tex="\(\mathbb P^1(\mathbb Z/4)\)">\(\mathbb P^1(\mathbb Z/4)\)</span>. At level four they are
+<span class="math math-display" data-tex="\[
+(0:1),(1:0),(1:1),(1:2),(1:3),(2:1),
+\]">\[
+(0:1),(1:0),(1:1),(1:2),(1:3),(2:1),
+\]</span>
+all six projective rows. For the last row, reduction gives all six matrices of <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb F_2)\)">\(\mathrm{SL}_2(\mathbb F_2)\)</span>. Since every integral matrix is in exactly one left coset, Theorem 2.2 of the preceding lesson proves that these tile unions meet every subgroup orbit. If two tile interiors were subgroup-equivalent, conjugating to <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> would identify its two interior points by an integral matrix, forcing that matrix to be projectively identity and the cosets to agree.</p>
+<figure><img src="figures/congruence-fundamental-sets.png" alt="Fundamental sets for Gamma_0(2), Gamma_0(4), and Gamma(2)" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1.</em> Tile numbers refer, in order, to the matrices in the table. The blue and green regions are their images of the modular domain, with independently scaled horizontal and vertical axes. Curved sides are sampled from the exact fractional linear maps; neighborhoods nearest a rational cusp are cut off at source height 25, and the drawing is cropped at the displayed upper height. These cutoffs are for the drawing only. The matrix description and proof specify the complete unbounded sets.</p>
+<p>At level two, <span class="math" data-tex="\(\Gamma(2)\)">\(\Gamma(2)\)</span> has three cusps, each of width two: <span class="math" data-tex="\(\infty,0,1\)">\(\infty,0,1\)</span>. One can also see the three cycles of right <span class="math" data-tex="\(T\)">\(T\)</span> on <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb F_2)\)">\(\mathrm{SL}_2(\mathbb F_2)\)</span>; each has length two. The areas of the three displayed fundamental sets are respectively <span class="math" data-tex="\(\pi,2\pi,2\pi\)">\(\pi,2\pi,2\pi\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> For a prime <span class="math" data-tex="\(p\)">\(p\)</span>, compute the index of <span class="math" data-tex="\(\Gamma_0(p^2)\)">\(\Gamma_0(p^2)\)</span>, list its denominator types and give every cusp width.</li>
+<li><strong>Medium.</strong> Count cusps for <span class="math" data-tex="\(\Gamma_0(p^2)\)">\(\Gamma_0(p^2)\)</span> and <span class="math" data-tex="\(\Gamma_0(pq)\)">\(\Gamma_0(pq)\)</span>, where <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are distinct primes. Check the sum of widths in each case.</li>
+<li><strong>Medium.</strong> Compute <span class="math" data-tex="\((\varepsilon_2,\varepsilon_3)\)">\((\varepsilon_2,\varepsilon_3)\)</span> for levels <span class="math" data-tex="\(10,13,49\)">\(10,13,49\)</span>, including the exceptional primes two and three where relevant.</li>
+<li><strong>Medium.</strong> Determine whether the cusp <span class="math" data-tex="\(1/2\)">\(1/2\)</span> of <span class="math" data-tex="\(\Gamma_1(4)\)">\(\Gamma_1(4)\)</span> is regular, and prove that no irregular cusp occurs for <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span>, <span class="math" data-tex="\(N\ge5\)">\(N\ge5\)</span>.</li>
+<li><strong>Hard.</strong> Derive the formula for <span class="math" data-tex="\(c_1(N)\)">\(c_1(N)\)</span>, <span class="math" data-tex="\(N\ge5\)">\(N\ge5\)</span>, from primitive rows. Explain both the factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> and the small-level exception.</li>
+</ol>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>1.</strong> The index is <span class="math" data-tex="\(p^2+p\)">\(p^2+p\)</span>. Types <span class="math" data-tex="\(1,p,p^2\)">\(1,p,p^2\)</span> have respectively one, <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, and one cusp. The widths are <span class="math" data-tex="\(p^2,1,1\)">\(p^2,1,1\)</span>: for the middle type, <span class="math" data-tex="\(\gcd(p^2,p^2)=p^2\)">\(\gcd(p^2,p^2)=p^2\)</span>. Representatives for it are <span class="math" data-tex="\(a/p\)">\(a/p\)</span>, <span class="math" data-tex="\(1\le a\le p-1\)">\(1\le a\le p-1\)</span>; the extreme types can be represented by <span class="math" data-tex="\(0,\infty\)">\(0,\infty\)</span>. Thus the width sum is <span class="math" data-tex="\(p^2+(p-1)+1=p^2+p\)">\(p^2+(p-1)+1=p^2+p\)</span>.</p>
+<p><strong>2.</strong> The preceding calculation gives <span class="math" data-tex="\(p+1\)">\(p+1\)</span> cusps at level <span class="math" data-tex="\(p^2\)">\(p^2\)</span>. For squarefree <span class="math" data-tex="\(pq\)">\(pq\)</span>, all four denominator types <span class="math" data-tex="\(1,p,q,pq\)">\(1,p,q,pq\)</span> have <span class="math" data-tex="\(h_\delta=1\)">\(h_\delta=1\)</span>, so there are four cusps. Their widths are <span class="math" data-tex="\(pq,q,p,1\)">\(pq,q,p,1\)</span>. The sum is <span class="math" data-tex="\((p+1)(q+1)=pq(1+1/p)(1+1/q)\)">\((p+1)(q+1)=pq(1+1/p)(1+1/q)\)</span>, the required index. This argument works also when one prime is two.</p>
+<p><strong>3.</strong> At level ten, the order-two count is <span class="math" data-tex="\((1+0)(1+1)=2\)">\((1+0)(1+1)=2\)</span>: there is one root modulo two and two modulo five. The order-three count is zero because there are no roots modulo two. At level thirteen, <span class="math" data-tex="\(13\equiv1\pmod{12}\)">\(13\equiv1\pmod{12}\)</span>, so both counts are two. At level forty-nine, <span class="math" data-tex="\(7\equiv3\pmod4\)">\(7\equiv3\pmod4\)</span> gives order-two count zero; <span class="math" data-tex="\(7\equiv1\pmod3\)">\(7\equiv1\pmod3\)</span> gives two order-three roots, each lifting uniquely to forty-nine. The answers are <span class="math" data-tex="\((2,0),(2,2),(0,2)\)">\((2,0),(2,2),(0,2)\)</span>.</p>
+<p><strong>4.</strong> Conjugating <span class="math" data-tex="\(T\)">\(T\)</span> by <span class="math" data-tex="\(\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}\)">\(\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}\)</span> gives <span class="math" data-tex="\(\begin{pmatrix}-1&amp;1\\-4&amp;3\end{pmatrix}\)">\(\begin{pmatrix}-1&amp;1\\-4&amp;3\end{pmatrix}\)</span>. Its negative, but not itself, lies in <span class="math" data-tex="\(\Gamma_1(4)\)">\(\Gamma_1(4)\)</span>. The projective width is one and the positive period two, so the cusp is irregular. For any level, the two diagonal congruences required for negative membership force <span class="math" data-tex="\(N\mid4\)">\(N\mid4\)</span>. No <span class="math" data-tex="\(N\ge5\)">\(N\ge5\)</span> can satisfy them.</p>
+<p><strong>5.</strong> For each <span class="math" data-tex="\(\delta\mid N\)">\(\delta\mid N\)</span>, choose a residue <span class="math" data-tex="\(c\)">\(c\)</span> of gcd <span class="math" data-tex="\(\delta\)">\(\delta\)</span> with <span class="math" data-tex="\(N\)">\(N\)</span>, in <span class="math" data-tex="\(\varphi(N/\delta)\)">\(\varphi(N/\delta)\)</span> ways. The subgroup of <span class="math" data-tex="\(\mathbb Z/N\)">\(\mathbb Z/N\)</span> generated by <span class="math" data-tex="\(c\)">\(c\)</span> consists of multiples of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Thus translation cycles on <span class="math" data-tex="\(d\)">\(d\)</span> are precisely residues modulo <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and the primitive condition permits <span class="math" data-tex="\(\varphi(\delta)\)">\(\varphi(\delta)\)</span> cycles. Summing gives the number before signs. A cycle equal to its negative must satisfy <span class="math" data-tex="\(N\mid2c\)">\(N\mid2c\)</span> and <span class="math" data-tex="\(\delta\mid2d\)">\(\delta\mid2d\)</span>. Since <span class="math" data-tex="\(d\)">\(d\)</span> is invertible modulo <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, this implies <span class="math" data-tex="\(\delta\mid2\)">\(\delta\mid2\)</span>; the first condition implies <span class="math" data-tex="\(N/\delta\mid2\)">\(N/\delta\mid2\)</span>. Hence <span class="math" data-tex="\(N\le4\)">\(N\le4\)</span>. When <span class="math" data-tex="\(N\ge5\)">\(N\ge5\)</span>, the sign involution has no fixed cycle, and division by two proves the formula. The same calculation explains why division by two without checking fixed cycles is invalid at small levels.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The Bezout identity is proved in the preceding lesson, Lemma 0.1; the Chinese remainder construction and the prime-field root criterion are proved here in Lemmas 1.0 and 3.0. No cusp or elliptic-point counting formula is imported. Elementary integer arithmetic, prime factorization and the basic definition of a group and a field remain foundational prerequisites without verified earlier programme proof locators in this lesson. Counts for other subgroups are not asserted. Odd-weight behavior at irregular cusps is developed later and is not used in these proofs.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Stein author PDF] W. Stein, <em>Modular Forms: A Computational Approach</em>, freely distributed PDF on the author's website, Chapters 1 and 6. The cited edition is this accessible file. <a href="https://wstein.org/books/modform/stein-modform.pdf">Free author PDF</a>.</li>
+<li>[Voight open book] J. Voight, <em>Quaternion Algebras</em>, freely distributed stable post-publication version 1.0.5 (10 January 2024), §35.4. <a href="https://jvoight.github.io/quat-book-v1.0.5.pdf">Author's stable free PDF</a>.</li>
+<li>[Best et al. v4] A. J. Best and collaborators, <em>Computing classical modular forms</em>, arXiv:2002.04717v4, §4.3. <a href="https://arxiv.org/abs/2002.04717v4">Free version four</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-01.html">← The upper half-plane and the modular group</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-03.html">Modular curves and their genus →</a></span></nav>
+<p class="small source-link"><a href="src/congruence-subgroups-cusps-and-elliptic-points.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

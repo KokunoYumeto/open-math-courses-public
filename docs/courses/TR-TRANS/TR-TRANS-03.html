@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hermite and the transcendence of e · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-03.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="hermite-and-the-transcendence-of-e">Hermite and the transcendence of e</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Public domain (CC0).</em></p>
+<p>Liouville's construction starts by making a number easy to approximate. Hermite's proof starts with a familiar number and manufactures an approximation suited to a hypothetical algebraic relation. A polynomial with many prescribed zeros makes an integral small. Its derivatives at the same points make an integer. A prime ensures that this integer is nonzero. The contradiction occurs when the analytic estimate puts it strictly between minus one and one.</p>
+<p>We first establish the classical irrationality and quadratic obstructions, then prove Hermite's theorem in the elementary form developed by Hilbert, Hurwitz and Gordan. We finish by reading the integral as a simultaneous approximation and by adapting the proof to rational powers of <span class="math" data-tex="\(e\)">\(e\)</span>. The prerequisites are <a href="TR-TRANS-01.html">Algebraic and transcendental numbers; Liouville's theorem</a>, differentiation of polynomials, the exponential series and integration along a segment. Evertse's <em>Diophantine Approximation</em>, Chapter 4, §4.1, and Conrad's note <em>Transcendence of e</em> are basic references for the prime and integral method.</p>
+<h2 id="1-irrationality-and-the-quadratic-obstruction">1. Irrationality and the quadratic obstruction</h2>
+<h3 id="proposition-3-1-the-first-arithmetic-obstructions">Proposition 3.1. The first arithmetic obstructions</h3>
+<p>The number <span class="math" data-tex="\(e\)">\(e\)</span> is irrational. Neither <span class="math" data-tex="\(e\)">\(e\)</span> nor <span class="math" data-tex="\(e^2\)">\(e^2\)</span> is a quadratic irrational.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(e=A/B\)">\(e=A/B\)</span>, with positive integers <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. For an integer <span class="math" data-tex="\(N\geq\max(B,2)\)">\(N\geq\max(B,2)\)</span>, the number</p>
+<span class="math math-display" data-tex="\[
+N!\left(e-\sum_{j=0}^N\frac1{j!}\right)
+\]">\[
+N!\left(e-\sum_{j=0}^N\frac1{j!}\right)
+\]</span>
+<p>is an integer: <span class="math" data-tex="\(B\mid N!\)">\(B\mid N!\)</span> and each <span class="math" data-tex="\(j!\mid N!\)">\(j!\mid N!\)</span>. It is positive and at most</p>
+<span class="math math-display" data-tex="\[
+\sum_{k=1}^\infty(N+1)^{-k}=1/N&lt;1,
+\]">\[
+\sum_{k=1}^\infty(N+1)^{-k}=1/N&lt;1,
+\]</span>
+<p>an impossibility.</p>
+<p>The continued-fraction estimates in the opening lesson show that a real quadratic irrational must have bounded partial quotients. Indeed, Liouville gives <span class="math" data-tex="\(|x-p/q|&gt;c/q^2\)">\(|x-p/q|&gt;c/q^2\)</span>, whereas a convergent gives <span class="math" data-tex="\(|x-p_n/q_n|&lt;1/(a_{n+1}q_n^2)\)">\(|x-p_n/q_n|&lt;1/(a_{n+1}q_n^2)\)</span>; hence <span class="math" data-tex="\(a_{n+1}&lt;1/c\)">\(a_{n+1}&lt;1/c\)</span>. Euler's expansion of <span class="math" data-tex="\(e\)">\(e\)</span>, proved there, has the unbounded subsequence <span class="math" data-tex="\(2,4,6,\ldots\)">\(2,4,6,\ldots\)</span>. Thus <span class="math" data-tex="\(e\)">\(e\)</span> is not quadratic.</p>
+<p>For <span class="math" data-tex="\(e^2\)">\(e^2\)</span>, we supply the corresponding expansion of a rational transform. Define</p>
+<span class="math math-display" data-tex="\[
+A_n=\frac{2^n}{n!}\int_0^1x^n(1-x)^ne^{2x}\,dx,\qquad
+B_n=\frac{2^n}{n!}\int_0^1x^{n+1}(1-x)^ne^{2x}\,dx.
+\]">\[
+A_n=\frac{2^n}{n!}\int_0^1x^n(1-x)^ne^{2x}\,dx,\qquad
+B_n=\frac{2^n}{n!}\int_0^1x^{n+1}(1-x)^ne^{2x}\,dx.
+\]</span>
+<p>These integrals are positive and <span class="math" data-tex="\(0&lt;A_{n+1}/A_n\leq1/[2(n+1)]&lt;1\)">\(0&lt;A_{n+1}/A_n\leq1/[2(n+1)]&lt;1\)</span>. The same two integrations by parts as in Euler's expansion, now with derivative <span class="math" data-tex="\((e^{2x})&#x27;=2e^{2x}\)">\((e^{2x})&#x27;=2e^{2x}\)</span>, give</p>
+<span class="math math-display" data-tex="\[
+A_n+A_{n-1}=2B_{n-1},\qquad
+(2n+1)A_n=2B_{n-1}-2B_n\qquad(n\geq1).
+\]">\[
+A_n+A_{n-1}=2B_{n-1},\qquad
+(2n+1)A_n=2B_{n-1}-2B_n\qquad(n\geq1).
+\]</span>
+<p>To verify the factors, differentiate <span class="math" data-tex="\(x^n(1-x)^n/n!\)">\(x^n(1-x)^n/n!\)</span>; its derivative is <span class="math" data-tex="\((1-2x)x^{n-1}(1-x)^{n-1}/(n-1)!\)">\((1-2x)x^{n-1}(1-x)^{n-1}/(n-1)!\)</span>. Differentiating <span class="math" data-tex="\(x^{n+1}(1-x)^n/n!\)">\(x^{n+1}(1-x)^n/n!\)</span> gives <span class="math" data-tex="\((n+1)x^n(1-x)^n/n!-x^{n+1}(1-x)^{n-1}/(n-1)!\)">\((n+1)x^n(1-x)^n/n!-x^{n+1}(1-x)^{n-1}/(n-1)!\)</span>. Integrate these derivatives against <span class="math" data-tex="\(e^{2x}\)">\(e^{2x}\)</span>, whose boundary terms vanish, and then multiply by the appropriate powers of two. The second calculation uses <span class="math" data-tex="\(x^2=x-x(1-x)\)">\(x^2=x-x(1-x)\)</span>. Eliminating the <span class="math" data-tex="\(B\)">\(B\)</span>'s yields</p>
+<span class="math math-display" data-tex="\[
+A_{n-1}=(2n+1)A_n+A_{n+1}.
+\]">\[
+A_{n-1}=(2n+1)A_n+A_{n+1}.
+\]</span>
+<p>Direct integration gives <span class="math" data-tex="\(A_0=(e^2-1)/2\)">\(A_0=(e^2-1)/2\)</span> and <span class="math" data-tex="\(A_1=1\)">\(A_1=1\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+T:=\frac{e^2+1}{e^2-1}=1+\frac{A_1}{A_0}
+=[1;3,5,7,\ldots].
+\]">\[
+T:=\frac{e^2+1}{e^2-1}=1+\frac{A_1}{A_0}
+=[1;3,5,7,\ldots].
+\]</span>
+<p>The positive remainders less than one establish each step of the continued-fraction algorithm. The infinite-fraction convergence and irrationality proof in the opening lesson show that <span class="math" data-tex="\(T\)">\(T\)</span> is irrational. Its unbounded partial quotients show that it is not quadratic. If <span class="math" data-tex="\(e^2\)">\(e^2\)</span> were rational or quadratic, then <span class="math" data-tex="\(T\)">\(T\)</span> would belong to the same field and would have degree at most two. This contradiction proves the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are separate obstructions, proved before transcendence. A number of degree three or higher is not excluded by the quadratic argument. Hermite's construction will exclude every finite degree at once.</p>
+<h2 id="2-an-integral-that-records-every-derivative">2. An integral that records every derivative</h2>
+<p>For a polynomial <span class="math" data-tex="\(f\)">\(f\)</span> of degree <span class="math" data-tex="\(m\)">\(m\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+F(x)=\sum_{j=0}^m f^{(j)}(x),\qquad
+\overline f(x)=\sum_{j=0}^m|c_j|x^j
+\quad\text{if }f(x)=\sum_{j=0}^m c_jx^j.
+\]">\[
+F(x)=\sum_{j=0}^m f^{(j)}(x),\qquad
+\overline f(x)=\sum_{j=0}^m|c_j|x^j
+\quad\text{if }f(x)=\sum_{j=0}^m c_jx^j.
+\]</span>
+<p>The bar in <span class="math" data-tex="\(\overline f\)">\(\overline f\)</span> means coefficient moduli, not complex conjugation.</p>
+<h3 id="lemma-3-2-hermite-s-identity">Lemma 3.2. Hermite's identity</h3>
+<p>For every <span class="math" data-tex="\(t\in\mathbb C\)">\(t\in\mathbb C\)</span>, with integration along the segment from zero to <span class="math" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+I(t):=\int_0^t e^{t-u}f(u)\,du=e^tF(0)-F(t),\qquad
+|I(t)|\leq|t|e^{|t|}\overline f(|t|).
+\]">\[
+I(t):=\int_0^t e^{t-u}f(u)\,du=e^tF(0)-F(t),\qquad
+|I(t)|\leq|t|e^{|t|}\overline f(|t|).
+\]</span>
+<p><strong>Proof.</strong> Since the derivatives telescope, <span class="math" data-tex="\(F-F&#x27;=f\)">\(F-F&#x27;=f\)</span>. Consequently <span class="math" data-tex="\((e^{-u}F(u))&#x27;=-e^{-u}f(u)\)">\((e^{-u}F(u))&#x27;=-e^{-u}f(u)\)</span>. Integrating and multiplying by <span class="math" data-tex="\(e^t\)">\(e^t\)</span> gives the identity. This is also repeated integration by parts, one derivative at each step, terminating when the next derivative of the polynomial is zero.</p>
+<p>Parameterize the segment as <span class="math" data-tex="\(u=st\)">\(u=st\)</span>, <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>. Then <span class="math" data-tex="\(|e^{t-u}|\leq e^{|t|}\)">\(|e^{t-u}|\leq e^{|t|}\)</span>, <span class="math" data-tex="\(|f(u)|\leq\overline f(|t|)\)">\(|f(u)|\leq\overline f(|t|)\)</span>, and the segment length is <span class="math" data-tex="\(|t|\)">\(|t|\)</span>. Integration of these bounds proves the estimate, including <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The identity is useful because a polynomial can have tiny values on a segment while its endpoint derivatives carry large, rigid arithmetic information. We will normalize the derivatives by a factorial so that this information is integral rather than merely rational.</p>
+<h3 id="lemma-3-3-derivatives-and-a-prime">Lemma 3.3. Derivatives and a prime</h3>
+<p>For <span class="math" data-tex="\(g\in\mathbb Z[X]\)">\(g\in\mathbb Z[X]\)</span>, <span class="math" data-tex="\(g^{(j)}/j!\in\mathbb Z[X]\)">\(g^{(j)}/j!\in\mathbb Z[X]\)</span>. Fix integers <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> and a prime <span class="math" data-tex="\(p&gt;n\)">\(p&gt;n\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+g(X)=X^{p-1}\prod_{k=1}^n(X-k)^p,qquad
+f(X)=\frac{g(X)}{(p-1)!},\qquad m=(n+1)p-1.
+\]">\[
+g(X)=X^{p-1}\prod_{k=1}^n(X-k)^p,qquad
+f(X)=\frac{g(X)}{(p-1)!},\qquad m=(n+1)p-1.
+\]</span>
+<p>Every <span class="math" data-tex="\(f^{(j)}(k)\)">\(f^{(j)}(k)\)</span>, for <span class="math" data-tex="\(0\leq k\leq n\)">\(0\leq k\leq n\)</span> and <span class="math" data-tex="\(0\leq j\leq m\)">\(0\leq j\leq m\)</span>, is an integer. All are divisible by <span class="math" data-tex="\(p\)">\(p\)</span> except possibly <span class="math" data-tex="\(k=0,j=p-1\)">\(k=0,j=p-1\)</span>; at that exception,</p>
+<span class="math math-display" data-tex="\[
+f^{(p-1)}(0)=(-1)^{np}(n!)^p\not\equiv0\pmod p.
+\]">\[
+f^{(p-1)}(0)=(-1)^{np}(n!)^p\not\equiv0\pmod p.
+\]</span>
+<p><strong>Proof.</strong> Differentiate a monomial: <span class="math" data-tex="\((X^a)^{(j)}/j!=\binom ajX^{a-j}\)">\((X^a)^{(j)}/j!=\binom ajX^{a-j}\)</span>, or zero if <span class="math" data-tex="\(j&gt;a\)">\(j&gt;a\)</span>. Linearity proves the first assertion. At <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, the root multiplicity <span class="math" data-tex="\(p\)">\(p\)</span> makes the derivatives of orders below <span class="math" data-tex="\(p\)">\(p\)</span> zero. At zero, the root multiplicity is <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. For <span class="math" data-tex="\(j\geq p\)">\(j\geq p\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+f^{(j)}(k)=\frac{j!}{(p-1)!}\frac{g^{(j)}(k)}{j!}.
+\]">\[
+f^{(j)}(k)=\frac{j!}{(p-1)!}\frac{g^{(j)}(k)}{j!}.
+\]</span>
+<p>The second factor is integral and the first is an integer divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. The only remaining derivative is obtained from the coefficient of <span class="math" data-tex="\(X^{p-1}\)">\(X^{p-1}\)</span> in <span class="math" data-tex="\(g\)">\(g\)</span>, which is <span class="math" data-tex="\(\prod_{k=1}^n(-k)^p\)">\(\prod_{k=1}^n(-k)^p\)</span>. Since <span class="math" data-tex="\(p&gt;n\)">\(p&gt;n\)</span>, none of its factors is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-transcendence-proof">3. The transcendence proof</h2>
+<h3 id="theorem-3-4-hermite-s-theorem">Theorem 3.4. Hermite's theorem</h3>
+<p>The number <span class="math" data-tex="\(e\)">\(e\)</span> is transcendental.</p>
+<p><strong>Proof.</strong> Suppose it satisfies</p>
+<span class="math math-display" data-tex="\[
+q_0+q_1e+\cdots+q_ne^n=0,qquad
+q_k\in\mathbb Z,quad n\geq1,quad q_0\neq0.
+\]">\[
+q_0+q_1e+\cdots+q_ne^n=0,qquad
+q_k\in\mathbb Z,quad n\geq1,quad q_0\neq0.
+\]</span>
+<p>A nonzero constant term can always be arranged: remove any factor <span class="math" data-tex="\(X\)">\(X\)</span> from a hypothetical polynomial relation, since <span class="math" data-tex="\(e\neq0\)">\(e\neq0\)</span>. Take arbitrarily large primes <span class="math" data-tex="\(p&gt;\max(n,|q_0|)\)">\(p&gt;\max(n,|q_0|)\)</span>, and use <span class="math" data-tex="\(f,F,I\)">\(f,F,I\)</span> from the preceding lemmas. Set</p>
+<span class="math math-display" data-tex="\[
+J=\sum_{k=0}^n q_k I(k).
+\]">\[
+J=\sum_{k=0}^n q_k I(k).
+\]</span>
+<p>Hermite's identity and the assumed relation cancel the terms <span class="math" data-tex="\(e^kF(0)\)">\(e^kF(0)\)</span>, leaving</p>
+<span class="math math-display" data-tex="\[
+J=-\sum_{k=0}^n q_kF(k)\in\mathbb Z.
+\]">\[
+J=-\sum_{k=0}^n q_kF(k)\in\mathbb Z.
+\]</span>
+<p>Lemma 3.3 gives</p>
+<span class="math math-display" data-tex="\[
+J\equiv-q_0(-1)^{np}(n!)^p\not\equiv0\pmod p.
+\]">\[
+J\equiv-q_0(-1)^{np}(n!)^p\not\equiv0\pmod p.
+\]</span>
+<p>Thus <span class="math" data-tex="\(J\neq0\)">\(J\neq0\)</span> and <span class="math" data-tex="\(|J|\geq1\)">\(|J|\geq1\)</span>. Both restrictions on <span class="math" data-tex="\(p\)">\(p\)</span> matter: <span class="math" data-tex="\(p&gt;n\)">\(p&gt;n\)</span> protects the factorial product and <span class="math" data-tex="\(p&gt;|q_0|\)">\(p&gt;|q_0|\)</span> protects the coefficient.</p>
+<p>For the upper bound, on every segment <span class="math" data-tex="\([0,k]\)">\([0,k]\)</span>, <span class="math" data-tex="\(0\leq k\leq n\)">\(0\leq k\leq n\)</span>, all factors <span class="math" data-tex="\(|u|\)">\(|u|\)</span> and <span class="math" data-tex="\(|u-j|\)">\(|u-j|\)</span> are at most <span class="math" data-tex="\(n\)">\(n\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+|f(u)|\leq\frac{n^{(n+1)p-1}}{(p-1)!},\qquad
+|I(k)|\leq\frac{k e^k n^{(n+1)p-1}}{(p-1)!}.
+\]">\[
+|f(u)|\leq\frac{n^{(n+1)p-1}}{(p-1)!},\qquad
+|I(k)|\leq\frac{k e^k n^{(n+1)p-1}}{(p-1)!}.
+\]</span>
+<p>Put <span class="math" data-tex="\(C=n^{n+1}\)">\(C=n^{n+1}\)</span> and <span class="math" data-tex="\(A=e^n\sum_{k=1}^n|q_k|\)">\(A=e^n\sum_{k=1}^n|q_k|\)</span>. These are independent of <span class="math" data-tex="\(p\)">\(p\)</span>. Since <span class="math" data-tex="\(k\leq n\)">\(k\leq n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|J|\leq A\frac{C^p}{(p-1)!}\longrightarrow0.
+\]">\[
+|J|\leq A\frac{C^p}{(p-1)!}\longrightarrow0.
+\]</span>
+<p>For completeness, consecutive terms of <span class="math" data-tex="\(C^p/(p-1)!\)">\(C^p/(p-1)!\)</span> have ratio <span class="math" data-tex="\(C/p\)">\(C/p\)</span>, which is at most one half for all sufficiently large <span class="math" data-tex="\(p\)">\(p\)</span>. Thus the sequence tends to zero, also along primes. There are arbitrarily large primes by Euclid's argument: a finite list of all primes would omit every prime divisor of one plus their product. For a sufficiently large allowed prime the upper bound is less than one, contradicting the integer lower bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The unnormalized version uses <span class="math" data-tex="\(g\)">\(g\)</span> rather than <span class="math" data-tex="\(f\)">\(f\)</span>: its nonzero integer has modulus at least <span class="math" data-tex="\((p-1)!\)">\((p-1)!\)</span>, while its analytic estimate is at most <span class="math" data-tex="\(AC^p\)">\(AC^p\)</span>. The two formulations are the same proof. Normalizing at the start makes the final contradiction especially transparent.</p>
+<h3 id="a-worked-prime">A worked prime</h3>
+<p>For <span class="math" data-tex="\(n=1,p=3\)">\(n=1,p=3\)</span>, the unnormalized polynomial is</p>
+<span class="math math-display" data-tex="\[
+g(X)=X^2(X-1)^3=X^5-3X^4+3X^3-X^2.
+\]">\[
+g(X)=X^2(X-1)^3=X^5-3X^4+3X^3-X^2.
+\]</span>
+<p>At zero its nonzero derivatives are <span class="math" data-tex="\(g&#x27;&#x27;=-2\)">\(g&#x27;&#x27;=-2\)</span>, <span class="math" data-tex="\(g^{(3)}=18\)">\(g^{(3)}=18\)</span>, <span class="math" data-tex="\(g^{(4)}=-72\)">\(g^{(4)}=-72\)</span>, <span class="math" data-tex="\(g^{(5)}=120\)">\(g^{(5)}=120\)</span>, summing to 64. At one, the expansion <span class="math" data-tex="\(g(1+w)=w^3+2w^4+w^5\)">\(g(1+w)=w^3+2w^4+w^5\)</span> gives derivatives 6, 48 and 120, summing to 174. Every derivative except <span class="math" data-tex="\(g&#x27;&#x27;(0)\)">\(g&#x27;&#x27;(0)\)</span> is divisible by <span class="math" data-tex="\(3!\)">\(3!\)</span>; that derivative is divisible by <span class="math" data-tex="\(2!\)">\(2!\)</span> but not by <span class="math" data-tex="\(3!\)">\(3!\)</span>. The normalized sums are 32 and 87, the latter divisible by three and the former congruent to two.</p>
+<p>Hermite's identity reads</p>
+<span class="math math-display" data-tex="\[
+\int_0^1e^{1-u}u^2(u-1)^3\,du=64e-174.
+\]">\[
+\int_0^1e^{1-u}u^2(u-1)^3\,du=64e-174.
+\]</span>
+<p>The integral is negative, confirming <span class="math" data-tex="\(e&lt;87/32\)">\(e&lt;87/32\)</span>. Under a hypothetical relation <span class="math" data-tex="\(q_0+q_1e=0\)">\(q_0+q_1e=0\)</span>, the unnormalized combination would equal <span class="math" data-tex="\(-64q_0-174q_1\)">\(-64q_0-174q_1\)</span>; its factorial divisibility and nonzero residue are exactly the pattern used in the proof. No particular <span class="math" data-tex="\(q_0,q_1\)">\(q_0,q_1\)</span> satisfying such a relation is being asserted.</p>
+<h2 id="4-reading-the-integral-as-an-approximation">4. Reading the integral as an approximation</h2>
+<p>For the prime construction, <span class="math" data-tex="\(F(0)\)">\(F(0)\)</span> is a nonzero integer. The identity gives a common-denominator approximation to all the powers under consideration:</p>
+<span class="math math-display" data-tex="\[
+e^k-\frac{F(k)}{F(0)}=\frac{I(k)}{F(0)}\qquad(1\leq k\leq n).
+\]">\[
+e^k-\frac{F(k)}{F(0)}=\frac{I(k)}{F(0)}\qquad(1\leq k\leq n).
+\]</span>
+<p>The integral errors tend to zero. A putative integer relation among the powers would combine these approximations into a nonzero integer smaller than one. This is the simultaneous-approximation aspect of Hermite's method. Later auxiliary functions arrange many more zeros while controlling the arithmetic size of their coefficients.</p>
+<p>A <strong>Padé approximant of type <span class="math" data-tex="\([a/b]\)">\([a/b]\)</span></strong> to a power series <span class="math" data-tex="\(S(x)\)">\(S(x)\)</span> is a quotient <span class="math" data-tex="\(P(x)/Q(x)\)">\(P(x)/Q(x)\)</span>, with <span class="math" data-tex="\(\deg P\leq a\)">\(\deg P\leq a\)</span>, <span class="math" data-tex="\(\deg Q\leq b\)">\(\deg Q\leq b\)</span>, <span class="math" data-tex="\(Q(0)=1\)">\(Q(0)=1\)</span>, and <span class="math" data-tex="\(Q(x)S(x)-P(x)=O(x^{a+b+1})\)">\(Q(x)S(x)-P(x)=O(x^{a+b+1})\)</span>. Two examples for <span class="math" data-tex="\(e^x\)">\(e^x\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\frac{2+x}{2-x},\qquad
+\frac{12+6x+x^2}{12-6x+x^2}.
+\]">\[
+\frac{2+x}{2-x},\qquad
+\frac{12+6x+x^2}{12-6x+x^2}.
+\]</span>
+<p>Their normalized denominators are <span class="math" data-tex="\(1-x/2\)">\(1-x/2\)</span> and <span class="math" data-tex="\(1-x/2+x^2/12\)">\(1-x/2+x^2/12\)</span>. Multiplication by the exponential series verifies agreement through degrees two and four, respectively.</p>
+<p>Their errors also have integral signs. Apply Hermite's identity to <span class="math" data-tex="\(f_t(u)=u(u-t)\)">\(f_t(u)=u(u-t)\)</span>. It gives</p>
+<span class="math math-display" data-tex="\[
+e^t(2-t)-(2+t)=\int_0^t e^{t-u}u(u-t)\,du.
+\]">\[
+e^t(2-t)-(2+t)=\int_0^t e^{t-u}u(u-t)\,du.
+\]</span>
+<p>At <span class="math" data-tex="\(t=1\)">\(t=1\)</span> the right side is negative, so the first approximant gives the upper bound three. Applying it to <span class="math" data-tex="\(f_t(u)=u^2(u-t)^2\)">\(f_t(u)=u^2(u-t)^2\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+2e^t(t^2-6t+12)-2(t^2+6t+12)
+=\int_0^t e^{t-u}u^2(u-t)^2\,du.
+\]">\[
+2e^t(t^2-6t+12)-2(t^2+6t+12)
+=\int_0^t e^{t-u}u^2(u-t)^2\,du.
+\]</span>
+<p>At <span class="math" data-tex="\(t=1\)">\(t=1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+e-\frac{19}7=\frac1{14}\int_0^1 e^{1-u}u^2(1-u)^2\,du,
+\qquad \frac1{420}&lt;e-\frac{19}7&lt;\frac e{420}.
+\]">\[
+e-\frac{19}7=\frac1{14}\int_0^1 e^{1-u}u^2(1-u)^2\,du,
+\qquad \frac1{420}&lt;e-\frac{19}7&lt;\frac e{420}.
+\]</span>
+<p>The last bounds use <span class="math" data-tex="\(1&lt;e^{1-u}&lt;e\)">\(1&lt;e^{1-u}&lt;e\)</span> on the interior and <span class="math" data-tex="\(\int_0^1u^2(1-u)^2\,du=1/30\)">\(\int_0^1u^2(1-u)^2\,du=1/30\)</span>. Thus <span class="math" data-tex="\(19/7&lt;e&lt;3\)">\(19/7&lt;e&lt;3\)</span>, and the actual second error is about <span class="math" data-tex="\(0.003996114\)">\(0.003996114\)</span>. These are approximations with rigorously controlled signs, not just decimal comparisons.</p>
+<h2 id="5-rational-powers-and-the-boundary-of-the-method">5. Rational powers and the boundary of the method</h2>
+<h3 id="corollary-3-5-rational-powers-of-e">Corollary 3.5. Rational powers of e</h3>
+<p>For every nonzero rational <span class="math" data-tex="\(r\)">\(r\)</span>, <span class="math" data-tex="\(e^r\)">\(e^r\)</span> is transcendental.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(r=a/b\)">\(r=a/b\)</span>, <span class="math" data-tex="\(a\neq0\)">\(a\neq0\)</span>, <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span>. If <span class="math" data-tex="\(e^{a/b}\)">\(e^{a/b}\)</span> were algebraic, its <span class="math" data-tex="\(b\)">\(b\)</span>-th power <span class="math" data-tex="\(e^a\)">\(e^a\)</span> would be algebraic. If <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(e\)">\(e\)</span> would then satisfy <span class="math" data-tex="\(X^a-e^a=0\)">\(X^a-e^a=0\)</span> over the algebraic numbers, contradicting their algebraic closure and Theorem 3.4. If <span class="math" data-tex="\(a&lt;0\)">\(a&lt;0\)</span>, take the inverse first and apply the positive case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof gives every nonzero rational exponent. It does not yet give every nonzero algebraic exponent; that is Lindemann's theorem, taught in the next lesson. It gives no algebraic-independence assertion about <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and does not settle the individual status of <span class="math" data-tex="\(e+\pi\)">\(e+\pi\)</span> or <span class="math" data-tex="\(e\pi\)">\(e\pi\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy — the analytic identity.</strong> Prove Hermite's identity by repeated integration by parts and verify its bound for complex <span class="math" data-tex="\(t\)">\(t\)</span>, with the integration path specified.</p>
+</li>
+<li>
+<p><strong>Medium — factorial divisibility.</strong> For the unnormalized polynomial <span class="math" data-tex="\(g(X)=X^{p-1}\prod_{k=1}^n(X-k)^p\)">\(g(X)=X^{p-1}\prod_{k=1}^n(X-k)^p\)</span>, prove that <span class="math" data-tex="\(g^{(j)}(k)\)">\(g^{(j)}(k)\)</span> is divisible by <span class="math" data-tex="\(p!\)">\(p!\)</span> at every integer <span class="math" data-tex="\(1\leq k\leq n\)">\(1\leq k\leq n\)</span>, and at zero unless <span class="math" data-tex="\(j=p-1\)">\(j=p-1\)</span>. Compute that exceptional derivative and explain the restrictions on the prime.</p>
+</li>
+<li>
+<p><strong>Medium — a series proof for the square.</strong> Prove that <span class="math" data-tex="\(e^2\)">\(e^2\)</span> is irrational directly from the series for <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(e^{-1}\)">\(e^{-1}\)</span>. Control both the size and the nonvanishing of the remainder.</p>
+</li>
+<li>
+<p><strong>Medium — the second Padé approximant.</strong> Solve for the normalized polynomials of type <span class="math" data-tex="\([2/2]\)">\([2/2]\)</span> for <span class="math" data-tex="\(e^x\)">\(e^x\)</span>, and derive a positive integral estimate for <span class="math" data-tex="\(e-19/7\)">\(e-19/7\)</span>.</p>
+</li>
+<li>
+<p><strong>Hard — move the arithmetic grid.</strong> For every nonzero rational <span class="math" data-tex="\(r\)">\(r\)</span>, prove that <span class="math" data-tex="\(1,e^r,e^{2r}\)">\(1,e^r,e^{2r}\)</span> are linearly independent over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> by adapting the prime construction to the grid <span class="math" data-tex="\(0,r,2r\)">\(0,r,2r\)</span>. Give an explicit exponential-over-factorial upper bound after clearing denominators.</p>
+</li>
+</ol>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>1.</strong> Integration by parts gives <span class="math" data-tex="\(\int_0^t e^{-u}f(u)\,du=f(0)-e^{-t}f(t)+\int_0^t e^{-u}f&#x27;(u)\,du\)">\(\int_0^t e^{-u}f(u)\,du=f(0)-e^{-t}f(t)+\int_0^t e^{-u}f&#x27;(u)\,du\)</span>. Repeat through the degree of <span class="math" data-tex="\(f\)">\(f\)</span> and multiply by <span class="math" data-tex="\(e^t\)">\(e^t\)</span>. Parameterizing the segment by <span class="math" data-tex="\(u=st\)">\(u=st\)</span> bounds the modulus of the integrand by <span class="math" data-tex="\(e^{|t|}\overline f(|t|)\)">\(e^{|t|}\overline f(|t|)\)</span>, and the path length is <span class="math" data-tex="\(|t|\)">\(|t|\)</span>. This proves exactly the stated bound for either real or complex endpoints.</p>
+<p><strong>2.</strong> A multiplicity-<span class="math" data-tex="\(p\)">\(p\)</span> zero has derivatives zero below order <span class="math" data-tex="\(p\)">\(p\)</span>. At larger orders <span class="math" data-tex="\(g^{(j)}(k)=j!\,(g^{(j)}(k)/j!)\)">\(g^{(j)}(k)=j!\,(g^{(j)}(k)/j!)\)</span>, and the second factor is integral. Thus <span class="math" data-tex="\(p!\)">\(p!\)</span> divides these values. At zero the same argument applies for <span class="math" data-tex="\(j\geq p\)">\(j\geq p\)</span>; the smaller derivatives vanish except <span class="math" data-tex="\(j=p-1\)">\(j=p-1\)</span>, whose value is <span class="math" data-tex="\((p-1)!(-1)^{np}(n!)^p\)">\((p-1)!(-1)^{np}(n!)^p\)</span>. The prime <span class="math" data-tex="\(p&gt;n\)">\(p&gt;n\)</span> does not divide <span class="math" data-tex="\(n!\)">\(n!\)</span>, so this value is not divisible by <span class="math" data-tex="\(p!\)">\(p!\)</span>. In the linear combination, <span class="math" data-tex="\(p&gt;|q_0|\)">\(p&gt;|q_0|\)</span> additionally ensures that multiplying the exceptional value by <span class="math" data-tex="\(q_0\neq0\)">\(q_0\neq0\)</span> preserves its nonzero residue.</p>
+<p><strong>3.</strong> If <span class="math" data-tex="\(e^2=a/b\)">\(e^2=a/b\)</span>, with positive integers <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, then <span class="math" data-tex="\(a e^{-1}-b e=0\)">\(a e^{-1}-b e=0\)</span>. Let <span class="math" data-tex="\(N\)">\(N\)</span> be large and even. Multiply this relation by <span class="math" data-tex="\(N!\)">\(N!\)</span>, and subtract the truncated series. Their finite terms are integers, so the remainder</p>
+<span class="math math-display" data-tex="\[
+R_N=\sum_{k=1}^\infty
+\frac{a(-1)^k-b}{(N+1)(N+2)\cdots(N+k)}
+\]">\[
+R_N=\sum_{k=1}^\infty
+\frac{a(-1)^k-b}{(N+1)(N+2)\cdots(N+k)}
+\]</span>
+<p>is an integer. The first term is <span class="math" data-tex="\(-(a+b)/(N+1)\)">\(-(a+b)/(N+1)\)</span>. The modulus of all later terms is at most</p>
+<span class="math math-display" data-tex="\[
+\frac{a+b}{N+1}\sum_{j=1}^\infty(N+2)^{-j}
+=\frac{a+b}{(N+1)^2},
+\]">\[
+\frac{a+b}{N+1}\sum_{j=1}^\infty(N+2)^{-j}
+=\frac{a+b}{(N+1)^2},
+\]</span>
+<p>strictly less than the first term's modulus. Thus <span class="math" data-tex="\(R_N&lt;0\)">\(R_N&lt;0\)</span>. The whole remainder has modulus at most <span class="math" data-tex="\((a+b)/N\)">\((a+b)/N\)</span>, which is less than one for large <span class="math" data-tex="\(N\)">\(N\)</span>. This contradicts integrality. The parity choice is what prevents cancellation of the leading remainder.</p>
+<p><strong>4.</strong> Write <span class="math" data-tex="\(Q=1+ux+vx^2\)">\(Q=1+ux+vx^2\)</span>. Vanishing of the coefficients of <span class="math" data-tex="\(x^3,x^4\)">\(x^3,x^4\)</span> in <span class="math" data-tex="\(Qe^x\)">\(Qe^x\)</span> gives <span class="math" data-tex="\(1/6+u/2+v=0\)">\(1/6+u/2+v=0\)</span> and <span class="math" data-tex="\(1/24+u/6+v/2=0\)">\(1/24+u/6+v/2=0\)</span>. Subtraction after multiplying the second by two gives <span class="math" data-tex="\(u=-1/2\)">\(u=-1/2\)</span>, and then <span class="math" data-tex="\(v=1/12\)">\(v=1/12\)</span>. The first three coefficients give <span class="math" data-tex="\(P=1+x/2+x^2/12\)">\(P=1+x/2+x^2/12\)</span>. Thus <span class="math" data-tex="\(P/Q=(12+6x+x^2)/(12-6x+x^2)\)">\(P/Q=(12+6x+x^2)/(12-6x+x^2)\)</span>. For its error at one, the identity with <span class="math" data-tex="\(u^2(u-1)^2\)">\(u^2(u-1)^2\)</span> gives <span class="math" data-tex="\(e-19/7=\frac1{14}\int_0^1 e^{1-u}u^2(1-u)^2\,du\)">\(e-19/7=\frac1{14}\int_0^1 e^{1-u}u^2(1-u)^2\,du\)</span>. The beta integral is <span class="math" data-tex="\(1/30\)">\(1/30\)</span>; comparison with one and <span class="math" data-tex="\(e\)">\(e\)</span> gives the bounds in Section 4.</p>
+<p><strong>5.</strong> We give the adaptation for any fixed <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, then take <span class="math" data-tex="\(n=2\)">\(n=2\)</span>. Write <span class="math" data-tex="\(r=a/b\)">\(r=a/b\)</span>, <span class="math" data-tex="\(a\neq0\)">\(a\neq0\)</span>, <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span>, and suppose <span class="math" data-tex="\(\sum_{k=0}^n q_ke^{kr}=0\)">\(\sum_{k=0}^n q_ke^{kr}=0\)</span>, with integer coefficients and <span class="math" data-tex="\(q_0\neq0\)">\(q_0\neq0\)</span>. Remove initial zero coefficients and divide by a power of <span class="math" data-tex="\(e^r\)">\(e^r\)</span> if needed. Set</p>
+<span class="math math-display" data-tex="\[
+g(X)=X^{p-1}\prod_{k=1}^n(bX-ka)^p,
+\quad f=g/(p-1)!,\quad m=(n+1)p-1,
+\]">\[
+g(X)=X^{p-1}\prod_{k=1}^n(bX-ka)^p,
+\quad f=g/(p-1)!,\quad m=(n+1)p-1,
+\]</span>
+<p>with a prime <span class="math" data-tex="\(p&gt;\max(n,|q_0|,|a|,b)\)">\(p&gt;\max(n,|q_0|,|a|,b)\)</span>. The roots at <span class="math" data-tex="\(kr\)">\(kr\)</span>, for <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, have multiplicity <span class="math" data-tex="\(p\)">\(p\)</span>. For <span class="math" data-tex="\(j\geq p\)">\(j\geq p\)</span>, the polynomial <span class="math" data-tex="\(g^{(j)}/j!\)">\(g^{(j)}/j!\)</span> has integer coefficients and degree at most <span class="math" data-tex="\(m-j\)">\(m-j\)</span>. Its value at <span class="math" data-tex="\(ka/b\)">\(ka/b\)</span> has denominator dividing <span class="math" data-tex="\(b^{m-j}\)">\(b^{m-j}\)</span>. Hence every <span class="math" data-tex="\(b^m f^{(j)}(kr)\)">\(b^m f^{(j)}(kr)\)</span> is an integer divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. The smaller derivatives vanish except at zero with <span class="math" data-tex="\(j=p-1\)">\(j=p-1\)</span>, where the value is</p>
+<span class="math math-display" data-tex="\[
+b^m(-a)^{np}(n!)^p\not\equiv0\pmod p.
+\]">\[
+b^m(-a)^{np}(n!)^p\not\equiv0\pmod p.
+\]</span>
+<p>Hermite's identity makes <span class="math" data-tex="\(J=b^m\sum q_k I(kr)=-b^m\sum q_kF(kr)\)">\(J=b^m\sum q_k I(kr)=-b^m\sum q_kF(kr)\)</span> an integer with nonzero residue modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Thus <span class="math" data-tex="\(|J|\geq1\)">\(|J|\geq1\)</span>.</p>
+<p>Put <span class="math" data-tex="\(R=n|r|\)">\(R=n|r|\)</span>, <span class="math" data-tex="\(M=\max(1,R)\)">\(M=\max(1,R)\)</span>, <span class="math" data-tex="\(C=bM+n|a|\)">\(C=bM+n|a|\)</span>, and <span class="math" data-tex="\(B=b^{n+1}MC^n\)">\(B=b^{n+1}MC^n\)</span>. On every relevant segment, <span class="math" data-tex="\(|u|\leq M\)">\(|u|\leq M\)</span> and <span class="math" data-tex="\(|bu-ka|\leq C\)">\(|bu-ka|\leq C\)</span>. Since <span class="math" data-tex="\(b^m\leq b^{(n+1)p}\)">\(b^m\leq b^{(n+1)p}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|J|\leq R e^R\left(\sum_{k=1}^n|q_k|\right)
+\frac{B^p}{(p-1)!}\longrightarrow0.
+\]">\[
+|J|\leq R e^R\left(\sum_{k=1}^n|q_k|\right)
+\frac{B^p}{(p-1)!}\longrightarrow0.
+\]</span>
+<p>The estimate also applies when <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>, because it uses segment lengths and moduli. It contradicts the integer bound for a sufficiently large allowed prime. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> this proves the requested independence; for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> it handles a relation left after removing initial zero coefficients.</p>
+<h2 id="proof-scope">Proof scope</h2>
+<p>Every mathematical result used beyond the elementary analysis prerequisites has a proof in this lesson or in the opening lesson. Euler's continued fraction and the estimates for all rational approximations are proved there, rather than assumed from a book. The transcendence statement here covers rational exponents; the next lesson proves the algebraic-exponent generalization.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>Evertse.</strong> J.-H. Evertse, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-4.pdf"><em>Diophantine Approximation</em>, Chapter 4: Transcendence results</a>, Leiden course notes, §4.1, Theorem 4.1 and Lemmas 4.2–4.7: Hermite's theorem by the prime and integral method, with the factorial-normalized auxiliary polynomial. The simplifications of Hermite's proof are D. Hilbert, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0043/LOG_0021.pdf">“Ueber die Transcendenz der Zahlen e und π”</a>, A. Hurwitz, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0043/LOG_0022.pdf">“Beweis der Transcendenz der Zahl e”</a>, and P. Gordan, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0043/LOG_0023.pdf">“Transcendenz von e und π”</a>, <em>Mathematische Annalen</em> 43 (1893), 216–219, 220–221 and 222–224.</li>
+<li><strong>Conrad.</strong> K. Conrad, <a href="https://kconrad.math.uconn.edu/blurbs/analysis/transcendence-e.pdf"><em>Transcendence of e</em></a>, expository note, §3: Hermite's identity, the factorial normalization of the derivative sums, and the simultaneous approximations to <span class="math" data-tex="\(e,e^2,\ldots,e^m\)">\(e,e^2,\ldots,e^m\)</span> obtained from Hilbert's polynomials.</li>
+<li><strong>Cohn.</strong> H. Cohn, <a href="https://arxiv.org/abs/math/0601660v3"><em>A short proof of the simple continued fraction expansion of e</em></a>, arXiv:math/0601660v3, 2006: Euler's continued fraction for <span class="math" data-tex="\(e\)">\(e\)</span> from integrals of Hermite's kind, as in the opening lesson. The quadratic obstruction for <span class="math" data-tex="\(e^2\)">\(e^2\)</span> above uses the corresponding integrals with <span class="math" data-tex="\(e^{2x}\)">\(e^{2x}\)</span>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="TR-TRANS-02.html">← Heights of algebraic numbers</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-TRANS-04.html">Lindemann, pi and the Lindemann–Weierstrass theorem →</a></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-03.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

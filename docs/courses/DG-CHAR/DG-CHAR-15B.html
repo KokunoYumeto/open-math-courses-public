@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smooth fibres, triangulation comparison and lens spaces · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-15B.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="smooth-fibres-comparison-for-a-given-triangulation-and-lens-spaces">Smooth fibres, comparison for a given triangulation, and lens spaces</h1>
+<p><em>Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Independently authored text dedicated under CC0. No independent AI review is recorded.</em></p>
+<p>A regular smooth fibre has a trivial normal bundle, and its signature is a cup-product evaluation of the ambient L-class. We prove that formula, including a product over a ball of regular values. We then compare the combinatorial and smooth classes for each <strong>given finite smooth-compatible triangulation</strong>, using controlled affine interpolation, an explicit PL retraction onto a polyhedral sphere, and a normal-graph contraction. Finally we compute lens-space tangent classes and exhibit nonzero integral torsion that rational coefficient change loses. Six original graded exercises have complete solutions.</p>
+<p>This is a continuation of assigned lesson15. The comparison includes all degrees and descent for an unoriented smooth manifold, but it retains its given-triangulation hypothesis. Existence and compact boundary-relative compatibility, together with the separate integral-refinement obstruction, are proved in <a href="DG-CHAR-15C.html">the triangulation companion</a>.</p>
+<p>SectionsA–H referenced below belong to <a href="DG-CHAR-15.html">Combinatorial L-classes and PL fibres</a>, where the full cohomotopy, rational homology duality, PL approximation, fibre-signature and stabilization proofs are given. Other exact prerequisites are <a href="DG-CHAR-01.html">Vector bundles</a>, <a href="DG-CHAR-03.html">Classifying maps and coverings</a>, <a href="DG-CHAR-06.html">Thom and Euler classes</a>, <a href="DG-CHAR-08.html">Gysin and projective splitting</a>, <a href="DG-CHAR-09.html">Chern classes</a>, <a href="DG-CHAR-10.html">Pontryagin classes</a>, <a href="DG-CHAR-07.html">Manifold duality</a>, <a href="DG-CHAR-13.html">Thom spaces and transversality</a>, and <a href="DG-CHAR-14.html">The signature theorem</a>. All coefficients, orientations, dimensional ranges and used proof locators were checked.</p>
+<h2 id="i-smooth-regular-fibres-and-their-signature">I. Smooth regular fibres and their signature</h2>
+<p>This section proves the differentiable fibre formula, including the product neighbourhood used in comparison. Let <span class="math" data-tex="\(M^n\)">\(M^n\)</span> be a smooth closed oriented manifold, let <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, and suppose <span class="math" data-tex="\(n-k=4i\)">\(n-k=4i\)</span>, with <span class="math" data-tex="\(i\geq0\)">\(i\geq0\)</span>. A regular value of a smooth map <span class="math" data-tex="\(f:M\to S^k\)">\(f:M\to S^k\)</span> may have an empty inverse image; its signature is then zero. Orient a nonempty fibre by putting its tangent orientation first and the positive target orientation second.</p>
+<p>The complete analytic prerequisites are <a href="DG-CHAR-07.html">Manifold duality</a>, Lemma3.1, for local inverses and flows, and <a href="DG-CHAR-13.html">Thom spaces</a>, TheoremA.2 and LemmaG.1, for Sard and inverse-image normal bundles. The Thom class, right-cap convention and dual-submanifold evaluation are proved in the Thom/Euler chapter and manifold-duality Section4. We use the full signature theorem proved in signature TheoremE.3, rather than assuming a signature formula as an additional input.</p>
+<h3 id="i-1-a-product-over-a-ball-of-regular-values">I.1. A product over a ball of regular values</h3>
+<p><span id="DG-CHAR-15B.lemma-I.1"></span><strong>Lemma I.1 — Compact regular fibres.</strong> The regular values of <span class="math" data-tex="\(f\)">\(f\)</span> form a dense open subset of <span class="math" data-tex="\(S^k\)">\(S^k\)</span>. At every such value <span class="math" data-tex="\(y\)">\(y\)</span>, its fibre <span class="math" data-tex="\(F_y=f^{-1}(y)\)">\(F_y=f^{-1}(y)\)</span> is a smooth closed <span class="math" data-tex="\((n-k)\)">\((n-k)\)</span>-manifold, or is empty, and
+<span class="math math-display" data-tex="\[
+TM|_{F_y}/TF_y\cong F_y\times T_yS^k.
+\tag{I.1}
+\]">\[
+TM|_{F_y}/TF_y\cong F_y\times T_yS^k.
+\tag{I.1}
+\]</span>
+In particular its normal bundle is trivial.</p>
+<p><strong>Proof.</strong> Failure of surjectivity of a derivative is a closed condition: in coordinate frames it is the simultaneous vanishing of all maximal minors. The critical set is therefore closed in compact <span class="math" data-tex="\(M\)">\(M\)</span>; its image is compact and hence closed in the Hausdorff sphere. Its complement, the regular-value set, is open. The proved manifold Sard theorem says its complement has measure zero in each target chart, and thus contains no nonempty open subset. This proves density. At a fibre point, complete the <span class="math" data-tex="\(k\)">\(k\)</span> target coordinate functions with <span class="math" data-tex="\(n-k\)">\(n-k\)</span> source coordinates to obtain an invertible derivative. The local inverse theorem makes them a coordinate system; the fibre is the zero level of the last <span class="math" data-tex="\(k\)">\(k\)</span> coordinates. Its tangent space is <span class="math" data-tex="\(\ker Df\)">\(\ker Df\)</span>, so the induced quotient map to <span class="math" data-tex="\(T_yS^k\)">\(T_yS^k\)</span> is an isomorphism, and these maps glue smoothly. This also follows from the complete inverse-image proof in Thom LemmaG.1. The fibre is closed in compact <span class="math" data-tex="\(M\)">\(M\)</span> and has no boundary. A metric identifies its normal quotient with its orthogonal normal bundle. If it is empty all assertions are interpreted on the empty space. ∎</p>
+<p><span id="DG-CHAR-15B.lemma-I.2"></span><strong>Lemma I.2 — The proper regular-ball product.</strong> If <span class="math" data-tex="\(y_0\)">\(y_0\)</span> is a regular value, there is a positively oriented target coordinate ball <span class="math" data-tex="\(B\)">\(B\)</span>, centred at <span class="math" data-tex="\(y_0\)">\(y_0\)</span>, and a diffeomorphism
+<span class="math math-display" data-tex="\[
+\Psi:F_{y_0}\times B\longrightarrow f^{-1}(B),
+\qquad f\Psi(x,z)=z,
+\tag{I.2}
+\]">\[
+\Psi:F_{y_0}\times B\longrightarrow f^{-1}(B),
+\qquad f\Psi(x,z)=z,
+\tag{I.2}
+\]</span>
+where target coordinates identify <span class="math" data-tex="\(y_0\)">\(y_0\)</span> with zero. It sends <span class="math" data-tex="\((x,0)\)">\((x,0)\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span> and preserves the fibre-first product orientation.</p>
+<p><strong>Proof.</strong> Choose a coordinate ball of radius <span class="math" data-tex="\(3r\)">\(3r\)</span> whose closure is inside the regular-value set and inside a target chart. Write <span class="math" data-tex="\(q\)">\(q\)</span> for the coordinate form of <span class="math" data-tex="\(f\)">\(f\)</span> on its inverse image <span class="math" data-tex="\(U\)">\(U\)</span>. A smooth metric on <span class="math" data-tex="\(M\)">\(M\)</span> and the Euclidean target metric give the adjoint of its surjective derivative. The bundle map
+<span class="math math-display" data-tex="\[
+A_p=Dq_p^*\bigl(Dq_pDq_p^*\bigr)^{-1}:
+\mathbb R^k\longrightarrow T_pM
+\tag{I.3}
+\]">\[
+A_p=Dq_p^*\bigl(Dq_pDq_p^*\bigr)^{-1}:
+\mathbb R^k\longrightarrow T_pM
+\tag{I.3}
+\]</span>
+is smooth, since its positive definite <span class="math" data-tex="\(k\)">\(k\)</span>-by-<span class="math" data-tex="\(k\)">\(k\)</span> Gram matrix is invertible, and <span class="math" data-tex="\(Dq_p A_p=1\)">\(Dq_p A_p=1\)</span>. For <span class="math" data-tex="\(z\in B_r(0)\)">\(z\in B_r(0)\)</span> define the smooth field <span class="math" data-tex="\(V_z(p)=A_pz\)">\(V_z(p)=A_pz\)</span>. The local flow lemma, with its proved parameter dependence, applies to this field. Along an integral curve,
+<span class="math math-display" data-tex="\[
+\frac d{dt}q(p(t))=z.
+\tag{I.4}
+\]">\[
+\frac d{dt}q(p(t))=z.
+\tag{I.4}
+\]</span>
+Starting at <span class="math" data-tex="\(x\in F_{y_0}\)">\(x\in F_{y_0}\)</span>, a curve for <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span> therefore stays over the segment <span class="math" data-tex="\(tz\)">\(tz\)</span>. Its image stays in the compact subset <span class="math" data-tex="\(q^{-1}(\overline B_r)\)">\(q^{-1}(\overline B_r)\)</span> of <span class="math" data-tex="\(U\)">\(U\)</span>, so it exists for the whole interval. Here is the continuation detail. On a compact subset inside a smooth field's domain, finitely many coordinate balls provide a positive common existence time for initial points in smaller balls, by the bounds in the local-flow proof. A finite-time trajectory confined to this subset can consequently be extended past every proposed finite terminal time. This rules out termination before time one. The same argument applies to the backward curve starting at any <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(q(p)=z\)">\(q(p)=z\)</span>: for <span class="math" data-tex="\(-1\leq t\leq0\)">\(-1\leq t\leq0\)</span>, its target coordinate is <span class="math" data-tex="\((1+t)z\)">\((1+t)z\)</span>, and it stays in the same compact subset.</p>
+<p>Set <span class="math" data-tex="\(\Psi(x,z)=\operatorname{Fl}^{V_z}_1(x)\)">\(\Psi(x,z)=\operatorname{Fl}^{V_z}_1(x)\)</span>. Its inverse is
+<span class="math math-display" data-tex="\[
+p\longmapsto\bigl(\operatorname{Fl}^{V_{q(p)}}_{-1}(p),q(p)\bigr).
+\tag{I.5}
+\]">\[
+p\longmapsto\bigl(\operatorname{Fl}^{V_{q(p)}}_{-1}(p),q(p)\bigr).
+\tag{I.5}
+\]</span>
+Flow uniqueness proves that these maps are inverse. The local parameter-dependence proof, continued over the compact time interval, proves both are smooth. At <span class="math" data-tex="\((x,0)\)">\((x,0)\)</span> the derivative is the identity on <span class="math" data-tex="\(TF_{y_0}\)">\(TF_{y_0}\)</span>, followed in the target directions by the positive normal lifts <span class="math" data-tex="\(A_x\)">\(A_x\)</span>. This is precisely the fibre-first orientation. The determinant sign of a diffeomorphism is locally constant and stays the same along the path <span class="math" data-tex="\((x,tz)\)">\((x,tz)\)</span>; thus it is positive throughout the product. If the initial fibre is empty, first shrink the ball to miss the compact image <span class="math" data-tex="\(f(M)\)">\(f(M)\)</span>, and both sides are empty. ∎</p>
+<p>The proof uses properness through compactness, rather than assuming that an arbitrary submersion is globally a product over a ball.</p>
+<h3 id="i-2-the-smooth-fibre-formula">I.2. The smooth fibre formula</h3>
+<p>Write <span class="math" data-tex="\(L_i(TM)=L_i(p_1(TM),\ldots,p_i(TM))\)">\(L_i(TM)=L_i(p_1(TM),\ldots,p_i(TM))\)</span>, using rational coefficients, and let <span class="math" data-tex="\(u\in H^k(S^k;\mathbb Z)\)">\(u\in H^k(S^k;\mathbb Z)\)</span> be its positive generator.</p>
+<p><span id="DG-CHAR-15B.theorem-I.3"></span><strong>Theorem I.3 — Signature of a regular inverse image.</strong> For every regular value <span class="math" data-tex="\(y\)">\(y\)</span>,
+<span class="math math-display" data-tex="\[
+\sigma(F_y)=
+\left\langle L_i(TM)\smile f^*u,[M]\right\rangle.
+\tag{I.6}
+\]">\[
+\sigma(F_y)=
+\left\langle L_i(TM)\smile f^*u,[M]\right\rangle.
+\tag{I.6}
+\]</span>
+Thus the signature is independent of the regular value, even when the regular-value set has several components. It also depends only on the homotopy class of the map.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(j:F_y\hookrightarrow M\)">\(j:F_y\hookrightarrow M\)</span>. The quotient (I.1), split by a metric, gives
+<span class="math math-display" data-tex="\[
+j^*TM\cong TF_y\oplus\varepsilon^k.
+\tag{I.7}
+\]">\[
+j^*TM\cong TF_y\oplus\varepsilon^k.
+\tag{I.7}
+\]</span>
+Naturality, the rational Whitney formula and normalization on a trivial bundle give <span class="math" data-tex="\(j^*L_i(TM)=L_i(TF_y)\)">\(j^*L_i(TM)=L_i(TF_y)\)</span>. The full signature theorem therefore says
+<span class="math math-display" data-tex="\[
+\sigma(F_y)=\left\langle j^*L_i(TM),[F_y]\right\rangle.
+\tag{I.8}
+\]">\[
+\sigma(F_y)=\left\langle j^*L_i(TM),[F_y]\right\rangle.
+\tag{I.8}
+\]</span>
+We identify the dual class with the actual pulled-back sphere generator, including its orientation. Let <span class="math" data-tex="\(u_y\in H^k(S^k,S^k-\{y\};\mathbb Z)\)">\(u_y\in H^k(S^k,S^k-\{y\};\mathbb Z)\)</span> be the positive point-local class, whose image is <span class="math" data-tex="\(u\)">\(u\)</span>. Pullback along the map of pairs
+<span class="math math-display" data-tex="\[
+(M,M-F_y)\longrightarrow(S^k,S^k-\{y\})
+\]">\[
+(M,M-F_y)\longrightarrow(S^k,S^k-\{y\})
+\]</span>
+gives a relative class. In the product (I.2) it is the positive generator in the normal ball factor. Equivalently, in any local inverse-image chart its normal-coordinate derivative is the oriented identity. Thom-class uniqueness therefore identifies this pullback with the Thom class of the oriented normal bundle of <span class="math" data-tex="\(F_y\)">\(F_y\)</span>. Its absolute image is exactly the dual submanifold class <span class="math" data-tex="\(f^*u\)">\(f^*u\)</span>.</p>
+<p>The proved right-cap calculation in manifold Section4 now gives
+<span class="math math-display" data-tex="\[
+j_*[F_y]=R_{f^*u}[M],
+\qquad
+\langle a\smile f^*u,[M]\rangle=
+\langle j^*a,[F_y]\rangle
+\tag{I.9}
+\]">\[
+j_*[F_y]=R_{f^*u}[M],
+\qquad
+\langle a\smile f^*u,[M]\rangle=
+\langle j^*a,[F_y]\rangle
+\tag{I.9}
+\]</span>
+for every <span class="math" data-tex="\(a\in H^{n-k}(M;\mathbb Q)\)">\(a\in H^{n-k}(M;\mathbb Q)\)</span>. The order in (I.9) is fibre class first, target class last; no unrecorded cap sign is used. Substitute <span class="math" data-tex="\(a=L_i(TM)\)">\(a=L_i(TM)\)</span> in (I.8). If the fibre is empty, the map factors through <span class="math" data-tex="\(S^k-\{y\}\)">\(S^k-\{y\}\)</span>, which is contractible, so <span class="math" data-tex="\(f^*u=0\)">\(f^*u=0\)</span> and both sides of (I.6) vanish. This proves the formula in all cases. Its right side has no dependence on <span class="math" data-tex="\(y\)">\(y\)</span>, and homotopic maps give the same cohomology pullback. ∎</p>
+<h3 id="i-3-a-divisibility-constraint-on-projective-space-sphere-maps">I.3. A divisibility constraint on projective-space sphere maps</h3>
+<p>Let <span class="math" data-tex="\(x=c_1(\gamma^*)\)">\(x=c_1(\gamma^*)\)</span> be the positive generator on <span class="math" data-tex="\(\mathbb {CP}^m\)">\(\mathbb {CP}^m\)</span>, with its complex orientation. For <span class="math" data-tex="\(m\geq5\)">\(m\geq5\)</span>, let <span class="math" data-tex="\(f:\mathbb {CP}^m\to S^{2m-8}\)">\(f:\mathbb {CP}^m\to S^{2m-8}\)</span> be continuous and write
+<span class="math math-display" data-tex="\[
+f^*u=a x^{m-4},\qquad a\in\mathbb Z.
+\tag{I.10}
+\]">\[
+f^*u=a x^{m-4},\qquad a\in\mathbb Z.
+\tag{I.10}
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+D_m\mid a,\qquad
+D_m=\frac{90}{\gcd(90,5m^2+3m-2)}.
+\tag{I.11}
+\]">\[
+D_m\mid a,\qquad
+D_m=\frac{90}{\gcd(90,5m^2+3m-2)}.
+\tag{I.11}
+\]</span>
+In particular, <span class="math" data-tex="\(9\mid a\)">\(9\mid a\)</span> when <span class="math" data-tex="\(m\geq6\)">\(m\geq6\)</span> is divisible by three. This is a necessary condition on the image of sphere pullback; it does not assert realization of every permitted multiple.</p>
+<p><strong>Proof.</strong> The integral projective-space ring makes (I.10) the unique possible form of the pullback. The smooth sphere approximation proved in the strict-range proof of TheoremJ.6 applies to any continuous sphere map on a compact smooth manifold, independent of that theorem's dimension inequality: a smooth partition of unity averages nearby unit-vector sample values, and normalization of the average and straight homotopy gives a homotopic smooth map. Thus replace <span class="math" data-tex="\(f\)">\(f\)</span> by such a smooth map without changing <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>The stable complex tangent identity in Chern Section5 gives
+<span class="math math-display" data-tex="\[
+p(T\mathbb {CP}^m)=(1+x^2)^{m+1},\qquad
+p_1=(m+1)x^2,\quad p_2=\binom{m+1}{2}x^4.
+\tag{I.12}
+\]">\[
+p(T\mathbb {CP}^m)=(1+x^2)^{m+1},\qquad
+p_1=(m+1)x^2,\quad p_2=\binom{m+1}{2}x^4.
+\tag{I.12}
+\]</span>
+The already proved signature polynomial <span class="math" data-tex="\(L_2=(7p_2-p_1^2)/45\)">\(L_2=(7p_2-p_1^2)/45\)</span> consequently gives
+<span class="math math-display" data-tex="\[
+L_2(T\mathbb {CP}^m)=\frac{5m^2+3m-2}{90}\,x^4.
+\tag{I.13}
+\]">\[
+L_2(T\mathbb {CP}^m)=\frac{5m^2+3m-2}{90}\,x^4.
+\tag{I.13}
+\]</span>
+Sard provides a regular value, possibly with empty fibre. Its fibre is an oriented eight-manifold, and TheoremI.3 says its integer signature is
+<span class="math math-display" data-tex="\[
+\sigma(F)=\frac{a(5m^2+3m-2)}{90}.
+\tag{I.14}
+\]">\[
+\sigma(F)=\frac{a(5m^2+3m-2)}{90}.
+\tag{I.14}
+\]</span>
+Here <span class="math" data-tex="\(\langle x^m,[\mathbb {CP}^m]\rangle=1\)">\(\langle x^m,[\mathbb {CP}^m]\rangle=1\)</span>; this is the proved projective normalization. Therefore <span class="math" data-tex="\(90\mid a(5m^2+3m-2)\)">\(90\mid a(5m^2+3m-2)\)</span>. Divide both factors by their common positive greatest common divisor. The remaining factor of <span class="math" data-tex="\(5m^2+3m-2\)">\(5m^2+3m-2\)</span> is relatively prime to <span class="math" data-tex="\(D_m\)">\(D_m\)</span>, so the integer Bézout identity implies <span class="math" data-tex="\(D_m\mid a\)">\(D_m\mid a\)</span>, proving (I.11).</p>
+<p>If <span class="math" data-tex="\(3\mid m\)">\(3\mid m\)</span>, the numerator <span class="math" data-tex="\(5m^2+3m-2\)">\(5m^2+3m-2\)</span> is congruent to one modulo three. It is therefore relatively prime to nine, and <span class="math" data-tex="\(90\mid a(5m^2+3m-2)\)">\(90\mid a(5m^2+3m-2)\)</span> forces <span class="math" data-tex="\(9\mid a\)">\(9\mid a\)</span>. For example <span class="math" data-tex="\(D_{12}=45\)">\(D_{12}=45\)</span>, so in that case the same calculation gives the stronger necessary condition <span class="math" data-tex="\(45\mid a\)">\(45\mid a\)</span>. The target dimension and <span class="math" data-tex="\(m\geq5\)">\(m\geq5\)</span> ensure a sphere of dimension at least two; no unstable rational cohomotopy assertion is used in this integrality argument.</p>
+<p>For <span class="math" data-tex="\(5\leq m\leq8\)">\(5\leq m\leq8\)</span>, an elementary cup-product obstruction is stronger still: <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Indeed the sphere generator has square zero, so
+<span class="math math-display" data-tex="\[
+0=f^*(u^2)=a^2x^{2m-8}.
+\tag{I.15}
+\]">\[
+0=f^*(u^2)=a^2x^{2m-8}.
+\tag{I.15}
+\]</span>
+In this range <span class="math" data-tex="\(0&lt;2m-8\leq m\)">\(0&lt;2m-8\leq m\)</span>; the displayed projective power generates a torsion-free integer cohomology group. Thus <span class="math" data-tex="\(a^2=0\)">\(a^2=0\)</span> as an integer and <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. For larger <span class="math" data-tex="\(m\)">\(m\)</span> this power is zero by dimension, which removes this particular obstruction without asserting any realization result. ∎</p>
+<p><span id="DG-CHAR-15B.exercise-I.4"></span><strong>Exercise I.4 — Easy: disconnected regular-value sets.</strong> Suppose two regular values lie in different components of the regular-value set, and no path between them avoids critical values. Prove their fibre signatures are equal. Also determine the consequence of one fibre being empty.</p>
+<p><strong>Solution.</strong> Apply (I.6) to both values; both signatures equal its same cup-product evaluation. This argument requires neither a regular-value path nor a trivialization across the critical values. If one fibre is empty the proof shows <span class="math" data-tex="\(f^*u=0\)">\(f^*u=0\)</span>, and the common evaluation is zero. Hence every regular fibre has signature zero, though other fibres may be nonempty. ∎</p>
+<p><span id="DG-CHAR-15B.exercise-I.5"></span><strong>Exercise I.5 — Medium: a normal bundle and an L-class.</strong> Prove that the normal quotient of a regular fibre is canonically trivial, identify the induced tangent orientation, and show <span class="math" data-tex="\(L(TF)=j^*L(TM)\)">\(L(TF)=j^*L(TM)\)</span> in every degree. Explain the coefficient restriction.</p>
+<p><strong>Solution.</strong> The derivative induces the smooth quotient isomorphism <span class="math" data-tex="\(TM|_F/TF\to F\times T_yS^k\)">\(TM|_F/TF\to F\times T_yS^k\)</span>; choose a positive basis of <span class="math" data-tex="\(T_yS^k\)">\(T_yS^k\)</span> to trivialize it. Its inverse lifts through a metric complement, producing (I.7). Define the tangent orientation by requiring this ordered sum, tangent first and chosen normal basis last, to give the ambient orientation. The rational Pontryagin Whitney formula and the multiplicative-sequence theorem give <span class="math" data-tex="\(j^*L(TM)=L(TF)L(\varepsilon^k)=L(TF)\)">\(j^*L(TM)=L(TF)L(\varepsilon^k)=L(TF)\)</span>. Rational coefficients remove the integral two-torsion discrepancy in the general real Pontryagin Whitney formula, and the L-polynomials themselves have rational coefficients. No integral characteristic-class equality is inferred from this L-class identity. ∎</p>
+<h2 id="j-comparison-for-a-given-smooth-compatible-triangulation">J. Comparison for a given smooth-compatible triangulation</h2>
+<p>We prove a precise conditional comparison: <strong>given</strong> a finite smooth-compatible triangulation <span class="math" data-tex="\(t:K\to M\)">\(t:K\to M\)</span> of a smooth closed oriented manifold, the combinatorial classes of Sections F–G pull back the smooth Hirzebruch L-classes. A smooth-compatible triangulation means that the restriction of <span class="math" data-tex="\(t\)">\(t\)</span> to every closed simplex extends smoothly to a neighbourhood in its affine hull and has full rank there along the simplex. The map <span class="math" data-tex="\(t\)">\(t\)</span> is a homeomorphism. We do not assume it is globally smooth across its faces.</p>
+<p>This proof supplies the comparison without using uniqueness or relative extension of smooth triangulations. Existence is a separate prerequisite, supplied in <a href="DG-CHAR-15C.html">the triangulation companion</a>; no existence claim follows merely by fixing <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<h3 id="j-1-a-pl-retraction-onto-the-polyhedral-sphere">J.1. A PL retraction onto the polyhedral sphere</h3>
+<p>Realize the boundary <span class="math" data-tex="\(Q\)">\(Q\)</span> of a <span class="math" data-tex="\((k+1)\)">\((k+1)\)</span>-simplex in <span class="math" data-tex="\(\mathbb R^{k+1}\)">\(\mathbb R^{k+1}\)</span>, with the origin in the simplex interior. Its radial homeomorphism
+<span class="math math-display" data-tex="\[
+s:Q\longrightarrow S^k,\qquad s(x)=x/\|x\|
+\tag{J.1}
+\]">\[
+s:Q\longrightarrow S^k,\qquad s(x)=x/\|x\|
+\tag{J.1}
+\]</span>
+is smooth and of maximal rank on every closed facet and its faces. Indeed a facet lies in a hyperplane <span class="math" data-tex="\(\ell(x)=1\)">\(\ell(x)=1\)</span>. The derivative of radial projection has radial kernel; this kernel has zero intersection with the tangent hyperplane <span class="math" data-tex="\(\ell(v)=0\)">\(\ell(v)=0\)</span>. The same argument applies to lower-dimensional faces. Choose the orientation of <span class="math" data-tex="\(Q\)">\(Q\)</span> to make <span class="math" data-tex="\(s\)">\(s\)</span> positive.</p>
+<p><span id="DG-CHAR-15B.lemma-J.1"></span><strong>Lemma J.1 — PL annular retraction.</strong> For <span class="math" data-tex="\(0&lt;a&lt;1&lt;b\)">\(0&lt;a&lt;1&lt;b\)</span> there is a finite PL retraction
+<span class="math math-display" data-tex="\[
+r:\mathcal A_{a,b}\longrightarrow Q,
+\qquad \mathcal A_{a,b}=\{\lambda x:x\in Q,\ a\leq\lambda\leq b\},
+\tag{J.2}
+\]">\[
+r:\mathcal A_{a,b}\longrightarrow Q,
+\qquad \mathcal A_{a,b}=\{\lambda x:x\in Q,\ a\leq\lambda\leq b\},
+\tag{J.2}
+\]</span>
+which fixes every point of <span class="math" data-tex="\(Q\)">\(Q\)</span>. If <span class="math" data-tex="\(R=\max_{v\text{ a vertex of }Q}\|v\|\)">\(R=\max_{v\text{ a vertex of }Q}\|v\|\)</span>, then
+<span class="math math-display" data-tex="\[
+\|r(x)-x\|\leq R\max(1-a,b-1).
+\tag{J.3}
+\]">\[
+\|r(x)-x\|\leq R\max(1-a,b-1).
+\tag{J.3}
+\]</span></p>
+<p><strong>Proof.</strong> Over each simplex <span class="math" data-tex="\(T\)">\(T\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span>, the region between <span class="math" data-tex="\(aT\)">\(aT\)</span> and <span class="math" data-tex="\(bT\)">\(bT\)</span> is its straight convex frustum. Triangulate it compatibly using the ordered prism triangulation already proved in LemmaE.2. Here is the explicit verification that its images really are straight simplices. If <span class="math" data-tex="\(T\subset\{\ell=1\}\)">\(T\subset\{\ell=1\}\)</span>, the map
+<span class="math math-display" data-tex="\[
+(u,\tau)\longmapsto\frac{ab}{b-(b-a)\tau}\,u
+\quad(u\in T,\ 0\leq\tau\leq1)
+\tag{J.4}
+\]">\[
+(u,\tau)\longmapsto\frac{ab}{b-(b-a)\tau}\,u
+\quad(u\in T,\ 0\leq\tau\leq1)
+\tag{J.4}
+\]</span>
+is a projective homeomorphism from <span class="math" data-tex="\(T\times I\)">\(T\times I\)</span> to the frustum. Its inverse sends <span class="math" data-tex="\(x\)">\(x\)</span> to
+<span class="math math-display" data-tex="\[
+u=x/\ell(x),\qquad
+\tau=\frac{b-ab/\ell(x)}{b-a}.
+\]">\[
+u=x/\ell(x),\qquad
+\tau=\frac{b-ab/\ell(x)}{b-a}.
+\]</span>
+The denominator in (J.4) is positive. A projective map with such a denominator sends every convex simplex exactly to the convex hull of its vertex images: for a convex combination of vertices, the image is their image combination with weights multiplied by the positive vertex denominators and then normalized. Applying the inverse proves equality, rather than just inclusion. Thus the prism simplices become a genuine straight triangulation, and the constructions agree on shared faces. Make this construction separately between <span class="math" data-tex="\(aQ,Q\)">\(aQ,Q\)</span> and between <span class="math" data-tex="\(Q,bQ\)">\(Q,bQ\)</span>, using identical triangulations on their common middle layer.</p>
+<p>Send the three vertices <span class="math" data-tex="\(av,v,bv\)">\(av,v,bv\)</span> to <span class="math" data-tex="\(v\)">\(v\)</span>, and extend affinely on each frustum simplex. Each image lies in its original face of <span class="math" data-tex="\(Q\)">\(Q\)</span>, so these maps glue, and their restriction to <span class="math" data-tex="\(Q\)">\(Q\)</span> is the identity. For a point written as a convex combination of frustum vertices <span class="math" data-tex="\(\lambda_jv_j\)">\(\lambda_jv_j\)</span>, its displacement under this affine map is <span class="math" data-tex="\(\sum_j c_j(1-\lambda_j)v_j\)">\(\sum_j c_j(1-\lambda_j)v_j\)</span>. The coefficients are nonnegative and sum to one, and <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> is one of <span class="math" data-tex="\(a,1,b\)">\(a,1,b\)</span>. The triangle inequality proves (J.3). ∎</p>
+<p>Write the defining facet forms of the full simplex as <span class="math" data-tex="\(\ell_\nu(x)\leq1\)">\(\ell_\nu(x)\leq1\)</span> and put <span class="math" data-tex="\(\mu(x)=\max_\nu\ell_\nu(x)\)">\(\mu(x)=\max_\nu\ell_\nu(x)\)</span>. Its boundedness and the origin-interior condition imply <span class="math" data-tex="\(\mu(x)&gt;0\)">\(\mu(x)&gt;0\)</span> for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, and <span class="math" data-tex="\(Q=\{\mu=1\}\)">\(Q=\{\mu=1\}\)</span>. The annulus in (J.2) is <span class="math" data-tex="\(a\leq\mu\leq b\)">\(a\leq\mu\leq b\)</span>. The function <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is Lipschitz with constant <span class="math" data-tex="\(C=\max_\nu\|\ell_\nu\|\)">\(C=\max_\nu\|\ell_\nu\|\)</span>.</p>
+<p>Consequently, if <span class="math" data-tex="\(h:K\to Q\)">\(h:K\to Q\)</span> is continuous and <span class="math" data-tex="\(H:K\to\mathbb R^{k+1}\)">\(H:K\to\mathbb R^{k+1}\)</span> is PL with <span class="math" data-tex="\(\sup\|H-h\|&lt;\eta\)">\(\sup\|H-h\|&lt;\eta\)</span>, choose <span class="math" data-tex="\(a=1-2C\eta\)">\(a=1-2C\eta\)</span>, <span class="math" data-tex="\(b=1+2C\eta\)">\(b=1+2C\eta\)</span>, with <span class="math" data-tex="\(2C\eta&lt;1\)">\(2C\eta&lt;1\)</span>. The whole straight homotopy from <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span> lies in that annulus. Its composition with <span class="math" data-tex="\(r\)">\(r\)</span> gives a homotopy from <span class="math" data-tex="\(h\)">\(h\)</span> to the PL map <span class="math" data-tex="\(g=rH\)">\(g=rH\)</span>, and
+<span class="math math-display" data-tex="\[
+\sup\|g-h\|\leq\eta+2RC\eta.
+\tag{J.5}
+\]">\[
+\sup\|g-h\|\leq\eta+2RC\eta.
+\tag{J.5}
+\]</span>
+Where <span class="math" data-tex="\(H\)">\(H\)</span> already takes values in <span class="math" data-tex="\(Q\)">\(Q\)</span>, this construction preserves it exactly.</p>
+<h3 id="j-2-subdivisions-with-controlled-shapes">J.2. Subdivisions with controlled shapes</h3>
+<p>An arbitrarily fine subdivision need not have controlled shapes. We provide the required family, rather than assuming a derivative estimate from small diameters alone.</p>
+<p><span id="DG-CHAR-15B.lemma-J.2"></span><strong>Lemma J.2 — Compatible shape control and affine interpolation.</strong> Give the vertices of a finite complex one order. There are face-compatible subdivisions <span class="math" data-tex="\(K_N\)">\(K_N\)</span>, <span class="math" data-tex="\(N=1,2,\ldots\)">\(N=1,2,\ldots\)</span>, whose simplex diameters are at most <span class="math" data-tex="\(C_0/N\)">\(C_0/N\)</span>. In each original top simplex, the inverse of the edge-coordinate matrix of any subdivided top simplex has norm at most <span class="math" data-tex="\(C_1N\)">\(C_1N\)</span>, with constants independent of <span class="math" data-tex="\(N\)">\(N\)</span>. If a map is smooth on the closed original simplex, its affine vertex interpolants converge to it in first derivatives, uniformly on the subdivided simplices. They also converge uniformly in values.</p>
+<p><strong>Proof.</strong> In the ordered standard simplex with coordinates <span class="math" data-tex="\(\lambda_0,\ldots,\lambda_p\)">\(\lambda_0,\ldots,\lambda_p\)</span>, use cumulative coordinates
+<span class="math math-display" data-tex="\[
+y_j=\lambda_j+\cdots+\lambda_p\quad(1\leq j\leq p).
+\]">\[
+y_j=\lambda_j+\cdots+\lambda_p\quad(1\leq j\leq p).
+\]</span>
+Its image is <span class="math" data-tex="\(1\geq y_1\geq\cdots\geq y_p\geq0\)">\(1\geq y_1\geq\cdots\geq y_p\geq0\)</span>. Divide the ambient <span class="math" data-tex="\(y\)">\(y\)</span>-space into cubes of side <span class="math" data-tex="\(1/N\)">\(1/N\)</span>. Triangulate each cube by the staircase simplices whose vertices start at its lower corner and add the coordinate unit increments in a permutation order. These simplices tile the cube: order the fractional coordinates of a point, and their consecutive differences give its nonnegative barycentric coefficients in the corresponding staircase. Equal fractions give shared faces, so neighbouring cubes have the same induced face triangulations.</p>
+<p>The hyperplanes <span class="math" data-tex="\(y_j=y_{j+1}\)">\(y_j=y_{j+1}\)</span>, <span class="math" data-tex="\(y_1=1\)">\(y_1=1\)</span>, and <span class="math" data-tex="\(y_p=0\)">\(y_p=0\)</span> are subcomplexes. For the equality hyperplane, if the two grid indices agree it is the equality of two fractional coordinates and hence a staircase face; if they differ, a cube either stays on one side or meets the hyperplane only on its boundary. The constant-coordinate cases are grid faces. Thus the ordered simplex is a union of these staircase simplices. On a face <span class="math" data-tex="\(\lambda_j=0\)">\(\lambda_j=0\)</span>, two successive cumulative coordinates merge; on the end faces a coordinate is deleted. The induced staircase triangulation, with the merged coordinates tied, is exactly the same construction in the surviving ordered vertices. This proves compatibility on all source faces.</p>
+<p>Every full-dimensional small simplex in the cumulative coordinates is <span class="math" data-tex="\(1/N\)">\(1/N\)</span> times a translate of one of finitely many permutation staircase shapes. The fixed linear change back to barycentric coordinates preserves finiteness of this shape list and its nonsingularity. This proves the diameter and inverse-edge bounds. There are finitely many original simplices, so take common constants after their affine identifications.</p>
+<p>For the derivative assertion let <span class="math" data-tex="\(E=[v_1-v_0,\ldots,v_p-v_0]\)">\(E=[v_1-v_0,\ldots,v_p-v_0]\)</span> be the small simplex's edge matrix, and let <span class="math" data-tex="\(A\)">\(A\)</span> be the derivative of the affine interpolant. The fundamental theorem of calculus along each edge gives
+<span class="math math-display" data-tex="\[
+\bigl\|A E-Dh(v_0)E\bigr\|
+\leq C_2\operatorname{diam}(\sigma)\,\omega(\operatorname{diam}(\sigma)),
+\tag{J.6}
+\]">\[
+\bigl\|A E-Dh(v_0)E\bigr\|
+\leq C_2\operatorname{diam}(\sigma)\,\omega(\operatorname{diam}(\sigma)),
+\tag{J.6}
+\]</span>
+where <span class="math" data-tex="\(\omega(d)\to0\)">\(\omega(d)\to0\)</span> is a common modulus of continuity of <span class="math" data-tex="\(Dh\)">\(Dh\)</span> on the original closed simplex. Multiplication by <span class="math" data-tex="\(E^{-1}\)">\(E^{-1}\)</span> bounds <span class="math" data-tex="\(\|A-Dh(v_0)\|\)">\(\|A-Dh(v_0)\|\)</span> by <span class="math" data-tex="\(C_3\omega(C_0/N)\)">\(C_3\omega(C_0/N)\)</span>. At any other point in the small simplex the derivative differs from <span class="math" data-tex="\(Dh(v_0)\)">\(Dh(v_0)\)</span> by at most this same modulus. This proves uniform derivative convergence. The value estimate follows either by integrating these derivatives or directly because interpolation is a convex combination of vertex values whose oscillation tends to zero. Apply the argument to each original closed simplex and its smooth extension. ∎</p>
+<h3 id="j-3-fibre-stability-for-a-continuous-map-with-smooth-pieces">J.3. Fibre stability for a continuous map with smooth pieces</h3>
+<p>We need stability of the whole fibre, not only surjectivity on the interiors of the small simplices.</p>
+<p><span id="DG-CHAR-15B.lemma-J.3"></span><strong>Lemma J.3 — A finite-piece Lipschitz bound.</strong> Suppose a continuous function on a convex ball agrees, on finitely many relatively closed sets covering that ball, with smooth functions defined on neighbourhoods of those sets. If each such local extension has derivative norm at most <span class="math" data-tex="\(L\)">\(L\)</span> near every point of its assigned set, then the function is <span class="math" data-tex="\(L\)">\(L\)</span>-Lipschitz. The same assertion applies to a segment covered by these sets and their local extensions.</p>
+<p><strong>Proof.</strong> At a point <span class="math" data-tex="\(x\)">\(x\)</span>, discard the finitely many closed sets not containing <span class="math" data-tex="\(x\)">\(x\)</span>, by shrinking its neighbourhood to miss them. Every remaining extension has the common value of the continuous function at <span class="math" data-tex="\(x\)">\(x\)</span>. Its derivative bound and a smaller convex neighbourhood give
+<span class="math" data-tex="\(\|h(y)-h(x)\|\leq L\|y-x\|\)">\(\|h(y)-h(x)\|\leq L\|y-x\|\)</span> for <span class="math" data-tex="\(y\)">\(y\)</span> sufficiently near <span class="math" data-tex="\(x\)">\(x\)</span>, whichever remaining piece contains <span class="math" data-tex="\(y\)">\(y\)</span>. This is a centred local bound at each point, with one constant <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>To pass to the whole segment, project onto any fixed unit vector in the target. Parametrize the segment at constant speed and call this scalar projection <span class="math" data-tex="\(v(t)\)">\(v(t)\)</span>. For any <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the continuous function <span class="math" data-tex="\(v(t)-(L+\varepsilon)\|y-x\|t\)">\(v(t)-(L+\varepsilon)\|y-x\|t\)</span> cannot have a maximum greater than its value at zero. Such a maximum would occur at some <span class="math" data-tex="\(t_*&gt;0\)">\(t_*&gt;0\)</span>; the local bound comparing <span class="math" data-tex="\(t_*\)">\(t_*\)</span> to a slightly smaller parameter makes the value at <span class="math" data-tex="\(t_*\)">\(t_*\)</span> strictly smaller than there, a contradiction. Thus <span class="math" data-tex="\(v(1)-v(0)\leq(L+\varepsilon)\|y-x\|\)">\(v(1)-v(0)\leq(L+\varepsilon)\|y-x\|\)</span>. Let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to zero and choose the unit vector in the direction of <span class="math" data-tex="\(h(y)-h(x)\)">\(h(y)-h(x)\)</span>, unless that difference is zero. This gives the claimed norm bound. ∎</p>
+<p><span id="DG-CHAR-15B.lemma-J.4"></span><strong>Lemma J.4 — A normal graph with its orientation.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be a smooth compact manifold. On <span class="math" data-tex="\(F\times\overline B_{2r}\)">\(F\times\overline B_{2r}\)</span> let <span class="math" data-tex="\(e(x,z)\)">\(e(x,z)\)</span> be continuous, satisfy <span class="math" data-tex="\(\|e\|&lt;r/4\)">\(\|e\|&lt;r/4\)</span>, and have Lipschitz constant <span class="math" data-tex="\(\theta&lt;1/2\)">\(\theta&lt;1/2\)</span> in its <span class="math" data-tex="\(z\)">\(z\)</span>-coordinate, uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>. Set <span class="math" data-tex="\(G(x,z)=z+e(x,z)\)">\(G(x,z)=z+e(x,z)\)</span>. For every <span class="math" data-tex="\(y\in B_r\)">\(y\in B_r\)</span>, its inverse image is the graph of a unique continuous function <span class="math" data-tex="\(\zeta_y:F\to B_{2r}\)">\(\zeta_y:F\to B_{2r}\)</span>, hence is homeomorphic to <span class="math" data-tex="\(F\)">\(F\)</span>. In an oriented fibre-first product, the induced fibre orientation is that of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proof.</strong> For each fixed <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, the map <span class="math" data-tex="\(z\mapsto y-e(x,z)\)">\(z\mapsto y-e(x,z)\)</span> preserves the closed ball of radius <span class="math" data-tex="\(2r\)">\(2r\)</span>, since its norm is less than <span class="math" data-tex="\(5r/4\)">\(5r/4\)</span>, and is a contraction of ratio <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Its iterates converge by the geometric-series estimate in the local-inverse proof, giving a unique solution <span class="math" data-tex="\(\zeta(x,y)\)">\(\zeta(x,y)\)</span>. Continuity in <span class="math" data-tex="\(x,y\)">\(x,y\)</span> follows directly from
+<span class="math math-display" data-tex="\[
+(1-\theta)\|\zeta(x,y)-\zeta(x&#x27;,y&#x27;)\|
+\leq\|y-y&#x27;\|+
+\|e(x,\zeta(x&#x27;,y&#x27;))-e(x&#x27;,\zeta(x&#x27;,y&#x27;))\|.
+\tag{J.7}
+\]">\[
+(1-\theta)\|\zeta(x,y)-\zeta(x&#x27;,y&#x27;)\|
+\leq\|y-y&#x27;\|+
+\|e(x,\zeta(x&#x27;,y&#x27;))-e(x&#x27;,\zeta(x&#x27;,y&#x27;))\|.
+\tag{J.7}
+\]</span>
+The second term tends to zero by uniform continuity on the compact product. The projection of this graph to <span class="math" data-tex="\(F\)">\(F\)</span> and its displayed continuous inverse are homeomorphisms.</p>
+<p>For the orientation use the same construction with <span class="math" data-tex="\(e\)">\(e\)</span> replaced by <span class="math" data-tex="\(se\)">\(se\)</span>, <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>. The maps
+<span class="math math-display" data-tex="\[
+(x,z)\longmapsto(x,z+se(x,z))
+\tag{J.8}
+\]">\[
+(x,z)\longmapsto(x,z+se(x,z))
+\tag{J.8}
+\]</span>
+are local homeomorphisms on the open product <span class="math" data-tex="\(F\times B_{2r}\)">\(F\times B_{2r}\)</span>: near any interior point, solve the second coordinate in a small closed ball wholly inside the domain about its existing solution; the uniform contraction and continuity in <span class="math" data-tex="\(x\)">\(x\)</span> give a continuous inverse and an open image there. They are one-to-one on each full fibre because
+<span class="math" data-tex="\(\|G_s(x,z)-G_s(x,z&#x27;)\|\geq(1-s\theta)\|z-z&#x27;\|\)">\(\|G_s(x,z)-G_s(x,z&#x27;)\|\geq(1-s\theta)\|z-z&#x27;\|\)</span>.
+Each map is continuous and injective on the compact closed product, so its inverse on its image is continuous: images of closed subsets are compact and hence closed in the Hausdorff target. Thus these maps form a continuous family of embeddings of the closed product, starting at its identity; their restrictions to its interior are local homeomorphisms, and their inverse graphs vary continuously with <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>Such a family preserves the ambient local orientation. To check this with local homology, take a small closed oriented coordinate ball about one point. Its image boundary misses the image centre. For nearby parameters these compact boundary images still miss that centre, transported continuously, and the maps of the corresponding punctured pairs are homotopic. Their local degrees are equal. The sign is therefore locally constant in <span class="math" data-tex="\(s\)">\(s\)</span>, hence constantly <span class="math" data-tex="\(+1\)">\(+1\)</span> from <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. In the product identification (J.8), target coordinates are still the last coordinates. Removing their positive local generator leaves precisely the positive <span class="math" data-tex="\(F\)">\(F\)</span>-generator. This proves the fibre-first orientation assertion, also when the graph is only a topological manifold. ∎</p>
+<h3 id="j-4-a-pl-approximation-that-preserves-the-fibre-signature">J.4. A PL approximation that preserves the fibre signature</h3>
+<p><span id="DG-CHAR-15B.theorem-J.5"></span><strong>Theorem J.5 — Comparing one smooth map.</strong> Let <span class="math" data-tex="\(t:K\to M^n\)">\(t:K\to M^n\)</span> be a finite smooth-compatible triangulation, with <span class="math" data-tex="\(M\)">\(M\)</span> closed oriented, and let <span class="math" data-tex="\(f:M\to S^k\)">\(f:M\to S^k\)</span> be smooth, <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>. There is a PL map <span class="math" data-tex="\(g:K\to Q\)">\(g:K\to Q\)</span>, homotopic to <span class="math" data-tex="\(s^{-1}ft\)">\(s^{-1}ft\)</span>, such that its generic oriented fibres have the signature of a smooth regular fibre of <span class="math" data-tex="\(f\)">\(f\)</span>, when <span class="math" data-tex="\(n-k\)">\(n-k\)</span> is divisible by four.</p>
+<p><strong>Proof: local interpolation.</strong> Choose a regular value <span class="math" data-tex="\(y_0\)">\(y_0\)</span> in the image under <span class="math" data-tex="\(s\)">\(s\)</span> of a facet interior. This is possible because both the regular-value set and the union of those interiors are dense open subsets. Fix positive affine coordinates <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> on that facet with <span class="math" data-tex="\(\kappa(s^{-1}(y_0))=0\)">\(\kappa(s^{-1}(y_0))=0\)</span>; only these local coordinates are translated, while the global simplex stays centred as in LemmaJ.1. Choose the coordinate ball <span class="math" data-tex="\(B_{3r}\)">\(B_{3r}\)</span> with closure inside the facet interior and consisting of regular values for <span class="math" data-tex="\(q=\kappa s^{-1}f\)">\(q=\kappa s^{-1}f\)</span>. Shrink <span class="math" data-tex="\(r\)">\(r\)</span>, if necessary, to obtain the product <span class="math" data-tex="\(\Psi:F\times B_{3r}\to f^{-1}(s\kappa^{-1}B_{3r})\)">\(\Psi:F\times B_{3r}\to f^{-1}(s\kappa^{-1}B_{3r})\)</span> from LemmaI.2, with <span class="math" data-tex="\(q\Psi(x,z)=z\)">\(q\Psi(x,z)=z\)</span>. In the rest of this proof, a target ball in <span class="math" data-tex="\(Q\)">\(Q\)</span> means its image under <span class="math" data-tex="\(\kappa^{-1}\)">\(\kappa^{-1}\)</span>; expressions such as <span class="math" data-tex="\(sB_{3r}\)">\(sB_{3r}\)</span> use this convention.</p>
+<p>Let <span class="math" data-tex="\(h=s^{-1}ft:K\to Q\)">\(h=s^{-1}ft:K\to Q\)</span>. On the face-compatible subdivisions of LemmaJ.2, define <span class="math" data-tex="\(H_N:K\to\mathbb R^{k+1}\)">\(H_N:K\to\mathbb R^{k+1}\)</span> by taking the actual values <span class="math" data-tex="\(h(v)\)">\(h(v)\)</span> at every vertex and interpolating affinely. Uniform continuity makes the positive bound <span class="math" data-tex="\(\eta_N=1/N+\sup\|H_N-h\|\)">\(\eta_N=1/N+\sup\|H_N-h\|\)</span> tend to zero. Apply the annular retraction of LemmaJ.1 to obtain a PL map <span class="math" data-tex="\(g_N\)">\(g_N\)</span> homotopic to <span class="math" data-tex="\(h\)">\(h\)</span>, converging to it uniformly by (J.5). No affine interpolation across different sphere facets was declared to take values in the sphere; the annular retraction is the step that ensures this globally.</p>
+<p>For large <span class="math" data-tex="\(N\)">\(N\)</span>, every closed source simplex of <span class="math" data-tex="\(K_N\)">\(K_N\)</span> meeting <span class="math" data-tex="\(t^{-1}f^{-1}(s\overline B_{2r})\)">\(t^{-1}f^{-1}(s\overline B_{2r})\)</span> is mapped by <span class="math" data-tex="\(h\)">\(h\)</span> entirely into the facet interior over <span class="math" data-tex="\(B_{3r}\)">\(B_{3r}\)</span>. This follows from compactness and uniform continuity, since the smaller closed target ball has positive distance from the complement of the larger open ball. Their union, with all faces, is a subcomplex <span class="math" data-tex="\(A_N\)">\(A_N\)</span>, and the smaller inverse image lies in its relative interior in <span class="math" data-tex="\(K\)">\(K\)</span>: all closed simplices incident to each of its points meet that inverse image and are included. On each simplex of <span class="math" data-tex="\(A_N\)">\(A_N\)</span>, interpolation of the vertex images remains in the one convex target facet. Hence <span class="math" data-tex="\(H_N\)">\(H_N\)</span> takes values in <span class="math" data-tex="\(Q\)">\(Q\)</span> there and the retraction fixes it exactly. Thus <span class="math" data-tex="\(g_N=H_N\)">\(g_N=H_N\)</span> on <span class="math" data-tex="\(A_N\)">\(A_N\)</span>.</p>
+<p><strong>Proof: uniform normal control.</strong> The coordinate map <span class="math" data-tex="\(h\)">\(h\)</span> is smooth on the closed portions of each original simplex over a slightly larger compact target ball inside the facet. Its derivatives there have a common modulus of continuity. LemmaJ.2 therefore gives uniform first-derivative convergence of <span class="math" data-tex="\(H_N\)">\(H_N\)</span> to <span class="math" data-tex="\(h\)">\(h\)</span> on the small source simplices meeting this region. One can apply its edge estimate locally: every such small simplex is entirely in this coordinate region, and the finitely many original smooth extensions give common bounds and moduli on a compact neighbourhood of the smaller region.</p>
+<p>In full-dimensional original simplices, the derivative of <span class="math" data-tex="\(t\)">\(t\)</span> is invertible as a map to a manifold chart, including along closed faces. Its inverse norms are bounded on these finitely many compact sets. Local inverse extensions of each such piece transfer the preceding derivative errors to the smooth <span class="math" data-tex="\(M\)">\(M\)</span>-coordinates, with one common multiplicative bound. Compose with the fixed product diffeomorphism <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>; its derivatives in the ball directions are bounded on <span class="math" data-tex="\(F\times\overline B_{2r}\)">\(F\times\overline B_{2r}\)</span>. Consequently the continuous error
+<span class="math math-display" data-tex="\[
+e_N(x,z)=\kappa\!\left(g_N\bigl(t^{-1}\Psi(x,z)\bigr)\right)-z
+\tag{J.9}
+\]">\[
+e_N(x,z)=\kappa\!\left(g_N\bigl(t^{-1}\Psi(x,z)\bigr)\right)-z
+\tag{J.9}
+\]</span>
+has, on each closed smooth piece, extensions with ball-direction derivative norm tending uniformly to zero. Here we use affine coordinates on the fixed facet, and their centre is zero. The finitely many pieces come from the small simplices of <span class="math" data-tex="\(K_N\)">\(K_N\)</span>; at their boundaries the extensions need not have identical derivatives, but their values agree. Choose <span class="math" data-tex="\(N\)">\(N\)</span> so large that their derivative norms on sufficiently small extension neighbourhoods are all less than <span class="math" data-tex="\(1/3\)">\(1/3\)</span>. LemmaJ.3 applied on each straight ball-coordinate segment then gives a common Lipschitz constant <span class="math" data-tex="\(\theta\leq1/3\)">\(\theta\leq1/3\)</span>, for each fixed <span class="math" data-tex="\(x\)">\(x\)</span>. Uniform convergence also gives <span class="math" data-tex="\(\sup\|e_N\|&lt;r/4\)">\(\sup\|e_N\|&lt;r/4\)</span>. The finite-piece lemma, rather than an assertion of global smoothness of <span class="math" data-tex="\(g_Nt^{-1}\)">\(g_Nt^{-1}\)</span>, supplies this crucial bound.</p>
+<p><strong>Proof: the complete fibre.</strong> Uniform convergence further ensures that every inverse image under <span class="math" data-tex="\(g_Nt^{-1}\)">\(g_Nt^{-1}\)</span> of a point in <span class="math" data-tex="\(B_r\)">\(B_r\)</span> lies in <span class="math" data-tex="\(f^{-1}(sB_{2r})\)">\(f^{-1}(sB_{2r})\)</span>. To see this, the two disjoint compact subsets <span class="math" data-tex="\(s\overline B_r\)">\(s\overline B_r\)</span> and <span class="math" data-tex="\(S^k-sB_{2r}\)">\(S^k-sB_{2r}\)</span> have positive distance; compose the uniform convergence with the uniformly continuous <span class="math" data-tex="\(s\)">\(s\)</span>. Taking the resulting error smaller than that distance rules out any other inverse-image points.</p>
+<p>LemmaJ.4 now identifies the whole inverse image over every point of <span class="math" data-tex="\(B_r\)">\(B_r\)</span> with a graph over <span class="math" data-tex="\(F\)">\(F\)</span>, preserving orientation. If <span class="math" data-tex="\(F\)">\(F\)</span> is empty, first choose the ball to miss <span class="math" data-tex="\(f(M)\)">\(f(M)\)</span>; uniform convergence makes the corresponding <span class="math" data-tex="\(g_N\)">\(g_N\)</span>-fibres empty too, so the same conclusion holds. Make <span class="math" data-tex="\(g_N\)">\(g_N\)</span> simplicial using LemmaE.1 and choose a generic target point in <span class="math" data-tex="\(B_r\)">\(B_r\)</span> outside the finitely many lower-dimensional target faces. Such a point exists because their finite union has empty interior. Its fibre is the finite rational homology manifold of SectionA and is also homeomorphic, with its induced orientation, to the smooth <span class="math" data-tex="\(F\)">\(F\)</span>. Its rational middle cup form and hence its signature coincide with those of <span class="math" data-tex="\(F\)">\(F\)</span>. SectionF proves that the generic signature has this same value at every generic target point. The map <span class="math" data-tex="\(g=g_N\)">\(g=g_N\)</span> has the required homotopy and signature. ∎</p>
+<h3 id="j-5-the-classes-in-every-degree">J.5. The classes in every degree</h3>
+<p><span id="DG-CHAR-15B.theorem-J.6"></span><strong>Theorem J.6 — Conditional smooth comparison.</strong> For every finite smooth-compatible triangulation <span class="math" data-tex="\(t:K\to M^n\)">\(t:K\to M^n\)</span> of a smooth closed oriented manifold,
+<span class="math math-display" data-tex="\[
+\ell_i(K)=t^*L_i(TM),\qquad
+\mathcal P_i(K)=t^*p_i(TM)_{\mathbb Q}
+\quad(i\geq0).
+\tag{J.10}
+\]">\[
+\ell_i(K)=t^*L_i(TM),\qquad
+\mathcal P_i(K)=t^*p_i(TM)_{\mathbb Q}
+\quad(i\geq0).
+\tag{J.10}
+\]</span>
+Here <span class="math" data-tex="\(\mathcal P_i\)">\(\mathcal P_i\)</span> is the recursive rational Pontryagin recovery of CorollaryG.4. The equality gives the same class on <span class="math" data-tex="\(M\)">\(M\)</span> for every such given triangulation. It does not assert existence of those triangulations or an integral extension of the Pontryagin classes.</p>
+<p><strong>Proof: the strict range.</strong> First suppose <span class="math" data-tex="\(4i&lt;(n-1)/2\)">\(4i&lt;(n-1)/2\)</span>, with <span class="math" data-tex="\(k=n-4i\geq2\)">\(k=n-4i\geq2\)</span>. For every smooth <span class="math" data-tex="\(f:M\to S^k\)">\(f:M\to S^k\)</span>, TheoremJ.5, the defining property of <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span>, and TheoremI.3 give
+<span class="math math-display" data-tex="\[
+\left\langle \ell_i(K)\smile t^*f^*u,[K]\right\rangle
+=\sigma(F_y)
+=\left\langle t^*L_i(TM)\smile t^*f^*u,[K]\right\rangle.
+\tag{J.11}
+\]">\[
+\left\langle \ell_i(K)\smile t^*f^*u,[K]\right\rangle
+=\sigma(F_y)
+=\left\langle t^*L_i(TM)\smile t^*f^*u,[K]\right\rangle.
+\tag{J.11}
+\]</span>
+Orient <span class="math" data-tex="\(K\)">\(K\)</span> by <span class="math" data-tex="\(t\)">\(t\)</span>, so its fundamental class maps to <span class="math" data-tex="\([M]\)">\([M]\)</span>; the chosen positive <span class="math" data-tex="\(s\)">\(s\)</span> identifies the sphere generators in this formula.</p>
+<p>These pulled-back classes span all <span class="math" data-tex="\(H^k(K;\mathbb Q)\)">\(H^k(K;\mathbb Q)\)</span>. By TheoremC.3, that cohomology is spanned by the pullbacks of a sphere generator under continuous maps <span class="math" data-tex="\(K\to S^k\)">\(K\to S^k\)</span>. Compose such a map with <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> to get a continuous map on <span class="math" data-tex="\(M\)">\(M\)</span>. Every continuous map from compact smooth <span class="math" data-tex="\(M\)">\(M\)</span> to the unit sphere is homotopic to a smooth one: choose a finite open cover on which its oscillation is less than <span class="math" data-tex="\(\varepsilon&lt;1/2\)">\(\varepsilon&lt;1/2\)</span>, a smooth partition of unity <span class="math" data-tex="\(\theta_j\)">\(\theta_j\)</span> subordinate to it, and sample values <span class="math" data-tex="\(v_j\)">\(v_j\)</span> from its members. The smooth vector map <span class="math" data-tex="\(v=\sum_j\theta_jv_j\)">\(v=\sum_j\theta_jv_j\)</span> is within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of the original unit vector at each point. It is never zero, and <span class="math" data-tex="\(v/\|v\|\)">\(v/\|v\|\)</span> is smooth. Normalizing the straight homotopy between the original vector and <span class="math" data-tex="\(v\)">\(v\)</span> gives the desired homotopy, since each vector stays within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of the original unit vector. The smooth subordinate partition construction was proved in Vector bundles, Section5, in the smooth-metric argument following the tangent/normal splitting. Thus the smooth maps used in (J.11) suffice. Rational perfect duality in SectionD makes equality of all these pairings imply <span class="math" data-tex="\(\ell_i(K)=t^*L_i(TM)\)">\(\ell_i(K)=t^*L_i(TM)\)</span> in the strict range.</p>
+<p><strong>Proof: stabilization.</strong> For an arbitrary positive <span class="math" data-tex="\(i\)">\(i\)</span>, choose <span class="math" data-tex="\(m&gt;4i\)">\(m&gt;4i\)</span> and <span class="math" data-tex="\(n+m&gt;8i+1\)">\(n+m&gt;8i+1\)</span>. There is a smooth-compatible product triangulation of <span class="math" data-tex="\(M\times S^m\)">\(M\times S^m\)</span> from the given <span class="math" data-tex="\(t\)">\(t\)</span> and the explicit radial sphere triangulation (J.1). Indeed triangulate every convex product cell <span class="math" data-tex="\(\sigma\times\tau\)">\(\sigma\times\tau\)</span> by its face-chain coning, making the same choices on shared faces as in LemmaA.3. Each resulting simplex is affine in a product of original simplex affine hulls. The smooth extensions of <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> have injective product derivative; its restriction to every such simplex is injective. Thus the product homeomorphism is smooth and full rank on every closed simplex, exactly the asserted compatibility. No general existence theorem is used for this particular product.</p>
+<p>The strict-range result on that product yields
+<span class="math math-display" data-tex="\[
+\ell_i(K\times Q_m)=(t\times s_m)^*L_i\bigl(T(M\times S^m)\bigr).
+\tag{J.12}
+\]">\[
+\ell_i(K\times Q_m)=(t\times s_m)^*L_i\bigl(T(M\times S^m)\bigr).
+\tag{J.12}
+\]</span>
+The sphere's tangent bundle plus its outward normal line is the trivial <span class="math" data-tex="\((m+1)\)">\((m+1)\)</span>-plane bundle, by the map sending tangent and normal vectors to their sum in <span class="math" data-tex="\(\mathbb R^{m+1}\)">\(\mathbb R^{m+1}\)</span>. Hence its rational Pontryagin and L-classes in positive degrees vanish. The product tangent splitting and rational multiplicativity give <span class="math" data-tex="\(L_i(T(M\times S^m))=\operatorname{pr}_M^*L_i(TM)\)">\(L_i(T(M\times S^m))=\operatorname{pr}_M^*L_i(TM)\)</span>. The proved stabilization in TheoremG.3 gives <span class="math" data-tex="\(\ell_i(K\times Q_m)=\operatorname{pr}_K^*\ell_i(K)\)">\(\ell_i(K\times Q_m)=\operatorname{pr}_K^*\ell_i(K)\)</span>. Restrict (J.12) to a sphere-point slice to obtain the first equality of (J.10). For <span class="math" data-tex="\(i=0\)">\(i=0\)</span> both classes are the unit; degrees above <span class="math" data-tex="\(n\)">\(n\)</span> vanish on both sides.</p>
+<p>Finally the positive all-degree coefficients in LemmaB.1 give a unique recursive solution of <span class="math" data-tex="\(\ell_i=L_i(\mathcal P_1,\ldots,\mathcal P_i)\)">\(\ell_i=L_i(\mathcal P_1,\ldots,\mathcal P_i)\)</span>. The actual smooth rational Pontryagin classes satisfy these same equations by the first equality. Induction therefore gives the second equality in (J.10). Transporting by either of two given triangulations identifies their combinatorial classes on <span class="math" data-tex="\(M\)">\(M\)</span> with these same smooth classes, proving the stated independence. Every conclusion has exactly the given-triangulation hypothesis. ∎</p>
+<p><span id="DG-CHAR-15B.corollary-J.7"></span><strong>Corollary J.7 — Descent for an unoriented smooth manifold.</strong> Let <span class="math" data-tex="\(t:K\to M\)">\(t:K\to M\)</span> be a given finite smooth-compatible triangulation of a smooth closed manifold, with no orientation assumed. The rational combinatorial classes descend uniquely from its orientation cover and satisfy (J.10). They are natural under PL homeomorphisms of these triangulated manifolds.</p>
+<p><strong>Proof.</strong> In dimension zero the conclusion is the unit in degree zero and vanishing in positive degrees, so assume positive dimension. In smooth charts the two orientation choices are exchanged precisely when the determinant of a chart transition is negative. These locally constant signs give a two-sheeted orientation cover <span class="math" data-tex="\(\widetilde M\to M\)">\(\widetilde M\to M\)</span>, whose total space is canonically oriented. Equivalently its sheets are the two generators of the integer point-local top homology; the equality with the determinant convention was proved in manifold Section3. This description makes the cover natural under every homeomorphism, not only a smooth one: transport a relative fundamental class on a small coordinate ball, and its coherent local restrictions give the transported generator throughout that neighbourhood. Thus the induced action on its two locally constant sheets is continuous. If a component is already oriented, its cover is the disjoint union of its two orientation choices.</p>
+<p>Pull this cover back along <span class="math" data-tex="\(t\)">\(t\)</span>. Each closed simplex lifts once for each selected vertex lift, by the full contractible-disk lifting proof; the lifts agree on a face when their chosen sheets agree. They form a finite covering complex <span class="math" data-tex="\(\widetilde K\to K\)">\(\widetilde K\to K\)</span>, with two affine copies of every simplex. The lifted <span class="math" data-tex="\(\widetilde t:\widetilde K\to\widetilde M\)">\(\widetilde t:\widetilde K\to\widetilde M\)</span> is a smooth-compatible triangulation, since the covering charts on <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> are local diffeomorphisms. It inherits the canonical orientation.</p>
+<p>The deck transformation reverses that orientation. SectionF proves that reversing orientation does not change the class <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span>: it changes both the fibre signature and the fundamental-class evaluation sign, so the uniquely defined class stays fixed, and the same holds after stabilization. Its PL naturality therefore makes <span class="math" data-tex="\(\ell_i(\widetilde K)\)">\(\ell_i(\widetilde K)\)</span> deck invariant. The transfer identities (K.2), or the complete double-cover proof in Pontryagin Exercise6.5, identify the image of
+<span class="math math-display" data-tex="\[
+q^*:H^*(K;\mathbb Q)\longrightarrow H^*(\widetilde K;\mathbb Q)
+\]">\[
+q^*:H^*(K;\mathbb Q)\longrightarrow H^*(\widetilde K;\mathbb Q)
+\]</span>
+with the deck invariants and make this map injective. Define <span class="math" data-tex="\(\ell_i(K)\)">\(\ell_i(K)\)</span> as the unique class whose pullback is <span class="math" data-tex="\(\ell_i(\widetilde K)\)">\(\ell_i(\widetilde K)\)</span>. This agrees with the oriented definition when an orientation was already available, because the two cover components have the same orientation-independent class.</p>
+<p>The oriented comparison gives
+<span class="math" data-tex="\(\ell_i(\widetilde K)=\widetilde t^*L_i(T\widetilde M)=q^*t^*L_i(TM)\)">\(\ell_i(\widetilde K)=\widetilde t^*L_i(T\widetilde M)=q^*t^*L_i(TM)\)</span>, since a local diffeomorphism identifies the lifted tangent bundle with the pulled-back one. Injectivity of <span class="math" data-tex="\(q^*\)">\(q^*\)</span> proves the first equality of (J.10), and recursive recovery proves the Pontryagin equality. A PL homeomorphism lifts to the orientation covers by its action on the local generators. The lift is PL: refine the base map to affine simplex pieces and lift each such piece into an affine covering simplex; uniqueness makes the face restrictions agree. Naturality of the oriented classes upstairs and injectivity downstairs prove the assertion. The argument concerns characteristic classes; it asserts no unoriented bordism-detection theorem. ∎</p>
+<p>The comparison above proves an equality for each given triangulation. <a href="DG-CHAR-15C.html">the triangulation companion</a> independently constructs such triangulations and proves the needed relative boundary extension.</p>
+<h2 id="k-lens-spaces-and-the-rational-integral-distinction">K. Lens spaces and the rational/integral distinction</h2>
+<p>We derive these examples from the full <a href="DG-CHAR-03.html">covering</a>, <a href="DG-CHAR-09.html">Chern</a>, <a href="DG-CHAR-10.html">Pontryagin</a> and <a href="DG-CHAR-08.html">Gysin</a> proofs already in the course. They illustrate what rational invariance retains and what rational coefficient change discards. The torsion calculation is not, by itself, a counterexample to an integral PL-invariance theorem.</p>
+<h3 id="k-1-the-finite-quotient-and-its-tangent-bundle">K.1. The finite quotient and its tangent bundle</h3>
+<p>Let <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>, let <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, and choose integers <span class="math" data-tex="\(q_1,\ldots,q_d\)">\(q_1,\ldots,q_d\)</span> each relatively prime to <span class="math" data-tex="\(r\)">\(r\)</span>. With <span class="math" data-tex="\(\zeta=\exp(2\pi i/r)\)">\(\zeta=\exp(2\pi i/r)\)</span>, let its cyclic group act on the unit sphere in <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> by
+<span class="math math-display" data-tex="\[
+(z_1,\ldots,z_d)\longmapsto
+(\zeta^{q_1}z_1,\ldots,\zeta^{q_d}z_d).
+\tag{K.1}
+\]">\[
+(z_1,\ldots,z_d)\longmapsto
+(\zeta^{q_1}z_1,\ldots,\zeta^{q_d}z_d).
+\tag{K.1}
+\]</span>
+Write <span class="math" data-tex="\(L=L^{2d-1}(r;q_1,\ldots,q_d)\)">\(L=L^{2d-1}(r;q_1,\ldots,q_d)\)</span> for the quotient.</p>
+<p><span id="DG-CHAR-15B.proposition-K.1"></span><strong>Proposition K.1 — Lens-space quotient and rational cohomology.</strong> The quotient is a smooth closed oriented manifold, and its covering sphere has <span class="math" data-tex="\(r\)">\(r\)</span> sheets. Its rational cohomology is <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> in degrees zero and <span class="math" data-tex="\(2d-1\)">\(2d-1\)</span>, and zero in all other degrees.</p>
+<p><strong>Proof.</strong> If a group element fixes a sphere point, at least one coordinate is nonzero. On that coordinate <span class="math" data-tex="\(\zeta^{a q_j}=1\)">\(\zeta^{a q_j}=1\)</span>; relative primeness forces <span class="math" data-tex="\(r\mid a\)">\(r\mid a\)</span>. Thus the action is free. Around any point choose a sufficiently small sphere coordinate neighbourhood whose finitely many translates are disjoint: the point and its distinct translates have positive pairwise distances, and shrinking its neighbourhood preserves that separation. Projection maps each such neighbourhood diffeomorphically onto its quotient image. These charts give the smooth manifold structure and the <span class="math" data-tex="\(r\)">\(r\)</span>-sheeted covering. A finite group quotient of a compact Hausdorff space is compact Hausdorff: distinct finite orbits have disjoint invariant neighbourhoods obtained by finite intersections and unions of separating neighbourhoods. The chart cover also gives second countability, by projecting a countable basis from the sphere. Each complex rotation preserves the real ambient orientation and the outward normal, so its restriction preserves the boundary sphere orientation; the charts therefore give a consistent quotient orientation. There is no boundary.</p>
+<p>For completeness, define the chain transfer <span class="math" data-tex="\(T\)">\(T\)</span> on a singular simplex of <span class="math" data-tex="\(L\)">\(L\)</span> to be the sum of its <span class="math" data-tex="\(r\)">\(r\)</span> lifts to the sphere. A simplex has one unique lift for each selected vertex lift: the complete covering homotopy proof in the classifying-maps chapter applies to its contractible parameter simplex. Restricting all these lifts to any face enumerates exactly the lifts of that face, so <span class="math" data-tex="\(T\partial=\partial T\)">\(T\partial=\partial T\)</span>. Projection followed after transfer is <span class="math" data-tex="\(r\)">\(r\)</span> times the identity on chains, and transfer after projection is the sum of the <span class="math" data-tex="\(r\)">\(r\)</span> deck maps. Dualizing gives a cohomology transfer <span class="math" data-tex="\(\tau\)">\(\tau\)</span> with
+<span class="math math-display" data-tex="\[
+\tau p^*=r\,1,\qquad
+p^*\tau=\sum_{a=0}^{r-1}(\zeta^a)^*.
+\tag{K.2}
+\]">\[
+\tau p^*=r\,1,\qquad
+p^*\tau=\sum_{a=0}^{r-1}(\zeta^a)^*.
+\tag{K.2}
+\]</span>
+These are the same proved lift-and-face identities as the double-cover calculation in Pontryagin Exercise6.5, now with all <span class="math" data-tex="\(r\)">\(r\)</span> sheets. Over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, the first identity makes <span class="math" data-tex="\(p^*\)">\(p^*\)</span> injective, and the second identifies its image with the deck invariants: an invariant class <span class="math" data-tex="\(b\)">\(b\)</span> equals <span class="math" data-tex="\(p^*(\tau b/r)\)">\(p^*(\tau b/r)\)</span>. The sphere has cohomology only in degree zero and its top degree. Every deck map acts as the identity there, since it is positive. This proves the assertion, including <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, where the sphere and quotient are circles. ∎</p>
+<p>Define the complex line
+<span class="math math-display" data-tex="\[
+\eta=(S^{2d-1}\times\mathbb C)/
+\bigl((z,w)\sim(\zeta\cdot z,\zeta w)\bigr),
+\qquad t=c_1(\eta)\in H^2(L;\mathbb Z).
+\tag{K.3}
+\]">\[
+\eta=(S^{2d-1}\times\mathbb C)/
+\bigl((z,w)\sim(\zeta\cdot z,\zeta w)\bigr),
+\qquad t=c_1(\eta)\in H^2(L;\mathbb Z).
+\tag{K.3}
+\]</span>
+Its local bundle charts are obtained by choosing one covering sheet over each quotient chart. Tensor powers have the corresponding power character, and <span class="math" data-tex="\(\eta^{\otimes r}\)">\(\eta^{\otimes r}\)</span> is canonically trivial. First-Chern tensor additivity, proved in the Chern chapter from the full line-bundle normalization, gives <span class="math" data-tex="\(rt=0\)">\(rt=0\)</span>.</p>
+<p><span id="DG-CHAR-15B.proposition-K.2"></span><strong>Proposition K.2 — Integral tangent Pontryagin formula.</strong> The stable tangent bundle satisfies
+<span class="math math-display" data-tex="\[
+TL\oplus\varepsilon^1_{\mathbb R}
+\cong\left(\bigoplus_{j=1}^d\eta^{\otimes q_j}\right)_{\mathbb R},
+\qquad
+p(TL)=\prod_{j=1}^d(1+q_j^2t^2).
+\tag{K.4}
+\]">\[
+TL\oplus\varepsilon^1_{\mathbb R}
+\cong\left(\bigoplus_{j=1}^d\eta^{\otimes q_j}\right)_{\mathbb R},
+\qquad
+p(TL)=\prod_{j=1}^d(1+q_j^2t^2).
+\tag{K.4}
+\]</span>
+The formula is integral, with terms above the manifold dimension omitted. In particular every positive-degree rational Pontryagin class is zero.</p>
+<p><strong>Proof.</strong> On the sphere the tangent bundle plus its radial line is the trivial real ambient bundle <span class="math" data-tex="\(S^{2d-1}\times\mathbb C^d\)">\(S^{2d-1}\times\mathbb C^d\)</span>, by the map <span class="math" data-tex="\((v,a)\mapsto v+az\)">\((v,a)\mapsto v+az\)</span>. This map is equivariant for (K.1), acting on the ambient fibre by its same complex rotations. The radial section <span class="math" data-tex="\(z\)">\(z\)</span> is also equivariant, and gives a nowhere-zero section of the quotient radial line, so that line is trivial. Dividing the ambient bundle by the group identifies its <span class="math" data-tex="\(j\)">\(j\)</span>-th complex coordinate with the line of character <span class="math" data-tex="\(\zeta^{q_j}\)">\(\zeta^{q_j}\)</span>, namely <span class="math" data-tex="\(\eta^{\otimes q_j}\)">\(\eta^{\otimes q_j}\)</span>, also for negative <span class="math" data-tex="\(q_j\)">\(q_j\)</span> by dual tensor powers. This proves the stable splitting.</p>
+<p>Its complex summands have first classes <span class="math" data-tex="\(q_jt\)">\(q_jt\)</span>, by tensor additivity and the dual rule. The exact underlying-complex formula in Pontryagin Section2, (2.3), gives the product in (K.4). There is no two-torsion qualification here: it is the complex-bundle identity obtained by complexifying to <span class="math" data-tex="\(V\oplus\overline V\)">\(V\oplus\overline V\)</span>, applying the integral Chern Whitney formula, and pairing the roots <span class="math" data-tex="\(q_jt,-q_jt\)">\(q_jt,-q_jt\)</span>. Adding a trivial real line does not change Pontryagin classes by their definition and stability. Since <span class="math" data-tex="\(rt=0\)">\(rt=0\)</span>, its image in rational cohomology is zero, proving the final assertion. This also agrees with PropositionK.1: no positive degree divisible by four is the odd top degree. ∎</p>
+<p>For a given smooth-compatible triangulation of <span class="math" data-tex="\(L\)">\(L\)</span>, TheoremJ.6 therefore gives <span class="math" data-tex="\(\mathcal P_i=0\)">\(\mathcal P_i=0\)</span> for every <span class="math" data-tex="\(i&gt;0\)">\(i&gt;0\)</span>. Any PL homeomorphism between such triangulated lens spaces preserves these zero rational classes by SectionG. They supply no distinction between their PL types. In dimension three <span class="math" data-tex="\(p_1\)">\(p_1\)</span> is already zero integrally by dimension; even integral Pontryagin classes cannot distinguish three-dimensional lens spaces. No classification of lens spaces is asserted here.</p>
+<h3 id="k-1a-an-explicit-compatible-triangulation-of-every-weighted-lens-space">K.1a. An explicit compatible triangulation of every weighted lens space</h3>
+<p>The lens spaces in PropositionK.1 possess a finite smooth-compatible triangulation. Here is a construction that also handles <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, without invoking general smooth triangulation.</p>
+<p>In each coordinate complex plane choose the regular <span class="math" data-tex="\(2r\)">\(2r\)</span>-gon <span class="math" data-tex="\(P_j\)">\(P_j\)</span> with vertices <span class="math" data-tex="\(\exp(\pi i b/r)e_j\)">\(\exp(\pi i b/r)e_j\)</span>, <span class="math" data-tex="\(0\leq b&lt;2r\)">\(0\leq b&lt;2r\)</span>, and let <span class="math" data-tex="\(P\)">\(P\)</span> be the convex hull of all these vertices in <span class="math" data-tex="\(\mathbb R^{2d}\)">\(\mathbb R^{2d}\)</span>. If <span class="math" data-tex="\(\mu_j\)">\(\mu_j\)</span> is the positive homogeneous gauge of <span class="math" data-tex="\(P_j\)">\(P_j\)</span>, then
+<span class="math math-display" data-tex="\[
+P=\{(v_1,\ldots,v_d):\ \sum_j\mu_j(v_j)\leq1\}.
+\tag{K.10}
+\]">\[
+P=\{(v_1,\ldots,v_d):\ \sum_j\mu_j(v_j)\leq1\}.
+\tag{K.10}
+\]</span>
+Indeed a convex combination of points from the coordinate polygons satisfies this inequality by convexity. Conversely, take the weights <span class="math" data-tex="\(\mu_j(v_j)\)">\(\mu_j(v_j)\)</span>, write each nonzero coordinate as that weight times a boundary point of its polygon, and put the remaining weight at the origin, which belongs to every polygon. This proves equality. The origin is interior, since the polygons contain disks of positive radius in every coordinate plane.</p>
+<p>Choose one edge of each polygon. Their join is a facet of <span class="math" data-tex="\(P\)">\(P\)</span>: add their positive supporting linear functionals, each normalized to equal one on its chosen edge. Equality in the resulting support inequality holds precisely on that join. Every facet arises this way, as can also be seen by writing each gauge as the maximum of its finitely many edge functionals in (K.10). Its <span class="math" data-tex="\(2d\)">\(2d\)</span> vertices are affinely independent. In each coordinate plane the two edge endpoints are linearly independent, because an edge of a regular <span class="math" data-tex="\(2r\)">\(2r\)</span>-gon does not lie on a line through the origin. A linear relation among the vertices therefore vanishes separately in each coordinate plane. Thus <span class="math" data-tex="\(\partial P\)">\(\partial P\)</span> is a finite simplicial sphere. The rotations (K.1) act simplicially, sending a vertex index <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(b+2q_j\)">\(b+2q_j\)</span> in its coordinate plane.</p>
+<p>Radial projection <span class="math" data-tex="\(\rho:\partial P\to S^{2d-1}\)">\(\rho:\partial P\to S^{2d-1}\)</span> is an equivariant homeomorphism. Each ray meets the boundary once by (K.10), which also gives a continuous radial inverse. On a facet in a support hyperplane <span class="math" data-tex="\(\ell(v)=1\)">\(\ell(v)=1\)</span>, the radial derivative has kernel <span class="math" data-tex="\(\mathbb Rv\)">\(\mathbb Rv\)</span>; that line meets the tangent hyperplane <span class="math" data-tex="\(\ell(w)=0\)">\(\ell(w)=0\)</span> only at zero. Hence <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is smooth and full rank on each closed facet and all its faces, with a smooth extension to a neighbourhood in its affine hull. The action on <span class="math" data-tex="\(\partial P\)">\(\partial P\)</span> is free, because its equivariant radial image is the free sphere action.</p>
+<p>We verify that a finite invariant subdivision has a genuine simplicial quotient. In the Euclidean metric let
+<span class="math math-display" data-tex="\[
+\delta=\min_{\substack{v\in\partial P\\1\leq a&lt;r}}
+ \|v-\zeta^a v\|&gt;0.
+\tag{K.11}
+\]">\[
+\delta=\min_{\substack{v\in\partial P\\1\leq a&lt;r}}
+ \|v-\zeta^a v\|&gt;0.
+\tag{K.11}
+\]</span>
+Positivity follows from freeness and compactness; the action is by isometries. Barycentric subdivision is equivariant. Its simplex mesh tends to zero: the diameter of each barycentric simplex in a simplex of dimension <span class="math" data-tex="\(b\leq2d-1\)">\(b\leq2d-1\)</span> is at most <span class="math" data-tex="\(b/(b+1)\)">\(b/(b+1)\)</span> times the original diameter, by comparing the barycentres of nested faces; iteration gives a uniform geometric bound. Choose a finite iterate with mesh less than <span class="math" data-tex="\(\delta/3\)">\(\delta/3\)</span>. Every closed vertex star then has diameter less than <span class="math" data-tex="\(2\delta/3\)">\(2\delta/3\)</span>.</p>
+<p>No closed vertex star meets a nonidentity translate of itself. Otherwise <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(\zeta^a v\)">\(\zeta^a v\)</span> would both lie in that star, contradicting (K.11). In particular the vertices of a simplex have distinct group orbits. Make the quotient complex's vertices those orbits and its simplices the orbit sets of simplex vertices. Suppose two simplices have the same orbit set, or compare their vertices belonging to common quotient faces. Align one common vertex by a group element. The aligned simplices both lie in its closed star; two vertices there in the same orbit must be identical, again by (K.11). Thus all shared quotient vertices align simultaneously, and simplices with identical orbit sets are translates. Barycentric coordinates consequently give a continuous bijection from the finite orbit realization onto the quotient polyhedron, with inverse on each quotient simplex. It is a homeomorphism by compactness and the Hausdorff quotient property proved in PropositionK.1.</p>
+<p>Finally the descended map <span class="math" data-tex="\(\rho\)">\(\rho\)</span> gives a homeomorphism from this quotient complex to <span class="math" data-tex="\(L\)">\(L\)</span>. On a closed quotient simplex choose its lifted simplex. The radial extension on that simplex's affine hull, followed by the smooth covering projection <span class="math" data-tex="\(S^{2d-1}\to L\)">\(S^{2d-1}\to L\)</span>, is a smooth extension of its map to <span class="math" data-tex="\(L\)">\(L\)</span>. The covering projection is a local diffeomorphism, so this extension has the full rank just checked. The disjoint-star property ensures that these lifted simplex maps give exactly the quotient realization. This is a finite smooth-compatible triangulation of <span class="math" data-tex="\(L\)">\(L\)</span>. Therefore the rational combinatorial Pontryagin classes of these explicit triangulations are zero by TheoremJ.6 and (K.4). The construction proves existence for these examples, while TheoremJ.6 keeps its precise given-triangulation scope for a general smooth manifold. ∎</p>
+<h3 id="k-2-a-nonzero-torsion-class-that-rationalization-loses">K.2. A nonzero torsion class that rationalization loses</h3>
+<p>For equal weights write <span class="math" data-tex="\(L_r^{2d-1}=L^{2d-1}(r;1,\ldots,1)\)">\(L_r^{2d-1}=L^{2d-1}(r;1,\ldots,1)\)</span>. The map
+<span class="math math-display" data-tex="\[
+\pi:L_r^{2d-1}\longrightarrow\mathbb {CP}^{d-1},
+\qquad [z]\longmapsto\mathbb Cz
+\tag{K.5}
+\]">\[
+\pi:L_r^{2d-1}\longrightarrow\mathbb {CP}^{d-1},
+\qquad [z]\longmapsto\mathbb Cz
+\tag{K.5}
+\]</span>
+is well defined. Let <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> be the tautological complex line and <span class="math" data-tex="\(u=c_1(\gamma^*)\)">\(u=c_1(\gamma^*)\)</span>.</p>
+<p><span id="DG-CHAR-15B.proposition-K.3"></span><strong>Proposition K.3 — Even integral cohomology and the basic line.</strong> For <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span> and <span class="math" data-tex="\(1\leq j\leq d-1\)">\(1\leq j\leq d-1\)</span>,
+<span class="math math-display" data-tex="\[
+H^{2j}(L_r^{2d-1};\mathbb Z)=
+(\mathbb Z/r)\,\pi^*u^j,
+\qquad
+\eta\cong\pi^*\gamma^*,\quad t=\pi^*u.
+\tag{K.6}
+\]">\[
+H^{2j}(L_r^{2d-1};\mathbb Z)=
+(\mathbb Z/r)\,\pi^*u^j,
+\qquad
+\eta\cong\pi^*\gamma^*,\quad t=\pi^*u.
+\tag{K.6}
+\]</span>
+In particular, on <span class="math" data-tex="\(L_5^5\)">\(L_5^5\)</span>,
+<span class="math math-display" data-tex="\[
+p_1(TL_5^5)=3t^2\ne0
+\quad\text{in }H^4(L_5^5;\mathbb Z)\cong\mathbb Z/5,
+\qquad p_1(TL_5^5)_{\mathbb Q}=0.
+\tag{K.7}
+\]">\[
+p_1(TL_5^5)=3t^2\ne0
+\quad\text{in }H^4(L_5^5;\mathbb Z)\cong\mathbb Z/5,
+\qquad p_1(TL_5^5)_{\mathbb Q}=0.
+\tag{K.7}
+\]</span></p>
+<p><strong>Proof.</strong> The unit sphere bundle of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is the Hopf sphere, as proved in the Gysin chapter. The map <span class="math" data-tex="\(z\mapsto z^{\otimes r}\)">\(z\mapsto z^{\otimes r}\)</span> in its tautological line identifies its quotient by the scalar <span class="math" data-tex="\(r\)">\(r\)</span>-th roots with the unit sphere bundle of <span class="math" data-tex="\(\gamma^{\otimes r}\)">\(\gamma^{\otimes r}\)</span>. It is bijective over every projective line: its unit circle power map is onto and has exactly those <span class="math" data-tex="\(r\)">\(r\)</span> roots in each fibre. It is a continuous bijection from a compact space to a Hausdorff bundle total space, hence a homeomorphism. Local unit frames also show it is the usual smooth circle-bundle identification. Thus (K.5) is this circle bundle, whose oriented Euler class is <span class="math" data-tex="\(c_1(\gamma^{\otimes r})=-ru\)">\(c_1(\gamma^{\otimes r})=-ru\)</span>, using the complex orientation. Its sign will not affect the quotient group.</p>
+<p>The projective-space theorem gives <span class="math" data-tex="\(H^*(\mathbb {CP}^{d-1};\mathbb Z)=\mathbb Z[u]/(u^d)\)">\(H^*(\mathbb {CP}^{d-1};\mathbb Z)=\mathbb Z[u]/(u^d)\)</span>. In the integral rank-two Gysin sequence, the segment ending in an even degree is
+<span class="math math-display" data-tex="\[
+\mathbb Z u^{j-1}\xrightarrow{\,-ru\,}
+\mathbb Z u^j\xrightarrow{\pi^*}
+H^{2j}(L_r^{2d-1};\mathbb Z)
+\longrightarrow H^{2j-1}(\mathbb {CP}^{d-1};\mathbb Z)=0.
+\tag{K.8}
+\]">\[
+\mathbb Z u^{j-1}\xrightarrow{\,-ru\,}
+\mathbb Z u^j\xrightarrow{\pi^*}
+H^{2j}(L_r^{2d-1};\mathbb Z)
+\longrightarrow H^{2j-1}(\mathbb {CP}^{d-1};\mathbb Z)=0.
+\tag{K.8}
+\]</span>
+Exactness identifies the last nonzero group with the indicated cyclic quotient, and identifies its generator as the pullback of <span class="math" data-tex="\(u^j\)">\(u^j\)</span>.</p>
+<p>Identify the associated line in (K.3) with <span class="math" data-tex="\(\pi^*\gamma^*\)">\(\pi^*\gamma^*\)</span> as follows. To <span class="math" data-tex="\([z,w]\)">\([z,w]\)</span> assign the linear functional on <span class="math" data-tex="\(\mathbb Cz\)">\(\mathbb Cz\)</span> sending <span class="math" data-tex="\(cz\)">\(cz\)</span> to <span class="math" data-tex="\(cw\)">\(cw\)</span>. Replacing <span class="math" data-tex="\((z,w)\)">\((z,w)\)</span> by <span class="math" data-tex="\((\zeta z,\zeta w)\)">\((\zeta z,\zeta w)\)</span> replaces <span class="math" data-tex="\(c\)">\(c\)</span> by <span class="math" data-tex="\(c/\zeta\)">\(c/\zeta\)</span>, and leaves its value unchanged. This is a well-defined complex-linear fibre isomorphism; local unit frames give smooth bundle charts and its inverse. Thus <span class="math" data-tex="\(t=\pi^*u\)">\(t=\pi^*u\)</span>. With <span class="math" data-tex="\(d=3\)">\(d=3\)</span> and <span class="math" data-tex="\(r=5\)">\(r=5\)</span>, (K.4) gives <span class="math" data-tex="\(p_1=3t^2\)">\(p_1=3t^2\)</span>. Formula (K.6) makes <span class="math" data-tex="\(t^2\)">\(t^2\)</span> a generator of <span class="math" data-tex="\(\mathbb Z/5\)">\(\mathbb Z/5\)</span>, so its multiple by three is nonzero. Rational coefficient change kills it. ∎</p>
+<h3 id="k-3-four-further-graded-exercises">K.3. Four further graded exercises</h3>
+<p><span id="DG-CHAR-15B.exercise-K.4"></span><strong>Exercise K.4 — Easy: the three-dimensional example.</strong> Explain why rational <span class="math" data-tex="\(p_1\)">\(p_1\)</span> is combinatorially invariant for a smooth-compatible triangulation of a three-dimensional lens space, and why that example cannot detect a difference of PL types.</p>
+<p><strong>Solution.</strong> There is no cohomology in degree four on a closed three-manifold, by the proved manifold dimension bound. Therefore both integral <span class="math" data-tex="\(p_1\)">\(p_1\)</span> and its rational image are zero. The conditional comparison identifies the combinatorial rational class with that zero class; PL naturality preserves it. Since the invariant has the same value for all these lens spaces, it cannot distinguish any pair of their PL types. This is a statement about the information in this invariant, not a classification result. ∎</p>
+<p><span id="DG-CHAR-15B.exercise-K.5"></span><strong>Exercise K.5 — Medium: weighted tangent classes.</strong> Compute <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span> for <span class="math" data-tex="\(L^{2d-1}(r;q_1,\ldots,q_d)\)">\(L^{2d-1}(r;q_1,\ldots,q_d)\)</span> in terms of the class <span class="math" data-tex="\(t\)">\(t\)</span> of (K.3), retaining the dimension restrictions.</p>
+<p><strong>Solution.</strong> Expand (K.4):
+<span class="math math-display" data-tex="\[
+p_1=\left(\sum_jq_j^2\right)t^2,
+\qquad
+p_2=\left(\sum_{a&lt;b}q_a^2q_b^2\right)t^4.
+\tag{K.9}
+\]">\[
+p_1=\left(\sum_jq_j^2\right)t^2,
+\qquad
+p_2=\left(\sum_{a&lt;b}q_a^2q_b^2\right)t^4.
+\tag{K.9}
+\]</span>
+The first class vanishes by dimension if <span class="math" data-tex="\(2d-1&lt;4\)">\(2d-1&lt;4\)</span>, and the second if <span class="math" data-tex="\(2d-1&lt;8\)">\(2d-1&lt;8\)</span>. Each expression is <span class="math" data-tex="\(r\)">\(r\)</span>-torsion because <span class="math" data-tex="\(rt=0\)">\(rt=0\)</span>, and each becomes zero over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. There is no assertion that <span class="math" data-tex="\(t\)">\(t\)</span> is a generator for arbitrary weights; only the equal-weight case was proved to have that description in PropositionK.3. ∎</p>
+<p><span id="DG-CHAR-15B.exercise-K.6"></span><strong>Exercise K.6 — Medium: what a rational theorem cannot decide.</strong> For a finite CW complex, describe the information lost by passing from integral degree-four cohomology to rational cohomology. Use <span class="math" data-tex="\(L_5^5\)">\(L_5^5\)</span> to show that rational vanishing does not imply integral vanishing. Does this example prove that integral <span class="math" data-tex="\(p_1\)">\(p_1\)</span> fails to be a PL invariant?</p>
+<p><strong>Solution.</strong> The finite free cellular cochain complex and flatness of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> give <span class="math" data-tex="\(H^4(X;\mathbb Z)\otimes\mathbb Q\cong H^4(X;\mathbb Q)\)">\(H^4(X;\mathbb Z)\otimes\mathbb Q\cong H^4(X;\mathbb Q)\)</span>, by the full comparison in SectionC. The kernel of coefficient change is precisely the torsion subgroup: an element is zero in the localization exactly when a nonzero integer kills it. Equation (K.7) is a nonzero integral torsion Pontryagin class with zero rational image. It disproves the implication from rational vanishing to integral vanishing. It does not compare two PL-equivalent smooth manifolds with unequal integral classes, and so supplies no counterexample to integral PL invariance. Such a stronger claim requires its own theorem or counterexample, with its precise scope. ∎</p>
+<p><span id="DG-CHAR-15B.exercise-K.7"></span><strong>Exercise K.7 — Hard: audit the conditional smooth comparison.</strong> Explain why the proof of TheoremJ.6 does not require a PL equivalence between two smooth-compatible triangulations. Identify the prerequisite it still does not prove.</p>
+<p><strong>Solution.</strong> For each given triangulation separately, controlled interpolation near a regular fibre and a PL annular retraction produce a homotopic PL sphere map with the same oriented fibre signature. Rational cohomotopy spanning and perfect duality then give <span class="math" data-tex="\(\ell_i(K)=t^*L_i(TM)\)">\(\ell_i(K)=t^*L_i(TM)\)</span> in the strict range. A product with an explicitly triangulated sphere and the proved stabilization give the equality in every degree. Recursive inversion gives rational Pontryagin equality. Transporting either triangulation's classes to <span class="math" data-tex="\(M\)">\(M\)</span> therefore gives the same smooth class, without constructing a PL homeomorphism between their complexes. The argument begins with a given smooth-compatible triangulation. It still does not prove that every smooth manifold possesses one. That separate original15 prerequisite is proved in <a href="DG-CHAR-15C.html">the triangulation companion</a>. ∎</p>
+<p>The separate eight-dimensional obstruction to integral refinement of the canonical rational PL classes is proved in <a href="DG-CHAR-15C.html">the triangulation companion</a>. The torsion calculation above is not used to replace that obligation. Nor do denominators in rational L-polynomials alone prove that no integral extension exists.</p>
+<h2 id="sources-and-proved-scope">Sources and proved scope</h2>
+<p>The freely readable classical source is John Milnor, with notes by James Stasheff, <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnorcc.pdf"><em>Lectures on Characteristic Classes</em> (1957)</a>, ChapterXVI, Sections1–3. Its differentiable-fibre construction, combinatorial construction and smooth comparison provide the historical mathematical treatment; the cited triangulation theorem is proved in the course's triangulation companion. The normal-graph and controlled interpolation details above are independent complete reconstructions. The degree-eight projective divisibility calculation expands that source's Corollary2 using the Hirzebruch signature polynomial already proved in the course.</p>
+<p>John Milnor's <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnhaup.pdf"><em>Two complexes which are homeomorphic but combinatorially distinct</em> (1961)</a>, introduction and Section1, supplies the lens-quotient and invariant-polytope background. The explicit construction above uses <span class="math" data-tex="\(2r\)">\(2r\)</span>-gons in every coordinate plane, including the order-two case, and independently proves the subdivision and smooth quotient details. Milnor's introductory results about complexes built from <span class="math" data-tex="\(L(7,1)\)">\(L(7,1)\)</span> and <span class="math" data-tex="\(L(7,2)\)">\(L(7,2)\)</span> have additional homotopy, torsion and embedding premises; they are not asserted as consequences of the tangent-class calculation here. In that paper Mazur supplies the open-product theorem, while the lens-space equivalence statements are credited to Reidemeister, J.H.C.Whitehead, Moise and Brody. The paper's general parallelizability assertion cites Stiefel and Whitney. Those delegated results are not used as prerequisites in this chapter.</p>
+<p>The tangent and torsion calculations use the complete covering, Chern, Pontryagin and Gysin proofs identified above. General smooth triangulation and the integral-refinement obstruction are supplied in <a href="DG-CHAR-15C.html">the triangulation companion</a>. The <a href="DG-CHAR-17.html">curvature chapter</a> and <a href="DG-CHAR-16.html">exotic-sphere chapter</a> continue the course.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-15.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-16.html">Next chapter</a></nav><p><a href="smooth-fibres-triangulation-comparison-and-lens-spaces.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

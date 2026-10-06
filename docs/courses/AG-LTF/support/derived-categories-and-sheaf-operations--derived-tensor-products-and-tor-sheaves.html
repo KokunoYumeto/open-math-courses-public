@@ -1,0 +1,500 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The derived tensor product and Tor sheaves</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="the-derived-tensor-product-and-tor-sheaves">The derived tensor product and Tor sheaves</h1>
+<p><em>Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the <a href="../support/assets/derived-categories-and-sheaf-operations--derived-tensor-products-and-tor-sheaves/LICENCE.md">course notice</a>.</em></p>
+<p>Ordinary tensor products preserve quotients, but can lose an injection. For example, tensoring <span class="math" data-tex="\(\mathbb Z\xrightarrow{2}\mathbb Z\)">\(\mathbb Z\xrightarrow{2}\mathbb Z\)</span> with <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> turns an injection into the zero map. A resolution keeps the lost information in negative cohomological degrees. The derived tensor product packages this information without depending on a chosen resolution, and Tor sheaves name its cohomology for two module sheaves.</p>
+<p>The prerequisite is <a href="../support/derived-categories-and-sheaf-operations--flat-modules-and-k-flat-resolutions.html">Flat modules and K-flat resolutions</a>, Lemmas 1.1–1.3 and 2.1–2.4, Theorem 3.1, Lemmas 3.2 and 4.1, and Lemma 4.5. We also use its earlier prerequisite, <a href="../support/derived-categories-and-sheaf-operations--complexes-cones-and-localization.html">Complexes, cones and localization</a>, Theorems 4.2 and 5.1 and Proposition 5.2. In particular, roofs and their common refinements have already been proved, rather than assumed.</p>
+<p>Throughout, <span class="math" data-tex="\(X\)">\(X\)</span> is an arbitrary topological space and <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is a sheaf of <strong>commutative unital rings</strong>. Complexes are cohomologically indexed and can be unbounded in both directions. Their tensor product means the direct-sum totalization</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(A\otimes B)^n&amp;=\bigoplus_{p+q=n}A^p\otimes_{\mathcal O}B^q,\\
+d(a\otimes b)&amp;=d_Aa\otimes b\\
+&amp;\quad+(-1)^p a\otimes d_Bb .
+\end{aligned}
+\tag{0.1}
+\]">\[
+\begin{aligned}
+(A\otimes B)^n&amp;=\bigoplus_{p+q=n}A^p\otimes_{\mathcal O}B^q,\\
+d(a\otimes b)&amp;=d_Aa\otimes b\\
+&amp;\quad+(-1)^p a\otimes d_Bb .
+\end{aligned}
+\tag{0.1}
+\]</span>
+<p>We write <span class="math" data-tex="\(K(\mathcal O)\)">\(K(\mathcal O)\)</span> for the homotopy category, <span class="math" data-tex="\(D(\mathcal O)\)">\(D(\mathcal O)\)</span> for its localization at quasi-isomorphisms, and <span class="math" data-tex="\(Q\)">\(Q\)</span> for localization. Cone triangles have the convention <span class="math" data-tex="\((f,i,-p)\)">\((f,i,-p)\)</span> of the common reading. No compactness, separation, finite dimension or Noetherian assumption enters the construction.</p>
+<p>The construction follows the Stacks project authors’ <em>Cohomology of Sheaves</em>, “Flat resolutions”, especially Tags 06YG, 06YH, 08BP and 08BQ, in the <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex">AI Integrated Stacks Project edition</a>. We prove the comparison and coherence maps before defining Tor sheaves. Source attribution and the licence for adapted passages appear in the <a href="../support/assets/derived-categories-and-sheaf-operations--derived-tensor-products-and-tor-sheaves/LICENCE.md">course notice</a>.</p>
+<h2 id="1-the-two-tensor-comparisons">1. The two tensor comparisons</h2>
+<p>A K-flat complex <span class="math" data-tex="\(P\)">\(P\)</span> has <span class="math" data-tex="\(A\otimes P\)">\(A\otimes P\)</span> acyclic whenever <span class="math" data-tex="\(A\)">\(A\)</span> is acyclic. The two variables in a tensor comparison play different roles.</p>
+<p><strong>Lemma 1.1 (tensor invariance).</strong> If <span class="math" data-tex="\(P\)">\(P\)</span> is K-flat and <span class="math" data-tex="\(u:A\to B\)">\(u:A\to B\)</span> is a quasi-isomorphism, then <span class="math" data-tex="\(u\otimes1_P\)">\(u\otimes1_P\)</span> is a quasi-isomorphism. If <span class="math" data-tex="\(v:P\to P&#x27;\)">\(v:P\to P&#x27;\)</span> is a quasi-isomorphism <strong>between K-flat complexes</strong>, then <span class="math" data-tex="\(1_G\otimes v\)">\(1_G\otimes v\)</span> is a quasi-isomorphism for every complex <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Proof.</strong> Lemma 2.1 of the K-flat lesson identifies the tensor of a cone with the cone of the tensored map. When the cone is in the second variable, the shifted summand acquires the factor <span class="math" data-tex="\((-1)^{|a|}\)">\((-1)^{|a|}\)</span>; the graded flip gives the other variable. The cone of <span class="math" data-tex="\(u\)">\(u\)</span> is acyclic, so its tensor with <span class="math" data-tex="\(P\)">\(P\)</span> is acyclic. This proves the first assertion.</p>
+<p>For the second, choose a K-flat resolution <span class="math" data-tex="\(R\to G\)">\(R\to G\)</span>, using Theorem 3.1 of that lesson. Consider the commuting square</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+R\otimes P&amp;\longrightarrow&amp;R\otimes P&#x27;\\
+\downarrow&amp;&amp;\downarrow\\
+G\otimes P&amp;\longrightarrow&amp;G\otimes P&#x27;.
+\end{array}
+\tag{1.1}
+\]">\[
+\begin{array}{ccc}
+R\otimes P&amp;\longrightarrow&amp;R\otimes P&#x27;\\
+\downarrow&amp;&amp;\downarrow\\
+G\otimes P&amp;\longrightarrow&amp;G\otimes P&#x27;.
+\end{array}
+\tag{1.1}
+\]</span>
+<p>Both vertical maps are quasi-isomorphisms by the first assertion, using respectively <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>. The top map is one because <span class="math" data-tex="\(R\)">\(R\)</span> is K-flat, after interchanging the tensor factors. On every cohomology sheaf, three arrows are isomorphisms and the square commutes; the fourth is therefore an isomorphism. This proves the second assertion for arbitrary, possibly unbounded and nonflat, <span class="math" data-tex="\(G\)">\(G\)</span>. In particular an acyclic K-flat complex tensors acyclicly with every complex, by applying this assertion to its map to zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The second assertion would be false for an arbitrary quasi-isomorphism in place of <span class="math" data-tex="\(v\)">\(v\)</span>. For example <span class="math" data-tex="\((\mathbb Z\xrightarrow{2}\mathbb Z)\to\mathbb Z/2[0]\)">\((\mathbb Z\xrightarrow{2}\mathbb Z)\to\mathbb Z/2[0]\)</span>, in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, becomes a map from a zero-differential two-term complex to a one-term complex after tensoring with <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>. It loses an isomorphism in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. Its target is not K-flat.</p>
+<p><strong>Theorem 1.2 (one-variable definition and independence).</strong> For a K-flat resolution <span class="math" data-tex="\(\epsilon:P\to F\)">\(\epsilon:P\to F\)</span>, the rule <span class="math" data-tex="\(G\mapsto G\otimes P\)">\(G\mapsto G\otimes P\)</span> defines an exact functor</p>
+<span class="math math-display" data-tex="\[
+-\otimes_{\mathcal O}^{\mathbf L}F:D(\mathcal O)\longrightarrow D(\mathcal O).
+\tag{1.2}
+\]">\[
+-\otimes_{\mathcal O}^{\mathbf L}F:D(\mathcal O)\longrightarrow D(\mathcal O).
+\tag{1.2}
+\]</span>
+<p>The functors from different resolutions have canonical natural comparison isomorphisms satisfying the identity and cocycle laws. If <span class="math" data-tex="\(R\to G\)">\(R\to G\)</span> is K-flat, both arrows in</p>
+<span class="math math-display" data-tex="\[
+G\otimes P\ \longleftarrow\ R\otimes P\ \longrightarrow\ R\otimes F
+\tag{1.3}
+\]">\[
+G\otimes P\ \longleftarrow\ R\otimes P\ \longrightarrow\ R\otimes F
+\tag{1.3}
+\]</span>
+<p>are quasi-isomorphisms. Thus either variable, or both variables, may be resolved.</p>
+<p><strong>Proof.</strong> Tensor respects homotopies, shifts and cone triangles by Lemma 2.1 of the K-flat lesson. Lemma 1.1 shows that <span class="math" data-tex="\(Q(-\otimes P)\)">\(Q(-\otimes P)\)</span> inverts quasi-isomorphisms, so the localization universal property, Theorem 4.2 of the common reading, gives (1.2). Theorem 5.1 there identifies distinguished triangles with images of cone triangles; their tensor images are distinguished, so the functor is exact.</p>
+<p>For the comparison, first let <span class="math" data-tex="\(\epsilon_i:P_i\to F\)">\(\epsilon_i:P_i\to F\)</span>, <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>, be termwise-surjective K-flat resolutions. Form the ordinary fibre product of complexes</p>
+<span class="math math-display" data-tex="\[
+W=P_1\times_F P_2.
+\tag{1.4}
+\]">\[
+W=P_1\times_F P_2.
+\tag{1.4}
+\]</span>
+<p>Its projection onto <span class="math" data-tex="\(P_1\)">\(P_1\)</span> is termwise surjective with kernel <span class="math" data-tex="\(\ker\epsilon_2\)">\(\ker\epsilon_2\)</span>; similarly for the other projection. Each kernel is acyclic, by the short exact cohomology sequence. Hence both projections are quasi-isomorphisms. Choose a termwise-surjective K-flat resolution <span class="math" data-tex="\(T\to W\)">\(T\to W\)</span>. Its maps <span class="math" data-tex="\(r_i:T\to P_i\)">\(r_i:T\to P_i\)</span> are quasi-isomorphisms between K-flats. Lemma 1.1 gives a natural comparison <span class="math" data-tex="\(c_{12}(G)\)">\(c_{12}(G)\)</span> from <span class="math" data-tex="\(Q(G\otimes P_1)\)">\(Q(G\otimes P_1)\)</span> to <span class="math" data-tex="\(Q(G\otimes P_2)\)">\(Q(G\otimes P_2)\)</span>, given by</p>
+<span class="math math-display" data-tex="\[
+c_{12}(G)=Q(1\otimes r_2)Q(1\otimes r_1)^{-1}.
+\tag{1.5}
+\]">\[
+c_{12}(G)=Q(1\otimes r_2)Q(1\otimes r_1)^{-1}.
+\tag{1.5}
+\]</span>
+<p>Two choices <span class="math" data-tex="\(T,T&#x27;\to W\)">\(T,T&#x27;\to W\)</span> have a common refinement: resolve <span class="math" data-tex="\(T\times_W T&#x27;\)">\(T\times_W T&#x27;\)</span> by a termwise-surjective K-flat complex. The projections are again surjective quasi-isomorphisms. All maps to the <span class="math" data-tex="\(P_i\)">\(P_i\)</span> commute strictly, so after tensoring and inverting the refinement arrows the two formulas (1.5) agree.</p>
+<p>For three resolutions, resolve <span class="math" data-tex="\(P_1\times_F P_2\times_F P_3\)">\(P_1\times_F P_2\times_F P_3\)</span>. Its projections to the pairwise products are surjective quasi-isomorphisms, with acyclic kernels. The previous refinement argument allows every pairwise comparison to be computed through this one model. Cancelling the middle invertible arrow proves the cocycle law.</p>
+<p>For the identity law put <span class="math" data-tex="\(W=P\times_F P\)">\(W=P\times_F P\)</span>. Its diagonal <span class="math" data-tex="\(\delta:P\to W\)">\(\delta:P\to W\)</span> is a quasi-isomorphism, because either projection is one and its composite with <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is the identity. Lemma 3.2 of the K-flat lesson enlarges <span class="math" data-tex="\(\delta\)">\(\delta\)</span> to a termwise-surjective K-flat resolution <span class="math" data-tex="\(P\oplus D\to W\)">\(P\oplus D\to W\)</span>, with <span class="math" data-tex="\(D\)">\(D\)</span> contractible. The two maps from this resolution to <span class="math" data-tex="\(P\)">\(P\)</span> agree after precomposition with <span class="math" data-tex="\(P\to P\oplus D\)">\(P\to P\oplus D\)</span>. Tensoring that inclusion with <span class="math" data-tex="\(G\)">\(G\)</span> gives an invertible derived map by Lemma 1.1. The two tensor maps therefore agree in the derived category, proving the identity law. The maps are natural in <span class="math" data-tex="\(G\)">\(G\)</span>, first for chain maps and homotopies and then for roofs by localization.</p>
+<p>If a chosen resolution is not termwise surjective, Lemma 3.2 of the K-flat lesson enlarges it by a contractible disk complex. Its inclusion into the enlargement is a quasi-isomorphism between K-flats over <span class="math" data-tex="\(F\)">\(F\)</span>. Lemma 1.1 supplies the comparison to the enlargement. Here is compatibility for two enlargements <span class="math" data-tex="\(E_1,E_2\)">\(E_1,E_2\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span>. The inclusions give <span class="math" data-tex="\(b:P\to W=E_1\times_F E_2\)">\(b:P\to W=E_1\times_F E_2\)</span>; it is a quasi-isomorphism because <span class="math" data-tex="\(W\to E_1\)">\(W\to E_1\)</span> and <span class="math" data-tex="\(P\to E_1\)">\(P\to E_1\)</span> are. Resolve <span class="math" data-tex="\(W\)">\(W\)</span> by a surjective <span class="math" data-tex="\(T\to W\)">\(T\to W\)</span>. The projection <span class="math" data-tex="\(T\times_W P\to P\)">\(T\times_W P\to P\)</span> is a surjective quasi-isomorphism, with kernel <span class="math" data-tex="\(\ker(T\to W)\)">\(\ker(T\to W)\)</span>. Its other projection to <span class="math" data-tex="\(T\)">\(T\)</span> is a quasi-isomorphism by two out of three after composing into <span class="math" data-tex="\(W\)">\(W\)</span>. Resolve this fibre product by a K-flat complex. Its commuting maps to <span class="math" data-tex="\(P,T,E_1,E_2\)">\(P,T,E_1,E_2\)</span>, all quasi-isomorphisms between K-flats, show after tensoring that the comparison of the enlargements intertwines their inclusions from <span class="math" data-tex="\(P\)">\(P\)</span>. This proves independence of the enlargement.</p>
+<p>Finally the left arrow of (1.3) is a quasi-isomorphism because <span class="math" data-tex="\(P\)">\(P\)</span> is K-flat; the right one is a quasi-isomorphism because <span class="math" data-tex="\(R\)">\(R\)</span> is K-flat. This proves balancing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-morphisms-associativity-and-symmetry">2. Morphisms, associativity and symmetry</h2>
+<p>Choosing resolutions of objects does not by itself define the action on morphisms. We now justify that action and its compatibility with every comparison above.</p>
+<p><strong>Lemma 2.1 (localizing the K-flat models).</strong> Let <span class="math" data-tex="\(K_{\rm fl}(\mathcal O)\)">\(K_{\rm fl}(\mathcal O)\)</span> be the full subcategory of <span class="math" data-tex="\(K(\mathcal O)\)">\(K(\mathcal O)\)</span> on K-flat complexes, and let <span class="math" data-tex="\(S_{\rm fl}\)">\(S_{\rm fl}\)</span> consist of its quasi-isomorphisms. The inclusion induces an equivalence</p>
+<span class="math math-display" data-tex="\[
+K_{\rm fl}(\mathcal O)[S_{\rm fl}^{-1}]
+\ \simeq\ D(\mathcal O).
+\tag{2.1}
+\]">\[
+K_{\rm fl}(\mathcal O)[S_{\rm fl}^{-1}]
+\ \simeq\ D(\mathcal O).
+\tag{2.1}
+\]</span>
+<p><strong>Proof.</strong> Lemma 2.4 of the K-flat lesson shows that this full subcategory contains zero and is closed under shifts, finite sums and cones. All fraction squares and cancellation constructions in Lemma 4.1 of the common reading use these operations. When their starting objects are K-flat, their new cone or shifted cone is therefore K-flat. Consequently the roof construction and equivalence by common refinements in Theorem 4.2 there apply within <span class="math" data-tex="\(K_{\rm fl}\)">\(K_{\rm fl}\)</span>.</p>
+<p>Every object of <span class="math" data-tex="\(D(\mathcal O)\)">\(D(\mathcal O)\)</span> is isomorphic to a K-flat resolution, proving essential surjectivity. A roof <span class="math" data-tex="\(P\leftarrow Z\to R\)">\(P\leftarrow Z\to R\)</span> in the ambient homotopy category, with <span class="math" data-tex="\(P,R\)">\(P,R\)</span> K-flat, can be refined by a K-flat resolution <span class="math" data-tex="\(T\to Z\)">\(T\to Z\)</span>. The composite <span class="math" data-tex="\(T\to P\)">\(T\to P\)</span> is a quasi-isomorphism. Thus it has a roof entirely in <span class="math" data-tex="\(K_{\rm fl}\)">\(K_{\rm fl}\)</span>, proving fullness. If two such roofs are equal in <span class="math" data-tex="\(D(\mathcal O)\)">\(D(\mathcal O)\)</span>, Theorem 4.2 supplies a common refinement, possibly with a nonflat middle complex <span class="math" data-tex="\(Z\)">\(Z\)</span>. Resolve that <span class="math" data-tex="\(Z\)">\(Z\)</span> by a K-flat <span class="math" data-tex="\(T\)">\(T\)</span>. The composites are a common refinement within <span class="math" data-tex="\(K_{\rm fl}\)">\(K_{\rm fl}\)</span>, proving faithfulness. These operations use homotopy classes of maps; strict equality of arbitrary resolution lifts is not assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (the tensor bifunctor).</strong> There is a bifunctor</p>
+<span class="math math-display" data-tex="\[
+\otimes_{\mathcal O}^{\mathbf L}:
+D(\mathcal O)\times D(\mathcal O)\longrightarrow D(\mathcal O)
+\tag{2.2}
+\]">\[
+\otimes_{\mathcal O}^{\mathbf L}:
+D(\mathcal O)\times D(\mathcal O)\longrightarrow D(\mathcal O)
+\tag{2.2}
+\]</span>
+<p>exact in each variable, whose value is represented by <span class="math" data-tex="\(P\otimes R\)">\(P\otimes R\)</span> for K-flat models of its two arguments. It has canonical associativity, symmetry and unit isomorphisms, and commutes with restriction to any open subset.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(K_{\rm fl}\times K_{\rm fl}\)">\(K_{\rm fl}\times K_{\rm fl}\)</span> use ordinary total tensor. It respects homotopies and sends a quasi-isomorphism in either variable to one by Lemma 1.1. Localize successively in each variable. To check that the two resulting morphism actions commute, first note that <span class="math" data-tex="\(f\otimes1\)">\(f\otimes1\)</span> and <span class="math" data-tex="\(1\otimes g\)">\(1\otimes g\)</span> commute for chain maps of degree zero. They therefore commute with inverse denominators too: invert either side of the commuting square. A general roof is a numerator followed by an inverse denominator. This proves the commuting rule for all pairs of roofs and defines a bifunctor on the two localizations. Lemma 2.1 transfers it to <span class="math" data-tex="\(D(\mathcal O)\times D(\mathcal O)\)">\(D(\mathcal O)\times D(\mathcal O)\)</span>.</p>
+<p>Cones of maps between K-flats are K-flat. Cone squares and tensor shift comparisons thus prove exactness on their localization. More explicitly, any roof between K-flats can be written <span class="math" data-tex="\(Qf\,(Qs)^{-1}\)">\(Qf\,(Qs)^{-1}\)</span> with the middle object K-flat; its cone triangle is isomorphic to the image of the cone triangle of <span class="math" data-tex="\(f\)">\(f\)</span>. Tensor preserves the latter, so it preserves the former. Theorem 1.2 identifies this bifunctor with the one-variable construction, including its resolution comparisons.</p>
+<p>For three K-flat models <span class="math" data-tex="\(P,R,T\)">\(P,R,T\)</span>, the ordinary association map is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(P\otimes R)\otimes T\longrightarrow P\otimes(R\otimes T),\\
+(p\otimes r)\otimes t\longmapsto p\otimes(r\otimes t).
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+(P\otimes R)\otimes T\longrightarrow P\otimes(R\otimes T),\\
+(p\otimes r)\otimes t\longmapsto p\otimes(r\otimes t).
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>Its inverse removes the parentheses. Both totalizations have the same direct sum indexed by <span class="math" data-tex="\(i+j+k=n\)">\(i+j+k=n\)</span>. Their differentials on an elementary tensor have the three terms with signs <span class="math" data-tex="\(1,(-1)^i,(-1)^{i+j}\)">\(1,(-1)^i,(-1)^{i+j}\)</span>, so (2.3) is a chain isomorphism. The tensor product of two K-flats is K-flat by Lemma 2.4 of the previous lesson. Thus the left and right sides compute the two iterated derived products. Naturality for chain maps extends to roofs and inverse denominators as above, proving a natural derived associativity isomorphism.</p>
+<p>For <span class="math" data-tex="\(|p|=i\)">\(|p|=i\)</span> and <span class="math" data-tex="\(|r|=j\)">\(|r|=j\)</span>, symmetry is represented by</p>
+<span class="math math-display" data-tex="\[
+c_{P,R}(p\otimes r)=(-1)^{ij}r\otimes p.
+\tag{2.4}
+\]">\[
+c_{P,R}(p\otimes r)=(-1)^{ij}r\otimes p.
+\tag{2.4}
+\]</span>
+<p>For the <span class="math" data-tex="\(d_Pp\)">\(d_Pp\)</span> term the two routes have sign exponents <span class="math" data-tex="\((i+1)j\)">\((i+1)j\)</span> and <span class="math" data-tex="\(ij+j\)">\(ij+j\)</span>; for the <span class="math" data-tex="\(d_Rr\)">\(d_Rr\)</span> term they have exponents <span class="math" data-tex="\(i+i(j+1)\)">\(i+i(j+1)\)</span> and <span class="math" data-tex="\(ij\)">\(ij\)</span>, equal modulo two. This checks the chain-map equation. Its square has sign <span class="math" data-tex="\((-1)^{2ij}=1\)">\((-1)^{2ij}=1\)</span>, giving its inverse. The unit is <span class="math" data-tex="\(\mathcal O[0]\)">\(\mathcal O[0]\)</span>, which is K-flat; the usual multiplication <span class="math" data-tex="\(P\otimes\mathcal O\to P\)">\(P\otimes\mathcal O\to P\)</span> is a chain isomorphism.</p>
+<p>These identifications are coherent. For four factors every path around the associativity pentagon sends a tensor to the same tensor with the final parentheses. The unit triangle does the same after multiplying by the degree-zero scalar. In the symmetry hexagon, moving a degree-<span class="math" data-tex="\(i\)">\(i\)</span> tensor past degrees <span class="math" data-tex="\(j,k\)">\(j,k\)</span> gives either <span class="math" data-tex="\(i(j+k)\)">\(i(j+k)\)</span> or <span class="math" data-tex="\(ij+ik\)">\(ij+ik\)</span>; the signs agree. These are equalities of chain maps, hence of derived maps. Naturality and (2.1) imply that replacing any model preserves these equalities.</p>
+<p>Finally, restriction <span class="math" data-tex="\(j^*\)">\(j^*\)</span> to an open <span class="math" data-tex="\(U\)">\(U\)</span> is exact and commutes with tensor and direct sums, by the stalk and sheafification formulas of the first lesson. It preserves K-flatness by Lemma 2.2 of the K-flat lesson. Restricting resolutions <span class="math" data-tex="\(P\to F\)">\(P\to F\)</span>, <span class="math" data-tex="\(R\to G\)">\(R\to G\)</span> therefore gives resolutions on <span class="math" data-tex="\(U\)">\(U\)</span>, and the ordinary tensor identification gives</p>
+<span class="math math-display" data-tex="\[
+(F\otimes_{\mathcal O}^{\mathbf L}G)|_U
+\cong F|_U\otimes_{\mathcal O_U}^{\mathbf L}G|_U.
+\tag{2.5}
+\]">\[
+(F\otimes_{\mathcal O}^{\mathbf L}G)|_U
+\cong F|_U\otimes_{\mathcal O_U}^{\mathbf L}G|_U.
+\tag{2.5}
+\]</span>
+<p>On local elementary tensors this is the identity, so it commutes with the association, symmetry and unit maps and with all roof comparisons. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The tensor sign in (2.4) concerns the degrees of the tensors. A morphism in the homotopy or derived category has degree zero, so no additional sign is inserted when composing the two morphism actions. Shifts carry the signed identifications already checked in Lemma 2.1 of the K-flat lesson.</p>
+<h2 id="3-tor-sheaves-and-the-flatness-criterion">3. Tor sheaves and the flatness criterion</h2>
+<p>For module sheaves <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, viewed in degree zero, and integers <span class="math" data-tex="\(p\ge0\)">\(p\ge0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tor}^{\mathcal O}_p(F,G)
+=H^{-p}(F\otimes_{\mathcal O}^{\mathbf L}G).
+\tag{3.1}
+\]">\[
+\operatorname{Tor}^{\mathcal O}_p(F,G)
+=H^{-p}(F\otimes_{\mathcal O}^{\mathbf L}G).
+\tag{3.1}
+\]</span>
+<p>They are sheaves of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-modules and are functorial in both arguments. The cohomological minus sign is essential: ordinary projective or flat resolutions have their resolving terms in nonpositive degrees.</p>
+<p><strong>Proposition 3.1 (degree zero and stalks).</strong> There is a natural identification <span class="math" data-tex="\(\operatorname{Tor}_0(F,G)=F\otimes G\)">\(\operatorname{Tor}_0(F,G)=F\otimes G\)</span>. The derived tensor of two sheaves has no positive cohomology. Moreover</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tor}^{\mathcal O}_p(F,G)_x
+\cong\operatorname{Tor}^{\mathcal O_x}_p(F_x,G_x).
+\tag{3.2}
+\]">\[
+\operatorname{Tor}^{\mathcal O}_p(F,G)_x
+\cong\operatorname{Tor}^{\mathcal O_x}_p(F_x,G_x).
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> Lemma 4.1 of the K-flat lesson supplies a resolution <span class="math" data-tex="\(P\to F[0]\)">\(P\to F[0]\)</span> by flat terms, with <span class="math" data-tex="\(P^n=0\)">\(P^n=0\)</span> for <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>. It is K-flat by Lemma 2.3 there. Its degree-zero cohomology is <span class="math" data-tex="\(F\)">\(F\)</span>, so <span class="math" data-tex="\(\operatorname{coker}(d_P^{-1})=F\)">\(\operatorname{coker}(d_P^{-1})=F\)</span>. Tensoring this presentation with <span class="math" data-tex="\(G\)">\(G\)</span> is right exact and gives</p>
+<span class="math math-display" data-tex="\[
+H^0(P\otimes G)
+=\operatorname{coker}(d_P^{-1}\otimes1_G)=F\otimes G.
+\]">\[
+H^0(P\otimes G)
+=\operatorname{coker}(d_P^{-1}\otimes1_G)=F\otimes G.
+\]</span>
+<p>The tensor has no positive terms, hence no positive cohomology. The augmentation induces the displayed degree-zero identification; naturality follows either by the roof construction or by the uniqueness of the degree-zero quotient map.</p>
+<p>Stalks are exact and commute with tensor and direct sums, by Theorems 2.1 and 3.1 of the first lesson and Lemma 1.2 of the K-flat lesson. Hence <span class="math" data-tex="\((P\otimes G)_x=P_x\otimes_{\mathcal O_x}G_x\)">\((P\otimes G)_x=P_x\otimes_{\mathcal O_x}G_x\)</span> and taking stalks commutes with cohomology. Lemma 2.2 of that lesson says <span class="math" data-tex="\(P_x\)">\(P_x\)</span> is K-flat, and its map to <span class="math" data-tex="\(F_x\)">\(F_x\)</span> is a quasi-isomorphism. It therefore computes the tensor over the stalk ring, proving (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2 (long exact Tor sequence).</strong> A short exact sequence <span class="math" data-tex="\(0\to F_1\to F_2\to F_3\to0\)">\(0\to F_1\to F_2\to F_3\to0\)</span> gives a natural long exact sequence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\cdots\longrightarrow\operatorname{Tor}_p(F_1,G)\\
+\to\operatorname{Tor}_p(F_2,G)
+\to\operatorname{Tor}_p(F_3,G)\\
+\longrightarrow\operatorname{Tor}_{p-1}(F_1,G)
+\longrightarrow\cdots\\
+\longrightarrow\operatorname{Tor}_1(F_3,G)
+\longrightarrow F_1\otimes G\\
+\longrightarrow F_2\otimes G
+\longrightarrow F_3\otimes G\longrightarrow0.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+\cdots\longrightarrow\operatorname{Tor}_p(F_1,G)\\
+\to\operatorname{Tor}_p(F_2,G)
+\to\operatorname{Tor}_p(F_3,G)\\
+\longrightarrow\operatorname{Tor}_{p-1}(F_1,G)
+\longrightarrow\cdots\\
+\longrightarrow\operatorname{Tor}_1(F_3,G)
+\longrightarrow F_1\otimes G\\
+\longrightarrow F_2\otimes G
+\longrightarrow F_3\otimes G\longrightarrow0.
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>There is the analogous sequence in the second variable.</p>
+<p><strong>Proof.</strong> Proposition 5.2 of the common reading turns the short exact sequence into a distinguished triangle. The exact tensor functor of Theorem 2.2 gives a distinguished triangle after tensoring with <span class="math" data-tex="\(G\)">\(G\)</span>. Its long exact cohomology sequence exists by Theorem 5.1 of that reading. Replace <span class="math" data-tex="\(H^{-p}\)">\(H^{-p}\)</span> by (3.1) and <span class="math" data-tex="\(H^0\)">\(H^0\)</span> by Proposition 3.1; the subsequent positive cohomology is zero. The connecting map is the usual connecting cohomology map with the cone sign convention fixed above. The construction is natural for maps of short exact sequences. Symmetry gives the second-variable assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.3 (Tor detects flatness).</strong> For a module sheaf <span class="math" data-tex="\(F\)">\(F\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> is flat.</li>
+<li><span class="math" data-tex="\(\operatorname{Tor}_1(F,G)=0\)">\(\operatorname{Tor}_1(F,G)=0\)</span> for every module sheaf <span class="math" data-tex="\(G\)">\(G\)</span>.</li>
+<li><span class="math" data-tex="\(\operatorname{Tor}_p(F,G)=0\)">\(\operatorname{Tor}_p(F,G)=0\)</span> for every <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span> and every module sheaf <span class="math" data-tex="\(G\)">\(G\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(F\)">\(F\)</span> is flat, <span class="math" data-tex="\(F[0]\)">\(F[0]\)</span> is K-flat by Lemma 2.3 of the preceding lesson. The one-variable construction therefore computes <span class="math" data-tex="\(F\otimes^{\mathbf L}G\)">\(F\otimes^{\mathbf L}G\)</span> as the ordinary sheaf <span class="math" data-tex="\(F\otimes G\)">\(F\otimes G\)</span> in degree zero. This proves <span class="math" data-tex="\(1\Rightarrow3\Rightarrow2\)">\(1\Rightarrow3\Rightarrow2\)</span>.</p>
+<p>For <span class="math" data-tex="\(2\Rightarrow1\)">\(2\Rightarrow1\)</span>, take any injection <span class="math" data-tex="\(G\to H\)">\(G\to H\)</span>, with cokernel <span class="math" data-tex="\(C\)">\(C\)</span>. The second-variable version of (3.3) contains</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tor}_1(F,C)\longrightarrow F\otimes G
+\longrightarrow F\otimes H.
+\]">\[
+\operatorname{Tor}_1(F,C)\longrightarrow F\otimes G
+\longrightarrow F\otimes H.
+\]</span>
+<p>The left sheaf is zero, so the right arrow is injective. Tensor is already right exact, so it is exact and <span class="math" data-tex="\(F\)">\(F\)</span> is flat. This proves all implications without a finiteness assumption. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The quantifier “every <span class="math" data-tex="\(G\)">\(G\)</span>” cannot be replaced by the single test <span class="math" data-tex="\(G=F\)">\(G=F\)</span>. The continuous-function example below makes this failure explicit.</p>
+<h3 id="quotients-by-ideals">Quotients by ideals</h3>
+<p><strong>Lemma 3.4.</strong> For ideals <span class="math" data-tex="\(I,J\)">\(I,J\)</span> in a commutative ring <span class="math" data-tex="\(R\)">\(R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Tor}_0^R(R/I,R/J)\\
+{}=R/(I+J),\\
+\operatorname{Tor}_1^R(R/I,R/J)\\
+{}=(I\cap J)/(IJ).
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+\operatorname{Tor}_0^R(R/I,R/J)\\
+{}=R/(I+J),\\
+\operatorname{Tor}_1^R(R/I,R/J)\\
+{}=(I\cap J)/(IJ).
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>For <span class="math" data-tex="\(p\ge2\)">\(p\ge2\)</span>, <span class="math" data-tex="\(\operatorname{Tor}_p^R(R/I,R/J)\cong
+\operatorname{Tor}_{p-1}^R(I,R/J)\)">\(\operatorname{Tor}_p^R(R/I,R/J)\cong
+\operatorname{Tor}_{p-1}^R(I,R/J)\)</span>. The same assertions hold for ideal sheaves, with intersections, sums and products taken as sheaf ideals.</p>
+<p><strong>Proof.</strong> Apply (3.3) to <span class="math" data-tex="\(0\to I\to R\to R/I\to0\)">\(0\to I\to R\to R/I\to0\)</span>, with second factor <span class="math" data-tex="\(R/J\)">\(R/J\)</span>. Flatness of <span class="math" data-tex="\(R\)">\(R\)</span> annihilates all its positive Tor. The resulting first segment is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\longrightarrow\operatorname{Tor}_1(R/I,R/J)
+\longrightarrow I\otimes_R R/J
+\\
+\longrightarrow R/J
+\longrightarrow (R/I)\otimes_R R/J\longrightarrow0.
+\end{gathered}
+\]">\[
+\begin{gathered}
+0\longrightarrow\operatorname{Tor}_1(R/I,R/J)
+\longrightarrow I\otimes_R R/J
+\\
+\longrightarrow R/J
+\longrightarrow (R/I)\otimes_R R/J\longrightarrow0.
+\end{gathered}
+\]</span>
+<p>The presentation of tensor by balancing relations identifies <span class="math" data-tex="\(I\otimes_R R/J\)">\(I\otimes_R R/J\)</span> with <span class="math" data-tex="\(I/IJ\)">\(I/IJ\)</span>: the map sends <span class="math" data-tex="\(i\otimes(r+J)\)">\(i\otimes(r+J)\)</span> to <span class="math" data-tex="\(ri+IJ\)">\(ri+IJ\)</span>, and its inverse sends <span class="math" data-tex="\(i+IJ\)">\(i+IJ\)</span> to <span class="math" data-tex="\(i\otimes1\)">\(i\otimes1\)</span>. The kernel of <span class="math" data-tex="\(I/IJ\to R/J\)">\(I/IJ\to R/J\)</span> is <span class="math" data-tex="\((I\cap J)/IJ\)">\((I\cap J)/IJ\)</span>, and the cokernel is <span class="math" data-tex="\(R/(I+J)\)">\(R/(I+J)\)</span>. The remaining exact segments give the dimension-shifting assertion. For sheaf ideals perform these calculations on every stalk; stalks preserve the relevant kernels and images, including ideal products, so they give the stated sheaf identities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Formula (3.4) computes only the first two groups without extra information on <span class="math" data-tex="\(I\)">\(I\)</span>. The higher groups require a resolution or the displayed dimension shift. Exercise 1 supplies a complete all-degree computation for two integer ideals.</p>
+<h2 id="4-two-geometric-calculations">4. Two geometric calculations</h2>
+<h3 id="skyscrapers-on-a-smooth-one-dimensional-local-model">Skyscrapers on a smooth one-dimensional local model</h3>
+<p>Take <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span> with <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> the sheaf of real analytic functions, and let <span class="math" data-tex="\(k_a=a_*\mathbb R\)">\(k_a=a_*\mathbb R\)</span>, with the action given by evaluation at <span class="math" data-tex="\(a\)">\(a\)</span>. Multiplication by <span class="math" data-tex="\(t-a\)">\(t-a\)</span> gives an exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal O
+\xrightarrow{\ t-a\ }\mathcal O
+\longrightarrow k_a\longrightarrow0.
+\tag{4.1}
+\]">\[
+0\longrightarrow\mathcal O
+\xrightarrow{\ t-a\ }\mathcal O
+\longrightarrow k_a\longrightarrow0.
+\tag{4.1}
+\]</span>
+<p>Here is a stalk proof. At <span class="math" data-tex="\(b\ne a\)">\(b\ne a\)</span>, the germ <span class="math" data-tex="\(t-a\)">\(t-a\)</span> is invertible. At <span class="math" data-tex="\(a\)">\(a\)</span>, a germ of an analytic function has a convergent power series in <span class="math" data-tex="\(t-a\)">\(t-a\)</span>. Vanishing at <span class="math" data-tex="\(a\)">\(a\)</span> means its constant coefficient is zero, so dividing by <span class="math" data-tex="\(t-a\)">\(t-a\)</span> shifts that series and gives another convergent series on a smaller interval. Conversely every such multiple vanishes at <span class="math" data-tex="\(a\)">\(a\)</span>. Multiplication is injective because a continuous function with <span class="math" data-tex="\((t-a)f(t)=0\)">\((t-a)f(t)=0\)</span> vanishes away from <span class="math" data-tex="\(a\)">\(a\)</span> and hence also at <span class="math" data-tex="\(a\)">\(a\)</span>. Evaluation is surjective on germs, by constants. The first lesson's stalk criterion proves (4.1).</p>
+<p>The two <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> terms give a bounded flat, hence K-flat, resolution in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>. For the same point <span class="math" data-tex="\(a\)">\(a\)</span>, tensoring it with <span class="math" data-tex="\(k_a\)">\(k_a\)</span> makes its differential zero. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Tor}_0(k_a,k_a)=k_a,\\
+\operatorname{Tor}_1(k_a,k_a)=k_a,\\
+\operatorname{Tor}_p(k_a,k_a)=0\quad(p\ge2).
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\operatorname{Tor}_0(k_a,k_a)=k_a,\\
+\operatorname{Tor}_1(k_a,k_a)=k_a,\\
+\operatorname{Tor}_p(k_a,k_a)=0\quad(p\ge2).
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>For <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span>, tensoring (4.1) with <span class="math" data-tex="\(k_b\)">\(k_b\)</span> makes the differential multiplication by the nonzero real number <span class="math" data-tex="\(b-a\)">\(b-a\)</span>, an isomorphism. All Tor sheaves are then zero. The nonzero degree-one sheaf at a coincident point records the kernel lost by ordinary tensor; its location is visible directly from the stalk computation.</p>
+<h3 id="continuous-functions-and-two-axes-in-the-plane">Continuous functions and two axes in the plane</h3>
+<p>Now let <span class="math" data-tex="\(X=\mathbb R^2\)">\(X=\mathbb R^2\)</span> and <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> be the sheaf of real-valued continuous functions. Set <span class="math" data-tex="\(Z=\{y=0\}\)">\(Z=\{y=0\}\)</span>, <span class="math" data-tex="\(Z&#x27;=\{x=0\}\)">\(Z&#x27;=\{x=0\}\)</span>, and write <span class="math" data-tex="\(I_Z,I_{Z&#x27;}\)">\(I_Z,I_{Z&#x27;}\)</span> for the sheaf ideals of functions vanishing on these subsets. Define</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_Z=\mathcal O/I_Z,\qquad
+\mathcal O_{Z&#x27;}=\mathcal O/I_{Z&#x27;}.
+\]">\[
+\mathcal O_Z=\mathcal O/I_Z,\qquad
+\mathcal O_{Z&#x27;}=\mathcal O/I_{Z&#x27;}.
+\]</span>
+<p>These are the continuous-function sheaves along the axes, extended to <span class="math" data-tex="\(X\)">\(X\)</span>: a continuous function on an axis extends locally by projection onto that axis, proving surjectivity of the restriction map on germs. Its kernel is precisely the indicated vanishing ideal.</p>
+<p>For these ideals</p>
+<span class="math math-display" data-tex="\[
+I_Z\cap I_{Z&#x27;}=I_ZI_{Z&#x27;}.
+\tag{4.3}
+\]">\[
+I_Z\cap I_{Z&#x27;}=I_ZI_{Z&#x27;}.
+\tag{4.3}
+\]</span>
+<p>Indeed, for a real continuous function <span class="math" data-tex="\(f\)">\(f\)</span> vanishing on both axes, put <span class="math" data-tex="\(h=\sqrt{|f|}\)">\(h=\sqrt{|f|}\)</span> and define <span class="math" data-tex="\(g=f/\sqrt{|f|}\)">\(g=f/\sqrt{|f|}\)</span> where <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>, with <span class="math" data-tex="\(g=0\)">\(g=0\)</span> on its zero set. Both functions are continuous: at the zero set their absolute values are <span class="math" data-tex="\(\sqrt{|f|}\)">\(\sqrt{|f|}\)</span>, which tends to zero. Both vanish on each axis and <span class="math" data-tex="\(f=gh\)">\(f=gh\)</span>. This proves inclusion into the product on every germ; the reverse inclusion follows from vanishing. Lemma 3.4 gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tor}_1(\mathcal O_Z,\mathcal O_{Z&#x27;})=0.
+\tag{4.4}
+\]">\[
+\operatorname{Tor}_1(\mathcal O_Z,\mathcal O_{Z&#x27;})=0.
+\tag{4.4}
+\]</span>
+<p>The ordinary tensor is the real skyscraper at the origin. Outside the origin at least one quotient has zero stalk. At the origin the sum of the two ideals is the maximal ideal of germs vanishing there. To prove this last assertion, decompose such a germ <span class="math" data-tex="\(f\)">\(f\)</span> as</p>
+<span class="math math-display" data-tex="\[
+f=\frac{x^2f}{x^2+y^2}+\frac{y^2f}{x^2+y^2},
+\tag{4.5}
+\]">\[
+f=\frac{x^2f}{x^2+y^2}+\frac{y^2f}{x^2+y^2},
+\tag{4.5}
+\]</span>
+<p>with both terms defined to be zero at the origin. Their absolute values are bounded by <span class="math" data-tex="\(|f|\)">\(|f|\)</span>, so they are continuous there. The first vanishes on <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span>, and the second on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Thus <span class="math" data-tex="\(\mathcal O/(I_Z+I_{Z&#x27;})=0_*\mathbb R\)">\(\mathcal O/(I_Z+I_{Z&#x27;})=0_*\mathbb R\)</span>, including its evaluation action. Equations (4.4) and (4.5) compute degree one and degree zero for the required closed-subset example.</p>
+<p>This behaviour of first Tor does not imply flatness. Let <span class="math" data-tex="\(R=\mathcal O_0\)">\(R=\mathcal O_0\)</span>, <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> its evaluation kernel, and <span class="math" data-tex="\(k=R/\mathfrak m=\mathbb R\)">\(k=R/\mathfrak m=\mathbb R\)</span>. The same square-root factorization gives <span class="math" data-tex="\(\mathfrak m=\mathfrak m^2\)">\(\mathfrak m=\mathfrak m^2\)</span>, so <span class="math" data-tex="\(\operatorname{Tor}_1^R(k,k)=0\)">\(\operatorname{Tor}_1^R(k,k)=0\)</span>. But multiplication by the coordinate <span class="math" data-tex="\(x\)">\(x\)</span> is injective on <span class="math" data-tex="\(R\)">\(R\)</span>: a continuous germ annihilated by <span class="math" data-tex="\(x\)">\(x\)</span> vanishes on the dense complement of the vertical axis and therefore everywhere on a neighbourhood. The two-term free resolution of <span class="math" data-tex="\(R/(x)\)">\(R/(x)\)</span> tensors with <span class="math" data-tex="\(k\)">\(k\)</span> to a zero-differential complex, giving</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tor}_1^R(k,R/(x))=k\ne0.
+\tag{4.6}
+\]">\[
+\operatorname{Tor}_1^R(k,R/(x))=k\ne0.
+\tag{4.6}
+\]</span>
+<p>Thus <span class="math" data-tex="\(k\)">\(k\)</span> is nonflat by Theorem 3.3. Notice that <span class="math" data-tex="\(I_{Z&#x27;,0}\ne(x)\)">\(I_{Z&#x27;,0}\ne(x)\)</span>: the continuous germ <span class="math" data-tex="\(\sqrt{|x|}\)">\(\sqrt{|x|}\)</span> vanishes on the vertical axis, but cannot be divided by <span class="math" data-tex="\(x\)">\(x\)</span> continuously at the origin. In the analytic curve calculation division by its parameter was possible. The ideals in these examples must therefore be calculated in their actual function rings.</p>
+<h3 id="bounded-inputs-with-an-unbounded-answer">Bounded inputs with an unbounded answer</h3>
+<p>On a one-point space put <span class="math" data-tex="\(R=k[\varepsilon]/(\varepsilon^2)\)">\(R=k[\varepsilon]/(\varepsilon^2)\)</span> and view <span class="math" data-tex="\(k=R/(\varepsilon)\)">\(k=R/(\varepsilon)\)</span> in degree zero. The resolution</p>
+<span class="math math-display" data-tex="\[
+\cdots\xrightarrow{\varepsilon}R
+\xrightarrow{\varepsilon}R
+\xrightarrow{\varepsilon}R\longrightarrow k
+\tag{4.7}
+\]">\[
+\cdots\xrightarrow{\varepsilon}R
+\xrightarrow{\varepsilon}R
+\xrightarrow{\varepsilon}R\longrightarrow k
+\tag{4.7}
+\]</span>
+<p>has its last <span class="math" data-tex="\(R\)">\(R\)</span> in degree zero. In each negative degree the kernel and image of multiplication by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> are the same ideal <span class="math" data-tex="\((\varepsilon)\)">\((\varepsilon)\)</span>, and the degree-zero cokernel is <span class="math" data-tex="\(k\)">\(k\)</span>. It is a bounded-above free resolution, hence K-flat. Tensoring with <span class="math" data-tex="\(k\)">\(k\)</span> kills every differential, so <span class="math" data-tex="\(\operatorname{Tor}_p^R(k,k)=k\)">\(\operatorname{Tor}_p^R(k,k)=k\)</span> for every <span class="math" data-tex="\(p\ge0\)">\(p\ge0\)</span>. Even two sheaves in degree zero can therefore have derived tensor with infinitely many negative cohomology sheaves. The perfect-complex lesson later proves the finite bounds furnished by a finite locally free model.</p>
+<h3 id="koszul-models-for-several-equations">Koszul models for several equations</h3>
+<p>The one-equation calculations extend to a finite regular sequence. The elementary Koszul argument is treated in Pierre Schapira's <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/AlTo.pdf"><em>Algebra and Topology</em>, §4.7</a>. The following uses the cohomological degrees and tensor signs fixed in this course.</p>
+<p><strong>Proposition 4.1 (regular-sequence calculation).</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be a commutative unital ring, <span class="math" data-tex="\(a_1,\ldots,a_r\in R\)">\(a_1,\ldots,a_r\in R\)</span>, and <span class="math" data-tex="\(M\)">\(M\)</span> an <span class="math" data-tex="\(R\)">\(R\)</span>-module. Put
+<span class="math math-display" data-tex="\[
+K_R(a_1,\ldots,a_r)=\bigotimes_{i=1}^r
+\bigl[R\xrightarrow{a_i}R\bigr],
+\]">\[
+K_R(a_1,\ldots,a_r)=\bigotimes_{i=1}^r
+\bigl[R\xrightarrow{a_i}R\bigr],
+\]</span>
+with each two-term factor in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>. This is a bounded complex of finite free modules, hence K-flat and perfect. If multiplication by <span class="math" data-tex="\(a_i\)">\(a_i\)</span> is injective on <span class="math" data-tex="\(M/(a_1,\ldots,a_{i-1})M\)">\(M/(a_1,\ldots,a_{i-1})M\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, then
+<span class="math math-display" data-tex="\[
+H^q(K_R(a_1,\ldots,a_r)\otimes_R M)=
+\begin{cases}
+M/(a_1,\ldots,a_r)M,&amp;q=0,\\
+0,&amp;q\ne0.
+\end{cases}
+\]">\[
+H^q(K_R(a_1,\ldots,a_r)\otimes_R M)=
+\begin{cases}
+M/(a_1,\ldots,a_r)M,&amp;q=0,\\
+0,&amp;q\ne0.
+\end{cases}
+\]</span>
+If the sequence is regular on <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(K_R(a_1,\ldots,a_r)\)">\(K_R(a_1,\ldots,a_r)\)</span> resolves <span class="math" data-tex="\(R/(a_1,\ldots,a_r)\)">\(R/(a_1,\ldots,a_r)\)</span>. For every module <span class="math" data-tex="\(N\)">\(N\)</span>, with no regularity assumption on <span class="math" data-tex="\(N\)">\(N\)</span>, it consequently computes all <span class="math" data-tex="\(\operatorname{Tor}_i^R(R/(a_1,\ldots,a_r),N)\)">\(\operatorname{Tor}_i^R(R/(a_1,\ldots,a_r),N)\)</span>.</p>
+<p><strong>Proof.</strong> Write the basis vector attached to <span class="math" data-tex="\(a_i\)">\(a_i\)</span> as <span class="math" data-tex="\(e_i\)">\(e_i\)</span> in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. On an ordered exterior basis,
+<span class="math math-display" data-tex="\[
+d(e_{i_1}\wedge\cdots\wedge e_{i_s})=
+\sum_{j=1}^s(-1)^{j-1}a_{i_j}
+e_{i_1}\wedge\cdots\widehat e_{i_j}\cdots\wedge e_{i_s}.
+\]">\[
+d(e_{i_1}\wedge\cdots\wedge e_{i_s})=
+\sum_{j=1}^s(-1)^{j-1}a_{i_j}
+e_{i_1}\wedge\cdots\widehat e_{i_j}\cdots\wedge e_{i_s}.
+\]</span>
+Removing a pair <span class="math" data-tex="\(i_j,i_l\)">\(i_j,i_l\)</span> in either order gives opposite signs and the same product of coefficients. Thus <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>, including in characteristic two. This is exactly the tensor differential for the displayed two-term factors.</p>
+<p>For <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, its tensor with <span class="math" data-tex="\(M\)">\(M\)</span> has kernel of multiplication in degree <span class="math" data-tex="\(-1\)">\(-1\)</span> and cokernel in degree zero. The asserted injectivity gives the result. Suppose the result holds for <span class="math" data-tex="\(r-1\)">\(r-1\)</span>. That tensor complex is quasi-isomorphic to <span class="math" data-tex="\(M/(a_1,\ldots,a_{r-1})M\)">\(M/(a_1,\ldots,a_{r-1})M\)</span> in degree zero. Tensor with the last two-term free complex preserves this quasi-isomorphism by K-flatness. Its cohomology is again the kernel and cokernel of multiplication by <span class="math" data-tex="\(a_r\)">\(a_r\)</span>, and regularity gives the assertion. Induction proves the formula. Every term of <span class="math" data-tex="\(K_R\)">\(K_R\)</span> is finite free and there are only <span class="math" data-tex="\(r+1\)">\(r+1\)</span> nonzero terms; bounded-above flatness proves K-flatness. Its augmentation onto the quotient is the asserted quasi-isomorphism when <span class="math" data-tex="\(M=R\)">\(M=R\)</span>, so the derived tensor construction proves the final claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(R=k[x_1,\ldots,x_r]\)">\(R=k[x_1,\ldots,x_r]\)</span> and <span class="math" data-tex="\(a_i=x_i\)">\(a_i=x_i\)</span>, the quotient at each step is a polynomial ring in the remaining variables, so the injectivity hypothesis holds over any field. Tensoring the resolution with <span class="math" data-tex="\(k=R/(x_1,\ldots,x_r)\)">\(k=R/(x_1,\ldots,x_r)\)</span> makes every differential zero. Therefore
+<span class="math math-display" data-tex="\[
+\operatorname{Tor}_i^R(k,k)=\bigwedge\nolimits^i k^r
+\quad(0\leq i\leq r),\qquad
+\operatorname{Tor}_i^R(k,k)=0\quad(i&gt;r).
+\]">\[
+\operatorname{Tor}_i^R(k,k)=\bigwedge\nolimits^i k^r
+\quad(0\leq i\leq r),\qquad
+\operatorname{Tor}_i^R(k,k)=0\quad(i&gt;r).
+\]</span>
+Applying Hom to the same finite free resolution gives
+<span class="math" data-tex="\(\operatorname{Ext}_R^i(k,k)=\operatorname{Hom}_k(\bigwedge^i k^r,k)\)">\(\operatorname{Ext}_R^i(k,k)=\operatorname{Hom}_k(\bigwedge^i k^r,k)\)</span> as vector spaces. The dimensions are <span class="math" data-tex="\(\binom ri\)">\(\binom ri\)</span>. This calculation asserts groups and vector spaces; an assertion about the Yoneda multiplication would require its additional comparison.</p>
+<h3 id="a-bar-model-without-commutativity">A bar model without commutativity</h3>
+<p>The bar construction gives a uniform computational example at a one-point space. Roman Bezrukavnikov's <a href="https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/mit18_706_s23_full_lec.pdf">MIT 18.706 lecture notes, §12.2, p. 37</a>, prepared by Serina Hu and Vasily Krylov, present the construction. We write out the module version and its contraction independently.</p>
+<p><strong>Proposition 4.2 (bar resolution).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be an associative unital algebra over a field <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(M\)">\(M\)</span> a left <span class="math" data-tex="\(A\)">\(A\)</span>-module. There is a free resolution in nonpositive cohomological degrees with
+<span class="math math-display" data-tex="\[
+B^{-n}(M)=A\otimes_k A^{\otimes_k n}\otimes_k M\quad(n\geq0)
+\]">\[
+B^{-n}(M)=A\otimes_k A^{\otimes_k n}\otimes_k M\quad(n\geq0)
+\]</span>
+and augmentation <span class="math" data-tex="\(a\otimes m\mapsto am\)">\(a\otimes m\mapsto am\)</span>. For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, its differential is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d(a_0|\cdots|a_n|m)
+&amp;=\sum_{i=0}^{n-1}(-1)^i
+(a_0|\cdots|a_i a_{i+1}|\cdots|a_n|m)\\
+&amp;\quad+(-1)^n(a_0|\cdots|a_{n-1}|a_n m).
+\end{aligned}
+\]">\[
+\begin{aligned}
+d(a_0|\cdots|a_n|m)
+&amp;=\sum_{i=0}^{n-1}(-1)^i
+(a_0|\cdots|a_i a_{i+1}|\cdots|a_n|m)\\
+&amp;\quad+(-1)^n(a_0|\cdots|a_{n-1}|a_n m).
+\end{aligned}
+\]</span>
+It computes <span class="math" data-tex="\(\operatorname{Tor}^A_i(N,M)\)">\(\operatorname{Tor}^A_i(N,M)\)</span> for every right <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(N\)">\(N\)</span> after applying <span class="math" data-tex="\(N\otimes_A-\)">\(N\otimes_A-\)</span>, and computes <span class="math" data-tex="\(\operatorname{Ext}_A^i(M,L)\)">\(\operatorname{Ext}_A^i(M,L)\)</span> after applying <span class="math" data-tex="\(\operatorname{Hom}_A(-,L)\)">\(\operatorname{Hom}_A(-,L)\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> be the operation of multiplying the <span class="math" data-tex="\(i\)">\(i\)</span>-th adjacent pair, with the last operation acting on <span class="math" data-tex="\(m\)">\(m\)</span>. Associativity of <span class="math" data-tex="\(A\)">\(A\)</span> and its module action gives
+<span class="math" data-tex="\(\partial_i\partial_j=\partial_{j-1}\partial_i\)">\(\partial_i\partial_j=\partial_{j-1}\partial_i\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, with compositions read from right to left. Each term in the square of the alternating differential is therefore paired with an identical operation of opposite sign. This proves <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>; the same action identity verifies the augmentation.</p>
+<p>On the augmented complex, define <span class="math" data-tex="\(h(m)=1|m\)">\(h(m)=1|m\)</span> and
+<span class="math math-display" data-tex="\[
+h(a_0|\cdots|a_n|m)=1|a_0|\cdots|a_n|m.
+\]">\[
+h(a_0|\cdots|a_n|m)=1|a_0|\cdots|a_n|m.
+\]</span>
+The first face of <span class="math" data-tex="\(dh\)">\(dh\)</span> returns the original tensor. Every subsequent face of <span class="math" data-tex="\(dh\)">\(dh\)</span> is the negative of the corresponding term of <span class="math" data-tex="\(hd\)">\(hd\)</span>; in degree zero this includes the augmentation followed by <span class="math" data-tex="\(h(m)\)">\(h(m)\)</span>. Hence <span class="math" data-tex="\(dh+hd=1\)">\(dh+hd=1\)</span>. The contraction is <span class="math" data-tex="\(k\)">\(k\)</span>-linear; it need not be <span class="math" data-tex="\(A\)">\(A\)</span>-linear. It proves exactness of the underlying complex, and therefore exactness as <span class="math" data-tex="\(A\)">\(A\)</span>-modules.</p>
+<p>Each term is a free left <span class="math" data-tex="\(A\)">\(A\)</span>-module: choose a <span class="math" data-tex="\(k\)">\(k\)</span>-basis of <span class="math" data-tex="\(A^{\otimes n}\otimes M\)">\(A^{\otimes n}\otimes M\)</span> and use it as the free basis of the first-factor module. The complex is bounded above and free. Filtering it by degrees starting at zero and then adding degrees <span class="math" data-tex="\(-1,-2,\ldots\)">\(-1,-2,\ldots\)</span> gives a semifree filtration, since the differential raises cohomological degree. Theorem 3.4 in the K-flat lesson makes it both K-projective and K-flat. The derived tensor and Hom comparisons then prove the two computational assertions for all <span class="math" data-tex="\(N,L\)">\(N,L\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The field hypothesis ensures the stated freeness of every term. Over a general base ring this same formula is a relative resolution, and additional flatness or projectivity conditions are needed before using it to compute absolute derived functors. No commutativity of <span class="math" data-tex="\(A\)">\(A\)</span> is assumed here.</p>
+<h2 id="5-exercises-with-checked-solutions">5. Exercises with checked solutions</h2>
+<p><strong>Exercise 1 (easy: ideals on a one-point space).</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be a commutative ring and <span class="math" data-tex="\(I,J\)">\(I,J\)</span> ideals. Derive formulas for Tor in degrees zero and one. Then compute every <span class="math" data-tex="\(\operatorname{Tor}_p^{\mathbb Z}(\mathbb Z/m,\mathbb Z/n)\)">\(\operatorname{Tor}_p^{\mathbb Z}(\mathbb Z/m,\mathbb Z/n)\)</span>, for positive integers <span class="math" data-tex="\(m,n\ge2\)">\(m,n\ge2\)</span>. Explain why the first formulas alone do not determine all higher groups for arbitrary ideals.</p>
+<p><strong>Solution.</strong> Tensor <span class="math" data-tex="\(0\to I\to R\to R/I\to0\)">\(0\to I\to R\to R/I\to0\)</span> with <span class="math" data-tex="\(R/J\)">\(R/J\)</span> in the derived sense. The vanishing of positive Tor against <span class="math" data-tex="\(R\)">\(R\)</span> embeds first Tor as the kernel of <span class="math" data-tex="\(I/IJ\to R/J\)">\(I/IJ\to R/J\)</span>. This kernel is <span class="math" data-tex="\((I\cap J)/IJ\)">\((I\cap J)/IJ\)</span>, and the cokernel is <span class="math" data-tex="\(R/(I+J)\)">\(R/(I+J)\)</span>. The next segments identify higher Tor with <span class="math" data-tex="\(\operatorname{Tor}_{p-1}(I,R/J)\)">\(\operatorname{Tor}_{p-1}(I,R/J)\)</span>, which need not vanish.</p>
+<p>For <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span>, use the injective multiplication map in the free resolution <span class="math" data-tex="\(\mathbb Z\xrightarrow{m}\mathbb Z\)">\(\mathbb Z\xrightarrow{m}\mathbb Z\)</span>, in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>. Tensor with <span class="math" data-tex="\(\mathbb Z/n\)">\(\mathbb Z/n\)</span>. Put <span class="math" data-tex="\(d=\gcd(m,n)\)">\(d=\gcd(m,n)\)</span>. Its cokernel is <span class="math" data-tex="\(\mathbb Z/d\)">\(\mathbb Z/d\)</span>, and its kernel consists of the multiples of <span class="math" data-tex="\(n/d\)">\(n/d\)</span> modulo <span class="math" data-tex="\(n\)">\(n\)</span>, also a cyclic group of order <span class="math" data-tex="\(d\)">\(d\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tor}^{\mathbb Z}_p(\mathbb Z/m,\mathbb Z/n)
+=
+\begin{cases}
+\mathbb Z/d,&amp;p=0,1,\\
+0,&amp;p\ge2.
+\end{cases}
+\]">\[
+\operatorname{Tor}^{\mathbb Z}_p(\mathbb Z/m,\mathbb Z/n)
+=
+\begin{cases}
+\mathbb Z/d,&amp;p=0,1,\\
+0,&amp;p\ge2.
+\end{cases}
+\]</span>
+<p>The first-degree ideal formula agrees: <span class="math" data-tex="\(I\cap J=\operatorname{lcm}(m,n)\mathbb Z\)">\(I\cap J=\operatorname{lcm}(m,n)\mathbb Z\)</span> and <span class="math" data-tex="\(IJ=mn\mathbb Z\)">\(IJ=mn\mathbb Z\)</span>. In contrast, for the dual-number ring in (4.7), the ideals <span class="math" data-tex="\(I=J=(\varepsilon)\)">\(I=J=(\varepsilon)\)</span> have all positive Tor equal to <span class="math" data-tex="\(k\)">\(k\)</span>, by that explicit free resolution. Thus the higher-degree answer needs information about the actual ideal or resolution.</p>
+<p><strong>Exercise 2 (medium: associativity with changed models).</strong> Let <span class="math" data-tex="\(P,R,T\)">\(P,R,T\)</span> resolve <span class="math" data-tex="\(F,G,H\)">\(F,G,H\)</span>. Prove the derived associativity isomorphism, including independence when a different K-flat model <span class="math" data-tex="\(V\to P\otimes R\)">\(V\to P\otimes R\)</span> is used for the intermediate object. Check the symmetry hexagon on tensors of degrees <span class="math" data-tex="\(1,1,-1\)">\(1,1,-1\)</span>.</p>
+<p><strong>Solution.</strong> The product <span class="math" data-tex="\(P\otimes R\)">\(P\otimes R\)</span> is K-flat, so <span class="math" data-tex="\((P\otimes R)\otimes T\)">\((P\otimes R)\otimes T\)</span> computes the left-associated product without another resolution. The right-associated product is computed by <span class="math" data-tex="\(P\otimes(R\otimes T)\)">\(P\otimes(R\otimes T)\)</span>. Their summands are indexed by the same triples, and their differential terms have signs <span class="math" data-tex="\(1,(-1)^i,(-1)^{i+j}\)">\(1,(-1)^i,(-1)^{i+j}\)</span>. Reassociation is therefore a chain isomorphism with no extra sign.</p>
+<p>The map <span class="math" data-tex="\(V\to P\otimes R\)">\(V\to P\otimes R\)</span> is a quasi-isomorphism between K-flats. Lemma 1.1 makes <span class="math" data-tex="\(V\otimes T\to(P\otimes R)\otimes T\)">\(V\otimes T\to(P\otimes R)\otimes T\)</span> a quasi-isomorphism. Its composite with reassociation gives the comparison from this alternative intermediate model. For two such choices, resolve their termwise-surjective enlargements' fibre product; the resulting comparisons agree by Theorem 1.2. Changing the individual <span class="math" data-tex="\(P,R,T\)">\(P,R,T\)</span> is handled by the same comparison and the naturality of the ordinary association map. Consequently the isomorphism belongs to the derived objects, rather than to the displayed choice alone.</p>
+<p>For the stated degrees, moving the degree-one factor across the combined block has sign <span class="math" data-tex="\((-1)^{1(1-1)}=1\)">\((-1)^{1(1-1)}=1\)</span>. Moving it successively past the two odd-degree factors gives <span class="math" data-tex="\((-1)^{1\cdot1}(-1)^{1\cdot(-1)}=(-1)(-1)=1\)">\((-1)^{1\cdot1}(-1)^{1\cdot(-1)}=(-1)(-1)=1\)</span>. This checks that instance of the hexagon; the calculation <span class="math" data-tex="\(i(j+k)=ij+ik\)">\(i(j+k)=ij+ik\)</span> proves every instance.</p>
+<p><strong>Exercise 3 (medium: which Tor tests suffice?).</strong> Prove Theorem 3.3 from the derived construction. Show also that it is enough to test <span class="math" data-tex="\(\operatorname{Tor}_1(F,x_*N)=0\)">\(\operatorname{Tor}_1(F,x_*N)=0\)</span> for every point <span class="math" data-tex="\(x\)">\(x\)</span> and every <span class="math" data-tex="\(\mathcal O_x\)">\(\mathcal O_x\)</span>-module <span class="math" data-tex="\(N\)">\(N\)</span>. Explain the role of “every” using the continuous germ ring at the origin.</p>
+<p><strong>Solution.</strong> A flat <span class="math" data-tex="\(F\)">\(F\)</span> in degree zero is K-flat, so its ordinary tensor with <span class="math" data-tex="\(G[0]\)">\(G[0]\)</span> already computes the derived tensor and has no negative cohomology. Thus flatness implies all positive Tor vanish, which implies first Tor vanishes. Conversely, the exact sequence for an injection <span class="math" data-tex="\(G\to H\)">\(G\to H\)</span> has <span class="math" data-tex="\(\operatorname{Tor}_1(F,\operatorname{coker}(G\to H))\)">\(\operatorname{Tor}_1(F,\operatorname{coker}(G\to H))\)</span> immediately before <span class="math" data-tex="\(F\otimes G\to F\otimes H\)">\(F\otimes G\to F\otimes H\)</span>. Vanishing of this first Tor makes that map injective. Right exactness then proves flatness.</p>
+<p>For the point tests, take the stalk at <span class="math" data-tex="\(x\)">\(x\)</span>. Proposition 3.1 and <span class="math" data-tex="\((x_*N)_x=N\)">\((x_*N)_x=N\)</span>, from Lemma 5.2 of the first lesson, give <span class="math" data-tex="\(\operatorname{Tor}_1^{\mathcal O_x}(F_x,N)=0\)">\(\operatorname{Tor}_1^{\mathcal O_x}(F_x,N)=0\)</span>. For any injection of stalk-ring modules apply the same Tor exact sequence, proving that <span class="math" data-tex="\(F_x\)">\(F_x\)</span> is flat. The stalk criterion, Lemma 1.2 of the K-flat lesson, proves <span class="math" data-tex="\(F\)">\(F\)</span> flat.</p>
+<p>In the continuous germ ring <span class="math" data-tex="\(R\)">\(R\)</span>, the residue <span class="math" data-tex="\(k\)">\(k\)</span> has <span class="math" data-tex="\(\operatorname{Tor}_1(k,k)=\mathfrak m/\mathfrak m^2=0\)">\(\operatorname{Tor}_1(k,k)=\mathfrak m/\mathfrak m^2=0\)</span>, but <span class="math" data-tex="\(\operatorname{Tor}_1(k,R/(x))=k\)">\(\operatorname{Tor}_1(k,R/(x))=k\)</span>. This particular additional test detects the failure. Testing against the residue itself therefore does not replace testing against all modules.</p>
+<p><strong>Exercise 4 (hard: only one resolution for an unbounded input).</strong> Over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, let <span class="math" data-tex="\(F=\mathbb Z/2[0]\)">\(F=\mathbb Z/2[0]\)</span>, and let <span class="math" data-tex="\(G\)">\(G\)</span> have <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> in every integer degree with zero differentials. Compute <span class="math" data-tex="\(G\otimes^{\mathbf L}F\)">\(G\otimes^{\mathbf L}F\)</span> by resolving only <span class="math" data-tex="\(F\)">\(F\)</span>. Prove in general that the resulting one-resolution answer agrees with resolving both variables. Compare it with the ordinary tensor.</p>
+<p><strong>Solution.</strong> Use <span class="math" data-tex="\(P=(\mathbb Z\xrightarrow{2}\mathbb Z)\)">\(P=(\mathbb Z\xrightarrow{2}\mathbb Z)\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, with its augmentation to <span class="math" data-tex="\(F\)">\(F\)</span>. This is a bounded free, hence K-flat, resolution. In total degree <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(G\otimes P\)">\(G\otimes P\)</span> has two summands, <span class="math" data-tex="\(G^n\otimes P^0\)">\(G^n\otimes P^0\)</span> and <span class="math" data-tex="\(G^{n+1}\otimes P^{-1}\)">\(G^{n+1}\otimes P^{-1}\)</span>. Both are <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>. The <span class="math" data-tex="\(G\)">\(G\)</span> differential is zero, and the contribution of <span class="math" data-tex="\(2\)">\(2\)</span> on <span class="math" data-tex="\(P\)">\(P\)</span> is zero after tensoring; the total differential is therefore zero. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H^n(G\otimes^{\mathbf L}F)
+=(\mathbb Z/2)\oplus(\mathbb Z/2),\\
+\text{for every }n\in\mathbb Z.
+\end{gathered}
+\]">\[
+\begin{gathered}
+H^n(G\otimes^{\mathbf L}F)
+=(\mathbb Z/2)\oplus(\mathbb Z/2),\\
+\text{for every }n\in\mathbb Z.
+\end{gathered}
+\]</span>
+<p>No resolution of <span class="math" data-tex="\(G\)">\(G\)</span> was needed for this computation. To verify agreement in general, choose any K-flat <span class="math" data-tex="\(R\to G\)">\(R\to G\)</span>. The map <span class="math" data-tex="\(R\otimes P\to G\otimes P\)">\(R\otimes P\to G\otimes P\)</span> is a quasi-isomorphism by K-flatness of <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(R\otimes P\to R\otimes F\)">\(R\otimes P\to R\otimes F\)</span> is a quasi-isomorphism by K-flatness of <span class="math" data-tex="\(R\)">\(R\)</span>. This gives (1.3) with no boundedness assumption. If <span class="math" data-tex="\(P\)">\(P\)</span> is replaced by another K-flat resolution, the common-refinement comparison in Theorem 1.2 makes the resulting isomorphisms agree naturally.</p>
+<p>The ordinary tensor <span class="math" data-tex="\(G\otimes F\)">\(G\otimes F\)</span> has only one <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> in each degree. The augmentation map <span class="math" data-tex="\(G\otimes P\to G\otimes F\)">\(G\otimes P\to G\otimes F\)</span> is the projection to the <span class="math" data-tex="\(P^0\)">\(P^0\)</span> summand, so it is not a quasi-isomorphism. The target <span class="math" data-tex="\(F\)">\(F\)</span> is not K-flat; it cannot serve as the target K-flat model in the second assertion of Lemma 1.1.</p>
+<p><strong>Exercise 5 (medium: where can tensor cohomology occur?).</strong> For complexes <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, put <span class="math" data-tex="\(\Sigma(A)=\{x:H^n(A)_x\ne0\text{ for some }n\}\)">\(\Sigma(A)=\{x:H^n(A)_x\ne0\text{ for some }n\}\)</span>. Prove</p>
+<span class="math math-display" data-tex="\[
+\Sigma(A\otimes^{\mathbf L}B)\subset\Sigma(A)\cap\Sigma(B).
+\]">\[
+\Sigma(A\otimes^{\mathbf L}B)\subset\Sigma(A)\cap\Sigma(B).
+\]</span>
+<p>Use this to compute the derived tensor of sheaves supported at two distinct points of a Hausdorff space.</p>
+<p><strong>Solution.</strong> Choose K-flat resolutions <span class="math" data-tex="\(P\to A\)">\(P\to A\)</span>, <span class="math" data-tex="\(R\to B\)">\(R\to B\)</span>. At a point outside <span class="math" data-tex="\(\Sigma(A)\)">\(\Sigma(A)\)</span>, the stalk <span class="math" data-tex="\(A_x\)">\(A_x\)</span> is acyclic, so <span class="math" data-tex="\(P_x\)">\(P_x\)</span> is an acyclic K-flat complex. Lemma 1.1 says that its tensor with every complex, in particular <span class="math" data-tex="\(R_x\)">\(R_x\)</span>, is acyclic. Since stalks commute with total tensor and cohomology, all stalk cohomology of <span class="math" data-tex="\(P\otimes R\)">\(P\otimes R\)</span> vanishes there. The same argument applies outside <span class="math" data-tex="\(\Sigma(B)\)">\(\Sigma(B)\)</span>, proving the inclusion.</p>
+<p>For a sheaf supported at one point the only possibly nonzero cohomology stalk is at that point. If the two points are distinct the two sets are disjoint, so every cohomology stalk of the derived tensor is zero. Exactness detection by stalks makes the product zero in the derived category. On a Hausdorff space ordinary skyscrapers have precisely this stalk support: a different point has a neighbourhood avoiding the chosen point. This recovers the distinct-point part of the curve example without its parameter resolution.</p>
+<p>The next lesson applies K-flat models to pullback and K-injective models to pushforward, and proves their derived adjunction. The tensor bifunctor and its comparisons established here will make the pullback's compatibility with tensor natural.</p>
+<p>Sources and licensing: the tensor-invariance and construction arguments of Lemma 1.1 and Theorem 1.2 are taken from the Stacks project, tags 06YA, 06YG and 06YH, in its AI Integrated Stacks Project edition (GFDL), checked and edited by GPT-6.1 Sol (OpenAI), at Ultra, with the full fibre-product comparison included. The Tor definition and flatness proof are taken from the Stacks project, tags 08BP and 08BQ, in that edition (GFDL), checked and edited by the same writing AI; the explicit K-flat computation is given above. The pinned <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex#L6562">complete source passage</a> and its preceding comparison lemmas were read. The localization, coherence, geometric calculations and exercises are expanded here with their actual conditions. See the <a href="../support/assets/derived-categories-and-sheaf-operations--derived-tensor-products-and-tor-sheaves/LICENCE.md">combined licence notice</a> and <a href="../support/assets/derived-categories-and-sheaf-operations--derived-tensor-products-and-tor-sheaves/COPYING">GNU FDL text</a>.</p>
+</article></main></body></html>

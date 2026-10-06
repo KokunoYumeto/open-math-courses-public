@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ramification groups and the different of a local extension · Local fields</title>
+<meta name="description" content="A lesson of the course Local fields. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-09.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Local fields</a> <span aria-hidden="true">›</span> <span>Lesson 9 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by GPT-6.1 Sol at Ultra. Independent full-lesson AI review of this version is not yet recorded.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<article class="lesson">
+<h1 id="ramification-groups-and-the-different-of-a-local-extension">Ramification groups and the different of a local extension</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).</em></p>
+<p>The ramification index separates tame extensions from wild ones, but it does not measure how far a wild automorphism moves an integral element. The lower ramification groups make that measurement. Their successive quotients constrain the Galois group, and the sum of their sizes gives the exponent of the different.</p>
+<p>Throughout the local discussion, <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is a finite Galois extension of nonarchimedean local fields, in either characteristic. Write <span class="math" data-tex="\(G=\operatorname{Gal}(L/K)\)">\(G=\operatorname{Gal}(L/K)\)</span>, <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span> for the valuation ring, <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> for its maximal ideal, and <span class="math" data-tex="\(\kappa_L\)">\(\kappa_L\)</span> for its residue field. Normalize <span class="math" data-tex="\(v_L(L^\times)=\mathbf Z\)">\(v_L(L^\times)=\mathbf Z\)</span>, put <span class="math" data-tex="\(v_L(0)=+\infty\)">\(v_L(0)=+\infty\)</span>, and let <span class="math" data-tex="\(p=\operatorname{char}\kappa_L\)">\(p=\operatorname{char}\kappa_L\)</span>. Thus <span class="math" data-tex="\(v_L|_K=e\,v_K\)">\(v_L|_K=e\,v_K\)</span>, where <span class="math" data-tex="\(e=e(L/K)\)">\(e=e(L/K)\)</span>. Every automorphism preserves <span class="math" data-tex="\(v_L\)">\(v_L\)</span>.</p>
+<p>We use <strong>Unramified and totally ramified extensions</strong> for the maximal unramified subfield, integral monogenicity and Eisenstein extensions. <strong>Tame ramification and the tame Galois group</strong> supplies the meaning of tame ramification. Exact additional imports are listed at the end.</p>
+<h2 id="1-measuring-an-automorphism-intrinsically">1. Measuring an automorphism intrinsically</h2>
+<p>Choose <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(\mathcal O_L=\mathcal O_K[\alpha]\)">\(\mathcal O_L=\mathcal O_K[\alpha]\)</span>. For <span class="math" data-tex="\(\sigma\in G\)">\(\sigma\in G\)</span>, define
+<span class="math math-display" data-tex="\[
+i_G(\sigma)=v_L(\sigma\alpha-\alpha).
+\]">\[
+i_G(\sigma)=v_L(\sigma\alpha-\alpha).
+\]</span>
+In particular, <span class="math" data-tex="\(i_G(1)=+\infty\)">\(i_G(1)=+\infty\)</span>. For integral <span class="math" data-tex="\(i\geq-1\)">\(i\geq-1\)</span>, set
+<span class="math math-display" data-tex="\[
+G_i=\{\sigma\in G:i_G(\sigma)\geq i+1\}.
+\tag{1.1}
+\]">\[
+G_i=\{\sigma\in G:i_G(\sigma)\geq i+1\}.
+\tag{1.1}
+\]</span></p>
+<p><strong>Proposition 1.1 (intrinsic lower groups).</strong> The number <span class="math" data-tex="\(i_G(\sigma)\)">\(i_G(\sigma)\)</span> is independent of the chosen integral generator. More precisely,
+<span class="math math-display" data-tex="\[
+i_G(\sigma)=\min_{x\in\mathcal O_L}v_L(\sigma x-x).
+\tag{1.2}
+\]">\[
+i_G(\sigma)=\min_{x\in\mathcal O_L}v_L(\sigma x-x).
+\tag{1.2}
+\]</span>
+The groups <span class="math" data-tex="\(G_i\)">\(G_i\)</span> are normal in <span class="math" data-tex="\(G\)">\(G\)</span>, decrease with <span class="math" data-tex="\(i\)">\(i\)</span>, and are trivial for sufficiently large <span class="math" data-tex="\(i\)">\(i\)</span>. We have <span class="math" data-tex="\(G_{-1}=G\)">\(G_{-1}=G\)</span>, and <span class="math" data-tex="\(G_0\)">\(G_0\)</span> is the inertia group. If <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span>, the lower groups of <span class="math" data-tex="\(L/L^H\)">\(L/L^H\)</span>, using the same normalized valuation on <span class="math" data-tex="\(L\)">\(L\)</span>, satisfy
+<span class="math math-display" data-tex="\[
+H_i=H\cap G_i.
+\tag{1.3}
+\]">\[
+H_i=H\cap G_i.
+\tag{1.3}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(x=P(\alpha)\)">\(x=P(\alpha)\)</span>, with <span class="math" data-tex="\(P\in\mathcal O_K[X]\)">\(P\in\mathcal O_K[X]\)</span>, the polynomial identity <span class="math" data-tex="\(P(Y)-P(X)=(Y-X)Q(X,Y)\)">\(P(Y)-P(X)=(Y-X)Q(X,Y)\)</span> gives
+<span class="math math-display" data-tex="\[
+\sigma x-x=(\sigma\alpha-\alpha)Q(\alpha,\sigma\alpha).
+\]">\[
+\sigma x-x=(\sigma\alpha-\alpha)Q(\alpha,\sigma\alpha).
+\]</span>
+The second factor is integral. Hence every value in (1.2) is at least <span class="math" data-tex="\(i_G(\sigma)\)">\(i_G(\sigma)\)</span>, and <span class="math" data-tex="\(x=\alpha\)">\(x=\alpha\)</span> attains the bound. This proves (1.2), including the identity case, and removes dependence on <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p>For an integer <span class="math" data-tex="\(i\geq0\)">\(i\geq0\)</span>, membership in <span class="math" data-tex="\(G_i\)">\(G_i\)</span> says exactly that <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> acts trivially on every element of <span class="math" data-tex="\(\mathcal O_L/\mathfrak P^{i+1}\)">\(\mathcal O_L/\mathfrak P^{i+1}\)</span>. Consequently it is a subgroup. Explicitly,
+<span class="math math-display" data-tex="\[
+\sigma\tau x-x=\sigma(\tau x-x)+(\sigma x-x),
+\]">\[
+\sigma\tau x-x=\sigma(\tau x-x)+(\sigma x-x),
+\]</span>
+and preservation of valuation proves closure; replacing <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(\sigma^{-1}x\)">\(\sigma^{-1}x\)</span> proves closure under inverses. Conjugation by <span class="math" data-tex="\(\gamma\in G\)">\(\gamma\in G\)</span> replaces the test element by <span class="math" data-tex="\(\gamma^{-1}x\)">\(\gamma^{-1}x\)</span>, which runs over all of <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>, and preserves its value. Thus <span class="math" data-tex="\(G_i\)">\(G_i\)</span> is normal. Decrease is immediate.</p>
+<p>Every difference of integral elements is integral, so <span class="math" data-tex="\(G_{-1}=G\)">\(G_{-1}=G\)</span>. Trivial action modulo <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> is precisely the definition of inertia, so <span class="math" data-tex="\(G_0\)">\(G_0\)</span> is inertia. If <span class="math" data-tex="\(\sigma\ne1\)">\(\sigma\ne1\)</span>, it cannot fix the generator <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>; its value <span class="math" data-tex="\(i_G(\sigma)\)">\(i_G(\sigma)\)</span> is finite. There are finitely many such automorphisms, and taking <span class="math" data-tex="\(i\)">\(i\)</span> above all their values makes <span class="math" data-tex="\(G_i\)">\(G_i\)</span> trivial.</p>
+<p>The extension <span class="math" data-tex="\(L/L^H\)">\(L/L^H\)</span> is again Galois and local. Its intrinsic test (1.2) uses the same ring <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span> and the same <span class="math" data-tex="\(v_L\)">\(v_L\)</span>, so its condition on an element <span class="math" data-tex="\(\sigma\in H\)">\(\sigma\in H\)</span> is exactly the condition defining <span class="math" data-tex="\(G_i\)">\(G_i\)</span>. This proves (1.3), without assuming <span class="math" data-tex="\(H\)">\(H\)</span> normal in <span class="math" data-tex="\(G\)">\(G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For real <span class="math" data-tex="\(u\geq-1\)">\(u\geq-1\)</span>, our convention is
+<span class="math math-display" data-tex="\[
+G_u=G_{\lceil u\rceil}.
+\tag{1.4}
+\]">\[
+G_u=G_{\lceil u\rceil}.
+\tag{1.4}
+\]</span>
+For instance, <span class="math" data-tex="\(G_u=G_0\)">\(G_u=G_0\)</span> on <span class="math" data-tex="\((-1,0]\)">\((-1,0]\)</span> and <span class="math" data-tex="\(G_u=G_1\)">\(G_u=G_1\)</span> on <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>. At an integer jump the value is the group on its left. This convention will determine the endpoints in the upper numbering.</p>
+<h2 id="2-the-graded-pieces">2. The graded pieces</h2>
+<p>Let <span class="math" data-tex="\(L_0\)">\(L_0\)</span> be the maximal unramified subfield of <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. Its residue field is <span class="math" data-tex="\(\kappa_L\)">\(\kappa_L\)</span>, and <span class="math" data-tex="\(L/L_0\)">\(L/L_0\)</span> is totally ramified.</p>
+<p>The correspondence between unramified extensions and residue extensions identifies <span class="math" data-tex="\(\operatorname{Gal}(L_0/K)\)">\(\operatorname{Gal}(L_0/K)\)</span> with <span class="math" data-tex="\(\operatorname{Gal}(\kappa_L/\kappa_K)\)">\(\operatorname{Gal}(\kappa_L/\kappa_K)\)</span>. The field <span class="math" data-tex="\(L_0\)">\(L_0\)</span> is stable under <span class="math" data-tex="\(G\)">\(G\)</span> by its defining maximality. Restriction from <span class="math" data-tex="\(G\)">\(G\)</span> onto <span class="math" data-tex="\(\operatorname{Gal}(L_0/K)\)">\(\operatorname{Gal}(L_0/K)\)</span> is surjective: an embedding of this intermediate field extends to an embedding of the finite normal extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. Its kernel is exactly <span class="math" data-tex="\(G_0\)">\(G_0\)</span>, since the unramified correspondence identifies the action on <span class="math" data-tex="\(L_0\)">\(L_0\)</span> with the action on its residue field. In particular,
+<span class="math math-display" data-tex="\[
+|G_0|=[L:L_0]=e.
+\tag{2.1}
+\]">\[
+|G_0|=[L:L_0]=e.
+\tag{2.1}
+\]</span></p>
+<p>Fix a uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>. Total ramification gives <span class="math" data-tex="\(\mathcal O_L=\mathcal O_{L_0}[\pi]\)">\(\mathcal O_L=\mathcal O_{L_0}[\pi]\)</span>. Every <span class="math" data-tex="\(\sigma\in G_0\)">\(\sigma\in G_0\)</span> fixes <span class="math" data-tex="\(L_0\)">\(L_0\)</span>, so the same polynomial-difference argument as before now gives
+<span class="math math-display" data-tex="\[
+i_G(\sigma)=v_L(\sigma\pi-\pi)
+\qquad(\sigma\in G_0).
+\tag{2.2}
+\]">\[
+i_G(\sigma)=v_L(\sigma\pi-\pi)
+\qquad(\sigma\in G_0).
+\tag{2.2}
+\]</span>
+This uniformizer formula is intended for inertia; a noninertial automorphism has <span class="math" data-tex="\(i_G(\sigma)=0\)">\(i_G(\sigma)=0\)</span>.</p>
+<p>Write <span class="math" data-tex="\(U_L^0=\mathcal O_L^\times\)">\(U_L^0=\mathcal O_L^\times\)</span> and <span class="math" data-tex="\(U_L^r=1+\mathfrak P^r\)">\(U_L^r=1+\mathfrak P^r\)</span> for <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>.</p>
+<p><strong>Proposition 2.1 (canonical graded injections).</strong> There are injective homomorphisms
+<span class="math math-display" data-tex="\[
+G_0/G_1\longrightarrow\kappa_L^\times,
+\qquad
+\sigma G_1\longmapsto\overline{\sigma\pi/\pi},
+\tag{2.3}
+\]">\[
+G_0/G_1\longrightarrow\kappa_L^\times,
+\qquad
+\sigma G_1\longmapsto\overline{\sigma\pi/\pi},
+\tag{2.3}
+\]</span>
+and, for <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+G_r/G_{r+1}\longrightarrow U_L^r/U_L^{r+1},
+\qquad
+\sigma G_{r+1}\longmapsto(\sigma\pi/\pi)U_L^{r+1}.
+\tag{2.4}
+\]">\[
+G_r/G_{r+1}\longrightarrow U_L^r/U_L^{r+1},
+\qquad
+\sigma G_{r+1}\longmapsto(\sigma\pi/\pi)U_L^{r+1}.
+\tag{2.4}
+\]</span>
+Both maps are independent of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The group <span class="math" data-tex="\(U_L^r/U_L^{r+1}\)">\(U_L^r/U_L^{r+1}\)</span> is isomorphic to the additive group of <span class="math" data-tex="\(\kappa_L\)">\(\kappa_L\)</span>; that last identification uses <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(c_\sigma=\sigma\pi/\pi\)">\(c_\sigma=\sigma\pi/\pi\)</span>. For inertia,
+<span class="math math-display" data-tex="\[
+c_{\sigma\tau}=\sigma(c_\tau)c_\sigma.
+\tag{2.5}
+\]">\[
+c_{\sigma\tau}=\sigma(c_\tau)c_\sigma.
+\tag{2.5}
+\]</span>
+Inertia acts trivially on residue units, so reduction makes (2.5) multiplicative. Equation (2.2) says that the kernel is <span class="math" data-tex="\(G_1\)">\(G_1\)</span>, proving (2.3).</p>
+<p>For <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, the map
+<span class="math math-display" data-tex="\[
+U_L^r/U_L^{r+1}\longrightarrow(\kappa_L,+),
+\qquad
+(1+a\pi^r)U_L^{r+1}\longmapsto\bar a
+\tag{2.6}
+\]">\[
+U_L^r/U_L^{r+1}\longrightarrow(\kappa_L,+),
+\qquad
+(1+a\pi^r)U_L^{r+1}\longmapsto\bar a
+\tag{2.6}
+\]</span>
+is well defined and bijective. Multiplication becomes addition because <span class="math" data-tex="\(\mathfrak P^{2r}\subseteq\mathfrak P^{r+1}\)">\(\mathfrak P^{2r}\subseteq\mathfrak P^{r+1}\)</span>.</p>
+<p>Every <span class="math" data-tex="\(\sigma\in G_1\)">\(\sigma\in G_1\)</span> acts trivially on this quotient. Indeed, <span class="math" data-tex="\(\sigma a\equiv a\pmod{\mathfrak P}\)">\(\sigma a\equiv a\pmod{\mathfrak P}\)</span>, and <span class="math" data-tex="\(\sigma\pi/\pi\equiv1\pmod{\mathfrak P}\)">\(\sigma\pi/\pi\equiv1\pmod{\mathfrak P}\)</span>, so
+<span class="math" data-tex="\(\sigma(a\pi^r)\equiv a\pi^r\pmod{\mathfrak P^{r+1}}\)">\(\sigma(a\pi^r)\equiv a\pi^r\pmod{\mathfrak P^{r+1}}\)</span>.
+For <span class="math" data-tex="\(\sigma,\tau\in G_r\)">\(\sigma,\tau\in G_r\)</span>, (2.2) puts <span class="math" data-tex="\(c_\sigma,c_\tau\)">\(c_\sigma,c_\tau\)</span> in <span class="math" data-tex="\(U_L^r\)">\(U_L^r\)</span>; (2.5) is therefore a homomorphism in this quotient. Its kernel is <span class="math" data-tex="\(G_{r+1}\)">\(G_{r+1}\)</span>, again by (2.2).</p>
+<p>If <span class="math" data-tex="\(\pi&#x27;=u\pi\)">\(\pi&#x27;=u\pi\)</span>, with <span class="math" data-tex="\(u\in\mathcal O_L^\times\)">\(u\in\mathcal O_L^\times\)</span>, then
+<span class="math math-display" data-tex="\[
+\frac{\sigma\pi&#x27;}{\pi&#x27;}=
+\frac{\sigma u}{u}\frac{\sigma\pi}{\pi}.
+\]">\[
+\frac{\sigma\pi&#x27;}{\pi&#x27;}=
+\frac{\sigma u}{u}\frac{\sigma\pi}{\pi}.
+\]</span>
+For <span class="math" data-tex="\(\sigma\in G_r\)">\(\sigma\in G_r\)</span>, the intrinsic definition gives
+<span class="math" data-tex="\(v_L(\sigma u-u)\geq r+1\)">\(v_L(\sigma u-u)\geq r+1\)</span>. Thus <span class="math" data-tex="\(\sigma u/u\in U_L^{r+1}\)">\(\sigma u/u\in U_L^{r+1}\)</span>, also for <span class="math" data-tex="\(r=0\)">\(r=0\)</span> with the evident interpretation. Both (2.3) and (2.4) are unchanged.</p>
+<p>Changing <span class="math" data-tex="\(\pi\)">\(\pi\)</span> does change the coordinate (2.6): if <span class="math" data-tex="\(\pi&#x27;=u\pi\)">\(\pi&#x27;=u\pi\)</span>, the residue coefficient changes by <span class="math" data-tex="\(\bar u^{-r}\)">\(\bar u^{-r}\)</span>. The injection into the unit quotient is canonical; its residue-field coordinate need not be. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.2 (wild inertia and solvability).</strong> The group <span class="math" data-tex="\(G_0/G_1\)">\(G_0/G_1\)</span> is cyclic of order prime to <span class="math" data-tex="\(p\)">\(p\)</span>. The group <span class="math" data-tex="\(G_1\)">\(G_1\)</span> is the unique Sylow <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup of <span class="math" data-tex="\(G_0\)">\(G_0\)</span>. Every finite Galois group of nonarchimedean local fields is solvable. Moreover,
+<span class="math math-display" data-tex="\[
+L/K\text{ is tame}\quad\Longleftrightarrow\quad G_1=1.
+\]">\[
+L/K\text{ is tame}\quad\Longleftrightarrow\quad G_1=1.
+\]</span></p>
+<p><em>Proof.</em> The finite cyclic group <span class="math" data-tex="\(\kappa_L^\times\)">\(\kappa_L^\times\)</span> has order prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Equation (2.3) proves the first assertion. Each quotient <span class="math" data-tex="\(G_r/G_{r+1}\)">\(G_r/G_{r+1}\)</span>, for <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, is a subgroup of the additive residue field, so it is an elementary abelian <span class="math" data-tex="\(p\)">\(p\)</span>-group. The filtration terminates; multiplying its quotient orders shows that <span class="math" data-tex="\(G_1\)">\(G_1\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-group. Its index in <span class="math" data-tex="\(G_0\)">\(G_0\)</span> is prime to <span class="math" data-tex="\(p\)">\(p\)</span>, and its normality makes it the unique Sylow subgroup.</p>
+<p>The same terminating filtration has abelian quotients, so <span class="math" data-tex="\(G_1\)">\(G_1\)</span>, and then <span class="math" data-tex="\(G_0\)">\(G_0\)</span>, are solvable. Finally <span class="math" data-tex="\(G/G_0\)">\(G/G_0\)</span> is the cyclic finite-field Galois group described above. A group with a solvable normal subgroup and solvable quotient is solvable: lift a derived series for the quotient and then append one for the normal subgroup. This proves the assertion for <span class="math" data-tex="\(G\)">\(G\)</span>. By (2.1), <span class="math" data-tex="\(p\nmid e\)">\(p\nmid e\)</span> exactly when <span class="math" data-tex="\(G_1=1\)">\(G_1=1\)</span>; residue extensions of local fields are separable, so this is precisely tameness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-hilbert-s-formula">3. Hilbert's formula</h2>
+<p>For any finite separable extension of local fields, define its trace-dual lattice and different by
+<span class="math math-display" data-tex="\[
+\mathcal O_L^*=
+\{x\in L : \operatorname{Tr}_{L/K}(x\mathcal O_L)\subseteq\mathcal O_K\},
+\qquad
+\mathfrak D_{L/K}=(\mathcal O_L^*)^{-1}.
+\tag{3.1}
+\]">\[
+\mathcal O_L^*=
+\{x\in L : \operatorname{Tr}_{L/K}(x\mathcal O_L)\subseteq\mathcal O_K\},
+\qquad
+\mathfrak D_{L/K}=(\mathcal O_L^*)^{-1}.
+\tag{3.1}
+\]</span>
+The trace form is nondegenerate: <a href="NT-LOC-07.html"><strong>Unramified and totally ramified extensions</strong>, Lemma 4.0</a> proves that every finite separable field extension has an element <span class="math" data-tex="\(t\)">\(t\)</span> of trace one. For any nonzero <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span>, set <span class="math" data-tex="\(y=t/x\)">\(y=t/x\)</span>; then <span class="math" data-tex="\(\operatorname{Tr}_{L/K}(xy)=1\)">\(\operatorname{Tr}_{L/K}(xy)=1\)</span>. This proves nondegeneracy in every characteristic. Its dual lattice is a fractional <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>-ideal, and inversion is fractional-ideal inversion. If <span class="math" data-tex="\(\mathcal O_L=\mathcal O_K[\alpha]\)">\(\mathcal O_L=\mathcal O_K[\alpha]\)</span>, with monic minimal polynomial <span class="math" data-tex="\(f\)">\(f\)</span>, the monogenic different theorem gives
+<span class="math math-display" data-tex="\[
+\mathfrak D_{L/K}=f&#x27;(\alpha)\mathcal O_L.
+\tag{3.2}
+\]">\[
+\mathfrak D_{L/K}=f&#x27;(\alpha)\mathcal O_L.
+\tag{3.2}
+\]</span>
+This algebraic trace-dual theorem is proved in <em>Number fields</em>, lesson 14, <strong>The different and the discriminant</strong>, “The trace dual,” Euler's dual-basis lemma and Proposition 14.2. Its hypotheses are a Dedekind base ring and a finite separable extension with finite integral closure; the monogenic formula additionally requires the full integral closure to be <span class="math" data-tex="\(\mathcal O_K[\alpha]\)">\(\mathcal O_K[\alpha]\)</span>. Complete local integer rings satisfy these conditions by <strong>Extensions of complete valued fields</strong>, Theorem 3.1. The separable trace pairing is proved nondegenerate above, using the exact earlier trace-one lemma; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-separable-trace-pairing">Stacks, Tag 0BIL</a> is a comparison. The ramification formula that follows is proved here.</p>
+<p><strong>Theorem 3.1 (Hilbert).</strong> For the finite Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>,
+<span class="math math-display" data-tex="\[
+d(L/K):=v_L(\mathfrak D_{L/K})
+=\sum_{\sigma\ne1}i_G(\sigma)
+=\sum_{r\geq0}(|G_r|-1).
+\tag{3.3}
+\]">\[
+d(L/K):=v_L(\mathfrak D_{L/K})
+=\sum_{\sigma\ne1}i_G(\sigma)
+=\sum_{r\geq0}(|G_r|-1).
+\tag{3.3}
+\]</span>
+Consequently a tame extension has different exponent <span class="math" data-tex="\(e-1\)">\(e-1\)</span>. In the wild case,
+<span class="math math-display" data-tex="\[
+d(L/K)\geq e+|G_1|-2\geq e+p-2.
+\tag{3.4}
+\]">\[
+d(L/K)\geq e+|G_1|-2\geq e+p-2.
+\tag{3.4}
+\]</span>
+More precisely, <span class="math" data-tex="\(d(L/K)=e+|G_1|-2\)">\(d(L/K)=e+|G_1|-2\)</span> if and only if <span class="math" data-tex="\(G_2=1\)">\(G_2=1\)</span>, and
+<span class="math" data-tex="\(d(L/K)=e+p-2\)">\(d(L/K)=e+p-2\)</span> if and only if <span class="math" data-tex="\(G_2=1\)">\(G_2=1\)</span> and <span class="math" data-tex="\(|G_1|=p\)">\(|G_1|=p\)</span>.</p>
+<p><em>Proof.</em> Normality and separability give
+<span class="math math-display" data-tex="\[
+f(X)=\prod_{\sigma\in G}(X-\sigma\alpha),
+\qquad
+f&#x27;(\alpha)=\prod_{\sigma\ne1}(\alpha-\sigma\alpha).
+\]">\[
+f(X)=\prod_{\sigma\in G}(X-\sigma\alpha),
+\qquad
+f&#x27;(\alpha)=\prod_{\sigma\ne1}(\alpha-\sigma\alpha).
+\]</span>
+Taking valuation in (3.2) proves the first sum. For a nonidentity automorphism, <span class="math" data-tex="\(i_G(\sigma)\)">\(i_G(\sigma)\)</span> is a nonnegative integer. It belongs to exactly <span class="math" data-tex="\(i_G(\sigma)\)">\(i_G(\sigma)\)</span> of the groups indexed <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, since their condition is <span class="math" data-tex="\(r+1\leq i_G(\sigma)\)">\(r+1\leq i_G(\sigma)\)</span>. Summing these finitely many indicator functions proves the second sum.</p>
+<p>The <span class="math" data-tex="\(r=0\)">\(r=0\)</span> summand is <span class="math" data-tex="\(e-1\)">\(e-1\)</span>. In the tame case all subsequent groups are trivial. In the wild case, Corollary 2.2 makes <span class="math" data-tex="\(G_1\)">\(G_1\)</span> a nontrivial <span class="math" data-tex="\(p\)">\(p\)</span>-group, so <span class="math" data-tex="\(|G_1|\geq p\)">\(|G_1|\geq p\)</span>. Retaining its contribution gives
+<span class="math math-display" data-tex="\[
+d(L/K)=(e-1)+(|G_1|-1)+\sum_{r\geq2}(|G_r|-1).
+\]">\[
+d(L/K)=(e-1)+(|G_1|-1)+\sum_{r\geq2}(|G_r|-1).
+\]</span>
+The last sum is finite and nonnegative. It vanishes exactly when <span class="math" data-tex="\(G_2=1\)">\(G_2=1\)</span>, because the filtration decreases. This proves the first bound and its equality criterion. The further inequality <span class="math" data-tex="\(|G_1|\geq p\)">\(|G_1|\geq p\)</span> gives the coarser bound; equality there also requires <span class="math" data-tex="\(|G_1|=p\)">\(|G_1|=p\)</span>. In particular, a wild extension has <span class="math" data-tex="\(d(L/K)=e\)">\(d(L/K)=e\)</span> exactly when <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(|G_1|=2\)">\(|G_1|=2\)</span> and <span class="math" data-tex="\(G_2=1\)">\(G_2=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 3.2 (the wild bound is sharp for every prime).</strong> Let
+<span class="math" data-tex="\(K=\mathbf F_p((t))\)">\(K=\mathbf F_p((t))\)</span>, and choose a root <span class="math" data-tex="\(x\)">\(x\)</span> of
+<span class="math math-display" data-tex="\[
+F(X)=X^p+tX^{p-1}-t.
+\]">\[
+F(X)=X^p+tX^{p-1}-t.
+\]</span>
+Every nonleading coefficient is divisible by <span class="math" data-tex="\(t\)">\(t\)</span>, and the constant coefficient is not divisible by <span class="math" data-tex="\(t^2\)">\(t^2\)</span>. Thus <span class="math" data-tex="\(F\)">\(F\)</span> is Eisenstein. By <a href="NT-LOC-07.html"><strong>Unramified and totally ramified extensions</strong>, Theorem 5.1</a>, the field <span class="math" data-tex="\(L=K(x)\)">\(L=K(x)\)</span> is totally ramified of degree <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(x\)">\(x\)</span> is a uniformizer, and
+<span class="math" data-tex="\(\mathcal O_L=\mathbf F_p[[t]][x]\)">\(\mathcal O_L=\mathbf F_p[[t]][x]\)</span>. In particular,
+<span class="math" data-tex="\(v_L(x)=1\)">\(v_L(x)=1\)</span> and <span class="math" data-tex="\(v_L(t)=p\)">\(v_L(t)=p\)</span>.</p>
+<p>Put <span class="math" data-tex="\(y=x^{-1}\)">\(y=x^{-1}\)</span>. Dividing <span class="math" data-tex="\(F(x)=0\)">\(F(x)=0\)</span> by <span class="math" data-tex="\(tx^p\)">\(tx^p\)</span> gives
+<span class="math math-display" data-tex="\[
+y^p-y=t^{-1}.
+\]">\[
+y^p-y=t^{-1}.
+\]</span>
+The roots of this degree-<span class="math" data-tex="\(p\)">\(p\)</span> polynomial are exactly <span class="math" data-tex="\(y+c\)">\(y+c\)</span>, with <span class="math" data-tex="\(c\in\mathbf F_p\)">\(c\in\mathbf F_p\)</span>. They all lie in <span class="math" data-tex="\(L=K(y)\)">\(L=K(y)\)</span>, are distinct, and the derivative of the polynomial is <span class="math" data-tex="\(-1\)">\(-1\)</span>. Since <span class="math" data-tex="\([K(y):K]=p\)">\([K(y):K]=p\)</span>, it is the minimal polynomial of <span class="math" data-tex="\(y\)">\(y\)</span>. Therefore <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is cyclic Galois, with the translations
+<span class="math" data-tex="\(\sigma_c(y)=y+c\)">\(\sigma_c(y)=y+c\)</span>.</p>
+<p>For <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, the unequal valuations of <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> give
+<span class="math" data-tex="\(v_L(y+c)=v_L(y)=-1\)">\(v_L(y+c)=v_L(y)=-1\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\sigma_c(x)-x=\frac{-c}{y(y+c)},\qquad
+v_L(\sigma_c(x)-x)=2.
+\]">\[
+\sigma_c(x)-x=\frac{-c}{y(y+c)},\qquad
+v_L(\sigma_c(x)-x)=2.
+\]</span>
+The uniformizer formula (2.2) now gives
+<span class="math math-display" data-tex="\[
+G_0=G_1=G,\qquad G_2=1.
+\]">\[
+G_0=G_1=G,\qquad G_2=1.
+\]</span>
+Hilbert's formula yields
+<span class="math math-display" data-tex="\[
+d(L/K)=(p-1)+(p-1)=2p-2=e+p-2,
+\]">\[
+d(L/K)=(p-1)+(p-1)=2p-2=e+p-2,
+\]</span>
+so the coarser wild bound is attained for every prime <span class="math" data-tex="\(p\)">\(p\)</span>. The monogenic derivative formula (3.2) checks the exponent independently:
+<span class="math math-display" data-tex="\[
+F&#x27;(x)=-tx^{p-2},\qquad
+v_L(F&#x27;(x))=p+(p-2)=2p-2.
+\]">\[
+F&#x27;(x)=-tx^{p-2},\qquad
+v_L(F&#x27;(x))=p+(p-2)=2p-2.
+\]</span>
+For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the factor <span class="math" data-tex="\(x^{p-2}\)">\(x^{p-2}\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, so the same computation gives <span class="math" data-tex="\(d=2=e\)">\(d=2=e\)</span>.</p>
+<h2 id="4-passing-between-number-fields-and-completions">4. Passing between number fields and completions</h2>
+<p>Let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be a finite extension of number fields. Write <span class="math" data-tex="\(\mathfrak D_{E/F}\)">\(\mathfrak D_{E/F}\)</span> for the different defined by the global trace dual. For a finite prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span> and each <span class="math" data-tex="\(\mathfrak P\mid\mathfrak p\)">\(\mathfrak P\mid\mathfrak p\)</span>, let <span class="math" data-tex="\(F_{\mathfrak p}\)">\(F_{\mathfrak p}\)</span> and <span class="math" data-tex="\(E_{\mathfrak P}\)">\(E_{\mathfrak P}\)</span> be the completions.</p>
+<p><strong>Proposition 4.1 (local exponents determine the global different).</strong> Put
+<span class="math math-display" data-tex="\[
+d_{\mathfrak P}=v_{\mathfrak P}
+  (\mathfrak D_{E_{\mathfrak P}/F_{\mathfrak p}}).
+\]">\[
+d_{\mathfrak P}=v_{\mathfrak P}
+  (\mathfrak D_{E_{\mathfrak P}/F_{\mathfrak p}}).
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\mathfrak D_{E/F}=\prod_{\mathfrak P}\mathfrak P^{d_{\mathfrak P}}.
+\tag{4.1}
+\]">\[
+\mathfrak D_{E/F}=\prod_{\mathfrak P}\mathfrak P^{d_{\mathfrak P}}.
+\tag{4.1}
+\]</span>
+Only finitely many factors are nontrivial. The relative discriminant ideal has exponent
+<span class="math math-display" data-tex="\[
+v_{\mathfrak p}(\mathfrak d_{E/F})
+=\sum_{\mathfrak P\mid\mathfrak p}
+f(\mathfrak P/\mathfrak p)d_{\mathfrak P}.
+\tag{4.2}
+\]">\[
+v_{\mathfrak p}(\mathfrak d_{E/F})
+=\sum_{\mathfrak P\mid\mathfrak p}
+f(\mathfrak P/\mathfrak p)d_{\mathfrak P}.
+\tag{4.2}
+\]</span></p>
+<p><em>Proof.</em> Set <span class="math" data-tex="\(A=(\mathcal O_F)_{\mathfrak p}\)">\(A=(\mathcal O_F)_{\mathfrak p}\)</span>, <span class="math" data-tex="\(B=(\mathcal O_E)_{\mathcal O_F\setminus\mathfrak p}\)">\(B=(\mathcal O_E)_{\mathcal O_F\setminus\mathfrak p}\)</span>, and let <span class="math" data-tex="\(\widehat A=\mathcal O_{F_{\mathfrak p}}\)">\(\widehat A=\mathcal O_{F_{\mathfrak p}}\)</span>. The ring <span class="math" data-tex="\(B\)">\(B\)</span> is a finite torsion-free <span class="math" data-tex="\(A\)">\(A\)</span>-module. Since <span class="math" data-tex="\(A\)">\(A\)</span> is a DVR, <span class="math" data-tex="\(B\)">\(B\)</span> is free. Ideal factorization and the Chinese remainder theorem give
+<span class="math math-display" data-tex="\[
+B/\mathfrak p^nB
+\simeq
+\prod_{\mathfrak P\mid\mathfrak p}
+\mathcal O_E/\mathfrak P^{n e(\mathfrak P/\mathfrak p)}.
+\]">\[
+B/\mathfrak p^nB
+\simeq
+\prod_{\mathfrak P\mid\mathfrak p}
+\mathcal O_E/\mathfrak P^{n e(\mathfrak P/\mathfrak p)}.
+\]</span>
+Localizing the factors at <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> changes none of these quotients. Their inverse limits are the completed local integer rings: the subsequence of powers <span class="math" data-tex="\(n e(\mathfrak P/\mathfrak p)\)">\(n e(\mathfrak P/\mathfrak p)\)</span> is cofinal among all powers. Taking inverse limits, or completing a finite free <span class="math" data-tex="\(A\)">\(A\)</span>-basis, proves
+<span class="math math-display" data-tex="\[
+B\otimes_A\widehat A
+\simeq\prod_{\mathfrak P\mid\mathfrak p}\mathcal O_{E_{\mathfrak P}}.
+\tag{4.3}
+\]">\[
+B\otimes_A\widehat A
+\simeq\prod_{\mathfrak P\mid\mathfrak p}\mathcal O_{E_{\mathfrak P}}.
+\tag{4.3}
+\]</span></p>
+<p>Here is why the trace dual commutes with this operation. Choose an <span class="math" data-tex="\(A\)">\(A\)</span>-basis <span class="math" data-tex="\(b_1,\ldots,b_m\)">\(b_1,\ldots,b_m\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>, and let <span class="math" data-tex="\(T=(\operatorname{Tr}_{E/F}(b_jb_k))\)">\(T=(\operatorname{Tr}_{E/F}(b_jb_k))\)</span>. It is invertible over <span class="math" data-tex="\(F\)">\(F\)</span>, by separability. In coordinates,
+<span class="math math-display" data-tex="\[
+B^*=T^{-1}A^m,
+\qquad
+B^*\otimes_A\widehat A=T^{-1}\widehat A^m.
+\]">\[
+B^*=T^{-1}A^m,
+\qquad
+B^*\otimes_A\widehat A=T^{-1}\widehat A^m.
+\]</span>
+The trace of multiplication is preserved by scalar extension. The completion decomposition of <strong>Places of number fields in extensions and the product formula</strong> identifies it with the sum of the local traces. The dual of the product lattice (4.3) for this sum is therefore
+<span class="math math-display" data-tex="\[
+B^*\otimes_A\widehat A
+\simeq
+\prod_{\mathfrak P\mid\mathfrak p}
+\mathcal O_{E_{\mathfrak P}}^*.
+\tag{4.4}
+\]">\[
+B^*\otimes_A\widehat A
+\simeq
+\prod_{\mathfrak P\mid\mathfrak p}
+\mathcal O_{E_{\mathfrak P}}^*.
+\tag{4.4}
+\]</span>
+Indeed, testing elements supported in a single factor tests each local trace condition separately.</p>
+<p>The global trace dual localizes to <span class="math" data-tex="\(B^*\)">\(B^*\)</span>: in a finite basis its trace integrality conditions are a finite system of linear equations, and localization clears their finitely many denominators. Fractional ideals in the Dedekind ring <span class="math" data-tex="\(B\)">\(B\)</span> are invertible and become principal at each maximal ideal. Completion preserves the exponent of that principal ideal, and inversion negates its exponent. Inverting (4.4) thus shows that the exponent of the global different at <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> is exactly <span class="math" data-tex="\(d_{\mathfrak P}\)">\(d_{\mathfrak P}\)</span>. Unique factorization of fractional ideals proves (4.1); a fractional ideal has finite support.</p>
+<p>Finally the algebraic discriminant theorem identifies <span class="math" data-tex="\(\mathfrak d_{E/F}\)">\(\mathfrak d_{E/F}\)</span> with the ideal norm of <span class="math" data-tex="\(\mathfrak D_{E/F}\)">\(\mathfrak D_{E/F}\)</span>. Since the norm of <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> is <span class="math" data-tex="\(\mathfrak p^{f(\mathfrak P/\mathfrak p)}\)">\(\mathfrak p^{f(\mathfrak P/\mathfrak p)}\)</span>, taking norms in (4.1) gives (4.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proposition applies to extensions that are not Galois. Hilbert's formula computes each local exponent directly when that local extension is Galois; the monogenic derivative formula also applies in the separable nongalois case.</p>
+<p><strong>Corollary 4.2 (a weighted wild discriminant bound).</strong> Let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be an extension of number fields and <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> a finite prime of residue characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. Suppose that every completion <span class="math" data-tex="\(E_{\mathfrak P}/F_{\mathfrak p}\)">\(E_{\mathfrak P}/F_{\mathfrak p}\)</span>, for <span class="math" data-tex="\(\mathfrak P\mid\mathfrak p\)">\(\mathfrak P\mid\mathfrak p\)</span>, is Galois. Write
+<span class="math" data-tex="\(e_{\mathfrak P}=e(\mathfrak P/\mathfrak p)\)">\(e_{\mathfrak P}=e(\mathfrak P/\mathfrak p)\)</span>,
+<span class="math" data-tex="\(f_{\mathfrak P}=f(\mathfrak P/\mathfrak p)\)">\(f_{\mathfrak P}=f(\mathfrak P/\mathfrak p)\)</span>, and
+<span class="math" data-tex="\(G_{r,\mathfrak P}\)">\(G_{r,\mathfrak P}\)</span> for its lower ramification groups. Let <span class="math" data-tex="\(W\)">\(W\)</span> be the set of wild primes <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v_{\mathfrak p}(\mathfrak d_{E/F})
+&amp;\geq \sum_{\mathfrak P\mid\mathfrak p}
+ f_{\mathfrak P}(e_{\mathfrak P}-1)
+ +\sum_{\mathfrak P\in W}
+ f_{\mathfrak P}(|G_{1,\mathfrak P}|-1)\\
+&amp;\geq \sum_{\mathfrak P\mid\mathfrak p}
+ f_{\mathfrak P}(e_{\mathfrak P}-1)
+ +(p-1)\sum_{\mathfrak P\in W}f_{\mathfrak P}.
+\end{aligned}
+\tag{4.5}
+\]">\[
+\begin{aligned}
+v_{\mathfrak p}(\mathfrak d_{E/F})
+&amp;\geq \sum_{\mathfrak P\mid\mathfrak p}
+ f_{\mathfrak P}(e_{\mathfrak P}-1)
+ +\sum_{\mathfrak P\in W}
+ f_{\mathfrak P}(|G_{1,\mathfrak P}|-1)\\
+&amp;\geq \sum_{\mathfrak P\mid\mathfrak p}
+ f_{\mathfrak P}(e_{\mathfrak P}-1)
+ +(p-1)\sum_{\mathfrak P\in W}f_{\mathfrak P}.
+\end{aligned}
+\tag{4.5}
+\]</span>
+Equality in the first bound holds if and only if
+<span class="math" data-tex="\(G_{2,\mathfrak P}=1\)">\(G_{2,\mathfrak P}=1\)</span> at every wild prime above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Equality between the left side and the final, coarser bound holds if and only if, in addition,
+<span class="math" data-tex="\(|G_{1,\mathfrak P}|=p\)">\(|G_{1,\mathfrak P}|=p\)</span> at every such prime.</p>
+<p><em>Proof.</em> Proposition 4.1 gives
+<span class="math" data-tex="\(v_{\mathfrak p}(\mathfrak d_{E/F})
+=\sum_{\mathfrak P\mid\mathfrak p}f_{\mathfrak P}d_{\mathfrak P}\)">\(v_{\mathfrak p}(\mathfrak d_{E/F})
+=\sum_{\mathfrak P\mid\mathfrak p}f_{\mathfrak P}d_{\mathfrak P}\)</span>.
+Theorem 3.1 gives <span class="math" data-tex="\(d_{\mathfrak P}=e_{\mathfrak P}-1\)">\(d_{\mathfrak P}=e_{\mathfrak P}-1\)</span> in the tame case, and the two bounds in (3.4) in the wild case. Multiply each by <span class="math" data-tex="\(f_{\mathfrak P}\)">\(f_{\mathfrak P}\)</span> and sum. Every weight is positive and every discarded summand is nonnegative, so equality is exactly the stated collection of local equality conditions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-cyclotomic-filtration">5. The cyclotomic filtration</h2>
+<p>Let <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, let <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> be a primitive <span class="math" data-tex="\(p^n\)">\(p^n\)</span>-th root of unity, and put <span class="math" data-tex="\(L=\mathbf Q_p(\zeta)\)">\(L=\mathbf Q_p(\zeta)\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> The extension is totally ramified of degree
+<span class="math math-display" data-tex="\[
+N=(p-1)p^{n-1},
+\]">\[
+N=(p-1)p^{n-1},
+\]</span>
+with uniformizer <span class="math" data-tex="\(\pi=\zeta-1\)">\(\pi=\zeta-1\)</span> and Galois group
+<span class="math math-display" data-tex="\[
+G=(\mathbf Z/p^n\mathbf Z)^\times,
+\qquad
+\sigma_a(\zeta)=\zeta^a.
+\]">\[
+G=(\mathbf Z/p^n\mathbf Z)^\times,
+\qquad
+\sigma_a(\zeta)=\zeta^a.
+\]</span>
+Its lower groups are <span class="math" data-tex="\(G_0=G\)">\(G_0=G\)</span>, and
+<span class="math math-display" data-tex="\[
+G_i=\{a:a\equiv1\pmod{p^k}\}
+\quad\text{if}\quad
+p^{k-1}\leq i\leq p^k-1,\quad 1\leq k\leq n.
+\tag{5.1}
+\]">\[
+G_i=\{a:a\equiv1\pmod{p^k}\}
+\quad\text{if}\quad
+p^{k-1}\leq i\leq p^k-1,\quad 1\leq k\leq n.
+\tag{5.1}
+\]</span>
+In particular <span class="math" data-tex="\(G_i=1\)">\(G_i=1\)</span> for <span class="math" data-tex="\(i\geq p^{n-1}\)">\(i\geq p^{n-1}\)</span>, and
+<span class="math math-display" data-tex="\[
+d(L/\mathbf Q_p)=np^n-(n+1)p^{n-1}.
+\tag{5.2}
+\]">\[
+d(L/\mathbf Q_p)=np^n-(n+1)p^{n-1}.
+\tag{5.2}
+\]</span></p>
+<p><em>Proof.</em> The cyclotomic polynomial here is
+<span class="math math-display" data-tex="\[
+\Phi_{p^n}(X)=\sum_{j=0}^{p-1}X^{j p^{n-1}}.
+\]">\[
+\Phi_{p^n}(X)=\sum_{j=0}^{p-1}X^{j p^{n-1}}.
+\]</span>
+Modulo <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(\Phi_{p^n}(1+Y)=Y^N\)">\(\Phi_{p^n}(1+Y)=Y^N\)</span>; its constant coefficient over <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span> is <span class="math" data-tex="\(p\)">\(p\)</span>. Thus <span class="math" data-tex="\(\Phi_{p^n}(1+Y)\)">\(\Phi_{p^n}(1+Y)\)</span> is Eisenstein. It proves the degree, total ramification, and uniformizer assertions, with <span class="math" data-tex="\(\mathcal O_L=\mathbf Z_p[\zeta]\)">\(\mathcal O_L=\mathbf Z_p[\zeta]\)</span>. All primitive roots <span class="math" data-tex="\(\zeta^a\)">\(\zeta^a\)</span> already lie in <span class="math" data-tex="\(L\)">\(L\)</span>; the polynomial is separable, so the extension is Galois and all <span class="math" data-tex="\(N\)">\(N\)</span> residue-unit exponents give distinct automorphisms.</p>
+<p>For <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span> modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span>, let <span class="math" data-tex="\(k=v_p(a-1)\)">\(k=v_p(a-1)\)</span>, so <span class="math" data-tex="\(0\leq k&lt;n\)">\(0\leq k&lt;n\)</span>. The root <span class="math" data-tex="\(\zeta^{a-1}\)">\(\zeta^{a-1}\)</span> has order <span class="math" data-tex="\(p^{n-k}\)">\(p^{n-k}\)</span>. Its difference from <span class="math" data-tex="\(1\)">\(1\)</span> is a uniformizer in the corresponding smaller cyclotomic field, by the same Eisenstein argument. The ramification index from that field to <span class="math" data-tex="\(L\)">\(L\)</span> is the ratio of their degrees, namely <span class="math" data-tex="\(p^k\)">\(p^k\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+i_G(\sigma_a)
+=v_L(\zeta^{a-1}-1)=p^k.
+\tag{5.3}
+\]">\[
+i_G(\sigma_a)
+=v_L(\zeta^{a-1}-1)=p^k.
+\tag{5.3}
+\]</span>
+This determines every group: if <span class="math" data-tex="\(p^{k-1}\leq i\leq p^k-1\)">\(p^{k-1}\leq i\leq p^k-1\)</span>, the condition <span class="math" data-tex="\(p^{v_p(a-1)}\geq i+1\)">\(p^{v_p(a-1)}\geq i+1\)</span> is precisely <span class="math" data-tex="\(a\equiv1\pmod{p^k}\)">\(a\equiv1\pmod{p^k}\)</span>. Identity is included throughout. For <span class="math" data-tex="\(k=n\)">\(k=n\)</span> the congruence subgroup is trivial.</p>
+<p>For <span class="math" data-tex="\(1\leq k&lt;n\)">\(1\leq k&lt;n\)</span>, that congruence subgroup has <span class="math" data-tex="\(p^{n-k}\)">\(p^{n-k}\)</span> elements and occupies <span class="math" data-tex="\(p^k-p^{k-1}\)">\(p^k-p^{k-1}\)</span> indices. Hence Hilbert's formula gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d
+&amp;=N-1+
+\sum_{k=1}^{n-1}(p^k-p^{k-1})(p^{n-k}-1)\\
+&amp;=N-1+(n-1)N-(p^{n-1}-1)\\
+&amp;=nN-p^{n-1},
+\end{aligned}
+\]">\[
+\begin{aligned}
+d
+&amp;=N-1+
+\sum_{k=1}^{n-1}(p^k-p^{k-1})(p^{n-k}-1)\\
+&amp;=N-1+(n-1)N-(p^{n-1}-1)\\
+&amp;=nN-p^{n-1},
+\end{aligned}
+\]</span>
+which is (5.2). An empty sum when <span class="math" data-tex="\(n=1\)">\(n=1\)</span> gives <span class="math" data-tex="\(d=p-2\)">\(d=p-2\)</span>; for <span class="math" data-tex="\(p=2,n=1\)">\(p=2,n=1\)</span> the extension is the trivial field <span class="math" data-tex="\(\mathbf Q_2\)">\(\mathbf Q_2\)</span>, and <span class="math" data-tex="\(d=0\)">\(d=0\)</span>.</p>
+<p>There is also an independent derivative check. Differentiating
+<span class="math" data-tex="\((X^{p^{n-1}}-1)\Phi_{p^n}(X)=X^{p^n}-1\)">\((X^{p^{n-1}}-1)\Phi_{p^n}(X)=X^{p^n}-1\)</span> at <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> gives
+<span class="math math-display" data-tex="\[
+\Phi_{p^n}&#x27;(\zeta)
+=\frac{p^n\zeta^{p^n-1}}{\zeta^{p^{n-1}}-1}.
+\]">\[
+\Phi_{p^n}&#x27;(\zeta)
+=\frac{p^n\zeta^{p^n-1}}{\zeta^{p^{n-1}}-1}.
+\]</span>
+The numerator has value <span class="math" data-tex="\(nN\)">\(nN\)</span>, while the denominator has value <span class="math" data-tex="\(p^{n-1}\)">\(p^{n-1}\)</span>. Formula (3.2) again gives <span class="math" data-tex="\(d=nN-p^{n-1}\)">\(d=nN-p^{n-1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The equality criterion in Theorem 3.1 also follows visibly from this filtration. When <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the extension is tame, including the trivial case <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. When <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, it is wild. For odd <span class="math" data-tex="\(p\)">\(p\)</span>, (5.1) gives <span class="math" data-tex="\(|G_2|=p^{n-1}&gt;1\)">\(|G_2|=p^{n-1}&gt;1\)</span>, so
+<span class="math" data-tex="\(d&gt;e+|G_1|-2\)">\(d&gt;e+|G_1|-2\)</span>. For <span class="math" data-tex="\(p=2,n=2\)">\(p=2,n=2\)</span>, it gives <span class="math" data-tex="\(|G_1|=2\)">\(|G_1|=2\)</span> and <span class="math" data-tex="\(G_2=1\)">\(G_2=1\)</span>, so <span class="math" data-tex="\(d=e+p-2=2\)">\(d=e+p-2=2\)</span>. For <span class="math" data-tex="\(p=2,n\geq3\)">\(p=2,n\geq3\)</span>, it gives <span class="math" data-tex="\(|G_2|=2^{n-2}&gt;1\)">\(|G_2|=2^{n-2}&gt;1\)</span>, and again the first wild bound is strict.</p>
+<h2 id="6-three-quadratic-examples">6. Three quadratic examples</h2>
+<p><strong>Example 6.1.</strong> In <span class="math" data-tex="\(L=\mathbf Q_2(i)\)">\(L=\mathbf Q_2(i)\)</span>, the element <span class="math" data-tex="\(\pi=i-1\)">\(\pi=i-1\)</span> satisfies the Eisenstein polynomial <span class="math" data-tex="\(Y^2+2Y+2\)">\(Y^2+2Y+2\)</span>. Thus <span class="math" data-tex="\(v_L(2)=2\)">\(v_L(2)=2\)</span>, and conjugation gives
+<span class="math math-display" data-tex="\[
+\sigma\pi-\pi=-2i,\qquad i_G(\sigma)=2.
+\]">\[
+\sigma\pi-\pi=-2i,\qquad i_G(\sigma)=2.
+\]</span>
+The only nonidentity element belongs to <span class="math" data-tex="\(G_0,G_1\)">\(G_0,G_1\)</span>, so
+<span class="math math-display" data-tex="\[
+G_0=G_1=G,\quad G_2=1,\quad d=2.
+\]">\[
+G_0=G_1=G,\quad G_2=1,\quad d=2.
+\]</span>
+The integral basis <span class="math" data-tex="\(1,i\)">\(1,i\)</span> has discriminant <span class="math" data-tex="\(-4\)">\(-4\)</span>, whose <span class="math" data-tex="\(2\)">\(2\)</span>-adic exponent is <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p><strong>Example 6.2.</strong> In <span class="math" data-tex="\(L=\mathbf Q_2(\sqrt2)\)">\(L=\mathbf Q_2(\sqrt2)\)</span>, <span class="math" data-tex="\(\pi=\sqrt2\)">\(\pi=\sqrt2\)</span> is an Eisenstein uniformizer. Conjugation changes it by <span class="math" data-tex="\(-2\sqrt2\)">\(-2\sqrt2\)</span>, of value <span class="math" data-tex="\(2+1=3\)">\(2+1=3\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+G_0=G_1=G_2=G,\quad G_3=1,\quad d=3.
+\]">\[
+G_0=G_1=G_2=G,\quad G_3=1,\quad d=3.
+\]</span>
+The integral basis <span class="math" data-tex="\(1,\sqrt2\)">\(1,\sqrt2\)</span> has discriminant <span class="math" data-tex="\(8\)">\(8\)</span>, again with the predicted exponent.</p>
+<p><strong>Example 6.3.</strong> In <span class="math" data-tex="\(L=\mathbf Q_3(\sqrt3)\)">\(L=\mathbf Q_3(\sqrt3)\)</span>, the same difference <span class="math" data-tex="\(-2\sqrt3\)">\(-2\sqrt3\)</span> has value <span class="math" data-tex="\(1\)">\(1\)</span>, since <span class="math" data-tex="\(2\)">\(2\)</span> is a unit. Thus
+<span class="math math-display" data-tex="\[
+G_0=G,\quad G_1=1,\quad d=1=e-1.
+\]">\[
+G_0=G,\quad G_1=1,\quad d=1=e-1.
+\]</span>
+This is tame. The discriminant of <span class="math" data-tex="\(1,\sqrt3\)">\(1,\sqrt3\)</span> is <span class="math" data-tex="\(12\)">\(12\)</span>, whose <span class="math" data-tex="\(3\)">\(3\)</span>-adic exponent is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Each residue degree is <span class="math" data-tex="\(1\)">\(1\)</span>, so the local different exponent equals the base discriminant exponent, as (4.2) predicts.</p>
+<p>The wild equality case distinguishes the first two examples. For <span class="math" data-tex="\(\mathbf Q_2(i)/\mathbf Q_2\)">\(\mathbf Q_2(i)/\mathbf Q_2\)</span>, one has <span class="math" data-tex="\(|G_1|=2\)">\(|G_1|=2\)</span> and <span class="math" data-tex="\(G_2=1\)">\(G_2=1\)</span>, so <span class="math" data-tex="\(d=e+p-2=2\)">\(d=e+p-2=2\)</span>. For <span class="math" data-tex="\(\mathbf Q_2(\sqrt2)/\mathbf Q_2\)">\(\mathbf Q_2(\sqrt2)/\mathbf Q_2\)</span>, the group <span class="math" data-tex="\(G_2\)">\(G_2\)</span> is nontrivial, so <span class="math" data-tex="\(d=3&gt;e+p-2=2\)">\(d=3&gt;e+p-2=2\)</span>. The third example is tame and retains <span class="math" data-tex="\(d=e-1=1\)">\(d=e-1=1\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li>
+<p>Compute the lower groups of <span class="math" data-tex="\(\mathbf Q_2(i)/\mathbf Q_2\)">\(\mathbf Q_2(i)/\mathbf Q_2\)</span> and verify Hilbert's formula.</p>
+</li>
+<li>
+<p>Compute them for <span class="math" data-tex="\(\mathbf Q_2(\sqrt2)/\mathbf Q_2\)">\(\mathbf Q_2(\sqrt2)/\mathbf Q_2\)</span> and <span class="math" data-tex="\(\mathbf Q_3(\sqrt3)/\mathbf Q_3\)">\(\mathbf Q_3(\sqrt3)/\mathbf Q_3\)</span>, including their differents.</p>
+</li>
+<li>
+<p>Prove the subgroup rule <span class="math" data-tex="\(H_i=H\cap G_i\)">\(H_i=H\cap G_i\)</span>, explaining why no normality assumption on <span class="math" data-tex="\(H\)">\(H\)</span> is needed.</p>
+</li>
+<li>
+<p>Prove the cyclotomic filtration and different formula (5.1)–(5.2), including <span class="math" data-tex="\(p=2\)">\(p=2\)</span> and <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+</li>
+</ol>
+<h2 id="8-complete-solutions">8. Complete solutions</h2>
+<p><strong>Solution 1.</strong> Substitute <span class="math" data-tex="\(i=1+\pi\)">\(i=1+\pi\)</span> into <span class="math" data-tex="\(i^2+1=0\)">\(i^2+1=0\)</span>, obtaining <span class="math" data-tex="\(\pi^2+2\pi+2=0\)">\(\pi^2+2\pi+2=0\)</span>. Eisenstein gives a totally ramified quadratic extension with uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, so <span class="math" data-tex="\(v_L(2)=2\)">\(v_L(2)=2\)</span>. Its conjugate is <span class="math" data-tex="\(-i-1\)">\(-i-1\)</span>, and the difference is <span class="math" data-tex="\(-2i\)">\(-2i\)</span>. Since <span class="math" data-tex="\(i\)">\(i\)</span> is a unit, its value is <span class="math" data-tex="\(2\)">\(2\)</span>. By (2.2), the nonidentity conjugation belongs exactly to <span class="math" data-tex="\(G_r\)">\(G_r\)</span> with <span class="math" data-tex="\(r+1\leq2\)">\(r+1\leq2\)</span>. Thus <span class="math" data-tex="\(G_{-1}=G_0=G_1=G\)">\(G_{-1}=G_0=G_1=G\)</span> and all <span class="math" data-tex="\(G_r\)">\(G_r\)</span>, <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>, are trivial. Hilbert's sum is <span class="math" data-tex="\((2-1)+(2-1)=2\)">\((2-1)+(2-1)=2\)</span>. Directly, <span class="math" data-tex="\(f&#x27;(i)=2i\)">\(f&#x27;(i)=2i\)</span> generates the different and has the same value; the integral power basis discriminant is <span class="math" data-tex="\(-4\)">\(-4\)</span>.</p>
+<p><strong>Solution 2.</strong> The Eisenstein polynomials <span class="math" data-tex="\(X^2-2\)">\(X^2-2\)</span> and <span class="math" data-tex="\(X^2-3\)">\(X^2-3\)</span> give total quadratic extensions with uniformizers their respective square roots. For the first, <span class="math" data-tex="\(v_L(2)=2\)">\(v_L(2)=2\)</span>, so conjugation moves the uniformizer by <span class="math" data-tex="\(-2\sqrt2\)">\(-2\sqrt2\)</span>, of value <span class="math" data-tex="\(3\)">\(3\)</span>. The groups through index <span class="math" data-tex="\(2\)">\(2\)</span> equal the order-two group, and those from index <span class="math" data-tex="\(3\)">\(3\)</span> onward are trivial. Hilbert gives <span class="math" data-tex="\(d=3\)">\(d=3\)</span>, also the value of <span class="math" data-tex="\(2\sqrt2\)">\(2\sqrt2\)</span>; the basis discriminant is <span class="math" data-tex="\(8\)">\(8\)</span>.</p>
+<p>For the second, <span class="math" data-tex="\(2\)">\(2\)</span> is a <span class="math" data-tex="\(3\)">\(3\)</span>-adic unit, so the conjugation difference <span class="math" data-tex="\(-2\sqrt3\)">\(-2\sqrt3\)</span> has value <span class="math" data-tex="\(1\)">\(1\)</span>. Only <span class="math" data-tex="\(G_0\)">\(G_0\)</span> among the groups indexed at least zero is nontrivial. Hilbert gives <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, also the value of the derivative <span class="math" data-tex="\(2\sqrt3\)">\(2\sqrt3\)</span>. The basis discriminant is <span class="math" data-tex="\(12\)">\(12\)</span>, of <span class="math" data-tex="\(3\)">\(3\)</span>-adic exponent <span class="math" data-tex="\(1\)">\(1\)</span>. The index <span class="math" data-tex="\(2\)">\(2\)</span> is prime to the residue characteristic <span class="math" data-tex="\(3\)">\(3\)</span>, consistent with the tame formula.</p>
+<p><strong>Solution 3.</strong> The fixed-field theorem makes <span class="math" data-tex="\(L/L^H\)">\(L/L^H\)</span> finite Galois with group <span class="math" data-tex="\(H\)">\(H\)</span>; its upper field and normalized valuation are still <span class="math" data-tex="\(L,v_L\)">\(L,v_L\)</span>. Integral monogenicity holds over the local base <span class="math" data-tex="\(L^H\)">\(L^H\)</span>, so the polynomial-difference proof of (1.2) expresses its ramification number as the minimum of <span class="math" data-tex="\(v_L(\sigma x-x)\)">\(v_L(\sigma x-x)\)</span> over all <span class="math" data-tex="\(x\in\mathcal O_L\)">\(x\in\mathcal O_L\)</span>. This is exactly the same minimum used for <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. Membership in its <span class="math" data-tex="\(i\)">\(i\)</span>-th group therefore means <span class="math" data-tex="\(\sigma\in H\)">\(\sigma\in H\)</span> and <span class="math" data-tex="\(i_G(\sigma)\geq i+1\)">\(i_G(\sigma)\geq i+1\)</span>, which is <span class="math" data-tex="\(H\cap G_i\)">\(H\cap G_i\)</span>. Normality of <span class="math" data-tex="\(H\)">\(H\)</span> is relevant to whether <span class="math" data-tex="\(L^H/K\)">\(L^H/K\)</span> is Galois, and is unnecessary for <span class="math" data-tex="\(L/L^H\)">\(L/L^H\)</span>. The argument also covers real indices by the ceiling convention.</p>
+<p><strong>Solution 4.</strong> Reducing <span class="math" data-tex="\(\sum_{j=0}^{p-1}(1+Y)^{j p^{n-1}}\)">\(\sum_{j=0}^{p-1}(1+Y)^{j p^{n-1}}\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> gives <span class="math" data-tex="\(Y^{(p-1)p^{n-1}}\)">\(Y^{(p-1)p^{n-1}}\)</span>, and its constant term is exactly <span class="math" data-tex="\(p\)">\(p\)</span>. Eisenstein proves the degree <span class="math" data-tex="\(N=(p-1)p^{n-1}\)">\(N=(p-1)p^{n-1}\)</span>, total ramification and uniformizer <span class="math" data-tex="\(\zeta-1\)">\(\zeta-1\)</span>. The roots <span class="math" data-tex="\(\zeta^a\)">\(\zeta^a\)</span>, for unit exponents <span class="math" data-tex="\(a\)">\(a\)</span>, all lie in the field, giving the stated Galois group.</p>
+<p>If <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span> and <span class="math" data-tex="\(k=v_p(a-1)&lt;n\)">\(k=v_p(a-1)&lt;n\)</span>, then <span class="math" data-tex="\(\zeta^{a-1}\)">\(\zeta^{a-1}\)</span> is primitive of order <span class="math" data-tex="\(p^{n-k}\)">\(p^{n-k}\)</span>. Its difference from <span class="math" data-tex="\(1\)">\(1\)</span> has value <span class="math" data-tex="\(1\)">\(1\)</span> in its own cyclotomic field. Multiplying by the relative ramification index <span class="math" data-tex="\(p^k\)">\(p^k\)</span> gives <span class="math" data-tex="\(i_G(\sigma_a)=p^k\)">\(i_G(\sigma_a)=p^k\)</span>. For indices <span class="math" data-tex="\(p^{k-1}\leq i\leq p^k-1\)">\(p^{k-1}\leq i\leq p^k-1\)</span>, the inequality <span class="math" data-tex="\(i_G(\sigma_a)\geq i+1\)">\(i_G(\sigma_a)\geq i+1\)</span> requires <span class="math" data-tex="\(v_p(a-1)\geq k\)">\(v_p(a-1)\geq k\)</span>, giving (5.1). At <span class="math" data-tex="\(k=n\)">\(k=n\)</span> only identity remains, so all indices at least <span class="math" data-tex="\(p^{n-1}\)">\(p^{n-1}\)</span> are trivial.</p>
+<p>The zeroth group contributes <span class="math" data-tex="\(N-1\)">\(N-1\)</span>. For each <span class="math" data-tex="\(1\leq k&lt;n\)">\(1\leq k&lt;n\)</span>, there are <span class="math" data-tex="\(p^k-p^{k-1}\)">\(p^k-p^{k-1}\)</span> indices with group order <span class="math" data-tex="\(p^{n-k}\)">\(p^{n-k}\)</span>. Their total is
+<span class="math math-display" data-tex="\[
+\sum_{k=1}^{n-1}(p^k-p^{k-1})(p^{n-k}-1)
+=(n-1)N-(p^{n-1}-1).
+\]">\[
+\sum_{k=1}^{n-1}(p^k-p^{k-1})(p^{n-k}-1)
+=(n-1)N-(p^{n-1}-1).
+\]</span>
+Adding <span class="math" data-tex="\(N-1\)">\(N-1\)</span> gives <span class="math" data-tex="\(nN-p^{n-1}=np^n-(n+1)p^{n-1}\)">\(nN-p^{n-1}=np^n-(n+1)p^{n-1}\)</span>. The calculation includes <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the sum is empty, giving <span class="math" data-tex="\(p-2\)">\(p-2\)</span>; when also <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the Galois group is trivial and the exponent is zero. Differentiating the cyclotomic quotient as in Section 5 verifies the answer directly from the different.</p>
+<h2 id="9-what-this-lesson-does-not-prove">9. What this lesson does not prove</h2>
+<ul>
+<li>Integral monogenicity for a finite separable extension of local fields, <span class="math" data-tex="\(\mathcal O_L=\mathcal O_K[\alpha]\)">\(\mathcal O_L=\mathcal O_K[\alpha]\)</span>, is Corollary 6.2 of <strong>Unramified and totally ramified extensions</strong>. Its Proposition 6.1 gives the maximal unramified subfield; Theorem 5.1 gives uniformizers and integral bases in a totally ramified extension. The finite-field Galois correspondence and Frobenius description are its Corollary 3.1.</li>
+<li>Trace nondegeneracy is proved in Section 3 above from lesson 7, Lemma 4.0; Stacks, Tag 0BIL remains a comparison; the invertible trace dual and monogenic derivative formula are the exact written proofs in <em>Number fields</em>, lesson 14, <strong>The different and the discriminant</strong>, “The trace dual,” Euler's lemma and Proposition 14.2. Its Theorem 14.3 proves that the discriminant ideal is the ideal norm of the different, without a monogenic hypothesis. These results require a finite separable field extension and finite integral closure over a Dedekind domain; no residue-separability hypothesis is needed for these algebraic identities.</li>
+<li>The written <em>Number fields</em> proofs are lesson 2, <strong>Discriminants and integral bases</strong>, Theorem 2.3 for the integer lattice; lesson 3, <strong>Discrete valuation rings and Dedekind domains</strong>, Proposition 3.1, Theorem 3.2 and Proposition 3.3 for Dedekindness, fractional-ideal factorization and Chinese remainders; and lesson 5, <strong>Decomposition of primes in extensions</strong>, Theorems 5.1–5.2 for finite integral closure and prime ideal norms. Milne, Proposition 2.29, Theorems 3.7 and 3.29 and Chapter 4 are classical references for the same facts. The field-completion decomposition and base change of trace are Theorem 2.1 and Corollary 2.2 of <strong>Places of number fields in extensions and the product formula</strong>.</li>
+<li>The extension of embeddings to a finite normal extension, the fixed-field theorem, and Sylow theory are the field and finite-group background of <strong>Graduate Algebra</strong>. Cyclicity of finite subgroups of a field's multiplicative group is proved in <a href="NT-LOC-03.html"><strong>Hensel's lemma, squares and roots of unity in p-adic fields</strong>, Lemma 4.0</a>. Stacks, Tag 09HX remains a comparison. Milne, <em>Fields and Galois Theory</em>, Proposition 4.19 with Exercise 1-3 is another classical reference.</li>
+</ul>
+<h2 id="references">References</h2>
+<p>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, Chapter 7, “Ramification groups,” Theorem 7.58 and Corollary 7.59.</p>
+<p><a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-definition-decomposition-inertia">Stacks, Tag 09EC</a>, for decomposition and inertia. The higher filtration and the different calculation are developed explicitly above.</p>
+
+</article>
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-LOC-08.html">← Tame ramification and the tame Galois group</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-LOC-10.html">Herbrand's function and the upper numbering →</a></span></nav>
+<p class="small source-link"><a href="src/NT-LOC-09.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><span class="unlinked">GitHub repository</span><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

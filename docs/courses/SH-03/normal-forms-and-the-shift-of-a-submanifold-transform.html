@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Normal forms and the shift of a submanifold transform · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/normal-forms-and-the-shift-of-a-submanifold-transform.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Normal forms and the shift of a submanifold transform</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="normal-forms-and-the-shift-of-a-submanifold-transform">Normal forms and the shift of a submanifold transform</h1>
+<p>A submanifold transform can turn a hypersurface into a submanifold of higher codimension. Its cohomological shift records which fibre directions are integrated with compact support. We first obtain a local coordinate model from a clean conormal intersection, then compute every part of that shift. Positive, negative and null quadratic directions play different roles.</p>
+<p>Use <a href="../microlocal-composition-and-pure-sheaves/microlocal-composition-at-prescribed-covectors.html">Microlocal composition at prescribed covectors</a>, the isolated-incidence direct-image theorem, compact-support base change, and the closed/open localization triangles. We prove the clean cotangent reduction and bind the exact written programme Morse lemma with parameters before applying them to the hypersurface. The smooth inverse, implicit, submersion and constant-rank theorems, differentiation of smooth parameter integrals, and finite-dimensional symmetric-form diagonalization are calculus prerequisites. We work over a commutative ring <span class="math" data-tex="\(k\)">\(k\)</span> of finite global dimension, and <span class="math" data-tex="\(L\in D^b(k)\)">\(L\in D^b(k)\)</span> may have arbitrary coefficient modules.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</em></p>
+<h2 id="clean-intersection-supplies-the-coordinate-model">Clean intersection supplies the coordinate model</h2>
+<p>Let <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span> be a submersion, <span class="math" data-tex="\(N\subset Y\)">\(N\subset Y\)</span> a closed smooth hypersurface, and <span class="math" data-tex="\(M\subset X\)">\(M\subset X\)</span> a closed smooth submanifold. Embed</p>
+<span class="math math-display" data-tex="\[
+V=Y\times_X T^*X\subset T^*Y
+\]">\[
+V=Y\times_X T^*X\subset T^*Y
+\]</span>
+<p>by the cotangent pullback <span class="math" data-tex="\(f_d(y;\xi)=(y;df_y^t\xi)\)">\(f_d(y;\xi)=(y;df_y^t\xi)\)</span>, and put <span class="math" data-tex="\(A=T_N^*Y\)">\(A=T_N^*Y\)</span>. Fix a nonzero <span class="math" data-tex="\(p\in A\cap V\)">\(p\in A\cap V\)</span>. Assume the intersection is clean near <span class="math" data-tex="\(p\)">\(p\)</span>: it is a submanifold with tangent space <span class="math" data-tex="\(T_pA\cap T_pV\)">\(T_pA\cap T_pV\)</span>. Assume also that the image under <span class="math" data-tex="\(f_\pi:V\to T^*X\)">\(f_\pi:V\to T^*X\)</span> is <span class="math" data-tex="\(T_M^*X\)">\(T_M^*X\)</span> as a germ at <span class="math" data-tex="\(f_\pi(p)\)">\(f_\pi(p)\)</span>.</p>
+<p>The image hypothesis is part of the theorem; it does not follow from smoothness of <span class="math" data-tex="\(f\)">\(f\)</span> alone. Cleanliness will imply that the restricted map to this image is a submersion. Here is the rank calculation, including the possible excess directions.</p>
+<h2 id="clean-cotangent-reduction-has-constant-rank">Clean cotangent reduction has constant rank</h2>
+<p>Put <span class="math" data-tex="\(m=\dim X\)">\(m=\dim X\)</span> and <span class="math" data-tex="\(d=\dim(Y/X)\)">\(d=\dim(Y/X)\)</span>, so <span class="math" data-tex="\(\dim Y=m+d\)">\(\dim Y=m+d\)</span>. In submersion coordinates <span class="math" data-tex="\(f(x,t)=x\)">\(f(x,t)=x\)</span>, write a covector on <span class="math" data-tex="\(Y\)">\(Y\)</span> as <span class="math" data-tex="\((\xi,\tau)\)">\((\xi,\tau)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+V=\{\tau=0\},\qquad
+f_\pi(x,t;\xi,0)=(x;\xi),\qquad
+\omega_Y|_V=f_\pi^*\omega_X.
+\]">\[
+V=\{\tau=0\},\qquad
+f_\pi(x,t;\xi,0)=(x;\xi),\qquad
+\omega_Y|_V=f_\pi^*\omega_X.
+\]</span>
+<p>At a point <span class="math" data-tex="\(z\in C=A\cap V\)">\(z\in C=A\cap V\)</span>, let <span class="math" data-tex="\(E=T_zT^*Y\)">\(E=T_zT^*Y\)</span>, <span class="math" data-tex="\(W=T_zV\)">\(W=T_zV\)</span>, and <span class="math" data-tex="\(\ell=T_zA\)">\(\ell=T_zA\)</span>. The plane <span class="math" data-tex="\(W\)">\(W\)</span> is coisotropic: in these coordinates its symplectic orthogonal is the <span class="math" data-tex="\(d\)">\(d\)</span>-plane</p>
+<span class="math math-display" data-tex="\[
+K=W^\omega=\ker d(f_\pi|_V)
+=\operatorname{span}\{\partial_{t_j}\}.
+\]">\[
+K=W^\omega=\ker d(f_\pi|_V)
+=\operatorname{span}\{\partial_{t_j}\}.
+\]</span>
+<p>The plane <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is Lagrangian. The map
+<span class="math" data-tex="\(\ell\to K^*\)">\(\ell\to K^*\)</span>, <span class="math" data-tex="\(v\mapsto\omega_Y(v,\cdot)|_K\)">\(v\mapsto\omega_Y(v,\cdot)|_K\)</span>,
+has kernel <span class="math" data-tex="\(\ell\cap K^\omega=\ell\cap W\)">\(\ell\cap K^\omega=\ell\cap W\)</span>.
+Its transpose has kernel <span class="math" data-tex="\(K\cap\ell^\omega=K\cap\ell\)">\(K\cap\ell^\omega=K\cap\ell\)</span>.
+Writing <span class="math" data-tex="\(e_z=\dim(K\cap\ell)\)">\(e_z=\dim(K\cap\ell)\)</span>, equal ranks of a linear map and its transpose give</p>
+<span class="math math-display" data-tex="\[
+\dim(\ell\cap W)=m+d-(d-e_z)=m+e_z.
+\]">\[
+\dim(\ell\cap W)=m+d-(d-e_z)=m+e_z.
+\]</span>
+<p>Cleanliness says <span class="math" data-tex="\(T_zC=\ell\cap W\)">\(T_zC=\ell\cap W\)</span>. Its dimension is constant near the selected point, so <span class="math" data-tex="\(e_z=\dim C-m\)">\(e_z=\dim C-m\)</span> is constant as well. The kernel of <span class="math" data-tex="\(d(f_\pi|_C)\)">\(d(f_\pi|_C)\)</span> is <span class="math" data-tex="\(\ell\cap K\)">\(\ell\cap K\)</span>, and hence</p>
+<span class="math math-display" data-tex="\[
+\operatorname{rank}d(f_\pi|_C)=\dim C-e_z=m.
+\]">\[
+\operatorname{rank}d(f_\pi|_C)=\dim C-e_z=m.
+\]</span>
+<p>The image tangent is isotropic: lift two of its vectors to <span class="math" data-tex="\(T_zC\subset\ell\)">\(T_zC\subset\ell\)</span>, use the displayed pullback identity, and use <span class="math" data-tex="\(\omega_Y|_\ell=0\)">\(\omega_Y|_\ell=0\)</span>. Its dimension <span class="math" data-tex="\(m\)">\(m\)</span> makes it Lagrangian in <span class="math" data-tex="\(T_{f_\pi(z)}T^*X\)">\(T_{f_\pi(z)}T^*X\)</span>. Under the stated image-germ hypothesis the map has values in <span class="math" data-tex="\(T_M^*X\)">\(T_M^*X\)</span>, another <span class="math" data-tex="\(m\)">\(m\)</span>-dimensional manifold, and its derivative is onto that tangent space. The submersion theorem therefore gives a local submersion onto an open part of this conormal germ. This proves the required clean-reduction statement with excess fibre dimension <span class="math" data-tex="\(\dim C-m\)">\(\dim C-m\)</span>. It makes no assertion about a global image or a transverse intersection. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the cotangent instance of Lagrangian reduction. The programme's <a href="../AN-04/reconstructions/20261005-restored-phase-space/phase-space-and-generating-families.html#2-linear-geometry-and-reduction">Phase space and generating families, Proposition 2.3</a> also proves the corresponding linear statement for every Lagrangian and isotropic constraint. The argument above supplies the local rank and submersion conclusions used in this lesson.</p>
+<h2 id="a-nondegenerate-critical-family-has-fixed-quadratic-coordinates">A nondegenerate critical family has fixed quadratic coordinates</h2>
+<p><strong>Morse lemma with parameters.</strong> Let <span class="math" data-tex="\(h(a,t)\)">\(h(a,t)\)</span> be smooth near <span class="math" data-tex="\((a_0,0)\)">\((a_0,0)\)</span>, with <span class="math" data-tex="\(a\)">\(a\)</span> in a finite-dimensional parameter space and <span class="math" data-tex="\(t\in\mathbb R^b\)">\(t\in\mathbb R^b\)</span>. Assume, for every nearby <span class="math" data-tex="\(a\)">\(a\)</span>,</p>
+<span class="math math-display" data-tex="\[
+h(a,0)=0,\qquad d_t h(a,0)=0,
+\]">\[
+h(a,0)=0,\qquad d_t h(a,0)=0,
+\]</span>
+<p>and assume the Hessian <span class="math" data-tex="\(d_t^2h(a_0,0)\)">\(d_t^2h(a_0,0)\)</span> is nondegenerate. There is a parameter-preserving local coordinate change <span class="math" data-tex="\((a,t)\mapsto(a,v)\)">\((a,t)\mapsto(a,v)\)</span>, taking <span class="math" data-tex="\(t=0\)">\(t=0\)</span> to <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, for which</p>
+<span class="math math-display" data-tex="\[
+h(a,t)=\sum_{j=1}^{b_+}v_j^2
+-\sum_{j=b_++1}^{b}v_j^2.
+\]">\[
+h(a,t)=\sum_{j=1}^{b_+}v_j^2
+-\sum_{j=b_++1}^{b}v_j^2.
+\]</span>
+<p>The positive and negative dimensions are those of the original Hessian. If the critical point is instead a smooth section <span class="math" data-tex="\(t=c(a)\)">\(t=c(a)\)</span>, translate by that section; if its critical value is <span class="math" data-tex="\(h(a,c(a))\)">\(h(a,c(a))\)</span>, subtract that value before applying the lemma.</p>
+<p><strong>Proof from the exact programme prerequisite.</strong> Lemma 4.1 of the written AN-04 lesson <span class="unlinked">Stationary phase and critical manifolds</span> proves a stronger parameter Morse statement: a smoothly varying nondegenerate critical point has coordinates satisfying <span class="math" data-tex="\(h(F(z,a),a)=c(a)+z^TJz/2\)">\(h(F(z,a),a)=c(a)+z^TJz/2\)</span>, with fixed signs, a smooth inverse and the exact determinant normalization. Its proof constructs the critical section by the implicit function theorem, completes one square using the integrated second derivative, and proves the remaining Hessian is the invertible Schur complement before inducting. All parameter dependence and signs are retained.</p>
+<p>Apply that result with the fibre variables <span class="math" data-tex="\(t\)">\(t\)</span> and parameters <span class="math" data-tex="\(a\)">\(a\)</span>. The critical-point uniqueness in its proof makes its critical section exactly our given <span class="math" data-tex="\(t=0\)">\(t=0\)</span>; the assumed value makes <span class="math" data-tex="\(c(a)=0\)">\(c(a)=0\)</span>. Set <span class="math" data-tex="\(v=z/\sqrt2\)">\(v=z/\sqrt2\)</span> in its final coordinates to obtain the displayed normalization without the factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. The same provider covers a moving critical section and a varying critical value, giving the final variant. For <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, the hypotheses themselves give <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. Thus every part of the stated lemma is supplied by an exact, written internal proof. The smooth-calculus prerequisites stated by that lesson remain prerequisites here. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="coordinates-adapted-to-the-clean-conormal-image">Coordinates adapted to the clean conormal image</h2>
+<p><strong>Normal-form theorem.</strong> There are coordinates</p>
+<span class="math math-display" data-tex="\[
+x=(x_1,x&#x27;,x&#x27;&#x27;),\qquad (x,t,u)\text{ on }Y,
+\quad x&#x27;,u\in\mathbb R^r,
+\qquad\text{(1)}
+\]">\[
+x=(x_1,x&#x27;,x&#x27;&#x27;),\qquad (x,t,u)\text{ on }Y,
+\quad x&#x27;,u\in\mathbb R^r,
+\qquad\text{(1)}
+\]</span>
+<p>in which the selected base points are zero and</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+f(x,t,u)&amp;=x, &amp;p&amp;=(0;dx_1),\\
+M&amp;=\{x_1=x&#x27;=0\},
+&amp;N&amp;=\{x_1=q(t)+\langle x&#x27;,u\rangle\}.
+\end{split}
+\qquad\text{(2)}
+\]">\[
+\begin{split}
+f(x,t,u)&amp;=x, &amp;p&amp;=(0;dx_1),\\
+M&amp;=\{x_1=x&#x27;=0\},
+&amp;N&amp;=\{x_1=q(t)+\langle x&#x27;,u\rangle\}.
+\end{split}
+\qquad\text{(2)}
+\]</span>
+<p>Here <span class="math" data-tex="\(q\)">\(q\)</span> is a quadratic form, possibly degenerate, and <span class="math" data-tex="\(\operatorname{codim}_XM=r+1\)">\(\operatorname{codim}_XM=r+1\)</span>. If the conormal intersection with <span class="math" data-tex="\(V\)">\(V\)</span> is transverse, <span class="math" data-tex="\(q\)">\(q\)</span> is nondegenerate.</p>
+<p><strong>Proof.</strong> Near the nonzero conormal <span class="math" data-tex="\(p\)">\(p\)</span>, projection from <span class="math" data-tex="\(A\cap V\)">\(A\cap V\)</span> to <span class="math" data-tex="\(Y\)">\(Y\)</span> has a one-dimensional kernel: the radial conormal direction. Cleanliness makes its rank constant. Its image is therefore a submanifold <span class="math" data-tex="\(D\subset N\)">\(D\subset N\)</span>, and projectivizing the positive conormal ray identifies <span class="math" data-tex="\(A\cap V\)">\(A\cap V\)</span> locally with <span class="math" data-tex="\(D\)">\(D\)</span> times that ray. The clean-reduction prerequisite makes <span class="math" data-tex="\(D\)">\(D\)</span> a submersion over the corresponding projectivized piece of <span class="math" data-tex="\(T_M^*X\)">\(T_M^*X\)</span>.</p>
+<p>Choose coordinates on <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(M=\{x_1=x&#x27;=0\}\)">\(M=\{x_1=x&#x27;=0\}\)</span> and the selected covector <span class="math" data-tex="\(dx_1\)">\(dx_1\)</span>. On the projectivized conormal chart use
+<span class="math" data-tex="\(u=-\xi&#x27;/\xi_1\)">\(u=-\xi&#x27;/\xi_1\)</span>, together with <span class="math" data-tex="\(x&#x27;&#x27;\)">\(x&#x27;&#x27;\)</span>, as coordinates. Complete their pullbacks to coordinates <span class="math" data-tex="\((x&#x27;&#x27;,u,t&#x27;&#x27;)\)">\((x&#x27;&#x27;,u,t&#x27;&#x27;)\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span>. The minus sign is fixed by the conormal of a graph <span class="math" data-tex="\(x_1=g\)">\(x_1=g\)</span>: its covector has <span class="math" data-tex="\(\xi&#x27;=-\xi_1\partial_{x&#x27;}g\)">\(\xi&#x27;=-\xi_1\partial_{x&#x27;}g\)</span>.</p>
+<p>Because <span class="math" data-tex="\(f\)">\(f\)</span> is a submersion, the independent coordinates <span class="math" data-tex="\(x_1,x&#x27;\)">\(x_1,x&#x27;\)</span> vanish on <span class="math" data-tex="\(D\)">\(D\)</span> and can be completed by coordinates <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span> vanishing there. Thus
+<span class="math" data-tex="\((x_1,x&#x27;,x&#x27;&#x27;,t&#x27;,t&#x27;&#x27;,u)\)">\((x_1,x&#x27;,x&#x27;&#x27;,t&#x27;,t&#x27;&#x27;,u)\)</span> are coordinates on <span class="math" data-tex="\(Y\)">\(Y\)</span>, with
+<span class="math" data-tex="\(D=\{x_1=x&#x27;=t&#x27;=0\}\)">\(D=\{x_1=x&#x27;=t&#x27;=0\}\)</span>.
+The selected conormal has nonzero <span class="math" data-tex="\(dx_1\)">\(dx_1\)</span> component, so the hypersurface can be written</p>
+<span class="math math-display" data-tex="\[
+x_1=g(x&#x27;,x&#x27;&#x27;,t&#x27;,t&#x27;&#x27;,u)
+=\langle x&#x27;,u\rangle+h(x&#x27;,x&#x27;&#x27;,t&#x27;,t&#x27;&#x27;,u).
+\qquad\text{(3)}
+\]">\[
+x_1=g(x&#x27;,x&#x27;&#x27;,t&#x27;,t&#x27;&#x27;,u)
+=\langle x&#x27;,u\rangle+h(x&#x27;,x&#x27;&#x27;,t&#x27;,t&#x27;&#x27;,u).
+\qquad\text{(3)}
+\]</span>
+<p>On <span class="math" data-tex="\(\{x&#x27;=t&#x27;=0\}\)">\(\{x&#x27;=t&#x27;=0\}\)</span> we have</p>
+<span class="math math-display" data-tex="\[
+h=0,\qquad \partial_{x&#x27;}h=0,
+\qquad \partial_{t&#x27;}h=0.
+\qquad\text{(4)}
+\]">\[
+h=0,\qquad \partial_{x&#x27;}h=0,
+\qquad \partial_{t&#x27;}h=0.
+\qquad\text{(4)}
+\]</span>
+<p>The first comes from <span class="math" data-tex="\(D\subset N\)">\(D\subset N\)</span>, the second from the definition of <span class="math" data-tex="\(u\)">\(u\)</span>, and the third from the requirement that the conormal over <span class="math" data-tex="\(D\)">\(D\)</span> be a pulled-back covector. Derivatives along <span class="math" data-tex="\(x&#x27;&#x27;,t&#x27;&#x27;,u\)">\(x&#x27;&#x27;,t&#x27;&#x27;,u\)</span> of these identities vanish there as well.</p>
+<p>We claim the Hessian <span class="math" data-tex="\(H=\partial_{t&#x27;t&#x27;}^2h(0)\)">\(H=\partial_{t&#x27;t&#x27;}^2h(0)\)</span> is nondegenerate. Write fibre coordinates <span class="math" data-tex="\((\xi,\tau&#x27;,\tau&#x27;&#x27;,v)\)">\((\xi,\tau&#x27;,\tau&#x27;&#x27;,v)\)</span> dual to <span class="math" data-tex="\((x,t&#x27;,t&#x27;&#x27;,u)\)">\((x,t&#x27;,t&#x27;&#x27;,u)\)</span>. The conormal of (3), with multiplier <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span>, has
+<span class="math" data-tex="\(\tau&#x27;=-\xi_1\partial_{t&#x27;}h\)">\(\tau&#x27;=-\xi_1\partial_{t&#x27;}h\)</span>,
+<span class="math" data-tex="\(\tau&#x27;&#x27;=-\xi_1\partial_{t&#x27;&#x27;}h\)">\(\tau&#x27;&#x27;=-\xi_1\partial_{t&#x27;&#x27;}h\)</span>, and
+<span class="math" data-tex="\(v=-\xi_1(x&#x27;+\partial_uh)\)">\(v=-\xi_1(x&#x27;+\partial_uh)\)</span>.
+The tangent equations at the selected point, using (4), imply that membership in <span class="math" data-tex="\(T_pA\cap T_pV\)">\(T_pA\cap T_pV\)</span> forces</p>
+<span class="math math-display" data-tex="\[
+\delta x_1=\delta x&#x27;=0,\qquad
+\delta\tau&#x27;=\delta\tau&#x27;&#x27;=\delta v=0,
+\qquad H\,\delta t&#x27;=0.
+\qquad\text{(5)}
+\]">\[
+\delta x_1=\delta x&#x27;=0,\qquad
+\delta\tau&#x27;=\delta\tau&#x27;&#x27;=\delta v=0,
+\qquad H\,\delta t&#x27;=0.
+\qquad\text{(5)}
+\]</span>
+<p>Conversely a vector in <span class="math" data-tex="\(\ker H\)">\(\ker H\)</span> can be completed in the free <span class="math" data-tex="\(\delta\xi&#x27;\)">\(\delta\xi&#x27;\)</span> components to a tangent vector with these properties. Cleanliness says this intersection is the tangent of <span class="math" data-tex="\(A\cap V\)">\(A\cap V\)</span>. Its projection lies in <span class="math" data-tex="\(T_0D\)">\(T_0D\)</span>, where <span class="math" data-tex="\(\delta t&#x27;=0\)">\(\delta t&#x27;=0\)</span>. Thus <span class="math" data-tex="\(\ker H=0\)">\(\ker H=0\)</span>.</p>
+<p>Apply the Morse lemma with parameters <span class="math" data-tex="\((x&#x27;&#x27;,t&#x27;&#x27;,u)\)">\((x&#x27;&#x27;,t&#x27;&#x27;,u)\)</span> to <span class="math" data-tex="\(h(0,x&#x27;&#x27;,t&#x27;,t&#x27;&#x27;,u)\)">\(h(0,x&#x27;&#x27;,t&#x27;,t&#x27;&#x27;,u)\)</span>. Its critical value is zero by (4), its critical point is <span class="math" data-tex="\(t&#x27;=0\)">\(t&#x27;=0\)</span>, and its Hessian is nondegenerate. A parameter-dependent change of <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span>, extended independently of <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span>, makes that restriction a fixed nondegenerate quadratic form <span class="math" data-tex="\(q(t&#x27;)\)">\(q(t&#x27;)\)</span>. Hadamard's lemma then gives</p>
+<span class="math math-display" data-tex="\[
+h=q(t&#x27;)+\langle x&#x27;,\phi(x&#x27;,x&#x27;&#x27;,t&#x27;,t&#x27;&#x27;,u)\rangle,
+\qquad \phi=0\text{ on }\{x&#x27;=t&#x27;=0\}.
+\qquad\text{(6)}
+\]">\[
+h=q(t&#x27;)+\langle x&#x27;,\phi(x&#x27;,x&#x27;&#x27;,t&#x27;,t&#x27;&#x27;,u)\rangle,
+\qquad \phi=0\text{ on }\{x&#x27;=t&#x27;=0\}.
+\qquad\text{(6)}
+\]</span>
+<p>Replace the old coordinate <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(u_{\mathrm{new}}=u+\phi\)">\(u_{\mathrm{new}}=u+\phi\)</span>. Its derivative in <span class="math" data-tex="\(u\)">\(u\)</span> on the displayed submanifold is the identity, so this is a coordinate change near the origin. It preserves <span class="math" data-tex="\(f\)">\(f\)</span> and turns (3) into (2), with <span class="math" data-tex="\(t=(t&#x27;,t&#x27;&#x27;)\)">\(t=(t&#x27;,t&#x27;&#x27;)\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> zero on <span class="math" data-tex="\(t&#x27;&#x27;\)">\(t&#x27;&#x27;\)</span>.</p>
+<p>The dimension of <span class="math" data-tex="\(A\cap V\)">\(A\cap V\)</span> is <span class="math" data-tex="\(\dim X+\dim t&#x27;&#x27;\)">\(\dim X+\dim t&#x27;&#x27;\)</span>: projectivized conormal coordinates contribute <span class="math" data-tex="\(\dim X-1\)">\(\dim X-1\)</span>, the ray contributes one, and <span class="math" data-tex="\(t&#x27;&#x27;\)">\(t&#x27;&#x27;\)</span> is the remaining fibre. A transverse intersection has the expected dimension <span class="math" data-tex="\(\dim X\)">\(\dim X\)</span>. Hence in the transverse case there are no <span class="math" data-tex="\(t&#x27;&#x27;\)">\(t&#x27;&#x27;\)</span> directions, and <span class="math" data-tex="\(q\)">\(q\)</span> is nondegenerate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-closed-side-and-the-three-quadratic-dimensions">The closed side and the three quadratic dimensions</h2>
+<p>Choose the closed upper side</p>
+<span class="math math-display" data-tex="\[
+N^+=\{x_1\geq q(t)+\langle x&#x27;,u\rangle\}.
+\qquad\text{(7)}
+\]">\[
+N^+=\{x_1\geq q(t)+\langle x&#x27;,u\rangle\}.
+\qquad\text{(7)}
+\]</span>
+<p>Diagonalize the form and write</p>
+<span class="math math-display" data-tex="\[
+t=(s_+,s_-,w),\qquad
+q(t)=|s_+|^2-|s_-|^2.
+\qquad\text{(8)}
+\]">\[
+t=(s_+,s_-,w),\qquad
+q(t)=|s_+|^2-|s_-|^2.
+\qquad\text{(8)}
+\]</span>
+<p>Let their dimensions be <span class="math" data-tex="\(n_+,n_-,n_0\)">\(n_+,n_-,n_0\)</span>, respectively. The last is the dimension of the radical <span class="math" data-tex="\(\ker q\)">\(\ker q\)</span>. It is not the dimension of a maximal isotropic subspace of an indefinite nondegenerate form. Set <span class="math" data-tex="\(d=\dim(Y/X)\)">\(d=\dim(Y/X)\)</span> and <span class="math" data-tex="\(c=\operatorname{codim}M=r+1\)">\(c=\operatorname{codim}M=r+1\)</span>. Counting the fibre variables gives</p>
+<span class="math math-display" data-tex="\[
+d=n_++n_-+n_0+r,
+\qquad n_++n_-+n_0=d-c+1.
+\qquad\text{(9)}
+\]">\[
+d=n_++n_-+n_0+r,
+\qquad n_++n_-+n_0=d-c+1.
+\qquad\text{(9)}
+\]</span>
+<p>Fix the coordinate orientations for the <span class="math" data-tex="\(s_-,w,u\)">\(s_-,w,u\)</span> spaces. A nonempty open convex subset of an oriented <span class="math" data-tex="\(a\)">\(a\)</span>-dimensional space has compact cohomology <span class="math" data-tex="\(L[-a]\)">\(L[-a]\)</span>, with the orientation trace identifying nested open-ball extension maps. Closed balls have ordinary cohomology <span class="math" data-tex="\(L\)">\(L\)</span> and are compact. These coefficient and trace statements are topology/duality prerequisites for arbitrary bounded <span class="math" data-tex="\(L\)">\(L\)</span>, and do not assert global orientability of <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<h2 id="four-fibre-integrations-determine-the-shift">Four fibre integrations determine the shift</h2>
+<p>For small <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, choose <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> so that
+<span class="math" data-tex="\(\eta(1+\epsilon)&lt;\epsilon\)">\(\eta(1+\epsilon)&lt;\epsilon\)</span>. Consider the open neighborhood</p>
+<span class="math math-display" data-tex="\[
+U_{\eta,\epsilon}=
+\{|x|&lt;\eta,\ |w|&lt;\epsilon,\ |u|&lt;\epsilon,
+\ |s_+|^2&lt;\epsilon,\ |s_-|^2&lt;\epsilon\}.
+\qquad\text{(10)}
+\]">\[
+U_{\eta,\epsilon}=
+\{|x|&lt;\eta,\ |w|&lt;\epsilon,\ |u|&lt;\epsilon,
+\ |s_+|^2&lt;\epsilon,\ |s_-|^2&lt;\epsilon\}.
+\qquad\text{(10)}
+\]</span>
+<p>Shrinking these parameters gives a neighborhood system at zero. Factor <span class="math" data-tex="\(f\)">\(f\)</span> into projections which forget <span class="math" data-tex="\(s_-\)">\(s_-\)</span>, then <span class="math" data-tex="\(s_+\)">\(s_+\)</span>, then <span class="math" data-tex="\(w\)">\(w\)</span>, then <span class="math" data-tex="\(u\)">\(u\)</span>. At each step compact-support base change calculates the fibre. We also identify the extension across its parameter boundaries, so that a stalk calculation alone is not asked to determine a sheaf.</p>
+<p>For the first projection put
+<span class="math" data-tex="\(a=|s_+|^2+\langle x&#x27;,u\rangle-x_1\)">\(a=|s_+|^2+\langle x&#x27;,u\rangle-x_1\)</span>.
+Its fibre is</p>
+<span class="math math-display" data-tex="\[
+\{s_-:a\leq|s_-|^2&lt;\epsilon\}.
+\qquad\text{(11)}
+\]">\[
+\{s_-:a\leq|s_-|^2&lt;\epsilon\}.
+\qquad\text{(11)}
+\]</span>
+<p>For <span class="math" data-tex="\(a\leq0\)">\(a\leq0\)</span> this is an open ball, with compact cohomology <span class="math" data-tex="\(L[-n_-]\)">\(L[-n_-]\)</span>. For <span class="math" data-tex="\(a\geq\epsilon\)">\(a\geq\epsilon\)</span> it is empty. When <span class="math" data-tex="\(0&lt;a&lt;\epsilon\)">\(0&lt;a&lt;\epsilon\)</span>, it is a shell with the inner boundary included and the outer boundary omitted. Its compact cohomology vanishes. To verify the last claim, use the compact-support triangle for the inner open ball inside the outer open ball. The map between their compact cohomologies is the orientation trace isomorphism, so the shell is its zero cone. If <span class="math" data-tex="\(n_-=0\)">\(n_-=0\)</span>, (11) is simply a point for <span class="math" data-tex="\(a\leq0\)">\(a\leq0\)</span> and empty otherwise, which gives the same result.</p>
+<p>The parameterwise comparison to the open ball is obtained by the localization triangle in these two squared-radius regions. Thus the surviving sheaf is the constant coefficient on the <strong>closed</strong> condition
+<span class="math" data-tex="\(x_1\geq|s_+|^2+\langle x&#x27;,u\rangle\)">\(x_1\geq|s_+|^2+\langle x&#x27;,u\rangle\)</span>, shifted by <span class="math" data-tex="\([-n_-]\)">\([-n_-]\)</span>. The transition at <span class="math" data-tex="\(a=0\)">\(a=0\)</span> comes from the same ball trace; it is not a separate choice of a nonzero stalk.</p>
+<p>For the second projection let <span class="math" data-tex="\(b=x_1-\langle x&#x27;,u\rangle\)">\(b=x_1-\langle x&#x27;,u\rangle\)</span>. The positive-variable fibre is
+<span class="math" data-tex="\(\{s_+:|s_+|^2\leq b,\ |s_+|^2&lt;\epsilon\}\)">\(\{s_+:|s_+|^2\leq b,\ |s_+|^2&lt;\epsilon\}\)</span>.
+It is empty for <span class="math" data-tex="\(b&lt;0\)">\(b&lt;0\)</span>, a point for <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, and a closed ball for <span class="math" data-tex="\(0&lt;b&lt;\epsilon\)">\(0&lt;b&lt;\epsilon\)</span>. The bound on <span class="math" data-tex="\(\eta\)">\(\eta\)</span> ensures <span class="math" data-tex="\(|b|&lt;\epsilon\)">\(|b|&lt;\epsilon\)</span> on the retained base neighborhood. Projection on this closed-ball support is proper locally over each compact part of that base neighborhood. Its unit from the constant coefficient is an isomorphism on every fibre, hence is an isomorphism of sheaves. We obtain the closed condition <span class="math" data-tex="\(x_1\geq\langle x&#x27;,u\rangle\)">\(x_1\geq\langle x&#x27;,u\rangle\)</span>, with <strong>no new shift</strong>.</p>
+<p>The third projection integrates the independent open <span class="math" data-tex="\(w\)">\(w\)</span>-ball. The product trace adds <span class="math" data-tex="\([-n_0]\)">\([-n_0]\)</span> and changes nothing else.</p>
+<p>For the fourth projection consider the compact-support triangle over the open <span class="math" data-tex="\(u\)">\(u\)</span>-ball</p>
+<span class="math math-display" data-tex="\[
+L_{\{|u|&lt;\epsilon,\ \langle x&#x27;,u\rangle&gt;x_1\}}
+\longrightarrow L_{\{|u|&lt;\epsilon\}}
+\longrightarrow
+L_{\{|u|&lt;\epsilon,\ \langle x&#x27;,u\rangle\leq x_1\}}
+\xrightarrow{+1}.
+\qquad\text{(12)}
+\]">\[
+L_{\{|u|&lt;\epsilon,\ \langle x&#x27;,u\rangle&gt;x_1\}}
+\longrightarrow L_{\{|u|&lt;\epsilon\}}
+\longrightarrow
+L_{\{|u|&lt;\epsilon,\ \langle x&#x27;,u\rangle\leq x_1\}}
+\xrightarrow{+1}.
+\qquad\text{(12)}
+\]</span>
+<p>The first fibre is empty when <span class="math" data-tex="\(x_1\geq\epsilon|x&#x27;|\)">\(x_1\geq\epsilon|x&#x27;|\)</span>. Otherwise it is a nonempty open convex set; its compact-cohomology map to the whole open ball is the orientation trace isomorphism. Thus the third term has compact cohomology zero outside that closed parameter condition, and <span class="math" data-tex="\(L[-r]\)">\(L[-r]\)</span> on it. The first term's convex-set trace identifies its direct image with the open-extension coefficient on <span class="math" data-tex="\(\{x_1&lt;\epsilon|x&#x27;|\}\)">\(\{x_1&lt;\epsilon|x&#x27;|\}\)</span>, shifted by <span class="math" data-tex="\([-r]\)">\([-r]\)</span>. Triangle (12) identifies the third image with the closed-extension coefficient on its complement. Therefore, as a sheaf calculation on <span class="math" data-tex="\(|x|&lt;\eta\)">\(|x|&lt;\eta\)</span>, all four integrations give</p>
+<span class="math math-display" data-tex="\[
+Rf_!L_{N^+\cap U_{\eta,\epsilon}}
+\simeq
+L_{\{x_1\geq\epsilon|x&#x27;|,\ |x|&lt;\eta\}}[\delta],
+\qquad
+\delta=-n_--n_0-r=n_+-d.
+\qquad\text{(13)}
+\]">\[
+Rf_!L_{N^+\cap U_{\eta,\epsilon}}
+\simeq
+L_{\{x_1\geq\epsilon|x&#x27;|,\ |x|&lt;\eta\}}[\delta],
+\qquad
+\delta=-n_--n_0-r=n_+-d.
+\qquad\text{(13)}
+\]</span>
+<p>Nested neighborhoods use restriction and compact traces from these same triangles, so the comparisons are compatible. Notice that the output in (13) is a closed cone inside an open base neighborhood. It is not the coefficient on <span class="math" data-tex="\(M\)">\(M\)</span> as an ordinary sheaf.</p>
+<h2 id="the-comparison-becomes-an-isomorphism-at-the-selected-covector">The comparison becomes an isomorphism at the selected covector</h2>
+<p>The closed cone <span class="math" data-tex="\(C_\epsilon=\{x_1\geq\epsilon|x&#x27;|\}\)">\(C_\epsilon=\{x_1\geq\epsilon|x&#x27;|\}\)</span> contains <span class="math" data-tex="\(M\)">\(M\)</span>. Restriction supplies
+<span class="math" data-tex="\(L_{C_\epsilon}\to L_M\)">\(L_{C_\epsilon}\to L_M\)</span>. The vertex restriction for a convex cone is a microlocal isomorphism on the interior of its nonnegative polar. In the <span class="math" data-tex="\((x_1,x&#x27;)\)">\((x_1,x&#x27;)\)</span> variables this polar is</p>
+<span class="math math-display" data-tex="\[
+C_\epsilon^\circ=
+\{(\xi_1,\xi&#x27;): \xi_1\geq0,
+\ |\xi&#x27;|\leq\epsilon\xi_1\}.
+\qquad\text{(14)}
+\]">\[
+C_\epsilon^\circ=
+\{(\xi_1,\xi&#x27;): \xi_1\geq0,
+\ |\xi&#x27;|\leq\epsilon\xi_1\}.
+\qquad\text{(14)}
+\]</span>
+<p>The selected covector <span class="math" data-tex="\(dx_1\)">\(dx_1\)</span> is in its interior. The unchanged <span class="math" data-tex="\(x&#x27;&#x27;\)">\(x&#x27;&#x27;\)</span> factor carries zero tangential covector. The cone restriction is consequently invertible at <span class="math" data-tex="\(f_\pi(p)=(0;dx_1)\)">\(f_\pi(p)=(0;dx_1)\)</span>. This is the actual cutoff comparison, with its positive sign; it is not inferred merely from equality of microsupport sets.</p>
+<p>Combining it with (13) gives a morphism of pro-objects</p>
+<span class="math math-display" data-tex="\[
+\text{“}\!\lim_{U\ni0}\!\text{”}\ Rf_!L_{N^+\cap U}
+\longrightarrow L_M[\delta],
+\qquad
+\delta=1-c-(n_0+n_-)=n_+-d.
+\qquad\text{(15)}
+\]">\[
+\text{“}\!\lim_{U\ni0}\!\text{”}\ Rf_!L_{N^+\cap U}
+\longrightarrow L_M[\delta],
+\qquad
+\delta=1-c-(n_0+n_-)=n_+-d.
+\qquad\text{(15)}
+\]</span>
+<p>For an arbitrary neighborhood one first chooses a smaller neighborhood of the form (10) inside it; common smaller choices give the same pro-morphism. Its restriction to the point-localized category is an isomorphism. In particular the formal microlocal proper-support image of <span class="math" data-tex="\(L_{N^+}\)">\(L_{N^+}\)</span> is represented there by <span class="math" data-tex="\(L_M[\delta]\)">\(L_M[\delta]\)</span>. Neither an ordinary global inverse limit nor a global isomorphism with <span class="math" data-tex="\(L_M[\delta]\)">\(L_M[\delta]\)</span> is asserted.</p>
+<p>The boundary kernel <span class="math" data-tex="\(L_N\)">\(L_N\)</span> gives the same formal image at the selected conormal. The triangle from the open upper side to the closed upper side and then the boundary gives <span class="math" data-tex="\(L_{N^+}\to L_N\)">\(L_{N^+}\to L_N\)</span>. Its cone is invisible at the positive boundary conormal <span class="math" data-tex="\(dx_1-dq-d\langle x&#x27;,u\rangle\)">\(dx_1-dq-d\langle x&#x27;,u\rangle\)</span>: the open upper side has the opposite nonzero boundary ray. Applying the germ direct-image calculus preserves this denominator. Thus (15) also supplies the local boundary-transform calculation needed when composing hypersurface kernels.</p>
+<h2 id="expressing-the-shift-by-three-lagrangian-planes">Expressing the shift by three Lagrangian planes</h2>
+<p>Use the cotangent symplectic form <span class="math" data-tex="\(\omega=d\theta\)">\(\omega=d\theta\)</span>, so in linear coordinates
+<span class="math" data-tex="\(\omega((x;\xi),(y;\eta))=\langle\xi,y\rangle-\langle\eta,x\rangle\)">\(\omega((x;\xi),(y;\eta))=\langle\xi,y\rangle-\langle\eta,x\rangle\)</span>.
+For three Lagrangian planes define their inertia index as the signature of</p>
+<span class="math math-display" data-tex="\[
+Q(v_0,v_N,v_1)=
+\omega(v_0,v_N)+\omega(v_N,v_1)+\omega(v_1,v_0).
+\qquad\text{(16)}
+\]">\[
+Q(v_0,v_N,v_1)=
+\omega(v_0,v_N)+\omega(v_N,v_1)+\omega(v_1,v_0).
+\qquad\text{(16)}
+\]</span>
+<h3 id="the-ordered-index-degeneracy-parity-and-the-cocycle">The ordered index: degeneracy, parity and the cocycle</h3>
+<p>Here is a proof of the structural identities needed in the next lessons. Let <span class="math" data-tex="\(E\)">\(E\)</span> be a real symplectic vector space of dimension <span class="math" data-tex="\(2n\)">\(2n\)</span>, with the convention above, and let <span class="math" data-tex="\(\lambda_1,\lambda_2,\lambda_3\)">\(\lambda_1,\lambda_2,\lambda_3\)</span> be Lagrangian planes. There is a Lagrangian complement transverse to any prescribed finite collection of Lagrangian planes: <a href="../AN-04/reconstructions/20261005-restored-gaussian-symbols/gaussian-lines-and-invariant-symbols.html#1-charts-and-intersection-strata-of-lagrangian-planes">AN-04, Gaussian lines and invariant symbols, Proposition 1.2</a> proves this using the positive-codimension intersection strata in symmetric graph charts. Choose this common complement as the vertical plane and a complementary Lagrangian as horizontal. Then every <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> is <span class="math" data-tex="\(p=A_iq\)">\(p=A_iq\)</span>, where <span class="math" data-tex="\(A_i\)">\(A_i\)</span> is symmetric. Formula (16) becomes</p>
+<span class="math math-display" data-tex="\[
+Q=q_1^T(A_1-A_2)q_2+q_2^T(A_2-A_3)q_3
++q_3^T(A_3-A_1)q_1.
+\]">\[
+Q=q_1^T(A_1-A_2)q_2+q_2^T(A_2-A_3)q_3
++q_3^T(A_3-A_1)q_1.
+\]</span>
+<p>Make the invertible change</p>
+<span class="math math-display" data-tex="\[
+q_1=x+z,\quad q_2=x+y,\quad q_3=y+z;
+\qquad x=\tfrac12(q_1+q_2-q_3),\quad
+y=\tfrac12(-q_1+q_2+q_3),\quad
+z=\tfrac12(q_1-q_2+q_3).
+\]">\[
+q_1=x+z,\quad q_2=x+y,\quad q_3=y+z;
+\qquad x=\tfrac12(q_1+q_2-q_3),\quad
+y=\tfrac12(-q_1+q_2+q_3),\quad
+z=\tfrac12(q_1-q_2+q_3).
+\]</span>
+<p>Expanding and using <span class="math" data-tex="\((A_1-A_2)+(A_2-A_3)+(A_3-A_1)=0\)">\((A_1-A_2)+(A_2-A_3)+(A_3-A_1)=0\)</span> cancels all mixed terms. Consequently</p>
+<span class="math math-display" data-tex="\[
+Q=x^T(A_1-A_2)x+y^T(A_2-A_3)y+z^T(A_3-A_1)z,
+\qquad
+\tau(\lambda_1,\lambda_2,\lambda_3)
+=\operatorname{sgn}(A_1-A_2)+\operatorname{sgn}(A_2-A_3)
++\operatorname{sgn}(A_3-A_1).
+\]">\[
+Q=x^T(A_1-A_2)x+y^T(A_2-A_3)y+z^T(A_3-A_1)z,
+\qquad
+\tau(\lambda_1,\lambda_2,\lambda_3)
+=\operatorname{sgn}(A_1-A_2)+\operatorname{sgn}(A_2-A_3)
++\operatorname{sgn}(A_3-A_1).
+\]</span>
+<p>No difference matrix was inverted, so this proof includes degenerate intersections. A cyclic permutation preserves <span class="math" data-tex="\(Q\)">\(Q\)</span>; an odd permutation negates it. Reversing <span class="math" data-tex="\(\omega\)">\(\omega\)</span> negates <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, and symplectic direct sums add the signatures. For four planes choose one common chart. Cancelling the six ordered matrix differences in the displayed signature formula gives the full four-plane identity</p>
+<span class="math math-display" data-tex="\[
+\tau(\lambda_1,\lambda_2,\lambda_3)
++\tau(\lambda_1,\lambda_3,\lambda_4)
+=\tau(\lambda_1,\lambda_2,\lambda_4)
++\tau(\lambda_2,\lambda_3,\lambda_4).
+\]">\[
+\tau(\lambda_1,\lambda_2,\lambda_3)
++\tau(\lambda_1,\lambda_3,\lambda_4)
+=\tau(\lambda_1,\lambda_2,\lambda_4)
++\tau(\lambda_2,\lambda_3,\lambda_4).
+\]</span>
+<p>For completeness, the radical has an intrinsic description. Polarizing (16) says that a triple lies in the radical precisely when
+<span class="math" data-tex="\(v_2-v_3\in\lambda_1\)">\(v_2-v_3\in\lambda_1\)</span>, <span class="math" data-tex="\(v_3-v_1\in\lambda_2\)">\(v_3-v_1\in\lambda_2\)</span>, and <span class="math" data-tex="\(v_1-v_2\in\lambda_3\)">\(v_1-v_2\in\lambda_3\)</span>. The assignments</p>
+<span class="math math-display" data-tex="\[
+a_{12}=\tfrac12(v_1+v_2-v_3),\quad
+a_{23}=\tfrac12(-v_1+v_2+v_3),\quad
+a_{31}=\tfrac12(v_1-v_2+v_3)
+\]">\[
+a_{12}=\tfrac12(v_1+v_2-v_3),\quad
+a_{23}=\tfrac12(-v_1+v_2+v_3),\quad
+a_{31}=\tfrac12(v_1-v_2+v_3)
+\]</span>
+<p>put <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span> in <span class="math" data-tex="\(\lambda_i\cap\lambda_j\)">\(\lambda_i\cap\lambda_j\)</span>. Their inverse is
+<span class="math" data-tex="\(v_1=a_{12}+a_{31}\)">\(v_1=a_{12}+a_{31}\)</span>, <span class="math" data-tex="\(v_2=a_{12}+a_{23}\)">\(v_2=a_{12}+a_{23}\)</span>, <span class="math" data-tex="\(v_3=a_{23}+a_{31}\)">\(v_3=a_{23}+a_{31}\)</span>. Thus the radical is isomorphic to the direct sum of the three pairwise intersections. The rank is <span class="math" data-tex="\(3n-\sum_{i&lt;j}\dim(\lambda_i\cap\lambda_j)\)">\(3n-\sum_{i&lt;j}\dim(\lambda_i\cap\lambda_j)\)</span>. Since the signature and rank of a real symmetric form have the same parity,</p>
+<span class="math math-display" data-tex="\[
+\tau(\lambda_1,\lambda_2,\lambda_3)
+\equiv n+\sum_{i&lt;j}\dim(\lambda_i\cap\lambda_j)\pmod2.
+\]">\[
+\tau(\lambda_1,\lambda_2,\lambda_3)
+\equiv n+\sum_{i&lt;j}\dim(\lambda_i\cap\lambda_j)\pmod2.
+\]</span>
+<p>In a continuous family with all three intersection dimensions fixed, choose local continuous frames for the three planes. The matrix of <span class="math" data-tex="\(Q\)">\(Q\)</span> varies continuously and has constant rank by the radical calculation. At a given parameter, its nonzero eigenvalues have a positive distance from zero; on a smaller neighborhood their signs persist. Constant rank prevents any remaining eigenvalue from becoming nonzero. The positive and negative counts, hence <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, are locally constant. This works on an arbitrary topological parameter space and requires no path-connectivity assumption.</p>
+<h3 id="reduction-by-an-isotropic-plane-contained-in-two-arguments">Reduction by an isotropic plane contained in two arguments</h3>
+<p>We also need the following precise reduction rule. If an isotropic <span class="math" data-tex="\(I\)">\(I\)</span> is contained in <span class="math" data-tex="\(\lambda_1\cap\lambda_2\)">\(\lambda_1\cap\lambda_2\)</span>, set <span class="math" data-tex="\(E_0=I^\omega/I\)">\(E_0=I^\omega/I\)</span> and
+<span class="math" data-tex="\(\overline\lambda_i=((\lambda_i\cap I^\omega)+I)/I\)">\(\overline\lambda_i=((\lambda_i\cap I^\omega)+I)/I\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\tau_E(\lambda_1,\lambda_2,\lambda_3)
+=\tau_{E_0}(\overline\lambda_1,\overline\lambda_2,\overline\lambda_3).
+\]">\[
+\tau_E(\lambda_1,\lambda_2,\lambda_3)
+=\tau_{E_0}(\overline\lambda_1,\overline\lambda_2,\overline\lambda_3).
+\]</span>
+<p>All three reduced planes are Lagrangian by the linear reduction proved in <a href="../AN-04/reconstructions/20261005-restored-phase-space/phase-space-and-generating-families.html#2-linear-geometry-and-reduction">AN-04, Phase space and generating families, Proposition 2.3</a>. To prove the signature assertion, split <span class="math" data-tex="\(E=I\oplus I^*\oplus E_0\)">\(E=I\oplus I^*\oplus E_0\)</span>, with <span class="math" data-tex="\(I\oplus I^*\)">\(I\oplus I^*\)</span> symplectic and <span class="math" data-tex="\(E_0\)">\(E_0\)</span> its symplectic orthogonal. Put <span class="math" data-tex="\(d=\dim I\)">\(d=\dim I\)</span> and <span class="math" data-tex="\(J=I\cap\lambda_3\)">\(J=I\cap\lambda_3\)</span>, <span class="math" data-tex="\(j=\dim J\)">\(j=\dim J\)</span>. We have <span class="math" data-tex="\(\lambda_1=I\oplus L_1\)">\(\lambda_1=I\oplus L_1\)</span>, <span class="math" data-tex="\(\lambda_2=I\oplus L_2\)">\(\lambda_2=I\oplus L_2\)</span>, with <span class="math" data-tex="\(L_i\subset E_0\)">\(L_i\subset E_0\)</span>. Pairing with <span class="math" data-tex="\(I\)">\(I\)</span> on <span class="math" data-tex="\(\lambda_3\)">\(\lambda_3\)</span> has rank <span class="math" data-tex="\(d-j\)">\(d-j\)</span>: its transpose has kernel <span class="math" data-tex="\(I\cap\lambda_3^\omega=J\)">\(I\cap\lambda_3^\omega=J\)</span>. Choose a complement <span class="math" data-tex="\(W\)">\(W\)</span> to <span class="math" data-tex="\(\lambda_3\cap I^\omega\)">\(\lambda_3\cap I^\omega\)</span> in <span class="math" data-tex="\(\lambda_3\)">\(\lambda_3\)</span>. Then <span class="math" data-tex="\(\omega\)">\(\omega\)</span> pairs <span class="math" data-tex="\(I/J\)">\(I/J\)</span> perfectly with <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>Write <span class="math" data-tex="\(v_1=i_1+l_1\)">\(v_1=i_1+l_1\)</span>, <span class="math" data-tex="\(v_2=i_2+l_2\)">\(v_2=i_2+l_2\)</span>, and <span class="math" data-tex="\(v_3=w_0+w\)">\(v_3=w_0+w\)</span>, where <span class="math" data-tex="\(w\in W\)">\(w\in W\)</span>, <span class="math" data-tex="\(w_0\in\lambda_3\cap I^\omega\)">\(w_0\in\lambda_3\cap I^\omega\)</span>. A section of the projection of <span class="math" data-tex="\(w_0\)">\(w_0\)</span> to <span class="math" data-tex="\(\overline\lambda_3\)">\(\overline\lambda_3\)</span> separates its <span class="math" data-tex="\(J\)">\(J\)</span>-coordinate. The form is exactly</p>
+<span class="math math-display" data-tex="\[
+Q=Q_0(l_1,l_2,\overline w_0)
++\omega(i_2-i_1,w)+\omega(l_2-l_1,w_{E_0}),
+\]">\[
+Q=Q_0(l_1,l_2,\overline w_0)
++\omega(i_2-i_1,w)+\omega(l_2-l_1,w_{E_0}),
+\]</span>
+<p>where <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> is the three-plane form on <span class="math" data-tex="\(E_0\)">\(E_0\)</span>. The last term is a linear functional of <span class="math" data-tex="\(w\)">\(w\)</span> whose coefficients depend linearly on <span class="math" data-tex="\((l_1,l_2)\)">\((l_1,l_2)\)</span>. Perfect pairing lets us absorb it by translating the <span class="math" data-tex="\(I/J\)">\(I/J\)</span>-coordinate of <span class="math" data-tex="\(i_2-i_1\)">\(i_2-i_1\)</span>. This triangular change of variables is invertible. What remains is <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span>, a hyperbolic pairing of dimension <span class="math" data-tex="\(2(d-j)\)">\(2(d-j)\)</span>, and a radical of dimension <span class="math" data-tex="\(d+2j\)">\(d+2j\)</span> from <span class="math" data-tex="\(i_1\)">\(i_1\)</span>, the unused <span class="math" data-tex="\(J\)">\(J\)</span>-coordinate of <span class="math" data-tex="\(i_2-i_1\)">\(i_2-i_1\)</span>, and the <span class="math" data-tex="\(J\)">\(J\)</span>-coordinate of <span class="math" data-tex="\(w_0\)">\(w_0\)</span>. The hyperbolic pairing has equally many positive and negative directions. This proves the rule, including <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>; alternation gives the same rule when <span class="math" data-tex="\(I\)">\(I\)</span> is contained in either other pair. No reduction assertion for an arbitrary isotropic plane is being used.</p>
+<h3 id="the-submanifold-transform-s-ordered-triple">The submanifold transform's ordered triple</h3>
+<p>The order matters. In <span class="math" data-tex="\(E=T_pT^*Y\)">\(E=T_pT^*Y\)</span> take
+<span class="math" data-tex="\(\lambda_0=T_p\pi_Y^{-1}(0)\)">\(\lambda_0=T_p\pi_Y^{-1}(0)\)</span>,
+<span class="math" data-tex="\(\lambda_N=T_pT_N^*Y\)">\(\lambda_N=T_pT_N^*Y\)</span>, and
+<span class="math" data-tex="\(\lambda_1=T_p f_\pi^{-1}(\pi_X^{-1}(0))\)">\(\lambda_1=T_p f_\pi^{-1}(\pi_X^{-1}(0))\)</span>, with the last inverse image taken inside <span class="math" data-tex="\(V\)">\(V\)</span>. Set <span class="math" data-tex="\(\tau=\tau_E(\lambda_0,\lambda_N,\lambda_1)\)">\(\tau=\tau_E(\lambda_0,\lambda_N,\lambda_1)\)</span>.</p>
+<p>Write <span class="math" data-tex="\(q(t)=\tfrac12\langle At,t\rangle\)">\(q(t)=\tfrac12\langle At,t\rangle\)</span>, with <span class="math" data-tex="\(A\)">\(A\)</span> symmetric, in the normal form. Its tangent conormal equations are
+<span class="math" data-tex="\(x_1=\xi&#x27;&#x27;=0\)">\(x_1=\xi&#x27;&#x27;=0\)</span>, <span class="math" data-tex="\(\xi&#x27;=-u\)">\(\xi&#x27;=-u\)</span>, <span class="math" data-tex="\(\tau_t=-At\)">\(\tau_t=-At\)</span>, <span class="math" data-tex="\(v=-x&#x27;\)">\(v=-x&#x27;\)</span>.
+The vertical plane has <span class="math" data-tex="\(x=t=u=0\)">\(x=t=u=0\)</span>, while <span class="math" data-tex="\(\lambda_1\)">\(\lambda_1\)</span> has <span class="math" data-tex="\(x=\tau_t=v=0\)">\(x=\tau_t=v=0\)</span>. We calculate the signature directly in these coordinates. The fibre-variable contribution is the triple in <span class="math" data-tex="\((t;\tau_t)\)">\((t;\tau_t)\)</span></p>
+<span class="math math-display" data-tex="\[
+\{t=0\},\qquad \{\tau_t=-At\},
+\qquad \{\tau_t=0\}.
+\qquad\text{(17)}
+\]">\[
+\{t=0\},\qquad \{\tau_t=-At\},
+\qquad \{\tau_t=0\}.
+\qquad\text{(17)}
+\]</span>
+<p>For the <span class="math" data-tex="\(x_1\)">\(x_1\)</span> coordinate all three planes are vertical, so its form is zero. In the <span class="math" data-tex="\(x&#x27;&#x27;\)">\(x&#x27;&#x27;\)</span> block the planes are vertical, horizontal, vertical; its form is <span class="math" data-tex="\((a-c)^Tb\)">\((a-c)^Tb\)</span>. This is a hyperbolic pairing plus a radical and has signature zero.</p>
+<p>In the coupled <span class="math" data-tex="\((x&#x27;,u;\xi&#x27;,v)\)">\((x&#x27;,u;\xi&#x27;,v)\)</span> block, take a vertical vector with momenta <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, a conormal vector with bases <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> and momenta <span class="math" data-tex="\((-d,-c)\)">\((-d,-c)\)</span>, and a third-plane vector with bases <span class="math" data-tex="\((0,e)\)">\((0,e)\)</span> and momenta <span class="math" data-tex="\((f,0)\)">\((f,0)\)</span>. Formula (16) becomes</p>
+<span class="math math-display" data-tex="\[
+a^Tc+b^Td-c^Te-f^Tc-b^Te
+=c^T(a-f-e)+b^T(d-e).
+\]">\[
+a^Tc+b^Td-c^Te-f^Tc-b^Te
+=c^T(a-f-e)+b^T(d-e).
+\]</span>
+<p>The change of variables <span class="math" data-tex="\((a,d)\mapsto(a-f-e,d-e)\)">\((a,d)\mapsto(a-f-e,d-e)\)</span>, retaining <span class="math" data-tex="\((b,c,e,f)\)">\((b,c,e,f)\)</span>, is invertible. The resulting two hyperbolic pairings have zero signature, and the remaining variables are radical. Finally, on (17), with a vertical vector <span class="math" data-tex="\(a\)">\(a\)</span>, a graph vector <span class="math" data-tex="\((b,-Ab)\)">\((b,-Ab)\)</span>, and a horizontal vector <span class="math" data-tex="\(c\)">\(c\)</span>, the form is</p>
+<span class="math math-display" data-tex="\[
+a^T(b-c)-b^TAc
+=(a+Ab)^Tz-b^TAb,\qquad z=b-c.
+\]">\[
+a^T(b-c)-b^TAc
+=(a+Ab)^Tz-b^TAb,\qquad z=b-c.
+\]</span>
+<p>The change <span class="math" data-tex="\((a,b,c)\mapsto(a+Ab,b,z)\)">\((a,b,c)\mapsto(a+Ab,b,z)\)</span> is invertible even when <span class="math" data-tex="\(A\)">\(A\)</span> is singular. Its hyperbolic pairing has signature zero, leaving the signature of <span class="math" data-tex="\(-A\)">\(-A\)</span>. The blocks are independent, so
+<span class="math" data-tex="\(\tau=-\operatorname{sgn}A=-(n_+-n_-)\)">\(\tau=-\operatorname{sgn}A=-(n_+-n_-)\)</span>.
+This proves the complete ordered calculation, including null directions. The graph sign in (17) fixes the minus sign.</p>
+<p>Furthermore <span class="math" data-tex="\(\dim((T_pV)^\perp\cap\lambda_N)=n_0\)">\(\dim((T_pV)^\perp\cap\lambda_N)=n_0\)</span>, since that intersection imposes <span class="math" data-tex="\(u=0\)">\(u=0\)</span> and <span class="math" data-tex="\(At=0\)">\(At=0\)</span> on the remaining fibre-base vector. Substitute these identities and (9) into (15). We obtain</p>
+<span class="math math-display" data-tex="\[
+\delta=\frac12\bigl[
+1+\dim M-\dim Y
+-\dim((T_pV)^\perp\cap\lambda_N)-\tau
+\bigr].
+\qquad\text{(18)}
+\]">\[
+\delta=\frac12\bigl[
+1+\dim M-\dim Y
+-\dim((T_pV)^\perp\cap\lambda_N)-\tau
+\bigr].
+\qquad\text{(18)}
+\]</span>
+<p>Thus the half-integer-looking expression is an integer. Indeed its bracket equals <span class="math" data-tex="\(-2(n_-+n_0+r)\)">\(-2(n_-+n_0+r)\)</span>. Formula (18) is a coordinate-independent description of the same local shift once the symplectic and index conventions are fixed.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="count-the-integrated-directions">Count the integrated directions</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Let <span class="math" data-tex="\(q\)">\(q\)</span> have two positive, three negative and one null direction, and let <span class="math" data-tex="\(\operatorname{codim}M=3\)">\(\operatorname{codim}M=3\)</span>. Find <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(\delta\)">\(\delta\)</span> in both forms of (15).</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, so <span class="math" data-tex="\(d=2+3+1+2=8\)">\(d=2+3+1+2=8\)</span>. Counting compactly integrated negative, null and <span class="math" data-tex="\(u\)">\(u\)</span> directions gives <span class="math" data-tex="\(\delta=-3-1-2=-6\)">\(\delta=-3-1-2=-6\)</span>. The alternative expression is <span class="math" data-tex="\(n_+-d=2-8=-6\)">\(n_+-d=2-8=-6\)</span>. The positive closed balls contribute no shift.</p>
+<h3 id="an-annulus-with-one-boundary-missing">An annulus with one boundary missing</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>For <span class="math" data-tex="\(0&lt;a&lt;b\)">\(0&lt;a&lt;b\)</span>, compute the compact cohomology with coefficients <span class="math" data-tex="\(L\)">\(L\)</span> of <span class="math" data-tex="\(\{v\in\mathbb R^m:a\leq|v|^2&lt;b\}\)">\(\{v\in\mathbb R^m:a\leq|v|^2&lt;b\}\)</span>. Include the case <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, and compare with a compact closed annulus.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, the inner open ball <span class="math" data-tex="\(\{|v|^2&lt;a\}\)">\(\{|v|^2&lt;a\}\)</span> and outer open ball <span class="math" data-tex="\(\{|v|^2&lt;b\}\)">\(\{|v|^2&lt;b\}\)</span> both have compact cohomology <span class="math" data-tex="\(L[-m]\)">\(L[-m]\)</span>. The open-extension map is the orientation trace isomorphism. Their complement's compact cohomology is its cone, hence zero. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span> the displayed set is empty. A compact closed annulus has ordinary cohomology of its sphere factor and is generally nonzero; replacing the omitted outer boundary by an included one changes the answer and invalidates the first integration in (13).</p>
+<h3 id="the-cone-comparison-is-directional">The cone comparison is directional</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, compare <span class="math" data-tex="\(k_{[0,\infty)}\to k_{\{0\}}\)">\(k_{[0,\infty)}\to k_{\{0\}}\)</span> at positive and negative covectors at zero. Work with <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>.</p>
+<p><strong>Solution.</strong> The open/closed boundary triangle is
+<span class="math" data-tex="\(k_{(0,\infty)}\to k_{[0,\infty)}\to k_{\{0\}}\xrightarrow{+1}\)">\(k_{(0,\infty)}\to k_{[0,\infty)}\to k_{\{0\}}\xrightarrow{+1}\)</span>.
+The open half-line has its nonzero boundary microsupport on the negative ray. Thus the second arrow is an isomorphism at every positive covector. At a negative covector the closed half-line is null, whereas the point sheaf is not; the map is not an isomorphism. The cone comparison in (15) therefore uses the selected positive covector and is not a global sheaf equivalence.</p>
+<h3 id="null-directions-need-not-mean-isotropic-directions">Null directions need not mean isotropic directions</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>For <span class="math" data-tex="\(q(a,b)=a^2-b^2\)">\(q(a,b)=a^2-b^2\)</span>, determine <span class="math" data-tex="\(n_0\)">\(n_0\)</span> and exhibit a nonzero isotropic vector. Explain which number enters (9).</p>
+<p><strong>Solution.</strong> Its symmetric matrix is invertible, so its radical is zero and <span class="math" data-tex="\(n_0=0\)">\(n_0=0\)</span>. The vector <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> satisfies <span class="math" data-tex="\(q(1,1)=0\)">\(q(1,1)=0\)</span>, so it is isotropic and nonzero. The null directions integrated as independent open balls in the proof are the radical directions, not arbitrary zero-value vectors. Hence (9) uses zero in this example.</p>
+<h3 id="check-the-index-sign-and-parity">Check the index sign and parity</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Take <span class="math" data-tex="\(A=\operatorname{diag}(2,-3,0)\)">\(A=\operatorname{diag}(2,-3,0)\)</span> and <span class="math" data-tex="\(r=1\)">\(r=1\)</span>. Compute <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, <span class="math" data-tex="\(\dim((T_pV)^\perp\cap\lambda_N)\)">\(\dim((T_pV)^\perp\cap\lambda_N)\)</span>, and (18). What happens to <span class="math" data-tex="\(\tau\)">\(\tau\)</span> if the last two planes in (16) are exchanged?</p>
+<p><strong>Solution.</strong> There is one positive, one negative and one null direction, so <span class="math" data-tex="\(\tau=-(1-1)=0\)">\(\tau=-(1-1)=0\)</span> and the displayed intersection has dimension one. Here <span class="math" data-tex="\(d=4\)">\(d=4\)</span>, <span class="math" data-tex="\(c=2\)">\(c=2\)</span>, and <span class="math" data-tex="\(1+\dim M-\dim Y=1-c-d=-5\)">\(1+\dim M-\dim Y=1-c-d=-5\)</span>. The bracket in (18) is <span class="math" data-tex="\(-5-1-0=-6\)">\(-5-1-0=-6\)</span>, giving <span class="math" data-tex="\(\delta=-3\)">\(\delta=-3\)</span>, in agreement with <span class="math" data-tex="\(-n_--n_0-r=-3\)">\(-n_--n_0-r=-3\)</span>. Interchanging the last two planes negates the inertia index by alternation. In this balanced example it remains zero; for an unbalanced quadratic form that exchange would change the shift expression unless its ordered convention were corrected too.</p>
+<h3 id="the-null-parameter-still-contributes-a-shift">The null parameter still contributes a shift</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Let <span class="math" data-tex="\(f:\mathbb R^2\to\mathbb R\)">\(f:\mathbb R^2\to\mathbb R\)</span> be <span class="math" data-tex="\(f(x,t)=x\)">\(f(x,t)=x\)</span>, take <span class="math" data-tex="\(N=\{x=0\}\)">\(N=\{x=0\}\)</span>, and choose the positive conormal <span class="math" data-tex="\(dx\)">\(dx\)</span>. Compare it with the model <span class="math" data-tex="\(N=\{x=t^2\}\)">\(N=\{x=t^2\}\)</span>. Compute the formal local image of the closed upper-side coefficient in each case.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(x=0\)">\(x=0\)</span> the quadratic form in the fibre is zero: <span class="math" data-tex="\(n_0=1\)">\(n_0=1\)</span>, <span class="math" data-tex="\(n_+=n_-=0\)">\(n_+=n_-=0\)</span>, <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. The local fibre is an independent open interval, so (15) gives <span class="math" data-tex="\(L_{\{0\}}[-1]\)">\(L_{\{0\}}[-1]\)</span> at the positive covector. For <span class="math" data-tex="\(x=t^2\)">\(x=t^2\)</span>, the form has <span class="math" data-tex="\(n_+=1\)">\(n_+=1\)</span> and no negative or null direction. Its positive-variable fibre is a compact interval for <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span> near zero, so the formal image is <span class="math" data-tex="\(L_{\{0\}}\)">\(L_{\{0\}}\)</span> without shift. Both outputs are supported on the same submanifold in the selected category. Their different shifts record the different fibre integrations, not different output support sets.</p>
+<h3 id="a-parameter-changes-coordinates-before-it-changes-signature">A parameter changes coordinates before it changes signature</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>For <span class="math" data-tex="\(a\)">\(a\)</span> near zero, consider
+<span class="math" data-tex="\(h(a,t,u)=(1+a+t)t^2-u^2\)">\(h(a,t,u)=(1+a+t)t^2-u^2\)</span>.
+Give exact parameter-preserving Morse coordinates near the zero critical family and check their local invertibility. Compare with <span class="math" data-tex="\(g(a,t)=t^2+at\)">\(g(a,t)=t^2+at\)</span>: why must its critical point and value be translated before applying the zero-value version of the lemma?</p>
+<p><strong>Solution.</strong> Restrict to <span class="math" data-tex="\(1+a+t&gt;0\)">\(1+a+t&gt;0\)</span> and set <span class="math" data-tex="\(v=t\sqrt{1+a+t}\)">\(v=t\sqrt{1+a+t}\)</span>, <span class="math" data-tex="\(w=u\)">\(w=u\)</span>. Then <span class="math" data-tex="\(h=v^2-w^2\)">\(h=v^2-w^2\)</span> exactly. At <span class="math" data-tex="\((a,t,u)=(0,0,0)\)">\((a,t,u)=(0,0,0)\)</span>, the derivative of <span class="math" data-tex="\((a,t,u)\mapsto(a,v,w)\)">\((a,t,u)\mapsto(a,v,w)\)</span> is invertible; more generally its fibre derivative at <span class="math" data-tex="\(t=u=0\)">\(t=u=0\)</span> is <span class="math" data-tex="\(\operatorname{diag}(\sqrt{1+a},1)\)">\(\operatorname{diag}(\sqrt{1+a},1)\)</span>. The inverse function theorem gives smooth local inverse coordinates, retaining <span class="math" data-tex="\(a\)">\(a\)</span>. The positive and negative dimensions remain one and one. For <span class="math" data-tex="\(g\)">\(g\)</span>, the fibre derivative at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is <span class="math" data-tex="\(a\)">\(a\)</span>, so <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is not the critical family when <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. The true critical point is <span class="math" data-tex="\(t_c(a)=-a/2\)">\(t_c(a)=-a/2\)</span>, with value <span class="math" data-tex="\(-a^2/4\)">\(-a^2/4\)</span>. Completing the square gives <span class="math" data-tex="\(g=(t+a/2)^2-a^2/4\)">\(g=(t+a/2)^2-a^2/4\)</span>; translate by that critical section and subtract that critical value. Omitting either change would falsely claim the zero-value quadratic identity.</p>
+<h3 id="a-changing-intersection-can-change-inertia">A changing intersection can change inertia</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>In <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> with <span class="math" data-tex="\(\omega=dp\wedge dq\)">\(\omega=dp\wedge dq\)</span>, let <span class="math" data-tex="\(\lambda_a=\{p=aq\}\)">\(\lambda_a=\{p=aq\}\)</span>. For <span class="math" data-tex="\(-1&lt;t&lt;1\)">\(-1&lt;t&lt;1\)</span>, compute <span class="math" data-tex="\(\tau(\lambda_0,\lambda_t,\lambda_1)\)">\(\tau(\lambda_0,\lambda_t,\lambda_1)\)</span>, its radical dimension and its parity at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> and on either side. Check the four-plane identity for <span class="math" data-tex="\((\lambda_0,\lambda_t,\lambda_1,\lambda_2)\)">\((\lambda_0,\lambda_t,\lambda_1,\lambda_2)\)</span> at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> and <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>. Why does this not contradict continuity?</p>
+<p><strong>Solution.</strong> The graph formula gives
+<span class="math" data-tex="\(\tau=\operatorname{sgn}(-t)+\operatorname{sgn}(t-1)+\operatorname{sgn}(1)\)">\(\tau=\operatorname{sgn}(-t)+\operatorname{sgn}(t-1)+\operatorname{sgn}(1)\)</span>.
+It is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, <span class="math" data-tex="\(0\)">\(0\)</span> at zero, and <span class="math" data-tex="\(-1\)">\(-1\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. All pairwise intersections vanish off zero, so the radical is zero and its rank is three; the signature is odd, as required. At zero the first two planes coincide, with one-dimensional intersection, while both meet the third in zero. The radical is one-dimensional, its rank is two and its signature is even. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, the four ordered indices <span class="math" data-tex="\((\tau_{123},\tau_{134},\tau_{124},\tau_{234})\)">\((\tau_{123},\tau_{134},\tau_{124},\tau_{234})\)</span> are <span class="math" data-tex="\((0,-1,0,-1)\)">\((0,-1,0,-1)\)</span>, giving <span class="math" data-tex="\(-1=-1\)">\(-1=-1\)</span>. For <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, all four are <span class="math" data-tex="\(-1\)">\(-1\)</span>, giving <span class="math" data-tex="\(-2=-2\)">\(-2=-2\)</span>. The pairwise intersection dimension changes at zero, so the hypothesis of the local-constancy theorem fails exactly where this jump occurs. The cocycle remains valid throughout, including the degenerate triple.</p>
+<h2 id="references">References</h2>
+<p>The ordered inertia-index calculation for the shift of a submanifold transform belongs to Kashiwara and Schapira's theory of contact transformations and simple sheaves; see M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §7.1 and §7.4. Clean cotangent reduction, the full ordered signature calculation, the radical, parity, cocycle and continuity identities and common-pair isotropic reduction are proved here; parameter Morse coordinates use the lesson linked above.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/normal-forms-and-the-shift-of-a-submanifold-transform.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The trace formula for a compact quotient · Automorphic forms and representations of GL(2)</title>
+<meta name="description" content="A lesson of the course Automorphic forms and representations of GL(2). Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/automorphic-forms-and-representations-of-gl2/the-trace-formula-for-a-compact-quotient.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Automorphic forms and representations of GL(2)</a> <span aria-hidden="true">›</span> <span>Lesson 13 of 14</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-trace-formula-for-a-compact-quotient">The trace formula for a compact quotient</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A convolution operator can be counted in two ways. Its trace is a sum over irreducible representations, but its kernel is a sum over lattice elements. Evaluating that kernel on the diagonal turns lattice elements into conjugacy classes. We will prove the resulting identity, recover Poisson summation, and compute the trace of a quaternion Hecke operator by counting embeddings of quadratic orders.</p>
+<p>The quaternion groups, ideal classes and Brandt conventions come from <a href="quaternion-algebras-and-their-automorphic-forms.html">Lesson 17</a>. The Hilbert-space background is prerequisite D20. Inner products are linear in the first variable. All lattice measures are counting measures. We begin with a second-countable, locally compact Hausdorff unimodular group <span class="math" data-tex="\(G\)">\(G\)</span>, a discrete subgroup <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and a compact quotient <span class="math" data-tex="\(X=\Gamma\backslash G\)">\(X=\Gamma\backslash G\)</span>. The test functions for an arbitrary such group will be finite sums of convolutions of compactly supported continuous functions. Section 3 proves the same trace identity directly for the usual smooth Lie and adelic test functions.</p>
+<h2 id="1-measures-and-the-automorphic-kernel">1. Measures and the automorphic kernel</h2>
+<p>Fix Haar measure <span class="math" data-tex="\(dg\)">\(dg\)</span> and the quotient measure <span class="math" data-tex="\(dx\)">\(dx\)</span> characterized by
+<span class="math math-display" data-tex="\[
+\int_G u(g)\,dg
+=\int_X\sum_{\gamma\in\Gamma}u(\gamma x)\,dx
+\qquad(u\in C_c(G)).
+\tag{1.1}
+\]">\[
+\int_G u(g)\,dg
+=\int_X\sum_{\gamma\in\Gamma}u(\gamma x)\,dx
+\qquad(u\in C_c(G)).
+\tag{1.1}
+\]</span>
+The quotient-measure theorem is proved in <a href="../harmonic-analysis-on-locally-compact-groups/reader/quotient-measures-and-weils-integration-formula.html">Quotient measures and Weil’s integration formula</a>, Theorem 3.1. For a closed subgroup <span class="math" data-tex="\(H\)">\(H\)</span>, its invariant measure on <span class="math" data-tex="\(G/H\)">\(G/H\)</span> exists precisely when <span class="math" data-tex="\(\Delta_G|_H=\Delta_H\)">\(\Delta_G|_H=\Delta_H\)</span>. Its left-coset convention becomes our right-coset convention under <span class="math" data-tex="\(gH\mapsto Hg^{-1}\)">\(gH\mapsto Hg^{-1}\)</span>; inversion transports left Haar measures to right Haar measures and left invariance to right invariance. All groups to which we apply the formula here are unimodular, so those Haar measures agree. In (1.1), <span class="math" data-tex="\(H=\Gamma\)">\(H=\Gamma\)</span> has counting measure and both modular functions are one. The same theorem therefore supplies exactly (1.1), with our fixed normalization. Getz–Hahn, Theorem 3.2.2 is an additional reference. Since <span class="math" data-tex="\(X\)">\(X\)</span> is compact, <span class="math" data-tex="\(0&lt;\operatorname{vol}(X)&lt;\infty\)">\(0&lt;\operatorname{vol}(X)&lt;\infty\)</span>.</p>
+<p>The right regular action and convolution are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R(g)\phi(x)=\phi(xg),\qquad
+R(f)\phi(x)=\int_G f(g)\phi(xg)\,dg,\\
+(a*b)(g)=\int_G a(h)b(h^{-1}g)\,dh,\qquad
+f^*(g)=\overline{f(g^{-1})}.
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+R(g)\phi(x)=\phi(xg),\qquad
+R(f)\phi(x)=\int_G f(g)\phi(xg)\,dg,\\
+(a*b)(g)=\int_G a(h)b(h^{-1}g)\,dh,\qquad
+f^*(g)=\overline{f(g^{-1})}.
+\end{gathered}
+\tag{1.2}
+\]</span>
+Thus <span class="math" data-tex="\(R(a*b)=R(a)R(b)\)">\(R(a*b)=R(a)R(b)\)</span>, <span class="math" data-tex="\(R(f^*)=R(f)^*\)">\(R(f^*)=R(f)^*\)</span>, and <span class="math" data-tex="\(\|R(f)\|\leq\|f\|_1\)">\(\|R(f)\|\leq\|f\|_1\)</span>. Fubini proves the first identity, and invariance of <span class="math" data-tex="\(dx\)">\(dx\)</span> and inversion of <span class="math" data-tex="\(dg\)">\(dg\)</span> prove the second. The action is unitary and strongly continuous: first check continuity on continuous functions on the compact space <span class="math" data-tex="\(X\)">\(X\)</span>, where it is uniform, and then use their density in <span class="math" data-tex="\(L^2(X)\)">\(L^2(X)\)</span>.</p>
+<p><strong>Theorem 1.1 — the kernel and compactness.</strong> For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>, the operator <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span> has continuous kernel
+<span class="math math-display" data-tex="\[
+K_f(x,y)=\sum_{\gamma\in\Gamma}f(x^{-1}\gamma y).
+\tag{1.3}
+\]">\[
+K_f(x,y)=\sum_{\gamma\in\Gamma}f(x^{-1}\gamma y).
+\tag{1.3}
+\]</span>
+It is Hilbert–Schmidt and compact.</p>
+<p><strong>Proof.</strong> The quotient map has local sections: around any point, choose a small relatively compact open set whose distinct left <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-translates are disjoint. A finite cover of <span class="math" data-tex="\(X\)">\(X\)</span> by images of these sets gives a compact set <span class="math" data-tex="\(C\subset G\)">\(C\subset G\)</span> with <span class="math" data-tex="\(G=\Gamma C\)">\(G=\Gamma C\)</span>. If <span class="math" data-tex="\(x,y\in C\)">\(x,y\in C\)</span> and a summand in (1.3) is nonzero, then
+<span class="math math-display" data-tex="\[
+\gamma\in\Gamma\cap C\operatorname{supp}(f)C^{-1}.
+\tag{1.4}
+\]">\[
+\gamma\in\Gamma\cap C\operatorname{supp}(f)C^{-1}.
+\tag{1.4}
+\]</span>
+This is a finite set. Hence the sum is uniformly bounded on representatives in <span class="math" data-tex="\(C\)">\(C\)</span>, and locally it is a finite sum of continuous functions. Changing either representative only permutes its terms, so it descends to a continuous bounded kernel on <span class="math" data-tex="\(X\times X\)">\(X\times X\)</span>.</p>
+<p>For a continuous <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, substitute <span class="math" data-tex="\(y=xg\)">\(y=xg\)</span> in (1.2), then use (1.1):
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(f)\phi(x)
+&amp;=\int_G f(x^{-1}y)\phi(y)\,dy\\
+&amp;=\int_X\sum_{\gamma\in\Gamma}
+ f(x^{-1}\gamma y)\phi(y)\,dy.
+\end{aligned}
+\tag{1.5}
+\]">\[
+\begin{aligned}
+R(f)\phi(x)
+&amp;=\int_G f(x^{-1}y)\phi(y)\,dy\\
+&amp;=\int_X\sum_{\gamma\in\Gamma}
+ f(x^{-1}\gamma y)\phi(y)\,dy.
+\end{aligned}
+\tag{1.5}
+\]</span>
+The bounded operators extend this equality to <span class="math" data-tex="\(L^2(X)\)">\(L^2(X)\)</span>. For an orthonormal basis <span class="math" data-tex="\((e_j)\)">\((e_j)\)</span>, Parseval in the second variable gives
+<span class="math math-display" data-tex="\[
+\sum_j\|R(f)e_j\|_2^2
+=\int_{X\times X}|K_f(x,y)|^2\,dx\,dy&lt;\infty.
+\tag{1.6}
+\]">\[
+\sum_j\|R(f)e_j\|_2^2
+=\int_{X\times X}|K_f(x,y)|^2\,dx\,dy&lt;\infty.
+\tag{1.6}
+\]</span>
+This is the Hilbert–Schmidt property. Finite sums of product functions are dense in the product <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space. Their kernels have finite-rank operators, and Cauchy–Schwarz gives <span class="math" data-tex="\(\|T_K\|\leq\|K\|_2\)">\(\|T_K\|\leq\|K\|_2\)</span>. Thus <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span> is an operator-norm limit of finite-rank operators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 — centralizers.</strong> For <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>, put
+<span class="math math-display" data-tex="\[
+G_\gamma=\{g:g\gamma=\gamma g\},\qquad
+\Gamma_\gamma=\Gamma\cap G_\gamma.
+\tag{1.7}
+\]">\[
+G_\gamma=\{g:g\gamma=\gamma g\},\qquad
+\Gamma_\gamma=\Gamma\cap G_\gamma.
+\tag{1.7}
+\]</span>
+Then <span class="math" data-tex="\(\Gamma_\gamma\backslash G_\gamma\)">\(\Gamma_\gamma\backslash G_\gamma\)</span> is compact and <span class="math" data-tex="\(G_\gamma\)">\(G_\gamma\)</span> is unimodular.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(h=\delta c\)">\(h=\delta c\)</span> for <span class="math" data-tex="\(h\in G_\gamma\)">\(h\in G_\gamma\)</span>, <span class="math" data-tex="\(\delta\in\Gamma\)">\(\delta\in\Gamma\)</span>, <span class="math" data-tex="\(c\in C\)">\(c\in C\)</span>. Then <span class="math" data-tex="\(\delta^{-1}\gamma\delta=c\gamma c^{-1}\)">\(\delta^{-1}\gamma\delta=c\gamma c^{-1}\)</span> lies in the finite set <span class="math" data-tex="\(\Gamma\cap C\gamma C^{-1}\)">\(\Gamma\cap C\gamma C^{-1}\)</span>. Choose <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span> for each conjugate occurring in this set. Whenever <span class="math" data-tex="\(\delta^{-1}\gamma\delta=\delta_j^{-1}\gamma\delta_j\)">\(\delta^{-1}\gamma\delta=\delta_j^{-1}\gamma\delta_j\)</span>, one has <span class="math" data-tex="\(\delta\delta_j^{-1}\in\Gamma_\gamma\)">\(\delta\delta_j^{-1}\in\Gamma_\gamma\)</span>. Therefore the compact sets <span class="math" data-tex="\(G_\gamma\cap\delta_jC\)">\(G_\gamma\cap\delta_jC\)</span> map onto the centralizer quotient.</p>
+<p>We also verify the fact about unimodularity that this uses. If a locally compact group <span class="math" data-tex="\(H\)">\(H\)</span> has a discrete subgroup <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> with compact quotient, left Haar measure on small local sections glues to a positive Radon measure on <span class="math" data-tex="\(\Lambda\backslash H\)">\(\Lambda\backslash H\)</span>: transition maps are left translations by locally constant elements of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, so they preserve that measure. Right translation by <span class="math" data-tex="\(h\)">\(h\)</span> scales the glued measure by the same constant as it scales left Haar measure on <span class="math" data-tex="\(H\)">\(H\)</span>. The quotient has finite positive total measure, and right translation is a bijection of it. That constant must therefore be one for every <span class="math" data-tex="\(h\)">\(h\)</span>. Thus <span class="math" data-tex="\(H\)">\(H\)</span> is unimodular. Apply this to <span class="math" data-tex="\(G_\gamma\)">\(G_\gamma\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-why-the-representation-decomposes-discretely">2. Why the representation decomposes discretely</h2>
+<p>The compactness just proved is stronger than a bound on individual eigenfunctions: it forces the entire regular representation to be a sum of irreducibles. The following argument does not require the convolution operators to commute.</p>
+<p><strong>Theorem 2.1.</strong> There is a countable Hilbert direct sum
+<span class="math math-display" data-tex="\[
+L^2(X)=\widehat\bigoplus_\pi m(\pi)\mathcal H_\pi,
+\qquad m(\pi)&lt;\infty,
+\tag{2.1}
+\]">\[
+L^2(X)=\widehat\bigoplus_\pi m(\pi)\mathcal H_\pi,
+\qquad m(\pi)&lt;\infty,
+\tag{2.1}
+\]</span>
+where the <span class="math" data-tex="\(\pi\)">\(\pi\)</span> are inequivalent irreducible unitary representations of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Proof.</strong> Choose nonnegative <span class="math" data-tex="\(h_n\in C_c(G)\)">\(h_n\in C_c(G)\)</span> with integral one and support shrinking to the identity. Strong continuity gives <span class="math" data-tex="\(R(h_n)\to I\)">\(R(h_n)\to I\)</span> and <span class="math" data-tex="\(R(h_n)^*\to I\)">\(R(h_n)^*\to I\)</span> strongly. Hence
+<span class="math math-display" data-tex="\[
+T_n=R(h_n)^*R(h_n)\longrightarrow I
+\tag{2.2}
+\]">\[
+T_n=R(h_n)^*R(h_n)\longrightarrow I
+\tag{2.2}
+\]</span>
+strongly, and each <span class="math" data-tex="\(T_n\)">\(T_n\)</span> is positive and compact.</p>
+<p>Here is the elementary spectral fact we need. A nonzero positive compact operator <span class="math" data-tex="\(T\)">\(T\)</span> has a positive eigenvalue with a finite-dimensional eigenspace. Indeed, put <span class="math" data-tex="\(\lambda=\|T\|\)">\(\lambda=\|T\|\)</span>. Cauchy–Schwarz for the positive form <span class="math" data-tex="\(\langle Tv,w\rangle\)">\(\langle Tv,w\rangle\)</span> shows
+<span class="math" data-tex="\(\|Tv\|^2\leq\lambda\langle Tv,v\rangle\)">\(\|Tv\|^2\leq\lambda\langle Tv,v\rangle\)</span>, and also shows that the supremum of <span class="math" data-tex="\(\langle Tv,v\rangle\)">\(\langle Tv,v\rangle\)</span> over unit vectors is <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Choose unit <span class="math" data-tex="\(v_j\)">\(v_j\)</span> approaching this supremum. Then
+<span class="math math-display" data-tex="\[
+\|(T-\lambda I)v_j\|^2
+\leq\lambda\bigl(\lambda-\langle Tv_j,v_j\rangle\bigr)
+\longrightarrow0.
+\tag{2.3}
+\]">\[
+\|(T-\lambda I)v_j\|^2
+\leq\lambda\bigl(\lambda-\langle Tv_j,v_j\rangle\bigr)
+\longrightarrow0.
+\tag{2.3}
+\]</span>
+Compactness gives a convergent subsequence of <span class="math" data-tex="\(Tv_j\)">\(Tv_j\)</span>, so (2.3) gives a unit limit <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(Tv=\lambda v\)">\(Tv=\lambda v\)</span>. An infinite-dimensional positive-eigenvalue eigenspace would contain an orthonormal sequence whose images under <span class="math" data-tex="\(T\)">\(T\)</span> have no convergent subsequence.</p>
+<p>Now let <span class="math" data-tex="\(W\ne0\)">\(W\ne0\)</span> be a closed invariant subspace of <span class="math" data-tex="\(L^2(X)\)">\(L^2(X)\)</span>. Some <span class="math" data-tex="\(T_n|_W\)">\(T_n|_W\)</span> is nonzero. Let <span class="math" data-tex="\(E\subset W\)">\(E\subset W\)</span> be a nonzero eigenspace for a positive eigenvalue of this restriction. Among the nonzero spaces <span class="math" data-tex="\(E\cap W&#x27;\)">\(E\cap W&#x27;\)</span>, with <span class="math" data-tex="\(W&#x27;\subset W\)">\(W&#x27;\subset W\)</span> closed and invariant, choose one <span class="math" data-tex="\(M\)">\(M\)</span> of least dimension. Pick <span class="math" data-tex="\(0\ne v\in M\)">\(0\ne v\in M\)</span>, and let <span class="math" data-tex="\(P\)">\(P\)</span> be its closed cyclic invariant subspace. It lies in the <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> that supplied <span class="math" data-tex="\(M\)">\(M\)</span>; minimality implies <span class="math" data-tex="\(P\cap E=M\)">\(P\cap E=M\)</span>.</p>
+<p>For a closed invariant <span class="math" data-tex="\(Q\subset P\)">\(Q\subset P\)</span>, unitarity makes its orthogonal complement in <span class="math" data-tex="\(P\)">\(P\)</span> invariant. Both projections commute with group operators and hence with <span class="math" data-tex="\(T_n\)">\(T_n\)</span>. Thus
+<span class="math math-display" data-tex="\[
+M=(E\cap Q)\oplus(E\cap(P\ominus Q)).
+\tag{2.4}
+\]">\[
+M=(E\cap Q)\oplus(E\cap(P\ominus Q)).
+\tag{2.4}
+\]</span>
+Every nonzero summand has dimension at least <span class="math" data-tex="\(\dim M\)">\(\dim M\)</span>. Exactly one is nonzero, and it equals <span class="math" data-tex="\(M\)">\(M\)</span>. The cyclic vector <span class="math" data-tex="\(v\)">\(v\)</span> lies in that summand, so all of <span class="math" data-tex="\(P\)">\(P\)</span> lies in the corresponding invariant subspace. Hence <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span> or <span class="math" data-tex="\(Q=P\)">\(Q=P\)</span>. We have found an irreducible subrepresentation in every nonzero invariant closed subspace.</p>
+<p>A maximal orthogonal family of irreducible subrepresentations spans the whole space: a nonzero orthogonal complement would supply another. The space <span class="math" data-tex="\(L^2(X)\)">\(L^2(X)\)</span> is separable, since <span class="math" data-tex="\(X\)">\(X\)</span> is compact and second-countable with a Radon measure, so the family is countable. Finally, fix an irreducible constituent <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Some <span class="math" data-tex="\(T_n\)">\(T_n\)</span> has a positive eigenvalue on it. On every equivalent copy the same operator has that same eigenvalue. Infinitely many equivalent copies would contradict the finite-dimensional eigenspaces of the compact <span class="math" data-tex="\(T_n\)">\(T_n\)</span> on <span class="math" data-tex="\(L^2(X)\)">\(L^2(X)\)</span>. This proves finite multiplicity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-trace-class-and-the-trace-identity">3. Trace class and the trace identity</h2>
+<p>For clarity, an operator is trace class if it can be written
+<span class="math" data-tex="\(Tv=\sum_j\langle v,v_j\rangle u_j\)">\(Tv=\sum_j\langle v,v_j\rangle u_j\)</span> with <span class="math" data-tex="\(\sum_j\|u_j\|\|v_j\|&lt;\infty\)">\(\sum_j\|u_j\|\|v_j\|&lt;\infty\)</span>. On a Hilbert space this is the usual nuclear description of trace class. Its trace is <span class="math" data-tex="\(\sum_j\langle u_j,v_j\rangle\)">\(\sum_j\langle u_j,v_j\rangle\)</span>. Parseval and absolute convergence show that this also equals <span class="math" data-tex="\(\sum_k\langle Te_k,e_k\rangle\)">\(\sum_k\langle Te_k,e_k\rangle\)</span> in any orthonormal basis: the absolute double sum is bounded by <span class="math" data-tex="\(\sum_j\|u_j\|\|v_j\|\)">\(\sum_j\|u_j\|\|v_j\|\)</span>. In particular, the trace is independent of the description and of the basis.</p>
+<p><strong>Lemma 3.1 — a product of kernels.</strong> If <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are Hilbert–Schmidt integral operators with kernels <span class="math" data-tex="\(K_A,K_B\)">\(K_A,K_B\)</span>, then <span class="math" data-tex="\(AB\)">\(AB\)</span> is trace class and
+<span class="math math-display" data-tex="\[
+\operatorname{tr}(AB)
+=\int_{X\times X}K_A(x,y)K_B(y,x)\,dx\,dy.
+\tag{3.1}
+\]">\[
+\operatorname{tr}(AB)
+=\int_{X\times X}K_A(x,y)K_B(y,x)\,dx\,dy.
+\tag{3.1}
+\]</span></p>
+<p><strong>Proof.</strong> In an orthonormal basis,
+<span class="math math-display" data-tex="\[
+ABv=\sum_k\langle v,B^*e_k\rangle Ae_k,\qquad
+\sum_k\|Ae_k\|\|B^*e_k\|
+\leq\|A\|_{\rm HS}\|B\|_{\rm HS}.
+\tag{3.2}
+\]">\[
+ABv=\sum_k\langle v,B^*e_k\rangle Ae_k,\qquad
+\sum_k\|Ae_k\|\|B^*e_k\|
+\leq\|A\|_{\rm HS}\|B\|_{\rm HS}.
+\tag{3.2}
+\]</span>
+Thus the operator is trace class. Expanding its trace gives the sum of the products of the matrix entries of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>. The product orthonormal basis and Parseval identify this with (3.1); Cauchy–Schwarz bounds the integral of the absolute value by <span class="math" data-tex="\(\|K_A\|_2\|K_B\|_2\)">\(\|K_A\|_2\|K_B\|_2\)</span>. These bounds justify all limits and rearrangements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let
+<span class="math math-display" data-tex="\[
+\mathcal A(G)=\left\{\sum_{j=1}^r a_j*b_j:
+a_j,b_j\in C_c(G),\ r&lt;\infty\right\}.
+\tag{3.3}
+\]">\[
+\mathcal A(G)=\left\{\sum_{j=1}^r a_j*b_j:
+a_j,b_j\in C_c(G),\ r&lt;\infty\right\}.
+\tag{3.3}
+\]</span>
+For <span class="math" data-tex="\(f=a*b\)">\(f=a*b\)</span>, composition of the kernels in Theorem 1.1 gives
+<span class="math math-display" data-tex="\[
+K_f(x,z)=\int_XK_a(x,y)K_b(y,z)\,dy.
+\tag{3.4}
+\]">\[
+K_f(x,z)=\int_XK_a(x,y)K_b(y,z)\,dy.
+\tag{3.4}
+\]</span>
+One can either unfold the two lattice sums using (1.1), or use <span class="math" data-tex="\(R(a*b)=R(a)R(b)\)">\(R(a*b)=R(a)R(b)\)</span>. In the latter proof the two continuous kernels agree almost everywhere and hence everywhere, since the quotient measure has full support. Lemma 3.1 and (3.4), extended by linearity, give
+<span class="math math-display" data-tex="\[
+\operatorname{tr}R(f)=\int_XK_f(x,x)\,dx
+\qquad(f\in\mathcal A(G)).
+\tag{3.5}
+\]">\[
+\operatorname{tr}R(f)=\int_XK_f(x,x)\,dx
+\qquad(f\in\mathcal A(G)).
+\tag{3.5}
+\]</span></p>
+<p><strong>Lemma — the trace of a smooth kernel.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a compact smooth manifold with a positive smooth volume density. A smooth kernel <span class="math" data-tex="\(K(x,y)\)">\(K(x,y)\)</span> defines a trace-class operator on <span class="math" data-tex="\(L^2(M)\)">\(L^2(M)\)</span>, with
+<span class="math math-display" data-tex="\[
+\operatorname{tr}T_K=\int_MK(x,x)\,dx.
+\]">\[
+\operatorname{tr}T_K=\int_MK(x,x)\,dx.
+\]</span>
+This holds also for a finite disjoint union of such manifolds.</p>
+<p><strong>Proof.</strong> Choose a finite smooth partition of unity <span class="math" data-tex="\(\sum_i\alpha_i=1\)">\(\sum_i\alpha_i=1\)</span>, with each support inside a precompact coordinate cube <span class="math" data-tex="\(U_i\)">\(U_i\)</span> whose closure lies in a larger chart. Write the measure there as <span class="math" data-tex="\(\rho_i(u)\,du\)">\(\rho_i(u)\,du\)</span>, with <span class="math" data-tex="\(\rho_i&gt;0\)">\(\rho_i&gt;0\)</span> on that larger chart. Place the closure of each coordinate cube strictly inside a fundamental cube of a torus. The coordinate expression
+<span class="math math-display" data-tex="\[
+H_{ij}(u,v)=
+ \alpha_i(x)\alpha_j(y)K(x,y)
+ \sqrt{\rho_i(u)\rho_j(v)}
+\]">\[
+H_{ij}(u,v)=
+ \alpha_i(x)\alpha_j(y)K(x,y)
+ \sqrt{\rho_i(u)\rho_j(v)}
+\]</span>
+has compact support inside the product of the two cubes; extending it by zero gives a smooth function on the product torus. Let <span class="math" data-tex="\(e_a,e_b\)">\(e_a,e_b\)</span> be the normalized exponential bases on the two tori. Integration by parts with
+<span class="math" data-tex="\((1-\Delta_u-\Delta_v)^N\)">\((1-\Delta_u-\Delta_v)^N\)</span> gives its Fourier coefficients the bound
+<span class="math math-display" data-tex="\[
+H_{ij}(u,v)=\sum_{a,b}c_{ab}^{ij}e_a(u)\overline{e_b(v)},
+\qquad
+|c_{ab}^{ij}|
+ \le C_N(1+|a|^2+|b|^2)^{-N}.
+\tag{3.6}
+\]">\[
+H_{ij}(u,v)=\sum_{a,b}c_{ab}^{ij}e_a(u)\overline{e_b(v)},
+\qquad
+|c_{ab}^{ij}|
+ \le C_N(1+|a|^2+|b|^2)^{-N}.
+\tag{3.6}
+\]</span>
+For <span class="math" data-tex="\(N&gt;\dim M\)">\(N&gt;\dim M\)</span>, their absolute sum is finite. The Fourier series converges uniformly to <span class="math" data-tex="\(H_{ij}\)">\(H_{ij}\)</span>: the absolute convergence gives a continuous function with those coefficients, and product Fejér kernels show that a continuous function with all coefficients zero vanishes. Their approximation property follows by multiplying the one-dimensional nonnegative kernels of integral one and using their concentration at zero, as in the Fourier calculation in Lesson 17, Section 4.1.</p>
+<p>Push the exponentials back to <span class="math" data-tex="\(M\)">\(M\)</span> as
+<span class="math math-display" data-tex="\[
+u_a^i(x)=1_{U_i}(x)\frac{e_a(u(x))}{\sqrt{\rho_i(u(x))}},
+\qquad
+v_b^j(y)=1_{U_j}(y)\frac{e_b(v(y))}{\sqrt{\rho_j(v(y))}}.
+\]">\[
+u_a^i(x)=1_{U_i}(x)\frac{e_a(u(x))}{\sqrt{\rho_i(u(x))}},
+\qquad
+v_b^j(y)=1_{U_j}(y)\frac{e_b(v(y))}{\sqrt{\rho_j(v(y))}}.
+\]</span>
+Their <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-norms are bounded independently of <span class="math" data-tex="\(a,b\)">\(a,b\)</span>; integration cancels the density and leaves a subset of a torus of fixed volume. Dividing the uniform series by the two square roots gives the kernel <span class="math" data-tex="\(\alpha_i(x)\alpha_j(y)K(x,y)\)">\(\alpha_i(x)\alpha_j(y)K(x,y)\)</span> as
+<span class="math math-display" data-tex="\[
+\sum_{a,b}c_{ab}^{ij}u_a^i(x)\overline{v_b^j(y)}.
+\]">\[
+\sum_{a,b}c_{ab}^{ij}u_a^i(x)\overline{v_b^j(y)}.
+\]</span>
+Consequently its operator is the nuclear sum
+<span class="math" data-tex="\(\sum_{a,b}c_{ab}^{ij}\langle\,\cdot\,,v_b^j\rangle u_a^i\)">\(\sum_{a,b}c_{ab}^{ij}\langle\,\cdot\,,v_b^j\rangle u_a^i\)</span>, with
+<span class="math" data-tex="\(\sum_{a,b}|c_{ab}^{ij}|\|u_a^i\|_2\|v_b^j\|_2&lt;\infty\)">\(\sum_{a,b}|c_{ab}^{ij}|\|u_a^i\|_2\|v_b^j\|_2&lt;\infty\)</span>.
+The square roots are bounded below on the chosen chart closures, so the kernel series converges uniformly there and vanishes off the charts. Its diagonal integral equals
+<span class="math math-display" data-tex="\[
+\sum_{a,b}c_{ab}^{ij}\langle u_a^i,v_b^j\rangle,
+\]">\[
+\sum_{a,b}c_{ab}^{ij}\langle u_a^i,v_b^j\rangle,
+\]</span>
+which is precisely its trace. Both the nuclear bound and uniform convergence justify the interchange. Sum over the finitely many pairs of charts. Since <span class="math" data-tex="\(\sum_{i,j}\alpha_i(x)\alpha_j(y)=1\)">\(\sum_{i,j}\alpha_i(x)\alpha_j(y)=1\)</span>, this proves the lemma. A finite disjoint union uses the same proof on its finitely many component pairs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a Lie group and <span class="math" data-tex="\(f\in C_c^\infty(G)\)">\(f\in C_c^\infty(G)\)</span>, the kernel (1.3) is smooth: on compact local sections the sum has only finitely many terms, and this remains true after any fixed derivative. The quotient is a compact smooth manifold, with its positive smooth Haar density. The lemma therefore proves trace class and (3.5) for every smooth compact Lie test directly.</p>
+<p>For a totally disconnected group with a base of compact open subgroups, a compactly supported locally constant <span class="math" data-tex="\(f\)">\(f\)</span> is bi-invariant under some compact open <span class="math" data-tex="\(J\)">\(J\)</span>. To see it, cover its support by finitely many constancy neighborhoods and take a common subgroup on the left and right. Put <span class="math" data-tex="\(e_J=1_J/\operatorname{vol}(J)\)">\(e_J=1_J/\operatorname{vol}(J)\)</span>. Then <span class="math" data-tex="\(f=e_J*f*e_J\)">\(f=e_J*f*e_J\)</span>. The image of <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span> is in the <span class="math" data-tex="\(J\)">\(J\)</span>-fixed functions. Here <span class="math" data-tex="\(\Gamma\backslash G/J\)">\(\Gamma\backslash G/J\)</span> is discrete and compact, hence finite, so the operator has finite rank and <span class="math" data-tex="\(f=f*e_J\)">\(f=f*e_J\)</span> also belongs to <span class="math" data-tex="\(\mathcal A(G)\)">\(\mathcal A(G)\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(G=G_\infty\times G_f\)">\(G=G_\infty\times G_f\)</span>, with a Lie factor and a totally disconnected factor as above. Smooth adelic tests are finite sums of <span class="math" data-tex="\(f_\infty\otimes h_f\)">\(f_\infty\otimes h_f\)</span>. Choose one compact open <span class="math" data-tex="\(J\subset G_f\)">\(J\subset G_f\)</span> making all these tests bi-<span class="math" data-tex="\(J\)">\(J\)</span>-invariant, and let <span class="math" data-tex="\(P_J=R(e_J)\)">\(P_J=R(e_J)\)</span>. Then
+<span class="math math-display" data-tex="\[
+R(f)=P_JR(f)P_J.
+\]">\[
+R(f)=P_JR(f)P_J.
+\]</span>
+The quotient <span class="math" data-tex="\(X/J\)">\(X/J\)</span> is a finite disjoint union of compact smooth manifolds. Indeed the map to <span class="math" data-tex="\(\Gamma\backslash G_f/J\)">\(\Gamma\backslash G_f/J\)</span> has compact source and discrete target, so its image is finite. For a representative <span class="math" data-tex="\(y_i\in G_f\)">\(y_i\in G_f\)</span>, the corresponding component is
+<span class="math math-display" data-tex="\[
+\Gamma_i\backslash G_\infty,\qquad
+\Gamma_i=
+\{\gamma_\infty:\gamma\in\Gamma,\
+ \gamma_f\in y_iJy_i^{-1}\}.
+\]">\[
+\Gamma_i\backslash G_\infty,\qquad
+\Gamma_i=
+\{\gamma_\infty:\gamma\in\Gamma,\
+ \gamma_f\in y_iJy_i^{-1}\}.
+\]</span>
+The group <span class="math" data-tex="\(\Gamma_i\)">\(\Gamma_i\)</span> is discrete: over a compact real set the corresponding elements of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> lie in a compact product with <span class="math" data-tex="\(y_iJy_i^{-1}\)">\(y_iJy_i^{-1}\)</span>, and there are finitely many. The kernel of the real projection is finite by the same argument. The real image acts freely by left translation, so its quotient is a manifold; the finite kernel affects only the constant normalization of its positive Haar density. Compactness follows because each of these finitely many components is closed in <span class="math" data-tex="\(X/J\)">\(X/J\)</span>.</p>
+<p>The bi-<span class="math" data-tex="\(J\)">\(J\)</span>-invariance makes <span class="math" data-tex="\(K_f(x,y)\)">\(K_f(x,y)\)</span> descend in both variables to <span class="math" data-tex="\(X/J\)">\(X/J\)</span>, with a smooth kernel on each component pair. Give <span class="math" data-tex="\(X/J\)">\(X/J\)</span> the pushforward of <span class="math" data-tex="\(dx\)">\(dx\)</span>. Its <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-space identifies isometrically with the <span class="math" data-tex="\(J\)">\(J\)</span>-fixed subspace. The smooth-kernel lemma proves the trace identity on that subspace; the operator is zero on its orthogonal complement. Pushing forward the diagonal integral proves (3.5) on <span class="math" data-tex="\(X\)">\(X\)</span> itself. Thus all the smooth adelic tests have the required trace-class operator and diagonal trace, with no factorization theorem needed for this proof.</p>
+<p>For comparison, the general Dixmier–Malliavin theorem asserts that a smooth compact Lie test itself is a finite sum of smooth compact convolutions; see Getz–Hahn, Theorem 4.2.7. It yields another route through Lemma 3.1. The direct smooth-kernel argument above supplies the complete analytic bridge used here.</p>
+<p>Choose Haar measure <span class="math" data-tex="\(dg_\gamma\)">\(dg_\gamma\)</span> on each <span class="math" data-tex="\(G_\gamma\)">\(G_\gamma\)</span>, and let the measures on <span class="math" data-tex="\(\Gamma_\gamma\backslash G_\gamma\)">\(\Gamma_\gamma\backslash G_\gamma\)</span> and <span class="math" data-tex="\(G_\gamma\backslash G\)">\(G_\gamma\backslash G\)</span> be the compatible quotient measures. Define
+<span class="math math-display" data-tex="\[
+O_\gamma(f)=\int_{G_\gamma\backslash G}
+f(x^{-1}\gamma x)\,d\dot x.
+\tag{3.7}
+\]">\[
+O_\gamma(f)=\int_{G_\gamma\backslash G}
+f(x^{-1}\gamma x)\,d\dot x.
+\tag{3.7}
+\]</span>
+Rescaling <span class="math" data-tex="\(dg_\gamma\)">\(dg_\gamma\)</span> multiplies its lattice-quotient volume and divides its orbital integral by the same constant.</p>
+<p><strong>Theorem 3.2 — the compact-quotient trace formula.</strong> For <span class="math" data-tex="\(f\in\mathcal A(G)\)">\(f\in\mathcal A(G)\)</span>, and also for all smooth compact Lie and adelic tests in the settings just described,
+<span class="math math-display" data-tex="\[
+\boxed{
+\sum_\pi m(\pi)\operatorname{tr}\pi(f)
+=\sum_{[\gamma]_\Gamma}
+\operatorname{vol}(\Gamma_\gamma\backslash G_\gamma)
+O_\gamma(f).}
+\tag{3.8}
+\]">\[
+\boxed{
+\sum_\pi m(\pi)\operatorname{tr}\pi(f)
+=\sum_{[\gamma]_\Gamma}
+\operatorname{vol}(\Gamma_\gamma\backslash G_\gamma)
+O_\gamma(f).}
+\tag{3.8}
+\]</span>
+The spectral sum is absolutely convergent. Only finitely many geometric conjugacy classes have nonzero terms, and their orbital integrals converge absolutely.</p>
+<p><strong>Proof of the spectral side.</strong> In the decomposition (2.1), <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span> acts on every copy of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> as <span class="math" data-tex="\(\pi(f)\)">\(\pi(f)\)</span>. Take an orthonormal basis adapted to the countably many irreducible copies. The trace-class description preceding Lemma 3.1 bounds the sum of the absolute values of all diagonal entries. Each restriction is trace class, and grouping those entries by copies gives the left side of (3.8), absolutely.</p>
+<p><strong>Proof of the geometric side.</strong> From (1.4),
+<span class="math" data-tex="\(\int_X\sum_{\gamma\in\Gamma}|f(x^{-1}\gamma x)|\,dx&lt;\infty\)">\(\int_X\sum_{\gamma\in\Gamma}|f(x^{-1}\gamma x)|\,dx&lt;\infty\)</span>.
+Moreover any contributing conjugacy class meets the finite set in (1.4), so only finitely many classes occur. For a representative <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, its conjugates are <span class="math" data-tex="\(\delta^{-1}\gamma\delta\)">\(\delta^{-1}\gamma\delta\)</span>, indexed by <span class="math" data-tex="\(\Gamma_\gamma\backslash\Gamma\)">\(\Gamma_\gamma\backslash\Gamma\)</span>. Regroup and unfold:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_X\sum_{\delta\in\Gamma_\gamma\backslash\Gamma}
+ f(x^{-1}\delta^{-1}\gamma\delta x)\,dx
+&amp;=\int_{\Gamma_\gamma\backslash G}f(x^{-1}\gamma x)\,dx\\
+&amp;=\operatorname{vol}(\Gamma_\gamma\backslash G_\gamma)
+ \int_{G_\gamma\backslash G}f(x^{-1}\gamma x)\,d\dot x.
+\end{aligned}
+\tag{3.9}
+\]">\[
+\begin{aligned}
+\int_X\sum_{\delta\in\Gamma_\gamma\backslash\Gamma}
+ f(x^{-1}\delta^{-1}\gamma\delta x)\,dx
+&amp;=\int_{\Gamma_\gamma\backslash G}f(x^{-1}\gamma x)\,dx\\
+&amp;=\operatorname{vol}(\Gamma_\gamma\backslash G_\gamma)
+ \int_{G_\gamma\backslash G}f(x^{-1}\gamma x)\,d\dot x.
+\end{aligned}
+\tag{3.9}
+\]</span>
+Lemma 1.2 supplies unimodularity and the finite positive centralizer volume. The quotient-measure formula applies, and the inner integrand is unchanged by left multiplication by <span class="math" data-tex="\(G_\gamma\)">\(G_\gamma\)</span>. Applying the same argument to <span class="math" data-tex="\(|f|\)">\(|f|\)</span> proves absolute convergence. Summing (3.9) and using (3.5) proves (3.8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is central, <span class="math" data-tex="\(G_\gamma=G\)">\(G_\gamma=G\)</span>. With <span class="math" data-tex="\(dg_\gamma=dg\)">\(dg_\gamma=dg\)</span>, the space <span class="math" data-tex="\(G_\gamma\backslash G\)">\(G_\gamma\backslash G\)</span> is one point of mass one, so
+<span class="math math-display" data-tex="\[
+O_\gamma(f)=f(\gamma),\qquad
+\text{its geometric contribution}=\operatorname{vol}(X)f(\gamma).
+\tag{3.10}
+\]">\[
+O_\gamma(f)=f(\gamma),\qquad
+\text{its geometric contribution}=\operatorname{vol}(X)f(\gamma).
+\tag{3.10}
+\]</span>
+The volume belongs to the contribution, not to the normalized orbital integral itself.</p>
+<p><strong>Why continuity alone is insufficient.</strong> There is even a counterexample on the compact circle <span class="math" data-tex="\(G=\mathbb R/\mathbb Z\)">\(G=\mathbb R/\mathbb Z\)</span>, with <span class="math" data-tex="\(\Gamma=\{0\}\)">\(\Gamma=\{0\}\)</span>. Define polynomials
+<span class="math math-display" data-tex="\[
+P_0=Q_0=1,\qquad
+P_{k+1}=P_k+z^{2^k}Q_k,\qquad
+Q_{k+1}=P_k-z^{2^k}Q_k.
+\tag{3.11}
+\]">\[
+P_0=Q_0=1,\qquad
+P_{k+1}=P_k+z^{2^k}Q_k,\qquad
+Q_{k+1}=P_k-z^{2^k}Q_k.
+\tag{3.11}
+\]</span>
+Their coefficients are <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, in the <span class="math" data-tex="\(2^k\)">\(2^k\)</span> positions <span class="math" data-tex="\(0,\ldots,2^k-1\)">\(0,\ldots,2^k-1\)</span>. On <span class="math" data-tex="\(|z|=1\)">\(|z|=1\)</span>, induction gives
+<span class="math" data-tex="\(|P_k|^2+|Q_k|^2=2^{k+1}\)">\(|P_k|^2+|Q_k|^2=2^{k+1}\)</span>.
+Choose <span class="math" data-tex="\(N_1=0\)">\(N_1=0\)</span> and <span class="math" data-tex="\(N_{j+1}=N_j+2^{4j}\)">\(N_{j+1}=N_j+2^{4j}\)</span>. The series
+<span class="math math-display" data-tex="\[
+g(x)=\sum_{j\geq1}2^{-3j}e^{2\pi iN_jx}
+ P_{4j}(e^{2\pi ix})
+\tag{3.12}
+\]">\[
+g(x)=\sum_{j\geq1}2^{-3j}e^{2\pi iN_jx}
+ P_{4j}(e^{2\pi ix})
+\tag{3.12}
+\]</span>
+converges uniformly, since its summand has supremum at most <span class="math" data-tex="\(\sqrt2\,2^{-j}\)">\(\sqrt2\,2^{-j}\)</span>. It defines a continuous function. Its disjoint Fourier blocks have absolute coefficient sum <span class="math" data-tex="\(2^{4j}2^{-3j}=2^j\)">\(2^{4j}2^{-3j}=2^j\)</span>. Convolution is diagonal in the Fourier basis with these coefficients, up to reversing the frequency sign. Its absolute diagonal sum diverges, so it cannot be trace class. Theorem 1.1 still makes it Hilbert–Schmidt and compact. Smoothness is a sufficient condition for the trace formula; mere continuity does not guarantee it.</p>
+<h2 id="4-finite-groups-and-poisson-summation">4. Finite groups and Poisson summation</h2>
+<p>For a finite group use counting Haar measure. Take <span class="math" data-tex="\(\Gamma=G\)">\(\Gamma=G\)</span>, so <span class="math" data-tex="\(X\)">\(X\)</span> has one point of mass one and the only representation on it is the trivial one. Formula (3.8) becomes
+<span class="math math-display" data-tex="\[
+\sum_{g\in G}f(g)
+=\sum_{[\gamma]}
+ \sum_{G_\gamma x\in G_\gamma\backslash G}f(x^{-1}\gamma x).
+\tag{4.1}
+\]">\[
+\sum_{g\in G}f(g)
+=\sum_{[\gamma]}
+ \sum_{G_\gamma x\in G_\gamma\backslash G}f(x^{-1}\gamma x).
+\tag{4.1}
+\]</span>
+Here Haar measure on <span class="math" data-tex="\(G_\gamma\)">\(G_\gamma\)</span> is also counting measure. Then <span class="math" data-tex="\(\Gamma_\gamma\backslash G_\gamma\)">\(\Gamma_\gamma\backslash G_\gamma\)</span> is a point of mass one and <span class="math" data-tex="\(G_\gamma\backslash G\)">\(G_\gamma\backslash G\)</span> has counting measure on its cosets, by (1.1). For <span class="math" data-tex="\(f\equiv1\)">\(f\equiv1\)</span>,
+<span class="math math-display" data-tex="\[
+|G|=\sum_{[\gamma]}[G:G_\gamma].
+\tag{4.2}
+\]">\[
+|G|=\sum_{[\gamma]}[G:G_\gamma].
+\tag{4.2}
+\]</span>
+For <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, the centralizers of the identity, a transposition and a three-cycle have orders <span class="math" data-tex="\(6,2,3\)">\(6,2,3\)</span>, giving <span class="math" data-tex="\(6=1+3+2\)">\(6=1+3+2\)</span>. Alternatively take <span class="math" data-tex="\(\Gamma=\{1\}\)">\(\Gamma=\{1\}\)</span> and <span class="math" data-tex="\(f=\mathbf1_{\{1\}}\)">\(f=\mathbf1_{\{1\}}\)</span>. The regular trace is <span class="math" data-tex="\(6\)">\(6\)</span>. Its two one-dimensional constituents and its two copies of the two-dimensional constituent give <span class="math" data-tex="\(1+1+2\cdot2=6\)">\(1+1+2\cdot2=6\)</span>.</p>
+<p>Now take <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span>, <span class="math" data-tex="\(\Gamma=\mathbb Z\)">\(\Gamma=\mathbb Z\)</span>, Lebesgue measure, and
+<span class="math math-display" data-tex="\[
+\widehat f(\xi)=\int_{\mathbb R}f(t)e^{-2\pi i\xi t}\,dt.
+\tag{4.3}
+\]">\[
+\widehat f(\xi)=\int_{\mathbb R}f(t)e^{-2\pi i\xi t}\,dt.
+\tag{4.3}
+\]</span>
+The quotient has volume one. Its orthonormal Fourier basis is <span class="math" data-tex="\(e_n(x)=e^{2\pi inx}\)">\(e_n(x)=e^{2\pi inx}\)</span>, and
+<span class="math math-display" data-tex="\[
+R(f)e_n=\widehat f(-n)e_n,\qquad
+K_f(x,y)=\sum_{k\in\mathbb Z}f(y-x+k).
+\tag{4.4}
+\]">\[
+R(f)e_n=\widehat f(-n)e_n,\qquad
+K_f(x,y)=\sum_{k\in\mathbb Z}f(y-x+k).
+\tag{4.4}
+\]</span>
+Every lattice element is central, so the geometric side is <span class="math" data-tex="\(\sum_k f(k)\)">\(\sum_k f(k)\)</span>. For <span class="math" data-tex="\(f\in C_c^\infty(\mathbb R)\)">\(f\in C_c^\infty(\mathbb R)\)</span>, repeated integration by parts gives rapid decay of <span class="math" data-tex="\(\widehat f(n)\)">\(\widehat f(n)\)</span>; reindexing the absolutely convergent spectral sum yields
+<span class="math math-display" data-tex="\[
+\boxed{\sum_{k\in\mathbb Z}f(k)=\sum_{n\in\mathbb Z}\widehat f(n).}
+\tag{4.5}
+\]">\[
+\boxed{\sum_{k\in\mathbb Z}f(k)=\sum_{n\in\mathbb Z}\widehat f(n).}
+\tag{4.5}
+\]</span></p>
+<p>The formula also holds for every Schwartz function, even though the group-level test is no longer compactly supported. Indeed <span class="math" data-tex="\(p_f(t)=\sum_k f(t+k)\)">\(p_f(t)=\sum_k f(t+k)\)</span> and all its derivatives converge uniformly on the circle. Its Fourier coefficients are <span class="math" data-tex="\(\widehat f(n)\)">\(\widehat f(n)\)</span>, by absolute convergence and the change of variable <span class="math" data-tex="\(t+k\)">\(t+k\)</span>. Integration by parts makes their absolute sum finite. The resulting Fourier series equals <span class="math" data-tex="\(p_f\)">\(p_f\)</span>: the difference has every Fourier coefficient zero and hence is zero in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and both functions are continuous. Evaluating at zero proves (4.5). This simultaneously proves that the periodized convolution has trace class.</p>
+<p>For <span class="math" data-tex="\(f_a(t)=e^{-\pi at^2}\)">\(f_a(t)=e^{-\pi at^2}\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, its integral is <span class="math" data-tex="\(a^{-1/2}\)">\(a^{-1/2}\)</span>: square the integral and use polar coordinates in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>. Differentiating its Fourier transform and integrating <span class="math" data-tex="\(f_a&#x27;=-2\pi atf_a\)">\(f_a&#x27;=-2\pi atf_a\)</span> by parts gives
+<span class="math" data-tex="\(\widehat f_a&#x27;(\xi)=-(2\pi\xi/a)\widehat f_a(\xi)\)">\(\widehat f_a&#x27;(\xi)=-(2\pi\xi/a)\widehat f_a(\xi)\)</span>.
+The value at zero determines the solution of this differential equation. Thus
+<span class="math math-display" data-tex="\[
+\widehat f_a(\xi)=a^{-1/2}e^{-\pi\xi^2/a},\qquad
+\sum_{k\in\mathbb Z}e^{-\pi ak^2}
+=a^{-1/2}\sum_{n\in\mathbb Z}e^{-\pi n^2/a}.
+\tag{4.6}
+\]">\[
+\widehat f_a(\xi)=a^{-1/2}e^{-\pi\xi^2/a},\qquad
+\sum_{k\in\mathbb Z}e^{-\pi ak^2}
+=a^{-1/2}\sum_{n\in\mathbb Z}e^{-\pi n^2/a}.
+\tag{4.6}
+\]</span>
+The factor <span class="math" data-tex="\(a^{-1/2}\)">\(a^{-1/2}\)</span> records the Fourier and Haar normalizations.</p>
+<h2 id="5-quadratic-orders-inside-the-quaternion-trace">5. Quadratic orders inside the quaternion trace</h2>
+<p>Let <span class="math" data-tex="\(D=B_{p,\infty}\)">\(D=B_{p,\infty}\)</span> be the rational quaternion algebra ramified precisely at a prime <span class="math" data-tex="\(p\)">\(p\)</span> and at infinity, and let <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> be a maximal order. Choose right ideal-class representatives <span class="math" data-tex="\(I_1,\ldots,I_h\)">\(I_1,\ldots,I_h\)</span>, put <span class="math" data-tex="\(\mathcal O_i=\mathcal O_L(I_i)\)">\(\mathcal O_i=\mathcal O_L(I_i)\)</span>, and write
+<span class="math math-display" data-tex="\[
+w_i=|\mathcal O_i^\times/\{\pm1\}|,\qquad
+\operatorname{mass}(\mathcal O)=\sum_i\frac1{w_i}
+=\frac{p-1}{12}.
+\tag{5.1}
+\]">\[
+w_i=|\mathcal O_i^\times/\{\pm1\}|,\qquad
+\operatorname{mass}(\mathcal O)=\sum_i\frac1{w_i}
+=\frac{p-1}{12}.
+\tag{5.1}
+\]</span>
+The final equality is the maximal-order mass formula proved in Lesson 17, Theorem 4.3. We retain the row convention of Lesson 17: <span class="math" data-tex="\(B(n)_{ij}\)">\(B(n)_{ij}\)</span> counts subideals of <span class="math" data-tex="\(I_i\)">\(I_i\)</span> of relative reduced norm <span class="math" data-tex="\(n\)">\(n\)</span> in class <span class="math" data-tex="\(I_j\)">\(I_j\)</span>, and the matrix acts on column functions.</p>
+<p>Here the compact trace formula applies to
+<span class="math math-display" data-tex="\[
+G=D^\times(\mathbb A)/\mathbb A^\times,\qquad
+\Gamma=D^\times(\mathbb Q)/\mathbb Q^\times.
+\tag{5.2}
+\]">\[
+G=D^\times(\mathbb A)/\mathbb A^\times,\qquad
+\Gamma=D^\times(\mathbb Q)/\mathbb Q^\times.
+\tag{5.2}
+\]</span>
+Lesson 17, Theorem 3.2 and the proof of Proposition 3.4, give compactness of the quotient and discreteness of this rational subgroup. Let <span class="math" data-tex="\(K\)">\(K\)</span> be the image of <span class="math" data-tex="\(D^\times(\mathbb R)\widehat{\mathcal O}^{\times}\)">\(D^\times(\mathbb R)\widehat{\mathcal O}^{\times}\)</span>. Its real factor is compact after dividing by the real centre. Normalize <span class="math" data-tex="\(K\)">\(K\)</span> to have volume one. The double quotient <span class="math" data-tex="\(\Gamma\backslash G/K\)">\(\Gamma\backslash G/K\)</span> is the ideal-class set, and the stabilizer of its <span class="math" data-tex="\(i\)">\(i\)</span>-th component is <span class="math" data-tex="\(\mathcal O_i^\times/\{\pm1\}\)">\(\mathcal O_i^\times/\{\pm1\}\)</span>. Consequently that component has volume <span class="math" data-tex="\(1/w_i\)">\(1/w_i\)</span>, and <span class="math" data-tex="\(\operatorname{vol}(\Gamma\backslash G)=\operatorname{mass}(\mathcal O)\)">\(\operatorname{vol}(\Gamma\backslash G)=\operatorname{mass}(\mathcal O)\)</span>.</p>
+<p>The test <span class="math" data-tex="\(f_n\)">\(f_n\)</span> is the weight-zero Hecke test of relative norm <span class="math" data-tex="\(n\)">\(n\)</span>. At a finite prime <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, with <span class="math" data-tex="\(r=v_\ell(n)\)">\(r=v_\ell(n)\)</span>, take the right cosets represented by integral elements of reduced norm valuation <span class="math" data-tex="\(r\)">\(r\)</span>, and project them to <span class="math" data-tex="\(D_\ell^\times/\mathbb Q_\ell^\times\)">\(D_\ell^\times/\mathbb Q_\ell^\times\)</span>. Their characteristic functions, with compact-subgroup volume one, define its local factor. Cosets of the same norm valuation remain distinct under this projection: a scalar identifying two of them has valuation zero and is already absorbed by the compact subgroup. At a split prime the support includes the elementary-divisor distances <span class="math" data-tex="\(r,r-2,\ldots\)">\(r,r-2,\ldots\)</span>; thus this is the full-norm operator, not only its primitive part. At <span class="math" data-tex="\(p\)">\(p\)</span> there is one coset. The real factor is the constant function one on the compact projective real group.</p>
+<p>This smooth test is bi-invariant under <span class="math" data-tex="\(K\)">\(K\)</span>. Averaging on either side shows that <span class="math" data-tex="\(R(f_n)\)">\(R(f_n)\)</span> vanishes on the orthogonal complement of the finite-dimensional class-function space and acts on that space as <span class="math" data-tex="\(B(n)\)">\(B(n)\)</span>. Its full Hilbert-space trace is therefore the ordinary matrix trace. Lesson 17's norm-count identity gives
+<span class="math math-display" data-tex="\[
+\operatorname{tr}B(n)
+=\sum_i\frac{\#\{\alpha\in\mathcal O_i:
+ \operatorname{nrd}(\alpha)=n\}}{2w_i}.
+\tag{5.3}
+\]">\[
+\operatorname{tr}B(n)
+=\sum_i\frac{\#\{\alpha\in\mathcal O_i:
+ \operatorname{nrd}(\alpha)=n\}}{2w_i}.
+\tag{5.3}
+\]</span>
+Indeed a diagonal subideal is <span class="math" data-tex="\(\alpha I_i\)">\(\alpha I_i\)</span> with <span class="math" data-tex="\(\alpha\in\mathcal O_i\)">\(\alpha\in\mathcal O_i\)</span>, and its generators form an orbit of size <span class="math" data-tex="\(|\mathcal O_i^\times|=2w_i\)">\(|\mathcal O_i^\times|=2w_i\)</span>. This is also the diagonal-kernel computation of the geometric trace before regrouping it into rational conjugacy classes.</p>
+<p>The projective normalization explains the factor two. A rational projective element that contributes has a lift of norm <span class="math" data-tex="\(n\)">\(n\)</span>, unique up to <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. To see existence, the local norm conditions force every prime valuation of its positive rational norm divided by <span class="math" data-tex="\(n\)">\(n\)</span> to be even; that positive rational number is a rational square. Rescale the lift by its square root. The kernel's projective count is thus half the unprojectivized norm count in (5.3). The identity projective class contributes only when <span class="math" data-tex="\(n\)">\(n\)</span> is a square, and its contribution is the mass in (5.1).</p>
+<p>We now compute the noncentral terms without using Jacquet–Langlands transfer. For a quadratic order <span class="math" data-tex="\(S\)">\(S\)</span> in an imaginary quadratic field <span class="math" data-tex="\(K_S\)">\(K_S\)</span>, let
+<span class="math math-display" data-tex="\[
+h(S)=|\operatorname{Pic}(S)|,\qquad
+w(S)=|S^\times/\{\pm1\}|.
+\tag{5.4}
+\]">\[
+h(S)=|\operatorname{Pic}(S)|,\qquad
+w(S)=|S^\times/\{\pm1\}|.
+\tag{5.4}
+\]</span>
+An embedding <span class="math" data-tex="\(S\hookrightarrow\mathcal O_i\)">\(S\hookrightarrow\mathcal O_i\)</span> is <strong>optimal</strong> when its extension to the field satisfies <span class="math" data-tex="\(K_S\cap\mathcal O_i=S\)">\(K_S\cap\mathcal O_i=S\)</span>. Let <span class="math" data-tex="\(m(S,\mathcal O_i)\)">\(m(S,\mathcal O_i)\)</span> count optimal embeddings modulo conjugation by <span class="math" data-tex="\(\mathcal O_i^\times\)">\(\mathcal O_i^\times\)</span>. Embeddings are labelled maps: we do not identify a map with its composition with the quadratic field automorphism.</p>
+<p><strong>Lemma — quadratic fields that embed.</strong> Let <span class="math" data-tex="\(D/F\)">\(D/F\)</span> be a quaternion division algebra and <span class="math" data-tex="\(E/F\)">\(E/F\)</span> a quadratic field extension. Then <span class="math" data-tex="\(E\)">\(E\)</span> embeds in <span class="math" data-tex="\(D\)">\(D\)</span> if and only if <span class="math" data-tex="\(D\otimes_FE\)">\(D\otimes_FE\)</span> is split. Over a nonarchimedean local field every separable quadratic extension embeds. Over a number field a quadratic extension embeds exactly when it is a field at every ramified place of <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>Proof.</strong> The exact algebraic proof provider is Central simple algebras and the Brauer group, Theorem 4.2. Its finite splitting criterion says that a splitting extension of degree <span class="math" data-tex="\(s\)">\(s\)</span> embeds in an algebra similar to <span class="math" data-tex="\(D\)">\(D\)</span> of degree <span class="math" data-tex="\(s\)">\(s\)</span>. Here <span class="math" data-tex="\(s=\deg D=2\)">\(s=\deg D=2\)</span>, so that algebra is <span class="math" data-tex="\(D\)">\(D\)</span> itself: an algebra similar to <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(M_r(D)\)">\(M_r(D)\)</span>, of degree <span class="math" data-tex="\(2r\)">\(2r\)</span>. Conversely an embedded quadratic field is maximal and splits <span class="math" data-tex="\(D\)">\(D\)</span>, by Theorem 4.1 of that provider. These are complete algebraic proofs in the cited lesson and hold without a characteristic-zero assumption.</p>
+<p>For the arithmetic assertions, use the normalized local invariant and global injectivity of the Brauer localization map. Both are now proved in the written <a href="../NT-CFT/brauer-groups-of-local-and-global-fields.html">Brauer groups of local and global fields</a>, Theorems 24.2 and 24.4. The precise compatibility, proved there for finite local extensions in every characteristic, is
+<span class="math math-display" data-tex="\[
+\operatorname{inv}_E(\operatorname{res}_{E/F}A)
+ =[E:F]\operatorname{inv}_F(A)
+\]">\[
+\operatorname{inv}_E(\operatorname{res}_{E/F}A)
+ =[E:F]\operatorname{inv}_F(A)
+\]</span>
+for finite extensions of nonarchimedean local fields, with real invariant <span class="math" data-tex="\(1/2\)">\(1/2\)</span> becoming zero over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. A local division quaternion algebra has invariant <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so a quadratic field makes it zero and splits the algebra. This proves the local assertion using the algebraic criterion.</p>
+<p>At a split local quadratic algebra <span class="math" data-tex="\(F_v\times F_v\)">\(F_v\times F_v\)</span>, an embedding into a division algebra would give a nontrivial idempotent, which is impossible. This proves necessity in the global assertion. Conversely suppose every ramified place remains a field. At each place above it the degree-two restriction kills invariant <span class="math" data-tex="\(1/2\)">\(1/2\)</span>; at other places the original algebra was split. Thus <span class="math" data-tex="\(D\otimes_FE\)">\(D\otimes_FE\)</span> is split at every completion of <span class="math" data-tex="\(E\)">\(E\)</span>. For the cyclic quaternion algebra over the number field <span class="math" data-tex="\(E\)">\(E\)</span>, the injectivity part of the Brauer localization theorem gives zero global class. It is a degree-two central simple algebra and hence is <span class="math" data-tex="\(M_2(E)\)">\(M_2(E)\)</span>. The algebraic criterion gives the required global embedding. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.1 — distributing embeddings over all classes.</strong> If <span class="math" data-tex="\(m_\ell(S)\)">\(m_\ell(S)\)</span> is the analogous optimal-embedding count into <span class="math" data-tex="\(\mathcal O_\ell\)">\(\mathcal O_\ell\)</span>, modulo <span class="math" data-tex="\(\mathcal O_\ell^\times\)">\(\mathcal O_\ell^\times\)</span>, then
+<span class="math math-display" data-tex="\[
+\sum_i m(S,\mathcal O_i)=h(S)\prod_\ell m_\ell(S).
+\tag{5.5}
+\]">\[
+\sum_i m(S,\mathcal O_i)=h(S)\prod_\ell m_\ell(S).
+\tag{5.5}
+\]</span></p>
+<p><strong>Proof.</strong> If a local embedding fails, the left side is zero as well. Otherwise <span class="math" data-tex="\(K_S\)">\(K_S\)</span> embeds into <span class="math" data-tex="\(D\)">\(D\)</span>: it is imaginary at infinity and is a field at the ramified finite prime, so the quadratic-embedding lemma just proved applies, with its exact algebraic and class-field providers. Fix an embedding and regard <span class="math" data-tex="\(S\subset K_S\subset D\)">\(S\subset K_S\subset D\)</span>. Define
+<span class="math math-display" data-tex="\[
+E=\{b\in\widehat D^\times:
+ \widehat K_S\cap b\widehat{\mathcal O}b^{-1}=\widehat S\}.
+\tag{5.6}
+\]">\[
+E=\{b\in\widehat D^\times:
+ \widehat K_S\cap b\widehat{\mathcal O}b^{-1}=\widehat S\}.
+\tag{5.6}
+\]</span>
+The set <span class="math" data-tex="\(K_S^\times\backslash E/\widehat{\mathcal O}^\times\)">\(K_S^\times\backslash E/\widehat{\mathcal O}^\times\)</span> has two useful maps. First map it to <span class="math" data-tex="\(\widehat K_S^\times\backslash E/\widehat{\mathcal O}^\times\)">\(\widehat K_S^\times\backslash E/\widehat{\mathcal O}^\times\)</span>, the product of the local embedding-class sets. Skolem–Noether supplies this description by conjugation. Over any representative <span class="math" data-tex="\(b\)">\(b\)</span>, the stabilizer inside <span class="math" data-tex="\(\widehat K_S^\times\)">\(\widehat K_S^\times\)</span> is
+<span class="math" data-tex="\(\widehat K_S^\times\cap b\widehat{\mathcal O}^\times b^{-1}=\widehat S^\times\)">\(\widehat K_S^\times\cap b\widehat{\mathcal O}^\times b^{-1}=\widehat S^\times\)</span>.
+Hence every fiber is
+<span class="math math-display" data-tex="\[
+K_S^\times\backslash\widehat K_S^\times/\widehat S^\times
+\simeq\operatorname{Pic}(S).
+\tag{5.7}
+\]">\[
+K_S^\times\backslash\widehat K_S^\times/\widehat S^\times
+\simeq\operatorname{Pic}(S).
+\tag{5.7}
+\]</span>
+For completeness, this ideal dictionary sends an idele <span class="math" data-tex="\(a\)">\(a\)</span> to the locally principal fractional ideal <span class="math" data-tex="\(a\widehat S\cap K_S\)">\(a\widehat S\cap K_S\)</span>. Conversely the local generators of an invertible fractional ideal give an idele. Changing generators multiplies by <span class="math" data-tex="\(\widehat S^\times\)">\(\widehat S^\times\)</span>, and multiplying the ideal by a field element divides by <span class="math" data-tex="\(K_S^\times\)">\(K_S^\times\)</span>. The lattice local-global correspondence used here is the same one as in Lesson 17. Thus this map counts the set in (5.6) as <span class="math" data-tex="\(h(S)\prod_\ell m_\ell(S)\)">\(h(S)\prod_\ell m_\ell(S)\)</span>.</p>
+<p>Second map the set to <span class="math" data-tex="\(D^\times\backslash\widehat D^\times/\widehat{\mathcal O}^\times\)">\(D^\times\backslash\widehat D^\times/\widehat{\mathcal O}^\times\)</span>, the right ideal-class set. Choose <span class="math" data-tex="\(a_i\)">\(a_i\)</span> with <span class="math" data-tex="\(I_i=a_i\widehat{\mathcal O}\cap D\)">\(I_i=a_i\widehat{\mathcal O}\cap D\)</span>. In the fiber over <span class="math" data-tex="\(I_i\)">\(I_i\)</span>, write <span class="math" data-tex="\(b=\alpha a_i u\)">\(b=\alpha a_i u\)</span>, with <span class="math" data-tex="\(\alpha\in D^\times\)">\(\alpha\in D^\times\)</span> and <span class="math" data-tex="\(u\in\widehat{\mathcal O}^\times\)">\(u\in\widehat{\mathcal O}^\times\)</span>. Condition (5.6) becomes
+<span class="math" data-tex="\(K_S\cap\alpha\mathcal O_i\alpha^{-1}=S\)">\(K_S\cap\alpha\mathcal O_i\alpha^{-1}=S\)</span>.
+The map <span class="math" data-tex="\(s\mapsto\alpha^{-1}s\alpha\)">\(s\mapsto\alpha^{-1}s\alpha\)</span> is therefore an optimal embedding into <span class="math" data-tex="\(\mathcal O_i\)">\(\mathcal O_i\)</span>. Skolem–Noether shows that every optimal embedding occurs. The centralizer of the embedded field is its multiplicative group, so dividing on the left by <span class="math" data-tex="\(K_S^\times\)">\(K_S^\times\)</span> and on the right by <span class="math" data-tex="\(\mathcal O_i^\times\)">\(\mathcal O_i^\times\)</span> gives precisely its embedding-conjugacy classes. The size of this fiber is <span class="math" data-tex="\(m(S,\mathcal O_i)\)">\(m(S,\mathcal O_i)\)</span>. Counting the same set by its two maps proves (5.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the embedding identity that appears as Voight, Theorem 30.4.7. Skolem–Noether and the field-centralizer assertion are already proved in Central simple algebras and the Brauer group, Theorems 2.1 and 3.1.</p>
+<p>Write <span class="math" data-tex="\(S_d\)">\(S_d\)</span> for the order of negative discriminant <span class="math" data-tex="\(d\)">\(d\)</span>, and write <span class="math" data-tex="\(d=c_d^2D_d\)">\(d=c_d^2D_d\)</span>, where <span class="math" data-tex="\(D_d\)">\(D_d\)</span> is the fundamental field discriminant and <span class="math" data-tex="\(c_d\)">\(c_d\)</span> is the conductor. Define
+<span class="math math-display" data-tex="\[
+m_p(d)=
+\begin{cases}
+0,&amp;p\mid c_d,\\
+1-\left(\dfrac{d}{p}\right),&amp;p\nmid c_d.
+\end{cases}
+\tag{5.8}
+\]">\[
+m_p(d)=
+\begin{cases}
+0,&amp;p\mid c_d,\\
+1-\left(\dfrac{d}{p}\right),&amp;p\nmid c_d.
+\end{cases}
+\tag{5.8}
+\]</span>
+The symbol is Kronecker, including at <span class="math" data-tex="\(2\)">\(2\)</span>. In the second line it records whether the quadratic field at <span class="math" data-tex="\(p\)">\(p\)</span> is split, ramified or unramified quadratic: its values are <span class="math" data-tex="\(1,0,-1\)">\(1,0,-1\)</span>, respectively.</p>
+<p><strong>Lemma 5.2 — the local factors.</strong> The local embedding count is one at every split quaternion prime. At the division prime it is (5.8).</p>
+<p><strong>Proof at a split prime.</strong> Put <span class="math" data-tex="\(F=\mathbb Q_\ell\)">\(F=\mathbb Q_\ell\)</span>, <span class="math" data-tex="\(R=\mathbb Z_\ell\)">\(R=\mathbb Z_\ell\)</span>, and <span class="math" data-tex="\(K=K_S\otimes F\)">\(K=K_S\otimes F\)</span>, which may be a field or <span class="math" data-tex="\(F\times F\)">\(F\times F\)</span>. An embedding into <span class="math" data-tex="\(\operatorname{End}_R(R^2)\)">\(\operatorname{End}_R(R^2)\)</span> makes <span class="math" data-tex="\(R^2\)">\(R^2\)</span> a lattice <span class="math" data-tex="\(L\)">\(L\)</span> in the regular <span class="math" data-tex="\(K\)">\(K\)</span>-module. In the field case that module has dimension one over <span class="math" data-tex="\(K\)">\(K\)</span>; in the split case its two idempotents each have rank one. Optimality says that the multiplier ring <span class="math" data-tex="\(\{a\in K:aL\subset L\}\)">\(\{a\in K:aL\subset L\}\)</span> is <span class="math" data-tex="\(S\otimes R\)">\(S\otimes R\)</span>. Conjugacy by <span class="math" data-tex="\(\mathrm{GL}_2(R)\)">\(\mathrm{GL}_2(R)\)</span> is exactly homothety of these lattices by <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>.</p>
+<p>Every such lattice is homothetic to an order. In a field, choose <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span> with least field valuation. Then <span class="math" data-tex="\(L/x\subset\mathcal O_K\)">\(L/x\subset\mathcal O_K\)</span> contains <span class="math" data-tex="\(1\)">\(1\)</span> as a primitive lattice vector. In the split case choose <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span> attaining the least valuation of both coordinates. Such an <span class="math" data-tex="\(x\)">\(x\)</span> exists: modulo <span class="math" data-tex="\(\ell L\)">\(\ell L\)</span>, the failure to attain either minimum is a proper linear subspace, and two proper subspaces do not cover the two-dimensional vector space. Again <span class="math" data-tex="\(L/x\subset R\times R\)">\(L/x\subset R\times R\)</span> contains a primitive <span class="math" data-tex="\(1\)">\(1\)</span>. Extend <span class="math" data-tex="\(1\)">\(1\)</span> to a basis <span class="math" data-tex="\(1,u\)">\(1,u\)</span>. The element <span class="math" data-tex="\(u\)">\(u\)</span> is integral, so <span class="math" data-tex="\(u^2=\operatorname{Tr}(u)u-\operatorname{N}(u)\)">\(u^2=\operatorname{Tr}(u)u-\operatorname{N}(u)\)</span> lies in this lattice. Hence it is an order <span class="math" data-tex="\(T\)">\(T\)</span>. Its multiplier ring is itself, since a multiplier applied to <span class="math" data-tex="\(1\)">\(1\)</span> lies in <span class="math" data-tex="\(T\)">\(T\)</span>. Optimality forces <span class="math" data-tex="\(T=S\otimes R\)">\(T=S\otimes R\)</span>. Thus all the lattices are homothetic to this one order, which itself provides the regular-representation optimal embedding. The local count is one.</p>
+<p><strong>Proof at the division prime.</strong> The split quadratic algebra cannot embed in a division algebra. Every quadratic field <span class="math" data-tex="\(K/F\)">\(K/F\)</span> does embed, by the quadratic-embedding lemma above and its exact algebraic and local Brauer-invariant inputs. The unique quaternion maximal order is its valuation ring. For every embedding, its intersection with <span class="math" data-tex="\(K\)">\(K\)</span> is the full ring of integers <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. Thus a nonmaximal quadratic order has no optimal embedding. If the order is maximal, Skolem–Noether identifies its conjugacy classes with
+<span class="math math-display" data-tex="\[
+K^\times\backslash D_p^\times/\mathcal O_p^\times.
+\tag{5.9}
+\]">\[
+K^\times\backslash D_p^\times/\mathcal O_p^\times.
+\tag{5.9}
+\]</span>
+The valuation <span class="math" data-tex="\(v_D= v_p\circ\operatorname{nrd}\)">\(v_D= v_p\circ\operatorname{nrd}\)</span> maps <span class="math" data-tex="\(D_p^\times/\mathcal O_p^\times\)">\(D_p^\times/\mathcal O_p^\times\)</span> to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. On <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>, the reduced norm is the field norm, so its image is <span class="math" data-tex="\(f(K/F)\mathbb Z\)">\(f(K/F)\mathbb Z\)</span>, where <span class="math" data-tex="\(f(K/F)\)">\(f(K/F)\)</span> is the residue degree. Consequently (5.9) has two elements for an unramified quadratic field and one for a ramified field. These are exactly (5.8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All prime-local orders are maximal away from their conductors, so the product in (5.5) is <span class="math" data-tex="\(m_p(d)\)">\(m_p(d)\)</span>. The two local computations agree with Voight, Proposition 30.5.3, including its nonmaximal-order exclusion.</p>
+<p><strong>Theorem 5.3 — Eichler's trace formula in the full-norm convention.</strong> For every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+\boxed{
+\operatorname{tr}B(n)
+=\frac{p-1}{12}\,\mathbf1_{n\text{ is a square}}
++\frac12\sum_{\substack{t\in\mathbb Z\\t^2&lt;4n}}
+ \ \sum_{\substack{d&lt;0\text{ an order discriminant}\\df^2=t^2-4n, f\geq1}}
+ \frac{h(d)}{w(d)}m_p(d).}
+\tag{5.10}
+\]">\[
+\boxed{
+\operatorname{tr}B(n)
+=\frac{p-1}{12}\,\mathbf1_{n\text{ is a square}}
++\frac12\sum_{\substack{t\in\mathbb Z\\t^2&lt;4n}}
+ \ \sum_{\substack{d&lt;0\text{ an order discriminant}\\df^2=t^2-4n, f\geq1}}
+ \frac{h(d)}{w(d)}m_p(d).}
+\tag{5.10}
+\]</span>
+Here <span class="math" data-tex="\(h(d)=h(S_d)\)">\(h(d)=h(S_d)\)</span>, <span class="math" data-tex="\(w(d)=w(S_d)\)">\(w(d)=w(S_d)\)</span>, and <span class="math" data-tex="\(f\)">\(f\)</span> is the index of <span class="math" data-tex="\(\mathbb Z[\alpha]\)">\(\mathbb Z[\alpha]\)</span> in an overorder; it is distinct from the conductor <span class="math" data-tex="\(c_d\)">\(c_d\)</span> in (5.8).</p>
+<p><strong>Proof.</strong> Start with the geometric norm count (5.3). Scalar quaternions of norm <span class="math" data-tex="\(n\)">\(n\)</span> occur precisely for square <span class="math" data-tex="\(n\)">\(n\)</span>, and are <span class="math" data-tex="\(\pm\sqrt n\)">\(\pm\sqrt n\)</span>. Their contribution is <span class="math" data-tex="\(\sum_i2/(2w_i)\)">\(\sum_i2/(2w_i)\)</span>, the first term of (5.10).</p>
+<p>For nonscalar <span class="math" data-tex="\(\alpha\in\mathcal O_i\)">\(\alpha\in\mathcal O_i\)</span>, let <span class="math" data-tex="\(t=\operatorname{trd}(\alpha)\)">\(t=\operatorname{trd}(\alpha)\)</span>. Definiteness gives <span class="math" data-tex="\(t^2&lt;4n\)">\(t^2&lt;4n\)</span>: the imaginary part has positive norm, so equality would force a scalar. The field <span class="math" data-tex="\(\mathbb Q[\alpha]\)">\(\mathbb Q[\alpha]\)</span> is imaginary quadratic, and <span class="math" data-tex="\(\mathbb Z[\alpha]\)">\(\mathbb Z[\alpha]\)</span> has discriminant <span class="math" data-tex="\(t^2-4n\)">\(t^2-4n\)</span>. Its intersection with <span class="math" data-tex="\(\mathcal O_i\)">\(\mathcal O_i\)</span> is a unique order <span class="math" data-tex="\(S\)">\(S\)</span> into which <span class="math" data-tex="\(\mathbb Z[\alpha]\)">\(\mathbb Z[\alpha]\)</span> embeds optimally after taking this overorder. If <span class="math" data-tex="\([S:\mathbb Z[\alpha]]=f\)">\([S:\mathbb Z[\alpha]]=f\)</span>, change of basis in the trace pairing gives <span class="math" data-tex="\(\operatorname{disc}(S)f^2=t^2-4n\)">\(\operatorname{disc}(S)f^2=t^2-4n\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(t\)">\(t\)</span> and such an overorder <span class="math" data-tex="\(S_d\)">\(S_d\)</span>, with its distinguished root of <span class="math" data-tex="\(x^2-tx+n\)">\(x^2-tx+n\)</span>. Its optimal embeddings correspond exactly to these <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>'s. The stabilizer of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> under <span class="math" data-tex="\(\mathcal O_i^\times\)">\(\mathcal O_i^\times\)</span>-conjugation is <span class="math" data-tex="\(S_d^\times\)">\(S_d^\times\)</span>, because its field is its centralizer. Each conjugacy orbit has size <span class="math" data-tex="\(2w_i/(2w(d))\)">\(2w_i/(2w(d))\)</span>. Thus the contribution of one orbit to (5.3) is <span class="math" data-tex="\(1/(2w(d))\)">\(1/(2w(d))\)</span>, and the whole contribution for <span class="math" data-tex="\(d,t\)">\(d,t\)</span> is
+<span class="math math-display" data-tex="\[
+\frac1{2w(d)}\sum_i m(S_d,\mathcal O_i)
+=\frac{h(d)}{2w(d)}m_p(d)
+\tag{5.11}
+\]">\[
+\frac1{2w(d)}\sum_i m(S_d,\mathcal O_i)
+=\frac{h(d)}{2w(d)}m_p(d)
+\tag{5.11}
+\]</span>
+by Lemmas 5.1–5.2. Every nonscalar element has exactly one <span class="math" data-tex="\(t\)">\(t\)</span> and one optimal overorder, so summing proves (5.10). The sum is finite because <span class="math" data-tex="\(|t|&lt;2\sqrt n\)">\(|t|&lt;2\sqrt n\)</span> and only finitely many square divisors of each nonzero discriminant occur. This derivation is the arithmetic evaluation of the geometric side of Theorem 3.2; (5.3) shows its equality to the spectral matrix trace. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-discriminant-eleven-computation">6. The discriminant-eleven computation</h2>
+<p>Lesson 17, Section 5.2, computed
+<span class="math math-display" data-tex="\[
+B(2)=\begin{pmatrix}1&amp;2\\3&amp;0\end{pmatrix},\qquad
+w_1=2,\quad w_2=3.
+\tag{6.1}
+\]">\[
+B(2)=\begin{pmatrix}1&amp;2\\3&amp;0\end{pmatrix},\qquad
+w_1=2,\quad w_2=3.
+\tag{6.1}
+\]</span>
+Its constant eigenvector <span class="math" data-tex="\((1,1)^t\)">\((1,1)^t\)</span> has eigenvalue <span class="math" data-tex="\(3\)">\(3\)</span>, and its weighted-mean-zero eigenvector <span class="math" data-tex="\((2,-3)^t\)">\((2,-3)^t\)</span> has eigenvalue <span class="math" data-tex="\(-2\)">\(-2\)</span>. Thus the spectral side is <span class="math" data-tex="\(3-2=1\)">\(3-2=1\)</span>, also the sum of the matrix's diagonal entries.</p>
+<p>For the geometric side, <span class="math" data-tex="\(n=2\)">\(n=2\)</span> is not a square, so no scalar term occurs. The possible traces are <span class="math" data-tex="\(-2,-1,0,1,2\)">\(-2,-1,0,1,2\)</span>. Their discriminants are <span class="math" data-tex="\(-4,-7,-8,-7,-4\)">\(-4,-7,-8,-7,-4\)</span>, all fundamental, so there are no proper overorders to add. The relevant class numbers are
+<span class="math math-display" data-tex="\[
+h(-4)=h(-7)=h(-8)=1,\qquad
+w(-4)=2,\quad w(-7)=w(-8)=1.
+\tag{6.2}
+\]">\[
+h(-4)=h(-7)=h(-8)=1,\qquad
+w(-4)=2,\quad w(-7)=w(-8)=1.
+\tag{6.2}
+\]</span>
+Here is an explicit class-number check. Use the written ideal–form correspondence and reduction proofs in the earlier quadratic-field lesson cited in Section 8, Theorems 10.1–10.2. A reduced positive primitive form <span class="math" data-tex="\((a,b,c)\)">\((a,b,c)\)</span> satisfies <span class="math" data-tex="\(|b|\leq a\leq c\)">\(|b|\leq a\leq c\)</span>, with <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span> on a boundary. Its discriminant <span class="math" data-tex="\(d=b^2-4ac\)">\(d=b^2-4ac\)</span> gives <span class="math" data-tex="\(|d|\geq3a^2\)">\(|d|\geq3a^2\)</span>. For these three discriminants, this forces <span class="math" data-tex="\(a=1\)">\(a=1\)</span>. The unique reduced forms are respectively <span class="math" data-tex="\((1,0,1)\)">\((1,0,1)\)</span>, <span class="math" data-tex="\((1,1,2)\)">\((1,1,2)\)</span> and <span class="math" data-tex="\((1,0,2)\)">\((1,0,2)\)</span>. The unit counts follow from the integral trace of a unit of norm one. A nonreal such unit has trace <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>, so extra units generate the orders of discriminant <span class="math" data-tex="\(-3\)">\(-3\)</span> or <span class="math" data-tex="\(-4\)">\(-4\)</span>. Only <span class="math" data-tex="\(-4\)">\(-4\)</span> occurs here, with units <span class="math" data-tex="\(\{\pm1,\pm i\}\)">\(\{\pm1,\pm i\}\)</span>.</p>
+<p>The nonzero squares modulo <span class="math" data-tex="\(11\)">\(11\)</span> are <span class="math" data-tex="\(1,3,4,5,9\)">\(1,3,4,5,9\)</span>. Therefore <span class="math" data-tex="\((-8/11)=1\)">\((-8/11)=1\)</span>, <span class="math" data-tex="\((-7/11)=1\)">\((-7/11)=1\)</span> and <span class="math" data-tex="\((-4/11)=-1\)">\((-4/11)=-1\)</span>. Substitution in (5.10) gives:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Trace <span class="math" data-tex="\(t\)">\(t\)</span></th>
+<th style="text-align:right">Discriminant <span class="math" data-tex="\(d\)">\(d\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(h(d)\)">\(h(d)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(w(d)\)">\(w(d)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(m_{11}(d)\)">\(m_{11}(d)\)</span></th>
+<th style="text-align:right">Contribution <span class="math" data-tex="\(h(d)m_{11}(d)/(2w(d))\)">\(h(d)m_{11}(d)/(2w(d))\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-4\)">\(-4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1/2\)">\(1/2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-7\)">\(-7\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-8\)">\(-8\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-7\)">\(-7\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-4\)">\(-4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1/2\)">\(1/2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The geometric trace is <span class="math" data-tex="\(1/2+1/2=1\)">\(1/2+1/2=1\)</span>, in agreement with (6.1). The vanishing rows have a precise cause: those quadratic fields split at <span class="math" data-tex="\(11\)">\(11\)</span> and cannot embed into the local division algebra. No modular-form eigenvalue was used to obtain their contribution.</p>
+<p>As a second normalization check, take <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Then <span class="math" data-tex="\(B(1)=I\)">\(B(1)=I\)</span>, the scalar contribution is the mass, and <span class="math" data-tex="\(t=0,\pm1\)">\(t=0,\pm1\)</span> give <span class="math" data-tex="\(d=-4,-3,-3\)">\(d=-4,-3,-3\)</span>. Since <span class="math" data-tex="\(h(-3)=1\)">\(h(-3)=1\)</span>, <span class="math" data-tex="\(w(-3)=3\)">\(w(-3)=3\)</span>, the formula becomes
+<span class="math math-display" data-tex="\[
+h=\frac{p-1}{12}
++\frac14\left(1-\left(\frac{-4}{p}\right)\right)
++\frac13\left(1-\left(\frac{-3}{p}\right)\right).
+\tag{6.3}
+\]">\[
+h=\frac{p-1}{12}
++\frac14\left(1-\left(\frac{-4}{p}\right)\right)
++\frac13\left(1-\left(\frac{-3}{p}\right)\right).
+\tag{6.3}
+\]</span>
+For <span class="math" data-tex="\(p=11\)">\(p=11\)</span>, both symbols are <span class="math" data-tex="\(-1\)">\(-1\)</span>, so <span class="math" data-tex="\(h=5/6+1/2+2/3=2\)">\(h=5/6+1/2+2/3=2\)</span>. The reduced-form check for <span class="math" data-tex="\(-3\)">\(-3\)</span> has the sole form <span class="math" data-tex="\((1,1,1)\)">\((1,1,1)\)</span>. Formula (6.3) is the maximal-order class-number formula already used in Lesson 17, recovered here from the trace rather than assumed in its derivation.</p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<p><strong>Exercise 7.1 — class equation (easy).</strong> Derive the class equation of a finite group from the compact trace formula. Track all measures.</p>
+<p><strong>Solution 7.1.</strong> Take counting Haar measure on <span class="math" data-tex="\(G\)">\(G\)</span> and its centralizers, counting lattice measures, and <span class="math" data-tex="\(\Gamma=G\)">\(\Gamma=G\)</span>. The quotient <span class="math" data-tex="\(X\)">\(X\)</span> is one point of mass one, and <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span> on it is multiplication by <span class="math" data-tex="\(\sum_{g\in G}f(g)\)">\(\sum_{g\in G}f(g)\)</span>. For each <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, the quotient <span class="math" data-tex="\(\Gamma_\gamma\backslash G_\gamma\)">\(\Gamma_\gamma\backslash G_\gamma\)</span> is one point of mass one. The other quotient <span class="math" data-tex="\(G_\gamma\backslash G\)">\(G_\gamma\backslash G\)</span> has one unit of measure per coset, as its unfolding sums exactly once over every element of <span class="math" data-tex="\(G\)">\(G\)</span>. For <span class="math" data-tex="\(f=1\)">\(f=1\)</span>, its orbital integral is <span class="math" data-tex="\([G:G_\gamma]\)">\([G:G_\gamma]\)</span>. The trace identity therefore gives <span class="math" data-tex="\(|G|=\sum_{[\gamma]}[G:G_\gamma]\)">\(|G|=\sum_{[\gamma]}[G:G_\gamma]\)</span>. If the centralizer Haar measure is instead normalized to total mass one, the centralizer lattice-quotient volume becomes <span class="math" data-tex="\(1/|G_\gamma|\)">\(1/|G_\gamma|\)</span> and the orbital integral becomes <span class="math" data-tex="\(|G_\gamma|[G:G_\gamma]\)">\(|G_\gamma|[G:G_\gamma]\)</span>; their product is unchanged. This also checks the rescaling rule after (3.7).</p>
+<p><strong>Exercise 7.2 — Poisson summation (medium).</strong> Derive Poisson summation for Schwartz functions from the trace on <span class="math" data-tex="\(\mathbb Z\backslash\mathbb R\)">\(\mathbb Z\backslash\mathbb R\)</span>.</p>
+<p><strong>Solution 7.2.</strong> Use Lebesgue measure, counting measure on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and the Fourier transform (4.3). Direct integration gives <span class="math" data-tex="\(R(f)e_n=\widehat f(-n)e_n\)">\(R(f)e_n=\widehat f(-n)e_n\)</span>. The periodization <span class="math" data-tex="\(p_f(t)=\sum_kf(t+k)\)">\(p_f(t)=\sum_kf(t+k)\)</span> is smooth, with uniformly convergent differentiated series; for every derivative this follows from Schwartz decay, uniformly for <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>. Unfolding computes its <span class="math" data-tex="\(n\)">\(n\)</span>-th Fourier coefficient as <span class="math" data-tex="\(\widehat f(n)\)">\(\widehat f(n)\)</span>. Integration by parts twice, and more often if desired, gives an absolutely summable coefficient sequence. Hence convolution with <span class="math" data-tex="\(p_f\)">\(p_f\)</span> is the sum of its rank-one Fourier projections weighted by <span class="math" data-tex="\(\widehat f(-n)\)">\(\widehat f(-n)\)</span>, a trace-class description. Its trace is <span class="math" data-tex="\(\sum_n\widehat f(-n)\)">\(\sum_n\widehat f(-n)\)</span>.</p>
+<p>The geometric kernel is <span class="math" data-tex="\(K(x,y)=p_f(y-x)\)">\(K(x,y)=p_f(y-x)\)</span>, whose diagonal is the constant <span class="math" data-tex="\(p_f(0)=\sum_kf(k)\)">\(p_f(0)=\sum_kf(k)\)</span>. Its Fourier series converges absolutely to <span class="math" data-tex="\(p_f\)">\(p_f\)</span>, since it has these coefficients and the Fourier basis is complete in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Thus its diagonal integral equals the same trace. Equating the two expressions and replacing <span class="math" data-tex="\(n\)">\(n\)</span> by <span class="math" data-tex="\(-n\)">\(-n\)</span> proves (4.5), with absolute convergence on both sides. For compactly supported smooth <span class="math" data-tex="\(f\)">\(f\)</span>, this is exactly Theorem 3.2; the argument supplies the full Schwartz extension without assuming a compact-support theorem for a noncompactly supported test.</p>
+<p><strong>Exercise 7.3 — central contribution (medium).</strong> For a central <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>, determine the orbital integral and its contribution to the trace formula.</p>
+<p><strong>Solution 7.3.</strong> Since <span class="math" data-tex="\(G_\gamma=G\)">\(G_\gamma=G\)</span>, choose <span class="math" data-tex="\(dg_\gamma=dg\)">\(dg_\gamma=dg\)</span>. The quotient <span class="math" data-tex="\(G_\gamma\backslash G\)">\(G_\gamma\backslash G\)</span> has one point of mass one, and conjugation fixes <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Therefore <span class="math" data-tex="\(O_\gamma(f)=f(\gamma)\)">\(O_\gamma(f)=f(\gamma)\)</span>. Also <span class="math" data-tex="\(\Gamma_\gamma=\Gamma\)">\(\Gamma_\gamma=\Gamma\)</span>, so its geometric term is <span class="math" data-tex="\(f(\gamma)\operatorname{vol}(\Gamma\backslash G)\)">\(f(\gamma)\operatorname{vol}(\Gamma\backslash G)\)</span>. These assertions distinguish the two quantities. With <span class="math" data-tex="\(dg_\gamma=c\,dg\)">\(dg_\gamma=c\,dg\)</span>, the orbital integral is <span class="math" data-tex="\(f(\gamma)/c\)">\(f(\gamma)/c\)</span> and the quotient volume is <span class="math" data-tex="\(c\operatorname{vol}(X)\)">\(c\operatorname{vol}(X)\)</span>; their product is still the same term. Thus a formula calling the product the orbital integral has absorbed the volume into that name and must state that convention explicitly.</p>
+<p><strong>Exercise 7.4 — Eichler's formula (hard).</strong> Derive the trace formula for the full-norm Brandt matrix <span class="math" data-tex="\(B(n)\)">\(B(n)\)</span> of a maximal order in <span class="math" data-tex="\(B_{p,\infty}\)">\(B_{p,\infty}\)</span>, including the scalar term, unit weights, optimal overorders and local obstruction at <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Solution 7.4.</strong> Apply Theorem 3.2 to the projective adelic group (5.2), with <span class="math" data-tex="\(K\)">\(K\)</span> of volume one and the bi-<span class="math" data-tex="\(K\)">\(K\)</span> norm test <span class="math" data-tex="\(f_n\)">\(f_n\)</span>. Its image is the class-function space, and its action there is <span class="math" data-tex="\(B(n)\)">\(B(n)\)</span>. On component <span class="math" data-tex="\(i\)">\(i\)</span>, a diagonal ideal is <span class="math" data-tex="\(\alpha I_i\)">\(\alpha I_i\)</span> with <span class="math" data-tex="\(\operatorname{nrd}(\alpha)=n\)">\(\operatorname{nrd}(\alpha)=n\)</span>. Two generators give the same ideal exactly when they differ by a unit of the left order, so the trace is (5.3). The projective kernel counts the two lifts <span class="math" data-tex="\(\pm\alpha\)">\(\pm\alpha\)</span> once, while the component has volume <span class="math" data-tex="\(1/w_i\)">\(1/w_i\)</span>; this gives the same factor <span class="math" data-tex="\(1/(2w_i)\)">\(1/(2w_i)\)</span>.</p>
+<p>If <span class="math" data-tex="\(n\)">\(n\)</span> is a square, its two scalar lifts contribute <span class="math" data-tex="\(1/w_i\)">\(1/w_i\)</span> in each component; otherwise no scalar lift exists. Summing gives <span class="math" data-tex="\((p-1)/12\)">\((p-1)/12\)</span> times the square indicator by (5.1).</p>
+<p>For every remaining lift set <span class="math" data-tex="\(t=\operatorname{trd}(\alpha)\)">\(t=\operatorname{trd}(\alpha)\)</span>. Its negative discriminant is <span class="math" data-tex="\(\Delta=t^2-4n\)">\(\Delta=t^2-4n\)</span>. The unique optimal overorder <span class="math" data-tex="\(S=\mathbb Q[\alpha]\cap\mathcal O_i\)">\(S=\mathbb Q[\alpha]\cap\mathcal O_i\)</span> has discriminant <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(df^2=\Delta\)">\(df^2=\Delta\)</span>. Fixing the abstract root of its polynomial identifies such lifts with labelled optimal embeddings of <span class="math" data-tex="\(S_d\)">\(S_d\)</span>. Its unit centralizer has <span class="math" data-tex="\(2w(d)\)">\(2w(d)\)</span> elements, so an <span class="math" data-tex="\(\mathcal O_i^\times\)">\(\mathcal O_i^\times\)</span>-conjugacy orbit has <span class="math" data-tex="\(2w_i/(2w(d))\)">\(2w_i/(2w(d))\)</span> elements. Dividing by <span class="math" data-tex="\(2w_i\)">\(2w_i\)</span> contributes <span class="math" data-tex="\(1/(2w(d))\)">\(1/(2w(d))\)</span> per embedding class.</p>
+<p>To sum embedding classes over all <span class="math" data-tex="\(i\)">\(i\)</span>, use the set <span class="math" data-tex="\(E\)">\(E\)</span> in (5.6). Its quotient by <span class="math" data-tex="\(K_S^\times\)">\(K_S^\times\)</span> and <span class="math" data-tex="\(\widehat{\mathcal O}^\times\)">\(\widehat{\mathcal O}^\times\)</span> maps to local embedding classes with fiber the invertible ideal-class group <span class="math" data-tex="\(\operatorname{Pic}(S_d)\)">\(\operatorname{Pic}(S_d)\)</span>, of size <span class="math" data-tex="\(h(d)\)">\(h(d)\)</span>. Mapping the same set to right quaternion ideal classes has fiber the embedding classes of the corresponding left order. The two fiber counts give (5.5), with no selectivity assumption about one individual order.</p>
+<p>At every split quaternion prime, normalize a lattice in the regular quadratic module to contain a primitive <span class="math" data-tex="\(1\)">\(1\)</span> inside the integral closure. A basis <span class="math" data-tex="\(1,u\)">\(1,u\)</span> makes it an order; its multiplier ring forces it to equal the given order. Thus the local embedding count is one, as in Lemma 5.2. At <span class="math" data-tex="\(p\)">\(p\)</span>, the quadratic algebra must be a field and the order must be maximal. For a field, the quotient of valuation groups in (5.9) has size its residue degree: two for an unramified field, one for a ramified field. Therefore the product of local counts is exactly (5.8), including zero when <span class="math" data-tex="\(p\)">\(p\)</span> divides the quadratic-order conductor. The contribution for <span class="math" data-tex="\(t,d\)">\(t,d\)</span> is <span class="math" data-tex="\(h(d)m_p(d)/(2w(d))\)">\(h(d)m_p(d)/(2w(d))\)</span>. Add these over <span class="math" data-tex="\(t^2&lt;4n\)">\(t^2&lt;4n\)</span> and all <span class="math" data-tex="\(df^2=t^2-4n\)">\(df^2=t^2-4n\)</span>, then add the scalar term. This is (5.10). In particular, for <span class="math" data-tex="\(p=11,n=2\)">\(p=11,n=2\)</span>, the five contributions in Section 6 sum to one, equal to <span class="math" data-tex="\(\operatorname{tr}B(2)\)">\(\operatorname{tr}B(2)\)</span>.</p>
+<h2 id="8-what-this-lesson-does-not-prove">8. What this lesson does not prove</h2>
+<p>The following inputs are distinct from the four trace-formula assertions proved above.</p>
+<ul>
+<li>Existence and uniqueness of Haar measure are <a href="../NCG-FOLIATIONS/companions/haar-functional.html">Haar measure on locally compact groups</a>, Theorems 8.3 and 9.2. The compatible quotient measure is <a href="../harmonic-analysis-on-locally-compact-groups/reader/quotient-measures-and-weils-integration-formula.html">Quotient measures and Weil’s integration formula</a>, Theorem 3.1, with the inversion convention explained in Section 1. The centralizer compactness and unimodularity needed to apply it are proved in Lemma 1.2. Getz–Hahn, Section 3.2, especially Theorem 3.2.2, remains an attribution and reference.</li>
+<li>Section 3 proves trace class and the diagonal trace for every smooth compact Lie or adelic test, using the smooth-kernel lemma and the finite-level manifold decomposition. These arguments include the Fourier coefficient estimate, absolute nuclear sum and measure normalization. Dixmier–Malliavin factorization, stated for comparison from Getz–Hahn, Theorem 4.2.7, supplies another method; none of the trace-formula proof depends on that factorization theorem.</li>
+<li>Lesson 17, Sections 1–3, proves the local division valuation and maximal order, the adelic lattice and ideal dictionary, and compactness of the projective quotient over a number field. Its Sections 1–2 now deduce the local and global quaternion classification, in every characteristic, from the written NT-CFT-24 invariant and localization proofs. The quadratic-embedding lemma in Section 5 derives embedding existence from the written finite splitting criterion in the linked central-simple-algebra lesson, Theorems 4.1–4.2, and the written local restriction and global injectivity proofs of NT-CFT-24, Theorems 24.2 and 24.4. Skolem–Noether and centralizers are the proved Theorems 2.1 and 3.1 of that same written algebra lesson. The original embedding references are Voight, Corollary 13.4.5 and Proposition 14.6.7.</li>
+<li>The maximal rational quaternion mass formula is proved in Lesson 17, Theorem 4.3. The written <a href="../NT-ANT/quadratic-fields-ideal-classes-and-binary-quadratic-forms.html">Quadratic fields: ideal classes and binary quadratic forms</a>, Theorems 10.1–10.2, proves the fundamental-discriminant correspondence and reduction, including the boundary convention. The written <a href="../NT-ANT/orders-in-number-fields-and-their-picard-groups.html">Orders in number fields and their Picard groups</a>, its local-generator lemma, Proposition 11.2 and equation (15) with its proof, supplies invertible proper ideals and the same correspondence at every negative quadratic-order discriminant. The finite-idele quotient used in Lemma 5.1 follows by gluing local generators, using the lattice dictionary proved in Lesson 17, Section 3. Voight, Section 30.1 before Theorem 30.1.3, is the original reference. The enumeration and unit counts in Section 6 are carried out here.</li>
+<li>The norm-count description and the explicit discriminant-eleven Brandt matrix are the proved results of Lesson 17, Section 4 and Section 5.2. Lemmas 5.1–5.2 prove the embedding count and its local factors here; Theorem 5.3 derives the trace formula. Neither the Eichler trace identity nor its hard exercise is being substituted by a citation.</li>
+</ul>
+<p>Arthur's compact formula in Section 1 and quaternion example in Section 3 are comparisons for Theorem 3.2. Getz–Hahn's Chapters 16–18 develop much broader spectral, relative and noncompact formulae. Jacquet–Langlands, Section 16, compares the quaternion and split trace formulae; its analytic argument is presented there with explicit formal qualifications. We have used none of those noncompact trace identities as a proof of the compact identity or of global transfer. The next lesson states precisely the correspondence whose proof uses that comparison.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. Arthur, “An introduction to the trace formula,” in <em>Harmonic Analysis, the Trace Formula, and Shimura Varieties</em>, Clay Mathematics Proceedings 4, 2005, Sections 1 and 3: kernel, geometric/spectral traces and the quaternion example. See the <a href="https://www.claymath.org/wp-content/uploads/2022/03/cmip04c.pdf">Clay volume</a>.</li>
+<li>J. R. Getz and H. Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em></a>, 22 April 2022 draft: Theorems 3.2.2 and 4.2.7, Chapters 16–18, particularly Theorem 16.2.3, Theorem 17.7.4 and Corollary 18.4.1. Numbering refers to that draft.</li>
+<li>J. Voight, <em>Quaternion Algebras</em>, GTM 288, 2021: Corollary 13.4.5, Proposition 14.6.7, Theorem 25.3.15, Section 30.1, Theorem 30.4.7, Proposition 30.5.3 and Section 41.5, especially Main Theorem 41.5.2 and formulas 41.5.9–41.5.11. See the <a href="https://jvoight.github.io/quat.html">author's editions</a>.</li>
+<li>H. Jacquet and R. P. Langlands, <em>Automorphic Forms on GL(2)</em>, LNM 114, 1970, Section 16, especially formulas 16.1.3–16.1.6 for the quaternion geometric trace. See the <a href="https://publications.ias.edu/rpl/section/22">author's publications collection</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="quaternion-algebras-and-their-automorphic-forms.html">← Quaternion algebras and their automorphic forms</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-jacquet-langlands-correspondence.html">The Jacquet–Langlands correspondence →</a></span></nav>
+<p class="small source-link"><a href="src/the-trace-formula-for-a-compact-quotient.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/automorphic-forms-and-representations-of-gl2">Repository</a></nav>
+</footer>
+</body>
+</html>

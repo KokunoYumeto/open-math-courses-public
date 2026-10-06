@@ -1,0 +1,496 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="475168293f87bbfa059dfe17c993de9826e9a177b444b9ac6fe37887e7487250"><title>Bochner&#x27;s theorem through bounded positive functionals</title><link rel="stylesheet" href="../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="bochners-theorem.md">Editable source</a> · <a href="../LICENCES.html">Licences</a></nav><article><h1 id="bochner-s-theorem-through-bounded-positive-functionals">Bochner's theorem through bounded positive functionals</h1>
+<p><strong>Lesson HA-LCA-06.</strong> This lesson proves Bochner representation on arbitrary locally compact abelian groups and develops its concrete applications. Self-checked by the writing AI.</p>
+<p>This lesson adapts the repeated-squaring argument in D. H. Fremlin's freely accessible <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex"><em>Measure Theory</em>, Volume 4, §445N</a>. Fremlin's source section is dated 20 March 2008, copyright 1998, in the 2013 source collection. The adaptation starts with a bounded positive functional, proves positivity of its extension by approximating square roots, and then obtains both the continuous and the locally almost-everywhere statements. Adaptation and additional exposition: GPT-6 Astra (OpenAI), Ultra, 4 October 2026. This combined lesson is under the <a href="../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">Design Science License</a>; the <span class="unlinked">unchanged original source package</span> accompanies it. The work is provided without warranty under that licence.</p>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact Hausdorff abelian group with Haar measure <span class="math" data-tex="\(dx\)">\(dx\)</span>, on the complete locally determined domain constructed in <a href="../prerequisites/src/haar-measure.html#ha-lca-pre-haar-theorem-5-1">the Haar prerequisite, Theorem 5.1</a>. No countability or separability assumption is imposed. Write <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span> and use
+<span class="math math-display" data-tex="\[
+ f^*(x)=\overline{f(-x)},\qquad
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx,
+ \qquad Ff(\gamma)=\widehat f(\gamma^{-1}).
+\]">\[
+ f^*(x)=\overline{f(-x)},\qquad
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx,
+ \qquad Ff(\gamma)=\widehat f(\gamma^{-1}).
+\]</span>
+Thus <span class="math" data-tex="\(Ff(\gamma)=\int f(x)\gamma(x)\,dx\)">\(Ff(\gamma)=\int f(x)\gamma(x)\,dx\)</span>. The two conventions differ only by inversion on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p>The earlier results needed for the argument are as follows. Each linked reading contains the complete proofs used here.</p>
+<ul>
+<li><a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html">The dual group as the spectrum of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span></a>, Theorem 2.1 and Corollary 2.2: the spectrum identification, topology, <span class="math" data-tex="\(C_0\)">\(C_0\)</span> property and radius formula; Theorems 3.1–3.2: transform laws and uniform density in <span class="math" data-tex="\(C_0(\Gamma)\)">\(C_0(\Gamma)\)</span>. Its Lemma 5.1 proves the circle Haar normalization and orthogonality used below.</li>
+<li><a href="../prerequisites/src/banach-spectrum.html">Spectral radius and characters of a Banach algebra</a>, Theorem 2.2 and Theorems 3.3–3.4: the full limit <span class="math" data-tex="\(r(a)=\lim_n\|a^n\|^{1/n}\)">\(r(a)=\lim_n\|a^n\|^{1/n}\)</span>, the character description and the extra zero from unitization. Its Lemma 4.1 proves arbitrary product compactness. Together with the HA-LCA-03 identification these give <span class="math" data-tex="\(r(f)=\|Ff\|_\infty\)">\(r(f)=\|Ff\|_\infty\)</span>.</li>
+<li><a href="../prerequisites/src/finite-radon-representation.html">Finite Radon representation on locally compact spaces</a>, Theorem 3.1, Theorem 4.3, Proposition 4.4 and Corollary 4.5: positive and complex finite representation, total variation, Jordan decomposition and compact tails. Its Lemma 1.6 proves the compact-product estimates used below. These proofs are given for arbitrary locally compact Hausdorff spaces.</li>
+<li><a href="../prerequisites/src/finite-radon-products.html">Finite Radon products and convolution of measures</a>, Theorems 2.1–2.2 and Corollary 2.3: the Radon product, bounded continuous Fubini and compact localization. Its Theorem 3.3 proves the finite-measure convolution algebra.</li>
+<li><a href="../prerequisites/src/integration-and-l1.html">Integration and <span class="math" data-tex="\(L^1\)">\(L^1\)</span></a>, Theorem 1.2, Corollary 1.3 and Theorem 2.2: monotone convergence, Fatou and dominated convergence; Theorems 2.4 and 3.1: <span class="math" data-tex="\(L^1\)">\(L^1\)</span> completeness and <span class="math" data-tex="\(C_c\)">\(C_c\)</span>-density; Theorems 4.2–4.4: finite and explicitly sigma-finite Borel Fubini, including ordinary completions. The <a href="characters-and-the-dual-group.html#ha-lca-02-lemma-3-3">character lesson, Lemma 3.3</a>, constructs and normalizes Lebesgue measure and proves affine substitution.</li>
+<li><a href="../prerequisites/src/real-variable-calculations.html">Real-variable calculations</a>, Lemmas 1.1–1.4: Riemann–Lebesgue integral agreement, exponentials and powers, the arctangent integral, integration by parts and dominated differentiation; Theorem 2.1: Gaussian normalization, transform and moments; Lemma 3.1 and Proposition 3.2: convex slopes and the explicit triangular mixing measure.</li>
+<li><a href="../prerequisites/src/haar-measure.html">Haar measure on arbitrary LCA groups</a>, Theorems 4.1–5.1: existence, uniqueness, inversion and the complete locally determined domain; Lemma 5.2 and Lemma 6.1: <span class="math" data-tex="\(C_c\)">\(C_c\)</span>-density for that domain and translation continuity; Theorem 6.2 and Corollary 6.3: the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> Banach star algebra and symmetric approximate identities.</li>
+<li><a href="characters-and-the-dual-group.html">Characters and the dual group</a>, Theorem 2.1, Theorem 3.1 and Corollary 3.2: duals of compact groups, <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, used in the applications. Its Proposition 1.4 proves joint continuity of evaluation, and its Theorem 5.2 proves local compactness of the dual.</li>
+</ul>
+<h2 id="1-measures-transforms-and-positive-functionals">1. Measures, transforms and positive functionals</h2>
+<p>For a finite complex Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, define
+<span class="math math-display" data-tex="\[
+ T\mu(x)=\int_\Gamma\gamma(x)\,d\mu(\gamma). \tag{1}
+\]">\[
+ T\mu(x)=\int_\Gamma\gamma(x)\,d\mu(\gamma). \tag{1}
+\]</span>
+For the negative-sign Fourier–Stieltjes convention on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, this is
+<span class="math" data-tex="\(T\mu(x)=\widehat\mu(\alpha_G(-x))\)">\(T\mu(x)=\widehat\mu(\alpha_G(-x))\)</span>, where <span class="math" data-tex="\(\alpha_G(x)(\gamma)=\gamma(x)\)">\(\alpha_G(x)(\gamma)=\gamma(x)\)</span>.
+Evaluation at <span class="math" data-tex="\(x\)">\(x\)</span> is a continuous character of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>: multiplicativity is immediate and continuity follows by testing the compact set <span class="math" data-tex="\(\{x\}\)">\(\{x\}\)</span> in the compact-open topology. This relation does not require surjectivity of <span class="math" data-tex="\(\alpha_G\)">\(\alpha_G\)</span>.</p>
+<p><a id="ha-lca-06-proposition-1-1"></a>
+<strong>Proposition 1.1.</strong> The function <span class="math" data-tex="\(T\mu\)">\(T\mu\)</span> is bounded and uniformly continuous, <span class="math" data-tex="\(\|T\mu\|_\infty\le\|\mu\|\)">\(\|T\mu\|_\infty\le\|\mu\|\)</span>, and
+<span class="math math-display" data-tex="\[
+ \int_G f(x)T\mu(x)\,dx=\int_\Gamma Ff(\gamma)\,d\mu(\gamma).
+ \tag{2}
+\]">\[
+ \int_G f(x)T\mu(x)\,dx=\int_\Gamma Ff(\gamma)\,d\mu(\gamma).
+ \tag{2}
+\]</span>
+The map <span class="math" data-tex="\(T\)">\(T\)</span> is injective.</p>
+<p><strong>Proof.</strong> The norm bound follows from <span class="math" data-tex="\(|\gamma(x)|=1\)">\(|\gamma(x)|=1\)</span>. Evaluation <span class="math" data-tex="\((x,\gamma)\mapsto\gamma(x)\)">\((x,\gamma)\mapsto\gamma(x)\)</span> is jointly continuous: restrict <span class="math" data-tex="\(x\)">\(x\)</span> to a compact neighbourhood of a specified <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, control <span class="math" data-tex="\(\gamma-\gamma_0\)">\(\gamma-\gamma_0\)</span> uniformly there by the compact-open topology, and control <span class="math" data-tex="\(\gamma_0(x)-\gamma_0(x_0)\)">\(\gamma_0(x)-\gamma_0(x_0)\)</span> by continuity of <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>. In particular, for a compact <span class="math" data-tex="\(K\subset\Gamma\)">\(K\subset\Gamma\)</span>, compactness of <span class="math" data-tex="\(\{0\}\times K\)">\(\{0\}\times K\)</span> gives an identity neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> on which <span class="math" data-tex="\(\sup_{\gamma\in K}|\gamma(a)-1|\)">\(\sup_{\gamma\in K}|\gamma(a)-1|\)</span> is as small as desired.</p>
+<p>Choose <span class="math" data-tex="\(K\)">\(K\)</span> so that <span class="math" data-tex="\(|\mu|(\Gamma\setminus K)&lt;\varepsilon\)">\(|\mu|(\Gamma\setminus K)&lt;\varepsilon\)</span>. The character law yields, for every <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+ |T\mu(x+a)-T\mu(x)|
+ \le\|\mu\|\sup_{\gamma\in K}|\gamma(a)-1|+2\varepsilon.
+\]">\[
+ |T\mu(x+a)-T\mu(x)|
+ \le\|\mu\|\sup_{\gamma\in K}|\gamma(a)-1|+2\varepsilon.
+\]</span>
+This proves uniform continuity. It uses compact tails, not an invalid dominated-convergence argument for arbitrary nets.</p>
+<p>For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span> and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> restricted to a compact set, (2) is the finite Radon-product Fubini identity for the continuous pairing kernel. Remove the compact restriction with error at most <span class="math" data-tex="\(\|f\|_1|\mu|(\Gamma\setminus K)\)">\(\|f\|_1|\mu|(\Gamma\setminus K)\)</span> on either side. Then extend to all <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by <span class="math" data-tex="\(C_c\)">\(C_c\)</span>-density and the bound <span class="math" data-tex="\(\|f\|_1\|\mu\|\)">\(\|f\|_1\|\mu\|\)</span>. This proves (2) without global sigma-finiteness.</p>
+<p>If <span class="math" data-tex="\(T\mu=0\)">\(T\mu=0\)</span>, (2) says that <span class="math" data-tex="\(\mu\)">\(\mu\)</span> annihilates every transform <span class="math" data-tex="\(Ff\)">\(Ff\)</span>. Their density in <span class="math" data-tex="\(C_0(\Gamma)\)">\(C_0(\Gamma)\)</span> and Radon uniqueness imply <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span>. Applying this to a difference proves injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="a-bound-in-the-fourier-norm">A bound in the Fourier norm</h3>
+<p>A bounded complex-linear functional <span class="math" data-tex="\(L:L^1(G)\to\mathbb C\)">\(L:L^1(G)\to\mathbb C\)</span> is <strong>positive</strong> when <span class="math" data-tex="\(L(f*f^*)\ge0\)">\(L(f*f^*)\ge0\)</span> for every <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>. This condition concerns convolution squares; it does not mean that <span class="math" data-tex="\(L(f)\ge0\)">\(L(f)\ge0\)</span> for nonnegative functions <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><a id="ha-lca-06-lemma-1-2"></a>
+<strong>Lemma 1.2.</strong> Every bounded positive functional satisfies
+<span class="math math-display" data-tex="\[
+ |L(f)|\le\|L\|\,\|Ff\|_\infty. \tag{3}
+\]">\[
+ |L(f)|\le\|L\|\,\|Ff\|_\infty. \tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> The assertion is immediate for <span class="math" data-tex="\(L=0\)">\(L=0\)</span>. Divide by <span class="math" data-tex="\(\|L\|\)">\(\|L\|\)</span> and call the resulting norm-one functional <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p>For relatively compact open identity neighbourhoods <span class="math" data-tex="\(U\)">\(U\)</span>, put <span class="math" data-tex="\(e_U=1_U/|U|\)">\(e_U=1_U/|U|\)</span>. Haar measure gives <span class="math" data-tex="\(0&lt;|U|&lt;\infty\)">\(0&lt;|U|&lt;\infty\)</span> and <span class="math" data-tex="\(\|e_U\|_1=1\)">\(\|e_U\|_1=1\)</span>. The norm-integral identity in <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-lemma-1-1">HA-LCA-03, Lemma 1.1</a> gives the following estimate; translation continuity then gives its limit:
+<span class="math math-display" data-tex="\[
+ \|f*e_U-f\|_1
+ \le\sup_{y\in U}\|f(\,\cdot-y)-f\|_1\longrightarrow0. \tag{4}
+\]">\[
+ \|f*e_U-f\|_1
+ \le\sup_{y\in U}\|f(\,\cdot-y)-f\|_1\longrightarrow0. \tag{4}
+\]</span>
+Neighbourhoods are directed by reverse inclusion, so (4) uses a net and needs no countable neighbourhood base.</p>
+<p>Set <span class="math" data-tex="\([f,g]=\ell(f*g^*)\)">\([f,g]=\ell(f*g^*)\)</span>, linear in its first variable and conjugate-linear in its second. Here is the full positive-form calculation, which also applies to any such form on a complex vector space. Put <span class="math" data-tex="\(A=[f,g]\)">\(A=[f,g]\)</span> and <span class="math" data-tex="\(B=[g,f]\)">\(B=[g,f]\)</span>. Reality of <span class="math" data-tex="\([f+g,f+g]\)">\([f+g,f+g]\)</span> gives <span class="math" data-tex="\(A+B\in\mathbb R\)">\(A+B\in\mathbb R\)</span>; reality of <span class="math" data-tex="\([f+ig,f+ig]\)">\([f+ig,f+ig]\)</span> gives <span class="math" data-tex="\(i(B-A)\in\mathbb R\)">\(i(B-A)\in\mathbb R\)</span>. Writing real and imaginary parts in these two equations gives <span class="math" data-tex="\(B=\overline A\)">\(B=\overline A\)</span>. Thus the form is Hermitian. Write <span class="math" data-tex="\(d=[g,g]\ge0\)">\(d=[g,g]\ge0\)</span>. Expansion yields
+<span class="math math-display" data-tex="\[
+ 0\le[f-zg,f-zg]=[f,f]-2\operatorname{Re}(\overline zA)+|z|^2d.
+\]">\[
+ 0\le[f-zg,f-zg]=[f,f]-2\operatorname{Re}(\overline zA)+|z|^2d.
+\]</span>
+If <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, choose <span class="math" data-tex="\(z=A/d\)">\(z=A/d\)</span>; if <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, choose <span class="math" data-tex="\(z=tA\)">\(z=tA\)</span> for every positive real <span class="math" data-tex="\(t\)">\(t\)</span>, forcing <span class="math" data-tex="\(A=0\)">\(A=0\)</span>. In either case
+<span class="math math-display" data-tex="\[
+ |[f,g]|^2\le[f,f][g,g].
+\]">\[
+ |[f,g]|^2\le[f,f][g,g].
+\]</span> Use <span class="math" data-tex="\(g=e_U^*\)">\(g=e_U^*\)</span>. Commutativity gives <span class="math" data-tex="\(g*g^*=e_U*e_U^*\)">\(g*g^*=e_U*e_U^*\)</span>, and its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm is at most one. Hence
+<span class="math math-display" data-tex="\[
+ |\ell(f*e_U)|^2
+ \le\ell(f*f^*)\ell(e_U*e_U^*)
+ \le\ell(f*f^*).
+\]">\[
+ |\ell(f*e_U)|^2
+ \le\ell(f*f^*)\ell(e_U*e_U^*)
+ \le\ell(f*f^*).
+\]</span>
+Taking the limit in (4) yields <span class="math" data-tex="\(|\ell(f)|^2\le\ell(f*f^*)\)">\(|\ell(f)|^2\le\ell(f*f^*)\)</span>.</p>
+<p>Write <span class="math" data-tex="\(b=f*f^*\)">\(b=f*f^*\)</span>. Since <span class="math" data-tex="\(b=b^*\)">\(b=b^*\)</span>, repeated application of the last inequality gives, for every integer <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+ |\ell(f)|^{2^k}\le\ell\bigl(b^{*2^{k-1}}\bigr)
+ \le\bigl\|b^{*2^{k-1}}\bigr\|_1.
+\]">\[
+ |\ell(f)|^{2^k}\le\ell\bigl(b^{*2^{k-1}}\bigr)
+ \le\bigl\|b^{*2^{k-1}}\bigr\|_1.
+\]</span>
+The notation <span class="math" data-tex="\(b^{*m}\)">\(b^{*m}\)</span> here means the <span class="math" data-tex="\(m\)">\(m\)</span>-fold convolution product. The spectral-radius formula, including its subsequence <span class="math" data-tex="\(m=2^{k-1}\)">\(m=2^{k-1}\)</span>, now gives
+<span class="math math-display" data-tex="\[
+ |\ell(f)|\le r(b)^{1/2}
+ =\|F(b)\|_\infty^{1/2}
+ =\bigl\||Ff|^2\bigr\|_\infty^{1/2}=\|Ff\|_\infty.
+\]">\[
+ |\ell(f)|\le r(b)^{1/2}
+ =\|F(b)\|_\infty^{1/2}
+ =\bigl\||Ff|^2\bigr\|_\infty^{1/2}=\|Ff\|_\infty.
+\]</span>
+In the possibly nonunital algebra the spectrum is taken in the unitization; the extra zero value does not change its radius. Multiplying by <span class="math" data-tex="\(\|L\|\)">\(\|L\|\)</span> proves (3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the part of Fremlin's argument that turns a bound in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> into a bound in the uniform norm of a transform. It does not assume that <span class="math" data-tex="\(F\)">\(F\)</span> is injective.</p>
+<p><a id="ha-lca-06-theorem-1-3"></a>
+<strong>Theorem 1.3.</strong> For each bounded positive functional <span class="math" data-tex="\(L\)">\(L\)</span> there is a unique finite positive Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> such that
+<span class="math math-display" data-tex="\[
+ L(f)=\int_\Gamma Ff\,d\mu \quad(f\in L^1(G)),
+ \qquad \mu(\Gamma)=\|L\|. \tag{5}
+\]">\[
+ L(f)=\int_\Gamma Ff\,d\mu \quad(f\in L^1(G)),
+ \qquad \mu(\Gamma)=\|L\|. \tag{5}
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(Ff=Fg\)">\(Ff=Fg\)</span>, Lemma 1.2 applied to <span class="math" data-tex="\(f-g\)">\(f-g\)</span> gives <span class="math" data-tex="\(L(f)=L(g)\)">\(L(f)=L(g)\)</span>. Consequently <span class="math" data-tex="\(\Lambda(Ff)=L(f)\)">\(\Lambda(Ff)=L(f)\)</span> is a well-defined functional on the uniformly dense algebra <span class="math" data-tex="\(F(L^1(G))\subset C_0(\Gamma)\)">\(F(L^1(G))\subset C_0(\Gamma)\)</span>. Inequality (3) lets it extend uniquely and continuously to <span class="math" data-tex="\(C_0(\Gamma)\)">\(C_0(\Gamma)\)</span>, with norm at most <span class="math" data-tex="\(\|L\|\)">\(\|L\|\)</span>.</p>
+<p>For <span class="math" data-tex="\(q\in C_0(\Gamma)\)">\(q\in C_0(\Gamma)\)</span> with <span class="math" data-tex="\(q\ge0\)">\(q\ge0\)</span>, also <span class="math" data-tex="\(\sqrt q\in C_0(\Gamma)\)">\(\sqrt q\in C_0(\Gamma)\)</span>. Choose transforms <span class="math" data-tex="\(Ff_n\to\sqrt q\)">\(Ff_n\to\sqrt q\)</span> uniformly. Then <span class="math" data-tex="\(|Ff_n|^2\to q\)">\(|Ff_n|^2\to q\)</span> uniformly, since
+<span class="math math-display" data-tex="\[
+ \bigl\||Ff_n|^2-q\bigr\|_\infty
+ \le\|Ff_n-\sqrt q\|_\infty
+       \bigl(\|Ff_n\|_\infty+\|\sqrt q\|_\infty\bigr).
+\]">\[
+ \bigl\||Ff_n|^2-q\bigr\|_\infty
+ \le\|Ff_n-\sqrt q\|_\infty
+       \bigl(\|Ff_n\|_\infty+\|\sqrt q\|_\infty\bigr).
+\]</span>
+But <span class="math" data-tex="\(\Lambda(|Ff_n|^2)=L(f_n*f_n^*)\ge0\)">\(\Lambda(|Ff_n|^2)=L(f_n*f_n^*)\ge0\)</span>. Continuity implies <span class="math" data-tex="\(\Lambda(q)\ge0\)">\(\Lambda(q)\ge0\)</span>. Finite Radon representation therefore supplies a positive measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> with <span class="math" data-tex="\(\Lambda(q)=\int q\,d\mu\)">\(\Lambda(q)=\int q\,d\mu\)</span> and <span class="math" data-tex="\(\mu(\Gamma)=\|\Lambda\|\le\|L\|\)">\(\mu(\Gamma)=\|\Lambda\|\le\|L\|\)</span>. Conversely (5) and <span class="math" data-tex="\(\|Ff\|_\infty\le\|f\|_1\)">\(\|Ff\|_\infty\le\|f\|_1\)</span> give <span class="math" data-tex="\(\|L\|\le\mu(\Gamma)\)">\(\|L\|\le\mu(\Gamma)\)</span>. These inequalities prove the mass assertion.</p>
+<p>Two representing measures agree on the dense transform algebra, hence on <span class="math" data-tex="\(C_0(\Gamma)\)">\(C_0(\Gamma)\)</span>. Uniqueness in finite Radon representation makes them equal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-bochner-representation">2. Bochner representation</h2>
+<p>A function <span class="math" data-tex="\(\varphi:G\to\mathbb C\)">\(\varphi:G\to\mathbb C\)</span> is of <strong>positive type</strong> if every finite choice satisfies
+<span class="math math-display" data-tex="\[
+ \sum_{i,j=1}^n c_i\overline{c_j}\varphi(x_i-x_j)\ge0. \tag{6}
+\]">\[
+ \sum_{i,j=1}^n c_i\overline{c_j}\varphi(x_i-x_j)\ge0. \tag{6}
+\]</span>
+<a id="ha-lca-06-lemma-2-0"></a>
+<strong>Lemma 2.0.</strong> A function of positive type satisfies
+<span class="math math-display" data-tex="\[
+ \varphi(0)\ge0,\qquad
+ \varphi(-x)=\overline{\varphi(x)},\qquad
+ |\varphi(x)|\le\varphi(0).
+\]">\[
+ \varphi(0)\ge0,\qquad
+ \varphi(-x)=\overline{\varphi(x)},\qquad
+ |\varphi(x)|\le\varphi(0).
+\]</span></p>
+<p><strong>Proof.</strong> The one-point test gives the first assertion. For the two points <span class="math" data-tex="\(x_1=x,x_2=0\)">\(x_1=x,x_2=0\)</span>, define
+<span class="math" data-tex="\([c,d]=\sum_{i,j=1}^2 c_i\overline{d_j}\varphi(x_i-x_j)\)">\([c,d]=\sum_{i,j=1}^2 c_i\overline{d_j}\varphi(x_i-x_j)\)</span> on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>.
+This is a positive sesquilinear form. The full algebraic calculation in Lemma 1.2 proves that it is Hermitian and satisfies Cauchy's inequality, including when a diagonal value is zero. Apply these conclusions to the two coordinate vectors: the off-diagonal entries are <span class="math" data-tex="\(\varphi(x)\)">\(\varphi(x)\)</span> and <span class="math" data-tex="\(\varphi(-x)\)">\(\varphi(-x)\)</span>, and both diagonal entries are <span class="math" data-tex="\(\varphi(0)\)">\(\varphi(0)\)</span>. Consequently <span class="math" data-tex="\(|\varphi(x)|^2\le\varphi(0)^2\)">\(|\varphi(x)|^2\le\varphi(0)^2\)</span>, proving the remaining assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-06-theorem-2-1"></a>
+<strong>Theorem 2.1 (Bochner).</strong> A continuous function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span> has positive type if and only if <span class="math" data-tex="\(\varphi=T\mu\)">\(\varphi=T\mu\)</span> for a finite positive Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. The measure is unique and
+<span class="math math-display" data-tex="\[
+ \mu(\Gamma)=\varphi(0). \tag{7}
+\]">\[
+ \mu(\Gamma)=\varphi(0). \tag{7}
+\]</span></p>
+<p><strong>Proof.</strong> A positive measure in (1) gives
+<span class="math math-display" data-tex="\[
+ \sum_{i,j}c_i\overline{c_j}T\mu(x_i-x_j)
+ =\int_\Gamma\left|\sum_i c_i\gamma(x_i)\right|^2\,d\mu\ge0.
+\]">\[
+ \sum_{i,j}c_i\overline{c_j}T\mu(x_i-x_j)
+ =\int_\Gamma\left|\sum_i c_i\gamma(x_i)\right|^2\,d\mu\ge0.
+\]</span>
+Continuity and uniqueness follow from Proposition 1.1, and evaluation at zero gives (7).</p>
+<p>Conversely, define <span class="math" data-tex="\(L(f)=\int f\varphi\)">\(L(f)=\int f\varphi\)</span>. The two-point bound gives <span class="math" data-tex="\(\|L\|\le\varphi(0)\)">\(\|L\|\le\varphi(0)\)</span>. We verify its positivity rather than presuming an integral version of (6). For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>, Fubini and Haar invariance give
+<span class="math math-display" data-tex="\[
+ L(f*f^*)=\iint f(s)\overline{f(t)}\varphi(s-t)\,ds\,dt. \tag{8}
+\]">\[
+ L(f*f^*)=\iint f(s)\overline{f(t)}\varphi(s-t)\,ds\,dt. \tag{8}
+\]</span>
+On the compact support <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(f\)">\(f\)</span>, partition into finitely many Borel pieces <span class="math" data-tex="\(E_j\)">\(E_j\)</span> and choose <span class="math" data-tex="\(x_j\in E_j\)">\(x_j\in E_j\)</span> so that
+<span class="math" data-tex="\( |\varphi(s-t)-\varphi(x_i-x_j)|&lt;\varepsilon\)">\( |\varphi(s-t)-\varphi(x_i-x_j)|&lt;\varepsilon\)</span>
+for <span class="math" data-tex="\(s\in E_i,t\in E_j\)">\(s\in E_i,t\in E_j\)</span>. Such a partition is supplied by <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-6">Lemma 1.6 of the finite-Radon prerequisite</a>, applied to the continuous kernel <span class="math" data-tex="\((s,t)\mapsto\varphi(s-t)\)">\((s,t)\mapsto\varphi(s-t)\)</span>. Then (8) differs by at most <span class="math" data-tex="\(\varepsilon\|f\|_1^2\)">\(\varepsilon\|f\|_1^2\)</span> from the nonnegative number
+<span class="math math-display" data-tex="\[
+ \sum_{i,j}\left(\int_{E_i}f\right)
+                 \overline{\left(\int_{E_j}f\right)}
+                 \varphi(x_i-x_j).
+\]">\[
+ \sum_{i,j}\left(\int_{E_i}f\right)
+                 \overline{\left(\int_{E_j}f\right)}
+                 \varphi(x_i-x_j).
+\]</span>
+Letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> proves positivity for <span class="math" data-tex="\(C_c\)">\(C_c\)</span>. For general <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span>, choose <span class="math" data-tex="\(f_n\in C_c\)">\(f_n\in C_c\)</span> converging in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>; the estimate
+<span class="math" data-tex="\(\|f_n*f_n^*-f*f^*\|_1\le(\|f_n\|_1+\|f\|_1)\|f_n-f\|_1\)">\(\|f_n*f_n^*-f*f^*\|_1\le(\|f_n\|_1+\|f\|_1)\|f_n-f\|_1\)</span>
+extends positivity to all <span class="math" data-tex="\(L^1\)">\(L^1\)</span>.</p>
+<p>Theorem 1.3 supplies <span class="math" data-tex="\(\mu\ge0\)">\(\mu\ge0\)</span>. Formula (2) gives <span class="math" data-tex="\(\int f(\varphi-T\mu)=0\)">\(\int f(\varphi-T\mu)=0\)</span> for every <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span>. The continuous difference must be zero: if it is nonzero at a point, multiply it by a constant phase to make its real part positive on a relatively compact open neighbourhood, and test with that neighbourhood's indicator. Its Haar measure is positive and finite, a contradiction. Therefore <span class="math" data-tex="\(\varphi=T\mu\)">\(\varphi=T\mu\)</span>, completing the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-06-corollary-2-2"></a>
+<strong>Corollary 2.2 (bounded measurable classes).</strong> If a bounded locally Haar-measurable function <span class="math" data-tex="\(b\)">\(b\)</span> satisfies <span class="math" data-tex="\(\int b(f*f^*)\ge0\)">\(\int b(f*f^*)\ge0\)</span> for every <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>, it has a unique continuous positive-type representative modulo locally Haar-null sets. Here locally measurable means that every restriction to a compact set is measurable for the restricted complete Haar domain; locally null means null on every compact set. The assertion applies in particular to <span class="math" data-tex="\(L^\infty(G)\)">\(L^\infty(G)\)</span> classes.</p>
+<p><strong>Proof.</strong> We first check the meaning of the integrals. The Haar construction partitions <span class="math" data-tex="\(G\)">\(G\)</span> into cosets of an open sigma-compact subgroup <span class="math" data-tex="\(H\)">\(H\)</span>. Each coset is covered by a sequence of compact sets. Local measurability therefore makes <span class="math" data-tex="\(b\)">\(b\)</span> measurable on each coset, by taking countable unions of its measurable inverse images on those compact sets. The definition of the full Haar domain in the earlier Theorem 5.1 then makes <span class="math" data-tex="\(b\)">\(b\)</span> measurable on <span class="math" data-tex="\(G\)">\(G\)</span>. For a locally null set the same argument makes every coset section measurable and null; the sum formula for Haar measure makes the whole set null. Thus local-null equality and equality modulo the full Haar null sets coincide in this domain. An essentially bounded measurable class has a bounded representative by setting it to zero on the null set where it exceeds an essential bound.</p>
+<p>Its bounded functional <span class="math" data-tex="\(L(f)=\int fb\)">\(L(f)=\int fb\)</span> is now well-defined and positive. Theorem 1.3 supplies <span class="math" data-tex="\(\mu\ge0\)">\(\mu\ge0\)</span>, and Proposition 1.1 gives the same <span class="math" data-tex="\(L^1\)">\(L^1\)</span> pairings for <span class="math" data-tex="\(T\mu\)">\(T\mu\)</span>; Theorem 2.1 proves that <span class="math" data-tex="\(T\mu\)">\(T\mu\)</span> has positive type. For a compact set <span class="math" data-tex="\(K\)">\(K\)</span>, the function <span class="math" data-tex="\(f=1_K\overline{b-T\mu}\)">\(f=1_K\overline{b-T\mu}\)</span> is integrable, since <span class="math" data-tex="\(K\)">\(K\)</span> has finite measure. Thus <span class="math" data-tex="\(\int_K|b-T\mu|^2=0\)">\(\int_K|b-T\mu|^2=0\)</span>. For every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, the subset of <span class="math" data-tex="\(K\)">\(K\)</span> where <span class="math" data-tex="\(|b-T\mu|\ge1/n\)">\(|b-T\mu|\ge1/n\)</span> has measure zero by this integral bound. Their union is the set of disagreement on <span class="math" data-tex="\(K\)">\(K\)</span>, proving local-null equality.</p>
+<p>Finally, a nonzero continuous difference has, after multiplication by a constant phase, positive real part on a relatively compact open set. That open set has positive finite Haar measure and hence contains a compact set of positive measure by inner regularity. Local-null equality on that compact set is impossible. This proves uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Continuity in Theorem 2.1 matters. The indicator of <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> satisfies (6): partition equal points in the finite list, and the sum is a sum of squared absolute values. It is discontinuous and has no pointwise representation (1). Its locally almost-everywhere representative is the zero function, in accordance with Corollary 2.2.</p>
+<h2 id="3-discrete-frequencies-and-compact-groups">3. Discrete frequencies and compact groups</h2>
+<p><a id="ha-lca-06-corollary-3-1"></a>
+<strong>Corollary 3.1 (Herglotz).</strong> A sequence <span class="math" data-tex="\((a_n)_{n\in\mathbb Z}\)">\((a_n)_{n\in\mathbb Z}\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \sum_{i,j}c_i\overline{c_j}a_{n_i-n_j}\ge0
+\]">\[
+ \sum_{i,j}c_i\overline{c_j}a_{n_i-n_j}\ge0
+\]</span>
+for every finite choice if and only if there is a finite positive Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> such that
+<span class="math math-display" data-tex="\[
+ a_n=\int_{\mathbb T}z^n\,d\mu(z).
+\]">\[
+ a_n=\int_{\mathbb T}z^n\,d\mu(z).
+\]</span>
+The measure is unique and has mass <span class="math" data-tex="\(a_0\)">\(a_0\)</span>.</p>
+<p><strong>Proof.</strong> Give <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> its discrete topology. Every function on it is continuous, and its characters are precisely <span class="math" data-tex="\(n\mapsto z^n\)">\(n\mapsto z^n\)</span>, with <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span>. Apply Theorem 2.1. Conversely, integrate the square <span class="math" data-tex="\(|\sum_i c_i z^{n_i}|^2\)">\(|\sum_i c_i z^{n_i}|^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-06-corollary-3-2"></a>
+<strong>Corollary 3.2.</strong> On a compact abelian group <span class="math" data-tex="\(K\)">\(K\)</span>, with Haar mass one, the continuous positive-type functions are exactly the uniformly absolutely convergent series
+<span class="math math-display" data-tex="\[
+ \varphi(x)=\sum_{\gamma\in\widehat K}c_\gamma\gamma(x),
+ \qquad c_\gamma\ge0,\qquad\sum_\gamma c_\gamma&lt;\infty. \tag{9}
+\]">\[
+ \varphi(x)=\sum_{\gamma\in\widehat K}c_\gamma\gamma(x),
+ \qquad c_\gamma\ge0,\qquad\sum_\gamma c_\gamma&lt;\infty. \tag{9}
+\]</span>
+They satisfy
+<span class="math math-display" data-tex="\[
+ \sum_\gamma c_\gamma=\varphi(0),\qquad
+ c_\eta=\int_K\varphi(x)\overline{\eta(x)}\,dx. \tag{10}
+\]">\[
+ \sum_\gamma c_\gamma=\varphi(0),\qquad
+ c_\eta=\int_K\varphi(x)\overline{\eta(x)}\,dx. \tag{10}
+\]</span></p>
+<p><strong>Proof.</strong> The dual is discrete by HA-LCA-02, Theorem 2.1. A compact subset of a discrete space is finite. Thus inner regularity of the Bochner measure gives
+<span class="math" data-tex="\(\mu(\widehat K)=\sup_{E\text{ finite}}\sum_{\gamma\in E}\mu(\{\gamma\})\)">\(\mu(\widehat K)=\sup_{E\text{ finite}}\sum_{\gamma\in E}\mu(\{\gamma\})\)</span>.
+Put <span class="math" data-tex="\(c_\gamma=\mu(\{\gamma\})\)">\(c_\gamma=\mu(\{\gamma\})\)</span>. For each positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, only finitely many atoms have mass at least <span class="math" data-tex="\(1/m\)">\(1/m\)</span>, since their finite partial sums are bounded by the total mass. Their countable union <span class="math" data-tex="\(S\)">\(S\)</span> contains every positive atom. Countable additivity and the displayed supremum give <span class="math" data-tex="\(\mu(S)=\mu(\widehat K)\)">\(\mu(S)=\mu(\widehat K)\)</span>. Hence the complement has measure zero, and on every subset of the discrete dual the measure equals the sum of its atoms. The sum of masses bounds the series uniformly and absolutely, since each character has modulus one.</p>
+<p>For a nontrivial character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, choose <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(\chi(a)\ne1\)">\(\chi(a)\ne1\)</span>. Haar invariance gives <span class="math" data-tex="\(\int\chi=\chi(a)\int\chi\)">\(\int\chi=\chi(a)\int\chi\)</span>, so <span class="math" data-tex="\(\int\chi=0\)">\(\int\chi=0\)</span>. The trivial character has integral one. Apply this to <span class="math" data-tex="\(\gamma\overline\eta\)">\(\gamma\overline\eta\)</span>, and integrate the uniformly convergent series term by term to obtain (10). Conversely (9) is continuous by uniform convergence and satisfies (6) by summing the nonnegative squares with weights <span class="math" data-tex="\(c_\gamma\)">\(c_\gamma\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, with <span class="math" data-tex="\(\gamma_\xi(x)=e^{2\pi i x\xi}\)">\(\gamma_\xi(x)=e^{2\pi i x\xi}\)</span>, the normalized functions in Theorem 2.1 are precisely
+<span class="math math-display" data-tex="\[
+ \varphi(x)=\int_{\mathbb R}e^{2\pi ix\xi}\,d\mu(\xi),
+ \qquad \mu(\mathbb R)=1.
+\]">\[
+ \varphi(x)=\int_{\mathbb R}e^{2\pi ix\xi}\,d\mu(\xi),
+ \qquad \mu(\mathbb R)=1.
+\]</span>
+The probabilistic convention <span class="math" data-tex="\(\mathbb E(e^{itX})\)">\(\mathbb E(e^{itX})\)</span> is <span class="math" data-tex="\(\varphi(t/(2\pi))\)">\(\varphi(t/(2\pi))\)</span>. This identity specifies the conversion of constants in the examples.</p>
+<h2 id="4-products-and-the-fourier-stieltjes-algebra">4. Products and the Fourier–Stieltjes algebra</h2>
+<p>Let <span class="math" data-tex="\(B(G)\)">\(B(G)\)</span> be the complex linear span of the continuous positive-type functions.</p>
+<p><a id="ha-lca-06-proposition-4-1"></a>
+<strong>Proposition 4.1.</strong> The map <span class="math" data-tex="\(T\)">\(T\)</span> is a bijection from the finite complex Radon measures <span class="math" data-tex="\(M(\Gamma)\)">\(M(\Gamma)\)</span> to <span class="math" data-tex="\(B(G)\)">\(B(G)\)</span>. With
+<span class="math math-display" data-tex="\[
+ \|T\mu\|_B=\|\mu\|,
+\]">\[
+ \|T\mu\|_B=\|\mu\|,
+\]</span>
+the space <span class="math" data-tex="\(B(G)\)">\(B(G)\)</span> is a unital commutative Banach star algebra under pointwise multiplication and complex conjugation, and <span class="math" data-tex="\(\|\varphi\|_\infty\le\|\varphi\|_B\)">\(\|\varphi\|_\infty\le\|\varphi\|_B\)</span>.</p>
+<p><strong>Proof.</strong> Write a complex measure as <span class="math" data-tex="\(\mu=\mu_1-\mu_2+i\mu_3-i\mu_4\)">\(\mu=\mu_1-\mu_2+i\mu_3-i\mu_4\)</span>, where the four measures are finite and positive, by applying Jordan decomposition to its real and imaginary parts. Bochner's theorem gives <span class="math" data-tex="\(T\mu\in B(G)\)">\(T\mu\in B(G)\)</span>. In the other direction every finite linear combination of positive-type functions is a transform of the corresponding linear combination of their positive Bochner measures. Proposition 1.1 gives injectivity.</p>
+<p>For finite measures, define <span class="math" data-tex="\(\mu*\nu\)">\(\mu*\nu\)</span> as the image of their Radon product under multiplication <span class="math" data-tex="\((\gamma,\eta)\mapsto\gamma\eta\)">\((\gamma,\eta)\mapsto\gamma\eta\)</span>. For positive measures this image is again finite Radon: given a Borel set, approximate its inverse image from within by compact sets, whose images are compact; their measures give the required inner approximation. Extend by the four-positive-measure decomposition for complex measures. Variation gives
+<span class="math" data-tex="\(\|\mu*\nu\|\le\|\mu\|\|\nu\|\)">\(\|\mu*\nu\|\le\|\mu\|\|\nu\|\)</span>.
+Fubini for these finite measures gives
+<span class="math math-display" data-tex="\[
+ T(\mu*\nu)(x)
+ =\iint\gamma(x)\eta(x)\,d\mu(\gamma)d\nu(\eta)
+ =T\mu(x)T\nu(x).
+\]">\[
+ T(\mu*\nu)(x)
+ =\iint\gamma(x)\eta(x)\,d\mu(\gamma)d\nu(\eta)
+ =T\mu(x)T\nu(x).
+\]</span>
+All these kernels are bounded and continuous, so <a href="../prerequisites/src/finite-radon-products.html#ha-lca-pre-product-theorem-2-2">Theorem 2.2 of the finite-product reading</a> applies on arbitrary locally compact spaces. Its Proposition 3.2 and Theorem 3.3 prove the product associativity and measure-algebra laws used here. The point mass at the trivial character gives the unit.</p>
+<p>Define <span class="math" data-tex="\(\mu^*(E)=\overline{\mu(E^{-1})}\)">\(\mu^*(E)=\overline{\mu(E^{-1})}\)</span>. Substitution in (1) gives <span class="math" data-tex="\(T(\mu^*)=\overline{T\mu}\)">\(T(\mu^*)=\overline{T\mu}\)</span> and <span class="math" data-tex="\(\|\mu^*\|=\|\mu\|\)">\(\|\mu^*\|=\|\mu\|\)</span>. Finally <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-theorem-4-3">Theorem 4.3 of the finite-Radon reading</a> proves completeness of <span class="math" data-tex="\(M(\Gamma)\)">\(M(\Gamma)\)</span>, as well as its isometric identification with <span class="math" data-tex="\(C_0(\Gamma)^*\)">\(C_0(\Gamma)^*\)</span>. Transporting this norm through the bijection <span class="math" data-tex="\(T\)">\(T\)</span> proves all the assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-four-calculations">5. Four calculations</h2>
+<p><a id="ha-lca-06-example-5-1"></a>
+<strong>Example 5.1 — Gaussian measures.</strong> <strong>Verification.</strong> Here is a direct integral calculation, independent of general Fourier inversion. Put
+<span class="math math-display" data-tex="\[
+ J(u)=\int_{\mathbb R}e^{-\pi y^2}e^{2\pi iuy}\,dy.
+\]">\[
+ J(u)=\int_{\mathbb R}e^{-\pi y^2}e^{2\pi iuy}\,dy.
+\]</span>
+The earlier <a href="../prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-theorem-2-1">real-variable reading, Theorem 2.1</a>, proves <span class="math" data-tex="\(J(0)=1\)">\(J(0)=1\)</span> by positive Fubini, the one-dimensional substitution <span class="math" data-tex="\(y=xt\)">\(y=xt\)</span>, and the integral of <span class="math" data-tex="\(1/(1+t^2)\)">\(1/(1+t^2)\)</span>. Its Lemmas 1.3–1.4 justify integration by parts and differentiation under the integrable bound <span class="math" data-tex="\(2\pi|y|e^{-\pi y^2}\)">\(2\pi|y|e^{-\pi y^2}\)</span>. With the Gaussian boundary terms tending to zero, these operations give <span class="math" data-tex="\(J&#x27;(u)=-2\pi uJ(u)\)">\(J&#x27;(u)=-2\pi uJ(u)\)</span>. The derivative of <span class="math" data-tex="\(e^{\pi u^2}J(u)\)">\(e^{\pi u^2}J(u)\)</span> is therefore zero, and its value at zero is one. Thus <span class="math" data-tex="\(J(u)=e^{-\pi u^2}\)">\(J(u)=e^{-\pi u^2}\)</span>, as also proved in full in that earlier theorem.</p>
+<p>For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-tex="\(b\in\mathbb R\)">\(b\in\mathbb R\)</span>, substitution now gives the explicit Bochner pair
+<span class="math math-display" data-tex="\[
+ d\mu(\xi)=a^{-1/2}e^{-\pi(\xi-b)^2/a}\,d\xi,
+ \qquad T\mu(x)=e^{2\pi ibx}e^{-\pi ax^2}. \tag{11}
+\]">\[
+ d\mu(\xi)=a^{-1/2}e^{-\pi(\xi-b)^2/a}\,d\xi,
+ \qquad T\mu(x)=e^{2\pi ibx}e^{-\pi ax^2}. \tag{11}
+\]</span>
+The same earlier theorem computes the mean as <span class="math" data-tex="\(b\)">\(b\)</span> and the variance as <span class="math" data-tex="\(a/(2\pi)\)">\(a/(2\pi)\)</span>. In particular, a normal law with mean <span class="math" data-tex="\(b\)">\(b\)</span> and variance <span class="math" data-tex="\(s^2&gt;0\)">\(s^2&gt;0\)</span> has <span class="math" data-tex="\(a=2\pi s^2\)">\(a=2\pi s^2\)</span>, giving the usual characteristic function <span class="math" data-tex="\(e^{ibt-s^2t^2/2}\)">\(e^{ibt-s^2t^2/2}\)</span>. At variance zero use <span class="math" data-tex="\(\delta_b\)">\(\delta_b\)</span>. The choice <span class="math" data-tex="\(a=1/\pi,b=0\)">\(a=1/\pi,b=0\)</span> gives the density <span class="math" data-tex="\(\sqrt\pi e^{-\pi^2\xi^2}\)">\(\sqrt\pi e^{-\pi^2\xi^2}\)</span> for <span class="math" data-tex="\(e^{-x^2}\)">\(e^{-x^2}\)</span>.</p>
+<p><a id="ha-lca-06-example-5-2"></a>
+<strong>Example 5.2 — Cauchy measures.</strong> <strong>Verification.</strong> Two elementary exponential integrals give
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}e^{-|t|}e^{-2\pi i\xi t}\,dt
+ =\frac1{1+2\pi i\xi}+\frac1{1-2\pi i\xi}
+ =q(\xi):=\frac2{1+4\pi^2\xi^2}.
+\]">\[
+ \int_{\mathbb R}e^{-|t|}e^{-2\pi i\xi t}\,dt
+ =\frac1{1+2\pi i\xi}+\frac1{1-2\pi i\xi}
+ =q(\xi):=\frac2{1+4\pi^2\xi^2}.
+\]</span>
+The positive function <span class="math" data-tex="\(q\)">\(q\)</span> has integral one by the arctangent antiderivative. To compute its transform, insert <span class="math" data-tex="\(e^{-\pi\varepsilon\xi^2}\)">\(e^{-\pi\varepsilon\xi^2}\)</span>. Absolute Fubini and Example 5.1 give
+<span class="math math-display" data-tex="\[
+ \int e^{2\pi ix\xi}q(\xi)e^{-\pi\varepsilon\xi^2}\,d\xi
+ =\int e^{-|t|}\varepsilon^{-1/2}e^{-\pi(x-t)^2/\varepsilon}\,dt
+ =\int e^{-|x-\sqrt\varepsilon u|}e^{-\pi u^2}\,du.
+\]">\[
+ \int e^{2\pi ix\xi}q(\xi)e^{-\pi\varepsilon\xi^2}\,d\xi
+ =\int e^{-|t|}\varepsilon^{-1/2}e^{-\pi(x-t)^2/\varepsilon}\,dt
+ =\int e^{-|x-\sqrt\varepsilon u|}e^{-\pi u^2}\,du.
+\]</span>
+Absolute integrability before interchange is bounded by <span class="math" data-tex="\(\|e^{-|\cdot|}\|_1\int e^{-\pi\varepsilon\xi^2}\,d\xi&lt;\infty\)">\(\|e^{-|\cdot|}\|_1\int e^{-\pi\varepsilon\xi^2}\,d\xi&lt;\infty\)</span>. Dominated convergence uses <span class="math" data-tex="\(q\)">\(q\)</span> on the left and <span class="math" data-tex="\(e^{-\pi u^2}\)">\(e^{-\pi u^2}\)</span> on the right. Thus <span class="math" data-tex="\(T(q\,d\xi)(x)=e^{-|x|}\)">\(T(q\,d\xi)(x)=e^{-|x|}\)</span>.</p>
+<p>For <span class="math" data-tex="\(k=2\pi c&gt;0\)">\(k=2\pi c&gt;0\)</span>, substitute <span class="math" data-tex="\(\xi=b+k\eta\)">\(\xi=b+k\eta\)</span>. The density becomes <span class="math" data-tex="\(k^{-1}q((\xi-b)/k)\)">\(k^{-1}q((\xi-b)/k)\)</span>, and its transform becomes <span class="math" data-tex="\(e^{2\pi ibx}e^{-k|x|}\)">\(e^{2\pi ibx}e^{-k|x|}\)</span>. Simplifying this density yields
+<span class="math math-display" data-tex="\[
+ d\mu(\xi)=\frac{c}{\pi((\xi-b)^2+c^2)}\,d\xi,
+ \qquad T\mu(x)=e^{2\pi ibx-2\pi c|x|},\quad c&gt;0. \tag{12}
+\]">\[
+ d\mu(\xi)=\frac{c}{\pi((\xi-b)^2+c^2)}\,d\xi,
+ \qquad T\mu(x)=e^{2\pi ibx-2\pi c|x|},\quad c&gt;0. \tag{12}
+\]</span>
+Its probabilistic characteristic function is <span class="math" data-tex="\(e^{ibt-c|t|}\)">\(e^{ibt-c|t|}\)</span>. Every normalization in (12) follows from the displayed integral; no later inversion theorem is used.</p>
+<p><a id="ha-lca-06-example-5-3"></a>
+<strong>Example 5.3 — Two-point laws.</strong> <strong>Verification.</strong> For <span class="math" data-tex="\(0\le p\le1\)">\(0\le p\le1\)</span> and real <span class="math" data-tex="\(r,s\)">\(r,s\)</span>,
+<span class="math math-display" data-tex="\[
+ \mu=(1-p)\delta_r+p\delta_s,
+ \qquad T\mu(x)=(1-p)e^{2\pi irx}+pe^{2\pi isx}.
+\]">\[
+ \mu=(1-p)\delta_r+p\delta_s,
+ \qquad T\mu(x)=(1-p)e^{2\pi irx}+pe^{2\pi isx}.
+\]</span>
+The case <span class="math" data-tex="\(r=0,s=1\)">\(r=0,s=1\)</span> is the Bernoulli characteristic function after replacing <span class="math" data-tex="\(2\pi x\)">\(2\pi x\)</span> by <span class="math" data-tex="\(t\)">\(t\)</span>. The equally weighted pair <span class="math" data-tex="\(r=-s\)">\(r=-s\)</span> gives <span class="math" data-tex="\(\cos(2\pi sx)\)">\(\cos(2\pi sx)\)</span>. Positivity is already visible as a convex sum of character squares in (6).</p>
+<p><a id="ha-lca-06-example-5-4"></a>
+<strong>Example 5.4 — A circle test.</strong> <strong>Verification.</strong> For a continuous function <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\(\mathbb R/\mathbb Z\)">\(\mathbb R/\mathbb Z\)</span>, write
+<span class="math" data-tex="\(c_n=\int_0^1h(t)e^{-2\pi int}\,dt\)">\(c_n=\int_0^1h(t)e^{-2\pi int}\,dt\)</span>.
+These interval integrals use normalized circle Haar measure by <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-lemma-5-1">HA-LCA-03, Lemma 5.1</a>.
+It has positive type if and only if all <span class="math" data-tex="\(c_n\ge0\)">\(c_n\ge0\)</span>. One direction follows from Corollary 3.2. For the other, define
+<span class="math math-display" data-tex="\[
+ K_N(t)=\frac1{N+1}\left|\sum_{j=0}^Ne^{2\pi ijt}\right|^2.
+\]">\[
+ K_N(t)=\frac1{N+1}\left|\sum_{j=0}^Ne^{2\pi ijt}\right|^2.
+\]</span>
+Expanding the finite square gives <span class="math" data-tex="\(\int_0^1K_N=1\)">\(\int_0^1K_N=1\)</span> and
+<span class="math math-display" data-tex="\[
+ K_N*h(t)=\sum_{|n|\le N}\left(1-\frac{|n|}{N+1}\right)c_ne^{2\pi int}.
+\]">\[
+ K_N*h(t)=\sum_{|n|\le N}\left(1-\frac{|n|}{N+1}\right)c_ne^{2\pi int}.
+\]</span>
+For distance at least <span class="math" data-tex="\(\delta\in(0,1/2)\)">\(\delta\in(0,1/2)\)</span> from the integers, the finite geometric sum gives
+<span class="math" data-tex="\(K_N(t)\le((N+1)\sin^2(\pi\delta))^{-1}\)">\(K_N(t)\le((N+1)\sin^2(\pi\delta))^{-1}\)</span>.
+Split the convolution integral into that set and its complement. Uniform continuity of <span class="math" data-tex="\(h\)">\(h\)</span>, nonnegativity of <span class="math" data-tex="\(K_N\)">\(K_N\)</span> and its mass one prove <span class="math" data-tex="\(K_N*h\to h\)">\(K_N*h\to h\)</span> uniformly. At zero the summands are nonnegative and their weights increase to one; hence <span class="math" data-tex="\(\sum_n c_n=h(0)\)">\(\sum_n c_n=h(0)\)</span>. The series with coefficients <span class="math" data-tex="\(c_n\)">\(c_n\)</span> is absolutely uniformly convergent. Its displayed means converge both to its sum and to <span class="math" data-tex="\(h\)">\(h\)</span>, so its sum is <span class="math" data-tex="\(h\)">\(h\)</span>. Corollary 3.2 proves positive type. The kernel convergence used only continuity of <span class="math" data-tex="\(h\)">\(h\)</span>, not a sign condition on its coefficients. Applied to any continuous <span class="math" data-tex="\(h\)">\(h\)</span>, it proves uniform density of trigonometric polynomials on the circle, which will be used in Exercise 6.3. The complete kernel argument also appears in HA-LCA-03, Example 5.5.</p>
+<h2 id="6-exercises-and-solutions">6. Exercises and solutions</h2>
+<p><a id="ha-lca-06-exercise-6-1"></a>
+<strong>Exercise 6.1 — Detecting a single frequency.</strong> For a compact abelian group of Haar mass one and a continuous positive-type function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, prove directly from integral positivity that <span class="math" data-tex="\(\widehat\varphi(\gamma)\ge0\)">\(\widehat\varphi(\gamma)\ge0\)</span>. Then identify the coefficient with a mass of the representing measure and compute the sum of the coefficients.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(f=\overline\gamma\)">\(f=\overline\gamma\)</span>. Then <span class="math" data-tex="\(f^*=f\)">\(f^*=f\)</span> and
+<span class="math math-display" data-tex="\[
+ (f*f)(x)=\int_K\overline{\gamma(y)}\overline{\gamma(x-y)}\,dy
+ =\overline{\gamma(x)}.
+\]">\[
+ (f*f)(x)=\int_K\overline{\gamma(y)}\overline{\gamma(x-y)}\,dy
+ =\overline{\gamma(x)}.
+\]</span>
+The positivity established in (8) therefore gives
+<span class="math" data-tex="\(\widehat\varphi(\gamma)=\int\varphi(f*f^*)\ge0\)">\(\widehat\varphi(\gamma)=\int\varphi(f*f^*)\ge0\)</span>.
+Corollary 3.2 identifies this number as <span class="math" data-tex="\(\mu(\{\gamma\})\)">\(\mu(\{\gamma\})\)</span>, and Radon inner regularity on the discrete dual gives <span class="math" data-tex="\(\sum_\gamma\widehat\varphi(\gamma)=\mu(\widehat K)=\varphi(0)\)">\(\sum_\gamma\widehat\varphi(\gamma)=\mu(\widehat K)=\varphi(0)\)</span>. The coefficient support is countable even when the dual itself is not.</p>
+<p><a id="ha-lca-06-exercise-6-2"></a>
+<strong>Exercise 6.2 — Mixtures of triangular functions (Pólya's criterion).</strong> Suppose <span class="math" data-tex="\(h:[0,\infty)\to\mathbb R\)">\(h:[0,\infty)\to\mathbb R\)</span> is continuous, decreasing and convex, <span class="math" data-tex="\(h(0)=1\)">\(h(0)=1\)</span>, and <span class="math" data-tex="\(h(r)\to0\)">\(h(r)\to0\)</span>. Construct a probability measure <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> for which
+<span class="math math-display" data-tex="\[
+ h(|x|)=\int\left(1-\frac{|x|}{t}\right)_+d\rho(t), \tag{13}
+\]">\[
+ h(|x|)=\int\left(1-\frac{|x|}{t}\right)_+d\rho(t), \tag{13}
+\]</span>
+and prove positive type. Allow the right derivative at zero to be infinite.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, convex chord inequalities show that the right derivative
+<span class="math" data-tex="\(d(r)=\inf_{s&gt;r}(h(s)-h(r))/(s-r)\)">\(d(r)=\inf_{s&gt;r}(h(s)-h(r))/(s-r)\)</span>
+exists and is finite. A chord with left endpoint smaller than <span class="math" data-tex="\(r\)">\(r\)</span> bounds it below, and a chord with right endpoint larger than <span class="math" data-tex="\(r\)">\(r\)</span> bounds it above. The same inequalities give
+<span class="math math-display" data-tex="\[
+ d(a)\le\frac{h(b)-h(a)}{b-a}\le d(b)\quad(0&lt;a&lt;b).
+\]">\[
+ d(a)\le\frac{h(b)-h(a)}{b-a}\le d(b)\quad(0&lt;a&lt;b).
+\]</span>
+Thus <span class="math" data-tex="\(d\)">\(d\)</span> is increasing and nonpositive. It is right-continuous: for <span class="math" data-tex="\(r_n\downarrow r\)">\(r_n\downarrow r\)</span> and fixed <span class="math" data-tex="\(s&gt;r_n\)">\(s&gt;r_n\)</span>, bound <span class="math" data-tex="\(d(r_n)\)">\(d(r_n)\)</span> above by the chord to <span class="math" data-tex="\(s\)">\(s\)</span>, take the limit, and then take the infimum over <span class="math" data-tex="\(s&gt;r\)">\(s&gt;r\)</span>. Monotonicity supplies the opposite inequality.</p>
+<p>Set <span class="math" data-tex="\(q=-d\)">\(q=-d\)</span>. On a compact interval inside <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, the chord bounds and upper and lower sums for this bounded monotone function give
+<span class="math" data-tex="\(h(a)-h(b)=\int_a^b q(s)\,ds\)">\(h(a)-h(b)=\int_a^b q(s)\,ds\)</span>.
+Let <span class="math" data-tex="\(b\to\infty\)">\(b\to\infty\)</span> and then <span class="math" data-tex="\(a\downarrow0\)">\(a\downarrow0\)</span>. Since <span class="math" data-tex="\(q\ge0\)">\(q\ge0\)</span>, this yields
+<span class="math math-display" data-tex="\[
+ h(r)=\int_r^\infty q(s)\,ds,\qquad \int_0^\infty q(s)\,ds=1.
+\]">\[
+ h(r)=\int_r^\infty q(s)\,ds,\qquad \int_0^\infty q(s)\,ds=1.
+\]</span>
+The decreasing function <span class="math" data-tex="\(q\)">\(q\)</span> tends to zero at infinity, since a positive limiting value would make its integral infinite.</p>
+<p>Here is an explicit construction of the measure needed for (13). For <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span> put
+<span class="math" data-tex="\(\tau(u)=\sup\{r&gt;0:q(r)&gt;u\}\)">\(\tau(u)=\sup\{r&gt;0:q(r)&gt;u\}\)</span>, with empty supremum zero. It is finite because <span class="math" data-tex="\(q(r)\to0\)">\(q(r)\to0\)</span>. Right-continuity gives
+<span class="math" data-tex="\(\{u:\tau(u)&gt;s\}=(0,q(s))\)">\(\{u:\tau(u)&gt;s\}=(0,q(s))\)</span> for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>.
+These identities prove measurability and show that the image of Lebesgue measure, restricted to the values <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>, is a measure <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> with <span class="math" data-tex="\(\nu((s,\infty))=q(s)\)">\(\nu((s,\infty))=q(s)\)</span>. In particular <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is finite away from zero and is sigma-finite. The earlier <a href="../prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-proposition-3-2">real-variable reading, Proposition 3.2</a>, proves the pushforward integral formula by simple approximation. Applying positive Fubini to the Lebesgue variables <span class="math" data-tex="\(u,s&gt;0\)">\(u,s&gt;0\)</span> and the Borel indicator <span class="math" data-tex="\(1_{\{r&lt;s&lt;\tau(u)\}}\)">\(1_{\{r&lt;s&lt;\tau(u)\}}\)</span> then gives
+<span class="math math-display" data-tex="\[
+ h(r)=\int (t-r)_+\,d\nu(t),\qquad \int t\,d\nu(t)=1.
+\]">\[
+ h(r)=\int (t-r)_+\,d\nu(t),\qquad \int t\,d\nu(t)=1.
+\]</span>
+Hence <span class="math" data-tex="\(d\rho(t)=t\,d\nu(t)\)">\(d\rho(t)=t\,d\nu(t)\)</span> is a probability measure and satisfies (13). No bound on <span class="math" data-tex="\(q\)">\(q\)</span> near zero was needed.</p>
+<p>For fixed <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the triangle equals the normalized overlap of two intervals of length <span class="math" data-tex="\(t\)">\(t\)</span>. Its quadratic form is
+<span class="math math-display" data-tex="\[
+ \sum_{i,j}c_i\overline{c_j}\left(1-\frac{|x_i-x_j|}{t}\right)_+
+ =\frac1t\int_{\mathbb R}\left|\sum_i c_i1_{[0,t]}(u-x_i)\right|^2du\ge0.
+\]">\[
+ \sum_{i,j}c_i\overline{c_j}\left(1-\frac{|x_i-x_j|}{t}\right)_+
+ =\frac1t\int_{\mathbb R}\left|\sum_i c_i1_{[0,t]}(u-x_i)\right|^2du\ge0.
+\]</span>
+Integrate this identity with respect to <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. The finite sums and bounded triangles justify the interchange. This proves (6) for <span class="math" data-tex="\(h(|x|)\)">\(h(|x|)\)</span>; continuity is already an assumption.</p>
+<p><a id="ha-lca-06-exercise-6-3"></a>
+<strong>Exercise 6.3 — Construct the Herglotz measure without Bochner existence.</strong> Starting with the positive quadratic forms in Corollary 3.1, construct the measure using finite Fourier sums. Prove convergence of the resulting functionals directly, and also justify the usual weak-* compactness construction.</p>
+<p><strong>Solution.</strong> The two-point inequalities give <span class="math" data-tex="\(a_0\ge0\)">\(a_0\ge0\)</span>, <span class="math" data-tex="\(a_{-n}=\overline{a_n}\)">\(a_{-n}=\overline{a_n}\)</span> and <span class="math" data-tex="\(|a_n|\le a_0\)">\(|a_n|\le a_0\)</span>. If <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>, use the zero measure. Otherwise define, with normalized Haar measure <span class="math" data-tex="\(m\)">\(m\)</span> on the circle,
+<span class="math math-display" data-tex="\[
+ p_N(z)=\frac1{N+1}\sum_{j,k=0}^Na_{j-k}z^{-j}z^k
+ =\sum_{|n|\le N}\left(1-\frac{|n|}{N+1}\right)a_nz^{-n},
+ \qquad d\mu_N=p_N\,dm.
+\]">\[
+ p_N(z)=\frac1{N+1}\sum_{j,k=0}^Na_{j-k}z^{-j}z^k
+ =\sum_{|n|\le N}\left(1-\frac{|n|}{N+1}\right)a_nz^{-n},
+ \qquad d\mu_N=p_N\,dm.
+\]</span>
+The original quadratic-form assumption, with coefficients <span class="math" data-tex="\(z^{-j}\)">\(z^{-j}\)</span>, says <span class="math" data-tex="\(p_N(z)\ge0\)">\(p_N(z)\ge0\)</span>. Circle orthogonality gives <span class="math" data-tex="\(\mu_N(\mathbb T)=a_0\)">\(\mu_N(\mathbb T)=a_0\)</span> and, for each fixed <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+ \int z^n\,d\mu_N\longrightarrow a_n.
+\]">\[
+ \int z^n\,d\mu_N\longrightarrow a_n.
+\]</span>
+Thus the integrals of every trigonometric polynomial converge. Example 5.4 proved their uniform density in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. For <span class="math" data-tex="\(g\in C(\mathbb T)\)">\(g\in C(\mathbb T)\)</span>, choose a polynomial <span class="math" data-tex="\(p\)">\(p\)</span> uniformly within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>; then
+<span class="math math-display" data-tex="\[
+ \left|\int g\,d\mu_N-\int g\,d\mu_M\right|
+ \le 2a_0\varepsilon+
+       \left|\int p\,d\mu_N-\int p\,d\mu_M\right|.
+\]">\[
+ \left|\int g\,d\mu_N-\int g\,d\mu_M\right|
+ \le 2a_0\varepsilon+
+       \left|\int p\,d\mu_N-\int p\,d\mu_M\right|.
+\]</span>
+It follows that <span class="math" data-tex="\(L(g)=\lim_N\int g\,d\mu_N\)">\(L(g)=\lim_N\int g\,d\mu_N\)</span> exists. It is linear, positive, bounded by <span class="math" data-tex="\(a_0\|g\|_\infty\)">\(a_0\|g\|_\infty\)</span>, and satisfies <span class="math" data-tex="\(L(1)=a_0\)">\(L(1)=a_0\)</span>. Finite Radon representation supplies <span class="math" data-tex="\(\mu\ge0\)">\(\mu\ge0\)</span> of mass <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, with <span class="math" data-tex="\(\int z^n\,d\mu=a_n\)">\(\int z^n\,d\mu=a_n\)</span>. If two measures have these moments, they agree on the dense polynomials and hence on all continuous functions, so they are equal. Finally, a positive measure gives the required quadratic forms by integrating a squared polynomial. This proves both directions without using Bochner existence or weak-* compactness.</p>
+<p>For the compactness construction, embed the ball <span class="math" data-tex="\(\{L\in C(\mathbb T)^*: \|L\|\le a_0\}\)">\(\{L\in C(\mathbb T)^*: \|L\|\le a_0\}\)</span> in
+<span class="math" data-tex="\(\prod_{g\in C(\mathbb T)}\{z\in\mathbb C:|z|\le a_0\|g\|_\infty\}\)">\(\prod_{g\in C(\mathbb T)}\{z\in\mathbb C:|z|\le a_0\|g\|_\infty\}\)</span>
+by all its evaluations. The finite-coordinate linearity equations define a closed subset of this product, and its points are exactly the bounded linear functionals in the ball. <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-lemma-4-1">Lemma 4.1 of the Banach-algebra prerequisite</a> makes the product compact; its relative product topology is precisely the weak-* topology. Positivity and the equation <span class="math" data-tex="\(L(1)=a_0\)">\(L(1)=a_0\)</span> are closed conditions. Thus the sequence of positive functionals associated to <span class="math" data-tex="\(\mu_N\)">\(\mu_N\)</span> has a convergent subnet in this set. To justify that last step, the closures of its tails have the finite-intersection property and hence a common point <span class="math" data-tex="\(L_*\)">\(L_*\)</span>. Use triples <span class="math" data-tex="\((U,n,k)\)">\((U,n,k)\)</span>, where <span class="math" data-tex="\(U\)">\(U\)</span> is a neighbourhood of <span class="math" data-tex="\(L_*\)">\(L_*\)</span>, <span class="math" data-tex="\(k\ge n\)">\(k\ge n\)</span>, and <span class="math" data-tex="\(L_k\in U\)">\(L_k\in U\)</span>. Order triples by reverse inclusion of <span class="math" data-tex="\(U\)">\(U\)</span> and by increasing <span class="math" data-tex="\(n,k\)">\(n,k\)</span>. They form a directed set: intersect two neighbourhoods and use that <span class="math" data-tex="\(L_*\)">\(L_*\)</span> belongs to every tail closure to choose a new <span class="math" data-tex="\(k\)">\(k\)</span> beyond both old <span class="math" data-tex="\(k\)">\(k\)</span>'s and both lower bounds. Projection to <span class="math" data-tex="\(k\)">\(k\)</span> is increasing and cofinal in the original indices. The resulting subnet converges to <span class="math" data-tex="\(L_*\)">\(L_*\)</span>, since triples beyond one with neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> have their functional in <span class="math" data-tex="\(U\)">\(U\)</span>. Its moment limits are the displayed <span class="math" data-tex="\(a_n\)">\(a_n\)</span>. Radon representation supplies the same unique measure. This also proves the weak-* method; the direct estimate above additionally shows convergence of the entire sequence.</p>
+<p><a id="ha-lca-06-exercise-6-4"></a>
+<strong>Exercise 6.4 — A cutoff fails positivity.</strong> Test <span class="math" data-tex="\(u(x)=(1-x^2)_+\)">\(u(x)=(1-x^2)_+\)</span> on the three points <span class="math" data-tex="\(-1/2,0,1/2\)">\(-1/2,0,1/2\)</span>. Also compute its Fourier transform to see a frequency at which it is negative.</p>
+<p><strong>Solution.</strong> The matrix of values <span class="math" data-tex="\(u(x_i-x_j)\)">\(u(x_i-x_j)\)</span> is
+<span class="math math-display" data-tex="\[
+ \begin{pmatrix}1&amp;3/4&amp;0\\3/4&amp;1&amp;3/4\\0&amp;3/4&amp;1\end{pmatrix}.
+\]">\[
+ \begin{pmatrix}1&amp;3/4&amp;0\\3/4&amp;1&amp;3/4\\0&amp;3/4&amp;1\end{pmatrix}.
+\]</span>
+For <span class="math" data-tex="\(c=(1,-3/2,1)\)">\(c=(1,-3/2,1)\)</span>, its quadratic form is <span class="math" data-tex="\(1+9/4+1-9/4-9/4=-1/4\)">\(1+9/4+1-9/4-9/4=-1/4\)</span>. This directly contradicts (6).</p>
+<p>Writing <span class="math" data-tex="\(w=2\pi\xi\)">\(w=2\pi\xi\)</span>, integration by parts twice gives
+<span class="math math-display" data-tex="\[
+ \widehat u(\xi)=2\int_0^1(1-t^2)\cos(wt)\,dt
+ =\frac4w\int_0^1t\sin(wt)\,dt
+ =\frac4w\left(-\frac{\cos w}{w}+\frac{\sin w}{w^2}\right)
+ =\frac{4(\sin w-w\cos w)}{w^3}\quad(w\ne0).
+\]">\[
+ \widehat u(\xi)=2\int_0^1(1-t^2)\cos(wt)\,dt
+ =\frac4w\int_0^1t\sin(wt)\,dt
+ =\frac4w\left(-\frac{\cos w}{w}+\frac{\sin w}{w^2}\right)
+ =\frac{4(\sin w-w\cos w)}{w^3}\quad(w\ne0).
+\]</span>
+The value at zero is <span class="math" data-tex="\(4/3\)">\(4/3\)</span>, obtained by direct integration, and at <span class="math" data-tex="\(\xi=1\)">\(\xi=1\)</span> it is <span class="math" data-tex="\(-1/\pi^2\)">\(-1/\pi^2\)</span>.</p>
+<p>For completeness the negative coefficient also gives an independent test. If a continuous integrable <span class="math" data-tex="\(v\)">\(v\)</span> were of positive type, use
+<span class="math" data-tex="\(f_T(t)=(2T)^{-1/2}e^{-2\pi i\xi t}1_{[-T,T]}(t)\)">\(f_T(t)=(2T)^{-1/2}e^{-2\pi i\xi t}1_{[-T,T]}(t)\)</span>
+in its integral positivity. Direct overlap gives
+<span class="math" data-tex="\(f_T*f_T^*(s)=e^{-2\pi i\xi s}(1-|s|/(2T))_+\)">\(f_T*f_T^*(s)=e^{-2\pi i\xi s}(1-|s|/(2T))_+\)</span>.
+The nonnegative integral against <span class="math" data-tex="\(v\)">\(v\)</span> converges to <span class="math" data-tex="\(\widehat v(\xi)\)">\(\widehat v(\xi)\)</span>, by domination by <span class="math" data-tex="\(|v|\)">\(|v|\)</span>. Hence such a transform is nonnegative at every frequency; the computed value for <span class="math" data-tex="\(u\)">\(u\)</span> again rules out positive type.</p>
+<p><a id="ha-lca-06-exercise-6-5"></a>
+<strong>Exercise 6.5 — The exponent test.</strong> Prove that <span class="math" data-tex="\(e^{-|x|^\alpha}\)">\(e^{-|x|^\alpha}\)</span> has positive type for <span class="math" data-tex="\(0&lt;\alpha\le1\)">\(0&lt;\alpha\le1\)</span> and for <span class="math" data-tex="\(\alpha=2\)">\(\alpha=2\)</span>, and that it cannot have positive type when <span class="math" data-tex="\(\alpha&gt;2\)">\(\alpha&gt;2\)</span>. The interval <span class="math" data-tex="\(1&lt;\alpha&lt;2\)">\(1&lt;\alpha&lt;2\)</span> is not required here.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(0&lt;\alpha\le1\)">\(0&lt;\alpha\le1\)</span>, the function <span class="math" data-tex="\(h(r)=e^{-r^\alpha}\)">\(h(r)=e^{-r^\alpha}\)</span> is continuous, decreases from one to zero, and on <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ h&#x27;&#x27;(r)=e^{-r^\alpha}
+ \bigl(\alpha(1-\alpha)r^{\alpha-2}+\alpha^2r^{2\alpha-2}\bigr)\ge0.
+\]">\[
+ h&#x27;&#x27;(r)=e^{-r^\alpha}
+ \bigl(\alpha(1-\alpha)r^{\alpha-2}+\alpha^2r^{2\alpha-2}\bigr)\ge0.
+\]</span>
+Continuity at zero extends its convex inequalities to <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Exercise 6.2 applies, including the possible infinite slope at zero. The case <span class="math" data-tex="\(\alpha=2\)">\(\alpha=2\)</span> is the Gaussian measure in (11).</p>
+<p>Suppose <span class="math" data-tex="\(\alpha&gt;2\)">\(\alpha&gt;2\)</span> and positive type held. Bochner would give a probability measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Taking real parts and dividing by <span class="math" data-tex="\(t^2\)">\(t^2\)</span> gives
+<span class="math math-display" data-tex="\[
+ \frac{1-e^{-|t|^\alpha}}{t^2}
+ =\int\frac{1-\cos(2\pi t\xi)}{t^2}\,d\mu(\xi).
+\]">\[
+ \frac{1-e^{-|t|^\alpha}}{t^2}
+ =\int\frac{1-\cos(2\pi t\xi)}{t^2}\,d\mu(\xi).
+\]</span>
+The integrands are nonnegative. Along any nonzero sequence tending to zero they converge pointwise to <span class="math" data-tex="\(2\pi^2\xi^2\)">\(2\pi^2\xi^2\)</span>, while the left side tends to zero. Fatou's lemma implies <span class="math" data-tex="\(\int\xi^2\,d\mu=0\)">\(\int\xi^2\,d\mu=0\)</span>. Thus <span class="math" data-tex="\(\mu(\{|\xi|\ge1/n\})=0\)">\(\mu(\{|\xi|\ge1/n\})=0\)</span> for every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, so <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is concentrated at zero. Its transform would be the constant one, contradicting its value <span class="math" data-tex="\(e^{-1}\)">\(e^{-1}\)</span> at <span class="math" data-tex="\(x=1\)">\(x=1\)</span>. No moment assumption was used before Fatou's lemma.</p>
+<h2 id="reading-and-continuation">Reading and continuation</h2>
+<p>The freely accessible mathematical source for the main reconstruction is D. H. Fremlin, <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex"><em>Measure Theory</em>, Volume 4, §445N</a>, parts (d)–(f), (h)–(j), with (a)–(c) supplying the positive-definite starting point. The bounded-functional formulation in Lemma 1.2 treats measurable classes directly; the positivity argument in Theorem 1.3 uses the uniform density of transforms. All source-derived steps are written above. The linked earlier readings supply their stated proofs. The main spectral argument, the measurable-class statement, all four examples and all five exercise solutions use the local or exact earlier proofs identified in this lesson.</p>
+<p>Next comes a compatible Haar measure on <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> and the general Fourier inversion theorem. The Gaussian and Cauchy calculations here established their particular integral identities directly.</p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

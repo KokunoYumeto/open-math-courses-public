@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="660177BE6291AB788BD43F946CB74805E477F1080AEA722A285587063D8BFC72">
+<title>Reduced crossed products and Fell&#x27;s absorption principle — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Course contents</a><span aria-hidden="true"> / </span><span>KT-CP-02</span></nav>
+<article id="lesson" class="lesson"><h1 id="reduced-crossed-products-and-fell-s-absorption-principle">Reduced crossed products and Fell's absorption principle</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The full crossed product records every covariant representation of an action. The reduced crossed product records a regular one: coefficients act differently at each group coordinate, and the group translates those coordinates. This gives a concrete norm on a Hilbert space. Fell's absorption principle explains why tensoring any covariant representation with the left regular representation produces this regular model.</p>
+<p>We assume the integrated-form correspondence and universal construction from <a href="KT-CP-01.html">C*-dynamical systems and full crossed products</a>, together with basic Hilbert-space and C*-algebra theory. We develop the Hilbert-module model explicitly. Basic references are [Connes 1994], [Rosenberg 2012], [Blackadar 2006], and [Gomez Aparicio–Julg–Valette 2019]. The earlier chapter <em>Covariance and crossed products with nonunital coefficients</em> gives a separate faithful-representation independence proof; <em>Unitary representations and the two group C</em> completions* supplies the free-group norm calculation below.</p>
+<p>The main distinction is between embeddings and quotients. Reduced crossed products preserve equivariant embeddings without any amenability assumption. Nevertheless, they can fail to preserve the kernel of a quotient map. These statements concern different parts of an exact sequence. We finish by constructing a finitely generated group with an expander placement and an explicit projection that witnesses this failure. The graph, labelling, diagram and operator arguments are all included.</p>
+<h2 id="coefficients-along-a-group-coordinate">Coefficients along a group coordinate</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact Hausdorff group with left Haar measure <span class="math" data-tex="\(ds\)">\(ds\)</span>, and let <span class="math" data-tex="\(A\)">\(A\)</span> be a possibly nonunital C*-algebra. Let <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(A)\)">\(\alpha:G\to\operatorname{Aut}(A)\)</span> be a homomorphism with <span class="math" data-tex="\(s\mapsto\alpha_s(a)\)">\(s\mapsto\alpha_s(a)\)</span> norm continuous for every <span class="math" data-tex="\(a\)">\(a\)</span>. No separability, second countability, or unimodularity is assumed. The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> spaces below can be defined by completing compact continuous sections, so our calculations start on compact supports.</p>
+<p>Our modular convention is</p>
+<span class="math math-display" data-tex="\[
+\int_G q(ts)\,dt=\Delta(s)^{-1}\int_G q(t)\,dt.
+\]">\[
+\int_G q(ts)\,dt=\Delta(s)^{-1}\int_G q(t)\,dt.
+\]</span>
+<p>Coefficients precede group operators. On <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span> this gives</p>
+<span id="equation-1"></span><span class="math math-display" data-tex="\[
+(f*g)(t)=\int_G f(s)\alpha_s(g(s^{-1}t))\,ds,
+\qquad
+f^*(t)=\Delta(t)^{-1}\alpha_t(f(t^{-1})^*).
+\tag{1}
+\]">\[
+(f*g)(t)=\int_G f(s)\alpha_s(g(s^{-1}t))\,ds,
+\qquad
+f^*(t)=\Delta(t)^{-1}\alpha_t(f(t^{-1})^*).
+\tag{1}
+\]</span>
+<p>A covariant pair <span class="math" data-tex="\((\pi,U)\)">\((\pi,U)\)</span> consists of a nondegenerate representation <span class="math" data-tex="\(\pi:A\to B(H)\)">\(\pi:A\to B(H)\)</span> and a strongly continuous unitary representation <span class="math" data-tex="\(U\)">\(U\)</span>, with</p>
+<span id="equation-2"></span><span class="math math-display" data-tex="\[
+U_s\pi(a)U_s^*=\pi(\alpha_s(a)).
+\tag{2}
+\]">\[
+U_s\pi(a)U_s^*=\pi(\alpha_s(a)).
+\tag{2}
+\]</span>
+<p>Its integrated form is <span class="math" data-tex="\((\pi\rtimes U)(f)=\int_G\pi(f(s))U_s\,ds\)">\((\pi\rtimes U)(f)=\int_G\pi(f(s))U_s\,ds\)</span>, interpreted on vectors. These conventions agree with the prerequisite and [Connes 1994].</p>
+<p>Given any nondegenerate <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, put, on <span class="math" data-tex="\(L^2(G,H)\)">\(L^2(G,H)\)</span>,</p>
+<span id="equation-3"></span><span class="math math-display" data-tex="\[
+(\widetilde\pi(a)\xi)(t)=\pi(\alpha_{t^{-1}}(a))\xi(t),
+\qquad
+(\lambda_s\xi)(t)=\xi(s^{-1}t).
+\tag{3}
+\]">\[
+(\widetilde\pi(a)\xi)(t)=\pi(\alpha_{t^{-1}}(a))\xi(t),
+\qquad
+(\lambda_s\xi)(t)=\xi(s^{-1}t).
+\tag{3}
+\]</span>
+<p>The group coordinate tells us which translate of <span class="math" data-tex="\(a\)">\(a\)</span> to represent. The inverse in that translate is essential.</p>
+<p><span id="proposition-2-1"></span><strong>Proposition 2.1 (the regular pair).</strong> Equation (3) defines a nondegenerate covariant pair. Its integrated representation <span class="math" data-tex="\(R_\pi=\widetilde\pi\rtimes\lambda\)">\(R_\pi=\widetilde\pi\rtimes\lambda\)</span> satisfies</p>
+<span id="equation-4"></span><span class="math math-display" data-tex="\[
+(R_\pi(f)\xi)(t)
+=\int_G\pi(\alpha_{t^{-1}}(f(s)))\xi(s^{-1}t)\,ds,
+\qquad
+\|R_\pi(f)\|\leq\|f\|_1.
+\tag{4}
+\]">\[
+(R_\pi(f)\xi)(t)
+=\int_G\pi(\alpha_{t^{-1}}(f(s)))\xi(s^{-1}t)\,ds,
+\qquad
+\|R_\pi(f)\|\leq\|f\|_1.
+\tag{4}
+\]</span>
+<p><strong>Proof.</strong> Coefficient multiplication is bounded by <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>, and multiplication and adjoints hold pointwise. Left Haar invariance makes <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> unitary with inverse <span class="math" data-tex="\(\lambda_{s^{-1}}\)">\(\lambda_{s^{-1}}\)</span>. Translation is strongly continuous on compact continuous sections: near a fixed <span class="math" data-tex="\(s\)">\(s\)</span>, all supports lie in one compact set and the translated functions converge uniformly there. Density extends continuity to all vectors.</p>
+<p>Covariance follows from the order of the two inverses:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\lambda_s\widetilde\pi(a)\lambda_s^*\xi)(t)
+&amp;=\pi(\alpha_{(s^{-1}t)^{-1}}(a))\xi(t)\\
+&amp;=\pi(\alpha_{t^{-1}}(\alpha_s(a)))\xi(t).
+\end{aligned}
+\]">\[
+\begin{aligned}
+(\lambda_s\widetilde\pi(a)\lambda_s^*\xi)(t)
+&amp;=\pi(\alpha_{(s^{-1}t)^{-1}}(a))\xi(t)\\
+&amp;=\pi(\alpha_{t^{-1}}(\alpha_s(a)))\xi(t).
+\end{aligned}
+\]</span>
+<p>For nondegeneracy take a contractive approximate identity <span class="math" data-tex="\((e_i)\)">\((e_i)\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>, and test on <span class="math" data-tex="\(\xi(t)=h(t)\pi(b)v\)">\(\xi(t)=h(t)\pi(b)v\)</span>, with <span class="math" data-tex="\(h\in C_c(G)\)">\(h\in C_c(G)\)</span>. The family <span class="math" data-tex="\(\{\alpha_t(b):t\in\operatorname{supp}h\}\)">\(\{\alpha_t(b):t\in\operatorname{supp}h\}\)</span> is compact. Hence <span class="math" data-tex="\(e_i\alpha_t(b)\to\alpha_t(b)\)">\(e_i\alpha_t(b)\to\alpha_t(b)\)</span> uniformly there, and</p>
+<span class="math math-display" data-tex="\[
+\pi(\alpha_{t^{-1}}(e_i))\pi(b)
+=\pi(\alpha_{t^{-1}}(e_i\alpha_t(b)))
+\]">\[
+\pi(\alpha_{t^{-1}}(e_i))\pi(b)
+=\pi(\alpha_{t^{-1}}(e_i\alpha_t(b)))
+\]</span>
+<p>converges uniformly on the support to <span class="math" data-tex="\(\pi(b)\)">\(\pi(b)\)</span>. These test vectors span a dense subspace. Contractivity gives <span class="math" data-tex="\(\widetilde\pi(e_i)\to1\)">\(\widetilde\pi(e_i)\to1\)</span> strongly. The integrated-form correspondence gives (4), with its bound obtained by integrating vector norms. The displayed formula is first used on compact test sections and then interpreted as an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Blackadar 2006] displays <span class="math" data-tex="\(\alpha_t(a)\)">\(\alpha_t(a)\)</span> with left translation, although II.10.3.4 uses (2). For <span class="math" data-tex="\(\alpha_n(b)(k)=b(k-n)\)">\(\alpha_n(b)(k)=b(k-n)\)</span> on <span class="math" data-tex="\(c_0(\mathbb Z)\)">\(c_0(\mathbb Z)\)</span>, that choice gives <span class="math" data-tex="\(\alpha_{t-s}(b)\)">\(\alpha_{t-s}(b)\)</span> where covariance requires <span class="math" data-tex="\(\alpha_{t+s}(b)\)">\(\alpha_{t+s}(b)\)</span>. Equation (3) gives the required pair.</p>
+<p>For faithful nondegenerate <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, <span class="math" data-tex="\(R_\pi\)">\(R_\pi\)</span> is faithful on <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span>, and its norm is independent of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. We use these established facts with precise locators under <em>What this lesson does not prove</em>. Define</p>
+<span id="equation-5"></span><span class="math math-display" data-tex="\[
+\|f\|_r=\|R_\pi(f)\|,
+\qquad
+A\rtimes_{\alpha,r}G=\overline{R_\pi(C_c(G,A))}.
+\tag{5}
+\]">\[
+\|f\|_r=\|R_\pi(f)\|,
+\qquad
+A\rtimes_{\alpha,r}G=\overline{R_\pi(C_c(G,A))}.
+\tag{5}
+\]</span>
+<p>Equivalently, complete <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span> in this norm. The bound <span class="math" data-tex="\(\|f\|_r\leq\|f\|_u\)">\(\|f\|_r\leq\|f\|_u\)</span> gives a surjection</p>
+<span id="equation-6"></span><span class="math math-display" data-tex="\[
+q_A:A\rtimes_\alpha G\longrightarrow A\rtimes_{\alpha,r}G.
+\tag{6}
+\]">\[
+q_A:A\rtimes_\alpha G\longrightarrow A\rtimes_{\alpha,r}G.
+\tag{6}
+\]</span>
+<p>Its range is dense by (5) and closed as the range of a C*-homomorphism. Faithfulness on compact coefficient functions does not imply injectivity of (6) after completion.</p>
+<h2 id="a-regular-model-with-no-chosen-hilbert-space">A regular model with no chosen Hilbert space</h2>
+<p>Start with <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span>, with right action <span class="math" data-tex="\((\xi a)(t)=\xi(t)a\)">\((\xi a)(t)=\xi(t)a\)</span> and inner product, linear in the second argument,</p>
+<span id="equation-7"></span><span class="math math-display" data-tex="\[
+\langle\xi,\eta\rangle_A=\int_G\xi(t)^*\eta(t)\,dt.
+\tag{7}
+\]">\[
+\langle\xi,\eta\rangle_A=\int_G\xi(t)^*\eta(t)\,dt.
+\tag{7}
+\]</span>
+<p>Its completion for <span class="math" data-tex="\(\|\xi\|_E=\|\langle\xi,\xi\rangle_A\|^{1/2}\)">\(\|\xi\|_E=\|\langle\xi,\xi\rangle_A\|^{1/2}\)</span> is the Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(E=L^2(G,A)\)">\(E=L^2(G,A)\)</span>. Positivity follows by integration of positive elements; definiteness on continuous sections follows by applying a state detecting a nonzero positive value and using full support of Haar measure. Positivity of Gram matrices, followed by norm approximation of these integrals, gives the module Cauchy–Schwarz inequality. Notice that this norm need not be <span class="math" data-tex="\((\int\|\xi(t)\|^2dt)^{1/2}\)">\((\int\|\xi(t)\|^2dt)^{1/2}\)</span>.</p>
+<p>Finite sums <span class="math" data-tex="\(t\mapsto h(t)a\)">\(t\mapsto h(t)a\)</span> are dense: approximate a continuous coefficient image on its compact support by finitely many values and a partition of unity, using a compact cutoff. An error of uniform size <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> on a common compact support <span class="math" data-tex="\(K\)">\(K\)</span> has module norm at most <span class="math" data-tex="\(\varepsilon\,\mu(K)^{1/2}\)">\(\varepsilon\,\mu(K)^{1/2}\)</span>. This identifies <span class="math" data-tex="\(E\)">\(E\)</span> with the standard module <span class="math" data-tex="\(L^2(G)\otimes A\)">\(L^2(G)\otimes A\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\mathcal L_A(E)\)">\(\mathcal L_A(E)\)</span> for the C*-algebra of bounded adjointable right <span class="math" data-tex="\(A\)">\(A\)</span>-linear operators. Define</p>
+<span id="equation-8"></span><span class="math math-display" data-tex="\[
+(M(a)\xi)(t)=\alpha_{t^{-1}}(a)\xi(t),
+\qquad
+(L_s\xi)(t)=\xi(s^{-1}t).
+\tag{8}
+\]">\[
+(M(a)\xi)(t)=\alpha_{t^{-1}}(a)\xi(t),
+\qquad
+(L_s\xi)(t)=\xi(s^{-1}t).
+\tag{8}
+\]</span>
+<p><span id="proposition-2-2"></span><strong>Proposition 2.2 (module realization).</strong> Equation (8) is a nondegenerate covariant pair in <span class="math" data-tex="\(\mathcal L_A(E)\)">\(\mathcal L_A(E)\)</span>. Its integrated form <span class="math" data-tex="\(\Lambda_E\)">\(\Lambda_E\)</span> satisfies</p>
+<span id="equation-9"></span><span class="math math-display" data-tex="\[
+\|\Lambda_E(f)\|=\|f\|_r.
+\tag{9}
+\]">\[
+\|\Lambda_E(f)\|=\|f\|_r.
+\tag{9}
+\]</span>
+<p>Thus the reduced crossed product is canonically the closure of <span class="math" data-tex="\(\Lambda_E(C_c(G,A))\)">\(\Lambda_E(C_c(G,A))\)</span>.</p>
+<p><strong>Proof.</strong> The inequality <span class="math" data-tex="\(a^*a\leq\|a\|^2 1\)">\(a^*a\leq\|a\|^2 1\)</span>, in the unitization, gives <span class="math" data-tex="\(\|M(a)\xi\|_E\leq\|a\|\|\xi\|_E\)">\(\|M(a)\xi\|_E\leq\|a\|\|\xi\|_E\)</span>. Equation (7) gives <span class="math" data-tex="\(M(a)^*=M(a^*)\)">\(M(a)^*=M(a^*)\)</span> and <span class="math" data-tex="\(L_s^*=L_{s^{-1}}\)">\(L_s^*=L_{s^{-1}}\)</span>. The covariance calculation is the one in Proposition 2.1. Continuity on compact sections gives norm continuity of <span class="math" data-tex="\(s\mapsto L_s\xi\)">\(s\mapsto L_s\xi\)</span>. An approximate identity acts uniformly on the compact family <span class="math" data-tex="\(\{\alpha_t(\xi(t))\}\)">\(\{\alpha_t(\xi(t))\}\)</span>, which proves nondegeneracy of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>The vector integral</p>
+<span class="math math-display" data-tex="\[
+\Lambda_E(f)\xi=\int_G M(f(s))L_s\xi\,ds
+\]">\[
+\Lambda_E(f)\xi=\int_G M(f(s))L_s\xi\,ds
+\]</span>
+<p>is bounded by <span class="math" data-tex="\(\|f\|_1\|\xi\|_E\)">\(\|f\|_1\|\xi\|_E\)</span>. Taking inner products under the integral and using covariance and Haar inversion gives <span class="math" data-tex="\(\Lambda_E(f)^*=\Lambda_E(f^*)\)">\(\Lambda_E(f)^*=\Lambda_E(f^*)\)</span>; the convolution computation gives multiplicativity.</p>
+<p>Choose faithful nondegenerate <span class="math" data-tex="\(\pi:A\to B(H)\)">\(\pi:A\to B(H)\)</span>. The interior tensor product <span class="math" data-tex="\(E\otimes_\pi H\)">\(E\otimes_\pi H\)</span> balances <span class="math" data-tex="\(\xi a\otimes v=\xi\otimes\pi(a)v\)">\(\xi a\otimes v=\xi\otimes\pi(a)v\)</span>, with inner product</p>
+<span class="math math-display" data-tex="\[
+\langle\xi\otimes v,\eta\otimes w\rangle
+=\langle v,\pi(\langle\xi,\eta\rangle_A)w\rangle.
+\]">\[
+\langle\xi\otimes v,\eta\otimes w\rangle
+=\langle v,\pi(\langle\xi,\eta\rangle_A)w\rangle.
+\]</span>
+<p>The map</p>
+<span id="equation-10"></span><span class="math math-display" data-tex="\[
+J(\xi\otimes v)(t)=\pi(\xi(t))v
+\tag{10}
+\]">\[
+J(\xi\otimes v)(t)=\pi(\xi(t))v
+\tag{10}
+\]</span>
+<p>preserves inner products and has dense range: it contains <span class="math" data-tex="\(h(t)\pi(a)v\)">\(h(t)\pi(a)v\)</span>. Hence it is unitary onto <span class="math" data-tex="\(L^2(G,H)\)">\(L^2(G,H)\)</span>. It carries <span class="math" data-tex="\(M(a)\otimes1\)">\(M(a)\otimes1\)</span> to <span class="math" data-tex="\(\widetilde\pi(a)\)">\(\widetilde\pi(a)\)</span>, <span class="math" data-tex="\(L_s\otimes1\)">\(L_s\otimes1\)</span> to <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span>, and <span class="math" data-tex="\(\Lambda_E(f)\otimes1\)">\(\Lambda_E(f)\otimes1\)</span> to <span class="math" data-tex="\(R_\pi(f)\)">\(R_\pi(f)\)</span>.</p>
+<p>The homomorphism <span class="math" data-tex="\(T\mapsto T\otimes1\)">\(T\mapsto T\otimes1\)</span> on <span class="math" data-tex="\(\mathcal L_A(E)\)">\(\mathcal L_A(E)\)</span> is faithful. Indeed, if <span class="math" data-tex="\(T\xi\ne0\)">\(T\xi\ne0\)</span>, then <span class="math" data-tex="\(b=\langle T\xi,T\xi\rangle_A\ne0\)">\(b=\langle T\xi,T\xi\rangle_A\ne0\)</span> is positive. Faithfulness of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> supplies <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(\langle v,\pi(b)v\rangle&gt;0\)">\(\langle v,\pi(b)v\rangle&gt;0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\|(T\otimes1)(\xi\otimes v)\|^2=\langle v,\pi(b)v\rangle&gt;0.
+\]">\[
+\|(T\otimes1)(\xi\otimes v)\|^2=\langle v,\pi(b)v\rangle&gt;0.
+\]</span>
+<p>An injective C*-homomorphism is isometric. Applying this to <span class="math" data-tex="\(\Lambda_E(f)\)">\(\Lambda_E(f)\)</span> proves (9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This explains faithful-representation independence from the module viewpoint: every faithful <span class="math" data-tex="\(\pi\)">\(\pi\)</span> measures the norm of the same <span class="math" data-tex="\(\Lambda_E(f)\)">\(\Lambda_E(f)\)</span>. It complements the earlier finite matrix compression proof without requiring that argument again.</p>
+<p>If a coefficient representation <span class="math" data-tex="\(\sigma:A\to B(K)\)">\(\sigma:A\to B(K)\)</span> is not faithful, the tensor construction is still contractive. If it is degenerate, restrict to <span class="math" data-tex="\(K_0=\overline{\sigma(A)K}\)">\(K_0=\overline{\sigma(A)K}\)</span>; it is zero on <span class="math" data-tex="\(K_0^\perp\)">\(K_0^\perp\)</span>. The regular integrated representation is zero on <span class="math" data-tex="\(L^2(G,K_0^\perp)\)">\(L^2(G,K_0^\perp)\)</span> as well. Consequently</p>
+<span id="equation-11"></span><span class="math math-display" data-tex="\[
+\|R_\sigma(f)\|\leq\|f\|_r
+\quad\text{for every representation }\sigma.
+\tag{11}
+\]">\[
+\|R_\sigma(f)\|\leq\|f\|_r
+\quad\text{for every representation }\sigma.
+\tag{11}
+\]</span>
+<h2 id="absorbing-a-unitary-representation">Absorbing a unitary representation</h2>
+<p>Identify <span class="math" data-tex="\(H\otimes L^2(G)\)">\(H\otimes L^2(G)\)</span> with <span class="math" data-tex="\(L^2(G,H)\)">\(L^2(G,H)\)</span> by <span class="math" data-tex="\(v\otimes h\mapsto[t\mapsto h(t)v]\)">\(v\otimes h\mapsto[t\mapsto h(t)v]\)</span>. The pair <span class="math" data-tex="\((\pi\otimes1,U\otimes\lambda)\)">\((\pi\otimes1,U\otimes\lambda)\)</span> then becomes</p>
+<span id="equation-12"></span><span class="math math-display" data-tex="\[
+(P(a)\xi)(t)=\pi(a)\xi(t),
+\qquad
+(V_s\xi)(t)=U_s\xi(s^{-1}t).
+\tag{12}
+\]">\[
+(P(a)\xi)(t)=\pi(a)\xi(t),
+\qquad
+(V_s\xi)(t)=U_s\xi(s^{-1}t).
+\tag{12}
+\]</span>
+<p>It is covariant by (2).</p>
+<p><span id="theorem-2-3"></span><strong>Theorem 2.3 (Fell's absorption principle).</strong> For every nondegenerate covariant pair <span class="math" data-tex="\((\pi,U)\)">\((\pi,U)\)</span>, the pair (12) is unitarily equivalent to <span class="math" data-tex="\((\widetilde\pi,\lambda)\)">\((\widetilde\pi,\lambda)\)</span>. An intertwining unitary is</p>
+<span id="equation-13"></span><span class="math math-display" data-tex="\[
+(W\xi)(t)=U_{t^{-1}}\xi(t),
+\qquad
+(W^*\eta)(t)=U_t\eta(t).
+\tag{13}
+\]">\[
+(W\xi)(t)=U_{t^{-1}}\xi(t),
+\qquad
+(W^*\eta)(t)=U_t\eta(t).
+\tag{13}
+\]</span>
+<p><strong>Proof.</strong> Strong continuity of <span class="math" data-tex="\(U\)">\(U\)</span> makes (13) a compact continuous section when <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is one. Continuity follows by first bounding the change in <span class="math" data-tex="\(\xi(t)\)">\(\xi(t)\)</span>, then applying strong continuity to its fixed value. Unitarity gives</p>
+<span class="math math-display" data-tex="\[
+\|W\xi\|_2^2=\int_G\|U_{t^{-1}}\xi(t)\|^2dt=\|\xi\|_2^2.
+\]">\[
+\|W\xi\|_2^2=\int_G\|U_{t^{-1}}\xi(t)\|^2dt=\|\xi\|_2^2.
+\]</span>
+<p>The formula using <span class="math" data-tex="\(U_t\)">\(U_t\)</span> also preserves compact continuous sections and is the inverse there. Both extend isometrically, so <span class="math" data-tex="\(W\)">\(W\)</span> is surjective and its adjoint has the displayed formula. There is no change of the group variable, hence no modular factor.</p>
+<p>For coefficients, covariance gives</p>
+<span class="math math-display" data-tex="\[
+(WP(a)W^*\eta)(t)
+=U_{t^{-1}}\pi(a)U_t\eta(t)
+=\pi(\alpha_{t^{-1}}(a))\eta(t).
+\]">\[
+(WP(a)W^*\eta)(t)
+=U_{t^{-1}}\pi(a)U_t\eta(t)
+=\pi(\alpha_{t^{-1}}(a))\eta(t).
+\]</span>
+<p>For the group operators,</p>
+<span class="math math-display" data-tex="\[
+(WV_sW^*\eta)(t)
+=U_{t^{-1}}U_sU_{s^{-1}t}\eta(s^{-1}t)
+=\eta(s^{-1}t).
+\]">\[
+(WV_sW^*\eta)(t)
+=U_{t^{-1}}U_sU_{s^{-1}t}\eta(s^{-1}t)
+=\eta(s^{-1}t).
+\]</span>
+<p>These identities extend from a dense subspace. They give <span class="math" data-tex="\(WP(a)W^*=\widetilde\pi(a)\)">\(WP(a)W^*=\widetilde\pi(a)\)</span>, <span class="math" data-tex="\(WV_sW^*=\lambda_s\)">\(WV_sW^*=\lambda_s\)</span>, and, on integrating,</p>
+<span id="equation-14"></span><span class="math math-display" data-tex="\[
+W(P\rtimes V)(f)W^*=R_\pi(f).
+\tag{14}
+\]">\[
+W(P\rtimes V)(f)W^*=R_\pi(f).
+\tag{14}
+\]</span>
+<p>This proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="corollary-2-4"></span><strong>Corollary 2.4 (a faithful covariant formula for the reduced norm).</strong> If <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is faithful, then</p>
+<span id="equation-15"></span><span class="math math-display" data-tex="\[
+\|f\|_r
+=\|((\pi\otimes1)\rtimes(U\otimes\lambda))(f)\|.
+\tag{15}
+\]">\[
+\|f\|_r
+=\|((\pi\otimes1)\rtimes(U\otimes\lambda))(f)\|.
+\tag{15}
+\]</span>
+<p>The integrated representation extends faithfully to <span class="math" data-tex="\(A\rtimes_{\alpha,r}G\)">\(A\rtimes_{\alpha,r}G\)</span>.</p>
+<p><strong>Proof.</strong> Equation (14) and the definition give (15). An isometry on the dense coefficient algebra extends isometrically to its completion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Such pairs exist: start with a faithful coefficient representation and form its regular pair. Its coefficient representation is faithful, since a nonzero positive element gives a nonzero operator at the identity coordinate; continuity on a suitable test vector makes it nonzero on an open set of positive Haar measure.</p>
+<p>Without faithfulness, absorption still holds and (11) gives a representation of the reduced algebra. This does not say that the original, untensored <span class="math" data-tex="\(\pi\rtimes U\)">\(\pi\rtimes U\)</span> factors through that algebra.</p>
+<p>For <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, coefficients are scalar. Thus every strongly continuous unitary representation <span class="math" data-tex="\(U\)">\(U\)</span> satisfies</p>
+<span id="equation-16"></span><span class="math math-display" data-tex="\[
+U\otimes\lambda\simeq1_H\otimes\lambda,
+\qquad
+\lambda\otimes U\simeq\lambda\otimes1_H,
+\tag{16}
+\]">\[
+U\otimes\lambda\simeq1_H\otimes\lambda,
+\qquad
+\lambda\otimes U\simeq\lambda\otimes1_H,
+\tag{16}
+\]</span>
+<p>where the second equivalence uses the tensor flip. This is the group version of Fell absorption. It is an equivalence implemented by a unitary, not equality of the original formulas.</p>
+<h2 id="equivariant-maps-and-their-norms">Equivariant maps and their norms</h2>
+<p>Let <span class="math" data-tex="\(\varphi:(A,\alpha)\to(B,\beta)\)">\(\varphi:(A,\alpha)\to(B,\beta)\)</span> be an equivariant C*-homomorphism, so <span class="math" data-tex="\(\varphi\alpha_s=\beta_s\varphi\)">\(\varphi\alpha_s=\beta_s\varphi\)</span>. It need not be unital or nondegenerate. On compact functions it acts by</p>
+<span id="equation-17"></span><span class="math math-display" data-tex="\[
+(\varphi_c f)(s)=\varphi(f(s)).
+\tag{17}
+\]">\[
+(\varphi_c f)(s)=\varphi(f(s)).
+\tag{17}
+\]</span>
+<p><span id="theorem-2-5"></span><strong>Theorem 2.5 (reduced functoriality and embeddings).</strong> Equation (17) extends to a homomorphism</p>
+<span class="math math-display" data-tex="\[
+\varphi\rtimes_rG:A\rtimes_{\alpha,r}G\longrightarrow B\rtimes_{\beta,r}G.
+\]">\[
+\varphi\rtimes_rG:A\rtimes_{\alpha,r}G\longrightarrow B\rtimes_{\beta,r}G.
+\]</span>
+<p>It is injective if <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is injective and surjective if <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is surjective. These maps preserve identities and composition.</p>
+<p><strong>Proof.</strong> Equation (1) and equivariance show that <span class="math" data-tex="\(\varphi_c\)">\(\varphi_c\)</span> preserves products and adjoints. Choose faithful nondegenerate <span class="math" data-tex="\(\rho:B\to B(K)\)">\(\rho:B\to B(K)\)</span>. Formula (4) gives</p>
+<span id="equation-18"></span><span class="math math-display" data-tex="\[
+R_\rho^B(\varphi_c f)=R_{\rho\varphi}^A(f).
+\tag{18}
+\]">\[
+R_\rho^B(\varphi_c f)=R_{\rho\varphi}^A(f).
+\tag{18}
+\]</span>
+<p>By (11) the right side has norm at most <span class="math" data-tex="\(\|f\|_{r,A}\)">\(\|f\|_{r,A}\)</span>. This proves contractivity and extension.</p>
+<p>Suppose <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is injective. Set <span class="math" data-tex="\(K_A=\overline{\rho(\varphi(A))K}\)">\(K_A=\overline{\rho(\varphi(A))K}\)</span>. The restriction <span class="math" data-tex="\(\sigma=(\rho\varphi)|_{K_A}\)">\(\sigma=(\rho\varphi)|_{K_A}\)</span> is nondegenerate and faithful: <span class="math" data-tex="\(\rho\varphi\)">\(\rho\varphi\)</span> is faithful on <span class="math" data-tex="\(K\)">\(K\)</span>, and zero on <span class="math" data-tex="\(K_A^\perp\)">\(K_A^\perp\)</span>, so restriction cannot erase a nonzero represented element. Both summands reduce the coefficient operators, and translations preserve their <span class="math" data-tex="\(L^2\)">\(L^2\)</span> spaces. Thus (18) decomposes as <span class="math" data-tex="\(R_\sigma^A(f)\oplus0\)">\(R_\sigma^A(f)\oplus0\)</span>, giving</p>
+<span id="equation-19"></span><span class="math math-display" data-tex="\[
+\|\varphi_c f\|_{r,B}=\|R_\sigma^A(f)\|=\|f\|_{r,A}.
+\tag{19}
+\]">\[
+\|\varphi_c f\|_{r,B}=\|R_\sigma^A(f)\|=\|f\|_{r,A}.
+\tag{19}
+\]</span>
+<p>The extension is isometric and injective. This essential-space step handles embeddings that act degenerately on <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>The identity and composition laws hold on compact functions and hence on completions. For surjectivity, finite sums <span class="math" data-tex="\(s\mapsto h(s)b\)">\(s\mapsto h(s)b\)</span> are <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-dense on compact supports in <span class="math" data-tex="\(C_c(G,B)\)">\(C_c(G,B)\)</span>. Each has a lift <span class="math" data-tex="\(s\mapsto h(s)a\)">\(s\mapsto h(s)a\)</span> if <span class="math" data-tex="\(\varphi(a)=b\)">\(\varphi(a)=b\)</span>. The image of the completed map is therefore dense and, as a C*-homomorphism's range, closed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Full crossed products are also functorial. Precompose a covariant pair of <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and restrict to its essential coefficient space if needed. Equivariance makes that space invariant under the group operators. Its orthogonal complement has zero coefficients, so the integrated representation there is zero. The full universal norm therefore gives <span class="math" data-tex="\(\|\varphi_c f\|_u\leq\|f\|_u\)">\(\|\varphi_c f\|_u\leq\|f\|_u\)</span>, proving existence of <span class="math" data-tex="\(\varphi\rtimes G\)">\(\varphi\rtimes G\)</span>. This argument does not give isometry for an embedding: the full norm of <span class="math" data-tex="\(A\)">\(A\)</span> also tests covariant pairs that need not arise by restricting pairs of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<h2 id="a-trivial-action-gives-a-spatial-tensor-product">A trivial action gives a spatial tensor product</h2>
+<p>Write <span class="math" data-tex="\(C_r^*(G)=\overline{\lambda(C_c(G))}\subseteq B(L^2(G))\)">\(C_r^*(G)=\overline{\lambda(C_c(G))}\subseteq B(L^2(G))\)</span>, where <span class="math" data-tex="\(\lambda(h)=\int h(s)\lambda_s\,ds\)">\(\lambda(h)=\int h(s)\lambda_s\,ds\)</span>. For nondiscrete groups, individual group unitaries are generally multipliers rather than elements of this algebra. The minimal tensor product is the closure of the algebraic tensor product in faithful spatial representations.</p>
+<p><span id="theorem-2-6"></span><strong>Theorem 2.6 (trivial action).</strong> There is a canonical isomorphism</p>
+<span id="equation-20"></span><span class="math math-display" data-tex="\[
+A\rtimes_{\mathrm{id},r}G\cong A\otimes_{\min}C_r^*(G),
+\tag{20}
+\]">\[
+A\rtimes_{\mathrm{id},r}G\cong A\otimes_{\min}C_r^*(G),
+\tag{20}
+\]</span>
+<p>sending <span class="math" data-tex="\(f(s)=h(s)a\)">\(f(s)=h(s)a\)</span> to <span class="math" data-tex="\(a\otimes\lambda(h)\)">\(a\otimes\lambda(h)\)</span>.</p>
+<p><strong>Proof.</strong> For faithful nondegenerate <span class="math" data-tex="\(\pi:A\to B(H)\)">\(\pi:A\to B(H)\)</span>, triviality of the action gives <span class="math" data-tex="\(\widetilde\pi(a)=\pi(a)\otimes1\)">\(\widetilde\pi(a)=\pi(a)\otimes1\)</span> on <span class="math" data-tex="\(H\otimes L^2(G)\)">\(H\otimes L^2(G)\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+R_\pi(h(\cdot)a)=\pi(a)\otimes\lambda(h).
+\]">\[
+R_\pi(h(\cdot)a)=\pi(a)\otimes\lambda(h).
+\]</span>
+<p>The span of these coefficient functions is <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-dense on compact supports and therefore dense for the reduced norm. Its operator closure is exactly the spatial tensor product of <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> and <span class="math" data-tex="\(C_r^*(G)\)">\(C_r^*(G)\)</span>, which faithfully realizes the minimal tensor product. This proves (20). The formula on the dense span uniquely specifies the map, independently of the auxiliary representation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the full construction the corresponding algebra is <span class="math" data-tex="\(A\otimes_{\max}C^*(G)\)">\(A\otimes_{\max}C^*(G)\)</span>, by [Blackadar 2006]. A trivial action requires the coefficient and group representations to commute, precisely the universal requirement of the maximal tensor product.</p>
+<h2 id="two-examples-and-the-failure-of-full-injectivity">Two examples and the failure of full injectivity</h2>
+<p><strong>Discrete coordinates.</strong> With counting Haar measure on a discrete group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, <span class="math" data-tex="\(E\)">\(E\)</span> is <span class="math" data-tex="\(\ell^2(\Gamma,A)\)">\(\ell^2(\Gamma,A)\)</span>, the completion of finitely supported sequences with</p>
+<span class="math math-display" data-tex="\[
+\|\xi\|_E^2=\left\|\sum_{t\in\Gamma}\xi(t)^*\xi(t)\right\|.
+\]">\[
+\|\xi\|_E^2=\left\|\sum_{t\in\Gamma}\xi(t)^*\xi(t)\right\|.
+\]</span>
+<p>For a general element, these positive sums converge in norm, with finite subsets directed by inclusion. For finitely supported <span class="math" data-tex="\(f\)">\(f\)</span>,</p>
+<span id="equation-21"></span><span class="math math-display" data-tex="\[
+(\Lambda_E(f)\xi)(t)=\sum_s\alpha_{t^{-1}}(f(s))\xi(s^{-1}t).
+\tag{21}
+\]">\[
+(\Lambda_E(f)\xi)(t)=\sum_s\alpha_{t^{-1}}(f(s))\xi(s^{-1}t).
+\tag{21}
+\]</span>
+<p>The matrix entry at row <span class="math" data-tex="\(t\)">\(t\)</span>, column <span class="math" data-tex="\(r\)">\(r\)</span>, is left multiplication by <span class="math" data-tex="\(\alpha_{t^{-1}}(f(tr^{-1}))\)">\(\alpha_{t^{-1}}(f(tr^{-1}))\)</span>. For example, let <span class="math" data-tex="\(\Gamma=\mathbb Z\)">\(\Gamma=\mathbb Z\)</span>, <span class="math" data-tex="\(A=M_2(\mathbb C)\)">\(A=M_2(\mathbb C)\)</span>, and <span class="math" data-tex="\(\alpha_n=\operatorname{Ad}(v^n)\)">\(\alpha_n=\operatorname{Ad}(v^n)\)</span> for <span class="math" data-tex="\(v=\operatorname{diag}(1,i)\)">\(v=\operatorname{diag}(1,i)\)</span>. A coefficient <span class="math" data-tex="\(f(1)=a\)">\(f(1)=a\)</span> contributes <span class="math" data-tex="\(v^{-t}av^t\xi(t-1)\)">\(v^{-t}av^t\xi(t-1)\)</span>, exhibiting both the shift and the varying matrix coefficient.</p>
+<p><strong>A strict norm difference.</strong> Let <span class="math" data-tex="\(\Gamma=F_2=\langle x,y\rangle\)">\(\Gamma=F_2=\langle x,y\rangle\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+h=\delta_x+\delta_{x^{-1}}+\delta_y+\delta_{y^{-1}}.
+\]">\[
+h=\delta_x+\delta_{x^{-1}}+\delta_y+\delta_{y^{-1}}.
+\]</span>
+<p>The calculation in <em>Unitary representations and the two group C</em> completions*, section <em>A strict gap: the free group on two generators</em>, gives</p>
+<span id="equation-22"></span><span class="math math-display" data-tex="\[
+\|h\|_{C^*(F_2)}=4,
+\qquad
+\|h\|_{C_r^*(F_2)}=2\sqrt3.
+\tag{22}
+\]">\[
+\|h\|_{C^*(F_2)}=4,
+\qquad
+\|h\|_{C_r^*(F_2)}=2\sqrt3.
+\tag{22}
+\]</span>
+<p>The first norm is attained by the trivial representation. The second is the adjacency norm of the four-neighbor tree. We use the exact calculation from that chapter rather than repeat its tree proof. Equation (22) proves that <span class="math" data-tex="\(C^*(F_2)\to C_r^*(F_2)\)">\(C^*(F_2)\to C_r^*(F_2)\)</span> has nonzero kernel. For any nonzero <span class="math" data-tex="\(A\)">\(A\)</span> with trivial action, choose norm-one positive <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>. The maximal tensor product has <span class="math" data-tex="\(\|a\otimes h\|=4\)">\(\|a\otimes h\|=4\)</span>, whereas (20) gives reduced norm <span class="math" data-tex="\(2\sqrt3\)">\(2\sqrt3\)</span>. Thus the full and reduced norms differ with these coefficients as well.</p>
+<p>The untensored trivial representation of <span class="math" data-tex="\(F_2\)">\(F_2\)</span> cannot factor through <span class="math" data-tex="\(C_r^*(F_2)\)">\(C_r^*(F_2)\)</span>: it would send an element of norm <span class="math" data-tex="\(2\sqrt3\)">\(2\sqrt3\)</span> to the scalar <span class="math" data-tex="\(4\)">\(4\)</span>, contradicting contractivity. Tensoring it with <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, as in (16), yields the regular representation.</p>
+<h2 id="geodesic-probabilities-on-the-free-group-boundary">Geodesic probabilities on the free-group boundary</h2>
+<p>The strict norm difference also gives a coefficient embedding that full crossed products fail to preserve. We construct the action and prove the required norm equality explicitly.</p>
+<p>Let <span class="math" data-tex="\(T\)">\(T\)</span> be the Cayley tree of <span class="math" data-tex="\(F_2=\langle x,y\rangle\)">\(F_2=\langle x,y\rangle\)</span>, with edges joining <span class="math" data-tex="\(g\)">\(g\)</span> to <span class="math" data-tex="\(ga\)">\(ga\)</span> for <span class="math" data-tex="\(a\in\{x,x^{-1},y,y^{-1}\}\)">\(a\in\{x,x^{-1},y,y^{-1}\}\)</span>. Its boundary <span class="math" data-tex="\(X=\partial T\)">\(X=\partial T\)</span> consists of infinite reduced words. A cylinder specifies a finite initial word; these clopen cylinders give a compact Hausdorff topology, since <span class="math" data-tex="\(X\)">\(X\)</span> is the closed subset of the product of four-letter alphabets obtained by forbidding adjacent inverse letters. Left multiplication, followed by cancellation, gives a continuous action of <span class="math" data-tex="\(F_2\)">\(F_2\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>. For fixed <span class="math" data-tex="\(s\)">\(s\)</span>, cancellation removes at most <span class="math" data-tex="\(|s|\)">\(|s|\)</span> initial letters, so the inverse image of a cylinder is a finite union of cylinders. The inverse map is multiplication by <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span>.</p>
+<p>For <span class="math" data-tex="\(\omega\in X\)">\(\omega\in X\)</span>, let <span class="math" data-tex="\(v_j(\omega)\)">\(v_j(\omega)\)</span> be the vertex at distance <span class="math" data-tex="\(j\)">\(j\)</span> on the ray from <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, including <span class="math" data-tex="\(v_0=e\)">\(v_0=e\)</span>, and put</p>
+<span id="equation-2a-1"></span><span class="math math-display" data-tex="\[
+m_n(\omega)=\frac1n\sum_{j=0}^{n-1}\delta_{v_j(\omega)}.
+\tag{2A.1}
+\]">\[
+m_n(\omega)=\frac1n\sum_{j=0}^{n-1}\delta_{v_j(\omega)}.
+\tag{2A.1}
+\]</span>
+<p>This is a continuous map into <span class="math" data-tex="\(\ell^1(F_2)\)">\(\ell^1(F_2)\)</span>: each coordinate is a cylinder function, and the union of its supports is the finite ball of radius <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. The rays from <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> to the same end coalesce. Their portions before the common ray have lengths whose sum is <span class="math" data-tex="\(|s|\)">\(|s|\)</span>. Consequently their first <span class="math" data-tex="\(n\)">\(n\)</span> vertices share at least <span class="math" data-tex="\(n-|s|\)">\(n-|s|\)</span> vertices when <span class="math" data-tex="\(n&gt;|s|\)">\(n&gt;|s|\)</span>. Applied to the ray from <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, which is the translate of the ray from <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(s^{-1}\omega\)">\(s^{-1}\omega\)</span>, this gives</p>
+<span id="equation-2a-2"></span><span class="math math-display" data-tex="\[
+\sup_{\omega\in X}
+\|s m_n(s^{-1}\omega)-m_n(\omega)\|_1
+\leq \min\{2,2|s|/n\}.
+\tag{2A.2}
+\]">\[
+\sup_{\omega\in X}
+\|s m_n(s^{-1}\omega)-m_n(\omega)\|_1
+\leq \min\{2,2|s|/n\}.
+\tag{2A.2}
+\]</span>
+<p>Here <span class="math" data-tex="\((sp)(g)=p(s^{-1}g)\)">\((sp)(g)=p(s^{-1}g)\)</span>. Thus the boundary action is topologically amenable, with a concrete sequence of finitely supported probability maps.</p>
+<p>The same ray calculation proves <strong>property A</strong> for the word metric on <span class="math" data-tex="\(F_2\)">\(F_2\)</span>. Fix one end of the tree. At a vertex <span class="math" data-tex="\(g\)">\(g\)</span>, put equal mass on the first <span class="math" data-tex="\(n\)">\(n\)</span> vertices of the ray from <span class="math" data-tex="\(g\)">\(g\)</span> to that end. The resulting probability <span class="math" data-tex="\(p_n^g\)">\(p_n^g\)</span> is supported within distance <span class="math" data-tex="\(n-1\)">\(n-1\)</span> of <span class="math" data-tex="\(g\)">\(g\)</span>, and
+<span class="math" data-tex="\(\|p_n^g-p_n^h\|_1\leq\min\{2,2d(g,h)/n\}\)">\(\|p_n^g-p_n^h\|_1\leq\min\{2,2d(g,h)/n\}\)</span>.
+These are precisely the uniformly bounded support and small-variation probability conditions defining property A. This proof uses only the tree geometry.</p>
+<p><strong>Proposition (the boundary crossed-product norm).</strong> For the boundary action,</p>
+<span id="equation-2a-3"></span><span class="math math-display" data-tex="\[
+C(X)\rtimes F_2\longrightarrow C(X)\rtimes_r F_2
+\quad\text{is an isomorphism}.
+\tag{2A.3}
+\]">\[
+C(X)\rtimes F_2\longrightarrow C(X)\rtimes_r F_2
+\quad\text{is an isomorphism}.
+\tag{2A.3}
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\alpha_s(a)(\omega)=a(s^{-1}\omega)\)">\(\alpha_s(a)(\omega)=a(s^{-1}\omega)\)</span>. Set
+<span class="math" data-tex="\(\xi_{n,g}(\omega)=\sqrt{m_n(\omega)(g)}\)">\(\xi_{n,g}(\omega)=\sqrt{m_n(\omega)(g)}\)</span>.
+These are continuous real functions, only finitely many are nonzero, and
+<span class="math" data-tex="\(\sum_g\xi_{n,g}^2=1\)">\(\sum_g\xi_{n,g}^2=1\)</span>.
+For an arbitrary nondegenerate covariant representation <span class="math" data-tex="\((\pi,U)\)">\((\pi,U)\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>, define the isometry</p>
+<span id="equation-2a-4"></span><span class="math math-display" data-tex="\[
+J_n v=\sum_g\pi(\xi_{n,g})v\otimes\delta_g
+\quad:H\longrightarrow H\otimes\ell^2(F_2).
+\tag{2A.4}
+\]">\[
+J_n v=\sum_g\pi(\xi_{n,g})v\otimes\delta_g
+\quad:H\longrightarrow H\otimes\ell^2(F_2).
+\tag{2A.4}
+\]</span>
+<p>It intertwines coefficients exactly, since <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> is commutative. Covariance shows that the <span class="math" data-tex="\(g\)">\(g\)</span>-coordinate of <span class="math" data-tex="\((U_s\otimes\lambda_s)J_n-J_nU_s\)">\((U_s\otimes\lambda_s)J_n-J_nU_s\)</span> is
+<span class="math" data-tex="\(\pi(\alpha_s(\xi_{n,s^{-1}g})-\xi_{n,g})U_s\)">\(\pi(\alpha_s(\xi_{n,s^{-1}g})-\xi_{n,g})U_s\)</span>.
+The squared operator norm is therefore bounded by the supremum of the sum of the squared coordinate functions. The scalar inequality
+<span class="math" data-tex="\(|\sqrt a-\sqrt b|^2\leq|a-b|\)">\(|\sqrt a-\sqrt b|^2\leq|a-b|\)</span>, for <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span>, and (2A.2) give</p>
+<span id="equation-2a-5"></span><span class="math math-display" data-tex="\[
+\|(U_s\otimes\lambda_s)J_n-J_nU_s\|
+\leq \min\{2,2|s|/n\}^{1/2}.
+\tag{2A.5}
+\]">\[
+\|(U_s\otimes\lambda_s)J_n-J_nU_s\|
+\leq \min\{2,2|s|/n\}^{1/2}.
+\tag{2A.5}
+\]</span>
+<p>For a finite crossed-product polynomial <span class="math" data-tex="\(f=\sum_s a_su_s\)">\(f=\sum_s a_su_s\)</span>, exact coefficient intertwining and (2A.5) imply</p>
+<span id="equation-2a-6"></span><span class="math math-display" data-tex="\[
+J_n^*\big((\pi\otimes1)\rtimes(U\otimes\lambda)\big)(f)J_n
+\longrightarrow (\pi\rtimes U)(f)
+\quad\text{in operator norm}.
+\tag{2A.6}
+\]">\[
+J_n^*\big((\pi\otimes1)\rtimes(U\otimes\lambda)\big)(f)J_n
+\longrightarrow (\pi\rtimes U)(f)
+\quad\text{in operator norm}.
+\tag{2A.6}
+\]</span>
+<p>Indeed, the norm of the error is at most the finite sum of <span class="math" data-tex="\(\|a_s\|\)">\(\|a_s\|\)</span> times the bound in (2A.5). Fell absorption identifies the amplified pair with the regular pair induced from <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, whose norm is bounded by the reduced norm even if <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is not faithful. Compression is contractive, so (2A.6) gives
+<span class="math" data-tex="\(\|(\pi\rtimes U)(f)\|\leq\|f\|_r\)">\(\|(\pi\rtimes U)(f)\|\leq\|f\|_r\)</span>.
+Take the supremum over covariant pairs and then complete the polynomial algebra. This proves (2A.3). ∎</p>
+<p>The constants give an equivariant embedding <span class="math" data-tex="\(\mathbb C\hookrightarrow C(X)\)">\(\mathbb C\hookrightarrow C(X)\)</span>. Its full crossed-product map starts at <span class="math" data-tex="\(C^*(F_2)\)">\(C^*(F_2)\)</span>. In the regular model of the target, the image of the element <span class="math" data-tex="\(h\)">\(h\)</span> in (22) is <span class="math" data-tex="\(1\otimes\lambda(h)\)">\(1\otimes\lambda(h)\)</span>, of norm <span class="math" data-tex="\(2\sqrt3\)">\(2\sqrt3\)</span>, whereas its source norm is <span class="math" data-tex="\(4\)">\(4\)</span>. By (2A.3) the target full norm is this reduced norm. The full map is therefore not injective. The reduced map for the same coefficient embedding is injective by Theorem 2.5. This gives the asserted functorial distinction for a specific nonzero compact action.</p>
+<p>Gomez Aparicio–Julg–Valette, §9.3.1 and §9.3.3, Theorem 9.9, discuss free-group property A and boundary amenability in the general theory. Blackadar, II.10.3.15, records the amenable-action norm theorem. The construction and the norm proof required for this example have been supplied above.</p>
+<h2 id="where-exactness-can-fail">Where exactness can fail</h2>
+<p>For an invariant closed ideal <span class="math" data-tex="\(I\subseteq A\)">\(I\subseteq A\)</span>, give <span class="math" data-tex="\(I\)">\(I\)</span> the restricted action and <span class="math" data-tex="\(A/I\)">\(A/I\)</span> the quotient action. Theorem 2.5 gives</p>
+<span id="equation-23"></span><span class="math math-display" data-tex="\[
+0\longrightarrow I\rtimes_rG
+\xrightarrow{\iota_r}A\rtimes_rG
+\xrightarrow{p_r}(A/I)\rtimes_rG
+\longrightarrow0
+\tag{23}
+\]">\[
+0\longrightarrow I\rtimes_rG
+\xrightarrow{\iota_r}A\rtimes_rG
+\xrightarrow{p_r}(A/I)\rtimes_rG
+\longrightarrow0
+\tag{23}
+\]</span>
+<p>with injectivity on the left and surjectivity on the right. The image of <span class="math" data-tex="\(\iota_r\)">\(\iota_r\)</span> is an ideal: products of compact coefficient functions in <span class="math" data-tex="\(I\)">\(I\)</span> with those in <span class="math" data-tex="\(A\)">\(A\)</span> have coefficients in <span class="math" data-tex="\(I\)">\(I\)</span>, by (1) and invariance; continuity extends this property to the completions. Also <span class="math" data-tex="\(p_r\iota_r=0\)">\(p_r\iota_r=0\)</span>. What can fail is equality in</p>
+<span id="equation-24"></span><span class="math math-display" data-tex="\[
+\iota_r(I\rtimes_rG)\subseteq\ker p_r.
+\tag{24}
+\]">\[
+\iota_r(I\rtimes_rG)\subseteq\ker p_r.
+\tag{24}
+\]</span>
+<p>An <strong>exact group</strong>, in the crossed-product sense, is a locally compact group for which (23) is exact for every equivariant short exact sequence. A C*-algebra <span class="math" data-tex="\(C\)">\(C\)</span> is <strong>exact</strong> if minimal tensoring with <span class="math" data-tex="\(C\)">\(C\)</span> preserves every short exact sequence. Theorem 2.6 shows that exactness of <span class="math" data-tex="\(G\)">\(G\)</span> implies exactness of <span class="math" data-tex="\(C_r^*(G)\)">\(C_r^*(G)\)</span>, by using trivial actions. No converse for general locally compact groups is assumed here.</p>
+<p>There are finitely generated discrete groups <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, constructed using families of expanders in their Cayley graphs, for which <span class="math" data-tex="\(C_r^*(\Gamma)\)">\(C_r^*(\Gamma)\)</span> is not exact. These examples are called Gromov monster groups. A precise instance is failure of middle exactness in</p>
+<span id="equation-25"></span><span class="math math-display" data-tex="\[
+0\longrightarrow J\otimes_{\min}C_r^*(\Gamma)
+\longrightarrow M\otimes_{\min}C_r^*(\Gamma)
+\longrightarrow(M/J)\otimes_{\min}C_r^*(\Gamma)
+\longrightarrow0,
+\tag{25}
+\]">\[
+0\longrightarrow J\otimes_{\min}C_r^*(\Gamma)
+\longrightarrow M\otimes_{\min}C_r^*(\Gamma)
+\longrightarrow(M/J)\otimes_{\min}C_r^*(\Gamma)
+\longrightarrow0,
+\tag{25}
+\]</span>
+<p>where <span class="math" data-tex="\(M=\prod_kM_{n_k}(\mathbb C)\)">\(M=\prod_kM_{n_k}(\mathbb C)\)</span> and <span class="math" data-tex="\(J=\bigoplus_kM_{n_k}(\mathbb C)\)">\(J=\bigoplus_kM_{n_k}(\mathbb C)\)</span>, the norm-vanishing direct sum. We construct a bounded-degree expander family, label it with finitely many generators, prove that its vertices survive in the presented group, and then exhibit the kernel projection. The mathematical constructions are credited below; their proofs are supplied here. By (20), trivial <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-actions turn (25) into a failure of equality in (24).</p>
+<h3 id="expanding-graphs-with-increasing-girth">Expanding graphs with increasing girth</h3>
+<p>We first construct the finite graphs that will supply the obstruction. This avoids assuming a family of Ramanujan graphs. The constants below are deliberately generous. A graph's <strong>girth</strong> is the length of its shortest cycle, and its <strong>diameter</strong> is the largest distance between two vertices. During the random construction we allow loops and parallel edges; loops count twice toward degree and do not cross a cut.</p>
+<p><strong>Graph construction.</strong> There are finite connected simple graphs <span class="math" data-tex="\(X_k\)">\(X_k\)</span>, with <span class="math" data-tex="\(n_k\to\infty\)">\(n_k\to\infty\)</span>, whose degrees lie between <span class="math" data-tex="\(998\)">\(998\)</span> and <span class="math" data-tex="\(1000\)">\(1000\)</span>, whose girths tend to infinity, and for which</p>
+<span id="equation-2g-1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+|\partial U|\ge8\min\{|U|,|X_k\setminus U|\},\\
+\operatorname{diam}(X_k)\le A\operatorname{girth}(X_k),\qquad
+A=\frac{64\log(2000)}{\log(1+8/1000)}.
+\end{gathered}
+\tag{2G.1}
+\]">\[
+\begin{gathered}
+|\partial U|\ge8\min\{|U|,|X_k\setminus U|\},\\
+\operatorname{diam}(X_k)\le A\operatorname{girth}(X_k),\qquad
+A=\frac{64\log(2000)}{\log(1+8/1000)}.
+\end{gathered}
+\tag{2G.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\partial U\)">\(\partial U\)</span> is the set of edges with exactly one endpoint in <span class="math" data-tex="\(U\)">\(U\)</span>. Their normalized Laplacians have a common positive spectral gap.</p>
+<p><strong>Proof: obtaining expansion.</strong> Put <span class="math" data-tex="\(d=1000\)">\(d=1000\)</span>. Give each of <span class="math" data-tex="\(n\)">\(n\)</span> vertices <span class="math" data-tex="\(d\)">\(d\)</span> distinct half-edges, and choose a uniformly random perfect matching of the <span class="math" data-tex="\(N=dn\)">\(N=dn\)</span> half-edges. A matched pair is an edge. After revealing any collection of pairs, the matching of the remaining half-edges is still uniform: every possible remaining matching has the same number of completions.</p>
+<p>Fix <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(k\le n/2\)">\(k\le n/2\)</span> vertices, and write <span class="math" data-tex="\(D=dk\)">\(D=dk\)</span>, <span class="math" data-tex="\(x=k/n\)">\(x=k/n\)</span> and <span class="math" data-tex="\(\delta=1/100\)">\(\delta=1/100\)</span>. Explore its half-edges by taking the first unmatched one in a fixed order and revealing its partner. An internal partner removes two half-edges of <span class="math" data-tex="\(U\)">\(U\)</span>; an external partner removes one and creates a cut edge. If the completed exploration has at most <span class="math" data-tex="\(B=\delta D=10k\)">\(B=\delta D=10k\)</span> external partners, every prefix has at most <span class="math" data-tex="\(B\)">\(B\)</span>. After <span class="math" data-tex="\(i\)">\(i\)</span> internal and <span class="math" data-tex="\(b\)">\(b\)</span> external steps, the conditional probability of an internal partner is</p>
+<span id="equation-2g-2"></span><span class="math math-display" data-tex="\[
+\frac{D-2i-b-1}{N-2i-2b-1}
+\le\frac{D}{N-2B}
+\le\frac{x}{1-\delta}.
+\tag{2G.2}
+\]">\[
+\frac{D-2i-b-1}{N-2i-2b-1}
+\le\frac{D}{N-2B}
+\le\frac{x}{1-\delta}.
+\tag{2G.2}
+\]</span>
+<p>For the first inequality, first increase the numerator by one and the denominator by one: this increases a ratio at most one. The ratio <span class="math" data-tex="\((D-2i-b)/(N-2i-2b)\)">\((D-2i-b)/(N-2i-2b)\)</span> decreases as <span class="math" data-tex="\(i\)">\(i\)</span> increases, since <span class="math" data-tex="\(D+b\le N\)">\(D+b\le N\)</span>. Bound its numerator by <span class="math" data-tex="\(D\)">\(D\)</span> and its denominator, at <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, by <span class="math" data-tex="\(N-2B\)">\(N-2B\)</span>.</p>
+<p>Such an exploration has at least <span class="math" data-tex="\((1-\delta)D/2\)">\((1-\delta)D/2\)</span> internal steps. For a specified internal/external pattern, multiply the conditional bounds (2G.2), and bound external-step probabilities by one. A pattern with <span class="math" data-tex="\(b\)">\(b\)</span> external steps has length <span class="math" data-tex="\((D+b)/2\)">\((D+b)/2\)</span>; its external positions identify it uniquely. Thus there are at most <span class="math" data-tex="\(\sum_{b=0}^B\binom Db\)">\(\sum_{b=0}^B\binom Db\)</span> possible bad patterns. The elementary binomial estimate</p>
+<span id="equation-2g-3"></span><span class="math math-display" data-tex="\[
+\sum_{b=0}^{\delta D}\binom Db
+\le \exp(DH(\delta))\le(e/\delta)^{\delta D},
+\quad
+H(t)=-t\log t-(1-t)\log(1-t),
+\tag{2G.3}
+\]">\[
+\sum_{b=0}^{\delta D}\binom Db
+\le \exp(DH(\delta))\le(e/\delta)^{\delta D},
+\quad
+H(t)=-t\log t-(1-t)\log(1-t),
+\tag{2G.3}
+\]</span>
+<p>follows by expanding <span class="math" data-tex="\((1+z)^D\)">\((1+z)^D\)</span> at <span class="math" data-tex="\(z=\delta/(1-\delta)&lt;1\)">\(z=\delta/(1-\delta)&lt;1\)</span>: for <span class="math" data-tex="\(b\le B\)">\(b\le B\)</span>, <span class="math" data-tex="\(z^b\ge z^B\)">\(z^b\ge z^B\)</span>. The last inequality uses <span class="math" data-tex="\(-(1-\delta)\log(1-\delta)\le\delta\)">\(-(1-\delta)\log(1-\delta)\le\delta\)</span>.</p>
+<p>Consequently the probability that some <span class="math" data-tex="\(k\)">\(k\)</span>-element set has at most <span class="math" data-tex="\(10k\)">\(10k\)</span> cut edges is bounded by</p>
+<span id="equation-2g-4"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\binom nk
+\left[(e/\delta)^\delta
+\left(\frac{k}{n(1-\delta)}\right)^{(1-\delta)/2}\right]^{dk}
+&amp;\le \left[C_0(k/n)^{494}\right]^k,\\
+C_0&amp;=e(e/\delta)^{10}(1-\delta)^{-495}.
+\end{aligned}
+\tag{2G.4}
+\]">\[
+\begin{aligned}
+\binom nk
+\left[(e/\delta)^\delta
+\left(\frac{k}{n(1-\delta)}\right)^{(1-\delta)/2}\right]^{dk}
+&amp;\le \left[C_0(k/n)^{494}\right]^k,\\
+C_0&amp;=e(e/\delta)^{10}(1-\delta)^{-495}.
+\end{aligned}
+\tag{2G.4}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\binom nk\le(en/k)^k\)">\(\binom nk\le(en/k)^k\)</span>. For these constants <span class="math" data-tex="\(C_0 2^{-494}&lt;e^{-280}\)">\(C_0 2^{-494}&lt;e^{-280}\)</span>. Sum (2G.4) over <span class="math" data-tex="\(k\le\sqrt n\)">\(k\le\sqrt n\)</span> using <span class="math" data-tex="\(k/n\le n^{-1/2}\)">\(k/n\le n^{-1/2}\)</span>; this sum tends to zero as a geometric series with ratio <span class="math" data-tex="\(C_0n^{-247}\)">\(C_0n^{-247}\)</span>. For <span class="math" data-tex="\(\sqrt n&lt;k\le n/2\)">\(\sqrt n&lt;k\le n/2\)</span>, the total is at most <span class="math" data-tex="\(n e^{-280\sqrt n}\)">\(n e^{-280\sqrt n}\)</span>. With probability tending to one, every nonempty set of at most half the vertices therefore has more than <span class="math" data-tex="\(10|U|\)">\(10|U|\)</span> cut edges.</p>
+<p><strong>Proof: separating the short cycles.</strong> Set</p>
+<span id="equation-2g-5"></span><span class="math math-display" data-tex="\[
+g=\left\lfloor\frac{\log n}{8\log(2d)}\right\rfloor.
+\tag{2G.5}
+\]">\[
+g=\left\lfloor\frac{\log n}{8\log(2d)}\right\rfloor.
+\tag{2G.5}
+\]</span>
+<p>With probability tending to one, distinct cycles of length at most <span class="math" data-tex="\(g\)">\(g\)</span> have disjoint vertex sets. To see this without an independence assumption, two distinct intersecting cycles contain either two cycles meeting at one vertex, or three internally disjoint paths between two vertices. In the second case, take one cycle and a segment of the other outside it with endpoints on it. Their union contains the three paths. These two possible configurations have at most <span class="math" data-tex="\(2g\)">\(2g\)</span> edges, <span class="math" data-tex="\(v=e-1\)">\(v=e-1\)</span> vertices, and are specified, up to the two types, by at most three path lengths. This also includes loops and pairs of parallel edges as cycles of length one and two.</p>
+<p>For each configuration with <span class="math" data-tex="\(e\)">\(e\)</span> edges, choose its vertices in at most <span class="math" data-tex="\(n^v\)">\(n^v\)</span> ways and its half-edges in at most <span class="math" data-tex="\(d^{2e}\)">\(d^{2e}\)</span> ways. The probability that its specified pairs occur in the random matching is</p>
+<span id="equation-2g-6"></span><span class="math math-display" data-tex="\[
+\frac1{(N-1)(N-3)\cdots(N-2e+1)}
+\le(N-4g)^{-e}.
+\tag{2G.6}
+\]">\[
+\frac1{(N-1)(N-3)\cdots(N-2e+1)}
+\le(N-4g)^{-e}.
+\tag{2G.6}
+\]</span>
+<p>For large <span class="math" data-tex="\(n\)">\(n\)</span>, its expected number of occurrences is therefore at most <span class="math" data-tex="\(n^{-1}(2d)^e\)">\(n^{-1}(2d)^e\)</span>. Summing over the two types and the path lengths gives, for example, the upper bound <span class="math" data-tex="\(3(2g)^4(2d)^{2g}/n\)">\(3(2g)^4(2d)^{2g}/n\)</span>. By (2G.5) this tends to zero. The probability of any such configuration is at most its expected number: for a nonnegative integer-valued variable <span class="math" data-tex="\(Z\)">\(Z\)</span>, <span class="math" data-tex="\(1_{Z&gt;0}\le Z\)">\(1_{Z&gt;0}\le Z\)</span>.</p>
+<p>Both required events hold simultaneously for all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, since their failure probabilities have sum tending to zero. Choose a matching with those properties. Delete one edge from every cycle of length at most <span class="math" data-tex="\(g\)">\(g\)</span>. Since these cycles have disjoint vertex sets, a vertex loses at most two half-edges; the factor two allows for a deleted loop. The remaining graph is simple, has degrees in <span class="math" data-tex="\([d-2,d]\)">\([d-2,d]\)</span>, and has girth greater than <span class="math" data-tex="\(g\)">\(g\)</span>. At most <span class="math" data-tex="\(2|U|\)">\(2|U|\)</span> cut edges were deleted from any set <span class="math" data-tex="\(U\)">\(U\)</span>, so its boundary still has at least <span class="math" data-tex="\(8|U|\)">\(8|U|\)</span> edges when <span class="math" data-tex="\(|U|\le n/2\)">\(|U|\le n/2\)</span>. Taking complements proves the first line of (2G.1), and also proves connectedness.</p>
+<p>Every vertex outside a set meets at most <span class="math" data-tex="\(d\)">\(d\)</span> of its boundary edges. A ball with at most <span class="math" data-tex="\(n/2\)">\(n/2\)</span> vertices therefore grows by a factor at least <span class="math" data-tex="\(1+8/d\)">\(1+8/d\)</span> on enlarging its radius by one. A radius <span class="math" data-tex="\(t\le\log n/\log(1+8/d)+2\)">\(t\le\log n/\log(1+8/d)+2\)</span> suffices for every ball to have more than half the vertices. Any two such balls intersect, so the diameter is at most <span class="math" data-tex="\(2t\)">\(2t\)</span>. For sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, (2G.5) gives <span class="math" data-tex="\(g\ge\log n/(16\log(2d))\)">\(g\ge\log n/(16\log(2d))\)</span>, while <span class="math" data-tex="\(2t\le4\log n/\log(1+8/d)\)">\(2t\le4\log n/\log(1+8/d)\)</span>. These estimates imply (2G.1). Choose an increasing sequence of these <span class="math" data-tex="\(n\)">\(n\)</span>'s; its girths tend to infinity.</p>
+<p><strong>Proof: converting a cut estimate to a spectral gap.</strong> For a vertex <span class="math" data-tex="\(v\)">\(v\)</span>, write <span class="math" data-tex="\(d_v\)">\(d_v\)</span> for its degree, and put <span class="math" data-tex="\(\operatorname{vol}(U)=\sum_{v\in U}d_v\)">\(\operatorname{vol}(U)=\sum_{v\in U}d_v\)</span>. If <span class="math" data-tex="\(\operatorname{vol}(U)\)">\(\operatorname{vol}(U)\)</span> is at most half the total volume, both <span class="math" data-tex="\(|U|\)">\(|U|\)</span> and <span class="math" data-tex="\(|U^c|\)">\(|U^c|\)</span> are at least <span class="math" data-tex="\(\operatorname{vol}(U)/d\)">\(\operatorname{vol}(U)/d\)</span>. Thus (2G.1) gives <span class="math" data-tex="\(|\partial U|\ge h\operatorname{vol}(U)\)">\(|\partial U|\ge h\operatorname{vol}(U)\)</span>, where <span class="math" data-tex="\(h=8/d\)">\(h=8/d\)</span>.</p>
+<p>For a nonnegative real function <span class="math" data-tex="\(f\)">\(f\)</span> supported on such a set, sum the boundary inequality over the superlevel sets of <span class="math" data-tex="\(f^2\)">\(f^2\)</span>. Integrating the indicators gives</p>
+<span id="equation-2g-7"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+h\sum_v d_v f(v)^2
+&amp;\le\sum_{\{v,w\}\in E}|f(v)^2-f(w)^2|\\
+&amp;\le\left(2\sum_vd_vf(v)^2
+\sum_{\{v,w\}\in E}|f(v)-f(w)|^2\right)^{1/2}.
+\end{aligned}
+\tag{2G.7}
+\]">\[
+\begin{aligned}
+h\sum_v d_v f(v)^2
+&amp;\le\sum_{\{v,w\}\in E}|f(v)^2-f(w)^2|\\
+&amp;\le\left(2\sum_vd_vf(v)^2
+\sum_{\{v,w\}\in E}|f(v)-f(w)|^2\right)^{1/2}.
+\end{aligned}
+\tag{2G.7}
+\]</span>
+<p>The second inequality is Cauchy–Schwarz followed by
+<span class="math" data-tex="\(\sum_E(f(v)+f(w))^2\le2\sum_vd_v f(v)^2\)">\(\sum_E(f(v)+f(w))^2\le2\sum_vd_v f(v)^2\)</span>.</p>
+<p>Given a real function <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(\sum_vd_vu(v)=0\)">\(\sum_vd_vu(v)=0\)</span>, choose a weighted median <span class="math" data-tex="\(m\)">\(m\)</span>: each strict side of <span class="math" data-tex="\(m\)">\(m\)</span> has at most half the total volume. Apply (2G.7) to <span class="math" data-tex="\((u-m)_+\)">\((u-m)_+\)</span> and <span class="math" data-tex="\((m-u)_+\)">\((m-u)_+\)</span>. On each edge the energy of <span class="math" data-tex="\(u\)">\(u\)</span> dominates the sum of their energies, including an edge crossing the two sides. Also
+<span class="math" data-tex="\(\sum_vd_v(u(v)-m)^2\ge\sum_vd_vu(v)^2\)">\(\sum_vd_v(u(v)-m)^2\ge\sum_vd_vu(v)^2\)</span>, by the zero-mean condition. It follows that</p>
+<span id="equation-2g-8"></span><span class="math math-display" data-tex="\[
+\sum_E|u(v)-u(w)|^2
+\ge\frac{h^2}{2}\sum_vd_vu(v)^2.
+\tag{2G.8}
+\]">\[
+\sum_E|u(v)-u(w)|^2
+\ge\frac{h^2}{2}\sum_vd_vu(v)^2.
+\tag{2G.8}
+\]</span>
+<p>Apply the same argument to real and imaginary parts for complex functions. Under the isometry <span class="math" data-tex="\(u(v)\mapsto\sqrt{d_v}u(v)\)">\(u(v)\mapsto\sqrt{d_v}u(v)\)</span>, the quadratic form on the left is that of
+<span class="math" data-tex="\(1-D^{-1/2}A_XD^{-1/2}\)">\(1-D^{-1/2}A_XD^{-1/2}\)</span>. Its kernel is the span of <span class="math" data-tex="\((\sqrt{d_v})_v\)">\((\sqrt{d_v})_v\)</span>; connectedness proves this from the energy formula. Its spectrum lies in <span class="math" data-tex="\([0,2]\)">\([0,2]\)</span>, since <span class="math" data-tex="\(|u(v)-u(w)|^2\le2|u(v)|^2+2|u(w)|^2\)">\(|u(v)-u(w)|^2\le2|u(v)|^2+2|u(w)|^2\)</span>. Equation (2G.8) proves the common gap <span class="math" data-tex="\(\varepsilon=h^2/2\)">\(\varepsilon=h^2/2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the configuration-model method for producing sparse expanding graphs, followed by a bounded deletion of separated short cycles. For the spectral viewpoint and the cut-to-energy method compare Daniel A. Spielman, <em>Spectral and Algebraic Graph Theory</em>, draft of 2 April 2025, Chapter 21, Theorem 21.1.3 and its proof, pp.176–180. The argument above supplies the graph family and every estimate needed here; it does not assume a Ramanujan construction or a sharp random-graph eigenvalue theorem.</p>
+<h3 id="labelling-the-entire-family-with-finitely-many-letters">Labelling the entire family with finitely many letters</h3>
+<p>A label alphabet <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> consists of finitely many letters paired by a formal inverse <span class="math" data-tex="\(a\mapsto\bar a\)">\(a\mapsto\bar a\)</span>, with <span class="math" data-tex="\(a\ne\bar a\)">\(a\ne\bar a\)</span>. Orient the edges of a graph arbitrarily; an oriented edge receives a letter, and traversal in the reverse direction reads its inverse. A labelling is <strong>reduced</strong> when distinct edges leaving a vertex read distinct letters. Equivalently, a path without backtracking reads a freely reduced word.</p>
+<p>Fix <span class="math" data-tex="\(\lambda=1/12\)">\(\lambda=1/12\)</span>. By passing to a subsequence of the graphs in (2G.1), we can arrange that
+<span class="math" data-tex="\(\ell_k=\lfloor\lambda\operatorname{girth}(X_k)\rfloor\)">\(\ell_k=\lfloor\lambda\operatorname{girth}(X_k)\rfloor\)</span> are strictly increasing integers greater than one. We will label the whole family so that two distinct paths reading the same word have length less than <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span> in every component <span class="math" data-tex="\(X_i\)">\(X_i\)</span> in which they occur. In particular, every repeated path is shorter than <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> times every simple cycle containing it. This is the <strong>graphical small cancellation condition</strong> used below.</p>
+<p>Here is the finite counting argument, following the method of Louis Esperet and Ugo Giocanti, <em>Optimization in graphical small cancellation theory</em>, Theorem 3.1 and Claim 3.3 (arXiv:2306.03474v2). The argument includes the reconstruction step for overlapping paths, which is essential to the counting.</p>
+<p>Put <span class="math" data-tex="\(D=1000\)">\(D=1000\)</span>, and choose an even integer <span class="math" data-tex="\(L\)">\(L\)</span> such that</p>
+<span id="equation-2l-1"></span><span class="math math-display" data-tex="\[
+\alpha=2(D-1)^{2A/\lambda+2},\qquad
+L\ge2(D-1)+13\alpha.
+\tag{2L.1}
+\]">\[
+\alpha=2(D-1)^{2A/\lambda+2},\qquad
+L\ge2(D-1)+13\alpha.
+\tag{2L.1}
+\]</span>
+<p>Use an alphabet of <span class="math" data-tex="\(L\)">\(L\)</span> letters. Suppose the earlier components <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, <span class="math" data-tex="\(i&lt;k\)">\(i&lt;k\)</span>, have already been labelled. A partial labelling of an edge set <span class="math" data-tex="\(F\subseteq E(X_k)\)">\(F\subseteq E(X_k)\)</span> is called valid if it is reduced, contains no word of length <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span> already occurring in <span class="math" data-tex="\(X_i\)">\(X_i\)</span> for <span class="math" data-tex="\(i&lt;k\)">\(i&lt;k\)</span>, and contains no two distinct paths with the same word of length <span class="math" data-tex="\(\ell_k\)">\(\ell_k\)</span>. Let <span class="math" data-tex="\(c(F)\)">\(c(F)\)</span> count valid labellings and set <span class="math" data-tex="\(c(\varnothing)=1\)">\(c(\varnothing)=1\)</span>. We prove by induction on <span class="math" data-tex="\(|F|\)">\(|F|\)</span> that</p>
+<span id="equation-2l-2"></span><span class="math math-display" data-tex="\[
+c(F)\ge\alpha c(F\setminus\{e\})\qquad(e\in F).
+\tag{2L.2}
+\]">\[
+c(F)\ge\alpha c(F\setminus\{e\})\qquad(e\in F).
+\tag{2L.2}
+\]</span>
+<p>This gives at least one valid labelling of the entire component and allows induction over the components.</p>
+<p>For one edge all <span class="math" data-tex="\(L\)">\(L\)</span> choices are valid. For the induction step, extend a valid labelling of <span class="math" data-tex="\(F\setminus\{e\}\)">\(F\setminus\{e\}\)</span> by one of its <span class="math" data-tex="\(L\)">\(L\)</span> possible edge labels. A failure of reducedness has at most <span class="math" data-tex="\(2(D-1)\)">\(2(D-1)\)</span> causes: another edge at one of the two endpoints determines the forbidden label. Thus these extensions number at most <span class="math" data-tex="\(2(D-1)c(F\setminus\{e\})\)">\(2(D-1)c(F\setminus\{e\})\)</span>.</p>
+<p>Every other failure gives a path <span class="math" data-tex="\(P\)">\(P\)</span> containing <span class="math" data-tex="\(e\)">\(e\)</span>, with length <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span>, that reads the same word as a path <span class="math" data-tex="\(Q\)">\(Q\)</span> in <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, for some <span class="math" data-tex="\(i\le k\)">\(i\le k\)</span>; for <span class="math" data-tex="\(i=k\)">\(i=k\)</span>, the paths are distinct. The edge <span class="math" data-tex="\(e\)">\(e\)</span> must occur in one of the two paths, since its deletion leaves a valid labelling. Name that path <span class="math" data-tex="\(P\)">\(P\)</span>. Delete every edge label on <span class="math" data-tex="\(P\)">\(P\)</span>. Repeated use of the induction hypothesis on smaller edge sets gives</p>
+<span id="equation-2l-3"></span><span class="math math-display" data-tex="\[
+c(F\setminus E(P))
+\le\alpha^{1-\ell_i}c(F\setminus\{e\}).
+\tag{2L.3}
+\]">\[
+c(F\setminus E(P))
+\le\alpha^{1-\ell_i}c(F\setminus\{e\}).
+\tag{2L.3}
+\]</span>
+<p>The path has <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span> distinct edges, because its length is less than the girth of <span class="math" data-tex="\(X_k\)">\(X_k\)</span>.</p>
+<p>We claim that its erased labels are uniquely determined by <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> and the remaining labelling. When <span class="math" data-tex="\(i&lt;k\)">\(i&lt;k\)</span>, all of <span class="math" data-tex="\(Q\)">\(Q\)</span> lies in an earlier, fixed component; its word determines the word on <span class="math" data-tex="\(P\)">\(P\)</span>. The same conclusion holds if <span class="math" data-tex="\(i=k\)">\(i=k\)</span> and the two paths share no edge.</p>
+<p>If they share an edge, their common edges form one subpath. Two separate common subpaths would create a cycle of length at most <span class="math" data-tex="\(2\ell_k\)">\(2\ell_k\)</span>, contradicting <span class="math" data-tex="\(\operatorname{girth}(X_k)\ge12\ell_k\)">\(\operatorname{girth}(X_k)\ge12\ell_k\)</span>. Number each path's edges from zero to <span class="math" data-tex="\(\ell_k-1\)">\(\ell_k-1\)</span>. For a common subpath traversed in the same direction, suppose its initial positions are <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span>. They cannot be equal: reducedness and the common word would extend the coincidence forward and backward until both paths were identical. Reverse both paths, if needed, to arrange <span class="math" data-tex="\(q&gt;p\)">\(q&gt;p\)</span>. Write <span class="math" data-tex="\(h=q-p\)">\(h=q-p\)</span>. The letters on <span class="math" data-tex="\(Q\)">\(Q\)</span> outside the common subpath remain known. In particular the word positions <span class="math" data-tex="\(p,\ldots,q-1\)">\(p,\ldots,q-1\)</span> are known. On the common subpath, equality of its labels says that a letter at position <span class="math" data-tex="\(j\ge q\)">\(j\ge q\)</span> equals the letter at position <span class="math" data-tex="\(j-h\)">\(j-h\)</span>. This recurrence, together with all the known positions outside that interval, determines the entire common word. Hence it restores every edge of <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>If the common subpath is traversed in opposite directions, its index intervals in the two paths are disjoint. Otherwise two walkers following the equal words at equal speed would meet on that common subpath: either at a vertex at an integer time, or in the middle of an edge at a half-integer time. Meeting at a vertex forces the paths to coincide by reducedness. Meeting inside an edge forces a letter to equal its formal inverse. Both are impossible. The letters at the indices of <span class="math" data-tex="\(P\)">\(P\)</span>'s common subpath can consequently be read on the un-erased part of <span class="math" data-tex="\(Q\)">\(Q\)</span>. They determine that subpath's labels; its reverse determines the erased part of <span class="math" data-tex="\(Q\)">\(Q\)</span>, and the common word then restores all of <span class="math" data-tex="\(P\)">\(P\)</span>. This proves the reconstruction claim.</p>
+<p>There are at most <span class="math" data-tex="\(2\ell_i(D-1)^{\ell_i-1}\)">\(2\ell_i(D-1)^{\ell_i-1}\)</span> oriented paths <span class="math" data-tex="\(P\)">\(P\)</span> of length <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span> containing a fixed edge: choose its position and direction, then extend without backtracking. A graph of maximum degree <span class="math" data-tex="\(D\)">\(D\)</span> and diameter <span class="math" data-tex="\(b\)">\(b\)</span> has at most
+<span class="math" data-tex="\(1+D\sum_{j=0}^{b-1}(D-1)^j\)">\(1+D\sum_{j=0}^{b-1}(D-1)^j\)</span> vertices, by exploring a ball about one vertex. Its number of edges is at most <span class="math" data-tex="\(\tfrac32(D-1)^{b+2}\)">\(\tfrac32(D-1)^{b+2}\)</span>. Since
+<span class="math" data-tex="\(b\le A\operatorname{girth}(X_i)\le2A\ell_i/\lambda\)">\(b\le A\operatorname{girth}(X_i)\le2A\ell_i/\lambda\)</span>, the number of oriented paths <span class="math" data-tex="\(Q\)">\(Q\)</span> of length <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span>, counted from their initial edge, is at most</p>
+<span id="equation-2l-4"></span><span class="math math-display" data-tex="\[
+3(D-1)^{(2A/\lambda+1)\ell_i+1}.
+\tag{2L.4}
+\]">\[
+3(D-1)^{(2A/\lambda+1)\ell_i+1}.
+\tag{2L.4}
+\]</span>
+<p>Combine this with (2L.3) and the unique reconstruction. The number of bad extensions belonging to the index <span class="math" data-tex="\(i\)">\(i\)</span> is at most</p>
+<span id="equation-2l-5"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;6\ell_i(D-1)^{(2A/\lambda+2)\ell_i}
+\alpha^{1-\ell_i}c(F\setminus\{e\})\\
+&amp;\hspace{20mm}=6\alpha\ell_i2^{-\ell_i}c(F\setminus\{e\}).
+\end{aligned}
+\tag{2L.5}
+\]">\[
+\begin{aligned}
+&amp;6\ell_i(D-1)^{(2A/\lambda+2)\ell_i}
+\alpha^{1-\ell_i}c(F\setminus\{e\})\\
+&amp;\hspace{20mm}=6\alpha\ell_i2^{-\ell_i}c(F\setminus\{e\}).
+\end{aligned}
+\tag{2L.5}
+\]</span>
+<p>The <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span>'s are distinct positive integers, so their sum <span class="math" data-tex="\(\sum_i\ell_i2^{-\ell_i}\)">\(\sum_i\ell_i2^{-\ell_i}\)</span> is at most <span class="math" data-tex="\(\sum_{j\ge1}j2^{-j}=2\)">\(\sum_{j\ge1}j2^{-j}=2\)</span>. All bad extensions together therefore number at most
+<span class="math" data-tex="\((2(D-1)+12\alpha)c(F\setminus\{e\})\)">\((2(D-1)+12\alpha)c(F\setminus\{e\})\)</span>. Subtract them from the <span class="math" data-tex="\(L c(F\setminus\{e\})\)">\(L c(F\setminus\{e\})\)</span> extensions, and use (2L.1) to obtain (2L.2).</p>
+<p>Choose a valid full labelling at every stage. A repeated longer word contains a repeated word of one of the forbidden lengths, so the labellings have the stated small cancellation property for all paths. Although the alphabet in (2L.1) is large, it is fixed once and for all: it does not increase with <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="the-quotient-group-retains-the-graph-vertices">The quotient group retains the graph vertices</h3>
+<p>Let <span class="math" data-tex="\(\mathcal X=\bigsqcup_kX_k\)">\(\mathcal X=\bigsqcup_kX_k\)</span> carry the preceding labellings. Choose one generator from each inverse pair of letters, and define</p>
+<span id="equation-2m-1"></span><span class="math math-display" data-tex="\[
+\Gamma=\langle a_1,\ldots,a_{L/2}\mid
+\text{words read on all simple cycles of }\mathcal X\rangle.
+\tag{2M.1}
+\]">\[
+\Gamma=\langle a_1,\ldots,a_{L/2}\mid
+\text{words read on all simple cycles of }\mathcal X\rangle.
+\tag{2M.1}
+\]</span>
+<p>This is a finitely generated discrete group; infinitely many relators are allowed. A closed walk in a graph is a product of conjugates of simple cycles, after deleting backtracking: split a walk whenever a vertex is repeated. Its word therefore becomes the identity in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. For a chosen base vertex <span class="math" data-tex="\(o_k\)">\(o_k\)</span>, assign to <span class="math" data-tex="\(v\in X_k\)">\(v\in X_k\)</span> the element <span class="math" data-tex="\(g_v\)">\(g_v\)</span> read along any path from <span class="math" data-tex="\(o_k\)">\(o_k\)</span> to <span class="math" data-tex="\(v\)">\(v\)</span>. The closed-walk observation makes this independent of the path. An edge from <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(w\)">\(w\)</span>, with letter <span class="math" data-tex="\(a\)">\(a\)</span>, gives <span class="math" data-tex="\(g_v^{-1}g_w=a\)">\(g_v^{-1}g_w=a\)</span>. We now prove that each vertex map is injective.</p>
+<p>We supply the diagram facts used in that proof. The graphical reduction argument is due to Yann Ollivier and Dominik Gruber; compare Gruber, <em>Groups with graphical C(6) and C(7) small cancellation presentations</em>, Lemmas 2.10 and 2.13. A <strong>piece</strong> is a nonbacktracking path whose word has two distinct lifts to <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>. Our labellings make a piece in any simple cycle shorter than <span class="math" data-tex="\(1/12\)">\(1/12\)</span> of that cycle.</p>
+<p><strong>Diagrams and reduction.</strong> A diagram is a finite simply connected planar complex with oriented, labelled edges and polygonal faces. Its exterior boundary can pass through a vertex more than once. A face boundary is labelled by a closed walk in <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>; we initially allow all nontrivial closed walks as relators. A word is the identity in (2M.1) precisely when it bounds such a diagram. In one direction, successively removing faces expresses the boundary word as a product of conjugated relators. In the other, express a word in the normal closure as a finite product <span class="math" data-tex="\(\prod_j t_jr_j^{\pm1}t_j^{-1}\)">\(\prod_j t_jr_j^{\pm1}t_j^{-1}\)</span>. Draw the relator polygons attached by the paths <span class="math" data-tex="\(t_j\)">\(t_j\)</span> to a common basepoint in a planar arrangement. Consecutive inverse letters in the remaining boundary can be identified by folding. This constructs the required diagram. Conversely the same cutting procedure, with paths from the basepoint to each face, recovers that product. These operations prove the diagram criterion, including freely reducible boundary words.</p>
+<p>An interior edge <strong>originates from the graph</strong> if the two incident face-boundary lifts traverse the same edge of <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>. If this holds for one edge in an interior arc, reducedness extends the agreement along the arc. Every other interior arc is a piece. A nontrivial closed walk has a unique lift once its cyclic word and a lifted point are specified. Two distinct full cycle lifts would give a repeated path containing a simple cycle, which is excluded by the small cancellation bound. This ensures that the origin condition is independent of the face descriptions.</p>
+<p>Among diagrams for a given boundary word choose one with as few edges as possible, and then as few vertices as possible. We claim that it has no originating interior edge and that every face lifts to a simple cycle. Here are the planar reduction details, including the possible holes when several faces merge.</p>
+<p>Erase all originating interior edges and merge incident faces. The face lifts agree at each erased edge, so the boundary walks of each merged region still lift to <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>. First exclude a merged region with freely trivial boundary. Choose an innermost such boundary, and take the disk subdiagram it encloses in the original diagram. Its interior edges connecting the merged faces originate from the graph. Replace this subdiagram by one face with the same boundary word. Identify consecutive inverse boundary edges, then repeat until this face has become a labelled tree. The exterior boundary walk is preserved, while at least one edge has been removed. Edge minimality excludes this alternative. Thus every remaining merged face carries a freely nontrivial closed walk in the graph.</p>
+<p>Two further obstructions must be considered: a merged region can enclose a hole, or its closure can fail to be simply connected. Choose an innermost such enclosure. The region it encloses, denoted <span class="math" data-tex="\(D_0\)">\(D_0\)</span>, has at least one face, has no interior spur, and has simply connected faces. Its interior arcs are pieces. After suppressing degree-two vertices, every face of <span class="math" data-tex="\(D_0\)">\(D_0\)</span>, including its boundary faces, has at least six edges: its entire boundary consists of pieces, since it faces the surrounding merged region, and a nontrivial cycle cannot be covered by fewer than six pieces. There is at most one vertex of <span class="math" data-tex="\(D_0\)">\(D_0\)</span> incident to an edge outside <span class="math" data-tex="\(D_0\)">\(D_0\)</span>; all its other vertices have degree at least three after suppression.</p>
+<p>Such an enclosure is impossible. Indeed, a planar diagram whose faces have at least six edges and whose interior vertices have degree at least three satisfies</p>
+<span id="equation-2m-2"></span><span class="math math-display" data-tex="\[
+\sum_{v\in\partial D_0}\bigl(5/2-\deg(v)\bigr)\ge3.
+\tag{2M.2}
+\]">\[
+\sum_{v\in\partial D_0}\bigl(5/2-\deg(v)\bigr)\ge3.
+\tag{2M.2}
+\]</span>
+<p>Here is a calculation that also covers cut vertices and connecting tree edges. Let <span class="math" data-tex="\(b\)">\(b\)</span> be the length of the exterior boundary walk, counting a bridge twice, and let <span class="math" data-tex="\(B\)">\(B\)</span> be its set of distinct vertices. Each such vertex is visited, so <span class="math" data-tex="\(b\ge|B|\)">\(b\ge|B|\)</span>. Euler's formula and face incidences give <span class="math" data-tex="\(V-E+F=1\)">\(V-E+F=1\)</span>, <span class="math" data-tex="\(\sum_v\deg(v)=2E\)">\(\sum_v\deg(v)=2E\)</span>, and <span class="math" data-tex="\(6F\le2E-b\)">\(6F\le2E-b\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+6\le\sum_v(6-2\deg(v))-b
+\le\sum_{v\in B}(5-2\deg(v)).
+\]">\[
+6\le\sum_v(6-2\deg(v))-b
+\le\sum_{v\in B}(5-2\deg(v)).
+\]</span>
+<p>The second inequality uses the nonpositive interior-vertex terms and <span class="math" data-tex="\(b\ge|B|\)">\(b\ge|B|\)</span>. Dividing by two proves (2M.2), with no assumption that the boundary embeds. In the enclosure above, at most one summand is positive, and even a vertex of degree one contributes only <span class="math" data-tex="\(3/2\)">\(3/2\)</span>. This contradicts (2M.2).</p>
+<p>The erased-edge construction therefore gives an actual diagram with nontrivial closed-walk faces. Any erased edge would contradict its minimal number of edges. There are consequently no originating edges in the minimal diagram.</p>
+<p>Its faces are simply connected, with no spur ending inside a face. If a face lift repeated a graph vertex, pinch the two corresponding boundary vertices together through that face. The two resulting boundary walks are closed walks in <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>. Freely trivial ones can be folded as above. If folding removes edges, edge minimality fails; otherwise the pinch reduces the number of vertices with the same edges, contrary to the second minimality condition. Every remaining face therefore lifts to a simple cycle. We have proved that any trivial word has a diagram with simple-cycle faces and with every interior arc a piece.</p>
+<p><strong>A boundary face with a long exterior segment.</strong> Consider a disk component of such a diagram, with at least two faces. Suppress vertices of degree two. Write <span class="math" data-tex="\(i(f)\)">\(i(f)\)</span> for the number of interior arcs of a face and <span class="math" data-tex="\(e(f)\)">\(e(f)\)</span> for its exterior arcs. Directly from Euler's formula,</p>
+<span id="equation-2m-3"></span><span class="math math-display" data-tex="\[
+6=2\sum_v(3-\deg(v))
++\sum_f\bigl(6-2e(f)-i(f)\bigr).
+\tag{2M.3}
+\]">\[
+6=2\sum_v(3-\deg(v))
++\sum_f\bigl(6-2e(f)-i(f)\bigr).
+\tag{2M.3}
+\]</span>
+<p>The total degrees count each edge twice; face incidences count each interior edge twice and each exterior edge once, which gives the displayed identity. There are no degree-one vertices when the boundary is cyclically reduced, so the vertex sum is nonpositive. An interior face has at least thirteen arcs because each piece is shorter than a twelfth of its perimeter. A face with <span class="math" data-tex="\(e(f)\ge2\)">\(e(f)\ge2\)</span> has <span class="math" data-tex="\(i(f)\ge e(f)\)">\(i(f)\ge e(f)\)</span>, since the exterior components are separated by interior arcs; its contribution is nonpositive. A face with <span class="math" data-tex="\(e(f)=1\)">\(e(f)=1\)</span> also contributes nonpositively if <span class="math" data-tex="\(i(f)\ge4\)">\(i(f)\ge4\)</span>. Thus (2M.3) requires boundary faces with
+<span class="math" data-tex="\(e(f)=1\)">\(e(f)=1\)</span> and <span class="math" data-tex="\(i(f)\le3\)">\(i(f)\le3\)</span>. In a diagram with at least two faces each such face has an interior arc, so it contributes at most three. There are at least two such faces. The unique exterior segment of either one has length greater than <span class="math" data-tex="\(3/4\)">\(3/4\)</span> of its perimeter, since its at most three interior pieces together have length less than one quarter.</p>
+<p><strong>Injectivity.</strong> Suppose some two distinct graph vertices have the same image, and choose a shortest nonempty graph geodesic <span class="math" data-tex="\(p\)">\(p\)</span> whose word is trivial. Its word is freely reduced. It is also cyclically reduced: deleting inverse first and last letters would leave a shorter trivial subpath, and a nonempty subpath of a geodesic has distinct endpoints. Take a reduced diagram for its word. If there are no faces, the nonempty freely reduced word would be freely trivial. If there is a cut vertex, choose a leaf disk component not crossing the boundary basepoint. Its boundary is a shorter contiguous subword of <span class="math" data-tex="\(p\)">\(p\)</span>, again contradicting minimality. Thus the diagram is a disk.</p>
+<p>If there is just one face, a contiguous subpath of <span class="math" data-tex="\(p\)">\(p\)</span> longer than half its perimeter is a subpath of that simple cycle. Its lift along <span class="math" data-tex="\(p\)">\(p\)</span> must agree with the cycle lift: otherwise it is a piece, contradicting the twelfth-perimeter bound. But a graph geodesic cannot follow more than half a simple cycle, since the complementary segment is shorter.</p>
+<p>If there are at least two faces, use the two faces furnished by (2M.3). At least one of their exterior segments does not cross the boundary basepoint, so it is a contiguous subpath of <span class="math" data-tex="\(p\)">\(p\)</span>. It is longer than <span class="math" data-tex="\(3/4\)">\(3/4\)</span> of its face perimeter. Again its two lifts must agree, and the complementary cycle segment shortens a geodesic subpath. This final contradiction proves injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="an-explicit-projection-in-the-tensor-kernel">An explicit projection in the tensor kernel</h3>
+<p>We first give the projection argument for regular graphs, where the constant-vector formula is simplest, and then apply its weighted version to the constructed graphs. A finite connected simple <span class="math" data-tex="\(d\)">\(d\)</span>-regular graph <span class="math" data-tex="\(V_k\)">\(V_k\)</span>, with <span class="math" data-tex="\(n_k\)">\(n_k\)</span> vertices, has normalized Laplacian <span class="math" data-tex="\(\Delta_k=1-A_k/d\)">\(\Delta_k=1-A_k/d\)</span>. We require <span class="math" data-tex="\(n_k\to\infty\)">\(n_k\to\infty\)</span> and one <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> such that</p>
+<span id="equation-2t-1"></span><span class="math math-display" data-tex="\[
+\operatorname{spec}(\Delta_k)\subset\{0\}\cup[\varepsilon,2]
+\quad\text{for every }k.
+\tag{2T.1}
+\]">\[
+\operatorname{spec}(\Delta_k)\subset\{0\}\cup[\varepsilon,2]
+\quad\text{for every }k.
+\tag{2T.1}
+\]</span>
+<p>This is the spectral expander condition used in the calculation. Suppose there are injective vertex maps <span class="math" data-tex="\(v\mapsto g_v\in\Gamma\)">\(v\mapsto g_v\in\Gamma\)</span> and a fixed finite symmetric subset <span class="math" data-tex="\(S\subset\Gamma\)">\(S\subset\Gamma\)</span> with
+<span class="math" data-tex="\(g_v^{-1}g_w\in S\)">\(g_v^{-1}g_w\in S\)</span> whenever <span class="math" data-tex="\(v,w\)">\(v,w\)</span> are adjacent. Isometric copies in a finitely generated Cayley graph satisfy this hypothesis. We allow extra Cayley edges between the embedded vertices; the graph's own edges determine its Laplacian.</p>
+<p>For <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>, let <span class="math" data-tex="\(a_{s,k}\in M_{n_k}\)">\(a_{s,k}\in M_{n_k}\)</span> have entry <span class="math" data-tex="\(1/d\)">\(1/d\)</span> at <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> if <span class="math" data-tex="\(v,w\)">\(v,w\)</span> are adjacent and <span class="math" data-tex="\(g_v^{-1}g_w=s\)">\(g_v^{-1}g_w=s\)</span>, and zero otherwise. Injectivity makes this a scaled partial permutation matrix, so its norm is at most <span class="math" data-tex="\(1/d\)">\(1/d\)</span>. The bounded sequence <span class="math" data-tex="\(a_s=(a_{s,k})_k\)">\(a_s=(a_{s,k})_k\)</span> belongs to <span class="math" data-tex="\(M\)">\(M\)</span>. In the spatial tensor product form</p>
+<span id="equation-2t-2"></span><span class="math math-display" data-tex="\[
+\Delta=1\otimes1-\sum_{s\in S}a_s\otimes\lambda_s.
+\tag{2T.2}
+\]">\[
+\Delta=1\otimes1-\sum_{s\in S}a_s\otimes\lambda_s.
+\tag{2T.2}
+\]</span>
+<p>The symmetry of the graph gives <span class="math" data-tex="\(a_{s^{-1}}=a_s^*\)">\(a_{s^{-1}}=a_s^*\)</span>, hence <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is self-adjoint. Its <span class="math" data-tex="\(k\)">\(k\)</span>-th coordinate acts on <span class="math" data-tex="\(\ell^2(V_k)\otimes\ell^2(\Gamma)\)">\(\ell^2(V_k)\otimes\ell^2(\Gamma)\)</span>. The diagonal unitary
+<span class="math" data-tex="\(W_k=\operatorname{diag}_{v\in V_k}\lambda_{g_v^{-1}}\)">\(W_k=\operatorname{diag}_{v\in V_k}\lambda_{g_v^{-1}}\)</span> gives exactly</p>
+<span id="equation-2t-3"></span><span class="math math-display" data-tex="\[
+\Delta^{(k)}=W_k(\Delta_k\otimes1)W_k^*.
+\tag{2T.3}
+\]">\[
+\Delta^{(k)}=W_k(\Delta_k\otimes1)W_k^*.
+\tag{2T.3}
+\]</span>
+<p>Indeed its <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> entry is the scalar Laplacian entry times <span class="math" data-tex="\(\lambda_{g_v^{-1}g_w}\)">\(\lambda_{g_v^{-1}g_w}\)</span>. The direct sum of all matrix-coordinate representations is faithful on <span class="math" data-tex="\(M\)">\(M\)</span>, so its spatial tensor product with the faithful regular representation is faithful as well. Thus <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is positive and has spectrum in the set in (2T.1).</p>
+<p>Choose <span class="math" data-tex="\(\varphi(t)=\max\{0,1-t/\varepsilon\}\)">\(\varphi(t)=\max\{0,1-t/\varepsilon\}\)</span> on <span class="math" data-tex="\([0,2]\)">\([0,2]\)</span>. Functional calculus gives a projection <span class="math" data-tex="\(P=\varphi(\Delta)\in M\otimes_{\min}C_r^*(\Gamma)\)">\(P=\varphi(\Delta)\in M\otimes_{\min}C_r^*(\Gamma)\)</span>. Connectedness makes the zero eigenspace of each <span class="math" data-tex="\(\Delta_k\)">\(\Delta_k\)</span> exactly the constants: its quadratic form is a positive multiple of <span class="math" data-tex="\(\sum_{v\sim w}|\xi(v)-\xi(w)|^2\)">\(\sum_{v\sim w}|\xi(v)-\xi(w)|^2\)</span>. If <span class="math" data-tex="\(p_k\)">\(p_k\)</span> is the rank-one projection onto the normalized constant vector, then</p>
+<span id="equation-2t-4"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+P^{(k)}=W_k(p_k\otimes1)W_k^*,\qquad\|P^{(k)}\|=1,\\
+(P^{(k)})_{v,w}=\frac1{n_k}\lambda_{g_v^{-1}g_w}.
+\end{gathered}
+\tag{2T.4}
+\]">\[
+\begin{gathered}
+P^{(k)}=W_k(p_k\otimes1)W_k^*,\qquad\|P^{(k)}\|=1,\\
+(P^{(k)})_{v,w}=\frac1{n_k}\lambda_{g_v^{-1}g_w}.
+\end{gathered}
+\tag{2T.4}
+\]</span>
+<p>In particular <span class="math" data-tex="\(P\)">\(P\)</span> is a nonzero projection of norm one.</p>
+<p>Let <span class="math" data-tex="\(\omega_t(z)=\langle\delta_t,z\delta_e\rangle\)">\(\omega_t(z)=\langle\delta_t,z\delta_e\rangle\)</span> be the bounded Fourier functional on <span class="math" data-tex="\(C_r^*(\Gamma)\)">\(C_r^*(\Gamma)\)</span>, so <span class="math" data-tex="\(\omega_t(\lambda_s)=1\)">\(\omega_t(\lambda_s)=1\)</span> for <span class="math" data-tex="\(s=t\)">\(s=t\)</span> and zero otherwise. Formula (2T.4) gives</p>
+<span id="equation-2t-5"></span><span class="math math-display" data-tex="\[
+\left\|\big((\operatorname{id}_M\otimes\omega_t)(P)\big)_k\right\|
+\leq \frac1{n_k}.
+\tag{2T.5}
+\]">\[
+\left\|\big((\operatorname{id}_M\otimes\omega_t)(P)\big)_k\right\|
+\leq \frac1{n_k}.
+\tag{2T.5}
+\]</span>
+<p>For a fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the entry <span class="math" data-tex="\(1/n_k\)">\(1/n_k\)</span> can occur at most once in any row or column, since <span class="math" data-tex="\(g_w=g_vt\)">\(g_w=g_vt\)</span> uniquely determines <span class="math" data-tex="\(w\)">\(w\)</span> from <span class="math" data-tex="\(v\)">\(v\)</span>, and conversely. This is why injectivity of the vertex maps matters. Every Fourier coefficient of <span class="math" data-tex="\(P\)">\(P\)</span> therefore belongs to <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>Put <span class="math" data-tex="\(q:M\to M/J\)">\(q:M\to M/J\)</span>. Every coefficient of <span class="math" data-tex="\((q\otimes\operatorname{id})(P)\)">\((q\otimes\operatorname{id})(P)\)</span> is zero. These coefficients separate elements of the spatial tensor product, with no exactness assumption. To verify that fact for any C*-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, represent <span class="math" data-tex="\(B\)">\(B\)</span> faithfully on <span class="math" data-tex="\(H\)">\(H\)</span> and use the regular representation in the other factor. The matrix block of an element <span class="math" data-tex="\(z\in B\otimes_{\min}C_r^*(\Gamma)\)">\(z\in B\otimes_{\min}C_r^*(\Gamma)\)</span>, from column <span class="math" data-tex="\(v\)">\(v\)</span> to row <span class="math" data-tex="\(u\)">\(u\)</span> of <span class="math" data-tex="\(\ell^2(\Gamma)\)">\(\ell^2(\Gamma)\)</span>, is
+<span class="math" data-tex="\(\rho((\operatorname{id}_B\otimes\omega_{uv^{-1}})(z))\)">\(\rho((\operatorname{id}_B\otimes\omega_{uv^{-1}})(z))\)</span>. The identity holds on finite tensors and extends by norm continuity. If every coefficient vanishes, every matrix block vanishes, and the finite-coordinate vectors show that the faithfully represented operator is zero. Consequently</p>
+<span id="equation-2t-6"></span><span class="math math-display" data-tex="\[
+(q\otimes\operatorname{id})(P)=0.
+\tag{2T.6}
+\]">\[
+(q\otimes\operatorname{id})(P)=0.
+\tag{2T.6}
+\]</span>
+<p>On the other hand, every element of <span class="math" data-tex="\(J\otimes_{\min}C_r^*(\Gamma)\)">\(J\otimes_{\min}C_r^*(\Gamma)\)</span> has coordinate norms tending to zero. For finite sums <span class="math" data-tex="\(\sum j_i\otimes c_i\)">\(\sum j_i\otimes c_i\)</span>, bound the <span class="math" data-tex="\(k\)">\(k\)</span>-th norm by <span class="math" data-tex="\(\sum\|(j_i)_k\|\|c_i\|\)">\(\sum\|(j_i)_k\|\|c_i\|\)</span>, then use uniform approximation by those sums. Equation (2T.4) proves that <span class="math" data-tex="\(P\)">\(P\)</span> is outside this ideal. We have explicitly obtained</p>
+<span id="equation-2t-7"></span><span class="math math-display" data-tex="\[
+P\in\ker(q\otimes\operatorname{id})
+\setminus\big(J\otimes_{\min}C_r^*(\Gamma)\big).
+\tag{2T.7}
+\]">\[
+P\in\ker(q\otimes\operatorname{id})
+\setminus\big(J\otimes_{\min}C_r^*(\Gamma)\big).
+\tag{2T.7}
+\]</span>
+<p>Thus the expander-embedding hypothesis implies nonexactness of the reduced group algebra and, by the trivial-action isomorphism, failure of middle exactness for reduced crossed products. The graph and diagram arguments above supply the required finitely generated group; the weighted calculation below applies the obstruction to its bounded-degree graphs.</p>
+<p>The same calculation works for weak vertex maps whose largest fibre size <span class="math" data-tex="\(m_k\)">\(m_k\)</span> satisfies <span class="math" data-tex="\(m_k/n_k\to0\)">\(m_k/n_k\to0\)</span>, provided edge differences still belong to one finite <span class="math" data-tex="\(S\)">\(S\)</span>. The <span class="math" data-tex="\(a_{s,k}\)">\(a_{s,k}\)</span>'s now need not be partial permutation matrices, but their absolute row and column sums are at most one, so they still give bounded sequences in <span class="math" data-tex="\(M\)">\(M\)</span>. The matrices in (2T.5) are sums of disjoint all-ones rectangular blocks, one for each pair of group-value fibres related by <span class="math" data-tex="\(t\)">\(t\)</span>. Their norm is at most <span class="math" data-tex="\(m_k/n_k\)">\(m_k/n_k\)</span>. Formula (2T.3) does not require injectivity, so all the remaining arguments are unchanged. This includes the weaker type of expander placement used in the original Gromov construction.</p>
+<p>The construction is the expander projection argument described in [Gomez Aparicio–Julg–Valette 2019, §9.3.3, proof of Theorem 9.12]. The formulas above specify the element, its Fourier coefficients, and the exact kernel and ideal in (25).</p>
+<h3 id="the-tensor-obstruction-for-the-constructed-graphs">The tensor obstruction for the constructed graphs</h3>
+<p>The constructed graphs have bounded, rather than identical, degrees. Here is the corresponding version of the projection calculation. For one graph, let <span class="math" data-tex="\(D_k=\operatorname{diag}(d_v)\)">\(D_k=\operatorname{diag}(d_v)\)</span> and <span class="math" data-tex="\(\operatorname{vol}(X_k)=\sum_vd_v\)">\(\operatorname{vol}(X_k)=\sum_vd_v\)</span>. Replace the regular graph Laplacian in (2T.1) by</p>
+<span id="equation-2m-4"></span><span class="math math-display" data-tex="\[
+\Delta_k=1-D_k^{-1/2}A_kD_k^{-1/2}.
+\tag{2M.4}
+\]">\[
+\Delta_k=1-D_k^{-1/2}A_kD_k^{-1/2}.
+\tag{2M.4}
+\]</span>
+<p>Its uniform gap was proved in (2G.8). For <span class="math" data-tex="\(s\)">\(s\)</span> in the fixed label set, the matrix <span class="math" data-tex="\(a_{s,k}\)">\(a_{s,k}\)</span> now has entry <span class="math" data-tex="\(1/\sqrt{d_vd_w}\)">\(1/\sqrt{d_vd_w}\)</span> when the edge from <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(w\)">\(w\)</span> reads <span class="math" data-tex="\(s\)">\(s\)</span>. Injectivity gives at most one entry in each row and column. Its norm is at most <span class="math" data-tex="\(1/998\)">\(1/998\)</span>, so <span class="math" data-tex="\(a_s=(a_{s,k})_k\)">\(a_s=(a_{s,k})_k\)</span> belongs to the same product algebra <span class="math" data-tex="\(M\)">\(M\)</span>. Equations (2T.2)–(2T.3) still hold exactly with these matrices.</p>
+<p>The normalized kernel vector of <span class="math" data-tex="\(\Delta_k\)">\(\Delta_k\)</span> is
+<span class="math" data-tex="\(v\mapsto\sqrt{d_v/\operatorname{vol}(X_k)}\)">\(v\mapsto\sqrt{d_v/\operatorname{vol}(X_k)}\)</span>. Thus its gauged constant-space projection has entries</p>
+<span id="equation-2m-5"></span><span class="math math-display" data-tex="\[
+(P^{(k)})_{v,w}
+=\frac{\sqrt{d_vd_w}}{\operatorname{vol}(X_k)}
+\lambda_{g_v^{-1}g_w},\qquad
+\|P^{(k)}\|=1.
+\tag{2M.5}
+\]">\[
+(P^{(k)})_{v,w}
+=\frac{\sqrt{d_vd_w}}{\operatorname{vol}(X_k)}
+\lambda_{g_v^{-1}g_w},\qquad
+\|P^{(k)}\|=1.
+\tag{2M.5}
+\]</span>
+<p>Each fixed Fourier coefficient is a weighted partial permutation matrix of norm at most
+<span class="math" data-tex="\(1000/(998n_k)\)">\(1000/(998n_k)\)</span>, which tends to zero. The separating-coefficient argument (2T.6) and the norm-vanishing ideal argument (2T.7) therefore apply without change. We have constructed both the finitely generated group and a concrete projection witnessing nonexactness of <span class="math" data-tex="\(C_r^*(\Gamma)\)">\(C_r^*(\Gamma)\)</span>. Through the trivial-action identity, it is also a counterexample to exactness of the reduced crossed-product functor.</p>
+<p>The original monster construction is due to Mikhail Gromov. The finite graphical labelling approach is due to Damian Osajda; the counting improvement used here is due to Louis Esperet and Ugo Giocanti, and the diagram reduction to Ollivier and Gruber. The final analytic projection is the obstruction described by Gomez Aparicio–Julg–Valette.</p>
+<p>The ideal representation-extension argument in Lesson 1 proves that full crossed products preserve equivariant short exact sequences; Connes, Chapter II, Appendix C, Proposition 2(b), records this theorem. Their preservation of ideal inclusions is consistent with the preceding failure for a general embedding: an ideal has additional representation-extension properties. Likewise, reduced preservation of embeddings does not settle the middle kernel in (23).</p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (basic).</strong> Starting from (3), verify covariance, both adjoint formulas, and why left translation has no modular factor. Explain where a modular factor does appear.</p>
+<p><strong>Solution.</strong> Pointwise adjointing gives <span class="math" data-tex="\(\widetilde\pi(a)^*=\widetilde\pi(a^*)\)">\(\widetilde\pi(a)^*=\widetilde\pi(a^*)\)</span>. In the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> integral put <span class="math" data-tex="\(t=sr\)">\(t=sr\)</span>. Left Haar invariance gives <span class="math" data-tex="\(\|\lambda_s\xi\|_2=\|\xi\|_2\)">\(\|\lambda_s\xi\|_2=\|\xi\|_2\)</span>, so <span class="math" data-tex="\(\lambda_s^*=\lambda_{s^{-1}}\)">\(\lambda_s^*=\lambda_{s^{-1}}\)</span>. Applying the three operators in order gives <span class="math" data-tex="\(\pi(\alpha_{t^{-1}s}(a))\xi(t)\)">\(\pi(\alpha_{t^{-1}s}(a))\xi(t)\)</span>. Since <span class="math" data-tex="\(\alpha_{t^{-1}s}=\alpha_{t^{-1}}\alpha_s\)">\(\alpha_{t^{-1}s}=\alpha_{t^{-1}}\alpha_s\)</span>, this is <span class="math" data-tex="\(\widetilde\pi(\alpha_s(a))\xi(t)\)">\(\widetilde\pi(\alpha_s(a))\xi(t)\)</span>. The modular function is needed for Haar inversion in the integrated adjoint formula, producing <span class="math" data-tex="\(\Delta(t)^{-1}\)">\(\Delta(t)^{-1}\)</span> in (1); it is absent from a left-translation change of variables.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Prove Fell absorption by constructing <span class="math" data-tex="\(W\)">\(W\)</span> on compact continuous sections. Include surjectivity, both intertwining identities, and the scalar case with the tensor factors reversed.</p>
+<p><strong>Solution.</strong> Define <span class="math" data-tex="\(W\xi(t)=U_{t^{-1}}\xi(t)\)">\(W\xi(t)=U_{t^{-1}}\xi(t)\)</span>. Strong continuity makes this a compact continuous section. Its norm is <span class="math" data-tex="\(\|\xi\|_2\)">\(\|\xi\|_2\)</span>, since every <span class="math" data-tex="\(U_{t^{-1}}\)">\(U_{t^{-1}}\)</span> is unitary. The inverse <span class="math" data-tex="\(Z\eta(t)=U_t\eta(t)\)">\(Z\eta(t)=U_t\eta(t)\)</span> preserves the same dense subspace and satisfies <span class="math" data-tex="\(WZ=ZW=1\)">\(WZ=ZW=1\)</span> there. Both maps extend isometrically, giving <span class="math" data-tex="\(Z=W^*\)">\(Z=W^*\)</span> and surjectivity. Covariance gives <span class="math" data-tex="\(WP(a)W^*\eta(t)=\pi(\alpha_{t^{-1}}(a))\eta(t)\)">\(WP(a)W^*\eta(t)=\pi(\alpha_{t^{-1}}(a))\eta(t)\)</span>. The other identity is</p>
+<span class="math math-display" data-tex="\[
+WV_sW^*\eta(t)=U_{t^{-1}}U_sU_{s^{-1}t}\eta(s^{-1}t)=\eta(s^{-1}t).
+\]">\[
+WV_sW^*\eta(t)=U_{t^{-1}}U_sU_{s^{-1}t}\eta(s^{-1}t)=\eta(s^{-1}t).
+\]</span>
+<p>Thus the conjugated pair is regular, and integration preserves conjugation. Scalar coefficients give <span class="math" data-tex="\(U\otimes\lambda\simeq1\otimes\lambda\)">\(U\otimes\lambda\simeq1\otimes\lambda\)</span>. Composing with the tensor flip gives <span class="math" data-tex="\(\lambda\otimes U\simeq\lambda\otimes1\)">\(\lambda\otimes U\simeq\lambda\otimes1\)</span>.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Let <span class="math" data-tex="\(\varphi:A\hookrightarrow B\)">\(\varphi:A\hookrightarrow B\)</span> be equivariant. Prove that its reduced crossed-product map is isometric, allowing a faithful representation of <span class="math" data-tex="\(B\)">\(B\)</span> to restrict degenerately to <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Solution.</strong> Choose faithful nondegenerate <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, and set <span class="math" data-tex="\(K_A=\overline{\rho(\varphi(A))K}\)">\(K_A=\overline{\rho(\varphi(A))K}\)</span>. This space reduces <span class="math" data-tex="\(\rho\varphi\)">\(\rho\varphi\)</span>, whose complementary summand is zero. Its restriction <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is faithful: if it kills <span class="math" data-tex="\(a\)">\(a\)</span>, the full representation kills <span class="math" data-tex="\(a\)">\(a\)</span> too, whence <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. It is nondegenerate by construction. Equivariance gives <span class="math" data-tex="\(R_\rho^B(\varphi_c f)=R_{\rho\varphi}^A(f)\)">\(R_\rho^B(\varphi_c f)=R_{\rho\varphi}^A(f)\)</span>. On <span class="math" data-tex="\(L^2(G,K_A)\oplus L^2(G,K_A^\perp)\)">\(L^2(G,K_A)\oplus L^2(G,K_A^\perp)\)</span>, this integrated operator is <span class="math" data-tex="\(R_\sigma^A(f)\oplus0\)">\(R_\sigma^A(f)\oplus0\)</span>, because translations preserve the decomposition. Its norm is <span class="math" data-tex="\(\|f\|_{r,A}\)">\(\|f\|_{r,A}\)</span>. Completion preserves this equality, proving isometry without requiring a nondegenerate embedding into <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Exercise 4 (advanced).</strong> For any C*-algebra <span class="math" data-tex="\(B\)">\(B\)</span> with trivial <span class="math" data-tex="\(G\)">\(G\)</span>-action, prove the canonical isomorphism</p>
+<span id="equation-26"></span><span class="math math-display" data-tex="\[
+(A\otimes_{\min}B)\rtimes_{\alpha\otimes\mathrm{id},r}G
+\cong(A\rtimes_{\alpha,r}G)\otimes_{\min}B.
+\tag{26}
+\]">\[
+(A\otimes_{\min}B)\rtimes_{\alpha\otimes\mathrm{id},r}G
+\cong(A\rtimes_{\alpha,r}G)\otimes_{\min}B.
+\tag{26}
+\]</span>
+<p>Specify its dense formula. No nuclearity or exactness hypothesis on <span class="math" data-tex="\(B\)">\(B\)</span> is allowed.</p>
+<p><strong>Solution.</strong> If either algebra is zero, both sides are zero. Otherwise take faithful nondegenerate <span class="math" data-tex="\(\pi_A\)">\(\pi_A\)</span> on <span class="math" data-tex="\(H_A\)">\(H_A\)</span> and <span class="math" data-tex="\(\pi_B\)">\(\pi_B\)</span> on <span class="math" data-tex="\(H_B\)">\(H_B\)</span>. Their spatial tensor product is faithful on <span class="math" data-tex="\(A\otimes_{\min}B\)">\(A\otimes_{\min}B\)</span>. Use the unitary identification</p>
+<span class="math math-display" data-tex="\[
+L^2(G,H_A\otimes H_B)\cong L^2(G,H_A)\otimes H_B,
+\quad
+[t\mapsto\xi(t)\otimes w]\longleftrightarrow\xi\otimes w.
+\]">\[
+L^2(G,H_A\otimes H_B)\cong L^2(G,H_A)\otimes H_B,
+\quad
+[t\mapsto\xi(t)\otimes w]\longleftrightarrow\xi\otimes w.
+\]</span>
+<p>In the left regular model, <span class="math" data-tex="\(a\otimes b\)">\(a\otimes b\)</span> acts at coordinate <span class="math" data-tex="\(t\)">\(t\)</span> as <span class="math" data-tex="\(\pi_A(\alpha_{t^{-1}}(a))\otimes\pi_B(b)\)">\(\pi_A(\alpha_{t^{-1}}(a))\otimes\pi_B(b)\)</span>; translation acts as <span class="math" data-tex="\(\lambda_s\otimes1\)">\(\lambda_s\otimes1\)</span>. Hence <span class="math" data-tex="\(F(s)=f(s)\otimes b\)">\(F(s)=f(s)\otimes b\)</span> has integrated operator <span class="math" data-tex="\(R_{\pi_A}(f)\otimes\pi_B(b)\)">\(R_{\pi_A}(f)\otimes\pi_B(b)\)</span>. The dense formula is</p>
+<span class="math math-display" data-tex="\[
+\sum_j f_j(\cdot)\otimes b_j
+\longmapsto\sum_j R_{\pi_A}(f_j)\otimes\pi_B(b_j).
+\]">\[
+\sum_j f_j(\cdot)\otimes b_j
+\longmapsto\sum_j R_{\pi_A}(f_j)\otimes\pi_B(b_j).
+\]</span>
+<p>Such functions form a *-subalgebra by (1) and triviality of the second action. They are <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-dense on compact supports: approximate a compact coefficient image by finite tensor sums, then use a partition of unity and cutoff. The common regular model makes the map isometric for the reduced norm. Its image is dense in the right side, because <span class="math" data-tex="\(R_{\pi_A}(C_c(G,A))\)">\(R_{\pi_A}(C_c(G,A))\)</span> is dense in the first factor and <span class="math" data-tex="\(\pi_B(B)\)">\(\pi_B(B)\)</span> realizes the second faithfully. Completion gives (26), with the formula making it independent of the auxiliary representations. All norms here are spatial, so neither nuclearity nor exactness is needed.</p>
+<p><strong>Exercise 5 (advanced).</strong> Let a connected finite graph have vertex degrees <span class="math" data-tex="\(d_v\)">\(d_v\)</span>, and suppose its vertices map injectively to a group, with every edge difference in a fixed finite set. Find the kernel vector of its normalized Laplacian and the entries of the gauged kernel projection. Prove a bound for every fixed Fourier coefficient in terms of <span class="math" data-tex="\(n\)">\(n\)</span>, the minimum degree and the maximum degree. Explain why a lower degree bound and a uniform spectral gap suffice for the nonexactness argument.</p>
+<p><strong>Solution.</strong> The normalized Laplacian is <span class="math" data-tex="\(1-D^{-1/2}AD^{-1/2}\)">\(1-D^{-1/2}AD^{-1/2}\)</span>. Its quadratic form on <span class="math" data-tex="\(D^{1/2}u\)">\(D^{1/2}u\)</span> is <span class="math" data-tex="\(\sum_E|u(v)-u(w)|^2\)">\(\sum_E|u(v)-u(w)|^2\)</span>, so connectedness makes its kernel the span of <span class="math" data-tex="\((\sqrt{d_v})_v\)">\((\sqrt{d_v})_v\)</span>. Normalize by <span class="math" data-tex="\(\operatorname{vol}(X)^{1/2}\)">\(\operatorname{vol}(X)^{1/2}\)</span>. Diagonal conjugation by <span class="math" data-tex="\(\lambda_{g_v^{-1}}\)">\(\lambda_{g_v^{-1}}\)</span> gives entries <span class="math" data-tex="\(\sqrt{d_vd_w}\lambda_{g_v^{-1}g_w}/\operatorname{vol}(X)\)">\(\sqrt{d_vd_w}\lambda_{g_v^{-1}g_w}/\operatorname{vol}(X)\)</span>. For one Fourier index, injectivity permits at most one nonzero entry in each row and column; its norm is therefore the largest weight, at most <span class="math" data-tex="\(d_{\max}/(d_{\min}n)\)">\(d_{\max}/(d_{\min}n)\)</span>. A uniform gap isolates the kernel by one continuous functional-calculus function for every graph. The projection has norm one in each coordinate, while these Fourier coefficients tend to zero when the degree ratio is bounded and <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>. Equations (2T.6)–(2T.7) give the required quotient kernel and exclusion from the norm-vanishing tensor ideal.</p>
+<h2 id="proofs-and-prerequisites">Proofs and prerequisites</h2>
+<p>We use the following exact prerequisite proofs and distinguish them from the results constructed in this lesson.</p>
+<ul>
+<li>Nondegenerate covariant pairs correspond to nondegenerate representations of the full crossed product, with integrated operator <span class="math" data-tex="\(\int\pi(f(s))U_sds\)">\(\int\pi(f(s))U_sds\)</span>. See [Connes 1994] and [Blackadar 2006]. This is the prerequisite result of the chapter “C*-dynamical systems and full crossed products”.</li>
+<li>For faithful nondegenerate coefficient representations, regular representations are faithful on <span class="math" data-tex="\(L^1(G,A)\)">\(L^1(G,A)\)</span> and give the same norm there. See <em>Covariance and crossed products with nonunital coefficients</em>, sections <em>The regular pair and its two faithfulness assertions</em>, <em>Why the reduced norm does not depend on the faithful coefficient representation</em>, and <em>Full and reduced crossed products and their canonical actions</em>, Theorems 4.2, 5.1 and 6.1, equations (4.3)–(6.3); compare [Blackadar 2006]. Proposition 2.2 provides the module interpretation.</li>
+<li>The free-group element in (22) has full norm <span class="math" data-tex="\(4\)">\(4\)</span> and reduced norm <span class="math" data-tex="\(2\sqrt3\)">\(2\sqrt3\)</span>. See <em>Unitary representations and the two group C</em> completions*, section <em>A strict gap: the free group on two generators</em>, Proposition 13.1 and equations (13.2)–(13.5).</li>
+<li>For trivial actions the full crossed product is <span class="math" data-tex="\(A\otimes_{\max}C^*(G)\)">\(A\otimes_{\max}C^*(G)\)</span>. This is proved by the commuting universal representations in Lesson 1; Blackadar, II.10.3.16(i), gives the literature statement.</li>
+<li>Free-group property A, the amenable boundary action and its full-to-reduced norm equality are proved in the geodesic-probability section. The example does not require the general equivalence between property A and boundary amenability.</li>
+<li>Equations (2G.1)–(2G.8) construct expanding graphs of increasing girth; (2L.1)–(2L.5) label the entire family with a fixed alphabet; the diagram proof after (2M.1) embeds every vertex set in the finitely generated group. The projection in (2T.2)–(2T.7), with the weighted version (2M.4)–(2M.5), proves the matrix-product failure of middle exactness. These proofs supply the complete nonexact-group example used here; compare [Gomez Aparicio–Julg–Valette 2019, §9.3.3, Theorem 9.12].</li>
+<li>Full crossed products preserve every equivariant short exact sequence by the ideal representation-extension proof of Lesson 1; compare Connes, Chapter II, Appendix C, Proposition 2(b).</li>
+</ul>
+<p>We also assume foundational C*-facts: faithful nondegenerate Hilbert-space representations exist; injective C*-homomorphisms are isometric and C*-homomorphisms have closed range; minimal spatial tensor norms are independent of faithful representations. These are ordinary C*-algebra prerequisites. Amenability criteria for general actions, discrete conditional expectations, and characterizations of exact groups require further results; the embedding and tensor-product proofs here do not assume them.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Spielman 2025]</strong> Daniel A. Spielman, <em>Spectral and Algebraic Graph Theory</em>, draft of 2 April 2025, Chapter 21, Theorem 21.1.3 and proof, pp.176–180. <a href="https://www.cs.yale.edu/homes/spielman/sagt/">Author's book project</a>.</li>
+<li><strong>[Esperet–Giocanti 2024]</strong> Louis Esperet and Ugo Giocanti, <em>Optimization in graphical small cancellation theory</em>, <a href="https://arxiv.org/abs/2306.03474v2">arXiv:2306.03474v2</a>, Theorem 3.1 and Claim 3.3.</li>
+<li><strong>[Gruber 2014]</strong> Dominik Gruber, <em>Groups with graphical C(6) and C(7) small cancellation presentations</em>, <a href="https://arxiv.org/abs/1210.0178v2">arXiv:1210.0178v2</a>, Lemmas 2.10 and 2.13 and §4. The graphical reduction originates in Yann Ollivier's small cancellation method.</li>
+<li><strong>[Gomez Aparicio–Julg–Valette 2019]</strong> Maria Paula Gomez Aparicio, Pierre Julg, and Alain Valette, <em>The Baum-Connes conjecture: an extended survey</em>, <a href="https://arxiv.org/abs/1905.10081">arXiv:1905.10081</a>. Relevant sections: <em>Full and reduced C*-algebras</em>; <em>Yu's property A: a polymorphous property</em>, especially <em>Exactness</em>.</li>
+<li><strong>[Connes 1994]</strong> Alain Connes, <em>Noncommutative Geometry</em>, Academic Press, 1994. Chapter II, Appendix C, <em>Crossed Products of C*-algebras and the Thom Isomorphism</em>. <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">Author's electronic edition</a>.</li>
+<li><strong>[Rosenberg 2012]</strong> Jonathan Rosenberg, <em>Examples and applications of noncommutative geometry and K-theory</em>, in Guillermo Cortiñas (ed.), <em>Topics in Noncommutative Geometry</em>, Clay Mathematics Proceedings 16, American Mathematical Society and Clay Mathematics Institute, 2012, §2.2, <em>Basic properties of crossed products</em>. <a href="https://www.claymath.org/wp-content/uploads/2022/03/cmip016c.pdf">Electronic volume</a>.</li>
+<li><strong>[Blackadar 2006]</strong> Bruce Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Encyclopaedia of Mathematical Sciences 122, Springer, 2006, II.10.3.13–16. <a href="https://bruceblackadar.com/Mathematics/Cycr.pdf">Author's revised edition, 2017</a>.</li>
+<li><strong><a href="prerequisites/OA-FLOW/repaired-20261004/covariance-and-crossed-products.html">Covariance and crossed products with nonunital coefficients</a></strong> Chapter in <em>Crossed Products &amp; Flow of Weights</em>, sections <em>The regular pair and its two faithfulness assertions</em>, <em>Why the reduced norm does not depend on the faithful coefficient representation</em>, and <em>Full and reduced crossed products and their canonical actions</em>.</li>
+<li><strong><a href="prerequisites/OA-FLOW/repaired-20261004/group-representations-and-completions.html">Unitary representations and the two group C* completions</a></strong> Chapter in <em>Crossed Products &amp; Flow of Weights</em>, section <em>A strict gap: the free group on two generators</em>.</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="pager-prev" rel="prev" href="KT-CP-01.html">← Previous lesson</a> <a href="index.html">Course contents</a> <a class="pager-next" rel="next" href="KT-CP-03.html">Next lesson →</a></nav>
+<p class="source-link"><a href="src/KT-CP-02.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

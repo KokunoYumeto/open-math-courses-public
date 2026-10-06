@@ -1,0 +1,723 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="b0b08cb7f524ab82e3b8bbfb738ab5bac85f442b5d0252819960a0175987a90b"><title>The dual group as the spectrum of \(L^1(G)\)</title><link rel="stylesheet" href="../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.md">Editable source</a> · <a href="../LICENCES.html">Licences</a></nav><article><h1 id="the-dual-group-as-the-spectrum-of-l-1-g">The dual group as the spectrum of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span></h1>
+<p><strong>Lesson HA-LCA-03.</strong> This lesson identifies frequencies with all multiplicative functionals on the convolution algebra, proves the transform laws, and computes explicit examples. Self-checked by the writing AI.</p>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact Hausdorff abelian group. Fix the Haar measure <span class="math" data-tex="\(dx\)">\(dx\)</span> on the complete locally determined domain constructed in <a href="../prerequisites/src/haar-measure.html#ha-lca-pre-haar-theorem-5-1">the Haar reading, Theorem 5.1</a>. Write <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span>, with the compact-convergence topology from <a href="characters-and-the-dual-group.html">Characters and the dual group</a>. We impose no countability assumption.</p>
+<p>The source for the spectrum and transform arguments is D. H. Fremlin, <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex"><em>Measure Theory</em>, §§445F–K, version of 20 March 2008</a>, in the freely accessible 2013 source collection. We supply a finite-approximation proof of the integral step instead of importing a dual-space representation theorem. All compactness, integration, representation and Banach-algebra results invoked below have exact earlier programme proofs.</p>
+<p>Adaptation and additional exposition: GPT-6 Astra (OpenAI), Ultra, October 2026. This combined lesson is under the <a href="../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">Design Science License</a>. Fremlin's copyright 1998 and original notices are retained in the <span class="unlinked">unchanged original source package</span>.</p>
+<h2 id="1-translations-and-multiplicative-functionals">1. Translations and multiplicative functionals</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+ L_af(x)=f(x-a),\qquad f^*(x)=\overline{f(-x)},\qquad
+ (f*g)(x)=\int_G f(y)g(x-y)\,dy .
+\]">\[
+ L_af(x)=f(x-a),\qquad f^*(x)=\overline{f(-x)},\qquad
+ (f*g)(x)=\int_G f(y)g(x-y)\,dy .
+\]</span>
+The convolution expression represents an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> class; its existence and independence of representatives are proved in <a href="../prerequisites/src/haar-measure.html#ha-lca-pre-haar-theorem-6-2">the Haar reading, Theorem 6.2</a>. That theorem proves that <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> is a commutative Banach star algebra. Translations are isometries and depend continuously on <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, by its Lemma 6.1.</p>
+<p>Let <span class="math" data-tex="\(\Delta(L^1(G))\)">\(\Delta(L^1(G))\)</span> be the set of nonzero complex-linear multiplicative functionals on this algebra. Such functionals are automatically contractive by <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-theorem-3-4">the Banach reading, Theorem 3.4</a>; continuity is a conclusion, not an extra assumption in this definition.</p>
+<a id="ha-lca-03-lemma-1-1"></a>
+<h3 id="lemma-1-1-translations-inside-convolution">Lemma 1.1. Translations inside convolution</h3>
+<p>For <span class="math" data-tex="\(f,g\in L^1(G)\)">\(f,g\in L^1(G)\)</span> and <span class="math" data-tex="\(a\in G\)">\(a\in G\)</span>,
+<span class="math math-display" data-tex="\[
+ (L_af)*g=L_a(f*g)=f*(L_ag).                            \tag{1.1}
+\]">\[
+ (L_af)*g=L_a(f*g)=f*(L_ag).                            \tag{1.1}
+\]</span>
+If <span class="math" data-tex="\(f,g\in L^1(G)\)">\(f,g\in L^1(G)\)</span> and <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is a bounded linear functional on <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, then
+<span class="math math-display" data-tex="\[
+ \Lambda(g*f)=\int_G g(y)\Lambda(L_yf)\,dy.              \tag{1.2}
+\]">\[
+ \Lambda(g*f)=\int_G g(y)\Lambda(L_yf)\,dy.              \tag{1.2}
+\]</span></p>
+<p>The norm integral <span class="math" data-tex="\(g*f=\int_Gg(y)L_yf\,dy\)">\(g*f=\int_Gg(y)L_yf\,dy\)</span> exists as a limit of integrals of finite simple <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>-valued functions. Every <span class="math" data-tex="\(L^1\)">\(L^1\)</span> class has a representative vanishing outside a sigma-compact open subgroup.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(f,g\in C_c(G)\)">\(f,g\in C_c(G)\)</span>, translating the integration variable gives
+<span class="math math-display" data-tex="\[
+ ((L_af)*g)(x)=\int f(y-a)g(x-y)\,dy
+             =\int f(z)g(x-a-z)\,dz.
+\]">\[
+ ((L_af)*g)(x)=\int f(y-a)g(x-y)\,dy
+             =\int f(z)g(x-a-z)\,dz.
+\]</span>
+This is both <span class="math" data-tex="\(L_a(f*g)(x)\)">\(L_a(f*g)(x)\)</span> and <span class="math" data-tex="\(f*(L_ag)(x)\)">\(f*(L_ag)(x)\)</span>. Translations are <span class="math" data-tex="\(L^1\)">\(L^1\)</span> isometries, convolution satisfies
+<span class="math" data-tex="\(\|f*g\|_1\le\|f\|_1\|g\|_1\)">\(\|f*g\|_1\le\|f\|_1\|g\|_1\)</span>, and <span class="math" data-tex="\(C_c\)">\(C_c\)</span> is dense in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, by the Haar reading, Lemma 5.2 and Theorem 6.2. Approximating both factors therefore proves (1.1) in full.</p>
+<p>We prove (1.2) first for <span class="math" data-tex="\(f,g\in C_c(G)\)">\(f,g\in C_c(G)\)</span>; the case <span class="math" data-tex="\(g=0\)">\(g=0\)</span> is immediate. Set <span class="math" data-tex="\(K=\operatorname{supp}g\)">\(K=\operatorname{supp}g\)</span>. The map <span class="math" data-tex="\(y\mapsto L_yf\)">\(y\mapsto L_yf\)</span> is continuous into <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, finitely many open sets <span class="math" data-tex="\(U_j\)">\(U_j\)</span>, with centres <span class="math" data-tex="\(y_j\in K\)">\(y_j\in K\)</span>, cover <span class="math" data-tex="\(K\)">\(K\)</span>, with
+<span class="math" data-tex="\(\|L_yf-L_{y_j}f\|_1&lt;\varepsilon\)">\(\|L_yf-L_{y_j}f\|_1&lt;\varepsilon\)</span> for <span class="math" data-tex="\(y\in U_j\cap K\)">\(y\in U_j\cap K\)</span>.
+Make a disjoint Borel partition <span class="math" data-tex="\(K=\coprod_j E_j\)">\(K=\coprod_j E_j\)</span> subordinate to that finite cover by assigning a point to the first open set containing it. Define
+<span class="math math-display" data-tex="\[
+ v=\sum_j\left(\int_{E_j}g(y)\,dy\right)L_{y_j}f .
+\]">\[
+ v=\sum_j\left(\int_{E_j}g(y)\,dy\right)L_{y_j}f .
+\]</span>
+Both <span class="math" data-tex="\(g*f\)">\(g*f\)</span> and the finitely many translates in <span class="math" data-tex="\(v\)">\(v\)</span> vanish off the compact set <span class="math" data-tex="\(K+\operatorname{supp}f\)">\(K+\operatorname{supp}f\)</span>. Using the triangle inequality and nonnegative Fubini on compact restrictions gives
+<span class="math math-display" data-tex="\[
+ \|g*f-v\|_1
+ \le\sum_j\int_{E_j}|g(y)|\,\|L_yf-L_{y_j}f\|_1\,dy
+ \le\varepsilon\|g\|_1.                               \tag{1.3}
+\]">\[
+ \|g*f-v\|_1
+ \le\sum_j\int_{E_j}|g(y)|\,\|L_yf-L_{y_j}f\|_1\,dy
+ \le\varepsilon\|g\|_1.                               \tag{1.3}
+\]</span>
+The Fubini statement here is precisely the earlier <a href="../prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-4-2">integration reading, Theorem 4.2</a>: the kernel is Borel, and both variables are restricted to compact sets with finite Radon Haar restrictions. It does not require the whole Haar measure to be sigma-finite.</p>
+<p>The function <span class="math" data-tex="\(y\mapsto\Lambda(L_yf)\)">\(y\mapsto\Lambda(L_yf)\)</span> is continuous and bounded by <span class="math" data-tex="\(\|\Lambda\|\|f\|_1\)">\(\|\Lambda\|\|f\|_1\)</span>. Its scalar integral differs from
+<span class="math" data-tex="\(\sum_j(\int_{E_j}g)\Lambda(L_{y_j}f)=\Lambda(v)\)">\(\sum_j(\int_{E_j}g)\Lambda(L_{y_j}f)=\Lambda(v)\)</span>
+by at most <span class="math" data-tex="\(\|\Lambda\|\varepsilon\|g\|_1\)">\(\|\Lambda\|\varepsilon\|g\|_1\)</span>. The same bound follows for
+<span class="math" data-tex="\(|\Lambda(g*f)-\Lambda(v)|\)">\(|\Lambda(g*f)-\Lambda(v)|\)</span> from (1.3). Letting <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> tend to zero proves (1.2) for <span class="math" data-tex="\(g\in C_c\)">\(g\in C_c\)</span>. Finally both sides of (1.2), viewed as linear functionals of <span class="math" data-tex="\(g\)">\(g\)</span>, are bounded in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by <span class="math" data-tex="\(\|\Lambda\|\|f\|_1\|g\|_1\)">\(\|\Lambda\|\|f\|_1\|g\|_1\)</span>. Density extends the identity to all <span class="math" data-tex="\(g\in L^1\)">\(g\in L^1\)</span>. For general <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span>, approximate it by <span class="math" data-tex="\(f_n\in C_c\)">\(f_n\in C_c\)</span>. The convolution bound controls the change in the left side by <span class="math" data-tex="\(\|\Lambda\|\|g\|_1\|f-f_n\|_1\)">\(\|\Lambda\|\|g\|_1\|f-f_n\|_1\)</span>; translation isometry gives the identical bound for the right side. Thus (1.2) holds for all <span class="math" data-tex="\(f,g\)">\(f,g\)</span>.</p>
+<p>Here is also the claimed norm-integral construction. For compactly supported continuous <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, the piecewise constant choices of <span class="math" data-tex="\(L_{y_j}f\)">\(L_{y_j}f\)</span> approximate <span class="math" data-tex="\(L_yf\)">\(L_yf\)</span> with integrated error at most <span class="math" data-tex="\(\varepsilon\|g\|_1\)">\(\varepsilon\|g\|_1\)</span>. Approximating the bounded scalar <span class="math" data-tex="\(g\)">\(g\)</span> uniformly on <span class="math" data-tex="\(K\)">\(K\)</span> by a finite simple function makes their products finite simple <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>-valued functions; the additional integrated error is at most the scalar uniform error times <span class="math" data-tex="\(|K|\|f\|_1\)">\(|K|\|f\|_1\)</span>. Their integrals therefore converge in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> to <span class="math" data-tex="\(g*f\)">\(g*f\)</span>, by (1.3). In general, choose <span class="math" data-tex="\(f_n,g_n\in C_c\)">\(f_n,g_n\in C_c\)</span> converging in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Translation isometry gives
+<span class="math math-display" data-tex="\[
+ \int_G\|g(y)L_yf-g_n(y)L_yf_n\|_1\,dy
+ \le\|g-g_n\|_1\|f\|_1+\|g_n\|_1\|f-f_n\|_1\to0.
+\]">\[
+ \int_G\|g(y)L_yf-g_n(y)L_yf_n\|_1\,dy
+ \le\|g-g_n\|_1\|f\|_1+\|g_n\|_1\|f-f_n\|_1\to0.
+\]</span>
+The norms in this estimate are measurable: approximate the scalar factors by measurable simple functions and use continuity of translations, followed by pointwise limits. The norm of the integral of a finite simple vector-valued function is bounded by the integral of its norm, by the triangle inequality. Completeness of <span class="math" data-tex="\(L^1\)">\(L^1\)</span> now makes the limits of all these simple integrals exist and agree, and the convolution bound identifies their common value with <span class="math" data-tex="\(g*f\)">\(g*f\)</span>. This defines the asserted norm integral.</p>
+<p>Finally the Haar reading, Lemma 5.2, gives a representative vanishing outside a sigma-compact set <span class="math" data-tex="\(S\)">\(S\)</span>. Adjoin the open sigma-compact subgroup <span class="math" data-tex="\(H\)">\(H\)</span> from its Lemma 1.1. The subgroup generated by <span class="math" data-tex="\(H\cup S\)">\(H\cup S\)</span> is the union of <span class="math" data-tex="\(H\)">\(H\)</span> and the sets <span class="math" data-tex="\(H+(S\cup(-S))+\cdots+(S\cup(-S))\)">\(H+(S\cup(-S))+\cdots+(S\cup(-S))\)</span> with finitely many summands. These are sigma-compact: express each factor as a countable union of compact sets, use compactness of finite products, and take their continuous sum images. Their countable union is sigma-compact. It is open because it contains the open subgroup <span class="math" data-tex="\(H\)">\(H\)</span>. The chosen representative vanishes off it, as required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-lemma-1-2"></a>
+<h3 id="lemma-1-2-frequencies-give-distinct-algebra-characters">Lemma 1.2. Frequencies give distinct algebra characters</h3>
+<p>For <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>, put
+<span class="math math-display" data-tex="\[
+ h_\gamma(f)=\int_G f(x)\gamma(x)\,dx .
+\]">\[
+ h_\gamma(f)=\int_G f(x)\gamma(x)\,dx .
+\]</span>
+Then <span class="math" data-tex="\(h_\gamma\in\Delta(L^1(G))\)">\(h_\gamma\in\Delta(L^1(G))\)</span>, <span class="math" data-tex="\(\|h_\gamma\|=1\)">\(\|h_\gamma\|=1\)</span>, and
+<span class="math" data-tex="\(\gamma\mapsto h_\gamma\)">\(\gamma\mapsto h_\gamma\)</span> is injective.</p>
+<p><strong>Proof.</strong> Linearity and <span class="math" data-tex="\(|h_\gamma(f)|\le\|f\|_1\)">\(|h_\gamma(f)|\le\|f\|_1\)</span> follow from the integral. For <span class="math" data-tex="\(f,g\in C_c(G)\)">\(f,g\in C_c(G)\)</span>, compactly supported Fubini and the substitution <span class="math" data-tex="\(x=y+z\)">\(x=y+z\)</span> give
+<span class="math math-display" data-tex="\[
+ \int_G(f*g)(x)\gamma(x)\,dx
+   =\iint_{G\times G} f(y)g(z)\gamma(y+z)\,dy\,dz
+   =h_\gamma(f)h_\gamma(g).                            \tag{1.4}
+\]">\[
+ \int_G(f*g)(x)\gamma(x)\,dx
+   =\iint_{G\times G} f(y)g(z)\gamma(y+z)\,dy\,dz
+   =h_\gamma(f)h_\gamma(g).                            \tag{1.4}
+\]</span>
+The first interchange involves only the compact supports of <span class="math" data-tex="\(f,g\)">\(f,g\)</span> and their sum, so the <a href="../prerequisites/src/finite-radon-products.html#ha-lca-pre-product-corollary-2-3">finite-product reading, Corollary 2.3</a>, applies. Translation invariance justifies the substitution; the last equality uses the character law and finite Fubini. The <span class="math" data-tex="\(L^1\)">\(L^1\)</span> convolution bound and <span class="math" data-tex="\(C_c\)">\(C_c\)</span>-density extend (1.4) to arbitrary <span class="math" data-tex="\(f,g\in L^1\)">\(f,g\in L^1\)</span>.</p>
+<p>Choose nonnegative <span class="math" data-tex="\(u\in C_c(G)\)">\(u\in C_c(G)\)</span> with <span class="math" data-tex="\(\int u=1\)">\(\int u=1\)</span>, as constructed in the Haar reading, Corollary 6.3. The function <span class="math" data-tex="\(f=\overline\gamma u\)">\(f=\overline\gamma u\)</span> has norm one and <span class="math" data-tex="\(h_\gamma(f)=1\)">\(h_\gamma(f)=1\)</span>. This proves nontriviality and the exact norm.</p>
+<p>If <span class="math" data-tex="\(\gamma\ne\eta\)">\(\gamma\ne\eta\)</span>, their difference <span class="math" data-tex="\(d=\gamma-\eta\)">\(d=\gamma-\eta\)</span> is nonzero at some point <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. On some open neighbourhood <span class="math" data-tex="\(O\)">\(O\)</span> of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, <span class="math" data-tex="\(|d|\ge c&gt;0\)">\(|d|\ge c&gt;0\)</span>. The earlier <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-3">Radon reading, Lemma 1.3</a>, supplies a nonnegative <span class="math" data-tex="\(u\in C_c(G)\)">\(u\in C_c(G)\)</span>, supported in <span class="math" data-tex="\(O\)">\(O\)</span>, with <span class="math" data-tex="\(u(x_0)=1\)">\(u(x_0)=1\)</span>. Haar positivity on open sets gives <span class="math" data-tex="\(\int u&gt;0\)">\(\int u&gt;0\)</span>. For <span class="math" data-tex="\(f=\overline d\,u\)">\(f=\overline d\,u\)</span>,
+<span class="math math-display" data-tex="\[
+ h_\gamma(f)-h_\eta(f)=\int |d|^2u&gt;0 .
+\]">\[
+ h_\gamma(f)-h_\eta(f)=\int |d|^2u&gt;0 .
+\]</span>
+The functionals are distinct. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-spectrum-and-its-topology">2. The spectrum and its topology</h2>
+<a id="ha-lca-03-theorem-2-1"></a>
+<h3 id="theorem-2-1-every-algebra-character-is-a-frequency">Theorem 2.1. Every algebra character is a frequency</h3>
+<p>The map
+<span class="math math-display" data-tex="\[
+ \Gamma\longrightarrow\Delta(L^1(G)),\qquad
+ \gamma\longmapsto h_\gamma
+\]">\[
+ \Gamma\longrightarrow\Delta(L^1(G)),\qquad
+ \gamma\longmapsto h_\gamma
+\]</span>
+is a bijection and a homeomorphism, where the spectrum carries pointwise convergence on <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, also called its weak-star topology. For a nonzero algebra character <span class="math" data-tex="\(h\)">\(h\)</span> and any <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(h(f)\ne0\)">\(h(f)\ne0\)</span>, its corresponding frequency satisfies
+<span class="math math-display" data-tex="\[
+ \gamma(a)=\frac{h(L_af)}{h(f)}\quad(a\in G).            \tag{2.1}
+\]">\[
+ \gamma(a)=\frac{h(L_af)}{h(f)}\quad(a\in G).            \tag{2.1}
+\]</span></p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(h\in\Delta(L^1(G))\)">\(h\in\Delta(L^1(G))\)</span>. Contractivity and <span class="math" data-tex="\(C_c\)">\(C_c\)</span>-density supply <span class="math" data-tex="\(f_0\in C_c(G)\)">\(f_0\in C_c(G)\)</span> with <span class="math" data-tex="\(h(f_0)\ne0\)">\(h(f_0)\ne0\)</span>; rescale to <span class="math" data-tex="\(h(f_0)=1\)">\(h(f_0)=1\)</span>. By multiplicativity and Lemma 1.1,
+<span class="math math-display" data-tex="\[
+ h(L_af)h(g)
+ =h((L_af)*g)=h(f*(L_ag))=h(f)h(L_ag)                  \tag{2.2}
+\]">\[
+ h(L_af)h(g)
+ =h((L_af)*g)=h(f*(L_ag))=h(f)h(L_ag)                  \tag{2.2}
+\]</span>
+for all <span class="math" data-tex="\(f,g\in L^1(G)\)">\(f,g\in L^1(G)\)</span>. Define <span class="math" data-tex="\(\gamma(a)=h(L_af_0)\)">\(\gamma(a)=h(L_af_0)\)</span>. Taking <span class="math" data-tex="\(g=f_0\)">\(g=f_0\)</span> in (2.2) gives
+<span class="math math-display" data-tex="\[
+ h(L_af)=\gamma(a)h(f) \quad(f\in L^1(G)).              \tag{2.3}
+\]">\[
+ h(L_af)=\gamma(a)h(f) \quad(f\in L^1(G)).              \tag{2.3}
+\]</span>
+This proves the independence asserted in (2.1). It also gives
+<span class="math" data-tex="\(\gamma(a+b)=h(L_aL_bf_0)=\gamma(a)\gamma(b)\)">\(\gamma(a+b)=h(L_aL_bf_0)=\gamma(a)\gamma(b)\)</span> and
+<span class="math" data-tex="\(\gamma(0)=1\)">\(\gamma(0)=1\)</span>. In particular <span class="math" data-tex="\(\gamma(a)\ne0\)">\(\gamma(a)\ne0\)</span>, since
+<span class="math" data-tex="\(\gamma(a)\gamma(-a)=1\)">\(\gamma(a)\gamma(-a)=1\)</span>.</p>
+<p>Translation continuity proves continuity of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Contractivity gives
+<span class="math" data-tex="\(|\gamma(a)|\le\|f_0\|_1\)">\(|\gamma(a)|\le\|f_0\|_1\)</span> for all <span class="math" data-tex="\(a\)">\(a\)</span>. Therefore
+<span class="math" data-tex="\(|\gamma(a)|^n=|\gamma(na)|\le\|f_0\|_1\)">\(|\gamma(a)|^n=|\gamma(na)|\le\|f_0\|_1\)</span> for every integer <span class="math" data-tex="\(n\)">\(n\)</span>, positive or negative. If <span class="math" data-tex="\(|\gamma(a)|&gt;1\)">\(|\gamma(a)|&gt;1\)</span>, positive powers are unbounded; if it is less than one, negative powers are unbounded. Thus <span class="math" data-tex="\(|\gamma(a)|=1\)">\(|\gamma(a)|=1\)</span>, and <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>.</p>
+<p>Lemma 1.1 now identifies the functional itself:
+<span class="math math-display" data-tex="\[
+ h(g)=h(g)h(f_0)=h(g*f_0)
+     =\int_Gg(y)h(L_yf_0)\,dy
+     =\int_Gg(y)\gamma(y)\,dy .
+\]">\[
+ h(g)=h(g)h(f_0)=h(g*f_0)
+     =\int_Gg(y)h(L_yf_0)\,dy
+     =\int_Gg(y)\gamma(y)\,dy .
+\]</span>
+Together with Lemma 1.2, this proves the bijection.</p>
+<p>We check both topology directions directly. If <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span>, choose <span class="math" data-tex="\(u\in C_c\)">\(u\in C_c\)</span> close to <span class="math" data-tex="\(f\)">\(f\)</span>, and put <span class="math" data-tex="\(K=\operatorname{supp}u\)">\(K=\operatorname{supp}u\)</span>. For <span class="math" data-tex="\(\gamma,\eta\in\Gamma\)">\(\gamma,\eta\in\Gamma\)</span>,
+<span class="math math-display" data-tex="\[
+ |h_\gamma(f)-h_\eta(f)|
+ \le 2\|f-u\|_1+\|u\|_1d_K(\gamma,\eta).                \tag{2.4}
+\]">\[
+ |h_\gamma(f)-h_\eta(f)|
+ \le 2\|f-u\|_1+\|u\|_1d_K(\gamma,\eta).                \tag{2.4}
+\]</span>
+First choose the approximation error, then the compact-convergence tolerance. This proves continuity into the weak-star topology.</p>
+<p>Conversely fix <span class="math" data-tex="\(h_0=h_{\gamma_0}\)">\(h_0=h_{\gamma_0}\)</span> and choose <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span> with <span class="math" data-tex="\(h_0(f)=1\)">\(h_0(f)=1\)</span>. For compact <span class="math" data-tex="\(K\subseteq G\)">\(K\subseteq G\)</span>, the set
+<span class="math" data-tex="\(S=\{L_xf:x\in K\}\)">\(S=\{L_xf:x\in K\}\)</span> is compact in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, since it is the continuous image of a compact set. Given <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, choose a finite <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-net <span class="math" data-tex="\(f_1,\ldots,f_r\)">\(f_1,\ldots,f_r\)</span> for <span class="math" data-tex="\(S\)">\(S\)</span>. Such a net exists by the finite-subcover definition of compactness, applied to norm balls. For any <span class="math" data-tex="\(h\in\Delta(L^1(G))\)">\(h\in\Delta(L^1(G))\)</span>, contractivity gives
+<span class="math math-display" data-tex="\[
+ \sup_{v\in S}|h(v)-h_0(v)|
+ \le 2\delta+\max_j|h(f_j)-h_0(f_j)|.                  \tag{2.5}
+\]">\[
+ \sup_{v\in S}|h(v)-h_0(v)|
+ \le 2\delta+\max_j|h(f_j)-h_0(f_j)|.                  \tag{2.5}
+\]</span>
+The weak-star neighbourhood conditions on the finitely many <span class="math" data-tex="\(f_j\)">\(f_j\)</span>, and on <span class="math" data-tex="\(f\)">\(f\)</span>, can make the right side of (2.5) and <span class="math" data-tex="\(|h(f)-1|\)">\(|h(f)-1|\)</span> arbitrarily small. By (2.3) and <span class="math" data-tex="\(|\gamma(x)|=1\)">\(|\gamma(x)|=1\)</span>,
+<span class="math math-display" data-tex="\[
+ |\gamma(x)-\gamma_0(x)|
+ \le |\gamma(x)-h(L_xf)|+|h(L_xf)-h_0(L_xf)|
+ =|1-h(f)|+|h(L_xf)-h_0(L_xf)|.
+\]">\[
+ |\gamma(x)-\gamma_0(x)|
+ \le |\gamma(x)-h(L_xf)|+|h(L_xf)-h_0(L_xf)|
+ =|1-h(f)|+|h(L_xf)-h_0(L_xf)|.
+\]</span>
+Taking the supremum over <span class="math" data-tex="\(K\)">\(K\)</span> proves inverse continuity. These neighbourhood arguments apply to arbitrary nets; no sequential replacement is made. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-corollary-2-2"></a>
+<h3 id="corollary-2-2-local-compactness-from-the-spectrum">Corollary 2.2. Local compactness from the spectrum</h3>
+<p>The group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is locally compact Hausdorff. For <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>, the function
+<span class="math math-display" data-tex="\[
+ Ff(\gamma)=h_\gamma(f)=\int_G f(x)\gamma(x)\,dx
+\]">\[
+ Ff(\gamma)=h_\gamma(f)=\int_G f(x)\gamma(x)\,dx
+\]</span>
+belongs to <span class="math" data-tex="\(C_0(\Gamma)\)">\(C_0(\Gamma)\)</span>, and
+<span class="math math-display" data-tex="\[
+ \|Ff\|_\infty
+ =r_{(L^1(G))^+}((0,f))
+ =\lim_{n\to\infty}\|f^{*n}\|_1^{1/n}.                 \tag{2.6}
+\]">\[
+ \|Ff\|_\infty
+ =r_{(L^1(G))^+}((0,f))
+ =\lim_{n\to\infty}\|f^{*n}\|_1^{1/n}.                 \tag{2.6}
+\]</span>
+Here <span class="math" data-tex="\(f^{*n}\)">\(f^{*n}\)</span> means <span class="math" data-tex="\(n\)">\(n\)</span>-fold convolution, whereas <span class="math" data-tex="\(f^*\)">\(f^*\)</span> means the involution.</p>
+<p><strong>Proof.</strong> The earlier <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-theorem-4-2">Banach reading, Theorem 4.2</a>, proves local compactness and the <span class="math" data-tex="\(C_0\)">\(C_0\)</span> property for the spectrum of any commutative Banach algebra, as well as the displayed radius formula in its unitization. Apply it to <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, already proved a Banach algebra in the Haar reading, Theorem 6.2. The homeomorphism of Theorem 2.1 transfers each assertion to <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Its topological group structure is proved in the character lesson, Proposition 1.1. This also gives a second route to that lesson's direct local-compactness theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-fourier-algebra">3. The Fourier algebra</h2>
+<p>Use the negative-sign convention
+<span class="math math-display" data-tex="\[
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx
+                  =Ff(\gamma^{-1}).
+\]">\[
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx
+                  =Ff(\gamma^{-1}).
+\]</span>
+For <span class="math" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span>, write <span class="math" data-tex="\(M_\eta f(x)=\eta(x)f(x)\)">\(M_\eta f(x)=\eta(x)f(x)\)</span>.</p>
+<a id="ha-lca-03-theorem-3-1"></a>
+<h3 id="theorem-3-1-transform-laws-and-vanishing-at-infinity">Theorem 3.1. Transform laws and vanishing at infinity</h3>
+<p>For <span class="math" data-tex="\(f,g\in L^1(G)\)">\(f,g\in L^1(G)\)</span>, <span class="math" data-tex="\(a\in G\)">\(a\in G\)</span>, and <span class="math" data-tex="\(\gamma,\eta\in\Gamma\)">\(\gamma,\eta\in\Gamma\)</span>,
+<span class="math math-display" data-tex="\[
+ \widehat f\in C_0(\Gamma),\qquad
+ \|\widehat f\|_\infty\le\|f\|_1,\qquad
+ \widehat{f*g}=\widehat f\,\widehat g,\qquad
+ \widehat{f^*}=\overline{\widehat f},                    \tag{3.1}
+\]">\[
+ \widehat f\in C_0(\Gamma),\qquad
+ \|\widehat f\|_\infty\le\|f\|_1,\qquad
+ \widehat{f*g}=\widehat f\,\widehat g,\qquad
+ \widehat{f^*}=\overline{\widehat f},                    \tag{3.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+ \widehat{L_af}(\gamma)=\overline{\gamma(a)}\,\widehat f(\gamma),
+ \qquad
+ \widehat{M_\eta f}(\gamma)=\widehat f(\gamma\eta^{-1}).  \tag{3.2}
+\]">\[
+ \widehat{L_af}(\gamma)=\overline{\gamma(a)}\,\widehat f(\gamma),
+ \qquad
+ \widehat{M_\eta f}(\gamma)=\widehat f(\gamma\eta^{-1}).  \tag{3.2}
+\]</span>
+The map <span class="math" data-tex="\(f\mapsto\widehat f\)">\(f\mapsto\widehat f\)</span> is complex-linear.</p>
+<p><strong>Proof.</strong> Inversion on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is a homeomorphism by the character lesson, Proposition 1.1. Composing the <span class="math" data-tex="\(C_0\)">\(C_0\)</span> function <span class="math" data-tex="\(Ff\)">\(Ff\)</span> from Corollary 2.2 with inversion preserves continuity and compact level sets, proving the first assertion. The integral norm estimate gives the bound, and linearity follows from linearity of integration. Lemma 1.2 applied to <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span> gives the convolution identity.</p>
+<p>Inversion invariance of Haar measure, proved in the Haar reading, Theorems 4.1–5.1, yields
+<span class="math math-display" data-tex="\[
+ \widehat{f^*}(\gamma)
+ =\int_G\overline{f(-x)}\,\overline{\gamma(x)}\,dx
+ =\int_G\overline{f(y)}\,\gamma(y)\,dy
+ =\overline{\widehat f(\gamma)}.
+\]">\[
+ \widehat{f^*}(\gamma)
+ =\int_G\overline{f(-x)}\,\overline{\gamma(x)}\,dx
+ =\int_G\overline{f(y)}\,\gamma(y)\,dy
+ =\overline{\widehat f(\gamma)}.
+\]</span>
+Translation invariance and <span class="math" data-tex="\(x=y+a\)">\(x=y+a\)</span> give the first formula in (3.2). For the second, use
+<span class="math" data-tex="\(\eta(x)\overline{\gamma(x)}
+ =\overline{(\gamma\eta^{-1})(x)}\)">\(\eta(x)\overline{\gamma(x)}
+ =\overline{(\gamma\eta^{-1})(x)}\)</span>
+inside the defining integral. All substitutions preserve the full completed Haar domain, as proved in the earlier Haar reading. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-theorem-3-2"></a>
+<h3 id="theorem-3-2-uniform-density-of-fourier-transforms">Theorem 3.2. Uniform density of Fourier transforms</h3>
+<p>The set
+<span class="math math-display" data-tex="\[
+ \mathcal A(G)=\{\widehat f:f\in L^1(G)\}
+\]">\[
+ \mathcal A(G)=\{\widehat f:f\in L^1(G)\}
+\]</span>
+is a self-adjoint subalgebra of <span class="math" data-tex="\(C_0(\Gamma)\)">\(C_0(\Gamma)\)</span>, separates points of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, vanishes at no point, and is uniformly dense in <span class="math" data-tex="\(C_0(\Gamma)\)">\(C_0(\Gamma)\)</span>.</p>
+<p><strong>Proof.</strong> Linearity, the product formula and the involution formula in Theorem 3.1 give the algebra and self-adjointness assertions. Given <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, Lemma 1.2 supplies <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(h_{\gamma^{-1}}(f)\ne0\)">\(h_{\gamma^{-1}}(f)\ne0\)</span>, which is <span class="math" data-tex="\(\widehat f(\gamma)\)">\(\widehat f(\gamma)\)</span>. For <span class="math" data-tex="\(\gamma\ne\eta\)">\(\gamma\ne\eta\)</span>, the characters <span class="math" data-tex="\(\gamma^{-1},\eta^{-1}\)">\(\gamma^{-1},\eta^{-1}\)</span> are distinct, and the same lemma supplies <span class="math" data-tex="\(f\)">\(f\)</span> with
+<span class="math" data-tex="\(h_{\gamma^{-1}}(f)\ne h_{\eta^{-1}}(f)\)">\(h_{\gamma^{-1}}(f)\ne h_{\eta^{-1}}(f)\)</span>.
+This is separation by <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span>. The earlier <a href="../prerequisites/src/uniform-approximation.html#ha-lca-pre-approx-theorem-3-2">uniform approximation reading, Theorem 3.2</a>, proves that a self-adjoint, point-separating and nowhere-vanishing subalgebra of <span class="math" data-tex="\(C_0\)">\(C_0\)</span> on an LCH space is uniformly dense. Its hypotheses have all been checked, and Corollary 2.2 supplies the LCH property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-measures-and-the-l-1-ideal">4. Measures and the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> ideal</h2>
+<p>Let <span class="math" data-tex="\(M(G)\)">\(M(G)\)</span> be the complex finite Radon measures, with the total-variation norm. Its identification with <span class="math" data-tex="\(C_0(G)^*\)">\(C_0(G)^*\)</span> is proved in <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-theorem-4-3">the Radon reading, Theorem 4.3</a>. Convolution of measures is defined using the finite Radon product and addition:
+<span class="math math-display" data-tex="\[
+ \mu*\nu=(x,y\mapsto x+y)_*(\mu\otimes\nu),\qquad
+ \mu^*(B)=\overline{\mu(-B)} .
+\]">\[
+ \mu*\nu=(x,y\mapsto x+y)_*(\mu\otimes\nu),\qquad
+ \mu^*(B)=\overline{\mu(-B)} .
+\]</span>
+The full construction, associativity, involution and norm inequality are proved in <a href="../prerequisites/src/finite-radon-products.html#ha-lca-pre-product-theorem-3-3">the finite-product reading, Theorem 3.3</a>. In particular <span class="math" data-tex="\(M(G)\)">\(M(G)\)</span> is a commutative unital Banach star algebra with unit <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>. This definition uses the finite Radon product, not an unproved product of two infinite Haar measures.</p>
+<a id="ha-lca-03-lemma-4-1"></a>
+<h3 id="lemma-4-1-integrable-densities-are-finite-radon-measures">Lemma 4.1. Integrable densities are finite Radon measures</h3>
+<p>For <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>, define on Borel sets
+<span class="math math-display" data-tex="\[
+ j(f)(B)=\int_B f(x)\,dx .
+\]">\[
+ j(f)(B)=\int_B f(x)\,dx .
+\]</span>
+This is well-defined on the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> class and is a complex finite Radon measure, with
+<span class="math math-display" data-tex="\[
+ |j(f)|(B)=\int_B|f(x)|\,dx,\qquad
+ \|j(f)\|=\|f\|_1.                                    \tag{4.1}
+\]">\[
+ |j(f)|(B)=\int_B|f(x)|\,dx,\qquad
+ \|j(f)\|=\|f\|_1.                                    \tag{4.1}
+\]</span>
+The map <span class="math" data-tex="\(j:L^1(G)\to M(G)\)">\(j:L^1(G)\to M(G)\)</span> is linear, injective, isometric, has closed image, and preserves the involution. For bounded Borel <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+ \int_G v\,dj(f)=\int_G vf\,dx.                        \tag{4.2}
+\]">\[
+ \int_G v\,dj(f)=\int_G vf\,dx.                        \tag{4.2}
+\]</span></p>
+<p><strong>Proof.</strong> The Haar reading, Lemma 5.2, supplies an everywhere finite Borel representative of <span class="math" data-tex="\(f\)">\(f\)</span>; choose one. Changing this representative on a Haar-null set changes none of the integrals. Countable additivity follows by integrating the increasing finite disjoint unions and using dominated convergence with bound <span class="math" data-tex="\(|f|\)">\(|f|\)</span>. The positive finite measure
+<span class="math" data-tex="\(\lambda_f(B)=\int_B|f|\)">\(\lambda_f(B)=\int_B|f|\)</span>
+dominates the variation of <span class="math" data-tex="\(j(f)\)">\(j(f)\)</span>: for any finite Borel partition <span class="math" data-tex="\(B=\coprod B_k\)">\(B=\coprod B_k\)</span>,
+<span class="math" data-tex="\(\sum_k|\int_{B_k}f|\le\int_B|f|\)">\(\sum_k|\int_{B_k}f|\le\int_B|f|\)</span>, and taking the supremum proves
+<span class="math" data-tex="\(|j(f)|\le\lambda_f\)">\(|j(f)|\le\lambda_f\)</span>.</p>
+<p>We check Radon regularity. For <span class="math" data-tex="\(u\in C_c(G)\)">\(u\in C_c(G)\)</span>, the measure
+<span class="math" data-tex="\(\lambda_u(B)=\int_B|u|\)">\(\lambda_u(B)=\int_B|u|\)</span>
+is dominated by <span class="math" data-tex="\(\|u\|_\infty\)">\(\|u\|_\infty\)</span> times Haar measure restricted to the compact set <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>. The latter restriction is finite Radon by the finite-product reading, Corollary 2.3. Domination transfers Radon regularity by its Lemma 1.2. For general <span class="math" data-tex="\(f\)">\(f\)</span>, take <span class="math" data-tex="\(u\in C_c\)">\(u\in C_c\)</span> with <span class="math" data-tex="\(\|f-u\|_1&lt;\varepsilon\)">\(\|f-u\|_1&lt;\varepsilon\)</span>. Then
+<span class="math math-display" data-tex="\[
+ |\lambda_f(B)-\lambda_u(B)|\le\|f-u\|_1&lt;\varepsilon
+ \quad\hbox{for every Borel }B .
+\]">\[
+ |\lambda_f(B)-\lambda_u(B)|\le\|f-u\|_1&lt;\varepsilon
+ \quad\hbox{for every Borel }B .
+\]</span>
+For any Borel <span class="math" data-tex="\(B\)">\(B\)</span>, choose compact <span class="math" data-tex="\(K\subseteq B\)">\(K\subseteq B\)</span> with
+<span class="math" data-tex="\(\lambda_u(B\setminus K)&lt;\varepsilon\)">\(\lambda_u(B\setminus K)&lt;\varepsilon\)</span>.
+It follows that <span class="math" data-tex="\(\lambda_f(B\setminus K)&lt;2\varepsilon\)">\(\lambda_f(B\setminus K)&lt;2\varepsilon\)</span>, proving inner regularity. Because <span class="math" data-tex="\(\lambda_f\)">\(\lambda_f\)</span> is finite, inner approximation of the complement gives outer approximation of <span class="math" data-tex="\(B\)">\(B\)</span> by the open complement of a compact set. Thus <span class="math" data-tex="\(\lambda_f\)">\(\lambda_f\)</span> is Radon, and <span class="math" data-tex="\(|j(f)|\le\lambda_f\)">\(|j(f)|\le\lambda_f\)</span> and the domination lemma make <span class="math" data-tex="\(j(f)\)">\(j(f)\)</span> Radon too.</p>
+<p>To prove equality of variation, put
+<span class="math" data-tex="\(s(x)=\overline{f(x)}/|f(x)|\)">\(s(x)=\overline{f(x)}/|f(x)|\)</span> when <span class="math" data-tex="\(f(x)\ne0\)">\(f(x)\ne0\)</span>, and <span class="math" data-tex="\(s(x)=1\)">\(s(x)=1\)</span> otherwise. This is a Borel circle-valued function. A finite <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-net <span class="math" data-tex="\(w_1,\ldots,w_r\)">\(w_1,\ldots,w_r\)</span> on the compact circle, with a first-choice rule, gives a Borel partition <span class="math" data-tex="\(G=\coprod E_k\)">\(G=\coprod E_k\)</span> such that <span class="math" data-tex="\(|s-w_k|&lt;\delta\)">\(|s-w_k|&lt;\delta\)</span> on <span class="math" data-tex="\(E_k\)">\(E_k\)</span>. Therefore for every Borel <span class="math" data-tex="\(B\)">\(B\)</span>,
+<span class="math math-display" data-tex="\[
+ \lambda_f(B)
+ =\int_Bs f
+ \le\left|\sum_k w_k j(f)(B\cap E_k)\right|
+       +\delta\lambda_f(B)
+ \le |j(f)|(B)+\delta\lambda_f(B).
+\]">\[
+ \lambda_f(B)
+ =\int_Bs f
+ \le\left|\sum_k w_k j(f)(B\cap E_k)\right|
+       +\delta\lambda_f(B)
+ \le |j(f)|(B)+\delta\lambda_f(B).
+\]</span>
+The first integral is real and nonnegative, so the displayed inequality follows by the complex triangle inequality. Letting <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span> proves (4.1).</p>
+<p>Linearity is immediate. Isometry gives injectivity on almost-everywhere classes. If <span class="math" data-tex="\(j(f_n)\)">\(j(f_n)\)</span> converges in <span class="math" data-tex="\(M(G)\)">\(M(G)\)</span>, then <span class="math" data-tex="\(f_n\)">\(f_n\)</span> is Cauchy in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, which is complete by the earlier integration reading, Theorem 2.4. Its limit <span class="math" data-tex="\(f\)">\(f\)</span> satisfies <span class="math" data-tex="\(j(f_n)\to j(f)\)">\(j(f_n)\to j(f)\)</span>, proving the image closed. Inversion invariance of Haar measure gives
+<span class="math" data-tex="\(j(f)^*(B)=\int_B\overline{f(-x)}\,dx=j(f^*)(B)\)">\(j(f)^*(B)=\int_B\overline{f(-x)}\,dx=j(f^*)(B)\)</span>.
+Finally (4.2) holds for indicators by definition, then for simple functions by linearity. Uniform approximation of a bounded Borel function by simple functions, together with the bounds on both integrals, proves the general case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-theorem-4-2"></a>
+<h3 id="theorem-4-2-the-measure-algebra-contains-l-1-g-as-a-closed-ideal">Theorem 4.2. The measure algebra contains <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> as a closed ideal</h3>
+<p>For every <span class="math" data-tex="\(\mu\in M(G)\)">\(\mu\in M(G)\)</span> and <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>, there is a unique <span class="math" data-tex="\(h\in L^1(G)\)">\(h\in L^1(G)\)</span> such that
+<span class="math math-display" data-tex="\[
+ \mu*j(f)=j(h),\qquad \|h\|_1\le\|\mu\|\|f\|_1.        \tag{4.3}
+\]">\[
+ \mu*j(f)=j(h),\qquad \|h\|_1\le\|\mu\|\|f\|_1.        \tag{4.3}
+\]</span>
+For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>, it is represented by the continuous function
+<span class="math math-display" data-tex="\[
+ h(x)=\int_G f(x-y)\,d\mu(y).                          \tag{4.4}
+\]">\[
+ h(x)=\int_G f(x-y)\,d\mu(y).                          \tag{4.4}
+\]</span>
+Moreover <span class="math" data-tex="\(j(f*g)=j(f)*j(g)\)">\(j(f*g)=j(f)*j(g)\)</span>. Thus the closed image of <span class="math" data-tex="\(j\)">\(j\)</span> is a star ideal, with its original <span class="math" data-tex="\(L^1\)">\(L^1\)</span> convolution.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>. The integral (4.4) exists for every <span class="math" data-tex="\(x\)">\(x\)</span>, since its integrand is bounded by <span class="math" data-tex="\(\|f\|_\infty\)">\(\|f\|_\infty\)</span>. It is continuous: the parameter-integral assertion of the finite-product reading, Theorem 2.2, applies to the bounded continuous kernel <span class="math" data-tex="\((x,y)\mapsto f(x-y)\)">\((x,y)\mapsto f(x-y)\)</span> and the finite Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p>In fact <span class="math" data-tex="\(h\in C_0(G)\)">\(h\in C_0(G)\)</span>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose compact <span class="math" data-tex="\(K\subseteq G\)">\(K\subseteq G\)</span> with <span class="math" data-tex="\(|\mu|(G\setminus K)&lt;\varepsilon\)">\(|\mu|(G\setminus K)&lt;\varepsilon\)</span>, by compact inner regularity of the finite variation measure. Restricting <span class="math" data-tex="\(\mu\)">\(\mu\)</span> to <span class="math" data-tex="\(K\)">\(K\)</span> in (4.4) gives a continuous <span class="math" data-tex="\(h_K\)">\(h_K\)</span> supported in the compact set <span class="math" data-tex="\(K+\operatorname{supp}f\)">\(K+\operatorname{supp}f\)</span>. Thus <span class="math" data-tex="\(h_K\in C_c(G)\)">\(h_K\in C_c(G)\)</span>, and
+<span class="math" data-tex="\(\|h-h_K\|_\infty\le\varepsilon\|f\|_\infty\)">\(\|h-h_K\|_\infty\le\varepsilon\|f\|_\infty\)</span>.
+The closure assertion for <span class="math" data-tex="\(C_0\)">\(C_0\)</span> in the Radon reading, Lemma 1.5, gives <span class="math" data-tex="\(h\in C_0\)">\(h\in C_0\)</span>.</p>
+<p>For any compact <span class="math" data-tex="\(A\subseteq G\)">\(A\subseteq G\)</span>, finite positive Fubini for Haar measure restricted to <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(|\mu|\)">\(|\mu|\)</span> gives
+<span class="math math-display" data-tex="\[
+ \int_A|h(x)|\,dx
+ \le\int_G\int_A|f(x-y)|\,dx\,d|\mu|(y)
+ \le \|\mu\|\|f\|_1.                                  \tag{4.5}
+\]">\[
+ \int_A|h(x)|\,dx
+ \le\int_G\int_A|f(x-y)|\,dx\,d|\mu|(y)
+ \le \|\mu\|\|f\|_1.                                  \tag{4.5}
+\]</span>
+The kernel is bounded continuous, so the finite-product reading, Theorem 2.2, suffices. Translation invariance bounds the inner integral by <span class="math" data-tex="\(\|f\|_1\)">\(\|f\|_1\)</span>. The compact sets
+<span class="math" data-tex="\(A_n=\{x:|h(x)|\ge1/n\}\)">\(A_n=\{x:|h(x)|\ge1/n\}\)</span> increase and cover the nonzero set of <span class="math" data-tex="\(h\)">\(h\)</span>, because <span class="math" data-tex="\(h\in C_0\)">\(h\in C_0\)</span>. Monotone convergence applied to <span class="math" data-tex="\(|h|\mathbf1_{A_n}\)">\(|h|\mathbf1_{A_n}\)</span> now proves that <span class="math" data-tex="\(h\in L^1\)">\(h\in L^1\)</span> and gives the bound in (4.3). This argument does not assume a compact exhaustion of the whole group.</p>
+<p>Let <span class="math" data-tex="\(\psi\in C_c(G)\)">\(\psi\in C_c(G)\)</span>. Restrict the Haar <span class="math" data-tex="\(x\)">\(x\)</span>-variable to <span class="math" data-tex="\(\operatorname{supp}\psi\)">\(\operatorname{supp}\psi\)</span>; that is a finite Radon restriction. Finite complex Fubini with <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, followed by translation invariance, gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_G\psi(x)h(x)\,dx
+ &amp;=\int_G\left(\int_G\psi(x)f(x-y)\,dx\right)d\mu(y)\\
+ &amp;=\int_G\left(\int_G\psi(y+z)f(z)\,dz\right)d\mu(y)\\
+ &amp;=\int_G\psi\,d(\mu*j(f)).
+ \end{aligned}                                      \tag{4.6}
+\]">\[
+ \begin{aligned}
+ \int_G\psi(x)h(x)\,dx
+ &amp;=\int_G\left(\int_G\psi(x)f(x-y)\,dx\right)d\mu(y)\\
+ &amp;=\int_G\left(\int_G\psi(y+z)f(z)\,dz\right)d\mu(y)\\
+ &amp;=\int_G\psi\,d(\mu*j(f)).
+ \end{aligned}                                      \tag{4.6}
+\]</span>
+The first kernel is bounded continuous. For the last equality use (4.2), the finite Radon product definition and its bounded continuous Fubini theorem. Hence <span class="math" data-tex="\(\mu*j(f)\)">\(\mu*j(f)\)</span> and <span class="math" data-tex="\(j(h)\)">\(j(h)\)</span> have the same <span class="math" data-tex="\(C_c\)">\(C_c\)</span> integrals, and finite Radon uniqueness proves equality.</p>
+<p>For arbitrary <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span>, choose <span class="math" data-tex="\(f_n\in C_c\)">\(f_n\in C_c\)</span> with <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Let <span class="math" data-tex="\(h_n\)">\(h_n\)</span> be (4.4) for <span class="math" data-tex="\(f_n\)">\(f_n\)</span>. Applying the bound just proved to <span class="math" data-tex="\(f_n-f_m\)">\(f_n-f_m\)</span> shows that <span class="math" data-tex="\((h_n)\)">\((h_n)\)</span> is Cauchy in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Its limit <span class="math" data-tex="\(h\)">\(h\)</span> obeys the same norm bound. The measure convolution bound and the isometry of <span class="math" data-tex="\(j\)">\(j\)</span> allow passage to the limit in
+<span class="math" data-tex="\(\mu*j(f_n)=j(h_n)\)">\(\mu*j(f_n)=j(h_n)\)</span>, giving (4.3). Isometry also proves uniqueness.</p>
+<p>Finally for <span class="math" data-tex="\(f,g\in C_c\)">\(f,g\in C_c\)</span>, formula (4.4) with <span class="math" data-tex="\(\mu=j(g)\)">\(\mu=j(g)\)</span>, together with (4.2), is exactly the original function convolution. Hence <span class="math" data-tex="\(j(g)*j(f)=j(g*f)\)">\(j(g)*j(f)=j(g*f)\)</span>. Approximate both <span class="math" data-tex="\(f,g\)">\(f,g\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and use the two convolution norm bounds to extend this identity to all <span class="math" data-tex="\(L^1\)">\(L^1\)</span> pairs. The closed-image and star assertions are Lemma 4.1, and commutativity makes the ideal two-sided. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-theorem-4-3"></a>
+<h3 id="theorem-4-3-fourier-stieltjes-transforms">Theorem 4.3. Fourier–Stieltjes transforms</h3>
+<p>For <span class="math" data-tex="\(\mu\in M(G)\)">\(\mu\in M(G)\)</span>, define
+<span class="math math-display" data-tex="\[
+ \widehat\mu(\gamma)=\int_G\overline{\gamma(x)}\,d\mu(x).
+\]">\[
+ \widehat\mu(\gamma)=\int_G\overline{\gamma(x)}\,d\mu(x).
+\]</span>
+It is bounded and uniformly continuous on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and
+<span class="math math-display" data-tex="\[
+ \|\widehat\mu\|_\infty\le\|\mu\|,\quad
+ \widehat{\mu*\nu}=\widehat\mu\,\widehat\nu,\quad
+ \widehat{\mu^*}=\overline{\widehat\mu},\quad
+ \widehat{j(f)}=\widehat f.                            \tag{4.7}
+\]">\[
+ \|\widehat\mu\|_\infty\le\|\mu\|,\quad
+ \widehat{\mu*\nu}=\widehat\mu\,\widehat\nu,\quad
+ \widehat{\mu^*}=\overline{\widehat\mu},\quad
+ \widehat{j(f)}=\widehat f.                            \tag{4.7}
+\]</span>
+Here uniform continuity means that for each <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is an identity neighbourhood <span class="math" data-tex="\(U\subseteq\Gamma\)">\(U\subseteq\Gamma\)</span> such that
+<span class="math" data-tex="\(|\widehat\mu(\gamma\eta)-\widehat\mu(\gamma)|&lt;\varepsilon\)">\(|\widehat\mu(\gamma\eta)-\widehat\mu(\gamma)|&lt;\varepsilon\)</span>
+for all <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>, <span class="math" data-tex="\(\eta\in U\)">\(\eta\in U\)</span>.</p>
+<p><strong>Proof.</strong> The variation bound for the integral gives the norm estimate. For compact <span class="math" data-tex="\(K\subseteq G\)">\(K\subseteq G\)</span>, the character law gives
+<span class="math math-display" data-tex="\[
+ |\widehat\mu(\gamma\eta)-\widehat\mu(\gamma)|
+ \le \|\mu\|\,d_K(\eta,1)+2|\mu|(G\setminus K).          \tag{4.8}
+\]">\[
+ |\widehat\mu(\gamma\eta)-\widehat\mu(\gamma)|
+ \le \|\mu\|\,d_K(\eta,1)+2|\mu|(G\setminus K).          \tag{4.8}
+\]</span>
+Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(K\)">\(K\)</span> with tail variation less than <span class="math" data-tex="\(\varepsilon/4\)">\(\varepsilon/4\)</span>; then impose
+<span class="math" data-tex="\(d_K(\eta,1)&lt;\varepsilon/(2(1+\|\mu\|))\)">\(d_K(\eta,1)&lt;\varepsilon/(2(1+\|\mu\|))\)</span>.
+The bound is strictly less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, uniformly in <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. This proves uniform continuity, including <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span>, and works for arbitrary nets.</p>
+<p>The finite-product reading, Theorem 3.3, proves the convolution and involution identities for integration against any continuous character, including the character <span class="math" data-tex="\(\overline\gamma\)">\(\overline\gamma\)</span>. These are exactly the middle identities in (4.7). The final identity follows from (4.2) with <span class="math" data-tex="\(v=\overline\gamma\)">\(v=\overline\gamma\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-example-4-4"></a>
+<h3 id="example-4-4-a-transform-that-does-not-vanish-at-infinity">Example 4.4. A transform that does not vanish at infinity</h3>
+<p>For any <span class="math" data-tex="\(a\in G\)">\(a\in G\)</span>, <span class="math" data-tex="\(\widehat{\delta_a}(\gamma)=\overline{\gamma(a)}\)">\(\widehat{\delta_a}(\gamma)=\overline{\gamma(a)}\)</span>. In particular <span class="math" data-tex="\(\widehat{\delta_0}=1\)">\(\widehat{\delta_0}=1\)</span>. If <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is noncompact, this last function is not in <span class="math" data-tex="\(C_0(\Gamma)\)">\(C_0(\Gamma)\)</span>.</p>
+<p><strong>Verification.</strong> Integration against a point mass is evaluation. The level set <span class="math" data-tex="\(\{|1|\ge1/2\}\)">\(\{|1|\ge1/2\}\)</span> is all of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, which is compact exactly in the excluded case. For example, <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span> has <span class="math" data-tex="\(\Gamma\cong\mathbb R\)">\(\Gamma\cong\mathbb R\)</span> by the character lesson, Theorem 3.1, and <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> is noncompact: the open cover <span class="math" data-tex="\(\{(-n,n):n\ge1\}\)">\(\{(-n,n):n\ge1\}\)</span> has no finite subcover. Thus the <span class="math" data-tex="\(C_0\)">\(C_0\)</span> conclusion for <span class="math" data-tex="\(L^1\)">\(L^1\)</span> transforms does not extend to every finite measure.</p>
+<p>For a second explicit example on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, let <span class="math" data-tex="\(\mu=(\delta_{-a}+\delta_a)/2\)">\(\mu=(\delta_{-a}+\delta_a)/2\)</span>. Evaluation and the exponential identity for cosine give
+<span class="math" data-tex="\(\widehat\mu(\xi)=(E(a\xi)+E(-a\xi))/2=\cos(2\pi a\xi)\)">\(\widehat\mu(\xi)=(E(a\xi)+E(-a\xi))/2=\cos(2\pi a\xi)\)</span>.
+If <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, the unbounded sequence <span class="math" data-tex="\(\xi=n/a\)">\(\xi=n/a\)</span> lies in its level set <span class="math" data-tex="\(\{|\widehat\mu|\ge1/2\}\)">\(\{|\widehat\mu|\ge1/2\}\)</span>, so that set is not compact. A compact subset of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> is bounded, since the cover by the intervals <span class="math" data-tex="\((-n,n)\)">\((-n,n)\)</span> would otherwise have no finite subcover. If <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, this is the preceding constant example. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-concrete-transforms">5. Concrete transforms</h2>
+<a id="ha-lca-03-lemma-5-1"></a>
+<h3 id="lemma-5-1-counting-measure-and-circle-measure">Lemma 5.1. Counting measure and circle measure</h3>
+<p>On <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, use counting Haar measure. On <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, normalized Haar measure <span class="math" data-tex="\(m\)">\(m\)</span> is the image of Lebesgue measure on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> under <span class="math" data-tex="\(t\mapsto E(t)\)">\(t\mapsto E(t)\)</span>. Consequently, for integrable <span class="math" data-tex="\(f\)">\(f\)</span> on the circle,
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb T}f(z)\,dm(z)=\int_0^1 f(E(t))\,dt,\qquad
+ \int_{\mathbb T}z^n\,dm(z)=
+ \begin{cases}1&amp;n=0,\\0&amp;n\ne0.\end{cases}               \tag{5.1}
+\]">\[
+ \int_{\mathbb T}f(z)\,dm(z)=\int_0^1 f(E(t))\,dt,\qquad
+ \int_{\mathbb T}z^n\,dm(z)=
+ \begin{cases}1&amp;n=0,\\0&amp;n\ne0.\end{cases}               \tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong> Counting measure is countably additive on all subsets of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, invariant under translations, and finite on the finite compact sets. Any set is approximated from within in measure by its finite subsets; for an infinite set the supremum is infinite. Every subset is open, so outer regularity is immediate. Thus it is a Haar measure with singleton mass one.</p>
+<p>For the circle, take Lebesgue measure restricted to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, viewed as a finite Radon measure on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Its continuous image under <span class="math" data-tex="\(E\)">\(E\)</span> is finite Radon by the finite-product reading, Proposition 3.1, and has mass one. The endpoints have zero measure, so this is also the image of <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. For <span class="math" data-tex="\(a\in[0,1)\)">\(a\in[0,1)\)</span> and a bounded Borel <span class="math" data-tex="\(f\)">\(f\)</span>, split <span class="math" data-tex="\(\int_0^1 f(E(t+a))\,dt\)">\(\int_0^1 f(E(t+a))\,dt\)</span> at <span class="math" data-tex="\(1-a\)">\(1-a\)</span>. The substitutions <span class="math" data-tex="\(s=t+a\)">\(s=t+a\)</span> on the first interval and <span class="math" data-tex="\(s=t+a-1\)">\(s=t+a-1\)</span> on the second give
+<span class="math math-display" data-tex="\[
+ \int_0^1 f(E(t+a))\,dt
+ =\int_a^1 f(E(s))\,ds+\int_0^a f(E(s))\,ds .
+\]">\[
+ \int_0^1 f(E(t+a))\,dt
+ =\int_a^1 f(E(s))\,ds+\int_0^a f(E(s))\,ds .
+\]</span>
+Period one of <span class="math" data-tex="\(E\)">\(E\)</span> and the affine substitution in HA-LCA-02, Lemma 3.3, justify both equalities. Every circle element is <span class="math" data-tex="\(E(a)\)">\(E(a)\)</span> for some such <span class="math" data-tex="\(a\)">\(a\)</span>. The image measure is therefore invariant, and Haar uniqueness on the compact group, proved in the Haar reading, Theorem 4.1, identifies it with normalized Haar measure.</p>
+<p>The integral formula holds for Borel indicators by the image definition, for nonnegative functions by simple approximation, and for integrable functions by decomposition. Completed measurable functions have Borel representatives by the earlier integration reading, Lemma 1.1; the inverse image of a Borel null set has measure zero by the image definition, so the same formula holds for the completion. Finally the integral of <span class="math" data-tex="\(E(nt)\)">\(E(nt)\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is one when <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, and for <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span> its antiderivative is <span class="math" data-tex="\(E(nt)/(2\pi in)\)">\(E(nt)/(2\pi in)\)</span>, with equal endpoint values. The real-variable reading, Lemma 1.1, identifies this continuous Riemann integral with its Lebesgue integral. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-example-5-2"></a>
+<h3 id="example-5-2-three-transforms-on-the-real-line">Example 5.2. Three transforms on the real line</h3>
+<p>Use Lebesgue measure and the pairing <span class="math" data-tex="\(E(x\xi)\)">\(E(x\xi)\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \widehat{\mathbf1_{[-1,1]}}(\xi)
+ =\begin{cases}\dfrac{\sin(2\pi\xi)}{\pi\xi}&amp;\xi\ne0,\\[4pt]2&amp;\xi=0,\end{cases}
+ \qquad
+ \widehat{e^{-\pi x^2}}(\xi)=e^{-\pi\xi^2},
+ \qquad
+ \widehat{e^{-|x|}}(\xi)=\frac2{1+4\pi^2\xi^2}.         \tag{5.2}
+\]">\[
+ \widehat{\mathbf1_{[-1,1]}}(\xi)
+ =\begin{cases}\dfrac{\sin(2\pi\xi)}{\pi\xi}&amp;\xi\ne0,\\[4pt]2&amp;\xi=0,\end{cases}
+ \qquad
+ \widehat{e^{-\pi x^2}}(\xi)=e^{-\pi\xi^2},
+ \qquad
+ \widehat{e^{-|x|}}(\xi)=\frac2{1+4\pi^2\xi^2}.         \tag{5.2}
+\]</span></p>
+<p><strong>Verification.</strong> For the interval, put <span class="math" data-tex="\(\omega=2\pi\xi\)">\(\omega=2\pi\xi\)</span>. If <span class="math" data-tex="\(\omega\ne0\)">\(\omega\ne0\)</span>, integrate <span class="math" data-tex="\(e^{-i\omega x}\)">\(e^{-i\omega x}\)</span> on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> with antiderivative <span class="math" data-tex="\(e^{-i\omega x}/(-i\omega)\)">\(e^{-i\omega x}/(-i\omega)\)</span>, giving <span class="math" data-tex="\(2\sin\omega/\omega\)">\(2\sin\omega/\omega\)</span>. At zero the interval has measure two.</p>
+<p>The Gaussian formula is <a href="../prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-theorem-2-1">the real-variable reading, Theorem 2.1</a>, with parameter <span class="math" data-tex="\(u=-\xi\)">\(u=-\xi\)</span>. That proof establishes absolute integrability, the normalization and the transform without using general Fourier inversion.</p>
+<p>For the exponential, split the integral into its positive and negative half-lines. The first gives
+<span class="math" data-tex="\(\int_0^\infty e^{-(1+i\omega)x}\,dx=1/(1+i\omega)\)">\(\int_0^\infty e^{-(1+i\omega)x}\,dx=1/(1+i\omega)\)</span>.
+Its antiderivative and zero boundary limit are justified by the real-variable reading, Lemmas 1.2–1.3; the modulus is bounded by <span class="math" data-tex="\(e^{-x}\)">\(e^{-x}\)</span>. Substituting <span class="math" data-tex="\(x\mapsto-x\)">\(x\mapsto-x\)</span> in the negative half gives <span class="math" data-tex="\(1/(1-i\omega)\)">\(1/(1-i\omega)\)</span>. Adding the two values proves the last formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-example-5-3"></a>
+<h3 id="example-5-3-a-fejér-kernel-on-the-line">Example 5.3. A Fejér kernel on the line</h3>
+<p>For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, define
+<span class="math math-display" data-tex="\[
+ K_a(x)=a\left(\frac{\sin(\pi ax)}{\pi ax}\right)^2,
+ \qquad K_a(0)=a .
+\]">\[
+ K_a(x)=a\left(\frac{\sin(\pi ax)}{\pi ax}\right)^2,
+ \qquad K_a(0)=a .
+\]</span>
+It is nonnegative and integrable, has integral one, and
+<span class="math math-display" data-tex="\[
+ \widehat K_a(\xi)=\left(1-\frac{|\xi|}{a}\right)_+ .   \tag{5.3}
+\]">\[
+ \widehat K_a(\xi)=\left(1-\frac{|\xi|}{a}\right)_+ .   \tag{5.3}
+\]</span></p>
+<p><strong>Verification.</strong> Put <span class="math" data-tex="\(T_a(t)=(1-|t|/a)_+\)">\(T_a(t)=(1-|t|/a)_+\)</span>. Direct integration gives
+<span class="math math-display" data-tex="\[
+ \int_{-a}^a T_a(t)e^{2\pi ixt}\,dt
+ =2\int_0^a(1-t/a)\cos(2\pi xt)\,dt
+ =K_a(x).
+\]">\[
+ \int_{-a}^a T_a(t)e^{2\pi ixt}\,dt
+ =2\int_0^a(1-t/a)\cos(2\pi xt)\,dt
+ =K_a(x).
+\]</span>
+For <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, integration by parts evaluates the middle expression as
+<span class="math" data-tex="\(2(1-\cos(2\pi ax))/(a(2\pi x)^2)\)">\(2(1-\cos(2\pi ax))/(a(2\pi x)^2)\)</span>, which equals the displayed square because <span class="math" data-tex="\(1-\cos(2u)=2\sin^2u\)">\(1-\cos(2u)=2\sin^2u\)</span>, an identity from the exponential multiplication law. At <span class="math" data-tex="\(x=0\)">\(x=0\)</span> the triangle has area <span class="math" data-tex="\(a\)">\(a\)</span>. The limit <span class="math" data-tex="\(\sin t/t\to1\)">\(\sin t/t\to1\)</span> follows from the derivative of <span class="math" data-tex="\(\sin\)">\(\sin\)</span> at zero, so the assigned value makes <span class="math" data-tex="\(K_a\)">\(K_a\)</span> continuous.</p>
+<p>The bound <span class="math" data-tex="\(|\sin t|\le|t|\)">\(|\sin t|\le|t|\)</span>, from the exponential Lipschitz estimate in HA-LCA-02, Lemma 1.3, gives <span class="math" data-tex="\(K_a\le a\)">\(K_a\le a\)</span>. Also
+<span class="math" data-tex="\(K_a(x)\le1/(\pi^2a x^2)\)">\(K_a(x)\le1/(\pi^2a x^2)\)</span> for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>.
+The antiderivative of <span class="math" data-tex="\(x^{-2}\)">\(x^{-2}\)</span>, justified by the real-variable reading, Lemmas 1.2–1.3, proves integrability of this tail bound. Hence <span class="math" data-tex="\(K_a\in L^1\)">\(K_a\in L^1\)</span>.</p>
+<p>To compute its transform without assuming inversion, multiply by <span class="math" data-tex="\(e^{-\pi\varepsilon x^2}\)">\(e^{-\pi\varepsilon x^2}\)</span>, where <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Substitute the preceding integral representation for <span class="math" data-tex="\(K_a\)">\(K_a\)</span>. Absolute Fubini is justified by
+<span class="math" data-tex="\(\|T_a\|_1\int e^{-\pi\varepsilon x^2}\,dx&lt;\infty\)">\(\|T_a\|_1\int e^{-\pi\varepsilon x^2}\,dx&lt;\infty\)</span>.
+The Gaussian transform and scaling then give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_{\mathbb R}K_a(x)e^{-2\pi i\xi x}e^{-\pi\varepsilon x^2}\,dx
+ &amp;=\int_{\mathbb R}T_a(t)\varepsilon^{-1/2}
+                 e^{-\pi(t-\xi)^2/\varepsilon}\,dt\\
+ &amp;=\int_{\mathbb R}T_a(\xi+\sqrt\varepsilon\,u)e^{-\pi u^2}\,du.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ \int_{\mathbb R}K_a(x)e^{-2\pi i\xi x}e^{-\pi\varepsilon x^2}\,dx
+ &amp;=\int_{\mathbb R}T_a(t)\varepsilon^{-1/2}
+                 e^{-\pi(t-\xi)^2/\varepsilon}\,dt\\
+ &amp;=\int_{\mathbb R}T_a(\xi+\sqrt\varepsilon\,u)e^{-\pi u^2}\,du.
+ \end{aligned}
+\]</span>
+The last integral tends to <span class="math" data-tex="\(T_a(\xi)\)">\(T_a(\xi)\)</span> by continuity of <span class="math" data-tex="\(T_a\)">\(T_a\)</span>, its bound by one, Gaussian mass one and dominated convergence. On the left, domination by <span class="math" data-tex="\(K_a\)">\(K_a\)</span> gives the limit <span class="math" data-tex="\(\widehat K_a(\xi)\)">\(\widehat K_a(\xi)\)</span>. This proves (5.3). At <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, the formula gives <span class="math" data-tex="\(\int K_a=1\)">\(\int K_a=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-example-5-4"></a>
+<h3 id="example-5-4-absolutely-convergent-fourier-series">Example 5.4. Absolutely convergent Fourier series</h3>
+<p>For <span class="math" data-tex="\(G=\mathbb Z\)">\(G=\mathbb Z\)</span>, <span class="math" data-tex="\(L^1(G)=\ell^1(\mathbb Z)\)">\(L^1(G)=\ell^1(\mathbb Z)\)</span> and <span class="math" data-tex="\(\Gamma=\mathbb T\)">\(\Gamma=\mathbb T\)</span>. Its transform is
+<span class="math math-display" data-tex="\[
+ a\longmapsto F_a(z)=\sum_{n\in\mathbb Z}a_n z^{-n}.
+\]">\[
+ a\longmapsto F_a(z)=\sum_{n\in\mathbb Z}a_n z^{-n}.
+\]</span>
+Its range is the <strong>Wiener algebra</strong> of absolutely convergent Fourier series. The coefficients are unique, and the norm
+<span class="math" data-tex="\(\|F_a\|_{\mathcal A}=\sum_n|a_n|\)">\(\|F_a\|_{\mathcal A}=\sum_n|a_n|\)</span>
+makes this range a Banach star algebra isometrically isomorphic to <span class="math" data-tex="\(\ell^1(\mathbb Z)\)">\(\ell^1(\mathbb Z)\)</span> with convolution.</p>
+<p><strong>Verification.</strong> Counting measure and HA-LCA-02, Corollary 3.2, give the formula. Absolute summability bounds every tail uniformly in <span class="math" data-tex="\(z\)">\(z\)</span>, so the series converges uniformly to a continuous function. Lemma 5.1 and integration of finite partial sums give
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb T}F_a(z)z^k\,dm(z)=a_k .
+\]">\[
+ \int_{\mathbb T}F_a(z)z^k\,dm(z)=a_k .
+\]</span>
+Uniform convergence permits passage to the limit since <span class="math" data-tex="\(m\)">\(m\)</span> has mass one. Thus the coefficients are unique and the displayed norm is well-defined. By definition every absolutely convergent series of this form comes from an <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> sequence. The product and involution laws are Theorem 3.1. Completeness follows from completeness of <span class="math" data-tex="\(\ell^1=L^1(\mathbb Z)\)">\(\ell^1=L^1(\mathbb Z)\)</span>, already proved in the integration reading, Theorem 2.4. The uniform norm satisfies <span class="math" data-tex="\(\|F_a\|_\infty\le\|F_a\|_{\mathcal A}\)">\(\|F_a\|_\infty\le\|F_a\|_{\mathcal A}\)</span>; the two norms are not identified by this argument. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-example-5-5"></a>
+<h3 id="example-5-5-circle-coefficients-and-fejér-means">Example 5.5. Circle coefficients and Fejér means</h3>
+<p>For normalized Haar measure on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, the transform of <span class="math" data-tex="\(f\in L^1(\mathbb T)\)">\(f\in L^1(\mathbb T)\)</span> is
+<span class="math math-display" data-tex="\[
+ \widehat f(n)=\int_0^1 f(E(t))e^{-2\pi int}\,dt
+ \quad(n\in\mathbb Z).
+\]">\[
+ \widehat f(n)=\int_0^1 f(E(t))e^{-2\pi int}\,dt
+ \quad(n\in\mathbb Z).
+\]</span>
+These coefficients tend to zero as <span class="math" data-tex="\(|n|\to\infty\)">\(|n|\to\infty\)</span>. The circle Fejér kernels
+<span class="math math-display" data-tex="\[
+ P_N(z)=\frac1{N+1}\left|\sum_{j=0}^N z^j\right|^2
+\]">\[
+ P_N(z)=\frac1{N+1}\left|\sum_{j=0}^N z^j\right|^2
+\]</span>
+are nonnegative of mass one, and
+<span class="math math-display" data-tex="\[
+ (P_N*f)(z)
+ =\sum_{|n|\le N}\left(1-\frac{|n|}{N+1}\right)\widehat f(n)z^n.
+                                                               \tag{5.4}
+\]">\[
+ (P_N*f)(z)
+ =\sum_{|n|\le N}\left(1-\frac{|n|}{N+1}\right)\widehat f(n)z^n.
+                                                               \tag{5.4}
+\]</span>
+For continuous <span class="math" data-tex="\(f\)">\(f\)</span>, these means converge uniformly to <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>Verification.</strong> HA-LCA-02, Corollary 3.2, and Lemma 5.1 give the coefficient formula. Theorem 3.1 places the transform in <span class="math" data-tex="\(C_0(\mathbb Z)\)">\(C_0(\mathbb Z)\)</span>. Compact sets in the discrete integers are finite, so each nonzero level set is finite, exactly the assertion that the coefficients tend to zero.</p>
+<p>Expanding the finite square counts <span class="math" data-tex="\(N+1-|n|\)">\(N+1-|n|\)</span> pairs with index difference <span class="math" data-tex="\(n\)">\(n\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ P_N(z)=\sum_{|n|\le N}\left(1-\frac{|n|}{N+1}\right)z^n.
+\]">\[
+ P_N(z)=\sum_{|n|\le N}\left(1-\frac{|n|}{N+1}\right)z^n.
+\]</span>
+Circle orthogonality from Lemma 5.1 makes its mass one. In the convolution integral write
+<span class="math" data-tex="\(P_N(zw^{-1})\)">\(P_N(zw^{-1})\)</span>, insert this finite sum and integrate <span class="math" data-tex="\(f(w)w^{-n}\)">\(f(w)w^{-n}\)</span>; this proves (5.4).</p>
+<p>For <span class="math" data-tex="\(|z-1|\ge\delta&gt;0\)">\(|z-1|\ge\delta&gt;0\)</span>, the geometric sum gives
+<span class="math math-display" data-tex="\[
+ P_N(z)\le\frac4{(N+1)\delta^2}.
+\]">\[
+ P_N(z)\le\frac4{(N+1)\delta^2}.
+\]</span>
+For continuous <span class="math" data-tex="\(f\)">\(f\)</span>, compact-parameter continuity, proved in the Radon reading, Lemma 1.6, gives
+<span class="math" data-tex="\(\sup_z|f(zw^{-1})-f(z)|\to0\)">\(\sup_z|f(zw^{-1})-f(z)|\to0\)</span> as <span class="math" data-tex="\(w\to1\)">\(w\to1\)</span>.
+Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> so that this supremum is below a prescribed <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> when <span class="math" data-tex="\(|w-1|&lt;\delta\)">\(|w-1|&lt;\delta\)</span>. In
+<span class="math math-display" data-tex="\[
+ P_N*f(z)-f(z)=\int_{\mathbb T}P_N(w)
+                     (f(zw^{-1})-f(z))\,dm(w),
+\]">\[
+ P_N*f(z)-f(z)=\int_{\mathbb T}P_N(w)
+                     (f(zw^{-1})-f(z))\,dm(w),
+\]</span>
+the integral over that neighbourhood is bounded by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, because the kernel is nonnegative of mass one. The remaining integral is bounded uniformly in <span class="math" data-tex="\(z\)">\(z\)</span> by
+<span class="math" data-tex="\(8\|f\|_\infty/((N+1)\delta^2)\)">\(8\|f\|_\infty/((N+1)\delta^2)\)</span>.
+Let <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span>, and then <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. This proves uniform convergence and, in particular, uniform density of trigonometric polynomials in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<a id="ha-lca-03-exercise-6-1"></a>
+<h3 id="exercise-6-1-convolving-two-intervals">Exercise 6.1. Convolving two intervals</h3>
+<p>Compute <span class="math" data-tex="\(f*f\)">\(f*f\)</span> and its Fourier transform for <span class="math" data-tex="\(f=\mathbf1_{[-1,1]}\)">\(f=\mathbf1_{[-1,1]}\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and verify the product law directly.</p>
+<p><strong>Solution.</strong> The convolution value at <span class="math" data-tex="\(x\)">\(x\)</span> is the length of
+<span class="math" data-tex="\([-1,1]\cap[x-1,x+1]\)">\([-1,1]\cap[x-1,x+1]\)</span>.
+This intersection is empty up to an endpoint when <span class="math" data-tex="\(|x|\ge2\)">\(|x|\ge2\)</span>, and has length <span class="math" data-tex="\(2-|x|\)">\(2-|x|\)</span> when <span class="math" data-tex="\(|x|&lt;2\)">\(|x|&lt;2\)</span>. Hence <span class="math" data-tex="\(f*f(x)=(2-|x|)_+\)">\(f*f(x)=(2-|x|)_+\)</span>.
+Put <span class="math" data-tex="\(\omega=2\pi\xi\)">\(\omega=2\pi\xi\)</span>. For <span class="math" data-tex="\(\omega\ne0\)">\(\omega\ne0\)</span>, evenness and integration by parts give
+<span class="math math-display" data-tex="\[
+ \widehat{f*f}(\xi)
+ =2\int_0^2(2-x)\cos(\omega x)\,dx
+ =\frac{2(1-\cos(2\omega))}{\omega^2}
+ =\left(\frac{2\sin\omega}{\omega}\right)^2 .
+\]">\[
+ \widehat{f*f}(\xi)
+ =2\int_0^2(2-x)\cos(\omega x)\,dx
+ =\frac{2(1-\cos(2\omega))}{\omega^2}
+ =\left(\frac{2\sin\omega}{\omega}\right)^2 .
+\]</span>
+The first integration by parts gives
+<span class="math" data-tex="\((2/\omega)\int_0^2\sin(\omega x)\,dx\)">\((2/\omega)\int_0^2\sin(\omega x)\,dx\)</span>, which is the middle expression. At <span class="math" data-tex="\(\omega=0\)">\(\omega=0\)</span>, direct integration of the triangle gives four. These are exactly the square of the values of <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> in Example 5.2, proving the product formula in this case by a separate calculation.</p>
+<p>For the unit-length interval <span class="math" data-tex="\(u=\mathbf1_{[-1/2,1/2]}\)">\(u=\mathbf1_{[-1/2,1/2]}\)</span>, the same overlap computation gives <span class="math" data-tex="\(u*u=(1-|x|)_+\)">\(u*u=(1-|x|)_+\)</span>. The substitution <span class="math" data-tex="\(y=2x\)">\(y=2x\)</span> gives
+<span class="math" data-tex="\(\widehat u(\xi)=\tfrac12\widehat f(\xi/2)=\sin(\pi\xi)/(\pi\xi)\)">\(\widehat u(\xi)=\tfrac12\widehat f(\xi/2)=\sin(\pi\xi)/(\pi\xi)\)</span> for <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, with value one at zero. Directly integrating <span class="math" data-tex="\(2\int_0^1(1-x)\cos(2\pi\xi x)\,dx\)">\(2\int_0^1(1-x)\cos(2\pi\xi x)\,dx\)</span> by parts gives
+<span class="math" data-tex="\(\widehat{u*u}(\xi)=(\sin(\pi\xi)/(\pi\xi))^2\)">\(\widehat{u*u}(\xi)=(\sin(\pi\xi)/(\pi\xi))^2\)</span>, again with value one at zero. This supplies the normalized interval version as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-exercise-6-2"></a>
+<h3 id="exercise-6-2-independence-of-the-chosen-test-function">Exercise 6.2. Independence of the chosen test function</h3>
+<p>Let <span class="math" data-tex="\(h\)">\(h\)</span> be a nonzero algebra character. Prove directly that
+<span class="math" data-tex="\(h(L_af)/h(f)\)">\(h(L_af)/h(f)\)</span> is independent of <span class="math" data-tex="\(f\)">\(f\)</span> whenever <span class="math" data-tex="\(h(f)\ne0\)">\(h(f)\ne0\)</span>, and defines a continuous group character.</p>
+<p><strong>Solution.</strong> Lemma 1.1 and multiplicativity give
+<span class="math math-display" data-tex="\[
+ h(L_af)h(g)=h((L_af)*g)
+           =h(f*(L_ag))=h(f)h(L_ag).
+\]">\[
+ h(L_af)h(g)=h((L_af)*g)
+           =h(f*(L_ag))=h(f)h(L_ag).
+\]</span>
+If both denominators are nonzero, division proves independence. Fix one such <span class="math" data-tex="\(f\)">\(f\)</span>, and call the quotient <span class="math" data-tex="\(\gamma(a)\)">\(\gamma(a)\)</span>. The same identity with arbitrary <span class="math" data-tex="\(g\)">\(g\)</span> gives
+<span class="math" data-tex="\(h(L_ag)=\gamma(a)h(g)\)">\(h(L_ag)=\gamma(a)h(g)\)</span>, including when <span class="math" data-tex="\(h(g)=0\)">\(h(g)=0\)</span>.
+Putting <span class="math" data-tex="\(g=L_bf\)">\(g=L_bf\)</span> yields
+<span class="math" data-tex="\(\gamma(a+b)=\gamma(a)\gamma(b)\)">\(\gamma(a+b)=\gamma(a)\gamma(b)\)</span>.
+Also <span class="math" data-tex="\(\gamma(0)=1\)">\(\gamma(0)=1\)</span>, so <span class="math" data-tex="\(\gamma(a)\gamma(-a)=1\)">\(\gamma(a)\gamma(-a)=1\)</span>. Continuity of translations in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, followed by boundedness of <span class="math" data-tex="\(h\)">\(h\)</span>, makes <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> continuous. Contractivity of <span class="math" data-tex="\(h\)">\(h\)</span> and the isometry of translations give
+<span class="math math-display" data-tex="\[
+ |\gamma(a)|\le\frac{\|f\|_1}{|h(f)|}
+\]">\[
+ |\gamma(a)|\le\frac{\|f\|_1}{|h(f)|}
+\]</span>
+uniformly in <span class="math" data-tex="\(a\)">\(a\)</span>. Applying this to all integer multiples of <span class="math" data-tex="\(a\)">\(a\)</span>, positive and negative, forces <span class="math" data-tex="\(|\gamma(a)|=1\)">\(|\gamma(a)|=1\)</span>. Thus <span class="math" data-tex="\(\gamma\in\widehat G\)">\(\gamma\in\widehat G\)</span>, with exactly the claimed independence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-exercise-6-3"></a>
+<h3 id="exercise-6-3-a-necessary-condition-for-an-l-1-unit">Exercise 6.3. A necessary condition for an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> unit</h3>
+<p>Show that if <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> has an identity for convolution, then <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> is compact.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(e*f=f\)">\(e*f=f\)</span> for all <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>. Fix <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>. Lemma 1.2 supplies an <span class="math" data-tex="\(f\)">\(f\)</span> with
+<span class="math" data-tex="\(h_{\gamma^{-1}}(f)=1\)">\(h_{\gamma^{-1}}(f)=1\)</span>.
+Applying this functional to <span class="math" data-tex="\(e*f=f\)">\(e*f=f\)</span> gives
+<span class="math" data-tex="\(h_{\gamma^{-1}}(e)=1\)">\(h_{\gamma^{-1}}(e)=1\)</span>, which means <span class="math" data-tex="\(\widehat e(\gamma)=1\)">\(\widehat e(\gamma)=1\)</span>.
+Thus <span class="math" data-tex="\(\widehat e\)">\(\widehat e\)</span> is the constant one function on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. By Theorem 3.1 it belongs to <span class="math" data-tex="\(C_0(\Gamma)\)">\(C_0(\Gamma)\)</span>, so its level set
+<span class="math" data-tex="\(\{\gamma:|\widehat e(\gamma)|\ge1/2\}=\Gamma\)">\(\{\gamma:|\widehat e(\gamma)|\ge1/2\}=\Gamma\)</span>
+is compact. The argument needs neither Pontryagin duality nor a converse implication. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-exercise-6-4"></a>
+<h3 id="exercise-6-4-uniform-continuity-for-a-finite-measure">Exercise 6.4. Uniform continuity for a finite measure</h3>
+<p>Prove that <span class="math" data-tex="\(\widehat\mu\)">\(\widehat\mu\)</span> is uniformly continuous for every finite complex Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, using compact tails explicitly.</p>
+<p><strong>Solution.</strong> Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose compact <span class="math" data-tex="\(K\subseteq G\)">\(K\subseteq G\)</span> with
+<span class="math" data-tex="\(|\mu|(G\setminus K)&lt;\varepsilon/4\)">\(|\mu|(G\setminus K)&lt;\varepsilon/4\)</span>.
+For any <span class="math" data-tex="\(\gamma,\eta\in\Gamma\)">\(\gamma,\eta\in\Gamma\)</span>, the character law and variation estimate give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ |\widehat\mu(\gamma\eta)-\widehat\mu(\gamma)|
+ &amp;\le\int_G|\eta(x)-1|\,d|\mu|(x)\\
+ &amp;\le\|\mu\|\sup_{x\in K}|\eta(x)-1|
+         +2|\mu|(G\setminus K).
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ |\widehat\mu(\gamma\eta)-\widehat\mu(\gamma)|
+ &amp;\le\int_G|\eta(x)-1|\,d|\mu|(x)\\
+ &amp;\le\|\mu\|\sup_{x\in K}|\eta(x)-1|
+         +2|\mu|(G\setminus K).
+ \end{aligned}
+\]</span>
+Take the compact-convergence neighbourhood
+<span class="math" data-tex="\(U=N(K,\varepsilon/(2(1+\|\mu\|)))\)">\(U=N(K,\varepsilon/(2(1+\|\mu\|)))\)</span>.
+The right side is strictly less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> for every <span class="math" data-tex="\(\eta\in U\)">\(\eta\in U\)</span>, independently of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. This is the asserted group-uniform continuity. The argument uses one fixed compact set and a neighbourhood, so also controls every net approaching the identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-03-exercise-6-5"></a>
+<h3 id="exercise-6-5-the-real-line-spectrum-directly">Exercise 6.5. The real-line spectrum directly</h3>
+<p>Identify the spectrum of <span class="math" data-tex="\(L^1(\mathbb R)\)">\(L^1(\mathbb R)\)</span>, with its weak-star topology, with the usual real line, without using the general homeomorphism in Theorem 2.1.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(h\)">\(h\)</span> be a nonzero algebra character. Choose <span class="math" data-tex="\(f_0\in C_c(\mathbb R)\)">\(f_0\in C_c(\mathbb R)\)</span> with <span class="math" data-tex="\(h(f_0)=1\)">\(h(f_0)=1\)</span>, using contractivity and density. The calculation in Exercise 6.2, which uses only translation identities, proves that
+<span class="math" data-tex="\(\gamma(x)=h(L_xf_0)\)">\(\gamma(x)=h(L_xf_0)\)</span>
+is a continuous real-line character and
+<span class="math" data-tex="\(h(L_xf)=\gamma(x)h(f)\)">\(h(L_xf)=\gamma(x)h(f)\)</span>.
+HA-LCA-02, Theorem 3.1, therefore gives
+<span class="math" data-tex="\(\gamma(x)=E(\xi x)\)">\(\gamma(x)=E(\xi x)\)</span> for a unique <span class="math" data-tex="\(\xi\in\mathbb R\)">\(\xi\in\mathbb R\)</span>.
+The finite approximation identity of Lemma 1.1 now gives
+<span class="math math-display" data-tex="\[
+ h(f)=h(f*f_0)=\int_{\mathbb R}f(x)h(L_xf_0)\,dx
+             =\int_{\mathbb R}f(x)E(\xi x)\,dx.
+\]">\[
+ h(f)=h(f*f_0)=\int_{\mathbb R}f(x)h(L_xf_0)\,dx
+             =\int_{\mathbb R}f(x)E(\xi x)\,dx.
+\]</span>
+Conversely these functionals are nonzero algebra characters by Lemma 1.2, and that lemma proves their distinctness. This establishes the algebraic identification directly.</p>
+<p>For its forward continuity, fix <span class="math" data-tex="\(f\in L^1(\mathbb R)\)">\(f\in L^1(\mathbb R)\)</span> and choose <span class="math" data-tex="\(u\in C_c(\mathbb R)\)">\(u\in C_c(\mathbb R)\)</span> with small <span class="math" data-tex="\(\|f-u\|_1\)">\(\|f-u\|_1\)</span>. Let its support lie in <span class="math" data-tex="\([-R,R]\)">\([-R,R]\)</span>. The exponential Lipschitz estimate gives
+<span class="math math-display" data-tex="\[
+ |h_\xi(f)-h_\eta(f)|
+ \le2\|f-u\|_1+2\pi R\|u\|_1|\xi-\eta|.
+\]">\[
+ |h_\xi(f)-h_\eta(f)|
+ \le2\|f-u\|_1+2\pi R\|u\|_1|\xi-\eta|.
+\]</span>
+Choosing first <span class="math" data-tex="\(u\)">\(u\)</span> and then <span class="math" data-tex="\(|\xi-\eta|\)">\(|\xi-\eta|\)</span> proves continuity for every weak-star coordinate.</p>
+<p>For inverse continuity at <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, use the single integrable test function
+<span class="math" data-tex="\(g_\eta(x)=e^{-\pi x^2}e^{-2\pi i\eta x}\)">\(g_\eta(x)=e^{-\pi x^2}e^{-2\pi i\eta x}\)</span>.
+The earlier Gaussian transform gives
+<span class="math math-display" data-tex="\[
+ h_\xi(g_\eta)=e^{-\pi(\xi-\eta)^2},\qquad h_\eta(g_\eta)=1.
+\]">\[
+ h_\xi(g_\eta)=e^{-\pi(\xi-\eta)^2},\qquad h_\eta(g_\eta)=1.
+\]</span>
+Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the weak-star neighbourhood
+<span class="math math-display" data-tex="\[
+ |h(g_\eta)-1|&lt;1-e^{-\pi\varepsilon^2}
+\]">\[
+ |h(g_\eta)-1|&lt;1-e^{-\pi\varepsilon^2}
+\]</span>
+contains <span class="math" data-tex="\(h_\eta\)">\(h_\eta\)</span>. For <span class="math" data-tex="\(h=h_\xi\)">\(h=h_\xi\)</span>, the explicit real positive value above shows that this inequality forces <span class="math" data-tex="\(|\xi-\eta|&lt;\varepsilon\)">\(|\xi-\eta|&lt;\varepsilon\)</span>. Hence the inverse is continuous. This proof of the topology on the real-line spectrum uses the scalar Gaussian calculation and no general spectrum homeomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-the-next-step">7. The next step</h2>
+<p>We have identified all nonzero multiplicative functionals on <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, proved its transform laws and uniform density, and embedded <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> as a closed ideal in the finite-measure algebra. General injectivity and inversion for Fourier transforms will be proved later in the course. None of those later conclusions was needed in the spectrum or density proofs here.</p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

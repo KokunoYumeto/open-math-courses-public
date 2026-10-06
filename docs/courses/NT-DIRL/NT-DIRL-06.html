@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Values of Dirichlet L-functions at s = 1 · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-06.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 6 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="values-of-dirichlet-l-functions-at-s-1">Values of Dirichlet L-functions at s = 1</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Original material is public domain (CC0).</em></p>
+<p>The infinite series defining <span class="math" data-tex="\(L(1,\chi)\)">\(L(1,\chi)\)</span> can be replaced by a finite sum. For even characters that sum involves real logarithms; for odd characters the arguments of complex logarithms produce a linear sum of character values. Keeping the logarithm's branch is essential. We then compare the real-character values with quadratic class numbers and give a separate analytic lower bound that uses no class-number formula.</p>
+<p>We use the primitive Gauss identities from <em>Gauss sums</em>, nonvanishing and convergence at 1 from <em>Dirichlet's theorem on primes in arithmetic progressions</em>, and the functional equation and generalized Bernoulli values from the preceding lesson. The Pólya–Vinogradov interval bound is used only for the analytic lower bound in Section 4.</p>
+<h2 id="1-a-finite-formula-with-its-logarithm-fixed">1. A finite formula with its logarithm fixed</h2>
+<p>Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be primitive of conductor <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>. Finite Fourier inversion says</p>
+<span class="math math-display" data-tex="\[
+\chi(n)=\frac{\tau(\chi)}q
+\sum_{b=1}^{q-1}\overline{\chi(b)}e(-bn/q).
+\]">\[
+\chi(n)=\frac{\tau(\chi)}q
+\sum_{b=1}^{q-1}\overline{\chi(b)}e(-bn/q).
+\]</span>
+<p>For <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>, absolutely convergent summation gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\ge1}\frac{\chi(n)r^n}n
+=-\frac{\tau(\chi)}q\sum_{b=1}^{q-1}
+\overline{\chi(b)}\log(1-r e(-b/q)).
+\tag{1.1}
+\]">\[
+\sum_{n\ge1}\frac{\chi(n)r^n}n
+=-\frac{\tau(\chi)}q\sum_{b=1}^{q-1}
+\overline{\chi(b)}\log(1-r e(-b/q)).
+\tag{1.1}
+\]</span>
+<p>Here the logarithm is the branch with real part <span class="math" data-tex="\(\log|z|\)">\(\log|z|\)</span> and argument in <span class="math" data-tex="\((-\pi,\pi)\)">\((-\pi,\pi)\)</span>. Each <span class="math" data-tex="\(1-r e(-b/q)\)">\(1-r e(-b/q)\)</span> has positive real part, so this branch is continuous throughout the limiting path. The power series <span class="math" data-tex="\(-\log(1-z)=\sum_{n\ge1}z^n/n\)">\(-\log(1-z)=\sum_{n\ge1}z^n/n\)</span> on <span class="math" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span> follows by integrating the geometric series from zero to <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>The series <span class="math" data-tex="\(\sum_n\chi(n)/n\)">\(\sum_n\chi(n)/n\)</span> converges by periodic cancellation and partial summation. Its Abel limit as <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span> equals its sum. For completeness, if <span class="math" data-tex="\(a_n=\chi(n)/n\)">\(a_n=\chi(n)/n\)</span> and <span class="math" data-tex="\(A_m=\sum_{n\le m}a_n\to A\)">\(A_m=\sum_{n\le m}a_n\to A\)</span>, then
+<span class="math" data-tex="\(\sum_n a_n r^n=(1-r)\sum_{m\ge1}A_m r^m\)">\(\sum_n a_n r^n=(1-r)\sum_{m\ge1}A_m r^m\)</span>.
+The contribution of any fixed finite set of <span class="math" data-tex="\(m\)">\(m\)</span> tends to zero after multiplication by <span class="math" data-tex="\(1-r\)">\(1-r\)</span>, and the tail differs from <span class="math" data-tex="\(A(1-r)\sum r^m\)">\(A(1-r)\sum r^m\)</span> by arbitrarily little once <span class="math" data-tex="\(A_m\)">\(A_m\)</span> is close to <span class="math" data-tex="\(A\)">\(A\)</span>. This proves the assertion.</p>
+<p><strong>Theorem 1.1 (general finite formula).</strong> With this logarithm convention,</p>
+<span class="math math-display" data-tex="\[
+\boxed{L(1,\chi)=-\frac{\tau(\chi)}q
+\sum_{b=1}^{q-1}\overline{\chi(b)}
+\log(1-e(-b/q)).}
+\tag{1.2}
+\]">\[
+\boxed{L(1,\chi)=-\frac{\tau(\chi)}q
+\sum_{b=1}^{q-1}\overline{\chi(b)}
+\log(1-e(-b/q)).}
+\tag{1.2}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span> in (1.1). Each finite logarithmic term converges to the displayed value; none of its arguments is zero. The Abel argument identifies the left side with <span class="math" data-tex="\(L(1,\chi)\)">\(L(1,\chi)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(0&lt;b&lt;q\)">\(0&lt;b&lt;q\)</span>, factoring the argument gives the exact branch evaluation</p>
+<span class="math math-display" data-tex="\[
+1-e(-b/q)=2\sin(\pi b/q)e^{i(\pi/2-\pi b/q)},
+\]">\[
+1-e(-b/q)=2\sin(\pi b/q)e^{i(\pi/2-\pi b/q)},
+\]</span>
+<p>and thus</p>
+<span class="math math-display" data-tex="\[
+\log(1-e(-b/q))
+=\log(2\sin(\pi b/q))+i\pi(1/2-b/q).
+\tag{1.3}
+\]">\[
+\log(1-e(-b/q))
+=\log(2\sin(\pi b/q))+i\pi(1/2-b/q).
+\tag{1.3}
+\]</span>
+<p>The sine is positive, and the displayed argument belongs to <span class="math" data-tex="\((-\pi/2,\pi/2)\)">\((-\pi/2,\pi/2)\)</span>. Replacing this logarithm by its real part before using the character's parity would discard information.</p>
+<h2 id="2-parity-separates-the-two-formulas">2. Parity separates the two formulas</h2>
+<p><strong>Theorem 2.1.</strong> For primitive characters of conductor <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>, the even and odd formulas are respectively</p>
+<span class="math math-display" data-tex="\[
+\boxed{L(1,\chi)=-\frac{\tau(\chi)}q
+\sum_{b=1}^{q-1}\overline{\chi(b)}
+\log(2\sin(\pi b/q))\quad(\chi(-1)=1),}
+\tag{2.1}
+\]">\[
+\boxed{L(1,\chi)=-\frac{\tau(\chi)}q
+\sum_{b=1}^{q-1}\overline{\chi(b)}
+\log(2\sin(\pi b/q))\quad(\chi(-1)=1),}
+\tag{2.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+\boxed{L(1,\chi)=\frac{\pi i\tau(\chi)}{q^2}
+\sum_{b=1}^{q-1}b\overline{\chi(b)}
+\quad(\chi(-1)=-1).}
+\tag{2.2}
+\]">\[
+\boxed{L(1,\chi)=\frac{\pi i\tau(\chi)}{q^2}
+\sum_{b=1}^{q-1}b\overline{\chi(b)}
+\quad(\chi(-1)=-1).}
+\tag{2.2}
+\]</span>
+<p>These formulas apply to complex characters as well as real ones.</p>
+<p><strong>Proof.</strong> Insert (1.3) in (1.2). Pair <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(q-b\)">\(q-b\)</span>. The logarithm of the sine is unchanged by this pairing, whereas <span class="math" data-tex="\(1/2-b/q\)">\(1/2-b/q\)</span> changes sign. For an even character its imaginary contribution cancels, giving (2.1). For an odd character the real-logarithm contribution cancels. Also <span class="math" data-tex="\(\sum_b\overline{\chi(b)}=0\)">\(\sum_b\overline{\chi(b)}=0\)</span>, so the constant imaginary term vanishes and the remaining term is (2.2). Fixed points of the pairing cause no problem: if <span class="math" data-tex="\(b=q/2\)">\(b=q/2\)</span> occurs, it is a nonunit and its character value is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is therefore no formula using just <span class="math" data-tex="\(\log|1-e(b/q)|\)">\(\log|1-e(b/q)|\)</span> for every primitive character: for an odd character the proposed symmetric sum is identically zero, while <span class="math" data-tex="\(L(1,\chi)\ne0\)">\(L(1,\chi)\ne0\)</span>. The real-logarithm formula has the explicit evenness hypothesis in (2.1).</p>
+<h3 id="worked-values-at-conductors-3-and-4">Worked values at conductors 3 and 4</h3>
+<p>For <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span>, the sum in (2.2) is <span class="math" data-tex="\(1-3=-2\)">\(1-3=-2\)</span>, and <span class="math" data-tex="\(\tau(\chi_{-4})=2i\)">\(\tau(\chi_{-4})=2i\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_{-4})=\frac{\pi i(2i)}{16}(-2)=\frac\pi4.
+\]">\[
+L(1,\chi_{-4})=\frac{\pi i(2i)}{16}(-2)=\frac\pi4.
+\]</span>
+<p>For <span class="math" data-tex="\(\chi_{-3}\)">\(\chi_{-3}\)</span>, the weighted sum is <span class="math" data-tex="\(1-2=-1\)">\(1-2=-1\)</span>, and the Gauss sum is <span class="math" data-tex="\(i\sqrt3\)">\(i\sqrt3\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_{-3})=\frac{\pi i(i\sqrt3)}9(-1)
+=\frac\pi{3\sqrt3}.
+\tag{2.3}
+\]">\[
+L(1,\chi_{-3})=\frac{\pi i(i\sqrt3)}9(-1)
+=\frac\pi{3\sqrt3}.
+\tag{2.3}
+\]</span>
+<p>These two positive values check both the sign and the normalization of the odd formula.</p>
+<h3 id="an-even-character-and-a-complex-character-modulo-5">An even character and a complex character modulo 5</h3>
+<p>For <span class="math" data-tex="\(\chi_5\)">\(\chi_5\)</span>, the values at <span class="math" data-tex="\(1,2,3,4\)">\(1,2,3,4\)</span> are <span class="math" data-tex="\(1,-1,-1,1\)">\(1,-1,-1,1\)</span>, and <span class="math" data-tex="\(\tau(\chi_5)=\sqrt5\)">\(\tau(\chi_5)=\sqrt5\)</span>. Pairing sine terms in (2.1) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(1,\chi_5)
+&amp;=\frac2{\sqrt5}\log\frac{\sin(2\pi/5)}{\sin(\pi/5)}\\
+&amp;=\frac2{\sqrt5}\log\frac{1+\sqrt5}2
+\approx0.43040894096.
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+L(1,\chi_5)
+&amp;=\frac2{\sqrt5}\log\frac{\sin(2\pi/5)}{\sin(\pi/5)}\\
+&amp;=\frac2{\sqrt5}\log\frac{1+\sqrt5}2
+\approx0.43040894096.
+\end{aligned}
+\tag{2.4}
+\]</span>
+<p>To obtain the exact trigonometric value, put <span class="math" data-tex="\(z=e(1/5)\)">\(z=e(1/5)\)</span> and <span class="math" data-tex="\(v=z+z^{-1}=2\cos(2\pi/5)&gt;0\)">\(v=z+z^{-1}=2\cos(2\pi/5)&gt;0\)</span>. Divide <span class="math" data-tex="\(1+z+z^2+z^3+z^4=0\)">\(1+z+z^2+z^3+z^4=0\)</span> by <span class="math" data-tex="\(z^2\)">\(z^2\)</span>; pairing conjugates gives <span class="math" data-tex="\(1+v+(v^2-2)=0\)">\(1+v+(v^2-2)=0\)</span>. Hence <span class="math" data-tex="\(v=(\sqrt5-1)/2\)">\(v=(\sqrt5-1)/2\)</span>. Now <span class="math" data-tex="\(c=2\cos(\pi/5)&gt;0\)">\(c=2\cos(\pi/5)&gt;0\)</span> satisfies <span class="math" data-tex="\(c^2=2+v=(3+\sqrt5)/2\)">\(c^2=2+v=(3+\sqrt5)/2\)</span>. Taking its positive square root gives <span class="math" data-tex="\(c=(1+\sqrt5)/2\)">\(c=(1+\sqrt5)/2\)</span>. The sine quotient in (2.4) is <span class="math" data-tex="\(2\cos(\pi/5)=c\)">\(2\cos(\pi/5)=c\)</span>.</p>
+<p>For the quartic character <span class="math" data-tex="\(\chi(2)=i\)">\(\chi(2)=i\)</span>, the values are <span class="math" data-tex="\(1,i,-i,-1\)">\(1,i,-i,-1\)</span>, so the character is odd. Its Gauss sum is
+<span class="math" data-tex="\(-2\sin(\pi/5)+2i\sin(2\pi/5)\)">\(-2\sin(\pi/5)+2i\sin(2\pi/5)\)</span>, and the weighted conjugate sum is <span class="math" data-tex="\(-3+i\)">\(-3+i\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(1,\chi)=\frac{2\pi}{25}\bigl(&amp;\sin(\pi/5)+3\sin(2\pi/5)\\
+&amp;+i(3\sin(\pi/5)-\sin(2\pi/5))\bigr).
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+L(1,\chi)=\frac{2\pi}{25}\bigl(&amp;\sin(\pi/5)+3\sin(2\pi/5)\\
+&amp;+i(3\sin(\pi/5)-\sin(2\pi/5))\bigr).
+\end{aligned}
+\tag{2.5}
+\]</span>
+<p>The other quartic character is <span class="math" data-tex="\(\overline\chi\)">\(\overline\chi\)</span>; its value is the complex conjugate of (2.5). Neither value is a quadratic class-number formula.</p>
+<h2 id="3-quadratic-class-numbers-with-the-unit-convention-explicit">3. Quadratic class numbers, with the unit convention explicit</h2>
+<p>We state the exact algebraic input used in this section. In the planned course <em>Number fields</em>, the lesson <em>The Dedekind zeta function and the analytic class number formula</em> supplies the analytic class-number theorem; <em>Abelian number fields and Dirichlet L-functions at s = 1</em> supplies its quadratic specialization and the factorization <span class="math" data-tex="\(\zeta_K=\zeta L(s,\chi_d)\)">\(\zeta_K=\zeta L(s,\chi_d)\)</span>. The relation between proper form classes and narrow ideal classes is assigned to <em>Quadratic fields: ideal classes and binary quadratic forms</em>. These are identified internal proof providers; the analytic arguments of this lesson do not prove those algebraic theorems.</p>
+<p>For a negative fundamental discriminant <span class="math" data-tex="\(d\)">\(d\)</span>, let <span class="math" data-tex="\(h(d)\)">\(h(d)\)</span> count proper classes of primitive positive definite binary quadratic forms. It equals the ideal class number. Write <span class="math" data-tex="\(w_d\)">\(w_d\)</span> for the number of roots of unity in the quadratic field. The internal class-number formula is</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_d)=\frac{2\pi h(d)}{w_d\sqrt{|d|}},\qquad
+w_d=\begin{cases}6&amp;d=-3,\\4&amp;d=-4,\\2&amp;d&lt;-4.\end{cases}
+\tag{3.1}
+\]">\[
+L(1,\chi_d)=\frac{2\pi h(d)}{w_d\sqrt{|d|}},\qquad
+w_d=\begin{cases}6&amp;d=-3,\\4&amp;d=-4,\\2&amp;d&lt;-4.\end{cases}
+\tag{3.1}
+\]</span>
+<p>For a positive fundamental discriminant <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, let <span class="math" data-tex="\(h^+(d)\)">\(h^+(d)\)</span> be the narrow class number, equivalently the number of proper form classes. Let <span class="math" data-tex="\(\epsilon_+(d)&gt;1\)">\(\epsilon_+(d)&gt;1\)</span> be the least positive unit of norm <span class="math" data-tex="\(+1\)">\(+1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\epsilon_+(d)=\frac{t_0+u_0\sqrt d}2,
+\qquad t_0^2-du_0^2=4,\quad t_0,u_0&gt;0,
+\]">\[
+\epsilon_+(d)=\frac{t_0+u_0\sqrt d}2,
+\qquad t_0^2-du_0^2=4,\quad t_0,u_0&gt;0,
+\]</span>
+<p>where the pair gives the smallest unit greater than 1. The matching formula is</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_d)=\frac{h^+(d)\log\epsilon_+(d)}{\sqrt d}.
+\tag{3.2}
+\]">\[
+L(1,\chi_d)=\frac{h^+(d)\log\epsilon_+(d)}{\sqrt d}.
+\tag{3.2}
+\]</span>
+<p>This choice of unit must be kept together with the narrow class number. If <span class="math" data-tex="\(h(d)\)">\(h(d)\)</span> instead denotes the ordinary ideal class number and <span class="math" data-tex="\(\epsilon(d)&gt;1\)">\(\epsilon(d)&gt;1\)</span> the least positive unit of either norm, the equivalent formula is</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_d)=\frac{2h(d)\log\epsilon(d)}{\sqrt d}.
+\tag{3.3}
+\]">\[
+L(1,\chi_d)=\frac{2h(d)\log\epsilon(d)}{\sqrt d}.
+\tag{3.3}
+\]</span>
+<p>Indeed, if a unit of norm <span class="math" data-tex="\(-1\)">\(-1\)</span> exists then <span class="math" data-tex="\(h^+=h\)">\(h^+=h\)</span> and <span class="math" data-tex="\(\epsilon_+=\epsilon^2\)">\(\epsilon_+=\epsilon^2\)</span>. If none exists then <span class="math" data-tex="\(h^+=2h\)">\(h^+=2h\)</span> and <span class="math" data-tex="\(\epsilon_+=\epsilon\)">\(\epsilon_+=\epsilon\)</span>. The quadratic-fields lesson supplies these class-group facts. Equations (3.2) and (3.3) agree in both cases.</p>
+<p><strong>Corollary 3.1.</strong> The class-number formulas imply</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_d)\ge\frac\pi{3\sqrt{|d|}}\quad(d&lt;0),
+\qquad
+L(1,\chi_d)\ge\frac\pi{\sqrt{|d|}}\quad(d&lt;-4),
+\tag{3.4}
+\]">\[
+L(1,\chi_d)\ge\frac\pi{3\sqrt{|d|}}\quad(d&lt;0),
+\qquad
+L(1,\chi_d)\ge\frac\pi{\sqrt{|d|}}\quad(d&lt;-4),
+\tag{3.4}
+\]</span>
+<p>and, for <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_d)\ge\frac{\log((1+\sqrt d)/2)}{\sqrt d}
+\ge\frac{\log(\sqrt d/2)}{\sqrt d}.
+\tag{3.5}
+\]">\[
+L(1,\chi_d)\ge\frac{\log((1+\sqrt d)/2)}{\sqrt d}
+\ge\frac{\log(\sqrt d/2)}{\sqrt d}.
+\tag{3.5}
+\]</span>
+<p>In particular <span class="math" data-tex="\(L(1,\chi)\gg q^{-1/2}\)">\(L(1,\chi)\gg q^{-1/2}\)</span> for every real primitive nonprincipal character of conductor <span class="math" data-tex="\(q\)">\(q\)</span>, with an absolute positive constant.</p>
+<p><strong>Proof.</strong> A class group has at least its identity, so both relevant class numbers are at least 1. In (3.1), <span class="math" data-tex="\(w_d\le6\)">\(w_d\le6\)</span>, and <span class="math" data-tex="\(w_d=2\)">\(w_d=2\)</span> for <span class="math" data-tex="\(d&lt;-4\)">\(d&lt;-4\)</span>, proving (3.4). For the unit in (3.2), the positive integers <span class="math" data-tex="\(t_0,u_0\)">\(t_0,u_0\)</span> are at least 1; hence <span class="math" data-tex="\(\epsilon_+\ge(1+\sqrt d)/2\)">\(\epsilon_+\ge(1+\sqrt d)/2\)</span>, proving (3.5). Every positive fundamental discriminant of a nontrivial quadratic field is at least 5. Thus its logarithm in the first bound of (3.5) is at least <span class="math" data-tex="\(\log((1+\sqrt5)/2)&gt;0\)">\(\log((1+\sqrt5)/2)&gt;0\)</span>. The real-character classification in <em>Dirichlet characters</em> now proves the uniform assertion. The discriminant 1 belongs to the principal character at modulus 1 and is excluded. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="discriminants-5-and-minus-23">Discriminants 5 and minus 23</h3>
+<p>For <span class="math" data-tex="\(d=5\)">\(d=5\)</span>, <span class="math" data-tex="\((t,u)=(3,1)\)">\((t,u)=(3,1)\)</span> solves <span class="math" data-tex="\(t^2-5u^2=4\)">\(t^2-5u^2=4\)</span>. Any positive solution giving a unit greater than 1 has <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span>; the expression <span class="math" data-tex="\((\sqrt{5u^2+4}+u\sqrt5)/2\)">\((\sqrt{5u^2+4}+u\sqrt5)/2\)</span> increases with <span class="math" data-tex="\(u\)">\(u\)</span>. Thus the least norm-positive unit is <span class="math" data-tex="\((3+\sqrt5)/2\)">\((3+\sqrt5)/2\)</span>. Its logarithm is twice <span class="math" data-tex="\(\log((1+\sqrt5)/2)\)">\(\log((1+\sqrt5)/2)\)</span>. The independently obtained finite formula (2.4), together with (3.2), then gives <span class="math" data-tex="\(h^+(5)=1\)">\(h^+(5)=1\)</span>. This checks the unit normalization instead of changing it to fit the finite value.</p>
+<p>For <span class="math" data-tex="\(d=-23\)">\(d=-23\)</span>, the quadratic character is <span class="math" data-tex="\((n/23)\)">\((n/23)\)</span>, and direct enumeration of the nonzero squares gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{n=1}^{22}n\left(\frac n{23}\right)=-69.
+\]">\[
+\sum_{n=1}^{22}n\left(\frac n{23}\right)=-69.
+\]</span>
+<p>Using <span class="math" data-tex="\(\tau(\chi_{-23})=i\sqrt{23}\)">\(\tau(\chi_{-23})=i\sqrt{23}\)</span> in (2.2) gives
+<span class="math" data-tex="\(L(1,\chi_{-23})=3\pi/\sqrt{23}\)">\(L(1,\chi_{-23})=3\pi/\sqrt{23}\)</span>. Formula (3.1), with <span class="math" data-tex="\(w_{-23}=2\)">\(w_{-23}=2\)</span>, gives <span class="math" data-tex="\(h(-23)=3\)">\(h(-23)=3\)</span>. The form representatives are
+<span class="math" data-tex="\((1,1,6),(2,1,3),(2,-1,3)\)">\((1,1,6),(2,1,3),(2,-1,3)\)</span>. To check that list using the reduction theorem in the quadratic-fields lesson, a reduced positive form satisfies <span class="math" data-tex="\(|b|\le a\le c\)">\(|b|\le a\le c\)</span> and <span class="math" data-tex="\(a\le\sqrt{23/3}&lt;3\)">\(a\le\sqrt{23/3}&lt;3\)</span>, with <span class="math" data-tex="\(b\ge0\)">\(b\ge0\)</span> on the boundary <span class="math" data-tex="\(|b|=a\)">\(|b|=a\)</span> or <span class="math" data-tex="\(a=c\)">\(a=c\)</span>. Inserting <span class="math" data-tex="\(a=1,2\)">\(a=1,2\)</span> in <span class="math" data-tex="\(b^2-4ac=-23\)">\(b^2-4ac=-23\)</span> leaves exactly the three displayed forms.</p>
+<h2 id="4-a-lower-bound-using-only-analysis">4. A lower bound using only analysis</h2>
+<p>The class-number argument gives a stronger result for primitive real characters. The following weaker estimate applies to every real nonprincipal character, including imprimitive ones, and has a fully analytic proof.</p>
+<p><strong>Theorem 4.1.</strong> Uniformly for real nonprincipal characters modulo <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi)\gg\frac1{\sqrt q(1+\log q)^2}
+\gg\frac1{\sqrt q(\log q)^2}.
+\tag{4.1}
+\]">\[
+L(1,\chi)\gg\frac1{\sqrt q(1+\log q)^2}
+\gg\frac1{\sqrt q(\log q)^2}.
+\tag{4.1}
+\]</span>
+<p>The implied constants are absolute and effectively obtainable from the Pólya–Vinogradov constant. No class-number formula is used.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(r(n)=\sum_{a\mid n}\chi(a)\)">\(r(n)=\sum_{a\mid n}\chi(a)\)</span>. At a prime power its value is <span class="math" data-tex="\(k+1\)">\(k+1\)</span> if <span class="math" data-tex="\(\chi(p)=1\)">\(\chi(p)=1\)</span>, 1 if <span class="math" data-tex="\(\chi(p)=0\)">\(\chi(p)=0\)</span>, and 1 or 0 according as <span class="math" data-tex="\(k\)">\(k\)</span> is even or odd if <span class="math" data-tex="\(\chi(p)=-1\)">\(\chi(p)=-1\)</span>. Multiplicativity therefore gives
+<span class="math" data-tex="\(r(n)\ge0\)">\(r(n)\ge0\)</span> and <span class="math" data-tex="\(r(m^2)\ge1\)">\(r(m^2)\ge1\)</span>. Define the triangularly weighted sum</p>
+<span class="math math-display" data-tex="\[
+T(x)=\sum_{n\le x}r(n)(1-n/x),\qquad x\ge8.
+\]">\[
+T(x)=\sum_{n\le x}r(n)(1-n/x),\qquad x\ge8.
+\]</span>
+<p>The square terms alone imply</p>
+<span class="math math-display" data-tex="\[
+T(x)\ge\sum_{m\le\sqrt{x/2}}(1-m^2/x)
+\ge\frac12\left\lfloor\sqrt{x/2}\right\rfloor
+\ge\frac{\sqrt x}{4\sqrt2}.
+\tag{4.2}
+\]">\[
+T(x)\ge\sum_{m\le\sqrt{x/2}}(1-m^2/x)
+\ge\frac12\left\lfloor\sqrt{x/2}\right\rfloor
+\ge\frac{\sqrt x}{4\sqrt2}.
+\tag{4.2}
+\]</span>
+<p>To estimate the same sum from above, write <span class="math" data-tex="\(k=\lfloor y\rfloor\)">\(k=\lfloor y\rfloor\)</span>. Direct summation and integration give the exact identity</p>
+<span class="math math-display" data-tex="\[
+\sum_{b\le y}(1-b/y)
+=k-\frac{k(k+1)}{2y}
+=\frac y2-\frac1y\int_0^y\{t\}\,dt
+\quad(y&gt;0).
+\tag{4.3}
+\]">\[
+\sum_{b\le y}(1-b/y)
+=k-\frac{k(k+1)}{2y}
+=\frac y2-\frac1y\int_0^y\{t\}\,dt
+\quad(y&gt;0).
+\tag{4.3}
+\]</span>
+<p>Expanding the divisor sum in <span class="math" data-tex="\(T\)">\(T\)</span>, then using (4.3) with <span class="math" data-tex="\(y=x/a\)">\(y=x/a\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+T(x)=\frac x2\sum_{a\le x}\frac{\chi(a)}a
+-\frac1x\int_0^x\{t\}
+\sum_{a\le\min(x,x/t)}a\chi(a)\,dt.
+\tag{4.4}
+\]">\[
+T(x)=\frac x2\sum_{a\le x}\frac{\chi(a)}a
+-\frac1x\int_0^x\{t\}
+\sum_{a\le\min(x,x/t)}a\chi(a)\,dt.
+\tag{4.4}
+\]</span>
+<p>At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, the inner upper endpoint is interpreted as <span class="math" data-tex="\(x\)">\(x\)</span>. All rearrangements involve finite sums.</p>
+<p>By Pólya–Vinogradov, the partial sums <span class="math" data-tex="\(A(u)=\sum_{a\le u}\chi(a)\)">\(A(u)=\sum_{a\le u}\chi(a)\)</span> satisfy <span class="math" data-tex="\(|A(u)|\le B\)">\(|A(u)|\le B\)</span>, where <span class="math" data-tex="\(B=2\sqrt q(1+\log q)\)">\(B=2\sqrt q(1+\log q)\)</span>. Partial summation gives</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_{a&gt;x}\frac{\chi(a)}a\right|\le\frac{2B}x,
+\qquad
+\left|\sum_{a\le u}a\chi(a)\right|\le2Bu.
+\tag{4.5}
+\]">\[
+\left|\sum_{a&gt;x}\frac{\chi(a)}a\right|\le\frac{2B}x,
+\qquad
+\left|\sum_{a\le u}a\chi(a)\right|\le2Bu.
+\tag{4.5}
+\]</span>
+<p>For the first bound, integrate <span class="math" data-tex="\(A\)">\(A\)</span> against <span class="math" data-tex="\(1/u^2\)">\(1/u^2\)</span> and include the boundary value at <span class="math" data-tex="\(x\)">\(x\)</span>; for the second, use <span class="math" data-tex="\(uA(u)-\int_0^u A(v)\,dv\)">\(uA(u)-\int_0^u A(v)\,dv\)</span>. In (4.4), split the integral at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. Its contribution on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> is at most <span class="math" data-tex="\(2B\)">\(2B\)</span>, and on <span class="math" data-tex="\((1,x)\)">\((1,x)\)</span> at most <span class="math" data-tex="\(2B\int_1^x dt/t\)">\(2B\int_1^x dt/t\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+T(x)=\frac x2L(1,\chi)+E(x),\qquad
+|E(x)|\le B(3+2\log x).
+\tag{4.6}
+\]">\[
+T(x)=\frac x2L(1,\chi)+E(x),\qquad
+|E(x)|\le B(3+2\log x).
+\tag{4.6}
+\]</span>
+<p>Choose <span class="math" data-tex="\(x=Kq(1+\log q)^4\)">\(x=Kq(1+\log q)^4\)</span>, with <span class="math" data-tex="\(K\ge1\)">\(K\ge1\)</span> an absolute constant to be fixed. Set <span class="math" data-tex="\(v=1+\log q\ge1\)">\(v=1+\log q\ge1\)</span>. Then
+<span class="math" data-tex="\(\log x\le\log K+5v\)">\(\log x\le\log K+5v\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+|E(x)|\le2\sqrt q\,v(3+2\log K+10v)
+\le(26+4\log K)\sqrt q\,v^2.
+\]">\[
+|E(x)|\le2\sqrt q\,v(3+2\log K+10v)
+\le(26+4\log K)\sqrt q\,v^2.
+\]</span>
+<p>Meanwhile (4.2) gives
+<span class="math" data-tex="\(T(x)\ge\sqrt K\sqrt q\,v^2/(4\sqrt2)\)">\(T(x)\ge\sqrt K\sqrt q\,v^2/(4\sqrt2)\)</span>.
+Choose <span class="math" data-tex="\(K\)">\(K\)</span> so large that
+<span class="math" data-tex="\(26+4\log K\le\sqrt K/(8\sqrt2)\)">\(26+4\log K\le\sqrt K/(8\sqrt2)\)</span>; such a computable constant exists because <span class="math" data-tex="\(\log K=o(\sqrt K)\)">\(\log K=o(\sqrt K)\)</span>. Then the error in (4.6) is at most half the lower bound in (4.2). Therefore</p>
+<span class="math math-display" data-tex="\[
+\frac x2L(1,\chi)\ge\frac{\sqrt x}{8\sqrt2},
+\qquad
+L(1,\chi)\ge\frac1{4\sqrt{2K}\sqrt q\,v^2}.
+\]">\[
+\frac x2L(1,\chi)\ge\frac{\sqrt x}{8\sqrt2},
+\qquad
+L(1,\chi)\ge\frac1{4\sqrt{2K}\sqrt q\,v^2}.
+\]</span>
+<p>This proves the first inequality of (4.1). A nonprincipal character has <span class="math" data-tex="\(q\ge3\)">\(q\ge3\)</span>, and <span class="math" data-tex="\(1+\log q\ll\log q\)">\(1+\log q\ll\log q\)</span> there, proving the second. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The smoothing in (4.3) is what makes the argument work. A sharp divisor count has floor errors too large to compare effectively with just its square terms. The triangular weight turns those errors into a single integral controlled by character cancellation.</p>
+<p>For an imprimitive character induced by a real primitive <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span>, its value at 1 also satisfies</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi)=L(1,\chi^*)
+\prod_{p\mid q\atop p\nmid q^*}(1-\chi^*(p)/p).
+\]">\[
+L(1,\chi)=L(1,\chi^*)
+\prod_{p\mid q\atop p\nmid q^*}(1-\chi^*(p)/p).
+\]</span>
+<p>Every added factor is positive, but factors with <span class="math" data-tex="\(\chi^*(p)=1\)">\(\chi^*(p)=1\)</span> can decrease the value. This is why the conductor-sensitive primitive class-number statement and the modulus-uniform analytic statement are kept distinct.</p>
+<h2 id="5-critical-integers-and-powers-of-pi">5. Critical integers and powers of pi</h2>
+<p>The archimedean factor on the <span class="math" data-tex="\(s\)">\(s\)</span> side of the functional equation is <span class="math" data-tex="\(\Gamma((s+a)/2)\)">\(\Gamma((s+a)/2)\)</span>, while on the <span class="math" data-tex="\(1-s\)">\(1-s\)</span> side it is <span class="math" data-tex="\(\Gamma((1-s+a)/2)\)">\(\Gamma((1-s+a)/2)\)</span>. An integer <span class="math" data-tex="\(m\)">\(m\)</span> is critical when neither factor has a pole there. Gamma poles occur at nonpositive integers, so the complete list is</p>
+<span class="math math-display" data-tex="\[
+\begin{cases}
+m\ge1,\quad m\equiv a\pmod2,\\
+m\le0,\quad m\not\equiv a\pmod2.
+\end{cases}
+\tag{5.1}
+\]">\[
+\begin{cases}
+m\ge1,\quad m\equiv a\pmod2,\\
+m\le0,\quad m\not\equiv a\pmod2.
+\end{cases}
+\tag{5.1}
+\]</span>
+<p>Indeed, for <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> the first Gamma argument is positive. The second is a nonpositive integer exactly when <span class="math" data-tex="\(m\equiv1+a\pmod2\)">\(m\equiv1+a\pmod2\)</span>. For <span class="math" data-tex="\(m\le0\)">\(m\le0\)</span> the second Gamma argument is positive, and the first is a nonpositive integer exactly when <span class="math" data-tex="\(m\equiv a\pmod2\)">\(m\equiv a\pmod2\)</span>. This also shows why a trivial zero is not itself a critical integer.</p>
+<p>For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> with <span class="math" data-tex="\(n\equiv a\pmod2\)">\(n\equiv a\pmod2\)</span>, use the asymmetric functional equation at <span class="math" data-tex="\(s=n\)">\(s=n\)</span>, with the character <span class="math" data-tex="\(\overline\chi\)">\(\overline\chi\)</span>. Its trigonometric factor is <span class="math" data-tex="\(2i^{-n}\)">\(2i^{-n}\)</span> in these parity cases. Combining it with <span class="math" data-tex="\(L(1-n,\overline\chi)=-B_{n,\overline\chi}/n\)">\(L(1-n,\overline\chi)=-B_{n,\overline\chi}/n\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\boxed{L(n,\chi)=-\frac{q^{1-n}(2\pi)^n i^n}
+{2\tau(\overline\chi)\,n!}
+B_{n,\overline\chi}.}
+\tag{5.2}
+\]">\[
+\boxed{L(n,\chi)=-\frac{q^{1-n}(2\pi)^n i^n}
+{2\tau(\overline\chi)\,n!}
+B_{n,\overline\chi}.}
+\tag{5.2}
+\]</span>
+<p>Character values and roots of unity are algebraic. Formula (5.2) therefore proves <span class="math" data-tex="\(L(n,\chi)/\pi^n\)">\(L(n,\chi)/\pi^n\)</span> algebraic at these positive critical integers. The negative critical values are already algebraic by the generalized Bernoulli formula. This conclusion is specific to the critical parity: at a noncritical positive integer the matching Bernoulli value vanishes and the direct division used in (5.2) is unavailable.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Derive <span class="math" data-tex="\(L(1,\chi_{-3})=\pi/(3\sqrt3)\)">\(L(1,\chi_{-3})=\pi/(3\sqrt3)\)</span> from the odd formula.</li>
+<li><strong>Medium.</strong> Derive the odd finite formula from the general complex-logarithm formula, keeping the branch and all signs explicit.</li>
+<li><strong>Medium.</strong> Give closed forms for <span class="math" data-tex="\(L(1,\chi)\)">\(L(1,\chi)\)</span> for both quartic characters modulo 5.</li>
+<li><strong>Medium.</strong> Compute <span class="math" data-tex="\(L(1,\chi_5)\)">\(L(1,\chi_5)\)</span> by the even finite formula and compare it with the norm-positive-unit class-number convention.</li>
+<li><strong>Hard.</strong> Prove <span class="math" data-tex="\(L(1,\chi)\gg q^{-1/2}(\log q)^{-c}\)">\(L(1,\chi)\gg q^{-1/2}(\log q)^{-c}\)</span> for every real nonprincipal character without a class-number formula. Give the exponent <span class="math" data-tex="\(c\)">\(c\)</span> your proof achieves.</li>
+</ol>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>1.</strong> The nonzero character values modulo 3 are <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>, the weighted sum is <span class="math" data-tex="\(-1\)">\(-1\)</span>, and its Gauss sum is <span class="math" data-tex="\(i\sqrt3\)">\(i\sqrt3\)</span>. Inserting them in (2.2) gives <span class="math" data-tex="\(\pi\sqrt3/9=\pi/(3\sqrt3)\)">\(\pi\sqrt3/9=\pi/(3\sqrt3)\)</span>. In particular the result is positive, as required by the earlier nonvanishing theorem for real characters.</p>
+<p><strong>2.</strong> The negative-exponential Gauss inversion leads to (1.2). For <span class="math" data-tex="\(0&lt;b&lt;q\)">\(0&lt;b&lt;q\)</span>, write
+<span class="math" data-tex="\(1-e(-b/q)=2\sin(\pi b/q)e^{i(\pi/2-\pi b/q)}\)">\(1-e(-b/q)=2\sin(\pi b/q)e^{i(\pi/2-\pi b/q)}\)</span>.
+This argument is in the chosen branch. In an odd character sum the symmetric real logarithms cancel under <span class="math" data-tex="\(b\mapsto q-b\)">\(b\mapsto q-b\)</span>. The constant imaginary term cancels because the total conjugate character sum is zero. The remaining logarithmic sum is
+<span class="math" data-tex="\(-i\pi q^{-1}\sum_b b\overline{\chi(b)}\)">\(-i\pi q^{-1}\sum_b b\overline{\chi(b)}\)</span>.
+Multiplication by <span class="math" data-tex="\(-\tau(\chi)/q\)">\(-\tau(\chi)/q\)</span> gives (2.2). Using absolute values inside the logarithms would give zero and would lose this argument.</p>
+<p><strong>3.</strong> For <span class="math" data-tex="\(\chi(2)=i\)">\(\chi(2)=i\)</span>, the conjugate weighted sum is <span class="math" data-tex="\(1-2i+3i-4=-3+i\)">\(1-2i+3i-4=-3+i\)</span>. Put <span class="math" data-tex="\(A=2\sin(\pi/5)\)">\(A=2\sin(\pi/5)\)</span>, <span class="math" data-tex="\(B=2\sin(2\pi/5)\)">\(B=2\sin(2\pi/5)\)</span>, so <span class="math" data-tex="\(\tau(\chi)=-A+iB\)">\(\tau(\chi)=-A+iB\)</span>. Then
+<span class="math" data-tex="\(i\tau(\chi)(-3+i)=A+3B+i(3A-B)\)">\(i\tau(\chi)(-3+i)=A+3B+i(3A-B)\)</span>.
+Multiplication by <span class="math" data-tex="\(\pi/25\)">\(\pi/25\)</span> gives (2.5). For the second quartic character conjugate that result. These are closed forms in <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and algebraic numbers, since the two sine values are
+<span class="math" data-tex="\(\sqrt{10-2\sqrt5}/4\)">\(\sqrt{10-2\sqrt5}/4\)</span> and <span class="math" data-tex="\(\sqrt{10+2\sqrt5}/4\)">\(\sqrt{10+2\sqrt5}/4\)</span>, respectively.</p>
+<p><strong>4.</strong> Pair the values <span class="math" data-tex="\(1,-1,-1,1\)">\(1,-1,-1,1\)</span> at <span class="math" data-tex="\(1,2,3,4\)">\(1,2,3,4\)</span> in the even formula. The finite logarithmic sum is
+<span class="math" data-tex="\(2\log(\sin(\pi/5)/\sin(2\pi/5))=-2\log\varphi\)">\(2\log(\sin(\pi/5)/\sin(2\pi/5))=-2\log\varphi\)</span>, where <span class="math" data-tex="\(\varphi=(1+\sqrt5)/2\)">\(\varphi=(1+\sqrt5)/2\)</span>. Its Gauss prefactor is <span class="math" data-tex="\(-1/\sqrt5\)">\(-1/\sqrt5\)</span>, giving <span class="math" data-tex="\(L(1,\chi_5)=2\log\varphi/\sqrt5\)">\(L(1,\chi_5)=2\log\varphi/\sqrt5\)</span>. The smallest norm-positive unit is <span class="math" data-tex="\((3+\sqrt5)/2=\varphi^2\)">\((3+\sqrt5)/2=\varphi^2\)</span>; its logarithm is <span class="math" data-tex="\(2\log\varphi\)">\(2\log\varphi\)</span>. The narrow formula (3.2) therefore gives <span class="math" data-tex="\(h^+(5)=1\)">\(h^+(5)=1\)</span> and exactly the same value. The ordinary unit <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> has norm <span class="math" data-tex="\(-1\)">\(-1\)</span>, and inserting it into (3.2) without changing to the ordinary-class formula (3.3) would incorrectly halve the answer.</p>
+<p><strong>5.</strong> The proof in Section 4 gives <span class="math" data-tex="\(c=2\)">\(c=2\)</span> uniformly, with an effective absolute constant. Its essential ingredients are the nonnegative divisor function <span class="math" data-tex="\(1*\chi\)">\(1*\chi\)</span>, which is at least 1 at every square, the exact triangular-sum identity (4.3), and the uniform interval bound <span class="math" data-tex="\(B=2\sqrt q(1+\log q)\)">\(B=2\sqrt q(1+\log q)\)</span>. Those give the fully explicit error estimate (4.6). Choosing <span class="math" data-tex="\(x=Kq(1+\log q)^4\)">\(x=Kq(1+\log q)^4\)</span> with <span class="math" data-tex="\(26+4\log K\le\sqrt K/(8\sqrt2)\)">\(26+4\log K\le\sqrt K/(8\sqrt2)\)</span> forces that error below half of the positive square contribution. Dividing by <span class="math" data-tex="\(x/2\)">\(x/2\)</span> gives
+<span class="math" data-tex="\(L(1,\chi)\ge[4\sqrt{2K}\sqrt q(1+\log q)^2]^{-1}\)">\(L(1,\chi)\ge[4\sqrt{2K}\sqrt q(1+\log q)^2]^{-1}\)</span>.
+This proves the requested result for every real nonprincipal character. All constants were fixed independently of its conductor; no class-number assertion entered the proof.</p>
+<h2 id="what-this-lesson-takes-from-the-number-fields-course">What this lesson takes from the number-fields course</h2>
+<p>The exact formulas (3.1)–(3.3), the equality between proper form classes and narrow ideal classes, the unit-norm dichotomy for narrow class numbers, and the reduction theorem for positive definite forms are supplied by the three planned internal lessons identified in Section 3. Their status is planned, not a claim that the number-fields course is already finished. Every finite-value identity, the class-number consequences from those precise inputs, the separate analytic lower bound, the critical-integer test and all solutions are proved here. The generalized Bernoulli formula and the functional equation were proved in the preceding lesson.</p>
+<h2 id="references">References</h2>
+<p>D. Koukoulopoulos, <em>The Distribution of Prime Numbers</em>, Theorem 12.8, proves the analytic lower bound with the logarithmic exponent 2 by smoothing a nonnegative divisor sum. The finite logarithmic and linear formulas follow from the classical character Fourier expansion; their branch and parity calculations are supplied above. The term “critical” uses the archimedean-pole criterion of P. Deligne, <em>Valeurs de fonctions L et périodes d'intégrales</em>, Definition 1.3; its criterion in this Dirichlet setting is explicitly checked in (5.1).</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-05.html">← The functional equation of Dirichlet L-functions</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-07.html">Zero-free regions and the exceptional zero →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-06.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

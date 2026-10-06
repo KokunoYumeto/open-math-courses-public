@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baker&#x27;s theorem I: building an auxiliary function · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 10</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="baker-s-theorem-i-building-an-auxiliary-function">Baker's theorem I: building an auxiliary function</h1>
+<p><em>Draft. Public domain (CC0).</em></p>
+<p>The proof will compare two measurements of the same value: complex analysis makes it small, while arithmetic gives a lower limit if it is nonzero. For that comparison to work, the values under consideration must be algebraic after a controlled normalization. Ordinary derivatives of exponential functions introduce logarithms, so choosing the right derivatives is the first construction problem.</p>
+<p>We begin with a hypothetical relation between two logarithms and examine its diagonal jets. That calculation explains the separate variables in Baker's auxiliary function. We then pass to any number of logarithms, count the equations over a number field, and choose the polynomial degree so that both the dimension count and the coefficient size have room. The resulting function and its estimates are the inputs to <a href="TR-BAKER-03.html"><em>Baker's theorem II: extrapolation and the end of the proof</em></a>.</p>
+<p>We use the integer-matrix form of Siegel's lemma proved in <a href="../TR-TRANS/TR-TRANS-05.html"><em>Siegel's lemma, analytic estimates and the six exponentials theorem</em></a>, Lemma 5.1 and equation (5.2). The integral-basis theorem is proved in <a href="../NT-ANT/discriminants-and-integral-bases.html"><em>Discriminants and integral bases</em></a>, Theorem 2.3; the norm's integrality and product of conjugates are proved in <a href="../NT-ANT/algebraic-integers-and-rings-of-integers.html"><em>Algebraic integers and rings of integers</em></a>, Section 3. Elementary complex differentiation supplies the analytic identities. The several-variable construction and the qualitative independence theorem are Baker's. The freely accessible [Waldschmidt 2003] lectures explain the normalized derivations and repeated extrapolation, including the algebraic constant term and arbitrary complex logarithms. [Waldschmidt 2000] supplies the height and box-principle arguments; [Sutherland 2021] supplies proofs of the lattice and norm facts used above. The explanations of normalized jets, integral coordinates and the parameter window below make the roles of the choices explicit.</p>
+<h2 id="1-the-statement-and-the-hypothetical-relation">1. The statement and the hypothetical relation</h2>
+<p><strong>Theorem 2.1 (Baker).</strong> Let <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span> be nonzero algebraic numbers, and choose arbitrary logarithms <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span> with <span class="math" data-tex="\(e^{\ell_j}=\alpha_j\)">\(e^{\ell_j}=\alpha_j\)</span>. If <span class="math" data-tex="\(\ell_1,\ldots,\ell_n\)">\(\ell_1,\ldots,\ell_n\)</span> are linearly independent over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+1,\ell_1,\ldots,\ell_n
+\]">\[
+1,\ell_1,\ldots,\ell_n
+\]</span>
+<p>are linearly independent over <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>.</p>
+<p>Theorem 2.1 is the theorem to be proved across this lesson and the next. It is not an input to the construction below. Suppose it fails. A relation has the form</p>
+<span class="math math-display" data-tex="\[
+\beta_0+\beta_1\ell_1+\cdots+\beta_n\ell_n=0,
+\qquad \beta_j\in\overline{\mathbb Q},
+\]">\[
+\beta_0+\beta_1\ell_1+\cdots+\beta_n\ell_n=0,
+\qquad \beta_j\in\overline{\mathbb Q},
+\]</span>
+<p>with coefficients not all zero. Some coefficient of a logarithm is nonzero: otherwise <span class="math" data-tex="\(\beta_0=0\)">\(\beta_0=0\)</span> too. Relabel and divide to arrange <span class="math" data-tex="\(\beta_n=-1\)">\(\beta_n=-1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\ell_n=\beta_0+\sum_{r=1}^{n-1}\beta_r\ell_r. \tag{2.1}
+\]">\[
+\ell_n=\beta_0+\sum_{r=1}^{n-1}\beta_r\ell_r. \tag{2.1}
+\]</span>
+<p>All <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span> are nonzero because they are rationally independent. Fix the number field</p>
+<span class="math math-display" data-tex="\[
+K=\mathbb Q(\alpha_1,\ldots,\alpha_n,\beta_0,\ldots,\beta_{n-1}),
+\qquad D=[K:\mathbb Q].
+\]">\[
+K=\mathbb Q(\alpha_1,\ldots,\alpha_n,\beta_0,\ldots,\beta_{n-1}),
+\qquad D=[K:\mathbb Q].
+\]</span>
+<p>Constants in this lesson may depend on these fixed numbers and on the chosen logarithms. They do not depend on the large integer <span class="math" data-tex="\(h\)">\(h\)</span> introduced later.</p>
+<p>The important feature of (2.1) is exponential, not just linear. For integers <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\gamma_r=\lambda_r+\lambda_n\beta_r\quad(1\le r&lt;n).
+\]">\[
+\gamma_r=\lambda_r+\lambda_n\beta_r\quad(1\le r&lt;n).
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+e^{\lambda_n\beta_0 z}\prod_{r&lt;n}e^{\gamma_r\ell_r z}
+=e^{(\lambda_1\ell_1+\cdots+\lambda_n\ell_n)z}.
+\]">\[
+e^{\lambda_n\beta_0 z}\prod_{r&lt;n}e^{\gamma_r\ell_r z}
+=e^{(\lambda_1\ell_1+\cdots+\lambda_n\ell_n)z}.
+\]</span>
+<p>At integer <span class="math" data-tex="\(z=l\)">\(z=l\)</span>, the right side is <span class="math" data-tex="\(\prod_{j=1}^n\alpha_j^{\lambda_j l}\)">\(\prod_{j=1}^n\alpha_j^{\lambda_j l}\)</span>, an algebraic number. Away from the diagonal, the separate variables preserve control of derivatives. These are the two roles of the auxiliary function.</p>
+<h2 id="2-why-the-diagonal-needs-normalized-jets">2. Why the diagonal needs normalized jets</h2>
+<p>For this calculation assume the hypothetical relation
+<span class="math" data-tex="\(\ell_2=\beta_0+\beta_1\ell_1\)">\(\ell_2=\beta_0+\beta_1\ell_1\)</span>, with algebraic <span class="math" data-tex="\(\beta_0,\beta_1\)">\(\beta_0,\beta_1\)</span>,
+and let <span class="math" data-tex="\(K\)">\(K\)</span> contain the two bases and these coefficients. The assumption
+is part of a proof by contradiction; it is not an example claiming that
+independent logarithms actually satisfy such a relation.</p>
+<p>The exponential polynomial one would first try is a sum of
+<span class="math" data-tex="\(z^a e^{(b\ell_1+c\ell_2)z}\)">\(z^a e^{(b\ell_1+c\ell_2)z}\)</span>. At a positive integer <span class="math" data-tex="\(l\)">\(l\)</span>, its
+terms are <span class="math" data-tex="\(l^a\alpha_1^{bl}\alpha_2^{cl}\)">\(l^a\alpha_1^{bl}\alpha_2^{cl}\)</span>, which lie in <span class="math" data-tex="\(K\)">\(K\)</span>.
+Its ordinary derivative contains <span class="math" data-tex="\(b\ell_1+c\ell_2\)">\(b\ell_1+c\ell_2\)</span>, however;
+the values of that derivative are not already expressed by algebraic
+coefficients. We need a family of derivatives whose logarithmic factor
+can be taken outside the entire sum.</p>
+<p>Separate the two roles of <span class="math" data-tex="\(z\)">\(z\)</span> by using
+<span class="math math-display" data-tex="\[
+F_{a,b,c}(z_0,z_1)=z_0^a e^{c\beta_0z_0}
+e^{(b+c\beta_1)\ell_1z_1}.
+\]">\[
+F_{a,b,c}(z_0,z_1)=z_0^a e^{c\beta_0z_0}
+e^{(b+c\beta_1)\ell_1z_1}.
+\]</span>
+On the diagonal this is the desired term. Differentiation in <span class="math" data-tex="\(z_0\)">\(z_0\)</span>
+uses only the algebraic constant <span class="math" data-tex="\(c\beta_0\)">\(c\beta_0\)</span>, besides derivatives
+of the polynomial. Differentiation in <span class="math" data-tex="\(z_1\)">\(z_1\)</span> uses
+<span class="math" data-tex="\((b+c\beta_1)\ell_1\)">\((b+c\beta_1)\ell_1\)</span>, whose factor <span class="math" data-tex="\(\ell_1\ne0\)">\(\ell_1\ne0\)</span> is common
+to all summands. Thus
+<span class="math" data-tex="\(\partial_{z_0}^{m_0}\partial_{z_1}^{m_1}/\ell_1^{m_1}\)">\(\partial_{z_0}^{m_0}\partial_{z_1}^{m_1}/\ell_1^{m_1}\)</span>, evaluated
+at <span class="math" data-tex="\((l,l)\)">\((l,l)\)</span>, is algebraic on each summand and on their integer sum.</p>
+<p>For example, with <span class="math" data-tex="\(a=b=c=1\)">\(a=b=c=1\)</span>, put <span class="math" data-tex="\(A_l=(\alpha_1\alpha_2)^l\)">\(A_l=(\alpha_1\alpha_2)^l\)</span>.
+The three values are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F(l,l)&amp;=lA_l,\\
+\partial_{z_0}F(l,l)&amp;=(1+\beta_0l)A_l,\\
+\frac{\partial_{z_1}F(l,l)}{\ell_1}&amp;=(1+\beta_1)lA_l.
+\end{aligned}
+\]">\[
+\begin{aligned}
+F(l,l)&amp;=lA_l,\\
+\partial_{z_0}F(l,l)&amp;=(1+\beta_0l)A_l,\\
+\frac{\partial_{z_1}F(l,l)}{\ell_1}&amp;=(1+\beta_1)lA_l.
+\end{aligned}
+\]</span>
+Every right side lies in <span class="math" data-tex="\(K\)">\(K\)</span>. By contrast, differentiating the
+diagonal restriction gives
+<span class="math" data-tex="\([1+l(\ell_1+\ell_2)]A_l\)">\([1+l(\ell_1+\ell_2)]A_l\)</span>. This distinction explains why the
+proof keeps the two partial derivatives until it applies complex analysis
+to a one-variable restriction.</p>
+<p>With coefficient indices <span class="math" data-tex="\((a,b,c)\)">\((a,b,c)\)</span>, the full two-logarithm function is
+<span class="math math-display" data-tex="\[
+\Phi(z_0,z_1)=\sum_{a,b,c=0}^L
+p_{a,b,c}z_0^a e^{c\beta_0z_0}
+e^{(b+c\beta_1)\ell_1z_1}.
+\]">\[
+\Phi(z_0,z_1)=\sum_{a,b,c=0}^L
+p_{a,b,c}z_0^a e^{c\beta_0z_0}
+e^{(b+c\beta_1)\ell_1z_1}.
+\]</span>
+The normalized derivatives are sums over exactly these same coefficients;
+we can therefore impose their vanishing by linear equations over <span class="math" data-tex="\(K\)">\(K\)</span>.
+The extra polynomial coordinate accommodates the constant term
+<span class="math" data-tex="\(\beta_0\)">\(\beta_0\)</span>. Section 6 explains the smaller construction when that
+term is absent.</p>
+<h2 id="3-the-function-and-its-normalized-derivatives">3. The function and its normalized derivatives</h2>
+<p>For the moment let <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span> be an integer; Section 4 chooses it in terms of the zero budget.</p>
+<p>We seek integers <span class="math" data-tex="\(p_\lambda\)">\(p_\lambda\)</span>, indexed by <span class="math" data-tex="\(\lambda=(\lambda_0,\ldots,\lambda_n)\in\{0,\ldots,L\}^{n+1}\)">\(\lambda=(\lambda_0,\ldots,\lambda_n)\in\{0,\ldots,L\}^{n+1}\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\Phi(z_0,z_1,\ldots,z_{n-1})
+=\sum_\lambda p_\lambda z_0^{\lambda_0}
+e^{\lambda_n\beta_0z_0}
+\prod_{r=1}^{n-1}e^{\gamma_r\ell_r z_r}. \tag{2.2}
+\]">\[
+\Phi(z_0,z_1,\ldots,z_{n-1})
+=\sum_\lambda p_\lambda z_0^{\lambda_0}
+e^{\lambda_n\beta_0z_0}
+\prod_{r=1}^{n-1}e^{\gamma_r\ell_r z_r}. \tag{2.2}
+\]</span>
+<p>The function is entire in all <span class="math" data-tex="\(n\)">\(n\)</span> variables. For a multi-index <span class="math" data-tex="\(m=(m_0,\ldots,m_{n-1})\)">\(m=(m_0,\ldots,m_{n-1})\)</span>, write <span class="math" data-tex="\(|m|=\sum m_r\)">\(|m|=\sum m_r\)</span>, <span class="math" data-tex="\(\partial^m=\prod_r\partial_{z_r}^{m_r}\)">\(\partial^m=\prod_r\partial_{z_r}^{m_r}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+Q_{\lambda,m_0}(z)
+=\sum_{u=0}^{\min(m_0,\lambda_0)}
+\binom{m_0}{u}(\lambda_0)_u
+(\lambda_n\beta_0)^{m_0-u}z^{\lambda_0-u}, \tag{2.3}
+\]">\[
+Q_{\lambda,m_0}(z)
+=\sum_{u=0}^{\min(m_0,\lambda_0)}
+\binom{m_0}{u}(\lambda_0)_u
+(\lambda_n\beta_0)^{m_0-u}z^{\lambda_0-u}, \tag{2.3}
+\]</span>
+<p>where <span class="math" data-tex="\((a)_u=a(a-1)\cdots(a-u+1)\)">\((a)_u=a(a-1)\cdots(a-u+1)\)</span>, with <span class="math" data-tex="\((a)_0=1\)">\((a)_0=1\)</span>. Differentiating (2.2) and using (2.1), at a positive integer <span class="math" data-tex="\(l\)">\(l\)</span> we obtain</p>
+<span class="math math-display" data-tex="\[
+\partial^m\Phi(l,\ldots,l)
+=\left(\prod_{r=1}^{n-1}\ell_r^{m_r}\right)
+\sum_\lambda p_\lambda Q_{\lambda,m_0}(l)
+\prod_{j=1}^n\alpha_j^{\lambda_jl}
+\prod_{r=1}^{n-1}\gamma_r^{m_r}. \tag{2.4}
+\]">\[
+\partial^m\Phi(l,\ldots,l)
+=\left(\prod_{r=1}^{n-1}\ell_r^{m_r}\right)
+\sum_\lambda p_\lambda Q_{\lambda,m_0}(l)
+\prod_{j=1}^n\alpha_j^{\lambda_jl}
+\prod_{r=1}^{n-1}\gamma_r^{m_r}. \tag{2.4}
+\]</span>
+<p>Everything in the sum belongs to <span class="math" data-tex="\(K\)">\(K\)</span>. The prefactor is fixed and nonzero for each <span class="math" data-tex="\(m\)">\(m\)</span>, although it need not be algebraic. Vanishing of the derivative is therefore equivalent to vanishing of this normalized algebraic sum. This division is essential: one must not apply an algebraic norm directly to a derivative that contains logarithmic factors.</p>
+<h2 id="4-dimension-and-coefficient-budgets">4. Dimension and coefficient budgets</h2>
+<h3 id="integral-coordinates-for-the-equations">Integral coordinates for the equations</h3>
+<p>We will impose homogeneous equations over <span class="math" data-tex="\(K\)">\(K\)</span>, then express them as rational integer equations. Here is the elementary bookkeeping that makes this possible.</p>
+<p>Choose a positive integer <span class="math" data-tex="\(q\)">\(q\)</span> so that all <span class="math" data-tex="\(q\alpha_j\)">\(q\alpha_j\)</span> and <span class="math" data-tex="\(q\beta_r\)">\(q\beta_r\)</span> are algebraic integers. Choose an integral basis <span class="math" data-tex="\(\omega_1,\ldots,\omega_D\)">\(\omega_1,\ldots,\omega_D\)</span> of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. Multiplication by each of these finitely many integral elements is an integer <span class="math" data-tex="\(D\times D\)">\(D\times D\)</span> matrix in that basis. Give matrices the maximum row-sum norm. There is a fixed <span class="math" data-tex="\(c\ge2\)">\(c\ge2\)</span> such that every matrix has norm at most <span class="math" data-tex="\(c\)">\(c\)</span>, and the coordinate vector of <span class="math" data-tex="\(1\)">\(1\)</span> has norm at most <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>Consequently, a product of <span class="math" data-tex="\(t\)">\(t\)</span> members of this finite list has integer coordinates of absolute value at most <span class="math" data-tex="\(c^{t+1}\)">\(c^{t+1}\)</span>. A sum of <span class="math" data-tex="\(R\)">\(R\)</span> such products, multiplied by rational integers of size at most <span class="math" data-tex="\(T\)">\(T\)</span>, has coordinates bounded by <span class="math" data-tex="\(RTc^{t+1}\)">\(RTc^{t+1}\)</span>, if every product has length at most <span class="math" data-tex="\(t\)">\(t\)</span>. These bounds are crude but uniform. They replace repeated explicit reductions by minimal polynomials.</p>
+<p>The needed form of <strong>Siegel's lemma</strong> is this: if an integer <span class="math" data-tex="\(M\times N\)">\(M\times N\)</span> matrix has entries of absolute value at most <span class="math" data-tex="\(U\ge1\)">\(U\ge1\)</span>, where <span class="math" data-tex="\(0&lt;M&lt;N\)">\(0&lt;M&lt;N\)</span>, its kernel contains a nonzero integer vector <span class="math" data-tex="\(p\)">\(p\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\|p\|_\infty\le(NU)^{M/(N-M)}.
+\]">\[
+\|p\|_\infty\le(NU)^{M/(N-M)}.
+\]</span>
+<p>For the weaker conclusion we use, it is enough that <span class="math" data-tex="\(N\ge2M\)">\(N\ge2M\)</span>: then <span class="math" data-tex="\(\|p\|_\infty\le NU\)">\(\|p\|_\infty\le NU\)</span>. It is proved in <a href="../TR-TRANS/TR-TRANS-05.html"><em>Siegel's lemma, analytic estimates and the six exponentials theorem</em></a>, Lemma 5.1 and equation (5.2). This is exactly the integer-matrix statement, without a full-rank hypothesis. The box principle is also developed in [Waldschmidt 2000]; the internal lesson proves the integer-matrix statement and its number-field extension.</p>
+<p>The matrix need not have rank <span class="math" data-tex="\(M\)">\(M\)</span>. Extra or dependent equations cause no problem; the lemma only uses an upper bound for the number of rows.</p>
+<h3 id="designing-the-degree-instead-of-guessing-it">Designing the degree instead of guessing it</h3>
+<p>The construction spends three different resources. Its integer grid has
+<span class="math" data-tex="\(h\)">\(h\)</span> points. Its derivative indices have total order at most <span class="math" data-tex="\(h^2\)">\(h^2\)</span>,
+and are safely overcounted by <span class="math" data-tex="\((h^2+1)^n\)">\((h^2+1)^n\)</span>. Its <span class="math" data-tex="\((n+1)\)">\((n+1)\)</span>-index
+coefficient box has <span class="math" data-tex="\((L+1)^{n+1}\)">\((L+1)^{n+1}\)</span> entries. Each equation over the
+number field costs at most <span class="math" data-tex="\(D\)">\(D\)</span> rational equations. We need enough
+entries to outnumber those equations, but <span class="math" data-tex="\(L\)">\(L\)</span> must also be small
+enough that clearing denominators and differentiating do not use the
+entire coefficient allowance <span class="math" data-tex="\(e^{h^3}\)">\(e^{h^3}\)</span>.</p>
+<p>For the proof continued in the next lesson we choose
+<span class="math math-display" data-tex="\[
+L=\left\lfloor h^{2-1/(4n)}\right\rfloor.
+\]">\[
+L=\left\lfloor h^{2-1/(4n)}\right\rfloor.
+\]</span>
+The following construction retains that exact choice and every constant
+needed there. After its proof we identify the whole sufficient interval
+of powers of <span class="math" data-tex="\(h\)">\(h\)</span>; this distinguishes the necessary budget requirements
+from one convenient parameter value.</p>
+<p><strong>Proposition 2.2 (auxiliary construction).</strong> For every sufficiently large integer <span class="math" data-tex="\(h\)">\(h\)</span>, there are integers <span class="math" data-tex="\(p_\lambda\)">\(p_\lambda\)</span>, not all zero, with</p>
+<span class="math math-display" data-tex="\[
+|p_\lambda|\le e^{h^3},
+\qquad
+\partial^m\Phi(l,\ldots,l)=0
+\quad(1\le l\le h,\ |m|\le h^2). \tag{2.5}
+\]">\[
+|p_\lambda|\le e^{h^3},
+\qquad
+\partial^m\Phi(l,\ldots,l)=0
+\quad(1\le l\le h,\ |m|\le h^2). \tag{2.5}
+\]</span>
+<p><strong>Proof.</strong> For each <span class="math" data-tex="\((l,m)\)">\((l,m)\)</span> in the stated range, set the algebraic sum in (2.4) equal to zero. There are at most <span class="math" data-tex="\(h(h^2+1)^n\)">\(h(h^2+1)^n\)</span> such equations: this overcounts the multi-indices by allowing every component to range independently up to <span class="math" data-tex="\(h^2\)">\(h^2\)</span>.</p>
+<p>Multiply an equation by <span class="math" data-tex="\(q^{nLh+h^2}\)">\(q^{nLh+h^2}\)</span>. Expand each factor <span class="math" data-tex="\(\gamma_r^{m_r}=(\lambda_r+\lambda_n\beta_r)^{m_r}\)">\(\gamma_r^{m_r}=(\lambda_r+\lambda_n\beta_r)^{m_r}\)</span> by the binomial theorem, and use (2.3). Each term contains at most <span class="math" data-tex="\(nLh\)">\(nLh\)</span> factors from the <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> and at most <span class="math" data-tex="\(h^2\)">\(h^2\)</span> factors from the <span class="math" data-tex="\(\beta_r\)">\(\beta_r\)</span>. Hence the chosen power of <span class="math" data-tex="\(q\)">\(q\)</span> clears every denominator; the unused powers of <span class="math" data-tex="\(q\)">\(q\)</span> are integers. The coefficients of the resulting linear equation are algebraic integers.</p>
+<p>Express them in the integral basis. This produces an integer matrix with at most</p>
+<span class="math math-display" data-tex="\[
+M=D h(h^2+1)^n
+\]">\[
+M=D h(h^2+1)^n
+\]</span>
+<p>rows and</p>
+<span class="math math-display" data-tex="\[
+N=(L+1)^{n+1}
+\]">\[
+N=(L+1)^{n+1}
+\]</span>
+<p>columns. The arithmetic-coordinate bounds above give</p>
+<span class="math math-display" data-tex="\[
+\log U\le C_1\bigl(Lh+h^2\log(L+1)+L\log(h+1)+h^2\bigr). \tag{2.6}
+\]">\[
+\log U\le C_1\bigl(Lh+h^2\log(L+1)+L\log(h+1)+h^2\bigr). \tag{2.6}
+\]</span>
+<p>For completeness, the factors in this estimate are as follows. Products of the integral generators, including the denominator-clearing factors, cost <span class="math" data-tex="\(O(Lh+h^2)\)">\(O(Lh+h^2)\)</span> in their logarithmic coordinate size. Integer powers of the <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>, falling factorials and binomial coefficients cost <span class="math" data-tex="\(O(h^2\log(L+1)+h^2)\)">\(O(h^2\log(L+1)+h^2)\)</span>. The powers of <span class="math" data-tex="\(l\)">\(l\)</span> in (2.3) cost at most <span class="math" data-tex="\(L\log(h+1)\)">\(L\log(h+1)\)</span>. The number of terms introduced by the binomial expansions is at most <span class="math" data-tex="\(2^{|m|}(m_0+1)\)">\(2^{|m|}(m_0+1)\)</span>, so its logarithm is <span class="math" data-tex="\(O(h^2)\)">\(O(h^2)\)</span>. All constants depend only on the fixed data.</p>
+<p>There is room for a nonzero kernel vector because</p>
+<span class="math math-display" data-tex="\[
+\frac NM\ge\frac{h^{\eta}}{D2^n},
+\qquad \eta=1-\frac{n+1}{4n}=\frac{3n-1}{4n}&gt;0.
+\]">\[
+\frac NM\ge\frac{h^{\eta}}{D2^n},
+\qquad \eta=1-\frac{n+1}{4n}=\frac{3n-1}{4n}&gt;0.
+\]</span>
+<p>Indeed <span class="math" data-tex="\(L+1&gt;h^{2-1/(4n)}\)">\(L+1&gt;h^{2-1/(4n)}\)</span> and <span class="math" data-tex="\(h^2+1\le2h^2\)">\(h^2+1\le2h^2\)</span>. Thus <span class="math" data-tex="\(N\ge2M\)">\(N\ge2M\)</span> once <span class="math" data-tex="\(h\)">\(h\)</span> is sufficiently large. Siegel's lemma supplies a nonzero integer vector with <span class="math" data-tex="\(|p_\lambda|\le NU\)">\(|p_\lambda|\le NU\)</span>.</p>
+<p>Finally, (2.6) gives <span class="math" data-tex="\(\log(NU)=o(h^3)\)">\(\log(NU)=o(h^3)\)</span>. The term <span class="math" data-tex="\(Lh/h^3\)">\(Lh/h^3\)</span> is at most <span class="math" data-tex="\(h^{-1/(4n)}\)">\(h^{-1/(4n)}\)</span>; <span class="math" data-tex="\(h^2\log(L+1)/h^3\)">\(h^2\log(L+1)/h^3\)</span> tends to zero; the other terms do too. Enlarge the threshold for <span class="math" data-tex="\(h\)">\(h\)</span> until <span class="math" data-tex="\(\log(NU)\le h^3\)">\(\log(NU)\le h^3\)</span>. Then the coefficient bound and all equations in (2.5) hold. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proposition finds a nonzero <em>coefficient array</em>. The final proof must still exploit rational independence to prevent the relevant exponential polynomial from vanishing identically. Counting alone does not provide that last step.</p>
+<h3 id="a-sufficient-window-of-parameter-choices">A sufficient window of parameter choices</h3>
+<p><strong>Lemma (auxiliary parameter window).</strong> Fix <span class="math" data-tex="\(n\)">\(n\)</span> and the algebraic
+data. If
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0&lt;\delta&lt;\frac1{n+1},\\
+L_\delta=\lfloor h^{2-\delta}\rfloor,\\
+\eta_\delta=1-(n+1)\delta&gt;0.
+\end{gathered} \tag{2.9}
+\]">\[
+\begin{gathered}
+0&lt;\delta&lt;\frac1{n+1},\\
+L_\delta=\lfloor h^{2-\delta}\rfloor,\\
+\eta_\delta=1-(n+1)\delta&gt;0.
+\end{gathered} \tag{2.9}
+\]</span>
+the auxiliary construction also works with <span class="math" data-tex="\(L_\delta\)">\(L_\delta\)</span>: for every
+sufficiently large <span class="math" data-tex="\(h\)">\(h\)</span>, there is a nonzero integer coefficient array
+of size at most <span class="math" data-tex="\(e^{h^3}\)">\(e^{h^3}\)</span> imposing all the zeros in (2.5).</p>
+<p><strong>Proof.</strong> The denominator exponent, derivative formulas and entry-size
+estimate (2.6) were proved for the displayed ranges of <span class="math" data-tex="\(L,h,m,l\)">\(L,h,m,l\)</span>;
+their derivation did not use the particular fractional power of <span class="math" data-tex="\(h\)">\(h\)</span>.
+With the new value of <span class="math" data-tex="\(L\)">\(L\)</span>, the same counts give
+<span class="math math-display" data-tex="\[
+\frac NM\ge\frac{h^{\eta_\delta}}{D2^n}\longrightarrow\infty.
+\]">\[
+\frac NM\ge\frac{h^{\eta_\delta}}{D2^n}\longrightarrow\infty.
+\]</span>
+Thus <span class="math" data-tex="\(N\ge2M\)">\(N\ge2M\)</span> for sufficiently large <span class="math" data-tex="\(h\)">\(h\)</span>, with the explicit
+sufficient dimension cutoff
+<span class="math" data-tex="\(h\ge(2^{n+1}D)^{1/\eta_\delta}\)">\(h\ge(2^{n+1}D)^{1/\eta_\delta}\)</span>.
+On the other hand, the four terms in (2.6), divided by <span class="math" data-tex="\(h^3\)">\(h^3\)</span>,
+are bounded by constant multiples of
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h^{-\delta},\qquad \frac{\log h}{h},\\
+h^{-1-\delta}\log(h+1),\qquad h^{-1}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+h^{-\delta},\qquad \frac{\log h}{h},\\
+h^{-1-\delta}\log(h+1),\qquad h^{-1}.
+\end{gathered}
+\]</span>
+They all tend to zero. Also <span class="math" data-tex="\(\log N=O(\log h)\)">\(\log N=O(\log h)\)</span>.
+Consequently <span class="math" data-tex="\(\log(NU)=o(h^3)\)">\(\log(NU)=o(h^3)\)</span>, so Siegel's lemma supplies the
+asserted coefficient bound after increasing the threshold. All imposed
+equations have the same normalized form, so they give the required
+diagonal zeros. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lower endpoint <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> supplies the saving in denominator
+size; the upper endpoint supplies the excess of unknowns. These are
+sufficient uniform requirements, not a claim that every boundary choice
+is impossible for particular data. Our value <span class="math" data-tex="\(\delta=1/(4n)\)">\(\delta=1/(4n)\)</span> lies
+strictly inside the interval for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. The next lesson
+uses that value, so no extrapolation parameter changes.</p>
+<p><img src="figures/auxiliary-parameter-window.png" alt="The two exponent savings for the two-logarithm auxiliary construction." class="course-figure" width="1487" height="804" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="auxiliary-parameter-window" data-asset-sha256="FF479011688C3709F80E3723BC739214EC48AA03DEE6B81AEEA732A4F9C93619"></p>
+<p><em>Figure.</em> The sufficient parameter window (2.9) for <span class="math" data-tex="\(n=2\)">\(n=2\)</span>.
+The blue exponent <span class="math" data-tex="\(\eta_\delta=1-3\delta\)">\(\eta_\delta=1-3\delta\)</span> controls the excess of
+unknowns: <span class="math" data-tex="\(N/M\ge h^{\eta_\delta}/(4D)\)">\(N/M\ge h^{\eta_\delta}/(4D)\)</span>.
+The orange exponent <span class="math" data-tex="\(\delta\)">\(\delta\)</span> controls the leading denominator
+contribution, whose ratio to <span class="math" data-tex="\(h^3\)">\(h^3\)</span> is <span class="math" data-tex="\(O(h^{-\delta})\)">\(O(h^{-\delta})\)</span>.
+Both savings are positive for <span class="math" data-tex="\(0&lt;\delta&lt;1/3\)">\(0&lt;\delta&lt;1/3\)</span>.
+At the choice used in the proof, <span class="math" data-tex="\(\delta=1/8\)">\(\delta=1/8\)</span>, they are
+<span class="math" data-tex="\(1/8\)">\(1/8\)</span> and <span class="math" data-tex="\(5/8\)">\(5/8\)</span>. The endpoints are excluded from this sufficient
+window; the figure asserts no impossibility theorem at them.
+Original figure by GPT-6.1 Sol (OpenAI), Codex, Ultra; CC0.
+<a href="figure_sources/auxiliary_parameter_window.py">Reproducible figure source</a>.</p>
+<p>For <span class="math" data-tex="\(n=2,h=1000\)">\(n=2,h=1000\)</span>, the chosen power <span class="math" data-tex="\(h^{15/8}\)">\(h^{15/8}\)</span> lies between
+<span class="math" data-tex="\(421696\)">\(421696\)</span> and <span class="math" data-tex="\(421697\)">\(421697\)</span>, so <span class="math" data-tex="\(L=421696\)">\(L=421696\)</span>. There are
+<span class="math" data-tex="\(421697^3\)">\(421697^3\)</span> unknowns and at most
+<span class="math" data-tex="\(D\cdot1000\cdot1000001^2\)">\(D\cdot1000\cdot1000001^2\)</span> rational equations; their ratio is
+about <span class="math" data-tex="\(74.99/D\)">\(74.99/D\)</span>. This is a dimension example, not a uniform assertion
+that <span class="math" data-tex="\(h=1000\)">\(h=1000\)</span> meets the coefficient threshold for every field and
+every algebraic relation.</p>
+<h2 id="5-growth-and-arithmetic-separation-at-integers">5. Growth and arithmetic separation at integers</h2>
+<p>For <span class="math" data-tex="\(|m|\le h^2\)">\(|m|\le h^2\)</span>, define the one-variable entire function</p>
+<span class="math math-display" data-tex="\[
+f_m(z)=\partial^m\Phi(z,\ldots,z).
+\]">\[
+f_m(z)=\partial^m\Phi(z,\ldots,z).
+\]</span>
+<p><strong>Proposition 2.3.</strong> There are constants <span class="math" data-tex="\(C_2,C_3&gt;0\)">\(C_2,C_3&gt;0\)</span>, independent of <span class="math" data-tex="\(h,m,z,l\)">\(h,m,z,l\)</span>, such that, for every sufficiently large <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|f_m(z)|\le\exp\bigl(C_2(h^3+L|z|)\bigr)\quad(z\in\mathbb C), \tag{2.7}
+\]">\[
+|f_m(z)|\le\exp\bigl(C_2(h^3+L|z|)\bigr)\quad(z\in\mathbb C), \tag{2.7}
+\]</span>
+<p>and, for every positive integer <span class="math" data-tex="\(l\)">\(l\)</span>, either <span class="math" data-tex="\(f_m(l)=0\)">\(f_m(l)=0\)</span> or</p>
+<span class="math math-display" data-tex="\[
+|f_m(l)|\ge\exp\bigl(-C_3(h^3+Ll)\bigr). \tag{2.8}
+\]">\[
+|f_m(l)|\ge\exp\bigl(-C_3(h^3+Ll)\bigr). \tag{2.8}
+\]</span>
+<p><strong>Proof of the growth estimate.</strong> The differentiated expression (2.4) remains valid for complex <span class="math" data-tex="\(z\)">\(z\)</span> if its algebraic product is interpreted as <span class="math" data-tex="\(e^{z\sum_j\lambda_j\ell_j}\)">\(e^{z\sum_j\lambda_j\ell_j}\)</span>. Its exponential factor has size at most <span class="math" data-tex="\(e^{C L|z|}\)">\(e^{C L|z|}\)</span>. The powers of <span class="math" data-tex="\(z\)">\(z\)</span> are bounded by <span class="math" data-tex="\(\max(1,|z|)^L\le e^{L|z|}\)">\(\max(1,|z|)^L\le e^{L|z|}\)</span>. Formula (2.3), the factors <span class="math" data-tex="\(\gamma_r^{m_r}\)">\(\gamma_r^{m_r}\)</span>, and the logarithmic prefactor have total size at most <span class="math" data-tex="\(e^{C h^2\log(L+1)}\)">\(e^{C h^2\log(L+1)}\)</span>. There are <span class="math" data-tex="\((L+1)^{n+1}\)">\((L+1)^{n+1}\)</span> summands and <span class="math" data-tex="\(|p_\lambda|\le e^{h^3}\)">\(|p_\lambda|\le e^{h^3}\)</span>. Since <span class="math" data-tex="\(h^2\log(L+1)=o(h^3)\)">\(h^2\log(L+1)=o(h^3)\)</span>, these bounds imply (2.7).</p>
+<p><strong>Proof of the arithmetic estimate.</strong> Put <span class="math" data-tex="\(P_m=\prod_{r&lt;n}\ell_r^{m_r}\ne0\)">\(P_m=\prod_{r&lt;n}\ell_r^{m_r}\ne0\)</span>. At a positive integer <span class="math" data-tex="\(l\)">\(l\)</span>,</p>
+<span class="math math-display" data-tex="\[
+A=q^{nLl+h^2}\frac{f_m(l)}{P_m}
+\]">\[
+A=q^{nLl+h^2}\frac{f_m(l)}{P_m}
+\]</span>
+<p>is an algebraic integer in <span class="math" data-tex="\(K\)">\(K\)</span>, by exactly the denominator argument used in Proposition 2.2. At every embedding <span class="math" data-tex="\(\sigma:K\hookrightarrow\mathbb C\)">\(\sigma:K\hookrightarrow\mathbb C\)</span>, expand (2.4) after replacing the algebraic data by their conjugates. There are finitely many fixed conjugates, so the same estimates give</p>
+<span class="math math-display" data-tex="\[
+|\sigma(A)|\le\exp\bigl(C_4(h^3+Ll)\bigr).
+\]">\[
+|\sigma(A)|\le\exp\bigl(C_4(h^3+Ll)\bigr).
+\]</span>
+<p>Here <span class="math" data-tex="\(L\log(l+1)\le L(l+1)\)">\(L\log(l+1)\le L(l+1)\)</span>, and <span class="math" data-tex="\(L\le h^2\)">\(L\le h^2\)</span>, so the polynomial factors are absorbed. If <span class="math" data-tex="\(f_m(l)\ne0\)">\(f_m(l)\ne0\)</span>, then <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, and its rational integer norm has absolute value at least <span class="math" data-tex="\(1\)">\(1\)</span>. Bound the other <span class="math" data-tex="\(D-1\)">\(D-1\)</span> conjugates from above to obtain</p>
+<span class="math math-display" data-tex="\[
+|A|\ge\exp\bigl(-(D-1)C_4(h^3+Ll)\bigr).
+\]">\[
+|A|\ge\exp\bigl(-(D-1)C_4(h^3+Ll)\bigr).
+\]</span>
+<p>Moreover <span class="math" data-tex="\(\log|P_m|=\sum_{r&lt;n}m_r\log|\ell_r|\ge-C_5h^2\)">\(\log|P_m|=\sum_{r&lt;n}m_r\log|\ell_r|\ge-C_5h^2\)</span>, since the logarithms are fixed and nonzero. Multiplying by <span class="math" data-tex="\(|P_m|q^{-nLl-h^2}\)">\(|P_m|q^{-nLl-h^2}\)</span> gives (2.8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The estimates have complementary directions. Complex analysis will make <span class="math" data-tex="\(f_m(l)\)">\(f_m(l)\)</span> extremely small at new integers. Arithmetic says a nonzero value there has a definite minimum size. If the analytic estimate beats that minimum, the new value is exactly zero.</p>
+<h2 id="6-what-changes-when-the-constant-term-vanishes">6. What changes when the constant term vanishes</h2>
+<p>If <span class="math" data-tex="\(\beta_0=0\)">\(\beta_0=0\)</span>, no polynomial variable is needed. For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, define instead</p>
+<span class="math math-display" data-tex="\[
+\Psi(z_1,\ldots,z_{n-1})
+=\sum_{\lambda_1,\ldots,\lambda_n=0}^{L_0}
+p_\lambda\prod_{r&lt;n}e^{(\lambda_r+\lambda_n\beta_r)\ell_rz_r},
+\qquad L_0=\left\lfloor h^{2-1/(4n)}\right\rfloor.
+\]">\[
+\Psi(z_1,\ldots,z_{n-1})
+=\sum_{\lambda_1,\ldots,\lambda_n=0}^{L_0}
+p_\lambda\prod_{r&lt;n}e^{(\lambda_r+\lambda_n\beta_r)\ell_rz_r},
+\qquad L_0=\left\lfloor h^{2-1/(4n)}\right\rfloor.
+\]</span>
+<p>The same diagonal algebraicity holds. There are <span class="math" data-tex="\((L_0+1)^n\)">\((L_0+1)^n\)</span> unknowns and at most <span class="math" data-tex="\(D h(h^2+1)^{n-1}\)">\(D h(h^2+1)^{n-1}\)</span> equations. The ratio grows at least as a fixed positive multiple of <span class="math" data-tex="\(h^{3/4}\)">\(h^{3/4}\)</span>. The coefficient bound and growth/norm arguments therefore work with the same <span class="math" data-tex="\(e^{h^3}\)">\(e^{h^3}\)</span> scale. This smaller construction explains why the inhomogeneous theorem requires extra work.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 1 (easy).</strong> Assuming Theorem 2.1, prove the Gelfond–Schneider theorem: if <span class="math" data-tex="\(\alpha\ne0,1\)">\(\alpha\ne0,1\)</span> is algebraic and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is algebraic irrational, every value of <span class="math" data-tex="\(\alpha^\beta\)">\(\alpha^\beta\)</span> is transcendental.</p>
+<p><strong>Exercise 2 (medium).</strong> Prove the coordinate bound in Section 4 by multiplying integer matrices. Explain why it is valid even when the algebraic generators are not a basis of the field.</p>
+<p><strong>Exercise 3 (medium).</strong> Verify the derivative formula (2.4) for <span class="math" data-tex="\(n=2\)">\(n=2\)</span> and <span class="math" data-tex="\(m=(2,1)\)">\(m=(2,1)\)</span>. Track every factor containing a logarithm.</p>
+<p><strong>Exercise 4 (medium).</strong> Prove that <span class="math" data-tex="\(N/M\to\infty\)">\(N/M\to\infty\)</span> with the parameter <span class="math" data-tex="\(L\)">\(L\)</span> used in Proposition 2.2. Give an explicit sufficient inequality on <span class="math" data-tex="\(h\)">\(h\)</span> for <span class="math" data-tex="\(N\ge2M\)">\(N\ge2M\)</span>, in terms of <span class="math" data-tex="\(D,n\)">\(D,n\)</span>. Explain why this does not yet supply an explicit threshold for the coefficient bound.</p>
+<p><strong>Exercise 5 (hard).</strong> Prove the auxiliary construction and both estimates for the function <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> in the constant-free case. Give the denominator-clearing exponent and all equation and unknown counts.</p>
+<p><strong>Exercise 6 (medium).</strong> Suppose <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has degree <span class="math" data-tex="\(d\)">\(d\)</span> and satisfies</p>
+<span class="math math-display" data-tex="\[
+A_0\alpha^d+A_1\alpha^{d-1}+\cdots+A_d=0,
+\qquad A_j\in\mathbb Z,\quad A_0\ne0,\quad |A_j|\le A,\quad A\ge1.
+\]">\[
+A_0\alpha^d+A_1\alpha^{d-1}+\cdots+A_d=0,
+\qquad A_j\in\mathbb Z,\quad A_0\ne0,\quad |A_j|\le A,\quad A\ge1.
+\]</span>
+<p>Prove that, for every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, the power <span class="math" data-tex="\((A_0\alpha)^j\)">\((A_0\alpha)^j\)</span> is a linear combination of <span class="math" data-tex="\(1,\alpha,\ldots,\alpha^{d-1}\)">\(1,\alpha,\ldots,\alpha^{d-1}\)</span> with integer coefficients of absolute value at most <span class="math" data-tex="\((2A)^j\)">\((2A)^j\)</span>. This gives an explicit one-generator counterpart of the matrix estimate in Section 2.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 1.</strong> Choose a logarithm <span class="math" data-tex="\(\ell\)">\(\ell\)</span> of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>; it is nonzero because <span class="math" data-tex="\(\alpha\ne1\)">\(\alpha\ne1\)</span>. If <span class="math" data-tex="\(\gamma=e^{\beta\ell}\)">\(\gamma=e^{\beta\ell}\)</span> were algebraic, then <span class="math" data-tex="\(\beta\ell\)">\(\beta\ell\)</span> would be a logarithm of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The pair <span class="math" data-tex="\(\ell,\beta\ell\)">\(\ell,\beta\ell\)</span> is rationally independent, since a nontrivial rational relation would make <span class="math" data-tex="\(\beta\)">\(\beta\)</span> rational. Theorem 2.1 forbids the algebraic relation <span class="math" data-tex="\(\beta\ell-(\beta\ell)=0\)">\(\beta\ell-(\beta\ell)=0\)</span>, viewed as coefficients <span class="math" data-tex="\(\beta,-1\)">\(\beta,-1\)</span> on those two logarithms. Every branch is handled by its chosen <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p><strong>Solution 2.</strong> If <span class="math" data-tex="\(v\)">\(v\)</span> is an integral coordinate vector, multiplication by a fixed algebraic integer is <span class="math" data-tex="\(v\mapsto Mv\)">\(v\mapsto Mv\)</span> for an integer matrix <span class="math" data-tex="\(M\)">\(M\)</span>. The row-sum norm gives <span class="math" data-tex="\(\|Mv\|_\infty\le c\|v\|_\infty\)">\(\|Mv\|_\infty\le c\|v\|_\infty\)</span>. Starting from the coordinates of <span class="math" data-tex="\(1\)">\(1\)</span>, induction bounds a product of <span class="math" data-tex="\(t\)">\(t\)</span> factors by <span class="math" data-tex="\(c^{t+1}\)">\(c^{t+1}\)</span>. The triangle inequality gives the sum bound. The generators are used as multiplication operators on an integral basis of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>; they themselves need not be linearly independent.</p>
+<p><strong>Solution 3.</strong> Write the coefficient indices as <span class="math" data-tex="\((a,b,c)\)">\((a,b,c)\)</span>. Differentiation in <span class="math" data-tex="\(z_0\)">\(z_0\)</span> twice contributes</p>
+<span class="math math-display" data-tex="\[
+Q_{a,c,2}(z)=a(a-1)z^{a-2}
++2ac\beta_0z^{a-1}+c^2\beta_0^2z^a,
+\]">\[
+Q_{a,c,2}(z)=a(a-1)z^{a-2}
++2ac\beta_0z^{a-1}+c^2\beta_0^2z^a,
+\]</span>
+<p>with terms containing negative powers omitted when their falling factorial vanishes. Differentiation in <span class="math" data-tex="\(z_1\)">\(z_1\)</span> once contributes <span class="math" data-tex="\((b+c\beta_1)\ell_1\)">\((b+c\beta_1)\ell_1\)</span>. On the diagonal, the exponential is <span class="math" data-tex="\(e^{(b\ell_1+c\ell_2)z}\)">\(e^{(b\ell_1+c\ell_2)z}\)</span>; at <span class="math" data-tex="\(l\)">\(l\)</span> this is <span class="math" data-tex="\(\alpha_1^{bl}\alpha_2^{cl}\)">\(\alpha_1^{bl}\alpha_2^{cl}\)</span>. Thus <span class="math" data-tex="\(\partial_{z_0}^2\partial_{z_1}\Phi(l,l)\)">\(\partial_{z_0}^2\partial_{z_1}\Phi(l,l)\)</span> equals <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span> times the sum of the algebraic terms <span class="math" data-tex="\(p_{a,b,c}Q_{a,c,2}(l)(b+c\beta_1)\alpha_1^{bl}\alpha_2^{cl}\)">\(p_{a,b,c}Q_{a,c,2}(l)(b+c\beta_1)\alpha_1^{bl}\alpha_2^{cl}\)</span>. The only remaining logarithmic factor is the common prefactor <span class="math" data-tex="\(\ell_1\)">\(\ell_1\)</span>.</p>
+<p><strong>Solution 4.</strong> Section 4 gives <span class="math" data-tex="\(N/M\ge h^{(3n-1)/(4n)}/(D2^n)\)">\(N/M\ge h^{(3n-1)/(4n)}/(D2^n)\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+h\ge(2^{n+1}D)^{4n/(3n-1)}
+\]">\[
+h\ge(2^{n+1}D)^{4n/(3n-1)}
+\]</span>
+<p>is sufficient for <span class="math" data-tex="\(N\ge2M\)">\(N\ge2M\)</span>. The entry bound <span class="math" data-tex="\(U\)">\(U\)</span> still involves constants depending on the actual algebraic data, not only <span class="math" data-tex="\(D,n\)">\(D,n\)</span>. A coefficient threshold must also ensure <span class="math" data-tex="\(\log(NU)\le h^3\)">\(\log(NU)\le h^3\)</span>; the dimension inequality alone does not do that.</p>
+<p><strong>Solution 5.</strong> Divide the derivative <span class="math" data-tex="\(\partial^m\Psi(l,\ldots,l)\)">\(\partial^m\Psi(l,\ldots,l)\)</span> by <span class="math" data-tex="\(\prod_{r&lt;n}\ell_r^{m_r}\)">\(\prod_{r&lt;n}\ell_r^{m_r}\)</span>. The result is</p>
+<span class="math math-display" data-tex="\[
+\sum_\lambda p_\lambda\prod_{j=1}^n\alpha_j^{\lambda_jl}
+\prod_{r&lt;n}(\lambda_r+\lambda_n\beta_r)^{m_r}.
+\]">\[
+\sum_\lambda p_\lambda\prod_{j=1}^n\alpha_j^{\lambda_jl}
+\prod_{r&lt;n}(\lambda_r+\lambda_n\beta_r)^{m_r}.
+\]</span>
+<p>For <span class="math" data-tex="\(l\le h\)">\(l\le h\)</span>, <span class="math" data-tex="\(|m|\le h^2\)">\(|m|\le h^2\)</span>, multiplication by <span class="math" data-tex="\(q^{nL_0h+h^2}\)">\(q^{nL_0h+h^2}\)</span> clears denominators. There are at most <span class="math" data-tex="\(D h(h^2+1)^{n-1}\)">\(D h(h^2+1)^{n-1}\)</span> integer equations and <span class="math" data-tex="\((L_0+1)^n\)">\((L_0+1)^n\)</span> unknowns. Their ratio is at least <span class="math" data-tex="\(h^{3/4}/(D2^{n-1})\)">\(h^{3/4}/(D2^{n-1})\)</span>. The entries obey <span class="math" data-tex="\(\log U\le C(L_0h+h^2\log(L_0+1)+h^2)\)">\(\log U\le C(L_0h+h^2\log(L_0+1)+h^2)\)</span>, whose ratio to <span class="math" data-tex="\(h^3\)">\(h^3\)</span> tends to zero. Siegel's lemma therefore gives nonzero integer coefficients of size at most <span class="math" data-tex="\(e^{h^3}\)">\(e^{h^3}\)</span>. For complex <span class="math" data-tex="\(z\)">\(z\)</span>, each differentiated summand has exponential growth <span class="math" data-tex="\(e^{CL_0|z|}\)">\(e^{CL_0|z|}\)</span> and derivative factors <span class="math" data-tex="\(e^{Ch^2\log(L_0+1)}\)">\(e^{Ch^2\log(L_0+1)}\)</span>, proving the growth estimate. At an arbitrary positive integer <span class="math" data-tex="\(l\)">\(l\)</span>, use <span class="math" data-tex="\(q^{nL_0l+h^2}\)">\(q^{nL_0l+h^2}\)</span> instead; its product with the normalized value is an algebraic integer. Bounding all conjugates and using its nonzero integer norm gives the arithmetic lower bound. Restore the logarithmic prefactor, whose size is at least <span class="math" data-tex="\(e^{-Ch^2}\)">\(e^{-Ch^2}\)</span>. Both estimates have the shapes (2.7)–(2.8).</p>
+<p><strong>Solution 6.</strong> Start at <span class="math" data-tex="\(j=0\)">\(j=0\)</span> with coefficient vector <span class="math" data-tex="\((1,0,\ldots,0)\)">\((1,0,\ldots,0)\)</span>. If <span class="math" data-tex="\((A_0\alpha)^j=\sum_{k=0}^{d-1}c_k\alpha^k\)">\((A_0\alpha)^j=\sum_{k=0}^{d-1}c_k\alpha^k\)</span>, multiplication by <span class="math" data-tex="\(A_0\alpha\)">\(A_0\alpha\)</span>, followed by one use of the displayed polynomial relation, gives new coefficients</p>
+<span class="math math-display" data-tex="\[
+c&#x27;_0=-A_dc_{d-1},\qquad
+c&#x27;_k=A_0c_{k-1}-A_{d-k}c_{d-1}\quad(1\le k&lt;d).
+\]">\[
+c&#x27;_0=-A_dc_{d-1},\qquad
+c&#x27;_k=A_0c_{k-1}-A_{d-k}c_{d-1}\quad(1\le k&lt;d).
+\]</span>
+<p>They are integers, and each has absolute value at most <span class="math" data-tex="\(2A\max_k|c_k|\)">\(2A\max_k|c_k|\)</span>. Induction proves the bound. For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, only the first formula is present and it gives the stronger factor <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="prerequisites-and-continuation">Prerequisites and continuation</h2>
+<p>The integral-basis and norm facts are proved in the lessons cited in the introduction. The stated integer-matrix form of Siegel's lemma is proved in the written fifth lesson of <em>Transcendental numbers</em>. Proposition 2.2, both estimates in Proposition 2.3, the arithmetic-coordinate calculation and all exercise solutions are proved here. Theorem 2.1 is completed by extrapolation and coefficient recovery in <a href="TR-BAKER-03.html"><em>Baker's theorem II: extrapolation and the end of the proof</em></a>; the Gelfond–Schneider deduction uses that completed theorem.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Waldschmidt 2003] Michel Waldschmidt, “Linear Independence Measures for Logarithms of Algebraic Numbers,” in <em>Diophantine Approximation</em>, Lecture Notes in Mathematics 1819, Springer, 2003, 249–344. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/SpringerLN1819-2003.pdf">Author's full text</a>. Explains the normalized derivations, auxiliary construction and extrapolation, including nonhomogeneous forms.</li>
+<li>[Waldschmidt 2000] Michel Waldschmidt, <em>Diophantine Approximation on Linear Algebraic Groups</em>, Springer, 2000. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/dalag.pdf">Author's full text</a>. Develops the height, Liouville and box-principle arguments.</li>
+<li>[Sutherland 2021] Andrew V. Sutherland, <em>Number Theory I</em>, MIT OpenCourseWare, Fall 2021. <a href="https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/mit18_785f21_lec4.pdf">Norm and trace</a> and <a href="https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/mit18_785f21_lec5.pdf">integral lattices</a>. These notes are credited to Sutherland and MIT; their own licence applies.</li>
+<li>[Waldschmidt 1992] Michel Waldschmidt, <em>Linear Independence of Logarithms of Algebraic Numbers</em>, IMSc Report 116, 1992, revised text dated 2016. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/LIL.pdf">Author's full text</a>. A complementary treatment using interpolation determinants.</li>
+</ul>
+<h2 id="editable-sources"><span id="editable-source"></span>Editable source</h2>
+<p><a href="src/TR-BAKER-02.md">Markdown source</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-01.html">← Linear forms in logarithms: the problem, the trivial bounds, and effectivity</a><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-BAKER-03.html">Baker&#x27;s theorem II: extrapolation and the end of the proof →</a></span></nav>
+<p class="small source-link"><a href="sources/TR-BAKER-02.tex" download>Editable LaTeX source of this lesson</a> · <a href="src/TR-BAKER-02.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connections and parallel transport</title><link rel="stylesheet" href="../assets/reader/reader.css"><script src="../assets/reader/mathjax-config.js"></script><script defer src="../assets/mathjax/tex-svg.js"></script></head><body><main><nav><a href="../index.html">Course contents</a><a href="index.html">Companion readings</a><a href="src/connections-and-parallel-transport.md" download>Markdown source</a></nav><h1 id="connections-and-parallel-transport">Connections and parallel transport</h1>
+<p><em>Original programme exposition is dedicated under CC0 1.0.</em></p>
+<p>A bundle supplies a fibre at each point. A connection specifies how to compare nearby fibres along a chosen direction. We first express that choice as a splitting of tangent spaces, then as local one-forms. The same formulas will construct connections, extend prescribed ones, and transport a point or vector along an entire path.</p>
+<p>Manifolds and Lie groups are finite dimensional, Hausdorff, second countable, smooth and without boundary. Bundles have finite dimensional fibres. Paths are continuous and have finitely many smooth pieces, each smooth up to its endpoints; smooth dependence on parameters always uses a fixed finite division into such pieces. A right principal action is written <span class="math" data-tex="\(p\mapsto pa\)">\(p\mapsto pa\)</span>. All group and associated-bundle conventions are those of the earlier <a href="../../DG-FND/principal-bundles-and-associated-bundles.html">Principal bundles and associated bundles</a>, abbreviated <strong>PB</strong>.</p>
+<p>We use complete earlier programme proofs in <a href="local-tools-for-bundles-and-transport.html">Local tools for bundles and transport</a>: finite linear algebra 0.2, calculus 0.3, smooth inversion 0.4, scalar exponential and flat functions 0.5, inverse functions 1.2, local differential equations with parameters 2.1, the global invariant group equation 2.2, the group exponential 2.3, and partitions and cutoffs 3.1. PB A.2 proves smooth division and principal trivializations; PB B.1–B.2 prove associated bundles and their sections; PB C.2–C.3 construct tangent and tensor bundles and the adjoint representation. The one circular normalization used in E.1 has its integral proof in <a href="../../DG-CHAR/DG-CHAR-17.html">DG-CHAR-17, Lemma A.5</a>.</p>
+<h2 id="a-splittings-and-one-forms-describe-the-same-choice"><span id="section-1"></span><span id="1-a-connection-splits-tangent-directions"></span><span id="section-2"></span><span id="2-local-potentials-and-gauge-changes"></span>A. Splittings and one-forms describe the same choice</h2>
+<p>A vector-bundle-valued one-form on a manifold assigns a linear map on each tangent space with smooth matrix entries in local charts and local frames. For an ordinary vector space <span class="math" data-tex="\(W\)">\(W\)</span>, write <span class="math" data-tex="\(\Omega^1(N,W)\)">\(\Omega^1(N,W)\)</span> for these <span class="math" data-tex="\(W\)">\(W\)</span>-valued one-forms. A smooth <strong>distribution</strong> means a vector subbundle of the tangent bundle, so it has local smooth frames of its specified rank.</p>
+<p><strong>Lemma A.1 (three descriptions of a bundle connection).</strong> For a smooth fibre bundle <span class="math" data-tex="\(\pi:E\to M\)">\(\pi:E\to M\)</span>, put <span class="math" data-tex="\(VE=\ker d\pi\)">\(VE=\ker d\pi\)</span>. The following data are equivalent:</p>
+<ol>
+<li>A smooth subbundle <span class="math" data-tex="\(HE\)">\(HE\)</span> with <span class="math" data-tex="\(TE=HE\oplus VE\)">\(TE=HE\oplus VE\)</span>.</li>
+<li>A smooth fibrewise linear map <span class="math" data-tex="\(\Phi:TE\to VE\)">\(\Phi:TE\to VE\)</span> whose restriction to <span class="math" data-tex="\(VE\)">\(VE\)</span> is the identity.</li>
+<li>A smooth family of linear maps <span class="math" data-tex="\(L_p:T_{\pi(p)}M\to T_pE\)">\(L_p:T_{\pi(p)}M\to T_pE\)</span>, with <span class="math" data-tex="\(d\pi_p L_p=\mathrm{id}\)">\(d\pi_p L_p=\mathrm{id}\)</span>.</li>
+</ol>
+<p>The correspondence is
+<span class="math math-display" data-tex="\[
+HE=\ker\Phi,\qquad
+\Phi(w)=w-L_p(d\pi_p w),\qquad
+L_p=(d\pi_p|_{H_pE})^{-1}.
+\tag{A.1}
+\]">\[
+HE=\ker\Phi,\qquad
+\Phi(w)=w-L_p(d\pi_p w),\qquad
+L_p=(d\pi_p|_{H_pE})^{-1}.
+\tag{A.1}
+\]</span>
+In particular <span class="math" data-tex="\(\Phi^2=\Phi\)">\(\Phi^2=\Phi\)</span>, its image is <span class="math" data-tex="\(VE\)">\(VE\)</span>, and <span class="math" data-tex="\(\mathrm{id}-\Phi\)">\(\mathrm{id}-\Phi\)</span> is the horizontal projection.</p>
+<p><strong>Proof.</strong> In a fibre-bundle chart and then an ordinary chart of its model fibre, write tangent coordinates as <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span>, with <span class="math" data-tex="\(d\pi(v,w)=v\)">\(d\pi(v,w)=v\)</span>. Thus <span class="math" data-tex="\(VE\)">\(VE\)</span> has local form <span class="math" data-tex="\(\{0\}\times\mathbb R^k\)">\(\{0\}\times\mathbb R^k\)</span>, proving it is a smooth vector subbundle.</p>
+<p>Suppose <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is given. In these coordinates its condition on vertical vectors forces the form
+<span class="math math-display" data-tex="\[
+\Phi(v,w)=(0,B(p)v+w)
+\]">\[
+\Phi(v,w)=(0,B(p)v+w)
+\]</span>
+for a smooth matrix <span class="math" data-tex="\(B(p)\)">\(B(p)\)</span>. Its kernel is the graph <span class="math" data-tex="\(\{(v,-B(p)v)\}\)">\(\{(v,-B(p)v)\}\)</span>, with smooth frame obtained by taking <span class="math" data-tex="\(v\)">\(v\)</span> to be each coordinate basis vector. This proves smoothness and the complement property without assuming a constant-rank theorem for bundle maps. The formula <span class="math" data-tex="\(L_p(v)=(v,-B(p)v)\)">\(L_p(v)=(v,-B(p)v)\)</span> is its smooth lift, and direct substitution gives (A.1).</p>
+<p>Conversely, for a given smooth complement <span class="math" data-tex="\(HE\)">\(HE\)</span>, <span class="math" data-tex="\(d\pi_p|_{H_pE}\)">\(d\pi_p|_{H_pE}\)</span> is injective because its kernel is <span class="math" data-tex="\(H_pE\cap V_pE=0\)">\(H_pE\cap V_pE=0\)</span>; it is onto because every tangent vector decomposes into its horizontal and vertical parts. In local frames of <span class="math" data-tex="\(HE\)">\(HE\)</span> and <span class="math" data-tex="\(TM\)">\(TM\)</span>, it is therefore an invertible matrix. Local tools 0.4 makes its inverse smooth. This gives <span class="math" data-tex="\(L_p\)">\(L_p\)</span> and the smooth <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> in (A.1).</p>
+<p>Finally if <span class="math" data-tex="\(L_p\)">\(L_p\)</span> is given, it is injective since <span class="math" data-tex="\(d\pi_p L_p=\mathrm{id}\)">\(d\pi_p L_p=\mathrm{id}\)</span>. In the same product coordinates it has form <span class="math" data-tex="\(L_p(v)=(v,C(p)v)\)">\(L_p(v)=(v,C(p)v)\)</span>; hence its image is a smooth complement and <span class="math" data-tex="\(w-L_p(d\pi_p w)\)">\(w-L_p(d\pi_p w)\)</span> is its vertical projection. All three constructions are inverse in these coordinates. The claimed projection identities follow either from them or from <span class="math" data-tex="\(\Phi|_{VE}=\mathrm{id}\)">\(\Phi|_{VE}=\mathrm{id}\)</span>. □</p>
+<p>For a principal <span class="math" data-tex="\(G\)">\(G\)</span>-bundle <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span>, let <span class="math" data-tex="\(\mathfrak g=T_eG\)">\(\mathfrak g=T_eG\)</span>, with the Lie algebra and adjoint action proved in PB C.3. For <span class="math" data-tex="\(X\in\mathfrak g\)">\(X\in\mathfrak g\)</span>, its fundamental vector at <span class="math" data-tex="\(p\)">\(p\)</span> is
+<span class="math math-display" data-tex="\[
+\zeta_X(p)=d(a\mapsto pa)_e X
+=\left.\frac{d}{dt}\right|_{0}p\exp(tX).
+\tag{A.2}
+\]">\[
+\zeta_X(p)=d(a\mapsto pa)_e X
+=\left.\frac{d}{dt}\right|_{0}p\exp(tX).
+\tag{A.2}
+\]</span>
+The second equality is Local tools 2.3. A principal connection is a complement <span class="math" data-tex="\(HP\)">\(HP\)</span> as in A.1 that satisfies <span class="math" data-tex="\(dR_a(H_pP)=H_{pa}P\)">\(dR_a(H_pP)=H_{pa}P\)</span>.</p>
+<p><strong>Theorem A.2 (principal connection forms).</strong> The map <span class="math" data-tex="\(X\mapsto\zeta_X(p)\)">\(X\mapsto\zeta_X(p)\)</span> is a smoothly varying linear isomorphism <span class="math" data-tex="\(\mathfrak g\to V_pP\)">\(\mathfrak g\to V_pP\)</span>, and
+<span class="math math-display" data-tex="\[
+dR_a\,\zeta_X(p)=\zeta_{\operatorname{Ad}(a^{-1})X}(pa).
+\tag{A.3}
+\]">\[
+dR_a\,\zeta_X(p)=\zeta_{\operatorname{Ad}(a^{-1})X}(pa).
+\tag{A.3}
+\]</span>
+Principal connections correspond bijectively to <span class="math" data-tex="\(\omega\in\Omega^1(P,\mathfrak g)\)">\(\omega\in\Omega^1(P,\mathfrak g)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\omega_p(\zeta_X(p))=X,\qquad
+\omega_{pa}(dR_a w)=\operatorname{Ad}(a^{-1})\omega_p(w).
+\tag{A.4}
+\]">\[
+\omega_p(\zeta_X(p))=X,\qquad
+\omega_{pa}(dR_a w)=\operatorname{Ad}(a^{-1})\omega_p(w).
+\tag{A.4}
+\]</span>
+Their horizontal distribution, vertical projection and lift are given by
+<span class="math math-display" data-tex="\[
+H_pP=\ker\omega_p,\qquad
+\Phi_p(w)=\zeta_{\omega_p(w)}(p),\qquad
+d\pi_p L_p(v)=v,\quad \omega_p(L_p(v))=0.
+\tag{A.5}
+\]">\[
+H_pP=\ker\omega_p,\qquad
+\Phi_p(w)=\zeta_{\omega_p(w)}(p),\qquad
+d\pi_p L_p(v)=v,\quad \omega_p(L_p(v))=0.
+\tag{A.5}
+\]</span></p>
+<p><strong>Proof.</strong> PB A.2 shows that <span class="math" data-tex="\(a\mapsto pa\)">\(a\mapsto pa\)</span> is a diffeomorphism from <span class="math" data-tex="\(G\)">\(G\)</span> onto <span class="math" data-tex="\(P_{\pi(p)}\)">\(P_{\pi(p)}\)</span>, so its derivative is the asserted linear isomorphism. In a local product chart it is <span class="math" data-tex="\((p,X)\mapsto(0,dL_g X)\)">\((p,X)\mapsto(0,dL_g X)\)</span> when <span class="math" data-tex="\(p=s(x)g\)">\(p=s(x)g\)</span>. Multiplication is smooth, and its inverse trivialization uses <span class="math" data-tex="\(dL_{g^{-1}}\)">\(dL_{g^{-1}}\)</span>, also smooth. Thus the isomorphisms and their inverses vary smoothly. Differentiating
+<span class="math math-display" data-tex="\[
+(p\exp(tX))a=pa\exp(t\operatorname{Ad}(a^{-1})X),
+\]">\[
+(p\exp(tX))a=pa\exp(t\operatorname{Ad}(a^{-1})X),
+\]</span>
+which is the conjugation identity in Local tools 2.3, proves (A.3).</p>
+<p>For a principal complement, its vertical projection <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> commutes with <span class="math" data-tex="\(dR_a\)">\(dR_a\)</span>: right translation preserves both the vertical subbundle, since <span class="math" data-tex="\(\pi R_a=\pi\)">\(\pi R_a=\pi\)</span>, and the given horizontal subbundle, so it carries each of the two components of a vector to the corresponding components of its image. Define <span class="math" data-tex="\(\omega_p=\zeta_p^{-1}\Phi_p\)">\(\omega_p=\zeta_p^{-1}\Phi_p\)</span>. Smoothness follows from A.1 and the smooth inverse just proved. Vertical reproduction gives the first equation of (A.4); commutation and (A.3) give the second.</p>
+<p>Conversely (A.4) makes the map <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> in (A.5) a smooth vertical projection equal to the identity on vertical vectors. By A.1 its kernel is a smooth complement, and <span class="math" data-tex="\(\ker\Phi=\ker\omega\)">\(\ker\Phi=\ker\omega\)</span> because <span class="math" data-tex="\(\zeta_p\)">\(\zeta_p\)</span> is injective. The second equation in (A.4) preserves this kernel under <span class="math" data-tex="\(dR_a\)">\(dR_a\)</span>, in both directions by replacing <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>. Thus it is principal. The lift in (A.5) exists, is unique and is smooth by A.1. Reproduction of vertical vectors also shows that constructing <span class="math" data-tex="\(\omega\)">\(\omega\)</span> back from <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> recovers it exactly. □</p>
+<p><strong>Theorem A.3 (local potentials and their change of section).</strong> Define the left Maurer–Cartan one-form on <span class="math" data-tex="\(G\)">\(G\)</span> by
+<span class="math math-display" data-tex="\[
+\theta_g(\eta)=dL_{g^{-1}}\eta.
+\]">\[
+\theta_g(\eta)=dL_{g^{-1}}\eta.
+\]</span>
+For a local section <span class="math" data-tex="\(s:U\to P\)">\(s:U\to P\)</span> set <span class="math" data-tex="\(A=s^*\omega\in\Omega^1(U,\mathfrak g)\)">\(A=s^*\omega\in\Omega^1(U,\mathfrak g)\)</span>. In the chart <span class="math" data-tex="\(\Psi(x,g)=s(x)g\)">\(\Psi(x,g)=s(x)g\)</span>, the full connection form is
+<span class="math math-display" data-tex="\[
+(\Psi^*\omega)_{(x,g)}(v,\eta)
+=\operatorname{Ad}(g^{-1})A_x(v)+\theta_g(\eta).
+\tag{A.6}
+\]">\[
+(\Psi^*\omega)_{(x,g)}(v,\eta)
+=\operatorname{Ad}(g^{-1})A_x(v)+\theta_g(\eta).
+\tag{A.6}
+\]</span>
+For <span class="math" data-tex="\(s&#x27;=sh\)">\(s&#x27;=sh\)</span>, with smooth <span class="math" data-tex="\(h:U\to G\)">\(h:U\to G\)</span>, the potentials satisfy
+<span class="math math-display" data-tex="\[
+A&#x27;=\operatorname{Ad}(h^{-1})A+h^*\theta.
+\tag{A.7}
+\]">\[
+A&#x27;=\operatorname{Ad}(h^{-1})A+h^*\theta.
+\tag{A.7}
+\]</span>
+Every smooth <span class="math" data-tex="\(A\)">\(A\)</span> defines a connection on the product chart by (A.6). Potentials on a principal atlas give a global connection exactly when they obey (A.7) on overlaps.</p>
+<p><strong>Proof.</strong> Differentiating <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> in its two variables gives
+<span class="math math-display" data-tex="\[
+d\Psi(v,\eta)=dR_g(ds(v))+d(a\mapsto s(x)a)_g\eta.
+\]">\[
+d\Psi(v,\eta)=dR_g(ds(v))+d(a\mapsto s(x)a)_g\eta.
+\]</span>
+Write <span class="math" data-tex="\(\eta=dL_g X\)">\(\eta=dL_g X\)</span>, where <span class="math" data-tex="\(X=\theta_g\eta\)">\(X=\theta_g\eta\)</span>. The second term is <span class="math" data-tex="\(\zeta_X(s(x)g)\)">\(\zeta_X(s(x)g)\)</span>, since <span class="math" data-tex="\(a=g\exp(tX)\)">\(a=g\exp(tX)\)</span> has initial velocity <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Applying (A.4) proves (A.6). Evaluating it along <span class="math" data-tex="\(x\mapsto(x,h(x))\)">\(x\mapsto(x,h(x))\)</span> proves (A.7).</p>
+<p>We check the converse and the overlap assertion. Under right multiplication by a constant <span class="math" data-tex="\(a\)">\(a\)</span>, the left form satisfies
+<span class="math math-display" data-tex="\[
+\theta_{ga}(dR_a\eta)=\operatorname{Ad}(a^{-1})\theta_g(\eta).
+\tag{A.8}
+\]">\[
+\theta_{ga}(dR_a\eta)=\operatorname{Ad}(a^{-1})\theta_g(\eta).
+\tag{A.8}
+\]</span>
+Indeed for <span class="math" data-tex="\(\eta=dL_g X\)">\(\eta=dL_g X\)</span>, the curve <span class="math" data-tex="\(g\exp(tX)a=ga\exp(t\operatorname{Ad}(a^{-1})X)\)">\(g\exp(tX)a=ga\exp(t\operatorname{Ad}(a^{-1})X)\)</span> verifies this identity, and all <span class="math" data-tex="\(\eta\)">\(\eta\)</span> have that form. Formula (A.6) therefore satisfies equivariance because
+<span class="math" data-tex="\(\operatorname{Ad}((ga)^{-1})=\operatorname{Ad}(a^{-1})\operatorname{Ad}(g^{-1})\)">\(\operatorname{Ad}((ga)^{-1})=\operatorname{Ad}(a^{-1})\operatorname{Ad}(g^{-1})\)</span>.
+A fundamental vector in this chart is <span class="math" data-tex="\((0,dL_g X)\)">\((0,dL_g X)\)</span>, on which (A.6) is <span class="math" data-tex="\(X\)">\(X\)</span>. A.2 now proves that it is a connection.</p>
+<p>For variable <span class="math" data-tex="\(g,h\)">\(g,h\)</span>, the product rule for multiplication gives
+<span class="math math-display" data-tex="\[
+\theta_{gh}\bigl(d\mu_{(g,h)}(\eta,\nu)\bigr)
+=\operatorname{Ad}(h^{-1})\theta_g(\eta)+\theta_h(\nu).
+\tag{A.9}
+\]">\[
+\theta_{gh}\bigl(d\mu_{(g,h)}(\eta,\nu)\bigr)
+=\operatorname{Ad}(h^{-1})\theta_g(\eta)+\theta_h(\nu).
+\tag{A.9}
+\]</span>
+To verify this, split the differential into <span class="math" data-tex="\(dR_h\eta+dL_g\nu\)">\(dR_h\eta+dL_g\nu\)</span>. Its first term is handled by (A.8), and applying <span class="math" data-tex="\(dL_{(gh)^{-1}}dL_g=dL_{h^{-1}}\)">\(dL_{(gh)^{-1}}dL_g=dL_{h^{-1}}\)</span> to the second gives the other term.</p>
+<p>If <span class="math" data-tex="\(s_j=s_i h\)">\(s_j=s_i h\)</span>, the coordinate identification is <span class="math" data-tex="\((x,g)\)">\((x,g)\)</span> in the <span class="math" data-tex="\(j\)">\(j\)</span>-chart with <span class="math" data-tex="\((x,h(x)g)\)">\((x,h(x)g)\)</span> in the <span class="math" data-tex="\(i\)">\(i\)</span>-chart. Applying (A.9) to this product turns the <span class="math" data-tex="\(i\)">\(i\)</span>-formula into
+<span class="math math-display" data-tex="\[
+\operatorname{Ad}(g^{-1})
+\bigl(\operatorname{Ad}(h^{-1})A_i+h^*\theta\bigr)+\theta_g.
+\]">\[
+\operatorname{Ad}(g^{-1})
+\bigl(\operatorname{Ad}(h^{-1})A_i+h^*\theta\bigr)+\theta_g.
+\]</span>
+This equals the <span class="math" data-tex="\(j\)">\(j\)</span>-formula exactly when (A.7) holds. Equality follows for every tangent vector, so the local one-forms glue smoothly; conversely a global form has (A.7) by the first part. □</p>
+<p><strong>Theorem A.4 (differences and adjoint-valued one-forms).</strong> The difference of two principal connection forms is a horizontal, adjoint-equivariant <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-valued one-form. Here horizontal means that it vanishes on every vertical vector. Such forms correspond bijectively to <span class="math" data-tex="\(\Omega^1(M,\operatorname{ad}(P))\)">\(\Omega^1(M,\operatorname{ad}(P))\)</span>. Adding any one of them to a connection again gives a connection, so the set of connections, when nonempty, is an affine space over <span class="math" data-tex="\(\Omega^1(M,\operatorname{ad}(P))\)">\(\Omega^1(M,\operatorname{ad}(P))\)</span>.</p>
+<p><strong>Proof.</strong> Subtraction in (A.4) cancels the reproduced <span class="math" data-tex="\(X\)">\(X\)</span> and preserves equivariance; this proves the first assertion. Conversely addition of a horizontal equivariant form preserves both conditions of (A.4), proving the last assertion once the correspondence is established.</p>
+<p>For such an <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, define
+<span class="math math-display" data-tex="\[
+\beta_x(v)=[p,\alpha_p(w)],
+\qquad p\in P_x,\quad d\pi_p w=v.
+\tag{A.10}
+\]">\[
+\beta_x(v)=[p,\alpha_p(w)],
+\qquad p\in P_x,\quad d\pi_p w=v.
+\tag{A.10}
+\]</span>
+There is a lift <span class="math" data-tex="\(w\)">\(w\)</span>, for example in any local product chart. Changing <span class="math" data-tex="\(w\)">\(w\)</span> at fixed <span class="math" data-tex="\(p\)">\(p\)</span> changes it by a vertical vector and hence leaves the value unchanged. Replacing <span class="math" data-tex="\(p\)">\(p\)</span> by <span class="math" data-tex="\(pa\)">\(pa\)</span>, we may use <span class="math" data-tex="\(dR_a w\)">\(dR_a w\)</span>; equivariance gives
+<span class="math" data-tex="\([pa,\alpha_{pa}(dR_a w)]=[pa,\operatorname{Ad}(a^{-1})\alpha_p(w)]=[p,\alpha_p(w)]\)">\([pa,\alpha_{pa}(dR_a w)]=[pa,\operatorname{Ad}(a^{-1})\alpha_p(w)]=[p,\alpha_p(w)]\)</span>.
+PB B.1 supplies the last associated-bundle identity. Thus (A.10) is a well-defined fibrewise linear map <span class="math" data-tex="\(TM\to\operatorname{ad}(P)\)">\(TM\to\operatorname{ad}(P)\)</span>. A local section <span class="math" data-tex="\(s\)">\(s\)</span> gives its coordinates <span class="math" data-tex="\(s^*\alpha\)">\(s^*\alpha\)</span>, proving smoothness.</p>
+<p>Conversely, for each <span class="math" data-tex="\(p\)">\(p\)</span> over <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(w\in T_pP\)">\(w\in T_pP\)</span>, there is a unique <span class="math" data-tex="\(X\in\mathfrak g\)">\(X\in\mathfrak g\)</span> with <span class="math" data-tex="\(\beta_x(d\pi_p w)=[p,X]\)">\(\beta_x(d\pi_p w)=[p,X]\)</span>, since <span class="math" data-tex="\(X\mapsto[p,X]\)">\(X\mapsto[p,X]\)</span> is an isomorphism by PB B.1. Define <span class="math" data-tex="\(\alpha_p(w)=X\)">\(\alpha_p(w)=X\)</span>. This is linear in <span class="math" data-tex="\(w\)">\(w\)</span>; in a local section chart it has coordinates <span class="math" data-tex="\(\operatorname{Ad}(g^{-1})\beta_i(d\pi w)\)">\(\operatorname{Ad}(g^{-1})\beta_i(d\pi w)\)</span>, so it is smooth. The formula also proves horizontality and equivariance. Its construction is pointwise inverse to (A.10). Addition acts freely and transitively on connections, since their actual difference is uniquely determined. □</p>
+<h2 id="b-constructing-and-extending-connections"><span id="section-3"></span><span id="3-existence-and-extension"></span>B. Constructing and extending connections</h2>
+<p><strong>Theorem B.1 (existence).</strong> Every principal bundle over <span class="math" data-tex="\(M\)">\(M\)</span> admits a smooth principal connection.</p>
+<p><strong>Proof.</strong> Choose a trivializing open cover. On each member use the product connection of A.3 with <span class="math" data-tex="\(A=0\)">\(A=0\)</span>. By Local tools 3.1 there is a locally finite smooth partition <span class="math" data-tex="\((\phi_i)\)">\((\phi_i)\)</span> with each support contained in a member of a trivializing refinement; let <span class="math" data-tex="\(\omega_i\)">\(\omega_i\)</span> be the corresponding product connection. Set
+<span class="math math-display" data-tex="\[
+\omega=\sum_i(\phi_i\circ\pi)\,\omega_i.
+\tag{B.1}
+\]">\[
+\omega=\sum_i(\phi_i\circ\pi)\,\omega_i.
+\tag{B.1}
+\]</span>
+Each term is extended by zero off that chart. It is smooth there because every point outside the chart has a neighbourhood disjoint from the closed support of its coefficient. The pullback family is locally finite: a neighbourhood of <span class="math" data-tex="\(\pi(p)\)">\(\pi(p)\)</span> meeting finitely many base supports pulls back to a neighbourhood of <span class="math" data-tex="\(p\)">\(p\)</span> meeting only their pullbacks. Thus the sum is smooth.</p>
+<p>Right translation leaves <span class="math" data-tex="\(\phi_i\circ\pi\)">\(\phi_i\circ\pi\)</span> fixed, so every term has the required equivariance. On <span class="math" data-tex="\(\zeta_X\)">\(\zeta_X\)</span> the sum equals <span class="math" data-tex="\((\sum_i\phi_i)X=X\)">\((\sum_i\phi_i)X=X\)</span>. A.2 proves it is a connection. The proof uses only a smooth subordinate partition, so applies verbatim to any base and principal atlas for which that partition exists. □</p>
+<p><strong>Theorem B.2 (closed sets with locally extendible data).</strong> Let <span class="math" data-tex="\(K\subset M\)">\(K\subset M\)</span> be closed. Suppose a connection splitting of the full <span class="math" data-tex="\(T_pP\)">\(T_pP\)</span> is prescribed for each <span class="math" data-tex="\(p\)">\(p\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>, satisfying the principal identities, and suppose these data agree locally with a smooth connection on <span class="math" data-tex="\(P|_U\)">\(P|_U\)</span> for neighbourhoods <span class="math" data-tex="\(U\)">\(U\)</span> of points of <span class="math" data-tex="\(K\)">\(K\)</span>. Then they extend to a global smooth connection. If a connection is specified on an open neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>, a global extension may be chosen to agree with it on a smaller open neighbourhood of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Proof.</strong> Translate the prescribed splittings to connection-form values by the fibrewise construction in A.2. For the first assertion cover <span class="math" data-tex="\(K\)">\(K\)</span> by neighbourhoods with the stipulated local connections and add <span class="math" data-tex="\(M\setminus K\)">\(M\setminus K\)</span>. On this last open set use the restriction of a global connection <span class="math" data-tex="\(\omega_0\)">\(\omega_0\)</span>, provided by B.1. Apply the partition construction (B.1) to this cover and these connections. At a point over <span class="math" data-tex="\(K\)">\(K\)</span>, a coefficient assigned to <span class="math" data-tex="\(M\setminus K\)">\(M\setminus K\)</span> is zero. Every remaining local connection having a nonzero coefficient agrees with the prescribed form on the whole tangent space there. Their coefficients sum to one; hence the result has exactly the prescribed value. A.2 then recovers the prescribed splitting.</p>
+<p>For the stronger neighbourhood statement, choose by Local tools 3.1 a smooth <span class="math" data-tex="\(\chi:M\to[0,1]\)">\(\chi:M\to[0,1]\)</span> equal to one on a neighbourhood of <span class="math" data-tex="\(K\)">\(K\)</span>, with support contained in <span class="math" data-tex="\(U\)">\(U\)</span>. On <span class="math" data-tex="\(P|_U\)">\(P|_U\)</span> the difference <span class="math" data-tex="\(\omega_U-\omega_0\)">\(\omega_U-\omega_0\)</span> is horizontal and equivariant by A.4. Define
+<span class="math math-display" data-tex="\[
+\omega=\omega_0+(\chi\circ\pi)(\omega_U-\omega_0),
+\tag{B.2}
+\]">\[
+\omega=\omega_0+(\chi\circ\pi)(\omega_U-\omega_0),
+\tag{B.2}
+\]</span>
+with the second term extended by zero. The same closed-support argument proves smoothness. A.4 proves it is a connection, and where <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> it equals <span class="math" data-tex="\(\omega_U\)">\(\omega_U\)</span>. No smooth extension property is claimed for arbitrary pointwise data on a closed set; the stated local extendibility is the hypothesis used. □</p>
+<p><strong>Theorem B.3 (a connection on a closed embedded submanifold).</strong> Let <span class="math" data-tex="\(S\subset M\)">\(S\subset M\)</span> be a closed embedded submanifold. Every connection on <span class="math" data-tex="\(P|_S\to S\)">\(P|_S\to S\)</span> is the restriction of a global connection on <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Proof.</strong> Restriction means pulling back the connection form to <span class="math" data-tex="\(P|_S\)">\(P|_S\)</span>, so it specifies tangent directions along <span class="math" data-tex="\(S\)">\(S\)</span>, not arbitrary normal directions. Fix <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span>. Choose an ambient trivialization of <span class="math" data-tex="\(P\)">\(P\)</span> and a smaller submanifold coordinate neighbourhood <span class="math" data-tex="\((y,z)\)">\((y,z)\)</span> with <span class="math" data-tex="\(S=\{z=0\}\)">\(S=\{z=0\}\)</span>. Shrink it to a product of open coordinate boxes. The ambient section restricts to a section on <span class="math" data-tex="\(S\)">\(S\)</span>; its given potential has the form
+<span class="math math-display" data-tex="\[
+A_S=\sum_{j=1}^{\dim S}a_j(y)\,dy^j.
+\]">\[
+A_S=\sum_{j=1}^{\dim S}a_j(y)\,dy^j.
+\]</span>
+Each smooth <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-valued coefficient extends to the ambient product box by <span class="math" data-tex="\(a_j(y,z)=a_j(y)\)">\(a_j(y,z)=a_j(y)\)</span>. Set all <span class="math" data-tex="\(dz\)">\(dz\)</span> coefficients to zero. This defines a smooth ambient potential, and A.3 gives an ambient local connection whose pullback to <span class="math" data-tex="\(P|_S\)">\(P|_S\)</span> is the prescribed one. This last assertion follows from the full formula (A.6), which restricts to the same tangential potential and the same group term.</p>
+<p>Cover <span class="math" data-tex="\(S\)">\(S\)</span> by these boxes and add the open set <span class="math" data-tex="\(M\setminus S\)">\(M\setminus S\)</span>, on which use any connection from B.1. Patch them by a subordinate partition as in B.1. At a point over <span class="math" data-tex="\(S\)">\(S\)</span>, all nonzero terms have the same pullback on <span class="math" data-tex="\(T(P|_S)\)">\(T(P|_S)\)</span>, and the coefficients sum to one. The resulting restriction is the given connection. The locally chosen normal components need not agree, and the argument never assumes that they do. □</p>
+<h2 id="c-a-horizontal-lift-exists-along-the-whole-path"><span id="section-4"></span><span id="4-horizontal-lifting-on-a-whole-path"></span>C. A horizontal lift exists along the whole path</h2>
+<p>For a path <span class="math" data-tex="\(\gamma:[a,b]\to M\)">\(\gamma:[a,b]\to M\)</span>, a horizontal lift is a continuous path <span class="math" data-tex="\(p(t)\)">\(p(t)\)</span> with <span class="math" data-tex="\(\pi(p(t))=\gamma(t)\)">\(\pi(p(t))=\gamma(t)\)</span>, smooth on each smooth piece, and <span class="math" data-tex="\(\omega(p&#x27;(t))=0\)">\(\omega(p&#x27;(t))=0\)</span> there. At an endpoint or a corner, the derivatives mean the appropriate one-sided derivatives of the smooth pieces.</p>
+<p><strong>Theorem C.1 (global path lifting).</strong> Every initial point <span class="math" data-tex="\(p_a\in P_{\gamma(a)}\)">\(p_a\in P_{\gamma(a)}\)</span> has a unique horizontal lift on all of <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>. In a section chart <span class="math" data-tex="\(p(t)=s(\gamma(t))g(t)\)">\(p(t)=s(\gamma(t))g(t)\)</span>, its group equation is
+<span class="math math-display" data-tex="\[
+g&#x27;(t)=-dR_{g(t)}\,A_{\gamma(t)}(\gamma&#x27;(t)).
+\tag{C.1}
+\]">\[
+g&#x27;(t)=-dR_{g(t)}\,A_{\gamma(t)}(\gamma&#x27;(t)).
+\tag{C.1}
+\]</span></p>
+<p><strong>Proof.</strong> Formula (A.6) makes horizontality equivalent to
+<span class="math" data-tex="\(\theta_g g&#x27;=-\operatorname{Ad}(g^{-1})A(\gamma&#x27;)\)">\(\theta_g g&#x27;=-\operatorname{Ad}(g^{-1})A(\gamma&#x27;)\)</span>.
+The identity
+<span class="math math-display" data-tex="\[
+dL_g\,\operatorname{Ad}(g^{-1})X=dR_g X
+\]">\[
+dL_g\,\operatorname{Ad}(g^{-1})X=dR_g X
+\]</span>
+follows by differentiating <span class="math" data-tex="\(g\exp(t\operatorname{Ad}(g^{-1})X)=\exp(tX)g\)">\(g\exp(t\operatorname{Ad}(g^{-1})X)=\exp(tX)g\)</span> at zero, using Local tools 2.3. Applying <span class="math" data-tex="\(dL_g\)">\(dL_g\)</span> proves (C.1), including its minus sign.</p>
+<p>On any closed time segment whose path image lies in a single section chart, <span class="math" data-tex="\(b(t)=-A_{\gamma(t)}(\gamma&#x27;(t))\)">\(b(t)=-A_{\gamma(t)}(\gamma&#x27;(t))\)</span> is continuous on each of its finitely many smooth pieces and has finite one-sided limits at their endpoints. Local tools 2.2 therefore solves the right invariant equation <span class="math" data-tex="\(g&#x27;=dR_g b(t)\)">\(g&#x27;=dR_g b(t)\)</span> on the entire segment, for any initial value. Its result does not assume compactness of <span class="math" data-tex="\(G\)">\(G\)</span> or completeness of a Riemannian metric. Where <span class="math" data-tex="\(b\)">\(b\)</span> is smooth, Local tools 2.1 gives a smooth solution.</p>
+<p>We justify a finite subdivision into such segments. The inverse images of trivializing sets are an open cover of the compact interval. Around each time <span class="math" data-tex="\(t\)">\(t\)</span>, choose a relative interval of radius <span class="math" data-tex="\(2\epsilon_t&gt;0\)">\(2\epsilon_t&gt;0\)</span> contained in one inverse image. Finitely many intervals of radii <span class="math" data-tex="\(\epsilon_t\)">\(\epsilon_t\)</span> cover <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, by Local tools 0.1. Let <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> be smaller than all those finitely many <span class="math" data-tex="\(\epsilon_t\)">\(\epsilon_t\)</span>. If an interval has length less than <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, choose one of its points and one of the smaller intervals containing that point; every point of the original interval then lies within <span class="math" data-tex="\(2\epsilon_t\)">\(2\epsilon_t\)</span> of its centre. Thus its entire image lies in the chosen trivializing set. Partition <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> into intervals of length below <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, also inserting the original path corners. Finiteness and existence of such a subdivision follow by choosing an integer larger than <span class="math" data-tex="\((b-a)/\delta\)">\((b-a)/\delta\)</span>.</p>
+<p>Solve successively on these segments, using the endpoint of one as the initial point of the next. In each chart the right invariant equation has a unique solution. Consequently any two constructed lifts agree first near the initial time and then on each subsequent segment. At an artificially inserted division point where <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is smooth, choose a chart around the value of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> there; the local smooth equation and uniqueness identify the two pieces with one smooth solution. Thus no new corner was introduced. This gives a lift on the whole path and proves its uniqueness. The same argument runs backwards from any specified time. For <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, the lift is the single given point. □</p>
+<p><strong>Theorem C.2 (smoothness and the transport identities).</strong> Let <span class="math" data-tex="\(T_\gamma:P_{\gamma(a)}\to P_{\gamma(b)}\)">\(T_\gamma:P_{\gamma(a)}\to P_{\gamma(b)}\)</span> send an initial point to the endpoint of its horizontal lift. It is a smooth <span class="math" data-tex="\(G\)">\(G\)</span>-equivariant diffeomorphism. Reversing the path inverts it, and following <span class="math" data-tex="\(\gamma_1\)">\(\gamma_1\)</span> by <span class="math" data-tex="\(\gamma_2\)">\(\gamma_2\)</span> gives <span class="math" data-tex="\(T_{\gamma_2}\circ T_{\gamma_1}\)">\(T_{\gamma_2}\circ T_{\gamma_1}\)</span>. Orientation-preserving piecewise smooth reparametrizations leave transport unchanged. Lifts depend smoothly on initial data and on finite dimensional smooth families of paths, on each fixed smooth piece.</p>
+<p><strong>Proof.</strong> We first make the parameter statement precise. Let <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> range in an open subset of a finite dimensional Euclidean space; assume <span class="math" data-tex="\((\lambda,t)\mapsto\gamma_\lambda(t)\)">\((\lambda,t)\mapsto\gamma_\lambda(t)\)</span> is smooth on each fixed closed time piece, in the sense that it extends smoothly near that piece. For a fixed <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span>, choose the subdivision in C.1 with each closed segment lying inside an open trivializing set. Each such containment persists for all <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> sufficiently near <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span>: for every time in the segment, continuity gives a product of a parameter neighbourhood and a time neighbourhood mapping into that trivializing set; finitely many time neighbourhoods cover the compact segment, and their parameter neighbourhoods have an open intersection containing <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span>. Take the intersection over the finitely many segments as well. Thus the same finite subdivision and charts work near <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span>.</p>
+<p>In each chart (C.1) is a smooth ordinary differential equation in time, position and parameter on a fixed piece. Local tools 2.1 supplies smooth dependence locally around every point of a reference solution. To obtain dependence up to a fixed segment endpoint, cover the reference graph on that segment by finitely many such local existence neighbourhoods and choose a subdivision fine enough to remain in them. Iterating their smooth solution maps gives smooth dependence at each successive endpoint. After each iteration, shrink the neighbourhood of the initial datum and parameter if necessary so that its endpoint lies in the next existence neighbourhood; only finitely many restrictions are made. This constructs a common neighbourhood with smooth dependence across the whole segment. Changes of principal chart are smooth by PB A.2, and composition over the finite path subdivision proves the assertion. Initial points in varying initial fibres are described using a section near <span class="math" data-tex="\(\gamma_{\lambda_0}(a)\)">\(\gamma_{\lambda_0}(a)\)</span>; this gives precisely the local meaning of smooth dependence on initial data. The assertion on each fixed smooth piece follows from the corresponding local time-dependent solution maps. In particular <span class="math" data-tex="\(T_\gamma\)">\(T_\gamma\)</span> is smooth.</p>
+<p>If <span class="math" data-tex="\(p(t)\)">\(p(t)\)</span> is horizontal, (A.4) makes <span class="math" data-tex="\(p(t)c\)">\(p(t)c\)</span> horizontal for any fixed <span class="math" data-tex="\(c\in G\)">\(c\in G\)</span>, with initial point <span class="math" data-tex="\(p(a)c\)">\(p(a)c\)</span>. Uniqueness gives <span class="math" data-tex="\(T_\gamma(pc)=T_\gamma(p)c\)">\(T_\gamma(pc)=T_\gamma(p)c\)</span>. The reversed lift <span class="math" data-tex="\(p(a+b-t)\)">\(p(a+b-t)\)</span> is horizontal by the chain rule; its endpoint is the original initial point. Hence reverse transport is a two-sided inverse, and is smooth by the first part. Concatenated lifts give the composite endpoint map; uniqueness proves the stated order.</p>
+<p>For reparametrization, let <span class="math" data-tex="\(\tau:[c,d]\to[a,b]\)">\(\tau:[c,d]\to[a,b]\)</span> be a continuous, piecewise smooth, increasing bijection with the endpoints in this order. Then <span class="math" data-tex="\(p\circ\tau\)">\(p\circ\tau\)</span> lifts <span class="math" data-tex="\(\gamma\circ\tau\)">\(\gamma\circ\tau\)</span>, and on each smooth piece
+<span class="math" data-tex="\(\omega((p\circ\tau)&#x27;)=\tau&#x27;\omega(p&#x27;\circ\tau)=0\)">\(\omega((p\circ\tau)&#x27;)=\tau&#x27;\omega(p&#x27;\circ\tau)=0\)</span>.
+Preimages of the finitely many corners introduce only finitely many additional division points. This holds even where <span class="math" data-tex="\(\tau&#x27;=0\)">\(\tau&#x27;=0\)</span>; no division by that derivative is used. Uniqueness proves equality of transport. The same proof permits nondecreasing surjections with finitely many smooth pieces: preimages of original corner times are intervals or points, so their finitely many endpoints suffice, and the lift is constant on each intervening constant interval. □</p>
+<h2 id="d-the-derivative-on-an-associated-vector-bundle"><span id="section-5"></span><span id="5-the-induced-covariant-derivative"></span>D. The derivative on an associated vector bundle</h2>
+<p>Let <span class="math" data-tex="\(\rho:G\to\mathrm{GL}(W)\)">\(\rho:G\to\mathrm{GL}(W)\)</span> be a smooth representation on a finite dimensional real or complex vector space <span class="math" data-tex="\(W\)">\(W\)</span>; a complex representation is smooth with respect to the underlying real manifolds. Let <span class="math" data-tex="\(\rho_*:\mathfrak g\to\operatorname{End}(W)\)">\(\rho_*:\mathfrak g\to\operatorname{End}(W)\)</span> be its derivative at <span class="math" data-tex="\(e\)">\(e\)</span>, using the open matrix model for <span class="math" data-tex="\(\mathrm{GL}(W)\)">\(\mathrm{GL}(W)\)</span>. Set <span class="math" data-tex="\(E=P\times_G W\)">\(E=P\times_G W\)</span>.</p>
+<p><strong>Theorem D.1 (induced covariant derivative).</strong> If a section <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> corresponds by PB B.2 to the equivariant function <span class="math" data-tex="\(u:P\to W\)">\(u:P\to W\)</span>, define
+<span class="math math-display" data-tex="\[
+(\nabla_v\sigma)(x)=[p,du_p(L_p(v))],
+\qquad v\in T_xM,\quad p\in P_x.
+\tag{D.1}
+\]">\[
+(\nabla_v\sigma)(x)=[p,du_p(L_p(v))],
+\qquad v\in T_xM,\quad p\in P_x.
+\tag{D.1}
+\]</span>
+This is well defined and smooth. For a local section <span class="math" data-tex="\(s\)">\(s\)</span> and coordinate function <span class="math" data-tex="\(u_s=u\circ s\)">\(u_s=u\circ s\)</span>, its formula is
+<span class="math math-display" data-tex="\[
+(\nabla\sigma)_s=du_s+\rho_*(A)u_s.
+\tag{D.2}
+\]">\[
+(\nabla\sigma)_s=du_s+\rho_*(A)u_s.
+\tag{D.2}
+\]</span>
+It is linear over smooth functions in the tangent direction, linear over constants in <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and satisfies
+<span class="math" data-tex="\(\nabla_v(f\sigma)=df(v)\sigma+f\nabla_v\sigma\)">\(\nabla_v(f\sigma)=df(v)\sigma+f\nabla_v\sigma\)</span>.</p>
+<p><strong>Proof.</strong> From the uniqueness in (A.5) and equivariance of the connection,
+<span class="math" data-tex="\(L_{pa}(v)=dR_a L_p(v)\)">\(L_{pa}(v)=dR_a L_p(v)\)</span>.
+Differentiating <span class="math" data-tex="\(u(pa)=\rho(a^{-1})u(p)\)">\(u(pa)=\rho(a^{-1})u(p)\)</span> for a constant <span class="math" data-tex="\(a\)">\(a\)</span> yields
+<span class="math math-display" data-tex="\[
+du_{pa}(dR_a w)=\rho(a^{-1})du_p(w).
+\]">\[
+du_{pa}(dR_a w)=\rho(a^{-1})du_p(w).
+\]</span>
+The associated relation in PB B.1 now proves that (D.1) is independent of <span class="math" data-tex="\(p\)">\(p\)</span>. Smoothness follows in local charts from smoothness of <span class="math" data-tex="\(u,L\)">\(u,L\)</span> and the associated quotient chart.</p>
+<p>For a vertical vector, use the equivariance along <span class="math" data-tex="\(p\exp(tX)\)">\(p\exp(tX)\)</span>. The derivative at zero of <span class="math" data-tex="\(\rho(\exp(-tX))\)">\(\rho(\exp(-tX))\)</span> is <span class="math" data-tex="\(-\rho_*X\)">\(-\rho_*X\)</span>, by the chain rule and <span class="math" data-tex="\(d\exp_0=\mathrm{id}\)">\(d\exp_0=\mathrm{id}\)</span>, proved in Local tools 2.3. Therefore
+<span class="math math-display" data-tex="\[
+du_p(\zeta_X(p))=-\rho_*X\,u(p).
+\tag{D.3}
+\]">\[
+du_p(\zeta_X(p))=-\rho_*X\,u(p).
+\tag{D.3}
+\]</span>
+At <span class="math" data-tex="\(p=s(x)\)">\(p=s(x)\)</span>, the vector <span class="math" data-tex="\(ds(v)-\zeta_{A(v)}(s(x))\)">\(ds(v)-\zeta_{A(v)}(s(x))\)</span> projects to <span class="math" data-tex="\(v\)">\(v\)</span> and has zero <span class="math" data-tex="\(\omega\)">\(\omega\)</span>-value. It is <span class="math" data-tex="\(L_{s(x)}(v)\)">\(L_{s(x)}(v)\)</span> by (A.5). Substitution into (D.1), followed by (D.3), gives (D.2).</p>
+<p>The map <span class="math" data-tex="\(v\mapsto L_p(v)\)">\(v\mapsto L_p(v)\)</span> and the differential <span class="math" data-tex="\(du_p\)">\(du_p\)</span> are linear, so multiplication of a vector field by a smooth scalar multiplies (D.1) by that scalar. Constant linear combinations of sections give the same linear combinations of their equivariant functions and differentials. For <span class="math" data-tex="\(f\sigma\)">\(f\sigma\)</span>, that function is <span class="math" data-tex="\((f\circ\pi)u\)">\((f\circ\pi)u\)</span>; its differential on <span class="math" data-tex="\(L_p(v)\)">\(L_p(v)\)</span> is
+<span class="math" data-tex="\(df_x(v)u(p)+f(x)du_p(L_p(v))\)">\(df_x(v)u(p)+f(x)du_p(L_p(v))\)</span>
+by the product rule and <span class="math" data-tex="\(d\pi L_p=\mathrm{id}\)">\(d\pi L_p=\mathrm{id}\)</span>. This proves Leibniz. All formulas also hold for vector fields by applying them at each point. □</p>
+<p><strong>Theorem D.2 (associated transport and the equation for parallel vectors).</strong> Principal transport induces the smooth linear isomorphism
+<span class="math math-display" data-tex="\[
+\mathcal T_\gamma:E_{\gamma(a)}\to E_{\gamma(b)},
+\qquad [p,w]\longmapsto[T_\gamma(p),w].
+\tag{D.4}
+\]">\[
+\mathcal T_\gamma:E_{\gamma(a)}\to E_{\gamma(b)},
+\qquad [p,w]\longmapsto[T_\gamma(p),w].
+\tag{D.4}
+\]</span>
+It is the unique transport for which vectors along a path satisfy the local equation
+<span class="math math-display" data-tex="\[
+v&#x27;(t)+\rho_*(A_{\gamma(t)}(\gamma&#x27;(t)))v(t)=0.
+\tag{D.5}
+\]">\[
+v&#x27;(t)+\rho_*(A_{\gamma(t)}(\gamma&#x27;(t)))v(t)=0.
+\tag{D.5}
+\]</span>
+In particular it is the parallel transport of the derivative (D.2).</p>
+<p><strong>Proof.</strong> If a representative is changed to <span class="math" data-tex="\((pc,\rho(c^{-1})w)\)">\((pc,\rho(c^{-1})w)\)</span>, equivariance of <span class="math" data-tex="\(T_\gamma\)">\(T_\gamma\)</span> makes the output class unchanged. In fibre charts (D.4) is multiplication by a matrix <span class="math" data-tex="\(\rho(g)\)">\(\rho(g)\)</span>, so it is smooth and linear. The reverse path gives its smooth linear inverse by C.2.</p>
+<p>We verify its differential equation without assuming any exponential identity for representations. For <span class="math" data-tex="\(X\in\mathfrak g\)">\(X\in\mathfrak g\)</span>, differentiating
+<span class="math" data-tex="\(\rho(\exp(tX)g)=\rho(\exp(tX))\rho(g)\)">\(\rho(\exp(tX)g)=\rho(\exp(tX))\rho(g)\)</span>
+at zero gives
+<span class="math math-display" data-tex="\[
+d\rho_g(dR_g X)=\rho_*X\,\rho(g).
+\tag{D.6}
+\]">\[
+d\rho_g(dR_g X)=\rho_*X\,\rho(g).
+\tag{D.6}
+\]</span>
+If <span class="math" data-tex="\(p(t)=s(\gamma(t))g(t)\)">\(p(t)=s(\gamma(t))g(t)\)</span> is horizontal, the coordinate of <span class="math" data-tex="\([p(t),w]\)">\([p(t),w]\)</span> is <span class="math" data-tex="\(v(t)=\rho(g(t))w\)">\(v(t)=\rho(g(t))w\)</span>. Combining (C.1) with (D.6) yields exactly (D.5). For arbitrary initial <span class="math" data-tex="\(v(a)\)">\(v(a)\)</span>, (D.4) provides a solution on the whole path. Uniqueness is the local linear differential-equation uniqueness in Local tools 2.1, applied successively on the same finite chart subdivision; hence it is the unique solution.</p>
+<p>For completeness, the derivative of a general vector field <span class="math" data-tex="\(v(t)\)">\(v(t)\)</span> along a smooth path is locally <span class="math" data-tex="\(v&#x27;+\rho_*(A(\gamma&#x27;))v\)">\(v&#x27;+\rho_*(A(\gamma&#x27;))v\)</span>. This is (D.2) applied to the pullback bundle over the time interval. The pullback principal charts are those of PB A.3, and (A.7) pulled back along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> proves that their potentials still transform correctly. Thus the derivative is independent of the chart, and its zero equation is (D.5). For a section of <span class="math" data-tex="\(E\)">\(E\)</span>, substituting its values along the path recovers D.1 by the chain rule. □</p>
+<h2 id="e-product-transport-and-transport-on-the-hopf-bundle"><span id="section-6"></span><span id="6-worked-examples"></span>E. Product transport and transport on the Hopf bundle</h2>
+<p><strong>Lemma E.1 (the circle parameter and the constant <span class="math" data-tex="\(\pi\)">\(\pi\)</span>).</strong> On <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span> the group exponential <span class="math" data-tex="\(z(t)=\exp_{U(1)}(it)\)">\(z(t)=\exp_{U(1)}(it)\)</span> has <span class="math" data-tex="\(z&#x27;=iz\)">\(z&#x27;=iz\)</span>, <span class="math" data-tex="\(z(0)=1\)">\(z(0)=1\)</span>, and period <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. It is injective on <span class="math" data-tex="\([0,2\pi)\)">\([0,2\pi)\)</span> and traverses the unit circle once with positive tangent <span class="math" data-tex="\(iz\)">\(iz\)</span>. For a real smooth function <span class="math" data-tex="\(b(t)\)">\(b(t)\)</span>, the scalar equation <span class="math" data-tex="\(g&#x27;=-ib(t)g\)">\(g&#x27;=-ib(t)g\)</span> has solution
+<span class="math math-display" data-tex="\[
+g(t)=\exp_{U(1)}\!\left(-i\int_a^t b(s)\,ds\right)g(a).
+\tag{E.1}
+\]">\[
+g(t)=\exp_{U(1)}\!\left(-i\int_a^t b(s)\,ds\right)g(a).
+\tag{E.1}
+\]</span></p>
+<p><strong>Proof.</strong> PB E.1 constructs <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span> as a smooth level set. At <span class="math" data-tex="\(1\)">\(1\)</span> its tangent space is <span class="math" data-tex="\(i\mathbb R\)">\(i\mathbb R\)</span>, since the derivative of <span class="math" data-tex="\(|z|^2\)">\(|z|^2\)</span> is <span class="math" data-tex="\(2\operatorname{Re}(\bar z\,\cdot)\)">\(2\operatorname{Re}(\bar z\,\cdot)\)</span>. The group exponential of Local tools 2.3 solves <span class="math" data-tex="\(z&#x27;=iz\)">\(z&#x27;=iz\)</span>, has the addition identity <span class="math" data-tex="\(z(t+s)=z(t)z(s)\)">\(z(t+s)=z(t)z(s)\)</span>, and exists for all real <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>We identify its period with the circular constant, rather than assume it. DG-CHAR-17 A.5 proves
+<span class="math math-display" data-tex="\[
+\pi=4\int_0^1\frac{du}{1+u^2},
+\tag{E.2}
+\]">\[
+\pi=4\int_0^1\frac{du}{1+u^2},
+\tag{E.2}
+\]</span>
+with <span class="math" data-tex="\(\pi\)">\(\pi\)</span> also equal to the unit disk area. Define
+<span class="math math-display" data-tex="\[
+\alpha(u)=\frac{1+iu}{1-iu},\qquad
+t(u)=2\int_0^u\frac{dr}{1+r^2}.
+\]">\[
+\alpha(u)=\frac{1+iu}{1-iu},\qquad
+t(u)=2\int_0^u\frac{dr}{1+r^2}.
+\]</span>
+The denominator is never zero for real <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(|\alpha(u)|=1\)">\(|\alpha(u)|=1\)</span>. Differentiation gives
+<span class="math" data-tex="\(\alpha&#x27;(u)=2i\alpha(u)/(1+u^2)=i\alpha(u)t&#x27;(u)\)">\(\alpha&#x27;(u)=2i\alpha(u)/(1+u^2)=i\alpha(u)t&#x27;(u)\)</span>.
+The map <span class="math" data-tex="\(t(u)\)">\(t(u)\)</span> is strictly increasing because <span class="math" data-tex="\(t&#x27;(u)&gt;0\)">\(t&#x27;(u)&gt;0\)</span>; its inverse is smooth on its range by Local tools 1.2. Substitution <span class="math" data-tex="\(r=1/s\)">\(r=1/s\)</span> in the integral from <span class="math" data-tex="\(1\)">\(1\)</span> to a finite <span class="math" data-tex="\(R&gt;1\)">\(R&gt;1\)</span>, followed by <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>, shows
+<span class="math" data-tex="\(\int_0^\infty dr/(1+r^2)=2\int_0^1 dr/(1+r^2)=\pi/2\)">\(\int_0^\infty dr/(1+r^2)=2\int_0^1 dr/(1+r^2)=\pi/2\)</span>.
+The integrand is even, so the range of <span class="math" data-tex="\(t(u)\)">\(t(u)\)</span> is <span class="math" data-tex="\((-\pi,\pi)\)">\((-\pi,\pi)\)</span>. Here the inverse exists onto this interval by strict monotonicity, continuity and the intermediate value theorem in Local tools 0.0. The curve <span class="math" data-tex="\(\alpha(u(t))\)">\(\alpha(u(t))\)</span> solves <span class="math" data-tex="\(z&#x27;=iz\)">\(z&#x27;=iz\)</span> with value <span class="math" data-tex="\(1\)">\(1\)</span> at zero; uniqueness in Local tools 2.1 identifies it with <span class="math" data-tex="\(z(t)\)">\(z(t)\)</span> on that interval.</p>
+<p>The map <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a bijection from <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> to <span class="math" data-tex="\(U(1)\setminus\{-1\}\)">\(U(1)\setminus\{-1\}\)</span>: for <span class="math" data-tex="\(z=X+iY\ne-1\)">\(z=X+iY\ne-1\)</span> on the circle, its inverse is <span class="math" data-tex="\(u=Y/(1+X)\)">\(u=Y/(1+X)\)</span>, as substitution verifies using <span class="math" data-tex="\(X^2+Y^2=1\)">\(X^2+Y^2=1\)</span>. Also <span class="math" data-tex="\(\alpha(u)\to-1\)">\(\alpha(u)\to-1\)</span> as <span class="math" data-tex="\(u\to\pm\infty\)">\(u\to\pm\infty\)</span>. Continuity of the global solution therefore gives <span class="math" data-tex="\(z(\pi)=z(-\pi)=-1\)">\(z(\pi)=z(-\pi)=-1\)</span>. The addition identity gives <span class="math" data-tex="\(z(2\pi)=1\)">\(z(2\pi)=1\)</span> and <span class="math" data-tex="\(z(t+2\pi)=z(t)\)">\(z(t+2\pi)=z(t)\)</span>. On <span class="math" data-tex="\((-\pi,\pi)\)">\((-\pi,\pi)\)</span>, injectivity follows from <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and the strict increase of <span class="math" data-tex="\(t(u)\)">\(t(u)\)</span>, with neither endpoint value <span class="math" data-tex="\(-1\)">\(-1\)</span> attained inside. Every half-open interval of length <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, in particular <span class="math" data-tex="\([0,2\pi)\)">\([0,2\pi)\)</span>, consequently gives each circle point once, by shifting the parameter and multiplying by the fixed value of <span class="math" data-tex="\(z\)">\(z\)</span> at the shift. The tangent is <span class="math" data-tex="\(iz\)">\(iz\)</span>, which fixes the positive orientation.</p>
+<p>Finally the chain rule and the fundamental theorem applied to the integral in (E.1) show that its right side has derivative <span class="math" data-tex="\(-ib(t)\)">\(-ib(t)\)</span> times itself and the correct initial value. Uniqueness proves (E.1). The same formula on successive pieces handles a continuous, piecewise smooth <span class="math" data-tex="\(b\)">\(b\)</span>. We may write this group exponential simply as <span class="math" data-tex="\(\exp(it)\)">\(\exp(it)\)</span> in the calculations below. □</p>
+<p><strong>Example E.2 (a zero potential and its other descriptions).</strong> On <span class="math" data-tex="\(M\times G\)">\(M\times G\)</span>, <span class="math" data-tex="\(A=0\)">\(A=0\)</span> gives the connection <span class="math" data-tex="\(\omega=\theta\)">\(\omega=\theta\)</span>. Its transport keeps the group coordinate constant. After replacing the standard section by <span class="math" data-tex="\(s&#x27;=sh\)">\(s&#x27;=sh\)</span>, its potential is <span class="math" data-tex="\(h^*\theta\)">\(h^*\theta\)</span>, which need not vanish.</p>
+<p><strong>Proof.</strong> A.3 proves that <span class="math" data-tex="\(\omega=\theta\)">\(\omega=\theta\)</span> is a connection. Equation (C.1) is now <span class="math" data-tex="\(g&#x27;=0\)">\(g&#x27;=0\)</span>, so its solution is the constant <span class="math" data-tex="\(g(t)=g(a)\)">\(g(t)=g(a)\)</span>, by Local tools 0.3 or uniqueness in 2.1. Formula (A.7) gives <span class="math" data-tex="\(A&#x27;=h^*\theta\)">\(A&#x27;=h^*\theta\)</span>. For an explicit nonzero example take <span class="math" data-tex="\(G=(\mathbb R,+)\)">\(G=(\mathbb R,+)\)</span>, <span class="math" data-tex="\(M=\mathbb R\)">\(M=\mathbb R\)</span>, and <span class="math" data-tex="\(h(x)=x\)">\(h(x)=x\)</span>. Its left form is <span class="math" data-tex="\(dg\)">\(dg\)</span>, so the new potential is <span class="math" data-tex="\(dx\)">\(dx\)</span>, though the total connection has not changed. □</p>
+<p><strong>Example E.3 (the Hopf connection and its latitude transport).</strong> On the principal bundle <span class="math" data-tex="\(S^3\to\mathbb {CP}^1\)">\(S^3\to\mathbb {CP}^1\)</span> of PB E.1, the form
+<span class="math math-display" data-tex="\[
+\omega=\bar z_0\,dz_0+\bar z_1\,dz_1
+\tag{E.3}
+\]">\[
+\omega=\bar z_0\,dz_0+\bar z_1\,dz_1
+\tag{E.3}
+\]</span>
+is a <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>-connection. In the unit section <span class="math" data-tex="\(s_0(w)=(1,w)/\sqrt{1+|w|^2}\)">\(s_0(w)=(1,w)/\sqrt{1+|w|^2}\)</span>, its potential is
+<span class="math math-display" data-tex="\[
+A_0=\frac{\bar w\,dw-w\,d\bar w}{2(1+|w|^2)}.
+\tag{E.4}
+\]">\[
+A_0=\frac{\bar w\,dw-w\,d\bar w}{2(1+|w|^2)}.
+\tag{E.4}
+\]</span>
+For the loop <span class="math" data-tex="\(w(\phi)=r\exp(i\phi)\)">\(w(\phi)=r\exp(i\phi)\)</span>, <span class="math" data-tex="\(0\le\phi\le2\pi\)">\(0\le\phi\le2\pi\)</span>, its transport from <span class="math" data-tex="\(s_0(r)\)">\(s_0(r)\)</span> ends at
+<span class="math math-display" data-tex="\[
+s_0(r)\exp\!\left(-\frac{2\pi i r^2}{1+r^2}\right).
+\tag{E.5}
+\]">\[
+s_0(r)\exp\!\left(-\frac{2\pi i r^2}{1+r^2}\right).
+\tag{E.5}
+\]</span>
+The induced derivative on the associated tautological line is the orthogonal projection of the ordinary derivative in the product <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>-bundle.</p>
+<p><strong>Proof.</strong> For a tangent vector <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(S^3\)">\(S^3\)</span>, differentiation of <span class="math" data-tex="\(|z_0|^2+|z_1|^2=1\)">\(|z_0|^2+|z_1|^2=1\)</span> gives
+<span class="math" data-tex="\(2\operatorname{Re}(\bar z_0v_0+\bar z_1v_1)=0\)">\(2\operatorname{Re}(\bar z_0v_0+\bar z_1v_1)=0\)</span>.
+Thus (E.3) takes values in <span class="math" data-tex="\(i\mathbb R=\mathfrak u(1)\)">\(i\mathbb R=\mathfrak u(1)\)</span>. The fundamental vector for <span class="math" data-tex="\(i\tau\)">\(i\tau\)</span> is <span class="math" data-tex="\(i\tau z\)">\(i\tau z\)</span>, by differentiating scalar multiplication; its <span class="math" data-tex="\(\omega\)">\(\omega\)</span>-value is <span class="math" data-tex="\(i\tau(|z_0|^2+|z_1|^2)=i\tau\)">\(i\tau(|z_0|^2+|z_1|^2)=i\tau\)</span>. For fixed <span class="math" data-tex="\(a\in U(1)\)">\(a\in U(1)\)</span>, replacing <span class="math" data-tex="\((z,v)\)">\((z,v)\)</span> by <span class="math" data-tex="\((za,va)\)">\((za,va)\)</span> leaves each <span class="math" data-tex="\(\bar z_jv_j\)">\(\bar z_jv_j\)</span> unchanged. Since <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span> is abelian, its conjugations and therefore its adjoint action are the identity. These are precisely (A.4), proving it is a connection.</p>
+<p>Write <span class="math" data-tex="\(h=1+|w|^2\)">\(h=1+|w|^2\)</span>. Directly differentiating <span class="math" data-tex="\(s_0=h^{-1/2}(1,w)\)">\(s_0=h^{-1/2}(1,w)\)</span>, and using <span class="math" data-tex="\(dh=\bar w\,dw+w\,d\bar w\)">\(dh=\bar w\,dw+w\,d\bar w\)</span>, gives
+<span class="math math-display" data-tex="\[
+s_0^*ds_0=h^{-1}\bar w\,dw-\frac{dh}{2h},
+\]">\[
+s_0^*ds_0=h^{-1}\bar w\,dw-\frac{dh}{2h},
+\]</span>
+which is (E.4); here the star means the conjugate transpose of the column <span class="math" data-tex="\(s_0\)">\(s_0\)</span>. Smoothness of the positive square root follows from Local tools 1.2 as in PB D.2. Along the loop, E.1 gives <span class="math" data-tex="\(dw=iw\,d\phi\)">\(dw=iw\,d\phi\)</span> and <span class="math" data-tex="\(d\bar w=-i\bar w\,d\phi\)">\(d\bar w=-i\bar w\,d\phi\)</span>, so
+<span class="math math-display" data-tex="\[
+A_0(\partial_\phi)=\frac{ir^2}{1+r^2}.
+\]">\[
+A_0(\partial_\phi)=\frac{ir^2}{1+r^2}.
+\]</span>
+The horizontal equation (C.1) is the scalar equation of E.1, with this constant coefficient. Starting at group coordinate <span class="math" data-tex="\(1\)">\(1\)</span> and integrating over <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> proves (E.5). For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> the path and its lift are constant, also agreeing with the formula.</p>
+<p>To see path dependence at a fixed base point, take two distinct finite positive radii. Their factors in (E.5) are distinct, because <span class="math" data-tex="\(r^2/(1+r^2)\)">\(r^2/(1+r^2)\)</span> is strictly increasing in <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, has values in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, and E.1 proves injectivity of the exponential over one period. For each radius, precede its loop by the radial segment from <span class="math" data-tex="\(w=0\)">\(w=0\)</span> to <span class="math" data-tex="\(w=r\)">\(w=r\)</span>, and follow it by the reverse radial segment. Formula (E.4) vanishes on these real radial segments, so their lifts have constant section coordinate; C.2 shows that the two resulting loops, now both based at <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, have exactly the two distinct factors. Hence the endpoints alone do not determine transport.</p>
+<p>PB E.1 identifies the associated standard line with the tautological line. In its unit frame <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, a local vector is <span class="math" data-tex="\(s_0 u\)">\(s_0 u\)</span> for a complex scalar <span class="math" data-tex="\(u\)">\(u\)</span>. Orthogonal projection of a vector <span class="math" data-tex="\(v\in\mathbb C^2\)">\(v\in\mathbb C^2\)</span> onto this line is <span class="math" data-tex="\(s_0(s_0^*v)\)">\(s_0(s_0^*v)\)</span>: its difference from <span class="math" data-tex="\(v\)">\(v\)</span> has inner product zero with <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, and <span class="math" data-tex="\(s_0^*s_0=1\)">\(s_0^*s_0=1\)</span>. Projecting <span class="math" data-tex="\(d(s_0u)\)">\(d(s_0u)\)</span> therefore gives
+<span class="math math-display" data-tex="\[
+s_0\bigl(du+(s_0^*ds_0)u\bigr)=s_0(du+A_0u).
+\]">\[
+s_0\bigl(du+(s_0^*ds_0)u\bigr)=s_0(du+A_0u).
+\]</span>
+D.1 gives this same formula for the induced derivative. The second unit chart gives the same conclusion and covers the remaining point; both constructions are intrinsic under change of frame. □</p>
+<h2 id="f-exercises-with-complete-solutions"><span id="section-7"></span><span id="7-exercises-and-complete-solutions"></span>F. Exercises with complete solutions</h2>
+<p><strong>Exercise F.1 (check the matrix formula).</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be an embedded matrix Lie group and <span class="math" data-tex="\(A\in\Omega^1(M,\mathfrak g)\)">\(A\in\Omega^1(M,\mathfrak g)\)</span>. Verify directly that on <span class="math" data-tex="\(M\times G\)">\(M\times G\)</span>
+<span class="math math-display" data-tex="\[
+\omega=g^{-1}Ag+g^{-1}dg
+\tag{F.1}
+\]">\[
+\omega=g^{-1}Ag+g^{-1}dg
+\tag{F.1}
+\]</span>
+is a principal connection.</p>
+<p><strong>Solution.</strong> Left multiplication and inversion in the matrix group give <span class="math" data-tex="\(\theta_g(\eta)=g^{-1}\eta\)">\(\theta_g(\eta)=g^{-1}\eta\)</span>; differentiating conjugation gives <span class="math" data-tex="\(\operatorname{Ad}(g^{-1})X=g^{-1}Xg\)">\(\operatorname{Ad}(g^{-1})X=g^{-1}Xg\)</span>. These expressions belong to <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, since they are derivatives at the identity of curves in <span class="math" data-tex="\(G\)">\(G\)</span>. Thus (F.1) is a smooth <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-valued form. A fundamental vector is <span class="math" data-tex="\((0,gX)\)">\((0,gX)\)</span>, on which it has value <span class="math" data-tex="\(X\)">\(X\)</span>. For constant <span class="math" data-tex="\(a\in G\)">\(a\in G\)</span>, a tangent <span class="math" data-tex="\((v,\eta)\)">\((v,\eta)\)</span> at <span class="math" data-tex="\((x,g)\)">\((x,g)\)</span> is sent to <span class="math" data-tex="\((v,\eta a)\)">\((v,\eta a)\)</span> at <span class="math" data-tex="\((x,ga)\)">\((x,ga)\)</span>, and (F.1) there equals
+<span class="math math-display" data-tex="\[
+a^{-1}\bigl(g^{-1}A(v)g+g^{-1}\eta\bigr)a
+=\operatorname{Ad}(a^{-1})\omega(v,\eta).
+\]">\[
+a^{-1}\bigl(g^{-1}A(v)g+g^{-1}\eta\bigr)a
+=\operatorname{Ad}(a^{-1})\omega(v,\eta).
+\]</span>
+A.2 supplies exactly the two necessary and sufficient identities, so this proves the assertion directly. □</p>
+<p><strong>Exercise F.2 (transport around an abelian rectangle).</strong> On the trivial <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>-bundle over <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, take <span class="math" data-tex="\(A=i x\,dy\)">\(A=i x\,dy\)</span>. Starting at group coordinate <span class="math" data-tex="\(1\)">\(1\)</span> over <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>, compute transport along the positively oriented boundary of <span class="math" data-tex="\([0,a]\times[0,b]\)">\([0,a]\times[0,b]\)</span>, where <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span>.</p>
+<p><strong>Solution.</strong> Travel first in the positive <span class="math" data-tex="\(x\)">\(x\)</span>-direction, then the positive <span class="math" data-tex="\(y\)">\(y\)</span>-direction, then backwards in <span class="math" data-tex="\(x\)">\(x\)</span>, then backwards in <span class="math" data-tex="\(y\)">\(y\)</span>. On the first and third sides <span class="math" data-tex="\(dy=0\)">\(dy=0\)</span>, so the group coordinate does not change by (C.1). On the second side <span class="math" data-tex="\(x=a\)">\(x=a\)</span>, and E.1 gives the factor <span class="math" data-tex="\(\exp(-iab)\)">\(\exp(-iab)\)</span>. On the final side <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, so its factor is <span class="math" data-tex="\(1\)">\(1\)</span>. C.2 composes them to <span class="math" data-tex="\(\exp(-iab)\)">\(\exp(-iab)\)</span>. For any initial group coordinate <span class="math" data-tex="\(c\)">\(c\)</span>, equivariance gives endpoint <span class="math" data-tex="\(\exp(-iab)c\)">\(\exp(-iab)c\)</span>. This computation uses the four ordinary differential equations, without assuming a curvature or Stokes theorem. □</p>
+<p><strong>Exercise F.3 (extend an axis potential with a cutoff).</strong> Let <span class="math" data-tex="\(f:\mathbb R\to\mathbb R\)">\(f:\mathbb R\to\mathbb R\)</span> be smooth. Extend <span class="math" data-tex="\(A_S=i f(x)\,dx\)">\(A_S=i f(x)\,dx\)</span> from the <span class="math" data-tex="\(x\)">\(x\)</span>-axis to a potential on the plane which vanishes outside <span class="math" data-tex="\(|y|&lt;2\)">\(|y|&lt;2\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(\eta(t)=e^{-1/t^2}\)">\(\eta(t)=e^{-1/t^2}\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, zero for <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span>, the smooth flat function of Local tools 0.5, and put
+<span class="math math-display" data-tex="\[
+\chi(y)=\frac{\eta(3-y^2)}
+ {\eta(3-y^2)+\eta(y^2-1)}.
+\tag{F.2}
+\]">\[
+\chi(y)=\frac{\eta(3-y^2)}
+ {\eta(3-y^2)+\eta(y^2-1)}.
+\tag{F.2}
+\]</span>
+The denominator is positive everywhere: its first term is positive when <span class="math" data-tex="\(y^2&lt;3\)">\(y^2&lt;3\)</span>, while its second term is positive when <span class="math" data-tex="\(y^2&gt;1\)">\(y^2&gt;1\)</span>, and these two conditions cover all real <span class="math" data-tex="\(y\)">\(y\)</span>. Thus <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is smooth, lies between zero and one, equals one for <span class="math" data-tex="\(|y|\le1\)">\(|y|\le1\)</span>, and equals zero for <span class="math" data-tex="\(|y|\ge\sqrt3\)">\(|y|\ge\sqrt3\)</span>. Define <span class="math" data-tex="\(A=i\chi(y)f(x)\,dx\)">\(A=i\chi(y)f(x)\,dx\)</span>. It pulls back to <span class="math" data-tex="\(A_S\)">\(A_S\)</span> on <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, and vanishes for <span class="math" data-tex="\(|y|\ge2\)">\(|y|\ge2\)</span>; indeed its support in the <span class="math" data-tex="\(y\)">\(y\)</span>-direction is contained in <span class="math" data-tex="\([-\sqrt3,\sqrt3]\subset(-2,2)\)">\([-\sqrt3,\sqrt3]\subset(-2,2)\)</span>. A.3 gives the full principal connection from this potential. This extends the tangential data as in B.3, without prescribing unrelated normal data. □</p>
+<p><strong>Exercise F.4 (a noncommuting rectangle).</strong> On the trivial real or complex rank-two vector bundle over <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, let the connection potential be <span class="math" data-tex="\(A=B\,dx+C\,dy\)">\(A=B\,dx+C\,dy\)</span>, for fixed matrices <span class="math" data-tex="\(B,C\)">\(B,C\)</span>. Determine the transport matrix around the same positive rectangle and its leading term as <span class="math" data-tex="\(a,b\to0\)">\(a,b\to0\)</span>.</p>
+<p><strong>Solution.</strong> Use the standard representation of the corresponding general linear group. D.2 gives <span class="math" data-tex="\(v&#x27;=-A(\gamma&#x27;)v\)">\(v&#x27;=-A(\gamma&#x27;)v\)</span>. For a constant matrix <span class="math" data-tex="\(D\)">\(D\)</span>, the matrix exponential <span class="math" data-tex="\(e^{tD}\)">\(e^{tD}\)</span> is the group exponential of Local tools 2.3, equivalently the solution of <span class="math" data-tex="\(U&#x27;=DU,\ U(0)=I\)">\(U&#x27;=DU,\ U(0)=I\)</span>. To verify the latter description from that lesson's left invariant convention, it first gives <span class="math" data-tex="\(U&#x27;=UD\)">\(U&#x27;=UD\)</span>. The function <span class="math" data-tex="\(V(t)=DU(t)-U(t)D\)">\(V(t)=DU(t)-U(t)D\)</span> then satisfies <span class="math" data-tex="\(V&#x27;=VD,\ V(0)=0\)">\(V&#x27;=VD,\ V(0)=0\)</span>; uniqueness of the linear matrix equation by Local tools 2.1 makes <span class="math" data-tex="\(V=0\)">\(V=0\)</span>. Thus <span class="math" data-tex="\(U&#x27;=DU\)">\(U&#x27;=DU\)</span> as well. This also proves the constant-coefficient transport formula without assuming a power-series theorem.</p>
+<p>The four successive factors are <span class="math" data-tex="\(e^{-aB}\)">\(e^{-aB}\)</span>, <span class="math" data-tex="\(e^{-bC}\)">\(e^{-bC}\)</span>, <span class="math" data-tex="\(e^{aB}\)">\(e^{aB}\)</span>, and <span class="math" data-tex="\(e^{bC}\)">\(e^{bC}\)</span>, each acting on the left of the current vector. Therefore
+<span class="math math-display" data-tex="\[
+H(a,b)=e^{bC}e^{aB}e^{-bC}e^{-aB}.
+\tag{F.3}
+\]">\[
+H(a,b)=e^{bC}e^{aB}e^{-bC}e^{-aB}.
+\tag{F.3}
+\]</span>
+In particular <span class="math" data-tex="\(H(a,0)=H(0,b)=I\)">\(H(a,0)=H(0,b)=I\)</span>, by the group exponential addition identity. Differentiate first in <span class="math" data-tex="\(a\)">\(a\)</span> at <span class="math" data-tex="\(a=0\)">\(a=0\)</span>:
+<span class="math math-display" data-tex="\[
+\partial_aH(0,b)=e^{bC}Be^{-bC}-B.
+\]">\[
+\partial_aH(0,b)=e^{bC}Be^{-bC}-B.
+\]</span>
+Differentiating this in <span class="math" data-tex="\(b\)">\(b\)</span> at zero gives
+<span class="math" data-tex="\(\partial_b\partial_aH(0,0)=CB-BC=-[B,C]\)">\(\partial_b\partial_aH(0,0)=CB-BC=-[B,C]\)</span>,
+where <span class="math" data-tex="\([B,C]=BC-CB\)">\([B,C]=BC-CB\)</span>. The mixed partials commute by PB C.3. Twice applying the fundamental theorem, using the two constant axis values, yields
+<span class="math math-display" data-tex="\[
+H(a,b)-I
+=\int_0^a\int_0^b
+ \partial_a\partial_b H(s,t)\,dt\,ds.
+\tag{F.4}
+\]">\[
+H(a,b)-I
+=\int_0^a\int_0^b
+ \partial_a\partial_b H(s,t)\,dt\,ds.
+\tag{F.4}
+\]</span>
+The group exponential is smooth by Local tools 2.3, so <span class="math" data-tex="\(H\)">\(H\)</span> has continuous third derivatives. On a fixed small compact rectangle these are bounded by Local tools 0.1. The segment estimate in 0.3 then bounds
+<span class="math" data-tex="\(\|\partial_a\partial_bH(s,t)-\partial_a\partial_bH(0,0)\|\)">\(\|\partial_a\partial_bH(s,t)-\partial_a\partial_bH(0,0)\|\)</span>
+by <span class="math" data-tex="\(K(|s|+|t|)\)">\(K(|s|+|t|)\)</span>, for some <span class="math" data-tex="\(K\)">\(K\)</span>. Integrating this bound, also for negative oriented endpoints by taking absolute values of the integrals, proves
+<span class="math math-display" data-tex="\[
+H(a,b)=I-ab[B,C]
+ +O\!\left(|ab|(|a|+|b|)\right).
+\tag{F.5}
+\]">\[
+H(a,b)=I-ab[B,C]
+ +O\!\left(|ab|(|a|+|b|)\right).
+\tag{F.5}
+\]</span>
+This remainder estimate remains valid when either side is zero, because then the exact transport is <span class="math" data-tex="\(I\)">\(I\)</span>. It fixes both the travel order and the sign of the leading commutator. □</p>
+<h2 id="free-construction-source">Free construction source</h2>
+<p>Peter W. Michor, <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf"><em>Topics in Differential Geometry</em>, freely accessible author draft</a>, Section 17.3 for projections, complements and horizontal lifts; Sections 19.1, 19.3–19.4 and 19.6 for principal forms, local potentials, existence and transport; Sections 19.8, 19.10, 19.12 and 19.14–19.15 for associated transport and derivatives. Only the connection and degree-zero derivative constructions are used here; curvature, higher covariant exterior derivatives and general holonomy theorems are not prerequisites. The invariant equation and parameter arguments are proved in the earlier Local tools lesson, and the local proofs above supply the extension, equivariance and coordinate calculations.</p>
+<p>Original exposition: CC0 1.0. The freely accessible human construction source is credited above. Earlier programme lessons retain their own source credits and licences.</p>
+<h2 id="references">References</h2>
+<p>[Meinrenken] Eckhard Meinrenken, <em>Principal bundles and connections</em>, lecture notes, <a href="https://www.math.toronto.edu/mein/teaching/moduli.pdf">University of Toronto</a>.</p>
+<footer>CC0-1.0. Source credits and component terms are retained. <a href="index.html">Companion readings and terms</a>.</footer></main></body></html>

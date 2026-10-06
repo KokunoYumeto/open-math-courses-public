@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hecke operators of level one · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-08.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 8 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="hecke-operators-of-level-one">Hecke operators of level one</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A modular form has infinitely many Fourier coefficients, but it belongs to a finite-dimensional space. Hecke operators turn relations among those coefficients into relations among commuting linear maps. Their self-adjointness then produces distinguished forms whose coefficients determine an Euler product.</p>
+<p>We use the lattice-function dictionary of <a href="LG-MF-04.html">Modular forms, lattice functions and Eisenstein series</a>, Section 2; the dimension and integral-basis results of <a href="LG-MF-05.html">The valence formula and the ring of modular forms of level one</a>, Theorem 2.2 and Solution 5; and the Petersson product and coefficient bound of <a href="LG-MF-07.html">The Petersson inner product and Poincaré series</a>, Theorems 1.1 and 2.1. The lattice-counting identities are proved in Section 2. We do not need the adelic description of the Hecke algebra.</p>
+<p>Throughout, <span class="math" data-tex="\(\Gamma=\mathrm{SL}_2(\mathbb Z)\)">\(\Gamma=\mathrm{SL}_2(\mathbb Z)\)</span>, <span class="math" data-tex="\(q=e^{2\pi iz}\)">\(q=e^{2\pi iz}\)</span>, and <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span> is even, unless another weight is explicitly mentioned. We write
+<span class="math math-display" data-tex="\[
+ f(z)=\sum_{r\ge0}a_r(f)q^r.
+\]">\[
+ f(z)=\sum_{r\ge0}a_r(f)q^r.
+\]</span>
+The Petersson product is linear in its first argument:
+<span class="math math-display" data-tex="\[
+ \langle f,g\rangle=\int_{\Gamma\backslash\mathfrak H}
+       f(z)\overline{g(z)}y^k\,\frac{dx\,dy}{y^2}.
+\]">\[
+ \langle f,g\rangle=\int_{\Gamma\backslash\mathfrak H}
+       f(z)\overline{g(z)}y^k\,\frac{dx\,dy}{y^2}.
+\]</span>
+At level one the raw and projective-index-normalized products coincide. Multiplying this product by <span class="math" data-tex="\(3/\pi\)">\(3/\pi\)</span> gives the volume-normalized convention; self-adjointness is unaffected.</p>
+<h2 id="1-lattices-matrices-and-fourier-coefficients">1. Lattices, matrices and Fourier coefficients</h2>
+<p>For a lattice function <span class="math" data-tex="\(F\)">\(F\)</span> of weight <span class="math" data-tex="\(k\)">\(k\)</span>, set
+<span class="math math-display" data-tex="\[
+ F(\lambda\Lambda)=\lambda^{-k}F(\Lambda),\qquad
+ (\mathcal T_nF)(\Lambda)=
+     \sum_{\substack{\Lambda&#x27;\subseteq\Lambda\\\lvert\Lambda/\Lambda&#x27;\rvert=n}}F(\Lambda&#x27;),
+ \qquad (R(d)F)(\Lambda)=F(d\Lambda).
+ \tag{1.1}
+\]">\[
+ F(\lambda\Lambda)=\lambda^{-k}F(\Lambda),\qquad
+ (\mathcal T_nF)(\Lambda)=
+     \sum_{\substack{\Lambda&#x27;\subseteq\Lambda\\\lvert\Lambda/\Lambda&#x27;\rvert=n}}F(\Lambda&#x27;),
+ \qquad (R(d)F)(\Lambda)=F(d\Lambda).
+ \tag{1.1}
+\]</span>
+The sum is over actual sublattices, each once, and <span class="math" data-tex="\(R(d)\)">\(R(d)\)</span> acts as <span class="math" data-tex="\(d^{-k}\)">\(d^{-k}\)</span>.</p>
+<p>Use the ordered basis <span class="math" data-tex="\((z,1)\)">\((z,1)\)</span> of <span class="math" data-tex="\(\Lambda_z=\mathbb Zz+\mathbb Z\)">\(\Lambda_z=\mathbb Zz+\mathbb Z\)</span>.
+A finite-index sublattice has a unique basis
+<span class="math math-display" data-tex="\[
+ (az+b,d),\qquad a,d&gt;0,\quad ad=n,\quad 0\le b&lt;d.
+ \tag{1.2}
+\]">\[
+ (az+b,d),\qquad a,d&gt;0,\quad ad=n,\quad 0\le b&lt;d.
+ \tag{1.2}
+\]</span>
+Indeed, its projection to the coefficient of <span class="math" data-tex="\(z\)">\(z\)</span> is <span class="math" data-tex="\(a\mathbb Z\)">\(a\mathbb Z\)</span>, and its intersection with <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span>. Choose an element <span class="math" data-tex="\(az+b\)">\(az+b\)</span>, reduce <span class="math" data-tex="\(b\)">\(b\)</span> modulo <span class="math" data-tex="\(d\)">\(d\)</span>, and subtract multiples of this element from any other element. These two elements then generate the sublattice. Their coordinate determinant is <span class="math" data-tex="\(ad\)">\(ad\)</span>, which is its index; the projection, intersection and reduced <span class="math" data-tex="\(b\)">\(b\)</span> prove uniqueness.</p>
+<p>Thus <span class="math" data-tex="\(\Lambda&#x27;=d\Lambda_{(az+b)/d}\)">\(\Lambda&#x27;=d\Lambda_{(az+b)/d}\)</span>. If <span class="math" data-tex="\(f(z)=F(\Lambda_z)\)">\(f(z)=F(\Lambda_z)\)</span>, the normalized operator on forms is
+<span class="math math-display" data-tex="\[
+ \boxed{\displaystyle
+ T_nf(z)=n^{k-1}\sum_{\substack{ad=n\\a,d&gt;0}}d^{-k}
+                   \sum_{b=0}^{d-1} f\!\left(\frac{az+b}{d}\right).}
+ \tag{1.3}
+\]">\[
+ \boxed{\displaystyle
+ T_nf(z)=n^{k-1}\sum_{\substack{ad=n\\a,d&gt;0}}d^{-k}
+                   \sum_{b=0}^{d-1} f\!\left(\frac{az+b}{d}\right).}
+ \tag{1.3}
+\]</span>
+In this dictionary <span class="math" data-tex="\(T_n=n^{k-1}\mathcal T_n\)">\(T_n=n^{k-1}\mathcal T_n\)</span>.</p>
+<p>We also need a matrix interpretation. Put
+<span class="math math-display" data-tex="\[
+ D_n=\{\alpha\in M_2(\mathbb Z):\det\alpha=n\},\qquad
+ (f\Vert_k\alpha)(z)=\det(\alpha)^{k/2}(cz+d)^{-k}f(\alpha z).
+ \tag{1.4}
+\]">\[
+ D_n=\{\alpha\in M_2(\mathbb Z):\det\alpha=n\},\qquad
+ (f\Vert_k\alpha)(z)=\det(\alpha)^{k/2}(cz+d)^{-k}f(\alpha z).
+ \tag{1.4}
+\]</span>
+The symbol <span class="math" data-tex="\(\Vert_k\)">\(\Vert_k\)</span> extends the earlier determinant-one slash operator.
+The identity <span class="math" data-tex="\(j(\alpha\beta,z)=j(\alpha,\beta z)j(\beta,z)\)">\(j(\alpha\beta,z)=j(\alpha,\beta z)j(\beta,z)\)</span>, together with multiplicativity of determinants, gives
+<span class="math math-display" data-tex="\[
+ (f\Vert_k\alpha)\Vert_k\beta=f\Vert_k(\alpha\beta).
+\]">\[
+ (f\Vert_k\alpha)\Vert_k\beta=f\Vert_k(\alpha\beta).
+\]</span>
+A nonzero scalar matrix acts trivially, since <span class="math" data-tex="\(k\)">\(k\)</span> is even.</p>
+<p><strong>Lemma 1.1.</strong> Representatives of <span class="math" data-tex="\(\Gamma\backslash D_n\)">\(\Gamma\backslash D_n\)</span> are precisely
+<span class="math math-display" data-tex="\[
+ H_n=\left\{\begin{pmatrix}a&amp;b\\0&amp;d\end{pmatrix}:
+                   a,d&gt;0,\ ad=n,\ 0\le b&lt;d\right\}.
+\]">\[
+ H_n=\left\{\begin{pmatrix}a&amp;b\\0&amp;d\end{pmatrix}:
+                   a,d&gt;0,\ ad=n,\ 0\le b&lt;d\right\}.
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+ T_nf=n^{k/2-1}\sum_{\alpha\in\Gamma\backslash D_n}f\Vert_k\alpha
+ \tag{1.5}
+\]">\[
+ T_nf=n^{k/2-1}\sum_{\alpha\in\Gamma\backslash D_n}f\Vert_k\alpha
+ \tag{1.5}
+\]</span>
+is independent of representatives and preserves <span class="math" data-tex="\(M_k\)">\(M_k\)</span> and <span class="math" data-tex="\(S_k\)">\(S_k\)</span>.</p>
+<p><strong>Proof.</strong>
+Left multiplication by <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> changes an oriented integral row basis of the same sublattice of <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>. The construction (1.2), with coordinates in <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>, supplies its unique representative in <span class="math" data-tex="\(H_n\)">\(H_n\)</span>. The orientation is preserved because all determinants are positive. Since <span class="math" data-tex="\(f\Vert_k\gamma=f\)">\(f\Vert_k\gamma=f\)</span>, the sum is independent of the row basis.</p>
+<p>Right multiplication by <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span> permutes the left cosets of <span class="math" data-tex="\(D_n\)">\(D_n\)</span>. The composition law therefore gives <span class="math" data-tex="\((T_nf)\Vert_k\gamma=T_nf\)">\((T_nf)\Vert_k\gamma=T_nf\)</span>. Formula (1.3) is a finite sum of holomorphic functions. Each summand remains bounded as <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>, and tends to zero there if <span class="math" data-tex="\(f\)">\(f\)</span> is cuspidal, since its argument has imaginary part <span class="math" data-tex="\(ay/d\)">\(ay/d\)</span>. The resulting periodic holomorphic function has a removable singularity in its <span class="math" data-tex="\(q\)">\(q\)</span>-coordinate at zero; its constant term vanishes in the cuspidal case. There is one cusp for <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, so these are exactly the required cusp conditions. ∎</p>
+<p><strong>Theorem 1.2 (coefficient formula).</strong> For <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+ \boxed{\displaystyle a_m(T_nf)=
+          \sum_{d\mid\gcd(m,n)}d^{k-1}a_{mn/d^2}(f).}
+ \tag{1.6}
+\]">\[
+ \boxed{\displaystyle a_m(T_nf)=
+          \sum_{d\mid\gcd(m,n)}d^{k-1}a_{mn/d^2}(f).}
+ \tag{1.6}
+\]</span>
+Here <span class="math" data-tex="\(\gcd(0,n)=n\)">\(\gcd(0,n)=n\)</span>. In particular,
+<span class="math math-display" data-tex="\[
+ a_0(T_nf)=\sigma_{k-1}(n)a_0(f),\qquad a_1(T_nf)=a_n(f).
+ \tag{1.7}
+\]">\[
+ a_0(T_nf)=\sigma_{k-1}(n)a_0(f),\qquad a_1(T_nf)=a_n(f).
+ \tag{1.7}
+\]</span></p>
+<p><strong>Proof.</strong>
+Expand each term of (1.3). The finite geometric sum
+<span class="math math-display" data-tex="\[
+ \sum_{b=0}^{d-1}e^{2\pi irb/d}
+   =\begin{cases}d,&amp;d\mid r,\\0,&amp;d\nmid r\end{cases}
+\]">\[
+ \sum_{b=0}^{d-1}e^{2\pi irb/d}
+   =\begin{cases}d,&amp;d\mid r,\\0,&amp;d\nmid r\end{cases}
+\]</span>
+eliminates all <span class="math" data-tex="\(r\)">\(r\)</span> except <span class="math" data-tex="\(r=d\ell\)">\(r=d\ell\)</span>. The result is
+<span class="math math-display" data-tex="\[
+ T_nf=\sum_{ad=n}\sum_{\ell\ge0}
+              n^{k-1}d^{1-k}a_{d\ell}(f)q^{a\ell}.
+\]">\[
+ T_nf=\sum_{ad=n}\sum_{\ell\ge0}
+              n^{k-1}d^{1-k}a_{d\ell}(f)q^{a\ell}.
+\]</span>
+To obtain <span class="math" data-tex="\(q^m\)">\(q^m\)</span>, require <span class="math" data-tex="\(a\mid m\)">\(a\mid m\)</span> and put <span class="math" data-tex="\(\ell=m/a\)">\(\ell=m/a\)</span>.
+Then <span class="math" data-tex="\(d=n/a\)">\(d=n/a\)</span>, <span class="math" data-tex="\(d\ell=mn/a^2\)">\(d\ell=mn/a^2\)</span>, and
+<span class="math" data-tex="\(n^{k-1}d^{1-k}=a^{k-1}\)">\(n^{k-1}d^{1-k}=a^{k-1}\)</span>. Relabel the divisor <span class="math" data-tex="\(a\)">\(a\)</span> as <span class="math" data-tex="\(d\)">\(d\)</span>.
+The Fourier expansions converge absolutely on every horizontal line of positive height, which justifies these finite regroupings. ∎</p>
+<p>For a prime <span class="math" data-tex="\(p\)">\(p\)</span>, this becomes the particularly useful formula
+<span class="math math-display" data-tex="\[
+ T_pf(z)=p^{k-1}f(pz)+\frac1p\sum_{b=0}^{p-1}f((z+b)/p),
+ \qquad
+ a_m(T_pf)=a_{pm}(f)+p^{k-1}a_{m/p}(f),
+ \tag{1.8}
+\]">\[
+ T_pf(z)=p^{k-1}f(pz)+\frac1p\sum_{b=0}^{p-1}f((z+b)/p),
+ \qquad
+ a_m(T_pf)=a_{pm}(f)+p^{k-1}a_{m/p}(f),
+ \tag{1.8}
+\]</span>
+where <span class="math" data-tex="\(a_{m/p}=0\)">\(a_{m/p}=0\)</span> if <span class="math" data-tex="\(m/p\)">\(m/p\)</span> is not a nonnegative integer.</p>
+<h2 id="2-translating-the-lattice-relations">2. Translating the lattice relations</h2>
+<p>We first prove the lattice-counting identities:
+<span class="math math-display" data-tex="\[
+ \mathcal T_m\mathcal T_n=\mathcal T_{mn}\quad(\gcd(m,n)=1),
+ \qquad
+ \mathcal T_p\mathcal T_{p^r}
+  =\mathcal T_{p^{r+1}}+pR(p)\mathcal T_{p^{r-1}}\quad(r\ge1).
+ \tag{2.1}
+\]">\[
+ \mathcal T_m\mathcal T_n=\mathcal T_{mn}\quad(\gcd(m,n)=1),
+ \qquad
+ \mathcal T_p\mathcal T_{p^r}
+  =\mathcal T_{p^{r+1}}+pR(p)\mathcal T_{p^{r-1}}\quad(r\ge1).
+ \tag{2.1}
+\]</span>
+<strong>Proof of (2.1).</strong> A term of <span class="math" data-tex="\(\mathcal T_m\mathcal T_nF\)">\(\mathcal T_m\mathcal T_nF\)</span> is a chain
+<span class="math" data-tex="\(\Lambda&#x27;&#x27;\subset\Lambda&#x27;\subset\Lambda\)">\(\Lambda&#x27;&#x27;\subset\Lambda&#x27;\subset\Lambda\)</span> with successive indices <span class="math" data-tex="\(n,m\)">\(n,m\)</span>. If <span class="math" data-tex="\((m,n)=1\)">\((m,n)=1\)</span>, the finite abelian group <span class="math" data-tex="\(A=\Lambda/\Lambda&#x27;&#x27;\)">\(A=\Lambda/\Lambda&#x27;&#x27;\)</span>, of order <span class="math" data-tex="\(mn\)">\(mn\)</span>, is the direct sum of its prime-primary groups. Its subgroup of order <span class="math" data-tex="\(n\)">\(n\)</span> is unique: on the primary factors belonging to <span class="math" data-tex="\(n\)">\(n\)</span> it must be the whole group, and on the other factors it must be zero. This subgroup is <span class="math" data-tex="\(\Lambda&#x27;/\Lambda&#x27;&#x27;\)">\(\Lambda&#x27;/\Lambda&#x27;&#x27;\)</span>. Thus every index-<span class="math" data-tex="\(mn\)">\(mn\)</span> final lattice occurs once, proving the coprime rule.</p>
+<p>For the second rule, fix a final lattice of index <span class="math" data-tex="\(p^{r+1}\)">\(p^{r+1}\)</span>. Its intermediate index-<span class="math" data-tex="\(p\)">\(p\)</span> lattices correspond to kernels of nonzero maps <span class="math" data-tex="\(A\to\mathbb F_p\)">\(A\to\mathbb F_p\)</span>, up to nonzero scalar multiplication. The quotient <span class="math" data-tex="\(A/pA\)">\(A/pA\)</span> has dimension one or two, since <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> has rank two; it cannot have dimension zero, because a nonzero finite <span class="math" data-tex="\(p\)">\(p\)</span>-group is not equal to its subgroup of <span class="math" data-tex="\(p\)">\(p\)</span>-multiples. Its dimension is two exactly when <span class="math" data-tex="\(\Lambda&#x27;&#x27;\subset p\Lambda\)">\(\Lambda&#x27;&#x27;\subset p\Lambda\)</span>: indeed <span class="math" data-tex="\(A/pA=\Lambda/(p\Lambda+\Lambda&#x27;&#x27;)\)">\(A/pA=\Lambda/(p\Lambda+\Lambda&#x27;&#x27;)\)</span>. There are respectively one and <span class="math" data-tex="\(p+1\)">\(p+1\)</span> kernels, by counting the nonzero vectors in a one- or two-dimensional dual space. Consequently every final lattice contributes once, with an additional multiplicity <span class="math" data-tex="\(p\)">\(p\)</span> precisely for those contained in <span class="math" data-tex="\(p\Lambda\)">\(p\Lambda\)</span>. Such a lattice has index <span class="math" data-tex="\(p^{r-1}\)">\(p^{r-1}\)</span> in <span class="math" data-tex="\(p\Lambda\)">\(p\Lambda\)</span>, so these additional terms are exactly <span class="math" data-tex="\(pR(p)\mathcal T_{p^{r-1}}F\)">\(pR(p)\mathcal T_{p^{r-1}}F\)</span>. This proves the prime-power rule, including <span class="math" data-tex="\(r=1\)">\(r=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Homothety commutes with the sublattice sums, since scaling gives a bijection of the sublattices being counted. The full divisor-sum relation is
+<span class="math math-display" data-tex="\[
+ \mathcal T_m\mathcal T_n
+   =\sum_{d\mid\gcd(m,n)}dR(d)\mathcal T_{mn/d^2}.
+ \tag{2.2}
+\]">\[
+ \mathcal T_m\mathcal T_n
+   =\sum_{d\mid\gcd(m,n)}dR(d)\mathcal T_{mn/d^2}.
+ \tag{2.2}
+\]</span>
+The algebraic argument below derives its form-valued version from (2.1). The spherical Hecke algebra and its restricted tensor product interpretation belong to the separate lattice and adelic theory.</p>
+<p><strong>Theorem 2.1 (Hecke relations on forms).</strong>
+<span class="math math-display" data-tex="\[
+ T_1=1,\qquad
+ \boxed{\displaystyle T_mT_n=
+       \sum_{d\mid\gcd(m,n)}d^{k-1}T_{mn/d^2}.}
+ \tag{2.3}
+\]">\[
+ T_1=1,\qquad
+ \boxed{\displaystyle T_mT_n=
+       \sum_{d\mid\gcd(m,n)}d^{k-1}T_{mn/d^2}.}
+ \tag{2.3}
+\]</span>
+In particular, the operators commute, <span class="math" data-tex="\(T_mT_n=T_{mn}\)">\(T_mT_n=T_{mn}\)</span> for coprime <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, and
+<span class="math math-display" data-tex="\[
+ T_pT_{p^r}=T_{p^{r+1}}+p^{k-1}T_{p^{r-1}}\quad(r\ge1).
+ \tag{2.4}
+\]">\[
+ T_pT_{p^r}=T_{p^{r+1}}+p^{k-1}T_{p^{r-1}}\quad(r\ge1).
+ \tag{2.4}
+\]</span></p>
+<p><strong>Proof.</strong>
+The coprime rule in (2.1) is unchanged by the normalization <span class="math" data-tex="\(T_n=n^{k-1}\mathcal T_n\)">\(T_n=n^{k-1}\mathcal T_n\)</span>.
+For the prime-power rule, the second term acquires the factor
+<span class="math math-display" data-tex="\[
+ \frac{(p^{r+1})^{k-1}\,p\,p^{-k}}
+      {(p^{r-1})^{k-1}}=p^{k-1}.
+\]">\[
+ \frac{(p^{r+1})^{k-1}\,p\,p^{-k}}
+      {(p^{r-1})^{k-1}}=p^{k-1}.
+\]</span>
+This proves (2.4). It also makes every <span class="math" data-tex="\(T_{p^r}\)">\(T_{p^r}\)</span> a polynomial in <span class="math" data-tex="\(T_p\)">\(T_p\)</span>, while the coprime rule expresses <span class="math" data-tex="\(T_n\)">\(T_n\)</span> as the product of its prime-power operators. The coprime rule with <span class="math" data-tex="\(m,n\)">\(m,n\)</span> interchanged shows that operators belonging to distinct primes commute; hence all <span class="math" data-tex="\(T_n\)">\(T_n\)</span> commute.</p>
+<p>For completeness, the full divisor sum follows algebraically. Fix <span class="math" data-tex="\(p\)">\(p\)</span>, put <span class="math" data-tex="\(P_r=T_{p^r}\)">\(P_r=T_{p^r}\)</span>, <span class="math" data-tex="\(P_0=1\)">\(P_0=1\)</span>, and <span class="math" data-tex="\(Q=p^{k-1}\)">\(Q=p^{k-1}\)</span>. We claim, for <span class="math" data-tex="\(0\le u\le v\)">\(0\le u\le v\)</span>,
+<span class="math math-display" data-tex="\[
+ P_uP_v=\sum_{j=0}^u Q^jP_{u+v-2j}.                 \tag{2.5}
+\]">\[
+ P_uP_v=\sum_{j=0}^u Q^jP_{u+v-2j}.                 \tag{2.5}
+\]</span>
+For <span class="math" data-tex="\(u=0\)">\(u=0\)</span> it is immediate, and for <span class="math" data-tex="\(u=1\)">\(u=1\)</span> it is (2.4).
+For <span class="math" data-tex="\(u\ge2\)">\(u\ge2\)</span>, use <span class="math" data-tex="\(P_u=P_1P_{u-1}-QP_{u-2}\)">\(P_u=P_1P_{u-1}-QP_{u-2}\)</span> and the induction hypotheses.
+In <span class="math" data-tex="\(P_1P_{u-1}P_v\)">\(P_1P_{u-1}P_v\)</span>, each index <span class="math" data-tex="\(u+v-1-2j\)">\(u+v-1-2j\)</span>, <span class="math" data-tex="\(0\le j&lt;u\)">\(0\le j&lt;u\)</span>, is at least one, so (2.4) applies. Subtracting <span class="math" data-tex="\(QP_{u-2}P_v\)">\(QP_{u-2}P_v\)</span> cancels all the second terms except <span class="math" data-tex="\(Q^uP_{v-u}\)">\(Q^uP_{v-u}\)</span>; the remaining first terms are <span class="math" data-tex="\(Q^jP_{u+v-2j}\)">\(Q^jP_{u+v-2j}\)</span> for <span class="math" data-tex="\(0\le j&lt;u\)">\(0\le j&lt;u\)</span>. This proves (2.5).</p>
+<p>Multiply (2.5) over primes. A choice of <span class="math" data-tex="\(j\)">\(j\)</span> at each prime is exactly a divisor <span class="math" data-tex="\(d\)">\(d\)</span> of <span class="math" data-tex="\(\gcd(m,n)\)">\(\gcd(m,n)\)</span>; its factor is <span class="math" data-tex="\(d^{k-1}\)">\(d^{k-1}\)</span> and its remaining operator is <span class="math" data-tex="\(T_{mn/d^2}\)">\(T_{mn/d^2}\)</span>. This gives (2.3).</p>
+<p>Directly translating (2.2) gives the same factor:
+<span class="math math-display" data-tex="\[
+ (mn)^{k-1}d\,d^{-k}\mathcal T_{mn/d^2}
+   =d^{k-1}T_{mn/d^2}.
+\]">\[
+ (mn)^{k-1}d\,d^{-k}\mathcal T_{mn/d^2}
+   =d^{k-1}T_{mn/d^2}.
+\]</span>
+In particular, retaining <span class="math" data-tex="\(d\)">\(d\)</span> but forgetting <span class="math" data-tex="\(R(d)\)">\(R(d)\)</span> would give the wrong normalization. ∎</p>
+<h2 id="3-why-the-operators-are-self-adjoint">3. Why the operators are self-adjoint</h2>
+<p>For <span class="math" data-tex="\(\alpha\in D_n\)">\(\alpha\in D_n\)</span>, write <span class="math" data-tex="\(\alpha^*=n\alpha^{-1}\)">\(\alpha^*=n\alpha^{-1}\)</span>.
+Its entries are integral, <span class="math" data-tex="\(\det\alpha^*=n\)">\(\det\alpha^*=n\)</span>, and <span class="math" data-tex="\((\alpha^*)^*=\alpha\)">\((\alpha^*)^*=\alpha\)</span>.
+Thus the adjugate map permutes the double cosets of <span class="math" data-tex="\(D_n\)">\(D_n\)</span>:
+<span class="math math-display" data-tex="\[
+ (\Gamma\alpha\Gamma)^*=\Gamma\alpha^*\Gamma.
+ \tag{3.1}
+\]">\[
+ (\Gamma\alpha\Gamma)^*=\Gamma\alpha^*\Gamma.
+ \tag{3.1}
+\]</span>
+For composite <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(D_n\)">\(D_n\)</span> need not be a single double coset.</p>
+<p><strong>Theorem 3.1.</strong> On <span class="math" data-tex="\(S_k\)">\(S_k\)</span>,
+<span class="math math-display" data-tex="\[
+ \langle T_nf,g\rangle=\langle f,T_ng\rangle.
+ \tag{3.2}
+\]">\[
+ \langle T_nf,g\rangle=\langle f,T_ng\rangle.
+ \tag{3.2}
+\]</span></p>
+<p><strong>Proof.</strong>
+First record the change of variables behind the adjoint. For any real matrix <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of positive determinant,
+<span class="math math-display" data-tex="\[
+ \operatorname{Im}(\alpha z)
+   =\frac{\det\alpha\,y}{|cz+d|^2},\qquad
+ d\mu(\alpha z)=d\mu(z),\quad d\mu=\frac{dx\,dy}{y^2}.
+ \tag{3.3}
+\]">\[
+ \operatorname{Im}(\alpha z)
+   =\frac{\det\alpha\,y}{|cz+d|^2},\qquad
+ d\mu(\alpha z)=d\mu(z),\quad d\mu=\frac{dx\,dy}{y^2}.
+ \tag{3.3}
+\]</span>
+The second equality follows from the complex derivative
+<span class="math" data-tex="\((\alpha z)&#x27;=\det\alpha/(cz+d)^2\)">\((\alpha z)&#x27;=\det\alpha/(cz+d)^2\)</span>, whose real Jacobian is its squared modulus.
+Consequently
+<span class="math math-display" data-tex="\[
+ (f\Vert_k\alpha)(z)\overline{(g\Vert_k\alpha)(z)}
+                y^k\,d\mu(z)
+ =f(\alpha z)\overline{g(\alpha z)}
+            \operatorname{Im}(\alpha z)^k\,d\mu(\alpha z).
+ \tag{3.4}
+\]">\[
+ (f\Vert_k\alpha)(z)\overline{(g\Vert_k\alpha)(z)}
+                y^k\,d\mu(z)
+ =f(\alpha z)\overline{g(\alpha z)}
+            \operatorname{Im}(\alpha z)^k\,d\mu(\alpha z).
+ \tag{3.4}
+\]</span></p>
+<p>Fix a double coset <span class="math" data-tex="\(\Gamma\alpha\Gamma\)">\(\Gamma\alpha\Gamma\)</span>, and define the two groups
+<span class="math math-display" data-tex="\[
+ H=\Gamma\cap\alpha^{-1}\Gamma\alpha,\qquad
+ H&#x27;=\Gamma\cap\alpha\Gamma\alpha^{-1}=\alpha H\alpha^{-1}.
+ \tag{3.5}
+\]">\[
+ H=\Gamma\cap\alpha^{-1}\Gamma\alpha,\qquad
+ H&#x27;=\Gamma\cap\alpha\Gamma\alpha^{-1}=\alpha H\alpha^{-1}.
+ \tag{3.5}
+\]</span>
+Both contain <span class="math" data-tex="\(-I\)">\(-I\)</span> and <span class="math" data-tex="\(\Gamma(n)\)">\(\Gamma(n)\)</span>. To check the latter assertion, write
+<span class="math" data-tex="\(\gamma=I+nB\)">\(\gamma=I+nB\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \alpha\gamma\alpha^{-1}=I+\alpha B\alpha^*,\qquad
+ \alpha^{-1}\gamma\alpha=I+\alpha^*B\alpha
+\]">\[
+ \alpha\gamma\alpha^{-1}=I+\alpha B\alpha^*,\qquad
+ \alpha^{-1}\gamma\alpha=I+\alpha^*B\alpha
+\]</span>
+are integral determinant-one matrices. Both groups therefore have finite index.</p>
+<p>Let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be a measurable fundamental set for <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.
+If <span class="math" data-tex="\(\delta\)">\(\delta\)</span> runs through <span class="math" data-tex="\(H\backslash\Gamma\)">\(H\backslash\Gamma\)</span>, the sets <span class="math" data-tex="\(\delta\mathcal F\)">\(\delta\mathcal F\)</span> tile a fundamental set <span class="math" data-tex="\(\mathcal F_H\)">\(\mathcal F_H\)</span>, up to null boundaries. Also
+<span class="math math-display" data-tex="\[
+ \Gamma\alpha\Gamma=\bigsqcup_{\delta\in H\backslash\Gamma}
+                       \Gamma\alpha\delta.
+ \tag{3.6}
+\]">\[
+ \Gamma\alpha\Gamma=\bigsqcup_{\delta\in H\backslash\Gamma}
+                       \Gamma\alpha\delta.
+ \tag{3.6}
+\]</span>
+Indeed, equality of the left cosets for <span class="math" data-tex="\(\delta_1,\delta_2\)">\(\delta_1,\delta_2\)</span> is equivalent to
+<span class="math" data-tex="\(\delta_1\delta_2^{-1}\in H\)">\(\delta_1\delta_2^{-1}\in H\)</span>.
+Define <span class="math" data-tex="\(A_\alpha f=\sum_\delta f\Vert_k\alpha\delta\)">\(A_\alpha f=\sum_\delta f\Vert_k\alpha\delta\)</span>.
+Using (3.4) for <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and <span class="math" data-tex="\(g\Vert_k\delta=g\)">\(g\Vert_k\delta=g\)</span>, gives
+<span class="math math-display" data-tex="\[
+ \langle A_\alpha f,g\rangle
+   =\int_{\mathcal F_H}(f\Vert_k\alpha)\overline g\,y^k\,d\mu.
+ \tag{3.7}
+\]">\[
+ \langle A_\alpha f,g\rangle
+   =\int_{\mathcal F_H}(f\Vert_k\alpha)\overline g\,y^k\,d\mu.
+ \tag{3.7}
+\]</span>
+Now change variables <span class="math" data-tex="\(w=\alpha z\)">\(w=\alpha z\)</span>. The set <span class="math" data-tex="\(\alpha\mathcal F_H\)">\(\alpha\mathcal F_H\)</span> is fundamental for <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span>, and (3.4), applied to <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\Vert_k\alpha^{-1}\)">\(g\Vert_k\alpha^{-1}\)</span>, transforms (3.7) into
+<span class="math math-display" data-tex="\[
+ \int_{\alpha\mathcal F_H}
+          f(w)\overline{(g\Vert_k\alpha^{-1})(w)}
+                      \operatorname{Im}(w)^k\,d\mu(w).
+\]">\[
+ \int_{\alpha\mathcal F_H}
+          f(w)\overline{(g\Vert_k\alpha^{-1})(w)}
+                      \operatorname{Im}(w)^k\,d\mu(w).
+\]</span>
+Tile this set instead by <span class="math" data-tex="\(\epsilon\mathcal F\)">\(\epsilon\mathcal F\)</span>, with
+<span class="math" data-tex="\(\epsilon\in H&#x27;\backslash\Gamma\)">\(\epsilon\in H&#x27;\backslash\Gamma\)</span>. Independence of the fundamental set gives
+<span class="math math-display" data-tex="\[
+ \langle A_\alpha f,g\rangle
+       =\left\langle f,\sum_\epsilon
+                        g\Vert_k\alpha^{-1}\epsilon\right\rangle
+       =\langle f,A_{\alpha^{-1}}g\rangle.             \tag{3.8}
+\]">\[
+ \langle A_\alpha f,g\rangle
+       =\left\langle f,\sum_\epsilon
+                        g\Vert_k\alpha^{-1}\epsilon\right\rangle
+       =\langle f,A_{\alpha^{-1}}g\rangle.             \tag{3.8}
+\]</span>
+The coset argument (3.6) also applies to the rational matrix <span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span>.
+Since a positive scalar acts trivially in <span class="math" data-tex="\(\Vert_k\)">\(\Vert_k\)</span>, its double-coset sum equals that for <span class="math" data-tex="\(\alpha^*=n\alpha^{-1}\)">\(\alpha^*=n\alpha^{-1}\)</span>.</p>
+<p>All the integrals used here are absolutely convergent. The previous lesson proves that <span class="math" data-tex="\(y^{k/2}|f(z)|\)">\(y^{k/2}|f(z)|\)</span> and <span class="math" data-tex="\(y^{k/2}|g(z)|\)">\(y^{k/2}|g(z)|\)</span> are globally bounded. By (3.3) the same bound applies after any unitary slash. Products of two such functions times <span class="math" data-tex="\(y^k\)">\(y^k\)</span> are bounded, and the finite-index quotients for <span class="math" data-tex="\(H,H&#x27;\)">\(H,H&#x27;\)</span> have finite hyperbolic area. This also justifies replacing one measurable fundamental set by another.</p>
+<p>Finally, there are finitely many double cosets in <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, since its left-coset set is finite. Sum (3.8) over them and use the permutation (3.1). Multiplication by the real scalar <span class="math" data-tex="\(n^{k/2-1}\)">\(n^{k/2-1}\)</span> in (1.5) proves (3.2). ∎</p>
+<p>The groups in (3.5) have different roles: <span class="math" data-tex="\(f\Vert_k\alpha\)">\(f\Vert_k\alpha\)</span> is invariant under <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> carries its quotient to the quotient for <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span>. Interchanging them before changing variables would be incorrect.</p>
+<h2 id="4-eigenforms-and-their-euler-products">4. Eigenforms and their Euler products</h2>
+<p><strong>Lemma 4.1.</strong> A commuting family of self-adjoint maps on a finite-dimensional positive Hermitian space has an orthogonal basis of simultaneous eigenvectors, even if the family is infinite.</p>
+<p><strong>Proof.</strong>
+For a single self-adjoint map <span class="math" data-tex="\(A\)">\(A\)</span> on a nonzero complex space, its characteristic polynomial has a root, so it has an eigenvector <span class="math" data-tex="\(v\)">\(v\)</span>. If <span class="math" data-tex="\(Av=\lambda v\)">\(Av=\lambda v\)</span>, self-adjointness gives
+<span class="math" data-tex="\(\lambda\langle v,v\rangle=\overline\lambda\langle v,v\rangle\)">\(\lambda\langle v,v\rangle=\overline\lambda\langle v,v\rangle\)</span>, hence <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is real. The orthogonal complement of <span class="math" data-tex="\(v\)">\(v\)</span> is invariant: if <span class="math" data-tex="\(\langle w,v\rangle=0\)">\(\langle w,v\rangle=0\)</span>, then
+<span class="math" data-tex="\(\langle Aw,v\rangle=\langle w,Av\rangle=\lambda\langle w,v\rangle=0\)">\(\langle Aw,v\rangle=\langle w,Av\rangle=\lambda\langle w,v\rangle=0\)</span>.
+Induction on dimension diagonalizes <span class="math" data-tex="\(A\)">\(A\)</span> in an orthogonal basis.</p>
+<p>For a commuting family, if all maps are scalar, any orthogonal basis works. Otherwise choose a nonscalar member <span class="math" data-tex="\(A\)">\(A\)</span>. Its eigenspaces are mutually orthogonal and have smaller dimensions; every other member preserves them because it commutes with <span class="math" data-tex="\(A\)">\(A\)</span>. Its restriction to each eigenspace remains self-adjoint. Apply induction to the whole restricted family on each eigenspace. The induction decreases dimension and does not require the family to be finite. ∎</p>
+<p><strong>Theorem 4.2 (normalized eigenbasis).</strong> The space <span class="math" data-tex="\(S_k\)">\(S_k\)</span> has an orthogonal basis of simultaneous eigenforms, each normalized by <span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span>. For a normalized eigenform <span class="math" data-tex="\(f\)">\(f\)</span>,
+<span class="math math-display" data-tex="\[
+ T_nf=a_n(f)f.
+ \tag{4.1}
+\]">\[
+ T_nf=a_n(f)f.
+ \tag{4.1}
+\]</span>
+Every system of simultaneous eigenvalues on <span class="math" data-tex="\(S_k\)">\(S_k\)</span> has a one-dimensional eigenspace.</p>
+<p><strong>Proof.</strong>
+Finite dimension and positivity come from the preceding lessons; commutativity and self-adjointness are Theorems 2.1 and 3.1. Apply Lemma 4.1.
+If <span class="math" data-tex="\(T_nf=\lambda_nf\)">\(T_nf=\lambda_nf\)</span>, (1.7) gives
+<span class="math" data-tex="\(a_n(f)=\lambda_na_1(f)\)">\(a_n(f)=\lambda_na_1(f)\)</span> for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>.
+If <span class="math" data-tex="\(a_1(f)=0\)">\(a_1(f)=0\)</span>, all coefficients vanish, contradicting <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>.
+Scaling gives <span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span> and (4.1). Two normalized cusp eigenforms with the same system have the same Fourier series, hence are equal; every vector in that common eigenspace is therefore a scalar multiple of one of them. ∎</p>
+<p>This normalization is not unit norm in the Petersson product.</p>
+<p><strong>Theorem 4.3 (Euler product).</strong> For a normalized cusp eigenform,
+<span class="math math-display" data-tex="\[
+ a_{mn}=a_ma_n\quad(\gcd(m,n)=1),\qquad
+ a_{p^{r+1}}=a_pa_{p^r}-p^{k-1}a_{p^{r-1}}\quad(r\ge1),
+ \tag{4.2}
+\]">\[
+ a_{mn}=a_ma_n\quad(\gcd(m,n)=1),\qquad
+ a_{p^{r+1}}=a_pa_{p^r}-p^{k-1}a_{p^{r-1}}\quad(r\ge1),
+ \tag{4.2}
+\]</span>
+and, locally uniformly and absolutely for <span class="math" data-tex="\(\operatorname{Re}s&gt;k/2+1\)">\(\operatorname{Re}s&gt;k/2+1\)</span>,
+<span class="math math-display" data-tex="\[
+ \boxed{\displaystyle
+ L(f,s)=\sum_{n\ge1}\frac{a_n}{n^s}
+       =\prod_p(1-a_pp^{-s}+p^{k-1-2s})^{-1}.}
+ \tag{4.3}
+\]">\[
+ \boxed{\displaystyle
+ L(f,s)=\sum_{n\ge1}\frac{a_n}{n^s}
+       =\prod_p(1-a_pp^{-s}+p^{k-1-2s})^{-1}.}
+ \tag{4.3}
+\]</span></p>
+<p><strong>Proof.</strong>
+Apply (2.3) and (2.4) to <span class="math" data-tex="\(f\)">\(f\)</span>, using (4.1) and <span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span>.
+The coefficient bound of the preceding lesson gives
+<span class="math" data-tex="\(|a_n|\le Cn^{k/2}\)">\(|a_n|\le Cn^{k/2}\)</span>. Thus the Dirichlet series converges absolutely, uniformly on each region <span class="math" data-tex="\(\operatorname{Re}s\ge k/2+1+\varepsilon\)">\(\operatorname{Re}s\ge k/2+1+\varepsilon\)</span>.</p>
+<p>For a fixed prime, let <span class="math" data-tex="\(x=p^{-s}\)">\(x=p^{-s}\)</span>. The absolutely convergent series
+<span class="math" data-tex="\(\sum_{r\ge0}a_{p^r}x^r\)">\(\sum_{r\ge0}a_{p^r}x^r\)</span> satisfies, by (4.2),
+<span class="math math-display" data-tex="\[
+ (1-a_px+p^{k-1}x^2)\sum_{r\ge0}a_{p^r}x^r=1.
+\]">\[
+ (1-a_px+p^{k-1}x^2)\sum_{r\ge0}a_{p^r}x^r=1.
+\]</span>
+The constant term is one, the coefficient of <span class="math" data-tex="\(x\)">\(x\)</span> is zero, and every higher coefficient vanishes by the recurrence. In particular the quadratic factor is nonzero in the stated half-plane.</p>
+<p>A finite product of these prime-power series expands, by multiplicativity, into the sum over integers whose prime divisors belong to that finite set. Absolute convergence permits the expansion and shows that these sums tend to <span class="math" data-tex="\(L(f,s)\)">\(L(f,s)\)</span> as the set exhausts the primes. Moreover,
+<span class="math math-display" data-tex="\[
+ \sum_p\left|\sum_{r\ge1}a_{p^r}p^{-rs}\right|
+ \le \sum_p\sum_{r\ge1}|a_{p^r}|p^{-r\operatorname{Re}s}
+ \le \sum_{n\ge2}|a_n|n^{-\operatorname{Re}s}&lt;\infty.
+\]">\[
+ \sum_p\left|\sum_{r\ge1}a_{p^r}p^{-rs}\right|
+ \le \sum_p\sum_{r\ge1}|a_{p^r}|p^{-r\operatorname{Re}s}
+ \le \sum_{n\ge2}|a_n|n^{-\operatorname{Re}s}&lt;\infty.
+\]</span>
+The same bound is uniform on each smaller closed half-plane. It proves absolute, locally uniform convergence of the product itself. ∎</p>
+<p>The unitary normalization used later is
+<span class="math math-display" data-tex="\[
+ \widetilde T_n=n^{-(k-1)/2}T_n,\qquad
+ \lambda_n=a_nn^{-(k-1)/2}.
+\]">\[
+ \widetilde T_n=n^{-(k-1)/2}T_n,\qquad
+ \lambda_n=a_nn^{-(k-1)/2}.
+\]</span>
+Its Euler product is
+<span class="math math-display" data-tex="\[
+ \sum_{n\ge1}\lambda_nn^{-s}
+      =L(f,s+(k-1)/2)
+      =\prod_p(1-\lambda_pp^{-s}+p^{-2s})^{-1}.
+\]">\[
+ \sum_{n\ge1}\lambda_nn^{-s}
+      =L(f,s+(k-1)/2)
+      =\prod_p(1-\lambda_pp^{-s}+p^{-2s})^{-1}.
+\]</span>
+The elementary bound above gives absolute convergence for <span class="math" data-tex="\(\operatorname{Re}s&gt;3/2\)">\(\operatorname{Re}s&gt;3/2\)</span>. No optimal bound is being asserted.</p>
+<h2 id="5-eisenstein-eigenvalues">5. Eisenstein eigenvalues</h2>
+<p>Recall the constant-one Eisenstein series
+<span class="math math-display" data-tex="\[
+ E_k=1+c_k\sum_{m\ge1}\sigma_{k-1}(m)q^m,\qquad
+ c_k=-\frac{2k}{B_k}.
+\]">\[
+ E_k=1+c_k\sum_{m\ge1}\sigma_{k-1}(m)q^m,\qquad
+ c_k=-\frac{2k}{B_k}.
+\]</span></p>
+<p><strong>Lemma 5.1.</strong> For <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> an integer and <span class="math" data-tex="\(m,n\ge1\)">\(m,n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+ \sigma_t(m)\sigma_t(n)
+       =\sum_{d\mid\gcd(m,n)}d^t\sigma_t(mn/d^2).
+ \tag{5.1}
+\]">\[
+ \sigma_t(m)\sigma_t(n)
+       =\sum_{d\mid\gcd(m,n)}d^t\sigma_t(mn/d^2).
+ \tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong>
+Both sides factor into contributions at each prime. At one prime, write
+<span class="math" data-tex="\(m=p^u,n=p^v\)">\(m=p^u,n=p^v\)</span>, and put <span class="math" data-tex="\(X=p^t\)">\(X=p^t\)</span>. The required polynomial identity is
+<span class="math math-display" data-tex="\[
+ (1+X+\cdots+X^u)(1+X+\cdots+X^v)
+    =\sum_{j=0}^{\min(u,v)}X^j(1+X+\cdots+X^{u+v-2j}).
+ \tag{5.2}
+\]">\[
+ (1+X+\cdots+X^u)(1+X+\cdots+X^v)
+    =\sum_{j=0}^{\min(u,v)}X^j(1+X+\cdots+X^{u+v-2j}).
+ \tag{5.2}
+\]</span>
+For <span class="math" data-tex="\(0\le\ell\le u+v\)">\(0\le\ell\le u+v\)</span>, the coefficient on the left counts pairs
+<span class="math" data-tex="\(i+h=\ell\)">\(i+h=\ell\)</span>, <span class="math" data-tex="\(0\le i\le u\)">\(0\le i\le u\)</span>, <span class="math" data-tex="\(0\le h\le v\)">\(0\le h\le v\)</span>, and equals
+<span class="math" data-tex="\(1+\min(u,v,\ell,u+v-\ell)\)">\(1+\min(u,v,\ell,u+v-\ell)\)</span>. On the right it counts integers
+<span class="math" data-tex="\(0\le j\le\min(u,v)\)">\(0\le j\le\min(u,v)\)</span> with <span class="math" data-tex="\(j\le\ell\le u+v-j\)">\(j\le\ell\le u+v-j\)</span>, giving the same number.
+Outside that range both coefficients are zero. This proves the polynomial identity, including <span class="math" data-tex="\(X=1\)">\(X=1\)</span>, and prime factorization proves (5.1). ∎</p>
+<p><strong>Theorem 5.2.</strong>
+<span class="math math-display" data-tex="\[
+ T_nE_k=\sigma_{k-1}(n)E_k.
+ \tag{5.3}
+\]">\[
+ T_nE_k=\sigma_{k-1}(n)E_k.
+ \tag{5.3}
+\]</span></p>
+<p><strong>Proof.</strong>
+Its constant coefficient is <span class="math" data-tex="\(\sigma_{k-1}(n)\)">\(\sigma_{k-1}(n)\)</span> by (1.7).
+For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, (1.6) and (5.1) give
+<span class="math math-display" data-tex="\[
+ a_m(T_nE_k)
+   =c_k\sum_{d\mid\gcd(m,n)}d^{k-1}\sigma_{k-1}(mn/d^2)
+   =c_k\sigma_{k-1}(m)\sigma_{k-1}(n).
+\]">\[
+ a_m(T_nE_k)
+   =c_k\sum_{d\mid\gcd(m,n)}d^{k-1}\sigma_{k-1}(mn/d^2)
+   =c_k\sigma_{k-1}(m)\sigma_{k-1}(n).
+\]</span>
+These are exactly the coefficients of the right side of (5.3). ∎</p>
+<p>Since <span class="math" data-tex="\(M_k=\mathbb CE_k\oplus S_k\)">\(M_k=\mathbb CE_k\oplus S_k\)</span>, the Eisenstein eigenline and the cusp eigenbasis give an eigenbasis of <span class="math" data-tex="\(M_k\)">\(M_k\)</span>. The Petersson norm of <span class="math" data-tex="\(E_k\)">\(E_k\)</span> diverges; it was not used in the self-adjoint argument on <span class="math" data-tex="\(S_k\)">\(S_k\)</span>.</p>
+<h2 id="6-two-computed-examples">6. Two computed examples</h2>
+<h3 id="6-1-the-discriminant">6.1. The discriminant</h3>
+<p>The space <span class="math" data-tex="\(S_{12}\)">\(S_{12}\)</span> is the line spanned by
+<span class="math math-display" data-tex="\[
+ \Delta=\sum_{n\ge1}\tau(n)q^n=q-24q^2+252q^3-1472q^4+4830q^5-6048q^6+\cdots.
+\]">\[
+ \Delta=\sum_{n\ge1}\tau(n)q^n=q-24q^2+252q^3-1472q^4+4830q^5-6048q^6+\cdots.
+\]</span>
+Since every <span class="math" data-tex="\(T_n\)">\(T_n\)</span> preserves that line and <span class="math" data-tex="\(a_1(\Delta)=1\)">\(a_1(\Delta)=1\)</span>, (1.7) gives
+<span class="math" data-tex="\(T_n\Delta=\tau(n)\Delta\)">\(T_n\Delta=\tau(n)\Delta\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ \tau(mn)=\tau(m)\tau(n)\quad(\gcd(m,n)=1),\qquad
+ \tau(p^{r+1})=\tau(p)\tau(p^r)-p^{11}\tau(p^{r-1}).
+ \tag{6.1}
+\]">\[
+ \tau(mn)=\tau(m)\tau(n)\quad(\gcd(m,n)=1),\qquad
+ \tau(p^{r+1})=\tau(p)\tau(p^r)-p^{11}\tau(p^{r-1}).
+ \tag{6.1}
+\]</span>
+For example, <span class="math" data-tex="\(\tau(6)=(-24)252=-6048\)">\(\tau(6)=(-24)252=-6048\)</span>, and
+<span class="math" data-tex="\(\tau(4)=(-24)^2-2^{11}=576-2048=-1472\)">\(\tau(4)=(-24)^2-2^{11}=576-2048=-1472\)</span>.
+This is Mordell's eigenform explanation of the identities; it applies to every index, not just the displayed coefficients. The Euler product is
+<span class="math math-display" data-tex="\[
+ L(\Delta,s)=\prod_p(1-\tau(p)p^{-s}+p^{11-2s})^{-1},
+ \qquad \operatorname{Re}s&gt;7.
+\]">\[
+ L(\Delta,s)=\prod_p(1-\tau(p)p^{-s}+p^{11-2s})^{-1},
+ \qquad \operatorname{Re}s&gt;7.
+\]</span></p>
+<h3 id="6-2-the-two-eigenlines-in-weight-twenty-four">6.2. The two eigenlines in weight twenty-four</h3>
+<p>The dimension formula gives <span class="math" data-tex="\(\dim S_{24}=2\)">\(\dim S_{24}=2\)</span>. Choose the basis
+<span class="math math-display" data-tex="\[
+ A=E_4^3\Delta,\qquad B=\Delta^2.
+\]">\[
+ A=E_4^3\Delta,\qquad B=\Delta^2.
+\]</span>
+From <span class="math" data-tex="\(E_4=1+240q+2160q^2+6720q^3+\cdots\)">\(E_4=1+240q+2160q^2+6720q^3+\cdots\)</span>,
+<span class="math math-display" data-tex="\[
+ E_4^3=1+720q+179280q^2+16954560q^3+\cdots.
+\]">\[
+ E_4^3=1+720q+179280q^2+16954560q^3+\cdots.
+\]</span>
+For clarity, the <span class="math" data-tex="\(q^2\)">\(q^2\)</span> coefficient is <span class="math" data-tex="\(3(2160)+3(240)^2\)">\(3(2160)+3(240)^2\)</span>, and the <span class="math" data-tex="\(q^3\)">\(q^3\)</span> coefficient is
+<span class="math" data-tex="\(3(6720)+6(240)(2160)+(240)^3\)">\(3(6720)+6(240)(2160)+(240)^3\)</span>.
+Multiplying by the displayed discriminant gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ A&amp;=q+696q^2+162252q^3+12831808q^4+\cdots,\\
+ B&amp;=q^2-48q^3+1080q^4+\cdots.
+ \end{aligned}                                            \tag{6.2}
+\]">\[
+ \begin{aligned}
+ A&amp;=q+696q^2+162252q^3+12831808q^4+\cdots,\\
+ B&amp;=q^2-48q^3+1080q^4+\cdots.
+ \end{aligned}                                            \tag{6.2}
+\]</span>
+For <span class="math" data-tex="\(A\)">\(A\)</span>, the next three coefficients are respectively
+<span class="math" data-tex="\(720-24\)">\(720-24\)</span>, <span class="math" data-tex="\(179280-24(720)+252\)">\(179280-24(720)+252\)</span>, and
+<span class="math" data-tex="\(16954560-24(179280)+252(720)-1472\)">\(16954560-24(179280)+252(720)-1472\)</span>.
+For <span class="math" data-tex="\(B\)">\(B\)</span>, they are <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(2(-24)\)">\(2(-24)\)</span>, and <span class="math" data-tex="\((-24)^2+2(252)\)">\((-24)^2+2(252)\)</span>.
+Their different initial orders prove linear independence.</p>
+<p>The first two coefficients determine any cusp form in this two-dimensional space. Formula (1.8) gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ a_1(T_2A)&amp;=696,&amp;
+ a_2(T_2A)&amp;=12831808+2^{23}=21220416,\\
+ a_1(T_2B)&amp;=1,&amp;a_2(T_2B)&amp;=1080.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ a_1(T_2A)&amp;=696,&amp;
+ a_2(T_2A)&amp;=12831808+2^{23}=21220416,\\
+ a_1(T_2B)&amp;=1,&amp;a_2(T_2B)&amp;=1080.
+ \end{aligned}
+\]</span>
+Matching <span class="math" data-tex="\(q,q^2\)">\(q,q^2\)</span> in (6.2) yields
+<span class="math math-display" data-tex="\[
+ T_2A=696A+20736000B,\qquad T_2B=A+384B.
+\]">\[
+ T_2A=696A+20736000B,\qquad T_2B=A+384B.
+\]</span>
+Our matrices act on column coordinate vectors, so
+<span class="math math-display" data-tex="\[
+ [T_2]_{A,B}=
+ \begin{pmatrix}696&amp;1\\20736000&amp;384\end{pmatrix},\qquad
+ \det(xI-[T_2])=x^2-1080x-20468736.                 \tag{6.3}
+\]">\[
+ [T_2]_{A,B}=
+ \begin{pmatrix}696&amp;1\\20736000&amp;384\end{pmatrix},\qquad
+ \det(xI-[T_2])=x^2-1080x-20468736.                 \tag{6.3}
+\]</span>
+The determinant calculation is <span class="math" data-tex="\(696\cdot384-20736000=-20468736\)">\(696\cdot384-20736000=-20468736\)</span>.
+Its distinct roots are
+<span class="math math-display" data-tex="\[
+ \lambda_\pm=540\pm12\sqrt{144169}.
+\]">\[
+ \lambda_\pm=540\pm12\sqrt{144169}.
+\]</span>
+For either root, a normalized eigenvector is
+<span class="math math-display" data-tex="\[
+ f_\pm=A+(\lambda_\pm-696)B
+      =q+\lambda_\pm q^2+(195660-48\lambda_\pm)q^3+\cdots.
+ \tag{6.4}
+\]">\[
+ f_\pm=A+(\lambda_\pm-696)B
+      =q+\lambda_\pm q^2+(195660-48\lambda_\pm)q^3+\cdots.
+ \tag{6.4}
+\]</span>
+The first row of (6.3) proves the coefficient of <span class="math" data-tex="\(A\)">\(A\)</span> in
+<span class="math" data-tex="\(T_2f_\pm=\lambda_\pm f_\pm\)">\(T_2f_\pm=\lambda_\pm f_\pm\)</span>; the second is precisely the quadratic equation for <span class="math" data-tex="\(\lambda_\pm\)">\(\lambda_\pm\)</span>.
+Every <span class="math" data-tex="\(T_n\)">\(T_n\)</span> commutes with <span class="math" data-tex="\(T_2\)">\(T_2\)</span>, so it preserves each of these one-dimensional eigenspaces. Thus <span class="math" data-tex="\(f_\pm\)">\(f_\pm\)</span> are simultaneous eigenforms. Their Petersson orthogonality follows from self-adjointness and their distinct real eigenvalues, even though the matrix (6.3) is not symmetric in this basis.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Starting with (1.3) for a prime <span class="math" data-tex="\(p\)">\(p\)</span>, derive both formulas in (1.8), including the constant coefficient.</li>
+<li><strong>Easy.</strong> Prove that <span class="math" data-tex="\(T_nE_k=\sigma_{k-1}(n)E_k\)">\(T_nE_k=\sigma_{k-1}(n)E_k\)</span> by comparing all Fourier coefficients.</li>
+<li><strong>Medium.</strong> Starting from the lattice identity (2.2), derive the complete form-valued Hecke relation. Explain every power of <span class="math" data-tex="\(d\)">\(d\)</span>.</li>
+<li><strong>Medium.</strong> Compute <span class="math" data-tex="\(T_2\)">\(T_2\)</span> on <span class="math" data-tex="\(S_{24}\)">\(S_{24}\)</span> in the basis <span class="math" data-tex="\((E_4^3\Delta,\Delta^2)\)">\((E_4^3\Delta,\Delta^2)\)</span>, including at least three coefficients of each basis element, its characteristic polynomial and its normalized eigenforms.</li>
+<li><strong>Hard.</strong> For positive weight, prove that
+<span class="math math-display" data-tex="\[
+M_k(\mathbb Z)=M_k\cap\mathbb Z[[q]]
+\]">\[
+M_k(\mathbb Z)=M_k\cap\mathbb Z[[q]]
+\]</span>
+is stable under every <span class="math" data-tex="\(T_n\)">\(T_n\)</span> and is a lattice spanning <span class="math" data-tex="\(M_k\)">\(M_k\)</span>. Deduce that normalized eigenforms have algebraic-integer eigenvalues and that every simultaneous eigensystem in <span class="math" data-tex="\(M_k\)">\(M_k\)</span> occurs with multiplicity one. Explain what fails in weight zero.</li>
+</ol>
+<h2 id="8-full-solutions">8. Full solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>The factor pairs of <span class="math" data-tex="\(p\)">\(p\)</span> are <span class="math" data-tex="\((p,1)\)">\((p,1)\)</span> and <span class="math" data-tex="\((1,p)\)">\((1,p)\)</span>. Their contributions to (1.3) are <span class="math" data-tex="\(p^{k-1}f(pz)\)">\(p^{k-1}f(pz)\)</span> and <span class="math" data-tex="\(p^{k-1}p^{-k}\sum_b f((z+b)/p)\)">\(p^{k-1}p^{-k}\sum_b f((z+b)/p)\)</span>, respectively. This proves the first formula in (1.8).
+The second contribution is
+<span class="math math-display" data-tex="\[
+ \frac1p\sum_{r\ge0}a_rq^{r/p}\sum_{b=0}^{p-1}e^{2\pi irb/p}
+       =\sum_{\ell\ge0}a_{p\ell}q^\ell.
+\]">\[
+ \frac1p\sum_{r\ge0}a_rq^{r/p}\sum_{b=0}^{p-1}e^{2\pi irb/p}
+       =\sum_{\ell\ge0}a_{p\ell}q^\ell.
+\]</span>
+The first contributes <span class="math" data-tex="\(p^{k-1}a_{m/p}\)">\(p^{k-1}a_{m/p}\)</span> at <span class="math" data-tex="\(q^m\)">\(q^m\)</span>, with that coefficient zero when <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>.
+Thus <span class="math" data-tex="\(a_m(T_pf)=a_{pm}+p^{k-1}a_{m/p}\)">\(a_m(T_pf)=a_{pm}+p^{k-1}a_{m/p}\)</span>; at <span class="math" data-tex="\(m=0\)">\(m=0\)</span> this is
+<span class="math" data-tex="\((1+p^{k-1})a_0\)">\((1+p^{k-1})a_0\)</span>, not just <span class="math" data-tex="\(a_0\)">\(a_0\)</span>.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>Put <span class="math" data-tex="\(t=k-1\)">\(t=k-1\)</span>. At <span class="math" data-tex="\(q^0\)">\(q^0\)</span>, the coefficient formula gives
+<span class="math" data-tex="\(a_0(T_nE_k)=\sum_{d\mid n}d^t=\sigma_t(n)\)">\(a_0(T_nE_k)=\sum_{d\mid n}d^t=\sigma_t(n)\)</span>.
+At <span class="math" data-tex="\(q^m\)">\(q^m\)</span>, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, it gives
+<span class="math math-display" data-tex="\[
+ a_m(T_nE_k)=c_k\sum_{d\mid\gcd(m,n)}d^t\sigma_t(mn/d^2).
+\]">\[
+ a_m(T_nE_k)=c_k\sum_{d\mid\gcd(m,n)}d^t\sigma_t(mn/d^2).
+\]</span>
+To evaluate this sum, factor <span class="math" data-tex="\(m,n\)">\(m,n\)</span> into primes and apply (5.2) at each prime with <span class="math" data-tex="\(X=p^t\)">\(X=p^t\)</span>. The sum is <span class="math" data-tex="\(\sigma_t(m)\sigma_t(n)\)">\(\sigma_t(m)\sigma_t(n)\)</span>.
+The resulting coefficients are exactly those of <span class="math" data-tex="\(\sigma_t(n)E_k\)">\(\sigma_t(n)E_k\)</span>, including the constant coefficient, so equality of holomorphic Fourier series proves the assertion. This argument does not assume that the Eisenstein space is one-dimensional, and it uses no divergent Petersson norm.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> denote the lattice-to-form identification. Homogeneity says
+<span class="math" data-tex="\(IR(d)I^{-1}=d^{-k}\)">\(IR(d)I^{-1}=d^{-k}\)</span>, while (1.3) says
+<span class="math" data-tex="\(I\mathcal T_nI^{-1}=n^{1-k}T_n\)">\(I\mathcal T_nI^{-1}=n^{1-k}T_n\)</span>.
+Therefore (2.2) implies
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ T_mT_n
+ &amp;= (mn)^{k-1}I\mathcal T_m\mathcal T_nI^{-1}\\
+ &amp;= \sum_{d\mid\gcd(m,n)}
+       (mn)^{k-1}d^{1-k}(mn/d^2)^{1-k}T_{mn/d^2}\\
+ &amp;= \sum_{d\mid\gcd(m,n)}d^{k-1}T_{mn/d^2}.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ T_mT_n
+ &amp;= (mn)^{k-1}I\mathcal T_m\mathcal T_nI^{-1}\\
+ &amp;= \sum_{d\mid\gcd(m,n)}
+       (mn)^{k-1}d^{1-k}(mn/d^2)^{1-k}T_{mn/d^2}\\
+ &amp;= \sum_{d\mid\gcd(m,n)}d^{k-1}T_{mn/d^2}.
+ \end{aligned}
+\]</span>
+The three contributions to the exponent of <span class="math" data-tex="\(d\)">\(d\)</span> are the chain multiplicity <span class="math" data-tex="\(d\)">\(d\)</span>, homothety <span class="math" data-tex="\(d^{-k}\)">\(d^{-k}\)</span>, and the inverse normalization
+<span class="math" data-tex="\((mn/d^2)^{1-k}\)">\((mn/d^2)^{1-k}\)</span>, whose <span class="math" data-tex="\(d\)">\(d\)</span>-power is <span class="math" data-tex="\(d^{2k-2}\)">\(d^{2k-2}\)</span>.
+Their product is <span class="math" data-tex="\(d^{1-k+2k-2}=d^{k-1}\)">\(d^{1-k+2k-2}=d^{k-1}\)</span>.
+The right side is symmetric in <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, hence also proves commutativity from the full lattice identity.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>Write <span class="math" data-tex="\(A=E_4^3\Delta,B=\Delta^2\)">\(A=E_4^3\Delta,B=\Delta^2\)</span>.
+The explicit multiplication in (6.2) gives the coefficients through <span class="math" data-tex="\(q^4\)">\(q^4\)</span>, which are needed because <span class="math" data-tex="\(a_2(T_2f)=a_4(f)+2^{23}a_1(f)\)">\(a_2(T_2f)=a_4(f)+2^{23}a_1(f)\)</span>.
+If <span class="math" data-tex="\(h=xA+yB\)">\(h=xA+yB\)</span>, then <span class="math" data-tex="\(a_1(h)=x\)">\(a_1(h)=x\)</span> and <span class="math" data-tex="\(a_2(h)=696x+y\)">\(a_2(h)=696x+y\)</span>.
+Consequently
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ T_2A&amp;=696A+(21220416-696^2)B
+          =696A+20736000B,\\
+ T_2B&amp;=A+(1080-696)B=A+384B.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ T_2A&amp;=696A+(21220416-696^2)B
+          =696A+20736000B,\\
+ T_2B&amp;=A+(1080-696)B=A+384B.
+ \end{aligned}
+\]</span>
+The dimension formula ensures that this coefficient matching gives the whole images, not only a truncation.</p>
+<p>The trace and determinant give (6.3). Completing the square gives
+<span class="math math-display" data-tex="\[
+ (x-540)^2=20760336=144\cdot144169,
+\]">\[
+ (x-540)^2=20760336=144\cdot144169,
+\]</span>
+so the roots are <span class="math" data-tex="\(\lambda_\pm\)">\(\lambda_\pm\)</span>.
+For <span class="math" data-tex="\(f=A+cB\)">\(f=A+cB\)</span>, the first coordinate of <span class="math" data-tex="\(T_2f=\lambda f\)">\(T_2f=\lambda f\)</span> requires
+<span class="math" data-tex="\(c=\lambda-696\)">\(c=\lambda-696\)</span>; the second then becomes
+<span class="math" data-tex="\(20736000+384(\lambda-696)=\lambda(\lambda-696)\)">\(20736000+384(\lambda-696)=\lambda(\lambda-696)\)</span>, exactly (6.3).
+This gives the normalized forms (6.4). For an additional coefficient check,
+<span class="math math-display" data-tex="\[
+ a_4(f)=12831808+1080(\lambda-696)
+       =12080128+1080\lambda=\lambda^2-2^{23},
+\]">\[
+ a_4(f)=12831808+1080(\lambda-696)
+       =12080128+1080\lambda=\lambda^2-2^{23},
+\]</span>
+as the prime-square recurrence requires.
+Since every <span class="math" data-tex="\(T_n\)">\(T_n\)</span> commutes with <span class="math" data-tex="\(T_2\)">\(T_2\)</span>, its two distinct eigenlines give simultaneous eigensystems. This conclusion uses the whole family; diagonalizing a single operator would not suffice without commutativity.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>It suffices to consider positive even weight with <span class="math" data-tex="\(M_k\ne0\)">\(M_k\ne0\)</span>, so <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span>.
+In odd weight the space is zero, and <span class="math" data-tex="\(M_2=0\)">\(M_2=0\)</span>.
+Let <span class="math" data-tex="\(d=\dim M_k\)">\(d=\dim M_k\)</span>. The integral Victor Miller basis from the preceding ring lesson, Solution 5, is
+<span class="math math-display" data-tex="\[
+ F_j=q^j+O(q^d),\quad 0\le j&lt;d,\qquad F_j\in\mathbb Z[[q]].
+\]">\[
+ F_j=q^j+O(q^d),\quad 0\le j&lt;d,\qquad F_j\in\mathbb Z[[q]].
+\]</span>
+Every <span class="math" data-tex="\(f\in M_k\)">\(f\in M_k\)</span> has the unique expression
+<span class="math math-display" data-tex="\[
+ f=\sum_{j=0}^{d-1}a_j(f)F_j.                         \tag{8.1}
+\]">\[
+ f=\sum_{j=0}^{d-1}a_j(f)F_j.                         \tag{8.1}
+\]</span>
+Indeed, subtract the right side; its first <span class="math" data-tex="\(d\)">\(d\)</span> coefficients vanish, and the basis property forces it to be zero. It follows that
+<span class="math math-display" data-tex="\[
+ M_k(\mathbb Z)=\bigoplus_{j=0}^{d-1}\mathbb ZF_j,\qquad
+ M_k(\mathbb Z)\otimes_{\mathbb Z}\mathbb C=M_k.
+ \tag{8.2}
+\]">\[
+ M_k(\mathbb Z)=\bigoplus_{j=0}^{d-1}\mathbb ZF_j,\qquad
+ M_k(\mathbb Z)\otimes_{\mathbb Z}\mathbb C=M_k.
+ \tag{8.2}
+\]</span>
+Thus the word “lattice” means a free abelian group of full rank in the rational structure that its basis defines. We are not claiming that a rank-<span class="math" data-tex="\(d\)">\(d\)</span> abelian group is a cocompact real lattice in the real <span class="math" data-tex="\(2d\)">\(2d\)</span>-dimensional space <span class="math" data-tex="\(M_k\)">\(M_k\)</span>.</p>
+<p>By (1.6), every coefficient of <span class="math" data-tex="\(T_nf\)">\(T_nf\)</span> is an integer if the coefficients of <span class="math" data-tex="\(f\)">\(f\)</span> are integers: all <span class="math" data-tex="\(d^{k-1}\)">\(d^{k-1}\)</span> are integers. Lemma 1.1 puts <span class="math" data-tex="\(T_nf\)">\(T_nf\)</span> in <span class="math" data-tex="\(M_k\)">\(M_k\)</span>, so (8.2) is preserved.
+The operator consequently has an integer matrix in this basis, and its monic characteristic polynomial lies in <span class="math" data-tex="\(\mathbb Z[x]\)">\(\mathbb Z[x]\)</span>. Every eigenvalue is a root of that polynomial, hence is an algebraic integer. The same argument applies to the cusp lattice
+<span class="math" data-tex="\(\bigoplus_{j=1}^{d-1}\mathbb ZF_j\)">\(\bigoplus_{j=1}^{d-1}\mathbb ZF_j\)</span>.</p>
+<p>For multiplicity one on all of <span class="math" data-tex="\(M_k\)">\(M_k\)</span>, let <span class="math" data-tex="\(0\ne f\)">\(0\ne f\)</span> be a simultaneous eigenform, <span class="math" data-tex="\(T_nf=\lambda_nf\)">\(T_nf=\lambda_nf\)</span>.
+Formula (1.7) implies <span class="math" data-tex="\(a_n(f)=\lambda_na_1(f)\)">\(a_n(f)=\lambda_na_1(f)\)</span> for all <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>.
+If <span class="math" data-tex="\(a_1(f)=0\)">\(a_1(f)=0\)</span>, then <span class="math" data-tex="\(f\)">\(f\)</span> is constant. A nonzero constant cannot have positive weight: the law <span class="math" data-tex="\(f(-1/z)=z^kf(z)\)">\(f(-1/z)=z^kf(z)\)</span> would require <span class="math" data-tex="\(z^k=1\)">\(z^k=1\)</span> for every <span class="math" data-tex="\(z\in\mathfrak H\)">\(z\in\mathfrak H\)</span>.
+Thus <span class="math" data-tex="\(a_1(f)\ne0\)">\(a_1(f)\ne0\)</span>, and we may normalize it to one.
+Two normalized forms with the same eigenvalues have equal positive coefficients; their difference is constant and must therefore vanish by the same argument. Every common eigenspace is one-dimensional.</p>
+<p>For cusp eigenvalues one can say more: their algebraic conjugates are also roots of the integer characteristic polynomial on the cusp lattice, and every root is real by self-adjointness. They are totally real algebraic integers. The eigenvalues on the remaining Eisenstein line are the rational integers <span class="math" data-tex="\(\sigma_{k-1}(n)\)">\(\sigma_{k-1}(n)\)</span>.</p>
+<p>Weight zero is an actual exception to integrality. Here <span class="math" data-tex="\(M_0=\mathbb C\)">\(M_0=\mathbb C\)</span>, and (1.3) gives
+<span class="math math-display" data-tex="\[
+ T_n(1)=n^{-1}\sum_{d\mid n}d=\sigma_{-1}(n).
+\]">\[
+ T_n(1)=n^{-1}\sum_{d\mid n}d=\sigma_{-1}(n).
+\]</span>
+In particular <span class="math" data-tex="\(T_2(1)=3/2\)">\(T_2(1)=3/2\)</span>, which neither preserves <span class="math" data-tex="\(\mathbb Z[[q]]\)">\(\mathbb Z[[q]]\)</span> nor is an algebraic integer. Also <span class="math" data-tex="\(a_1=0\)">\(a_1=0\)</span> for every constant form, so the normalization <span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span> is unavailable. The positive-weight hypothesis is essential.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The coprime and prime-power lattice identities (2.1) are proved by counting the intermediate sublattices in Section 2. The full relation on forms, including every normalization factor, is proved in Theorem 2.1 and Solution 3. We do not develop the local spherical Hecke algebra, its Satake isomorphism or its restricted tensor product description; those are the subject of <em>The spherical Hecke algebra of GL₂ and Hecke operators on lattices</em>.</p>
+<p>The finite-dimensional modular spaces and their dimensions are established in the ring lesson, Theorem 2.2; its Solution 5 supplies the integral Victor Miller basis. The modular/lattice identification is the lattice lesson, Section 2. The integrability, independence of measurable fundamental sets, positivity and coefficient bound are the preceding Petersson lesson, Theorems 1.1 and 2.1. Fundamental-set tiling and finite quotient area come from <em>The upper half-plane and the modular group</em>, Theorem 3.2 and Proposition 5.1, and the congruence-subgroup lesson, Section 1.</p>
+<p>The removable-singularity theorem and the existence of a complex root for the characteristic polynomial in Lemma 4.1 are proved in the earlier <a href="LG-MF-07.html">Petersson lesson</a>, Lemma 0.1, from the first lesson's circle formula. The simultaneous spectral argument itself is proved here. Elementary unique prime factorization and finite-dimensional basis arithmetic remain foundational prerequisites whose exact earlier programme proofs have not been verified here.</p>
+<p>No continuation or functional equation of <span class="math" data-tex="\(L(f,s)\)">\(L(f,s)\)</span>, optimal Ramanujan–Petersson bound, higher-level multiplicity-one theorem or unproved irreducibility assertion is used. The integral-eigenvalue argument here is for positive weight at level one.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>Stein, free author text.</strong> W. Stein, <em>Modular Forms: A Computational Approach</em>, §§2.3–2.5, especially Proposition 2.28, Proposition 2.30 and Algorithm 2.36. We cite the <a href="https://wstein.org/books/modform/stein-modform.pdf">freely accessible author-hosted PDF</a>, whose free availability is confirmed on the <a href="https://wstein.org/books/modform/README.html">author's distribution page</a>. Its bracket slash includes <span class="math" data-tex="\(\det(\alpha)^{k-1}\)">\(\det(\alpha)^{k-1}\)</span>; its computational matrices act from the right on row coordinates. Matrix (6.3) uses columns. The chain-counting proof is supplied locally above.</li>
+<li><strong>Voight 2021.</strong> J. Voight, <em>Quaternion Algebras</em>, §40.5, formulas (40.5.7)–(40.5.11) and Theorem 40.5.12. <a href="https://jvoight.github.io/quat.html">Author's open-access book page</a>.</li>
+<li><strong>Wiese 2018.</strong> G. Wiese, <em>Computational Arithmetic of Modular Forms</em>, §§7.1–7.2, for the two intersection subgroups, double-coset action and Fourier formula. <a href="https://arxiv.org/abs/1809.04645">Author's notes</a>.</li>
+<li><strong>Deligne, free original article.</strong> P. Deligne, <em>Formes modulaires et représentations de GL(2)</em>, §1.1.1–§1.1.7, for the lattice-function interpretation and its homogeneity convention. <a href="https://publications.ias.edu/sites/default/files/Number21.pdf">Author's institutional manuscript</a>. The operator and adjoint proofs above are given in the classical upper-half-plane model.</li>
+<li><strong>Lebl.</strong> J. Lebl, <em>Guide to Cultivating Complex Analysis</em>, version 1.9, Theorems 3.3.11 and 5.2.2. <a href="https://www.jirka.org/ca/ca.pdf">Author's complex-analysis text</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-07.html">← The Petersson inner product and Poincaré series</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-09.html">Hecke operators for Γ_0(N) and Γ_1(N) →</a></span></nav>
+<p class="small source-link"><a href="src/hecke-operators-of-level-one.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

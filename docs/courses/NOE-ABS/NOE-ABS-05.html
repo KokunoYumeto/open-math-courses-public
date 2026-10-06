@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Normal integral bases in tame extensions · The abstract theory of ideals</title>
+<meta name="description" content="A lesson of the course The abstract theory of ideals. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-ABS/NOE-ABS-05.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The abstract theory of ideals</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 6</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="normal-integral-bases-in-tame-extensions">Normal integral bases in tame extensions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A field can have a basis consisting of the conjugates of one element even when its ring of integers cannot. The obstruction is already visible in the trace. In a tame extension the trace supplies the averaging operation needed for projectivity; an additional argument turns that projectivity into a normal integral basis over a local base.</p>
+<p>We assume <a href="NOE-ABS-04.html">Three differents</a>, the decomposition of primes in a finite Galois extension, completion of finite modules over a DVR, and elementary group representations. For number fields, the prime-transitivity and inertia results are <a href="../NT-ANT/hilberts-ramification-theory-in-galois-extensions.html">Hilbert's ramification theory in Galois extensions</a>, Theorems 6.1 and 6.2. Its residue fields are finite; the argument below retains arbitrary residue fields. The arithmetic different is treated in <strong>The different and the discriminant</strong>, and the field-basis background belongs to Hilbert 90 in Noether's form and Galois descent, Section 4. We state the field normal basis theorem and the characteristic-zero projective rigidity theorem with their exact sources. The positive-characteristic step is proved below. Basic references are [Noether], [Milne FT] and [Swan].</p>
+<h2 id="1-the-integral-question-and-the-meaning-of-local">1. The integral question and the meaning of local</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a Dedekind domain with fraction field <span class="math" data-tex="\(K\)">\(K\)</span>, let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be finite Galois with group <span class="math" data-tex="\(G\)">\(G\)</span>, and let <span class="math" data-tex="\(B\)">\(B\)</span> be the integral closure of <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span>. The finiteness theorem in <a href="NOE-ABS-01.html">Noether's axioms for Dedekind domains</a> makes <span class="math" data-tex="\(B\)">\(B\)</span> finite over <span class="math" data-tex="\(A\)">\(A\)</span>. For a nonzero prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+R=A_{\mathfrak p},\qquad M=B\otimes_A R,\qquad
+\widehat R=\varprojlim R/\mathfrak p^nR,\qquad
+\widehat M=M\otimes_R\widehat R.
+\]">\[
+R=A_{\mathfrak p},\qquad M=B\otimes_A R,\qquad
+\widehat R=\varprojlim R/\mathfrak p^nR,\qquad
+\widehat M=M\otimes_R\widehat R.
+\]</span>
+<p>Here “localized” refers to <span class="math" data-tex="\(R,M\)">\(R,M\)</span>, and “completed” to <span class="math" data-tex="\(\widehat R,\widehat M\)">\(\widehat R,\widehat M\)</span>. The latter is generally a product, not a domain:</p>
+<span class="math math-display" data-tex="\[
+\widehat M=\prod_{\mathfrak P\mid\mathfrak p}\widehat{B_{\mathfrak P}}.
+\]">\[
+\widehat M=\prod_{\mathfrak P\mid\mathfrak p}\widehat{B_{\mathfrak P}}.
+\]</span>
+<p>The group acts on this entire product, permuting its factors. Its fraction algebra is <span class="math" data-tex="\(L\otimes_K\operatorname{Frac}(\widehat R)\)">\(L\otimes_K\operatorname{Frac}(\widehat R)\)</span>.</p>
+<p>A <strong>normal integral basis generator</strong> is an element <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> for which <span class="math" data-tex="\(\{g(a):g\in G\}\)">\(\{g(a):g\in G\}\)</span> is an <span class="math" data-tex="\(R\)">\(R\)</span>-basis. Equivalently, the map <span class="math" data-tex="\(R[G]\to M\)">\(R[G]\to M\)</span>, <span class="math" data-tex="\(g\mapsto g(a)\)">\(g\mapsto g(a)\)</span>, is an isomorphism of left modules. The completed definition is identical. Both underlying modules are free of rank <span class="math" data-tex="\(|G|\)">\(|G|\)</span> over their DVR bases.</p>
+<p>The field normal basis theorem says <span class="math" data-tex="\(L\simeq K[G]\)">\(L\simeq K[G]\)</span> as left <span class="math" data-tex="\(K[G]\)">\(K[G]\)</span>-modules [Milne FT, Theorem 5.18]. Scalar extension gives the same assertion for the fraction algebra of <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span>, including when it is a product.</p>
+<p>We call <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> <strong>tame</strong> when every <span class="math" data-tex="\(e_{\mathfrak P}\)">\(e_{\mathfrak P}\)</span> is prime to the residue characteristic and every residue extension is separable. In residue characteristic zero, the first condition is automatic. The ramification and residue conditions are constant on the primes above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, since <span class="math" data-tex="\(G\)">\(G\)</span> acts transitively on them. This definition allows the residue degree, and even <span class="math" data-tex="\(|G|\)">\(|G|\)</span>, to be divisible by the residue characteristic.</p>
+<p>For completeness, prime transitivity holds over our general Dedekind base as follows. If <span class="math" data-tex="\(\mathfrak Q\)">\(\mathfrak Q\)</span> lies outside the orbit of <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>, the Chinese remainder theorem gives <span class="math" data-tex="\(x\in\mathfrak Q\)">\(x\in\mathfrak Q\)</span> with <span class="math" data-tex="\(x\equiv1\)">\(x\equiv1\)</span> at every prime in that orbit. The norm <span class="math" data-tex="\(N=\prod_{g\in G}g(x)\)">\(N=\prod_{g\in G}g(x)\)</span> belongs to <span class="math" data-tex="\(B^G=B\cap K=A\)">\(B^G=B\cap K=A\)</span>, since <span class="math" data-tex="\(A\)">\(A\)</span> is integrally closed. It lies in <span class="math" data-tex="\(\mathfrak Q\cap A=\mathfrak p\)">\(\mathfrak Q\cap A=\mathfrak p\)</span>, while no factor lies in <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>, a contradiction. Conjugation then identifies the corresponding localized extensions and residue extensions, so their ramification indices and separability conditions agree. This uses no perfect-residue-field hypothesis.</p>
+<h2 id="2-trace-detects-tameness">2. Trace detects tameness</h2>
+<p><strong>Theorem 2.1.</strong> With this notation,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_{L/K}(M)=R
+\quad\Longleftrightarrow\quad
+\mathfrak p\text{ is tame}.
+\]">\[
+\operatorname{Tr}_{L/K}(M)=R
+\quad\Longleftrightarrow\quad
+\mathfrak p\text{ is tame}.
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\pi\)">\(\pi\)</span> for a uniformizer of <span class="math" data-tex="\(R\)">\(R\)</span>. The trace image is an ideal, so it fails to be <span class="math" data-tex="\(R\)">\(R\)</span> precisely when it lies in <span class="math" data-tex="\(\pi R\)">\(\pi R\)</span>. By the definition of the complementary module,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(M)\subseteq\pi R
+\Longleftrightarrow \pi^{-1}\in M^*
+\Longleftrightarrow M\subseteq\pi M^*
+=\pi\mathfrak D^{-1}.
+\tag{2.1}
+\]">\[
+\operatorname{Tr}(M)\subseteq\pi R
+\Longleftrightarrow \pi^{-1}\in M^*
+\Longleftrightarrow M\subseteq\pi M^*
+=\pi\mathfrak D^{-1}.
+\tag{2.1}
+\]</span>
+<p>The middle equivalence uses that <span class="math" data-tex="\(M^*\)">\(M^*\)</span> is an <span class="math" data-tex="\(M\)">\(M\)</span>-module. On the <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>-component, the final containment means</p>
+<span class="math math-display" data-tex="\[
+d_{\mathfrak P}=v_{\mathfrak P}(\mathfrak D)\ge e_{\mathfrak P}.
+\tag{2.2}
+\]">\[
+d_{\mathfrak P}=v_{\mathfrak P}(\mathfrak D)\ge e_{\mathfrak P}.
+\tag{2.2}
+\]</span>
+<p>The familiar different-exponent theorem gives <span class="math" data-tex="\(d\ge e-1\)">\(d\ge e-1\)</span>, with equality precisely in the tame case. This proves the assertion using that all components have the same ramification behavior.</p>
+<p>Here is also a direct verification covering imperfect residue fields. Trace commutes with reduction of the multiplication matrix. In the <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>-component of <span class="math" data-tex="\(M/\pi M\)">\(M/\pi M\)</span>, the filtration by powers of its maximal ideal has <span class="math" data-tex="\(e_{\mathfrak P}\)">\(e_{\mathfrak P}\)</span> successive quotients isomorphic to <span class="math" data-tex="\(\ell_{\mathfrak P}=B/\mathfrak P\)">\(\ell_{\mathfrak P}=B/\mathfrak P\)</span>. Multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> acts on each quotient as multiplication by its residue. Consequently its trace over <span class="math" data-tex="\(k=R/\pi R\)">\(k=R/\pi R\)</span> is</p>
+<span class="math math-display" data-tex="\[
+e_{\mathfrak P}\operatorname{Tr}_{\ell_{\mathfrak P}/k}(\bar b).
+\tag{2.3}
+\]">\[
+e_{\mathfrak P}\operatorname{Tr}_{\ell_{\mathfrak P}/k}(\bar b).
+\tag{2.3}
+\]</span>
+<p>The components can be chosen independently by the Chinese remainder theorem. A finite field extension has nonzero trace exactly when it is separable, by the trace criterion in the discriminant lesson. A nonzero linear map to <span class="math" data-tex="\(k\)">\(k\)</span> is onto. Thus the trace modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is onto precisely when at least one component has separable residue extension and <span class="math" data-tex="\(e_{\mathfrak P}\ne0\)">\(e_{\mathfrak P}\ne0\)</span> in <span class="math" data-tex="\(k\)">\(k\)</span>. In the Galois situation this says exactly tameness. Nakayama, or the ideal criterion above, lifts surjectivity to <span class="math" data-tex="\(R\)">\(R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These arguments also explain the lower bound without a perfectness assumption. After completing a component, normalize the valuation by <span class="math" data-tex="\(v(\pi_R)=1\)">\(v(\pi_R)=1\)</span>. Every conjugate of an element of valuation at least <span class="math" data-tex="\(-(e-1)/e\)">\(-(e-1)/e\)</span> has the same valuation: the valuation of a complete discretely valued field extends uniquely to its algebraic closure. Its trace therefore has valuation greater than <span class="math" data-tex="\(-1\)">\(-1\)</span>, hence nonnegative in the base field. Applying this to its products with integral elements shows <span class="math" data-tex="\(\mathfrak P^{-(e-1)}\subseteq M^*\)">\(\mathfrak P^{-(e-1)}\subseteq M^*\)</span>, so <span class="math" data-tex="\(d\ge e-1\)">\(d\ge e-1\)</span>. Equations (2.1)–(2.3) now show <span class="math" data-tex="\(d=e-1\)">\(d=e-1\)</span> exactly for a tame component and <span class="math" data-tex="\(d\ge e\)">\(d\ge e\)</span> otherwise.</p>
+<p>For a non-Galois extension (2.3) gives a different statement: trace surjectivity requires <strong>some</strong> tame component. It need not make all components tame.</p>
+<h2 id="3-higman-s-criterion-averaging-an-endomorphism">3. Higman's criterion: averaging an endomorphism</h2>
+<p>For a left <span class="math" data-tex="\(R[G]\)">\(R[G]\)</span>-module <span class="math" data-tex="\(N\)">\(N\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+T_G(\phi)=\sum_{g\in G}g\phi g^{-1},\qquad
+\phi\in\operatorname{End}_R(N).
+\]">\[
+T_G(\phi)=\sum_{g\in G}g\phi g^{-1},\qquad
+\phi\in\operatorname{End}_R(N).
+\]</span>
+<p>The sum commutes with <span class="math" data-tex="\(G\)">\(G\)</span>, even when <span class="math" data-tex="\(|G|\)">\(|G|\)</span> is not invertible.</p>
+<p><strong>Theorem 3.1 (Higman's criterion).</strong> If <span class="math" data-tex="\(N\)">\(N\)</span> is finitely generated projective over a commutative ring <span class="math" data-tex="\(R\)">\(R\)</span>, then <span class="math" data-tex="\(N\)">\(N\)</span> is projective over <span class="math" data-tex="\(R[G]\)">\(R[G]\)</span> if and only if <span class="math" data-tex="\(T_G(\phi)=1_N\)">\(T_G(\phi)=1_N\)</span> for some <span class="math" data-tex="\(R\)">\(R\)</span>-linear <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p><strong>Proof.</strong> Give <span class="math" data-tex="\(F=R[G]\otimes_R N\)">\(F=R[G]\otimes_R N\)</span> the action on its first factor only. It is projective over <span class="math" data-tex="\(R[G]\)">\(R[G]\)</span>, because an <span class="math" data-tex="\(R\)">\(R\)</span>-projective module is a summand of a free module and tensoring preserves that splitting. The equivariant map</p>
+<span class="math math-display" data-tex="\[
+\epsilon:F\longrightarrow N,\qquad g\otimes n\longmapsto g(n)
+\]">\[
+\epsilon:F\longrightarrow N,\qquad g\otimes n\longmapsto g(n)
+\]</span>
+<p>is onto. Given <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+s(n)=\sum_g g\otimes\phi(g^{-1}n).
+\]">\[
+s(n)=\sum_g g\otimes\phi(g^{-1}n).
+\]</span>
+<p>Reindexing by <span class="math" data-tex="\(g=hu\)">\(g=hu\)</span> proves <span class="math" data-tex="\(s(hn)=h s(n)\)">\(s(hn)=h s(n)\)</span>, and <span class="math" data-tex="\(\epsilon s=T_G(\phi)\)">\(\epsilon s=T_G(\phi)\)</span>. If this is the identity, <span class="math" data-tex="\(N\)">\(N\)</span> is a direct summand of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Conversely, projectivity splits <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Write an equivariant splitting as <span class="math" data-tex="\(s(n)=\sum_g g\otimes\phi_g(n)\)">\(s(n)=\sum_g g\otimes\phi_g(n)\)</span>. Equivariance forces <span class="math" data-tex="\(\phi_g(n)=\phi_1(g^{-1}n)\)">\(\phi_g(n)=\phi_1(g^{-1}n)\)</span>. Thus <span class="math" data-tex="\(\epsilon s=1_N\)">\(\epsilon s=1_N\)</span> says <span class="math" data-tex="\(T_G(\phi_1)=1_N\)">\(T_G(\phi_1)=1_N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> In the tame situation, <span class="math" data-tex="\(M\)">\(M\)</span> is projective over <span class="math" data-tex="\(R[G]\)">\(R[G]\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(t\in M\)">\(t\in M\)</span> with <span class="math" data-tex="\(\operatorname{Tr}(t)=1\)">\(\operatorname{Tr}(t)=1\)</span>. For multiplication <span class="math" data-tex="\(\phi(n)=tn\)">\(\phi(n)=tn\)</span>, its conjugate <span class="math" data-tex="\(g\phi g^{-1}\)">\(g\phi g^{-1}\)</span> is multiplication by <span class="math" data-tex="\(g(t)\)">\(g(t)\)</span>. Their sum is multiplication by <span class="math" data-tex="\(\sum_g g(t)=1\)">\(\sum_g g(t)=1\)</span>. Apply Theorem 3.1; <span class="math" data-tex="\(M\)">\(M\)</span> is free over the DVR <span class="math" data-tex="\(R\)">\(R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is averaging with an integral element of trace one. Replacing it by division by <span class="math" data-tex="\(|G|\)">\(|G|\)</span> would discard tame extensions with a residue degree divisible by the residue characteristic.</p>
+<h2 id="4-why-a-completed-projective-lattice-is-free">4. Why a completed projective lattice is free</h2>
+<p>We need the following precise characteristic-zero input.</p>
+<p><strong>Swan's rigidity theorem, in the form used here.</strong> If <span class="math" data-tex="\(S\)">\(S\)</span> is a complete DVR of characteristic zero, <span class="math" data-tex="\(F\)">\(F\)</span> its fraction field, and <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> finitely generated projective <span class="math" data-tex="\(S[G]\)">\(S[G]\)</span>-modules, then</p>
+<span class="math math-display" data-tex="\[
+F\otimes_S P\simeq F\otimes_S Q
+\quad\Longrightarrow\quad P\simeq Q.
+\]">\[
+F\otimes_S P\simeq F\otimes_S Q
+\quad\Longrightarrow\quad P\simeq Q.
+\]</span>
+<p>This is the specialization of [Swan, Section 6, Corollary 6.4, following Theorem 6.1]. It includes mixed characteristic. Its characteristic hypothesis matters; positive characteristic is handled by Lemma 4.2.</p>
+<p><strong>Lemma 4.1 (descent over fields).</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be a finite-dimensional algebra over a field <span class="math" data-tex="\(k\)">\(k\)</span>. Finite-dimensional <span class="math" data-tex="\(C\)">\(C\)</span>-modules that become isomorphic after a field extension <span class="math" data-tex="\(E/k\)">\(E/k\)</span> are already isomorphic over <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Proof.</strong> The space of module homomorphisms is the solution space of finitely many linear equations in matrix entries, so it commutes with extending the field. Choose a <span class="math" data-tex="\(k\)">\(k\)</span>-basis of <span class="math" data-tex="\(\operatorname{Hom}_C(U,V)\)">\(\operatorname{Hom}_C(U,V)\)</span>; the determinant of a linear combination is a polynomial in its coefficients. An isomorphism over <span class="math" data-tex="\(E\)">\(E\)</span> means this polynomial is not zero. For infinite <span class="math" data-tex="\(k\)">\(k\)</span>, successive specialization of its variables finds a nonzero value in <span class="math" data-tex="\(k\)">\(k\)</span>, giving an isomorphism.</p>
+<p>For finite <span class="math" data-tex="\(k\)">\(k\)</span>, choose a finite extension <span class="math" data-tex="\(k&#x27;/k\)">\(k&#x27;/k\)</span> large enough that its cardinality exceeds the degree in each variable. A nonzero polynomial cannot vanish on that entire grid, by induction on the variables. This gives an isomorphism over <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span>. Restriction of scalars then gives <span class="math" data-tex="\(U^{\oplus d}\simeq V^{\oplus d}\)">\(U^{\oplus d}\simeq V^{\oplus d}\)</span>, where <span class="math" data-tex="\(d=[k&#x27;:k]\)">\(d=[k&#x27;:k]\)</span>.</p>
+<p>The finite-dimensional Krull–Schmidt argument cancels these multiplicities. For completeness, repeated splitting decomposes a finite-dimensional module into indecomposables. Fitting's decomposition <span class="math" data-tex="\(W=\ker f^n\oplus\operatorname{im}f^n\)">\(W=\ker f^n\oplus\operatorname{im}f^n\)</span>, for large <span class="math" data-tex="\(n\)">\(n\)</span>, shows that an endomorphism of an indecomposable is either invertible or nilpotent. Its endomorphism ring is local: a nonunit <span class="math" data-tex="\(f\)">\(f\)</span> is nilpotent, so <span class="math" data-tex="\(1-f\)">\(1-f\)</span> is invertible; if a sum of two nonunits were invertible, multiplying by its inverse would contradict that property. When comparing two decompositions, the identity of one summand is a sum of the maps obtained by projecting through the other summands. One such map is a unit in this local endomorphism ring. It makes that summand a direct summand of the corresponding indecomposable on the other side, hence an isomorphic summand. Align and remove the two summands, then induct. Decomposition multiplicities are therefore unique. Equality of <span class="math" data-tex="\(d\)">\(d\)</span> times every multiplicity implies equality of the original multiplicities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2.</strong> For a complete DVR <span class="math" data-tex="\(S\)">\(S\)</span> of positive characteristic, a finitely generated projective <span class="math" data-tex="\(S[G]\)">\(S[G]\)</span>-module whose fraction-field module is <span class="math" data-tex="\(F[G]\)">\(F[G]\)</span> is <span class="math" data-tex="\(S[G]\)">\(S[G]\)</span>.</p>
+<p><strong>Proof.</strong> The equicharacteristic Cohen structure theorem identifies <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(k[[\pi]]\)">\(k[[\pi]]\)</span>, where <span class="math" data-tex="\(k=S/\pi S\)">\(k=S/\pi S\)</span> is embedded as a coefficient field [Stacks, Tag 0C0S]. Let <span class="math" data-tex="\(P_0=P/\pi P\)">\(P_0=P/\pi P\)</span>, a projective <span class="math" data-tex="\(k[G]\)">\(k[G]\)</span>-module, and let <span class="math" data-tex="\(Q=S\otimes_k P_0\)">\(Q=S\otimes_k P_0\)</span>. It is projective over <span class="math" data-tex="\(S[G]\)">\(S[G]\)</span>. The identity <span class="math" data-tex="\(Q/\pi Q\simeq P_0\)">\(Q/\pi Q\simeq P_0\)</span> lifts to <span class="math" data-tex="\(Q\to P\)">\(Q\to P\)</span>, by projectivity of <span class="math" data-tex="\(Q\)">\(Q\)</span> applied to <span class="math" data-tex="\(P\to P_0\)">\(P\to P_0\)</span>. Both modules are finite free over <span class="math" data-tex="\(S\)">\(S\)</span>, of the same rank. The lifted map is invertible modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, so its determinant is a unit, giving <span class="math" data-tex="\(Q\simeq P\)">\(Q\simeq P\)</span>.</p>
+<p>It follows that <span class="math" data-tex="\(F\otimes_k P_0\simeq F[G]\)">\(F\otimes_k P_0\simeq F[G]\)</span>. Lemma 4.1 applied to <span class="math" data-tex="\(k[G]\)">\(k[G]\)</span> gives <span class="math" data-tex="\(P_0\simeq k[G]\)">\(P_0\simeq k[G]\)</span>, hence <span class="math" data-tex="\(P\simeq S[G]\)">\(P\simeq S[G]\)</span>. This works for finite and imperfect residue fields alike. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.3 (local normal integral basis theorem).</strong> The following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is tame.</li>
+<li><span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span> is free of rank one over <span class="math" data-tex="\(\widehat R[G]\)">\(\widehat R[G]\)</span>.</li>
+<li><span class="math" data-tex="\(M\)">\(M\)</span> is free of rank one over <span class="math" data-tex="\(R[G]\)">\(R[G]\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> If tame, Corollary 3.2 and scalar extension make <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span> projective. Its fraction algebra is the regular representation, by the field normal basis theorem. Swan's theorem, with <span class="math" data-tex="\(Q=\widehat R[G]\)">\(Q=\widehat R[G]\)</span>, gives freeness if the fraction field has characteristic zero; Lemma 4.2 gives it otherwise.</p>
+<p>To descend, choose a completed generator <span class="math" data-tex="\(\hat a\)">\(\hat a\)</span>. Lift its residue modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span> to <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, since <span class="math" data-tex="\(M/\pi M\simeq\widehat M/\pi\widehat M\)">\(M/\pi M\simeq\widehat M/\pi\widehat M\)</span>. The map <span class="math" data-tex="\(R[G]\to M\)">\(R[G]\to M\)</span>, <span class="math" data-tex="\(g\mapsto g(a)\)">\(g\mapsto g(a)\)</span>, is an isomorphism modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Its determinant between free <span class="math" data-tex="\(R\)">\(R\)</span>-modules of rank <span class="math" data-tex="\(|G|\)">\(|G|\)</span> is a unit, so it is an isomorphism. Localization freeness also plainly implies completion freeness.</p>
+<p>Finally suppose <span class="math" data-tex="\(M=R[G]a\)">\(M=R[G]a\)</span>. The invariants in the regular representation are <span class="math" data-tex="\(R\sum_g g\)">\(R\sum_g g\)</span>, so <span class="math" data-tex="\(M^G=R\operatorname{Tr}(a)\)">\(M^G=R\operatorname{Tr}(a)\)</span>. But <span class="math" data-tex="\(M^G=R\)">\(M^G=R\)</span>: an invariant lies in <span class="math" data-tex="\(K\)">\(K\)</span> and is integral over the integrally closed ring <span class="math" data-tex="\(R\)">\(R\)</span>. Thus <span class="math" data-tex="\(\operatorname{Tr}(a)\)">\(\operatorname{Tr}(a)\)</span> is a unit and the trace is onto. Theorem 2.1 proves tameness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The elementary construction behind this theorem is visible in two simpler cases. In an unramified local extension, lift a normal basis generator of the separable residue extension; Nakayama and a unit determinant give an integral normal basis. For a totally tamely ramified cyclic extension with <span class="math" data-tex="\(\pi^e=c\pi_R\)">\(\pi^e=c\pi_R\)</span> and the <span class="math" data-tex="\(e\)">\(e\)</span>-th roots of unity in the base, take <span class="math" data-tex="\(a=1+\pi+\cdots+\pi^{e-1}\)">\(a=1+\pi+\cdots+\pi^{e-1}\)</span>. Its conjugates have coefficient matrix <span class="math" data-tex="\((\zeta^{ij})\)">\((\zeta^{ij})\)</span> in the power basis. Its Vandermonde determinant is a unit, since <span class="math" data-tex="\(e\)">\(e\)</span> is invertible and these roots remain distinct in the residue field. This explains the explicit sum construction under these additional hypotheses.</p>
+<h2 id="5-the-group-determinant-and-the-global-obstruction">5. The group determinant and the global obstruction</h2>
+<p>For a local generator <span class="math" data-tex="\(a\)">\(a\)</span>, use the ordered basis <span class="math" data-tex="\((\tau^{-1}(a))_{\tau\in G}\)">\((\tau^{-1}(a))_{\tau\in G}\)</span> and all embeddings indexed by <span class="math" data-tex="\(\sigma\in G\)">\(\sigma\in G\)</span>. Its embedding matrix is</p>
+<span class="math math-display" data-tex="\[
+E_{\sigma,\tau}=\sigma\tau^{-1}(a).
+\]">\[
+E_{\sigma,\tau}=\sigma\tau^{-1}(a).
+\]</span>
+<p><strong>Proposition 5.1.</strong> Its discriminant is <span class="math" data-tex="\(\det(E)^2\)">\(\det(E)^2\)</span>.</p>
+<p><strong>Proof.</strong> The trace Gram matrix is <span class="math" data-tex="\(E^{\mathsf T}E\)">\(E^{\mathsf T}E\)</span>, since its <span class="math" data-tex="\((\tau,\upsilon)\)">\((\tau,\upsilon)\)</span>-entry is the sum of all conjugates of <span class="math" data-tex="\(\tau^{-1}(a)\upsilon^{-1}(a)\)">\(\tau^{-1}(a)\upsilon^{-1}(a)\)</span>. Take determinants. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the group determinant <span class="math" data-tex="\(\Theta_G(X)=\det(X_{\sigma\tau^{-1}})\)">\(\Theta_G(X)=\det(X_{\sigma\tau^{-1}})\)</span>, specialized at <span class="math" data-tex="\(X_g=g(a)\)">\(X_g=g(a)\)</span>. Over a characteristic-zero splitting field it has the factorization</p>
+<span class="math math-display" data-tex="\[
+\Theta_G(X)=\prod_{\rho\in\operatorname{Irr}(G)}
+\det\left(\sum_gX_g\rho(g)\right)^{\dim\rho}.
+\tag{5.1}
+\]">\[
+\Theta_G(X)=\prod_{\rho\in\operatorname{Irr}(G)}
+\det\left(\sum_gX_g\rho(g)\right)^{\dim\rho}.
+\tag{5.1}
+\]</span>
+<p>Indeed, the matrix is left multiplication by <span class="math" data-tex="\(\sum_gX_g g\)">\(\sum_gX_g g\)</span> on the regular representation, which decomposes into <span class="math" data-tex="\(\dim\rho\)">\(\dim\rho\)</span> copies of each irreducible <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Taking determinants gives (5.1). We use the standard semisimple representation decomposition here; the splitting and characteristic hypotheses should not be applied silently to a modular residue field. For abelian <span class="math" data-tex="\(G\)">\(G\)</span>, all factors are linear.</p>
+<p>The arithmetic conductor-discriminant theorem says, for a finite abelian extension of number fields,</p>
+<span class="math math-display" data-tex="\[
+\mathfrak d_{L/K}=\prod_{\chi\in\widehat G}\mathfrak f(\chi),
+\]">\[
+\mathfrak d_{L/K}=\prod_{\chi\in\widehat G}\mathfrak f(\chi),
+\]</span>
+<p>where <span class="math" data-tex="\(\mathfrak f(\chi)\)">\(\mathfrak f(\chi)\)</span> is the finite Artin conductor ideal; the trivial character contributes the unit ideal. This stated input is the conductor-discriminant formula of [Artin]; for abelian extensions it is also stated in [Milne CFT, Chapter V, Theorem 3.27]. Identifying determinant factors with conductor ideals requires arithmetic information beyond the polynomial factorization.</p>
+<p>Local generators at every prime need not glue to one global generator. For number fields the resulting obstruction is a locally free module class. Three landmarks delimit the question:</p>
+<ul>
+<li><strong>Hilbert–Speiser.</strong> A finite abelian extension of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> has a normal integral basis over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> exactly when it is tame. The necessity follows here; the global sufficiency is stated [Bergé, introduction]. Hilbert's <em>Zahlbericht</em>, Satz 132, supplied an earlier sufficient case, extended by Speiser to the tame statement.</li>
+<li><strong>Martinet.</strong> There are tame Galois extensions of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> with quaternion group of order eight whose integer rings are not free over <span class="math" data-tex="\(\mathbb Z[G]\)">\(\mathbb Z[G]\)</span>, although all localizations are free [Martinet, Section IV].</li>
+<li><strong>Taylor (1981).</strong> For a tame Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> of number fields, the class <span class="math" data-tex="\([\mathcal O_L]-[\mathcal O_K[G]]\)">\([\mathcal O_L]-[\mathcal O_K[G]]\)</span> in <span class="math" data-tex="\(\operatorname{Cl}(\mathbb Z[G])\)">\(\operatorname{Cl}(\mathbb Z[G])\)</span> is the root number class <span class="math" data-tex="\(W_{L/K}\)">\(W_{L/K}\)</span>, formed from the Artin root numbers of symplectic characters. This class has order dividing two [Taylor; Cassou-Noguès–Taylor, introduction, equation (1.1)]. The comparison here is after restricting scalars to <span class="math" data-tex="\(\mathbb Z[G]\)">\(\mathbb Z[G]\)</span>; it is not a claim about arbitrary relative <span class="math" data-tex="\(\mathcal O_K[G]\)">\(\mathcal O_K[G]\)</span>-class groups, nor is a stable class computation automatically a free generator.</li>
+</ul>
+<h2 id="6-four-computations">6. Four computations</h2>
+<p>For <span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span>, the trace of <span class="math" data-tex="\(a+bi\)">\(a+bi\)</span> is <span class="math" data-tex="\(2a\)">\(2a\)</span>, so its image on <span class="math" data-tex="\(\mathbb Z[i]\)">\(\mathbb Z[i]\)</span> is <span class="math" data-tex="\(2\mathbb Z\)">\(2\mathbb Z\)</span>. The prime two is wild, with <span class="math" data-tex="\(e=2\)">\(e=2\)</span>, and there is no localized normal integral basis there. In fact for any proposed generator <span class="math" data-tex="\(a+bi\)">\(a+bi\)</span>, the determinant of it and its conjugate in the basis <span class="math" data-tex="\(1,i\)">\(1,i\)</span> is <span class="math" data-tex="\(-2ab\)">\(-2ab\)</span>, never a unit over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> or <span class="math" data-tex="\(\mathbb Z_{(2)}\)">\(\mathbb Z_{(2)}\)</span>.</p>
+<p>For <span class="math" data-tex="\(\mathbb Q(\sqrt{-3})\)">\(\mathbb Q(\sqrt{-3})\)</span>, let <span class="math" data-tex="\(\omega=(1+\sqrt{-3})/2\)">\(\omega=(1+\sqrt{-3})/2\)</span>. Its conjugate is <span class="math" data-tex="\(1-\omega\)">\(1-\omega\)</span>. These two elements have coefficient determinant <span class="math" data-tex="\(-1\)">\(-1\)</span> in <span class="math" data-tex="\(1,\omega\)">\(1,\omega\)</span>, so they give a global normal integral basis, hence one locally at three. Their trace is one. At three, <span class="math" data-tex="\(e=2\)">\(e=2\)</span> is prime to three, and the different <span class="math" data-tex="\((\sqrt{-3})\)">\((\sqrt{-3})\)</span> has exponent <span class="math" data-tex="\(e-1=1\)">\(e-1=1\)</span>.</p>
+<p>For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, the conjugates of <span class="math" data-tex="\(\zeta_p\)">\(\zeta_p\)</span> are <span class="math" data-tex="\(\zeta_p,\ldots,\zeta_p^{p-1}\)">\(\zeta_p,\ldots,\zeta_p^{p-1}\)</span>. The usual power basis of <span class="math" data-tex="\(\mathbb Z[\zeta_p]\)">\(\mathbb Z[\zeta_p]\)</span> is <span class="math" data-tex="\(1,\zeta_p,\ldots,\zeta_p^{p-2}\)">\(1,\zeta_p,\ldots,\zeta_p^{p-2}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\zeta_p^{p-1}=-1-\zeta_p-\cdots-\zeta_p^{p-2}.
+\]">\[
+\zeta_p^{p-1}=-1-\zeta_p-\cdots-\zeta_p^{p-2}.
+\]</span>
+<p>The change of basis has determinant <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. The cyclotomic integer theorem identifies this order with the full integer ring [Milne ANT, Chapter 6]. Thus <span class="math" data-tex="\(\zeta_p\)">\(\zeta_p\)</span> is a global normal integral basis generator. At <span class="math" data-tex="\(p\)">\(p\)</span>, the index of ramification is <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, which is tame.</p>
+<p>For the cyclic cubic field inside <span class="math" data-tex="\(\mathbb Q(\zeta_7)\)">\(\mathbb Q(\zeta_7)\)</span>, take</p>
+<span class="math math-display" data-tex="\[
+\eta_1=\zeta_7+\zeta_7^{-1},\quad
+\eta_2=\zeta_7^2+\zeta_7^{-2},\quad
+\eta_3=\zeta_7^3+\zeta_7^{-3}.
+\]">\[
+\eta_1=\zeta_7+\zeta_7^{-1},\quad
+\eta_2=\zeta_7^2+\zeta_7^{-2},\quad
+\eta_3=\zeta_7^3+\zeta_7^{-3}.
+\]</span>
+<p>Cyclotomic multiplication gives <span class="math" data-tex="\(\eta_1+\eta_2+\eta_3=-1\)">\(\eta_1+\eta_2+\eta_3=-1\)</span>, pairwise sum of products <span class="math" data-tex="\(-2\)">\(-2\)</span>, and product <span class="math" data-tex="\(1\)">\(1\)</span>. Their polynomial is <span class="math" data-tex="\(T^3+T^2-2T-1\)">\(T^3+T^2-2T-1\)</span>, of discriminant <span class="math" data-tex="\(49\)">\(49\)</span>. Only seven can divide the index of the order <span class="math" data-tex="\(\mathbb Z[\eta_1]\)">\(\mathbb Z[\eta_1]\)</span>. The shift <span class="math" data-tex="\(T=U+2\)">\(T=U+2\)</span> gives <span class="math" data-tex="\(U^3+7U^2+14U+7\)">\(U^3+7U^2+14U+7\)</span>, Eisenstein at seven. Its root is a uniformizer of the totally ramified completion, whose integer ring is generated by that uniformizer by the digit-and-Nakayama argument of the preceding lesson. Thus the local index at seven is one, and the order is maximal everywhere.</p>
+<p>Now <span class="math" data-tex="\(\operatorname{Tr}(\eta_i^2)=5\)">\(\operatorname{Tr}(\eta_i^2)=5\)</span>, because <span class="math" data-tex="\(\eta_i^2=2+\eta_j\)">\(\eta_i^2=2+\eta_j\)</span>, and <span class="math" data-tex="\(\operatorname{Tr}(\eta_i\eta_j)=-2\)">\(\operatorname{Tr}(\eta_i\eta_j)=-2\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, because the product is the sum of two periods. Their Gram matrix has diagonal five and off-diagonal minus two; its eigenvalues are <span class="math" data-tex="\(1,7,7\)">\(1,7,7\)</span>, so its determinant is <span class="math" data-tex="\(49\)">\(49\)</span>. Their lattice consequently has index one in the full integer ring. The periods are cyclic conjugates, proving that <span class="math" data-tex="\(\eta_1\)">\(\eta_1\)</span> generates a global normal integral basis.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, prove that <span class="math" data-tex="\(\zeta_p\)">\(\zeta_p\)</span> generates a normal integral basis of <span class="math" data-tex="\(\mathbb Z[\zeta_p]\)">\(\mathbb Z[\zeta_p]\)</span> over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</li>
+<li><strong>Medium.</strong> Determine the trace image of <span class="math" data-tex="\(\mathbb Z[i]\)">\(\mathbb Z[i]\)</span> and prove it has no global normal integral basis.</li>
+<li><strong>Medium.</strong> Prove Higman's criterion without assuming <span class="math" data-tex="\(|G|\)">\(|G|\)</span> invertible.</li>
+<li><strong>Medium.</strong> Find a normal integral basis generator at three for <span class="math" data-tex="\(\mathbb Q(\sqrt{-3})\)">\(\mathbb Q(\sqrt{-3})\)</span>.</li>
+<li><strong>Hard.</strong> Derive the trace-tameness criterion from the different exponents, and explain the role of the Galois hypothesis.</li>
+</ol>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>1.</strong> All nontrivial <span class="math" data-tex="\(p\)">\(p\)</span>-th roots are conjugates of <span class="math" data-tex="\(\zeta_p\)">\(\zeta_p\)</span>. Their powers from one through <span class="math" data-tex="\(p-2\)">\(p-2\)</span> already include all but the constant member of the standard power basis. The relation <span class="math" data-tex="\(1=-\sum_{a=1}^{p-1}\zeta_p^a\)">\(1=-\sum_{a=1}^{p-1}\zeta_p^a\)</span> recovers that constant integrally. The replacement matrix has determinant <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, proving both spanning and independence. Hence the associated <span class="math" data-tex="\(\mathbb Z[G]\)">\(\mathbb Z[G]\)</span>-map is an isomorphism.</p>
+<p><strong>2.</strong> The trace is <span class="math" data-tex="\(a+bi\mapsto2a\)">\(a+bi\mapsto2a\)</span>, with image exactly <span class="math" data-tex="\(2\mathbb Z\)">\(2\mathbb Z\)</span>. A normal generator would make the invariant submodule generated by its trace, whereas the invariant submodule is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. This would force its trace to be a unit, impossible. Independently, the conjugate coefficient determinant <span class="math" data-tex="\(-2ab\)">\(-2ab\)</span> is never <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>.</p>
+<p><strong>3.</strong> Form <span class="math" data-tex="\(F=R[G]\otimes_R N\)">\(F=R[G]\otimes_R N\)</span> with action on the first factor. It is projective, and <span class="math" data-tex="\(\epsilon(g\otimes n)=g(n)\)">\(\epsilon(g\otimes n)=g(n)\)</span> is onto. The map <span class="math" data-tex="\(s(n)=\sum_g g\otimes\phi(g^{-1}n)\)">\(s(n)=\sum_g g\otimes\phi(g^{-1}n)\)</span> is equivariant and has composite <span class="math" data-tex="\(T_G(\phi)\)">\(T_G(\phi)\)</span>; if that is the identity, it splits. Conversely take an equivariant splitting, extract its coefficient at the identity, and use equivariance to express every other coefficient as <span class="math" data-tex="\(\phi(g^{-1}n)\)">\(\phi(g^{-1}n)\)</span>. The composite condition yields exactly the required sum. This proves both directions with no division by the group order.</p>
+<p><strong>4.</strong> Take <span class="math" data-tex="\(\omega=(1+\sqrt{-3})/2\)">\(\omega=(1+\sqrt{-3})/2\)</span>. The integer ring has basis <span class="math" data-tex="\(1,\omega\)">\(1,\omega\)</span>; the conjugates <span class="math" data-tex="\(\omega,1-\omega\)">\(\omega,1-\omega\)</span> have coefficient columns <span class="math" data-tex="\((0,1)^{\mathsf T},(1,-1)^{\mathsf T}\)">\((0,1)^{\mathsf T},(1,-1)^{\mathsf T}\)</span>. Their determinant is <span class="math" data-tex="\(-1\)">\(-1\)</span>, so the same two columns give a basis after localization at three. The trace is one.</p>
+<p><strong>5.</strong> The trace fails to be onto exactly when its image lies in the base maximal ideal. By trace duality this is <span class="math" data-tex="\(M\subseteq\pi\mathfrak D^{-1}\)">\(M\subseteq\pi\mathfrak D^{-1}\)</span>, which on each component is <span class="math" data-tex="\(d_{\mathfrak P}\ge e_{\mathfrak P}\)">\(d_{\mathfrak P}\ge e_{\mathfrak P}\)</span>. The exponent bound says <span class="math" data-tex="\(d\ge e-1\)">\(d\ge e-1\)</span>, with equality precisely for tame ramification; since these are integers, the strict alternative is <span class="math" data-tex="\(d\ge e\)">\(d\ge e\)</span>. Galois transitivity makes all components tame together or wild together, so trace surjectivity is equivalent to tameness at the prime. Without that transitivity the containment must hold at every component for trace failure; surjectivity therefore only requires one tame component. Formula (2.3) independently confirms the same criterion with imperfect residue fields.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The stated inputs are the field normal basis theorem [Milne FT, Theorem 5.18], completion and prime decomposition, the Cohen structure theorem [Stacks, Tag 0C0S], Swan's characteristic-zero rigidity [Swan, Section 6, Corollary 6.4], semisimple decomposition of a characteristic-zero splitting representation, the cyclotomic integer theorem, the conductor-discriminant theorem, and the three global outlook results. Trace-tameness, Higman's criterion, tame projectivity, positive-characteristic freeness, descent from completion, necessity and the discriminant square are proved here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Noether]</strong> Emmy Noether, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN243919689_0167/LOG_0021.pdf"><em>Normalbasis bei Körpern ohne höhere Verzweigung</em></a>, Journal für die reine und angewandte Mathematik <strong>167</strong> (1932), 147–152, Sections 1–3; <a href="https://github.com/KokunoYumeto/emmy-noether-en">English edition</a>. Satz 5 is printed with the sufficient condition that the residue prime does not divide the extension degree. The modern tame theorem above allows divisibility of the residue degree: an unramified quadratic extension of <span class="math" data-tex="\(\mathbb Q_2\)">\(\mathbb Q_2\)</span>, for example, has an integral normal basis despite <span class="math" data-tex="\(2\mid2\)">\(2\mid2\)</span>.</li>
+<li><strong>[Milne FT]</strong> J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/FT.pdf"><em>Fields and Galois Theory</em></a>, Chapter 5, Theorem 5.18.</li>
+<li><strong>[Milne ANT]</strong> J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, Chapter 6, Theorem 6.4 (cyclotomic integer rings).</li>
+<li><strong>[Stacks]</strong> The Stacks Project, Tags <a href="https://stacks.math.columbia.edu/tag/0C0S">0C0S</a>, <a href="https://stacks.math.columbia.edu/tag/09E3">09E3</a>, and <a href="https://stacks.math.columbia.edu/tag/0EXW">0EXW</a>. These are read in <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html">AI Integrated Stacks Project</a>, an edition with AI-proposed corrections and additions not reviewed by the Stacks Project's maintainers.</li>
+<li><strong>[Swan]</strong> R. G. Swan, <a href="https://www.mathnet.ru/eng/mat292"><em>Induced representations and projective modules</em></a>, Annals of Mathematics <strong>71</strong> (1960), 552–578, Section 6, Theorem 6.1 and Corollary 6.4; linked journal translation in Matematika <strong>8</strong> (1964), 3–28.</li>
+<li><strong>[Sutherland]</strong> Andrew V. Sutherland, <em>Number Theory I</em>, MIT 18.785 lecture notes, Fall 2021: <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes11.pdf">Lecture 11</a>, <em>Totally ramified extensions and Krasner's lemma</em>, on tamely ramified extensions, and <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes12.pdf">Lecture 12</a>, <em>The different and the discriminant</em>.</li>
+<li><strong>[Milne CFT]</strong> J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf"><em>Class Field Theory</em></a>, version 4.03, Chapter V, Theorem 3.27 (the conductor-discriminant formula).</li>
+<li><strong>[Artin]</strong> Emil Artin, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN243919689_0164/LOG_0004.pdf"><em>Die gruppentheoretische Struktur der Diskriminanten algebraischer Zahlkörper</em></a>, Journal für die reine und angewandte Mathematik <strong>164</strong> (1931), 1–11.</li>
+<li><strong>[Cougnard]</strong> Jean Cougnard, <a href="https://www.numdam.org/item/SB_1982-1983__25__25_0/"><em>Les travaux de A. Fröhlich, Ph. Cassou-Noguès et M. J. Taylor sur les bases normales</em></a>, Séminaire Bourbaki, exposé 598, Astérisque <strong>105–106</strong> (1983), 25–38, Section 1.</li>
+<li><strong>[Bergé]</strong> Anne-Marie Bergé, <a href="https://www.numdam.org/item/10.5802/aif.411.pdf"><em>Sur l'arithmétique d'une extension diédrale</em></a>, Annales de l'Institut Fourier <strong>22</strong> (1972), 31–59, introduction, p. 31.</li>
+<li><strong>[Martinet]</strong> Jacques Martinet, <a href="https://www.numdam.org/articles/10.24033/asens.1216/"><em>Modules sur l'algèbre du groupe quaternionien</em></a>, Annales scientifiques de l'École Normale Supérieure <strong>4</strong> (1971), 399–408, Section IV.</li>
+<li><strong>[Taylor]</strong> M. J. Taylor, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0063/LOG_0010.pdf"><em>On Fröhlich's conjecture for rings of integers of tame extensions</em></a>, Inventiones Mathematicae <strong>63</strong> (1981), 41–79. The precise class identity is also in Ph. Cassou-Noguès and M. J. Taylor, <a href="https://www.math.u-bordeaux.fr/~pcassoun/graz1.pdf"><em>Galois module structure for wild extensions</em></a>, introduction, equation (1.1).</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NOE-ABS-04.html">← Three differents</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NOE-ABS-06.html">Algebraic functions of one variable: conductors and adjoints →</a></span></nav>
+<p class="small source-link"><a href="src/NOE-ABS-05.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-ABS">Repository</a></nav>
+</footer>
+</body>
+</html>

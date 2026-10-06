@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hilbert and ring class fields, and quadratic prime forms · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/hilbert-and-ring-class-fields-and-quadratic-prime-forms.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 19 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (5)</summary><ul><li><a href="hilberts-theorem-90-and-kummer-theory.html">Hilbert's Theorem 90 and Kummer theory</a></li><li><a href="the-reciprocity-law-and-the-class-field-correspondence.html">The reciprocity law and the class field correspondence</a></li><li><a href="ray-class-fields-conductors-and-ideal-reciprocity.html">Ray class fields, conductors and ideal reciprocity</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ANT-10">Quadratic fields: ideal classes and binary quadratic forms</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ANT-11">Orders in number fields and their Picard groups</a></li></ul></details>
+<article class="lesson">
+<h1 id="hilbert-and-ring-class-fields-and-quadratic-prime-forms">Hilbert and ring class fields, and quadratic prime forms</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p><strong>Lesson 19.</strong> A prime ideal is principal exactly when it splits in the Hilbert class field. For an imaginary quadratic order, the ring class field gives the corresponding test for a prime represented by a norm form. We construct these fields from the ray class correspondence, prove principalization, and identify the fields needed for the forms <span class="math" data-tex="\(x^2+5y^2\)">\(x^2+5y^2\)</span>, <span class="math" data-tex="\(x^2+14y^2\)">\(x^2+14y^2\)</span> and <span class="math" data-tex="\(x^2+27y^2\)">\(x^2+27y^2\)</span>.</p>
+<p>The class field input is <a href="ray-class-fields-conductors-and-ideal-reciprocity.html">Ray class fields, conductors and ideal reciprocity</a>. The arithmetic of quadratic ideal classes and orders is supplied by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ANT-10">Quadratic fields: ideal classes and binary quadratic forms</a>, Theorems 10.1–10.2 and Proposition 10.3, and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ANT-11">Orders in number fields and their Picard groups</a>, Theorems 11.3–11.4 and Corollary 11.5. Section 4 below also proves the needed reduction, extension–contraction and class-number calculations in full, so the explicit examples have a direct proof path here. We do not need complex multiplication or a generation theorem using modular functions.</p>
+<p><strong>Prerequisite proof availability.</strong> The named results below identify specific programme lessons. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-19">prerequisite record</a> distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.</p>
+<h2 id="1-the-ordinary-and-narrow-hilbert-class-fields">1. The ordinary and narrow Hilbert class fields</h2>
+<p><strong>Theorem 19.1.</strong> A number field <span class="math" data-tex="\(K\)">\(K\)</span> has a unique maximal finite abelian extension <span class="math" data-tex="\(H/K\)">\(H/K\)</span> unramified at every place, including the real places, and
+<span class="math math-display" data-tex="\[
+H=K_{(1)},\qquad
+\operatorname{Gal}(H/K)\simeq\operatorname{Cl}_K.
+\tag{1}
+\]">\[
+H=K_{(1)},\qquad
+\operatorname{Gal}(H/K)\simeq\operatorname{Cl}_K.
+\tag{1}
+\]</span>
+A finite prime splits completely in <span class="math" data-tex="\(H\)">\(H\)</span> exactly when its ideal is principal. The <strong>narrow Hilbert class field</strong> <span class="math" data-tex="\(H^+\)">\(H^+\)</span> is maximal among abelian extensions unramified at the finite places, and
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(H^+/K)\simeq\operatorname{Cl}_K^+.
+\tag{2}
+\]">\[
+\operatorname{Gal}(H^+/K)\simeq\operatorname{Cl}_K^+.
+\tag{2}
+\]</span>
+It is the ray field whose finite modulus is <span class="math" data-tex="\((1)\)">\((1)\)</span> and whose real modulus includes all real places. Its real places may become complex.</p>
+<p><strong>Proof.</strong> Theorem 18.4 constructs both fields. Proposition 18.3 says that absence of ramification at all places is equivalent to conductor <span class="math" data-tex="\((1)\)">\((1)\)</span>, so every such abelian extension lies in <span class="math" data-tex="\(K_{(1)}\)">\(K_{(1)}\)</span>. Equation (4) of lesson 18 identifies this ray group with the ordinary ideal class group. In its ideal Artin map, the class of a prime is its Frobenius; triviality of that class is precisely complete splitting.</p>
+<p>Selecting every real place permits the sign quotient, while imposing full unit groups at every finite place forbids finite ramification. The same conductor criterion gives maximality of this field, and the positivity condition on principal generators identifies its ray group with the narrow class group. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These fields are equal for imaginary number fields. In a real quadratic field, Proposition 10.3 of the quadratic-fields lesson gives <span class="math" data-tex="\([H^+:H]=1\)">\([H^+:H]=1\)</span> when there is a unit of norm <span class="math" data-tex="\(-1\)">\(-1\)</span>, and <span class="math" data-tex="\([H^+:H]=2\)">\([H^+:H]=2\)</span> otherwise. This statement about the two full class groups does not, by itself, give their quotients by squares; genus theory will require a separate argument.</p>
+<h2 id="2-transfer-and-the-principal-ideal-theorem">2. Transfer and the principal ideal theorem</h2>
+<p>For a finite-index subgroup <span class="math" data-tex="\(V\subset G\)">\(V\subset G\)</span>, choose representatives <span class="math" data-tex="\(r\)">\(r\)</span> of left cosets <span class="math" data-tex="\(G/V\)">\(G/V\)</span>. If <span class="math" data-tex="\(gr=r&#x27;h_r\)">\(gr=r&#x27;h_r\)</span>, with <span class="math" data-tex="\(h_r\in V\)">\(h_r\in V\)</span>, the <strong>transfer</strong> is
+<span class="math math-display" data-tex="\[
+\operatorname{Ver}:G^{\mathrm{ab}}\longrightarrow V^{\mathrm{ab}},
+\qquad g\longmapsto\prod_r h_r\pmod{[V,V]}.
+\tag{3}
+\]">\[
+\operatorname{Ver}:G^{\mathrm{ab}}\longrightarrow V^{\mathrm{ab}},
+\qquad g\longmapsto\prod_r h_r\pmod{[V,V]}.
+\tag{3}
+\]</span>
+The product is independent of the representatives and is multiplicative: in a product <span class="math" data-tex="\(g_1g_2\)">\(g_1g_2\)</span>, the cosets for <span class="math" data-tex="\(g_2\)">\(g_2\)</span> are merely permuted before applying <span class="math" data-tex="\(g_1\)">\(g_1\)</span>, and changing representatives inserts cancelling factors. This is the transfer used in Proposition 5.2, equation (11), of <a href="the-reciprocity-law-and-the-class-field-correspondence.html">The reciprocity law and the class field correspondence</a>.</p>
+<h3 id="the-transfer-to-the-commutator-subgroup">The transfer to the commutator subgroup</h3>
+<p>We prove the group-theoretic theorem completely. For a group <span class="math" data-tex="\(G\)">\(G\)</span>, let <span class="math" data-tex="\(I_G\)">\(I_G\)</span> be the augmentation ideal in <span class="math" data-tex="\(\mathbf Z[G]\)">\(\mathbf Z[G]\)</span>, and write <span class="math" data-tex="\(\delta g=g-1\)">\(\delta g=g-1\)</span>.</p>
+<p><strong>Transfer lemma.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is finitely generated and <span class="math" data-tex="\(A=G/[G,G]\)">\(A=G/[G,G]\)</span> is finite, then
+<span class="math math-display" data-tex="\[
+\operatorname{Ver}:A\longrightarrow [G,G]/[[G,G],[G,G]]
+\quad\text{is trivial}.
+\tag{4}
+\]">\[
+\operatorname{Ver}:A\longrightarrow [G,G]/[[G,G],[G,G]]
+\quad\text{is trivial}.
+\tag{4}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(V=[G,G]\)">\(V=[G,G]\)</span>, <span class="math" data-tex="\(R=\mathbf Z[A]\)">\(R=\mathbf Z[A]\)</span>, and
+<span class="math" data-tex="\(M=I_G/(I_GI_V)\)">\(M=I_G/(I_GI_V)\)</span>, viewed as a right <span class="math" data-tex="\(R\)">\(R\)</span>-module. The action factors through <span class="math" data-tex="\(A\)">\(A\)</span>: multiplying an element of <span class="math" data-tex="\(I_G\)">\(I_G\)</span> by a difference of representatives modulo <span class="math" data-tex="\(V\)">\(V\)</span> gives an element of <span class="math" data-tex="\(I_GI_V\)">\(I_GI_V\)</span>. The ring <span class="math" data-tex="\(R\)">\(R\)</span> is commutative.</p>
+<p>First identify transfer in this module. The abelian group <span class="math" data-tex="\(T=\mathbf Z[G]I_V\)">\(T=\mathbf Z[G]I_V\)</span> has basis <span class="math" data-tex="\(r(h-1)\)">\(r(h-1)\)</span>, for coset representatives <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(h\in V\setminus\{1\}\)">\(h\in V\setminus\{1\}\)</span>. Send this basis element to the class of <span class="math" data-tex="\(h\)">\(h\)</span> in <span class="math" data-tex="\(V^{\mathrm{ab}}\)">\(V^{\mathrm{ab}}\)</span>, using additive notation in the target. This map kills <span class="math" data-tex="\(I_GI_V\)">\(I_GI_V\)</span>. Indeed if <span class="math" data-tex="\(gr=r&#x27;h&#x27;\)">\(gr=r&#x27;h&#x27;\)</span>, then
+<span class="math math-display" data-tex="\[
+gr(h-1)=r&#x27;\bigl(\delta(h&#x27;h)-\delta h&#x27;\bigr),
+\]">\[
+gr(h-1)=r&#x27;\bigl(\delta(h&#x27;h)-\delta h&#x27;\bigr),
+\]</span>
+whose image is <span class="math" data-tex="\([h&#x27;h]-[h&#x27;]=[h]\)">\([h&#x27;h]-[h&#x27;]=[h]\)</span>, the same as the image of <span class="math" data-tex="\(r(h-1)\)">\(r(h-1)\)</span>. Their difference generates the required relations. Conversely <span class="math" data-tex="\(h\mapsto\delta h\)">\(h\mapsto\delta h\)</span> modulo <span class="math" data-tex="\(I_GI_V\)">\(I_GI_V\)</span> is a homomorphism, since
+<span class="math" data-tex="\(\delta(hk)=\delta h+\delta k+\delta h\delta k\)">\(\delta(hk)=\delta h+\delta k+\delta h\delta k\)</span>
+and <span class="math" data-tex="\(I_V^2\subseteq I_GI_V\)">\(I_V^2\subseteq I_GI_V\)</span>. The two maps are inverse, because <span class="math" data-tex="\(r\delta h\equiv\delta h\)">\(r\delta h\equiv\delta h\)</span>. Thus
+<span class="math math-display" data-tex="\[
+T/(I_GI_V)\simeq V^{\mathrm{ab}}.
+\tag{5}
+\]">\[
+T/(I_GI_V)\simeq V^{\mathrm{ab}}.
+\tag{5}
+\]</span>
+Summing <span class="math" data-tex="\(\delta(gr)=\delta g\,r+\delta r=\delta r&#x27;+r&#x27;\delta h_r\)">\(\delta(gr)=\delta g\,r+\delta r=\delta r&#x27;+r&#x27;\delta h_r\)</span> over the representatives cancels the <span class="math" data-tex="\(\delta r\)">\(\delta r\)</span> terms by permutation. Modulo <span class="math" data-tex="\(I_GI_V\)">\(I_GI_V\)</span>, it gives
+<span class="math math-display" data-tex="\[
+\delta g\sum_r r\equiv\sum_r\delta h_r.
+\tag{6}
+\]">\[
+\delta g\sum_r r\equiv\sum_r\delta h_r.
+\tag{6}
+\]</span>
+Under (5), the right side is exactly (3).</p>
+<p>Let <span class="math" data-tex="\(g_1,\ldots,g_n\)">\(g_1,\ldots,g_n\)</span> generate <span class="math" data-tex="\(G\)">\(G\)</span>. The kernel of <span class="math" data-tex="\(\mathbf Z^n\to A\)">\(\mathbf Z^n\to A\)</span>, sending the standard basis to these generators, is a full lattice. Choose its basis matrix <span class="math" data-tex="\((m_{ik})\)">\((m_{ik})\)</span> with positive determinant <span class="math" data-tex="\(|A|\)">\(|A|\)</span>; integer lattice index gives this determinant. The words
+<span class="math" data-tex="\(w_k=\prod_i g_i^{m_{ik}}\)">\(w_k=\prod_i g_i^{m_{ik}}\)</span>
+belong to <span class="math" data-tex="\(V\)">\(V\)</span>. The identities
+<span class="math math-display" data-tex="\[
+\delta(xy)=\delta x\,y+\delta y,
+\qquad\delta(x^{-1})=-\delta x\,x^{-1}
+\tag{7}
+\]">\[
+\delta(xy)=\delta x\,y+\delta y,
+\qquad\delta(x^{-1})=-\delta x\,x^{-1}
+\tag{7}
+\]</span>
+expand every word as a right-linear combination of the <span class="math" data-tex="\(\delta g_i\)">\(\delta g_i\)</span>. The augmentation of the coefficient of <span class="math" data-tex="\(\delta g_i\)">\(\delta g_i\)</span> is its total exponent in the word. Each <span class="math" data-tex="\(w_k\)">\(w_k\)</span> also has an expression as a product of commutators of generator words, with total exponent zero for each generator. Subtract these two expansions of the same <span class="math" data-tex="\(\delta w_k\)">\(\delta w_k\)</span> and pass to <span class="math" data-tex="\(M\)">\(M\)</span>. We obtain a matrix <span class="math" data-tex="\((\mu_{ik})\)">\((\mu_{ik})\)</span> over <span class="math" data-tex="\(R\)">\(R\)</span> with
+<span class="math math-display" data-tex="\[
+\sum_i\delta g_i\,\mu_{ik}=0,
+\qquad \operatorname{aug}(\mu_{ik})=m_{ik}.
+\tag{8}
+\]">\[
+\sum_i\delta g_i\,\mu_{ik}=0,
+\qquad \operatorname{aug}(\mu_{ik})=m_{ik}.
+\tag{8}
+\]</span>
+This explains both the existence of the matrix and its augmentation, including negative exponents.</p>
+<p>Let <span class="math" data-tex="\(\Delta=\det(\mu_{ik})\in R\)">\(\Delta=\det(\mu_{ik})\in R\)</span>. Multiplication by its adjugate gives <span class="math" data-tex="\(\delta g_i\Delta=0\)">\(\delta g_i\Delta=0\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. These <span class="math" data-tex="\(\delta g_i\)">\(\delta g_i\)</span> generate <span class="math" data-tex="\(I_G\)">\(I_G\)</span> as a right module, by (7), so <span class="math" data-tex="\(\delta g\Delta=0\)">\(\delta g\Delta=0\)</span> for all <span class="math" data-tex="\(g\)">\(g\)</span>. Projecting to <span class="math" data-tex="\(R\)">\(R\)</span> gives
+<span class="math" data-tex="\((a-1)\Delta=0\)">\((a-1)\Delta=0\)</span> for all <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>. Thus the coefficients of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> are all equal: translation by <span class="math" data-tex="\(A\)">\(A\)</span> permutes its basis regularly. Hence
+<span class="math math-display" data-tex="\[
+\Delta=c\sum_{a\in A}a,
+\qquad
+c|A|=\operatorname{aug}(\Delta)=\det(m_{ik})=|A|,
+\]">\[
+\Delta=c\sum_{a\in A}a,
+\qquad
+c|A|=\operatorname{aug}(\Delta)=\det(m_{ik})=|A|,
+\]</span>
+so <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Therefore <span class="math" data-tex="\(\delta g\sum_r r=0\)">\(\delta g\sum_r r=0\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>. Equations (5)–(6) make every transfer value trivial, proving (4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 19.2 (principal ideal theorem).</strong> Every fractional ideal of <span class="math" data-tex="\(K\)">\(K\)</span> becomes principal in its ordinary Hilbert class field <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(H_2\)">\(H_2\)</span> be the Hilbert class field of <span class="math" data-tex="\(H\)">\(H\)</span>. Uniqueness makes <span class="math" data-tex="\(H_2/K\)">\(H_2/K\)</span> Galois: every conjugation of <span class="math" data-tex="\(H\)">\(H\)</span> sends its maximal abelian everywhere-unramified extension to itself. Unramified extensions compose in towers, and real places still split, so <span class="math" data-tex="\(H_2/K\)">\(H_2/K\)</span> is everywhere unramified. Its maximal abelian subextension is <span class="math" data-tex="\(H\)">\(H\)</span>, by Theorem 19.1. Consequently for <span class="math" data-tex="\(G=\operatorname{Gal}(H_2/K)\)">\(G=\operatorname{Gal}(H_2/K)\)</span>,
+<span class="math math-display" data-tex="\[
+V=\operatorname{Gal}(H_2/H)=[G,G],
+\]">\[
+V=\operatorname{Gal}(H_2/H)=[G,G],
+\]</span>
+and <span class="math" data-tex="\(V\)">\(V\)</span> is abelian.</p>
+<p>Reciprocity identifies <span class="math" data-tex="\(\operatorname{Cl}_K\)">\(\operatorname{Cl}_K\)</span> with <span class="math" data-tex="\(G/V\)">\(G/V\)</span> and <span class="math" data-tex="\(\operatorname{Cl}_H\)">\(\operatorname{Cl}_H\)</span> with <span class="math" data-tex="\(V\)">\(V\)</span>. Inclusion of idèle classes corresponds to transfer by Proposition 5.2; passing to their ordinary ideal quotients makes the same map extension of ideals <span class="math" data-tex="\(\mathfrak a\mapsto\mathfrak a\mathcal O_H\)">\(\mathfrak a\mapsto\mathfrak a\mathcal O_H\)</span>. Lemma (4) makes this map zero. Thus the extended ideal has trivial class in <span class="math" data-tex="\(\operatorname{Cl}_H\)">\(\operatorname{Cl}_H\)</span>, which is exactly principality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The ideal map used here is compatible with extension because a finite local component inserted into all completions above it has valuations multiplied by the ramification indices. The associated ideal is therefore the extended ideal. This verifies the arithmetic interpretation of the transfer, not just the formal Galois reduction.</p>
+<h2 id="3-quadratic-genus-fields-and-the-real-field-distinction">3. Quadratic genus fields and the real-field distinction</h2>
+<p>Let <span class="math" data-tex="\(K=\mathbf Q(\sqrt D)\)">\(K=\mathbf Q(\sqrt D)\)</span>, with nontrivial fundamental discriminant <span class="math" data-tex="\(D\)">\(D\)</span>. Factor it into prime discriminants
+<span class="math math-display" data-tex="\[
+D=d_1\cdots d_t,
+\qquad p^*=(-1)^{(p-1)/2}p\text{ for odd }p,
+\tag{9}
+\]">\[
+D=d_1\cdots d_t,
+\qquad p^*=(-1)^{(p-1)/2}p\text{ for odd }p,
+\tag{9}
+\]</span>
+with the single dyadic factor, if present, equal to <span class="math" data-tex="\(-4\)">\(-4\)</span>, <span class="math" data-tex="\(8\)">\(8\)</span>, or <span class="math" data-tex="\(-8\)">\(-8\)</span>. The integer <span class="math" data-tex="\(t\)">\(t\)</span> is the number of rational primes dividing <span class="math" data-tex="\(|D|\)">\(|D|\)</span>. These signed discriminants include each prime exactly once.</p>
+<p><strong>Proposition 19.3 (genus field).</strong> The maximal subfield of <span class="math" data-tex="\(H^+\)">\(H^+\)</span> abelian over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> is
+<span class="math math-display" data-tex="\[
+M^+=\mathbf Q(\sqrt{d_1},\ldots,\sqrt{d_t}),
+\qquad
+\operatorname{Gal}(M^+/K)\simeq
+\operatorname{Cl}_K^+/(\operatorname{Cl}_K^+)^2
+\simeq(\mathbf Z/2)^{t-1}.
+\tag{10}
+\]">\[
+M^+=\mathbf Q(\sqrt{d_1},\ldots,\sqrt{d_t}),
+\qquad
+\operatorname{Gal}(M^+/K)\simeq
+\operatorname{Cl}_K^+/(\operatorname{Cl}_K^+)^2
+\simeq(\mathbf Z/2)^{t-1}.
+\tag{10}
+\]</span>
+For imaginary <span class="math" data-tex="\(K\)">\(K\)</span>, this is also the ordinary genus field. For real <span class="math" data-tex="\(K\)">\(K\)</span>, the ordinary genus field is the maximal totally real subfield of <span class="math" data-tex="\(M^+\)">\(M^+\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+|\operatorname{Cl}_K/\operatorname{Cl}_K^2|=
+\begin{cases}
+2^{t-1},&amp;D&lt;0,\\
+2^{t-1},&amp;D&gt;0\text{ and every }d_i&gt;0,\\
+2^{t-2},&amp;D&gt;0\text{ and some }d_i&lt;0.
+\end{cases}
+\tag{11}
+\]">\[
+|\operatorname{Cl}_K/\operatorname{Cl}_K^2|=
+\begin{cases}
+2^{t-1},&amp;D&lt;0,\\
+2^{t-1},&amp;D&gt;0\text{ and every }d_i&gt;0,\\
+2^{t-2},&amp;D&gt;0\text{ and some }d_i&lt;0.
+\end{cases}
+\tag{11}
+\]</span>
+The last case has at least two negative factors, so its exponent is nonnegative.</p>
+<p><strong>Proof.</strong> The square classes of the <span class="math" data-tex="\(d_i\)">\(d_i\)</span> are independent: each odd prime valuation detects its own factor, and the remaining dyadic square class is nontrivial. Kummer theory gives <span class="math" data-tex="\([M^+:\mathbf Q]=2^t\)">\([M^+:\mathbf Q]=2^t\)</span>, and (9) places <span class="math" data-tex="\(K\)">\(K\)</span> in <span class="math" data-tex="\(M^+\)">\(M^+\)</span>.</p>
+<p>At a finite prime, only one of the quadratic fields <span class="math" data-tex="\(\mathbf Q(\sqrt{d_i})\)">\(\mathbf Q(\sqrt{d_i})\)</span> ramifies, and its local ramified extension has degree <span class="math" data-tex="\(2\)">\(2\)</span>; all the other factors are unramified. Thus the absolute inertia in their compositum has order <span class="math" data-tex="\(2\)">\(2\)</span> and maps nontrivially to the inertia in <span class="math" data-tex="\(K/\mathbf Q\)">\(K/\mathbf Q\)</span>. Its kernel over <span class="math" data-tex="\(K\)">\(K\)</span> is trivial. This holds at <span class="math" data-tex="\(2\)">\(2\)</span> as well: odd fundamental discriminants give unramified or split <span class="math" data-tex="\(2\)">\(2\)</span>-adic extensions, and the unique dyadic factor supplies the ramified one. Therefore <span class="math" data-tex="\(M^+/K\)">\(M^+/K\)</span> is unramified at every finite place, and is abelian, so it lies in <span class="math" data-tex="\(H^+\)">\(H^+\)</span>.</p>
+<p>Put <span class="math" data-tex="\(A=\operatorname{Cl}_K^+\)">\(A=\operatorname{Cl}_K^+\)</span>. Conjugation of ideals induces inversion on <span class="math" data-tex="\(A\)">\(A\)</span>, since <span class="math" data-tex="\(\mathfrak a\bar{\mathfrak a}=(N\mathfrak a)\)">\(\mathfrak a\bar{\mathfrak a}=(N\mathfrak a)\)</span> has a positive rational generator. The narrow class field is stable under the nontrivial automorphism of <span class="math" data-tex="\(K/\mathbf Q\)">\(K/\mathbf Q\)</span>, by uniqueness. Choose a finite prime ramified in <span class="math" data-tex="\(K\)">\(K\)</span>. Since <span class="math" data-tex="\(H^+/K\)">\(H^+/K\)</span> is unramified there, its absolute inertia has order <span class="math" data-tex="\(2\)">\(2\)</span> and maps onto <span class="math" data-tex="\(\operatorname{Gal}(K/\mathbf Q)\)">\(\operatorname{Gal}(K/\mathbf Q)\)</span>. This supplies an order-two lift of that automorphism. Thus
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(H^+/\mathbf Q)=A\rtimes\mathbf Z/2,
+\]">\[
+\operatorname{Gal}(H^+/\mathbf Q)=A\rtimes\mathbf Z/2,
+\]</span>
+where the lift acts by inversion. Its commutator subgroup is <span class="math" data-tex="\(A^2\)">\(A^2\)</span>, as the commutators with the lift are precisely the squares. The maximal abelian subfield is therefore multiquadratic, with its relative Galois group <span class="math" data-tex="\(A/A^2\)">\(A/A^2\)</span>.</p>
+<p>We show that every quadratic subfield of this abelian subfield is already in <span class="math" data-tex="\(M^+\)">\(M^+\)</span>. At a ramified finite prime its character on local units is either the character of <span class="math" data-tex="\(K\)">\(K\)</span> or trivial, because absolute inertia has order <span class="math" data-tex="\(2\)">\(2\)</span> and maps isomorphically to that of <span class="math" data-tex="\(K\)">\(K\)</span>. At an unramified prime it is trivial on units. Select exactly those prime discriminants <span class="math" data-tex="\(d_i\)">\(d_i\)</span> where the first choice occurs. The quadratic character of their product has exactly the same restrictions on every finite unit group: all other prime discriminants are locally unramified there. The quotient of these characters defines an extension of <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> unramified at every finite prime. Such an abelian extension is trivial, since the narrow Hilbert class group of <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> is trivial—every rational ideal has a positive generator. Hence the two characters coincide. This proves maximality of <span class="math" data-tex="\(M^+\)">\(M^+\)</span>, and its already computed degree gives (10).</p>
+<p>For real <span class="math" data-tex="\(K\)">\(K\)</span>, the ordinary Hilbert field requires all real places to remain real. Thus its maximal abelian-over-<span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> subfield is exactly the real part of <span class="math" data-tex="\(M^+\)">\(M^+\)</span>: that real part is unramified at every place over <span class="math" data-tex="\(K\)">\(K\)</span>, and every ordinary genus field lies in it. If all <span class="math" data-tex="\(d_i\)">\(d_i\)</span> are positive, nothing is removed. Otherwise complex conjugation is a nontrivial order-two element on <span class="math" data-tex="\(M^+\)">\(M^+\)</span>, so its real part has half its degree. Applying the same inversion-and-commutator calculation to the ordinary class group proves (11). The imaginary case has no real place condition and <span class="math" data-tex="\(H=H^+\)">\(H=H^+\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a real quadratic field, the middle case of (11) is also equivalent to <span class="math" data-tex="\(-1\in N_{K/\mathbf Q}K^\times\)">\(-1\in N_{K/\mathbf Q}K^\times\)</span>. The Hilbert symbol at each odd ramified prime tests <span class="math" data-tex="\((-1/p)\)">\((-1/p)\)</span>; it is <span class="math" data-tex="\(1\)">\(1\)</span> exactly when <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span>. If all these tests pass, the <span class="math" data-tex="\(2\)">\(2\)</span>-adic formula of lesson 11 also gives <span class="math" data-tex="\(1\)">\(1\)</span>, and infinity gives <span class="math" data-tex="\(1\)">\(1\)</span>. Hasse’s cyclic norm theorem then supplies the global norm. These conditions are precisely positivity of all the factors in (9). The assertion concerns a norm of a field element, which need not be a unit.</p>
+<p>For example <span class="math" data-tex="\(D=12=(-4)(-3)\)">\(D=12=(-4)(-3)\)</span>, so <span class="math" data-tex="\(M^+=\mathbf Q(i,\sqrt{-3})\)">\(M^+=\mathbf Q(i,\sqrt{-3})\)</span>. The field <span class="math" data-tex="\(K=\mathbf Q(\sqrt3)\)">\(K=\mathbf Q(\sqrt3)\)</span> has narrow genus quotient of order <span class="math" data-tex="\(2\)">\(2\)</span>, but ordinary genus quotient of order <span class="math" data-tex="\(1\)">\(1\)</span>. This agrees with its ordinary class number <span class="math" data-tex="\(1\)">\(1\)</span> and narrow class number <span class="math" data-tex="\(2\)">\(2\)</span>. It shows why a formula <span class="math" data-tex="\(2^{t-1}\)">\(2^{t-1}\)</span> for every ordinary quadratic class group would be false.</p>
+<h2 id="4-ring-class-fields-of-imaginary-quadratic-orders">4. Ring class fields of imaginary quadratic orders</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be imaginary quadratic and <span class="math" data-tex="\(\mathcal O=\mathbf Z+f\mathcal O_K\)">\(\mathcal O=\mathbf Z+f\mathcal O_K\)</span> an order of conductor integer <span class="math" data-tex="\(f\geq1\)">\(f\geq1\)</span>. Its Picard group consists of invertible fractional <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-ideals modulo principal ideals. Theorem 11.3 of the orders lesson proves extension and contraction of ideals prime to <span class="math" data-tex="\(f\)">\(f\)</span>, with equal norms, and that every invertible class has such a representative. This identifies
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(\mathcal O)\simeq I_K^{(f)}/P_{K,\mathbf Z}(f),
+\tag{12}
+\]">\[
+\operatorname{Pic}(\mathcal O)\simeq I_K^{(f)}/P_{K,\mathbf Z}(f),
+\tag{12}
+\]</span>
+where <span class="math" data-tex="\(P_{K,\mathbf Z}(f)\)">\(P_{K,\mathbf Z}(f)\)</span> is generated by principal ideals <span class="math" data-tex="\((\alpha)\)">\((\alpha)\)</span> with <span class="math" data-tex="\(\alpha\equiv a\pmod{f\mathcal O_K}\)">\(\alpha\equiv a\pmod{f\mathcal O_K}\)</span> locally at <span class="math" data-tex="\(f\)">\(f\)</span>, for an integer <span class="math" data-tex="\(a\)">\(a\)</span> coprime to <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Here is the kernel verification in (12). A prime-to-conductor ideal has trivial Picard class exactly when its contraction is principal. At every conductor prime, a generator of such a principal ideal must be a unit in the localized order. Its residue is therefore in
+<span class="math" data-tex="\((\mathcal O/f\mathcal O_K)^\times=(\mathbf Z/f)^\times\)">\((\mathcal O/f\mathcal O_K)^\times=(\mathbf Z/f)^\times\)</span>.
+Conversely a generator with such a residue is an order unit at those primes, so contraction of its full-ring principal ideal agrees locally everywhere with its order principal ideal. The equality follows from local detection of ideal membership, proved in the orders lesson. Fractional generators may have denominators outside <span class="math" data-tex="\(f\)">\(f\)</span>; their residue is still represented by an integer coprime to <span class="math" data-tex="\(f\)">\(f\)</span>. Passing to ratios gives exactly the generated subgroup in (12). When <span class="math" data-tex="\(f=1\)">\(f=1\)</span>, these conditions impose no restriction.</p>
+<p><strong>Theorem 19.4.</strong> There is a unique finite abelian <strong>ring class field</strong> <span class="math" data-tex="\(L_{\mathcal O}/K\)">\(L_{\mathcal O}/K\)</span> whose ideal Artin kernel in <span class="math" data-tex="\(I_K^{(f)}\)">\(I_K^{(f)}\)</span> is <span class="math" data-tex="\(P_{K,\mathbf Z}(f)\)">\(P_{K,\mathbf Z}(f)\)</span>, and
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(L_{\mathcal O}/K)\simeq\operatorname{Pic}(\mathcal O).
+\tag{13}
+\]">\[
+\operatorname{Gal}(L_{\mathcal O}/K)\simeq\operatorname{Pic}(\mathcal O).
+\tag{13}
+\]</span>
+It is Galois over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, with
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(L_{\mathcal O}/\mathbf Q)
+\simeq\operatorname{Pic}(\mathcal O)\rtimes\mathbf Z/2,
+\tag{14}
+\]">\[
+\operatorname{Gal}(L_{\mathcal O}/\mathbf Q)
+\simeq\operatorname{Pic}(\mathcal O)\rtimes\mathbf Z/2,
+\tag{14}
+\]</span>
+where the nontrivial element acts by inversion. Its conductor over <span class="math" data-tex="\(K\)">\(K\)</span> divides <span class="math" data-tex="\(f\mathcal O_K\)">\(f\mathcal O_K\)</span>. The maximal-order case is the Hilbert class field.</p>
+<p><strong>Proof.</strong> The subgroup in (12) contains the ray principal subgroup modulo <span class="math" data-tex="\(f\)">\(f\)</span>, and has finite index by the Picard finiteness theorem, Theorem 11.4 of the orders lesson. Takagi’s correspondence, Proposition 18.5, therefore constructs the field and gives (13), with the stated conductor bound.</p>
+<p>Complex conjugation preserves both the modulus and the subgroup in (12). Uniqueness and conjugation compatibility of reciprocity imply <span class="math" data-tex="\(\overline{L_{\mathcal O}}=L_{\mathcal O}\)">\(\overline{L_{\mathcal O}}=L_{\mathcal O}\)</span>, so the field is Galois over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Complex conjugation is an order-two automorphism restricting nontrivially to <span class="math" data-tex="\(K\)">\(K\)</span>, and therefore splits its Galois exact sequence. On ideal classes it acts by inversion: <span class="math" data-tex="\(\mathfrak a\bar{\mathfrak a}=(N\mathfrak a)\)">\(\mathfrak a\bar{\mathfrak a}=(N\mathfrak a)\)</span>, with rational generator prime to <span class="math" data-tex="\(f\)">\(f\)</span>, is trivial in (12). This proves (14). For <span class="math" data-tex="\(f=1\)">\(f=1\)</span>, (12) is the ordinary ideal class group and Theorem 19.1 identifies the field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="order-arithmetic-used-in-the-examples">Order arithmetic used in the examples</h3>
+<p>Here are the ideal and form arguments needed in sections 4–8. They also give a direct reading route through those examples. For a freely readable comparison of proper ideals and their inverses, see A. Sutherland, <a href="https://math.mit.edu/classes/18.783/2023/LectureNotes17.pdf"><em>The CM torsor</em>, §§17.1–17.3, Theorem 17.10</a>. Only the order arithmetic is used here.</p>
+<p><strong>Ideals away from the conductor.</strong> Put <span class="math" data-tex="\(B=\mathcal O_K\)">\(B=\mathcal O_K\)</span> and <span class="math" data-tex="\(O=\mathbf Z+fB\)">\(O=\mathbf Z+fB\)</span>. Then <span class="math" data-tex="\(fB\subset O\)">\(fB\subset O\)</span>. At a rational prime <span class="math" data-tex="\(\ell\nmid f\)">\(\ell\nmid f\)</span>, localization therefore gives <span class="math" data-tex="\(O\otimes\mathbf Z_\ell=B\otimes\mathbf Z_\ell\)">\(O\otimes\mathbf Z_\ell=B\otimes\mathbf Z_\ell\)</span>. An integral ideal prime to <span class="math" data-tex="\(f\)">\(f\)</span> has localization equal to the full ring at every <span class="math" data-tex="\(\ell\mid f\)">\(\ell\mid f\)</span>. Thus extension and contraction preserve its localizations everywhere and are mutually inverse. Equality of these lattices can be detected locally: after clearing a common denominator, a nonzero quotient is a finitely generated abelian group and has a nonzero localization at some prime. The same local argument proves preservation of ideal norms, since the quotients at conductor primes are zero and the other quotients agree.</p>
+<p>Every invertible fractional <span class="math" data-tex="\(O\)">\(O\)</span>-ideal has a representative prime to <span class="math" data-tex="\(f\)">\(f\)</span>. Indeed an invertible ideal is locally principal: if <span class="math" data-tex="\(II^{-1}=O\)">\(II^{-1}=O\)</span>, write <span class="math" data-tex="\(1=\sum a_jb_j\)">\(1=\sum a_jb_j\)</span>, and at a maximal ideal some <span class="math" data-tex="\(a_jb_j\)">\(a_jb_j\)</span> is a unit; this <span class="math" data-tex="\(a_j\)">\(a_j\)</span> generates the localized ideal. Over <span class="math" data-tex="\(O\otimes\mathbf Z_\ell\)">\(O\otimes\mathbf Z_\ell\)</span>, choose one generator by the Chinese remainder theorem on its finitely many maximal ideals. For the finitely many <span class="math" data-tex="\(\ell\mid f\)">\(\ell\mid f\)</span>, let these generators be <span class="math" data-tex="\(\lambda_\ell\)">\(\lambda_\ell\)</span>. Choose <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> sufficiently close to <span class="math" data-tex="\(\lambda_\ell^{-1}\)">\(\lambda_\ell^{-1}\)</span> at all those primes. Such approximation follows by clearing denominators and applying the Chinese remainder theorem to the rank-two integer lattice <span class="math" data-tex="\(B\)">\(B\)</span>; the required congruences are open and nonempty. Then <span class="math" data-tex="\(aI\)">\(aI\)</span> equals the local order at every conductor prime. Multiplying by an integer prime to <span class="math" data-tex="\(f\)">\(f\)</span> clears its remaining denominators. This gives the desired integral representative. The argument applies as well to fractional <span class="math" data-tex="\(B\)">\(B\)</span>-ideals. It proves the representative and extension–contraction assertions used in (12).</p>
+<p>There is also an exact sequence
+<span class="math math-display" data-tex="\[
+B^\times\longrightarrow
+\frac{(B/fB)^\times}{(\mathbf Z/f\mathbf Z)^\times}
+\longrightarrow\operatorname{Pic}(O)
+\longrightarrow\operatorname{Cl}(B)\longrightarrow1.
+\]">\[
+B^\times\longrightarrow
+\frac{(B/fB)^\times}{(\mathbf Z/f\mathbf Z)^\times}
+\longrightarrow\operatorname{Pic}(O)
+\longrightarrow\operatorname{Cl}(B)\longrightarrow1.
+\]</span>
+For <span class="math" data-tex="\(f=1\)">\(f=1\)</span>, the middle residue group is trivial. For <span class="math" data-tex="\(f&gt;1\)">\(f&gt;1\)</span>, lift a residue unit to <span class="math" data-tex="\(\alpha\in B\)">\(\alpha\in B\)</span> prime to <span class="math" data-tex="\(f\)">\(f\)</span> and contract <span class="math" data-tex="\(\alpha B\)">\(\alpha B\)</span>; its invertible order-ideal class defines the middle map. Two lifts have quotient congruent to 1 locally modulo <span class="math" data-tex="\(fB\)">\(fB\)</span>, hence their contracted ideals differ by an order principal ideal. Multiplication by an integer residue unit has the same property. Surjectivity on the right follows from the prime-to-conductor representatives. A class in its kernel extends to <span class="math" data-tex="\(\alpha B\)">\(\alpha B\)</span>; after clearing denominators prime to <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> gives a residue unit, so the class comes from the middle map. Finally this class is order principal exactly when a generator can be changed by a <span class="math" data-tex="\(B\)">\(B\)</span>-unit to be an order unit at the conductor. Its residue is then an integer unit modulo <span class="math" data-tex="\(f\)">\(f\)</span>. This is exactly the image of the first map, proving exactness. These arguments also verify the principal subgroup in (12), including fractional generators.</p>
+<p>Norms of invertible ideals are multiplicative. Locally such an ideal is generated by one element; multiplication by that element has determinant its field norm on the rank-two lattice. The local index of a product therefore multiplies by the same determinant. Comparing indices at every rational prime proves the global identity, and clearing denominators extends it to fractional ideals.</p>
+<p><strong>Forms and ideal classes.</strong> Let <span class="math" data-tex="\(D&lt;0\)">\(D&lt;0\)</span> be the discriminant of <span class="math" data-tex="\(O\)">\(O\)</span>, choose <span class="math" data-tex="\(\sqrt D\)">\(\sqrt D\)</span> with positive imaginary part, and orient ideal bases by that embedding. A primitive positive form
+<span class="math math-display" data-tex="\[
+Q(x,y)=ax^2+bxy+cy^2,\qquad b^2-4ac=D,
+\]">\[
+Q(x,y)=ax^2+bxy+cy^2,\qquad b^2-4ac=D,
+\]</span>
+gives the ideal <span class="math" data-tex="\(I=[a,(b+\sqrt D)/2]\)">\(I=[a,(b+\sqrt D)/2]\)</span>. Its norm is <span class="math" data-tex="\(a\)">\(a\)</span>, because its second generator differs from a fixed generator of <span class="math" data-tex="\(O\)">\(O\)</span> by an integer. If <span class="math" data-tex="\(\tau=(b+\sqrt D)/(2a)\)">\(\tau=(b+\sqrt D)/(2a)\)</span>, its primitive integral polynomial is <span class="math" data-tex="\(aX^2-bX+c\)">\(aX^2-bX+c\)</span>. An element preserving <span class="math" data-tex="\([1,\tau]\)">\([1,\tau]\)</span> is <span class="math" data-tex="\(m+n\tau\)">\(m+n\tau\)</span>, and preserving its product with <span class="math" data-tex="\(\tau\)">\(\tau\)</span> requires <span class="math" data-tex="\(a\mid nb\)">\(a\mid nb\)</span> and <span class="math" data-tex="\(a\mid nc\)">\(a\mid nc\)</span>. As <span class="math" data-tex="\(\gcd(a,b,c)=1\)">\(\gcd(a,b,c)=1\)</span>, these two requirements imply <span class="math" data-tex="\(a\mid n\)">\(a\mid n\)</span>. Thus the multiplier ring is <span class="math" data-tex="\([1,a\tau]=O\)">\([1,a\tau]=O\)</span>. Further,
+<span class="math math-display" data-tex="\[
+I\bar I=a[a,(b+\sqrt D)/2,(b-\sqrt D)/2,c]=aO:
+\]">\[
+I\bar I=a[a,(b+\sqrt D)/2,(b-\sqrt D)/2,c]=aO:
+\]</span>
+the integer generators <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span> span 1. Hence <span class="math" data-tex="\(I\)">\(I\)</span> is invertible and <span class="math" data-tex="\(I^{-1}=\bar I/a\)">\(I^{-1}=\bar I/a\)</span>. Its normalized norm form is exactly <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Conversely, for an invertible ideal with oriented basis <span class="math" data-tex="\((\alpha,\beta)\)">\((\alpha,\beta)\)</span>,
+<span class="math math-display" data-tex="\[
+Q_I(x,y)=\frac{N_{K/\mathbf Q}(x\alpha+y\beta)}{N(I)}
+\]">\[
+Q_I(x,y)=\frac{N_{K/\mathbf Q}(x\alpha+y\beta)}{N(I)}
+\]</span>
+is integral, primitive and positive, with discriminant <span class="math" data-tex="\(D\)">\(D\)</span>. Integrality follows because <span class="math" data-tex="\((z)I^{-1}\)">\((z)I^{-1}\)</span> is an integral ideal for <span class="math" data-tex="\(z\in I\)">\(z\in I\)</span>, and its norm is <span class="math" data-tex="\(N(z)/N(I)\)">\(N(z)/N(I)\)</span>. For primitivity, at each prime <span class="math" data-tex="\(\ell\)">\(\ell\)</span> choose an element of <span class="math" data-tex="\(I\)">\(I\)</span> congruent to a local generator modulo <span class="math" data-tex="\(\ell I\)">\(\ell I\)</span>. Its normalized norm is an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic unit. No prime can therefore divide every value, or all three coefficients, of <span class="math" data-tex="\(Q_I\)">\(Q_I\)</span>. The determinant of the ideal basis has absolute value <span class="math" data-tex="\(N(I)\)">\(N(I)\)</span> times that of the order basis, so the discriminant of its norm form is <span class="math" data-tex="\(D\)">\(D\)</span>. Write its first two coefficients as <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. The orientation gives
+<span class="math" data-tex="\(\beta/\alpha=(b+\sqrt D)/(2a)\)">\(\beta/\alpha=(b+\sqrt D)/(2a)\)</span>, so scaling the ideal by <span class="math" data-tex="\(a/\alpha\)">\(a/\alpha\)</span> recovers <span class="math" data-tex="\([a,(b+\sqrt D)/2]\)">\([a,(b+\sqrt D)/2]\)</span>.</p>
+<p>Changing an oriented basis is an <span class="math" data-tex="\(\mathrm{SL}_2(\mathbf Z)\)">\(\mathrm{SL}_2(\mathbf Z)\)</span> change of variables. Multiplying the ideal by <span class="math" data-tex="\(\lambda\in K^\times\)">\(\lambda\in K^\times\)</span> preserves orientation, scales its norm by <span class="math" data-tex="\(N(\lambda)&gt;0\)">\(N(\lambda)&gt;0\)</span>, and leaves the normalized form unchanged. The two constructions just given are inverse. Thus proper form classes are precisely invertible ideal classes. Conjugation replaces <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(-b\)">\(-b\)</span> and takes the inverse class, by <span class="math" data-tex="\(I\bar I=aO\)">\(I\bar I=aO\)</span>.</p>
+<p><strong>Reduction and the three maximal-order class numbers.</strong> A shear first puts <span class="math" data-tex="\(|b|\leq a\)">\(|b|\leq a\)</span>. If <span class="math" data-tex="\(c&lt;a\)">\(c&lt;a\)</span>, the determinant-one substitution <span class="math" data-tex="\((x,y)\mapsto(-y,x)\)">\((x,y)\mapsto(-y,x)\)</span> replaces <span class="math" data-tex="\((a,b,c)\)">\((a,b,c)\)</span> by <span class="math" data-tex="\((c,-b,a)\)">\((c,-b,a)\)</span> and decreases the positive integer first coefficient. Repeating terminates at
+<span class="math math-display" data-tex="\[
+|b|\leq a\leq c,\qquad
+b\geq0\text{ if }|b|=a\text{ or }a=c.
+\]">\[
+|b|\leq a\leq c,\qquad
+b\geq0\text{ if }|b|=a\text{ or }a=c.
+\]</span>
+The boundary convention follows by a shear when <span class="math" data-tex="\(|b|=a\)">\(|b|=a\)</span>, and by the displayed substitution when <span class="math" data-tex="\(a=c\)">\(a=c\)</span>. Such a reduced form has <span class="math" data-tex="\(3a^2\leq|D|\)">\(3a^2\leq|D|\)</span>, since <span class="math" data-tex="\(4ac-b^2\geq3a^2\)">\(4ac-b^2\geq3a^2\)</span>. There are consequently finitely many reduced forms, proving Picard finiteness for every imaginary quadratic order.</p>
+<p>For completeness, this enumeration counts classes, rather than merely bounding them. The least nonzero value of a reduced form is <span class="math" data-tex="\(a\)">\(a\)</span>:
+<span class="math" data-tex="\(Q(x,y)\geq a(x^2-|xy|+y^2)\geq a\)">\(Q(x,y)\geq a(x^2-|xy|+y^2)\geq a\)</span>.
+If <span class="math" data-tex="\(a&lt;c\)">\(a&lt;c\)</span>, its primitive vectors attaining that value are only <span class="math" data-tex="\(\pm(1,0)\)">\(\pm(1,0)\)</span>. Therefore an equivalence between reduced forms fixes the first coefficient, and its first basis vector is one of those vectors; the second coefficient can change only by <span class="math" data-tex="\(2ak\)">\(2ak\)</span>. The reduced inequalities force <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, except for the two boundary signs <span class="math" data-tex="\(b=\pm a\)">\(b=\pm a\)</span>, already identified by the convention. When <span class="math" data-tex="\(a=c\)">\(a=c\)</span> and <span class="math" data-tex="\(|b|&lt;a\)">\(|b|&lt;a\)</span>, the additional minimal vectors are <span class="math" data-tex="\(\pm(0,1)\)">\(\pm(0,1)\)</span>; swapping them changes only the sign of <span class="math" data-tex="\(b\)">\(b\)</span>. When <span class="math" data-tex="\(a=c=|b|\)">\(a=c=|b|\)</span>, there is one additional pair <span class="math" data-tex="\(\pm(1,-\operatorname{sgn}(b))\)">\(\pm(1,-\operatorname{sgn}(b))\)</span>, and using it again yields that same boundary form. This exhausts the possible minimal vectors and proves uniqueness under the stated convention.</p>
+<p>Checking the integers <span class="math" data-tex="\(a\leq\sqrt{|D|/3}\)">\(a\leq\sqrt{|D|/3}\)</span>, <span class="math" data-tex="\(|b|\leq a\)">\(|b|\leq a\)</span> and <span class="math" data-tex="\(c=(b^2-D)/(4a)\)">\(c=(b^2-D)/(4a)\)</span> gives these complete lists of reduced primitive forms:</p>
+<ul>
+<li>For <span class="math" data-tex="\(D=-20\)">\(D=-20\)</span>, the forms are <span class="math" data-tex="\((1,0,5)\)">\((1,0,5)\)</span> and <span class="math" data-tex="\((2,2,3)\)">\((2,2,3)\)</span>, so <span class="math" data-tex="\(h=2\)">\(h=2\)</span>.</li>
+<li>For <span class="math" data-tex="\(D=-56\)">\(D=-56\)</span>, the forms are <span class="math" data-tex="\((1,0,14)\)">\((1,0,14)\)</span>, <span class="math" data-tex="\((2,0,7)\)">\((2,0,7)\)</span>, <span class="math" data-tex="\((3,2,5)\)">\((3,2,5)\)</span> and <span class="math" data-tex="\((3,-2,5)\)">\((3,-2,5)\)</span>, so <span class="math" data-tex="\(h=4\)">\(h=4\)</span>.</li>
+<li>For <span class="math" data-tex="\(D=-23\)">\(D=-23\)</span>, the forms are <span class="math" data-tex="\((1,1,6)\)">\((1,1,6)\)</span>, <span class="math" data-tex="\((2,1,3)\)">\((2,1,3)\)</span> and <span class="math" data-tex="\((2,-1,3)\)">\((2,-1,3)\)</span>, so <span class="math" data-tex="\(h=3\)">\(h=3\)</span>.</li>
+</ul>
+<p>For <span class="math" data-tex="\(-56\)">\(-56\)</span>, the last two forms are distinct inverse classes, so their order is greater than two. A group of order four with such an element is cyclic. This proves the class-group assertions used in sections 6 and 8.</p>
+<p><strong>The order of conductor six in <span class="math" data-tex="\(\mathbf Q(\sqrt{-3})\)">\(\mathbf Q(\sqrt{-3})\)</span>.</strong> Write <span class="math" data-tex="\(B=\mathbf Z[\zeta_3]\)">\(B=\mathbf Z[\zeta_3]\)</span>. It is norm Euclidean: approximate the two real lattice coordinates of a complex number by integers, leaving coordinates <span class="math" data-tex="\(u,v\)">\(u,v\)</span> of absolute value at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>; then
+<span class="math" data-tex="\(N(u+v\zeta_3)=u^2-uv+v^2\leq3/4&lt;1\)">\(N(u+v\zeta_3)=u^2-uv+v^2\leq3/4&lt;1\)</span>.
+Division with this remainder gives the Euclidean algorithm, so <span class="math" data-tex="\(\operatorname{Cl}(B)=1\)">\(\operatorname{Cl}(B)=1\)</span>. Solving <span class="math" data-tex="\(u^2-uv+v^2=1\)">\(u^2-uv+v^2=1\)</span> gives its six units. The order <span class="math" data-tex="\(O=\mathbf Z+6B=\mathbf Z[\sqrt{-27}]\)">\(O=\mathbf Z+6B=\mathbf Z[\sqrt{-27}]\)</span> has just the two units <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>.</p>
+<p>The Chinese remainder theorem gives <span class="math" data-tex="\(B/6B=(B/2B)\times(B/3B)\)">\(B/6B=(B/2B)\times(B/3B)\)</span>. The first factor is <span class="math" data-tex="\(\mathbf F_4\)">\(\mathbf F_4\)</span>, with three units, since <span class="math" data-tex="\(X^2+X+1\)">\(X^2+X+1\)</span> is irreducible modulo 2. The second is <span class="math" data-tex="\(\mathbf F_3[\epsilon]/(\epsilon^2)\)">\(\mathbf F_3[\epsilon]/(\epsilon^2)\)</span>, with six units, since the same polynomial has a double root modulo 3. There are eighteen residue units in total. The integer residue-unit subgroup has order <span class="math" data-tex="\(\varphi(6)=2\)">\(\varphi(6)=2\)</span>. The image of <span class="math" data-tex="\(B^\times\)">\(B^\times\)</span> in the quotient by those integer units has order three: a unit lies in that kernel exactly when it belongs to the unit group of <span class="math" data-tex="\(O\)">\(O\)</span>, which has order two. The exact sequence above therefore gives
+<span class="math math-display" data-tex="\[
+|\operatorname{Pic}(\mathbf Z[\sqrt{-27}])|=\frac{18}{2\cdot3}=3.
+\]">\[
+|\operatorname{Pic}(\mathbf Z[\sqrt{-27}])|=\frac{18}{2\cdot3}=3.
+\]</span>
+This supplies the class number and the norm and ideal identifications required by the cubic example, without an external class-field table.</p>
+<h2 id="5-a-splitting-test-for-primes-represented-by-a-norm-form">5. A splitting test for primes represented by a norm form</h2>
+<p>Fix <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, <span class="math" data-tex="\(K=\mathbf Q(\sqrt{-n})\)">\(K=\mathbf Q(\sqrt{-n})\)</span>, and <span class="math" data-tex="\(\mathcal O=\mathbf Z[\sqrt{-n}]\)">\(\mathcal O=\mathbf Z[\sqrt{-n}]\)</span>. This is an order even when <span class="math" data-tex="\(n\)">\(n\)</span> has square factors. Its discriminant is <span class="math" data-tex="\(-4n=f^2D_K\)">\(-4n=f^2D_K\)</span>, and let <span class="math" data-tex="\(L\)">\(L\)</span> be its ring class field.</p>
+<p><strong>Theorem 19.5.</strong> For an odd prime <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span>,
+<span class="math math-display" data-tex="\[
+p=x^2+ny^2\text{ with }x,y\in\mathbf Z
+\quad\Longleftrightarrow\quad p\text{ splits completely in }L.
+\tag{15}
+\]">\[
+p=x^2+ny^2\text{ with }x,y\in\mathbf Z
+\quad\Longleftrightarrow\quad p\text{ splits completely in }L.
+\tag{15}
+\]</span>
+There is a real algebraic integer <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(L=K(\alpha)\)">\(L=K(\alpha)\)</span>. Its minimal polynomial <span class="math" data-tex="\(f_n\in\mathbf Z[X]\)">\(f_n\in\mathbf Z[X]\)</span> has degree <span class="math" data-tex="\(|\operatorname{Pic}(\mathcal O)|\)">\(|\operatorname{Pic}(\mathcal O)|\)</span>, and for odd <span class="math" data-tex="\(p\nmid n\operatorname{disc}(f_n)\)">\(p\nmid n\operatorname{disc}(f_n)\)</span>,
+<span class="math math-display" data-tex="\[
+p=x^2+ny^2
+\quad\Longleftrightarrow\quad
+(-n/p)=1\text{ and }f_n\text{ has a root in }\mathbf F_p.
+\tag{16}
+\]">\[
+p=x^2+ny^2
+\quad\Longleftrightarrow\quad
+(-n/p)=1\text{ and }f_n\text{ has a root in }\mathbf F_p.
+\tag{16}
+\]</span></p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(p\nmid-4n\)">\(p\nmid-4n\)</span>, the prime is unramified in <span class="math" data-tex="\(K\)">\(K\)</span> and prime to the conductor of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. A representation gives <span class="math" data-tex="\(\beta=x+y\sqrt{-n}\in\mathcal O\)">\(\beta=x+y\sqrt{-n}\in\mathcal O\)</span> of norm <span class="math" data-tex="\(p\)">\(p\)</span>. Its principal ideal has norm <span class="math" data-tex="\(p\)">\(p\)</span>, by the ideal norm and extension–contraction theorem, so it is a prime ideal above a split rational prime. Its invertible order ideal class is trivial. Conversely a split prime whose contracted order ideal is principal has a generator <span class="math" data-tex="\(\beta\in\mathcal O\)">\(\beta\in\mathcal O\)</span> with norm <span class="math" data-tex="\(p\)">\(p\)</span>: the ideal is contained in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, hence its generator belongs to it, and the imaginary norm is positive. Writing <span class="math" data-tex="\(\beta=x+y\sqrt{-n}\)">\(\beta=x+y\sqrt{-n}\)</span> gives the representation. By (13) triviality of this class means trivial Frobenius in <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. The conjugate prime has inverse class and is trivial as well. As <span class="math" data-tex="\(L/\mathbf Q\)">\(L/\mathbf Q\)</span> is Galois, this is complete rational splitting, proving (15).</p>
+<p>Let <span class="math" data-tex="\(c\)">\(c\)</span> be complex conjugation in (14), and <span class="math" data-tex="\(R=L^{\langle c\rangle}\)">\(R=L^{\langle c\rangle}\)</span>. It is a real field of degree <span class="math" data-tex="\(|\operatorname{Pic}(\mathcal O)|\)">\(|\operatorname{Pic}(\mathcal O)|\)</span> over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. A primitive element can be chosen integral: for two separable generators, all but finitely many rational linear combinations distinguish their embeddings; repeat and clear a rational denominator. Choose such an <span class="math" data-tex="\(\alpha\in R\)">\(\alpha\in R\)</span>. Since <span class="math" data-tex="\(K\)">\(K\)</span> is imaginary quadratic and <span class="math" data-tex="\(R\)">\(R\)</span> is real, <span class="math" data-tex="\(K\cap R=\mathbf Q\)">\(K\cap R=\mathbf Q\)</span>, so <span class="math" data-tex="\(KR=L\)">\(KR=L\)</span>. Thus <span class="math" data-tex="\(L=K(\alpha)\)">\(L=K(\alpha)\)</span> and its monic minimal polynomial over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> has the asserted degree and integer coefficients.</p>
+<p>At a prime avoiding the polynomial discriminant, its roots have distinct reductions in the splitting field. Frobenius fixes a reduced root exactly when that root lies in <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>; distinctness makes this equivalent to fixing its algebraic conjugate. If <span class="math" data-tex="\((-n/p)=1\)">\((-n/p)=1\)</span>, Frobenius lies in <span class="math" data-tex="\(A=\operatorname{Gal}(L/K)\)">\(A=\operatorname{Gal}(L/K)\)</span>. Its action on the <span class="math" data-tex="\(A\)">\(A\)</span>-orbit of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is regular, because <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> generates <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. Therefore fixing any one of those conjugates forces Frobenius to be the identity. The full <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-orbit is that same orbit, by its degree. Combining this with (15) proves (16). The discriminant exclusion is necessary for this distinct-root argument. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-forms-with-coefficients-five-and-fourteen">6. The forms with coefficients five and fourteen</h2>
+<p>The quadratic-fields lesson enumerates the two reduced forms of discriminant <span class="math" data-tex="\(-20\)">\(-20\)</span>, so <span class="math" data-tex="\(K=\mathbf Q(\sqrt{-5})\)">\(K=\mathbf Q(\sqrt{-5})\)</span> has class number <span class="math" data-tex="\(2\)">\(2\)</span>. Its prime discriminants are <span class="math" data-tex="\(-4\)">\(-4\)</span> and <span class="math" data-tex="\(5\)">\(5\)</span>. Proposition 19.3 gives a genus field of relative degree <span class="math" data-tex="\(2\)">\(2\)</span>, already the whole Hilbert class field:
+<span class="math math-display" data-tex="\[
+H=\mathbf Q(\sqrt{-5},i)=\mathbf Q(i,\sqrt5).
+\tag{17}
+\]">\[
+H=\mathbf Q(\sqrt{-5},i)=\mathbf Q(i,\sqrt5).
+\tag{17}
+\]</span>
+For an odd prime <span class="math" data-tex="\(p\ne5\)">\(p\ne5\)</span>, complete splitting in this biquadratic field means
+<span class="math" data-tex="\((-1/p)=(5/p)=1\)">\((-1/p)=(5/p)=1\)</span>. The quadratic reciprocity law proved in lesson 16 gives <span class="math" data-tex="\((5/p)=(p/5)\)">\((5/p)=(p/5)\)</span>. Thus (15) gives
+<span class="math math-display" data-tex="\[
+p=x^2+5y^2\quad\Longleftrightarrow\quad p\equiv1,9\pmod{20}.
+\tag{18}
+\]">\[
+p=x^2+5y^2\quad\Longleftrightarrow\quad p\equiv1,9\pmod{20}.
+\tag{18}
+\]</span>
+The conditions are <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span> and <span class="math" data-tex="\(p\equiv\pm1\pmod5\)">\(p\equiv\pm1\pmod5\)</span>; the Chinese remainder theorem gives the two displayed residues. The excluded prime <span class="math" data-tex="\(5\)">\(5\)</span> is represented by <span class="math" data-tex="\(0^2+5\cdot1^2\)">\(0^2+5\cdot1^2\)</span>, whereas <span class="math" data-tex="\(2\)">\(2\)</span> is not represented. Thus for every rational prime the condition is <span class="math" data-tex="\(p=5\)">\(p=5\)</span> or <span class="math" data-tex="\(p\equiv1,9\pmod{20}\)">\(p\equiv1,9\pmod{20}\)</span>. The restriction in (18) must not be omitted.</p>
+<p>For <span class="math" data-tex="\(K=\mathbf Q(\sqrt{-14})\)">\(K=\mathbf Q(\sqrt{-14})\)</span>, the reduced forms of discriminant <span class="math" data-tex="\(-56\)">\(-56\)</span> give class group <span class="math" data-tex="\(\mathbf Z/4\)">\(\mathbf Z/4\)</span>, as proved in the quadratic-fields lesson. We claim
+<span class="math math-display" data-tex="\[
+H=K(\alpha),\qquad
+\alpha=\sqrt{2\sqrt2-1}&gt;0,
+\qquad f_{14}(X)=X^4+2X^2-7.
+\tag{19}
+\]">\[
+H=K(\alpha),\qquad
+\alpha=\sqrt{2\sqrt2-1}&gt;0,
+\qquad f_{14}(X)=X^4+2X^2-7.
+\tag{19}
+\]</span>
+We verify degree, cyclicity and unramifiedness, including the dyadic place.</p>
+<p>The norm of <span class="math" data-tex="\(-1+2\sqrt2\)">\(-1+2\sqrt2\)</span> from <span class="math" data-tex="\(\mathbf Q(\sqrt2)\)">\(\mathbf Q(\sqrt2)\)</span> is <span class="math" data-tex="\(-7\)">\(-7\)</span>, so it is not a square there. Hence <span class="math" data-tex="\([\mathbf Q(\alpha):\mathbf Q]=4\)">\([\mathbf Q(\alpha):\mathbf Q]=4\)</span>. This field is real and intersects the imaginary quadratic <span class="math" data-tex="\(K\)">\(K\)</span> in <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>; therefore <span class="math" data-tex="\([K(\alpha):K]=4\)">\([K(\alpha):K]=4\)</span>. The field <span class="math" data-tex="\(L=K(\alpha)\)">\(L=K(\alpha)\)</span> contains
+<span class="math math-display" data-tex="\[
+\sqrt2=(\alpha^2+1)/2,\qquad
+\sqrt{-7}=\sqrt{-14}/\sqrt2,\qquad
+\beta=\sqrt{-7}/\alpha,
+\]">\[
+\sqrt2=(\alpha^2+1)/2,\qquad
+\sqrt{-7}=\sqrt{-14}/\sqrt2,\qquad
+\beta=\sqrt{-7}/\alpha,
+\]</span>
+with <span class="math" data-tex="\(\beta^2=-1-2\sqrt2\)">\(\beta^2=-1-2\sqrt2\)</span>. Thus it contains all four roots <span class="math" data-tex="\(\pm\alpha,\pm\beta\)">\(\pm\alpha,\pm\beta\)</span> of <span class="math" data-tex="\(f_{14}\)">\(f_{14}\)</span>, so it is a splitting field. An automorphism over <span class="math" data-tex="\(K\)">\(K\)</span> taking <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(\beta\)">\(\beta\)</span> takes <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> and <span class="math" data-tex="\(\sqrt{-7}\)">\(\sqrt{-7}\)</span> to their negatives; it consequently takes <span class="math" data-tex="\(\beta\)">\(\beta\)</span> to <span class="math" data-tex="\(-\alpha\)">\(-\alpha\)</span>. It has order <span class="math" data-tex="\(4\)">\(4\)</span>, proving that <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is cyclic.</p>
+<p>The resultant with <span class="math" data-tex="\(f_{14}&#x27;=4X(X^2+1)\)">\(f_{14}&#x27;=4X(X^2+1)\)</span> gives
+<span class="math math-display" data-tex="\[
+\operatorname{disc}(f_{14})=-2^{14}\cdot7.
+\tag{20}
+\]">\[
+\operatorname{disc}(f_{14})=-2^{14}\cdot7.
+\tag{20}
+\]</span>
+Indeed the product of its roots is <span class="math" data-tex="\(-7\)">\(-7\)</span>, while the product of their <span class="math" data-tex="\((X^2+1)\)">\((X^2+1)\)</span> values is <span class="math" data-tex="\(f_{14}(i)f_{14}(-i)=64\)">\(f_{14}(i)f_{14}(-i)=64\)</span>, and the derivative contributes <span class="math" data-tex="\(4^4\)">\(4^4\)</span>. Therefore no finite prime except <span class="math" data-tex="\(2\)">\(2\)</span> or <span class="math" data-tex="\(7\)">\(7\)</span> can ramify in the splitting field. This follows also directly from distinct residue roots: inertia fixes each integral root's residue, and when the discriminant is a unit the roots have distinct residues, forcing inertia to fix all roots.</p>
+<p>At <span class="math" data-tex="\(7\)">\(7\)</span>, choose the <span class="math" data-tex="\(7\)">\(7\)</span>-adic square root <span class="math" data-tex="\(\sqrt2\equiv3\pmod7\)">\(\sqrt2\equiv3\pmod7\)</span>, supplied by Hensel's lemma. Then <span class="math" data-tex="\(\alpha^2\equiv5\pmod7\)">\(\alpha^2\equiv5\pmod7\)</span> is a nonsquare unit, so adjoining <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is unramified quadratic. The completion of <span class="math" data-tex="\(K\)">\(K\)</span> is <span class="math" data-tex="\(\mathbf Q_7(\sqrt{-7})\)">\(\mathbf Q_7(\sqrt{-7})\)</span>, and that of <span class="math" data-tex="\(L\)">\(L\)</span> is obtained by adjoining this unramified radical. Base change remains unramified.</p>
+<p>At <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(-7\equiv1\pmod8\)">\(-7\equiv1\pmod8\)</span> is a square in <span class="math" data-tex="\(\mathbf Q_2\)">\(\mathbf Q_2\)</span>, so <span class="math" data-tex="\(K_v=E=\mathbf Q_2(\sqrt2)\)">\(K_v=E=\mathbf Q_2(\sqrt2)\)</span>. Put <span class="math" data-tex="\(u=-1+2\sqrt2\)">\(u=-1+2\sqrt2\)</span>. The polynomial
+<span class="math math-display" data-tex="\[
+25r^2+5r+2
+\]">\[
+25r^2+5r+2
+\]</span>
+has value <span class="math" data-tex="\(32\)">\(32\)</span> and odd derivative <span class="math" data-tex="\(55\)">\(55\)</span> at <span class="math" data-tex="\(r=1\)">\(r=1\)</span>. Hensel's lemma gives a root <span class="math" data-tex="\(r\equiv1\pmod8\)">\(r\equiv1\pmod8\)</span>, which is a square <span class="math" data-tex="\(a^2\)">\(a^2\)</span> in <span class="math" data-tex="\(\mathbf Q_2\)">\(\mathbf Q_2\)</span> by the odd-unit square criterion. Set <span class="math" data-tex="\(b=1/(5a)\)">\(b=1/(5a)\)</span>. Its defining equation gives
+<span class="math math-display" data-tex="\[
+a^2+2b^2=-1/5,\qquad ab=1/5,
+\qquad (a+b\sqrt2)^2=u/5.
+\tag{21}
+\]">\[
+a^2+2b^2=-1/5,\qquad ab=1/5,
+\qquad (a+b\sqrt2)^2=u/5.
+\tag{21}
+\]</span>
+Consequently <span class="math" data-tex="\(E(\alpha)=E(\sqrt5)\)">\(E(\alpha)=E(\sqrt5)\)</span>, the base change of the unramified quadratic extension of <span class="math" data-tex="\(\mathbf Q_2\)">\(\mathbf Q_2\)</span>. It is unramified over <span class="math" data-tex="\(E\)">\(E\)</span>. All infinite places of <span class="math" data-tex="\(K\)">\(K\)</span> are complex. We have proved that <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is everywhere unramified and cyclic of degree <span class="math" data-tex="\(4\)">\(4\)</span>. The Hilbert class field has degree <span class="math" data-tex="\(4\)">\(4\)</span>, so <span class="math" data-tex="\(L=H\)">\(L=H\)</span>, proving (19).</p>
+<p>Equations (16), (19) and (20) now give the explicit test, for odd <span class="math" data-tex="\(p\ne7\)">\(p\ne7\)</span>,
+<span class="math math-display" data-tex="\[
+p=x^2+14y^2\quad\Longleftrightarrow\quad
+(-14/p)=1\text{ and }X^4+2X^2-7\text{ has a root modulo }p.
+\tag{22}
+\]">\[
+p=x^2+14y^2\quad\Longleftrightarrow\quad
+(-14/p)=1\text{ and }X^4+2X^2-7\text{ has a root modulo }p.
+\tag{22}
+\]</span></p>
+<h2 id="7-the-cubic-criterion-for-x-2-27y-2">7. The cubic criterion for <span class="math" data-tex="\(x^2+27y^2\)">\(x^2+27y^2\)</span></h2>
+<p>The order <span class="math" data-tex="\(\mathcal O=\mathbf Z[\sqrt{-27}]\)">\(\mathcal O=\mathbf Z[\sqrt{-27}]\)</span> has conductor <span class="math" data-tex="\(6\)">\(6\)</span> in <span class="math" data-tex="\(K=\mathbf Q(\sqrt{-3})\)">\(K=\mathbf Q(\sqrt{-3})\)</span> and Picard group of order <span class="math" data-tex="\(3\)">\(3\)</span>, computed in Corollary 11.5 and Exercise 3 of the orders lesson. Its ring class field <span class="math" data-tex="\(L\)">\(L\)</span> is therefore cyclic cubic over <span class="math" data-tex="\(K\)">\(K\)</span>, and (14) makes <span class="math" data-tex="\(L/\mathbf Q\)">\(L/\mathbf Q\)</span> an <span class="math" data-tex="\(S_3\)">\(S_3\)</span>-extension. Its finite ramification is supported above <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<p>We identify <span class="math" data-tex="\(L\)">\(L\)</span> without a table of class fields. Let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> generate <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span>, let <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> be a primitive cube root of unity, and choose a real integral primitive element <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, as in Theorem 19.5. Define
+<span class="math math-display" data-tex="\[
+u_j=\alpha+\zeta^j\sigma^{-1}\alpha+\zeta^{2j}\sigma^{-2}\alpha,
+\qquad j=0,1,2.
+\tag{23}
+\]">\[
+u_j=\alpha+\zeta^j\sigma^{-1}\alpha+\zeta^{2j}\sigma^{-2}\alpha,
+\qquad j=0,1,2.
+\tag{23}
+\]</span>
+Then <span class="math" data-tex="\(\sigma u_j=\zeta^j u_j\)">\(\sigma u_j=\zeta^j u_j\)</span>. Complex conjugation fixes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, inverts <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, and changes <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> into <span class="math" data-tex="\(\sigma^{-1}\)">\(\sigma^{-1}\)</span>; it interchanges the last two terms and fixes each <span class="math" data-tex="\(u_j\)">\(u_j\)</span>. Thus <span class="math" data-tex="\(u_j^3\)">\(u_j^3\)</span> is a real element of <span class="math" data-tex="\(K\)">\(K\)</span>, hence a rational integer. At least one of <span class="math" data-tex="\(u_1,u_2\)">\(u_1,u_2\)</span> is nonzero: otherwise the inverse three-term Fourier transform would give <span class="math" data-tex="\(3\alpha=u_0\)">\(3\alpha=u_0\)</span>, making <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> rational. A nonzero such <span class="math" data-tex="\(u_j\)">\(u_j\)</span> is not in <span class="math" data-tex="\(K\)">\(K\)</span>, by its nontrivial eigenvalue, and generates <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. Removing integer cube factors and changing its sign gives
+<span class="math math-display" data-tex="\[
+L=K(\sqrt[3]m),\qquad m&gt;0\text{ cube-free}.
+\tag{24}
+\]">\[
+L=K(\sqrt[3]m),\qquad m&gt;0\text{ cube-free}.
+\tag{24}
+\]</span></p>
+<p>Every rational prime dividing <span class="math" data-tex="\(m\)">\(m\)</span> ramifies in this radical extension. Its valuation in <span class="math" data-tex="\(K\)">\(K\)</span> is its exponent <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>, multiplied by the base ramification index, which is <span class="math" data-tex="\(2\)">\(2\)</span> only at <span class="math" data-tex="\(3\)">\(3\)</span>. This is never divisible by <span class="math" data-tex="\(3\)">\(3\)</span>. A cube root therefore has fractional valuation and forces relative ramification. Since only <span class="math" data-tex="\(2,3\)">\(2,3\)</span> can ramify, the possible <span class="math" data-tex="\(m\)">\(m\)</span>'s are
+<span class="math" data-tex="\(2,3,4,6,9,12,18,36\)">\(2,3,4,6,9,12,18,36\)</span>.
+Replacing a radical by its square pairs these into four fields:
+<span class="math math-display" data-tex="\[
+K(\sqrt[3]2),\quad K(\sqrt[3]3),\quad
+K(\sqrt[3]6),\quad K(\sqrt[3]{12}).
+\tag{25}
+\]">\[
+K(\sqrt[3]2),\quad K(\sqrt[3]3),\quad
+K(\sqrt[3]6),\quad K(\sqrt[3]{12}).
+\tag{25}
+\]</span></p>
+<p>But <span class="math" data-tex="\(31=2^2+27\)">\(31=2^2+27\)</span> splits completely in <span class="math" data-tex="\(L\)">\(L\)</span>, by (15). It splits in <span class="math" data-tex="\(K\)">\(K\)</span>, since <span class="math" data-tex="\(11^2\equiv-3\pmod{31}\)">\(11^2\equiv-3\pmod{31}\)</span>. Its nonzero cubic residues are precisely
+<span class="math math-display" data-tex="\[
+1,2,4,8,15,16,23,27,29,30.
+\]">\[
+1,2,4,8,15,16,23,27,29,30.
+\]</span>
+At a split prime away from <span class="math" data-tex="\(6\)">\(6\)</span>, the extension in (24) splits locally exactly when <span class="math" data-tex="\(m\)">\(m\)</span> is a cube in <span class="math" data-tex="\(\mathbf F_{31}\)">\(\mathbf F_{31}\)</span>: the simple residue root lifts, and <span class="math" data-tex="\(\mu_3\)">\(\mu_3\)</span> is already present. This excludes <span class="math" data-tex="\(m=3,6,12\)">\(m=3,6,12\)</span> in (25). Therefore
+<span class="math math-display" data-tex="\[
+L=K(\sqrt[3]2),\qquad f_{27}(X)=X^3-2.
+\tag{26}
+\]">\[
+L=K(\sqrt[3]2),\qquad f_{27}(X)=X^3-2.
+\tag{26}
+\]</span>
+Its polynomial discriminant is <span class="math" data-tex="\(-108\)">\(-108\)</span>. For <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>, the quadratic reciprocity law of lesson 16 gives <span class="math" data-tex="\((-3/p)=1\)">\((-3/p)=1\)</span> exactly when <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span>. The root test (16) consequently proves Gauss's criterion
+<span class="math math-display" data-tex="\[
+p=x^2+27y^2\quad\Longleftrightarrow\quad
+p\equiv1\pmod3\text{ and }2\text{ is a cube modulo }p.
+\tag{27}
+\]">\[
+p=x^2+27y^2\quad\Longleftrightarrow\quad
+p\equiv1\pmod3\text{ and }2\text{ is a cube modulo }p.
+\tag{27}
+\]</span>
+The exclusion of <span class="math" data-tex="\(2,3\)">\(2,3\)</span> agrees with the explicit discriminant calculation.</p>
+<h2 id="8-a-cubic-generator-for-the-hilbert-field-of-discriminant--23">8. A cubic generator for the Hilbert field of discriminant <span class="math" data-tex="\(-23\)">\(-23\)</span></h2>
+<p>Reduction gives the three forms
+<span class="math" data-tex="\((1,1,6),(2,1,3),(2,-1,3)\)">\((1,1,6),(2,1,3),(2,-1,3)\)</span>
+of discriminant <span class="math" data-tex="\(-23\)">\(-23\)</span>, so <span class="math" data-tex="\(K=\mathbf Q(\sqrt{-23})\)">\(K=\mathbf Q(\sqrt{-23})\)</span> has class number <span class="math" data-tex="\(3\)">\(3\)</span>. Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be the real root of
+<span class="math math-display" data-tex="\[
+f(X)=X^3-X-1.
+\tag{28}
+\]">\[
+f(X)=X^3-X-1.
+\tag{28}
+\]</span>
+This cubic has no root modulo <span class="math" data-tex="\(2\)">\(2\)</span>, hence is irreducible over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, and its discriminant is <span class="math" data-tex="\(-23\)">\(-23\)</span>. Its splitting field <span class="math" data-tex="\(S\)">\(S\)</span> has Galois group <span class="math" data-tex="\(S_3\)">\(S_3\)</span>: a transitive cubic group is <span class="math" data-tex="\(C_3\)">\(C_3\)</span> or <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, and the square root of the discriminant changes by the sign of a root permutation. Its nonsquare discriminant excludes <span class="math" data-tex="\(C_3\)">\(C_3\)</span>, and its quadratic fixed field is exactly <span class="math" data-tex="\(K\)">\(K\)</span>. Hence <span class="math" data-tex="\(S=K(\alpha)\)">\(S=K(\alpha)\)</span> and <span class="math" data-tex="\([S:K]=3\)">\([S:K]=3\)</span>.</p>
+<p>Outside <span class="math" data-tex="\(23\)">\(23\)</span>, distinct root reductions show that <span class="math" data-tex="\(S/\mathbf Q\)">\(S/\mathbf Q\)</span> is unramified. At <span class="math" data-tex="\(23\)">\(23\)</span>,
+<span class="math math-display" data-tex="\[
+f(X)\equiv(X-10)^2(X-3)\pmod{23}.
+\]">\[
+f(X)\equiv(X-10)^2(X-3)\pmod{23}.
+\]</span>
+The simple root <span class="math" data-tex="\(3\)">\(3\)</span> lifts to <span class="math" data-tex="\(\mathbf Q_{23}\)">\(\mathbf Q_{23}\)</span>, so the local decomposition group fixes one cubic root and is contained in its order-two stabilizer. The quadratic field <span class="math" data-tex="\(K\)">\(K\)</span> is ramified there, since its discriminant is <span class="math" data-tex="\(-23\)">\(-23\)</span>. Thus absolute inertia has order <span class="math" data-tex="\(2\)">\(2\)</span> and maps nontrivially to <span class="math" data-tex="\(K\)">\(K\)</span>; its relative kernel over <span class="math" data-tex="\(K\)">\(K\)</span> is trivial. Therefore <span class="math" data-tex="\(S/K\)">\(S/K\)</span> is unramified at <span class="math" data-tex="\(23\)">\(23\)</span> as well. There are no real places of <span class="math" data-tex="\(K\)">\(K\)</span>. The degree-three abelian extension <span class="math" data-tex="\(S/K\)">\(S/K\)</span> is everywhere unramified and has the Hilbert field's degree, proving
+<span class="math math-display" data-tex="\[
+H(\mathbf Q(\sqrt{-23}))=K(\alpha).
+\tag{29}
+\]">\[
+H(\mathbf Q(\sqrt{-23}))=K(\alpha).
+\tag{29}
+\]</span></p>
+<span id="9-why-a-class-field-tower-need-not-terminate" aria-hidden="true"></span><h2 id="9-iterating-the-hilbert-field">9. Iterating the Hilbert field</h2>
+<p>Starting with <span class="math" data-tex="\(K_0=K\)">\(K_0=K\)</span>, set <span class="math" data-tex="\(K_{j+1}=H(K_j)\)">\(K_{j+1}=H(K_j)\)</span>. The principal ideal theorem proved in section 2 makes the ideal classes of <span class="math" data-tex="\(K_j\)">\(K_j\)</span> principal in <span class="math" data-tex="\(K_{j+1}\)">\(K_{j+1}\)</span>. This allows further class groups and further Hilbert fields.</p>
+<p><a href="brauer-groups-of-local-and-global-fields.html#theorem-24-9-an-infinite-hilbert-class-field-tower">Brauer groups of local and global fields, Theorem 24.9</a> proves that the tower of
+<span class="math math-display" data-tex="\[
+K=\mathbf Q\bigl(\sqrt{-5\cdot13\cdot17\cdot29\cdot37\cdot41}\bigr)
+\]">\[
+K=\mathbf Q\bigl(\sqrt{-5\cdot13\cdot17\cdot29\cdot37\cdot41}\bigr)
+\]</span>
+is infinite. Its proof combines the genus construction of section 3 with the complete filtered Golod–Shafarevich proof and the unit-cohomology relation bound developed in that lesson. Follow that theorem after the cohomology has been established.</p>
+<h2 id="10-exercises-and-complete-solutions">10. Exercises and complete solutions</h2>
+<h3 id="exercise-1-a-quadratic-hilbert-field-easy">Exercise 1 — A quadratic Hilbert field (easy)</h3>
+<p>Show that <span class="math" data-tex="\(H(\mathbf Q(\sqrt{-5}))=\mathbf Q(\sqrt{-5},i)\)">\(H(\mathbf Q(\sqrt{-5}))=\mathbf Q(\sqrt{-5},i)\)</span>.</p>
+<p><strong>Solution.</strong> The two reduced positive forms of discriminant <span class="math" data-tex="\(-20\)">\(-20\)</span> are <span class="math" data-tex="\((1,0,5)\)">\((1,0,5)\)</span> and <span class="math" data-tex="\((2,2,3)\)">\((2,2,3)\)</span>, so the class number is <span class="math" data-tex="\(2\)">\(2\)</span>, by the quadratic-fields lesson. The prime discriminants are <span class="math" data-tex="\(-4\)">\(-4\)</span> and <span class="math" data-tex="\(5\)">\(5\)</span>. Proposition 19.3 proves that <span class="math" data-tex="\(M=\mathbf Q(i,\sqrt5)\)">\(M=\mathbf Q(i,\sqrt5)\)</span> is unramified over <span class="math" data-tex="\(K=\mathbf Q(\sqrt{-5})\)">\(K=\mathbf Q(\sqrt{-5})\)</span> and has relative degree <span class="math" data-tex="\(2\)">\(2\)</span>. It lies in the Hilbert class field by Theorem 19.1. The latter also has degree <span class="math" data-tex="\(2\)">\(2\)</span>, so they are equal. Since <span class="math" data-tex="\(i\sqrt5=\sqrt{-5}\)">\(i\sqrt5=\sqrt{-5}\)</span>, the two descriptions of <span class="math" data-tex="\(M\)">\(M\)</span> agree.</p>
+<h3 id="exercise-2-the-congruence-test-and-its-exceptional-prime-medium">Exercise 2 — The congruence test and its exceptional prime (medium)</h3>
+<p>For an odd prime <span class="math" data-tex="\(p\ne5\)">\(p\ne5\)</span>, prove
+<span class="math" data-tex="\(p=x^2+5y^2\Longleftrightarrow p\equiv1,9\pmod{20}\)">\(p=x^2+5y^2\Longleftrightarrow p\equiv1,9\pmod{20}\)</span>.
+Then include the primes excluded by this statement.</p>
+<p><strong>Solution.</strong> The preceding exercise identifies the Hilbert field with the biquadratic field <span class="math" data-tex="\(\mathbf Q(i,\sqrt5)\)">\(\mathbf Q(i,\sqrt5)\)</span>. For <span class="math" data-tex="\(p\nmid10\)">\(p\nmid10\)</span>, Theorem 19.5 says that representation is equivalent to complete splitting there. Its two independent quadratic characters give <span class="math" data-tex="\((-1/p)=(5/p)=1\)">\((-1/p)=(5/p)=1\)</span>. The first condition is <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span>. Quadratic reciprocity gives <span class="math" data-tex="\((5/p)=(p/5)\)">\((5/p)=(p/5)\)</span>, so the second is <span class="math" data-tex="\(p\equiv1\)">\(p\equiv1\)</span> or <span class="math" data-tex="\(4\pmod5\)">\(4\pmod5\)</span>. Solving these two simultaneous congruences gives <span class="math" data-tex="\(p\equiv1\)">\(p\equiv1\)</span> or <span class="math" data-tex="\(9\pmod{20}\)">\(9\pmod{20}\)</span>. Finally <span class="math" data-tex="\(5=0^2+5\cdot1^2\)">\(5=0^2+5\cdot1^2\)</span>, while a representation of <span class="math" data-tex="\(2\)">\(2\)</span> would have <span class="math" data-tex="\(y=0\)">\(y=0\)</span> and then require an integer square equal to <span class="math" data-tex="\(2\)">\(2\)</span>. Thus the condition for all primes is <span class="math" data-tex="\(p=5\)">\(p=5\)</span> or those two residue classes.</p>
+<h3 id="exercise-3-a-cubic-hilbert-field-generator-medium">Exercise 3 — A cubic Hilbert-field generator (medium)</h3>
+<p>For <span class="math" data-tex="\(K=\mathbf Q(\sqrt{-23})\)">\(K=\mathbf Q(\sqrt{-23})\)</span>, show that adjoining the real root of <span class="math" data-tex="\(X^3-X-1\)">\(X^3-X-1\)</span> gives its Hilbert class field.</p>
+<p><strong>Solution.</strong> The reduced-form bound <span class="math" data-tex="\(a\leq\sqrt{23/3}&lt;3\)">\(a\leq\sqrt{23/3}&lt;3\)</span> leaves <span class="math" data-tex="\((1,1,6),(2,1,3),(2,-1,3)\)">\((1,1,6),(2,1,3),(2,-1,3)\)</span>, so <span class="math" data-tex="\(h_K=3\)">\(h_K=3\)</span>. The cubic has no root modulo <span class="math" data-tex="\(2\)">\(2\)</span>, hence is irreducible, and discriminant <span class="math" data-tex="\(-23\)">\(-23\)</span>. Its splitting field has group <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, with quadratic fixed field <span class="math" data-tex="\(K\)">\(K\)</span>; adjoining one cubic root to <span class="math" data-tex="\(K\)">\(K\)</span> is the entire splitting field, cyclic cubic over <span class="math" data-tex="\(K\)">\(K\)</span>. It is unramified away from <span class="math" data-tex="\(23\)">\(23\)</span>, since the root differences have unit discriminant there. At <span class="math" data-tex="\(23\)">\(23\)</span> the factorization <span class="math" data-tex="\((X-10)^2(X-3)\)">\((X-10)^2(X-3)\)</span> has the simple root <span class="math" data-tex="\(3\)">\(3\)</span>, which Hensel lifts. The local decomposition group therefore lies in a stabilizer of order <span class="math" data-tex="\(2\)">\(2\)</span>. Its inertia maps nontrivially to the ramified quadratic field <span class="math" data-tex="\(K\)">\(K\)</span>, so relative inertia over <span class="math" data-tex="\(K\)">\(K\)</span> is trivial. The field is everywhere unramified over <span class="math" data-tex="\(K\)">\(K\)</span>, which has no real places. Its degree is the Hilbert degree <span class="math" data-tex="\(3\)">\(3\)</span>, proving the assertion.</p>
+<h3 id="exercise-4-the-transfer-theorem-hard">Exercise 4 — The transfer theorem (hard)</h3>
+<p>Prove that transfer from a finitely generated group with finite abelianization to the abelianization of its commutator subgroup is trivial. Explain its use in Theorem 19.2.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(V=[G,G]\)">\(V=[G,G]\)</span>, <span class="math" data-tex="\(A=G/V\)">\(A=G/V\)</span>, <span class="math" data-tex="\(R=\mathbf Z[A]\)">\(R=\mathbf Z[A]\)</span> and <span class="math" data-tex="\(M=I_G/(I_GI_V)\)">\(M=I_G/(I_GI_V)\)</span>. The map <span class="math" data-tex="\(r(h-1)\mapsto[h]\)">\(r(h-1)\mapsto[h]\)</span> identifies <span class="math" data-tex="\(\mathbf Z[G]I_V/(I_GI_V)\)">\(\mathbf Z[G]I_V/(I_GI_V)\)</span> with <span class="math" data-tex="\(V^{\mathrm{ab}}\)">\(V^{\mathrm{ab}}\)</span>; left multiplication merely permutes cosets and does not change <span class="math" data-tex="\([h]\)">\([h]\)</span>. Under this identification, <span class="math" data-tex="\(\delta g\sum_r r\)">\(\delta g\sum_r r\)</span> is transfer, as the coset-permutation terms cancel in (6).</p>
+<p>Choose generators <span class="math" data-tex="\(g_i\)">\(g_i\)</span> and a basis <span class="math" data-tex="\((m_{ik})\)">\((m_{ik})\)</span> of the relation lattice <span class="math" data-tex="\(\ker(\mathbf Z^n\to A)\)">\(\ker(\mathbf Z^n\to A)\)</span>, with determinant <span class="math" data-tex="\(|A|\)">\(|A|\)</span>. Expand <span class="math" data-tex="\(\prod_i g_i^{m_{ik}}\)">\(\prod_i g_i^{m_{ik}}\)</span> both as that word and as a product of commutators. Their difference, using (7), gives <span class="math" data-tex="\(\sum_i\delta g_i\mu_{ik}=0\)">\(\sum_i\delta g_i\mu_{ik}=0\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>, with <span class="math" data-tex="\(\operatorname{aug}(\mu_{ik})=m_{ik}\)">\(\operatorname{aug}(\mu_{ik})=m_{ik}\)</span>. The adjugate of this matrix annihilates each <span class="math" data-tex="\(\delta g_i\)">\(\delta g_i\)</span> by <span class="math" data-tex="\(\Delta=\det(\mu_{ik})\)">\(\Delta=\det(\mu_{ik})\)</span>, and hence annihilates every <span class="math" data-tex="\(\delta g\)">\(\delta g\)</span>. Projection to <span class="math" data-tex="\(R\)">\(R\)</span> gives <span class="math" data-tex="\((a-1)\Delta=0\)">\((a-1)\Delta=0\)</span> for each <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, so <span class="math" data-tex="\(\Delta=c\sum_A a\)">\(\Delta=c\sum_A a\)</span>. Taking augmentation gives <span class="math" data-tex="\(c|A|=|A|\)">\(c|A|=|A|\)</span>, hence <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Transfer is therefore zero. Each step applies to negative exponents by the inverse identity in (7).</p>
+<p>For <span class="math" data-tex="\(G=\operatorname{Gal}(H_2/K)\)">\(G=\operatorname{Gal}(H_2/K)\)</span>, the commutator subgroup is <span class="math" data-tex="\(\operatorname{Gal}(H_2/H)\)">\(\operatorname{Gal}(H_2/H)\)</span>, which is abelian. The ideal-extension map <span class="math" data-tex="\(\operatorname{Cl}_K\to\operatorname{Cl}_H\)">\(\operatorname{Cl}_K\to\operatorname{Cl}_H\)</span> is this transfer by reciprocity. Its vanishing means that each extended ideal is principal. The argument does not assert that <span class="math" data-tex="\(\operatorname{Cl}_H\)">\(\operatorname{Cl}_H\)</span> itself vanishes.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>Sections 1–3 prove Hilbert fields, the augmentation-ideal transfer theorem, principalization and the ordinary/narrow genus distinction. Section 4 proves order arithmetic and reduction. Sections 6–8 verify the explicit quadratic prime-form fields by degrees, ramification and residue calculations; lesson 24 supplies the tower arguments.</p>
+<ul>
+<li><a href="https://kskedlaya.org/cft/sec_abstractcft1.html">Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition</a>.</li>
+<li><a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">J. S. Milne, Class Field Theory, version 4.03</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="ray-class-fields-conductors-and-ideal-reciprocity.html">← Ray class fields, conductors and ideal reciprocity</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="kronecker-weber-and-the-maximal-abelian-extension-of-the-rationals.html">Kronecker–Weber and the maximal abelian extension of the rationals →</a></span></nav>
+<p class="small source-link"><a href="files/hilbert-and-ring-class-fields-and-quadratic-prime-forms.md">Markdown source of this lesson</a> · <a download href="files/hilbert-and-ring-class-fields-and-quadratic-prime-forms.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

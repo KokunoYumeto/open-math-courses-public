@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Growth bounds and wider zero-free regions · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-13.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 13 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="growth-bounds-and-wider-zero-free-regions">Growth bounds and wider zero-free regions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Original exposition and proofs are public domain (CC0).</em></p>
+<p>A growth estimate near the line one controls the number and influence of nearby zeros. Positivity of the Euler product then prevents a zero from approaching that line too closely. This lesson proves that mechanism, applies it to the Vinogradov–Korobov growth estimate, and obtains the stronger error term in the prime number theorem.</p>
+<p>We use the Euler product and its logarithmic derivative from <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, the Borel–Carathéodory theorem from <a href="NT-ZETA-05.html">Entire functions of order one and the Hadamard product of xi</a>, Theorem 2.1, and the positivity inequality from <a href="NT-ZETA-08.html">Nonvanishing on the line one and a zero-free region</a>, Section 1, equation (1.3). The sharp explicit formula is proved in <a href="NT-ZETA-11.html">Perron's formula and the explicit formula for prime counting</a>, Theorem 2.2; its quantitative use and partial summation are explained in <a href="NT-ZETA-12.html">The prime number theorem with the classical error term</a>, Sections 1–2. The methods in <a href="NT-ZETA-07.html">Exponential sums and a subconvex bound</a> explain why cancellation improves growth estimates. We also use the fully proved truncation and strip interpolation in <a href="NT-ZETA-06.html">Growth in the critical strip: convexity and the Lindelöf hypothesis</a>, Theorems 1.1 and 2.1.</p>
+<p>Write <span class="math" data-tex="$s=\sigma+it$">$s=\sigma+it$</span>, <span class="math" data-tex="$\tau=|t|+4$">$\tau=|t|+4$</span>, and <span class="math" data-tex="$\rho=\beta+i\gamma$">$\rho=\beta+i\gamma$</span> for a nontrivial zero, counted with multiplicity. Constants in <span class="math" data-tex="$O$">$O$</span> and <span class="math" data-tex="$\ll$">$\ll$</span> are absolute unless parameters are indicated. The function <span class="math" data-tex="$A(s)=-\zeta&#x27;(s)/\zeta(s)$">$A(s)=-\zeta&#x27;(s)/\zeta(s)$</span> is meromorphic. At a zero it has residue equal to the negative of the multiplicity.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-removing-nearby-zeros">1. Removing nearby zeros</h2>
+<p><strong>Theorem 1.1 (Landau's lemma).</strong> Suppose <span class="math" data-tex="$f$">$f$</span> is holomorphic on a neighbourhood of the closed disc <span class="math" data-tex="$|s-s_0|\le\Upsilon$">$|s-s_0|\le\Upsilon$</span>, <span class="math" data-tex="$f(s_0)\ne0$">$f(s_0)\ne0$</span>, and <span class="math" data-tex="$|f(s)|\le M$">$|f(s)|\le M$</span> there. Let <span class="math" data-tex="$0\le r&lt;R&lt;\Upsilon$">$0\le r&lt;R&lt;\Upsilon$</span>, and let <span class="math" data-tex="$a$">$a$</span> run over the zeros satisfying <span class="math" data-tex="$|a-s_0|\le R$">$|a-s_0|\le R$</span>, with multiplicity. Then, for <span class="math" data-tex="$|s-s_0|\le r$">$|s-s_0|\le r$</span>,
+<span class="math math-display" data-tex="$$
+\left|\frac{f&#x27;(s)}{f(s)}-\sum_{|a-s_0|\le R}\frac1{s-a}\right|
+\le\frac{6\log(M/|f(s_0)|)}{(R-r)\log(\Upsilon/R)}.
+\tag{1.1}
+$$">$$
+\left|\frac{f&#x27;(s)}{f(s)}-\sum_{|a-s_0|\le R}\frac1{s-a}\right|
+\le\frac{6\log(M/|f(s_0)|)}{(R-r)\log(\Upsilon/R)}.
+\tag{1.1}
+$$</span>
+At a zero in this smaller disc, the expression means its holomorphic continuation after the matching poles cancel.</p>
+<p><strong>Proof.</strong> First rescale to <span class="math" data-tex="$s_0=0$">$s_0=0$</span>, <span class="math" data-tex="$\Upsilon=1$">$\Upsilon=1$</span>, and assume <span class="math" data-tex="$f$">$f$</span> has no zero on the unit circle. Its zeros <span class="math" data-tex="$a$">$a$</span> in the unit disc are finite in number and nonzero. Put
+<span class="math math-display" data-tex="$$
+B_a(z)=\frac{z-a}{1-\overline a z},\qquad
+h(z)=f(z)\prod_a B_a(z)^{-1},\qquad
+q=\log\frac M{|f(0)|}.
+$$">$$
+B_a(z)=\frac{z-a}{1-\overline a z},\qquad
+h(z)=f(z)\prod_a B_a(z)^{-1},\qquad
+q=\log\frac M{|f(0)|}.
+$$</span>
+The removable singularities in <span class="math" data-tex="$h$">$h$</span> are filled in. Since <span class="math" data-tex="$|B_a|=1$">$|B_a|=1$</span> on the unit circle, the maximum principle gives <span class="math" data-tex="$|h|\le M$">$|h|\le M$</span>. Moreover <span class="math" data-tex="$h$">$h$</span> has no zero in the closed disc, and
+<span class="math math-display" data-tex="$$
+|h(0)|=|f(0)|\prod_a|a|^{-1},\qquad
+q_h:=\log\frac M{|h(0)|}
+=q-\sum_a\log\frac1{|a|}\ge0.
+\tag{1.2}
+$$">$$
+|h(0)|=|f(0)|\prod_a|a|^{-1},\qquad
+q_h:=\log\frac M{|h(0)|}
+=q-\sum_a\log\frac1{|a|}\ge0.
+\tag{1.2}
+$$</span>
+Choose the analytic logarithm <span class="math" data-tex="$g(z)=\log(h(z)/h(0))$">$g(z)=\log(h(z)/h(0))$</span> with <span class="math" data-tex="$g(0)=0$">$g(0)=0$</span>. It satisfies <span class="math" data-tex="$\Re g\le q_h$">$\Re g\le q_h$</span>. If <span class="math" data-tex="$g(z)=\sum_{n\ge1}c_nz^n$">$g(z)=\sum_{n\ge1}c_nz^n$</span>, Fourier coefficients on the unit circle give <span class="math" data-tex="$|c_n|\le2q_h$">$|c_n|\le2q_h$</span>: the nonnegative function <span class="math" data-tex="$q_h-\Re g(e^{iv})$">$q_h-\Re g(e^{iv})$</span> has mean <span class="math" data-tex="$q_h$">$q_h$</span>, and its <span class="math" data-tex="$n$">$n$</span>th coefficient is <span class="math" data-tex="$-c_n/2$">$-c_n/2$</span>. Thus
+<span class="math math-display" data-tex="$$
+|g&#x27;(z)|\le2q_h\sum_{n\ge1}n r^{n-1}
+=\frac{2q_h}{(1-r)^2}\qquad(|z|\le r).
+\tag{1.3}
+$$">$$
+|g&#x27;(z)|\le2q_h\sum_{n\ge1}n r^{n-1}
+=\frac{2q_h}{(1-r)^2}\qquad(|z|\le r).
+\tag{1.3}
+$$</span>
+Let <span class="math" data-tex="$D=(R-r)\log(1/R)$">$D=(R-r)\log(1/R)$</span>. We shall use <span class="math" data-tex="$D\le2(1-r)^2$">$D\le2(1-r)^2$</span>. For <span class="math" data-tex="$r\le1/2$">$r\le1/2$</span>, this follows from <span class="math" data-tex="$D\le R\log(1/R)\le1/e\le2(1-r)^2$">$D\le R\log(1/R)\le1/e\le2(1-r)^2$</span>. For <span class="math" data-tex="$r\ge1/2$">$r\ge1/2$</span>, use <span class="math" data-tex="$\log(1/R)\le(1-R)/R\le2(1-R)$">$\log(1/R)\le(1-R)/R\le2(1-R)$</span> and <span class="math" data-tex="$(R-r)(1-R)\le(1-r)^2/4$">$(R-r)(1-R)\le(1-r)^2/4$</span>. Consequently (1.3) is at most <span class="math" data-tex="$4q/D$">$4q/D$</span>.</p>
+<p>Logarithmic differentiation gives the exact identity
+<span class="math math-display" data-tex="$$
+\frac{f&#x27;}f(z)=g&#x27;(z)+\sum_a\left(\frac1{z-a}+\frac{\overline a}{1-\overline a z}\right).
+\tag{1.4}
+$$">$$
+\frac{f&#x27;}f(z)=g&#x27;(z)+\sum_a\left(\frac1{z-a}+\frac{\overline a}{1-\overline a z}\right).
+\tag{1.4}
+$$</span>
+For <span class="math" data-tex="$|a|\le R$">$|a|\le R$</span>, subtract the required first terms. If there are <span class="math" data-tex="$N$">$N$</span> such zeros, (1.2) gives <span class="math" data-tex="$N\log(1/R)\le q$">$N\log(1/R)\le q$</span>. Their remaining terms have sum of moduli at most
+<span class="math math-display" data-tex="$$
+\frac{NR}{1-Rr}\le\frac qD,
+$$">$$
+\frac{NR}{1-Rr}\le\frac qD,
+$$</span>
+because <span class="math" data-tex="$R(R-r)\le1-Rr$">$R(R-r)\le1-Rr$</span> is equivalent to <span class="math" data-tex="$R^2\le1$">$R^2\le1$</span>.</p>
+<p>For a remaining zero of modulus <span class="math" data-tex="$v&gt;R$">$v&gt;R$</span>, combine its two terms in (1.4). Their modulus is at most
+<span class="math math-display" data-tex="$$
+\frac{1-v^2}{(v-r)(1-vr)}
+=F_r(v)\log(1/v),\qquad
+F_r(v)=\frac{1-v^2}{(v-r)(1-vr)\log(1/v)}.
+$$">$$
+\frac{1-v^2}{(v-r)(1-vr)}
+=F_r(v)\log(1/v),\qquad
+F_r(v)=\frac{1-v^2}{(v-r)(1-vr)\log(1/v)}.
+$$</span>
+The function <span class="math" data-tex="$F_r(v)$">$F_r(v)$</span> decreases for <span class="math" data-tex="$r&lt;v&lt;1$">$r&lt;v&lt;1$</span>. To verify this for <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span>, put <span class="math" data-tex="$r=e^{-h}$">$r=e^{-h}$</span>, <span class="math" data-tex="$v=e^{-w}$">$v=e^{-w}$</span>, with <span class="math" data-tex="$0&lt;w&lt;h$">$0&lt;w&lt;h$</span>. Then
+<span class="math math-display" data-tex="$$
+F_r(e^{-w})=\frac1r\frac{\sinh w/w}{\cosh h-\cosh w}.
+$$">$$
+F_r(e^{-w})=\frac1r\frac{\sinh w/w}{\cosh h-\cosh w}.
+$$</span>
+Its numerator increases with <span class="math" data-tex="$w$">$w$</span>, as follows from its power series, while its positive denominator decreases. For <span class="math" data-tex="$r=0$">$r=0$</span> the expression is <span class="math" data-tex="$2\sinh w/w$">$2\sinh w/w$</span>, with the same monotonicity. Therefore
+<span class="math math-display" data-tex="$$
+F_r(v)\le F_r(R)
+=\frac{1-R^2}{1-Rr}\frac1D\le\frac1D.
+$$">$$
+F_r(v)\le F_r(R)
+=\frac{1-R^2}{1-Rr}\frac1D\le\frac1D.
+$$</span>
+The sum over these remaining zeros is at most <span class="math" data-tex="$q/D$">$q/D$</span> by (1.2). Together with the preceding two bounds this proves (1.1) with constant <span class="math" data-tex="$4+1+1=6$">$4+1+1=6$</span>.</p>
+<p>If zeros occur on the original boundary, apply the result on radii <span class="math" data-tex="$\Upsilon&#x27;&lt;\Upsilon$">$\Upsilon&#x27;&lt;\Upsilon$</span> tending to <span class="math" data-tex="$\Upsilon$">$\Upsilon$</span>, chosen to avoid zero moduli and to satisfy <span class="math" data-tex="$R&lt;\Upsilon&#x27;$">$R&lt;\Upsilon&#x27;$</span>. The same bound <span class="math" data-tex="$M$">$M$</span> applies. Passing to the limit proves the assertion. Rescaling multiplies logarithmic derivatives by <span class="math" data-tex="$1/\Upsilon$">$1/\Upsilon$</span> and changes <span class="math" data-tex="$D$">$D$</span> to <span class="math" data-tex="$((R-r)/\Upsilon)\log(\Upsilon/R)$">$((R-r)/\Upsilon)\log(\Upsilon/R)$</span>; these factors give exactly (1.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This lemma controls the part of <span class="math" data-tex="$f&#x27;/f$">$f&#x27;/f$</span> left after the nearby zeros have been displayed explicitly. Both the nonzero centre and the distance from that centre in the zero sum are essential.</p>
+<h2 id="2-a-growth-to-nonvanishing-principle">2. A growth-to-nonvanishing principle</h2>
+<p><strong>Theorem 2.1.</strong> Let <span class="math" data-tex="$\phi:[1,\infty)\to[1,\infty)$">$\phi:[1,\infty)\to[1,\infty)$</span> be nondecreasing and <span class="math" data-tex="$\vartheta:[1,\infty)\to(0,1/4]$">$\vartheta:[1,\infty)\to(0,1/4]$</span> nonincreasing. Suppose
+<span class="math math-display" data-tex="$$
+\phi(u)\ge\log(1/\vartheta(u)),\qquad
+|\zeta(\sigma+iu)|\le A_0 e^{B_0\phi(u)}
+\quad(1-\vartheta(u)\le\sigma\le2),
+\tag{2.1}
+$$">$$
+\phi(u)\ge\log(1/\vartheta(u)),\qquad
+|\zeta(\sigma+iu)|\le A_0 e^{B_0\phi(u)}
+\quad(1-\vartheta(u)\le\sigma\le2),
+\tag{2.1}
+$$</span>
+where <span class="math" data-tex="$A_0\ge1$">$A_0\ge1$</span> and <span class="math" data-tex="$B_0&gt;0$">$B_0&gt;0$</span> are fixed constants. Then there exists <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>, depending only on <span class="math" data-tex="$A_0,B_0$">$A_0,B_0$</span>, such that every zero with <span class="math" data-tex="$|\gamma|\ge2$">$|\gamma|\ge2$</span> satisfies
+<span class="math math-display" data-tex="$$
+1-\beta\ge a\frac{\vartheta(2|\gamma|+1)}{\phi(2|\gamma|+1)}.
+\tag{2.2}
+$$">$$
+1-\beta\ge a\frac{\vartheta(2|\gamma|+1)}{\phi(2|\gamma|+1)}.
+\tag{2.2}
+$$</span>
+Thus zeta has no zeros strictly to the right of that boundary. Reducing <span class="math" data-tex="$a$">$a$</span> gives a closed zero-free region of the same shape.</p>
+<p><strong>Proof.</strong> By conjugation take <span class="math" data-tex="$t=\gamma\ge2$">$t=\gamma\ge2$</span>, and write
+<span class="math math-display" data-tex="$$
+\Phi=\phi(2t+1),\quad V=\vartheta(2t+1),\quad
+\Upsilon=V/2,\quad s_j=1+\Upsilon/4+ijt\quad(j=1,2).
+$$">$$
+\Phi=\phi(2t+1),\quad V=\vartheta(2t+1),\quad
+\Upsilon=V/2,\quad s_j=1+\Upsilon/4+ijt\quad(j=1,2).
+$$</span>
+The discs of radius <span class="math" data-tex="$\Upsilon$">$\Upsilon$</span> about <span class="math" data-tex="$s_1,s_2$">$s_1,s_2$</span> lie in <span class="math" data-tex="$1-V\le\sigma\le2$">$1-V\le\sigma\le2$</span> and <span class="math" data-tex="$1\le\Im s\le2t+1$">$1\le\Im s\le2t+1$</span>. Monotonicity makes (2.1) applicable throughout them. They contain no pole. At their centres, the Euler product gives
+<span class="math math-display" data-tex="$$
+|\zeta(s_j)|^{-1}\le\zeta(1+\Upsilon/4)
+\le1+4/\Upsilon.
+$$">$$
+|\zeta(s_j)|^{-1}\le\zeta(1+\Upsilon/4)
+\le1+4/\Upsilon.
+$$</span>
+The first inequality follows by taking absolute values in the absolutely convergent series for <span class="math" data-tex="$1/\zeta$">$1/\zeta$</span>; the second follows by comparing <span class="math" data-tex="$\sum n^{-\sigma}$">$\sum n^{-\sigma}$</span> with its integral. It follows that
+<span class="math math-display" data-tex="$$
+\log\frac{\max_{|s-s_j|\le\Upsilon}|\zeta(s)|}{|\zeta(s_j)|}
+\le K\Phi
+\tag{2.3}
+$$">$$
+\log\frac{\max_{|s-s_j|\le\Upsilon}|\zeta(s)|}{|\zeta(s_j)|}
+\le K\Phi
+\tag{2.3}
+$$</span>
+for a constant depending only on <span class="math" data-tex="$A_0,B_0$">$A_0,B_0$</span>: the extra <span class="math" data-tex="$\log(1/\Upsilon)$">$\log(1/\Upsilon)$</span> is at most <span class="math" data-tex="$\Phi+\log2$">$\Phi+\log2$</span>.</p>
+<p>Apply Theorem 1.1 with <span class="math" data-tex="$r=\Upsilon/3$">$r=\Upsilon/3$</span>, <span class="math" data-tex="$R=\Upsilon/2$">$R=\Upsilon/2$</span>. For <span class="math" data-tex="$1&lt;\sigma\le1+\Upsilon/4$">$1&lt;\sigma\le1+\Upsilon/4$</span>, it yields
+<span class="math math-display" data-tex="$$
+A(\sigma+ijt)=-\sum_{|\rho-s_j|\le\Upsilon/2}
+\frac1{\sigma+ijt-\rho}+O(K\Phi/\Upsilon).
+\tag{2.4}
+$$">$$
+A(\sigma+ijt)=-\sum_{|\rho-s_j|\le\Upsilon/2}
+\frac1{\sigma+ijt-\rho}+O(K\Phi/\Upsilon).
+\tag{2.4}
+$$</span>
+All fractions in these sums have positive real parts, because all zeros have <span class="math" data-tex="$\beta&lt;1$">$\beta&lt;1$</span> and <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>.</p>
+<p>Let <span class="math" data-tex="$d=1-\beta$">$d=1-\beta$</span> for the proposed zero <span class="math" data-tex="$\beta+it$">$\beta+it$</span>. If <span class="math" data-tex="$d\ge\Upsilon/24$">$d\ge\Upsilon/24$</span>, then (2.2) already holds after reducing <span class="math" data-tex="$a$">$a$</span>, since <span class="math" data-tex="$\Phi\ge1$">$\Phi\ge1$</span>. Otherwise the zero belongs to the first sum: <span class="math" data-tex="$|\rho-s_1|=\Upsilon/4+d&lt;\Upsilon/3$">$|\rho-s_1|=\Upsilon/4+d&lt;\Upsilon/3$</span>. Hence
+<span class="math math-display" data-tex="$$
+\Re A(\sigma+it)\le\frac{K\Phi}{\Upsilon}-\frac1{\sigma-\beta},
+\qquad
+\Re A(\sigma+2it)\le\frac{K\Phi}{\Upsilon}.
+$$">$$
+\Re A(\sigma+it)\le\frac{K\Phi}{\Upsilon}-\frac1{\sigma-\beta},
+\qquad
+\Re A(\sigma+2it)\le\frac{K\Phi}{\Upsilon}.
+$$</span>
+The Laurent expansion at one gives <span class="math" data-tex="$A(\sigma)=1/(\sigma-1)+O(1)$">$A(\sigma)=1/(\sigma-1)+O(1)$</span>. The Euler-product positivity inequality is
+<span class="math math-display" data-tex="$$
+0\le3A(\sigma)+4\Re A(\sigma+it)+\Re A(\sigma+2it).
+$$">$$
+0\le3A(\sigma)+4\Re A(\sigma+it)+\Re A(\sigma+2it).
+$$</span>
+Combining the bounds and absorbing the absolute <span class="math" data-tex="$O(1)$">$O(1)$</span> gives
+<span class="math math-display" data-tex="$$
+\frac4{\sigma-\beta}-\frac3{\sigma-1}
+\le K&#x27;\Phi/\Upsilon.
+$$">$$
+\frac4{\sigma-\beta}-\frac3{\sigma-1}
+\le K&#x27;\Phi/\Upsilon.
+$$</span>
+Choose <span class="math" data-tex="$\sigma=1+6d$">$\sigma=1+6d$</span>, which lies in the allowed interval. Its left side is <span class="math" data-tex="$4/(7d)-3/(6d)=1/(14d)$">$4/(7d)-3/(6d)=1/(14d)$</span>. Therefore <span class="math" data-tex="$d\ge\Upsilon/(14K&#x27;\Phi)=V/(28K&#x27;\Phi)$">$d\ge\Upsilon/(14K&#x27;\Phi)=V/(28K&#x27;\Phi)$</span>. This proves (2.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The condition <span class="math" data-tex="$\phi\ge\log(1/\vartheta)$">$\phi\ge\log(1/\vartheta)$</span> controls the reciprocal at the centre of each disc. Omitting it would lose a term that can be larger than the claimed growth bound.</p>
+<h2 id="3-the-vinogradov-korobov-growth-estimate">3. The Vinogradov–Korobov growth estimate</h2>
+<p>For a positive integer <span class="math" data-tex="$N\ge2$">$N\ge2$</span> and real <span class="math" data-tex="$t\ge N$">$t\ge N$</span>, define
+<span class="math math-display" data-tex="$$
+S(N,t)=\sup_{0&lt;u\le1}\ \max_{N&lt;R\le2N}
+\left|\sum_{N\le n\le R}(n+u)^{-it}\right|,
+\qquad \lambda=\frac{\log t}{\log N}.
+$$">$$
+S(N,t)=\sup_{0&lt;u\le1}\ \max_{N&lt;R\le2N}
+\left|\sum_{N\le n\le R}(n+u)^{-it}\right|,
+\qquad \lambda=\frac{\log t}{\log N}.
+$$</span>
+<strong>Lemma 3.0 (uniform shifted logarithmic sum).</strong> There are absolute constants <span class="math" data-tex="$C,c&gt;0$">$C,c&gt;0$</span> such that
+<span class="math math-display" data-tex="$$
+S(N,t)\le C N^{1-c/\lambda^2}.
+\tag{3.1}
+$$">$$
+S(N,t)\le C N^{1-c/\lambda^2}.
+\tag{3.1}
+$$</span>
+<strong>Proof.</strong> Section 8 supplies the complete finite-sum argument. It proves a fixed-deficit polynomial mean value by congruences and differencing, then uses a bilinear average and Gaussian Poisson summation. A fixed-degree derivative argument covers the remaining bounded range of <span class="math" data-tex="$\lambda$">$\lambda$</span>. All auxiliary estimates used there are proved there or at the stated earlier lesson locators. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The qualitative constants in (3.1) suffice for every growth, zero-free and prime-counting conclusion below. No numerical exponential-sum constant is claimed. The free primary comparison is Kevin Ford's <em>Vinogradov's integral and bounds for the Riemann zeta function</em>, arXiv:1910.08209v1, especially Section 3 and Lemma 5.1; the proof in Section 8 uses the complete polynomial system throughout.</p>
+<p><strong>Theorem 3.1.</strong> There are absolute constants <span class="math" data-tex="$C_0,C_1&gt;0$">$C_0,C_1&gt;0$</span> such that, uniformly for <span class="math" data-tex="$\sigma\ge1/2$">$\sigma\ge1/2$</span>, with <span class="math" data-tex="$\Theta=\max(0,1-\sigma)$">$\Theta=\max(0,1-\sigma)$</span>,
+<span class="math math-display" data-tex="$$
+\left|\zeta(s)-\frac1{s-1}\right|
+\le C_0(\log\tau)^{2/3}\tau^{C_1\Theta^{3/2}}.
+\tag{3.2}
+$$">$$
+\left|\zeta(s)-\frac1{s-1}\right|
+\le C_0(\log\tau)^{2/3}\tau^{C_1\Theta^{3/2}}.
+\tag{3.2}
+$$</span>
+At <span class="math" data-tex="$s=1$">$s=1$</span> the left side denotes the value after removal of the pole.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="$t\ge3$">$t\ge3$</span> and <span class="math" data-tex="$1/2\le\sigma\le1$">$1/2\le\sigma\le1$</span>, and put <span class="math" data-tex="$l=\log t$">$l=\log t$</span>, <span class="math" data-tex="$\delta=1-\sigma$">$\delta=1-\sigma$</span>. The truncation theorem with <span class="math" data-tex="$x=t+4$">$x=t+4$</span> gives
+<span class="math math-display" data-tex="$$
+\zeta(s)=\sum_{n\le t}n^{-s}+O(1).
+\tag{3.3}
+$$">$$
+\zeta(s)=\sum_{n\le t}n^{-s}+O(1).
+\tag{3.3}
+$$</span>
+Indeed, the at most five additional terms have bounded total modulus, the pole term is <span class="math" data-tex="$O(t^{-\sigma})$">$O(t^{-\sigma})$</span>, and the uniform remainder is <span class="math" data-tex="$O(t^{-\sigma})$">$O(t^{-\sigma})$</span>.</p>
+<p>Divide the sum into blocks <span class="math" data-tex="$N&lt;n\le\min(2N,t)$">$N&lt;n\le\min(2N,t)$</span> with <span class="math" data-tex="$N=2^j$">$N=2^j$</span>. Terms with <span class="math" data-tex="$n\le2$">$n\le2$</span> are bounded. Taking <span class="math" data-tex="$u=1$">$u=1$</span> in (3.1), with <span class="math" data-tex="$R$">$R$</span> one less than the integer cutoff, bounds every partial unweighted sum on a block by
+<span class="math math-display" data-tex="$$
+C N\exp\left(-c\frac{(\log N)^3}{l^2}\right).
+$$">$$
+C N\exp\left(-c\frac{(\log N)^3}{l^2}\right).
+$$</span>
+If that cutoff includes just the first term, its modulus is one and is absorbed in this bound. Partial summation with the decreasing weight <span class="math" data-tex="$n^{-\sigma}$">$n^{-\sigma}$</span> therefore bounds the weighted block by
+<span class="math math-display" data-tex="$$
+C\exp\left(\delta\log N-c\frac{(\log N)^3}{l^2}\right).
+\tag{3.4}
+$$">$$
+C\exp\left(\delta\log N-c\frac{(\log N)^3}{l^2}\right).
+\tag{3.4}
+$$</span>
+The constant is uniform in <span class="math" data-tex="$\sigma\in[1/2,1]$">$\sigma\in[1/2,1]$</span>: the endpoint weight plus its total variation is at most twice the initial weight.</p>
+<p>For every <span class="math" data-tex="$v\ge0$">$v\ge0$</span>, elementary maximization gives
+<span class="math math-display" data-tex="$$
+\delta v-\frac c2\frac{v^3}{l^2}
+\le C\delta^{3/2}l.
+\tag{3.5}
+$$">$$
+\delta v-\frac c2\frac{v^3}{l^2}
+\le C\delta^{3/2}l.
+\tag{3.5}
+$$</span>
+For <span class="math" data-tex="$\delta&gt;0$">$\delta&gt;0$</span>, differentiate to find <span class="math" data-tex="$v=l\sqrt{2\delta/(3c)}$">$v=l\sqrt{2\delta/(3c)}$</span>; for <span class="math" data-tex="$\delta=0$">$\delta=0$</span> the assertion is immediate. Retain the other half of the negative cubic in (3.4). Then
+<span class="math math-display" data-tex="$$
+\sum_{j\ge1}\exp\left(\delta j\log2-c\frac{(j\log2)^3}{l^2}\right)
+\le e^{C\delta^{3/2}l}
+\sum_{j\ge1}e^{-c&#x27;(j/l^{2/3})^3}
+\ll l^{2/3}e^{C\delta^{3/2}l}.
+$$">$$
+\sum_{j\ge1}\exp\left(\delta j\log2-c\frac{(j\log2)^3}{l^2}\right)
+\le e^{C\delta^{3/2}l}
+\sum_{j\ge1}e^{-c&#x27;(j/l^{2/3})^3}
+\ll l^{2/3}e^{C\delta^{3/2}l}.
+$$</span>
+The last estimate follows by comparison with the integral of the decreasing function <span class="math" data-tex="$e^{-c&#x27;(v/l^{2/3})^3}$">$e^{-c&#x27;(v/l^{2/3})^3}$</span> and substitution <span class="math" data-tex="$v=l^{2/3}w$">$v=l^{2/3}w$</span>; its <span class="math" data-tex="$w$">$w$</span> integral converges. This proves (3.2) on the indicated strip and at positive large heights. Subtracting the pole term and replacing <span class="math" data-tex="$t$">$t$</span> by <span class="math" data-tex="$\tau$">$\tau$</span> preserve it. Conjugation covers negative heights. At bounded heights the pole-subtracted function is holomorphic and bounded on the compact strip <span class="math" data-tex="$1/2\le\sigma\le1$">$1/2\le\sigma\le1$</span>.</p>
+<p>It remains to cover <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span> with no power of <span class="math" data-tex="$\tau$">$\tau$</span>. Set <span class="math" data-tex="$G(s)=\zeta(s)-1/(s-1)$">$G(s)=\zeta(s)-1/(s-1)$</span>. On <span class="math" data-tex="$\sigma=1$">$\sigma=1$</span>, we have just proved <span class="math" data-tex="$G(s)\ll(\log\tau)^{2/3}$">$G(s)\ll(\log\tau)^{2/3}$</span>; on <span class="math" data-tex="$\sigma=2$">$\sigma=2$</span>, absolute convergence gives the same estimate. The truncation formula bounds <span class="math" data-tex="$G$">$G$</span> polynomially throughout <span class="math" data-tex="$1\le\sigma\le2$">$1\le\sigma\le2$</span>, including the removable value at one. The proved strip interpolation theorem, with both boundary exponents zero and logarithmic exponent <span class="math" data-tex="$2/3$">$2/3$</span>, gives <span class="math" data-tex="$G\ll(\log\tau)^{2/3}$">$G\ll(\log\tau)^{2/3}$</span> in that strip. For <span class="math" data-tex="$\sigma\ge2$">$\sigma\ge2$</span>, use <span class="math" data-tex="$|\zeta(s)|\le\zeta(2)$">$|\zeta(s)|\le\zeta(2)$</span> and <span class="math" data-tex="$|s-1|^{-1}\le1$">$|s-1|^{-1}\le1$</span>. This establishes every case in (3.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The cubic decay in the block length is responsible for the exponent <span class="math" data-tex="$\delta^{3/2}$">$\delta^{3/2}$</span>; summing that decay supplies the logarithmic factor <span class="math" data-tex="$l^{2/3}$">$l^{2/3}$</span>. These are two distinct parts of the estimate.</p>
+<h2 id="4-a-wider-zero-free-region-and-analytic-bounds">4. A wider zero-free region and analytic bounds</h2>
+<p>Put
+<span class="math math-display" data-tex="$$
+D(t)=(\log(|t|+4))^{2/3}(\log\log(|t|+4))^{1/3}.
+$$">$$
+D(t)=(\log(|t|+4))^{2/3}(\log\log(|t|+4))^{1/3}.
+$$</span>
+This is positive and increasing with <span class="math" data-tex="$|t|$">$|t|$</span>. We distinguish a zero-free assertion from bounds on meromorphic functions near their pole.</p>
+<p><strong>Theorem 4.1.</strong> There exists an absolute <span class="math" data-tex="$b&gt;0$">$b&gt;0$</span> such that zeta has no zero in
+<span class="math math-display" data-tex="$$
+\sigma\ge1-\frac b{D(t)}.
+\tag{4.1}
+$$">$$
+\sigma\ge1-\frac b{D(t)}.
+\tag{4.1}
+$$</span>
+For <span class="math" data-tex="$|t|\ge3$">$|t|\ge3$</span> in a possibly narrower region of this form,
+<span class="math math-display" data-tex="$$
+\frac{\zeta&#x27;}\zeta(s)\ll D(t),\qquad
+|\log\zeta(s)|\le\log D(t)+O(1),\qquad
+\frac1{\zeta(s)}\ll D(t).
+\tag{4.2}
+$$">$$
+\frac{\zeta&#x27;}\zeta(s)\ll D(t),\qquad
+|\log\zeta(s)|\le\log D(t)+O(1),\qquad
+\frac1{\zeta(s)}\ll D(t).
+\tag{4.2}
+$$</span>
+The logarithm is the branch obtained by continuation from the Euler logarithm in the upper or lower region. In particular,
+<span class="math math-display" data-tex="$$
+\log D(t)=\tfrac23\log\log\tau+\tfrac13\log\log\log\tau.
+$$">$$
+\log D(t)=\tfrac23\log\log\tau+\tfrac13\log\log\log\tau.
+$$</span></p>
+<p><strong>Proof of nonvanishing.</strong> For sufficiently large <span class="math" data-tex="$u$">$u$</span>, set
+<span class="math math-display" data-tex="$$
+\vartheta(u)=c_0\left(\frac{\log\log(u+4)}{\log(u+4)}\right)^{2/3},
+\qquad \phi(u)=K_0\log\log(u+4),
+\tag{4.3}
+$$">$$
+\vartheta(u)=c_0\left(\frac{\log\log(u+4)}{\log(u+4)}\right)^{2/3},
+\qquad \phi(u)=K_0\log\log(u+4),
+\tag{4.3}
+$$</span>
+with <span class="math" data-tex="$c_0&gt;0$">$c_0&gt;0$</span> fixed and small, and <span class="math" data-tex="$K_0$">$K_0$</span> fixed and large. The ratio <span class="math" data-tex="$\log v/v$">$\log v/v$</span> decreases for <span class="math" data-tex="$v&gt;e$">$v&gt;e$</span>, so <span class="math" data-tex="$\vartheta$">$\vartheta$</span> is eventually decreasing. Also <span class="math" data-tex="$\phi$">$\phi$</span> increases, is at least one eventually, and satisfies <span class="math" data-tex="$\phi\ge\log(1/\vartheta)$">$\phi\ge\log(1/\vartheta)$</span> after enlarging <span class="math" data-tex="$K_0$">$K_0$</span>.</p>
+<p>When <span class="math" data-tex="$1-\vartheta(u)\le\sigma\le2$">$1-\vartheta(u)\le\sigma\le2$</span>, (3.2) and <span class="math" data-tex="$|s-1|^{-1}\le1/u$">$|s-1|^{-1}\le1/u$</span> give
+<span class="math math-display" data-tex="$$
+\log|\zeta(\sigma+iu)|
+\le O(1)+\tfrac23\log\log(u+4)
++C_1\vartheta(u)^{3/2}\log(u+4)
+\ll\log\log(u+4).
+$$">$$
+\log|\zeta(\sigma+iu)|
+\le O(1)+\tfrac23\log\log(u+4)
++C_1\vartheta(u)^{3/2}\log(u+4)
+\ll\log\log(u+4).
+$$</span>
+Extend <span class="math" data-tex="$\vartheta$">$\vartheta$</span> constantly back to <span class="math" data-tex="$u=1$">$u=1$</span>, using its value at a sufficiently large starting height, and extend <span class="math" data-tex="$\phi$">$\phi$</span> constantly there as well. Enlarge the fixed bound on this compact initial range. This supplies all hypotheses of Theorem 2.1. Its quotient is
+<span class="math math-display" data-tex="$$
+\frac{\vartheta(2t+1)}{\phi(2t+1)}
+\asymp\frac1{(\log(t+4))^{2/3}(\log\log(t+4))^{1/3}}
+\qquad(t\to\infty).
+$$">$$
+\frac{\vartheta(2t+1)}{\phi(2t+1)}
+\asymp\frac1{(\log(t+4))^{2/3}(\log\log(t+4))^{1/3}}
+\qquad(t\to\infty).
+$$</span>
+The change of height is harmless: <span class="math" data-tex="$\log(2t+5)$">$\log(2t+5)$</span> differs from <span class="math" data-tex="$\log(t+4)$">$\log(t+4)$</span> by a bounded quantity, and their logarithms have ratio tending to one. Thus (4.1) holds at sufficiently large heights, after shrinking <span class="math" data-tex="$b$">$b$</span>. On the bounded remaining range, the already proved classical zero-free region supplies a positive width. Shrink <span class="math" data-tex="$b$">$b$</span> once more to fit within that width. This also covers <span class="math" data-tex="$t=0$">$t=0$</span>, where one is a pole rather than a zero.</p>
+<p><strong>Proof of the analytic bounds.</strong> At large positive <span class="math" data-tex="$t$">$t$</span>, repeat the local-disc construction in Theorem 2.1 with <span class="math" data-tex="$\Upsilon\asymp(\log\log\tau/\log\tau)^{2/3}$">$\Upsilon\asymp(\log\log\tau/\log\tau)^{2/3}$</span>. The growth bound and the reciprocal estimate at the centre give <span class="math" data-tex="$q\ll\log\log\tau$">$q\ll\log\log\tau$</span>. Therefore Theorem 1.1 gives, on the inner disc,
+<span class="math math-display" data-tex="$$
+A(z)=-\sum_{|\rho-s_0|\le\Upsilon/2}\frac1{z-\rho}+O(D(t)),
+\qquad s_0=1+\Upsilon/4+it.
+\tag{4.4}
+$$">$$
+A(z)=-\sum_{|\rho-s_0|\le\Upsilon/2}\frac1{z-\rho}+O(D(t)),
+\qquad s_0=1+\Upsilon/4+it.
+\tag{4.4}
+$$</span>
+Choose <span class="math" data-tex="$\delta=b_0/D(t)$">$\delta=b_0/D(t)$</span> with <span class="math" data-tex="$b_0&gt;0$">$b_0&gt;0$</span> small enough. The disc of radius <span class="math" data-tex="$2\delta$">$2\delta$</span> centred at <span class="math" data-tex="$z_0=1+\delta+it$">$z_0=1+\delta+it$</span> lies inside the inner disc for all sufficiently large <span class="math" data-tex="$t$">$t$</span>, because <span class="math" data-tex="$\Upsilon D(t)\asymp\log\log\tau\to\infty$">$\Upsilon D(t)\asymp\log\log\tau\to\infty$</span>. It is zero-free by (4.1). Moreover every zero in (4.4) lies strictly to its left: such a zero has <span class="math" data-tex="$|\gamma-t|\le\Upsilon/2$">$|\gamma-t|\le\Upsilon/2$</span>, hence <span class="math" data-tex="$D(\gamma)\le2D(t)$">$D(\gamma)\le2D(t)$</span> eventually, so <span class="math" data-tex="$1-\beta\ge b/(2D(t))&gt;\delta$">$1-\beta\ge b/(2D(t))&gt;\delta$</span> if <span class="math" data-tex="$b_0&lt;b/2$">$b_0&lt;b/2$</span>. It follows by taking real parts in (4.4) that
+<span class="math math-display" data-tex="$$
+\Re A(z)\ll D(t)\qquad(|z-z_0|\le2\delta).
+$$">$$
+\Re A(z)\ll D(t)\qquad(|z-z_0|\le2\delta).
+$$</span>
+At the centre, the positive Dirichlet series gives
+<span class="math math-display" data-tex="$$
+|A(z_0)|\le A(1+\delta)=\delta^{-1}+O(1)\ll D(t).
+$$">$$
+|A(z_0)|\le A(1+\delta)=\delta^{-1}+O(1)\ll D(t).
+$$</span>
+Apply Borel–Carathéodory to <span class="math" data-tex="$A(z)-A(z_0)$">$A(z)-A(z_0)$</span>, with outer radius <span class="math" data-tex="$2\delta$">$2\delta$</span> and inner radius <span class="math" data-tex="$3\delta/2$">$3\delta/2$</span>. Its real part is bounded above by <span class="math" data-tex="$O(D(t))$">$O(D(t))$</span>, so <span class="math" data-tex="$|A(z)|\ll D(t)$">$|A(z)|\ll D(t)$</span> in the smaller disc. At the original height this covers <span class="math" data-tex="$1-\delta/2\le\sigma\le1+\delta$">$1-\delta/2\le\sigma\le1+\delta$</span>. For <span class="math" data-tex="$\sigma\ge1+\delta$">$\sigma\ge1+\delta$</span>, the positive-series bound <span class="math" data-tex="$|A(\sigma+it)|\le A(1+\delta)$">$|A(\sigma+it)|\le A(1+\delta)$</span> covers the rest of the half-plane.</p>
+<p>The Euler logarithm at <span class="math" data-tex="$z_0$">$z_0$</span> satisfies
+<span class="math math-display" data-tex="$$
+|\log\zeta(z_0)|\le\log\zeta(1+\delta)
+\le\log(1+1/\delta)=\log D(t)+O(1).
+$$">$$
+|\log\zeta(z_0)|\le\log\zeta(1+\delta)
+\le\log(1+1/\delta)=\log D(t)+O(1).
+$$</span>
+Integrating <span class="math" data-tex="$\zeta&#x27;/\zeta$">$\zeta&#x27;/\zeta$</span> over a horizontal segment of length at most <span class="math" data-tex="$3\delta/2$">$3\delta/2$</span> changes this logarithm by <span class="math" data-tex="$O(\delta D(t))=O(1)$">$O(\delta D(t))=O(1)$</span>. For larger real parts, use the Euler logarithm directly. These branches agree where they overlap; the upper region is simply connected and zero-free. Exponentiating its negative real part gives <span class="math" data-tex="$|1/\zeta|\le C D(t)$">$|1/\zeta|\le C D(t)$</span>. Conjugation gives all negative large heights. On <span class="math" data-tex="$3\le|t|\le t_0$">$3\le|t|\le t_0$</span>, shrink the region to lie inside the classical one; holomorphy and compactness give the same bounds, and absolute convergence covers arbitrarily large <span class="math" data-tex="$\sigma$">$\sigma$</span>. This proves (4.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The restriction on the height in (4.2) matters: <span class="math" data-tex="$\zeta&#x27;/\zeta$">$\zeta&#x27;/\zeta$</span> has a pole at one and cannot have a uniform bounded estimate throughout (4.1). The nonvanishing statement itself holds at all heights.</p>
+<h2 id="5-the-stronger-prime-number-theorem-error">5. The stronger prime-number-theorem error</h2>
+<p><strong>Theorem 5.1.</strong> For some absolute <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span>, as <span class="math" data-tex="$x\to\infty$">$x\to\infty$</span>,
+<span class="math math-display" data-tex="$$
+\psi(x)=x+O\left(x\exp\left[-c(\log x)^{3/5}(\log\log x)^{-1/5}\right]\right).
+\tag{5.1}
+$$">$$
+\psi(x)=x+O\left(x\exp\left[-c(\log x)^{3/5}(\log\log x)^{-1/5}\right]\right).
+\tag{5.1}
+$$</span>
+The same error holds for <span class="math" data-tex="$\theta(x)-x$">$\theta(x)-x$</span> and <span class="math" data-tex="$\pi(x)-\operatorname{li}(x)$">$\pi(x)-\operatorname{li}(x)$</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="$L=\log x$">$L=\log x$</span>. For each zero with <span class="math" data-tex="$|\gamma|&lt;T$">$|\gamma|&lt;T$</span>, (4.1) implies <span class="math" data-tex="$x^\beta\le x\exp(-bL/D(T))$">$x^\beta\le x\exp(-bL/D(T))$</span>. The reciprocal-ordinate estimate from the zero-counting lesson and the sharp explicit formula, including its endpoint error, give for <span class="math" data-tex="$x\ge2$">$x\ge2$</span>, <span class="math" data-tex="$T\ge3$">$T\ge3$</span>,
+<span class="math math-display" data-tex="$$
+|\psi(x)-x|\ll
+x\log^2(T+4)e^{-bL/D(T)}
++\frac{x\log^2(xT)}T+\log x.
+\tag{5.2}
+$$">$$
+|\psi(x)-x|\ll
+x\log^2(T+4)e^{-bL/D(T)}
++\frac{x\log^2(xT)}T+\log x.
+\tag{5.2}
+$$</span>
+Take
+<span class="math math-display" data-tex="$$
+u=L^{3/5}(\log L)^{-1/5},\qquad T=e^u.
+\tag{5.3}
+$$">$$
+u=L^{3/5}(\log L)^{-1/5},\qquad T=e^u.
+\tag{5.3}
+$$</span>
+For sufficiently large <span class="math" data-tex="$L$">$L$</span>, <span class="math" data-tex="$\log(T+4)\asymp u$">$\log(T+4)\asymp u$</span> and <span class="math" data-tex="$\log\log(T+4)\asymp\log u\asymp\log L$">$\log\log(T+4)\asymp\log u\asymp\log L$</span>. Consequently
+<span class="math math-display" data-tex="$$
+D(T)\asymp u^{2/3}(\log u)^{1/3}
+\asymp L^{2/5}(\log L)^{1/5},\qquad
+L/D(T)\asymp u.
+$$">$$
+D(T)\asymp u^{2/3}(\log u)^{1/3}
+\asymp L^{2/5}(\log L)^{1/5},\qquad
+L/D(T)\asymp u.
+$$</span>
+Both principal terms in (5.2) are bounded by <span class="math" data-tex="$x$">$x$</span> times a fixed polynomial in <span class="math" data-tex="$L$">$L$</span> times <span class="math" data-tex="$e^{-c_1u}$">$e^{-c_1u}$</span>. Since <span class="math" data-tex="$\log L=o(u)$">$\log L=o(u)$</span>, every such polynomial is absorbed by reducing <span class="math" data-tex="$c_1$">$c_1$</span> to a positive <span class="math" data-tex="$c$">$c$</span>. Also <span class="math" data-tex="$\log x=O(xe^{-cu})$">$\log x=O(xe^{-cu})$</span>, since <span class="math" data-tex="$u=o(L)$">$u=o(L)$</span>. This proves (5.1) for all sufficiently large real <span class="math" data-tex="$x$">$x$</span>, including prime powers.</p>
+<p>The difference <span class="math" data-tex="$\psi-\theta\ll\sqrt x$">$\psi-\theta\ll\sqrt x$</span> is absorbed in the same error. For prime counting, use the exact partial-summation identity from lesson twelve and split its error integral at <span class="math" data-tex="$\sqrt x$">$\sqrt x$</span>. On the second part,
+<span class="math math-display" data-tex="$$
+(\log t)^{3/5}(\log\log t)^{-1/5}
+\ge2^{-3/5}L^{3/5}(\log L)^{-1/5}
+\qquad(\sqrt x\le t\le x)
+$$">$$
+(\log t)^{3/5}(\log\log t)^{-1/5}
+\ge2^{-3/5}L^{3/5}(\log L)^{-1/5}
+\qquad(\sqrt x\le t\le x)
+$$</span>
+for large <span class="math" data-tex="$x$">$x$</span>: the first factor has this lower bound and the second is at least <span class="math" data-tex="$(\log L)^{-1/5}$">$(\log L)^{-1/5}$</span>. The first part is <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span>. Thus the integral, its endpoint and the constant converting <span class="math" data-tex="$\operatorname{Li}$">$\operatorname{Li}$</span> to <span class="math" data-tex="$\operatorname{li}$">$\operatorname{li}$</span> are all absorbed in (5.1), with a possibly smaller <span class="math" data-tex="$c$">$c$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>It is <span class="math" data-tex="$\log T$">$\log T$</span>, rather than <span class="math" data-tex="$T$">$T$</span>, that has the power scale in (5.3). Using <span class="math" data-tex="$T=u$">$T=u$</span> would leave the truncation error far too large.</p>
+<h2 id="6-comparing-the-three-regions">6. Comparing the three regions</h2>
+<p><strong>Example 6.1.</strong> A zero-free region is measured by its width to the left of the line one. The classical and Vinogradov–Korobov width functions have the forms
+<span class="math math-display" data-tex="$$
+w_{\mathrm{cl}}(t)=\frac a{\log\tau},\qquad
+w_{\mathrm{VK}}(t)=\frac a{D(t)}.
+\tag{6.1}
+$$">$$
+w_{\mathrm{cl}}(t)=\frac a{\log\tau},\qquad
+w_{\mathrm{VK}}(t)=\frac a{D(t)}.
+\tag{6.1}
+$$</span>
+The ratio for this common normalization is
+<span class="math math-display" data-tex="$$
+\frac{w_{\mathrm{VK}}(t)}{w_{\mathrm{cl}}(t)}
+=\left(\frac{\log\tau}{\log\log\tau}\right)^{1/3}\longrightarrow\infty.
+$$">$$
+\frac{w_{\mathrm{VK}}(t)}{w_{\mathrm{cl}}(t)}
+=\left(\frac{\log\tau}{\log\log\tau}\right)^{1/3}\longrightarrow\infty.
+$$</span>
+Under RH, every nontrivial zero has real part <span class="math" data-tex="$1/2$">$1/2$</span>, so the entire open strip <span class="math" data-tex="$1/2&lt;\sigma&lt;1$">$1/2&lt;\sigma&lt;1$</span> is zero-free: its width is <span class="math" data-tex="$1/2$">$1/2$</span>, independent of height. The critical line itself is not zero-free under RH.</p>
+<figure><img src="figures/NT-ZETA-13/region_widths.png" alt="Widths of the classical and Vinogradov–Korobov region shapes, and the conditional RH strip, for heights from 10 to one million." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1.</em> The two decaying curves use the illustrative common coefficient <span class="math" data-tex="$a=0.02$">$a=0.02$</span> in (6.1) to compare their shapes. The theorem supplies positive constants, without identifying either with this plotting coefficient. The horizontal line is the conditional RH width <span class="math" data-tex="$1/2$">$1/2$</span>. At height <span class="math" data-tex="$10^6$">$10^6$</span>, the plotted classical and Vinogradov–Korobov widths are approximately <span class="math" data-tex="$0.00144765$">$0.00144765$</span> and <span class="math" data-tex="$0.00251786$">$0.00251786$</span>. A logarithmic vertical axis makes all three scales visible. This is a comparison of region shapes, rather than a numerical zero exclusion with the illustrative coefficient. The source script preserves both formulas and this qualification.</p>
+<h2 id="7-exercises-and-solutions">7. Exercises and solutions</h2>
+<p><strong>Exercise 1.</strong> Recover the classical logarithmic zero-free region from Theorem 2.1.</p>
+<p><strong>Solution 1.</strong> Take <span class="math" data-tex="$\vartheta(u)=1/4$">$\vartheta(u)=1/4$</span> and <span class="math" data-tex="$\phi(u)=2+\log(u+4)$">$\phi(u)=2+\log(u+4)$</span>. Truncation at <span class="math" data-tex="$u+4$">$u+4$</span> gives <span class="math" data-tex="$\zeta(\sigma+iu)\ll(u+4)^{1/4}\log(u+4)$">$\zeta(\sigma+iu)\ll(u+4)^{1/4}\log(u+4)$</span> for <span class="math" data-tex="$3/4\le\sigma\le1$">$3/4\le\sigma\le1$</span>, while absolute comparison in the same formula gives <span class="math" data-tex="$O(\log(u+4))$">$O(\log(u+4))$</span> for <span class="math" data-tex="$1\le\sigma\le2$">$1\le\sigma\le2$</span>. For the first assertion, each finite-sum term satisfies <span class="math" data-tex="$n^{-\sigma}\le n^{-1}(u+4)^{1/4}$">$n^{-\sigma}\le n^{-1}(u+4)^{1/4}$</span>, and the pole and remainder are smaller. These bounds imply (2.1) with fixed constants; also <span class="math" data-tex="$\phi\ge\log4$">$\phi\ge\log4$</span>. The quotient <span class="math" data-tex="$\vartheta(2t+1)/\phi(2t+1)$">$\vartheta(2t+1)/\phi(2t+1)$</span> is comparable with <span class="math" data-tex="$1/\log(t+4)$">$1/\log(t+4)$</span>. Theorem 2.1 gives the region at large heights; the pole neighbourhood and bounded-height classical nonvanishing proved in lesson eight supply the uniform initial range. The factor <span class="math" data-tex="$1/4$">$1/4$</span> is absorbed in the positive constant.</p>
+<p><strong>Exercise 2.</strong> Compare the regions obtainable from a linear growth exponent and a <span class="math" data-tex="$3/2$">$3/2$</span> exponent. For the linear comparison, assume for a fixed <span class="math" data-tex="$\eta&gt;0$">$\eta&gt;0$</span> and fixed <span class="math" data-tex="$A&gt;0$">$A&gt;0$</span> that
+<span class="math math-display" data-tex="$$
+|\zeta(\sigma+it)|\ll\tau^{A\max(0,1-\sigma)}\log\tau
+\qquad(1-\eta\le\sigma\le2).
+$$">$$
+|\zeta(\sigma+it)|\ll\tau^{A\max(0,1-\sigma)}\log\tau
+\qquad(1-\eta\le\sigma\le2).
+$$</span>
+Explain why making <span class="math" data-tex="$A$">$A$</span> small changes constants but does not improve the logarithmic scale through this general principle.</p>
+<p><strong>Solution 2.</strong> Put <span class="math" data-tex="$l=\log\tau$">$l=\log\tau$</span>. On a substrip of width <span class="math" data-tex="$0&lt;\vartheta\le\min(\eta,1/4)$">$0&lt;\vartheta\le\min(\eta,1/4)$</span>, an admissible growth exponent must account for <span class="math" data-tex="$A\vartheta l+\log l$">$A\vartheta l+\log l$</span> and the centre term <span class="math" data-tex="$\log(1/\vartheta)$">$\log(1/\vartheta)$</span>. Therefore the width furnished by Theorem 2.1 is, up to fixed factors, at most
+<span class="math math-display" data-tex="$$
+\frac{\vartheta}{A\vartheta l+\log l}
+=\frac1{Al+(\log l)/\vartheta}\le\frac1{Al}.
+$$">$$
+\frac{\vartheta}{A\vartheta l+\log l}
+=\frac1{Al+(\log l)/\vartheta}\le\frac1{Al}.
+$$</span>
+A fixed positive <span class="math" data-tex="$\vartheta$">$\vartheta$</span> attains the order <span class="math" data-tex="$1/l$">$1/l$</span>, with <span class="math" data-tex="$\phi(u)$">$\phi(u)$</span> chosen as a fixed multiple of <span class="math" data-tex="$1+\log(u+4)$">$1+\log(u+4)$</span>. Alternatively <span class="math" data-tex="$\vartheta\asymp(\log l)/l$">$\vartheta\asymp(\log l)/l$</span> and <span class="math" data-tex="$\phi\asymp\log l$">$\phi\asymp\log l$</span> attain that order. Thus the scale is <span class="math" data-tex="$l^{-1}$">$l^{-1}$</span> for each fixed <span class="math" data-tex="$A&gt;0$">$A&gt;0$</span>.</p>
+<p>For (3.2), choose <span class="math" data-tex="$\vartheta\asymp(\log l/l)^{2/3}$">$\vartheta\asymp(\log l/l)^{2/3}$</span>. The term <span class="math" data-tex="$C\vartheta^{3/2}l$">$C\vartheta^{3/2}l$</span> and the logarithmic prefactor both cost <span class="math" data-tex="$O(\log l)$">$O(\log l)$</span>; so does <span class="math" data-tex="$\log(1/\vartheta)$">$\log(1/\vartheta)$</span>. The quotient is now
+<span class="math math-display" data-tex="$$
+\vartheta/\phi\asymp l^{-2/3}(\log l)^{-1/3}.
+$$">$$
+\vartheta/\phi\asymp l^{-2/3}(\log l)^{-1/3}.
+$$</span>
+Its ratio to <span class="math" data-tex="$l^{-1}$">$l^{-1}$</span> tends to infinity. These are the widths produced by this method from these growth envelopes, not an upper bound on every possible zero-free argument. For <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span> the maximum with zero in the linear hypothesis is necessary: a bound <span class="math" data-tex="$\tau^{A(1-\sigma)}\log\tau$">$\tau^{A(1-\sigma)}\log\tau$</span> there would tend to zero for fixed <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>, contradicting <span class="math" data-tex="$|\zeta(\sigma+it)|\ge1/\zeta(\sigma)&gt;0$">$|\zeta(\sigma+it)|\ge1/\zeta(\sigma)&gt;0$</span> from the absolutely convergent reciprocal series.</p>
+<p><strong>Exercise 3.</strong> Optimize the cutoff height in (5.2), retaining the zero-free constant in the leading exponential balance.</p>
+<p><strong>Solution 3.</strong> Write <span class="math" data-tex="$u=\log T$">$u=\log T$</span>. The two exponential losses have sizes <span class="math" data-tex="$u$">$u$</span> and <span class="math" data-tex="$bL/[u^{2/3}(\log u)^{1/3}]$">$bL/[u^{2/3}(\log u)^{1/3}]$</span>. Equalizing them gives
+<span class="math math-display" data-tex="$$
+u^{5/3}(\log u)^{1/3}=bL,
+\qquad u^5\log u=b^3L^3.
+$$">$$
+u^{5/3}(\log u)^{1/3}=bL,
+\qquad u^5\log u=b^3L^3.
+$$</span>
+The left side is increasing for <span class="math" data-tex="$u&gt;1$">$u&gt;1$</span>, so its balancing value is unique there when <span class="math" data-tex="$L$">$L$</span> is large. If
+<span class="math math-display" data-tex="$$
+u=K L^{3/5}(\log L)^{-1/5},
+$$">$$
+u=K L^{3/5}(\log L)^{-1/5},
+$$</span>
+then <span class="math" data-tex="$\log u\sim(3/5)\log L$">$\log u\sim(3/5)\log L$</span> and <span class="math" data-tex="$u^5\log u\sim(3/5)K^5L^3$">$u^5\log u\sim(3/5)K^5L^3$</span>. Hence the leading balancing coefficient is <span class="math" data-tex="$K=(5b^3/3)^{1/5}$">$K=(5b^3/3)^{1/5}$</span>. Choosing any fixed positive multiple of the indicated power scale proves the error exponent, after the polynomial prefactors are absorbed as in Theorem 5.1. This computation concerns the two exponential components; it does not claim that polynomial factors leave the exact finite-<span class="math" data-tex="$x$">$x$</span> optimum unchanged.</p>
+<p><strong>Exercise 4.</strong> Suppose a positive function <span class="math" data-tex="$\eta(t)$">$\eta(t)$</span> defines a zero-free region <span class="math" data-tex="$\sigma\ge1-\eta(|t|)$">$\sigma\ge1-\eta(|t|)$</span> for <span class="math" data-tex="$|t|\ge3$">$|t|\ge3$</span> and satisfies <span class="math" data-tex="$\eta(t)\log t\to\infty$">$\eta(t)\log t\to\infty$</span>. Show a precise improvement beyond the classical exponential scale.</p>
+<p><strong>Solution 4.</strong> Fix <span class="math" data-tex="$K&gt;0$">$K&gt;0$</span>. For all sufficiently large <span class="math" data-tex="$v$">$v$</span>, the hypothesis gives <span class="math" data-tex="$\eta(v)\ge K/\log v$">$\eta(v)\ge K/\log v$</span>. Therefore each zero in that height range up to <span class="math" data-tex="$T$">$T$</span> satisfies <span class="math" data-tex="$1-\beta\ge K/\log T$">$1-\beta\ge K/\log T$</span>. The finitely many smaller-height zeros have a positive minimum distance from the line one by the proved classical nonvanishing. Thus they satisfy the same inequality once <span class="math" data-tex="$T$">$T$</span> is sufficiently large. No monotonicity of <span class="math" data-tex="$\eta$">$\eta$</span> is required for this argument.</p>
+<p>In the explicit formula we may consequently replace its zero term by <span class="math" data-tex="$O(x\log^2T\,e^{-KL/\log T})$">$O(x\log^2T\,e^{-KL/\log T})$</span>. Choose <span class="math" data-tex="$\log T=\sqrt{KL}$">$\log T=\sqrt{KL}$</span>. Both exponential components are then <span class="math" data-tex="$e^{-\sqrt K\sqrt L}$">$e^{-\sqrt K\sqrt L}$</span>. Polynomial absorption proves, for every fixed <span class="math" data-tex="$A&gt;0$">$A&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\psi(x)-x=O_A\left(xe^{-A\sqrt{\log x}}\right):
+$$">$$
+\psi(x)-x=O_A\left(xe^{-A\sqrt{\log x}}\right):
+$$</span>
+first take <span class="math" data-tex="$\sqrt K&gt;2A$">$\sqrt K&gt;2A$</span>, then enlarge the implied constant to cover the initial interval. This is a stronger conclusion than the existence of one fixed saving constant. Without a quantitative rate for <span class="math" data-tex="$\eta(t)\log t\to\infty$">$\eta(t)\log t\to\infty$</span>, it need not yield a specified higher power of <span class="math" data-tex="$\log x$">$\log x$</span>. Theorem 5.1 obtains that power because its width has a specific rate.</p>
+<p><strong>Exercise 5.</strong> Give an explicit constant in Landau's lemma, and specialize it to the discs used in Theorem 2.1.</p>
+<p><strong>Solution 5.</strong> Theorem 1.1 supplies constant six with all cancellations and boundary cases proved. Its decomposition has three contributions: <span class="math" data-tex="$4q/D$">$4q/D$</span> from the zero-free logarithm, <span class="math" data-tex="$q/D$">$q/D$</span> from the denominators of the near-zero Blaschke factors, and <span class="math" data-tex="$q/D$">$q/D$</span> from the combined far-zero factors. Equation (1.2) controls the near count and the far logarithmic weights separately. Thus the estimate remains valid even when the larger disc contains many zeros far from its centre; counting all those zeros without their weights would not establish it. Restoring radius <span class="math" data-tex="$\Upsilon$">$\Upsilon$</span> and taking <span class="math" data-tex="$r=\Upsilon/3$">$r=\Upsilon/3$</span>, <span class="math" data-tex="$R=\Upsilon/2$">$R=\Upsilon/2$</span> gives
+<span class="math math-display" data-tex="$$
+\left|\frac{f&#x27;}f(s)-\sum_{|a-s_0|\le\Upsilon/2}\frac1{s-a}\right|
+\le\frac{36}{\Upsilon\log2}\log\frac M{|f(s_0)|}
+\qquad(|s-s_0|\le\Upsilon/3).
+$$">$$
+\left|\frac{f&#x27;}f(s)-\sum_{|a-s_0|\le\Upsilon/2}\frac1{s-a}\right|
+\le\frac{36}{\Upsilon\log2}\log\frac M{|f(s_0)|}
+\qquad(|s-s_0|\le\Upsilon/3).
+$$</span>
+For <span class="math" data-tex="$r=\Upsilon/4$">$r=\Upsilon/4$</span> instead, the coefficient is <span class="math" data-tex="$24/(\Upsilon\log2)$">$24/(\Upsilon\log2)$</span>. These constants are explicit sufficient constants, with no optimality assertion.</p>
+<h2 id="8-a-complete-proof-of-the-exponential-sum-input">8. A complete proof of the exponential-sum input</h2>
+<p>The proof below uses the classical prime number theorem already proved in lesson twelve, Theorem 2.1, the Gaussian transform and Poisson summation proved in lesson four, Lemma 2.1 and Theorem 1.2, and the second-derivative sum test and differencing inequality proved in lesson seven, Theorems 2.2 and 3.1. None of those results uses the wider region proved in this lesson.</p>
+<p>Put <span class="math" data-tex="$K=k(k+1)/2$">$K=k(k+1)/2$</span>. For real <span class="math" data-tex="$P\ge1$">$P\ge1$</span>, define
+<span class="math math-display" data-tex="$$
+J_{v,k}(P)=\#\left\{(\mathbf x,\mathbf y)\in
+\{1,\ldots,\lfloor P\rfloor\}^{2v}:
+\sum_{i=1}^v x_i^j=\sum_{i=1}^v y_i^j\quad(1\le j\le k)\right\}.
+\tag{8.1}
+$$">$$
+J_{v,k}(P)=\#\left\{(\mathbf x,\mathbf y)\in
+\{1,\ldots,\lfloor P\rfloor\}^{2v}:
+\sum_{i=1}^v x_i^j=\sum_{i=1}^v y_i^j\quad(1\le j\le k)\right\}.
+\tag{8.1}
+$$</span>
+Equivalently, writing <span class="math" data-tex="$F_P(\boldsymbol\alpha)= \sum_{x\le P}e(\sum_{j=1}^k\alpha_jx^j)$">$F_P(\boldsymbol\alpha)= \sum_{x\le P}e(\sum_{j=1}^k\alpha_jx^j)$</span>, this is
+<span class="math" data-tex="$\int_{[0,1]^k}|F_P|^{2v}$">$\int_{[0,1]^k}|F_P|^{2v}$</span>: expand the finite product and use
+<span class="math" data-tex="$\int_0^1e(m\alpha)\,d\alpha=0$">$\int_0^1e(m\alpha)\,d\alpha=0$</span> for a nonzero integer <span class="math" data-tex="$m$">$m$</span>.
+All moment integrals below are of continuous finite sums. Hölder's inequality in these integrals follows from
+<span class="math" data-tex="$ab\le a^p/p+b^{p/(p-1)}/(p/(p-1))$">$ab\le a^p/p+b^{p/(p-1)}/(p/(p-1))$</span>, for <span class="math" data-tex="$p&gt;1$">$p&gt;1$</span>, after normalization; the scalar inequality follows by minimizing the difference as a function of <span class="math" data-tex="$a$">$a$</span>. Thus no measure-theoretic mean-value theorem is an input.</p>
+<h3 id="8-1-polynomial-congruences-and-differencing">8.1. Polynomial congruences and differencing</h3>
+<p>A polynomial system <span class="math" data-tex="$\Psi=(\Psi_1,\ldots,\Psi_k)$">$\Psi=(\Psi_1,\ldots,\Psi_k)$</span> has type <span class="math" data-tex="$(d,T)$">$(d,T)$</span> if <span class="math" data-tex="$\Psi_j=0$">$\Psi_j=0$</span> for <span class="math" data-tex="$j\le d$">$j\le d$</span> and, for <span class="math" data-tex="$j&gt;d$">$j&gt;d$</span>, it is an integer polynomial of degree <span class="math" data-tex="$j-d$">$j-d$</span> with leading coefficient
+<span class="math" data-tex="$2^mTj!/(j-d)!$">$2^mTj!/(j-d)!$</span>, where one integer <span class="math" data-tex="$m\ge0$">$m\ge0$</span> is common to the system and <span class="math" data-tex="$T$">$T$</span> is a positive integer. Lower coefficients are unrestricted. With <span class="math" data-tex="$D=k-d$">$D=k-d$</span>, triangular changes of polynomial basis give
+<span class="math math-display" data-tex="$$
+\det\bigl(\Psi&#x27;_{d+j}(z_i)\bigr)_{1\le i,j\le D}
+=(2^mT)^D\prod_{j=d+1}^k\frac{j!}{(j-d-1)!}
+\prod_{i&lt;i&#x27;}(z_{i&#x27;}-z_i).
+\tag{8.2}
+$$">$$
+\det\bigl(\Psi&#x27;_{d+j}(z_i)\bigr)_{1\le i,j\le D}
+=(2^mT)^D\prod_{j=d+1}^k\frac{j!}{(j-d-1)!}
+\prod_{i&lt;i&#x27;}(z_{i&#x27;}-z_i).
+\tag{8.2}
+$$</span>
+Indeed, the derivative degrees are <span class="math" data-tex="$0,\ldots,D-1$">$0,\ldots,D-1$</span>; subtract their lower-degree components successively and use the Vandermonde determinant.</p>
+<p>We need the following special congruence fact, whose proof avoids an imported algebraic-geometric bound. Let <span class="math" data-tex="$p&gt;k$">$p&gt;k$</span> be prime with <span class="math" data-tex="$p\nmid T$">$p\nmid T$</span>. Prescribe
+<span class="math" data-tex="$\sum_{i=1}^D\Psi_{d+j}(z_i)\pmod{p^a}$">$\sum_{i=1}^D\Psi_{d+j}(z_i)\pmod{p^a}$</span> for <span class="math" data-tex="$1\le j\le D$">$1\le j\le D$</span>, and require the determinant (8.2) to be a unit modulo <span class="math" data-tex="$p$">$p$</span>. There are at most <span class="math" data-tex="$D!$">$D!$</span> ordered solutions modulo <span class="math" data-tex="$p^a$">$p^a$</span>.
+To prove this, successively invert the triangular polynomial coefficients, which are units modulo <span class="math" data-tex="$p^a$">$p^a$</span>, to recover all power sums <span class="math" data-tex="$\sum z_i^j$">$\sum z_i^j$</span>, <span class="math" data-tex="$1\le j\le D$">$1\le j\le D$</span>. Newton's identities
+<span class="math math-display" data-tex="$$
+j e_j=\sum_{\ell=1}^j(-1)^{\ell-1}e_{j-\ell}\sum_i z_i^\ell,\qquad e_0=1,
+$$">$$
+j e_j=\sum_{\ell=1}^j(-1)^{\ell-1}e_{j-\ell}\sum_i z_i^\ell,\qquad e_0=1,
+$$</span>
+follow by multiplying out <span class="math" data-tex="$\prod_i(1+z_iw)$">$\prod_i(1+z_iw)$</span> and comparing its logarithmic derivative; division by <span class="math" data-tex="$j$">$j$</span> is allowed since <span class="math" data-tex="$p&gt;D$">$p&gt;D$</span>. They fix the monic polynomial <span class="math" data-tex="$\prod_i(X-z_i)$">$\prod_i(X-z_i)$</span>.
+One solution has pairwise distinct residues modulo <span class="math" data-tex="$p$">$p$</span>, by (8.2). Any other root of this polynomial is congruent to one of those roots modulo <span class="math" data-tex="$p$">$p$</span>. In
+<span class="math" data-tex="$\prod_i(w-z_i)=0\pmod{p^a}$">$\prod_i(w-z_i)=0\pmod{p^a}$</span>, all factors except that matching one are units, so <span class="math" data-tex="$w=z_i\pmod{p^a}$">$w=z_i\pmod{p^a}$</span>. Each ordered solution is therefore a permutation of the first. The same argument over the field modulo <span class="math" data-tex="$p$">$p$</span>, without the distinctness requirement, bounds by <span class="math" data-tex="$D!$">$D!$</span> the number of ordered roots of prescribed power sums.</p>
+<p>For an integer <span class="math" data-tex="$q\ge1$">$q\ge1$</span>, let <span class="math" data-tex="$K_v(P,Q;\Psi;q)$">$K_v(P,Q;\Psi;q)$</span> count
+<span class="math math-display" data-tex="$$
+\sum_{i=1}^k(\Psi_j(z_i)-\Psi_j(w_i))
++q^j\sum_{i=1}^v(x_i^j-y_i^j)=0\quad(1\le j\le k),
+\tag{8.3}
+$$">$$
+\sum_{i=1}^k(\Psi_j(z_i)-\Psi_j(w_i))
++q^j\sum_{i=1}^v(x_i^j-y_i^j)=0\quad(1\le j\le k),
+\tag{8.3}
+$$</span>
+where <span class="math" data-tex="$1\le z_i,w_i\le P$">$1\le z_i,w_i\le P$</span> and <span class="math" data-tex="$1\le x_i,y_i\le Q$">$1\le x_i,y_i\le Q$</span>.
+Let <span class="math" data-tex="$L_v(P,Q;\Psi;p,q,r)$">$L_v(P,Q;\Psi;p,q,r)$</span> count the same system with <span class="math" data-tex="$q$">$q$</span> replaced by <span class="math" data-tex="$pq$">$pq$</span> and the additional congruences <span class="math" data-tex="$z_i=w_i\pmod{p^r}$">$z_i=w_i\pmod{p^r}$</span>.
+The integral form of <span class="math" data-tex="$K_v$">$K_v$</span> is <span class="math" data-tex="$\int|F_\Psi|^{2k}|F_{Q,q}|^{2v}$">$\int|F_\Psi|^{2k}|F_{Q,q}|^{2v}$</span>, with the evident polynomial sums.</p>
+<p><strong>Lemma 8.1 (congruence step).</strong> Fix <span class="math" data-tex="$B&gt;0$">$B&gt;0$</span>. For sufficiently large <span class="math" data-tex="$k$">$k$</span>, suppose
+<span class="math" data-tex="$2\le r\le k$">$2\le r\le k$</span>, <span class="math" data-tex="$0\le d&lt;r$">$0\le d&lt;r$</span>, <span class="math" data-tex="$k\le v\le Bk^2$">$k\le v\le Bk^2$</span>, <span class="math" data-tex="$T\le P^d$">$T\le P^d$</span>,
+<span class="math math-display" data-tex="$$
+P^{1/(k+1)}\le M\le P^{1/r},\qquad
+32v^2M&lt;Q\le P.
+$$">$$
+P^{1/(k+1)}\le M\le P^{1/r},\qquad
+32v^2M&lt;Q\le P.
+$$</span>
+Suppose a set <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span> of <span class="math" data-tex="$k^3$">$k^3$</span> primes lies in <span class="math" data-tex="$(M,5M/4]$">$(M,5M/4]$</span>.
+For some <span class="math" data-tex="$p\in\mathcal P$">$p\in\mathcal P$</span> and some system <span class="math" data-tex="$\Phi$">$\Phi$</span> of the same type,
+<span class="math math-display" data-tex="$$
+K_v(P,Q;\Psi;q)
+\le4k^3k!\,p^{\,2v+(r^2-r+d^2-d)/2}
+L_v(P,Q/p;\Phi;p,q,r).
+\tag{8.4}
+$$">$$
+K_v(P,Q;\Psi;q)
+\le4k^3k!\,p^{\,2v+(r^2-r+d^2-d)/2}
+L_v(P,Q/p;\Phi;p,q,r).
+\tag{8.4}
+$$</span></p>
+<p><strong>Proof.</strong> For fixed parameters and fixed <span class="math" data-tex="$T$">$T$</span>, replace <span class="math" data-tex="$\Psi$">$\Psi$</span>, if necessary, by a system attaining the maximum possible count among systems of type <span class="math" data-tex="$(d,T)$">$(d,T)$</span>. A maximum exists: every count is an integer between zero and <span class="math" data-tex="$\lfloor P\rfloor^{2k}\lfloor Q\rfloor^{2v}$">$\lfloor P\rfloor^{2k}\lfloor Q\rfloor^{2v}$</span>. This replacement only enlarges the count. Doubling all polynomials remains in this family because it increments <span class="math" data-tex="$m$">$m$</span>.</p>
+<p>Split the solutions according to whether two <span class="math" data-tex="$z_i$">$z_i$</span>'s or two <span class="math" data-tex="$w_i$">$w_i$</span>'s coincide. If these repeated-coordinate solutions were at least half the total <span class="math" data-tex="$H$">$H$</span>, Hölder in the moment representation would give
+<span class="math math-display" data-tex="$$
+H\le2k^2 H^{\,1-1/(2k)}J_{v,k}(Q)^{1/(2k)},\qquad
+H\le(2k^2)^{2k}J_{v,k}(Q).
+$$">$$
+H\le2k^2 H^{\,1-1/(2k)}J_{v,k}(Q)^{1/(2k)},\qquad
+H\le(2k^2)^{2k}J_{v,k}(Q).
+$$</span>
+For completeness, a repeated pair replaces two factors <span class="math" data-tex="$F_\Psi$">$F_\Psi$</span> by <span class="math" data-tex="$F_{2\Psi}$">$F_{2\Psi}$</span>; apply Hölder with powers <span class="math" data-tex="$k/(k-1),2k,2k$">$k/(k-1),2k,2k$</span>, and bound the resulting moment for <span class="math" data-tex="$2\Psi$">$2\Psi$</span> by the chosen maximum <span class="math" data-tex="$H$">$H$</span>.
+But the diagonal <span class="math" data-tex="$z_i=w_i$">$z_i=w_i$</span> gives <span class="math" data-tex="$H\ge\lfloor P\rfloor^kJ_{v,k}(Q)$">$H\ge\lfloor P\rfloor^kJ_{v,k}(Q)$</span>, a contradiction. Indeed <span class="math" data-tex="$k^3$">$k^3$</span> distinct primes in <span class="math" data-tex="$(M,5M/4]$">$(M,5M/4]$</span> force <span class="math" data-tex="$M\ge4(k^3-1)$">$M\ge4(k^3-1)$</span>, while <span class="math" data-tex="$P\ge M^r\ge M^2$">$P\ge M^r\ge M^2$</span>, so <span class="math" data-tex="$\lfloor P\rfloor&gt;4k^4$">$\lfloor P\rfloor&gt;4k^4$</span> for large <span class="math" data-tex="$k$">$k$</span>.</p>
+<p>For each remaining solution, a prime in <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span> avoids both determinants (8.2). The nonzero integer
+<span class="math math-display" data-tex="$$
+T\prod_{i&lt;i&#x27;\le k-d}(z_{i&#x27;}-z_i)(w_{i&#x27;}-w_i)
+$$">$$
+T\prod_{i&lt;i&#x27;\le k-d}(z_{i&#x27;}-z_i)(w_{i&#x27;}-w_i)
+$$</span>
+has modulus less than <span class="math" data-tex="$P^{k^2-k}$">$P^{k^2-k}$</span>, whereas
+<span class="math" data-tex="$\prod_{p\in\mathcal P}p&gt;M^{k^3}\ge P^{k^3/(k+1)}&gt;P^{k^2-k}$">$\prod_{p\in\mathcal P}p&gt;M^{k^3}\ge P^{k^3/(k+1)}&gt;P^{k^2-k}$</span>.
+Primes in this set exceed <span class="math" data-tex="$k$">$k$</span>, so the factorials and the power of two in (8.2) cause no obstruction. If <span class="math" data-tex="$H_3(p)$">$H_3(p)$</span> counts the solutions for which both determinants are units, it follows that
+<span class="math" data-tex="$H\le2k^3\max_pH_3(p)$">$H\le2k^3\max_pH_3(p)$</span>.</p>
+<p>Fix this prime. Sort the inner variables <span class="math" data-tex="$x_i,y_i$">$x_i,y_i$</span> by their residues modulo <span class="math" data-tex="$p$">$p$</span>. Since <span class="math" data-tex="$\Psi_j=0$">$\Psi_j=0$</span> for <span class="math" data-tex="$j\le d$">$j\le d$</span>, their first <span class="math" data-tex="$d$">$d$</span> power sums agree.
+For each prescribed residue vector of those sums there are at most <span class="math" data-tex="$d!p^{v-d}$">$d!p^{v-d}$</span> possible ordered <span class="math" data-tex="$v$">$v$</span>-tuples: fix the last <span class="math" data-tex="$v-d$">$v-d$</span> residues and use Newton's identities on the first <span class="math" data-tex="$d$">$d$</span>.
+Cauchy followed by the inequality
+<span class="math" data-tex="$\prod_{i=1}^v a_i\le v^{-1}\sum_i a_i^v$">$\prod_{i=1}^v a_i\le v^{-1}\sum_i a_i^v$</span>, for nonnegative <span class="math" data-tex="$a_i$">$a_i$</span>, therefore gives
+<span class="math math-display" data-tex="$$
+H_3(p)\le d!p^{2v-d}\max_{0\le c&lt;p}H_4(c,p).
+\tag{8.5}
+$$">$$
+H_3(p)\le d!p^{2v-d}\max_{0\le c&lt;p}H_4(c,p).
+\tag{8.5}
+$$</span>
+Here <span class="math" data-tex="$H_4(c,p)$">$H_4(c,p)$</span> counts (8.3) with the inner variables written as <span class="math" data-tex="$pu_i-c,pv_i-c$">$pu_i-c,pv_i-c$</span>, and <span class="math" data-tex="$1\le u_i,v_i\le(Q+c)/p$">$1\le u_i,v_i\le(Q+c)/p$</span>; both outer determinants are still required to be units. This inequality can also be read directly in the moment integral: for each residue vector use Cauchy on its at most <span class="math" data-tex="$d!p^{v-d}$">$d!p^{v-d}$</span> terms, then the displayed arithmetic-geometric mean inequality makes all inner factors use one common residue <span class="math" data-tex="$c$">$c$</span>.</p>
+<p>At most one value above <span class="math" data-tex="$Q/p$">$Q/p$</span> is available to an inner variable. If solutions using such a value constituted half of <span class="math" data-tex="$H_4$">$H_4$</span>, Hölder after fixing that variable would imply
+<span class="math math-display" data-tex="$$
+H_4\le(4v)^{2v}\int|\widetilde F|^2,
+$$">$$
+H_4\le(4v)^{2v}\int|\widetilde F|^2,
+$$</span>
+where <span class="math" data-tex="$\widetilde F$">$\widetilde F$</span> is the outer <span class="math" data-tex="$k$">$k$</span>-tuple sum with unit determinant. Since the extra value is present in this case, the diagonal inner solutions instead give
+<span class="math" data-tex="$H_4&gt;(Q/p)^v\int|\widetilde F|^2$">$H_4&gt;(Q/p)^v\int|\widetilde F|^2$</span>.
+These inequalities contradict <span class="math" data-tex="$Q/p&gt;16v^2$">$Q/p&gt;16v^2$</span>, which follows from the assumed bound on <span class="math" data-tex="$Q$">$Q$</span>. Thus <span class="math" data-tex="$H_4$">$H_4$</span> is at most twice the count with all inner variables at most <span class="math" data-tex="$Q/p$">$Q/p$</span>.</p>
+<p>Translate the polynomial basis by
+<span class="math" data-tex="$\Phi_j(z)=\sum_{\ell=0}^j\binom j\ell\Psi_\ell(z)(qc)^{j-\ell}$">$\Phi_j(z)=\sum_{\ell=0}^j\binom j\ell\Psi_\ell(z)(qc)^{j-\ell}$</span>.
+The binomial theorem changes the inner terms to <span class="math" data-tex="$(pq)^j(u_i^j-v_i^j)$">$(pq)^j(u_i^j-v_i^j)$</span>, preserves the type and the determinant, and makes the outer power sums agree modulo <span class="math" data-tex="$p^{\min(j,r)}$">$p^{\min(j,r)}$</span>.
+Fix the last <span class="math" data-tex="$d$">$d$</span> outer residues modulo <span class="math" data-tex="$p^r$">$p^r$</span>. Lifting the target congruences for <span class="math" data-tex="$d+1\le j&lt;r$">$d+1\le j&lt;r$</span> to modulus <span class="math" data-tex="$p^r$">$p^r$</span> costs
+<span class="math" data-tex="$p^{(r-d-1)(r-d)/2}$">$p^{(r-d-1)(r-d)/2}$</span>. The congruence fact proved above then gives at most <span class="math" data-tex="$(k-d)!$">$(k-d)!$</span> possibilities for the first <span class="math" data-tex="$k-d$">$k-d$</span> residues. Consequently each outer residue-sum class has at most
+<span class="math math-display" data-tex="$$
+(k-d)!\,p^{rd+(r-d-1)(r-d)/2}
+$$">$$
+(k-d)!\,p^{rd+(r-d-1)(r-d)/2}
+$$</span>
+members. Cauchy on these classes replaces equality of their residue sums by coordinatewise congruence <span class="math" data-tex="$z_i=w_i\pmod{p^r}$">$z_i=w_i\pmod{p^r}$</span>.
+Combine this with (8.5), the factor two for the discarded endpoint case, and <span class="math" data-tex="$H\le2k^3\max H_3(p)$">$H\le2k^3\max H_3(p)$</span>. Since <span class="math" data-tex="$d!(k-d)!\le k!$">$d!(k-d)!\le k!$</span> and
+<span class="math" data-tex="$-d+rd+(r-d-1)(r-d)/2=(r^2-r+d^2-d)/2$">$-d+rd+(r-d-1)(r-d)/2=(r^2-r+d^2-d)/2$</span>, this is (8.4). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 8.2 (difference step).</strong> Suppose <span class="math" data-tex="$k\ge2$">$k\ge2$</span>, <span class="math" data-tex="$v\ge1$">$v\ge1$</span>, <span class="math" data-tex="$P,Q\ge1$">$P,Q\ge1$</span>, <span class="math" data-tex="$q\ge1$">$q\ge1$</span>, <span class="math" data-tex="$p$">$p$</span> is prime, <span class="math" data-tex="$2\le r\le k$">$2\le r\le k$</span>, and <span class="math" data-tex="$\Phi$">$\Phi$</span> has type <span class="math" data-tex="$(d,T)$">$(d,T)$</span>, with <span class="math" data-tex="$d\le k-2$">$d\le k-2$</span>. There is a system <span class="math" data-tex="$\Upsilon$">$\Upsilon$</span> of type <span class="math" data-tex="$(d+1,T&#x27;)$">$(d+1,T&#x27;)$</span>, where <span class="math" data-tex="$T\le T&#x27;\le PT$">$T\le T&#x27;\le PT$</span>, such that
+<span class="math math-display" data-tex="$$
+L_v(P,Q;\Phi;p,q,r)
+\le(2P)^k\max\left\{
+k^kJ_{v,k}(Q),\
+2p^{-rk}\bigl[J_{v,k}(Q)K_v(P,Q;\Upsilon;pq)\bigr]^{1/2}
+\right\}.
+\tag{8.6}
+$$">$$
+L_v(P,Q;\Phi;p,q,r)
+\le(2P)^k\max\left\{
+k^kJ_{v,k}(Q),\
+2p^{-rk}\bigl[J_{v,k}(Q)K_v(P,Q;\Upsilon;pq)\bigr]^{1/2}
+\right\}.
+\tag{8.6}
+$$</span></p>
+<p><strong>Proof.</strong> If solutions with <span class="math" data-tex="$w_i=z_i$">$w_i=z_i$</span> for at least one <span class="math" data-tex="$i$">$i$</span> are half the total <span class="math" data-tex="$L$">$L$</span>, fixing that pair and applying Hölder gives
+<span class="math" data-tex="$L\le2kP L^{1-1/k}J_{v,k}(Q)^{1/k}$">$L\le2kP L^{1-1/k}J_{v,k}(Q)^{1/k}$</span>, proving the first alternative.
+Otherwise write <span class="math" data-tex="$w_i-z_i=\pm h_ip^r$">$w_i-z_i=\pm h_ip^r$</span>, with <span class="math" data-tex="$1\le h_i\le P/p^r$">$1\le h_i\le P/p^r$</span>.
+There are <span class="math" data-tex="$2^k$">$2^k$</span> sign choices. In the integral representation apply the arithmetic-geometric mean inequality to the <span class="math" data-tex="$k$">$k$</span> resulting difference sums; after summing the <span class="math" data-tex="$h_i$">$h_i$</span>'s this gives at most
+<span class="math math-display" data-tex="$$
+2^{k+1}(P/p^r)^k
+\max_h\int |G_h|^k|F_{Q,pq}|^{2v}.
+$$">$$
+2^{k+1}(P/p^r)^k
+\max_h\int |G_h|^k|F_{Q,pq}|^{2v}.
+$$</span>
+Cauchy bounds the integral by
+<span class="math" data-tex="$[K_v(P,Q;\Upsilon;pq)J_{v,k}(Q)]^{1/2}$">$[K_v(P,Q;\Upsilon;pq)J_{v,k}(Q)]^{1/2}$</span>.
+Here <span class="math" data-tex="$\Upsilon_j(z)=\Phi_j(z+hp^r)-\Phi_j(z)$">$\Upsilon_j(z)=\Phi_j(z+hp^r)-\Phi_j(z)$</span>; its constant components for <span class="math" data-tex="$j\le d+1$">$j\le d+1$</span> are removed, since they cancel in the equations and change a sum only by a unit phase. Its leading coefficient gives type <span class="math" data-tex="$(d+1,hp^rT)$">$(d+1,hp^rT)$</span>, with <span class="math" data-tex="$hp^r\le P$">$hp^r\le P$</span>. This proves the second alternative. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h3 id="8-2-a-mean-value-with-a-fixed-small-deficit">8.2. A mean value with a fixed small deficit</h3>
+<p><strong>Lemma 8.3.</strong> There are absolute <span class="math" data-tex="$A,k_0&gt;0$">$A,k_0&gt;0$</span> such that, for every integer <span class="math" data-tex="$k\ge k_0$">$k\ge k_0$</span>, some integer <span class="math" data-tex="$q$">$q$</span> with
+<span class="math math-display" data-tex="$$
+k^2/3\le q\le11k^2
+$$">$$
+k^2/3\le q\le11k^2
+$$</span>
+satisfies, for every real <span class="math" data-tex="$P\ge1$">$P\ge1$</span>,
+<span class="math math-display" data-tex="$$
+J_{q,k}(P)\le
+\exp(Ak^3\log k)\,P^{\,2q-K+k^2/100}.
+\tag{8.7}
+$$">$$
+J_{q,k}(P)\le
+\exp(Ak^3\log k)\,P^{\,2q-K+k^2/100}.
+\tag{8.7}
+$$</span></p>
+<p><strong>Proof.</strong> The classical PNT of lesson twelve gives, for all sufficiently large <span class="math" data-tex="$x$">$x$</span>,
+<span class="math" data-tex="$\pi(5x/4)-\pi(x)\ge c x/\log x$">$\pi(5x/4)-\pi(x)\ge c x/\log x$</span>.
+This follows also by integrating <span class="math" data-tex="$1/\log u$">$1/\log u$</span> over <span class="math" data-tex="$[x,5x/4]$">$[x,5x/4]$</span> in its proved formula for <span class="math" data-tex="$\pi$">$\pi$</span>. Hence there are <span class="math" data-tex="$k^3$">$k^3$</span> primes in <span class="math" data-tex="$(M,5M/4]$">$(M,5M/4]$</span> whenever
+<span class="math" data-tex="$M\ge V=C_Bk^3\log k$">$M\ge V=C_Bk^3\log k$</span>, after increasing <span class="math" data-tex="$C_B$">$C_B$</span>; the finitely many initial heights are absorbed by choosing <span class="math" data-tex="$k_0$">$k_0$</span> larger.</p>
+<p>Suppose an available bound, for every real <span class="math" data-tex="$Q\ge1$">$Q\ge1$</span>, is
+<span class="math" data-tex="$J_{v,k}(Q)\le C Q^{2v-K+\Delta}$">$J_{v,k}(Q)\le C Q^{2v-K+\Delta}$</span>, with <span class="math" data-tex="$k\le v\le Bk^2$">$k\le v\le Bk^2$</span> and
+<span class="math" data-tex="$\delta=\Delta/k^2\in[1/100,1/2]$">$\delta=\Delta/k^2\in[1/100,1/2]$</span>. Set
+<span class="math math-display" data-tex="$$
+r=\lfloor(1-\delta)k\rfloor,\qquad
+j=\lfloor\delta k/4\rfloor,
+$$">$$
+r=\lfloor(1-\delta)k\rfloor,\qquad
+j=\lfloor\delta k/4\rfloor,
+$$</span>
+and define, backwards,
+<span class="math math-display" data-tex="$$
+\varphi_j=1/r,\qquad
+\varphi_i=\frac1{2r}
++\frac{k^2+k+r^2-r+i^2-i-2\Delta}{4kr}\varphi_{i+1}
+\quad(1\le i&lt;j).
+\tag{8.8}
+$$">$$
+\varphi_j=1/r,\qquad
+\varphi_i=\frac1{2r}
++\frac{k^2+k+r^2-r+i^2-i-2\Delta}{4kr}\varphi_{i+1}
+\quad(1\le i&lt;j).
+\tag{8.8}
+$$</span>
+For sufficiently large <span class="math" data-tex="$k$">$k$</span>, <span class="math" data-tex="$2\le j\le r/2$">$2\le j\le r/2$</span> and
+<span class="math" data-tex="$(j-1)(j-2)\le2\Delta-(k-r)(k-r+1)$">$(j-1)(j-2)\le2\Delta-(k-r)(k-r+1)$</span>.
+The latter follows from <span class="math" data-tex="$k-r\le\delta k+1$">$k-r\le\delta k+1$</span> and
+<span class="math" data-tex="$j^2\le\delta^2k^2/16$">$j^2\le\delta^2k^2/16$</span>: the difference is at least
+<span class="math" data-tex="$(2\delta-17\delta^2/16)k^2-3\delta k-2&gt;0$">$(2\delta-17\delta^2/16)k^2-3\delta k-2&gt;0$</span>.
+Thus the multiplier of <span class="math" data-tex="$\varphi_{i+1}$">$\varphi_{i+1}$</span> in (8.8) lies between zero and <span class="math" data-tex="$1/2$">$1/2$</span>, so <span class="math" data-tex="$\varphi_i\le1/r$">$\varphi_i\le1/r$</span>.
+Also <span class="math" data-tex="$\varphi_i\ge1/k$">$\varphi_i\ge1/k$</span>, by backwards induction. Substituting <span class="math" data-tex="$\varphi_{i+1}\ge1/k$">$\varphi_{i+1}\ge1/k$</span>, the required numerator inequality is
+<span class="math math-display" data-tex="$$
+3k^2-4kr+r^2-2\Delta+(k-r)+i^2-i\ge0;
+$$">$$
+3k^2-4kr+r^2-2\Delta+(k-r)+i^2-i\ge0;
+$$</span>
+at <span class="math" data-tex="$r=(1-\delta)k$">$r=(1-\delta)k$</span> its quadratic part is <span class="math" data-tex="$\delta^2k^2$">$\delta^2k^2$</span>, and decreasing <span class="math" data-tex="$r$">$r$</span> increases it.</p>
+<p>We spell out the resulting iteration, rather than citing a mean-value theorem. Write
+<span class="math" data-tex="$\ell=2v-K+\Delta$">$\ell=2v-K+\Delta$</span>; an available bound for all <span class="math" data-tex="$Q$">$Q$</span> forces <span class="math" data-tex="$\ell\ge v&gt;0$">$\ell\ge v&gt;0$</span>, since the diagonal solutions give <span class="math" data-tex="$J_{v,k}(Q)\ge\lfloor Q\rfloor^v$">$J_{v,k}(Q)\ge\lfloor Q\rfloor^v$</span>. Put
+<span class="math" data-tex="$M_i=P^{\varphi_i}$">$M_i=P^{\varphi_i}$</span> and <span class="math" data-tex="$Q_i=P^{1-\sum_{a\le i}\varphi_a}$">$Q_i=P^{1-\sum_{a\le i}\varphi_a}$</span>, with <span class="math" data-tex="$Q_0=P$">$Q_0=P$</span>.
+If <span class="math" data-tex="$P\ge V^{k+1}$">$P\ge V^{k+1}$</span>, each <span class="math" data-tex="$M_i\ge V$">$M_i\ge V$</span> has the required prime set.
+Moreover <span class="math" data-tex="$Q_{j-1}\ge P^{1-j/r}\ge P^{1/2}$">$Q_{j-1}\ge P^{1-j/r}\ge P^{1/2}$</span>, whereas <span class="math" data-tex="$M_i\le P^{2/k+O(k^{-2})}$">$M_i\le P^{2/k+O(k^{-2})}$</span>. These inequalities, and <span class="math" data-tex="$v\le Bk^2$">$v\le Bk^2$</span>, ensure <span class="math" data-tex="$Q_i&gt;32v^2M_{i+1}$">$Q_i&gt;32v^2M_{i+1}$</span>, after increasing <span class="math" data-tex="$k_0$">$k_0$</span>.
+Induct backwards on <span class="math" data-tex="$i$">$i$</span>, uniformly over every system of type <span class="math" data-tex="$(i,T)$">$(i,T)$</span> with <span class="math" data-tex="$T\le P^i$">$T\le P^i$</span>, every integer <span class="math" data-tex="$q&#x27;\ge1$">$q&#x27;\ge1$</span>, and every prime <span class="math" data-tex="$p$">$p$</span> in the set selected at <span class="math" data-tex="$M_{i+1}$">$M_{i+1}$</span>, to prove
+<span class="math math-display" data-tex="$$
+L_v(P,Q_{i+1};\Phi;p,q&#x27;,r)\le CE_iP^kQ_{i+1}^{\ell}.
+$$">$$
+L_v(P,Q_{i+1};\Phi;p,q&#x27;,r)\le CE_iP^kQ_{i+1}^{\ell}.
+$$</span>
+At <span class="math" data-tex="$i=j-1$">$i=j-1$</span>, <span class="math" data-tex="$\varphi_j=1/r$">$\varphi_j=1/r$</span> makes <span class="math" data-tex="$p^r&gt;P$">$p^r&gt;P$</span>, so every outer pair is diagonal and we can take <span class="math" data-tex="$E_{j-1}=1$">$E_{j-1}=1$</span>.
+Given this bound at <span class="math" data-tex="$i$">$i$</span>, Lemma 8.1 and monotonicity of solution counts in <span class="math" data-tex="$Q$">$Q$</span>, since <span class="math" data-tex="$p&gt;M_{i+1}$">$p&gt;M_{i+1}$</span>, give
+<span class="math math-display" data-tex="$$
+K_v(P,Q_i;\Psi;q&#x27;)\le
+4k^3k!(5M_{i+1}/4)^{2v+(r^2-r+i^2-i)/2}
+CE_iP^kQ_{i+1}^{\ell}.
+$$">$$
+K_v(P,Q_i;\Psi;q&#x27;)\le
+4k^3k!(5M_{i+1}/4)^{2v+(r^2-r+i^2-i)/2}
+CE_iP^kQ_{i+1}^{\ell}.
+$$</span>
+Use this in Lemma 8.2 for a system of type <span class="math" data-tex="$(i-1,T)$">$(i-1,T)$</span>, at <span class="math" data-tex="$Q_i$">$Q_i$</span> and a prime exceeding <span class="math" data-tex="$M_i$">$M_i$</span>. Its second alternative has, besides <span class="math" data-tex="$P^kQ_i^\ell$">$P^kQ_i^\ell$</span>, the power of <span class="math" data-tex="$P$">$P$</span> with exponent
+<span class="math math-display" data-tex="$$
+\frac k2-kr\varphi_i+
+\frac{K-\Delta+(r^2-r+i^2-i)/2}{2}\varphi_{i+1}=0.
+$$">$$
+\frac k2-kr\varphi_i+
+\frac{K-\Delta+(r^2-r+i^2-i)/2}{2}\varphi_{i+1}=0.
+$$</span>
+The equality is exactly (8.8). The first alternative of Lemma 8.2 already has the required form.
+The constants at a backwards step have logarithm at most
+<span class="math" data-tex="$C_B(k\log k+v+k^2)+\tfrac12\log E$">$C_B(k\log k+v+k^2)+\tfrac12\log E$</span>, where <span class="math" data-tex="$E$">$E$</span> is the next-step constant. The factorial, the factor <span class="math" data-tex="$2^k$">$2^k$</span>, and the upper prime bound <span class="math" data-tex="$p\le5M/4$">$p\le5M/4$</span> account for those terms. Summing the geometric weights <span class="math" data-tex="$1,1/2,1/4,\ldots$">$1,1/2,1/4,\ldots$</span> bounds the final constant by <span class="math" data-tex="$\exp(C_B(k\log k+v+k^2))$">$\exp(C_B(k\log k+v+k^2))$</span>.
+Finally apply Lemma 8.1 to <span class="math" data-tex="$\Psi_i(z)=z^i$">$\Psi_i(z)=z^i$</span>, <span class="math" data-tex="$Q=P$">$Q=P$</span>, <span class="math" data-tex="$q=1$">$q=1$</span>. Its count is exactly <span class="math" data-tex="$J_{v+k,k}(P)$">$J_{v+k,k}(P)$</span>, and the resulting exponent is
+<span class="math math-display" data-tex="$$
+J_{v+k,k}(P)\le
+C\exp(C_B(k\log k+v+k^2))
+P^{2(v+k)-K+\Delta&#x27;},\qquad
+\Delta&#x27;=\Delta-k+\bigl[K-\Delta+(r^2-r)/2\bigr]\varphi_1.
+\tag{8.9}
+$$">$$
+J_{v+k,k}(P)\le
+C\exp(C_B(k\log k+v+k^2))
+P^{2(v+k)-K+\Delta&#x27;},\qquad
+\Delta&#x27;=\Delta-k+\bigl[K-\Delta+(r^2-r)/2\bigr]\varphi_1.
+\tag{8.9}
+$$</span>
+For <span class="math" data-tex="$P&lt;V^{k+1}$">$P&lt;V^{k+1}$</span>, the trivial bound <span class="math" data-tex="$J_{v+k,k}(P)\le P^{2(v+k)}$">$J_{v+k,k}(P)\le P^{2(v+k)}$</span> proves the same assertion after enlarging the constant by at most
+<span class="math" data-tex="$V^{(k+1)K}$">$V^{(k+1)K}$</span>. Its logarithm is <span class="math" data-tex="$O_B(k^3\log k)$">$O_B(k^3\log k)$</span>. Thus the iteration is valid for every <span class="math" data-tex="$P\ge1$">$P\ge1$</span>.</p>
+<p>Here is an analytic bound for its progress; no numerical iteration is being assumed. Uniformly for <span class="math" data-tex="$1/100\le\delta\le1/2$">$1/100\le\delta\le1/2$</span>, the multipliers in (8.8) are at most
+<span class="math math-display" data-tex="$$
+a(\delta)+O(1/k),\qquad
+a(\delta)=\frac{2-4\delta+17\delta^2/16}{4(1-\delta)}\le\frac12.
+$$">$$
+a(\delta)+O(1/k),\qquad
+a(\delta)=\frac{2-4\delta+17\delta^2/16}{4(1-\delta)}\le\frac12.
+$$</span>
+The finite geometric sum therefore gives
+<span class="math math-display" data-tex="$$
+k\varphi_1\le
+\frac1{1-17\delta^2/32}+O(1/k)+O(2^{-\delta k/4})
+\le1+\delta^2
+\tag{8.10}
+$$">$$
+k\varphi_1\le
+\frac1{1-17\delta^2/32}+O(1/k)+O(2^{-\delta k/4})
+\le1+\delta^2
+\tag{8.10}
+$$</span>
+for large <span class="math" data-tex="$k$">$k$</span>. The last inequality is uniform: the excess over 1 divided by <span class="math" data-tex="$\delta^2$">$\delta^2$</span> is
+<span class="math" data-tex="$17/(32-17\delta^2)\le68/111&lt;7/10$">$17/(32-17\delta^2)\le68/111&lt;7/10$</span>, leaving a fixed positive margin below <span class="math" data-tex="$1+\delta^2$">$1+\delta^2$</span>.
+Substitution in (8.9), using <span class="math" data-tex="$r=(1-\delta)k+O(1)$">$r=(1-\delta)k+O(1)$</span>, gives
+<span class="math math-display" data-tex="$$
+\Delta&#x27;\le\Delta-
+\bigl(2\delta-\tfrac32\delta^2+2\delta^3-\tfrac12\delta^4\bigr)k+O(1)
+\le(1-1/(2k))\Delta.
+\tag{8.11}
+$$">$$
+\Delta&#x27;\le\Delta-
+\bigl(2\delta-\tfrac32\delta^2+2\delta^3-\tfrac12\delta^4\bigr)k+O(1)
+\le(1-1/(2k))\Delta.
+\tag{8.11}
+$$</span>
+Indeed the parenthesized expression is at least <span class="math" data-tex="$\delta$">$\delta$</span> for <span class="math" data-tex="$0\le\delta\le1/2$">$0\le\delta\le1/2$</span>.
+Also <span class="math" data-tex="$\Delta&#x27;\ge\Delta-k$">$\Delta&#x27;\ge\Delta-k$</span>, since <span class="math" data-tex="$\varphi_1\ge0$">$\varphi_1\ge0$</span>.</p>
+<p>Initially Newton's identities show <span class="math" data-tex="$J_{k,k}(P)\le k!P^k$">$J_{k,k}(P)\le k!P^k$</span>: two <span class="math" data-tex="$k$">$k$</span>-tuples with the same first <span class="math" data-tex="$k$">$k$</span> power sums are permutations. Thus start with <span class="math" data-tex="$v=k$">$v=k$</span> and
+<span class="math" data-tex="$\Delta=K-k$">$\Delta=K-k$</span>.
+Repeat (8.9) until <span class="math" data-tex="$\Delta\le k^2/100$">$\Delta\le k^2/100$</span>. By (8.11), at most
+<span class="math" data-tex="$2k\log50+O(1)$">$2k\log50+O(1)$</span> steps are needed; by <span class="math" data-tex="$\Delta&#x27;\ge\Delta-k$">$\Delta&#x27;\ge\Delta-k$</span>, at least <span class="math" data-tex="$k/3$">$k/3$</span> steps are needed for large <span class="math" data-tex="$k$">$k$</span>. Consequently the final moment <span class="math" data-tex="$q$">$q$</span> lies between <span class="math" data-tex="$k^2/3$">$k^2/3$</span> and <span class="math" data-tex="$11k^2$">$11k^2$</span>. We may fix <span class="math" data-tex="$B=12$">$B=12$</span> throughout.
+Over <span class="math" data-tex="$O(k)$">$O(k)$</span> steps the large-<span class="math" data-tex="$P$">$P$</span> constant factors have total logarithm <span class="math" data-tex="$O(k^3)$">$O(k^3)$</span>. The small-<span class="math" data-tex="$P$">$P$</span> enlargement is a maximum with <span class="math" data-tex="$\exp(O(k^3\log k))$">$\exp(O(k^3\log k))$</span>, not a product of that enlargement at every step: at each stage take the larger of the continued bound and the one trivial bound below <span class="math" data-tex="$V^{k+1}$">$V^{k+1}$</span>. Thus the final constant is <span class="math" data-tex="$\exp(O(k^3\log k))$">$\exp(O(k^3\log k))$</span>, proving (8.7). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h3 id="8-3-bilinear-averaging-with-the-complete-system">8.3. Bilinear averaging with the complete system</h3>
+<p><strong>Lemma 8.4.</strong> With <span class="math" data-tex="$q,k$">$q,k$</span> as in Lemma 8.3, <span class="math" data-tex="$N\ge2$">$N\ge2$</span>, <span class="math" data-tex="$t=N^\lambda$">$t=N^\lambda$</span>, <span class="math" data-tex="$M=\lfloor N^{1/4}\rfloor$">$M=\lfloor N^{1/4}\rfloor$</span>, and <span class="math" data-tex="$k\ge2\lambda$">$k\ge2\lambda$</span>, every partial shifted sum in the definition of <span class="math" data-tex="$S$">$S$</span> is bounded by
+<span class="math math-display" data-tex="$$
+1+2M^2+\frac{tM^{2k+2}}{(k+1)N^k}
++N\left\{
+\exp(2Ak^3\log k)(Cq)^k
+M^{-K+2k^2/100}\prod_{j=1}^k W_j
+\right\}^{1/(2q^2)},
+\tag{8.12}
+$$">$$
+1+2M^2+\frac{tM^{2k+2}}{(k+1)N^k}
++N\left\{
+\exp(2Ak^3\log k)(Cq)^k
+M^{-K+2k^2/100}\prod_{j=1}^k W_j
+\right\}^{1/(2q^2)},
+\tag{8.12}
+$$</span>
+where <span class="math" data-tex="$C$">$C$</span> is absolute and, for some <span class="math" data-tex="$N\le z\le3N$">$N\le z\le3N$</span>,
+<span class="math math-display" data-tex="$$
+\gamma_j=\frac{(-1)^jt}{2\pi jz^j},\qquad
+W_j=\min\left(qM^j,\ qM^j|\gamma_j|+1+(qM^j|\gamma_j|)^{-1}\right).
+$$">$$
+\gamma_j=\frac{(-1)^jt}{2\pi jz^j},\qquad
+W_j=\min\left(qM^j,\ qM^j|\gamma_j|+1+(qM^j|\gamma_j|)^{-1}\right).
+$$</span></p>
+<p><strong>Proof.</strong> Temporarily omit the term <span class="math" data-tex="$n=N$">$n=N$</span>, which costs at most one. Average the sum over translations <span class="math" data-tex="$n\mapsto n+ab$">$n\mapsto n+ab$</span>, <span class="math" data-tex="$1\le a,b\le M$">$1\le a,b\le M$</span>. Replacing the translated interval by the original interval costs at most <span class="math" data-tex="$2M^2$">$2M^2$</span>. Factor <span class="math" data-tex="$(n+u)^{-it}$">$(n+u)^{-it}$</span> out of each inner average and take the largest remaining average, at <span class="math" data-tex="$z=n+u\in[N,3N]$">$z=n+u\in[N,3N]$</span>.
+Since <span class="math" data-tex="$ab/z\le1$">$ab/z\le1$</span>, the Taylor remainder
+<span class="math math-display" data-tex="$$
+\left|\log(1+x)-\sum_{j=1}^k(-1)^{j-1}x^j/j\right|
+\le x^{k+1}/(k+1)
+$$">$$
+\left|\log(1+x)-\sum_{j=1}^k(-1)^{j-1}x^j/j\right|
+\le x^{k+1}/(k+1)
+$$</span>
+follows by integrating the geometric-series remainder for <span class="math" data-tex="$1/(1+x)$">$1/(1+x)$</span>.
+Also <span class="math" data-tex="$|e^{iy}-e^{iy&#x27;}|\le|y-y&#x27;|$">$|e^{iy}-e^{iy&#x27;}|\le|y-y&#x27;|$</span>, by integrating its derivative.
+We obtain the first three terms of (8.12), plus <span class="math" data-tex="$N|U|/M^2$">$N|U|/M^2$</span>, where
+<span class="math" data-tex="$U=\sum_{a,b\le M}e(\sum_j\gamma_j a^jb^j)$">$U=\sum_{a,b\le M}e(\sum_j\gamma_j a^jb^j)$</span>.</p>
+<p>Let <span class="math" data-tex="$R(\mathbf c)$">$R(\mathbf c)$</span> count the ordered <span class="math" data-tex="$q$">$q$</span>-tuples of <span class="math" data-tex="$a$">$a$</span>'s with power-sum vector <span class="math" data-tex="$\mathbf c$">$\mathbf c$</span>. Then
+<span class="math" data-tex="$\sum R=M^q$">$\sum R=M^q$</span> and <span class="math" data-tex="$\sum R^2=J_{q,k}(M)$">$\sum R^2=J_{q,k}(M)$</span>.
+Hölder first in <span class="math" data-tex="$b$">$b$</span>, and then with weights <span class="math" data-tex="$R$">$R$</span>, gives
+<span class="math math-display" data-tex="$$
+|U|^{2q^2}\le
+M^{4q^2-4q}J_{q,k}(M)
+\sum_{|c_j|\le qM^j}
+\left|\sum_{b\le M}\epsilon_b e\left(\sum_j\gamma_jc_jb^j\right)\right|^{2q},
+\tag{8.13}
+$$">$$
+|U|^{2q^2}\le
+M^{4q^2-4q}J_{q,k}(M)
+\sum_{|c_j|\le qM^j}
+\left|\sum_{b\le M}\epsilon_b e\left(\sum_j\gamma_jc_jb^j\right)\right|^{2q},
+\tag{8.13}
+$$</span>
+where <span class="math" data-tex="$|\epsilon_b|=1$">$|\epsilon_b|=1$</span>.
+For the weighted step, use
+<span class="math" data-tex="$|\sum R V|^{2q}\le(\sum R)^{2q-2}(\sum R^2)\sum|V|^{2q}$">$|\sum R V|^{2q}\le(\sum R)^{2q-2}(\sum R^2)\sum|V|^{2q}$</span>;
+its three Hölder exponents have reciprocals <span class="math" data-tex="$1-1/q,1/(2q),1/(2q)$">$1-1/q,1/(2q),1/(2q)$</span>.</p>
+<p>Write <span class="math" data-tex="$A_j=qM^j$">$A_j=qM^j$</span>. Majorize the last box sum by inserting weights
+<span class="math" data-tex="$\prod_j\exp(1-c_j^2/A_j^2)$">$\prod_j\exp(1-c_j^2/A_j^2)$</span> and summing all integer <span class="math" data-tex="$c_j$">$c_j$</span>'s.
+The proved Gaussian transform and Poisson summation give
+<span class="math math-display" data-tex="$$
+\sum_{c\in\mathbb Z}e^{1-c^2/A^2}e(\xi c)
+=e\sqrt\pi A\sum_{m\in\mathbb Z}e^{-\pi^2A^2(\xi-m)^2}.
+$$">$$
+\sum_{c\in\mathbb Z}e^{1-c^2/A^2}e(\xi c)
+=e\sqrt\pi A\sum_{m\in\mathbb Z}e^{-\pi^2A^2(\xi-m)^2}.
+$$</span>
+After expanding the <span class="math" data-tex="$2q$">$2q$</span>th power, the power-sum differences <span class="math" data-tex="$v_j$">$v_j$</span> satisfy <span class="math" data-tex="$|v_j|\le A_j$">$|v_j|\le A_j$</span>.
+For any fixed vector <span class="math" data-tex="$\mathbf v$">$\mathbf v$</span>, the number <span class="math" data-tex="$I(\mathbf v)$">$I(\mathbf v)$</span> of pairs of <span class="math" data-tex="$q$">$q$</span>-tuples with that difference is at most <span class="math" data-tex="$J_{q,k}(M)$">$J_{q,k}(M)$</span>: if <span class="math" data-tex="$R$">$R$</span> is their power-sum counting function, Cauchy gives
+<span class="math" data-tex="$\sum_{\mathbf c}R(\mathbf c)R(\mathbf c-\mathbf v)\le\sum R^2$">$\sum_{\mathbf c}R(\mathbf c)R(\mathbf c-\mathbf v)\le\sum R^2$</span>.
+Taking absolute values of the unit coefficients <span class="math" data-tex="$\epsilon_b$">$\epsilon_b$</span>, and then allowing the <span class="math" data-tex="$v_j$">$v_j$</span>'s to vary independently, bounds the box sum by
+<span class="math math-display" data-tex="$$
+(Cq)^kM^K J_{q,k}(M)\prod_j W_j.
+\tag{8.14}
+$$">$$
+(Cq)^kM^K J_{q,k}(M)\prod_j W_j.
+\tag{8.14}
+$$</span>
+To verify the stated <span class="math" data-tex="$W_j$">$W_j$</span>, for <span class="math" data-tex="$A\ge1$">$A\ge1$</span>, <span class="math" data-tex="$\gamma\ne0$">$\gamma\ne0$</span>, put
+<span class="math math-display" data-tex="$$
+D(A,\gamma)=
+\sum_{\substack{v\in\mathbb Z\\|v|\le A}}\sum_{m\in\mathbb Z}
+e^{-\pi^2A^2(\gamma v-m)^2}.
+$$">$$
+D(A,\gamma)=
+\sum_{\substack{v\in\mathbb Z\\|v|\le A}}\sum_{m\in\mathbb Z}
+e^{-\pi^2A^2(\gamma v-m)^2}.
+$$</span>
+The inner periodic Gaussian is bounded absolutely, so <span class="math" data-tex="$D\ll A$">$D\ll A$</span>.
+For a sharper bound, the number of pairs with
+<span class="math" data-tex="$|\gamma v-m|\le w/A$">$|\gamma v-m|\le w/A$</span>, <span class="math" data-tex="$w\ge1$">$w\ge1$</span>, is at most
+<span class="math math-display" data-tex="$$
+C(A|\gamma|+w+1)(1+w/(A|\gamma|))
+\le C(1+w)^2(A|\gamma|+1+(A|\gamma|)^{-1}).
+$$">$$
+C(A|\gamma|+w+1)(1+w/(A|\gamma|))
+\le C(1+w)^2(A|\gamma|+1+(A|\gamma|)^{-1}).
+$$</span>
+Count the possible <span class="math" data-tex="$m$">$m$</span>'s in the interval swept out by <span class="math" data-tex="$\gamma v$">$\gamma v$</span>, then the possible <span class="math" data-tex="$v$">$v$</span>'s for each <span class="math" data-tex="$m$">$m$</span>. Sum this bound over Gaussian shells <span class="math" data-tex="$w=n+1$">$w=n+1$</span>, with weights at most <span class="math" data-tex="$e^{-\pi^2n^2}$">$e^{-\pi^2n^2}$</span>.
+Thus <span class="math" data-tex="$D\ll\min(A,A|\gamma|+1+(A|\gamma|)^{-1})$">$D\ll\min(A,A|\gamma|+1+(A|\gamma|)^{-1})$</span>, proving (8.14).
+All exchanges here involve a finite tuple sum and an absolutely convergent Gaussian series.</p>
+<p>Finally insert (8.7) twice in (8.13)-(8.14), divide by <span class="math" data-tex="$M^{4q^2}$">$M^{4q^2}$</span>, and take the <span class="math" data-tex="$2q^2$">$2q^2$</span>th root. This is (8.12). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h3 id="8-4-the-uniform-saving-and-the-bounded-degree-range">8.4. The uniform saving and the bounded-degree range</h3>
+<p>For large <span class="math" data-tex="$\lambda$">$\lambda$</span>, take <span class="math" data-tex="$k=\lceil2\lambda\rceil$">$k=\lceil2\lambda\rceil$</span>. Then <span class="math" data-tex="$k\ge k_0$">$k\ge k_0$</span>.
+Since <span class="math" data-tex="$N^{1/4}/2\le M\le N^{1/4}$">$N^{1/4}/2\le M\le N^{1/4}$</span>, Lemma 8.4 gives
+<span class="math math-display" data-tex="$$
+W_j\le Cq e^{Cj}
+N^{\min(j/4,\,|\lambda-3j/4|)}.
+$$">$$
+W_j\le Cq e^{Cj}
+N^{\min(j/4,\,|\lambda-3j/4|)}.
+$$</span>
+The factor <span class="math" data-tex="$e^{Cj}$">$e^{Cj}$</span> includes the comparisons <span class="math" data-tex="$z\le3N$">$z\le3N$</span> and <span class="math" data-tex="$M\ge N^{1/4}/2$">$M\ge N^{1/4}/2$</span>, not a height-dependent constant.
+With <span class="math" data-tex="$w(x)=\min(x/4,|1/2-3x/4|)$">$w(x)=\min(x/4,|1/2-3x/4|)$</span>, its three linear pieces on
+<span class="math" data-tex="$[0,1/2],[1/2,2/3],[2/3,1]$">$[0,1/2],[1/2,2/3],[2/3,1]$</span> have integral <span class="math" data-tex="$1/12$">$1/12$</span>.
+Their slopes have modulus at most <span class="math" data-tex="$3/4$">$3/4$</span>, so a Riemann-sum estimate and <span class="math" data-tex="$|\lambda-k/2|\le1/2$">$|\lambda-k/2|\le1/2$</span> give
+<span class="math math-display" data-tex="$$
+\sum_{j=1}^k\min(j/4,|\lambda-3j/4|)
+\le k^2/12+O(k).
+$$">$$
+\sum_{j=1}^k\min(j/4,|\lambda-3j/4|)
+\le k^2/12+O(k).
+$$</span>
+The exponent of <span class="math" data-tex="$N$">$N$</span> inside the braces of (8.12) is therefore at most
+<span class="math math-display" data-tex="$$
+-\frac K4+\frac{k^2}{200}+\frac{k^2}{12}+O(k)
+=-\frac{11}{300}k^2+O(k)\le-k^2/50
+$$">$$
+-\frac K4+\frac{k^2}{200}+\frac{k^2}{12}+O(k)
+=-\frac{11}{300}k^2+O(k)\le-k^2/50
+$$</span>
+for sufficiently large <span class="math" data-tex="$k$">$k$</span>.
+The remaining constant has logarithm <span class="math" data-tex="$O(k^3\log k)$">$O(k^3\log k)$</span>.
+Because <span class="math" data-tex="$k^2/3\le q\le11k^2$">$k^2/3\le q\le11k^2$</span>, its <span class="math" data-tex="$2q^2$">$2q^2$</span>th root is bounded by an absolute constant: <span class="math" data-tex="$(\log k)/k$">$(\log k)/k$</span> is bounded.
+The last term of (8.12) is consequently
+<span class="math" data-tex="$CN^{1-1/(12100k^2)}\le CN^{1-c/\lambda^2}$">$CN^{1-1/(12100k^2)}\le CN^{1-c/\lambda^2}$</span>, since <span class="math" data-tex="$k\le3\lambda$">$k\le3\lambda$</span>.
+The other terms are <span class="math" data-tex="$O(N^{1/2})$">$O(N^{1/2})$</span>, because
+<span class="math" data-tex="$tM^{2k+2}/N^k\le N^{\lambda-k/2+1/2}\le N^{1/2}$">$tM^{2k+2}/N^k\le N^{\lambda-k/2+1/2}\le N^{1/2}$</span>.
+This proves (3.1) when <span class="math" data-tex="$\lambda$">$\lambda$</span> exceeds one fixed absolute threshold <span class="math" data-tex="$\lambda_0$">$\lambda_0$</span>.</p>
+<p>Here is the remaining finite-degree argument, including its uniformity.
+Choose one integer <span class="math" data-tex="$h&gt;2\lambda_0+2$">$h&gt;2\lambda_0+2$</span>, put <span class="math" data-tex="$d=h-2$">$d=h-2$</span>, and suppose
+<span class="math" data-tex="$1\le\lambda\le\lambda_0$">$1\le\lambda\le\lambda_0$</span>.
+For the phase <span class="math" data-tex="$-t\log(x+u)/(2\pi)$">$-t\log(x+u)/(2\pi)$</span>, repeated differences with positive integer shifts <span class="math" data-tex="$a_1,\ldots,a_d$">$a_1,\ldots,a_d$</span> have second derivative of constant sign and size
+<span class="math math-display" data-tex="$$
+\asymp_h \frac{t\,a_1\cdots a_d}{N^h}
+$$">$$
+\asymp_h \frac{t\,a_1\cdots a_d}{N^h}
+$$</span>
+on the overlap interval. This follows by applying the fundamental theorem of calculus <span class="math" data-tex="$d$">$d$</span> times to its <span class="math" data-tex="$h$">$h$</span>th derivative; all arguments lie in <span class="math" data-tex="$[N,3N+1]$">$[N,3N+1]$</span>.
+Take an integer
+<span class="math math-display" data-tex="$$
+H\asymp_h (N^{h-1}/t)^{1/d},\qquad H\le N/(4h).
+$$">$$
+H\asymp_h (N^{h-1}/t)^{1/d},\qquad H\le N/(4h).
+$$</span>
+Such a choice is possible for sufficiently large <span class="math" data-tex="$N$">$N$</span>, since <span class="math" data-tex="$t\ge N$">$t\ge N$</span> and <span class="math" data-tex="$t\le N^{\lambda_0}$">$t\le N^{\lambda_0}$</span>; reducing by the fixed factor <span class="math" data-tex="$4h$">$4h$</span> enforces the upper bound. Also <span class="math" data-tex="$H\gg_h N^{1/2}$">$H\gg_h N^{1/2}$</span>. The finitely bounded initial <span class="math" data-tex="$N$">$N$</span>'s are absorbed in the constant.</p>
+<p>Iterating lesson seven's differencing inequality <span class="math" data-tex="$d$">$d$</span> times, with zero padding to length at most <span class="math" data-tex="$N+1$">$N+1$</span>, and using Cauchy on each average, gives
+<span class="math math-display" data-tex="$$
+(|S|/N)^{2^d}
+\ll_h H^{-1}+H^{-d}\sum_{a_1,\ldots,a_d\le H}|S_{\mathbf a}|/N.
+$$">$$
+(|S|/N)^{2^d}
+\ll_h H^{-1}+H^{-d}\sum_{a_1,\ldots,a_d\le H}|S_{\mathbf a}|/N.
+$$</span>
+This follows inductively from the one-step inequality
+<span class="math" data-tex="$(|S|/N)^2\ll H^{-1}+H^{-1}\sum_{a\le H}|S_a|/N$">$(|S|/N)^2\ll H^{-1}+H^{-1}\sum_{a\le H}|S_a|/N$</span>;
+all correlations have modulus at most <span class="math" data-tex="$N$">$N$</span>, so the earlier diagonal errors remain <span class="math" data-tex="$O_h(H^{-1})$">$O_h(H^{-1})$</span> on iteration.
+Lesson seven's second-derivative test bounds the final average by
+<span class="math math-display" data-tex="$$
+\ll_h (tH^d/N^h)^{1/2}
++N^{-1}(N^h/(tH^d))^{1/2}
+\ll_h N^{-1/2}.
+$$">$$
+\ll_h (tH^d/N^h)^{1/2}
++N^{-1}(N^h/(tH^d))^{1/2}
+\ll_h N^{-1/2}.
+$$</span>
+Here <span class="math" data-tex="$\sum_{a\le H}a^{1/2}\ll H^{3/2}$">$\sum_{a\le H}a^{1/2}\ll H^{3/2}$</span> and
+<span class="math" data-tex="$\sum_{a\le H}a^{-1/2}\ll H^{1/2}$">$\sum_{a\le H}a^{-1/2}\ll H^{1/2}$</span>, proved by integral comparison, handle the product of shifts.
+It follows that <span class="math" data-tex="$S\ll_h N^{1-\epsilon}$">$S\ll_h N^{1-\epsilon}$</span>, with
+<span class="math" data-tex="$\epsilon=2^{-(h-1)}&gt;0$">$\epsilon=2^{-(h-1)}&gt;0$</span>, uniformly for this whole range of <span class="math" data-tex="$\lambda$">$\lambda$</span> and every <span class="math" data-tex="$0&lt;u\le1$">$0&lt;u\le1$</span>.
+Taking <span class="math" data-tex="$c\le\epsilon$">$c\le\epsilon$</span>, as well as the saving in the large-<span class="math" data-tex="$\lambda$">$\lambda$</span> range, proves (3.1) for all <span class="math" data-tex="$N\ge2,t\ge N$">$N\ge2,t\ge N$</span>. A possible single endpoint term is absorbed by increasing <span class="math" data-tex="$C$">$C$</span>. This completes the proof of Lemma 3.0. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Source formula conventions.</strong> In the exact free version Ford, arXiv:1910.08209v1, Lemma 3.1 prints the determinant with differences <span class="math" data-tex="$z_i-z_{i&#x27;}$">$z_i-z_{i&#x27;}$</span> for <span class="math" data-tex="$i&lt;i&#x27;$">$i&lt;i&#x27;$</span>. With the stated ascending rows and columns, the triangular-basis proof of (8.2) gives <span class="math" data-tex="$z_{i&#x27;}-z_i$">$z_{i&#x27;}-z_i$</span>. The resulting sign has no effect on the determinant-unit condition. In the transformation following its equation (3.6), that version prints <span class="math" data-tex="$c^{j-\ell}$">$c^{j-\ell}$</span>; our transformation retains <span class="math" data-tex="$(qc)^{j-\ell}$">$(qc)^{j-\ell}$</span>. Indeed, the binomial theorem gives
+<span class="math math-display" data-tex="$$
+\sum_{\ell=0}^j\binom j\ell(qc)^{j-\ell}q^\ell(pu-c)^\ell=(pqu)^j.
+$$">$$
+\sum_{\ell=0}^j\binom j\ell(qc)^{j-\ell}q^\ell(pu-c)^\ell=(pqu)^j.
+$$</span>
+The constant term cancels between the paired inner sums. These comparisons identify two local formula corrections in that exact v1; our complete qualitative argument uses the identities proved in Section 8.</p>
+<h2 id="references-and-free-comparisons">References and free comparisons</h2>
+<ul>
+<li>
+<p>Kevin Ford, <a href="https://arxiv.org/pdf/1910.08209v1"><em>Vinogradov's integral and bounds for the Riemann zeta function</em></a>, arXiv:1910.08209v1, uploaded 18 October 2019; the author manuscript is dated 25 October 2001. Section 3, Lemmas 3.2–3.4, develops congruence differencing; Section 5, Lemma 5.1, develops bilinear averaging. The complete qualitative proof used here is supplied in Section 8, with a special Newton-identity proof of the congruence count and no incomplete-system or numerical-certificate input.</p>
+</li>
+<li>
+<p>Chiara Bellotti, <em>Explicit bounds for the Riemann zeta function and a new zero-free region</em>, Journal of Mathematical Analysis and Applications <strong>536</strong> (2024), article 128249, <a href="https://doi.org/10.1016/j.jmaa.2024.128249">open access</a>. The freely available published article retains CC BY 4.0, as stated on its first page. Its Theorem 1.5 and Sections 2–4 give substantially sharper numerical constants. Those numerical constants and their imported antecedents are not used in this lesson's proof.</p>
+</li>
+<li>
+<p>Chiara Bellotti, <a href="https://arxiv.org/pdf/2306.10680v1"><em>Explicit bounds for the Riemann zeta function and a new zero-free region</em></a>, arXiv:2306.10680v1, submitted 19 June 2023, 37 pages. This is a distinct free preprint version of the work above. Theorem 1.5 provides an optional numerical comparison; this lesson uses its own proved qualitative estimate.</p>
+</li>
+</ul>
+<p>All proof arguments for this lesson's exponential-sum, growth, zero-free and prime-counting conclusions are in the editable lesson or at the exact earlier lesson locators stated above. The linked free source versions provide comparison and attribution.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-12.html">← The prime number theorem with the classical error term</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-14.html">The Riemann hypothesis and its standard equivalents →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-13.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

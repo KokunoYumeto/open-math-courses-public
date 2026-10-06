@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="6ECB77986A7035971A4B4A4DD637D4B922578C8DBF48D08CEC89BE8CB7BC636D">
+<title>Connections and curvature from symmetries of an algebra — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-NCG-CYCLIC/connections-and-curvature-for-c-star-dynamical-systems</span></nav>
+<article id="lesson" class="lesson"><h1 id="connections-and-curvature-from-symmetries-of-an-algebra">Connections and curvature from symmetries of an algebra</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), September 2026, at Ultra. Not yet reviewed. Public domain (CC0).</em></p>
+<p>An action of a Lie group supplies directions in which elements of an algebra can be differentiated. A finite projective module plays the role of a vector bundle. A connection differentiates its sections, and curvature measures the failure of successive derivatives to agree with the Lie bracket. An invariant trace turns powers of this curvature into ordinary Lie algebra cohomology classes.</p>
+<p>We assume a unital complex C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, a finite-dimensional real Lie group <span class="math" data-tex="\(G\)">\(G\)</span>, and an action <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(A)\)">\(\alpha:G\to\operatorname{Aut}(A)\)</span> continuous in norm on each element. We also use matrix functional calculus and finite projective modules. The convention for a right-module inner product is <span class="math" data-tex="\(\langle\xi,\eta\rangle=\xi^*\eta\)">\(\langle\xi,\eta\rangle=\xi^*\eta\)</span>, linear in the second argument. Basic references are [Khalkhali 2007] and [Connes 1980]. The lesson <a href="the-cyclic-category-and-cyclic-cohomology-as-ext.html">Cyclic cohomology: traces, differentials and symmetry</a> explains the graded-trace mechanism that will appear below.</p>
+<h2 id="1-smooth-elements-retain-projective-modules">1. Smooth elements retain projective modules</h2>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+A^\infty=\{a\in A:g\mapsto\alpha_g(a)\text{ is smooth in norm}\}.
+\]">\[
+A^\infty=\{a\in A:g\mapsto\alpha_g(a)\text{ is smooth in norm}\}.
+\]</span>
+<p>For <span class="math" data-tex="\(X\in\mathfrak g=\operatorname{Lie}(G)\)">\(X\in\mathfrak g=\operatorname{Lie}(G)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\delta_X(a)=\left.\frac{d}{dt}\right|_{t=0}\alpha_{\exp(tX)}(a).
+\]">\[
+\delta_X(a)=\left.\frac{d}{dt}\right|_{t=0}\alpha_{\exp(tX)}(a).
+\]</span>
+<p>Differentiating products and involutions shows that <span class="math" data-tex="\(A^\infty\)">\(A^\infty\)</span> is a unital *-algebra, <span class="math" data-tex="\(\delta_X\)">\(\delta_X\)</span> is a *-derivation, and <span class="math" data-tex="\([\delta_X,\delta_Y]=\delta_{[X,Y]}\)">\([\delta_X,\delta_Y]=\delta_{[X,Y]}\)</span>. The last identity is the derivative of a group representation; it can also be obtained by differentiating the commutator of the two one-parameter actions in the two parameters.</p>
+<p><span id="lemma-1-1"></span><strong>Lemma 1.1.</strong> The algebra <span class="math" data-tex="\(A^\infty\)">\(A^\infty\)</span> is dense in <span class="math" data-tex="\(A\)">\(A\)</span>. It is stable under holomorphic functional calculus in <span class="math" data-tex="\(A\)">\(A\)</span>, and the same holds for all matrix algebras over it.</p>
+<p><strong>Proof.</strong> Choose smooth nonnegative functions <span class="math" data-tex="\(f\)">\(f\)</span> supported near the identity, with integral one for left Haar measure, and set</p>
+<span class="math math-display" data-tex="\[
+a_f=\int_G f(g)\alpha_g(a)\,dg.
+\]">\[
+a_f=\int_G f(g)\alpha_g(a)\,dg.
+\]</span>
+<p>After applying <span class="math" data-tex="\(\alpha_h\)">\(\alpha_h\)</span> and changing variables, the coefficient function is <span class="math" data-tex="\(f(h^{-1}g)\)">\(f(h^{-1}g)\)</span>. Its derivatives in <span class="math" data-tex="\(h\)">\(h\)</span> are smooth, supported in a fixed compact set when <span class="math" data-tex="\(h\)">\(h\)</span> varies near the identity, and bounded there. Differentiation under the norm integral proves that <span class="math" data-tex="\(a_f\)">\(a_f\)</span> is smooth. Norm continuity of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and concentration of the support at the identity give <span class="math" data-tex="\(a_f\to a\)">\(a_f\to a\)</span>.</p>
+<p>If <span class="math" data-tex="\(a\in A^\infty\)">\(a\in A^\infty\)</span> is invertible in <span class="math" data-tex="\(A\)">\(A\)</span>, then <span class="math" data-tex="\(\alpha_g(a^{-1})=\alpha_g(a)^{-1}\)">\(\alpha_g(a^{-1})=\alpha_g(a)^{-1}\)</span>. Inversion on the open set of invertible elements of a Banach algebra is smooth: the Neumann expansion near an invertible element gives derivatives, starting with <span class="math" data-tex="\(D\mathrm{inv}_a(h)=-a^{-1}ha^{-1}\)">\(D\mathrm{inv}_a(h)=-a^{-1}ha^{-1}\)</span>. Thus <span class="math" data-tex="\(a^{-1}\in A^\infty\)">\(a^{-1}\in A^\infty\)</span>.</p>
+<p>For a function <span class="math" data-tex="\(F\)">\(F\)</span> holomorphic near the spectrum of <span class="math" data-tex="\(a\)">\(a\)</span>, the contour formula for <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span> is an integral of resolvents <span class="math" data-tex="\((z-a)^{-1}\)">\((z-a)^{-1}\)</span>. On a fixed contour, their derivatives in the group variable are continuous and uniformly bounded. The same differentiation argument shows that <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span> is smooth. Entrywise action and matrix inversion prove the matrix assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We represent a finite projective right module by <span class="math" data-tex="\(pA^r\)">\(pA^r\)</span>, with <span class="math" data-tex="\(p\in M_r(A)\)">\(p\in M_r(A)\)</span> an orthogonal projection. Here is why an algebraic finite projective module has such a representation. Being a summand of a finite free module, it is <span class="math" data-tex="\(eA^r\)">\(eA^r\)</span> for an idempotent <span class="math" data-tex="\(e\)">\(e\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+B=1-(e-e^*)^2=1+(e-e^*)^*(e-e^*),\qquad
+p=ee^*B^{-1}.
+\]">\[
+B=1-(e-e^*)^2=1+(e-e^*)^*(e-e^*),\qquad
+p=ee^*B^{-1}.
+\]</span>
+<p>The positive element <span class="math" data-tex="\(B\)">\(B\)</span> is invertible. Direct multiplication using <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span> gives <span class="math" data-tex="\((ee^*)B=(ee^*)^2\)">\((ee^*)B=(ee^*)^2\)</span>; taking adjoints also gives <span class="math" data-tex="\(B(ee^*)=(ee^*)^2\)">\(B(ee^*)=(ee^*)^2\)</span>. Thus the two factors in <span class="math" data-tex="\(p\)">\(p\)</span> commute, <span class="math" data-tex="\(p=p^*\)">\(p=p^*\)</span>, and <span class="math" data-tex="\(p^2=p\)">\(p^2=p\)</span>. Moreover <span class="math" data-tex="\(Be=ee^*e\)">\(Be=ee^*e\)</span>, so <span class="math" data-tex="\(pe=e\)">\(pe=e\)</span>, whereas <span class="math" data-tex="\(ep=p\)">\(ep=p\)</span>. Hence <span class="math" data-tex="\(pA^r=eA^r\)">\(pA^r=eA^r\)</span>. The same replacement works over <span class="math" data-tex="\(A^\infty\)">\(A^\infty\)</span> because Lemma 1.1 makes <span class="math" data-tex="\(B^{-1}\)">\(B^{-1}\)</span> smooth when <span class="math" data-tex="\(e\)">\(e\)</span> is smooth. This includes algebraic finite projective modules, as well as their Hilbert-module realizations.</p>
+<p><span id="theorem-1-2"></span><strong>Theorem 1.2.</strong> Every module <span class="math" data-tex="\(pA^r\)">\(pA^r\)</span> is obtained by extending scalars from a module <span class="math" data-tex="\(q(A^\infty)^r\)">\(q(A^\infty)^r\)</span> for a smooth orthogonal projection <span class="math" data-tex="\(q\)">\(q\)</span>. If two smooth finite projective modules become isomorphic over <span class="math" data-tex="\(A\)">\(A\)</span>, they were already isomorphic over <span class="math" data-tex="\(A^\infty\)">\(A^\infty\)</span>.</p>
+<p><strong>Proof.</strong> Approximate <span class="math" data-tex="\(p\)">\(p\)</span> by a self-adjoint <span class="math" data-tex="\(b\in M_r(A^\infty)\)">\(b\in M_r(A^\infty)\)</span> with <span class="math" data-tex="\(\|b-p\|&lt;1/8\)">\(\|b-p\|&lt;1/8\)</span>. Its spectrum lies within <span class="math" data-tex="\(1/8\)">\(1/8\)</span> of <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>. The spectral projection around the component near one is</p>
+<span class="math math-display" data-tex="\[
+q=\frac1{2\pi i}\int_{|z-1|=1/2}(z-b)^{-1}\,dz.
+\]">\[
+q=\frac1{2\pi i}\int_{|z-1|=1/2}(z-b)^{-1}\,dz.
+\]</span>
+<p>Lemma 1.1 makes <span class="math" data-tex="\(q\)">\(q\)</span> smooth, and self-adjointness of <span class="math" data-tex="\(b\)">\(b\)</span> makes <span class="math" data-tex="\(q\)">\(q\)</span> an orthogonal projection. On the contour, <span class="math" data-tex="\(\|(z-p)^{-1}\|\leq2\)">\(\|(z-p)^{-1}\|\leq2\)</span> and <span class="math" data-tex="\(\|(z-b)^{-1}\|\leq8/3\)">\(\|(z-b)^{-1}\|\leq8/3\)</span>. The resolvent identity therefore gives</p>
+<span class="math math-display" data-tex="\[
+\|q-p\|\leq\frac83\|b-p\|&lt;\frac13.
+\]">\[
+\|q-p\|\leq\frac83\|b-p\|&lt;\frac13.
+\]</span>
+<p>The operator <span class="math" data-tex="\(qp:pA^r\to qA^r\)">\(qp:pA^r\to qA^r\)</span> is an isomorphism. Indeed <span class="math" data-tex="\(pqp\)">\(pqp\)</span> and <span class="math" data-tex="\(qpq\)">\(qpq\)</span> differ from their corner units by norm less than one, so both are invertible. The first gives a left inverse <span class="math" data-tex="\((pqp)^{-1}pq\)">\((pqp)^{-1}pq\)</span>, and the second gives a right inverse <span class="math" data-tex="\(pq(qpq)^{-1}\)">\(pq(qpq)^{-1}\)</span>; a map with both a left and a right inverse has those inverses equal. Thus <span class="math" data-tex="\(pA^r\simeq qA^r\)">\(pA^r\simeq qA^r\)</span>. Extending scalars from the smooth module gives <span class="math" data-tex="\(qA^r\)">\(qA^r\)</span>.</p>
+<p>For uniqueness, let smooth projections <span class="math" data-tex="\(q,r\)">\(q,r\)</span> represent the two modules, and let <span class="math" data-tex="\(v\in rM_{s,t}(A)q\)">\(v\in rM_{s,t}(A)q\)</span> represent an isomorphism between them. Both <span class="math" data-tex="\(v^*v\)">\(v^*v\)</span> in the <span class="math" data-tex="\(q\)">\(q\)</span>-corner and <span class="math" data-tex="\(vv^*\)">\(vv^*\)</span> in the <span class="math" data-tex="\(r\)">\(r\)</span>-corner are invertible. Approximate <span class="math" data-tex="\(v\)">\(v\)</span> in norm by <span class="math" data-tex="\(v_\infty\in rM_{s,t}(A^\infty)q\)">\(v_\infty\in rM_{s,t}(A^\infty)q\)</span>. For sufficiently close approximation these two positive products remain invertible. Their inverses belong to the smooth corners by Lemma 1.1, applied to a corner element after adding the complementary projection. Hence</p>
+<span class="math math-display" data-tex="\[
+(v_\infty^*v_\infty)^{-1}v_\infty^*
+\]">\[
+(v_\infty^*v_\infty)^{-1}v_\infty^*
+\]</span>
+<p>is a smooth inverse of <span class="math" data-tex="\(v_\infty\)">\(v_\infty\)</span>. This gives the required isomorphism over <span class="math" data-tex="\(A^\infty\)">\(A^\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No equivariant structure on the projective module was assumed: the smooth structure comes from the algebra action, and the connection constructed next need not integrate to a group action on the module.</p>
+<h2 id="2-lie-algebra-forms-with-noncommuting-coefficients">2. Lie algebra forms with noncommuting coefficients</h2>
+<p>Write <span class="math" data-tex="\(\mathfrak g_\mathbb C\)">\(\mathfrak g_\mathbb C\)</span> for the complexification and put</p>
+<span class="math math-display" data-tex="\[
+\Omega^j=A^\infty\otimes\bigwedge^j\mathfrak g_\mathbb C^*.
+\]">\[
+\Omega^j=A^\infty\otimes\bigwedge^j\mathfrak g_\mathbb C^*.
+\]</span>
+<p>Multiply coefficients in their given order and wedge the exterior factors. This algebra is not graded commutative. For an alternating form <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, define</p>
+<span id="equation-2-1"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+(d\omega)(X_0,\ldots,X_j)
+={}&amp;\sum_{i=0}^j(-1)^i\delta_{X_i}
+\omega(X_0,\ldots,\widehat X_i,\ldots,X_j)\\
+&amp;+\sum_{i&lt;\ell}(-1)^{i+\ell}
+\omega([X_i,X_\ell],X_0,\ldots,\widehat X_i,\ldots,
+\widehat X_\ell,\ldots,X_j).
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+(d\omega)(X_0,\ldots,X_j)
+={}&amp;\sum_{i=0}^j(-1)^i\delta_{X_i}
+\omega(X_0,\ldots,\widehat X_i,\ldots,X_j)\\
+&amp;+\sum_{i&lt;\ell}(-1)^{i+\ell}
+\omega([X_i,X_\ell],X_0,\ldots,\widehat X_i,\ldots,
+\widehat X_\ell,\ldots,X_j).
+\end{aligned}
+\tag{2.1}
+\]</span>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+(da)(X)=\delta_X(a),\qquad
+(d\omega)(X,Y)=\delta_X\omega(Y)-\delta_Y\omega(X)-\omega([X,Y])
+\]">\[
+(da)(X)=\delta_X(a),\qquad
+(d\omega)(X,Y)=\delta_X\omega(Y)-\delta_Y\omega(X)-\omega([X,Y])
+\]</span>
+<p>for degrees zero and one. Alternation and the derivation rule for <span class="math" data-tex="\(\delta_X\)">\(\delta_X\)</span> give
+<span class="math" data-tex="\(d(\omega\eta)=d\omega\,\eta+(-1)^{\deg\omega}\omega\,d\eta\)">\(d(\omega\eta)=d\omega\,\eta+(-1)^{\deg\omega}\omega\,d\eta\)</span>.
+Also <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>: terms differentiating two coefficients combine as <span class="math" data-tex="\([\delta_X,\delta_Y]-\delta_{[X,Y]}\)">\([\delta_X,\delta_Y]-\delta_{[X,Y]}\)</span>; terms with a derivative and a disjoint bracket cancel in pairs; the three nested-bracket terms for each triple are the Jacobi identity. These are all possible terms in the double application of (2.1).</p>
+<h2 id="3-curvature-and-the-bianchi-identity">3. Curvature and the Bianchi identity</h2>
+<p>Let <span class="math" data-tex="\(E=p(A^\infty)^r\)">\(E=p(A^\infty)^r\)</span>. A connection is a complex-linear assignment <span class="math" data-tex="\(X\mapsto\nabla_X\)">\(X\mapsto\nabla_X\)</span>, linear in <span class="math" data-tex="\(X\)">\(X\)</span>, with</p>
+<span id="equation-3-1"></span><span class="math math-display" data-tex="\[
+\nabla_X(\xi a)=(\nabla_X\xi)a+\xi\delta_X(a).
+\tag{3.1}
+\]">\[
+\nabla_X(\xi a)=(\nabla_X\xi)a+\xi\delta_X(a).
+\tag{3.1}
+\]</span>
+<p><span id="proposition-3-1"></span><strong>Proposition 3.1.</strong> The Grassmann connection <span class="math" data-tex="\(\nabla_X^0\xi=p\delta_X\xi\)">\(\nabla_X^0\xi=p\delta_X\xi\)</span> exists and preserves the inner product. Every other connection is uniquely <span class="math" data-tex="\(\nabla^0+\theta\)">\(\nabla^0+\theta\)</span> with <span class="math" data-tex="\(\theta\in pM_r(\Omega^1)p\)">\(\theta\in pM_r(\Omega^1)p\)</span>. It preserves the inner product precisely when <span class="math" data-tex="\(\theta(X)^*=-\theta(X)\)">\(\theta(X)^*=-\theta(X)\)</span> for real <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Proof.</strong> The derivation rule proves (3.1) for <span class="math" data-tex="\(p\delta_X\)">\(p\delta_X\)</span>. Since <span class="math" data-tex="\(p\xi=\xi\)">\(p\xi=\xi\)</span> and <span class="math" data-tex="\(p\eta=\eta\)">\(p\eta=\eta\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle p\delta_X\xi,\eta\rangle+
+\langle\xi,p\delta_X\eta\rangle
+=\delta_X(\xi^*\eta).
+\]">\[
+\langle p\delta_X\xi,\eta\rangle+
+\langle\xi,p\delta_X\eta\rangle
+=\delta_X(\xi^*\eta).
+\]</span>
+<p>The difference of two connections is <span class="math" data-tex="\(A^\infty\)">\(A^\infty\)</span>-linear in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, hence is a corner matrix, separately for each <span class="math" data-tex="\(X\)">\(X\)</span>. This also proves uniqueness of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. The additional terms in the metric identity are <span class="math" data-tex="\(\xi^*(\theta(X)^*+\theta(X))\eta\)">\(\xi^*(\theta(X)^*+\theta(X))\eta\)</span>. They vanish for all <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span> exactly when the corner matrix in parentheses is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="definition-3-2"></span><strong>Definition 3.2.</strong> The curvature is the alternating endomorphism-valued form</p>
+<span id="equation-3-2"></span><span class="math math-display" data-tex="\[
+\Theta(X,Y)=[\nabla_X,\nabla_Y]-\nabla_{[X,Y]}.
+\tag{3.2}
+\]">\[
+\Theta(X,Y)=[\nabla_X,\nabla_Y]-\nabla_{[X,Y]}.
+\tag{3.2}
+\]</span>
+<p>The coefficient derivative terms in its action on <span class="math" data-tex="\(\xi a\)">\(\xi a\)</span> cancel because <span class="math" data-tex="\([\delta_X,\delta_Y]=\delta_{[X,Y]}\)">\([\delta_X,\delta_Y]=\delta_{[X,Y]}\)</span>. Thus curvature is <span class="math" data-tex="\(A^\infty\)">\(A^\infty\)</span>-linear.</p>
+<p>Extend the connection to <span class="math" data-tex="\(E\)">\(E\)</span>-valued forms by the graded Leibniz rule. Denote that degree-one operator by <span class="math" data-tex="\(D\)">\(D\)</span>. On column-valued forms it is <span class="math" data-tex="\(D\xi=p\,d\xi+\theta\xi\)">\(D\xi=p\,d\xi+\theta\xi\)</span>. Its square is multiplication by the curvature.</p>
+<p><span id="theorem-3-3"></span><strong>Theorem 3.3.</strong> In matrix-valued forms,</p>
+<span id="equation-3-3"></span><span class="math math-display" data-tex="\[
+\Theta=p(dp)(dp)p+p(d\theta+\theta^2)p,
+\qquad
+p(d\Theta)p=\Theta\theta-\theta\Theta.
+\tag{3.3}
+\]">\[
+\Theta=p(dp)(dp)p+p(d\theta+\theta^2)p,
+\qquad
+p(d\Theta)p=\Theta\theta-\theta\Theta.
+\tag{3.3}
+\]</span>
+<p><strong>Proof.</strong> Differentiating <span class="math" data-tex="\(p^2=p\)">\(p^2=p\)</span> gives <span class="math" data-tex="\(p(dp)p=0\)">\(p(dp)p=0\)</span>. Applying <span class="math" data-tex="\(D^2\)">\(D^2\)</span> to <span class="math" data-tex="\(\xi=p\xi\)">\(\xi=p\xi\)</span>, use
+<span class="math" data-tex="\(d\xi=(dp)\xi+p\,d\xi\)">\(d\xi=(dp)\xi+p\,d\xi\)</span> and <span class="math" data-tex="\(p(dp)p=0\)">\(p(dp)p=0\)</span>. The terms containing <span class="math" data-tex="\(d\xi\)">\(d\xi\)</span> cancel by the graded Leibniz rule, leaving</p>
+<span class="math math-display" data-tex="\[
+D^2\xi=p(dp)(dp)\xi+p(d\theta)\xi+\theta^2\xi.
+\]">\[
+D^2\xi=p(dp)(dp)\xi+p(d\theta)\xi+\theta^2\xi.
+\]</span>
+<p>This is the first formula, since <span class="math" data-tex="\(\theta=p\theta p\)">\(\theta=p\theta p\)</span>. On an endomorphism-valued <span class="math" data-tex="\(j\)">\(j\)</span>-form <span class="math" data-tex="\(T=pTp\)">\(T=pTp\)</span>, the induced covariant derivative is</p>
+<span class="math math-display" data-tex="\[
+D_{\mathrm{End}}T=p(dT)p+\theta T-(-1)^jT\theta.
+\]">\[
+D_{\mathrm{End}}T=p(dT)p+\theta T-(-1)^jT\theta.
+\]</span>
+<p>Associativity of operators gives <span class="math" data-tex="\(DD^2=D^2D\)">\(DD^2=D^2D\)</span>. Therefore <span class="math" data-tex="\(D_{\mathrm{End}}\Theta=0\)">\(D_{\mathrm{End}}\Theta=0\)</span>, which for degree two is exactly the second formula. This is the Bianchi identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also a formula that does not require choosing a projection. For <span class="math" data-tex="\(T\in\operatorname{End}_{A^\infty}(E)\)">\(T\in\operatorname{End}_{A^\infty}(E)\)</span>, define
+<span class="math" data-tex="\(\partial_XT=[\nabla_X,T]\)">\(\partial_XT=[\nabla_X,T]\)</span>. The right Leibniz rule shows that this commutator is again a module endomorphism. Expanding a commutator with a product proves that <span class="math" data-tex="\(\partial_X\)">\(\partial_X\)</span> is a derivation of the endomorphism algebra. The Jacobi identity for operator commutators gives</p>
+<span id="equation-3-4"></span><span class="math math-display" data-tex="\[
+[\partial_X,\partial_Y]-\partial_{[X,Y]}
+=\operatorname{ad}_{\Theta(X,Y)}.
+\tag{3.4}
+\]">\[
+[\partial_X,\partial_Y]-\partial_{[X,Y]}
+=\operatorname{ad}_{\Theta(X,Y)}.
+\tag{3.4}
+\]</span>
+<p>If a second connection is <span class="math" data-tex="\(\nabla+\Gamma\)">\(\nabla+\Gamma\)</span>, expanding its commutators gives</p>
+<span id="equation-3-5"></span><span class="math math-display" data-tex="\[
+\Theta_{\nabla+\Gamma}(X,Y)-\Theta_\nabla(X,Y)
+=\partial_X\Gamma_Y-\partial_Y\Gamma_X-\Gamma_{[X,Y]}
++[\Gamma_X,\Gamma_Y].
+\tag{3.5}
+\]">\[
+\Theta_{\nabla+\Gamma}(X,Y)-\Theta_\nabla(X,Y)
+=\partial_X\Gamma_Y-\partial_Y\Gamma_X-\Gamma_{[X,Y]}
++[\Gamma_X,\Gamma_Y].
+\tag{3.5}
+\]</span>
+<p>This formula contains the derivative terms as well as the quadratic commutator. For two commuting directions it is the curvature variation used in the first Chern-number calculation.</p>
+<h2 id="4-tracing-curvature-gives-cohomology-classes">4. Tracing curvature gives cohomology classes</h2>
+<p>Let <span class="math" data-tex="\(\tau:A\to\mathbb C\)">\(\tau:A\to\mathbb C\)</span> be a bounded trace invariant under <span class="math" data-tex="\(G\)">\(G\)</span>. In particular <span class="math" data-tex="\(\tau\delta_X=0\)">\(\tau\delta_X=0\)</span>. On matrices use the unnormalized extension <span class="math" data-tex="\(\tau_r=\tau\circ\operatorname{Tr}_r\)">\(\tau_r=\tau\circ\operatorname{Tr}_r\)</span>, and apply it to the coefficients of a form. On the <span class="math" data-tex="\(p\)">\(p\)</span>-corner write this map as <span class="math" data-tex="\(\tau_E\)">\(\tau_E\)</span>.</p>
+<p>The target is the complex of alternating scalar forms on <span class="math" data-tex="\(\mathfrak g_\mathbb C\)">\(\mathfrak g_\mathbb C\)</span>, with the Chevalley–Eilenberg differential <span class="math" data-tex="\(d_{\mathfrak g}\)">\(d_{\mathfrak g}\)</span> for the trivial coefficient representation. Invariance of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and the formula (2.1) give</p>
+<span id="equation-4-1"></span><span class="math math-display" data-tex="\[
+\tau_r(dT)=d_{\mathfrak g}\tau_r(T),\qquad
+\tau_r(TU)=(-1)^{ij}\tau_r(UT)
+\quad(\deg T=i,\deg U=j).
+\tag{4.1}
+\]">\[
+\tau_r(dT)=d_{\mathfrak g}\tau_r(T),\qquad
+\tau_r(TU)=(-1)^{ij}\tau_r(UT)
+\quad(\deg T=i,\deg U=j).
+\tag{4.1}
+\]</span>
+<p>For a corner form <span class="math" data-tex="\(T=pTp\)">\(T=pTp\)</span>, differentiating this relation yields
+<span class="math" data-tex="\(dT=(dp)T+p(dT)p+(-1)^{\deg T}T(dp)\)">\(dT=(dp)T+p(dT)p+(-1)^{\deg T}T(dp)\)</span>. The traces of the first and last terms vanish: cyclically moving the degree-zero projection reduces them to expressions containing <span class="math" data-tex="\(p(dp)p=0\)">\(p(dp)p=0\)</span>. Thus</p>
+<span id="equation-4-2"></span><span class="math math-display" data-tex="\[
+\tau_E(D_{\mathrm{End}}T)=d_{\mathfrak g}\tau_E(T).
+\tag{4.2}
+\]">\[
+\tau_E(D_{\mathrm{End}}T)=d_{\mathfrak g}\tau_E(T).
+\tag{4.2}
+\]</span>
+<p><span id="theorem-4-1"></span><strong>Theorem 4.1.</strong> For each <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, the scalar form <span class="math" data-tex="\(\tau_E(\Theta^k)\)">\(\tau_E(\Theta^k)\)</span> is closed. Its cohomology class depends only on the smooth projective module, and not on its connection. More precisely, if <span class="math" data-tex="\(\nabla_t=\nabla_0+t\eta\)">\(\nabla_t=\nabla_0+t\eta\)</span>, then</p>
+<span id="equation-4-3"></span><span class="math math-display" data-tex="\[
+\tau_E(\Theta_1^k)-\tau_E(\Theta_0^k)
+=d_{\mathfrak g}\left(k\int_0^1
+\tau_E(\eta\Theta_t^{k-1})\,dt\right).
+\tag{4.3}
+\]">\[
+\tau_E(\Theta_1^k)-\tau_E(\Theta_0^k)
+=d_{\mathfrak g}\left(k\int_0^1
+\tau_E(\eta\Theta_t^{k-1})\,dt\right).
+\tag{4.3}
+\]</span>
+<p><strong>Proof.</strong> The Bianchi identity and the graded derivation rule give
+<span class="math" data-tex="\(D_{\mathrm{End}}(\Theta^k)=0\)">\(D_{\mathrm{End}}(\Theta^k)=0\)</span>. Equation (4.2) proves closedness. Differentiating curvature along the affine path gives <span class="math" data-tex="\(\dot\Theta_t=D_{\mathrm{End},t}\eta\)">\(\dot\Theta_t=D_{\mathrm{End},t}\eta\)</span>. Since curvature has even degree, cyclically rotating the factors under the graded trace gives</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\tau_E(\Theta_t^k)
+=k\tau_E((D_{\mathrm{End},t}\eta)\Theta_t^{k-1})
+=k\,d_{\mathfrak g}\tau_E(\eta\Theta_t^{k-1}).
+\]">\[
+\frac{d}{dt}\tau_E(\Theta_t^k)
+=k\tau_E((D_{\mathrm{End},t}\eta)\Theta_t^{k-1})
+=k\,d_{\mathfrak g}\tau_E(\eta\Theta_t^{k-1}).
+\]</span>
+<p>The second equality again uses the Bianchi identity. Integrating gives (4.3).</p>
+<p>Finally, an isomorphism of smooth projective modules transports a connection and conjugates its curvature. The matrix trace of the transported curvature agrees with the original trace. To verify this even for different matrix sizes, write the isomorphism and its inverse as rectangular matrices <span class="math" data-tex="\(v,w\)">\(v,w\)</span>, with <span class="math" data-tex="\(wv=p\)">\(wv=p\)</span>, <span class="math" data-tex="\(vw=q\)">\(vw=q\)</span>. Then <span class="math" data-tex="\(\tau_s(vTw)=\tau_r(Twv)=\tau_r(T)\)">\(\tau_s(vTw)=\tau_r(Twv)=\tau_r(T)\)</span>. This proves dependence only on the isomorphism class. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>It follows that</p>
+<span id="equation-4-4"></span><span class="math math-display" data-tex="\[
+\operatorname{ch}_\tau(E)=
+\sum_{k\geq0}\frac1{k!(2\pi i)^k}
+[\tau_E(\Theta^k)],\qquad \tau_E(\Theta^0)=\tau_r(p),
+\tag{4.4}
+\]">\[
+\operatorname{ch}_\tau(E)=
+\sum_{k\geq0}\frac1{k!(2\pi i)^k}
+[\tau_E(\Theta^k)],\qquad \tau_E(\Theta^0)=\tau_r(p),
+\tag{4.4}
+\]</span>
+<p>is additive under direct sum. The sum is finite because forms above <span class="math" data-tex="\(\dim G\)">\(\dim G\)</span> vanish. Define <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> here as the group completion of stable isomorphism classes of finite projective modules. Theorem 1.2 makes (4.4) a well-defined homomorphism from <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> to even Lie algebra cohomology. This construction alone does not assert that a Chern number is an integer; integrality requires an additional index or classification argument.</p>
+<p><span id="example-4-2"></span><strong>Example 4.2.</strong> For a trivial action, every element is smooth and the Grassmann curvature is zero. A connection can still have nonzero curvature: on a free module over a scalar algebra, a constant matrix-valued one-form <span class="math" data-tex="\(\theta\)">\(\theta\)</span> gives <span class="math" data-tex="\(\Theta=d\theta+\theta^2\)">\(\Theta=d\theta+\theta^2\)</span>. Its traced powers represent zero in positive-degree cohomology, by Theorem 4.1 applied to the path from the zero connection. Thus nonzero curvature and a nonzero characteristic class are different assertions.</p>
+<h2 id="5-gauge-changes-and-the-one-dimensional-pairing">5. Gauge changes and the one-dimensional pairing</h2>
+<p>Consider two actions of <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, related by a norm-continuous unitary cocycle:</p>
+<span id="equation-5-1"></span><span class="math math-display" data-tex="\[
+\beta_t=\operatorname{Ad}(u_t)\alpha_t,\qquad
+u_{s+t}=u_s\alpha_s(u_t).
+\tag{5.1}
+\]">\[
+\beta_t=\operatorname{Ad}(u_t)\alpha_t,\qquad
+u_{s+t}=u_s\alpha_s(u_t).
+\tag{5.1}
+\]</span>
+<p>This is <strong>exterior equivalence</strong>; the cocycle identity is part of the hypothesis. Pointwise agreement of actions modulo inner automorphisms is a different condition. A trace invariant under <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is invariant under <span class="math" data-tex="\(\beta\)">\(\beta\)</span> as well.</p>
+<p><span id="theorem-5-1"></span><strong>Theorem 5.1.</strong> For each <span class="math" data-tex="\(x\in K_0(A)\)">\(x\in K_0(A)\)</span>, the first Chern number computed with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> equals that computed with <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. No differentiability of <span class="math" data-tex="\(u\)">\(u\)</span> is required.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(M_2(A)\)">\(M_2(A)\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\gamma_t=\operatorname{Ad}\begin{pmatrix}1&amp;0\\0&amp;u_t\end{pmatrix}
+\circ(\alpha_t\otimes\mathrm{id}).
+\]">\[
+\gamma_t=\operatorname{Ad}\begin{pmatrix}1&amp;0\\0&amp;u_t\end{pmatrix}
+\circ(\alpha_t\otimes\mathrm{id}).
+\]</span>
+<p>The cocycle identity makes this a norm-continuous action. Its two diagonal corners have actions <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, and the unnormalized matrix trace extending <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is invariant. The corner projections are fixed by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. For a smooth projection in either corner, the Grassmann curvature calculation for <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is therefore exactly the curvature calculation in that corner.</p>
+<p>The two corner inclusions induce the same map on <span class="math" data-tex="\(K_0\)">\(K_0\)</span>: copies of a projection in the two corners are equivalent using the off-diagonal matrix unit. Theorem 1.2 supplies smooth representatives and a smooth module isomorphism when these representatives define the same completed module. The connection-independent class of Theorem 4.1 for <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> gives equal first Chern numbers on the two corner representatives. Hence the original two actions give equal values on <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an action of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, let <span class="math" data-tex="\(\delta\)">\(\delta\)</span> be its generator and let <span class="math" data-tex="\(u\in M_r(A^\infty)\)">\(u\in M_r(A^\infty)\)</span> be invertible. Define</p>
+<span id="equation-5-2"></span><span class="math math-display" data-tex="\[
+w_\tau(u)=\frac1{2\pi i}\tau_r(u^{-1}\delta u).
+\tag{5.2}
+\]">\[
+w_\tau(u)=\frac1{2\pi i}\tau_r(u^{-1}\delta u).
+\tag{5.2}
+\]</span>
+<p><span id="theorem-5-2"></span><strong>Theorem 5.2.</strong> This expression is additive under products and stable direct sum, and constant on norm-homotopy classes of invertibles. It therefore gives a homomorphism <span class="math" data-tex="\(K_1(A)\to\mathbb C\)">\(K_1(A)\to\mathbb C\)</span>.</p>
+<p><strong>Proof.</strong> The derivation rule and the trace identity give</p>
+<span class="math math-display" data-tex="\[
+\tau_r((uv)^{-1}\delta(uv))
+=\tau_r(v^{-1}u^{-1}(\delta u)v)+\tau_r(v^{-1}\delta v)
+=\tau_r(u^{-1}\delta u)+\tau_r(v^{-1}\delta v).
+\]">\[
+\tau_r((uv)^{-1}\delta(uv))
+=\tau_r(v^{-1}u^{-1}(\delta u)v)+\tau_r(v^{-1}\delta v)
+=\tau_r(u^{-1}\delta u)+\tau_r(v^{-1}\delta v).
+\]</span>
+<p>Direct sum follows from the unnormalized matrix trace, and adding an identity block contributes zero. For a differentiable path <span class="math" data-tex="\(u_t\)">\(u_t\)</span> of smooth invertibles,</p>
+<span class="math math-display" data-tex="\[
+\frac d{dt}\tau_r(u_t^{-1}\delta u_t)
+=\tau_r\bigl(\delta(u_t^{-1}\dot u_t)\bigr)=0.
+\]">\[
+\frac d{dt}\tau_r(u_t^{-1}\delta u_t)
+=\tau_r\bigl(\delta(u_t^{-1}\dot u_t)\bigr)=0.
+\]</span>
+<p>In deriving the equality, use <span class="math" data-tex="\(\delta(u^{-1})=-u^{-1}(\delta u)u^{-1}\)">\(\delta(u^{-1})=-u^{-1}(\delta u)u^{-1}\)</span> and cyclically rotate the other term. The last equality is trace invariance.</p>
+<p>Smooth invertibles suffice to compute norm components. An invertible can be approximated in norm by a smooth element, and a sufficiently close approximation is invertible by a Neumann series. A norm-continuous path between smooth invertibles can be approximated uniformly by a polygonal path whose vertices are smooth, retaining the endpoints. Choose its mesh and approximation so that every segment lies in an invertibility neighborhood of the corresponding original path. Lemma 1.1 makes inverses on that polygonal path smooth in the algebra variables. Each segment has the differentiability required above. Thus (5.2) is constant on norm components, including after stabilization. This is the defining relation for <span class="math" data-tex="\(K_1(A)\)">\(K_1(A)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="example-5-3"></span><strong>Example 5.3.</strong> Take smooth functions on <span class="math" data-tex="\(\mathbb R/\mathbb Z\)">\(\mathbb R/\mathbb Z\)</span>, with translation action, generator <span class="math" data-tex="\(d/ds\)">\(d/ds\)</span>, and trace <span class="math" data-tex="\(\int_0^1\)">\(\int_0^1\)</span>. For a nowhere-zero smooth function <span class="math" data-tex="\(u\)">\(u\)</span>, (5.2) is its winding number. Choose a logarithm at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> and extend it by</p>
+<span class="math math-display" data-tex="\[
+L(s)=L(0)+\int_0^s\frac{u&#x27;(t)}{u(t)}\,dt.
+\]">\[
+L(s)=L(0)+\int_0^s\frac{u&#x27;(t)}{u(t)}\,dt.
+\]</span>
+<p>Differentiating <span class="math" data-tex="\(e^{L(s)}/u(s)\)">\(e^{L(s)}/u(s)\)</span> shows it is constantly one. Since <span class="math" data-tex="\(u(1)=u(0)\)">\(u(1)=u(0)\)</span>, <span class="math" data-tex="\(L(1)-L(0)\)">\(L(1)-L(0)\)</span> lies in <span class="math" data-tex="\(2\pi i\mathbb Z\)">\(2\pi i\mathbb Z\)</span>. Hence <span class="math" data-tex="\(w_\tau(u)\in\mathbb Z\)">\(w_\tau(u)\in\mathbb Z\)</span>, and <span class="math" data-tex="\(w_\tau(e^{2\pi i m s})=m\)">\(w_\tau(e^{2\pi i m s})=m\)</span>.</p>
+<p>The same construction has higher odd degrees for a general Lie-group action. For a smooth invertible <span class="math" data-tex="\(u\in M_r(A^\infty)\)">\(u\in M_r(A^\infty)\)</span>, let <span class="math" data-tex="\(\omega=u^{-1}du\)">\(\omega=u^{-1}du\)</span>, using the differential of Section 2, and put</p>
+<span id="equation-5-4"></span><span class="math math-display" data-tex="\[
+\operatorname{ch}_{\tau,\mathrm{odd}}(u)
+=\sum_{k\geq0}\frac{(-1)^k k!}{(2k+1)!}
+\left(\frac1{2\pi i}\right)^{k+1}
+[\tau_r(\omega^{2k+1})].
+\tag{5.4}
+\]">\[
+\operatorname{ch}_{\tau,\mathrm{odd}}(u)
+=\sum_{k\geq0}\frac{(-1)^k k!}{(2k+1)!}
+\left(\frac1{2\pi i}\right)^{k+1}
+[\tau_r(\omega^{2k+1})].
+\tag{5.4}
+\]</span>
+<p>Only terms with <span class="math" data-tex="\(2k+1\leq\dim G\)">\(2k+1\leq\dim G\)</span> can be nonzero. Its degree-one part is (5.2).</p>
+<p><span id="theorem-5-4"></span><strong>Theorem 5.4.</strong> The forms in (5.4) are closed, their classes are invariant under norm homotopy and stabilization, and (5.4) defines a homomorphism
+<span class="math" data-tex="\(K_1(A)\to H^{\mathrm{odd}}(\mathfrak g;\mathbb C)\)">\(K_1(A)\to H^{\mathrm{odd}}(\mathfrak g;\mathbb C)\)</span>.</p>
+<p><strong>Proof.</strong> The derivative of an inverse gives the Maurer–Cartan identity <span class="math" data-tex="\(d\omega=-\omega^2\)">\(d\omega=-\omega^2\)</span>. Applying the graded Leibniz rule to powers of a degree-one element gives
+<span class="math" data-tex="\(d(\omega^{2k})=0\)">\(d(\omega^{2k})=0\)</span> and <span class="math" data-tex="\(d(\omega^{2k+1})=-\omega^{2k+2}\)">\(d(\omega^{2k+1})=-\omega^{2k+2}\)</span>.
+The graded trace of an even power is zero: moving its first factor of degree one past its other <span class="math" data-tex="\(2k+1\)">\(2k+1\)</span> factors changes sign. Consequently
+<span class="math" data-tex="\(d_{\mathfrak g}\tau_r(\omega^{2k+1})=-\tau_r(\omega^{2k+2})=0\)">\(d_{\mathfrak g}\tau_r(\omega^{2k+1})=-\tau_r(\omega^{2k+2})=0\)</span>.</p>
+<p>For a differentiable path <span class="math" data-tex="\(u_t\)">\(u_t\)</span>, put <span class="math" data-tex="\(b_t=u_t^{-1}\dot u_t\)">\(b_t=u_t^{-1}\dot u_t\)</span>. Direct differentiation gives
+<span class="math" data-tex="\(\dot\omega_t=db_t+[\omega_t,b_t]\)">\(\dot\omega_t=db_t+[\omega_t,b_t]\)</span>.
+Each factor differentiated in the traced odd power contributes the same term, because cyclically moving factors through an odd total degree produces an even sign exponent. The commutator terms have zero trace. Since <span class="math" data-tex="\(d(\omega_t^{2k})=0\)">\(d(\omega_t^{2k})=0\)</span>, it follows that</p>
+<span id="equation-5-5"></span><span class="math math-display" data-tex="\[
+\frac d{dt}\tau_r(\omega_t^{2k+1})
+=(2k+1)d_{\mathfrak g}\tau_r(b_t\omega_t^{2k}).
+\tag{5.5}
+\]">\[
+\frac d{dt}\tau_r(\omega_t^{2k+1})
+=(2k+1)d_{\mathfrak g}\tau_r(b_t\omega_t^{2k}).
+\tag{5.5}
+\]</span>
+<p>Integrating gives an explicit transgression and proves homotopy invariance of each class. The polygonal smoothing argument in Theorem 5.2 extends it to norm homotopies between smooth invertibles and supplies smooth representatives for every class.</p>
+<p>Block sums add the forms, and an identity block contributes zero. To see product additivity on classes, first put <span class="math" data-tex="\(u,v\)">\(u,v\)</span> in the same matrix size by stabilization. Let <span class="math" data-tex="\(R_t\)">\(R_t\)</span> be the scalar block rotation through angle <span class="math" data-tex="\(t\)">\(t\)</span>. The path</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}u&amp;0\\0&amp;1\end{pmatrix}
+R_t\begin{pmatrix}v&amp;0\\0&amp;1\end{pmatrix}R_t^{-1},
+\qquad 0\leq t\leq\pi/2,
+\]">\[
+\begin{pmatrix}u&amp;0\\0&amp;1\end{pmatrix}
+R_t\begin{pmatrix}v&amp;0\\0&amp;1\end{pmatrix}R_t^{-1},
+\qquad 0\leq t\leq\pi/2,
+\]</span>
+<p>joins <span class="math" data-tex="\(\operatorname{diag}(uv,1)\)">\(\operatorname{diag}(uv,1)\)</span> to <span class="math" data-tex="\(\operatorname{diag}(u,v)\)">\(\operatorname{diag}(u,v)\)</span>. It consists of smooth invertibles. Transgression and block additivity therefore identify the class of <span class="math" data-tex="\(uv\)">\(uv\)</span> with the sum of the classes of <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>. These are precisely the stable homotopy and product relations defining <span class="math" data-tex="\(K_1\)">\(K_1\)</span>, proving the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a two-parameter action, the Grassmann formula reads</p>
+<span id="equation-5-3"></span><span class="math math-display" data-tex="\[
+c_1(p)=\frac1{2\pi i}\tau_r
+\bigl(p(\delta_1p\,\delta_2p-\delta_2p\,\delta_1p)\bigr).
+\tag{5.3}
+\]">\[
+c_1(p)=\frac1{2\pi i}\tau_r
+\bigl(p(\delta_1p\,\delta_2p-\delta_2p\,\delta_1p)\bigr).
+\tag{5.3}
+\]</span>
+<p>If <span class="math" data-tex="\(p\)">\(p\)</span> is fixed by a nontrivial one-parameter subgroup, choose one coordinate along that subgroup. The corresponding derivative of <span class="math" data-tex="\(p\)">\(p\)</span> vanishes, so the curvature form and <span class="math" data-tex="\(c_1(p)\)">\(c_1(p)\)</span> vanish. By Theorem 4.1, the same holds for a projective module isomorphic to such a fixed projection module.</p>
+<p>For a nonunital algebra, extend the action to its unitization by fixing the scalar unit. Projections belonging to matrices over <span class="math" data-tex="\(A\)">\(A\)</span> can be smoothed there while remaining in <span class="math" data-tex="\(A\)">\(A\)</span>: the spectral cutoff is zero at zero. The corner isomorphism argument of Theorem 1.2 remains within the ideal. On the relative group <span class="math" data-tex="\(K_0(A)=\ker(K_0(A^+)\to K_0(\mathbb C))\)">\(K_0(A)=\ker(K_0(A^+)\to K_0(\mathbb C))\)</span>, extend the bounded trace to the unitization. Different choices differ by a scalar-quotient trace. Its positive-degree characteristic classes vanish, since the scalar algebra has a zero reference connection, and its degree-zero value vanishes on the relative group. Thus the resulting character is independent of that choice. The odd formulas use invertibles with scalar part the identity, so every differentiated factor and every positive-degree odd form lies in the ideal; their traced classes are likewise independent of the extension.</p>
+<h2 id="6-the-smooth-rotation-algebra">6. The smooth rotation algebra</h2>
+<p>Fix an irrational real number <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Let <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> be the universal unital C*-algebra with unitary generators <span class="math" data-tex="\(U,V\)">\(U,V\)</span> satisfying</p>
+<span id="equation-6-1"></span><span class="math math-display" data-tex="\[
+UV=e^{2\pi i\theta}VU.
+\tag{6.1}
+\]">\[
+UV=e^{2\pi i\theta}VU.
+\tag{6.1}
+\]</span>
+<p>The action of <span class="math" data-tex="\(\mathbb R^2/\mathbb Z^2\)">\(\mathbb R^2/\mathbb Z^2\)</span> is
+<span class="math" data-tex="\(\alpha_{t_1,t_2}(U)=e^{2\pi it_1}U\)">\(\alpha_{t_1,t_2}(U)=e^{2\pi it_1}U\)</span>,
+<span class="math" data-tex="\(\alpha_{t_1,t_2}(V)=e^{2\pi it_2}V\)">\(\alpha_{t_1,t_2}(V)=e^{2\pi it_2}V\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\delta_1(U)=2\pi iU,\quad\delta_1(V)=0,\qquad
+\delta_2(U)=0,\quad\delta_2(V)=2\pi iV.
+\]">\[
+\delta_1(U)=2\pi iU,\quad\delta_1(V)=0,\qquad
+\delta_2(U)=0,\quad\delta_2(V)=2\pi iV.
+\]</span>
+<p><span id="theorem-6-1"></span><strong>Theorem 6.1.</strong> The smooth algebra consists exactly of series</p>
+<span class="math math-display" data-tex="\[
+a=\sum_{n,m\in\mathbb Z}a_{n,m}U^nV^m
+\]">\[
+a=\sum_{n,m\in\mathbb Z}a_{n,m}U^nV^m
+\]</span>
+<p>whose coefficients decrease faster than every power of <span class="math" data-tex="\(1+|n|+|m|\)">\(1+|n|+|m|\)</span>. The coefficient <span class="math" data-tex="\(a_{0,0}\)">\(a_{0,0}\)</span> defines the unique normalized trace on <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span>.</p>
+<p><strong>Proof.</strong> Fourier projection for the torus action is</p>
+<span class="math math-display" data-tex="\[
+P_{n,m}(a)=\int_{[0,1]^2}e^{-2\pi i(nt_1+mt_2)}\alpha_t(a)\,dt.
+\]">\[
+P_{n,m}(a)=\int_{[0,1]^2}e^{-2\pi i(nt_1+mt_2)}\alpha_t(a)\,dt.
+\]</span>
+<p>Laurent polynomials in <span class="math" data-tex="\(U,V\)">\(U,V\)</span> are dense by the definition of the generated C*-algebra. On them this projection has range <span class="math" data-tex="\(\mathbb C U^nV^m\)">\(\mathbb C U^nV^m\)</span>. Continuity and the fact that this one-dimensional space is closed give the same range on <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span>. If <span class="math" data-tex="\(a\)">\(a\)</span> is smooth, integration by parts in both torus variables bounds its coefficient after multiplication by arbitrary powers of <span class="math" data-tex="\(n,m\)">\(n,m\)</span>. Equivalently, applying powers of <span class="math" data-tex="\(1-\partial_{t_1}^2-\partial_{t_2}^2\)">\(1-\partial_{t_1}^2-\partial_{t_2}^2\)</span> gives arbitrary powers of <span class="math" data-tex="\(1+n^2+m^2\)">\(1+n^2+m^2\)</span>. Thus the coefficients are rapidly decreasing.</p>
+<p>Conversely, a rapidly decreasing series and every series obtained by multiplying its coefficients by a polynomial in <span class="math" data-tex="\(n,m\)">\(n,m\)</span> converge absolutely in norm, since the monomials are unitaries. Termwise differentiation of the orbit series is justified uniformly on the torus. It gives all derivatives and proves smoothness. Fourier uniqueness follows, for example, by convolving the orbit function with product Fejér kernels, which converge in norm to its value at the identity.</p>
+<p>The torus average <span class="math" data-tex="\(P_{0,0}\)">\(P_{0,0}\)</span> is a positive unital map with scalar range; let <span class="math" data-tex="\(\tau(a)1=P_{0,0}(a)\)">\(\tau(a)1=P_{0,0}(a)\)</span>. The monomial multiplication rule is</p>
+<span class="math math-display" data-tex="\[
+(U^nV^m)(U^rV^s)=e^{-2\pi i\theta mr}U^{n+r}V^{m+s}.
+\]">\[
+(U^nV^m)(U^rV^s)=e^{-2\pi i\theta mr}U^{n+r}V^{m+s}.
+\]</span>
+<p>Both orders have zero scalar coefficient unless <span class="math" data-tex="\((r,s)=(-n,-m)\)">\((r,s)=(-n,-m)\)</span>; in that case both phases equal <span class="math" data-tex="\(e^{2\pi i\theta mn}\)">\(e^{2\pi i\theta mn}\)</span>. Thus <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a trace on polynomials and, by norm continuity, on <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span>. For any normalized trace, invariance under conjugation by <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> forces its value on each nonconstant monomial to be zero, because <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is irrational. Density proves uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a projection that makes the obstruction visible inside the algebra itself. We use the Powers–Rieffel construction, with the orientation fixed by (6.1); its role in <span class="math" data-tex="\(K\)">\(K\)</span>-theory is described in [Pimsner–Voiculescu 1980, Appendix]. Suppose <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span>. Choose
+<span class="math" data-tex="\(0&lt;a&lt;b&lt;a+\theta&lt;b+\theta&lt;1\)">\(0&lt;a&lt;b&lt;a+\theta&lt;b+\theta&lt;1\)</span>, and a smooth function <span class="math" data-tex="\(F\)">\(F\)</span> rising from zero to one on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, flat at both ends, such that <span class="math" data-tex="\(\sqrt{F(1-F)}\)">\(\sqrt{F(1-F)}\)</span> is also smooth and flat there. For example take <span class="math" data-tex="\(F=\sin^2(\pi H/2)\)">\(F=\sin^2(\pi H/2)\)</span>, where <span class="math" data-tex="\(H\)">\(H\)</span> is a smooth increasing step flat at zero and one.</p>
+<p>Define periodic functions <span class="math" data-tex="\(f,g\)">\(f,g\)</span> by setting <span class="math" data-tex="\(f=F\)">\(f=F\)</span> on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, <span class="math" data-tex="\(f=1\)">\(f=1\)</span> on <span class="math" data-tex="\([b,a+\theta]\)">\([b,a+\theta]\)</span>, <span class="math" data-tex="\(f(t)=1-F(t-\theta)\)">\(f(t)=1-F(t-\theta)\)</span> on <span class="math" data-tex="\([a+\theta,b+\theta]\)">\([a+\theta,b+\theta]\)</span>, and <span class="math" data-tex="\(f=0\)">\(f=0\)</span> elsewhere in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Set <span class="math" data-tex="\(g=\sqrt{f-f^2}\)">\(g=\sqrt{f-f^2}\)</span> on the falling interval <span class="math" data-tex="\([a+\theta,b+\theta]\)">\([a+\theta,b+\theta]\)</span>, and zero elsewhere. They are smooth by the chosen flatness. Regarding these as functions of <span class="math" data-tex="\(U\)">\(U\)</span>, put</p>
+<span id="equation-6-2"></span><span class="math math-display" data-tex="\[
+e=V^*g+f+gV.
+\tag{6.2}
+\]">\[
+e=V^*g+f+gV.
+\tag{6.2}
+\]</span>
+<p><span id="proposition-6-2"></span><strong>Proposition 6.2.</strong> The element <span class="math" data-tex="\(e\)">\(e\)</span> is a smooth orthogonal projection with <span class="math" data-tex="\(\tau(e)=\theta\)">\(\tau(e)=\theta\)</span> and <span class="math" data-tex="\(c_1(e)=-1\)">\(c_1(e)=-1\)</span>, for the ordered derivations specified above.</p>
+<p><strong>Proof.</strong> The relation (6.1) gives
+<span class="math" data-tex="\(Vh(U)V^*=h(t-\theta)\)">\(Vh(U)V^*=h(t-\theta)\)</span>. In the expansion <span class="math" data-tex="\(e=\sum e_m(t)V^m\)">\(e=\sum e_m(t)V^m\)</span>, the coefficients are
+<span class="math" data-tex="\(e_0=f\)">\(e_0=f\)</span>, <span class="math" data-tex="\(e_1=g\)">\(e_1=g\)</span>, <span class="math" data-tex="\(e_{-1}=g(t+\theta)\)">\(e_{-1}=g(t+\theta)\)</span>.
+The coefficient product rule is
+<span class="math" data-tex="\((hV^m)(kV^r)=h(t)k(t-m\theta)V^{m+r}\)">\((hV^m)(kV^r)=h(t)k(t-m\theta)V^{m+r}\)</span>.
+The coefficient of <span class="math" data-tex="\(V^0\)">\(V^0\)</span> in <span class="math" data-tex="\(e^2\)">\(e^2\)</span> is
+<span class="math" data-tex="\(f^2+g^2+g(t+\theta)^2=f\)">\(f^2+g^2+g(t+\theta)^2=f\)</span>: the two <span class="math" data-tex="\(g^2\)">\(g^2\)</span> terms supply <span class="math" data-tex="\(f-f^2\)">\(f-f^2\)</span> on the falling and rising intervals, respectively. The coefficient of <span class="math" data-tex="\(V\)">\(V\)</span> is
+<span class="math" data-tex="\(g(t)(f(t)+f(t-\theta))=g(t)\)">\(g(t)(f(t)+f(t-\theta))=g(t)\)</span>, since the sum in parentheses is one on the support of <span class="math" data-tex="\(g\)">\(g\)</span>. The coefficient of <span class="math" data-tex="\(V^2\)">\(V^2\)</span> is zero because the supports of <span class="math" data-tex="\(g(t)\)">\(g(t)\)</span> and <span class="math" data-tex="\(g(t-\theta)\)">\(g(t-\theta)\)</span> are disjoint on the circle. The negative coefficients follow by taking adjoints, since (6.2) is self-adjoint. Thus <span class="math" data-tex="\(e^2=e=e^*\)">\(e^2=e=e^*\)</span>. The two transition intervals contribute a total integral <span class="math" data-tex="\(b-a\)">\(b-a\)</span> to <span class="math" data-tex="\(f\)">\(f\)</span>, and the plateau has length <span class="math" data-tex="\(\theta-(b-a)\)">\(\theta-(b-a)\)</span>. Hence <span class="math" data-tex="\(\tau(e)=\int_0^1 f(t)dt=\theta\)">\(\tau(e)=\int_0^1 f(t)dt=\theta\)</span>.</p>
+<p>We compute the Chern number directly rather than obtaining its sign from a trace classification. Differentiation of a coefficient gives <span class="math" data-tex="\(\delta_1(hV^m)=h&#x27;V^m\)">\(\delta_1(hV^m)=h&#x27;V^m\)</span> and <span class="math" data-tex="\(\delta_2(hV^m)=2\pi i m hV^m\)">\(\delta_2(hV^m)=2\pi i m hV^m\)</span>. In the scalar coefficient of <span class="math" data-tex="\(e[\delta_1e,\delta_2e]\)">\(e[\delta_1e,\delta_2e]\)</span>, the only contributing index triples are the six permutations of <span class="math" data-tex="\((0,1,-1)\)">\((0,1,-1)\)</span>. Write <span class="math" data-tex="\(g_+(t)=g(t+\theta)\)">\(g_+(t)=g(t+\theta)\)</span>. After cancelling <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>, their sum is</p>
+<span class="math math-display" data-tex="\[
+2f(g_+g_+&#x27;-gg&#x27;)
++g^2(f&#x27;-f&#x27;(t-\theta))
++g_+^2(f&#x27;(t+\theta)-f&#x27;).
+\]">\[
+2f(g_+g_+&#x27;-gg&#x27;)
++g^2(f&#x27;-f&#x27;(t-\theta))
++g_+^2(f&#x27;(t+\theta)-f&#x27;).
+\]</span>
+<p>In the integral, translate the <span class="math" data-tex="\(g_+\)">\(g_+\)</span>-terms by <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. The first pair then becomes
+<span class="math" data-tex="\(2(f(t-\theta)-f(t))gg&#x27;\)">\(2(f(t-\theta)-f(t))gg&#x27;\)</span>. Integration by parts turns it into
+<span class="math" data-tex="\(g^2(f&#x27;(t)-f&#x27;(t-\theta))\)">\(g^2(f&#x27;(t)-f&#x27;(t-\theta))\)</span>.
+The two remaining pairs each contribute that same integral. On the support of <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(f&#x27;(t-\theta)=-f&#x27;(t)\)">\(f&#x27;(t-\theta)=-f&#x27;(t)\)</span>, so altogether</p>
+<span id="equation-6-3"></span><span class="math math-display" data-tex="\[
+c_1(e)=6\int_0^1g(t)^2f&#x27;(t)\,dt
+=6\int_1^0(x-x^2)\,dx=-1.
+\tag{6.3}
+\]">\[
+c_1(e)=6\int_0^1g(t)^2f&#x27;(t)\,dt
+=6\int_1^0(x-x^2)\,dx=-1.
+\tag{6.3}
+\]</span>
+<p>This agrees with the constant-curvature computation below and proves nontriviality with an explicit projection. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Connes 2001, rotation-algebra example] uses <span class="math" data-tex="\(-6\int g^2f&#x27;\)">\(-6\int g^2f&#x27;\)</span> for this Chern number; expansion with the ordered convention (6.1) gives <span class="math" data-tex="\(+6\int g^2f&#x27;\)">\(+6\int g^2f&#x27;\)</span>, so the falling interval contributes <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<h2 id="7-a-finite-frame-on-the-schwartz-space">7. A finite frame on the Schwartz space</h2>
+<p>Let <span class="math" data-tex="\(p\in\mathbb Z\)">\(p\in\mathbb Z\)</span>, <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, and put <span class="math" data-tex="\(\varepsilon=p/q-\theta\)">\(\varepsilon=p/q-\theta\)</span>, which is nonzero. On
+<span class="math" data-tex="\(E_{p,q}=\mathcal S(\mathbb R\times\mathbb Z/q)\)">\(E_{p,q}=\mathcal S(\mathbb R\times\mathbb Z/q)\)</span>, define a right action by</p>
+<span id="equation-7-1"></span><span class="math math-display" data-tex="\[
+(\xi U)(s,h)=\xi(s+\varepsilon,h+p),\qquad
+(\xi V)(s,h)=e^{2\pi i(s-h/q)}\xi(s,h).
+\tag{7.1}
+\]">\[
+(\xi U)(s,h)=\xi(s+\varepsilon,h+p),\qquad
+(\xi V)(s,h)=e^{2\pi i(s-h/q)}\xi(s,h).
+\tag{7.1}
+\]</span>
+<p>The finite coordinate is read modulo <span class="math" data-tex="\(q\)">\(q\)</span>. Changing its representative changes the exponent by an integer, so the formula is well-defined. If <span class="math" data-tex="\(R_U,R_V\)">\(R_U,R_V\)</span> denote these operators, then</p>
+<span class="math math-display" data-tex="\[
+R_UR_V=e^{-2\pi i\theta}R_VR_U.
+\]">\[
+R_UR_V=e^{-2\pi i\theta}R_VR_U.
+\]</span>
+<p>Since a right action satisfies <span class="math" data-tex="\(R_{ab}=R_bR_a\)">\(R_{ab}=R_bR_a\)</span>, this is precisely (6.1). The sign in the translation is fixed by that equality. A rapidly decreasing sum of monomials acts continuously on the Schwartz space: translations grow each weight seminorm polynomially in <span class="math" data-tex="\(n\)">\(n\)</span>, and modulation derivatives grow polynomially in <span class="math" data-tex="\(m\)">\(m\)</span>. The rapid coefficients dominate both. Hence (7.1) extends to <span class="math" data-tex="\(A_\theta^\infty\)">\(A_\theta^\infty\)</span>.</p>
+<p><em>Reference:</em> [Connes 2001, formulas preceding Theorem 6] translates by <span class="math" data-tex="\(-\varepsilon\)">\(-\varepsilon\)</span> in the displayed right action; at <span class="math" data-tex="\(p=0,q=1\)">\(p=0,q=1\)</span> it gives <span class="math" data-tex="\(R_UR_V=e^{2\pi i\theta}R_VR_U\)">\(R_UR_V=e^{2\pi i\theta}R_VR_U\)</span>, which violates the right form of (6.1). Formula (7.1) has the compatible relation, as Exercise 9.4 also verifies.</p>
+<p>For <span class="math" data-tex="\(\xi,\eta\in E_{p,q}\)">\(\xi,\eta\in E_{p,q}\)</span>, define</p>
+<span id="equation-7-2"></span><span class="math math-display" data-tex="\[
+\langle\xi,\eta\rangle_A
+=\sum_{n,m\in\mathbb Z}
+\langle R_{U^nV^m}\xi,\eta\rangle_{L^2}\,U^nV^m,
+\tag{7.2}
+\]">\[
+\langle\xi,\eta\rangle_A
+=\sum_{n,m\in\mathbb Z}
+\langle R_{U^nV^m}\xi,\eta\rangle_{L^2}\,U^nV^m,
+\tag{7.2}
+\]</span>
+<p>where the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> inner product integrates over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, sums over the finite coordinate, and is linear in the second variable. These coefficients are rapidly decreasing. For powers of <span class="math" data-tex="\(n\)">\(n\)</span>, use the rapid decay of two Schwartz functions whose arguments differ by <span class="math" data-tex="\(n\varepsilon\)">\(n\varepsilon\)</span>. For powers of <span class="math" data-tex="\(m\)">\(m\)</span>, integrate by parts in the modulation variable; the differentiated products retain the same translation decay. This proves joint rapid decay and that (7.2) belongs to <span class="math" data-tex="\(A_\theta^\infty\)">\(A_\theta^\infty\)</span>.</p>
+<p><span id="lemma-7-1"></span><strong>Lemma 7.1.</strong> This form satisfies</p>
+<span id="equation-7-3"></span><span class="math math-display" data-tex="\[
+\langle\xi,\eta a\rangle_A=\langle\xi,\eta\rangle_Aa,
+\qquad
+\langle\xi,\eta\rangle_A^*=\langle\eta,\xi\rangle_A.
+\tag{7.3}
+\]">\[
+\langle\xi,\eta a\rangle_A=\langle\xi,\eta\rangle_Aa,
+\qquad
+\langle\xi,\eta\rangle_A^*=\langle\eta,\xi\rangle_A.
+\tag{7.3}
+\]</span>
+<p><strong>Proof.</strong> For a unitary monomial <span class="math" data-tex="\(a\)">\(a\)</span>, use unitarity of <span class="math" data-tex="\(R_a\)">\(R_a\)</span> and reversed composition:</p>
+<span class="math math-display" data-tex="\[
+\langle R_b\xi,R_a\eta\rangle_{L^2}
+=\langle R_{ba^{-1}}\xi,\eta\rangle_{L^2}.
+\]">\[
+\langle R_b\xi,R_a\eta\rangle_{L^2}
+=\langle R_{ba^{-1}}\xi,\eta\rangle_{L^2}.
+\]</span>
+<p>The coefficient of a monomial <span class="math" data-tex="\(b\)">\(b\)</span> in an element <span class="math" data-tex="\(x\in A_\theta^\infty\)">\(x\in A_\theta^\infty\)</span> is <span class="math" data-tex="\(\tau(b^*x)\)">\(\tau(b^*x)\)</span>. The coefficient of <span class="math" data-tex="\(b\)">\(b\)</span> in <span class="math" data-tex="\(\langle\xi,\eta\rangle_Aa\)">\(\langle\xi,\eta\rangle_Aa\)</span> is therefore the coefficient tested by <span class="math" data-tex="\(ba^{-1}\)">\(ba^{-1}\)</span>, with its unitary phase included. This is the displayed Hilbert-space identity. Hermitian symmetry follows likewise from
+<span class="math" data-tex="\(\overline{\langle R_{b^{-1}}\xi,\eta\rangle_{L^2}}=
+\langle R_b\eta,\xi\rangle_{L^2}\)">\(\overline{\langle R_{b^{-1}}\xi,\eta\rangle_{L^2}}=
+\langle R_b\eta,\xi\rangle_{L^2}\)</span>.
+Linearity proves the identities for polynomials, and continuity in the rapid-decay seminorms proves them for smooth elements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-7-2"></span><strong>Theorem 7.2.</strong> The right module <span class="math" data-tex="\(E_{p,q}\)">\(E_{p,q}\)</span> is finite projective over <span class="math" data-tex="\(A_\theta^\infty\)">\(A_\theta^\infty\)</span>. Its trace dimension is</p>
+<span id="equation-7-4"></span><span class="math math-display" data-tex="\[
+\dim_\tau E_{p,q}=q|\varepsilon|=|p-q\theta|.
+\tag{7.4}
+\]">\[
+\dim_\tau E_{p,q}=q|\varepsilon|=|p-q\theta|.
+\tag{7.4}
+\]</span>
+<p>There is no coprimality assumption on <span class="math" data-tex="\(p,q\)">\(p,q\)</span>.</p>
+<p><strong>Proof.</strong> Choose finitely many smooth compactly supported functions <span class="math" data-tex="\(g_j\)">\(g_j\)</span> with support intervals of length less than one such that</p>
+<span id="equation-7-5"></span><span class="math math-display" data-tex="\[
+\sum_{j,n\in\mathbb Z}|g_j(s+n\varepsilon)|^2=1.
+\tag{7.5}
+\]">\[
+\sum_{j,n\in\mathbb Z}|g_j(s+n\varepsilon)|^2=1.
+\tag{7.5}
+\]</span>
+<p>To construct them, cover the circle <span class="math" data-tex="\(\mathbb R/(|\varepsilon|\mathbb Z)\)">\(\mathbb R/(|\varepsilon|\mathbb Z)\)</span> by finitely many intervals whose lengths are less than both one and <span class="math" data-tex="\(|\varepsilon|\)">\(|\varepsilon|\)</span>. Choose bumps <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span> supported in lifted intervals and positive on a smaller covering. The function <span class="math" data-tex="\(w(s)=\sum_{j,n}|\beta_j(s+n\varepsilon)|^2\)">\(w(s)=\sum_{j,n}|\beta_j(s+n\varepsilon)|^2\)</span> is smooth, positive and <span class="math" data-tex="\(|\varepsilon|\)">\(|\varepsilon|\)</span>-periodic. Set <span class="math" data-tex="\(g_j=\beta_j/\sqrt w\)">\(g_j=\beta_j/\sqrt w\)</span>. This proves (7.5).</p>
+<p>For <span class="math" data-tex="\(r\in\mathbb Z/q\)">\(r\in\mathbb Z/q\)</span>, let <span class="math" data-tex="\(g_{j,r}(s,h)=g_j(s)\mathbf1_{h=r}\)">\(g_{j,r}(s,h)=g_j(s)\mathbf1_{h=r}\)</span>. We claim that these finitely many vectors are a frame:</p>
+<span id="equation-7-6"></span><span class="math math-display" data-tex="\[
+\eta=\sum_{j,r}g_{j,r}\langle g_{j,r},\eta\rangle_A.
+\tag{7.6}
+\]">\[
+\eta=\sum_{j,r}g_{j,r}\langle g_{j,r},\eta\rangle_A.
+\tag{7.6}
+\]</span>
+<p>Expand (7.2) and the right action. Summing over modulation index <span class="math" data-tex="\(m\)">\(m\)</span> uses the Fourier identity
+<span class="math" data-tex="\(\sum_m e^{2\pi imx}=\sum_{\ell\in\mathbb Z}\delta(x-\ell)\)">\(\sum_m e^{2\pi imx}=\sum_{\ell\in\mathbb Z}\delta(x-\ell)\)</span>, applied to Schwartz test functions. At <span class="math" data-tex="\((s,h)\)">\((s,h)\)</span>, the resulting expression is</p>
+<span class="math math-display" data-tex="\[
+\sum_{j,r,n,k,\ell}
+g_{j,r}(s+n\varepsilon,h+np)
+\overline{g_{j,r}(s+(k-h)/q-\ell+n\varepsilon,k+np)}
+\eta(s+(k-h)/q-\ell,k).
+\]">\[
+\sum_{j,r,n,k,\ell}
+g_{j,r}(s+n\varepsilon,h+np)
+\overline{g_{j,r}(s+(k-h)/q-\ell+n\varepsilon,k+np)}
+\eta(s+(k-h)/q-\ell,k).
+\]</span>
+<p>Both window factors can be nonzero only when <span class="math" data-tex="\(k=h\)">\(k=h\)</span> in <span class="math" data-tex="\(\mathbb Z/q\)">\(\mathbb Z/q\)</span>. Then their real arguments differ by the integer <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Their common support interval has length less than one, so only <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> survives. For each <span class="math" data-tex="\(n,h\)">\(n,h\)</span>, exactly one finite index <span class="math" data-tex="\(r\)">\(r\)</span> survives. The expression reduces to <span class="math" data-tex="\(\eta(s,h)\sum_{j,n}|g_j(s+n\varepsilon)|^2=\eta(s,h)\)">\(\eta(s,h)\sum_{j,n}|g_j(s+n\varepsilon)|^2=\eta(s,h)\)</span>. All coefficient sums before synthesis converge in Schwartz seminorms; the Fourier identity can also be justified by inserting Fejér factors and taking their limit. This proves (7.6).</p>
+<p>Index the finite frame by <span class="math" data-tex="\(i\)">\(i\)</span>. Let <span class="math" data-tex="\(\Phi:(A_\theta^\infty)^N\to E_{p,q}\)">\(\Phi:(A_\theta^\infty)^N\to E_{p,q}\)</span> send <span class="math" data-tex="\((a_i)\)">\((a_i)\)</span> to <span class="math" data-tex="\(\sum_i g_i a_i\)">\(\sum_i g_i a_i\)</span>, and let <span class="math" data-tex="\(\Lambda\eta=(\langle g_i,\eta\rangle_A)_i\)">\(\Lambda\eta=(\langle g_i,\eta\rangle_A)_i\)</span>. By Lemma 7.1 these are right-linear, and (7.6) says <span class="math" data-tex="\(\Phi\Lambda=1\)">\(\Phi\Lambda=1\)</span>. Consequently <span class="math" data-tex="\(P=\Lambda\Phi\)">\(P=\Lambda\Phi\)</span> is an idempotent matrix, and Hermitian symmetry gives <span class="math" data-tex="\(P=P^*\)">\(P=P^*\)</span>. The two maps identify <span class="math" data-tex="\(E_{p,q}\)">\(E_{p,q}\)</span> with <span class="math" data-tex="\(P(A_\theta^\infty)^N\)">\(P(A_\theta^\infty)^N\)</span>, proving finite projectivity. They also show positivity of the form: (7.6) and (7.3) give
+<span class="math" data-tex="\(\langle\eta,\eta\rangle_A=\sum_i\langle g_i,\eta\rangle_A^*\langle g_i,\eta\rangle_A\)">\(\langle\eta,\eta\rangle_A=\sum_i\langle g_i,\eta\rangle_A^*\langle g_i,\eta\rangle_A\)</span>.</p>
+<p>The trace dimension is</p>
+<span class="math math-display" data-tex="\[
+\tau_N(P)=\sum_{j,r}\|g_{j,r}\|_{L^2}^2
+=q\sum_j\int_{\mathbb R}|g_j(s)|^2\,ds=q|\varepsilon|.
+\]">\[
+\tau_N(P)=\sum_{j,r}\|g_{j,r}\|_{L^2}^2
+=q\sum_j\int_{\mathbb R}|g_j(s)|^2\,ds=q|\varepsilon|.
+\]</span>
+<p>The last equality follows by integrating (7.5) over one period and using the translates to partition the real line. This proves (7.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-constant-curvature-and-its-normalization">8. Constant curvature and its normalization</h2>
+<p>On the right module of (7.1), define</p>
+<span id="equation-8-1"></span><span class="math math-display" data-tex="\[
+\nabla_1\xi=-\frac{2\pi i s}{\varepsilon}\xi,
+\qquad \nabla_2\xi=\frac d{ds}\xi.
+\tag{8.1}
+\]">\[
+\nabla_1\xi=-\frac{2\pi i s}{\varepsilon}\xi,
+\qquad \nabla_2\xi=\frac d{ds}\xi.
+\tag{8.1}
+\]</span>
+<p><span id="theorem-8-1"></span><strong>Theorem 8.1.</strong> These operators form a metric connection for the ordered derivations <span class="math" data-tex="\((\delta_1,\delta_2)\)">\((\delta_1,\delta_2)\)</span>, and</p>
+<span id="equation-8-2"></span><span class="math math-display" data-tex="\[
+\Theta(\delta_1,\delta_2)=\frac{2\pi i}{\varepsilon}\,1_E,
+\qquad c_1(E_{p,q})=q\,\operatorname{sgn}(\varepsilon).
+\tag{8.2}
+\]">\[
+\Theta(\delta_1,\delta_2)=\frac{2\pi i}{\varepsilon}\,1_E,
+\qquad c_1(E_{p,q})=q\,\operatorname{sgn}(\varepsilon).
+\tag{8.2}
+\]</span>
+<p><strong>Proof.</strong> Direct computation gives</p>
+<span class="math math-display" data-tex="\[
+[\nabla_1,R_U]=2\pi iR_U,\quad[\nabla_1,R_V]=0,
+\qquad[\nabla_2,R_U]=0,\quad[\nabla_2,R_V]=2\pi iR_V.
+\]">\[
+[\nabla_1,R_U]=2\pi iR_U,\quad[\nabla_1,R_V]=0,
+\qquad[\nabla_2,R_U]=0,\quad[\nabla_2,R_V]=2\pi iR_V.
+\]</span>
+<p>These are the right Leibniz rules for the two generators, and the polynomial-growth estimates already used extend them to all smooth elements. Both operators are skew with respect to the scalar <span class="math" data-tex="\(L^2\)">\(L^2\)</span> inner product: for differentiation integrate by parts, and for multiplication the coefficient is purely imaginary. Testing (7.2) on a monomial and using these skew identities and the displayed commutators proves</p>
+<span class="math math-display" data-tex="\[
+\delta_j\langle\xi,\eta\rangle_A
+=\langle\nabla_j\xi,\eta\rangle_A+
+\langle\xi,\nabla_j\eta\rangle_A.
+\]">\[
+\delta_j\langle\xi,\eta\rangle_A
+=\langle\nabla_j\xi,\eta\rangle_A+
+\langle\xi,\nabla_j\eta\rangle_A.
+\]</span>
+<p>Thus the connection is metric. Finally <span class="math" data-tex="\([s,d/ds]=-1\)">\([s,d/ds]=-1\)</span>, giving the first formula in (8.2). Tracing the identity endomorphism gives (7.4), so</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi i}\tau_E(\Theta)
+=\frac{q|\varepsilon|}{\varepsilon}
+=q\operatorname{sgn}(\varepsilon).
+\]">\[
+\frac1{2\pi i}\tau_E(\Theta)
+=\frac{q|\varepsilon|}{\varepsilon}
+=q\operatorname{sgn}(\varepsilon).
+\]</span>
+<p>This proves the second formula with the normalization in (5.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The curvature endomorphism in (8.2) includes the factor <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>. The normalized curvature is <span class="math" data-tex="\(\Theta/(2\pi i)\)">\(\Theta/(2\pi i)\)</span>. Reversing the order of the two derivations reverses the Chern number. For <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span>, the module <span class="math" data-tex="\(E_{0,1}\)">\(E_{0,1}\)</span> has dimension <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and, with the ordered generators of (6.1), Chern number <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p>The same module admits a useful Fourier description. Set</p>
+<span id="equation-8-4"></span><span class="math math-display" data-tex="\[
+(J\xi)(s,h)=\frac1{\sqrt{q|\varepsilon|}}
+\sum_{k\in\mathbb Z/q}\int_{\mathbb R}
+e^{-2\pi i st/\varepsilon}e^{-2\pi i hk/q}\xi(t,k)\,dt.
+\tag{8.4}
+\]">\[
+(J\xi)(s,h)=\frac1{\sqrt{q|\varepsilon|}}
+\sum_{k\in\mathbb Z/q}\int_{\mathbb R}
+e^{-2\pi i st/\varepsilon}e^{-2\pi i hk/q}\xi(t,k)\,dt.
+\tag{8.4}
+\]</span>
+<p>This is a scaled Fourier transform and a finite Fourier transform, so it is an isomorphism of Schwartz spaces and a unitary on their <span class="math" data-tex="\(L^2\)">\(L^2\)</span> completions. Changing variables in the <span class="math" data-tex="\(U\)">\(U\)</span>-formula and shifting the finite summation index gives</p>
+<span id="equation-8-5"></span><span class="math math-display" data-tex="\[
+J(\xi U)(s,h)=e^{2\pi i(s+ph/q)}J\xi(s,h),\qquad
+J(\xi V)(s,h)=J\xi(s-\varepsilon,h+1).
+\tag{8.5}
+\]">\[
+J(\xi U)(s,h)=e^{2\pi i(s+ph/q)}J\xi(s,h),\qquad
+J(\xi V)(s,h)=J\xi(s-\varepsilon,h+1).
+\tag{8.5}
+\]</span>
+<p>Differentiating the kernel in (8.4), and integrating by parts in <span class="math" data-tex="\(t\)">\(t\)</span>, respectively, give</p>
+<span id="equation-8-6"></span><span class="math math-display" data-tex="\[
+J\nabla_1J^{-1}=\frac d{ds},\qquad
+J\nabla_2J^{-1}=\frac{2\pi i s}{\varepsilon}.
+\tag{8.6}
+\]">\[
+J\nabla_1J^{-1}=\frac d{ds},\qquad
+J\nabla_2J^{-1}=\frac{2\pi i s}{\varepsilon}.
+\tag{8.6}
+\]</span>
+<p>Thus differentiation and multiplication can occupy either displayed position, provided the module action and the ordered derivations are transformed together. Their commutator and traced curvature remain (8.2).</p>
+<p>To pass from these modules to every <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-class, we use one precise result of C*-algebraic <span class="math" data-tex="\(K\)">\(K\)</span>-theory. For irrational <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, the trace induces an isomorphism of abelian groups</p>
+<span id="equation-8-3"></span><span class="math math-display" data-tex="\[
+\tau_*:K_0(A_\theta)\longrightarrow\mathbb Z+\theta\mathbb Z.
+\tag{8.3}
+\]">\[
+\tau_*:K_0(A_\theta)\longrightarrow\mathbb Z+\theta\mathbb Z.
+\tag{8.3}
+\]</span>
+<p>This is [Pimsner–Voiculescu 1980, Corollary 2.6]. Its proof combines their six-term exact sequence with the trace range calculation, also proved in their Appendix. An alternative account is [Blackadar 1998, Theorem 10.2.1, Theorems 10.10.4–10.10.5 and Exercise 10.11.6]. We use (8.3) as a prerequisite here; the smoothness, frame and curvature arguments above do not depend on it.</p>
+<p><span id="theorem-8-2"></span><strong>Theorem 8.2.</strong> The map <span class="math" data-tex="\(c_1:K_0(A_\theta)\to\mathbb R\)">\(c_1:K_0(A_\theta)\to\mathbb R\)</span> takes integral values. More precisely, put <span class="math" data-tex="\(a=\lfloor\theta\rfloor\)">\(a=\lfloor\theta\rfloor\)</span> and <span class="math" data-tex="\(\theta_0=\theta-a\)">\(\theta_0=\theta-a\)</span>. Every class has a unique expression</p>
+<span class="math math-display" data-tex="\[
+x=r[1]+s[E_{a,1}],\qquad r,s\in\mathbb Z,
+\]">\[
+x=r[1]+s[E_{a,1}],\qquad r,s\in\mathbb Z,
+\]</span>
+<p>and <span class="math" data-tex="\(\tau_*(x)=r+s\theta_0\)">\(\tau_*(x)=r+s\theta_0\)</span>, <span class="math" data-tex="\(c_1(x)=-s\)">\(c_1(x)=-s\)</span>.</p>
+<p><strong>Proof.</strong> The trace of the unit module is one. Theorem 7.2 gives <span class="math" data-tex="\(\tau_*[E_{a,1}]=|a-\theta|=\theta_0\)">\(\tau_*[E_{a,1}]=|a-\theta|=\theta_0\)</span>. The two numbers <span class="math" data-tex="\(1,\theta_0\)">\(1,\theta_0\)</span> are a basis of the free abelian subgroup <span class="math" data-tex="\(\mathbb Z+\theta\mathbb Z\)">\(\mathbb Z+\theta\mathbb Z\)</span>, because <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is irrational and differs from <span class="math" data-tex="\(\theta_0\)">\(\theta_0\)</span> by an integer. Equation (8.3) therefore makes the two module classes a basis of <span class="math" data-tex="\(K_0(A_\theta)\)">\(K_0(A_\theta)\)</span>. The unit module has its zero-curvature connection. Theorem 8.1 gives <span class="math" data-tex="\(c_1(E_{a,1})=-1\)">\(c_1(E_{a,1})=-1\)</span>. Additivity and connection independence, already proved in Theorem 4.1, now give the formula for every class, including virtual differences of modules. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, the smooth projection <span class="math" data-tex="\(P\)">\(P\)</span> constructed from the finite frame for <span class="math" data-tex="\(E_{a,1}\)">\(E_{a,1}\)</span> cannot be made constant in one of the action directions by replacing it with an isomorphic module or an exterior-equivalent action as in Theorem 5.1: that would force its nonzero Chern number to vanish.</p>
+<h2 id="9-exercises-with-solutions">9. Exercises with solutions</h2>
+<p><strong>Exercise 9.1 (projecting a derivative).</strong> If <span class="math" data-tex="\(p^2=p\)">\(p^2=p\)</span>, prove that <span class="math" data-tex="\(p\delta_X(p)p=0\)">\(p\delta_X(p)p=0\)</span>. Explain why it is essential in the Grassmann curvature calculation.</p>
+<p><strong>Solution.</strong> Differentiating gives <span class="math" data-tex="\(\delta_X(p)p+p\delta_X(p)=\delta_X(p)\)">\(\delta_X(p)p+p\delta_X(p)=\delta_X(p)\)</span>. Multiplying by <span class="math" data-tex="\(p\)">\(p\)</span> on both sides gives <span class="math" data-tex="\(2p\delta_X(p)p=p\delta_X(p)p\)">\(2p\delta_X(p)p=p\delta_X(p)p\)</span>, hence zero. It removes the terms where a derivative of <span class="math" data-tex="\(p\)">\(p\)</span> is trapped between two copies of the projection; otherwise <span class="math" data-tex="\((p\delta_X)^2\)">\((p\delta_X)^2\)</span> would be incorrectly treated as <span class="math" data-tex="\(p\delta_X^2\)">\(p\delta_X^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 9.2 (noncommuting constant connections).</strong> Take <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, the trivial action of <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, and the free module <span class="math" data-tex="\(E=\mathbb C^2\)">\(E=\mathbb C^2\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\nabla_1=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\qquad
+\nabla_2=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix}.
+\]">\[
+\nabla_1=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\qquad
+\nabla_2=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix}.
+\]</span>
+<p>Compute the curvature and its trace.</p>
+<p><strong>Solution.</strong> Both matrices are skew-adjoint, so this is a metric connection. Their commutator is</p>
+<span class="math math-display" data-tex="\[
+\Theta(\partial_1,\partial_2)=
+\begin{pmatrix}0&amp;-2i\\-2i&amp;0\end{pmatrix}.
+\]">\[
+\Theta(\partial_1,\partial_2)=
+\begin{pmatrix}0&amp;-2i\\-2i&amp;0\end{pmatrix}.
+\]</span>
+<p>It is nonzero, but its trace is zero. This is consistent with Theorem 4.1: the reference zero connection has zero curvature, and the Lie algebra differential for an abelian Lie algebra with trivial scalar coefficients is zero, so the trace form itself must vanish. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 9.3 (the first transgression).</strong> On a fixed projective module, write the difference between the first Chern forms of <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> and <span class="math" data-tex="\(\nabla+\eta\)">\(\nabla+\eta\)</span>.</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(k=1\)">\(k=1\)</span> in (4.3). The factor <span class="math" data-tex="\(\Theta_t^0\)">\(\Theta_t^0\)</span> is the corner identity, so</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi i}\tau_E(\Theta_{\nabla+\eta}-\Theta_\nabla)
+=\frac1{2\pi i}\,d_{\mathfrak g}\tau_E(\eta).
+\]">\[
+\frac1{2\pi i}\tau_E(\Theta_{\nabla+\eta}-\Theta_\nabla)
+=\frac1{2\pi i}\,d_{\mathfrak g}\tau_E(\eta).
+\]</span>
+<p>The quadratic term in <span class="math" data-tex="\(\eta\)">\(\eta\)</span> has zero graded trace: degree-one factors give <span class="math" data-tex="\(\tau_E(\eta^2)=-\tau_E(\eta^2)\)">\(\tau_E(\eta^2)=-\tau_E(\eta^2)\)</span>, hence zero over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The remaining term is the derivative of the traced one-form. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 9.4 (intermediate: the order in a right action).</strong> Set <span class="math" data-tex="\(\theta=\sqrt2-1\)">\(\theta=\sqrt2-1\)</span>. On <span class="math" data-tex="\(\mathcal S(\mathbb R)\)">\(\mathcal S(\mathbb R)\)</span>, consider <span class="math" data-tex="\(T\xi(s)=\xi(s+\theta)\)">\(T\xi(s)=\xi(s+\theta)\)</span> and <span class="math" data-tex="\(M\xi(s)=e^{2\pi is}\xi(s)\)">\(M\xi(s)=e^{2\pi is}\xi(s)\)</span>. Does <span class="math" data-tex="\(\xi U=T\xi\)">\(\xi U=T\xi\)</span>, <span class="math" data-tex="\(\xi V=M\xi\)">\(\xi V=M\xi\)</span> define a right action of the algebra (6.1)? Give an explicit nonzero vector witnessing your answer, and repair the translation.</p>
+<p><strong>Solution.</strong> Computation gives <span class="math" data-tex="\(TM=e^{2\pi i\theta}MT\)">\(TM=e^{2\pi i\theta}MT\)</span>. For a right action of (6.1), reversed composition instead requires <span class="math" data-tex="\(MT=e^{2\pi i\theta}TM\)">\(MT=e^{2\pi i\theta}TM\)</span>. These two equalities would give <span class="math" data-tex="\((1-e^{4\pi i\theta})MT\xi=0\)">\((1-e^{4\pi i\theta})MT\xi=0\)</span>. For <span class="math" data-tex="\(\xi(s)=e^{-s^2}\)">\(\xi(s)=e^{-s^2}\)</span>, the vector <span class="math" data-tex="\(MT\xi\)">\(MT\xi\)</span> is nonzero and the scalar is nonzero, so the proposed action fails. Replace <span class="math" data-tex="\(T\)">\(T\)</span> by <span class="math" data-tex="\(T_-\xi(s)=\xi(s-\theta)\)">\(T_-\xi(s)=\xi(s-\theta)\)</span>. Then <span class="math" data-tex="\(T_-M=e^{-2\pi i\theta}MT_-\)">\(T_-M=e^{-2\pi i\theta}MT_-\)</span>, which is exactly the required reversed relation. This is the case <span class="math" data-tex="\(p=0,q=1\)">\(p=0,q=1\)</span> of (7.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 9.5 (advanced: a nonprimitive pair).</strong> Let <span class="math" data-tex="\(d=\gcd(|p|,q)\)">\(d=\gcd(|p|,q)\)</span>. Decompose <span class="math" data-tex="\(E_{p,q}\)">\(E_{p,q}\)</span> into <span class="math" data-tex="\(d\)">\(d\)</span> right submodules by the finite coordinate modulo <span class="math" data-tex="\(d\)">\(d\)</span>. Identify each summand with <span class="math" data-tex="\(E_{p/d,q/d}\)">\(E_{p/d,q/d}\)</span>, and compute its dimension and Chern number.</p>
+<p><strong>Solution.</strong> The shift by <span class="math" data-tex="\(p\)">\(p\)</span> preserves each residue class modulo <span class="math" data-tex="\(d\)">\(d\)</span>, and multiplication by <span class="math" data-tex="\(V\)">\(V\)</span> preserves support there. Thus the spaces of vectors supported on <span class="math" data-tex="\(h\equiv r\pmod d\)">\(h\equiv r\pmod d\)</span>, for <span class="math" data-tex="\(0\leq r&lt;d\)">\(0\leq r&lt;d\)</span>, are right submodules and their direct sum is the whole space. Put <span class="math" data-tex="\(p&#x27;=p/d\)">\(p&#x27;=p/d\)</span>, <span class="math" data-tex="\(q&#x27;=q/d\)">\(q&#x27;=q/d\)</span>. On the <span class="math" data-tex="\(r\)">\(r\)</span>-summand, set</p>
+<span class="math math-display" data-tex="\[
+(J_r\xi)(s,k)=\xi(s+r/q,r+dk),\qquad k\in\mathbb Z/q&#x27;.
+\]">\[
+(J_r\xi)(s,k)=\xi(s+r/q,r+dk),\qquad k\in\mathbb Z/q&#x27;.
+\]</span>
+<p>The <span class="math" data-tex="\(U\)">\(U\)</span>-action becomes translation by <span class="math" data-tex="\(\varepsilon=p&#x27;/q&#x27;-\theta\)">\(\varepsilon=p&#x27;/q&#x27;-\theta\)</span> and shift of <span class="math" data-tex="\(k\)">\(k\)</span> by <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>. The <span class="math" data-tex="\(V\)">\(V\)</span>-phase becomes
+<span class="math" data-tex="\(e^{2\pi i(s+r/q-(r+dk)/q)}=e^{2\pi i(s-k/q&#x27;)}\)">\(e^{2\pi i(s+r/q-(r+dk)/q)}=e^{2\pi i(s-k/q&#x27;)}\)</span>.
+Hence <span class="math" data-tex="\(J_r\)">\(J_r\)</span> is the asserted module isomorphism. Each summand has dimension <span class="math" data-tex="\(q&#x27;|\varepsilon|=|p-q\theta|/d\)">\(q&#x27;|\varepsilon|=|p-q\theta|/d\)</span> and Chern number <span class="math" data-tex="\(q&#x27;\operatorname{sgn}(\varepsilon)\)">\(q&#x27;\operatorname{sgn}(\varepsilon)\)</span>. Summing gives (7.4) and (8.2), showing why coprimality is unnecessary for finite projectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 9.6 (advanced: dimension and charge).</strong> Suppose <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span> is irrational. A virtual class <span class="math" data-tex="\(x\in K_0(A_\theta)\)">\(x\in K_0(A_\theta)\)</span> has trace <span class="math" data-tex="\(3-2\theta\)">\(3-2\theta\)</span>. Determine <span class="math" data-tex="\(x\)">\(x\)</span> in the basis of Theorem 8.2 and compute <span class="math" data-tex="\(c_1(x)\)">\(c_1(x)\)</span>. Explain what changes if the two derivations are interchanged.</p>
+<p><strong>Solution.</strong> Irrationality gives the unique expression <span class="math" data-tex="\(x=3[1]-2[E_{0,1}]\)">\(x=3[1]-2[E_{0,1}]\)</span>, since the trace is injective and the traces of this basis are <span class="math" data-tex="\(1,\theta\)">\(1,\theta\)</span>. Thus <span class="math" data-tex="\(c_1(x)=2\)">\(c_1(x)=2\)</span>. Interchanging the derivations evaluates the alternating curvature form on the reversed ordered pair, so the trace dimension remains <span class="math" data-tex="\(3-2\theta\)">\(3-2\theta\)</span> and the Chern number becomes <span class="math" data-tex="\(-2\)">\(-2\)</span>. No positivity or existence of an unstabilized projection is needed to make this computation on a virtual class. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<p>[Khalkhali 2007] Masoud Khalkhali, <em>Lectures on Noncommutative Geometry</em>, arXiv:math/0702140, version 2 (2007). <a href="https://www.math.uwo.ca/faculty/khalkhali/files/LecturesNCG.pdf">Open lecture notes</a>.</p>
+<p>[Connes 1980] Alain Connes, <em>C*-algèbres et géométrie différentielle</em>, Comptes Rendus de l'Académie des Sciences, Série A–B, 290 (1980), A599–A604.</p>
+<p>[Connes 2001] Alain Connes, <em>C*-algebras and Differential Geometry</em>, English translation of [Connes 1980], arXiv:hep-th/0101093 (2001). <a href="https://arxiv.org/abs/hep-th/0101093">Open translation</a>. The right action (7.1) is specified and checked with the convention (6.1).</p>
+<p>[Rieffel 1988] Marc A. Rieffel, <em>Projective modules over higher-dimensional non-commutative tori</em>, Canadian Journal of Mathematics 40 (1988), 257–338. <a href="https://math.berkeley.edu/~rieffel/papers/projective88.pdf">Author-hosted paper</a>. The finite-frame method above is a direct two-dimensional realization of the Schwartz-space construction of projective modules.</p>
+<p>[Pimsner–Voiculescu 1980] Mihai Pimsner and Dan Voiculescu, <em>Exact sequences for K-groups and Ext-groups of certain cross-product C*-algebras</em>, Journal of Operator Theory 4 (1980), 93–118. <a href="https://jot.theta.ro/jot/archive/1980-004-001/1980-004-001-005.pdf">Journal-hosted paper</a>.</p>
+<p>[Blackadar 1998] Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Cambridge University Press (1998). <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author-hosted book</a>.</p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/NCG-CYCLIC/connections-and-curvature-for-c-star-dynamical-systems.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

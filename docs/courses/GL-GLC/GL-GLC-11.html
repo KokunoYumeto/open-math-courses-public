@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Constructing the Langlands functor (GLC I) · Geometric Langlands</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],
+processEscapes:false},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']},
+startup:{ready:()=>{MathJax.startup.defaultReady();}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+</head><body><main><nav><a href="index.html">Course contents</a> · <a href="GL-GLC-10.html">Previous lesson</a> · <a href="GL-GLC-12.html">Next lesson</a></nav><aside class="notice">Draft. Self-checked by the writing AI.</aside><article class="lesson"><h1>Constructing the Langlands functor (GLC I)</h1>
+<p>Draft. Self-checked by the writing AI.</p>
+<p>Let <span class="math-inline">\(X\)</span> be a smooth projective connected curve over an algebraically closed field <span class="math-inline">\(k\)</span> of characteristic zero. Let <span class="math-inline">\(G\)</span> be a connected reductive group, and let <span class="math-inline">\(\check G\)</span> be its Langlands dual. Fix a Borel subgroup <span class="math-inline">\(B\)</span>, its unipotent radical <span class="math-inline">\(N\)</span>, and a theta characteristic <span class="math-inline">\(\kappa\)</span> with <span class="math-inline">\(\kappa^{\otimes2}\simeq\omega_X\)</span>. Put
+<span class="math-display">\[
+\mathcal B=\operatorname{Bun}_G,\qquad
+S=\operatorname{LS}_{\check G},\qquad
+\mathcal C=D\operatorname{-mod}_{1/2}(\mathcal B),\qquad
+\mathcal A=\operatorname{QCoh}(S),\qquad
+\mathcal D=\operatorname{IndCoh}_{\operatorname{Nilp}}(S).
+\]</span>
+Here <span class="math-inline">\(S\)</span> is the derived stack of de Rham local systems, and the spectral nilpotent cone specifies the support condition on <span class="math-inline">\(\mathcal D\)</span>. The t-structures are cohomological:
+<span class="math-display">\[
+H^i(M[n])=H^{i+n}(M).
+\]</span>
+Thus <span class="math-inline">\(k[-1]\)</span> has its nonzero cohomology in degree <span class="math-inline">\(1\)</span>. We call a functor left t-exact when it preserves degrees <span class="math-inline">\(\ge0\)</span>, and right t-exact when it preserves degrees <span class="math-inline">\(\le0\)</span>. “Eventually coconnective” will mean belonging to <span class="math-inline">\(\bigcup_n\mathcal A^{\ge n}\)</span>, or the corresponding union in another category.</p>
+<p>The construction has two stages. A specified spectral action and vacuum object give a functor <span class="math-inline">\(F_0:\mathcal C\to\mathcal A\)</span>. A theorem about its compact images then permits a unique continuous lift <span class="math-inline">\(F:\mathcal C\to\mathcal D\)</span>. Constructing these functors does not yet prove that <span class="math-inline">\(F\)</span> is an equivalence. The preceding lesson, <a href="GL-GLC-10.html" title="The categorical conjecture and its variants">The categorical conjecture and its variants</a>, explains the normalized conjecture and its full, restricted and tempered versions.</p>
+<p><img src="src/figures/coarse-functor-and-bounded-lift.svg" alt="The coarse functor is the right adjoint of the vacuum action. Its compact restriction lifts through the bounded coarsening equivalence before extending by colimits." /></p>
+<p>The diagram displays Theorems 11.1–11.3 below. Its lower triangle commutes with a specified natural equivalence <span class="math-inline">\(\Psi F\simeq F_0\)</span>; it is not a claim that <span class="math-inline">\(\Psi\)</span> is an equivalence on the whole unbounded category.</p>
+<h2>The automorphic category, action and vacuum</h2>
+<p>The half twist uses the square-root gerbe of the normalized determinant line. At a bundle <span class="math-inline">\(E\)</span>, the determinant is normalized by
+<span class="math-display">\[
+\det R\Gamma(X,\mathfrak g_E)\otimes
+\det R\Gamma(X,\mathfrak g_{\mathrm{triv}})^{-1}.
+\]</span>
+The theta characteristic enters the square-root construction and the twisted <span class="math-inline">\(N\)</span>-bundle used below. The existence of this construction, its compatibility with Hecke operations and its descent are geometric inputs not proved in this lesson. Retain the half twist when comparing formulas; an arbitrary choice of an untwisted equivalence would not supply the required Hecke comparisons. See <a href="GL-GLC-03.html" title="Sheaves and D-modules on Bun_G">Sheaves and D-modules on Bun_G</a> for the specified category and its remaining foundations.</p>
+<p>The spectral action begins with the Hecke action of the representation category over the Ran space. Evaluation of a local system gives the spectral localization
+<span class="math-display">\[
+\operatorname{Rep}(\check G)_{\operatorname{Ran}}
+\longrightarrow \operatorname{QCoh}(S).
+\]</span>
+To obtain an action of the target, the Hecke action must vanish on the kernel and have the compatible unit. Theorem C1 and the generalized-vanishing deduction in the preceding lesson prove the formal descent implication. They do not prove the actual geometric kernel vanishing, the Ran localization or derived Satake. In what follows, the resulting continuous <span class="math-inline">\(\mathcal A\)</span>-action is a specified input, denoted <span class="math-inline">\(a\star c\)</span>.</p>
+<p>Let
+<span class="math-display">\[
+\mathcal W=\operatorname{Bun}_{N,\rho(\omega_X)},\qquad
+p:\mathcal W\longrightarrow\mathcal B.
+\]</span>
+Here <span class="math-inline">\(\rho\)</span> is the half-sum of the positive coroots. The required Cartan twist is <span class="math-inline">\(\rho(\omega_X)=(2\rho)(\kappa)\)</span>, defined using the integral cocharacter <span class="math-inline">\(2\rho\)</span> and the chosen theta characteristic even when <span class="math-inline">\(\rho\)</span> itself is not integral. The simple-root extension classes define a character
+<span class="math-inline">\(\chi:\mathcal W\to\mathbb A^1\)</span>. On <span class="math-inline">\(\mathbb A^1\)</span>, choose the exponential D-module with the normalization multiplicative for ordinary <span class="math-inline">\(*\)</span>-pullback; it lies in the D-module heart shifted by <span class="math-inline">\([-1]\)</span>. Write
+<span class="math-display">\[
+E_\chi=\chi^*\operatorname{exp},\qquad
+P_{\mathrm{Vac}}=p_!E_\chi.
+\]</span>
+The second expression uses the defined partial !-pushforward on this holonomic object, together with the specified trivialization of the pulled-back half twist. It does not assert that <span class="math-inline">\(p_!\)</span> is defined on every arbitrary D-module. Existence and compactness of <span class="math-inline">\(P_{\mathrm{Vac}}\)</span> are geometric inputs.</p>
+<p>Use the following primary coefficient normalization:
+<span class="math-display">\[
+W(c)=\operatorname{Map}_{\mathcal C}(P_{\mathrm{Vac}},c)
+\simeq\operatorname{Map}_{D\operatorname{-mod}(\mathcal W)}
+              (E_\chi,p^!c).
+\]</span>
+The comparison is the !-adjunction, when the stated pushforward and twist data exist. It fixes the whole natural coefficient functor, not just its value on one object.</p>
+<p>An expression for this mapping complex as cohomology with a tensor factor uses the dual exponential character. Consequently a formula with <span class="math-inline">\(E_\chi\)</span> on both sides needs a specified change from <span class="math-inline">\(\chi\)</span> to <span class="math-inline">\(-\chi\)</span>. The Cartan action supplies the geometric character-change comparison used in the construction. We do not discard its sign or identify the <span class="math-inline">\(*\)</span>-multiplicative and !-multiplicative exponential normalizations without a duality comparison. These comparisons, the tensor–Hom duality on the stack and the resulting coefficient identity remain unproved geometric inputs here.</p>
+<p>Gaitsgory–Raskin, <a href="https://arxiv.org/abs/2405.03599v3">Proof of the geometric Langlands conjecture I: construction of the functor</a>, §§1.1–1.4, give these geometric ingredients. The proofs below establish what follows formally once the specified ingredients exist.</p>
+<h2>The coarse functor from the spectral action</h2>
+<p>The formal construction starts with an action and one object. Let <span class="math-inline">\(\mathcal A\)</span> be a compactly generated presentable stable symmetric monoidal <span class="math-inline">\(k\)</span>-linear category. Its tensor product preserves colimits separately, its unit <span class="math-inline">\(\mathbf1\)</span> is compact, and every compact object of <span class="math-inline">\(\mathcal A\)</span> is dualizable. Let <span class="math-inline">\(\mathcal C\)</span> be a presentable stable <span class="math-inline">\(\mathcal A\)</span>-module category whose action preserves colimits separately, and let <span class="math-inline">\(P\in\mathcal C\)</span> be compact. Write
+<span class="math-display">\[
+\alpha(a)=a\star P,\qquad
+W(c)=\operatorname{Map}_{\mathcal C}(P,c),\qquad
+\Gamma(a)=\operatorname{Map}_{\mathcal A}(\mathbf1,a).
+\tag{11.1}
+\]</span>
+The mapping objects in these formulas are derived <span class="math-inline">\(k\)</span>-complexes. In the geometric application, <span class="math-inline">\(\mathcal A=\operatorname{QCoh}(S)\)</span>, <span class="math-inline">\(P\)</span> is the specified vacuum Poincaré object, and <span class="math-inline">\(W\)</span> is the specified first global Whittaker coefficient. These geometric identifications are additional inputs.</p>
+<p>We use the categorical framework of <a href="GL-GLC-10.html" title="The categorical conjecture and its variants">The categorical conjecture and its variants</a>, C0: the presentable adjoint theorem, enriched Yoneda, stable functor categories and the Ind universal property. The formal deductions below do not prove those foundations. A linear functor includes its natural action comparisons, unit and multiplication comparisons, and all higher coherences.</p>
+<p>The compact unit also ensures that the dual of a compact dualizable object is compact: <span class="math-inline">\(\operatorname{Map}_{\mathcal A}(v^\vee,a)\simeq\Gamma(v\otimes a)\)</span>, and the latter commutes with filtered colimits. Thus the compact tests and their duals remain in the same small rigid category.</p>
+<p><strong>Theorem 11.1 (construction and coefficient normalization).</strong> Under the preceding hypotheses, <span class="math-inline">\(\alpha\)</span> has a continuous right adjoint
+<span class="math-display">\[
+F_0=\alpha^R:\mathcal C\longrightarrow\mathcal A.
+\tag{11.2}
+\]</span>
+This right adjoint has a canonical coherent <span class="math-inline">\(\mathcal A\)</span>-linear structure and a canonical natural equivalence
+<span class="math-display">\[
+\eta:\Gamma F_0\xrightarrow{\sim}W.
+\tag{11.3}
+\]</span>
+The space of continuous <span class="math-inline">\(\mathcal A\)</span>-linear functors equipped with such a specified natural equivalence is contractible. In particular, this normalization determines the coarse functor. It does not assert that the coarse functor is an equivalence.</p>
+<p><strong>Proof of existence and continuity.</strong> The functor <span class="math-inline">\(\alpha\)</span> preserves colimits by the action hypothesis, so the presentable adjoint theorem supplies its right adjoint. If <span class="math-inline">\(v\in\mathcal A^c\)</span>, duality gives
+<span class="math-display">\[
+\operatorname{Map}_{\mathcal C}(v\star P,c)
+\simeq\operatorname{Map}_{\mathcal C}(P,v^\vee\star c).
+\tag{11.4}
+\]</span>
+The action by <span class="math-inline">\(v^\vee\)</span> is continuous. Compactness of <span class="math-inline">\(P\)</span> therefore shows that <span class="math-inline">\(v\star P\)</span> is compact: applying (11.4) to a filtered colimit gives the filtered colimit of its mapping complexes. Thus <span class="math-inline">\(\alpha\)</span> takes every compact object to a compact object.</p>
+<p>For a filtered diagram <span class="math-inline">\(c_i\)</span>, test the canonical comparison
+<span class="math-display">\[
+\operatorname*{colim}_iF_0(c_i)
+\longrightarrow F_0\bigl(\operatorname*{colim}_i c_i\bigr)
+\tag{11.5}
+\]</span>
+against a compact <span class="math-inline">\(v\in\mathcal A^c\)</span>. Compactness of <span class="math-inline">\(v\)</span>, adjunction and compactness of <span class="math-inline">\(\alpha(v)\)</span> identify both resulting mapping complexes with
+<span class="math-inline">\(\operatorname*{colim}_i\operatorname{Map}_{\mathcal C}(v\star P,c_i)\)</span>, and identify the map with the identity on this colimit. Compact generators detect equivalences, so (11.5) is an equivalence.</p>
+<p>The right adjoint is exact because finite limits and finite colimits agree in stable categories. An arbitrary coproduct is the filtered colimit of its finite subcoproducts. Exactness and the preservation just proved therefore imply that <span class="math-inline">\(F_0\)</span> preserves coproducts. The stable colimit argument in “Reconstructing an equivalence from compact objects” in the preceding lesson now applies: sequential colimits are cofibres of <span class="math-inline">\(1-\mathrm{shift}\)</span> on coproducts, geometric realizations are sequential colimits of finite skeletal attachments, and the coherent simplicial replacement computes any small colimit. Consequently <span class="math-inline">\(F_0\)</span> preserves all small colimits. This uses only the colimit part of that earlier proof; none of its full-faithfulness or equivalence hypotheses is being imposed here.</p>
+<p><strong>Proof of linearity.</strong> For any <span class="math-inline">\(v\in\mathcal A\)</span>, define the projection-formula map
+<span class="math-display">\[
+\lambda_{v,c}:v\otimes F_0(c)\longrightarrow F_0(v\star c)
+\tag{11.6}
+\]</span>
+as the adjunction mate of
+<span class="math-display">\[
+\alpha\bigl(v\otimes F_0(c)\bigr)
+\simeq v\star\alpha(F_0(c))
+\xrightarrow{\,v\star\epsilon_c\,}v\star c,
+\tag{11.7}
+\]</span>
+where <span class="math-inline">\(\epsilon\)</span> is the counit. Suppose first that <span class="math-inline">\(v\)</span> is dualizable. For every <span class="math-inline">\(a\in\mathcal A\)</span>, duality and adjunction give
+<span class="math-display">\[
+\begin{aligned}
+\operatorname{Map}_{\mathcal A}(a,v\otimes F_0(c))
+&amp;\simeq\operatorname{Map}_{\mathcal A}(v^\vee\otimes a,F_0(c))\\
+&amp;\simeq\operatorname{Map}_{\mathcal C}((v^\vee\otimes a)\star P,c)\\
+&amp;\simeq\operatorname{Map}_{\mathcal C}(a\star P,v\star c)\\
+&amp;\simeq\operatorname{Map}_{\mathcal A}(a,F_0(v\star c)).
+\end{aligned}
+\tag{11.8}
+\]</span>
+The map induced by (11.6) is precisely this chain: its definition as the mate of (11.7) fixes the comparison. Yoneda proves that (11.6) is an equivalence for dualizable <span class="math-inline">\(v\)</span>, hence for every compact <span class="math-inline">\(v\)</span>.</p>
+<p>Every object of <span class="math-inline">\(\mathcal A\)</span> is a filtered colimit of compact objects under the Ind identification. Both sides of (11.6) preserve colimits in <span class="math-inline">\(v\)</span>, including the right side by the continuity already proved. The comparison is therefore an equivalence for every <span class="math-inline">\(v\)</span>.</p>
+<p>There is also coherent module structure, not just a family of isomorphisms. The unit comparison is the mate of the unit action on <span class="math-inline">\(\alpha\)</span>. For <span class="math-inline">\(u,v\)</span>, the direct comparison for <span class="math-inline">\(u\otimes v\)</span> and the composite using <span class="math-inline">\(\lambda_{u,v\star c}\)</span> and <span class="math-inline">\(u\otimes\lambda_{v,c}\)</span> have, under adjunction, the two action composites from <span class="math-inline">\(u\star v\star\alpha F_0(c)\)</span> to <span class="math-inline">\(u\star v\star c\)</span>. The module associativity and the natural counit identify them with their specified homotopy. The same argument transfers every higher unit and associativity homotopy: adjunction identifies the entire mapping spaces in which those homotopies live. The triangle identities ensure their compatibility with the unit and counit. Thus the mates construct the coherent <span class="math-inline">\(\mathcal A\)</span>-linear structure. Taking <span class="math-inline">\(a=\mathbf1\)</span> in adjunction gives (11.3), naturally in <span class="math-inline">\(c\)</span>.</p>
+<p><strong>Proof of uniqueness.</strong> Let <span class="math-inline">\(H:\mathcal C\to\mathcal A\)</span> be another continuous <span class="math-inline">\(\mathcal A\)</span>-linear functor, with a specified natural equivalence <span class="math-inline">\(\theta:\Gamma H\simeq W\)</span>. For every compact <span class="math-inline">\(v\in\mathcal A^c\)</span>, use its dual to compute
+<span class="math-display">\[
+\begin{aligned}
+\operatorname{Map}_{\mathcal A}(v,H(c))
+&amp;\simeq\Gamma(v^\vee\otimes H(c))\\
+&amp;\simeq\Gamma H(v^\vee\star c)\\
+&amp;\xrightarrow{\theta_{v^\vee\star c}}W(v^\vee\star c)\\
+&amp;\simeq\operatorname{Map}_{\mathcal C}(v\star P,c).
+\end{aligned}
+\tag{11.9}
+\]</span>
+This is an equivalence of mapping complexes natural in both <span class="math-inline">\(v\)</span> and <span class="math-inline">\(c\)</span>. Naturality in <span class="math-inline">\(v\)</span> includes all morphisms between compact tests, transported through duality. If <span class="math-inline">\(a\simeq\operatorname*{colim}_i v_i\)</span>, mapping out of that colimit turns both sides into the corresponding limit, so (11.9) extends uniquely to
+<span class="math-display">\[
+\operatorname{Map}_{\mathcal A}(a,H(c))
+\simeq\operatorname{Map}_{\mathcal C}(a\star P,c)
+\qquad(a\in\mathcal A).
+\tag{11.10}
+\]</span>
+Thus <span class="math-inline">\(H\)</span> represents exactly the same functor as <span class="math-inline">\(F_0\)</span>. Enriched Yoneda gives a natural equivalence <span class="math-inline">\(H\simeq F_0\)</span>, respecting the specified coefficient comparisons.</p>
+<p>It also respects the linear structure. For a compact <span class="math-inline">\(u\)</span>, the two ways to compare its action, tested against <span class="math-inline">\(v\)</span>, reduce to the same complex
+<span class="math-display">\[
+W(v^\vee\star u\star c)
+\simeq
+\operatorname{Map}_{\mathcal C}(v\star P,u\star c).
+\]</span>
+On the other side of the action comparison one obtains this same complex by testing against <span class="math-inline">\(u^\vee\otimes v\)</span>. The unit, duality and action coherences identify these descriptions, and naturality of <span class="math-inline">\(\theta\)</span> carries the identifications through (11.9). Yoneda on mapping spaces therefore supplies the compatible homotopy between the two linearity comparisons. For multiple compact action variables the same computation gives all higher module coherences. Continuity extends them to arbitrary variables. Full faithfulness of the Ind restriction and Yoneda says the space of these extensions and normalized equivalences is contractible. Applying the same mapping-space argument to transformations between two normalized choices proves the stated contractibility of the whole space of choices. <span class="math-inline">\(\square\)</span></p>
+<p>The normalization in this theorem is a natural identity on <strong>every</strong> <span class="math-inline">\(c\)</span>, and the proof evaluates it on all <span class="math-inline">\(v^\vee\star c\)</span>. An isomorphism only at <span class="math-inline">\(c=P\)</span> does not supply (11.9). Nor can equality of coefficient dimensions replace an equivalence of coefficient functors.</p>
+<h2>An ordinary affine calculation</h2>
+<p>Let <span class="math-inline">\(R\)</span> be a commutative ordinary ring, and take
+<span class="math-inline">\(\mathcal A=\mathcal C=\operatorname{Mod}_R\)</span>, the unbounded derived category. Suppose <span class="math-inline">\(P\)</span> is a bounded complex of finitely generated projective <span class="math-inline">\(R\)</span>-modules. The object <span class="math-inline">\(R\)</span> is compact because <span class="math-inline">\(\operatorname{Map}_R(R,M)\)</span> is the underlying complex of <span class="math-inline">\(M\)</span>. A finitely generated projective module is a retract of a finite sum of copies of <span class="math-inline">\(R\)</span>, so it is compact. Finite shifts, finite cofibres and retracts preserve compactness. Constructing <span class="math-inline">\(P\)</span> by its finite filtration therefore proves its compactness.</p>
+<p>The termwise dual
+<span class="math-display">\[
+P^\vee=\operatorname{RHom}_R(P,R)
+\tag{11.11}
+\]</span>
+is again a bounded complex of finitely generated projectives. In particular it is compact, and dualizing again gives <span class="math-inline">\(P\)</span>: the finite-projective evaluation isomorphism in each degree commutes with the dual complex differentials. Evaluation <span class="math-inline">\(P^\vee\otimes_R P\to R\)</span> and the coevaluation corresponding to the identity of <span class="math-inline">\(P\)</span> give the duality maps. Their triangle identities are the finite-projective tensor–Hom identities, assembled with the cohomological signs. They also give the natural equivalence
+<span class="math-display">\[
+\operatorname{RHom}_R(P,M)\simeq P^\vee\otimes_R^{\mathbb L}M.
+\tag{11.12}
+\]</span>
+One can compute it directly using the bounded projective complex <span class="math-inline">\(P\)</span>. Hom from a finitely generated projective module is exact because that module is a retract of a finite free module; tensoring by it is exact for the same reason. On an acyclic complex these operations therefore produce acyclic complexes. The total complex for the bounded complex <span class="math-inline">\(P\)</span> is built by finitely many shifts and cones from those complexes, so both constructions preserve quasi-isomorphisms even on unbounded arguments. Thus they compute the derived Hom and tensor in (11.12). The termwise finite-projective identity is an isomorphism of the total complexes, proving the displayed comparison. Consequently
+<span class="math-display">\[
+\alpha(a)=a\otimes_R^{\mathbb L}P,\qquad
+F_0(M)=\operatorname{RHom}_R(P,M).
+\tag{11.13}
+\]</span>
+The adjunction follows from the tensor–Hom identity, and (11.12) exhibits continuity and <span class="math-inline">\(R\)</span>-linearity explicitly. The coefficient is the underlying complex of <span class="math-inline">\(\operatorname{RHom}_R(P,M)\)</span>; <span class="math-inline">\(\Gamma\)</span> is underlying-complex forgetfulness in this affine case.</p>
+<p>For a concrete example, take <span class="math-inline">\(R=k[t]\)</span> and <span class="math-inline">\(P=k=R/(t)\)</span>. Its free resolution is
+<span class="math-display">\[
+Q=[R\xrightarrow{\ t\ }R],\qquad Q^{-1}=R,\quad Q^0=R.
+\tag{11.14}
+\]</span>
+The map is injective with cokernel <span class="math-inline">\(k\)</span>, so <span class="math-inline">\(Q\simeq k\)</span>. This proves that <span class="math-inline">\(P\)</span> is compact without requiring <span class="math-inline">\(k\)</span> itself to be projective over <span class="math-inline">\(R\)</span>. The dual complex has terms in degrees <span class="math-inline">\(0,1\)</span> and differential <span class="math-inline">\(-t\)</span>, which is isomorphic to the complex with differential <span class="math-inline">\(t\)</span>. Hence
+<span class="math-display">\[
+P^\vee\simeq k[-1],\qquad
+F_0(M)\simeq\operatorname{fib}(t:M\to M)
+\simeq(k\otimes_R^{\mathbb L}M)[-1].
+\tag{11.15}
+\]</span>
+Our shift convention is <span class="math-inline">\(H^i(M[n])=H^{i+n}(M)\)</span>. Consequently
+<span class="math-display">\[
+F_0(R)\simeq k[-1],\qquad
+F_0(k)\simeq k\oplus k[-1].
+\tag{11.16}
+\]</span>
+The second equality follows by applying <span class="math-inline">\(\operatorname{Hom}_R(Q,-)\)</span> to <span class="math-inline">\(k\)</span>, where multiplication by <span class="math-inline">\(t\)</span> is zero; its terms occupy degrees <span class="math-inline">\(0,1\)</span>. The same computation with <span class="math-inline">\(R[t^{-1}]\)</span> has an invertible differential and gives
+<span class="math-inline">\(F_0(R[t^{-1}])=0\)</span>, although <span class="math-inline">\(R[t^{-1}]\ne0\)</span>. Thus even this fully specified continuous linear coefficient functor need not be faithful or an equivalence.</p>
+<h2>Lifting through coarsening on bounded objects</h2>
+<p>Let <span class="math-inline">\(\mathcal A,\mathcal D\)</span> be presentable stable <span class="math-inline">\(k\)</span>-linear categories with specified cohomological t-structures. Write
+<span class="math-display">\[
+\mathcal A_+=\bigcup_{n\in\mathbb Z}\mathcal A^{\ge n},
+\qquad
+\mathcal D_+=\bigcup_{n\in\mathbb Z}\mathcal D^{\ge n}.
+\tag{11.17}
+\]</span>
+Here “eventually coconnective” means bounded below in this convention: each individual object has some lower cohomological bound. These full subcategories are stable. A shift changes the bound by an integer; a finite sum uses the minimum of finitely many bounds; and a cofiber triangle changes that minimum by at most a finite shift. Retracts are bounded below as well. They need not be closed under arbitrary colimits.</p>
+<p>For example, in <span class="math-inline">\(\operatorname{Mod}_k\)</span>, every <span class="math-inline">\(k[n]\)</span> belongs to <span class="math-inline">\(\mathcal A_+\)</span>, whereas
+<span class="math-inline">\(\bigoplus_{n\ge0}k[n]\)</span> has nonzero cohomology in arbitrarily negative degrees. This is why the lift is first constructed on compacts and only afterwards extended to the whole category.</p>
+<p><strong>Theorem 11.2 (continuous bounded lift).</strong> Let <span class="math-inline">\(\mathcal C\)</span> be compactly generated, with
+<span class="math-inline">\(\mathcal C\simeq\operatorname{Ind}(\mathcal C^c)\)</span>. Suppose
+<span class="math-inline">\(\Psi:\mathcal D\to\mathcal A\)</span> is exact and continuous and restricts to an equivalence of full stable subcategories
+<span class="math-display">\[
+\Psi_+:\mathcal D_+\xrightarrow{\sim}\mathcal A_+.
+\tag{11.18}
+\]</span>
+Let <span class="math-inline">\(F_0:\mathcal C\to\mathcal A\)</span> be continuous and satisfy
+<span class="math-display">\[
+F_0(c)\in\mathcal A_+\qquad(c\in\mathcal C^c).
+\tag{11.19}
+\]</span>
+Then there is a contractibly unique pair <span class="math-inline">\((F,\varepsilon)\)</span>, where <span class="math-inline">\(F:\mathcal C\to\mathcal D\)</span> is continuous,
+<span class="math-display">\[
+\varepsilon:\Psi F\xrightarrow{\sim}F_0,
+\qquad F(\mathcal C^c)\subset\mathcal D_+.
+\tag{11.20}
+\]</span>
+The comparison <span class="math-inline">\(\varepsilon\)</span> is part of the pair. The theorem asserts neither that <span class="math-inline">\(F\)</span> preserves compactness nor that <span class="math-inline">\(F\)</span> takes every object of <span class="math-inline">\(\mathcal C\)</span> to <span class="math-inline">\(\mathcal D_+\)</span>.</p>
+<p><strong>Proof.</strong> Choose an inverse <span class="math-inline">\(Q\)</span> of (11.18), with its unit and counit, and form the exact functor
+<span class="math-display">\[
+F^c:\mathcal C^c\longrightarrow\mathcal D_+,
+\qquad F^c=Q\circ F_0|_{\mathcal C^c}.
+\tag{11.21}
+\]</span>
+The Ind universal property extends the composite with the exact inclusion <span class="math-inline">\(\mathcal D_+\subset\mathcal D\)</span> uniquely to a continuous functor <span class="math-inline">\(F:\mathcal C\to\mathcal D\)</span>. In a filtered compact presentation <span class="math-inline">\(c\simeq\operatorname*{colim}_i c_i\)</span>, it has the concrete description
+<span class="math-display">\[
+F(c)\simeq\operatorname*{colim}_i Q(F_0(c_i)).
+\tag{11.22}
+\]</span>
+The colimit is taken in <span class="math-inline">\(\mathcal D\)</span>. The Ind universal property supplies its independence of presentation, its action on morphisms and its full functorial coherences; the objectwise formula alone would not establish those points.</p>
+<p>On compacts, the counit for <span class="math-inline">\(\Psi_+Q\)</span> gives the comparison (11.20). Both <span class="math-inline">\(\Psi F\)</span> and <span class="math-inline">\(F_0\)</span> are continuous, so the same universal property extends that natural equivalence uniquely to all of <span class="math-inline">\(\mathcal C\)</span>.</p>
+<p>To prove uniqueness, let <span class="math-inline">\((F&#x27;,\varepsilon&#x27;)\)</span> be another pair. Its compact restriction takes values in <span class="math-inline">\(\mathcal D_+\)</span>. The full faithfulness of (11.18) identifies its mapping spaces of functors and transformations with those of its image in <span class="math-inline">\(\mathcal A_+\)</span>. Over the fixed functor <span class="math-inline">\(F_0|_{\mathcal C^c}\)</span> and fixed comparisons, the space of lifts is therefore contractible. Restriction
+<span class="math-display">\[
+\operatorname{Fun}^{L}(\mathcal C,\mathcal D)
+\xrightarrow{\sim}
+\operatorname{Fun}^{\mathrm{ex}}(\mathcal C^c,\mathcal D)
+\tag{11.23}
+\]</span>
+is the Ind equivalence, including entire mapping spaces. It extends the unique compact comparison, its compatibility with <span class="math-inline">\(\varepsilon,\varepsilon&#x27;\)</span>, and every higher homotopy. This proves contractible uniqueness. <span class="math-inline">\(\square\)</span></p>
+<p>No common integer <span class="math-inline">\(n\)</span> appears in (11.19). Each compact object may have its own lower bound. Furthermore, (11.18) is full faithfulness only on the indicated full subcategories. The proof never uses full faithfulness of <span class="math-inline">\(\Psi\)</span> on arbitrary objects of <span class="math-inline">\(\mathcal D\)</span>.</p>
+<p><strong>Theorem 11.3 (linear bounded lift).</strong> In Theorem 11.2, assume additionally that <span class="math-inline">\(\mathcal A\)</span> has the rigid compact generation used in Theorem 11.1, that <span class="math-inline">\(\mathcal C,\mathcal D\)</span> are continuous <span class="math-inline">\(\mathcal A\)</span>-module categories, and that <span class="math-inline">\(\Psi\)</span> is a specified coherent <span class="math-inline">\(\mathcal A\)</span>-linear functor. Require action by each <span class="math-inline">\(v\in\mathcal A^c\)</span> to preserve <span class="math-inline">\(\mathcal A_+\)</span> and <span class="math-inline">\(\mathcal D_+\)</span>. Finally, <span class="math-inline">\(F_0\)</span> is a <strong>specified coherent <span class="math-inline">\(\mathcal A\)</span>-linear functor</strong>. Then the lift has a contractibly unique coherent <span class="math-inline">\(\mathcal A\)</span>-linear structure for which <span class="math-inline">\(\varepsilon\)</span> is linear.</p>
+<p><strong>Proof.</strong> First, action by a dualizable compact <span class="math-inline">\(v\)</span> preserves <span class="math-inline">\(\mathcal C^c\)</span>. Indeed
+<span class="math-inline">\(\operatorname{Map}_{\mathcal C}(v\star c,-)\simeq\operatorname{Map}_{\mathcal C}(c,v^\vee\star-)\)</span>, and the functor on the right preserves filtered colimits when <span class="math-inline">\(c\)</span> is compact. Thus, for <span class="math-inline">\((v,c)\in\mathcal A^c\times\mathcal C^c\)</span>, both
+<span class="math-inline">\(v\star F^c(c)\)</span> and <span class="math-inline">\(F^c(v\star c)\)</span> lie in <span class="math-inline">\(\mathcal D_+\)</span>. The latter assertion uses compactness of <span class="math-inline">\(v\star c\)</span>; the former uses the bounded-subcategory stability hypothesis.</p>
+<p>Their images under <span class="math-inline">\(\Psi\)</span> have the specified equivalence
+<span class="math-display">\[
+\begin{aligned}
+\Psi(v\star F^c(c))
+&amp;\simeq v\otimes\Psi F^c(c)\\
+&amp;\xrightarrow{\,v\otimes\varepsilon_c\,}v\otimes F_0(c)\\
+&amp;\simeq F_0(v\star c)\\
+&amp;\xleftarrow{\ \varepsilon_{v\star c}\ }\Psi F^c(v\star c).
+\end{aligned}
+\tag{11.24}
+\]</span>
+Full faithfulness of <span class="math-inline">\(\Psi_+\)</span> lifts this to a natural equivalence
+<span class="math-inline">\(v\star F^c(c)\simeq F^c(v\star c)\)</span>, uniquely in its full mapping space. The middle comparison in (11.24) is the given linearity of <span class="math-inline">\(F_0\)</span>; an unspecified objectwise compatibility would not supply the coherent natural transformation being lifted.</p>
+<p>The unit and iterated action comparisons also live in <span class="math-inline">\(\mathcal D_+\)</span>. Tensor products of compact objects are compact: mapping from <span class="math-inline">\(u\otimes v\)</span> is mapping from <span class="math-inline">\(v\)</span> after the continuous functor <span class="math-inline">\(u^\vee\otimes-\)</span>. Consequently every finite compact action string remains among these tests. Its coherence homotopies are the lifts, through the full mapping-space equivalence <span class="math-inline">\(\Psi_+\)</span>, of the given coherence homotopies for <span class="math-inline">\(F_0\)</span>, <span class="math-inline">\(\Psi\)</span> and <span class="math-inline">\(\varepsilon\)</span>. This constructs all coherent module data on the compact restriction.</p>
+<p>The two functors
+<span class="math-display">\[
+(a,c)\longmapsto a\star F(c),\qquad
+(a,c)\longmapsto F(a\star c)
+\]</span>
+preserve colimits separately. Applying the Ind equivalence one variable at a time says that their natural-transformation space is determined fully by restriction to <span class="math-inline">\(\mathcal A^c\times\mathcal C^c\)</span>. Thus the compact comparison extends uniquely to every <span class="math-inline">\((a,c)\)</span>, and is an equivalence there by continuity. The same assertion in every finite number of action variables extends the entire coherent module structure and the linearity of <span class="math-inline">\(\varepsilon\)</span>. It proves uniqueness on mapping spaces, rather than only uniqueness of an isomorphism class. <span class="math-inline">\(\square\)</span></p>
+<p>Rigid compact generation alone does not imply preservation of a chosen t-structure's bounded-below subcategory by compact tensor actions. That bounded stability is a separate hypothesis. In the intended spectral application it comes from the geometric finite-amplitude properties of the perfect action. Likewise, (11.18) and the compact-image theorem (11.19) must be established for the actual coarsening functor and actual coarse Langlands functor before these formal theorems apply.</p>
+<h2>Bounds on individual compacts need not be uniform</h2>
+<p>Here is an example where even degree-zero compact generators require lower bounds tending to minus infinity. Take
+<span class="math-display">\[
+\mathcal C=\prod_{n\ge0}\operatorname{Mod}_k,
+\qquad\mathcal A=\mathcal D=\operatorname{Mod}_k,
+\qquad\Psi=\operatorname{id}.
+\tag{11.25}
+\]</span>
+Give <span class="math-inline">\(\mathcal C\)</span> the pointwise t-structure and the pointwise <span class="math-inline">\(\operatorname{Mod}_k\)</span>-action. Let <span class="math-inline">\(e_n(V)\)</span> denote the object with component <span class="math-inline">\(V\)</span> in position <span class="math-inline">\(n\)</span> and zero elsewhere. The objects <span class="math-inline">\(e_n(k)\)</span> are compact, since mapping from them is evaluation at the <span class="math-inline">\(n\)</span>-th component, and they detect zero objects. Every tuple is the coproduct of its individual components, and each complex of vector spaces is a colimit of finite sums of shifts of <span class="math-inline">\(k\)</span>. Hence these objects compactly generate <span class="math-inline">\(\mathcal C\)</span>.</p>
+<p>More precisely, a compact object has finite support. Write any tuple <span class="math-inline">\(c\)</span> as the filtered colimit of its finite-support subtuples. If <span class="math-inline">\(c\)</span> is compact, its identity factors through one such subtuple; it is a retract of that finite-support tuple and is therefore zero outside its finite support. Its components are compact complexes: this follows by testing compactness on diagrams supported in one component. Conversely, a finite-support tuple of compact complexes is compact, since its mapping complex is a finite product of component mapping complexes. Over a field, a complex splits, by choosing complements to boundaries and cycles, into its graded cohomology and a contractible complex. Expressing that graded vector space as the filtered colimit of its finite-dimensional finite-degree subspaces shows that compact objects have finite-dimensional cohomology in finitely many degrees. Compactness makes the identity factor through a finite such subspace. Conversely, an object with this cohomology is represented by a finite sum of shifts of <span class="math-inline">\(k\)</span> and is compact.</p>
+<p>Define the continuous <span class="math-inline">\(\operatorname{Mod}_k\)</span>-linear functor
+<span class="math-display">\[
+F_0((c_n)_{n\ge0})=\bigoplus_{n\ge0}c_n[n].
+\tag{11.26}
+\]</span>
+Colimits are computed componentwise, and shifts and coproducts preserve them, so this is indeed continuous. Every compact tuple has finitely many perfect components; its image is therefore a finite sum of bounded complexes and belongs to <span class="math-inline">\(\mathcal A_+\)</span>. All hypotheses of Theorem 11.2 hold, and the lift is simply <span class="math-inline">\(F=F_0\)</span>.</p>
+<p>Nevertheless
+<span class="math-display">\[
+e_n(k)\in\mathcal C^c\cap\mathcal C^{\ge0},
+\qquad F_0(e_n(k))=k[n],
+\qquad H^{-n}(k[n])=k.
+\tag{11.27}
+\]</span>
+For every integer <span class="math-inline">\(N\)</span>, choose <span class="math-inline">\(n\ge0\)</span> with <span class="math-inline">\(-n&lt;N\)</span>. Then <span class="math-inline">\(F_0(e_n(k))\notin\mathcal A^{\ge N}\)</span>. Thus there is no uniform lower bound even on the degree-zero compact generators. Moreover, the noncompact tuple <span class="math-inline">\((k,k,\ldots)\)</span> is bounded below in <span class="math-inline">\(\mathcal C\)</span>, whereas its image <span class="math-inline">\(\bigoplus_{n\ge0}k[n]\)</span> is not bounded below. These computations distinguish the compact-image hypothesis from either a uniform amplitude estimate or preservation of bounded-below objects on the whole source.</p>
+<h2>The torus normalization</h2>
+<p>Let <span class="math-inline">\(G=T\)</span> be a torus. Its unipotent radical is trivial, its positive-root sum is zero, and <span class="math-inline">\(\mathcal W=\mathrm{pt}\)</span>. The map <span class="math-inline">\(p:\mathrm{pt}\to\operatorname{Bun}_T\)</span> is the point given by the trivial bundle with its specified trivialization. It is not the residual gerbe <span class="math-inline">\(BT\)</span>. The exponential factor is now the coefficient field, so
+<span class="math-display">\[
+P_{\mathrm{Vac}}=p_!k,\qquad
+W(c)=\operatorname{Map}(p_!k,c)\simeq p^!c.
+\]</span>
+The last expression is a complex of <span class="math-inline">\(k\)</span>-vector spaces and uses the defined point !-adjunction.</p>
+<p>Denote the enhanced Fourier–Mukai–Laumon functor by
+<span class="math-display">\[
+\Phi_T:D\operatorname{-mod}(\operatorname{Bun}_T)
+       \longrightarrow\operatorname{QCoh}(\operatorname{LS}_{\check T}).
+\]</span>
+Let <span class="math-inline">\(\tau_T\)</span> be the automorphic involution induced by inversion of <span class="math-inline">\(T\)</span>. With the Hecke convention in this course, the candidate is
+<span class="math-display">\[
+F_0\simeq\Phi_T\circ\tau_T.
+\]</span>
+This inversion is part of the normalization: dualizing a character changes it to its inverse. The de Rham Poincaré kernel, its enhancement for the entire bundle stack, and the normalized comparisons
+<span class="math-display">\[
+(\Phi_T\tau_T)(a\star c)\simeq a\otimes(\Phi_T\tau_T)(c),
+\qquad
+\Gamma(S,(\Phi_T\tau_T)(c))\simeq p^!c
+\]</span>
+are required geometric inputs. Their unit, action and character comparisons must be natural in <span class="math-inline">\(a,c\)</span>. Gaitsgory–Raskin, §1.5 of the free paper above, identify this normalization.</p>
+<p><strong>Exercise 11.1.</strong> Identify the coarse functor for a torus, retaining its coefficient and Cartan convention.</p>
+<p><strong>Solution 11.1.</strong> Assume the specified enhanced transform and the two natural comparisons just displayed. Its composite with <span class="math-inline">\(\tau_T\)</span> is continuous and <span class="math-inline">\(\operatorname{QCoh}(S)\)</span>-linear, and its coefficient is precisely <span class="math-inline">\(W\)</span>. The normalized uniqueness in Theorem 11.1 gives the asserted equivalence with <span class="math-inline">\(\alpha^R\)</span>, compatible with the coefficient comparison. This proves the identification from those inputs; it does not prove the global Poincaré-kernel theorem. For <span class="math-inline">\(\mathbb G_m\)</span>, the local-system inversion sends a line connection <span class="math-inline">\((L,\nabla)\)</span> to <span class="math-inline">\((L^{-1},\nabla^\vee)\)</span>; the automorphic inversion sends a line bundle to its inverse. These are the two appearances of the same inverse-character convention.</p>
+<p>The nilpotent cone for a torus has zero Lie-theoretic nilpotent directions. Turning that observation into
+<span class="math-inline">\(\operatorname{IndCoh}_{0}(S)\simeq\operatorname{QCoh}(S)\)</span> requires the zero-singular-support theorem for the actual derived stack. That theorem is still an unproved input here. Under this comparison the full lift is the same normalized transform. The rank-one calculations and outstanding global foundations are given in <a href="GL-GLC-06.html" title="The GL_1 case as an equivalence of categories">The GL_1 case as an equivalence of categories</a>.</p>
+<h2>The restricted Whittaker exactness input</h2>
+<p>Let <span class="math-inline">\(X\)</span> be a smooth, projective, connected curve over an algebraically closed field of characteristic zero, and let <span class="math-inline">\(G\)</span> be a connected reductive group. Fix a Borel subgroup, its unipotent radical <span class="math-inline">\(N\)</span>, and a square root of <span class="math-inline">\(\omega_X\)</span>. Write</p>
+<p><span class="math-display">\[
+\mathcal B=\operatorname{Bun}_G,\qquad
+\mathcal W=\operatorname{Bun}_{N,\rho(\omega_X)},\qquad
+d_G=\dim\mathcal B,\quad d_N=\dim\mathcal W,\quad
+b=d_G-d_N.
+\]</span></p>
+<p>We use cohomological shifts, so <span class="math-inline">\(H^i(K[n])=H^{i+n}(K)\)</span>. A left t-exact functor preserves the subcategory in degrees <span class="math-inline">\(\geq0\)</span>; a right t-exact functor preserves the subcategory in degrees <span class="math-inline">\(\leq0\)</span>.</p>
+<p>The input required by Gaitsgory–Raskin, <em>Proof of the geometric Langlands conjecture I</em>, §2.3, Theorem <code>t:L coarse left exact Nilp</code>, concerns the functor</p>
+<p><span class="math-display">\[
+L^{\mathrm{restr}}_{G,\mathrm{coarse}}[b]:
+D_{1/2,\mathrm{Nilp}}(\mathcal B)
+\longrightarrow
+\operatorname{QCoh}(\operatorname{LS}^{\mathrm{restr}}_{\check G}).
+\]</span></p>
+<p>For the coefficient argument write <span class="math-inline">\(\mathcal C_N=\operatorname{Shv}_{\mathrm{Nilp}}(\mathcal B)\)</span>. Its identification with the half-twisted nilpotent automorphic category, including the t-structure, is an additional geometric input. The displayed restricted functor is t-exact by the stated input. In particular, it preserves degrees <span class="math-inline">\(\geq0\)</span>. This is stronger than the left t-exactness needed for the construction in GLC I, and it applies only after imposing nilpotent singular support and passing to the restricted spectral stack.</p>
+<h2>Formal detection of exactness</h2>
+<p><strong>Lemma.</strong> Let <span class="math-inline">\(\mathcal D\)</span> be a stable category with a t-structure, and let <span class="math-inline">\(T_a:\mathcal D\to\mathcal E_a\)</span> be exact, t-exact functors that are jointly conservative. Then the family reflects both halves of the t-structure.</p>
+<p><strong>Proof.</strong> Suppose every <span class="math-inline">\(T_aK\)</span> lies in degrees <span class="math-inline">\(\geq0\)</span>. T-exactness implies</p>
+<p><span class="math-display">\[
+T_a(\tau^{\leq-1}K)=\tau^{\leq-1}(T_aK)=0.
+\]</span></p>
+<p>Joint conservativity gives <span class="math-inline">\(\tau^{\leq-1}K=0\)</span>, and the truncation triangle gives <span class="math-inline">\(K\in\mathcal D^{\geq0}\)</span>. The proof for degrees <span class="math-inline">\(\leq0\)</span> uses <span class="math-inline">\(\tau^{\geq1}\)</span>. No completeness assumption on the t-structure is needed. <span class="math-inline">\(\square\)</span></p>
+<p>For the restricted local-system stack, the relevant probes have the form</p>
+<p><span class="math-display">\[
+T_{V,x}(K)=\Gamma_!\bigl(
+\operatorname{LS}^{\mathrm{restr}}_{\check G},
+K\otimes\mathcal E_{V,x}\bigr),
+\]</span></p>
+<p>where <span class="math-inline">\(x\in X\)</span>, <span class="math-inline">\(V\)</span> is a representation of <span class="math-inline">\(\check G\)</span>, and <span class="math-inline">\(\mathcal E_{V,x}\)</span> is the associated tautological vector bundle. Their t-exactness and joint conservativity are geometric properties of the restricted spectral stack; the formal lemma does not prove them. The use of <span class="math-inline">\(\Gamma_!\)</span> here must be preserved.</p>
+<p><strong>Conditional exactness theorem.</strong> Suppose an exact functor <span class="math-inline">\(F:\mathcal C_N\to\mathcal D\)</span> satisfies</p>
+<p><span class="math-display">\[
+T_{V,x}(F(M)[b])\simeq
+c(H_{V,x}(M))
+\]</span></p>
+<p>for every <span class="math-inline">\(V\)</span>, where the probes are t-exact and jointly conservative, and every functor <span class="math-inline">\(c\circ H_{V,x}\)</span> is t-exact. Then <span class="math-inline">\(F[b]\)</span> is t-exact.</p>
+<p><strong>Proof.</strong> For <span class="math-inline">\(M\)</span> in either half of the t-structure, the right-hand side belongs to the same half. Every probe of <span class="math-inline">\(F(M)[b]\)</span> therefore belongs to that half. Apply the lemma. <span class="math-inline">\(\square\)</span></p>
+<p>This theorem reduces coarse exactness to the exactness of the normalized Whittaker coefficient after the relevant Hecke operation, together with the spectral detection theorem. Neither the conservativity of a single scalar coefficient nor the Euler characteristic of that coefficient is a substitute for these hypotheses.</p>
+<h2>The index identity and its consequence for perverse sheaves</h2>
+<p>Færgeman–Raskin, <em>Non-vanishing of geometric Whittaker coefficients for reductive groups</em>, §5.2, define</p>
+<p><span class="math-display">\[
+\operatorname{coeff}_{\mathrm{FR}}(M)=
+C_{\mathrm{dR}}\bigl(\mathcal W,
+p^!M\mathbin{\otimes^!}\psi^!\operatorname{exp}_!\bigr)[-d_N].
+\]</span></p>
+<p>Their exponential is normalized to have degree <span class="math-inline">\(-1\)</span> on <span class="math-inline">\(\mathbb A^1\)</span> and to be multiplicative for !-pullback. Their coefficient exactness theorem is that</p>
+<p><span class="math-display">\[
+c:=\operatorname{coeff}_{\mathrm{FR}}[d_G]:
+\operatorname{Shv}_{\mathrm{Nilp}}(\mathcal B)
+\longrightarrow\operatorname{Vect}
+\]</span></p>
+<p>is t-exact. In their §6.1, Theorem <code>t:index</code>, the index identity is</p>
+<p><span class="math-display">\[
+\chi\bigl(\operatorname{coeff}_{\mathrm{FR}}(M)\bigr)
+=(-1)^{d_G}m_{\mathrm{Kos}}(M),
+\]</span></p>
+<p>for a constructible sheaf <span class="math-inline">\(M\)</span> with nilpotent singular support. Here <span class="math-inline">\(m_{\mathrm{Kos}}(M)\)</span> is the multiplicity of its characteristic cycle along the component of the global nilpotent cone containing the global Kostant point.</p>
+<p><strong>Proposition.</strong> Assume these two geometric theorems. For a constructible perverse sheaf <span class="math-inline">\(P\)</span> with nilpotent singular support,</p>
+<p><span class="math-display">\[
+\dim H^0(c(P))=m_{\mathrm{Kos}}(P).
+\]</span></p>
+<p>Consequently, <span class="math-inline">\(c(P)=0\)</span> if and only if <span class="math-inline">\(m_{\mathrm{Kos}}(P)=0\)</span>.</p>
+<p><strong>Proof.</strong> Exactness puts <span class="math-inline">\(c(P)\)</span> in the heart of <span class="math-inline">\(\operatorname{Vect}\)</span>; constructibility makes it finite-dimensional. Since <span class="math-inline">\(c(P)=\operatorname{coeff}_{\mathrm{FR}}(P)[d_G]\)</span>,</p>
+<p><span class="math-display">\[
+\chi(c(P))=(-1)^{d_G}
+\chi(\operatorname{coeff}_{\mathrm{FR}}(P))
+=m_{\mathrm{Kos}}(P).
+\]</span></p>
+<p>The Euler characteristic of a vector space in degree zero is its dimension. A finite-dimensional vector space has dimension zero precisely when it is zero. <span class="math-inline">\(\square\)</span></p>
+<p>The index identity alone does not prove exactness. For example, a nonzero complex with one-dimensional cohomology in degrees zero and one has Euler characteristic zero. In particular, an index calculation cannot establish the vanishing of higher Whittaker cohomology.</p>
+<h2>Two further formal deductions</h2>
+<p><strong>Lemma.</strong> If <span class="math-inline">\(i:\mathcal C_{N,0}\hookrightarrow\mathcal C_N\)</span> is a t-exact inclusion with right adjoint <span class="math-inline">\(i^R\)</span>, then <span class="math-inline">\(i^R\)</span> is left t-exact.</p>
+<p><strong>Proof.</strong> For <span class="math-inline">\(M\in\mathcal C_N^{\geq0}\)</span> and <span class="math-inline">\(A\in\mathcal C_{N,0}^{\leq-1}\)</span>, adjunction and t-exactness give</p>
+<p><span class="math-display">\[
+\operatorname{Hom}_{\mathcal C_{N,0}}(A,i^RM)
+=\operatorname{Hom}_{\mathcal C_N}(iA,M)=0.
+\]</span></p>
+<p>The defining orthogonality of a t-structure gives <span class="math-inline">\(i^RM\in\mathcal C_{N,0}^{\geq0}\)</span>. <span class="math-inline">\(\square\)</span></p>
+<p><strong>Lemma.</strong> Let <span class="math-inline">\(\mathcal C_N\)</span> be a dualizable presentable linear category, and let <span class="math-inline">\(\lambda:\mathcal C_N\to\operatorname{Vect}\)</span> be continuous. If <span class="math-inline">\(u_{\mathcal C_N}\in\mathcal C_N\otimes\mathcal C_N^\vee\)</span> is the coevaluation object, then</p>
+<p><span class="math-display">\[
+(\lambda\otimes\mathrm{id})(u_{\mathcal C_N})=\lambda
+\quad\text{in}\quad
+\mathcal C_N^\vee=\operatorname{Funct}_{\mathrm{cont}}(
+\mathcal C_N,\operatorname{Vect}).
+\]</span></p>
+<p><strong>Proof.</strong> Evaluate the object on <span class="math-inline">\(c\in\mathcal C_N\)</span>. The snake identity identifies the contraction of <span class="math-inline">\(u_{\mathcal C_N}\)</span> with <span class="math-inline">\(c\)</span> with <span class="math-inline">\(c\)</span> itself. Applying <span class="math-inline">\(\lambda\)</span> yields <span class="math-inline">\(\lambda(c)\)</span>. The resulting natural equivalence of continuous functors gives the stated equality. <span class="math-inline">\(\square\)</span></p>
+<p>This explains the formal passage in Færgeman–Raskin §8.1 from Lin's kernel identity to</p>
+<p><span class="math-display">\[
+\operatorname{Mir}(\operatorname{coeff}_{\mathrm{FR}})
+\simeq\operatorname{Poinc}_![-2d_G].
+\]</span></p>
+<p>The kernel identity itself is a separate geometric assertion:</p>
+<p><span class="math-display">\[
+(\operatorname{coeff}_{\mathrm{FR}}\otimes\mathrm{id})
+\bigl(\Delta_!\underline{k}_{\mathcal B}\bigr)
+\simeq\operatorname{Poinc}_![-2d_G],
+\qquad
+\underline{k}_{\mathcal B}=\omega_{\mathcal B}[-2d_G].
+\]</span></p>
+<p>The lemma identifies the contraction of the coevaluation object; miraculous duality identifies its image with the displayed diagonal kernel. Applying the kernel identity then proves the equation for <span class="math-inline">\(\operatorname{Mir}\)</span>. It does not construct Lin's comparison map or prove that it is an isomorphism.</p>
+<h2>The two coefficient normalizations</h2>
+<p>Let <span class="math-inline">\(P_{\mathrm{GLC}}=p_!\chi^*\operatorname{exp}_*\)</span>, so <span class="math-inline">\(c_{\mathrm{GLC}}=\operatorname{Hom}(P_{\mathrm{GLC}},-)\)</span>. GLC I uses an exponential multiplicative for *-pullback, in <span class="math-inline">\(D(\mathbb A^1)^\heartsuit[-1]\)</span>. Færgeman–Raskin use <span class="math-inline">\(\operatorname{exp}_!\)</span> multiplicative for !-pullback, in degree <span class="math-inline">\(-1\)</span>. Their §5.4.1 gives
+<span class="math-display">\[
+P_{\mathrm{FR}}
+=p_!(-\psi)^*(\operatorname{exp}_![-2])[d_N].
+\]</span>
+Assume the geometric exponential and Cartan character-change comparisons, including their half twists. These are not proved here. Choose <span class="math-inline">\(\chi=-\psi\)</span>; then <span class="math-inline">\(\operatorname{exp}_*=\operatorname{exp}_![-2]\)</span>, and adjunction gives
+<span class="math-display">\[
+P_{\mathrm{FR}}=P_{\mathrm{GLC}}[d_N],
+\qquad
+\operatorname{coeff}_{\mathrm{FR}}=c_{\mathrm{GLC}}[-d_N].
+\]</span>
+Changing the sign of all simple-root characters is harmless through the Cartan action, as GLC I §1.3 explicitly observes. Thus
+<span class="math-display">\[
+c_{\mathrm{GLC}}[b]=\operatorname{coeff}_{\mathrm{FR}}[d_G].
+\tag{N}
+\]</span>
+This explains the exact shift in the restricted coarse theorem.</p>
+<h2>A complete deduction of coefficient exactness at geometric premises</h2>
+<p>Write <span class="math-inline">\(\mathcal C_N=\operatorname{Shv}_{\mathrm{Nilp}}(\mathcal B)\)</span>, <span class="math-inline">\(a_D=\operatorname{coeff}_D\)</span>, and <span class="math-inline">\(b_D=\operatorname{coeff}_{D,!}\)</span>. The latter is defined by
+<span class="math-display">\[
+b_D(M)=C_{c,\mathrm{dR}}\bigl(\operatorname{Bun}_N^{\Omega(-D)},
+p_D^*M\mathbin{\otimes^*}\psi_D^*(\operatorname{exp}_![-2])\bigr)
+[\dim\operatorname{Bun}_N^{\Omega(-D)}].
+\]</span>
+The geometric premises are the following precise assertions. Projection formula and base change for the Whittaker correspondence, and ordinary Verdier conjugation for the locally compact holonomic objects in question, are also assumed as part of the six-functor formalism.</p>
+<ol>
+<li>Lin's kernel identity is the displayed identity in the preceding section. Miraculous duality carries the coevaluation kernel to <span class="math-inline">\(\Delta_!\underline{k}_{\mathcal B}\)</span>.</li>
+<li>The nilpotent kernel-pairing theorem says
+<span class="math-display">\[
+   \lambda|_{\mathcal C_N}
+   \simeq C_{c,\mathrm{dR}}(\mathcal B,
+   \operatorname{Mir}(\lambda)\mathbin{\otimes^*}-).
+   \tag{K}
+   \]</span>
+Færgeman–Raskin §8.2, Lemma labeled l:nilp-kernel, cite <a href="https://arxiv.org/abs/2012.07665">Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, <em>Duality for automorphic sheaves with nilpotent singular support</em></a>, Corollary 4.3.7, for (K).</li>
+<li>With the Hecke-side and inverse-character conventions of their §5.3,
+<span class="math-display">\[
+   a_D=a_0\circ H_{V^D},\qquad b_D=b_0\circ H_{V^D}.
+   \tag{CS}
+   \]</span>
+These are the geometric Casselman–Shalika formula and its compact-support analogue, labeled t:cs and c:cs-!.</li>
+<li>For a sufficiently large conductor, the Whittaker stack is affine and the D-module amplitude estimates give
+<span class="math-display">\[
+   a_D(\mathcal C_N^{\leq0})\subset\operatorname{Vect}^{\leq d_G},
+   \qquad b_D(\mathcal C_N^{\geq0})\subset\operatorname{Vect}^{\geq-d_G}.
+   \tag{A}
+   \]</span></li>
+<li>The tempered quotient <span class="math-inline">\(q:\mathcal C_N\to\mathcal C_N^{\mathrm{temp}}\)</span> is t-exact, is essentially surjective, and has a fully faithful left adjoint. All the <span class="math-inline">\(a_D\)</span> factor through it. The quotient is Hecke-linear, and every <span class="math-inline">\(H_{V,x}\)</span> for finite-dimensional <span class="math-inline">\(V\)</span> is t-exact on this quotient. These are the nilpotent forms of Færgeman–Raskin §7, Theorem labeled t:hecke-exact, and §7.6. The Hecke exactness statement concerns the tempered quotient.</li>
+</ol>
+<p><strong>Comparison proof.</strong> The coevaluation lemma, miraculous duality, and Lin's kernel identity give
+<span class="math-display">\[
+\operatorname{Mir}(a_0)=P_{\mathrm{FR}}[-2d_G].
+\]</span>
+Insert this equality into (K), substitute the formula for <span class="math-inline">\(P_{\mathrm{FR}}\)</span>, and apply the compact-support projection formula and base change. One obtains
+<span class="math-display">\[
+a_0=b_0[-2d_G]\quad\text{on }\mathcal C_N.
+\]</span>
+Apply (CS) to both sides:
+<span class="math-display">\[
+a_D=b_D[-2d_G]\quad\text{on }\mathcal C_N.
+\tag{C}
+\]</span>
+This supplies the entire categorical deduction in Færgeman–Raskin §8.2, Theorem labeled t:coeff-!, and Corollary labeled c:coeff-!-D, from their geometric inputs.</p>
+<p>For locally compact nilpotent sheaves, ordinary Verdier conjugation gives
+<span class="math-display">\[
+a_0(\mathbb D M)=a_0(M)^\vee[-2d_G],
+\qquad
+a_0[d_G](\mathbb D M)=(a_0[d_G](M))^\vee.
+\]</span>
+The second formula follows because duality reverses shifts. It records the precise coefficient-duality normalization.</p>
+<p><strong>Large-conductor exactness.</strong> The first bound in (A) gives <span class="math-inline">\(a_D[d_G](\mathcal C_N^{\leq0})\subset\operatorname{Vect}^{\leq0}\)</span>. If <span class="math-inline">\(M\in\mathcal C_N^{\geq0}\)</span>, the second bound and (C) imply
+<span class="math-display">\[
+a_D(M)=b_D(M)[-2d_G]\in\operatorname{Vect}^{\geq d_G}.
+\]</span>
+Shifting by <span class="math-inline">\(d_G\)</span> puts it in degrees <span class="math-inline">\(\geq0\)</span>. Thus <span class="math-inline">\(a_D[d_G]\)</span> is t-exact for a large conductor.</p>
+<p><strong>Lemma (descent through a t-exact quotient).</strong> If <span class="math-inline">\(q:\mathcal A\to\mathcal Q\)</span> is an essentially surjective t-exact quotient and <span class="math-inline">\(f=\bar f q\)</span> is t-exact, then <span class="math-inline">\(\bar f\)</span> is t-exact.</p>
+<p><strong>Proof.</strong> A lift <span class="math-inline">\(A\)</span> of <span class="math-inline">\(Q\in\mathcal Q^{\leq0}\)</span> can be replaced by <span class="math-inline">\(\tau^{\leq0}A\)</span>, since <span class="math-inline">\(q\)</span> commutes with truncation and <span class="math-inline">\(q(\tau^{\leq0}A)=Q\)</span>. Apply <span class="math-inline">\(f\)</span> to this lift. For <span class="math-inline">\(Q\in\mathcal Q^{\geq0}\)</span>, use <span class="math-inline">\(\tau^{\geq0}A\)</span>. <span class="math-inline">\(\square\)</span></p>
+<p>Choose a dominant coweight <span class="math-inline">\(\lambda\)</span> with <span class="math-inline">\(D=\lambda x\)</span> large. The dual of <span class="math-inline">\(V^\lambda\)</span> has highest weight <span class="math-inline">\(-w_0(\lambda)\)</span>. Equivariant coevaluation <span class="math-inline">\(k\to V^\lambda\otimes(V^\lambda)^\vee\)</span> followed by evaluation is multiplication by <span class="math-inline">\(\dim V^\lambda\)</span>. This scalar is invertible in characteristic zero; dividing evaluation by it gives a splitting. Thus the trivial representation is a direct summand of <span class="math-inline">\(V^\lambda\otimes(V^\lambda)^\vee\)</span>. Hence <span class="math-inline">\(a_0[d_G]\)</span> is a retract of
+<span class="math-display">\[
+a_0[d_G]\circ H_{V^\lambda}\circ H_{(V^\lambda)^\vee}
+=a_D[d_G]\circ H_{(V^\lambda)^\vee}.
+\]</span>
+The latter factors through the t-exact descended large-conductor coefficient, a t-exact tempered Hecke functor, and the t-exact quotient <span class="math-inline">\(q\)</span>. It is t-exact. Both halves of a t-structure are closed under retracts, so <span class="math-inline">\(a_0[d_G]\)</span> is t-exact. Formula (CS), descent, and Hecke exactness then prove the same assertion for every <span class="math-inline">\(a_D[d_G]\)</span>. This is the full formal proof of the coefficient exactness theorem in Færgeman–Raskin §8.3.</p>
+<p>The large-conductor premise can be stated with a safe explicit bound. For a positive root <span class="math-inline">\(\alpha\)</span>, put <span class="math-inline">\(h_\alpha=\langle\alpha,\rho\rangle\)</span>. The associated root line is
+<span class="math-display">\[
+\omega_X^{h_\alpha}(-\langle\alpha,D\rangle),
+\]</span>
+so the inequalities
+<span class="math-display">\[
+\langle\alpha,D\rangle&gt;2h_\alpha(g-1)
+\quad\text{for every positive root }\alpha
+\tag{L}
+\]</span>
+give negative degree and therefore <span class="math-inline">\(H^0=0\)</span> for all root lines. Such conductors exist: <span class="math-inline">\(D=2n\rho\cdot x\)</span> with a positive integer <span class="math-inline">\(n&gt;g-1\)</span> satisfies (L). A central root filtration of <span class="math-inline">\(N\)</span>, vanishing of <span class="math-inline">\(H^2\)</span> on a curve, and the description of torsors under additive vector groups then give the affine Whittaker moduli scheme used in (A). These torsor and D-module facts remain geometric premises here.</p>
+<h2>Applying the deduction to the actual coarse functor</h2>
+<p>Let <span class="math-inline">\(Y=\operatorname{LS}^{\mathrm{restr}}_{\check G}\)</span>. Its functional <span class="math-inline">\(\Gamma_!\)</span> is dual to <span class="math-inline">\(\mathcal O_Y\)</span> under the canonical self-duality of <span class="math-inline">\(\operatorname{QCoh}(Y)\)</span>. The geometric spectral premise is that
+<span class="math-display">\[
+T_{V,x}(K)=\Gamma_!(Y,K\otimes\mathcal E_{V,x})
+\]</span>
+is a jointly conservative t-exact family. Færgeman–Raskin §1.6.2 connect this with the ind-affine formal-scheme presentation of the framed restricted stack, citing AGKRRV's restricted-local-system theorem. Their §10.2 constructs the enhanced coefficient and proves the action compatibility
+<span class="math-display">\[
+a_0(\mathcal G\star M)=
+\Gamma_!(Y,\mathcal G\otimes a_0^{\mathrm{enh}}(M)).
+\]</span></p>
+<p>The normalization (N), the spectral action, and Hecke compatibility give
+<span class="math-display">\[
+T_{V,x}\bigl(L^{\mathrm{restr}}_{G,\mathrm{coarse}}(M)[b]\bigr)
+=a_0(H_{V,x}M)[d_G].
+\]</span>
+The right-hand functor factors through <span class="math-inline">\(q\)</span>, a t-exact tempered Hecke functor, and the descended t-exact normalized coefficient proved above. Apply the probe-reflection lemma to conclude that <span class="math-inline">\(L^{\mathrm{restr}}_{G,\mathrm{coarse}}[b]\)</span> is t-exact. This argument uses the constructed coarse/enhanced functor and its compatibility; it assumes no Langlands equivalence. The spectral probes and compatibility remain geometric premises.</p>
+<h2>The boundedness reduction and its geometric premises</h2>
+<p>The passage from the coarse functor to its bounded lift uses two statements: compact automorphic objects are bounded below, and the coarse functor has a finite lower amplitude. Gaitsgory–Raskin prove them in the construction paper, §2. The reduction of the second statement to restricted t-exactness can be proved formally once its geometric comparisons are specified. We use cohomological shifts:
+<span class="math-display">\[
+H^i(E[s])=H^{i+s}(E),\qquad
+E\in\mathcal E^{\ge a}\Longleftrightarrow E[s]\in\mathcal E^{\ge a-s}.
+\]</span>
+All functors in the reductions are exact. The stable categorical and t-structure foundations remain the prerequisites stated earlier in the lesson.</p>
+<p>Let <span class="math-inline">\(\mathcal C,\mathcal C_{\mathrm{restr}}\)</span> be the full and restricted automorphic categories and let <span class="math-inline">\(\mathcal A,\mathcal A_{\mathrm{restr}}\)</span> be the full and restricted spectral categories. Here <span class="math-inline">\(\mathcal A=\operatorname{QCoh}(S)\)</span>, where <span class="math-inline">\(S\)</span> is the derived de Rham local-systems stack. The <span class="math-inline">\(!\)</span>-criterion requires <span class="math-inline">\(S\)</span> to be an eventually coconnective algebraic stack with finite classical dimension; these geometric properties and the canonical t-structures are included among its premises. Put
+<span class="math-display">\[
+W_N=\operatorname{Bun}_{N,\rho(\omega_X)},\qquad
+b=\dim\operatorname{Bun}_G-\dim W_N,
+\qquad \delta=\dim S^{\mathrm{cl}}.
+\]</span>
+The dimensions, restricted categories and normalized functors below are geometric data. In particular, <span class="math-inline">\(\delta\)</span> is the dimension of the classical algebraic stack, with its stack dimension convention; it is not being replaced by a virtual dimension.</p>
+<p>Assume the following inputs, including their versions after every field extension <span class="math-inline">\(K/k\)</span>.</p>
+<ol>
+<li>Every compact object of <span class="math-inline">\(\mathcal C\)</span> belongs to <span class="math-inline">\(\mathcal C^{\ge m}\)</span> for some integer <span class="math-inline">\(m\)</span> depending on that object.</li>
+<li>There are exact functors <span class="math-inline">\(r_{\mathrm{aut}}:\mathcal C\to\mathcal C_{\mathrm{restr}}\)</span> and <span class="math-inline">\(r_{\mathrm{spec}}:\mathcal A\to\mathcal A_{\mathrm{restr}}\)</span>, with <span class="math-inline">\(r_{\mathrm{aut}}(\mathcal C^{\ge0})\subset\mathcal C_{\mathrm{restr}}^{\ge0}\)</span>, and a specified natural comparison
+<span class="math-display">\[
+   r_{\mathrm{spec}}F_0\simeq F_{0,\mathrm{restr}}r_{\mathrm{aut}}.
+   \]</span>
+Here <span class="math-inline">\(r_{\mathrm{spec}}\)</span> is the right adjoint to the specified fully faithful inclusion <span class="math-inline">\(\iota_{\mathrm{spec}}:\mathcal A_{\mathrm{restr}}\hookrightarrow\mathcal A\)</span>. These comparisons and the functors commute with extension of the ground field, and those field pullbacks preserve the bounds used here.</li>
+<li>The normalized restricted functor <span class="math-inline">\(F_{0,\mathrm{restr}}[b]\)</span> is t-exact.</li>
+<li>For every <span class="math-inline">\(K/k\)</span> and <span class="math-inline">\(K\)</span>-rational point <span class="math-inline">\(\sigma\)</span> of <span class="math-inline">\(S_K\)</span>, point pushforward factors through the restricted spectral category. Taking right adjoints gives a specified comparison
+<span class="math-display">\[
+   i_\sigma^!\simeq i_{\sigma,\mathrm{restr}}^!r_{\mathrm{spec},K},
+   \qquad
+   i_{\sigma,\mathrm{restr}}^!(\mathcal A_{\mathrm{restr},K}^{\ge0})
+   \subset\operatorname{Mod}_K^{\ge0}.
+   \]</span>
+Here <span class="math-inline">\(i_\sigma^!\)</span> is the possibly noncontinuous right adjoint to point pushforward. The factorization assertion includes a specified restricted point pushforward and its right adjoint. It is not ordinary tensor pullback.</li>
+<li>The spectral <span class="math-inline">\(!\)</span>-fibre criterion has its stated dimension loss: if <span class="math-inline">\(M\in\operatorname{QCoh}(S)\)</span> satisfies <span class="math-inline">\(i_\sigma^!(M_K)\in\operatorname{Mod}_K^{\ge0}\)</span> for every such field and point, then
+<span class="math-display">\[
+   M\in\operatorname{QCoh}(S)^{\ge-\delta}.
+   \]</span></li>
+</ol>
+<p>These are the inputs in <a href="https://arxiv.org/abs/2405.03599v3">Gaitsgory–Raskin, <em>Construction of the functor</em>, §2</a>. The restricted t-exactness input is attributed there to Færgeman–Raskin. None of these global geometric statements follows from the coefficient/Yoneda construction.</p>
+<p>The stated right-adjoint factorization is a formal consequence of the pushforward factorization and the supplied adjoints. For every <span class="math-inline">\(V\in\operatorname{Mod}_K\)</span>, their adjunctions identify
+<span class="math-display">\[
+\operatorname{Map}_{\mathcal A_K}((i_\sigma)_*V,M)
+\simeq\operatorname{Map}_{\mathcal A_{\mathrm{restr},K}}
+((i_{\sigma,\mathrm{restr}})_*V,r_{\mathrm{spec},K}M)
+\simeq\operatorname{Map}_K(V,i_{\sigma,\mathrm{restr}}^!r_{\mathrm{spec},K}M).
+\]</span>
+Yoneda gives the comparison in input 4, naturally with its adjunction coherences. This supplies no ordinary-fibre comparison.</p>
+<p><strong>Proposition (formal lower amplitude).</strong> Under inputs 2–5,
+<span class="math-display">\[
+c\in\mathcal C^{\ge m}
+\quad\Longrightarrow\quad
+F_0(c)\in\mathcal A^{\ge m+b-\delta}.
+\]</span>
+Thus, with <span class="math-inline">\(D=\delta-b\)</span>, the shifted functor <span class="math-inline">\(F_0[-D]\)</span> preserves <span class="math-inline">\(\ge0\)</span>.</p>
+<p><strong>Proof.</strong> Exactness of <span class="math-inline">\(r_{\mathrm{aut}}\)</span> extends its <span class="math-inline">\(\ge0\)</span> preservation to every bound, so <span class="math-inline">\(r_{\mathrm{aut}}(c)\in\mathcal C_{\mathrm{restr}}^{\ge m}\)</span>. Restricted t-exactness gives
+<span class="math-display">\[
+F_{0,\mathrm{restr}}(r_{\mathrm{aut}}c)[b]
+\in\mathcal A_{\mathrm{restr}}^{\ge m},
+\quad\text{hence}\quad
+r_{\mathrm{spec}}F_0(c)\in\mathcal A_{\mathrm{restr}}^{\ge m+b}.
+\]</span>
+After extending to any field <span class="math-inline">\(K\)</span>, the same argument and comparison apply to <span class="math-inline">\(c_K\)</span>. The restricted <span class="math-inline">\(!\)</span>-fibre preserves this lower bound by exactness and input 4. Consequently
+<span class="math-display">\[
+i_\sigma^!(F_0(c)_K)\in\operatorname{Mod}_K^{\ge m+b}
+\qquad\text{for every }K,\sigma.
+\]</span>
+Apply the <span class="math-inline">\(!\)</span>-fibre criterion to <span class="math-inline">\(M=F_0(c)[m+b]\)</span>. Its <span class="math-inline">\(!\)</span>-fibres belong to <span class="math-inline">\(\ge0\)</span>, so <span class="math-inline">\(M\in\mathcal A^{\ge-\delta}\)</span>. Undoing the shift gives precisely <span class="math-inline">\(F_0(c)\in\mathcal A^{\ge m+b-\delta}\)</span>. For <span class="math-inline">\(m=0\)</span>, shifting by <span class="math-inline">\([-D]\)</span> raises this lower bound to zero. <span class="math-inline">\(\square\)</span></p>
+<p>Together with input 1, this proves that the coarse image of every compact object is eventually coconnective. A uniform lower bound for all compact objects is unnecessary: the integer <span class="math-inline">\(m\)</span> varies with the compact object. The continuous bounded-lift theorem can therefore be applied once the eventual-coconnective coarsening equivalence is also available.</p>
+<h2>What finite filtrations prove</h2>
+<p><strong>Lemma (finite extension bounds).</strong> Suppose a stable category has a t-structure and an object <span class="math-inline">\(E\)</span> has a finite filtration
+<span class="math-display">\[
+0=E_0\longrightarrow E_1\longrightarrow\cdots\longrightarrow E_N=E,
+\qquad G_j=\operatorname{cofib}(E_{j-1}\to E_j).
+\]</span>
+If <span class="math-inline">\(G_j\in\mathcal E^{\ge a_j}\)</span>, then <span class="math-inline">\(E\in\mathcal E^{\ge\min_j a_j}\)</span>. If <span class="math-inline">\(G_j\in\mathcal E^{\le q_j}\)</span>, then <span class="math-inline">\(E\in\mathcal E^{\le\max_j q_j}\)</span>. In particular, if <span class="math-inline">\(G_j=T_j(M)[s_j]\)</span> and each <span class="math-inline">\(T_j\)</span> preserves <span class="math-inline">\(\ge r\)</span>, then
+<span class="math-display">\[
+M\in\mathcal E^{\ge r}
+\quad\Longrightarrow\quad
+E\in\mathcal E^{\ge r-\max_j s_j}.
+\]</span>
+The analogous upper bound is <span class="math-inline">\(r-\min_j s_j\)</span> when each <span class="math-inline">\(T_j\)</span> preserves <span class="math-inline">\(\le r\)</span>.</p>
+<p><strong>Proof.</strong> Both halves of a t-structure are extension closed. To see the lower assertion directly, if two terms of a triangle <span class="math-inline">\(A\to B\to C\)</span> corresponding to <span class="math-inline">\(A,C\)</span> lie in <span class="math-inline">\(\ge a\)</span>, map any object of <span class="math-inline">\(\le a-1\)</span> into that triangle. The outer mapping spaces are contractible, and therefore so is the middle one. The orthogonality characterization of <span class="math-inline">\(\ge a\)</span> puts <span class="math-inline">\(B\)</span> in <span class="math-inline">\(\ge a\)</span>. The upper assertion follows by mapping into objects of <span class="math-inline">\(\ge q+1\)</span>. Induction on the finite filtration proves the two bounds. Finally a shift <span class="math-inline">\([s_j]\)</span> changes either bound by <span class="math-inline">\(-s_j\)</span>, giving the displayed formulas. <span class="math-inline">\(\square\)</span></p>
+<p>There is a contravariant form useful for the <span class="math-inline">\(!\)</span>-criterion. If a derived module <span class="math-inline">\(B\)</span> has a finite filtration with graded pieces <span class="math-inline">\(K[s_j]\)</span>, applying derived Hom into <span class="math-inline">\(M\)</span> reverses the filtration. Its graded pieces are
+<span class="math-display">\[
+\operatorname{RHom}(K[s_j],M)
+\simeq\operatorname{RHom}(K,M)[-s_j].
+\]</span>
+Therefore, if <span class="math-inline">\(\operatorname{RHom}(K,M)\in\ge a\)</span>, their bounds are <span class="math-inline">\(a+s_j\)</span>. In particular, shifts <span class="math-inline">\(s_j\ge0\)</span>, which put the graded copies of <span class="math-inline">\(K\)</span> in nonpositive cohomological degrees, cause no loss of the lower bound. This follows by applying Hom to each filtration triangle and using the lemma. Signs of shifts must be checked in this direction because Hom is contravariant in its first argument.</p>
+<p>For compact D-modules on <span class="math-inline">\(\operatorname{Bun}_G\)</span>, the geometric argument seeks a filtration with at most <span class="math-inline">\(n\)</span> layers of the form <span class="math-inline">\(T_j(M)[j]\)</span>, where the <span class="math-inline">\(T_j\)</span> preserve lower bounds and <span class="math-inline">\(n\)</span> comes from a fixed finite affine cover. The lemma gives an amplitude loss of at most <span class="math-inline">\(n\)</span>, independent of the larger quasi-compact open on which the resulting object is examined. It does not establish the geometric hypotheses that produce that filtration. Those include:</p>
+<ul>
+<li>truncatability of <span class="math-inline">\(\operatorname{Bun}_G\)</span>, suitable co-truncative open substacks, and the global-quotient presentations used in the construction;</li>
+<li>the actual compact generators <span class="math-inline">\(j_!f_!(M)\)</span>, including the domain of the partially defined <span class="math-inline">\(f_!\)</span>, compact generation on the quotient and the finite-construction description of all compact objects;</li>
+<li>boundedness of compact D-modules on the finite-type schemes involved, with the induction/forgetful functors and half-twist conventions;</li>
+<li>the relevant smooth base-change and conservative t-structure comparisons, the finite Cousin filtration, and its compatibility with partially defined functors and their pro-category values;</li>
+<li>the affine <span class="math-inline">\(!\)</span>-pushforward lower-amplitude theorem for the affine pieces, and comparison of its pro-category bound with an existing ordinary D-module value.</li>
+</ul>
+<p>Given those inputs, if <span class="math-inline">\(M\in\ge r\)</span>, the filtration gives <span class="math-inline">\(j_!f_!(M)\in\ge r-n\)</span>. The bound depends on the chosen source presentation, not on the larger open target. Each resulting compact generator is thus bounded below. Finite shifts, cones and retracts preserve the existence of an individual lower bound. The supplied compact-generation theorem then extends boundedness to every compact object. This proves the formal last steps of the argument; it does not prove truncatability, the compact-generator theorem or affine D-module amplitude. The corresponding geometric argument is in the construction paper, §2.2.</p>
+<p>The <span class="math-inline">\(!\)</span>-criterion has a different Cousin argument, in §2.4. Its required geometry includes a correctly normalized smooth-atlas reduction, finite-dimensional support reconstruction, and the precise relation between stack dimension and atlas dimension. On an affine atlas <span class="math-inline">\(Y\)</span>, it uses generic support pieces along irreducible closed subvarieties <span class="math-inline">\(Z\)</span>. To complete that argument one needs the support-localization functors, their reconstruction theorem, the realization by infinitesimal thickenings, and all associated base-change comparisons. One also needs the finite residue-field filtrations of the localized derived thickenings, with the actual cohomological shifts fixed as in the contravariant lemma.</p>
+<p>At a generic point with field <span class="math-inline">\(K\)</span>, the residue-field test beneath the thickening filtrations has a further comparison with the canonical <span class="math-inline">\(K\)</span>-rational point after field extension. With <span class="math-inline">\(i_Z:Z\to Y\)</span> the closed embedding and <span class="math-inline">\(j_Z:\operatorname{Spec}K\to Z\)</span> the generic localization, its form is
+<span class="math-display">\[
+j_Z^*i_Z^!(M)\simeq
+i_\sigma^!(M_K)[\dim Z]\otimes L_Z,
+\]</span>
+where <span class="math-inline">\(L_Z\)</span> is the specified determinant line in degree zero. This is a test involving the generic residue field, rather than an identification of the entire completed support object. The identity requires the smooth-point tensor–Hom comparison and its base-change theorem; it is not a consequence of extension closure. Once it is supplied, a <span class="math-inline">\(\ge0\)</span> bound on the <span class="math-inline">\(!\)</span>-fibre gives a <span class="math-inline">\(\ge-\dim Z\)</span> bound on this residue-field test, hence a <span class="math-inline">\(\ge-\dim Y\)</span> bound. The finite residue-field filtrations and the contravariant lemma must transfer that bound to the localized thickenings. A correctly typed comparison with their pushforward right-adjoint fibres, and a bound-preserving filtered-colimit theorem, must then transfer it to the completed support object. Finite support reconstruction preserves this common bound. Passing through the normalized atlas comparison must give the stack bound <span class="math-inline">\(-\delta\)</span>. The required reconstruction, thickening, finiteness and descent theorems remain unproved geometric inputs here. Ordinary tensor fibres cannot be substituted for the displayed <span class="math-inline">\(!\)</span>-fibres.</p>
+<h2>A sharp affine <span class="math-inline">\(!\)</span>-fibre example</h2>
+<p>The dimension loss already occurs on a smooth affine scheme. Let
+<span class="math-display">\[
+R=k[t_1,\ldots,t_d],\qquad M=R[d],\qquad d\ge0.
+\]</span>
+After any field extension <span class="math-inline">\(K/k\)</span>, a <span class="math-inline">\(K\)</span>-rational point is given by <span class="math-inline">\(t_j=a_j\in K\)</span>. Set
+<span class="math-display">\[
+R&#x27;=K[t_1,\ldots,t_d],\qquad x_j=t_j-a_j,
+\qquad R&#x27;/(x_1,\ldots,x_d)=K.
+\]</span>
+The translation of variables identifies this sequence with the coordinate variables. Every <span class="math-inline">\(x_j\)</span> is a non-zero-divisor after quotienting by its predecessors, since that quotient is a polynomial ring over a field.</p>
+<p>Define the Koszul complex
+<span class="math-display">\[
+Q=\bigotimes_{j=1}^{d}[R&#x27;e_j\xrightarrow{\ x_j\ }R&#x27;],
+\qquad |e_j|=-1.
+\]</span>
+Its degree <span class="math-inline">\(-p\)</span> term is <span class="math-inline">\(\bigwedge^p R&#x27;^d\)</span>, and
+<span class="math-display">\[
+d_Q(e_{i_1}\wedge\cdots\wedge e_{i_p})
+=\sum_{j=1}^{p}(-1)^{j-1}x_{i_j}
+e_{i_1}\wedge\cdots\wedge\widehat{e_{i_j}}\wedge\cdots\wedge e_{i_p}.
+\]</span>
+We prove that <span class="math-inline">\(Q\to K\)</span> is a resolution. With zero variables the complex is <span class="math-inline">\(R&#x27;\)</span>. Suppose the complex for the first <span class="math-inline">\(j-1\)</span> variables has cohomology only in degree zero, equal to <span class="math-inline">\(R&#x27;/(x_1,\ldots,x_{j-1})\)</span>. The complex for <span class="math-inline">\(j\)</span> variables is the cone of multiplication by <span class="math-inline">\(x_j\)</span> on that complex. Its long exact cohomology sequence has a possible degree <span class="math-inline">\(-1\)</span> term equal to the kernel of multiplication by <span class="math-inline">\(x_j\)</span> on the quotient, and degree zero term equal to its cokernel. The kernel vanishes by the non-zero-divisor assertion, and the cokernel is <span class="math-inline">\(R&#x27;/(x_1,\ldots,x_j)\)</span>. All other terms vanish. Induction proves the claim, including the case <span class="math-inline">\(d=0\)</span>.</p>
+<p>The complex is finite free, so its ordinary Hom complex computes derived Hom into <span class="math-inline">\(R&#x27;\)</span>. Indeed each free-term Hom preserves acyclic complexes, and a bounded total complex is a finite extension of shifts of those acyclic complexes. For a homogeneous dual map <span class="math-inline">\(\phi\)</span> of degree <span class="math-inline">\(p\)</span>, the dual differential is
+<span class="math-display">\[
+d_{Q^\vee}(\phi)=-(-1)^p\phi\circ d_Q.
+\]</span>
+For one variable the dual complex is <span class="math-inline">\([R&#x27;\xrightarrow{-x_j}R&#x27;]\)</span> in degrees <span class="math-inline">\(0,1\)</span>. It is the original one-variable complex shifted by <span class="math-inline">\([-1]\)</span>: shifting an odd number changes the differential's sign. Tensoring these dual complexes, and using the graded tensor–Hom isomorphism, gives
+<span class="math-display">\[
+Q^\vee\simeq Q[-d],\qquad
+\operatorname{RHom}_{R&#x27;}(K,R&#x27;)\simeq K[-d].
+\]</span>
+For completeness, the sign in the tensor–Hom comparison sends homogeneous <span class="math-inline">\(\phi_1\otimes\phi_2\)</span> on <span class="math-inline">\(u_1\otimes u_2\)</span> to
+<span class="math-inline">\((-1)^{|\phi_2||u_1|}\phi_1(u_1)\phi_2(u_2)\)</span>; iterating gives the comparison for all factors. Together with the dual differential formula, this verifies that the displayed tensor comparison is a chain map. Choosing the ordered coordinate volume <span class="math-inline">\(e_1\wedge\cdots\wedge e_d\)</span> identifies the top determinant line with <span class="math-inline">\(R&#x27;\)</span>, fixing the final one-dimensional generator.</p>
+<p>Consequently, for every field extension and every rational point,
+<span class="math-display">\[
+i_\sigma^!(M_K)
+=\operatorname{RHom}_{R&#x27;}(K,R&#x27;[d])\simeq K[0],
+\qquad
+i_\sigma^*(M_K)
+=K\otimes_{R&#x27;}^{\mathbb L}R&#x27;[d]\simeq K[d].
+\]</span>
+All <span class="math-inline">\(!\)</span>-fibres are in degree zero, while every ordinary tensor fibre occupies degree <span class="math-inline">\(-d\)</span>. The object <span class="math-inline">\(M\)</span> itself has nonzero cohomology exactly in degree <span class="math-inline">\(-d\)</span>. For <span class="math-inline">\(d&gt;0\)</span>, it is not in <span class="math-inline">\(\ge-d+1\)</span>. Thus the loss of <span class="math-inline">\(d\)</span> in the affine <span class="math-inline">\(!\)</span>-criterion is sharp, even for this free shifted module; the example verifies the criterion's possible loss without proving its general derived-stack form.</p>
+<h2>The upper amplitude uses ordinary fibres</h2>
+<p>For the upper bound add three geometric inputs. Suppose
+<span class="math-display">\[
+r_{\mathrm{aut}}(\mathcal C^{\le0})
+\subset\mathcal C_{\mathrm{restr}}^{\le d&#x27;}.
+\]</span>
+For every field extension and rational point, require a specified ordinary-fibre comparison
+<span class="math-display">\[
+i_\sigma^*\simeq i_{\sigma,\mathrm{restr}}^*r_{\mathrm{spec},K},
+\qquad
+i_{\sigma,\mathrm{restr}}^*(\mathcal A_{\mathrm{restr},K}^{\le0})
+\subset\operatorname{Mod}_K^{\le0}.
+\]</span>
+This comparison is an additional assertion: factorization of point pushforward alone supplied its right-adjoint <span class="math-inline">\(!\)</span>-factorization. Finally assume ordinary-fibre detection with a finite integer <span class="math-inline">\(d\)</span>: all <span class="math-inline">\(i_\sigma^*(M_K)\in\le0\)</span> imply <span class="math-inline">\(M\in\mathcal A^{\le d}\)</span>. The construction paper takes such a <span class="math-inline">\(d\)</span> from the dimension of an affine smooth cover and proves the bound in §2.5.</p>
+<p><strong>Proposition (formal upper amplitude).</strong> Under these hypotheses and the restricted t-exactness and base-change comparisons above,
+<span class="math-display">\[
+F_0(\mathcal C^{\le0})\subset\mathcal A^{\le d+d&#x27;+b}.
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math-inline">\(c\in\mathcal C^{\le0}\)</span>, then <span class="math-inline">\(r_{\mathrm{aut}}c\in\le d&#x27;\)</span>. Since <span class="math-inline">\(F_{0,\mathrm{restr}}[b]\)</span> is t-exact, its unshifted value lies in <span class="math-inline">\(\le d&#x27;+b\)</span>. The spectral comparison and the ordinary-fibre comparison therefore give
+<span class="math-inline">\(i_\sigma^*(F_0(c)_K)\in\le d&#x27;+b\)</span> for every field and point. The ordinary fibres of <span class="math-inline">\(F_0(c)[d&#x27;+b]\)</span> lie in <span class="math-inline">\(\le0\)</span>. Detection gives <span class="math-inline">\(F_0(c)[d&#x27;+b]\in\le d\)</span>, which is equivalent to the asserted upper bound. Exactness also gives <span class="math-inline">\(F_0(\mathcal C^{\le m})\subset\mathcal A^{\le m+d+d&#x27;+b}\)</span> for every <span class="math-inline">\(m\)</span>. <span class="math-inline">\(\square\)</span></p>
+<h2>What t-exact coarsening can reflect</h2>
+<p><strong>Lemma (upper-bound reflection).</strong> Let <span class="math-inline">\(\Psi:\mathcal D\to\mathcal A\)</span> be exact and t-exact, and suppose its restriction to <span class="math-inline">\(\mathcal D_+=\bigcup_m\mathcal D^{\ge m}\)</span> is fully faithful. For every <span class="math-inline">\(x\in\mathcal D\)</span> and integer <span class="math-inline">\(n\)</span>,
+<span class="math-display">\[
+\Psi x\in\mathcal A^{\le n}\quad\Longleftrightarrow\quad
+x\in\mathcal D^{\le n}.
+\]</span>
+Consequently,
+<span class="math-display">\[
+\ker\Psi\subseteq\bigcap_{n\in\mathbb Z}\mathcal D^{\le n}.
+\]</span>
+If additionally <span class="math-inline">\(\bigcap_n\mathcal A^{\le n}=0\)</span>, this inclusion is an equality. Objects in the displayed intersection are called infinitely connective in this convention.</p>
+<p><strong>Proof.</strong> T-exactness preserves the upper bound. Conversely, form <span class="math-inline">\(y=\tau^{\ge n+1}x\)</span>. It is bounded below, hence belongs to <span class="math-inline">\(\mathcal D_+\)</span>. A t-exact exact functor commutes with truncation: applying it to the truncation triangle gives a triangle with the two prescribed t-structure bounds, and uniqueness of truncation identifies it with the target truncation triangle. Hence
+<span class="math-display">\[
+\Psi y\simeq\tau^{\ge n+1}\Psi x=0.
+\]</span>
+Full faithfulness on <span class="math-inline">\(\mathcal D_+\)</span>, which contains <span class="math-inline">\(y\)</span> and zero, gives <span class="math-inline">\(\operatorname{Map}_{\mathcal D}(y,y)\simeq\operatorname{Map}_{\mathcal A}(0,0)=0\)</span>. Thus the identity of <span class="math-inline">\(y\)</span> is zero and <span class="math-inline">\(y=0\)</span>. The truncation triangle now puts <span class="math-inline">\(x\)</span> in <span class="math-inline">\(\le n\)</span>.</p>
+<p>If <span class="math-inline">\(\Psi x=0\)</span>, apply this argument for every <span class="math-inline">\(n\)</span>, proving the kernel inclusion. Conversely, an infinitely connective <span class="math-inline">\(x\)</span> has <span class="math-inline">\(\Psi x\in\mathcal A^{\le n}\)</span> for every <span class="math-inline">\(n\)</span> by t-exactness. The additional target intersection hypothesis then gives <span class="math-inline">\(\Psi x=0\)</span>, proving equality. <span class="math-inline">\(\square\)</span></p>
+<p>The upper-amplitude estimate for <span class="math-inline">\(F_0=\Psi F\)</span> therefore also bounds the upper amplitude of <span class="math-inline">\(F\)</span>. The lemma does not reflect lower bounds: the truncation <span class="math-inline">\(\tau^{\le n-1}x\)</span> that would have to vanish is not necessarily bounded below, so the full faithfulness hypothesis cannot be applied to it. Nor does a zero coarse image prove that its chosen geometric lift is nonzero. Proving unbounded lower amplitude of the full Langlands functor requires an actual nonzero geometric example, together with its source bound; neither follows from this kernel calculation.</p>
+<h2>The reduction exercise</h2>
+<p><strong>Exercise 11.5.</strong> Explain the reduction of compact-image boundedness in the construction paper to the <span class="math-inline">\(!\)</span>-fibre criterion and restricted t-exactness.</p>
+<p><strong>Solution 11.5.</strong> Let <span class="math-inline">\(c\)</span> be compact. The compact D-module theorem supplies an integer <span class="math-inline">\(m\)</span> with <span class="math-inline">\(c\in\mathcal C^{\ge m}\)</span>. Apply the restricted automorphic projection; it retains the bound <span class="math-inline">\(m\)</span>. Restricted t-exactness after the normalization shift <span class="math-inline">\([b]\)</span> gives the bound <span class="math-inline">\(m+b\)</span> for <span class="math-inline">\(F_{0,\mathrm{restr}}r_{\mathrm{aut}}c\)</span>. The specified comparison identifies this object with <span class="math-inline">\(r_{\mathrm{spec}}F_0c\)</span>. After every field extension, each rational point factors through the restricted sector, and the right-adjoint <span class="math-inline">\(!\)</span>-fibre on that sector retains the same bound. Thus all <span class="math-inline">\(!\)</span>-fibres of <span class="math-inline">\(F_0c[m+b]\)</span> are in <span class="math-inline">\(\ge0\)</span>. The <span class="math-inline">\(!\)</span>-criterion gives
+<span class="math-display">\[
+F_0c[m+b]\in\mathcal A^{\ge-\delta},
+\qquad F_0c\in\mathcal A^{\ge m+b-\delta}.
+\]</span>
+This is eventually coconnective and provides the hypothesis for the bounded lift on every compact object.</p>
+<p>The complete deduction is conditional on the five geometric inputs stated above. The finite extension lemma proves how the bounds pass through the source's Cousin filtrations, but it does not construct those filtrations, establish affine D-module amplitude, or prove the general support reconstruction and point comparison in the <span class="math-inline">\(!\)</span>-criterion. The affine Koszul example verifies the distinction between the two fibre functors and the sharp possible dimension loss. Checking only closed points over the original field would omit the generic-field tests used by the criterion.</p>
+<h2>Why a coarse lower bound does not bound the full lift</h2>
+<p>The lower-amplitude theorem above concerns <span class="math-inline">\(F_0=\Psi F\)</span>. Coarsening reflects upper bounds by the proved truncation lemma. It need not reflect lower bounds, because it can kill infinitely connective objects.</p>
+<p>Here is the exact implication behind the nonabelian example in Gaitsgory–Raskin, §2.1. Assume a nonzero bounded-below automorphic object <span class="math-inline">\(c_0\)</span>, a zero coarse image <span class="math-inline">\(F_0(c_0)=0\)</span>, and a nonzero full image <span class="math-inline">\(F(c_0)\ne0\)</span>. The last condition follows from the Langlands equivalence if that equivalence is assumed; it does not follow from construction alone. The upper-bound reflection lemma puts <span class="math-inline">\(F(c_0)\)</span> in every <span class="math-inline">\(\mathcal D^{\le n}\)</span>.</p>
+<p>This nonzero object cannot be bounded below. Indeed, if it lay in <span class="math-inline">\(\mathcal D^{\ge m}\)</span>, it would also lie in <span class="math-inline">\(\mathcal D^{\le m-1}\)</span>. Orthogonality would then kill its identity map, forcing the object to be zero. Therefore no finite lower-amplitude estimate for <span class="math-inline">\(F\)</span> can hold on all bounded-below objects: any such estimate applied to <span class="math-inline">\(c_0\)</span> would contradict this conclusion.</p>
+<p>In the geometric example <span class="math-inline">\(c_0\)</span> is the normalized constant automorphic object for a non-torus group. Its half-twist realization, its bounded source normalization, the vanishing of its coarse coefficient and nonvanishing of its full image are geometric assertions <strong>not proved here</strong>. The construction paper states the resulting unbounded lower amplitude for non-tori. The calculation above proves the formal obstruction once those assertions are supplied. It does not turn a zero coarse image into a nonzero full image without that essential input.</p>
+<h2>Three exercises on the construction and lift</h2>
+<p><strong>Exercise 11.2.</strong> Show that eventually coconnective objects are preserved by coarsening.</p>
+<p><strong>Solution 11.2.</strong> The needed premise is the t-structure compatibility of the named coarsening functor. Suppose <span class="math-inline">\(\Psi\)</span> is exact and satisfies
+<span class="math-display">\[
+\Psi(\mathcal D^{\ge0})\subset\mathcal A^{\ge0};
+\tag{11.28}
+\]</span>
+in particular this holds if <span class="math-inline">\(\Psi\)</span> is t-exact. Since an exact functor commutes with shifts, (11.28) implies <span class="math-inline">\(\Psi(\mathcal D^{\ge n})\subset\mathcal A^{\ge n}\)</span> for every <span class="math-inline">\(n\)</span>. If <span class="math-inline">\(d\in\mathcal D_+\)</span>, choose its individual bound <span class="math-inline">\(n\)</span>. Then <span class="math-inline">\(\Psi d\in\mathcal A^{\ge n}\subset\mathcal A_+\)</span>, proving the assertion. Equivalently, the restriction (11.18) already includes preservation of these subcategories as part of its statement.</p>
+<p>Exactness alone is insufficient: the continuous exact functor <span class="math-inline">\(M\mapsto\bigoplus_{n\ge0}M[n]\)</span> on <span class="math-inline">\(\operatorname{Mod}_k\)</span> sends the degree-zero object <span class="math-inline">\(k\)</span> to an object with nonzero cohomology in every nonpositive degree. Thus the geometric t-structure theorem for <span class="math-inline">\(\Psi\)</span> is a genuine input to this exercise, not a consequence of being an exact functor.</p>
+<p><strong>Exercise 11.3.</strong> Prove uniqueness of the coarse functor from linearity and its Whittaker coefficient normalization.</p>
+<p><strong>Solution 11.3.</strong> Let <span class="math-inline">\(H_1,H_2:\mathcal C\to\mathcal A\)</span> be continuous coherent <span class="math-inline">\(\mathcal A\)</span>-linear functors and fix natural equivalences <span class="math-inline">\(\theta_j:\Gamma H_j\simeq W\)</span>. For every compact dualizable <span class="math-inline">\(v\)</span>, (11.9) identifies both
+<span class="math-inline">\(\operatorname{Map}_{\mathcal A}(v,H_j(c))\)</span> with
+<span class="math-inline">\(\operatorname{Map}_{\mathcal C}(v\star P,c)\)</span>. Compose the first identification with the inverse of the second. The resulting equivalence is natural in <span class="math-inline">\(v,c\)</span>, including every morphism of compact tests. Extend in <span class="math-inline">\(v\)</span> by the Ind presentation, which turns mapping out of colimits into limits, and apply enriched Yoneda. This gives <span class="math-inline">\(H_1\simeq H_2\)</span> naturally in <span class="math-inline">\(c\)</span>, with <span class="math-inline">\(\theta_2\circ\Gamma(H_1\simeq H_2)=\theta_1\)</span>.</p>
+<p>The action check uses the same test identity with <span class="math-inline">\(u^\vee\otimes v\)</span> in place of <span class="math-inline">\(v\)</span>; both action comparisons become <span class="math-inline">\(W(v^\vee\star u\star c)\)</span>. Their unit, multiplication and higher homotopies therefore agree under the mapping-space form of Yoneda. Continuity extends this compatibility from compact <span class="math-inline">\(u\)</span> to all <span class="math-inline">\(u\)</span>. Any normalized linear transformation must induce these same test maps, so the space of such transformations, with their specified compatibility, is contractible. Existence is supplied by <span class="math-inline">\(\alpha^R\)</span> in Theorem 11.1. This proves the precise normalized uniqueness statement.</p>
+<p><strong>Exercise 11.4.</strong> Prove existence and uniqueness of the bounded lift.</p>
+<p><strong>Solution 11.4.</strong> Restrict the given continuous functor <span class="math-inline">\(F_0\)</span> to the full category of <strong>all</strong> compact objects. Condition (11.19) makes its values lie in <span class="math-inline">\(\mathcal A_+\)</span>, even though their bounds can differ. Invert (11.18) on this exact restricted functor and include its result in <span class="math-inline">\(\mathcal D\)</span>. The Ind universal property gives its unique continuous extension, computed by (11.22). Continuity of <span class="math-inline">\(\Psi\)</span> extends the compact counit comparison to <span class="math-inline">\(\Psi F\simeq F_0\)</span>. Any other continuous lift taking compacts into <span class="math-inline">\(\mathcal D_+\)</span> has the same compact restriction, with a contractibly unique comparison by full faithfulness of (11.18). The mapping-space equivalence (11.23) then gives contractible uniqueness on the whole source.</p>
+<p>For the linear conclusion, retain the full specified coherent <span class="math-inline">\(\mathcal A\)</span>-linear structure on <span class="math-inline">\(F_0\)</span>, the linear structure of <span class="math-inline">\(\Psi\)</span>, rigid compact generation and the compact-action bounded stability assumptions. Equation (11.24) then constructs the linear comparisons on <span class="math-inline">\(\mathcal A^c\times\mathcal C^c\)</span>. Its mapping-space full faithfulness lifts every coherence, and separate Ind extension gives them on all variables. This is Theorem 11.3. A merely continuous <span class="math-inline">\(F_0\)</span>, or an objectwise action resemblance, does not imply this linear conclusion.</p>
+<h2>The Betti construction and its exponential substitute</h2>
+<p>Now take the curve over <span class="math-inline">\(\mathbb C\)</span>, and let <span class="math-inline">\(e\)</span> be a coefficient field of characteristic zero. Write <span class="math-inline">\(S_B=\operatorname{LS}^{\mathrm{Betti}}_{\check G}\)</span> and <span class="math-inline">\(\mathcal A_B=\operatorname{QCoh}(S_B)\)</span>. The automorphic category for the Betti conjecture is
+<span class="math-display">\[
+\mathcal C_B=\operatorname{Shv}^{\mathrm{Betti}}_{1/2,\operatorname{Nilp}}
+                     (\operatorname{Bun}_G).
+\]</span>
+It sits fully faithfully in the category of all Betti sheaves through an inclusion <span class="math-inline">\(b\)</span> with left adjoint <span class="math-inline">\(b^L\)</span>. Compact generation of <span class="math-inline">\(\mathcal C_B\)</span>, existence of <span class="math-inline">\(b^L\)</span> and the claim that the objects <span class="math-inline">\(b^L\delta_y\)</span> for stack points <span class="math-inline">\(y\)</span> are compact generators are geometric theorems not proved here. The category of all Betti sheaves need not be compactly generated; a point object in that larger category need not be compact.</p>
+<p>There is no ordinary Betti exponential local system on <span class="math-inline">\(\mathbb A^1\)</span> that can simply replace the de Rham exponential. The construction instead uses the quotient by dilation. For
+<span class="math-display">\[
+j:\mathrm{pt}=(\mathbb A^1-\{0\})/\mathbb G_m
+   \hookrightarrow \mathbb A^1/\mathbb G_m,
+\]</span>
+the substitute is <span class="math-inline">\(j_*e[-1]\)</span>. For <span class="math-inline">\(r=|\Delta|\)</span>, the number of simple roots, take the simple-root coordinates and the Cartan action on <span class="math-inline">\(\mathbb A^r\)</span>. Their nonzero locus gives
+<span class="math-display">\[
+j:BZ_G\hookrightarrow\mathbb A^r/T.
+\]</span>
+Let <span class="math-inline">\(q:\mathrm{pt}\to BZ_G\)</span>, and put <span class="math-inline">\(R_{Z_G}=q_!e\)</span>. The coefficient object is <span class="math-inline">\(j_*R_{Z_G}[-r]\)</span>. Here all displayed pushforwards are the specified stack operations; their existence and comparisons are additional inputs.</p>
+<p>The character descends to
+<span class="math-inline">\(\chi/T:\mathcal W/T\to\mathbb A^r/T\)</span>. With the specified pulled-back half twist, pull back <span class="math-inline">\(j_*R_{Z_G}[-r]\)</span>, push it along <span class="math-inline">\(p/T:\mathcal W/T\to\mathcal B\)</span> by the defined !-operation, and apply <span class="math-inline">\(b^L\)</span>. This gives
+<span class="math-display">\[
+P^B_{\mathrm{Vac}}
+=b^L(p/T)_!(\chi/T)^*(j_*R_{Z_G}[-r]).
+\]</span>
+The inverse-character and duality conventions enter the coefficient comparison here as in the de Rham construction. Define the normalized coefficient by
+<span class="math-display">\[
+W_B(c)=\operatorname{Map}_{\mathcal C_B}(P^B_{\mathrm{Vac}},c).
+\]</span></p>
+<p><strong>Lemma 11.B1.</strong> In a stable category with filtered colimits, compact objects are closed under finite shifts, finite cofibres and retracts.</p>
+<p><strong>Proof.</strong> Mapping from a shift is a shift of the mapping complex. Mapping from a cofiber is the fiber of the map between the two mapping complexes. Filtered colimits of complexes commute with these finite stable operations, so preservation of filtered colimits by the two complexes implies preservation by their fiber. For a retract, the mapping functor is a retract of the original mapping functor, and its colimit comparison is a retract of an equivalence. A retract of an equivalence is an equivalence. These arguments prove each assertion and hence its iteration over a finite extension construction. <span class="math-inline">\(\square\)</span></p>
+<p>The geometric compactness argument for <span class="math-inline">\(P^B_{\mathrm{Vac}}\)</span> expresses it by a finite extension construction from objects <span class="math-inline">\(b^L\delta_y\)</span>, after the appropriate unipotent-gerbe comparisons. The lemma proves the last compactness implication. It does not prove the stack comparison or the existence of that finite construction.</p>
+<p>Given this compact vacuum and the specified rigid spectral action, Theorem 11.1 constructs
+<span class="math-display">\[
+F^B_0=(a\mapsto a\star P^B_{\mathrm{Vac}})^R.
+\]</span>
+Given the Betti compact-image theorem and the bounded coarsening equivalence, Theorems 11.2–11.3 then construct the continuous linear lift
+<span class="math-display">\[
+F^B:\mathcal C_B\longrightarrow
+             \operatorname{IndCoh}_{\operatorname{Nilp}}(S_B).
+\]</span>
+The Betti compact-image theorem is an additional assertion. The de Rham proof that compact D-modules are bounded below cannot be applied to the larger category of all Betti sheaves. Gaitsgory–Raskin, §§3–4, supply the Betti construction and its distinct boundedness argument.</p>
+<h2>Passing between the four forms of the conjecture</h2>
+<p>For the de Rham setting let
+<span class="math-inline">\(\mathcal N=\operatorname{QCoh}(S)_{\mathrm{restr}}\)</span>; for Betti let
+<span class="math-inline">\(\mathcal N_B=\operatorname{QCoh}(S_B)_{\mathrm{restr}}\)</span>.
+Each is a specified right module over the corresponding <strong>full</strong> acting category. With the required geometric identifications, the restricted functors are base changes of the full functors:
+<span class="math-display">\[
+F^{\mathrm{restr}}\simeq\operatorname{id}_{\mathcal N}
+                   \otimes_{\mathcal A}F,
+\qquad
+(F^B)^{\mathrm{restr}}\simeq\operatorname{id}_{\mathcal N_B}
+                   \otimes_{\mathcal A_B}F^B.
+\]</span>
+The target categories also require their stated restricted IndCoh identifications. A formal relative tensor product does not establish those geometric identifications.</p>
+<p>If a full functor is a linear equivalence, its inverse has the transported linear structure. Tensoring both functors, their unit and their counit by the right module produces inverse restricted functors. This is the proof in “Base change of an equivalence retains its linear structure” and C6 of <a href="GL-GLC-10.html" title="The categorical conjecture and its variants">The categorical conjecture and its variants</a>; all its types apply to the two displayed formulas.</p>
+<p>Conversely, equivalence on a restricted sector alone need not detect the whole category. The same earlier lesson proves the three exact formal implications used in the converse:</p>
+<ol>
+<li>“Detecting an equivalence by its unit and counit”: jointly conservative geometric probes, together with comparisons preserving the base-changed adjunctions, detect invertibility of the unit and counit.</li>
+<li>“Reconstructing an equivalence from compact objects”: a continuous functor with a right adjoint is an equivalence if it preserves compacts, is fully faithful on compacts and its compact images generate.</li>
+<li>“The exact compact hypotheses in the tempered comparison”: the full functor is reconstructed from the tempered equivalence when the compact fully faithful projections and equality of coherent images hold.</li>
+</ol>
+<p>For the actual Langlands functors, the required probes run over geometric points after all needed field extensions. Their conservative detection, the restricted/full fibre comparisons, the compact-image theorem and the tempered projection theorems remain geometric inputs. The tempered comparisons also require the normalized Eisenstein compatibilities for <span class="math-inline">\(G\)</span> and its Levi subgroups. Merely checking the closed <span class="math-inline">\(k\)</span>-valued points, or merely tensoring with <span class="math-inline">\(\mathcal N\)</span>, does not prove the converse.</p>
+<p>Riemann–Hilbert compares the regular-singular de Rham category with the appropriate ind-constructible Betti category when <span class="math-inline">\(e=\mathbb C\)</span>. Nilpotent regularity and the restricted spectral comparisons permit the comparison of the two restricted conjectures, including their named functors and coefficient normalizations. These are not comparisons of every unrestricted D-module with every Betti sheaf. Returning from <span class="math-inline">\(\mathbb C\)</span> to the original base field and coefficient field requires the further field-comparison theorems. Gaitsgory–Raskin, §4.2, use this restricted route; their §5 combines it with the full/restricted and tempered/full reductions.</p>
+<h2>Characteristic cycles of irreducible eigensheaves</h2>
+<p>Let <span class="math-inline">\(\sigma\)</span> be an irreducible local system. Assuming the normalized Langlands equivalence, define the underlying eigensheaf by the image
+<span class="math-display">\[
+F_\sigma\longleftrightarrow \sigma_*k[-b],
+\qquad b=\dim\mathcal B-\dim\mathcal W,
+\]</span>
+with its specified eigenvalue structure and the required irreducible-fibre and spectral pushforward comparisons. These comparisons are additional geometric inputs. The automorphisms of <span class="math-inline">\(\sigma\)</span> are retained; forgetting the eigenvalue data is not the same as replacing its entire fibre category by <span class="math-inline">\(\operatorname{Vect}\)</span>.</p>
+<p>The geometric assertion in Gaitsgory–Raskin, §6, is that if <span class="math-inline">\(g(X)\ge2\)</span> and <span class="math-inline">\(Z_G\)</span> is connected, then, assuming GLC, every such normalized <span class="math-inline">\(F_\sigma\)</span> has
+<span class="math-display">\[
+\operatorname{CC}(F_\sigma)=[\operatorname{Nilp}_{\mathrm{glob}}],
+\]</span>
+the cycle of the scheme-theoretic zero fibre of the Hitchin map, retaining its component multiplicities. Those multiplicities need not all be one. This theorem is <strong>not proved here</strong>. Its regularity and perversity assertions have their own geometric inputs; the genus and center assumptions belong to the characteristic-cycle conclusion and must not be dropped.</p>
+<p>Here is the formal constancy mechanism in that proof.</p>
+<p><strong>Lemma 11.B2.</strong> The Euler characteristic of the derived fibre of a perfect complex on a scheme is locally constant.</p>
+<p><strong>Proof.</strong> Locally represent the perfect complex by a bounded complex of finite-rank vector bundles <span class="math-inline">\(E^i\)</span>. Their ranks are locally constant. At a point <span class="math-inline">\(s\)</span>, the derived fibre is the ordinary tensor of this locally free complex with the residue field. For a bounded finite-dimensional complex <span class="math-inline">\(V^\bullet\)</span>, write <span class="math-inline">\(Z^i=\ker d^i\)</span>, <span class="math-inline">\(B^i=\operatorname{im}d^{i-1}\)</span>. The exact sequences
+<span class="math-display">\[
+0\to Z^i\to V^i\to B^{i+1}\to0,\qquad
+0\to B^i\to Z^i\to H^i(V^\bullet)\to0
+\]</span>
+give <span class="math-inline">\(\dim V^i=\dim H^i+\dim B^i+\dim B^{i+1}\)</span>. Taking the finite alternating sum cancels the boundary terms. Thus the Euler characteristic of the fibre is
+<span class="math-inline">\(\sum_i(-1)^i\operatorname{rank}E^i\)</span>, a locally constant function. On an overlap the two expressions agree because both compute the intrinsic derived-fibre cohomology. This proves the assertion. <span class="math-inline">\(\square\)</span></p>
+<p>For a smooth point <span class="math-inline">\(\xi\)</span> of a component of the global nilpotent cone, the geometric microstalk theorem supplies a t-exact continuous functor <span class="math-inline">\(\mu_\xi\)</span>, a compact corepresenting object <span class="math-inline">\(\mu\delta_\xi\)</span>, and the equality between its dimension on a perverse sheaf and the characteristic-cycle multiplicity. Assuming the Betti Langlands equivalence and these theorems, put
+<span class="math-display">\[
+E_\xi=F^B(\mu\delta_\xi)[b].
+\]</span>
+The positive shift here is fixed by <span class="math-inline">\(F^B(F_\sigma)=\sigma_*\mathbb C[-b]\)</span>: mapping out of <span class="math-inline">\(F^B(\mu\delta_\xi)[b]\)</span> into <span class="math-inline">\(\sigma_*\mathbb C\)</span> is mapping out of <span class="math-inline">\(F^B(\mu\delta_\xi)\)</span> into <span class="math-inline">\(\sigma_*\mathbb C[-b]\)</span>. The restriction of <span class="math-inline">\(E_\xi\)</span> to the irreducible spectral locus is perfect. Adjunction and the equivalence identify
+<span class="math-display">\[
+\operatorname{Map}_{\mathbb C}
+       (\sigma^*E_\xi,\mathbb C)
+\simeq
+\operatorname{Map}(E_\xi,\sigma_*\mathbb C)
+\simeq\mu_\xi(F_\sigma).
+\]</span>
+Perverse t-exactness makes the last complex degree zero. Hence the Euler characteristic of <span class="math-inline">\(\sigma^*E_\xi\)</span> equals the dimension of that microstalk, and equals the multiplicity along the component. Lemma 11.B2, together with the required atlas/descent comparison for the spectral stack, proves local constancy of this multiplicity.</p>
+<p>To conclude constancy on an irreducible component one still needs the geometric theorem identifying the relevant connected components of the smooth irreducible locus with the irreducible components of the whole spectral stack. Finally, the proof needs an irreducible eigenvalue with cycle <span class="math-inline">\([\operatorname{Nilp}_{\mathrm{glob}}]\)</span> in the neutral component and the irreducibility theorem when <span class="math-inline">\(\check G\)</span> has simply connected derived group. Connectedness of <span class="math-inline">\(Z_G\)</span> gives that dual root-datum condition. These geometric and root-datum assertions are not proved by the Euler-characteristic lemma. With them, the locally constant multiplicity of each component equals its scheme-theoretic multiplicity at the specified eigenvalue, giving the displayed cycle. This explains the implication without replacing any missing input by a citation.</p>
+<h2>Geometric inputs not proved here</h2>
+<p>The conditional theorems above isolate the following remaining assertions.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Exact role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Categorical foundations</td>
+<td>Presentable adjoints, enriched Yoneda, coherent action mates, stable functor categories, the Ind universal property and the stated t-structure framework.</td>
+</tr>
+<tr>
+<td>Spectral geometry</td>
+<td>Derived local-system stacks, rigid compact generation, the actual Ran localization and Hecke kernel vanishing, the normalized spectral action and perfect-action finite amplitude.</td>
+</tr>
+<tr>
+<td>Vacuum and coefficient</td>
+<td>The normalized half-root gerbe, character-change and Verdier-duality comparisons, the defined !-pushforward, compactness of the actual vacuum, and its entire natural Whittaker coefficient identity.</td>
+</tr>
+<tr>
+<td>Restricted exactness</td>
+<td>The Whittaker exactness theorem, the normalized exponential comparison, spectral probes and their exact/conservative detection, with the required Hecke and base-change comparisons.</td>
+</tr>
+<tr>
+<td>Bounds and lift</td>
+<td>Truncatability and global-quotient geometry, the Cousin and affine !-pushforward input, the all-field !-fibre criterion, restricted factorization, coarsening t-exactness and its bounded equivalence.</td>
+</tr>
+<tr>
+<td>Torus</td>
+<td>The enhanced Fourier–Mukai–Laumon kernel and its Cartan/coefficient normalization, and the global zero-singular-support IndCoh/QCoh theorem.</td>
+</tr>
+<tr>
+<td>Betti and comparison</td>
+<td>The quotient-exponential construction, nilpotent projector and compact-generation theorem, vacuum finite extension and gerbe comparison, Betti compact bound, restricted regular-singular Riemann–Hilbert and field comparisons.</td>
+</tr>
+<tr>
+<td>Equivalence reductions</td>
+<td>Geometric detection after all field extensions, adjunction and restricted/full fibre comparisons, tempered compact projection and coherent-image theorems, and normalized Eisenstein compatibilities for all Levis.</td>
+</tr>
+<tr>
+<td>Eigensheaf cycle</td>
+<td>Regularity/perversity, compact corepresentable microstalks and the cycle comparison, perfect restriction and stack descent, spectral component geometry, an eigenvalue with the specified scheme-theoretic cycle, and the required root-datum/irreducibility results.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The full categorical GLC equivalence is also not proved in this lesson. The formal construction, the normalized uniqueness, the bounded lift, the stated amplitude implications, and the elementary affine and Euler-characteristic calculations have proofs above under their explicit hypotheses.</p>
+<h2>References</h2>
+<ul>
+<li>Dennis Gaitsgory and Sam Raskin, <a href="https://arxiv.org/abs/2405.03599v3">Proof of the geometric Langlands conjecture I: construction of the functor</a>, §§1–6.</li>
+<li>Joakim Færgeman and Sam Raskin, <a href="https://arxiv.org/abs/2207.02955v1">Non-vanishing of geometric Whittaker coefficients for reductive groups</a>, Parts II–III.</li>
+<li>Dima Arinkin, Dennis Gaitsgory, David Kazhdan, Sam Raskin, Nick Rozenblyum and Yakov Varshavsky, <a href="https://arxiv.org/abs/2010.01906v2">The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support</a>.</li>
+</ul>
+<p>These freely accessible works provide further mathematical reading and credit. A reference does not prove any of the inputs listed above.</p>
+</article><footer>Original programme text: CC0-1.0. Human mathematical sources are credited in each lesson.</footer></main></body></html>

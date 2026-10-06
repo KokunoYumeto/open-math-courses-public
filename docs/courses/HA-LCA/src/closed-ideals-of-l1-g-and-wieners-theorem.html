@@ -1,0 +1,498 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="ca011779d6e3a9cf17a3498542b55a13f3d18d46600e3aba912a08124f4b509c"><title>Closed ideals of \(L^1(G)\) and Wiener&#x27;s theorem</title><link rel="stylesheet" href="../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="closed-ideals-of-l1-g-and-wieners-theorem.md">Editable source</a> · <a href="../LICENCES.html">Licences</a></nav><article><h1 id="closed-ideals-of-l-1-g-and-wiener-s-theorem">Closed ideals of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> and Wiener's theorem</h1>
+<p><strong>Lesson HA-LCA-14.</strong> Self-checked by the writing AI.</p>
+<p>A closed convolution ideal of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> is the whole algebra exactly when its Fourier transforms have no common zero. The word <em>closed</em> matters. We prove this for every locally compact Hausdorff abelian group, and then distinguish the pointwise nonvanishing condition for <span class="math" data-tex="\(L^1\)">\(L^1\)</span> approximation from the almost-everywhere condition for <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span>, with the dual Haar normalization of Plancherel. In this lesson both groups are written additively; thus
+<span class="math" data-tex="\((\gamma+\eta)(x)=\gamma(x)\eta(x)\)">\((\gamma+\eta)(x)=\gamma(x)\eta(x)\)</span> and <span class="math" data-tex="\((-\gamma)(x)=\overline{\gamma(x)}\)">\((-\gamma)(x)=\overline{\gamma(x)}\)</span>. We keep
+<span class="math math-display" data-tex="\[
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx,
+ \qquad L_xf(y)=f(y-x).
+\]">\[
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx,
+ \qquad L_xf(y)=f(y-x).
+\]</span>
+Let
+<span class="math math-display" data-tex="\[
+ A(\Gamma)=\{\widehat f:f\in L^1(G)\},\qquad
+ \|\widehat f\|_A=\|f\|_1.
+\]">\[
+ A(\Gamma)=\{\widehat f:f\in L^1(G)\},\qquad
+ \|\widehat f\|_A=\|f\|_1.
+\]</span>
+This is a Banach algebra of continuous functions under pointwise multiplication: the Fourier laws, completeness and uniqueness are proved in <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-theorem-3-1">HA-LCA-03, Theorem 3.1</a>, the <a href="../prerequisites/src/haar-measure.html#ha-lca-pre-haar-theorem-6-2">Haar convolution theorem</a>, and <a href="the-pontryagin-duality-theorem.html#ha-lca-09-corollary-4-2">HA-LCA-09, Corollary 4.2</a>. Translation on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> corresponds to modulation <span class="math" data-tex="\(f(x)\mapsto\eta(x)f(x)\)">\(f(x)\mapsto\eta(x)f(x)\)</span>, an isometry of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>.</p>
+<p>The free source for the local approximation and patching arguments is Ven-shion Shu, <a href="https://digital.library.unt.edu/ark:/67531/metadc663188/m2/1/high_res_d/1002773742-Shu.pdf"><em>Wiener's Approximation Theorem for Locally Compact Abelian Groups</em></a>, university thesis, August 1974: Theorems 1.9–1.14, 2.2–2.10, 2.14–2.17 and 3.13–3.35. We supply the Fourier, measure and Banach-algebra inputs through exact earlier programme proofs and give the local reciprocal argument in full.</p>
+<p>Written and checked by GPT-6 Astra (OpenAI), Ultra, October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their retained source packages keep their own licences.</p>
+<h2 id="1-ideals-and-translates">1. Ideals and translates</h2>
+<p>For an ideal <span class="math" data-tex="\(I\subseteq L^1(G)\)">\(I\subseteq L^1(G)\)</span> and a set <span class="math" data-tex="\(N\subseteq\Gamma\)">\(N\subseteq\Gamma\)</span>, define the <strong>hull</strong> and <strong>kernel</strong>
+<span class="math math-display" data-tex="\[
+ \nu(I)=\{\gamma:\widehat f(\gamma)=0\text{ for all }f\in I\},
+ \qquad
+ \iota(N)=\{f:\widehat f|_N=0\}.                             \tag{1}
+\]">\[
+ \nu(I)=\{\gamma:\widehat f(\gamma)=0\text{ for all }f\in I\},
+ \qquad
+ \iota(N)=\{f:\widehat f|_N=0\}.                             \tag{1}
+\]</span>
+An ideal here is a complex linear subspace closed under convolution with every member of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>; it need not be closed or invariant under involution unless stated.</p>
+<p><a id="ha-lca-14-proposition-1-1"></a>
+<strong>Proposition 1.1 — Closed ideals are the closed invariant subspaces.</strong> A norm-closed linear subspace <span class="math" data-tex="\(M\subseteq L^1(G)\)">\(M\subseteq L^1(G)\)</span> is an ideal if and only if <span class="math" data-tex="\(L_xM\subseteq M\)">\(L_xM\subseteq M\)</span> for every <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span>. For <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>,
+<span class="math math-display" data-tex="\[
+ \overline{\operatorname{span}\{L_xf:x\in G\}}
+ =\overline{\{h*f:h\in L^1(G)\}}.                           \tag{2}
+\]">\[
+ \overline{\operatorname{span}\{L_xf:x\in G\}}
+ =\overline{\{h*f:h\in L^1(G)\}}.                           \tag{2}
+\]</span>
+The hull of any ideal is closed, and <span class="math" data-tex="\(\iota(N)\)">\(\iota(N)\)</span> is a closed ideal containing every ideal whose hull contains <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\psi_U\)">\(\psi_U\)</span> be the nonnegative mass-one approximate identities of <a href="../prerequisites/src/haar-measure.html#ha-lca-pre-haar-corollary-6-3">Haar Corollary 6.3</a>. If <span class="math" data-tex="\(f\in M\)">\(f\in M\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> is an ideal, then
+<span class="math" data-tex="\((L_x\psi_U)*f\in M\)">\((L_x\psi_U)*f\in M\)</span>, while
+<span class="math math-display" data-tex="\[
+ \|(L_x\psi_U)*f-L_xf\|_1=\|\psi_U*f-f\|_1\longrightarrow0.
+\]">\[
+ \|(L_x\psi_U)*f-L_xf\|_1=\|\psi_U*f-f\|_1\longrightarrow0.
+\]</span>
+Thus <span class="math" data-tex="\(L_xf\in M\)">\(L_xf\in M\)</span>.</p>
+<p>Conversely, suppose <span class="math" data-tex="\(M\)">\(M\)</span> is translation invariant and <span class="math" data-tex="\(f\in M\)">\(f\in M\)</span>. For <span class="math" data-tex="\(h\in C_c(G)\)">\(h\in C_c(G)\)</span>, approximate <span class="math" data-tex="\(h*f\)">\(h*f\)</span> by finite linear combinations of translates of <span class="math" data-tex="\(f\)">\(f\)</span>. Indeed, norm continuity of <span class="math" data-tex="\(x\mapsto L_xf\)">\(x\mapsto L_xf\)</span> gives a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(\|L_xf-f\|_1&lt;\delta\)">\(\|L_xf-f\|_1&lt;\delta\)</span> for <span class="math" data-tex="\(x\in U\)">\(x\in U\)</span>. Cover <span class="math" data-tex="\(K=\operatorname{supp}h\)">\(K=\operatorname{supp}h\)</span> by finitely many <span class="math" data-tex="\(x_j+U\)">\(x_j+U\)</span>, and disjointify their intersections with <span class="math" data-tex="\(K\)">\(K\)</span> into Borel sets <span class="math" data-tex="\(E_j\)">\(E_j\)</span>. Set <span class="math" data-tex="\(c_j=\int_{E_j}h\)">\(c_j=\int_{E_j}h\)</span>. The <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-lemma-1-1">norm-integral convolution formula</a> gives
+<span class="math math-display" data-tex="\[
+ \left\|h*f-\sum_jc_jL_{x_j}f\right\|_1
+ \leq\sum_j\int_{E_j}|h(x)|\,\|L_xf-L_{x_j}f\|_1\,dx
+ \leq\delta\|h\|_1.
+\]">\[
+ \left\|h*f-\sum_jc_jL_{x_j}f\right\|_1
+ \leq\sum_j\int_{E_j}|h(x)|\,\|L_xf-L_{x_j}f\|_1\,dx
+ \leq\delta\|h\|_1.
+\]</span>
+Thus <span class="math" data-tex="\(h*f\in M\)">\(h*f\in M\)</span>. Approximate arbitrary <span class="math" data-tex="\(h\in L^1(G)\)">\(h\in L^1(G)\)</span> by <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>; the convolution bound <span class="math" data-tex="\(\|(h-h_n)*f\|_1\leq\|h-h_n\|_1\|f\|_1\)">\(\|(h-h_n)*f\|_1\leq\|h-h_n\|_1\|f\|_1\)</span> gives the conclusion.</p>
+<p>The right side of (2) is a closed ideal by associativity and norm continuity. It contains <span class="math" data-tex="\(f\)">\(f\)</span>, by the approximate identity, and hence every translate and their closed span. The preceding finite-translate approximation gives the reverse inclusion.</p>
+<p>Each map <span class="math" data-tex="\(f\mapsto\widehat f(\gamma)\)">\(f\mapsto\widehat f(\gamma)\)</span> is a bounded multiplicative functional, and each <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> is continuous. Intersecting their kernels proves the claims about <span class="math" data-tex="\(\iota(N)\)">\(\iota(N)\)</span> and <span class="math" data-tex="\(\nu(I)\)">\(\nu(I)\)</span>. The containment assertion is exactly their definitions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-fourier-plateaux"><span id="section-2"></span>2. Fourier plateaux</h2>
+<p><a id="ha-lca-14-proposition-2-1"></a>
+<strong>Proposition 2.1 — Local units.</strong> If <span class="math" data-tex="\(K\subseteq\Gamma\)">\(K\subseteq\Gamma\)</span> is compact and <span class="math" data-tex="\(W\supseteq K\)">\(W\supseteq K\)</span> is open, there is <span class="math" data-tex="\(h\in L^1(G)\)">\(h\in L^1(G)\)</span> such that
+<span class="math math-display" data-tex="\[
+ 0\leq\widehat h\leq1,\qquad
+ \widehat h=1\text{ on }K,\qquad
+ \operatorname{supp}\widehat h\text{ is a compact subset of }W.
+                                                                  \tag{3}
+\]">\[
+ 0\leq\widehat h\leq1,\qquad
+ \widehat h=1\text{ on }K,\qquad
+ \operatorname{supp}\widehat h\text{ is a compact subset of }W.
+                                                                  \tag{3}
+\]</span>
+In particular, <span class="math" data-tex="\(\nu(\iota(N))=N\)">\(\nu(\iota(N))=N\)</span> for every closed <span class="math" data-tex="\(N\subseteq\Gamma\)">\(N\subseteq\Gamma\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>, take <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. Otherwise compactness and continuity of addition give a symmetric neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of zero with <span class="math" data-tex="\(K+U+U\subseteq W\)">\(K+U+U\subseteq W\)</span>. Here is the uniform neighbourhood argument. For each <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>, choose an open neighbourhood <span class="math" data-tex="\(O_k\)">\(O_k\)</span> of <span class="math" data-tex="\(k\)">\(k\)</span> and an identity neighbourhood <span class="math" data-tex="\(T_k\)">\(T_k\)</span> with <span class="math" data-tex="\(O_k+T_k\subseteq W\)">\(O_k+T_k\subseteq W\)</span>. A finite subcover and the intersection of its <span class="math" data-tex="\(T_k\)">\(T_k\)</span>'s give <span class="math" data-tex="\(K+T\subseteq W\)">\(K+T\subseteq W\)</span>. Choose symmetric <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(U+U\subseteq T\)">\(U+U\subseteq T\)</span>. Local compactness supplies a compact symmetric neighbourhood <span class="math" data-tex="\(V\subseteq U\)">\(V\subseteq U\)</span>. Its Haar measure <span class="math" data-tex="\(m(V)\)">\(m(V)\)</span> is positive and finite.</p>
+<p>Let <span class="math" data-tex="\(p,q\in L^2(G)\)">\(p,q\in L^2(G)\)</span> be the inverse Plancherel transforms of <span class="math" data-tex="\(1_V\)">\(1_V\)</span> and <span class="math" data-tex="\(1_{K+V}\)">\(1_{K+V}\)</span>. Their product is integrable by Cauchy–Schwarz. The <a href="the-plancherel-theorem.html#ha-lca-08-theorem-3-1"><span class="math" data-tex="\(L^2\)">\(L^2\)</span> product formula</a> gives, for <span class="math" data-tex="\(h=pq/m(V)\)">\(h=pq/m(V)\)</span>,
+<span class="math math-display" data-tex="\[
+ \widehat h(\eta)=\frac{1}{m(V)}
+       \int_\Gamma1_V(t)1_{K+V}(\eta-t)\,dm(t).             \tag{4}
+\]">\[
+ \widehat h(\eta)=\frac{1}{m(V)}
+       \int_\Gamma1_V(t)1_{K+V}(\eta-t)\,dm(t).             \tag{4}
+\]</span>
+It is continuous by that same theorem. The integral lies between zero and <span class="math" data-tex="\(m(V)\)">\(m(V)\)</span>. If <span class="math" data-tex="\(\eta\in K\)">\(\eta\in K\)</span>, symmetry of <span class="math" data-tex="\(V\)">\(V\)</span> gives <span class="math" data-tex="\(\eta-t\in K+V\)">\(\eta-t\in K+V\)</span> for every <span class="math" data-tex="\(t\in V\)">\(t\in V\)</span>, so (4) is one. It vanishes off the compact set <span class="math" data-tex="\(K+V+V\subseteq W\)">\(K+V+V\subseteq W\)</span>, proving (3).</p>
+<p>Always <span class="math" data-tex="\(N\subseteq\nu(\iota(N))\)">\(N\subseteq\nu(\iota(N))\)</span>. If <span class="math" data-tex="\(\eta\notin N\)">\(\eta\notin N\)</span>, choose an open neighbourhood <span class="math" data-tex="\(W\subseteq\Gamma\setminus N\)">\(W\subseteq\Gamma\setminus N\)</span> and apply (3) to <span class="math" data-tex="\(K=\{\eta\}\)">\(K=\{\eta\}\)</span>. The resulting <span class="math" data-tex="\(h\)">\(h\)</span> lies in <span class="math" data-tex="\(\iota(N)\)">\(\iota(N)\)</span> and has <span class="math" data-tex="\(\widehat h(\eta)=1\)">\(\widehat h(\eta)=1\)</span>, so <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is outside its hull. This proves equality, including <span class="math" data-tex="\(N=\varnothing\)">\(N=\varnothing\)</span> and <span class="math" data-tex="\(N=\Gamma\)">\(N=\Gamma\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-compact-fourier-supports-approximate-in-norm">3. Compact Fourier supports approximate in norm</h2>
+<p>Write
+<span class="math math-display" data-tex="\[
+ \mathcal B=\{f\in L^1(G):\operatorname{supp}\widehat f
+                                      \text{ is compact}\}.
+\]">\[
+ \mathcal B=\{f\in L^1(G):\operatorname{supp}\widehat f
+                                      \text{ is compact}\}.
+\]</span>
+The Fourier laws show that this is an algebraic ideal: supports of sums lie in finite unions, and supports of products lie in intersections.</p>
+<p><a id="ha-lca-14-lemma-3-1"></a>
+<strong>Lemma 3.1 — Density and convolution approximation.</strong> The ideal <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is dense in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>. Given <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is <span class="math" data-tex="\(w\in\mathcal B\)">\(w\in\mathcal B\)</span> with
+<span class="math math-display" data-tex="\[
+ \|f-f*w\|_1&lt;\varepsilon.                                  \tag{5}
+\]">\[
+ \|f-f*w\|_1&lt;\varepsilon.                                  \tag{5}
+\]</span></p>
+<p><strong>Proof.</strong> Factor <span class="math" data-tex="\(f=uv\)">\(f=uv\)</span>, where <span class="math" data-tex="\(u=|f|^{1/2}\)">\(u=|f|^{1/2}\)</span> and
+<span class="math" data-tex="\(v=|f|^{1/2}\operatorname{sgn}f\)">\(v=|f|^{1/2}\operatorname{sgn}f\)</span>, with value zero where <span class="math" data-tex="\(f=0\)">\(f=0\)</span>.
+Both factors lie in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. By the proved <a href="the-plancherel-theorem.html#ha-lca-08-theorem-1-1">Plancherel theorem</a> and <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-proposition-6-2"><span class="math" data-tex="\(C_c\)">\(C_c\)</span>-density in <span class="math" data-tex="\(L^2\)">\(L^2\)</span></a>, choose <span class="math" data-tex="\(\phi_n,\theta_n\in C_c(\Gamma)\)">\(\phi_n,\theta_n\in C_c(\Gamma)\)</span> converging in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to <span class="math" data-tex="\(\widehat u,\widehat v\)">\(\widehat u,\widehat v\)</span>. Let <span class="math" data-tex="\(u_n,v_n\)">\(u_n,v_n\)</span> be their inverse transforms. Then
+<span class="math math-display" data-tex="\[
+ \|uv-u_nv_n\|_1
+ \leq\|u\|_2\|v-v_n\|_2+\|u-u_n\|_2\|v_n\|_2
+ \longrightarrow0.
+\]">\[
+ \|uv-u_nv_n\|_1
+ \leq\|u\|_2\|v-v_n\|_2+\|u-u_n\|_2\|v_n\|_2
+ \longrightarrow0.
+\]</span>
+Their products have Fourier transforms <span class="math" data-tex="\(\phi_n*\theta_n\)">\(\phi_n*\theta_n\)</span>, supported in the compact set
+<span class="math" data-tex="\(\operatorname{supp}\phi_n+\operatorname{supp}\theta_n\)">\(\operatorname{supp}\phi_n+\operatorname{supp}\theta_n\)</span>.
+Thus <span class="math" data-tex="\(u_nv_n\in\mathcal B\)">\(u_nv_n\in\mathcal B\)</span>, proving density.</p>
+<p>If <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, take <span class="math" data-tex="\(w=0\)">\(w=0\)</span>. Otherwise choose a positive approximate-identity member <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with
+<span class="math" data-tex="\(\|f-f*\psi\|_1&lt;\varepsilon/2\)">\(\|f-f*\psi\|_1&lt;\varepsilon/2\)</span>. Approximate <span class="math" data-tex="\(\psi\)">\(\psi\)</span> by <span class="math" data-tex="\(w\in\mathcal B\)">\(w\in\mathcal B\)</span> with
+<span class="math" data-tex="\(\|\psi-w\|_1&lt;\varepsilon/(2\|f\|_1)\)">\(\|\psi-w\|_1&lt;\varepsilon/(2\|f\|_1)\)</span>. The convolution bound and triangle inequality prove (5). The same construction works for finitely many <span class="math" data-tex="\(f\)">\(f\)</span>'s at once, by choosing a common sufficiently small approximate-identity member and a sufficiently accurate approximation to it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-a-small-convolution-at-a-vanishing-frequency">4. A small convolution at a vanishing frequency</h2>
+<p>The next estimate controls the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm, which pointwise smallness of a Fourier transform alone does not control.</p>
+<p><a id="ha-lca-14-lemma-4-0"></a>
+<strong>Lemma 4.0 — A narrow plateau with nearly invariant translates.</strong> Given compact <span class="math" data-tex="\(C\subseteq G\)">\(C\subseteq G\)</span>, an open neighbourhood <span class="math" data-tex="\(O\)">\(O\)</span> of zero in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, there is <span class="math" data-tex="\(h\in L^1(G)\)">\(h\in L^1(G)\)</span> with
+<span class="math math-display" data-tex="\[
+ \|h\|_1&lt;\sqrt2,\quad
+ \widehat h=1\text{ near }0,\quad
+ \operatorname{supp}\widehat h\Subset O,\quad
+ \sup_{x\in C}\|L_xh-h\|_1&lt;\delta.                          \tag{6}
+\]">\[
+ \|h\|_1&lt;\sqrt2,\quad
+ \widehat h=1\text{ near }0,\quad
+ \operatorname{supp}\widehat h\Subset O,\quad
+ \sup_{x\in C}\|L_xh-h\|_1&lt;\delta.                          \tag{6}
+\]</span>
+The notation <span class="math" data-tex="\(\Subset O\)">\(\Subset O\)</span> means a compact subset of <span class="math" data-tex="\(O\)">\(O\)</span>.</p>
+<p><strong>Proof.</strong> Choose an identity neighbourhood <span class="math" data-tex="\(D\subseteq\Gamma\)">\(D\subseteq\Gamma\)</span> so small that <span class="math" data-tex="\(D+D+D\subseteq O\)">\(D+D+D\subseteq O\)</span> and
+<span class="math math-display" data-tex="\[
+ \sup_{\substack{x\in C\\\eta\in D}}|\eta(x)-1|
+ &lt;\frac{\delta}{4\sqrt2}.                                  \tag{7}
+\]">\[
+ \sup_{\substack{x\in C\\\eta\in D}}|\eta(x)-1|
+ &lt;\frac{\delta}{4\sqrt2}.                                  \tag{7}
+\]</span>
+The uniform bound follows directly from the compact-open topology of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, proved in <a href="characters-and-the-dual-group.html#ha-lca-02-proposition-1-1">HA-LCA-02, Proposition 1.1</a>. Shrink <span class="math" data-tex="\(D\)">\(D\)</span> to be symmetric if necessary. Choose a compact symmetric identity neighbourhood <span class="math" data-tex="\(S\subseteq D\)">\(S\subseteq D\)</span>. Haar measure gives <span class="math" data-tex="\(0&lt;m(S)&lt;\infty\)">\(0&lt;m(S)&lt;\infty\)</span>. We can choose an open set <span class="math" data-tex="\(A\)">\(A\)</span> containing <span class="math" data-tex="\(S\)">\(S\)</span>, contained in <span class="math" data-tex="\(D\)">\(D\)</span>, with <span class="math" data-tex="\(m(A)&lt;2m(S)\)">\(m(A)&lt;2m(S)\)</span>. To justify this outer approximation, place <span class="math" data-tex="\(S\)">\(S\)</span> in an open <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-compact subgroup and use the Radon restriction of Haar measure there, proved in <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-3-1">nonabelian Haar Theorem 3.1 and Lemma 5.1</a>, then intersect the approximating open set with <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>The compact-neighbourhood argument used in Proposition 2.1 supplies a compact symmetric identity neighbourhood <span class="math" data-tex="\(T\)">\(T\)</span> so small that <span class="math" data-tex="\(S+T\subseteq A\)">\(S+T\subseteq A\)</span>. In particular
+<span class="math math-display" data-tex="\[
+ m(S+T)&lt;2m(S),\qquad S+T\subseteq D.
+\]">\[
+ m(S+T)&lt;2m(S),\qquad S+T\subseteq D.
+\]</span>
+Let <span class="math" data-tex="\(p=\mathcal F^{-1}1_S\)">\(p=\mathcal F^{-1}1_S\)</span>, <span class="math" data-tex="\(q=\mathcal F^{-1}1_{S+T}\)">\(q=\mathcal F^{-1}1_{S+T}\)</span>, and <span class="math" data-tex="\(h=pq/m(S)\)">\(h=pq/m(S)\)</span>. Formula (4), now with <span class="math" data-tex="\(K=T\)">\(K=T\)</span> and <span class="math" data-tex="\(V=S\)">\(V=S\)</span>, proves
+<span class="math math-display" data-tex="\[
+ 0\leq\widehat h\leq1,\quad \widehat h|_T=1,\quad
+ \operatorname{supp}\widehat h\subseteq S+S+T\subseteq D+D\subseteq O.
+\]">\[
+ 0\leq\widehat h\leq1,\quad \widehat h|_T=1,\quad
+ \operatorname{supp}\widehat h\subseteq S+S+T\subseteq D+D\subseteq O.
+\]</span>
+Also
+<span class="math math-display" data-tex="\[
+ \|h\|_1\leq\frac{\|p\|_2\|q\|_2}{m(S)}
+       =\left(\frac{m(S+T)}{m(S)}\right)^{1/2}&lt;\sqrt2.
+\]">\[
+ \|h\|_1\leq\frac{\|p\|_2\|q\|_2}{m(S)}
+       =\left(\frac{m(S+T)}{m(S)}\right)^{1/2}&lt;\sqrt2.
+\]</span>
+For <span class="math" data-tex="\(x\in C\)">\(x\in C\)</span>, the <a href="unitary-representations-of-abelian-groups-the-spectral-theorem.html#ha-lca-13-theorem-5-2">Plancherel translation law</a> and (7) give
+<span class="math math-display" data-tex="\[
+ \|L_xp-p\|_2\leq a\|p\|_2,\qquad
+ \|L_xq-q\|_2\leq a\|q\|_2,\qquad
+ a=\delta/(4\sqrt2).
+\]">\[
+ \|L_xp-p\|_2\leq a\|p\|_2,\qquad
+ \|L_xq-q\|_2\leq a\|q\|_2,\qquad
+ a=\delta/(4\sqrt2).
+\]</span>
+Now
+<span class="math math-display" data-tex="\[
+ L_x(pq)-pq=(L_xp-p)L_xq+p(L_xq-q).
+\]">\[
+ L_x(pq)-pq=(L_xp-p)L_xq+p(L_xq-q).
+\]</span>
+Cauchy–Schwarz and translation invariance of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> yield
+<span class="math math-display" data-tex="\[
+ \|L_xh-h\|_1
+ \leq 2a\,\frac{\|p\|_2\|q\|_2}{m(S)}
+ &lt;2a\sqrt2=\delta/2&lt;\delta.
+\]">\[
+ \|L_xh-h\|_1
+ \leq 2a\,\frac{\|p\|_2\|q\|_2}{m(S)}
+ &lt;2a\sqrt2=\delta/2&lt;\delta.
+\]</span>
+All choices were on compact sets or neighbourhoods; no countable base was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-lemma-4-1"></a>
+<strong>Lemma 4.1 — The small-convolution estimate.</strong> Suppose <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>, <span class="math" data-tex="\(\widehat f(\gamma_0)=0\)">\(\widehat f(\gamma_0)=0\)</span>, and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. In any prescribed neighbourhood <span class="math" data-tex="\(O\)">\(O\)</span> of <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>, one can choose <span class="math" data-tex="\(h\in L^1(G)\)">\(h\in L^1(G)\)</span> with
+<span class="math math-display" data-tex="\[
+ \widehat h=1\text{ near }\gamma_0,\quad
+ \operatorname{supp}\widehat h\Subset O,\quad
+ \|h\|_1&lt;\sqrt2,\quad \|f*h\|_1&lt;\varepsilon.                \tag{8}
+\]">\[
+ \widehat h=1\text{ near }\gamma_0,\quad
+ \operatorname{supp}\widehat h\Subset O,\quad
+ \|h\|_1&lt;\sqrt2,\quad \|f*h\|_1&lt;\varepsilon.                \tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(\gamma_0=0\)">\(\gamma_0=0\)</span>, so <span class="math" data-tex="\(\int f=0\)">\(\int f=0\)</span>. Choose a compact <span class="math" data-tex="\(C\subseteq G\)">\(C\subseteq G\)</span> with
+<span class="math" data-tex="\(\int_{G\setminus C}|f|&lt;\varepsilon/(8\sqrt2)\)">\(\int_{G\setminus C}|f|&lt;\varepsilon/(8\sqrt2)\)</span>.
+Such compact tails follow from the finite Radon measure <span class="math" data-tex="\(|f|\,dx\)">\(|f|\,dx\)</span>, proved in <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-lemma-4-1">HA-LCA-03, Lemma 4.1</a>. Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> with
+<span class="math" data-tex="\(\delta\|f\|_1&lt;\varepsilon/2\)">\(\delta\|f\|_1&lt;\varepsilon/2\)</span>, which is automatic for any positive <span class="math" data-tex="\(\delta\)">\(\delta\)</span> when <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. Apply Lemma 4.0 to obtain <span class="math" data-tex="\(h\)">\(h\)</span>. The norm-integral convolution formula gives
+<span class="math math-display" data-tex="\[
+ f*h=\int_G f(x)(L_xh-h)\,dx,
+\]">\[
+ f*h=\int_G f(x)(L_xh-h)\,dx,
+\]</span>
+because <span class="math" data-tex="\(\int f=0\)">\(\int f=0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ \|f*h\|_1
+ \leq\delta\int_C|f|+2\|h\|_1\int_{G\setminus C}|f|
+ &lt;\varepsilon/2+\varepsilon/4&lt;\varepsilon.                 \tag{9}
+\]">\[
+ \|f*h\|_1
+ \leq\delta\int_C|f|+2\|h\|_1\int_{G\setminus C}|f|
+ &lt;\varepsilon/2+\varepsilon/4&lt;\varepsilon.                 \tag{9}
+\]</span></p>
+<p>For general <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>, put <span class="math" data-tex="\(f_0(x)=\overline{\gamma_0(x)}f(x)\)">\(f_0(x)=\overline{\gamma_0(x)}f(x)\)</span>.
+Then <span class="math" data-tex="\(\int f_0=\widehat f(\gamma_0)=0\)">\(\int f_0=\widehat f(\gamma_0)=0\)</span>. Apply the first case with the spectral neighbourhood <span class="math" data-tex="\(O-\gamma_0\)">\(O-\gamma_0\)</span>, obtaining <span class="math" data-tex="\(h_0\)">\(h_0\)</span>, and put <span class="math" data-tex="\(h(x)=\gamma_0(x)h_0(x)\)">\(h(x)=\gamma_0(x)h_0(x)\)</span>. The modulation law gives
+<span class="math math-display" data-tex="\[
+ \widehat h(\gamma)=\widehat h_0(\gamma-\gamma_0),\qquad
+ f*h=\gamma_0(f_0*h_0).
+\]">\[
+ \widehat h(\gamma)=\widehat h_0(\gamma-\gamma_0),\qquad
+ f*h=\gamma_0(f_0*h_0).
+\]</span>
+Multiplication by <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span> preserves the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm. All the assertions follow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-corollary-4-2"></a>
+<strong>Corollary 4.2 — Removing a neighbourhood of a zero.</strong> Under the vanishing hypothesis of Lemma 4.1, there is <span class="math" data-tex="\(u\in L^1(G)\)">\(u\in L^1(G)\)</span> with
+<span class="math math-display" data-tex="\[
+ \widehat u=0\text{ near }\gamma_0,\qquad
+ \|f-f*u\|_1&lt;\varepsilon.                                  \tag{10}
+\]">\[
+ \widehat u=0\text{ near }\gamma_0,\qquad
+ \|f-f*u\|_1&lt;\varepsilon.                                  \tag{10}
+\]</span></p>
+<p><strong>Proof.</strong> Choose a positive approximate-identity member <span class="math" data-tex="\(a\)">\(a\)</span> with
+<span class="math" data-tex="\(\|f-f*a\|_1&lt;\varepsilon/2\)">\(\|f-f*a\|_1&lt;\varepsilon/2\)</span>. The Fourier convolution law shows that <span class="math" data-tex="\(f*a\)">\(f*a\)</span> still vanishes at <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>. Apply Lemma 4.1 to <span class="math" data-tex="\(f*a\)">\(f*a\)</span> with error <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>, producing <span class="math" data-tex="\(h\)">\(h\)</span>. Set <span class="math" data-tex="\(u=a-a*h\)">\(u=a-a*h\)</span>. Then
+<span class="math" data-tex="\(\widehat u=\widehat a(1-\widehat h)=0\)">\(\widehat u=\widehat a(1-\widehat h)=0\)</span> near <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>, and
+<span class="math math-display" data-tex="\[
+ \|f-f*u\|_1
+ \leq\|f-f*a\|_1+\|(f*a)*h\|_1&lt;\varepsilon.
+\]">\[
+ \|f-f*u\|_1
+ \leq\|f-f*a\|_1+\|(f*a)*h\|_1&lt;\varepsilon.
+\]</span>
+Associativity is the earlier Banach convolution law. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-corollary-4-3"></a>
+<strong>Corollary 4.3 — A small correction to a constant Fourier value.</strong> For <span class="math" data-tex="\(g\in L^1(G)\)">\(g\in L^1(G)\)</span>, <span class="math" data-tex="\(\gamma_0\in\Gamma\)">\(\gamma_0\in\Gamma\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is <span class="math" data-tex="\(v\in L^1(G)\)">\(v\in L^1(G)\)</span> with
+<span class="math math-display" data-tex="\[
+ \|v\|_1&lt;\varepsilon,\qquad
+ \widehat g+\widehat v=\widehat g(\gamma_0)
+                       \text{ near }\gamma_0.             \tag{11}
+\]">\[
+ \|v\|_1&lt;\varepsilon,\qquad
+ \widehat g+\widehat v=\widehat g(\gamma_0)
+                       \text{ near }\gamma_0.             \tag{11}
+\]</span></p>
+<p><strong>Proof.</strong> Choose a compact neighbourhood <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>. Proposition 2.1 gives <span class="math" data-tex="\(b\in L^1(G)\)">\(b\in L^1(G)\)</span> with <span class="math" data-tex="\(\widehat b=1\)">\(\widehat b=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. Set <span class="math" data-tex="\(c=\widehat g(\gamma_0)\)">\(c=\widehat g(\gamma_0)\)</span> and <span class="math" data-tex="\(a=cb-g\)">\(a=cb-g\)</span>; then <span class="math" data-tex="\(\widehat a(\gamma_0)=0\)">\(\widehat a(\gamma_0)=0\)</span>. Lemma 4.1 gives <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(\|a*h\|_1&lt;\varepsilon\)">\(\|a*h\|_1&lt;\varepsilon\)</span> and <span class="math" data-tex="\(\widehat h=1\)">\(\widehat h=1\)</span> on a neighbourhood of <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>. Take <span class="math" data-tex="\(v=a*h\)">\(v=a*h\)</span>. On the intersection of that neighbourhood with the interior of <span class="math" data-tex="\(K\)">\(K\)</span>, one has
+<span class="math" data-tex="\(\widehat v=(c-\widehat g)\cdot1\)">\(\widehat v=(c-\widehat g)\cdot1\)</span>. This proves (11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-local-division-patching-and-wiener"><span id="section-5"></span>5. Local division, patching and Wiener</h2>
+<p>Say that <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span> is <strong>locally in <span class="math" data-tex="\(I\)">\(I\)</span> at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span></strong> if some <span class="math" data-tex="\(a\in I\)">\(a\in I\)</span> has <span class="math" data-tex="\(\widehat a=\widehat f\)">\(\widehat a=\widehat f\)</span> on a neighbourhood of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>.</p>
+<p><a id="ha-lca-14-lemma-5-1"></a>
+<strong>Lemma 5.1 — Local division.</strong> If <span class="math" data-tex="\(I\)">\(I\)</span> is an ideal and <span class="math" data-tex="\(\gamma_0\notin\nu(I)\)">\(\gamma_0\notin\nu(I)\)</span>, every <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span> is locally in <span class="math" data-tex="\(I\)">\(I\)</span> at <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>. The ideal need not be closed.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(g\in I\)">\(g\in I\)</span> with <span class="math" data-tex="\(c=\widehat g(\gamma_0)\ne0\)">\(c=\widehat g(\gamma_0)\ne0\)</span>. Corollary 4.3 supplies <span class="math" data-tex="\(v\in L^1(G)\)">\(v\in L^1(G)\)</span> with
+<span class="math" data-tex="\(\|v\|_1&lt;|c|\)">\(\|v\|_1&lt;|c|\)</span> and <span class="math" data-tex="\(\widehat g+\widehat v=c\)">\(\widehat g+\widehat v=c\)</span> near <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>.
+In the unitization <span class="math" data-tex="\(L^1(G)^+\)">\(L^1(G)^+\)</span>, write its identity as <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The element
+<span class="math math-display" data-tex="\[
+ b=c\delta-v
+\]">\[
+ b=c\delta-v
+\]</span>
+is invertible by the proved <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-lemma-2-1">Neumann-series lemma</a>:
+<span class="math math-display" data-tex="\[
+ b^{-1}=c^{-1}\sum_{n=0}^{\infty}(v/c)^{*\,n}.               \tag{12}
+\]">\[
+ b^{-1}=c^{-1}\sum_{n=0}^{\infty}(v/c)^{*\,n}.               \tag{12}
+\]</span>
+The series converges in the unitization, whose construction is proved in <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-theorem-3-4">Banach Theorem 3.4</a>. The <span class="math" data-tex="\(n=0\)">\(n=0\)</span> term is <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Every character <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> extends with value one at <span class="math" data-tex="\(\delta\)">\(\delta\)</span>; hence the transform of <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span> equals <span class="math" data-tex="\(1/(c-\widehat v)\)">\(1/(c-\widehat v)\)</span>. In the chosen neighbourhood this is <span class="math" data-tex="\(1/\widehat g\)">\(1/\widehat g\)</span>.</p>
+<p>Set <span class="math" data-tex="\(a=g*b^{-1}*f\)">\(a=g*b^{-1}*f\)</span>. This is in <span class="math" data-tex="\(I\)">\(I\)</span>: write <span class="math" data-tex="\(b^{-1}=\alpha\delta+k\)">\(b^{-1}=\alpha\delta+k\)</span>, with <span class="math" data-tex="\(k\in L^1(G)\)">\(k\in L^1(G)\)</span>, and use <span class="math" data-tex="\(g*f\in I\)">\(g*f\in I\)</span> and <span class="math" data-tex="\((g*k)*f\in I\)">\((g*k)*f\in I\)</span>. This uses only the algebraic ideal property, not closedness or passage of an infinite series inside <span class="math" data-tex="\(I\)">\(I\)</span>. Its Fourier transform agrees with <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> near <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>, proving the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-lemma-5-2"></a>
+<strong>Lemma 5.2 — Finite patching.</strong> Suppose <span class="math" data-tex="\(f\in\mathcal B\)">\(f\in\mathcal B\)</span> is locally in an ideal <span class="math" data-tex="\(I\)">\(I\)</span> at every point of <span class="math" data-tex="\(\operatorname{supp}\widehat f\)">\(\operatorname{supp}\widehat f\)</span>. Then <span class="math" data-tex="\(f\in I\)">\(f\in I\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(K=\operatorname{supp}\widehat f\)">\(K=\operatorname{supp}\widehat f\)</span>. If <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>, Fourier uniqueness gives <span class="math" data-tex="\(f=0\in I\)">\(f=0\in I\)</span>. Otherwise, for each <span class="math" data-tex="\(\gamma\in K\)">\(\gamma\in K\)</span>, choose an open neighbourhood <span class="math" data-tex="\(U_\gamma\)">\(U_\gamma\)</span> and <span class="math" data-tex="\(a_\gamma\in I\)">\(a_\gamma\in I\)</span> with
+<span class="math" data-tex="\(\widehat a_\gamma=\widehat f\)">\(\widehat a_\gamma=\widehat f\)</span> on <span class="math" data-tex="\(U_\gamma\)">\(U_\gamma\)</span>. Choose a compact neighbourhood of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> inside <span class="math" data-tex="\(U_\gamma\)">\(U_\gamma\)</span>, and use Proposition 2.1 to find <span class="math" data-tex="\(b_\gamma\in L^1(G)\)">\(b_\gamma\in L^1(G)\)</span> whose transform is one on that compact neighbourhood and is supported in <span class="math" data-tex="\(U_\gamma\)">\(U_\gamma\)</span>. Finitely many of the interiors on which these transforms are one cover <span class="math" data-tex="\(K\)">\(K\)</span>. Denote the corresponding data by <span class="math" data-tex="\(U_j,a_j,b_j\)">\(U_j,a_j,b_j\)</span>, <span class="math" data-tex="\(1\leq j\leq n\)">\(1\leq j\leq n\)</span>.</p>
+<p>In the unitization set
+<span class="math math-display" data-tex="\[
+ r_1=b_1,\qquad
+ r_j=b_j*(\delta-b_1)*\cdots*(\delta-b_{j-1})\quad(j\geq2).
+\]">\[
+ r_1=b_1,\qquad
+ r_j=b_j*(\delta-b_1)*\cdots*(\delta-b_{j-1})\quad(j\geq2).
+\]</span>
+Each <span class="math" data-tex="\(r_j\)">\(r_j\)</span> belongs to <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, because expansion of the finite product leaves a factor <span class="math" data-tex="\(b_j\)">\(b_j\)</span> in every term. Its transform is supported in <span class="math" data-tex="\(U_j\)">\(U_j\)</span>. The elementary telescoping identity
+<span class="math math-display" data-tex="\[
+ \sum_{j=1}^n\widehat r_j
+       =1-\prod_{j=1}^n(1-\widehat b_j)                    \tag{13}
+\]">\[
+ \sum_{j=1}^n\widehat r_j
+       =1-\prod_{j=1}^n(1-\widehat b_j)                    \tag{13}
+\]</span>
+follows by subtracting successive partial products; it equals one on <span class="math" data-tex="\(K\)">\(K\)</span>, since at least one <span class="math" data-tex="\(\widehat b_j\)">\(\widehat b_j\)</span> is one there. For every <span class="math" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span>, the support condition gives
+<span class="math" data-tex="\(\widehat r_j(\eta)\widehat a_j(\eta)
+ =\widehat r_j(\eta)\widehat f(\eta)\)">\(\widehat r_j(\eta)\widehat a_j(\eta)
+ =\widehat r_j(\eta)\widehat f(\eta)\)</span>.
+Therefore
+<span class="math math-display" data-tex="\[
+ \left(\sum_jr_j*a_j\right)^{\widehat{\ }}=\widehat f
+\]">\[
+ \left(\sum_jr_j*a_j\right)^{\widehat{\ }}=\widehat f
+\]</span>
+on <span class="math" data-tex="\(K\)">\(K\)</span>, by (13), and off <span class="math" data-tex="\(K\)">\(K\)</span>, because <span class="math" data-tex="\(\widehat f=0\)">\(\widehat f=0\)</span> there. Fourier uniqueness proves <span class="math" data-tex="\(f=\sum_jr_j*a_j\in I\)">\(f=\sum_jr_j*a_j\in I\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-theorem-5-3"></a>
+<strong>Theorem 5.3 — Wiener's theorem.</strong> A closed ideal <span class="math" data-tex="\(I\subseteq L^1(G)\)">\(I\subseteq L^1(G)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ I=L^1(G)\quad\Longleftrightarrow\quad\nu(I)=\varnothing.
+                                                                  \tag{14}
+\]">\[
+ I=L^1(G)\quad\Longleftrightarrow\quad\nu(I)=\varnothing.
+                                                                  \tag{14}
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\nu(I)=\varnothing\)">\(\nu(I)=\varnothing\)</span>, Lemma 5.1 says that every <span class="math" data-tex="\(f\in\mathcal B\)">\(f\in\mathcal B\)</span> is locally in <span class="math" data-tex="\(I\)">\(I\)</span> at each point of its Fourier support. Lemma 5.2 gives <span class="math" data-tex="\(\mathcal B\subseteq I\)">\(\mathcal B\subseteq I\)</span>. By Lemma 3.1 this is a dense subspace of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, so closedness gives <span class="math" data-tex="\(I=L^1(G)\)">\(I=L^1(G)\)</span>. Conversely, for each <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, Proposition 2.1 supplies <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(\widehat h(\gamma)=1\)">\(\widehat h(\gamma)=1\)</span>. No point can belong to the hull of the whole algebra. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-corollary-5-4"></a>
+<strong>Corollary 5.4 — Proper closed ideals lie in evaluation kernels.</strong> Every proper closed ideal is contained in
+<span class="math math-display" data-tex="\[
+ \iota(\{\gamma_0\})
+   =\{f:\widehat f(\gamma_0)=0\}
+\]">\[
+ \iota(\{\gamma_0\})
+   =\{f:\widehat f(\gamma_0)=0\}
+\]</span>
+for some <span class="math" data-tex="\(\gamma_0\in\Gamma\)">\(\gamma_0\in\Gamma\)</span>. Each such kernel is a maximal proper ideal and is closed.</p>
+<p><strong>Proof.</strong> By Theorem 5.3 the hull of a proper closed ideal is nonempty; choose <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span> in it. The required inclusion is the definition of the hull. Evaluation at <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span> is a continuous algebra homomorphism onto <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>: it takes value one on a local unit from Proposition 2.1, and scaling gives every complex value. Its kernel is closed. Any strictly larger ideal has nonzero image in the field <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, hence full image. Explicitly, if it contains <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(\widehat g(\gamma_0)=1\)">\(\widehat g(\gamma_0)=1\)</span>, then for every <span class="math" data-tex="\(f\)">\(f\)</span>,
+<span class="math" data-tex="\(f-\widehat f(\gamma_0)g\)">\(f-\widehat f(\gamma_0)g\)</span> is in the kernel, so <span class="math" data-tex="\(f\)">\(f\)</span> is in that larger ideal. Thus the kernel is maximal proper. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-compact-case">6. The compact case</h2>
+<p><a id="ha-lca-14-proposition-6-1"></a>
+<strong>Proposition 6.1 — Closed ideals on a compact abelian group.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is compact, every closed ideal satisfies
+<span class="math math-display" data-tex="\[
+ I=\iota(\nu(I)).                                          \tag{15}
+\]">\[
+ I=\iota(\nu(I)).                                          \tag{15}
+\]</span>
+Consequently the closed ideals are exactly the <span class="math" data-tex="\(\iota(N)\)">\(\iota(N)\)</span>, for subsets <span class="math" data-tex="\(N\)">\(N\)</span> of the discrete group <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(M=m_G(G)&gt;0\)">\(M=m_G(G)&gt;0\)</span>. Each character <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, viewed as a function on <span class="math" data-tex="\(G\)">\(G\)</span>, is integrable, and direct substitution in convolution gives
+<span class="math math-display" data-tex="\[
+ f*\gamma=\widehat f(\gamma)\gamma.                         \tag{16}
+\]">\[
+ f*\gamma=\widehat f(\gamma)\gamma.                         \tag{16}
+\]</span>
+If <span class="math" data-tex="\(\gamma\notin\nu(I)\)">\(\gamma\notin\nu(I)\)</span>, choose <span class="math" data-tex="\(f\in I\)">\(f\in I\)</span> with <span class="math" data-tex="\(\widehat f(\gamma)\ne0\)">\(\widehat f(\gamma)\ne0\)</span>; then (16) implies <span class="math" data-tex="\(\gamma\in I\)">\(\gamma\in I\)</span>.</p>
+<p>We now approximate any <span class="math" data-tex="\(g\in\iota(\nu(I))\)">\(g\in\iota(\nu(I))\)</span> by finite sums of these allowed characters. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose a continuous positive approximate-identity member <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with <span class="math" data-tex="\(\|g-g*\psi\|_1&lt;\varepsilon/2\)">\(\|g-g*\psi\|_1&lt;\varepsilon/2\)</span>. Finite character polynomials are uniformly dense in <span class="math" data-tex="\(C(G)\)">\(C(G)\)</span>: they form a self-adjoint algebra containing constants, separate points by <a href="raikovs-theorem-and-the-gelfand-raikov-theorem.html#ha-lca-05-corollary-4-2">HA-LCA-05, Corollary 4.2</a>, and hence satisfy the proved <a href="../prerequisites/src/uniform-approximation.html#ha-lca-pre-approx-corollary-2-2">complex Stone–Weierstrass theorem</a>. If <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span>, choose
+<span class="math" data-tex="\(q=\sum_{j=1}^n c_j\gamma_j\)">\(q=\sum_{j=1}^n c_j\gamma_j\)</span> with
+<span class="math" data-tex="\(\|\psi-q\|_\infty&lt;\varepsilon/(2M\|g\|_1)\)">\(\|\psi-q\|_\infty&lt;\varepsilon/(2M\|g\|_1)\)</span>.
+Then
+<span class="math math-display" data-tex="\[
+ g*q=\sum_jc_j\widehat g(\gamma_j)\gamma_j\in I:
+\]">\[
+ g*q=\sum_jc_j\widehat g(\gamma_j)\gamma_j\in I:
+\]</span>
+a term vanishes when <span class="math" data-tex="\(\gamma_j\in\nu(I)\)">\(\gamma_j\in\nu(I)\)</span>, and otherwise its character lies in <span class="math" data-tex="\(I\)">\(I\)</span>. Also
+<span class="math math-display" data-tex="\[
+ \|g-g*q\|_1
+ \leq\|g-g*\psi\|_1+\|g\|_1M\|\psi-q\|_\infty&lt;\varepsilon.
+\]">\[
+ \|g-g*q\|_1
+ \leq\|g-g*\psi\|_1+\|g\|_1M\|\psi-q\|_\infty&lt;\varepsilon.
+\]</span>
+The case <span class="math" data-tex="\(g=0\)">\(g=0\)</span> is immediate. Closedness gives <span class="math" data-tex="\(g\in I\)">\(g\in I\)</span>. The reverse inclusion in (15) holds by definition.</p>
+<p>The dual is discrete by <a href="characters-and-the-dual-group.html#ha-lca-02-theorem-2-1">HA-LCA-02, Theorem 2.1</a>, so every subset <span class="math" data-tex="\(N\)">\(N\)</span> is closed. Proposition 2.1 gives <span class="math" data-tex="\(\nu(\iota(N))=N\)">\(\nu(\iota(N))=N\)</span>, while Proposition 1.1 makes <span class="math" data-tex="\(\iota(N)\)">\(\iota(N)\)</span> a closed ideal. This proves the classification without assuming the dual countable. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-approximation-by-translates">7. Approximation by translates</h2>
+<p><a id="ha-lca-14-corollary-7-1"></a>
+<strong>Corollary 7.1 — Wiener's <span class="math" data-tex="\(L^1\)">\(L^1\)</span> approximation theorem.</strong> For <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>, the linear span of its translates is dense in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> if and only if <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> has no zero.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be the closed span in (2), a closed ideal by Proposition 1.1. Its hull is exactly <span class="math" data-tex="\(\{\gamma:\widehat f(\gamma)=0\}\)">\(\{\gamma:\widehat f(\gamma)=0\}\)</span>. Indeed, every translated transform is
+<span class="math" data-tex="\(\overline{\gamma(x)}\widehat f(\gamma)\)">\(\overline{\gamma(x)}\widehat f(\gamma)\)</span>, so each zero annihilates the span and its norm closure. Conversely <span class="math" data-tex="\(f=L_0f\in I\)">\(f=L_0f\in I\)</span>, so a point in the hull must be a zero of <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span>. The conclusion is now (14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-proposition-7-2"></a>
+<strong>Proposition 7.2 — The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> criterion.</strong> For <span class="math" data-tex="\(f\in L^2(G)\)">\(f\in L^2(G)\)</span>, its translates span a dense subspace of <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span> if and only if its Plancherel transform is nonzero almost everywhere on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p><strong>Proof.</strong> A subspace is dense exactly when its orthogonal complement is zero, by the <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-corollary-2-2">Hilbert projection theorem</a>. Suppose <span class="math" data-tex="\(g\)">\(g\)</span> is orthogonal to every <span class="math" data-tex="\(L_xf\)">\(L_xf\)</span>. The <a href="unitary-representations-of-abelian-groups-the-spectral-theorem.html#ha-lca-13-theorem-5-2">Plancherel translation identity</a> gives
+<span class="math math-display" data-tex="\[
+ 0=\langle L_xf,g\rangle
+   =\int_\Gamma\overline{\gamma(x)}
+            \widehat f(\gamma)\overline{\widehat g(\gamma)}\,dm(\gamma)
+ \quad(x\in G).                                           \tag{17}
+\]">\[
+ 0=\langle L_xf,g\rangle
+   =\int_\Gamma\overline{\gamma(x)}
+            \widehat f(\gamma)\overline{\widehat g(\gamma)}\,dm(\gamma)
+ \quad(x\in G).                                           \tag{17}
+\]</span>
+The product <span class="math" data-tex="\(w=\widehat f\,\overline{\widehat g}\)">\(w=\widehat f\,\overline{\widehat g}\)</span> is in <span class="math" data-tex="\(L^1(\Gamma)\)">\(L^1(\Gamma)\)</span> by Cauchy–Schwarz. Formula (17) is its Fourier transform evaluated at the character
+<span class="math" data-tex="\(\gamma\mapsto\gamma(x)\)">\(\gamma\mapsto\gamma(x)\)</span>. Pontryagin duality says these are all characters of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>; Fourier uniqueness therefore gives <span class="math" data-tex="\(w=0\)">\(w=0\)</span> almost everywhere. If <span class="math" data-tex="\(\widehat f\ne0\)">\(\widehat f\ne0\)</span> almost everywhere, <span class="math" data-tex="\(\widehat g=0\)">\(\widehat g=0\)</span> almost everywhere, so <span class="math" data-tex="\(g=0\)">\(g=0\)</span> by Plancherel. This proves sufficiency.</p>
+<p>If the zero set <span class="math" data-tex="\(Z=\{\widehat f=0\}\)">\(Z=\{\widehat f=0\}\)</span> has positive full Haar measure, <a href="../prerequisites/src/dual-balls-and-compact-convexity.html#ha-lca-pre-dual-convex-lemma-1-1">dual-convex Lemma 1.1</a> supplies a measurable <span class="math" data-tex="\(E\subseteq Z\)">\(E\subseteq Z\)</span> with <span class="math" data-tex="\(0&lt;m(E)&lt;\infty\)">\(0&lt;m(E)&lt;\infty\)</span>, by intersecting with a positive finite piece. Let <span class="math" data-tex="\(g=\mathcal F^{-1}1_E\)">\(g=\mathcal F^{-1}1_E\)</span>. Then <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span>, but (17) is zero for every <span class="math" data-tex="\(x\)">\(x\)</span>, proving failure of density. This argument also covers non-<span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-finite Haar measure. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-examples-and-the-role-of-closedness">8. Examples and the role of closedness</h2>
+<p><a id="ha-lca-14-example-8-1"></a>
+<strong>Example 8.1 — A zero matters differently in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</strong> On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, translates of <span class="math" data-tex="\(e^{-x^2}\)">\(e^{-x^2}\)</span> are dense in both <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Translates of <span class="math" data-tex="\(1_{[-1,1]}\)">\(1_{[-1,1]}\)</span> are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> but not in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>.</p>
+<p><strong>Proof.</strong> The complete scalar calculations in <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-example-5-2">HA-LCA-03, Example 5.2</a> give
+<span class="math math-display" data-tex="\[
+ \widehat{e^{-x^2}}(\xi)=\sqrt\pi\,e^{-\pi^2\xi^2},\qquad
+ \widehat{1_{[-1,1]}}(\xi)=
+ \begin{cases}
+  \sin(2\pi\xi)/(\pi\xi),&amp;\xi\ne0,\\
+  2,&amp;\xi=0.
+ \end{cases}                                               \tag{18}
+\]">\[
+ \widehat{e^{-x^2}}(\xi)=\sqrt\pi\,e^{-\pi^2\xi^2},\qquad
+ \widehat{1_{[-1,1]}}(\xi)=
+ \begin{cases}
+  \sin(2\pi\xi)/(\pi\xi),&amp;\xi\ne0,\\
+  2,&amp;\xi=0.
+ \end{cases}                                               \tag{18}
+\]</span>
+The Gaussian transform is everywhere positive. The interval transform has zeros exactly at <span class="math" data-tex="\(k/2\)">\(k/2\)</span>, <span class="math" data-tex="\(k\in\mathbb Z\setminus\{0\}\)">\(k\in\mathbb Z\setminus\{0\}\)</span>. This nonempty countable set has Lebesgue measure zero: each singleton has measure zero by the interval-length construction in <a href="characters-and-the-dual-group.html#ha-lca-02-lemma-3-3">HA-LCA-02, Lemma 3.3</a>, and countable subadditivity applies. Both original functions lie in <span class="math" data-tex="\(L^1\cap L^2\)">\(L^1\cap L^2\)</span>. Apply Corollary 7.1 and Proposition 7.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-example-8-2"></a>
+<strong>Example 8.2 — A proper dense ideal with empty hull.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is nondiscrete, <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is a proper dense algebraic ideal with empty hull. If <span class="math" data-tex="\(G\)">\(G\)</span> is discrete, <span class="math" data-tex="\(\mathcal B=L^1(G)\)">\(\mathcal B=L^1(G)\)</span>.</p>
+<p><strong>Proof.</strong> Its ideal property and density were proved in §3. Proposition 2.1 supplies a member with value one at each prescribed spectral point, so its hull is empty.</p>
+<p>If <span class="math" data-tex="\(G\)">\(G\)</span> is nondiscrete, <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is noncompact by <a href="the-pontryagin-duality-theorem.html#ha-lca-09-corollary-4-4">HA-LCA-09, Corollary 4.4</a>. Choose a compact identity neighbourhood <span class="math" data-tex="\(V\subseteq\Gamma\)">\(V\subseteq\Gamma\)</span>. Inductively select <span class="math" data-tex="\(\eta_n\)">\(\eta_n\)</span> outside
+<span class="math" data-tex="\(\bigcup_{j&lt;n}(\eta_j+V-V)\)">\(\bigcup_{j&lt;n}(\eta_j+V-V)\)</span>, a compact set which cannot equal <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. No compact subset contains infinitely many <span class="math" data-tex="\(\eta_n\)">\(\eta_n\)</span>: it is covered by finitely many translates of <span class="math" data-tex="\(\operatorname{int}V\)">\(\operatorname{int}V\)</span>, and each such translate contains at most one <span class="math" data-tex="\(\eta_n\)">\(\eta_n\)</span>, since two would have difference in <span class="math" data-tex="\(V-V\)">\(V-V\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(b\in L^1(G)\)">\(b\in L^1(G)\)</span> with compactly supported <span class="math" data-tex="\(\beta=\widehat b\)">\(\beta=\widehat b\)</span>, <span class="math" data-tex="\(0\leq\beta\leq1\)">\(0\leq\beta\leq1\)</span>, and <span class="math" data-tex="\(\beta(0)=1\)">\(\beta(0)=1\)</span>, by Proposition 2.1. The norm-convergent series
+<span class="math math-display" data-tex="\[
+ f(x)=\sum_{n=1}^{\infty}2^{-n}\eta_n(x)b(x)
+\]">\[
+ f(x)=\sum_{n=1}^{\infty}2^{-n}\eta_n(x)b(x)
+\]</span>
+defines an element of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>: the norms of its summands sum to <span class="math" data-tex="\(\|b\|_1\)">\(\|b\|_1\)</span>, and <span class="math" data-tex="\(L^1\)">\(L^1\)</span> is complete. Fourier continuity gives a uniformly convergent transform series
+<span class="math math-display" data-tex="\[
+ \widehat f(\gamma)=\sum_{n=1}^{\infty}2^{-n}\beta(\gamma-\eta_n).
+\]">\[
+ \widehat f(\gamma)=\sum_{n=1}^{\infty}2^{-n}\beta(\gamma-\eta_n).
+\]</span>
+All terms are nonnegative, so <span class="math" data-tex="\(\widehat f(\eta_n)\geq2^{-n}&gt;0\)">\(\widehat f(\eta_n)\geq2^{-n}&gt;0\)</span>. A compact Fourier support would contain all <span class="math" data-tex="\(\eta_n\)">\(\eta_n\)</span>, which is impossible. Thus <span class="math" data-tex="\(f\notin\mathcal B\)">\(f\notin\mathcal B\)</span>, proving properness. In particular <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is not closed, and it lies in no point-evaluation kernel.</p>
+<p>If <span class="math" data-tex="\(G\)">\(G\)</span> is discrete, <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is compact by the same compact/discrete duality theorem. Every Fourier support is a closed subset of this compact space, so every <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function belongs to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="9-exercises-with-complete-solutions">9. Exercises with complete solutions</h2>
+<p><a id="ha-lca-14-exercise-9-1"></a>
+<strong>Exercise 9.1 — Hull and kernel.</strong> Show that <span class="math" data-tex="\(\iota(N)\)">\(\iota(N)\)</span> is a closed ideal, and determine its hull for arbitrary <span class="math" data-tex="\(N\subseteq\Gamma\)">\(N\subseteq\Gamma\)</span>.</p>
+<p><strong>Solution.</strong> For fixed <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, the bound
+<span class="math" data-tex="\(|\widehat f(\gamma)|\leq\|f\|_1\)">\(|\widehat f(\gamma)|\leq\|f\|_1\)</span> makes evaluation continuous; its kernel is closed and linear. The product law <span class="math" data-tex="\(\widehat{f*g}=\widehat f\,\widehat g\)">\(\widehat{f*g}=\widehat f\,\widehat g\)</span> makes this kernel an ideal. Their intersection over <span class="math" data-tex="\(\gamma\in N\)">\(\gamma\in N\)</span> is exactly <span class="math" data-tex="\(\iota(N)\)">\(\iota(N)\)</span>, so it is a closed ideal. Continuity of every <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> gives
+<span class="math" data-tex="\(\iota(N)=\iota(\overline N)\)">\(\iota(N)=\iota(\overline N)\)</span>. Proposition 2.1 supplies, for every <span class="math" data-tex="\(\eta\notin\overline N\)">\(\eta\notin\overline N\)</span>, a compactly supported Fourier plateau equal to one at <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and zero on <span class="math" data-tex="\(\overline N\)">\(\overline N\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ \nu(\iota(N))=\overline N.
+\]">\[
+ \nu(\iota(N))=\overline N.
+\]</span>
+In particular the hull is <span class="math" data-tex="\(N\)">\(N\)</span> when <span class="math" data-tex="\(N\)">\(N\)</span> is closed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-exercise-9-2"></a>
+<strong>Exercise 9.2 — Recover a compact-group ideal from its hull.</strong> Prove the compact-group classification, allowing an uncountable dual, and describe the ideal's dense spanning family.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(N=\nu(I)\)">\(N=\nu(I)\)</span>. Formula (16) shows that every character <span class="math" data-tex="\(\gamma\notin N\)">\(\gamma\notin N\)</span> lies in <span class="math" data-tex="\(I\)">\(I\)</span>. If <span class="math" data-tex="\(g\in\iota(N)\)">\(g\in\iota(N)\)</span>, choose a positive continuous approximate identity <span class="math" data-tex="\(\psi\)">\(\psi\)</span> adapted to <span class="math" data-tex="\(g\)">\(g\)</span>, and approximate <span class="math" data-tex="\(\psi\)">\(\psi\)</span> uniformly by a finite character polynomial <span class="math" data-tex="\(q=\sum c_\gamma\gamma\)">\(q=\sum c_\gamma\gamma\)</span>, as in Proposition 6.1. Then
+<span class="math math-display" data-tex="\[
+ g*q=\sum_\gamma c_\gamma\widehat g(\gamma)\gamma
+\]">\[
+ g*q=\sum_\gamma c_\gamma\widehat g(\gamma)\gamma
+\]</span>
+is a finite sum of characters outside <span class="math" data-tex="\(N\)">\(N\)</span>, since all coefficients from <span class="math" data-tex="\(N\)">\(N\)</span> vanish. The explicit error bound there makes these sums approximate <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ I=\iota(N)
+   =\overline{\operatorname{span}\{\gamma:\gamma\notin N\}}^{\,L^1}.
+\]">\[
+ I=\iota(N)
+   =\overline{\operatorname{span}\{\gamma:\gamma\notin N\}}^{\,L^1}.
+\]</span>
+Every approximation uses a finite family selected for its requested accuracy; no enumeration of the entire dual is used. Conversely each subset <span class="math" data-tex="\(N\)">\(N\)</span> of the discrete dual has exactly that hull, by Proposition 2.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-exercise-9-3"></a>
+<strong>Exercise 9.3 — Why closure cannot be omitted.</strong> On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, show that <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is a proper ideal contained in no point-evaluation kernel.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> and <span class="math" data-tex="\(\widehat g\)">\(\widehat g\)</span> have compact supports, their sum is supported in the union. If only <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> has compact support and <span class="math" data-tex="\(h\in L^1\)">\(h\in L^1\)</span> is arbitrary, <span class="math" data-tex="\(\widehat{f*h}=\widehat f\,\widehat h\)">\(\widehat{f*h}=\widehat f\,\widehat h\)</span> is supported there. Thus <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is an ideal. Local units show that for each <span class="math" data-tex="\(\xi_0\)">\(\xi_0\)</span> some member has transform equal to one at <span class="math" data-tex="\(\xi_0\)">\(\xi_0\)</span>, so no point-evaluation kernel contains it. The Gaussian belongs to <span class="math" data-tex="\(L^1(\mathbb R)\)">\(L^1(\mathbb R)\)</span>, but (18) is nonzero on all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>; its Fourier support is not compact. Hence <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is proper. Lemma 3.1 shows that it is dense, and therefore not closed. It satisfies the empty-hull hypothesis of Wiener while failing its closedness hypothesis, which explains the different conclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-14-exercise-9-4"></a>
+<strong>Exercise 9.4 — Wiener's lemma for absolutely convergent series.</strong> Suppose <span class="math" data-tex="\(a\in\ell^1(\mathbb Z)\)">\(a\in\ell^1(\mathbb Z)\)</span> and
+<span class="math math-display" data-tex="\[
+ \widehat a(t)=\sum_{n\in\mathbb Z}a_n e^{-2\pi int}
+\]">\[
+ \widehat a(t)=\sum_{n\in\mathbb Z}a_n e^{-2\pi int}
+\]</span>
+has no zero on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. Prove that <span class="math" data-tex="\(1/\widehat a\)">\(1/\widehat a\)</span> is another absolutely convergent Fourier series.</p>
+<p><strong>Solution.</strong> Counting Haar measure makes <span class="math" data-tex="\(L^1(\mathbb Z)=\ell^1(\mathbb Z)\)">\(L^1(\mathbb Z)=\ell^1(\mathbb Z)\)</span>, with convolution identity <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>. By Corollary 7.1 and (2), the principal convolution ideal generated by <span class="math" data-tex="\(a\)">\(a\)</span> is dense. Choose <span class="math" data-tex="\(b\in\ell^1(\mathbb Z)\)">\(b\in\ell^1(\mathbb Z)\)</span> with
+<span class="math" data-tex="\(\|\delta_0-a*b\|_1&lt;1\)">\(\|\delta_0-a*b\|_1&lt;1\)</span>. The Neumann series
+<span class="math math-display" data-tex="\[
+ d=\sum_{k=0}^{\infty}(\delta_0-a*b)^{*\,k}
+\]">\[
+ d=\sum_{k=0}^{\infty}(\delta_0-a*b)^{*\,k}
+\]</span>
+converges in this unital Banach algebra and satisfies <span class="math" data-tex="\(d*(a*b)=\delta_0\)">\(d*(a*b)=\delta_0\)</span>. Thus <span class="math" data-tex="\(c=b*d\in\ell^1(\mathbb Z)\)">\(c=b*d\in\ell^1(\mathbb Z)\)</span> obeys <span class="math" data-tex="\(a*c=\delta_0\)">\(a*c=\delta_0\)</span>. Fourier multiplication gives
+<span class="math" data-tex="\(\widehat c=1/\widehat a\)">\(\widehat c=1/\widehat a\)</span>.
+Since <span class="math" data-tex="\(\sum_n|c_n|&lt;\infty\)">\(\sum_n|c_n|&lt;\infty\)</span>, the series
+<span class="math" data-tex="\(\sum_n c_ne^{-2\pi int}\)">\(\sum_n c_ne^{-2\pi int}\)</span> converges absolutely and uniformly, with this value. This derives the inverse assertion directly from the proved general Wiener theorem and the proved Neumann lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="proof-dependencies-and-scope">Proof dependencies and scope</h2>
+<p>Every result used above is proved here or in the exact earlier programme reading linked at its use. In particular the local reciprocal is an <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-algebra construction, and the compact patching functions belong to the Fourier algebra. No arbitrary continuous partition is assumed to be a Fourier transform.</p>
+<p>The equality <span class="math" data-tex="\(I=\iota(\nu(I))\)">\(I=\iota(\nu(I))\)</span> has been proved here for compact <span class="math" data-tex="\(G\)">\(G\)</span>. For general groups, Wiener's theorem proves only the empty-hull case. The next lesson treats further synthesis questions; no general hull classification is asserted here.</p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

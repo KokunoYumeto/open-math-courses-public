@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projective incidence as a contact kernel · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/projective-incidence-as-a-contact-kernel.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 4</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="projective-incidence-as-a-contact-kernel">Projective incidence as a contact kernel</h1>
+<p>A point of a projective space is a line. A point of its dual projective space is a hyperplane. Incidence between them defines a sheaf kernel. We will calculate its cotangent relation, including the input sign, and prove that it gives an equivalence after localization away from the zero covectors. We will also calculate its inverse kernel without discarding the real orientation line.</p>
+<p>Use <a href="../sheaf-proof-readings/SH03-when-a-kernel-quantizes-a-contact-transformation.html">When a kernel quantizes a contact transformation</a> and <a href="../sheaf-proof-readings/SH03-dual-kernels-and-an-unchanged-parameter.html">Dual kernels and an unchanged parameter</a>. Their exact prerequisites include the closed-submanifold microsupport and microlocal Hom formulas and constructible relative duality. Here the projective geometry is calculated directly.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</em></p>
+<h2 id="lines-hyperplanes-and-cotangent-vectors">Lines, hyperplanes and cotangent vectors</h2>
+<p>Let <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span> be <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and let <span class="math" data-tex="\(V\)">\(V\)</span> have dimension <span class="math" data-tex="\(N\geq2\)">\(N\geq2\)</span> over <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+X=\mathbb P(V),\qquad Y=\mathbb P(V^*),\qquad
+Z=\{(\ell,m):m(\ell)=0\}\subset X\times Y.
+\qquad\text{(1)}
+\]">\[
+X=\mathbb P(V),\qquad Y=\mathbb P(V^*),\qquad
+Z=\{(\ell,m):m(\ell)=0\}\subset X\times Y.
+\qquad\text{(1)}
+\]</span>
+<p>Here <span class="math" data-tex="\(m\)">\(m\)</span> is a line of covectors; the notation <span class="math" data-tex="\(m(\ell)=0\)">\(m(\ell)=0\)</span> means that every member of <span class="math" data-tex="\(m\)">\(m\)</span> vanishes on <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. In the real case these are ordinary projective lines, with no choice of a positive ray. Let
+<span class="math" data-tex="\(\Omega_X=\dot T^*X\)">\(\Omega_X=\dot T^*X\)</span> and <span class="math" data-tex="\(\Omega_Y=\dot T^*Y\)">\(\Omega_Y=\dot T^*Y\)</span>, where a dot removes the zero section.</p>
+<p>The coefficient ring <span class="math" data-tex="\(k\)">\(k\)</span> is commutative with identity and finite global dimension. All sheaf objects are bounded derived complexes of <span class="math" data-tex="\(k\)">\(k\)</span>-modules. Complex manifolds are regarded as real manifolds for these operations. We identify a complex cotangent vector with a real covector by taking the real part of its pairing; using this convention on both factors preserves the formulas below.</p>
+<p>The omitted smaller vector-space dimensions are vacuous for this selected-region assertion. If <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, both projective spaces are empty. If <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, both are points, their punctured cotangent spaces are empty, and incidence is empty. The localized categories on an empty cotangent region are zero: every object is null there. All graph and identity conditions on that region hold vacuously. We calculate the nonempty correspondence for <span class="math" data-tex="\(N\geq2\)">\(N\geq2\)</span>.</p>
+<p>For a line <span class="math" data-tex="\(\ell\subset V\)">\(\ell\subset V\)</span>, differentiation of the graph of a linear map gives</p>
+<span class="math math-display" data-tex="\[
+T_\ell X=\operatorname{Hom}_{\mathbb F}(\ell,V/\ell),\qquad
+T_\ell^*X=\operatorname{Hom}_{\mathbb F}(V/\ell,\ell).
+\qquad\text{(2)}
+\]">\[
+T_\ell X=\operatorname{Hom}_{\mathbb F}(\ell,V/\ell),\qquad
+T_\ell^*X=\operatorname{Hom}_{\mathbb F}(V/\ell,\ell).
+\qquad\text{(2)}
+\]</span>
+<p>The second identification uses the trace pairing with the first. Regard a covector in (2) as an endomorphism <span class="math" data-tex="\(A\)">\(A\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span>. It has image in <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and kills <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. A nonzero such endomorphism has rank one, image exactly <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and <span class="math" data-tex="\(A^2=0\)">\(A^2=0\)</span>. Conversely a nonzero rank-one square-zero endomorphism determines its base line by its image. Thus</p>
+<span class="math math-display" data-tex="\[
+\dot T^*X=\{A\in\operatorname{End}_{\mathbb F}(V):
+\operatorname{rank}A=1,\ A^2=0\}.
+\qquad\text{(3)}
+\]">\[
+\dot T^*X=\{A\in\operatorname{End}_{\mathbb F}(V):
+\operatorname{rank}A=1,\ A^2=0\}.
+\qquad\text{(3)}
+\]</span>
+<p>This description includes the base point; it does not forget it. There is a corresponding description of <span class="math" data-tex="\(\dot T^*Y\)">\(\dot T^*Y\)</span> by endomorphisms <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\(V^*\)">\(V^*\)</span>.</p>
+<h2 id="the-conormal-relation-and-its-minus-sign">The conormal relation and its minus sign</h2>
+<p>Choose nonzero <span class="math" data-tex="\(v\in\ell\)">\(v\in\ell\)</span> and <span class="math" data-tex="\(\lambda\in m\)">\(\lambda\in m\)</span> at an incident pair, so <span class="math" data-tex="\(\lambda(v)=0\)">\(\lambda(v)=0\)</span>. In local projective charts, the equation of <span class="math" data-tex="\(Z\)">\(Z\)</span> is <span class="math" data-tex="\(f(v,\lambda)=\lambda(v)=0\)">\(f(v,\lambda)=\lambda(v)=0\)</span>. Its derivative in the <span class="math" data-tex="\(v\)">\(v\)</span> direction is nonzero: <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> induces a nonzero functional on <span class="math" data-tex="\(V/\ell\)">\(V/\ell\)</span>. Its derivative in the <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> direction is nonzero for the same reason, with <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> exchanged. Consequently <span class="math" data-tex="\(Z\)">\(Z\)</span> is a closed smooth submanifold of real codimension
+<span class="math" data-tex="\(c=1\)">\(c=1\)</span> for <span class="math" data-tex="\(\mathbb F=\mathbb R\)">\(\mathbb F=\mathbb R\)</span>, and <span class="math" data-tex="\(c=2\)">\(c=2\)</span> for <span class="math" data-tex="\(\mathbb F=\mathbb C\)">\(\mathbb F=\mathbb C\)</span>.</p>
+<p>For a nonzero conormal parameter <span class="math" data-tex="\(t\in\mathbb F\)">\(t\in\mathbb F\)</span>, the two <strong>physical</strong> cotangent components of <span class="math" data-tex="\(t\,df\)">\(t\,df\)</span> are</p>
+<span class="math math-display" data-tex="\[
+A=t\,v\otimes\lambda,\qquad B_{\mathrm{physical}}=t\,\lambda\otimes v.
+\qquad\text{(4)}
+\]">\[
+A=t\,v\otimes\lambda,\qquad B_{\mathrm{physical}}=t\,\lambda\otimes v.
+\qquad\text{(4)}
+\]</span>
+<p>For complex <span class="math" data-tex="\(t\)">\(t\)</span>, this means the real covector <span class="math" data-tex="\(\operatorname{Re}(t\,df)\)">\(\operatorname{Re}(t\,df)\)</span>. These are all the real conormals. Changing projective representatives changes <span class="math" data-tex="\(t\)">\(t\)</span> inversely to their product, so (4) defines intrinsic covectors. The kernel's input component is the negative of the physical component. Therefore its relation has</p>
+<span class="math math-display" data-tex="\[
+B=-t\,\lambda\otimes v,\qquad A=-B^{\mathsf t}.
+\qquad\text{(5)}
+\]">\[
+B=-t\,\lambda\otimes v,\qquad A=-B^{\mathsf t}.
+\qquad\text{(5)}
+\]</span>
+<p>Here transpose means the canonical dual endomorphism, using <span class="math" data-tex="\(V^{**}=V\)">\(V^{**}=V\)</span>; no inner product or complex conjugation is involved.</p>
+<p>Every nonzero rank-one square-zero <span class="math" data-tex="\(B\)">\(B\)</span> has the form <span class="math" data-tex="\(-t\lambda\otimes v\)">\(-t\lambda\otimes v\)</span>. Its image determines <span class="math" data-tex="\(m\)">\(m\)</span>, the image of <span class="math" data-tex="\(B^{\mathsf t}\)">\(B^{\mathsf t}\)</span> determines <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and square-zero says <span class="math" data-tex="\(\lambda(v)=0\)">\(\lambda(v)=0\)</span>. This proves existence and uniqueness of its point in (4). Recovering these lines is smooth: locally choose a nonzero column of a rank-one matrix to represent its image. These local recovery formulas agree on overlaps. The two nonzero conormal projections are therefore diffeomorphisms, and the kernel transformation is</p>
+<span class="math math-display" data-tex="\[
+\chi:\dot T^*Y\longrightarrow\dot T^*X,
+\qquad B\longmapsto -B^{\mathsf t}.
+\qquad\text{(6)}
+\]">\[
+\chi:\dot T^*Y\longrightarrow\dot T^*X,
+\qquad B\longmapsto -B^{\mathsf t}.
+\qquad\text{(6)}
+\]</span>
+<p>The inverse has the same negative-transpose formula with the spaces exchanged. In particular each projection is a proper homeomorphism, even though its domain is not compact.</p>
+<p>To verify the symplectic normalization, take a tangent vector to the incidence relation. On it the sum of the physical tautological forms is <span class="math" data-tex="\(t\,d(\lambda(v))=0\)">\(t\,d(\lambda(v))=0\)</span>, or its real part in the complex case. Negating the input covector changes this equality to
+<span class="math" data-tex="\(\theta_X-\theta_Y=0\)">\(\theta_X-\theta_Y=0\)</span>. Since both projections are diffeomorphisms,</p>
+<span class="math math-display" data-tex="\[
+\chi^*\theta_X=\theta_Y,\qquad
+\chi^*d\theta_X=d\theta_Y.
+\qquad\text{(7)}
+\]">\[
+\chi^*\theta_X=\theta_Y,\qquad
+\chi^*d\theta_X=d\theta_Y.
+\qquad\text{(7)}
+\]</span>
+<p>Formula (6) commutes with positive cotangent dilation. It is a homogeneous symplectic transformation with exactly the sign required for a sheaf kernel.</p>
+<h2 id="verifying-the-sheaf-criterion">Verifying the sheaf criterion</h2>
+<p>Let <span class="math" data-tex="\(K=k_Z\)">\(K=k_Z\)</span>, extended by zero to <span class="math" data-tex="\(X\times Y\)">\(X\times Y\)</span>. Its smooth closed support and locally perfect constant coefficients give cohomological constructibility in the sense required by the contact-kernel theorem. This also follows locally from the closed-submanifold model: its stalks and costalks are finite shifts of rank-one free modules, with the intrinsic normal orientation line retained.</p>
+<p>The exact closed-submanifold prerequisite gives
+<span class="math" data-tex="\(\operatorname{SS}(k_Z)\subset T_Z^*(X\times Y)\)">\(\operatorname{SS}(k_Z)\subset T_Z^*(X\times Y)\)</span>. In (4), one cotangent component is nonzero if and only if <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, if and only if the other component is nonzero. Hence the union of the two selected cotangent regions meets this microsupport only in the graph calculated above. This checks the theorem's union condition, rather than checking only the intersection of the regions.</p>
+<p>The remaining condition concerns the actual identity. The exact submanifold microlocal Hom formula gives</p>
+<span class="math math-display" data-tex="\[
+\mu\operatorname{hom}(k_Z,k_Z)
+\simeq\mu_Zk_Z\simeq k_{T_Z^*(X\times Y)}.
+\qquad\text{(8)}
+\]">\[
+\mu\operatorname{hom}(k_Z,k_Z)
+\simeq\mu_Zk_Z\simeq k_{T_Z^*(X\times Y)}.
+\qquad\text{(8)}
+\]</span>
+<p>For the second comparison, specialization of a sheaf supported on <span class="math" data-tex="\(Z\)">\(Z\)</span> is the constant coefficient sheaf on the zero section of its normal bundle. Negative Fourier transformation of this zero-supported sheaf is constant on the whole dual normal bundle: the fibre integral is over a single point. It has no codimension shift. In each local coefficient chart the identity-induced map sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(\operatorname{id}_k\)">\(\operatorname{id}_k\)</span>, hence to <span class="math" data-tex="\(1\)">\(1\)</span> in (8). Changing a chart conjugates this endomorphism and fixes its identity. These comparisons glue; no choice of a normal orientation generator enters (8). Thus the identity-induced map is an isomorphism on the selected graph.</p>
+<p>All three conditions of the contact-kernel theorem now hold. We obtain inverse localized equivalences</p>
+<span class="math math-display" data-tex="\[
+\Phi_{k_Z}:\mathcal D_Y(\dot T^*Y)\rightleftarrows
+\mathcal D_X(\dot T^*X):\Psi_{k_Z},
+\qquad\text{(9)}
+\]">\[
+\Phi_{k_Z}:\mathcal D_Y(\dot T^*Y)\rightleftarrows
+\mathcal D_X(\dot T^*X):\Psi_{k_Z},
+\qquad\text{(9)}
+\]</span>
+<p>and, for arbitrary bounded inputs <span class="math" data-tex="\(G_1,G_2\)">\(G_1,G_2\)</span>, the theorem's actual natural comparison gives</p>
+<span class="math math-display" data-tex="\[
+\chi_*\mu\operatorname{hom}_Y(G_2,G_1)
+\simeq\mu\operatorname{hom}_X(\Phi_{k_Z}G_2,\Phi_{k_Z}G_1)
+\quad\text{on }\dot T^*X.
+\qquad\text{(10)}
+\]">\[
+\chi_*\mu\operatorname{hom}_Y(G_2,G_1)
+\simeq\mu\operatorname{hom}_X(\Phi_{k_Z}G_2,\Phi_{k_Z}G_1)
+\quad\text{on }\dot T^*X.
+\qquad\text{(10)}
+\]</span>
+<p>The support <span class="math" data-tex="\(Z\)">\(Z\)</span> is compact, so its ordinary support projections are proper too. Properness of the selected conormal projections, used in (9), was proved separately by their homeomorphism property. The result concerns the indicated localizations; it does not assert an equivalence of the full ordinary sheaf categories.</p>
+<h2 id="the-inverse-kernel-retains-an-orientation-line">The inverse kernel retains an orientation line</h2>
+<p>Write <span class="math" data-tex="\(P=X\times Y\)">\(P=X\times Y\)</span>, let <span class="math" data-tex="\(q_Y:P\to Y\)">\(q_Y:P\to Y\)</span>, and let <span class="math" data-tex="\(\mathrm t\)">\(\mathrm t\)</span> exchange the two factors. Put <span class="math" data-tex="\(D=\dim_{\mathbb R}Y\)">\(D=\dim_{\mathbb R}Y\)</span>. Closed-embedding duality gives</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom_P(k_Z,k_P)
+\simeq k_Z\otimes\operatorname{or}_{Z/P}[-c].
+\qquad\text{(11)}
+\]">\[
+R\mathcal Hom_P(k_Z,k_P)
+\simeq k_Z\otimes\operatorname{or}_{Z/P}[-c].
+\qquad\text{(11)}
+\]</span>
+<p>Here <span class="math" data-tex="\(\operatorname{or}_{Z/P}\)">\(\operatorname{or}_{Z/P}\)</span> is the normal orientation local system, with its exceptional degree written separately. The right relative dual is consequently</p>
+<span class="math math-display" data-tex="\[
+K_R=\mathrm t\bigl(k_Z\otimes\operatorname{or}_{Z/P}
+\otimes q_Y^{-1}\operatorname{or}_Y\bigr)[D-c].
+\qquad\text{(12)}
+\]">\[
+K_R=\mathrm t\bigl(k_Z\otimes\operatorname{or}_{Z/P}
+\otimes q_Y^{-1}\operatorname{or}_Y\bigr)[D-c].
+\qquad\text{(12)}
+\]</span>
+<p>Convolution with (12) realizes <span class="math" data-tex="\(\Psi_{k_Z}\)">\(\Psi_{k_Z}\)</span> in (9). The dual-kernel theorem identifies the operators by its specified adjunction comparison, so this inverse is normalized by that adjunction.</p>
+<p>In the complex case both orientation systems are canonically trivial. Since <span class="math" data-tex="\(D=2N-2\)">\(D=2N-2\)</span> and <span class="math" data-tex="\(c=2\)">\(c=2\)</span>, the inverse is
+<span class="math" data-tex="\(k_{Z^{\mathsf t}}[2N-4]\)">\(k_{Z^{\mathsf t}}[2N-4]\)</span>.
+In the real case its degree is <span class="math" data-tex="\(N-2\)">\(N-2\)</span>, but its line need not be trivial. To see the line precisely, let <span class="math" data-tex="\(O_\ell\)">\(O_\ell\)</span> and <span class="math" data-tex="\(O_m\)">\(O_m\)</span> denote the sign orientation systems of the tautological real lines on the two projective factors. The normal equation is a section of <span class="math" data-tex="\(\ell^*\otimes m^*\)">\(\ell^*\otimes m^*\)</span>, so
+<span class="math" data-tex="\(\operatorname{or}_{Z/P}=O_\ell\otimes O_m\)">\(\operatorname{or}_{Z/P}=O_\ell\otimes O_m\)</span>.
+Also (2) gives
+<span class="math" data-tex="\(\det TY\simeq\det V^*\otimes m^{-N}\)">\(\det TY\simeq\det V^*\otimes m^{-N}\)</span>.
+Thus the line before transposition in (12) is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{or}_{V^*}\otimes O_\ell\otimes O_m^{\otimes(N+1)}
+\quad\text{on }Z.
+\qquad\text{(13)}
+\]">\[
+\operatorname{or}_{V^*}\otimes O_\ell\otimes O_m^{\otimes(N+1)}
+\quad\text{on }Z.
+\qquad\text{(13)}
+\]</span>
+<p>The orientation of the fixed vector space <span class="math" data-tex="\(V^*\)">\(V^*\)</span> is a constant line. Orientation sign systems are their own inverses, which explains why the negative tensor powers from the determinant formula give the positive powers in (13). A coordinate choice can trivialize a constant line; it cannot erase nontrivial monodromy in <span class="math" data-tex="\(O_\ell\)">\(O_\ell\)</span> or <span class="math" data-tex="\(O_m\)">\(O_m\)</span>.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="recovering-the-input-sign">Recovering the input sign</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>For <span class="math" data-tex="\(V=\mathbb R^3\)">\(V=\mathbb R^3\)</span>, take <span class="math" data-tex="\(v=e_1\)">\(v=e_1\)</span>, <span class="math" data-tex="\(\lambda=e_2^*\)">\(\lambda=e_2^*\)</span> and <span class="math" data-tex="\(t=2\)">\(t=2\)</span>. Write the physical conormal pair and the input endomorphism. Check square-zero and the formula for <span class="math" data-tex="\(\chi\)">\(\chi\)</span>.</p>
+<p><strong>Solution.</strong> The physical pair is <span class="math" data-tex="\((2e_1\otimes e_2^*,2e_2^*\otimes e_1)\)">\((2e_1\otimes e_2^*,2e_2^*\otimes e_1)\)</span>. The input is <span class="math" data-tex="\(B=-2e_2^*\otimes e_1\)">\(B=-2e_2^*\otimes e_1\)</span>. The first endomorphism sends <span class="math" data-tex="\(e_2\)">\(e_2\)</span> to <span class="math" data-tex="\(2e_1\)">\(2e_1\)</span> and kills <span class="math" data-tex="\(e_1\)">\(e_1\)</span>; the input sends <span class="math" data-tex="\(e_1^*\)">\(e_1^*\)</span> to <span class="math" data-tex="\(-2e_2^*\)">\(-2e_2^*\)</span> and kills <span class="math" data-tex="\(e_2^*\)">\(e_2^*\)</span>. Both have square zero and rank one. Finally <span class="math" data-tex="\(-B^{\mathsf t}=2e_1\otimes e_2^*\)">\(-B^{\mathsf t}=2e_1\otimes e_2^*\)</span>, the required output. Using the physical second component without the antipode would give the opposite sign.</p>
+<h3 id="incidence-on-a-real-projective-line">Incidence on a real projective line</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>When <span class="math" data-tex="\(V=\mathbb R^2\)">\(V=\mathbb R^2\)</span>, show that incidence is the graph of a diffeomorphism between the two projective lines. Explain why the inverse kernel has degree zero and a trivial total orientation line.</p>
+<p><strong>Solution.</strong> A nonzero covector has a one-dimensional kernel. Thus <span class="math" data-tex="\(m\mapsto\ker m\)">\(m\mapsto\ker m\)</span> is a bijection <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span>; its inverse sends a line to its annihilator line. Both maps are smooth in projective coordinate charts. Hence <span class="math" data-tex="\(Z\)">\(Z\)</span> is its graph and the transform is pushforward along this diffeomorphism. The graph has real codimension one in the two-dimensional product, and <span class="math" data-tex="\(Y\)">\(Y\)</span> has dimension one, so <span class="math" data-tex="\(D-c=0\)">\(D-c=0\)</span>. Its normal orientation is the pullback of the orientation of <span class="math" data-tex="\(Y\)">\(Y\)</span>; tensoring it with that same orientation in (12) cancels it canonically. The inverse is the unshifted sheaf of the transposed graph, as ordinary graph calculus also shows.</p>
+<h3 id="a-complex-projective-plane">A complex projective plane</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>For <span class="math" data-tex="\(V=\mathbb C^3\)">\(V=\mathbb C^3\)</span>, calculate the inverse degree. Explain why complex codimension must be converted before applying (11).</p>
+<p><strong>Solution.</strong> The dual projective plane has complex dimension two and real dimension four. Incidence has complex codimension one and real codimension two. The inverse degree is <span class="math" data-tex="\(4-2=2\)">\(4-2=2\)</span>, so the right relative dual is <span class="math" data-tex="\(k_{Z^{\mathsf t}}[2]\)">\(k_{Z^{\mathsf t}}[2]\)</span>. A closed complex hypersurface has exceptional degree <span class="math" data-tex="\(-2\)">\(-2\)</span> in real sheaf theory. Substituting complex codimension one into the real formula would give degree three and would use the wrong duality normalization. Complex orientations canonically trivialize the two orientation lines.</p>
+<h3 id="why-zero-covectors-are-excluded">Why zero covectors are excluded</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Assume <span class="math" data-tex="\(N\geq3\)">\(N\geq3\)</span>. Show directly that the conormal relation does not have a graph projection over a zero covector of <span class="math" data-tex="\(X\)">\(X\)</span>. Relate this to ordinary constant sheaves.</p>
+<p><strong>Solution.</strong> At <span class="math" data-tex="\((\ell;0)\)">\((\ell;0)\)</span>, parameter <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is possible for every hyperplane containing <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. These hyperplanes form <span class="math" data-tex="\(\mathbb P((V/\ell)^*)\)">\(\mathbb P((V/\ell)^*)\)</span>, of positive dimension <span class="math" data-tex="\(N-2\)">\(N-2\)</span>. Thus the projection has more than one point in this fibre. The nonzero recovery argument cannot be extended to it. A locally constant bounded sheaf has microsupport in the zero section and becomes zero in the selected localization. Hence (9) omits precisely such ordinary information; it does not prove an equivalence before localization. For <span class="math" data-tex="\(N=2\)">\(N=2\)</span> the incidence graph has the separate ordinary equivalence calculated in the previous exercise.</p>
+<h3 id="a-real-orientation-that-cannot-be-dropped">A real orientation that cannot be dropped</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Let <span class="math" data-tex="\(V=\mathbb R^3\)">\(V=\mathbb R^3\)</span> and take <span class="math" data-tex="\(k\)">\(k\)</span> to be a field of characteristic different from two. Fix <span class="math" data-tex="\(m\in Y\)">\(m\in Y\)</span>. Determine the monodromy of the inverse line along the fibre <span class="math" data-tex="\(\{\ell\subset\ker m\}\simeq\mathbb R\mathbb P^1\)">\(\{\ell\subset\ker m\}\simeq\mathbb R\mathbb P^1\)</span> of <span class="math" data-tex="\(Z\to Y\)">\(Z\to Y\)</span>.</p>
+<p><strong>Solution.</strong> In (13), <span class="math" data-tex="\(N+1=4\)">\(N+1=4\)</span>, so the fourth tensor power of <span class="math" data-tex="\(O_m\)">\(O_m\)</span> is trivial. On the specified fibre it is constant in any case. The fixed line <span class="math" data-tex="\(\operatorname{or}_{V^*}\)">\(\operatorname{or}_{V^*}\)</span> is also constant. The remaining factor is <span class="math" data-tex="\(O_\ell\)">\(O_\ell\)</span>, the tautological sign system on <span class="math" data-tex="\(\mathbb R\mathbb P^1\)">\(\mathbb R\mathbb P^1\)</span>. A lift of one circuit in the projective line changes a unit vector representing <span class="math" data-tex="\(\ell\)">\(\ell\)</span> to its negative; transport on this orientation line is multiplication by <span class="math" data-tex="\(-1\)">\(-1\)</span>. It is nontrivial over the stated field. The inverse degree is one, but replacing (12) by <span class="math" data-tex="\(k_{Z^{\mathsf t}}[1]\)">\(k_{Z^{\mathsf t}}[1]\)</span> would lose this monodromy. In characteristic two this particular sign obstruction disappears, which is why the coefficient hypothesis matters for the example.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-partial-legendre-kernel-and-its-adjoint-shift.html">The partial Legendre kernel and its adjoint shift →</a></span></nav>
+<p class="small source-link"><a href="src/projective-incidence-as-a-contact-kernel.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

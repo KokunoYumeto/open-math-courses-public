@@ -1,0 +1,293 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tensor duality and coherent inverses</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="tensor-duality-and-coherent-inverses">Tensor duality and coherent inverses</h1>
+<p>Evaluation and coevaluation let us move a tensor factor across a Hom set. They also distinguish a chosen tensor inverse from a coherent inverse: two isomorphisms to the unit must satisfy two compatibility equations before they supply duality.</p>
+<p>We use the associator <span class="math" data-tex="\(a:(XY)Z\to X(YZ)\)">\(a:(XY)Z\to X(YZ)\)</span> and unit maps <span class="math" data-tex="\(l_X:IX\to X\)">\(l_X:IX\to X\)</span>, <span class="math" data-tex="\(r_X:XI\to X\)">\(r_X:XI\to X\)</span> of <a href="tensor-actions-and-absolute-algebra-presentations.html">Tensor actions and absolute algebra presentations</a>. Juxtaposition denotes tensor product, never a permutation of factors. When parentheses or units are omitted, all maps use the canonical associativity and unit identifications. No braiding, additive structure or assumption that every object has a dual is made.</p>
+<h2 id="1-units-and-their-compatible-identifications">1. Units and their compatible identifications</h2>
+<p>The source's unit convention specifies <span class="math" data-tex="\(\rho:II\to I\)">\(\rho:II\to I\)</span> invertible and requires <span class="math" data-tex="\(I\otimes-\)">\(I\otimes-\)</span> and <span class="math" data-tex="\(-\otimes I\)">\(-\otimes I\)</span> to be fully faithful. The preceding lesson proves that both functors are then equivalences: apply its fully faithful idempotent-functor lemma to their natural isomorphisms <span class="math" data-tex="\(P^2\simeq P\)">\(P^2\simeq P\)</span>. This checks the equivalence hypothesis of <a href="https://stacks.math.columbia.edu/tag/0HAW">Stacks, Lemma 4.43.1</a>.</p>
+<p>We retain its unit construction and <a href="https://stacks.math.columbia.edu/tag/0HAY">Lemma 4.43.4</a>. In our associator direction, their constraints obey
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+l_I&amp;=r_I=\rho,\\
+l_{XY}&amp;=l_X\otimes1_Y,\\
+r_{XY}&amp;=1_X\otimes r_Y,\\
+r_X\otimes1_Y&amp;=1_X\otimes l_Y .
+\end{aligned}\tag{1.1}
+\]">\[
+\begin{aligned}
+l_I&amp;=r_I=\rho,\\
+l_{XY}&amp;=l_X\otimes1_Y,\\
+r_{XY}&amp;=1_X\otimes r_Y,\\
+r_X\otimes1_Y&amp;=1_X\otimes l_Y .
+\end{aligned}\tag{1.1}
+\]</span>
+The sources of the last three equalities are respectively <span class="math" data-tex="\(IXY\)">\(IXY\)</span>, <span class="math" data-tex="\(XYI\)">\(XYI\)</span> and <span class="math" data-tex="\(XIY\)">\(XIY\)</span>, with the canonical reassociations inserted. Naturality gives the additional compatibility
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+l_X(1_I\otimes r_X)
+&amp;=r_X(l_X\otimes1_I).
+\end{aligned}\tag{1.2}
+\]">\[
+\begin{aligned}
+l_X(1_I\otimes r_X)
+&amp;=r_X(l_X\otimes1_I).
+\end{aligned}\tag{1.2}
+\]</span>
+Equation (1.2) compares maps <span class="math" data-tex="\(IXI\to X\)">\(IXI\to X\)</span>. These are all the unit coherences used below. Uniqueness is also explicit: tensoring on the left with <span class="math" data-tex="\(I\)">\(I\)</span> determines <span class="math" data-tex="\(l_X\)">\(l_X\)</span> from <span class="math" data-tex="\(1_I\otimes l_X=\rho\otimes1_X\)">\(1_I\otimes l_X=\rho\otimes1_X\)</span>, and tensoring on the right determines <span class="math" data-tex="\(r_X\)">\(r_X\)</span> from <span class="math" data-tex="\(r_X\otimes1_I=1_X\otimes\rho\)">\(r_X\otimes1_I=1_X\otimes\rho\)</span>.</p>
+<p>Two units with their multiplications have a unique multiplication-compatible isomorphism, as in <a href="https://stacks.math.columbia.edu/tag/0HAX">Stacks, Lemma 4.43.2</a>. Here is the normalization and uniqueness check in that assertion. Start with any isomorphism <span class="math" data-tex="\(t:I\to J\)">\(t:I\to J\)</span>, which the unit constraints provide. There is a unique <span class="math" data-tex="\(b\in\operatorname{Aut}(J)\)">\(b\in\operatorname{Aut}(J)\)</span> such that
+<span class="math math-display" data-tex="\[
+t\rho_I=b\rho_J(t\otimes t).
+\]">\[
+t\rho_I=b\rho_J(t\otimes t).
+\]</span>
+The canonical unit identities give
+<span class="math math-display" data-tex="\[
+\rho_J(b\otimes b)=b^2\rho_J.
+\]">\[
+\rho_J(b\otimes b)=b^2\rho_J.
+\]</span>
+Consequently <span class="math" data-tex="\(bt\)">\(bt\)</span> is multiplication-compatible. If two compatible maps differ by <span class="math" data-tex="\(c\in\operatorname{Aut}(J)\)">\(c\in\operatorname{Aut}(J)\)</span>, their compatibility implies <span class="math" data-tex="\(c\rho_J=c^2\rho_J\)">\(c\rho_J=c^2\rho_J\)</span>. Cancellation gives <span class="math" data-tex="\(c=1_J\)">\(c=1_J\)</span>. This supplies the uniqueness check as well as the adjustment in the canonical proof. Also <span class="math" data-tex="\(\rho_I\otimes1_I=1_I\otimes\rho_I\)">\(\rho_I\otimes1_I=1_I\otimes\rho_I\)</span>, again by the same lemma.</p>
+<p>For a strong tensor functor with comparison <span class="math" data-tex="\(\xi_{A,B}:F(AB)\to F(A)F(B)\)">\(\xi_{A,B}:F(AB)\to F(A)F(B)\)</span>, the multiplication on its image unit is
+<span class="math math-display" data-tex="\[
+F(I)F(I)\xrightarrow{\xi_{I,I}^{-1}}
+F(II)\xrightarrow{F(\rho_I)}F(I).
+\tag{1.3}
+\]">\[
+F(I)F(I)\xrightarrow{\xi_{I,I}^{-1}}
+F(II)\xrightarrow{F(\rho_I)}F(I).
+\tag{1.3}
+\]</span>
+The functor is <strong>unital</strong> when this pair is a unit of its target. Equivalently, the pair has its compatible identification with the target unit. This is the source form of <a href="https://stacks.math.columbia.edu/tag/0FFL">Stacks, Definition 4.43.5</a>: its tensor comparison is <span class="math" data-tex="\(\xi^{-1}\)">\(\xi^{-1}\)</span>, and the source full-faithfulness condition for the image unit is equivalent to the canonical equivalence condition just checked.</p>
+<p>All reassociations and unit removals below use the pinned open coherence proof explained in <a href="tensor-actions-and-absolute-algebra-presentations.html#1-the-action-of-the-unit-detects-unitality">Tensor actions and absolute algebra presentations, §1</a>. It identifies structural maps with the ordered factors fixed; it does not identify arbitrary morphisms. Etingof, Gelaki, Nikshych and Ostrik, <em>Tensor Categories</em>, Theorem 2.9.2 is a further mathematical reference.</p>
+<h2 id="2-the-two-directions-of-tensor-duality">2. The two directions of tensor duality</h2>
+<p>A <strong>dual pair</strong> consists of <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, a coevaluation <span class="math" data-tex="\(\varepsilon:I\to YX\)">\(\varepsilon:I\to YX\)</span>, and an evaluation <span class="math" data-tex="\(\eta:XY\to I\)">\(\eta:XY\to I\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;l_X(\eta\otimes1_X)a_{X,Y,X}^{-1}\\
+&amp;\qquad(1_X\otimes\varepsilon)r_X^{-1}=1_X,
+\end{aligned}\tag{2.1}
+\]">\[
+\begin{aligned}
+&amp;l_X(\eta\otimes1_X)a_{X,Y,X}^{-1}\\
+&amp;\qquad(1_X\otimes\varepsilon)r_X^{-1}=1_X,
+\end{aligned}\tag{2.1}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;r_Y(1_Y\otimes\eta)a_{Y,X,Y}\\
+&amp;\qquad(\varepsilon\otimes1_Y)l_Y^{-1}=1_Y.
+\end{aligned}\tag{2.2}
+\]">\[
+\begin{aligned}
+&amp;r_Y(1_Y\otimes\eta)a_{Y,X,Y}\\
+&amp;\qquad(\varepsilon\otimes1_Y)l_Y^{-1}=1_Y.
+\end{aligned}\tag{2.2}
+\]</span>
+Thus <span class="math" data-tex="\(X\)">\(X\)</span> is a left dual of <span class="math" data-tex="\(Y\)">\(Y\)</span>, and <span class="math" data-tex="\(Y\)">\(Y\)</span> is a right dual of <span class="math" data-tex="\(X\)">\(X\)</span>. This is <a href="https://stacks.math.columbia.edu/tag/0FFP">Stacks, Definition 4.43.8</a>, with its object names interchanged and its evaluation and coevaluation renamed. Equations (2.1)–(2.2) check both directions of the associator in that interface.</p>
+<p>We retain <a href="https://stacks.math.columbia.edu/tag/0FFQ">Stacks, Lemma 4.43.9</a>. In this notation its two natural bijections are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}(Z,WX)
+&amp;\simeq\operatorname{Hom}(ZY,W),\\
+\operatorname{Hom}(XZ,W)
+&amp;\simeq\operatorname{Hom}(Z,YW).
+\end{aligned}\tag{2.3}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}(Z,WX)
+&amp;\simeq\operatorname{Hom}(ZY,W),\\
+\operatorname{Hom}(XZ,W)
+&amp;\simeq\operatorname{Hom}(Z,YW).
+\end{aligned}\tag{2.3}
+\]</span>
+Here is the complete map and inverse check, including the second bijection omitted in the printed proof.</p>
+<p>For the first bijection the maps, with coherence identifications understood, are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A(f)&amp;=(1_W\otimes\eta)(f\otimes1_Y),\\
+B(g)&amp;=(g\otimes1_X)(1_Z\otimes\varepsilon).
+\end{aligned}\tag{2.4}
+\]">\[
+\begin{aligned}
+A(f)&amp;=(1_W\otimes\eta)(f\otimes1_Y),\\
+B(g)&amp;=(g\otimes1_X)(1_Z\otimes\varepsilon).
+\end{aligned}\tag{2.4}
+\]</span>
+The first composite is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+AB(g)
+&amp;=(1_W\otimes\eta)(g\otimes1_X\otimes1_Y)\\
+&amp;\quad(1_Z\otimes\varepsilon\otimes1_Y)\\
+&amp;=g(1_Z\otimes1_Y\otimes\eta)\\
+&amp;\quad(1_Z\otimes\varepsilon\otimes1_Y)=g.
+\end{aligned}
+\]">\[
+\begin{aligned}
+AB(g)
+&amp;=(1_W\otimes\eta)(g\otimes1_X\otimes1_Y)\\
+&amp;\quad(1_Z\otimes\varepsilon\otimes1_Y)\\
+&amp;=g(1_Z\otimes1_Y\otimes\eta)\\
+&amp;\quad(1_Z\otimes\varepsilon\otimes1_Y)=g.
+\end{aligned}
+\]</span>
+The middle equality is functoriality of tensor product, and the last is (2.2) tensored with <span class="math" data-tex="\(Z\)">\(Z\)</span>. For the other composite, interchange gives
+<span class="math math-display" data-tex="\[
+(f\otimes1_Y\otimes1_X)(1_Z\otimes\varepsilon)
+=(1_W\otimes1_X\otimes\varepsilon)f.
+\]">\[
+(f\otimes1_Y\otimes1_X)(1_Z\otimes\varepsilon)
+=(1_W\otimes1_X\otimes\varepsilon)f.
+\]</span>
+The remaining evaluation followed by this inserted coevaluation is (2.1) tensored with <span class="math" data-tex="\(W\)">\(W\)</span>. Hence <span class="math" data-tex="\(BA(f)=f\)">\(BA(f)=f\)</span>.</p>
+<p>For the second bijection take
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C(f)&amp;=(1_Y\otimes f)(\varepsilon\otimes1_Z),\\
+D(h)&amp;=(\eta\otimes1_W)(1_X\otimes h).
+\end{aligned}\tag{2.5}
+\]">\[
+\begin{aligned}
+C(f)&amp;=(1_Y\otimes f)(\varepsilon\otimes1_Z),\\
+D(h)&amp;=(\eta\otimes1_W)(1_X\otimes h).
+\end{aligned}\tag{2.5}
+\]</span>
+Now interchange with evaluation gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+DC(f)
+&amp;=(\eta\otimes1_W)(1_X\otimes1_Y\otimes f)\\
+&amp;\quad(1_X\otimes\varepsilon\otimes1_Z)\\
+&amp;=f(\eta\otimes1_X\otimes1_Z)\\
+&amp;\quad(1_X\otimes\varepsilon\otimes1_Z)=f
+\end{aligned}
+\]">\[
+\begin{aligned}
+DC(f)
+&amp;=(\eta\otimes1_W)(1_X\otimes1_Y\otimes f)\\
+&amp;\quad(1_X\otimes\varepsilon\otimes1_Z)\\
+&amp;=f(\eta\otimes1_X\otimes1_Z)\\
+&amp;\quad(1_X\otimes\varepsilon\otimes1_Z)=f
+\end{aligned}
+\]</span>
+by (2.1). For the other direction,
+<span class="math math-display" data-tex="\[
+(1_Y\otimes1_X\otimes h)(\varepsilon\otimes1_Z)
+=(\varepsilon\otimes1_Y\otimes1_W)h.
+\]">\[
+(1_Y\otimes1_X\otimes h)(\varepsilon\otimes1_Z)
+=(\varepsilon\otimes1_Y\otimes1_W)h.
+\]</span>
+Following with <span class="math" data-tex="\(1_Y\otimes\eta\otimes1_W\)">\(1_Y\otimes\eta\otimes1_W\)</span> gives <span class="math" data-tex="\(CD(h)=h\)">\(CD(h)=h\)</span> by (2.2). All the displayed maps are natural in <span class="math" data-tex="\(Z,W\)">\(Z,W\)</span>, since they are compositions of tensoring maps, the fixed evaluation and coevaluation, and natural constraints.</p>
+<p>Consequently <span class="math" data-tex="\(-\otimes Y\)">\(-\otimes Y\)</span> is left adjoint to <span class="math" data-tex="\(-\otimes X\)">\(-\otimes X\)</span>, while <span class="math" data-tex="\(X\otimes-\)">\(X\otimes-\)</span> is left adjoint to <span class="math" data-tex="\(Y\otimes-\)">\(Y\otimes-\)</span>. The variance matters in their representability consequences:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}(XZ,I)&amp;\simeq\operatorname{Hom}(Z,Y),\\
+\operatorname{Hom}(I,WX)&amp;\simeq\operatorname{Hom}(Y,W).
+\end{aligned}\tag{2.6}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}(XZ,I)&amp;\simeq\operatorname{Hom}(Z,Y),\\
+\operatorname{Hom}(I,WX)&amp;\simeq\operatorname{Hom}(Y,W).
+\end{aligned}\tag{2.6}
+\]</span>
+The first is a contravariant functor of <span class="math" data-tex="\(Z\)">\(Z\)</span>, represented by <span class="math" data-tex="\(Y\)">\(Y\)</span>; the second is covariant in <span class="math" data-tex="\(W\)">\(W\)</span>, corepresented by <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>An arbitrary adjunction between two tensoring functors need not give the specified tensor duality merely by taking its unit and counit at <span class="math" data-tex="\(I\)">\(I\)</span>. The adjunction must be compatible with tensoring the other factors: its component unit and counit must be the corresponding tensors of those at <span class="math" data-tex="\(I\)">\(I\)</span>. The exact qualification is explained in <a href="https://stacks.math.columbia.edu/tag/0FFR">Stacks, Remark 4.43.10</a>. The maps (2.4)–(2.5) have that compatibility by construction.</p>
+<h2 id="3-what-uniqueness-of-a-dual-means">3. What uniqueness of a dual means</h2>
+<p>Suppose <span class="math" data-tex="\((X,Y,\varepsilon,\eta)\)">\((X,Y,\varepsilon,\eta)\)</span> and <span class="math" data-tex="\((X,Y&#x27;,\varepsilon&#x27;,\eta&#x27;)\)">\((X,Y&#x27;,\varepsilon&#x27;,\eta&#x27;)\)</span> are dual pairs. The bijections proved in §2 give a unique isomorphism <span class="math" data-tex="\(\chi:Y\to Y&#x27;\)">\(\chi:Y\to Y&#x27;\)</span> compatible with both maps:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\eta&#x27;(1_X\otimes\chi)&amp;=\eta,\\
+(\chi\otimes1_X)\varepsilon&amp;=\varepsilon&#x27;.
+\end{aligned}\tag{3.1}
+\]">\[
+\begin{aligned}
+\eta&#x27;(1_X\otimes\chi)&amp;=\eta,\\
+(\chi\otimes1_X)\varepsilon&amp;=\varepsilon&#x27;.
+\end{aligned}\tag{3.1}
+\]</span>
+Compare Proposition 2.10.5 of <em>Tensor Categories</em> with the qualification about preserving evaluation and coevaluation in the <a href="https://math.mit.edu/~etingof/tensbookcor.pdf">author's corrections</a>. The chosen duality maps are part of this uniqueness assertion. The underlying object can have many other automorphisms.</p>
+<p>The checked interface is particularly short using (2.5):
+<span class="math math-display" data-tex="\[
+\chi=(1_{Y&#x27;}\otimes\eta)(\varepsilon&#x27;\otimes1_Y),
+\tag{3.2}
+\]">\[
+\chi=(1_{Y&#x27;}\otimes\eta)(\varepsilon&#x27;\otimes1_Y),
+\tag{3.2}
+\]</span>
+with its unit and associativity constraints inserted. It is the image of <span class="math" data-tex="\(\eta:XY\to I\)">\(\eta:XY\to I\)</span> under the second bijection for <span class="math" data-tex="\((X,Y&#x27;)\)">\((X,Y&#x27;)\)</span>. Its inverse check in Section 2 gives the first identity of (3.1). For the second, interchange gives
+<span class="math math-display" data-tex="\[
+(\varepsilon&#x27;\otimes1_Y\otimes1_X)\varepsilon
+=(1_{Y&#x27;}\otimes1_X\otimes\varepsilon)\varepsilon&#x27;.
+\]">\[
+(\varepsilon&#x27;\otimes1_Y\otimes1_X)\varepsilon
+=(1_{Y&#x27;}\otimes1_X\otimes\varepsilon)\varepsilon&#x27;.
+\]</span>
+Follow this with <span class="math" data-tex="\(1_{Y&#x27;}\otimes\eta\otimes1_X\)">\(1_{Y&#x27;}\otimes\eta\otimes1_X\)</span> and use (2.1); the result is precisely the second identity of (3.1).</p>
+<p>Interchanging primed and unprimed data gives a map <span class="math" data-tex="\(\kappa:Y&#x27;\to Y\)">\(\kappa:Y&#x27;\to Y\)</span>. Both <span class="math" data-tex="\(\kappa\chi\)">\(\kappa\chi\)</span> and <span class="math" data-tex="\(1_Y\)">\(1_Y\)</span> have image <span class="math" data-tex="\(\eta\)">\(\eta\)</span> under the bijection <span class="math" data-tex="\(D\)">\(D\)</span> for <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span>, so they agree. The same argument gives <span class="math" data-tex="\(\chi\kappa=1_{Y&#x27;}\)">\(\chi\kappa=1_{Y&#x27;}\)</span>. Uniqueness of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> follows from injectivity of that same bijection. This also proves the source assertion that the two right-dual objects are isomorphic, without asserting uniqueness of every isomorphism between their underlying objects.</p>
+<h2 id="4-making-two-tensor-inverses-coherent">4. Making two tensor inverses coherent</h2>
+<p>Suppose only that <span class="math" data-tex="\(XY\simeq I\)">\(XY\simeq I\)</span> and <span class="math" data-tex="\(YX\simeq I\)">\(YX\simeq I\)</span>. Neither given isomorphism is assumed to satisfy a duality identity. We import <a href="https://stacks.math.columbia.edu/tag/0FFM">Stacks, Lemma 4.43.6</a>: tensoring on either side with <span class="math" data-tex="\(X\)">\(X\)</span> is then an equivalence. Its hypotheses require only a monoidal category and these two isomorphisms, so they apply before any dual has been constructed.</p>
+<p><strong>Proposition 4.1.</strong> One can choose isomorphisms <span class="math" data-tex="\(\xi:XY\to I\)">\(\xi:XY\to I\)</span>, <span class="math" data-tex="\(\zeta:YX\to I\)">\(\zeta:YX\to I\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\xi\otimes1_X&amp;=1_X\otimes\zeta,\\
+1_Y\otimes\xi&amp;=\zeta\otimes1_Y.
+\end{aligned}\tag{4.1}
+\]">\[
+\begin{aligned}
+\xi\otimes1_X&amp;=1_X\otimes\zeta,\\
+1_Y\otimes\xi&amp;=\zeta\otimes1_Y.
+\end{aligned}\tag{4.1}
+\]</span>
+as maps <span class="math" data-tex="\(XYX\to X\)">\(XYX\to X\)</span> and <span class="math" data-tex="\(YXY\to Y\)">\(YXY\to Y\)</span>, with the unit and associativity maps understood. In particular <span class="math" data-tex="\(\varepsilon=\zeta^{-1}\)">\(\varepsilon=\zeta^{-1}\)</span>, <span class="math" data-tex="\(\eta=\xi\)">\(\eta=\xi\)</span> make <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span> a dual pair.</p>
+<p><strong>Proof.</strong> Choose any isomorphism <span class="math" data-tex="\(\xi:XY\to I\)">\(\xi:XY\to I\)</span>. Full faithfulness of <span class="math" data-tex="\(X\otimes-\)">\(X\otimes-\)</span> gives a unique <span class="math" data-tex="\(\zeta:YX\to I\)">\(\zeta:YX\to I\)</span> whose tensor with <span class="math" data-tex="\(X\)">\(X\)</span> is the first map in (4.1). Fully faithful functors reflect isomorphisms, so <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is invertible.</p>
+<p>For the second equality, tensor on the left with <span class="math" data-tex="\(X\)">\(X\)</span>. Its two maps become <span class="math" data-tex="\(1_X\otimes1_Y\otimes\xi\)">\(1_X\otimes1_Y\otimes\xi\)</span> and <span class="math" data-tex="\(1_X\otimes\zeta\otimes1_Y\)">\(1_X\otimes\zeta\otimes1_Y\)</span>, with target <span class="math" data-tex="\(XY\)">\(XY\)</span>. The first equality replaces the latter by <span class="math" data-tex="\(\xi\otimes1_X\otimes1_Y\)">\(\xi\otimes1_X\otimes1_Y\)</span>. After postcomposing either map with <span class="math" data-tex="\(\xi:XY\to I\)">\(\xi:XY\to I\)</span>, they agree by interchange: both evaluate the two successive <span class="math" data-tex="\(XY\)">\(XY\)</span> blocks using <span class="math" data-tex="\(\xi\otimes\xi\)">\(\xi\otimes\xi\)</span>, then remove the two units. Cancel the invertible <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, then use faithfulness of <span class="math" data-tex="\(X\otimes-\)">\(X\otimes-\)</span>. This proves the second equality of (4.1).</p>
+<p>For (2.1), insert <span class="math" data-tex="\(1_X\otimes\zeta^{-1}\)">\(1_X\otimes\zeta^{-1}\)</span> and follow with <span class="math" data-tex="\(\xi\otimes1_X=1_X\otimes\zeta\)">\(\xi\otimes1_X=1_X\otimes\zeta\)</span>; their composite is the identity. For (2.2), insert <span class="math" data-tex="\(\zeta^{-1}\otimes1_Y\)">\(\zeta^{-1}\otimes1_Y\)</span> and follow with <span class="math" data-tex="\(1_Y\otimes\xi=\zeta\otimes1_Y\)">\(1_Y\otimes\xi=\zeta\otimes1_Y\)</span>; again they cancel. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This gives the coherent choices required even if the initially supplied two inverse isomorphisms were incompatible. It requires both inverse relations. Exercise 3 shows why a single one is insufficient.</p>
+<p>The proposition also applies to an autoequivalence <span class="math" data-tex="\(T\)">\(T\)</span> of a category. In the tensor category of endofunctors under composition, choose a quasi-inverse <span class="math" data-tex="\(S\)">\(S\)</span>. The resulting coherent maps <span class="math" data-tex="\(TS\to1\)">\(TS\to1\)</span> and <span class="math" data-tex="\(ST\to1\)">\(ST\to1\)</span> give the triangle identities for an adjoint equivalence. This is the inverse coherence needed when later constructing actions with negative powers of <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<h2 id="5-an-invertible-unit-insertion-gives-an-idempotent-algebra">5. An invertible unit insertion gives an idempotent algebra</h2>
+<p>Let <span class="math" data-tex="\(u:I\to A\)">\(u:I\to A\)</span>, and suppose both maps
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+s_L&amp;=(u\otimes1_A)l_A^{-1}:A\to AA,\\
+s_R&amp;=(1_A\otimes u)r_A^{-1}:A\to AA
+\end{aligned}\tag{5.1}
+\]">\[
+\begin{aligned}
+s_L&amp;=(u\otimes1_A)l_A^{-1}:A\to AA,\\
+s_R&amp;=(1_A\otimes u)r_A^{-1}:A\to AA
+\end{aligned}\tag{5.1}
+\]</span>
+are isomorphisms.</p>
+<p><strong>Proposition 5.1.</strong> These maps are equal. Their common inverse <span class="math" data-tex="\(m:AA\to A\)">\(m:AA\to A\)</span>, with unit <span class="math" data-tex="\(u\)">\(u\)</span>, makes <span class="math" data-tex="\(A\)">\(A\)</span> an algebra object.</p>
+<p><strong>Proof.</strong> Use the projector criterion proved in <a href="descent-through-replacement-objects.html#6-projectors-detect-the-objects-of-a-reflection">Descent through replacement objects, Section 6</a>. For <span class="math" data-tex="\(P=A\otimes-\)">\(P=A\otimes-\)</span>, the insertion <span class="math" data-tex="\(u\)">\(u\)</span> defines a natural map <span class="math" data-tex="\(e:1\to P\)">\(e:1\to P\)</span>. Its whiskerings <span class="math" data-tex="\(eP\)">\(eP\)</span> and <span class="math" data-tex="\(Pe\)">\(Pe\)</span> are exactly <span class="math" data-tex="\(s_L\otimes-\)">\(s_L\otimes-\)</span> and <span class="math" data-tex="\(s_R\otimes-\)">\(s_R\otimes-\)</span>, with coherence constraints. They are invertible by hypothesis. The criterion therefore gives <span class="math" data-tex="\(eP=Pe\)">\(eP=Pe\)</span>. Evaluating at <span class="math" data-tex="\(I\)">\(I\)</span> gives <span class="math" data-tex="\(s_L=s_R\)">\(s_L=s_R\)</span>.</p>
+<p>The unit laws for <span class="math" data-tex="\(m=s_L^{-1}=s_R^{-1}\)">\(m=s_L^{-1}=s_R^{-1}\)</span> are immediate. For associativity, the two insertions <span class="math" data-tex="\(s_L\otimes1_A\)">\(s_L\otimes1_A\)</span> and <span class="math" data-tex="\(1_A\otimes s_L\)">\(1_A\otimes s_L\)</span> from <span class="math" data-tex="\(AA\)">\(AA\)</span> to <span class="math" data-tex="\(AAA\)">\(AAA\)</span> agree: replace the first <span class="math" data-tex="\(s_L\)">\(s_L\)</span> by <span class="math" data-tex="\(s_R\)">\(s_R\)</span>, then both insert <span class="math" data-tex="\(u\)">\(u\)</span> between the same two copies of <span class="math" data-tex="\(A\)">\(A\)</span>. Invert this equality to obtain <span class="math" data-tex="\(m\otimes1_A=1_A\otimes m\)">\(m\otimes1_A=1_A\otimes m\)</span> as maps <span class="math" data-tex="\(AAA\to AA\)">\(AAA\to AA\)</span>, with the corresponding associator. Postcompose with <span class="math" data-tex="\(m\)">\(m\)</span>. This is the algebra associativity law. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here is a finite example. Take the category of subsets of <span class="math" data-tex="\(\{p,q\}\)">\(\{p,q\}\)</span>, with inclusion as its unique possible arrow, tensor product union, and unit the empty set. For <span class="math" data-tex="\(A=\{p\}\)">\(A=\{p\}\)</span>, the unique <span class="math" data-tex="\(u: \varnothing\to A\)">\(u: \varnothing\to A\)</span> has both insertions equal to <span class="math" data-tex="\(1_A\)">\(1_A\)</span>, because <span class="math" data-tex="\(A\cup A=A\)">\(A\cup A=A\)</span>. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is an idempotent algebra although it is not the unit of the whole category. Its projector sends <span class="math" data-tex="\(B\)">\(B\)</span> to <span class="math" data-tex="\(A\cup B\)">\(A\cup B\)</span>; the local objects are exactly the subsets containing <span class="math" data-tex="\(p\)">\(p\)</span>. For such a local <span class="math" data-tex="\(C\)">\(C\)</span>, an inclusion <span class="math" data-tex="\(B\to C\)">\(B\to C\)</span> is equivalent to an inclusion <span class="math" data-tex="\(A\cup B\to C\)">\(A\cup B\to C\)</span>. This verifies the reflection and connects the algebra construction with the earlier local-object criterion.</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic).</strong> For a finite-dimensional vector space <span class="math" data-tex="\(V\)">\(V\)</span> over a field, take <span class="math" data-tex="\(X=V\)">\(X=V\)</span>, <span class="math" data-tex="\(Y=V^\vee\)">\(Y=V^\vee\)</span>, and <span class="math" data-tex="\(\eta(v\otimes f)=f(v)\)">\(\eta(v\otimes f)=f(v)\)</span>. Find the coevaluation and check both identities. Then prove that no infinite-dimensional vector space can occur as <span class="math" data-tex="\(X\)">\(X\)</span> in a dual pair in the category of all vector spaces.</p>
+<p><strong>Solution.</strong> Choose a basis <span class="math" data-tex="\(v_1,\ldots,v_d\)">\(v_1,\ldots,v_d\)</span> and dual basis <span class="math" data-tex="\(f_1,\ldots,f_d\)">\(f_1,\ldots,f_d\)</span>. Put <span class="math" data-tex="\(\varepsilon(1)=\sum_i f_i\otimes v_i\)">\(\varepsilon(1)=\sum_i f_i\otimes v_i\)</span>. Equation (2.1) sends <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(\sum_i f_i(v)v_i=v\)">\(\sum_i f_i(v)v_i=v\)</span>. Equation (2.2) sends <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(\sum_i f(v_i)f_i=f\)">\(\sum_i f(v_i)f_i=f\)</span>. The tensor representing coevaluation corresponds to the identity under <span class="math" data-tex="\(V^\vee\otimes V\simeq\operatorname{End}(V)\)">\(V^\vee\otimes V\simeq\operatorname{End}(V)\)</span>, so it is independent of the basis. This is the canonical finite-dimensional example of <em>Tensor Categories</em>, Example 2.10.12.</p>
+<p>For an arbitrary purported dual pair, write <span class="math" data-tex="\(\varepsilon(1)=\sum_{i=1}^r y_i\otimes x_i\)">\(\varepsilon(1)=\sum_{i=1}^r y_i\otimes x_i\)</span>; every element of the algebraic tensor product is a finite sum. The first identity would send each <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> to <span class="math" data-tex="\(\sum_i\eta(x\otimes y_i)x_i\)">\(\sum_i\eta(x\otimes y_i)x_i\)</span>. Its image lies in the finite-dimensional span of the <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. If it equals <span class="math" data-tex="\(1_X\)">\(1_X\)</span>, that span is all of <span class="math" data-tex="\(X\)">\(X\)</span>. Thus infinite-dimensional <span class="math" data-tex="\(X\)">\(X\)</span> cannot have such a dual, whatever <span class="math" data-tex="\(Y\)">\(Y\)</span> or pairing is chosen. For <span class="math" data-tex="\(V=0\)">\(V=0\)</span>, the zero coevaluation and evaluation satisfy the identities, since the identity map of the zero space is the zero map.</p>
+<p><strong>Exercise 2 (intermediate).</strong> In the category of sets with cartesian tensor product, classify the dual pairs. Include the empty-set cases.</p>
+<p><strong>Solution.</strong> A coevaluation from the one-point unit specifies <span class="math" data-tex="\((y_0,x_0)\in Y\times X\)">\((y_0,x_0)\in Y\times X\)</span>, so neither set can be empty. Evaluation to the one-point set is forced. The first triangle sends every <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> to <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, and the second sends every <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span> to <span class="math" data-tex="\(y_0\)">\(y_0\)</span>. They are identities precisely when both sets are singletons. Conversely, for singleton sets the unique maps satisfy both triangles. Therefore these, and only these, are dual pairs. There is no empty-set exception: the necessary coevaluation into <span class="math" data-tex="\(Y\times X=\varnothing\)">\(Y\times X=\varnothing\)</span> does not exist.</p>
+<p><strong>Exercise 3 (advanced).</strong> Let <span class="math" data-tex="\(s,d:\mathbb N\to\mathbb N\)">\(s,d:\mathbb N\to\mathbb N\)</span> be <span class="math" data-tex="\(s(n)=n+1\)">\(s(n)=n+1\)</span> and <span class="math" data-tex="\(d(n)=\max(n-1,0)\)">\(d(n)=\max(n-1,0)\)</span>. Form the monoid generated by these functions under composition, and regard it as a discrete tensor category. Show that one tensor-inverse relation need not give a dual.</p>
+<p><strong>Solution.</strong> The unit object is the identity function, and the tensor product is composition. Direct evaluation gives <span class="math" data-tex="\(ds=1\)">\(ds=1\)</span>; but <span class="math" data-tex="\(sd(0)=1\ne0\)">\(sd(0)=1\ne0\)</span>, so <span class="math" data-tex="\(sd\ne1\)">\(sd\ne1\)</span>. For <span class="math" data-tex="\(X=d\)">\(X=d\)</span>, <span class="math" data-tex="\(Y=s\)">\(Y=s\)</span>, we therefore have <span class="math" data-tex="\(XY=I\)">\(XY=I\)</span> and an evaluation, but no coevaluation <span class="math" data-tex="\(I\to YX\)">\(I\to YX\)</span>, because a discrete category has a morphism between two objects only when the objects are equal. In fact <span class="math" data-tex="\(d\)">\(d\)</span> has no dual with any object of this monoid. A dual would require both <span class="math" data-tex="\(dY=1\)">\(dY=1\)</span> and <span class="math" data-tex="\(Yd=1\)">\(Yd=1\)</span>, making <span class="math" data-tex="\(d\)">\(d\)</span> a bijection of <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. It is not injective, since <span class="math" data-tex="\(d(0)=d(1)=0\)">\(d(0)=d(1)=0\)</span>. This example preserves the distinction between one inverse relation and the two hypotheses of Proposition 4.1.</p>
+<p><strong>Exercise 4 (expert).</strong> In the graded category of <a href="braidings-cocycles-and-cyclic-power-obstructions.html">Braidings, cocycles and cyclic power obstructions</a>, use any group <span class="math" data-tex="\(G\)">\(G\)</span> and a normalized associator cocycle <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Set <span class="math" data-tex="\(X=\delta_g\)">\(X=\delta_g\)</span>, <span class="math" data-tex="\(Y=\delta_{g^{-1}}\)">\(Y=\delta_{g^{-1}}\)</span>. Relative to their basis lines, let coevaluation have scalar <span class="math" data-tex="\(t\)">\(t\)</span> and evaluation scalar <span class="math" data-tex="\(v\)">\(v\)</span>. Classify the duality maps. Apply the result to the twisted odd line over a field of characteristic different from <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p><strong>Solution.</strong> The first triangle has scalar <span class="math" data-tex="\(tv/\alpha(g,g^{-1},g)\)">\(tv/\alpha(g,g^{-1},g)\)</span>; the second has scalar <span class="math" data-tex="\(tv\,\alpha(g^{-1},g,g^{-1})\)">\(tv\,\alpha(g^{-1},g,g^{-1})\)</span>. The cocycle identity at <span class="math" data-tex="\((g,g^{-1},g,g^{-1})\)">\((g,g^{-1},g,g^{-1})\)</span>, with normalization in every unit slot, gives
+<span class="math math-display" data-tex="\[
+\alpha(g,g^{-1},g)\alpha(g^{-1},g,g^{-1})=1.
+\]">\[
+\alpha(g,g^{-1},g)\alpha(g^{-1},g,g^{-1})=1.
+\]</span>
+Thus both triangles hold exactly when <span class="math" data-tex="\(t,v\ne0\)">\(t,v\ne0\)</span> and
+<span class="math math-display" data-tex="\[
+tv=\alpha(g,g^{-1},g).
+\]">\[
+tv=\alpha(g,g^{-1},g).
+\]</span>
+Every choice <span class="math" data-tex="\(t\in k^\times\)">\(t\in k^\times\)</span> determines the unique <span class="math" data-tex="\(v=\alpha(g,g^{-1},g)/t\)">\(v=\alpha(g,g^{-1},g)/t\)</span>, and all duality maps arise this way. These formulas account for the associator and its inverse separately; no braiding is involved.</p>
+<p>For the twisted parity cocycle and <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, this product is <span class="math" data-tex="\(-1\)">\(-1\)</span>. In particular coevaluation <span class="math" data-tex="\(t=1\)">\(t=1\)</span> and evaluation <span class="math" data-tex="\(v=-1\)">\(v=-1\)</span> give a dual pair of odd lines. The same odd object has a square isomorphic to the unit, but the two cyclic contractions computed in the preceding lesson differ. Duality and coherent cyclic power realization are different requirements: the two duality triangles use the two independently chosen maps with product <span class="math" data-tex="\(-1\)">\(-1\)</span>, whereas the cyclic realization asks one power map to commute with the remaining copy of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>The book's graded dual example must be read with the author's correction to Example 2.10.14: its left-dual evaluation is the inverse cocycle value in the book's object convention. Here <span class="math" data-tex="\(X\)">\(X\)</span> is the left dual of <span class="math" data-tex="\(Y=\delta_{g^{-1}}\)">\(Y=\delta_{g^{-1}}\)</span>; the identity just proved converts that inverse value into <span class="math" data-tex="\(\alpha(g,g^{-1},g)\)">\(\alpha(g,g^{-1},g)\)</span>, as required. <a href="https://math.mit.edu/~etingof/tensbookcor.pdf">Author's corrections</a>.</p>
+<h2 id="7-references-and-status">7. References and status</h2>
+<p>The unit, inverse-object and tensor-adjunction interfaces are <a href="https://stacks.math.columbia.edu/tag/0FFJ">Stacks, Section 4.43</a>, specifically Lemmas 4.43.1–4.43.4, Definition 4.43.5, Lemma 4.43.6, Definition 4.43.8, Lemma 4.43.9 and Remark 4.43.10. The omitted second adjunction proof and compatible inverse choices are completed above; the canonical results themselves remain referenced.</p>
+<p>Etingof, Gelaki, Nikshych and Ostrik, <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf"><em>Tensor Categories</em></a>, Theorems 2.8.5 and 2.9.2, Proposition 2.10.5 and Examples 2.10.12 and 2.10.14, supply the coherence and duality comparison, with the <a href="https://math.mit.edu/~etingof/tensbookcor.pdf">author's corrections</a> applied.</p>
+<p>Self-checked; no independent review. Written by GPT-6.1 Sol at Ultra reasoning effort. Original exposition and exercise solutions are dedicated under CC0 1.0. Referenced books and the Stacks Project retain their own licenses. This is a draft within the continuing full-course source and dependency reconciliation.</p>
+</main></body></html>

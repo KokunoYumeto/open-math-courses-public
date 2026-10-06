@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entire functions of order one and the Hadamard product of ξ · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-05.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="entire-functions-of-order-one-and-the-hadamard-product-of-xi">Entire functions of order one and the Hadamard product of xi</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An entire function can contain information in two ways: through its zeros and through a zero-free exponential factor. Growth restricts the second possibility. We will prove that for order at most one, the exponential factor has an affine exponent. Applied to the completed zeta function, this converts the zeros into a convergent product and then into the partial fractions that drive prime-counting arguments.</p>
+<p>We use the entire function <span class="math" data-tex="$\xi$">$\xi$</span>, its symmetries, the location of its zeros and its theta integral proved in <a href="NT-ZETA-04.html">Poisson summation, theta, and the functional equation</a>, Theorems 3.1–3.3. We use Stirling and the gamma logarithmic derivative from <a href="NT-ZETA-03.html">The Gamma function and Stirling's formula</a>, Theorem 3.1 and Proposition 5.1. Cauchy's formula, harmonic mean values, the maximum principle and holomorphic logarithms on simply connected domains come from <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50">Complex Analysis</a>. Free comparison sources are McMullen’s 2023 lecture notes and the Wilkins transcription of Riemann’s memoir listed below. The factorization proof below includes its growth estimate for the quotient; that estimate cannot be inferred merely by dividing two entire functions of finite order.</p>
+<p>For a nonconstant entire function <span class="math" data-tex="$f$">$f$</span>, write
+<span class="math math-display" data-tex="$$
+M_f(r)=\max_{|z|=r}|f(z)|,\qquad
+\rho(f)=\limsup_{r\to\infty}\frac{\log\log M_f(r)}{\log r}.
+\tag{1}
+$$">$$
+M_f(r)=\max_{|z|=r}|f(z)|,\qquad
+\rho(f)=\limsup_{r\to\infty}\frac{\log\log M_f(r)}{\log r}.
+\tag{1}
+$$</span>
+For sufficiently large <span class="math" data-tex="$r$">$r$</span>, the double logarithm is defined. Constants have order zero by convention. Thus order at most one means that, for every <span class="math" data-tex="$\eta&gt;0$">$\eta&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\log M_f(r)\le C_\eta r^{1+\eta}\quad(r\ge1).
+\tag{2}
+$$">$$
+\log M_f(r)\le C_\eta r^{1+\eta}\quad(r\ge1).
+\tag{2}
+$$</span>
+Order one does not assert a bound <span class="math" data-tex="$\log M_f(r)=O(r)$">$\log M_f(r)=O(r)$</span>; that stronger condition is finite exponential type. Polynomials have order zero.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="averaging-the-logarithm-counts-zeros">Averaging the logarithm counts zeros</h2>
+<p><strong>Theorem 1.1 (Jensen's formula).</strong> Suppose <span class="math" data-tex="$f$">$f$</span> is holomorphic on a neighbourhood of <span class="math" data-tex="$|z|\le R$">$|z|\le R$</span>, <span class="math" data-tex="$f(0)\ne0$">$f(0)\ne0$</span>, and <span class="math" data-tex="$f$">$f$</span> has no zero on <span class="math" data-tex="$|z|=R$">$|z|=R$</span>. List its zeros <span class="math" data-tex="$a_j$">$a_j$</span> in <span class="math" data-tex="$|z|&lt;R$">$|z|&lt;R$</span> with multiplicity. Then
+<span class="math math-display" data-tex="$$
+\log|f(0)|+\sum_{|a_j|&lt;R}\log\frac R{|a_j|}
+=\frac1{2\pi}\int_0^{2\pi}\log|f(Re^{i\theta})|\,d\theta.
+\tag{3}
+$$">$$
+\log|f(0)|+\sum_{|a_j|&lt;R}\log\frac R{|a_j|}
+=\frac1{2\pi}\int_0^{2\pi}\log|f(Re^{i\theta})|\,d\theta.
+\tag{3}
+$$</span></p>
+<p><strong>Proof.</strong> Factor <span class="math" data-tex="$f(z)=g(z)\prod_j(z-a_j)$">$f(z)=g(z)\prod_j(z-a_j)$</span> in the disk. The function <span class="math" data-tex="$g$">$g$</span> is holomorphic and nonzero there, so <span class="math" data-tex="$\log|g|$">$\log|g|$</span> is harmonic and its boundary average is <span class="math" data-tex="$\log|g(0)|$">$\log|g(0)|$</span>. For <span class="math" data-tex="$|a|&lt;R$">$|a|&lt;R$</span>, the convergent series for <span class="math" data-tex="$\log(1-(a/R)e^{-i\theta})$">$\log(1-(a/R)e^{-i\theta})$</span> has zero average. Consequently the average of <span class="math" data-tex="$\log|Re^{i\theta}-a|$">$\log|Re^{i\theta}-a|$</span> is <span class="math" data-tex="$\log R$">$\log R$</span>. Add the means of the factors and use <span class="math" data-tex="$|f(0)|=|g(0)|\prod_j|a_j|$">$|f(0)|=|g(0)|\prod_j|a_j|$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>If <span class="math" data-tex="$f$">$f$</span> vanishes to order <span class="math" data-tex="$m$">$m$</span> at zero, apply (3) to <span class="math" data-tex="$f(z)/z^m$">$f(z)/z^m$</span>; this is how the origin zero is accounted for. Let <span class="math" data-tex="$n_f(r)$">$n_f(r)$</span> count the other zeros with <span class="math" data-tex="$|a_j|\le r$">$|a_j|\le r$</span>. When <span class="math" data-tex="$f(0)\ne0$">$f(0)\ne0$</span>, (3) gives
+<span class="math math-display" data-tex="$$
+n_f(r)\log2\le\log M_f(2r)-\log|f(0)|.
+\tag{4}
+$$">$$
+n_f(r)\log2\le\log M_f(2r)-\log|f(0)|.
+\tag{4}
+$$</span>
+If <span class="math" data-tex="$2r$">$2r$</span> is a zero modulus, first use zero-free radii decreasing to <span class="math" data-tex="$2r$">$2r$</span> and then continuity of <span class="math" data-tex="$M_f$">$M_f$</span>. Every zero with <span class="math" data-tex="$|a_j|\le r$">$|a_j|\le r$</span> contributes at least <span class="math" data-tex="$\log2$">$\log2$</span> in this limit. Applying the same argument to <span class="math" data-tex="$f/z^m$">$f/z^m$</span> proves the corresponding estimate in the general case.</p>
+<p><strong>Corollary 1.2.</strong> If <span class="math" data-tex="$f\not\equiv0$">$f\not\equiv0$</span> has finite order <span class="math" data-tex="$\rho$">$\rho$</span>, then for every <span class="math" data-tex="$\eta&gt;0$">$\eta&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+n_f(r)=O_\eta(r^{\rho+\eta}),\qquad
+\sum_j|a_j|^{-\rho-\varepsilon}&lt;\infty
+\quad(\varepsilon&gt;0).
+\tag{5}
+$$">$$
+n_f(r)=O_\eta(r^{\rho+\eta}),\qquad
+\sum_j|a_j|^{-\rho-\varepsilon}&lt;\infty
+\quad(\varepsilon&gt;0).
+\tag{5}
+$$</span></p>
+<p><strong>Proof.</strong> The first bound follows from (4) and the definition of order; removing the finite origin factor does not increase order. For the second, take <span class="math" data-tex="$\eta=\varepsilon/2$">$\eta=\varepsilon/2$</span> and split the zeros of modulus at least one into <span class="math" data-tex="$2^k\le|a_j|&lt;2^{k+1}$">$2^k\le|a_j|&lt;2^{k+1}$</span>. Their contribution is at most
+<span class="math" data-tex="$C_\eta2^{(k+1)(\rho+\eta)}2^{-k(\rho+\varepsilon)}$">$C_\eta2^{(k+1)(\rho+\eta)}2^{-k(\rho+\varepsilon)}$</span>, a convergent geometric series. The remaining nonzero zeros form a finite set. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="controlling-a-holomorphic-function-by-its-real-part">Controlling a holomorphic function by its real part</h2>
+<p>The next estimate will turn an upper bound for a logarithm's real part into bounds for all its Taylor coefficients.</p>
+<p><strong>Theorem 2.1 (Borel–Carathéodory).</strong> Suppose <span class="math" data-tex="$h$">$h$</span> is holomorphic on a neighbourhood of <span class="math" data-tex="$|z|\le R$">$|z|\le R$</span>, <span class="math" data-tex="$h(0)=0$">$h(0)=0$</span>, and <span class="math" data-tex="$\Re h\le M$">$\Re h\le M$</span> on <span class="math" data-tex="$|z|=R$">$|z|=R$</span>. Then <span class="math" data-tex="$M\ge0$">$M\ge0$</span> and
+<span class="math math-display" data-tex="$$
+\max_{|z|\le r}|h(z)|\le\frac{2rM}{R-r}
+\quad(0&lt;r&lt;R).
+\tag{6}
+$$">$$
+\max_{|z|\le r}|h(z)|\le\frac{2rM}{R-r}
+\quad(0&lt;r&lt;R).
+\tag{6}
+$$</span>
+For every integer <span class="math" data-tex="$k\ge1$">$k\ge1$</span>,
+<span class="math math-display" data-tex="$$
+|h^{(k)}(0)|\le\frac{2k!M}{R^k}.
+\tag{7}
+$$">$$
+|h^{(k)}(0)|\le\frac{2k!M}{R^k}.
+\tag{7}
+$$</span>
+More generally, for <span class="math" data-tex="$|z|\le r&lt;q&lt;R$">$|z|\le r&lt;q&lt;R$</span>,
+<span class="math math-display" data-tex="$$
+|h^{(k)}(z)|\le
+\frac{k!}{(q-r)^k}\frac{2qM}{R-q}.
+\tag{8}
+$$">$$
+|h^{(k)}(z)|\le
+\frac{k!}{(q-r)^k}\frac{2qM}{R-q}.
+\tag{8}
+$$</span></p>
+<p><strong>Proof.</strong> The real part has mean zero on the boundary, so <span class="math" data-tex="$M\ge0$">$M\ge0$</span>. The harmonic maximum principle gives <span class="math" data-tex="$\Re h\le M$">$\Re h\le M$</span> inside. If <span class="math" data-tex="$M=0$">$M=0$</span>, the real part attains its maximum at zero and is constant; then <span class="math" data-tex="$h=0$">$h=0$</span>. Suppose <span class="math" data-tex="$M&gt;0$">$M&gt;0$</span>. The function
+<span class="math math-display" data-tex="$$
+w(z)=\frac{h(z)}{2M-h(z)}
+$$">$$
+w(z)=\frac{h(z)}{2M-h(z)}
+$$</span>
+is holomorphic, satisfies <span class="math" data-tex="$w(0)=0$">$w(0)=0$</span>, and has modulus at most one, since
+<span class="math" data-tex="$|2M-h|^2-|h|^2=4M(M-\Re h)\ge0$">$|2M-h|^2-|h|^2=4M(M-\Re h)\ge0$</span>. Schwarz's lemma in the radius-<span class="math" data-tex="$R$">$R$</span> disk gives <span class="math" data-tex="$|w(z)|\le|z|/R$">$|w(z)|\le|z|/R$</span>. Inverting this expression gives <span class="math" data-tex="$h=2Mw/(1+w)$">$h=2Mw/(1+w)$</span> and proves (6).</p>
+<p>For (7), write <span class="math" data-tex="$h(z)=\sum_{k\ge1}c_kz^k$">$h(z)=\sum_{k\ge1}c_kz^k$</span> and <span class="math" data-tex="$u(\theta)=\Re h(Re^{i\theta})$">$u(\theta)=\Re h(Re^{i\theta})$</span>. Fourier coefficient extraction gives
+<span class="math math-display" data-tex="$$
+c_kR^k=2\frac1{2\pi}\int_0^{2\pi}u(\theta)e^{-ik\theta}d\theta
+=-2\frac1{2\pi}\int_0^{2\pi}(M-u(\theta))e^{-ik\theta}d\theta.
+$$">$$
+c_kR^k=2\frac1{2\pi}\int_0^{2\pi}u(\theta)e^{-ik\theta}d\theta
+=-2\frac1{2\pi}\int_0^{2\pi}(M-u(\theta))e^{-ik\theta}d\theta.
+$$</span>
+The nonnegative function <span class="math" data-tex="$M-u$">$M-u$</span> has average <span class="math" data-tex="$M$">$M$</span>, so <span class="math" data-tex="$|c_k|R^k\le2M$">$|c_k|R^k\le2M$</span>. Multiplication by <span class="math" data-tex="$k!$">$k!$</span> proves (7). Finally, (6) bounds <span class="math" data-tex="$h$">$h$</span> on the radius-<span class="math" data-tex="$q$">$q$</span> disk; apply Cauchy's derivative estimate on a circle of radius <span class="math" data-tex="$q-r$">$q-r$</span> centred at the given point to obtain (8). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For a general <span class="math" data-tex="$h(0)$">$h(0)$</span>, apply this theorem to <span class="math" data-tex="$h-h(0)$">$h-h(0)$</span> with <span class="math" data-tex="$M$">$M$</span> replaced by the boundary supremum of <span class="math" data-tex="$\Re h-\Re h(0)$">$\Re h-\Re h(0)$</span>.</p>
+<h2 id="a-canonical-product-and-the-remaining-exponential">A canonical product and the remaining exponential</h2>
+<p>Put <span class="math" data-tex="$E_1(w)=(1-w)e^w$">$E_1(w)=(1-w)e^w$</span>. Its logarithm near zero satisfies
+<span class="math math-display" data-tex="$$
+\log E_1(w)=-\sum_{k=2}^\infty\frac{w^k}{k},
+\qquad |\log E_1(w)|\le C|w|^2\quad(|w|\le1/2).
+\tag{9}
+$$">$$
+\log E_1(w)=-\sum_{k=2}^\infty\frac{w^k}{k},
+\qquad |\log E_1(w)|\le C|w|^2\quad(|w|\le1/2).
+\tag{9}
+$$</span>
+By (5), the nonzero zeros of a function of order at most one satisfy <span class="math" data-tex="$\sum_j|a_j|^{-2}&lt;\infty$">$\sum_j|a_j|^{-2}&lt;\infty$</span>. Therefore
+<span class="math math-display" data-tex="$$
+P(z)=\prod_jE_1(z/a_j)
+\tag{10}
+$$">$$
+P(z)=\prod_jE_1(z/a_j)
+\tag{10}
+$$</span>
+converges locally uniformly: on a fixed compact set, all but finitely many factors can be treated with (9). It is entire, has the specified zeros with their multiplicities, and has no additional zeros, because every nonvanishing tail is the exponential of a convergent logarithmic series. Finite and empty products are allowed.</p>
+<p><strong>Lemma 3.1 (circles avoiding zeros).</strong> Suppose the discrete nonzero sequence <span class="math" data-tex="$a_j$">$a_j$</span> satisfies <span class="math" data-tex="$n(r)=O_\eta(r^{1+\eta})$">$n(r)=O_\eta(r^{1+\eta})$</span> for every <span class="math" data-tex="$\eta&gt;0$">$\eta&gt;0$</span>. For each fixed <span class="math" data-tex="$0&lt;\eta&lt;1$">$0&lt;\eta&lt;1$</span> and every sufficiently large <span class="math" data-tex="$r$">$r$</span>, there exists <span class="math" data-tex="$R\in[r,2r]$">$R\in[r,2r]$</span> such that the product (10) satisfies
+<span class="math math-display" data-tex="$$
+\log|P(z)|\ge-C_\eta r^{1+2\eta}
+\quad(|z|=R).
+\tag{11}
+$$">$$
+\log|P(z)|\ge-C_\eta r^{1+2\eta}
+\quad(|z|=R).
+\tag{11}
+$$</span></p>
+<p><strong>Proof.</strong> Exclude the intervals of radius <span class="math" data-tex="$r^{-2}$">$r^{-2}$</span> about the numbers <span class="math" data-tex="$|a_j|\le4r$">$|a_j|\le4r$</span>. Their total length is at most
+<span class="math" data-tex="$2r^{-2}n(4r)=O_\eta(r^{-1+\eta})&lt;r$">$2r^{-2}n(4r)=O_\eta(r^{-1+\eta})&lt;r$</span>. Some <span class="math" data-tex="$R\in[r,2r]$">$R\in[r,2r]$</span> remains outside them. Hence for <span class="math" data-tex="$|z|=R$">$|z|=R$</span> and <span class="math" data-tex="$|a_j|\le4r$">$|a_j|\le4r$</span>,
+<span class="math math-display" data-tex="$$
+|z-a_j|\ge\bigl||z|-|a_j|\bigr|\ge r^{-2},
+\qquad |1-z/a_j|\ge\frac1{4r^3}.
+$$">$$
+|z-a_j|\ge\bigl||z|-|a_j|\bigr|\ge r^{-2},
+\qquad |1-z/a_j|\ge\frac1{4r^3}.
+$$</span>
+Consequently this part of the product has logarithm at least
+<span class="math math-display" data-tex="$$
+-n(4r)\log(4r^3)-2r\sum_{|a_j|\le4r}|a_j|^{-1}.
+\tag{12}
+$$">$$
+-n(4r)\log(4r^3)-2r\sum_{|a_j|\le4r}|a_j|^{-1}.
+\tag{12}
+$$</span>
+There is a positive lower bound for the moduli of the nonzero <span class="math" data-tex="$a_j$">$a_j$</span>. Summation by parts and the counting estimate give
+<span class="math math-display" data-tex="$$
+\sum_{|a_j|\le4r}|a_j|^{-1}=O_\eta(r^\eta),
+\qquad
+\sum_{|a_j|&gt;4r}|a_j|^{-2}=O_\eta(r^{-1+\eta}).
+\tag{13}
+$$">$$
+\sum_{|a_j|\le4r}|a_j|^{-1}=O_\eta(r^\eta),
+\qquad
+\sum_{|a_j|&gt;4r}|a_j|^{-2}=O_\eta(r^{-1+\eta}).
+\tag{13}
+$$</span>
+For instance the first sum is its endpoint term <span class="math" data-tex="$n(4r)/(4r)$">$n(4r)/(4r)$</span> plus the integral of <span class="math" data-tex="$n(u)/u^2$">$n(u)/u^2$</span> from that positive lower bound to <span class="math" data-tex="$4r$">$4r$</span>, up to a fixed lower endpoint term. For the second, integrate <span class="math" data-tex="$2n(u)/u^3$">$2n(u)/u^3$</span> from <span class="math" data-tex="$4r$">$4r$</span> to infinity and subtract the lower endpoint term; convergence uses <span class="math" data-tex="$\eta&lt;1$">$\eta&lt;1$</span>.</p>
+<p>For <span class="math" data-tex="$|a_j|&gt;4r$">$|a_j|&gt;4r$</span>, <span class="math" data-tex="$|z/a_j|\le1/2$">$|z/a_j|\le1/2$</span>, so (9) bounds the absolute sum of tail logarithms by <span class="math" data-tex="$Cr^2\sum_{|a_j|&gt;4r}|a_j|^{-2}=O_\eta(r^{1+\eta})$">$Cr^2\sum_{|a_j|&gt;4r}|a_j|^{-2}=O_\eta(r^{1+\eta})$</span>. Equations (12)–(13) bound the head from below by <span class="math" data-tex="$-C_\eta r^{1+\eta}\log r$">$-C_\eta r^{1+\eta}\log r$</span>. Since <span class="math" data-tex="$\log r=O_\eta(r^\eta)$">$\log r=O_\eta(r^\eta)$</span>, these bounds give (11). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.2 (Hadamard factorization, order at most one).</strong> If <span class="math" data-tex="$f\not\equiv0$">$f\not\equiv0$</span> is entire of order at most one and vanishes to order <span class="math" data-tex="$m\ge0$">$m\ge0$</span> at zero, then
+<span class="math math-display" data-tex="$$
+f(z)=z^m e^{A+Bz}\prod_j(1-z/a_j)e^{z/a_j},
+\tag{14}
+$$">$$
+f(z)=z^m e^{A+Bz}\prod_j(1-z/a_j)e^{z/a_j},
+\tag{14}
+$$</span>
+where <span class="math" data-tex="$a_j$">$a_j$</span> are its nonzero zeros with multiplicity. The product is locally uniformly convergent and independent of its ordering. The zero-free factor has an affine exponent.</p>
+<p><strong>Proof.</strong> Corollary 1.2 constructs the product (10) and gives the hypotheses of Lemma 3.1. The quotient <span class="math" data-tex="$f/(z^mP)$">$f/(z^mP)$</span> has removable singularities at every zero, and is entire and nonzero. It therefore equals <span class="math" data-tex="$e^{h(z)}$">$e^{h(z)}$</span> for an entire <span class="math" data-tex="$h$">$h$</span>.</p>
+<p>Fix <span class="math" data-tex="$0&lt;\eta&lt;1/4$">$0&lt;\eta&lt;1/4$</span>. On the circles in Lemma 3.1, (2) and (11) give
+<span class="math math-display" data-tex="$$
+\Re h(z)=\log|f(z)|-m\log R-\log|P(z)|
+\le C_\eta r^{1+2\eta}.
+$$">$$
+\Re h(z)=\log|f(z)|-m\log R-\log|P(z)|
+\le C_\eta r^{1+2\eta}.
+$$</span>
+The harmonic maximum principle gives this bound on the enclosed disk. Apply (6) to <span class="math" data-tex="$h-h(0)$">$h-h(0)$</span> on that disk and then Cauchy's estimate on its radius-<span class="math" data-tex="$R/2$">$R/2$</span> circle. For each <span class="math" data-tex="$k\ge2$">$k\ge2$</span> this bounds the <span class="math" data-tex="$k$">$k$</span>th Taylor coefficient by
+<span class="math" data-tex="$C_{\eta,k}r^{1+2\eta-k}$">$C_{\eta,k}r^{1+2\eta-k}$</span>. Letting <span class="math" data-tex="$r\to\infty$">$r\to\infty$</span> forces that coefficient to vanish, since <span class="math" data-tex="$1+2\eta&lt;2$">$1+2\eta&lt;2$</span>. Thus <span class="math" data-tex="$h=A+Bz$">$h=A+Bz$</span>.</p>
+<p>The tail logarithms in (9) are absolutely summable on compact sets, so permuting them does not change the product. This establishes the convergence assertion as well as the factorization. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The origin factor in (14) is essential: <span class="math" data-tex="$f(z)=z$">$f(z)=z$</span> cannot be represented by a nonvanishing exponential and a product over nonzero zeros alone. The genus-one factors used here are always sufficient for order at most one. A lower genus may suffice for a particular zero set.</p>
+<p><strong>Corollary 3.3.</strong> If in addition <span class="math" data-tex="$\sum_j|a_j|^{-1}&lt;\infty$">$\sum_j|a_j|^{-1}&lt;\infty$</span>, then <span class="math" data-tex="$f$">$f$</span> has finite exponential type: there exist <span class="math" data-tex="$C_0,C_1&gt;0$">$C_0,C_1&gt;0$</span> with
+<span class="math math-display" data-tex="$$
+|f(z)|\le C_0e^{C_1|z|}\quad(z\in\mathbb C).
+\tag{15}
+$$">$$
+|f(z)|\le C_0e^{C_1|z|}\quad(z\in\mathbb C).
+\tag{15}
+$$</span></p>
+<p><strong>Proof.</strong> For every complex <span class="math" data-tex="$w$">$w$</span>, <span class="math" data-tex="$|E_1(w)|\le(1+|w|)e^{|w|}\le e^{2|w|}$">$|E_1(w)|\le(1+|w|)e^{|w|}\le e^{2|w|}$</span>. Bound the product in (14) by <span class="math" data-tex="$\exp(2|z|\sum_j|a_j|^{-1})$">$\exp(2|z|\sum_j|a_j|^{-1})$</span>. The affine exponential has the same form of bound, and <span class="math" data-tex="$|z|^m\le C_me^{|z|}$">$|z|^m\le C_me^{|z|}$</span>. This proves (15). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="why-xi-has-infinitely-many-zeros">Why xi has infinitely many zeros</h2>
+<p>Write <span class="math" data-tex="$\rho=\beta+i\gamma$">$\rho=\beta+i\gamma$</span> for the zeros of <span class="math" data-tex="$\xi$">$\xi$</span>, equivalently the nontrivial zeros of zeta, counted with multiplicity. The preceding lesson proves <span class="math" data-tex="$0\le\beta\le1$">$0\le\beta\le1$</span> and <span class="math" data-tex="$\xi(0)=\xi(1)=1/2$">$\xi(0)=\xi(1)=1/2$</span>.</p>
+<p><strong>Theorem 4.1.</strong> The entire function <span class="math" data-tex="$\xi$">$\xi$</span> has order exactly one and infinite exponential type. For every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\sum_\rho|\rho|^{-1-\varepsilon}&lt;\infty,
+\qquad \sum_\rho|\rho|^{-1}=\infty.
+\tag{16}
+$$">$$
+\sum_\rho|\rho|^{-1-\varepsilon}&lt;\infty,
+\qquad \sum_\rho|\rho|^{-1}=\infty.
+\tag{16}
+$$</span>
+In particular, it has infinitely many zeros.</p>
+<p><strong>Proof.</strong> Multiplication of the theta formula (11) in the preceding lesson gives
+<span class="math math-display" data-tex="$$
+\xi(s)=\frac12+\frac{s(s-1)}2
+\int_1^\infty\omega(x)
+\left(x^{s/2}+x^{(1-s)/2}\right)\frac{dx}{x}.
+\tag{17}
+$$">$$
+\xi(s)=\frac12+\frac{s(s-1)}2
+\int_1^\infty\omega(x)
+\left(x^{s/2}+x^{(1-s)/2}\right)\frac{dx}{x}.
+\tag{17}
+$$</span>
+For <span class="math" data-tex="$|s|\le r$">$|s|\le r$</span>, <span class="math" data-tex="$r\ge2$">$r\ge2$</span>, the two powers are bounded in modulus by <span class="math" data-tex="$2x^{(r+1)/2}$">$2x^{(r+1)/2}$</span>, and <span class="math" data-tex="$\omega(x)\le Ce^{-\pi x}$">$\omega(x)\le Ce^{-\pi x}$</span>. Thus
+<span class="math math-display" data-tex="$$
+|\xi(s)|\le\tfrac12+Cr^2\int_1^\infty e^{-\pi x}x^{(r+1)/2}\frac{dx}{x}
+\le\tfrac12+Cr^2\pi^{-v}\Gamma(v),\qquad v=(r+1)/2.
+$$">$$
+|\xi(s)|\le\tfrac12+Cr^2\int_1^\infty e^{-\pi x}x^{(r+1)/2}\frac{dx}{x}
+\le\tfrac12+Cr^2\pi^{-v}\Gamma(v),\qquad v=(r+1)/2.
+$$</span>
+Real Stirling bounds the last expression by <span class="math" data-tex="$\exp(Cr\log r)$">$\exp(Cr\log r)$</span>, proving order at most one.</p>
+<p>On the positive real axis, the defining expression (3) from the preceding lesson is positive for <span class="math" data-tex="$s=x&gt;1$">$s=x&gt;1$</span>. Also <span class="math" data-tex="$\zeta(x)\to1$">$\zeta(x)\to1$</span>: bound its tail by <span class="math" data-tex="$2^{-x}+\int_2^\infty u^{-x}du$">$2^{-x}+\int_2^\infty u^{-x}du$</span>. Real Stirling then gives
+<span class="math math-display" data-tex="$$
+\log\xi(x)=\frac x2\log x
+-\frac x2(1+\log(2\pi))+O(\log x).
+\tag{18}
+$$">$$
+\log\xi(x)=\frac x2\log x
+-\frac x2(1+\log(2\pi))+O(\log x).
+\tag{18}
+$$</span>
+This proves that its order is at least one and that it cannot satisfy (15). Corollary 1.2 now proves the convergent sums in (16). If the reciprocal-modulus sum converged, Corollary 3.3 would imply (15), contradicting (18). A finite zero set would also give a convergent reciprocal-modulus sum. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="partial-fractions-and-the-constant-in-the-product">Partial fractions and the constant in the product</h2>
+<p>Hadamard's theorem yields
+<span class="math math-display" data-tex="$$
+\xi(s)=\frac12e^{Bs}\prod_\rho(1-s/\rho)e^{s/\rho}.
+\tag{19}
+$$">$$
+\xi(s)=\frac12e^{Bs}\prod_\rho(1-s/\rho)e^{s/\rho}.
+\tag{19}
+$$</span>
+The constant prefactor is <span class="math" data-tex="$\xi(0)=1/2$">$\xi(0)=1/2$</span>. Logarithmic differentiation is justified locally uniformly away from zeros, since for bounded <span class="math" data-tex="$s$">$s$</span> and large <span class="math" data-tex="$|\rho|$">$|\rho|$</span>,
+<span class="math math-display" data-tex="$$
+\frac1{s-\rho}+\frac1\rho
+=\frac{s}{\rho(s-\rho)}=O_s(|\rho|^{-2}).
+$$">$$
+\frac1{s-\rho}+\frac1\rho
+=\frac{s}{\rho(s-\rho)}=O_s(|\rho|^{-2}).
+$$</span>
+Thus
+<span class="math math-display" data-tex="$$
+\frac{\xi&#x27;}{\xi}(s)
+=B+\sum_\rho\left(\frac1{s-\rho}+\frac1\rho\right),
+\qquad B=\frac{\xi&#x27;(0)}{\xi(0)}\in\mathbb R.
+\tag{20}
+$$">$$
+\frac{\xi&#x27;}{\xi}(s)
+=B+\sum_\rho\left(\frac1{s-\rho}+\frac1\rho\right),
+\qquad B=\frac{\xi&#x27;(0)}{\xi(0)}\in\mathbb R.
+\tag{20}
+$$</span>
+The series of paired terms is absolutely convergent on compact subsets avoiding zeros. The two fractions within each term are kept together.</p>
+<p><strong>Theorem 5.1.</strong> The product constant is
+<span class="math math-display" data-tex="$$
+B=-\sum_\rho\Re\frac1\rho
+=-1-\frac\gamma2+\frac12\log(4\pi).
+\tag{21}
+$$">$$
+B=-\sum_\rho\Re\frac1\rho
+=-1-\frac\gamma2+\frac12\log(4\pi).
+\tag{21}
+$$</span>
+The real-part sum is absolutely convergent. For every <span class="math" data-tex="$s$">$s$</span> away from the zeros,
+<span class="math math-display" data-tex="$$
+\frac{\xi&#x27;}{\xi}(s)
+=\lim_{T\to\infty}\sum_{|\Im\rho|&lt;T}\frac1{s-\rho}.
+\tag{22}
+$$">$$
+\frac{\xi&#x27;}{\xi}(s)
+=\lim_{T\to\infty}\sum_{|\Im\rho|&lt;T}\frac1{s-\rho}.
+\tag{22}
+$$</span>
+This limit is locally uniform away from zeros. The corresponding product without exponential factors is
+<span class="math math-display" data-tex="$$
+\xi(s)=\frac12\lim_{T\to\infty}
+\prod_{|\Im\rho|&lt;T}(1-s/\rho),
+\tag{23}
+$$">$$
+\xi(s)=\frac12\lim_{T\to\infty}
+\prod_{|\Im\rho|&lt;T}(1-s/\rho),
+\tag{23}
+$$</span>
+locally uniformly on the plane.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="$0\le\beta\le1$">$0\le\beta\le1$</span>,
+<span class="math math-display" data-tex="$$
+0\le\Re(1/\rho)=\frac\beta{|\rho|^2}\le|\rho|^{-2}.
+$$">$$
+0\le\Re(1/\rho)=\frac\beta{|\rho|^2}\le|\rho|^{-2}.
+$$</span>
+Its sum <span class="math" data-tex="$S$">$S$</span> converges absolutely. Reflection of <span class="math" data-tex="$\xi$">$\xi$</span> gives <span class="math" data-tex="$\xi&#x27;(1)/\xi(1)=-B$">$\xi&#x27;(1)/\xi(1)=-B$</span>. Take real parts of (20) at one. Reflection permutes the zero multiset, so
+<span class="math math-display" data-tex="$$
+\sum_\rho\Re\frac1{1-\rho}=S.
+$$">$$
+\sum_\rho\Re\frac1{1-\rho}=S.
+$$</span>
+This latter real-part sum is also absolutely convergent: <span class="math" data-tex="$1-\rho$">$1-\rho$</span> runs through the same zero set. Hence <span class="math" data-tex="$-B=B+2S$">$-B=B+2S$</span>, proving <span class="math" data-tex="$B=-S$">$B=-S$</span>.</p>
+<p>For a finite height cutoff, all zeros of height <span class="math" data-tex="$|\Im\rho|&lt;T$">$|\Im\rho|&lt;T$</span> form a finite set because they lie in a bounded rectangle. It is closed under conjugation. The imaginary parts of <span class="math" data-tex="$1/\rho$">$1/\rho$</span> cancel in conjugate pairs, and every real zero contributes its real reciprocal. Consequently
+<span class="math math-display" data-tex="$$
+\sum_{|\Im\rho|&lt;T}\frac1\rho
+=\sum_{|\Im\rho|&lt;T}\Re\frac1\rho\longrightarrow S=-B.
+\tag{24}
+$$">$$
+\sum_{|\Im\rho|&lt;T}\frac1\rho
+=\sum_{|\Im\rho|&lt;T}\Re\frac1\rho\longrightarrow S=-B.
+\tag{24}
+$$</span>
+Subtract this sum from the convergent partial sums of (20) to obtain (22), with local uniform convergence. Removing the exponential factors from the finite products in (19) introduces the factor <span class="math" data-tex="$\exp((B+\sum_{|\Im\rho|&lt;T}1/\rho)s)$">$\exp((B+\sum_{|\Im\rho|&lt;T}1/\rho)s)$</span>, which tends locally uniformly to one by (24). This proves (23). No arbitrary ordering of the unpaired fractions or factors is asserted.</p>
+<p>To evaluate <span class="math" data-tex="$B$">$B$</span>, logarithmically differentiate the defining expression for <span class="math" data-tex="$\xi$">$\xi$</span> near one:
+<span class="math math-display" data-tex="$$
+\frac{\xi&#x27;}{\xi}(s)
+=\frac1s+\frac1{s-1}-\tfrac12\log\pi
++\tfrac12\frac{\Gamma&#x27;}{\Gamma}(s/2)+\frac{\zeta&#x27;}{\zeta}(s).
+\tag{25}
+$$">$$
+\frac{\xi&#x27;}{\xi}(s)
+=\frac1s+\frac1{s-1}-\tfrac12\log\pi
++\tfrac12\frac{\Gamma&#x27;}{\Gamma}(s/2)+\frac{\zeta&#x27;}{\zeta}(s).
+\tag{25}
+$$</span>
+The Laurent expansion (1) from the preceding lesson gives
+<span class="math" data-tex="$\zeta&#x27;/\zeta(s)=-1/(s-1)+\gamma+O(s-1)$">$\zeta&#x27;/\zeta(s)=-1/(s-1)+\gamma+O(s-1)$</span>. The gamma lesson gives <span class="math" data-tex="$\Gamma&#x27;/\Gamma(1/2)=-\gamma-2\log2$">$\Gamma&#x27;/\Gamma(1/2)=-\gamma-2\log2$</span>. Taking the limit in (25) gives
+<span class="math math-display" data-tex="$$
+\frac{\xi&#x27;(1)}{\xi(1)}
+=1+\frac\gamma2-\log2-\tfrac12\log\pi
+=1+\frac\gamma2-\tfrac12\log(4\pi).
+$$">$$
+\frac{\xi&#x27;(1)}{\xi(1)}
+=1+\frac\gamma2-\log2-\tfrac12\log\pi
+=1+\frac\gamma2-\tfrac12\log(4\pi).
+$$</span>
+Negation gives the numerical expression in (21). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Corollary 5.2 (zeta partial fractions).</strong> As a meromorphic identity,
+<span class="math math-display" data-tex="$$
+\frac{\zeta&#x27;}{\zeta}(s)
+=B-\frac1{s-1}+\frac12\log\pi
+-\frac12\frac{\Gamma&#x27;}{\Gamma}(s/2+1)
++\sum_\rho\left(\frac1{s-\rho}+\frac1\rho\right).
+\tag{26}
+$$">$$
+\frac{\zeta&#x27;}{\zeta}(s)
+=B-\frac1{s-1}+\frac12\log\pi
+-\frac12\frac{\Gamma&#x27;}{\Gamma}(s/2+1)
++\sum_\rho\left(\frac1{s-\rho}+\frac1\rho\right).
+\tag{26}
+$$</span></p>
+<p><strong>Proof.</strong> Solve (25) for <span class="math" data-tex="$\zeta&#x27;/\zeta$">$\zeta&#x27;/\zeta$</span> and substitute (20). Recurrence gives
+<span class="math" data-tex="$\Gamma&#x27;/\Gamma(s/2+1)=\Gamma&#x27;/\Gamma(s/2)+2/s$">$\Gamma&#x27;/\Gamma(s/2+1)=\Gamma&#x27;/\Gamma(s/2)+2/s$</span>, absorbing the <span class="math" data-tex="$-1/s$">$-1/s$</span> term. This gives (26) away from its poles and then meromorphically. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The pole at one is displayed explicitly. The nontrivial zeros are in the sum, and the trivial zeros appear in the gamma term. More explicitly, (27) in the gamma lesson gives
+<span class="math math-display" data-tex="$$
+-\frac12\frac{\Gamma&#x27;}{\Gamma}(s/2+1)
+=\frac\gamma2+\sum_{n=1}^\infty
+\left(\frac1{s+2n}-\frac1{2n}\right).
+\tag{27}
+$$">$$
+-\frac12\frac{\Gamma&#x27;}{\Gamma}(s/2+1)
+=\frac\gamma2+\sum_{n=1}^\infty
+\left(\frac1{s+2n}-\frac1{2n}\right).
+\tag{27}
+$$</span>
+This series is also locally uniformly convergent away from its poles and shows their residue one.</p>
+<p><strong>Example 5.3 (the first reciprocal-zero sum).</strong> With the symmetric height convention,
+<span class="math math-display" data-tex="$$
+\lambda_1:=\lim_{T\to\infty}\sum_{|\Im\rho|&lt;T}\frac1\rho
+=-B=1+\frac\gamma2-\frac12\log(4\pi)
+\simeq0.0230957089661.
+\tag{28}
+$$">$$
+\lambda_1:=\lim_{T\to\infty}\sum_{|\Im\rho|&lt;T}\frac1\rho
+=-B=1+\frac\gamma2-\frac12\log(4\pi)
+\simeq0.0230957089661.
+\tag{28}
+$$</span>
+This is the first of Li's coefficients, studied later in <em>Explicit formulas and positivity</em>. Its equality with the absolutely convergent real-part sum follows from (24), while <span class="math" data-tex="$\sum|1/\rho|$">$\sum|1/\rho|$</span> diverges by Theorem 4.1.</p>
+<h2 id="two-products-with-visible-zeros">Two products with visible zeros</h2>
+<p><strong>Example 6.1 (sine and Wallis).</strong> The function <span class="math" data-tex="$\sin\pi z$">$\sin\pi z$</span> has order one: <span class="math" data-tex="$|\sin\pi z|\le e^{\pi|z|}$">$|\sin\pi z|\le e^{\pi|z|}$</span>, while <span class="math" data-tex="$|\sin\pi(ir)|=\sinh\pi r$">$|\sin\pi(ir)|=\sinh\pi r$</span>. Its zeros are the integers, all simple. Hadamard factorization gives
+<span class="math math-display" data-tex="$$
+\sin\pi z=z e^{A+Bz}
+\prod_{n=1}^\infty E_1(z/n)E_1(-z/n).
+$$">$$
+\sin\pi z=z e^{A+Bz}
+\prod_{n=1}^\infty E_1(z/n)E_1(-z/n).
+$$</span>
+Pairing is legitimate by the normal convergence of the canonical product. Each pair is <span class="math" data-tex="$1-z^2/n^2$">$1-z^2/n^2$</span>. The product is even, as is <span class="math" data-tex="$\sin\pi z/z$">$\sin\pi z/z$</span>, so <span class="math" data-tex="$e^{Bz}=e^{-Bz}$">$e^{Bz}=e^{-Bz}$</span> for all <span class="math" data-tex="$z$">$z$</span>; differentiation at zero gives <span class="math" data-tex="$B=0$">$B=0$</span>. The value of <span class="math" data-tex="$\sin\pi z/z$">$\sin\pi z/z$</span> at zero is <span class="math" data-tex="$\pi$">$\pi$</span>, so
+<span class="math math-display" data-tex="$$
+\sin\pi z=\pi z\prod_{n=1}^\infty\left(1-\frac{z^2}{n^2}\right).
+\tag{29}
+$$">$$
+\sin\pi z=\pi z\prod_{n=1}^\infty\left(1-\frac{z^2}{n^2}\right).
+\tag{29}
+$$</span>
+Setting <span class="math" data-tex="$z=1/2$">$z=1/2$</span> gives Wallis's product
+<span class="math math-display" data-tex="$$
+\frac\pi2=\prod_{n=1}^\infty
+\frac{(2n)^2}{(2n-1)(2n+1)}.
+\tag{30}
+$$">$$
+\frac\pi2=\prod_{n=1}^\infty
+\frac{(2n)^2}{(2n-1)(2n+1)}.
+\tag{30}
+$$</span></p>
+<p><strong>Example 6.2 (a product of genus zero).</strong> The notation <span class="math" data-tex="$\cos\sqrt z$">$\cos\sqrt z$</span> means the entire power series
+<span class="math" data-tex="$\sum_{k\ge0}(-1)^kz^k/(2k)!$">$\sum_{k\ge0}(-1)^kz^k/(2k)!$</span>; it does not require a square-root branch. The estimate <span class="math" data-tex="$|\cos\sqrt z|\le e^{\sqrt{|z|}}$">$|\cos\sqrt z|\le e^{\sqrt{|z|}}$</span> and the value <span class="math" data-tex="$\cos\sqrt{-r}=\cosh\sqrt r$">$\cos\sqrt{-r}=\cosh\sqrt r$</span> prove order <span class="math" data-tex="$1/2$">$1/2$</span>. Its zeros are <span class="math" data-tex="$a_n=\pi^2(n-1/2)^2$">$a_n=\pi^2(n-1/2)^2$</span>, so <span class="math" data-tex="$\sum_n1/|a_n|&lt;\infty$">$\sum_n1/|a_n|&lt;\infty$</span>. The product can be written with genus-zero factors:
+<span class="math math-display" data-tex="$$
+\cos\sqrt z=\prod_{n=1}^\infty
+\left(1-\frac{4z}{\pi^2(2n-1)^2}\right).
+\tag{31}
+$$">$$
+\cos\sqrt z=\prod_{n=1}^\infty
+\left(1-\frac{4z}{\pi^2(2n-1)^2}\right).
+\tag{31}
+$$</span>
+To derive it, divide (29) at <span class="math" data-tex="$2w$">$2w$</span> by twice (29) at <span class="math" data-tex="$w$">$w$</span>. The even-indexed numerator factors cancel the denominator factors, leaving <span class="math" data-tex="$\cos\pi w=\prod_{n\ge1}(1-4w^2/(2n-1)^2)$">$\cos\pi w=\prod_{n\ge1}(1-4w^2/(2n-1)^2)$</span>. All products in <span class="math" data-tex="$w^2$">$w^2$</span> converge absolutely on compact sets, so this cancellation is valid away from the zeros of the denominator. Removability extends it everywhere. Set <span class="math" data-tex="$w^2=z/\pi^2$">$w^2=z/\pi^2$</span> to obtain the identity of entire power series (31).</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Show that <span class="math" data-tex="$e^{z^2}$">$e^{z^2}$</span> has order two. Describe its factorization and explain why its exponent cannot be affine.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Derive the sine product from Theorem 3.2, determine both constants, and deduce Wallis's product.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Starting with (19), prove the symmetric partial-fraction formula (22). Explain why absolute convergence of its individual fractions is unavailable.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Evaluate <span class="math" data-tex="$B=\xi&#x27;(0)/\xi(0)$">$B=\xi&#x27;(0)/\xi(0)$</span> using reflection, the Laurent expansion of zeta at one and <span class="math" data-tex="$\Gamma&#x27;/\Gamma(1/2)$">$\Gamma&#x27;/\Gamma(1/2)$</span>.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Prove that an entire function of order one whose nonzero zeros satisfy <span class="math" data-tex="$\sum_j1/|a_j|&lt;\infty$">$\sum_j1/|a_j|&lt;\infty$</span> has finite exponential type. Include a possible zero at the origin. Use this to prove again that <span class="math" data-tex="$\xi$">$\xi$</span> has infinitely many zeros.</p>
+</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> On <span class="math" data-tex="$|z|=r$">$|z|=r$</span>, <span class="math" data-tex="$|e^{z^2}|=e^{\Re z^2}\le e^{r^2}$">$|e^{z^2}|=e^{\Re z^2}\le e^{r^2}$</span>, with equality at <span class="math" data-tex="$z=r$">$z=r$</span>. Thus <span class="math" data-tex="$M(r)=e^{r^2}$">$M(r)=e^{r^2}$</span> and (1) gives order two. There are no zeros, so the product is empty and the factorization is simply <span class="math" data-tex="$e^{z^2}$">$e^{z^2}$</span>. If it equalled <span class="math" data-tex="$e^{A+Bz}$">$e^{A+Bz}$</span>, logarithmic differentiation would give <span class="math" data-tex="$2z=B$">$2z=B$</span> for every <span class="math" data-tex="$z$">$z$</span>, an impossibility. The order-at-most-one hypothesis of Theorem 3.2 cannot be discarded.</p>
+<p><strong>Solution 2.</strong> The zeros are zero and <span class="math" data-tex="$\pm n$">$\pm n$</span> for positive integers <span class="math" data-tex="$n$">$n$</span>, and the origin zero has multiplicity one. The upper bound <span class="math" data-tex="$e^{\pi r}$">$e^{\pi r}$</span> and lower bound <span class="math" data-tex="$\sinh\pi r$">$\sinh\pi r$</span> show order one. Formula (14) therefore gives <span class="math" data-tex="$z e^{A+Bz}\prod_{n\ge1}(1-z^2/n^2)$">$z e^{A+Bz}\prod_{n\ge1}(1-z^2/n^2)$</span>. Both the paired product and <span class="math" data-tex="$\sin\pi z/z$">$\sin\pi z/z$</span> are even. Their quotient <span class="math" data-tex="$e^{A+Bz}$">$e^{A+Bz}$</span> must be even, whose derivative at zero is zero; hence <span class="math" data-tex="$B=0$">$B=0$</span>. The value at zero gives <span class="math" data-tex="$e^A=\pi$">$e^A=\pi$</span>. At <span class="math" data-tex="$z=1/2$">$z=1/2$</span> the formula reads <span class="math" data-tex="$1=(\pi/2)\prod_n(1-1/(4n^2))$">$1=(\pi/2)\prod_n(1-1/(4n^2))$</span>. Taking the reciprocal gives (30); the positive convergent product has nonzero limit because <span class="math" data-tex="$\sum_n1/(4n^2)$">$\sum_n1/(4n^2)$</span> converges.</p>
+<p><strong>Solution 3.</strong> Differentiating the normally convergent genus-one product gives <span class="math" data-tex="$\xi&#x27;/\xi=B+\sum_\rho(1/(s-\rho)+1/\rho)$">$\xi&#x27;/\xi=B+\sum_\rho(1/(s-\rho)+1/\rho)$</span>, with absolute local uniform convergence of these paired terms by <span class="math" data-tex="$\sum_\rho|\rho|^{-2}&lt;\infty$">$\sum_\rho|\rho|^{-2}&lt;\infty$</span>. Because conjugation preserves the zero multiset and the height cutoff, <span class="math" data-tex="$\sum_{|\Im\rho|&lt;T}1/\rho$">$\sum_{|\Im\rho|&lt;T}1/\rho$</span> is the real sum of <span class="math" data-tex="$\Re(1/\rho)$">$\Re(1/\rho)$</span> and tends to <span class="math" data-tex="$-B$">$-B$</span> by (21). Subtracting it proves (22). For fixed <span class="math" data-tex="$s$">$s$</span> and large <span class="math" data-tex="$|\rho|$">$|\rho|$</span>, <span class="math" data-tex="$|s-\rho|\le2|\rho|$">$|s-\rho|\le2|\rho|$</span>, so
+<span class="math math-display" data-tex="$$
+\sum_\rho\left|\frac1{s-\rho}\right|
+\ge\frac12\sum_{|\rho|\text{ large}}|\rho|^{-1}=\infty.
+$$">$$
+\sum_\rho\left|\frac1{s-\rho}\right|
+\ge\frac12\sum_{|\rho|\text{ large}}|\rho|^{-1}=\infty.
+$$</span>
+Thus the specified grouping is necessary for the unpaired partial fractions.</p>
+<p><strong>Solution 4.</strong> Reflection gives <span class="math" data-tex="$B=-\xi&#x27;(1)/\xi(1)$">$B=-\xi&#x27;(1)/\xi(1)$</span>. Near one, (25) and the pole-subtracted Laurent expansion give
+<span class="math math-display" data-tex="$$
+\frac{\xi&#x27;(1)}{\xi(1)}
+=1+\gamma-\tfrac12\log\pi
++\tfrac12(-\gamma-2\log2)
+=1+\tfrac12\gamma-\tfrac12\log(4\pi).
+$$">$$
+\frac{\xi&#x27;(1)}{\xi(1)}
+=1+\gamma-\tfrac12\log\pi
++\tfrac12(-\gamma-2\log2)
+=1+\tfrac12\gamma-\tfrac12\log(4\pi).
+$$</span>
+Negate this number. Since <span class="math" data-tex="$\xi(0)=1/2$">$\xi(0)=1/2$</span>, the result is also exactly the coefficient <span class="math" data-tex="$B$">$B$</span> in the product normalized at zero, rather than an unspecified additive logarithm constant.</p>
+<p><strong>Solution 5.</strong> Use the proved factorization (14), with <span class="math" data-tex="$m$">$m$</span> the origin multiplicity. For each factor, <span class="math" data-tex="$(1+|z|/|a_j|)e^{|z|/|a_j|}\le e^{2|z|/|a_j|}$">$(1+|z|/|a_j|)e^{|z|/|a_j|}\le e^{2|z|/|a_j|}$</span>. Hence
+<span class="math math-display" data-tex="$$
+|f(z)|\le |z|^m e^{\Re A+|B||z|}
+\exp\left(2|z|\sum_j|a_j|^{-1}\right).
+$$">$$
+|f(z)|\le |z|^m e^{\Re A+|B||z|}
+\exp\left(2|z|\sum_j|a_j|^{-1}\right).
+$$</span>
+The reciprocal sum is finite, and <span class="math" data-tex="$|z|^m\le C_me^{|z|}$">$|z|^m\le C_me^{|z|}$</span> for all <span class="math" data-tex="$z$">$z$</span>. This proves a bound <span class="math" data-tex="$C_0e^{C_1|z|}$">$C_0e^{C_1|z|}$</span>. A multiplicative constant is needed for an arbitrary value of <span class="math" data-tex="$f(0)$">$f(0)$</span>; equivalently it can be absorbed into the exponent when <span class="math" data-tex="$|z|\ge1$">$|z|\ge1$</span>. If <span class="math" data-tex="$\xi$">$\xi$</span> had finitely many zeros, its reciprocal sum would be finite, forcing this bound. But (18) has <span class="math" data-tex="$\log\xi(x)/x\to\infty$">$\log\xi(x)/x\to\infty$</span>, a contradiction. The same argument proves the stronger divergence assertion in (16).</p>
+<h2 id="what-this-lesson-assumes">What this lesson assumes</h2>
+<p>The preceding lessons supply the entire completion, its symmetries and its theta integral, together with gamma's Stirling expansion and its logarithmic derivative. Jensen, Borel–Carathéodory, the required Hadamard theorem, infinite zero count and all product and partial-fraction formulas are proved here. The sharper count of zeros by height is developed later in <em>The Riemann–von Mangoldt formula</em>.</p>
+<h2 id="freely-readable-sources">Freely readable sources</h2>
+<ul>
+<li>C. T. McMullen, <a href="https://people.math.harvard.edu/~ctm/home/text/class/harvard/213a/23/html/home/course/course.pdf"><em>Advanced Complex Analysis</em></a>, Harvard Math 213a lecture notes, 30 November 2023, 163 pages. Chapter 3, Theorems 3.7, 3.10, 3.15 and 3.17–3.18: finite order, Jensen and Hadamard.</li>
+<li>B. Riemann, <a href="https://www.claymath.org/wp-content/uploads/2023/04/Wilkins-transcription.pdf"><em>Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse</em></a> (1859), freely readable D. R. Wilkins transcription, December 1998, 10 pages. Transcription page 5 contains the product assertion; the factorization proof is supplied here.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-04.html">← Poisson summation, theta, and the functional equation</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-06.html">Growth in the critical strip: convexity and the Lindelöf hypothesis →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-05.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

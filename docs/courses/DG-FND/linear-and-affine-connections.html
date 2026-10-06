@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Linear and affine connections</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+<style>.lesson .math:not(.math-display){padding-inline-end:2px}</style><style>.lesson .math:not(.math-display){padding-inline-end:2px}</style></head>
+<body><main><nav aria-label="Chapter contents"><ul><li><a href="#part-a">A. Covariant differentiation and the frame bundle</a></li><li><a href="#part-b">B. Differentiation along maps and paths</a></li><li><a href="#part-c">C. Tensor operations and compatible metrics</a></li><li><a href="#part-d">D. Tangent velocities and the failure of symmetry</a></li><li><a href="#part-e">E. Connections on affine frames</a></li><li><a href="#part-f">F. Transporting points and developing paths</a></li><li><a href="#part-g">G. Geodesics and a complete latitude calculation</a></li><li><a href="#part-h">H. Projection criteria, standard fields and metric scope</a></li></ul></nav><article class="lesson"><h1 id="linear-and-affine-connections">Linear and affine connections</h1>
+<p>A covariant derivative compares nearby vectors; an affine connection also records the motion of their origins. Construction uses only exact freely accessible material and earlier programme proofs.</p>
+<h2 id="part-a">A. Covariant differentiation and the frame bundle</h2>
+<p>Let <span class="math" data-tex="\(E\to M\)">\(E\to M\)</span> be a smooth vector bundle of finite rank <span class="math" data-tex="\(r\)">\(r\)</span> over <span class="math" data-tex="\(\mathbb F=\mathbb R\)">\(\mathbb F=\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The base manifold and all tangent directions are real. In the complex case, a smooth complex function is a pair of smooth real functions, and a real vector field differentiates its real and imaginary parts. A frame <span class="math" data-tex="\(e=(e_1,\ldots,e_r)\)">\(e=(e_1,\ldots,e_r)\)</span> acts on a column <span class="math" data-tex="\(v\in\mathbb F^r\)">\(v\in\mathbb F^r\)</span> by <span class="math" data-tex="\(ev=\sum e_jv^j\)">\(ev=\sum e_jv^j\)</span>. Our change-of-frame convention is <span class="math" data-tex="\(\widetilde e=eg\)">\(\widetilde e=eg\)</span>, so a section has coordinates <span class="math" data-tex="\(s=ev=\widetilde e\,\widetilde v\)">\(s=ev=\widetilde e\,\widetilde v\)</span> with <span class="math" data-tex="\(\widetilde v=g^{-1}v\)">\(\widetilde v=g^{-1}v\)</span>.</p>
+<p>The free construction source is Peter W. Michor's <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf">author manuscript, <em>Topics in Differential Geometry</em></a>, §§19.10–19.12 and 22.11. We supply the converse frame correspondence and every local-to-global step explicitly. <strong>Local</strong>, <strong>PB</strong>, <strong>Conn</strong> and <strong>Curv</strong> refer respectively to the complete earlier programme lessons <a href="local-tools-for-bundles-and-transport.html">Local tools</a>, <a href="principal-bundles-and-associated-bundles.html">Principal bundles</a>, <a href="connections-and-parallel-transport.html">Connections and parallel transport</a> and <a href="curvature-and-holonomy-groups.html">Curvature and holonomy groups</a>. The external manuscript supplies construction material, never a substitute for these proofs.</p>
+<p>A <strong>covariant derivative</strong> is a map <span class="math" data-tex="\((X,s)\mapsto\nabla_Xs\)">\((X,s)\mapsto\nabla_Xs\)</span> from real smooth vector fields and smooth sections to smooth sections. It is additive in both entries, linear over real smooth functions in <span class="math" data-tex="\(X\)">\(X\)</span>, linear over <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>-constants in <span class="math" data-tex="\(s\)">\(s\)</span>, and satisfies
+<span class="math math-display" data-tex="\[
+\nabla_X(fs)=X(f)s+f\nabla_Xs
+\quad(f\in C^\infty(M,\mathbb F)).
+\tag{A.1}
+\]">\[
+\nabla_X(fs)=X(f)s+f\nabla_Xs
+\quad(f\in C^\infty(M,\mathbb F)).
+\tag{A.1}
+\]</span></p>
+<p id="lemma-a-1"><strong>Lemma A.1 (locality and connection matrices).</strong> These axioms determine a unique compatible covariant derivative on every open subset of <span class="math" data-tex="\(M\)">\(M\)</span>. In a local frame there is a unique matrix-valued real one-form <span class="math" data-tex="\(A\)">\(A\)</span> such that
+<span class="math math-display" data-tex="\[
+\nabla_X(ev)=e\bigl(X(v)+A(X)v\bigr).
+\tag{A.2}
+\]">\[
+\nabla_X(ev)=e\bigl(X(v)+A(X)v\bigr).
+\tag{A.2}
+\]</span>
+Its entries take values in <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>, and changing the frame to <span class="math" data-tex="\(eg\)">\(eg\)</span> changes it to
+<span class="math math-display" data-tex="\[
+\widetilde A=g^{-1}Ag+g^{-1}dg.
+\tag{A.3}
+\]">\[
+\widetilde A=g^{-1}Ag+g^{-1}dg.
+\tag{A.3}
+\]</span>
+Conversely, smooth local matrix one-forms obeying (A.3) define a unique covariant derivative. The value <span class="math" data-tex="\((\nabla_Xs)(x)\)">\((\nabla_Xs)(x)\)</span> depends only on <span class="math" data-tex="\(X(x)\)">\(X(x)\)</span> and the first derivative and value of the local coordinate column of <span class="math" data-tex="\(s\)">\(s\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><strong>Proof.</strong> First suppose that a global section <span class="math" data-tex="\(s\)">\(s\)</span> vanishes on a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>. By Local 3.1 choose a smooth real cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> supported in <span class="math" data-tex="\(U\)">\(U\)</span> and equal to one near <span class="math" data-tex="\(x\)">\(x\)</span>. The section <span class="math" data-tex="\(\chi s\)">\(\chi s\)</span> is zero everywhere, so (A.1) at <span class="math" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-tex="\((\nabla_Xs)(x)=0\)">\((\nabla_Xs)(x)=0\)</span>; the term <span class="math" data-tex="\(X(\chi)(x)\)">\(X(\chi)(x)\)</span> vanishes. If instead a global vector field <span class="math" data-tex="\(X\)">\(X\)</span> vanishes near <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(\chi X=0\)">\(\chi X=0\)</span>, and linearity in the first entry gives the same conclusion. Taking differences proves locality in each entry.</p>
+<p>For local fields and sections, multiply each by such a cutoff with support in its domain, and extend by zero. The extension is smooth: outside the closed support it vanishes on a neighbourhood, and inside the original domain it is a smooth product. Evaluate the global derivative at <span class="math" data-tex="\(x\)">\(x\)</span>. Locality proves that the result is independent of the cutoff and extensions. Using one cutoff equal to one on a whole smaller neighbourhood proves smoothness of the resulting local section. These definitions agree on overlaps and retain the axioms, because the extensions can be chosen to agree on the neighbourhood where an identity is being checked. Uniqueness follows from the same locality argument. This also proves the restriction assertion.</p>
+<p>Take real coordinates <span class="math" data-tex="\(x^1,\ldots,x^n\)">\(x^1,\ldots,x^n\)</span> and a frame on one such neighbourhood. Define smooth coefficients by
+<span class="math math-display" data-tex="\[
+\nabla_{\partial_i}e_b=\sum_a e_a(A_i)^a{}_b,
+\qquad A=\sum_i A_i\,dx^i.
+\]">\[
+\nabla_{\partial_i}e_b=\sum_a e_a(A_i)^a{}_b,
+\qquad A=\sum_i A_i\,dx^i.
+\]</span>
+Linearity in <span class="math" data-tex="\(X=\sum_i X^i\partial_i\)">\(X=\sum_i X^i\partial_i\)</span> and the product rule in <span class="math" data-tex="\(s=\sum_b v^be_b\)">\(s=\sum_b v^be_b\)</span> give (A.2) there. Hence <span class="math" data-tex="\(A(X)\)">\(A(X)\)</span> depends only on the real tangent vector <span class="math" data-tex="\(X(x)\)">\(X(x)\)</span>, not on an extension. On overlapping coordinate charts this uniquely specified linear map has the ordinary one-form transformation rule, so it defines a matrix-valued one-form on the entire frame domain. Its smoothness follows from the displayed coefficients. This proves existence, uniqueness and the dependence on first derivatives.</p>
+<p>Write <span class="math" data-tex="\(s=eg\widetilde v\)">\(s=eg\widetilde v\)</span>. The product rule for the matrix product, proved entrywise by Local 0.3, gives
+<span class="math math-display" data-tex="\[
+X(g\widetilde v)+A(X)g\widetilde v
+=gX(\widetilde v)+\bigl(X(g)+A(X)g\bigr)\widetilde v.
+\]">\[
+X(g\widetilde v)+A(X)g\widetilde v
+=gX(\widetilde v)+\bigl(X(g)+A(X)g\bigr)\widetilde v.
+\]</span>
+Multiplying by <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> proves (A.3). Conversely this calculation shows that (A.2) gives the same section in two frames whenever their matrices obey (A.3). The local definitions therefore agree and produce a smooth global section. Additivity, the two linearities and (A.1) follow from the ordinary product rule in each frame. Local frames cover the base, so they also prove uniqueness. Rank zero has only the zero section and empty matrices; the argument and conclusions remain valid. □</p>
+<p id="theorem-a-2"><strong>Theorem A.2 (the full frame correspondence).</strong> Covariant derivatives on <span class="math" data-tex="\(E\)">\(E\)</span> correspond bijectively to principal connections on its full frame bundle <span class="math" data-tex="\(\operatorname{Fr}_{\mathbb F}(E)\)">\(\operatorname{Fr}_{\mathbb F}(E)\)</span>, with structure group <span class="math" data-tex="\(\operatorname{GL}(r,\mathbb F)\)">\(\operatorname{GL}(r,\mathbb F)\)</span>. In the chart <span class="math" data-tex="\((x,g)\mapsto e(x)g\)">\((x,g)\mapsto e(x)g\)</span>, the principal form associated to (A.2) is
+<span class="math math-display" data-tex="\[
+\omega_{(x,g)}(v,\dot g)=g^{-1}A_x(v)g+g^{-1}\dot g.
+\tag{A.4}
+\]">\[
+\omega_{(x,g)}(v,\dot g)=g^{-1}A_x(v)g+g^{-1}\dot g.
+\tag{A.4}
+\]</span>
+Every such bundle admits a covariant derivative. If <span class="math" data-tex="\(u(t)\)">\(u(t)\)</span> is a horizontal frame along a path, then <span class="math" data-tex="\(u(t)c\)">\(u(t)c\)</span> is the parallel vector with initial coordinate <span class="math" data-tex="\(c\)">\(c\)</span>; all parallel vectors arise this way.</p>
+<p><strong>Proof.</strong> PB C.1 proves the real frame-bundle construction and its identification <span class="math" data-tex="\([u,c]\mapsto u(c)\)">\([u,c]\mapsto u(c)\)</span> with <span class="math" data-tex="\(E\)">\(E\)</span>. Here is the needed complex extension. Identify a complex vector space with its underlying real space and let <span class="math" data-tex="\(J\)">\(J\)</span> be multiplication by <span class="math" data-tex="\(i\)">\(i\)</span>. Complex linear maps are exactly the real matrices commuting with <span class="math" data-tex="\(J\)">\(J\)</span>, a real linear subspace. Its invertible elements form an open subset of that subspace by Local 0.4. If an invertible real matrix commutes with <span class="math" data-tex="\(J\)">\(J\)</span>, multiplying that equality on both sides by its inverse shows the inverse also commutes with <span class="math" data-tex="\(J\)">\(J\)</span>. The smooth real inversion of Local 0.4 consequently restricts to smooth complex inversion. Thus <span class="math" data-tex="\(\operatorname{GL}(r,\mathbb C)\)">\(\operatorname{GL}(r,\mathbb C)\)</span> is a real Lie group with Lie algebra all complex matrices; its operations are matrix multiplication and inversion.</p>
+<p>For a complex local frame, every other frame is uniquely <span class="math" data-tex="\(e(x)g\)">\(e(x)g\)</span>. On overlaps these coordinates change by smooth left multiplication by the complex transition matrix. PB A.1 therefore constructs a principal bundle for this Lie group, just as in the real case. The map <span class="math" data-tex="\([u,c]\mapsto u(c)\)">\([u,c]\mapsto u(c)\)</span> is well defined under <span class="math" data-tex="\([ug,c]=[u,gc]\)">\([ug,c]=[u,gc]\)</span>, and its local expression is the original complex vector-bundle chart. It and its inverse are smooth and complex linear on fibres. This proves precisely the complex version of the facts from PB C.1 used below.</p>
+<p>By A.1, a derivative determines potentials with (A.3). Conn A.3 proves that these are exactly the transition identities for a unique principal connection, with local form (A.4). Conversely a principal connection has such potentials, so A.1 defines a covariant derivative. Each construction recovers the same <span class="math" data-tex="\(A\)">\(A\)</span> in every local frame, proving that they are inverse. This also agrees with the induced derivative of Conn D.1, because the derivative of the standard matrix representation is the same matrix, making its formula <span class="math" data-tex="\(dv+Av\)">\(dv+Av\)</span>.</p>
+<p>Conn B.1 gives a smooth principal connection on the full frame bundle, proving existence. Conn C.1–C.2 give horizontal frame transport on every finite smooth or piecewise smooth path. In a frame chart write <span class="math" data-tex="\(u(t)=e(\gamma(t))g(t)\)">\(u(t)=e(\gamma(t))g(t)\)</span>. Equation (A.4) says that horizontality is
+<span class="math math-display" data-tex="\[
+g'(t)=-A_{\gamma(t)}(\gamma'(t))g(t).
+\tag{A.5}
+\]">\[
+g'(t)=-A_{\gamma(t)}(\gamma'(t))g(t).
+\tag{A.5}
+\]</span>
+Thus the column <span class="math" data-tex="\(g(t)c\)">\(g(t)c\)</span> satisfies <span class="math" data-tex="\(v'+A(\gamma')v=0\)">\(v'+A(\gamma')v=0\)</span>. Conn D.2 proves existence and uniqueness for that equation, and identifies it with the induced vector transport. The evaluation is linear over <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span> and the transported frame stays invertible, so every initial vector and hence every parallel vector is obtained. For a general field along the path, write <span class="math" data-tex="\(s(t)=u(t)c(t)\)">\(s(t)=u(t)c(t)\)</span>. The product rule and (A.5) give <span class="math" data-tex="\(D_ts=u(t)c'(t)\)">\(D_ts=u(t)c'(t)\)</span>; this is zero exactly when <span class="math" data-tex="\(c\)">\(c\)</span> is constant. At finitely many junctions use the endpoint values to pass to the next interval. Rank zero again has the unique empty frame and zero vector. □</p>
+<p id="theorem-a-3"><strong>Theorem A.3 (differences of covariant derivatives).</strong> The difference of two covariant derivatives is an element of <span class="math" data-tex="\(\Omega^1(M,\operatorname{End}_{\mathbb F}E)\)">\(\Omega^1(M,\operatorname{End}_{\mathbb F}E)\)</span>. Conversely, adding any such endomorphism-valued one-form to a covariant derivative gives another. Thus the nonempty set of derivatives is an affine space over that vector space.</p>
+<p><strong>Proof.</strong> Subtract the two local formulas (A.2). Their ordinary derivative terms cancel, leaving
+<span class="math math-display" data-tex="\[
+(\nabla'_X-\nabla_X)(ev)=e\bigl((A'-A)(X)v\bigr).
+\tag{A.6}
+\]">\[
+(\nabla'_X-\nabla_X)(ev)=e\bigl((A'-A)(X)v\bigr).
+\tag{A.6}
+\]</span>
+Subtracting (A.3) for the two potentials gives <span class="math" data-tex="\(\widetilde A'-\widetilde A=g^{-1}(A'-A)g\)">\(\widetilde A'-\widetilde A=g^{-1}(A'-A)g\)</span>. This is precisely the endomorphism change of coordinates from PB C.2: an operator acting on a column in the new frame is conjugated by <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> on the left and <span class="math" data-tex="\(g\)">\(g\)</span> on the right. The complex case follows by the same basis computation, with complex entries. Hence (A.6) is the evaluation of a smooth real one-form with complex-linear endomorphism values when <span class="math" data-tex="\(\mathbb F=\mathbb C\)">\(\mathbb F=\mathbb C\)</span>, or real-linear values when <span class="math" data-tex="\(\mathbb F=\mathbb R\)">\(\mathbb F=\mathbb R\)</span>.</p>
+<p>Conversely, an endomorphism-valued form has that conjugation law, so adding its matrices to <span class="math" data-tex="\(A\)">\(A\)</span> preserves (A.3). A.1 gives the new derivative. Equivalently its tensorial term is linear in the tangent and the section value, so the additional term preserves (A.1). Addition acts freely, because zero difference means equality, and transitively by the first assertion. Nonemptiness is A.2. These statements are exactly the asserted affine-space structure; no choice of a preferred derivative is implied. □</p>
+<h2 id="part-b">B. Differentiation along maps and paths</h2>
+<p>Michor's free <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf">author manuscript</a>, §§19.10–19.12 and 22.8–22.9, motivates the connector description. We use the sign convention <span class="math" data-tex="\(\nabla=d+A\)">\(\nabla=d+A\)</span>. The next proofs give its two linear structures, all coordinate changes and the chain rule explicitly. No immersion or submersion hypothesis is placed on a map along which a section is differentiated.</p>
+<p id="theorem-b-1"><strong>Theorem B.1 (the connector and horizontal splitting).</strong> Let <span class="math" data-tex="\(\pi:E\to M\)">\(\pi:E\to M\)</span> carry a covariant derivative. There is a unique smooth map <span class="math" data-tex="\(\mathcal K:TE\to E\)">\(\mathcal K:TE\to E\)</span>, over the base <span class="math" data-tex="\(M\)">\(M\)</span>, whose expression in a frame <span class="math" data-tex="\(e\)">\(e\)</span> is
+<span class="math math-display" data-tex="\[
+\mathcal K(x,y;v,z)=e(x)\bigl(z+A_x(v)y\bigr).
+\tag{B.1}
+\]">\[
+\mathcal K(x,y;v,z)=e(x)\bigl(z+A_x(v)y\bigr).
+\tag{B.1}
+\]</span>
+Here <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> denotes <span class="math" data-tex="\(e(x)y\in E\)">\(e(x)y\in E\)</span>, while <span class="math" data-tex="\((v,z)\)">\((v,z)\)</span> is its tangent coordinate. The bundle <span class="math" data-tex="\(TE\)">\(TE\)</span> has two linear structures, over <span class="math" data-tex="\(E\)">\(E\)</span> by its tangent projection and over <span class="math" data-tex="\(TM\)">\(TM\)</span> by <span class="math" data-tex="\(d\pi\)">\(d\pi\)</span>. The map <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> is real linear on the first fibres and <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>-linear on the second. For the vertical lift
+<span class="math math-display" data-tex="\[
+\operatorname{vl}(u,w)=\left.\frac d{dt}\right|_0(u+tw),
+\qquad u,w\in E_x,
+\tag{B.2}
+\]">\[
+\operatorname{vl}(u,w)=\left.\frac d{dt}\right|_0(u+tw),
+\qquad u,w\in E_x,
+\tag{B.2}
+\]</span>
+it satisfies <span class="math" data-tex="\(\mathcal K(\operatorname{vl}(u,w))=w\)">\(\mathcal K(\operatorname{vl}(u,w))=w\)</span>. Conversely these linearity and vertical-normalization properties characterize the connectors of covariant derivatives.</p>
+<p>Their kernels give smooth horizontal complements to <span class="math" data-tex="\(\ker d\pi\)">\(\ker d\pi\)</span>. More explicitly,
+<span class="math math-display" data-tex="\[
+\begin{split}
+H_{e(x)y}(v)&amp;=(x,y;v,-A_x(v)y),\\
+T_{e(x)y}E&amp;=H_{e(x)y}(T_xM)\oplus V_{e(x)y}E,\\
+(x,y;v,z)&amp;=H_{e(x)y}(v)+\operatorname{vl}\bigl(e(x)y,\mathcal K(x,y;v,z)\bigr).
+\end{split}
+\tag{B.3}
+\]">\[
+\begin{split}
+H_{e(x)y}(v)&amp;=(x,y;v,-A_x(v)y),\\
+T_{e(x)y}E&amp;=H_{e(x)y}(T_xM)\oplus V_{e(x)y}E,\\
+(x,y;v,z)&amp;=H_{e(x)y}(v)+\operatorname{vl}\bigl(e(x)y,\mathcal K(x,y;v,z)\bigr).
+\end{split}
+\tag{B.3}
+\]</span>
+For every section <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(\nabla_Xs=\mathcal K\circ ds\circ X\)">\(\nabla_Xs=\mathcal K\circ ds\circ X\)</span>.</p>
+<p><strong>Proof.</strong> Differentiate the frame-coordinate change <span class="math" data-tex="\(\widetilde y=g(x)^{-1}y\)">\(\widetilde y=g(x)^{-1}y\)</span>. Local 0.3 gives
+<span class="math math-display" data-tex="\[
+\widetilde z=g^{-1}z-g^{-1}(dg(v))g^{-1}y.
+\tag{B.4}
+\]">\[
+\widetilde z=g^{-1}z-g^{-1}(dg(v))g^{-1}y.
+\tag{B.4}
+\]</span>
+Combining this with (A.3) yields
+<span class="math" data-tex="\(\widetilde z+\widetilde A(v)\widetilde y=g^{-1}(z+A(v)y)\)">\(\widetilde z+\widetilde A(v)\widetilde y=g^{-1}(z+A(v)y)\)</span>.
+The two vectors in (B.1) therefore agree after multiplication by their respective frames. Ordinary base-coordinate changes replace <span class="math" data-tex="\(v\)">\(v\)</span> by its Jacobian image and <span class="math" data-tex="\(A\)">\(A\)</span> by the corresponding one-form, which leaves the evaluation unchanged. Thus (B.1) defines a unique smooth global map.</p>
+<p>The first linear structure of <span class="math" data-tex="\(TE\)">\(TE\)</span> is the usual tangent vector space at fixed <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>: its fibre coordinates are <span class="math" data-tex="\((v,z)\)">\((v,z)\)</span>. Formula (B.1) is real linear in these. For the second, fix <span class="math" data-tex="\((x,v)\in TM\)">\((x,v)\in TM\)</span>; the fibre coordinates are <span class="math" data-tex="\((y,z)\)">\((y,z)\)</span>. The transition (B.4), together with <span class="math" data-tex="\(\widetilde y=g^{-1}y\)">\(\widetilde y=g^{-1}y\)</span>, is linear over <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span> in this pair. It is invertible by reversing the frame change, and the chain rule proves the cocycle identities. These are vector-bundle charts for <span class="math" data-tex="\(d\pi:TE\to TM\)">\(d\pi:TE\to TM\)</span>. Formula (B.1) is <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>-linear in <span class="math" data-tex="\((y,z)\)">\((y,z)\)</span> at fixed <span class="math" data-tex="\((x,v)\)">\((x,v)\)</span>. The vertical lift has tangent coordinates <span class="math" data-tex="\((0,w_e)\)">\((0,w_e)\)</span>, where <span class="math" data-tex="\(w=e(x)w_e\)">\(w=e(x)w_e\)</span>, so its connector is exactly <span class="math" data-tex="\(w\)">\(w\)</span>. This also proves smoothness and the claimed normalization of (B.2).</p>
+<p>Conversely, let a smooth map <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> over <span class="math" data-tex="\(M\)">\(M\)</span> have the stated properties, and denote its frame-coordinate value by <span class="math" data-tex="\(k(x,y;v,z)\)">\(k(x,y;v,z)\)</span>. Real linearity in <span class="math" data-tex="\((v,z)\)">\((v,z)\)</span>, followed by the vertical normalization, gives
+<span class="math math-display" data-tex="\[
+k(x,y;v,z)=k(x,y;v,0)+z.
+\]">\[
+k(x,y;v,z)=k(x,y;v,0)+z.
+\]</span>
+Linearity in <span class="math" data-tex="\((y,z)\)">\((y,z)\)</span> at fixed <span class="math" data-tex="\((x,v)\)">\((x,v)\)</span> says that <span class="math" data-tex="\(y\mapsto k(x,y;v,0)\)">\(y\mapsto k(x,y;v,0)\)</span> is <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>-linear. Its dependence on <span class="math" data-tex="\(v\)">\(v\)</span> is real linear by the first property. Evaluating on fixed coordinate bases produces a smooth matrix-valued real one-form <span class="math" data-tex="\(A_x(v)\)">\(A_x(v)\)</span> with <span class="math" data-tex="\(k(x,y;v,0)=A_x(v)y\)">\(k(x,y;v,0)=A_x(v)y\)</span>. Applying (B.4) to the global map <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> forces (A.3), by comparing the coefficients of <span class="math" data-tex="\(y\)">\(y\)</span>. A.1 reconstructs the derivative uniquely.</p>
+<p>In (B.1), the equation <span class="math" data-tex="\(\mathcal K=0\)">\(\mathcal K=0\)</span> is exactly <span class="math" data-tex="\(z=-A_x(v)y\)">\(z=-A_x(v)y\)</span>, so its solutions have the horizontal graph in (B.3). This graph is smooth and <span class="math" data-tex="\(d\pi\)">\(d\pi\)</span> maps it isomorphically to <span class="math" data-tex="\(T_xM\)">\(T_xM\)</span>. The complementary vertical vectors are exactly those with <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, and subtracting the horizontal vector gives the last formula in (B.3). These intrinsic descriptions are independent of coordinates because <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, <span class="math" data-tex="\(d\pi\)">\(d\pi\)</span> and the vertical lift are. Finally a section has tangent coordinates <span class="math" data-tex="\((v,d y(v))\)">\((v,d y(v))\)</span>; inserting them into (B.1) gives (A.2), proving the derivative identity. This proves both constructions and all asserted properties, also in rank zero. □</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (pullback derivatives and the chain rule).</strong> For any smooth map <span class="math" data-tex="\(f:N\to M\)">\(f:N\to M\)</span>, sections of the pullback bundle <span class="math" data-tex="\(f^*E\)">\(f^*E\)</span> identify with smooth maps <span class="math" data-tex="\(s:N\to E\)">\(s:N\to E\)</span> satisfying <span class="math" data-tex="\(\pi s=f\)">\(\pi s=f\)</span>. The derivative induced by <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> is
+<span class="math math-display" data-tex="\[
+\nabla^f_Xs=\mathcal K\circ ds\circ X.
+\tag{B.5}
+\]">\[
+\nabla^f_Xs=\mathcal K\circ ds\circ X.
+\tag{B.5}
+\]</span>
+In a pulled-back frame, if <span class="math" data-tex="\(s(q)=e(f(q))y(q)\)">\(s(q)=e(f(q))y(q)\)</span>, this becomes
+<span class="math math-display" data-tex="\[
+\nabla^f_Xs=e(f(q))\bigl(dy_q(X)+A_{f(q)}(df_qX)y(q)\bigr).
+\tag{B.6}
+\]">\[
+\nabla^f_Xs=e(f(q))\bigl(dy_q(X)+A_{f(q)}(df_qX)y(q)\bigr).
+\tag{B.6}
+\]</span>
+For a further smooth map <span class="math" data-tex="\(h:Q\to N\)">\(h:Q\to N\)</span> and <span class="math" data-tex="\(v\in T_zQ\)">\(v\in T_zQ\)</span>,
+<span class="math math-display" data-tex="\[
+\nabla^{f\circ h}_v(s\circ h)
+=\nabla^f_{dh_zv}s.
+\tag{B.7}
+\]">\[
+\nabla^{f\circ h}_v(s\circ h)
+=\nabla^f_{dh_zv}s.
+\tag{B.7}
+\]</span>
+The right side is evaluated at <span class="math" data-tex="\(h(z)\)">\(h(z)\)</span>. If <span class="math" data-tex="\(Y\)">\(Y\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span> are <span class="math" data-tex="\(h\)">\(h\)</span>-related vector fields, this says <span class="math" data-tex="\(\nabla^{f\circ h}_Y(s\circ h)=(\nabla^f_Xs)\circ h\)">\(\nabla^{f\circ h}_Y(s\circ h)=(\nabla^f_Xs)\circ h\)</span>.</p>
+<p>Along a smooth curve <span class="math" data-tex="\(\gamma:I\to M\)">\(\gamma:I\to M\)</span> these definitions give a derivative <span class="math" data-tex="\(D_t\)">\(D_t\)</span> of every section along the curve, satisfying
+<span class="math math-display" data-tex="\[
+D_t(fv)=f'v+fD_tv,\qquad
+D_t(\sigma\circ\gamma)=\nabla_{\gamma'(t)}\sigma.
+\tag{B.8}
+\]">\[
+D_t(fv)=f'v+fD_tv,\qquad
+D_t(\sigma\circ\gamma)=\nabla_{\gamma'(t)}\sigma.
+\tag{B.8}
+\]</span>
+For every differentiable field <span class="math" data-tex="\(v(t)\in E_{\gamma(t)}\)">\(v(t)\in E_{\gamma(t)}\)</span>,
+<span class="math math-display" data-tex="\[
+D_tv(t)=\lim_{h\to0}
+\frac{T_{t+h,t}v(t+h)-v(t)}h.
+\tag{B.9}
+\]">\[
+D_tv(t)=\lim_{h\to0}
+\frac{T_{t+h,t}v(t+h)-v(t)}h.
+\tag{B.9}
+\]</span>
+Here <span class="math" data-tex="\(T_{a,b}\)">\(T_{a,b}\)</span> is linear transport along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> from time <span class="math" data-tex="\(a\)">\(a\)</span> to time <span class="math" data-tex="\(b\)">\(b\)</span>, so the quotient lies in the single fibre <span class="math" data-tex="\(E_{\gamma(t)}\)">\(E_{\gamma(t)}\)</span>. At interval endpoints the limit is one-sided.</p>
+<p><strong>Proof.</strong> The pullback consists of pairs <span class="math" data-tex="\((q,u)\)">\((q,u)\)</span> with <span class="math" data-tex="\(f(q)=\pi(u)\)">\(f(q)=\pi(u)\)</span>. In a vector chart it has coordinates <span class="math" data-tex="\((q,y)\mapsto(q,e(f(q))y)\)">\((q,y)\mapsto(q,e(f(q))y)\)</span>, with transitions <span class="math" data-tex="\(g\circ f\)">\(g\circ f\)</span>. These charts prove the asserted smooth identification of sections, including maps <span class="math" data-tex="\(f\)">\(f\)</span> with critical points. They are the vector-bundle version of PB A.3 and B.1.</p>
+<p>The tangent map of <span class="math" data-tex="\(s(q)=e(f(q))y(q)\)">\(s(q)=e(f(q))y(q)\)</span> has coordinates <span class="math" data-tex="\((df_qX,dy_qX)\)">\((df_qX,dy_qX)\)</span>. Applying (B.1) gives (B.6), and proves smoothness of (B.5). The local potential is <span class="math" data-tex="\(f^*A\)">\(f^*A\)</span>; pulling back (A.3) gives its transformation law by Local 0.3. A.1 consequently proves all derivative axioms and independence of the frame. Alternatively these follow directly from (B.6). For a scalar function on <span class="math" data-tex="\(N\)">\(N\)</span>, its derivative is <span class="math" data-tex="\(X(f_0)\)">\(X(f_0)\)</span>; thus the product rule uses the actual parameter-space tangent direction and does not require a vector field extending <span class="math" data-tex="\(dfX\)">\(dfX\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>The ordinary chain rule <span class="math" data-tex="\(d(s\circ h)=ds\circ dh\)">\(d(s\circ h)=ds\circ dh\)</span> proves (B.7) after composition with <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>. The assertion for related vector fields is its evaluation at each point. Applying this to the time interval gives (B.8), including the second identity when the field comes from a section near the curve.</p>
+<p>To prove (B.9), choose a horizontal frame <span class="math" data-tex="\(u(\tau)\)">\(u(\tau)\)</span> on a time interval containing <span class="math" data-tex="\(t\)">\(t\)</span>, supplied by A.2, and write <span class="math" data-tex="\(v(\tau)=u(\tau)c(\tau)\)">\(v(\tau)=u(\tau)c(\tau)\)</span>. Evaluation in the inverse frame makes <span class="math" data-tex="\(c\)">\(c\)</span> differentiable. The transport identities and A.2 give
+<span class="math math-display" data-tex="\[
+T_{t+h,t}v(t+h)=u(t)c(t+h),
+\qquad D_tv(t)=u(t)c'(t).
+\]">\[
+T_{t+h,t}v(t+h)=u(t)c(t+h),
+\qquad D_tv(t)=u(t)c'(t).
+\]</span>
+The ordinary derivative of <span class="math" data-tex="\(c\)">\(c\)</span> proves (B.9). For a piecewise smooth curve the same statements hold on each smooth time piece, with the respective one-sided derivatives at junctions; no two-sided derivative at a corner is asserted. This proves the transport formula with the correct order of the two time indices. □</p>
+<p id="theorem-b-3"><strong>Theorem B.3 (curvature under arbitrary pullback).</strong> For a covariant derivative on <span class="math" data-tex="\(E\)">\(E\)</span>, define
+<span class="math math-display" data-tex="\[
+R^E(X,Y)s=\nabla_X\nabla_Ys-\nabla_Y\nabla_Xs-\nabla_{[X,Y]}s.
+\tag{B.10}
+\]">\[
+R^E(X,Y)s=\nabla_X\nabla_Ys-\nabla_Y\nabla_Xs-\nabla_{[X,Y]}s.
+\tag{B.10}
+\]</span>
+It is a smooth endomorphism-valued two-form, with local matrix
+<span class="math math-display" data-tex="\[
+R^E=dA+A\wedge A,\qquad
+(A\wedge A)(X,Y)=A(X)A(Y)-A(Y)A(X).
+\tag{B.11}
+\]">\[
+R^E=dA+A\wedge A,\qquad
+(A\wedge A)(X,Y)=A(X)A(Y)-A(Y)A(X).
+\tag{B.11}
+\]</span>
+For the pullback derivative along any <span class="math" data-tex="\(f:N\to M\)">\(f:N\to M\)</span>,
+<span class="math math-display" data-tex="\[
+R^{f^*E}(X,Y)s(q)=R^E_{f(q)}(df_qX,df_qY)s(q).
+\tag{B.12}
+\]">\[
+R^{f^*E}(X,Y)s(q)=R^E_{f(q)}(df_qX,df_qY)s(q).
+\tag{B.12}
+\]</span></p>
+<p><strong>Proof.</strong> In one frame write <span class="math" data-tex="\(D_X=X+A(X)\)">\(D_X=X+A(X)\)</span> on column functions. Expand <span class="math" data-tex="\(D_XD_Yv-D_YD_Xv-D_{[X,Y]}v\)">\(D_XD_Yv-D_YD_Xv-D_{[X,Y]}v\)</span>. The ordinary second derivatives cancel because <span class="math" data-tex="\([X,Y]v=X(Yv)-Y(Xv)\)">\([X,Y]v=X(Yv)-Y(Xv)\)</span>, the coordinate bracket identity proved in PB C.3. The terms containing first derivatives of <span class="math" data-tex="\(v\)">\(v\)</span> also cancel in opposite pairs. The remaining matrix is
+<span class="math math-display" data-tex="\[
+X(A(Y))-Y(A(X))-A([X,Y])+[A(X),A(Y)].
+\]">\[
+X(A(Y))-Y(A(X))-A([X,Y])+[A(X),A(Y)].
+\]</span>
+The first three terms are <span class="math" data-tex="\(dA(X,Y)\)">\(dA(X,Y)\)</span>, by Curv A.2, proving (B.11). That expression is alternating and linear over real smooth functions in <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, and is linear over <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span> in the value of <span class="math" data-tex="\(s\)">\(s\)</span>. It is smooth. Since (B.10) was defined without a frame, the local endomorphisms agree on overlaps. Thus it is the asserted global two-form.</p>
+<p>B.2 makes the pullback potential <span class="math" data-tex="\(f^*A\)">\(f^*A\)</span>. Curv A.2 proves <span class="math" data-tex="\(d(f^*A)=f^*(dA)\)">\(d(f^*A)=f^*(dA)\)</span> for every smooth map, without a rank condition. Evaluation of the two matrix products proves <span class="math" data-tex="\((f^*A)\wedge(f^*A)=f^*(A\wedge A)\)">\((f^*A)\wedge(f^*A)=f^*(A\wedge A)\)</span>. Apply (B.11) on <span class="math" data-tex="\(N\)">\(N\)</span> to obtain (B.12). In particular one need not, and in general cannot, choose vector fields on <span class="math" data-tex="\(M\)">\(M\)</span> related to arbitrary <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>; naturality of forms gives the identity directly. □</p>
+<h2 id="part-c">C. Tensor operations and compatible metrics</h2>
+<p>The free construction source is Michor's <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf">author manuscript</a>, §22.12 for tensor differentiation and §22.1 for the partition-of-unity construction of positive metrics. We give the vector-bundle and complex versions in full. The metric-connection construction below uses A.2–A.3 and an explicit correction tensor; it does not require a torsion-free connection or a theorem about the Levi-Civita connection.</p>
+<p id="theorem-c-1"><strong>Theorem C.1 (dual, tensor and homomorphism derivatives).</strong> Covariant derivatives induce unique derivatives on dual bundles and on tensor products that obey the evaluation and tensor product rules. Explicitly,
+<span class="math math-display" data-tex="\[
+\begin{split}
+(\nabla_X\alpha)(s)&amp;=X(\alpha(s))-\alpha(\nabla_Xs),\\
+\nabla_X(s\otimes t)&amp;=(\nabla_Xs)\otimes t+s\otimes\nabla_Xt,\\
+(\nabla_XT)s&amp;=\nabla^F_X(Ts)-T\nabla^E_Xs
+\quad(T:E\to F).
+\end{split}
+\tag{C.1}
+\]">\[
+\begin{split}
+(\nabla_X\alpha)(s)&amp;=X(\alpha(s))-\alpha(\nabla_Xs),\\
+\nabla_X(s\otimes t)&amp;=(\nabla_Xs)\otimes t+s\otimes\nabla_Xt,\\
+(\nabla_XT)s&amp;=\nabla^F_X(Ts)-T\nabla^E_Xs
+\quad(T:E\to F).
+\end{split}
+\tag{C.1}
+\]</span>
+On functions the derivative is ordinary differentiation by <span class="math" data-tex="\(X\)">\(X\)</span>. The induced derivatives commute with permutations of tensor factors and with contractions of a dual factor against its vector factor. They restrict to symmetric and alternating tensors, hence to symmetric and exterior powers. Transport on these bundles is respectively the inverse dual, the tensor product, and
+<span class="math math-display" data-tex="\[
+T\longmapsto T^F_\gamma\circ T\circ(T^E_\gamma)^{-1}.
+\tag{C.2}
+\]">\[
+T\longmapsto T^F_\gamma\circ T\circ(T^E_\gamma)^{-1}.
+\tag{C.2}
+\]</span>
+For complex bundles, conjugation induces a connection on <span class="math" data-tex="\(\overline E\)">\(\overline E\)</span>, with local matrix <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span>, and differentiation commutes with conjugation along real tangent directions.</p>
+<p><strong>Proof.</strong> Use the dual and tensor constructions proved by bases and transition matrices in PB C.2. Their algebraic arguments apply over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> as well, since they use only finite sums, products and evaluation in a basis. A dual vector is a row <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>; the first expression in (C.1), evaluated on a column <span class="math" data-tex="\(v\)">\(v\)</span>, is
+<span class="math math-display" data-tex="\[
+X(\alpha v)-\alpha(Xv+A(X)v)
+=\bigl(X\alpha-\alpha A(X)\bigr)v.
+\]">\[
+X(\alpha v)-\alpha(Xv+A(X)v)
+=\bigl(X\alpha-\alpha A(X)\bigr)v.
+\]</span>
+It is linear over <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span> in <span class="math" data-tex="\(v\)">\(v\)</span>, is smooth, and so defines a dual section. Replacing the argument section by <span class="math" data-tex="\(fs\)">\(fs\)</span> gives the same assertion intrinsically: the two <span class="math" data-tex="\(X(f)\alpha(s)\)">\(X(f)\alpha(s)\)</span> terms cancel. The expression depends only on the value of <span class="math" data-tex="\(s\)">\(s\)</span>, either by this local calculation or A.1's locality. Thus the first rule defines a global derivative. Its additivity and Leibniz rule in <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> follow by differentiating a scalar product; its linearity in <span class="math" data-tex="\(X\)">\(X\)</span> is immediate. In column coordinates its connection matrix is <span class="math" data-tex="\(-A^{\mathsf T}\)">\(-A^{\mathsf T}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(e_a,f_b\)">\(e_a,f_b\)</span> be local frames of two bundles, with matrices <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. Every tensor section is uniquely <span class="math" data-tex="\(\sum_{a,b}c^{ab}e_a\otimes f_b\)">\(\sum_{a,b}c^{ab}e_a\otimes f_b\)</span>, by PB C.2's basis construction. Define its derivative by differentiating each coefficient and applying the second rule of (C.1) to each basis tensor. Its matrix on the product basis is
+<span class="math math-display" data-tex="\[
+A(X)\otimes I+I\otimes B(X).
+\]">\[
+A(X)\otimes I+I\otimes B(X).
+\]</span>
+For arbitrary local sections <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, expansion of their coordinates and the ordinary product rule verify the stated tensor rule. Under a frame change <span class="math" data-tex="\((e,f)\mapsto(eg,fh)\)">\((e,f)\mapsto(eg,fh)\)</span>, differentiating
+<span class="math" data-tex="\(g\otimes h\)">\(g\otimes h\)</span> gives <span class="math" data-tex="\(dg\otimes h+g\otimes dh\)">\(dg\otimes h+g\otimes dh\)</span>. Combining this with (A.3) proves exactly the transition rule (A.3) for the tensor matrix. Hence these locally defined derivatives agree globally. A.1 proves their axioms; spanning by the basis tensors proves uniqueness.</p>
+<p>Iteration gives a finite sum of one connection action on each factor of any mixed tensor. Permuting factors permutes this finite sum and thus commutes with the derivative. Contracting a dual factor and its vector factor cancels their two connection terms: in rows and columns they are <span class="math" data-tex="\(-\alpha A\)">\(-\alpha A\)</span> and <span class="math" data-tex="\(Av\)">\(Av\)</span>, whose evaluated contributions are <span class="math" data-tex="\(-\alpha Av+\alpha Av=0\)">\(-\alpha Av+\alpha Av=0\)</span>. The ordinary derivative of their evaluation is the ordinary product rule already checked. On a general tensor, expand in pure tensors and scalar coefficients; they span every fibre and form local frames, so this proves commutation for all contractions.</p>
+<p>The symmetrizer and antisymmetrizer are the averages of the finitely many factor permutations, with respectively coefficient <span class="math" data-tex="\(1/k!\)">\(1/k!\)</span> or the permutation sign divided by <span class="math" data-tex="\(k!\)">\(k!\)</span>. Their images are exactly the symmetric and alternating tensors: permuting an average gives the prescribed symmetry, and applying the average to a tensor already having that symmetry returns it. Thus they are projections. They commute with the derivative by the permutation result. Their images are smooth subbundles: in a frame, the symmetric tensors indexed by nondecreasing tuples and the alternating tensors indexed by strictly increasing tuples are bases, as the finite expansion in PB C.2 shows. The induced derivative consequently preserves these subbundles. The exterior-power identification is the alternating-basis identification from PB C.2. Degree zero is the scalar line, with its ordinary derivative; powers larger than the rank in the alternating case are zero and cause no exception.</p>
+<p>For homomorphisms, identify <span class="math" data-tex="\(\operatorname{Hom}_{\mathbb F}(E,F)=F\otimes E^*\)">\(\operatorname{Hom}_{\mathbb F}(E,F)=F\otimes E^*\)</span> by <span class="math" data-tex="\(t\otimes\alpha:s\mapsto t\alpha(s)\)">\(t\otimes\alpha:s\mapsto t\alpha(s)\)</span>. Matrix units in local bases prove this is a smooth isomorphism. The tensor and dual rules give its matrix formula
+<span class="math math-display" data-tex="\[
+\nabla_XT=X(T)+B(X)T-TA(X),
+\tag{C.3}
+\]">\[
+\nabla_XT=X(T)+B(X)T-TA(X),
+\tag{C.3}
+\]</span>
+which is precisely the third rule of (C.1). They also prove uniqueness.</p>
+<p>To check transport, use horizontal frames for the original bundles on a path, by A.2. Their dual frames, tensor-product frames and matrix-unit frames have zero derivative by the rules just proved. A field in one of these frames is parallel precisely when all its coefficients are constant, again by A.2 applied to that induced derivative. Hence its transport is the indicated algebraic operation on the original transports; the dual evaluation is held constant by composing with the inverse original transport. This proves (C.2) and all transport assertions.</p>
+<p>Finally, for a complex bundle define <span class="math" data-tex="\(\overline E\)">\(\overline E\)</span> by the conjugated transition matrices and local coordinates <span class="math" data-tex="\(\overline v\)">\(\overline v\)</span>; multiplication by a complex scalar in that bundle corresponds to multiplication by its conjugate in <span class="math" data-tex="\(E\)">\(E\)</span>. Conjugating (A.3) proves the correct change rule for <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span>. Because the tangent direction <span class="math" data-tex="\(X\)">\(X\)</span> is real, <span class="math" data-tex="\(X(\overline v)=\overline{X(v)}\)">\(X(\overline v)=\overline{X(v)}\)</span>. Formula (A.2) therefore proves the claimed commutation. □</p>
+<p id="theorem-c-2"><strong>Theorem C.2 (positive metrics and compatible derivatives).</strong> Every smooth real vector bundle has a smooth positive definite inner product, and every smooth complex vector bundle has a smooth positive definite Hermitian form. For each such metric <span class="math" data-tex="\(h\)">\(h\)</span>, a compatible covariant derivative exists. With the convention that a Hermitian metric is conjugate linear in its first entry, compatibility means
+<span class="math math-display" data-tex="\[
+X(h(s,t))=h(\nabla_Xs,t)+h(s,\nabla_Xt).
+\tag{C.4}
+\]">\[
+X(h(s,t))=h(\nabla_Xs,t)+h(s,\nabla_Xt).
+\tag{C.4}
+\]</span>
+It holds if and only if parallel transport along every smooth path preserves the metric. In a frame with Gram matrix <span class="math" data-tex="\(H\)">\(H\)</span>, the condition is
+<span class="math math-display" data-tex="\[
+dH=A^*H+HA,
+\tag{C.5}
+\]">\[
+dH=A^*H+HA,
+\tag{C.5}
+\]</span>
+where <span class="math" data-tex="\(*\)">\(*\)</span> is transpose in the real case and conjugate transpose in the complex case. In an orthonormal frame, it is precisely <span class="math" data-tex="\(A^*=-A\)">\(A^*=-A\)</span>.</p>
+<p><strong>Proof.</strong> For existence of a metric, take the Euclidean or standard Hermitian form in each vector chart. Use a locally finite subordinate smooth partition of unity <span class="math" data-tex="\((\phi_i)\)">\((\phi_i)\)</span>, from Local 3.1, and set <span class="math" data-tex="\(h=\sum_i\phi_i h_i\)">\(h=\sum_i\phi_i h_i\)</span>. Each weighted form extends smoothly by zero outside its chart because its support is contained in that chart, and locally only finitely many terms occur. The sum is smooth, symmetric or Hermitian, and positive definite: for a nonzero vector at least one positive coefficient multiplies a positive squared norm, while every other term is nonnegative. This is also the real construction of PB D.2. Rank zero has the unique form on the zero space.</p>
+<p>The covariant derivative of the metric is well defined by C.1, regarding it in the complex case as a section of <span class="math" data-tex="\(\overline E^*\otimes E^*\)">\(\overline E^*\otimes E^*\)</span>. Directly, it is the right-side defect
+<span class="math math-display" data-tex="\[
+(\nabla_Xh)(s,t)=X(h(s,t))-h(\nabla_Xs,t)-h(s,\nabla_Xt).
+\tag{C.6}
+\]">\[
+(\nabla_Xh)(s,t)=X(h(s,t))-h(\nabla_Xs,t)-h(s,\nabla_Xt).
+\tag{C.6}
+\]</span>
+The derivative-of-scalar terms cancel when either section is multiplied by a smooth scalar, with conjugation in the first entry. Thus it depends only on their values. In a frame, inserting <span class="math" data-tex="\(s=eu\)">\(s=eu\)</span>, <span class="math" data-tex="\(t=ev\)">\(t=ev\)</span> and <span class="math" data-tex="\(h(s,t)=u^*Hv\)">\(h(s,t)=u^*Hv\)</span> gives
+<span class="math math-display" data-tex="\[
+(\nabla_Xh)(s,t)
+=u^*\bigl(X(H)-A(X)^*H-HA(X)\bigr)v.
+\tag{C.7}
+\]">\[
+(\nabla_Xh)(s,t)
+=u^*\bigl(X(H)-A(X)^*H-HA(X)\bigr)v.
+\tag{C.7}
+\]</span>
+The terms containing derivatives of <span class="math" data-tex="\(u,v\)">\(u,v\)</span> cancel, proving (C.5). If <span class="math" data-tex="\(H=I\)">\(H=I\)</span>, it gives the skew-adjoint condition. Real orthonormal local frames are supplied by PB D.2. In the complex case use the same Gram–Schmidt construction with projection <span class="math" data-tex="\(u_k h(u_k,e_j)\)">\(u_k h(u_k,e_j)\)</span> and positive real denominator <span class="math" data-tex="\(\sqrt{h(v_j,v_j)}\)">\(\sqrt{h(v_j,v_j)}\)</span>. At each step independence ensures the nonzero remainder, conjugate symmetry proves its orthogonality, and smoothness follows from the smooth positive square root as in PB D.2. Thus the orthonormal-frame assertion is meaningful in both cases.</p>
+<p>To construct a compatible derivative, start with any <span class="math" data-tex="\(\nabla^0\)">\(\nabla^0\)</span>, which exists by A.2. Write <span class="math" data-tex="\(S=\nabla^0h\)">\(S=\nabla^0h\)</span>, with local matrix
+<span class="math" data-tex="\(S_X=X(H)-A^0(X)^*H-HA^0(X)\)">\(S_X=X(H)-A^0(X)^*H-HA^0(X)\)</span>.
+This matrix is self-adjoint because <span class="math" data-tex="\(H^*=H\)">\(H^*=H\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span> is real. Define
+<span class="math math-display" data-tex="\[
+B(X)=\tfrac12 H^{-1}S_X.
+\tag{C.8}
+\]">\[
+B(X)=\tfrac12 H^{-1}S_X.
+\tag{C.8}
+\]</span>
+The inverse is smooth by Local 0.4. Under a frame change, <span class="math" data-tex="\(\widetilde H=g^*Hg\)">\(\widetilde H=g^*Hg\)</span> and <span class="math" data-tex="\(\widetilde S=g^*Sg\)">\(\widetilde S=g^*Sg\)</span>, the latter because (C.6) is an intrinsic tensor. Thus <span class="math" data-tex="\(\widetilde B=g^{-1}Bg\)">\(\widetilde B=g^{-1}Bg\)</span>, so (C.8) defines an endomorphism-valued one-form globally. Put <span class="math" data-tex="\(\nabla=\nabla^0+B\)">\(\nabla=\nabla^0+B\)</span>, using A.3. Since <span class="math" data-tex="\(H^*=H\)">\(H^*=H\)</span> implies <span class="math" data-tex="\((H^{-1})^*=H^{-1}\)">\((H^{-1})^*=H^{-1}\)</span>, equation (C.8) gives
+<span class="math math-display" data-tex="\[
+HB=\tfrac12S,\qquad B^*H=\tfrac12S.
+\]">\[
+HB=\tfrac12S,\qquad B^*H=\tfrac12S.
+\]</span>
+Substituting <span class="math" data-tex="\(A=A^0+B\)">\(A=A^0+B\)</span> in (C.7) makes its defect <span class="math" data-tex="\(S-B^*H-HB=0\)">\(S-B^*H-HB=0\)</span>. This proves compatibility and existence. In rank zero the construction is the unique zero derivative; no matrix inverse need be taken.</p>
+<p>If (C.4) holds, apply (C.7) along a path, using B.2's pulled-back derivative. For two parallel fields the derivative of <span class="math" data-tex="\(h(u(t),v(t))\)">\(h(u(t),v(t))\)</span> is zero. The fundamental theorem of calculus, Local 0.3, makes this scalar constant on each path interval, hence on any finite concatenation. Transport therefore preserves the metric.</p>
+<p>Conversely assume all smooth path transports preserve it. Fix <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(v\in T_xM\)">\(v\in T_xM\)</span> and two fibre vectors. A coordinate straight line represents <span class="math" data-tex="\(v\)">\(v\)</span> as the velocity of a smooth path at <span class="math" data-tex="\(x\)">\(x\)</span>, on a sufficiently small interval. Extend the two vectors by parallel transport along this path, as A.2 permits. Their metric pairing is constant by assumption, so its derivative at the initial time is zero. Formula (C.7) along the path identifies that derivative with <span class="math" data-tex="\((\nabla_vh)_x\)">\((\nabla_vh)_x\)</span> on the prescribed two vectors. They and <span class="math" data-tex="\(v\)">\(v\)</span> were arbitrary, so <span class="math" data-tex="\(\nabla h=0\)">\(\nabla h=0\)</span>, proving (C.4). □</p>
+<p id="example-c-3"><strong>Example C.3 (a varying metric on a trivial bundle).</strong> On the trivial real line over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, take the metric <span class="math" data-tex="\(h_x(u,v)=e^{2x}uv\)">\(h_x(u,v)=e^{2x}uv\)</span>. Its unique compatible connection has potential <span class="math" data-tex="\(A=dx\)">\(A=dx\)</span> in the standard frame. Transport from <span class="math" data-tex="\(x_0\)">\(x_0\)</span> to <span class="math" data-tex="\(x_1\)">\(x_1\)</span> multiplies the fibre coordinate by <span class="math" data-tex="\(e^{x_0-x_1}\)">\(e^{x_0-x_1}\)</span>, which preserves this varying metric but does not preserve the standard coordinate norm in general.</p>
+<p><strong>Proof.</strong> The Gram matrix is the scalar <span class="math" data-tex="\(H=e^{2x}\)">\(H=e^{2x}\)</span>. Equation (C.5) is <span class="math" data-tex="\(2e^{2x}dx=2e^{2x}A\)">\(2e^{2x}dx=2e^{2x}A\)</span>, giving <span class="math" data-tex="\(A=dx\)">\(A=dx\)</span> and uniqueness. Along a path <span class="math" data-tex="\(x(t)\)">\(x(t)\)</span>, equation (A.5) for a vector coordinate is <span class="math" data-tex="\(v'+x'v=0\)">\(v'+x'v=0\)</span>. Differentiating <span class="math" data-tex="\(e^{x(t)}v(t)\)">\(e^{x(t)}v(t)\)</span> shows it is constant; conversely the resulting formula solves the equation. The ordinary exponential and product rules are supplied by Local 2.3 for the multiplicative positive-real group and Local 0.3. At the endpoints,
+<span class="math" data-tex="\(e^{2x_1}(e^{x_0-x_1}u)(e^{x_0-x_1}v)=e^{2x_0}uv\)">\(e^{2x_1}(e^{x_0-x_1}u)(e^{x_0-x_1}v)=e^{2x_0}uv\)</span>,
+which verifies preservation directly. The smooth frame <span class="math" data-tex="\(e^{-x}\)">\(e^{-x}\)</span> is orthonormal and its transformed potential is zero by (A.3), giving the same conclusion in that frame. □</p>
+<h2 id="part-d">D. Tangent velocities and the failure of symmetry</h2>
+<p>In this part <span class="math" data-tex="\(E=TM\)">\(E=TM\)</span>, <span class="math" data-tex="\(n=\dim M\)">\(n=\dim M\)</span>, and <span class="math" data-tex="\(P=\operatorname{Fr}(TM)\)">\(P=\operatorname{Fr}(TM)\)</span> is the real full frame bundle. A frame <span class="math" data-tex="\(u:\mathbb R^n\to T_xM\)">\(u:\mathbb R^n\to T_xM\)</span> acts on columns. We use the exact free Michor author manuscript already cited, Sections 22.10 and 25.4–25.6, as construction material. The differential-form rules and the basic-form correspondence used below are proved in <a href="curvature-and-holonomy-groups.html">Curvature A.1–A.2 and A.5–A.6</a>; the frame bundle and tangent bracket are proved in <a href="principal-bundles-and-associated-bundles.html">PB C.1 and C.3</a>. No metric or torsion-free hypothesis is imposed.</p>
+<p id="theorem-d-1"><strong>Theorem D.1 (solder form and torsion).</strong> Define the solder form on <span class="math" data-tex="\(P\)">\(P\)</span> by
+<span class="math math-display" data-tex="\[
+\theta_u(Z)=u^{-1}(d\pi_uZ).
+\tag{D.1}
+\]">\[
+\theta_u(Z)=u^{-1}(d\pi_uZ).
+\tag{D.1}
+\]</span>
+It is smooth, vanishes on vertical vectors, and satisfies <span class="math" data-tex="\(R_a^*\theta=a^{-1}\theta\)">\(R_a^*\theta=a^{-1}\theta\)</span>. Under the associated-bundle identification <span class="math" data-tex="\([u,v]\mapsto u(v)\)">\([u,v]\mapsto u(v)\)</span>, it represents the identity <span class="math" data-tex="\(TM\to TM\)">\(TM\to TM\)</span>. If <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is the principal connection of <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span>, the horizontal equivariant two-form
+<span class="math math-display" data-tex="\[
+\Theta=D\theta=d\theta+\omega\wedge\theta
+\tag{D.2}
+\]">\[
+\Theta=D\theta=d\theta+\omega\wedge\theta
+\tag{D.2}
+\]</span>
+represents the tensor
+<span class="math math-display" data-tex="\[
+\mathcal T(X,Y)=\nabla_XY-\nabla_YX-[X,Y].
+\tag{D.3}
+\]">\[
+\mathcal T(X,Y)=\nabla_XY-\nabla_YX-[X,Y].
+\tag{D.3}
+\]</span></p>
+<p><strong>Proof.</strong> In a local frame <span class="math" data-tex="\(e\)">\(e\)</span>, write <span class="math" data-tex="\(u=e(x)g\)">\(u=e(x)g\)</span> and let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> denote the vector of dual one-forms: <span class="math" data-tex="\(\sigma_x(v)=e(x)^{-1}v\)">\(\sigma_x(v)=e(x)^{-1}v\)</span>. Formula (D.1) is <span class="math" data-tex="\(g^{-1}\sigma\)">\(g^{-1}\sigma\)</span> in this chart, so is smooth. Its vertical and equivariance properties follow immediately from <span class="math" data-tex="\(d\pi\,dR_a=d\pi\)">\(d\pi\,dR_a=d\pi\)</span> and <span class="math" data-tex="\((ua)^{-1}=a^{-1}u^{-1}\)">\((ua)^{-1}=a^{-1}u^{-1}\)</span>. Evaluation gives <span class="math" data-tex="\(u\theta_u(Z)=d\pi Z\)">\(u\theta_u(Z)=d\pi Z\)</span>, which proves the identity assertion, including surjectivity on each horizontal space.</p>
+<p>The representation of <span class="math" data-tex="\(\mathrm{GL}(n,\mathbb R)\)">\(\mathrm{GL}(n,\mathbb R)\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> has derivative the identity matrix action, as proved in A.2. Curvature A.5 therefore proves both equality in (D.2) and its horizontality and equivariance. In the section <span class="math" data-tex="\(e\)">\(e\)</span>, put <span class="math" data-tex="\(A=e^*\omega\)">\(A=e^*\omega\)</span>. For <span class="math" data-tex="\(Y=e\sigma(Y)\)">\(Y=e\sigma(Y)\)</span>, A.1 gives
+<span class="math math-display" data-tex="\[
+e^{-1}\nabla_XY=X(\sigma(Y))+A(X)\sigma(Y).
+\]">\[
+e^{-1}\nabla_XY=X(\sigma(Y))+A(X)\sigma(Y).
+\]</span>
+Subtract the expression with <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> interchanged and then <span class="math" data-tex="\(\sigma([X,Y])\)">\(\sigma([X,Y])\)</span>. The coordinate formula for <span class="math" data-tex="\(d\sigma\)">\(d\sigma\)</span> in Curvature A.2 identifies the result with <span class="math" data-tex="\((d\sigma+A\wedge\sigma)(X,Y)=e^*\Theta(X,Y)\)">\((d\sigma+A\wedge\sigma)(X,Y)=e^*\Theta(X,Y)\)</span>. This proves (D.3).</p>
+<p>For completeness its tensoriality is also visible directly. PB C.3 gives <span class="math" data-tex="\([fX,Y]=f[X,Y]-Y(f)X\)">\([fX,Y]=f[X,Y]-Y(f)X\)</span>. Using the derivative axioms, the two terms <span class="math" data-tex="\(Y(f)X\)">\(Y(f)X\)</span> cancel in <span class="math" data-tex="\(\mathcal T(fX,Y)\)">\(\mathcal T(fX,Y)\)</span>, leaving <span class="math" data-tex="\(f\mathcal T(X,Y)\)">\(f\mathcal T(X,Y)\)</span>. Skew-symmetry gives linearity over smooth functions in the second entry as well. In local bases, these properties and smoothness identify a smooth <span class="math" data-tex="\(TM\)">\(TM\)</span>-valued two-form, with no external tensor criterion required. □</p>
+<p id="theorem-d-2"><strong>Theorem D.2 (both structure identities with arbitrary torsion).</strong> Let <span class="math" data-tex="\(\Omega=d\omega+\omega\wedge\omega\)">\(\Omega=d\omega+\omega\wedge\omega\)</span>. Then
+<span class="math math-display" data-tex="\[
+D\Theta=\Omega\wedge\theta,\qquad
+d\Omega+\omega\wedge\Omega-\Omega\wedge\omega=0.
+\tag{D.4}
+\]">\[
+D\Theta=\Omega\wedge\theta,\qquad
+d\Omega+\omega\wedge\Omega-\Omega\wedge\omega=0.
+\tag{D.4}
+\]</span>
+In a local frame these read
+<span class="math math-display" data-tex="\[
+\tau=d\sigma+A\wedge\sigma,\quad F=dA+A\wedge A,
+\qquad d\tau+A\wedge\tau=F\wedge\sigma.
+\tag{D.5}
+\]">\[
+\tau=d\sigma+A\wedge\sigma,\quad F=dA+A\wedge A,
+\qquad d\tau+A\wedge\tau=F\wedge\sigma.
+\tag{D.5}
+\]</span>
+In particular, if <span class="math" data-tex="\(\mathcal T=0\)">\(\mathcal T=0\)</span>, then
+<span class="math math-display" data-tex="\[
+R(X,Y)Z+R(Y,Z)X+R(Z,X)Y=0.
+\tag{D.6}
+\]">\[
+R(X,Y)Z+R(Y,Z)X+R(Z,X)Y=0.
+\tag{D.6}
+\]</span></p>
+<p><strong>Proof.</strong> Curvature A.4 identifies the matrix curvature with <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>; its A.6 gives <span class="math" data-tex="\(D^2\theta=\Omega\wedge\theta\)">\(D^2\theta=\Omega\wedge\theta\)</span> and the second identity of (D.4). These are applications to the horizontal equivariant form already established in D.1. One can check the first identity without cancelling an implicit sign:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d\Theta+\omega\wedge\Theta
+&amp;=d\omega\wedge\theta-\omega\wedge d\theta
+  +\omega\wedge d\theta+\omega\wedge\omega\wedge\theta\\
+&amp;=(d\omega+\omega\wedge\omega)\wedge\theta.
+\end{aligned}
+\]">\[
+\begin{aligned}
+d\Theta+\omega\wedge\Theta
+&amp;=d\omega\wedge\theta-\omega\wedge d\theta
+  +\omega\wedge d\theta+\omega\wedge\omega\wedge\theta\\
+&amp;=(d\omega+\omega\wedge\omega)\wedge\theta.
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(d^2\theta=0\)">\(d^2\theta=0\)</span>, and the minus sign is the degree-one product rule from Curvature A.1–A.2. Pullback by <span class="math" data-tex="\(e\)">\(e\)</span> gives (D.5). When <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span>, evaluate <span class="math" data-tex="\(F\wedge\sigma=0\)">\(F\wedge\sigma=0\)</span> on <span class="math" data-tex="\(X,Y,Z\)">\(X,Y,Z\)</span>: it is
+<span class="math" data-tex="\(F(X,Y)\sigma(Z)+F(Y,Z)\sigma(X)+F(Z,X)\sigma(Y)=0\)">\(F(X,Y)\sigma(Z)+F(Y,Z)\sigma(X)+F(Z,X)\sigma(Y)=0\)</span>.
+Multiplication by <span class="math" data-tex="\(e\)">\(e\)</span> and B.3's curvature formula give (D.6). No torsion-free identity is asserted when <span class="math" data-tex="\(\mathcal T\ne0\)">\(\mathcal T\ne0\)</span>. □</p>
+<p id="lemma-d-3"><strong>Lemma D.3 (the connector detects torsion, also along maps).</strong> In coordinates on <span class="math" data-tex="\(TTM\)">\(TTM\)</span>, the rule
+<span class="math math-display" data-tex="\[
+\kappa(x,y;v,z)=(x,v;y,z)
+\tag{D.7}
+\]">\[
+\kappa(x,y;v,z)=(x,v;y,z)
+\tag{D.7}
+\]</span>
+defines a smooth involution independent of coordinates. If <span class="math" data-tex="\(\mathscr K:TTM\to TM\)">\(\mathscr K:TTM\to TM\)</span> is B.1's connector, then
+<span class="math math-display" data-tex="\[
+\mathcal T(X,Y)=(\mathscr K\kappa-\mathscr K)\,dX(Y).
+\tag{D.8}
+\]">\[
+\mathcal T(X,Y)=(\mathscr K\kappa-\mathscr K)\,dX(Y).
+\tag{D.8}
+\]</span>
+For every smooth <span class="math" data-tex="\(f:N\to M\)">\(f:N\to M\)</span> and fields <span class="math" data-tex="\(U,V\)">\(U,V\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>, including at critical points of <span class="math" data-tex="\(f\)">\(f\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal T(df(U),df(V))
+&amp;=\nabla^f_U(df(V))-\nabla^f_V(df(U))-df([U,V])\\
+&amp;=(\mathscr K\kappa-\mathscr K)\,d(df)\,dU(V).
+\end{aligned}
+\tag{D.9}
+\]">\[
+\begin{aligned}
+\mathcal T(df(U),df(V))
+&amp;=\nabla^f_U(df(V))-\nabla^f_V(df(U))-df([U,V])\\
+&amp;=(\mathscr K\kappa-\mathscr K)\,d(df)\,dU(V).
+\end{aligned}
+\tag{D.9}
+\]</span></p>
+<p><strong>Proof.</strong> A coordinate change <span class="math" data-tex="\(q=q(x)\)">\(q=q(x)\)</span> acts on these four entries by
+<span class="math math-display" data-tex="\[
+(x,y;v,z)\longmapsto
+(q(x),dq_x y;dq_x v,d^2q_x(v,y)+dq_x z).
+\]">\[
+(x,y;v,z)\longmapsto
+(q(x),dq_x y;dq_x v,d^2q_x(v,y)+dq_x z).
+\]</span>
+The symmetry of <span class="math" data-tex="\(d^2q\)">\(d^2q\)</span>, proved by the mixed-partial calculation of PB C.3, makes this commute with (D.7). Thus the maps glue, are smooth, and square to the identity. Write <span class="math" data-tex="\(A_x(v)y\)">\(A_x(v)y\)</span> for the bilinear term of the connector, so that <span class="math" data-tex="\(\mathscr K(x,y;v,z)=z+A_x(v)y\)">\(\mathscr K(x,y;v,z)=z+A_x(v)y\)</span>. Subtracting after interchange gives
+<span class="math math-display" data-tex="\[
+(\mathscr K\kappa-\mathscr K)(x,y;v,z)=A_x(y)v-A_x(v)y.
+\]">\[
+(\mathscr K\kappa-\mathscr K)(x,y;v,z)=A_x(y)v-A_x(v)y.
+\]</span>
+At <span class="math" data-tex="\(dX(Y)\)">\(dX(Y)\)</span>, <span class="math" data-tex="\(y=X,v=Y\)">\(y=X,v=Y\)</span>. Expanding (D.3) in the coordinate frame cancels <span class="math" data-tex="\(dY(X)-dX(Y)=[X,Y]\)">\(dY(X)-dX(Y)=[X,Y]\)</span>, leaving exactly this expression. This proves (D.8), with the order of its two entries fixed.</p>
+<p>For (D.9) work in arbitrary charts on <span class="math" data-tex="\(N,M\)">\(N,M\)</span>. By B.2,
+<span class="math math-display" data-tex="\[
+\nabla^f_U(df(V))=d^2f(U,V)+df(dV(U))+A_{f}(df(U))df(V).
+\]">\[
+\nabla^f_U(df(V))=d^2f(U,V)+df(dV(U))+A_{f}(df(U))df(V).
+\]</span>
+Subtract its counterpart with <span class="math" data-tex="\(U,V\)">\(U,V\)</span> exchanged. The Hessians cancel by symmetry, and the two first-derivative terms cancel <span class="math" data-tex="\(df([U,V])\)">\(df([U,V])\)</span>. What remains is the left side by the preceding coordinate expression. Also <span class="math" data-tex="\(d(df)dU(V)\)">\(d(df)dU(V)\)</span> has its second and third entries <span class="math" data-tex="\(df(U),df(V)\)">\(df(U),df(V)\)</span>; its fourth entry is <span class="math" data-tex="\(d^2f(V,U)+df(dU(V))\)">\(d^2f(V,U)+df(dU(V))\)</span>. That fourth entry cancels from the connector difference, proving the last equality. No inverse to <span class="math" data-tex="\(df\)">\(df\)</span> has been used. □</p>
+<p id="example-d-4"><strong>Example D.4 (changing torsion and a constant nonzero example).</strong> If <span class="math" data-tex="\(\nabla'_XY=\nabla_XY+S_XY\)">\(\nabla'_XY=\nabla_XY+S_XY\)</span>, then
+<span class="math math-display" data-tex="\[
+\mathcal T'(X,Y)=\mathcal T(X,Y)+S_XY-S_YX.
+\tag{D.10}
+\]">\[
+\mathcal T'(X,Y)=\mathcal T(X,Y)+S_XY-S_YX.
+\tag{D.10}
+\]</span>
+Every tangent connection can therefore be replaced by a torsion-free one with the same equation <span class="math" data-tex="\(\nabla_{\dot\gamma}\dot\gamma=0\)">\(\nabla_{\dot\gamma}\dot\gamma=0\)</span>. On <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, the connection whose only nonzero coordinate coefficient is <span class="math" data-tex="\(\nabla_{\partial_x}\partial_y=\partial_x\)">\(\nabla_{\partial_x}\partial_y=\partial_x\)</span> has <span class="math" data-tex="\(\mathcal T(\partial_x,\partial_y)=\partial_x\)">\(\mathcal T(\partial_x,\partial_y)=\partial_x\)</span>.</p>
+<p><strong>Proof.</strong> Substitution in (D.3) gives (D.10), since the bracket is unchanged. The tensor <span class="math" data-tex="\(S_XY=-\mathcal T(X,Y)/2\)">\(S_XY=-\mathcal T(X,Y)/2\)</span> is permitted by A.3 and D.1. Its antisymmetrization is <span class="math" data-tex="\(-\mathcal T\)">\(-\mathcal T\)</span>, so the new torsion is zero. Along a curve, B.2 evaluates the difference of the two derivatives at <span class="math" data-tex="\(S_{\dot\gamma}\dot\gamma=0\)">\(S_{\dot\gamma}\dot\gamma=0\)</span>; thus the equations agree. This assertion compares equations and does not invoke a geodesic existence theorem. For the example take <span class="math" data-tex="\(A=N\,dx\)">\(A=N\,dx\)</span>, where <span class="math" data-tex="\(N=\left(\begin{smallmatrix}0&amp;1\\0&amp;0\end{smallmatrix}\right)\)">\(N=\left(\begin{smallmatrix}0&amp;1\\0&amp;0\end{smallmatrix}\right)\)</span>, in the coordinate frame. A.1 constructs the connection. The coordinate fields commute, giving the claimed torsion. More generally, if <span class="math" data-tex="\(\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k\)">\(\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k\)</span>, the coefficients are <span class="math" data-tex="\(\Gamma^k_{ij}-\Gamma^k_{ji}\)">\(\Gamma^k_{ij}-\Gamma^k_{ji}\)</span>. They cannot in general be replaced by <span class="math" data-tex="\(2\Gamma^k_{ij}\)">\(2\Gamma^k_{ij}\)</span>; no symmetry has been assumed. □</p>
+<h2 id="part-e">E. Connections on affine frames</h2>
+<p>An affine frame of <span class="math" data-tex="\(T_xM\)">\(T_xM\)</span> is a bijective affine map <span class="math" data-tex="\(q:\mathbb R^n\to T_xM\)">\(q:\mathbb R^n\to T_xM\)</span>, written uniquely <span class="math" data-tex="\(q(w)=b+u w\)">\(q(w)=b+u w\)</span>, where <span class="math" data-tex="\(b\in T_xM\)">\(b\in T_xM\)</span> and <span class="math" data-tex="\(u\in\operatorname{Fr}(T_xM)\)">\(u\in\operatorname{Fr}(T_xM)\)</span>. The origin <span class="math" data-tex="\(b\)">\(b\)</span> is part of the frame. We derive its connection theory directly from the complete programme constructions <a href="principal-bundles-and-associated-bundles.html">PB A.1–A.2 and B.1</a>, <a href="connections-and-parallel-transport.html">Conn A.2–A.3 and C.1–C.2</a>, and <a href="curvature-and-holonomy-groups.html">Curvature A.4 and C.5</a>. The arguments below supply the affine group calculations; no separate affine-connection theorem is assumed.</p>
+<p id="lemma-e-1"><strong>Lemma E.1 (the affine group and affine frame bundle).</strong> The group <span class="math" data-tex="\(G=\operatorname{Aff}(n,\mathbb R)\)">\(G=\operatorname{Aff}(n,\mathbb R)\)</span> consists of pairs <span class="math" data-tex="\((a,c)\)">\((a,c)\)</span> acting by <span class="math" data-tex="\(w\mapsto aw+c\)">\(w\mapsto aw+c\)</span>, with
+<span class="math math-display" data-tex="\[
+(a,c)(h,d)=(ah,c+ad),\qquad
+(a,c)^{-1}=(a^{-1},-a^{-1}c).
+\tag{E.1}
+\]">\[
+(a,c)(h,d)=(ah,c+ad),\qquad
+(a,c)^{-1}=(a^{-1},-a^{-1}c).
+\tag{E.1}
+\]</span>
+It is a Lie group, represented faithfully by matrices
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}a&amp;c\\0&amp;1\end{pmatrix}.
+\]">\[
+\begin{pmatrix}a&amp;c\\0&amp;1\end{pmatrix}.
+\]</span>
+Its Lie algebra consists of <span class="math" data-tex="\((B,v)\)">\((B,v)\)</span>, represented by the same block matrix with bottom-right entry zero, and has bracket
+<span class="math math-display" data-tex="\[
+[(B,v),(C,w)]=([B,C],Bw-Cv).
+\tag{E.2}
+\]">\[
+[(B,v),(C,w)]=([B,C],Bw-Cv).
+\tag{E.2}
+\]</span>
+Affine frames form a smooth principal right <span class="math" data-tex="\(G\)">\(G\)</span>-bundle <span class="math" data-tex="\(Q\to M\)">\(Q\to M\)</span>. There is an embedding <span class="math" data-tex="\(j:P\to Q\)">\(j:P\to Q\)</span>, <span class="math" data-tex="\(j(u)(w)=u w\)">\(j(u)(w)=u w\)</span>, and a smooth linear-part map <span class="math" data-tex="\(\ell:Q\to P\)">\(\ell:Q\to P\)</span>, <span class="math" data-tex="\(\ell(b+u\,\cdot)=u\)">\(\ell(b+u\,\cdot)=u\)</span>, equivariant for <span class="math" data-tex="\(p:G\to\mathrm{GL}(n,\mathbb R)\)">\(p:G\to\mathrm{GL}(n,\mathbb R)\)</span>, <span class="math" data-tex="\(p(a,c)=a\)">\(p(a,c)=a\)</span>.</p>
+<p><strong>Proof.</strong> Composition of the two affine maps gives (E.1), and substitution verifies the inverse. The manifold is the product of the open set of invertible matrices with <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Multiplication is polynomial and inversion smooth by Local 0.4, so it is a Lie group. The block representation is injective and smooth with smooth inverse onto its image. Tangent vectors at the identity are exactly the displayed matrices with arbitrary <span class="math" data-tex="\(B,v\)">\(B,v\)</span>. For completeness, in any matrix group the left-invariant field belonging to a tangent matrix <span class="math" data-tex="\(X\)">\(X\)</span> is <span class="math" data-tex="\(g\mapsto gX\)">\(g\mapsto gX\)</span>. Differentiation gives its bracket with <span class="math" data-tex="\(g\mapsto gY\)">\(g\mapsto gY\)</span> as <span class="math" data-tex="\(g(XY-YX)\)">\(g(XY-YX)\)</span>, by PB C.3's bracket convention. Block multiplication gives (E.2).</p>
+<p>For a local linear frame <span class="math" data-tex="\(e\)">\(e\)</span>, every affine frame has unique coordinates</p>
+<p><span class="math" data-tex="\(q(w)=e(x)(c+a w)=j(e(x))(a,c)(w)\)">\(q(w)=e(x)(c+a w)=j(e(x))(a,c)(w)\)</span>.</p>
+<p>If <span class="math" data-tex="\(e'=eg\)">\(e'=eg\)</span>, primed coordinates <span class="math" data-tex="\((a',c')\)">\((a',c')\)</span> and unprimed coordinates satisfy <span class="math" data-tex="\((a,c)=(ga',gc')\)">\((a,c)=(ga',gc')\)</span>, the left multiplication by <span class="math" data-tex="\((g,0)\)">\((g,0)\)</span>. These smooth transitions satisfy the cocycle condition, so PB A.1 supplies all manifold, separation and countability properties and the principal action, which is composition on the right. The set thereby constructed is exactly the stated set of affine maps by its unique coordinates. In these charts <span class="math" data-tex="\(j(ea)\)">\(j(ea)\)</span> has <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, proving it is an embedding; <span class="math" data-tex="\(\ell(x,a,c)=(x,a)\)">\(\ell(x,a,c)=(x,a)\)</span> is smooth. Direct composition gives <span class="math" data-tex="\(\ell(q(a,c))=\ell(q)a\)">\(\ell(q(a,c))=\ell(q)a\)</span>. These arguments also cover <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, when both groups and fibres consist of one point. □</p>
+<p id="theorem-e-2"><strong>Theorem E.2 (generalized and normalized affine connections).</strong> Principal connections <span class="math" data-tex="\(\eta\)">\(\eta\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span> correspond bijectively to pairs <span class="math" data-tex="\((\nabla,K)\)">\((\nabla,K)\)</span>, where <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> is a linear connection on <span class="math" data-tex="\(TM\)">\(TM\)</span> and <span class="math" data-tex="\(K:TM\to TM\)">\(K:TM\to TM\)</span> is a smooth bundle endomorphism. On the zero-origin copy of <span class="math" data-tex="\(P\)">\(P\)</span>,
+<span class="math math-display" data-tex="\[
+j^*\eta=
+\begin{pmatrix}\omega&amp;\varphi\\0&amp;0\end{pmatrix},
+\qquad \varphi_u(Z)=u^{-1}K_x(d\pi Z).
+\tag{E.3}
+\]">\[
+j^*\eta=
+\begin{pmatrix}\omega&amp;\varphi\\0&amp;0\end{pmatrix},
+\qquad \varphi_u(Z)=u^{-1}K_x(d\pi Z).
+\tag{E.3}
+\]</span>
+The connection is called normalized when <span class="math" data-tex="\(K=I\)">\(K=I\)</span>, equivalently <span class="math" data-tex="\(\varphi=\theta\)">\(\varphi=\theta\)</span>. Thus normalized affine connections correspond bijectively to linear connections. In a local zero-origin affine section <span class="math" data-tex="\(j(e)\)">\(j(e)\)</span>, its potential is
+<span class="math math-display" data-tex="\[
+\mathcal A=\begin{pmatrix}A&amp;k\\0&amp;0\end{pmatrix},
+\qquad k=e^{-1}K\in\Omega^1(U,\mathbb R^n),
+\tag{E.4}
+\]">\[
+\mathcal A=\begin{pmatrix}A&amp;k\\0&amp;0\end{pmatrix},
+\qquad k=e^{-1}K\in\Omega^1(U,\mathbb R^n),
+\tag{E.4}
+\]</span>
+where <span class="math" data-tex="\(k(X)=e^{-1}K(X)\)">\(k(X)=e^{-1}K(X)\)</span>.</p>
+<p><strong>Proof.</strong> Pull a principal connection on <span class="math" data-tex="\(Q\)">\(Q\)</span> back by <span class="math" data-tex="\(j\)">\(j\)</span> and separate its two Lie-algebra components. On a fundamental vector for <span class="math" data-tex="\(B\in\mathfrak{gl}(n)\)">\(B\in\mathfrak{gl}(n)\)</span>, reproduction gives <span class="math" data-tex="\((B,0)\)">\((B,0)\)</span>. Equivariance under <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span> gives
+<span class="math math-display" data-tex="\[
+R_a^*\omega=a^{-1}\omega a,\qquad R_a^*\varphi=a^{-1}\varphi.
+\]">\[
+R_a^*\omega=a^{-1}\omega a,\qquad R_a^*\varphi=a^{-1}\varphi.
+\]</span>
+Consequently <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is a connection on <span class="math" data-tex="\(P\)">\(P\)</span> by Conn A.2, hence corresponds to <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> by A.2. The second form vanishes on vertical vectors. For <span class="math" data-tex="\(X\in T_xM\)">\(X\in T_xM\)</span>, choose <span class="math" data-tex="\(u\in P_x\)">\(u\in P_x\)</span> and a lift <span class="math" data-tex="\(Z\in T_uP\)">\(Z\in T_uP\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span>, and define <span class="math" data-tex="\(K_x(X)=u\varphi_u(Z)\)">\(K_x(X)=u\varphi_u(Z)\)</span>. Vertical vanishing makes this independent of the lift. Equivariance makes it independent of <span class="math" data-tex="\(u\)">\(u\)</span>. Local section coordinates prove that it is a smooth fibrewise linear endomorphism, and establish (E.3).</p>
+<p>Conversely, given <span class="math" data-tex="\((\nabla,K)\)">\((\nabla,K)\)</span>, put (E.4) in each local section <span class="math" data-tex="\(j(e)\)">\(j(e)\)</span>. When <span class="math" data-tex="\(e'=eg\)">\(e'=eg\)</span>, A.1 gives <span class="math" data-tex="\(A'=g^{-1}Ag+g^{-1}dg\)">\(A'=g^{-1}Ag+g^{-1}dg\)</span> and the definition gives <span class="math" data-tex="\(k'=g^{-1}k\)">\(k'=g^{-1}k\)</span>. These are exactly the block entries of
+<span class="math math-display" data-tex="\[
+\mathcal A'=\begin{pmatrix}g&amp;0\\0&amp;1\end{pmatrix}^{-1}
+\mathcal A\begin{pmatrix}g&amp;0\\0&amp;1\end{pmatrix}
++\begin{pmatrix}g&amp;0\\0&amp;1\end{pmatrix}^{-1}d\begin{pmatrix}g&amp;0\\0&amp;1\end{pmatrix}.
+\]">\[
+\mathcal A'=\begin{pmatrix}g&amp;0\\0&amp;1\end{pmatrix}^{-1}
+\mathcal A\begin{pmatrix}g&amp;0\\0&amp;1\end{pmatrix}
++\begin{pmatrix}g&amp;0\\0&amp;1\end{pmatrix}^{-1}d\begin{pmatrix}g&amp;0\\0&amp;1\end{pmatrix}.
+\]</span>
+Conn A.3 therefore produces a unique global principal connection. Its pullback along <span class="math" data-tex="\(j\)">\(j\)</span> has (E.3), by that theorem's full local formula. Every point of <span class="math" data-tex="\(Q\)">\(Q\)</span> is <span class="math" data-tex="\(j(e(x))h\)">\(j(e(x))h\)</span>, so the same full local formula proves uniqueness from these potentials and that the two constructions are inverse. Finally <span class="math" data-tex="\(u^{-1}K(X)=u^{-1}X\)">\(u^{-1}K(X)=u^{-1}X\)</span> for every <span class="math" data-tex="\(u,X\)">\(u,X\)</span> is equivalent to <span class="math" data-tex="\(K=I\)">\(K=I\)</span>, proving normalization. □</p>
+<p id="theorem-e-3"><strong>Theorem E.3 (curvature and projected holonomy).</strong> Let <span class="math" data-tex="\(\widehat\Omega=d\eta+\eta\wedge\eta\)">\(\widehat\Omega=d\eta+\eta\wedge\eta\)</span>. Then
+<span class="math math-display" data-tex="\[
+j^*\widehat\Omega=
+\begin{pmatrix}\Omega&amp;d\varphi+\omega\wedge\varphi\\0&amp;0\end{pmatrix}.
+\tag{E.5}
+\]">\[
+j^*\widehat\Omega=
+\begin{pmatrix}\Omega&amp;d\varphi+\omega\wedge\varphi\\0&amp;0\end{pmatrix}.
+\tag{E.5}
+\]</span>
+For <span class="math" data-tex="\(K=I\)">\(K=I\)</span> its upper-right entry is <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>. The linear-part homomorphism maps full affine holonomy onto full linear holonomy, and restricted affine holonomy onto restricted linear holonomy, using <span class="math" data-tex="\(q\in Q_x\)">\(q\in Q_x\)</span> and <span class="math" data-tex="\(\ell(q)\in P_x\)">\(\ell(q)\in P_x\)</span> as base frames.</p>
+<p><strong>Proof.</strong> Pullback commutes with <span class="math" data-tex="\(d\)">\(d\)</span> and matrix wedge multiplication by Curvature A.1–A.2. Squaring the block matrix in (E.3) gives upper-left entry <span class="math" data-tex="\(\omega\wedge\omega\)">\(\omega\wedge\omega\)</span> and upper-right entry <span class="math" data-tex="\(\omega\wedge\varphi\)">\(\omega\wedge\varphi\)</span>; this proves (E.5). D.2 proves the normalized assertion.</p>
+<p>To prove the holonomy statement, first check equality of connection forms <span class="math" data-tex="\(\ell^*\omega=p_*\eta\)">\(\ell^*\omega=p_*\eta\)</span> on all of <span class="math" data-tex="\(Q\)">\(Q\)</span>. In the chart <span class="math" data-tex="\(q=j(e)h\)">\(q=j(e)h\)</span>, with <span class="math" data-tex="\(h=(a,c)\)">\(h=(a,c)\)</span>, Conn A.3 gives <span class="math" data-tex="\(\eta=h^{-1}\mathcal A h+h^{-1}dh\)">\(\eta=h^{-1}\mathcal A h+h^{-1}dh\)</span>. Its upper-left block is <span class="math" data-tex="\(a^{-1}Aa+a^{-1}da\)">\(a^{-1}Aa+a^{-1}da\)</span>, exactly the principal form on <span class="math" data-tex="\(\ell(q)=ea\)">\(\ell(q)=ea\)</span>. This establishes the equality without asserting that the zero-origin subbundle is horizontal. Thus the linear part of a horizontal affine lift is a horizontal linear lift. Initial values and uniqueness from Conn C.1 identify these lifts on their entire intervals; the conclusion also holds on finitely many <span class="math" data-tex="\(C^1\)">\(C^1\)</span> pieces by Curvature C.2.</p>
+<p>For any based loop <span class="math" data-tex="\(c\)">\(c\)</span>, write its affine endpoint as <span class="math" data-tex="\(q h(c)\)">\(q h(c)\)</span>. Equivariance of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and the preceding lift identity give the linear endpoint <span class="math" data-tex="\(\ell(q)p(h(c))\)">\(\ell(q)p(h(c))\)</span>. Freeness of the linear action means its holonomy element is precisely <span class="math" data-tex="\(p(h(c))\)">\(p(h(c))\)</span>. Conversely every linear holonomy element comes from a loop, and the same loop has an affine lift by Conn C.1 (or Curvature C.2), so lies in this image. The argument applies to exactly the same continuously nullhomotopic loops on both sides, giving the restricted assertion. Curvature C.5 supplies the full and restricted holonomy groups; no closedness assumption on either is made. □</p>
+<h2 id="part-f">F. Transporting points and developing paths</h2>
+<p>We now derive affine transport from the connection just constructed. The only integration and transport facts used are the complete proofs in <a href="local-tools-for-bundles-and-transport.html">Local 0.3</a>, <a href="connections-and-parallel-transport.html">Conn C.1–C.2</a>, and B.2. Curvature D.0, proved in the <a href="curvature-and-holonomy-groups.html">curvature chapter</a>, supplies circle angles and winding for the example below.</p>
+<p id="theorem-f-1"><strong>Theorem F.1 (affine transport and development).</strong> For a finitely piecewise smooth path <span class="math" data-tex="\(\gamma:[0,b]\to M\)">\(\gamma:[0,b]\to M\)</span>, let <span class="math" data-tex="\(T_{st}:T_{\gamma(s)}M\to T_{\gamma(t)}M\)">\(T_{st}:T_{\gamma(s)}M\to T_{\gamma(t)}M\)</span> be linear transport. For the generalized affine connection <span class="math" data-tex="\((\nabla,K)\)">\((\nabla,K)\)</span>, set
+<span class="math math-display" data-tex="\[
+\delta_K(t)=\int_0^t T_{r0}K_{\gamma(r)}\dot\gamma(r)\,dr\in T_{\gamma(0)}M.
+\tag{F.1}
+\]">\[
+\delta_K(t)=\int_0^t T_{r0}K_{\gamma(r)}\dot\gamma(r)\,dr\in T_{\gamma(0)}M.
+\tag{F.1}
+\]</span>
+Its affine transport is
+<span class="math math-display" data-tex="\[
+F_{0t}(v)=T_{0t}(v-\delta_K(t)),\qquad F_{0t}^{-1}(0)=\delta_K(t).
+\tag{F.2}
+\]">\[
+F_{0t}(v)=T_{0t}(v-\delta_K(t)),\qquad F_{0t}^{-1}(0)=\delta_K(t).
+\tag{F.2}
+\]</span>
+It is the unique solution of the inhomogeneous equation
+<span class="math math-display" data-tex="\[
+D_t w=-K\dot\gamma,\qquad w(0)=v.
+\tag{F.3}
+\]">\[
+D_t w=-K\dot\gamma,\qquad w(0)=v.
+\tag{F.3}
+\]</span>
+When <span class="math" data-tex="\(K=I\)">\(K=I\)</span>, <span class="math" data-tex="\(\delta=\delta_I\)">\(\delta=\delta_I\)</span> is the development of the path in its initial tangent space; <span class="math" data-tex="\(\delta(0)=0\)">\(\delta(0)=0\)</span> and <span class="math" data-tex="\(\dot\delta(t)=T_{t0}\dot\gamma(t)\)">\(\dot\delta(t)=T_{t0}\dot\gamma(t)\)</span> on each smooth piece. Affine transports are invertible, concatenate in path order, and are unchanged by orientation-preserving piecewise smooth reparametrization.</p>
+<p><strong>Proof.</strong> The bundle associated to <span class="math" data-tex="\(Q\)">\(Q\)</span> by its affine action on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> is <span class="math" data-tex="\(TM\)">\(TM\)</span> as a bundle of affine spaces: the evaluation map <span class="math" data-tex="\([q,z]\mapsto q(z)\)">\([q,z]\mapsto q(z)\)</span> is well defined because <span class="math" data-tex="\([qh,z]=[q,hz]\)">\([qh,z]=[q,hz]\)</span>. In a local zero-origin frame its formula and inverse are simply the ordinary tangent-bundle coordinates. PB B.1 therefore gives a smooth bundle identification. A horizontal path <span class="math" data-tex="\(q(t)\)">\(q(t)\)</span> defines <span class="math" data-tex="\(F_{0t}(q(0)z)=q(t)z\)">\(F_{0t}(q(0)z)=q(t)z\)</span>. Equivariance of principal transport shows this definition is independent of the chosen initial affine frame.</p>
+<p>In a local section write <span class="math" data-tex="\(q(t)=j(e(\gamma(t)))h(t)\)">\(q(t)=j(e(\gamma(t)))h(t)\)</span>, where
+<span class="math" data-tex="\(h=\left(\begin{smallmatrix}a&amp;c\\0&amp;1\end{smallmatrix}\right)\)">\(h=\left(\begin{smallmatrix}a&amp;c\\0&amp;1\end{smallmatrix}\right)\)</span>.
+Conn C.1 gives <span class="math" data-tex="\(h'=-\mathcal A(\dot\gamma)h\)">\(h'=-\mathcal A(\dot\gamma)h\)</span>, hence
+<span class="math math-display" data-tex="\[
+a'=-A(\dot\gamma)a,\qquad c'=-A(\dot\gamma)c-k(\dot\gamma).
+\]">\[
+a'=-A(\dot\gamma)a,\qquad c'=-A(\dot\gamma)c-k(\dot\gamma).
+\]</span>
+The coordinates <span class="math" data-tex="\(y(t)=a(t)z+c(t)\)">\(y(t)=a(t)z+c(t)\)</span> of <span class="math" data-tex="\(q(t)z\)">\(q(t)z\)</span> consequently satisfy <span class="math" data-tex="\(y'+A(\dot\gamma)y=-k(\dot\gamma)\)">\(y'+A(\dot\gamma)y=-k(\dot\gamma)\)</span>. By B.2 this is (F.3), independent of the local frame.</p>
+<p>Choose an initial linear frame and transport it along the whole path by A.2. In that moving frame B.2 gives
+<span class="math math-display" data-tex="\[
+\frac{d}{dt}\bigl(T_{t0}w(t)\bigr)=T_{t0}D_t w(t).
+\]">\[
+\frac{d}{dt}\bigl(T_{t0}w(t)\bigr)=T_{t0}D_t w(t).
+\]</span>
+The integrand in (F.1) is continuous on each closed smooth piece and has the appropriate one-sided values at the finitely many corners. Componentwise integration and the fundamental theorem in Local 0.3 give (F.2), with continuity across corners. Conversely differentiating this integral gives (F.3) and its initial value. If two solutions exist, their difference has constant coordinates in the moving frame and initial value zero, proving uniqueness. Since <span class="math" data-tex="\(T_{0t}\)">\(T_{0t}\)</span> is invertible, (F.2) gives the inverse image of zero exactly as stated. The derivative formula for <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is again the fundamental theorem on each piece. Finally the evaluation construction transfers inverse, concatenation and reparametrization identities from Conn C.2 to <span class="math" data-tex="\(F\)">\(F\)</span>; these also follow from the just-proved uniqueness. No completeness assumption on the manifold or connection is involved. □</p>
+<p id="theorem-f-2"><strong>Theorem F.2 (moving the origin and parallel point fields).</strong> For a vector field <span class="math" data-tex="\(V\)">\(V\)</span>, let <span class="math" data-tex="\(j_V(u)(z)=V(x)+uz\)">\(j_V(u)(z)=V(x)+uz\)</span>. In the generalized connection,
+<span class="math math-display" data-tex="\[
+j_V^*\eta=
+\begin{pmatrix}\omega&amp;\varphi+Dv\\0&amp;0\end{pmatrix},
+\qquad v(u)=u^{-1}V(x),\quad Dv=dv+\omega v.
+\tag{F.4}
+\]">\[
+j_V^*\eta=
+\begin{pmatrix}\omega&amp;\varphi+Dv\\0&amp;0\end{pmatrix},
+\qquad v(u)=u^{-1}V(x),\quad Dv=dv+\omega v.
+\tag{F.4}
+\]</span>
+Thus <span class="math" data-tex="\(Dv\)">\(Dv\)</span> represents <span class="math" data-tex="\(\nabla V\)">\(\nabla V\)</span>. A vector field <span class="math" data-tex="\(V\)">\(V\)</span>, considered as a point in every affine tangent space, is parallel along every path exactly when
+<span class="math math-display" data-tex="\[
+\nabla_XV=-K(X)\quad\hbox{for every }X.
+\tag{F.5}
+\]">\[
+\nabla_XV=-K(X)\quad\hbox{for every }X.
+\tag{F.5}
+\]</span>
+For the normalized flat connection on connected <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, these fields are exactly <span class="math" data-tex="\(V(x)=c-x\)">\(V(x)=c-x\)</span>. For the normalized flat connection on the circle with its global angular frame parallel, there is no parallel point field. Its affine holonomy consists of the translations by <span class="math" data-tex="\(2\pi\mathbb Z\)">\(2\pi\mathbb Z\)</span>, although its linear holonomy is trivial.</p>
+<p><strong>Proof.</strong> The relation <span class="math" data-tex="\(j_V(u)=j(u)t(v(u))\)">\(j_V(u)=j(u)t(v(u))\)</span>, with
+<span class="math" data-tex="\(t(v)=\left(\begin{smallmatrix}I&amp;v\\0&amp;1\end{smallmatrix}\right)\)">\(t(v)=\left(\begin{smallmatrix}I&amp;v\\0&amp;1\end{smallmatrix}\right)\)</span>,
+and Conn A.3's variable right-translation formula give
+<span class="math math-display" data-tex="\[
+t(v)^{-1}\begin{pmatrix}\omega&amp;\varphi\\0&amp;0\end{pmatrix}t(v)+t(v)^{-1}dt(v)
+=\begin{pmatrix}\omega&amp;\varphi+\omega v+dv\\0&amp;0\end{pmatrix}.
+\]">\[
+t(v)^{-1}\begin{pmatrix}\omega&amp;\varphi\\0&amp;0\end{pmatrix}t(v)+t(v)^{-1}dt(v)
+=\begin{pmatrix}\omega&amp;\varphi+\omega v+dv\\0&amp;0\end{pmatrix}.
+\]</span>
+This proves (F.4) on <span class="math" data-tex="\(P\)">\(P\)</span>. A.2 or Curvature A.5 identifies <span class="math" data-tex="\(Dv\)">\(Dv\)</span> with <span class="math" data-tex="\(\nabla V\)">\(\nabla V\)</span>. Along any path, F.1 says that <span class="math" data-tex="\(V(\gamma(t))\)">\(V(\gamma(t))\)</span> is transported as a point exactly when <span class="math" data-tex="\(\nabla_{\dot\gamma}V=-K\dot\gamma\)">\(\nabla_{\dot\gamma}V=-K\dot\gamma\)</span>. Equation (F.5) implies this for every path by uniqueness. Conversely every tangent vector is the initial velocity of a coordinate straight path on a sufficiently small interval; differentiation along those paths gives (F.5).</p>
+<p>For the standard flat connection on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, (F.5) is <span class="math" data-tex="\(dV=-I\)">\(dV=-I\)</span>. Along a line segment, Local 0.3 gives <span class="math" data-tex="\(V(x)+x=V(0)\)">\(V(x)+x=V(0)\)</span>; thus <span class="math" data-tex="\(V=c-x\)">\(V=c-x\)</span>, and differentiation checks every such field. In rank zero the same statement has its unique empty-vector value.</p>
+<p>For the circle use <span class="math" data-tex="\(z\in U(1)\)">\(z\in U(1)\)</span>, its global nonzero tangent frame <span class="math" data-tex="\(e(z)=iz\)">\(e(z)=iz\)</span>, and the global angular form <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of Curvature D.0, so <span class="math" data-tex="\(\alpha(e)=1\)">\(\alpha(e)=1\)</span>. Declare <span class="math" data-tex="\(\nabla e=0\)">\(\nabla e=0\)</span>; A.1 makes this a global tangent connection. Its matrix curvature and torsion are zero since every two-form on a one-dimensional space is zero, and its linear transport sends <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(e\)">\(e\)</span>. For a loop of winding <span class="math" data-tex="\(m\)">\(m\)</span>, D.0 gives <span class="math" data-tex="\(\int\alpha=2\pi m\)">\(\int\alpha=2\pi m\)</span>, so F.1 gives
+<span class="math math-display" data-tex="\[
+F(ae_x)=(a-2\pi m)e_x.
+\tag{F.6}
+\]">\[
+F(ae_x)=(a-2\pi m)e_x.
+\tag{F.6}
+\]</span>
+Every integer winding occurs by D.0, proving the holonomy assertion, with either sign giving the same translation subgroup. A parallel point field would have a value fixed by the once-positive loop; no real <span class="math" data-tex="\(a\)">\(a\)</span> satisfies <span class="math" data-tex="\(a-2\pi=a\)">\(a-2\pi=a\)</span>. This proves nonexistence. In particular, preserving zero is not automatic for a normalized affine connection. □</p>
+<p id="example-f-3"><strong>Example F.3 (a noncommuting potential and a varying frame).</strong> On the trivial rank-two bundle over <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, let
+<span class="math math-display" data-tex="\[
+N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\quad
+H=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\quad
+A=N\,dx+H\,dy,\quad a=I+xN.
+\]">\[
+N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\quad
+H=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\quad
+A=N\,dx+H\,dy,\quad a=I+xN.
+\]</span>
+In the frame <span class="math" data-tex="\(e'=ea\)">\(e'=ea\)</span>, the potential and curvature are
+<span class="math math-display" data-tex="\[
+A'=2N\,dx+(H+2xN)\,dy,\qquad
+F=F'=-2N\,dx\wedge dy=a^{-1}Fa.
+\tag{F.7}
+\]">\[
+A'=2N\,dx+(H+2xN)\,dy,\qquad
+F=F'=-2N\,dx\wedge dy=a^{-1}Fa.
+\tag{F.7}
+\]</span>
+Transport along any horizontal coordinate segment from <span class="math" data-tex="\(x_0\)">\(x_0\)</span> to <span class="math" data-tex="\(x_1\)">\(x_1\)</span> has matrix <span class="math" data-tex="\(I-(x_1-x_0)N\)">\(I-(x_1-x_0)N\)</span> in the original frame and <span class="math" data-tex="\(I-2(x_1-x_0)N\)">\(I-2(x_1-x_0)N\)</span> in the new frame. The dual potential on column coordinates is <span class="math" data-tex="\(-A^{\mathsf T}\)">\(-A^{\mathsf T}\)</span>.</p>
+<p><strong>Proof.</strong> Direct matrix multiplication gives <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>, <span class="math" data-tex="\(HN=N\)">\(HN=N\)</span>, <span class="math" data-tex="\(NH=-N\)">\(NH=-N\)</span>. Thus <span class="math" data-tex="\(a^{-1}=I-xN\)">\(a^{-1}=I-xN\)</span>, <span class="math" data-tex="\(a^{-1}Na=N\)">\(a^{-1}Na=N\)</span>, <span class="math" data-tex="\(a^{-1}Ha=H+2xN\)">\(a^{-1}Ha=H+2xN\)</span> and <span class="math" data-tex="\(a^{-1}da=N\,dx\)">\(a^{-1}da=N\,dx\)</span>. A.1 gives <span class="math" data-tex="\(A'\)">\(A'\)</span>. B.3 gives <span class="math" data-tex="\(F=[N,H]\,dx\wedge dy=-2N\,dx\wedge dy\)">\(F=[N,H]\,dx\wedge dy=-2N\,dx\wedge dy\)</span>. For the new potential, the derivative term is <span class="math" data-tex="\(2N\,dx\wedge dy\)">\(2N\,dx\wedge dy\)</span> and its wedge square is <span class="math" data-tex="\([2N,H+2xN]\,dx\wedge dy=-4N\,dx\wedge dy\)">\([2N,H+2xN]\,dx\wedge dy=-4N\,dx\wedge dy\)</span>; their sum is (F.7). Conjugation fixes <span class="math" data-tex="\(N\)">\(N\)</span>, verifying the last equality independently.</p>
+<p>Along the segment, differentiating <span class="math" data-tex="\(I-(x(t)-x_0)N\)">\(I-(x(t)-x_0)N\)</span> verifies the equation <span class="math" data-tex="\(G'=-\dot x NG\)">\(G'=-\dot x NG\)</span>, since <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>, with initial matrix <span class="math" data-tex="\(I\)">\(I\)</span>. A.2's uniqueness therefore gives the transport. New coordinates multiply it by <span class="math" data-tex="\(a(x_1)^{-1}\)">\(a(x_1)^{-1}\)</span> on the left and <span class="math" data-tex="\(a(x_0)\)">\(a(x_0)\)</span> on the right; <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span> reduces the product to the stated doubled coefficient. C.1's dual formula is <span class="math" data-tex="\(X\lambda-\lambda A\)">\(X\lambda-\lambda A\)</span> for row coordinates; transposing gives the column potential <span class="math" data-tex="\(-A^{\mathsf T}\)">\(-A^{\mathsf T}\)</span>. □</p>
+<h2 id="part-g">G. Geodesics and a complete latitude calculation</h2>
+<p>The construction source for the sphere frame is Michor's exact free <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf">author manuscript</a>, §25.7, native pages 327–328. We compute the connection, development and affine holonomy explicitly. <a href="supporting/DG-CHAR-8e0b5f71efec/DG-CHAR-17.html">DG-CHAR-17 V.1 and V.5</a> prove the Levi-Civita theorem and the smooth round-sphere model. Conn E.1 proves the circle exponential, its period and differentiation, so the trigonometric notation below has an earlier programme foundation.</p>
+<p id="theorem-g-1"><strong>Theorem G.1 (development and affine parameter).</strong> For a <span class="math" data-tex="\(C^2\)">\(C^2\)</span> curve, its normalized development satisfies
+<span class="math math-display" data-tex="\[
+\delta''(t)=T_{t0}D_t\dot\gamma(t).
+\tag{G.1}
+\]">\[
+\delta''(t)=T_{t0}D_t\dot\gamma(t).
+\tag{G.1}
+\]</span>
+Consequently <span class="math" data-tex="\(D_t\dot\gamma=0\)">\(D_t\dot\gamma=0\)</span> if and only if <span class="math" data-tex="\(\delta(t)=t v\)">\(\delta(t)=t v\)</span> for a constant initial tangent vector <span class="math" data-tex="\(v\)">\(v\)</span>, with initial time zero. For the standard flat connection on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-tex="\(\delta(t)=\gamma(t)-\gamma(0)\)">\(\delta(t)=\gamma(t)-\gamma(0)\)</span>. A straight image alone does not imply affine parametrization.</p>
+<p><strong>Proof.</strong> Curvature C.2 extends the transport used in F.1 to <span class="math" data-tex="\(C^1\)">\(C^1\)</span> paths. F.1's integral and moving-frame proof requires only continuous velocity, so its derivative formula <span class="math" data-tex="\(\delta'=T_{t0}\dot\gamma\)">\(\delta'=T_{t0}\dot\gamma\)</span> remains valid there. For a <span class="math" data-tex="\(C^2\)">\(C^2\)</span> curve, <span class="math" data-tex="\(\dot\gamma\)">\(\dot\gamma\)</span> is <span class="math" data-tex="\(C^1\)">\(C^1\)</span>; differentiating its coordinates in a horizontal frame, as proved in A.2 and B.2, gives (G.1). Invertibility of transport proves that one side vanishes precisely when the other does. Integrate twice using Local 0.3 and <span class="math" data-tex="\(\delta(0)=0\)">\(\delta(0)=0\)</span> to obtain the asserted affine function; differentiating it proves the converse. In the standard flat frame transport is the identity, so F.1 and Local 0.3 give the difference of endpoints. For <span class="math" data-tex="\(\gamma(t)=t^2v\)">\(\gamma(t)=t^2v\)</span> with <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, the image is straight but <span class="math" data-tex="\(\delta''=2v\ne0\)">\(\delta''=2v\ne0\)</span>; this verifies the final distinction.</p>
+<p>For a closed path, if a horizontal frame has endpoint <span class="math" data-tex="\(u(b)=u(0)a\)">\(u(b)=u(0)a\)</span> and <span class="math" data-tex="\(d=u(0)^{-1}\delta(b)\)">\(d=u(0)^{-1}\delta(b)\)</span>, F.1 gives its affine holonomy coordinates <span class="math" data-tex="\((a,-ad)\)">\((a,-ad)\)</span>. This follows by applying <span class="math" data-tex="\(F_{0b}\)">\(F_{0b}\)</span> to every <span class="math" data-tex="\(u(0)v\)">\(u(0)v\)</span>, obtaining <span class="math" data-tex="\(u(0)a(v-d)\)">\(u(0)a(v-d)\)</span>; it determines the affine map uniquely. If the alternative law <span class="math" data-tex="\(D_tw=+\dot\gamma\)">\(D_tw=+\dot\gamma\)</span> is chosen, it is E.2's generalized connection with <span class="math" data-tex="\(K=-I\)">\(K=-I\)</span>, and F.1 instead gives <span class="math" data-tex="\(T_{0t}(v+\delta(t))\)">\(T_{0t}(v+\delta(t))\)</span>. The two signs therefore refer to two explicitly specified connection conventions. □</p>
+<p id="theorem-g-2"><strong>Theorem G.2 (all nondegenerate latitudes).</strong> On the unit round sphere, fix a colatitude <span class="math" data-tex="\(0&lt;\theta&lt;\pi\)">\(0&lt;\theta&lt;\pi\)</span>, put <span class="math" data-tex="\(s=\sin\theta&gt;0\)">\(s=\sin\theta&gt;0\)</span>, <span class="math" data-tex="\(c=\cos\theta\)">\(c=\cos\theta\)</span>, and traverse the positive latitude
+<span class="math math-display" data-tex="\[
+\gamma(\phi)=(s\cos\phi,s\sin\phi,c),\qquad 0\le\phi\le2\pi.
+\tag{G.2}
+\]">\[
+\gamma(\phi)=(s\cos\phi,s\sin\phi,c),\qquad 0\le\phi\le2\pi.
+\tag{G.2}
+\]</span>
+Use the periodic orthonormal tangent frame
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e_\theta(\phi)&amp;=(c\cos\phi,c\sin\phi,-s),\\
+e_\phi(\phi)&amp;=(-\sin\phi,\cos\phi,0),\qquad E=(e_\theta,e_\phi),
+\end{aligned}
+\tag{G.3}
+\]">\[
+\begin{aligned}
+e_\theta(\phi)&amp;=(c\cos\phi,c\sin\phi,-s),\\
+e_\phi(\phi)&amp;=(-\sin\phi,\cos\phi,0),\qquad E=(e_\theta,e_\phi),
+\end{aligned}
+\tag{G.3}
+\]</span>
+and identify the initial tangent space with <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> by <span class="math" data-tex="\(E(0)\)">\(E(0)\)</span>. Define
+<span class="math math-display" data-tex="\[
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\qquad
+R(a)=\begin{pmatrix}\cos a&amp;-\sin a\\\sin a&amp;\cos a\end{pmatrix}.
+\]">\[
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\qquad
+R(a)=\begin{pmatrix}\cos a&amp;-\sin a\\\sin a&amp;\cos a\end{pmatrix}.
+\]</span>
+Linear transport in this moving frame is <span class="math" data-tex="\(R(-c\phi)\)">\(R(-c\phi)\)</span>, while the development has initial-frame coordinates
+<span class="math math-display" data-tex="\[
+d(\phi)=
+\begin{cases}
+\dfrac{s}{c}\bigl(\cos(c\phi)-1,\ \sin(c\phi)\bigr),&amp;c\ne0,\\
+(0,\phi),&amp;c=0.
+\end{cases}
+\tag{G.4}
+\]">\[
+d(\phi)=
+\begin{cases}
+\dfrac{s}{c}\bigl(\cos(c\phi)-1,\ \sin(c\phi)\bigr),&amp;c\ne0,\\
+(0,\phi),&amp;c=0.
+\end{cases}
+\tag{G.4}
+\]</span>
+For <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, this developed path lies on the circle of radius <span class="math" data-tex="\(|s/c|\)">\(|s/c|\)</span> centred at <span class="math" data-tex="\(a=(-s/c,0)\)">\(a=(-s/c,0)\)</span>, with signed central-angle change <span class="math" data-tex="\(2\pi c\)">\(2\pi c\)</span>. The affine holonomy of the full latitude is the rotation
+<span class="math math-display" data-tex="\[
+F(v)=a+R(-2\pi c)(v-a).
+\tag{G.5}
+\]">\[
+F(v)=a+R(-2\pi c)(v-a).
+\tag{G.5}
+\]</span>
+Its unique fixed point is <span class="math" data-tex="\(a\)">\(a\)</span>. At the equator it is instead the translation <span class="math" data-tex="\(F(v)=v-(0,2\pi)\)">\(F(v)=v-(0,2\pi)\)</span>; linear holonomy there is the identity.</p>
+<p><strong>Proof.</strong> The sphere is a smooth surface with the induced positive metric by DG-CHAR-17 V.5. At a point <span class="math" data-tex="\(q\)">\(q\)</span> of the unit sphere, the orthogonal tangent projection is <span class="math" data-tex="\(P_q(w)=w-(q\cdot w)q\)">\(P_q(w)=w-(q\cdot w)q\)</span>, as direct dot products verify. For tangent fields define <span class="math" data-tex="\(\nabla_XY=P_q(dY(X))\)">\(\nabla_XY=P_q(dY(X))\)</span>. This is smooth and obeys the derivative axioms by the product rule. Since tangent vectors are orthogonal to <span class="math" data-tex="\(q\)">\(q\)</span>, projection has no effect on their inner products with <span class="math" data-tex="\(dY(X)\)">\(dY(X)\)</span>; differentiating <span class="math" data-tex="\(Y\cdot Z\)">\(Y\cdot Z\)</span> therefore proves metric compatibility. In any local sphere coordinates, the difference <span class="math" data-tex="\(dY(X)-dX(Y)\)">\(dY(X)-dX(Y)\)</span> equals the tangent bracket: expand the fields in coordinate derivatives and cancel the symmetric second derivatives of the parametrization using PB C.3. Projection fixes this tangent bracket, so torsion is zero. DG-CHAR-17 V.1 identifies this connection as the round Levi-Civita connection, on the entire sphere.</p>
+<p>The trigonometric derivative and product identities follow from the circle exponential in Conn E.1. Dot products show that both vectors in (G.3) have norm one, are orthogonal to each other and to <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, and have cross product <span class="math" data-tex="\(e_\theta\times e_\phi=\gamma\)">\(e_\theta\times e_\phi=\gamma\)</span>. Hence the frame is tangent and outward oriented. Direct differentiation gives
+<span class="math math-display" data-tex="\[
+\dot\gamma=s e_\phi,\qquad
+\nabla_{\partial_\phi}e_\theta=c e_\phi,\qquad
+\nabla_{\partial_\phi}e_\phi=-c e_\theta.
+\tag{G.6}
+\]">\[
+\dot\gamma=s e_\phi,\qquad
+\nabla_{\partial_\phi}e_\theta=c e_\phi,\qquad
+\nabla_{\partial_\phi}e_\phi=-c e_\theta.
+\tag{G.6}
+\]</span>
+For the last formula, <span class="math" data-tex="\(e_\phi'=(-\cos\phi,-\sin\phi,0)\)">\(e_\phi'=(-\cos\phi,-\sin\phi,0)\)</span> has tangent components <span class="math" data-tex="\((-c,0)\)">\((-c,0)\)</span>; its remaining component is normal and is removed by projection. Thus the connection matrix along the curve is <span class="math" data-tex="\(cJ\,d\phi\)">\(cJ\,d\phi\)</span>.</p>
+<p>The matrix <span class="math" data-tex="\(R(a)\)">\(R(a)\)</span> is the real matrix of multiplication by <span class="math" data-tex="\(\exp(ia)\)">\(\exp(ia)\)</span>. Conn E.1 gives <span class="math" data-tex="\(R'(a)=JR(a)=R(a)J\)">\(R'(a)=JR(a)=R(a)J\)</span>, <span class="math" data-tex="\(R(a+b)=R(a)R(b)\)">\(R(a+b)=R(a)R(b)\)</span> and <span class="math" data-tex="\(R(0)=I\)">\(R(0)=I\)</span>. Consequently <span class="math" data-tex="\(R(-c\phi)\)">\(R(-c\phi)\)</span> solves the horizontal frame equation of A.2 with initial value <span class="math" data-tex="\(I\)">\(I\)</span>; uniqueness proves the transport assertion. The inverse transport sends the velocity to
+<span class="math math-display" data-tex="\[
+R(c\phi)(0,s)=(-s\sin(c\phi),s\cos(c\phi)).
+\]">\[
+R(c\phi)(0,s)=(-s\sin(c\phi),s\cos(c\phi)).
+\]</span>
+Integrating these two coordinates from zero, using Local 0.3, proves (G.4) for <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, then <span class="math" data-tex="\(s=1\)">\(s=1\)</span> and the velocity is constantly <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, giving the second case directly without dividing by zero.</p>
+<p>For <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, subtracting <span class="math" data-tex="\(a\)">\(a\)</span> from (G.4) gives <span class="math" data-tex="\((s/c)(\cos(c\phi),\sin(c\phi))\)">\((s/c)(\cos(c\phi),\sin(c\phi))\)</span>, proving the radius and signed angle assertions, also when <span class="math" data-tex="\(c&lt;0\)">\(c&lt;0\)</span>. The frame is periodic at <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>; hence linear holonomy in the initial frame is <span class="math" data-tex="\(R(-2\pi c)\)">\(R(-2\pi c)\)</span>. Formula F.2 gives
+<span class="math math-display" data-tex="\[
+F(v)=R(-2\pi c)(v-d(2\pi)).
+\]">\[
+F(v)=R(-2\pi c)(v-d(2\pi)).
+\]</span>
+Write <span class="math" data-tex="\(r=s/c\)">\(r=s/c\)</span>. Since <span class="math" data-tex="\(d(2\pi)=r(R(2\pi c)-I)(1,0)\)">\(d(2\pi)=r(R(2\pi c)-I)(1,0)\)</span>, its constant term is <span class="math" data-tex="\(r(R(-2\pi c)-I)(1,0)=a-R(-2\pi c)a\)">\(r(R(-2\pi c)-I)(1,0)=a-R(-2\pi c)a\)</span>. This is (G.5), with its sign determined by the affine transport equation. Here <span class="math" data-tex="\(-1&lt;c&lt;1\)">\(-1&lt;c&lt;1\)</span>. If <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, then <span class="math" data-tex="\(c\)">\(c\)</span> is not an integer, so Conn E.1's period and injectivity show that <span class="math" data-tex="\(R(-2\pi c)\ne I\)">\(R(-2\pi c)\ne I\)</span>. Moreover <span class="math" data-tex="\(\det(I-R(b))=2(1-\cos b)&gt;0\)">\(\det(I-R(b))=2(1-\cos b)&gt;0\)</span> for any nonidentity rotation, by direct multiplication and <span class="math" data-tex="\(\cos^2b+\sin^2b=1\)">\(\cos^2b+\sin^2b=1\)</span>. Thus its fixed-point equation has the unique solution <span class="math" data-tex="\(a\)">\(a\)</span>. At <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, (G.4) and F.2 give the stated nonzero translation and identity linear part. The poles are excluded because the latitude degenerates there and (G.3) no longer supplies the stated loop parametrization by a nonzero velocity. □</p>
+<p id="example-g-3"><strong>Example G.3 (the specified latitudes and the equator).</strong> At <span class="math" data-tex="\(\theta=\pi/3\)">\(\theta=\pi/3\)</span>,
+<span class="math math-display" data-tex="\[
+d(\phi)=\sqrt3\bigl(\cos(\phi/2)-1,\sin(\phi/2)\bigr).
+\]">\[
+d(\phi)=\sqrt3\bigl(\cos(\phi/2)-1,\sin(\phi/2)\bigr).
+\]</span>
+The full latitude develops into a semicircle ending at <span class="math" data-tex="\((-2\sqrt3,0)\)">\((-2\sqrt3,0)\)</span>, and its affine holonomy is the half-turn about <span class="math" data-tex="\((-\sqrt3,0)\)">\((-\sqrt3,0)\)</span>. At <span class="math" data-tex="\(\theta=\pi/4\)">\(\theta=\pi/4\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d(\phi)&amp;=\bigl(\cos(\phi/\sqrt2)-1,\sin(\phi/\sqrt2)\bigr),\\
+F(v)&amp;=(-1,0)+R(-\sqrt2\pi)\bigl(v+(1,0)\bigr).
+\end{aligned}
+\tag{G.7}
+\]">\[
+\begin{aligned}
+d(\phi)&amp;=\bigl(\cos(\phi/\sqrt2)-1,\sin(\phi/\sqrt2)\bigr),\\
+F(v)&amp;=(-1,0)+R(-\sqrt2\pi)\bigl(v+(1,0)\bigr).
+\end{aligned}
+\tag{G.7}
+\]</span>
+The unique fixed centre is <span class="math" data-tex="\((-1,0)\)">\((-1,0)\)</span>. At <span class="math" data-tex="\(\theta=\pi/2\)">\(\theta=\pi/2\)</span>, the development is the segment <span class="math" data-tex="\((0,\phi)\)">\((0,\phi)\)</span>, and the affine holonomy has no fixed point.</p>
+<p><strong>Proof.</strong> We justify the special trigonometric constants. The exponential of Conn E.1 has kernel <span class="math" data-tex="\(2\pi\mathbb Z\)">\(2\pi\mathbb Z\)</span> and traverses the circle once positively. Its value at <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is the nonidentity solution of <span class="math" data-tex="\(z^2=1\)">\(z^2=1\)</span>, hence <span class="math" data-tex="\(-1\)">\(-1\)</span>. On the interval <span class="math" data-tex="\((0,\pi)\)">\((0,\pi)\)</span> it remains in the upper half-circle: its initial tangent at <span class="math" data-tex="\(1\)">\(1\)</span> is positive imaginary, and it cannot cross the real axis at <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span> sooner by injectivity. Therefore its value at <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span>, whose square is <span class="math" data-tex="\(-1\)">\(-1\)</span>, is <span class="math" data-tex="\(i\)">\(i\)</span>. The value at <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span> is the upper-half-plane root of <span class="math" data-tex="\(z^2=i\)">\(z^2=i\)</span>, namely <span class="math" data-tex="\((1+i)/\sqrt2\)">\((1+i)/\sqrt2\)</span>. The value at <span class="math" data-tex="\(\pi/3\)">\(\pi/3\)</span> is the upper-half-plane root of <span class="math" data-tex="\(z^3=-1\)">\(z^3=-1\)</span>, namely <span class="math" data-tex="\((1+i\sqrt3)/2\)">\((1+i\sqrt3)/2\)</span>, as direct multiplication and factorization of <span class="math" data-tex="\(z^3+1\)">\(z^3+1\)</span> verify. Positive square roots exist by Local 0.0. Thus the three pairs <span class="math" data-tex="\((s,c)\)">\((s,c)\)</span> are <span class="math" data-tex="\((\sqrt3/2,1/2)\)">\((\sqrt3/2,1/2)\)</span>, <span class="math" data-tex="\((1/\sqrt2,1/\sqrt2)\)">\((1/\sqrt2,1/\sqrt2)\)</span> and <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>. Substitute into G.2. At <span class="math" data-tex="\(\pi/3\)">\(\pi/3\)</span> the central angle is <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and the holonomy matrix is <span class="math" data-tex="\(-I\)">\(-I\)</span>, giving the stated endpoint and centre. At <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span> the angle is <span class="math" data-tex="\(\sqrt2\pi\)">\(\sqrt2\pi\)</span>, which gives (G.7). At the equator G.2's nonzero translation cannot fix any vector. □</p>
+<h2 id="part-h">H. Projection criteria, standard fields and metric scope</h2>
+<p>These final checks connect the preceding constructions to the complete earlier programme arguments. <a href="curvature-and-holonomy-groups.html">Curvature B.7</a> proves smooth homogeneity at the zero section from the freely accessible Saldaña Moncada–Weingart paper credited there; its full proof is an earlier programme provider. We spell out its consequences for complex bundles and derivatives here. No external paper is used in place of a programme proof.</p>
+<p id="theorem-h-1"><strong>Theorem H.1 (dilations, projection and linear differentiation).</strong> Let <span class="math" data-tex="\(E\to M\)">\(E\to M\)</span> be a real vector bundle and <span class="math" data-tex="\(\Phi:TE\to VE\)">\(\Phi:TE\to VE\)</span> a smooth connection projection: on each tangent space it is linear, takes values in the vertical space, and is the identity on that space. The following are equivalent:</p>
+<ol>
+<li>Every scalar dilation <span class="math" data-tex="\(\Lambda_\lambda(u)=\lambda u\)">\(\Lambda_\lambda(u)=\lambda u\)</span> is parallel, meaning <span class="math" data-tex="\(\Phi\,d\Lambda_\lambda=d\Lambda_\lambda\,\Phi\)">\(\Phi\,d\Lambda_\lambda=d\Lambda_\lambda\,\Phi\)</span>, including <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>.</li>
+<li>In every linear bundle chart the reduced vertical coordinate has the form
+<span class="math math-display" data-tex="\[
+\Phi(x,y;v,z)=(x,y;0,z+A_x(v)y).
+\tag{H.1}
+\]">\[
+\Phi(x,y;v,z)=(x,y;0,z+A_x(v)y).
+\tag{H.1}
+\]</span></li>
+<li>The reduced section derivative <span class="math" data-tex="\(\nabla_Xs=\operatorname{pr}_2\operatorname{vl}^{-1}(\Phi(ds(X)))\)">\(\nabla_Xs=\operatorname{pr}_2\operatorname{vl}^{-1}(\Phi(ds(X)))\)</span> is additive and real homogeneous in <span class="math" data-tex="\(s\)">\(s\)</span>.</li>
+</ol>
+<p>Under these conditions the reduced derivative is precisely a covariant derivative, and <span class="math" data-tex="\(\Phi(W)=\operatorname{vl}(u,\mathscr K(W))\)">\(\Phi(W)=\operatorname{vl}(u,\mathscr K(W))\)</span> for B.1's connector at <span class="math" data-tex="\(W\in T_uE\)">\(W\in T_uE\)</span>. On a complex vector bundle these are initially real statements. The derivative is complex linear exactly when multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> is also parallel; equivalently all complex scalar multiplications are parallel.</p>
+<p><strong>Proof.</strong> Tangent-space linearity and vertical normalization first give the general coordinate form
+<span class="math math-display" data-tex="\[
+\Phi(x,y;v,z)=(x,y;0,z+\Gamma(x,y)v),
+\]">\[
+\Phi(x,y;v,z)=(x,y;0,z+\Gamma(x,y)v),
+\]</span>
+where <span class="math" data-tex="\(\Gamma(x,y)\)">\(\Gamma(x,y)\)</span> is a smooth real linear map in the base tangent argument. A dilation sends <span class="math" data-tex="\((v,z)\)">\((v,z)\)</span> at <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> to <span class="math" data-tex="\((v,\lambda z)\)">\((v,\lambda z)\)</span> at <span class="math" data-tex="\((x,\lambda y)\)">\((x,\lambda y)\)</span>. The parallelness identity is therefore exactly
+<span class="math math-display" data-tex="\[
+\Gamma(x,\lambda y)v=\lambda\Gamma(x,y)v.
+\tag{H.2}
+\]">\[
+\Gamma(x,\lambda y)v=\lambda\Gamma(x,y)v.
+\tag{H.2}
+\]</span>
+Fix <span class="math" data-tex="\(x,v\)">\(x,v\)</span> and differentiate this identity with respect to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> at zero. Local 0.3 gives
+<span class="math" data-tex="\(\Gamma(x,y)v=d_y\Gamma(x,0)[y]v\)">\(\Gamma(x,y)v=d_y\Gamma(x,0)[y]v\)</span>.
+The derivative at zero is linear in <span class="math" data-tex="\(y\)">\(y\)</span>; its dependence on <span class="math" data-tex="\(v\)">\(v\)</span> is also linear, and its coefficients are smooth in <span class="math" data-tex="\(x\)">\(x\)</span>. Denote this bilinear map by <span class="math" data-tex="\(A_x(v)y\)">\(A_x(v)y\)</span>, giving (H.1). Conversely that formula immediately gives (H.2). This is the full zero-section argument, rather than an inference from homogeneity on punctured fibres.</p>
+<p>The vertical lift identification of B.1 sends <span class="math" data-tex="\((u,w)\)">\((u,w)\)</span> to the derivative of <span class="math" data-tex="\(u+tw\)">\(u+tw\)</span>. Hence the general reduced derivative in a chart is <span class="math" data-tex="\(Xs+\Gamma(x,s)X\)">\(Xs+\Gamma(x,s)X\)</span>. Under (H.1) it is <span class="math" data-tex="\(Xs+A(X)s\)">\(Xs+A(X)s\)</span>, proving condition 3. Conversely, at any <span class="math" data-tex="\(x\)">\(x\)</span> fix a local coordinate direction and local sections constant in the fibre coordinates near <span class="math" data-tex="\(x\)">\(x\)</span>. Additivity and real homogeneity in their values make <span class="math" data-tex="\(y\mapsto\Gamma(x,y)v\)">\(y\mapsto\Gamma(x,y)v\)</span> linear. If the hypothesis is initially imposed only on global sections, multiply the constant sections and local vector field by a cutoff equal to one near <span class="math" data-tex="\(x\)">\(x\)</span>, using Local 3.1, and extend by zero. Their values and derivatives at <span class="math" data-tex="\(x\)">\(x\)</span> are unchanged, so the same conclusion follows. Smooth coefficients then give (H.1). Its Leibniz and function-linearity axioms follow directly by the product rule; coordinate independence follows from the original global <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, or from B.1's connector reconstruction. This proves all equivalences and the claimed correspondence with the connection already constructed.</p>
+<p>For a complex bundle use its underlying real charts and let <span class="math" data-tex="\(J\)">\(J\)</span> be fibre multiplication by <span class="math" data-tex="\(i\)">\(i\)</span>. Under (H.1), parallelness of <span class="math" data-tex="\(J\)">\(J\)</span> says <span class="math" data-tex="\(A_x(v)Jy=JA_x(v)y\)">\(A_x(v)Jy=JA_x(v)y\)</span>. This is exactly complex linearity of each real endomorphism <span class="math" data-tex="\(A_x(v)\)">\(A_x(v)\)</span>, since every complex scalar is <span class="math" data-tex="\(a+bi\)">\(a+bi\)</span>. The formula <span class="math" data-tex="\(Xs+A(X)s\)">\(Xs+A(X)s\)</span> then commutes with <span class="math" data-tex="\(J\)">\(J\)</span> and is complex linear in sections. Conversely complex linearity of the derivative, tested on sections constant near a point, gives that matrix commutation. Commuting with <span class="math" data-tex="\(aI+bJ\)">\(aI+bJ\)</span> gives parallelness of every complex scalar, and the converse includes the real dilations and <span class="math" data-tex="\(J\)">\(J\)</span>. Thus none of the real-linearity or complex-linearity assumptions is omitted. □</p>
+<p id="theorem-h-2"><strong>Theorem H.2 (the frame coframe and standard horizontal brackets).</strong> On <span class="math" data-tex="\(P=\operatorname{Fr}(TM)\)">\(P=\operatorname{Fr}(TM)\)</span>, the map
+<span class="math math-display" data-tex="\[
+(\theta,\omega)_u:T_uP\longrightarrow\mathbb R^n\oplus\mathfrak{gl}(n,\mathbb R)
+\tag{H.3}
+\]">\[
+(\theta,\omega)_u:T_uP\longrightarrow\mathbb R^n\oplus\mathfrak{gl}(n,\mathbb R)
+\tag{H.3}
+\]</span>
+is a linear isomorphism. Define <span class="math" data-tex="\(B(v)\)">\(B(v)\)</span> by <span class="math" data-tex="\(\theta(B(v))=v\)">\(\theta(B(v))=v\)</span>, <span class="math" data-tex="\(\omega(B(v))=0\)">\(\omega(B(v))=0\)</span>, for constant <span class="math" data-tex="\(v\in\mathbb R^n\)">\(v\in\mathbb R^n\)</span>. It is a smooth field, linear in <span class="math" data-tex="\(v\)">\(v\)</span>, and
+<span class="math math-display" data-tex="\[
+ dR_a B(v)_u=B(a^{-1}v)_{ua},\qquad
+ [\zeta_C,B(v)]=B(Cv).
+\tag{H.4}
+\]">\[
+ dR_a B(v)_u=B(a^{-1}v)_{ua},\qquad
+ [\zeta_C,B(v)]=B(Cv).
+\tag{H.4}
+\]</span>
+For two such standard fields,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\theta([B(v),B(w)])&amp;=-\Theta(B(v),B(w)),\\
+\omega([B(v),B(w)])&amp;=-\Omega(B(v),B(w)).
+\end{aligned}
+\tag{H.5}
+\]">\[
+\begin{aligned}
+\theta([B(v),B(w)])&amp;=-\Theta(B(v),B(w)),\\
+\omega([B(v),B(w)])&amp;=-\Omega(B(v),B(w)).
+\end{aligned}
+\tag{H.5}
+\]</span>
+Thus torsion and curvature give respectively the horizontal and vertical components of this bracket in the coframe (H.3).</p>
+<p><strong>Proof.</strong> Conn A.2 splits a tangent vector uniquely into a horizontal vector and a fundamental vertical vector <span class="math" data-tex="\(\zeta_C\)">\(\zeta_C\)</span>. The map <span class="math" data-tex="\(d\pi\)">\(d\pi\)</span> is an isomorphism from the horizontal space to <span class="math" data-tex="\(T_xM\)">\(T_xM\)</span>; composing with the frame inverse makes <span class="math" data-tex="\(\theta\)">\(\theta\)</span> an isomorphism on that space, by D.1. On vertical vectors <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span> and <span class="math" data-tex="\(\omega(\zeta_C)=C\)">\(\omega(\zeta_C)=C\)</span>. This proves (H.3). Smoothness of its inverse follows in local coordinates from smooth matrix inversion, Local 0.4, so <span class="math" data-tex="\(B(v)\)">\(B(v)\)</span> is smooth and linear in <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>Right translation preserves horizontality and sends the solder value to <span class="math" data-tex="\(a^{-1}v\)">\(a^{-1}v\)</span>, by Conn A.2 and D.1. Uniqueness in (H.3) proves the first identity in (H.4). The flow of <span class="math" data-tex="\(\zeta_C\)">\(\zeta_C\)</span> is <span class="math" data-tex="\(R_{\exp(tC)}\)">\(R_{\exp(tC)}\)</span>, by Local 2.3 and the fundamental-vector definition. The pullback of <span class="math" data-tex="\(B(v)\)">\(B(v)\)</span> by this flow is
+<span class="math" data-tex="\(dR_{\exp(-tC)}B(v)_{u\exp(tC)}=B(\exp(tC)v)_u\)">\(dR_{\exp(-tC)}B(v)_{u\exp(tC)}=B(\exp(tC)v)_u\)</span>.
+Differentiation at zero gives <span class="math" data-tex="\(B(Cv)\)">\(B(Cv)\)</span>. That derivative is the bracket <span class="math" data-tex="\([\zeta_C,B(v)]\)">\([\zeta_C,B(v)]\)</span>: in local coordinates differentiating <span class="math" data-tex="\(d\varphi_{-t}Y(\varphi_t(u))\)">\(d\varphi_{-t}Y(\varphi_t(u))\)</span> gives <span class="math" data-tex="\(dY(X)-dX(Y)\)">\(dY(X)-dX(Y)\)</span>, the bracket formula of PB C.3, with the flow derivative justified by Local 2.1. This proves the sign in (H.4).</p>
+<p>The functions <span class="math" data-tex="\(\theta(B(v))\)">\(\theta(B(v))\)</span> and <span class="math" data-tex="\(\theta(B(w))\)">\(\theta(B(w))\)</span> are constant. Curvature A.2's degree-one exterior formula therefore gives <span class="math" data-tex="\(d\theta(B(v),B(w))=-\theta([B(v),B(w)])\)">\(d\theta(B(v),B(w))=-\theta([B(v),B(w)])\)</span>. The wedge term in D.2 vanishes on two horizontal arguments, proving the first line of (H.5). Likewise <span class="math" data-tex="\(\omega(B(v))=\omega(B(w))=0\)">\(\omega(B(v))=\omega(B(w))=0\)</span>, so the same formula and Curvature A.4 give the second line. The direct sum (H.3) identifies the two components exactly. In particular all these standard fields commute if and only if both torsion and curvature vanish: they span each horizontal space, and both two-forms are horizontal by D.1 and Curvature A.4. □</p>
+<p id="example-h-3"><strong>Example H.3 (why the prescribed structure group matters).</strong> Existence of a derivative compatible with a chosen metric, as in C.2, concerns the full frame bundle. A connection induced from a prescribed smaller frame bundle need not have that freedom. On the trivial real line over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, prescribe only its standard frame, so the principal group is <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>, and give the line the metric <span class="math" data-tex="\(h_x(v,w)=e^{2x}vw\)">\(h_x(v,w)=e^{2x}vw\)</span>. The unique connection on this prescribed principal bundle does not preserve the metric.</p>
+<p><strong>Proof.</strong> The principal bundle with this one-element group identifies with the base; its vertical tangent spaces and Lie algebra are zero. Conn A.2 forces the unique connection form to be zero and its horizontal spaces to be the entire tangent spaces. Its associated transport consequently holds the coordinate constant. The squared length of the constant section 1 is <span class="math" data-tex="\(e^{2x}\)">\(e^{2x}\)</span>, with nonzero derivative <span class="math" data-tex="\(2e^{2x}\)">\(2e^{2x}\)</span>, so it is not preserved. C.3 already proves that the full-frame compatible derivative instead has potential <span class="math" data-tex="\(dx\)">\(dx\)</span>. The prescribed frame has length one only at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, so its unit frames do not even cover the base and cannot constitute a reduction.</p>
+<p>More generally, suppose a prescribed frame bundle <span class="math" data-tex="\(P\)">\(P\)</span> has a smooth principal subbundle <span class="math" data-tex="\(Q\)">\(Q\)</span> consisting of exactly its frames that are orthonormal for the metric. A connection on <span class="math" data-tex="\(P\)">\(P\)</span> preserves <span class="math" data-tex="\(Q\)">\(Q\)</span> by horizontal transport if and only if its associated vector transport preserves that metric. For one direction, evaluation of any transported orthonormal frame on fixed coordinates preserves all pairings, by A.2. For the other, metric-preserving transport sends every frame of <span class="math" data-tex="\(Q\)">\(Q\)</span> to another orthonormal frame, remains in <span class="math" data-tex="\(P\)">\(P\)</span>, and therefore remains in <span class="math" data-tex="\(Q\)">\(Q\)</span> by its definition. Once such a reduction exists, this is also the parallel-reduction conclusion proved in <a href="reduction-and-the-holonomy-theorem.html">Reduction A.4</a>. The existence of the reduction is a genuine hypothesis; the preceding example shows why it cannot be inferred for an arbitrary prescribed group. □</p>
+<p id="theorem-h-4"><strong>Theorem H.4 (derivations and the section-operator formulation).</strong> Real smooth vector fields identify exactly with real-linear derivations of <span class="math" data-tex="\(C^\infty(M,\mathbb R)\)">\(C^\infty(M,\mathbb R)\)</span>: operators <span class="math" data-tex="\(L\)">\(L\)</span> satisfying <span class="math" data-tex="\(L(fg)=fL(g)+gL(f)\)">\(L(fg)=fL(g)+gL(f)\)</span>. A covariant derivative on <span class="math" data-tex="\(E\)">\(E\)</span> identifies exactly with an additive, <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>-linear operator
+<span class="math math-display" data-tex="\[
+D:\Gamma(E)\longrightarrow\Omega^1(M,E),\qquad
+D(fs)=df\otimes s+fDs,
+\tag{H.6}
+\]">\[
+D:\Gamma(E)\longrightarrow\Omega^1(M,E),\qquad
+D(fs)=df\otimes s+fDs,
+\tag{H.6}
+\]</span>
+where the tangent arguments of the one-form remain real in the complex case. These are first-order local operators. Additivity in the section is part of the hypothesis, not a consequence silently inferred from the displayed Leibniz rule alone.</p>
+<p><strong>Proof.</strong> A vector field differentiates functions in coordinates and is a real-linear derivation by Local 0.3. Conversely let <span class="math" data-tex="\(L\)">\(L\)</span> be such a derivation. The identity for <span class="math" data-tex="\(1\cdot1\)">\(1\cdot1\)</span> gives <span class="math" data-tex="\(L(1)=0\)">\(L(1)=0\)</span>, hence it kills real constants. If <span class="math" data-tex="\(f\)">\(f\)</span> is zero near <span class="math" data-tex="\(x\)">\(x\)</span>, choose a cutoff <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near <span class="math" data-tex="\(x\)">\(x\)</span> supported in that neighbourhood, using Local 3.1. Since <span class="math" data-tex="\(\chi f=0\)">\(\chi f=0\)</span>, evaluating <span class="math" data-tex="\(L(\chi f)=\chi Lf+fL\chi\)">\(L(\chi f)=\chi Lf+fL\chi\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-tex="\(Lf(x)=0\)">\(Lf(x)=0\)</span>. This proves locality and defines <span class="math" data-tex="\(L\)">\(L\)</span> on local functions by supported extension, independently of that extension. Choosing one cutoff on a smaller neighbourhood proves that this local operator still has smooth values.</p>
+<p>In a coordinate ball, for a fixed point <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> sufficiently close to it, the segment from <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span> lies in the ball and Local 0.3 gives
+<span class="math math-display" data-tex="\[
+f(y)-f(x)=\sum_i(y^i-x^i)h_i(y),\qquad
+h_i(y)=\int_0^1\partial_i f(x+t(y-x))\,dt.
+\]">\[
+f(y)-f(x)=\sum_i(y^i-x^i)h_i(y),\qquad
+h_i(y)=\int_0^1\partial_i f(x+t(y-x))\,dt.
+\]</span>
+The functions <span class="math" data-tex="\(h_i\)">\(h_i\)</span> are smooth: the chain rule gives every parameter derivative of the integrand, and the uniform estimates on a compact segment in Local 0.3 justify differentiation under this integral on a smaller ball. They satisfy <span class="math" data-tex="\(h_i(x)=\partial_i f(x)\)">\(h_i(x)=\partial_i f(x)\)</span>. Apply <span class="math" data-tex="\(L\)">\(L\)</span>, evaluate at <span class="math" data-tex="\(x\)">\(x\)</span>, and use the product rule and vanishing of <span class="math" data-tex="\(y^i-x^i\)">\(y^i-x^i\)</span> there. The result is
+<span class="math math-display" data-tex="\[
+Lf(x)=\sum_i L(y^i)(x)\,\partial_i f(x).
+\]">\[
+Lf(x)=\sum_i L(y^i)(x)\,\partial_i f(x).
+\]</span>
+The coefficients <span class="math" data-tex="\(L(y^i)\)">\(L(y^i)\)</span> are smooth. Thus they define a smooth vector field in this chart. The formulas agree on overlaps because their action on every local function is <span class="math" data-tex="\(L\)">\(L\)</span>; coordinate functions determine each tangent vector. This gives a global field, uniquely, and proves that the two constructions are inverse and depend only on the first derivative of the function.</p>
+<p>For the connection statement set <span class="math" data-tex="\((Ds)(X)=\nabla_Xs\)">\((Ds)(X)=\nabla_Xs\)</span>. A.1 proves dependence only on the tangent value of <span class="math" data-tex="\(X\)">\(X\)</span>; in a frame its formula <span class="math" data-tex="\(Ds=e(ds_e+As_e)\)">\(Ds=e(ds_e+As_e)\)</span> is a smooth <span class="math" data-tex="\(E\)">\(E\)</span>-valued one-form. Additivity and constant <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>-linearity, together with (H.6), are the derivative axioms of A.1. Conversely define <span class="math" data-tex="\(\nabla_Xs=(Ds)(X)\)">\(\nabla_Xs=(Ds)(X)\)</span> from an operator as in (H.6). A one-form is linear over real smooth functions in <span class="math" data-tex="\(X\)">\(X\)</span>, while the asserted properties of <span class="math" data-tex="\(D\)">\(D\)</span> give additivity, constant <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span>-linearity in <span class="math" data-tex="\(s\)">\(s\)</span>, and the required Leibniz rule. Hence these are the covariant-derivative axioms, and the constructions are inverse. A.1 now proves locality and the first-jet formula, also over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. □</p>
+</article><footer><p><a href="src/linear-and-affine-connections.md">Chapter source</a> · <span class="unlinked">Course contents</span></p><p>New exposition: CC0 1.0. Exact free construction sources are credited in the text.</p><p><a href="assets/mathjax/LICENSE">MathJax licence</a> · <a href="assets/mathjax/FONT-LICENSES.txt">Font notices</a></p></footer></main></body></html>

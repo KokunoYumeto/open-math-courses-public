@@ -1,0 +1,321 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cyclic towers in finite algebras · Open Mathematics Courses</title><meta name="description" content="Cyclic towers in finite algebras: lesson draft with 5 solved exercises."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><aside class="draft-notice" aria-label="Prerequisite scope"><p>This draft includes the discrete approximate-eigenvector argument, Gram correction, trace budget and probability-algebra tower proof. The general dual-center theorem has an exact earlier programme proof outside this selection; its transitive integrability and spectral prerequisites remain under review. Nonfactor and nonseparable-predual scope is retained.</p></aside><article class="lesson"><h1 id="cyclic-towers-in-finite-algebras">Cyclic towers in finite algebras</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Spot-checked by GPT-6 Astra (OpenAI) in a separate session. Original text is public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>An orbit can be cut into long pieces whose endpoints occupy little of the space. In a finite von Neumann algebra, projections play the role of measurable sets. They need not commute, so making orbit pieces disjoint requires an additional geometric step.</p>
+<p>We prove a cyclic form of Connes's noncommutative Rokhlin theorem. Given a trace-preserving automorphism whose nonzero powers remain outer in every invariant corner, we find a partition of the identity that it almost rotates. The algebra may have nonseparable predual. This matters when the algebra is an asymptotic centralizer, even if the original factor has separable predual.</p>
+<p>The tower construction follows [Connes], Theorem 1.2.5 and its supporting lemmas. The present treatment adds the simultaneous Gram estimate, explicit trace budgets, a full probability-algebra tower argument and five worked exercises. Its spectral input and the exact remaining programme prerequisites are specified in Section 2. It uses the complete local <a href="finite-free-actions-and-coboundaries.html">finite free-action coboundary theorem</a> for a finite cyclic character, and the elementary discrete spectrum argument proved below. <a href="bounded-topology-and-tracial-representations.html">Bounded topology and tracial representations</a>, Theorem 3.1 and Sections 4–7, supplies the bounded tracial topology used in the limiting arguments. The projection and center-valued trace interfaces, including equal-center-valued-trace comparison, are given in <a href="finite-free-actions-and-coboundaries.html">Finite free actions and unitary coboundaries</a>, Sections 1–2 and 9. Spectral calculus and polar decomposition remain background. The later application uses <span class="unlinked">Central sequence algebras and exact lifts</span>, Theorems 3.1, 5.1 and 6.1.</p>
+<h2 id="1-the-theorem-and-its-hypotheses">1. The theorem and its hypotheses</h2>
+<p>Let <span class="math">\(N\)</span> be a von Neumann algebra with a faithful normal tracial state <span class="math">\(\tau\)</span>. Put</p>
+<div class="equation"><div class="math math-display">\[
+\|x\|_1=\tau(|x|),\qquad \|x\|_2=\tau(x^*x)^{1/2}.
+\]</div></div>
+<p>An automorphism <span class="math">\(\alpha\)</span> is <strong>properly outer</strong> if its restriction to <span class="math">\(eNe\)</span> is not inner for every nonzero projection <span class="math">\(e\)</span> with <span class="math">\(\alpha(e)=e\)</span>. It is <strong>aperiodic</strong> if <span class="math">\(\alpha^k\)</span> is properly outer for every nonzero integer <span class="math">\(k\)</span>.</p>
+<p>For a factor, outerness and proper outerness agree. For an algebra with center they differ: an automorphism may be nontrivial on one summand and the identity on another.</p>
+<p><strong>Theorem 1.1 (cyclic towers).</strong> Suppose <span class="math">\(\alpha\)</span> is aperiodic and <span class="math">\(\tau\circ\alpha=\tau\)</span>. For every positive integer <span class="math">\(n\)</span> and every <span class="math">\(\varepsilon&gt;0\)</span>, there are orthogonal projections <span class="math">\(p_0,\ldots,p_{n-1}\)</span> with sum <span class="math">\(1\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+\|\alpha(p_j)-p_{j+1}\|_2&lt;\varepsilon\quad(0\leq j&lt;n),
+
+\]</div><span class="equation-tag">(1.1)</span></div>
+<p>where subscripts are read modulo <span class="math">\(n\)</span>. No separability assumption is made on <span class="math">\(N\)</span>.</p>
+<p>The projections need not have trace exactly <span class="math">\(1/n\)</span>. Equation (1.1) implies</p>
+<div class="equation"><div class="math math-display">\[
+|\tau(p_j)-\tau(p_{j+1})|&lt;\varepsilon.
+\]</div></div>
+<p>When <span class="math">\(\alpha\)</span> fixes the center pointwise, the proof gives more: a unitary arbitrarily close to <span class="math">\(1\)</span> in <span class="math">\(\|\cdot\|_1\)</span> changes <span class="math">\(\alpha\)</span> into an automorphism that rotates a partition exactly.</p>
+<h2 id="2-finding-a-small-overlap">2. Finding a small overlap</h2>
+<p>We state precisely the spectral facts used in this section. These are general action-spectrum results, rather than additional assumptions about <span class="math">\(N\)</span>.</p>
+<ul>
+<li>An automorphism has a largest invariant central summand on which it is inner. On its complement it is properly outer.</li>
+<li>If every nonzero power of <span class="math">\(\beta\)</span> is properly outer and <span class="math">\(\beta\)</span> fixes the center, its action spectrum is the whole circle. In particular there are norm-one <span class="math">\(x\)</span> with <span class="math">\(\|\beta(x)+x\|\)</span> arbitrarily small.</li>
+<li>If <span class="math">\(\beta\)</span> gives a free action of a finite cyclic group of order <span class="math">\(r\)</span> and fixes the center, there is a unitary <span class="math">\(u\)</span> with <span class="math">\(\beta(u)=e^{2\pi i/r}u\)</span>.</li>
+</ul>
+<p>For the first statement, take a maximal family of orthogonal invariant central summands on which the automorphism is inner. The strong sum of their implementing unitaries implements it on their join. If the complement contained a nonzero invariant inner corner, the corner-to-center extension calculation in Proposition 2.3 would produce another inner central summand. That calculation uses only central support, the partial-isometry covering and matrix coefficients; it does not use the local cutting conclusion of that proposition. This proves maximality and proper outerness on the complement. The historical statement is [Connes 1973], Proposition 1.5.1 and Lemma 1.5.2, printed pages 161–162 / PDF pages 30–31.</p>
+<p>For the second statement, the exact historical source is [Connes–Takesaki], Section IV, Theorem 3.2 and Lemma 3.3, printed pages 537–538 / Part 2 PDF pages 14–15: for an action of a separable locally compact abelian group on a sigma-finite von Neumann algebra, the Connes spectrum is the kernel of the dual action on the crossed-product center. The algebra is not required to be a factor or to have separable predual. Our faithful normal tracial state makes <span class="math">\(N\)</span> sigma-finite. For a center-fixed aperiodic <span class="math">\(\beta\)</span>, the discrete crossed-product coefficient calculation makes its relative commutant exactly <span class="math">\(Z(N)\)</span>: every nonzero-degree coefficient <span class="math">\(a\)</span> satisfies <span class="math">\(xa=a\beta^k(x)\)</span> for all <span class="math">\(x\in N\)</span>, with <span class="math">\(k\ne0\)</span>. Then <span class="math">\(a^*a\)</span> and <span class="math">\(aa^*\)</span> are central, and its polar part <span class="math">\(v\)</span> has equal central initial and final support <span class="math">\(z\)</span>. If <span class="math">\(a\ne0\)</span>, <span class="math">\(v\)</span> is a unitary on <span class="math">\(zN\)</span> and <span class="math">\(\beta^k(x)=v^*xv\)</span> there, contradicting proper outerness. Thus all those coefficients vanish. Coefficient uniqueness leaves exactly <span class="math">\(Z(N)\)</span>, which also commutes with the group unitary because the center is fixed. Therefore the crossed-product center is <span class="math">\(Z(N)\)</span>, and the dual circle action fixes it. The Connes spectrum, and hence the action spectrum, is the whole circle. This is the route in [Connes], Lemma 1.2.3, printed page 392 / PDF page 11. The normal coefficient expectation and coefficient uniqueness for a discrete crossed product are explained in <a href="finite-outer-period-and-obstruction.html">Finite outer period and its obstruction</a>, Section 3. The earlier programme lesson <em>The Connes spectrum as a dual-center kernel</em> (OA-FLOW 115), equations (K1)–(K43), writes out the dual-center proof, including spectral absorption, stabilization, regular tensor integrability and the two kernel inclusions. <em>Free actions and discrete crossed-product commutants</em> (OA-FLOW 128), equations (S1)–(S17), proves the normal coefficient and relative-commutant argument. The exact local versions of those proof slices have been read for this interface. They are not bundled in this selection, and their transitive fixed-corner, integrability and regular-model prerequisites have not all been reconciled here. The external citation alone does not close that programme-proof obligation.</p>
+<p>If Lemma 2.2 is read for a finite algebra without a faithful normal tracial state, its center-fixed case can first be restricted to a nonzero sigma-finite central summand. Choose a nonzero normal positive functional on the center and take its support <span class="math">\(z\)</span>. It is faithful on <span class="math">\(Z(N)z\)</span>; composing with the faithful normal center-valued trace gives a faithful normal tracial state on <span class="math">\(zN\)</span>, after normalization. Since the center is fixed, <span class="math">\(z\)</span> is invariant, and properly outer powers remain properly outer on this summand. The same argument applies there. This localization adds no separable-predual assumption.</p>
+<p>The third statement follows from the full-scope local <a href="finite-free-actions-and-coboundaries.html">finite free-action theorem</a>, Section 1.3, equation (B2), proved in Sections 3–10. In the corner with identity <span class="math">\(e\)</span>, put <span class="math">\(\zeta=e^{2\pi i/r}\)</span> and take the scalar cocycle <span class="math">\(c_{[j]}=\zeta^j e\)</span>. Equation (B2) gives <span class="math">\(c_{[j]}=v^*\gamma^j(v)\)</span>, so <span class="math">\(\gamma(v)=\zeta v\)</span>. The theorem applies to arbitrary finite nonfactors and invariant corners. Thus the spectral corner used in Lemma 2.2 has exactly the required scope.</p>
+<h3 id="21a-the-elementary-discrete-spectrum-step">2.1a. The elementary discrete spectrum step</h3>
+<p>For a single automorphism the approximate-eigenvector assertion can be proved without a general harmonic-analysis localization theorem. Let <span class="math">\(T\)</span> be a surjective isometry of a complex Banach space. Its spectrum as a bounded operator is contained in <span class="math">\(\mathbb T\)</span>: Neumann series give the resolvent both outside the circle and inside it, using <span class="math">\(T^{-1}\)</span>.</p>
+<p>The action spectrum of the discrete representation <span class="math">\(n\mapsto T^n\)</span> is contained in that operator spectrum. Here is the needed inclusion directly. For <span class="math">\(a=(a_n)\in\ell^1(\mathbb Z)\)</span>, put <span class="math">\(A(a)=\sum_n a_nT^n\)</span> and <span class="math">\(\widehat a(z)=\sum_n a_nz^n\)</span>. With the conjugated-character convention for the Fourier transform, this coordinate labels the character <span class="math">\(\gamma_z(n)=z^{-n}\)</span>. Inverting the circle coordinate leaves the full circle and <span class="math">\(-1\)</span> unchanged. By definition, the action spectrum is the common zero set of the <span class="math">\(\widehat a\)</span> for which <span class="math">\(A(a)=0\)</span>. Suppose <span class="math">\(\lambda\in\mathbb T\)</span> is outside the operator spectrum. Choose a smooth function <span class="math">\(h\)</span> on the circle, supported in a small closed arc of the resolvent set and satisfying <span class="math">\(h(\lambda)=1\)</span>. Put <span class="math">\(a_n=\int_{\mathbb T}h(z)z^{-n}\,dm(z)\)</span>, where <span class="math">\(dm\)</span> is normalized Haar measure. Two integrations by parts give <span class="math">\(a_n=O(|n|^{-2})\)</span> for <span class="math">\(n\ne0\)</span>, so these coefficients are absolutely summable.</p>
+<p>For completeness, their Fourier series equals <span class="math">\(h\)</span>. The scalar Poisson kernel <span class="math">\(K_r(w)=(1-r^2)/|1-rw|^2=\sum_n r^{|n|}w^n\)</span> is positive and has integral <span class="math">\(1\)</span>. Outside any fixed neighborhood of <span class="math">\(1\)</span>, its supremum tends to zero as <span class="math">\(r\uparrow1\)</span>. Uniform continuity of <span class="math">\(h\)</span>, splitting the convolution integral into that neighborhood and its complement, therefore gives <span class="math">\(K_r*h\to h\)</span> uniformly. On the other hand, termwise integration gives <span class="math">\((K_r*h)(w)=\sum_n r^{|n|}a_nw^n\)</span>, and absolute summability makes these sums converge uniformly to <span class="math">\(\widehat a(w)\)</span>. Thus <span class="math">\(\widehat a=h\)</span>. For the operator series, absolute convergence gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\sum_n r^{|n|}a_nT^n
+=\int_{\mathbb T}h(z)P_r(T,z)\,dm(z),\\
+0&lt;r&lt;1,\\
+P_r(T,z)=\sum_n r^{|n|}z^{-n}T^n\\
+=(1-r^2)(I-rz^{-1}T)^{-1}(I-rzT^{-1})^{-1}.
+\end{gathered}
+\]</div></div>
+<p>On the compact support of <span class="math">\(h\)</span>, both inverse factors stay uniformly bounded as <span class="math">\(r\uparrow1\)</span>, because their limits are invertible and inversion is continuous. The integral therefore tends to zero in operator norm. The absolutely summable Fourier series makes its left side tend to <span class="math">\(A(a)\)</span>. Thus <span class="math">\(A(a)=0\)</span>, whereas <span class="math">\(\widehat a(\lambda)=h(\lambda)=1\)</span>. Consequently <span class="math">\(\lambda\)</span> is outside the action spectrum, proving the inclusion.</p>
+<p>Finally every point <span class="math">\(\lambda\)</span> of the operator spectrum has norm-one approximate eigenvectors. Otherwise <span class="math">\(\|(T-\lambda I)x\|\geq c\|x\|\)</span> for some <span class="math">\(c&gt;0\)</span>. Choose <span class="math">\(\mu\)</span> outside the circle with <span class="math">\(0&lt;|\mu-\lambda|&lt;c/4\)</span>. Then <span class="math">\(T-\mu I\)</span> is invertible and is bounded below by <span class="math">\(c/2\)</span>, so its inverse has norm at most <span class="math">\(2/c\)</span>. The factorization</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+T-\lambda I\\
+=(T-\mu I)\bigl(I+(\mu-\lambda)(T-\mu I)^{-1}\bigr)
+\end{gathered}
+\]</div></div>
+<p>makes <span class="math">\(T-\lambda I\)</span> invertible by a Neumann series, a contradiction. Apply this to <span class="math">\(T=\beta\)</span> on <span class="math">\(N\)</span> and <span class="math">\(\lambda=-1\)</span>. This closes the exact discrete approximate-eigenvector step. It does not prove the separate dual-center theorem used to obtain the full action spectrum. The general historical route is [Connes 1973], Lemmas 2.3.5–2.3.6 and 2.3.8, printed pages 179–181 / PDF pages 48–50.</p>
+<p><strong>Lemma 2.1 (an approximate negative eigenvector).</strong> If norm-one elements <span class="math">\(x\)</span> satisfy <span class="math">\(\|\beta(x)+x\|\)</span> arbitrarily close to zero, then for every <span class="math">\(a&gt;0\)</span> there is a nonzero projection <span class="math">\(f\)</span> with <span class="math">\(\|f\beta(f)\|&lt;a\)</span>.</p>
+<p><em>Proof.</em> Write <span class="math">\(x=h+ik\)</span> with <span class="math">\(h,k\)</span> self-adjoint. At least one has norm at least <span class="math">\(1/2\)</span>. After normalization and a choice of sign, we obtain a self-adjoint contraction <span class="math">\(b\)</span> with <span class="math">\(1\)</span> in its spectrum and <span class="math">\(\|\beta(b)+b\|&lt;2d\)</span>, where <span class="math">\(d&gt;0\)</span> can be arbitrarily small.</p>
+<p>Let <span class="math">\(f=1_{[1-d,1]}(b)\)</span>, which is nonzero. On <span class="math">\(fH\)</span>, <span class="math">\(b\)</span> differs from <span class="math">\(1\)</span> by at most <span class="math">\(d\)</span>. On <span class="math">\(\beta(f)H\)</span>, <span class="math">\(\beta(b)\)</span> differs from <span class="math">\(1\)</span> by at most <span class="math">\(d\)</span>, so <span class="math">\(b\)</span> differs from <span class="math">\(-1\)</span> by at most <span class="math">\(3d\)</span>. Thus for <span class="math">\(\xi\in fH\)</span>, <span class="math">\(\eta\in\beta(f)H\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+2|\langle\xi,\eta\rangle|
+&amp;\leq |\langle(1-b)\xi,\eta\rangle|\\
+&amp;\quad +|\langle\xi,(1+b)\eta\rangle|\\
+&amp;\leq4d\|\xi\|\|\eta\|.
+\end{aligned}
+\]</div></div>
+<p>Hence <span class="math">\(\|f\beta(f)\|\leq2d\)</span>. Choose <span class="math">\(2d&lt;a\)</span>. <span class="math">\(\square\)</span></p>
+<p><strong>Lemma 2.2 (one small overlap for an outer automorphism).</strong> An outer automorphism <span class="math">\(\beta\)</span> of a finite von Neumann algebra admits such an <span class="math">\(f\)</span> for every <span class="math">\(a&gt;0\)</span>.</p>
+<p><em>Proof.</em> If <span class="math">\(\beta\)</span> moves a central projection, the abelian algebra generated by that projection and its image contains a nonzero <span class="math">\(f\)</span> with <span class="math">\(f\beta(f)=0\)</span>. More generally, a nonidentity automorphism of an invariant abelian algebra admits this conclusion: choose a self-adjoint element it moves, then a spectral projection <span class="math">\(q\)</span> it moves; one of <span class="math">\(q(1-\beta(q))\)</span> and the corresponding inverse-image difference is nonzero and gives a disjoint translate.</p>
+<p>We may therefore suppose <span class="math">\(\beta\)</span> fixes the center. Restrict to its nonzero properly outer central summand. If every power is properly outer, the spectral fact above and Lemma 2.1 apply.</p>
+<p>Otherwise let <span class="math">\(r\geq2\)</span> be the smallest positive integer for which <span class="math">\(\beta^r\)</span> has a nonzero inner central summand. That summand is <span class="math">\(\beta\)</span>-invariant, since <span class="math">\(\beta\)</span> commutes with <span class="math">\(\beta^r\)</span>. Restrict to it and write <span class="math">\(\beta^r=\operatorname{Ad}v\)</span>. Then <span class="math">\(\beta(v)=cv\)</span> for a central unitary <span class="math">\(c\)</span>, and <span class="math">\(\beta(c)=c\)</span>. If <span class="math">\(c\ne1\)</span>, <span class="math">\(W^*(v,c)\)</span> is an invariant abelian algebra on which <span class="math">\(\beta\)</span> is nonidentity, giving an exactly disjoint projection.</p>
+<p>If <span class="math">\(c=1\)</span>, choose by spectral calculus a <span class="math">\(\beta\)</span>-fixed unitary <span class="math">\(w\)</span> with <span class="math">\(w^r=v^*\)</span>. Set <span class="math">\(\gamma=\operatorname{Ad}w\circ\beta\)</span>. Then <span class="math">\(\gamma^r=\mathrm{id}\)</span>; its first <span class="math">\(r-1\)</span> powers remain properly outer. Choose a nonzero spectral projection <span class="math">\(e\)</span> of <span class="math">\(w\)</span> on which <span class="math">\(\|we-\lambda e\|&lt;d\)</span> for some <span class="math">\(\lambda\in\mathbb T\)</span>. The corner <span class="math">\(eNe\)</span> is invariant under both automorphisms. The finite cyclic spectral fact gives a unitary eigenvector there. A sufficiently short spectral arc of that eigenvector gives a nonzero <span class="math">\(f\leq e\)</span> with <span class="math">\(f\gamma(f)=0\)</span>. On this corner,</p>
+<div class="equation"><div class="math math-display">\[
+\|\gamma(x)-\beta(x)\|\leq2d\|x\|.
+\]</div></div>
+<p>Consequently <span class="math">\(\|f\beta(f)\|\leq2d\)</span>. Choose <span class="math">\(2d&lt;a\)</span>. <span class="math">\(\square\)</span></p>
+<p><strong>Proposition 2.3 (the local cutting criterion).</strong> For an automorphism <span class="math">\(\beta\)</span> of a finite von Neumann algebra, the following are equivalent:</p>
+<ol>
+<li><span class="math">\(\beta\)</span> is properly outer.</li>
+<li>Every nonzero projection <span class="math">\(q\)</span> contains a nonzero projection <span class="math">\(f\leq q\)</span> with <span class="math">\(\|f\beta(f)\|&lt;a\)</span>, for every <span class="math">\(a&gt;0\)</span>.</li>
+<li>In every nonzero corner <span class="math">\(qNq\)</span>, positive contractions <span class="math">\(x\)</span> can satisfy <span class="math">\(\|x-\beta(x)\|&gt;1-a\)</span>, for every <span class="math">\(a&gt;0\)</span>.</li>
+<li>On every nonzero invariant corner <span class="math">\(eNe\)</span>, <span class="math">\(\|\beta_e-\mathrm{id}\|=2\)</span>.</li>
+</ol>
+<p><em>Proof.</em> Assume proper outerness but suppose the infimum of <span class="math">\(\|f\beta(f)\|\)</span>, over nonzero <span class="math">\(f\leq q\)</span>, is <span class="math">\(b&gt;0\)</span>. Choose <span class="math">\(e\leq q\)</span> with <span class="math">\(\|e\beta(e)\|&lt;b+d\)</span>.</p>
+<p>The spectrum of <span class="math">\(e\beta(e)e\)</span> lies in <span class="math">\([b^2,(b+d)^2]\)</span>. Indeed, if a nonzero spectral projection <span class="math">\(g\leq e\)</span> lay below <span class="math">\(b^2\)</span>, then</p>
+<div class="equation"><div class="math math-display">\[
+\|g\beta(g)\|^2=\|g\beta(g)g\|
+\leq\|g\beta(e)g\|&lt;b^2,
+\]</div></div>
+<p>contradicting the infimum. The same argument applied in <span class="math">\(\beta(e)N\beta(e)\)</span>, after transporting subprojections back by <span class="math">\(\beta^{-1}\)</span>, shows that <span class="math">\(\beta(e)e\beta(e)\)</span> is invertible there.</p>
+<p>The polar decomposition therefore gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+e\beta(e)=h u,\quad uu^*=e,\\
+u^*u=\beta(e),\quad \|e\beta(e)-bu\|&lt;d.
+\end{gathered}
+\]</div></div>
+<p>The automorphism <span class="math">\(\rho(x)=u\beta(x)u^*\)</span> of <span class="math">\(eNe\)</span> is outer. Here is the corner-to-center argument. If <span class="math">\(\rho=\operatorname{Ad}s\)</span>, then <span class="math">\(t=s^*u\)</span> intertwines <span class="math">\(\beta(x)\)</span> with <span class="math">\(x\)</span> for <span class="math">\(x\in eNe\)</span>, and has initial projection <span class="math">\(\beta(e)\)</span> and final projection <span class="math">\(e\)</span>. Their central supports are the same invariant projection <span class="math">\(z\)</span>. Choose a maximal family of partial isometries <span class="math">\(r_i\)</span> whose initial projections lie under <span class="math">\(e\)</span>, whose final projections are orthogonal and lie under <span class="math">\(z\)</span>. Their final projections sum to <span class="math">\(z\)</span>: a nonzero remainder would have a nonzero corner against <span class="math">\(e\)</span> by central support, and polar decomposition would enlarge the family. The family may be uncountable; all sums below are strong sums over the net of finite subsets. The strong sum</p>
+<div class="equation"><div class="math math-display">\[
+U=\sum_i r_i t\beta(r_i^*)
+\]</div></div>
+<p>is a unitary on <span class="math">\(z\)</span>, and <span class="math">\(U\beta(y)U^*=y\)</span> for <span class="math">\(y\in zN\)</span>. To check this, expand <span class="math">\(y\)</span> in the matrix coefficients <span class="math">\(r_i^*yr_j\in eNe\)</span> and use the intertwining identity for <span class="math">\(t\)</span>. The initial and final projection sums verify unitarity. This would make <span class="math">\(\beta\)</span> inner on <span class="math">\(zN\)</span>, contrary to proper outerness.</p>
+<p>Lemma 2.2 now supplies <span class="math">\(0\ne f\leq e\)</span> with <span class="math">\(\|f\rho(f)\|&lt;d\)</span>. Since <span class="math">\(f\leq e\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+\|f\beta(f)\|
+&amp;=\|f e\beta(e)\beta(f)\|\\
+&amp;\leq d+b\|fu\beta(f)\|\\
+&amp;=d+b\|f\rho(f)\|&lt;(1+b)d.
+\end{aligned}
+\]</div></div>
+<p>Taking <span class="math">\((1+b)d&lt;b\)</span> is a contradiction. This proves (1) implies (2).</p>
+<p>For a nonzero vector <span class="math">\(\xi\in fH\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\|(f-\beta(f))\xi\|\geq(1-\|f\beta(f)\|)\|\xi\|,
+\]</div></div>
+<p>so (2) implies (3). On an invariant corner, apply (3) to <span class="math">\(2x-e\)</span>, a contraction, to obtain norm difference arbitrarily close to <span class="math">\(2\)</span>; automorphisms have norm one, so the upper bound is <span class="math">\(2\)</span>. Thus (3) implies (4).</p>
+<p>Finally suppose <span class="math">\(\beta_e=\operatorname{Ad}v\)</span> on a nonzero invariant corner. A nonzero short-arc spectral projection <span class="math">\(q\)</span> of <span class="math">\(v\)</span> is fixed by <span class="math">\(\beta\)</span>, and <span class="math">\(v\)</span> is arbitrarily close to a scalar on <span class="math">\(q\)</span>. Hence <span class="math">\(\|\beta_q-\mathrm{id}\|&lt;2\)</span>, contradicting (4). It also prevents (3) on that <span class="math">\(q\)</span>. <span class="math">\(\square\)</span></p>
+<p>For the tower proof, apply (2) successively to <span class="math">\(\alpha,\ldots,\alpha^{m-1}\)</span>. It gives a nonzero <span class="math">\(f\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+\|\alpha^i(f)\alpha^j(f)\|&lt;d\qquad(0\leq i&lt;j&lt;m).
+
+\]</div><span class="equation-tag">(2.1)</span></div>
+<p>Passing to a smaller projection preserves every previous bound.</p>
+<h2 id="3-orthogonalizing-a-family-all-at-once">3. Orthogonalizing a family all at once</h2>
+<p><strong>Lemma 3.1 (the Gram operator).</strong> Suppose <span class="math">\(f_0,\ldots,f_{m-1}\)</span> are projections with <span class="math">\(\|f_if_j\|\leq d\)</span> for <span class="math">\(i\ne j\)</span>. If <span class="math">\(a=(m-1)d&lt;1\)</span>, there are orthogonal projections <span class="math">\(e_j\sim f_j\)</span>, with</p>
+<div class="equation"><div class="math math-display">\[
+\sum_j e_j=\bigvee_j f_j,\qquad
+\|e_j-f_j\|\leq3a.
+
+\]</div><span class="equation-tag">(3.1)</span></div>
+<p><em>Proof.</em> On <span class="math">\(K=\bigoplus_j f_jH\)</span>, let <span class="math">\(T(\xi_j)=\sum_j\xi_j\)</span>. Its Gram operator has identity diagonal and off-diagonal entries <span class="math">\(f_if_j\)</span>, so <span class="math">\(\|T^*T-1\|\leq a\)</span>. This estimate follows from the scalar matrix bound whose row and column sums are at most <span class="math">\(a\)</span>.</p>
+<p>Thus <span class="math">\(T^*T\)</span> is invertible. Its polar isometry <span class="math">\(W=T(T^*T)^{-1/2}\)</span> maps <span class="math">\(K\)</span> onto the closed sum of the <span class="math">\(f_jH\)</span>. With <span class="math">\(P_j\)</span> the coordinate projections, put <span class="math">\(e_j=WP_jW^*\)</span>. These projections belong to <span class="math">\(N\)</span>, since the formula uses finite matrices over <span class="math">\(N\)</span> and spectral calculus. They are orthogonal, their sum is the join, and <span class="math">\(WP_j\)</span> gives their equivalence with <span class="math">\(f_j\)</span>.</p>
+<p>Moreover</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+\|W-T\|&amp;=\|1-(T^*T)^{1/2}\|\\
+&amp;\leq\frac{a}{1+\sqrt{1-a}}\leq a.
+\end{aligned}
+\]</div></div>
+<p>Because <span class="math">\(TP_jT^*=f_j\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\|e_j-f_j\|\leq(1+\sqrt{1+a})\|W-T\|\leq3a.
+\]</div></div>
+<p><span class="math">\(\square\)</span></p>
+<p>The Gram argument works in any von Neumann algebra; neither finiteness nor countable decomposability is used in Lemma 3.1.</p>
+<p><strong>Corollary 3.3 (a factorial bound).</strong> For <span class="math">\(0&lt;d&lt;1/m!\)</span>, the same conclusion holds with <span class="math">\(\|e_j-f_j\|&lt;m!d\)</span>.</p>
+<p><em>Proof.</em> For <span class="math">\(m=1\)</span>, take <span class="math">\(e_0=f_0\)</span>. For <span class="math">\(m=2\)</span>, retain the sharper estimate from the proof:</p>
+<div class="equation"><div class="math math-display">\[
+\|e_j-f_j\|\leq
+\frac{1+\sqrt{1+d}}{1+\sqrt{1-d}}d&lt;2d,
+\]</div></div>
+<p>because <span class="math">\(d&lt;1/2\)</span>. For <span class="math">\(m\geq3\)</span>, <span class="math">\((m-1)d&lt;1\)</span>, and the proof actually gives a bound strictly below <span class="math">\(3(m-1)d\)</span>. The elementary inequality <span class="math">\(3(m-1)\leq m!\)</span> finishes the argument. <span class="math">\(\square\)</span></p>
+<p><strong>Lemma 3.2 (matching close projections).</strong> If <span class="math">\(p,q\)</span> have the same center-valued trace, there is a partial isometry <span class="math">\(v\)</span> with <span class="math">\(v^*v=p\)</span>, <span class="math">\(vv^*=q\)</span> and</p>
+<div class="equation"><div class="math math-display">\[
+\|v-q\|_2\leq\|p-q\|_2.
+
+\]</div><span class="equation-tag">(3.2)</span></div>
+<p><em>Proof.</em> Take the polar partial isometry of <span class="math">\(qp\)</span>. Its unmatched initial and final projections have equal center-valued traces, so complete it by a partial isometry between them. For the completed <span class="math">\(v\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\operatorname{Re}\tau(v)=\tau((pqp)^{1/2})\geq\tau(pqp)=\tau(pq).
+\]</div></div>
+<p>The added part has trace zero, since its initial projection is orthogonal to <span class="math">\(q\)</span>. Expanding the squares gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+\|v-q\|_2^2&amp;=2\tau(p)-2\operatorname{Re}\tau(v)\\
+&amp;\leq2\tau(p)-2\tau(pq)\\
+&amp;=\|p-q\|_2^2.
+\end{aligned}
+\]</div></div>
+<p>The same proof applies to a normalized trace in any finite corner. <span class="math">\(\square\)</span></p>
+<h2 id="4-a-small-exact-cycle-at-a-controlled-cost">4. A small exact cycle at a controlled cost</h2>
+<p>Assume now that <span class="math">\(\alpha\)</span> fixes <span class="math">\(Z(N)\)</span> pointwise. It then preserves the center-valued trace, so a projection and any of its images are equivalent.</p>
+<p><strong>Lemma 4.1 (a nonzero cycle fragment).</strong> For <span class="math">\(n&gt;1\)</span> and <span class="math">\(\delta&gt;0\)</span>, there are nonzero orthogonal projections <span class="math">\(g_0,\ldots,g_{n-1}\)</span>, all equivalent, and a unitary <span class="math">\(w\in N\)</span>, such that, writing <span class="math">\(E=\sum_jg_j\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+w\alpha(g_j)w^*=g_{j+1},\qquad
+\|w-1\|_1&lt;\delta\tau(E).
+
+\]</div><span class="equation-tag">(4.1)</span></div>
+<p><em>Proof.</em> Choose a large multiple <span class="math">\(m=nr\)</span>. Use (2.1) and Lemma 3.1 to orthogonalize <span class="math">\(\alpha^j(f)\)</span>, <span class="math">\(0\leq j&lt;m\)</span>, obtaining <span class="math">\(e_j\)</span>, and let</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+b=3(m-1)d,\\
+E=\sum_{j=0}^{m-1}e_j,\qquad F=E\vee\alpha(E).
+\end{gathered}
+\]</div></div>
+<p>Every <span class="math">\(e_j\)</span> has the same center-valued trace as <span class="math">\(f\)</span>. Put <span class="math">\(t=\tau(f)&gt;0\)</span>. Then <span class="math">\(\tau(E)=mt\)</span> and <span class="math">\(\tau(F)\leq(m+1)t\)</span>: the join <span class="math">\(F\)</span> is generated by <span class="math">\(m+1\)</span> orbit projections.</p>
+<p>Work in <span class="math">\(FNF\)</span> with <span class="math">\(\tau_F=\tau/\tau(F)\)</span>. For <span class="math">\(j&lt;m-1\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\|\alpha(e_j)-e_{j+1}\|_{2,F}\leq2b.
+\]</div></div>
+<p>Group the projections by residue modulo <span class="math">\(n\)</span>:</p>
+<div class="equation"><div class="math math-display">\[
+g_k=\sum_{\ell=0}^{r-1}e_{n\ell+k}\quad(0\leq k&lt;n).
+\]</div></div>
+<p>All <span class="math">\(g_k\)</span> have the same center-valued trace. For every <span class="math">\(k\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\|\alpha(g_k)-g_{k+1}\|_{2,F}
+\leq2mb+\frac{2}{\sqrt m}=:\eta.
+
+\]</div><span class="equation-tag">(4.2)</span></div>
+<p>For <span class="math">\(k&lt;n-1\)</span>, sum the adjacent-level bounds. For the final residue class, all but its final term obey the same bound. The remaining two projections each have normalized trace at most <span class="math">\(1/m\)</span>, giving the last term of (4.2).</p>
+<p>Use Lemma 3.2 to match <span class="math">\(\alpha(g_k)\)</span> to <span class="math">\(g_{k+1}\)</span> by partial isometries <span class="math">\(v_k\)</span> with <span class="math">\(\|v_k-g_{k+1}\|_{2,F}\leq\eta\)</span>. Also match <span class="math">\(F-\alpha(E)\)</span> to <span class="math">\(F-E\)</span>. Each of these complementary projections has trace at most <span class="math">\(t\)</span>, so the corresponding partial isometry <span class="math">\(v_*\)</span> satisfies</p>
+<div class="equation"><div class="math math-display">\[
+\|v_*-(F-E)\|_{2,F}\leq2/\sqrt m.
+\]</div></div>
+<p>The sum <span class="math">\(W=\sum_kv_k+v_*\)</span> is a unitary in <span class="math">\(FNF\)</span>. Extending by <span class="math">\(1-F\)</span> gives <span class="math">\(w\in N\)</span>. It has the required exact permutation and</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+\|w-1\|_1&amp;\leq\tau(F)\bigl(n\eta+2/\sqrt m\bigr)\\
+&amp;\leq2\tau(E)\left(2nmb+\frac{2n+2}{\sqrt m}\right).
+\end{aligned}
+\]</div></div>
+<p>First choose <span class="math">\(m\)</span> so that <span class="math">\(2(2n+2)/\sqrt m&lt;\delta/2\)</span>, then choose <span class="math">\(d\)</span> so small that <span class="math">\(4nmb&lt;\delta/2\)</span>. This proves (4.1). <span class="math">\(\square\)</span></p>
+<p>This order of choices is essential. The orbit projection may have tiny trace, so an absolute error estimate alone would not let us fill the algebra with cycle fragments. The cost must be proportional to the fragment's trace.</p>
+<h2 id="5-filling-the-algebra">5. Filling the algebra</h2>
+<p><strong>Proposition 5.1 (an exact cycle after a small perturbation).</strong> If <span class="math">\(\alpha\)</span> is aperiodic, trace preserving and fixes the center, then for every <span class="math">\(n\)</span> and <span class="math">\(\delta&gt;0\)</span> there are a partition <span class="math">\(p_0,\ldots,p_{n-1}\)</span> of <span class="math">\(1\)</span> and a unitary <span class="math">\(v\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+v\alpha(p_j)v^*=p_{j+1},\qquad \|v-1\|_1\leq\delta.
+
+\]</div><span class="equation-tag">(5.1)</span></div>
+<p><em>Proof.</em> The case <span class="math">\(n=1\)</span> is immediate. Consider partial partitions of equivalent projections with a unitary <span class="math">\(v\)</span> satisfying the exact permutation and <span class="math">\(\|v-1\|_1\leq\delta\tau(E)\)</span>, where <span class="math">\(E\)</span> is their sum. Order them by enlargement of every projection and the additional requirement</p>
+<div class="equation"><div class="math math-display">\[
+\|v&#39;-v\|_1\leq\delta\tau(E&#39;-E).
+
+\]</div><span class="equation-tag">(5.2)</span></div>
+<p>The empty partition with <span class="math">\(v=1\)</span> belongs to this ordered set.</p>
+<p>Every chain has an upper bound. Trace is strictly increasing whenever the support increases, so a chain has a countable cofinal subsequence, or a largest element. Along that subsequence the projections increase strongly and (5.2) makes the unitaries Cauchy in <span class="math">\(\|\cdot\|_1\)</span>. On uniformly bounded sets, <span class="math">\(\|x\|_2^2\leq\|x\|\|x\|_1\)</span>. Thus the unitaries and their adjoints converge in <span class="math">\(\|\cdot\|_2\)</span>. Their limit is a unitary, because multiplication on bounded sets is continuous for this topology. The permutation and cost inequalities pass to the limit.</p>
+<p>Take a maximal element by Zorn's lemma. If <span class="math">\(q=1-E\ne0\)</span>, the automorphism <span class="math">\(\beta=\operatorname{Ad}v\circ\alpha\)</span> fixes <span class="math">\(q\)</span>. Its restriction to <span class="math">\(qNq\)</span> remains aperiodic and fixes the center of that corner. Indeed, each power is an inner perturbation of the corresponding power of <span class="math">\(\alpha\)</span>, and proper outerness is unchanged by such perturbations and invariant-corner restriction.</p>
+<p>Apply Lemma 4.1 in this corner with its normalized trace. The resulting cycle fragment enlarges every <span class="math">\(p_j\)</span>. Extend its correcting unitary by <span class="math">\(1-q\)</span> and multiply it on the left of <span class="math">\(v\)</span>. Its <span class="math">\(\|\cdot\|_1\)</span> cost is at most <span class="math">\(\delta\)</span> times the added support's trace, so the new element satisfies (5.2) and strictly enlarges the old one. This contradicts maximality. Therefore <span class="math">\(E=1\)</span>. <span class="math">\(\square\)</span></p>
+<p>Since</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+\|v\alpha(p)v^*-\alpha(p)\|_2
+&amp;\leq2\|v-1\|_2\\
+&amp;\leq2\sqrt{2\|v-1\|_1},
+\end{aligned}
+
+\]</div><span class="equation-tag">(5.3)</span></div>
+<p>Proposition 5.1 proves Theorem 1.1 when the center is fixed, by taking <span class="math">\(\delta&lt;\varepsilon^2/8\)</span>.</p>
+<h2 id="6-when-the-center-moves">6. When the center moves</h2>
+<p>We first prove the abelian theorem in exactly the generality needed for the center.</p>
+<p><strong>Lemma 6.1 (cyclic partitions of a probability algebra).</strong> Let <span class="math">\(A\)</span> be abelian with a faithful normal tracial state <span class="math">\(\tau\)</span>, and let <span class="math">\(\sigma\)</span> be trace preserving and aperiodic. For every <span class="math">\(n\geq1\)</span> and <span class="math">\(m\geq1\)</span>, there is a partition <span class="math">\(p_0,\ldots,p_{n-1}\)</span> of <span class="math">\(1\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+\|\sigma(p_j)-p_{j+1}\|_2\leq1/\sqrt m.
+
+\]</div><span class="equation-tag">(6.1)</span></div>
+<p><em>Proof.</em> A properly outer trace-preserving automorphism <span class="math">\(\rho\)</span> of an abelian probability algebra admits an exactly disjoint translate in every nonzero projection <span class="math">\(q\)</span>. If <span class="math">\(q\ne\rho(q)\)</span>, equal traces ensure <span class="math">\(q(1-\rho(q))\ne0\)</span>, and this projection is disjoint from its image. If <span class="math">\(q=\rho(q)\)</span>, the restriction cannot be the identity, so choose <span class="math">\(b\leq q\)</span> with <span class="math">\(b\ne\rho(b)\)</span> and use <span class="math">\(b(1-\rho(b))\)</span>.</p>
+<p>Choose a maximal projection <span class="math">\(B\)</span> such that <span class="math">\(B,\sigma(B),\ldots,\sigma^{m-1}(B)\)</span> are disjoint. Such a maximal projection exists by Zorn's lemma: the join of a chain retains these disjointness relations, since <span class="math">\(\sigma\)</span> preserves joins.</p>
+<p>Maximality implies</p>
+<div class="equation"><div class="math math-display">\[
+\bigvee_{k=-(m-1)}^{m-1}\sigma^k(B)=1.
+
+\]</div><span class="equation-tag">(6.2)</span></div>
+<p>Otherwise the remaining projection contains a nonzero <span class="math">\(C\)</span> whose first <span class="math">\(m\)</span> translates are disjoint, by applying the first paragraph successively to <span class="math">\(\sigma,\ldots,\sigma^{m-1}\)</span>. Every cross-product of a translate of <span class="math">\(B\)</span> with a translate of <span class="math">\(C\)</span> is zero because <span class="math">\(C\)</span> avoids the shifts in (6.2). Thus <span class="math">\(B+C\)</span> contradicts maximality.</p>
+<p>For <span class="math">\(r\geq1\)</span>, let the first-return projection be</p>
+<div class="equation"><div class="math math-display">\[
+B_r=B\,\sigma^{-r}(B)\prod_{l=1}^{r-1}(1-\sigma^{-l}(B)).
+\]</div></div>
+<p>The forward nonreturning part <span class="math">\(D_+=B\prod_{l\geq1}(1-\sigma^{-l}(B))\)</span> is wandering: an overlap with a positive translate would give a forward return. Its infinitely many disjoint translates have the same trace, so its trace is zero. Faithfulness makes <span class="math">\(D_+=0\)</span>. The backward nonreturning part <span class="math">\(D_-\)</span>, defined with <span class="math">\(\sigma^l(B)\)</span>, is zero by the same argument for <span class="math">\(\sigma^{-1}\)</span>. The return towers</p>
+<div class="equation"><div class="math math-display">\[
+\sigma^i(B_r)\qquad(r\geq m,\ 0\leq i&lt;r)
+\]</div></div>
+<p>are disjoint and sum to <span class="math">\(1\)</span>. Indeed, if <span class="math">\(i\geq j\)</span>, transport an overlap of <span class="math">\(\sigma^i(B_r)\)</span> and <span class="math">\(\sigma^j(B_s)\)</span> by <span class="math">\(\sigma^{-i}\)</span>. When <span class="math">\(i&gt;j\)</span>, it would place <span class="math">\(B_r\)</span> in <span class="math">\(\sigma^{-(i-j)}(B)\)</span> with <span class="math">\(0&lt;i-j&lt;r\)</span>, contrary to its first return. When <span class="math">\(i=j\)</span>, the disjoint first-return bases force <span class="math">\(r=s\)</span>.</p>
+<p>Here is a projection-algebra verification of exhaustion. Put <span class="math">\(H=\bigvee_{r\geq m,\ 0\leq i&lt;r}\sigma^i(B_r)\)</span>. Since <span class="math">\(D_+=0\)</span>, the bases <span class="math">\(B_r\)</span> sum to <span class="math">\(B\)</span>, so <span class="math">\(B\leq H\)</span>. Every internal level maps to another level of <span class="math">\(H\)</span>, and the top of an <span class="math">\(r\)</span>-tower maps into <span class="math">\(B\)</span>. Thus <span class="math">\(\sigma(H)\leq H\)</span>. Equal traces and faithfulness imply <span class="math">\(\sigma(H)=H\)</span>. It contains every translate of <span class="math">\(B\)</span>, and (6.2) makes it <span class="math">\(1\)</span>. This argument uses only joins, products and the normal trace; it requires no point-space representation.</p>
+<p>Trace preservation now gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+1=\sum_{r\geq m}r\tau(B_r),\\
+\tau(B)=\sum_{r\geq m}\tau(B_r)\leq1/m.
+\end{gathered}
+
+\]</div><span class="equation-tag">(6.3)</span></div>
+<p>Group all levels by their residue modulo <span class="math">\(n\)</span>:</p>
+<div class="equation"><div class="math math-display">\[
+p_j=\sum_{r\geq m}\ \sum_{\substack{0\leq i&lt;r\\i\equiv j\ ({\rm mod}\ n)}}\sigma^i(B_r).
+\]</div></div>
+<p>Away from <span class="math">\(B\)</span>, a level and its predecessor belong to successive residue classes. Only returns from tower tops can disagree with cyclic rotation. Thus <span class="math">\(\sigma(p_j)-p_{j+1}\)</span> is supported in <span class="math">\(B\)</span>. The difference of two commuting projections has square at most that support projection, so (6.3) proves (6.1). <span class="math">\(\square\)</span></p>
+<p>This proof allows nonseparable <span class="math">\(A\)</span>, and it does not require ergodicity. It also explains why varying return heights are harmless: the whole error is confined to the small common base.</p>
+<p>Write <span class="math">\(A=Z(N)\)</span> and <span class="math">\(\sigma=\alpha|_A\)</span>. Decompose the identity into its central period sectors <span class="math">\(z_1,z_2,\ldots,z_\infty\)</span>. On <span class="math">\(z_pA\)</span>, <span class="math">\(\sigma\)</span> has exact period <span class="math">\(p\)</span>; on <span class="math">\(z_\infty A\)</span>, every nonzero power is properly outer. These projections are <span class="math">\(\sigma\)</span>-invariant.</p>
+<p>Here is an algebraic construction of the sectors. Let <span class="math">\(q_p\)</span> be the largest projection on whose abelian corner <span class="math">\(\sigma^p\)</span> is the identity. Joins preserve this property, and conjugating by <span class="math">\(\sigma\)</span> shows that <span class="math">\(q_p\)</span> is invariant. Put <span class="math">\(z_p=q_p\prod_{1\leq k&lt;p}(1-q_k)\)</span>, and <span class="math">\(z_\infty=1-\bigvee_pq_p\)</span>. A point with a smaller period is removed from the later sector. The faithful finite measure makes the nonzero sectors countable.</p>
+<p>On a finite-period sector choose <span class="math">\(c\in A\)</span> such that <span class="math">\(c,\sigma(c),\ldots,\sigma^{p-1}(c)\)</span> partition <span class="math">\(z_p\)</span>. Such a partition follows by maximal packing of disjoint <span class="math">\(p\)</span>-orbits in the abelian projection lattice. A leftover invariant projection would contain another nonzero disjoint orbit, since no lower power is the identity on a nonzero part of this sector.</p>
+<p>The automorphism <span class="math">\(\alpha^p\)</span> of <span class="math">\(cNc\)</span> is aperiodic and fixes its center. The case already proved supplies an approximate <span class="math">\(n\)</span>-cycle <span class="math">\(g_0,\ldots,g_{n-1}\)</span> there. Arrange the <span class="math">\(np\)</span> projections</p>
+<div class="equation"><div class="math math-display">\[
+h_{sp+r}=\alpha^r(g_s)\qquad(0\leq s&lt;n,\ 0\leq r&lt;p)
+\]</div></div>
+<p>in their cyclic order. All adjacent moves are exact except the return from the last central level, where the error is the chosen error for <span class="math">\(\alpha^p\)</span>. Group indices modulo <span class="math">\(n\)</span>:</p>
+<div class="equation"><div class="math math-display">\[
+p_j=\sum_{k=0}^{p-1}h_{kn+j}\qquad(0\leq j&lt;n).
+\]</div></div>
+<p>The triangle inequality bounds each error by <span class="math">\(p\)</span> times the error chosen in the <span class="math">\(c\)</span>-corner. That error can be arbitrarily small.</p>
+<p>On <span class="math">\(z_\infty\)</span>, apply Lemma 6.1 directly to the abelian probability algebra <span class="math">\(z_\infty A\)</span>, with its normalized trace and <span class="math">\(m\)</span> so large that <span class="math">\(1/\sqrt m\)</span> is below the desired error. Its projections lie in the center of <span class="math">\(z_\infty N\)</span>, so the same partition and estimate apply in that algebra.</p>
+<p>Finally use the normalized trace on each nonzero sector and choose the same error bound <span class="math">\(\varepsilon&#39; &lt;\varepsilon\)</span>. Take the orthogonal central sums of their partitions. Squared errors add with weights <span class="math">\(\tau(z_p)\)</span>, so their sum is below <span class="math">\((\varepsilon&#39;)^2\)</span>. This finishes the proof of Theorem 1.1. <span class="math">\(\square\)</span></p>
+<h2 id="7-examples-and-exercises-with-solutions">7. Examples and exercises with solutions</h2>
+<p><strong>Example 7.1 (an error confined to a boundary).</strong> Consider a measure-preserving tower of height <span class="math">\(12\)</span>, with each level of measure <span class="math">\(t\)</span>, and ask for a cycle of length <span class="math">\(4\)</span>. Group the levels with the same residue modulo <span class="math">\(4\)</span>. The transformation carries the first three groups to the next group exactly. The final group differs at only the top and bottom boundary, of total measure at most <span class="math">\(2t\)</span>, so its <span class="math">\(L^2\)</span> error is at most <span class="math">\(\sqrt{2t}\)</span>. Increasing the tower height makes this boundary small relative to its total measure.</p>
+<p><strong>Exercise 7.2 (introductory: a fixed summand).</strong> On <span class="math">\(\mathbb C\oplus L^\infty(\mathbb T)\)</span>, let an automorphism fix the first summand and act by irrational rotation on the second. Give both summands positive trace weight. Is the automorphism outer? Properly outer? Can its first summand admit a two-part cyclic partition with arbitrarily small error?</p>
+<p><em>Solution.</em> It is outer because the algebra is abelian and the rotation is nonidentity. It is not properly outer, since it is the identity on the first summand. On that summand the only two-part partitions are <span class="math">\((1,0)\)</span> and <span class="math">\((0,1)\)</span>; the two projections differ by norm one. The global error is therefore bounded below by the square root of that summand's trace weight.</p>
+<p><strong>Exercise 7.3 (intermediate: a Gram estimate).</strong> If there are <span class="math">\(5\)</span> projections and their pairwise products have norm at most <span class="math">\(10^{-4}\)</span>, give the bound from Lemma 3.1 for each orthogonalized projection.</p>
+<p><em>Solution.</em> Here <span class="math">\(a=4\cdot10^{-4}&lt;1\)</span>. Equation (3.1) gives <span class="math">\(\|e_j-f_j\|\leq3a=0.0012\)</span>. This is an operator-norm bound; it does not depend on any projection's trace.</p>
+<p><strong>Exercise 7.4 (intermediate: why the trace cost is weighted).</strong> Suppose disjoint fragments have traces <span class="math">\(t_i\)</span>, with <span class="math">\(\sum_i t_i=1\)</span>. Compare correction bounds <span class="math">\(\|w_i-1\|_1\leq\delta\)</span> and <span class="math">\(\|w_i-1\|_1\leq\delta t_i\)</span>.</p>
+<p><em>Solution.</em> The first gives only <span class="math">\(\delta\)</span> times the number of fragments, which may be infinite. The second gives a total at most <span class="math">\(\delta\sum_i t_i=\delta\)</span>, even for countably many fragments. This summable bound is what the maximal-chain construction uses.</p>
+<p><strong>Exercise 7.5 (advanced: a periodic obstruction).</strong> Suppose <span class="math">\(\alpha^r=\mathrm{id}\)</span>, and a partition of <span class="math">\(1\)</span> into <span class="math">\(n\)</span> projections is rotated exactly by <span class="math">\(\alpha\)</span>. Show that if <span class="math">\(n\)</span> does not divide <span class="math">\(r\)</span>, such a partition cannot have all projections nonzero.</p>
+<p><em>Solution.</em> Exact rotation gives <span class="math">\(p_j=\alpha^r(p_j)=p_{j+r}\)</span>. If <span class="math">\(r\)</span> is nonzero modulo <span class="math">\(n\)</span>, these are distinct members of an orthogonal partition. Equality then forces <span class="math">\(p_j=0\)</span> for every <span class="math">\(j\)</span>, contradicting their sum being <span class="math">\(1\)</span>. Thus exact rotation of a nonzero partition requires <span class="math">\(n\mid r\)</span>.</p>
+<p><strong>Exercise 7.6 (advanced: quantitative central gluing).</strong> On orthogonal invariant central sectors <span class="math">\(z_i\)</span>, suppose <span class="math">\(\|\alpha(p_{i,j})-p_{i,j+1}\|_{2,i}\leq b_i\)</span> for the normalized trace. Show that <span class="math">\(p_j=\sum_i p_{i,j}\)</span> has squared error at most <span class="math">\(\sum_i\tau(z_i)b_i^2\)</span>.</p>
+<p><em>Solution.</em> Distinct central sectors multiply to zero. Hence the square of the error is the sum of the squares of its sector components. Applying <span class="math">\(\tau\)</span> and using normality gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\|\alpha(p_j)-p_{j+1}\|_2^2\\
+=\sum_i\tau(z_i)\|\alpha(p_{i,j})-p_{i,j+1}\|_{2,i}^2\\
+\leq\sum_i\tau(z_i)b_i^2.
+\end{gathered}
+\]</div></div>
+<p>This proves the assertion for finite or countable sums.</p>
+<h2 id="references">References</h2>
+<p>[Connes] Alain Connes, <em>Outer conjugacy classes of automorphisms of factors</em>, Annales scientifiques de l'École Normale Supérieure, série 4, 8 (1975), 383–419. <a href="https://numdam.org/articles/10.24033/asens.1295/">Article and original text</a>.</p>
+<p>[Connes 1973] Alain Connes, <em>Une classification des facteurs de type III</em>, Annales scientifiques de l'École Normale Supérieure, série 4, 6 (1973), 133–252. <a href="https://numdam.org/articles/10.24033/asens.1247/">Article and original text</a>. The maximal inner summand and the general action-spectrum facts are distinguished from the elementary discrete argument above.</p>
+<p>[Connes–Takesaki] Alain Connes and Masamichi Takesaki, <em>The flow of weights on factors of type III</em>, Tohoku Mathematical Journal 29 (1977), 473–575. <a href="https://www.jstage.jst.go.jp/article/tmj1949/29/4/29_4_473/_article/-char/en">Part 1</a>, <a href="https://www.jstage.jst.go.jp/article/tmj1949/29/4/29_4_524/_article/-char/en">Part 2 and free original PDF</a>. The consumed result is Section IV, Theorem 3.2 and Lemma 3.3. The <a href="https://www.jstage.jst.go.jp/article/tmj1949/30/4/30_4_653a/_article/-char/en">1978 errata</a> contain no correction on those two pages.</p>
+<p>[OA-APPROX] <em>Central sequence algebras and exact lifts</em>, Theorems 3.1, 5.1 and 6.1 (<span class="unlinked">pinned source</span>). This is the current construction provider for the later centralizer application; its stated functional-analytic and projection prerequisites remain in force.</p>
+</article><nav class="lesson-nav" aria-label="Sources"><a href="src/cyclic-towers-in-finite-algebras.md">Editable Markdown</a> · <span class="unlinked">Sources and authorship</span> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

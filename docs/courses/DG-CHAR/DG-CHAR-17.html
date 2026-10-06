@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Connections, curvature and characteristic forms · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-17.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="connections-curvature-and-characteristic-forms">Connections, curvature and characteristic forms</h1>
+<p><em>Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Independently authored text dedicated under CC0. No independent mathematical review is recorded.</em></p>
+<p>A connection gives a bundle a differential calculus. Its curvature changes when the connection changes, yet invariant polynomials in that curvature give cohomology classes that stay fixed. We prove that assertion with an explicit primitive for the change, then identify the normalized forms with the real images of the integral characteristic classes already constructed. A Gaussian Thom form supplies the Euler normalization and yields generalized Gauss–Bonnet. The unit sphere and the tautological line on the projective line make the two central signs visible.</p>
+<p>This chapter covers assigned lesson17. Six graded exercises have complete solutions. The needed de Rham comparison, its product and open-pair statements, and its orientation normalization are proved in PartA. Connection and geometric convexity foundations use the exact, fully read DG-FND proofs identified below. The detailed invariant-polynomial, Mathai–Quillen and characteristic-class arguments are supplied here.</p>
+<p>The preceding <a href="DG-CHAR-06.html">Thom/Euler</a>, <a href="DG-CHAR-08.html">Gysin/projective</a>, <a href="DG-CHAR-09.html">Chern</a>, <a href="DG-CHAR-10.html">Pontryagin</a>, <a href="DG-CHAR-04.html">Schubert</a>, and <a href="DG-CHAR-07.html">manifold</a> chapters supply the exact singular-chain, splitting, integral normalization, symmetric-polynomial, fundamental-class and Euler-characteristic proofs used here. The arguments apply to finite-dimensional Hausdorff second-countable smooth bases without boundary. Generalized Gauss–Bonnet concerns closed oriented manifolds. Real forms represent coefficient images; integer characteristic classes and their torsion information retain their earlier definitions.</p>
+<h2 id="a-differential-forms-and-the-cohomology-comparison">A. Differential forms and the cohomology comparison</h2>
+<p>Throughout this lesson a smooth manifold is finite dimensional, Hausdorff and second countable, without boundary. Cohomology without a displayed coefficient group in this part has coefficients <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Complex-valued forms give the same constructions with <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Orientations and integration use the usual ordered-coordinate convention: <span class="math" data-tex="\(dt_1\wedge\cdots\wedge dt_n\)">\(dt_1\wedge\cdots\wedge dt_n\)</span> is positive in an oriented coordinate chart.</p>
+<h3 id="a-1-the-differential-and-integration">A.1. The differential and integration</h3>
+<p>A <span class="math" data-tex="\(q\)">\(q\)</span>-form is a smooth section of <span class="math" data-tex="\(\Lambda^qT^*M\)">\(\Lambda^qT^*M\)</span>. In coordinates it has the form
+<span class="math math-display" data-tex="\[
+ \omega=\sum_{i_1&lt;\cdots&lt;i_q} f_{i_1\ldots i_q}
+ dx^{i_1}\wedge\cdots\wedge dx^{i_q}.
+\]">\[
+ \omega=\sum_{i_1&lt;\cdots&lt;i_q} f_{i_1\ldots i_q}
+ dx^{i_1}\wedge\cdots\wedge dx^{i_q}.
+\]</span>
+Define <span class="math" data-tex="\(d\omega\)">\(d\omega\)</span> by differentiating each coefficient and wedging its differential on the left. This definition satisfies
+<span class="math math-display" data-tex="\[
+ d(\alpha\wedge\beta)=d\alpha\wedge\beta+
+ (-1)^{\deg\alpha}\alpha\wedge d\beta,\qquad d^2=0.
+\tag{A.1}
+\]">\[
+ d(\alpha\wedge\beta)=d\alpha\wedge\beta+
+ (-1)^{\deg\alpha}\alpha\wedge d\beta,\qquad d^2=0.
+\tag{A.1}
+\]</span>
+The first identity follows by moving the new one-form past the factors of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The second follows because the mixed second partial derivatives agree and the associated <span class="math" data-tex="\(dx^i\wedge dx^j\)">\(dx^i\wedge dx^j\)</span> have opposite signs. These definitions agree under a smooth change of coordinates: the chain rule gives the same differential on functions, and <span class="math" data-tex="\(d(df)=0\)">\(d(df)=0\)</span> shows that no extra derivative of the coordinate one-forms remains. Functions and their coordinate differentials generate the local algebra, so the product rule gives agreement on every form. This also proves that smooth pullback commutes with <span class="math" data-tex="\(d\)">\(d\)</span> and exterior products.</p>
+<p>The <strong>de Rham cohomology</strong> is
+<span class="math math-display" data-tex="\[
+ H_{\mathrm{dR}}^q(M)=
+ \ker(d:\Omega^q\to\Omega^{q+1})/
+ \operatorname{im}(d:\Omega^{q-1}\to\Omega^q).
+\tag{A.2}
+\]">\[
+ H_{\mathrm{dR}}^q(M)=
+ \ker(d:\Omega^q\to\Omega^{q+1})/
+ \operatorname{im}(d:\Omega^{q-1}\to\Omega^q).
+\tag{A.2}
+\]</span>
+Equation (A.1) makes exterior multiplication a product on these groups.</p>
+<p>For a smooth simplex <span class="math" data-tex="\(\sigma:\Delta^q\to M\)">\(\sigma:\Delta^q\to M\)</span>, set
+<span class="math math-display" data-tex="\[
+ I(\omega)(\sigma)=\int_{\Delta^q}\sigma^*\omega.
+\tag{A.3}
+\]">\[
+ I(\omega)(\sigma)=\int_{\Delta^q}\sigma^*\omega.
+\tag{A.3}
+\]</span>
+Here smooth means that the simplex extends smoothly to a neighbourhood of its closed domain. The standard simplex has vertices <span class="math" data-tex="\(0,e_1,\ldots,e_q\)">\(0,e_1,\ldots,e_q\)</span> and its usual positive coordinate orientation. For <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, Stokes' formula on that simplex is
+<span class="math math-display" data-tex="\[
+ \int_{\Delta^q}d\beta
+ =\sum_{j=0}^q(-1)^j
+ \int_{\Delta^{q-1}}\beta|_{[0,\ldots,\widehat j,\ldots,q]}.
+\tag{A.4}
+\]">\[
+ \int_{\Delta^q}d\beta
+ =\sum_{j=0}^q(-1)^j
+ \int_{\Delta^{q-1}}\beta|_{[0,\ldots,\widehat j,\ldots,q]}.
+\tag{A.4}
+\]</span>
+One can verify it directly. Write
+<span class="math" data-tex="\(\beta=\sum_i(-1)^{i-1}b_i\,dt_1\wedge\cdots\widehat{dt_i}\cdots\wedge dt_q\)">\(\beta=\sum_i(-1)^{i-1}b_i\,dt_1\wedge\cdots\widehat{dt_i}\cdots\wedge dt_q\)</span>.
+Then <span class="math" data-tex="\(d\beta=\sum_i\partial_i b_i\,dt_1\wedge\cdots\wedge dt_q\)">\(d\beta=\sum_i\partial_i b_i\,dt_1\wedge\cdots\wedge dt_q\)</span>.
+For each fixed choice of the other coordinates, integrate <span class="math" data-tex="\(t_i\)">\(t_i\)</span> from zero to <span class="math" data-tex="\(1-\sum_{j\ne i}t_j\)">\(1-\sum_{j\ne i}t_j\)</span>. The fundamental theorem of calculus gives the negative term on <span class="math" data-tex="\(t_i=0\)">\(t_i=0\)</span> and the positive term on the sloping face. Parametrizing those faces by the remaining coordinates gives exactly their alternating oriented face signs in (A.4). Summing over <span class="math" data-tex="\(i\)">\(i\)</span> proves the formula; in degree one it is the fundamental theorem itself.</p>
+<p>It follows that <span class="math" data-tex="\(I(d\omega)=\delta I(\omega)\)">\(I(d\omega)=\delta I(\omega)\)</span>. Thus integration is a cochain map to the cochains on smooth singular simplices. We will prove that it identifies (A.2) with the singular cohomology used earlier, including products and the positive local orientation generators.</p>
+<p>We also use integration of compactly supported top forms on an oriented manifold. A subordinate smooth partition of unity reduces it to coordinate integrals; the ordinary change-of-variables formula makes the result independent of the partition and coordinates. For a compactly supported <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-form on a manifold without boundary,
+<span class="math math-display" data-tex="\[
+ \int_M d\beta=0.
+\tag{A.5}
+\]">\[
+ \int_M d\beta=0.
+\tag{A.5}
+\]</span>
+Indeed split <span class="math" data-tex="\(\beta\)">\(\beta\)</span> into finitely many compactly supported coordinate pieces on a neighbourhood of its support. Their differentiated sum is <span class="math" data-tex="\(d\beta\)">\(d\beta\)</span>, since the differentiated weights sum to zero. Each coordinate integral is zero by successive one-dimensional integration of a compactly supported derivative. This is the form of Stokes' theorem used on closed manifolds below.</p>
+<h3 id="a-2-homotopies-and-a-good-cover">A.2. Homotopies and a good cover</h3>
+<p>For a smooth homotopy <span class="math" data-tex="\(H:[0,1]\times U\to V\)">\(H:[0,1]\times U\to V\)</span>, decompose
+<span class="math math-display" data-tex="\[
+ H^*\omega=dt\wedge\beta_t+\gamma_t,
+ \qquad K\omega=\int_0^1\beta_t\,dt.
+\]">\[
+ H^*\omega=dt\wedge\beta_t+\gamma_t,
+ \qquad K\omega=\int_0^1\beta_t\,dt.
+\]</span>
+The <span class="math" data-tex="\(dt\)">\(dt\)</span> component of <span class="math" data-tex="\(dH^*\omega\)">\(dH^*\omega\)</span> is
+<span class="math" data-tex="\(dt\wedge(\partial_t\gamma_t-d\beta_t)\)">\(dt\wedge(\partial_t\gamma_t-d\beta_t)\)</span>.
+Integrating that equality proves
+<span class="math math-display" data-tex="\[
+ H_1^*-H_0^*=dK+Kd.
+\tag{A.6}
+\]">\[
+ H_1^*-H_0^*=dK+Kd.
+\tag{A.6}
+\]</span>
+All operations are smooth on compact parameter intervals and can be checked coefficient by coefficient. Consequently a smoothly contractible nonempty open set has de Rham cohomology <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> in degree zero and zero in positive degrees: apply (A.6) to a contraction to one point. Closed zero-forms are constant on a connected set by differentiation along paths.</p>
+<p>A <strong>good cover</strong> is an open cover for which every nonempty finite intersection is smoothly contractible. Here is a construction with the precise geometric premise. Give <span class="math" data-tex="\(M\)">\(M\)</span> a positive metric, whose existence was proved in DG-FND, <em>Linear and affine connections</em>, Theorem2.1. DG-FND, <em>Riemannian connections and convex neighbourhoods</em>, Theorem4.1, proves that every point has arbitrarily small strongly convex neighbourhoods. Each ordered pair in such a neighbourhood is joined by a unique minimizing geodesic in the whole connected component, with smooth endpoint dependence. Its proof, including the complete local affine-convexity and differential-equation prerequisites, is part of the exact provider reading for this lesson.</p>
+<p>Choose a countable locally finite cover by these neighbourhoods. To see local finiteness explicitly, use a compact exhaustion <span class="math" data-tex="\(K_j\subset\operatorname{int}K_{j+1}\)">\(K_j\subset\operatorname{int}K_{j+1}\)</span> with union <span class="math" data-tex="\(M\)">\(M\)</span>, as in the already proved partition-of-unity construction. Cover each compact layer <span class="math" data-tex="\(K_j\setminus\operatorname{int}K_{j-1}\)">\(K_j\setminus\operatorname{int}K_{j-1}\)</span> by finitely many sufficiently small convex neighbourhoods lying in
+<span class="math" data-tex="\(\operatorname{int}K_{j+1}\setminus K_{j-2}\)">\(\operatorname{int}K_{j+1}\setminus K_{j-2}\)</span>, with compact closures there. The resulting family is locally finite: a neighbourhood inside <span class="math" data-tex="\(\operatorname{int}K_N\)">\(\operatorname{int}K_N\)</span> misses all layers' chosen sets with <span class="math" data-tex="\(j\geq N+2\)">\(j\geq N+2\)</span>, and only finitely many sets have smaller indices. The construction may also be made subordinate to any prescribed open cover by choosing the neighbourhoods small enough.</p>
+<p>If <span class="math" data-tex="\(U=U_{i_0}\cap\cdots\cap U_{i_p}\)">\(U=U_{i_0}\cap\cdots\cap U_{i_p}\)</span> is nonempty, fix <span class="math" data-tex="\(a\in U\)">\(a\in U\)</span>. The geodesic from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(x\in U\)">\(x\in U\)</span> supplied by any one member <span class="math" data-tex="\(U_{i_j}\)">\(U_{i_j}\)</span> is the same as that supplied by every other member: all are minimizing in the whole manifold, and each member asserts uniqueness there. Thus the segment stays in their intersection. Its smooth dependence in one member gives a smooth contraction of <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span>. The cover is good. In dimension zero take the singleton neighbourhoods. Each has the same contraction assertion.</p>
+<h3 id="a-3-two-local-to-global-cochain-arguments">A.3. Two local-to-global cochain arguments</h3>
+<p>We give the comparison argument to avoid treating a topological class and a form as automatically interchangeable. Order the good cover by its countable index set. For each increasing tuple <span class="math" data-tex="\(J=(i_0,\ldots,i_p)\)">\(J=(i_0,\ldots,i_p)\)</span>, put <span class="math" data-tex="\(U_J=\bigcap_{i\in J}U_i\)">\(U_J=\bigcap_{i\in J}U_i\)</span>, omitting empty intersections. Form the double complex
+<span class="math math-display" data-tex="\[
+ \mathcal D^{p,q}=\prod_{i_0&lt;\cdots&lt;i_p}\Omega^q(U_J),
+ \qquad d_{\mathrm{tot}}=\check\delta+(-1)^p d.
+\tag{A.7}
+\]">\[
+ \mathcal D^{p,q}=\prod_{i_0&lt;\cdots&lt;i_p}\Omega^q(U_J),
+ \qquad d_{\mathrm{tot}}=\check\delta+(-1)^p d.
+\tag{A.7}
+\]</span>
+The horizontal differential is the alternating sum of restrictions, and <span class="math" data-tex="\(\check\delta^2=0\)">\(\check\delta^2=0\)</span> by cancellation of twice omitted indices. Restrictions commute with <span class="math" data-tex="\(d\)">\(d\)</span>, so the total differential squares to zero.</p>
+<p>First the horizontal rows, augmented by the restrictions of <span class="math" data-tex="\(\Omega^q(M)\)">\(\Omega^q(M)\)</span>, are exact. Let <span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span> be a subordinate locally finite smooth partition of unity. Extend alternating arrays to all tuples by the sign of reordering and by zero on a repeated index. The row contraction is
+<span class="math math-display" data-tex="\[
+ (hc)_{i_0\ldots i_{p-1}}=
+ \sum_j\rho_j c_{j i_0\ldots i_{p-1}}.
+\tag{A.8}
+\]">\[
+ (hc)_{i_0\ldots i_{p-1}}=
+ \sum_j\rho_j c_{j i_0\ldots i_{p-1}}.
+\tag{A.8}
+\]</span>
+Each term, originally defined on <span class="math" data-tex="\(U_j\cap U_{i_0}\cap\cdots\)">\(U_j\cap U_{i_0}\cap\cdots\)</span>, extends by zero because <span class="math" data-tex="\(\operatorname{supp}\rho_j\subset U_j\)">\(\operatorname{supp}\rho_j\subset U_j\)</span>. Local finiteness makes the sum smooth. Expanding the alternating differentials gives
+<span class="math" data-tex="\(\check\delta h+h\check\delta=1\)">\(\check\delta h+h\check\delta=1\)</span>, using <span class="math" data-tex="\(\sum_j\rho_j=1\)">\(\sum_j\rho_j=1\)</span>; for the augmented term this is the same gluing formula. Hence restriction from the global de Rham complex to (A.7) induces an isomorphism on total cohomology.</p>
+<p>Second, each vertical column has cohomology equal to the constants in degree zero and zero above it, by the smooth contractions in A.2. Products cause no difficulty: a primitive for each tuple gives a primitive in the product. Thus the inclusion of the ordinary Čech complex
+<span class="math math-display" data-tex="\[
+ \check C^p(\mathcal U;\mathbb R)
+ =\prod_{i_0&lt;\cdots&lt;i_p}\mathbb R
+\tag{A.9}
+\]">\[
+ \check C^p(\mathcal U;\mathbb R)
+ =\prod_{i_0&lt;\cdots&lt;i_p}\mathbb R
+\tag{A.9}
+\]</span>
+as constant zero-forms also induces an isomorphism on total cohomology.</p>
+<p>Here is an elementary justification of both total-complex statements. A total cocycle of degree <span class="math" data-tex="\(N\)">\(N\)</span> has only the <span class="math" data-tex="\(N+1\)">\(N+1\)</span> bidegrees <span class="math" data-tex="\((p,N-p)\)">\((p,N-p)\)</span>. For exact columns above the constants, its component <span class="math" data-tex="\((0,N)\)">\((0,N)\)</span>, when <span class="math" data-tex="\(N&gt;0\)">\(N&gt;0\)</span>, is vertically closed by the cocycle equation. Remove it by a total coboundary using a vertical primitive. Then remove <span class="math" data-tex="\((1,N-1)\)">\((1,N-1)\)</span>, and continue while <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, choosing the primitive with the sign <span class="math" data-tex="\((-1)^p\)">\((-1)^p\)</span> of the vertical differential. Only <span class="math" data-tex="\((N,0)\)">\((N,0)\)</span> remains; its vertical derivative is zero, so its entries are constants, and its horizontal derivative is zero. This proves surjectivity from (A.9). For injectivity, suppose a constants cocycle is <span class="math" data-tex="\(d_{\mathrm{tot}}b\)">\(d_{\mathrm{tot}}b\)</span>. The same elimination applied to <span class="math" data-tex="\(b\)">\(b\)</span>, by subtracting total coboundaries from <span class="math" data-tex="\(b\)">\(b\)</span>, preserves <span class="math" data-tex="\(d_{\mathrm{tot}}b\)">\(d_{\mathrm{tot}}b\)</span>. Its positive-<span class="math" data-tex="\(q\)">\(q\)</span> components are vertically closed successively because that derivative has only <span class="math" data-tex="\(q=0\)">\(q=0\)</span>. The final component of <span class="math" data-tex="\(b\)">\(b\)</span> is a constants array, whose horizontal coboundary is the original constants cocycle. Degree zero has no boundaries and the assertion is immediate.</p>
+<p>For exact augmented rows, start instead with the component of a total cocycle having largest <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>. Its horizontal derivative is zero by the cocycle equation, so a horizontal primitive removes it. Continue with decreasing <span class="math" data-tex="\(p\)">\(p\)</span>. At the end the <span class="math" data-tex="\(p=0\)">\(p=0\)</span> component has horizontal derivative zero and is the restriction of one global element by row exactness. Its vertical derivative is zero, so that global element is closed. For injectivity, if the restriction of a global cocycle is <span class="math" data-tex="\(d_{\mathrm{tot}}b\)">\(d_{\mathrm{tot}}b\)</span>, eliminate the largest positive-<span class="math" data-tex="\(p\)">\(p\)</span> components of <span class="math" data-tex="\(b\)">\(b\)</span> while preserving its derivative. The remaining <span class="math" data-tex="\(p=0\)">\(p=0\)</span> component is the restriction of a global element, and its derivative is the original global cocycle; restriction is injective. This proves injectivity too. Both arguments are finite inductions in each total degree, even when the cover is infinite.</p>
+<p>Repeat the construction with continuous singular cochains <span class="math" data-tex="\(C^q(U_J;\mathbb R)\)">\(C^q(U_J;\mathbb R)\)</span>, or with smooth singular cochains <span class="math" data-tex="\(C_{\mathrm{sm}}^q(U_J;\mathbb R)\)">\(C_{\mathrm{sm}}^q(U_J;\mathbb R)\)</span>, in place of forms. Their vertical cohomology is again just the constants: the contractions give the prism chain homotopy of the Thom/Euler chapter, Lemma1.1. In the smooth case all prism parametrizations are affine and the homotopy is smooth, so every resulting simplex is smooth. The point complex computation in that lemma gives the asserted cohomology.</p>
+<p>For the augmented horizontal rows, use the cochains on <strong>small</strong> simplices of <span class="math" data-tex="\(M\)">\(M\)</span>, whose images lie in some cover member. For each such simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, let <span class="math" data-tex="\(j(\sigma)\)">\(j(\sigma)\)</span> be the first member containing it. The contraction is (A.8) with its sum of weighted terms replaced, at <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, by the single term
+<span class="math math-display" data-tex="\[
+ (hc)_{i_0\ldots i_{p-1}}(\sigma)
+ =c_{j(\sigma)i_0\ldots i_{p-1}}(\sigma).
+\tag{A.10}
+\]">\[
+ (hc)_{i_0\ldots i_{p-1}}(\sigma)
+ =c_{j(\sigma)i_0\ldots i_{p-1}}(\sigma).
+\tag{A.10}
+\]</span>
+Every required evaluation is defined when <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> lies in all the indicated members. The same alternating cancellation proves the row identity. Compatibility of this contraction with the vertical differential is unnecessary for exactness of a fixed row and the finite elimination just proved.</p>
+<p>Small cochains have the cohomology of all singular cochains. The full chain homotopy equivalence was proved in the Thom/Euler chapter, Lemma2.1. That proof uses only affine subdivision, affine cones within a standard simplex, and composition with the original simplex. Every operation therefore also preserves smoothness, and proves the same small-chain equivalence for smooth simplices. Dualizing a chain homotopy gives the required cochain homotopy.</p>
+<p>We now have quasi-isomorphisms from each of the three global complexes—forms, continuous singular cochains, and smooth singular cochains—to its corresponding total complex. All three total complexes have the same constants complex (A.9) as a quasi-isomorphic subcomplex. Integration (A.3) on every <span class="math" data-tex="\(U_J\)">\(U_J\)</span> commutes with both differentials by (A.4), and is the identity on constants. Restriction from continuous to smooth cochains is also the identity on constants. It follows that integration induces an isomorphism to smooth singular cohomology and that continuous-to-smooth restriction induces an isomorphism. Their composite comparison defines
+<span class="math math-display" data-tex="\[
+ \mathcal I:H_{\mathrm{dR}}^*(M)
+ \ \xrightarrow{\ \cong\ }\ H^*(M;\mathbb R).
+\tag{A.11}
+\]">\[
+ \mathcal I:H_{\mathrm{dR}}^*(M)
+ \ \xrightarrow{\ \cong\ }\ H^*(M;\mathbb R).
+\tag{A.11}
+\]</span></p>
+<p>This comparison is multiplicative. To verify this without assuming that simplex integration itself preserves cup products, give each double complex the product
+<span class="math math-display" data-tex="\[
+ (a b)_{i_0\ldots i_{p+p&#x27;}}
+ =(-1)^{q p&#x27;}\,
+ a_{i_0\ldots i_p}\,b_{i_p\ldots i_{p+p&#x27;}},
+\tag{A.12}
+\]">\[
+ (a b)_{i_0\ldots i_{p+p&#x27;}}
+ =(-1)^{q p&#x27;}\,
+ a_{i_0\ldots i_p}\,b_{i_p\ldots i_{p+p&#x27;}},
+\tag{A.12}
+\]</span>
+for bidegrees <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> and <span class="math" data-tex="\((p&#x27;,q&#x27;)\)">\((p&#x27;,q&#x27;)\)</span>, restricting both factors to the common intersection. Use wedge products for forms and the already proved singular cup product for cochains. The alternating horizontal differential and the internal differential satisfy the product rule with total-degree sign: expanding the former cancels the interior omitted-index terms, and the latter is the ordinary graded product rule with the additional sign in (A.12). Restrictions from each global complex preserve this product, as does inclusion of (A.9). Thus both cohomology rings are identified with the same Čech cohomology ring. Integration's cohomology map is that same identification because it commutes with the constant inclusions. This proves the product assertion.</p>
+<p>The map (A.11) is natural. At the cochain level, integrating <span class="math" data-tex="\(f^*\omega\)">\(f^*\omega\)</span> over <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is integrating <span class="math" data-tex="\(\omega\)">\(\omega\)</span> over <span class="math" data-tex="\(f\circ\sigma\)">\(f\circ\sigma\)</span>, so integration commutes with smooth maps. Continuous-to-smooth restriction commutes with them too. Consequently the isomorphism obtained above has the required pullback naturality, regardless of which good covers were used to prove it.</p>
+<h3 id="a-4-open-pairs-and-orientation-evaluation">A.4. Open pairs and orientation evaluation</h3>
+<p>For an open subset <span class="math" data-tex="\(V\subset M\)">\(V\subset M\)</span>, define the relative form complex as
+<span class="math math-display" data-tex="\[
+ \Omega^q(M,V)=\Omega^q(M)\oplus\Omega^{q-1}(V),
+ \quad
+ d(\omega,\eta)=(d\omega,\omega|_V-d\eta).
+\tag{A.13}
+\]">\[
+ \Omega^q(M,V)=\Omega^q(M)\oplus\Omega^{q-1}(V),
+ \quad
+ d(\omega,\eta)=(d\omega,\omega|_V-d\eta).
+\tag{A.13}
+\]</span>
+Its long exact sequence follows from its projection to the first summand and its subcomplex consisting of the second summand; the connecting map is restriction. Apply integration to both summands. The absolute comparison (A.11) for <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>, their naturality, and the exact sequences give an isomorphism
+<span class="math math-display" data-tex="\[
+ H_{\mathrm{dR}}^q(M,V)\cong H^q(M,V;\mathbb R).
+\tag{A.14}
+\]">\[
+ H_{\mathrm{dR}}^q(M,V)\cong H^q(M,V;\mathbb R).
+\tag{A.14}
+\]</span>
+To see the last target explicitly, restriction of singular cochains to <span class="math" data-tex="\(V\)">\(V\)</span> is surjective: extend a cochain by zero on the basis simplices not lying in <span class="math" data-tex="\(V\)">\(V\)</span>. Its kernel is the relative singular complex. The kernel's inclusion into its restriction cone is a quasi-isomorphism: quotienting that cone by the kernel gives the cone of the identity on <span class="math" data-tex="\(C^*(V)\)">\(C^*(V)\)</span>, whose contraction is <span class="math" data-tex="\(h(\omega,\eta)=(\eta,0)\)">\(h(\omega,\eta)=(\eta,0)\)</span>. For the differential <span class="math" data-tex="\((\delta\omega,\omega-\delta\eta)\)">\((\delta\omega,\omega-\delta\eta)\)</span>, direct substitution gives <span class="math" data-tex="\(dh+hd=1\)">\(dh+hd=1\)</span>. This proves the identification used in (A.14), with the signs in (A.13).</p>
+<p>For a closed relative chain <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(\partial c=b\)">\(\partial c=b\)</span> lying in <span class="math" data-tex="\(V\)">\(V\)</span>, the pairing with <span class="math" data-tex="\((\omega,\eta)\)">\((\omega,\eta)\)</span> is
+<span class="math math-display" data-tex="\[
+ \int_c\omega-\int_b\eta.
+\tag{A.15}
+\]">\[
+ \int_c\omega-\int_b\eta.
+\tag{A.15}
+\]</span>
+Stokes proves that it is unchanged by relative boundaries when (A.13) is closed. In particular a closed form vanishing on <span class="math" data-tex="\(V\)">\(V\)</span> represents <span class="math" data-tex="\((\omega,0)\)">\((\omega,0)\)</span>, and its pairing on a positive relative coordinate ball is its ordinary integral.</p>
+<p>The comparison respects manifold orientations and top-degree integration. Use a partition subordinate to oriented coordinate neighbourhoods whose coordinate images are open cubes. Each compactly supported piece can be enclosed in a slightly smaller positive closed cube in that same chart. Triangulate this cube by the explicit ordered simplices of the earlier chain-product construction. Its positive relative chain is the local fundamental class; (A.3) evaluates the piece by its ordinary coordinate integral. Excision and local detection of fundamental classes identify this evaluation with the evaluation of its singular class on the manifold's fundamental class. For a closed oriented manifold only finitely many pieces are needed. Each is closed, since there are no forms of degree greater than the dimension. Adding their local evaluations gives
+<span class="math math-display" data-tex="\[
+ \langle\mathcal I[\omega],[M]\rangle=\int_M\omega.
+\tag{A.16}
+\]">\[
+ \langle\mathcal I[\omega],[M]\rangle=\int_M\omega.
+\tag{A.16}
+\]</span>
+The same positive-ball argument proves the fibre normalization in open relative pairs. No global triangulation of the manifold enters this comparison.</p>
+<h2 id="b-curvature-polynomials-and-their-primitives">B. Curvature polynomials and their primitives</h2>
+<p>We use column coordinates for sections: in a local frame <span class="math" data-tex="\(e\)">\(e\)</span>,
+<span class="math" data-tex="\(\nabla(ev)=e(dv+Av)\)">\(\nabla(ev)=e(dv+Av)\)</span>. The exact DG-FND proofs in <em>Linear and affine connections</em>, Sections1–2, and <em>Curvature and holonomy groups</em>, Sections1–3, give
+<span class="math math-display" data-tex="\[
+ A&#x27;=g^{-1}Ag+g^{-1}dg,\qquad
+ F=dA+A\wedge A,\qquad F&#x27;=g^{-1}Fg.
+\tag{B.1}
+\]">\[
+ A&#x27;=g^{-1}Ag+g^{-1}dg,\qquad
+ F=dA+A\wedge A,\qquad F&#x27;=g^{-1}Fg.
+\tag{B.1}
+\]</span>
+Here matrix products include exterior products of the entries. For an endomorphism-valued <span class="math" data-tex="\(q\)">\(q\)</span>-form put
+<span class="math math-display" data-tex="\[
+ D\beta=d\beta+A\wedge\beta-(-1)^q\beta\wedge A.
+\tag{B.2}
+\]">\[
+ D\beta=d\beta+A\wedge\beta-(-1)^q\beta\wedge A.
+\tag{B.2}
+\]</span>
+The same proofs establish <span class="math" data-tex="\(DF=0\)">\(DF=0\)</span>, the Bianchi identity. Connections exist, their differences are global endomorphism-valued one-forms, and compatible connections exist for positive real or Hermitian metrics. These are the precise provider statements used below. Transport and holonomy are unnecessary for the argument.</p>
+<h3 id="b-1-evaluate-an-invariant-polynomial-on-forms">B.1. Evaluate an invariant polynomial on forms</h3>
+<p>Let <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> be either <span class="math" data-tex="\(\mathfrak{gl}(r,\mathbb C)\)">\(\mathfrak{gl}(r,\mathbb C)\)</span> or <span class="math" data-tex="\(\mathfrak{so}(r)\)">\(\mathfrak{so}(r)\)</span>, with frame group <span class="math" data-tex="\(G=\mathrm{GL}(r,\mathbb C)\)">\(G=\mathrm{GL}(r,\mathbb C)\)</span> or <span class="math" data-tex="\(G=\mathrm{SO}(r)\)">\(G=\mathrm{SO}(r)\)</span>, respectively. Let <span class="math" data-tex="\(P\)">\(P\)</span> be a <span class="math" data-tex="\(G\)">\(G\)</span>-invariant homogeneous polynomial of degree <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>. Its symmetric polarization is the unique symmetric <span class="math" data-tex="\(k\)">\(k\)</span>-linear function <span class="math" data-tex="\(p\)">\(p\)</span> with
+<span class="math" data-tex="\(p(X,\ldots,X)=P(X)\)">\(p(X,\ldots,X)=P(X)\)</span>. Explicitly,
+<span class="math math-display" data-tex="\[
+ p(X_1,\ldots,X_k)=\frac1{k!}
+ \left.\frac{\partial^k}{\partial t_1\cdots\partial t_k}
+ P(t_1X_1+\cdots+t_kX_k)\right|_{t=0}.
+\tag{B.3}
+\]">\[
+ p(X_1,\ldots,X_k)=\frac1{k!}
+ \left.\frac{\partial^k}{\partial t_1\cdots\partial t_k}
+ P(t_1X_1+\cdots+t_kX_k)\right|_{t=0}.
+\tag{B.3}
+\]</span>
+Expanding a degree-<span class="math" data-tex="\(k\)">\(k\)</span> monomial proves both multilinearity and the diagonal identity. It also proves uniqueness: the coefficient of <span class="math" data-tex="\(t_1\cdots t_k\)">\(t_1\cdots t_k\)</span> in a diagonal evaluation determines the multilinear function.</p>
+<p>For <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-valued differential forms <span class="math" data-tex="\(\beta_j=\sum_a\beta_j^a X_a\)">\(\beta_j=\sum_a\beta_j^a X_a\)</span>, define
+<span class="math math-display" data-tex="\[
+ p(\beta_1,\ldots,\beta_k)
+ =\sum_{a_1,\ldots,a_k}
+ p(X_{a_1},\ldots,X_{a_k})
+ \beta_1^{a_1}\wedge\cdots\wedge\beta_k^{a_k}.
+\tag{B.4}
+\]">\[
+ p(\beta_1,\ldots,\beta_k)
+ =\sum_{a_1,\ldots,a_k}
+ p(X_{a_1},\ldots,X_{a_k})
+ \beta_1^{a_1}\wedge\cdots\wedge\beta_k^{a_k}.
+\tag{B.4}
+\]</span>
+Multilinearity makes this independent of the chosen basis. Interchanging two arguments of degrees <span class="math" data-tex="\(u,v\)">\(u,v\)</span> introduces the sign <span class="math" data-tex="\((-1)^{uv}\)">\((-1)^{uv}\)</span>. Polarization of the invariance of <span class="math" data-tex="\(P\)">\(P\)</span> makes <span class="math" data-tex="\(p\)">\(p\)</span> invariant when all its arguments are conjugated by the same <span class="math" data-tex="\(g\)">\(g\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ P(F):=p(F,\ldots,F)
+\tag{B.5}
+\]">\[
+ P(F):=p(F,\ldots,F)
+\tag{B.5}
+\]</span>
+is a globally defined <span class="math" data-tex="\(2k\)">\(2k\)</span>-form. Equivalently one can substitute the two-form entries of <span class="math" data-tex="\(F\)">\(F\)</span> directly into the polynomial: those entries commute, and expansion gives (B.5).</p>
+<p><span id="DG-CHAR-17.lemma-B.1"></span><strong>Lemma B.1 — Differentiate an invariant contraction.</strong> If the degree of <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span> is <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, then
+<span class="math math-display" data-tex="\[
+ d\,p(\beta_1,\ldots,\beta_k)
+ =\sum_{j=1}^k(-1)^{q_1+\cdots+q_{j-1}}
+ p(\beta_1,\ldots,D\beta_j,\ldots,\beta_k).
+\tag{B.6}
+\]">\[
+ d\,p(\beta_1,\ldots,\beta_k)
+ =\sum_{j=1}^k(-1)^{q_1+\cdots+q_{j-1}}
+ p(\beta_1,\ldots,D\beta_j,\ldots,\beta_k).
+\tag{B.6}
+\]</span></p>
+<p><strong>Proof.</strong> Ordinary differentiation of (B.4) gives the same formula with <span class="math" data-tex="\(d\beta_j\)">\(d\beta_j\)</span> in place of <span class="math" data-tex="\(D\beta_j\)">\(D\beta_j\)</span>. Differentiate simultaneous conjugation by <span class="math" data-tex="\(\exp(tZ)\)">\(\exp(tZ)\)</span> at zero. This gives the algebraic identity
+<span class="math math-display" data-tex="\[
+ \sum_jp(X_1,\ldots,[Z,X_j],\ldots,X_k)=0.
+\tag{B.7}
+\]">\[
+ \sum_jp(X_1,\ldots,[Z,X_j],\ldots,X_k)=0.
+\tag{B.7}
+\]</span>
+To check all the signs in the additional connection terms, it suffices by linearity to take <span class="math" data-tex="\(A=aZ\)">\(A=aZ\)</span> and <span class="math" data-tex="\(\beta_j=b_jX_j\)">\(\beta_j=b_jX_j\)</span>, where <span class="math" data-tex="\(a\)">\(a\)</span> is a one-form and <span class="math" data-tex="\(b_j\)">\(b_j\)</span> has degree <span class="math" data-tex="\(q_j\)">\(q_j\)</span>. The graded commutator in (B.2) is
+<span class="math" data-tex="\([A,\beta_j]=a\wedge b_j[Z,X_j]\)">\([A,\beta_j]=a\wedge b_j[Z,X_j]\)</span>: in the second product moving <span class="math" data-tex="\(a\)">\(a\)</span> past <span class="math" data-tex="\(b_j\)">\(b_j\)</span> cancels the displayed <span class="math" data-tex="\((-1)^{q_j}\)">\((-1)^{q_j}\)</span>. In the <span class="math" data-tex="\(j\)">\(j\)</span>-th summand of (B.6), moving this <span class="math" data-tex="\(a\)">\(a\)</span> to the front contributes <span class="math" data-tex="\((-1)^{q_1+\cdots+q_{j-1}}\)">\((-1)^{q_1+\cdots+q_{j-1}}\)</span>, which cancels that summand's original sign. The remaining sum is <span class="math" data-tex="\(a\wedge b_1\wedge\cdots\wedge b_k\)">\(a\wedge b_1\wedge\cdots\wedge b_k\)</span> multiplied by (B.7), and is zero. ∎</p>
+<p><span id="DG-CHAR-17.theorem-B.2"></span><strong>Theorem B.2 — Closedness and explicit transgression.</strong> The form <span class="math" data-tex="\(P(F)\)">\(P(F)\)</span> is closed. Its de Rham class depends only on the bundle and <span class="math" data-tex="\(P\)">\(P\)</span>. If <span class="math" data-tex="\(\nabla^0,\nabla^1\)">\(\nabla^0,\nabla^1\)</span> are two connections, write <span class="math" data-tex="\(\alpha=\nabla^1-\nabla^0\)">\(\alpha=\nabla^1-\nabla^0\)</span>, let <span class="math" data-tex="\(\nabla^t=\nabla^0+t\alpha\)">\(\nabla^t=\nabla^0+t\alpha\)</span>, and denote its curvature by <span class="math" data-tex="\(F_t\)">\(F_t\)</span>. Then
+<span class="math math-display" data-tex="\[
+ P(F_1)-P(F_0)=d\,\operatorname{CS}_P(\nabla^0,\nabla^1),
+\qquad
+ \operatorname{CS}_P=k\int_0^1p(\alpha,F_t,\ldots,F_t)\,dt.
+\tag{B.8}
+\]">\[
+ P(F_1)-P(F_0)=d\,\operatorname{CS}_P(\nabla^0,\nabla^1),
+\qquad
+ \operatorname{CS}_P=k\int_0^1p(\alpha,F_t,\ldots,F_t)\,dt.
+\tag{B.8}
+\]</span>
+For an orthogonal frame group both connections are required to be compatible with the same metric. Their affine path is again compatible.</p>
+<p><strong>Proof.</strong> Apply (B.6) to <span class="math" data-tex="\(k\)">\(k\)</span> copies of <span class="math" data-tex="\(F\)">\(F\)</span>. Every degree is even, and <span class="math" data-tex="\(DF=0\)">\(DF=0\)</span>, so <span class="math" data-tex="\(dP(F)=0\)">\(dP(F)=0\)</span>. Differentiate the local formula for <span class="math" data-tex="\(F_t\)">\(F_t\)</span>:
+<span class="math math-display" data-tex="\[
+ \dot F_t=d\alpha+A_t\wedge\alpha+\alpha\wedge A_t
+ =D_t\alpha.
+\tag{B.9}
+\]">\[
+ \dot F_t=d\alpha+A_t\wedge\alpha+\alpha\wedge A_t
+ =D_t\alpha.
+\tag{B.9}
+\]</span>
+Symmetry and the even degrees of the curvature arguments give
+<span class="math math-display" data-tex="\[
+ \frac{d}{dt}P(F_t)
+ =k\,p(D_t\alpha,F_t,\ldots,F_t)
+ =k\,d\,p(\alpha,F_t,\ldots,F_t).
+\tag{B.10}
+\]">\[
+ \frac{d}{dt}P(F_t)
+ =k\,p(D_t\alpha,F_t,\ldots,F_t)
+ =k\,d\,p(\alpha,F_t,\ldots,F_t).
+\tag{B.10}
+\]</span>
+In the last equality the remaining terms of (B.6) contain <span class="math" data-tex="\(D_tF_t=0\)">\(D_tF_t=0\)</span>. Integration in <span class="math" data-tex="\(t\)">\(t\)</span> proves (B.8). The primitive is global: the connection difference transforms by conjugation without the <span class="math" data-tex="\(g^{-1}dg\)">\(g^{-1}dg\)</span> term, and so do all the curvatures. Smooth integration over a compact parameter interval commutes with <span class="math" data-tex="\(d\)">\(d\)</span>, as is checked on each coefficient in a coordinate chart. Thus the difference of forms is exact. Pullback of the local connection and curvature formulas also proves naturality under every smooth base map. ∎</p>
+<p>A nonhomogeneous polynomial is handled degree by degree, including its constant term. An invariant formal power series also makes sense: on a finite-dimensional base only finitely many of its positive-degree curvature terms survive. No assertion about integer periods has been used in this theorem.</p>
+<h3 id="b-2-the-characteristic-forms-to-be-identified">B.2. The characteristic forms to be identified</h3>
+<p>For a complex rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle define
+<span class="math math-display" data-tex="\[
+ \det\!\left(I+t\frac{iF}{2\pi}\right)
+ =\sum_{j=0}^r t^j c_j(\nabla),\qquad
+ \operatorname{ch}(\nabla)=\operatorname{tr}
+ \exp\!\left(\frac{iF}{2\pi}\right).
+\tag{B.11}
+\]">\[
+ \det\!\left(I+t\frac{iF}{2\pi}\right)
+ =\sum_{j=0}^r t^j c_j(\nabla),\qquad
+ \operatorname{ch}(\nabla)=\operatorname{tr}
+ \exp\!\left(\frac{iF}{2\pi}\right).
+\tag{B.11}
+\]</span>
+Thus <span class="math" data-tex="\(c_0=1\)">\(c_0=1\)</span>, <span class="math" data-tex="\(c_1=(i/2\pi)\operatorname{tr}F\)">\(c_1=(i/2\pi)\operatorname{tr}F\)</span>, and
+<span class="math math-display" data-tex="\[
+ c_2=\frac12\left(\frac{i}{2\pi}\right)^2
+ \bigl((\operatorname{tr}F)^2-\operatorname{tr}(F\wedge F)\bigr).
+\tag{B.12}
+\]">\[
+ c_2=\frac12\left(\frac{i}{2\pi}\right)^2
+ \bigl((\operatorname{tr}F)^2-\operatorname{tr}(F\wedge F)\bigr).
+\tag{B.12}
+\]</span>
+Their polynomials are invariant, so all these forms are closed and have the exact transgression of Theorem B.2. A block diagonal connection has block diagonal curvature; the determinant therefore multiplies under a direct sum, while the trace of the exponential adds.</p>
+<p>For a real bundle, complexify its connection and set
+<span class="math math-display" data-tex="\[
+ p_j(\nabla)=(-1)^j c_{2j}(\nabla_{\mathbb C}).
+\tag{B.13}
+\]">\[
+ p_j(\nabla)=(-1)^j c_{2j}(\nabla_{\mathbb C}).
+\tag{B.13}
+\]</span>
+This is precisely the coefficient of <span class="math" data-tex="\(t^{2j}\)">\(t^{2j}\)</span> in
+<span class="math" data-tex="\(\det(I+tF/2\pi)\)">\(\det(I+tF/2\pi)\)</span>, since <span class="math" data-tex="\(i^{2j}=(-1)^j\)">\(i^{2j}=(-1)^j\)</span>. For a metric connection,
+<span class="math math-display" data-tex="\[
+ p_1(\nabla)=-\frac1{8\pi^2}\operatorname{tr}(F\wedge F).
+\tag{B.14}
+\]">\[
+ p_1(\nabla)=-\frac1{8\pi^2}\operatorname{tr}(F\wedge F).
+\tag{B.14}
+\]</span>
+Indeed its skew matrix has trace zero, and (B.12)–(B.13) give (B.14). For an arbitrary real connection the coefficient (B.13) is
+<span class="math math-display" data-tex="\[
+ \frac1{8\pi^2}
+ \bigl((\operatorname{tr}F)^2-\operatorname{tr}(F\wedge F)\bigr).
+\tag{B.14a}
+\]">\[
+ \frac1{8\pi^2}
+ \bigl((\operatorname{tr}F)^2-\operatorname{tr}(F\wedge F)\bigr).
+\tag{B.14a}
+\]</span>
+Its class still agrees with the class of (B.14). The trace polynomial has zero curvature form for a metric connection, so transgression supplies a global one-form <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(\operatorname{tr}F=db\)">\(\operatorname{tr}F=db\)</span>. The additional term is exact because <span class="math" data-tex="\((\operatorname{tr}F)^2=d(b\wedge db)\)">\((\operatorname{tr}F)^2=d(b\wedge db)\)</span>.</p>
+<p>For a metric connection every odd coefficient of <span class="math" data-tex="\(\det(I+tF/2\pi)\)">\(\det(I+tF/2\pi)\)</span> vanishes: transposition gives <span class="math" data-tex="\(\det(I+tF)=\det(I-tF)\)">\(\det(I+tF)=\det(I-tF)\)</span>. For any other real connection those odd coefficient forms are exact by (B.8).</p>
+<p><span id="DG-CHAR-17.exercise-B.3"></span><strong>Exercise B.3 — A complete transgression calculation (medium).</strong> For two complex connections, prove that their forms for any homogeneous invariant polynomial differ by an exact form. Then find an explicit primitive for
+<span class="math" data-tex="\(\operatorname{tr}(F_1\wedge F_1)-\operatorname{tr}(F_0\wedge F_0)\)">\(\operatorname{tr}(F_1\wedge F_1)-\operatorname{tr}(F_0\wedge F_0)\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(\alpha=\nabla^1-\nabla^0\)">\(\alpha=\nabla^1-\nabla^0\)</span>, <span class="math" data-tex="\(\nabla^t=\nabla^0+t\alpha\)">\(\nabla^t=\nabla^0+t\alpha\)</span>. For a degree-<span class="math" data-tex="\(k\)">\(k\)</span> invariant polynomial with polarization <span class="math" data-tex="\(p\)">\(p\)</span>, differentiating the curvature gives <span class="math" data-tex="\(\dot F_t=D_t\alpha\)">\(\dot F_t=D_t\alpha\)</span>. The product rule for an invariant contraction and Bianchi therefore give
+<span class="math math-display" data-tex="\[
+ \frac{d}{dt}p(F_t,\ldots,F_t)
+ =k\,p(D_t\alpha,F_t,\ldots,F_t)
+ =k\,d\,p(\alpha,F_t,\ldots,F_t).
+\]">\[
+ \frac{d}{dt}p(F_t,\ldots,F_t)
+ =k\,p(D_t\alpha,F_t,\ldots,F_t)
+ =k\,d\,p(\alpha,F_t,\ldots,F_t).
+\]</span>
+Integrate from zero to one. The globally defined primitive is <span class="math" data-tex="\(k\int_0^1p(\alpha,F_t,\ldots,F_t)\,dt\)">\(k\int_0^1p(\alpha,F_t,\ldots,F_t)\,dt\)</span>: all arguments transform by conjugation on an overlap, so invariance makes their contraction independent of the frame. This proves exactness for every such polynomial.</p>
+<p>For the requested calculation, polarization of <span class="math" data-tex="\(P(X)=\operatorname{tr}X^2\)">\(P(X)=\operatorname{tr}X^2\)</span> is
+<span class="math" data-tex="\(p(X,Y)=\tfrac12\operatorname{tr}(XY+YX)\)">\(p(X,Y)=\tfrac12\operatorname{tr}(XY+YX)\)</span>. With a one-form and a two-form the trace permits cyclic exchange with sign <span class="math" data-tex="\(+1\)">\(+1\)</span>, so <span class="math" data-tex="\(p(\alpha,F_t)=\operatorname{tr}(\alpha\wedge F_t)\)">\(p(\alpha,F_t)=\operatorname{tr}(\alpha\wedge F_t)\)</span>. Furthermore
+<span class="math math-display" data-tex="\[
+ F_t=F_0+tD_0\alpha+t^2\alpha\wedge\alpha.
+\]">\[
+ F_t=F_0+tD_0\alpha+t^2\alpha\wedge\alpha.
+\]</span>
+Substitution in (B.8) gives the global three-form
+<span class="math math-display" data-tex="\[
+ 2\operatorname{tr}(\alpha\wedge F_0)
+ +\operatorname{tr}(\alpha\wedge D_0\alpha)
+ +\frac23\operatorname{tr}(\alpha\wedge\alpha\wedge\alpha).
+\tag{B.15}
+\]">\[
+ 2\operatorname{tr}(\alpha\wedge F_0)
+ +\operatorname{tr}(\alpha\wedge D_0\alpha)
+ +\frac23\operatorname{tr}(\alpha\wedge\alpha\wedge\alpha).
+\tag{B.15}
+\]</span>
+Its exterior derivative is the requested difference, by (B.9)–(B.10). This formula does not require a global frame: each of <span class="math" data-tex="\(\alpha,F_0,D_0\alpha\)">\(\alpha,F_0,D_0\alpha\)</span> transforms by conjugation. ∎</p>
+<h2 id="c-a-normalized-thom-form-and-the-euler-form">C. A normalized Thom form and the Euler form</h2>
+<p>Let <span class="math" data-tex="\(E\to M\)">\(E\to M\)</span> be an oriented real bundle of rank <span class="math" data-tex="\(r=2m&gt;0\)">\(r=2m&gt;0\)</span>, equipped with a positive metric and a compatible connection. The base is a finite-dimensional Hausdorff second-countable smooth manifold without boundary. Write <span class="math" data-tex="\(\pi:E\to M\)">\(\pi:E\to M\)</span>. In an oriented orthonormal frame its connection and curvature matrices are skew:
+<span class="math math-display" data-tex="\[
+ A^T=-A,\qquad F^T=-F.
+\tag{C.1}
+\]">\[
+ A^T=-A,\qquad F^T=-F.
+\tag{C.1}
+\]</span>
+The second identity follows either from the connection on the metric tensor, or directly by transposing <span class="math" data-tex="\(dA+A\wedge A\)">\(dA+A\wedge A\)</span>: transposing the product of two one-form matrices contributes an additional minus sign.</p>
+<h3 id="c-1-fix-the-pfaffian-convention">C.1. Fix the Pfaffian convention</h3>
+<p>For a skew <span class="math" data-tex="\(2m\times2m\)">\(2m\times2m\)</span> matrix <span class="math" data-tex="\(B\)">\(B\)</span> with commuting entries, introduce formal exterior generators <span class="math" data-tex="\(\theta_1,\ldots,\theta_{2m}\)">\(\theta_1,\ldots,\theta_{2m}\)</span> and define
+<span class="math math-display" data-tex="\[
+ \operatorname{Pf}(B)=
+ [\theta_1\cdots\theta_{2m}]
+ \exp\!\left(\sum_{i&lt;j}B_{ij}\theta_i\theta_j\right).
+\tag{C.2}
+\]">\[
+ \operatorname{Pf}(B)=
+ [\theta_1\cdots\theta_{2m}]
+ \exp\!\left(\sum_{i&lt;j}B_{ij}\theta_i\theta_j\right).
+\tag{C.2}
+\]</span>
+The brackets mean take the coefficient of the ordered top exterior monomial. Only the <span class="math" data-tex="\(m\)">\(m\)</span>-th power contributes, so this is a polynomial. Its coefficients are integers: expansion groups the ordered factors into unordered pairings, and the factor <span class="math" data-tex="\(m!\)">\(m!\)</span> in the exponential cancels the orderings of the pairs. For example,
+<span class="math math-display" data-tex="\[
+ \operatorname{Pf}
+ \begin{pmatrix}0&amp;b\\-b&amp;0\end{pmatrix}=b,
+ \qquad
+ \operatorname{Pf}(B)_{r=4}
+ =B_{12}B_{34}-B_{13}B_{24}+B_{14}B_{23}.
+\tag{C.3}
+\]">\[
+ \operatorname{Pf}
+ \begin{pmatrix}0&amp;b\\-b&amp;0\end{pmatrix}=b,
+ \qquad
+ \operatorname{Pf}(B)_{r=4}
+ =B_{12}B_{34}-B_{13}B_{24}+B_{14}B_{23}.
+\tag{C.3}
+\]</span>
+Changing generators by a matrix <span class="math" data-tex="\(Q\)">\(Q\)</span> multiplies their top exterior monomial by <span class="math" data-tex="\(\det Q\)">\(\det Q\)</span>. Apply this change to the alternating two-tensor in (C.2) to obtain
+<span class="math math-display" data-tex="\[
+ \operatorname{Pf}(QBQ^T)=\det(Q)\operatorname{Pf}(B).
+\tag{C.4}
+\]">\[
+ \operatorname{Pf}(QBQ^T)=\det(Q)\operatorname{Pf}(B).
+\tag{C.4}
+\]</span>
+This polynomial identity holds over every commutative ring because it follows by expansion with integer coefficients.</p>
+<p>For completeness, <span class="math" data-tex="\(\operatorname{Pf}(B)^2=\det B\)">\(\operatorname{Pf}(B)^2=\det B\)</span>. First take a real skew matrix. The symmetric operator <span class="math" data-tex="\(-B^2\)">\(-B^2\)</span> has nonnegative eigenvalues. If <span class="math" data-tex="\(v\)">\(v\)</span> is a unit eigenvector with eigenvalue <span class="math" data-tex="\(\lambda^2&gt;0\)">\(\lambda^2&gt;0\)</span>, then <span class="math" data-tex="\(v,Bv/\lambda\)">\(v,Bv/\lambda\)</span> are orthonormal, their span is <span class="math" data-tex="\(B\)">\(B\)</span>-invariant, and its orthogonal complement is <span class="math" data-tex="\(B\)">\(B\)</span>-invariant. Repeating gives orthogonal two-dimensional blocks and a zero block on the kernel. On these blocks the identity is immediate from (C.3), and (C.4) proves it in the original frame. Since the difference of the two polynomials vanishes at every real assignment of its independent entries, it is the zero polynomial: successively regard it as a one-variable polynomial with the other real variables fixed. The identity therefore holds over every commutative ring.</p>
+<p>Substitution of the commuting two-form entries of <span class="math" data-tex="\(F\)">\(F\)</span> is legitimate. Equation (C.4) with <span class="math" data-tex="\(Q\in\mathrm{SO}(2m)\)">\(Q\in\mathrm{SO}(2m)\)</span> proves that
+<span class="math math-display" data-tex="\[
+ \mathcal E(\nabla)=\operatorname{Pf}\!\left(\frac{F}{2\pi}\right)
+\tag{C.5}
+\]">\[
+ \mathcal E(\nabla)=\operatorname{Pf}\!\left(\frac{F}{2\pi}\right)
+\tag{C.5}
+\]</span>
+is a global real <span class="math" data-tex="\(2m\)">\(2m\)</span>-form. We now construct a Thom form whose restriction to the zero section is exactly (C.5). This will also fix its normalization as the topological Euler class.</p>
+<h3 id="c-2-an-exterior-algebra-with-two-degrees">C.2. An exterior algebra with two degrees</h3>
+<p>On the total space <span class="math" data-tex="\(E\)">\(E\)</span>, work in
+<span class="math math-display" data-tex="\[
+ \mathscr A^{a,b}=\Omega^a(E;\Lambda^b\pi^*E)\otimes_{\mathbb R}\mathbb C.
+\tag{C.6}
+\]">\[
+ \mathscr A^{a,b}=\Omega^a(E;\Lambda^b\pi^*E)\otimes_{\mathbb R}\mathbb C.
+\tag{C.6}
+\]</span>
+The multiplication is
+<span class="math math-display" data-tex="\[
+ (\alpha\otimes u)(\beta\otimes v)
+ =(-1)^{b\,\deg\beta}(\alpha\wedge\beta)\otimes(u\wedge v),
+ \qquad u\in\Lambda^b\pi^*E.
+\tag{C.7}
+\]">\[
+ (\alpha\otimes u)(\beta\otimes v)
+ =(-1)^{b\,\deg\beta}(\alpha\wedge\beta)\otimes(u\wedge v),
+ \qquad u\in\Lambda^b\pi^*E.
+\tag{C.7}
+\]</span>
+Thus it is commutative with the sign from the <em>total</em> degrees <span class="math" data-tex="\(a+b\)">\(a+b\)</span>. This follows by moving the two differential forms past each other, the two exterior vectors past each other, and including the two signs in (C.7); the combined exponent is their total-degree product.</p>
+<p>The connection induces an exterior covariant derivative <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> of degree <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>. Locally this is the usual exterior derivative plus the action of <span class="math" data-tex="\(A\)">\(A\)</span> on each exterior-vector factor, with the signs required by (C.7). It is a derivation for total degree. This can be checked on functions, ordinary one-forms and individual exterior generators, which generate the algebra, and then extended by the product rule.</p>
+<p>Let <span class="math" data-tex="\(x\)">\(x\)</span> be the tautological section of <span class="math" data-tex="\(\pi^*E\)">\(\pi^*E\)</span>: at a vector <span class="math" data-tex="\(v\in E\)">\(v\in E\)</span>, its value is <span class="math" data-tex="\(v\)">\(v\)</span> in the fibre over <span class="math" data-tex="\(\pi(v)\)">\(\pi(v)\)</span>. In a frame put
+<span class="math math-display" data-tex="\[
+ x=\sum_i y_i\theta_i,\qquad
+ \nabla x=\sum_i\eta_i\theta_i,\qquad
+ \eta=dy+Ay.
+\tag{C.8}
+\]">\[
+ x=\sum_i y_i\theta_i,\qquad
+ \nabla x=\sum_i\eta_i\theta_i,\qquad
+ \eta=dy+Ay.
+\tag{C.8}
+\]</span>
+Define a contraction of total degree minus one by
+<span class="math math-display" data-tex="\[
+ a(x)(\alpha\otimes u)
+ =(-1)^{\deg\alpha}\alpha\otimes\iota_xu.
+\tag{C.9}
+\]">\[
+ a(x)(\alpha\otimes u)
+ =(-1)^{\deg\alpha}\alpha\otimes\iota_xu.
+\tag{C.9}
+\]</span>
+Here <span class="math" data-tex="\(\iota_x\)">\(\iota_x\)</span> is contraction using the metric, so
+<span class="math" data-tex="\(\iota_x(\theta_i\theta_j)=y_i\theta_j-y_j\theta_i\)">\(\iota_x(\theta_i\theta_j)=y_i\theta_j-y_j\theta_i\)</span>.
+The ordinary exterior-contraction rule and (C.7) show that (C.9) is a derivation for total degree.</p>
+<p>Convert the curvature to an element of <span class="math" data-tex="\(\mathscr A^{2,2}\)">\(\mathscr A^{2,2}\)</span> by
+<span class="math math-display" data-tex="\[
+ R=\sum_{i&lt;j}F_{ji}\theta_i\theta_j
+ =-\sum_{i&lt;j}F_{ij}\theta_i\theta_j.
+\tag{C.10}
+\]">\[
+ R=\sum_{i&lt;j}F_{ji}\theta_i\theta_j
+ =-\sum_{i&lt;j}F_{ij}\theta_i\theta_j.
+\tag{C.10}
+\]</span>
+This is a global element: it is the alternating tensor associated, by the metric, with the skew endomorphism <span class="math" data-tex="\(F\)">\(F\)</span>. The reversed indices in (C.10) are part of the convention and determine the Euler sign.</p>
+<p>Let <span class="math" data-tex="\(T:\mathscr A\to\Omega(E;\mathbb C)\)">\(T:\mathscr A\to\Omega(E;\mathbb C)\)</span> extract the coefficient of <span class="math" data-tex="\(\theta_1\cdots\theta_r\)">\(\theta_1\cdots\theta_r\)</span>. An oriented orthonormal frame change has determinant one, so <span class="math" data-tex="\(T\)">\(T\)</span> is global. Moreover,
+<span class="math math-display" data-tex="\[
+ T a(x)=0,\qquad dT(u)=T(\nabla u).
+\tag{C.11}
+\]">\[
+ T a(x)=0,\qquad dT(u)=T(\nabla u).
+\tag{C.11}
+\]</span>
+The first identity holds because contraction lowers the exterior-vector degree and no input has degree greater than <span class="math" data-tex="\(r\)">\(r\)</span>. For the second, the connection preserves the oriented unit exterior volume: its derivative is multiplication by <span class="math" data-tex="\(\operatorname{tr}A=0\)">\(\operatorname{tr}A=0\)</span>. Apply the product rule to its coefficient; lower exterior degrees remain lower and do not contribute.</p>
+<h3 id="c-3-closedness-with-all-cancellation-signs">C.3. Closedness with all cancellation signs</h3>
+<p>Set
+<span class="math math-display" data-tex="\[
+ S=\frac{|x|^2}{2}+i\nabla x+R,
+ \qquad
+ U=(2\pi)^{-m}T(e^{-S}).
+\tag{C.12}
+\]">\[
+ S=\frac{|x|^2}{2}+i\nabla x+R,
+ \qquad
+ U=(2\pi)^{-m}T(e^{-S}).
+\tag{C.12}
+\]</span>
+The exponential is the ordinary scalar Gaussian times a finite exponential of the nilpotent positive exterior-vector degree terms. Every term of <span class="math" data-tex="\(i\nabla x+R\)">\(i\nabla x+R\)</span> has equal differential-form and exterior-vector degrees. Extracting degree <span class="math" data-tex="\(r\)">\(r\)</span> therefore makes <span class="math" data-tex="\(U\)">\(U\)</span> an <span class="math" data-tex="\(r\)">\(r\)</span>-form.</p>
+<p><span id="DG-CHAR-17.lemma-C.1"></span><strong>Lemma C.1 — The Gaussian cancellation.</strong> We have
+<span class="math math-display" data-tex="\[
+ (\nabla-i a(x))S=0,\qquad dU=0.
+\tag{C.13}
+\]">\[
+ (\nabla-i a(x))S=0,\qquad dU=0.
+\tag{C.13}
+\]</span></p>
+<p><strong>Proof.</strong> In the frame (C.8), compatibility gives
+<span class="math math-display" data-tex="\[
+ \frac12d|x|^2=\sum_i y_i\eta_i,
+ \qquad
+ a(x)\nabla x=-\sum_i y_i\eta_i.
+\tag{C.14}
+\]">\[
+ \frac12d|x|^2=\sum_i y_i\eta_i,
+ \qquad
+ a(x)\nabla x=-\sum_i y_i\eta_i.
+\tag{C.14}
+\]</span>
+The minus sign in the second equality is the <span class="math" data-tex="\((-1)^{\deg\eta_i}\)">\((-1)^{\deg\eta_i}\)</span> in (C.9). Applying the connection twice to <span class="math" data-tex="\(x\)">\(x\)</span>, or expanding <span class="math" data-tex="\(d\eta+A\wedge\eta\)">\(d\eta+A\wedge\eta\)</span>, gives
+<span class="math math-display" data-tex="\[
+ \nabla(\nabla x)=\sum_{i,j}F_{ij}y_j\theta_i=a(x)R.
+\tag{C.15}
+\]">\[
+ \nabla(\nabla x)=\sum_{i,j}F_{ij}y_j\theta_i=a(x)R.
+\tag{C.15}
+\]</span>
+To verify the last equality, contract each term <span class="math" data-tex="\(F_{ji}\theta_i\theta_j\)">\(F_{ji}\theta_i\theta_j\)</span> in (C.10). The coefficient of <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span> from <span class="math" data-tex="\(j&gt;i\)">\(j&gt;i\)</span> is <span class="math" data-tex="\(-F_{ji}y_j=F_{ij}y_j\)">\(-F_{ji}y_j=F_{ij}y_j\)</span>; the terms with <span class="math" data-tex="\(j&lt;i\)">\(j&lt;i\)</span> give the remaining entries of the same sum. Finally <span class="math" data-tex="\(\nabla R=0\)">\(\nabla R=0\)</span>, the Bianchi identity transported by the metric identification in (C.10).</p>
+<p>Consequently the derivative of the scalar term in <span class="math" data-tex="\(S\)">\(S\)</span> cancels <span class="math" data-tex="\(a(x)\nabla x\)">\(a(x)\nabla x\)</span>, and <span class="math" data-tex="\(i\nabla(\nabla x)\)">\(i\nabla(\nabla x)\)</span> cancels <span class="math" data-tex="\(-i a(x)R\)">\(-i a(x)R\)</span>. This proves the first identity in (C.13). The operator <span class="math" data-tex="\(\nabla-i a(x)\)">\(\nabla-i a(x)\)</span> is an odd derivation and <span class="math" data-tex="\(S\)">\(S\)</span> is even, so differentiation of its finite exponential and scalar Gaussian gives
+<span class="math" data-tex="\((\nabla-i a(x))e^{-S}=0\)">\((\nabla-i a(x))e^{-S}=0\)</span>. Equation (C.11) now gives
+<span class="math math-display" data-tex="\[
+ dU=(2\pi)^{-m}T((\nabla-i a(x))e^{-S})=0.
+\]">\[
+ dU=(2\pi)^{-m}T((\nabla-i a(x))e^{-S})=0.
+\]</span>
+Although complex coefficients were convenient for this calculation, <span class="math" data-tex="\(U\)">\(U\)</span> is real: a term contributing to exterior degree <span class="math" data-tex="\(2m\)">\(2m\)</span> uses <span class="math" data-tex="\(2m-2b\)">\(2m-2b\)</span> factors from <span class="math" data-tex="\(i\nabla x\)">\(i\nabla x\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> factors from <span class="math" data-tex="\(R\)">\(R\)</span>, and that power of <span class="math" data-tex="\(i\)">\(i\)</span> is real. All other coefficients and all product signs are real. ∎</p>
+<p><span id="DG-CHAR-17.lemma-C.2"></span><strong>Lemma C.2 — Fibre normalization and zero-section value.</strong> On every oriented fibre,
+<span class="math math-display" data-tex="\[
+ U|_{E_p}=(2\pi)^{-m}e^{-|y|^2/2}
+ dy_1\wedge\cdots\wedge dy_{2m},\qquad
+ \int_{E_p}U=1.
+\tag{C.16}
+\]">\[
+ U|_{E_p}=(2\pi)^{-m}e^{-|y|^2/2}
+ dy_1\wedge\cdots\wedge dy_{2m},\qquad
+ \int_{E_p}U=1.
+\tag{C.16}
+\]</span>
+If <span class="math" data-tex="\(j:M\to E\)">\(j:M\to E\)</span> is the zero section, then
+<span class="math math-display" data-tex="\[
+ j^*U=\operatorname{Pf}(F/2\pi).
+\tag{C.17}
+\]">\[
+ j^*U=\operatorname{Pf}(F/2\pi).
+\tag{C.17}
+\]</span></p>
+<p><strong>Proof.</strong> On a fibre the base forms <span class="math" data-tex="\(A,F\)">\(A,F\)</span> vanish and <span class="math" data-tex="\(\eta=dy\)">\(\eta=dy\)</span>. The product of all the factors <span class="math" data-tex="\(-i\,dy_i\theta_i\)">\(-i\,dy_i\theta_i\)</span> contributes
+<span class="math math-display" data-tex="\[
+ (-i)^{2m}(-1)^{(2m)(2m-1)/2}=1
+\]">\[
+ (-i)^{2m}(-1)^{(2m)(2m-1)/2}=1
+\]</span>
+to the ordered product of the <span class="math" data-tex="\(dy_i\)">\(dy_i\)</span>'s and the <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span>'s. This gives the first formula. The one-dimensional Gaussian integral is <span class="math" data-tex="\(\sqrt{2\pi}\)">\(\sqrt{2\pi}\)</span>: square the integral, apply polar coordinates in the plane to obtain <span class="math" data-tex="\(2\pi\int_0^\infty e^{-s^2/2}s\,ds=2\pi\)">\(2\pi\int_0^\infty e^{-s^2/2}s\,ds=2\pi\)</span>, and use positivity. Products give (C.16).</p>
+<p>On the zero section <span class="math" data-tex="\(x=0\)">\(x=0\)</span> and <span class="math" data-tex="\(j^*\nabla x=0\)">\(j^*\nabla x=0\)</span>. The remaining exponential is
+<span class="math" data-tex="\(\exp(-R)=\exp(\sum_{i&lt;j}F_{ij}\theta_i\theta_j)\)">\(\exp(-R)=\exp(\sum_{i&lt;j}F_{ij}\theta_i\theta_j)\)</span>.
+Definition (C.2), including the factor <span class="math" data-tex="\((2\pi)^{-m}\)">\((2\pi)^{-m}\)</span>, gives (C.17). ∎</p>
+<p><strong>Pullback by any smooth section.</strong> Let <span class="math" data-tex="\(s:M\to E\)">\(s:M\to E\)</span> be any smooth section of the oriented metric bundle of even rank <span class="math" data-tex="\(2m&gt;0\)">\(2m&gt;0\)</span>, with the fixed connection used in (C.12). The form <span class="math" data-tex="\(s^*U\)">\(s^*U\)</span> is closed and represents <span class="math" data-tex="\(e(E)_{\mathbb R}\)">\(e(E)_{\mathbb R}\)</span>, with no condition on the zeros of <span class="math" data-tex="\(s\)">\(s\)</span>. Here is the complete homotopy calculation. For two sections <span class="math" data-tex="\(s_0,s_1\)">\(s_0,s_1\)</span>, put
+<span class="math math-display" data-tex="\[
+ H(t,p)=(1-t)s_0(p)+t s_1(p),\qquad
+ H^*U=dt\wedge\beta_t+\gamma_t.
+\]">\[
+ H(t,p)=(1-t)s_0(p)+t s_1(p),\qquad
+ H^*U=dt\wedge\beta_t+\gamma_t.
+\]</span>
+The addition and scalar multiplication in a vector bundle make <span class="math" data-tex="\(H\)">\(H\)</span> smooth, and pullback commutes with the differential. Since <span class="math" data-tex="\(dU=0\)">\(dU=0\)</span>, the <span class="math" data-tex="\(dt\)">\(dt\)</span> component of <span class="math" data-tex="\(dH^*U=0\)">\(dH^*U=0\)</span> gives <span class="math" data-tex="\(\partial_t\gamma_t=d\beta_t\)">\(\partial_t\gamma_t=d\beta_t\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ s_1^*U-s_0^*U=d\int_0^1\beta_t\,dt.
+\]">\[
+ s_1^*U-s_0^*U=d\int_0^1\beta_t\,dt.
+\]</span>
+This is a global primitive: the decomposition by the distinguished parameter is intrinsic, and coefficientwise integration over a compact interval preserves smoothness. Take <span class="math" data-tex="\(s_0\)">\(s_0\)</span> to be the zero section. LemmaC.2 gives its pullback as <span class="math" data-tex="\(\operatorname{Pf}(F/2\pi)\)">\(\operatorname{Pf}(F/2\pi)\)</span>, whose Euler-class identification follows below. In particular every finite real multiple of <span class="math" data-tex="\(s\)">\(s\)</span> gives the same Euler class, with this explicit primitive between any two multiples. Wu's Section2.2 presents this section dependence; the calculation supplies it directly from the closed Gaussian form. No limit at an unbounded parameter is needed for this assertion.</p>
+<h3 id="c-4-support-and-the-topological-normalization">C.4. Support and the topological normalization</h3>
+<p>The Gaussian is not compactly supported in a fibre. Use the orientation-preserving fibre diffeomorphism
+<span class="math math-display" data-tex="\[
+ \Phi:\{|y|&lt;1\}\longrightarrow E,\qquad
+ \Phi(y)=\frac{y}{\sqrt{1-|y|^2}},
+\tag{C.18}
+\]">\[
+ \Phi:\{|y|&lt;1\}\longrightarrow E,\qquad
+ \Phi(y)=\frac{y}{\sqrt{1-|y|^2}},
+\tag{C.18}
+\]</span>
+and extend <span class="math" data-tex="\(\Phi^*U\)">\(\Phi^*U\)</span> by zero outside the unit ball bundle. Its inverse is <span class="math" data-tex="\(z\mapsto z/\sqrt{1+|z|^2}\)">\(z\mapsto z/\sqrt{1+|z|^2}\)</span>. The radial radius function <span class="math" data-tex="\(r/\sqrt{1-r^2}\)">\(r/\sqrt{1-r^2}\)</span> has positive derivative, and tangential directions have positive scaling, proving the asserted orientation preservation. Denote the extension by <span class="math" data-tex="\(U_c\)">\(U_c\)</span>. It is smooth. Indeed, on a compact base-coordinate neighbourhood every coefficient of <span class="math" data-tex="\(U\)">\(U\)</span> is a polynomial in fibre coordinates times <span class="math" data-tex="\(e^{-|y|^2/2}\)">\(e^{-|y|^2/2}\)</span>, with smooth base coefficients. After (C.18), any fixed number of derivatives is bounded by a finite sum of powers of <span class="math" data-tex="\((1-|y|^2)^{-1/2}\)">\((1-|y|^2)^{-1/2}\)</span>, multiplied by
+<span class="math math-display" data-tex="\[
+ \exp\!\left(-\frac{|y|^2}{2(1-|y|^2)}\right).
+\]">\[
+ \exp\!\left(-\frac{|y|^2}{2(1-|y|^2)}\right).
+\]</span>
+As <span class="math" data-tex="\(|y|\to1\)">\(|y|\to1\)</span>, each such product tends to zero: putting <span class="math" data-tex="\(s=(1-|y|^2)^{-1}\)">\(s=(1-|y|^2)^{-1}\)</span>, the exponential is a constant times <span class="math" data-tex="\(e^{-s/2}\)">\(e^{-s/2}\)</span>, which dominates every power of <span class="math" data-tex="\(s\)">\(s\)</span>. Thus all derivatives extend by zero. The extension is closed, its oriented fibre integral remains one by substitution, and its zero-section pullback remains (C.17).</p>
+<p>The de Rham comparison for pairs in PartA and this normalization identify <span class="math" data-tex="\(U_c\)">\(U_c\)</span> with the real Thom class. Here is the precise relative pair. Take
+<span class="math" data-tex="\(E_{&gt;1}=\{v:|v|&gt;1\}\)">\(E_{&gt;1}=\{v:|v|&gt;1\}\)</span>. The form <span class="math" data-tex="\(U_c\)">\(U_c\)</span> vanishes there, so the relative de Rham cone represents it by <span class="math" data-tex="\((U_c,0)\)">\((U_c,0)\)</span>. Its restriction to each fibre pair <span class="math" data-tex="\((\mathbb R^{2m},\{|y|&gt;1\})\)">\((\mathbb R^{2m},\{|y|&gt;1\})\)</span> evaluates to one on the positive relative ball. The inclusion <span class="math" data-tex="\(E_{&gt;1}\hookrightarrow E\setminus j(M)\)">\(E_{&gt;1}\hookrightarrow E\setminus j(M)\)</span> is a homotopy equivalence: radial scaling moves every positive radius to radius two and keeps the radii greater than one in that region throughout. The long exact sequences of pairs identify
+<span class="math math-display" data-tex="\[
+ H^{2m}(E,E\setminus j(M);\mathbb R)
+ \ \cong\ H^{2m}(E,E_{&gt;1};\mathbb R).
+\tag{C.19}
+\]">\[
+ H^{2m}(E,E\setminus j(M);\mathbb R)
+ \ \cong\ H^{2m}(E,E_{&gt;1};\mathbb R).
+\tag{C.19}
+\]</span>
+The uniqueness of the oriented Thom class, proved in the Thom/Euler chapter, therefore identifies the inverse image of <span class="math" data-tex="\([U_c,0]\)">\([U_c,0]\)</span> with that class. Pulling its absolute image back along <span class="math" data-tex="\(j\)">\(j\)</span> proves
+<span class="math math-display" data-tex="\[
+ [\operatorname{Pf}(F/2\pi)]=e(E)_{\mathbb R}.
+\tag{C.20}
+\]">\[
+ [\operatorname{Pf}(F/2\pi)]=e(E)_{\mathbb R}.
+\tag{C.20}
+\]</span>
+This is the Euler-form theorem with its exact sign and normalization. Orientation reversal changes the top coefficient <span class="math" data-tex="\(T\)">\(T\)</span> and the Euler form by a minus sign. For rank zero the class and the empty Pfaffian are both <span class="math" data-tex="\(1\)">\(1\)</span>; the Gaussian and support construction are unnecessary.</p>
+<p>In odd rank the real Euler class is zero. The bundle map <span class="math" data-tex="\(-I\)">\(-I\)</span> reverses each fibre orientation and is thus an orientation-preserving isomorphism from <span class="math" data-tex="\(E\)">\(E\)</span> with its given orientation to <span class="math" data-tex="\(E\)">\(E\)</span> with the reversed orientation. Euler naturality and the orientation-reversal rule proved in the Thom/Euler chapter give <span class="math" data-tex="\(e(E)=-e(E)\)">\(e(E)=-e(E)\)</span>, hence <span class="math" data-tex="\(2e(E)=0\)">\(2e(E)=0\)</span>. Its real image is zero. Defining the odd-size Pfaffian to be zero consequently gives the same real Euler statement in odd rank.</p>
+<p><span id="DG-CHAR-17.exercise-C.3"></span><strong>Exercise C.3 — The oriented plane sign (medium).</strong> For an oriented metric two-plane bundle, write
+<span class="math math-display" data-tex="\[
+ A=\begin{pmatrix}0&amp;-a\\a&amp;0\end{pmatrix}.
+\]">\[
+ A=\begin{pmatrix}0&amp;-a\\a&amp;0\end{pmatrix}.
+\]</span>
+Relate the Pfaffian form to the first Chern form for the complex structure <span class="math" data-tex="\(Je_1=e_2\)">\(Je_1=e_2\)</span>, and explain why the preceding Thom construction determines the sign.</p>
+<p><strong>Solution.</strong> As a complex line with complex frame <span class="math" data-tex="\(e_1\)">\(e_1\)</span>, the derivative is
+<span class="math" data-tex="\(\nabla e_1=a e_2=i a e_1\)">\(\nabla e_1=a e_2=i a e_1\)</span>. Its complex connection potential is <span class="math" data-tex="\(ia\)">\(ia\)</span>, and its curvature is <span class="math" data-tex="\(i\,da\)">\(i\,da\)</span>. The first Chern form is
+<span class="math math-display" data-tex="\[
+ \frac{i}{2\pi}(i\,da)=-\frac{da}{2\pi}.
+\]">\[
+ \frac{i}{2\pi}(i\,da)=-\frac{da}{2\pi}.
+\]</span>
+The real curvature has upper-right entry <span class="math" data-tex="\(-da\)">\(-da\)</span>, so (C.2) gives exactly the same Pfaffian form. The Gaussian's restriction to the oriented fibre is the positive normalized volume form (C.16); hence its relative class is the positive Thom class. Pullback along the zero section is therefore the Euler class defined earlier, rather than its negative. The equality <span class="math" data-tex="\(c_1(E,J)=e(E)\)">\(c_1(E,J)=e(E)\)</span> is consequently respected. ∎</p>
+<p><span id="DG-CHAR-17.exercise-C.4"></span><strong>Exercise C.4 — Prove the Euler-form identification (hard).</strong> For an oriented metric bundle of rank <span class="math" data-tex="\(2m&gt;0\)">\(2m&gt;0\)</span>, prove that <span class="math" data-tex="\(\operatorname{Pf}(F/2\pi)\)">\(\operatorname{Pf}(F/2\pi)\)</span> represents its Euler class. Your proof must fix the fibre normalization and deal with the Gaussian's support.</p>
+<p><strong>Solution.</strong> In the algebra with multiplication (C.7), set
+<span class="math math-display" data-tex="\[
+ S=|x|^2/2+i\nabla x-\sum_{i&lt;j}F_{ij}\theta_i\theta_j,
+ \qquad U=(2\pi)^{-m}T(e^{-S}).
+\]">\[
+ S=|x|^2/2+i\nabla x-\sum_{i&lt;j}F_{ij}\theta_i\theta_j,
+ \qquad U=(2\pi)^{-m}T(e^{-S}).
+\]</span>
+Metric compatibility gives <span class="math" data-tex="\(d|x|^2/2=-a(x)\nabla x\)">\(d|x|^2/2=-a(x)\nabla x\)</span>. Curvature gives <span class="math" data-tex="\(\nabla(\nabla x)=a(x)R\)">\(\nabla(\nabla x)=a(x)R\)</span>, for <span class="math" data-tex="\(R=-\sum_{i&lt;j}F_{ij}\theta_i\theta_j\)">\(R=-\sum_{i&lt;j}F_{ij}\theta_i\theta_j\)</span>, and Bianchi gives <span class="math" data-tex="\(\nabla R=0\)">\(\nabla R=0\)</span>. Hence <span class="math" data-tex="\((\nabla-i a(x))S=0\)">\((\nabla-i a(x))S=0\)</span>. Since this is a derivation and <span class="math" data-tex="\(T a(x)=0\)">\(T a(x)=0\)</span>, <span class="math" data-tex="\(dU=0\)">\(dU=0\)</span>. Its exterior-vector top coefficient is a differential form of degree <span class="math" data-tex="\(2m\)">\(2m\)</span>.</p>
+<p>On a fibre, <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> vanish and <span class="math" data-tex="\(\nabla x=\sum_i dy_i\theta_i\)">\(\nabla x=\sum_i dy_i\theta_i\)</span>. The coefficient sign is
+<span class="math" data-tex="\((-i)^{2m}(-1)^{m(2m-1)}=1\)">\((-i)^{2m}(-1)^{m(2m-1)}=1\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ U|_{E_p}=(2\pi)^{-m}e^{-|y|^2/2}dy_1\wedge\cdots\wedge dy_{2m},
+\]">\[
+ U|_{E_p}=(2\pi)^{-m}e^{-|y|^2/2}dy_1\wedge\cdots\wedge dy_{2m},
+\]</span>
+whose integral is one by the product Gaussian integral. On the zero section, only <span class="math" data-tex="\(R\)">\(R\)</span> remains in the exponential, so
+<span class="math math-display" data-tex="\[
+ j^*U=(2\pi)^{-m}T\exp\!\left(\sum_{i&lt;j}F_{ij}\theta_i\theta_j\right)
+ =\operatorname{Pf}(F/2\pi).
+\]">\[
+ j^*U=(2\pi)^{-m}T\exp\!\left(\sum_{i&lt;j}F_{ij}\theta_i\theta_j\right)
+ =\operatorname{Pf}(F/2\pi).
+\]</span></p>
+<p>Pull <span class="math" data-tex="\(U\)">\(U\)</span> back by <span class="math" data-tex="\(y\mapsto y/\sqrt{1-|y|^2}\)">\(y\mapsto y/\sqrt{1-|y|^2}\)</span> on the unit ball bundle and extend by zero. Each derivative near its boundary is a finite sum of terms bounded by a power of <span class="math" data-tex="\((1-|y|^2)^{-1}\)">\((1-|y|^2)^{-1}\)</span> times <span class="math" data-tex="\(\exp(-|y|^2/(2(1-|y|^2)))\)">\(\exp(-|y|^2/(2(1-|y|^2)))\)</span>. These tend to zero to every order. The extension <span class="math" data-tex="\(U_c\)">\(U_c\)</span> is therefore smooth and closed. The fibre map is orientation preserving, so its fibre integral remains one, and its zero-section pullback is unchanged.</p>
+<p>The relative form <span class="math" data-tex="\((U_c,0)\)">\((U_c,0)\)</span> for <span class="math" data-tex="\((E,E_{&gt;1})\)">\((E,E_{&gt;1})\)</span> consequently evaluates to one on each positive fibre ball. The relative de Rham comparison identifies it with the fibre-normalized real Thom class in that pair. Radial scaling makes <span class="math" data-tex="\(E_{&gt;1}\to E\setminus j(M)\)">\(E_{&gt;1}\to E\setminus j(M)\)</span> a homotopy equivalence, so the corresponding class in <span class="math" data-tex="\((E,E\setminus j(M))\)">\((E,E\setminus j(M))\)</span> is the Thom class defined earlier. Its absolute image pulled back to the zero section is, by definition, <span class="math" data-tex="\(e(E)_{\mathbb R}\)">\(e(E)_{\mathbb R}\)</span>. The displayed zero-section formula proves the required Pfaffian identification, including its positive sign. ∎</p>
+<h2 id="d-identify-the-integral-classes-real-images">D. Identify the integral classes' real images</h2>
+<p>The notation <span class="math" data-tex="\(c_j(E)_{\mathbb R}\)">\(c_j(E)_{\mathbb R}\)</span>, <span class="math" data-tex="\(p_j(E)_{\mathbb R}\)">\(p_j(E)_{\mathbb R}\)</span> and <span class="math" data-tex="\(e(E)_{\mathbb R}\)">\(e(E)_{\mathbb R}\)</span> means the coefficient image of the previously defined integral class, interpreted as a de Rham class through (A.11). The forms do not define a replacement integral theory.</p>
+<p><span id="DG-CHAR-17.theorem-D.1"></span><strong>Theorem D.1 — Chern and Pontryagin identification.</strong> For every complex smooth bundle with any connection,
+<span class="math math-display" data-tex="\[
+ [c_j(\nabla)]=c_j(E)_{\mathbb R},\qquad
+ [\operatorname{ch}(\nabla)]=\operatorname{ch}(E)_{\mathbb R}.
+\tag{D.1}
+\]">\[
+ [c_j(\nabla)]=c_j(E)_{\mathbb R},\qquad
+ [\operatorname{ch}(\nabla)]=\operatorname{ch}(E)_{\mathbb R}.
+\tag{D.1}
+\]</span>
+For every real smooth bundle with any real connection,
+<span class="math math-display" data-tex="\[
+ [p_j(\nabla)]=p_j(E)_{\mathbb R}.
+\tag{D.2}
+\]">\[
+ [p_j(\nabla)]=p_j(E)_{\mathbb R}.
+\tag{D.2}
+\]</span>
+If the complex connection is Hermitian-compatible, the Chern forms themselves are real.</p>
+<p><strong>Proof: a line.</strong> Rank zero has determinant <span class="math" data-tex="\(1\)">\(1\)</span>, trace <span class="math" data-tex="\(0\)">\(0\)</span>, and no positive Chern or Pontryagin classes, so first consider positive rank. Equip a complex line with a Hermitian metric and choose a compatible connection. Regard it as an oriented real two-plane, with its complex orientation. In a unit complex frame, its potential is <span class="math" data-tex="\(ia\)">\(ia\)</span> for a real one-form <span class="math" data-tex="\(a\)">\(a\)</span>. In the real frame <span class="math" data-tex="\((e,ie)\)">\((e,ie)\)</span>, the potential and curvature are
+<span class="math math-display" data-tex="\[
+ A_{\mathbb R}=\begin{pmatrix}0&amp;-a\\a&amp;0\end{pmatrix},
+ \qquad F_{\mathbb R}=\begin{pmatrix}0&amp;-da\\da&amp;0\end{pmatrix}.
+\]">\[
+ A_{\mathbb R}=\begin{pmatrix}0&amp;-a\\a&amp;0\end{pmatrix},
+ \qquad F_{\mathbb R}=\begin{pmatrix}0&amp;-da\\da&amp;0\end{pmatrix}.
+\]</span>
+Thus its first Chern form is <span class="math" data-tex="\(i(i\,da)/(2\pi)=-da/(2\pi)\)">\(i(i\,da)/(2\pi)=-da/(2\pi)\)</span>, equal to the real Pfaffian form. The normalized Thom proof (C.20) identifies this with <span class="math" data-tex="\(e(E_{\mathbb R})_{\mathbb R}\)">\(e(E_{\mathbb R})_{\mathbb R}\)</span>. The integral Chern construction already proved <span class="math" data-tex="\(c_1(E)=e(E_{\mathbb R})\)">\(c_1(E)=e(E_{\mathbb R})\)</span>, so (D.1) holds for a line. All higher Chern forms of a line vanish, just as the higher integral classes do. An arbitrary connection gives the same class by transgression to the compatible one.</p>
+<p><strong>Proof: split the bundle without losing cohomology.</strong> The Gysin/projective chapter, Theorems4.1 and5.1, constructs a complete complex flag bundle <span class="math" data-tex="\(f:\operatorname{Flag}(E)\to M\)">\(f:\operatorname{Flag}(E)\to M\)</span> for which
+<span class="math math-display" data-tex="\[
+ f^*E=L_1\oplus\cdots\oplus L_r,\qquad
+ f^*:H^*(M;\mathbb R)\hookrightarrow
+ H^*(\operatorname{Flag}(E);\mathbb R).
+\tag{D.3}
+\]">\[
+ f^*E=L_1\oplus\cdots\oplus L_r,\qquad
+ f^*:H^*(M;\mathbb R)\hookrightarrow
+ H^*(\operatorname{Flag}(E);\mathbb R).
+\tag{D.3}
+\]</span>
+Its construction is smooth for a smooth metric bundle: it iteratively projectivizes smooth bundles, and takes the orthogonal complement by the smooth projection formula. Local bundle charts have finite-dimensional projective fibres; they show that the flag space is a finite-dimensional second-countable smooth manifold. The Hausdorff and paracompactness checks were included in that chapter.</p>
+<p>Choose connections on the lines and their direct sum on <span class="math" data-tex="\(f^*E\)">\(f^*E\)</span>. For that connection the curvature is block diagonal, hence
+<span class="math math-display" data-tex="\[
+ \sum_j c_j(\nabla)=\prod_{\ell=1}^r
+ \bigl(1+c_1(\nabla^{L_\ell})\bigr).
+\tag{D.4}
+\]">\[
+ \sum_j c_j(\nabla)=\prod_{\ell=1}^r
+ \bigl(1+c_1(\nabla^{L_\ell})\bigr).
+\tag{D.4}
+\]</span>
+By the line case, the product of their de Rham classes is
+<span class="math" data-tex="\(\prod_\ell(1+c_1(L_\ell)_{\mathbb R})\)">\(\prod_\ell(1+c_1(L_\ell)_{\mathbb R})\)</span>.
+The integral Whitney formula from the Chern chapter makes this the real image of <span class="math" data-tex="\(c(f^*E)\)">\(c(f^*E)\)</span>. Transgression compares the direct-sum connection to <span class="math" data-tex="\(f^*\nabla\)">\(f^*\nabla\)</span>, and naturality of (A.11) and curvature compares its classes to the pullbacks of those on <span class="math" data-tex="\(M\)">\(M\)</span>. Injectivity in (D.3) proves the Chern equalities on <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>On a line, the curvature exponential gives <span class="math" data-tex="\(\operatorname{ch}=e^{c_1(\nabla)}\)">\(\operatorname{ch}=e^{c_1(\nabla)}\)</span>. Its trace is additive on a direct sum, so the same flag argument identifies it with <span class="math" data-tex="\(\sum_\ell e^{c_1(L_\ell)}\)">\(\sum_\ell e^{c_1(L_\ell)}\)</span>, the Chern character polynomial previously constructed from the Chern classes. Each fixed form degree uses only a finite truncation of the exponential.</p>
+<p>For a real bundle, the complexified connection has the same real curvature matrix, now acting complex linearly. By definition of the integral Pontryagin class,
+<span class="math" data-tex="\(p_j(E)=(-1)^j c_{2j}(E_{\mathbb C})\)">\(p_j(E)=(-1)^j c_{2j}(E_{\mathbb C})\)</span>. Apply the Chern result and (B.13) to prove (D.2).</p>
+<p>Finally, in a unitary frame <span class="math" data-tex="\(F^*=-F\)">\(F^*=-F\)</span>, where the star is conjugate transpose. The even-degree matrix <span class="math" data-tex="\(iF\)">\(iF\)</span> is therefore Hermitian. Transposition does not change a determinant, and conjugating <span class="math" data-tex="\(\det(I+t iF/2\pi)\)">\(\det(I+t iF/2\pi)\)</span> gives that same determinant. All its coefficient forms are real. ∎</p>
+<p><span id="DG-CHAR-17.lemma-D.2"></span><strong>Lemma D.2 — All complex invariant polynomials.</strong> Every conjugation-invariant polynomial on <span class="math" data-tex="\(\mathfrak{gl}(r,\mathbb C)\)">\(\mathfrak{gl}(r,\mathbb C)\)</span> is a polynomial in the elementary coefficient functions <span class="math" data-tex="\(s_j\)">\(s_j\)</span> defined by
+<span class="math math-display" data-tex="\[
+ \det(I+tX)=\sum_{j=0}^r t^j s_j(X).
+\tag{D.5}
+\]">\[
+ \det(I+tX)=\sum_{j=0}^r t^j s_j(X).
+\tag{D.5}
+\]</span>
+Consequently, if <span class="math" data-tex="\(P(X)=Q(s_1(X),\ldots,s_r(X))\)">\(P(X)=Q(s_1(X),\ldots,s_r(X))\)</span>, then
+<span class="math math-display" data-tex="\[
+ [P(F)]=Q\bigl((-2\pi i)c_1(E)_{\mathbb R},
+ \ldots,(-2\pi i)^r c_r(E)_{\mathbb R}\bigr).
+\tag{D.6}
+\]">\[
+ [P(F)]=Q\bigl((-2\pi i)c_1(E)_{\mathbb R},
+ \ldots,(-2\pi i)^r c_r(E)_{\mathbb R}\bigr).
+\tag{D.6}
+\]</span></p>
+<p><strong>Proof.</strong> Triangularize a complex matrix by successively taking an eigenvector and passing to its quotient; this finite-dimensional linear-algebra construction gives a basis in which the matrix is upper triangular. Conjugate that matrix by
+<span class="math" data-tex="\(\operatorname{diag}(\epsilon^{r-1},\epsilon^{r-2},\ldots,1)\)">\(\operatorname{diag}(\epsilon^{r-1},\epsilon^{r-2},\ldots,1)\)</span>.
+Every strictly upper entry in position <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> is multiplied by <span class="math" data-tex="\(\epsilon^{j-i}\)">\(\epsilon^{j-i}\)</span>, and tends to zero as <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>. Invariance and polynomial continuity therefore make <span class="math" data-tex="\(P(X)\)">\(P(X)\)</span> equal to its value on the diagonal of this triangular matrix. Its diagonal restriction is symmetric under permutation matrices. The full symmetric-polynomial theorem proved in the Schubert chapter expresses that restriction as <span class="math" data-tex="\(Q(s_1,\ldots,s_r)\)">\(Q(s_1,\ldots,s_r)\)</span>. The diagonal reduction proves the identity for every matrix.</p>
+<p>It is a polynomial identity in the matrix entries, so it remains true after substitution of the commuting two-form entries of <span class="math" data-tex="\(F\)">\(F\)</span>. From (B.11),
+<span class="math" data-tex="\(s_j(F)=(-2\pi i)^j c_j(\nabla)\)">\(s_j(F)=(-2\pi i)^j c_j(\nabla)\)</span>.
+Theorem D.1 and the multiplicative de Rham comparison prove (D.6). ∎</p>
+<p>Equations (B.8) and (D.6) are the Chern–Weil theorem in the present convention: closed invariant curvature forms are natural and connection-independent, and their cohomology classes are the specified polynomials in the already normalized characteristic classes. The metric Euler form is the additional oriented polynomial proved in PartC.</p>
+<p>Passing to real coefficients loses every torsion class. On a compact manifold the homology groups are finitely generated, as proved in the manifold chapter; the coefficient theorem then shows that the kernel of the integral-to-real map is precisely the torsion subgroup. On an arbitrary noncompact base no such conclusion about that kernel is asserted. In particular, vanishing of curvature characteristic forms by itself gives vanishing of the real images, with no automatic assertion that an integral class vanishes.</p>
+<h3 id="d-3-the-tautological-line-on-mathbb-cp-1">D.3. The tautological line on <span class="math" data-tex="\(\mathbb{CP}^1\)">\(\mathbb{CP}^1\)</span></h3>
+<p>View the tautological bundle as a subbundle of the product <span class="math" data-tex="\(\mathbb{CP}^1\times\mathbb C^2\)">\(\mathbb{CP}^1\times\mathbb C^2\)</span>, with the usual Hermitian metric, antilinear in its first argument. Orthogonally projecting the ordinary derivative onto this subbundle defines its induced, or Fubini–Study, connection. The projection is smooth, and the derivative rule follows because projecting <span class="math" data-tex="\(df\,s\)">\(df\,s\)</span> leaves <span class="math" data-tex="\(df\,s\)">\(df\,s\)</span>.</p>
+<p>On the affine chart <span class="math" data-tex="\([1:z]\)">\([1:z]\)</span>, take the unit frame
+<span class="math math-display" data-tex="\[
+ s(z)=\frac{(1,z)}{\sqrt{1+|z|^2}}.
+\]">\[
+ s(z)=\frac{(1,z)}{\sqrt{1+|z|^2}}.
+\]</span>
+Projection gives its potential
+<span class="math math-display" data-tex="\[
+ A=s^*ds=
+ \frac{\bar z\,dz-z\,d\bar z}{2(1+|z|^2)},\qquad
+ F=dA=\frac{d\bar z\wedge dz}{(1+|z|^2)^2}.
+\tag{D.7}
+\]">\[
+ A=s^*ds=
+ \frac{\bar z\,dz-z\,d\bar z}{2(1+|z|^2)},\qquad
+ F=dA=\frac{d\bar z\wedge dz}{(1+|z|^2)^2}.
+\tag{D.7}
+\]</span>
+For the derivative, put <span class="math" data-tex="\(h=1+|z|^2\)">\(h=1+|z|^2\)</span>: the numerator's derivative is <span class="math" data-tex="\(2d\bar z\wedge dz\)">\(2d\bar z\wedge dz\)</span>, and differentiating <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span> supplies the term subtracting <span class="math" data-tex="\(|z|^2/h^2\)">\(|z|^2/h^2\)</span> from <span class="math" data-tex="\(1/h\)">\(1/h\)</span>. Since the bundle is a line <span class="math" data-tex="\(A\wedge A=0\)">\(A\wedge A=0\)</span>.</p>
+<p>Writing <span class="math" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>, the complex orientation is <span class="math" data-tex="\(dx\wedge dy&gt;0\)">\(dx\wedge dy&gt;0\)</span>, and
+<span class="math math-display" data-tex="\[
+ c_1(\nabla)=\frac{iF}{2\pi}
+ =-\frac{dx\wedge dy}{\pi(1+x^2+y^2)^2}.
+\tag{D.8}
+\]">\[
+ c_1(\nabla)=\frac{iF}{2\pi}
+ =-\frac{dx\wedge dy}{\pi(1+x^2+y^2)^2}.
+\tag{D.8}
+\]</span>
+This formula is smooth across the missing point because the projection construction was global. Alternatively on the other affine chart <span class="math" data-tex="\(w=1/z\)">\(w=1/z\)</span>, the unit frames differ by <span class="math" data-tex="\(|z|/z\)">\(|z|/z\)</span>, and (B.1) gives the matching potential and curvature.</p>
+<p><span id="DG-CHAR-17.exercise-D.3"></span><strong>Exercise D.3 — Compute the tautological Chern number (medium).</strong> Integrate (D.8) over the projective line and compare with the integral sign fixed earlier.</p>
+<p><strong>Solution.</strong> Polar coordinates on the affine chart give
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb{CP}^1}c_1(\nabla)
+ =-\frac1\pi\int_0^{2\pi}\!\int_0^\infty
+ \frac{r}{(1+r^2)^2}\,dr\,d\theta=-1,
+\tag{D.9}
+\]">\[
+ \int_{\mathbb{CP}^1}c_1(\nabla)
+ =-\frac1\pi\int_0^{2\pi}\!\int_0^\infty
+ \frac{r}{(1+r^2)^2}\,dr\,d\theta=-1,
+\tag{D.9}
+\]</span>
+because the inner integral is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. The missing point has measure zero in a smooth coordinate chart, so exhaustion of the affine chart gives the integral of the global smooth form. The projective cohomology calculation fixed <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(\langle u,[\mathbb{CP}^1]\rangle=1\)">\(\langle u,[\mathbb{CP}^1]\rangle=1\)</span> and proved <span class="math" data-tex="\(c_1(\gamma)=-u\)">\(c_1(\gamma)=-u\)</span>. Thus the connection gives precisely that integral class's real image, with the same orientation. ∎</p>
+<h2 id="e-gauss-bonnet-and-the-round-sphere">E. Gauss–Bonnet and the round sphere</h2>
+<p><span id="DG-CHAR-17.theorem-E.1"></span><strong>Theorem E.1 — Generalized Gauss–Bonnet.</strong> Let <span class="math" data-tex="\(M^{2m}\)">\(M^{2m}\)</span> be a closed oriented Riemannian manifold and let <span class="math" data-tex="\(F\)">\(F\)</span> be the curvature matrix of its Levi-Civita connection in oriented orthonormal frames. In dimension zero use the canonical orientation of the tangent zero-planes. Then
+<span class="math math-display" data-tex="\[
+ \int_M\operatorname{Pf}(F/2\pi)=\chi(M).
+\tag{E.1}
+\]">\[
+ \int_M\operatorname{Pf}(F/2\pi)=\chi(M).
+\tag{E.1}
+\]</span></p>
+<p><strong>Proof.</strong> The exact Levi-Civita existence and uniqueness proof is DG-FND, <em>Riemannian connections and convex neighbourhoods</em>, Theorem2.1. It is a compatible connection on <span class="math" data-tex="\(TM\)">\(TM\)</span>, so (C.20) identifies its Pfaffian form with <span class="math" data-tex="\(e(TM)_{\mathbb R}\)">\(e(TM)_{\mathbb R}\)</span>. The orientation-evaluation comparison (A.16) identifies its integral with <span class="math" data-tex="\(\langle e(TM),[M]\rangle\)">\(\langle e(TM),[M]\rangle\)</span>. The manifold chapter, Corollary4.2, proved that this integer is <span class="math" data-tex="\(\chi(M)\)">\(\chi(M)\)</span>, by the signed diagonal formula and Poincaré duality. Those three proved equalities give (E.1). Disconnected manifolds are handled component by component. In dimension zero use the canonical orientation of the tangent zero-planes; the empty Pfaffian integrates to the number of points. ∎</p>
+<h3 id="e-2-the-unit-two-sphere">E.2. The unit two-sphere</h3>
+<p>On the unit sphere away from its poles use colatitude <span class="math" data-tex="\(\theta\in(0,\pi)\)">\(\theta\in(0,\pi)\)</span> and longitude <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, with metric and positive area
+<span class="math math-display" data-tex="\[
+ g=d\theta^2+\sin^2\theta\,d\phi^2,\qquad
+ d\mathrm{Area}=\sin\theta\,d\theta\wedge d\phi.
+\tag{E.2}
+\]">\[
+ g=d\theta^2+\sin^2\theta\,d\phi^2,\qquad
+ d\mathrm{Area}=\sin\theta\,d\theta\wedge d\phi.
+\tag{E.2}
+\]</span>
+The orthonormal frame is <span class="math" data-tex="\(e_1=\partial_\theta\)">\(e_1=\partial_\theta\)</span>, <span class="math" data-tex="\(e_2=(\sin\theta)^{-1}\partial_\phi\)">\(e_2=(\sin\theta)^{-1}\partial_\phi\)</span>. The Koszul formula gives
+<span class="math math-display" data-tex="\[
+ \nabla_{e_1}e_1=\nabla_{e_1}e_2=0,\qquad
+ \nabla_{e_2}e_1=\cot\theta\,e_2,\qquad
+ \nabla_{e_2}e_2=-\cot\theta\,e_1.
+\]">\[
+ \nabla_{e_1}e_1=\nabla_{e_1}e_2=0,\qquad
+ \nabla_{e_2}e_1=\cot\theta\,e_2,\qquad
+ \nabla_{e_2}e_2=-\cot\theta\,e_1.
+\]</span>
+For example <span class="math" data-tex="\([e_1,e_2]=-\cot\theta\,e_2\)">\([e_1,e_2]=-\cot\theta\,e_2\)</span>, and inserting this bracket and the constant frame pairings into the Koszul formula gives all four derivatives. Thus, in column convention,
+<span class="math math-display" data-tex="\[
+ A=\begin{pmatrix}
+ 0&amp;-\cos\theta\,d\phi\\
+ \cos\theta\,d\phi&amp;0
+ \end{pmatrix},\qquad
+ F_{12}=\sin\theta\,d\theta\wedge d\phi.
+\tag{E.3}
+\]">\[
+ A=\begin{pmatrix}
+ 0&amp;-\cos\theta\,d\phi\\
+ \cos\theta\,d\phi&amp;0
+ \end{pmatrix},\qquad
+ F_{12}=\sin\theta\,d\theta\wedge d\phi.
+\tag{E.3}
+\]</span>
+The product <span class="math" data-tex="\(A\wedge A\)">\(A\wedge A\)</span> is zero here. The Gaussian curvature convention is
+<span class="math" data-tex="\(K=\langle R(e_1,e_2)e_2,e_1\rangle\)">\(K=\langle R(e_1,e_2)e_2,e_1\rangle\)</span>, which by (E.3) equals one. Consequently the Euler form is <span class="math" data-tex="\(d\mathrm{Area}/(2\pi)\)">\(d\mathrm{Area}/(2\pi)\)</span>.</p>
+<p><span id="DG-CHAR-17.exercise-E.3"></span><strong>Exercise E.3 — Check the curvature integral (easy).</strong> Compute the Gaussian curvature integral of the unit round sphere, and of a sphere of radius <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, and verify (E.1).</p>
+<p><strong>Solution.</strong> From (E.2),
+<span class="math math-display" data-tex="\[
+ \int_{S^2}K\,d\mathrm{Area}
+ =\int_0^{2\pi}\!\int_0^\pi\sin\theta\,d\theta\,d\phi
+ =4\pi.
+\]">\[
+ \int_{S^2}K\,d\mathrm{Area}
+ =\int_0^{2\pi}\!\int_0^\pi\sin\theta\,d\theta\,d\phi
+ =4\pi.
+\]</span>
+For radius <span class="math" data-tex="\(R\)">\(R\)</span>, multiply the metric by <span class="math" data-tex="\(R^2\)">\(R^2\)</span>. Its Christoffel formula is unchanged because the inverse metric contributes <span class="math" data-tex="\(R^{-2}\)">\(R^{-2}\)</span> and the metric derivatives contribute <span class="math" data-tex="\(R^2\)">\(R^2\)</span>. Hence the connection and curvature operator are unchanged, while an orthonormal frame is divided by <span class="math" data-tex="\(R\)">\(R\)</span>; this gives <span class="math" data-tex="\(K=R^{-2}\)">\(K=R^{-2}\)</span>. Area is multiplied by <span class="math" data-tex="\(R^2\)">\(R^2\)</span>, so its curvature integral is still <span class="math" data-tex="\(4\pi\)">\(4\pi\)</span>. Dividing by <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> gives <span class="math" data-tex="\(2=\chi(S^2)\)">\(2=\chi(S^2)\)</span>. The polar coordinate exceptions consist of two points, which do not affect integration of the smooth area form. ∎</p>
+<p><span id="DG-CHAR-17.exercise-E.4"></span><strong>Exercise E.4 — The rank-four Euler density (medium).</strong> Write the Euler form of an oriented metric four-plane bundle, check its behavior under orientation reversal, and explain the meaning of its integral over a closed oriented four-manifold when the bundle is the tangent bundle.</p>
+<p><strong>Solution.</strong> Formula (C.3) gives
+<span class="math math-display" data-tex="\[
+ \mathcal E(\nabla)=\frac1{4\pi^2}
+ \bigl(F_{12}\wedge F_{34}
+ -F_{13}\wedge F_{24}
+ +F_{14}\wedge F_{23}\bigr).
+\]">\[
+ \mathcal E(\nabla)=\frac1{4\pi^2}
+ \bigl(F_{12}\wedge F_{34}
+ -F_{13}\wedge F_{24}
+ +F_{14}\wedge F_{23}\bigr).
+\]</span>
+For the reversed bundle orientation, an oriented frame reverses the old orientation and has determinant minus one relative to it. Thus (C.4) changes the Pfaffian's sign, exactly as reversing the bundle orientation changes its Euler class. For the oriented tangent bundle with its Levi-Civita connection, (E.1) gives integral <span class="math" data-tex="\(\chi(M)\)">\(\chi(M)\)</span>. Reversing the manifold orientation reverses both the tangent-bundle Euler form and the integration orientation; the two signs cancel, leaving the same Euler characteristic. ∎</p>
+<h2 id="sources-and-exact-proof-scope">Sources and exact proof scope</h2>
+<p>Johan Dupont, <a href="https://data.math.au.dk/publications/ln/2003/imf-ln-2003-69.pdf">Fibre Bundles and Chern–Weil Theory</a>, Chapters9–10, develops polarization, invariant curvature forms, connection independence and the Pontryagin, Euler and Chern polynomials. Theorem9.5 uses a homotopy connection on a product; PartB gives the explicit transgression primitive and its full graded contraction calculation. Example10.6 computes the tautological line's negative Chern number; SectionD.3 obtains that sign directly from its projection connection. All formulas here use column frames, ordinary oriented-coordinate integration and the normalization <span class="math" data-tex="\(c(\nabla)=\det(I+iF/2\pi)\)">\(c(\nabla)=\det(I+iF/2\pi)\)</span>.</p>
+<p>Siye Wu, <a href="https://arxiv.org/pdf/hep-th/0505003">Mathai–Quillen Formalism</a>, Section2, describes Berezin extraction and the Gaussian representatives of the Euler and Thom classes. The construction is due to Varghese Mathai and Daniel Quillen. Wu's presentation also credits the formulation of Nicole Berline, Ezra Getzler, Michèle Vergne and Weiping Zhang. PartC gives the graded cancellation, positive fibre integral, radial support correction and relative Thom identification in the conventions stated here. The Euler form and the integral classes' real images are then identified using the complete Thom and splitting proofs.</p>
+<p>Liviu I. Nicolaescu, <a href="https://academicweb.nd.edu/~lnicolae/Lectures.pdf">Lectures on the Geometry of Manifolds</a>, Sections8.1–8.2, develops principal connections, invariant polynomials and characteristic forms. Theorem8.1.13 gives the explicit affine-path transgression primitive used in PartB. The all-degree contraction calculation proves its graded differentiation rule here. Nicolaescu's Chern normalization agrees with the column convention above; his Pfaffian convention translates to the Euler sign fixed by the positive fibre integral. His integral Chern comparison is attributed to Kunihiko Kodaira and Donald Spencer, and his topological Euler identification is deferred. PartsC–D supply the complete Thom and splitting identifications used in this lesson.</p>
+<p>The exact DG-FND prerequisites are <a href="../DG-FND/connections-and-parallel-transport.html">Connections and parallel transport</a>, Sections1–3, for connection forms, gauge changes, differences and existence; <a href="../DG-FND/curvature-and-holonomy-groups.html">Curvature and holonomy groups</a>, Sections1–3, for covariant exterior derivatives and Bianchi; and <a href="../DG-FND/linear-and-affine-connections.html">Linear and affine connections</a>, Sections1–2, for the frame correspondence, tensor derivatives and compatible metric connections. The cited current versions supply these complete used proofs; their conditions agree with the column convention and base hypotheses here.</p>
+<p>For the good cover in PartA, <a href="../DG-FND/riemannian-connections-and-convex-neighbourhoods.html">Riemannian connections and convex neighbourhoods</a>, Sections1–4, supplies the full distance, Koszul, Gauss-lemma, whole-manifold minimization and strong-convexity proofs. Its needed predecessors are <a href="../DG-FND/geodesics-normal-coordinates-and-curvature.html">Geodesics, normal coordinates and curvature</a>, Sections1–2, and <a href="../DG-FND/local-tools-for-bundles-and-transport.html">Local tools for bundles and transport</a>, Sections1–3. The cited current versions give smooth parameter dependence, continuation and the complete affine-convexity velocity bound needed for these steps. Later transport, holonomy and completeness results are not premises of this chapter.</p>
+<p>Smooth-triangulation, relative compatibility and integral PL-refinement proofs are supplied in <a href="DG-CHAR-15C.html">the triangulation companion</a>. The full Stiefel–Whitney-number detection theorem is proved in <a href="DG-CHAR-13E.html">the unoriented detection companion</a>. The chapter was self-checked by its writing AI; no independent mathematical review is claimed.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-08B.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-11.html">Next chapter</a></nav><p><a href="connections-curvature-and-characteristic-forms.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

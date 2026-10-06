@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weierstrass functions, elliptic values and periods · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-08.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Weierstrass functions, elliptic values and periods</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Original exposition, proofs and figures: public domain (CC0). Linked analytic prerequisites retain their own licence.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="weierstrass-functions-elliptic-values-and-periods">Weierstrass functions, elliptic values and periods</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Original exposition, proofs and figures: public domain (CC0). Linked analytic prerequisites retain their own licence.</em></p>
+<p>The exponential has one period direction. A Weierstrass function has two independent period directions, and its values trace a cubic curve. This gives an elliptic counterpart of Hermite–Lindemann: with algebraic coefficients in the cubic, values at algebraic arguments are transcendental. Its periods are transcendental as well.</p>
+<p>We use the criterion proved in <a href="TR-TRANS-07.html">The Schneider–Lang criterion</a>. We will construct the functions, prove their addition and growth formulas, and justify the existence of a lattice for every nonsingular cubic of the required form. Periods will be treated before values, so that a possible lattice multiple of the argument cannot be overlooked.</p>
+<p>The exact open analytic prerequisites are in Jiří Lebl's <a href="https://www.jirka.org/ca/ca.pdf"><em>Guide to Cultivating Complex Analysis</em></a>, version 1.9, July 11, 2026: Theorems 3.3.1 and 3.3.4 for local expansions and Cauchy's derivative formula, Theorem 3.3.10 for Liouville's theorem, Theorem 5.3.2 for residues, and Theorem 5.5.1 for the open mapping theorem. The linked author proofs are used under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, selected from the actual dual licence.</p>
+<h2 id="1-a-lattice-and-its-weierstrass-function">1. A lattice and its Weierstrass function</h2>
+<p>Fix</p>
+<span class="math math-display" data-tex="\[
+L=\mathbb Z\omega_1+\mathbb Z\omega_2,\qquad
+\operatorname{Im}(\omega_1/\omega_2)&gt;0.
+\]">\[
+L=\mathbb Z\omega_1+\mathbb Z\omega_2,\qquad
+\operatorname{Im}(\omega_1/\omega_2)&gt;0.
+\]</span>
+<p>The generators are independent over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Their real linear map from <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> to <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> is invertible. Consequently some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+|a\omega_1+b\omega_2|\geq c\sqrt{a^2+b^2}
+\qquad(a,b\in\mathbb R).
+\tag{8.1}
+\]">\[
+|a\omega_1+b\omega_2|\geq c\sqrt{a^2+b^2}
+\qquad(a,b\in\mathbb R).
+\tag{8.1}
+\]</span>
+<p>One can take the positive minimum of the modulus on the compact unit circle. In particular <span class="math" data-tex="\(L\)">\(L\)</span> is discrete, has a shortest nonzero vector, and has <span class="math" data-tex="\(O(R^2)\)">\(O(R^2)\)</span> points of modulus at most <span class="math" data-tex="\(R\)">\(R\)</span>. More precisely, the number in <span class="math" data-tex="\(N\leq|\omega|&lt;N+1\)">\(N\leq|\omega|&lt;N+1\)</span> is <span class="math" data-tex="\(O(N+1)\)">\(O(N+1)\)</span>: sufficiently small discs centred on distinct lattice points are disjoint and lie in an annulus of fixed additional thickness, whose area is <span class="math" data-tex="\(O(N+1)\)">\(O(N+1)\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\sum_{\omega\in L\setminus\{0\}}|\omega|^{-t}&lt;\infty
+\qquad(t&gt;2).
+\tag{8.2}
+\]">\[
+\sum_{\omega\in L\setminus\{0\}}|\omega|^{-t}&lt;\infty
+\qquad(t&gt;2).
+\tag{8.2}
+\]</span>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+G_{2k}(L)=\sum_{\omega\in L\setminus\{0\}}\omega^{-2k}
+\quad(k\geq2),
+\]">\[
+G_{2k}(L)=\sum_{\omega\in L\setminus\{0\}}\omega^{-2k}
+\quad(k\geq2),
+\]</span>
+<p>and, for <span class="math" data-tex="\(z\notin L\)">\(z\notin L\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\wp(z)=\frac1{z^2}+
+\sum_{\omega\in L\setminus\{0\}}
+\left(\frac1{(z-\omega)^2}-\frac1{\omega^2}\right).
+\tag{8.3}
+\]">\[
+\wp(z)=\frac1{z^2}+
+\sum_{\omega\in L\setminus\{0\}}
+\left(\frac1{(z-\omega)^2}-\frac1{\omega^2}\right).
+\tag{8.3}
+\]</span>
+<h3 id="proposition-8-1-convergence-poles-and-periodicity">Proposition 8.1. Convergence, poles and periodicity</h3>
+<p>The series (8.3) converges absolutely and uniformly on compact subsets of <span class="math" data-tex="\(\mathbb C\setminus L\)">\(\mathbb C\setminus L\)</span>. It defines an even meromorphic function, with a double pole of leading coefficient one at each point of <span class="math" data-tex="\(L\)">\(L\)</span> and no other poles. It is periodic under every element of <span class="math" data-tex="\(L\)">\(L\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\wp&#x27;(z)=-2\sum_{\omega\in L}(z-\omega)^{-3}.
+\tag{8.4}
+\]">\[
+\wp&#x27;(z)=-2\sum_{\omega\in L}(z-\omega)^{-3}.
+\tag{8.4}
+\]</span>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span>, the terms with <span class="math" data-tex="\(|\omega|&gt;2R\)">\(|\omega|&gt;2R\)</span> have modulus at most</p>
+<span class="math math-display" data-tex="\[
+\left|\frac{z(2\omega-z)}{\omega^2(z-\omega)^2}\right|
+\leq\frac{10R}{|\omega|^3}.
+\]">\[
+\left|\frac{z(2\omega-z)}{\omega^2(z-\omega)^2}\right|
+\leq\frac{10R}{|\omega|^3}.
+\]</span>
+<p>Formula (8.2) controls the tail; the other terms are finite in number and holomorphic on the compact set in question. A locally uniform limit of holomorphic functions is holomorphic: on a small circle the Cauchy formula passes to the uniform limit, providing its convergent local Taylor series. The same formula passes derivatives to the limit. This proves (8.4), whose series is itself absolutely locally uniformly convergent. Each pole in (8.3) has the stated principal part.</p>
+<p>Reindexing by <span class="math" data-tex="\(\omega\mapsto-\omega\)">\(\omega\mapsto-\omega\)</span> proves evenness. Reindexing the absolutely convergent series (8.4) by any lattice translation proves that <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span> is periodic. Thus <span class="math" data-tex="\(\wp(z+\omega_i)-\wp(z)\)">\(\wp(z+\omega_i)-\wp(z)\)</span> is constant for each basis vector. Evaluation at <span class="math" data-tex="\(z=-\omega_i/2\)">\(z=-\omega_i/2\)</span>, which is not in <span class="math" data-tex="\(L\)">\(L\)</span>, and evenness show that this constant is zero. All integer combinations are periods. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A meromorphic function periodic under <span class="math" data-tex="\(L\)">\(L\)</span> is called <strong>elliptic</strong>. An entire elliptic function is bounded on a closed fundamental parallelogram and hence, by translation, on the plane. Liouville's theorem makes it constant.</p>
+<p>If <span class="math" data-tex="\(r_0\)">\(r_0\)</span> is the shortest nonzero lattice modulus, expansion of each term for <span class="math" data-tex="\(|z|&lt;r_0\)">\(|z|&lt;r_0\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\wp(z)=z^{-2}+\sum_{k\geq1}(2k+1)G_{2k+2}(L)z^{2k}.
+\tag{8.5}
+\]">\[
+\wp(z)=z^{-2}+\sum_{k\geq1}(2k+1)G_{2k+2}(L)z^{2k}.
+\tag{8.5}
+\]</span>
+<p>Indeed <span class="math" data-tex="\((1-u)^{-2}=\sum_{n\geq0}(n+1)u^n\)">\((1-u)^{-2}=\sum_{n\geq0}(n+1)u^n\)</span>; absolute convergence on a smaller disc permits the sum over <span class="math" data-tex="\(\omega\)">\(\omega\)</span> to be interchanged with that series. Odd coefficients vanish by pairing <span class="math" data-tex="\(\omega\)">\(\omega\)</span> with <span class="math" data-tex="\(-\omega\)">\(-\omega\)</span>.</p>
+<h3 id="proposition-8-2-the-differential-equation">Proposition 8.2. The differential equation</h3>
+<p>With</p>
+<span class="math math-display" data-tex="\[
+g_2=60G_4(L),\qquad g_3=140G_6(L),
+\]">\[
+g_2=60G_4(L),\qquad g_3=140G_6(L),
+\]</span>
+<p>one has</p>
+<span class="math math-display" data-tex="\[
+\wp&#x27;^2=4\wp^3-g_2\wp-g_3,
+\qquad \wp&#x27;&#x27;=6\wp^2-\frac{g_2}{2}.
+\tag{8.6}
+\]">\[
+\wp&#x27;^2=4\wp^3-g_2\wp-g_3,
+\qquad \wp&#x27;&#x27;=6\wp^2-\frac{g_2}{2}.
+\tag{8.6}
+\]</span>
+<p><strong>Proof.</strong> From (8.5),</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\wp&amp;=z^{-2}+3G_4z^2+5G_6z^4+O(z^6),\\
+\wp&#x27;^2&amp;=4z^{-6}-24G_4z^{-2}-80G_6+O(z^2),\\
+4\wp^3&amp;=4z^{-6}+36G_4z^{-2}+60G_6+O(z^2).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\wp&amp;=z^{-2}+3G_4z^2+5G_6z^4+O(z^6),\\
+\wp&#x27;^2&amp;=4z^{-6}-24G_4z^{-2}-80G_6+O(z^2),\\
+4\wp^3&amp;=4z^{-6}+36G_4z^{-2}+60G_6+O(z^2).
+\end{aligned}
+\]</span>
+<p>The elliptic function <span class="math" data-tex="\(\wp&#x27;^2-4\wp^3+60G_4\wp+140G_6\)">\(\wp&#x27;^2-4\wp^3+60G_4\wp+140G_6\)</span> thus has a removable singularity at zero and value zero there. Periodicity removes every possible pole, so it is entire, hence constant and zero. Differentiate this identity where <span class="math" data-tex="\(\wp&#x27;\ne0\)">\(\wp&#x27;\ne0\)</span> to obtain the second formula; both sides are meromorphic, so their equality extends across the isolated zeros of <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(K[z,\wp,\wp&#x27;]\)">\(K[z,\wp,\wp&#x27;]\)</span> is stable under differentiation whenever <span class="math" data-tex="\(g_2,g_3\in K\)">\(g_2,g_3\in K\)</span>. Its three generators have derivatives <span class="math" data-tex="\(1,\wp&#x27;,6\wp^2-g_2/2\)">\(1,\wp&#x27;,6\wp^2-g_2/2\)</span>.</p>
+<h2 id="2-counting-zeros-and-adding-points">2. Counting zeros and adding points</h2>
+<h3 id="lemma-8-3-the-divisor-of-an-elliptic-function">Lemma 8.3. The divisor of an elliptic function</h3>
+<p>Let <span class="math" data-tex="\(h\)">\(h\)</span> be a nonzero elliptic function. Choose a translated fundamental parallelogram whose boundary avoids its zeros and poles. List its zeros <span class="math" data-tex="\(a_j\)">\(a_j\)</span> and poles <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, each with multiplicity. Then</p>
+<span class="math math-display" data-tex="\[
+\#\{a_j\}=\#\{b_j\},\qquad
+\sum_j a_j-\sum_j b_j\in L.
+\tag{8.7}
+\]">\[
+\#\{a_j\}=\#\{b_j\},\qquad
+\sum_j a_j-\sum_j b_j\in L.
+\tag{8.7}
+\]</span>
+<p><strong>Proof.</strong> A zero of order <span class="math" data-tex="\(t\)">\(t\)</span> gives residue <span class="math" data-tex="\(t\)">\(t\)</span> for <span class="math" data-tex="\(h&#x27;/h\)">\(h&#x27;/h\)</span>; a pole of order <span class="math" data-tex="\(t\)">\(t\)</span> gives residue <span class="math" data-tex="\(-t\)">\(-t\)</span>. Opposite boundary integrals of the periodic function <span class="math" data-tex="\(h&#x27;/h\)">\(h&#x27;/h\)</span> cancel. The residue theorem proves the first assertion.</p>
+<p>For the second assertion, use the positive basis <span class="math" data-tex="\(\lambda_1=\omega_2,\lambda_2=\omega_1\)">\(\lambda_1=\omega_2,\lambda_2=\omega_1\)</span>; positivity follows from our orientation convention. Let <span class="math" data-tex="\(I_j\)">\(I_j\)</span> be the integral of <span class="math" data-tex="\(h&#x27;/h\)">\(h&#x27;/h\)</span> on the side from a vertex <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(a+\lambda_j\)">\(a+\lambda_j\)</span>. Exponentiating this integral gives <span class="math" data-tex="\(h(a+\lambda_j)/h(a)=1\)">\(h(a+\lambda_j)/h(a)=1\)</span>. For justification along the path, differentiate the ratio of <span class="math" data-tex="\(h\)">\(h\)</span> to the exponential of the partial integral; it is constant. Therefore <span class="math" data-tex="\(I_j=2\pi i n_j\)">\(I_j=2\pi i n_j\)</span> for integers <span class="math" data-tex="\(n_j\)">\(n_j\)</span>.</p>
+<p>Now integrate <span class="math" data-tex="\(z h&#x27;(z)/h(z)\)">\(z h&#x27;(z)/h(z)\)</span>. Combining opposite sides, the <span class="math" data-tex="\(\lambda_1\)">\(\lambda_1\)</span>-sides contribute <span class="math" data-tex="\(-\lambda_2I_1\)">\(-\lambda_2I_1\)</span>, and the <span class="math" data-tex="\(\lambda_2\)">\(\lambda_2\)</span>-sides contribute <span class="math" data-tex="\(\lambda_1I_2\)">\(\lambda_1I_2\)</span>. Its residues are the zero and pole locations multiplied by their signed orders. Consequently their sum is <span class="math" data-tex="\(\lambda_1n_2-\lambda_2n_1\in L\)">\(\lambda_1n_2-\lambda_2n_1\in L\)</span>, proving (8.7). Such a boundary can always be chosen: zeros and poles are isolated and finite on each compact set, and a small translation avoids them on the four sides. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="proposition-8-4-fibres-half-periods-and-the-discriminant">Proposition 8.4. Fibres, half-periods and the discriminant</h3>
+<p>For every <span class="math" data-tex="\(c\in\mathbb C\)">\(c\in\mathbb C\)</span>, <span class="math" data-tex="\(\wp(z)=c\)">\(\wp(z)=c\)</span> has exactly two solutions modulo <span class="math" data-tex="\(L\)">\(L\)</span>, counted with multiplicity. For <span class="math" data-tex="\(u,v\notin L\)">\(u,v\notin L\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\wp(u)=\wp(v)\quad\Longleftrightarrow\quad u\equiv\pm v\pmod L,
+\qquad
+\wp&#x27;(u)=0\quad\Longleftrightarrow\quad2u\in L.
+\tag{8.8}
+\]">\[
+\wp(u)=\wp(v)\quad\Longleftrightarrow\quad u\equiv\pm v\pmod L,
+\qquad
+\wp&#x27;(u)=0\quad\Longleftrightarrow\quad2u\in L.
+\tag{8.8}
+\]</span>
+<p>The three values</p>
+<span class="math math-display" data-tex="\[
+e_1=\wp(\omega_1/2),\quad e_2=\wp(\omega_2/2),\quad
+e_3=\wp((\omega_1+\omega_2)/2)
+\]">\[
+e_1=\wp(\omega_1/2),\quad e_2=\wp(\omega_2/2),\quad
+e_3=\wp((\omega_1+\omega_2)/2)
+\]</span>
+<p>are distinct and are the roots of <span class="math" data-tex="\(4X^3-g_2X-g_3\)">\(4X^3-g_2X-g_3\)</span>. In particular</p>
+<span class="math math-display" data-tex="\[
+\Delta=g_2^3-27g_3^2
+=16(e_1-e_2)^2(e_1-e_3)^2(e_2-e_3)^2\ne0.
+\tag{8.9}
+\]">\[
+\Delta=g_2^3-27g_3^2
+=16(e_1-e_2)^2(e_1-e_3)^2(e_2-e_3)^2\ne0.
+\tag{8.9}
+\]</span>
+<p><strong>Proof.</strong> The function <span class="math" data-tex="\(\wp-c\)">\(\wp-c\)</span> has one double pole modulo <span class="math" data-tex="\(L\)">\(L\)</span>; Lemma 8.3 gives exactly two zeros, including existence. If <span class="math" data-tex="\(u\not\equiv-u\)">\(u\not\equiv-u\)</span>, the two zeros <span class="math" data-tex="\(u,-u\)">\(u,-u\)</span> are distinct and exhaust the fibre, each with multiplicity one. If <span class="math" data-tex="\(2u\in L\)">\(2u\in L\)</span> but <span class="math" data-tex="\(u\notin L\)">\(u\notin L\)</span>, oddness and periodicity of <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span> imply <span class="math" data-tex="\(\wp&#x27;(u)=-\wp&#x27;(u)=0\)">\(\wp&#x27;(u)=-\wp&#x27;(u)=0\)</span>. That fibre has a zero of multiplicity at least two at <span class="math" data-tex="\(u\)">\(u\)</span>, so its multiplicity is exactly two and there are no other zeros. These observations prove both equivalences in (8.8).</p>
+<p>The three nonzero classes in <span class="math" data-tex="\(\tfrac12L/L\)">\(\tfrac12L/L\)</span> are distinct and each equals its own negative. Their <span class="math" data-tex="\(\wp\)">\(\wp\)</span>-values must therefore be distinct by (8.8). Their derivatives vanish, so (8.6) makes them roots of the cubic. For the identity in (8.9), the root sums give <span class="math" data-tex="\(e_3=-e_1-e_2\)">\(e_3=-e_1-e_2\)</span>, <span class="math" data-tex="\(g_2=-4(e_1e_2+e_1e_3+e_2e_3)\)">\(g_2=-4(e_1e_2+e_1e_3+e_2e_3)\)</span>, and <span class="math" data-tex="\(g_3=4e_1e_2e_3\)">\(g_3=4e_1e_2e_3\)</span>. Substitution and expansion yield <span class="math" data-tex="\(g_2^3-27g_3^2=16(e_1-e_2)^2(2e_1+e_2)^2(e_1+2e_2)^2\)">\(g_2^3-27g_3^2=16(e_1-e_2)^2(2e_1+e_2)^2(e_1+2e_2)^2\)</span>, exactly the displayed product. Its factors are nonzero by the proved distinctness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The letters <span class="math" data-tex="\(e_1,e_2,e_3\)">\(e_1,e_2,e_3\)</span> in this proposition label basis half-periods; they do not impose an ordering of real roots. We will explicitly order roots when considering a real integral.</p>
+<h3 id="proposition-8-5-the-addition-and-duplication-formulas">Proposition 8.5. The addition and duplication formulas</h3>
+<p>As an identity of meromorphic functions,</p>
+<span class="math math-display" data-tex="\[
+\wp(u+v)=-\wp(u)-\wp(v)+\frac14
+\left(\frac{\wp&#x27;(u)-\wp&#x27;(v)}{\wp(u)-\wp(v)}\right)^2.
+\tag{8.10}
+\]">\[
+\wp(u+v)=-\wp(u)-\wp(v)+\frac14
+\left(\frac{\wp&#x27;(u)-\wp&#x27;(v)}{\wp(u)-\wp(v)}\right)^2.
+\tag{8.10}
+\]</span>
+<p>At points where the denominator is zero the formula is interpreted by its meromorphic limit. In particular, if <span class="math" data-tex="\(u,2u\notin L\)">\(u,2u\notin L\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\wp(2u)=-2\wp(u)+\frac14\left(\frac{\wp&#x27;&#x27;(u)}{\wp&#x27;(u)}\right)^2.
+\tag{8.11}
+\]">\[
+\wp(2u)=-2\wp(u)+\frac14\left(\frac{\wp&#x27;&#x27;(u)}{\wp&#x27;(u)}\right)^2.
+\tag{8.11}
+\]</span>
+<p><strong>Proof.</strong> First take a generic pair with distinct <span class="math" data-tex="\(x\)">\(x\)</span>-coordinates, and let</p>
+<span class="math math-display" data-tex="\[
+x_1=\wp(u),\quad y_1=\wp&#x27;(u),\quad
+x_2=\wp(v),\quad y_2=\wp&#x27;(v),\quad
+a=\frac{y_1-y_2}{x_1-x_2},\quad b=y_1-ax_1.
+\]">\[
+x_1=\wp(u),\quad y_1=\wp&#x27;(u),\quad
+x_2=\wp(v),\quad y_2=\wp&#x27;(v),\quad
+a=\frac{y_1-y_2}{x_1-x_2},\quad b=y_1-ax_1.
+\]</span>
+<p>The elliptic function <span class="math" data-tex="\(\wp&#x27;(z)-a\wp(z)-b\)">\(\wp&#x27;(z)-a\wp(z)-b\)</span> has one triple pole at zero modulo <span class="math" data-tex="\(L\)">\(L\)</span>; hence it has three zeros, counted with multiplicity. Two are <span class="math" data-tex="\(u,v\)">\(u,v\)</span>; call the third <span class="math" data-tex="\(t\)">\(t\)</span>. Lemma 8.3 gives <span class="math" data-tex="\(u+v+t\in L\)">\(u+v+t\in L\)</span>. Their coordinates are the intersections of <span class="math" data-tex="\(y=ax+b\)">\(y=ax+b\)</span> with the cubic (8.6). For a generic line the cubic</p>
+<span class="math math-display" data-tex="\[
+4X^3-g_2X-g_3-(aX+b)^2
+\]">\[
+4X^3-g_2X-g_3-(aX+b)^2
+\]</span>
+<p>has three distinct roots, exactly <span class="math" data-tex="\(x_1,x_2,\wp(t)\)">\(x_1,x_2,\wp(t)\)</span>. Its root sum is <span class="math" data-tex="\(a^2/4\)">\(a^2/4\)</span>. Evenness and periodicity give <span class="math" data-tex="\(\wp(t)=\wp(u+v)\)">\(\wp(t)=\wp(u+v)\)</span>, proving (8.10).</p>
+<p>Here the generic restriction merely avoids tangencies and coincident coordinates. Every point of the affine cubic is attained by <span class="math" data-tex="\((\wp,\wp&#x27;)\)">\((\wp,\wp&#x27;)\)</span>: choose a preimage of its <span class="math" data-tex="\(x\)">\(x\)</span>-coordinate using Proposition 8.4, and change <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(-z\)">\(-z\)</span> if the sign of its <span class="math" data-tex="\(y\)">\(y\)</span>-coordinate requires it. Thus the line argument applies on a nonempty open set of pairs; the meromorphic identity extends to all pairs by the one-variable identity theorem in each variable. Finally let <span class="math" data-tex="\(v\to u\)">\(v\to u\)</span>. By (8.8), <span class="math" data-tex="\(2u\notin L\)">\(2u\notin L\)</span> implies <span class="math" data-tex="\(\wp&#x27;(u)\ne0\)">\(\wp&#x27;(u)\ne0\)</span>, and the quotient tends to <span class="math" data-tex="\(\wp&#x27;&#x27;(u)/\wp&#x27;(u)\)">\(\wp&#x27;&#x27;(u)/\wp&#x27;(u)\)</span>. This proves (8.11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The line's third intersection corresponds to <span class="math" data-tex="\(-u-v\)">\(-u-v\)</span>; reflection across the <span class="math" data-tex="\(x\)">\(x\)</span>-axis gives the point corresponding to <span class="math" data-tex="\(u+v\)">\(u+v\)</span>. The factor <span class="math" data-tex="\(1/4\)">\(1/4\)</span> in (8.10) comes from the leading coefficient <span class="math" data-tex="\(4\)">\(4\)</span> in our cubic normalization.</p>
+<figure><img src="assets/elliptic-addition.png" alt="Three exact intersections of a line with the elliptic cubic, and the reflected point giving the sum." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 8.1. On <span class="math" data-tex="\(y^2=4x^3-4x\)">\(y^2=4x^3-4x\)</span>, the line <span class="math" data-tex="\(y=2\sqrt6(x-1)\)">\(y=2\sqrt6(x-1)\)</span> meets the cubic at <span class="math" data-tex="\(P=(1,0)\)">\(P=(1,0)\)</span>, <span class="math" data-tex="\(Q=(2,2\sqrt6)\)">\(Q=(2,2\sqrt6)\)</span>, and <span class="math" data-tex="\(R=(3,4\sqrt6)\)">\(R=(3,4\sqrt6)\)</span>. Reflection gives <span class="math" data-tex="\(P+Q=(3,-4\sqrt6)\)">\(P+Q=(3,-4\sqrt6)\)</span>. Subtracting the squared line from the cubic gives exactly <span class="math" data-tex="\(4(x-1)(x-2)(x-3)\)">\(4(x-1)(x-2)(x-3)\)</span>. The three-zero argument in Proposition 8.5 explains this addition law; the plotted real arcs and line are a view of these exact objects. Original figure.</em></p>
+<h2 id="3-entire-quotients-of-strict-order-two">3. Entire quotients of strict order two</h2>
+<p>A meromorphic function is not bounded on a disc containing its poles. The growth hypothesis in the criterion concerns an entire quotient representation. We will construct that representation and prove the exponent two, rather than use a bound for <span class="math" data-tex="\(\wp\)">\(\wp\)</span> away from its poles.</p>
+<p>Define the Weierstrass sigma function by</p>
+<span class="math math-display" data-tex="\[
+\sigma(z)=z\prod_{\omega\in L\setminus\{0\}}
+\left(1-\frac z\omega\right)
+\exp\left(\frac z\omega+\frac{z^2}{2\omega^2}\right).
+\tag{8.12}
+\]">\[
+\sigma(z)=z\prod_{\omega\in L\setminus\{0\}}
+\left(1-\frac z\omega\right)
+\exp\left(\frac z\omega+\frac{z^2}{2\omega^2}\right).
+\tag{8.12}
+\]</span>
+<p>For <span class="math" data-tex="\(|z/\omega|\leq1/2\)">\(|z/\omega|\leq1/2\)</span>, the logarithm of the factor is</p>
+<span class="math math-display" data-tex="\[
+-\sum_{j\geq3}\frac{(z/\omega)^j}{j},
+\]">\[
+-\sum_{j\geq3}\frac{(z/\omega)^j}{j},
+\]</span>
+<p>whose modulus is at most <span class="math" data-tex="\(C|z|^3/|\omega|^3\)">\(C|z|^3/|\omega|^3\)</span>. By (8.2), these logarithms converge locally uniformly after excluding finitely many factors. Their exponential is holomorphic and nonzero. This proves that the product is an entire function with simple zeros exactly at <span class="math" data-tex="\(L\)">\(L\)</span>. It also justifies reindexing its factors and proves <span class="math" data-tex="\(\sigma(-z)=-\sigma(z)\)">\(\sigma(-z)=-\sigma(z)\)</span>.</p>
+<p>Off <span class="math" data-tex="\(L\)">\(L\)</span>, its logarithmic derivative is</p>
+<span class="math math-display" data-tex="\[
+\zeta(z)=\frac{\sigma&#x27;(z)}{\sigma(z)}
+=\frac1z+\sum_{\omega\in L\setminus\{0\}}
+\left(\frac1{z-\omega}+\frac1\omega+\frac z{\omega^2}\right),
+\qquad\zeta&#x27;=-\wp.
+\tag{8.13}
+\]">\[
+\zeta(z)=\frac{\sigma&#x27;(z)}{\sigma(z)}
+=\frac1z+\sum_{\omega\in L\setminus\{0\}}
+\left(\frac1{z-\omega}+\frac1\omega+\frac z{\omega^2}\right),
+\qquad\zeta&#x27;=-\wp.
+\tag{8.13}
+\]</span>
+<p>Differentiation is justified on compact sets by the Cauchy formula for the locally uniform logarithm series. The function <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is odd and has simple poles of residue one at <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>Since <span class="math" data-tex="\(\wp\)">\(\wp\)</span> is periodic, <span class="math" data-tex="\(\zeta(z+\omega)-\zeta(z)\)">\(\zeta(z+\omega)-\zeta(z)\)</span> has derivative zero; its poles cancel. Write its constant as <span class="math" data-tex="\(\eta(\omega)\)">\(\eta(\omega)\)</span>. Translation shows that <span class="math" data-tex="\(\eta:L\to\mathbb C\)">\(\eta:L\to\mathbb C\)</span> is additive. Put <span class="math" data-tex="\(\eta_i=\eta(\omega_i)\)">\(\eta_i=\eta(\omega_i)\)</span>. The quotient <span class="math" data-tex="\(\sigma(z+\omega_i)/\sigma(z)\)">\(\sigma(z+\omega_i)/\sigma(z)\)</span> extends to a nonzero entire function, and its logarithmic derivative is <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span>. Hence it is a constant times <span class="math" data-tex="\(e^{\eta_i z}\)">\(e^{\eta_i z}\)</span>. Oddness at <span class="math" data-tex="\(-\omega_i/2\)">\(-\omega_i/2\)</span> determines the constant:</p>
+<span class="math math-display" data-tex="\[
+\sigma(z+\omega_i)=-\exp\bigl(\eta_i(z+\omega_i/2)\bigr)\sigma(z).
+\tag{8.14}
+\]">\[
+\sigma(z+\omega_i)=-\exp\bigl(\eta_i(z+\omega_i/2)\bigr)\sigma(z).
+\tag{8.14}
+\]</span>
+<p>Induction, in both positive and negative integers, gives</p>
+<span class="math math-display" data-tex="\[
+\sigma(z+n\omega_i)=(-1)^n
+\exp\bigl(\eta_i(nz+n^2\omega_i/2)\bigr)\sigma(z).
+\tag{8.15}
+\]">\[
+\sigma(z+n\omega_i)=(-1)^n
+\exp\bigl(\eta_i(nz+n^2\omega_i/2)\bigr)\sigma(z).
+\tag{8.15}
+\]</span>
+<h3 id="proposition-8-6-the-required-growth-representations">Proposition 8.6. The required growth representations</h3>
+<p>The entire functions <span class="math" data-tex="\(\sigma,\sigma^2\wp,\sigma^3\wp&#x27;\)">\(\sigma,\sigma^2\wp,\sigma^3\wp&#x27;\)</span> have strict order at most two. Consequently <span class="math" data-tex="\(\wp,\wp&#x27;,\zeta\)">\(\wp,\wp&#x27;,\zeta\)</span> are quotients of entire functions of strict order at most two.</p>
+<p><strong>Proof.</strong> Every <span class="math" data-tex="\(w\in\mathbb C\)">\(w\in\mathbb C\)</span> can be written as <span class="math" data-tex="\(z+n\omega_1+p\omega_2\)">\(z+n\omega_1+p\omega_2\)</span>, with <span class="math" data-tex="\(z\)">\(z\)</span> in a fixed closed fundamental parallelogram. By (8.1), <span class="math" data-tex="\(|n|+|p|\leq C(1+|w|)\)">\(|n|+|p|\leq C(1+|w|)\)</span>. Apply (8.15) first in the <span class="math" data-tex="\(\omega_1\)">\(\omega_1\)</span> direction and then in the <span class="math" data-tex="\(\omega_2\)">\(\omega_2\)</span> direction. Its exponential has exponent</p>
+<span class="math math-display" data-tex="\[
+\eta_1(nz+n^2\omega_1/2)+
+\eta_2\bigl(p(z+n\omega_1)+p^2\omega_2/2\bigr).
+\]">\[
+\eta_1(nz+n^2\omega_1/2)+
+\eta_2\bigl(p(z+n\omega_1)+p^2\omega_2/2\bigr).
+\]</span>
+<p>Its real part is bounded above by <span class="math" data-tex="\(C(1+n^2+p^2)\)">\(C(1+n^2+p^2)\)</span>, uniformly for <span class="math" data-tex="\(z\)">\(z\)</span> in that compact parallelogram. Boundedness of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> there therefore gives <span class="math" data-tex="\(|\sigma(w)|\leq\exp(CR^2)\)">\(|\sigma(w)|\leq\exp(CR^2)\)</span> for <span class="math" data-tex="\(|w|\leq R\)">\(|w|\leq R\)</span>, <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span>.</p>
+<p>The products <span class="math" data-tex="\(A=\sigma^2\wp\)">\(A=\sigma^2\wp\)</span> and <span class="math" data-tex="\(B=\sigma^3\wp&#x27;\)">\(B=\sigma^3\wp&#x27;\)</span> are entire: their sigma zeros cancel exactly the double and triple poles. Since <span class="math" data-tex="\(\wp\)">\(\wp\)</span> and <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span> are periodic, their translation multipliers are the square and cube of those in (8.15). The same compact-parallelogram argument gives strict order two for <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\wp=A/\sigma^2,\qquad \wp&#x27;=B/\sigma^3
+\]">\[
+\wp=A/\sigma^2,\qquad \wp&#x27;=B/\sigma^3
+\]</span>
+<p>are the required quotient representations. Finally Cauchy's estimate on a radius-one circle about each point gives <span class="math" data-tex="\(|\sigma&#x27;|_R\leq|\sigma|_{R+1}\leq\exp(C&#x27;R^2)\)">\(|\sigma&#x27;|_R\leq|\sigma|_{R+1}\leq\exp(C&#x27;R^2)\)</span> for <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span>. Formula (8.13) represents <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> as <span class="math" data-tex="\(\sigma&#x27;/\sigma\)">\(\sigma&#x27;/\sigma\)</span>, of the same strict order. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The order-two bound uses the exact translation law. Estimating each nearby factor of (8.12) separately can give a weaker estimate and does not prove this assertion.</p>
+<h2 id="4-transcendence-of-periods-and-values">4. Transcendence of periods and values</h2>
+<h3 id="lemma-8-7-a-coordinate-and-a-periodic-function-are-independent">Lemma 8.7. A coordinate and a periodic function are independent</h3>
+<p>The functions <span class="math" data-tex="\(z,\wp(z)\)">\(z,\wp(z)\)</span> are algebraically independent over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(\sum_j p_j(\wp(z))z^j=0\)">\(\sum_j p_j(\wp(z))z^j=0\)</span>, where the <span class="math" data-tex="\(p_j\)">\(p_j\)</span> are polynomials. Fix any <span class="math" data-tex="\(z_0\notin L\)">\(z_0\notin L\)</span> and a nonzero period <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Substituting <span class="math" data-tex="\(z=z_0+k\omega\)">\(z=z_0+k\omega\)</span>, <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>, makes one polynomial in <span class="math" data-tex="\(z\)">\(z\)</span> vanish at infinitely many distinct points. Thus each <span class="math" data-tex="\(p_j(\wp(z_0))=0\)">\(p_j(\wp(z_0))=0\)</span>. The function <span class="math" data-tex="\(\wp\)">\(\wp\)</span> takes every complex value by Proposition 8.4, so each <span class="math" data-tex="\(p_j\)">\(p_j\)</span> is the zero polynomial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="theorem-8-8-schneider-s-period-theorem">Theorem 8.8. Schneider's period theorem</h3>
+<p>If <span class="math" data-tex="\(g_2,g_3\)">\(g_2,g_3\)</span> are algebraic, every nonzero <span class="math" data-tex="\(\omega\in L\)">\(\omega\in L\)</span> is transcendental.</p>
+<p><strong>Proof.</strong> A lattice element is called primitive if it belongs to some integer basis of <span class="math" data-tex="\(L\)">\(L\)</span>. Write a nonzero <span class="math" data-tex="\(\omega=a\omega_1+b\omega_2\)">\(\omega=a\omega_1+b\omega_2\)</span> and put <span class="math" data-tex="\(d=\gcd(|a|,|b|)\)">\(d=\gcd(|a|,|b|)\)</span>. Then <span class="math" data-tex="\(\lambda=\omega/d\)">\(\lambda=\omega/d\)</span> is primitive, by Bézout's identity applied to its coprime coordinates. In particular <span class="math" data-tex="\(\lambda/2\notin L\)">\(\lambda/2\notin L\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(\omega\)">\(\omega\)</span> were algebraic. Then <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> would also be algebraic. The half-period value <span class="math" data-tex="\(e=\wp(\lambda/2)\)">\(e=\wp(\lambda/2)\)</span> is a root of <span class="math" data-tex="\(4X^3-g_2X-g_3\)">\(4X^3-g_2X-g_3\)</span>, and <span class="math" data-tex="\(\wp&#x27;(\lambda/2)=0\)">\(\wp&#x27;(\lambda/2)=0\)</span>, so <span class="math" data-tex="\(e\)">\(e\)</span> is algebraic. Take <span class="math" data-tex="\(K=\mathbb Q(g_2,g_3,\lambda,e)\)">\(K=\mathbb Q(g_2,g_3,\lambda,e)\)</span>. The functions <span class="math" data-tex="\(z,\wp,\wp&#x27;\)">\(z,\wp,\wp&#x27;\)</span> have strict order at most two, their <span class="math" data-tex="\(K\)">\(K\)</span>-ring is stable under differentiation, and two are independent by Lemma 8.7. At every distinct point</p>
+<span class="math math-display" data-tex="\[
+w_k=(k+1/2)\lambda,\qquad k=1,2,\ldots,
+\]">\[
+w_k=(k+1/2)\lambda,\qquad k=1,2,\ldots,
+\]</span>
+<p>none has a pole, and their values are <span class="math" data-tex="\((k+1/2)\lambda,e,0\in K\)">\((k+1/2)\lambda,e,0\in K\)</span>. Arbitrarily many such points contradict Theorem 7.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Proving this theorem first also establishes <span class="math" data-tex="\(L\cap\overline{\mathbb Q}=\{0\}\)">\(L\cap\overline{\mathbb Q}=\{0\}\)</span>. Thus every nonzero integer multiple of an algebraic nonzero argument avoids the poles.</p>
+<h3 id="theorem-8-9-schneider-s-value-theorem">Theorem 8.9. Schneider's value theorem</h3>
+<p>If <span class="math" data-tex="\(g_2,g_3\)">\(g_2,g_3\)</span> are algebraic and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is algebraic with <span class="math" data-tex="\(\alpha\notin L\)">\(\alpha\notin L\)</span>, then both <span class="math" data-tex="\(\wp(\alpha)\)">\(\wp(\alpha)\)</span> and <span class="math" data-tex="\(\wp&#x27;(\alpha)\)">\(\wp&#x27;(\alpha)\)</span> are transcendental.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(x=\wp(\alpha)\)">\(x=\wp(\alpha)\)</span> were algebraic. Equation (8.6) makes <span class="math" data-tex="\(y=\wp&#x27;(\alpha)\)">\(y=\wp&#x27;(\alpha)\)</span> algebraic as well. Set</p>
+<span class="math math-display" data-tex="\[
+K=\mathbb Q(g_2,g_3,\alpha,x,y).
+\]">\[
+K=\mathbb Q(g_2,g_3,\alpha,x,y).
+\]</span>
+<p>Including <span class="math" data-tex="\(y\)">\(y\)</span> is necessary; the square relation alone would only put it in a possible quadratic extension of the field generated by <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>Here <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, since zero is a pole. By Theorem 8.8, no nonzero integer multiple of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is in <span class="math" data-tex="\(L\)">\(L\)</span>. Also <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, since (8.8) would otherwise put <span class="math" data-tex="\(2\alpha\)">\(2\alpha\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span>. The duplication formula (8.11), together with <span class="math" data-tex="\(\wp&#x27;&#x27;=6\wp^2-g_2/2\)">\(\wp&#x27;&#x27;=6\wp^2-g_2/2\)</span>, first gives <span class="math" data-tex="\(\wp(2\alpha)\in K\)">\(\wp(2\alpha)\in K\)</span>. Differentiating (8.11) with respect to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>'s variable and dividing by two gives <span class="math" data-tex="\(\wp&#x27;(2\alpha)\in K\)">\(\wp&#x27;(2\alpha)\in K\)</span>: it is a rational expression in <span class="math" data-tex="\(\wp(\alpha),\wp&#x27;(\alpha),\wp&#x27;&#x27;(\alpha),\wp&#x27;&#x27;&#x27;(\alpha)\)">\(\wp(\alpha),\wp&#x27;(\alpha),\wp&#x27;&#x27;(\alpha),\wp&#x27;&#x27;&#x27;(\alpha)\)</span>, and <span class="math" data-tex="\(\wp&#x27;&#x27;&#x27;=12\wp\wp&#x27;\)">\(\wp&#x27;&#x27;&#x27;=12\wp\wp&#x27;\)</span>.</p>
+<p>For <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, the denominator <span class="math" data-tex="\(\wp(k\alpha)-\wp(\alpha)\)">\(\wp(k\alpha)-\wp(\alpha)\)</span> is nonzero. If it vanished, (8.8) would give <span class="math" data-tex="\((k-1)\alpha\in L\)">\((k-1)\alpha\in L\)</span> or <span class="math" data-tex="\((k+1)\alpha\in L\)">\((k+1)\alpha\in L\)</span>, impossible. Formula (8.10), followed by its derivative in the first variable, therefore shows inductively that</p>
+<span class="math math-display" data-tex="\[
+\wp(k\alpha),\wp&#x27;(k\alpha)\in K\qquad(k\geq1).
+\]">\[
+\wp(k\alpha),\wp&#x27;(k\alpha)\in K\qquad(k\geq1).
+\]</span>
+<p>For the differentiated formula the derivative of <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span> is again <span class="math" data-tex="\(6\wp^2-g_2/2\)">\(6\wp^2-g_2/2\)</span>, so it introduces no new field elements. The <span class="math" data-tex="\(K\)">\(K\)</span>-ring of <span class="math" data-tex="\(z,\wp,\wp&#x27;\)">\(z,\wp,\wp&#x27;\)</span> satisfies all the hypotheses of Theorem 7.2, yet all their values at the infinitely many distinct points <span class="math" data-tex="\(k\alpha\)">\(k\alpha\)</span> lie in <span class="math" data-tex="\(K\)">\(K\)</span>. This contradiction proves that <span class="math" data-tex="\(\wp(\alpha)\)">\(\wp(\alpha)\)</span> is transcendental.</p>
+<p>If <span class="math" data-tex="\(\wp&#x27;(\alpha)\)">\(\wp&#x27;(\alpha)\)</span> were algebraic, (8.6) would make <span class="math" data-tex="\(\wp(\alpha)\)">\(\wp(\alpha)\)</span> a root of the nonzero cubic <span class="math" data-tex="\(4X^3-g_2X-g_3-\wp&#x27;(\alpha)^2\)">\(4X^3-g_2X-g_3-\wp&#x27;(\alpha)^2\)</span> over the algebraic numbers. It would then be algebraic, contradicting the first assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-a-lattice-for-every-nonsingular-cubic">5. A lattice for every nonsingular cubic</h2>
+<p>To apply the period theorem to a specified equation, we must justify that the equation has a period lattice. This is an existence theorem, not a convention for naming its coefficients. We prove it using a compactness argument for the modular invariant, without assuming a uniformization theorem.</p>
+<p>For <span class="math" data-tex="\(\tau\)">\(\tau\)</span> in the upper half-plane <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, put <span class="math" data-tex="\(L_\tau=\mathbb Z\tau+\mathbb Z\)">\(L_\tau=\mathbb Z\tau+\mathbb Z\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+j(\tau)=1728\frac{g_2(L_\tau)^3}{g_2(L_\tau)^3-27g_3(L_\tau)^2}.
+\tag{8.16}
+\]">\[
+j(\tau)=1728\frac{g_2(L_\tau)^3}{g_2(L_\tau)^3-27g_3(L_\tau)^2}.
+\tag{8.16}
+\]</span>
+<p>The denominator is nonzero by Proposition 8.4. The Eisenstein sums are locally uniformly convergent holomorphic functions of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Indeed, on a compact subset of <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, the constant in (8.1) for <span class="math" data-tex="\(m\tau+n\)">\(m\tau+n\)</span> has a common positive lower bound, so a convergent sum of <span class="math" data-tex="\((m^2+n^2)^{-k}\)">\((m^2+n^2)^{-k}\)</span> dominates <span class="math" data-tex="\(G_{2k}\)">\(G_{2k}\)</span>. Thus <span class="math" data-tex="\(j\)">\(j\)</span> is holomorphic on <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>.</p>
+<h3 id="lemma-8-10-behaviour-as-one-lattice-direction-goes-to-infinity">Lemma 8.10. Behaviour as one lattice direction goes to infinity</h3>
+<p>As <span class="math" data-tex="\(\operatorname{Im}\tau\to\infty\)">\(\operatorname{Im}\tau\to\infty\)</span>, uniformly in <span class="math" data-tex="\(\operatorname{Re}\tau\)">\(\operatorname{Re}\tau\)</span>,</p>
+<span class="math math-display" data-tex="\[
+g_2(L_\tau)\longrightarrow\frac{4\pi^4}{3},\qquad
+g_3(L_\tau)\longrightarrow\frac{8\pi^6}{27},\qquad
+|j(\tau)|\longrightarrow\infty.
+\tag{8.17}
+\]">\[
+g_2(L_\tau)\longrightarrow\frac{4\pi^4}{3},\qquad
+g_3(L_\tau)\longrightarrow\frac{8\pi^6}{27},\qquad
+|j(\tau)|\longrightarrow\infty.
+\tag{8.17}
+\]</span>
+<p><strong>Proof.</strong> First establish the elementary partial-fraction identity</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\in\mathbb Z}(z-n)^{-2}=\frac{\pi^2}{\sin^2\pi z}.
+\tag{8.18}
+\]">\[
+\sum_{n\in\mathbb Z}(z-n)^{-2}=\frac{\pi^2}{\sin^2\pi z}.
+\tag{8.18}
+\]</span>
+<p>The series is locally uniformly convergent away from the integers. Both sides are one-periodic with the same double-pole principal parts. Their difference is entire. On <span class="math" data-tex="\(0\leq\operatorname{Re}z\leq1\)">\(0\leq\operatorname{Re}z\leq1\)</span>, with <span class="math" data-tex="\(|\operatorname{Im}z|\geq1\)">\(|\operatorname{Im}z|\geq1\)</span>, the absolute-value sum is bounded by</p>
+<span class="math math-display" data-tex="\[
+\sum_n\frac1{(\operatorname{Re}z-n)^2+(\operatorname{Im}z)^2}
+\leq\frac{C}{|\operatorname{Im}z|}.
+\]">\[
+\sum_n\frac1{(\operatorname{Re}z-n)^2+(\operatorname{Im}z)^2}
+\leq\frac{C}{|\operatorname{Im}z|}.
+\]</span>
+<p>This follows by separating the nearest integer and comparing the remaining terms with the integral of <span class="math" data-tex="\((t^2+y^2)^{-1}\)">\((t^2+y^2)^{-1}\)</span>. The sine expression also tends uniformly to zero there, because <span class="math" data-tex="\(|\sin\pi(x+iy)|^2=\sin^2\pi x+\sinh^2\pi y\)">\(|\sin\pi(x+iy)|^2=\sin^2\pi x+\sinh^2\pi y\)</span>. The difference is bounded on the intervening compact rectangle, including its removable singularities. Periodicity makes it bounded on the plane, and Liouville makes it constant. Its limit at imaginary infinity is zero, proving (8.18).</p>
+<p>Expansion of <span class="math" data-tex="\(\sin\pi z\)">\(\sin\pi z\)</span> and division of convergent series give</p>
+<span class="math math-display" data-tex="\[
+\frac{\pi^2}{\sin^2\pi z}
+=z^{-2}+\frac{\pi^2}{3}+\frac{\pi^4}{15}z^2
++\frac{2\pi^6}{189}z^4+O(z^6).
+\]">\[
+\frac{\pi^2}{\sin^2\pi z}
+=z^{-2}+\frac{\pi^2}{3}+\frac{\pi^4}{15}z^2
++\frac{2\pi^6}{189}z^4+O(z^6).
+\]</span>
+<p>Compare the coefficients in (8.18) to get</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\ne0}n^{-4}=\frac{\pi^4}{45},\qquad
+\sum_{n\ne0}n^{-6}=\frac{2\pi^6}{945}.
+\]">\[
+\sum_{n\ne0}n^{-4}=\frac{\pi^4}{45},\qquad
+\sum_{n\ne0}n^{-6}=\frac{2\pi^6}{945}.
+\]</span>
+<p>Now separate the zero <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-coordinate in the lattice Eisenstein sum. For <span class="math" data-tex="\(t=\operatorname{Im}\tau\geq1\)">\(t=\operatorname{Im}\tau\geq1\)</span> and <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{m\ne0}\sum_{n\in\mathbb Z}|m\tau+n|^{-2k}
+\leq C_k\sum_{m\ne0}(|m|t)^{1-2k}=O(t^{1-2k}).
+\]">\[
+\sum_{m\ne0}\sum_{n\in\mathbb Z}|m\tau+n|^{-2k}
+\leq C_k\sum_{m\ne0}(|m|t)^{1-2k}=O(t^{1-2k}).
+\]</span>
+<p>For the inner sum, the same nearest-integer and integral comparison gives <span class="math" data-tex="\(\sum_n((n+x)^2+a^2)^{-k}\leq C_k a^{1-2k}\)">\(\sum_n((n+x)^2+a^2)^{-k}\leq C_k a^{1-2k}\)</span> for <span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span>, uniformly in real <span class="math" data-tex="\(x\)">\(x\)</span>. Hence <span class="math" data-tex="\(G_4\to\pi^4/45\)">\(G_4\to\pi^4/45\)</span> and <span class="math" data-tex="\(G_6\to2\pi^6/945\)">\(G_6\to2\pi^6/945\)</span>, proving the first two limits in (8.17). Their limiting invariants satisfy <span class="math" data-tex="\((4\pi^4/3)^3-27(8\pi^6/27)^2=0\)">\((4\pi^4/3)^3-27(8\pi^6/27)^2=0\)</span>. The denominator of (8.16) thus tends to zero while its numerator tends to a nonzero number. This proves the last limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="theorem-8-11-existence-and-uniqueness-of-the-period-lattice">Theorem 8.11. Existence and uniqueness of the period lattice</h3>
+<p>For every <span class="math" data-tex="\(A,B\in\mathbb C\)">\(A,B\in\mathbb C\)</span> with <span class="math" data-tex="\(A^3-27B^2\ne0\)">\(A^3-27B^2\ne0\)</span>, there is a unique lattice <span class="math" data-tex="\(L\subset\mathbb C\)">\(L\subset\mathbb C\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+g_2(L)=A,\qquad g_3(L)=B.
+\tag{8.19}
+\]">\[
+g_2(L)=A,\qquad g_3(L)=B.
+\tag{8.19}
+\]</span>
+<p>Its Weierstrass function parametrizes <span class="math" data-tex="\(y^2=4x^3-Ax-B\)">\(y^2=4x^3-Ax-B\)</span>.</p>
+<p><strong>Proof.</strong> Scaling the absolutely convergent series shows</p>
+<span class="math math-display" data-tex="\[
+g_2(cL)=c^{-4}g_2(L),\quad g_3(cL)=c^{-6}g_3(L),\quad
+\wp_{cL}(cz)=c^{-2}\wp_L(z).
+\tag{8.20}
+\]">\[
+g_2(cL)=c^{-4}g_2(L),\quad g_3(cL)=c^{-6}g_3(L),\quad
+\wp_{cL}(cz)=c^{-2}\wp_L(z).
+\tag{8.20}
+\]</span>
+<p>For <span class="math" data-tex="\(\gamma=\left(\begin{smallmatrix}a&amp;b\\c&amp;d\end{smallmatrix}\right)\in\mathrm{SL}_2(\mathbb Z)\)">\(\gamma=\left(\begin{smallmatrix}a&amp;b\\c&amp;d\end{smallmatrix}\right)\in\mathrm{SL}_2(\mathbb Z)\)</span>, changing the integer basis gives</p>
+<span class="math math-display" data-tex="\[
+L_{\gamma\tau}=(c\tau+d)^{-1}L_\tau,
+\qquad j(\gamma\tau)=j(\tau).
+\tag{8.21}
+\]">\[
+L_{\gamma\tau}=(c\tau+d)^{-1}L_\tau,
+\qquad j(\gamma\tau)=j(\tau).
+\tag{8.21}
+\]</span>
+<p>Every orbit has a representative in</p>
+<span class="math math-display" data-tex="\[
+\mathcal F=\{\tau\in\mathfrak H:|\operatorname{Re}\tau|\leq1/2,
+\ |\tau|\geq1\}.
+\]">\[
+\mathcal F=\{\tau\in\mathfrak H:|\operatorname{Re}\tau|\leq1/2,
+\ |\tau|\geq1\}.
+\]</span>
+<p>Here is a direct reduction argument. Choose a shortest nonzero vector <span class="math" data-tex="\(c\tau+d\)">\(c\tau+d\)</span> of <span class="math" data-tex="\(L_\tau\)">\(L_\tau\)</span>. Its coordinates <span class="math" data-tex="\(c,d\)">\(c,d\)</span> are coprime, since otherwise division by their common factor would shorten it. Complete them to a matrix of determinant one using Bézout's identity. The transformed imaginary part is <span class="math" data-tex="\(\operatorname{Im}\tau/|c\tau+d|^2\)">\(\operatorname{Im}\tau/|c\tau+d|^2\)</span>, maximal among all orbit elements. An integer translation puts its real part in <span class="math" data-tex="\([-1/2,1/2]\)">\([-1/2,1/2]\)</span>. If its modulus were less than one, inversion <span class="math" data-tex="\(\tau\mapsto-1/\tau\)">\(\tau\mapsto-1/\tau\)</span> would increase its imaginary part, contradicting maximality. Thus it lies in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, where the imaginary part is at least <span class="math" data-tex="\(\sqrt3/2\)">\(\sqrt3/2\)</span>.</p>
+<p>The image <span class="math" data-tex="\(j(\mathfrak H)\)">\(j(\mathfrak H)\)</span> is open by the exact open mapping theorem, since Lemma 8.10 makes <span class="math" data-tex="\(j\)">\(j\)</span> nonconstant. It is also closed in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. To prove this, take <span class="math" data-tex="\(j(\tau_n)\)">\(j(\tau_n)\)</span> converging to a finite number, and use (8.21) to put each <span class="math" data-tex="\(\tau_n\)">\(\tau_n\)</span> in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. Their imaginary parts must be bounded above by Lemma 8.10; otherwise a subsequence would have <span class="math" data-tex="\(|j(\tau_n)|\to\infty\)">\(|j(\tau_n)|\to\infty\)</span>. They are bounded below by <span class="math" data-tex="\(\sqrt3/2\)">\(\sqrt3/2\)</span> and their real parts lie in a compact interval. A convergent subsequence therefore has a limit in <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, whose <span class="math" data-tex="\(j\)">\(j\)</span>-value is the desired finite limit. The image is nonempty, open and closed in the connected plane, so</p>
+<span class="math math-display" data-tex="\[
+j(\mathfrak H)=\mathbb C.
+\]">\[
+j(\mathfrak H)=\mathbb C.
+\]</span>
+<p>Choose <span class="math" data-tex="\(\tau\)">\(\tau\)</span> such that <span class="math" data-tex="\(j(\tau)=1728A^3/(A^3-27B^2)\)">\(j(\tau)=1728A^3/(A^3-27B^2)\)</span>, and put <span class="math" data-tex="\(a=g_2(L_\tau),b=g_3(L_\tau)\)">\(a=g_2(L_\tau),b=g_3(L_\tau)\)</span>. If <span class="math" data-tex="\(A,B\ne0\)">\(A,B\ne0\)</span>, equality of the invariants gives <span class="math" data-tex="\(a^3/A^3=b^2/B^2\)">\(a^3/A^3=b^2/B^2\)</span>. Choose <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c^4=a/A\)">\(c^4=a/A\)</span>. Then <span class="math" data-tex="\(c^6=\pm b/B\)">\(c^6=\pm b/B\)</span>; replacing <span class="math" data-tex="\(c\)">\(c\)</span> by <span class="math" data-tex="\(ic\)">\(ic\)</span> changes this sign without changing its fourth power. Thus (8.20) gives (8.19) for <span class="math" data-tex="\(L=cL_\tau\)">\(L=cL_\tau\)</span>. If <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, equality of <span class="math" data-tex="\(j\)">\(j\)</span>-values gives <span class="math" data-tex="\(a=0,b\ne0\)">\(a=0,b\ne0\)</span>; choose <span class="math" data-tex="\(c^6=b/B\)">\(c^6=b/B\)</span>. If <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, it gives <span class="math" data-tex="\(b=0,a\ne0\)">\(b=0,a\ne0\)</span>; choose <span class="math" data-tex="\(c^4=a/A\)">\(c^4=a/A\)</span>. These cases exhaust the possibilities because the discriminant is nonzero.</p>
+<p>For uniqueness, write <span class="math" data-tex="\(\wp=z^{-2}+\sum_{n\geq1}c_nz^{2n}\)">\(\wp=z^{-2}+\sum_{n\geq1}c_nz^{2n}\)</span>. We have <span class="math" data-tex="\(c_1=A/20,c_2=B/28\)">\(c_1=A/20,c_2=B/28\)</span> from (8.5)–(8.6). Comparing coefficients in <span class="math" data-tex="\(\wp&#x27;&#x27;=6\wp^2-A/2\)">\(\wp&#x27;&#x27;=6\wp^2-A/2\)</span> yields, for <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\bigl(2n(2n-1)-12\bigr)c_n
+=6\sum_{i=1}^{n-2}c_i c_{n-1-i}.
+\tag{8.22}
+\]">\[
+\bigl(2n(2n-1)-12\bigr)c_n
+=6\sum_{i=1}^{n-2}c_i c_{n-1-i}.
+\tag{8.22}
+\]</span>
+<p>The factor on the left is nonzero, so the coefficients are determined recursively by <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. Two such Weierstrass functions have the same Laurent expansion, hence agree as meromorphic functions. Their pole sets are exactly their lattices, so the lattices agree.</p>
+<p>Finally Proposition 8.4 shows that every affine point of the cubic is <span class="math" data-tex="\((\wp(z),\wp&#x27;(z))\)">\((\wp(z),\wp&#x27;(z))\)</span>, with the sign selected by replacing <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(-z\)">\(-z\)</span> if necessary. The origin class of the torus corresponds to the point at infinity. Thus this lattice supplies the asserted parametrization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same scaling argument proves that two lattices have the same <span class="math" data-tex="\(j\)">\(j\)</span>-invariant exactly when they are homothetic: match both invariants by a scale as above, then use uniqueness. This fact will be used in the next lesson; no injectivity statement for a modular quotient is needed for its proof.</p>
+<h2 id="6-elliptic-integrals-and-the-lemniscate">6. Elliptic integrals and the lemniscate</h2>
+<p>Suppose <span class="math" data-tex="\(g_2,g_3\)">\(g_2,g_3\)</span> are real and the cubic has three distinct real roots, ordered here as <span class="math" data-tex="\(E_1&gt;E_2&gt;E_3\)">\(E_1&gt;E_2&gt;E_3\)</span>. Its real half-period is</p>
+<span class="math math-display" data-tex="\[
+\Omega=\int_{E_1}^{\infty}
+\frac{dx}{\sqrt{4x^3-g_2x-g_3}},
+\tag{8.23}
+\]">\[
+\Omega=\int_{E_1}^{\infty}
+\frac{dx}{\sqrt{4x^3-g_2x-g_3}},
+\tag{8.23}
+\]</span>
+<p>where the square root is positive for <span class="math" data-tex="\(x&gt;E_1\)">\(x&gt;E_1\)</span>. The integral converges: near its simple root the integrand has order <span class="math" data-tex="\((x-E_1)^{-1/2}\)">\((x-E_1)^{-1/2}\)</span>, and at infinity it has order <span class="math" data-tex="\(x^{-3/2}\)">\(x^{-3/2}\)</span>.</p>
+<p>To identify it, the Laurent coefficients (8.22) are real, so <span class="math" data-tex="\(\wp(t)\)">\(\wp(t)\)</span> is real near positive real zero, with <span class="math" data-tex="\(\wp(t)\sim t^{-2}\)">\(\wp(t)\sim t^{-2}\)</span> and <span class="math" data-tex="\(\wp&#x27;(t)\sim-2t^{-3}\)">\(\wp&#x27;(t)\sim-2t^{-3}\)</span>. As long as <span class="math" data-tex="\(\wp(t)&gt;E_1\)">\(\wp(t)&gt;E_1\)</span>, (8.6) gives the negative square root for its derivative and therefore</p>
+<span class="math math-display" data-tex="\[
+t=\int_{\wp(t)}^\infty
+\frac{dx}{\sqrt{4x^3-g_2x-g_3}}.
+\tag{8.24}
+\]">\[
+t=\int_{\wp(t)}^\infty
+\frac{dx}{\sqrt{4x^3-g_2x-g_3}}.
+\tag{8.24}
+\]</span>
+<p>Differentiation makes the right side have derivative one, and its limit at zero fixes the integration constant. This interval continues until <span class="math" data-tex="\(t=\Omega\)">\(t=\Omega\)</span>. It cannot stop sooner at a pole: the right side would tend to zero there, contradicting a positive limiting <span class="math" data-tex="\(t\)">\(t\)</span>. It cannot stop at a finite value greater than <span class="math" data-tex="\(E_1\)">\(E_1\)</span>, because the derivative is nonzero and holomorphy extends the inequality. If it reaches <span class="math" data-tex="\(E_1\)">\(E_1\)</span>, (8.24) forces <span class="math" data-tex="\(t=\Omega\)">\(t=\Omega\)</span>. The integral decreases continuously from <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> to zero as its lower endpoint increases from <span class="math" data-tex="\(E_1\)">\(E_1\)</span> to infinity, so <span class="math" data-tex="\(\wp(t)\to E_1\)">\(\wp(t)\to E_1\)</span> as <span class="math" data-tex="\(t\uparrow\Omega\)">\(t\uparrow\Omega\)</span>.</p>
+<p>The point <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is not a pole, and <span class="math" data-tex="\(\wp&#x27;(\Omega)=0\)">\(\wp&#x27;(\Omega)=0\)</span>. Proposition 8.4 gives <span class="math" data-tex="\(2\Omega\in L\)">\(2\Omega\in L\)</span> and <span class="math" data-tex="\(\Omega\notin L\)">\(\Omega\notin L\)</span>. It is the least positive real period: there are no poles in <span class="math" data-tex="\((0,\Omega)\)">\((0,\Omega)\)</span>, and evenness and the period <span class="math" data-tex="\(2\Omega\)">\(2\Omega\)</span> exclude any pole in <span class="math" data-tex="\((\Omega,2\Omega)\)">\((\Omega,2\Omega)\)</span>. If the cubic coefficients are algebraic, Theorem 8.8 makes <span class="math" data-tex="\(2\Omega\)">\(2\Omega\)</span>, and hence <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, transcendental.</p>
+<p>For a nonreal cubic, an integral from infinity to a branch root requires a path and a continued square-root branch. The corresponding statement is also precise. The parametrization in Theorem 8.11 identifies the nonsingular projective cubic with <span class="math" data-tex="\(\mathbb C/L\)">\(\mathbb C/L\)</span>: (8.8) proves injectivity of <span class="math" data-tex="\((\wp,\wp&#x27;)\)">\((\wp,\wp&#x27;)\)</span>, and the parametrization proves surjectivity. It is a continuous bijection from a compact torus to the projective cubic, a Hausdorff space, and hence a homeomorphism: images of closed sets are compact and closed.</p>
+<p>It also has local analytic inverses. Away from <span class="math" data-tex="\(\wp&#x27;=0\)">\(\wp&#x27;=0\)</span>, use <span class="math" data-tex="\(x\)">\(x\)</span> as a coordinate; at a half-period, use <span class="math" data-tex="\(y\)">\(y\)</span>, whose derivative <span class="math" data-tex="\(\wp&#x27;&#x27;\)">\(\wp&#x27;&#x27;\)</span> is nonzero because the fibre has exact multiplicity two. At infinity, <span class="math" data-tex="\(-2x/y=z+O(z^5)\)">\(-2x/y=z+O(z^5)\)</span> has nonzero derivative. Here is the local inverse argument needed in these charts. If <span class="math" data-tex="\(F&#x27;(z_0)\ne0\)">\(F&#x27;(z_0)\ne0\)</span>, choose a convex disc on which <span class="math" data-tex="\(|F&#x27;(z)-F&#x27;(z_0)|&lt;|F&#x27;(z_0)|/2\)">\(|F&#x27;(z)-F&#x27;(z_0)|&lt;|F&#x27;(z_0)|/2\)</span>. Integration along a segment shows <span class="math" data-tex="\(|F(z)-F(w)|\geq|F&#x27;(z_0)||z-w|/2\)">\(|F(z)-F(w)|\geq|F&#x27;(z_0)||z-w|/2\)</span>, so <span class="math" data-tex="\(F\)">\(F\)</span> is injective there. Its image is open by the open mapping theorem, its inverse is continuous, and the difference quotient gives derivative <span class="math" data-tex="\(1/F&#x27;\)">\(1/F&#x27;\)</span> for that inverse. Thus the inverse is holomorphic. A path can now be lifted to <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> by subdividing it into finitely many such charts and consistently choosing the lattice translates. Along it,</p>
+<span class="math math-display" data-tex="\[
+\frac{dx}{y}=dz,
+\]">\[
+\frac{dx}{y}=dz,
+\]</span>
+<p>with the identity continued across the root charts. A lifted path from the point at infinity to <span class="math" data-tex="\((E_i,0)\)">\((E_i,0)\)</span> ends at some <span class="math" data-tex="\(w\notin L\)">\(w\notin L\)</span> with <span class="math" data-tex="\(2w\in L\)">\(2w\in L\)</span>. Its integral is that half-period <span class="math" data-tex="\(w\)">\(w\)</span>; other paths can add periods. Each such integral is nonzero and transcendental for algebraic <span class="math" data-tex="\(g_2,g_3\)">\(g_2,g_3\)</span>. This formulation states the path and branch dependence explicitly.</p>
+<p><strong>The square lattice.</strong> For <span class="math" data-tex="\(L_0=\mathbb Z[i]\)">\(L_0=\mathbb Z[i]\)</span>, multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> preserves the lattice. Equation (8.20) gives <span class="math" data-tex="\(g_3(L_0)=i^{-6}g_3(L_0)=-g_3(L_0)\)">\(g_3(L_0)=i^{-6}g_3(L_0)=-g_3(L_0)\)</span>, so <span class="math" data-tex="\(g_3(L_0)=0\)">\(g_3(L_0)=0\)</span>. Its <span class="math" data-tex="\(g_2\)">\(g_2\)</span> is nonzero by (8.9). Moreover it is positive real: conjugation preserves <span class="math" data-tex="\(L_0\)">\(L_0\)</span>, the value <span class="math" data-tex="\(e=\wp_{L_0}(1/2)\)">\(e=\wp_{L_0}(1/2)\)</span> is real, and it is nonzero because <span class="math" data-tex="\(\wp_{L_0}(i/2)=-e\)">\(\wp_{L_0}(i/2)=-e\)</span> is a distinct half-period value. Then <span class="math" data-tex="\(4e^3-g_2e=0\)">\(4e^3-g_2e=0\)</span> gives <span class="math" data-tex="\(g_2=4e^2&gt;0\)">\(g_2=4e^2&gt;0\)</span>. Scale by the positive <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c^4=g_2(L_0)/4\)">\(c^4=g_2(L_0)/4\)</span>; the scaled lattice has invariants <span class="math" data-tex="\((4,0)\)">\((4,0)\)</span>.</p>
+<p>For its curve <span class="math" data-tex="\(y^2=4x^3-4x\)">\(y^2=4x^3-4x\)</span>, substitution <span class="math" data-tex="\(x=t^{-2}\)">\(x=t^{-2}\)</span> in (8.23) gives</p>
+<span class="math math-display" data-tex="\[
+\Omega=\int_0^1\frac{dt}{\sqrt{1-t^4}},\qquad
+\varpi=2\Omega=2\int_0^1\frac{dt}{\sqrt{1-t^4}}.
+\]">\[
+\Omega=\int_0^1\frac{dt}{\sqrt{1-t^4}},\qquad
+\varpi=2\Omega=2\int_0^1\frac{dt}{\sqrt{1-t^4}}.
+\]</span>
+<p>The number <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>, in this convention the lemniscate constant, is the least positive real period and is transcendental. The scaled square lattice is <span class="math" data-tex="\(\varpi\mathbb Z[i]\)">\(\varpi\mathbb Z[i]\)</span>, since its least positive real lattice element is the scale <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p><strong>The triangular lattice.</strong> Put <span class="math" data-tex="\(\xi=e^{2\pi i/3}\)">\(\xi=e^{2\pi i/3}\)</span> and <span class="math" data-tex="\(L_0=\mathbb Z+\mathbb Z\xi\)">\(L_0=\mathbb Z+\mathbb Z\xi\)</span>. Since <span class="math" data-tex="\(\xi L_0=L_0\)">\(\xi L_0=L_0\)</span>, (8.20) forces <span class="math" data-tex="\(g_2(L_0)=0\)">\(g_2(L_0)=0\)</span>. Nonvanishing of the discriminant forces <span class="math" data-tex="\(g_3(L_0)\ne0\)">\(g_3(L_0)\ne0\)</span>. A scale <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c^6=g_3(L_0)\)">\(c^6=g_3(L_0)\)</span> gives invariants <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Every nonzero period of this scaled lattice is transcendental. Both examples use algebraic invariants after scaling; they do not assume that the unscaled lattice invariants are algebraic.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy — differentiation.</strong> Prove <span class="math" data-tex="\(\wp&#x27;&#x27;=6\wp^2-g_2/2\)">\(\wp&#x27;&#x27;=6\wp^2-g_2/2\)</span>, including its validity at zeros of <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span>. Deduce stability of <span class="math" data-tex="\(\mathbb C[\wp,\wp&#x27;]\)">\(\mathbb C[\wp,\wp&#x27;]\)</span> under differentiation.</p>
+</li>
+<li>
+<p><strong>Medium — the discriminant.</strong> Prove <span class="math" data-tex="\(g_2^3-27g_3^2\ne0\)">\(g_2^3-27g_3^2\ne0\)</span> from the three half-periods, explaining both their distinctness and the multiplicities of the corresponding fibres.</p>
+</li>
+<li>
+<p><strong>Medium — derivative values.</strong> Under the hypotheses of Schneider's value theorem, prove that <span class="math" data-tex="\(\wp&#x27;(\alpha)\)">\(\wp&#x27;(\alpha)\)</span> is transcendental, without asserting that a polynomial in an arbitrary transcendental number must be transcendental.</p>
+</li>
+<li>
+<p><strong>Medium — an elliptic integral.</strong> When the algebraic cubic has three distinct real roots, prove (8.23) is a half-period using the indicated positive square root. Deduce its transcendence. State the path and branch interpretation for nonreal roots.</p>
+</li>
+<li>
+<p><strong>Hard — a line and three zeros.</strong> Prove the addition theorem using <span class="math" data-tex="\(\wp&#x27;(z)-a\wp(z)-b\)">\(\wp&#x27;(z)-a\wp(z)-b\)</span>. Derive the zero-sum congruence from a boundary integral and account for tangencies by limits. On <span class="math" data-tex="\(y^2=4x^3-4x\)">\(y^2=4x^3-4x\)</span>, find the third intersection of the line through <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and <span class="math" data-tex="\((2,2\sqrt6)\)">\((2,2\sqrt6)\)</span>, and reflect it to obtain their sum.</p>
+</li>
+</ol>
+<h2 id="8-solutions">8. Solutions</h2>
+<ol>
+<li>
+<p>Differentiate <span class="math" data-tex="\(\wp&#x27;^2=4\wp^3-g_2\wp-g_3\)">\(\wp&#x27;^2=4\wp^3-g_2\wp-g_3\)</span> on the open set where <span class="math" data-tex="\(\wp&#x27;\ne0\)">\(\wp&#x27;\ne0\)</span>, obtaining <span class="math" data-tex="\(2\wp&#x27;\wp&#x27;&#x27;=(12\wp^2-g_2)\wp&#x27;\)">\(2\wp&#x27;\wp&#x27;&#x27;=(12\wp^2-g_2)\wp&#x27;\)</span>. Division gives the required formula there; the meromorphic identity theorem extends it across the isolated zeros of <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span>. The derivative of <span class="math" data-tex="\(\wp\)">\(\wp\)</span> is <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span>, and the derivative of <span class="math" data-tex="\(\wp&#x27;\)">\(\wp&#x27;\)</span> is a polynomial in <span class="math" data-tex="\(\wp\)">\(\wp\)</span> with complex coefficients. The product rule therefore keeps every polynomial in both generators inside the same ring.</p>
+</li>
+<li>
+<p>Each nonzero half-lattice class equals its negative. Oddness and periodicity give <span class="math" data-tex="\(\wp&#x27;=0\)">\(\wp&#x27;=0\)</span> there. The fibre <span class="math" data-tex="\(\wp-e\)">\(\wp-e\)</span> has two zeros with multiplicity because it has one double pole. At a half-period its zero has multiplicity at least two, so it is exactly double and exhausts the fibre. Different half-period classes therefore have different values. The three values are roots of the cubic by the differential equation; the cubic has distinct roots. Its monic discriminant is <span class="math" data-tex="\((g_2^3-27g_3^2)/16\)">\((g_2^3-27g_3^2)/16\)</span>, so the claimed quantity is nonzero.</p>
+</li>
+<li>
+<p>If <span class="math" data-tex="\(\wp&#x27;(\alpha)\)">\(\wp&#x27;(\alpha)\)</span> were algebraic, the number <span class="math" data-tex="\(\wp(\alpha)\)">\(\wp(\alpha)\)</span> would satisfy <span class="math" data-tex="\(4X^3-g_2X-g_3-\wp&#x27;(\alpha)^2=0\)">\(4X^3-g_2X-g_3-\wp&#x27;(\alpha)^2=0\)</span> over a number field. It would be algebraic over that field and therefore over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, contrary to Theorem 8.9. This is an algebraic equation with nonzero leading coefficient; it avoids any general claim about polynomial values of transcendental numbers.</p>
+</li>
+<li>
+<p>On the positive real branch near zero, <span class="math" data-tex="\(\wp\sim t^{-2}\)">\(\wp\sim t^{-2}\)</span> and <span class="math" data-tex="\(\wp&#x27;&lt;0\)">\(\wp&#x27;&lt;0\)</span>. Until the largest root is reached, the differential equation integrates to (8.24). The integral is finite at its lower root and goes to zero at infinity. Its inverse keeps <span class="math" data-tex="\(\wp\)">\(\wp\)</span> finite on <span class="math" data-tex="\((0,\Omega]\)">\((0,\Omega]\)</span>; the continuation argument in section 6 excludes any earlier stopping point. At <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, the derivative is zero and the value is finite. Proposition 8.4 gives <span class="math" data-tex="\(2\Omega\in L\)">\(2\Omega\in L\)</span>, <span class="math" data-tex="\(\Omega\notin L\)">\(\Omega\notin L\)</span>, so it is a nonzero half-period. Theorem 8.8 excludes algebraicity of <span class="math" data-tex="\(2\Omega\)">\(2\Omega\)</span>, and thus of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. For nonreal roots, lift a specified path on the cubic, starting at infinity and ending at its root point, with <span class="math" data-tex="\(y\)">\(y\)</span> the continued square root. The equality <span class="math" data-tex="\(dx/y=dz\)">\(dx/y=dz\)</span> makes its integral a lift of that nonzero two-torsion class. Different lifts differ by periods; each lift remains a nonzero half-period and is transcendental.</p>
+</li>
+<li>
+<p>The line parameters are <span class="math" data-tex="\(a=(\wp&#x27;(u)-\wp&#x27;(v))/(\wp(u)-\wp(v))\)">\(a=(\wp&#x27;(u)-\wp&#x27;(v))/(\wp(u)-\wp(v))\)</span>, <span class="math" data-tex="\(b=\wp&#x27;(u)-a\wp(u)\)">\(b=\wp&#x27;(u)-a\wp(u)\)</span>. The function <span class="math" data-tex="\(\wp&#x27;-a\wp-b\)">\(\wp&#x27;-a\wp-b\)</span> has a triple pole at zero and hence three zeros modulo <span class="math" data-tex="\(L\)">\(L\)</span>. For its logarithmic derivative, the boundary integral weighted by <span class="math" data-tex="\(z\)">\(z\)</span> equals <span class="math" data-tex="\(-\lambda_2I_1+\lambda_1I_2\)">\(-\lambda_2I_1+\lambda_1I_2\)</span>, with <span class="math" data-tex="\(I_j=2\pi i n_j\)">\(I_j=2\pi i n_j\)</span> because the values on each period side agree at its endpoints. The residues give <span class="math" data-tex="\(u+v+t\equiv0\pmod L\)">\(u+v+t\equiv0\pmod L\)</span>. Substitution of the line into the cubic gives three <span class="math" data-tex="\(x\)">\(x\)</span>-roots whose sum is <span class="math" data-tex="\(a^2/4\)">\(a^2/4\)</span>. Since <span class="math" data-tex="\(\wp(t)=\wp(u+v)\)">\(\wp(t)=\wp(u+v)\)</span>, this is (8.10). Tangencies follow by the meromorphic identity and limits, yielding (8.11) at a finite double point. In the stated example, <span class="math" data-tex="\(a=2\sqrt6\)">\(a=2\sqrt6\)</span>, <span class="math" data-tex="\(b=-2\sqrt6\)">\(b=-2\sqrt6\)</span>, so the root sum is six. The third <span class="math" data-tex="\(x\)">\(x\)</span>-coordinate is <span class="math" data-tex="\(6-1-2=3\)">\(6-1-2=3\)</span>, and its <span class="math" data-tex="\(y\)">\(y\)</span>-coordinate is <span class="math" data-tex="\(4\sqrt6\)">\(4\sqrt6\)</span>. Reflection gives the sum <span class="math" data-tex="\((3,-4\sqrt6)\)">\((3,-4\sqrt6)\)</span>.</p>
+</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li>Michel Waldschmidt, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/QueensPaper52.pdf"><em>Transcendence Methods</em></a>, Queen's Papers in Pure and Applied Mathematics 52, Queen's University, Kingston, 1979, §2.2, Corollaries 2.2.3–2.2.4: Schneider's theorems on algebraic points of a Weierstrass function, deduced from the Schneider–Lang criterion with a field containing the values of <span class="math" data-tex="\(\wp\)">\(\wp\)</span> and <span class="math" data-tex="\(\wp'\)">\(\wp'\)</span>. Michel Waldschmidt, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/SurveyTrdceEllipt2006.pdf"><em>Elliptic Functions and Transcendence</em></a>, author's version of the survey in <em>Surveys in Number Theory</em>, 2008, §3.1, Theorems 17–20: the results of Siegel and Schneider on periods and values.</li>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/MF.pdf"><em>Modular Functions and Modular Forms</em></a>, course notes, for elliptic functions and the Weierstrass <span class="math" data-tex="\(\wp\)">\(\wp\)</span>-function.</li>
+<li>Jiří Lebl, <a href="https://www.jirka.org/ca/ca.pdf"><em>Guide to Cultivating Complex Analysis</em></a>, version 1.9, July 11, 2026: Theorems 3.3.1, 3.3.4, 3.3.10, 5.3.2 and 5.5.1, exact open analytic prerequisites. Copyright © 2019–2026 Jiří Lebl; dual CC BY-NC-SA 4.0 / CC BY-SA 4.0, with CC BY-SA used for linked proofs. The independently authored lesson remains CC0.</li>
+<li>Theodor Schneider, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0113/LOG_0004.pdf">“Arithmetische Untersuchungen elliptischer Integrale”</a>, <em>Mathematische Annalen</em> <strong>113</strong> (1937), 1–13: historical credit.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-08.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

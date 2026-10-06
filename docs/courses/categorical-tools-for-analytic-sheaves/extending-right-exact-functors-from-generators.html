@@ -1,0 +1,554 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Extending right exact functors from generators</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="extending-right-exact-functors-from-generators">Extending right exact functors from generators</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A presentation describes an object by generators and relations. Applying a functor to the two terms suggests taking a new cokernel, but a map between the original objects may fail to lift between the chosen generators. Epimorphic covers solve this problem: lift after a cover, then prove that the answer descends. This gives an extension theorem for a full additive generating subcategory, including generators that are not projective.</p>
+<p>We use the ordinary kernel, image and cokernel identities in an abelian category, and the incoming fraction calculus recalled in <a href="one-sided-fractions-and-saturation.html">One-sided fractions and saturation</a>. The full-subcategory replacement theorem from <a href="descent-through-replacement-objects.html">Descent through replacement objects</a> enters the presentation interpretation in Section 6. All choices and functor categories are interpreted in an ambient universe. The subcategory of generators may be large, and the target need only be abelian.</p>
+<h2 id="1-the-exact-condition-on-the-generators">1. The exact condition on the generators</h2>
+<p>Let <span class="math" data-tex="\(\mathsf C,\mathsf A\)">\(\mathsf C,\mathsf A\)</span> be abelian categories, and let <span class="math" data-tex="\(j: \mathsf J\hookrightarrow\mathsf C\)">\(j: \mathsf J\hookrightarrow\mathsf C\)</span> be a full additive subcategory. Choose its zero object and finite biproducts and identify them with the corresponding ambient ones. We call <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> <strong>generating</strong> if every <span class="math" data-tex="\(X\in\mathsf C\)">\(X\in\mathsf C\)</span> receives an epimorphism <span class="math" data-tex="\(P\twoheadrightarrow X\)">\(P\twoheadrightarrow X\)</span> with <span class="math" data-tex="\(P\in\mathsf J\)">\(P\in\mathsf J\)</span>.</p>
+<p>An additive <span class="math" data-tex="\(F: \mathsf J\to\mathsf A\)">\(F: \mathsf J\to\mathsf A\)</span> is <strong>right exact on ambient triples</strong> if, whenever</p>
+<span class="math math-display" data-tex="\[
+J_1\xrightarrow{u}J_0\xrightarrow{p}J_{-1}\longrightarrow0
+\tag{1.1}
+\]">\[
+J_1\xrightarrow{u}J_0\xrightarrow{p}J_{-1}\longrightarrow0
+\tag{1.1}
+\]</span>
+<p>is exact in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>, with all three <span class="math" data-tex="\(J_i\)">\(J_i\)</span> in <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>, its image under <span class="math" data-tex="\(F\)">\(F\)</span> is exact in <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span>. This refers to exactness in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>; <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> need not have its own kernels or cokernels.</p>
+<p>Write <span class="math" data-tex="\(\operatorname{Rex}(\mathsf C,\mathsf A)\)">\(\operatorname{Rex}(\mathsf C,\mathsf A)\)</span> for additive right exact functors and all natural transformations, and <span class="math" data-tex="\(\operatorname{Rex}_{\mathsf C}(\mathsf J,\mathsf A)\)">\(\operatorname{Rex}_{\mathsf C}(\mathsf J,\mathsf A)\)</span> for additive functors satisfying (1.1), again with all natural transformations.</p>
+<p>Both are full additive subcategories of their respective functor categories. Natural transformations have pointwise abelian-group addition; the zero functor and pointwise finite biproducts preserve the stated right exact rows, since finite biproducts of exact rows in an abelian category are exact.</p>
+<p><strong>Theorem 1.1.</strong> If <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> is generating, restriction is an equivalence</p>
+<span class="math math-display" data-tex="\[
+j^*: \operatorname{Rex}(\mathsf C,\mathsf A)
+\xrightarrow{\ \sim\ }
+\operatorname{Rex}_{\mathsf C}(\mathsf J,\mathsf A).
+\tag{1.2}
+\]">\[
+j^*: \operatorname{Rex}(\mathsf C,\mathsf A)
+\xrightarrow{\ \sim\ }
+\operatorname{Rex}_{\mathsf C}(\mathsf J,\mathsf A).
+\tag{1.2}
+\]</span>
+<p>For each <span class="math" data-tex="\(F\)">\(F\)</span> in the target, its extension <span class="math" data-tex="\(E_F\)">\(E_F\)</span> can be computed from any ambient presentation</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P_1\xrightarrow{u}P_0\xrightarrow{p}X\longrightarrow0,
+\\P_1,P_0\in\mathsf J.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+P_1\xrightarrow{u}P_0\xrightarrow{p}X\longrightarrow0,
+\\P_1,P_0\in\mathsf J.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>by the naturally specified isomorphism</p>
+<span class="math math-display" data-tex="\[
+E_F(X)\simeq\operatorname{coker}F(u).
+\tag{1.4}
+\]">\[
+E_F(X)\simeq\operatorname{coker}F(u).
+\tag{1.4}
+\]</span>
+<p>The proof occupies Sections 2–5. In particular it constructs the maps in (1.4), proves independence of presentations, and includes the full functor-category assertion.</p>
+<p>An additive functor between abelian categories is right exact precisely when it preserves cokernels. Indeed it already preserves finite biproducts and zero objects, and a coequalizer of <span class="math" data-tex="\(a,b\)">\(a,b\)</span> is the cokernel of <span class="math" data-tex="\(a-b\)">\(a-b\)</span>. Finite colimits are built from finite coproducts and coequalizers. This is the additive cokernel interface of <a href="https://stacks.math.columbia.edu/tag/010N">Stacks, Lemma 12.7.2</a>.</p>
+<p>We will use that a pullback of an epimorphism in an abelian category is an epimorphism, as in <a href="https://stacks.math.columbia.edu/tag/05PK">Stacks, Lemma 12.5.14</a>. Here is a direct check of the part needed. For <span class="math" data-tex="\(r: R\twoheadrightarrow X\)">\(r: R\twoheadrightarrow X\)</span> and <span class="math" data-tex="\(a: J\to X\)">\(a: J\to X\)</span>, the pullback <span class="math" data-tex="\(P\)">\(P\)</span> is the kernel of <span class="math" data-tex="\((r,-a): R\oplus J\to X\)">\((r,-a): R\oplus J\to X\)</span>, and this last map is epi. If <span class="math" data-tex="\(c: J\to W\)">\(c: J\to W\)</span> kills <span class="math" data-tex="\(P\to J\)">\(P\to J\)</span>, then <span class="math" data-tex="\((0,c): R\oplus J\to W\)">\((0,c): R\oplus J\to W\)</span> vanishes on that kernel and descends to <span class="math" data-tex="\(d: X\to W\)">\(d: X\to W\)</span>. Since <span class="math" data-tex="\(dr=0\)">\(dr=0\)</span>, the epimorphism <span class="math" data-tex="\(r\)">\(r\)</span> gives <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, hence <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. Thus <span class="math" data-tex="\(P\to J\)">\(P\to J\)</span> has zero cokernel and is epi.</p>
+<h2 id="2-lift-relations-after-an-epimorphic-cover">2. Lift relations after an epimorphic cover</h2>
+<p>Fix <span class="math" data-tex="\(F\in\operatorname{Rex}_{\mathsf C}(\mathsf J,\mathsf A)\)">\(F\in\operatorname{Rex}_{\mathsf C}(\mathsf J,\mathsf A)\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> If <span class="math" data-tex="\(e: T\twoheadrightarrow J\)">\(e: T\twoheadrightarrow J\)</span> is an ambient epimorphism with <span class="math" data-tex="\(T,J\in\mathsf J\)">\(T,J\in\mathsf J\)</span>, then <span class="math" data-tex="\(F(e)\)">\(F(e)\)</span> is an epimorphism.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(K\in\mathsf J\)">\(K\in\mathsf J\)</span> epimorphic onto <span class="math" data-tex="\(\ker e\)">\(\ker e\)</span>. The resulting ambient row <span class="math" data-tex="\(K\to T\to J\to0\)">\(K\to T\to J\to0\)</span> is exact. Condition (1.1) says its image is exact, so <span class="math" data-tex="\(F(e)\)">\(F(e)\)</span> is epi. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For each <span class="math" data-tex="\(X\)">\(X\)</span>, choose <span class="math" data-tex="\(P_0\in\mathsf J\)">\(P_0\in\mathsf J\)</span> epimorphic onto <span class="math" data-tex="\(X\)">\(X\)</span>, then <span class="math" data-tex="\(P_1\in\mathsf J\)">\(P_1\in\mathsf J\)</span> epimorphic onto <span class="math" data-tex="\(\ker(P_0\to X)\)">\(\ker(P_0\to X)\)</span>. This gives (1.3). Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_X=\operatorname{coker}F(u),
+\\q_X: F(P_0)\twoheadrightarrow E_X.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+E_X=\operatorname{coker}F(u),
+\\q_X: F(P_0)\twoheadrightarrow E_X.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p><strong>Lemma 2.2.</strong> If <span class="math" data-tex="\(h: J\to P_0\)">\(h: J\to P_0\)</span>, with <span class="math" data-tex="\(J\in\mathsf J\)">\(J\in\mathsf J\)</span>, satisfies <span class="math" data-tex="\(ph=0\)">\(ph=0\)</span>, then <span class="math" data-tex="\(q_XF(h)=0\)">\(q_XF(h)=0\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(N=\ker p=\operatorname{im}u\)">\(N=\ker p=\operatorname{im}u\)</span>. The map <span class="math" data-tex="\(P_1\to N\)">\(P_1\to N\)</span> is epi, and <span class="math" data-tex="\(h\)">\(h\)</span> factors through <span class="math" data-tex="\(N\)">\(N\)</span>. Pulling back gives <span class="math" data-tex="\(J\times_NP_1\twoheadrightarrow J\)">\(J\times_NP_1\twoheadrightarrow J\)</span>. Cover this pullback by <span class="math" data-tex="\(T\in\mathsf J\)">\(T\in\mathsf J\)</span>. The resulting maps <span class="math" data-tex="\(e: T\twoheadrightarrow J\)">\(e: T\twoheadrightarrow J\)</span>, <span class="math" data-tex="\(b: T\to P_1\)">\(b: T\to P_1\)</span> satisfy <span class="math" data-tex="\(he=ub\)">\(he=ub\)</span>. All their endpoints lie in the full subcategory <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+q_XF(h)F(e)=q_XF(u)F(b)=0.
+\]">\[
+q_XF(h)F(e)=q_XF(u)F(b)=0.
+\]</span>
+<p>Cancel the epimorphism <span class="math" data-tex="\(F(e)\)">\(F(e)\)</span> from Lemma 2.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Now let <span class="math" data-tex="\(a: J\to X\)">\(a: J\to X\)</span> with <span class="math" data-tex="\(J\in\mathsf J\)">\(J\in\mathsf J\)</span>. Cover the pullback <span class="math" data-tex="\(J\times_XP_0\)">\(J\times_XP_0\)</span> by <span class="math" data-tex="\(R\in\mathsf J\)">\(R\in\mathsf J\)</span>. Its maps give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r: R\twoheadrightarrow J,\qquad s: R\to P_0,\\
+ps=ar.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+r: R\twoheadrightarrow J,\qquad s: R\to P_0,\\
+ps=ar.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>Cover <span class="math" data-tex="\(\ker r\)">\(\ker r\)</span> by <span class="math" data-tex="\(K\in\mathsf J\)">\(K\in\mathsf J\)</span>, and write <span class="math" data-tex="\(k: K\to R\)">\(k: K\to R\)</span> for the composite. Since <span class="math" data-tex="\(psk=ark=0\)">\(psk=ark=0\)</span>, Lemma 2.2 gives <span class="math" data-tex="\(q_XF(s)F(k)=0\)">\(q_XF(s)F(k)=0\)</span>. The image of the exact ambient row <span class="math" data-tex="\(K\to R\to J\to0\)">\(K\to R\to J\to0\)</span> is exact. There is consequently a unique map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a^+: F(J)\longrightarrow E_X,
+\\a^+F(r)=q_XF(s).
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+a^+: F(J)\longrightarrow E_X,
+\\a^+F(r)=q_XF(s).
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p><strong>Lemma 2.3.</strong> The map <span class="math" data-tex="\(a^+\)">\(a^+\)</span> is independent of the cover and lift in (2.2). Moreover, for <span class="math" data-tex="\(h: J&#x27;\to J\)">\(h: J&#x27;\to J\)</span> in <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> and <span class="math" data-tex="\(a,b: J\to X\)">\(a,b: J\to X\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a^+F(h)=(ah)^+,\\
+(a+b)^+=a^++b^+,\\
+0^+=0,\qquad p^+=q_X.
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+a^+F(h)=(ah)^+,\\
+(a+b)^+=a^++b^+,\\
+0^+=0,\qquad p^+=q_X.
+\end{gathered}
+\tag{2.4}
+\]</span>
+<p><strong>Proof.</strong> For a second pair <span class="math" data-tex="\(r&#x27;: R&#x27;\twoheadrightarrow J,s&#x27;: R&#x27;\to P_0\)">\(r&#x27;: R&#x27;\twoheadrightarrow J,s&#x27;: R&#x27;\to P_0\)</span>, cover <span class="math" data-tex="\(R\times_JR&#x27;\)">\(R\times_JR&#x27;\)</span> by <span class="math" data-tex="\(T\in\mathsf J\)">\(T\in\mathsf J\)</span>. Write <span class="math" data-tex="\(t: T\to R,t&#x27;: T\to R&#x27;\)">\(t: T\to R,t&#x27;: T\to R&#x27;\)</span>. The common map <span class="math" data-tex="\(e=rt=r&#x27;t&#x27;: T\to J\)">\(e=rt=r&#x27;t&#x27;: T\to J\)</span> is epi. We have</p>
+<span class="math math-display" data-tex="\[
+p(st-s&#x27;t&#x27;)=ae-ae=0.
+\]">\[
+p(st-s&#x27;t&#x27;)=ae-ae=0.
+\]</span>
+<p>Lemma 2.2 kills <span class="math" data-tex="\(q_XF(st-s&#x27;t&#x27;)\)">\(q_XF(st-s&#x27;t&#x27;)\)</span>. Both proposed maps in (2.3), after precomposition by <span class="math" data-tex="\(F(e)\)">\(F(e)\)</span>, therefore agree. Lemma 2.1 allows cancellation.</p>
+<p>For input naturality, cover <span class="math" data-tex="\(R\times_JJ&#x27;\)">\(R\times_JJ&#x27;\)</span> by <span class="math" data-tex="\(T\in\mathsf J\)">\(T\in\mathsf J\)</span>, with maps <span class="math" data-tex="\(t: T\to R,e: T\twoheadrightarrow J&#x27;\)">\(t: T\to R,e: T\twoheadrightarrow J&#x27;\)</span>. Then <span class="math" data-tex="\(rt=he\)">\(rt=he\)</span>, so <span class="math" data-tex="\((e,st)\)">\((e,st)\)</span> lifts <span class="math" data-tex="\(ah\)">\(ah\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+a^+F(h)F(e)=q_XF(st)=(ah)^+F(e).
+\]">\[
+a^+F(h)F(e)=q_XF(st)=(ah)^+F(e).
+\]</span>
+<p>Cancel <span class="math" data-tex="\(F(e)\)">\(F(e)\)</span>. For addition, take a common cover for lifts of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>. The sum of the two maps into <span class="math" data-tex="\(P_0\)">\(P_0\)</span> lifts <span class="math" data-tex="\(a+b\)">\(a+b\)</span>, and additivity of <span class="math" data-tex="\(F\)">\(F\)</span>, followed by cancellation of the common <span class="math" data-tex="\(F(e)\)">\(F(e)\)</span>, gives the sum identity. The zero lift gives <span class="math" data-tex="\(0^+=0\)">\(0^+=0\)</span>. Finally, for <span class="math" data-tex="\(a=p\)">\(a=p\)</span>, take <span class="math" data-tex="\(R=P_0,r=1,s=1\)">\(R=P_0,r=1,s=1\)</span>; (2.3) gives <span class="math" data-tex="\(p^+=q_X\)">\(p^+=q_X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-universal-cocone-defines-the-extension">3. The universal cocone defines the extension</h2>
+<p>Let <span class="math" data-tex="\(\mathsf J/X\)">\(\mathsf J/X\)</span> have objects <span class="math" data-tex="\(a: J\to X\)">\(a: J\to X\)</span>, and arrows <span class="math" data-tex="\(h: (J&#x27;,a&#x27;)\to(J,a)\)">\(h: (J&#x27;,a&#x27;)\to(J,a)\)</span> satisfying <span class="math" data-tex="\(ah=a&#x27;\)">\(ah=a&#x27;\)</span>. Lemma 2.3 makes the maps <span class="math" data-tex="\(a^+\)">\(a^+\)</span> a cocone on the diagram <span class="math" data-tex="\((J,a)\mapsto F(J)\)">\((J,a)\mapsto F(J)\)</span>.</p>
+<p><strong>Proposition 3.1.</strong> This cocone is universal. Write <span class="math" data-tex="\(\operatorname{Coc}_F(X,W)\)">\(\operatorname{Coc}_F(X,W)\)</span> for compatible families <span class="math" data-tex="\(\phi_a: F(J)\to W\)">\(\phi_a: F(J)\to W\)</span> on the diagram just defined. For every <span class="math" data-tex="\(W\in\mathsf A\)">\(W\in\mathsf A\)</span>, composition gives a bijection</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathsf A}(E_X,W)
+\ \simeq\ \operatorname{Coc}_F(X,W).
+\tag{3.1}
+\]">\[
+\operatorname{Hom}_{\mathsf A}(E_X,W)
+\ \simeq\ \operatorname{Coc}_F(X,W).
+\tag{3.1}
+\]</span>
+<p><strong>Proof.</strong> In any compatible family, the component for a zero map <span class="math" data-tex="\(J\to X\)">\(J\to X\)</span> is zero: it factors through the component at <span class="math" data-tex="\(0\to X\)">\(0\to X\)</span>, by the comma arrow <span class="math" data-tex="\(J\to0\)">\(J\to0\)</span>, and <span class="math" data-tex="\(F(0)\)">\(F(0)\)</span> is a zero object. In particular compatibility for <span class="math" data-tex="\(u: (P_1,pu)\to(P_0,p)\)">\(u: (P_1,pu)\to(P_0,p)\)</span> gives <span class="math" data-tex="\(\phi_pF(u)=0\)">\(\phi_pF(u)=0\)</span>. There is a unique <span class="math" data-tex="\(\lambda: E_X\to W\)">\(\lambda: E_X\to W\)</span> with <span class="math" data-tex="\(\lambda q_X=\phi_p\)">\(\lambda q_X=\phi_p\)</span>.</p>
+<p>For an arbitrary <span class="math" data-tex="\(a: J\to X\)">\(a: J\to X\)</span>, choose (2.2). Compatibility gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\phi_aF(r)=\phi_{ar}=\phi_{ps}=\phi_pF(s),\\
+\lambda a^+F(r)=\lambda q_XF(s)=\phi_pF(s).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\phi_aF(r)=\phi_{ar}=\phi_{ps}=\phi_pF(s),\\
+\lambda a^+F(r)=\lambda q_XF(s)=\phi_pF(s).
+\end{gathered}
+\]</span>
+<p>Cancel <span class="math" data-tex="\(F(r)\)">\(F(r)\)</span> to obtain <span class="math" data-tex="\(\lambda a^+=\phi_a\)">\(\lambda a^+=\phi_a\)</span>. Uniqueness follows already from <span class="math" data-tex="\(p^+=q_X\)">\(p^+=q_X\)</span>, which is epi. Conversely a map out of <span class="math" data-tex="\(E_X\)">\(E_X\)</span> gives a compatible family by (2.4). These constructions are inverse. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves existence of this particular cocone even when <span class="math" data-tex="\(\mathsf J/X\)">\(\mathsf J/X\)</span> is large. Only a cokernel and finitely many covers were used to construct <span class="math" data-tex="\(E_X\)">\(E_X\)</span>; no general large-colimit hypothesis on <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> has been invoked.</p>
+<p>For <span class="math" data-tex="\(f: X\to Y\)">\(f: X\to Y\)</span>, the family <span class="math" data-tex="\((fa)^+: F(J)\to E_Y\)">\((fa)^+: F(J)\to E_Y\)</span> is compatible. Proposition 3.1 defines a unique map <span class="math" data-tex="\(E(f): E_X\to E_Y\)">\(E(f): E_X\to E_Y\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+E(f)a^+=(fa)^+.
+\tag{3.2}
+\]">\[
+E(f)a^+=(fa)^+.
+\tag{3.2}
+\]</span>
+<p>Testing on every <span class="math" data-tex="\(a^+\)">\(a^+\)</span> gives <span class="math" data-tex="\(E(1)=1\)">\(E(1)=1\)</span> and <span class="math" data-tex="\(E(gf)=E(g)E(f)\)">\(E(gf)=E(g)E(f)\)</span>. The addition identity in Lemma 2.3 gives <span class="math" data-tex="\(E(f+g)=E(f)+E(g)\)">\(E(f+g)=E(f)+E(g)\)</span> and <span class="math" data-tex="\(E(0)=0\)">\(E(0)=0\)</span>, so <span class="math" data-tex="\(E\)">\(E\)</span> is additive. In particular <span class="math" data-tex="\(E(0)\)">\(E(0)\)</span> is a zero object, since its identity is the image of the zero identity of <span class="math" data-tex="\(0\in\mathsf C\)">\(0\in\mathsf C\)</span>.</p>
+<p>When <span class="math" data-tex="\(J\in\mathsf J\)">\(J\in\mathsf J\)</span>, the object <span class="math" data-tex="\((J,1_J)\)">\((J,1_J)\)</span> is terminal in <span class="math" data-tex="\(\mathsf J/J\)">\(\mathsf J/J\)</span>. The cocone <span class="math" data-tex="\(a\mapsto F(a)\)">\(a\mapsto F(a)\)</span> with vertex <span class="math" data-tex="\(F(J)\)">\(F(J)\)</span> is therefore universal. Proposition 3.1 identifies <span class="math" data-tex="\(E(J)\)">\(E(J)\)</span> with <span class="math" data-tex="\(F(J)\)">\(F(J)\)</span>, naturally in <span class="math" data-tex="\(J\)">\(J\)</span>, and under this identification <span class="math" data-tex="\(a^+\)">\(a^+\)</span> for a map within <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> is <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span>.</p>
+<p>A different presentation of <span class="math" data-tex="\(X\)">\(X\)</span> produces a second universal cocone. There is a unique isomorphism between their vertices taking every <span class="math" data-tex="\(a^+\)">\(a^+\)</span> to its counterpart. Formula (3.2) shows that these isomorphisms are natural in <span class="math" data-tex="\(X\)">\(X\)</span>. This establishes the presentation independence claimed in (1.4).</p>
+<h2 id="4-prove-right-exactness-by-descending-a-cokernel-map">4. Prove right exactness by descending a cokernel map</h2>
+<p>Consider an ambient exact row</p>
+<span class="math math-display" data-tex="\[
+X\xrightarrow{f}Y\xrightarrow{g}Z\longrightarrow0.
+\tag{4.1}
+\]">\[
+X\xrightarrow{f}Y\xrightarrow{g}Z\longrightarrow0.
+\tag{4.1}
+\]</span>
+<p>Additivity gives <span class="math" data-tex="\(E(g)E(f)=0\)">\(E(g)E(f)=0\)</span>. We prove the actual cokernel universal property. Let <span class="math" data-tex="\(\lambda: E_Y\to W\)">\(\lambda: E_Y\to W\)</span> satisfy <span class="math" data-tex="\(\lambda E(f)=0\)">\(\lambda E(f)=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(a: J\to Z\)">\(a: J\to Z\)</span>, cover <span class="math" data-tex="\(J\times_ZY\)">\(J\times_ZY\)</span> by <span class="math" data-tex="\(R\in\mathsf J\)">\(R\in\mathsf J\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r: R\twoheadrightarrow J,\qquad b: R\to Y,\\
+gb=ar.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+r: R\twoheadrightarrow J,\qquad b: R\to Y,\\
+gb=ar.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>Choose <span class="math" data-tex="\(k: K\to R\)">\(k: K\to R\)</span>, with <span class="math" data-tex="\(K\in\mathsf J\)">\(K\in\mathsf J\)</span>, epimorphic onto <span class="math" data-tex="\(\ker r\)">\(\ker r\)</span>. The map <span class="math" data-tex="\(bk\)">\(bk\)</span> lands in <span class="math" data-tex="\(\ker g=\operatorname{im}f\)">\(\ker g=\operatorname{im}f\)</span>. Pull back the epimorphism <span class="math" data-tex="\(X\to\operatorname{im}f\)">\(X\to\operatorname{im}f\)</span> along this map and cover the pullback by <span class="math" data-tex="\(T\in\mathsf J\)">\(T\in\mathsf J\)</span>. We obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e: T\twoheadrightarrow K,\qquad c: T\to X,\\
+fc=bke.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+e: T\twoheadrightarrow K,\qquad c: T\to X,\\
+fc=bke.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>Using (2.4) and (3.2),</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\lambda b^+F(k)F(e)
+&amp;=\lambda(bke)^+\\
+&amp;=\lambda(fc)^+\\
+&amp;=\lambda E(f)c^+=0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\lambda b^+F(k)F(e)
+&amp;=\lambda(bke)^+\\
+&amp;=\lambda(fc)^+\\
+&amp;=\lambda E(f)c^+=0.
+\end{aligned}
+\]</span>
+<p>Lemma 2.1 gives <span class="math" data-tex="\(\lambda b^+F(k)=0\)">\(\lambda b^+F(k)=0\)</span>. Exactness of <span class="math" data-tex="\(F(K)\to F(R)\to F(J)\to0\)">\(F(K)\to F(R)\to F(J)\to0\)</span> now produces a unique map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\phi_a: F(J)\to W,\\
+\phi_aF(r)=\lambda b^+.
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+\phi_a: F(J)\to W,\\
+\phi_aF(r)=\lambda b^+.
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>We check both choices and compatibility. For two lifts in (4.2), cover their fibre product over <span class="math" data-tex="\(J\)">\(J\)</span> by <span class="math" data-tex="\(T_0\in\mathsf J\)">\(T_0\in\mathsf J\)</span>, with maps <span class="math" data-tex="\(t,t&#x27;\)">\(t,t&#x27;\)</span> and a common epimorphism to <span class="math" data-tex="\(J\)">\(J\)</span>. The difference <span class="math" data-tex="\(bt-b&#x27;t&#x27;\)">\(bt-b&#x27;t&#x27;\)</span> lands in <span class="math" data-tex="\(\ker g=\operatorname{im}f\)">\(\ker g=\operatorname{im}f\)</span>. After one further cover <span class="math" data-tex="\(e: T_1\twoheadrightarrow T_0\)">\(e: T_1\twoheadrightarrow T_0\)</span>, it has the form <span class="math" data-tex="\(fc\)">\(fc\)</span> for <span class="math" data-tex="\(c: T_1\to X\)">\(c: T_1\to X\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\lambda(bt-b&#x27;t&#x27;)^+F(e)=\lambda E(f)c^+=0.
+\]">\[
+\lambda(bt-b&#x27;t&#x27;)^+F(e)=\lambda E(f)c^+=0.
+\]</span>
+<p>Cancel <span class="math" data-tex="\(F(e)\)">\(F(e)\)</span>, use additivity in (2.4), and then cancel the image under <span class="math" data-tex="\(F\)">\(F\)</span> of the common cover of <span class="math" data-tex="\(J\)">\(J\)</span>. The two values of <span class="math" data-tex="\(\phi_a\)">\(\phi_a\)</span> agree.</p>
+<p>For <span class="math" data-tex="\(h: J&#x27;\to J\)">\(h: J&#x27;\to J\)</span>, cover <span class="math" data-tex="\(R\times_JJ&#x27;\)">\(R\times_JJ&#x27;\)</span> by <span class="math" data-tex="\(T\in\mathsf J\)">\(T\in\mathsf J\)</span>, with <span class="math" data-tex="\(t: T\to R,e: T\twoheadrightarrow J&#x27;\)">\(t: T\to R,e: T\twoheadrightarrow J&#x27;\)</span> and <span class="math" data-tex="\(rt=he\)">\(rt=he\)</span>. The pair <span class="math" data-tex="\((e,bt)\)">\((e,bt)\)</span> lifts <span class="math" data-tex="\(ah\)">\(ah\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\phi_{ah}F(e)
+&amp;=\lambda(bt)^+\\
+&amp;=\lambda b^+F(t)\\
+&amp;=\phi_aF(h)F(e).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\phi_{ah}F(e)
+&amp;=\lambda(bt)^+\\
+&amp;=\lambda b^+F(t)\\
+&amp;=\phi_aF(h)F(e).
+\end{aligned}
+\]</span>
+<p>Cancellation proves <span class="math" data-tex="\(\phi_{ah}=\phi_aF(h)\)">\(\phi_{ah}=\phi_aF(h)\)</span>. Hence (4.4) is a compatible family, and Proposition 3.1 supplies a unique <span class="math" data-tex="\(\mu: E_Z\to W\)">\(\mu: E_Z\to W\)</span> with <span class="math" data-tex="\(\mu a^+=\phi_a\)">\(\mu a^+=\phi_a\)</span>.</p>
+<p>For <span class="math" data-tex="\(b_0: J\to Y\)">\(b_0: J\to Y\)</span>, an allowed lift of <span class="math" data-tex="\(gb_0\)">\(gb_0\)</span> uses <span class="math" data-tex="\(r=1_J,b=b_0\)">\(r=1_J,b=b_0\)</span>. Independence gives <span class="math" data-tex="\(\phi_{gb_0}=\lambda b_0^+\)">\(\phi_{gb_0}=\lambda b_0^+\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\mu E(g)b_0^+=\mu(gb_0)^+=\lambda b_0^+.
+\]">\[
+\mu E(g)b_0^+=\mu(gb_0)^+=\lambda b_0^+.
+\]</span>
+<p>Taking <span class="math" data-tex="\(b_0=p_Y\)">\(b_0=p_Y\)</span> and cancelling the epi <span class="math" data-tex="\(q_Y\)">\(q_Y\)</span> proves <span class="math" data-tex="\(\mu E(g)=\lambda\)">\(\mu E(g)=\lambda\)</span>.</p>
+<p>If <span class="math" data-tex="\(\mu&#x27;\)">\(\mu&#x27;\)</span> is another map with that property, (4.2) yields</p>
+<span class="math math-display" data-tex="\[
+\mu&#x27;a^+F(r)=\mu&#x27;E(g)b^+=\lambda b^+=\phi_aF(r).
+\]">\[
+\mu&#x27;a^+F(r)=\mu&#x27;E(g)b^+=\lambda b^+=\phi_aF(r).
+\]</span>
+<p>Cancel <span class="math" data-tex="\(F(r)\)">\(F(r)\)</span>; then Proposition 3.1 gives <span class="math" data-tex="\(\mu&#x27;=\mu\)">\(\mu&#x27;=\mu\)</span>. Thus <span class="math" data-tex="\(E(g)\)">\(E(g)\)</span> is the cokernel of <span class="math" data-tex="\(E(f)\)">\(E(f)\)</span>. The additive cokernel criterion in Section 1 proves that <span class="math" data-tex="\(E\)">\(E\)</span> is right exact.</p>
+<p>There is also a simultaneous presentation diagram for (4.1). We spell out its existence, since lifting a preselected generator directly through <span class="math" data-tex="\(Y\twoheadrightarrow Z\)">\(Y\twoheadrightarrow Z\)</span> would require an extra hypothesis. Choose epimorphisms <span class="math" data-tex="\(p_1: P\twoheadrightarrow X\)">\(p_1: P\twoheadrightarrow X\)</span>, <span class="math" data-tex="\(q: Q\twoheadrightarrow Y\)">\(q: Q\twoheadrightarrow Y\)</span>, with <span class="math" data-tex="\(P,Q\in\mathsf J\)">\(P,Q\in\mathsf J\)</span>. The split row</p>
+<span class="math math-display" data-tex="\[
+P\longrightarrow P\oplus Q\longrightarrow Q\longrightarrow0
+\tag{4.5}
+\]">\[
+P\longrightarrow P\oplus Q\longrightarrow Q\longrightarrow0
+\tag{4.5}
+\]</span>
+<p>maps to (4.1) by <span class="math" data-tex="\(p_1,p_2=(fp_1,q),p_3=gq\)">\(p_1,p_2=(fp_1,q),p_3=gq\)</span>. All three vertical maps are epi. Put <span class="math" data-tex="\(N_i=\ker p_i\)">\(N_i=\ker p_i\)</span>. The projection induces an epimorphism <span class="math" data-tex="\(N_2\to N_3\)">\(N_2\to N_3\)</span>: pull back <span class="math" data-tex="\(X\twoheadrightarrow\operatorname{im}f\)">\(X\twoheadrightarrow\operatorname{im}f\)</span> along <span class="math" data-tex="\(q|_{N_3}: N_3\to\ker g=\operatorname{im}f\)">\(q|_{N_3}: N_3\to\ker g=\operatorname{im}f\)</span>, then pull back <span class="math" data-tex="\(P\twoheadrightarrow X\)">\(P\twoheadrightarrow X\)</span>. The resulting object maps epimorphically to <span class="math" data-tex="\(N_3\)">\(N_3\)</span>, and its map into <span class="math" data-tex="\(P\oplus Q\)">\(P\oplus Q\)</span>, with the negative of its <span class="math" data-tex="\(P\)">\(P\)</span>-component, lands in <span class="math" data-tex="\(N_2\)">\(N_2\)</span>. Thus the projection from <span class="math" data-tex="\(N_2\)">\(N_2\)</span> is epi.</p>
+<p>Choose <span class="math" data-tex="\(P&#x27;\in\mathsf J\)">\(P&#x27;\in\mathsf J\)</span> epimorphic onto <span class="math" data-tex="\(N_1\)">\(N_1\)</span>, and <span class="math" data-tex="\(Q&#x27;\in\mathsf J\)">\(Q&#x27;\in\mathsf J\)</span> epimorphic onto <span class="math" data-tex="\(N_2\)">\(N_2\)</span>. The composite <span class="math" data-tex="\(Q&#x27;\to N_3\)">\(Q&#x27;\to N_3\)</span> is epi. Use the split row</p>
+<span class="math math-display" data-tex="\[
+P&#x27;\longrightarrow P&#x27;\oplus Q&#x27;\longrightarrow Q&#x27;\longrightarrow0.
+\tag{4.6}
+\]">\[
+P&#x27;\longrightarrow P&#x27;\oplus Q&#x27;\longrightarrow Q&#x27;\longrightarrow0.
+\tag{4.6}
+\]</span>
+<p>Its vertical maps to (4.5) are <span class="math" data-tex="\(P&#x27;\to N_1\to P\)">\(P&#x27;\to N_1\to P\)</span>, the sum of <span class="math" data-tex="\(P&#x27;\to N_1\to N_2\)">\(P&#x27;\to N_1\to N_2\)</span> and <span class="math" data-tex="\(Q&#x27;\to N_2\)">\(Q&#x27;\to N_2\)</span> followed by <span class="math" data-tex="\(N_2\to P\oplus Q\)">\(N_2\to P\oplus Q\)</span>, and <span class="math" data-tex="\(Q&#x27;\to N_2\to N_3\to Q\)">\(Q&#x27;\to N_2\to N_3\to Q\)</span>. The left and right squares commute by the biproduct identities. Their images are exactly <span class="math" data-tex="\(N_1,N_2,N_3\)">\(N_1,N_2,N_3\)</span>, respectively. Hence all three columns, completed by <span class="math" data-tex="\(X,Y,Z\)">\(X,Y,Z\)</span> and a terminal zero, are right exact presentations with both upper rows split exact and all six upper terms in <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>. This establishes the simultaneous diagram without assuming projectivity of any generator.</p>
+<h2 id="5-include-every-natural-transformation">5. Include every natural transformation</h2>
+<p>Write <span class="math" data-tex="\(a_F^+\)">\(a_F^+\)</span> when the functor needs to be specified. If <span class="math" data-tex="\(\tau: F\to H\)">\(\tau: F\to H\)</span> is a natural transformation on <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>, the family</p>
+<span class="math math-display" data-tex="\[
+a_H^+\tau_J: F(J)\longrightarrow E_H(X)
+\tag{5.1}
+\]">\[
+a_H^+\tau_J: F(J)\longrightarrow E_H(X)
+\tag{5.1}
+\]</span>
+<p>is compatible: for <span class="math" data-tex="\(h: J&#x27;\to J\)">\(h: J&#x27;\to J\)</span>, naturality of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and (2.4) give</p>
+<span class="math math-display" data-tex="\[
+a_H^+\tau_JF(h)=(ah)_H^+\tau_{J&#x27;}.
+\]">\[
+a_H^+\tau_JF(h)=(ah)_H^+\tau_{J&#x27;}.
+\]</span>
+<p>Proposition 3.1 defines a unique <span class="math" data-tex="\(E(\tau)_X: E_F(X)\to E_H(X)\)">\(E(\tau)_X: E_F(X)\to E_H(X)\)</span> with those composites. Equation (3.2), tested on every <span class="math" data-tex="\(a_F^+\)">\(a_F^+\)</span>, proves naturality in <span class="math" data-tex="\(X\)">\(X\)</span>. The same test proves preservation of identities, composition and addition of natural transformations. We have constructed an additive extension functor</p>
+<span class="math math-display" data-tex="\[
+E: \operatorname{Rex}_{\mathsf C}(\mathsf J,\mathsf A)
+\longrightarrow\operatorname{Rex}(\mathsf C,\mathsf A).
+\tag{5.2}
+\]">\[
+E: \operatorname{Rex}_{\mathsf C}(\mathsf J,\mathsf A)
+\longrightarrow\operatorname{Rex}(\mathsf C,\mathsf A).
+\tag{5.2}
+\]</span>
+<p>The terminal-object identification in Section 3 gives <span class="math" data-tex="\(j^*E(F)\simeq F\)">\(j^*E(F)\simeq F\)</span>, naturally in <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Conversely let <span class="math" data-tex="\(G: \mathsf C\to\mathsf A\)">\(G: \mathsf C\to\mathsf A\)</span> be additive and right exact, and put <span class="math" data-tex="\(F=j^*G\)">\(F=j^*G\)</span>. Applying <span class="math" data-tex="\(G\)">\(G\)</span> to (1.3) gives a specified isomorphism <span class="math" data-tex="\(E_F(X)\simeq G(X)\)">\(E_F(X)\simeq G(X)\)</span>. It takes <span class="math" data-tex="\(q_X\)">\(q_X\)</span> to <span class="math" data-tex="\(G(p)\)">\(G(p)\)</span>. For a lift (2.2), both its composite with <span class="math" data-tex="\(a_F^+\)">\(a_F^+\)</span> and <span class="math" data-tex="\(G(a)\)">\(G(a)\)</span>, after precomposition by <span class="math" data-tex="\(G(r)=F(r)\)">\(G(r)=F(r)\)</span>, equal <span class="math" data-tex="\(G(p)G(s)\)">\(G(p)G(s)\)</span>. Cancel the epimorphism <span class="math" data-tex="\(F(r)\)">\(F(r)\)</span>. Thus the isomorphism takes every cocone map <span class="math" data-tex="\(a_F^+\)">\(a_F^+\)</span> to <span class="math" data-tex="\(G(a)\)">\(G(a)\)</span>. Equation (3.2) proves naturality in <span class="math" data-tex="\(X\)">\(X\)</span>; the same calculation for a transformation <span class="math" data-tex="\(G\to G&#x27;\)">\(G\to G&#x27;\)</span> proves naturality in <span class="math" data-tex="\(G\)">\(G\)</span>. Therefore <span class="math" data-tex="\(Ej^*G\simeq G\)">\(Ej^*G\simeq G\)</span> as functors.</p>
+<p>These two natural isomorphisms prove Theorem 1.1, including full faithfulness on all natural transformations. In particular, once an extension is equipped with a specified identification of its restriction with <span class="math" data-tex="\(F\)">\(F\)</span>, any two such extensions are related by exactly one isomorphism respecting those identifications. An extension without that specified identification may have automorphisms.</p>
+<h2 id="6-cokernel-presentations-form-a-localization">6. Cokernel presentations form a localization</h2>
+<p>There is also a useful fraction description of the construction. Let <span class="math" data-tex="\(\mathsf D=\operatorname{Mor}(\mathsf C)\)">\(\mathsf D=\operatorname{Mor}(\mathsf C)\)</span>. Its objects are arrows <span class="math" data-tex="\(u: Y\to X\)">\(u: Y\to X\)</span>, and a morphism is a commutative square. Kernels and cokernels of squares are computed at their two vertices: the induced map between the two kernels or two cokernels exists by the square identity, and its universal property follows at both vertices. The coimage–image comparison is consequently an isomorphism at both vertices. Thus <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> is abelian.</p>
+<p>Let <span class="math" data-tex="\(K: \mathsf D\to\mathsf C\)">\(K: \mathsf D\to\mathsf C\)</span> send an arrow to its cokernel. Let <span class="math" data-tex="\(\chi_{u,v}\)">\(\chi_{u,v}\)</span> be the map from <span class="math" data-tex="\(\operatorname{Hom}_{\mathsf D}(u,v)\)">\(\operatorname{Hom}_{\mathsf D}(u,v)\)</span> to <span class="math" data-tex="\(\operatorname{Hom}_{\mathsf C}(K(u),K(v))\)">\(\operatorname{Hom}_{\mathsf C}(K(u),K(v))\)</span> induced by taking cokernels. Form <span class="math" data-tex="\(\mathsf D&#x27;\)">\(\mathsf D&#x27;\)</span> with the same objects and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathsf D&#x27;}(u,v)
+=\operatorname{im}\chi_{u,v}.
+\tag{6.1}
+\]">\[
+\operatorname{Hom}_{\mathsf D&#x27;}(u,v)
+=\operatorname{im}\chi_{u,v}.
+\tag{6.1}
+\]</span>
+<p>Composition of representatives induces composition of their cokernel maps, so this is a category. Each image in (6.1) is a subgroup, and composition is bilinear. The arrow <span class="math" data-tex="\(u\oplus v\)">\(u\oplus v\)</span>, with its ordinary injection and projection squares, is a biproduct: maps into or out of it decompose into the two component squares. Hence <span class="math" data-tex="\(\mathsf D&#x27;\)">\(\mathsf D&#x27;\)</span> is additive. The factorization <span class="math" data-tex="\(K: \mathsf D\to\mathsf D&#x27;\xrightarrow{Q}\mathsf C\)">\(K: \mathsf D\to\mathsf D&#x27;\xrightarrow{Q}\mathsf C\)</span> has <span class="math" data-tex="\(Q\)">\(Q\)</span> faithful and additive.</p>
+<p>Put <span class="math" data-tex="\(S=Q^{-1}(\text{isomorphisms})\)">\(S=Q^{-1}(\text{isomorphisms})\)</span>. We use <strong>incoming</strong> fractions, whose denominator points into the source.</p>
+<p><strong>Lemma 6.1.</strong> For <span class="math" data-tex="\(u,v\in\mathsf D\)">\(u,v\in\mathsf D\)</span> and <span class="math" data-tex="\(f: K(u)\to K(v)\)">\(f: K(u)\to K(v)\)</span>, there are <span class="math" data-tex="\(w\in\mathsf D\)">\(w\in\mathsf D\)</span> and squares <span class="math" data-tex="\(\alpha: w\to u,\beta: w\to v\)">\(\alpha: w\to u,\beta: w\to v\)</span> such that <span class="math" data-tex="\(K(\alpha)\)">\(K(\alpha)\)</span> is an isomorphism and <span class="math" data-tex="\(K(\beta)=fK(\alpha)\)">\(K(\beta)=fK(\alpha)\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(u: Y\to X,v: Y&#x27;\to X&#x27;\)">\(u: Y\to X,v: Y&#x27;\to X&#x27;\)</span>, with cokernel projections <span class="math" data-tex="\(p: X\twoheadrightarrow U,c: X&#x27;\twoheadrightarrow V\)">\(p: X\twoheadrightarrow U,c: X&#x27;\twoheadrightarrow V\)</span>. Form</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P=X\times_{V}X&#x27;,
+\\A=Y\times_XP,
+\\Z=A\times_{X&#x27;}Y&#x27;.
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+P=X\times_{V}X&#x27;,
+\\A=Y\times_XP,
+\\Z=A\times_{X&#x27;}Y&#x27;.
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(X\to V\)">\(X\to V\)</span> is <span class="math" data-tex="\(fp\)">\(fp\)</span>; the maps <span class="math" data-tex="\(P\to X,P\to X&#x27;\)">\(P\to X,P\to X&#x27;\)</span> are <span class="math" data-tex="\(a,b\)">\(a,b\)</span>; and <span class="math" data-tex="\(A\to X&#x27;\)">\(A\to X&#x27;\)</span> is its composite through <span class="math" data-tex="\(P\)">\(P\)</span>. The map <span class="math" data-tex="\(a\)">\(a\)</span> is epi by pullback stability, so <span class="math" data-tex="\(pa: P\to U\)">\(pa: P\to U\)</span> is epi.</p>
+<p>The map <span class="math" data-tex="\(Y\to\ker p\)">\(Y\to\ker p\)</span> is epi. Pulling it back identifies the image of <span class="math" data-tex="\(A\to P\)">\(A\to P\)</span> with <span class="math" data-tex="\(\ker(pa)\)">\(\ker(pa)\)</span>. Also <span class="math" data-tex="\(cb\)">\(cb\)</span> vanishes on <span class="math" data-tex="\(A\)">\(A\)</span>, since <span class="math" data-tex="\(cb=fpa\)">\(cb=fpa\)</span>. Thus <span class="math" data-tex="\(A\to X&#x27;\)">\(A\to X&#x27;\)</span> lands in <span class="math" data-tex="\(\ker c=\operatorname{im}v\)">\(\ker c=\operatorname{im}v\)</span>. Pullback stability applied to <span class="math" data-tex="\(Y&#x27;\twoheadrightarrow\operatorname{im}v\)">\(Y&#x27;\twoheadrightarrow\operatorname{im}v\)</span> makes <span class="math" data-tex="\(Z\to A\)">\(Z\to A\)</span> epi. Consequently the image of <span class="math" data-tex="\(w: Z\to P\)">\(w: Z\to P\)</span> is exactly <span class="math" data-tex="\(\ker(pa)\)">\(\ker(pa)\)</span>, and <span class="math" data-tex="\(pa\)">\(pa\)</span> identifies <span class="math" data-tex="\(K(w)\)">\(K(w)\)</span> with <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>The maps <span class="math" data-tex="\(Z\to Y,P\to X\)">\(Z\to Y,P\to X\)</span> give the square <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>; the maps <span class="math" data-tex="\(Z\to Y&#x27;,P\to X&#x27;\)">\(Z\to Y&#x27;,P\to X&#x27;\)</span> give <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. The cokernel map of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is the identification just constructed. The equality <span class="math" data-tex="\(cb=fpa\)">\(cb=fpa\)</span>, followed by cancellation of the cokernel projection of <span class="math" data-tex="\(w\)">\(w\)</span>, gives <span class="math" data-tex="\(K(\beta)=fK(\alpha)\)">\(K(\beta)=fK(\alpha)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 6.2.</strong> The family <span class="math" data-tex="\(S\)">\(S\)</span> admits an incoming calculus of fractions, and the induced functor</p>
+<span class="math math-display" data-tex="\[
+\mathsf D&#x27;[S^{-1}]\xrightarrow{\ \sim\ }\mathsf C
+\tag{6.3}
+\]">\[
+\mathsf D&#x27;[S^{-1}]\xrightarrow{\ \sim\ }\mathsf C
+\tag{6.3}
+\]</span>
+<p>is an equivalence.</p>
+<p><strong>Proof.</strong> Identities, isomorphisms and compositions satisfy the denominator conditions. For <span class="math" data-tex="\(h: u\to v\)">\(h: u\to v\)</span> and <span class="math" data-tex="\(t: v&#x27;\to v\)">\(t: v&#x27;\to v\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span>, apply Lemma 6.1 to <span class="math" data-tex="\(Q(t)^{-1}Q(h): Q(u)\to Q(v&#x27;)\)">\(Q(t)^{-1}Q(h): Q(u)\to Q(v&#x27;)\)</span>. It gives <span class="math" data-tex="\(s: w\to u\)">\(s: w\to u\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(g: w\to v&#x27;\)">\(g: w\to v&#x27;\)</span>. Their images satisfy <span class="math" data-tex="\(Q(tg)=Q(hs)\)">\(Q(tg)=Q(hs)\)</span>; faithfulness gives <span class="math" data-tex="\(tg=hs\)">\(tg=hs\)</span>, the incoming Ore square. If arrows become equal after composition with a denominator, applying <span class="math" data-tex="\(Q\)">\(Q\)</span> and cancelling its invertible image shows the arrows were already equal. This supplies the cancellation axiom.</p>
+<p>A roof <span class="math" data-tex="\(u\xleftarrow{s}w\xrightarrow{g}v\)">\(u\xleftarrow{s}w\xrightarrow{g}v\)</span> maps to <span class="math" data-tex="\(Q(g)Q(s)^{-1}\)">\(Q(g)Q(s)^{-1}\)</span>. Lemma 6.1 makes every map in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> such an image. If two roofs have the same image, the Ore square gives a common refinement of their source denominators. Both refinement maps have invertible <span class="math" data-tex="\(Q\)">\(Q\)</span>-images, hence are in <span class="math" data-tex="\(S\)">\(S\)</span>. On that common source the two numerators have equal <span class="math" data-tex="\(Q\)">\(Q\)</span>-images; faithfulness of <span class="math" data-tex="\(Q\)">\(Q\)</span> makes them equal. Thus the induced Hom map is injective as well as surjective. Every <span class="math" data-tex="\(X\in\mathsf C\)">\(X\in\mathsf C\)</span> is the cokernel of <span class="math" data-tex="\(0\to X\)">\(0\to X\)</span>, giving essential surjectivity. This proves (6.3). The resulting Hom sets have the size of those in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>, even if the roof categories are large. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(\mathsf D_0=\operatorname{Mor}(\mathsf J)\)">\(\mathsf D_0=\operatorname{Mor}(\mathsf J)\)</span>, and let <span class="math" data-tex="\(\mathsf D&#x27;_0\)">\(\mathsf D&#x27;_0\)</span> be the full subcategory of <span class="math" data-tex="\(\mathsf D&#x27;\)">\(\mathsf D&#x27;\)</span> on its objects. Fullness of <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> means that (6.1), for these objects, is already the image of squares in <span class="math" data-tex="\(\mathsf D_0\)">\(\mathsf D_0\)</span>.</p>
+<p>The subcategory <span class="math" data-tex="\(\mathsf D_0\subseteq\mathsf D\)">\(\mathsf D_0\subseteq\mathsf D\)</span> is full and additive: every square between its objects has its four endpoints and hence all its arrows in <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>, and biproducts of its arrows are formed by the biproducts in <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>. The same finite biproducts make <span class="math" data-tex="\(\mathsf D&#x27;_0\)">\(\mathsf D&#x27;_0\)</span> additive.</p>
+<p><strong>Proposition 6.3.</strong> Put <span class="math" data-tex="\(T=S\cap\operatorname{Mor}(\mathsf D&#x27;_0)\)">\(T=S\cap\operatorname{Mor}(\mathsf D&#x27;_0)\)</span>. Then <span class="math" data-tex="\(T\)">\(T\)</span> admits an incoming calculus, and</p>
+<span class="math math-display" data-tex="\[
+\mathsf D&#x27;_0[T^{-1}]\xrightarrow{\ \sim\ }\mathsf C.
+\tag{6.4}
+\]">\[
+\mathsf D&#x27;_0[T^{-1}]\xrightarrow{\ \sim\ }\mathsf C.
+\tag{6.4}
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(u: Y\to X\)">\(u: Y\to X\)</span>, choose <span class="math" data-tex="\(X_0\in\mathsf J\)">\(X_0\in\mathsf J\)</span> epimorphic onto <span class="math" data-tex="\(X\)">\(X\)</span>, and <span class="math" data-tex="\(Y_0\in\mathsf J\)">\(Y_0\in\mathsf J\)</span> epimorphic onto <span class="math" data-tex="\(Y\times_XX_0\)">\(Y\times_XX_0\)</span>. The induced <span class="math" data-tex="\(v: Y_0\to X_0\)">\(v: Y_0\to X_0\)</span> has image equal to the kernel of <span class="math" data-tex="\(X_0\to K(u)\)">\(X_0\to K(u)\)</span>. Hence the square <span class="math" data-tex="\(v\to u\)">\(v\to u\)</span> induces a cokernel isomorphism and belongs to <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>Apply the full-subcategory replacement theorem, Theorem 2.1 of <a href="descent-through-replacement-objects.html#2-localize-a-full-family-of-replacements">Descent through replacement objects</a>, to the opposite categories. The input is the full subcategory <span class="math" data-tex="\((\mathsf D&#x27;_0)^{\mathrm{op}}\subseteq(\mathsf D&#x27;)^{\mathrm{op}}\)">\((\mathsf D&#x27;_0)^{\mathrm{op}}\subseteq(\mathsf D&#x27;)^{\mathrm{op}}\)</span>, the outgoing system <span class="math" data-tex="\(S^{\mathrm{op}}\)">\(S^{\mathrm{op}}\)</span>, and the denominator <span class="math" data-tex="\(u\to v\)">\(u\to v\)</span> just supplied in the opposite category for every <span class="math" data-tex="\(u\)">\(u\)</span>. The theorem gives the outgoing calculus on <span class="math" data-tex="\(T^{\mathrm{op}}\)">\(T^{\mathrm{op}}\)</span> and an equivalence of those localizations. Taking opposites and then using (6.3) gives (6.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(F: \mathsf J\to\mathsf A\)">\(F: \mathsf J\to\mathsf A\)</span> as before, define <span class="math" data-tex="\(F&#x27;(u)=\operatorname{coker}F(u)\)">\(F&#x27;(u)=\operatorname{coker}F(u)\)</span> on <span class="math" data-tex="\(\mathsf D_0\)">\(\mathsf D_0\)</span>, with the induced maps from squares. Right exactness of <span class="math" data-tex="\(E_F\)">\(E_F\)</span> and the identification <span class="math" data-tex="\(E_F|_{\mathsf J}\simeq F\)">\(E_F|_{\mathsf J}\simeq F\)</span> give, naturally in every square,</p>
+<span class="math math-display" data-tex="\[
+F&#x27;(u)\simeq E_F(K(u)).
+\tag{6.5}
+\]">\[
+F&#x27;(u)\simeq E_F(K(u)).
+\tag{6.5}
+\]</span>
+<p>Thus <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> factors through <span class="math" data-tex="\(\mathsf D&#x27;_0\)">\(\mathsf D&#x27;_0\)</span>, sends <span class="math" data-tex="\(T\)">\(T\)</span> to isomorphisms, and descends through (6.4). In particular a square whose cokernel map is zero induces the zero map under <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span>, and one whose cokernel map is invertible induces an isomorphism. This proves the full descent assertion using the independently constructed extension.</p>
+<p>An invertible cokernel comparison is not equivalent to exactness of the shorter cone row. Take <span class="math" data-tex="\(u: 0\to0\)">\(u: 0\to0\)</span>, <span class="math" data-tex="\(v: k\to0\)">\(v: k\to0\)</span>, and the zero square in vector spaces over any field <span class="math" data-tex="\(k\)">\(k\)</span>. Both cokernels are zero, but the proposed row <span class="math" data-tex="\(0\to k\to0\to0\)">\(0\to k\to0\to0\)</span> fails exactness at <span class="math" data-tex="\(k\)">\(k\)</span>. The extension theorem and (6.5) still hold. Exercise 3 computes precisely the additional kernel condition that the shorter cone row tests.</p>
+<h2 id="7-the-three-dual-variants">7. The three dual variants</h2>
+<p>Call <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> <strong>cogenerating</strong> if every <span class="math" data-tex="\(X\in\mathsf C\)">\(X\in\mathsf C\)</span> admits a monomorphism <span class="math" data-tex="\(X\hookrightarrow I\)">\(X\hookrightarrow I\)</span> with <span class="math" data-tex="\(I\in\mathsf J\)">\(I\in\mathsf J\)</span>. Then one can choose an ambient copresentation</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\longrightarrow X\longrightarrow I_0\longrightarrow I_1,
+\\I_0,I_1\in\mathsf J.
+\end{gathered}
+\tag{7.1}
+\]">\[
+\begin{gathered}
+0\longrightarrow X\longrightarrow I_0\longrightarrow I_1,
+\\I_0,I_1\in\mathsf J.
+\end{gathered}
+\tag{7.1}
+\]</span>
+<p>first embed <span class="math" data-tex="\(X\)">\(X\)</span> into <span class="math" data-tex="\(I_0\)">\(I_0\)</span>, then embed its cokernel into <span class="math" data-tex="\(I_1\)">\(I_1\)</span>.</p>
+<p>For contravariant functors we mean functors <span class="math" data-tex="\(\mathsf C^{\mathrm{op}}\to\mathsf A\)">\(\mathsf C^{\mathrm{op}}\to\mathsf A\)</span>, with their ordinary natural transformations. The precise variants of (1.2) are:</p>
+<table>
+<thead>
+<tr>
+<th>Extension type</th>
+<th>Hypothesis on <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span></th>
+<th>Required image of the indicated ambient row with all terms in <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Covariant left exact</td>
+<td>Cogenerating</td>
+<td><span class="math" data-tex="\(0\to J_1\to J_0\to J_{-1}\)">\(0\to J_1\to J_0\to J_{-1}\)</span> goes to <span class="math" data-tex="\(0\to FJ_1\to FJ_0\to FJ_{-1}\)">\(0\to FJ_1\to FJ_0\to FJ_{-1}\)</span></td>
+</tr>
+<tr>
+<td>Contravariant left exact</td>
+<td>Generating</td>
+<td><span class="math" data-tex="\(J_1\to J_0\to J_{-1}\to0\)">\(J_1\to J_0\to J_{-1}\to0\)</span> goes to <span class="math" data-tex="\(0\to FJ_{-1}\to FJ_0\to FJ_1\)">\(0\to FJ_{-1}\to FJ_0\to FJ_1\)</span></td>
+</tr>
+<tr>
+<td>Contravariant right exact</td>
+<td>Cogenerating</td>
+<td><span class="math" data-tex="\(0\to J_1\to J_0\to J_{-1}\)">\(0\to J_1\to J_0\to J_{-1}\)</span> goes to <span class="math" data-tex="\(FJ_{-1}\to FJ_0\to FJ_1\to0\)">\(FJ_{-1}\to FJ_0\to FJ_1\to0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In each row restriction is an equivalence between the stated additive functors on <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> and the additive functors on <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> satisfying exactly the displayed condition. It includes all natural transformations.</p>
+<p><strong>Proof.</strong> For covariant left exact functors, apply Theorem 1.1 to <span class="math" data-tex="\(\mathsf C^{\mathrm{op}},\mathsf J^{\mathrm{op}},\mathsf A^{\mathrm{op}}\)">\(\mathsf C^{\mathrm{op}},\mathsf J^{\mathrm{op}},\mathsf A^{\mathrm{op}}\)</span>. Cogeneration in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is generation in <span class="math" data-tex="\(\mathsf C^{\mathrm{op}}\)">\(\mathsf C^{\mathrm{op}}\)</span>, and right exactness in the target opposite is left exactness in <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span>. Passing to a target opposite reverses natural transformations; take the opposites of both resulting functor categories to obtain the claimed equivalence in the original direction.</p>
+<p>For contravariant left exact functors, regard <span class="math" data-tex="\(F: \mathsf J^{\mathrm{op}}\to\mathsf A\)">\(F: \mathsf J^{\mathrm{op}}\to\mathsf A\)</span> as a covariant functor <span class="math" data-tex="\(\mathsf J\to\mathsf A^{\mathrm{op}}\)">\(\mathsf J\to\mathsf A^{\mathrm{op}}\)</span>. Apply Theorem 1.1 with source <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> and target <span class="math" data-tex="\(\mathsf A^{\mathrm{op}}\)">\(\mathsf A^{\mathrm{op}}\)</span>, then take the opposites of both functor categories to restore the transformation direction.</p>
+<p>For contravariant right exact functors, apply Theorem 1.1 directly to source <span class="math" data-tex="\(\mathsf C^{\mathrm{op}}\)">\(\mathsf C^{\mathrm{op}}\)</span>, subcategory <span class="math" data-tex="\(\mathsf J^{\mathrm{op}}\)">\(\mathsf J^{\mathrm{op}}\)</span>, and target <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span>. This time there is no target-opposite reversal of transformations. Each exactness condition is the corresponding right exact ambient triple after these operations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The corresponding formulas are concrete. A covariant left exact extension uses (7.1) to give <span class="math" data-tex="\(\ker(F(I_0)\to F(I_1))\)">\(\ker(F(I_0)\to F(I_1))\)</span>. A contravariant left exact extension uses (1.3) to give <span class="math" data-tex="\(\ker(F(P_0)\to F(P_1))\)">\(\ker(F(P_0)\to F(P_1))\)</span>. A contravariant right exact extension uses (7.1) to give <span class="math" data-tex="\(\operatorname{coker}(F(I_1)\to F(I_0))\)">\(\operatorname{coker}(F(I_1)\to F(I_0))\)</span>. The dualized universal properties specify their identifications and prove independence of every choice.</p>
+<h2 id="8-graded-exercises-with-complete-solutions">8. Graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (foundation: generators that are not projective).</strong> Let <span class="math" data-tex="\(R=k[\epsilon]/(\epsilon^2)\)">\(R=k[\epsilon]/(\epsilon^2)\)</span>, where <span class="math" data-tex="\(k\)">\(k\)</span> is any field. Let <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> be finite-dimensional left <span class="math" data-tex="\(R\)">\(R\)</span>-modules and <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> its full subcategory of modules of even <span class="math" data-tex="\(k\)">\(k\)</span>-dimension. Prove that <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> is additive and generating, that it is not closed under kernels, and that it contains a nonprojective object. For any <span class="math" data-tex="\(F\)">\(F\)</span> satisfying (1.1), compute <span class="math" data-tex="\(E_F(k)\)">\(E_F(k)\)</span> using <span class="math" data-tex="\(R\)">\(R\)</span>. Give the concrete answer for <span class="math" data-tex="\(F(M)=k\otimes_RM\)">\(F(M)=k\otimes_RM\)</span>.</p>
+<p><strong>Solution.</strong> Kernels and cokernels of maps between finite-dimensional <span class="math" data-tex="\(R\)">\(R\)</span>-modules remain finite-dimensional, so <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is abelian. The zero module and finite sums of even-dimensional modules are even-dimensional; full inclusion preserves their biproducts. For any <span class="math" data-tex="\(M\)">\(M\)</span>, the projection <span class="math" data-tex="\(M\oplus M\twoheadrightarrow M\)">\(M\oplus M\twoheadrightarrow M\)</span> is an epimorphism from an object of <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>. Thus <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> is generating.</p>
+<p>Multiplication by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> on <span class="math" data-tex="\(R\)">\(R\)</span> has kernel <span class="math" data-tex="\(\epsilon R\simeq k\)">\(\epsilon R\simeq k\)</span>. Its two ambient endpoints have dimension two, but its kernel has dimension one, so <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> is not closed under kernels.</p>
+<p>The object <span class="math" data-tex="\(k^2\)">\(k^2\)</span> lies in <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>. The quotient <span class="math" data-tex="\(\pi: R^2\twoheadrightarrow k^2\)">\(\pi: R^2\twoheadrightarrow k^2\)</span> has no <span class="math" data-tex="\(R\)">\(R\)</span>-linear section. Indeed every map <span class="math" data-tex="\(s: k^2\to R^2\)">\(s: k^2\to R^2\)</span> has image annihilated by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, hence contained in <span class="math" data-tex="\(\epsilon R^2\)">\(\epsilon R^2\)</span>, and <span class="math" data-tex="\(\pi s=0\)">\(\pi s=0\)</span>. It cannot lift the identity of <span class="math" data-tex="\(k^2\)">\(k^2\)</span> through <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. This proves that <span class="math" data-tex="\(k^2\)">\(k^2\)</span> is nonprojective.</p>
+<p>The ambient presentation <span class="math" data-tex="\(R\xrightarrow{\epsilon}R\to k\to0\)">\(R\xrightarrow{\epsilon}R\to k\to0\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+E_F(k)\simeq\operatorname{coker}\bigl(F(R)
+\xrightarrow{F(\epsilon)}F(R)\bigr).
+\]">\[
+E_F(k)\simeq\operatorname{coker}\bigl(F(R)
+\xrightarrow{F(\epsilon)}F(R)\bigr).
+\]</span>
+<p>For the stated tensor functor, <span class="math" data-tex="\(F(M)=M/\epsilon M\)">\(F(M)=M/\epsilon M\)</span>. If <span class="math" data-tex="\(M\to N\to L\to0\)">\(M\to N\to L\to0\)</span> is right exact, then <span class="math" data-tex="\(L=N/\operatorname{im}(M\to N)\)">\(L=N/\operatorname{im}(M\to N)\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+L/\epsilon L
+\simeq N/\bigl(\operatorname{im}(M\to N)+\epsilon N\bigr).
+\]">\[
+L/\epsilon L
+\simeq N/\bigl(\operatorname{im}(M\to N)+\epsilon N\bigr).
+\]</span>
+<p>This is the cokernel of <span class="math" data-tex="\(M/\epsilon M\to N/\epsilon N\)">\(M/\epsilon M\to N/\epsilon N\)</span>. Thus <span class="math" data-tex="\(F\)">\(F\)</span> satisfies (1.1). We have <span class="math" data-tex="\(F(R)=k\)">\(F(R)=k\)</span>, and <span class="math" data-tex="\(F(\epsilon)=0\)">\(F(\epsilon)=0\)</span>, giving <span class="math" data-tex="\(E_F(k)=k\)">\(E_F(k)=k\)</span>. Its extension is <span class="math" data-tex="\(M\mapsto M/\epsilon M\)">\(M\mapsto M/\epsilon M\)</span>, by Theorem 1.1. The example checks the theorem beyond projective generators.</p>
+<p><strong>Exercise 2 (intermediate: split exactness is insufficient).</strong> Use the same <span class="math" data-tex="\(\mathsf C,\mathsf J\)">\(\mathsf C,\mathsf J\)</span>, and let <span class="math" data-tex="\(F(J)=\operatorname{Hom}_R(k,J)\)">\(F(J)=\operatorname{Hom}_R(k,J)\)</span>, valued in finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces. Show that <span class="math" data-tex="\(F\)">\(F\)</span> is additive and preserves all split exact rows in <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>. Exhibit an ambient row with all terms in <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> that violates (1.1), and deduce that <span class="math" data-tex="\(F\)">\(F\)</span> has no right exact extension to <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>.</p>
+<p><strong>Solution.</strong> A map <span class="math" data-tex="\(k\to J\)">\(k\to J\)</span> is determined by an element annihilated by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Hence <span class="math" data-tex="\(F(J)=\ker(\epsilon: J\to J)\)">\(F(J)=\ker(\epsilon: J\to J)\)</span>, and its action on morphisms is restriction. This gives additivity and finite-biproduct preservation. Applying any additive functor to a splitting preserves the equations for its section and retraction, so split exact rows stay split exact.</p>
+<p>Consider the exact ambient row</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k^2\xrightarrow{i}R^2\xrightarrow{\pi}k^2\longrightarrow0,
+\\i(x_1,x_2)=(\epsilon x_1,\epsilon x_2).
+\end{gathered}
+\]">\[
+\begin{gathered}
+k^2\xrightarrow{i}R^2\xrightarrow{\pi}k^2\longrightarrow0,
+\\i(x_1,x_2)=(\epsilon x_1,\epsilon x_2).
+\end{gathered}
+\]</span>
+<p>All three terms have dimension two or four and lie in <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>. But <span class="math" data-tex="\(F(R^2)=\epsilon R^2\)">\(F(R^2)=\epsilon R^2\)</span>, while <span class="math" data-tex="\(F(k^2)=k^2\)">\(F(k^2)=k^2\)</span>. The induced map <span class="math" data-tex="\(F(\pi)\)">\(F(\pi)\)</span> is zero and its target is nonzero. The image row therefore fails the epimorphism requirement at its final term.</p>
+<p>If a right exact extension existed with a specified restriction isomorphism, applying it to this ambient row would force the image under <span class="math" data-tex="\(F\)">\(F\)</span> to be right exact, since the three components of that isomorphism identify the rows. This contradicts the calculation. Thus the full ambient condition in (1.1) is necessary.</p>
+<p><strong>Exercise 3 (advanced: what the shorter cone row really tests).</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be any ring and consider a commutative square of left <span class="math" data-tex="\(R\)">\(R\)</span>-modules with <span class="math" data-tex="\(u: Y\to X\)">\(u: Y\to X\)</span>, <span class="math" data-tex="\(v: Y&#x27;\to X&#x27;\)">\(v: Y&#x27;\to X&#x27;\)</span>, <span class="math" data-tex="\(a: Y\to Y&#x27;\)">\(a: Y\to Y&#x27;\)</span>, <span class="math" data-tex="\(b: X\to X&#x27;\)">\(b: X\to X&#x27;\)</span>, and <span class="math" data-tex="\(bu=va\)">\(bu=va\)</span>. Write <span class="math" data-tex="\(\phi: \operatorname{coker}u\to\operatorname{coker}v\)">\(\phi: \operatorname{coker}u\to\operatorname{coker}v\)</span> for the induced map. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d_1: Y\to X\oplus Y&#x27;,\quad d_1(y)=(u(y),-a(y)),\\
+d_2: X\oplus Y&#x27;\to X&#x27;,\quad d_2(x,y&#x27;)=b(x)+v(y&#x27;),\\
+H=\ker d_2/\operatorname{im}d_1.
+\end{gathered}
+\]">\[
+\begin{gathered}
+d_1: Y\to X\oplus Y&#x27;,\quad d_1(y)=(u(y),-a(y)),\\
+d_2: X\oplus Y&#x27;\to X&#x27;,\quad d_2(x,y&#x27;)=b(x)+v(y&#x27;),\\
+H=\ker d_2/\operatorname{im}d_1.
+\end{gathered}
+\]</span>
+<p>Put <span class="math" data-tex="\(T=\operatorname{coker}(\ker u\xrightarrow{a}\ker v)\)">\(T=\operatorname{coker}(\ker u\xrightarrow{a}\ker v)\)</span>. Prove <span class="math" data-tex="\(d_2d_1=0\)">\(d_2d_1=0\)</span> and the exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow T\longrightarrow H
+\longrightarrow\ker\phi
+\longrightarrow0.
+\tag{8.1}
+\]">\[
+0\longrightarrow T\longrightarrow H
+\longrightarrow\ker\phi
+\longrightarrow0.
+\tag{8.1}
+\]</span>
+<p>Show that <span class="math" data-tex="\(d_2\)">\(d_2\)</span> is epi exactly when <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is epi. Deduce the precise condition for <span class="math" data-tex="\(Y\to X\oplus Y&#x27;\to X&#x27;\to0\)">\(Y\to X\oplus Y&#x27;\to X&#x27;\to0\)</span> to be right exact, and recover the counterexample in Section 6.</p>
+<p><strong>Solution.</strong> The composition is <span class="math" data-tex="\(bu-va=0\)">\(bu-va=0\)</span>. Define <span class="math" data-tex="\(\theta: \ker d_2\to\ker\phi\)">\(\theta: \ker d_2\to\ker\phi\)</span> by <span class="math" data-tex="\((x,y&#x27;)\mapsto[x]\)">\((x,y&#x27;)\mapsto[x]\)</span>. It lands in <span class="math" data-tex="\(\ker\phi\)">\(\ker\phi\)</span>, since <span class="math" data-tex="\(b(x)=-v(y&#x27;)\)">\(b(x)=-v(y&#x27;)\)</span>, and kills <span class="math" data-tex="\(\operatorname{im}d_1\)">\(\operatorname{im}d_1\)</span>. It therefore induces <span class="math" data-tex="\(H\to\ker\phi\)">\(H\to\ker\phi\)</span>. It is onto: if <span class="math" data-tex="\([x]\in\ker\phi\)">\([x]\in\ker\phi\)</span>, choose <span class="math" data-tex="\(z\in Y&#x27;\)">\(z\in Y&#x27;\)</span> with <span class="math" data-tex="\(b(x)=v(z)\)">\(b(x)=v(z)\)</span>; then <span class="math" data-tex="\((x,-z)\in\ker d_2\)">\((x,-z)\in\ker d_2\)</span> represents a preimage.</p>
+<p>The map <span class="math" data-tex="\(\ker v\to H\)">\(\ker v\to H\)</span> sends <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span> to the class of <span class="math" data-tex="\((0,y&#x27;)\)">\((0,y&#x27;)\)</span>. Its kernel is <span class="math" data-tex="\(a(\ker u)\)">\(a(\ker u)\)</span>: the class is zero precisely when <span class="math" data-tex="\((0,y&#x27;)=(u(y),-a(y))\)">\((0,y&#x27;)=(u(y),-a(y))\)</span> for some <span class="math" data-tex="\(y\)">\(y\)</span>, which means <span class="math" data-tex="\(u(y)=0,y&#x27;=-a(y)\)">\(u(y)=0,y&#x27;=-a(y)\)</span>. The minus sign gives the same image submodule. It consequently induces an injection of the cokernel on the left of (8.1).</p>
+<p>If <span class="math" data-tex="\([(x,y&#x27;)]\)">\([(x,y&#x27;)]\)</span> maps to zero in <span class="math" data-tex="\(\ker\phi\)">\(\ker\phi\)</span>, then <span class="math" data-tex="\(x=u(y)\)">\(x=u(y)\)</span> for some <span class="math" data-tex="\(y\)">\(y\)</span>. Subtracting <span class="math" data-tex="\(d_1(y)\)">\(d_1(y)\)</span> gives the representative <span class="math" data-tex="\((0,y&#x27;+a(y))\)">\((0,y&#x27;+a(y))\)</span>; the second component lies in <span class="math" data-tex="\(\ker v\)">\(\ker v\)</span>. Thus the image of the injection is exactly the kernel of <span class="math" data-tex="\(H\to\ker\phi\)">\(H\to\ker\phi\)</span>, proving (8.1).</p>
+<p>Finally</p>
+<span class="math math-display" data-tex="\[
+\operatorname{coker}d_2
+=X&#x27;/\bigl(b(X)+v(Y&#x27;)\bigr)
+\simeq\operatorname{coker}\phi.
+\]">\[
+\operatorname{coker}d_2
+=X&#x27;/\bigl(b(X)+v(Y&#x27;)\bigr)
+\simeq\operatorname{coker}\phi.
+\]</span>
+<p>Hence <span class="math" data-tex="\(d_2\)">\(d_2\)</span> is epi exactly when <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is epi. Exactness at <span class="math" data-tex="\(X\oplus Y&#x27;\)">\(X\oplus Y&#x27;\)</span> means <span class="math" data-tex="\(H=0\)">\(H=0\)</span>. By (8.1), this is equivalent to <span class="math" data-tex="\(\ker\phi=0\)">\(\ker\phi=0\)</span> and surjectivity of <span class="math" data-tex="\(\ker u\to\ker v\)">\(\ker u\to\ker v\)</span>. The shorter row is therefore right exact exactly when <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is an isomorphism <strong>and</strong> <span class="math" data-tex="\(\ker u\to\ker v\)">\(\ker u\to\ker v\)</span> is onto.</p>
+<p>For <span class="math" data-tex="\(u: 0\to0,v: k\to0\)">\(u: 0\to0,v: k\to0\)</span>, the cokernel comparison is the isomorphism <span class="math" data-tex="\(0\to0\)">\(0\to0\)</span>, but the kernel map <span class="math" data-tex="\(0\to k\)">\(0\to k\)</span> is not onto. Here <span class="math" data-tex="\(H=k\)">\(H=k\)</span>, exhibiting the missing relation explicitly. Surjectivity of that extra kernel map is not a hypothesis of Theorem 1.1, and its proof does not require it.</p>
+<p><strong>Exercise 4 (expert: postcomposition and its coherence).</strong> Let <span class="math" data-tex="\(F\in\operatorname{Rex}_{\mathsf C}(\mathsf J,\mathsf A)\)">\(F\in\operatorname{Rex}_{\mathsf C}(\mathsf J,\mathsf A)\)</span>, and let <span class="math" data-tex="\(K: \mathsf A\to\mathsf B\)">\(K: \mathsf A\to\mathsf B\)</span> be additive and right exact between abelian categories. Prove that <span class="math" data-tex="\(KF\)">\(KF\)</span> satisfies the relative condition and that there is a unique restriction-compatible isomorphism</p>
+<span class="math math-display" data-tex="\[
+E_{KF}\simeq K E_F.
+\tag{8.2}
+\]">\[
+E_{KF}\simeq K E_F.
+\tag{8.2}
+\]</span>
+<p>Prove naturality in <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span>, and compatibility with two successive right exact postcompositions. Show why a merely left exact <span class="math" data-tex="\(K\)">\(K\)</span> is insufficient, even when <span class="math" data-tex="\(KF\)">\(KF\)</span> still satisfies the relative condition.</p>
+<p><strong>Solution.</strong> The image under <span class="math" data-tex="\(F\)">\(F\)</span> of an ambient row (1.1) is right exact in <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span>; applying <span class="math" data-tex="\(K\)">\(K\)</span> leaves it right exact. Thus <span class="math" data-tex="\(KF\)">\(KF\)</span> satisfies the relative condition. Also the composite <span class="math" data-tex="\(KE_F\)">\(KE_F\)</span> is additive and preserves cokernels, so is right exact. Its restriction is specified by <span class="math" data-tex="\(E_F|_{\mathsf J}\simeq F\)">\(E_F|_{\mathsf J}\simeq F\)</span>, giving <span class="math" data-tex="\(KE_F|_{\mathsf J}\simeq KF\)">\(KE_F|_{\mathsf J}\simeq KF\)</span>. Full faithfulness in Theorem 1.1 gives the unique isomorphism (8.2) respecting that identification.</p>
+<p>For (1.3), the same isomorphism is the cokernel comparison</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{coker}(KF(u))
+\xrightarrow{\ \sim\ }K(\operatorname{coker}F(u)),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{coker}(KF(u))
+\xrightarrow{\ \sim\ }K(\operatorname{coker}F(u)),
+\end{gathered}
+\]</span>
+<p>since <span class="math" data-tex="\(K\)">\(K\)</span> preserves that cokernel, including its quotient map. Naturality for a transformation <span class="math" data-tex="\(F\to H\)">\(F\to H\)</span> follows either by comparing these quotient maps or by restriction: the two resulting transformations between right exact extensions have the same restriction, so full faithfulness makes them equal. For a transformation <span class="math" data-tex="\(K\to L\)">\(K\to L\)</span> between right exact postcomposition functors, its naturality on <span class="math" data-tex="\(F(J)\)">\(F(J)\)</span> gives the same equality on <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>, and again full faithfulness proves it on <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>.</p>
+<p>For <span class="math" data-tex="\(K_1: \mathsf A\to\mathsf B\)">\(K_1: \mathsf A\to\mathsf B\)</span>, <span class="math" data-tex="\(K_2: \mathsf B\to\mathsf D\)">\(K_2: \mathsf B\to\mathsf D\)</span>, the direct comparison <span class="math" data-tex="\(E_{K_2K_1F}\to K_2K_1E_F\)">\(E_{K_2K_1F}\to K_2K_1E_F\)</span> and the composite of the two successive comparisons both respect the specified restriction to <span class="math" data-tex="\(K_2K_1F\)">\(K_2K_1F\)</span>. Uniqueness makes them equal. This also proves compatibility with further postcompositions by induction, and with the identity postcomposition. The coherence is fixed by the restriction, rather than by independent choices of presentations.</p>
+<p>For the failure, take <span class="math" data-tex="\(\mathsf C=\mathsf A=\mathsf B\)">\(\mathsf C=\mathsf A=\mathsf B\)</span> to be finitely generated abelian groups and <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> the finite-rank free groups. This is a full additive generating subcategory, since every finitely generated group is a quotient of some <span class="math" data-tex="\(\mathbb Z^n\)">\(\mathbb Z^n\)</span>. Let <span class="math" data-tex="\(F\)">\(F\)</span> be inclusion, whose right exact extension is the identity. Set <span class="math" data-tex="\(K(M)=\operatorname{Hom}_{\mathbb Z}(\mathbb Z/2,M)\)">\(K(M)=\operatorname{Hom}_{\mathbb Z}(\mathbb Z/2,M)\)</span>. This is a finitely generated subgroup of <span class="math" data-tex="\(M\)">\(M\)</span>, and is additive and left exact: its kernel comparison follows directly by factoring a homomorphism through an ordinary kernel.</p>
+<p>On every finite free group <span class="math" data-tex="\(K\)">\(K\)</span> is zero, so <span class="math" data-tex="\(KF=0\)">\(KF=0\)</span> satisfies the relative condition and extends to the zero functor. However <span class="math" data-tex="\(KE_F=K\)">\(KE_F=K\)</span> has value <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> at <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>, so (8.2) fails. In the right exact row <span class="math" data-tex="\(\mathbb Z\xrightarrow{2}\mathbb Z\to\mathbb Z/2\to0\)">\(\mathbb Z\xrightarrow{2}\mathbb Z\to\mathbb Z/2\to0\)</span>, its image has final map <span class="math" data-tex="\(0\to\mathbb Z/2\)">\(0\to\mathbb Z/2\)</span>, which is not epi. This computes the precise failed hypothesis.</p>
+<h2 id="9-references-and-scope">9. References and scope</h2>
+<p>The theorem here allows an arbitrary full additive generating subcategory, an arbitrary abelian target and all natural transformations. Sections 2–5 give an epimorphic-cover proof; Section 6 gives the presentation-localization interface and the counterexample to the shorter cone-row criterion.</p>
+<p>The basic exact-functor and pullback interfaces are <a href="https://stacks.math.columbia.edu/tag/010N">Stacks 010N</a> and <a href="https://stacks.math.columbia.edu/tag/05PK">Stacks 05PK</a>. The full replacement interface is the opposite of Theorem 2.1 in <a href="descent-through-replacement-objects.html#2-localize-a-full-family-of-replacements">Descent through replacement objects</a>, with its retained fraction construction and natural-transformation universal property. <a href="https://stacks.math.columbia.edu/tag/0GNI">Stacks, Section 56.2</a> treats extensions from finitely presented modules; its module and colimit hypotheses do not replace the generality proved here. References supply mathematical interfaces, and their prose is not reproduced.</p>
+<p>This lesson concerns ordinary additive functors and exact sequences. Derived functors and excluded owner constructions retain their separate interfaces. The four exercises and all their solutions are original to this lesson. Author self-check applies to this version.</p>
+</main></body></html>

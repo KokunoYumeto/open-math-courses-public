@@ -1,0 +1,381 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formal linear combinations and finite sums</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="formal-linear-combinations-and-finite-sums">Formal linear combinations and finite sums</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, October 2026. Self-checked by GPT-6.1 Sol, the AI that wrote it; no independent review. Public domain (CC0).</em></p>
+<p>A category may specify objects and maps without specifying sums of maps or sums of objects. We can add these operations in two steps. First take formal integer combinations of maps. Then take finite lists of objects and matrices between them. A functor into an additive category extends across both steps, and its natural transformations extend with it.</p>
+<p>The two operations do different jobs. Formal combinations make each group of maps additive. Finite lists supply the objects needed for biproducts. Neither operation promises to split every idempotent. We will see this distinction in a concrete example.</p>
+<p>We assume the definitions of categories, functors, natural transformations and abelian groups. For projector splittings, read <a href="retracts-and-stabilization-of-formal-objects.html">Retracts and stabilization of formal objects</a>, Section 1. Retain the complete <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/homology.tex#L1470">binary additive-functor criterion</a> in the AI-integrated Stacks baseline. Its zero-map and biproduct interfaces are fully proved in <a href="recovering-addition-from-products-and-coproducts.html#1-the-enriched-starting-point">Recovering addition from products and coproducts, Section 1</a>. Other references are Mathlib's <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Category/ModuleCat/Adjunctions.html">linear completion</a>, <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Preadditive/Mat.html">matrix categories</a>, and <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Adjunction/Additive.html">additive adjunctions</a>.</p>
+<p>A category is <em>preadditive</em> when its groups of maps are abelian and composition is bilinear. It is <em>additive</em> when it also has a zero object and finite biproducts. An additive functor induces homomorphisms on groups of maps. Categories are locally small; object collections may belong to a larger universe. All lists in this lesson are finite. The presheaf description in Section 5 additionally assumes that the original category is small.</p>
+<h2 id="1-recognizing-addition-from-products">1. Recognizing addition from products</h2>
+<p>For a biproduct <span class="math" data-tex="\(X_1\oplus X_2\)">\(X_1\oplus X_2\)</span>, denote its inclusions by <span class="math" data-tex="\(i_1,i_2\)">\(i_1,i_2\)</span> and projections by <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span>. Its identities are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_ri_s=\begin{cases}1&amp;r=s,\\0&amp;r\ne s,\end{cases}\\
+i_1p_1+i_2p_2=1.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+p_ri_s=\begin{cases}1&amp;r=s,\\0&amp;r\ne s,\end{cases}\\
+i_1p_1+i_2p_2=1.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>These equations also characterize a biproduct in a preadditive category: retain both explicit inverse maps and uniqueness proofs in <a href="recovering-addition-from-products-and-coproducts.html#1-the-enriched-starting-point">Recovering addition, Section 1</a>. That section retains the complete <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/homology.tex#L70">canonical zero-object equivalence</a> and proves that the ordinary zero maps factoring through zero are precisely the enriched zero maps. Thus every zero map used below has the required factorization, and every use of (1.1) gives both actual universal structures.</p>
+<p>We retain the following stronger binary-product criterion from the complete <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/homology.tex#L1470">canonical additive-functor proof</a>, with the full product-to-coproduct proof and the coordinate interfaces just specified.</p>
+<p><strong>Theorem 1.1.</strong> For a functor <span class="math" data-tex="\(F\)">\(F\)</span> between additive categories, the following are equivalent: it is additive; its canonical binary-product comparisons are isomorphisms; its canonical binary-coproduct comparisons are isomorphisms. Each condition implies preservation of all finite products and coproducts, including zero.</p>
+<p>The empty case requires no separate assumption: the product comparison at <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> makes the diagonal of <span class="math" data-tex="\(F0\)">\(F0\)</span> an isomorphism. Every group of maps into <span class="math" data-tex="\(F0\)">\(F0\)</span> then has a bijective diagonal and is trivial, so <span class="math" data-tex="\(F0\)">\(F0\)</span> is zero.</p>
+<p><strong>Lemma 1.2.</strong> If the first projection <span class="math" data-tex="\(p_X:X\oplus Y\to X\)">\(p_X:X\oplus Y\to X\)</span> is invertible, then <span class="math" data-tex="\(Y\)">\(Y\)</span> is zero.</p>
+<p><strong>Proof.</strong> Its section <span class="math" data-tex="\(i_X\)">\(i_X\)</span> must be its inverse. Thus <span class="math" data-tex="\(p_Y=p_Yi_Xp_X=0\)">\(p_Y=p_Yi_Xp_X=0\)</span>, and <span class="math" data-tex="\(1_Y=p_Yi_Y=0\)">\(1_Y=p_Yi_Y=0\)</span>. Apply the zero-object criterion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.3.</strong> Every fully faithful functor between additive categories is additive.</p>
+<p><strong>Proof.</strong> Full faithfulness gives only one endomorphism of <span class="math" data-tex="\(F0\)">\(F0\)</span>, so its identity is zero and <span class="math" data-tex="\(F0\)">\(F0\)</span> is zero. Every zero map factors through zero, so <span class="math" data-tex="\(F\)">\(F\)</span> preserves zero maps.</p>
+<p>For a source biproduct <span class="math" data-tex="\(S=X_1\oplus X_2\)">\(S=X_1\oplus X_2\)</span>, put <span class="math" data-tex="\(e=F(i_1)F(p_1)+F(i_2)F(p_2)\)">\(e=F(i_1)F(p_1)+F(i_2)F(p_2)\)</span>. Fullness gives an endomorphism <span class="math" data-tex="\(h:S\to S\)">\(h:S\to S\)</span> with <span class="math" data-tex="\(Fh=e\)">\(Fh=e\)</span>. From the first equations in (1.1) and preservation of zero,</p>
+<span class="math math-display" data-tex="\[
+F(p_r)Fh=F(p_r)\quad(r=1,2).
+\tag{1.2}
+\]">\[
+F(p_r)Fh=F(p_r)\quad(r=1,2).
+\tag{1.2}
+\]</span>
+<p>Faithfulness gives <span class="math" data-tex="\(p_rh=p_r\)">\(p_rh=p_r\)</span>. The source product property gives <span class="math" data-tex="\(h=1_S\)">\(h=1_S\)</span>, hence <span class="math" data-tex="\(e=1_{FS}\)">\(e=1_{FS}\)</span>. All equations (1.1) now hold for the images of the structure maps. They specify an actual biproduct in the target. Theorem 1.1 proves additivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Faithfulness alone does not suffice. The functor <span class="math" data-tex="\(\mathsf{Ab}\to\mathsf{Ab}\)">\(\mathsf{Ab}\to\mathsf{Ab}\)</span> taking a group to the free abelian group on its underlying set is faithful: basis elements distinguish two different group maps. But it sends the zero group to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, so it is not additive.</p>
+<h2 id="2-why-an-adjoint-inherits-addition">2. Why an adjoint inherits addition</h2>
+<p>Adjunctions do not initially assert that their Hom bijections preserve addition. They acquire this property when either adjoint is additive.</p>
+<p>We retain the preadditive theorem in <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Adjunction/Additive.html">Mathlib, Additive adjunctions</a>, which requires no zero object or biproducts.</p>
+<p><strong>Theorem 2.1.</strong> Let <span class="math" data-tex="\(F:\mathsf B\to\mathsf A\)">\(F:\mathsf B\to\mathsf A\)</span> be left adjoint to <span class="math" data-tex="\(G:\mathsf A\to\mathsf B\)">\(G:\mathsf A\to\mathsf B\)</span>, with both categories preadditive. Then <span class="math" data-tex="\(F\)">\(F\)</span> is additive if and only if <span class="math" data-tex="\(G\)">\(G\)</span> is additive. In that case the adjunction bijections are isomorphisms of abelian groups.</p>
+<p>Here is the identity check behind the interface. With unit <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and counit <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, the bijection and its inverse are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi(h)=G(h)\eta_X,\\
+\Phi^{-1}(u)=\epsilon_YF(u).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\Phi(h)=G(h)\eta_X,\\
+\Phi^{-1}(u)=\epsilon_YF(u).
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>If <span class="math" data-tex="\(F\)">\(F\)</span> is additive, the inverse is additive. For <span class="math" data-tex="\(a,b:Y\to Z\)">\(a,b:Y\to Z\)</span>, use the bijection <span class="math" data-tex="\(\Phi_{GY,Z}\)">\(\Phi_{GY,Z}\)</span>. Counit naturality gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi^{-1}(Ga+Gb)
+=a\epsilon_Y+b\epsilon_Y\\
+=(a+b)\epsilon_Y
+=\Phi^{-1}(G(a+b)).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\Phi^{-1}(Ga+Gb)
+=a\epsilon_Y+b\epsilon_Y\\
+=(a+b)\epsilon_Y
+=\Phi^{-1}(G(a+b)).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>Injectivity gives additivity of <span class="math" data-tex="\(G\)">\(G\)</span>. The opposite adjunction proves the converse. Formula (2.1) then makes <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> additive too. Additivity includes preservation of zero and negatives since the groups are abelian.</p>
+<p>This theorem concerns addition of maps. Preservation of kernels or cokernels requires further hypotheses; Exercise 4 separates these properties.</p>
+<p>For the coefficient category in Exercise 4, retain the complete module kernel and cokernel constructions in <a href="kernels-cokernels-and-the-abelian-comparison.html#5-module-kernels-and-a-missing-finite-kernel">Kernels, cokernels and the abelian comparison, Section 5</a>, together with the compatible coimage-to-image bijection and its linear inverse in <a href="coimages-images-and-composition-of-quotients.html#5-sets-modules-presheaves-and-spaces">Coimages, Section 5</a>. Specialize to the field <span class="math" data-tex="\(k\)">\(k\)</span>. A kernel is a subspace of its finite-dimensional source and a cokernel is a quotient of its finite-dimensional target; both remain finite-dimensional. Zero and finite direct sums do too. Thus these universal properties and the invertible comparison restrict to the coefficient category in that exercise. For its two-object arrow diagram, retain the full naturality, kernel, cokernel and inverse-comparison proofs in <a href="pointwise-abelian-structure-and-natural-splittings.html#2-why-all-diagrams-form-an-abelian-category">Pointwise abelian structure and natural splittings, Section 2</a>. This supplies the endpoint universal properties and the detection of exactness used in its solution.</p>
+<h2 id="3-first-add-combinations-of-maps">3. First add combinations of maps</h2>
+<p>Let <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> be any locally small category. Define <span class="math" data-tex="\(\mathbb Z[\mathsf C]\)">\(\mathbb Z[\mathsf C]\)</span> to have the same objects, with</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathbb Z[\mathsf C]}(X,Y)
+=\mathbb Z^{(\operatorname{Hom}_{\mathsf C}(X,Y))}.
+\tag{3.1}
+\]">\[
+\operatorname{Hom}_{\mathbb Z[\mathsf C]}(X,Y)
+=\mathbb Z^{(\operatorname{Hom}_{\mathsf C}(X,Y))}.
+\tag{3.1}
+\]</span>
+<p>The notation on the right means finite-support integer combinations of symbols <span class="math" data-tex="\([f]\)">\([f]\)</span>. Distinct maps give distinct symbols; an empty set of maps gives the zero group. Define composition by bilinear extension of</p>
+<span class="math math-display" data-tex="\[
+[g][f]=[gf],\qquad
+1_X=[1_X^{\mathsf C}].
+\tag{3.2}
+\]">\[
+[g][f]=[gf],\qquad
+1_X=[1_X^{\mathsf C}].
+\tag{3.2}
+\]</span>
+<p>Every composition involves finite sums. On basis symbols, associativity is associativity in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>; expansion by bilinearity proves it on all combinations. The identity laws follow the same way. Thus this is a preadditive category, and <span class="math" data-tex="\(j:\mathsf C\to\mathbb Z[\mathsf C]\)">\(j:\mathsf C\to\mathbb Z[\mathsf C]\)</span>, <span class="math" data-tex="\(f\mapsto[f]\)">\(f\mapsto[f]\)</span>, is a faithful ordinary functor.</p>
+<p>The generic linear construction is Mathlib's <span class="math" data-tex="\(\operatorname{Free}(R,\mathsf C)\)">\(\operatorname{Free}(R,\mathsf C)\)</span>, defined in the later <code>CategoryTheory.Free</code> section of the cited module, after its free-module construction. Here <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span>. To check the target hypothesis, every abelian group has its canonical integer action: nonnegative integers act by repeated addition, and negative integers act by negatives. Induction on nonnegative integers, followed by taking negatives, shows that a group homomorphism preserves this action. Bilinearity therefore makes any preadditive category <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-linear, and makes every additive functor <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-linear. Conversely, a <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-linear functor is additive by its group-homomorphism requirement. Hence Mathlib's linear target and linear lift specialize to exactly the preadditive target and additive lift below. The formulas prove the required universal property, including all natural transformations, directly.</p>
+<p><strong>Proposition 3.1.</strong> For every functor <span class="math" data-tex="\(F:\mathsf C\to\mathsf A\)">\(F:\mathsf C\to\mathsf A\)</span> into a preadditive category, there is a unique additive functor <span class="math" data-tex="\(\widehat F:\mathbb Z[\mathsf C]\to\mathsf A\)">\(\widehat F:\mathbb Z[\mathsf C]\to\mathsf A\)</span> with <span class="math" data-tex="\(\widehat Fj=F\)">\(\widehat Fj=F\)</span>, using the same object values. Its map formula is</p>
+<span class="math math-display" data-tex="\[
+\widehat F\left(\sum_f n_f[f]\right)
+=\sum_f n_fF(f).
+\tag{3.3}
+\]">\[
+\widehat F\left(\sum_f n_f[f]\right)
+=\sum_f n_fF(f).
+\tag{3.3}
+\]</span>
+<p>Every natural transformation <span class="math" data-tex="\(F\to G\)">\(F\to G\)</span> extends uniquely to <span class="math" data-tex="\(\widehat F\to\widehat G\)">\(\widehat F\to\widehat G\)</span>.</p>
+<p><strong>Proof.</strong> Formula (3.3) is well-defined on the free abelian groups. Bilinearity in the target shows that it respects (3.2) and all composites of finite sums. It preserves identities and addition. Conversely, an additive extension must send each basis symbol to <span class="math" data-tex="\(F(f)\)">\(F(f)\)</span>, so (3.3) is forced.</p>
+<p>Keep the components of a natural transformation. Naturality on a combination follows by taking the integer combination of its naturality equations on the individual maps. Uniqueness holds because the objects have not changed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only the groups of maps have changed. For example, a category with one object and only its identity becomes a one-object preadditive category whose endomorphism ring is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. It still has no zero object: the sole object's identity is <span class="math" data-tex="\(1\)">\(1\)</span>, not zero.</p>
+<h2 id="4-then-add-finite-sums-of-objects">4. Then add finite sums of objects</h2>
+<p>Let <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> be preadditive. Define <span class="math" data-tex="\(\operatorname{Mat}(\mathsf D)\)">\(\operatorname{Mat}(\mathsf D)\)</span> to have objects finite lists <span class="math" data-tex="\((X_1,\ldots,X_n)\)">\((X_1,\ldots,X_n)\)</span>, including the empty list. A map from this list to <span class="math" data-tex="\((Y_1,\ldots,Y_m)\)">\((Y_1,\ldots,Y_m)\)</span> is a matrix <span class="math" data-tex="\(a=(a_{ri})\)">\(a=(a_{ri})\)</span>, where <span class="math" data-tex="\(a_{ri}:X_i\to Y_r\)">\(a_{ri}:X_i\to Y_r\)</span> belongs to <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span>. Matrix addition is entrywise, and composition is</p>
+<span class="math math-display" data-tex="\[
+(ba)_{si}=\sum_{r=1}^m b_{sr}a_{ri}.
+\tag{4.1}
+\]">\[
+(ba)_{si}=\sum_{r=1}^m b_{sr}a_{ri}.
+\tag{4.1}
+\]</span>
+<p>The identity is the diagonal matrix of identities, with zero elsewhere. Bilinearity, the identity laws and associativity follow by finite expansion; associativity interchanges two finite summations and uses associativity in <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span>. The empty list is zero, and concatenation is a biproduct. Its block inclusions and projections satisfy (1.1). Thus <span class="math" data-tex="\(\operatorname{Mat}(\mathsf D)\)">\(\operatorname{Mat}(\mathsf D)\)</span> is additive.</p>
+<p>The singleton functor <span class="math" data-tex="\(s:\mathsf D\to\operatorname{Mat}(\mathsf D)\)">\(s:\mathsf D\to\operatorname{Mat}(\mathsf D)\)</span> is fully faithful and additive. Retain the matrix category, finite biproducts, embedding and additive lift in <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Preadditive/Mat.html">Mathlib, Matrix categories</a>. Here is the exact index interface. Mathlib uses a finite index set <span class="math" data-tex="\(I\)">\(I\)</span> and a family <span class="math" data-tex="\(X:I\to\mathsf D\)">\(X:I\to\mathsf D\)</span>. A list uses its finite set of positions; its entry <span class="math" data-tex="\(a_{ri}:X_i\to Y_r\)">\(a_{ri}:X_i\to Y_r\)</span> is Mathlib's entry with source index <span class="math" data-tex="\(i\)">\(i\)</span> and target index <span class="math" data-tex="\(r\)">\(r\)</span>. Both composition conventions give <span class="math" data-tex="\(\sum_r b_{sr}a_{ri}\)">\(\sum_r b_{sr}a_{ri}\)</span>. Conversely choose a bijection from the positions of a list of length <span class="math" data-tex="\(|I|\)">\(|I|\)</span> to <span class="math" data-tex="\(I\)">\(I\)</span>, and list the corresponding objects. The reindexing map has one identity entry for each matched index and zeros elsewhere; reversing the bijection gives its inverse. Matrix multiplication leaves one identity in each diagonal position and zero elsewhere, so both composites are identities. Reindexing preserves addition and all finite sums in composition. The list model is therefore fully faithful and essentially surjective onto the finite-index model, including the empty family. It preserves their specified finite biproducts. No infinite-index construction or extra object-size hypothesis is being imported.</p>
+<p><strong>Proposition 4.1.</strong> An additive functor <span class="math" data-tex="\(H:\mathsf D\to\mathsf A\)">\(H:\mathsf D\to\mathsf A\)</span>, with <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> additive, extends to an additive functor <span class="math" data-tex="\(H^\oplus:\operatorname{Mat}(\mathsf D)\to\mathsf A\)">\(H^\oplus:\operatorname{Mat}(\mathsf D)\to\mathsf A\)</span>. It sends a list to the chosen biproduct <span class="math" data-tex="\(\bigoplus_iH(X_i)\)">\(\bigoplus_iH(X_i)\)</span>, and a matrix to the map whose entries are <span class="math" data-tex="\(H(a_{ri})\)">\(H(a_{ri})\)</span>.</p>
+<p><strong>Proof.</strong> Choose finite biproducts, including zero, in the target. With target inclusions <span class="math" data-tex="\(\iota_r\)">\(\iota_r\)</span> and source projections <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span>, the map is</p>
+<span class="math math-display" data-tex="\[
+H^\oplus(a)=\sum_{r,i}\iota_rH(a_{ri})\pi_i.
+\tag{4.2}
+\]">\[
+H^\oplus(a)=\sum_{r,i}\iota_rH(a_{ri})\pi_i.
+\tag{4.2}
+\]</span>
+<p>The equations <span class="math" data-tex="\(\pi_r\iota_t=\delta_{rt}\)">\(\pi_r\iota_t=\delta_{rt}\)</span> collapse the composite of two such sums to the matrix (4.1). Additivity of <span class="math" data-tex="\(H\)">\(H\)</span> identifies its entries with <span class="math" data-tex="\(H(\sum_r b_{sr}a_{ri})\)">\(H(\sum_r b_{sr}a_{ri})\)</span>. The sum of diagonal blocks is the identity on a biproduct; the empty sum is the identity of zero. This proves the functor laws. Entrywise addition proves additivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The singleton values are canonically isomorphic to <span class="math" data-tex="\(H(X)\)">\(H(X)\)</span>. More generally, every additive functor <span class="math" data-tex="\(L:\operatorname{Mat}(\mathsf D)\to\mathsf A\)">\(L:\operatorname{Mat}(\mathsf D)\to\mathsf A\)</span> preserves the displayed finite biproducts. Hence it is determined, up to a natural isomorphism compatible with its singleton values, by <span class="math" data-tex="\(Ls\)">\(Ls\)</span>.</p>
+<p>We need the stronger assertion about all transformations.</p>
+<p><strong>Lemma 4.2.</strong> Restriction along <span class="math" data-tex="\(s\)">\(s\)</span> is fully faithful on additive functors into <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(\alpha:Ls\to Ms\)">\(\alpha:Ls\to Ms\)</span> is a natural transformation. On a list <span class="math" data-tex="\(X=(X_1,\ldots,X_n)\)">\(X=(X_1,\ldots,X_n)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\alpha_X=\sum_iM(i_i)\alpha_{X_i}L(p_i),
+\tag{4.3}
+\]">\[
+\alpha_X=\sum_iM(i_i)\alpha_{X_i}L(p_i),
+\tag{4.3}
+\]</span>
+<p>where <span class="math" data-tex="\(i_i,p_i\)">\(i_i,p_i\)</span> are its singleton inclusions and projections. On the empty list use the unique map between zero objects.</p>
+<p>For a matrix <span class="math" data-tex="\(a:X\to Y\)">\(a:X\to Y\)</span>, the <span class="math" data-tex="\((r,i)\)">\((r,i)\)</span> entry of the equation <span class="math" data-tex="\(\alpha_YL(a)=M(a)\alpha_X\)">\(\alpha_YL(a)=M(a)\alpha_X\)</span> is exactly naturality of the given transformation for <span class="math" data-tex="\(a_{ri}:X_i\to Y_r\)">\(a_{ri}:X_i\to Y_r\)</span>. The images of the structure maps are biproduct maps, so equality of all entries proves that equation. We have extended <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p>Any extension must have (4.3): naturality with the inclusions fixes its restrictions to every source summand, and those restrictions determine the map. Thus restriction is full and faithful. Componentwise composition and identities are retained. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Combining Propositions 3.1 and 4.1 with Lemma 4.2 gives an equivalence of functor categories</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Add}(\operatorname{Mat}(\mathbb Z[\mathsf C]),\mathsf A)\\
+\simeq\operatorname{Fun}(\mathsf C,\mathsf A).
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+\operatorname{Add}(\operatorname{Mat}(\mathbb Z[\mathsf C]),\mathsf A)\\
+\simeq\operatorname{Fun}(\mathsf C,\mathsf A).
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>Here all natural transformations are allowed. The left side requires additive functors, while the right side contains ordinary functors. Existence uses chosen finite biproducts; full faithfulness is the explicit transformation argument above. In particular, once two extensions and their comparisons with a fixed <span class="math" data-tex="\(F\)">\(F\)</span> are specified, there is exactly one natural isomorphism respecting those comparisons.</p>
+<p>These constructions use only finite lists and the original groups of maps. They do not impose global smallness of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> or <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span>. If their object and Hom universes differ, place them in a common larger universe; the formulas and the original Hom sets do not change.</p>
+<h2 id="5-a-realization-by-abelian-presheaves">5. A realization by abelian presheaves</h2>
+<p>Assume now that <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is small. For <span class="math" data-tex="\(X\in\mathsf C\)">\(X\in\mathsf C\)</span>, define an abelian presheaf</p>
+<span class="math math-display" data-tex="\[
+P_X(T)=\mathbb Z^{(\operatorname{Hom}_{\mathsf C}(T,X))}.
+\tag{5.1}
+\]">\[
+P_X(T)=\mathbb Z^{(\operatorname{Hom}_{\mathsf C}(T,X))}.
+\tag{5.1}
+\]</span>
+<p>Restriction along <span class="math" data-tex="\(a:T&#x27;\to T\)">\(a:T&#x27;\to T\)</span> sends <span class="math" data-tex="\([f]\)">\([f]\)</span> to <span class="math" data-tex="\([fa]\)">\([fa]\)</span>. Postcomposition gives a functor <span class="math" data-tex="\(P:\mathsf C\to\operatorname{Fun}(\mathsf C^{\mathrm{op}},\mathsf{Ab})\)">\(P:\mathsf C\to\operatorname{Fun}(\mathsf C^{\mathrm{op}},\mathsf{Ab})\)</span>.</p>
+<p><strong>Lemma 5.1.</strong> For any abelian presheaf <span class="math" data-tex="\(A\)">\(A\)</span>, evaluation on <span class="math" data-tex="\([1_X]\)">\([1_X]\)</span> gives a group isomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Nat}(P_X,A)\simeq A(X).
+\tag{5.2}
+\]">\[
+\operatorname{Nat}(P_X,A)\simeq A(X).
+\tag{5.2}
+\]</span>
+<p>These natural transformations have group homomorphisms as components.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(a\in A(X)\)">\(a\in A(X)\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\theta_T\left(\sum_f n_f[f]\right)\\
+=\sum_f n_f A(f)(a).
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+\theta_T\left(\sum_f n_f[f]\right)\\
+=\sum_f n_f A(f)(a).
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>It is a group homomorphism. Restriction along <span class="math" data-tex="\(u:T&#x27;\to T\)">\(u:T&#x27;\to T\)</span> changes the right side to <span class="math" data-tex="\(\sum_f n_fA(fu)(a)\)">\(\sum_f n_fA(fu)(a)\)</span>, which is also <span class="math" data-tex="\(\theta_{T&#x27;}(\sum_f n_f[fu])\)">\(\theta_{T&#x27;}(\sum_f n_f[fu])\)</span>; this proves naturality.</p>
+<p>Conversely, naturality with <span class="math" data-tex="\(f:T\to X\)">\(f:T\to X\)</span> forces <span class="math" data-tex="\(\theta_T([f])=A(f)(\theta_X([1_X]))\)">\(\theta_T([f])=A(f)(\theta_X([1_X]))\)</span>. Linearity forces (5.3) on every element. These two constructions are inverse and additive. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Nat}(P_X,P_Y)
+\simeq\mathbb Z^{(\operatorname{Hom}_{\mathsf C}(X,Y))}.
+\tag{5.4}
+\]">\[
+\operatorname{Nat}(P_X,P_Y)
+\simeq\mathbb Z^{(\operatorname{Hom}_{\mathsf C}(X,Y))}.
+\tag{5.4}
+\]</span>
+<p>Under this isomorphism, composition is bilinear extension of <span class="math" data-tex="\([g][f]=[gf]\)">\([g][f]=[gf]\)</span>, by (5.3). Hence <span class="math" data-tex="\(X\mapsto P_X\)">\(X\mapsto P_X\)</span> realizes <span class="math" data-tex="\(\mathbb Z[\mathsf C]\)">\(\mathbb Z[\mathsf C]\)</span> fully faithfully. The original functor <span class="math" data-tex="\(P\)">\(P\)</span> is faithful: evaluating <span class="math" data-tex="\(P(f)\)">\(P(f)\)</span> on <span class="math" data-tex="\([1_X]\)">\([1_X]\)</span> gives <span class="math" data-tex="\([f]\)">\([f]\)</span>, and different <span class="math" data-tex="\(f\)">\(f\)</span> are different basis symbols.</p>
+<p><strong>Theorem 5.2.</strong> Let <span class="math" data-tex="\(\mathsf C^+\)">\(\mathsf C^+\)</span> be the full subcategory of abelian presheaves formed by finite products of the <span class="math" data-tex="\(P_X\)">\(P_X\)</span>, together with their isomorphic copies. It is additive, and</p>
+<span class="math math-display" data-tex="\[
+\mathsf C^+\simeq\operatorname{Mat}(\mathbb Z[\mathsf C]).
+\tag{5.5}
+\]">\[
+\mathsf C^+\simeq\operatorname{Mat}(\mathbb Z[\mathsf C]).
+\tag{5.5}
+\]</span>
+<p>Every functor <span class="math" data-tex="\(F:\mathsf C\to\mathsf A\)">\(F:\mathsf C\to\mathsf A\)</span> into an additive category extends to an additive functor <span class="math" data-tex="\(F^+:\mathsf C^+\to\mathsf A\)">\(F^+:\mathsf C^+\to\mathsf A\)</span>, with a specified natural isomorphism <span class="math" data-tex="\(F^+P\simeq F\)">\(F^+P\simeq F\)</span>. Restriction along <span class="math" data-tex="\(P\)">\(P\)</span> is an equivalence from additive functors on <span class="math" data-tex="\(\mathsf C^+\)">\(\mathsf C^+\)</span> to ordinary functors on <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>.</p>
+<p><strong>Proof.</strong> Finite products and sums of abelian groups agree, pointwise. The empty product is the zero presheaf. Concatenating two finite families shows that <span class="math" data-tex="\(\mathsf C^+\)">\(\mathsf C^+\)</span> has finite biproducts; its groups of maps and bilinear composition come from the abelian presheaf category.</p>
+<p>Send a list <span class="math" data-tex="\((X_i)\)">\((X_i)\)</span> to <span class="math" data-tex="\(\bigoplus_iP_{X_i}\)">\(\bigoplus_iP_{X_i}\)</span>. A map between two such sums is determined by its entries <span class="math" data-tex="\(P_{X_i}\to P_{Y_r}\)">\(P_{X_i}\to P_{Y_r}\)</span>. Lemma 5.1 identifies each entry with a finite integer combination of maps <span class="math" data-tex="\(X_i\to Y_r\)">\(X_i\to Y_r\)</span>. Formula (5.3) verifies that entrywise composition is (4.1). This functor is thus fully faithful. It is essentially surjective by the definition of <span class="math" data-tex="\(\mathsf C^+\)">\(\mathsf C^+\)</span>, proving (5.5).</p>
+<p>Choose a quasi-inverse for (5.5), then apply (4.4). The resulting <span class="math" data-tex="\(F^+\)">\(F^+\)</span> and comparison give the asserted extension. The restriction equivalence, including every natural transformation, follows from the same composition of equivalences. If only the displayed finite products are chosen as objects, omitting other isomorphic copies, the equivalent full subcategory has the same conclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This model makes the two steps visible. Individual <span class="math" data-tex="\(P_X\)">\(P_X\)</span> already carry formal integer combinations of maps. Their finite sums carry the matrix operations. It adds no completion under arbitrary colimits or projector images.</p>
+<h2 id="6-four-exercises-with-complete-solutions">6. Four exercises with complete solutions</h2>
+<p><strong>Exercise 1 (warm-up: the arrow category as triangular matrices).</strong> Let <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> have two objects <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, their identities, and a single other map <span class="math" data-tex="\(u:a\to b\)">\(u:a\to b\)</span>. Write <span class="math" data-tex="\((a^m,b^n)\)">\((a^m,b^n)\)</span> for a list with <span class="math" data-tex="\(m\)">\(m\)</span> copies of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> copies of <span class="math" data-tex="\(b\)">\(b\)</span>. Describe all maps from <span class="math" data-tex="\((a^m,b^n)\)">\((a^m,b^n)\)</span> to <span class="math" data-tex="\((a^p,b^q)\)">\((a^p,b^q)\)</span> in its free additive completion. Give the composition formula. If <span class="math" data-tex="\(F\)">\(F\)</span> assigns abelian groups <span class="math" data-tex="\(A,B\)">\(A,B\)</span> and a homomorphism <span class="math" data-tex="\(h:A\to B\)">\(h:A\to B\)</span> to these data, describe its extension on every matrix.</p>
+<p><strong>Solution.</strong> In <span class="math" data-tex="\(\mathbb Z[\mathsf C]\)">\(\mathbb Z[\mathsf C]\)</span>, the endomorphism groups of <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, the group from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span> is <span class="math" data-tex="\(\mathbb Z[u]\)">\(\mathbb Z[u]\)</span>, and the group from <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span> is zero. Here <span class="math" data-tex="\(\mathbb Z[u]\)">\(\mathbb Z[u]\)</span> means the free abelian group on the single symbol <span class="math" data-tex="\(u\)">\(u\)</span>, not a polynomial ring. Thus a map has the block form</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{pmatrix}U&amp;0\\V&amp;W\end{pmatrix},\\
+U\in\operatorname{Mat}_{p,m}(\mathbb Z),\\
+V\in\operatorname{Mat}_{q,m}(\mathbb Z),\\
+W\in\operatorname{Mat}_{q,n}(\mathbb Z).
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+\begin{pmatrix}U&amp;0\\V&amp;W\end{pmatrix},\\
+U\in\operatorname{Mat}_{p,m}(\mathbb Z),\\
+V\in\operatorname{Mat}_{q,m}(\mathbb Z),\\
+W\in\operatorname{Mat}_{q,n}(\mathbb Z).
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>The entries of <span class="math" data-tex="\(V\)">\(V\)</span> are coefficients of <span class="math" data-tex="\(u\)">\(u\)</span>. Composing with a matrix <span class="math" data-tex="\(\left(\begin{smallmatrix}U&#x27;&amp;0\\V&#x27;&amp;W&#x27;\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}U&#x27;&amp;0\\V&#x27;&amp;W&#x27;\end{smallmatrix}\right)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+U&#x27;U&amp;0\\
+V&#x27;U+W&#x27;V&amp;W&#x27;W
+\end{pmatrix}.
+\tag{6.2}
+\]">\[
+\begin{pmatrix}
+U&#x27;U&amp;0\\
+V&#x27;U+W&#x27;V&amp;W&#x27;W
+\end{pmatrix}.
+\tag{6.2}
+\]</span>
+<p>Only identity compositions and compositions of <span class="math" data-tex="\(u\)">\(u\)</span> with identities occur, so this is ordinary block multiplication with the indicated integer coefficients.</p>
+<p>The extended object is <span class="math" data-tex="\(A^m\oplus B^n\)">\(A^m\oplus B^n\)</span>. Its map has blocks <span class="math" data-tex="\(U\)">\(U\)</span> acting by integer multiples of <span class="math" data-tex="\(1_A\)">\(1_A\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span> by integer multiples of <span class="math" data-tex="\(1_B\)">\(1_B\)</span>, and <span class="math" data-tex="\(V\)">\(V\)</span> by integer multiples of <span class="math" data-tex="\(h\)">\(h\)</span>; its upper-right block is zero. Bilinearity gives (6.2) after applying <span class="math" data-tex="\(F\)">\(F\)</span>, as required. Empty rows or columns describe zero objects and zero maps without additional conventions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 2 (intermediate: finite sums need not split projectors).</strong> Let <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> have one object and two maps <span class="math" data-tex="\(1,e\)">\(1,e\)</span>, with <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span> and <span class="math" data-tex="\(e\ne1\)">\(e\ne1\)</span>. Identify its linearized endomorphism ring with</p>
+<span class="math math-display" data-tex="\[
+R=\mathbb Z[t]/(t^2-t)\simeq\mathbb Z\times\mathbb Z.
+\tag{6.3}
+\]">\[
+R=\mathbb Z[t]/(t^2-t)\simeq\mathbb Z\times\mathbb Z.
+\tag{6.3}
+\]</span>
+<p>Show that its free additive completion is equivalent to the category of finite free <span class="math" data-tex="\(R\)">\(R\)</span>-modules. Prove that multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> on <span class="math" data-tex="\(R\)">\(R\)</span> has no splitting inside this category.</p>
+<p><strong>Solution.</strong> The two basis symbols <span class="math" data-tex="\(1,e\)">\(1,e\)</span> freely generate the endomorphism group. Their multiplication is <span class="math" data-tex="\(1\)">\(1\)</span> as identity and <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>, so <span class="math" data-tex="\(e\mapsto t\)">\(e\mapsto t\)</span> gives the first ring description. The map</p>
+<span class="math math-display" data-tex="\[
+a+bt\longmapsto(a,a+b)
+\tag{6.4}
+\]">\[
+a+bt\longmapsto(a,a+b)
+\tag{6.4}
+\]</span>
+<p>is a ring homomorphism to <span class="math" data-tex="\(\mathbb Z\times\mathbb Z\)">\(\mathbb Z\times\mathbb Z\)</span>. It is bijective: <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> has preimage <span class="math" data-tex="\(x+(y-x)t\)">\(x+(y-x)t\)</span>. This proves (6.3), without any coprimality assumption.</p>
+<p>A list of length <span class="math" data-tex="\(n\)">\(n\)</span> has maps given by matrices over <span class="math" data-tex="\(R\)">\(R\)</span>. Sending it to <span class="math" data-tex="\(R^n\)">\(R^n\)</span> identifies matrix composition and all module homomorphisms between these finite free modules, proving the equivalence. Commutativity of <span class="math" data-tex="\(R\)">\(R\)</span> makes left and right module conventions agree here.</p>
+<p>Under (6.4), multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> is the projector with image <span class="math" data-tex="\(0\times\mathbb Z\)">\(0\times\mathbb Z\)</span>. If it split through a finite free module <span class="math" data-tex="\(R^n\)">\(R^n\)</span>, the splitting inclusion would identify <span class="math" data-tex="\(R^n\)">\(R^n\)</span> with that image: <span class="math" data-tex="\(ab=t\)">\(ab=t\)</span>, <span class="math" data-tex="\(ba=1\)">\(ba=1\)</span> imply that the image of <span class="math" data-tex="\(a\)">\(a\)</span> equals the image of <span class="math" data-tex="\(t\)">\(t\)</span>. Multiplying this alleged isomorphism by the central projector <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> gives an isomorphism <span class="math" data-tex="\(\mathbb Z^n\simeq0\)">\(\mathbb Z^n\simeq0\)</span>. Thus <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, since a nonempty free group has a nonzero basis vector. But the alleged image has a nonzero second component. This contradiction proves the nonsplitting. The free additive completion is therefore not idempotent complete. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 3 (hard: all transformations, and what uniqueness means).</strong> Take <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> to have one object and only its identity. For an abelian group <span class="math" data-tex="\(A\)">\(A\)</span>, let <span class="math" data-tex="\(E_A\)">\(E_A\)</span> be the additive functor from its free additive completion to <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span> sending a list of length <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\(A^n\)">\(A^n\)</span>, and integer matrices to their usual actions. Prove</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Nat}(E_A,E_B)\simeq\operatorname{Hom}_{\mathsf{Ab}}(A,B).
+\tag{6.5}
+\]">\[
+\operatorname{Nat}(E_A,E_B)\simeq\operatorname{Hom}_{\mathsf{Ab}}(A,B).
+\tag{6.5}
+\]</span>
+<p>Determine the natural automorphisms of <span class="math" data-tex="\(E_{\mathbb Z}\)">\(E_{\mathbb Z}\)</span>. Explain why a fixed identity comparison on the one-object category singles out exactly one automorphism.</p>
+<p><strong>Solution.</strong> A group homomorphism <span class="math" data-tex="\(v:A\to B\)">\(v:A\to B\)</span> gives components <span class="math" data-tex="\(v^n:A^n\to B^n\)">\(v^n:A^n\to B^n\)</span>. They commute with every integer matrix since <span class="math" data-tex="\(v(rx+sy)=rv(x)+sv(y)\)">\(v(rx+sy)=rv(x)+sv(y)\)</span>. The component at zero is the unique map of zero groups. Thus they form a natural transformation.</p>
+<p>Conversely, its component at the singleton is a homomorphism <span class="math" data-tex="\(v:A\to B\)">\(v:A\to B\)</span>. Naturality for the <span class="math" data-tex="\(n\)">\(n\)</span> singleton inclusions forces the <span class="math" data-tex="\(n\)">\(n\)</span>-th component to restrict to <span class="math" data-tex="\(v\)">\(v\)</span> on each corresponding summand, with zero in the other coordinates. Those restrictions determine the map from the biproduct, so the component is exactly <span class="math" data-tex="\(v^n\)">\(v^n\)</span>. This proves (6.5).</p>
+<p>Every endomorphism of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is multiplication by its value on <span class="math" data-tex="\(1\)">\(1\)</span>, an integer <span class="math" data-tex="\(r\)">\(r\)</span>. It is invertible exactly when some integer <span class="math" data-tex="\(s\)">\(s\)</span> has <span class="math" data-tex="\(rs=1\)">\(rs=1\)</span>, hence exactly for <span class="math" data-tex="\(r=1\)">\(r=1\)</span> and <span class="math" data-tex="\(r=-1\)">\(r=-1\)</span>. Both give distinct natural automorphisms of <span class="math" data-tex="\(E_{\mathbb Z}\)">\(E_{\mathbb Z}\)</span>. Therefore an unrestricted isomorphism between two extensions need not be unique. Requiring compatibility with the identity comparison on the singleton forces <span class="math" data-tex="\(v=1_{\mathbb Z}\)">\(v=1_{\mathbb Z}\)</span>; the preceding determination forces the identity on every list. This is the precise uniqueness used in (4.4) and Theorem 5.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 4 (advanced: an adjunction chain for arrows).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field, and let <span class="math" data-tex="\(\mathsf V\)">\(\mathsf V\)</span> be the category of finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-spaces. Its arrow category has objects <span class="math" data-tex="\(h:X_0\to X_1\)">\(h:X_0\to X_1\)</span> and maps commuting squares. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(A)=(0\to A),\\
+D(A)=(A\xrightarrow{1}A),\\
+R(A)=(A\to0),\\
+e_i(h)=X_i.
+\end{gathered}
+\tag{6.6}
+\]">\[
+\begin{gathered}
+S(A)=(0\to A),\\
+D(A)=(A\xrightarrow{1}A),\\
+R(A)=(A\to0),\\
+e_i(h)=X_i.
+\end{gathered}
+\tag{6.6}
+\]</span>
+<p>Show that there is a chain of adjunctions</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{coker}\dashv S\dashv e_1\dashv D,\\
+D\dashv e_0\dashv R\dashv\ker.
+\end{gathered}
+\tag{6.7}
+\]">\[
+\begin{gathered}
+\operatorname{coker}\dashv S\dashv e_1\dashv D,\\
+D\dashv e_0\dashv R\dashv\ker.
+\end{gathered}
+\tag{6.7}
+\]</span>
+<p>Identify every Hom bijection and verify its naturality. Show that all seven functors are additive, but <span class="math" data-tex="\(\operatorname{coker}\)">\(\operatorname{coker}\)</span> is not left exact and <span class="math" data-tex="\(\ker\)">\(\ker\)</span> is not right exact.</p>
+<p><strong>Solution.</strong> A square from <span class="math" data-tex="\(h:X_0\to X_1\)">\(h:X_0\to X_1\)</span> to <span class="math" data-tex="\(h&#x27;:Y_0\to Y_1\)">\(h&#x27;:Y_0\to Y_1\)</span> is a pair <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> with <span class="math" data-tex="\(h&#x27;u=vh\)">\(h&#x27;u=vh\)</span>. This description gives the following six bijections.</p>
+<table>
+<thead>
+<tr>
+<th>Squares</th>
+<th>Corresponding maps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(h\to S(A)\)">\(h\to S(A)\)</span></td>
+<td><span class="math" data-tex="\(\operatorname{coker}h\to A\)">\(\operatorname{coker}h\to A\)</span>, by factoring <span class="math" data-tex="\(v:X_1\to A\)">\(v:X_1\to A\)</span> with <span class="math" data-tex="\(vh=0\)">\(vh=0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(S(A)\to h\)">\(S(A)\to h\)</span></td>
+<td><span class="math" data-tex="\(A\to X_1\)">\(A\to X_1\)</span>, with the first component zero</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(h\to D(A)\)">\(h\to D(A)\)</span></td>
+<td><span class="math" data-tex="\(X_1\to A\)">\(X_1\to A\)</span>, with the first component forced to be <span class="math" data-tex="\(vh\)">\(vh\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(D(A)\to h\)">\(D(A)\to h\)</span></td>
+<td><span class="math" data-tex="\(A\to X_0\)">\(A\to X_0\)</span>, with the second component forced to be <span class="math" data-tex="\(hu\)">\(hu\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(h\to R(A)\)">\(h\to R(A)\)</span></td>
+<td><span class="math" data-tex="\(X_0\to A\)">\(X_0\to A\)</span>, with the second component zero</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(R(A)\to h\)">\(R(A)\to h\)</span></td>
+<td><span class="math" data-tex="\(A\to\ker h\)">\(A\to\ker h\)</span>, by factoring <span class="math" data-tex="\(u:A\to X_0\)">\(u:A\to X_0\)</span> with <span class="math" data-tex="\(hu=0\)">\(hu=0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The inverse in each row either inserts the forced component or uses the kernel inclusion or cokernel projection. Each is uniquely determined. Composing squares composes the selected component; the induced kernel and cokernel maps are defined by their universal properties. Thus the bijections commute with precomposition and postcomposition, proving their naturality and all adjunctions in (6.7).</p>
+<p>The arrow category is additive: add squares componentwise, and take zero and finite biproducts at both endpoints. The functors <span class="math" data-tex="\(S,D,R,e_0,e_1\)">\(S,D,R,e_0,e_1\)</span> preserve those group additions directly. Theorem 2.1 now gives additivity of <span class="math" data-tex="\(\operatorname{coker}\)">\(\operatorname{coker}\)</span> and <span class="math" data-tex="\(\ker\)">\(\ker\)</span> as well.</p>
+<p>Kernels and cokernels of squares are formed at both endpoints; the equation <span class="math" data-tex="\(h&#x27;u=vh\)">\(h&#x27;u=vh\)</span> induces the required map between the endpoint kernels or cokernels. Their componentwise universal properties give the square universal properties. The ordinary coimage-to-image comparison is an isomorphism at both endpoints, so the arrow category is abelian. In particular the following endpointwise short exact sequence is short exact in it:</p>
+<span class="math math-display" data-tex="\[
+0\to S(k)\to D(k)\to R(k)\to0.
+\tag{6.8}
+\]">\[
+0\to S(k)\to D(k)\to R(k)\to0.
+\tag{6.8}
+\]</span>
+<p>The first square is <span class="math" data-tex="\((0,1_k)\)">\((0,1_k)\)</span>, and the second is <span class="math" data-tex="\((1_k,0)\)">\((1_k,0)\)</span>. Applying <span class="math" data-tex="\(\operatorname{coker}\)">\(\operatorname{coker}\)</span> gives <span class="math" data-tex="\(0\to k\to0\to0\to0\)">\(0\to k\to0\to0\to0\)</span>, which is not exact at <span class="math" data-tex="\(k\)">\(k\)</span>. Applying <span class="math" data-tex="\(\ker\)">\(\ker\)</span> gives <span class="math" data-tex="\(0\to0\to0\to k\to0\)">\(0\to0\to0\to k\to0\)</span>, also not exact at its nonzero term. This proves the claimed failures while keeping additivity and all adjunctions intact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project Authors, AI-integrated fork at the linked immutable revision, <em>Homology</em>: complete <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/homology.tex#L70">zero-object proof</a>, <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/homology.tex#L107">product-to-coproduct proof</a> and <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/homology.tex#L1470">binary additive-functor proof</a>. GFDL 1.2 or later; referenced without copying source text. The exact zero-factorization and both coordinate universals are retained from the complete owned addition lesson.</li>
+<li>Mathlib source attribution: the free-module and later free linear category constructions, and the matrix category, have copyright © Kim Morrison 2021; the free-module module also credits Johan Commelin. Additive adjunctions have copyright © Sophie Morel 2024 and credit Sophie Morel and Joël Riou. These Apache-2.0 sources are referenced without copying code. The full arguments and all transformations required here are given above.</li>
+<li>The complete owned module and coimage proofs are retained through the links in Section 2. The linked pointwise lesson remains CC BY-NC-SA 4.0, including its Tom Leinster attribution and disclaimer; no text from that lesson is copied here.</li>
+<li>The Stacks Project. <a href="https://stacks.math.columbia.edu/tag/09SE">Preadditive and additive categories</a> and <a href="https://stacks.math.columbia.edu/tag/010M">Additive functors</a>. We use the zero and biproduct criteria and the binary preservation characterization of additivity.</li>
+<li>The Mathlib Community. <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Category/ModuleCat/Adjunctions.html">Free linear categories</a>, <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Preadditive/Mat.html">Matrix categories and additive envelopes</a>, and <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Adjunction/Additive.html">Additive adjunctions</a>.</li>
+</ul>
+</main></body></html>

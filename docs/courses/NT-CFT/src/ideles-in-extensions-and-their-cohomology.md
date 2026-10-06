@@ -1,0 +1,244 @@
+# Idèles in extensions and their cohomology
+
+*Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).*
+
+A field extension replaces a place by the places above it. Its idèle norm multiplies the corresponding local norms. This lets us compute cyclic cohomology one place at a time. The resulting quotient of the idèle group is usually infinite; the principal idèles impose relations between those local obstructions.
+
+We use the definitions and restricted product topology in *Idèles and the idèle class group*, lesson 3 of *Adèles and L-functions*, the Hilbert 90 proof in [Hilbert's theorem 90 and Kummer theory](hilberts-theorem-90-and-kummer-theory.md), and finite local reciprocity in [Local reciprocity and norm groups](local-reciprocity-and-norm-groups.md). The cyclic Tate groups and Herbrand quotient are defined in [Cohomology of cyclic groups and the Herbrand quotient](cohomology-of-cyclic-groups-and-the-herbrand-quotient.md).
+
+Let \(K\) be a global field and \(L/K\) a finite separable extension. A global field means a number field or a finite extension of a finite-field rational function field. For a place \(v\) of \(K\), write \(w\mid v\) for its extensions to \(L\). The arguments below apply to either kind of global field. There are no archimedean places in the function-field case.
+
+
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-13) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+
+## 1. Embeddings and norms
+
+Write
+\[
+J_K=\prod_v'K_v^\times,\qquad C_K=J_K/K^\times,
+\]
+where the restricted product uses \(U_v=\mathcal O_v^\times\) at finite places. If \(S\) is a finite set containing the archimedean places, let \(S_L\) be its inverse image and put
+\[
+J_L^S=\prod_{w\in S_L}L_w^\times\times
+                \prod_{w\notin S_L}U_w.
+\tag{1}
+\]
+These are open subgroups, and their union is \(J_L\).
+
+We recall the local decomposition in a form that also fixes the norm:
+\[
+L\otimes_K K_v\simeq\prod_{w\mid v}L_w,\qquad
+\sum_{w\mid v}[L_w:K_v]=[L:K].
+\tag{2}
+\]
+Indeed, write \(L=K[T]/(f)\) by a primitive element, factor its separable polynomial over \(K_v\), and apply the polynomial Chinese remainder theorem. Its irreducible factors give the finite extensions of \(K_v\). The image of \(K[T]/(f)\) is dense in each such field, since \(K\) is dense in \(K_v\) and powers of its generator span that field. Thus those factors are exactly the completions at the extensions of \(v\), proving (2).
+
+In the Galois case, \(L_w\) contains the images of all conjugates of the primitive element, since they already belong to \(L\). Thus it splits \(f\), and \(L_w/K_v\) is Galois. Any local automorphism sends that primitive element to a global conjugate, so it preserves the dense subfield \(L\) and restricts to an element of \(G\) preserving \(w\). Conversely every such global element extends continuously. This identifies the local group with \(G_w\). Finally every other local factor has a root of \(f\), which is some global conjugate in \(L_w\); the resulting embedding is the embedding of \(L\) twisted by that global automorphism. Its induced place is a conjugate of \(w\). Hence \(G\) acts transitively on the places above \(v\).
+
+Only finitely many places ramify. One way to see the finiteness needed here is to choose a primitive element integral after excluding finitely many denominators. Its nonzero discriminant is a unit outside a finite further set. At such a finite place the reduction of its polynomial is separable; lifting its relatively prime factors gives unramified local factors. For a number field use integer rings; for a function field use the integral closure of a finite-field polynomial ring and include the places over infinity. This argument proves the same finite exceptional-set assertion in both cases.
+
+### Proposition 13.1. Extension and norm maps
+
+The diagonal embeddings at the places above \(v\) define a continuous injection \(J_K\hookrightarrow J_L\). The continuous norm is
+\[
+(N_{L/K}x)_v=\prod_{w\mid v}N_{L_w/K_v}(x_w).
+\tag{3}
+\]
+It sends principal idèles to their ordinary field norms, is transitive in towers, and sends an embedded \(a\in J_K\) to \(a^{[L:K]}\). It induces maps
+\[
+C_K\hookrightarrow C_L,\qquad N_{L/K}:C_L\longrightarrow C_K.
+\tag{4}
+\]
+
+**Proof.** A local unit stays a unit on extension, and the norm of a local unit is a unit. Thus both formulas give idèles and are continuous on every restricted product chart. The diagonal map is injective because each component embedding is injective.
+
+In (2), multiplication by \((x_w)\) is the product of the multiplication operators on the factors, so its determinant is (3). For a principal element \(x\in L^\times\), this operator is the scalar extension of multiplication by \(x\) on the \(K\)-vector space \(L\). Its determinant is therefore \(N_{L/K}(x)\), independently of \(v\). Transitivity follows from field-norm transitivity at the completions and regrouping the places. For \(a_v\in K_v^\times\), the determinant is \(a_v^{[L:K]}\) by (2).
+
+To prove the first injection in (4), we need \(J_K\cap L^\times=K^\times\). Embed \(L\) in a finite Galois extension \(M/K\). A diagonal idèle from \(J_K\) is fixed by \(\operatorname{Gal}(M/K)\). If it is the principal idèle of \(x\in L^\times\), each automorphism therefore fixes \(x\) in every completion and hence fixes \(x\) as an element of \(M\). Thus \(x\in K^\times\). The norm map descends because of the principal-element calculation. ∎
+
+For Galois \(L/K\), the norm (3) is also the group-module norm \(\prod_{g\in G}g(x)\). This follows either from the determinant or by grouping the embeddings according to the place they induce.
+
+## 2. Galois descent for classes
+
+Assume \(L/K\) Galois, with \(G=\operatorname{Gal}(L/K)\). Its action on idèles is
+\[
+(g x)_w=g(x_{g^{-1}w}).
+\tag{5}
+\]
+Here the last \(g\) denotes the induced isomorphism of completions.
+
+### Proposition 13.2. Fixed idèles and fixed classes
+
+With the embeddings just defined,
+\[
+J_L^G=J_K,\qquad C_L^G=C_K.
+\tag{6}
+\]
+
+**Proof.** Fix \(w\mid v\) and its decomposition group \(G_w\). The local field \(L_w/K_v\) is Galois with group \(G_w\); this follows also from (2), since the global automorphisms permute its factors transitively and the stabilizer acts on one factor. A fixed idèle has \(x_w\in L_w^{G_w}=K_v\). Transitivity on the places above \(v\) then makes all their components the image of the same element of \(K_v^\times\). Almost all of these elements are units, proving the first equality.
+
+A fixed class need not initially have a fixed representative. If \([x]\in C_L^G\), define
+\[
+a_g=\frac{g(x)}x\in L^\times.
+\]
+These principal elements satisfy \(a_{gh}=a_g\,g(a_h)\). The full, noncyclic Hilbert 90 theorem proved in lesson 3 gives \(a_g=g(b)/b\) for some \(b\in L^\times\). Consequently \(x/b\) is fixed by every \(g\), hence belongs to \(J_K\), and represents \([x]\). Proposition 13.1 gives injectivity, proving the second equality. ∎
+
+This is the invariant part of the exact sequence \(1\to L^\times\to J_L\to C_L\to1\). Hilbert 90 supplies the surjectivity that invariants alone would not preserve.
+
+## 3. A cyclic induction calculation
+
+Suppose \(G=\langle\sigma\rangle\) has order \(n\). Let \(H=\langle\tau\rangle\), \(\tau=\sigma^r\), be a subgroup, with \(r=[G:H]\). We use additive notation for an abelian \(H\)-module \(M\). Its induced module is \(B=M^r\), with
+\[
+\sigma(x_0,\ldots,x_{r-1})=(\tau x_{r-1},x_0,\ldots,x_{r-2}).
+\tag{7}
+\]
+
+**Lemma.** For \(i=0,-1\),
+\[
+\widehat H^i(G,B)\simeq\widehat H^i(H,M).
+\tag{8}
+\]
+
+**Proof.** Invariants in (7) are diagonal vectors \((a,\ldots,a)\) with \(a\in M^H\). If \(N_H=1+\tau+\cdots+\tau^{n/r-1}\), then
+\[
+N_G(x_0,\ldots,x_{r-1})
+=(N_H\textstyle\sum x_i,\ldots,N_H\sum x_i).
+\tag{9}
+\]
+Thus invariants modulo norms give (8) in degree zero.
+
+Summing coordinates modulo \((\tau-1)M\) identifies
+\[
+B/(\sigma-1)B\simeq M/(\tau-1)M.
+\tag{10}
+\]
+To check the kernel as well as surjectivity, in the left quotient each coordinate vector is equivalent to a vector in the first coordinate, by successive applications of \(\sigma\). Returning after \(r\) steps identifies its value with its image under \(\tau\). These are precisely the relations in the right quotient; placing a value in the first coordinate gives the inverse. Under (10), the norm to invariants is exactly \(N_H\), by (9). Its kernel is \(\widehat H^{-1}\), proving the other case. ∎
+
+For a chosen \(w\mid v\), the identifications \(L_w\simeq L_{\sigma^i w}\) identify
+\[
+B_v=\prod_{w'\mid v}L_{w'}^\times
+ \simeq\operatorname{Ind}_{G_w}^G L_w^\times.
+\tag{11}
+\]
+The same holds for the unit groups at finite places. This is (7) written multiplicatively, not a trivial permutation action on the factors.
+
+## 4. The restricted product contributes a direct sum
+
+For a cyclic unramified local extension, both Tate groups of its units vanish. The unit norm is surjective by the unramified norm theorem used in lesson 6. For the other group, Hilbert 90 writes a norm-one unit as \(\tau(b)/b\). Since an unramified extension has the same valuation group and a ground-field uniformizer, divide \(b\) by the ground-field uniformizer to the power \(v(b)\). This makes \(b\) a unit without changing its coboundary. Thus
+\[
+\widehat H^0(G_w,U_w)=\widehat H^{-1}(G_w,U_w)=0
+\quad\text{at an unramified finite place.}
+\tag{12}
+\]
+
+### Proposition 13.3. Local decomposition of idèle cohomology
+
+For cyclic \(L/K\) and \(i=0,-1\), restriction to the local factors gives
+\[
+\widehat H^i(G,J_L)
+\simeq\bigoplus_v\widehat H^i(G_w,L_w^\times).
+\tag{13}
+\]
+In particular,
+\[
+J_K/N_{L/K}J_L
+\simeq\bigoplus_v K_v^\times/N_{L_w/K_v}L_w^\times,
+\qquad
+\widehat H^{-1}(G,J_L)=0.
+\tag{14}
+\]
+One place \(w\) above each \(v\) is chosen; changing it transports the same local quotient by a \(K_v\)-isomorphism.
+
+**Proof.** Take finite \(S\) containing the archimedean and ramified places. Invariants, the norm kernel and the image of \(\sigma-1\) commute with arbitrary products of modules: the assertions are componentwise, and for the image choose one preimage in each component. Hence (8), (11) and (12) give
+\[
+\widehat H^i(G,J_L^S)
+=\prod_{v\in S}\widehat H^i(G_w,L_w^\times).
+\tag{15}
+\]
+There is no tail contribution. Passing to the union over finite \(S\) changes this finite product into a direct sum. More explicitly, a norm-zero or fixed representative belongs to some \(J_L^S\), and a relation exhibiting a norm or coboundary also belongs to some such chart; only finitely many group operations occur. Thus kernels and the relevant images pass to the filtered union, proving (13).
+
+Degree zero is invariants modulo norms, and (6) identifies invariants with \(J_K\). Local degree zero is \(K_v^\times/N L_w^\times\), proving the first formula in (14). The local degree-minus-one group is zero by Hilbert 90, including at archimedean fields. This proves the last assertion. ∎
+
+There is a concrete interpretation of the first formula. A fixed idèle is a unit at almost all unramified places, and those units are local norms. Thus it has only finitely many nonzero obstruction classes. Conversely any finite list of local classes can be represented by an idèle. If all its local classes vanish, choose norm preimages that are units outside a finite set, using (12); these preimages form an idèle whose norm is the given one.
+
+## 5. The quotient for a finite set of places
+
+### Proposition 13.4. The Herbrand quotient of \(S\)-idèles
+
+For cyclic \(L/K\), with \(S\) finite and containing all archimedean and ramified places,
+\[
+h(G,J_L^S)=\prod_{v\in S}[L_w:K_v].
+\tag{16}
+\]
+
+**Proof.** Formula (15) makes both Tate groups finite. For a finite cyclic extension of nonarchimedean local fields, finite reciprocity gives norm index \([L_w:K_v]\), and Hilbert 90 gives degree-minus-one group zero. Their Herbrand quotient is therefore \([L_w:K_v]\). At a real place that becomes complex, the norm image is \(\mathbf R_{>0}\), of index 2, and a norm-one complex number is \(z/\bar z\); hence the same quotient is 2. Every other archimedean local degree is 1 and contributes 1. Multiply these local orders in (15), with no tail contribution by (12). ∎
+
+The quotient \(h(G,J_L)\) need not be defined: its degree-zero Tate group may be infinite. Formula (16) concerns the specified open subgroup, not the whole idèle group.
+
+## 6. An infinite local quotient and a finite class quotient
+
+Consider \(L=\mathbf Q(i)\), \(K=\mathbf Q\). At an odd prime \(p\), the polynomial \(T^2+1\) splits if \(p\equiv1\pmod4\), and otherwise gives the unramified quadratic extension. This follows from cyclicity of the residue-field units and the simple-root lifting theorem. At 2 its completion is the ramified quadratic field \(\mathbf Q_2(i)\). The real completion becomes complex.
+
+The norm groups proved in lessons 6 and 10 therefore give
+\[
+J_{\mathbf Q}/N J_{\mathbf Q(i)}
+\simeq \mathbf Z/2\ \oplus\ \mathbf Z/2\
+        \oplus\!\!\bigoplus_{p\equiv3\ (4)}\mathbf Z/2.
+\tag{17}
+\]
+The first coordinate is the real sign. The second sends \(x_2=2^\alpha u\) to the class of its odd unit \(u\) modulo \(1+4\mathbf Z_2\). The \(p\)-coordinate is \(v_p(x_p)\) modulo 2. Split primes contribute zero.
+
+There are infinitely many primes \(3\pmod4\): from a putative finite list take \(4\prod p-1\). It is \(3\pmod4\), none of the listed primes divides it, and some prime factor is \(3\pmod4\), since a product of primes all \(1\pmod4\) cannot be \(3\pmod4\). Thus (17) is infinite.
+
+We can also compute the class quotient here without assuming global reciprocity. Let \(e_\infty,e_2,e_p\) be the coordinate generators in (17). The image of the principal idèle \(-1\) is \(e_\infty+e_2\); that of a prime \(p\equiv3\pmod4\) is \(e_2+e_p\). Principal primes \(1\pmod4\) and the prime 2 have zero image. These elements generate the full principal image, since \(\mathbf Q^\times\) is generated by \(-1\) and its primes. The quotient by these relations identifies every coordinate generator with \(e_2\), and the sum of all coordinates remains a nonzero invariant. Consequently
+\[
+C_{\mathbf Q}/N C_{\mathbf Q(i)}\simeq\mathbf Z/2.
+\tag{18}
+\]
+Every sum here has finite support. The passage from (17) to (18) displays the relations imposed by principal idèles.
+
+## 7. Exercises with solutions
+
+### Exercise 1. The norm image is open — easy
+
+For finite separable \(L/K\), prove that \(N J_L\) is open in \(J_K\).
+
+**Solution.** A norm subgroup for any finite extension of nonarchimedean local fields is open: embed it in a finite Galois extension, whose norm subgroup is open by local reciprocity, and use norm transitivity to put that open subgroup inside the original norm image. At infinity a norm image is the whole local multiplicative group or the positive real subgroup; both are open. Choose finite \(S\) containing ramification and infinity. At each \(v\in S\), the product of the local norm images is an open subgroup \(V_v\subset K_v^\times\). Outside \(S\), every unit is a norm of a unit from any one unramified factor. Thus
+\[
+\prod_{v\in S}V_v\times\prod_{v\notin S}U_v
+\subset N J_L.
+\]
+Choose the corresponding preimages componentwise; their unit tails make them idèles. The displayed group is an open identity neighborhood, so the subgroup \(N J_L\) is open. Infinite index is compatible with openness.
+
+### Exercise 2. Fixed classes — medium
+
+Prove that every \(G\)-fixed idèle class has a fixed representative. Identify where Hilbert 90 enters.
+
+**Solution.** Choose representative \(x\). Fixedness means \(g(x)/x=a_g\in L^\times\), and the action gives \(a_{gh}=a_g g(a_h)\). Hilbert 90 for the full finite Galois group gives \(a_g=g(b)/b\). Then \(g(x/b)=x/b\), so the representative is in \(J_L^G=J_K\). Its class is unchanged. Injection follows from \(J_K\cap L^\times=K^\times\). The cocycle could not be removed merely by applying an exactness claim to invariants; Hilbert 90 is precisely the missing surjectivity step.
+
+### Exercise 3. The quadratic rational example — medium
+
+Describe the quotient in (17), provide a representative for each coordinate generator, and derive (18).
+
+**Solution.** For \(e_\infty\), use real component \(-1\) and all finite components 1. For \(e_2\), use component 3 at 2 and all other components 1. For \(e_p\), use a uniformizer \(p\) at that inert prime and 1 elsewhere. Their local norms fail exactly at the indicated place. Local unramified norms have even valuation and arbitrary unit; the norm group at 2 is \(2^{\mathbf Z}(1+4\mathbf Z_2)\); the real norm is positive; at split primes it is surjective. This proves the coordinate description, its independence and its exhaustiveness by (14). On principal elements, \(-1\) gives \(e_\infty+e_2\), each inert prime gives \(e_2+e_p\), and the remaining prime generators give zero. Quotienting by their span identifies all generators, leaving a single group of order 2 detected by the sum of coordinates. This is the class quotient because \(N C_L\) is the image of \(N J_L\) after quotienting by \(\mathbf Q^\times\).
+
+### Exercise 4. Proving the decomposition directly — hard
+
+Prove both degrees of (13), keeping track of restricted-product support and the twisted action on a block.
+
+**Solution.** For a place block choose the cosets \(1,\sigma,\ldots,\sigma^{r-1}\) of \(G_w=\langle\sigma^r\rangle\), and identify the components using these automorphisms. The action is the twisted cycle (7). Its invariants are diagonal \(G_w\)-invariants; its norm is (9). Thus degree zero reduces to the local degree-zero quotient. The sum map (10), with inverse given by the first coordinate, reduces the kernel of the norm on coinvariants to \(\ker N_{G_w}/(\sigma^r-1)L_w^\times\); this proves degree minus one, too.
+
+An idèle belongs to a chart with only finitely many unrestricted places. At every remaining place the unit Tate groups vanish by unramified unit norms and the unit-adjusted Hilbert 90 argument. For the product of those tails, choose the local preimages all in unit blocks, so they form a restricted-product preimage. Hence the chart's cohomology is the finite product in (15). A representative or a finite algebraic relation involves only one sufficiently large chart. Taking their union therefore produces the direct sum over all places, not an unrestricted product of local obstruction groups.
+
+## Editable edition
+
+The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.
+
+## References
+
+Section 1 gives the local tensor decomposition from the primitive element and polynomial remainder lemmas of lesson 1. Subsequent sections prove norms, invariant class descent and the induced local calculation in the restricted product.
+
+- [Jürgen Neukirch, Class Field Theory — The Bonn Lectures, Online Edition 2.0 (May 2015), edited by Alexander Schmidt](https://www.mathi.uni-heidelberg.de/~schmidt/Neukirch-en/Neukirch_cft_02_may15.pdf).
+- [Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition](https://kskedlaya.org/cft/sec_abstractcft1.html).
+
+The [proof guide](../FREE_PROOFS.md) gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.

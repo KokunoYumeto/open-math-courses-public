@@ -1,0 +1,214 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Semisimple rings and Wedderburn&#x27;s theorem</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="semisimple-rings-and-wedderburn-s-theorem">Semisimple rings and Wedderburn's theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An invariant subspace need not have an invariant complement. The simplest obstruction is the strictly upper triangular part of a triangular matrix algebra. This lesson isolates that obstruction as the Jacobson radical. Removing it from an Artinian ring leaves a product of full matrix rings over division rings. The result applies to arbitrary unital rings; no ground field is needed.</p>
+<p>The prerequisite is <a href="../support/NOE-HYP--NOE-HYP-01.html">Groups with operators</a>, especially Schur's lemma, complete reducibility and finite-length modules. Basic references are [MIT], [Voight] and [Noether]. We use left modules. Endomorphisms multiply by composition, and every algebra and ring homomorphism preserves the identity.</p>
+<h2 id="1-projections-inside-a-ring">1. Projections inside a ring</h2>
+<p>An <strong>idempotent</strong> is an element <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>. It gives the left-module decomposition</p>
+<span class="math math-display" data-tex="\[
+R=Re\oplus R(1-e).
+\]">\[
+R=Re\oplus R(1-e).
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(r=re+r(1-e)\)">\(r=re+r(1-e)\)</span>, and multiplying an element of the intersection on the right by <span class="math" data-tex="\(e\)">\(e\)</span> makes it both itself and zero. Conversely, a projection <span class="math" data-tex="\(p\)">\(p\)</span> of the left regular module has the form <span class="math" data-tex="\(p(r)=re\)">\(p(r)=re\)</span>, where <span class="math" data-tex="\(e=p(1)\)">\(e=p(1)\)</span>; its square equals itself exactly when <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>.</p>
+<p>For orthogonal idempotents <span class="math" data-tex="\(e_1,\ldots,e_t\)">\(e_1,\ldots,e_t\)</span> with <span class="math" data-tex="\(\sum e_i=1\)">\(\sum e_i=1\)</span>, there is the <strong>Peirce decomposition</strong></p>
+<span class="math math-display" data-tex="\[
+R=\bigoplus_{i,j}e_iRe_j
+\]">\[
+R=\bigoplus_{i,j}e_iRe_j
+\]</span>
+<p>as an additive group. Every <span class="math" data-tex="\(r\)">\(r\)</span> is the sum of <span class="math" data-tex="\(e_i r e_j\)">\(e_i r e_j\)</span>. Multiplication by <span class="math" data-tex="\(e_i\)">\(e_i\)</span> and <span class="math" data-tex="\(e_j\)">\(e_j\)</span> retrieves that component, proving directness. Products satisfy</p>
+<span class="math math-display" data-tex="\[
+(e_iRe_j)(e_kRe_l)=0\quad(j\ne k),
+\qquad (e_iRe_j)(e_jRe_l)\subseteq e_iRe_l.
+\]">\[
+(e_iRe_j)(e_kRe_l)=0\quad(j\ne k),
+\qquad (e_iRe_j)(e_jRe_l)\subseteq e_iRe_l.
+\]</span>
+<p>The diagonal corners are rings with identities <span class="math" data-tex="\(e_i\)">\(e_i\)</span>. The off-diagonal corners describe how the corresponding pieces interact.</p>
+<p>If each <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is central, all off-diagonal corners vanish, and <span class="math" data-tex="\(R\simeq\prod e_iR\)">\(R\simeq\prod e_iR\)</span> as rings. Conversely, a ring product decomposition supplies these central idempotents. In a left Artinian ring, repeated splitting by nontrivial central idempotents terminates: an endless choice of a factor that still splits would produce a strictly descending chain of nonzero left ideals. The resulting factors are called <strong>blocks</strong>. A block need not be a simple ring: a local ring such as <span class="math" data-tex="\(k[t]/(t^2)\)">\(k[t]/(t^2)\)</span> has one block and still has a nonzero radical.</p>
+<h2 id="2-the-elements-that-annihilate-every-simple-module">2. The elements that annihilate every simple module</h2>
+<p>The <strong>Jacobson radical</strong> <span class="math" data-tex="\(J=J(R)\)">\(J=J(R)\)</span> is the intersection of the annihilators of all simple left <span class="math" data-tex="\(R\)">\(R\)</span>-modules. Each annihilator is a two-sided ideal, so <span class="math" data-tex="\(J\)">\(J\)</span> is a two-sided ideal. A nonzero unital ring has maximal left ideals, by Zorn's lemma: a chain of proper left ideals cannot contain <span class="math" data-tex="\(1\)">\(1\)</span> in its union.</p>
+<h3 id="lemma-2-1-three-descriptions-of-the-radical">Lemma 2.1. Three descriptions of the radical</h3>
+<p>For <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(a\in J\)">\(a\in J\)</span>.</li>
+<li><span class="math" data-tex="\(a\)">\(a\)</span> belongs to every maximal left ideal.</li>
+<li><span class="math" data-tex="\(1-ra\)">\(1-ra\)</span> is a unit for every <span class="math" data-tex="\(r\in R\)">\(r\in R\)</span>.</li>
+</ol>
+<p>Every left ideal all of whose elements are nilpotent is contained in <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(a\)">\(a\)</span> annihilates every simple module, it annihilates <span class="math" data-tex="\(R/P\)">\(R/P\)</span> for every maximal left ideal <span class="math" data-tex="\(P\)">\(P\)</span>, so <span class="math" data-tex="\(a\in P\)">\(a\in P\)</span>. Conversely, for any nonzero element <span class="math" data-tex="\(v\)">\(v\)</span> of a simple module <span class="math" data-tex="\(S\)">\(S\)</span>, the surjection <span class="math" data-tex="\(R\to S\)">\(R\to S\)</span>, <span class="math" data-tex="\(r\mapsto rv\)">\(r\mapsto rv\)</span>, has a maximal left ideal as kernel. If <span class="math" data-tex="\(a\)">\(a\)</span> lies in every such kernel, it annihilates every <span class="math" data-tex="\(v\)">\(v\)</span>, proving (1).</p>
+<p>Assume (2). The element <span class="math" data-tex="\(u=1-ra\)">\(u=1-ra\)</span> belongs to no maximal left ideal: such an ideal already contains <span class="math" data-tex="\(ra\)">\(ra\)</span>, so containing <span class="math" data-tex="\(u\)">\(u\)</span> would make it contain <span class="math" data-tex="\(1\)">\(1\)</span>. Thus <span class="math" data-tex="\(Ru=R\)">\(Ru=R\)</span>, and there is <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(bu=1\)">\(bu=1\)</span>. This is initially only a left inverse. But <span class="math" data-tex="\(b=1+bra\)">\(b=1+bra\)</span>, and <span class="math" data-tex="\(bra\in J\)">\(bra\in J\)</span>. The same argument gives a left inverse <span class="math" data-tex="\(c\)">\(c\)</span> of <span class="math" data-tex="\(b\)">\(b\)</span>. Then <span class="math" data-tex="\(c=cbu=u\)">\(c=cbu=u\)</span>, so <span class="math" data-tex="\(ub=1\)">\(ub=1\)</span> as well. Thus <span class="math" data-tex="\(u\)">\(u\)</span> is a unit.</p>
+<p>If (2) fails, choose a maximal left ideal <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(a\notin P\)">\(a\notin P\)</span>. Since <span class="math" data-tex="\(P+Ra=R\)">\(P+Ra=R\)</span>, some <span class="math" data-tex="\(r\)">\(r\)</span> satisfies <span class="math" data-tex="\(1-ra\in P\)">\(1-ra\in P\)</span>. This element has no left inverse, since a proper left ideal cannot contain a left-invertible element. This contradicts (3).</p>
+<p>Finally, if <span class="math" data-tex="\(a\)">\(a\)</span> belongs to a nil left ideal, every <span class="math" data-tex="\(ra\)">\(ra\)</span> is nilpotent. A finite geometric series in <span class="math" data-tex="\(ra\)">\(ra\)</span> inverts <span class="math" data-tex="\(1-ra\)">\(1-ra\)</span>. Condition (3) puts <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(J\)">\(J\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-2-2-nakayama-s-lemma">Lemma 2.2. Nakayama's lemma</h3>
+<p>If <span class="math" data-tex="\(M\)">\(M\)</span> is a finitely generated left module and <span class="math" data-tex="\(JM=M\)">\(JM=M\)</span>, then <span class="math" data-tex="\(M=0\)">\(M=0\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span>, choose a generating set <span class="math" data-tex="\(x_1,\ldots,x_m\)">\(x_1,\ldots,x_m\)</span> of least possible positive size. Since <span class="math" data-tex="\(x_m\in JM\)">\(x_m\in JM\)</span>, expanding elements of <span class="math" data-tex="\(M\)">\(M\)</span> in these generators gives</p>
+<span class="math math-display" data-tex="\[
+x_m=j_1x_1+\cdots+j_mx_m,\qquad j_i\in J.
+\]">\[
+x_m=j_1x_1+\cdots+j_mx_m,\qquad j_i\in J.
+\]</span>
+<p>The element <span class="math" data-tex="\(1-j_m\)">\(1-j_m\)</span> is a unit by Lemma 2.1. Solving for <span class="math" data-tex="\(x_m\)">\(x_m\)</span> expresses it in the first <span class="math" data-tex="\(m-1\)">\(m-1\)</span> generators, a contradiction. This also covers <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, when the expression makes <span class="math" data-tex="\(x_1=0\)">\(x_1=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="theorem-2-3-radical-structure-of-an-artinian-ring">Theorem 2.3. Radical structure of an Artinian ring</h3>
+<p>If <span class="math" data-tex="\(R\)">\(R\)</span> is left Artinian, then <span class="math" data-tex="\(J\)">\(J\)</span> is nilpotent and <span class="math" data-tex="\(R/J\)">\(R/J\)</span> is semisimple as a left module over itself. The radical contains every nil left ideal and is itself a nilpotent two-sided ideal.</p>
+<p><strong>Proof.</strong> The descending powers of <span class="math" data-tex="\(J\)">\(J\)</span> stabilize. Choose <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> with <span class="math" data-tex="\(J^n=J^{n+1}=\cdots\)">\(J^n=J^{n+1}=\cdots\)</span>, and put <span class="math" data-tex="\(I=J^n\)">\(I=J^n\)</span>. Then <span class="math" data-tex="\(I^2=I\)">\(I^2=I\)</span>. Suppose <span class="math" data-tex="\(I\ne0\)">\(I\ne0\)</span>. Among left ideals <span class="math" data-tex="\(K\)">\(K\)</span> with <span class="math" data-tex="\(IK\ne0\)">\(IK\ne0\)</span>, choose a minimal one by the descending chain condition; <span class="math" data-tex="\(R\)">\(R\)</span> is one such ideal. The left ideal <span class="math" data-tex="\(IK\)">\(IK\)</span> lies in <span class="math" data-tex="\(K\)">\(K\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+I(IK)=I^2K=IK\ne0.
+\]">\[
+I(IK)=I^2K=IK\ne0.
+\]</span>
+<p>Minimality gives <span class="math" data-tex="\(IK=K\)">\(IK=K\)</span>. Some <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span> has <span class="math" data-tex="\(Ix\ne0\)">\(Ix\ne0\)</span>, since otherwise all finite sums defining <span class="math" data-tex="\(IK\)">\(IK\)</span> would vanish. The cyclic left ideal <span class="math" data-tex="\(Rx\subseteq K\)">\(Rx\subseteq K\)</span> satisfies <span class="math" data-tex="\(I(Rx)=Ix\ne0\)">\(I(Rx)=Ix\ne0\)</span>, so minimality also gives <span class="math" data-tex="\(Rx=K\)">\(Rx=K\)</span>. Since <span class="math" data-tex="\(I\subseteq J\)">\(I\subseteq J\)</span>, we have <span class="math" data-tex="\(JK=K\)">\(JK=K\)</span>. Nakayama's lemma applies to this cyclic module and gives <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, a contradiction. Thus <span class="math" data-tex="\(J^n=0\)">\(J^n=0\)</span>.</p>
+<p>To identify the quotient, choose a minimal member <span class="math" data-tex="\(P_1\cap\cdots\cap P_t\)">\(P_1\cap\cdots\cap P_t\)</span> among finite intersections of maximal left ideals. Intersecting it with any further maximal left ideal cannot decrease it. Consequently it equals their total intersection, which is <span class="math" data-tex="\(J\)">\(J\)</span> by Lemma 2.1. The map</p>
+<span class="math math-display" data-tex="\[
+R/J\longrightarrow\bigoplus_{i=1}^t R/P_i,
+\qquad r+J\longmapsto(r+P_i)_i,
+\]">\[
+R/J\longrightarrow\bigoplus_{i=1}^t R/P_i,
+\qquad r+J\longmapsto(r+P_i)_i,
+\]</span>
+<p>is injective. The target is a finite direct sum of simple modules. Its submodules are semisimple by complete reducibility in the preceding lesson. Hence <span class="math" data-tex="\(R/J\)">\(R/J\)</span> is semisimple. If <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, these conclusions are immediate, with the empty decomposition. The assertion about nil left ideals is Lemma 2.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The minimal-left-ideal argument matters here: one cannot apply the finitely generated version of Nakayama directly to a stabilized power before establishing its finite generation.</p>
+<h2 id="3-matrix-rings-reconstructed-from-simple-modules">3. Matrix rings reconstructed from simple modules</h2>
+<p>A ring <span class="math" data-tex="\(R\)">\(R\)</span> is <strong>semisimple</strong> if its left regular module is a direct sum of simple modules. Because <span class="math" data-tex="\(1\)">\(1\)</span> has finite support in that direct sum and generates <span class="math" data-tex="\(R\)">\(R\)</span>, only finitely many summands occur.</p>
+<h3 id="theorem-3-1-wedderburn-artin-and-its-uniqueness">Theorem 3.1. Wedderburn–Artin and its uniqueness</h3>
+<p>The following conditions on a unital ring are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(R\)">\(R\)</span> is semisimple.</li>
+<li><span class="math" data-tex="\(R\)">\(R\)</span> is left Artinian and <span class="math" data-tex="\(J(R)=0\)">\(J(R)=0\)</span>.</li>
+<li>There are division rings <span class="math" data-tex="\(D_i\)">\(D_i\)</span> and positive integers <span class="math" data-tex="\(n_i\)">\(n_i\)</span> with
+<span class="math math-display" data-tex="\[
+R\simeq\prod_{i=1}^t M_{n_i}(D_i).
+\]">\[
+R\simeq\prod_{i=1}^t M_{n_i}(D_i).
+\]</span></li>
+<li>Every left <span class="math" data-tex="\(R\)">\(R\)</span>-module is semisimple.</li>
+</ol>
+<p>The matrix factors, including the integers <span class="math" data-tex="\(n_i\)">\(n_i\)</span> and the division rings up to isomorphism, are unique up to permutation. A nonzero simple left Artinian ring has exactly one factor <span class="math" data-tex="\(M_n(D)\)">\(M_n(D)\)</span>.</p>
+<p><strong>Proof.</strong> If (1) holds, the regular module has finite length and is Artinian. Every element of <span class="math" data-tex="\(J\)">\(J\)</span> annihilates its simple summands, hence all of <span class="math" data-tex="\(R\)">\(R\)</span>; applying it to <span class="math" data-tex="\(1\)">\(1\)</span> gives zero. Thus (2) holds. Condition (2) implies (1) by Theorem 2.3.</p>
+<p>To derive (3) from (1), group the finitely many simple summands by isomorphism class:</p>
+<span class="math math-display" data-tex="\[
+{}_RR\simeq\bigoplus_{i=1}^t S_i^{n_i},\qquad S_i\not\simeq S_j\quad(i\ne j).
+\]">\[
+{}_RR\simeq\bigoplus_{i=1}^t S_i^{n_i},\qquad S_i\not\simeq S_j\quad(i\ne j).
+\]</span>
+<p>Schur's lemma makes <span class="math" data-tex="\(E_i=\operatorname{End}_R(S_i)\)">\(E_i=\operatorname{End}_R(S_i)\)</span> a division ring and makes cross-Hom spaces zero. A map between copies of one <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is specified by a matrix of elements of <span class="math" data-tex="\(E_i\)">\(E_i\)</span>; composition is matrix multiplication with composition in each entry. Therefore</p>
+<span class="math math-display" data-tex="\[
+\operatorname{End}_R({}_RR)\simeq\prod_i M_{n_i}(E_i).
+\]">\[
+\operatorname{End}_R({}_RR)\simeq\prod_i M_{n_i}(E_i).
+\]</span>
+<p>Every endomorphism of the regular module is right multiplication by its value at <span class="math" data-tex="\(1\)">\(1\)</span>. Composing right multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> after right multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> multiplies by <span class="math" data-tex="\(ba\)">\(ba\)</span>, so this endomorphism ring is <span class="math" data-tex="\(R^{\mathrm{op}}\)">\(R^{\mathrm{op}}\)</span>. Taking opposite rings gives (3), with <span class="math" data-tex="\(D_i=E_i^{\mathrm{op}}\)">\(D_i=E_i^{\mathrm{op}}\)</span>. Transposition supplies the isomorphism <span class="math" data-tex="\(M_n(E)^{\mathrm{op}}\simeq M_n(E^{\mathrm{op}})\)">\(M_n(E)^{\mathrm{op}}\simeq M_n(E^{\mathrm{op}})\)</span>. This explains the opposite-ring convention rather than suppressing it.</p>
+<p>For the reverse implication, columns give a decomposition of <span class="math" data-tex="\(M_n(D)\)">\(M_n(D)\)</span> into <span class="math" data-tex="\(n\)">\(n\)</span> copies of <span class="math" data-tex="\(D^n\)">\(D^n\)</span>. A nonzero column vector generates <span class="math" data-tex="\(D^n\)">\(D^n\)</span>: choose a nonzero coordinate, use its inverse and a matrix unit to obtain each standard vector. Thus the column module is simple. Each matrix factor, and then their finite product, has a semisimple regular module.</p>
+<p>Every module is a quotient of a free module, possibly on an infinite set of generators. A direct sum of semisimple modules is a sum of simple submodules and is semisimple. Its quotient is semisimple by the preceding lesson. This proves (1) implies (4); (4) applied to the regular module proves (1).</p>
+<p>For uniqueness, the central idempotents that cannot be decomposed into two nonzero orthogonal central idempotents identify the factors. In <span class="math" data-tex="\(M_n(D)\)">\(M_n(D)\)</span>, a matrix commuting with every matrix unit is scalar diagonal, and commuting with all diagonal entries makes that scalar central in <span class="math" data-tex="\(D\)">\(D\)</span>. Its centre is the field <span class="math" data-tex="\(Z(D)\)">\(Z(D)\)</span>, whose only idempotents are <span class="math" data-tex="\(0,1\)">\(0,1\)</span>. Thus the primitive central idempotents are exactly the factor identities. A ring isomorphism must permute them. In a given factor, every simple module is a quotient of the regular module and therefore isomorphic to the column module. Its endomorphism ring is <span class="math" data-tex="\(D^{\mathrm{op}}\)">\(D^{\mathrm{op}}\)</span>: commuting with the matrix units forces an endomorphism to multiply each coordinate on the right by one common element of <span class="math" data-tex="\(D\)">\(D\)</span>. Consequently the simple module determines <span class="math" data-tex="\(D\)">\(D\)</span>. The length of the regular module is <span class="math" data-tex="\(n\)">\(n\)</span>, which determines the matrix size. This proves uniqueness.</p>
+<p>Finally, <span class="math" data-tex="\(M_n(D)\)">\(M_n(D)\)</span> is simple: from any nonzero matrix entry in a two-sided ideal, multiplication by matrix units and the inverse of that entry produces all matrix units and then <span class="math" data-tex="\(1\)">\(1\)</span>. A product of two nonzero factors has proper nonzero two-sided ideals. If <span class="math" data-tex="\(R\)">\(R\)</span> is simple and left Artinian, its radical, being a proper two-sided ideal, is zero; (2) and (3) then give exactly one factor. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-3-2-an-artinian-ring-is-noetherian">Corollary 3.2. An Artinian ring is Noetherian</h3>
+<p>Every left Artinian unital ring has finite length as a left module over itself and is left Noetherian.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(J^n=0\)">\(J^n=0\)</span>, the layers <span class="math" data-tex="\(J^i/J^{i+1}\)">\(J^i/J^{i+1}\)</span>, including <span class="math" data-tex="\(R/J\)">\(R/J\)</span>, are modules over the semisimple ring <span class="math" data-tex="\(R/J\)">\(R/J\)</span>, hence semisimple. They are Artinian because submodules and quotients of an Artinian module are Artinian. An Artinian direct sum of simple modules must have finitely many summands; infinitely many would allow a descending chain obtained by deleting successively distinct summands. Thus each layer has finite length. Length additivity along the finite radical filtration gives finite length for <span class="math" data-tex="\(R\)">\(R\)</span>, and an ascending chain cannot have more strict steps than that length. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the Akizuki–Hopkins–Levitzki conclusion in the scope needed here, rather than presupposing it in the radical proof.</p>
+<h2 id="4-algebras-one-can-calculate">4. Algebras one can calculate</h2>
+<p><strong>Triangular matrices.</strong> Let <span class="math" data-tex="\(T\)">\(T\)</span> be the ring of upper triangular <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices over a field <span class="math" data-tex="\(k\)">\(k\)</span>. Its strictly upper triangular ideal <span class="math" data-tex="\(U=kE_{12}\)">\(U=kE_{12}\)</span> has square zero. It lies in <span class="math" data-tex="\(J(T)\)">\(J(T)\)</span> by Lemma 2.1. The quotient is <span class="math" data-tex="\(k\times k\)">\(k\times k\)</span>, whose radical is zero. Every simple module of the quotient is a simple <span class="math" data-tex="\(T\)">\(T\)</span>-module, so the image of <span class="math" data-tex="\(J(T)\)">\(J(T)\)</span> in that quotient is zero. Hence <span class="math" data-tex="\(J(T)=U\)">\(J(T)=U\)</span>. The idempotents <span class="math" data-tex="\(E_{11},E_{22}\)">\(E_{11},E_{22}\)</span> decompose the left regular module, but are not central: the off-diagonal corner is nonzero. The ring has one block.</p>
+<p><strong>A square-zero element.</strong> The ring <span class="math" data-tex="\(k[t]/(t^2)\)">\(k[t]/(t^2)\)</span> has radical <span class="math" data-tex="\((t)\)">\((t)\)</span>, by exactly the same quotient argument. It is not semisimple. The obstruction is present even though its vector-space dimension is only two.</p>
+<p><strong>The group algebra of <span class="math" data-tex="\(S_3\)">\(S_3\)</span>.</strong> Write <span class="math" data-tex="\(r=(123)\)">\(r=(123)\)</span>, <span class="math" data-tex="\(s=(12)\)">\(s=(12)\)</span>, so <span class="math" data-tex="\(r^3=s^2=1\)">\(r^3=s^2=1\)</span> and <span class="math" data-tex="\(srs=r^{-1}\)">\(srs=r^{-1}\)</span>. Over <span class="math" data-tex="\(F=\mathbb R\)">\(F=\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+\rho(r)=\begin{pmatrix}0&amp;-1\\1&amp;-1\end{pmatrix},
+\qquad
+\rho(s)=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\]">\[
+\rho(r)=\begin{pmatrix}0&amp;-1\\1&amp;-1\end{pmatrix},
+\qquad
+\rho(s)=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\]</span>
+<p>These matrices satisfy the relations. Alongside <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, take the trivial and sign representations. They give an algebra map</p>
+<span class="math math-display" data-tex="\[
+F[S_3]\longrightarrow F\times F\times M_2(F).
+\]">\[
+F[S_3]\longrightarrow F\times F\times M_2(F).
+\]</span>
+<p>Let <span class="math" data-tex="\(e_+=\frac16\sum_g g\)">\(e_+=\frac16\sum_g g\)</span> and <span class="math" data-tex="\(e_-=\frac16\sum_g\operatorname{sgn}(g)g\)">\(e_-=\frac16\sum_g\operatorname{sgn}(g)g\)</span>. Their images are <span class="math" data-tex="\((1,0,0)\)">\((1,0,0)\)</span> and <span class="math" data-tex="\((0,1,0)\)">\((0,1,0)\)</span>. The third coordinates vanish because <span class="math" data-tex="\(1+\rho(r)+\rho(r)^2=0\)">\(1+\rho(r)+\rho(r)^2=0\)</span>, and the six-term sums group into triples. Put <span class="math" data-tex="\(e_0=1-e_+-e_-\)">\(e_0=1-e_+-e_-\)</span>. The images of <span class="math" data-tex="\(e_0,e_0r,e_0s,e_0sr\)">\(e_0,e_0r,e_0s,e_0sr\)</span> have zero first two coordinates and third coordinates <span class="math" data-tex="\(I,\rho(r),\rho(s),\rho(sr)\)">\(I,\rho(r),\rho(s),\rho(sr)\)</span>. These four matrices are linearly independent: in a relation with coefficients <span class="math" data-tex="\(\alpha,\beta,\gamma,\delta\)">\(\alpha,\beta,\gamma,\delta\)</span>, the entries give <span class="math" data-tex="\(\gamma=-\beta\)">\(\gamma=-\beta\)</span>, <span class="math" data-tex="\(\delta=-2\beta\)">\(\delta=-2\beta\)</span>, <span class="math" data-tex="\(\alpha=2\beta\)">\(\alpha=2\beta\)</span>, and <span class="math" data-tex="\(3\beta=0\)">\(3\beta=0\)</span>. In either field all coefficients vanish. The algebra map is therefore onto; both sides have dimension six, so it is an isomorphism:</p>
+<span class="math math-display" data-tex="\[
+\mathbb C[S_3]\simeq\mathbb C\times\mathbb C\times M_2(\mathbb C),
+\qquad
+\mathbb R[S_3]\simeq\mathbb R\times\mathbb R\times M_2(\mathbb R).
+\]">\[
+\mathbb C[S_3]\simeq\mathbb C\times\mathbb C\times M_2(\mathbb C),
+\qquad
+\mathbb R[S_3]\simeq\mathbb R\times\mathbb R\times M_2(\mathbb R).
+\]</span>
+<p>This computation proves the decomposition directly; the general averaging theorem appears in <em>Representations, characters and the group determinant</em>.</p>
+<p><strong>Quaternions.</strong> The real quaternion algebra <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span> has basis <span class="math" data-tex="\(1,i,j,ij\)">\(1,i,j,ij\)</span>, with <span class="math" data-tex="\(i^2=j^2=-1\)">\(i^2=j^2=-1\)</span> and <span class="math" data-tex="\(ij=-ji\)">\(ij=-ji\)</span>. Conjugation gives <span class="math" data-tex="\(q\bar q=a^2+b^2+c^2+d^2\)">\(q\bar q=a^2+b^2+c^2+d^2\)</span> for <span class="math" data-tex="\(q=a+bi+cj+dij\)">\(q=a+bi+cj+dij\)</span>. A nonzero element has inverse <span class="math" data-tex="\(\bar q/(q\bar q)\)">\(\bar q/(q\bar q)\)</span>, so <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span> is a real division algebra and a semisimple ring. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, send its two generators to</p>
+<span class="math math-display" data-tex="\[
+i\longmapsto\begin{pmatrix}\mathrm i&amp;0\\0&amp;-\mathrm i\end{pmatrix},
+\qquad
+j\longmapsto\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}.
+\]">\[
+i\longmapsto\begin{pmatrix}\mathrm i&amp;0\\0&amp;-\mathrm i\end{pmatrix},
+\qquad
+j\longmapsto\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}.
+\]</span>
+<p>Their squares are <span class="math" data-tex="\(-I\)">\(-I\)</span>, they anticommute, and the images of <span class="math" data-tex="\(1,i,j,ij\)">\(1,i,j,ij\)</span> are linearly independent over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathbb H\otimes_{\mathbb R}\mathbb C\simeq M_2(\mathbb C).
+\]">\[
+\mathbb H\otimes_{\mathbb R}\mathbb C\simeq M_2(\mathbb C).
+\]</span>
+<p>Frobenius's real division-algebra theorem states that every finite-dimensional associative real division algebra is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> or <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span>. It is stated here, with reference [Frobenius]; its proof is outside this lesson. The finite-dimensional <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra case adds an involution and positivity, as discussed in <em>Foundations of von Neumann algebras</em>, in its lesson on AF-algebras.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<h3 id="exercise-5-1-easy-radical-and-blocks">Exercise 5.1. Easy: radical and blocks</h3>
+<p>Compute the radical, its nilpotence exponent and the quotient for the upper triangular <span class="math" data-tex="\(3\times3\)">\(3\times3\)</span> matrices over <span class="math" data-tex="\(k\)">\(k\)</span>. Determine whether its three diagonal idempotents are central, and find all central idempotents.</p>
+<h3 id="exercise-5-2-medium-finite-group-calculations">Exercise 5.2. Medium: finite group calculations</h3>
+<p>For a generator <span class="math" data-tex="\(z\)">\(z\)</span> of the cyclic group of order <span class="math" data-tex="\(m\)">\(m\)</span>, construct <span class="math" data-tex="\(\mathbb C[\langle z\rangle]\simeq\mathbb C^m\)">\(\mathbb C[\langle z\rangle]\simeq\mathbb C^m\)</span> and its primitive idempotents. For <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, justify every coordinate of the three idempotents <span class="math" data-tex="\(e_+,e_-,e_0\)">\(e_+,e_-,e_0\)</span> from Section 4 and recover its three simple modules.</p>
+<h3 id="exercise-5-3-medium-the-division-ring-and-its-side">Exercise 5.3. Medium: the division ring and its side</h3>
+<p>For a minimal nonzero left ideal <span class="math" data-tex="\(L\)">\(L\)</span> in a simple left Artinian ring, prove that <span class="math" data-tex="\(\operatorname{End}_R(L)^{\mathrm{op}}\)">\(\operatorname{End}_R(L)^{\mathrm{op}}\)</span> is a division ring. For <span class="math" data-tex="\(R=M_n(D)\)">\(R=M_n(D)\)</span>, compute the endomorphisms of the column module explicitly, and verify the multiplication order.</p>
+<h3 id="exercise-5-4-medium-splitting-the-quaternions">Exercise 5.4. Medium: splitting the quaternions</h3>
+<p>Check the two matrix relations in the complex model of <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span>, calculate the image of <span class="math" data-tex="\(ij\)">\(ij\)</span>, and express each standard <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrix unit as a complex linear combination of the four images.</p>
+<h3 id="exercise-5-5-hard-recover-the-factors-intrinsically">Exercise 5.5. Hard: recover the factors intrinsically</h3>
+<p>Suppose <span class="math" data-tex="\(\prod_i M_{n_i}(D_i)\simeq\prod_j M_{m_j}(E_j)\)">\(\prod_i M_{n_i}(D_i)\simeq\prod_j M_{m_j}(E_j)\)</span> as rings. Prove uniqueness without using the dimension over a ground field, which need not exist in the statement. Identify the invariant recovering the size of a matrix factor.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<h3 id="solution-5-1">Solution 5.1</h3>
+<p>The strictly upper triangular ideal <span class="math" data-tex="\(U\)">\(U\)</span> has <span class="math" data-tex="\(U^3=0\)">\(U^3=0\)</span>, while <span class="math" data-tex="\(E_{12}E_{23}=E_{13}\ne0\)">\(E_{12}E_{23}=E_{13}\ne0\)</span>, so its nilpotence exponent is three. Its quotient is <span class="math" data-tex="\(k^3\)">\(k^3\)</span>, which is semisimple. The same nil-ideal and quotient argument as in Section 4 gives <span class="math" data-tex="\(J=U\)">\(J=U\)</span>. A matrix commuting with each <span class="math" data-tex="\(E_{aa}\)">\(E_{aa}\)</span> must be diagonal. A diagonal matrix <span class="math" data-tex="\(\operatorname{diag}(d_1,d_2,d_3)\)">\(\operatorname{diag}(d_1,d_2,d_3)\)</span> commutes with <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> and <span class="math" data-tex="\(E_{23}\)">\(E_{23}\)</span> exactly when <span class="math" data-tex="\(d_1=d_2=d_3\)">\(d_1=d_2=d_3\)</span>. Thus the centre is the scalar matrices, and its idempotents are just <span class="math" data-tex="\(0,I\)">\(0,I\)</span>. The ring has one block, and none of the three individual diagonal matrix units is central.</p>
+<h3 id="solution-5-2">Solution 5.2</h3>
+<p>Let <span class="math" data-tex="\(\zeta=\exp(2\pi\mathrm i/m)\)">\(\zeta=\exp(2\pi\mathrm i/m)\)</span>. Identify the group algebra with <span class="math" data-tex="\(\mathbb C[t]/(t^m-1)\)">\(\mathbb C[t]/(t^m-1)\)</span>, and send the class of <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\((f(\zeta^j))_{j=0}^{m-1}\)">\((f(\zeta^j))_{j=0}^{m-1}\)</span>. The roots are distinct, and division by the product of the linear factors shows that the kernel before passing to the quotient is exactly <span class="math" data-tex="\((t^m-1)\)">\((t^m-1)\)</span>. Interpolation proves surjectivity. The idempotent with coordinate one at <span class="math" data-tex="\(j\)">\(j\)</span> and zero elsewhere is</p>
+<span class="math math-display" data-tex="\[
+e_j=\frac1m\sum_{a=0}^{m-1}\zeta^{-ja}z^a.
+\]">\[
+e_j=\frac1m\sum_{a=0}^{m-1}\zeta^{-ja}z^a.
+\]</span>
+<p>Evaluation uses the geometric sum <span class="math" data-tex="\(\sum_a\zeta^{(l-j)a}\)">\(\sum_a\zeta^{(l-j)a}\)</span>, equal to <span class="math" data-tex="\(m\)">\(m\)</span> for <span class="math" data-tex="\(l=j\)">\(l=j\)</span> and zero otherwise. The one-dimensional simple modules have <span class="math" data-tex="\(z\)">\(z\)</span> acting by <span class="math" data-tex="\(\zeta^j\)">\(\zeta^j\)</span>.</p>
+<p>For <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, the trivial coordinate of <span class="math" data-tex="\(e_+\)">\(e_+\)</span> is one; its sign coordinate is zero because there are three even and three odd permutations. Its matrix coordinate is <span class="math" data-tex="\(\frac16(I+\rho(s))(I+\rho(r)+\rho(r)^2)=0\)">\(\frac16(I+\rho(s))(I+\rho(r)+\rho(r)^2)=0\)</span>. For <span class="math" data-tex="\(e_-\)">\(e_-\)</span>, the trivial coordinate is zero, its sign coordinate is one, and its matrix coordinate is <span class="math" data-tex="\(\frac16(I-\rho(s))(I+\rho(r)+\rho(r)^2)=0\)">\(\frac16(I-\rho(s))(I+\rho(r)+\rho(r)^2)=0\)</span>. Subtraction from <span class="math" data-tex="\(1\)">\(1\)</span> gives the image <span class="math" data-tex="\((0,0,I)\)">\((0,0,I)\)</span> for <span class="math" data-tex="\(e_0\)">\(e_0\)</span>. The simple modules are the trivial line, the sign line and the two-dimensional column module for the matrix factor. The last is irreducible because the image algebra is all of <span class="math" data-tex="\(M_2(F)\)">\(M_2(F)\)</span>, which acts simply on columns.</p>
+<h3 id="solution-5-3">Solution 5.3</h3>
+<p>A minimal nonzero left ideal is simple. Schur's lemma makes its endomorphism ring a division ring, and reversing multiplication in a division ring again gives a division ring, with the same inverses. On <span class="math" data-tex="\(D^n\)">\(D^n\)</span>, an endomorphism commuting with the diagonal matrix units sends each coordinate axis to itself. Commuting with the other matrix units makes its action on each coordinate the same additive map <span class="math" data-tex="\(h:D\to D\)">\(h:D\to D\)</span>. Commuting with multiplication by any <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span> gives <span class="math" data-tex="\(h(dx)=d h(x)\)">\(h(dx)=d h(x)\)</span>, so <span class="math" data-tex="\(h(x)=x h(1)\)">\(h(x)=x h(1)\)</span>. The endomorphism is right multiplication by <span class="math" data-tex="\(c=h(1)\)">\(c=h(1)\)</span>. If <span class="math" data-tex="\(T_c(v)=vc\)">\(T_c(v)=vc\)</span>, then <span class="math" data-tex="\(T_c\circ T_d(v)=vdc\)">\(T_c\circ T_d(v)=vdc\)</span>. Hence <span class="math" data-tex="\(c\mapsto T_c\)">\(c\mapsto T_c\)</span> identifies <span class="math" data-tex="\(D^{\mathrm{op}}\)">\(D^{\mathrm{op}}\)</span> with the endomorphism ring. Taking the opposite recovers <span class="math" data-tex="\(D\)">\(D\)</span>, as required by Theorem 3.1.</p>
+<h3 id="solution-5-4">Solution 5.4</h3>
+<p>Write the two displayed images as <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. Direct multiplication gives <span class="math" data-tex="\(A^2=B^2=-I\)">\(A^2=B^2=-I\)</span>,</p>
+<span class="math math-display" data-tex="\[
+AB=\begin{pmatrix}0&amp;\mathrm i\\\mathrm i&amp;0\end{pmatrix},
+\qquad BA=-AB.
+\]">\[
+AB=\begin{pmatrix}0&amp;\mathrm i\\\mathrm i&amp;0\end{pmatrix},
+\qquad BA=-AB.
+\]</span>
+<p>The matrix units are</p>
+<span class="math math-display" data-tex="\[
+E_{11}=\tfrac12(I+A/\mathrm i),\quad
+E_{22}=\tfrac12(I-A/\mathrm i),\quad
+E_{12}=\tfrac12(B+AB/\mathrm i),\quad
+E_{21}=\tfrac12(-B+AB/\mathrm i).
+\]">\[
+E_{11}=\tfrac12(I+A/\mathrm i),\quad
+E_{22}=\tfrac12(I-A/\mathrm i),\quad
+E_{12}=\tfrac12(B+AB/\mathrm i),\quad
+E_{21}=\tfrac12(-B+AB/\mathrm i).
+\]</span>
+<p>They show surjectivity of the quaternion homomorphism. Domain and target have complex dimension four, so it is an isomorphism.</p>
+<h3 id="solution-5-5">Solution 5.5</h3>
+<p>The primitive central idempotents are exactly the identities of the separate matrix factors: their centres are fields, and no field has a nontrivial idempotent. The isomorphism must give a bijection between these idempotents and hence between the factors. Within a factor <span class="math" data-tex="\(M_n(D)\)">\(M_n(D)\)</span>, every simple module is isomorphic to the column module, because the regular module is the sum of its <span class="math" data-tex="\(n\)">\(n\)</span> simple columns and every simple module is a cyclic quotient of that regular module. The endomorphism ring of the column module is <span class="math" data-tex="\(D^{\mathrm{op}}\)">\(D^{\mathrm{op}}\)</span>, by Solution 5.3. An isomorphism of rings transports modules and their endomorphism rings, so matched factors have isomorphic division rings. Finally, the composition length of the regular module of <span class="math" data-tex="\(M_n(D)\)">\(M_n(D)\)</span> is <span class="math" data-tex="\(n\)">\(n\)</span>, independently of cardinalities or field dimensions. Ring isomorphisms preserve this length, so <span class="math" data-tex="\(n_i=m_j\)">\(n_i=m_j\)</span> for matched factors. This completes the uniqueness proof in its full ring-theoretic generality.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Frobenius's classification of finite-dimensional real associative division algebras is stated with its original reference. The structure theorem for finite-dimensional <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebras is only a comparison with a later analytic subject. Radical nilpotence, the semisimple quotient, Wedderburn–Artin, its uniqueness and the left Artinian-to-Noetherian implication have all been proved here for unital rings.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[MIT]</strong> <em>Noncommutative Algebra</em>, MIT OpenCourseWare, Spring 2023, instructor Roman Bezrukavnikov, lectures 2–6. <a href="https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/resources/mit18_706_s23_full_lec_pdf/">Course notes</a>.</li>
+<li><strong>[Voight]</strong> John Voight, <em>Quaternion Algebras</em>, Graduate Texts in Mathematics 288, Springer, 2021, §§7.2–7.4. <a href="https://jvoight.github.io/quat.html">Author's book page</a>.</li>
+<li><strong>[Noether]</strong> Emmy Noether, <em>Hyperkomplexe Größen und Darstellungstheorie</em>, written up by B. L. van der Waerden, <em>Mathematische Zeitschrift</em> <strong>30</strong> (1929), 641–692, §§8–14; and <em>Nichtkommutative Algebra</em>, <em>Mathematische Zeitschrift</em> <strong>37</strong> (1933), 514–541, §5.</li>
+<li><strong>[Frobenius]</strong> Ferdinand Georg Frobenius, <em>Über lineare Substitutionen und bilineare Formen</em>, <em>Journal für die reine und angewandte Mathematik</em> <strong>84</strong> (1878), 1–63, for the real division-algebra theorem.</li>
+</ul>
+</article></main></body></html>

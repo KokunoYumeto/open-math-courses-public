@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nontracial Lp spaces for arbitrary von Neumann algebras · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-LP.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 128 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="nontracial-l-p-spaces-for-arbitrary-von-neumann-algebras">Nontracial <span class="math" data-tex="\(L^p\)">\(L^p\)</span> spaces for arbitrary von Neumann algebras</h1>
+<p><em>Independently written by OpenAI Codex (AI), October 2026, at requested Ultra effort. New prose: CC0-1.0.</em></p>
+<p>For an arbitrary von Neumann algebra <span class="math" data-tex="\(N\)">\(N\)</span>, including one with no faithful normal state, we construct two-sided Banach <span class="math" data-tex="\(N\)">\(N\)</span>-modules <span class="math" data-tex="\(L^p(N)\)">\(L^p(N)\)</span>, <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>. Their positive <span class="math" data-tex="\(L^1\)">\(L^1\)</span> elements are precisely normal positive functionals. A change of the auxiliary faithful semifinite weight gives a coherent isometry. This supplies the general-algebra construction left outside the factor and separable-predual scope of <span class="unlinked">homogeneous core operators</span>.</p>
+<p>The proof uses the general regular-core construction in <a href="OA-MOD-OE.html#oa-mod-oe-02">OE02–03</a>, the traced density theorem <a href="OA-MOD-PT.html#oa-mod-pt-08">PT08</a>, cocycle reconstruction <a href="OA-MOD-CX.html#oa-mod-cx-10">CX10</a>, and lifting through an already existing operator-valued weight <span class="unlinked">OM01</span>. The last input remains conditional on the three explicitly stated contracts in <span class="unlinked">OR03–04</span>: the scalar mixed-graph criterion, finite mixed-ideal transfer, and analytic-generator comparison. OE02–03 also retain their stated harmonic-analysis and positive-integration inputs. The arguments below prove the construction from these named inputs. They do not independently close those inputs, establish an admitted import, or certify the complete course.</p>
+<p>For comparison, Fumio Hiai's freely available <em>Concise lectures on selected topics of von Neumann algebras</em>, section 11.1, Lemmas 11.1–11.4 and Theorem 11.5, give the core-density approach. Complete PDF pages 101–106 were actually inspected. The missing theorem locator printed in the converse argument on page 104 is replaced here by the precise course provider CX10. This is independently written exposition; no human source text or source file is redistributed.</p>
+<h2 id="the-general-core-and-its-normalized-trace">The general core and its normalized trace</h2>
+<p>If <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, all spaces and maps below are zero. Otherwise choose a faithful normal semifinite weight <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span> by <a href="OA-MOD-WH.html#oa-mod-wh-13">WH13</a>. A state is not required. Write</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P&amp;=N\rtimes_{\sigma^{\varphi_0}}\mathbb R,\\
+\theta_s(x)&amp;=x\quad(x\in N),&amp;
+\theta_s(\lambda_t)&amp;=e^{-ist}\lambda_t,\\
+E(a)&amp;=\int_{\mathbb R}\theta_s(a)\,ds
+\quad(a\in P_+).
+\end{aligned}
+\tag{LP.1}
+\]">\[
+\begin{aligned}
+P&amp;=N\rtimes_{\sigma^{\varphi_0}}\mathbb R,\\
+\theta_s(x)&amp;=x\quad(x\in N),&amp;
+\theta_s(\lambda_t)&amp;=e^{-ist}\lambda_t,\\
+E(a)&amp;=\int_{\mathbb R}\theta_s(a)\,ds
+\quad(a\in P_+).
+\end{aligned}
+\tag{LP.1}
+\]</span>
+<p>The integral takes values in the full extended positive cone of <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Here is why the generality of this input matters. In the regular representation on <span class="math" data-tex="\(L^2(\mathbb R,H_{\varphi_0})\)">\(L^2(\mathbb R,H_{\varphi_0})\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\pi(x)\xi)(r)&amp;=\sigma_{-r}^{\varphi_0}(x)\xi(r),\\
+(\lambda_t\xi)(r)&amp;=\xi(r-t),&amp;
+(D_s\xi)(r)&amp;=e^{-isr}\xi(r).
+\end{aligned}
+\]">\[
+\begin{aligned}
+(\pi(x)\xi)(r)&amp;=\sigma_{-r}^{\varphi_0}(x)\xi(r),\\
+(\lambda_t\xi)(r)&amp;=\xi(r-t),&amp;
+(D_s\xi)(r)&amp;=e^{-isr}\xi(r).
+\end{aligned}
+\]</span>
+<p>There is no restriction on the Hilbert cardinality. The multiplication-field gauge <span class="math" data-tex="\(V\xi(r)=\Delta_{\varphi_0}^{ir}\xi(r)\)">\(V\xi(r)=\Delta_{\varphi_0}^{ir}\xi(r)\)</span> turns the represented <span class="math" data-tex="\(N\)">\(N\)</span> into constant operators. An operator fixed by conjugation with every <span class="math" data-tex="\(D_s\)">\(D_s\)</span> is a multiplication field; commutation with the gauged translation action makes this field constant. Commutation with the conjugated constant commutant operators then puts that constant in <span class="math" data-tex="\(N\)">\(N\)</span>. The equality at <span class="math" data-tex="\(r=0\)">\(r=0\)</span> uses continuity of each fixed conjugated commutant operator, not evaluation of a general measurable field. This is the fixed-algebra proof in OE02, and gives <span class="math" data-tex="\(P^\theta=N\)">\(P^\theta=N\)</span>.</p>
+<p>OE03 proves that <span class="math" data-tex="\(E\)">\(E\)</span> is normal, faithful and semifinite, using positive Tonelli, vector Plancherel and
+<span class="math" data-tex="\(E(\lambda(f)^*\lambda(f))=2\pi\|f\|_2^2\,1\)">\(E(\lambda(f)^*\lambda(f))=2\pi\|f\|_2^2\,1\)</span>, with finite-weight cutdowns. Put <span class="math" data-tex="\(\Phi_0=\varphi_0\circ E\)">\(\Phi_0=\varphi_0\circ E\)</span>. The forward theorem for the already existing <span class="math" data-tex="\(E\)">\(E\)</span> gives <span class="math" data-tex="\(\sigma_t^{\Phi_0}|_N=\sigma_t^{\varphi_0}\)">\(\sigma_t^{\Phi_0}|_N=\sigma_t^{\varphi_0}\)</span>. Covariance of <span class="math" data-tex="\(E\)">\(E\)</span> and invariance of <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span> make <span class="math" data-tex="\(\Phi_0\)">\(\Phi_0\)</span> invariant under <span class="math" data-tex="\(\operatorname{Ad}\lambda_t\)">\(\operatorname{Ad}\lambda_t\)</span>. Thus <span class="math" data-tex="\(\lambda_t\)">\(\lambda_t\)</span> lies in its centralizer. Since <span class="math" data-tex="\(N\)">\(N\)</span> and these unitaries generate <span class="math" data-tex="\(P\)">\(P\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^{\Phi_0}=\operatorname{Ad}\lambda_t.
+\]">\[
+\sigma_t^{\Phi_0}=\operatorname{Ad}\lambda_t.
+\]</span>
+<p>Let <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> be the injective affiliated operator with <span class="math" data-tex="\(d^{it}=\lambda_t\)">\(d^{it}=\lambda_t\)</span>. The inverse centralizer perturbation in <a href="OA-MOD-PT.html#oa-mod-pt-05">PT05</a> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau&amp;=(\Phi_0)_{d^{-1}},\\
+(D\Phi_0:D\tau)_t&amp;=d^{it}=\lambda_t,\\
+\sigma_t^\tau&amp;=\mathrm{id},\\
+\theta_s(d)&amp;=e^{-s}d,\\
+\tau\circ\theta_s&amp;=e^{-s}\tau .
+\end{aligned}
+\tag{LP.2}
+\]">\[
+\begin{aligned}
+\tau&amp;=(\Phi_0)_{d^{-1}},\\
+(D\Phi_0:D\tau)_t&amp;=d^{it}=\lambda_t,\\
+\sigma_t^\tau&amp;=\mathrm{id},\\
+\theta_s(d)&amp;=e^{-s}d,\\
+\tau\circ\theta_s&amp;=e^{-s}\tau .
+\end{aligned}
+\tag{LP.2}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a faithful normal semifinite trace. The last normalization follows either from OE03 or directly from cocycle naturality: <span class="math" data-tex="\(\Phi_0\circ\theta_s=\Phi_0\)">\(\Phi_0\circ\theta_s=\Phi_0\)</span>, and its cocycle relative to <span class="math" data-tex="\(\tau\circ\theta_s\)">\(\tau\circ\theta_s\)</span> is <span class="math" data-tex="\(\theta_{-s}(\lambda_t)=e^{ist}\lambda_t\)">\(\theta_{-s}(\lambda_t)=e^{ist}\lambda_t\)</span>. This is exactly the cocycle relative to <span class="math" data-tex="\(e^{-s}\tau\)">\(e^{-s}\tau\)</span>. Fixed-reference injectivity identifies the two weights, including infinite values.</p>
+<p>The useful bounded normalizer</p>
+<span class="math math-display" data-tex="\[
+a_0=d^{-1}1_{(1,\infty)}(d),\qquad E(a_0)=1
+\tag{LP.3}
+\]">\[
+a_0=d^{-1}1_{(1,\infty)}(d),\qquad E(a_0)=1
+\tag{LP.3}
+\]</span>
+<p>comes from spectral calculus: for each <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span>, the orbit integral is
+<span class="math" data-tex="\(\int_{s&lt;\log\ell}e^s\ell^{-1}\,ds=1\)">\(\int_{s&lt;\log\ell}e^s\ell^{-1}\,ds=1\)</span>. The operator <span class="math" data-tex="\(d\)">\(d\)</span> itself need not be <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable. Its imaginary powers are nevertheless bounded unitaries. We will use precisely that distinction.</p>
+<h2 id="every-grade-one-positive-density-descends-to-a-weight">Every grade-one positive density descends to a weight</h2>
+<p>PT08 says that every normal semifinite weight <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> on <span class="math" data-tex="\(P\)">\(P\)</span> has a unique positive affiliated density <span class="math" data-tex="\(h\)">\(h\)</span>, with its actual support, such that <span class="math" data-tex="\(\Psi=\tau_h\)">\(\Psi=\tau_h\)</span>. This assertion includes nonfaithful weights and nonmeasurable densities. All evaluations are normal positive form pairings; a formal product of unbounded operators is not their definition. Trace scaling gives</p>
+<span class="math math-display" data-tex="\[
+\tau_h\circ\theta_s=e^{-s}\tau_{\theta_{-s}(h)}.
+\tag{LP.4}
+\]">\[
+\tau_h\circ\theta_s=e^{-s}\tau_{\theta_{-s}(h)}.
+\tag{LP.4}
+\]</span>
+<p>For instance this follows first with bounded spectral regularizations from
+<span class="math" data-tex="\(\tau(\theta_s(b))=e^{-s}\tau(b)\)">\(\tau(\theta_s(b))=e^{-s}\tau(b)\)</span>, then on every positive element by normal form evaluation. Density uniqueness proves</p>
+<span class="math math-display" data-tex="\[
+\Psi\circ\theta_s=\Psi
+\quad\Longleftrightarrow\quad
+\theta_s(h)=e^{-s}h .
+\tag{LP.5}
+\]">\[
+\Psi\circ\theta_s=\Psi
+\quad\Longleftrightarrow\quad
+\theta_s(h)=e^{-s}h .
+\tag{LP.5}
+\]</span>
+<p>We now prove that such invariant weights are exactly the dual weights <span class="math" data-tex="\(\varphi\circ E\)">\(\varphi\circ E\)</span>. First suppose <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is faithful. Both <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> and <span class="math" data-tex="\(\Phi_0\)">\(\Phi_0\)</span> are invariant, so naturality PT02 fixes the normalized cocycle
+<span class="math" data-tex="\(u_t=(D\Psi:D\Phi_0)_t\)">\(u_t=(D\Psi:D\Phi_0)_t\)</span> under <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Therefore <span class="math" data-tex="\(u_t\in N\)">\(u_t\in N\)</span>. Its cocycle law on <span class="math" data-tex="\(P\)">\(P\)</span>, restricted using <span class="math" data-tex="\(\sigma^{\Phi_0}|_N=\sigma^{\varphi_0}\)">\(\sigma^{\Phi_0}|_N=\sigma^{\varphi_0}\)</span>, is a <span class="math" data-tex="\(\sigma^{\varphi_0}\)">\(\sigma^{\varphi_0}\)</span>-cocycle on <span class="math" data-tex="\(N\)">\(N\)</span>. CX10 supplies a unique faithful normal semifinite <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> with
+<span class="math" data-tex="\((D\varphi:D\varphi_0)_t=u_t\)">\((D\varphi:D\varphi_0)_t=u_t\)</span>. The lifting theorem OM01 gives</p>
+<span class="math math-display" data-tex="\[
+(D(\varphi\circ E):D\Phi_0)_t
+=(D\varphi:D\varphi_0)_t=u_t.
+\tag{LP.6}
+\]">\[
+(D(\varphi\circ E):D\Phi_0)_t
+=(D\varphi:D\varphi_0)_t=u_t.
+\tag{LP.6}
+\]</span>
+<p>Fixed-reference injectivity on <span class="math" data-tex="\(P\)">\(P\)</span> gives <span class="math" data-tex="\(\Psi=\varphi\circ E\)">\(\Psi=\varphi\circ E\)</span>. Conversely every such dual weight is invariant, because <span class="math" data-tex="\(E\theta_s=E\)">\(E\theta_s=E\)</span>. Injectivity on faithful weights follows from the same lifting identity and fixed-reference injectivity on <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Supports do not disappear in this argument. For a normal semifinite <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>, of support <span class="math" data-tex="\(e\)">\(e\)</span>, its dual weight has support exactly <span class="math" data-tex="\(e\)">\(e\)</span>. It vanishes on <span class="math" data-tex="\(1-e\)">\(1-e\)</span> by bimodularity. If <span class="math" data-tex="\(r\in P\)">\(r\in P\)</span> is a projection on which it vanishes, faithfulness of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(eNe\)">\(eNe\)</span> gives
+<span class="math" data-tex="\(eE(r)e=E(ere)=0\)">\(eE(r)e=E(ere)=0\)</span>. Faithfulness of <span class="math" data-tex="\(E\)">\(E\)</span> then gives <span class="math" data-tex="\(ere=0\)">\(ere=0\)</span>, hence <span class="math" data-tex="\(re=0\)">\(re=0\)</span> and <span class="math" data-tex="\(r\leq1-e\)">\(r\leq1-e\)</span>. Thus its maximal zero projection is <span class="math" data-tex="\(1-e\)">\(1-e\)</span>. To see semifiniteness when <span class="math" data-tex="\(e&lt;1\)">\(e&lt;1\)</span>, choose a faithful normal semifinite weight on <span class="math" data-tex="\((1-e)N(1-e)\)">\((1-e)N(1-e)\)</span>, extend both corner weights, and add them. Their sum is faithful and semifinite. Its dual is semifinite; <span class="math" data-tex="\(e\)">\(e\)</span> lies in its centralizer, by the diagonal corner construction and modular restriction. Compression to <span class="math" data-tex="\(e\)">\(e\)</span> is therefore semifinite as well.</p>
+<p>For an invariant nonfaithful <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, its support <span class="math" data-tex="\(e=s(\Psi)\)">\(e=s(\Psi)\)</span> is fixed by <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, so belongs to <span class="math" data-tex="\(N\)">\(N\)</span>. Add the dual of a faithful semifinite weight on <span class="math" data-tex="\((1-e)N(1-e)\)">\((1-e)N(1-e)\)</span>. The diagonal sum <span class="math" data-tex="\(\widetilde\Psi\)">\(\widetilde\Psi\)</span> is faithful semifinite and invariant. The faithful case gives <span class="math" data-tex="\(\widetilde\Psi=\widetilde\varphi\circ E\)">\(\widetilde\Psi=\widetilde\varphi\circ E\)</span>. Its support projection <span class="math" data-tex="\(e\)">\(e\)</span> is in its centralizer; modular restriction puts <span class="math" data-tex="\(e\)">\(e\)</span> in the centralizer of <span class="math" data-tex="\(\widetilde\varphi\)">\(\widetilde\varphi\)</span>. Compress and use bimodularity:</p>
+<span class="math math-display" data-tex="\[
+\Psi(a)=\widetilde\Psi(eae)
+=\widetilde\varphi(eE(a)e)
+=\varphi(E(a)).
+\]">\[
+\Psi(a)=\widetilde\Psi(eae)
+=\widetilde\varphi(eE(a)e)
+=\varphi(E(a)).
+\]</span>
+<p>Here <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is the compression, extended by zero. Its support is <span class="math" data-tex="\(e\)">\(e\)</span>. For injectivity, the support argument makes equal dual weights have equal supports; add the same complementary faithful weight and apply faithful injectivity. The zero weight is included. We have proved the support-preserving bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varphi&amp;\longmapsto h_\varphi,\\
+\varphi\circ E&amp;=\tau_{h_\varphi},&amp;
+\theta_s(h_\varphi)&amp;=e^{-s}h_\varphi,&amp;
+s(h_\varphi)&amp;=s(\varphi).
+\end{aligned}
+\tag{LP.7}
+\]">\[
+\begin{aligned}
+\varphi&amp;\longmapsto h_\varphi,\\
+\varphi\circ E&amp;=\tau_{h_\varphi},&amp;
+\theta_s(h_\varphi)&amp;=e^{-s}h_\varphi,&amp;
+s(h_\varphi)&amp;=s(\varphi).
+\end{aligned}
+\tag{LP.7}
+\]</span>
+<h2 id="finite-functionals-localizers-and-the-canonical-integral">Finite functionals, localizers and the canonical integral</h2>
+<p>Let <span class="math" data-tex="\(h=h_\varphi\)">\(h=h_\varphi\)</span>. Its bounded supported localizer
+<span class="math" data-tex="\(a_h=h^{-1}1_{(1,\infty)}(h)\)">\(a_h=h^{-1}1_{(1,\infty)}(h)\)</span> satisfies <span class="math" data-tex="\(E(a_h)=s(h)\)">\(E(a_h)=s(h)\)</span>, by the scalar integral used in LP01. Positive form evaluation gives
+<span class="math" data-tex="\(\tau_h(a_h)=\tau(1_{(1,\infty)}(h))\)">\(\tau_h(a_h)=\tau(1_{(1,\infty)}(h))\)</span>. It follows that, with infinite values allowed,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau(1_{(\ell,\infty)}(h_\varphi))
+=\ell^{-1}\varphi(1),\\
+\ell&gt;0,\\
+h_\varphi\text{ is }\tau\text{-measurable}\\
+\Longleftrightarrow\quad \varphi(1)&lt;\infty.
+\end{gathered}
+\tag{LP.8}
+\]">\[
+\begin{gathered}
+\tau(1_{(\ell,\infty)}(h_\varphi))
+=\ell^{-1}\varphi(1),\\
+\ell&gt;0,\\
+h_\varphi\text{ is }\tau\text{-measurable}\\
+\Longleftrightarrow\quad \varphi(1)&lt;\infty.
+\end{gathered}
+\tag{LP.8}
+\]</span>
+<p>Indeed trace scaling and <span class="math" data-tex="\(\theta_s(h)=e^{-s}h\)">\(\theta_s(h)=e^{-s}h\)</span> give the displayed tail for every threshold. Finite mass makes these tails tend to zero. Infinite mass makes every positive tail infinite, which excludes measurability. This also handles <span class="math" data-tex="\(h=0\)">\(h=0\)</span>.</p>
+<p>For every bounded positive normalizer <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(E(a)=1\)">\(E(a)=1\)</span>, bimodularity gives the inverse formula</p>
+<span class="math math-display" data-tex="\[
+\varphi(x)=
+\tau\!\left(a^{1/2}x^{1/2}h_\varphi x^{1/2}a^{1/2}\right)
+\quad(x\in N_+).
+\tag{LP.9}
+\]">\[
+\varphi(x)=
+\tau\!\left(a^{1/2}x^{1/2}h_\varphi x^{1/2}a^{1/2}\right)
+\quad(x\in N_+).
+\tag{LP.9}
+\]</span>
+<p>The right side denotes the normal trace pairing of the corresponding positive closed form; it equals <span class="math" data-tex="\(\tau_{h_\varphi}(x^{1/2}a x^{1/2})\)">\(\tau_{h_\varphi}(x^{1/2}a x^{1/2})\)</span>. It includes infinity. LP03 takes <span class="math" data-tex="\(a=a_0\)">\(a=a_0\)</span> when needed.</p>
+<p>For <span class="math" data-tex="\(\omega\in N_*^+\)">\(\omega\in N_*^+\)</span>, set <span class="math" data-tex="\(D\omega=h_\omega\)">\(D\omega=h_\omega\)</span>. The positive measurable sum <span class="math" data-tex="\(h_\omega+h_\eta\)">\(h_\omega+h_\eta\)</span> has grade one. LP09 and linearity of positive trace pairings identify its inverse functional with <span class="math" data-tex="\(\omega+\eta\)">\(\omega+\eta\)</span>. Thus <span class="math" data-tex="\(D\)">\(D\)</span> is additive and positively homogeneous. Every predual functional is a finite complex linear combination of positive normal functionals: <a href="OA-MOD-CP.html#oa-mod-cp-04">CP04–06</a> represent it by a coefficient series with <span class="math" data-tex="\(\sum_j\|\xi_j\|\|\eta_j\|&lt;\infty\)">\(\sum_j\|\xi_j\|\|\eta_j\|&lt;\infty\)</span>. Rescale each nonzero pair to have equal vector norms. Vector polarization expresses each coefficient as four positive vector functionals, and each of the four resulting series has summable squared vector norms, hence defines a bounded normal positive functional. Extend <span class="math" data-tex="\(D\)">\(D\)</span> by these combinations. Independence follows by taking the real and imaginary parts of a zero relation, moving positive summands to opposite sides, and using positive additivity. This proves complex linearity without presuming a Jordan theorem.</p>
+<p>The module orientation deserves a check. For <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, the dual of <span class="math" data-tex="\(y\mapsto\omega(x^*yx)\)">\(y\mapsto\omega(x^*yx)\)</span> is <span class="math" data-tex="\(b\mapsto(\omega\circ E)(x^*bx)\)">\(b\mapsto(\omega\circ E)(x^*bx)\)</span>. Relative to the trace its density is <span class="math" data-tex="\(x h_\omega x^*\)">\(x h_\omega x^*\)</span>, by positive form pairing and traciality. Uniqueness therefore gives this congruence identity. Polarization gives, for <span class="math" data-tex="\(b,c\in N\)">\(b,c\in N\)</span>,</p>
+<span class="math math-display" data-tex="\[
+D\!\left[y\mapsto\omega(b^*yc)\right]=c h_\omega b^*.
+\tag{LP.10}
+\]">\[
+D\!\left[y\mapsto\omega(b^*yc)\right]=c h_\omega b^*.
+\tag{LP.10}
+\]</span>
+<p>The polarized functionals are finite; all measurable sums and products use their closed extensions.</p>
+<p>Conversely, if <span class="math" data-tex="\(T\)">\(T\)</span> is measurable and <span class="math" data-tex="\(\theta_s(T)=e^{-s}T\)">\(\theta_s(T)=e^{-s}T\)</span>, uniqueness of polar decomposition makes its polar partial isometry <span class="math" data-tex="\(u\)">\(u\)</span> fixed by <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, so <span class="math" data-tex="\(u\in N\)">\(u\in N\)</span>. Its modulus has grade one and, by LP07–08, is <span class="math" data-tex="\(h_\omega\)">\(h_\omega\)</span> for a unique <span class="math" data-tex="\(\omega\in N_*^+\)">\(\omega\in N_*^+\)</span>. Formula LP10 makes <span class="math" data-tex="\(T=u h_\omega\)">\(T=u h_\omega\)</span> the density of <span class="math" data-tex="\(y\mapsto\omega(yu)\)">\(y\mapsto\omega(yu)\)</span>. This proves that <span class="math" data-tex="\(D\)">\(D\)</span> is onto the entire grade-one space. Positive injectivity follows from LP07. A general element of the kernel has real and imaginary parts represented by differences of positive densities; equality of those densities and LP07 make both functional differences zero. Thus <span class="math" data-tex="\(D\)">\(D\)</span> is injective.</p>
+<p>Define <span class="math" data-tex="\(\int T=D^{-1}(T)(1)\)">\(\int T=D^{-1}(T)(1)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int T&amp;=\tau(a^{1/2}Ta^{1/2}),&amp;
+\int u h_\omega&amp;=\omega(u),\\
+F_T(x)&amp;=\int xT,&amp;
+\|F_T\|&amp;=\int |T|=\omega(1).
+\end{aligned}
+\tag{LP.11}
+\]">\[
+\begin{aligned}
+\int T&amp;=\tau(a^{1/2}Ta^{1/2}),&amp;
+\int u h_\omega&amp;=\omega(u),\\
+F_T(x)&amp;=\int xT,&amp;
+\|F_T\|&amp;=\int |T|=\omega(1).
+\end{aligned}
+\tag{LP.11}
+\]</span>
+<p>To justify the first expression, decompose <span class="math" data-tex="\(D^{-1}(T)\)">\(D^{-1}(T)\)</span> into four finite positive functionals. Each localized density has finite trace by LP09, so their linear combination is trace integrable. This also proves independence of <span class="math" data-tex="\(a\)">\(a\)</span>. The last equality is the <span class="unlinked">normal-functional polar decomposition NF02</span>, with <span class="math" data-tex="\(u^*u=s(\omega)\)">\(u^*u=s(\omega)\)</span>. Consequently the grade-one space is isometric to the Banach predual <span class="math" data-tex="\(N_*\)">\(N_*\)</span>. The ordinary core trace of <span class="math" data-tex="\(T\)">\(T\)</span> is not the integral in LP11.</p>
+<h2 id="change-of-reference-preserves-the-actual-trace-and-densities">Change of reference preserves the actual trace and densities</h2>
+<p>Let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be faithful normal semifinite weights on <span class="math" data-tex="\(N\)">\(N\)</span>, and let <span class="math" data-tex="\(P_\varphi,P_\psi\)">\(P_\varphi,P_\psi\)</span> be their regular cores in one faithful standard representation. Put <span class="math" data-tex="\(u_t=(D\psi:D\varphi)_t\)">\(u_t=(D\psi:D\varphi)_t\)</span>. The multiplication unitary</p>
+<span class="math math-display" data-tex="\[
+(W\xi)(r)=u_{-r}^*\xi(r)
+\]">\[
+(W\xi)(r)=u_{-r}^*\xi(r)
+\]</span>
+<p>implements the normal isomorphism <span class="math" data-tex="\(I_{\psi,\varphi}:P_\psi\to P_\varphi\)">\(I_{\psi,\varphi}:P_\psi\to P_\varphi\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I_{\psi,\varphi}(x)&amp;=x,\\
+I_{\psi,\varphi}(\lambda_t^\psi)
+&amp;=u_t\lambda_t^\varphi,\\
+I_{\psi,\varphi}(\theta_s^\psi A)
+&amp;=\theta_s^\varphi(I_{\psi,\varphi} A).
+\end{aligned}
+\tag{LP.12}
+\]">\[
+\begin{aligned}
+I_{\psi,\varphi}(x)&amp;=x,\\
+I_{\psi,\varphi}(\lambda_t^\psi)
+&amp;=u_t\lambda_t^\varphi,\\
+I_{\psi,\varphi}(\theta_s^\psi A)
+&amp;=\theta_s^\varphi(I_{\psi,\varphi} A).
+\end{aligned}
+\tag{LP.12}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\sigma_{-r}^\psi(x)=u_{-r}\sigma_{-r}^\varphi(x)u_{-r}^*\)">\(\sigma_{-r}^\psi(x)=u_{-r}\sigma_{-r}^\varphi(x)u_{-r}^*\)</span>, proving the first identity. For translations,
+<span class="math" data-tex="\(u_{-r}^*u_{t-r}=\sigma_{-r}^\varphi(u_t)\)">\(u_{-r}^*u_{t-r}=\sigma_{-r}^\varphi(u_t)\)</span> by the cocycle law, proving the second. The field <span class="math" data-tex="\(W\)">\(W\)</span> commutes with every scalar phase <span class="math" data-tex="\(D_s\)">\(D_s\)</span>, proving the last. The inverse field gives onto, not only a homomorphism on algebraic generators. Positive orbit integrals intertwine as well.</p>
+<p>Write <span class="math" data-tex="\(\Psi_\psi=\psi\circ E_\psi\)">\(\Psi_\psi=\psi\circ E_\psi\)</span> and <span class="math" data-tex="\(\Phi_\varphi=\varphi\circ E_\varphi\)">\(\Phi_\varphi=\varphi\circ E_\varphi\)</span>. On <span class="math" data-tex="\(P_\varphi\)">\(P_\varphi\)</span>, OM01 and the ordered chain rule give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(D(\psi\circ E_\varphi):D\tau_\varphi)_t
+&amp;=(D(\psi\circ E_\varphi):D\Phi_\varphi)_t
+(D\Phi_\varphi:D\tau_\varphi)_t\\
+&amp;=u_t\lambda_t^\varphi.
+\end{aligned}
+\tag{LP.13}
+\]">\[
+\begin{aligned}
+(D(\psi\circ E_\varphi):D\tau_\varphi)_t
+&amp;=(D(\psi\circ E_\varphi):D\Phi_\varphi)_t
+(D\Phi_\varphi:D\tau_\varphi)_t\\
+&amp;=u_t\lambda_t^\varphi.
+\end{aligned}
+\tag{LP.13}
+\]</span>
+<p>Let <span class="math" data-tex="\(\tau&#x27;=\tau_\psi\circ I_{\psi,\varphi}^{-1}\)">\(\tau&#x27;=\tau_\psi\circ I_{\psi,\varphi}^{-1}\)</span>. Transport of the defining numerator cocycle gives <span class="math" data-tex="\((D(\psi\circ E_\varphi):D\tau&#x27;)_t=I_{\psi,\varphi}(\lambda_t^\psi)=u_t\lambda_t^\varphi\)">\((D(\psi\circ E_\varphi):D\tau&#x27;)_t=I_{\psi,\varphi}(\lambda_t^\psi)=u_t\lambda_t^\varphi\)</span>. Reversing this identity and LP13 gives equal cocycles for <span class="math" data-tex="\(\tau&#x27;\)">\(\tau&#x27;\)</span> and <span class="math" data-tex="\(\tau_\varphi\)">\(\tau_\varphi\)</span> relative to the same reference <span class="math" data-tex="\(\psi\circ E_\varphi\)">\(\psi\circ E_\varphi\)</span>. Fixed-reference injectivity proves</p>
+<span class="math math-display" data-tex="\[
+\tau_\psi=\tau_\varphi\circ I_{\psi,\varphi},\qquad
+I_{\psi,\varphi}(h_\omega^\psi)=h_\omega^\varphi .
+\tag{LP.14}
+\]">\[
+\tau_\psi=\tau_\varphi\circ I_{\psi,\varphi},\qquad
+I_{\psi,\varphi}(h_\omega^\psi)=h_\omega^\varphi .
+\tag{LP.14}
+\]</span>
+<p>The second identity follows from PT08 uniqueness and orbit-weight transport. Trace preservation extends <span class="math" data-tex="\(I\)">\(I\)</span> to affiliated operators and to the measure algebra, by transporting spectral projections and bounded-domain cuts. Thus it preserves every homogeneous space and its spectral size.</p>
+<p>For three references, the cocycle chain rule is
+<span class="math" data-tex="\((D\chi:D\varphi)_t=(D\chi:D\psi)_t(D\psi:D\varphi)_t\)">\((D\chi:D\varphi)_t=(D\chi:D\psi)_t(D\psi:D\varphi)_t\)</span>.
+Apply LP12 to the generators: the two successive core maps equal <span class="math" data-tex="\(I_{\chi,\varphi}\)">\(I_{\chi,\varphi}\)</span>. They therefore agree on the whole core and on measurable limits. The resulting <span class="math" data-tex="\(L^p\)">\(L^p\)</span> identifications are coherent, with identity for an unchanged reference.</p>
+<h2 id="spectral-size-and-sharp-complementary-multiplication">Spectral size and sharp complementary multiplication</h2>
+<p>Let <span class="math" data-tex="\(\mathcal H_a=\{T:\ T\text{ is }\tau\text{-measurable},\
+\theta_s(T)=e^{-as}T\}\)">\(\mathcal H_a=\{T:\ T\text{ is }\tau\text{-measurable},\
+\theta_s(T)=e^{-as}T\}\)</span>, for real <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. The measure algebra makes it a complex vector space. If <span class="math" data-tex="\(T=u|T|\)">\(T=u|T|\)</span>, then <span class="math" data-tex="\(u\in N\)">\(u\in N\)</span> and <span class="math" data-tex="\(|T|^{1/a}\)">\(|T|^{1/a}\)</span> is a measurable positive grade-one density. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g_a(T)&amp;=\left(\int |T|^{1/a}\right)^a,\\
+d_T(\ell)&amp;=g_a(T)^{1/a}\ell^{-1/a},\\
+\mu_t(T)&amp;=g_a(T)t^{-a}\quad(t&gt;0).
+\end{aligned}
+\tag{LP.15}
+\]">\[
+\begin{aligned}
+g_a(T)&amp;=\left(\int |T|^{1/a}\right)^a,\\
+d_T(\ell)&amp;=g_a(T)^{1/a}\ell^{-1/a},\\
+\mu_t(T)&amp;=g_a(T)t^{-a}\quad(t&gt;0).
+\end{aligned}
+\tag{LP.15}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mu_t(T)=\inf_{\tau(1-e)\leq t}\|Te\|\)">\(\mu_t(T)=\inf_{\tau(1-e)\leq t}\|Te\|\)</span>, with bounded-domain projections <span class="math" data-tex="\(e\)">\(e\)</span>. LP08 gives <span class="math" data-tex="\(d_T\)">\(d_T\)</span>; the spectral-cut characterization gives <span class="math" data-tex="\(\mu_t\)">\(\mu_t\)</span>. Projection comparison, using the polar equivalence of discarded supports, proves that no bounded-domain cut can discard less trace than the corresponding high spectral projection. In each fixed positive grade, convergence in measure is therefore exactly convergence of the gauge of the difference.</p>
+<p>For arbitrary measurable <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, projection cuts give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mu_{s+t}(A+B)&amp;\leq\mu_s(A)+\mu_t(B),\\
+\mu_{s+t}(AB)&amp;\leq\mu_s(A)\mu_t(B),\\
+\mu_t(CAD)&amp;\leq\|C\|\,\mu_t(A)\,\|D\|
+\quad(C,D\in P).
+\end{aligned}
+\tag{LP.16}
+\]">\[
+\begin{aligned}
+\mu_{s+t}(A+B)&amp;\leq\mu_s(A)+\mu_t(B),\\
+\mu_{s+t}(AB)&amp;\leq\mu_s(A)\mu_t(B),\\
+\mu_t(CAD)&amp;\leq\|C\|\,\mu_t(A)\,\|D\|
+\quad(C,D\in P).
+\end{aligned}
+\tag{LP.16}
+\]</span>
+<p>For the sum, intersect cuts. For the product, let <span class="math" data-tex="\(e,f\)">\(e,f\)</span> cut <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, and let <span class="math" data-tex="\(r\)">\(r\)</span> be the right support of <span class="math" data-tex="\((1-e)B\)">\((1-e)B\)</span>. Its polar range lies in <span class="math" data-tex="\(1-e\)">\(1-e\)</span>, so <span class="math" data-tex="\(\tau(r)\leq\tau(1-e)\)">\(\tau(r)\leq\tau(1-e)\)</span>. On <span class="math" data-tex="\(q=f\wedge(1-r)\)">\(q=f\wedge(1-r)\)</span>, <span class="math" data-tex="\(Bq=eBq\)">\(Bq=eBq\)</span>, giving the product norm bound and a discarded trace at most <span class="math" data-tex="\(s+t\)">\(s+t\)</span>. Arbitrarily small slack proves the infimum assertion for the closed product. For right bounded multiplication use the same support argument; left bounded multiplication is immediate. None of these cuts is asserted to remain homogeneous.</p>
+<p>For <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, LP15–16 first give the rough bound</p>
+<span class="math math-display" data-tex="\[
+\|AB\|_1\leq B(a)g_a(A)g_{1-a}(B),\qquad
+B(a)=a^{-a}(1-a)^{-(1-a)}\leq2 .
+\tag{LP.17}
+\]">\[
+\|AB\|_1\leq B(a)g_a(A)g_{1-a}(B),\qquad
+B(a)=a^{-a}(1-a)^{-(1-a)}\leq2 .
+\tag{LP.17}
+\]</span>
+<p>We remove the constant without an endpoint-continuity assumption. Take positive grade-one densities <span class="math" data-tex="\(h,k\)">\(h,k\)</span>, initially of integral one. Supported powers define
+<span class="math" data-tex="\(F(z)=h^z k^{1-z}\)">\(F(z)=h^z k^{1-z}\)</span>, <span class="math" data-tex="\(0&lt;\Re z&lt;1\)">\(0&lt;\Re z&lt;1\)</span>. It has grade one. For a positive measurable <span class="math" data-tex="\(c\)">\(c\)</span>, the difference quotients of <span class="math" data-tex="\(c^z\)">\(c^z\)</span> converge in measure to <span class="math" data-tex="\(c^z\log c\)">\(c^z\log c\)</span> on <span class="math" data-tex="\(\Re z&gt;0\)">\(\Re z&gt;0\)</span>, taking the latter to be zero on the kernel. On <span class="math" data-tex="\(0\leq\ell\leq R\)">\(0\leq\ell\leq R\)</span>, the scalar difference quotients converge uniformly on a small closed disk of positive real exponents: <span class="math" data-tex="\(\ell^\epsilon|\log\ell|^2\)">\(\ell^\epsilon|\log\ell|^2\)</span> is bounded near zero. The omitted high spectral projection has arbitrarily small trace. This proves differentiability in measure. The continuous measure-algebra product gives</p>
+<span class="math math-display" data-tex="\[
+F&#x27;(z)=h^z\log h\,k^{1-z}-h^z k^{1-z}\log k .
+\]">\[
+F&#x27;(z)=h^z\log h\,k^{1-z}-h^z k^{1-z}\log k .
+\]</span>
+<p>Both terms are measurable spectral products; the bare logarithms are not assumed measurable. The difference quotients have grade one, and dual-action continuity in measure preserves this grade in the limit. LP11 and LP15 turn the convergence into predual norm convergence. Thus <span class="math" data-tex="\(F\)">\(F\)</span> is norm holomorphic.</p>
+<p>LP17 bounds <span class="math" data-tex="\(F(u+it)\)">\(F(u+it)\)</span> by <span class="math" data-tex="\(B(u)\)">\(B(u)\)</span>; the supported imaginary powers are contractions and cancel their imaginary grades in the product. On the closed inner strip <span class="math" data-tex="\(\delta\leq\Re z\leq1-\delta\)">\(\delta\leq\Re z\leq1-\delta\)</span>, both boundary norms are at most <span class="math" data-tex="\(B(\delta)\)">\(B(\delta)\)</span>, and the function is bounded and norm continuous. The three-lines argument <a href="OA-MOD-CI.html#oa-mod-ci-02">CI02</a> gives the same bound at every interior point. Let <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>, so <span class="math" data-tex="\(B(\delta)\to1\)">\(B(\delta)\to1\)</span>. Rescaling the positive inputs gives</p>
+<span class="math math-display" data-tex="\[
+\|h^a k^{1-a}\|_1
+\leq(\int h)^a(\int k)^{1-a}.
+\tag{LP.18}
+\]">\[
+\|h^a k^{1-a}\|_1
+\leq(\int h)^a(\int k)^{1-a}.
+\tag{LP.18}
+\]</span>
+<p>Zero inputs are handled directly. Now write <span class="math" data-tex="\(A=u h^a\)">\(A=u h^a\)</span> by left polar decomposition and <span class="math" data-tex="\(B=k^{1-a}v\)">\(B=k^{1-a}v\)</span> by right polar decomposition. Both partial isometries lie in <span class="math" data-tex="\(N\)">\(N\)</span>. Formula LP16 for bounded multiplication, at grade one, gives the sharp bound</p>
+<span class="math math-display" data-tex="\[
+\|AB\|_1\leq g_a(A)g_{1-a}(B).
+\tag{LP.19}
+\]">\[
+\|AB\|_1\leq g_a(A)g_{1-a}(B).
+\tag{LP.19}
+\]</span>
+<h2 id="the-two-sided-banach-modules">The two-sided Banach modules</h2>
+<p>For <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span> put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L^p(N)=\mathcal H_{1/p},\\
+\|T\|_p=\left(\int |T|^p\right)^{1/p},\\
+L^\infty(N)=N .
+\end{gathered}
+\tag{LP.20}
+\]">\[
+\begin{gathered}
+L^p(N)=\mathcal H_{1/p},\\
+\|T\|_p=\left(\int |T|^p\right)^{1/p},\\
+L^\infty(N)=N .
+\end{gathered}
+\tag{LP.20}
+\]</span>
+<p>For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, LP11 already proves completeness and the norm. If <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>, set <span class="math" data-tex="\(a=1/p\)">\(a=1/p\)</span>. For nonzero <span class="math" data-tex="\(S=u h^a\)">\(S=u h^a\)</span>, the measurable operator <span class="math" data-tex="\(T_0=h^{1-a}u^*\)">\(T_0=h^{1-a}u^*\)</span> has complementary grade and satisfies <span class="math" data-tex="\(ST_0=u h u^*\)">\(ST_0=u h u^*\)</span>. The supports <span class="math" data-tex="\(u^*u=s(h)\)">\(u^*u=s(h)\)</span> make the spectral tails of <span class="math" data-tex="\(u h u^*\)">\(u h u^*\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> equivalent. LP08 therefore gives
+<span class="math" data-tex="\(\int ST_0=\int h\)">\(\int ST_0=\int h\)</span> and <span class="math" data-tex="\(g_{1-a}(T_0)=(\int h)^{1-a}\)">\(g_{1-a}(T_0)=(\int h)^{1-a}\)</span>. Normalize <span class="math" data-tex="\(T_0\)">\(T_0\)</span>, and use LP19 in the opposite direction, to obtain</p>
+<span class="math math-display" data-tex="\[
+g_a(S)=\sup_{g_{1-a}(T)\leq1}
+\left|\int ST\right|.
+\tag{LP.21}
+\]">\[
+g_a(S)=\sup_{g_{1-a}(T)\leq1}
+\left|\int ST\right|.
+\tag{LP.21}
+\]</span>
+<p>The grade-one integral is linear. Applying this supremum to <span class="math" data-tex="\(S_1+S_2\)">\(S_1+S_2\)</span> proves the triangle inequality; scaling and separation follow from LP15. Onto Banach duality is not presumed in this argument.</p>
+<p>For completeness, a norm-Cauchy net <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is measure Cauchy by LP15. The complete measure algebra, <a href="OA-MOD-MT.html#oa-mod-mt-05">MT05–09</a>, supplies a measurable limit <span class="math" data-tex="\(S\)">\(S\)</span>. Trace scaling makes <span class="math" data-tex="\(\theta_s\)">\(\theta_s\)</span> continuous in measure: a discarded trace is multiplied by <span class="math" data-tex="\(e^{-s}\)">\(e^{-s}\)</span>, while the bounded cut norm is unchanged by the automorphism. Thus <span class="math" data-tex="\(S\)">\(S\)</span> retains grade <span class="math" data-tex="\(a\)">\(a\)</span>. Fix <span class="math" data-tex="\(i\)">\(i\)</span>, and apply the sum estimate to
+<span class="math" data-tex="\(S_i-S=(S_i-S_j)+(S_j-S)\)">\(S_i-S=(S_i-S_j)+(S_j-S)\)</span>. For <span class="math" data-tex="\(s,t&gt;0\)">\(s,t&gt;0\)</span>, let <span class="math" data-tex="\(j\)">\(j\)</span> tend to the measure limit to get</p>
+<span class="math math-display" data-tex="\[
+g_a(S_i-S)(s+t)^{-a}
+\leq s^{-a}\liminf_j g_a(S_i-S_j).
+\]">\[
+g_a(S_i-S)(s+t)^{-a}
+\leq s^{-a}\liminf_j g_a(S_i-S_j).
+\]</span>
+<p>Let <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>. The Cauchy condition gives <span class="math" data-tex="\(g_a(S_i-S)\to0\)">\(g_a(S_i-S)\to0\)</span>. This proves completeness of the actual homogeneous space; no replacement completion or countable exhaustion of <span class="math" data-tex="\(N\)">\(N\)</span> was introduced.</p>
+<p>For <span class="math" data-tex="\(x,y\in N\)">\(x,y\in N\)</span>, closed measurable multiplication preserves the grade, and LP16 gives</p>
+<span class="math math-display" data-tex="\[
+\|xTy\|_p\leq\|x\|\,\|T\|_p\,\|y\|.
+\tag{LP.22}
+\]">\[
+\|xTy\|_p\leq\|x\|\,\|T\|_p\,\|y\|.
+\tag{LP.22}
+\]</span>
+<p>Associativity, distributivity and the adjoint in the measure algebra make these genuine two-sided Banach <span class="math" data-tex="\(N\)">\(N\)</span>-modules. The unit acts as the identity; <span class="math" data-tex="\(\|T^*\|_p=\|T\|_p\)">\(\|T^*\|_p=\|T\|_p\)</span> follows from polar equivalence of spectral projections. At <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span> these are the usual operator norm and multiplication on <span class="math" data-tex="\(N\)">\(N\)</span>. LP14 gives isometries of these modules for every change of reference.</p>
+<p>The measurable grade-zero space really is <span class="math" data-tex="\(N\)">\(N\)</span>. If a grade-zero <span class="math" data-tex="\(T\)">\(T\)</span> has a finite-trace high spectral projection <span class="math" data-tex="\(q\)">\(q\)</span>, then <span class="math" data-tex="\(\theta_s(q)=q\)">\(\theta_s(q)=q\)</span>, whereas trace scaling gives <span class="math" data-tex="\(\tau(q)=e^{-s}\tau(q)\)">\(\tau(q)=e^{-s}\tau(q)\)</span>. Hence <span class="math" data-tex="\(q=0\)">\(q=0\)</span>. Measurability supplies such a high cut, so <span class="math" data-tex="\(T\)">\(T\)</span> is bounded and fixed. This proves the endpoint assertion rather than postulating it.</p>
+<h2 id="imaginary-grades-without-a-faithful-state">Imaginary grades without a faithful state</h2>
+<p>The faithful semifinite reference density <span class="math" data-tex="\(d=h_{\varphi_0}\)">\(d=h_{\varphi_0}\)</span> has full support. For <span class="math" data-tex="\(b\in\mathbb R\)">\(b\in\mathbb R\)</span>, <span class="math" data-tex="\(d^{ib}\)">\(d^{ib}\)</span> is a bounded unitary in <span class="math" data-tex="\(P\)">\(P\)</span>, even when <span class="math" data-tex="\(d\)">\(d\)</span> is not measurable. If
+<span class="math" data-tex="\(\theta_s(T)=e^{-(a+ib)s}T\)">\(\theta_s(T)=e^{-(a+ib)s}T\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T&amp;\longmapsto T d^{-ib}\in\mathcal H_a,\\
+|T d^{-ib}|&amp;=d^{ib}|T|d^{-ib}.
+\end{aligned}
+\tag{LP.23}
+\]">\[
+\begin{aligned}
+T&amp;\longmapsto T d^{-ib}\in\mathcal H_a,\\
+|T d^{-ib}|&amp;=d^{ib}|T|d^{-ib}.
+\end{aligned}
+\tag{LP.23}
+\]</span>
+<p>Inner trace invariance preserves every spectral-tail trace. Right multiplication by <span class="math" data-tex="\(d^{ib}\)">\(d^{ib}\)</span> is the inverse, so this is an isometry for the gauge LP15. In particular imaginary grade has the operator-norm space <span class="math" data-tex="\(N\)">\(N\)</span> as its coordinate; positive real grades <span class="math" data-tex="\(0&lt;a\leq1\)">\(0&lt;a\leq1\)</span> have the Banach spaces just constructed.</p>
+<p>Neither this coordinate map nor LP20 needs a faithful normal state. A state-dependent compatible interpolation couple is an additional construction with different hypotheses; the open identification recorded in HL-DEP-GRADED-STRIP is not used here. The Banach range of the grade parameter is <span class="math" data-tex="\(0&lt;a\leq1\)">\(0&lt;a\leq1\)</span>. For <span class="math" data-tex="\(a&gt;1\)">\(a&gt;1\)</span>, two orthogonal grade-one densities of integral one give <span class="math" data-tex="\(g_a(h_1^a+h_2^a)=2^a&gt;2\)">\(g_a(h_1^a+h_2^a)=2^a&gt;2\)</span>, so this formula is generally only a quasi-norm. This does not contradict LP20, which uses <span class="math" data-tex="\(a=1/p\)">\(a=1/p\)</span> for <span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span>.</p>
+<h2 id="two-solved-models-that-test-the-generality">Two solved models that test the generality</h2>
+<p><strong>Uncountably many atoms.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be uncountable and <span class="math" data-tex="\(N=\ell^\infty(I)\)">\(N=\ell^\infty(I)\)</span>. The counting trace <span class="math" data-tex="\(\nu(x)=\sum_{i\in I}x_i\)">\(\nu(x)=\sum_{i\in I}x_i\)</span> on positive elements means the supremum of finite subsums. It is faithful, normal and semifinite: finite-coordinate truncations form an increasing net with bounded finite trace. There is no faithful normal state. A normal positive functional has coefficients <span class="math" data-tex="\(w_i\geq0\)">\(w_i\geq0\)</span> of finite sum; for each integer <span class="math" data-tex="\(n\)">\(n\)</span>, only finitely many exceed <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Its nonzero support is therefore countable, and cannot be all of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>The modular action of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is trivial. The regular core and its trace have the concrete model</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P&amp;=\ell^\infty(I)\,\bar\otimes\,L^\infty(\mathbb R),\\
+\theta_s(f)_i(r)&amp;=f_i(r+s),&amp;
+\tau(f)&amp;=\sum_{i\in I}\int_{\mathbb R}f_i(r)e^r\,dr,\\
+d_i(r)&amp;=e^{-r}.
+\end{aligned}
+\tag{LP.24}
+\]">\[
+\begin{aligned}
+P&amp;=\ell^\infty(I)\,\bar\otimes\,L^\infty(\mathbb R),\\
+\theta_s(f)_i(r)&amp;=f_i(r+s),&amp;
+\tau(f)&amp;=\sum_{i\in I}\int_{\mathbb R}f_i(r)e^r\,dr,\\
+d_i(r)&amp;=e^{-r}.
+\end{aligned}
+\tag{LP.24}
+\]</span>
+<p>The normalization is checked by LP03: <span class="math" data-tex="\(a_0(r)=e^r1_{r&lt;0}\)">\(a_0(r)=e^r1_{r&lt;0}\)</span> has orbit integral one, and <span class="math" data-tex="\(\tau_{d}(x^{1/2}a_0x^{1/2})=\sum_i x_i\)">\(\tau_{d}(x^{1/2}a_0x^{1/2})=\sum_i x_i\)</span>. The trace scales by <span class="math" data-tex="\(e^{-s}\)">\(e^{-s}\)</span>.</p>
+<p>For <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span>, every grade <span class="math" data-tex="\(1/p\)">\(1/p\)</span> measurable element is, coordinate by coordinate,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_i(r)=a_i e^{-r/p},\\
+\begin{aligned}
+\tau(1_{(\ell,\infty)}(|T|))
+&amp;=\\
+&amp;\ell^{-p}\sum_i |a_i|^p,
+\end{aligned}\\
+\|T\|_p=\left(\sum_i|a_i|^p\right)^{1/p}.
+\end{gathered}
+\tag{LP.25}
+\]">\[
+\begin{gathered}
+T_i(r)=a_i e^{-r/p},\\
+\begin{aligned}
+\tau(1_{(\ell,\infty)}(|T|))
+&amp;=\\
+&amp;\ell^{-p}\sum_i |a_i|^p,
+\end{aligned}\\
+\|T\|_p=\left(\sum_i|a_i|^p\right)^{1/p}.
+\end{gathered}
+\tag{LP.25}
+\]</span>
+<p>To prove the classification, <span class="math" data-tex="\(e^{r/p}T_i(r)\)">\(e^{r/p}T_i(r)\)</span> is translation invariant as a measurable function on the single scalar coordinate, hence constant almost everywhere. This can be seen by bounded truncation and convolution with an approximate identity: each bounded translation-invariant truncation has constant convolutions and is constant almost everywhere. There is no need for one exceptional null set shared by uncountably many coordinates. Spectral integration gives the displayed tail, finite exactly when <span class="math" data-tex="\((a_i)\in\ell^p(I)\)">\((a_i)\in\ell^p(I)\)</span>; infinite sum gives an infinite tail at every threshold and excludes measurability. Finite <span class="math" data-tex="\(p\)">\(p\)</span>-summability also forces countable support. At <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, the bounded fixed functions are precisely <span class="math" data-tex="\(\ell^\infty(I)\)">\(\ell^\infty(I)\)</span>.</p>
+<p>The operator <span class="math" data-tex="\(d\)">\(d\)</span> has infinite high-tail trace at every threshold, so is not <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable. Nevertheless <span class="math" data-tex="\(d^{ib}_i(r)=e^{-ibr}\)">\(d^{ib}_i(r)=e^{-ibr}\)</span> is bounded and unitary. This verifies the exact hypothesis used by LP23 and disproves a faithful-state reduction in this example.</p>
+<p><strong>Matrices and noncommuting reference weights.</strong> Take <span class="math" data-tex="\(N=M_n(\mathbb C)\)">\(N=M_n(\mathbb C)\)</span> and first use the ordinary trace. Then
+<span class="math" data-tex="\(P=M_n\bar\otimes L^\infty(\mathbb R)\)">\(P=M_n\bar\otimes L^\infty(\mathbb R)\)</span>, with <span class="math" data-tex="\(\tau=\operatorname{Tr}\otimes e^rdr\)">\(\tau=\operatorname{Tr}\otimes e^rdr\)</span>. For <span class="math" data-tex="\(A\in M_n\)">\(A\in M_n\)</span>, the element <span class="math" data-tex="\(T_A(r)=A e^{-r/p}\)">\(T_A(r)=A e^{-r/p}\)</span> has</p>
+<span class="math math-display" data-tex="\[
+\tau(1_{(\ell,\infty)}(|T_A|))
+=\ell^{-p}\operatorname{Tr}|A|^p,\qquad
+\|T_A\|_p=(\operatorname{Tr}|A|^p)^{1/p}.
+\tag{LP.26}
+\]">\[
+\tau(1_{(\ell,\infty)}(|T_A|))
+=\ell^{-p}\operatorname{Tr}|A|^p,\qquad
+\|T_A\|_p=(\operatorname{Tr}|A|^p)^{1/p}.
+\tag{LP.26}
+\]</span>
+<p>Diagonalize <span class="math" data-tex="\(|A|\)">\(|A|\)</span> and integrate each scalar tail, including zero eigenvalues. Thus LP20 recovers the Schatten norm, LP11 recovers <span class="math" data-tex="\(F_{T_A}(x)=\operatorname{Tr}(xA)\)">\(F_{T_A}(x)=\operatorname{Tr}(xA)\)</span>, and LP22 gives both matrix module actions.</p>
+<p>If instead <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(Bx)\)">\(\varphi(x)=\operatorname{Tr}(Bx)\)</span> and <span class="math" data-tex="\(\psi(x)=\operatorname{Tr}(Cx)\)">\(\psi(x)=\operatorname{Tr}(Cx)\)</span>, with <span class="math" data-tex="\(B,C&gt;0\)">\(B,C&gt;0\)</span> not required to commute, then <span class="math" data-tex="\(u_t=C^{it}B^{-it}\)">\(u_t=C^{it}B^{-it}\)</span>. In the common regular realization LP12 uses
+<span class="math" data-tex="\(W(r)=B^{-ir}C^{ir}\)">\(W(r)=B^{-ir}C^{ir}\)</span>. The equality
+<span class="math" data-tex="\(u_{-r}^*u_{t-r}=\sigma_{-r}^{\varphi}(u_t)\)">\(u_{-r}^*u_{t-r}=\sigma_{-r}^{\varphi}(u_t)\)</span> verifies the order of the generator map. For a third positive matrix <span class="math" data-tex="\(D\)">\(D\)</span>,
+<span class="math" data-tex="\((D^{it}C^{-it})(C^{it}B^{-it})=D^{it}B^{-it}\)">\((D^{it}C^{-it})(C^{it}B^{-it})=D^{it}B^{-it}\)</span>, precisely the coherence order in LP04. No cancellation across nonadjacent factors, scalar phase choice or unbounded inverse is being assumed.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Fumio Hiai, <em>Concise lectures on selected topics of von Neumann algebras</em>, section 11.1, Lemmas 11.1–11.4 and Theorem 11.5; actual reading: complete PDF pages 101–106. <a href="https://arxiv.org/abs/2004.02383">Author's freely available text</a>.</li>
+<li>Alain Connes, “Une classification des facteurs de type III,” <em>Annales scientifiques de l'École Normale Supérieure</em> 6 (1973), 133–252. <a href="https://numdam.org/articles/10.24033/asens.1247/">Open article</a>. Historical cocycle antecedent; no new whole-source reading claim.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><span class="unlinked">← Traces on modules and full correspondences</span></span><a href="./">Course contents</a><span class="pager-next"><span class="unlinked">Full Hilbert-algebra norms and weighted rank-one models →</span></span></nav>
+<p class="small source-link"><a href="src/arbitrary-nontracial-lp.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

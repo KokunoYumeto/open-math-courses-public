@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>SH02-SUB-UNIT — Reading a subset through its sheaf</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><span id="SH02-SUB-UNIT"></span><h1 id="sh02-sub-unit-reading-a-subset-through-its-sheaf">SH02-SUB-UNIT
+— Reading a subset through its sheaf</h1>
+<p>Working programme reading. The arguments use the precise prerequisite
+contracts listed below. Full mathematical review and proof closure of
+those dependencies remain unfinished.</p>
+<p>A subset records where a coefficient can live. Microsupport records
+which directions make its local extension problem fail. The distinction
+between a closed restriction and extension by zero from an open set
+therefore matters even when their ordinary closures agree. We first
+establish a geometric estimate valid for arbitrary open and closed sets,
+and then use exact sequences to compute examples whose boundaries meet
+or disappear.</p>
+<span id="SH02-SUB-CONVENTIONS"></span><h2 id="sh02-sub-conventions-coefficients-supports-and-the-imported-tests">SH02-SUB-CONVENTIONS
+— Coefficients, supports, and the imported tests</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+be a commutative unital ring of finite global dimension. Manifolds are
+finite dimensional, countable at infinity, and at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+wherever differential tests are used. The derived category is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^b(k_X)</annotation></semantics></math>.
+There is no field, constructibility, finite generation, or perfect-stalk
+assumption.</p>
+<p>For a locally closed inclusion
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>:</mo><mi>S</mi><mo>↪</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">i:S\hookrightarrow X</annotation></semantics></math>,
+write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>S</mi></msub><mo>=</mo><msub><mi>i</mi><mi>!</mi></msub><mi>k</mi></mrow><annotation encoding="application/x-tex">k_S=i_!k</annotation></semantics></math>,
+with the closed part of the inclusion interpreted as ordinary closed
+pushforward. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>S</mi></msub><annotation encoding="application/x-tex">k_S</annotation></semantics></math>
+has stalk
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+and zero elsewhere, with its canonical extension structure. Stalk
+descriptions alone do not characterize an arbitrary sheaf: the extension
+structure is part of this notation. For a closed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>⊂</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">B\subset A</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+locally closed, localization supplies</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mrow><mi>A</mi><mo>\</mo><mi>B</mi></mrow></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>k</mi><mi>A</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>k</mi><mi>B</mi></msub><mover><mo>→</mo><mrow><mi>+</mi><mn>1</mn></mrow></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S1)</mtext></mrow><annotation encoding="application/x-tex">
+k_{A\setminus B}\longrightarrow k_A\longrightarrow k_B\xrightarrow{+1}.
+\qquad\text{(S1)}
+</annotation></semantics></math></p>
+<p>We use the following explicit dependencies.</p>
+<ul>
+<li><code>SH02-MST-TEST</code> defines microsupport by the vanishing,
+uniformly on an open neighborhood of a covector, of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>≥</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow></msub><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">(R\Gamma_{\{f\ge f(x)\}}F)_x</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+test function. <code>SH02-MST-FORMAL</code> proves locality,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+coordinate invariance, closed positive conicity, the triangle
+inequalities, and the identification of zero covectors with the
+<strong>closed</strong> support.</li>
+<li><code>SH02-GAM-TOPO</code> defines the topology
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>C</mi></msub><annotation encoding="application/x-tex">E_C</annotation></semantics></math>
+whose open sets are ordinary open sets stable under addition by a closed
+convex cone
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.
+<code>SH02-GAM-UNIT</code> proves the derived unit for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>C</mi></msub><mo>:</mo><mi>E</mi><mo>→</mo><msub><mi>E</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">q_C:E\to E_C</annotation></semantics></math>
+and hence the projector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>C</mi></msub><mo>=</mo><msubsup><mi>q</mi><mi>C</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>R</mi><msub><mi>q</mi><mrow><mi>C</mi><mo>*</mo></mrow></msub></mrow><annotation encoding="application/x-tex">P_C=q_C^{-1}Rq_{C*}</annotation></semantics></math>.</li>
+<li><code>SH02-MST-CUTOFF-FORWARD</code> proves, for arbitrary closed
+convex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+including cones containing lines,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>P</mi><mi>C</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mi>E</mi><mo>×</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msup><mi>C</mi><mo>∘</mo></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S2)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(P_CF)\subset E\times(-C^\circ).
+\qquad\text{(S2)}
+</annotation></semantics></math> It also proves that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>C</mi></msub><mi>F</mi><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">P_CF\to F</annotation></semantics></math>
+is a microlocal isomorphism on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>×</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msup><mi>C</mi><mo>∘</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E\times\operatorname{Int}(-C^\circ)</annotation></semantics></math>.
+These statements apply to bounded complexes.</li>
+<li><code>SH02-NG-CONE-SEQUENCES</code> identifies the pair normal cone
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(A,B)</annotation></semantics></math>
+with limits
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>n</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>a</mi><mi>n</mi></msub><mo>−</mo><msub><mi>b</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">c_n(a_n-b_n)</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">a_n\in A</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>∈</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">b_n\in B</annotation></semantics></math>,
+both tend to the base point, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>n</mi></msub><mo>→</mo><mi>+</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">c_n\to+\infty</annotation></semantics></math>.
+<code>SH02-NG-CONE-CONSEQUENCES</code> proves locality and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo form="prefix" stretchy="false">(</mo><mi>B</mi><mo>,</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mi>C</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(B,A)=-C(A,B)</annotation></semantics></math>.</li>
+<li>Localization, exactness of filtered colimits, closed pushforward,
+inverse image of constant sheaves, and proper base change have their
+usual derived sheaf meanings. The elementary convex acyclicity used in
+the crossing calculation is the constant-coefficient specialization of
+<code>SH02-CA-CONSTANT</code>, once that item is admitted; its precise
+content needed here is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo>;</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">R\Gamma(D;k)\simeq k</annotation></semantics></math>
+for a nonempty convex locally closed subset of a finite-dimensional real
+vector space, compatibly with restrictions between such sets. This
+paragraph states the needed content rather than claiming an unchecked
+import is closed.</li>
+</ul>
+<p>The corresponding lessons are <a href="SH02-microsupport-tests.html">directional tests</a>, <a href="SH02-cone-topology.html">directional topology</a>, <span class="unlinked">normal geometry</span>, and <a href="SH02-convex-acyclicity.html">convex acyclicity</a>.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">D\subset E</annotation></semantics></math>
+the polar and antipode are</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mo>∘</mo></msup><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>ξ</mi><mo>∈</mo><msup><mi>E</mi><mo>*</mo></msup><mo>:</mo><mo form="prefix" stretchy="false">⟨</mo><mi>v</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≥</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> for all </mtext><mspace width="0.333em"></mspace></mrow><mi>v</mi><mo>∈</mo><mi>D</mi><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>D</mi><mi>a</mi></msup><mo>=</mo><mi>−</mi><mi>D</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S3)</mtext></mrow><annotation encoding="application/x-tex">
+D^\circ=\{\xi\in E^*: \langle v,\xi\rangle\ge0\text{ for all }v\in D\},
+\qquad D^a=-D.
+\qquad\text{(S3)}
+</annotation></semantics></math></p>
+<p>A closed convex cone contains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>.
+It is pointed when it contains no nonzero line. The polar of the empty
+set is all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>E</mi><mo>*</mo></msup><annotation encoding="application/x-tex">E^*</annotation></semantics></math>.
+A nonempty open cone need not contain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>.</p>
+<p>All assertions of an exact nonempty microsupport for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>S</mi></msub><annotation encoding="application/x-tex">k_S</annotation></semantics></math>
+use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ne0</annotation></semantics></math>.
+For the zero ring every coefficient sheaf is zero and its microsupport
+is empty. More generally the proofs for a cone vertex, a submanifold,
+and a regular boundary work with any nonzero coefficient module placed
+in degree zero; no flatness is required.</p>
+<span id="SH02-SUB-STRICT-DEFINITION"></span><h2 id="sh02-sub-strict-definition-directions-which-cannot-cross-out-of-a-set">SH02-SUB-STRICT-DEFINITION
+— Directions which cannot cross out of a set</h2>
+<p>For an arbitrary subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>⊂</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">S\subset X</annotation></semantics></math>,
+with no local-closedness assumption, define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>T</mi><mi>x</mi></msub><mi>X</mi><mo>\</mo><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>\</mo><mi>S</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>∘</mo></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S4)</mtext></mrow><annotation encoding="application/x-tex">
+N_x(S)=T_xX\setminus C_x(X\setminus S,S),
+\qquad
+N_x^*(S)=N_x(S)^\circ.
+\qquad\text{(S4)}
+</annotation></semantics></math></p>
+<p>Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(S)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>N</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N^*(S)</annotation></semantics></math>
+for the unions over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+We call these the strict normal cone and its conormal cone. The first is
+a cone of tangent vectors; the second is a cone of cotangent vectors.
+Neither is obtained simply by taking the usual tangent cone of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+and inserting a minus sign.</p>
+<p>Here is the operational meaning of a nonzero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v\in N_x(S)</annotation></semantics></math>.
+In some coordinate neighborhood there are an ordinary neighborhood
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+and an open cone
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+containing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+such that</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>∩</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>∩</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>G</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo>⊂</mo><mi>S</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S5)</mtext></mrow><annotation encoding="application/x-tex">
+U\cap\bigl((S\cap U)+G\bigr)\subset S.
+\qquad\text{(S5)}
+</annotation></semantics></math></p>
+<p>It says that a small displacement in any direction in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+cannot take a point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+to its complement while both endpoints remain in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>.</p>
+<p><strong>Proof of equivalence.</strong> If no such pair
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>,</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">U,G</annotation></semantics></math>
+exists, take successively smaller coordinate balls about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+and successively smaller cones about the ray through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>.
+We obtain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>∉</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">a_n\notin S</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>∈</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">b_n\in S</annotation></semantics></math>,
+both tending to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>−</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_n-b_n</annotation></semantics></math>
+pointing increasingly closely in direction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>.
+The difference is nonzero because its endpoints have different
+membership. Rescale it to have norm
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>v</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|v|</annotation></semantics></math>.
+The rescaling constants tend to infinity, and the resulting vectors
+converge to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>.
+This is precisely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>\</mo><mi>S</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v\in C_x(X\setminus S,S)</annotation></semantics></math>.
+Conversely, a sequence representing that membership has, for large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+both endpoints in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+and its difference in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>,
+contradicting (S5). The sequence criterion also proves that the
+construction is intrinsic under coordinate changes.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-SUB-STRICT-GEOMETRY"></span><h2 id="sh02-sub-strict-geometry-openness-convexity-complements-and-zero-vectors">SH02-SUB-STRICT-GEOMETRY
+— Openness, convexity, complements, and zero vectors</h2>
+<p>The subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mi>T</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">N(S)\subset TX</annotation></semantics></math>
+is open because the pair normal cone is closed. Its fibres are convex
+open cones. Here are the details of convexity, which also explain why a
+strict cone behaves better than a general normal cone.</p>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>,</mo><mi>w</mi><mo>∈</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v,w\in N_x(S)</annotation></semantics></math>
+and directional neighborhoods
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>v</mi></msub><mo>,</mo><msub><mi>G</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">G_v,G_w</annotation></semantics></math>
+satisfying (S5). First consider a nonzero vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>v</mi></msub><mo>+</mo><msub><mi>G</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">G_v+G_w</annotation></semantics></math>.
+Near a chosen decomposition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">d=a+b</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><msub><mi>G</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">a\in G_v</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>∈</mo><msub><mi>G</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">b\in G_w</annotation></semantics></math>,
+every nearby vector has a decomposition into points of these same two
+cones with both summands bounded in norm. By scaling, sufficiently short
+displacements in a cone about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+can therefore be performed in two steps whose intermediate point stays
+in the original neighborhood. Each step preserves membership in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+After shrinking the neighborhood, (S5) holds for that cone about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>∈</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d\in N_x(S)</annotation></semantics></math>.</p>
+<p>If a convex combination of permitted vectors is zero, the same
+argument gives more. The open Minkowski sum of appropriate positive
+scalar multiples of their directional neighborhoods contains a ball
+about zero. Every sufficiently short displacement, in any direction, is
+consequently a bounded two-step permitted displacement. On a smaller
+ball, either there is no point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+or every point belongs to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>∈</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">0\in N_x(S)</annotation></semantics></math>
+and in fact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>T</mi><mi>x</mi></msub><mi>X</mi></mrow><annotation encoding="application/x-tex">N_x(S)=T_xX</annotation></semantics></math>.
+Positive scalar multiples and zero coefficients in a convex combination
+cause no further issue. This proves fibrewise convexity including the
+zero-vector case.</p>
+<p>More explicitly,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>T</mi><mi>x</mi></msub><mi>X</mi><mspace width="1.0em"></mspace><mo>⟺</mo><mspace width="1.0em"></mspace><mi>x</mi><mo>∉</mo><mover><mi>S</mi><mo accent="true">¯</mo></mover><mspace width="0.222em"></mspace><mtext mathvariant="normal">or</mtext><mspace width="0.222em"></mspace><mi>x</mi><mo>∈</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mi>S</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S6)</mtext></mrow><annotation encoding="application/x-tex">
+N_x(S)=T_xX
+\quad\Longleftrightarrow\quad
+x\notin\overline S\ \text{or}\ x\in\operatorname{Int}S.
+\qquad\text{(S6)}
+</annotation></semantics></math></p>
+<p>The forward implication follows because, when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+lies in both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>S</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline S</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mrow><mi>X</mi><mo>\</mo><mi>S</mi></mrow><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline{X\setminus S}</annotation></semantics></math>,
+choose sequences from the two sets converging to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+and rescale their differences slowly enough to obtain the zero vector in
+the pair cone. For example, if the differences have norm
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>n</mi></msub><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r_n\to0</annotation></semantics></math>,
+replace the scale by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msqrt><msub><mi>r</mi><mi>n</mi></msub></msqrt><mo>+</mo><mn>1</mn><mi>/</mi><mi>n</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(\sqrt{r_n}+1/n)^{-1}</annotation></semantics></math>
+after passing to sufficiently close endpoints; the product with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>n</mi></msub><annotation encoding="application/x-tex">r_n</annotation></semantics></math>
+tends to zero. The reverse implication follows because one of the two
+sets is absent in a neighborhood. Equivalently,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>∈</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">0\in N_x(S)</annotation></semantics></math>
+exactly in the cases in (S6).</p>
+<p>The polar fibres
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N_x^*(S)</annotation></semantics></math>
+are closed convex cones containing zero. The union
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>N</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N^*(S)</annotation></semantics></math>
+is closed in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">T^*X</annotation></semantics></math>:
+if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi(v)&lt;0</annotation></semantics></math>
+for some
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v\in N_x(S)</annotation></semantics></math>,
+extend
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+as a local vector field staying in the open set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(S)</annotation></semantics></math>.
+The same strict inequality persists for nearby covectors and keeps them
+out of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>N</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N^*(S)</annotation></semantics></math>.</p>
+<p>When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>≠</mo><mi>⌀</mi></mrow><annotation encoding="application/x-tex">N_x(S)\ne\varnothing</annotation></semantics></math>,
+its polar is pointed. Indeed a functional and its negative can both be
+nonnegative on a nonempty open set only when that functional vanishes.
+In positive dimension the converse holds: if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>⌀</mi></mrow><annotation encoding="application/x-tex">N_x(S)=\varnothing</annotation></semantics></math>,
+its polar is the whole dual vector space, which is not pointed. The
+statement that an empty strict cone is equivalent to a full dual fibre
+must be handled separately in dimension zero: there the whole dual space
+is itself
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{0\}</annotation></semantics></math>.
+Every subset of a zero-dimensional manifold is open and closed, and (S6)
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>T</mi><mi>x</mi></msub><mi>X</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">N_x(S)=T_xX=\{0\}</annotation></semantics></math>
+at every point.</p>
+<p>Exchanging the two sets in the pair cone proves</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>\</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>\</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S7)</mtext></mrow><annotation encoding="application/x-tex">
+N_x(X\setminus S)=-N_x(S),
+\qquad
+N_x^*(X\setminus S)=-N_x^*(S).
+\qquad\text{(S7)}
+</annotation></semantics></math></p>
+<p>Thus the conormal of a set and that of its complement have opposite
+signs even though both contain their zero covectors everywhere.</p>
+<span id="SH02-SUB-CONE-TOPOLOGY"></span><h2 id="sh02-sub-cone-topology-recognizing-directional-open-and-closed-sets-locally">SH02-SUB-CONE-TOPOLOGY
+— Recognizing directional open and closed sets locally</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+be a finite-dimensional real vector space, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">C\subset E</annotation></semantics></math>
+be pointed, closed, convex, with nonempty interior, and fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">x\in E</annotation></semantics></math>.
+An ordinary open set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>
+is <strong>locally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>-open
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math></strong>
+if some neighborhood
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+satisfies</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>∩</mo><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo>∩</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>C</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mi>O</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S8)</mtext></mrow><annotation encoding="application/x-tex">
+U\cap((O\cap U)+C)\subset O.
+\qquad\text{(S8)}
+</annotation></semantics></math></p>
+<p>A closed set is locally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>-closed
+if its complement is locally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>-open.
+These are local statements; neither requires that the original set be
+globally invariant under addition.</p>
+<p>For an open
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>
+and a closed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+the implications are</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><msup><mi>C</mi><mo>∘</mo></msup><mo>∪</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>⟹</mo><mi>O</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is locally </mtext><mspace width="0.333em"></mspace></mrow><mi>C</mi><mrow><mtext mathvariant="normal">-open at </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>−</mi><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><msup><mi>C</mi><mo>∘</mo></msup><mo>∪</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>⟹</mo><mi>Z</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is locally </mtext><mspace width="0.333em"></mspace></mrow><mi>C</mi><mrow><mtext mathvariant="normal">-closed at </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S9)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+N_x^*(O)\subset\operatorname{Int}C^\circ\cup\{0\}
+&amp;\Longrightarrow O\text{ is locally }C\text{-open at }x,\\
+-N_x^*(Z)\subset\operatorname{Int}C^\circ\cup\{0\}
+&amp;\Longrightarrow Z\text{ is locally }C\text{-closed at }x.
+\end{aligned}
+\qquad\text{(S9)}
+</annotation></semantics></math></p>
+<p>Conversely,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>O</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> locally </mtext><mspace width="0.333em"></mspace></mrow><mi>C</mi><mrow><mtext mathvariant="normal">-open at </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>⟹</mo><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msup><mi>C</mi><mo>∘</mo></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>Z</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> locally </mtext><mspace width="0.333em"></mspace></mrow><mi>C</mi><mrow><mtext mathvariant="normal">-closed at </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>⟹</mo><mi>−</mi><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msup><mi>C</mi><mo>∘</mo></msup><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S10)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+O\text{ locally }C\text{-open at }x&amp;\Longrightarrow N_x^*(O)\subset C^\circ,\\
+Z\text{ locally }C\text{-closed at }x&amp;\Longrightarrow-N_x^*(Z)\subset C^\circ.
+\end{aligned}
+\qquad\text{(S10)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> Work first in positive dimension with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>.
+Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D=N_x^*(O)</annotation></semantics></math>.
+The assumption in (S9) implies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo><mo>≠</mo><mi>⌀</mi></mrow><annotation encoding="application/x-tex">N_x(O)\ne\varnothing</annotation></semantics></math>;
+a full dual space cannot be contained in a pointed cone together with
+zero. For a nonempty open convex cone
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>,
+elementary separation gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>G</mi><mo>∘</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mo>∘</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G=\operatorname{Int}((G^\circ)^\circ)</annotation></semantics></math>,
+unless
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">G=E</annotation></semantics></math>,
+where the same formula still holds. Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><msup><mi>D</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">N_x(O)=\operatorname{Int}D^\circ</annotation></semantics></math>.</p>
+<p>Every nonzero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∈</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">c\in C</annotation></semantics></math>
+pairs strictly positively with every nonzero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∈</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">\xi\in D</annotation></semantics></math>,
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+is in the interior of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">C^\circ</annotation></semantics></math>.
+Compactness of the unit slice of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+makes the positivity uniform when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+is fixed. Therefore
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∈</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><msup><mi>D</mi><mo>∘</mo></msup><mo>=</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">c\in\operatorname{Int}D^\circ=N_x(O)</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">D=\{0\}</annotation></semantics></math>
+this conclusion is immediate. For each direction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>,
+choose a cone of permitted displacements as in (S5). The compact set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>∩</mo><mi>S</mi><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C\cap S(E)</annotation></semantics></math>
+has a finite subcover. Intersect the corresponding ordinary
+neighborhoods. Every nonzero displacement in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+is then permitted, and displacement zero is harmless. This proves
+(S8).</p>
+<p>For the converse, every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">v\in\operatorname{Int}C</annotation></semantics></math>
+has an open cone neighborhood contained in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.
+Condition (S8) makes it a permitted direction, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mi>C</mi><mo>⊂</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Int}C\subset N_x(O)</annotation></semantics></math>.
+Taking polars and using
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mover><mrow><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mi>C</mi></mrow><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">C=\overline{\operatorname{Int}C}</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>⊂</mo><msup><mi>C</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">D\subset C^\circ</annotation></semantics></math>.
+Complementation and (S7) prove the closed-set assertions. In dimension
+zero all statements are immediate from the discrete topology.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The gap between the interior in (S9) and the closed polar in (S10) is
+intentional. Inclusion on the boundary of a dual cone need not give the
+uniform room needed to choose one neighborhood for all directions of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.</p>
+<p>For later use, a local
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>-open
+set can be replaced by a global one. If (S8) holds on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>,
+choose a smaller ball
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>⊂</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">V\subset U</annotation></semantics></math>
+and put</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>O</mi><mo accent="true">̃</mo></mover><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo>∩</mo><mi>V</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>C</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S11)</mtext></mrow><annotation encoding="application/x-tex">
+\widetilde O=(O\cap V)+C.
+\qquad\text{(S11)}
+</annotation></semantics></math></p>
+<p>This is an ordinary open
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>-open
+subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>O</mi><mo accent="true">̃</mo></mover><mo>∩</mo><mi>V</mi><mo>=</mo><mi>O</mi><mo>∩</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">\widetilde O\cap V=O\cap V</annotation></semantics></math>.
+Both endpoints in this last equality lie in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>,
+so (S8) applies directly; no properness of a projection is involved. The
+complementary construction treats a locally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>-closed
+set.</p>
+<span id="SH02-SUB-BOUND"></span><h2 id="sh02-sub-bound-a-geometric-upper-bound-for-arbitrary-open-or-closed-sets">SH02-SUB-BOUND
+— A geometric upper bound for arbitrary open or closed sets</h2>
+<p>For every open
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>⊂</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">O\subset X</annotation></semantics></math>
+and every closed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>⊂</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">Z\subset X</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>O</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mi>−</mi><msup><mi>N</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Z</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msup><mi>N</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S12)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(k_O)\subset -N^*(O),
+\qquad
+\operatorname{SS}(k_Z)\subset N^*(Z).
+\qquad\text{(S12)}
+</annotation></semantics></math></p>
+<p>The right sides are defined even at points outside the closed
+support. There they may contain a zero vector that is absent on the
+left; the assertion is an inclusion.</p>
+<p><strong>Proof for open sets.</strong> Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>∉</mo><mi>−</mi><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\eta\notin-N_x^*(O)</annotation></semantics></math>.
+By the definition of the polar there is a vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v\in N_x(O)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\eta(v)&gt;0</annotation></semantics></math>.
+In positive dimension choose a sufficiently narrow pointed closed convex
+cone
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>,
+with nonempty interior and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+in its interior, so that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>\</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">C\setminus\{0\}</annotation></semantics></math>
+lies in a permitted cone from (S5). Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>
+is locally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>-open.
+Replace it by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>O</mi><mo accent="true">̃</mo></mover><annotation encoding="application/x-tex">\widetilde O</annotation></semantics></math>
+from (S11), which does not change its sheaf or microsupport near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.</p>
+<p>As an open set of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>C</mi></msub><annotation encoding="application/x-tex">E_C</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>O</mi><mo accent="true">̃</mo></mover><annotation encoding="application/x-tex">\widetilde O</annotation></semantics></math>
+carries its constant sheaf extended by zero to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>C</mi></msub><annotation encoding="application/x-tex">E_C</annotation></semantics></math>.
+Its inverse image under
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>q</mi><mi>C</mi></msub><annotation encoding="application/x-tex">q_C</annotation></semantics></math>
+is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mover><mi>O</mi><mo accent="true">̃</mo></mover></msub><annotation encoding="application/x-tex">k_{\widetilde O}</annotation></semantics></math>:
+inverse image commutes with open extension by zero and carries the
+constant sheaf to the constant sheaf. The derived unit therefore
+gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>C</mi></msub><msub><mi>k</mi><mover><mi>O</mi><mo accent="true">̃</mo></mover></msub><mo>≃</mo><msub><mi>k</mi><mover><mi>O</mi><mo accent="true">̃</mo></mover></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S13)</mtext></mrow><annotation encoding="application/x-tex">
+P_Ck_{\widetilde O}\simeq k_{\widetilde O}.
+\qquad\text{(S13)}
+</annotation></semantics></math></p>
+<p>The cutoff inclusion (S2) now excludes every covector pairing
+positively with some vector of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>,
+in particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,\eta)</annotation></semantics></math>.
+This is an exclusion on an open neighborhood as required by the
+definition, not merely vanishing for one selected test function. In
+dimension zero the estimate follows directly from zero-section
+support.</p>
+<p>For the closed assertion, apply the open estimate to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>=</mo><mi>X</mi><mo>\</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">O=X\setminus Z</annotation></semantics></math>
+and the triangle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>O</mi></msub><mo>→</mo><msub><mi>k</mi><mi>X</mi></msub><mo>→</mo><msub><mi>k</mi><mi>Z</mi></msub><mover><mo>→</mo><mrow><mi>+</mi><mn>1</mn></mrow></mover></mrow><annotation encoding="application/x-tex">k_O\to k_X\to k_Z\xrightarrow{+1}</annotation></semantics></math>.
+The constant sheaf has only zero covectors in its microsupport: this
+also follows from (S2) with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">C=E</annotation></semantics></math>,
+since it is an inverse image from the indiscrete directional topology.
+By (S7),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mi>N</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>N</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-N^*(O)=N^*(Z)</annotation></semantics></math>,
+and every zero vector lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>N</mi><mo>*</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N^*(Z)</annotation></semantics></math>.
+The triangle inequality proves the result.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The estimate uses the pair cone of the complement against the set.
+Replacing that cone by a single tangent cone, or omitting the antipode
+for an open extension, changes the assertion.</p>
+<span id="SH02-SUB-CONVEX-VERTEX"></span><h2 id="sh02-sub-convex-vertex-the-vertex-of-a-closed-convex-cone">SH02-SUB-CONVEX-VERTEX
+— The vertex of a closed convex cone</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">D\subset E</annotation></semantics></math>
+be any closed convex cone. It may contain lines, have empty interior,
+equal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{0\}</annotation></semantics></math>,
+or equal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ne0</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>D</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msubsup><mi>T</mi><mn>0</mn><mo>*</mo></msubsup><mi>E</mi><mo>=</mo><msup><mi>D</mi><mo>∘</mo></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S14)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(k_D)\cap T_0^*E=D^\circ.
+\qquad\text{(S14)}
+</annotation></semantics></math></p>
+<p><strong>Upper inclusion.</strong> The complement of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+is stable under addition by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">-D</annotation></semantics></math>:
+if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∉</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">a\notin D</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>−</mo><mi>d</mi><mo>∈</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">a-d\in D</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>∈</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">d\in D</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>−</mo><mi>d</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>d</mi><mo>∈</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">a=(a-d)+d\in D</annotation></semantics></math>,
+a contradiction. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+is a closed subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><annotation encoding="application/x-tex">E_{-D}</annotation></semantics></math>.
+The inverse image of its closed constant sheaf is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>D</mi></msub><annotation encoding="application/x-tex">k_D</annotation></semantics></math>.
+One can verify this without any nonproper base-change assertion: the
+natural map of the two closed-constant sheaves has the identity on the
+stalks over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+and zero stalks elsewhere. The derived unit gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><msub><mi>k</mi><mi>D</mi></msub><mo>≃</mo><msub><mi>k</mi><mi>D</mi></msub></mrow><annotation encoding="application/x-tex">P_{-D}k_D\simeq k_D</annotation></semantics></math>,
+and (S2) bounds its entire microsupport by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>×</mo><msup><mi>D</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">E\times D^\circ</annotation></semantics></math>.</p>
+<p><strong>Lower inclusion at the vertex.</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∈</mo><msup><mi>D</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">\xi\in D^\circ</annotation></semantics></math>,
+the linear function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">⟨</mo><mi>y</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">f(y)=\langle y,\xi\rangle</annotation></semantics></math>
+is nonnegative on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>.
+The local section equal to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+is supported in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{f\ge0\}</annotation></semantics></math>
+and has a nonzero germ at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>.
+Hence</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><msub><mi>k</mi><mi>D</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mn>0</mn></msub><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo>≠</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S15)</mtext></mrow><annotation encoding="application/x-tex">
+H^0\bigl((R\Gamma_{\{f\ge0\}}k_D)_0\bigr)\ne0.
+\qquad\text{(S15)}
+</annotation></semantics></math></p>
+<p>One nonzero test at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,\xi)</annotation></semantics></math>
+prevents the required neighborhood of uniformly vanishing tests. This
+proves the lower inclusion, including
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi=0</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>This proof explains why pointedness and full dimension are
+unnecessary for the vertex formula. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+is a vector subspace,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">D^\circ</annotation></semantics></math>
+is its annihilator, because both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">-v</annotation></semantics></math>
+must pair nonnegatively. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">D=\{0\}</annotation></semantics></math>
+the whole cotangent fibre occurs; if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">D=E</annotation></semantics></math>
+only the zero covector occurs.</p>
+<span id="SH02-SUB-SMOOTH-MODELS"></span><h2 id="sh02-sub-smooth-models-submanifolds-and-regular-boundaries">SH02-SUB-SMOOTH-MODELS
+— Submanifolds and regular boundaries</h2>
+<p>For a <strong>closed embedded submanifold</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>⊂</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">M\subset X</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ne0</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>M</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msubsup><mi>T</mi><mi>M</mi><mo>*</mo></msubsup><mi>X</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S16)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(k_M)=T_M^*X.
+\qquad\text{(S16)}
+</annotation></semantics></math></p>
+<p>Indeed a local
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+submanifold chart identifies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+with a vector subspace. Apply (S14) after translation to every point of
+that subspace, and use coordinate invariance. Outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+the sheaf is locally zero. In particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msubsup><mi>T</mi><mi>X</mi><mo>*</mo></msubsup><mi>X</mi></mrow><annotation encoding="application/x-tex">\operatorname{SS}(k_X)=T_X^*X</annotation></semantics></math>.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is only locally closed, (S16) holds after restriction to an open ambient
+neighborhood in which
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is closed. It is not a global formula in the original ambient manifold:
+boundary points of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+can contribute microsupport.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">f:X\to\mathbb R</annotation></semantics></math>
+be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>f</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">df\ne0</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f^{-1}(0)</annotation></semantics></math>.
+Set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">Z=\{f\ge0\}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">O=\{f&gt;0\}</annotation></semantics></math>.
+Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Z</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>∪</mi><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>λ</mi><mi>d</mi><msub><mi>f</mi><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>λ</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>,</mo></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S17)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\operatorname{SS}(k_Z)
+={}&amp;\{(x,0):f(x)\ge0\}\\
+&amp;\cup\{(x,\lambda df_x):f(x)=0,\ \lambda&gt;0\},
+\end{aligned}
+\qquad\text{(S17)}
+</annotation></semantics></math></p>
+<p>and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>O</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow></mrow></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>∪</mi><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>λ</mi><mi>d</mi><msub><mi>f</mi><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>λ</mi><mo>&lt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S18)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\operatorname{SS}(k_O)
+={}&amp;\{(x,0):f(x)\ge0\}\\
+&amp;\cup\{(x,\lambda df_x):f(x)=0,\ \lambda&lt;0\}.
+\end{aligned}
+\qquad\text{(S18)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> At a boundary point the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+inverse function theorem makes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+one coordinate. A closed halfspace is a translated closed convex cone,
+so its polar is the nonnegative ray in the positive coordinate
+differential, proving (S17). Interior points carry the constant sheaf,
+and exterior points carry zero.</p>
+<p>For (S18), use the triangle</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>k</mi><mi>X</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>≤</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mover><mo>→</mo><mrow><mi>+</mi><mn>1</mn></mrow></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S19)</mtext></mrow><annotation encoding="application/x-tex">
+k_{\{f&gt;0\}}\longrightarrow k_X\longrightarrow k_{\{f\le0\}}\xrightarrow{+1}.
+\qquad\text{(S19)}
+</annotation></semantics></math></p>
+<p>At a nonzero covector the middle term has no microsupport. The
+triangle inequalities then identify the microsupports of the other two
+terms there. Formula (S17), applied to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">-f</annotation></semantics></math>,
+yields the negative ray. Zero covectors lie over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>O</mi><mo accent="true">¯</mo></mover><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\overline O=\{f\ge0\}</annotation></semantics></math>,
+because the regularity assumption makes every boundary point a limit of
+points of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>.
+This proves the complete formula, despite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>O</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(k_O)_x=0</annotation></semantics></math>
+at its boundary.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>For comparison,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>v</mi><mo>:</mo><mi>d</mi><msub><mi>f</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">N_x(Z)=N_x(O)=\{v:df_x(v)&gt;0\}</annotation></semantics></math>
+at a regular boundary point, so both conormal fibres are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="double-struck">ℝ</mi><mrow><mo>≥</mo><mn>0</mn></mrow></msub><mi>d</mi><msub><mi>f</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">\mathbb R_{\ge0}df_x</annotation></semantics></math>.
+The sign difference between (S17) and (S18) comes entirely from the two
+sheaf extension operations.</p>
+<span id="SH02-SUB-TANGENTIAL-CHANNEL"></span><h2 id="sh02-sub-tangential-channel-two-faces-meeting-at-an-omitted-point">SH02-SUB-TANGENTIAL-CHANNEL
+— Two faces meeting at an omitted point</h2>
+<p>A useful class of examples comes from two functions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mo>−</mo></msub><mo>,</mo><msub><mi>b</mi><mo>+</mo></msub><mo>:</mo><mi mathvariant="double-struck">ℝ</mi><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">b_-,b_+:\mathbb R\to\mathbb R</annotation></semantics></math>
+of class
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>.
+Suppose</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>b</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>≤</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>b</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>&lt;</mo><msub><mi>b</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S20)</mtext></mrow><annotation encoding="application/x-tex">
+b_-(u)=b_+(u)\quad(u\le0),\qquad
+b_-(u)&lt;b_+(u)\quad(u&gt;0),
+\qquad\text{(S20)}
+</annotation></semantics></math></p>
+<p>and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>b</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b_-(0)=b_+(0)=0</annotation></semantics></math>.
+Their derivatives at zero necessarily agree; write the common derivative
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+Define the half-open channel</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>v</mi><mo>≥</mo><msub><mi>b</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>B</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>v</mi><mo>≥</mo><msub><mi>b</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>S</mi><mo>=</mo><mi>A</mi><mo>\</mo><mi>B</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S21)</mtext></mrow><annotation encoding="application/x-tex">
+A=\{(u,v):v\ge b_-(u)\},\qquad
+B=\{(u,v):v\ge b_+(u)\},\qquad
+S=A\setminus B.
+\qquad\text{(S21)}
+</annotation></semantics></math></p>
+<p>Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>⊂</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">B\subset A</annotation></semantics></math>
+are closed,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+is locally closed. It consists of the points
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u&gt;0</annotation></semantics></math>
+between the two graphs, with the lower face included and the upper face
+excluded. The origin is excluded as well.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ne0</annotation></semantics></math>,
+its full microsupport is the union of the following sets:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="center" style="text-align: center"><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>z</mi><mo>∈</mo><mover><mi>S</mi><mo accent="true">¯</mo></mover><mo form="postfix" stretchy="false">}</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><msub><mi>b</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>λ</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msubsup><mi>b</mi><mo>−</mo><mo>′</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>u</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>λ</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><msub><mi>b</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>λ</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msubsup><mi>b</mi><mo>+</mo><mo>′</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>u</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>λ</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>λ</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>m</mi><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>λ</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S22)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{gathered}
+\{(z,0):z\in\overline S\},\\
+\{((u,b_-(u)),\lambda(-b_-'(u),1)):u&gt;0,\ \lambda&gt;0\},\\
+\{((u,b_+(u)),\lambda(-b_+'(u),1)):u&gt;0,\ \lambda&gt;0\},\\
+\{((0,0),\lambda(-m,1)):\lambda&gt;0\}.
+\end{gathered}
+\qquad\text{(S22)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> The triangle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>S</mi></msub><mo>→</mo><msub><mi>k</mi><mi>A</mi></msub><mo>→</mo><msub><mi>k</mi><mi>B</mi></msub><mover><mo>→</mo><mrow><mi>+</mi><mn>1</mn></mrow></mover></mrow><annotation encoding="application/x-tex">k_S\to k_A\to k_B\xrightarrow{+1}</annotation></semantics></math>
+bounds the microsupport of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>S</mi></msub><annotation encoding="application/x-tex">k_S</annotation></semantics></math>
+by the union of the two closed-superlevel microsupports. Both defining
+functions have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+derivative equal to one, so (S17) applies globally. At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,0)</annotation></semantics></math>
+their nonzero conormals agree and equal the positive ray through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>m</mi><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-m,1)</annotation></semantics></math>.
+Away from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>S</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline S</annotation></semantics></math>,
+the sheaf is locally zero, even where the two larger epigraphs happen to
+have a common boundary.</p>
+<p>At a lower face with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u&gt;0</annotation></semantics></math>,
+the two graphs have positive separation, and a small neighborhood of
+that face meets no point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.
+There
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>S</mi></msub><mo>=</mo><msub><mi>k</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">k_S=k_A</annotation></semantics></math>,
+proving equality with the first family of face covectors. At an upper
+face, a small neighborhood lies in the interior of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+is locally the open sublevel
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>&lt;</mo><msub><mi>b</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v&lt;b_+(u)</annotation></semantics></math>.
+Formula (S18), applied to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">b_+(u)-v</annotation></semantics></math>,
+gives the <strong>same upward</strong> sign shown in (S22). The face
+covectors approach every positive multiple of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>m</mi><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-m,1)</annotation></semantics></math>
+at the origin, so closedness of microsupport supplies the last line.
+Zero covectors occur exactly over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>S</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline S</annotation></semantics></math>.
+These lower inclusions exhaust the upper estimate.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>For a concrete calculation take</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mn>2</mn><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mo>+</mo></msub><msup><mo form="postfix" stretchy="false">)</mo><mn>4</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>b</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>5</mn><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mo>+</mo></msub><msup><mo form="postfix" stretchy="false">)</mo><mn>4</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>u</mi><mo>+</mo></msub><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S23)</mtext></mrow><annotation encoding="application/x-tex">
+b_-(u)=-2(u_+)^4,\qquad b_+(u)=5(u_+)^4,\qquad u_+=\max(u,0).
+\qquad\text{(S23)}
+</annotation></semantics></math></p>
+<p>The functions are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>3</mn></msup><annotation encoding="application/x-tex">C^3</annotation></semantics></math>,
+which is more than needed. The two face directions are respectively</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo form="prefix" stretchy="false">(</mo><mn>8</mn><msup><mi>u</mi><mn>3</mn></msup><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>λ</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>20</mn><msup><mi>u</mi><mn>3</mn></msup><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>u</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>λ</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S24)</mtext></mrow><annotation encoding="application/x-tex">
+\lambda(8u^3,1),\qquad \lambda(-20u^3,1),\qquad u&gt;0,\ \lambda&gt;0.
+\qquad\text{(S24)}
+</annotation></semantics></math></p>
+<p>At the missing tip the fibre is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>β</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{(0,\beta):\beta\ge0\}</annotation></semantics></math>.
+Thus there is a nonzero directional obstruction at a point where the
+stalk of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>S</mi></msub><annotation encoding="application/x-tex">k_S</annotation></semantics></math>
+is zero. The two faces supply only one vertical ray there, even though
+one face is included and the other is excluded. Their boundary normals
+already have opposite geometric orientations, and changing the extension
+type reverses one of them a second time.</p>
+<span id="SH02-SUB-CROSSING"></span><h2 id="sh02-sub-crossing-a-nonconvex-cotangent-fibre">SH02-SUB-CROSSING
+— A nonconvex cotangent fibre</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+have positive dimension, and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">D\subset E</annotation></semantics></math>
+be a pointed closed convex cone with nonempty interior. Put</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><mi>D</mi><mo>∪</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S25)</mtext></mrow><annotation encoding="application/x-tex">
+Z=D\cup(-D).
+\qquad\text{(S25)}
+</annotation></semantics></math></p>
+<p>The two cones intersect only at zero. Then, for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ne0</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Z</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><msubsup><mi>T</mi><mn>0</mn><mo>*</mo></msubsup><mi>E</mi><mo>=</mo><msup><mi>E</mi><mo>*</mo></msup><mo>\</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><msup><mi>D</mi><mo>∘</mo></msup><mo>∪</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msup><mi>D</mi><mo>∘</mo></msup><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S26)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(k_Z)\cap T_0^*E
+=E^*\setminus\bigl(\operatorname{Int}D^\circ
+\cup\operatorname{Int}(-D^\circ)\bigr).
+\qquad\text{(S26)}
+</annotation></semantics></math></p>
+<p>This formula is generally nonconvex. It is a calculation of the
+actual microsupport, rather than of the convex conormal bound.</p>
+<p><strong>The algebra of the meeting point.</strong> Closed-set
+restriction gives an exact sequence</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>k</mi><mi>Z</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>k</mi><mi>D</mi></msub><mo>⊕</mo><msub><mi>k</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><mover><mo>→</mo><mrow><msub><mi>r</mi><mi>D</mi></msub><mo>−</mo><msub><mi>r</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub></mrow></mover><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S27)</mtext></mrow><annotation encoding="application/x-tex">
+0\longrightarrow k_Z
+\longrightarrow k_D\oplus k_{-D}
+\xrightarrow{r_D-r_{-D}}k_{\{0\}}
+\longrightarrow0.
+\qquad\text{(S27)}
+</annotation></semantics></math></p>
+<p>At zero this is the diagonal and difference sequence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>→</mo><mi>k</mi><mo>→</mo><mi>k</mi><mo>⊕</mo><mi>k</mi><mo>→</mo><mi>k</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0\to k\to k\oplus k\to k\to0</annotation></semantics></math>;
+at every other point it is plainly exact. No division or field
+assumption enters.</p>
+<p>Apply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><annotation encoding="application/x-tex">P_{-D}</annotation></semantics></math>.
+We have</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><msub><mi>k</mi><mi>D</mi></msub><mo>≃</mo><msub><mi>k</mi><mi>D</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>P</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo>≃</mo><msub><mi>k</mi><mi>D</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>P</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><msub><mi>k</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><mo>≃</mo><msub><mi>k</mi><mi>E</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S28)</mtext></mrow><annotation encoding="application/x-tex">
+P_{-D}k_D\simeq k_D,\qquad
+P_{-D}k_{\{0\}}\simeq k_D,\qquad
+P_{-D}k_{-D}\simeq k_E.
+\qquad\text{(S28)}
+</annotation></semantics></math></p>
+<p>The first identity was proved for the vertex model. The second is the
+skyscraper calculation <code>SH02-GAM-EX-SKY</code>. To verify the third
+without substituting a nonproper closed fibre, compute the direct image
+on a basis of nonempty convex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>D</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-D)</annotation></semantics></math>-open
+sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>.
+The intersection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>∩</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>D</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">U\cap(-D)</annotation></semantics></math>
+is nonempty: choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>∈</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">u\in U</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>∈</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">d\in\operatorname{Int}D</annotation></semantics></math>;
+for sufficiently large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>−</mo><mi>t</mi><mi>d</mi><mo>∈</mo><mi>−</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">u-td\in-D</annotation></semantics></math>,
+and it remains in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>.
+The intersection is locally closed and convex, so its coefficient
+cohomology is canonically
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+in degree zero, with identity restrictions. It follows on this basis
+that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>q</mi><mrow><mi>−</mi><mi>D</mi><mo>*</mo></mrow></msub><msub><mi>k</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">Rq_{-D*}k_{-D}</annotation></semantics></math>
+is the constant sheaf of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><annotation encoding="application/x-tex">E_{-D}</annotation></semantics></math>.
+Pulling back proves the third identity.</p>
+<p>Under the first two identities, the morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>r</mi><mi>D</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_{-D}(r_D)</annotation></semantics></math>
+is an isomorphism. Indeed on a convex directional neighborhood that
+contributes a stalk on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>,
+restriction from its nonempty convex intersection with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+to zero is the identity on constants. The skyscraper calculation and
+fixedness show that both sides vanish off
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>.
+Thus (S27) becomes a triangle whose second arrow is a map</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>D</mi></msub><mo>⊕</mo><msub><mi>k</mi><mi>E</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>k</mi><mi>D</mi></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S29)</mtext></mrow><annotation encoding="application/x-tex">
+k_D\oplus k_E\longrightarrow k_D
+\qquad\text{(S29)}
+</annotation></semantics></math></p>
+<p>with its first component invertible. Its fibre is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>E</mi></msub><annotation encoding="application/x-tex">k_E</annotation></semantics></math>,
+by the elementary automorphism subtracting the second component from the
+first coordinate. Consequently
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi>−</mi><mi>D</mi></mrow></msub><msub><mi>k</mi><mi>Z</mi></msub><mo>≃</mo><msub><mi>k</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">P_{-D}k_Z\simeq k_E</annotation></semantics></math>.</p>
+<p>The cutoff counit is a microlocal isomorphism on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>×</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><msup><mi>D</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">E\times\operatorname{Int}D^\circ</annotation></semantics></math>.
+This open cone contains no zero covector because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+has nonzero vectors. The constant sheaf has no microsupport there, and
+hence neither does
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>Z</mi></msub><annotation encoding="application/x-tex">k_Z</annotation></semantics></math>.
+Replacing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">-D</annotation></semantics></math>
+excludes the other open cone in (S26).</p>
+<p><strong>The remaining directions.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∉</mo><msup><mi>D</mi><mo>∘</mo></msup><mo>∪</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msup><mi>D</mi><mo>∘</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\xi\notin D^\circ\cup(-D^\circ)</annotation></semantics></math>,
+neither of the two cone sheaves in (S27) has microsupport at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,\xi)</annotation></semantics></math>,
+by (S14). The skyscraper does have microsupport there. The triangle
+inequality forces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Z</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,\xi)\in\operatorname{SS}(k_Z)</annotation></semantics></math>.
+A nonzero boundary point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">D^\circ</annotation></semantics></math>
+does not lie in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mi>D</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">-D^\circ</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mo>∘</mo></msup><annotation encoding="application/x-tex">D^\circ</annotation></semantics></math>
+is pointed. It is therefore a limit of points outside both closed cones;
+closedness of microsupport supplies every such boundary direction. The
+same argument applies to the opposite cone. Finally zero belongs because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>Z</mi></msub><annotation encoding="application/x-tex">k_Z</annotation></semantics></math>
+is nonzero at zero. In dimension one the two open dual rays leave only
+zero, and this last argument gives the entire answer. This proves (S26).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>For example, in coordinates
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(u,v)</annotation></semantics></math>
+let</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>u</mi><mo>≥</mo><mn>2</mn><mo form="prefix" stretchy="false">|</mo><mi>v</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S30)</mtext></mrow><annotation encoding="application/x-tex">
+D=\{(u,v):u\ge2|v|\}.
+\qquad\text{(S30)}
+</annotation></semantics></math></p>
+<p>Pairing with the two edge directions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2,1)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2,-1)</annotation></semantics></math>
+gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mo>∘</mo></msup><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mn>2</mn><mi>α</mi><mo>≥</mo><mo form="prefix" stretchy="false">|</mo><mi>β</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S31)</mtext></mrow><annotation encoding="application/x-tex">
+D^\circ=\{(\alpha,\beta):2\alpha\ge|\beta|\}.
+\qquad\text{(S31)}
+</annotation></semantics></math></p>
+<p>The cotangent fibre of the double wedge is therefore</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mo form="prefix" stretchy="false">|</mo><mi>β</mi><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><mn>2</mn><mo form="prefix" stretchy="false">|</mo><mi>α</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S32)</mtext></mrow><annotation encoding="application/x-tex">
+\{(\alpha,\beta):|\beta|\ge2|\alpha|\}.
+\qquad\text{(S32)}
+</annotation></semantics></math></p>
+<p>The vectors
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1,2)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>−</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1,-2)</annotation></semantics></math>
+belong to this fibre, but their midpoint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1,0)</annotation></semantics></math>
+does not. In contrast, every fibre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N_x^*(Z)</annotation></semantics></math>
+is convex. A strict-conormal upper estimate can therefore lose
+information even for a union of two convex polyhedral sets.</p>
+<p>The zero-dimensional case of (S25) is a single point. Its
+microsupport is the single zero covector when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ne0</annotation></semantics></math>.
+It is excluded from the hypothesis of (S26) because, in a
+zero-dimensional vector space, the interior of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{0\}</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{0\}</annotation></semantics></math>
+itself.</p>
+<span id="SH02-SUB-CONVEX-SETS"></span><h2 id="sh02-sub-convex-sets-supporting-hyperplanes-for-arbitrary-convex-sets">SH02-SUB-CONVEX-SETS
+— Supporting hyperplanes for arbitrary convex sets</h2>
+<p>The vertex calculation extends to every point of every closed convex
+set. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">Z\subset E</annotation></semantics></math>
+is closed and convex and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">x\in Z</annotation></semantics></math>,
+define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>x</mi></msub><mi>Z</mi><mo>=</mo><mover><mrow><munder><mo>⋃</mo><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow></munder><mi>t</mi><mo form="prefix" stretchy="false">(</mo><mi>Z</mi><mo>−</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><mo accent="true">¯</mo></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S34)</mtext></mrow><annotation encoding="application/x-tex">
+T_xZ=\overline{\bigcup_{t&gt;0}t(Z-x)}.
+\qquad\text{(S34)}
+</annotation></semantics></math></p>
+<p>The normal-cone sequence criterion identifies this with the normal
+cone of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+along the one-point submanifold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{x\}</annotation></semantics></math>.
+Indeed a scaled sequence from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">Z-x</annotation></semantics></math>
+lies in the displayed closed cone. Conversely, for a vector in its
+closure, approximate it by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>n</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>z</mi><mi>n</mi></msub><mo>−</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t_n(z_n-x)</annotation></semantics></math>
+and then move
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>n</mi></msub><annotation encoding="application/x-tex">z_n</annotation></semantics></math>
+toward
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+along its segment until the new point is within
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">1/n</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+Increasing the scale by the reciprocal segment factor preserves the
+approximating vector and makes the scales tend to infinity. Convexity is
+what keeps these new points in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ne0</annotation></semantics></math>
+the full formula is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Z</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>x</mi><mo>∈</mo><mi>Z</mi><mo>,</mo><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">⟨</mo><mi>z</mi><mo>−</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≥</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> for every </mtext><mspace width="0.333em"></mspace></mrow><mi>z</mi><mo>∈</mo><mi>Z</mi><mo form="postfix" stretchy="false">}</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S35)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(k_Z)
+=\{(x,\xi):x\in Z,\ \langle z-x,\xi\rangle\ge0\text{ for every }z\in Z\}.
+\qquad\text{(S35)}
+</annotation></semantics></math></p>
+<p>Equivalently the fibre at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>T</mi><mi>x</mi></msub><mi>Z</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">(T_xZ)^\circ</annotation></semantics></math>.</p>
+<p><strong>A convex displacement lemma.</strong> Work first in the
+affine hull
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>,
+translated so that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+is not a point, it has nonempty relative interior and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mi>L</mi></msub><msub><mi>T</mi><mi>x</mi></msub><mi>Z</mi><mo>=</mo><munder><mo>⋃</mo><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow></munder><mi>t</mi><mo form="prefix" stretchy="false">(</mo><msub><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mi>L</mi></msub><mi>Z</mi><mo>−</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S36)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{Int}_L T_xZ
+=\bigcup_{t&gt;0}t(\operatorname{Int}_LZ-x).
+\qquad\text{(S36)}
+</annotation></semantics></math></p>
+<p>To verify this, the right side is a nonempty open convex cone. Its
+closure is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>x</mi></msub><mi>Z</mi></mrow><annotation encoding="application/x-tex">T_xZ</annotation></semantics></math>:
+for any
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>∈</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">z\in Z</annotation></semantics></math>
+and a fixed relative interior point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+the points
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ε</mi><mo form="postfix" stretchy="false">)</mo><mi>z</mi><mo>+</mo><mi>ε</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">(1-\varepsilon)z+\varepsilon a</annotation></semantics></math>
+are relative interior points tending to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>.
+The interior of the closure of a nonempty open convex set equals that
+set, by separation. This proves (S36).</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+in the cone (S36), choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t&gt;0</annotation></semantics></math>
+and a relative ball about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mi>t</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">x+tv</annotation></semantics></math>
+contained in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mi>L</mi></msub><mi>Z</mi></mrow><annotation encoding="application/x-tex">\operatorname{Int}_LZ</annotation></semantics></math>.
+There are a neighborhood
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+and a narrow cone
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>⊂</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">G\subset L</annotation></semantics></math>
+about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+such that sufficiently short displacements in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>,
+starting in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>∩</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">Z\cap U</annotation></semantics></math>
+and ending in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>,
+preserve
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>.
+Here is a quantitative way to see the point. For unit directions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>
+near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>/</mi><mo form="prefix" stretchy="false">|</mo><mi>v</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">v/|v|</annotation></semantics></math>,
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t_0&gt;0</annotation></semantics></math>
+so that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><msub><mi>t</mi><mn>0</mn></msub><mi>e</mi></mrow><annotation encoding="application/x-tex">x+t_0e</annotation></semantics></math>
+remains in that relative ball. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>∈</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">b\in Z</annotation></semantics></math>
+is close to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>+</mo><msub><mi>t</mi><mn>0</mn></msub><mi>e</mi></mrow><annotation encoding="application/x-tex">b+t_0e</annotation></semantics></math>
+remains in the same ball. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>r</mi><mo>≤</mo><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">0\le r\le t_0</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>+</mo><mi>r</mi><mi>e</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mfrac><mi>r</mi><msub><mi>t</mi><mn>0</mn></msub></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>b</mi><mo>+</mo><mfrac><mi>r</mi><msub><mi>t</mi><mn>0</mn></msub></mfrac><mo form="prefix" stretchy="false">(</mo><mi>b</mi><mo>+</mo><msub><mi>t</mi><mn>0</mn></msub><mi>e</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mi>Z</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S37)</mtext></mrow><annotation encoding="application/x-tex">
+b+re=\left(1-\frac r{t_0}\right)b
++\frac r{t_0}(b+t_0e)\in Z.
+\qquad\text{(S37)}
+</annotation></semantics></math></p>
+<p>Shrinking
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+makes every displacement with both endpoints in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+shorter than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mn>0</mn></msub><annotation encoding="application/x-tex">t_0</annotation></semantics></math>.
+This proves the required uniform directional stability. The same
+argument preserves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mi>L</mi></msub><mi>Z</mi></mrow><annotation encoding="application/x-tex">\operatorname{Int}_LZ</annotation></semantics></math>
+when the starting point lies there.</p>
+<p><strong>Proof of (S35).</strong> The lower inclusion is the
+supported-section argument (S15), now with the affine function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>y</mi><mo>−</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">\langle y-x,\xi\rangle</annotation></semantics></math>.
+For the upper inclusion, suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∉</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>T</mi><mi>x</mi></msub><mi>Z</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">\xi\notin(T_xZ)^\circ</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+is a point, there is no such covector. Otherwise choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><msub><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mi>L</mi></msub><msub><mi>T</mi><mi>x</mi></msub><mi>Z</mi></mrow><annotation encoding="application/x-tex">v\in\operatorname{Int}_LT_xZ</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi(v)&lt;0</annotation></semantics></math>,
+by perturbing a vector on which the pairing is negative. The
+displacement lemma supplies a narrow pointed closed convex cone
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>⊂</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">C\subset L</annotation></semantics></math>
+around
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+for which
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+is locally stable under addition by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.
+Considered in the full space
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+may have empty interior; this is allowed in the cutoff theorem.</p>
+<p>The complement of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+is locally stable under addition by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">-C</annotation></semantics></math>.
+For if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∉</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">a\notin Z</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>−</mo><mi>c</mi><mo>∈</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">a-c\in Z</annotation></semantics></math>
+with both points sufficiently close to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+stability of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+would give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">a\in Z</annotation></semantics></math>.
+A point outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+remains outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+after these displacements, so the same reasoning works in an ordinary
+ambient neighborhood in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+is locally a closed set for the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>C</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-C)</annotation></semantics></math>-topology.
+The saturation construction (S11), applied to its complement, replaces
+it by a globally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>C</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-C)</annotation></semantics></math>-closed
+set without changing it near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+Its coefficient sheaf is fixed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mrow><mi>−</mi><mi>C</mi></mrow></msub><annotation encoding="application/x-tex">P_{-C}</annotation></semantics></math>,
+whose microsupport lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>×</mo><msup><mi>C</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">E\times C^\circ</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi(v)&lt;0</annotation></semantics></math>,
+it cannot contain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,\xi)</annotation></semantics></math>.
+This proves the upper inclusion without imposing full dimension on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+and without invoking a closed-embedding microsupport theorem.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>Now let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">O\subset E</annotation></semantics></math>
+be open and convex. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ne0</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>O</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mover><mi>O</mi><mo accent="true">¯</mo></mover></msub><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S38)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(k_O)
+=\operatorname{SS}(k_{\overline O})^a.
+\qquad\text{(S38)}
+</annotation></semantics></math></p>
+<p>The empty set gives the empty microsupport on both sides. In
+dimension zero the assertion is immediate. For the remaining cases, the
+following proof has one additional, explicit dependency: the
+internal-Hom estimate in <code>SH02-MO-DIAGONAL</code>, with its second
+argument the constant sheaf. Its exact specialization is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><msub><mi>k</mi><mi>E</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>E</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S39)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(R\mathcal Hom(F,k_E))
+\subset\operatorname{SS}(F)^a,\qquad F\in D^b(k_E),
+\qquad\text{(S39)}
+</annotation></semantics></math></p>
+<p>when the resulting Hom object is bounded; the usual microsupport
+transversality condition is automatic because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>E</mi></msub><annotation encoding="application/x-tex">k_E</annotation></semantics></math>
+has only zero covectors. The general functorial estimate uses the
+earlier strict-conormal bound, not (S38), so this is an item-level
+dependency in one direction. Its independent verification is not
+supplied by the present argument.</p>
+<p><strong>Upper inclusion.</strong> At a boundary point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>∂</mi><mi>O</mi></mrow><annotation encoding="application/x-tex">x\in\partial O</annotation></semantics></math>,
+the displacement lemma gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>O</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><msub><mi>T</mi><mi>x</mi></msub><mover><mi>O</mi><mo accent="true">¯</mo></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S40)</mtext></mrow><annotation encoding="application/x-tex">
+N_x(O)=\operatorname{Int}T_x\overline O.
+\qquad\text{(S40)}
+</annotation></semantics></math></p>
+<p>For the remaining inclusion in this geometric identity, a permitted
+open cone of displacements sends points of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>
+approaching
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>.
+Passing to the limit shows that every direction in that open cone lies
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>x</mi></msub><mover><mi>O</mi><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">T_x\overline O</annotation></semantics></math>;
+hence its original direction lies in the interior. Taking polars in
+(S40) and using (S12) proves that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>O</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{SS}(k_O)</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>T</mi><mi>x</mi></msub><mover><mi>O</mi><mo accent="true">¯</mo></mover><msup><mo form="postfix" stretchy="false">)</mo><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">-(T_x\overline O)^\circ</annotation></semantics></math>.
+Interior and exterior points have already been computed. Formula (S35)
+proves the desired upper inclusion globally.</p>
+<p><strong>Lower inclusion.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>:</mo><mi>O</mi><mo>↪</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">j:O\hookrightarrow E</annotation></semantics></math>,
+open adjunction gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>O</mi></msub><mo>,</mo><msub><mi>k</mi><mi>E</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><msub><mi>j</mi><mo>*</mo></msub><msub><mi>k</mi><mi>O</mi></msub><mo>≃</mo><msub><mi>k</mi><mover><mi>O</mi><mo accent="true">¯</mo></mover></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S41)</mtext></mrow><annotation encoding="application/x-tex">
+R\mathcal Hom(k_O,k_E)\simeq Rj_*k_O\simeq k_{\overline O}.
+\qquad\text{(S41)}
+</annotation></semantics></math></p>
+<p>For the last isomorphism, on ordinary convex open neighborhoods
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+the intersection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>∩</mo><mi>O</mi></mrow><annotation encoding="application/x-tex">U\cap O</annotation></semantics></math>
+is empty or convex and nonempty. Its constant coefficient cohomology is
+respectively zero or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+in degree zero. The map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>E</mi></msub><mo>→</mo><mi>R</mi><msub><mi>j</mi><mo>*</mo></msub><msub><mi>k</mi><mi>O</mi></msub></mrow><annotation encoding="application/x-tex">k_E\to Rj_*k_O</annotation></semantics></math>
+has stalk zero outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>O</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline O</annotation></semantics></math>
+and the identity on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+at every point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>O</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline O</annotation></semantics></math>;
+it factors through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mover><mi>O</mi><mo accent="true">¯</mo></mover></msub><annotation encoding="application/x-tex">k_{\overline O}</annotation></semantics></math>
+and gives the asserted isomorphism. This uses an open-neighborhood
+colimit, not a closed-fibre computation for a nonproper map. In
+particular the Hom object is bounded. Applying (S39) to (S41) yields</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mover><mi>O</mi><mo accent="true">¯</mo></mover></msub><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>O</mi></msub><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S42)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}(k_{\overline O})
+\subset\operatorname{SS}(k_O)^a,
+\qquad\text{(S42)}
+</annotation></semantics></math></p>
+<p>which is exactly the missing inclusion after applying the antipode.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>For a worked application, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><msup><mi>u</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><msup><mi>v</mi><mn>2</mn></msup><mo>≤</mo><mn>9</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">Z=\{(u,v):u^2+4v^2\le9\}</annotation></semantics></math>.
+At an interior point the fibre is zero. At a boundary point the inward
+polar normal is the ray through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>2</mn><mi>u</mi><mo>,</mo><mi>−</mi><mn>8</mn><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-2u,-8v)</annotation></semantics></math>,
+so (S35) gives this nonnegative ray for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>Z</mi></msub><annotation encoding="application/x-tex">k_Z</annotation></semantics></math>.
+For the open ellipse, (S38) reverses it to the ray through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>u</mi><mo>,</mo><mn>8</mn><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2u,8v)</annotation></semantics></math>.
+The zero section over the closed ellipse occurs in both cases. The
+calculation uses a nonconstant curvature boundary, and the result allows
+every nonzero coefficient ring satisfying the course assumptions.</p>
+<span id="SH02-SUB-PROBLEMS"></span><h2 id="sh02-sub-problems-exercises-with-worked-solutions">SH02-SUB-PROBLEMS
+— Exercises with worked solutions</h2>
+<p><strong>1. An interval with one included endpoint.</strong> Compute
+the microsupport of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mrow><mo form="prefix" stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>7</mn><mo form="postfix" stretchy="false">)</mo></mrow></msub><annotation encoding="application/x-tex">M_{[2,7)}</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is any nonzero
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-module</span>.</p>
+<p><strong>Solution.</strong> On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>7</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2,7)</annotation></semantics></math>
+only zero covectors occur. At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>,
+the set is locally the closed superlevel
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><mn>2</mn><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x-2\ge0</annotation></semantics></math>,
+so all nonnegative multiples of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math>
+occur. At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>7</mn><annotation encoding="application/x-tex">7</annotation></semantics></math>,
+it is locally the open superlevel
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>−</mo><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">7-x&gt;0</annotation></semantics></math>,
+whose negative multiples of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mn>7</mn><mo>−</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d(7-x)</annotation></semantics></math>
+are again the nonnegative multiples of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math>.
+Thus the result is the zero section over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>7</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[2,7]</annotation></semantics></math>,
+together with the strictly positive cotangent rays at both endpoints.
+All other fibres are empty. In particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>7</mn><annotation encoding="application/x-tex">7</annotation></semantics></math>
+contributes a zero covector despite its zero stalk. The proof of
+(S17)–(S18) uses the nonzero element of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+and exact diagonal maps only, so the calculation applies, for example,
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">k=\mathbb Z</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>8</mn><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">M=\mathbb Z/8\mathbb Z</annotation></semantics></math>.</p>
+<p><strong>2. A smooth submanifold that is not closed.</strong> Regard
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>7</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2,7)</annotation></semantics></math>
+as a one-dimensional submanifold of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>.
+Explain the failure of the global formula
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>M</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msubsup><mi>T</mi><mi>M</mi><mo>*</mo></msubsup><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">\operatorname{SS}(k_M)=T_M^*\mathbb R</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> The right side is only the zero section
+over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>7</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2,7)</annotation></semantics></math>.
+The open extension has, at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>,
+the nonpositive ray in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math>,
+and, at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>7</mn><annotation encoding="application/x-tex">7</annotation></semantics></math>,
+the nonnegative ray in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math>,
+by applying (S18) to the two boundary coordinates. It also has zero
+covectors over both endpoints. Restriction to the ambient open manifold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>7</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2,7)</annotation></semantics></math>
+does satisfy the submanifold formula. The lost hypothesis in a global
+application is closedness in the ambient space.</p>
+<p><strong>3. Compute the strict cone at the edge of a
+halfspace.</strong> At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">0\in\mathbb R^n</annotation></semantics></math>,
+take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><msub><mi>x</mi><mn>1</mn></msub><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">S=\{x_1\ge0\}</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><msub><mi>x</mi><mn>1</mn></msub><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">S=\{x_1&gt;0\}</annotation></semantics></math>.
+Calculate the pair cone, strict cone, and conormal.</p>
+<p><strong>Solution.</strong> Every complement-minus-set difference has
+first coordinate at most zero. Every vector with first coordinate
+strictly negative is realized by choosing endpoints on opposite sides,
+and taking limits adds the vectors with first coordinate zero. Hence</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>\</mo><mi>S</mi><mo>,</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>v</mi><mo>:</mo><msub><mi>v</mi><mn>1</mn></msub><mo>≤</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>N</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>v</mi><mo>:</mo><msub><mi>v</mi><mn>1</mn></msub><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="1.0em"></mspace><msubsup><mi>N</mi><mn>0</mn><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi mathvariant="double-struck">ℝ</mi><mrow><mo>≥</mo><mn>0</mn></mrow></msub><mi>d</mi><msub><mi>x</mi><mn>1</mn></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(S33)</mtext></mrow><annotation encoding="application/x-tex">
+C_0(X\setminus S,S)=\{v:v_1\le0\},\quad
+N_0(S)=\{v:v_1&gt;0\},\quad
+N_0^*(S)=\mathbb R_{\ge0}dx_1.
+\qquad\text{(S33)}
+</annotation></semantics></math></p>
+<p>These are the same for the open and closed halfspace. Their sheaf
+microsupport rays differ by the antipode, precisely as in (S12).</p>
+<p><strong>4. A strict estimate with no nonzero information.</strong>
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+be dense in a positive-dimensional coordinate ball and suppose its
+complement is also dense. Compute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N_x(S)</annotation></semantics></math>
+at a point in the ball.</p>
+<p><strong>Solution.</strong> For any vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+choose target endpoints near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><msub><mi>ε</mi><mi>n</mi></msub><mi>v</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x+\varepsilon_nv/2</annotation></semantics></math>
+in the complement and near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><msub><mi>ε</mi><mi>n</mi></msub><mi>v</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x-\varepsilon_nv/2</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+with errors
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>ε</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">o(\varepsilon_n)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ε</mi><mi>n</mi></msub><mo>↓</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon_n\downarrow0</annotation></semantics></math>.
+Scaling by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>ε</mi><mi>n</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><annotation encoding="application/x-tex">\varepsilon_n^{-1}</annotation></semantics></math>
+gives every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+in the pair cone. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>⌀</mi></mrow><annotation encoding="application/x-tex">N_x(S)=\varnothing</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>N</mi><mi>x</mi><mo>*</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msubsup><mi>T</mi><mi>x</mi><mo>*</mo></msubsup><mi>X</mi></mrow><annotation encoding="application/x-tex">N_x^*(S)=T_x^*X</annotation></semantics></math>.
+This is a statement about arbitrary subsets and normal geometry. It does
+not introduce
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>S</mi></msub><annotation encoding="application/x-tex">k_S</annotation></semantics></math>
+for a set that has not been shown locally closed.</p>
+<p><strong>5. Change both extension choices in the channel.</strong> In
+(S21), replace the half-open strip by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mo>′</mo></msup><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>u</mi><mo>&gt;</mo><mn>0</mn><mo>:</mo><msub><mi>b</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>&lt;</mo><mi>v</mi><mo>≤</mo><msub><mi>b</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">S'=\{u&gt;0:b_-(u)&lt;v\le b_+(u)\}</annotation></semantics></math>.
+Determine the nonzero cotangent fibre at the origin.</p>
+<p><strong>Solution.</strong> Negating the vertical coordinate sends the
+new strip to a channel of the already proved type, with lower function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>b</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">-b_+</annotation></semantics></math>
+and upper function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>b</mi><mo>−</mo></msub></mrow><annotation encoding="application/x-tex">-b_-</annotation></semantics></math>.
+Formula (S22) gives the ray
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="double-struck">ℝ</mi><mrow><mo>&gt;</mo><mn>0</mn></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbb R_{&gt;0}(m,-1)</annotation></semantics></math>
+when transported back. Equivalently it is the negative ray through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>m</mi><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-m,1)</annotation></semantics></math>.
+The zero covector remains present. This checks the joint effect of
+changing the two extension choices without making an unjustified
+separate-face prediction at the missing tip.</p>
+<span id="SH02-SUB-RESEARCH"></span><h2 id="sh02-sub-research-what-remains-visible-in-these-estimates">SH02-SUB-RESEARCH
+— What remains visible in these estimates</h2>
+<p>For a smooth boundary the strict conormal estimate is exact. For a
+double wedge the actual cotangent fibre is nonconvex, while the strict
+conormal is convex. Studying where information is lost in the polarity
+step gives a concrete route from elementary subset geometry to finer
+microlocal invariants. The half-open channel gives a second route: vary
+the order of tangency while tracking the same limiting cotangent ray,
+then compare sheaves that differ in their extension behavior but have
+the same closed ordinary support.</p>
+<span id="SH02-SUB-SOURCES"></span><h2 id="sh02-sub-sources-classical-models-proof-mechanisms-and-remaining-foundations">SH02-SUB-SOURCES
+— Classical models, proof mechanisms, and remaining foundations</h2>
+<p>The strict normal cone is a classical construction. Kashiwara and
+Schapira’s freely available <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf">Microlocal
+study of sheaves, Astérisque 128 (1985), §1.2.3, printed pp. 20–21</a>
+defines it by excluding complement-minus-set normal directions and then
+taking the positive polar. Section 3.1.3, printed p. 54, gives closed
+and open halfspaces, the polar at a closed-cone vertex, a crossing with
+a nonconvex cotangent fibre, and cusp models. These are mathematical
+antecedents for the examples here. Changing coordinates or numerical
+parameters would not make those classical patterns new.</p>
+<p><strong>Strict directions and polar signs.</strong> Section 1.2.3
+states openness and convexity and describes permitted displacements.
+SH02-SUB-STRICT-DEFINITION and its following proofs derive the uniform
+displacement criterion from normal-cone sequences. They treat the zero
+vector and the zero-dimensional case explicitly before applying
+polarity.</p>
+<p><strong>Closed and open extensions.</strong> The source’s §3.1.3
+examples 2–4 distinguish the positive ray for a closed halfspace from
+the negative ray for an open halfspace. Here the directional projector
+first proves the general strict-conormal upper bounds. Local supported
+sections supply lower bounds, and localization changes the sign for open
+extension. Closed ordinary support includes boundary points whose stalks
+vanish.</p>
+<p><strong>Cone vertices and intersecting boundaries.</strong> Example 3
+states the closed-cone vertex formula; example 5 gives a crossing whose
+cotangent fibre is nonconvex. Here the vertex argument permits cones
+containing lines. The double-cone calculation uses the
+diagonal-and-difference exact sequence and a projector comparison to
+prove the formula for an arbitrary pointed full-dimensional closed
+convex cone, with the one-dimensional and zero-dimensional cases
+separated.</p>
+<p><strong>Tangent boundaries.</strong> The cusp examples on p. 54 show
+that a singular tip can contribute a cotangent ray. The channel argument
+here treats two arbitrary stated once-differentiable boundary functions
+with a common tangent. It first identifies the exact extension sequence,
+then calculates the two face rays and proves their limiting contribution
+at the missing tip. The quartic instance tests that family; it is not
+the basis for an originality claim.</p>
+<p><strong>Arbitrary convex sets.</strong> The later convex-set argument
+proves its relative-interior displacement lemma and explicitly retains
+lower-dimensional affine hulls. The open-convex lower bound additionally
+uses the named MO-diagonal Hom estimate in (S39); it is not a
+consequence of convex geometry alone.</p>
+<p>Pierre Schapira’s <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf">A
+short review on microlocal sheaf theory, 19 January 2016, pp. 6–9</a>
+provides a second comparison. Definition 2.3 uses one neighborhood of a
+covector for all support tests; Example 2.5(ii)–(iii) gives closed
+submanifolds and regular open and closed boundaries with the same sign
+conventions used here. Theorem 2.6 states the cap and
+directional-topology characterizations for bounded complexes. Those
+notes assume a commutative unital ring of finite global dimension and
+familiarity with derived sheaf operations. Their statements do not
+replace proofs of the programme’s imported tests or projector.</p>
+<p>The exposition here is organized around which extension sequence
+produces a boundary direction: establish the strict-cone estimate, prove
+equality in basic local models, resolve colliding boundaries, and then
+examine convex sets and five coefficient-sensitive or
+extension-sensitive exercises. The extended proofs, uniform displacement
+checks, parameter families and complete solutions give the teaching
+content. The named classical constructions retain the attribution above.
+No source diagram or source prose is reproduced in this reading.</p>
+<p>The independently written programme text is CC0. The linked human
+works retain their own terms; access to the Astérisque volume does not
+relicense it. Full proof closure of derived localization
+and base change, convex acyclicity, the directional projector, the
+support-test equivalence, normal geometry, and the particular
+MO-diagonal estimate remains a separate prerequisite obligation.</p>
+</main></body></html>

@@ -1,0 +1,177 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Symbols under coordinate and bundle changes</title><link rel="stylesheet" href="reader.css"><script src="math-config.js"></script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body class="dependency-proof"><header><nav><a href="index.html">Course contents</a><span class="unlinked">Spectral budgets</span><span class="unlinked">Regular spectral triples</span><a href="the-local-index-formula.html">Residue index formulas</a><span class="unlinked">Transverse geometry</span><a href="dependencies.html">Prerequisite proofs</a></nav></header><main><article><p>Proof taken from Elliptic Operators &amp; Boundary Problems, AN03-U012, pinned September 2026 edition; AI-authored mathematical draft. (CC0-1.0), checked and edited by GPT-6.1 Sol (OpenAI) at Ultra. These complete proof sections supply the precise prerequisite statements identified in the course. Mathematical paragraphs are preserved; headings are made descriptive in this readable adaptation, dated 1 October 2026. The complete source and version information are available below.</p><p><a href="../dependencies/AN-03/geometric-microlocal-calculus.md">Original source</a> · <span class="unlinked">Source versions and proof scope</span> · <a href="../dependencies/AN-03/LICENSE">Component license notice</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a></p><p>This independently written programme text is dedicated under CC0 1.0 Universal, to the extent rights are held. External works retain their own rights.</p><hr><p><a href="#AN03-GEO-001">Local estimates and amplitude reduction</a> · <a href="#AN03-GEO-002">Kernels, exponential tests, and coordinate transport</a> · <a href="#AN03-GEO-004">Assembling an operator and its principal symbol</a> · <a href="#AN03-GEO-013">Bundles, anti-duals, and kernels between different manifolds</a></p><h1 id="detecting-regularity-without-choosing-coordinates">Detecting regularity without choosing coordinates</h1>
+<p>An operator has two kinds of locality. Its kernel determines which input points can influence an output point. Its symbol determines which cotangent directions can carry an irregularity. We construct these two structures together, then use them to measure regularity of sections of arbitrary finite-rank complex bundles. All manifolds below are Hausdorff, second countable, smooth, and without boundary; compactness is imposed only where stated.</p>
+<p>The analytic inputs are <span class="unlinked">AN03-U010</span>, especially AN03-EUC-002–005 and AN03-EUC-008–009, and the quadratic multiplier theorem AN03-GAU-007–008 of <a href="../dependencies/AN-03/receiving-sources/gauss-transform-estimates.md">AN03-U002</a>. The convention is <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, with inverse Fourier factor <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>. Local symbols have estimates on each compact base set, with no uniformity across a noncompact manifold. Unless parameters are displayed, <span class="math" data-tex="\(S^m=S^m_{1,0}\)">\(S^m=S^m_{1,0}\)</span> and <span class="math" data-tex="\(\Psi^m=\Psi^m_{1,0}\)">\(\Psi^m=\Psi^m_{1,0}\)</span>.</p>
+<p>We retain precise foundational contracts. <strong>AN03-DEP-GEO-DIST</strong> supplies distributions as continuous functionals on compact smooth densities, their restriction and multiplication by smooth functions, tensor products, Fourier transformation, the finite-order estimate on compact supports, and the scalar Schwartz kernel theorem for continuous <span class="math" data-tex="\(C_c^\infty(U)\to\mathcal D&#x27;(V)\)">\(C_c^\infty(U)\to\mathcal D&#x27;(V)\)</span> maps on Euclidean open sets. The kernel theorem includes its identification with separately continuous bilinear test pairings, jointly continuous on every pair of fixed compact-support test spaces; it is a prerequisite, not proved from functional-analysis axioms here. The test spaces carry their usual smooth Fréchet topologies at fixed support and their inductive-limit topology over supports; distributions carry the strong dual topology. <strong>AN03-BASE-GEO-MANIFOLD</strong> supplies smooth atlases, the chain rule, inverse function theorem, locally finite smooth partitions of unity with compact supports subordinate to open covers, and finite-rank bundle gluing. <strong>AN03-DEP-GEO-UB</strong> supplies uniform boundedness for test-function Fréchet spaces and the closed graph theorem from a Banach space to a Fréchet space. Lebesgue change of variables, Fubini, dominated convergence, and Fourier inversion/Plancherel have the same exact entry contracts as U010. We prove the geometric kernel adapter and the wavefront results used below; no general theorem about multiplying arbitrary distributions is assumed.</p>
+<h2 id="AN03-GEO-001"><span id="an03-geo-001"></span>Local estimates and amplitude reduction</h2>
+<p>For an open set <span class="math" data-tex="\(U\subset\mathbb R^n\)">\(U\subset\mathbb R^n\)</span>, <span class="math" data-tex="\(a\in S^m_{\rho,\delta}(U\times\mathbb R^n)\)">\(a\in S^m_{\rho,\delta}(U\times\mathbb R^n)\)</span> means that</p>
+<span class="math math-display" data-tex="\[
+\sup_{x\in K,\xi}\langle\xi\rangle^{-m+\rho|\alpha|-\delta|\beta|}
+|\partial_\xi^\alpha\partial_x^\beta a(x,\xi)|&lt;\infty
+\quad(K\Subset U),
+\qquad 0&lt;\rho\leq1,\quad0\leq\delta&lt;1.
+\tag{G1}
+\]">\[
+\sup_{x\in K,\xi}\langle\xi\rangle^{-m+\rho|\alpha|-\delta|\beta|}
+|\partial_\xi^\alpha\partial_x^\beta a(x,\xi)|&lt;\infty
+\quad(K\Subset U),
+\qquad 0&lt;\rho\leq1,\quad0\leq\delta&lt;1.
+\tag{G1}
+\]</span>
+<p>These seminorms define the local Fréchet topology, using a compact exhaustion. On an open conic set <span class="math" data-tex="\(\mathcal C\subset U\times(\mathbb R^n\setminus0)\)">\(\mathcal C\subset U\times(\mathbb R^n\setminus0)\)</span>, the same estimates are required along <span class="math" data-tex="\((x,t\xi)\)">\((x,t\xi)\)</span>, <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>, for every compact subset of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. They make no assertion about approaching the zero section outside such compact sets. A symbol defined at all frequencies must also be smooth there.</p>
+<p>Local asymptotic summation follows with support control. Given <span class="math" data-tex="\(a_j\)">\(a_j\)</span> of orders <span class="math" data-tex="\(m_j\to-\infty\)">\(m_j\to-\infty\)</span>, take a locally finite partition <span class="math" data-tex="\(\theta_l\)">\(\theta_l\)</span> of the base, or of a relatively compact angular/base cover in the conic case. Apply AN03-EUC-002 to each compactly supported piece <span class="math" data-tex="\(\theta_l a_j\)">\(\theta_l a_j\)</span>, extended into its coordinate product by zero, obtaining <span class="math" data-tex="\(b_l\)">\(b_l\)</span> with support contained in <span class="math" data-tex="\(\bigcup_j\operatorname{supp}(\theta_l a_j)\)">\(\bigcup_j\operatorname{supp}(\theta_l a_j)\)</span>. Then <span class="math" data-tex="\(b=\sum_l b_l\)">\(b=\sum_l b_l\)</span> is locally finite. On each fixed compact set only finitely many <span class="math" data-tex="\(l\)">\(l\)</span> occur, so every remainder satisfies (G1) of order <span class="math" data-tex="\(M_k=\max_{j\geq k}m_j\)">\(M_k=\max_{j\geq k}m_j\)</span>. The support assertion survives the locally finite sum. On a conic cover the cutoffs are homogeneous of degree zero above a fixed frequency; the bounded-frequency discrepancy is smooth and irrelevant to asymptotic orders. Differences of two sums are of every negative order. This also proves continuity of restrictions and the local form of the symbol recognition statement in AN03-EUC-002.</p>
+<p>We need an amplitude version of the Euclidean calculus. Suppose <span class="math" data-tex="\(c(z,w,\eta)\)">\(c(z,w,\eta)\)</span>, compactly supported in <span class="math" data-tex="\((z,w)\)">\((z,w)\)</span>, has estimates</p>
+<span class="math math-display" data-tex="\[
+|\partial_\eta^\alpha\partial_z^\beta\partial_w^\gamma c|
+\leq C_{\alpha\beta\gamma}
+\langle\eta\rangle^{m-\rho|\alpha|+\delta|\beta|+d|\gamma|},
+\qquad 0\leq d\leq\rho,\quad d&lt;1.
+\tag{G2}
+\]">\[
+|\partial_\eta^\alpha\partial_z^\beta\partial_w^\gamma c|
+\leq C_{\alpha\beta\gamma}
+\langle\eta\rangle^{m-\rho|\alpha|+\delta|\beta|+d|\gamma|},
+\qquad 0\leq d\leq\rho,\quad d&lt;1.
+\tag{G2}
+\]</span>
+<p>The kernel <span class="math" data-tex="\((2\pi)^{-n}\int e^{i(z-w)\cdot\eta}c(z,w,\eta)\,d\eta\)">\((2\pi)^{-n}\int e^{i(z-w)\cdot\eta}c(z,w,\eta)\,d\eta\)</span> has a left symbol</p>
+<span class="math math-display" data-tex="\[
+b(z,\xi)=\left[e^{iD_w\cdot D_\eta}c(z,w,\eta)\right]_{w=z,\eta=\xi}.
+\tag{G3}
+\]">\[
+b(z,\xi)=\left[e^{iD_w\cdot D_\eta}c(z,w,\eta)\right]_{w=z,\eta=\xi}.
+\tag{G3}
+\]</span>
+<p>When <span class="math" data-tex="\(d\leq\delta\)">\(d\leq\delta\)</span> and <span class="math" data-tex="\(\delta\leq\rho\)">\(\delta\leq\rho\)</span>, it belongs to <span class="math" data-tex="\(S^m_{\rho,\delta}\)">\(S^m_{\rho,\delta}\)</span>. More precisely its remainder after <span class="math" data-tex="\(|\alpha|&lt;N\)">\(|\alpha|&lt;N\)</span> is</p>
+<span class="math math-display" data-tex="\[
+b-\sum_{|\alpha|&lt;N}\frac{\partial_\eta^\alpha D_w^\alpha c(z,z,\xi)}{\alpha!}
+\in S^{m-N(\rho-d)}_{\rho,\delta}.
+\tag{G4}
+\]">\[
+b-\sum_{|\alpha|&lt;N}\frac{\partial_\eta^\alpha D_w^\alpha c(z,z,\xi)}{\alpha!}
+\in S^{m-N(\rho-d)}_{\rho,\delta}.
+\tag{G4}
+\]</span>
+<p>Every seminorm uses finitely many constants in (G2), and the bound remains valid at <span class="math" data-tex="\(d=\rho\)">\(d=\rho\)</span>, where it gives no order gain.</p>
+<p>Here are the estimates behind this adapter. For fixed <span class="math" data-tex="\(z\)">\(z\)</span>, apply AN03-GAU-008 with the metric
+<span class="math" data-tex="\(g_{(w,\eta)}(v,\nu)=\langle\eta\rangle^{2d}|v|^2+\langle\eta\rangle^{-2\rho}|\nu|^2\)">\(g_{(w,\eta)}(v,\nu)=\langle\eta\rangle^{2d}|v|^2+\langle\eta\rangle^{-2\rho}|\nu|^2\)</span>
+and weight <span class="math" data-tex="\(\langle\eta\rangle^m\)">\(\langle\eta\rangle^m\)</span>. Its slow variation and temperateness are exactly the parameter verification in AN03-EUC-004, with <span class="math" data-tex="\(\delta\)">\(\delta\)</span> there replaced by <span class="math" data-tex="\(d\)">\(d\)</span>; its quadratic parameter is <span class="math" data-tex="\(\frac12\langle\eta\rangle^{d-\rho}\)">\(\frac12\langle\eta\rangle^{d-\rho}\)</span>. The theorem gives (G4) before restricting <span class="math" data-tex="\(w=z\)">\(w=z\)</span>. Differentiate in <span class="math" data-tex="\(z\)">\(z\)</span> first, using the modified weight <span class="math" data-tex="\(\langle\eta\rangle^{m+\delta|\beta|}\)">\(\langle\eta\rangle^{m+\delta|\beta|}\)</span>, and in <span class="math" data-tex="\(w,\eta\)">\(w,\eta\)</span> using their exact modified weights. Differentiation after the diagonal restriction is a sum of these derivatives. Since <span class="math" data-tex="\(d\leq\delta\)">\(d\leq\delta\)</span>, each total base derivative costs at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. This proves all of (G1), including the remainder, rather than just a bound for values. Regularize <span class="math" data-tex="\(c\)">\(c\)</span> in all variables by cutoffs tending to one. Formula (G3) for the regularized kernels follows by Fourier inversion: the multiplier <span class="math" data-tex="\(e^{i\omega\cdot\theta}\)">\(e^{i\omega\cdot\theta}\)</span> becomes the kernel <span class="math" data-tex="\((2\pi)^{-n}e^{-i(w-z)\cdot(\eta-\xi)}\)">\((2\pi)^{-n}e^{-i(w-z)\cdot(\eta-\xi)}\)</span>. The Gauss bounds and distributional continuity identify the limits. They also justify all parameter derivatives. Thus no stationary phase theorem is hidden in (G3).</p>
+<h2 id="AN03-GEO-002"><span id="an03-geo-002"></span>Kernels, exponential tests, and coordinate transport</h2>
+<p>For a global symbol <span class="math" data-tex="\(a\in S^m\)">\(a\in S^m\)</span>, its kernel is</p>
+<span class="math math-display" data-tex="\[
+K_a(x,y)=(2\pi)^{-n}\int e^{i(x-y)\cdot\xi}a(x,\xi)\,d\xi.
+\tag{G5}
+\]">\[
+K_a(x,y)=(2\pi)^{-n}\int e^{i(x-y)\cdot\xi}a(x,\xi)\,d\xi.
+\tag{G5}
+\]</span>
+<p>It is <span class="math" data-tex="\(C^j\)">\(C^j\)</span> if <span class="math" data-tex="\(m+j+n&lt;0\)">\(m+j+n&lt;0\)</span>. Indeed, differentiating a total of at most <span class="math" data-tex="\(j\)">\(j\)</span> times gives finitely many integrands bounded by <span class="math" data-tex="\(C\langle\xi\rangle^{m+j}\)">\(C\langle\xi\rangle^{m+j}\)</span>; these are integrable under the strict inequality, uniformly on compact sets. Dominated convergence gives the claimed derivatives. Off the diagonal, apply
+<span class="math" data-tex="\(e^{i(x-y)\xi}=|x-y|^{-2L}(-\Delta_\xi)^L e^{i(x-y)\xi}\)">\(e^{i(x-y)\xi}=|x-y|^{-2L}(-\Delta_\xi)^L e^{i(x-y)\xi}\)</span>, integrate by parts in frequency, and take <span class="math" data-tex="\(2L&gt;m+j+n\)">\(2L&gt;m+j+n\)</span>. The coefficients and their derivatives are bounded on every compact set separated from the diagonal, giving smoothness there. For the parameters in (G1), frequency differentiation instead gains <span class="math" data-tex="\(\rho\)">\(\rho\)</span> per derivative; sufficiently many integrations still prove off-diagonal smoothness.</p>
+<p>An order-minus-infinity symbol maps <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> into <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span>, although its output need not decrease at spatial infinity. At fixed <span class="math" data-tex="\(x\)">\(x\)</span>, the differentiated expression <span class="math" data-tex="\(\partial_x^\beta(e^{ix\cdot\xi}a(x,\xi))\)">\(\partial_x^\beta(e^{ix\cdot\xi}a(x,\xi))\)</span> is a Schwartz function of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, smoothly depending on <span class="math" data-tex="\(x\)">\(x\)</span> in that topology. Pair it with <span class="math" data-tex="\(\widehat u\)">\(\widehat u\)</span>. The compact-uniform Schwartz seminorms justify all output derivatives and continuity. The same reasoning applies to local smoothing symbols on every compact output set.</p>
+<p>Exponential functions recover a symbol without being test functions:</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Op}(a)(e^{ix\cdot\xi}u)
+=e^{ix\cdot\xi}a(x,D+\xi)u,
+\qquad
+\operatorname{Op}(a)e^{ix\cdot\xi}=e^{ix\cdot\xi}a(x,\xi).
+\tag{G6}
+\]">\[
+\operatorname{Op}(a)(e^{ix\cdot\xi}u)
+=e^{ix\cdot\xi}a(x,D+\xi)u,
+\qquad
+\operatorname{Op}(a)e^{ix\cdot\xi}=e^{ix\cdot\xi}a(x,\xi).
+\tag{G6}
+\]</span>
+<p>The first identity follows by the Fourier translation rule on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, then on <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> by the continuous extensions in AN03-EUC-005. For the second, choose <span class="math" data-tex="\(v\in\mathcal S\)">\(v\in\mathcal S\)</span> with <span class="math" data-tex="\(\widehat v\in C_c^\infty\)">\(\widehat v\in C_c^\infty\)</span> and <span class="math" data-tex="\(v(0)=1\)">\(v(0)=1\)</span>. The functions <span class="math" data-tex="\(v(\varepsilon x)\)">\(v(\varepsilon x)\)</span> tend to one in <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>: multiply a Schwartz test function by their bounded pointwise differences and use dominated convergence. The right side of the first identity is the integral of <span class="math" data-tex="\(a(x,\xi+\varepsilon\theta)e^{i\varepsilon x\theta}\widehat v(\theta)\)">\(a(x,\xi+\varepsilon\theta)e^{i\varepsilon x\theta}\widehat v(\theta)\)</span>; every derivative converges on compact sets to <span class="math" data-tex="\(a(x,\xi)\)">\(a(x,\xi)\)</span>. This proves (G6) with its distributional meaning.</p>
+<p>Let <span class="math" data-tex="\(\kappa:U\to V\)">\(\kappa:U\to V\)</span> be a smooth diffeomorphism and suppose that <span class="math" data-tex="\(\operatorname{Op}(a)\)">\(\operatorname{Op}(a)\)</span> has compact kernel support inside <span class="math" data-tex="\(U\times U\)">\(U\times U\)</span>. Define its transport on functions by</p>
+<span class="math math-display" data-tex="\[
+A_\kappa f=(A(f\circ\kappa))\circ\kappa^{-1}.
+\tag{G7}
+\]">\[
+A_\kappa f=(A(f\circ\kappa))\circ\kappa^{-1}.
+\tag{G7}
+\]</span>
+<p>It has compact kernel support in <span class="math" data-tex="\(V\times V\)">\(V\times V\)</span>. For <span class="math" data-tex="\(1-\rho\leq\delta\leq\rho\)">\(1-\rho\leq\delta\leq\rho\)</span>, <span class="math" data-tex="\(a\in S^m_{\rho,\delta}\)">\(a\in S^m_{\rho,\delta}\)</span> implies <span class="math" data-tex="\(A_\kappa=\operatorname{Op}(a_\kappa)\)">\(A_\kappa=\operatorname{Op}(a_\kappa)\)</span> with a global <span class="math" data-tex="\(S^m_{\rho,\delta}\)">\(S^m_{\rho,\delta}\)</span> symbol, zero outside a compact subset of <span class="math" data-tex="\(V\)">\(V\)</span> in its base variable. In particular the allowed range has <span class="math" data-tex="\(\rho\geq\frac12\)">\(\rho\geq\frac12\)</span>, and <span class="math" data-tex="\(\rho=\frac12\)">\(\rho=\frac12\)</span> forces <span class="math" data-tex="\(\delta=\frac12\)">\(\delta=\frac12\)</span>.</p>
+<p><strong>Proof with the Jacobians retained.</strong> Cut the kernel into a part sufficiently close to the diagonal and a smooth compact remainder. The latter has a smoothing symbol by Fourier transformation in <span class="math" data-tex="\(x-y\)">\(x-y\)</span>. For the first part use small convex coordinate neighborhoods and write</p>
+<span class="math math-display" data-tex="\[
+\kappa(x)-\kappa(y)=L(x,y)(x-y),\qquad
+L(x,y)=\int_0^1\kappa&#x27;(y+t(x-y))\,dt.
+\tag{G8}
+\]">\[
+\kappa(x)-\kappa(y)=L(x,y)(x-y),\qquad
+L(x,y)=\int_0^1\kappa&#x27;(y+t(x-y))\,dt.
+\tag{G8}
+\]</span>
+<p>After shrinking the neighborhoods, <span class="math" data-tex="\(L\)">\(L\)</span> is invertible with all derivatives bounded, as are those of its inverse. Put <span class="math" data-tex="\(z=\kappa(x),w=\kappa(y)\)">\(z=\kappa(x),w=\kappa(y)\)</span>, and change frequency by <span class="math" data-tex="\(\xi=L(x,y)^T\eta\)">\(\xi=L(x,y)^T\eta\)</span>. The transported amplitude is</p>
+<span class="math math-display" data-tex="\[
+c(z,w,\eta)=\chi(x,y)a(x,L(x,y)^T\eta)
+\frac{|\det L(x,y)|}{|\det\kappa&#x27;(y)|},
+\tag{G9}
+\]">\[
+c(z,w,\eta)=\chi(x,y)a(x,L(x,y)^T\eta)
+\frac{|\det L(x,y)|}{|\det\kappa&#x27;(y)|},
+\tag{G9}
+\]</span>
+<p>where <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near the relevant diagonal. On that diagonal the determinant ratio is one. Differentiating a frequency-linear argument once in <span class="math" data-tex="\(x\)">\(x\)</span> or <span class="math" data-tex="\(y\)">\(y\)</span> introduces a factor <span class="math" data-tex="\(O(|\eta|)\)">\(O(|\eta|)\)</span> and one frequency derivative of <span class="math" data-tex="\(a\)">\(a\)</span>, hence costs <span class="math" data-tex="\(1-\rho\)">\(1-\rho\)</span>. A direct base derivative of <span class="math" data-tex="\(a\)">\(a\)</span> costs <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Repeated chain and product rules therefore give (G2) with <span class="math" data-tex="\(d=1-\rho\)">\(d=1-\rho\)</span> for the <span class="math" data-tex="\(w\)">\(w\)</span> derivatives and with <span class="math" data-tex="\(\delta\)">\(\delta\)</span> for the <span class="math" data-tex="\(z\)">\(z\)</span> derivatives, because <span class="math" data-tex="\(1-\rho\leq\delta\)">\(1-\rho\leq\delta\)</span>. Ordinary derivatives of the cutoff and determinants cost zero. Compact-set norm comparability <span class="math" data-tex="\(\langle L^T\eta\rangle\asymp\langle\eta\rangle\)">\(\langle L^T\eta\rangle\asymp\langle\eta\rangle\)</span> controls every real order. Apply (G3). A finite cover of the compact diagonal part completes the proof, including <span class="math" data-tex="\(\rho=\delta=\frac12\)">\(\rho=\delta=\frac12\)</span>. ∎</p>
+<p>This chain-rule argument also proves a useful symbol pullback statement. If <span class="math" data-tex="\(F(x,\xi)=(f(x),M(x)\xi)\)">\(F(x,\xi)=(f(x),M(x)\xi)\)</span>, with smooth <span class="math" data-tex="\(f\)">\(f\)</span>, smooth invertible <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(F(\mathcal C_1)\subset\mathcal C_2\)">\(F(\mathcal C_1)\subset\mathcal C_2\)</span>, then <span class="math" data-tex="\(F^*:S^m_{\rho,\delta}(\mathcal C_2)\to S^m_{\rho,\delta}(\mathcal C_1)\)">\(F^*:S^m_{\rho,\delta}(\mathcal C_2)\to S^m_{\rho,\delta}(\mathcal C_1)\)</span> is continuous when <span class="math" data-tex="\(1-\rho\leq\delta\)">\(1-\rho\leq\delta\)</span>. For a compact ray generator its image is compact; the smallest and largest singular values of <span class="math" data-tex="\(M\)">\(M\)</span> have positive finite bounds. Every chain-rule term has the required derivative budget, exactly as in (G9). No assumption that <span class="math" data-tex="\(f\)">\(f\)</span> is a diffeomorphism is needed for this symbol statement.</p>
+<p>For the classical class the full coordinate expansion is</p>
+<span class="math math-display" data-tex="\[
+a_\kappa(\kappa(x),\eta)
+\sim\sum_\alpha\frac{\partial_\xi^\alpha a(x,\kappa&#x27;(x)^T\eta)}{\alpha!}
+\left.D_y^\alpha e^{i r_x(y)\cdot\eta}\right|_{y=x},
+\quad
+r_x(y)=\kappa(y)-\kappa(x)-\kappa&#x27;(x)(y-x).
+\tag{G10}
+\]">\[
+a_\kappa(\kappa(x),\eta)
+\sim\sum_\alpha\frac{\partial_\xi^\alpha a(x,\kappa&#x27;(x)^T\eta)}{\alpha!}
+\left.D_y^\alpha e^{i r_x(y)\cdot\eta}\right|_{y=x},
+\quad
+r_x(y)=\kappa(y)-\kappa(x)-\kappa&#x27;(x)(y-x).
+\tag{G10}
+\]</span>
+<p>The exact value before expansion is <span class="math" data-tex="\(e^{-i\kappa(x)\cdot\eta}A(e^{i\kappa(\cdot)\cdot\eta})(x)\)">\(e^{-i\kappa(x)\cdot\eta}A(e^{i\kappa(\cdot)\cdot\eta})(x)\)</span>; a cutoff equal to one near the compact kernel support makes this input unambiguous. In (G10) the second factor is a polynomial in <span class="math" data-tex="\(\eta\)">\(\eta\)</span> of degree at most <span class="math" data-tex="\(\lfloor|\alpha|/2\rfloor\)">\(\lfloor|\alpha|/2\rfloor\)</span>: every factor <span class="math" data-tex="\(\eta\)">\(\eta\)</span> comes with a derivative of <span class="math" data-tex="\(r_x\)">\(r_x\)</span>, and its value survives at <span class="math" data-tex="\(y=x\)">\(y=x\)</span> only after at least two derivatives. The factors for <span class="math" data-tex="\(|\alpha|=0,1\)">\(|\alpha|=0,1\)</span> are respectively one and zero. Consequently the term has order at most <span class="math" data-tex="\(m-|\alpha|/2\)">\(m-|\alpha|/2\)</span>.</p>
+<p>For completeness, the coefficients and the remainder can be checked without assuming that the exponential has small derivatives. Expand (G3) to arbitrary order using (G4) applied to (G9). Each coefficient is a finite linear combination of frequency derivatives of <span class="math" data-tex="\(a\)">\(a\)</span>, evaluated at <span class="math" data-tex="\(\kappa&#x27;(x)^T\eta\)">\(\kappa&#x27;(x)^T\eta\)</span>, with polynomial coefficients in <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and jets of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. To identify these finite-jet expressions, take <span class="math" data-tex="\(a\)">\(a\)</span> to be a polynomial in frequency with arbitrary coefficients at the fixed base point. Then <span class="math" data-tex="\(A=a(x,D)\)">\(A=a(x,D)\)</span> is a differential operator and the product rule applied to
+<span class="math" data-tex="\(e^{i\kappa(y)\cdot\eta}=e^{i\kappa(x)\cdot\eta}e^{i(y-x)\cdot\kappa&#x27;(x)^T\eta}e^{ir_x(y)\cdot\eta}\)">\(e^{i\kappa(y)\cdot\eta}=e^{i\kappa(x)\cdot\eta}e^{i(y-x)\cdot\kappa&#x27;(x)^T\eta}e^{ir_x(y)\cdot\eta}\)</span>
+gives precisely (G10). Polynomial jets span every finite jet space, so these identities identify the coefficients for an arbitrary smooth symbol as well. Sorting the finite expressions by the number of frequency derivatives minus their polynomial degree is legitimate: only finitely many terms have this number below any prescribed bound. The discarded amplitude remainder after sufficiently many terms of (G4) and the discarded coefficient terms both have arbitrarily low order. Thus truncating (G10) at <span class="math" data-tex="\(|\alpha|&lt;2N\)">\(|\alpha|&lt;2N\)</span> has remainder in <span class="math" data-tex="\(S^{m-N}\)">\(S^{m-N}\)</span>; the same proof applies after any prescribed derivatives.</p>
+<p>When <span class="math" data-tex="\(1-\rho\leq\delta&lt;\rho\)">\(1-\rho\leq\delta&lt;\rho\)</span>, the same formula is an asymptotic series in <span class="math" data-tex="\(S_{\rho,\delta}\)">\(S_{\rho,\delta}\)</span>. The term with index <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has order at most <span class="math" data-tex="\(m-\rho|\alpha|+\lfloor|\alpha|/2\rfloor\)">\(m-\rho|\alpha|+\lfloor|\alpha|/2\rfloor\)</span>. Using (G4) with <span class="math" data-tex="\(d=1-\rho\)">\(d=1-\rho\)</span>, truncation at <span class="math" data-tex="\(|\alpha|&lt;2N\)">\(|\alpha|&lt;2N\)</span> has remainder in <span class="math" data-tex="\(S^{m-N(2\rho-1)}_{\rho,\delta}\)">\(S^{m-N(2\rho-1)}_{\rho,\delta}\)</span>, hence also in <span class="math" data-tex="\(S^{m-N(\rho-\delta)}_{\rho,\delta}\)">\(S^{m-N(\rho-\delta)}_{\rho,\delta}\)</span>. The parameter <span class="math" data-tex="\(2\rho-1\)">\(2\rho-1\)</span> is positive in this strict range. The equality-case invariance already proved uses (G3), and does not rely on a decreasing-order series or imply an elliptic inverse theorem at <span class="math" data-tex="\(\delta=\rho\)">\(\delta=\rho\)</span>.</p>
+<h2 id="AN03-GEO-004"><span id="an03-geo-004"></span>Assembling an operator and its principal symbol</h2>
+<p>Let <span class="math" data-tex="\(A:C_c^\infty(U)\to C^\infty(U)\)">\(A:C_c^\infty(U)\to C^\infty(U)\)</span> be continuous. Suppose <span class="math" data-tex="\(\phi A\psi\)">\(\phi A\psi\)</span> is the global quantization of an <span class="math" data-tex="\(S^m\)">\(S^m\)</span> symbol for every <span class="math" data-tex="\(\phi,\psi\in C_c^\infty(U)\)">\(\phi,\psi\in C_c^\infty(U)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+A=\operatorname{Op}(a)+R,\qquad a\in S^m(U\times\mathbb R^n),
+\qquad K_R\in C^\infty(U\times U).
+\tag{G15}
+\]">\[
+A=\operatorname{Op}(a)+R,\qquad a\in S^m(U\times\mathbb R^n),
+\qquad K_R\in C^\infty(U\times U).
+\tag{G15}
+\]</span>
+<p>The symbol is unique modulo local <span class="math" data-tex="\(S^{-\infty}\)">\(S^{-\infty}\)</span>.</p>
+<p>To prove this, choose a locally finite smooth partition <span class="math" data-tex="\(\theta_j\)">\(\theta_j\)</span> with compact supports. Compactness and local finiteness imply that each support meets only finitely many others. Let <span class="math" data-tex="\(a_{jk}\)">\(a_{jk}\)</span> be the symbol of <span class="math" data-tex="\(\theta_jA\theta_k\)">\(\theta_jA\theta_k\)</span>. By (G6) it vanishes in the base variable outside <span class="math" data-tex="\(\operatorname{supp}\theta_j\)">\(\operatorname{supp}\theta_j\)</span>. Sum <span class="math" data-tex="\(a_{jk}\)">\(a_{jk}\)</span> only for intersecting pairs of supports. The sum is locally finite in the base, and on a fixed compact set the finitely many symbols satisfy the required bounds. The kernel difference is the locally finite sum
+<span class="math" data-tex="\(\sum&#x27;\theta_j(x)K_A(x,y)\theta_k(y)\)">\(\sum&#x27;\theta_j(x)K_A(x,y)\theta_k(y)\)</span> over disjoint pairs. Each term is smooth by (G5); this proves (G15). If a compactly supported smooth kernel is given, its left symbol is its Fourier transform in <span class="math" data-tex="\(y\)">\(y\)</span> after multiplication by <span class="math" data-tex="\(e^{-ix\cdot\xi}\)">\(e^{-ix\cdot\xi}\)</span>. Integrating by parts in <span class="math" data-tex="\(y\)">\(y\)</span>, and differentiating in <span class="math" data-tex="\(x,\xi\)">\(x,\xi\)</span>, proves every smoothing seminorm. Apply this to <span class="math" data-tex="\(\phi(A-\operatorname{Op}(a))\psi\)">\(\phi(A-\operatorname{Op}(a))\psi\)</span>, with <span class="math" data-tex="\(\psi=1\)">\(\psi=1\)</span> near <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span>. The symbol of <span class="math" data-tex="\(\phi\operatorname{Op}(a)(1-\psi)\)">\(\phi\operatorname{Op}(a)(1-\psi)\)</span> is smoothing by off-diagonal integration by parts; hence local uniqueness follows. Conversely the symbol and smooth kernel in (G15) clearly satisfy the localized hypothesis.</p>
+<p>Define <span class="math" data-tex="\(\Psi^m(X)\)">\(\Psi^m(X)\)</span> by this localized condition in coordinate charts, together with smoothness of the kernel off the diagonal. Equivalently one can impose the localized condition in every chart and for every pair of compact cutoffs: that condition already implies off-diagonal smoothness. One atlas suffices if off-diagonal smoothness is included. To verify this, localize a kernel near any diagonal point and transport its compact localization by (G7)–(G10); the remainder in (G15) stays smooth under a diffeomorphism. Away from the diagonal the assumed smoothness handles pairs of different charts. The kernel is a distributional density in its input variable, so it is intrinsically a section with coefficients in <span class="math" data-tex="\(1\boxtimes\Omega\)">\(1\boxtimes\Omega\)</span>, not a scalar function on <span class="math" data-tex="\(X\times X\)">\(X\times X\)</span>.</p>
+<p>The fiber-linear pullback proved in AN03-GEO-002 defines <span class="math" data-tex="\(S^m(T^*X)\)">\(S^m(T^*X)\)</span> independently of charts. Local principal symbols patch and give</p>
+<span class="math math-display" data-tex="\[
+\Psi^m(X)/\Psi^{m-1}(X)
+\simeq S^m(T^*X)/S^{m-1}(T^*X).
+\tag{G16}
+\]">\[
+\Psi^m(X)/\Psi^{m-1}(X)
+\simeq S^m(T^*X)/S^{m-1}(T^*X).
+\tag{G16}
+\]</span>
+<p>For existence, take real compact smooth <span class="math" data-tex="\(\theta_j\)">\(\theta_j\)</span> subordinate to charts with <span class="math" data-tex="\(\sum_j\theta_j^2=1\)">\(\sum_j\theta_j^2=1\)</span>, and a cutoff <span class="math" data-tex="\(\psi_j=1\)">\(\psi_j=1\)</span> near <span class="math" data-tex="\(\operatorname{supp}\theta_j\)">\(\operatorname{supp}\theta_j\)</span>. Quantize a given cotangent symbol in each chart as <span class="math" data-tex="\(A_j=\theta_j\operatorname{Op}(\psi_j a_j)\theta_j\)">\(A_j=\theta_j\operatorname{Op}(\psi_j a_j)\theta_j\)</span>, transporting back and extending by zero. The sum is locally finite and properly supported: over a fixed compact set only finitely many <span class="math" data-tex="\(\operatorname{supp}\theta_j\)">\(\operatorname{supp}\theta_j\)</span> occur in either projection. Its principal symbol is <span class="math" data-tex="\(\sum_j\theta_j^2a=a\)">\(\sum_j\theta_j^2a=a\)</span>. A square partition exists by dividing any nonnegative partition <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> by <span class="math" data-tex="\((\sum_l\chi_l^2)^{1/2}\)">\((\sum_l\chi_l^2)^{1/2}\)</span>. On overlaps (G10) identifies principal classes. Their vanishing is equivalent in each local representation to order <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, proving the kernel of (G16) and injectivity. This also proves that <span class="math" data-tex="\(\Psi^{-\infty}(X)\)">\(\Psi^{-\infty}(X)\)</span> is exactly the smooth-kernel class, by applying (G15) at every order and the integrability threshold of (G5).</p>
+<h2 id="AN03-GEO-013"><span id="an03-geo-013"></span>Bundles, anti-duals, and kernels between different manifolds</h2>
+<p>Let <span class="math" data-tex="\(E,F\to X\)">\(E,F\to X\)</span> be smooth complex vector bundles of finite ranks <span class="math" data-tex="\(e,f\)">\(e,f\)</span>, which need not be equal. An operator <span class="math" data-tex="\(A\in\Psi^m(X;E,F)\)">\(A\in\Psi^m(X;E,F)\)</span> is represented in local frames by an <span class="math" data-tex="\(f\times e\)">\(f\times e\)</span> matrix of operators in <span class="math" data-tex="\(\Psi^m\)">\(\Psi^m\)</span>, with smooth kernel off the diagonal. A new pair of frames changes that matrix by <span class="math" data-tex="\(G_F A G_E^{-1}\)">\(G_F A G_E^{-1}\)</span>; multiplication by these smooth matrix functions and AN03-EUC-005 preserve its class. Coordinate changes are handled by AN03-GEO-002 componentwise. Its principal symbol therefore is a section class</p>
+<span class="math math-display" data-tex="\[
+\sigma_m(A)\in
+S^m(T^*X;\operatorname{Hom}(\pi^*E,\pi^*F))
+\big/S^{m-1}(T^*X;\operatorname{Hom}(\pi^*E,\pi^*F)).
+\tag{G38}
+\]">\[
+\sigma_m(A)\in
+S^m(T^*X;\operatorname{Hom}(\pi^*E,\pi^*F))
+\big/S^{m-1}(T^*X;\operatorname{Hom}(\pi^*E,\pi^*F)).
+\tag{G38}
+\]</span>
+<p>The leading transformation is <span class="math" data-tex="\(a\mapsto G_FaG_E^{-1}\)">\(a\mapsto G_FaG_E^{-1}\)</span>, since differentiated transition matrices occur only in lower orders. The construction proving (G16), performed in local frames, proves surjectivity onto these symbol classes and identifies the lower-order kernel. Matrix products keep their order, so <span class="math" data-tex="\(\sigma(BA)=\sigma(B)\sigma(A)\)">\(\sigma(BA)=\sigma(B)\sigma(A)\)</span> for compatible bundles. Properness, summation, (G32), and (G34) all apply componentwise and patch by local finiteness. Two-sided ellipticity means that (G38) is fiberwise invertible; that condition forces equal ranks, but it was not imposed on the definition, mapping, composition, or adjoint theorems. The same constructions define <span class="math" data-tex="\(\Psi^m_{\rho,\delta}(X;E,F)\)">\(\Psi^m_{\rho,\delta}(X;E,F)\)</span> in the entire coordinate-invariant range, with the positive-gain principal quotient as described in AN03-GEO-006 when <span class="math" data-tex="\(\delta&lt;\rho\)">\(\delta&lt;\rho\)</span>.</p>
+</article></main><footer>CC0-1.0 applies to this reproduced prerequisite proof. Elliptic Operators &amp; Boundary Problems, AN03-U012, pinned September 2026 edition; AI-authored mathematical draft. MathJax retains its upstream license.</footer></body></html>

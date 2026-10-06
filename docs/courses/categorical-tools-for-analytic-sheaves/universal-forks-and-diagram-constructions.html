@@ -1,0 +1,515 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Universal forks and diagram constructions</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="universal-forks-and-diagram-constructions">Universal forks and diagram constructions</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original text: CC0.</em></p>
+<p>A product records several choices. An equalizer imposes an agreement between two choices. Together they construct a limit of any small diagram: take one product for the objects, another for the arrows, and impose all the diagram's equations at once. Reversing arrows gives the corresponding assembly by coproducts and a coequalizer. Pullbacks, pushouts and relative powers make these constructions concrete.</p>
+<p>Composition is from right to left. Work in a category <span class="math" data-tex="\(C\)">\(C\)</span> with ambient sets of objects and arrows, possibly larger than a fixed Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. “Small” means <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small up to bijections. Assume ambient choice. The complete subset, quotient, indexed product and transported-label proofs in <a href="universes-and-small-categories.html#2-building-sets-inside-a-universe">Universes and small categories, Sections 2–3 and 5</a> govern all constructions in <span class="math" data-tex="\(\mathsf{Set}_{\mathcal U}\)">\(\mathsf{Set}_{\mathcal U}\)</span>. A finite category has finitely many objects <strong>and</strong> arrows.</p>
+<p>Retain the full cone, cocone, compatible-isomorphism and formal-object proofs in <a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Compatible families and universal cones, Sections 2–4</a>. The complete comma, slice and coslice category laws are in <a href="zero-maps-components-and-subobjects.html#1-a-category-whose-objects-carry-an-arrow">Zero maps, Section 1</a>. All existence assertions below are conditional unless the ambient category is explicitly <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span>.</p>
+<h2 id="1-families-and-their-universal-maps">1. Families and their universal maps</h2>
+<p>For a set <span class="math" data-tex="\(I\)">\(I\)</span>, regard <span class="math" data-tex="\(I\)">\(I\)</span> as the discrete category with one identity at each element. A diagram is just a family <span class="math" data-tex="\((X_i)_{i\in I}\)">\((X_i)_{i\in I}\)</span>. Its limit is a <strong>product</strong> <span class="math" data-tex="\(P=\prod_{i\in I}X_i\)">\(P=\prod_{i\in I}X_i\)</span>, with maps <span class="math" data-tex="\(p_i:P\to X_i\)">\(p_i:P\to X_i\)</span>. Its colimit is a <strong>coproduct</strong> <span class="math" data-tex="\(Q=\coprod_{i\in I}X_i\)">\(Q=\coprod_{i\in I}X_i\)</span>, with maps <span class="math" data-tex="\(j_i:X_i\to Q\)">\(j_i:X_i\to Q\)</span>. Precisely, the maps</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C(T,P)\longrightarrow\prod_i C(T,X_i),\\
+h\longmapsto(p_i h)_i,\\
+C(Q,T)\longrightarrow\prod_i C(X_i,T),\\
+h\longmapsto(hj_i)_i
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+C(T,P)\longrightarrow\prod_i C(T,X_i),\\
+h\longmapsto(p_i h)_i,\\
+C(Q,T)\longrightarrow\prod_i C(X_i,T),\\
+h\longmapsto(hj_i)_i
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>are bijections for every object <span class="math" data-tex="\(T\)">\(T\)</span>. There are no compatibility conditions because the only arrows are identities. Thus the full cone and cocone properties retained above are exactly these bijections. Precomposing <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(T&#x27;\to T\)">\(T&#x27;\to T\)</span>, or postcomposing by <span class="math" data-tex="\(T\to T&#x27;\)">\(T\to T&#x27;\)</span>, acts on every component the same way; this proves their respective contravariant and covariant naturality in <span class="math" data-tex="\(T\)">\(T\)</span>. A family of maps <span class="math" data-tex="\(X_i\to X&#x27;_i\)">\(X_i\to X&#x27;_i\)</span> induces the unique product map with those projection components and the unique coproduct map with those coprojection components. Identities and compositions follow by checking every component, so (1.1) is natural in the family as well.</p>
+<p>For two objects write <span class="math" data-tex="\(X_0\times X_1\)">\(X_0\times X_1\)</span> and <span class="math" data-tex="\(X_0\amalg X_1\)">\(X_0\amalg X_1\)</span>. For a repeated object write <span class="math" data-tex="\(X^I=\prod_I X\)">\(X^I=\prod_I X\)</span> and <span class="math" data-tex="\(X^{(I)}=\coprod_I X\)">\(X^{(I)}=\coprod_I X\)</span>. A family of arrows to or from <span class="math" data-tex="\(X\)">\(X\)</span> is a function on <span class="math" data-tex="\(I\)">\(I\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C(T,X^I)&amp;\simeq\mathsf{Set}(I,C(T,X)),\\
+C(X^{(I)},T)&amp;\simeq\mathsf{Set}(I,C(X,T)).
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+C(T,X^I)&amp;\simeq\mathsf{Set}(I,C(T,X)),\\
+C(X^{(I)},T)&amp;\simeq\mathsf{Set}(I,C(X,T)).
+\end{aligned}
+\tag{1.2}
+\]</span>
+<p>The bijections evaluate at the specified projections or coprojections. Their inverse is the unique arrow with the given family.</p>
+<p>In sets, <span class="math" data-tex="\(\prod_i X_i\)">\(\prod_i X_i\)</span> consists of tuples with one coordinate in each <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. A family <span class="math" data-tex="\(u_i:T\to X_i\)">\(u_i:T\to X_i\)</span> has the unique factor <span class="math" data-tex="\(t\mapsto(u_i(t))_i\)">\(t\mapsto(u_i(t))_i\)</span>. The coproduct consists of tagged elements <span class="math" data-tex="\((i,x)\)">\((i,x)\)</span>, <span class="math" data-tex="\(x\in X_i\)">\(x\in X_i\)</span>; maps <span class="math" data-tex="\(v_i:X_i\to T\)">\(v_i:X_i\to T\)</span> have the unique factor <span class="math" data-tex="\((i,x)\mapsto v_i(x)\)">\((i,x)\mapsto v_i(x)\)</span>. These rules prove both properties, including empty factors and repeated objects. For a small family of small sets, the retained universe proofs make the tuple set and tagged union small.</p>
+<p>For <span class="math" data-tex="\(I=\varnothing\)">\(I=\varnothing\)</span>, each right side in (1.1) has one empty family. Hence the empty product is terminal and the empty coproduct is initial. This is the empty-diagram proof of the retained cone lesson applied to a discrete category; its uniqueness concerns the structural maps, even when there are no components.</p>
+<p>There is another useful index shape. Suppose <span class="math" data-tex="\(t\)">\(t\)</span> is terminal in a category <span class="math" data-tex="\(I\)">\(I\)</span>, with unique <span class="math" data-tex="\(u_i:i\to t\)">\(u_i:i\to t\)</span>. For <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>, the maps <span class="math" data-tex="\(D(u_i):D(i)\to D(t)\)">\(D(u_i):D(i)\to D(t)\)</span> form a cocone: <span class="math" data-tex="\(u_j s=u_i\)">\(u_j s=u_i\)</span> for <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>. Every cocone <span class="math" data-tex="\(v_i:D(i)\to T\)">\(v_i:D(i)\to T\)</span> satisfies <span class="math" data-tex="\(v_i=v_tD(u_i)\)">\(v_i=v_tD(u_i)\)</span>. Its unique factor is <span class="math" data-tex="\(v_t\)">\(v_t\)</span>, since <span class="math" data-tex="\(u_t=1_t\)">\(u_t=1_t\)</span>. Thus <span class="math" data-tex="\(D(t)\)">\(D(t)\)</span> is its colimit, without a size assumption on <span class="math" data-tex="\(I\)">\(I\)</span>. For <span class="math" data-tex="\(\beta:I^{\mathrm{op}}\to C\)">\(\beta:I^{\mathrm{op}}\to C\)</span>, the maps <span class="math" data-tex="\(\beta(u_i):\beta(t)\to\beta(i)\)">\(\beta(u_i):\beta(t)\to\beta(i)\)</span> give its limit: a cone <span class="math" data-tex="\(w_i:T\to\beta(i)\)">\(w_i:T\to\beta(i)\)</span> satisfies <span class="math" data-tex="\(w_i=\beta(u_i)w_t\)">\(w_i=\beta(u_i)w_t\)</span>, and the unique factor is <span class="math" data-tex="\(w_t\)">\(w_t\)</span>. The claim about the limit here concerns the projective system <span class="math" data-tex="\(\beta\)">\(\beta\)</span>.</p>
+<h2 id="2-force-two-maps-to-agree">2. Force two maps to agree</h2>
+<p>Let <span class="math" data-tex="\(f,g: A\rightrightarrows B\)">\(f,g: A\rightrightarrows B\)</span>. An <strong>equalizer</strong> is a map <span class="math" data-tex="\(e:E\to A\)">\(e:E\to A\)</span> with <span class="math" data-tex="\(fe=ge\)">\(fe=ge\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C(T,E)\xrightarrow{\ h\mapsto eh\ }\\
+\{u:T\to A:fu=gu\}\\
+\text{is a bijection for every }T.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+C(T,E)\xrightarrow{\ h\mapsto eh\ }\\
+\{u:T\to A:fu=gu\}\\
+\text{is a bijection for every }T.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>A <strong>coequalizer</strong> is <span class="math" data-tex="\(q:B\to Q\)">\(q:B\to Q\)</span> with <span class="math" data-tex="\(qf=qg\)">\(qf=qg\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C(Q,T)\xrightarrow{\ h\mapsto hq\ }\\
+\{v:B\to T:vf=vg\}\\
+\text{is a bijection for every }T.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+C(Q,T)\xrightarrow{\ h\mapsto hq\ }\\
+\{v:B\to T:vf=vg\}\\
+\text{is a bijection for every }T.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>Both maps are natural in <span class="math" data-tex="\(T\)">\(T\)</span> by associativity. Some sources call these the kernel and cokernel of the <strong>pair</strong> <span class="math" data-tex="\((f,g)\)">\((f,g)\)</span>. The definitions make sense in every category; subtraction <span class="math" data-tex="\(f-g\)">\(f-g\)</span> is not required.</p>
+<p>For the diagram with two parallel arrows, a cone has components <span class="math" data-tex="\(u:T\to A\)">\(u:T\to A\)</span> and <span class="math" data-tex="\(w:T\to B\)">\(w:T\to B\)</span> with <span class="math" data-tex="\(w=fu=gu\)">\(w=fu=gu\)</span>. Thus <span class="math" data-tex="\(u\)">\(u\)</span> determines it. A cocone has components <span class="math" data-tex="\(z:A\to T\)">\(z:A\to T\)</span> and <span class="math" data-tex="\(v:B\to T\)">\(v:B\to T\)</span> with <span class="math" data-tex="\(z=vf=vg\)">\(z=vf=vg\)</span>, so <span class="math" data-tex="\(v\)">\(v\)</span> determines it. Applying the retained complete cone and cocone theorem gives (2.1) and (2.2), in both directions. The unique isomorphism between two equalizers must commute with their maps into <span class="math" data-tex="\(A\)">\(A\)</span>; between two coequalizers it must commute with their maps out of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>The full cancellation proof in <a href="coimages-images-and-composition-of-quotients.html#1-two-constructions-attached-to-a-map">Coimages, images and composition of quotients, Section 1</a> proves that every equalizer map is monic and every coequalizer map is epic. Its interface is precisely the parallel-pair universal properties just stated. No balanced-category or additive hypothesis enters that proof.</p>
+<p>An <strong>equalizer fork</strong> <span class="math" data-tex="\(E\to A\rightrightarrows B\)">\(E\to A\rightrightarrows B\)</span>, or <strong>coequalizer fork</strong> <span class="math" data-tex="\(A\rightrightarrows B\to Q\)">\(A\rightrightarrows B\to Q\)</span>, is exact here when its specified first or last arrow has the relevant universal property. An abstract isomorphism between its endpoint object and some universal endpoint does not suffice. For example, coequalizing <span class="math" data-tex="\(1_B,1_B\)">\(1_B,1_B\)</span> permits every map out of <span class="math" data-tex="\(B\)">\(B\)</span>, so <span class="math" data-tex="\(1_B:B\to B\)">\(1_B:B\to B\)</span> is a coequalizer. If <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> are two-element sets, a constant <span class="math" data-tex="\(q:B\to Q\)">\(q:B\to Q\)</span> is not a coequalizer: <span class="math" data-tex="\(1_B\)">\(1_B\)</span> cannot factor through it, although <span class="math" data-tex="\(Q\simeq B\)">\(Q\simeq B\)</span>.</p>
+<p>In sets the equalizer is the subset <span class="math" data-tex="\(\{a\in A:f(a)=g(a)\}\)">\(\{a\in A:f(a)=g(a)\}\)</span>. Every equalizing function lands there, and its unique factor has the same elementwise values. For the coequalizer, take the smallest equivalence relation on <span class="math" data-tex="\(B\)">\(B\)</span> containing every pair <span class="math" data-tex="\((f(a),g(a))\)">\((f(a),g(a))\)</span>, and let <span class="math" data-tex="\(q\)">\(q\)</span> send an element to its class. Such a relation exists as the intersection of all equivalence relations containing those pairs; that family contains the indiscrete relation. If <span class="math" data-tex="\(vf=vg\)">\(vf=vg\)</span>, the equality relation on the values of <span class="math" data-tex="\(v\)">\(v\)</span> contains the generators, hence contains this smallest relation. Consequently <span class="math" data-tex="\([b]\mapsto v(b)\)">\([b]\mapsto v(b)\)</span> is well-defined and is the unique factor because every class has a representative. These are small sets whenever <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are small.</p>
+<h2 id="3-detect-arrows-through-universal-forks">3. Detect arrows through universal forks</h2>
+<p>A functor is <strong>conservative</strong> if it reflects isomorphisms and <strong>faithful</strong> if each map on a Hom set is injective. To preserve an equalizer or coequalizer is to send its specified fork to a universal fork.</p>
+<p><strong>Proposition 3.1.</strong> Let <span class="math" data-tex="\(F:C\to C&#x27;\)">\(F:C\to C&#x27;\)</span>. If <span class="math" data-tex="\(C\)">\(C\)</span> has equalizers and <span class="math" data-tex="\(F\)">\(F\)</span> preserves them, or if <span class="math" data-tex="\(C\)">\(C\)</span> has coequalizers and <span class="math" data-tex="\(F\)">\(F\)</span> preserves them, then a conservative <span class="math" data-tex="\(F\)">\(F\)</span> is faithful.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(F(f)=F(g)\)">\(F(f)=F(g)\)</span> for <span class="math" data-tex="\(f,g: A\rightrightarrows B\)">\(f,g: A\rightrightarrows B\)</span>. In the equalizer case choose <span class="math" data-tex="\(e:E\to A\)">\(e:E\to A\)</span>. The preserved <span class="math" data-tex="\(F(e)\)">\(F(e)\)</span> equalizes an equal pair. Their identity map also equalizes them, so universality gives <span class="math" data-tex="\(r:F(A)\to F(E)\)">\(r:F(A)\to F(E)\)</span> with <span class="math" data-tex="\(F(e)r=1\)">\(F(e)r=1\)</span>. Both <span class="math" data-tex="\(rF(e)\)">\(rF(e)\)</span> and <span class="math" data-tex="\(1_{F(E)}\)">\(1_{F(E)}\)</span> have the same composite with <span class="math" data-tex="\(F(e)\)">\(F(e)\)</span>; equalizer uniqueness gives <span class="math" data-tex="\(rF(e)=1\)">\(rF(e)=1\)</span>. Thus <span class="math" data-tex="\(F(e)\)">\(F(e)\)</span> is invertible. Conservativity makes <span class="math" data-tex="\(e\)">\(e\)</span> invertible, and <span class="math" data-tex="\(fe=ge\)">\(fe=ge\)</span> gives <span class="math" data-tex="\(f=g\)">\(f=g\)</span>.</p>
+<p>In the coequalizer case choose <span class="math" data-tex="\(q:B\to Q\)">\(q:B\to Q\)</span>. Universality of <span class="math" data-tex="\(F(q)\)">\(F(q)\)</span> for an equal pair gives <span class="math" data-tex="\(r:F(Q)\to F(B)\)">\(r:F(Q)\to F(B)\)</span> with <span class="math" data-tex="\(rF(q)=1\)">\(rF(q)=1\)</span>. Coequalizer uniqueness gives <span class="math" data-tex="\(F(q)r=1\)">\(F(q)r=1\)</span>. Conservativity makes <span class="math" data-tex="\(q\)">\(q\)</span> invertible, so <span class="math" data-tex="\(qf=qg\)">\(qf=qg\)</span> again gives <span class="math" data-tex="\(f=g\)">\(f=g\)</span>. This proves both alternatives. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2.</strong> If <span class="math" data-tex="\(C\)">\(C\)</span> is balanced, a faithful <span class="math" data-tex="\(F:C\to C&#x27;\)">\(F:C\to C&#x27;\)</span> is conservative.</p>
+<p><strong>Proof.</strong> An isomorphism is monic and epic by cancellation with its inverse. The complete faithful-reflection proof in <a href="relations-and-cancellation-in-categories.html#3-functors-and-the-direction-of-a-test">Relations and cancellation, Section 3</a> says: if <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span> is monic, apply <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(au=av\)">\(au=av\)</span>, cancel <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span>, then use faithfulness to get <span class="math" data-tex="\(u=v\)">\(u=v\)</span>. Reversing this cancellation proves reflection of epic arrows. Thus if <span class="math" data-tex="\(F(a)\)">\(F(a)\)</span> is invertible, <span class="math" data-tex="\(a\)">\(a\)</span> is both monic and epic. Balancedness says exactly that such an <span class="math" data-tex="\(a\)">\(a\)</span> is invertible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The hypothesis matters. Regard the ordered set <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span> as a category. Every arrow is monic and epic because each Hom set has at most one element. The arrow <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span> has no inverse. The functor to the terminal category is faithful: every Hom-set map has domain of size at most one. It sends <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span> to an identity, so it is not conservative.</p>
+<h2 id="4-join-a-span-or-match-a-cospan">4. Join a span or match a cospan</h2>
+<p>For a span <span class="math" data-tex="\(A\xleftarrow{f}X\xrightarrow{g}B\)">\(A\xleftarrow{f}X\xrightarrow{g}B\)</span>, a <strong>pushout</strong> <span class="math" data-tex="\(S=A\amalg_X B\)">\(S=A\amalg_X B\)</span> has <span class="math" data-tex="\(j_A:A\to S\)">\(j_A:A\to S\)</span>, <span class="math" data-tex="\(j_B:B\to S\)">\(j_B:B\to S\)</span> with <span class="math" data-tex="\(j_Af=j_Bg\)">\(j_Af=j_Bg\)</span>. Its property is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C(S,T)\simeq\\
+\{(u:A\to T,v:B\to T):\\
+uf=vg\},\\
+h\longmapsto(hj_A,hj_B).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+C(S,T)\simeq\\
+\{(u:A\to T,v:B\to T):\\
+uf=vg\},\\
+h\longmapsto(hj_A,hj_B).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>A cocone on the span also has a map from <span class="math" data-tex="\(X\)">\(X\)</span>, necessarily the common composite, so the span colimit and this property are equivalent. For a cospan <span class="math" data-tex="\(A\xrightarrow{f}Y\xleftarrow{g}B\)">\(A\xrightarrow{f}Y\xleftarrow{g}B\)</span>, a <strong>pullback</strong> <span class="math" data-tex="\(R=A\times_Y B\)">\(R=A\times_Y B\)</span> has <span class="math" data-tex="\(p_A:R\to A\)">\(p_A:R\to A\)</span>, <span class="math" data-tex="\(p_B:R\to B\)">\(p_B:R\to B\)</span> with <span class="math" data-tex="\(fp_A=gp_B\)">\(fp_A=gp_B\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C(T,R)\simeq\\
+\{(u:T\to A,v:T\to B):\\
+fu=gv\},\\
+h\longmapsto(p_Ah,p_Bh).
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+C(T,R)\simeq\\
+\{(u:T\to A,v:T\to B):\\
+fu=gv\},\\
+h\longmapsto(p_Ah,p_Bh).
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>The common map to <span class="math" data-tex="\(Y\)">\(Y\)</span> supplies the remaining cone component. The maps in (4.1) and (4.2) are natural in <span class="math" data-tex="\(T\)">\(T\)</span>: compose every pair on the appropriate side. These definitions do not assert that every span or cospan has its universal object.</p>
+<p>In sets the pullback consists of the pairs <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> with <span class="math" data-tex="\(f(a)=g(b)\)">\(f(a)=g(b)\)</span>. A compatible pair of functions has the unique factor <span class="math" data-tex="\(t\mapsto(u(t),v(t))\)">\(t\mapsto(u(t),v(t))\)</span>. The pushout is the tagged union <span class="math" data-tex="\(A\amalg B\)">\(A\amalg B\)</span> modulo the equivalence relation generated by</p>
+<span class="math math-display" data-tex="\[
+(\mathrm A,f(x))\sim(\mathrm B,g(x))
+\quad(x\in X).
+\tag{4.3}
+\]">\[
+(\mathrm A,f(x))\sim(\mathrm B,g(x))
+\quad(x\in X).
+\tag{4.3}
+\]</span>
+<p>The quotient maps give its coprojections. A compatible pair <span class="math" data-tex="\(u,v\)">\(u,v\)</span> defines a function on the union that agrees on every generating pair. The coequalizer argument of Section 2 therefore makes it descend uniquely to the quotient. These proofs include empty sets and give small objects for small data.</p>
+<p><strong>Proposition 4.1.</strong> If <span class="math" data-tex="\(A\amalg B\)">\(A\amalg B\)</span> exists, the pushout of <span class="math" data-tex="\(f,g\)">\(f,g\)</span> is equivalently the coequalizer of</p>
+<span class="math math-display" data-tex="\[
+X
+\mathrel{\substack{\xrightarrow{\ \iota_A f\ }\\[-2pt]
+\xrightarrow[\ \iota_B g\ ]{}}}
+A\amalg B.
+\tag{4.4}
+\]">\[
+X
+\mathrel{\substack{\xrightarrow{\ \iota_A f\ }\\[-2pt]
+\xrightarrow[\ \iota_B g\ ]{}}}
+A\amalg B.
+\tag{4.4}
+\]</span>
+<p>If <span class="math" data-tex="\(A\times B\)">\(A\times B\)</span> exists, the pullback of <span class="math" data-tex="\(f:A\to Y\)">\(f:A\to Y\)</span>, <span class="math" data-tex="\(g:B\to Y\)">\(g:B\to Y\)</span> is equivalently the equalizer of</p>
+<span class="math math-display" data-tex="\[
+A\times B
+\mathrel{\substack{\xrightarrow{\ fp_A\ }\\[-2pt]
+\xrightarrow[\ gp_B\ ]{}}}
+Y.
+\tag{4.5}
+\]">\[
+A\times B
+\mathrel{\substack{\xrightarrow{\ fp_A\ }\\[-2pt]
+\xrightarrow[\ gp_B\ ]{}}}
+Y.
+\tag{4.5}
+\]</span>
+<p><strong>Proof.</strong> An arrow <span class="math" data-tex="\(A\amalg B\to T\)">\(A\amalg B\to T\)</span> is uniquely a pair <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. It coequalizes (4.4) precisely when <span class="math" data-tex="\(uf=vg\)">\(uf=vg\)</span>. A coequalizer <span class="math" data-tex="\(q\)">\(q\)</span> thus gives the pushout with coprojections <span class="math" data-tex="\(q\iota_A,q\iota_B\)">\(q\iota_A,q\iota_B\)</span>. Conversely, a pushout gives <span class="math" data-tex="\(q\)">\(q\)</span> from these coprojections, and its pair-factor property gives the unique factor of every coequalizing arrow through <span class="math" data-tex="\(q\)">\(q\)</span>. An arrow <span class="math" data-tex="\(T\to A\times B\)">\(T\to A\times B\)</span> is uniquely a pair <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. It equalizes (4.5) precisely when <span class="math" data-tex="\(fu=gv\)">\(fu=gv\)</span>. An equalizer gives the pullback projections, and a pullback gives the equalizer map with exactly these components. Existence and uniqueness in both directions are the same bijections. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a commuting square with upper-left vertex <span class="math" data-tex="\(X\)">\(X\)</span>, upper-right <span class="math" data-tex="\(A\)">\(A\)</span>, lower-left <span class="math" data-tex="\(B\)">\(B\)</span> and lower-right <span class="math" data-tex="\(Y\)">\(Y\)</span>, there are canonical maps</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X&amp;\longrightarrow A\times_Y B,\\
+A\amalg_X B&amp;\longrightarrow Y.
+\end{aligned}
+\tag{4.6}
+\]">\[
+\begin{aligned}
+X&amp;\longrightarrow A\times_Y B,\\
+A\amalg_X B&amp;\longrightarrow Y.
+\end{aligned}
+\tag{4.6}
+\]</span>
+<p>They are specified by the two arrows out of <span class="math" data-tex="\(X\)">\(X\)</span>, or the two into <span class="math" data-tex="\(Y\)">\(Y\)</span>. The square is <strong>cartesian</strong> when the first is invertible and <strong>cocartesian</strong> when the second is invertible. A universal square has invertible canonical comparison by compatible universal uniqueness. Conversely, an invertible comparison transports the factor property to the specified square, proving these tests. When binary products exist, cartesianity is equivalently that the specified <span class="math" data-tex="\(X\to A\times B\rightrightarrows Y\)">\(X\to A\times B\rightrightarrows Y\)</span> is an equalizer fork by Proposition 4.1. With binary coproducts, cocartesianity is equivalently that <span class="math" data-tex="\(X\rightrightarrows A\amalg B\to Y\)">\(X\rightrightarrows A\amalg B\to Y\)</span> is a coequalizer fork. All these conditions concern the canonical maps.</p>
+<h2 id="5-families-over-and-under-a-base">5. Families over and under a base</h2>
+<p>Fix <span class="math" data-tex="\(Y\)">\(Y\)</span>. An object of the slice <span class="math" data-tex="\(C/Y\)">\(C/Y\)</span> is <span class="math" data-tex="\(a:A\to Y\)">\(a:A\to Y\)</span>; a map from <span class="math" data-tex="\(t:T\to Y\)">\(t:T\to Y\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span> is <span class="math" data-tex="\(u:T\to A\)">\(u:T\to A\)</span> with <span class="math" data-tex="\(au=t\)">\(au=t\)</span>. For a family <span class="math" data-tex="\(a_i:A_i\to Y\)">\(a_i:A_i\to Y\)</span>, its <strong>fibre product family</strong> is the product of these objects in <span class="math" data-tex="\(C/Y\)">\(C/Y\)</span>. Thus it has <span class="math" data-tex="\(r:R\to Y\)">\(r:R\to Y\)</span> and maps <span class="math" data-tex="\(p_i:R\to A_i\)">\(p_i:R\to A_i\)</span> with <span class="math" data-tex="\(a_i p_i=r\)">\(a_i p_i=r\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(C/Y)(t,r)\simeq
+\prod_i(C/Y)(t,a_i),\\
+h\longmapsto(p_i h)_i.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+(C/Y)(t,r)\simeq
+\prod_i(C/Y)(t,a_i),\\
+h\longmapsto(p_i h)_i.
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>There is a fixed map <span class="math" data-tex="\(t\)">\(t\)</span> on both sides. The inverse sends any family over <span class="math" data-tex="\(Y\)">\(Y\)</span> to its unique factor <strong>over <span class="math" data-tex="\(Y\)">\(Y\)</span></strong>. For two indices this property gives the ordinary pullback of <span class="math" data-tex="\(a_0,a_1\)">\(a_0,a_1\)</span>: a compatible pair determines <span class="math" data-tex="\(t=a_0u_0=a_1u_1\)">\(t=a_0u_0=a_1u_1\)</span>, so (5.1) is precisely (4.2). Conversely, a pullback's common map <span class="math" data-tex="\(r\)">\(r\)</span> and its pair-factor property give (5.1).</p>
+<p>Dually an object of <span class="math" data-tex="\(Y/C\)">\(Y/C\)</span> is <span class="math" data-tex="\(b:Y\to B\)">\(b:Y\to B\)</span>, and a map to <span class="math" data-tex="\(t:Y\to T\)">\(t:Y\to T\)</span> is <span class="math" data-tex="\(v:B\to T\)">\(v:B\to T\)</span> with <span class="math" data-tex="\(vb=t\)">\(vb=t\)</span>. A family <span class="math" data-tex="\(b_i:Y\to B_i\)">\(b_i:Y\to B_i\)</span> has a <strong>fibre coproduct family</strong> when its coproduct in <span class="math" data-tex="\(Y/C\)">\(Y/C\)</span> exists. It has <span class="math" data-tex="\(s:Y\to S\)">\(s:Y\to S\)</span>, coprojections <span class="math" data-tex="\(j_i:B_i\to S\)">\(j_i:B_i\to S\)</span>, <span class="math" data-tex="\(j_i b_i=s\)">\(j_i b_i=s\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(Y/C)(s,t)\simeq
+\prod_i(Y/C)(b_i,t),\\
+h\longmapsto(hj_i)_i.
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+(Y/C)(s,t)\simeq
+\prod_i(Y/C)(b_i,t),\\
+h\longmapsto(hj_i)_i.
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>For two indices this is the pushout property: a compatible pair determines its common arrow from <span class="math" data-tex="\(Y\)">\(Y\)</span>. Precomposition in the slice and postcomposition in the coslice prove naturality, component by component.</p>
+<p>For no indices the product in the slice is <span class="math" data-tex="\(1_Y:Y\to Y\)">\(1_Y:Y\to Y\)</span>. Indeed, from <span class="math" data-tex="\(t:T\to Y\)">\(t:T\to Y\)</span> to <span class="math" data-tex="\(1_Y\)">\(1_Y\)</span> the required unique arrow is <span class="math" data-tex="\(t\)">\(t\)</span>. The coproduct of no objects in the coslice is also <span class="math" data-tex="\(1_Y\)">\(1_Y\)</span>: its unique arrow to <span class="math" data-tex="\(t:Y\to T\)">\(t:Y\to T\)</span> must be <span class="math" data-tex="\(t\)">\(t\)</span>. Consequently both empty <strong>relative</strong> objects have underlying object <span class="math" data-tex="\(Y\)">\(Y\)</span>. Their universal tests are slice or coslice tests, so these are not assertions that <span class="math" data-tex="\(Y\)">\(Y\)</span> is terminal or initial in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>For sets, the fibre product family can be written as</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R=\{(y,(x_i)):\\
+y\in Y,\ x_i\in A_i,\\
+a_i(x_i)=y\text{ for every }i\},\\
+r(y,(x_i))=y.
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+R=\{(y,(x_i)):\\
+y\in Y,\ x_i\in A_i,\\
+a_i(x_i)=y\text{ for every }i\},\\
+r(y,(x_i))=y.
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>This version retains <span class="math" data-tex="\(y\)">\(y\)</span> even when <span class="math" data-tex="\(I\)">\(I\)</span> is empty. The unique factor of an over-<span class="math" data-tex="\(Y\)">\(Y\)</span> family is <span class="math" data-tex="\(t_0\mapsto(t(t_0),(u_i(t_0)))\)">\(t_0\mapsto(t(t_0),(u_i(t_0)))\)</span>. The fibre coproduct family is the quotient of
+<span class="math" data-tex="\(Y\amalg\coprod_i B_i\)">\(Y\amalg\coprod_i B_i\)</span> identifying the tagged <span class="math" data-tex="\(y\)">\(y\)</span> with the tagged <span class="math" data-tex="\(b_i(y)\)">\(b_i(y)\)</span> for every <span class="math" data-tex="\(i,y\)">\(i,y\)</span>. Maps under <span class="math" data-tex="\(Y\)">\(Y\)</span> give compatible functions on these summands, hence descend uniquely; the image of the <span class="math" data-tex="\(Y\)">\(Y\)</span> summand supplies <span class="math" data-tex="\(s\)">\(s\)</span>. This construction likewise keeps <span class="math" data-tex="\(Y\)">\(Y\)</span> for empty <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>Keep the complete slice-colimit computation and pullback comparison in <a href="initial-objects-universal-colimits-and-pointed-categories.html#1-a-colimit-viewed-over-a-base">Initial objects, Section 1</a>. It proves that underlying colimits compute slice colimits, including the empty case, and defines stability under base change by the specified comparison. The relative products and coproducts above use the full slice/coslice category laws; they do not replace that existing base-change definition.</p>
+<h2 id="6-diagonal-and-codiagonal">6. Diagonal and codiagonal</h2>
+<p>For <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, assume the self-pullback <span class="math" data-tex="\(R_f=X\times_Y X\)">\(R_f=X\times_Y X\)</span> and self-pushout <span class="math" data-tex="\(S_f=Y\amalg_X Y\)">\(S_f=Y\amalg_X Y\)</span> exist. The compatible pair <span class="math" data-tex="\(1_X,1_X\)">\(1_X,1_X\)</span> gives a unique <strong>diagonal</strong> <span class="math" data-tex="\(\delta_f:X\to R_f\)">\(\delta_f:X\to R_f\)</span>. The compatible pair <span class="math" data-tex="\(1_Y,1_Y\)">\(1_Y,1_Y\)</span> gives a unique <strong>codiagonal</strong> <span class="math" data-tex="\(\sigma_f:S_f\to Y\)">\(\sigma_f:S_f\to Y\)</span>. Their complete characterizations are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p_1\delta_f&amp;=1_X,&amp;p_2\delta_f&amp;=1_X,\\
+\sigma_f j_1&amp;=1_Y,&amp;\sigma_f j_2&amp;=1_Y.
+\end{aligned}
+\tag{6.1}
+\]">\[
+\begin{aligned}
+p_1\delta_f&amp;=1_X,&amp;p_2\delta_f&amp;=1_X,\\
+\sigma_f j_1&amp;=1_Y,&amp;\sigma_f j_2&amp;=1_Y.
+\end{aligned}
+\tag{6.1}
+\]</span>
+<p>Now let <span class="math" data-tex="\(a:X\to X&#x27;\)">\(a:X\to X&#x27;\)</span>, <span class="math" data-tex="\(b:Y\to Y&#x27;\)">\(b:Y\to Y&#x27;\)</span> satisfy <span class="math" data-tex="\(bf=f&#x27;a\)">\(bf=f&#x27;a\)</span>. Then <span class="math" data-tex="\(f&#x27;a p_1=bf p_1=bf p_2=f&#x27;a p_2\)">\(f&#x27;a p_1=bf p_1=bf p_2=f&#x27;a p_2\)</span>. Pullback universality gives the unique <span class="math" data-tex="\(R(a,b):R_f\to R_{f&#x27;}\)">\(R(a,b):R_f\to R_{f&#x27;}\)</span> with <span class="math" data-tex="\(p&#x27;_iR(a,b)=a p_i\)">\(p&#x27;_iR(a,b)=a p_i\)</span>. On the pushout side <span class="math" data-tex="\(j&#x27;_1b f=j&#x27;_1f&#x27;a=j&#x27;_2f&#x27;a=j&#x27;_2b f\)">\(j&#x27;_1b f=j&#x27;_1f&#x27;a=j&#x27;_2f&#x27;a=j&#x27;_2b f\)</span>. Thus there is a unique <span class="math" data-tex="\(S(a,b):S_f\to S_{f&#x27;}\)">\(S(a,b):S_f\to S_{f&#x27;}\)</span> with <span class="math" data-tex="\(S(a,b)j_i=j&#x27;_i b\)">\(S(a,b)j_i=j&#x27;_i b\)</span>.</p>
+<p>For the identity square the prescribed components are those of the identity. For successive squares <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, <span class="math" data-tex="\((a&#x27;,b&#x27;)\)">\((a&#x27;,b&#x27;)\)</span>, the composite <span class="math" data-tex="\(R(a&#x27;,b&#x27;)R(a,b)\)">\(R(a&#x27;,b&#x27;)R(a,b)\)</span> has components <span class="math" data-tex="\(a&#x27;a p_i\)">\(a&#x27;a p_i\)</span>, precisely those of <span class="math" data-tex="\(R(a&#x27;a,b&#x27;b)\)">\(R(a&#x27;a,b&#x27;b)\)</span>; uniqueness identifies them. The composite <span class="math" data-tex="\(S(a&#x27;,b&#x27;)S(a,b)\)">\(S(a&#x27;,b&#x27;)S(a,b)\)</span> has components <span class="math" data-tex="\(j&#x27;&#x27;_i b&#x27;b\)">\(j&#x27;&#x27;_i b&#x27;b\)</span> and hence equals <span class="math" data-tex="\(S(a&#x27;a,b&#x27;b)\)">\(S(a&#x27;a,b&#x27;b)\)</span>. This proves the full functor laws on any arrow category where these choices exist.</p>
+<p>The same component tests give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(a,b)\delta_f&amp;=\delta_{f&#x27;}a,\\
+\sigma_{f&#x27;}S(a,b)&amp;=b\sigma_f.
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+R(a,b)\delta_f&amp;=\delta_{f&#x27;}a,\\
+\sigma_{f&#x27;}S(a,b)&amp;=b\sigma_f.
+\end{aligned}
+\tag{6.2}
+\]</span>
+<p>For the first, both projection components are <span class="math" data-tex="\(a\)">\(a\)</span>. For the second, both coprojection components are <span class="math" data-tex="\(b\)">\(b\)</span>. Thus the diagonals and codiagonals are natural with their displayed endpoints.</p>
+<p>In sets, <span class="math" data-tex="\(R_f=\{(x,x&#x27;):f(x)=f(x&#x27;)\}\)">\(R_f=\{(x,x&#x27;):f(x)=f(x&#x27;)\}\)</span> and <span class="math" data-tex="\(\delta_f(x)=(x,x)\)">\(\delta_f(x)=(x,x)\)</span>. The quotient <span class="math" data-tex="\(S_f\)">\(S_f\)</span> has two tagged copies of <span class="math" data-tex="\(Y\)">\(Y\)</span> with the two copies of each <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> identified; <span class="math" data-tex="\(\sigma_f\)">\(\sigma_f\)</span> sends either copy of <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span>. These rules satisfy (6.1), which proves they are the specified maps. If <span class="math" data-tex="\(X=\varnothing\)">\(X=\varnothing\)</span>, <span class="math" data-tex="\(R_f=\varnothing\)">\(R_f=\varnothing\)</span> and <span class="math" data-tex="\(S_f=Y\amalg Y\)">\(S_f=Y\amalg Y\)</span>; the diagonal is the unique empty map and the codiagonal folds the two copies. If <span class="math" data-tex="\(f=1_Y\)">\(f=1_Y\)</span>, both universal objects identify compatibly with <span class="math" data-tex="\(Y\)">\(Y\)</span> and both maps are identities.</p>
+<h2 id="7-reindex-repeated-objects">7. Reindex repeated objects</h2>
+<p>Suppose the needed finite powers of <span class="math" data-tex="\(X\)">\(X\)</span> exist. A function <span class="math" data-tex="\(u:J\to I\)">\(u:J\to I\)</span> between finite sets induces the unique map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X^u:X^I\to X^J,\\
+p_j X^u=p_{u(j)}\quad(j\in J).
+\end{gathered}
+\tag{7.1}
+\]">\[
+\begin{gathered}
+X^u:X^I\to X^J,\\
+p_j X^u=p_{u(j)}\quad(j\in J).
+\end{gathered}
+\tag{7.1}
+\]</span>
+<p>Existence is the product property of <span class="math" data-tex="\(X^J\)">\(X^J\)</span>. The identity function gives the identity by its components. For <span class="math" data-tex="\(v:K\to J\)">\(v:K\to J\)</span>,
+<span class="math" data-tex="\(p_k X^v X^u=p_{v(k)}X^u=p_{u(v(k))}\)">\(p_k X^v X^u=p_{v(k)}X^u=p_{u(v(k))}\)</span>. Thus <span class="math" data-tex="\(X^v X^u=X^{uv}\)">\(X^v X^u=X^{uv}\)</span>. Powers define a functor <span class="math" data-tex="\(\mathsf{FinSet}^{\mathrm{op}}\to C\)">\(\mathsf{FinSet}^{\mathrm{op}}\to C\)</span>. Under (1.2), its action on <span class="math" data-tex="\(C(T,-)\)">\(C(T,-)\)</span> is precomposition by <span class="math" data-tex="\(u\)">\(u\)</span> on functions <span class="math" data-tex="\(I\to C(T,X)\)">\(I\to C(T,X)\)</span>, since evaluating the new family at <span class="math" data-tex="\(j\)">\(j\)</span> evaluates the old one at <span class="math" data-tex="\(u(j)\)">\(u(j)\)</span>. This description commutes with precomposition by any <span class="math" data-tex="\(T&#x27;\to T\)">\(T&#x27;\to T\)</span>.</p>
+<p>For copowers, a function <span class="math" data-tex="\(u:I\to J\)">\(u:I\to J\)</span> induces</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X^{(u)}:X^{(I)}\to X^{(J)},\\
+X^{(u)}j_i=j_{u(i)}\quad(i\in I).
+\end{gathered}
+\tag{7.2}
+\]">\[
+\begin{gathered}
+X^{(u)}:X^{(I)}\to X^{(J)},\\
+X^{(u)}j_i=j_{u(i)}\quad(i\in I).
+\end{gathered}
+\tag{7.2}
+\]</span>
+<p>The coproduct property constructs it. For <span class="math" data-tex="\(v:J\to K\)">\(v:J\to K\)</span>, both <span class="math" data-tex="\(X^{(v)}X^{(u)}\)">\(X^{(v)}X^{(u)}\)</span> and <span class="math" data-tex="\(X^{(vu)}\)">\(X^{(vu)}\)</span> have component <span class="math" data-tex="\(j_{v(u(i))}\)">\(j_{v(u(i))}\)</span>. The identity has component <span class="math" data-tex="\(j_i\)">\(j_i\)</span>. Copowers therefore define a functor <span class="math" data-tex="\(\mathsf{FinSet}\to C\)">\(\mathsf{FinSet}\to C\)</span>. The map
+<span class="math" data-tex="\(C(X^{(J)},T)\to C(X^{(I)},T)\)">\(C(X^{(J)},T)\to C(X^{(I)},T)\)</span> is precomposition by <span class="math" data-tex="\(u\)">\(u\)</span> on the functions <span class="math" data-tex="\(J\to C(X,T)\)">\(J\to C(X,T)\)</span>, and is natural in <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>The empty power is terminal and the empty copower is initial. Formula (7.1) includes the unique map <span class="math" data-tex="\(X^I\to X^\varnothing\)">\(X^I\to X^\varnothing\)</span> for the empty function <span class="math" data-tex="\(\varnothing\to I\)">\(\varnothing\to I\)</span>; (7.2) includes <span class="math" data-tex="\(X^{(\varnothing)}\to X^{(J)}\)">\(X^{(\varnothing)}\to X^{(J)}\)</span>. It asserts no function to the empty set from a nonempty set.</p>
+<p>Apply the same proofs in <span class="math" data-tex="\(C/Y\)">\(C/Y\)</span> to an object <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>. Its finite relative powers have all their projections over <span class="math" data-tex="\(Y\)">\(Y\)</span>, and (7.1) remains over <span class="math" data-tex="\(Y\)">\(Y\)</span> by construction. Under the slice version of (1.2) it is precomposition on functions <span class="math" data-tex="\(I\to(C/Y)(t,f)\)">\(I\to(C/Y)(t,f)\)</span>. Apply them in <span class="math" data-tex="\(Y/C\)">\(Y/C\)</span> to <span class="math" data-tex="\(g:Y\to X\)">\(g:Y\to X\)</span> for relative copowers: (7.2) is under <span class="math" data-tex="\(Y\)">\(Y\)</span>, and the coslice Hom description is likewise precomposition. The empty relative power and copower are both <span class="math" data-tex="\(1_Y\)">\(1_Y\)</span>, as proved in Section 5. The identical component tests prove all identity, composition and test-object naturality laws in these categories too.</p>
+<h2 id="8-one-product-and-one-equalizer">8. One product and one equalizer</h2>
+<p>Let <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span> be a diagram. Write <span class="math" data-tex="\(I_0\)">\(I_0\)</span> for its set of objects and <span class="math" data-tex="\(I_1\)">\(I_1\)</span> for its set of arrows; for <span class="math" data-tex="\(s\in I_1\)">\(s\in I_1\)</span> write <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>. Assume the products below and the equalizer of the displayed maps exist. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V=\prod_{i\in I_0}D(i),\\
+W=\prod_{s:i\to j}D(j),\\
+a,b: V\rightrightarrows W,\\
+\rho_s a=D(s)p_i,\quad \rho_s b=p_j,\\
+e:L\to V,\qquad
+L=\operatorname{Eq}(a,b).
+\end{gathered}
+\tag{8.1}
+\]">\[
+\begin{gathered}
+V=\prod_{i\in I_0}D(i),\\
+W=\prod_{s:i\to j}D(j),\\
+a,b: V\rightrightarrows W,\\
+\rho_s a=D(s)p_i,\quad \rho_s b=p_j,\\
+e:L\to V,\qquad
+L=\operatorname{Eq}(a,b).
+\end{gathered}
+\tag{8.1}
+\]</span>
+<p>The product property of <span class="math" data-tex="\(W\)">\(W\)</span> constructs <span class="math" data-tex="\(a,b\)">\(a,b\)</span> from these families, with no omitted arrows. Let <span class="math" data-tex="\(\lambda_i=p_i e\)">\(\lambda_i=p_i e\)</span>. The equality <span class="math" data-tex="\(ae=be\)">\(ae=be\)</span>, checked at <span class="math" data-tex="\(\rho_s\)">\(\rho_s\)</span>, says <span class="math" data-tex="\(D(s)\lambda_i=\lambda_j\)">\(D(s)\lambda_i=\lambda_j\)</span>, so <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a cone.</p>
+<p>Given any cone <span class="math" data-tex="\(u_i:T\to D(i)\)">\(u_i:T\to D(i)\)</span>, the product property gives a unique <span class="math" data-tex="\(u:T\to V\)">\(u:T\to V\)</span> with <span class="math" data-tex="\(p_i u=u_i\)">\(p_i u=u_i\)</span>. For each <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>,
+<span class="math" data-tex="\(\rho_s au=D(s)u_i=u_j=\rho_s bu\)">\(\rho_s au=D(s)u_i=u_j=\rho_s bu\)</span>. The product property of <span class="math" data-tex="\(W\)">\(W\)</span> yields <span class="math" data-tex="\(au=bu\)">\(au=bu\)</span>. Equalizer universality gives the unique <span class="math" data-tex="\(h:T\to L\)">\(h:T\to L\)</span> with <span class="math" data-tex="\(eh=u\)">\(eh=u\)</span>, hence <span class="math" data-tex="\(\lambda_i h=u_i\)">\(\lambda_i h=u_i\)</span>. If <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> has the same cone components, the product property gives <span class="math" data-tex="\(eh&#x27;=u\)">\(eh&#x27;=u\)</span>, and equalizer uniqueness gives <span class="math" data-tex="\(h&#x27;=h\)">\(h&#x27;=h\)</span>. This proves that (8.1) is the limit, with its specified cone, and proves the complete universal property including naturality in <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For empty <span class="math" data-tex="\(I\)">\(I\)</span>, both products are terminal. Their two arrows coincide, and the equalizer of this equal pair is compatibly the terminal object; the resulting empty cone is exactly the empty limit. For identities and composites in a nonempty <span class="math" data-tex="\(I\)">\(I\)</span>, the displayed equations impose every arrow condition; no condition inconsistent with a cone is introduced.</p>
+<p>For the projective notation <span class="math" data-tex="\(\beta:I^{\mathrm{op}}\to C\)">\(\beta:I^{\mathrm{op}}\to C\)</span>, keep <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span> an arrow of <span class="math" data-tex="\(I\)">\(I\)</span>. The same proof has the correctly typed form</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V=\prod_i\beta(i),\qquad
+W=\prod_{s:i\to j}\beta(i),\\
+\rho_s a=p_i,\qquad
+\rho_s b=\beta(s)p_j.
+\end{gathered}
+\tag{8.2}
+\]">\[
+\begin{gathered}
+V=\prod_i\beta(i),\qquad
+W=\prod_{s:i\to j}\beta(i),\\
+\rho_s a=p_i,\qquad
+\rho_s b=\beta(s)p_j.
+\end{gathered}
+\tag{8.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(\beta(s):\beta(j)\to\beta(i)\)">\(\beta(s):\beta(j)\to\beta(i)\)</span>, so the equalizing equations are precisely the projective cone equations. This is (8.1) for <span class="math" data-tex="\(I^{\mathrm{op}}\)">\(I^{\mathrm{op}}\)</span>, after identifying its reversed-arrow labels with <span class="math" data-tex="\(I_1\)">\(I_1\)</span>.</p>
+<p>The dual construction can also be checked directly. Suppose the needed coproducts and coequalizer exist. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V=\coprod_iD(i),\\
+U=\coprod_{s:i\to j}D(i),\\
+a,b: U\rightrightarrows V,\\
+a\kappa_s=j_i,\quad b\kappa_s=j_jD(s),\\
+q:V\to Q=\operatorname{Coeq}(a,b).
+\end{gathered}
+\tag{8.3}
+\]">\[
+\begin{gathered}
+V=\coprod_iD(i),\\
+U=\coprod_{s:i\to j}D(i),\\
+a,b: U\rightrightarrows V,\\
+a\kappa_s=j_i,\quad b\kappa_s=j_jD(s),\\
+q:V\to Q=\operatorname{Coeq}(a,b).
+\end{gathered}
+\tag{8.3}
+\]</span>
+<p>The coproduct property of <span class="math" data-tex="\(U\)">\(U\)</span> constructs <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Set <span class="math" data-tex="\(\eta_i=qj_i\)">\(\eta_i=qj_i\)</span>. Checking <span class="math" data-tex="\(qa=qb\)">\(qa=qb\)</span> at <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span> gives <span class="math" data-tex="\(\eta_i=\eta_jD(s)\)">\(\eta_i=\eta_jD(s)\)</span>, so <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a cocone. A cocone <span class="math" data-tex="\(v_i:D(i)\to T\)">\(v_i:D(i)\to T\)</span> gives a unique <span class="math" data-tex="\(v:V\to T\)">\(v:V\to T\)</span> with <span class="math" data-tex="\(vj_i=v_i\)">\(vj_i=v_i\)</span>. Its compatibility gives <span class="math" data-tex="\(va\kappa_s=vb\kappa_s\)">\(va\kappa_s=vb\kappa_s\)</span> for all <span class="math" data-tex="\(s\)">\(s\)</span>, hence <span class="math" data-tex="\(va=vb\)">\(va=vb\)</span>. There is a unique <span class="math" data-tex="\(h:Q\to T\)">\(h:Q\to T\)</span> with <span class="math" data-tex="\(hq=v\)">\(hq=v\)</span>, giving <span class="math" data-tex="\(h\eta_i=v_i\)">\(h\eta_i=v_i\)</span>. Any other such <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> satisfies <span class="math" data-tex="\(h&#x27;q=v\)">\(h&#x27;q=v\)</span> by the coproduct property and equals <span class="math" data-tex="\(h\)">\(h\)</span> by coequalizer uniqueness. This proves the entire colimit property and its naturality. With no objects or arrows, <span class="math" data-tex="\(V,U\)">\(V,U\)</span> are initial and their equal pair has initial coequalizer, so the empty colimit is included.</p>
+<p>These proofs also describe the canonical maps for a natural transformation <span class="math" data-tex="\(\theta:D\to D&#x27;\)">\(\theta:D\to D&#x27;\)</span>, whenever both constructions exist. The limit map has components <span class="math" data-tex="\(\theta_i\lambda_i\)">\(\theta_i\lambda_i\)</span>; naturality of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> makes these a cone on <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span>. The colimit map is induced by the cocone <span class="math" data-tex="\(\eta&#x27;_i\theta_i\)">\(\eta&#x27;_i\theta_i\)</span>. Testing these families proves their identity and composition laws and that the constructions are natural in the diagram.</p>
+<p>There is a formal version requiring no such products or coproducts in <span class="math" data-tex="\(C\)">\(C\)</span>. Use the retained formal categories
+<span class="math" data-tex="\(C^\wedge=\operatorname{Fun}(C^{\mathrm{op}},\mathsf{Set}_{\mathcal U})\)">\(C^\wedge=\operatorname{Fun}(C^{\mathrm{op}},\mathsf{Set}_{\mathcal U})\)</span> and
+<span class="math" data-tex="\(C^\vee=\operatorname{Fun}(C,\mathsf{Set}_{\mathcal U})^{\mathrm{op}}\)">\(C^\vee=\operatorname{Fun}(C,\mathsf{Set}_{\mathcal U})^{\mathrm{op}}\)</span>, in the size setting of <a href="compatible-families-and-universal-cones.html#4-build-a-limit-at-every-input">Compatible families, Sections 2 and 4</a>. When values of the Hom embeddings require a larger universe, enlarge as in that lesson before taking these functor categories. For a small <span class="math" data-tex="\(I\)">\(I\)</span>, all products and equalizers in <span class="math" data-tex="\(C^\wedge\)">\(C^\wedge\)</span> exist pointwise by its full pointwise-limit proof and the small-set constructions above. Therefore applying (8.2) to <span class="math" data-tex="\(h_{\beta(i)}=C(-,\beta(i))\)">\(h_{\beta(i)}=C(-,\beta(i))\)</span> gives the formal limit</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L^{\mathrm{form}}_\beta=
+\operatorname{Eq}\bigl(\\
+\prod_i h_{\beta(i)}
+\rightrightarrows\\
+\prod_{s:i\to j}h_{\beta(i)}
+\bigr).
+\end{gathered}
+\tag{8.4}
+\]">\[
+\begin{gathered}
+L^{\mathrm{form}}_\beta=
+\operatorname{Eq}\bigl(\\
+\prod_i h_{\beta(i)}
+\rightrightarrows\\
+\prod_{s:i\to j}h_{\beta(i)}
+\bigr).
+\end{gathered}
+\tag{8.4}
+\]</span>
+<p>Its maps are the natural transformations with the components in (8.2), evaluated at every <span class="math" data-tex="\(T\)">\(T\)</span>. It is the functor of cones <span class="math" data-tex="\(T\to\beta\)">\(T\to\beta\)</span>, by the complete Set factor proof and pointwise theorem. It is representable precisely when <span class="math" data-tex="\(\beta\)">\(\beta\)</span> has a limit in <span class="math" data-tex="\(C\)">\(C\)</span>: the retained universal-family representation theorem identifies a representing element with the universal cone, in both directions.</p>
+<p>In <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span>, coproducts and coequalizers are the opposites of pointwise products and equalizers of covariant functors. They therefore exist for small families. Apply (8.3) to the Hom embedding <span class="math" data-tex="\(k_X=C(X,-)\)">\(k_X=C(X,-)\)</span>, regarded as an object of <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span>. This gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q^{\mathrm{form}}_D=
+\operatorname{Coeq}\bigl(\\
+\coprod_{s:i\to j} k_{D(i)}
+\rightrightarrows\\
+\coprod_i k_{D(i)}
+\bigr)\\
+\text{in }C^\vee.
+\end{gathered}
+\tag{8.5}
+\]">\[
+\begin{gathered}
+Q^{\mathrm{form}}_D=
+\operatorname{Coeq}\bigl(\\
+\coprod_{s:i\to j} k_{D(i)}
+\rightrightarrows\\
+\coprod_i k_{D(i)}
+\bigr)\\
+\text{in }C^\vee.
+\end{gathered}
+\tag{8.5}
+\]</span>
+<p>The underlying covariant functor evaluates to compatible families <span class="math" data-tex="\(D(i)\to T\)">\(D(i)\to T\)</span>: passing to the opposite turns these displayed coproducts and the coequalizer into the relevant Set products and equalizer. It is representable precisely when <span class="math" data-tex="\(D\)">\(D\)</span> has a colimit, by the full cocone representation theorem. Formal (8.4) and (8.5) assert existence in their formal categories. They do not supply actual products or coproducts in <span class="math" data-tex="\(C\)">\(C\)</span>; the actual constructions (8.1)–(8.3) retain their stated hypotheses. In particular this argument uses <span class="math" data-tex="\(k\)">\(k\)</span> and the opposite covariant category for colimits, rather than assuming that the usual presheaf Yoneda embedding preserves coproducts.</p>
+<h2 id="9-the-existence-criteria">9. The existence criteria</h2>
+<p><strong>Theorem 9.1.</strong> A category has all small limits if and only if it has all small products and all equalizers. It has all small colimits if and only if it has all small coproducts and all coequalizers.</p>
+<p><strong>Proof.</strong> A discrete small set and the finite parallel-pair category are small diagrams, so the forward assertions follow from Sections 1 and 2. Conversely, in a small category <span class="math" data-tex="\(I\)">\(I\)</span> both <span class="math" data-tex="\(I_0\)">\(I_0\)</span> and <span class="math" data-tex="\(I_1\)">\(I_1\)</span> are small. Thus the products <span class="math" data-tex="\(V,W\)">\(V,W\)</span> in (8.1) exist, and so does their equalizer. The full cone-factor proof there gives the limit for every small <span class="math" data-tex="\(D\)">\(D\)</span>. The coproducts <span class="math" data-tex="\(U,V\)">\(U,V\)</span> in (8.3) also have small index sets, and their coequalizer exists under the dual assumptions. Its full cocone-factor proof gives every small colimit. Empty indexing sets are included on both sides. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 9.2.</strong> A category has all finite limits if and only if it has a terminal object, binary products and equalizers. It has all finite colimits if and only if it has an initial object, binary coproducts and coequalizers.</p>
+<p><strong>Proof.</strong> The empty, two-object discrete and parallel-pair diagrams are finite, giving the necessities. To construct finite products from a terminal object <span class="math" data-tex="\(1\)">\(1\)</span> and binary products, use <span class="math" data-tex="\(P_0=1\)">\(P_0=1\)</span>. After constructing a product <span class="math" data-tex="\(P_n\)">\(P_n\)</span> of <span class="math" data-tex="\(X_1,\ldots,X_n\)">\(X_1,\ldots,X_n\)</span>, let <span class="math" data-tex="\(P_{n+1}=P_n\times X_{n+1}\)">\(P_{n+1}=P_n\times X_{n+1}\)</span>, with its old projections composed with the first projection and its last projection the second. A family <span class="math" data-tex="\(u_i:T\to X_i\)">\(u_i:T\to X_i\)</span> first gives the unique <span class="math" data-tex="\(T\to P_n\)">\(T\to P_n\)</span> by induction, then the unique pair map <span class="math" data-tex="\(T\to P_{n+1}\)">\(T\to P_{n+1}\)</span>. Any map with these <span class="math" data-tex="\(n+1\)">\(n+1\)</span> components has that first factor by induction and therefore is this pair map. This proves the full product property at each step. A bijective enumeration of any finite index set transports its labels and yields its product; for no labels the argument is terminality.</p>
+<p>For a finite diagram, the products of both the object and arrow values in (8.1) are finite products. An equalizer then gives its limit by the proved construction. Dually start with <span class="math" data-tex="\(Q_0=0\)">\(Q_0=0\)</span> initial and <span class="math" data-tex="\(Q_{n+1}=Q_n\amalg X_{n+1}\)">\(Q_{n+1}=Q_n\amalg X_{n+1}\)</span>. A family <span class="math" data-tex="\(X_i\to T\)">\(X_i\to T\)</span> gives its unique first factor from <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span>, and then its unique coproduct factor from <span class="math" data-tex="\(Q_{n+1}\)">\(Q_{n+1}\)</span>; uniqueness follows by restricting to these two summands. Relabeling gives every finite coproduct. Both coproducts in (8.3) are finite for a finite diagram, so their coequalizer gives the colimit. This proves all sufficiencies, including the empty case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only finitely many objects does not guarantee finitely many arrows. The last exercise tests the distinction with a one-object category and infinitely many endomorphisms.</p>
+<h2 id="10-four-graded-exercises">10. Four graded exercises</h2>
+<h3 id="exercise-1-introductory-the-endpoint-and-the-map">Exercise 1 — introductory: the endpoint and the map</h3>
+<p>Let <span class="math" data-tex="\(B=\{0,1\}\)">\(B=\{0,1\}\)</span>, <span class="math" data-tex="\(Q=\{u,v\}\)">\(Q=\{u,v\}\)</span>, and coequalize the pair <span class="math" data-tex="\(1_B,1_B\)">\(1_B,1_B\)</span>. Determine all coequalizer maps <span class="math" data-tex="\(B\to Q\)">\(B\to Q\)</span>. Why does the constant map to <span class="math" data-tex="\(u\)">\(u\)</span> fail? Next let <span class="math" data-tex="\(A=\{r,s,t\}\)">\(A=\{r,s,t\}\)</span>, <span class="math" data-tex="\(B&#x27;=\{a,b,c,d\}\)">\(B&#x27;=\{a,b,c,d\}\)</span>, with</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(x\)">\(x\)</span></th>
+<th><span class="math" data-tex="\(f(x)\)">\(f(x)\)</span></th>
+<th><span class="math" data-tex="\(g(x)\)">\(g(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(r\)">\(r\)</span></td>
+<td><span class="math" data-tex="\(a\)">\(a\)</span></td>
+<td><span class="math" data-tex="\(b\)">\(b\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(s\)">\(s\)</span></td>
+<td><span class="math" data-tex="\(b\)">\(b\)</span></td>
+<td><span class="math" data-tex="\(c\)">\(c\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(t\)">\(t\)</span></td>
+<td><span class="math" data-tex="\(d\)">\(d\)</span></td>
+<td><span class="math" data-tex="\(d\)">\(d\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Compute the equalizer and coequalizer in sets, with their full factors.</p>
+<p><strong>Solution.</strong> For the equal pair every <span class="math" data-tex="\(v:B\to T\)">\(v:B\to T\)</span> is compatible. A coequalizer <span class="math" data-tex="\(q:B\to Q\)">\(q:B\to Q\)</span> gives an inverse <span class="math" data-tex="\(r:Q\to B\)">\(r:Q\to B\)</span> by factoring <span class="math" data-tex="\(1_B\)">\(1_B\)</span>. Then <span class="math" data-tex="\(rq=1_B\)">\(rq=1_B\)</span>, and uniqueness of factors of <span class="math" data-tex="\(q\)">\(q\)</span> gives <span class="math" data-tex="\(qr=1_Q\)">\(qr=1_Q\)</span>. Thus <span class="math" data-tex="\(q\)">\(q\)</span> must be bijective. Conversely, for a bijection <span class="math" data-tex="\(q\)">\(q\)</span>, the unique factor of <span class="math" data-tex="\(v\)">\(v\)</span> is <span class="math" data-tex="\(vq^{-1}\)">\(vq^{-1}\)</span>. The two bijections from <span class="math" data-tex="\(B\)">\(B\)</span> to <span class="math" data-tex="\(Q\)">\(Q\)</span> are therefore exactly its coequalizer maps. The constant map sends both elements to <span class="math" data-tex="\(u\)">\(u\)</span>, so any composite through it is constant and cannot equal <span class="math" data-tex="\(1_B\)">\(1_B\)</span>. This is an obstruction involving the specified map, despite the objects being isomorphic.</p>
+<p>For the second pair, the equalizer is <span class="math" data-tex="\(\{t\}\to A\)">\(\{t\}\to A\)</span>: only <span class="math" data-tex="\(t\)">\(t\)</span> has <span class="math" data-tex="\(f(t)=g(t)\)">\(f(t)=g(t)\)</span>. An equalizing function <span class="math" data-tex="\(w:T\to A\)">\(w:T\to A\)</span> lands in <span class="math" data-tex="\(\{t\}\)">\(\{t\}\)</span>, and the unique factor is <span class="math" data-tex="\(w\)">\(w\)</span> with this restricted codomain. This holds for empty <span class="math" data-tex="\(T\)">\(T\)</span> too. The generating equivalences are <span class="math" data-tex="\(a\sim b\)">\(a\sim b\)</span>, <span class="math" data-tex="\(b\sim c\)">\(b\sim c\)</span>, and <span class="math" data-tex="\(d\sim d\)">\(d\sim d\)</span>. The coequalizer has the two classes <span class="math" data-tex="\(\{a,b,c\}\)">\(\{a,b,c\}\)</span>, <span class="math" data-tex="\(\{d\}\)">\(\{d\}\)</span>. A compatible <span class="math" data-tex="\(v:B&#x27;\to T\)">\(v:B&#x27;\to T\)</span> satisfies <span class="math" data-tex="\(v(a)=v(b)=v(c)\)">\(v(a)=v(b)=v(c)\)</span>, with <span class="math" data-tex="\(v(d)\)">\(v(d)\)</span> arbitrary. Its factor sends the first class to this common value and the second to <span class="math" data-tex="\(v(d)\)">\(v(d)\)</span>. These assignments are forced and compose back to <span class="math" data-tex="\(v\)">\(v\)</span>; hence they prove the full universal property.</p>
+<h3 id="exercise-2-intermediate-a-pushout-need-not-be-a-pullback">Exercise 2 — intermediate: a pushout need not be a pullback</h3>
+<p>Let <span class="math" data-tex="\(X=\{r,s,t\}\)">\(X=\{r,s,t\}\)</span>, <span class="math" data-tex="\(A=\{a_0,a_1,a_2\}\)">\(A=\{a_0,a_1,a_2\}\)</span>, <span class="math" data-tex="\(B=\{b_0,b_1\}\)">\(B=\{b_0,b_1\}\)</span>, and let <span class="math" data-tex="\(f:X\to A\)">\(f:X\to A\)</span>, <span class="math" data-tex="\(g:X\to B\)">\(g:X\to B\)</span> have the values below. Compute their pushout <span class="math" data-tex="\(Q\)">\(Q\)</span>, then <span class="math" data-tex="\(A\times_Q B\)">\(A\times_Q B\)</span>, and the canonical comparison from <span class="math" data-tex="\(X\)">\(X\)</span>. Decide whether the resulting square is cartesian and cocartesian.</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(x\)">\(x\)</span></th>
+<th><span class="math" data-tex="\(f(x)\)">\(f(x)\)</span></th>
+<th><span class="math" data-tex="\(g(x)\)">\(g(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(r\)">\(r\)</span></td>
+<td><span class="math" data-tex="\(a_0\)">\(a_0\)</span></td>
+<td><span class="math" data-tex="\(b_0\)">\(b_0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(s\)">\(s\)</span></td>
+<td><span class="math" data-tex="\(a_1\)">\(a_1\)</span></td>
+<td><span class="math" data-tex="\(b_0\)">\(b_0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(t\)">\(t\)</span></td>
+<td><span class="math" data-tex="\(a_1\)">\(a_1\)</span></td>
+<td><span class="math" data-tex="\(b_1\)">\(b_1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Solution.</strong> The pushout relations join <span class="math" data-tex="\(a_0\)">\(a_0\)</span> to <span class="math" data-tex="\(b_0\)">\(b_0\)</span>, <span class="math" data-tex="\(a_1\)">\(a_1\)</span> to <span class="math" data-tex="\(b_0\)">\(b_0\)</span>, and <span class="math" data-tex="\(a_1\)">\(a_1\)</span> to <span class="math" data-tex="\(b_1\)">\(b_1\)</span>. Hence <span class="math" data-tex="\(Q\)">\(Q\)</span> has two classes
+<span class="math" data-tex="\(c=\{a_0,a_1,b_0,b_1\}\)">\(c=\{a_0,a_1,b_0,b_1\}\)</span>, <span class="math" data-tex="\(d=\{a_2\}\)">\(d=\{a_2\}\)</span>, with the tags understood. Its two coprojections send each element to its class. For a compatible pair <span class="math" data-tex="\(u:A\to T\)">\(u:A\to T\)</span>, <span class="math" data-tex="\(v:B\to T\)">\(v:B\to T\)</span>, the three equations force
+<span class="math" data-tex="\(u(a_0)=u(a_1)=v(b_0)=v(b_1)\)">\(u(a_0)=u(a_1)=v(b_0)=v(b_1)\)</span>. The unique factor <span class="math" data-tex="\(Q\to T\)">\(Q\to T\)</span> sends <span class="math" data-tex="\(c\)">\(c\)</span> to this common value and <span class="math" data-tex="\(d\)">\(d\)</span> to <span class="math" data-tex="\(u(a_2)\)">\(u(a_2)\)</span>. This proves the pushout property rather than just counting classes.</p>
+<p>Both elements of <span class="math" data-tex="\(B\)">\(B\)</span> map to <span class="math" data-tex="\(c\)">\(c\)</span>; the elements <span class="math" data-tex="\(a_0,a_1\)">\(a_0,a_1\)</span> map to <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(a_2\)">\(a_2\)</span> to <span class="math" data-tex="\(d\)">\(d\)</span>. Thus <span class="math" data-tex="\(A\times_Q B\)">\(A\times_Q B\)</span> has the four pairs <span class="math" data-tex="\((a_0,b_0)\)">\((a_0,b_0)\)</span>, <span class="math" data-tex="\((a_0,b_1)\)">\((a_0,b_1)\)</span>, <span class="math" data-tex="\((a_1,b_0)\)">\((a_1,b_0)\)</span>, <span class="math" data-tex="\((a_1,b_1)\)">\((a_1,b_1)\)</span>. For compatible functions from <span class="math" data-tex="\(T\)">\(T\)</span> to <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, the pointwise ordered pair is the unique function into this subset; this proves the pullback property. The canonical map from <span class="math" data-tex="\(X\)">\(X\)</span> sends <span class="math" data-tex="\(r,s,t\)">\(r,s,t\)</span> respectively to <span class="math" data-tex="\((a_0,b_0),(a_1,b_0),(a_1,b_1)\)">\((a_0,b_0),(a_1,b_0),(a_1,b_1)\)</span>. It is injective and misses <span class="math" data-tex="\((a_0,b_1)\)">\((a_0,b_1)\)</span>. It is therefore not invertible, so the square is not cartesian. It is cocartesian by the pushout factor just proved. Its canonical pushout comparison to <span class="math" data-tex="\(Q\)">\(Q\)</span> is the identity on these classes.</p>
+<h3 id="exercise-3-advanced-the-empty-relative-power">Exercise 3 — advanced: the empty relative power</h3>
+<p>Let <span class="math" data-tex="\(Y=\{\mathrm{red},\mathrm{blue}\}\)">\(Y=\{\mathrm{red},\mathrm{blue}\}\)</span> and <span class="math" data-tex="\(f:S\to Y\)">\(f:S\to Y\)</span>, where <span class="math" data-tex="\(S=\{r_0,r_1,b_0\}\)">\(S=\{r_0,r_1,b_0\}\)</span>, <span class="math" data-tex="\(f(r_i)=\mathrm{red}\)">\(f(r_i)=\mathrm{red}\)</span>, <span class="math" data-tex="\(f(b_0)=\mathrm{blue}\)">\(f(b_0)=\mathrm{blue}\)</span>. Calculate its relative powers for index sizes <span class="math" data-tex="\(0,1,2,3\)">\(0,1,2,3\)</span>. For <span class="math" data-tex="\(I=\{0,1\}\)">\(I=\{0,1\}\)</span>, <span class="math" data-tex="\(J=\{0,1,2\}\)">\(J=\{0,1,2\}\)</span> and <span class="math" data-tex="\(u:J\to I\)">\(u:J\to I\)</span> with values <span class="math" data-tex="\(0,1,0\)">\(0,1,0\)</span>, describe <span class="math" data-tex="\(S_Y^u:S_Y^I\to S_Y^J\)">\(S_Y^u:S_Y^I\to S_Y^J\)</span>, its image, and its universal meaning.</p>
+<p><strong>Solution.</strong> The relative <span class="math" data-tex="\(n\)">\(n\)</span>-th power consists of a colour <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> entries in its fibre. The red fibre has <span class="math" data-tex="\(2^n\)">\(2^n\)</span> tuples and the blue fibre <span class="math" data-tex="\(1^n=1\)">\(1^n=1\)</span>, including <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. The underlying sizes are consequently <span class="math" data-tex="\(2,3,5,9\)">\(2,3,5,9\)</span>. At <span class="math" data-tex="\(n=0\)">\(n=0\)</span> these are the two empty tuples distinguished by their colour, so the object is <span class="math" data-tex="\(1_Y:Y\to Y\)">\(1_Y:Y\to Y\)</span>. At <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\((f(x),x)\)">\((f(x),x)\)</span> identifies the relative power with <span class="math" data-tex="\(S\)">\(S\)</span> over <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>At <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, there are four ordered red pairs and the one blue pair. At <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, there are eight red triples and the one blue triple. Reindexing sends
+<span class="math" data-tex="\((y,(x_0,x_1))\)">\((y,(x_0,x_1))\)</span> to <span class="math" data-tex="\((y,(x_0,x_1,x_0))\)">\((y,(x_0,x_1,x_0))\)</span>. Its five image triples are exactly those with first and last entries equal. It is injective, since its first two entries recover the pair; among the red triples it misses the four with different first and last entries. The blue triple lies in its image.</p>
+<p>For any <span class="math" data-tex="\(t:T\to Y\)">\(t:T\to Y\)</span>, a pair of maps <span class="math" data-tex="\(v_0,v_1:T\to S\)">\(v_0,v_1:T\to S\)</span> over <span class="math" data-tex="\(Y\)">\(Y\)</span> has the unique factor
+<span class="math" data-tex="\(z\mapsto(t(z),(v_0(z),v_1(z)))\)">\(z\mapsto(t(z),(v_0(z),v_1(z)))\)</span>. Applying the reindexing map gives the unique triple factor with components <span class="math" data-tex="\(v_0,v_1,v_0\)">\(v_0,v_1,v_0\)</span>. All entries have colour <span class="math" data-tex="\(t(z)\)">\(t(z)\)</span>, which proves that this map is over <span class="math" data-tex="\(Y\)">\(Y\)</span> and proves its universal characterization. For no components the unique factor is <span class="math" data-tex="\(t:T\to Y\)">\(t:T\to Y\)</span>. Precomposing all <span class="math" data-tex="\(v_i\)">\(v_i\)</span> by a map over <span class="math" data-tex="\(Y\)">\(Y\)</span> preserves these formulas; this verifies the test-object naturality, including the empty case.</p>
+<h3 id="exercise-4-challenge-one-object-infinitely-many-arrows">Exercise 4 — challenge: one object, infinitely many arrows</h3>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> have one object <span class="math" data-tex="\(*\)">\(*\)</span>, endomorphisms <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, composition addition and identity <span class="math" data-tex="\(0\)">\(0\)</span>. Let <span class="math" data-tex="\(D(*)=\mathbb N\)">\(D(*)=\mathbb N\)</span> and <span class="math" data-tex="\(D(m)(n)=n+m\)">\(D(m)(n)=n+m\)</span>. Verify the category and functor laws. Determine the limit and colimit in sets, both directly and through (8.1), (8.3). Explain why the finite-limit criterion cannot use only the number of objects here.</p>
+<p><strong>Solution.</strong> Associativity and the identity laws are those of addition on <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. The functions satisfy <span class="math" data-tex="\(D(0)=1\)">\(D(0)=1\)</span> and <span class="math" data-tex="\(D(m+k)(n)=n+k+m=D(m)D(k)(n)\)">\(D(m+k)(n)=n+k+m=D(m)D(k)(n)\)</span>. Thus these are a small category and a functor. It has one object but infinitely many distinct arrows.</p>
+<p>A cone from <span class="math" data-tex="\(T\)">\(T\)</span> is a function <span class="math" data-tex="\(v:T\to\mathbb N\)">\(v:T\to\mathbb N\)</span> with <span class="math" data-tex="\(D(m)v=v\)">\(D(m)v=v\)</span> for all <span class="math" data-tex="\(m\)">\(m\)</span>. Taking <span class="math" data-tex="\(m=1\)">\(m=1\)</span> gives <span class="math" data-tex="\(v(z)+1=v(z)\)">\(v(z)+1=v(z)\)</span>, impossible for every element <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>. Thus a cone exists exactly when <span class="math" data-tex="\(T\)">\(T\)</span> is empty, and then is unique. The empty set, with its unique map to <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, is the limit: it admits exactly the same cone factors.</p>
+<p>A cocone is a function <span class="math" data-tex="\(w:\mathbb N\to T\)">\(w:\mathbb N\to T\)</span> with <span class="math" data-tex="\(w(n+m)=w(n)\)">\(w(n+m)=w(n)\)</span> for every <span class="math" data-tex="\(m,n\)">\(m,n\)</span>. Taking <span class="math" data-tex="\(n=0\)">\(n=0\)</span> gives <span class="math" data-tex="\(w(m)=w(0)\)">\(w(m)=w(0)\)</span>, so the compatible functions are precisely the constant functions. The singleton with the unique map from <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span> is the colimit: a function from the singleton chooses the constant value. For <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span>, both sets of maps are empty; the property still holds.</p>
+<p>In (8.1), <span class="math" data-tex="\(V=\mathbb N\)">\(V=\mathbb N\)</span> and <span class="math" data-tex="\(W=\mathbb N^{\mathbb N}\)">\(W=\mathbb N^{\mathbb N}\)</span>, one coordinate for every arrow. The maps send <span class="math" data-tex="\(n\)">\(n\)</span> respectively to the sequences <span class="math" data-tex="\((n+m)_{m\in\mathbb N}\)">\((n+m)_{m\in\mathbb N}\)</span> and <span class="math" data-tex="\((n)_{m\in\mathbb N}\)">\((n)_{m\in\mathbb N}\)</span>. Their equalizer is empty by the coordinate <span class="math" data-tex="\(m=1\)">\(m=1\)</span>. In (8.3), <span class="math" data-tex="\(U=\coprod_m\mathbb N\)">\(U=\coprod_m\mathbb N\)</span>, identified with the tagged pairs <span class="math" data-tex="\((m,n)\)">\((m,n)\)</span>, and <span class="math" data-tex="\(V=\mathbb N\)">\(V=\mathbb N\)</span>. The two maps send <span class="math" data-tex="\((m,n)\)">\((m,n)\)</span> to <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(n+m\)">\(n+m\)</span>. The generated equivalence relation identifies <span class="math" data-tex="\(0\)">\(0\)</span> with every <span class="math" data-tex="\(m\)">\(m\)</span>, hence has one class. Its quotient is the singleton and has the constant-function factor property already proved.</p>
+<p>The arrow product <span class="math" data-tex="\(W\)">\(W\)</span> and arrow coproduct <span class="math" data-tex="\(U\)">\(U\)</span> are infinite families. Having terminal objects, binary products and equalizers provides finite products, but the finite-diagram argument does not supply <span class="math" data-tex="\(W\)">\(W\)</span> from those assumptions. This index is small, so the small-limit theorem applies in sets, whose small products exist; it is not a finite index merely because it has one object.</p>
+<h2 id="11-references-and-retained-proof-interfaces">11. References and retained proof interfaces</h2>
+<p>Products, kernels, fiber products and general limits are also treated in Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Sections 2.1–2.4.</p>
+<p>Retained complete proofs are linked where used: universal cone/cocone representations and pointwise formal constructions; equalizer and coequalizer cancellation; faithful reflection of monic and epic arrows; slice/coslice category laws; the existing slice-colimit and base-change comparison; and the exact universe closures. Each interface uses the proved generality of that provider. Formal-object existence and actual existence in <span class="math" data-tex="\(C\)">\(C\)</span> have separate hypotheses throughout.</p>
+<p>For comparison, the pinned Stacks category source has parallel-pair definitions and the finite-limit criterion, with dependencies on its general product/equalizer construction. The general limit and colimit construction proofs in that source are marked omitted. Their statements were comparison context; the complete factors in Sections 8–9 are proved here. No omitted proof is treated as an imported proof.</p>
+</main></body></html>

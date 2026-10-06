@@ -1,0 +1,2202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pair correlation of zeros: Montgomery&#x27;s theorem · Explicit formulas and positivity</title>
+<meta name="description" content="A lesson of the course Explicit formulas and positivity. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-EXPF/NT-EXPF-08.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Explicit formulas and positivity</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 8</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="pair-correlation-of-zeros-montgomery-s-theorem">Pair correlation of zeros: Montgomery's theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Original exposition: public domain (CC0).</em></p>
+<p>Throughout this lesson we assume RH, and write the nontrivial zeros, with multiplicity, as <span class="math" data-tex="\(\rho=1/2+i\gamma\)">\(\rho=1/2+i\gamma\)</span>. Montgomery's theorem computes a restricted range of the Fourier transform of their pair differences. The explicit formula converts a smoothed sum over zeros into a Dirichlet series over prime powers; its mean square is accessible while the series' effective length is shorter than the interval of integration.</p>
+<p>The analytic inputs are the functional equation and gamma estimates from <em>Poisson summation, theta, and the functional equation</em> and <em>The Gamma function</em>; the zero count from <em>The Riemann–von Mangoldt formula</em>; the prime number theorem with its classical error term; and the mean-value inequality from <em>Mean values of Dirichlet polynomials and of zeta on the critical line</em>. These are existing prerequisite lessons of <em>The Riemann zeta function</em>. We specify the exact estimates when they are used.</p>
+<h2 id="1-a-positive-function-of-pair-differences">1. A positive function of pair differences</h2>
+<p>For <span class="math" data-tex="\(T\geq2\)">\(T\geq2\)</span>, put
+<span class="math math-display" data-tex="\[
+N_*(T)=\frac{T}{2\pi}\log T,\qquad
+w(v)=\frac4{4+v^2},
+\]">\[
+N_*(T)=\frac{T}{2\pi}\log T,\qquad
+w(v)=\frac4{4+v^2},
+\]</span>
+and define
+<span class="math math-display" data-tex="\[
+F(\alpha,T)=\frac1{N_*(T)}
+\sum_{0&lt;\gamma,\gamma&#x27;\leq T}
+T^{i\alpha(\gamma-\gamma&#x27;)}w(\gamma-\gamma&#x27;).
+\tag{1.1}
+\]">\[
+F(\alpha,T)=\frac1{N_*(T)}
+\sum_{0&lt;\gamma,\gamma&#x27;\leq T}
+T^{i\alpha(\gamma-\gamma&#x27;)}w(\gamma-\gamma&#x27;).
+\tag{1.1}
+\]</span>
+The sum is over <strong>ordered</strong> pairs, including equal ordinates. A zero of multiplicity <span class="math" data-tex="\(m\)">\(m\)</span> supplies <span class="math" data-tex="\(m\)">\(m\)</span> copies of its ordinate, so it supplies <span class="math" data-tex="\(m^2\)">\(m^2\)</span> equal-ordinate pairs.</p>
+<p>Interchanging <span class="math" data-tex="\(\gamma,\gamma&#x27;\)">\(\gamma,\gamma&#x27;\)</span> conjugates the sum and changes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(-\alpha\)">\(-\alpha\)</span>. Thus <span class="math" data-tex="\(F\)">\(F\)</span> is real and even. It is also nonnegative, exactly at every finite <span class="math" data-tex="\(T\)">\(T\)</span>:
+<span class="math math-display" data-tex="\[
+w(v)=\int_{\mathbb R}e^{-2|u|}e^{iuv}\,du,
+\]">\[
+w(v)=\int_{\mathbb R}e^{-2|u|}e^{iuv}\,du,
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+F(\alpha,T)=\frac1{N_*(T)}
+\int_{\mathbb R}e^{-2|u|}
+\left|\sum_{0&lt;\gamma\leq T}
+e^{i\gamma(\alpha\log T+u)}\right|^2du\geq0.
+\tag{1.2}
+\]">\[
+F(\alpha,T)=\frac1{N_*(T)}
+\int_{\mathbb R}e^{-2|u|}
+\left|\sum_{0&lt;\gamma\leq T}
+e^{i\gamma(\alpha\log T+u)}\right|^2du\geq0.
+\tag{1.2}
+\]</span>
+The integral identity follows by integrating the two exponential half-lines; all exchanges here involve finite sums.</p>
+<p><strong>Theorem 1.1 (Montgomery).</strong> For every fixed <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+F(\alpha,T)=
+(1+o(1))\,T^{-2\alpha}\log T+\alpha+o(1)
+\tag{1.3}
+\]">\[
+F(\alpha,T)=
+(1+o(1))\,T^{-2\alpha}\log T+\alpha+o(1)
+\tag{1.3}
+\]</span>
+uniformly for <span class="math" data-tex="\(0\leq\alpha\leq1-\epsilon\)">\(0\leq\alpha\leq1-\epsilon\)</span>, as <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>.</p>
+<p>The first term tends to zero at each positive <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, but has mass one as a symmetric approximate delta:
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}T^{-2|\alpha|}\log T\,d\alpha=1.
+\tag{1.4}
+\]">\[
+\int_{\mathbb R}T^{-2|\alpha|}\log T\,d\alpha=1.
+\tag{1.4}
+\]</span>
+Discarding that term before integrating would lose the diagonal contribution on the pair side.</p>
+<h2 id="2-the-poisson-kernel-explicit-formula">2. The Poisson-kernel explicit formula</h2>
+<p>For <span class="math" data-tex="\(X\geq1\)">\(X\geq1\)</span>, <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, and <span class="math" data-tex="\(\tau=|t|+4\)">\(\tau=|t|+4\)</span>, define
+<span class="math math-display" data-tex="\[
+L_X(t)=2\sum_\gamma
+\frac{X^{i\gamma}}{1+(t-\gamma)^2}.
+\tag{2.1}
+\]">\[
+L_X(t)=2\sum_\gamma
+\frac{X^{i\gamma}}{1+(t-\gamma)^2}.
+\tag{2.1}
+\]</span>
+This sum is absolutely convergent under RH: the Riemann–von Mangoldt formula gives <span class="math" data-tex="\(O(\log(|v|+2))\)">\(O(\log(|v|+2))\)</span> zeros in a unit interval at height <span class="math" data-tex="\(v\)">\(v\)</span>, and the kernel has a quadratic tail.
+The explicit formula is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_X(t)={}&amp;-X^{-1/2}\left[
+\sum_{n\leq X}\Lambda(n)(X/n)^{-1/2+it}
++\sum_{n&gt;X}\Lambda(n)(X/n)^{3/2+it}\right]\\
+&amp;+X^{-1+it}\log\tau
++O(X^{-1})+O(X^{1/2}\tau^{-2}).
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+L_X(t)={}&amp;-X^{-1/2}\left[
+\sum_{n\leq X}\Lambda(n)(X/n)^{-1/2+it}
++\sum_{n&gt;X}\Lambda(n)(X/n)^{3/2+it}\right]\\
+&amp;+X^{-1+it}\log\tau
++O(X^{-1})+O(X^{1/2}\tau^{-2}).
+\end{aligned}
+\tag{2.2}
+\]</span>
+The constants are absolute; the infinite prime-power series also converges absolutely.</p>
+<p>We prove the identity, including the terms responsible for the errors. Put
+<span class="math math-display" data-tex="\[
+K(v)=\frac2{1-v^2}.
+\]">\[
+K(v)=\frac2{1-v^2}.
+\]</span>
+Its residues at <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> are <span class="math" data-tex="\(-1,+1\)">\(-1,+1\)</span>; in particular
+<span class="math" data-tex="\(K(iu)=2/(1+u^2)\)">\(K(iu)=2/(1+u^2)\)</span>.
+For <span class="math" data-tex="\(c&gt;1\)">\(c&gt;1\)</span>, the elementary Mellin inversion is
+<span class="math math-display" data-tex="\[
+\frac1{2\pi i}\int_{\operatorname{Re}v=c}K(v)y^v\,dv
+=\begin{cases}
+y^{-1}-y,&amp;y\geq1,\\
+0,&amp;0&lt;y\leq1.
+\end{cases}
+\tag{2.3}
+\]">\[
+\frac1{2\pi i}\int_{\operatorname{Re}v=c}K(v)y^v\,dv
+=\begin{cases}
+y^{-1}-y,&amp;y\geq1,\\
+0,&amp;0&lt;y\leq1.
+\end{cases}
+\tag{2.3}
+\]</span>
+For <span class="math" data-tex="\(y&gt;1\)">\(y&gt;1\)</span>, close the contour on the left and take the two residues; for <span class="math" data-tex="\(y&lt;1\)">\(y&lt;1\)</span>, close on the right, where there are no poles. The quadratic denominator makes the horizontal integrals vanish, and the value at <span class="math" data-tex="\(y=1\)">\(y=1\)</span> follows either by continuity or by the residue calculation.</p>
+<p>Insert the absolutely convergent series for <span class="math" data-tex="\(\zeta&#x27;/\zeta\)">\(\zeta&#x27;/\zeta\)</span> into
+<span class="math math-display" data-tex="\[
+I=\frac1{2\pi i}\int_{\operatorname{Re}v=c}
+\frac{\zeta&#x27;}{\zeta}(1/2+it+v)K(v)X^v\,dv.
+\]">\[
+I=\frac1{2\pi i}\int_{\operatorname{Re}v=c}
+\frac{\zeta&#x27;}{\zeta}(1/2+it+v)K(v)X^v\,dv.
+\]</span>
+Equation (2.3) gives
+<span class="math math-display" data-tex="\[
+I=\sum_{n\leq X}\Lambda(n)n^{-1/2-it}
+\left(\frac Xn-\frac nX\right).
+\tag{2.4}
+\]">\[
+I=\sum_{n\leq X}\Lambda(n)n^{-1/2-it}
+\left(\frac Xn-\frac nX\right).
+\tag{2.4}
+\]</span>
+Moving the contour to the left gives the residues
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I={}&amp;-\frac{\zeta&#x27;}{\zeta}(3/2+it)X
++\frac{\zeta&#x27;}{\zeta}(-1/2+it)X^{-1}\\
+&amp;-K(1/2-it)X^{1/2-it}
++2\sum_\gamma\frac{X^{i(\gamma-t)}}{1+(\gamma-t)^2}\\
+&amp;+\sum_{n\geq1}K(-2n-1/2-it)X^{-2n-1/2-it}.
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+I={}&amp;-\frac{\zeta&#x27;}{\zeta}(3/2+it)X
++\frac{\zeta&#x27;}{\zeta}(-1/2+it)X^{-1}\\
+&amp;-K(1/2-it)X^{1/2-it}
++2\sum_\gamma\frac{X^{i(\gamma-t)}}{1+(\gamma-t)^2}\\
+&amp;+\sum_{n\geq1}K(-2n-1/2-it)X^{-2n-1/2-it}.
+\end{aligned}
+\tag{2.5}
+\]</span>
+The minus sign in the pole term is the residue of <span class="math" data-tex="\(\zeta&#x27;/\zeta\)">\(\zeta&#x27;/\zeta\)</span> at one; the last line comes from the trivial zeros.</p>
+<p>Here are the contour-limit details. First move to a fixed far left line whose real part for the zeta argument stays a positive distance from the negative even integers. Let the horizontal height tend to infinity through the good heights used in the contour proof of the explicit formula in the first lesson: the logarithmic derivative on a fixed strip is <span class="math" data-tex="\(O(\log^2 H)\)">\(O(\log^2 H)\)</span>, and <span class="math" data-tex="\(K=O(H^{-2})\)">\(K=O(H^{-2})\)</span>. The horizontal integrals vanish.
+On the left line, the differentiated functional equation and Stirling bound the logarithmic derivative by <span class="math" data-tex="\(O(\log(R+|v|+2))\)">\(O(\log(R+|v|+2))\)</span>. Its integral against <span class="math" data-tex="\(K\)">\(K\)</span> is <span class="math" data-tex="\(O(\log(R+2)/R)\)">\(O(\log(R+2)/R)\)</span>, multiplied by <span class="math" data-tex="\(X^{-R}\)">\(X^{-R}\)</span>, which tends to zero even at <span class="math" data-tex="\(X=1\)">\(X=1\)</span>. Thus one may subsequently let <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>.
+The zero residues converge absolutely by the unit-interval zero count, and the trivial-zero residues have an absolutely summable quadratic denominator. This proves (2.5) without an unspecified summation prescription.</p>
+<p>Multiply (2.5) by <span class="math" data-tex="\(X^{it}\)">\(X^{it}\)</span>, use
+<span class="math" data-tex="\(-\zeta&#x27;/\zeta(3/2+it)=\sum_n\Lambda(n)n^{-3/2-it}\)">\(-\zeta&#x27;/\zeta(3/2+it)=\sum_n\Lambda(n)n^{-3/2-it}\)</span>, and rearrange (2.4). The exact result is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_X(t)={}&amp;-X^{-1/2}\left[
+\sum_{n\leq X}\Lambda(n)(X/n)^{-1/2+it}
++\sum_{n&gt;X}\Lambda(n)(X/n)^{3/2+it}\right]\\
+&amp;-\frac{\zeta&#x27;}{\zeta}(-1/2+it)X^{-1+it}
++K(1/2-it)X^{1/2}\\
+&amp;-\sum_{n\geq1}K(-2n-1/2-it)X^{-2n-1/2}.
+\end{aligned}
+\tag{2.6}
+\]">\[
+\begin{aligned}
+L_X(t)={}&amp;-X^{-1/2}\left[
+\sum_{n\leq X}\Lambda(n)(X/n)^{-1/2+it}
++\sum_{n&gt;X}\Lambda(n)(X/n)^{3/2+it}\right]\\
+&amp;-\frac{\zeta&#x27;}{\zeta}(-1/2+it)X^{-1+it}
++K(1/2-it)X^{1/2}\\
+&amp;-\sum_{n\geq1}K(-2n-1/2-it)X^{-2n-1/2}.
+\end{aligned}
+\tag{2.6}
+\]</span>
+The functional equation in its asymmetric form gives
+<span class="math math-display" data-tex="\[
+\frac{\zeta&#x27;}{\zeta}(s)=
+-\frac{\zeta&#x27;}{\zeta}(1-s)+\log(2\pi)
+-\psi_\Gamma(1-s)+\frac\pi2\cot\frac{\pi s}{2}.
+\tag{2.7}
+\]">\[
+\frac{\zeta&#x27;}{\zeta}(s)=
+-\frac{\zeta&#x27;}{\zeta}(1-s)+\log(2\pi)
+-\psi_\Gamma(1-s)+\frac\pi2\cot\frac{\pi s}{2}.
+\tag{2.7}
+\]</span>
+At <span class="math" data-tex="\(s=-1/2+it\)">\(s=-1/2+it\)</span>, the first term is bounded by its absolutely convergent series, the cotangent is bounded, and Stirling gives
+<span class="math" data-tex="\(\psi_\Gamma(3/2-it)=\log\tau+O(1)\)">\(\psi_\Gamma(3/2-it)=\log\tau+O(1)\)</span> in real part, with bounded imaginary part. Thus
+<span class="math" data-tex="\(\zeta&#x27;/\zeta(-1/2+it)=-\log\tau+O(1)\)">\(\zeta&#x27;/\zeta(-1/2+it)=-\log\tau+O(1)\)</span>.
+Also <span class="math" data-tex="\(K(1/2-it)=O(\tau^{-2})\)">\(K(1/2-it)=O(\tau^{-2})\)</span>, and the last series in (2.6) is
+<span class="math math-display" data-tex="\[
+O\!\left(X^{-5/2}\sum_{n\geq1}\frac1{n^2+t^2+1}\right)
+=O(X^{-5/2}\tau^{-1})=O(X^{-1}).
+\]">\[
+O\!\left(X^{-5/2}\sum_{n\geq1}\frac1{n^2+t^2+1}\right)
+=O(X^{-5/2}\tau^{-1})=O(X^{-1}).
+\]</span>
+These estimates prove (2.2).</p>
+<h2 id="3-the-mean-square-on-the-zero-side">3. The mean square on the zero side</h2>
+<p>Let <span class="math" data-tex="\(L_X^{[T]}(t)\)">\(L_X^{[T]}(t)\)</span> be (2.1) with <span class="math" data-tex="\(0&lt;\gamma\leq T\)">\(0&lt;\gamma\leq T\)</span> only.
+A residue calculation, or convolution of two Poisson kernels, gives
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}
+\frac{dt}{[1+(t-a)^2][1+(t-b)^2]}
+=\frac{2\pi}{4+(a-b)^2}
+=\frac\pi2w(a-b).
+\tag{3.1}
+\]">\[
+\int_{\mathbb R}
+\frac{dt}{[1+(t-a)^2][1+(t-b)^2]}
+=\frac{2\pi}{4+(a-b)^2}
+=\frac\pi2w(a-b).
+\tag{3.1}
+\]</span>
+For example close the contour in the upper half-plane at <span class="math" data-tex="\(a+i,b+i\)">\(a+i,b+i\)</span>; the coincident case follows by continuity and agrees with <span class="math" data-tex="\(\int(1+t^2)^{-2}dt=\pi/2\)">\(\int(1+t^2)^{-2}dt=\pi/2\)</span>.
+Expanding the finite square yields
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}|L_X^{[T]}(t)|^2dt
+=2\pi N_*(T)F(\log X/\log T,T).
+\tag{3.2}
+\]">\[
+\int_{\mathbb R}|L_X^{[T]}(t)|^2dt
+=2\pi N_*(T)F(\log X/\log T,T).
+\tag{3.2}
+\]</span></p>
+<p>The all-zero sum integrated on <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> differs by only a boundary error:
+<span class="math math-display" data-tex="\[
+\int_0^T|L_X(t)|^2dt
+=T\log T\,F(\log X/\log T,T)+O(\log^3 T),
+\tag{3.3}
+\]">\[
+\int_0^T|L_X(t)|^2dt
+=T\log T\,F(\log X/\log T,T)+O(\log^3 T),
+\tag{3.3}
+\]</span>
+uniformly in <span class="math" data-tex="\(X\geq1\)">\(X\geq1\)</span>.
+Here are the estimates. From the unit-interval count,
+<span class="math math-display" data-tex="\[
+\sum_{\gamma\notin(0,T]}
+\frac1{1+(t-\gamma)^2}
+\leq C\log(T+2)\left(\frac1{t+1}+\frac1{T-t+1}\right),
+\quad 0\leq t\leq T,
+\tag{3.4}
+\]">\[
+\sum_{\gamma\notin(0,T]}
+\frac1{1+(t-\gamma)^2}
+\leq C\log(T+2)\left(\frac1{t+1}+\frac1{T-t+1}\right),
+\quad 0\leq t\leq T,
+\tag{3.4}
+\]</span>
+where the remote tails with <span class="math" data-tex="\(|\gamma|&gt;2T+2\)">\(|\gamma|&gt;2T+2\)</span> are absorbed by the same bound. The sum over all zeros is at most <span class="math" data-tex="\(C\log(T+2)\)">\(C\log(T+2)\)</span> in this interval. Thus the cross terms involving an outside zero, bounded in absolute value by the product of these two sums, integrate to <span class="math" data-tex="\(O(\log^3T)\)">\(O(\log^3T)\)</span>.
+For <span class="math" data-tex="\(t\geq T\)">\(t\geq T\)</span>, the finite sum is at most
+<span class="math" data-tex="\(C\log(T+2)/(t-T+1)\)">\(C\log(T+2)/(t-T+1)\)</span>; its square integrates to <span class="math" data-tex="\(O(\log^2T)\)">\(O(\log^2T)\)</span>. The negative half-line has the same bound. Adding these tails and using (3.2) proves (3.3).</p>
+<h2 id="4-the-mean-square-on-the-prime-side">4. The mean square on the prime side</h2>
+<p>Write the first line of (2.2) as <span class="math" data-tex="\(-D_X(t)\)">\(-D_X(t)\)</span>, where
+<span class="math math-display" data-tex="\[
+D_X(t)=X^{it}\sum_{n\geq1}b_X(n)n^{-it},
+\qquad
+b_X(n)=\begin{cases}
+\Lambda(n)\sqrt n/X,&amp;n\leq X,\\
+\Lambda(n)X/n^{3/2},&amp;n&gt;X.
+\end{cases}
+\tag{4.1}
+\]">\[
+D_X(t)=X^{it}\sum_{n\geq1}b_X(n)n^{-it},
+\qquad
+b_X(n)=\begin{cases}
+\Lambda(n)\sqrt n/X,&amp;n\leq X,\\
+\Lambda(n)X/n^{3/2},&amp;n&gt;X.
+\end{cases}
+\tag{4.1}
+\]</span>
+The mean-value inequality from the prerequisite lesson is
+<span class="math math-display" data-tex="\[
+\int_0^T\left|\sum_n b(n)n^{-it}\right|^2dt
+=T\sum_n|b(n)|^2+O\!\left(\sum_n n|b(n)|^2\right).
+\tag{4.2}
+\]">\[
+\int_0^T\left|\sum_n b(n)n^{-it}\right|^2dt
+=T\sum_n|b(n)|^2+O\!\left(\sum_n n|b(n)|^2\right).
+\tag{4.2}
+\]</span>
+It applies here, including the infinite tail: first apply it to finite truncations, and use <span class="math" data-tex="\(\sum n|b_X(n)|^2&lt;\infty\)">\(\sum n|b_X(n)|^2&lt;\infty\)</span> to pass to the limit in <span class="math" data-tex="\(L^2[0,T]\)">\(L^2[0,T]\)</span>.</p>
+<p>The prime number theorem with its classical error term gives
+<span class="math math-display" data-tex="\[
+S(v):=\sum_{n\leq v}\Lambda(n)^2
+=v\log v-v+R(v),\qquad |R(v)|\leq Cv.
+\tag{4.3}
+\]">\[
+S(v):=\sum_{n\leq v}\Lambda(n)^2
+=v\log v-v+R(v),\qquad |R(v)|\leq Cv.
+\tag{4.3}
+\]</span>
+More precisely <span class="math" data-tex="\(R(v)/v\to0\)">\(R(v)/v\to0\)</span>, but the bounded form suffices here.
+Indeed partial summation of
+<span class="math" data-tex="\(\psi(v)=v+O(v e^{-c\sqrt{\log v}})\)">\(\psi(v)=v+O(v e^{-c\sqrt{\log v}})\)</span>
+gives this main term for <span class="math" data-tex="\(\sum\Lambda(n)\log n\)">\(\sum\Lambda(n)\log n\)</span>. The discrepancy at higher prime powers is <span class="math" data-tex="\(O(\sqrt v\log^3(v+2))\)">\(O(\sqrt v\log^3(v+2))\)</span>. Both errors are <span class="math" data-tex="\(O(v)\)">\(O(v)\)</span>.
+For <span class="math" data-tex="\(0&lt;v&lt;2\)">\(0&lt;v&lt;2\)</span>, equation (4.3) defines
+<span class="math" data-tex="\(R(v)=v-v\log v\)">\(R(v)=v-v\log v\)</span>. Here the bound is
+<span class="math" data-tex="\(O(v(1+|\log v|))\)">\(O(v(1+|\log v|))\)</span>; its integrals below are finite and bounded
+uniformly for <span class="math" data-tex="\(X\geq1\)">\(X\geq1\)</span>. The bound <span class="math" data-tex="\(O(v)\)">\(O(v)\)</span> is needed only for <span class="math" data-tex="\(v\geq2\)">\(v\geq2\)</span>.</p>
+<p>By partial summation, (4.1) and (4.3) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_n b_X(n)^2
+&amp;=\int_0^X\frac v{X^2}\,dS(v)
++\int_X^\infty\frac{X^2}{v^3}\,dS(v)\\
+&amp;=\frac1{X^2}\int_0^X v\log v\,dv
++X^2\int_X^\infty\frac{\log v}{v^3}\,dv+O(1)\\
+&amp;=\log X+O(1).
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+\sum_n b_X(n)^2
+&amp;=\int_0^X\frac v{X^2}\,dS(v)
++\int_X^\infty\frac{X^2}{v^3}\,dS(v)\\
+&amp;=\frac1{X^2}\int_0^X v\log v\,dv
++X^2\int_X^\infty\frac{\log v}{v^3}\,dv+O(1)\\
+&amp;=\log X+O(1).
+\end{aligned}
+\tag{4.4}
+\]</span>
+The boundary values of the <span class="math" data-tex="\(R\)">\(R\)</span> terms cancel at <span class="math" data-tex="\(X\)">\(X\)</span>; their two remaining integrals are bounded by (4.3). The two elementary main integrals are respectively
+<span class="math" data-tex="\(\frac12\log X-\frac14\)">\(\frac12\log X-\frac14\)</span> and
+<span class="math" data-tex="\(\frac12\log X+\frac14\)">\(\frac12\log X+\frac14\)</span>.
+The same partial summation with <span class="math" data-tex="\(S(v)\ll v\log(v+2)\)">\(S(v)\ll v\log(v+2)\)</span> proves
+<span class="math math-display" data-tex="\[
+\sum_n n b_X(n)^2\ll X\log(2X).
+\tag{4.5}
+\]">\[
+\sum_n n b_X(n)^2\ll X\log(2X).
+\tag{4.5}
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+\int_0^T|D_X(t)|^2dt
+=T\log X+O(T)+O(X\log(2X)).
+\tag{4.6}
+\]">\[
+\int_0^T|D_X(t)|^2dt
+=T\log X+O(T)+O(X\log(2X)).
+\tag{4.6}
+\]</span></p>
+<p>Let <span class="math" data-tex="\(A_X(t)=X^{-1+it}\log(t+4)\)">\(A_X(t)=X^{-1+it}\log(t+4)\)</span>, the second main term of (2.2). Then
+<span class="math math-display" data-tex="\[
+\int_0^T|A_X(t)|^2dt
+=\frac T{X^2}\log^2T+O\!\left(\frac T{X^2}\log T\right).
+\tag{4.7}
+\]">\[
+\int_0^T|A_X(t)|^2dt
+=\frac T{X^2}\log^2T+O\!\left(\frac T{X^2}\log T\right).
+\tag{4.7}
+\]</span>
+The error <span class="math" data-tex="\(E_X\)">\(E_X\)</span> in (2.2) satisfies
+<span class="math math-display" data-tex="\[
+\int_0^T|E_X(t)|^2dt\ll T/X^2+X.
+\tag{4.8}
+\]">\[
+\int_0^T|E_X(t)|^2dt\ll T/X^2+X.
+\tag{4.8}
+\]</span>
+All cross terms can be bounded by Cauchy–Schwarz.</p>
+<p>To check uniformity carefully, put <span class="math" data-tex="\(M=(\log T)^{1/4}\)">\(M=(\log T)^{1/4}\)</span>.
+For <span class="math" data-tex="\(1\leq X\leq M\)">\(1\leq X\leq M\)</span>, (4.7) dominates (4.6) and (4.8) in mean square by a relative error tending to zero, uniformly. After division by <span class="math" data-tex="\(T\log T\)">\(T\log T\)</span>, the term <span class="math" data-tex="\(\log X/\log T\)">\(\log X/\log T\)</span> is itself <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span>. Thus in this range
+<span class="math math-display" data-tex="\[
+\frac1{T\log T}\int_0^T|L_X(t)|^2dt
+=(1+o(1))X^{-2}\log T+\frac{\log X}{\log T}+o(1).
+\tag{4.9}
+\]">\[
+\frac1{T\log T}\int_0^T|L_X(t)|^2dt
+=(1+o(1))X^{-2}\log T+\frac{\log X}{\log T}+o(1).
+\tag{4.9}
+\]</span>
+For <span class="math" data-tex="\(M\leq X\leq T^{1-\epsilon}\)">\(M\leq X\leq T^{1-\epsilon}\)</span>, the cross term between (4.6) and (4.7), divided by <span class="math" data-tex="\(T\log T\)">\(T\log T\)</span>, is bounded by
+<span class="math math-display" data-tex="\[
+O\!\left(\frac{\sqrt{\log(2X)}}X
++\sqrt{\frac{\log(2X)}{TX}}\right)=o(1).
+\]">\[
+O\!\left(\frac{\sqrt{\log(2X)}}X
++\sqrt{\frac{\log(2X)}{TX}}\right)=o(1).
+\]</span>
+The errors in (4.6) are <span class="math" data-tex="\(o(T\log T)\)">\(o(T\log T)\)</span> uniformly in this range.
+For the remaining cross terms, the one involving <span class="math" data-tex="\(D_X\)">\(D_X\)</span> and <span class="math" data-tex="\(E_X\)">\(E_X\)</span> is <span class="math" data-tex="\(o(T\log T)\)">\(o(T\log T)\)</span> by (4.6), (4.8). The one involving <span class="math" data-tex="\(A_X\)">\(A_X\)</span> and <span class="math" data-tex="\(E_X\)">\(E_X\)</span>, after normalization, is
+<span class="math" data-tex="\(O(X^{-2}+(TX)^{-1/2})=o(1)\)">\(O(X^{-2}+(TX)^{-1/2})=o(1)\)</span>.
+Equation (4.9) therefore holds in this second range also.
+Combining it with (3.3) and setting <span class="math" data-tex="\(X=T^\alpha\)">\(X=T^\alpha\)</span> proves Theorem 1.1.</p>
+<p>We shall also use the uniform bound
+<span class="math math-display" data-tex="\[
+0\leq F(\alpha,T)\leq
+C\left(1+T^{-2|\alpha|}\log T\right),
+\qquad |\alpha|\leq1.
+\tag{4.10}
+\]">\[
+0\leq F(\alpha,T)\leq
+C\left(1+T^{-2|\alpha|}\log T\right),
+\qquad |\alpha|\leq1.
+\tag{4.10}
+\]</span>
+The same estimates prove it for <span class="math" data-tex="\(1\leq X\leq T\)">\(1\leq X\leq T\)</span>: use
+<span class="math" data-tex="\(\|A-D+E\|_2^2\leq3(\|A\|_2^2+\|D\|_2^2+\|E\|_2^2)\)">\(\|A-D+E\|_2^2\leq3(\|A\|_2^2+\|D\|_2^2+\|E\|_2^2)\)</span>
+and (4.6)-(4.8); then use evenness.
+At <span class="math" data-tex="\(X\)">\(X\)</span> longer than the averaging interval, the error in (4.6) ceases to be negligible. This identifies the limit of the proof and explains why the range <span class="math" data-tex="\(\alpha&gt;1\)">\(\alpha&gt;1\)</span> requires new information about correlations of prime coefficients.</p>
+<h3 id="the-endpoint-alpha-1">The endpoint <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span></h3>
+<p>For the equivalence with short-interval variances we also record
+the endpoint extension
+<span class="math math-display" data-tex="\[
+F(\alpha,T)=(1+o(1))T^{-2\alpha}\log T+\alpha+o(1),
+\qquad 0\leq\alpha\leq1,
+\tag{4.11}
+\]">\[
+F(\alpha,T)=(1+o(1))T^{-2\alpha}\log T+\alpha+o(1),
+\qquad 0\leq\alpha\leq1,
+\tag{4.11}
+\]</span>
+uniformly. Two precise internal inputs suffice: the generalized
+Hilbert inequality in <em>Mean values of Dirichlet polynomials and
+of zeta on the critical line</em> says that frequencies separated
+by <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> have mean-square error
+<span class="math" data-tex="\(O(d^{-1}\sum|c_n|^2)\)">\(O(d^{-1}\sum|c_n|^2)\)</span>; and <em>The prime number theorem for
+arithmetic progressions</em>, lesson 9 of <em>Dirichlet L-functions
+and primes in progressions</em>, supplies
+<span class="math" data-tex="\(\pi(Y;q,a)\sim\operatorname{Li}(Y)/\varphi(q)\)">\(\pi(Y;q,a)\sim\operatorname{Li}(Y)/\varphi(q)\)</span> for
+each <strong>fixed</strong> <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\((a,q)=1\)">\((a,q)=1\)</span>.
+These are existing planned programme lessons; a completed
+public proof version is not asserted here.</p>
+<p>First, for each fixed nonzero integer <span class="math" data-tex="\(h\)">\(h\)</span>, the number of primes
+<span class="math" data-tex="\(p\leq Y\)">\(p\leq Y\)</span> for which <span class="math" data-tex="\(p+h\)">\(p+h\)</span> is also prime is <span class="math" data-tex="\(o(Y/\log Y)\)">\(o(Y/\log Y)\)</span>.
+To see this, fix <span class="math" data-tex="\(z\)">\(z\)</span> and take <span class="math" data-tex="\(q=\prod_{r\leq z}r\)">\(q=\prod_{r\leq z}r\)</span>, over primes.
+Apart from finitely many exceptions, both primes are coprime to
+<span class="math" data-tex="\(q\)">\(q\)</span>. Among reduced residues of <span class="math" data-tex="\(p\)">\(p\)</span>, each <span class="math" data-tex="\(r\nmid h\)">\(r\nmid h\)</span>
+excludes the single additional residue <span class="math" data-tex="\(-h\pmod r\)">\(-h\pmod r\)</span>.
+The Chinese remainder theorem and the fixed-modulus prime
+number theorem therefore bound the upper limiting proportion
+by
+<span class="math math-display" data-tex="\[
+\prod_{\substack{r\leq z\\
+r\nmid h}}
+\left(1-\frac1{r-1}\right).
+\]">\[
+\prod_{\substack{r\leq z\\
+r\nmid h}}
+\left(1-\frac1{r-1}\right).
+\]</span>
+If <span class="math" data-tex="\(r=2\nmid h\)">\(r=2\nmid h\)</span>, this is zero. Otherwise the product tends
+to zero, since <span class="math" data-tex="\(\sum_r1/r=\infty\)">\(\sum_r1/r=\infty\)</span>.
+The last divergence follows from the Euler product: if that
+sum converged, <span class="math" data-tex="\(\prod_r(1-1/r)^{-1}\)">\(\prod_r(1-1/r)^{-1}\)</span> would be finite,
+whereas its increasing finite products contain the
+arbitrarily long initial segments of the divergent harmonic
+series. Let <span class="math" data-tex="\(z\to\infty\)">\(z\to\infty\)</span>.
+Consequently, for any fixed <span class="math" data-tex="\(K\)">\(K\)</span>, only <span class="math" data-tex="\(o(Y/\log Y)\)">\(o(Y/\log Y)\)</span>
+prime powers up to <span class="math" data-tex="\(Y\)">\(Y\)</span> have another prime power within
+distance <span class="math" data-tex="\(K\)">\(K\)</span>. The higher powers themselves number
+<span class="math" data-tex="\(O(\sqrt Y\log Y)\)">\(O(\sqrt Y\log Y)\)</span>; their <span class="math" data-tex="\(K\)">\(K\)</span>-neighbourhoods add
+only <span class="math" data-tex="\(O_K(\sqrt Y\log Y)\)">\(O_K(\sqrt Y\log Y)\)</span> exceptions. Summing over
+the finitely many differences <span class="math" data-tex="\(|h|\leq K\)">\(|h|\leq K\)</span> proves the assertion.</p>
+<p>Now fix <span class="math" data-tex="\(R&gt;2\)">\(R&gt;2\)</span> and truncate <span class="math" data-tex="\(D_X\)">\(D_X\)</span> at <span class="math" data-tex="\(n\leq RX\)">\(n\leq RX\)</span>.
+Separate its nonzero coefficients into good indices, whose
+distance from every other supported index is at least <span class="math" data-tex="\(K\)">\(K\)</span>,
+and the exceptional indices just counted.
+The good logarithmic frequencies have separation at least
+<span class="math" data-tex="\(K/(RX)\)">\(K/(RX)\)</span>, since
+<span class="math" data-tex="\(\log m-\log n\geq(m-n)/m\)">\(\log m-\log n\geq(m-n)/m\)</span> for <span class="math" data-tex="\(m&gt;n\)">\(m&gt;n\)</span>.
+Their mean-square error is therefore
+<span class="math math-display" data-tex="\[
+O\!\left(\frac{RX}{K}\sum_n b_X(n)^2\right)
+=O_R(X\log(2X)/K).
+\tag{4.12}
+\]">\[
+O\!\left(\frac{RX}{K}\sum_n b_X(n)^2\right)
+=O_R(X\log(2X)/K).
+\tag{4.12}
+\]</span>
+For the exceptional indices,
+<span class="math math-display" data-tex="\[
+\sum_{n\leq RX,\ {\rm exceptional}}b_X(n)^2=o_R(\log X),
+\]">\[
+\sum_{n\leq RX,\ {\rm exceptional}}b_X(n)^2=o_R(\log X),
+\]</span>
+because <span class="math" data-tex="\(b_X(n)^2\leq C_R\log^2(2X)/X\)">\(b_X(n)^2\leq C_R\log^2(2X)/X\)</span> and their
+number is <span class="math" data-tex="\(o_R(X/\log X)\)">\(o_R(X/\log X)\)</span>.
+The ordinary inequality (4.2) bounds their squared
+<span class="math" data-tex="\(L^2[0,T]\)">\(L^2[0,T]\)</span> norm by <span class="math" data-tex="\(o_R((T+X)\log X)\)">\(o_R((T+X)\log X)\)</span>.
+Their cross term with the good part is
+<span class="math" data-tex="\(o_R(T\log X)\)">\(o_R(T\log X)\)</span> when <span class="math" data-tex="\(X\leq T\)">\(X\leq T\)</span>.
+Finally partial summation gives
+<span class="math math-display" data-tex="\[
+\sum_{n&gt;RX}b_X(n)^2\ll_R R^{-2}\log X,\qquad
+\sum_{n&gt;RX}n b_X(n)^2\ll_R R^{-1}X\log X,
+\]">\[
+\sum_{n&gt;RX}b_X(n)^2\ll_R R^{-2}\log X,\qquad
+\sum_{n&gt;RX}n b_X(n)^2\ll_R R^{-1}X\log X,
+\]</span>
+where the implicit constants can be chosen absolute for
+large <span class="math" data-tex="\(X\)">\(X\)</span> with fixed <span class="math" data-tex="\(R\)">\(R\)</span>. Equation (4.2) and
+Cauchy–Schwarz show that this tail changes the normalized
+mean square by <span class="math" data-tex="\(O(R^{-1/2})\)">\(O(R^{-1/2})\)</span>, uniformly for <span class="math" data-tex="\(X\leq T\)">\(X\leq T\)</span>.</p>
+<p>It follows, first letting <span class="math" data-tex="\(X\to\infty\)">\(X\to\infty\)</span> with <span class="math" data-tex="\(R,K\)">\(R,K\)</span> fixed,
+then <span class="math" data-tex="\(K\to\infty\)">\(K\to\infty\)</span>, and finally <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>, that
+<span class="math math-display" data-tex="\[
+\int_0^T|D_X(t)|^2dt
+=T\log X+O(T)+o(T\log X),
+\qquad X\to\infty,\quad X\leq T,
+\tag{4.13}
+\]">\[
+\int_0^T|D_X(t)|^2dt
+=T\log X+O(T)+o(T\log X),
+\qquad X\to\infty,\quad X\leq T,
+\tag{4.13}
+\]</span>
+with uniform little-oh in this range.
+For bounded or slowly growing <span class="math" data-tex="\(X\)">\(X\)</span>, the earlier argument
+in (4.9) already suffices. Using (4.13) for <span class="math" data-tex="\(X\geq M\)">\(X\geq M\)</span>,
+all the other errors and cross terms in (4.7)-(4.8) are
+<span class="math" data-tex="\(o(T\log T)\)">\(o(T\log T)\)</span>, including <span class="math" data-tex="\(X=T\)">\(X=T\)</span>.
+This proves (4.11). In particular <span class="math" data-tex="\(F(1,T)\to1\)">\(F(1,T)\to1\)</span>.</p>
+<h2 id="5-from-fourier-information-to-pairs-of-zeros">5. From Fourier information to pairs of zeros</h2>
+<p>We use the Fourier convention
+<span class="math math-display" data-tex="\[
+\widehat r(\alpha)=\int_{\mathbb R}r(u)e^{-2\pi i\alpha u}\,du.
+\tag{5.1}
+\]">\[
+\widehat r(\alpha)=\int_{\mathbb R}r(u)e^{-2\pi i\alpha u}\,du.
+\tag{5.1}
+\]</span>
+If <span class="math" data-tex="\(r\in L^1(\mathbb R)\)">\(r\in L^1(\mathbb R)\)</span> and its continuous Fourier transform
+is supported in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, the inverse transform is a continuous
+representative of <span class="math" data-tex="\(r\)">\(r\)</span>. Throughout this section <span class="math" data-tex="\(r(u)\)">\(r(u)\)</span>, including
+<span class="math" data-tex="\(r(0)\)">\(r(0)\)</span>, means that representative:
+<span class="math math-display" data-tex="\[
+r(u)=\int_{-1}^1\widehat r(\alpha)e^{2\pi i\alpha u}\,d\alpha.
+\tag{5.2}
+\]">\[
+r(u)=\int_{-1}^1\widehat r(\alpha)e^{2\pi i\alpha u}\,d\alpha.
+\tag{5.2}
+\]</span>
+Specifying the representative matters because a sum over zeros
+evaluates a function at individual points, whereas an <span class="math" data-tex="\(L^1\)">\(L^1\)</span>
+equivalence class does not specify such values.</p>
+<p><strong>Theorem 5.1 (band-limited pair sums).</strong> Under RH and these hypotheses,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac1{N_*(T)}
+\sum_{0&lt;\gamma,\gamma&#x27;\leq T}
+r\!\left(\frac{(\gamma-\gamma&#x27;)\log T}{2\pi}\right)
+w(\gamma-\gamma&#x27;)
+\longrightarrow
+r(0)+\int_{\mathbb R}r(u)
+\left[1-\left(\frac{\sin\pi u}{\pi u}\right)^2\right]du.
+\end{aligned}
+\tag{5.3}
+\]">\[
+\begin{aligned}
+\frac1{N_*(T)}
+\sum_{0&lt;\gamma,\gamma&#x27;\leq T}
+r\!\left(\frac{(\gamma-\gamma&#x27;)\log T}{2\pi}\right)
+w(\gamma-\gamma&#x27;)
+\longrightarrow
+r(0)+\int_{\mathbb R}r(u)
+\left[1-\left(\frac{\sin\pi u}{\pi u}\right)^2\right]du.
+\end{aligned}
+\tag{5.3}
+\]</span>
+The quotient at zero has its continuous value one.</p>
+<p><em>Proof.</em> Inserting (5.2) into the finite sum gives the exact identity
+<span class="math math-display" data-tex="\[
+\frac1{N_*(T)}\sum_{\gamma,\gamma&#x27;}r(\cdots)w(\gamma-\gamma&#x27;)
+=\int_{-1}^1 F(\alpha,T)\widehat r(\alpha)\,d\alpha.
+\tag{5.4}
+\]">\[
+\frac1{N_*(T)}\sum_{\gamma,\gamma&#x27;}r(\cdots)w(\gamma-\gamma&#x27;)
+=\int_{-1}^1 F(\alpha,T)\widehat r(\alpha)\,d\alpha.
+\tag{5.4}
+\]</span>
+Let <span class="math" data-tex="\(P_T(\alpha)=T^{-2|\alpha|}\log T\)">\(P_T(\alpha)=T^{-2|\alpha|}\log T\)</span>.
+For each fixed <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, Theorem 1.1 and evenness show that
+the integral over <span class="math" data-tex="\([-1+\epsilon,1-\epsilon]\)">\([-1+\epsilon,1-\epsilon]\)</span> tends to
+<span class="math math-display" data-tex="\[
+\widehat r(0)+
+\int_{-1+\epsilon}^{1-\epsilon}|\alpha|\widehat r(\alpha)\,d\alpha,
+\]">\[
+\widehat r(0)+
+\int_{-1+\epsilon}^{1-\epsilon}|\alpha|\widehat r(\alpha)\,d\alpha,
+\]</span>
+up to the omission of an endpoint interval from the second term.
+Here (1.4) and continuity of <span class="math" data-tex="\(\widehat r\)">\(\widehat r\)</span> give
+<span class="math" data-tex="\(\int P_T\widehat r\to\widehat r(0)\)">\(\int P_T\widehat r\to\widehat r(0)\)</span>; the multiplicative
+<span class="math" data-tex="\(o(1)P_T\)">\(o(1)P_T\)</span> error has vanishing integral. On the two endpoint
+intervals, (4.10) bounds the integral in absolute value by
+<span class="math" data-tex="\(C\epsilon\|\widehat r\|_\infty+o(1)\)">\(C\epsilon\|\widehat r\|_\infty+o(1)\)</span>.
+Letting <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span> proves that (5.4) tends to
+<span class="math math-display" data-tex="\[
+\widehat r(0)+\int_{-1}^1|\alpha|\widehat r(\alpha)\,d\alpha.
+\tag{5.5}
+\]">\[
+\widehat r(0)+\int_{-1}^1|\alpha|\widehat r(\alpha)\,d\alpha.
+\tag{5.5}
+\]</span></p>
+<p>To put this answer in the pair variable, observe first that
+<span class="math math-display" data-tex="\[
+\frac{\sin\pi u}{\pi u}
+=\int_{-1/2}^{1/2}e^{2\pi i\alpha u}\,d\alpha.
+\]">\[
+\frac{\sin\pi u}{\pi u}
+=\int_{-1/2}^{1/2}e^{2\pi i\alpha u}\,d\alpha.
+\]</span>
+Multiplying the two bounded integrals and changing variables
+in their convolution proves
+<span class="math math-display" data-tex="\[
+\left(\frac{\sin\pi u}{\pi u}\right)^2
+=\int_{-1}^1(1-|\alpha|)e^{2\pi i\alpha u}\,d\alpha.
+\tag{5.6}
+\]">\[
+\left(\frac{\sin\pi u}{\pi u}\right)^2
+=\int_{-1}^1(1-|\alpha|)e^{2\pi i\alpha u}\,d\alpha.
+\tag{5.6}
+\]</span>
+Consequently, by Fubini with <span class="math" data-tex="\(r\in L^1\)">\(r\in L^1\)</span>,
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}r(u)
+\left(\frac{\sin\pi u}{\pi u}\right)^2du
+=\int_{-1}^1(1-|\alpha|)\widehat r(\alpha)\,d\alpha.
+\]">\[
+\int_{\mathbb R}r(u)
+\left(\frac{\sin\pi u}{\pi u}\right)^2du
+=\int_{-1}^1(1-|\alpha|)\widehat r(\alpha)\,d\alpha.
+\]</span>
+Evenness of the triangular kernel removes the possible minus sign
+in the Fourier argument. Finally <span class="math" data-tex="\(\int r=\widehat r(0)\)">\(\int r=\widehat r(0)\)</span> and
+<span class="math" data-tex="\(r(0)=\int\widehat r\)">\(r(0)=\int\widehat r\)</span>. Substitution into (5.5) proves (5.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The appearance of <span class="math" data-tex="\(r(0)\)">\(r(0)\)</span> in (5.3) is the mass of equal-ordinate
+pairs. The factor <span class="math" data-tex="\(1-(\sin\pi u/\pi u)^2\)">\(1-(\sin\pi u/\pi u)^2\)</span> describes the
+remaining pair contribution accessible to these test functions.
+This theorem determines band-limited averages of the pair measure;
+it does not determine its value on every interval.</p>
+<h2 id="6-at-least-two-thirds-of-the-zeros-are-simple">6. At least two-thirds of the zeros are simple</h2>
+<p>For <span class="math" data-tex="\(0&lt;a\leq1\)">\(0&lt;a\leq1\)</span>, define the nonnegative Fejér test
+<span class="math math-display" data-tex="\[
+r_a(u)=\left(\frac{\sin\pi a u}{\pi a u}\right)^2,\qquad
+\widehat r_a(\alpha)=\frac1a
+\left(1-\frac{|\alpha|}{a}\right)_+.
+\tag{6.1}
+\]">\[
+r_a(u)=\left(\frac{\sin\pi a u}{\pi a u}\right)^2,\qquad
+\widehat r_a(\alpha)=\frac1a
+\left(1-\frac{|\alpha|}{a}\right)_+.
+\tag{6.1}
+\]</span>
+Scaling (5.6) proves the Fourier pair. In particular
+<span class="math math-display" data-tex="\[
+r_a(0)=1,\qquad \int_{\mathbb R}r_a(u)\,du=\frac1a.
+\]">\[
+r_a(0)=1,\qquad \int_{\mathbb R}r_a(u)\,du=\frac1a.
+\]</span>
+The cross integral in Theorem 5.1 is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_{\mathbb R}r_a(u)
+\left(\frac{\sin\pi u}{\pi u}\right)^2du
+&amp;=\frac2a\int_0^a(1-\alpha)(1-\alpha/a)\,d\alpha\\
+&amp;=1-\frac a3.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_{\mathbb R}r_a(u)
+\left(\frac{\sin\pi u}{\pi u}\right)^2du
+&amp;=\frac2a\int_0^a(1-\alpha)(1-\alpha/a)\,d\alpha\\
+&amp;=1-\frac a3.
+\end{aligned}
+\]</span>
+Thus
+<span class="math math-display" data-tex="\[
+\frac1{N_*(T)}
+\sum_{\gamma,\gamma&#x27;} r_a\!\left(
+\frac{(\gamma-\gamma&#x27;)\log T}{2\pi}\right)w(\gamma-\gamma&#x27;)
+=\frac1a+\frac a3+o(1).
+\tag{6.2}
+\]">\[
+\frac1{N_*(T)}
+\sum_{\gamma,\gamma&#x27;} r_a\!\left(
+\frac{(\gamma-\gamma&#x27;)\log T}{2\pi}\right)w(\gamma-\gamma&#x27;)
+=\frac1a+\frac a3+o(1).
+\tag{6.2}
+\]</span></p>
+<p>Let <span class="math" data-tex="\(m_\eta\)">\(m_\eta\)</span> be the multiplicity at a distinct ordinate <span class="math" data-tex="\(\eta\)">\(\eta\)</span>,
+and let <span class="math" data-tex="\(N(T)=\sum_{0&lt;\eta\leq T}m_\eta\)">\(N(T)=\sum_{0&lt;\eta\leq T}m_\eta\)</span>.
+The diagonal in (6.2) is <span class="math" data-tex="\(\sum m_\eta^2\)">\(\sum m_\eta^2\)</span>;
+all the other summands are nonnegative. Taking <span class="math" data-tex="\(a=1\)">\(a=1\)</span> gives
+<span class="math math-display" data-tex="\[
+\sum_{0&lt;\eta\leq T}m_\eta^2\leq
+\left(\frac43+o(1)\right)N_*(T).
+\tag{6.3}
+\]">\[
+\sum_{0&lt;\eta\leq T}m_\eta^2\leq
+\left(\frac43+o(1)\right)N_*(T).
+\tag{6.3}
+\]</span>
+One can alternatively use <span class="math" data-tex="\(a&lt;1\)">\(a&lt;1\)</span> and then let <span class="math" data-tex="\(a\uparrow1\)">\(a\uparrow1\)</span>.
+The zero count gives <span class="math" data-tex="\(N(T)=N_*(T)+O(T)\)">\(N(T)=N_*(T)+O(T)\)</span>.
+Since <span class="math" data-tex="\(m\leq m(m-1)\)">\(m\leq m(m-1)\)</span> for every integer <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, the number
+of copies belonging to nonsimple zeros is at most
+<span class="math math-display" data-tex="\[
+\sum_{m_\eta\geq2}m_\eta(m_\eta-1)
+=\sum m_\eta^2-N(T)
+\leq\left(\frac13+o(1)\right)N_*(T).
+\]">\[
+\sum_{m_\eta\geq2}m_\eta(m_\eta-1)
+=\sum m_\eta^2-N(T)
+\leq\left(\frac13+o(1)\right)N_*(T).
+\]</span>
+Subtracting from <span class="math" data-tex="\(N(T)\)">\(N(T)\)</span> proves Montgomery's consequence
+<span class="math math-display" data-tex="\[
+\#\{0&lt;\gamma\leq T:\;1/2+i\gamma\text{ is a simple zero}\}
+\geq\left(\frac23+o(1)\right)\frac T{2\pi}\log T.
+\tag{6.4}
+\]">\[
+\#\{0&lt;\gamma\leq T:\;1/2+i\gamma\text{ is a simple zero}\}
+\geq\left(\frac23+o(1)\right)\frac T{2\pi}\log T.
+\tag{6.4}
+\]</span>
+The left side counts each simple zero once. Multiplicities must
+be retained in (1.1); removing them before the argument would
+remove precisely the information that proves (6.4).</p>
+<h2 id="7-infinitely-many-small-gaps">7. Infinitely many small gaps</h2>
+<p>Enumerate the positive ordinates with multiplicity as
+<span class="math" data-tex="\(\gamma_1\leq\gamma_2\leq\cdots\)">\(\gamma_1\leq\gamma_2\leq\cdots\)</span>.
+Montgomery's small-gap consequence is
+<span class="math math-display" data-tex="\[
+\liminf_{n\to\infty}
+\frac{(\gamma_{n+1}-\gamma_n)\log\gamma_n}{2\pi}
+\leq0.68.
+\tag{7.1}
+\]">\[
+\liminf_{n\to\infty}
+\frac{(\gamma_{n+1}-\gamma_n)\log\gamma_n}{2\pi}
+\leq0.68.
+\tag{7.1}
+\]</span>
+The local mean spacing is <span class="math" data-tex="\(2\pi/\log\gamma_n\)">\(2\pi/\log\gamma_n\)</span>, so this is
+a statement about gaps smaller than <span class="math" data-tex="\(68\%\)">\(68\%\)</span> of that mean.</p>
+<p>Here positivity of <span class="math" data-tex="\(F\)">\(F\)</span>, even outside its calculated range,
+is useful. For <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, put
+<span class="math math-display" data-tex="\[
+q_\lambda(u)=(1-|u|/\lambda)_+,\qquad
+\widehat q_\lambda(\alpha)=
+\lambda\left(\frac{\sin\pi\lambda\alpha}
+{\pi\lambda\alpha}\right)^2\geq0.
+\tag{7.2}
+\]">\[
+q_\lambda(u)=(1-|u|/\lambda)_+,\qquad
+\widehat q_\lambda(\alpha)=
+\lambda\left(\frac{\sin\pi\lambda\alpha}
+{\pi\lambda\alpha}\right)^2\geq0.
+\tag{7.2}
+\]</span>
+This Fourier pair follows by scaling and interchanging the
+two sides of (5.6). Both sides are integrable, and Fourier
+inversion is valid everywhere. The exact finite identity (5.4)
+now uses an integral over all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.
+Its integrand is nonnegative by (1.2) and (7.2). Restricting
+to <span class="math" data-tex="\(|\alpha|\leq1-\epsilon\)">\(|\alpha|\leq1-\epsilon\)</span>, applying Theorem 1.1, and then
+letting <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\liminf_{T\to\infty}\frac1{N_*(T)}
+\sum_{\gamma,\gamma&#x27;}q_\lambda\!\left(
+\frac{(\gamma-\gamma&#x27;)\log T}{2\pi}\right)w(\gamma-\gamma&#x27;)
+&amp;\geq \lambda+
+2\lambda\int_0^1\alpha
+\left(\frac{\sin\pi\lambda\alpha}
+{\pi\lambda\alpha}\right)^2d\alpha\\
+&amp;=\lambda+\frac{\operatorname{Cin}(2\pi\lambda)}
+{\pi^2\lambda},
+\end{aligned}
+\tag{7.3}
+\]">\[
+\begin{aligned}
+\liminf_{T\to\infty}\frac1{N_*(T)}
+\sum_{\gamma,\gamma&#x27;}q_\lambda\!\left(
+\frac{(\gamma-\gamma&#x27;)\log T}{2\pi}\right)w(\gamma-\gamma&#x27;)
+&amp;\geq \lambda+
+2\lambda\int_0^1\alpha
+\left(\frac{\sin\pi\lambda\alpha}
+{\pi\lambda\alpha}\right)^2d\alpha\\
+&amp;=\lambda+\frac{\operatorname{Cin}(2\pi\lambda)}
+{\pi^2\lambda},
+\end{aligned}
+\tag{7.3}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+\operatorname{Cin}(x)=\int_0^x\frac{1-\cos v}{v}\,dv.
+\]">\[
+\operatorname{Cin}(x)=\int_0^x\frac{1-\cos v}{v}\,dv.
+\]</span>
+The last equality follows from <span class="math" data-tex="\(2\sin^2v=1-\cos2v\)">\(2\sin^2v=1-\cos2v\)</span>
+and a change of variable.</p>
+<p>For <span class="math" data-tex="\(\lambda=17/25\)">\(\lambda=17/25\)</span>, the right side of (7.3) exceeds one.
+For completeness the strict inequality admits an exact rational
+certificate. Termwise integration of the cosine series gives
+<span class="math math-display" data-tex="\[
+\operatorname{Cin}(x)=
+\sum_{j\geq1}\frac{(-1)^{j+1}x^{2j}}{2j(2j)!}.
+\tag{7.4}
+\]">\[
+\operatorname{Cin}(x)=
+\sum_{j\geq1}\frac{(-1)^{j+1}x^{2j}}{2j(2j)!}.
+\tag{7.4}
+\]</span>
+At <span class="math" data-tex="\(x=2\pi(17/25)\)">\(x=2\pi(17/25)\)</span>, successive magnitudes decrease: their
+ratio is
+<span class="math math-display" data-tex="\[
+x^2\frac{j}{(j+1)(2j+1)(2j+2)}\leq x^2/24&lt;1.
+\]">\[
+x^2\frac{j}{(j+1)(2j+1)(2j+2)}\leq x^2/24&lt;1.
+\]</span>
+Therefore the partial sum through <span class="math" data-tex="\(j=8\)">\(j=8\)</span>, whose last term
+is negative, is a lower bound.
+Use <span class="math" data-tex="\(p_-=333/106&lt;\pi&lt;p_+=355/113\)">\(p_-=333/106&lt;\pi&lt;p_+=355/113\)</span> in that sum,
+with <span class="math" data-tex="\(p_-\)">\(p_-\)</span> in each positive term and <span class="math" data-tex="\(p_+\)">\(p_+\)</span> in each negative
+term, to obtain the rational number
+<span class="math math-display" data-tex="\[
+L=\sum_{j=1}^{8}\frac{(-1)^{j+1}
+[2(17/25)p_j]^{2j}}{2j(2j)!},
+\quad
+p_j=\begin{cases}p_-,&amp;j\text{ odd},\\p_+,&amp;j\text{ even}.\end{cases}
+\]">\[
+L=\sum_{j=1}^{8}\frac{(-1)^{j+1}
+[2(17/25)p_j]^{2j}}{2j(2j)!},
+\quad
+p_j=\begin{cases}p_-,&amp;j\text{ odd},\\p_+,&amp;j\text{ even}.\end{cases}
+\]</span>
+It is positive. Direct rational arithmetic gives
+[
+\frac{17}{25}+\frac{L}{p_+^2(17/25)}-1</p>
+<blockquote>
+<p>\frac{86}{10000}&gt;0.
+\tag{7.5}
+]
+The bounds on <span class="math" data-tex="\(\pi\)">\(\pi\)</span> can themselves be checked without a decimal
+assumption: the tangent addition formula gives
+<span class="math" data-tex="\(\pi/4=4\arctan(1/5)-\arctan(1/239)\)">\(\pi/4=4\arctan(1/5)-\arctan(1/239)\)</span>.
+For
+<span class="math math-display" data-tex="\[
+A_m(q)=\sum_{j=0}^m\frac{(-1)^j}{(2j+1)q^{2j+1}},
+\]">\[
+A_m(q)=\sum_{j=0}^m\frac{(-1)^j}{(2j+1)q^{2j+1}},
+\]</span>
+the alternating bounds give
+<span class="math math-display" data-tex="\[
+16A_7(5)-4A_0(239)&lt;\pi&lt;
+16A_6(5)-4A_1(239).
+\]">\[
+16A_7(5)-4A_0(239)&lt;\pi&lt;
+16A_6(5)-4A_1(239).
+\]</span>
+These two rational endpoints lie strictly between <span class="math" data-tex="\(333/106\)">\(333/106\)</span>
+and <span class="math" data-tex="\(355/113\)">\(355/113\)</span>, as multiplication of their positive
+denominators verifies. This also certifies <span class="math" data-tex="\(x^2&lt;24\)">\(x^2&lt;24\)</span> and (7.5).
+For orientation, a 60-digit quadrature gives
+<span class="math" data-tex="\(\lambda+\operatorname{Cin}(2\pi\lambda)/(\pi^2\lambda)-1
+\approx0.0087416970596\)">\(\lambda+\operatorname{Cin}(2\pi\lambda)/(\pi^2\lambda)-1
+\approx0.0087416970596\)</span>; the rational calculation supplies
+the strict sign used in the proof.</p>
+</blockquote>
+<p>If infinitely many zeros are multiple, there are infinitely
+many zero gaps, and (7.1) follows at once. Otherwise all
+sufficiently high zeros are simple. Equal-ordinate pairs then
+contribute <span class="math" data-tex="\(N(T)+O(1)\)">\(N(T)+O(1)\)</span> to (7.3), since <span class="math" data-tex="\(q_\lambda(0)=w(0)=1\)">\(q_\lambda(0)=w(0)=1\)</span>.
+By (7.3)-(7.5), the unequal-ordinate pairs make a positive
+contribution of order <span class="math" data-tex="\(N_*(T)\)">\(N_*(T)\)</span>.
+If the liminf in (7.1) were larger than <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, every
+sufficiently high consecutive gap would satisfy
+<span class="math math-display" data-tex="\[
+\frac{(\gamma_{n+1}-\gamma_n)\log\gamma_n}{2\pi}&gt;\lambda.
+\]">\[
+\frac{(\gamma_{n+1}-\gamma_n)\log\gamma_n}{2\pi}&gt;\lambda.
+\]</span>
+For <span class="math" data-tex="\(\gamma_n\leq T\)">\(\gamma_n\leq T\)</span>, this implies
+<span class="math" data-tex="\((\gamma_{n+1}-\gamma_n)\log T/(2\pi)&gt;\lambda\)">\((\gamma_{n+1}-\gamma_n)\log T/(2\pi)&gt;\lambda\)</span>.
+Every pair above that fixed height would lie outside the support
+of <span class="math" data-tex="\(q_\lambda\)">\(q_\lambda\)</span>. The finitely many lower ordinates also supply
+only <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> pairs for large <span class="math" data-tex="\(T\)">\(T\)</span>, because that support shrinks
+in the unscaled variable. This contradicts the positive
+contribution just obtained. Equation (7.1) follows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof yields infinitely many small gaps. It does not
+assert a positive limiting proportion of such gaps; that
+stronger conclusion needs control of how close pairs can
+cluster.</p>
+<h2 id="8-the-pair-correlation-conjecture">8. The pair-correlation conjecture</h2>
+<p><strong>Conjecture 8.1 (the strong Fourier form).</strong> Assuming RH, for
+every fixed <span class="math" data-tex="\(A&gt;1\)">\(A&gt;1\)</span>,
+<span class="math math-display" data-tex="\[
+F(\alpha,T)=1+o(1)
+\quad\hbox{uniformly for }1\leq|\alpha|\leq A.
+\tag{8.1}
+\]">\[
+F(\alpha,T)=1+o(1)
+\quad\hbox{uniformly for }1\leq|\alpha|\leq A.
+\tag{8.1}
+\]</span>
+Together with Theorem 1.1 this predicts
+<span class="math math-display" data-tex="\[
+F(\alpha,T)\ \longrightarrow\ \min(|\alpha|,1)
+\quad(\alpha\ne0),
+\]">\[
+F(\alpha,T)\ \longrightarrow\ \min(|\alpha|,1)
+\quad(\alpha\ne0),
+\]</span>
+with the additional unit-mass spike at zero.
+Thus a graph of the pointwise limiting function alone omits
+a part of the limiting distribution.</p>
+<p>For clarity about equivalent formulations, define the positive
+weighted pair measure
+<span class="math math-display" data-tex="\[
+\mu_T=\frac1{N_*(T)}
+\sum_{0&lt;\gamma,\gamma&#x27;\leq T}
+w(\gamma-\gamma&#x27;)
+\delta_{(\gamma-\gamma&#x27;)\log T/(2\pi)}.
+\tag{8.2}
+\]">\[
+\mu_T=\frac1{N_*(T)}
+\sum_{0&lt;\gamma,\gamma&#x27;\leq T}
+w(\gamma-\gamma&#x27;)
+\delta_{(\gamma-\gamma&#x27;)\log T/(2\pi)}.
+\tag{8.2}
+\]</span>
+The predicted pair measure is
+<span class="math math-display" data-tex="\[
+\mu_\infty=\delta_0+
+\left[1-\left(\frac{\sin\pi u}{\pi u}\right)^2\right]du.
+\tag{8.3}
+\]">\[
+\mu_\infty=\delta_0+
+\left[1-\left(\frac{\sin\pi u}{\pi u}\right)^2\right]du.
+\tag{8.3}
+\]</span>
+Its Fourier transform, in the sense of tempered distributions, is
+<span class="math math-display" data-tex="\[
+\widehat\mu_\infty=\delta_0+\min(|\alpha|,1).
+\tag{8.4}
+\]">\[
+\widehat\mu_\infty=\delta_0+\min(|\alpha|,1).
+\tag{8.4}
+\]</span>
+Indeed the Fourier transforms of <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>, the constant
+function one, and the squared sinc are respectively one,
+<span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>, and <span class="math" data-tex="\((1-|\alpha|)_+\)">\((1-|\alpha|)_+\)</span>, by Fourier inversion
+and (5.6). Subtracting gives (8.4).</p>
+<p><strong>Proposition 8.2.</strong> Conjecture 8.1 implies
+<span class="math math-display" data-tex="\[
+\int r\,d\mu_T\longrightarrow\int r\,d\mu_\infty
+\quad\text{for every Schwartz function }r.
+\tag{8.5}
+\]">\[
+\int r\,d\mu_T\longrightarrow\int r\,d\mu_\infty
+\quad\text{for every Schwartz function }r.
+\tag{8.5}
+\]</span>
+The averaged Fourier prediction
+<span class="math math-display" data-tex="\[
+F(\alpha,T)\,d\alpha
+\longrightarrow \delta_0+\min(|\alpha|,1)\,d\alpha
+\tag{8.6}
+\]">\[
+F(\alpha,T)\,d\alpha
+\longrightarrow \delta_0+\min(|\alpha|,1)\,d\alpha
+\tag{8.6}
+\]</span>
+as tempered distributions is equivalent to (8.5).
+This equivalence of averaged statements is a Fourier duality;
+the converse from (8.5) to uniform pointwise convergence
+in (8.1) does not follow just from weak convergence.</p>
+<p><em>Proof.</em> First suppose <span class="math" data-tex="\(\widehat r\in C_c^\infty\)">\(\widehat r\in C_c^\infty\)</span>.
+On <span class="math" data-tex="\(|\alpha|\leq1-\epsilon\)">\(|\alpha|\leq1-\epsilon\)</span>, use Theorem 1.1 and the
+approximate identity (1.4). On <span class="math" data-tex="\(1\leq|\alpha|\leq A\)">\(1\leq|\alpha|\leq A\)</span>,
+use (8.1). The two omitted intervals adjoining <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>
+have contribution <span class="math" data-tex="\(O(\epsilon)+o(1)\)">\(O(\epsilon)+o(1)\)</span> by (4.10).
+The finite identity (5.4) therefore gives
+<span class="math math-display" data-tex="\[
+\lim_T\int r\,d\mu_T
+=\widehat r(0)+\int_{\mathbb R}
+\min(|\alpha|,1)\widehat r(\alpha)\,d\alpha
+=\int r\,d\mu_\infty.
+\tag{8.7}
+\]">\[
+\lim_T\int r\,d\mu_T
+=\widehat r(0)+\int_{\mathbb R}
+\min(|\alpha|,1)\widehat r(\alpha)\,d\alpha
+=\int r\,d\mu_\infty.
+\tag{8.7}
+\]</span></p>
+<p>We justify passage to arbitrary Schwartz tests rather than
+assuming a global bound for <span class="math" data-tex="\(F\)">\(F\)</span>. Put
+<span class="math math-display" data-tex="\[
+q(u)=r_1(u)+r_1(u-1/2).
+\]">\[
+q(u)=r_1(u)+r_1(u-1/2).
+\]</span>
+It is nonnegative and satisfies
+<span class="math" data-tex="\(q(u)\geq c/(1+u^2)\)">\(q(u)\geq c/(1+u^2)\)</span>, with an absolute <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.
+For large <span class="math" data-tex="\(|u|\)">\(|u|\)</span>, the numerators are
+<span class="math" data-tex="\(\sin^2\pi u\)">\(\sin^2\pi u\)</span> and <span class="math" data-tex="\(\cos^2\pi u\)">\(\cos^2\pi u\)</span>, and both denominators
+are at most a constant times <span class="math" data-tex="\(1+u^2\)">\(1+u^2\)</span>.
+On a compact interval the same lower bound follows from
+continuity and the absence of a common zero.
+The Fourier transform of <span class="math" data-tex="\(q(u-v)\)">\(q(u-v)\)</span> is supported in
+<span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, and its absolute value is at most
+<span class="math" data-tex="\(2(1-|\alpha|)_+\)">\(2(1-|\alpha|)_+\)</span>, independently of <span class="math" data-tex="\(v\)">\(v\)</span>.
+Equations (5.4), (4.10), and <span class="math" data-tex="\(\int P_T=1\)">\(\int P_T=1\)</span> imply
+<span class="math math-display" data-tex="\[
+\sup_{T\geq T_0,\ v\in\mathbb R}\mu_T([v-1,v+1])&lt;\infty.
+\tag{8.8}
+\]">\[
+\sup_{T\geq T_0,\ v\in\mathbb R}\mu_T([v-1,v+1])&lt;\infty.
+\tag{8.8}
+\]</span>
+Here one integrates <span class="math" data-tex="\(q(u-v)\)">\(q(u-v)\)</span>, uses its positive minimum
+on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, and bounds the Fourier integral by its
+absolute value. The finitely many smaller <span class="math" data-tex="\(T\)">\(T\)</span> can be
+absorbed if needed. In particular,
+<span class="math" data-tex="\(\int(1+u^2)^{-1}d\mu_T\)">\(\int(1+u^2)^{-1}d\mu_T\)</span> is uniformly bounded.</p>
+<p>For a Schwartz <span class="math" data-tex="\(r\)">\(r\)</span>, cut off <span class="math" data-tex="\(\widehat r\)">\(\widehat r\)</span> smoothly at
+<span class="math" data-tex="\(|\alpha|\leq A\)">\(|\alpha|\leq A\)</span> and call the inverse transform <span class="math" data-tex="\(r_A\)">\(r_A\)</span>.
+The Fourier transform preserves the Schwartz space,
+so <span class="math" data-tex="\(r_A\to r\)">\(r_A\to r\)</span> in its topology. In particular
+<span class="math math-display" data-tex="\[
+\sup_u(1+u^2)|r_A(u)-r(u)|\longrightarrow0.
+\]">\[
+\sup_u(1+u^2)|r_A(u)-r(u)|\longrightarrow0.
+\]</span>
+The uniform bound just proved makes
+<span class="math" data-tex="\(\int(r_A-r)d\mu_T\)">\(\int(r_A-r)d\mu_T\)</span> tend to zero uniformly in <span class="math" data-tex="\(T\)">\(T\)</span>;
+the same holds for <span class="math" data-tex="\(\mu_\infty\)">\(\mu_\infty\)</span>.
+Applying (8.7) to <span class="math" data-tex="\(r_A\)">\(r_A\)</span> and then letting <span class="math" data-tex="\(A\to\infty\)">\(A\to\infty\)</span>
+proves (8.5).
+Finally <span class="math" data-tex="\(\widehat\mu_T=F(\alpha,T)d\alpha\)">\(\widehat\mu_T=F(\alpha,T)d\alpha\)</span>, since
+the finite measure (8.2) has this Fourier transform
+(evenness removes the sign).
+Continuity and invertibility of the Fourier transform
+on Schwartz functions and tempered distributions prove
+the exact equivalence between (8.5) and (8.6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The measure formulation also explains the usual statement
+in terms of pair counts. On every fixed compact interval
+of normalized differences, the weight <span class="math" data-tex="\(w(\gamma-\gamma&#x27;)\)">\(w(\gamma-\gamma&#x27;)\)</span>
+tends to one uniformly, since
+<span class="math" data-tex="\(\gamma-\gamma&#x27;=O(1/\log T)\)">\(\gamma-\gamma&#x27;=O(1/\log T)\)</span>.
+The uniform local mass bound (8.8) therefore permits its
+removal there. For <span class="math" data-tex="\(0&lt;a&lt;b\)">\(0&lt;a&lt;b\)</span>, (8.5) predicts
+<span class="math math-display" data-tex="\[
+\frac1{N_*(T)}
+\#\left\{0&lt;\gamma,\gamma&#x27;\leq T:
+a&lt;\frac{(\gamma-\gamma&#x27;)\log T}{2\pi}\leq b\right\}
+\longrightarrow
+\int_a^b\left[1-
+\left(\frac{\sin\pi u}{\pi u}\right)^2\right]du.
+\tag{8.9}
+\]">\[
+\frac1{N_*(T)}
+\#\left\{0&lt;\gamma,\gamma&#x27;\leq T:
+a&lt;\frac{(\gamma-\gamma&#x27;)\log T}{2\pi}\leq b\right\}
+\longrightarrow
+\int_a^b\left[1-
+\left(\frac{\sin\pi u}{\pi u}\right)^2\right]du.
+\tag{8.9}
+\]</span>
+To derive this rigorously from (8.5), approximate the interval
+indicator above and below by smooth compactly supported
+functions; the limiting measure has no atom at <span class="math" data-tex="\(a,b\)">\(a,b\)</span>.
+The same argument works for any interval whose endpoints
+are nonzero, including one crossing zero, with the
+additional diagonal mass one.</p>
+<p>Under (8.5), the equal-ordinate mass itself tends to one.
+Its lower bound is <span class="math" data-tex="\(N(T)/N_*(T)\to1\)">\(N(T)/N_*(T)\to1\)</span>.
+For each <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> its upper bound is
+<span class="math" data-tex="\(\mu_T([-\eta,\eta])\)">\(\mu_T([-\eta,\eta])\)</span>, whose limit is
+<span class="math" data-tex="\(1+\int_{-\eta}^{\eta}(1-r_1(u))du\)">\(1+\int_{-\eta}^{\eta}(1-r_1(u))du\)</span>.
+Letting <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span> squeezes that mass to one.
+Therefore <span class="math" data-tex="\(\sum m_\gamma(m_\gamma-1)=o(N_*(T))\)">\(\sum m_\gamma(m_\gamma-1)=o(N_*(T))\)</span>, and
+the same elementary counting as in Section 6 proves that
+asymptotically all zeros are simple. Removing all
+equal-ordinate pairs leaves exactly the density in (8.3).</p>
+<p>This density is also the two-point density of the limiting
+unitary random-matrix process. Montgomery recorded Dyson's
+observation of this match in his 1973 paper, printed
+page 184. The next lesson derives the matrix formula and
+explains what its agreement with zeros does and does not prove.</p>
+<h2 id="9-pair-correlation-and-primes-in-short-intervals">9. Pair correlation and primes in short intervals</h2>
+<p>The arithmetic meaning of the strong conjecture concerns a
+<strong>variance</strong>, rather than the existence of a prime in every
+short interval. Write
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E(x,h)&amp;=\psi(x+h)-\psi(x)-h,\\
+J(X,h)&amp;=\int_0^X E(x,h)^2\,dx,\\
+I(X,\delta)&amp;=\int_0^X E(x,\delta x)^2\,dx.
+\end{aligned}
+\tag{9.1}
+\]">\[
+\begin{aligned}
+E(x,h)&amp;=\psi(x+h)-\psi(x)-h,\\
+J(X,h)&amp;=\int_0^X E(x,h)^2\,dx,\\
+I(X,\delta)&amp;=\int_0^X E(x,\delta x)^2\,dx.
+\end{aligned}
+\tag{9.1}
+\]</span>
+We set <span class="math" data-tex="\(\psi(x)=0\)">\(\psi(x)=0\)</span> for <span class="math" data-tex="\(0\leq x&lt;1\)">\(0\leq x&lt;1\)</span>.
+Replacing the lower endpoint zero by one changes none of the
+asymptotics below. All uniform statements quantify over
+each fixed positive <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>.</p>
+<p><strong>Theorem 9.1 (Goldston–Montgomery).</strong> Under RH, Conjecture 8.1
+is equivalent to each of the following uniform assertions:
+<span class="math math-display" data-tex="\[
+I(X,\delta)\sim\frac12\delta X^2\log(1/\delta),
+\qquad X^{-1}\leq\delta\leq X^{-\epsilon},
+\tag{9.2}
+\]">\[
+I(X,\delta)\sim\frac12\delta X^2\log(1/\delta),
+\qquad X^{-1}\leq\delta\leq X^{-\epsilon},
+\tag{9.2}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+J(X,h)\sim hX\log(X/h),
+\qquad 1\leq h\leq X^{1-\epsilon}.
+\tag{9.3}
+\]">\[
+J(X,h)\sim hX\log(X/h),
+\qquad 1\leq h\leq X^{1-\epsilon}.
+\tag{9.3}
+\]</span>
+The proof below includes the transformations and their
+Tauberian converses. Its ingredients are the explicit formula
+already proved, RH's estimate
+<span class="math" data-tex="\(\psi(x)-x=O(\sqrt x\log^2(x+2))\)">\(\psi(x)-x=O(\sqrt x\log^2(x+2))\)</span> from
+<em>The Riemann hypothesis and its standard equivalents</em>,
+and Fourier inversion. The result is due to Goldston and
+Montgomery, <em>Pair correlation of zeros and primes in short
+intervals</em> (1987), pp. 183–203.</p>
+<h3 id="9-1-a-weighted-variance-from-the-explicit-formula">9.1. A weighted variance from the explicit formula</h3>
+<p>For <span class="math" data-tex="\(X\geq2\)">\(X\geq2\)</span>, extend (4.1)'s weight to real arguments:
+<span class="math math-display" data-tex="\[
+a_X(v)=
+\begin{cases}\sqrt v/X,&amp;0&lt;v\leq X,\\X/v^{3/2},&amp;v&gt;X.\end{cases}
+\]">\[
+a_X(v)=
+\begin{cases}\sqrt v/X,&amp;0&lt;v\leq X,\\X/v^{3/2},&amp;v&gt;X.\end{cases}
+\]</span>
+It is continuous, and <span class="math" data-tex="\(|a_X&#x27;(v)|\leq(3/2)a_X(v)/v\)">\(|a_X&#x27;(v)|\leq(3/2)a_X(v)/v\)</span>
+on either side of <span class="math" data-tex="\(X\)">\(X\)</span>.
+Let <span class="math" data-tex="\(\delta=e^\kappa-1\)">\(\delta=e^\kappa-1\)</span>, with <span class="math" data-tex="\(0&lt;\delta\leq1/2\)">\(0&lt;\delta\leq1/2\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+V(X,\delta)=\int_0^\infty
+\left|\sum_{v&lt;n\leq e^\kappa v}\Lambda(n)a_X(n)
+-\int_v^{e^\kappa v}a_X(u)\,du\right|^2\frac{dv}{v},\\
+W(X,\delta)=\int_0^\infty a_X(v)^2 E(v,\delta v)^2\frac{dv}{v}.
+\end{aligned}
+\tag{9.4}
+\]">\[
+\begin{aligned}
+V(X,\delta)=\int_0^\infty
+\left|\sum_{v&lt;n\leq e^\kappa v}\Lambda(n)a_X(n)
+-\int_v^{e^\kappa v}a_X(u)\,du\right|^2\frac{dv}{v},\\
+W(X,\delta)=\int_0^\infty a_X(v)^2 E(v,\delta v)^2\frac{dv}{v}.
+\end{aligned}
+\tag{9.4}
+\]</span>
+Both integrals converge. At infinity this follows from
+the quadratic tail of <span class="math" data-tex="\(a_X(v)^2/v\)">\(a_X(v)^2/v\)</span>, and at zero from
+<span class="math" data-tex="\(\psi(v)=0\)">\(\psi(v)=0\)</span> and <span class="math" data-tex="\(a_X(v)^2/v=X^{-2}\)">\(a_X(v)^2/v=X^{-2}\)</span>.</p>
+<p>The Fourier transform of the finite signed measure
+<span class="math math-display" data-tex="\[
+d\nu(y)=\sum_n\Lambda(n)a_X(n)\delta_{\log n}
+-a_X(e^y)e^y\,dy
+\]">\[
+d\nu(y)=\sum_n\Lambda(n)a_X(n)\delta_{\log n}
+-a_X(e^y)e^y\,dy
+\]</span>
+in the convention <span class="math" data-tex="\(\int e^{-ity}d\nu(y)\)">\(\int e^{-ity}d\nu(y)\)</span> is
+<span class="math math-display" data-tex="\[
+P_X(t)=\sum_n\Lambda(n)a_X(n)n^{-it}
+-\frac{2X^{1/2-it}}{(1/2+it)(3/2-it)}.
+\tag{9.5}
+\]">\[
+P_X(t)=\sum_n\Lambda(n)a_X(n)n^{-it}
+-\frac{2X^{1/2-it}}{(1/2+it)(3/2-it)}.
+\tag{9.5}
+\]</span>
+The integral term is obtained by integrating the two powers
+of <span class="math" data-tex="\(v\)">\(v\)</span>. Multiplication by
+<span class="math math-display" data-tex="\[
+m_\kappa(t)=\frac{\sin(\kappa t/2)}{\kappa t/2}
+\]">\[
+m_\kappa(t)=\frac{\sin(\kappa t/2)}{\kappa t/2}
+\]</span>
+convolves <span class="math" data-tex="\(\nu\)">\(\nu\)</span> with the normalized interval
+<span class="math" data-tex="\(\kappa^{-1}1_{[-\kappa/2,\kappa/2]}\)">\(\kappa^{-1}1_{[-\kappa/2,\kappa/2]}\)</span>.
+Parseval, followed by <span class="math" data-tex="\(y=\log v+\kappa/2\)">\(y=\log v+\kappa/2\)</span>, gives the exact
+identity
+<span class="math math-display" data-tex="\[
+V(X,\delta)=\frac{\kappa^2}{2\pi}
+\int_{\mathbb R}m_\kappa(t)^2|P_X(t)|^2dt.
+\tag{9.6}
+\]">\[
+V(X,\delta)=\frac{\kappa^2}{2\pi}
+\int_{\mathbb R}m_\kappa(t)^2|P_X(t)|^2dt.
+\tag{9.6}
+\]</span>
+One may first convolve with a Gaussian to apply ordinary
+Parseval and then pass to the limit in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.
+The window sums here are bounded on compact intervals;
+the weights at both ends give an integrable square.
+Thus this passage also justifies Parseval for the signed measure.</p>
+<p>The pole term in (2.6) is exactly the continuous integral
+subtracted in (9.5). The remaining exact terms in (2.6) yield
+<span class="math math-display" data-tex="\[
+P_X(t)=-X^{-it}L_X(t)+O(X^{-1}\log(|t|+4)).
+\tag{9.7}
+\]">\[
+P_X(t)=-X^{-it}L_X(t)+O(X^{-1}\log(|t|+4)).
+\tag{9.7}
+\]</span>
+Because <span class="math" data-tex="\(m_\kappa(t)^2\ll\min(1,(\kappa t)^{-2})\)">\(m_\kappa(t)^2\ll\min(1,(\kappa t)^{-2})\)</span>,
+the square of the error, integrated on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, is
+<span class="math" data-tex="\(O(X^{-2}\kappa^{-1}\log^2(2/\kappa))\)">\(O(X^{-2}\kappa^{-1}\log^2(2/\kappa))\)</span>.
+Consequently, if
+<span class="math math-display" data-tex="\[
+R(X,\kappa)=\frac{\kappa^2}{\pi}
+\int_0^\infty m_\kappa(t)^2|L_X(t)|^2dt,
+\]">\[
+R(X,\kappa)=\frac{\kappa^2}{\pi}
+\int_0^\infty m_\kappa(t)^2|L_X(t)|^2dt,
+\]</span>
+the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> triangle inequality implies
+<span class="math math-display" data-tex="\[
+\left|\sqrt{V(X,\delta)}-\sqrt{R(X,\kappa)}\right|
+\ll \frac{\sqrt\kappa}{X}\log(2/\kappa).
+\tag{9.8}
+\]">\[
+\left|\sqrt{V(X,\delta)}-\sqrt{R(X,\kappa)}\right|
+\ll \frac{\sqrt\kappa}{X}\log(2/\kappa).
+\tag{9.8}
+\]</span>
+The symmetry <span class="math" data-tex="\(P_X(-t)=\overline{P_X(t)}\)">\(P_X(-t)=\overline{P_X(t)}\)</span> accounts for
+the half-line and its factor two.</p>
+<p>We also remove the arithmetic weight inside the short sum.
+With <span class="math" data-tex="\(D(u)=\psi(u)-u\)">\(D(u)=\psi(u)-u\)</span>, Stieltjes integration by parts gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_v^{(1+\delta)v}[a_X(u)-a_X(v)]\,dD(u)
+={}&amp;[a_X((1+\delta)v)-a_X(v)]D((1+\delta)v)\\
+&amp;-\int_v^{(1+\delta)v}a_X&#x27;(u)D(u)\,du.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_v^{(1+\delta)v}[a_X(u)-a_X(v)]\,dD(u)
+={}&amp;[a_X((1+\delta)v)-a_X(v)]D((1+\delta)v)\\
+&amp;-\int_v^{(1+\delta)v}a_X&#x27;(u)D(u)\,du.
+\end{aligned}
+\]</span>
+RH bounds this by
+<span class="math" data-tex="\(C\delta a_X(v)\sqrt v\log^2(v+2)\)">\(C\delta a_X(v)\sqrt v\log^2(v+2)\)</span>;
+the continuity of <span class="math" data-tex="\(a_X\)">\(a_X\)</span> permits a split at <span class="math" data-tex="\(X\)">\(X\)</span> when
+the interval crosses its corner.
+Its squared norm in <span class="math" data-tex="\(dv/v\)">\(dv/v\)</span> is at most
+<span class="math math-display" data-tex="\[
+C\delta^2\int_0^\infty a_X(v)^2\log^4(v+2)\,dv
+\ll\delta^2\log^4(X+2).
+\]">\[
+C\delta^2\int_0^\infty a_X(v)^2\log^4(v+2)\,dv
+\ll\delta^2\log^4(X+2).
+\]</span>
+Therefore
+<span class="math math-display" data-tex="\[
+|\sqrt V-\sqrt W|\ll\delta\log^2(X+2).
+\tag{9.9}
+\]">\[
+|\sqrt V-\sqrt W|\ll\delta\log^2(X+2).
+\tag{9.9}
+\]</span>
+This step uses the cancellation in <span class="math" data-tex="\(d(\psi-u)\)">\(d(\psi-u)\)</span>.
+Bounding the prime sum and its integral separately would
+give an error too large in long intervals.</p>
+<p>Partial integration now gives a particularly simple
+positive transform:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W(X,\delta)
+&amp;=\frac{I(X,\delta)}{X^2}
++X^2\int_X^\infty v^{-4}\,dI(v,\delta)\\
+&amp;=4X^2\int_X^\infty\frac{I(v,\delta)}{v^5}\,dv.
+\end{aligned}
+\tag{9.10}
+\]">\[
+\begin{aligned}
+W(X,\delta)
+&amp;=\frac{I(X,\delta)}{X^2}
++X^2\int_X^\infty v^{-4}\,dI(v,\delta)\\
+&amp;=4X^2\int_X^\infty\frac{I(v,\delta)}{v^5}\,dv.
+\end{aligned}
+\tag{9.10}
+\]</span>
+The boundary terms at <span class="math" data-tex="\(X\)">\(X\)</span> cancel. At infinity,
+RH gives <span class="math" data-tex="\(I(v,\delta)\ll v^2\log^4(v+2)\)">\(I(v,\delta)\ll v^2\log^4(v+2)\)</span>, so the
+remaining boundary term vanishes.</p>
+<p>For later estimates, the unit-interval zero count implies
+<span class="math math-display" data-tex="\[
+A_X(T):=\int_0^T|L_X(t)|^2dt
+\ll T\log^2(T+4)
+\tag{9.11}
+\]">\[
+A_X(T):=\int_0^T|L_X(t)|^2dt
+\ll T\log^2(T+4)
+\tag{9.11}
+\]</span>
+uniformly in <span class="math" data-tex="\(X\geq2\)">\(X\geq2\)</span>. Integration against <span class="math" data-tex="\(m_\kappa^2\)">\(m_\kappa^2\)</span>,
+or splitting into intervals of length <span class="math" data-tex="\(1/\kappa\)">\(1/\kappa\)</span>,
+gives <span class="math" data-tex="\(R(X,\kappa)\ll\kappa\log^2(2/\kappa)\)">\(R(X,\kappa)\ll\kappa\log^2(2/\kappa)\)</span>.
+Together with (9.8)-(9.10), this proves
+<span class="math math-display" data-tex="\[
+I(X,\delta)\ll
+X^2\{\delta\log^2(2/\delta)
++\delta^2\log^4(X+2)\}.
+\tag{9.12}
+\]">\[
+I(X,\delta)\ll
+X^2\{\delta\log^2(2/\delta)
++\delta^2\log^4(X+2)\}.
+\tag{9.12}
+\]</span>
+Indeed (9.10) and monotonicity of <span class="math" data-tex="\(I(v,\delta)\)">\(I(v,\delta)\)</span> in
+<span class="math" data-tex="\(v\)">\(v\)</span> give <span class="math" data-tex="\(I(X,\delta)\leq X^2W(X,\delta)\)">\(I(X,\delta)\leq X^2W(X,\delta)\)</span>.</p>
+<h3 id="9-2-the-positive-transform-and-its-converse">9.2. The positive transform and its converse</h3>
+<p>Here is the precise elementary transform principle we need.
+Write
+<span class="math math-display" data-tex="\[
+k(u)=\left(\frac{\sin(u/2)}{u/2}\right)^2,\qquad
+\int_0^\infty k(u)\,du=\pi.
+\tag{9.13}
+\]">\[
+k(u)=\left(\frac{\sin(u/2)}{u/2}\right)^2,\qquad
+\int_0^\infty k(u)\,du=\pi.
+\tag{9.13}
+\]</span>
+The integral follows by Parseval for
+<span class="math" data-tex="\(1_{[-1/2,1/2]}\)">\(1_{[-1/2,1/2]}\)</span>, in the ordinary angular-frequency
+convention.</p>
+<p>Suppose positive measures <span class="math" data-tex="\(\nu_j\)">\(\nu_j\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> have
+<span class="math math-display" data-tex="\[
+\int_0^\infty k(sv)\,d\nu_j(v)\longrightarrow\pi/s
+\quad\text{for every }s&gt;0.
+\tag{9.14}
+\]">\[
+\int_0^\infty k(sv)\,d\nu_j(v)\longrightarrow\pi/s
+\quad\text{for every }s&gt;0.
+\tag{9.14}
+\]</span>
+Suppose also
+<span class="math" data-tex="\(\limsup_j\nu_j([0,M])\leq CM\)">\(\limsup_j\nu_j([0,M])\leq CM\)</span>, with a constant
+independent of each fixed <span class="math" data-tex="\(M\geq1\)">\(M\geq1\)</span>, and the limsup
+of the tails of these integrals tends to zero
+as <span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span>. Then <span class="math" data-tex="\(\nu_j\)">\(\nu_j\)</span> tend weakly on compact
+sets to Lebesgue measure, and
+<span class="math" data-tex="\(\nu_j([0,1])\to1\)">\(\nu_j([0,1])\to1\)</span>, provided the same bounds exclude
+an atom accumulating at zero.</p>
+<p>We supply the uniqueness argument behind this converse.
+The local mass bounds allow selection of a subsequence
+whose distribution functions converge at all rational
+points: take successive subsequences on the countable
+rational set and then the diagonal subsequence.
+Monotonicity defines a limiting positive measure;
+step approximations show convergence against continuous
+compactly supported tests at its continuity points.
+The tail assumption passes (9.14) to that measure <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.
+Moreover <span class="math" data-tex="\(k(sv)\geq c&gt;0\)">\(k(sv)\geq c&gt;0\)</span> for <span class="math" data-tex="\(0\leq v\leq1/s\)">\(0\leq v\leq1/s\)</span>.
+Its transform <span class="math" data-tex="\(\pi/s\)">\(\pi/s\)</span> therefore gives
+<span class="math" data-tex="\(\nu([0,1/s])\ll1/s\)">\(\nu([0,1/s])\ll1/s\)</span>, excluding an atom at zero.</p>
+<p>Equation (9.14) for the limiting measure is equivalent to
+<span class="math math-display" data-tex="\[
+\int_0^\infty\frac{1-\cos(sv)}{v^2}\,d\nu(v)
+=\frac{\pi|s|}{2},\qquad s\in\mathbb R.
+\tag{9.15}
+\]">\[
+\int_0^\infty\frac{1-\cos(sv)}{v^2}\,d\nu(v)
+=\frac{\pi|s|}{2},\qquad s\in\mathbb R.
+\tag{9.15}
+\]</span>
+Near zero the integrand is bounded by <span class="math" data-tex="\(s^2/2\)">\(s^2/2\)</span>;
+at infinity the linear growth of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> makes it integrable.
+Differentiate twice as a tempered distribution in <span class="math" data-tex="\(s\)">\(s\)</span>.
+For a Schwartz test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, integration by parts in <span class="math" data-tex="\(s\)">\(s\)</span>
+gives
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}\phi&#x27;&#x27;(s)
+\frac{1-\cos(sv)}{v^2}\,ds
+=\int_{\mathbb R}\phi(s)\cos(sv)\,ds.
+\]">\[
+\int_{\mathbb R}\phi&#x27;&#x27;(s)
+\frac{1-\cos(sv)}{v^2}\,ds
+=\int_{\mathbb R}\phi(s)\cos(sv)\,ds.
+\]</span>
+Fubini is justified first with bounded <span class="math" data-tex="\(v\)">\(v\)</span>, and then
+by the rapid decay of the last cosine transform and the
+linear mass bound. The constant term has integral zero;
+this also justifies the limit near <span class="math" data-tex="\(v=0\)">\(v=0\)</span>.
+Thus the cosine transform of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is <span class="math" data-tex="\(\pi\delta_0\)">\(\pi\delta_0\)</span>.
+Lebesgue measure on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> has that same transform.
+Their even extensions to the line are tempered distributions
+with equal Fourier transforms. Fourier inversion makes
+them equal, hence <span class="math" data-tex="\(\nu=dv\)">\(\nu=dv\)</span>.
+Every subsequential limit is therefore <span class="math" data-tex="\(dv\)">\(dv\)</span>.
+Since its endpoints zero and one have zero mass,
+compact weak convergence gives <span class="math" data-tex="\(\nu_j([0,1])\to1\)">\(\nu_j([0,1])\to1\)</span>.
+This proves the transform principle.</p>
+<p>We apply it with
+<span class="math math-display" data-tex="\[
+d\nu_{X,T}(v)=\frac{dA_X(Tv)}{T\log T}.
+\tag{9.16}
+\]">\[
+d\nu_{X,T}(v)=\frac{dA_X(Tv)}{T\log T}.
+\tag{9.16}
+\]</span>
+The extra tightness conditions above can be checked rather
+than assumed. If transforms (9.14) are bounded also for
+<span class="math" data-tex="\(s=1/M\)">\(s=1/M\)</span>, then <span class="math" data-tex="\(k(v/M)\geq c\)">\(k(v/M)\geq c\)</span> on <span class="math" data-tex="\(0\leq v\leq M\)">\(0\leq v\leq M\)</span>,
+so <span class="math" data-tex="\(\nu_{X,T}([0,M])\ll M\)">\(\nu_{X,T}([0,M])\ll M\)</span>.
+If this is known up to <span class="math" data-tex="\(M=X^\eta\)">\(M=X^\eta\)</span>, for some fixed
+<span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, partial integration of <span class="math" data-tex="\(v^{-2}\)">\(v^{-2}\)</span> gives
+a tail <span class="math" data-tex="\(O(1/M)\)">\(O(1/M)\)</span> up to that cutoff.
+Beyond it, (9.11) gives the remaining bound
+<span class="math math-display" data-tex="\[
+O\!\left(\frac{\log X}{X^\eta}\right)=o(1),
+\tag{9.17}
+\]">\[
+O\!\left(\frac{\log X}{X^\eta}\right)=o(1),
+\tag{9.17}
+\]</span>
+when <span class="math" data-tex="\(\log X/\log T\)">\(\log X/\log T\)</span> stays in a fixed bounded interval.
+The same reasoning with large fixed <span class="math" data-tex="\(s\)">\(s\)</span> excludes mass
+accumulating at zero: for fixed <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, positivity
+and <span class="math" data-tex="\(k(v/\eta)\geq c\)">\(k(v/\eta)\geq c\)</span> on <span class="math" data-tex="\([0,\eta]\)">\([0,\eta]\)</span> give
+<span class="math" data-tex="\(\limsup\nu_{X,T}([0,\eta])\leq C\eta\)">\(\limsup\nu_{X,T}([0,\eta])\leq C\eta\)</span> from (9.14)
+with <span class="math" data-tex="\(s=1/\eta\)">\(s=1/\eta\)</span>.
+Thus (9.14) indeed recovers
+<span class="math math-display" data-tex="\[
+A_X(T)\sim T\log T.
+\tag{9.18}
+\]">\[
+A_X(T)\sim T\log T.
+\tag{9.18}
+\]</span>
+Uniform versions follow by contradiction: any sequence
+of parameters violating uniform convergence has these
+same bounds, the same transforms, and the same unique
+subsequential limit.</p>
+<h3 id="9-3-from-the-strong-conjecture-to-multiplicative-intervals">9.3. From the strong conjecture to multiplicative intervals</h3>
+<p>Assume (8.1). For <span class="math" data-tex="\(T\leq X\)">\(T\leq X\)</span> with
+<span class="math" data-tex="\(\log X/\log T\)">\(\log X/\log T\)</span> bounded, (3.3) and the conjecture give
+<span class="math math-display" data-tex="\[
+A_X(T)\sim T\log T.
+\tag{9.19}
+\]">\[
+A_X(T)\sim T\log T.
+\tag{9.19}
+\]</span>
+For <span class="math" data-tex="\(T\geq X\)">\(T\geq X\)</span>, the endpoint extension (4.11) instead gives
+<span class="math math-display" data-tex="\[
+A_X(T)=T\log X+o(T\log T)+
+O(TX^{-2}\log^2T).
+\tag{9.20}
+\]">\[
+A_X(T)=T\log X+o(T\log T)+
+O(TX^{-2}\log^2T).
+\tag{9.20}
+\]</span>
+In particular, if <span class="math" data-tex="\(T\)">\(T\)</span> is within any fixed multiplicative
+factor of <span class="math" data-tex="\(X\)">\(X\)</span>, (9.19) remains true.
+Both estimates give <span class="math" data-tex="\(A_X(T)\ll T\log T\)">\(A_X(T)\ll T\log T\)</span> on
+every power range <span class="math" data-tex="\(X^b\leq T\leq X^B\)">\(X^b\leq T\leq X^B\)</span>, with
+fixed <span class="math" data-tex="\(0&lt;b&lt;B&lt;\infty\)">\(0&lt;b&lt;B&lt;\infty\)</span>.</p>
+<p>Let <span class="math" data-tex="\(T_0=1/\kappa\)">\(T_0=1/\kappa\)</span>, where
+<span class="math" data-tex="\(X^{-1}\leq\delta\leq X^{-\epsilon}\)">\(X^{-1}\leq\delta\leq X^{-\epsilon}\)</span>.
+On each fixed compact interval <span class="math" data-tex="\(0&lt;v&lt;\infty\)">\(0&lt;v&lt;\infty\)</span>,
+(9.19)-(9.20) give
+<span class="math math-display" data-tex="\[
+\frac{A_X(T_0v)}{T_0\log T_0}\longrightarrow v
+\]">\[
+\frac{A_X(T_0v)}{T_0\log T_0}\longrightarrow v
+\]</span>
+uniformly in the allowed parameters.
+If <span class="math" data-tex="\(T_0v\geq X\)">\(T_0v\geq X\)</span>, the two logarithms differ by only
+<span class="math" data-tex="\(O_v(1)\)">\(O_v(1)\)</span>, since <span class="math" data-tex="\(T_0\leq(1+o(1))X\)">\(T_0\leq(1+o(1))X\)</span>;
+this explains use of (9.20) at that endpoint.
+The power-range bound gives a linear mass bound after
+this scaling. Outside a slightly larger power range,
+(9.11) makes the two tails negligible.
+For the lower tail choose <span class="math" data-tex="\(T=X^{\epsilon/2}\)">\(T=X^{\epsilon/2}\)</span>, whose
+mass after normalization is <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span>;
+for the upper tail use <span class="math" data-tex="\(k(\kappa t)\ll(\kappa t)^{-2}\)">\(k(\kappa t)\ll(\kappa t)^{-2}\)</span>
+beyond <span class="math" data-tex="\(t=X^B\)">\(t=X^B\)</span> with <span class="math" data-tex="\(B&gt;2\)">\(B&gt;2\)</span>.
+Between them, the tail estimate is <span class="math" data-tex="\(O(1/M)\)">\(O(1/M)\)</span>.
+Therefore
+<span class="math math-display" data-tex="\[
+\int_0^\infty k(\kappa t)\,dA_X(t)
+\sim\frac{\pi}{\kappa}\log(1/\kappa).
+\]">\[
+\int_0^\infty k(\kappa t)\,dA_X(t)
+\sim\frac{\pi}{\kappa}\log(1/\kappa).
+\]</span>
+Equations (9.8)-(9.9), with <span class="math" data-tex="\(\kappa\sim\delta\)">\(\kappa\sim\delta\)</span>, yield
+<span class="math math-display" data-tex="\[
+W(X,\delta)\sim\delta\log(1/\delta).
+\tag{9.21}
+\]">\[
+W(X,\delta)\sim\delta\log(1/\delta).
+\tag{9.21}
+\]</span>
+The errors there are negligible uniformly, because
+<span class="math" data-tex="\(\delta\log^3X\to0\)">\(\delta\log^3X\to0\)</span> and <span class="math" data-tex="\(X^{-1}\sqrt{\log X}\to0\)">\(X^{-1}\sqrt{\log X}\to0\)</span>.</p>
+<p>To invert (9.10), fix <span class="math" data-tex="\(c&gt;1\)">\(c&gt;1\)</span>. Positivity and monotonicity
+of <span class="math" data-tex="\(I(v,\delta)\)">\(I(v,\delta)\)</span> give, from the intervals
+<span class="math" data-tex="\([X,cX]\)">\([X,cX]\)</span> and <span class="math" data-tex="\([X/c,X]\)">\([X/c,X]\)</span>, respectively,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(X,\delta)&amp;\leq
+\frac{\delta X^2\log(1/\delta)}{1+c^{-2}}(1+o(1)),\\
+I(X,\delta)&amp;\geq
+\frac{\delta X^2\log(1/\delta)}{1+c^2}(1+o(1)).
+\end{aligned}
+\tag{9.22}
+\]">\[
+\begin{aligned}
+I(X,\delta)&amp;\leq
+\frac{\delta X^2\log(1/\delta)}{1+c^{-2}}(1+o(1)),\\
+I(X,\delta)&amp;\geq
+\frac{\delta X^2\log(1/\delta)}{1+c^2}(1+o(1)).
+\end{aligned}
+\tag{9.22}
+\]</span>
+For example subtract (9.10) divided by <span class="math" data-tex="\(4X^2\)">\(4X^2\)</span>
+at <span class="math" data-tex="\(X,cX\)">\(X,cX\)</span>, then bound its positive integrand below
+by <span class="math" data-tex="\(I(X,\delta)v^{-5}\)">\(I(X,\delta)v^{-5}\)</span>.
+The other inequality follows by bounding above on
+<span class="math" data-tex="\([X/c,X]\)">\([X/c,X]\)</span>. To apply (9.21) at <span class="math" data-tex="\(X/c\)">\(X/c\)</span> when
+<span class="math" data-tex="\(\delta X\)">\(\delta X\)</span> is close to one, the identical transform
+argument is valid for <span class="math" data-tex="\(\delta\geq c_0/X\)">\(\delta\geq c_0/X\)</span>, for any
+fixed <span class="math" data-tex="\(c_0&gt;0\)">\(c_0&gt;0\)</span>: the averaging height is then at most
+a fixed multiple of <span class="math" data-tex="\(X\)">\(X\)</span>, which (9.20) covers.
+Finally let <span class="math" data-tex="\(c\downarrow1\)">\(c\downarrow1\)</span> in (9.22).
+This proves (9.2).</p>
+<h3 id="9-4-from-multiplicative-intervals-to-the-strong-conjecture">9.4. From multiplicative intervals to the strong conjecture</h3>
+<p>Assume (9.2). We first note the elementary small-length
+extension
+<span class="math math-display" data-tex="\[
+I(X,\delta)\sim\frac12\delta X^2\log X,
+\qquad 0&lt;\delta\leq1/X,
+\tag{9.23}
+\]">\[
+I(X,\delta)\sim\frac12\delta X^2\log X,
+\qquad 0&lt;\delta\leq1/X,
+\tag{9.23}
+\]</span>
+uniformly. Indeed such an interval contains at most
+one integer. The square of its prime-power sum thus
+integrates to
+<span class="math math-display" data-tex="\[
+\frac{\delta}{1+\delta}
+\sum_{n\leq X}n\Lambda(n)^2+
+O(\delta X\log^2(X+2)).
+\]">\[
+\frac{\delta}{1+\delta}
+\sum_{n\leq X}n\Lambda(n)^2+
+O(\delta X\log^2(X+2)).
+\]</span>
+There is at most one partially intersected interval
+at the upper endpoint. Partial summation of (4.3)
+makes the sum <span class="math" data-tex="\(\tfrac12X^2\log X+O(X^2)\)">\(\tfrac12X^2\log X+O(X^2)\)</span>.
+The subtraction of <span class="math" data-tex="\(\delta x\)">\(\delta x\)</span> changes the integral
+by <span class="math" data-tex="\(O(\delta^2X^3)\)">\(O(\delta^2X^3)\)</span>: integrating the prime sum
+and using <span class="math" data-tex="\(\psi(X)\ll X\)">\(\psi(X)\ll X\)</span> proves the cross-term bound,
+and the squared drift is <span class="math" data-tex="\(\delta^2X^3/3\)">\(\delta^2X^3/3\)</span>.
+Both errors are uniformly <span class="math" data-tex="\(o(\delta X^2\log X)\)">\(o(\delta X^2\log X)\)</span>.
+Consequently (9.2) extends to
+<span class="math" data-tex="\(\delta\geq c_0/X\)">\(\delta\geq c_0/X\)</span> for any fixed <span class="math" data-tex="\(c_0&gt;0\)">\(c_0&gt;0\)</span>.</p>
+<p>The Abelian direction of (9.10) now gives (9.21).
+For <span class="math" data-tex="\(v\geq X\)">\(v\geq X\)</span> up to <span class="math" data-tex="\(X^B\)">\(X^B\)</span>, (9.2) is uniform
+after slightly reducing <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>.
+The remaining tail is bounded using RH by
+<span class="math math-display" data-tex="\[
+X^2\int_{X^B}^\infty v^{-3}\log^4(v+2)\,dv,
+\]">\[
+X^2\int_{X^B}^\infty v^{-3}\log^4(v+2)\,dv,
+\]</span>
+which is <span class="math" data-tex="\(o(\delta\log(1/\delta))\)">\(o(\delta\log(1/\delta))\)</span> for, say, <span class="math" data-tex="\(B=3\)">\(B=3\)</span>
+and <span class="math" data-tex="\(\delta\geq c_0/X\)">\(\delta\geq c_0/X\)</span>.
+Thus substitution of the main term into (9.10)
+is justified. Equations (9.8)-(9.9) give
+<span class="math math-display" data-tex="\[
+\int_0^\infty k(\kappa t)\,dA_X(t)
+\sim\frac{\pi}{\kappa}\log(1/\kappa)
+\tag{9.24}
+\]">\[
+\int_0^\infty k(\kappa t)\,dA_X(t)
+\sim\frac{\pi}{\kappa}\log(1/\kappa)
+\tag{9.24}
+\]</span>
+in the same range.</p>
+<p>Set <span class="math" data-tex="\(\kappa=s/T\)">\(\kappa=s/T\)</span>, with fixed <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, and take
+<span class="math" data-tex="\(T\leq X\leq T^A\)">\(T\leq X\leq T^A\)</span>, for fixed <span class="math" data-tex="\(A&gt;1\)">\(A&gt;1\)</span>.
+Then <span class="math" data-tex="\(\delta\sim s/T\)">\(\delta\sim s/T\)</span> lies between <span class="math" data-tex="\(c_s/X\)">\(c_s/X\)</span>
+and <span class="math" data-tex="\(X^{-\epsilon_A}\)">\(X^{-\epsilon_A}\)</span>, after choosing
+<span class="math" data-tex="\(\epsilon_A&lt;1/A\)">\(\epsilon_A&lt;1/A\)</span>.
+Equation (9.24) proves (9.14) for the measures (9.16).
+For completeness their tail bounds also hold up to
+a power cutoff, as required in (9.17).
+From (9.23) and (9.2),
+<span class="math math-display" data-tex="\[
+I(v,\delta)\ll\delta v^2\log(v+2)
+\]">\[
+I(v,\delta)\ll\delta v^2\log(v+2)
+\]</span>
+when <span class="math" data-tex="\(\delta v\leq1\)">\(\delta v\leq1\)</span>, or when <span class="math" data-tex="\(\delta v\geq1\)">\(\delta v\geq1\)</span>
+and <span class="math" data-tex="\(\delta\leq v^{-\epsilon&#x27;}\)">\(\delta\leq v^{-\epsilon&#x27;}\)</span>, for any fixed
+<span class="math" data-tex="\(\epsilon&#x27;&gt;0\)">\(\epsilon&#x27;&gt;0\)</span>.
+Using these two estimates in (9.10), with the RH
+tail beyond a larger power of <span class="math" data-tex="\(X\)">\(X\)</span>, yields
+<span class="math math-display" data-tex="\[
+W(X,\delta)\ll\delta\{\log X+\log(2/\delta)\}
+\tag{9.25}
+\]">\[
+W(X,\delta)\ll\delta\{\log X+\log(2/\delta)\}
+\tag{9.25}
+\]</span>
+also for <span class="math" data-tex="\(X^{-B}\leq\delta\leq X^{-\epsilon_A}\)">\(X^{-B}\leq\delta\leq X^{-\epsilon_A}\)</span>,
+with any fixed <span class="math" data-tex="\(B&gt;1\)">\(B&gt;1\)</span>. Explicitly take the upper
+cutoff <span class="math" data-tex="\(v=X^C\)">\(v=X^C\)</span> with <span class="math" data-tex="\(2C&gt;B+2\)">\(2C&gt;B+2\)</span>, and use
+<span class="math" data-tex="\(\epsilon&#x27;=\epsilon_A/(2C)\)">\(\epsilon&#x27;=\epsilon_A/(2C)\)</span> below it.
+The RH tail is <span class="math" data-tex="\(O(X^{2-2C}\log^4X)=o(\delta\log X)\)">\(O(X^{2-2C}\log^4X)=o(\delta\log X)\)</span>.
+The errors (9.8)-(9.9) preserve this bound for <span class="math" data-tex="\(R\)">\(R\)</span>.
+Taking <span class="math" data-tex="\(\kappa=1/(MT)\)">\(\kappa=1/(MT)\)</span>, with <span class="math" data-tex="\(1\leq M\leq X^\eta\)">\(1\leq M\leq X^\eta\)</span>,
+and using <span class="math" data-tex="\(k(v/M)\geq c\)">\(k(v/M)\geq c\)</span> on <span class="math" data-tex="\([0,M]\)">\([0,M]\)</span>, proves
+<span class="math" data-tex="\(\nu_{X,T}([0,M])\ll_A M\)">\(\nu_{X,T}([0,M])\ll_A M\)</span>.
+The tail beyond <span class="math" data-tex="\(X^\eta\)">\(X^\eta\)</span> is (9.17).
+Thus the converse principle proves (9.18) uniformly
+for <span class="math" data-tex="\(T\leq X\leq T^A\)">\(T\leq X\leq T^A\)</span>.
+Equation (3.3) then gives <span class="math" data-tex="\(F(\log X/\log T,T)\to1\)">\(F(\log X/\log T,T)\to1\)</span>
+uniformly there, which is exactly (8.1).</p>
+<h3 id="9-5-changing-proportional-lengths-to-fixed-lengths">9.5. Changing proportional lengths to fixed lengths</h3>
+<p>We prove the equivalence of (9.2) and (9.3), including the
+lower endpoint <span class="math" data-tex="\(h=1\)">\(h=1\)</span>. The basic identities use positive
+integrands. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B(x,H)&amp;=\int_0^H E(x,h)^2\,dh,\\
+M(X,H)&amp;=\int_0^H J(X,h)\,dh
+=\int_0^X B(x,H)\,dx,\\
+C(X,\Delta)&amp;=\int_0^\Delta I(X,\delta)\,d\delta
+=\int_0^X\frac{B(x,\Delta x)}{x}\,dx.
+\end{aligned}
+\tag{9.26}
+\]">\[
+\begin{aligned}
+B(x,H)&amp;=\int_0^H E(x,h)^2\,dh,\\
+M(X,H)&amp;=\int_0^H J(X,h)\,dh
+=\int_0^X B(x,H)\,dx,\\
+C(X,\Delta)&amp;=\int_0^\Delta I(X,\delta)\,d\delta
+=\int_0^X\frac{B(x,\Delta x)}{x}\,dx.
+\end{aligned}
+\tag{9.26}
+\]</span>
+The value at <span class="math" data-tex="\(x=0\)">\(x=0\)</span> in the last integral is interpreted
+by its limit; alternatively omit that single point.
+Fubini proves the last identity by <span class="math" data-tex="\(h=\delta x\)">\(h=\delta x\)</span>.
+The functions <span class="math" data-tex="\(B(x,H)\)">\(B(x,H)\)</span>, <span class="math" data-tex="\(M(X,H)\)">\(M(X,H)\)</span>, and <span class="math" data-tex="\(C(X,\Delta)\)">\(C(X,\Delta)\)</span>
+are nondecreasing in <span class="math" data-tex="\(H\)">\(H\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span>, and each of their
+integration endpoints, respectively. We do <strong>not</strong> assume
+that <span class="math" data-tex="\(J\)">\(J\)</span> is nondecreasing in <span class="math" data-tex="\(h\)">\(h\)</span> or <span class="math" data-tex="\(I\)">\(I\)</span> in <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<p>Suppose first (9.2). Integrating it in <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, using
+(9.23) below <span class="math" data-tex="\(1/X\)">\(1/X\)</span>, gives
+<span class="math math-display" data-tex="\[
+C(X,\Delta)\sim\frac14\Delta^2X^2\log(1/\Delta),
+\qquad c/X\leq\Delta\leq X^{-\epsilon},
+\tag{9.27}
+\]">\[
+C(X,\Delta)\sim\frac14\Delta^2X^2\log(1/\Delta),
+\qquad c/X\leq\Delta\leq X^{-\epsilon},
+\tag{9.27}
+\]</span>
+for every fixed <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.
+Indeed the integral of
+<span class="math" data-tex="\(\tfrac12\delta X^2\log(1/\delta)\)">\(\tfrac12\delta X^2\log(1/\delta)\)</span> is
+<span class="math" data-tex="\(\tfrac14\Delta^2X^2\log(1/\Delta)+
+\tfrac18\Delta^2X^2\)">\(\tfrac14\Delta^2X^2\log(1/\Delta)+
+\tfrac18\Delta^2X^2\)</span>.
+Below <span class="math" data-tex="\(1/X\)">\(1/X\)</span>, (9.23) integrates to
+<span class="math" data-tex="\(\tfrac14X^2\Delta^2\log X(1+o(1))\)">\(\tfrac14X^2\Delta^2\log X(1+o(1))\)</span>.
+If <span class="math" data-tex="\(\Delta X\)">\(\Delta X\)</span> is bounded these logarithms differ by
+<span class="math" data-tex="\(O_c(1)\)">\(O_c(1)\)</span>; if it tends to infinity, the difference
+from the segment below <span class="math" data-tex="\(1/X\)">\(1/X\)</span> is
+<span class="math" data-tex="\(O(\log X)=o(\Delta^2X^2\log(1/\Delta))\)">\(O(\log X)=o(\Delta^2X^2\log(1/\Delta))\)</span>.
+This proves (9.27) uniformly, and also the corresponding
+uniform upper bound.</p>
+<p>Fix <span class="math" data-tex="\(0&lt;U&lt;V\)">\(0&lt;U&lt;V\)</span>. Positivity and monotonicity of <span class="math" data-tex="\(B\)">\(B\)</span>
+in its second argument give
+<span class="math math-display" data-tex="\[
+\int_U^V x\,dC(x,H/V)
+\leq \int_U^V B(x,H)\,dx
+\leq \int_U^V x\,dC(x,H/U).
+\tag{9.28}
+\]">\[
+\int_U^V x\,dC(x,H/V)
+\leq \int_U^V B(x,H)\,dx
+\leq \int_U^V x\,dC(x,H/U).
+\tag{9.28}
+\]</span>
+The notation means integration with respect to the
+<strong>first</strong> variable of <span class="math" data-tex="\(C\)">\(C\)</span>, with its second variable
+held fixed: from (9.26),
+<span class="math" data-tex="\(dC(x,\Delta)=B(x,\Delta x)\,dx/x\)">\(dC(x,\Delta)=B(x,\Delta x)\,dx/x\)</span>.
+Using integration by parts and (9.27), for fixed
+ratios <span class="math" data-tex="\(V/U\)">\(V/U\)</span> in the admissible ranges, gives
+<span class="math math-display" data-tex="\[
+\int_U^V x\,dC(x,\Delta)
+=\frac{\Delta^2}{6}(V^3-U^3)
+\log(1/\Delta)(1+o(1)).
+\tag{9.29}
+\]">\[
+\int_U^V x\,dC(x,\Delta)
+=\frac{\Delta^2}{6}(V^3-U^3)
+\log(1/\Delta)(1+o(1)).
+\tag{9.29}
+\]</span>
+This follows explicitly from
+<span class="math" data-tex="\([xC(x,\Delta)]_U^V-\int_U^V C(x,\Delta)dx\)">\([xC(x,\Delta)]_U^V-\int_U^V C(x,\Delta)dx\)</span>.
+Uniformity of (9.27) bounds the remainder in that
+expression; no derivative of an asymptotic formula
+has been taken.</p>
+<p>Apply (9.28) on a finite multiplicative mesh of
+<span class="math" data-tex="\([\eta X,X]\)">\([\eta X,X]\)</span>, with adjacent ratio at most <span class="math" data-tex="\(1+\tau\)">\(1+\tau\)</span>.
+For <span class="math" data-tex="\(c\leq H\leq X^{1-\epsilon}\)">\(c\leq H\leq X^{1-\epsilon}\)</span>, each <span class="math" data-tex="\(\Delta=H/U\)">\(\Delta=H/U\)</span>
+or <span class="math" data-tex="\(H/V\)">\(H/V\)</span> satisfies the hypotheses of (9.27), after
+reducing the fixed power margin and using a fixed
+lower constant depending on <span class="math" data-tex="\(c,\eta,\tau\)">\(c,\eta,\tau\)</span>.
+Also
+<span class="math" data-tex="\(\log(U/H)=\log(X/H)+O_\eta(1)\)">\(\log(U/H)=\log(X/H)+O_\eta(1)\)</span>.
+As <span class="math" data-tex="\(\tau\downarrow0\)">\(\tau\downarrow0\)</span>, the lower and upper sums in
+(9.29) both tend to
+<span class="math math-display" data-tex="\[
+\frac12H^2\int_{\eta X}^X\log(x/H)\,dx
+=\frac12H^2(1-\eta)X\log(X/H)+O_\eta(H^2X).
+\]">\[
+\frac12H^2\int_{\eta X}^X\log(x/H)\,dx
+=\frac12H^2(1-\eta)X\log(X/H)+O_\eta(H^2X).
+\]</span></p>
+<p>We verify that the omitted part near zero is harmless.
+Set <span class="math" data-tex="\(K=HX^{\epsilon/4}\)">\(K=HX^{\epsilon/4}\)</span>. For <span class="math" data-tex="\(x\leq K\)">\(x\leq K\)</span>, RH and
+<span class="math" data-tex="\(E(x,h)=D(x+h)-D(x)\)">\(E(x,h)=D(x+h)-D(x)\)</span> give
+<span class="math math-display" data-tex="\[
+\int_0^K B(x,H)\,dx
+\ll H(K^2+HK)\log^4(X+2)
+=o(H^2X\log(X/H)).
+\tag{9.30}
+\]">\[
+\int_0^K B(x,H)\,dx
+\ll H(K^2+HK)\log^4(X+2)
+=o(H^2X\log(X/H)).
+\tag{9.30}
+\]</span>
+Here <span class="math" data-tex="\(H\leq X^{1-\epsilon}\)">\(H\leq X^{1-\epsilon}\)</span> makes the ratio
+<span class="math" data-tex="\(O(X^{-\epsilon/2}\log^3X)\)">\(O(X^{-\epsilon/2}\log^3X)\)</span>.
+On <span class="math" data-tex="\([K,\eta X]\)">\([K,\eta X]\)</span>, use a dyadic mesh in (9.28).
+The upper bound following (9.27), together with
+<span class="math" data-tex="\(\int_U^V x\,dC\leq VC(V,\Delta)\)">\(\int_U^V x\,dC\leq VC(V,\Delta)\)</span>,
+gives <span class="math" data-tex="\(O(H^2V\log X)\)">\(O(H^2V\log X)\)</span> on each such interval.
+The geometric sum is <span class="math" data-tex="\(O(\eta H^2X\log X)\)">\(O(\eta H^2X\log X)\)</span>.
+The power margin is uniform here because <span class="math" data-tex="\(H/x\leq
+X^{-\epsilon/4}\)">\(H/x\leq
+X^{-\epsilon/4}\)</span> when <span class="math" data-tex="\(x\geq K\)">\(x\geq K\)</span>; the lower
+length satisfies <span class="math" data-tex="\((H/U)U=H\geq c\)">\((H/U)U=H\geq c\)</span>.
+Letting <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>, and recalling
+<span class="math" data-tex="\(\log(X/H)\geq\epsilon\log X\)">\(\log(X/H)\geq\epsilon\log X\)</span>, proves
+<span class="math math-display" data-tex="\[
+M(X,H)\sim\frac12H^2X\log(X/H)
+\quad(c\leq H\leq X^{1-\epsilon}).
+\tag{9.31}
+\]">\[
+M(X,H)\sim\frac12H^2X\log(X/H)
+\quad(c\leq H\leq X^{1-\epsilon}).
+\tag{9.31}
+\]</span></p>
+<p>To recover the unsmoothed <span class="math" data-tex="\(J(X,H)\)">\(J(X,H)\)</span>, average over
+<span class="math" data-tex="\(H\leq h\leq(1+\tau)H\)">\(H\leq h\leq(1+\tau)H\)</span>.
+The difference identity
+<span class="math math-display" data-tex="\[
+E(x,h)-E(x,H)=E(x+H,h-H)
+\]">\[
+E(x,h)-E(x,H)=E(x+H,h-H)
+\]</span>
+and enlargement of the <span class="math" data-tex="\(x\)">\(x\)</span>-integration interval show
+that the average squared <span class="math" data-tex="\(L^2[0,X]\)">\(L^2[0,X]\)</span> difference is
+at most
+<span class="math math-display" data-tex="\[
+\frac{M(X+H,\tau H)}{\tau H}
+\ll\tau HX\log(X/H),
+\tag{9.32}
+\]">\[
+\frac{M(X+H,\tau H)}{\tau H}
+\ll\tau HX\log(X/H),
+\tag{9.32}
+\]</span>
+for each fixed <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>; use (9.31) with
+lower constant <span class="math" data-tex="\(\tau c\)">\(\tau c\)</span>.
+The average of <span class="math" data-tex="\(J(X,h)\)">\(J(X,h)\)</span> on this interval, computed
+by differencing <span class="math" data-tex="\(M\)">\(M\)</span> in (9.31), is
+<span class="math math-display" data-tex="\[
+(1+\tau/2+o(1))HX\log(X/H).
+\tag{9.33}
+\]">\[
+(1+\tau/2+o(1))HX\log(X/H).
+\tag{9.33}
+\]</span>
+By the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> triangle inequality, (9.32) first
+bounds <span class="math" data-tex="\(J(X,H)\)">\(J(X,H)\)</span> by a constant times this scale.
+Cauchy–Schwarz then bounds its difference from the
+average (9.33) by <span class="math" data-tex="\(O(\sqrt\tau)\)">\(O(\sqrt\tau)\)</span> times the scale.
+Let <span class="math" data-tex="\(X\to\infty\)">\(X\to\infty\)</span>, then <span class="math" data-tex="\(\tau\downarrow0\)">\(\tau\downarrow0\)</span>.
+This proves (9.3).</p>
+<p>Conversely assume (9.3). For <span class="math" data-tex="\(0&lt;h\leq1\)">\(0&lt;h\leq1\)</span>, the
+interval contains at most one integer, so the same
+diagonal calculation as for (9.23) gives
+<span class="math math-display" data-tex="\[
+J(X,h)=h\sum_{n\leq X}\Lambda(n)^2
++O(h\log^2(X+2)+h^2X)
+\sim hX\log X,
+\tag{9.34}
+\]">\[
+J(X,h)=h\sum_{n\leq X}\Lambda(n)^2
++O(h\log^2(X+2)+h^2X)
+\sim hX\log X,
+\tag{9.34}
+\]</span>
+uniformly. Boundary intervals account for the first
+error; integrating the drift and using <span class="math" data-tex="\(\psi(X)\ll X\)">\(\psi(X)\ll X\)</span>
+gives the second. Integration of (9.3), with
+(9.34) on <span class="math" data-tex="\(h&lt;1\)">\(h&lt;1\)</span>, now proves (9.31) for every
+fixed lower constant <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.
+It also gives
+<span class="math math-display" data-tex="\[
+M(X,H)\ll H^2X\log(X+2)
+\quad(0&lt;H\leq X^{1-\epsilon}).
+\tag{9.35}
+\]">\[
+M(X,H)\ll H^2X\log(X+2)
+\quad(0&lt;H\leq X^{1-\epsilon}).
+\tag{9.35}
+\]</span>
+The integral of <span class="math" data-tex="\(hX\log(X/h)\)">\(hX\log(X/h)\)</span> is
+<span class="math" data-tex="\(\tfrac12H^2X\log(X/H)+\tfrac14H^2X\)">\(\tfrac12H^2X\log(X/H)+\tfrac14H^2X\)</span>;
+the lower interval contributes only <span class="math" data-tex="\(O(X)\)">\(O(X)\)</span>
+to the comparison for <span class="math" data-tex="\(H\geq c\)">\(H\geq c\)</span>.</p>
+<p>We invert the positive-mesh argument. On <span class="math" data-tex="\([U,V]\)">\([U,V]\)</span>,
+<span class="math math-display" data-tex="\[
+\int_U^V x^{-1}\,dM(x,\Delta U)
+\leq\int_U^V\frac{B(x,\Delta x)}x\,dx
+\leq\int_U^V x^{-1}\,dM(x,\Delta V).
+\tag{9.36}
+\]">\[
+\int_U^V x^{-1}\,dM(x,\Delta U)
+\leq\int_U^V\frac{B(x,\Delta x)}x\,dx
+\leq\int_U^V x^{-1}\,dM(x,\Delta V).
+\tag{9.36}
+\]</span>
+For fixed <span class="math" data-tex="\(h\)">\(h\)</span>,
+<span class="math math-display" data-tex="\[
+\int_U^V x^{-1}\,dM(x,h)
+=[M(x,h)/x]_U^V+\int_U^V M(x,h)x^{-2}dx.
+\]">\[
+\int_U^V x^{-1}\,dM(x,h)
+=[M(x,h)/x]_U^V+\int_U^V M(x,h)x^{-2}dx.
+\]</span>
+Equation (9.31) makes its leading term
+<span class="math" data-tex="\(\tfrac12h^2\log(1/\Delta)\log(V/U)\)">\(\tfrac12h^2\log(1/\Delta)\log(V/U)\)</span>
+when <span class="math" data-tex="\(h=\Delta U\)">\(h=\Delta U\)</span> or <span class="math" data-tex="\(\Delta V\)">\(\Delta V\)</span>;
+the terms from <span class="math" data-tex="\(\log(x/h)-\log(1/\Delta)\)">\(\log(x/h)-\log(1/\Delta)\)</span>
+and the leading boundary term are <span class="math" data-tex="\(O_{V/U}(h^2)\)">\(O_{V/U}(h^2)\)</span>;
+the uniform asymptotic remainders contribute
+<span class="math" data-tex="\(o(h^2\log(1/\Delta))\)">\(o(h^2\log(1/\Delta))\)</span> for each fixed mesh interval.
+A finite mesh of <span class="math" data-tex="\([\eta X,X]\)">\([\eta X,X]\)</span>, followed by
+<span class="math" data-tex="\(\tau\downarrow0\)">\(\tau\downarrow0\)</span>, therefore yields the common limit
+<span class="math math-display" data-tex="\[
+\frac12\Delta^2\log(1/\Delta)
+\int_{\eta X}^X x\,dx
+=\frac14\Delta^2(1-\eta^2)X^2\log(1/\Delta).
+\]">\[
+\frac12\Delta^2\log(1/\Delta)
+\int_{\eta X}^X x\,dx
+=\frac14\Delta^2(1-\eta^2)X^2\log(1/\Delta).
+\]</span>
+This is uniform for <span class="math" data-tex="\(c/X\leq\Delta\leq X^{-\epsilon}\)">\(c/X\leq\Delta\leq X^{-\epsilon}\)</span>,
+because <span class="math" data-tex="\(h=\Delta U,\Delta V\)">\(h=\Delta U,\Delta V\)</span> is at least
+a fixed positive constant on this mesh.
+The part <span class="math" data-tex="\(x\leq\eta X\)">\(x\leq\eta X\)</span> is bounded by
+<span class="math math-display" data-tex="\[
+C\Delta^2\eta^2X^2\log(X+2).
+\tag{9.37}
+\]">\[
+C\Delta^2\eta^2X^2\log(X+2).
+\tag{9.37}
+\]</span>
+To check it, divide <span class="math" data-tex="\((0,\eta X]\)">\((0,\eta X]\)</span> into dyadic intervals.
+On <span class="math" data-tex="\([U,2U]\)">\([U,2U]\)</span>, the upper bound in (9.36) is at most
+<span class="math" data-tex="\(M(2U,2\Delta U)/U\)">\(M(2U,2\Delta U)/U\)</span>, and (9.35) gives
+<span class="math" data-tex="\(C\Delta^2U^2\log(2U+2)\)">\(C\Delta^2U^2\log(2U+2)\)</span>.
+Summing the geometric series proves (9.37);
+the bounded interval near zero is covered directly
+by <span class="math" data-tex="\(\psi(x)=0\)">\(\psi(x)=0\)</span> and the finitely many integers there.
+In detail, when <span class="math" data-tex="\(\Delta x&lt;1\)">\(\Delta x&lt;1\)</span>, the square of the
+prime-power window is diagonal; its integral in <span class="math" data-tex="\(x\)">\(x\)</span>
+is <span class="math" data-tex="\(O(\Delta)\)">\(O(\Delta)\)</span> on a bounded interval, so integration
+in the proportional length from zero to <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>
+gives <span class="math" data-tex="\(O(\Delta^2)\)">\(O(\Delta^2)\)</span>. The squared drift contributes
+only <span class="math" data-tex="\(O(\Delta^3)\)">\(O(\Delta^3)\)</span>.
+The power condition is valid since
+<span class="math" data-tex="\(\Delta\leq X^{-\epsilon}\leq
+(2U)^{-\epsilon/2}\)">\(\Delta\leq X^{-\epsilon}\leq
+(2U)^{-\epsilon/2}\)</span> for large <span class="math" data-tex="\(X\)">\(X\)</span>.
+Letting <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span> proves (9.27).</p>
+<p>Finally recover <span class="math" data-tex="\(I(X,\delta)\)">\(I(X,\delta)\)</span> from its average
+<span class="math" data-tex="\(C(X,\Delta)\)">\(C(X,\Delta)\)</span>. For <span class="math" data-tex="\(\delta&#x27;\geq\delta\)">\(\delta&#x27;\geq\delta\)</span>,
+<span class="math math-display" data-tex="\[
+E(x,\delta&#x27;x)-E(x,\delta x)
+=E((1+\delta)x,(\delta&#x27;-\delta)x).
+\]">\[
+E(x,\delta&#x27;x)-E(x,\delta x)
+=E((1+\delta)x,(\delta&#x27;-\delta)x).
+\]</span>
+Changing <span class="math" data-tex="\(y=(1+\delta)x\)">\(y=(1+\delta)x\)</span> gives an average squared
+difference, for <span class="math" data-tex="\(\delta\leq\delta&#x27;\leq(1+\tau)\delta\)">\(\delta\leq\delta&#x27;\leq(1+\tau)\delta\)</span>,
+at most
+<span class="math math-display" data-tex="\[
+\frac{C((1+\delta)X,\tau\delta/(1+\delta))}
+{\tau\delta}
+\ll\tau\delta X^2\log(1/\delta).
+\tag{9.38}
+\]">\[
+\frac{C((1+\delta)X,\tau\delta/(1+\delta))}
+{\tau\delta}
+\ll\tau\delta X^2\log(1/\delta).
+\tag{9.38}
+\]</span>
+The Jacobian and the change of the averaging variable
+cancel: explicitly <span class="math" data-tex="\(r=(\delta&#x27;-\delta)/(1+\delta)\)">\(r=(\delta&#x27;-\delta)/(1+\delta)\)</span>
+and <span class="math" data-tex="\(dx=dy/(1+\delta)\)">\(dx=dy/(1+\delta)\)</span>.
+Equation (9.27) applies with lower constant
+depending on fixed <span class="math" data-tex="\(\tau,c\)">\(\tau,c\)</span>.
+Differencing (9.27) computes the average of
+<span class="math" data-tex="\(I(X,\delta&#x27;)\)">\(I(X,\delta&#x27;)\)</span> as
+<span class="math math-display" data-tex="\[
+(1+\tau/2+o(1))
+\frac12\delta X^2\log(1/\delta).
+\]">\[
+(1+\tau/2+o(1))
+\frac12\delta X^2\log(1/\delta).
+\]</span>
+The triangle and Cauchy–Schwarz argument used in
+(9.32)-(9.33), followed by <span class="math" data-tex="\(\tau\downarrow0\)">\(\tau\downarrow0\)</span>,
+proves (9.2). All three assertions in Theorem 9.1
+are now equivalent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The logarithm <span class="math" data-tex="\(\log(X/h)\)">\(\log(X/h)\)</span> in the variance is smaller
+than the naive independent-prime value <span class="math" data-tex="\(\log X\)">\(\log X\)</span>.
+The sine-kernel prediction for pairs of zeros thus
+has a concrete arithmetic meaning: it predicts a
+particular amount of cancellation in short-interval
+prime counts. Neither variance asymptotic asserts
+that every interval of length <span class="math" data-tex="\(h\)">\(h\)</span> contains a prime.</p>
+<h2 id="10-a-picture-of-the-prediction">10. A picture of the prediction</h2>
+<figure><img src="figures/pair-correlation.png" alt="The predicted regular Fourier profile, the narrowing unit-mass spike, and the pair density." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1.</em> The left panel is the predicted regular profile
+<span class="math" data-tex="\(\min(|\alpha|,1)\)">\(\min(|\alpha|,1)\)</span>; it is proved for <span class="math" data-tex="\(|\alpha|&lt;1\)">\(|\alpha|&lt;1\)</span>
+and conjectured beyond that range. The middle panel shows
+the separate spike <span class="math" data-tex="\(T^{-2|\alpha|}\log T\)">\(T^{-2|\alpha|}\log T\)</span> at two finite
+values of <span class="math" data-tex="\(T\)">\(T\)</span>, with full height displayed. Its width
+shrinks and its integral remains exactly one by (1.4).
+The right panel is the predicted density
+<span class="math" data-tex="\(1-(\sin\pi u/\pi u)^2\)">\(1-(\sin\pi u/\pi u)^2\)</span> for unequal-ordinate pairs.
+These are graphs of formulas, rather than numerical
+estimates of <span class="math" data-tex="\(F\)">\(F\)</span> from a finite zero table.
+The link between the panels is Theorem 5.1 and (8.4).</p>
+<p>Near zero, Taylor expansion gives
+<span class="math math-display" data-tex="\[
+1-\left(\frac{\sin\pi u}{\pi u}\right)^2
+=\frac{\pi^2}{3}u^2+O(u^4).
+\tag{10.1}
+\]">\[
+1-\left(\frac{\sin\pi u}{\pi u}\right)^2
+=\frac{\pi^2}{3}u^2+O(u^4).
+\tag{10.1}
+\]</span>
+Thus the prediction suppresses close <strong>pairs</strong> quadratically.
+It does not give the distribution of consecutive gaps by
+itself. A pair can have other zeros between it; the next
+lesson explains why a consecutive-gap law needs information
+from all correlation orders.</p>
+<h2 id="11-exercises-with-complete-solutions">11. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> Show that <span class="math" data-tex="\(F(\alpha,T)\geq0\)">\(F(\alpha,T)\geq0\)</span> by writing
+it as an integral of a square.</p>
+<p><em>Solution.</em> Split
+<span class="math" data-tex="\(\int e^{-2|u|}e^{ivu}du\)">\(\int e^{-2|u|}e^{ivu}du\)</span> at zero. The two terms are
+<span class="math" data-tex="\((2-iv)^{-1}\)">\((2-iv)^{-1}\)</span> and <span class="math" data-tex="\((2+iv)^{-1}\)">\((2+iv)^{-1}\)</span>, whose sum is
+<span class="math" data-tex="\(4/(4+v^2)\)">\(4/(4+v^2)\)</span>. Insert this expression for <span class="math" data-tex="\(w\)">\(w\)</span> in
+(1.1) and interchange the finite pair sum with the integral.
+The resulting sum is
+<span class="math" data-tex="\(\left|\sum_\gamma e^{i\gamma(\alpha\log T+u)}\right|^2\)">\(\left|\sum_\gamma e^{i\gamma(\alpha\log T+u)}\right|^2\)</span>.
+Division by the positive <span class="math" data-tex="\(N_*(T)\)">\(N_*(T)\)</span> gives (1.2).
+Reality and evenness also follow directly by swapping the
+two ordinates.</p>
+<p><strong>Exercise 2.</strong> Prove the Fourier pair between the squared
+sinc and the triangular function in convention (5.1).</p>
+<p><em>Solution.</em> The inverse transform of
+<span class="math" data-tex="\(1_{[-1/2,1/2]}\)">\(1_{[-1/2,1/2]}\)</span> is
+<span class="math" data-tex="\(\int_{-1/2}^{1/2}e^{2\pi i\alpha u}d\alpha
+=\sin(\pi u)/(\pi u)\)">\(\int_{-1/2}^{1/2}e^{2\pi i\alpha u}d\alpha
+=\sin(\pi u)/(\pi u)\)</span>.
+Multiplying the two integrals convolves their indicators.
+The length of the intersection
+<span class="math" data-tex="\([-1/2,1/2]\cap[\alpha-1/2,\alpha+1/2]\)">\([-1/2,1/2]\cap[\alpha-1/2,\alpha+1/2]\)</span>
+is <span class="math" data-tex="\((1-|\alpha|)_+\)">\((1-|\alpha|)_+\)</span>, so (5.6) follows.
+Both the squared sinc and the triangle are integrable;
+Fourier inversion therefore gives the asserted forward
+transform also. Scaling <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(a\)">\(a\)</span> gives (6.1).</p>
+<p><strong>Exercise 3.</strong> Deduce the band-limited pair formula from
+Montgomery's theorem, including its diagonal term.</p>
+<p><em>Solution.</em> Fourier inversion gives (5.4) exactly.
+On every inner interval <span class="math" data-tex="\(|\alpha|\leq1-\epsilon\)">\(|\alpha|\leq1-\epsilon\)</span>,
+the theorem replaces <span class="math" data-tex="\(F\)">\(F\)</span> by
+<span class="math" data-tex="\(P_T+|\alpha|+o(1)+o(1)P_T\)">\(P_T+|\alpha|+o(1)+o(1)P_T\)</span>.
+Continuity of <span class="math" data-tex="\(\widehat r\)">\(\widehat r\)</span> and
+<span class="math" data-tex="\(\int P_T=1\)">\(\int P_T=1\)</span> make the first integral tend to
+<span class="math" data-tex="\(\widehat r(0)\)">\(\widehat r(0)\)</span>; the additive error has vanishing
+integral. The endpoint contribution is <span class="math" data-tex="\(O(\epsilon)\)">\(O(\epsilon)\)</span>
+by (4.10). Letting <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span> gives (5.5).
+Use <span class="math" data-tex="\(r(0)=\int\widehat r\)">\(r(0)=\int\widehat r\)</span>, <span class="math" data-tex="\(\int r=\widehat r(0)\)">\(\int r=\widehat r(0)\)</span>,
+and the Fourier pair of Exercise 2 to rewrite it as
+<span class="math" data-tex="\(r(0)+\int r(1-r_1)\)">\(r(0)+\int r(1-r_1)\)</span>, which is (5.3).
+The spike supplies the <span class="math" data-tex="\(\widehat r(0)\)">\(\widehat r(0)\)</span> in (5.5);
+discarding it would give an incorrect pair formula.</p>
+<p><strong>Exercise 4.</strong> Deduce that at least two-thirds of the
+zeros are simple.</p>
+<p><em>Solution.</em> Use <span class="math" data-tex="\(r_1\geq0\)">\(r_1\geq0\)</span>.
+Equation (6.2) with <span class="math" data-tex="\(a=1\)">\(a=1\)</span> bounds
+<span class="math" data-tex="\(\sum m_\gamma^2\)">\(\sum m_\gamma^2\)</span> by
+<span class="math" data-tex="\((4/3+o(1))N_*(T)\)">\((4/3+o(1))N_*(T)\)</span>.
+The zero count gives
+<span class="math" data-tex="\(\sum m_\gamma=(1+o(1))N_*(T)\)">\(\sum m_\gamma=(1+o(1))N_*(T)\)</span>.
+Hence <span class="math" data-tex="\(\sum m_\gamma(m_\gamma-1)\leq
+(1/3+o(1))N_*(T)\)">\(\sum m_\gamma(m_\gamma-1)\leq
+(1/3+o(1))N_*(T)\)</span>.
+For <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, <span class="math" data-tex="\(m(m-1)\geq m\)">\(m(m-1)\geq m\)</span>, so this upper
+bounds the number of copies belonging to nonsimple
+zeros. Subtracting from the total gives (6.4).
+Every step retains multiplicity.</p>
+<p><strong>Exercise 5.</strong> Prove the Poisson-kernel explicit formula
+(2.2), including the errors and signs.</p>
+<p><em>Solution.</em> Integrate
+<span class="math" data-tex="\((\zeta&#x27;/\zeta)(1/2+it+v)\,2X^v/(1-v^2)\)">\((\zeta&#x27;/\zeta)(1/2+it+v)\,2X^v/(1-v^2)\)</span>
+on <span class="math" data-tex="\(\operatorname{Re}v=c&gt;1\)">\(\operatorname{Re}v=c&gt;1\)</span>.
+Its Dirichlet expansion and (2.3) give (2.4).
+The residues at <span class="math" data-tex="\(v=1,-1\)">\(v=1,-1\)</span> are respectively
+<span class="math" data-tex="\(-X(\zeta&#x27;/\zeta)(3/2+it)\)">\(-X(\zeta&#x27;/\zeta)(3/2+it)\)</span> and
+<span class="math" data-tex="\(X^{-1}(\zeta&#x27;/\zeta)(-1/2+it)\)">\(X^{-1}(\zeta&#x27;/\zeta)(-1/2+it)\)</span>.
+The zeta pole at <span class="math" data-tex="\(v=1/2-it\)">\(v=1/2-it\)</span> contributes
+<span class="math" data-tex="\(-K(1/2-it)X^{1/2-it}\)">\(-K(1/2-it)X^{1/2-it}\)</span>.
+Under RH, the critical zero residues are
+<span class="math" data-tex="\(2X^{i(\gamma-t)}/(1+(\gamma-t)^2)\)">\(2X^{i(\gamma-t)}/(1+(\gamma-t)^2)\)</span>;
+the trivial zero residues have <span class="math" data-tex="\(v=-2n-1/2-it\)">\(v=-2n-1/2-it\)</span>.
+The contour-limit estimates following (2.5) justify
+the complete residue sum: good horizontal heights
+give <span class="math" data-tex="\(O(H^{-2}\log^2H)\)">\(O(H^{-2}\log^2H)\)</span>, and the far left
+vertical integral is <span class="math" data-tex="\(O(X^{-R}\log(R+2)/R)\)">\(O(X^{-R}\log(R+2)/R)\)</span>.
+Solving for the critical-zero sum after multiplying
+by <span class="math" data-tex="\(X^{it}\)">\(X^{it}\)</span> gives the exact formula (2.6).
+The functional equation makes its logarithmic
+derivative term <span class="math" data-tex="\(X^{-1+it}\log\tau+O(X^{-1})\)">\(X^{-1+it}\log\tau+O(X^{-1})\)</span>.
+The pole term is <span class="math" data-tex="\(O(\sqrt X\,\tau^{-2})\)">\(O(\sqrt X\,\tau^{-2})\)</span>;
+the trivial-zero series is
+<span class="math" data-tex="\(O(X^{-5/2}\tau^{-1})\)">\(O(X^{-5/2}\tau^{-1})\)</span>, absorbed by <span class="math" data-tex="\(O(X^{-1})\)">\(O(X^{-1})\)</span>.
+These are exactly the main terms and errors in (2.2).</p>
+<h2 id="12-proof-inputs-and-sources">12. Proof inputs and sources</h2>
+<p>All pair-correlation, counting, and short-interval
+implications asserted here have been proved in this lesson.
+The strong pair-correlation prediction is a conjecture,
+so neither it nor the equivalent variance predictions
+have been promoted to theorems about zeta.</p>
+<p>The existing internal analytic providers are <em>The Gamma
+function and Stirling's formula</em>; <em>Poisson summation,
+theta, and the functional equation</em>; <em>The Riemann–von
+Mangoldt formula</em>; <em>The prime number theorem with the
+classical error term</em>; <em>The Riemann hypothesis and its
+standard equivalents</em>; and <em>Mean values of Dirichlet
+polynomials and of zeta on the critical line</em>, lessons
+3, 4, 10, 12, 14, and 16 of <em>The Riemann zeta function</em>.
+The extra endpoint argument uses <em>The prime number
+theorem for arithmetic progressions</em>, lesson 9 of
+<em>Dirichlet L-functions and primes in progressions</em>,
+only for each fixed modulus. These are genuine existing
+planned prerequisite lessons; this lesson does not claim
+that all of their public proof versions are complete.
+The needed estimates and their hypotheses have been
+specified where used.</p>
+<ul>
+<li>H. L. Montgomery, <em>The pair correlation of zeros of
+the zeta function</em> (1973), printed pp. 181–193:
+theorem and Fourier identity in Section 1,
+the simple-zero and small-gap corollaries on
+pp. 182–183 and their proofs on pp. 191–192;
+Dyson's observation on p. 184.</li>
+<li>H. L. Montgomery and R. C. Vaughan,
+<em>Multiplicative Number Theory III</em>, draft,
+Section 30.1, especially (30.5) and Theorem 30.1.
+The kernel used above satisfies
+<span class="math" data-tex="\(K(iu)=2/(1+u^2)\)">\(K(iu)=2/(1+u^2)\)</span>; the factor two is retained
+in the residue formula and the mean square.</li>
+<li>D. A. Goldston and H. L. Montgomery,
+<em>Pair correlation of zeros and primes in short
+intervals</em> (1987), pp. 183–203, for Theorem 9.1.
+Goldston's <a href="https://arxiv.org/abs/math/0412313"><em>Notes on Pair Correlation of Zeros and
+Prime Numbers</em></a>,
+Section 9, Theorem 7, describes the weighted
+explicit-formula method and the uniform ranges.
+The transform converse and the change of interval
+lengths have been proved above.</li>
+<li>J. B. Conrey, <em>Notes on L-functions and random
+matrix theory</em> (2006), the pair-correlation discussion,
+printed p. 134, and Section 5.3, printed p. 158,
+for the connection with random matrices and variances.</li>
+</ul>
+<p>The graphs and rational small-gap certificate were
+computed independently for this lesson. The certificate
+uses exact arithmetic; the orientation decimal in
+Section 7 does not replace it.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-EXPF-06.html">← Li&#x27;s criterion</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-EXPF-09.html">The random matrix predictions and their evidence →</a></span></nav>
+<p class="small source-link"><a href="src/NT-EXPF-08.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-EXPF">Repository</a></nav>
+</footer>
+</body>
+</html>

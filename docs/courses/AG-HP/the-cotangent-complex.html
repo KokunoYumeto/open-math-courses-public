@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The cotangent complex · Hilbert and Picard schemes, deformations and representability</title>
+<meta name="description" content="A lesson of the course Hilbert and Picard schemes, deformations and representability. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-HP/the-cotangent-complex.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Hilbert and Picard schemes, deformations and representability</a> <span aria-hidden="true">›</span> <span>The cotangent complex</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-cotangent-complex">The cotangent complex</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The naive cotangent complex records generators and first relations. It classifies square-zero extensions, but it can discard relations among relations. The full cotangent complex retains those additional degrees. Its fundamental triangle then turns a lifting problem into a connecting class in an Ext group.</p>
+<p>We construct it from polynomial simplicial resolutions, prove independence and functoriality, prove the fundamental triangle and its basic consequences, and derive the extension and obstruction theorems. A computation for the map from the dual numbers to their residue field will exhibit a genuine degree <span class="math" data-tex="$-2$">$-2$</span> term.</p>
+<h2 id="1-simplicial-algebra-and-the-standard-resolution">1. Simplicial algebra and the standard resolution</h2>
+<p>A simplicial module <span class="math" data-tex="$E_\bullet$">$E_\bullet$</span> has face maps <span class="math" data-tex="$d_i:E_n\to E_{n-1}$">$d_i:E_n\to E_{n-1}$</span> and degeneracy maps <span class="math" data-tex="$s_i:E_n\to E_{n+1}$">$s_i:E_n\to E_{n+1}$</span> satisfying the simplicial identities. Its unnormalized chain complex has differential</p>
+<span class="math math-display" data-tex="$$
+\partial_n=\sum_{i=0}^n(-1)^i d_i.
+\tag{1.1}
+$$">$$
+\partial_n=\sum_{i=0}^n(-1)^i d_i.
+\tag{1.1}
+$$</span>
+<p>The degenerate subcomplex is generated in degree <span class="math" data-tex="$n$">$n$</span> by the images of <span class="math" data-tex="$s_0,\ldots,s_{n-1}$">$s_0,\ldots,s_{n-1}$</span>. The normalized complex is the quotient by this subcomplex. It is also a direct summand of the unnormalized complex, with the same homology. For a bisimplicial module, the complex of the diagonal is naturally quasi-isomorphic to the total complex of its two normalized directions. These are the normalization and Eilenberg–Zilber facts we use. Dold–Kan identifies simplicial modules with nonnegative chain complexes [Stacks, Tags 019D and 019G]. We do not identify simplicial rings with ordinary differential graded rings; that replacement needs additional care in positive characteristic.</p>
+<p>Let <span class="math" data-tex="$A\to B$">$A\to B$</span> be a ring map. All rings in this lesson are commutative. Let <span class="math" data-tex="$F$">$F$</span> send a set <span class="math" data-tex="$E$">$E$</span> to the polynomial <span class="math" data-tex="$A$">$A$</span>-algebra <span class="math" data-tex="$A[E]$">$A[E]$</span>, and let <span class="math" data-tex="$U$">$U$</span> forget an <span class="math" data-tex="$A$">$A$</span>-algebra to its set. The composite <span class="math" data-tex="$G=FU$">$G=FU$</span> is a comonad. Its counit evaluates a variable at the element labelling it, and its comultiplication replaces a label by the variable with that label. Define</p>
+<span class="math math-display" data-tex="$$
+P_n=G^{n+1}B,
+\qquad P_0=A[B],\quad P_1=A[A[B]],\quad\ldots.
+\tag{1.2}
+$$">$$
+P_n=G^{n+1}B,
+\qquad P_0=A[B],\quad P_1=A[A[B]],\quad\ldots.
+\tag{1.2}
+$$</span>
+<p>The faces evaluate one layer and the degeneracies insert one layer:</p>
+<span class="math math-display" data-tex="$$
+d_i=G^i\varepsilon G^{n-i},
+\qquad s_i=G^i\delta G^{n-i}.
+\tag{1.3}
+$$">$$
+d_i=G^i\varepsilon G^{n-i},
+\qquad s_i=G^i\delta G^{n-i}.
+\tag{1.3}
+$$</span>
+<p>The comonad identities give the simplicial identities. Evaluation gives an augmentation <span class="math" data-tex="$P_\bullet\to B$">$P_\bullet\to B$</span>.</p>
+<p>This augmentation is a resolution on underlying simplicial sets. To see the contraction, send an element <span class="math" data-tex="$b\in B$">$b\in B$</span> to its variable <span class="math" data-tex="$[b]\in A[B]$">$[b]\in A[B]$</span>, and in every higher degree send an element <span class="math" data-tex="$z$">$z$</span> to the variable <span class="math" data-tex="$[z]$">$[z]$</span> in the next outer polynomial layer. These extra degeneracies satisfy <span class="math" data-tex="$d_0h=\mathrm{id}$">$d_0h=\mathrm{id}$</span> and <span class="math" data-tex="$d_i h=h d_{i-1}$">$d_i h=h d_{i-1}$</span> for <span class="math" data-tex="$i&gt;0$">$i&gt;0$</span>, with the corresponding degeneracy identities. They contract each augmentation fibre. The contraction is a statement about sets; these extra maps need not be ring homomorphisms. Since the underlying additive simplicial groups are Kan, the augmentation is a trivial Kan fibration. In particular its normalized additive complex is a resolution of <span class="math" data-tex="$B$">$B$</span>. Each <span class="math" data-tex="$P_n$">$P_n$</span> is a free <span class="math" data-tex="$A$">$A$</span>-module, so it is also a free module resolution when we forget multiplication.</p>
+<p>We call any augmentation <span class="math" data-tex="$R_\bullet\to B$">$R_\bullet\to B$</span> a polynomial resolution if every <span class="math" data-tex="$R_n$">$R_n$</span> is polynomial over <span class="math" data-tex="$A$">$A$</span> and its underlying simplicial sets map by a trivial Kan fibration to the constant set <span class="math" data-tex="$B$">$B$</span>. The standard resolution always provides one [Stacks, Tags 08PM and 08ND]. A polynomial ring <span class="math" data-tex="$B$">$B$</span> can also be resolved by the constant resolution <span class="math" data-tex="$R_\bullet=B$">$R_\bullet=B$</span>.</p>
+<p>One can choose the initial polynomial presentation. If <span class="math" data-tex="$R_0\to B$">$R_0\to B$</span> is a polynomial surjection, construct a free simplicial resolution inductively by adding variables for compatible boundaries. Degenerate variables are indexed by the degeneracies of earlier nondegenerate variables. Faces of these variables are already prescribed by the simplicial identities. In degree <span class="math" data-tex="$n$">$n$</span>, add a new nondegenerate variable for every tuple of <span class="math" data-tex="$n+1$">$n+1$</span> elements in degree <span class="math" data-tex="$n-1$">$n-1$</span> whose faces match on their intersections and whose augmentations match in <span class="math" data-tex="$B$">$B$</span>; give that variable the specified faces. This preserves the identities and fills every boundary. Continuing in all degrees gives a trivial Kan fibration to <span class="math" data-tex="$B$">$B$</span>, with polynomial terms. The construction permits extra variables and prescribed fillers; we use that freedom for the degree-two calculation in Section 6.</p>
+<h2 id="2-independence-of-the-resolution">2. Independence of the resolution</h2>
+<p>Put <span class="math" data-tex="$\mathcal D_{B/A}$">$\mathcal D_{B/A}$</span> for the category of polynomial <span class="math" data-tex="$A$">$A$</span>-algebras equipped with a map to <span class="math" data-tex="$B$">$B$</span>. Its morphisms are algebra homomorphisms over <span class="math" data-tex="$B$">$B$</span>. A covariant diagram of <span class="math" data-tex="$B$">$B$</span>-modules on this category has a derived colimit. Concretely, resolve the diagram by sums of diagrams</p>
+<span class="math math-display" data-tex="$$
+R\longmapsto B[\operatorname{Hom}_{\mathcal D}(Q,R)],
+\tag{2.1}
+$$">$$
+R\longmapsto B[\operatorname{Hom}_{\mathcal D}(Q,R)],
+\tag{2.1}
+$$</span>
+<p>where brackets mean a free module on the indicated set. These diagrams are projective by the Yoneda lemma and exactness of evaluation. Every diagram is a quotient of a sum of them. Applying colimit to such a projective resolution defines <span class="math" data-tex="$\mathbf L\operatorname{colim}_{\mathcal D}$">$\mathbf L\operatorname{colim}_{\mathcal D}$</span>.</p>
+<p><strong>Lemma 2.1.</strong> If <span class="math" data-tex="$R_\bullet\to B$">$R_\bullet\to B$</span> is a polynomial resolution and <span class="math" data-tex="$E$">$E$</span> is a covariant <span class="math" data-tex="$B$">$B$</span>-module diagram on <span class="math" data-tex="$\mathcal D_{B/A}$">$\mathcal D_{B/A}$</span>, then its associated simplicial module <span class="math" data-tex="$E(R_\bullet)$">$E(R_\bullet)$</span> computes <span class="math" data-tex="$\mathbf L\operatorname{colim}_{\mathcal D}E$">$\mathbf L\operatorname{colim}_{\mathcal D}E$</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$Q=A[S]\to B$">$Q=A[S]\to B$</span>, the simplicial set of maps over <span class="math" data-tex="$B$">$B$</span> is</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Hom}_{\mathcal D}(Q,R_\bullet)
+=\prod_{s\in S}(R_\bullet)_{\beta(s)},
+\tag{2.2}
+$$">$$
+\operatorname{Hom}_{\mathcal D}(Q,R_\bullet)
+=\prod_{s\in S}(R_\bullet)_{\beta(s)},
+\tag{2.2}
+$$</span>
+<p>where <span class="math" data-tex="$\beta(s)$">$\beta(s)$</span> is the image of the variable <span class="math" data-tex="$s$">$s$</span> in <span class="math" data-tex="$B$">$B$</span>, and the factor on the right is the corresponding augmentation fibre. Each fibre is contractible because the augmentation is a trivial Kan fibration. The product is contractible too: boundary lifting is performed in each coordinate, so the product map to a point remains a trivial Kan fibration.</p>
+<p>Consequently evaluating (2.1) on <span class="math" data-tex="$R_\bullet$">$R_\bullet$</span> gives a free simplicial module quasi-isomorphic to <span class="math" data-tex="$B$">$B$</span> in degree zero. Its colimit is also <span class="math" data-tex="$B$">$B$</span>, because the category of maps from <span class="math" data-tex="$Q$">$Q$</span> has the initial object <span class="math" data-tex="$\mathrm{id}_Q$">$\mathrm{id}_Q$</span>. Thus the evaluation claim holds for the projective generating diagrams.</p>
+<p>For general <span class="math" data-tex="$E$">$E$</span>, take a projective resolution <span class="math" data-tex="$E^\bullet\to E$">$E^\bullet\to E$</span> by sums of these diagrams and evaluate on <span class="math" data-tex="$R_\bullet$">$R_\bullet$</span>. This is a double complex. Evaluation is exact, so taking homology first in the resolution direction leaves <span class="math" data-tex="$E(R_\bullet)$">$E(R_\bullet)$</span>. Taking homology first in the simplicial direction leaves the colimit complex <span class="math" data-tex="$\operatorname{colim}E^\bullet$">$\operatorname{colim}E^\bullet$</span>. Both compute the homology of the total complex. The construction is natural in <span class="math" data-tex="$E$">$E$</span>, giving the required derived identification. ∎</p>
+<p>This is the explicit diagram-homology comparison behind [Stacks, Tag 08Q9]. It also proves that changing a polynomial resolution does not change the derived object. A map between resolutions over <span class="math" data-tex="$B$">$B$</span> induces the corresponding identification, rather than an unrelated isomorphism.</p>
+<p>Define the diagram</p>
+<span class="math math-display" data-tex="$$
+E(P\to B)=\Omega_{P/A}\otimes_P B.
+\tag{2.3}
+$$">$$
+E(P\to B)=\Omega_{P/A}\otimes_P B.
+\tag{2.3}
+$$</span>
+<p><strong>Definition.</strong> The cotangent complex <span class="math" data-tex="$L_{B/A}$">$L_{B/A}$</span> is the normalized complex of the simplicial module <span class="math" data-tex="$\Omega_{P_\bullet/A}\otimes_{P_\bullet}B$">$\Omega_{P_\bullet/A}\otimes_{P_\bullet}B$</span>, with chain degree <span class="math" data-tex="$n$">$n$</span> placed in cohomological degree <span class="math" data-tex="$-n$">$-n$</span>.</p>
+<p>In particular <span class="math" data-tex="$L_{B/A}\in D^{\leq0}(B)$">$L_{B/A}\in D^{\leq0}(B)$</span> and</p>
+<span class="math math-display" data-tex="$$
+L_{B/A}\simeq\mathbf L\operatorname{colim}_{\mathcal D_{B/A}}E.
+\tag{2.4}
+$$">$$
+L_{B/A}\simeq\mathbf L\operatorname{colim}_{\mathcal D_{B/A}}E.
+\tag{2.4}
+$$</span>
+<p><strong>Theorem 2.2.</strong> The cotangent complex is well defined in <span class="math" data-tex="$D(B)$">$D(B)$</span> independently of the polynomial resolution. It is functorial in a commutative square of ring maps. For a polynomial algebra <span class="math" data-tex="$B=A[x_s]_{s\in S}$">$B=A[x_s]_{s\in S}$</span>,</p>
+<span class="math math-display" data-tex="$$
+L_{B/A}\simeq\Omega_{B/A}[0]
+=\left(\bigoplus_{s\in S}B\,dx_s\right)[0].
+\tag{2.5}
+$$">$$
+L_{B/A}\simeq\Omega_{B/A}[0]
+=\left(\bigoplus_{s\in S}B\,dx_s\right)[0].
+\tag{2.5}
+$$</span>
+<p><strong>Proof.</strong> Lemma 2.1 applied to (2.3) proves independence. For a square <span class="math" data-tex="$(A\to B)\to(A&#x27;\to B&#x27;)$">$(A\to B)\to(A&#x27;\to B&#x27;)$</span>, the standard resolutions have canonical maps: in degree zero a variable labelled by <span class="math" data-tex="$b$">$b$</span> goes to the variable labelled by its image in <span class="math" data-tex="$B&#x27;$">$B&#x27;$</span>, and coefficients map through <span class="math" data-tex="$A\to A&#x27;$">$A\to A&#x27;$</span>. Iterate that rule in each degree. It respects evaluations and insertions, hence the faces and degeneracies. Taking differentials and then tensoring with the augmentations produces a canonical map</p>
+<span class="math math-display" data-tex="$$
+L_{B/A}\otimes_B^{\mathbf L}B&#x27;\longrightarrow L_{B&#x27;/A&#x27;}.
+\tag{2.6}
+$$">$$
+L_{B/A}\otimes_B^{\mathbf L}B&#x27;\longrightarrow L_{B&#x27;/A&#x27;}.
+\tag{2.6}
+$$</span>
+<p>The normalized terms of the source model are direct summands of free <span class="math" data-tex="$B$">$B$</span>-modules, hence projective; the complex is bounded above. Thus ordinary termwise tensor computes the derived tensor in (2.6). The construction respects composition and identities already on standard resolutions. Independence identifies these same maps in other resolution models. Finally the constant polynomial resolution of a polynomial <span class="math" data-tex="$B$">$B$</span> computes its complex by Lemma 2.1, proving (2.5). ∎</p>
+<h2 id="3-tor-independent-base-change">3. Tor-independent base change</h2>
+<p>Suppose <span class="math" data-tex="$B&#x27;=B\otimes_A A&#x27;$">$B&#x27;=B\otimes_A A&#x27;$</span> and</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Tor}^A_i(B,A&#x27;)=0\quad(i&gt;0).
+\tag{3.1}
+$$">$$
+\operatorname{Tor}^A_i(B,A&#x27;)=0\quad(i&gt;0).
+\tag{3.1}
+$$</span>
+<p><strong>Proposition 3.1.</strong> The functoriality map is an isomorphism</p>
+<span class="math math-display" data-tex="$$
+L_{B/A}\otimes_B^{\mathbf L}B&#x27;
+\simeq L_{B&#x27;/A&#x27;}.
+\tag{3.2}
+$$">$$
+L_{B/A}\otimes_B^{\mathbf L}B&#x27;
+\simeq L_{B&#x27;/A&#x27;}.
+\tag{3.2}
+$$</span>
+<p><strong>Proof.</strong> The additive normalized complex of a polynomial resolution <span class="math" data-tex="$P_\bullet\to B$">$P_\bullet\to B$</span> is a projective <span class="math" data-tex="$A$">$A$</span>-module resolution. Tensoring it with <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span> computes <span class="math" data-tex="$B\otimes_A^{\mathbf L}A&#x27;$">$B\otimes_A^{\mathbf L}A&#x27;$</span>. Condition (3.1) therefore says that <span class="math" data-tex="$P_\bullet\otimes_A A&#x27;\to B&#x27;$">$P_\bullet\otimes_A A&#x27;\to B&#x27;$</span> remains a resolution. Its terms are polynomial <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span>-algebras; its additive augmentation is surjective in degree zero and a quasi-isomorphism, hence a trivial Kan fibration of underlying simplicial sets.</p>
+<p>Polynomial differentials commute with base change:</p>
+<span class="math math-display" data-tex="$$
+\Omega_{(P_n\otimes_A A&#x27;)/A&#x27;}\otimes_{P_n\otimes_A A&#x27;}B&#x27;
+=\Omega_{P_n/A}\otimes_{P_n}B&#x27;.
+\tag{3.3}
+$$">$$
+\Omega_{(P_n\otimes_A A&#x27;)/A&#x27;}\otimes_{P_n\otimes_A A&#x27;}B&#x27;
+=\Omega_{P_n/A}\otimes_{P_n}B&#x27;.
+\tag{3.3}
+$$</span>
+<p>Normalizing this identity, and using the projective terms of the cotangent model, proves (3.2). ∎</p>
+<p>In particular (3.2) holds when <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span>, or <span class="math" data-tex="$B$">$B$</span>, is flat over <span class="math" data-tex="$A$">$A$</span>. The flat-base-change exercise asks for the case <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span> flat, where it can be written</p>
+<span class="math math-display" data-tex="$$
+L_{(B\otimes_A A&#x27;)/A&#x27;}\simeq L_{B/A}\otimes_A A&#x27;.
+\tag{3.4}
+$$">$$
+L_{(B\otimes_A A&#x27;)/A&#x27;}\simeq L_{B/A}\otimes_A A&#x27;.
+\tag{3.4}
+$$</span>
+<p>Tor independence is essential for ordinary tensor-product rings. For example take <span class="math" data-tex="$A=\mathbb Z$">$A=\mathbb Z$</span>, <span class="math" data-tex="$B=A&#x27;=\mathbb F_p$">$B=A&#x27;=\mathbb F_p$</span>. The ordinary tensor product is <span class="math" data-tex="$\mathbb F_p$">$\mathbb F_p$</span>, whose cotangent complex over <span class="math" data-tex="$\mathbb F_p$">$\mathbb F_p$</span> is zero. But <span class="math" data-tex="$L_{\mathbb F_p/\mathbb Z}\otimes_{\mathbb F_p}\mathbb F_p=\mathbb F_p[1]$">$L_{\mathbb F_p/\mathbb Z}\otimes_{\mathbb F_p}\mathbb F_p=\mathbb F_p[1]$</span>, as Section 7 computes. The nonzero <span class="math" data-tex="$\operatorname{Tor}^{\mathbb Z}_1(\mathbb F_p,\mathbb F_p)$">$\operatorname{Tor}^{\mathbb Z}_1(\mathbb F_p,\mathbb F_p)$</span> explains the failure.</p>
+<p>A useful immediate consequence is that a flat ring epimorphism <span class="math" data-tex="$A\to B$">$A\to B$</span> has <span class="math" data-tex="$L_{B/A}=0$">$L_{B/A}=0$</span>. Its multiplication map identifies <span class="math" data-tex="$B\otimes_A B$">$B\otimes_A B$</span> with <span class="math" data-tex="$B$">$B$</span>, and flatness removes higher Tor. Apply (3.2) with <span class="math" data-tex="$A&#x27;=B$">$A&#x27;=B$</span>. The left side is <span class="math" data-tex="$L_{B/A}$">$L_{B/A}$</span> and the right side is <span class="math" data-tex="$L_{B/B}=0$">$L_{B/B}=0$</span>. In particular a localization has zero relative cotangent complex. This conclusion precedes the fundamental triangle.</p>
+<h2 id="4-the-fundamental-triangle">4. The fundamental triangle</h2>
+<p>We use one additional homological foundation. If a quasi-isomorphism <span class="math" data-tex="$R_\bullet\to R&#x27;_\bullet$">$R_\bullet\to R&#x27;_\bullet$</span> of simplicial rings is given, then for a degreewise flat simplicial <span class="math" data-tex="$R_\bullet$">$R_\bullet$</span>-module <span class="math" data-tex="$M_\bullet$">$M_\bullet$</span>, the base-change map</p>
+<span class="math math-display" data-tex="$$
+M_\bullet\longrightarrow
+M_\bullet\otimes_{R_\bullet}R&#x27;_\bullet
+\tag{4.1}
+$$">$$
+M_\bullet\longrightarrow
+M_\bullet\otimes_{R_\bullet}R&#x27;_\bullet
+\tag{4.1}
+$$</span>
+<p>induces a quasi-isomorphism of associated additive complexes. The derived form replaces the tensor by its derived tensor and applies to arbitrary module complexes. This is the homological change-of-rings theorem [Stacks, Tag 08RX], specialized to simplicial objects, with normalization and Eilenberg–Zilber. It is a theorem about simplicial modules and weakly equivalent rings, independent of the cotangent complex. We list it explicitly among the foundations at the end.</p>
+<p><strong>Theorem 4.1.</strong> For ring maps <span class="math" data-tex="$A\to B\to C$">$A\to B\to C$</span>, there is a canonical distinguished triangle</p>
+<span class="math math-display" data-tex="$$
+L_{B/A}\otimes_B^{\mathbf L}C
+\longrightarrow L_{C/A}
+\longrightarrow L_{C/B}
+\longrightarrow
+\bigl(L_{B/A}\otimes_B^{\mathbf L}C\bigr)[1].
+\tag{4.2}
+$$">$$
+L_{B/A}\otimes_B^{\mathbf L}C
+\longrightarrow L_{C/A}
+\longrightarrow L_{C/B}
+\longrightarrow
+\bigl(L_{B/A}\otimes_B^{\mathbf L}C\bigr)[1].
+\tag{4.2}
+$$</span>
+<p><strong>Proof.</strong> We first prove a special case and a product statement to avoid using localization consequences circularly.</p>
+<p>If <span class="math" data-tex="$B$">$B$</span> is polynomial over <span class="math" data-tex="$A$">$A$</span>, choose a polynomial resolution <span class="math" data-tex="$Q_\bullet\to C$">$Q_\bullet\to C$</span> over <span class="math" data-tex="$B$">$B$</span>. Every <span class="math" data-tex="$Q_n$">$Q_n$</span> is polynomial over <span class="math" data-tex="$A$">$A$</span> too. The polynomial differential sequence is split exact in each degree:</p>
+<span class="math math-display" data-tex="$$
+0\to\Omega_{B/A}\otimes_B C
+\to\Omega_{Q_n/A}\otimes_{Q_n}C
+\to\Omega_{Q_n/B}\otimes_{Q_n}C\to0.
+\tag{4.3}
+$$">$$
+0\to\Omega_{B/A}\otimes_B C
+\to\Omega_{Q_n/A}\otimes_{Q_n}C
+\to\Omega_{Q_n/B}\otimes_{Q_n}C\to0.
+\tag{4.3}
+$$</span>
+<p>The first term is a constant simplicial module. Normalization is exact, and Lemma 2.1 identifies the other two complexes with <span class="math" data-tex="$L_{C/A}$">$L_{C/A}$</span> and <span class="math" data-tex="$L_{C/B}$">$L_{C/B}$</span>. The first is <span class="math" data-tex="$L_{B/A}\otimes_B^{\mathbf L}C$">$L_{B/A}\otimes_B^{\mathbf L}C$</span> by (2.5). This proves (4.2) when its middle ring is polynomial.</p>
+<p>Next, for two <span class="math" data-tex="$A$">$A$</span>-algebras <span class="math" data-tex="$C_1,C_2$">$C_1,C_2$</span>, there is a canonical isomorphism</p>
+<span class="math math-display" data-tex="$$
+L_{(C_1\times C_2)/A}\simeq L_{C_1/A}\oplus L_{C_2/A}
+\quad\text{in }D(C_1\times C_2).
+\tag{4.4}
+$$">$$
+L_{(C_1\times C_2)/A}\simeq L_{C_1/A}\oplus L_{C_2/A}
+\quad\text{in }D(C_1\times C_2).
+\tag{4.4}
+$$</span>
+<p>Factor through <span class="math" data-tex="$A[t]$">$A[t]$</span> by mapping <span class="math" data-tex="$t$">$t$</span> to <span class="math" data-tex="$(1,0)$">$(1,0)$</span>. The special case just proved gives triangles for <span class="math" data-tex="$C_1\times C_2$">$C_1\times C_2$</span>, <span class="math" data-tex="$C_1$">$C_1$</span>, and <span class="math" data-tex="$C_2$">$C_2$</span> over <span class="math" data-tex="$A[t]$">$A[t]$</span>. It suffices to prove (4.4) relative to <span class="math" data-tex="$A[t]$">$A[t]$</span>. After inverting <span class="math" data-tex="$t$">$t$</span>, the second factor disappears; after inverting <span class="math" data-tex="$t-1$">$t-1$</span>, the first factor disappears. Proposition 3.1 identifies the cotangent complexes in each of these base changes. Since the two opens cover, the map is an isomorphism relative to <span class="math" data-tex="$A[t]$">$A[t]$</span>. The three special-case triangles then prove (4.4) over <span class="math" data-tex="$A$">$A$</span> as well.</p>
+<p>Now suppose <span class="math" data-tex="$B\to C$">$B\to C$</span> is injective. Let <span class="math" data-tex="$P_\bullet$">$P_\bullet$</span> be the standard resolution of <span class="math" data-tex="$B$">$B$</span> over <span class="math" data-tex="$A$">$A$</span>, and <span class="math" data-tex="$Q_\bullet$">$Q_\bullet$</span> the standard resolution of <span class="math" data-tex="$C$">$C$</span> over <span class="math" data-tex="$A$">$A$</span>. The injection makes every <span class="math" data-tex="$Q_n$">$Q_n$</span> a polynomial algebra over <span class="math" data-tex="$P_n$">$P_n$</span>: at degree zero its additional variables are the labels in <span class="math" data-tex="$C\setminus B$">$C\setminus B$</span>, and iterating the polynomial construction preserves injections of the label sets. Form</p>
+<span class="math math-display" data-tex="$$
+\overline Q_\bullet=Q_\bullet\otimes_{P_\bullet}B.
+\tag{4.5}
+$$">$$
+\overline Q_\bullet=Q_\bullet\otimes_{P_\bullet}B.
+\tag{4.5}
+$$</span>
+<p>Its terms are polynomial over <span class="math" data-tex="$B$">$B$</span>. Since <span class="math" data-tex="$P_\bullet\to B$">$P_\bullet\to B$</span> is a quasi-isomorphism and <span class="math" data-tex="$Q_n$">$Q_n$</span> is flat over <span class="math" data-tex="$P_n$">$P_n$</span>, the homological change-of-rings theorem (4.1) shows <span class="math" data-tex="$Q_\bullet\to\overline Q_\bullet$">$Q_\bullet\to\overline Q_\bullet$</span> is a quasi-isomorphism on additive complexes. Thus <span class="math" data-tex="$\overline Q_\bullet\to C$">$\overline Q_\bullet\to C$</span> is a polynomial resolution over <span class="math" data-tex="$B$">$B$</span>.</p>
+<p>The degreewise polynomial differential sequences, tensored with <span class="math" data-tex="$C$">$C$</span>, are</p>
+<span class="math math-display" data-tex="$$
+0\to\Omega_{P_n/A}\otimes_{P_n}C
+\to\Omega_{Q_n/A}\otimes_{Q_n}C
+\to\Omega_{\overline Q_n/B}\otimes_{\overline Q_n}C\to0.
+\tag{4.6}
+$$">$$
+0\to\Omega_{P_n/A}\otimes_{P_n}C
+\to\Omega_{Q_n/A}\otimes_{Q_n}C
+\to\Omega_{\overline Q_n/B}\otimes_{\overline Q_n}C\to0.
+\tag{4.6}
+$$</span>
+<p>Normalization gives a short exact sequence of complexes. Its first term computes <span class="math" data-tex="$L_{B/A}\otimes_B^{\mathbf L}C$">$L_{B/A}\otimes_B^{\mathbf L}C$</span>, because the normalized terms before tensoring are projective <span class="math" data-tex="$B$">$B$</span>-modules. Its second computes <span class="math" data-tex="$L_{C/A}$">$L_{C/A}$</span> and its third computes <span class="math" data-tex="$L_{C/B}$">$L_{C/B}$</span>, by independence. The associated cone triangle is (4.2).</p>
+<p>For arbitrary <span class="math" data-tex="$B\to C$">$B\to C$</span>, use the injective graph map <span class="math" data-tex="$B\to B\times C$">$B\to B\times C$</span>, <span class="math" data-tex="$b\mapsto(b,\bar b)$">$b\mapsto(b,\bar b)$</span>. The preceding case gives a triangle for <span class="math" data-tex="$A\to B\to B\times C$">$A\to B\to B\times C$</span>. Tensor it with the flat projection <span class="math" data-tex="$B\times C\to C$">$B\times C\to C$</span>. Equation (4.4), once over <span class="math" data-tex="$A$">$A$</span> and once over <span class="math" data-tex="$B$">$B$</span>, identifies the other terms with those of (4.2).</p>
+<p>The first two arrows are the functoriality arrows. In the injective construction their chain maps are literally the maps of differentials in (4.6); Lemma 2.1 identifies the third term with its canonical derived-colimit model. The graph construction and product projections are natural. Thus the construction gives the canonical triangle, compatible with maps of the original ring diagrams, rather than just a triangle with the same objects. ∎</p>
+<p>The tensor in the first term must be derived. Replacing it by tensoring the cohomology modules can lose both Tor terms and extension data.</p>
+<h2 id="5-localization-étale-maps-smooth-maps-and-tensor-products">5. Localization, étale maps, smooth maps, and tensor products</h2>
+<p><strong>Proposition 5.1.</strong> For an étale map <span class="math" data-tex="$A\to B$">$A\to B$</span>, <span class="math" data-tex="$L_{B/A}=0$">$L_{B/A}=0$</span>. For a smooth map, <span class="math" data-tex="$L_{B/A}\simeq\Omega_{B/A}[0]$">$L_{B/A}\simeq\Omega_{B/A}[0]$</span>. If multiplicative sets <span class="math" data-tex="$S\subset A$">$S\subset A$</span> and <span class="math" data-tex="$T\subset B$">$T\subset B$</span> satisfy <span class="math" data-tex="$S\mapsto T$">$S\mapsto T$</span>, then</p>
+<span class="math math-display" data-tex="$$
+L_{T^{-1}B/S^{-1}A}\simeq L_{B/A}\otimes_B T^{-1}B.
+\tag{5.1}
+$$">$$
+L_{T^{-1}B/S^{-1}A}\simeq L_{B/A}\otimes_B T^{-1}B.
+\tag{5.1}
+$$</span>
+<p><strong>Proof.</strong> For étale <span class="math" data-tex="$A\to B$">$A\to B$</span>, put <span class="math" data-tex="$D=B\otimes_A B$">$D=B\otimes_A B$</span>. Both <span class="math" data-tex="$A\to B$">$A\to B$</span> and the diagonal ring map <span class="math" data-tex="$D\to B$">$D\to B$</span> are flat; the latter is a ring epimorphism. Thus <span class="math" data-tex="$L_{B/D}=0$">$L_{B/D}=0$</span> by Section 3. Base change gives <span class="math" data-tex="$L_{D/B}\simeq L_{B/A}\otimes_B^{\mathbf L}D$">$L_{D/B}\simeq L_{B/A}\otimes_B^{\mathbf L}D$</span>, where the base-ring <span class="math" data-tex="$B$">$B$</span> is the other tensor factor. Apply the triangle to <span class="math" data-tex="$B\to D\to B$">$B\to D\to B$</span>. Its middle term is <span class="math" data-tex="$L_{B/B}=0$">$L_{B/B}=0$</span> and its third term is zero. Therefore <span class="math" data-tex="$L_{D/B}\otimes_D^{\mathbf L}B=0$">$L_{D/B}\otimes_D^{\mathbf L}B=0$</span>, which by associativity of derived tensor is <span class="math" data-tex="$L_{B/A}=0$">$L_{B/A}=0$</span>.</p>
+<p>For localization on the target, <span class="math" data-tex="$L_{T^{-1}B/B}=0$">$L_{T^{-1}B/B}=0$</span> by Section 3. The triangle for <span class="math" data-tex="$A\to B\to T^{-1}B$">$A\to B\to T^{-1}B$</span> proves <span class="math" data-tex="$L_{T^{-1}B/A}=L_{B/A}\otimes_B T^{-1}B$">$L_{T^{-1}B/A}=L_{B/A}\otimes_B T^{-1}B$</span>. Base change from <span class="math" data-tex="$A$">$A$</span> to <span class="math" data-tex="$S^{-1}A$">$S^{-1}A$</span> gives the same object, since the target already inverts <span class="math" data-tex="$S$">$S$</span>; this proves (5.1).</p>
+<p>A smooth algebra is locally étale over a polynomial algebra in relative coordinates. On each such target open, use the triangle, étale vanishing, and (2.5) to obtain <span class="math" data-tex="$L_{B/A}=\Omega_{B/A}[0]$">$L_{B/A}=\Omega_{B/A}[0]$</span>. Localization shows that these identifications cover the target and agree. ∎</p>
+<p>Étale vanishing also shows, for <span class="math" data-tex="$A\to B\to C$">$A\to B\to C$</span> with <span class="math" data-tex="$A\to B$">$A\to B$</span> étale,</p>
+<span class="math math-display" data-tex="$$
+L_{C/A}\simeq L_{C/B}. \tag{5.2}
+$$">$$
+L_{C/A}\simeq L_{C/B}. \tag{5.2}
+$$</span>
+<p>For tensor products, suppose <span class="math" data-tex="$B$">$B$</span> and <span class="math" data-tex="$C$">$C$</span> are Tor-independent <span class="math" data-tex="$A$">$A$</span>-algebras, and put <span class="math" data-tex="$D=B\otimes_A C$">$D=B\otimes_A C$</span>. Resolving both algebras by polynomial resolutions gives a bisimplicial polynomial algebra <span class="math" data-tex="$P_\bullet\otimes_A Q_\bullet$">$P_\bullet\otimes_A Q_\bullet$</span>. Its diagonal resolves <span class="math" data-tex="$D$">$D$</span>: Eilenberg–Zilber identifies its additive homology with the derived tensor product, whose positive homology vanishes by Tor independence. The polynomial differential identity then gives</p>
+<span class="math math-display" data-tex="$$
+L_{D/A}\simeq
+\bigl(L_{B/A}\otimes_B^{\mathbf L}D\bigr)
+\oplus
+\bigl(L_{C/A}\otimes_C^{\mathbf L}D\bigr).
+\tag{5.3}
+$$">$$
+L_{D/A}\simeq
+\bigl(L_{B/A}\otimes_B^{\mathbf L}D\bigr)
+\oplus
+\bigl(L_{C/A}\otimes_C^{\mathbf L}D\bigr).
+\tag{5.3}
+$$</span>
+<p>Indeed the two summands come from differentiating the two tensor factors. Normalization and the two spectral sequences identify their complexes with the displayed derived tensors. Without Tor independence, the diagonal resolves the derived tensor product rather than the ordinary ring <span class="math" data-tex="$D$">$D$</span>, and (5.3) is not an unconditional formula for that ordinary ring.</p>
+<h2 id="6-the-naive-complex-is-the-first-truncation">6. The naive complex is the first truncation</h2>
+<p>Choose a polynomial surjection <span class="math" data-tex="$P\to B$">$P\to B$</span> with kernel <span class="math" data-tex="$I$">$I$</span>. The naive complex is</p>
+<span class="math math-display" data-tex="$$
+\operatorname{NL}_{B/A}=
+\left[I/I^2\xrightarrow{f\mapsto df}
+\Omega_{P/A}\otimes_P B\right],
+\tag{6.1}
+$$">$$
+\operatorname{NL}_{B/A}=
+\left[I/I^2\xrightarrow{f\mapsto df}
+\Omega_{P/A}\otimes_P B\right],
+\tag{6.1}
+$$</span>
+<p>in degrees <span class="math" data-tex="$-1,0$">$-1,0$</span>. Its independence was proved in <a href="deformations-of-rings-and-schemes-and-the-naive-cotangent-complex.html">Deformations of rings and schemes and the naive cotangent complex</a>. We now identify exactly which part of <span class="math" data-tex="$L$">$L$</span> it retains.</p>
+<p><strong>Theorem 6.1.</strong> There is a canonical isomorphism</p>
+<span class="math math-display" data-tex="$$
+\tau_{\geq-1}L_{B/A}\simeq\operatorname{NL}_{B/A}.
+\tag{6.2}
+$$">$$
+\tau_{\geq-1}L_{B/A}\simeq\operatorname{NL}_{B/A}.
+\tag{6.2}
+$$</span>
+<p>In particular <span class="math" data-tex="$H^0(L_{B/A})=\Omega_{B/A}$">$H^0(L_{B/A})=\Omega_{B/A}$</span>, and for a surjection <span class="math" data-tex="$A\to B$">$A\to B$</span> with kernel <span class="math" data-tex="$I$">$I$</span>, <span class="math" data-tex="$H^{-1}(L_{B/A})=I/I^2$">$H^{-1}(L_{B/A})=I/I^2$</span> and <span class="math" data-tex="$H^0(L_{B/A})=0$">$H^0(L_{B/A})=0$</span>.</p>
+<p><strong>Proof.</strong> We make the degree-two relations explicit. Start a free simplicial resolution with <span class="math" data-tex="$P_0=P$">$P_0=P$</span> and</p>
+<span class="math math-display" data-tex="$$
+P_1=P[x_f\mid f\in I],\qquad d_0x_f=f,
+\quad d_1x_f=0,
+\tag{6.3}
+$$">$$
+P_1=P[x_f\mid f\in I],\qquad d_0x_f=f,
+\quad d_1x_f=0,
+\tag{6.3}
+$$</span>
+<p>with the degeneracy <span class="math" data-tex="$P_0\to P_1$">$P_0\to P_1$</span> the coefficient inclusion. This fills every compatible degree-one boundary: if <span class="math" data-tex="$a,b\in P$">$a,b\in P$</span> have the same image in <span class="math" data-tex="$B$">$B$</span>, then <span class="math" data-tex="$b+x_{a-b}$">$b+x_{a-b}$</span> has faces <span class="math" data-tex="$a,b$">$a,b$</span>. Extend this beginning to a polynomial resolution by the boundary-filling construction of Section 1.</p>
+<p>After tensoring differentials with <span class="math" data-tex="$B$">$B$</span>, the normalized degree-zero term is <span class="math" data-tex="$\Omega_{P/A}\otimes_P B$">$\Omega_{P/A}\otimes_P B$</span>, and the normalized degree-one term is the free module</p>
+<span class="math math-display" data-tex="$$
+F=\bigoplus_{f\in I}B e_f,\qquad \partial e_f=df.
+\tag{6.4}
+$$">$$
+F=\bigoplus_{f\in I}B e_f,\qquad \partial e_f=df.
+\tag{6.4}
+$$</span>
+<p>Define <span class="math" data-tex="$\rho:F\to I/I^2$">$\rho:F\to I/I^2$</span> by <span class="math" data-tex="$e_f\mapsto\bar f$">$e_f\mapsto\bar f$</span>. We will show that its kernel is precisely the image of the normalized degree-two differential.</p>
+<p>First every such boundary maps to zero under <span class="math" data-tex="$\rho$">$\rho$</span>. More generally, for any simplicial polynomial resolution with <span class="math" data-tex="$P_0=P$">$P_0=P$</span>, the degree-one map can be written on differentials as</p>
+<span class="math math-display" data-tex="$$
+dg\otimes b\longmapsto
+\bigl(d_0g-d_1g\bigr)b\pmod{I^2}.
+\tag{6.5}
+$$">$$
+dg\otimes b\longmapsto
+\bigl(d_0g-d_1g\bigr)b\pmod{I^2}.
+\tag{6.5}
+$$</span>
+<p>The difference lies in <span class="math" data-tex="$I$">$I$</span>. The product rule is valid modulo <span class="math" data-tex="$I^2$">$I^2$</span>: the two faces have the same image in <span class="math" data-tex="$B$">$B$</span>, so the difference of a product is the sum of the differences multiplied by their common images. Thus (6.5) is a well-defined map on differentials. It vanishes on degeneracies. On a degree-two differential it gives the alternating sum of the differences of its faces, which is zero by <span class="math" data-tex="$d_i d_j=d_{j-1}d_i$">$d_i d_j=d_{j-1}d_i$</span> for <span class="math" data-tex="$i&lt;j$">$i&lt;j$</span>. Hence degree-two boundaries lie in <span class="math" data-tex="$\ker\rho$">$\ker\rho$</span>.</p>
+<p>Conversely take a finite sum <span class="math" data-tex="$\sum\bar a_f e_f\in\ker\rho$">$\sum\bar a_f e_f\in\ker\rho$</span> and choose lifts <span class="math" data-tex="$a_f\in P$">$a_f\in P$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+\sum a_f f=\sum_{j=1}^m u_jv_j,
+\qquad u_j,v_j\in I.
+\tag{6.6}
+$$">$$
+\sum a_f f=\sum_{j=1}^m u_jv_j,
+\qquad u_j,v_j\in I.
+\tag{6.6}
+$$</span>
+<p>In <span class="math" data-tex="$P_1$">$P_1$</span> the polynomial</p>
+<span class="math math-display" data-tex="$$
+z=\sum a_f x_f-\sum_{j=1}^m x_{u_j}x_{v_j}
+\tag{6.7}
+$$">$$
+z=\sum a_f x_f-\sum_{j=1}^m x_{u_j}x_{v_j}
+\tag{6.7}
+$$</span>
+<p>has both faces zero. The compatible degree-two boundary <span class="math" data-tex="$(z,0,0)$">$(z,0,0)$</span> therefore has a chosen polynomial filler <span class="math" data-tex="$w$">$w$</span> with <span class="math" data-tex="$d_0w=z$">$d_0w=z$</span>, <span class="math" data-tex="$d_1w=d_2w=0$">$d_1w=d_2w=0$</span>. The boundary of <span class="math" data-tex="$dw$">$dw$</span> in the normalized differential module is the image of <span class="math" data-tex="$dz$">$dz$</span>. Under the augmentation, all <span class="math" data-tex="$x_f$">$x_f$</span> vanish. Differentiating the products <span class="math" data-tex="$x_{u_j}x_{v_j}$">$x_{u_j}x_{v_j}$</span> therefore gives zero after tensoring with <span class="math" data-tex="$B$">$B$</span>, while differentiating <span class="math" data-tex="$\sum a_f x_f$">$\sum a_f x_f$</span> gives exactly <span class="math" data-tex="$\sum\bar a_f e_f$">$\sum\bar a_f e_f$</span>. Thus every element of <span class="math" data-tex="$\ker\rho$">$\ker\rho$</span> is a degree-two boundary.</p>
+<p>It follows that the degree <span class="math" data-tex="$-1$">$-1$</span> term of the canonical truncation, namely <span class="math" data-tex="$F/\operatorname{im}\partial_2$">$F/\operatorname{im}\partial_2$</span>, is <span class="math" data-tex="$I/I^2$">$I/I^2$</span>. Its differential to degree zero is <span class="math" data-tex="$f\mapsto df$">$f\mapsto df$</span>, by (6.4). This proves (6.2). Formula (6.5), defined by faces rather than by choices of fillers, gives the comparison on any resolution and is compatible with ring maps. Independence in Theorem 2.2 and independence of (6.1) identify these comparison maps, proving canonicity.</p>
+<p>The cokernel of the differential in (6.1) is <span class="math" data-tex="$\Omega_{B/A}$">$\Omega_{B/A}$</span> by the conormal sequence. For a surjection <span class="math" data-tex="$A\to B$">$A\to B$</span>, one can use the polynomial presentation with no variables, namely <span class="math" data-tex="$P=A$">$P=A$</span>, obtaining <span class="math" data-tex="$[I/I^2\to0]$">$[I/I^2\to0]$</span> in the first truncation. ∎</p>
+<p>This calculation explains why merely writing two presentation terms does not compute the full complex. The higher fillers ensure the augmentation is a resolution; their differentials impose the relations in degree <span class="math" data-tex="$-1$">$-1$</span>, and still higher degrees can have their own cohomology.</p>
+<h2 id="7-complete-intersections-and-computations">7. Complete intersections and computations</h2>
+<p>We use finite local complete intersections: locally on the target a finite-presentation map admits a presentation by a localized polynomial algebra whose kernel is generated by a finite Koszul-regular sequence. A regular sequence is sufficient. No flatness of the map itself is assumed. The condition is invariant under changing polynomial presentation. Koszul exactness and the freeness of the conormal module are commutative-algebra foundations.</p>
+<p><strong>Lemma 7.1.</strong> If <span class="math" data-tex="$R\to B=R/(f_1,\ldots,f_r)$">$R\to B=R/(f_1,\ldots,f_r)$</span> and the sequence is Koszul regular, then</p>
+<span class="math math-display" data-tex="$$
+L_{B/R}\simeq (I/I^2)[1],\qquad I=(f_1,\ldots,f_r).
+\tag{7.1}
+$$">$$
+L_{B/R}\simeq (I/I^2)[1],\qquad I=(f_1,\ldots,f_r).
+\tag{7.1}
+$$</span>
+<p><strong>Proof.</strong> First take <span class="math" data-tex="$U=\mathbb Z[t_1,\ldots,t_r]$">$U=\mathbb Z[t_1,\ldots,t_r]$</span> and <span class="math" data-tex="$U\to\mathbb Z$">$U\to\mathbb Z$</span> with <span class="math" data-tex="$t_i\mapsto0$">$t_i\mapsto0$</span>. The triangle for <span class="math" data-tex="$\mathbb Z\to U\to\mathbb Z$">$\mathbb Z\to U\to\mathbb Z$</span> has middle term zero and first term <span class="math" data-tex="$\bigoplus\mathbb Z\,dt_i$">$\bigoplus\mathbb Z\,dt_i$</span> in degree zero. Hence</p>
+<span class="math math-display" data-tex="$$
+L_{\mathbb Z/U}\simeq\mathbb Z^r[1].
+\tag{7.2}
+$$">$$
+L_{\mathbb Z/U}\simeq\mathbb Z^r[1].
+\tag{7.2}
+$$</span>
+<p>Map <span class="math" data-tex="$U\to R$">$U\to R$</span> by <span class="math" data-tex="$t_i\mapsto f_i$">$t_i\mapsto f_i$</span>. The Koszul resolution of <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> over <span class="math" data-tex="$U$">$U$</span>, tensored with <span class="math" data-tex="$R$">$R$</span>, is the Koszul complex on the <span class="math" data-tex="$f_i$">$f_i$</span>. Exactness means exactly that <span class="math" data-tex="$R$">$R$</span> and <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> are Tor independent over <span class="math" data-tex="$U$">$U$</span> and their derived tensor is the ordinary ring <span class="math" data-tex="$B$">$B$</span>. Proposition 3.1 and (7.2) yield <span class="math" data-tex="$L_{B/R}=B^r[1]$">$L_{B/R}=B^r[1]$</span>. Koszul regularity identifies the basis vectors with the classes of <span class="math" data-tex="$f_i$">$f_i$</span> in <span class="math" data-tex="$I/I^2$">$I/I^2$</span>, proving (7.1). ∎</p>
+<p><strong>Theorem 7.2.</strong> For a local complete intersection map <span class="math" data-tex="$A\to B$">$A\to B$</span>, the cotangent complex is perfect of Tor amplitude in <span class="math" data-tex="$[-1,0]$">$[-1,0]$</span>. In a local presentation <span class="math" data-tex="$B=P/(f_1,\ldots,f_r)$">$B=P/(f_1,\ldots,f_r)$</span> with <span class="math" data-tex="$P$">$P$</span> a localized polynomial algebra,</p>
+<span class="math math-display" data-tex="$$
+L_{B/A}\simeq
+\left[I/I^2\xrightarrow{df}
+\Omega_{P/A}\otimes_P B\right].
+\tag{7.3}
+$$">$$
+L_{B/A}\simeq
+\left[I/I^2\xrightarrow{df}
+\Omega_{P/A}\otimes_P B\right].
+\tag{7.3}
+$$</span>
+<p><strong>Proof.</strong> Polynomial and localization computations give <span class="math" data-tex="$L_{P/A}=\Omega_{P/A}[0]$">$L_{P/A}=\Omega_{P/A}[0]$</span>. Lemma 7.1 gives <span class="math" data-tex="$L_{B/P}=(I/I^2)[1]$">$L_{B/P}=(I/I^2)[1]$</span>. The fundamental triangle for <span class="math" data-tex="$A\to P\to B$">$A\to P\to B$</span> then shows that <span class="math" data-tex="$L_{B/A}$">$L_{B/A}$</span> has no cohomology outside <span class="math" data-tex="$[-1,0]$">$[-1,0]$</span>. Theorem 6.1 identifies it with (7.3). Both terms are finite locally free: the conormal module has the regular-sequence basis and the polynomial differential module has its coordinate basis. Such a two-term complex is perfect and, when tensored with any module, remains concentrated in the same two degrees. This proves the Tor-amplitude assertion locally and hence globally on the target. ∎</p>
+<p>Concentration of cohomology and Tor amplitude are different assertions. The freeness of the two displayed modules is what gives the latter. The proof does not require the map <span class="math" data-tex="$I/I^2\to\Omega_{P/A}\otimes B$">$I/I^2\to\Omega_{P/A}\otimes B$</span> to be injective.</p>
+<h3 id="dual-numbers-over-a-field">Dual numbers over a field</h3>
+<p>For <span class="math" data-tex="$B=k[x]/(x^2)$">$B=k[x]/(x^2)$</span>, the element <span class="math" data-tex="$x^2$">$x^2$</span> is regular in <span class="math" data-tex="$k[x]$">$k[x]$</span> in every characteristic. Thus</p>
+<span class="math math-display" data-tex="$$
+L_{B/k}=\left[B e\xrightarrow{e\mapsto 2x\,dx}B\,dx\right].
+\tag{7.4}
+$$">$$
+L_{B/k}=\left[B e\xrightarrow{e\mapsto 2x\,dx}B\,dx\right].
+\tag{7.4}
+$$</span>
+<p>If <span class="math" data-tex="$\operatorname{char}k\ne2$">$\operatorname{char}k\ne2$</span>, then <span class="math" data-tex="$H^{-1}(L)=(x)e$">$H^{-1}(L)=(x)e$</span> and <span class="math" data-tex="$H^0(L)=(B/(x))dx$">$H^0(L)=(B/(x))dx$</span>. Both are one-dimensional over <span class="math" data-tex="$k$">$k$</span>. If <span class="math" data-tex="$\operatorname{char}k=2$">$\operatorname{char}k=2$</span>, the differential is zero and both groups are free rank one over <span class="math" data-tex="$B$">$B$</span>, hence two-dimensional over <span class="math" data-tex="$k$">$k$</span>. In either case the complex is perfect with the stated amplitude.</p>
+<h3 id="reduction-modulo-a-prime">Reduction modulo a prime</h3>
+<p>The integer <span class="math" data-tex="$p$">$p$</span> is regular in <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>. Therefore</p>
+<span class="math math-display" data-tex="$$
+L_{\mathbb F_p/\mathbb Z}\simeq\mathbb F_p[1].
+\tag{7.5}
+$$">$$
+L_{\mathbb F_p/\mathbb Z}\simeq\mathbb F_p[1].
+\tag{7.5}
+$$</span>
+<p>The shift <span class="math" data-tex="$[1]$">$[1]$</span> means that the module is in cohomological degree <span class="math" data-tex="$-1$">$-1$</span>. It does not mean degree <span class="math" data-tex="$+1$">$+1$</span>.</p>
+<h3 id="a-non-complete-intersection-map-with-a-degree--2-term">A non-complete-intersection map with a degree <span class="math" data-tex="$-2$">$-2$</span> term</h3>
+<p>Let <span class="math" data-tex="$B=k[x]/(x^2)$">$B=k[x]/(x^2)$</span> and let <span class="math" data-tex="$B\to k$">$B\to k$</span> send <span class="math" data-tex="$x$">$x$</span> to zero. Apply the triangle to <span class="math" data-tex="$k\to B\to k$">$k\to B\to k$</span>. Its middle term is <span class="math" data-tex="$L_{k/k}=0$">$L_{k/k}=0$</span>, so</p>
+<span class="math math-display" data-tex="$$
+L_{k/B}\simeq\bigl(L_{B/k}\otimes_B^{\mathbf L}k\bigr)[1]
+\simeq k[1]\oplus k[2].
+\tag{7.6}
+$$">$$
+L_{k/B}\simeq\bigl(L_{B/k}\otimes_B^{\mathbf L}k\bigr)[1]
+\simeq k[1]\oplus k[2].
+\tag{7.6}
+$$</span>
+<p>The derived tensor in (7.6) is computed directly from the two free terms in (7.4); its differential becomes zero in every characteristic because <span class="math" data-tex="$x$">$x$</span> maps to zero. Consequently</p>
+<span class="math math-display" data-tex="$$
+H^{-1}(L_{k/B})=k,
+\qquad H^{-2}(L_{k/B})=k.
+\tag{7.7}
+$$">$$
+H^{-1}(L_{k/B})=k,
+\qquad H^{-2}(L_{k/B})=k.
+\tag{7.7}
+$$</span>
+<p>This is a fully computed non-lci map, rather than an example whose lower cohomology is only asserted. Its ideal <span class="math" data-tex="$(x)\subset B$">$(x)\subset B$</span> is generated by a zero divisor, and its cotangent complex contradicts the amplitude required of an lci map. The naive complex sees only <span class="math" data-tex="$k[1]$">$k[1]$</span> and loses <span class="math" data-tex="$k[2]$">$k[2]$</span>. It therefore cannot satisfy the full fundamental triangle for these three maps; the earlier lesson's warning now has an exact derived explanation.</p>
+<h2 id="8-square-zero-extensions-and-ext">8. Square-zero extensions and Ext</h2>
+<p>Let <span class="math" data-tex="$M$">$M$</span> be a <span class="math" data-tex="$B$">$B$</span>-module. Write <span class="math" data-tex="$\operatorname{Exal}_A(B,M)$">$\operatorname{Exal}_A(B,M)$</span> for isomorphism classes of square-zero <span class="math" data-tex="$A$">$A$</span>-algebra extensions</p>
+<span class="math math-display" data-tex="$$
+0\to M\to E\to B\to0,
+\tag{8.1}
+$$">$$
+0\to M\to E\to B\to0,
+\tag{8.1}
+$$</span>
+<p>with the given identification of the kernel. The extension lesson proved, including its Baer addition and derivation automorphisms,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Exal}_A(B,M)
+\simeq\operatorname{Ext}^1_B(\operatorname{NL}_{B/A},M).
+\tag{8.2}
+$$">$$
+\operatorname{Exal}_A(B,M)
+\simeq\operatorname{Ext}^1_B(\operatorname{NL}_{B/A},M).
+\tag{8.2}
+$$</span>
+<p><strong>Theorem 8.1.</strong> There are canonical identifications</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Exal}_A(B,M)\simeq\operatorname{Ext}^1_B(L_{B/A},M),
+\qquad
+\operatorname{Aut}(E/B,M)\simeq
+\operatorname{Ext}^0_B(L_{B/A},M)=\operatorname{Der}_A(B,M).
+\tag{8.3}
+$$">$$
+\operatorname{Exal}_A(B,M)\simeq\operatorname{Ext}^1_B(L_{B/A},M),
+\qquad
+\operatorname{Aut}(E/B,M)\simeq
+\operatorname{Ext}^0_B(L_{B/A},M)=\operatorname{Der}_A(B,M).
+\tag{8.3}
+$$</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="$K=\tau_{\leq-2}L_{B/A}$">$K=\tau_{\leq-2}L_{B/A}$</span>. The truncation triangle is</p>
+<span class="math math-display" data-tex="$$
+K\to L_{B/A}\to\operatorname{NL}_{B/A}\to K[1].
+\tag{8.4}
+$$">$$
+K\to L_{B/A}\to\operatorname{NL}_{B/A}\to K[1].
+\tag{8.4}
+$$</span>
+<p>By the standard derived-category degree orthogonality, <span class="math" data-tex="$\operatorname{Hom}(K,M)=0$">$\operatorname{Hom}(K,M)=0$</span> and <span class="math" data-tex="$\operatorname{Hom}(K,M[1])=0$">$\operatorname{Hom}(K,M[1])=0$</span>: the source is in degrees at most <span class="math" data-tex="$-2$">$-2$</span>, whereas the targets begin in degree zero or <span class="math" data-tex="$-1$">$-1$</span>. Applying <span class="math" data-tex="$\operatorname{Hom}(-,M[1])$">$\operatorname{Hom}(-,M[1])$</span> to (8.4) therefore identifies <span class="math" data-tex="$\operatorname{Ext}^1(\operatorname{NL},M)$">$\operatorname{Ext}^1(\operatorname{NL},M)$</span> with <span class="math" data-tex="$\operatorname{Ext}^1(L,M)$">$\operatorname{Ext}^1(L,M)$</span>. Combining with (8.2) proves the first assertion, including the group law. The same truncation argument in degree zero gives <span class="math" data-tex="$\operatorname{Ext}^0(L,M)=\operatorname{Hom}(\Omega_{B/A},M)$">$\operatorname{Ext}^0(L,M)=\operatorname{Hom}(\Omega_{B/A},M)$</span>, which is the derivation group.</p>
+<p>For an automorphism explicitly, add <span class="math" data-tex="$D(\bar e)$">$D(\bar e)$</span> to each <span class="math" data-tex="$e\in E$">$e\in E$</span>, where <span class="math" data-tex="$D:B\to M$">$D:B\to M$</span> is an <span class="math" data-tex="$A$">$A$</span>-derivation. The derivation rule and <span class="math" data-tex="$M^2=0$">$M^2=0$</span> make this a ring automorphism fixing the kernel and quotient; its inverse uses <span class="math" data-tex="$-D$">$-D$</span>. Conversely any such automorphism differs from the identity by exactly such a derivation. ∎</p>
+<p>The truncation argument does not identify Ext in degree two. That is precisely where the lower part of <span class="math" data-tex="$L$">$L$</span> can matter.</p>
+<h2 id="9-a-canonical-obstruction-in-degree-two">9. A canonical obstruction in degree two</h2>
+<p>Let <span class="math" data-tex="$A&#x27;\to A$">$A&#x27;\to A$</span> be surjective with square-zero kernel <span class="math" data-tex="$J$">$J$</span>. Fix <span class="math" data-tex="$A\to B$">$A\to B$</span>, a <span class="math" data-tex="$B$">$B$</span>-module <span class="math" data-tex="$M$">$M$</span>, and an <span class="math" data-tex="$A$">$A$</span>-linear map <span class="math" data-tex="$c:J\to M$">$c:J\to M$</span>. We seek an <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span>-algebra extension (8.1) whose structural map from <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span> sends <span class="math" data-tex="$J$">$J$</span> into its kernel by <span class="math" data-tex="$c$">$c$</span>.</p>
+<p><strong>Theorem 9.1.</strong> There is a canonical class</p>
+<span class="math math-display" data-tex="$$
+\operatorname{ob}(c)\in\operatorname{Ext}^2_B(L_{B/A},M)
+\tag{9.1}
+$$">$$
+\operatorname{ob}(c)\in\operatorname{Ext}^2_B(L_{B/A},M)
+\tag{9.1}
+$$</span>
+<p>whose vanishing is necessary and sufficient for such an extension to exist. When it exists, its isomorphism classes form a torsor under <span class="math" data-tex="$\operatorname{Ext}^1_B(L_{B/A},M)$">$\operatorname{Ext}^1_B(L_{B/A},M)$</span>, and its automorphisms are <span class="math" data-tex="$\operatorname{Ext}^0_B(L_{B/A},M)$">$\operatorname{Ext}^0_B(L_{B/A},M)$</span>.</p>
+<p><strong>Proof.</strong> Theorem 6.1 for the surjection <span class="math" data-tex="$A&#x27;\to A$">$A&#x27;\to A$</span> gives</p>
+<span class="math math-display" data-tex="$$
+H^0(L_{A/A&#x27;})=0,\qquad H^{-1}(L_{A/A&#x27;})=J.
+\tag{9.2}
+$$">$$
+H^0(L_{A/A&#x27;})=0,\qquad H^{-1}(L_{A/A&#x27;})=J.
+\tag{9.2}
+$$</span>
+<p>Its canonical truncation map <span class="math" data-tex="$L_{A/A&#x27;}\to J[1]$">$L_{A/A&#x27;}\to J[1]$</span>, followed by <span class="math" data-tex="$c[1]$">$c[1]$</span>, defines an element of <span class="math" data-tex="$\operatorname{Ext}^1_A(L_{A/A&#x27;},M)$">$\operatorname{Ext}^1_A(L_{A/A&#x27;},M)$</span>. Derived tensor–Hom adjunction identifies this group with</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Ext}^1_B(L_{A/A&#x27;}\otimes_A^{\mathbf L}B,M)
+=\operatorname{Hom}_A(J,M).
+\tag{9.3}
+$$">$$
+\operatorname{Ext}^1_B(L_{A/A&#x27;}\otimes_A^{\mathbf L}B,M)
+=\operatorname{Hom}_A(J,M).
+\tag{9.3}
+$$</span>
+<p>For the equality, the source of the Ext group has no degree-zero cohomology and has <span class="math" data-tex="$H^{-1}=J\otimes_A B$">$H^{-1}=J\otimes_A B$</span>; its terms below <span class="math" data-tex="$-1$">$-1$</span> contribute nothing to Ext in degree one. Thus the element in (9.3) is exactly the specified map <span class="math" data-tex="$c$">$c$</span>.</p>
+<p>Apply <span class="math" data-tex="$\mathbf R\operatorname{Hom}_B(-,M)$">$\mathbf R\operatorname{Hom}_B(-,M)$</span> to the fundamental triangle for <span class="math" data-tex="$A&#x27;\to A\to B$">$A&#x27;\to A\to B$</span>. Its long exact sequence includes</p>
+<span class="math math-display" data-tex="$$
+0\to\operatorname{Ext}^1_B(L_{B/A},M)
+\to\operatorname{Ext}^1_B(L_{B/A&#x27;},M)
+\xrightarrow{r}\operatorname{Hom}_A(J,M)
+\xrightarrow{\partial}\operatorname{Ext}^2_B(L_{B/A},M).
+\tag{9.4}
+$$">$$
+0\to\operatorname{Ext}^1_B(L_{B/A},M)
+\to\operatorname{Ext}^1_B(L_{B/A&#x27;},M)
+\xrightarrow{r}\operatorname{Hom}_A(J,M)
+\xrightarrow{\partial}\operatorname{Ext}^2_B(L_{B/A},M).
+\tag{9.4}
+$$</span>
+<p>The initial zero follows because <span class="math" data-tex="$L_{A/A&#x27;}\otimes_A^{\mathbf L}B$">$L_{A/A&#x27;}\otimes_A^{\mathbf L}B$</span> lies in degrees at most <span class="math" data-tex="$-1$">$-1$</span> and hence has no maps to <span class="math" data-tex="$M$">$M$</span> in degree zero. Define <span class="math" data-tex="$\operatorname{ob}(c)=\partial(c)$">$\operatorname{ob}(c)=\partial(c)$</span>.</p>
+<p>By Theorem 8.1, the middle Ext group classifies square-zero <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span>-algebra extensions of <span class="math" data-tex="$B$">$B$</span> by <span class="math" data-tex="$M$">$M$</span>. Its map <span class="math" data-tex="$r$">$r$</span> sends such an extension to its structural action on <span class="math" data-tex="$J$">$J$</span>. This can be checked in a polynomial presentation: restrict the lifted polynomial map along <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span>, and a relation <span class="math" data-tex="$j\in J$">$j\in J$</span> is sent to its image in the extension kernel. Equivalently, pull back the extension along <span class="math" data-tex="$A\to B$">$A\to B$</span>; as an <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span>-algebra extension of <span class="math" data-tex="$A$">$A$</span> its conormal map is precisely <span class="math" data-tex="$j\mapsto c(j)$">$j\mapsto c(j)$</span>, by the presentation classification of the preceding lesson. Thus the desired extensions are exactly the fibre <span class="math" data-tex="$r^{-1}(c)$">$r^{-1}(c)$</span>.</p>
+<p>Exactness of (9.4) proves the obstruction criterion. If the fibre is nonempty, it is a torsor under the injective kernel group <span class="math" data-tex="$\operatorname{Ext}^1_B(L_{B/A},M)$">$\operatorname{Ext}^1_B(L_{B/A},M)$</span>. Automorphisms of a solution are <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span>-derivations <span class="math" data-tex="$B\to M$">$B\to M$</span>; because <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span> acts on <span class="math" data-tex="$B$">$B$</span> through its surjective image <span class="math" data-tex="$A$">$A$</span>, these are precisely <span class="math" data-tex="$A$">$A$</span>-derivations. Theorem 8.1 identifies them with the stated degree-zero Ext group. ∎</p>
+<p>This is a general ring-extension theorem, with no flatness or smallness assumption beyond <span class="math" data-tex="$J^2=0$">$J^2=0$</span>. Its class is natural in <span class="math" data-tex="$c$">$c$</span> and in maps of the ring diagrams.</p>
+<p>For flat deformation theory, assume in addition that <span class="math" data-tex="$B$">$B$</span> is flat over <span class="math" data-tex="$A$">$A$</span>, put</p>
+<span class="math math-display" data-tex="$$
+M=J\otimes_A B,\qquad c(j)=j\otimes1.
+\tag{9.5}
+$$">$$
+M=J\otimes_A B,\qquad c(j)=j\otimes1.
+\tag{9.5}
+$$</span>
+<p>A solution is then exactly a flat lift <span class="math" data-tex="$B&#x27;$">$B&#x27;$</span> over <span class="math" data-tex="$A&#x27;$">$A&#x27;$</span> with <span class="math" data-tex="$B&#x27;\otimes_{A&#x27;}A=B$">$B&#x27;\otimes_{A&#x27;}A=B$</span> and identified reduction. Indeed the images of <span class="math" data-tex="$J$">$J$</span> generate its whole kernel by (9.5), so <span class="math" data-tex="$JB&#x27;=M$">$JB&#x27;=M$</span>. The multiplication map <span class="math" data-tex="$J\otimes_A B\to M$">$J\otimes_A B\to M$</span> is the prescribed identity and is injective. Together with flatness of <span class="math" data-tex="$B/A$">$B/A$</span>, the square-zero flatness criterion proves <span class="math" data-tex="$B&#x27;/A&#x27;$">$B&#x27;/A&#x27;$</span> flat. Conversely a flat lift has kernel <span class="math" data-tex="$J\otimes_A B$">$J\otimes_A B$</span> and supplies such a solution. This is the precise scope in which (9.1) is the obstruction to extending a flat deformation.</p>
+<p>For an affine lci algebra, Theorem 7.2 makes the derived Hom complex a two-term complex of degrees zero and one, so <span class="math" data-tex="$\operatorname{Ext}^2_B(L_{B/A},M)=0$">$\operatorname{Ext}^2_B(L_{B/A},M)=0$</span>. These affine lifting problems are unobstructed. For a nonaffine lci scheme, global cohomology can still produce degree-two Ext; affine unobstructedness must not be asserted as a global theorem without a gluing argument.</p>
+<h2 id="10-morphisms-of-schemes">10. Morphisms of schemes</h2>
+<p>For <span class="math" data-tex="$f:X\to S$">$f:X\to S$</span>, work on the Zariski site of <span class="math" data-tex="$X$">$X$</span> and apply the standard polynomial construction to the homomorphism of sheaves of rings</p>
+<span class="math math-display" data-tex="$$
+f^{-1}\mathcal O_S\longrightarrow\mathcal O_X.
+\tag{10.1}
+$$">$$
+f^{-1}\mathcal O_S\longrightarrow\mathcal O_X.
+\tag{10.1}
+$$</span>
+<p>Free polynomial sheaves are obtained by sheafifying free polynomial presheaves. Their standard resolution defines <span class="math" data-tex="$L_{X/S}\in D(\mathcal O_X)$">$L_{X/S}\in D(\mathcal O_X)$</span> just as above. This is a single global construction, so no choice of unrelated derived-category identifications on overlaps is needed.</p>
+<p><strong>Proposition 10.1.</strong> If <span class="math" data-tex="$U=\operatorname{Spec}B\subset X$">$U=\operatorname{Spec}B\subset X$</span> maps into <span class="math" data-tex="$V=\operatorname{Spec}A\subset S$">$V=\operatorname{Spec}A\subset S$</span>, then</p>
+<span class="math math-display" data-tex="$$
+L_{X/S}|_U\simeq\widetilde{L_{B/A}}.
+\tag{10.2}
+$$">$$
+L_{X/S}|_U\simeq\widetilde{L_{B/A}}.
+\tag{10.2}
+$$</span>
+<p>Its cohomology sheaves are quasi-coherent. For <span class="math" data-tex="$X\xrightarrow{f}Y\to S$">$X\xrightarrow{f}Y\to S$</span> there is a canonical triangle</p>
+<span class="math math-display" data-tex="$$
+\mathbf Lf^*L_{Y/S}\to L_{X/S}\to L_{X/Y}
+\to(\mathbf Lf^*L_{Y/S})[1].
+\tag{10.3}
+$$">$$
+\mathbf Lf^*L_{Y/S}\to L_{X/S}\to L_{X/Y}
+\to(\mathbf Lf^*L_{Y/S})[1].
+\tag{10.3}
+$$</span>
+<p>Smooth, étale, and lci computations have the same local forms as for rings.</p>
+<p><strong>Proof.</strong> Stalks commute with free polynomial constructions, differentials, tensor products, and normalization. At <span class="math" data-tex="$x\in U$">$x\in U$</span> corresponding to <span class="math" data-tex="$\mathfrak p\subset B$">$\mathfrak p\subset B$</span>, with image <span class="math" data-tex="$\mathfrak q\subset A$">$\mathfrak q\subset A$</span>, the sheaf model has stalk <span class="math" data-tex="$L_{B_{\mathfrak p}/A_{\mathfrak q}}$">$L_{B_{\mathfrak p}/A_{\mathfrak q}}$</span>. Localization (5.1) identifies it with <span class="math" data-tex="$L_{B/A}\otimes_B B_{\mathfrak p}$">$L_{B/A}\otimes_B B_{\mathfrak p}$</span>, the stalk of the right side of (10.2). The natural comparison map is therefore a quasi-isomorphism on every stalk, proving (10.2) and quasi-coherence of cohomology.</p>
+<p>The polynomial construction, differential sequences, and their comparison maps in Section 4 apply to sheaves of rings. They give (10.3); equivalently its affine restrictions are the already proved triangles and the globally defined maps identify their cones on every stalk. The smooth, étale, and lci claims follow by checking the respective affine opens. ∎</p>
+<p>For a smooth <span class="math" data-tex="$X/k$">$X/k$</span>, the result is <span class="math" data-tex="$L_{X/k}=\Omega_{X/k}[0]$">$L_{X/k}=\Omega_{X/k}[0]$</span>, so for a quasi-coherent module <span class="math" data-tex="$M$">$M$</span>,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Ext}^i_X(L_{X/k},M)
+=H^i(X,\mathcal H\!om(\Omega_{X/k},M)).
+\tag{10.4}
+$$">$$
+\operatorname{Ext}^i_X(L_{X/k},M)
+=H^i(X,\mathcal H\!om(\Omega_{X/k},M)).
+\tag{10.4}
+$$</span>
+<p>Here finite local freeness of <span class="math" data-tex="$\Omega$">$\Omega$</span> removes the local higher Ext terms. Thus the familiar <span class="math" data-tex="$H^0$">$H^0$</span> automorphisms, <span class="math" data-tex="$H^1$">$H^1$</span> first-order deformations and <span class="math" data-tex="$H^2$">$H^2$</span> obstructions from the earlier smooth-scheme lesson are the global groups associated with the cotangent complex.</p>
+<p>The exact global input is the ringed-space theorem [Stacks, Tag 08UZ]. Given a square-zero thickening <span class="math" data-tex="$S\hookrightarrow S&#x27;$">$S\hookrightarrow S&#x27;$</span> with kernel <span class="math" data-tex="$\mathcal J$">$\mathcal J$</span>, a morphism <span class="math" data-tex="$f:X\to S$">$f:X\to S$</span>, an <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>-module <span class="math" data-tex="$M$">$M$</span>, and an <span class="math" data-tex="$f^{-1}\mathcal O_S$">$f^{-1}\mathcal O_S$</span>-linear map <span class="math" data-tex="$f^{-1}\mathcal J\to M$">$f^{-1}\mathcal J\to M$</span>, there is a canonical obstruction in <span class="math" data-tex="$\operatorname{Ext}^2_X(L_{X/S},M)$">$\operatorname{Ext}^2_X(L_{X/S},M)$</span> to a thickening <span class="math" data-tex="$X\hookrightarrow X&#x27;$">$X\hookrightarrow X&#x27;$</span> with identified kernel <span class="math" data-tex="$M$">$M$</span> and compatible morphism <span class="math" data-tex="$X&#x27;\to S&#x27;$">$X&#x27;\to S&#x27;$</span> inducing that map. Its vanishing is necessary and sufficient; if it vanishes, isomorphism classes of solutions form a torsor under <span class="math" data-tex="$\operatorname{Ext}^1_X(L_{X/S},M)$">$\operatorname{Ext}^1_X(L_{X/S},M)$</span>, and automorphisms are <span class="math" data-tex="$\operatorname{Ext}^0_X(L_{X/S},M)$">$\operatorname{Ext}^0_X(L_{X/S},M)$</span>. We state this sheaf deformation theorem as an input. The ring proof in Sections 8–9 proves its affine algebra counterpart; the full global ringed-space and ringed-topos classifications require sheaf extension theory.</p>
+<h2 id="11-exercises">11. Exercises</h2>
+<p><strong>Exercise 1.</strong> Compute <span class="math" data-tex="$L_{A[x_1,\ldots,x_n]/A}$">$L_{A[x_1,\ldots,x_n]/A}$</span> and its Ext groups with an arbitrary module <span class="math" data-tex="$M$">$M$</span>.</p>
+<p><strong>Exercise 2.</strong> Compute <span class="math" data-tex="$L_{k[x]/(x^2)/k}$">$L_{k[x]/(x^2)/k}$</span> in every characteristic. Verify perfection and Tor amplitude, and compute its Ext groups with coefficients in <span class="math" data-tex="$B=k[x]/(x^2)$">$B=k[x]/(x^2)$</span>.</p>
+<p><strong>Exercise 3.</strong> Deduce from the fundamental triangle that <span class="math" data-tex="$L_{C/A}=L_{C/B}$">$L_{C/A}=L_{C/B}$</span> when <span class="math" data-tex="$A\to B$">$A\to B$</span> is étale. Explain why <span class="math" data-tex="$B\to C$">$B\to C$</span> need not be smooth or flat.</p>
+<p><strong>Exercise 4.</strong> Prove flat base change (3.4), identifying exactly where flatness is used. Give an ordinary base-change example in which the formula fails when flatness and Tor independence are absent.</p>
+<p><strong>Exercise 5.</strong> Prove <span class="math" data-tex="$\operatorname{Exal}_A(B,M)=\operatorname{Ext}^1_B(L_{B/A},M)$">$\operatorname{Exal}_A(B,M)=\operatorname{Ext}^1_B(L_{B/A},M)$</span> from the naive-complex classification and comparison. Show why the same truncation argument does not identify Ext in degree two. Compute that failure for <span class="math" data-tex="$B=k[x]/(x^2)\to k$">$B=k[x]/(x^2)\to k$</span>.</p>
+<h2 id="12-complete-solutions">12. Complete solutions</h2>
+<p><strong>Solution 1.</strong> Use the constant polynomial resolution. Its differential module is <span class="math" data-tex="$\bigoplus_{i=1}^nB\,dx_i$">$\bigoplus_{i=1}^nB\,dx_i$</span>, concentrated in degree zero, by (2.5). It is finite free, so</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Ext}^0_B(L_{B/A},M)=M^n,
+\qquad \operatorname{Ext}^i_B(L_{B/A},M)=0\quad(i&gt;0).
+\tag{12.1}
+$$">$$
+\operatorname{Ext}^0_B(L_{B/A},M)=M^n,
+\qquad \operatorname{Ext}^i_B(L_{B/A},M)=0\quad(i&gt;0).
+\tag{12.1}
+$$</span>
+<p>The degree-zero identification sends a derivation to the values it assigns to the coordinates. When <span class="math" data-tex="$n=0$">$n=0$</span>, the complex and all these groups are zero.</p>
+<p><strong>Solution 2.</strong> The polynomial presentation has regular relation <span class="math" data-tex="$x^2$">$x^2$</span>. Its conormal generator maps to <span class="math" data-tex="$d(x^2)=2x\,dx$">$d(x^2)=2x\,dx$</span>, so (7.4) is the full cotangent complex. Both terms are free rank one over <span class="math" data-tex="$B$">$B$</span>, which proves perfection. Tensoring with any <span class="math" data-tex="$B$">$B$</span>-module gives a two-term complex in degrees <span class="math" data-tex="$-1,0$">$-1,0$</span>, proving Tor amplitude directly.</p>
+<p>Applying <span class="math" data-tex="$\operatorname{Hom}_B(-,B)$">$\operatorname{Hom}_B(-,B)$</span> gives the cochain complex</p>
+<span class="math math-display" data-tex="$$
+B\xrightarrow{2x}B
+\tag{12.2}
+$$">$$
+B\xrightarrow{2x}B
+\tag{12.2}
+$$</span>
+<p>in degrees zero and one. If <span class="math" data-tex="$\operatorname{char}k\ne2$">$\operatorname{char}k\ne2$</span>, its kernel is <span class="math" data-tex="$(x)$">$(x)$</span> and its cokernel is <span class="math" data-tex="$B/(x)$">$B/(x)$</span>. Thus both <span class="math" data-tex="$\operatorname{Ext}^0$">$\operatorname{Ext}^0$</span> and <span class="math" data-tex="$\operatorname{Ext}^1$">$\operatorname{Ext}^1$</span> have dimension one over <span class="math" data-tex="$k$">$k$</span>. If <span class="math" data-tex="$\operatorname{char}k=2$">$\operatorname{char}k=2$</span>, the differential vanishes and both are <span class="math" data-tex="$B$">$B$</span>, of dimension two over <span class="math" data-tex="$k$">$k$</span>. All Ext groups in degree at least two vanish. These computations allow <span class="math" data-tex="$H^{-1}(L)$">$H^{-1}(L)$</span> to be nonzero while the amplitude is still exactly within the lci range.</p>
+<p><strong>Solution 3.</strong> Proposition 5.1 gives <span class="math" data-tex="$L_{B/A}=0$">$L_{B/A}=0$</span> for the étale map. In (4.2) both the first term and its shift are zero, so its middle arrow <span class="math" data-tex="$L_{C/A}\to L_{C/B}$">$L_{C/A}\to L_{C/B}$</span> is an isomorphism. This uses no condition on <span class="math" data-tex="$B\to C$">$B\to C$</span>: derived tensor of a zero object remains zero for every <span class="math" data-tex="$C$">$C$</span>.</p>
+<p><strong>Solution 4.</strong> Resolve <span class="math" data-tex="$B$">$B$</span> by polynomial <span class="math" data-tex="$A$">$A$</span>-algebras <span class="math" data-tex="$P_\bullet$">$P_\bullet$</span>. Its additive normalized complex is a projective resolution. Flatness of <span class="math" data-tex="$A&#x27;/A$">$A&#x27;/A$</span> makes tensoring preserve its homology, so <span class="math" data-tex="$P_\bullet\otimes_A A&#x27;$">$P_\bullet\otimes_A A&#x27;$</span> resolves <span class="math" data-tex="$B\otimes_A A&#x27;$">$B\otimes_A A&#x27;$</span>. Polynomial differentials commute with this base change in each degree, as (3.3) shows. Normalization commutes with tensoring here because its degenerate decomposition is split. Thus the complexes computing the two sides of (3.4) agree. For the failure, use <span class="math" data-tex="$A=\mathbb Z$">$A=\mathbb Z$</span> and <span class="math" data-tex="$B=A&#x27;=\mathbb F_p$">$B=A&#x27;=\mathbb F_p$</span>. The left side is zero, while the purported right side is <span class="math" data-tex="$\mathbb F_p[1]$">$\mathbb F_p[1]$</span> by (7.5). Higher Tor does not vanish, so tensoring the polynomial resolution no longer resolves the ordinary tensor-product ring.</p>
+<p><strong>Solution 5.</strong> Let <span class="math" data-tex="$K=\tau_{\leq-2}L$">$K=\tau_{\leq-2}L$</span>. The truncation triangle is (8.4). Both <span class="math" data-tex="$\operatorname{Hom}(K,M)$">$\operatorname{Hom}(K,M)$</span> and <span class="math" data-tex="$\operatorname{Hom}(K,M[1])$">$\operatorname{Hom}(K,M[1])$</span> vanish by degree orthogonality. In the long exact Hom sequence these are the groups on either side of the map <span class="math" data-tex="$\operatorname{Ext}^1(\operatorname{NL},M)\to\operatorname{Ext}^1(L,M)$">$\operatorname{Ext}^1(\operatorname{NL},M)\to\operatorname{Ext}^1(L,M)$</span>, so that map is an isomorphism. The previous lesson's extension classification then proves the desired statement, including Baer addition and identified kernels.</p>
+<p>In degree two, <span class="math" data-tex="$M[2]$">$M[2]$</span> lies in degree <span class="math" data-tex="$-2$">$-2$</span>, and maps from <span class="math" data-tex="$K$">$K$</span> need not vanish. For the explicit example (7.6), with coefficient module <span class="math" data-tex="$k$">$k$</span>, the full complex is <span class="math" data-tex="$k[1]\oplus k[2]$">$k[1]\oplus k[2]$</span> whereas its naive truncation is <span class="math" data-tex="$k[1]$">$k[1]$</span>. Therefore</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Ext}^2_k(L_{k/B},k)=k,
+\qquad \operatorname{Ext}^2_k(\operatorname{NL}_{k/B},k)=0.
+\tag{12.3}
+$$">$$
+\operatorname{Ext}^2_k(L_{k/B},k)=k,
+\qquad \operatorname{Ext}^2_k(\operatorname{NL}_{k/B},k)=0.
+\tag{12.3}
+$$</span>
+<p>For example <span class="math" data-tex="$\operatorname{Hom}(k[2],k[2])=k$">$\operatorname{Hom}(k[2],k[2])=k$</span> supplies the missing class on the left, while the category of vector spaces has no positive Ext of two degree-zero vector spaces. Thus degree-one extension classification survives truncation, but degree-two obstruction theory requires the full complex.</p>
+<h2 id="13-what-this-lesson-does-not-prove">13. What this lesson does not prove</h2>
+<ul>
+<li>
+<p><strong>Simplicial foundations.</strong> Normalization, the acyclic degenerate summand, Dold–Kan [Stacks, Tags 019D and 019G], the Kan property of simplicial groups, the boundary-lifting characterization of trivial Kan fibrations, and Eilenberg–Zilber are imported homotopical foundations. The standard polynomial resolution and the diagram-homology comparison are constructed and proved in Sections 1–2.</p>
+</li>
+<li>
+<p><strong>Homological change of rings.</strong> The theorem (4.1), including its derived form for modules over weakly equivalent simplicial rings, is [Stacks, Tag 08RX]. Its normalization and derived-total-complex interpretation is the foundation used to prove that (4.5) remains a resolution. We do not import the cotangent fundamental triangle as a theorem; Section 4 proves it from this module theorem and polynomial differential sequences.</p>
+</li>
+<li>
+<p><strong>Derived-category algebra.</strong> Existence of projective diagram resolutions, the two spectral sequences of a bounded-direction double complex, derived tensor–Hom adjunction, associativity of derived tensor, the cone triangle of a short exact sequence, and standard truncation orthogonality are prerequisites. A bounded-above complex of projectives computes derived tensor. These facts explain every derived tensor used here.</p>
+</li>
+<li>
+<p><strong>Commutative algebra.</strong> Koszul exactness for a regular sequence, the basis of its conormal module, finite-presentation lci presentations, the étale diagonal's flat epimorphism, and local étale coordinates for a smooth morphism are imported algebraic foundations. The square-zero flatness criterion is the one used in the earlier deformation lesson: reduction flatness and injectivity of <span class="math" data-tex="$J\otimes_A B\to B&#x27;$">$J\otimes_A B\to B&#x27;$</span> imply flatness of the lift.</p>
+</li>
+<li>
+<p><strong>Naive extensions and sheaf deformation theory.</strong> The complete naive-complex extension classification (8.2), with its maps and group law, was proved earlier in this course. The comparison with <span class="math" data-tex="$L$">$L$</span>, the general ring obstruction criterion and torsor are proved here. The more general global ringed-space extension classification is the exact statement of [Stacks, Tag 08UZ] given in Section 10; it is not deduced solely from affine calculations.</p>
+</li>
+<li>
+<p><strong>Quillen's spectral sequence.</strong> As an outlook, for a surjection <span class="math" data-tex="$A\to B$">$A\to B$</span> there is a convergent spectral sequence</p>
+<span class="math math-display" data-tex="$$
+E_1^{p,q}=H_{-p-q}\bigl(\mathcal D_{B/A},\operatorname{Sym}^p E\bigr)
+\Longrightarrow\operatorname{Tor}^A_{-p-q}(B,B),
+\qquad d_r:(p,q)\mapsto(p+r,q-r+1),
+\tag{13.1}
+$$">$$
+E_1^{p,q}=H_{-p-q}\bigl(\mathcal D_{B/A},\operatorname{Sym}^p E\bigr)
+\Longrightarrow\operatorname{Tor}^A_{-p-q}(B,B),
+\qquad d_r:(p,q)\mapsto(p+r,q-r+1),
+\tag{13.1}
+$$</span>
+<p>where diagram homology means derived colimit and <span class="math" data-tex="$E$">$E$</span> is (2.3); moreover <span class="math" data-tex="$H_i(\operatorname{Sym}^p E)=0$">$H_i(\operatorname{Sym}^p E)=0$</span> for <span class="math" data-tex="$i&lt;p$">$i&lt;p$</span>. This is [Stacks, Tag 08RF]. We state it without proof and do not use it to replace the explicit computations or lifting proofs above.</p>
+</li>
+</ul>
+<h2 id="14-sources-and-the-end-of-the-course">14. Sources and the end of the course</h2>
+<p>The cotangent-complex chapter provides the construction [Stacks, Tags 08PL–08PN], resolution comparison [Stacks, Tag 08PQ], functoriality and Tor-independent base change [Stacks, Tags 08QL and 08QQ], the fundamental triangle [Stacks, Tag 08QX], étale and smooth computations [Stacks, Tags 08R2 and 08R5], naive comparison [Stacks, Tag 08RB], complete intersections [Stacks, Tag 08SL], tensor products [Stacks, Tag 09D8], and the ring obstruction theorem [Stacks, Tag 08SP]. For schemes and ringed spaces the definitions and local comparisons are [Stacks, Tags 08UQ, 08UT, 08T1 and 08T4]. Our proofs use polynomial and simplicial models throughout, including in small positive characteristics.</p>
+<p>The cotangent complex goes back to Illusie, who developed its construction, transitivity, infinitesimal extensions and local calculations, and later diagram cohomology and a more extensive equivariant deformation theory. Those larger theories are not prerequisites of the computations of this lesson. The precise results used here are the Stacks project tags cited above.</p>
+<p>The course began with functors of points and representability. Grassmannians and boundedness made Hilbert and Quot functors representable; flattening kept their fibre conditions functorial. Formal deformation theory then described their completed local behaviour. Picard schemes added the distinction between a bundle and its sheaf class, and between discrete components and infinitesimal structure. The cotangent complex supplies the common derived mechanism: extensions in degree one, lifting obstructions in degree two, and a fundamental triangle that preserves the relations a two-term presentation can forget.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/the-cotangent-complex.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-HP">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abstract C*-calculus and order for finite weight domains · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/notes/analytic-programme/abstract-cstar-order.html">
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="abstract-c--calculus-and-order-for-finite-weight-domains">Abstract C*-calculus and order for finite weight domains</h1>
+<p><em>Classical mathematical exposition by GPT-6 Astra (OpenAI), Ultra, October 2026. New prose: CC0.</em></p>
+<p>The finite-domain construction applies to abstract C*-algebras before a faithful Hilbert-space representation has been constructed. This proof therefore starts with a complete complex normed *-algebra satisfying the C*-identity. It supplies the self-adjoint continuous calculus, positive square roots and order inequalities used in the weight lessons, without assuming a representation theorem.</p>
+<p>The free comparison is Bruce Blackadar's <a href="https://bruceblackadar.com/Mathematics/Cycr.pdf">corrected author edition of <em>Operator Algebras</em>, II.1.6.1–3, II.2.3.1–2 and II.3.1.1–5 63–66</a>. All necessary arguments are written below. The exact earlier analytic inputs are the <a href="../real-coercivity/predual-prerequisites.html#np1-norm-preserving-extension-and-the-norming-identity">real Hahn–Banach extension proof NP1</a> and <a href="scalar-complex-programme.html">scalar Cauchy estimates and Liouville's theorem, Theorem 3.2 and Corollary 3.3</a>. The Banach and C*-algebra axioms and scalar completeness are entry assumptions. The zero algebra is treated separately whenever a nonempty spectrum is asserted.</p>
+<h2 id="ac1-banach-algebra-spectral-facts-from-scalar-analysis">AC1 — Banach-algebra spectral facts from scalar analysis</h2>
+<p>Let <span class="math" data-tex="\(B\ne\{0\}\)">\(B\ne\{0\}\)</span> be a unital complex Banach algebra with <span class="math" data-tex="\(\|1\|=1\)">\(\|1\|=1\)</span>. Absolute convergence implies convergence of a series in <span class="math" data-tex="\(B\)">\(B\)</span>: its partial sums are Cauchy because each tail norm is bounded by the scalar sum of the tail norms. Thus, when <span class="math" data-tex="\(\|v\|&lt;1\)">\(\|v\|&lt;1\)</span>, multiplying finite geometric sums and taking limits proves that <span class="math" data-tex="\(\sum_{n\geq0}v^n\)">\(\sum_{n\geq0}v^n\)</span> is a two-sided inverse of <span class="math" data-tex="\(1-v\)">\(1-v\)</span>. Factoring a perturbation of an invertible element through it proves openness of the invertible set. The same geometric series gives the local power series of the resolvent
+<span class="math math-display" data-tex="\[
+ R(z)=(z1-b)^{-1}.
+\]">\[
+ R(z)=(z1-b)^{-1}.
+\]</span>
+In particular it is norm-continuous and locally analytic on its domain. For <span class="math" data-tex="\(|z|&gt;\|b\|\)">\(|z|&gt;\|b\|\)</span>, the geometric series also gives
+<span class="math math-display" data-tex="\[
+ \|R(z)\|\leq\frac1{|z|-\|b\|}.
+\]">\[
+ \|R(z)\|\leq\frac1{|z|-\|b\|}.
+\]</span>
+Consequently <span class="math" data-tex="\(\sigma_B(b)\)">\(\sigma_B(b)\)</span>, the complement of its domain, is compact and contained in the closed disc of radius <span class="math" data-tex="\(\|b\|\)">\(\|b\|\)</span>.</p>
+<p>Here is the separation fact needed to use scalar complex analysis. On any complex normed space and for any vector <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, real Hahn–Banach extends the functional <span class="math" data-tex="\(tv\mapsto t\|v\|\)">\(tv\mapsto t\|v\|\)</span>, dominated by the norm, to a real-linear <span class="math" data-tex="\(f\)">\(f\)</span>. Set <span class="math" data-tex="\(L(x)=f(x)-if(ix)\)">\(L(x)=f(x)-if(ix)\)</span>. This is complex-linear, and <span class="math" data-tex="\(\operatorname{Re}L=f\)">\(\operatorname{Re}L=f\)</span>. Rotating <span class="math" data-tex="\(x\)">\(x\)</span> by a scalar of modulus one gives <span class="math" data-tex="\(|L(x)|\leq\|x\|\)">\(|L(x)|\leq\|x\|\)</span>. Since <span class="math" data-tex="\(f(v)=\|v\|\)">\(f(v)=\|v\|\)</span>, this also forces <span class="math" data-tex="\(L(v)=\|v\|\)">\(L(v)=\|v\|\)</span>. Thus bounded complex functionals separate points and
+<span class="math math-display" data-tex="\[
+ \|v\|=\sup_{\|L\|\leq1}|L(v)|.
+\]">\[
+ \|v\|=\sup_{\|L\|\leq1}|L(v)|.
+\]</span>
+If the spectrum of <span class="math" data-tex="\(b\)">\(b\)</span> were empty, every <span class="math" data-tex="\(L(R(z))\)">\(L(R(z))\)</span> would be entire. It is bounded outside a disc by the resolvent bound, and inside that disc by continuity and compactness. Liouville's theorem makes it constant; the bound at infinity makes that constant zero. Separation would give <span class="math" data-tex="\(R(z)=0\)">\(R(z)=0\)</span>, impossible for an inverse of the nonzero identity. Hence the spectrum is nonempty.</p>
+<p>We also need polynomial spectral mapping, including both directions. Every nonconstant complex polynomial has a root: otherwise its reciprocal would be entire and bounded, since the leading term gives growth at infinity and its reciprocal is bounded on compact sets. Liouville would make that reciprocal constant. Repeated division by linear factors proves complete factorization. For a polynomial <span class="math" data-tex="\(p\)">\(p\)</span>, factor <span class="math" data-tex="\(p(t)-\mu\)">\(p(t)-\mu\)</span>. Its factors evaluated at <span class="math" data-tex="\(b\)">\(b\)</span> commute. A product of commuting elements is invertible exactly when each factor is invertible: if <span class="math" data-tex="\(uv=vu\)">\(uv=vu\)</span> is invertible, its inverse commutes with <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, and <span class="math" data-tex="\(v(uv)^{-1}\)">\(v(uv)^{-1}\)</span> is a two-sided inverse of <span class="math" data-tex="\(u\)">\(u\)</span>. Induct on the number of factors. Constant polynomials are immediate. This proves
+<span class="math math-display" data-tex="\[
+ \sigma_B(p(b))=p(\sigma_B(b)).
+\]">\[
+ \sigma_B(p(b))=p(\sigma_B(b)).
+\]</span></p>
+<p>Put <span class="math" data-tex="\(r=\max_{\lambda\in\sigma_B(b)}|\lambda|\)">\(r=\max_{\lambda\in\sigma_B(b)}|\lambda|\)</span>. Polynomial mapping and the spectral norm bound give <span class="math" data-tex="\(r\leq\|b^n\|^{1/n}\)">\(r\leq\|b^n\|^{1/n}\)</span>. For the other inequality, the function <span class="math" data-tex="\(G(z)=(1-zb)^{-1}\)">\(G(z)=(1-zb)^{-1}\)</span> is analytic on <span class="math" data-tex="\(|z|&lt;1/r\)">\(|z|&lt;1/r\)</span>, with all of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> understood when <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Near zero its geometric expansion has coefficients <span class="math" data-tex="\(b^n\)">\(b^n\)</span>. On a circle of radius <span class="math" data-tex="\(s&lt;1/r\)">\(s&lt;1/r\)</span>, let <span class="math" data-tex="\(M_s=\max_{|z|=s}\|G(z)\|\)">\(M_s=\max_{|z|=s}\|G(z)\|\)</span>. The scalar Cauchy estimate, applied to every norm-one functional and then to the preceding norming identity, gives
+<span class="math math-display" data-tex="\[
+ \|b^n\|\leq M_s s^{-n}.
+\]">\[
+ \|b^n\|\leq M_s s^{-n}.
+\]</span>
+Taking upper limits of the <span class="math" data-tex="\(n\)">\(n\)</span>-th roots and then increasing <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(1/r\)">\(1/r\)</span> proves
+<span class="math math-display" data-tex="\[
+ \lim_{n\to\infty}\|b^n\|^{1/n}=r.
+\]">\[
+ \lim_{n\to\infty}\|b^n\|^{1/n}=r.
+\]</span>
+When <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, let <span class="math" data-tex="\(s\)">\(s\)</span> be arbitrarily large. This proof uses only scalar Cauchy estimates, not an unproved Banach-valued integration theorem.</p>
+<p>Finally, <span class="math" data-tex="\(ab\)">\(ab\)</span> and <span class="math" data-tex="\(ba\)">\(ba\)</span> have the same nonzero spectrum. For example, multiplication verifies that
+<span class="math math-display" data-tex="\[
+ (1-ab)^{-1}=1+a(1-ba)^{-1}b
+\]">\[
+ (1-ab)^{-1}=1+a(1-ba)^{-1}b
+\]</span>
+whenever the inverse on the right exists. Interchanging <span class="math" data-tex="\(a,b\)">\(a,b\)</span> gives the converse, and scaling treats every nonzero spectral parameter.</p>
+<h2 id="ac2-self-adjoint-spectra-and-the-polynomial-norm">AC2 — Self-adjoint spectra and the polynomial norm</h2>
+<p>Now let <span class="math" data-tex="\(B\ne\{0\}\)">\(B\ne\{0\}\)</span> be a unital C*-algebra. Its involution is isometric: the C*-identity and submultiplicativity give <span class="math" data-tex="\(\|x\|\leq\|x^*\|\)">\(\|x\|\leq\|x^*\|\)</span> when <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, and applying the same argument to <span class="math" data-tex="\(x^*\)">\(x^*\)</span> gives equality. The identity has norm one, since <span class="math" data-tex="\(\|1\|^2=\|1\|\)">\(\|1\|^2=\|1\|\)</span>, and a unitary also has norm one.</p>
+<p>For self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span>, the absolutely convergent exponential series defines <span class="math" data-tex="\(e^{ith}\)">\(e^{ith}\)</span> for real <span class="math" data-tex="\(t\)">\(t\)</span>. Multiplication of the two absolutely convergent series for <span class="math" data-tex="\(e^{ith}\)">\(e^{ith}\)</span> and <span class="math" data-tex="\(e^{-ith}\)">\(e^{-ith}\)</span>, using the finite binomial identity at each total degree, gives the identity. Taking adjoints term by term proves that these elements are unitary.</p>
+<p>If <span class="math" data-tex="\(\lambda\in\sigma_B(h)\)">\(\lambda\in\sigma_B(h)\)</span>, then <span class="math" data-tex="\(e^{it\lambda}\in\sigma_B(e^{ith})\)">\(e^{it\lambda}\in\sigma_B(e^{ith})\)</span>. To see the inclusion without invoking holomorphic spectral mapping, subtract the scalar exponential series and factor every power difference by <span class="math" data-tex="\(h-\lambda\)">\(h-\lambda\)</span>. The resulting quotient series converges absolutely, because the quotient of the <span class="math" data-tex="\(n\)">\(n\)</span>-th power has norm at most <span class="math" data-tex="\(n\max(\|h\|,|\lambda|)^{n-1}\)">\(n\max(\|h\|,|\lambda|)^{n-1}\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ e^{ith}-e^{it\lambda}1=(h-\lambda1)g(h),
+\]">\[
+ e^{ith}-e^{it\lambda}1=(h-\lambda1)g(h),
+\]</span>
+where the factors commute. Invertibility of the left side would force invertibility of <span class="math" data-tex="\(h-\lambda1\)">\(h-\lambda1\)</span>, a contradiction. The norm-one bound on the unitary now gives <span class="math" data-tex="\(|e^{it\lambda}|\leq1\)">\(|e^{it\lambda}|\leq1\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>; taking positive and negative <span class="math" data-tex="\(t\)">\(t\)</span> forces <span class="math" data-tex="\(\operatorname{Im}\lambda=0\)">\(\operatorname{Im}\lambda=0\)</span>.</p>
+<p>Repeated use of the C*-identity gives <span class="math" data-tex="\(\|h^{2^k}\|=\|h\|^{2^k}\)">\(\|h^{2^k}\|=\|h\|^{2^k}\)</span>. AC1 therefore implies <span class="math" data-tex="\(r(h)=\|h\|\)">\(r(h)=\|h\|\)</span>. If <span class="math" data-tex="\(x\)">\(x\)</span> is normal, then
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \|x^{2^k}\|^2
+ &amp;=\|(x^*x)^{2^k}\|\\
+ &amp;=\|x^*x\|^{2^k}
+ =\|x\|^{2^{k+1}}.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ \|x^{2^k}\|^2
+ &amp;=\|(x^*x)^{2^k}\|\\
+ &amp;=\|x^*x\|^{2^k}
+ =\|x\|^{2^{k+1}}.
+ \end{aligned}
+\]</span>
+So AC1 also gives <span class="math" data-tex="\(r(x)=\|x\|\)">\(r(x)=\|x\|\)</span>. Every polynomial in a self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span> is normal. Combining this fact with polynomial spectral mapping proves
+<span class="math math-display" data-tex="\[
+ \|p(h)\|=\max_{t\in\sigma_B(h)}|p(t)|.
+\]">\[
+ \|p(h)\|=\max_{t\in\sigma_B(h)}|p(t)|.
+\]</span>
+In particular the spectrum of <span class="math" data-tex="\(h\)">\(h\)</span> is a nonempty compact subset of <span class="math" data-tex="\([-\|h\|,\|h\|]\)">\([-\|h\|,\|h\|]\)</span>.</p>
+<h2 id="ac3-continuous-calculus-on-the-actual-spectrum">AC3 — Continuous calculus on the actual spectrum</h2>
+<p>Write <span class="math" data-tex="\(S=\sigma_B(h)\)">\(S=\sigma_B(h)\)</span>. Continuous functions on a compact real interval admit uniform polynomial approximation. For clarity, after rescaling to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, the Bernstein polynomial of a continuous <span class="math" data-tex="\(f\)">\(f\)</span> is
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;B_nf(t)\\
+ &amp;\quad=\sum_{k=0}^n f(k/n){n\choose k}t^k(1-t)^{n-k}.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ &amp;B_nf(t)\\
+ &amp;\quad=\sum_{k=0}^n f(k/n){n\choose k}t^k(1-t)^{n-k}.
+ \end{aligned}
+\]</span>
+The weights sum to one, their mean is <span class="math" data-tex="\(t\)">\(t\)</span>, and their variance is <span class="math" data-tex="\(t(1-t)/n\)">\(t(1-t)/n\)</span>, by differentiating the finite binomial formula. The sum of weights at distance at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span> from <span class="math" data-tex="\(t\)">\(t\)</span> is at most <span class="math" data-tex="\(1/(4n\delta^2)\)">\(1/(4n\delta^2)\)</span>. Uniform continuity consequently gives
+<span class="math math-display" data-tex="\[
+ \|B_nf-f\|_\infty
+ \leq \omega_f(\delta)
+       +\frac{\|f\|_\infty}{2n\delta^2},
+\]">\[
+ \|B_nf-f\|_\infty
+ \leq \omega_f(\delta)
+       +\frac{\|f\|_\infty}{2n\delta^2},
+\]</span>
+where <span class="math" data-tex="\(\omega_f(\delta)\)">\(\omega_f(\delta)\)</span> is the supremum of <span class="math" data-tex="\(|f(s)-f(t)|\)">\(|f(s)-f(t)|\)</span> over distances at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. First let <span class="math" data-tex="\(n\)">\(n\)</span> increase, then let <span class="math" data-tex="\(\delta\)">\(\delta\)</span> decrease. Complex functions obey the same estimate.</p>
+<p>A continuous function on <span class="math" data-tex="\(S\)">\(S\)</span> extends to its containing interval with the same norm: interpolate linearly on each complementary interval and keep the endpoint value constant outside the extreme points of <span class="math" data-tex="\(S\)">\(S\)</span>. Continuity at points of <span class="math" data-tex="\(S\)">\(S\)</span> follows from uniform continuity on <span class="math" data-tex="\(S\)">\(S\)</span>; small gaps have close endpoints, and only finitely many gaps exceed any fixed positive length. A singleton <span class="math" data-tex="\(S\)">\(S\)</span> admits the constant extension. Thus polynomials restricted to <span class="math" data-tex="\(S\)">\(S\)</span> are dense in <span class="math" data-tex="\(C(S)\)">\(C(S)\)</span>.</p>
+<p>For polynomials <span class="math" data-tex="\(p_n\to f\)">\(p_n\to f\)</span> uniformly on <span class="math" data-tex="\(S\)">\(S\)</span>, AC2 makes <span class="math" data-tex="\(p_n(h)\)">\(p_n(h)\)</span> Cauchy. Define <span class="math" data-tex="\(f(h)\)">\(f(h)\)</span> as its norm limit. AC2 proves independence of the approximants and
+<span class="math math-display" data-tex="\[
+ \|f(h)\|=\|f\|_{C(S)}.
+\]">\[
+ \|f(h)\|=\|f\|_{C(S)}.
+\]</span>
+Passing polynomial sums, products and adjoints to the limit shows that this is a unital isometric *-homomorphism onto the norm-closed algebra generated by <span class="math" data-tex="\(1,h\)">\(1,h\)</span>. The range is closed by completeness; it is exactly that algebra because it contains the polynomials and consists of their limits. It commutes with every element commuting with <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>Its spectral mapping holds in the full algebra <span class="math" data-tex="\(B\)">\(B\)</span>. If <span class="math" data-tex="\(\mu\notin f(S)\)">\(\mu\notin f(S)\)</span>, apply the calculus to <span class="math" data-tex="\(1/(f-\mu)\)">\(1/(f-\mu)\)</span> to construct an inverse of <span class="math" data-tex="\(f(h)-\mu1\)">\(f(h)-\mu1\)</span>. Conversely, let <span class="math" data-tex="\(f(t_0)=\mu\)">\(f(t_0)=\mu\)</span>. If that element had an inverse of norm <span class="math" data-tex="\(C\)">\(C\)</span>, choose a continuous function <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, of norm one and equal to one at <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, supported where <span class="math" data-tex="\(|f-\mu|&lt;\varepsilon\)">\(|f-\mu|&lt;\varepsilon\)</span>. A small triangular distance bump gives such a function. Then
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ 1=\|g(h)\|
+ &amp;\leq C\|(f(h)-\mu1)g(h)\|\\
+ &amp;\leq C\varepsilon,
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ 1=\|g(h)\|
+ &amp;\leq C\|(f(h)-\mu1)g(h)\|\\
+ &amp;\leq C\varepsilon,
+ \end{aligned}
+\]</span>
+which is impossible for <span class="math" data-tex="\(\varepsilon&lt;1/C\)">\(\varepsilon&lt;1/C\)</span>. Therefore <span class="math" data-tex="\(\sigma_B(f(h))=f(S)\)">\(\sigma_B(f(h))=f(S)\)</span>.</p>
+<p>For real-valued <span class="math" data-tex="\(f\)">\(f\)</span>, the element <span class="math" data-tex="\(f(h)\)">\(f(h)\)</span> is self-adjoint. If <span class="math" data-tex="\(g\)">\(g\)</span> is continuous on <span class="math" data-tex="\(f(S)\)">\(f(S)\)</span>, polynomial approximation to <span class="math" data-tex="\(g\)">\(g\)</span> and multiplicativity give <span class="math" data-tex="\(g(f(h))=(g\circ f)(h)\)">\(g(f(h))=(g\circ f)(h)\)</span>. This proves the composition rule used for square roots and positive parts.</p>
+<h2 id="ac4-squares-the-positive-cone-and-its-norm-bounds">AC4 — Squares, the positive cone and its norm bounds</h2>
+<p>Temporarily call a self-adjoint element spectrally positive when its spectrum is nonnegative. For self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(t\geq\|h\|\)">\(t\geq\|h\|\)</span>, the norm identity in AC2 shows that spectral positivity is equivalent to <span class="math" data-tex="\(\|t1-h\|\leq t\)">\(\|t1-h\|\leq t\)</span>. This criterion proves closure under addition: use <span class="math" data-tex="\(t=\|a\|+\|b\|\)">\(t=\|a\|+\|b\|\)</span> and the triangle inequality for <span class="math" data-tex="\(t1-a-b\)">\(t1-a-b\)</span>. Positive scalar multiplication follows by spectral mapping. For a convergent sequence of spectrally positive elements, choose one common norm bound <span class="math" data-tex="\(t\)">\(t\)</span> and pass the criterion to the limit. This proves norm closure. The cone is proper because a self-adjoint element whose spectrum is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> has norm zero. Squares of self-adjoint elements belong to the cone by polynomial spectral mapping.</p>
+<p>We now prove that <span class="math" data-tex="\(y^*y\)">\(y^*y\)</span> is spectrally positive for arbitrary <span class="math" data-tex="\(y\)">\(y\)</span>; it must not be assumed from a Hilbert-space representation. Put <span class="math" data-tex="\(c=y^*y\)">\(c=y^*y\)</span>, and use AC3 to write <span class="math" data-tex="\(c=c_+-c_-\)">\(c=c_+-c_-\)</span>, with <span class="math" data-tex="\(c_\pm\)">\(c_\pm\)</span> spectrally positive, commuting, and <span class="math" data-tex="\(c_+c_-=0\)">\(c_+c_-=0\)</span>. Set <span class="math" data-tex="\(w=yc_-\)">\(w=yc_-\)</span>. Then
+<span class="math math-display" data-tex="\[
+ w^*w=-c_-^3.
+\]">\[
+ w^*w=-c_-^3.
+\]</span>
+Writing <span class="math" data-tex="\(w=k+il\)">\(w=k+il\)</span> with <span class="math" data-tex="\(k,l\)">\(k,l\)</span> self-adjoint gives
+<span class="math math-display" data-tex="\[
+ ww^*=2k^2+2l^2+c_-^3.
+\]">\[
+ ww^*=2k^2+2l^2+c_-^3.
+\]</span>
+The right side is spectrally positive by the cone properties just proved. AC1 gives equality of the nonzero spectra of <span class="math" data-tex="\(ww^*\)">\(ww^*\)</span> and <span class="math" data-tex="\(w^*w\)">\(w^*w\)</span>. Thus <span class="math" data-tex="\(w^*w\)">\(w^*w\)</span> is spectrally positive as well, while its negative <span class="math" data-tex="\(c_-^3\)">\(c_-^3\)</span> is spectrally positive. Properness gives <span class="math" data-tex="\(c_-^3=0\)">\(c_-^3=0\)</span>; spectral mapping and the norm formula give <span class="math" data-tex="\(c_-=0\)">\(c_-=0\)</span>. Hence <span class="math" data-tex="\(y^*y=c_+\)">\(y^*y=c_+\)</span> is spectrally positive.</p>
+<p>Conversely, if <span class="math" data-tex="\(a\)">\(a\)</span> is spectrally positive, AC3 defines the positive element <span class="math" data-tex="\(b=\sqrt a\)">\(b=\sqrt a\)</span> and gives <span class="math" data-tex="\(b^2=a=b^*b\)">\(b^2=a=b^*b\)</span>. Spectral positivity therefore agrees exactly with being of the form <span class="math" data-tex="\(y^*y\)">\(y^*y\)</span>. We denote this cone by <span class="math" data-tex="\(B_+\)">\(B_+\)</span>. Its square root is unique: if <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span> and <span class="math" data-tex="\(d^2=a\)">\(d^2=a\)</span>, the composition rule for the self-adjoint calculus of <span class="math" data-tex="\(d\)">\(d\)</span> gives <span class="math" data-tex="\(\sqrt a=\sqrt{d^2}=d\)">\(\sqrt a=\sqrt{d^2}=d\)</span>. Polynomial approximation also proves that the square root commutes with every element commuting with <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>Conjugation preserves positivity, since
+<span class="math math-display" data-tex="\[
+ z^*az=(a^{1/2}z)^*(a^{1/2}z).
+\]">\[
+ z^*az=(a^{1/2}z)^*(a^{1/2}z).
+\]</span>
+For self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span>, spectral mapping gives
+<span class="math" data-tex="\(h\leq t1\)">\(h\leq t1\)</span> exactly when <span class="math" data-tex="\(\sigma_B(h)\subseteq(-\infty,t]\)">\(\sigma_B(h)\subseteq(-\infty,t]\)</span>. In particular
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ -\|h\|1\leq h\leq\|h\|1,\\
+ x^*x\leq\|x\|^2 1.
+ \end{gathered}
+\]">\[
+ \begin{gathered}
+ -\|h\|1\leq h\leq\|h\|1,\\
+ x^*x\leq\|x\|^2 1.
+ \end{gathered}
+\]</span>
+If <span class="math" data-tex="\(0\leq a\leq b\)">\(0\leq a\leq b\)</span>, then <span class="math" data-tex="\(a\leq\|b\|1\)">\(a\leq\|b\|1\)</span>, and the spectral norm formula yields <span class="math" data-tex="\(\|a\|\leq\|b\|\)">\(\|a\|\leq\|b\|\)</span>. The continuous functions <span class="math" data-tex="\(t\mapsto\max(t,0)\)">\(t\mapsto\max(t,0)\)</span> and <span class="math" data-tex="\(t\mapsto\max(-t,0)\)">\(t\mapsto\max(-t,0)\)</span> give the positive and negative parts of any self-adjoint element. Taking real and imaginary parts shows that every element is a linear combination of four positive elements.</p>
+<p>All the preceding order statements concern an arbitrary unital C*-algebra, not merely an operator algebra. For a nonunital algebra, <a href="../../OA-MOD-UZ.html">UZ02–05</a> construct its forced C*-unitization directly from the axioms, without using AC1–4. <a href="../../OA-MOD-UZ.html">UZ06–07</a> then apply this calculus and the scalar quotient to prove the inherited cone and square roots in the original ideal. This order of proof avoids a representation or unitization circle. For the zero algebra all order and square-root assertions reduce to zero; the nonempty-spectrum argument is not applied to it.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

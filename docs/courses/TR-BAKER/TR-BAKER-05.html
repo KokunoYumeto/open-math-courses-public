@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Effective lower bounds II: proof of Baker&#x27;s theorem · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-05.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 10</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="effective-lower-bounds-ii-proof-of-baker-s-theorem">Effective lower bounds II: proof of Baker's theorem</h1>
+<p><em>Draft. Public domain (CC0).</em></p>
+<p>A sufficiently small algebraic linear form will force an exact integer relation between its logarithms. The relation has coefficients bounded independently of the varying coefficient height. Once that assertion is proved, eliminating one logarithm gives the effective lower bound by induction. This is the target that determines the polynomial degrees, derivative orders and grid sizes below.</p>
+<p>We prove Theorem 4.1 of <a href="TR-BAKER-04.html"><em>Effective lower bounds I: Baker's theorem and its arithmetic tools</em></a>, including its algebraic constant term, dependent logarithms and arbitrary fixed branches. We use the degree-indexed Matveev polynomials of Lemma 4.7, with their uniform derivative denominator and complex growth bound. A direct pigeonhole argument constructs the integer coefficients. Approximate interpolation extends small derivative values; integer norms then turn sufficiently small algebraic comparison values into exact zeros on a rational grid. A confluent exponential determinant recovers the bounded relation.</p>
+<p>Baker's auxiliary-function and extrapolation method, the polynomial refinements of Feldman and Matveev, and Waldschmidt's expositions underlie this argument. The definitions, contour estimates, rational-grid arithmetic and parameter choices needed for the proof are given here. The full induction comes first, conditional on the bounded-relation proposition; the remaining sections prove that proposition.</p>
+<h2 id="1-uniform-constants-and-the-normalized-problem">1. Uniform constants and the normalized problem</h2>
+<p>First omit any zero logarithm: its contribution to the form is zero. In the normalized argument assume that every <span class="math" data-tex="\(\ell_j\ne0\)">\(\ell_j\ne0\)</span>. Set
+<span class="math math-display" data-tex="\[
+T=\log(2A),\qquad M=\max\left(1,\frac{|\ell_1|}{T},\ldots,\frac{|\ell_n|}{T}\right),
+\qquad a=\frac1{8n}.
+\]">\[
+T=\log(2A),\qquad M=\max\left(1,\frac{|\ell_1|}{T},\ldots,\frac{|\ell_n|}{T}\right),
+\qquad a=\frac1{8n}.
+\]</span>
+Constants denoted by <span class="math" data-tex="\(G,D,K\)">\(G,D,K\)</span> below are effectively computable from <span class="math" data-tex="\(n,d,M\)">\(n,d,M\)</span>. They are independent of <span class="math" data-tex="\(A,B\)">\(A,B\)</span> and all varying coefficients. They may be enlarged a finite number of times.</p>
+<p>An effective upper bound for <span class="math" data-tex="\(M\)">\(M\)</span> suffices everywhere. For branches <span class="math" data-tex="\(\ell_j=\operatorname{Log}\alpha_j+2\pi iq_j\)">\(\ell_j=\operatorname{Log}\alpha_j+2\pi iq_j\)</span>, it follows from <span class="math" data-tex="\(|\ell_j|\le\log(dA)+\pi+2\pi|q_j|\)">\(|\ell_j|\le\log(dA)+\pi+2\pi|q_j|\)</span>; one may replace <span class="math" data-tex="\(M\)">\(M\)</span> by a larger rational bound computed from these integers.</p>
+<p>We will choose a sufficiently large integer <span class="math" data-tex="\(k\)">\(k\)</span>, depending on the fixed data, and put
+<span class="math math-display" data-tex="\[
+h_0=\lfloor\log(kB)\rfloor,\quad h=h_0+\lceil T\rceil,\quad
+L=\lfloor k^{1-2a}\rfloor. \tag{5.1}
+\]">\[
+h_0=\lfloor\log(kB)\rfloor,\quad h=h_0+\lceil T\rceil,\quad
+L=\lfloor k^{1-2a}\rfloor. \tag{5.1}
+\]</span>
+The term <span class="math" data-tex="\(\lceil T\rceil\)">\(\lceil T\rceil\)</span> ensures <span class="math" data-tex="\(h\ge T\)">\(h\ge T\)</span>. It absorbs the logarithm-size costs into the derivative budget while keeping the number of extrapolation stages independent of <span class="math" data-tex="\(A\)">\(A\)</span>. We choose <span class="math" data-tex="\(k\ge T\)">\(k\ge T\)</span>, so
+<span class="math math-display" data-tex="\[
+h\ge\log k,\qquad h\ge T,\qquad
+\frac h{\log B}\le6k. \tag{5.2}
+\]">\[
+h\ge\log k,\qquad h\ge T,\qquad
+\frac h{\log B}\le6k. \tag{5.2}
+\]</span>
+For the upper bound, use <span class="math" data-tex="\(h\le\log B+\log k+T+1\)">\(h\le\log B+\log k+T+1\)</span>, <span class="math" data-tex="\(B\ge2\)">\(B\ge2\)</span>, and <span class="math" data-tex="\(\log k,T\le k\)">\(\log k,T\le k\)</span>.</p>
+<p>The elementary root bound gives <span class="math" data-tex="\(|\beta|\le dB\)">\(|\beta|\le dB\)</span> for every permitted coefficient and every conjugate. For a nonzero chosen logarithm we also have
+<span class="math math-display" data-tex="\[
+e^{-G T}\le|\ell_j|\le MT. \tag{5.3}
+\]">\[
+e^{-G T}\le|\ell_j|\le MT. \tag{5.3}
+\]</span>
+Here is the lower bound. If <span class="math" data-tex="\(\alpha_j=1\)">\(\alpha_j=1\)</span>, its nonzero logarithms have magnitude at least <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. Otherwise Lemma 4.2 bounds the naive height of <span class="math" data-tex="\(\alpha_j-1\)">\(\alpha_j-1\)</span> by <span class="math" data-tex="\(e^{G T}\)">\(e^{G T}\)</span> and its degree by <span class="math" data-tex="\(d^2\)">\(d^2\)</span>. Apply the root bound to its inverse: <span class="math" data-tex="\(|\alpha_j-1|\ge e^{-G T}\)">\(|\alpha_j-1|\ge e^{-G T}\)</span>. If <span class="math" data-tex="\(|\ell_j|\le1/2\)">\(|\ell_j|\le1/2\)</span>, the inequality <span class="math" data-tex="\(|e^{\ell_j}-1|\le2|\ell_j|\)">\(|e^{\ell_j}-1|\le2|\ell_j|\)</span> proves (5.3); outside that disk it follows by enlarging <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>We first prove the following normalized assertion.</p>
+<p><strong>Proposition 5.1.</strong> For fixed bases and branches, an effectively computable <span class="math" data-tex="\(C\)">\(C\)</span> has this property. If <span class="math" data-tex="\(\beta_0,\ldots,\beta_{n-1}\)">\(\beta_0,\ldots,\beta_{n-1}\)</span> have degree at most <span class="math" data-tex="\(d\)">\(d\)</span>, naive height at most <span class="math" data-tex="\(B\ge2\)">\(B\ge2\)</span>, and
+<span class="math math-display" data-tex="\[
+|\eta|&lt;B^{-C},\qquad
+\eta=\beta_0+\sum_{r=1}^{n-1}\beta_r\ell_r-\ell_n, \tag{5.4}
+\]">\[
+|\eta|&lt;B^{-C},\qquad
+\eta=\beta_0+\sum_{r=1}^{n-1}\beta_r\ell_r-\ell_n, \tag{5.4}
+\]</span>
+then there are integers <span class="math" data-tex="\(b&#x27;_1,\ldots,b&#x27;_n\)">\(b&#x27;_1,\ldots,b&#x27;_n\)</span>, not all zero, such that
+<span class="math math-display" data-tex="\[
+|b&#x27;_j|\le L,\qquad \sum_jb&#x27;_j\ell_j=0. \tag{5.5}
+\]">\[
+|b&#x27;_j|\le L,\qquad \sum_jb&#x27;_j\ell_j=0. \tag{5.5}
+\]</span>
+The integer <span class="math" data-tex="\(L\)">\(L\)</span> depends on the fixed data, never on <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>When <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, there are no <span class="math" data-tex="\(r\)">\(r\)</span>-variables or corresponding products. Empty products throughout the proof are <span class="math" data-tex="\(1\)">\(1\)</span>. The proposition then says that a very small normalized form would force <span class="math" data-tex="\(\ell_1=0\)">\(\ell_1=0\)</span>; since we omitted zero logarithms, it gives a direct contradiction.</p>
+<h2 id="2-how-the-bounded-relation-proves-the-theorem">2. How the bounded relation proves the theorem</h2>
+<p>Assuming Proposition 5.1, we prove Theorem 4.1 by induction on the number <span class="math" data-tex="\(n\)">\(n\)</span> of logarithms. Include <span class="math" data-tex="\(n=0\)">\(n=0\)</span>: a nonzero algebraic coefficient of degree at most <span class="math" data-tex="\(d\)">\(d\)</span> and height at most <span class="math" data-tex="\(B\)">\(B\)</span> has
+<span class="math math-display" data-tex="\[
+|\beta_0|\ge\frac1{dB}&gt;B^{-C_0},\qquad
+C_0=2+\frac{\log d}{\log2}.
+\]">\[
+|\beta_0|\ge\frac1{dB}&gt;B^{-C_0},\qquad
+C_0=2+\frac{\log d}{\log2}.
+\]</span>
+This is the root bound for <span class="math" data-tex="\(\beta_0^{-1}\)">\(\beta_0^{-1}\)</span>. At <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, a zero logarithm can be omitted and the induction hypothesis applied. If all logarithmic coefficients are zero, the same <span class="math" data-tex="\(n=0\)">\(n=0\)</span> argument applies.</p>
+<p>Otherwise relabel so that <span class="math" data-tex="\(\beta_n\ne0\)">\(\beta_n\ne0\)</span>, and suppose, seeking a contradiction, that
+<span class="math math-display" data-tex="\[
+0&lt;|\Lambda|\le B^{-C_{\mathrm{full}}}. \tag{5.41}
+\]">\[
+0&lt;|\Lambda|\le B^{-C_{\mathrm{full}}}. \tag{5.41}
+\]</span>
+Divide by <span class="math" data-tex="\(-\beta_n\)">\(-\beta_n\)</span>. The normalized coefficients
+<span class="math math-display" data-tex="\[
+\beta&#x27;_r=-\beta_r/\beta_n\quad(0\le r&lt;n)
+\]">\[
+\beta&#x27;_r=-\beta_r/\beta_n\quad(0\le r&lt;n)
+\]</span>
+have degree at most <span class="math" data-tex="\(d^2\)">\(d^2\)</span>. Lemma 4.8 gives the explicit common height bound
+<span class="math math-display" data-tex="\[
+H(\beta&#x27;_r)\le K_dB^{4d^2},\qquad K_d=(1+d^2)^{d^2}.
+\]">\[
+H(\beta&#x27;_r)\le K_dB^{4d^2},\qquad K_d=(1+d^2)^{d^2}.
+\]</span>
+In particular this is at most <span class="math" data-tex="\(B^{c_d}\)">\(B^{c_d}\)</span> with
+<span class="math math-display" data-tex="\[
+c_d=4d^2+\frac{d^2\log(1+d^2)}{\log2}.
+\]">\[
+c_d=4d^2+\frac{d^2\log(1+d^2)}{\log2}.
+\]</span>
+Inversion preserves naive height; the bound controls the quotient without changing the algebraic constant term.</p>
+<p>Also <span class="math" data-tex="\(|\beta_n^{-1}|\le dB\)">\(|\beta_n^{-1}|\le dB\)</span>. If <span class="math" data-tex="\(C_{\mathrm{norm}}\)">\(C_{\mathrm{norm}}\)</span> is the constant of Proposition 5.1 for degree bound <span class="math" data-tex="\(d^2\)">\(d^2\)</span>, then choosing
+<span class="math math-display" data-tex="\[
+C_{\mathrm{full}}&gt;c_d C_{\mathrm{norm}}+1+\frac{\log d}{\log2}
+\]">\[
+C_{\mathrm{full}}&gt;c_d C_{\mathrm{norm}}+1+\frac{\log d}{\log2}
+\]</span>
+makes the normalized nonzero form satisfy (5.4), with height parameter <span class="math" data-tex="\(B^{c_d}\)">\(B^{c_d}\)</span>. Proposition 5.1 gives a nontrivial integer relation <span class="math" data-tex="\(\sum b&#x27;_j\ell_j=0\)">\(\sum b&#x27;_j\ell_j=0\)</span>, with <span class="math" data-tex="\(|b&#x27;_j|\le L\)">\(|b&#x27;_j|\le L\)</span>. Choose an index <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(b&#x27;_s\ne0\)">\(b&#x27;_s\ne0\)</span>.</p>
+<p>Multiply the original form by <span class="math" data-tex="\(b&#x27;_s\)">\(b&#x27;_s\)</span> and subtract <span class="math" data-tex="\(\beta_s\)">\(\beta_s\)</span> times the relation. We obtain
+<span class="math math-display" data-tex="\[
+\Gamma=b&#x27;_s\Lambda
+=b&#x27;_s\beta_0+\sum_{j\ne s}(b&#x27;_s\beta_j-b&#x27;_j\beta_s)\ell_j. \tag{5.42}
+\]">\[
+\Gamma=b&#x27;_s\Lambda
+=b&#x27;_s\beta_0+\sum_{j\ne s}(b&#x27;_s\beta_j-b&#x27;_j\beta_s)\ell_j. \tag{5.42}
+\]</span>
+This form is nonzero and contains at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span> logarithms. Its coefficients have degree at most <span class="math" data-tex="\(d^2\)">\(d^2\)</span> and height at most
+<span class="math math-display" data-tex="\[
+B&#x27;=(BL)^{c_d}, \tag{5.43}
+\]">\[
+B&#x27;=(BL)^{c_d}, \tag{5.43}
+\]</span>
+after enlarging <span class="math" data-tex="\(c_d\)">\(c_d\)</span>. Integer scaling preserves the degree of each individual <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span>; applying Lemma 4.2 to their sums proves (5.43).</p>
+<p>Let <span class="math" data-tex="\(C_{\mathrm{ind}}\)">\(C_{\mathrm{ind}}\)</span> be the induction constant for <span class="math" data-tex="\(n-1\)">\(n-1\)</span> logarithms and degree bound <span class="math" data-tex="\(d^2\)">\(d^2\)</span>, on the remaining branches. Then
+<span class="math math-display" data-tex="\[
+|\Gamma|&gt;(B&#x27;)^{-C_{\mathrm{ind}}},
+\]">\[
+|\Gamma|&gt;(B&#x27;)^{-C_{\mathrm{ind}}},
+\]</span>
+and therefore
+<span class="math math-display" data-tex="\[
+|\Lambda|&gt;L^{-1}(BL)^{-c_d C_{\mathrm{ind}}}
+\ge B^{-E}, \tag{5.44}
+\]">\[
+|\Lambda|&gt;L^{-1}(BL)^{-c_d C_{\mathrm{ind}}}
+\ge B^{-E}, \tag{5.44}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+E=c_dC_{\mathrm{ind}}
++(c_dC_{\mathrm{ind}}+1)\frac{\log L}{\log2}.
+\]">\[
+E=c_dC_{\mathrm{ind}}
++(c_dC_{\mathrm{ind}}+1)\frac{\log L}{\log2}.
+\]</span>
+The last inequality uses <span class="math" data-tex="\(B\ge2\)">\(B\ge2\)</span>. Taking <span class="math" data-tex="\(C_{\mathrm{full}}\ge E\)">\(C_{\mathrm{full}}\ge E\)</span>, with a strict margin for normalization, contradicts (5.41). Choose the constants uniformly over the finitely many possible relabelings and omitted indices before the coefficients vary; the bounds in terms of <span class="math" data-tex="\(n,d,M\)">\(n,d,M\)</span> also do this directly. Thus <span class="math" data-tex="\(C_{\mathrm{full}}\)">\(C_{\mathrm{full}}\)</span> is independent of the tuple and of <span class="math" data-tex="\(B\)">\(B\)</span>. Once Proposition 5.1 is established, this proves Theorem 4.1, including dependent logarithms and the algebraic constant term.</p>
+<p>For a concrete elimination, let <span class="math" data-tex="\(\ell_1=\log2\)">\(\ell_1=\log2\)</span>, <span class="math" data-tex="\(\ell_2=\log4=2\ell_1\)">\(\ell_2=\log4=2\ell_1\)</span>, and <span class="math" data-tex="\(\Lambda=1+\ell_1-\ell_2=1-\log2\)">\(\Lambda=1+\ell_1-\ell_2=1-\log2\)</span>. The relation <span class="math" data-tex="\(2\ell_1-\ell_2=0\)">\(2\ell_1-\ell_2=0\)</span> has <span class="math" data-tex="\((b&#x27;_1,b&#x27;_2)=(2,-1)\)">\((b&#x27;_1,b&#x27;_2)=(2,-1)\)</span>. Taking <span class="math" data-tex="\(s=2\)">\(s=2\)</span> in (5.42) gives
+<span class="math math-display" data-tex="\[
+\Gamma=-\Lambda=-1+\log2.
+\]">\[
+\Gamma=-\Lambda=-1+\log2.
+\]</span>
+The constant term survives, the selected logarithm disappears, and the remaining form is still nonzero. In general the integer multiplier is the reason for the factor <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span> in (5.44).</p>
+<p>For completeness, the power dependence survives the induction. Equation (5.40) gives the normalized exponent <span class="math" data-tex="\(16n(9n+4)\)">\(16n(9n+4)\)</span>, and <span class="math" data-tex="\(L\le k\le K_1T^{16n}\)">\(L\le k\le K_1T^{16n}\)</span> gives <span class="math" data-tex="\(1+\log L\le K_2T\)">\(1+\log L\le K_2T\)</span>. Thus (5.44) costs at most one additional power of <span class="math" data-tex="\(T\)">\(T\)</span> over the induction constant. A generous explicit choice is
+<span class="math math-display" data-tex="\[
+\kappa(0)=0,\qquad \kappa(n)=200(n+1)^2\quad(n\ge1), \tag{5.45}
+\]">\[
+\kappa(0)=0,\qquad \kappa(n)=200(n+1)^2\quad(n\ge1), \tag{5.45}
+\]</span>
+since it exceeds <span class="math" data-tex="\(16n(9n+4)\)">\(16n(9n+4)\)</span>, and <span class="math" data-tex="\(\kappa(n-1)+1&lt;\kappa(n)\)">\(\kappa(n-1)+1&lt;\kappa(n)\)</span>. Changes <span class="math" data-tex="\(d\mapsto d^2\)">\(d\mapsto d^2\)</span> affect only the leading constants. The <span class="math" data-tex="\(n=0\)">\(n=0\)</span> constant has no <span class="math" data-tex="\(A\)">\(A\)</span>-dependence.</p>
+<p>We have proved
+<span class="math math-display" data-tex="\[
+C_{\mathrm{full}}\le K(n,d,M)\{\log(2A)\}^{\kappa(n)}.
+\]">\[
+C_{\mathrm{full}}\le K(n,d,M)\{\log(2A)\}^{\kappa(n)}.
+\]</span>
+For <span class="math" data-tex="\(A\ge2\)">\(A\ge2\)</span>, <span class="math" data-tex="\(\log(2A)\le2\log A\)">\(\log(2A)\le2\log A\)</span>, so this is the claimed power of <span class="math" data-tex="\(\log A\)">\(\log A\)</span>. On principal branches,
+<span class="math math-display" data-tex="\[
+|\operatorname{Log}\alpha_j|
+\le\log(dA)+\pi,
+\]">\[
+|\operatorname{Log}\alpha_j|
+\le\log(dA)+\pi,
+\]</span>
+because both <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> and <span class="math" data-tex="\(\alpha_j^{-1}\)">\(\alpha_j^{-1}\)</span> satisfy the root bound. Hence <span class="math" data-tex="\(M\)">\(M\)</span> is bounded by a constant depending only on <span class="math" data-tex="\(d\)">\(d\)</span>; the leading constant then depends only on <span class="math" data-tex="\(n,d\)">\(n,d\)</span>. Arbitrary fixed branches retain their <span class="math" data-tex="\(M\)">\(M\)</span>-dependence, exactly as required by the quantifiers and the Pell example in the preceding lesson.</p>
+<h2 id="3-building-an-almost-vanishing-auxiliary-function">3. Building an almost-vanishing auxiliary function</h2>
+<p>Use indices
+<span class="math math-display" data-tex="\[
+0\le\lambda_{-1}&lt;h,\qquad 0\le\lambda_0,\ldots,\lambda_n\le L,
+\qquad \gamma_r=\lambda_r+\lambda_n\beta_r\quad(1\le r&lt;n).
+\]">\[
+0\le\lambda_{-1}&lt;h,\qquad 0\le\lambda_0,\ldots,\lambda_n\le L,
+\qquad \gamma_r=\lambda_r+\lambda_n\beta_r\quad(1\le r&lt;n).
+\]</span>
+Put
+<span class="math math-display" data-tex="\[
+a_\lambda=h\lambda_0+\lambda_{-1},\qquad
+U_\lambda(x)=D_h(x+1;a_\lambda).
+\]">\[
+a_\lambda=h\lambda_0+\lambda_{-1},\qquad
+U_\lambda(x)=D_h(x+1;a_\lambda).
+\]</span>
+As <span class="math" data-tex="\((\lambda_{-1},\lambda_0)\)">\((\lambda_{-1},\lambda_0)\)</span> varies, <span class="math" data-tex="\(a_\lambda\)">\(a_\lambda\)</span> runs through the integers <span class="math" data-tex="\(0,\ldots,h(L+1)-1\)">\(0,\ldots,h(L+1)-1\)</span> exactly once. Lemma 4.7 gives
+<span class="math math-display" data-tex="\[
+V(h)^k\frac{U_\lambda^{(\mu)}(l)}{\mu!}\in\mathbb Z
+\quad(l\in\mathbb Z,\ 0\le\mu\le k),
+\]">\[
+V(h)^k\frac{U_\lambda^{(\mu)}(l)}{\mu!}\in\mathbb Z
+\quad(l\in\mathbb Z,\ 0\le\mu\le k),
+\]</span>
+where <span class="math" data-tex="\(V(h)=\operatorname{lcm}(1,\ldots,h)\)">\(V(h)=\operatorname{lcm}(1,\ldots,h)\)</span>, and
+<span class="math math-display" data-tex="\[
+\sum_{\mu=0}^k\binom{k}{\mu}|U_\lambda^{(\mu)}(z)|
+\le k!e^{a_\lambda+h}
+\left(1+\frac{|z+1|}{h}\right)^{a_\lambda}.
+\]">\[
+\sum_{\mu=0}^k\binom{k}{\mu}|U_\lambda^{(\mu)}(z)|
+\le k!e^{a_\lambda+h}
+\left(1+\frac{|z+1|}{h}\right)^{a_\lambda}.
+\]</span>
+The degree is <span class="math" data-tex="\(a_\lambda\)">\(a_\lambda\)</span>, with nonzero leading coefficient. Thus these <span class="math" data-tex="\(h(L+1)\)">\(h(L+1)\)</span> polynomials form a basis of the polynomials of degree below <span class="math" data-tex="\(h(L+1)\)">\(h(L+1)\)</span>. The denominator depends on <span class="math" data-tex="\(h,k\)">\(h,k\)</span>, independently of the node <span class="math" data-tex="\(l\)">\(l\)</span>.</p>
+<p>For example, <span class="math" data-tex="\(h=2,L=1\)">\(h=2,L=1\)</span> gives the four polynomials
+<span class="math math-display" data-tex="\[
+1,\quad x+1,\quad\frac{(x+1)(x+2)}2,\quad
+\frac{(x+1)^2(x+2)}2.
+\]">\[
+1,\quad x+1,\quad\frac{(x+1)(x+2)}2,\quad
+\frac{(x+1)^2(x+2)}2.
+\]</span>
+Their degrees are <span class="math" data-tex="\(0,1,2,3\)">\(0,1,2,3\)</span>; a nonzero coefficient block therefore remains nonzero after collection. For the last polynomial at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, the normalized derivatives are <span class="math" data-tex="\(1,5/2,2,1/2\)">\(1,5/2,2,1/2\)</span>. Multiplication by the common factor <span class="math" data-tex="\(V(2)^3=8\)">\(V(2)^3=8\)</span> gives the integers <span class="math" data-tex="\(8,20,16,4\)">\(8,20,16,4\)</span>.</p>
+<p>For integer coefficients <span class="math" data-tex="\(p_\lambda\)">\(p_\lambda\)</span>, define the entire function of <span class="math" data-tex="\(n\)">\(n\)</span> variables
+<span class="math math-display" data-tex="\[
+\Phi(z_0,\ldots,z_{n-1})
+=\sum_\lambda p_\lambda
+U_\lambda(z_0)
+e^{\lambda_n\beta_0z_0}
+\prod_{r=1}^{n-1}e^{\gamma_r\ell_rz_r}. \tag{5.6}
+\]">\[
+\Phi(z_0,\ldots,z_{n-1})
+=\sum_\lambda p_\lambda
+U_\lambda(z_0)
+e^{\lambda_n\beta_0z_0}
+\prod_{r=1}^{n-1}e^{\gamma_r\ell_rz_r}. \tag{5.6}
+\]</span>
+The polynomial degree and the denominator block size are separate parameters. This separation is essential: raising the degree does not enlarge the derivative denominator beyond the chosen power of <span class="math" data-tex="\(V(h)\)">\(V(h)\)</span>. For a multi-index <span class="math" data-tex="\(m=(m_0,\ldots,m_{n-1})\)">\(m=(m_0,\ldots,m_{n-1})\)</span>, let
+<span class="math math-display" data-tex="\[
+f_m(z)=\partial^m\Phi(z,\ldots,z),\qquad
+P_m=\prod_{r=1}^{n-1}\ell_r^{m_r}.
+\]">\[
+f_m(z)=\partial^m\Phi(z,\ldots,z),\qquad
+P_m=\prod_{r=1}^{n-1}\ell_r^{m_r}.
+\]</span>
+Every <span class="math" data-tex="\(P_m\ne0\)">\(P_m\ne0\)</span>. Put
+<span class="math math-display" data-tex="\[
+q_{\lambda,m_0}(x)=
+\sum_{\mu=0}^{m_0}\binom{m_0}{\mu}
+U_\lambda^{(\mu)}(x)
+(\lambda_n\beta_0)^{m_0-\mu}. \tag{5.7}
+\]">\[
+q_{\lambda,m_0}(x)=
+\sum_{\mu=0}^{m_0}\binom{m_0}{\mu}
+U_\lambda^{(\mu)}(x)
+(\lambda_n\beta_0)^{m_0-\mu}. \tag{5.7}
+\]</span>
+The product rule and (5.4) give the exact diagonal formula
+<span class="math math-display" data-tex="\[
+f_m(z)=P_m\sum_\lambda p_\lambda q_{\lambda,m_0}(z)
+\prod_{r&lt;n}\gamma_r^{m_r}
+\exp\left(z\sum_{j=1}^n\lambda_j\ell_j+\lambda_n\eta z\right). \tag{5.8}
+\]">\[
+f_m(z)=P_m\sum_\lambda p_\lambda q_{\lambda,m_0}(z)
+\prod_{r&lt;n}\gamma_r^{m_r}
+\exp\left(z\sum_{j=1}^n\lambda_j\ell_j+\lambda_n\eta z\right). \tag{5.8}
+\]</span>
+This identity explains the quantitative gain. Although <span class="math" data-tex="\(\beta_0\)">\(\beta_0\)</span> can be large, its exponential combines with the other diagonal exponentials to leave the fixed logarithms and the tiny error <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p>For <span class="math" data-tex="\(l=1,\ldots,h\)">\(l=1,\ldots,h\)</span> impose the algebraic equations
+<span class="math math-display" data-tex="\[
+Q_m(l):=\sum_\lambda p_\lambda q_{\lambda,m_0}(l)
+\prod_{r&lt;n}\gamma_r^{m_r}\prod_{j=1}^n\alpha_j^{\lambda_jl}=0,
+\qquad |m|\le k. \tag{5.9}
+\]">\[
+Q_m(l):=\sum_\lambda p_\lambda q_{\lambda,m_0}(l)
+\prod_{r&lt;n}\gamma_r^{m_r}\prod_{j=1}^n\alpha_j^{\lambda_jl}=0,
+\qquad |m|\le k. \tag{5.9}
+\]</span></p>
+<p><strong>Lemma 5.2.</strong> Once <span class="math" data-tex="\(k\)">\(k\)</span> is sufficiently large and <span class="math" data-tex="\(LT\le k\)">\(LT\le k\)</span>, equations (5.9) have a nonzero integer solution with
+<span class="math math-display" data-tex="\[
+|p_\lambda|\le e^{Ghk}. \tag{5.10}
+\]">\[
+|p_\lambda|\le e^{Ghk}. \tag{5.10}
+\]</span>
+If <span class="math" data-tex="\(C\)">\(C\)</span> in (5.4) is sufficiently large compared with a fixed power of <span class="math" data-tex="\(k\)">\(k\)</span>, then
+<span class="math math-display" data-tex="\[
+|f_m(l)|&lt;B^{-C/2}\qquad(1\le l\le h,\ |m|\le k). \tag{5.11}
+\]">\[
+|f_m(l)|&lt;B^{-C/2}\qquad(1\le l\le h,\ |m|\le k). \tag{5.11}
+\]</span></p>
+<p><strong>Proof of the integer construction.</strong> There are
+<span class="math math-display" data-tex="\[
+N=h(L+1)^{n+1}
+\]">\[
+N=h(L+1)^{n+1}
+\]</span>
+unknowns. The field generated by the <span class="math" data-tex="\(n\)">\(n\)</span> bases and <span class="math" data-tex="\(n\)">\(n\)</span> coefficients has degree at most <span class="math" data-tex="\(d^{2n}\)">\(d^{2n}\)</span>. We can use the formal spanning products of powers below each minimal-polynomial degree, even if they are linearly dependent. Setting every spanning coefficient equal to zero is sufficient for (5.9). Thus the number of integer scalar equations is at most
+<span class="math math-display" data-tex="\[
+M_0=d^{2n}h(k+1)^n.
+\]">\[
+M_0=d^{2n}h(k+1)^n.
+\]</span>
+Since <span class="math" data-tex="\(L+1&gt;k^{1-1/(4n)}\)">\(L+1&gt;k^{1-1/(4n)}\)</span>,
+<span class="math math-display" data-tex="\[
+\frac N{M_0}\ge
+\frac{k^{(3n-1)/(4n)}}{2^n d^{2n}}, \tag{5.12}
+\]">\[
+\frac N{M_0}\ge
+\frac{k^{(3n-1)/(4n)}}{2^n d^{2n}}, \tag{5.12}
+\]</span>
+which exceeds <span class="math" data-tex="\(2\)">\(2\)</span> for an effective choice of <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>We spell out the coefficient bound to avoid an implicit varying-field constant. Let <span class="math" data-tex="\(a_j\le A\)">\(a_j\le A\)</span> and <span class="math" data-tex="\(b_r\le B\)">\(b_r\le B\)</span> be the leading coefficients of the primitive minimal polynomials of <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> and <span class="math" data-tex="\(\beta_r\)">\(\beta_r\)</span>. Multiplication by
+<span class="math math-display" data-tex="\[
+V(h)^k\prod_{j=1}^n a_j^{Lh}
+\prod_{r=0}^{n-1}b_r^k \tag{5.13}
+\]">\[
+V(h)^k\prod_{j=1}^n a_j^{Lh}
+\prod_{r=0}^{n-1}b_r^k \tag{5.13}
+\]</span>
+clears all rational denominators before expanding in the formal spanning products. Lemma 4.7 clears the normalized derivative values with the first factor. Multiplication by <span class="math" data-tex="\(\mu!\)">\(\mu!\)</span> recovers the ordinary derivative in (5.7), so it introduces no new denominator. Each base power is at most <span class="math" data-tex="\(Lh\)">\(Lh\)</span>, and each coefficient power is at most <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>For a root <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of a primitive polynomial with leading coefficient <span class="math" data-tex="\(c\)">\(c\)</span> and height <span class="math" data-tex="\(H\)">\(H\)</span>, the integral expansion of <span class="math" data-tex="\((c\theta)^j\)">\((c\theta)^j\)</span> in <span class="math" data-tex="\(1,\theta,\ldots,\theta^{s-1}\)">\(1,\theta,\ldots,\theta^{s-1}\)</span> has coefficients at most <span class="math" data-tex="\((2H)^j\)">\((2H)^j\)</span>. To verify this bound, multiplication by <span class="math" data-tex="\(c\theta\)">\(c\theta\)</span> replaces the highest power using
+<span class="math" data-tex="\(c\theta^s=-c_1\theta^{s-1}-\cdots-c_s\)">\(c\theta^s=-c_1\theta^{s-1}-\cdots-c_s\)</span>; each new coefficient is a sum of at most two terms bounded by <span class="math" data-tex="\(H\)">\(H\)</span> times the old maximum. The initial coefficient is <span class="math" data-tex="\(1\)">\(1\)</span>. Padding with <span class="math" data-tex="\(c^{v-j}\)">\(c^{v-j}\)</span> shows that <span class="math" data-tex="\(c^v\theta^j\)">\(c^v\theta^j\)</span>, <span class="math" data-tex="\(j\le v\)">\(j\le v\)</span>, has the same bound <span class="math" data-tex="\((2H)^v\)">\((2H)^v\)</span>.</p>
+<p>The complex growth bound just displayed, at <span class="math" data-tex="\(l\le h\)">\(l\le h\)</span>, gives a polynomial contribution with logarithm at most <span class="math" data-tex="\(G\{h(L+1)+k\log k\}\)">\(G\{h(L+1)+k\log k\}\)</span>. The factorial and binomial factors in (5.7) are covered by this estimate. Equation (4.11) gives <span class="math" data-tex="\(\log V(h)\le h\log8\)">\(\log V(h)\le h\log8\)</span>. Expansion of the powers of <span class="math" data-tex="\(\gamma_r\)">\(\gamma_r\)</span> contributes <span class="math" data-tex="\(O(k\log(kB))\)">\(O(k\log(kB))\)</span>. All coefficients of the integer equations are therefore bounded by a number <span class="math" data-tex="\(U\ge1\)">\(U\ge1\)</span> with
+<span class="math math-display" data-tex="\[
+\log U\le G\{LhT+hk+k\log k+k\log B\}\le Ghk. \tag{5.14}
+\]">\[
+\log U\le G\{LhT+hk+k\log k+k\log B\}\le Ghk. \tag{5.14}
+\]</span>
+The last inequality uses <span class="math" data-tex="\(LT\le k\)">\(LT\le k\)</span> and (5.2).</p>
+<p>Here is the small-solution argument in the exact form needed. An integer matrix with at most <span class="math" data-tex="\(M_0\)">\(M_0\)</span> rows, <span class="math" data-tex="\(N&gt;2M_0\)">\(N&gt;2M_0\)</span> columns and entries of magnitude at most <span class="math" data-tex="\(U\)">\(U\)</span> has a nonzero integer kernel vector of magnitude at most <span class="math" data-tex="\(5NU\)">\(5NU\)</span>. Let <span class="math" data-tex="\(Q=\lceil4NU\rceil\)">\(Q=\lceil4NU\rceil\)</span>, and map the <span class="math" data-tex="\((Q+1)^N\)">\((Q+1)^N\)</span> integer vectors in <span class="math" data-tex="\(\{0,\ldots,Q\}^N\)">\(\{0,\ldots,Q\}^N\)</span> to their row-value vectors. There are at most <span class="math" data-tex="\((2NUQ+1)^{M_0}\)">\((2NUQ+1)^{M_0}\)</span> possible images. Since <span class="math" data-tex="\(NUQ\ge1\)">\(NUQ\ge1\)</span> and <span class="math" data-tex="\(Q\ge4NU\)">\(Q\ge4NU\)</span>,
+<span class="math math-display" data-tex="\[
+2NUQ+1\le3NUQ&lt;Q^2&lt;(Q+1)^2.
+\]">\[
+2NUQ+1\le3NUQ&lt;Q^2&lt;(Q+1)^2.
+\]</span>
+Consequently <span class="math" data-tex="\((Q+1)^N&gt;(2NUQ+1)^{M_0}\)">\((Q+1)^N&gt;(2NUQ+1)^{M_0}\)</span>. Two distinct vectors have the same image; their nonzero difference is in the kernel and has magnitude at most <span class="math" data-tex="\(Q\le5NU\)">\(Q\le5NU\)</span>. Redundant or zero rows cause no difficulty. Since <span class="math" data-tex="\(\log(5N)\le Ghk\)">\(\log(5N)\le Ghk\)</span>, (5.14) proves (5.10).</p>
+<p><strong>Proof of almost vanishing.</strong> At an integer <span class="math" data-tex="\(l\)">\(l\)</span>, the difference between <span class="math" data-tex="\(P_m^{-1}f_m(l)\)">\(P_m^{-1}f_m(l)\)</span> and <span class="math" data-tex="\(Q_m(l)\)">\(Q_m(l)\)</span> is obtained by replacing <span class="math" data-tex="\(1\)">\(1\)</span> by <span class="math" data-tex="\(e^{\lambda_n\eta l}\)">\(e^{\lambda_n\eta l}\)</span> in each summand. For <span class="math" data-tex="\(|m|\le k\)">\(|m|\le k\)</span>, <span class="math" data-tex="\(l\le hk^{8n}\)">\(l\le hk^{8n}\)</span>, (5.3), (5.7), (5.10) and the elementary inequality <span class="math" data-tex="\(|e^u-1|\le |u|e^{|u|}\)">\(|e^u-1|\le |u|e^{|u|}\)</span> yield
+<span class="math math-display" data-tex="\[
+|f_m(l)-P_mQ_m(l)|
+\le e^{G(hk+LlT)}Ll|\eta|e^{Ll|\eta|}. \tag{5.15}
+\]">\[
+|f_m(l)-P_mQ_m(l)|
+\le e^{G(hk+LlT)}Ll|\eta|e^{Ll|\eta|}. \tag{5.15}
+\]</span>
+The factor counting summands is absorbed in <span class="math" data-tex="\(Ghk\)">\(Ghk\)</span>. Uniformly in this range, <span class="math" data-tex="\(L\le k,\ T\le k\)">\(L\le k,\ T\le k\)</span> and <span class="math" data-tex="\(h/\log B\le6k\)">\(h/\log B\le6k\)</span> imply that the logarithm of the prefactor is at most <span class="math" data-tex="\(Dk^{8n+3}\log B\)">\(Dk^{8n+3}\log B\)</span>. For an effective <span class="math" data-tex="\(C&gt;Dk^{9n+4}\)">\(C&gt;Dk^{9n+4}\)</span>, after enlarging <span class="math" data-tex="\(D\)">\(D\)</span>, the right side of (5.15) is below <span class="math" data-tex="\(B^{-C/2}\)">\(B^{-C/2}\)</span>. The same assertion holds after dividing by <span class="math" data-tex="\(P_m\)">\(P_m\)</span>, because (5.3) contributes at most <span class="math" data-tex="\(GkT\le Ghk\)">\(GkT\le Ghk\)</span>. Equation (5.9) now proves (5.11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction depends on <span class="math" data-tex="\(B\)">\(B\)</span>, but its constants do not. It also does not depend on an uncomputed integral basis for the varying coefficient field.</p>
+<h2 id="4-growth-and-an-arithmetic-alternative">4. Growth and an arithmetic alternative</h2>
+<p><strong>Lemma 5.3.</strong> With the solution of Lemma 5.2 and <span class="math" data-tex="\(|m|\le k\)">\(|m|\le k\)</span>,
+<span class="math math-display" data-tex="\[
+|f_m(z)|\le e^{G(hk+LT|z|)}\qquad(z\in\mathbb C). \tag{5.16}
+\]">\[
+|f_m(z)|\le e^{G(hk+LT|z|)}\qquad(z\in\mathbb C). \tag{5.16}
+\]</span>
+For every integer <span class="math" data-tex="\(h&lt;l\le hk^{8n}\)">\(h&lt;l\le hk^{8n}\)</span>, one of the following alternatives holds:
+<span class="math math-display" data-tex="\[
+|f_m(l)|&lt;B^{-C/2}, \tag{5.17}
+\]">\[
+|f_m(l)|&lt;B^{-C/2}, \tag{5.17}
+\]</span>
+or
+<span class="math math-display" data-tex="\[
+|f_m(l)|\ge
+\exp\{-G[hk(1+\log(l/h))+LlT]\}. \tag{5.18}
+\]">\[
+|f_m(l)|\ge
+\exp\{-G[hk(1+\log(l/h))+LlT]\}. \tag{5.18}
+\]</span>
+Here and below <span class="math" data-tex="\(C&gt;Dk^{9n+4}\)">\(C&gt;Dk^{9n+4}\)</span> can be increased once to satisfy all error estimates.</p>
+<p><strong>Proof.</strong> The complex growth bound for <span class="math" data-tex="\(U_\lambda\)">\(U_\lambda\)</span>, and <span class="math" data-tex="\(m_0\le k\)">\(m_0\le k\)</span>, give
+<span class="math math-display" data-tex="\[
+|q_{\lambda,m_0}(z)|
+\le \max(1,LdB)^k k!e^{a_\lambda+h}
+\left(1+\frac{|z+1|}{h}\right)^{a_\lambda}.
+\]">\[
+|q_{\lambda,m_0}(z)|
+\le \max(1,LdB)^k k!e^{a_\lambda+h}
+\left(1+\frac{|z+1|}{h}\right)^{a_\lambda}.
+\]</span>
+Indeed, <span class="math" data-tex="\(\binom{m_0}{\mu}\le\binom{k}{\mu}\)">\(\binom{m_0}{\mu}\le\binom{k}{\mu}\)</span> for <span class="math" data-tex="\(\mu\le m_0\)">\(\mu\le m_0\)</span>, and every coefficient power in (5.7) is bounded by <span class="math" data-tex="\(\max(1,LdB)^k\)">\(\max(1,LdB)^k\)</span>. With <span class="math" data-tex="\(a_\lambda&lt;h(L+1)\)">\(a_\lambda&lt;h(L+1)\)</span>, the logarithm of the last two factors is at most
+<span class="math math-display" data-tex="\[
+G\{h(L+1)+(L+1)(|z|+1)\}.
+\]">\[
+G\{h(L+1)+(L+1)(|z|+1)\}.
+\]</span>
+This follows from <span class="math" data-tex="\(\log(1+v)\le v\)">\(\log(1+v)\le v\)</span>, without division by a polynomial factor at any zero. The other contributions, including <span class="math" data-tex="\(P_m\)">\(P_m\)</span>, <span class="math" data-tex="\(\gamma_r^{m_r}\)">\(\gamma_r^{m_r}\)</span>, <span class="math" data-tex="\(k!\)">\(k!\)</span>, the coefficient bound and the number of summands, have logarithm at most <span class="math" data-tex="\(Ghk\)">\(Ghk\)</span>. Use <span class="math" data-tex="\(L\le k\)">\(L\le k\)</span>, <span class="math" data-tex="\(\log k\le h\)">\(\log k\le h\)</span>, <span class="math" data-tex="\(\log B\le h\)">\(\log B\le h\)</span>, and <span class="math" data-tex="\(T\le h\)">\(T\le h\)</span>. Finally the exponent in (5.8) has absolute real part at most <span class="math" data-tex="\(nMLT|z|+L|\eta||z|\)">\(nMLT|z|+L|\eta||z|\)</span>. Since <span class="math" data-tex="\(T\ge1\)">\(T\ge1\)</span> and <span class="math" data-tex="\(|\eta|&lt;1\)">\(|\eta|&lt;1\)</span>, these estimates prove (5.16).</p>
+<p>For (5.18), consider the algebraic comparison value <span class="math" data-tex="\(Q_m(l)\)">\(Q_m(l)\)</span> in (5.9), now without imposing its vanishing. Its degree is at most <span class="math" data-tex="\(d^{2n}\)">\(d^{2n}\)</span>, and every conjugate satisfies
+<span class="math math-display" data-tex="\[
+|Q_m(l)^{(\sigma)}|\le e^{G(hk+LlT)}. \tag{5.19}
+\]">\[
+|Q_m(l)^{(\sigma)}|\le e^{G(hk+LlT)}. \tag{5.19}
+\]</span>
+At any integer <span class="math" data-tex="\(l\)">\(l\)</span>, a denominator clearing factor is
+<span class="math math-display" data-tex="\[
+q_l=V(h)^k
+\prod_{j=1}^n a_j^{Ll}\prod_{r=0}^{n-1}b_r^k
+\qquad(l\ge1).
+\]">\[
+q_l=V(h)^k
+\prod_{j=1}^n a_j^{Ll}\prod_{r=0}^{n-1}b_r^k
+\qquad(l\ge1).
+\]</span>
+Lemma 4.7 clears every derivative value, and the remaining factors make each monomial in the bases and coefficients integral. Thus
+<span class="math math-display" data-tex="\[
+\log q_l\le G(hk+LlT)
+\le G\{hk(1+\log(l/h))+LlT\}\quad(l&gt;h). \tag{5.20}
+\]">\[
+\log q_l\le G(hk+LlT)
+\le G\{hk(1+\log(l/h))+LlT\}\quad(l&gt;h). \tag{5.20}
+\]</span>
+The first inequality is the stronger one: the derivative-denominator cost is independent of <span class="math" data-tex="\(l\)">\(l\)</span>. We use the second, more generous budget in the extrapolation estimates.</p>
+<p>Therefore <span class="math" data-tex="\(q_lQ_m(l)\)">\(q_lQ_m(l)\)</span> is an algebraic integer. To see the norm assertion explicitly, if a nonzero algebraic integer <span class="math" data-tex="\(\theta\)">\(\theta\)</span> has monic minimal polynomial of degree <span class="math" data-tex="\(s\)">\(s\)</span> and constant term <span class="math" data-tex="\(c_0\in\mathbb Z\setminus\{0\}\)">\(c_0\in\mathbb Z\setminus\{0\}\)</span>, then its norm from a containing field of degree <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\((-1)^{D}c_0^{D/s}\)">\((-1)^{D}c_0^{D/s}\)</span>. It is a nonzero integer. Bounding all conjugates but the chosen one by (5.19), and dividing by <span class="math" data-tex="\(q_l\)">\(q_l\)</span>, now gives
+<span class="math math-display" data-tex="\[
+|Q_m(l)|\ge e^{-G(hk+LlT)}
+\ge e^{-G[hk(1+\log(l/h))+LlT]}\quad(l&gt;h).
+\]">\[
+|Q_m(l)|\ge e^{-G(hk+LlT)}
+\ge e^{-G[hk(1+\log(l/h))+LlT]}\quad(l&gt;h).
+\]</span>
+If <span class="math" data-tex="\(Q_m(l)=0\)">\(Q_m(l)=0\)</span>, (5.15) gives (5.17). Otherwise the error in (5.15) is less than <span class="math" data-tex="\(|P_mQ_m(l)|/2\)">\(|P_mQ_m(l)|/2\)</span>, for <span class="math" data-tex="\(C&gt;Dk^{9n+4}\)">\(C&gt;Dk^{9n+4}\)</span>. Restore <span class="math" data-tex="\(P_m\)">\(P_m\)</span> using (5.3) and absorb the factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> by enlarging <span class="math" data-tex="\(G\)">\(G\)</span>. This proves (5.18). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same block denominator applies at the initial and extended integer nodes. This is the arithmetic advantage of the Matveev family: the derivative order costs <span class="math" data-tex="\(k\log V(h)\le hk\log8\)">\(k\log V(h)\le hk\log8\)</span>, even when <span class="math" data-tex="\(l/h\)">\(l/h\)</span> becomes large. The interval-LCM estimate of Lemma 4.4 gives another valid budget, but is not needed for this denominator.</p>
+<h2 id="5-interpolation-with-small-derivatives">5. Interpolation with small derivatives</h2>
+<p>We record the analytic estimate used twice below. Let <span class="math" data-tex="\(f\)">\(f\)</span> be entire, and suppose
+<span class="math math-display" data-tex="\[
+|f^{(j)}(r)|\le E
+\quad(1\le r\le R_0,\ 0\le j&lt;s),
+\]">\[
+|f^{(j)}(r)|\le E
+\quad(1\le r\le R_0,\ 0\le j&lt;s),
+\]</span>
+where <span class="math" data-tex="\(R_0,s\ge1\)">\(R_0,s\ge1\)</span> are integers. Put
+<span class="math math-display" data-tex="\[
+F(z)=\prod_{r=1}^{R_0}(z-r)^s.
+\]">\[
+F(z)=\prod_{r=1}^{R_0}(z-r)^s.
+\]</span>
+For a point <span class="math" data-tex="\(u\)">\(u\)</span> distinct from those integers, and an outer circle <span class="math" data-tex="\(|z|=\mathcal R&gt;2(R_0+|u|)\)">\(|z|=\mathcal R&gt;2(R_0+|u|)\)</span>, the residue theorem gives
+<span class="math math-display" data-tex="\[
+f(u)=\frac{F(u)}{2\pi i}\int_{|z|=\mathcal R}
+\frac{f(z)}{(z-u)F(z)}\,dz-\mathcal E(u). \tag{5.21}
+\]">\[
+f(u)=\frac{F(u)}{2\pi i}\int_{|z|=\mathcal R}
+\frac{f(z)}{(z-u)F(z)}\,dz-\mathcal E(u). \tag{5.21}
+\]</span>
+Here <span class="math" data-tex="\(\mathcal E(u)\)">\(\mathcal E(u)\)</span> is the sum of the residues at the integers, multiplied by <span class="math" data-tex="\(F(u)\)">\(F(u)\)</span>. At <span class="math" data-tex="\(r\)">\(r\)</span>, replace <span class="math" data-tex="\(f(z)\)">\(f(z)\)</span> inside that residue by its Taylor polynomial through degree <span class="math" data-tex="\(s-1\)">\(s-1\)</span>; the difference has no residue, because it has a zero of order at least <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>If <span class="math" data-tex="\(u\)">\(u\)</span> is an integer outside <span class="math" data-tex="\(1,\ldots,R_0\)">\(1,\ldots,R_0\)</span>, use circles <span class="math" data-tex="\(|z-r|=1/2\)">\(|z-r|=1/2\)</span> around the poles. The Taylor polynomial has size at most <span class="math" data-tex="\(Ee^{1/2}\)">\(Ee^{1/2}\)</span> there, and <span class="math" data-tex="\(|z-u|\ge1/2\)">\(|z-u|\ge1/2\)</span>. Also
+<span class="math math-display" data-tex="\[
+|F(z)|\ge
+\left[2^{-R_0}(r-1)!(R_0-r)!\right]^s
+\ge\left[4^{-R_0}(R_0-1)!\right]^s. \tag{5.22}
+\]">\[
+|F(z)|\ge
+\left[2^{-R_0}(r-1)!(R_0-r)!\right]^s
+\ge\left[4^{-R_0}(R_0-1)!\right]^s. \tag{5.22}
+\]</span>
+The second bound follows from
+<span class="math" data-tex="\(\binom{R_0-1}{r-1}\le2^{R_0-1}\)">\(\binom{R_0-1}{r-1}\le2^{R_0-1}\)</span>.
+Since <span class="math" data-tex="\(|F(u)|\le(|u|+R_0)^{R_0s}\)">\(|F(u)|\le(|u|+R_0)^{R_0s}\)</span> and <span class="math" data-tex="\(v!\ge(v/e)^v\)">\(v!\ge(v/e)^v\)</span>, these estimates give, with an absolute effective <span class="math" data-tex="\(D\)">\(D\)</span>,
+<span class="math math-display" data-tex="\[
+|\mathcal E(u)|\le
+E\exp\left\{
+DR_0s\left(1+\log\left(1+\frac{|u|}{R_0}\right)\right)
++Ds\log(2R_0)+D\log(2R_0)\right\}. \tag{5.23}
+\]">\[
+|\mathcal E(u)|\le
+E\exp\left\{
+DR_0s\left(1+\log\left(1+\frac{|u|}{R_0}\right)\right)
++Ds\log(2R_0)+D\log(2R_0)\right\}. \tag{5.23}
+\]</span>
+For <span class="math" data-tex="\(R_0=1\)">\(R_0=1\)</span>, use the first bound in (5.22) directly; (5.23) still follows.</p>
+<p>If <span class="math" data-tex="\(u=t/k\)">\(u=t/k\)</span> is nonintegral, use circles of radius <span class="math" data-tex="\(1/(2k)\)">\(1/(2k)\)</span>. The distance to every integer is at least <span class="math" data-tex="\(1/k\)">\(1/k\)</span>. In (5.22), only the factor belonging to <span class="math" data-tex="\(r\)">\(r\)</span> needs the additional factor <span class="math" data-tex="\(k^{-s}\)">\(k^{-s}\)</span>; the other factors retain their factorial lower bound. Thus (5.23) holds with the additional term
+<span class="math math-display" data-tex="\[
+Ds\log(2k)+D\log(2k) \tag{5.24}
+\]">\[
+Ds\log(2k)+D\log(2k) \tag{5.24}
+\]</span>
+in its exponent. These bounds have no term <span class="math" data-tex="\(R_0s\log R_0\)">\(R_0s\log R_0\)</span>: the factorials cancel that apparent loss. This cancellation keeps the estimate uniform as <span class="math" data-tex="\(h\)">\(h\)</span> grows.</p>
+<p>On the outer circle, <span class="math" data-tex="\(|F(z)|\ge(\mathcal R-R_0)^{R_0s}\)">\(|F(z)|\ge(\mathcal R-R_0)^{R_0s}\)</span>. The integral term in (5.21) is bounded by
+<span class="math math-display" data-tex="\[
+\frac{\mathcal R}{\mathcal R-|u|}
+\max_{|z|=\mathcal R}|f(z)|
+\left(\frac{|u|+R_0}{\mathcal R-R_0}\right)^{R_0s}. \tag{5.25}
+\]">\[
+\frac{\mathcal R}{\mathcal R-|u|}
+\max_{|z|=\mathcal R}|f(z)|
+\left(\frac{|u|+R_0}{\mathcal R-R_0}\right)^{R_0s}. \tag{5.25}
+\]</span>
+All three estimates follow from the displayed contour identities and elementary inequalities; no exact-zero assertion was used.</p>
+<h2 id="6-extending-the-interval-of-almost-zeros">6. Extending the interval of almost zeros</h2>
+<p>Choose an integer <span class="math" data-tex="\(J_*\)">\(J_*\)</span> so large that
+<span class="math math-display" data-tex="\[
+\varepsilon=\frac{8n}{J_*}
+&lt;\min\left(\frac a2,\frac{a}{128(G+1)}\right). \tag{5.26}
+\]">\[
+\varepsilon=\frac{8n}{J_*}
+&lt;\min\left(\frac a2,\frac{a}{128(G+1)}\right). \tag{5.26}
+\]</span>
+Here <span class="math" data-tex="\(G\)">\(G\)</span> dominates the constants in both estimates of Lemma 5.3. Thus <span class="math" data-tex="\(J_*\)">\(J_*\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> depend only on <span class="math" data-tex="\(n,d,M\)">\(n,d,M\)</span>. Put
+<span class="math math-display" data-tex="\[
+R_J=\lfloor hk^{J\varepsilon}\rfloor,\qquad
+S_J=\left\lfloor\frac{k}{2^J}\right\rfloor
+\quad(0\le J\le J_*).
+\]">\[
+R_J=\lfloor hk^{J\varepsilon}\rfloor,\qquad
+S_J=\left\lfloor\frac{k}{2^J}\right\rfloor
+\quad(0\le J\le J_*).
+\]</span>
+Choose <span class="math" data-tex="\(k\ge2^{J_*+2}\)">\(k\ge2^{J_*+2}\)</span>. All the derivative budgets are then positive.</p>
+<p><strong>Lemma 5.4.</strong> For every <span class="math" data-tex="\(0\le J\le J_*\)">\(0\le J\le J_*\)</span>,
+<span class="math math-display" data-tex="\[
+|f_m(l)|&lt;B^{-C/2}
+\quad(1\le l\le R_J,\ |m|\le S_J). \tag{5.27}
+\]">\[
+|f_m(l)|&lt;B^{-C/2}
+\quad(1\le l\le R_J,\ |m|\le S_J). \tag{5.27}
+\]</span></p>
+<p><strong>Proof.</strong> The case <span class="math" data-tex="\(J=0\)">\(J=0\)</span> is (5.11). Suppose the result holds at <span class="math" data-tex="\(J&lt;J_*\)">\(J&lt;J_*\)</span>, and take <span class="math" data-tex="\(|m|\le S_{J+1}\)">\(|m|\le S_{J+1}\)</span>. Differentiating along the diagonal gives
+<span class="math math-display" data-tex="\[
+f_m^{(j)}(z)=
+\sum_{\substack{v_0+\cdots+v_{n-1}=j\\v_r\ge0}}
+\binom{j}{v_0,\ldots,v_{n-1}} f_{m+v}(z).
+\]">\[
+f_m^{(j)}(z)=
+\sum_{\substack{v_0+\cdots+v_{n-1}=j\\v_r\ge0}}
+\binom{j}{v_0,\ldots,v_{n-1}} f_{m+v}(z).
+\]</span>
+For <span class="math" data-tex="\(0\le j\le S_{J+1}\)">\(0\le j\le S_{J+1}\)</span>, we have
+<span class="math" data-tex="\(|m|+j\le2S_{J+1}\le S_J\)">\(|m|+j\le2S_{J+1}\le S_J\)</span>, because <span class="math" data-tex="\(2\lfloor x/2\rfloor\le\lfloor x\rfloor\)">\(2\lfloor x/2\rfloor\le\lfloor x\rfloor\)</span>. Hence at each <span class="math" data-tex="\(r=1,\ldots,R_J\)">\(r=1,\ldots,R_J\)</span>,
+<span class="math math-display" data-tex="\[
+|f_m^{(j)}(r)|\le n^jB^{-C/2}\le n^kB^{-C/2}. \tag{5.28}
+\]">\[
+|f_m^{(j)}(r)|\le n^jB^{-C/2}\le n^kB^{-C/2}. \tag{5.28}
+\]</span></p>
+<p>Take an integer <span class="math" data-tex="\(R_J&lt;l\le R_{J+1}\)">\(R_J&lt;l\le R_{J+1}\)</span>, and apply Section 5 with
+<span class="math math-display" data-tex="\[
+R_0=R_J,\quad s=S_{J+1}+1,\quad
+\mathcal R=R_{J+1}k^a.
+\]">\[
+R_0=R_J,\quad s=S_{J+1}+1,\quad
+\mathcal R=R_{J+1}k^a.
+\]</span>
+For large <span class="math" data-tex="\(k\)">\(k\)</span>, this radius exceeds <span class="math" data-tex="\(2(R_J+l)\)">\(2(R_J+l)\)</span>. Equations (5.23), (5.28), and <span class="math" data-tex="\(R_J\le hk^{8n}\)">\(R_J\le hk^{8n}\)</span>, <span class="math" data-tex="\(s\le k+1\)">\(s\le k+1\)</span>, <span class="math" data-tex="\(R_{J+1}/R_J\le2k^\varepsilon\)">\(R_{J+1}/R_J\le2k^\varepsilon\)</span>, show that
+<span class="math math-display" data-tex="\[
+|\mathcal E(l)|\le B^{-C/2}e^{Dhk^{8n+2}}. \tag{5.29}
+\]">\[
+|\mathcal E(l)|\le B^{-C/2}e^{Dhk^{8n+2}}. \tag{5.29}
+\]</span>
+This estimate includes the factors <span class="math" data-tex="\(n^k\)">\(n^k\)</span> and <span class="math" data-tex="\(\log R_J\)">\(\log R_J\)</span>; use <span class="math" data-tex="\(\log h\le h\)">\(\log h\le h\)</span>, <span class="math" data-tex="\(\log k\le k\)">\(\log k\le k\)</span>. In view of (5.2), choose <span class="math" data-tex="\(C&gt;Dk^{9n+4}\)">\(C&gt;Dk^{9n+4}\)</span> large enough that (5.29) is less than one quarter of the lower bound in (5.18), uniformly throughout the entire range.</p>
+<p>Suppose the large alternative (5.18) holds at <span class="math" data-tex="\(l\)">\(l\)</span>. Write its exponent as
+<span class="math math-display" data-tex="\[
+\mathcal N(l)=G[hk(1+\log(l/h))+LlT].
+\]">\[
+\mathcal N(l)=G[hk(1+\log(l/h))+LlT].
+\]</span>
+Then <span class="math" data-tex="\(|f_m(l)|\ge e^{-\mathcal N(l)}\)">\(|f_m(l)|\ge e^{-\mathcal N(l)}\)</span>. By (5.16) and (5.25), the outer integral contribution is at most
+<span class="math math-display" data-tex="\[
+2\exp\{G(hk+LT\mathcal R)-R_Js(a\log k-\log4)\}. \tag{5.30}
+\]">\[
+2\exp\{G(hk+LT\mathcal R)-R_Js(a\log k-\log4)\}. \tag{5.30}
+\]</span>
+We choose <span class="math" data-tex="\(k\)">\(k\)</span> so that this is less than <span class="math" data-tex="\(e^{-\mathcal N(l)}/2\)">\(e^{-\mathcal N(l)}/2\)</span>. We now verify that this choice is possible uniformly in <span class="math" data-tex="\(A,B\)">\(A,B\)</span>.</p>
+<p>For <span class="math" data-tex="\(J=0\)">\(J=0\)</span>, <span class="math" data-tex="\(R_0=h\)">\(R_0=h\)</span> and <span class="math" data-tex="\(s\ge k/2\)">\(s\ge k/2\)</span>. The negative term has size at least
+<span class="math math-display" data-tex="\[
+\frac{hk}{2}(a\log k-\log4).
+\]">\[
+\frac{hk}{2}(a\log k-\log4).
+\]</span>
+The part <span class="math" data-tex="\(\mathcal N(l)\)">\(\mathcal N(l)\)</span> involving the LCM is at most <span class="math" data-tex="\(Ghk(1+\varepsilon\log k)\)">\(Ghk(1+\varepsilon\log k)\)</span>; (5.26) makes its logarithmic coefficient strictly smaller than the negative coefficient. The other growing term satisfies
+<span class="math math-display" data-tex="\[
+\frac{LT\mathcal R}{hk}
+\le Tk^{\varepsilon-a},
+\]">\[
+\frac{LT\mathcal R}{hk}
+\le Tk^{\varepsilon-a},
+\]</span>
+and <span class="math" data-tex="\(LlT/(hk)\le Tk^{\varepsilon-2a}\)">\(LlT/(hk)\le Tk^{\varepsilon-2a}\)</span>.</p>
+<p>For <span class="math" data-tex="\(J\ge1\)">\(J\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+R_Js\ge \frac{hk^{1+J\varepsilon}}{2^{J+2}}. \tag{5.31}
+\]">\[
+R_Js\ge \frac{hk^{1+J\varepsilon}}{2^{J+2}}. \tag{5.31}
+\]</span>
+After division by this quantity, the LCM part of <span class="math" data-tex="\(\mathcal N(l)\)">\(\mathcal N(l)\)</span>, and the term <span class="math" data-tex="\(Ghk\)">\(Ghk\)</span>, are at most a fixed multiple of
+<span class="math math-display" data-tex="\[
+2^Jk^{-J\varepsilon}(1+(J+1)\varepsilon\log k),
+\]">\[
+2^Jk^{-J\varepsilon}(1+(J+1)\varepsilon\log k),
+\]</span>
+which tends to zero relative to <span class="math" data-tex="\(\log k\)">\(\log k\)</span>. The remaining ratios are bounded by fixed multiples of
+<span class="math math-display" data-tex="\[
+2^JTk^{\varepsilon-a},\qquad
+2^JTk^{\varepsilon-2a}. \tag{5.32}
+\]">\[
+2^JTk^{\varepsilon-a},\qquad
+2^JTk^{\varepsilon-2a}. \tag{5.32}
+\]</span>
+These also become small. Indeed, choose
+<span class="math math-display" data-tex="\[
+k\ge K T^{16n}. \tag{5.33}
+\]">\[
+k\ge K T^{16n}. \tag{5.33}
+\]</span>
+Since <span class="math" data-tex="\(\varepsilon&lt;a/2\)">\(\varepsilon&lt;a/2\)</span> and <span class="math" data-tex="\(1/a=8n\)">\(1/a=8n\)</span>,
+<span class="math math-display" data-tex="\[
+Tk^{\varepsilon-a}\le Tk^{-a/2}\le K^{-a/2},
+\]">\[
+Tk^{\varepsilon-a}\le Tk^{-a/2}\le K^{-a/2},
+\]</span>
+and the second ratio is smaller. The finitely many powers <span class="math" data-tex="\(2^J\)">\(2^J\)</span>, <span class="math" data-tex="\(J\le J_*\)">\(J\le J_*\)</span>, are absorbed by increasing <span class="math" data-tex="\(K\)">\(K\)</span>, independently of <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. For the first ratios, increasing <span class="math" data-tex="\(K\)">\(K\)</span> also makes <span class="math" data-tex="\(k^{-J\varepsilon}\)">\(k^{-J\varepsilon}\)</span> small for every <span class="math" data-tex="\(J\ge1\)">\(J\ge1\)</span>. Thus a single effective <span class="math" data-tex="\(K(n,d,M)\)">\(K(n,d,M)\)</span> makes (5.30) less than half the large lower bound for every stage.</p>
+<p>Equations (5.21), (5.29)–(5.30) would then give
+<span class="math math-display" data-tex="\[
+|f_m(l)|&lt;\frac34 e^{-\mathcal N(l)},
+\]">\[
+|f_m(l)|&lt;\frac34 e^{-\mathcal N(l)},
+\]</span>
+contrary to the assumed large alternative. Therefore the small alternative (5.17) holds. Together with the old interval, it proves (5.27) at <span class="math" data-tex="\(J+1\)">\(J+1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is a finite induction. Its number of stages is fixed before <span class="math" data-tex="\(B\)">\(B\)</span> varies, and <span class="math" data-tex="\(R_{J_*}=\lfloor hk^{8n}\rfloor\)">\(R_{J_*}=\lfloor hk^{8n}\rfloor\)</span>. The arithmetic alternative, rather than an assertion that a small number is zero, permits the error threshold to remain unchanged at every stage.</p>
+<h2 id="7-from-the-integer-grid-to-a-rational-grid">7. From the integer grid to a rational grid</h2>
+<p>Set
+<span class="math math-display" data-tex="\[
+X=\lfloor hk^{8n}\rfloor,\qquad
+Y=\left\lfloor\frac{k}{2^{J_*}}\right\rfloor,\qquad
+f(z)=\Phi(z,\ldots,z).
+\]">\[
+X=\lfloor hk^{8n}\rfloor,\qquad
+Y=\left\lfloor\frac{k}{2^{J_*}}\right\rfloor,\qquad
+f(z)=\Phi(z,\ldots,z).
+\]</span>
+The same diagonal chain rule gives
+<span class="math math-display" data-tex="\[
+|f^{(j)}(r)|\le n^kB^{-C/2}
+\quad(1\le r\le X,\ 0\le j\le Y). \tag{5.34}
+\]">\[
+|f^{(j)}(r)|\le n^kB^{-C/2}
+\quad(1\le r\le X,\ 0\le j\le Y). \tag{5.34}
+\]</span>
+We claim that for every integer <span class="math" data-tex="\(0\le t\le\lfloor hk^{4n}\rfloor\)">\(0\le t\le\lfloor hk^{4n}\rfloor\)</span>,
+<span class="math math-display" data-tex="\[
+Q(t):=\sum_\lambda p_\lambda
+U_\lambda(t/k)
+\prod_{j=1}^n\alpha_j^{\lambda_jt/k}=0. \tag{5.35}
+\]">\[
+Q(t):=\sum_\lambda p_\lambda
+U_\lambda(t/k)
+\prod_{j=1}^n\alpha_j^{\lambda_jt/k}=0. \tag{5.35}
+\]</span>
+The fractional powers here have the prescribed determinations
+<span class="math" data-tex="\(\alpha_j^{1/k}=e^{\ell_j/k}\)">\(\alpha_j^{1/k}=e^{\ell_j/k}\)</span>. They are algebraic roots of <span class="math" data-tex="\(X^k-\alpha_j\)">\(X^k-\alpha_j\)</span>.</p>
+<p>First bound the analytic value <span class="math" data-tex="\(f(t/k)\)">\(f(t/k)\)</span>. If <span class="math" data-tex="\(t/k\)">\(t/k\)</span> is one of the integer nodes, (5.27) already gives its smallness. Otherwise apply (5.21) with <span class="math" data-tex="\(R_0=X,\ s=Y+1,\ u=t/k\)">\(R_0=X,\ s=Y+1,\ u=t/k\)</span>, and
+<span class="math math-display" data-tex="\[
+\mathcal R=Xk^a.
+\]">\[
+\mathcal R=Xk^a.
+\]</span>
+We have <span class="math" data-tex="\(u\le hk^{4n-1}&lt;X\)">\(u\le hk^{4n-1}&lt;X\)</span> for large <span class="math" data-tex="\(k\)">\(k\)</span>. The outer contribution is at most
+<span class="math math-display" data-tex="\[
+2\exp\{G(hk+LT\mathcal R)-X(Y+1)(a\log k-\log4)\}.
+\]">\[
+2\exp\{G(hk+LT\mathcal R)-X(Y+1)(a\log k-\log4)\}.
+\]</span>
+The ratio <span class="math" data-tex="\(LT\mathcal R/(XY)\)">\(LT\mathcal R/(XY)\)</span> is bounded by a fixed multiple of
+<span class="math math-display" data-tex="\[
+2^{J_*}Tk^{-a},
+\]">\[
+2^{J_*}Tk^{-a},
+\]</span>
+which can be made as small as needed by (5.33) and a larger <span class="math" data-tex="\(K\)">\(K\)</span>. Also <span class="math" data-tex="\(hk/(XY)\to0\)">\(hk/(XY)\to0\)</span> as <span class="math" data-tex="\(k\)">\(k\)</span> increases. Hence the outer contribution is less than <span class="math" data-tex="\(e^{-2XY}\)">\(e^{-2XY}\)</span>.</p>
+<p>Equations (5.23)–(5.24) bound the residue contribution by
+<span class="math math-display" data-tex="\[
+B^{-C/2}e^{Dhk^{8n+2}}.
+\]">\[
+B^{-C/2}e^{Dhk^{8n+2}}.
+\]</span>
+Choosing <span class="math" data-tex="\(C&gt;Dk^{9n+4}\)">\(C&gt;Dk^{9n+4}\)</span> sufficiently large makes this less than <span class="math" data-tex="\(e^{-2XY}\)">\(e^{-2XY}\)</span>, uniformly in <span class="math" data-tex="\(B\)">\(B\)</span>. The same conclusion follows directly from (5.27) at an integer node. Consequently
+<span class="math math-display" data-tex="\[
+|f(t/k)|&lt;2e^{-2XY}\le e^{-XY}. \tag{5.36}
+\]">\[
+|f(t/k)|&lt;2e^{-2XY}\le e^{-XY}. \tag{5.36}
+\]</span>
+The last inequality holds since <span class="math" data-tex="\(XY\ge1\)">\(XY\ge1\)</span> and <span class="math" data-tex="\(e&gt;2\)">\(e&gt;2\)</span>.</p>
+<p>We now prove an algebraic lower bound for a nonzero <span class="math" data-tex="\(Q(t)\)">\(Q(t)\)</span>. Let
+<span class="math" data-tex="\(\rho_j=e^{\ell_j/k}\)">\(\rho_j=e^{\ell_j/k}\)</span>. The field generated by the <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span>'s has degree at most <span class="math" data-tex="\((dk)^n\)">\((dk)^n\)</span>. Every conjugate has
+<span class="math math-display" data-tex="\[
+|\rho_j^{(\sigma)}|\le(dA)^{1/k}.
+\]">\[
+|\rho_j^{(\sigma)}|\le(dA)^{1/k}.
+\]</span>
+Using <span class="math" data-tex="\(u=t/k\le hk^{4n-1}\)">\(u=t/k\le hk^{4n-1}\)</span>, <span class="math" data-tex="\(h!\ge(h/e)^h\)">\(h!\ge(h/e)^h\)</span>, (5.10), and <span class="math" data-tex="\(L\le k\)">\(L\le k\)</span>, every conjugate of <span class="math" data-tex="\(Q(t)\)">\(Q(t)\)</span> is at most
+<span class="math math-display" data-tex="\[
+\exp\{D[hk+h(L+1)\log(2k)+Lhk^{4n-1}T]\}
+\le e^{Dhk^{4n+2}}. \tag{5.37}
+\]">\[
+\exp\{D[hk+h(L+1)\log(2k)+Lhk^{4n-1}T]\}
+\le e^{Dhk^{4n+2}}. \tag{5.37}
+\]</span></p>
+<p>For the rational polynomial factor, the denominator of <span class="math" data-tex="\(D_h(1+t/k;a)\)">\(D_h(1+t/k;a)\)</span> divides <span class="math" data-tex="\(k^{2a}\)">\(k^{2a}\)</span>. Write <span class="math" data-tex="\(a=hq+r\)">\(a=hq+r\)</span>, <span class="math" data-tex="\(0\le r&lt;h\)">\(0\le r&lt;h\)</span>. Before cancellation its denominator is <span class="math" data-tex="\(k^a(h!)^q r!\)">\(k^a(h!)^q r!\)</span>, and its numerator is the product of <span class="math" data-tex="\(q\)">\(q\)</span> blocks
+<span class="math math-display" data-tex="\[
+\prod_{j=1}^h(t+kj)
+\]">\[
+\prod_{j=1}^h(t+kj)
+\]</span>
+and one block <span class="math" data-tex="\(\prod_{j=1}^r(t+kj)\)">\(\prod_{j=1}^r(t+kj)\)</span>. If <span class="math" data-tex="\(p\nmid k\)">\(p\nmid k\)</span>, each block of length <span class="math" data-tex="\(b\)">\(b\)</span> contains at least <span class="math" data-tex="\(\lfloor b/p^v\rfloor\)">\(\lfloor b/p^v\rfloor\)</span> multiples of <span class="math" data-tex="\(p^v\)">\(p^v\)</span>, for every <span class="math" data-tex="\(v\ge1\)">\(v\ge1\)</span>. It therefore cancels the corresponding factorial valuation. If <span class="math" data-tex="\(p\mid k\)">\(p\mid k\)</span>, the remaining denominator exponent is at most
+<span class="math math-display" data-tex="\[
+av_p(k)+qv_p(h!)+v_p(r!)
+\le av_p(k)+\frac a{p-1}\le2av_p(k).
+\]">\[
+av_p(k)+qv_p(h!)+v_p(r!)
+\le av_p(k)+\frac a{p-1}\le2av_p(k).
+\]</span>
+This proves the claim, including a zero numerator and <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Since <span class="math" data-tex="\(a_\lambda&lt;h(L+1)\)">\(a_\lambda&lt;h(L+1)\)</span>, the common factor <span class="math" data-tex="\(k^{2h(L+1)}\)">\(k^{2h(L+1)}\)</span> clears all these rational polynomial values. For instance, <span class="math" data-tex="\(h=2,a=3,k=3,t=1\)">\(h=2,a=3,k=3,t=1\)</span> gives <span class="math" data-tex="\(D_2(4/3;3)=56/27\)">\(D_2(4/3;3)=56/27\)</span>, whose denominator divides <span class="math" data-tex="\(3^6\)">\(3^6\)</span>.</p>
+<p>Furthermore <span class="math" data-tex="\(a_j\rho_j\)">\(a_j\rho_j\)</span> is an algebraic integer, because <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> is a root of the polynomial obtained from the minimal polynomial of <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> by substituting <span class="math" data-tex="\(X^k\)">\(X^k\)</span>, with leading coefficient <span class="math" data-tex="\(a_j\)">\(a_j\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+q_t=k^{2h(L+1)}\prod_{j=1}^n a_j^{Lt}
+\]">\[
+q_t=k^{2h(L+1)}\prod_{j=1}^n a_j^{Lt}
+\]</span>
+makes <span class="math" data-tex="\(q_tQ(t)\)">\(q_tQ(t)\)</span> an algebraic integer. Its logarithm is at most <span class="math" data-tex="\(Dhk^{4n+2}\)">\(Dhk^{4n+2}\)</span>. If <span class="math" data-tex="\(Q(t)\ne0\)">\(Q(t)\ne0\)</span>, its norm and (5.37) give
+<span class="math math-display" data-tex="\[
+|Q(t)|\ge e^{-Dhk^{6n+2}}. \tag{5.38}
+\]">\[
+|Q(t)|\ge e^{-Dhk^{6n+2}}. \tag{5.38}
+\]</span>
+The exponent <span class="math" data-tex="\(6n+2\)">\(6n+2\)</span> is deliberately generous: multiplying the exponents in (5.37) by the degree <span class="math" data-tex="\((dk)^n\)">\((dk)^n\)</span> needs at most <span class="math" data-tex="\(5n+2\)">\(5n+2\)</span>.</p>
+<p>From (5.8), with <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, the difference <span class="math" data-tex="\(Q(t)-f(t/k)\)">\(Q(t)-f(t/k)\)</span> is the sum with the extra factors <span class="math" data-tex="\(1-e^{\lambda_n\eta t/k}\)">\(1-e^{\lambda_n\eta t/k}\)</span>. The same estimate as (5.15) makes it smaller than <span class="math" data-tex="\(e^{-2XY}\)">\(e^{-2XY}\)</span> for our choice of <span class="math" data-tex="\(C\)">\(C\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+|Q(t)|&lt;2e^{-XY}.
+\]">\[
+|Q(t)|&lt;2e^{-XY}.
+\]</span>
+But
+<span class="math math-display" data-tex="\[
+XY\ge \frac{hk^{8n+1}}{2^{J_*+2}},
+\]">\[
+XY\ge \frac{hk^{8n+1}}{2^{J_*+2}},
+\]</span>
+and <span class="math" data-tex="\(8n+1&gt;6n+2\)">\(8n+1&gt;6n+2\)</span> for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Increasing <span class="math" data-tex="\(K\)">\(K\)</span> makes <span class="math" data-tex="\(2e^{-XY}&lt;e^{-Dhk^{6n+2}}\)">\(2e^{-XY}&lt;e^{-Dhk^{6n+2}}\)</span>. This contradicts (5.38) whenever <span class="math" data-tex="\(Q(t)\ne0\)">\(Q(t)\ne0\)</span>, proving (5.35). At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, the same algebraic and analytic estimates apply without alteration. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The rational grid step uses a new algebraic field, but its degree is explicitly bounded. It does not import an unquantified constant from that field.</p>
+<h2 id="8-the-determinant-produces-a-bounded-relation">8. The determinant produces a bounded relation</h2>
+<p>For each fixed <span class="math" data-tex="\((\lambda_1,\ldots,\lambda_n)\)">\((\lambda_1,\ldots,\lambda_n)\)</span>, collect the polynomial factors into
+<span class="math math-display" data-tex="\[
+P_{\lambda_1,\ldots,\lambda_n}(x)
+=\sum_{\lambda_{-1}=0}^{h-1}\sum_{\lambda_0=0}^L
+p_\lambda U_\lambda(x).
+\]">\[
+P_{\lambda_1,\ldots,\lambda_n}(x)
+=\sum_{\lambda_{-1}=0}^{h-1}\sum_{\lambda_0=0}^L
+p_\lambda U_\lambda(x).
+\]</span>
+Their degrees are at most
+<span class="math math-display" data-tex="\[
+D_0=h(L+1).
+\]">\[
+D_0=h(L+1).
+\]</span>
+At least one collected polynomial is nonzero: choose a nonzero coefficient block, then the largest degree <span class="math" data-tex="\(a_\lambda\)">\(a_\lambda\)</span> with nonzero coefficient in that block. Its leading term cannot be cancelled by any smaller degree. This uses exactly the degree-indexed basis chosen in the construction; no independence assumption on the frequencies has entered.</p>
+<p>There is also a useful translated-power basis from Lemma 4.5. For each <span class="math" data-tex="\(b=0,\ldots,L\)">\(b=0,\ldots,L\)</span>, apply it to <span class="math" data-tex="\(\Delta(x;h)^{b+1}\)">\(\Delta(x;h)^{b+1}\)</span>, of degree <span class="math" data-tex="\(h(b+1)\)">\(h(b+1)\)</span>, with <span class="math" data-tex="\(m=h-1\)">\(m=h-1\)</span>. Its <span class="math" data-tex="\(h\)">\(h\)</span> translates, together with all polynomials of degree at most <span class="math" data-tex="\(hb\)">\(hb\)</span>, form a basis. Starting with <span class="math" data-tex="\(1\)">\(1\)</span>, induction on <span class="math" data-tex="\(b\)">\(b\)</span> proves that
+<span class="math math-display" data-tex="\[
+1,\quad\Delta(x+j;h)^{b+1}
+\quad(0\le j&lt;h,\ 0\le b\le L)
+\]">\[
+1,\quad\Delta(x+j;h)^{b+1}
+\quad(0\le j&lt;h,\ 0\le b\le L)
+\]</span>
+form a basis through degree <span class="math" data-tex="\(D_0\)">\(D_0\)</span>. Thus their nonconstant blocks also survive collection. Both bases expose the same polynomial-rank requirement. The degree-indexed family makes that requirement immediate and supplies the uniform derivative denominator used above.</p>
+<p>Write <span class="math" data-tex="\(P_{\lambda_1,\ldots,\lambda_n}(x)=\sum_{r=0}^{D_0}c_{r,\lambda}x^r\)">\(P_{\lambda_1,\ldots,\lambda_n}(x)=\sum_{r=0}^{D_0}c_{r,\lambda}x^r\)</span>, and set
+<span class="math math-display" data-tex="\[
+w_\lambda=\prod_{j=1}^n\rho_j^{\lambda_j}
+=\exp\left(\frac1k\sum_{j=1}^n\lambda_j\ell_j\right).
+\]">\[
+w_\lambda=\prod_{j=1}^n\rho_j^{\lambda_j}
+=\exp\left(\frac1k\sum_{j=1}^n\lambda_j\ell_j\right).
+\]</span>
+Equation (5.35) now says
+<span class="math math-display" data-tex="\[
+\sum_{\lambda_1,\ldots,\lambda_n}
+\sum_{r=0}^{D_0} c_{r,\lambda}k^{-r}t^r w_\lambda^t=0
+\quad(0\le t\le\lfloor hk^{4n}\rfloor). \tag{5.39}
+\]">\[
+\sum_{\lambda_1,\ldots,\lambda_n}
+\sum_{r=0}^{D_0} c_{r,\lambda}k^{-r}t^r w_\lambda^t=0
+\quad(0\le t\le\lfloor hk^{4n}\rfloor). \tag{5.39}
+\]</span>
+There are <span class="math" data-tex="\(R=(L+1)^n\)">\(R=(L+1)^n\)</span> frequency labels. If all <span class="math" data-tex="\(w_\lambda\)">\(w_\lambda\)</span> were distinct, the first
+<span class="math math-display" data-tex="\[
+N_1=(D_0+1)(L+1)^n
+\]">\[
+N_1=(D_0+1)(L+1)^n
+\]</span>
+equations of (5.39) would have the nonsingular matrix of Lemma 4.6, with its parameters <span class="math" data-tex="\(k_{\mathrm{det}}=D_0+1\)">\(k_{\mathrm{det}}=D_0+1\)</span> and <span class="math" data-tex="\(l_{\mathrm{det}}=R\)">\(l_{\mathrm{det}}=R\)</span>. The factor <span class="math" data-tex="\(k^{-r}\)">\(k^{-r}\)</span> is a nonzero column scaling. For large <span class="math" data-tex="\(k\)">\(k\)</span>,
+<span class="math math-display" data-tex="\[
+N_1\le 2h(L+1)^{n+1}\le hk^{4n},
+\]">\[
+N_1\le 2h(L+1)^{n+1}\le hk^{4n},
+\]</span>
+because <span class="math" data-tex="\((n+1)(1-1/(4n))&lt;4n\)">\((n+1)(1-1/(4n))&lt;4n\)</span>. There are thus enough grid points. Nonsingularity would force every <span class="math" data-tex="\(c_{r,\lambda}=0\)">\(c_{r,\lambda}=0\)</span>, contrary to the nonzero collected polynomial.</p>
+<p>Consequently two distinct labels <span class="math" data-tex="\(\lambda,\lambda&#x27;\)">\(\lambda,\lambda&#x27;\)</span> have <span class="math" data-tex="\(w_\lambda=w_{\lambda&#x27;}\)">\(w_\lambda=w_{\lambda&#x27;}\)</span>. Put <span class="math" data-tex="\(b&#x27;_j=\lambda_j-\lambda&#x27;_j\)">\(b&#x27;_j=\lambda_j-\lambda&#x27;_j\)</span>. These integers are not all zero and have magnitude at most <span class="math" data-tex="\(L\)">\(L\)</span>. Equality of the exponentials gives
+<span class="math math-display" data-tex="\[
+\sum_j b&#x27;_j\ell_j=2\pi i kq\qquad(q\in\mathbb Z).
+\]">\[
+\sum_j b&#x27;_j\ell_j=2\pi i kq\qquad(q\in\mathbb Z).
+\]</span>
+But
+<span class="math math-display" data-tex="\[
+\left|\sum_jb&#x27;_j\ell_j\right|\le nMLT&lt;2\pi k
+\]">\[
+\left|\sum_jb&#x27;_j\ell_j\right|\le nMLT&lt;2\pi k
+\]</span>
+for a sufficiently large <span class="math" data-tex="\(K\)">\(K\)</span> in (5.33), since <span class="math" data-tex="\(LT/k\le Tk^{-2a}\)">\(LT/k\le Tk^{-2a}\)</span> can be made arbitrarily small uniformly in <span class="math" data-tex="\(T\)">\(T\)</span>. Therefore <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, proving (5.5) and Proposition 5.1. The logarithmic branches have been retained throughout: the final size comparison is what removes the possible period.</p>
+<h2 id="9-choosing-all-constants-effectively">9. Choosing all constants effectively</h2>
+<p>The preceding arguments use “sufficiently large” only in a controlled finite list. Here is a concrete order of choice.</p>
+<ol>
+<li>From the root, recurrence and norm estimates, choose a common effective <span class="math" data-tex="\(G(n,d,M)\)">\(G(n,d,M)\)</span> for (5.3), (5.10), (5.15), (5.16), (5.18) and (5.19). All these estimates were obtained from displayed inequalities; no compactness or ineffective finiteness result occurs.</li>
+<li>Choose <span class="math" data-tex="\(J_*\)">\(J_*\)</span> and <span class="math" data-tex="\(\varepsilon=8n/J_*\)">\(\varepsilon=8n/J_*\)</span> by (5.26).</li>
+<li>Increase <span class="math" data-tex="\(K(n,d,M)\)">\(K(n,d,M)\)</span> so that for every <span class="math" data-tex="\(k\ge KT^{16n}\)">\(k\ge KT^{16n}\)</span>: <span class="math" data-tex="\(N&gt;2M_0\)">\(N&gt;2M_0\)</span>; <span class="math" data-tex="\(LT\le k\)">\(LT\le k\)</span>; <span class="math" data-tex="\(k\ge2^{J_*+2}\)">\(k\ge2^{J_*+2}\)</span>; the contour radii have the stated separations; the comparisons (5.30)–(5.32) hold at the finite set of stages; the estimates (5.36), (5.38) are inconsistent when <span class="math" data-tex="\(Q(t)\ne0\)">\(Q(t)\ne0\)</span>; the determinant count is valid; and <span class="math" data-tex="\(nMLT&lt;2\pi k\)">\(nMLT&lt;2\pi k\)</span>.</li>
+<li>Take <span class="math" data-tex="\(k=\lceil KT^{16n}\rceil\)">\(k=\lceil KT^{16n}\rceil\)</span>, then choose <span class="math" data-tex="\(C&gt;Dk^{9n+4}\)">\(C&gt;Dk^{9n+4}\)</span>, where <span class="math" data-tex="\(D(n,d,M)\)">\(D(n,d,M)\)</span> covers all error and residue inequalities.</li>
+</ol>
+<p>Why can Step 3 be performed uniformly? The potentially height-dependent ratios are <span class="math" data-tex="\(Tk^{\varepsilon-a}\)">\(Tk^{\varepsilon-a}\)</span>, <span class="math" data-tex="\(Tk^{-a}\)">\(Tk^{-a}\)</span> and <span class="math" data-tex="\(Tk^{-2a}\)">\(Tk^{-2a}\)</span>. Under (5.33) they are bounded by fixed negative powers of <span class="math" data-tex="\(K\)">\(K\)</span>, as shown in (5.32). Every remaining ratio is a fixed multiple of <span class="math" data-tex="\(k^{-\delta}(\log k)^v\)">\(k^{-\delta}(\log k)^v\)</span>, with explicitly positive <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and fixed <span class="math" data-tex="\(v\)">\(v\)</span>, or a fixed power comparison such as <span class="math" data-tex="\(k^{6n+2}/k^{8n+1}\)">\(k^{6n+2}/k^{8n+1}\)</span>. Beyond an effective threshold these functions decrease to zero. Their thresholds can be found by differentiation and a finite integer search. All constants involving <span class="math" data-tex="\(2^{J_*}\)">\(2^{J_*}\)</span> are fixed before <span class="math" data-tex="\(A,B\)">\(A,B\)</span> vary.</p>
+<p>Likewise Step 4 is uniform in <span class="math" data-tex="\(B\)">\(B\)</span>, not a new choice for each coefficient tuple. The worst error exponents above are bounded by <span class="math" data-tex="\(Dhk^{8n+2}\)">\(Dhk^{8n+2}\)</span>; (5.2) makes them at most <span class="math" data-tex="\(6Dk^{8n+3}\log B\)">\(6Dk^{8n+3}\log B\)</span>. Thus a fixed multiple of <span class="math" data-tex="\(k^{9n+4}\)">\(k^{9n+4}\)</span> covers them with strict margins. One can choose, for example, <span class="math" data-tex="\(C=2Dk^{9n+4}\)">\(C=2Dk^{9n+4}\)</span> after fixing an enlarged <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>Since <span class="math" data-tex="\(T\ge1\)">\(T\ge1\)</span>, the normalized proposition has a constant bounded by
+<span class="math math-display" data-tex="\[
+C\le K_1(n,d,M)T^{16n(9n+4)}. \tag{5.40}
+\]">\[
+C\le K_1(n,d,M)T^{16n(9n+4)}. \tag{5.40}
+\]</span>
+This gives a power of <span class="math" data-tex="\(\log A\)">\(\log A\)</span>, with exponent depending only on <span class="math" data-tex="\(n\)">\(n\)</span>. The padding in (5.1) is what absorbed the quantities <span class="math" data-tex="\(kT\)">\(kT\)</span> into <span class="math" data-tex="\(hk\)">\(hk\)</span>, while keeping <span class="math" data-tex="\(J_*\)">\(J_*\)</span> independent of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Proposition 5.1 is now proved. The induction in Section 2 therefore completes Theorem 4.1, with no independence hypothesis on the original logarithms.</p>
+<h2 id="10-consequences-and-later-refinements">10. Consequences and later refinements</h2>
+<p>Fix a nonzero logarithm <span class="math" data-tex="\(\ell\)">\(\ell\)</span> of an algebraic <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Taking coefficients <span class="math" data-tex="\(-\beta,1\)">\(-\beta,1\)</span> gives
+<span class="math math-display" data-tex="\[
+|\ell-\beta|&gt;B^{-C} \tag{5.45}
+\]">\[
+|\ell-\beta|&gt;B^{-C} \tag{5.45}
+\]</span>
+for algebraic <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of bounded degree and naive height at most <span class="math" data-tex="\(B\)">\(B\)</span>. The form is nonzero by the qualitative theorem. This is an effective transcendence measure: it bounds how closely algebraic numbers of a prescribed complexity can approximate <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p>For <span class="math" data-tex="\(\ell=\log2\)">\(\ell=\log2\)</span> and a rational approximation <span class="math" data-tex="\(p/q\)">\(p/q\)</span>, <span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span>, the useful case is <span class="math" data-tex="\(|\log2-p/q|\le1\)">\(|\log2-p/q|\le1\)</span>. Then <span class="math" data-tex="\(|p|\le2q\)">\(|p|\le2q\)</span>, so the reduced rational has height at most <span class="math" data-tex="\(2q\)">\(2q\)</span>, and
+<span class="math math-display" data-tex="\[
+|\log2-p/q|&gt;(2q)^{-C}. \tag{5.46}
+\]">\[
+|\log2-p/q|&gt;(2q)^{-C}. \tag{5.46}
+\]</span>
+The case outside that interval already has a lower bound of <span class="math" data-tex="\(1\)">\(1\)</span>. To approximate <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, take the base <span class="math" data-tex="\(-1\)">\(-1\)</span>, its logarithm <span class="math" data-tex="\(i\pi\)">\(i\pi\)</span>, and the coefficient <span class="math" data-tex="\(i\)">\(i\)</span>. Then <span class="math" data-tex="\(\beta+i(i\pi)=\beta-\pi\)">\(\beta+i(i\pi)=\beta-\pi\)</span>. Enlarge the fixed degree bound to at least <span class="math" data-tex="\(2\)">\(2\)</span> to include <span class="math" data-tex="\(i\)">\(i\)</span>; (5.45) gives the corresponding measure for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>There is also a multiplicative consequence. Fix positive rational numbers <span class="math" data-tex="\(a_1,\ldots,a_n\)">\(a_1,\ldots,a_n\)</span>, and put
+<span class="math math-display" data-tex="\[
+B=\max(3,|b_1|,\ldots,|b_n|),\quad
+P=a_1^{b_1}\cdots a_n^{b_n},\quad \Delta=P-1.
+\]">\[
+B=\max(3,|b_1|,\ldots,|b_n|),\quad
+P=a_1^{b_1}\cdots a_n^{b_n},\quad \Delta=P-1.
+\]</span>
+If <span class="math" data-tex="\(P\ne1\)">\(P\ne1\)</span>, then <span class="math" data-tex="\(\Omega=\sum b_j\log a_j\ne0\)">\(\Omega=\sum b_j\log a_j\ne0\)</span>, because these logarithms are real. Theorem 4.1 gives <span class="math" data-tex="\(|\Omega|&gt;B^{-C}\)">\(|\Omega|&gt;B^{-C}\)</span>. When <span class="math" data-tex="\(|\Delta|\le1/2\)">\(|\Delta|\le1/2\)</span>, the local logarithm estimate of the first lesson gives <span class="math" data-tex="\(|\Omega|\le2|\Delta|\)">\(|\Omega|\le2|\Delta|\)</span>. Otherwise <span class="math" data-tex="\(|\Delta|&gt;1/2\)">\(|\Delta|&gt;1/2\)</span>. In both cases, after increasing <span class="math" data-tex="\(C\)">\(C\)</span>,
+<span class="math math-display" data-tex="\[
+|a_1^{b_1}\cdots a_n^{b_n}-1|&gt;B^{-C}. \tag{5.47}
+\]">\[
+|a_1^{b_1}\cdots a_n^{b_n}-1|&gt;B^{-C}. \tag{5.47}
+\]</span>
+This is the fixed-base polynomial shape historically associated with Feldman's refinement; see the historical discussion in [Waldschmidt 2000]. Its proof follows from the full effective theorem just established.</p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(\ell=\log2\)">\(\ell=\log2\)</span> and <span class="math" data-tex="\(\beta=p/q\)">\(\beta=p/q\)</span>, the theorem gives (5.46). Thus an effective exponent bounds every rational approximation to <span class="math" data-tex="\(\log2\)">\(\log2\)</span> in a fixed bounded interval. Clearing the denominator also gives
+<span class="math math-display" data-tex="\[
+|q\log2-p|&gt;2^{-C}q^{1-C}.
+\]">\[
+|q\log2-p|&gt;2^{-C}q^{1-C}.
+\]</span>
+The numerical size of <span class="math" data-tex="\(C\)">\(C\)</span> produced by this proof is enormous. It proves an effective principle; the later explicit two-logarithm and many-logarithm estimates are what make computational applications practical.</p>
+<p>Historically, the polynomial dependence on <span class="math" data-tex="\(B\)">\(B\)</span> was refined into individual-height estimates. For integer coefficients, write
+<span class="math" data-tex="\(\Omega=\prod_j\log A_j\)">\(\Omega=\prod_j\log A_j\)</span>, with <span class="math" data-tex="\(A_j\ge4\)">\(A_j\ge4\)</span>. One historical shape for a nonzero multiplicative form is
+[
+|\alpha_1^{b_1}\cdots\alpha_n^{b_n}-1|</p>
+<blockquote>
+<p>B^{-C(n,d)\Omega\log\Omega}.
+]
+The lesson <a href="TR-BAKER-08.html"><em>Linear forms in many logarithms: the modern estimates and how to use them</em></a> develops the individual-height product bounds with their hypotheses and proofs. The restriction <span class="math" data-tex="\(A_j\ge4\)">\(A_j\ge4\)</span> makes <span class="math" data-tex="\(\Omega&gt;1\)">\(\Omega&gt;1\)</span>, so the displayed exponent has the correct sign. Normalized modern statements usually replace these quantities by maxima including a fixed positive floor.</p>
+</blockquote>
+<p>The bounds of Baker–Wüstholz and Matveev improve the individual-height dependence and the constants, especially their dependence on the number of logarithms. Those improvements require additional arguments; the proof just completed supplies Theorem 4.1 without silently importing them.</p>
+<h2 id="11-exercises">11. Exercises</h2>
+<ol>
+<li><strong>Medium.</strong> Starting with a nontrivial bounded relation <span class="math" data-tex="\(\sum b&#x27;_j\ell_j=0\)">\(\sum b&#x27;_j\ell_j=0\)</span>, carry out the elimination in (5.42). Prove the new coefficient degree and height bounds, and derive the exponent <span class="math" data-tex="\(E\)">\(E\)</span> in (5.44).</li>
+<li><strong>Medium.</strong> Verify every exponent in the unknown-to-equation ratio (5.12). Explain why dependent formal spanning products cause no problem for the integer Siegel lemma.</li>
+<li><strong>Medium.</strong> Let <span class="math" data-tex="\(\beta\ne0\)">\(\beta\ne0\)</span> be a fixed algebraic number. For every fixed degree bound <span class="math" data-tex="\(d\)">\(d\)</span>, deduce an effective measure
+<span class="math math-display" data-tex="\[
+|e^\beta-\gamma|&gt;\exp\{-K_{\beta,d}(\log(2H))^{\kappa(1)}\}
+\]">\[
+|e^\beta-\gamma|&gt;\exp\{-K_{\beta,d}(\log(2H))^{\kappa(1)}\}
+\]</span>
+for algebraic <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> of degree at most <span class="math" data-tex="\(d\)">\(d\)</span> and naive height at most <span class="math" data-tex="\(H\ge2\)">\(H\ge2\)</span>, after increasing the constant. Choose and control the logarithm branch of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>.</li>
+<li><strong>Hard.</strong> Track the constants to prove a bound <span class="math" data-tex="\(C=C&#x27;(n,d)(\log A)^{\kappa(n)}\)">\(C=C&#x27;(n,d)(\log A)^{\kappa(n)}\)</span> on principal branches. Identify why the padding <span class="math" data-tex="\(h=h_0+\lceil\log(2A)\rceil\)">\(h=h_0+\lceil\log(2A)\rceil\)</span> keeps the number of extrapolation stages independent of <span class="math" data-tex="\(A\)">\(A\)</span>, and check that induction preserves a power of <span class="math" data-tex="\(\log A\)">\(\log A\)</span>.</li>
+</ol>
+<h2 id="12-solutions">12. Solutions</h2>
+<p><strong>Solution 1.</strong> Pick <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(b&#x27;_s\ne0\)">\(b&#x27;_s\ne0\)</span>. Subtracting <span class="math" data-tex="\(\beta_s\sum_jb&#x27;_j\ell_j=0\)">\(\beta_s\sum_jb&#x27;_j\ell_j=0\)</span> from <span class="math" data-tex="\(b&#x27;_s\Lambda\)">\(b&#x27;_s\Lambda\)</span> cancels its <span class="math" data-tex="\(\ell_s\)">\(\ell_s\)</span>-coefficient and gives (5.42). Each scaled coefficient <span class="math" data-tex="\(b&#x27;_j\beta_s\)">\(b&#x27;_j\beta_s\)</span> has the same degree as <span class="math" data-tex="\(\beta_s\)">\(\beta_s\)</span>, and its height is bounded by a fixed power of <span class="math" data-tex="\(BL\)">\(BL\)</span>, by Lemma 4.2 applied to the algebraic number and the integer. The difference of two such numbers has degree at most <span class="math" data-tex="\(d^2\)">\(d^2\)</span> and height at most another fixed power <span class="math" data-tex="\((BL)^{c_d}\)">\((BL)^{c_d}\)</span>; the constant coefficient satisfies the same bound. Since <span class="math" data-tex="\(\Gamma\ne0\)">\(\Gamma\ne0\)</span>, induction gives <span class="math" data-tex="\(|\Gamma|&gt;(BL)^{-c_dC_{\mathrm{ind}}}\)">\(|\Gamma|&gt;(BL)^{-c_dC_{\mathrm{ind}}}\)</span>. Divide by <span class="math" data-tex="\(|b&#x27;_s|\le L\)">\(|b&#x27;_s|\le L\)</span>, then use <span class="math" data-tex="\(L\le B^{\log L/\log2}\)">\(L\le B^{\log L/\log2}\)</span>. The exponent is exactly
+<span class="math math-display" data-tex="\[
+c_dC_{\mathrm{ind}}+(c_dC_{\mathrm{ind}}+1)\log L/\log2.
+\]">\[
+c_dC_{\mathrm{ind}}+(c_dC_{\mathrm{ind}}+1)\log L/\log2.
+\]</span>
+No independence assumption on the remaining logarithms is needed.</p>
+<p><strong>Solution 2.</strong> There are <span class="math" data-tex="\(h\)">\(h\)</span> choices for <span class="math" data-tex="\(\lambda_{-1}\)">\(\lambda_{-1}\)</span>, and <span class="math" data-tex="\(L+1\)">\(L+1\)</span> choices for each of <span class="math" data-tex="\(\lambda_0,\ldots,\lambda_n\)">\(\lambda_0,\ldots,\lambda_n\)</span>, so <span class="math" data-tex="\(N=h(L+1)^{n+1}\)">\(N=h(L+1)^{n+1}\)</span>. There are <span class="math" data-tex="\(h\)">\(h\)</span> interpolation points, at most <span class="math" data-tex="\((k+1)^n\)">\((k+1)^n\)</span> derivative multi-indices with total order at most <span class="math" data-tex="\(k\)">\(k\)</span>, and at most <span class="math" data-tex="\(d^{2n}\)">\(d^{2n}\)</span> formal spanning products. Hence <span class="math" data-tex="\(M_0\le d^{2n}h(k+1)^n\)">\(M_0\le d^{2n}h(k+1)^n\)</span>. Since <span class="math" data-tex="\(L+1&gt;k^{1-1/(4n)}\)">\(L+1&gt;k^{1-1/(4n)}\)</span> and <span class="math" data-tex="\(k+1\le2k\)">\(k+1\le2k\)</span>,
+<span class="math math-display" data-tex="\[
+\frac N{M_0}\ge\frac{k^{(n+1)(1-1/(4n))-n}}{2^nd^{2n}}
+=\frac{k^{(3n-1)/(4n)}}{2^nd^{2n}}.
+\]">\[
+\frac N{M_0}\ge\frac{k^{(n+1)(1-1/(4n))-n}}{2^nd^{2n}}
+=\frac{k^{(3n-1)/(4n)}}{2^nd^{2n}}.
+\]</span>
+The exponent is positive, including <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, where it is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Equating every formal spanning coefficient to zero gives a sufficient system even when those products are dependent. It may contain redundant equations, and the integer Siegel lemma does not require full row rank. The row count therefore remains valid.</p>
+<p><strong>Solution 3.</strong> The qualitative theorem proves that <span class="math" data-tex="\(w=e^\beta\)">\(w=e^\beta\)</span> is transcendental, since <span class="math" data-tex="\(\beta\ne0\)">\(\beta\ne0\)</span>. In particular it is nonzero and cannot equal <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. In the case <span class="math" data-tex="\(|\gamma-w|\le|w|/2\)">\(|\gamma-w|\le|w|/2\)</span>, put
+<span class="math math-display" data-tex="\[
+u=(\gamma-w)/w,\qquad \ell_\gamma=\beta+\operatorname{Log}(1+u).
+\]">\[
+u=(\gamma-w)/w,\qquad \ell_\gamma=\beta+\operatorname{Log}(1+u).
+\]</span>
+Then <span class="math" data-tex="\(e^{\ell_\gamma}=\gamma\)">\(e^{\ell_\gamma}=\gamma\)</span>, and
+<span class="math math-display" data-tex="\[
+|\ell_\gamma-\beta|\le2|u|
+=2|\gamma-w|/|w|.
+\]">\[
+|\ell_\gamma-\beta|\le2|u|
+=2|\gamma-w|/|w|.
+\]</span>
+The branch size is uniformly bounded by <span class="math" data-tex="\(|\beta|+1\)">\(|\beta|+1\)</span>. Apply Theorem 4.1 with one base <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, degree bound enlarged to include <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, base height bound <span class="math" data-tex="\(A=H\)">\(A=H\)</span>, and fixed coefficient-height bound <span class="math" data-tex="\(B_0=\max(2,H(\beta))\)">\(B_0=\max(2,H(\beta))\)</span>. The form <span class="math" data-tex="\(\ell_\gamma-\beta\)">\(\ell_\gamma-\beta\)</span> is nonzero, and the established height dependence gives
+<span class="math math-display" data-tex="\[
+|\ell_\gamma-\beta|&gt;\exp\{-K_{\beta,d}(\log(2H))^{\kappa(1)}\}.
+\]">\[
+|\ell_\gamma-\beta|&gt;\exp\{-K_{\beta,d}(\log(2H))^{\kappa(1)}\}.
+\]</span>
+Multiplication by <span class="math" data-tex="\(|w|/2\)">\(|w|/2\)</span> is absorbed by increasing <span class="math" data-tex="\(K_{\beta,d}\)">\(K_{\beta,d}\)</span>, since <span class="math" data-tex="\(\log(2H)\ge1\)">\(\log(2H)\ge1\)</span>. Outside the chosen disk, <span class="math" data-tex="\(|\gamma-w|&gt;|w|/2\)">\(|\gamma-w|&gt;|w|/2\)</span>, so the same bound follows after a further fixed increase. The case <span class="math" data-tex="\(\gamma=0\)">\(\gamma=0\)</span> belongs to this latter case. To control <span class="math" data-tex="\(M\)">\(M\)</span>, use the uniform bound <span class="math" data-tex="\(|\ell_\gamma|\le|\beta|+1\)">\(|\ell_\gamma|\le|\beta|+1\)</span>, rather than applying an estimate with an unbounded branch parameter.</p>
+<p><strong>Solution 4.</strong> Let <span class="math" data-tex="\(T=\log(2A)\)">\(T=\log(2A)\)</span>. Root and inverse-root bounds give principal logarithms of size at most <span class="math" data-tex="\(\log(dA)+\pi\)">\(\log(dA)+\pi\)</span>, so <span class="math" data-tex="\(M\)">\(M\)</span> is bounded in terms of <span class="math" data-tex="\(d\)">\(d\)</span>. The lower bound (5.3) also has a constant depending only on <span class="math" data-tex="\(d\)">\(d\)</span>. Taking <span class="math" data-tex="\(h\ge T\)">\(h\ge T\)</span> absorbs its derivative prefactor into <span class="math" data-tex="\(e^{Ghk}\)">\(e^{Ghk}\)</span>. Choosing <span class="math" data-tex="\(k=\lceil KT^{16n}\rceil\)">\(k=\lceil KT^{16n}\rceil\)</span> gives <span class="math" data-tex="\(LT\le k\)">\(LT\le k\)</span> and the uniformly small ratios
+<span class="math math-display" data-tex="\[
+Tk^{\varepsilon-a}\le K^{-a/2},\quad
+Tk^{-a}\le K^{-a},\quad Tk^{-2a}\le K^{-2a},
+\]">\[
+Tk^{\varepsilon-a}\le K^{-a/2},\quad
+Tk^{-a}\le K^{-a},\quad Tk^{-2a}\le K^{-2a},
+\]</span>
+using <span class="math" data-tex="\(T\ge1\)">\(T\ge1\)</span> and <span class="math" data-tex="\(\varepsilon&lt;a/2\)">\(\varepsilon&lt;a/2\)</span>. Thus the constants in Lemma 5.3 and the number <span class="math" data-tex="\(J_*\)">\(J_*\)</span> of stages are independent of <span class="math" data-tex="\(A\)">\(A\)</span>. All error estimates are covered by <span class="math" data-tex="\(C\le K_1k^{9n+4}\)">\(C\le K_1k^{9n+4}\)</span>, so the normalized exponent is at most <span class="math" data-tex="\(16n(9n+4)\)">\(16n(9n+4)\)</span>.</p>
+<p>In the full induction, normalization changes <span class="math" data-tex="\(B\)">\(B\)</span> to <span class="math" data-tex="\(B^{c_d}\)">\(B^{c_d}\)</span>. Elimination changes it to <span class="math" data-tex="\((BL)^{c_d}\)">\((BL)^{c_d}\)</span>, costing the factor <span class="math" data-tex="\(1+\log L\le K_2T\)">\(1+\log L\le K_2T\)</span>. Hence the induction exponent increases by at most one. The choice <span class="math" data-tex="\(\kappa(n)=200(n+1)^2\)">\(\kappa(n)=200(n+1)^2\)</span> exceeds the normalized exponent and the preceding induction exponent plus one. Finally <span class="math" data-tex="\(T\le2\log A\)">\(T\le2\log A\)</span> converts the result to <span class="math" data-tex="\(C&#x27;(n,d)(\log A)^{\kappa(n)}\)">\(C&#x27;(n,d)(\log A)^{\kappa(n)}\)</span>. Arbitrary fixed branches give <span class="math" data-tex="\(C&#x27;(n,d,M)\)">\(C&#x27;(n,d,M)\)</span>; a uniform leading constant over all branches is excluded by the preceding lesson's Pell construction.</p>
+<h2 id="prerequisites-and-continuation">Prerequisites and continuation</h2>
+<p>This lesson completes the effective theorem stated in the preceding lesson. It supplies all its own bridges: the varying-field coefficient construction, the growth and arithmetic alternatives, approximate interpolation, the rational-grid denominator and degree bounds, polynomial collection, the period check, induction and height dependence. The small integer solution is proved by the pigeonhole argument in the construction; the norm bound follows from the minimal polynomial of an algebraic integer. The next two-logarithm lessons replace this broad effective argument by interpolation determinants with explicit constants.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Michel Waldschmidt, <em>Diophantine Approximation on Linear Algebraic Groups</em>, Grundlehren der mathematischen Wissenschaften 326, Springer, 2000. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/dalag.pdf">Author's full text</a>. Effective linear-independence measures, Matveev's degree-indexed polynomials and Baker's auxiliary-function method.</li>
+<li>Michel Waldschmidt, <em>Linear Independence Measures for Logarithms of Algebraic Numbers</em>, Lecture Notes in Mathematics 1819, Springer, 2003. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/SpringerLN1819-2003.pdf">Author's text</a>. Quantitative extrapolation and the determinant approach.</li>
+</ul>
+<h2 id="editable-sources"><span id="editable-source"></span>Editable source</h2>
+<p><a href="src/TR-BAKER-05.md">Markdown source</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-04.html">← Effective lower bounds I: Baker&#x27;s theorem and its arithmetic tools</a><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-BAKER-06.html">Two logarithms I: interpolation determinants →</a></span></nav>
+<p class="small source-link"><a href="sources/TR-BAKER-05.tex" download>Editable LaTeX source of this lesson</a> · <a href="src/TR-BAKER-05.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

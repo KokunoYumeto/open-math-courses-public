@@ -1,0 +1,299 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cyclic finite models for outer conjugacy · Open Mathematics Courses</title><meta name="description" content="Cyclic finite models for outer conjugacy: lesson draft with 5 solved exercises."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><aside class="draft-notice" aria-label="Prerequisite scope"><p>The general-factor close-projection lemma, finite-partition repair and Borel normalization are proved here, including infinite projections. The implementer and matrix tensor-absorption lessons are included. Full transitive programme proof review remains unfinished.</p></aside><article class="lesson"><h1 id="cyclic-finite-models-for-outer-conjugacy">Cyclic finite models for outer conjugacy</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Spot-checked by GPT-6 Astra (OpenAI) in a separate session. Original text is public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>To compare two automorphisms, we first arrange that each acts on a finite matrix algebra by the same cyclic shift. Approximate innerness gives a unitary that nearly implements the action; a tower gives an exact cycle of projections. Two repairs reconcile those pieces: a small unitary makes the implementer cycle the projections exactly, and a Borel root removes its residual full-period unitary.</p>
+<p>The second repair has a subtlety. The chosen root is discontinuous at a spectral cut. Almost invariance of a unitary under an automorphism does not, by itself, justify applying that discontinuous function. We first rotate the scalar phase so that the spectral measure near the cut is uniformly small, then prove the required continuity estimate.</p>
+<p>The finite-model construction follows [Connes], Lemmas 3.1.2–3.1.4; the iteration estimates also use Lemmas 3.2.2, 3.2.3 and 3.2.6. [Connes periodic] provides later classification context. The local treatment writes out the general close-projection completion, uses a Fubini–Markov choice of spectral cut, and retains five worked exercises. Prerequisites are <a href="almost-invariant-inner-implementers.html">Almost invariant inner implementers</a> and <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix eigenvectors and tensor absorption</a>, including the stated strong stability and exact lifting results. Throughout, <span class="math">\(M\)</span> is a strongly stable factor with separable predual, <span class="math">\(\theta\)</span> is approximately inner with <span class="math">\(p_a(\theta)=0\)</span>, and <span class="math">\(\varphi\)</span> is a faithful normal state. We write <span class="math">\(\|x\|_\varphi^\sharp=(\varphi(x^*x)+\varphi(xx^*))^{1/2}\)</span>.</p>
+<h2 id="1-repairing-an-approximately-cyclic-implementer">1. Repairing an approximately cyclic implementer</h2>
+<p><strong>Lemma 1.0 (close equivalent projections in a general factor).</strong> Let <span class="math">\(P\)</span> be a factor with separable predual, and let <span class="math">\(p_k,q_k\in P\)</span> be projections such that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}p_k\sim q_k,\\ p_k-q_k\longrightarrow0\quad\text{strongly-star}.\end{gathered}
+\]</div></div>
+<p>There are partial isometries <span class="math">\(v_k\in P\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}v_k^*v_k=p_k,\qquad v_kv_k^*=q_k,\\v_k-q_k\longrightarrow0\quad\text{strongly-star}.\end{gathered}
+\]</div><span class="equation-tag">(PC1)</span></div>
+<p>Neither projection sequence is assumed centralizing. The factor may be finite, semifinite infinite, or type III.</p>
+<p><em>Proof.</em> Fix a faithful normal state <span class="math">\(\rho\)</span> on <span class="math">\(P\)</span>, and write
+<span class="math">\(\|x\|_\rho^\sharp{}^2=\rho(x^*x)+\rho(xx^*)\)</span>.
+On bounded sets this seminorm detects strong* convergence. Indeed, in the faithful state GNS representation the state vector <span class="math">\(\Omega\)</span> is separating and <span class="math">\(P&#39;\Omega\)</span> is dense. If a bounded sequence and its adjoint tend to zero on <span class="math">\(\Omega\)</span>, commuting with each fixed operator in <span class="math">\(P&#39;\)</span> gives convergence on that dense set, hence on every vector.</p>
+<p>We use the projection comparison, splitting and finite-sum facts proved in <a href="finite-free-actions-and-coboundaries.html">Finite free actions and unitary coboundaries</a>, Section 2, NP1–NP6 and the full-corner-center argument, and Section 9, (K1). In a factor every infinite projection is properly infinite, and in a countably decomposable factor any two infinite projections are equivalent. The first assertion follows from the finite/properly infinite central decomposition in the projection corner, whose center is scalar; the second follows from (K1). These assertions concern infinite projections, not all nonzero projections of an infinite factor.</p>
+<p>For the first estimates fix <span class="math">\(k\)</span> and suppress the index. Set</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}D=(p-q)^2,\qquad x=qp,\\h=x^*x=pqp.\end{gathered}
+\]</div></div>
+<p>The positive operator <span class="math">\(D=p+q-pq-qp\)</span> commutes with both <span class="math">\(p\)</span> and <span class="math">\(q\)</span>. Therefore</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}p-h&amp;=pD\le D,\\q-xx^*&amp;=qD\le D,\\(x-q)^*(x-q)&amp;=(1-p)D\le D,\\(x-q)(x-q)^*&amp;=qD\le D.\end{aligned}
+\]</div><span class="equation-tag">(PC2)</span></div>
+<p>For example, <span class="math">\((1-p)D=(1-p)q(1-p)\)</span>. These positive-operator inequalities control both seminorms even though <span class="math">\(p\)</span> and <span class="math">\(q\)</span> vary with <span class="math">\(k\)</span>.</p>
+<p>Write <span class="math">\(x=w^0h^{1/2}\)</span> for its polar decomposition and put</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}a=\mathbf1_{[1/2,1]}(h),\\w=w^0a,\qquad c=ww^*.\end{gathered}
+\]</div></div>
+<p>Thus <span class="math">\(w^*w=a\le p\)</span>, <span class="math">\(c\le q\)</span>, and
+<span class="math">\(c=\mathbf1_{[1/2,1]}(xx^*)\)</span>. Spectral calculus in the respective corners gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}p-a&amp;\le2(p-h),\\q-c&amp;\le2(q-xx^*),\\(w-x)^*(w-x)&amp;\le2(p-h),\\(w-x)(w-x)^*&amp;\le2(q-xx^*).\end{aligned}
+\]</div><span class="equation-tag">(PC3)</span></div>
+<p>For the first line, use
+<span class="math">\(1-\mathbf1_{[1/2,1]}(t)\le2(1-t)\)</span> for <span class="math">\(0\le t\le1\)</span>.
+For the second, use
+<span class="math">\((\mathbf1_{[1/2,1]}(t)-\sqrt t)^2\le2(1-t)\)</span>.
+These inequalities include <span class="math">\(t=0,1/2,1\)</span>; on the kernel of the polar part the squared error is zero. Applying <span class="math">\(\rho\)</span> to (PC2)–(PC3), and restoring indices, shows that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}x_k-q_k,\quad w_k-x_k,\\p_k-a_k,\quad q_k-c_k\\\longrightarrow0\quad\text{strongly-star}.\end{gathered}
+\]</div><span class="equation-tag">(PC4)</span></div>
+<p>We next arrange that the two residual projections are equivalent. This is a coordinatewise construction, so the following cases may vary with <span class="math">\(k\)</span>.</p>
+<p>If <span class="math">\(a_k\)</span> is finite and <span class="math">\(p_k,q_k\)</span> are finite, factor comparison compares <span class="math">\(p_k-a_k\)</span> and <span class="math">\(q_k-c_k\)</span>. Suppose first that a partial isometry <span class="math">\(s\)</span> embeds the former into the latter. Then <span class="math">\(w_k+s\)</span> has initial projection <span class="math">\(p_k\)</span> and final projection <span class="math">\(c_k+ss^*\le q_k\)</span>. Because <span class="math">\(p_k\sim q_k\)</span> and <span class="math">\(q_k\)</span> is finite, this final projection must be <span class="math">\(q_k\)</span>. Thus <span class="math">\(p_k-a_k\sim q_k-c_k\)</span>. If comparison has the reverse orientation, apply the same argument with initial and final projections interchanged. This proves the finite cancellation used here.</p>
+<p>If <span class="math">\(a_k\)</span> is finite and <span class="math">\(p_k,q_k\)</span> are infinite, both residuals are infinite. Otherwise one of these endpoints would be a sum of two finite orthogonal projections, hence finite by NP6. The residuals are therefore equivalent by (K1). In both finite-<span class="math">\(a_k\)</span> cases set <span class="math">\(r_k=0\)</span>.</p>
+<p>If <span class="math">\(a_k\)</span> is infinite, split it into countably many orthogonal infinite projections <span class="math">\((a_{k,m})_{m\ge1}\)</span> as in NP5. The final projections <span class="math">\(w_ka_{k,m}w_k^*\)</span> are also orthogonal, and normality gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}\sum_{m\ge1}\bigl[\rho(a_{k,m})+\rho(w_ka_{k,m}w_k^*)\bigr]\\\le\rho(a_k)+\rho(c_k)\le2.\end{gathered}
+\]</div></div>
+<p>Choose one summand <span class="math">\(r_k=a_{k,m(k)}\)</span> for which</p>
+<div class="equation"><div class="math math-display">\[
+\rho(r_k)+\rho(w_kr_kw_k^*)&lt;k^{-2}.
+
+\]</div><span class="equation-tag">(PC5)</span></div>
+<p>Both <span class="math">\(r_k\)</span> and <span class="math">\(a_k-r_k\)</span> are infinite, since the latter contains another infinite summand. Define in all cases</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}a_k&#39;=a_k-r_k,\\w_k&#39;=w_k(a_k-r_k),\\c_k&#39;=c_k-w_kr_kw_k^*.\end{gathered}
+\]</div></div>
+<p>Then <span class="math">\(w_k&#39;^*w_k&#39;=a_k&#39;\)</span> and <span class="math">\(w_k&#39;w_k&#39;^*=c_k&#39;\)</span>. In the infinite-<span class="math">\(a_k\)</span> case, <span class="math">\(p_k-a_k&#39;\)</span> contains <span class="math">\(r_k\)</span>, while <span class="math">\(q_k-c_k&#39;\)</span> contains the equivalent infinite projection <span class="math">\(w_kr_kw_k^*\)</span>. They are infinite and thus equivalent. In the finite-<span class="math">\(a_k\)</span> cases their equivalence was already proved.</p>
+<p>Choose a partial isometry <span class="math">\(s_k\)</span> with initial projection <span class="math">\(p_k-a_k&#39;\)</span> and final projection <span class="math">\(q_k-c_k&#39;\)</span>. The initial projections of <span class="math">\(w_k&#39;\)</span> and <span class="math">\(s_k\)</span> are orthogonal, as are their final projections. Consequently</p>
+<div class="equation"><div class="math math-display">\[
+v_k=w_k&#39;+s_k
+\]</div></div>
+<p>has exactly the two endpoints in (PC1).</p>
+<p>To check closeness on both sides, put <span class="math">\(\delta_k=\rho((p_k-q_k)^2)\to0\)</span>. Equations (PC2)–(PC5) give</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}\|x_k-q_k\|_\rho^\sharp{}^2&amp;\le2\delta_k,\\\|w_k-x_k\|_\rho^\sharp{}^2&amp;\le4\delta_k,\\\|w_k&#39;-w_k\|_\rho^\sharp{}^2&amp;=\rho(r_k)+\rho(w_kr_kw_k^*)\\&amp;\le k^{-2},\\\|s_k\|_\rho^\sharp{}^2&amp;=\rho(p_k-a_k&#39;)+\rho(q_k-c_k&#39;)\\&amp;\le4\delta_k+k^{-2}.\end{aligned}
+\]</div><span class="equation-tag">(PC6)</span></div>
+<p>In the finite cases the third expression is zero. The triangle inequality now gives, for all <span class="math">\(k\ge1\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\|v_k-q_k\|_\rho^\sharp
+\le(4+\sqrt2)\sqrt{\delta_k}+2/k\longrightarrow0.
+\]</div></div>
+<p>The sequence is bounded, so the faithful-state criterion proves (PC1). If <span class="math">\(p_k=q_k=0\)</span>, the construction is interpreted as <span class="math">\(v_k=0\)</span>. <span class="math">\(\square\)</span></p>
+<p><strong>Corollary 1.0.1 (matching finite partitions).</strong> Let <span class="math">\(m\ge1\)</span> be fixed, and for every <span class="math">\(k\)</span> let <span class="math">\((p_{j,k})_{j=1}^m\)</span> and <span class="math">\((q_{j,k})_{j=1}^m\)</span> be orthogonal projection partitions of <span class="math">\(1\)</span> in a separable-predual factor. Suppose, for each <span class="math">\(j\)</span>, that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}p_{j,k}\sim q_{j,k}\quad\text{for every }k,\\p_{j,k}-q_{j,k}\longrightarrow0\quad\text{strongly-star}.\end{gathered}
+\]</div></div>
+<p>There are unitaries <span class="math">\(b_k\to1\)</span> strongly-star with
+<span class="math">\(b_kp_{j,k}b_k^*=q_{j,k}\)</span> for all <span class="math">\(j,k\)</span>.</p>
+<p><em>Proof.</em> Apply Lemma 1.0 separately to each fixed <span class="math">\(j\)</span>, obtaining <span class="math">\(v_{j,k}\)</span>, and set <span class="math">\(b_k=\sum_{j=1}^m v_{j,k}\)</span>. Since <span class="math">\(v_{j,k}=q_{j,k}v_{j,k}p_{j,k}\)</span>, orthogonality gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}v_{i,k}^*v_{j,k}=v_{i,k}v_{j,k}^*=0\quad(i\ne j),\\b_k^*b_k=b_kb_k^*=1.\end{gathered}
+\]</div></div>
+<p>Moreover <span class="math">\(b_kp_{j,k}=v_{j,k}\)</span>, so its conjugation sends <span class="math">\(p_{j,k}\)</span> to <span class="math">\(q_{j,k}\)</span>. Finally
+<span class="math">\(b_k-1=\sum_{j=1}^m(v_{j,k}-q_{j,k})\to0\)</span> strongly-star, because the sum has fixed finite length. Zero partition cells cause no exception: equivalence then makes both corresponding cells zero. <span class="math">\(\square\)</span></p>
+<p>The general close-projection comparison is due to [Connes], Lemma 1.1.4, printed pp. 388–389. The proof above writes out the factor case needed here, with both state seminorms and the small infinite residual retained. Its cutoff and completion also appear in <span class="unlinked">Central sequence algebras and exact lifts, Theorem 5.1</span>. That theorem concerns centralizing sequences; (PC2)–(PC6) prove the present statement without that additional hypothesis.</p>
+<p><strong>Proposition 1.1 (a common cycle for the automorphism and implementer).</strong> Fix <span class="math">\(n\geq1\)</span>, a finite family <span class="math">\(\psi_1,\ldots,\psi_q\in M_*\)</span>, an integer <span class="math">\(k\geq1\)</span>, and <span class="math">\(\varepsilon&gt;0\)</span>. There are equivalent projection partitions <span class="math">\(F_0,\ldots,F_{n-1}\)</span>, unitaries <span class="math">\(w,u\)</span>, and <span class="math">\(\theta&#39;=\operatorname{Ad}w\circ\theta\)</span>, such that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;\|[F_j,\psi_l]\|&lt;\varepsilon,\\
+&amp;\theta&#39;(F_j)=uF_ju^*=F_{j+1},\\
+&amp;\|\psi_l\circ\theta^{-1}-\psi_l\circ\operatorname{Ad}(u^*)\|&lt;\varepsilon,\\
+&amp;\|\varphi\circ\theta&#39;-\varphi\circ\operatorname{Ad}u\|&lt;\varepsilon,\\
+&amp;\|\theta&#39;(u^r)-u^r\|_\varphi^\sharp&lt;\varepsilon\quad(|r|\leq k),\\
+&amp;\|w-1\|_\varphi^\sharp&lt;\varepsilon.
+\end{aligned}
+
+\]</div><span class="equation-tag">(1.1)</span></div>
+<p>Indices on the partition are read modulo <span class="math">\(n\)</span>. The power-invariance and forward-predual tolerances can be made arbitrarily small while retaining the same <span class="math">\(w\)</span> and partition.</p>
+<p><em>Proof.</em> If <span class="math">\(n=1\)</span>, take <span class="math">\(F_0=1\)</span>, <span class="math">\(w=1\)</span>, and use the almost invariant implementer theorem directly. Suppose <span class="math">\(n\geq2\)</span>. Choose <span class="math">\(w\)</span> as small as needed that <span class="math">\(\theta&#39;=\operatorname{Ad}w\circ\theta\)</span> differs from <span class="math">\(\theta\)</span> by less than <span class="math">\(\varepsilon/2\)</span> on the listed inverse-predual tests. Continuity of unitary conjugation permits this. Corollary 6.2 of the absorption lesson gives a tensor decomposition in which <span class="math">\(\theta&#39;=\sigma_0\otimes\beta\)</span>, with <span class="math">\(w\)</span> inside that chosen neighborhood.</p>
+<p>The model <span class="math">\(\sigma_0\)</span> has infinitely many coordinates of size <span class="math">\(n\)</span>, each acting by the clock diagonal <span class="math">\(c_n\)</span>. In such a coordinate take the projections onto a Fourier basis <span class="math">\(\xi_j\)</span> with <span class="math">\(c_n\xi_j=\xi_{j+1}\)</span>. They are equivalent rank-one projections, sum to <span class="math">\(1\)</span>, and rotate exactly under the model. Far enough along the size-<span class="math">\(n\)</span> coordinates, their embeddings in <span class="math">\(M\)</span> commute with the listed normal functionals within <span class="math">\(\varepsilon\)</span>. This follows first for product functionals and finite-coordinate functionals on the tracial factor, then for all normal functionals by norm density. Fix one such partition <span class="math">\((F_j)\)</span>.</p>
+<p>Inner perturbation preserves approximate innerness and asymptotic period. The almost invariant implementer theorem therefore gives unitaries <span class="math">\(a_s\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}\operatorname{Ad}a_s\to\theta&#39;,\\\theta&#39;(a_s^r)-a_s^r\to0\quad\text{strongly-star}\\\text{for every fixed }r.\end{gathered}
+\]</div><span class="equation-tag">(1.2)</span></div>
+<p>In particular <span class="math">\(a_sF_ja_s^*-F_{j+1}\to0\)</span> strongly-star. The two partitions have equivalent corresponding projections. Corollary 1.0.1 gives <span class="math">\(b_s\to1\)</span> strongly-star for which</p>
+<div class="equation"><div class="math math-display">\[
+b_sa_sF_ja_s^*b_s^*=F_{j+1}.
+\]</div></div>
+<p>Put <span class="math">\(u_s=b_sa_s\)</span>. Its conjugations still tend to <span class="math">\(\theta&#39;\)</span> in the <span class="math">\(u\)</span>-topology. The moving-multiplier lemma from the implementer lesson, applied to <span class="math">\(b_s-1\)</span>, gives <span class="math">\(u_s-a_s\to0\)</span> strongly-star. Telescoping a fixed power, with the same predual transport control, gives <span class="math">\(u_s^r-a_s^r\to0\)</span> strongly-star for every fixed integer <span class="math">\(r\)</span>. Normality of <span class="math">\(\theta&#39;\)</span> and (1.2) yield</p>
+<div class="equation"><div class="math math-display">\[
+\theta&#39;(u_s^r)-u_s^r\to0\text{ strongly-star}.
+
+\]</div><span class="equation-tag">(1.3)</span></div>
+<p>The inverse-predual tests tend to those of <span class="math">\(\theta&#39;\)</span>, which were chosen within <span class="math">\(\varepsilon/2\)</span> of <span class="math">\(\theta\)</span>; the forward test tends to zero. Choose a sufficiently large <span class="math">\(s\)</span> to satisfy every test in (1.1). Equations (1.2)–(1.3) also prove the last assertion: keep <span class="math">\(w,F_j\)</span> fixed and continue along <span class="math">\((u_s)\)</span>. <span class="math">\(\square\)</span></p>
+<h2 id="2-choosing-a-spectral-cut-with-small-measure">2. Choosing a spectral cut with small measure</h2>
+<p>Parametrize <span class="math">\(\mathbb T\)</span> by angles modulo <span class="math">\(2\pi\)</span>. For <span class="math">\(q\geq3\)</span>, let <span class="math">\(J(z,q)\)</span> be the closed arc centered at <span class="math">\(z\)</span> with angular radius <span class="math">\(2\pi4^{-q}\)</span>. If <span class="math">\(\mu\)</span> is a probability measure on the circle, put</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}A(\mu)=\{z\in\mathbb T:{}&amp;\mu(J(z,q))\leq2^{-q}\\&amp;\text{for every }q\geq3\}.\end{aligned}
+\]</div><span class="equation-tag">(2.1)</span></div>
+<p><strong>Lemma 2.1 (a good cut exists).</strong> The set <span class="math">\(A(\mu)\)</span> has normalized Haar measure at least <span class="math">\(1/2\)</span>. In particular it is nonempty, for every probability measure <span class="math">\(\mu\)</span>, including purely atomic ones.</p>
+<p><em>Proof.</em> The Haar measure of each arc is <span class="math">\(2\cdot4^{-q}\)</span>. Fubini's theorem gives</p>
+<div class="equation"><div class="math math-display">\[
+\int_{\mathbb T}\mu(J(z,q))\,dm(z)=2\cdot4^{-q}.
+\]</div></div>
+<p>Markov's inequality bounds the measure of the set where <span class="math">\(\mu(J(z,q))&gt;2^{-q}\)</span> by <span class="math">\(2^{1-q}\)</span>. The union of these bad sets has measure at most</p>
+<div class="equation"><div class="math math-display">\[
+\sum_{q=3}^\infty2^{1-q}=1/2.
+\]</div></div>
+<p>Its complement is (2.1). <span class="math">\(\square\)</span></p>
+<p>For a unitary <span class="math">\(t\)</span>, let <span class="math">\(\mu_{\varphi,t}(B)=\varphi(1_B(t))\)</span>. If <span class="math">\(z\in A(\mu_{\varphi,t})\)</span> and a scalar <span class="math">\(\rho\)</span> satisfies <span class="math">\(\rho z=-1\)</span>, then <span class="math">\(-1\in A(\mu_{\varphi,\rho t})\)</span>. With <span class="math">\(t=u^n\)</span>, choose an <span class="math">\(n\)</span>-th root <span class="math">\(\lambda\)</span> of <span class="math">\(\rho\)</span> and replace <span class="math">\(u\)</span> by <span class="math">\(\lambda u\)</span>. This phase change preserves its inner automorphism and every projection-cycle relation, and gives</p>
+<div class="equation"><div class="math math-display">\[
+\varphi(1_{J(-1,q)}(u^n))\leq2^{-q}\quad(q\geq3).
+
+\]</div><span class="equation-tag">(2.2)</span></div>
+<p>It also leaves the magnitudes of all power-invariance errors unchanged.</p>
+<h2 id="3-a-discontinuous-root-under-control">3. A discontinuous root under control</h2>
+<p>Define the principal Borel <span class="math">\(n\)</span>-th root by</p>
+<div class="equation"><div class="math math-display">\[
+f_n(e^{it})=e^{it/n},\qquad -\pi&lt;t\leq\pi.
+
+\]</div><span class="equation-tag">(3.1)</span></div>
+<p>Its discontinuity is at <span class="math">\(-1\)</span>. Given a unitary <span class="math">\(u\)</span>, set</p>
+<div class="equation"><div class="math math-display">\[
+U=u f_n(u^n)^*.
+
+\]</div><span class="equation-tag">(3.2)</span></div>
+<p>All factors in (3.2) commute. Since <span class="math">\(f_n(z)^n=z\)</span>, we have <span class="math">\(U^n=1\)</span>.</p>
+<p><strong>Lemma 3.1 (Borel normalization of almost invariant unitaries).</strong> Let <span class="math">\(\alpha\in\operatorname{Aut}M\)</span>. Suppose unitaries <span class="math">\(u_s\)</span> satisfy</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}\operatorname{Ad}u_s\to\alpha,\\\alpha(u_s^r)-u_s^r\to0\quad\text{strongly-star}\\\text{for every fixed integer }r,\end{gathered}
+\]</div><span class="equation-tag">(3.3)</span></div>
+<p>and (2.2) holds uniformly in <span class="math">\(s\)</span>. With <span class="math">\(U_s=u_s f_n(u_s^n)^*\)</span>, we have</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}\alpha(U_s^r)-U_s^r\to0\quad\text{strongly-star}\\\text{for every fixed }r.\end{gathered}
+\]</div><span class="equation-tag">(3.4)</span></div>
+<p>Moreover, if a bounded <span class="math">\(d_s\to0\)</span> strongly-star, then <span class="math">\(d_sU_s^r\)</span> and <span class="math">\(U_s^rd_s\)</span> tend strongly-star to zero for every fixed <span class="math">\(r\)</span>.</p>
+<p><em>Proof.</em> For fixed <span class="math">\(r\)</span>, write <span class="math">\(h_r(z)=z^r\overline{f_n(z^n)}^{\,r}\)</span>; this is a bounded function of modulus <span class="math">\(1\)</span>, continuous off the preimage of the cut. For <span class="math">\(q\geq3\)</span>, extend its restriction outside the preimage of the interior of <span class="math">\(J(-1,q)\)</span> continuously across the omitted arcs, with modulus at most <span class="math">\(1\)</span>. Approximate that extension uniformly by a Laurent polynomial <span class="math">\(g\)</span>, with error <span class="math">\(t&gt;0\)</span>. Its norm is at most <span class="math">\(1+t\)</span>, and</p>
+<div class="equation"><div class="math math-display">\[
+\|h_r(u_s)-g(u_s)\|_\varphi^\sharp{}^2
+\leq2t^2+2(2+t)^2\,2^{-q}.
+
+\]</div><span class="equation-tag">(3.5)</span></div>
+<p>The bound follows by splitting the spectral integral into the good and omitted arcs, using (2.2).</p>
+<p>For the functional <span class="math">\(\varphi\circ\alpha\)</span>, a direct bound is also available. The norm convergence</p>
+<div class="equation"><div class="math math-display">\[
+\|\varphi\circ\alpha-\varphi\circ\operatorname{Ad}u_s\|\to0
+
+\]</div><span class="equation-tag">(3.6)</span></div>
+<p>and the fact that <span class="math">\(u_s\)</span> commutes with its own spectral projections show that the omitted projection has <span class="math">\((\varphi\circ\alpha)\)</span>-mass at most <span class="math">\(2^{-q}+o(1)\)</span>. Consequently the error in <span class="math">\(\alpha(h_r(u_s)-g(u_s))\)</span> has the same limiting bound as (3.5). By (3.3), <span class="math">\(\alpha(g(u_s))-g(u_s)\to0\)</span> strongly-star, since <span class="math">\(g\)</span> has only finitely many fixed powers. The triangle inequality, followed first by <span class="math">\(s\to\infty\)</span>, then by <span class="math">\(t\to0\)</span> and <span class="math">\(q\to\infty\)</span>, proves (3.4) in the faithful-state seminorm, and hence strongly-star on this bounded sequence.</p>
+<p>For the moving-multiplier assertion, each <span class="math">\(d_su_s^j\to0\)</span> strongly-star by the predual transport lemma and <span class="math">\(\operatorname{Ad}u_s\to\alpha\)</span>. Thus <span class="math">\(d_sg(u_s)\to0\)</span>. If <span class="math">\(\|d_s\|\leq C\)</span>, the remaining nonadjoint seminorm is bounded by</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}\|d_s(h_r(u_s)-g(u_s))\|_\varphi\\\leq C\|h_r(u_s)-g(u_s)\|_\varphi.\end{gathered}
+\]</div></div>
+<p>For the adjoint seminorm of <span class="math">\(d_sh_r(u_s)\)</span>, left multiplication by the unitary <span class="math">\(h_r(u_s)^*\)</span> gives the bound <span class="math">\(\|d_s^*\|_\varphi\to0\)</span> directly. Apply the same reasoning with <span class="math">\(d_s^*\)</span> and <span class="math">\(\overline{h_r}\)</span> to obtain the assertion for <span class="math">\(h_r(u_s)d_s\)</span>. Let <span class="math">\(t\to0\)</span> and <span class="math">\(q\to\infty\)</span> as above. <span class="math">\(\square\)</span></p>
+<p>In this proof the polynomial is chosen after the arc and tolerance, and before the sequence index. There is no assertion of uniform norm continuity of a discontinuous Borel function.</p>
+<h2 id="4-the-exact-cyclic-matrix-model">4. The exact cyclic matrix model</h2>
+<p>If <span class="math">\(uF_ju^*=F_{j+1}\)</span>, then <span class="math">\(u^n\)</span> commutes with every <span class="math">\(F_j\)</span>, as does <span class="math">\(f_n(u^n)\)</span>. Hence <span class="math">\(U\)</span> in (3.2) still rotates the partition. Define</p>
+<div class="equation"><div class="math math-display">\[
+e_{ij}=U^iF_0U^{-j}\qquad(0\leq i,j&lt;n).
+
+\]</div><span class="equation-tag">(4.1)</span></div>
+<p>Orthogonality of the partition gives <span class="math">\(e_{ij}e_{kl}=\delta_{jk}e_{il}\)</span>, <span class="math">\(e_{ij}^*=e_{ji}\)</span>, and <span class="math">\(e_{jj}=F_j\)</span>. Since <span class="math">\(U^n=1\)</span>, the cyclic shift</p>
+<div class="equation"><div class="math math-display">\[
+U=\sum_{j=0}^{n-1}e_{j+1,j}
+
+\]</div><span class="equation-tag">(4.2)</span></div>
+<p>belongs to the unital factor <span class="math">\(K\cong M_n(\mathbb C)\)</span> generated by these units.</p>
+<p><strong>Theorem 4.1 (a finite cyclic model with an exact action).</strong> Given <span class="math">\(n\geq1\)</span>, finitely many <span class="math">\(\psi_l\in M_*\)</span>, and <span class="math">\(\varepsilon&gt;0\)</span>, there are a partition <span class="math">\((F_j)\)</span> and unitaries <span class="math">\(u,v\)</span> such that:</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;\|[F_j,\psi_l]\|&lt;\varepsilon,\qquad uF_ju^*=F_{j+1},\\
+&amp;\|\psi_l\circ\theta^{-1}-\psi_l\circ\operatorname{Ad}(u^*)\|&lt;\varepsilon,\\
+&amp;\varphi(1_{J(-1,q)}(u^n))\leq2^{-q}\quad(q\geq3),\\
+&amp;\operatorname{Ad}v\circ\theta(x)=UxU^*\quad(x\in K),\\
+&amp;\|v-1\|_\varphi^\sharp&lt;\varepsilon,
+\end{aligned}
+
+\]</div><span class="equation-tag">(4.3)</span></div>
+<p>where <span class="math">\(U=u f_n(u^n)^*\)</span> and <span class="math">\(K=\{F_j,U:0\leq j&lt;n\}&#39;&#39;\cong M_n\)</span>.</p>
+<p><em>Proof.</em> For <span class="math">\(n=1\)</span>, take <span class="math">\(F_0=1\)</span>, choose an approximately inner implementer meeting the inverse-predual tests, and adjust its phase by Lemma 2.1. Then <span class="math">\(f_1(z)=z\)</span>, <span class="math">\(U=1\)</span>, <span class="math">\(K=\mathbb C1\)</span>, and <span class="math">\(v=1\)</span> meet all conclusions. Suppose <span class="math">\(n\geq2\)</span>. In the construction of Proposition 1.1, first choose <span class="math">\(w\)</span> inside a neighborhood so small that <span class="math">\(\|w-1\|_\varphi^\sharp&lt;\varepsilon/2\)</span>, the inverse-predual difference from <span class="math">\(\theta\)</span> is below <span class="math">\(\varepsilon/2\)</span>, and the extracted fixed partition meets its centrality tests. Retain <span class="math">\(\alpha=\operatorname{Ad}w\circ\theta\)</span>, this partition, and the full sequence <span class="math">\((u_s)\)</span> of repaired implementers. It satisfies (3.3). At each coordinate adjust a scalar phase using Lemma 2.1 to impose (2.2); neither (3.3) nor the partition cycles change.</p>
+<p>Normalize to <span class="math">\(U_s\)</span> by (3.2), and let <span class="math">\(e_{ij,s}\)</span> be (4.1). Lemma 3.1 yields <span class="math">\(\alpha(U_s^r)-U_s^r\to0\)</span> strongly-star for every fixed <span class="math">\(r\)</span>. Since <span class="math">\(\alpha(F_0)=F_1=U_sF_0U_s^*\)</span>, it follows that</p>
+<div class="equation"><div class="math math-display">\[
+\alpha(e_{ij,s})-U_se_{ij,s}U_s^*\to0\text{ strongly-star}.
+
+\]</div><span class="equation-tag">(4.4)</span></div>
+<p>For completeness, expand the difference using</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}\alpha(e_{ij,s})=\alpha(U_s^i)F_1\alpha(U_s^{-j}),\\U_se_{ij,s}U_s^*=U_s^iF_1U_s^{-j}.\end{gathered}
+\]</div></div>
+<p>The resulting null differences may be multiplied on the right by powers of <span class="math">\(U_s\)</span> by the last assertion of Lemma 3.1, and by the fixed <span class="math">\(F_1\)</span> by normal strong-star continuity. Products of two bounded strong-star-null sequences are also null. This justifies (4.4) despite the varying unitaries.</p>
+<p>Put <span class="math">\(t_{ij,s}=U_se_{ij,s}U_s^*\)</span>. The two systems <span class="math">\((t_{ij,s})\)</span> and <span class="math">\((\alpha(e_{ij,s}))\)</span> have the identical first diagonal <span class="math">\(F_1\)</span>. Hence</p>
+<div class="equation"><div class="math math-display">\[
+b_s=\sum_{j=0}^{n-1}t_{j0,s}\alpha(e_{0j,s})
+
+\]</div><span class="equation-tag">(4.5)</span></div>
+<p>is unitary and satisfies <span class="math">\(b_s\alpha(e_{ij,s})b_s^*=t_{ij,s}\)</span>, by matrix multiplication. Subtract</p>
+<div class="equation"><div class="math math-display">\[
+1=\sum_jt_{j0,s}t_{0j,s}
+\]</div></div>
+<p>from (4.5). Equation (4.4) and the moving-multiplier assertion of Lemma 3.1 show <span class="math">\(b_s-1\to0\)</span> strongly-star: every <span class="math">\(t_{j0,s}\)</span> is a fixed finite product of powers of <span class="math">\(U_s\)</span> and the fixed <span class="math">\(F_0\)</span>, so these products preserve the required null sequences on either side.</p>
+<p>Take <span class="math">\(v_s=b_sw\)</span>. Then <span class="math">\(\operatorname{Ad}v_s\circ\theta\)</span> agrees exactly with <span class="math">\(\operatorname{Ad}U_s\)</span> on the matrix algebra generated by <span class="math">\(e_{ij,s}\)</span>. Since <span class="math">\(w\)</span> is fixed and <span class="math">\(b_s\to1\)</span> strongly-star, <span class="math">\(\|v_s-w\|_\varphi^\sharp\to0\)</span>. Choose a large coordinate meeting the predual tolerances and <span class="math">\(\|v_s-w\|_\varphi^\sharp&lt;\varepsilon/2\)</span>. All conclusions of (4.3) follow. <span class="math">\(\square\)</span></p>
+<p>The approximate implementer in the predual test is <span class="math">\(u\)</span>. The normalized cyclic unitary <span class="math">\(U\)</span> describes the action on <span class="math">\(K\)</span>. The root factor <span class="math">\(f_n(u^n)\)</span> commutes with <span class="math">\(K\)</span>, so it can still carry an action on the complementary tensor factor. The theorem does not replace <span class="math">\(u\)</span> by <span class="math">\(U\)</span> in the predual approximation.</p>
+<h2 id="5-predual-controls-for-iteration">5. Predual controls for iteration</h2>
+<p>Three estimates let the finite construction be repeated inside successive matrix relative commutants.</p>
+<p><strong>Lemma 5.1 (centrality of a normalized cycle).</strong> Fix <span class="math">\(n\)</span> and <span class="math">\(\delta&gt;0\)</span>. There is <span class="math">\(\eta=\eta(n,\delta)&gt;0\)</span> such that, whenever <span class="math">\(u\)</span> obeys (2.2) and <span class="math">\(0\leq\psi\leq\varphi\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\|[u,\psi]\|&lt;\eta
+\quad\Longrightarrow\quad
+\|[u f_n(u^n)^*,\psi]\|&lt;\delta.
+
+\]</div><span class="equation-tag">(5.1)</span></div>
+<p>The choice of <span class="math">\(\eta\)</span> is independent of the algebra, state and dominated functional.</p>
+<p><em>Proof.</em> Put <span class="math">\(h(z)=z\overline{f_n(z^n)}\)</span>. As in Lemma 3.1, choose a Laurent polynomial <span class="math">\(g(z)=\sum_{j=-m}^m c_jz^j\)</span>, of norm at most <span class="math">\(2\)</span>, with error at most <span class="math">\(t\)</span> away from the preimage of <span class="math">\(J(-1,q)\)</span>. Then</p>
+<div class="equation"><div class="math math-display">\[
+\varphi(|h(u)-g(u)|^2)\leq t^2+9\cdot2^{-q}.
+
+\]</div><span class="equation-tag">(5.2)</span></div>
+<p>The difference is normal, because it is a function of <span class="math">\(u\)</span>. Cauchy–Schwarz on the two bimodule products gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}&amp;\|[h(u)-g(u),\psi]\|\\&amp;\quad\leq2\psi(1)^{1/2}\psi(|h(u)-g(u)|^2)^{1/2}\\&amp;\quad\leq2(t^2+9\cdot2^{-q})^{1/2}.\end{aligned}
+\]</div></div>
+<p>Choose <span class="math">\(q\)</span> large and then <span class="math">\(t\)</span> small so that this is below <span class="math">\(\delta/2\)</span>. Telescoping the commutator of each positive or negative power gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}\|[g(u),\psi]\|\leq A\|[u,\psi]\|,\\A=\sum_{j=-m}^m |j|\,|c_j|.\end{gathered}
+\]</div></div>
+<p>Take <span class="math">\(\eta=\delta/(2(A+1))\)</span>. The triangle inequality proves (5.1). The polynomial and every choice made depend only on <span class="math">\(n,\delta\)</span>. <span class="math">\(\square\)</span></p>
+<p><strong>Lemma 5.2 (from a cycle to a tensor expectation).</strong> Let <span class="math">\(U^n=1\)</span> and <span class="math">\(UF_jU^*=F_{j+1}\)</span>. If <span class="math">\(\|[U,\psi]\|\leq\delta\)</span> and <span class="math">\(\|[F_j,\psi]\|\leq\delta\)</span> for every <span class="math">\(j\)</span>, then for <span class="math">\(K=\{U,F_j\}&#39;&#39;\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\|\psi-\psi\circ E_K\|\leq n^2(n+1)\delta.
+
+\]</div><span class="equation-tag">(5.3)</span></div>
+<p><em>Proof.</em> The matrix units can also be written <span class="math">\(e_{ij}=U^{i-j}F_j\)</span>. Their commutators have norm at most <span class="math">\((|i-j|+1)\delta\leq(n+1)\delta\)</span>, by the power telescope and the product rule for bimodule commutators. Apply Lemma 4.1 of the absorption lesson. In particular <span class="math">\(\delta_v=2^{-v}/(n_v^2(n_v+1))\)</span> makes the expectation errors summable along a sequence of such cycles. <span class="math">\(\square\)</span></p>
+<p><strong>Lemma 5.3 (finite matrix coefficients).</strong> If <span class="math">\(M=M_d(\mathbb C)\overline\otimes C\)</span>, write <span class="math">\(\omega_{ij}\)</span> for the coordinate functionals dual to its standard matrix units. Every <span class="math">\(\psi\in M_*\)</span> has a unique expansion</p>
+<div class="equation"><div class="math math-display">\[
+\psi=\sum_{i,j=1}^d\omega_{ij}\otimes\psi_{ij},\qquad \psi_{ij}\in C_*.
+
+\]</div><span class="equation-tag">(5.4)</span></div>
+<p>For <span class="math">\(x\in C\)</span>, unitaries <span class="math">\(a\in M_d\)</span>, <span class="math">\(b\in C\)</span> and <span class="math">\(\beta\in\operatorname{Aut}C\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}\|[1\otimes x,\psi]\|\leq d^2\max_{i,j}\|[x,\psi_{ij}]\|,\\\begin{aligned}&amp;\bigl\|\psi\circ(\operatorname{Ad}a\otimes\beta)\\&amp;\qquad-\psi\circ\operatorname{Ad}(a\otimes b)\bigr\|\\&amp;\quad\leq d^2\max_{i,j}\bigl\|\psi_{ij}\circ\beta\\&amp;\qquad-\psi_{ij}\circ\operatorname{Ad}b\bigr\|.\end{aligned}\end{gathered}
+\]</div><span class="equation-tag">(5.5)</span></div>
+<p><em>Proof.</em> Define <span class="math">\(\psi_{ij}(y)=\psi(e_{ij}\otimes y)\)</span>. These functionals are normal. The finite matrix decomposition proves (5.4) and uniqueness. Each <span class="math">\(\omega_{ij}\)</span> has norm <span class="math">\(1\)</span>. The commutator expansion is <span class="math">\(\sum_{i,j}\omega_{ij}\otimes[x,\psi_{ij}]\)</span>. The action difference is</p>
+<div class="equation"><div class="math math-display">\[
+\sum_{i,j}(\omega_{ij}\circ\operatorname{Ad}a)\otimes
+(\psi_{ij}\circ\beta-\psi_{ij}\circ\operatorname{Ad}b).
+\]</div></div>
+<p>Take norms, use <span class="math">\(\|\omega_{ij}\circ\operatorname{Ad}a\|=1\)</span>, and sum the <span class="math">\(d^2\)</span> terms. <span class="math">\(\square\)</span></p>
+<p>The root factor also satisfies</p>
+<div class="equation"><div class="math math-display">\[
+\|f_n(u^n)^*-1\|\leq2\sin(\pi/(2n))\leq\pi/n.
+
+\]</div><span class="equation-tag">(5.6)</span></div>
+<p>Thus <span class="math">\(\sum_v1/n_v&lt;\infty\)</span> controls the accumulated norm cost of these factors. This bound does not supply centrality of the normalized cycles; that is the separate role of Lemma 5.1.</p>
+<h2 id="6-examples-and-exercises-with-solutions">6. Examples and exercises with solutions</h2>
+<p><strong>Example 6.1 (normalization can move a unitary substantially).</strong> On <span class="math">\(\mathbb C^n\)</span>, let <span class="math">\(S\)</span> be the cyclic shift and <span class="math">\(u=e^{it}S\)</span>, with <span class="math">\(0&lt;t&lt;\pi/n\)</span>. Then <span class="math">\(u^n=e^{int}1\)</span>, <span class="math">\(f_n(u^n)=e^{it}1\)</span>, and <span class="math">\(U=S\)</span>. The operation removes the scalar phase exactly. It does not assert that <span class="math">\(\|u-U\|\)</span> is arbitrarily small for a fixed <span class="math">\(t\)</span>.</p>
+<p><strong>Exercise 6.2 (introductory: a full-period commutant).</strong> If <span class="math">\(uF_ju^*=F_{j+1}\)</span>, prove <span class="math">\(u^n\)</span> commutes with the partition, and explain why the root factor also does.</p>
+<p><em>Solution.</em> Iteration gives <span class="math">\(u^nF_ju^{-n}=F_j\)</span>. Each <span class="math">\(F_j\)</span> therefore commutes with <span class="math">\(u^n\)</span> and its adjoint, hence with every spectral projection and bounded Borel function of <span class="math">\(u^n\)</span>. In particular it commutes with <span class="math">\(f_n(u^n)\)</span>.</p>
+<p><strong>Exercise 6.3 (intermediate: an atomic measure).</strong> Let <span class="math">\(\mu\)</span> be point mass at <span class="math">\(1\)</span>. Show <span class="math">\(-1\)</span> belongs to <span class="math">\(A(\mu)\)</span> and determine why it is advantageous as a root cut.</p>
+<p><em>Solution.</em> The arcs <span class="math">\(J(-1,q)\)</span>, <span class="math">\(q\geq3\)</span>, have radii at most <span class="math">\(2\pi/64&lt;\pi\)</span>, so none contains <span class="math">\(1\)</span>. Their <span class="math">\(\mu\)</span>-mass is zero, satisfying every bound. The root discontinuity then lies away from the entire spectrum with positive state mass; no spectral error is introduced there.</p>
+<p><strong>Exercise 6.4 (intermediate: a Borel discontinuity really matters).</strong> In <span class="math">\(\mathbb C\)</span>, let <span class="math">\(z_s=e^{i(\pi-1/s)}\)</span> and <span class="math">\(z&#39;_s=e^{i(-\pi+1/s)}\)</span>. Show <span class="math">\(|z_s-z&#39;_s|\to0\)</span> but <span class="math">\(|f_2(z_s)-f_2(z&#39;_s)|\not\to0\)</span>.</p>
+<p><em>Solution.</em> Both original scalars tend to <span class="math">\(-1\)</span>. Their principal square roots tend to <span class="math">\(i\)</span> and <span class="math">\(-i\)</span>, respectively, so the root difference tends to <span class="math">\(2\)</span>. Their spectral mass is concentrated at the cut; (2.2) is precisely the type of condition that prevents this behavior in the theorem.</p>
+<p><strong>Exercise 6.5 (advanced: common-first-diagonal matrix alignment).</strong> Suppose two unital matrix systems <span class="math">\((a_{ij})\)</span>, <span class="math">\((b_{ij})\)</span>, indexed from <span class="math">\(0\)</span>, have <span class="math">\(a_{00}=b_{00}\)</span>. Verify that <span class="math">\(v=\sum_ja_{j0}b_{0j}\)</span> is unitary and that <span class="math">\(vb_{ij}v^*=a_{ij}\)</span>.</p>
+<p><em>Solution.</em> Using the common diagonal,</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}vv^*&amp;=\sum_{j,l}a_{j0}b_{0j}b_{l0}a_{0l}\\&amp;=\sum_ja_{j0}b_{00}a_{0j}\\&amp;=\sum_ja_{jj}=1.\end{aligned}
+\]</div></div>
+<p>The same computation gives <span class="math">\(v^*v=1\)</span>. Multiplying <span class="math">\(vb_{ij}v^*\)</span> leaves only the terms with indices <span class="math">\(i,j\)</span>, giving <span class="math">\(a_{i0}b_{00}a_{0j}=a_{ij}\)</span>. This explains why (4.5) needs no separate projection comparison.</p>
+<p><strong>Exercise 6.6 (advanced: the normalization's two roles).</strong> In the tensor product <span class="math">\(M_n\overline\otimes C\)</span>, let <span class="math">\(u=S\otimes z\)</span>, where <span class="math">\(S\)</span> is the cyclic shift and <span class="math">\(z\)</span> is a unitary of <span class="math">\(C\)</span> whose spectrum lies in the arc <span class="math">\(\{e^{it}:|t|&lt;\pi/n\}\)</span>. Calculate <span class="math">\(U\)</span> and compare the two inner automorphisms.</p>
+<p><em>Solution.</em> We have <span class="math">\(u^n=1\otimes z^n\)</span>, and the spectral-arc hypothesis gives <span class="math">\(f_n(z^n)=z\)</span>. Hence <span class="math">\(U=S\otimes1\)</span>. Both conjugations act by the same shift on <span class="math">\(M_n\otimes1\)</span>. On <span class="math">\(1\otimes C\)</span>, <span class="math">\(\operatorname{Ad}U\)</span> is the identity while <span class="math">\(\operatorname{Ad}u\)</span> is <span class="math">\(\operatorname{Ad}z\)</span>. They need not agree on the whole algebra.</p>
+<h2 id="references">References</h2>
+<p>[Connes] Alain Connes, <em>Outer conjugacy classes of automorphisms of factors</em>, Annales scientifiques de l'École Normale Supérieure, série 4, 8 (1975), 383–419. Close-projection comparison: Lemma 1.1.4. Finite models and the Borel root: Lemmas 3.1.2–3.1.4. Iteration controls: Lemmas 3.2.2, 3.2.3 and 3.2.6. <a href="https://numdam.org/articles/10.24033/asens.1295/">Article and original text</a>.</p>
+<p>[Connes periodic] Alain Connes, <em>Periodic automorphisms of the hyperfinite factor of type II₁</em>, Acta Scientiarum Mathematicarum 39 (1977), 39–66. <a href="https://alainconnes.org/wp-content/uploads/szego.pdf">Open original text</a>.</p>
+</article><nav class="lesson-nav" aria-label="Sources"><a href="src/cyclic-finite-models-for-outer-conjugacy.md">Editable Markdown</a> · <span class="unlinked">Sources and authorship</span> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

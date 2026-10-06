@@ -1,0 +1,498 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tate&#x27;s local theory at the infinite places</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/course.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="index.html">Course contents</a> · Lesson 8 of 12</nav><aside class="notice"><p>Author-self-checked draft. Independent programme review is pending.</p><p>Lessons 1 and 4, as revised adaptations: CC BY-NC-SA 4.0; their previously original CC0 components retain that dedication. Other original course text: CC0. The marked edge-stabilizer adaptation in lesson 11: CC BY 4.0. Source credits and changes appear in the lessons. Prerequisite snapshots retain their edition-specific notices. MathJax and font licences are retained in the assets folder.</p><p>The five separate prerequisites <a href="prerequisites/HA-LCA-02.md">HA-LCA-02</a>, <a href="prerequisites/HA-LCA-03.md">HA-LCA-03</a>, <a href="prerequisites/HA-LCA-09.md">HA-LCA-09</a>, <a href="prerequisites/HA-LCA-10.md">HA-LCA-10</a>, <a href="prerequisites/HA-LCA-11.md">HA-LCA-11</a> are Design Science License adaptations of D. H. Fremlin. Their exact editable lessons retain all human-source credits, copyright, adaptation, change and warranty notices. Their <a href="prerequisites/assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">full licence</a> and <span class="unlinked">unchanged author source package</span> are bundled. The archive retains all auxiliary notices. These separate components retain their own terms; independent NT-ADL lesson licences remain as stated.</p></aside><article class="lesson"><h1 id="tate-s-local-theory-at-the-infinite-places">Tate's local theory at the infinite places</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>At an infinite place, a Gaussian replaces the characteristic function of the integral ring. A polynomial attached to the angular character then selects the correct Gamma factor. Fourier transformation turns that polynomial into its opposite angular type, with a phase that records the degree. We will compute this phase as well as prove the functional equation for every Schwartz function.</p>
+<p>We retain the quotient convention of <a href="NT-ADL-07.html">Tate's local theory at the finite places</a>: the Fourier-transformed integral is the factor times the original integral. The local characters are those classified in <a href="NT-ADL-06.html">Quasi-characters and Hecke characters</a>. For a real place write
+<span class="math math-display" data-tex="\[
+ c_{\epsilon,s}(x)=\operatorname{sgn}(x)^\epsilon |x|^s,
+ \qquad \epsilon\in\{0,1\},\quad s\in\mathbb C;
+ \tag{1}
+\]">\[
+ c_{\epsilon,s}(x)=\operatorname{sgn}(x)^\epsilon |x|^s,
+ \qquad \epsilon\in\{0,1\},\quad s\in\mathbb C;
+ \tag{1}
+\]</span>
+for a complex place write
+<span class="math math-display" data-tex="\[
+ c_{n,s}(z)=(z/|z|)^n |z|_{\mathbb C}^s,
+ \qquad n\in\mathbb Z,\quad |z|_{\mathbb C}=z\bar z.
+ \tag{2}
+\]">\[
+ c_{n,s}(z)=(z/|z|)^n |z|_{\mathbb C}^s,
+ \qquad n\in\mathbb Z,\quad |z|_{\mathbb C}=z\bar z.
+ \tag{2}
+\]</span>
+Here the unadorned <span class="math" data-tex="\(|z|\)">\(|z|\)</span> in the angular part is the ordinary radius. In both cases <span class="math" data-tex="\(\sigma(c)=\operatorname{Re}s\)">\(\sigma(c)=\operatorname{Re}s\)</span>, and <span class="math" data-tex="\(\check c=c^{-1}|\cdot|_F\)">\(\check c=c^{-1}|\cdot|_F\)</span>. Thus the dual parameters are <span class="math" data-tex="\((\epsilon,1-s)\)">\((\epsilon,1-s)\)</span> over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and <span class="math" data-tex="\((-n,1-s)\)">\((-n,1-s)\)</span> over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<h2 id="a-common-normalization">A common normalization</h2>
+<p>For <span class="math" data-tex="\(F=\mathbb R\)">\(F=\mathbb R\)</span> or <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, define
+<span class="math math-display" data-tex="\[
+ \widehat f(y)=\int_F f(x)\psi_F(xy)\,dx,
+ \qquad Z(f,c)=\int_{F^\times}f(x)c(x)\,d^\times x.
+ \tag{3}
+\]">\[
+ \widehat f(y)=\int_F f(x)\psi_F(xy)\,dx,
+ \qquad Z(f,c)=\int_{F^\times}f(x)c(x)\,d^\times x.
+ \tag{3}
+\]</span>
+The choices are fixed in the following table. Write <span class="math" data-tex="\(z=u+iv\)">\(z=u+iv\)</span> at a complex place.</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Real place</th>
+<th>Complex place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normalized norm</td>
+<td><span class="math" data-tex="\(\lvert x\rvert\)">\(\lvert x\rvert\)</span></td>
+<td><span class="math" data-tex="\(\lvert z\rvert_{\mathbb C}=z\bar z\)">\(\lvert z\rvert_{\mathbb C}=z\bar z\)</span></td>
+</tr>
+<tr>
+<td>Additive character</td>
+<td><span class="math" data-tex="\(e^{-2\pi i x}\)">\(e^{-2\pi i x}\)</span></td>
+<td><span class="math" data-tex="\(e^{-2\pi i(z+\bar z)}\)">\(e^{-2\pi i(z+\bar z)}\)</span></td>
+</tr>
+<tr>
+<td>Self-dual additive measure <span class="math" data-tex="\(dx\)">\(dx\)</span></td>
+<td><span class="math" data-tex="\(dx\)">\(dx\)</span>, ordinary Lebesgue measure</td>
+<td><span class="math" data-tex="\(2\,du\,dv\)">\(2\,du\,dv\)</span></td>
+</tr>
+<tr>
+<td>Multiplicative measure</td>
+<td><span class="math" data-tex="\(dx/\lvert x\rvert\)">\(dx/\lvert x\rvert\)</span></td>
+<td><span class="math" data-tex="\(dx/(\pi\lvert z\rvert_{\mathbb C})\)">\(dx/(\pi\lvert z\rvert_{\mathbb C})\)</span></td>
+</tr>
+<tr>
+<td>Gamma factor</td>
+<td><span class="math" data-tex="\(\Gamma_{\mathbb R}(s)=\pi^{-s/2}\Gamma(s/2)\)">\(\Gamma_{\mathbb R}(s)=\pi^{-s/2}\Gamma(s/2)\)</span></td>
+<td><span class="math" data-tex="\(\Gamma_{\mathbb C}(s)=2(2\pi)^{-s}\Gamma(s)\)">\(\Gamma_{\mathbb C}(s)=2(2\pi)^{-s}\Gamma(s)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The complex additive pairing is bilinear multiplication, not the Hermitian pairing: if <span class="math" data-tex="\(y=a+ib\)">\(y=a+ib\)</span>, its kernel is <span class="math" data-tex="\(e^{-4\pi i(ua-vb)}\)">\(e^{-4\pi i(ua-vb)}\)</span>. The measure <span class="math" data-tex="\(2\,du\,dv\)">\(2\,du\,dv\)</span> and the reversal in the second coordinate give the inversion formula <span class="math" data-tex="\(\widehat{\widehat f}(x)=f(-x)\)">\(\widehat{\widehat f}(x)=f(-x)\)</span>. These additive Fourier conventions and inversion are established in Propositions 5.1–5.2 of <a href="NT-ADL-05.html">Additive characters, self-dual measures and Poisson summation on the adèles</a>.</p>
+<p>In polar coordinates, the chosen complex multiplicative measure is
+<span class="math math-display" data-tex="\[
+ d^\times z=4\,\frac{dr}{r}\frac{d\theta}{2\pi}
+       =2\,\frac{dt}{t}\frac{d\theta}{2\pi},\qquad t=r^2.
+ \tag{4}
+\]">\[
+ d^\times z=4\,\frac{dr}{r}\frac{d\theta}{2\pi}
+       =2\,\frac{dt}{t}\frac{d\theta}{2\pi},\qquad t=r^2.
+ \tag{4}
+\]</span>
+Thus the angular group has mass two when the norm coordinate has measure <span class="math" data-tex="\(dt/t\)">\(dt/t\)</span>. The alternative <span class="math" data-tex="\(dx/(2\pi|z|_{\mathbb C})\)">\(dx/(2\pi|z|_{\mathbb C})\)</span> has half this mass, and gives half our Gaussian zeta integral. It gives the same <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and epsilon factor, because a multiplicative measure constant cancels in their defining ratio. This explicit choice accounts for the factor two in <span class="math" data-tex="\(\Gamma_{\mathbb C}\)">\(\Gamma_{\mathbb C}\)</span>.</p>
+<p>The space <span class="math" data-tex="\(\mathcal S(F)\)">\(\mathcal S(F)\)</span> consists of smooth functions on the underlying real vector space for which every derivative, multiplied by every polynomial, is bounded. Differentiating a Fourier integral inserts polynomial factors; integrating by parts transfers powers of the Fourier variable to derivatives. All these integrals are absolutely convergent for a Schwartz function. Consequently <span class="math" data-tex="\(\widehat f\in\mathcal S(F)\)">\(\widehat f\in\mathcal S(F)\)</span>. For example the bound for <span class="math" data-tex="\(y^\alpha\partial_y^\beta\widehat f\)">\(y^\alpha\partial_y^\beta\widehat f\)</span> follows from the <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-norm of the corresponding derivative of <span class="math" data-tex="\(x^\beta f\)">\(x^\beta f\)</span>, with fixed powers of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> or <span class="math" data-tex="\(4\pi\)">\(4\pi\)</span>. This also justifies the differential identities used below.</p>
+<h2 id="mellin-continuation-without-a-functional-equation">Mellin continuation without a functional equation</h2>
+<p>First define <span class="math" data-tex="\(\Gamma(w)=\int_0^\infty e^{-t}t^{w-1}\,dt\)">\(\Gamma(w)=\int_0^\infty e^{-t}t^{w-1}\,dt\)</span> for <span class="math" data-tex="\(\operatorname{Re}w&gt;0\)">\(\operatorname{Re}w&gt;0\)</span>. Integration by parts gives <span class="math" data-tex="\(\Gamma(w+1)=w\Gamma(w)\)">\(\Gamma(w+1)=w\Gamma(w)\)</span>, so this continues meromorphically, with simple poles at <span class="math" data-tex="\(0,-1,-2,\ldots\)">\(0,-1,-2,\ldots\)</span>. We will also use its absence of zeros; the following elementary argument fixes precisely that fact.</p>
+<p>Repeated integration by parts gives
+<span class="math math-display" data-tex="\[
+ \int_0^1 t^{w-1}(1-t)^Ndt
+      =\frac{N!}{w(w+1)\cdots(w+N)}.
+ \tag{5}
+\]">\[
+ \int_0^1 t^{w-1}(1-t)^Ndt
+      =\frac{N!}{w(w+1)\cdots(w+N)}.
+ \tag{5}
+\]</span>
+After <span class="math" data-tex="\(u=Nt\)">\(u=Nt\)</span>, the left side multiplied by <span class="math" data-tex="\(N^w\)">\(N^w\)</span> tends to <span class="math" data-tex="\(\Gamma(w)\)">\(\Gamma(w)\)</span>. Indeed <span class="math" data-tex="\((1-u/N)^N\leq e^{-u}\)">\((1-u/N)^N\leq e^{-u}\)</span> on <span class="math" data-tex="\([0,N]\)">\([0,N]\)</span>, and dominated convergence applies to <span class="math" data-tex="\(u^{w-1}\)">\(u^{w-1}\)</span>, uniformly on compact subsets of <span class="math" data-tex="\(\operatorname{Re}w&gt;0\)">\(\operatorname{Re}w&gt;0\)</span>. The limit of the reciprocals of (5) is therefore
+<span class="math math-display" data-tex="\[
+ \frac1{\Gamma(w)}
+   =w e^{\gamma w}\prod_{k=1}^\infty(1+w/k)e^{-w/k},
+ \qquad \gamma=\lim_{N\to\infty}
+                 \left(\sum_{k=1}^N\frac1k-\log N\right).
+ \tag{6}
+\]">\[
+ \frac1{\Gamma(w)}
+   =w e^{\gamma w}\prod_{k=1}^\infty(1+w/k)e^{-w/k},
+ \qquad \gamma=\lim_{N\to\infty}
+                 \left(\sum_{k=1}^N\frac1k-\log N\right).
+ \tag{6}
+\]</span>
+The harmonic-sum limit exists by comparison with the integral of <span class="math" data-tex="\(1/t\)">\(1/t\)</span>. On a fixed compact set, all sufficiently large factors have logarithm <span class="math" data-tex="\(O(k^{-2})\)">\(O(k^{-2})\)</span>, uniformly there. Thus the product defines an entire function and is nonzero away from the displayed linear-factor zeros. At <span class="math" data-tex="\(0,-1,-2,\ldots\)">\(0,-1,-2,\ldots\)</span> exactly one such factor vanishes simply. Equality initially holds in the right half-plane and then agrees with the reciprocal of the recurrence continuation. In particular <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> has no zeros and has exactly the asserted simple poles.</p>
+<p><strong>Mellin lemma.</strong> For every <span class="math" data-tex="\(f\in\mathcal S(F)\)">\(f\in\mathcal S(F)\)</span>, <span class="math" data-tex="\(Z(f,c)\)">\(Z(f,c)\)</span> is absolutely convergent for <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, locally uniformly there. It has meromorphic continuation to all <span class="math" data-tex="\(s\)">\(s\)</span>. Its possible poles are simple, at
+<span class="math math-display" data-tex="\[
+ s=-\epsilon-2j\quad(F=\mathbb R),\qquad
+ s=-|n|/2-j\quad(F=\mathbb C),\qquad j\geq0.
+ \tag{7}
+\]">\[
+ s=-\epsilon-2j\quad(F=\mathbb R),\qquad
+ s=-|n|/2-j\quad(F=\mathbb C),\qquad j\geq0.
+ \tag{7}
+\]</span>
+Moreover <span class="math" data-tex="\(Z(f,c_{\epsilon,s})/\Gamma_{\mathbb R}(s+\epsilon)\)">\(Z(f,c_{\epsilon,s})/\Gamma_{\mathbb R}(s+\epsilon)\)</span> and <span class="math" data-tex="\(Z(f,c_{n,s})/\Gamma_{\mathbb C}(s+|n|/2)\)">\(Z(f,c_{n,s})/\Gamma_{\mathbb C}(s+|n|/2)\)</span> are entire.</p>
+<p><em>Proof.</em> Over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, split the integral into its two signs:
+<span class="math math-display" data-tex="\[
+ Z(f,c_{\epsilon,s})=\int_0^\infty
+       [f(r)+(-1)^\epsilon f(-r)]r^{s-1}\,dr.
+ \tag{8}
+\]">\[
+ Z(f,c_{\epsilon,s})=\int_0^\infty
+       [f(r)+(-1)^\epsilon f(-r)]r^{s-1}\,dr.
+ \tag{8}
+\]</span>
+Boundedness near zero and rapid decay at infinity prove convergence. For a compact set of parameters, the same bounds work with the smallest real part at zero and the largest at infinity. They also absorb every power of <span class="math" data-tex="\(\log r\)">\(\log r\)</span>, proving holomorphy under differentiation in <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>The integral on <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span> is entire by rapid decay. On <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, Taylor expansion to arbitrary order <span class="math" data-tex="\(M\)">\(M\)</span> gives
+<span class="math math-display" data-tex="\[
+ f(r)+(-1)^\epsilon f(-r)
+   =2\!\sum_{\substack{0\leq k\leq M\\ k\equiv\epsilon\ (2)}}
+        \frac{f^{(k)}(0)}{k!}r^k+O(r^{M+1}).
+ \tag{9}
+\]">\[
+ f(r)+(-1)^\epsilon f(-r)
+   =2\!\sum_{\substack{0\leq k\leq M\\ k\equiv\epsilon\ (2)}}
+        \frac{f^{(k)}(0)}{k!}r^k+O(r^{M+1}).
+ \tag{9}
+\]</span>
+Each displayed term integrates to a constant divided by <span class="math" data-tex="\(s+k\)">\(s+k\)</span>. The remainder is holomorphic for <span class="math" data-tex="\(\operatorname{Re}s&gt;-M-1\)">\(\operatorname{Re}s&gt;-M-1\)</span>. Increasing <span class="math" data-tex="\(M\)">\(M\)</span> gives the continuation and its poles in (7). All are among the simple poles of <span class="math" data-tex="\(\Gamma_{\mathbb R}(s+\epsilon)\)">\(\Gamma_{\mathbb R}(s+\epsilon)\)</span>.</p>
+<p>Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, put
+<span class="math math-display" data-tex="\[
+ P_n f(r)=\int_0^{2\pi}f(re^{i\theta})e^{in\theta}
+                                  \frac{d\theta}{2\pi}.
+ \tag{10}
+\]">\[
+ P_n f(r)=\int_0^{2\pi}f(re^{i\theta})e^{in\theta}
+                                  \frac{d\theta}{2\pi}.
+ \tag{10}
+\]</span>
+For <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, polar coordinates and absolute Fubini give <span class="math" data-tex="\(Z(f,c_{n,s})=4\int_0^\infty P_n f(r)r^{2s-1}\,dr\)">\(Z(f,c_{n,s})=4\int_0^\infty P_n f(r)r^{2s-1}\,dr\)</span>. The real Taylor polynomial of <span class="math" data-tex="\(f(u+iv)\)">\(f(u+iv)\)</span> can equally be written as a sum of monomials <span class="math" data-tex="\(z^a\bar z^b\)">\(z^a\bar z^b\)</span>. Angular integration retains exactly those with <span class="math" data-tex="\(a-b=-n\)">\(a-b=-n\)</span>. Their total degrees are <span class="math" data-tex="\(|n|+2j\)">\(|n|+2j\)</span>. The Taylor remainder is uniformly <span class="math" data-tex="\(O(r^{M+1})\)">\(O(r^{M+1})\)</span> on the circle. Hence
+<span class="math math-display" data-tex="\[
+ P_n f(r)=\sum_{|n|+2j\leq M}b_jr^{|n|+2j}
+                                      +O(r^{M+1}).
+ \tag{11}
+\]">\[
+ P_n f(r)=\sum_{|n|+2j\leq M}b_jr^{|n|+2j}
+                                      +O(r^{M+1}).
+ \tag{11}
+\]</span>
+Integration on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> produces denominators <span class="math" data-tex="\(2s+|n|+2j\)">\(2s+|n|+2j\)</span>; the remainder converges for <span class="math" data-tex="\(2\operatorname{Re}s+M+1&gt;0\)">\(2\operatorname{Re}s+M+1&gt;0\)</span>. Infinity again gives an entire integral. This proves the complex assertion. Finally (6) shows that division by either Gamma factor cancels the possible simple poles and introduces no new ones. The resulting functions are entire. ∎</p>
+<h3 id="absolute-convergence-and-angular-cancellation">Absolute convergence and angular cancellation</h3>
+<p>The angular projection controls the poles and can improve convergence of the projected radial expression. It does not by itself improve absolute convergence of the original integral (3), because the angular character has modulus one. The identities obtained by first integrating over angles or signs hold initially in the common half-plane <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>. Beyond it, a convergent projected expression represents the continuation and need not be an absolutely convergent original integral.</p>
+<p>For example, take <span class="math" data-tex="\(f(z)=e^{-2\pi|z|^2}\)">\(f(z)=e^{-2\pi|z|^2}\)</span> and <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Then <span class="math" data-tex="\(P_1f(r)=0\)">\(P_1f(r)=0\)</span> for every <span class="math" data-tex="\(r\)">\(r\)</span>, so its projected radial integral is zero for every <span class="math" data-tex="\(s\)">\(s\)</span>. At <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, however, the original absolute integral is</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb C^\times}|f(z)c_{1,0}(z)|\,d^\times z
+=4\int_0^\infty e^{-2\pi r^2}\frac{dr}{r}=\infty.
+\]">\[
+\int_{\mathbb C^\times}|f(z)c_{1,0}(z)|\,d^\times z
+=4\int_0^\infty e^{-2\pi r^2}\frac{dr}{r}=\infty.
+\]</span>
+<p>On <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> the Gaussian is at least <span class="math" data-tex="\(e^{-2\pi}\)">\(e^{-2\pi}\)</span>, giving logarithmic divergence. More generally, this original integral converges exactly for <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, independently of <span class="math" data-tex="\(n\)">\(n\)</span>. Over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, the even Gaussian and <span class="math" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span> give the same distinction: <span class="math" data-tex="\(f(r)-f(-r)=0\)">\(f(r)-f(-r)=0\)</span>, but its absolute integral is <span class="math" data-tex="\(2\int_0^\infty e^{-\pi r^2}r^{\operatorname{Re}s-1}\,dr\)">\(2\int_0^\infty e^{-\pi r^2}r^{\operatorname{Re}s-1}\,dr\)</span>.</p>
+<p>The original absolute domain extends left when the test itself vanishes at zero. Suppose its first nonzero Taylor degree is <span class="math" data-tex="\(k\)">\(k\)</span>. Over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, with leading coefficient <span class="math" data-tex="\(a_k\ne0\)">\(a_k\ne0\)</span>, Taylor's theorem and <span class="math" data-tex="\(\bigl||a+b|-|a|\bigr|\leq|b|\)">\(\bigl||a+b|-|a|\bigr|\leq|b|\)</span> give</p>
+<span class="math math-display" data-tex="\[
+|f(r)|+|f(-r)|=2|a_k|r^k+O(r^{k+1}).
+\]">\[
+|f(r)|+|f(-r)|=2|a_k|r^k+O(r^{k+1}).
+\]</span>
+<p>Thus the original integral converges at zero exactly when <span class="math" data-tex="\(\operatorname{Re}s&gt;-k\)">\(\operatorname{Re}s&gt;-k\)</span>. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, write the leading real homogeneous Taylor polynomial as <span class="math" data-tex="\(P_k\)">\(P_k\)</span>. The Taylor remainder is uniform on the unit circle, so</p>
+<span class="math math-display" data-tex="\[
+\int_0^{2\pi}|f(re^{i\theta})|\frac{d\theta}{2\pi}
+=r^k\bigl(A+O(r)\bigr),\qquad
+A=\int_0^{2\pi}|P_k(e^{i\theta})|\frac{d\theta}{2\pi}&gt;0.
+\]">\[
+\int_0^{2\pi}|f(re^{i\theta})|\frac{d\theta}{2\pi}
+=r^k\bigl(A+O(r)\bigr),\qquad
+A=\int_0^{2\pi}|P_k(e^{i\theta})|\frac{d\theta}{2\pi}&gt;0.
+\]</span>
+<p>The positivity follows because a nonzero homogeneous polynomial is nonzero somewhere on the unit circle and hence on an open arc. With the measure <span class="math" data-tex="\(4\,dr/r\,d\theta/(2\pi)\)">\(4\,dr/r\,d\theta/(2\pi)\)</span> of (4), integrability is therefore exactly <span class="math" data-tex="\(2\operatorname{Re}s+k&gt;0\)">\(2\operatorname{Re}s+k&gt;0\)</span>. At either boundary the leading term produces logarithmic divergence. Rapid Schwartz decay handles infinity for every fixed parameter and uniformly on compact parameter sets.</p>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> is flat at zero, Taylor's remainder is <span class="math" data-tex="\(O(r^M)\)">\(O(r^M)\)</span> for every <span class="math" data-tex="\(M\)">\(M\)</span>. The original integral is then absolutely convergent for every <span class="math" data-tex="\(s\)">\(s\)</span>; these bounds also absorb logarithmic powers, so differentiation under the integral proves it entire. The common half-plane in the Mellin lemma is sufficient for every Schwartz test. The larger domains for the polynomial Gaussian tests below come from their actual polynomial vanishing, not merely angular cancellation.</p>
+<h2 id="tests-that-detect-the-angular-type">Tests that detect the angular type</h2>
+<p>Define the real tests
+<span class="math math-display" data-tex="\[
+ g_0(x)=e^{-\pi x^2},\qquad g_1(x)=xe^{-\pi x^2},
+ \tag{12}
+\]">\[
+ g_0(x)=e^{-\pi x^2},\qquad g_1(x)=xe^{-\pi x^2},
+ \tag{12}
+\]</span>
+and, for <span class="math" data-tex="\(N=|n|\)">\(N=|n|\)</span>, the complex tests
+<span class="math math-display" data-tex="\[
+ h_n(z)=
+ \begin{cases}
+ \bar z^n e^{-2\pi z\bar z},&amp;n\geq0,\\
+ z^{-n}e^{-2\pi z\bar z},&amp;n&lt;0.
+ \end{cases}
+ \tag{13}
+\]">\[
+ h_n(z)=
+ \begin{cases}
+ \bar z^n e^{-2\pi z\bar z},&amp;n\geq0,\\
+ z^{-n}e^{-2\pi z\bar z},&amp;n&lt;0.
+ \end{cases}
+ \tag{13}
+\]</span>
+The exponents here are nonnegative integers. In particular the second case is a polynomial, not a singular function.</p>
+<p><strong>Proposition 8.2.</strong> For the measures in the table,
+<span class="math math-display" data-tex="\[
+ Z(g_\epsilon,c_{\epsilon,s})=\Gamma_{\mathbb R}(s+\epsilon),
+ \qquad \widehat g_\epsilon=(-i)^\epsilon g_\epsilon,
+ \tag{14}
+\]">\[
+ Z(g_\epsilon,c_{\epsilon,s})=\Gamma_{\mathbb R}(s+\epsilon),
+ \qquad \widehat g_\epsilon=(-i)^\epsilon g_\epsilon,
+ \tag{14}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+ Z(h_n,c_{n,s})=\Gamma_{\mathbb C}(s+N/2),
+ \qquad \widehat h_n=(-i)^N h_{-n}.
+ \tag{15}
+\]">\[
+ Z(h_n,c_{n,s})=\Gamma_{\mathbb C}(s+N/2),
+ \qquad \widehat h_n=(-i)^N h_{-n}.
+ \tag{15}
+\]</span>
+The integral formulas converge respectively for <span class="math" data-tex="\(\operatorname{Re}s&gt;-\epsilon\)">\(\operatorname{Re}s&gt;-\epsilon\)</span> and <span class="math" data-tex="\(\operatorname{Re}s&gt;-N/2\)">\(\operatorname{Re}s&gt;-N/2\)</span>, and then hold meromorphically everywhere.</p>
+<p><em>Proof.</em> The character's sign cancels the polynomial's sign in (12). The real integral is therefore
+<span class="math math-display" data-tex="\[
+ 2\int_0^\infty e^{-\pi r^2}r^{s+\epsilon-1}\,dr
+       =\pi^{-(s+\epsilon)/2}\Gamma((s+\epsilon)/2),
+ \tag{16}
+\]">\[
+ 2\int_0^\infty e^{-\pi r^2}r^{s+\epsilon-1}\,dr
+       =\pi^{-(s+\epsilon)/2}\Gamma((s+\epsilon)/2),
+ \tag{16}
+\]</span>
+by <span class="math" data-tex="\(t=\pi r^2\)">\(t=\pi r^2\)</span>. At a complex place the angular factors in <span class="math" data-tex="\(h_n c_{n,s}\)">\(h_n c_{n,s}\)</span> cancel. Equation (4) gives
+<span class="math math-display" data-tex="\[
+ 4\int_0^\infty e^{-2\pi r^2}r^{2s+N-1}\,dr
+     =2(2\pi)^{-(s+N/2)}\Gamma(s+N/2).
+ \tag{17}
+\]">\[
+ 4\int_0^\infty e^{-2\pi r^2}r^{2s+N-1}\,dr
+     =2(2\pi)^{-(s+N/2)}\Gamma(s+N/2).
+ \tag{17}
+\]</span>
+These substitutions also give the exact convergence conditions.</p>
+<p>The Gaussian Fourier transforms are already computed with these measures in Proposition 5.2. For the real polynomial, differentiation under the integral gives
+<span class="math math-display" data-tex="\[
+ \widehat{xf}(y)=-\frac1{2\pi i}\frac{d}{dy}\widehat f(y).
+ \tag{18}
+\]">\[
+ \widehat{xf}(y)=-\frac1{2\pi i}\frac{d}{dy}\widehat f(y).
+ \tag{18}
+\]</span>
+Applying this to <span class="math" data-tex="\(g_0\)">\(g_0\)</span> gives <span class="math" data-tex="\(\widehat g_1=-iyg_0(y)=-ig_1(y)\)">\(\widehat g_1=-iyg_0(y)=-ig_1(y)\)</span>.</p>
+<p>For the complex calculation let <span class="math" data-tex="\(w=a+ib\)">\(w=a+ib\)</span> and <span class="math" data-tex="\(G(w)=e^{-2\pi w\bar w}\)">\(G(w)=e^{-2\pi w\bar w}\)</span>. Direct differentiation of the bilinear kernel gives
+<span class="math math-display" data-tex="\[
+ \widehat{\bar z f}
+    =-\frac1{4\pi i}(\partial_a+i\partial_b)\widehat f,
+ \qquad
+ \widehat{zf}
+    =-\frac1{4\pi i}(\partial_a-i\partial_b)\widehat f.
+ \tag{19}
+\]">\[
+ \widehat{\bar z f}
+    =-\frac1{4\pi i}(\partial_a+i\partial_b)\widehat f,
+ \qquad
+ \widehat{zf}
+    =-\frac1{4\pi i}(\partial_a-i\partial_b)\widehat f.
+ \tag{19}
+\]</span>
+Put <span class="math" data-tex="\(D_+=\partial_a+i\partial_b\)">\(D_+=\partial_a+i\partial_b\)</span>. Then <span class="math" data-tex="\(D_+w=0\)">\(D_+w=0\)</span> and <span class="math" data-tex="\(D_+G=-4\pi wG\)">\(D_+G=-4\pi wG\)</span>. Induction consequently gives <span class="math" data-tex="\(D_+^N G=(-4\pi)^N w^N G\)">\(D_+^N G=(-4\pi)^N w^N G\)</span>, with no additional lower-degree terms. Since <span class="math" data-tex="\(\widehat G=G\)">\(\widehat G=G\)</span>, (19) gives <span class="math" data-tex="\(\widehat{\bar z^N G}=(-i)^Nw^NG\)">\(\widehat{\bar z^N G}=(-i)^Nw^NG\)</span>. Similarly <span class="math" data-tex="\(D_-\bar w=0\)">\(D_-\bar w=0\)</span> and <span class="math" data-tex="\(D_-G=-4\pi\bar wG\)">\(D_-G=-4\pi\bar wG\)</span>, so <span class="math" data-tex="\(\widehat{z^NG}=(-i)^N\bar w^NG\)">\(\widehat{z^NG}=(-i)^N\bar w^NG\)</span>. These are exactly (15), for both signs of <span class="math" data-tex="\(n\)">\(n\)</span>. ∎</p>
+<p>The normalization of a test function and that of the multiplicative measure should be compared together. With the complex measure <span class="math" data-tex="\(dx/|z|_{\mathbb C}\)">\(dx/|z|_{\mathbb C}\)</span> used by Poonen and Leahy, the same unscaled polynomial Gaussian <span class="math" data-tex="\(h_n\)">\(h_n\)</span> has zeta integral <span class="math" data-tex="\(\pi\Gamma_{\mathbb C}(s+|n|/2)\)">\(\pi\Gamma_{\mathbb C}(s+|n|/2)\)</span>, since that measure is <span class="math" data-tex="\(\pi\)">\(\pi\)</span> times (3). Poonen’s <span class="math" data-tex="\(\pi^{-1}h_n\)">\(\pi^{-1}h_n\)</span> therefore gives our <span class="math" data-tex="\(\Gamma_{\mathbb C}\)">\(\Gamma_{\mathbb C}\)</span>; Leahy’s <span class="math" data-tex="\((2\pi)^{-1}h_n\)">\((2\pi)^{-1}h_n\)</span>, equation (4.10), gives half of it. These scalar changes multiply both sides of a local zeta-integral identity equally. The phases for our negative basic character are fixed by the differentiated Fourier transforms (14)–(15).</p>
+<h2 id="the-functional-equation-for-all-tests">The functional equation for all tests</h2>
+<p><strong>Theorem 8.1.</strong> For <span class="math" data-tex="\(0&lt;\operatorname{Re}s&lt;1\)">\(0&lt;\operatorname{Re}s&lt;1\)</span> and <span class="math" data-tex="\(f,g\in\mathcal S(F)\)">\(f,g\in\mathcal S(F)\)</span>,
+<span class="math math-display" data-tex="\[
+ Z(f,c)Z(\widehat g,\check c)
+                     =Z(g,c)Z(\widehat f,\check c).
+ \tag{20}
+\]">\[
+ Z(f,c)Z(\widehat g,\check c)
+                     =Z(g,c)Z(\widehat f,\check c).
+ \tag{20}
+\]</span>
+There is a nonzero meromorphic function <span class="math" data-tex="\(\rho(c,\psi_F,dx)\)">\(\rho(c,\psi_F,dx)\)</span>, independent of <span class="math" data-tex="\(f\)">\(f\)</span>, such that
+<span class="math math-display" data-tex="\[
+ Z(\widehat f,\check c)=\rho(c,\psi_F,dx)Z(f,c)
+ \tag{21}
+\]">\[
+ Z(\widehat f,\check c)=\rho(c,\psi_F,dx)Z(f,c)
+ \tag{21}
+\]</span>
+as meromorphic functions of <span class="math" data-tex="\(s\)">\(s\)</span>, for every Schwartz function <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(d^\times x=\kappa dx/|x|_F\)">\(d^\times x=\kappa dx/|x|_F\)</span>, where <span class="math" data-tex="\(\kappa=1\)">\(\kappa=1\)</span> over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and <span class="math" data-tex="\(\kappa=1/\pi\)">\(\kappa=1/\pi\)</span> over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The Mellin lemma and preservation of the Schwartz space show that all four factors in (20) converge absolutely in the strip. Thus their first product is
+<span class="math math-display" data-tex="\[
+ \kappa^2\int_{F^\times}\int_{F^\times}
+ f(x)\widehat g(y)c(x)c(y)^{-1}\frac{dx}{|x|_F}\,dy.
+ \tag{22}
+\]">\[
+ \kappa^2\int_{F^\times}\int_{F^\times}
+ f(x)\widehat g(y)c(x)c(y)^{-1}\frac{dx}{|x|_F}\,dy.
+ \tag{22}
+\]</span>
+Change <span class="math" data-tex="\(y=xz\)">\(y=xz\)</span>. Additive measure scales by <span class="math" data-tex="\(|x|_F\)">\(|x|_F\)</span>, so this equals
+<span class="math math-display" data-tex="\[
+ \kappa^2\int_{F^\times}c(z)^{-1}
+                   \left(\int_F f(x)\widehat g(zx)dx\right)dz.
+ \tag{23}
+\]">\[
+ \kappa^2\int_{F^\times}c(z)^{-1}
+                   \left(\int_F f(x)\widehat g(zx)dx\right)dz.
+ \tag{23}
+\]</span>
+The absolute-value double integral is finite by undoing that substitution in (22). For each fixed <span class="math" data-tex="\(z\)">\(z\)</span>, the integral of <span class="math" data-tex="\(|f(x)g(t)|\)">\(|f(x)g(t)|\)</span> is finite, since both functions are integrable on the additive space. Therefore Fubini at this fixed parameter gives
+<span class="math math-display" data-tex="\[
+ \int_F f(x)\widehat g(zx)dx
+              =\int_F\widehat f(zt)g(t)dt.
+ \tag{24}
+\]">\[
+ \int_F f(x)\widehat g(zx)dx
+              =\int_F\widehat f(zt)g(t)dt.
+ \tag{24}
+\]</span>
+Insert (24) in (23). The absolute-value double integral of the new expression is finite as well: reversing the change <span class="math" data-tex="\(y=zt\)">\(y=zt\)</span> gives the product of the two convergent absolute zeta integrals for <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span>. That same substitution now evaluates it as the right side of (20). A singleton has additive measure zero over either field, so the inserted or removed points at zero do not affect these steps.</p>
+<p>Take <span class="math" data-tex="\(g=g_\epsilon\)">\(g=g_\epsilon\)</span> or <span class="math" data-tex="\(h_n\)">\(h_n\)</span>. Its zeta integral is the nonzero Gamma function from Proposition 8.2; it has neither poles nor zeros in the strip. Dividing (20) by this integral proves (21) there. The Mellin lemma continues all its integrals, and the explicit Gamma ratio from (14) or (15) continues <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. The identity theorem proves (21) throughout the plane meromorphically. Fourier inversion applied twice also gives <span class="math" data-tex="\(\rho(c)\rho(\check c)=c(-1)\)">\(\rho(c)\rho(\check c)=c(-1)\)</span>, so the factor is not identically zero. ∎</p>
+<p>The two-variable proof has the same algebra as Theorem 7.2, but its convergence here comes from Schwartz bounds. The proof justifies the fixed-parameter Fourier interchange separately from the two absolutely convergent double integrals; it requires no absolutely convergent oscillatory triple integral.</p>
+<h2 id="gamma-factors-and-epsilon-phases">Gamma factors and epsilon phases</h2>
+<p><strong>Proposition 8.3.</strong> Define <span class="math" data-tex="\(L_\infty\)">\(L_\infty\)</span> and epsilon using the same quotient direction as at finite places:
+<span class="math math-display" data-tex="\[
+ \rho(c)=\epsilon(c)\frac{L_\infty(\check c)}{L_\infty(c)}.
+ \tag{25}
+\]">\[
+ \rho(c)=\epsilon(c)\frac{L_\infty(\check c)}{L_\infty(c)}.
+ \tag{25}
+\]</span>
+For our additive characters and self-dual measures their values are
+<span class="math math-display" data-tex="\[
+ \begin{array}{c|c|c|c}
+ F&amp;c&amp;L_\infty(c)&amp;\epsilon(c)\\\hline
+ \mathbb R&amp;\operatorname{sgn}^{\epsilon}|\cdot|^s
+       &amp;\Gamma_{\mathbb R}(s+\epsilon)&amp;(-i)^\epsilon\\
+ \mathbb C&amp;(z/|z|)^n|z|_{\mathbb C}^s
+       &amp;\Gamma_{\mathbb C}(s+|n|/2)&amp;(-i)^{|n|}.
+ \end{array}
+ \tag{26}
+\]">\[
+ \begin{array}{c|c|c|c}
+ F&amp;c&amp;L_\infty(c)&amp;\epsilon(c)\\\hline
+ \mathbb R&amp;\operatorname{sgn}^{\epsilon}|\cdot|^s
+       &amp;\Gamma_{\mathbb R}(s+\epsilon)&amp;(-i)^\epsilon\\
+ \mathbb C&amp;(z/|z|)^n|z|_{\mathbb C}^s
+       &amp;\Gamma_{\mathbb C}(s+|n|/2)&amp;(-i)^{|n|}.
+ \end{array}
+ \tag{26}
+\]</span>
+In particular
+<span class="math math-display" data-tex="\[
+ \rho(c_{\epsilon,s})=(-i)^\epsilon
+   \frac{\Gamma_{\mathbb R}(1-s+\epsilon)}
+        {\Gamma_{\mathbb R}(s+\epsilon)},\qquad
+ \rho(c_{n,s})=(-i)^{|n|}
+   \frac{\Gamma_{\mathbb C}(1-s+|n|/2)}
+        {\Gamma_{\mathbb C}(s+|n|/2)}.
+ \tag{27}
+\]">\[
+ \rho(c_{\epsilon,s})=(-i)^\epsilon
+   \frac{\Gamma_{\mathbb R}(1-s+\epsilon)}
+        {\Gamma_{\mathbb R}(s+\epsilon)},\qquad
+ \rho(c_{n,s})=(-i)^{|n|}
+   \frac{\Gamma_{\mathbb C}(1-s+|n|/2)}
+        {\Gamma_{\mathbb C}(s+|n|/2)}.
+ \tag{27}
+\]</span>
+These are meromorphic identities; at poles one uses continuation rather than ratios of divergent integrals.</p>
+<p><em>Proof.</em> Evaluate (21) on the tests of Proposition 8.2. The real Fourier transform has the scalar <span class="math" data-tex="\((-i)^\epsilon\)">\((-i)^\epsilon\)</span>. The complex transform has scalar <span class="math" data-tex="\((-i)^{|n|}\)">\((-i)^{|n|}\)</span> and the opposite angular polynomial, which is precisely the test for <span class="math" data-tex="\(\check c=c_{-n,1-s}\)">\(\check c=c_{-n,1-s}\)</span>. Equations (14)–(15) consequently give (27), hence (26). The Mellin lemma shows that these <span class="math" data-tex="\(L\)">\(L\)</span>-factors remove every possible pole of a test integral; the selected tests have normalized integral one. Thus the factors account for the full family of local integrals, rather than for the selected Gaussians alone. ∎</p>
+<p>For example, the characters with <span class="math" data-tex="\(n=1\)">\(n=1\)</span> and <span class="math" data-tex="\(n=-1\)">\(n=-1\)</span> both have epsilon <span class="math" data-tex="\(-i\)">\(-i\)</span>; those with <span class="math" data-tex="\(n=2\)">\(n=2\)</span> and <span class="math" data-tex="\(n=-2\)">\(n=-2\)</span> both have epsilon <span class="math" data-tex="\(-1\)">\(-1\)</span>. Replacing <span class="math" data-tex="\(|n|\)">\(|n|\)</span> by <span class="math" data-tex="\(n\)">\(n\)</span> in the phase would fail for negative odd <span class="math" data-tex="\(n\)">\(n\)</span>. The dual-product check is
+<span class="math math-display" data-tex="\[
+ \epsilon(c)\epsilon(\check c)=
+ \begin{cases}
+ (-1)^\epsilon,&amp;F=\mathbb R,\\
+ (-1)^{|n|},&amp;F=\mathbb C,
+ \end{cases}
+ =c(-1),
+ \tag{28}
+\]">\[
+ \epsilon(c)\epsilon(\check c)=
+ \begin{cases}
+ (-1)^\epsilon,&amp;F=\mathbb R,\\
+ (-1)^{|n|},&amp;F=\mathbb C,
+ \end{cases}
+ =c(-1),
+ \tag{28}
+\]</span>
+in agreement with Fourier inversion. Each epsilon has absolute value one for these basic characters, for every <span class="math" data-tex="\(s\)">\(s\)</span>; in particular it has absolute value one for a unitary character times <span class="math" data-tex="\(|\cdot|_F^{1/2}\)">\(|\cdot|_F^{1/2}\)</span>.</p>
+<p>The dependence on the additive data has a useful uniform form. If <span class="math" data-tex="\(dx\)">\(dx\)</span> is multiplied by <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, Fourier transformation and epsilon are multiplied by <span class="math" data-tex="\(a\)">\(a\)</span>. If <span class="math" data-tex="\(\psi_F\)">\(\psi_F\)</span> is replaced by <span class="math" data-tex="\(\psi_F(rx)\)">\(\psi_F(rx)\)</span> while <span class="math" data-tex="\(dx\)">\(dx\)</span> is held fixed, the change of variable <span class="math" data-tex="\(y\mapsto ry\)">\(y\mapsto ry\)</span> in the dual zeta integral gives
+<span class="math math-display" data-tex="\[
+ \epsilon(c,\psi_{F,r},dx)
+      =c(r)|r|_F^{-1}\epsilon(c,\psi_F,dx).
+ \tag{29}
+\]">\[
+ \epsilon(c,\psi_{F,r},dx)
+      =c(r)|r|_F^{-1}\epsilon(c,\psi_F,dx).
+ \tag{29}
+\]</span>
+The measure that remains self-dual for this new character is <span class="math" data-tex="\(|r|_F^{1/2}dx\)">\(|r|_F^{1/2}dx\)</span>, so the combined factor is <span class="math" data-tex="\(c(r)|r|_F^{-1/2}\)">\(c(r)|r|_F^{-1/2}\)</span>. These statements follow from (3) and (21), exactly as in Proposition 7.4.</p>
+<p>In particular replacing the negative character in our table by the positive one is <span class="math" data-tex="\(r=-1\)">\(r=-1\)</span>, with no change of self-dual measure. It multiplies epsilon by <span class="math" data-tex="\((-1)^\epsilon\)">\((-1)^\epsilon\)</span> or <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>, producing <span class="math" data-tex="\(i^\epsilon\)">\(i^\epsilon\)</span> and <span class="math" data-tex="\(i^{|n|}\)">\(i^{|n|}\)</span>. This is the convention in [Deligne 1973, (3.4.1)–(3.4.2)]; its displayed characters are inverse powers of the real or complex embedding, whose angular parameters give the same parity or absolute degree. The difference in phase is fully accounted for by the additive character.</p>
+<h2 id="duplication-and-the-two-complex-embeddings">Duplication and the two complex embeddings</h2>
+<p><strong>Proposition 8.4.</strong> As meromorphic functions,
+<span class="math math-display" data-tex="\[
+ \Gamma_{\mathbb C}(s)
+             =\Gamma_{\mathbb R}(s)\Gamma_{\mathbb R}(s+1).
+ \tag{30}
+\]">\[
+ \Gamma_{\mathbb C}(s)
+             =\Gamma_{\mathbb R}(s)\Gamma_{\mathbb R}(s+1).
+ \tag{30}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(\operatorname{Re}u,\operatorname{Re}v&gt;0\)">\(\operatorname{Re}u,\operatorname{Re}v&gt;0\)</span>, change variables <span class="math" data-tex="\((x,y)=(rt,r(1-t))\)">\((x,y)=(rt,r(1-t))\)</span> in the absolutely convergent product of two Euler Gamma integrals. The Jacobian is <span class="math" data-tex="\(r\)">\(r\)</span>, which proves
+<span class="math math-display" data-tex="\[
+ B(u,v):=\int_0^1t^{u-1}(1-t)^{v-1}dt
+                  =\frac{\Gamma(u)\Gamma(v)}{\Gamma(u+v)}.
+ \tag{31}
+\]">\[
+ B(u,v):=\int_0^1t^{u-1}(1-t)^{v-1}dt
+                  =\frac{\Gamma(u)\Gamma(v)}{\Gamma(u+v)}.
+ \tag{31}
+\]</span>
+For <span class="math" data-tex="\(\operatorname{Re}z&gt;0\)">\(\operatorname{Re}z&gt;0\)</span>, the substitution <span class="math" data-tex="\(t=(1+a)/2\)">\(t=(1+a)/2\)</span>, followed by symmetry and <span class="math" data-tex="\(b=a^2\)">\(b=a^2\)</span>, gives
+<span class="math math-display" data-tex="\[
+ B(z,z)=2^{1-2z}\int_{-1}^1(1-a^2)^{z-1}da
+                         =2^{1-2z}B(1/2,z).
+ \tag{32}
+\]">\[
+ B(z,z)=2^{1-2z}\int_{-1}^1(1-a^2)^{z-1}da
+                         =2^{1-2z}B(1/2,z).
+ \tag{32}
+\]</span>
+Use (31), cancel the nonzero <span class="math" data-tex="\(\Gamma(z)\)">\(\Gamma(z)\)</span>, and rearrange:
+<span class="math math-display" data-tex="\[
+ \Gamma(z)\Gamma(z+1/2)
+                      =2^{1-2z}\Gamma(1/2)\Gamma(2z).
+ \tag{33}
+\]">\[
+ \Gamma(z)\Gamma(z+1/2)
+                      =2^{1-2z}\Gamma(1/2)\Gamma(2z).
+ \tag{33}
+\]</span>
+The real Gaussian integral in Proposition 5.2, together with <span class="math" data-tex="\(t=\pi r^2\)">\(t=\pi r^2\)</span>, gives <span class="math" data-tex="\(\Gamma(1/2)=\sqrt\pi\)">\(\Gamma(1/2)=\sqrt\pi\)</span>. Put <span class="math" data-tex="\(z=s/2\)">\(z=s/2\)</span> in (33) and multiply by <span class="math" data-tex="\(\pi^{-s-1/2}\)">\(\pi^{-s-1/2}\)</span>. Its right side becomes <span class="math" data-tex="\(2^{1-s}\pi^{-s}\Gamma(s)=2(2\pi)^{-s}\Gamma(s)\)">\(2^{1-s}\pi^{-s}\Gamma(s)=2(2\pi)^{-s}\Gamma(s)\)</span>, while its left side becomes <span class="math" data-tex="\(\Gamma_{\mathbb R}(s)\Gamma_{\mathbb R}(s+1)\)">\(\Gamma_{\mathbb R}(s)\Gamma_{\mathbb R}(s+1)\)</span>. This proves (30) in a half-plane; meromorphic continuation proves it everywhere. ∎</p>
+<p>The shift by one is essential. The complex Gamma factor is a product of an even real factor and an odd real factor, both with the same variable <span class="math" data-tex="\(s\)">\(s\)</span>. It is not the square of the even factor. The identity also explains why the two real types together naturally supply the conventional factor two at a complex place.</p>
+<h2 id="examples-and-exercises">Examples and exercises</h2>
+<p>For the trivial character of <span class="math" data-tex="\(\mathbb R^\times\)">\(\mathbb R^\times\)</span>, the Gaussian gives <span class="math" data-tex="\(L_\infty(s)=\pi^{-s/2}\Gamma(s/2)\)">\(L_\infty(s)=\pi^{-s/2}\Gamma(s/2)\)</span> and epsilon one. This is the factor in the completed Riemann zeta function. At each finite rational place the standard integral-ring test gives <span class="math" data-tex="\((1-p^{-s})^{-1}\)">\((1-p^{-s})^{-1}\)</span>, by Proposition 7.1. Thus the product test supplies <span class="math" data-tex="\(\Gamma_{\mathbb R}(s)\prod_p(1-p^{-s})^{-1}\)">\(\Gamma_{\mathbb R}(s)\prod_p(1-p^{-s})^{-1}\)</span> in <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>. Its global continuation and functional equation require the global argument of the next lesson; they do not follow from a single local factor.</p>
+<p>For a Gaussian-integer Hecke character whose actual complex component is <span class="math" data-tex="\((z/|z|)^4\)">\((z/|z|)^4\)</span>, Proposition 8.3 gives <span class="math" data-tex="\(\Gamma_{\mathbb C}(s+2)\)">\(\Gamma_{\mathbb C}(s+2)\)</span> and epsilon <span class="math" data-tex="\((-i)^4=1\)">\((-i)^4=1\)</span>. The ideal-type inverse discussed in Theorem 6.3 may instead give angular exponent <span class="math" data-tex="\(-4\)">\(-4\)</span>. Its Gamma factor and epsilon are identical, since both depend on the absolute degree, although its actual character and dual are different.</p>
+<ol>
+<li><strong>Easy.</strong> Evaluate <span class="math" data-tex="\(\int_{\mathbb R^\times}e^{-\pi x^2}|x|^s\,dx/|x|\)">\(\int_{\mathbb R^\times}e^{-\pi x^2}|x|^s\,dx/|x|\)</span>, giving its domain of absolute convergence and all its poles after continuation.</li>
+<li><strong>Medium.</strong> Compute the Fourier transform of <span class="math" data-tex="\(xe^{-\pi x^2}\)">\(xe^{-\pi x^2}\)</span> with the negative real additive character. Also state the transform for the positive character and verify the Fourier-square identity on this odd test.</li>
+<li><strong>Medium.</strong> Prove <span class="math" data-tex="\(\Gamma_{\mathbb C}(s)=\Gamma_{\mathbb R}(s)\Gamma_{\mathbb R}(s+1)\)">\(\Gamma_{\mathbb C}(s)=\Gamma_{\mathbb R}(s)\Gamma_{\mathbb R}(s+1)\)</span> from the Euler integrals, including every constant.</li>
+<li><strong>Hard.</strong> Compute the complex epsilon factor for every integer angular exponent <span class="math" data-tex="\(n\)">\(n\)</span>, including negative <span class="math" data-tex="\(n\)">\(n\)</span>. Verify its dual-product identity. Determine its change for <span class="math" data-tex="\(\psi_{\mathbb C}(rz)\)">\(\psi_{\mathbb C}(rz)\)</span>, first with the old additive measure and then with the new self-dual measure; explain the effect of halving <span class="math" data-tex="\(d^\times z\)">\(d^\times z\)</span>.</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> Splitting the signs gives <span class="math" data-tex="\(2\int_0^\infty e^{-\pi r^2}r^{s-1}dr\)">\(2\int_0^\infty e^{-\pi r^2}r^{s-1}dr\)</span>. With <span class="math" data-tex="\(t=\pi r^2\)">\(t=\pi r^2\)</span>, one has <span class="math" data-tex="\(dr/r=dt/(2t)\)">\(dr/r=dt/(2t)\)</span>, so the result is <span class="math" data-tex="\(\pi^{-s/2}\Gamma(s/2)\)">\(\pi^{-s/2}\Gamma(s/2)\)</span>. At zero absolute integrability is exactly <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>; the Gaussian handles infinity for every parameter. The recurrence and product (6) show simple poles precisely at <span class="math" data-tex="\(s=0,-2,-4,\ldots\)">\(s=0,-2,-4,\ldots\)</span>. At <span class="math" data-tex="\(s=-2j\)">\(s=-2j\)</span> their residues are <span class="math" data-tex="\(2(-1)^j\pi^j/j!\)">\(2(-1)^j\pi^j/j!\)</span>: the residue of <span class="math" data-tex="\(\Gamma(w)\)">\(\Gamma(w)\)</span> at <span class="math" data-tex="\(-j\)">\(-j\)</span> is <span class="math" data-tex="\((-1)^j/j!\)">\((-1)^j/j!\)</span>, and the change <span class="math" data-tex="\(w=s/2\)">\(w=s/2\)</span> contributes the factor two. There are no other poles.</p>
+<p><strong>Solution 2.</strong> The transform of the even Gaussian is itself. Differentiating its Fourier integral gives <span class="math" data-tex="\(\widehat{xf}=-(2\pi i)^{-1}(\widehat f)&#x27;\)">\(\widehat{xf}=-(2\pi i)^{-1}(\widehat f)&#x27;\)</span>. Hence <span class="math" data-tex="\(\widehat{xe^{-\pi x^2}}=-iy e^{-\pi y^2}\)">\(\widehat{xe^{-\pi x^2}}=-iy e^{-\pi y^2}\)</span>. Changing to the positive character replaces the Fourier variable by <span class="math" data-tex="\(-y\)">\(-y\)</span>, giving <span class="math" data-tex="\(+iy e^{-\pi y^2}\)">\(+iy e^{-\pi y^2}\)</span>. Under the negative convention the transform applied twice multiplies this test by <span class="math" data-tex="\((-i)^2=-1\)">\((-i)^2=-1\)</span>, equal to its value at <span class="math" data-tex="\(-x\)">\(-x\)</span>. Under the positive convention the multiplier is <span class="math" data-tex="\(i^2=-1\)">\(i^2=-1\)</span> as well. The real odd epsilon is correspondingly <span class="math" data-tex="\(-i\)">\(-i\)</span> or <span class="math" data-tex="\(+i\)">\(+i\)</span>, not one.</p>
+<p><strong>Solution 3.</strong> The product <span class="math" data-tex="\(\Gamma(u)\Gamma(v)\)">\(\Gamma(u)\Gamma(v)\)</span> is absolutely integrable for positive real parts. The change <span class="math" data-tex="\((x,y)=(rt,r(1-t))\)">\((x,y)=(rt,r(1-t))\)</span>, with Jacobian <span class="math" data-tex="\(r\)">\(r\)</span>, gives (31). For <span class="math" data-tex="\(u=v=z\)">\(u=v=z\)</span>, substitute <span class="math" data-tex="\(t=(1+a)/2\)">\(t=(1+a)/2\)</span> in the beta integral: the prefactor is <span class="math" data-tex="\(2^{1-2z}\)">\(2^{1-2z}\)</span>. Integrating the even function on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> and then putting <span class="math" data-tex="\(b=a^2\)">\(b=a^2\)</span> yields <span class="math" data-tex="\(B(z,z)=2^{1-2z}B(1/2,z)\)">\(B(z,z)=2^{1-2z}B(1/2,z)\)</span>. Applying (31) and canceling <span class="math" data-tex="\(\Gamma(z)\)">\(\Gamma(z)\)</span> gives <span class="math" data-tex="\(\Gamma(z)\Gamma(z+1/2)=2^{1-2z}\sqrt\pi\Gamma(2z)\)">\(\Gamma(z)\Gamma(z+1/2)=2^{1-2z}\sqrt\pi\Gamma(2z)\)</span>. Now <span class="math" data-tex="\(z=s/2\)">\(z=s/2\)</span> and the factors <span class="math" data-tex="\(\pi^{-s/2}\pi^{-(s+1)/2}\)">\(\pi^{-s/2}\pi^{-(s+1)/2}\)</span> give <span class="math" data-tex="\(2^{1-s}\pi^{-s}\Gamma(s)=\Gamma_{\mathbb C}(s)\)">\(2^{1-s}\pi^{-s}\Gamma(s)=\Gamma_{\mathbb C}(s)\)</span>. All cancellations take place in a right half-plane, where (6) guarantees nonvanishing; meromorphic continuation establishes the identity for every parameter.</p>
+<p><strong>Solution 4.</strong> If <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, choose <span class="math" data-tex="\(h_n=\bar z^nG\)">\(h_n=\bar z^nG\)</span>. Formula (19), with <span class="math" data-tex="\(D_+w=0\)">\(D_+w=0\)</span>, gives <span class="math" data-tex="\(\widehat h_n=(-i)^n w^nG\)">\(\widehat h_n=(-i)^n w^nG\)</span>. The original integral is <span class="math" data-tex="\(\Gamma_{\mathbb C}(s+n/2)\)">\(\Gamma_{\mathbb C}(s+n/2)\)</span>, and the transformed test integrated against <span class="math" data-tex="\(c_{-n,1-s}\)">\(c_{-n,1-s}\)</span> gives <span class="math" data-tex="\((-i)^n\Gamma_{\mathbb C}(1-s+n/2)\)">\((-i)^n\Gamma_{\mathbb C}(1-s+n/2)\)</span>. Their ratio proves epsilon <span class="math" data-tex="\((-i)^n\)">\((-i)^n\)</span>. If <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>, set <span class="math" data-tex="\(N=-n\)">\(N=-n\)</span> and choose <span class="math" data-tex="\(h_n=z^NG\)">\(h_n=z^NG\)</span>. The operator <span class="math" data-tex="\(D_-\)">\(D_-\)</span> gives <span class="math" data-tex="\(\widehat h_n=(-i)^N\bar w^NG\)">\(\widehat h_n=(-i)^N\bar w^NG\)</span>, and the same division proves epsilon <span class="math" data-tex="\((-i)^N\)">\((-i)^N\)</span>. Thus the answer is <span class="math" data-tex="\((-i)^{|n|}\)">\((-i)^{|n|}\)</span> in all cases.</p>
+<p>The dual has exponent <span class="math" data-tex="\(-n\)">\(-n\)</span>, so the epsilon product is <span class="math" data-tex="\((-i)^{2|n|}=(-1)^n=c_{n,s}(-1)\)">\((-i)^{2|n|}=(-1)^n=c_{n,s}(-1)\)</span>, as required. Write <span class="math" data-tex="\(r=Re^{i\alpha}\)">\(r=Re^{i\alpha}\)</span>, with <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>. Holding the old measure <span class="math" data-tex="\(2\,du\,dv\)">\(2\,du\,dv\)</span> fixed, (29) multiplies epsilon by <span class="math" data-tex="\(e^{in\alpha}R^{2s-2}\)">\(e^{in\alpha}R^{2s-2}\)</span>. Renormalizing the additive measure to be self-dual multiplies it by an additional <span class="math" data-tex="\(|r|_{\mathbb C}^{1/2}=R\)">\(|r|_{\mathbb C}^{1/2}=R\)</span>. The combined factor is therefore <span class="math" data-tex="\(e^{in\alpha}R^{2s-1}\)">\(e^{in\alpha}R^{2s-1}\)</span>. If <span class="math" data-tex="\(s=1/2+it\)">\(s=1/2+it\)</span>, this has absolute value one, providing the central normalization check. Halving the multiplicative measure halves both sides of (21) and changes neither rho nor epsilon. With that alternative measure the Gaussian integral is <span class="math" data-tex="\(\Gamma_{\mathbb C}(s+|n|/2)/2\)">\(\Gamma_{\mathbb C}(s+|n|/2)/2\)</span>; doubling the test would restore normalized integral one.</p>
+<h2 id="what-this-lesson-does-not-prove">Prerequisites and further directions</h2>
+<ul>
+<li>The classification of real and complex quasi-characters is imported exactly from Proposition 6.1. The additive pairing, its self-dual measures, Fourier inversion, and the Gaussian Fourier transforms are imported from Propositions 5.1–5.2. Preservation of the Schwartz space and the polynomial transforms used here are justified above.</li>
+<li>Basic integration on real Euclidean spaces, Taylor's theorem with remainder, dominated convergence, and the identity theorem for meromorphic functions are used as analysis prerequisites. The needed Gamma continuation, nonvanishing, beta identity, and duplication are proved here.</li>
+<li>The global Poisson argument, the completed Hecke functional equation, and class-number residues are the subjects of the next two lessons. Archimedean Weil-group induction and higher-dimensional constants, discussed in [Deligne 1973, §§3 and 5], are not used to prove the one-dimensional assertions here.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>Bjorn Poonen, <a href="https://math.mit.edu/~poonen/786/notes.pdf"><em>Tate’s Thesis</em>, MIT 18.786, Spring 2015</a>, §§4.7–4.9, PDF pages 19–25: local integrability and the real and complex Gaussian tests. The Mellin continuation, original absolute-convergence thresholds and Fourier-interchange proof are given above for every Schwartz test.</li>
+<li>James-Michael Leahy, <a href="https://www.math.mcgill.ca/darmon/theses/leahy/thesis.pdf"><em>An introduction to Tate’s Thesis</em> (2010)</a>, §§4.5–4.6, especially (4.6)–(4.11) and Proposition 4.6.1, printed pages 130–134 and 143–145. Its complex <span class="math" data-tex="\(L\)">\(L\)</span>-factor in (4.10) is half our <span class="math" data-tex="\(\Gamma_{\mathbb C}\)">\(\Gamma_{\mathbb C}\)</span>; the measure and test conversion is explained above. The negative-character Fourier phases used here follow from (14)–(15).</li>
+<li>J. Shurman, <a href="https://people.reed.edu/~jerry/361/lectures/ait.pdf"><em>Number field zeta integrals and L-functions</em></a>, Reed College number theory notes, §§2.2–2.3: Gaussian local integrals at the real and complex places, their Gamma normalizations and the duplication identity relating the complex factor to the two real factors; and <a href="https://people.reed.edu/~jerry/311/gammaiddup.pdf"><em>Gamma function symmetry and duplication</em></a>: Legendre's duplication formula through the beta integral.</li>
+<li>P. Deligne, <a href="https://publications.ias.edu/sites/default/files/Number20.pdf"><em>Les constantes des équations fonctionnelles des fonctions L</em>, IAS edition</a>, 1973, §§3.2–3.4, printed pages 526–528: archimedean factors and the positive basic-character phases. Changing the sign of the basic character gives the conversion derived above. Higher-dimensional constants are further directions.</li>
+</ul>
+</article><nav class="pager"><a rel="prev" href="NT-ADL-07.html">Previous lesson</a><a href="index.html">Course contents</a><a rel="next" href="NT-ADL-09.html">Next lesson</a></nav><p><a href="src/NT-ADL-08.md">Markdown source</a></p></main></body></html>

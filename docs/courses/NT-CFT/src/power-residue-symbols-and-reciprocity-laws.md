@@ -1,0 +1,263 @@
+# Power residue symbols and reciprocity laws
+
+*Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).*
+
+**Lesson 23.** A power residue symbol measures the Frobenius action on a radical. The global product of local Hilbert symbols then compares two power residue symbols with their arguments reversed. We recover quadratic reciprocity and both supplements, prove a number-field primary form of quadratic reciprocity, and compute the local factors needed for cubic and quartic reciprocity. The primary normalizations are specified separately for each law.
+
+Use the Hilbert symbol of [Hilbert symbols and local conics](hilbert-symbols-and-local-conics.md): the first argument enters arithmetic reciprocity and the second is placed under the radical. Thus
+\[
+(a,b)_{v,n}=\frac{\operatorname{rec}_{K_v,\mathrm{arith}}(a)(\sqrt[n]b)}{\sqrt[n]b}.
+\tag{1}
+\]
+Proposition 11.1 proves multiplicativity, the norm criterion and \((a,b)_{v,n}=(b,a)_{v,n}^{-1}\); Proposition 11.3 proves the tame formula. [The global reciprocity law](the-global-reciprocity-law.md), especially its principal product and local compatibility, supplies the global input. No power reciprocity law is assumed in those proofs.
+
+## 1. Residue symbols and their Frobenius interpretation
+
+Let \(K\) be a global field containing \(\mu_n\), with \(n\geq2\) prime to its characteristic. At a finite prime \(\mathfrak p\nmid n\), put \(q=N\mathfrak p\), and suppose \(a\in K^\times\) is a local unit there. Reduction embeds \(\mu_n\) into \(\kappa(\mathfrak p)^\times\): a nontrivial \(n\)-th root cannot be congruent to 1, by the derivative-unit argument of lesson 11. In particular \(n\mid q-1\). Define the **power residue symbol** by the unique root
+\[
+\left(\frac a{\mathfrak p}\right)_n\in\mu_n,
+\qquad
+\left(\frac a{\mathfrak p}\right)_n\equiv a^{(q-1)/n}\pmod{\mathfrak p}.
+\tag{2}
+\]
+The displayed residue is an \(n\)-th root, by the finite-field multiplicative group order.
+
+**Proposition 23.1.** The symbol depends only on the nonzero residue of \(a\), is multiplicative in \(a\), and equals 1 exactly when that residue is an \(n\)-th power. For a fractional ideal \(\mathfrak b=\prod\mathfrak p^{m_{\mathfrak p}}\), supported away from \(n\) and at places where \(a\) is a unit, the definition
+\[
+\left(\frac a{\mathfrak b}\right)_n
+=\prod_{\mathfrak p}\left(\frac a{\mathfrak p}\right)_n^{m_{\mathfrak p}}
+\tag{3}
+\]
+is multiplicative in both its numerator and ideal denominator.
+
+**Proof.** Uniqueness in (2) gives residue dependence and multiplicativity. The finite-field group is cyclic. One elementary proof is to let \(m\) be the exponent of this finite abelian group: for every prime power dividing \(m\), an element attaining that prime-power order exists; their product has order \(m\). Every group element is a root of \(X^m-1\), so the root bound gives group order at most \(m\), and hence equal to \(m\). Thus it has a generator. If \(g\) is a generator of order \(q-1\), then \((g^r)^{(q-1)/n}=1\) exactly when \(n\mid r\), exactly when \(g^r\) is an \(n\)-th power. Formula (3) and its multiplicativity follow from unique prime ideal factorization, with negative exponents permitted for fractional ideals. \(\square\)
+
+For a principal denominator write \((a/b)_n=(a/(b))_n\). A composite denominator loses information: even for \(n=2\), a Jacobi symbol of 1 need not mean a square modulo that denominator. For example \((2/15)_2=(2/3)_2(2/5)_2=1\), whereas 2 is a square modulo neither 3 nor 5.
+
+**Proposition 23.2.** Let \(\beta^n=a\). The extension \(K(\beta)/K\) is unramified at \(\mathfrak p\) as above, and its arithmetic Frobenius satisfies
+\[
+\frac{\operatorname{Frob}_{\mathfrak p}(\beta)}\beta
+=\left(\frac a{\mathfrak p}\right)_n
+=(\pi_{\mathfrak p},a)_{\mathfrak p,n}
+=(a,\pi_{\mathfrak p})_{\mathfrak p,n}^{-1}.
+\tag{4}
+\]
+The uniformizer can be any local prime element.
+
+**Proof.** In a finite residue extension containing an \(n\)-th root of \(\bar a\), the derivative of \(X^n-a\) at that unit root is a unit. The unramified lifting theorem and Hensel's iteration give a root in the corresponding unramified local extension. Hence the completion of \(K(\beta)\) is unramified. Its Frobenius ratio reduces to
+\(\bar\beta^{q-1}=\bar a^{(q-1)/n}\).
+That ratio is in \(\mu_n\), so reduction injectivity gives the first equality of (4). Arithmetic local reciprocity sends a uniformizer to precisely this Frobenius, giving the second equality through (1). Skew symmetry gives the inverse in the last equality. A change of uniformizer is a unit, which acts trivially on the unramified radical extension. The argument does not assume its degree equals \(n\). \(\square\)
+
+## 2. The global product and general reciprocity
+
+**Theorem 23.3 (Hilbert's product formula).** For \(a,b\in K^\times\),
+\[
+\prod_v(a,b)_{v,n}=1.
+\tag{5}
+\]
+Only finitely many factors differ from 1.
+
+**Proof.** The extension \(L=K(\sqrt[n]b)\) is finite cyclic, since \(\mu_n\subset K\); its degree may divide \(n\). At almost every finite place, \(a\) and \(b\) are units and \(n\) is a unit, so the radical extension is unramified and reciprocity of \(a\) is trivial. For the finitely many other places, global local compatibility says that the product of the local reciprocity automorphisms is the global symbol of the principal idèle \(a\). This is identity by global reciprocity. Evaluate it on a fixed global root of \(b\), using compatible embeddings in each completion. Its ratio is the product in (5), so that product is 1. \(\square\)
+
+At a tame finite place write \(a=\pi^r u\), \(b=\pi^t z\), with units \(u,z\). The precise tame formula of lesson 11 is
+\[
+\overline{(a,b)_{v,n}}
+=\left((-1)^{rt}\frac{\bar z^{\,r}}{\bar u^{\,t}}\right)^{(Nv-1)/n}.
+\tag{6}
+\]
+In particular two units pair trivially.
+
+**Theorem 23.4 (general power reciprocity).** Suppose \(a,b\in\mathcal O_K\) are nonzero, their principal ideals are coprime, and both are prime to \(n\). Then
+\[
+\left(\frac a b\right)_n
+\left(\frac b a\right)_n^{-1}
+=\prod_{v\mid n\infty}(a,b)_{v,n}.
+\tag{7}
+\]
+For function fields, the same statement uses the chosen valuation supports in place of \(\mathcal O_K\); outside the indicated exceptional places they must be disjoint. It also holds for fractional principal ideals with disjoint supports and unit components at the exceptional finite places. In positive characteristic prime to \(n\), there are no places dividing \(n\) and no infinite places, so the right side is empty and equals 1.
+
+**Proof.** At a prime of \((b)\), the numerator \(a\) is a unit and (4) and multiplicativity give
+\((a,b)_{v,n}=(a/v)_n^{-v(b)}\).
+At a prime of \((a)\), similarly
+\((a,b)_{v,n}=(b/v)_n^{v(a)}\).
+At all other tame places both are units, and (6) gives 1. Separate these factors in (5) to obtain
+\[
+1=\left(\frac b a\right)_n
+  \left(\frac a b\right)_n^{-1}
+  \prod_{v\mid n\infty}(a,b)_{v,n},
+\]
+which is (7). The same argument works with negative valuations for fractional ideals. \(\square\)
+
+Thus a Frobenius residue symbol is \((\pi,a)\), whereas reversing the entries to \((a,\pi)\) inserts an inverse. For quadratic signs this inverse is invisible; for higher powers it is essential.
+
+## 3. Quadratic reciprocity over the rationals
+
+For distinct odd positive primes \(p,q\), (7) with \(n=2\) has only the 2-adic and real exceptional factors. The real factor is 1 because both entries are positive. The explicit 2-adic unit formula proved in lesson 11 gives
+\[
+(p,q)_{2,2}=(-1)^{((p-1)/2)((q-1)/2)}.
+\tag{8}
+\]
+
+**Corollary 23.5.** The Legendre symbols satisfy
+\[
+\left(\frac p q\right)\left(\frac q p\right)
+=(-1)^{((p-1)/2)((q-1)/2)},\quad
+\left(\frac{-1}p\right)=(-1)^{(p-1)/2},\quad
+\left(\frac2p\right)=(-1)^{(p^2-1)/8}.
+\tag{9}
+\]
+
+**Proof.** For the first equation, inversion equals identity on signs, so (7) and (8) give the assertion. For \((-1/p)\), use (5) on \((-1,p)\). At \(p\), (4) gives the inverse of \((-1/p)\), hence the same sign. The real factor is 1 because \(p>0\). Other odd places have two unit entries and factor 1. The 2-adic factor, by the unit formula, is \((-1)^{(p-1)/2}\). Their product is 1, giving the first supplement.
+
+For \((2/p)\), use (5) on \((2,p)\). The only possible nontrivial factors are at 2 and \(p\); the real factor is again 1. At \(p\) the factor is \((2/p)^{-1}=(2/p)\). The full 2-adic formula, with valuation of the first entry 1 and the second entry an odd unit, gives \((2,p)_{2,2}=(-1)^{(p^2-1)/8}\). The product proves the second supplement. \(\square\)
+
+For example 2 is a square modulo an odd prime exactly when the prime is 1 or 7 modulo 8. This conclusion comes from the local obstruction at 2, rather than from an unexplained global sign.
+
+## 4. A primary quadratic law over any number field
+
+In this section a number \(\alpha\in\mathcal O_K\) is **primary for the quadratic law** if it is odd and \(\alpha\equiv\xi^2\pmod{4\mathcal O_K}\) for some \(\xi\in\mathcal O_K\). This definition belongs to this quadratic statement; the cubic and quartic normalizations below are different.
+
+For odd, coprime \(\alpha,\beta\), with at least one primary in this sense, the general quadratic law takes the particularly simple form
+\[
+\left(\frac\alpha\beta\right)_2
+\left(\frac\beta\alpha\right)_2
+=(-1)^{\#\{v\text{ real}:\alpha_v<0,\ \beta_v<0\}}.
+\tag{10}
+\]
+In particular it is symmetric if at least one of the entries is totally positive. This is the primary quadratic reciprocity law in the notation of our symbols.
+
+**Proof.** Suppose \(\alpha\) is primary. At each dyadic completion \(F\), \(\xi\) is a unit and \(\alpha/\xi^2=1+4c\), \(c\in\mathcal O_F\). An element \(\theta\) satisfying \(\theta^2+\theta=c\) gives \((1+2\theta)^2=1+4c\). Its equation reduces to a separable quadratic over the finite residue field, since its derivative \(2\theta+1\) is a unit. If the reduced equation has a root it lifts in \(F\); otherwise it lifts in the unramified quadratic extension. Hence \(F(\sqrt\alpha)/F\) is trivial or unramified. The unit \(\beta\) has trivial reciprocity on it, so \((\beta,\alpha)_{F,2}=1\), and skew symmetry gives \((\alpha,\beta)_{F,2}=1\). Thus every dyadic factor in (7) is 1. Complex factors are 1. At a real place the quadratic Hilbert symbol is \(-1\) exactly when both entries are negative, as proved in lesson 11. Their product is (10). The argument with \(\alpha,\beta\) exchanged is identical. \(\square\)
+
+The proof above uses the unramified local quadratic equation and the already proved global product, with no hypothesis that the field's different is principal. The more general law without a primary entry remains (7), retaining its dyadic factors.
+
+## 5. Cubic reciprocity and its local calculation
+
+Put \(\omega=e^{2\pi i/3}\), \(K=\mathbf Q(\omega)\), and \(\lambda=1-\omega\). Its integer ring is \(\mathbf Z[\omega]\); \(\lambda^2=-3\omega\), and the unique prime over 3 has residue field \(\mathbf F_3\). We call an element prime to 3 **primary for the cubic law** if it is congruent to \(-1\pmod3\). Each prime away from 3 has a unique associate with this normalization. Indeed the six units \(\{\pm1,\pm\omega,\pm\omega^2\}\) have distinct residues and exhaust the six units modulo \(\lambda^2\); multiplication by exactly one gives residue \(-1\). Their distinctness follows because differences between distinct cube roots have valuation 1, and changing sign gives a unit difference. The norm \(a^2-ab+b^2\) also shows directly that these are all the global units. Allowing either sign modulo 3 gives the alternate two-associate convention; \(-1\) is a cube, so it changes no cubic symbol.
+
+The necessary wild local assertion will be proved explicitly. Let \(F=\mathbf Q_3(\omega)\), with \(U^j=1+\lambda^j\mathcal O_F\).
+
+**Cubic local lemma.** If \(a,b\in U^2\), then \((a,b)_{F,3}=1\).
+
+**Proof.** Write \(b=1+\lambda^2 c\). If \(b\) is a cube, the assertion is immediate. Otherwise \(L=F(\gamma)\), \(\gamma^3=b\), is cyclic of degree three. For \(t\in\mathcal O_F\),
+\[
+N_{L/F}(1+t(\gamma-1))=(1-t)^3+bt^3
+=1+\lambda^2 P(t),
+\quad P(t)=\omega^2t-\omega^2t^2+ct^3.
+\tag{11}
+\]
+The first identity is the product over the three conjugates of \(\gamma\); the second uses \(3=-\omega^2\lambda^2\). Since \(P'(0)=\omega^2\) is a unit, for each \(d\in\lambda\mathcal O_F\) Hensel's iteration at zero solves \(P(t)=d\) with \(t\in\lambda\mathcal O_F\). Thus every element of \(U^3\) is a norm by (11).
+
+Modulo \(\lambda\), \(P(1)=c\) and \(P(-1)=1-c\). At least one of these residues is nonzero in \(\mathbf F_3\). The corresponding norm in (11) lies in \(U^2\) and has nonzero image in \(U^2/U^3\simeq(\mathbf F_3,+)\), so its image generates that quotient. The norm group already contains all of \(U^3\), hence contains all of \(U^2\): adjust any target's residue by a power of that norm and its remaining part is in \(U^3\). Every element used in (11) is nonzero, since its norm is a unit. The norm criterion of Proposition 11.1 now gives \((a,b)_{F,3}=1\). \(\square\)
+
+**Cubic reciprocity.** For nonassociate primary primes \(\pi,\rho\) away from 3,
+\[
+\left(\frac\pi\rho\right)_3=\left(\frac\rho\pi\right)_3.
+\tag{12}
+\]
+The same holds for coprime primary elements.
+
+**Proof.** Their negatives lie in \(U^2\) at \(\lambda\), and their signs are cubes, so the lemma makes the local exceptional factor 1. All infinite places are complex. Therefore (7) has right side 1 and gives (12). Multiplicativity gives the version for coprime primary elements directly from the same local argument. \(\square\)
+
+The use of the full residue cardinality matters. For a rational prime remaining prime in \(\mathbf Z[\omega]\), that cardinality is \(p^2\), not \(p\). Formula (2) works without distinguishing split and inert primes. No unspecified local cubic symbol is left in the proof.
+
+## 6. Quartic reciprocity and a two-generator local pairing
+
+Now put \(K=\mathbf Q(i)\), \(\lambda=1+i\). An odd Gaussian element is **primary for the quartic law** if it is 1 modulo \(\lambda^3\), equivalently modulo \(2+2i\), since these generators are associates. The four units \(\mu_4\) give all four distinct unit residues modulo \(\lambda^3\), so every odd Gaussian prime has a unique primary associate. For \(a+bi\) this congruence says that \(a\) is odd, \(b\) is even, and \(a+b\equiv1\pmod4\).
+
+Work locally in \(F=\mathbf Q_2(i)\), with \(U^j=1+\lambda^j\mathcal O_F\). The integer ring is \(\mathbf Z_2[i]\), as follows from the Eisenstein equation for \(\lambda\). For \(u\in U^3\), its norm is 1 modulo 4, by the coordinate description just given. Define
+\[
+e(u)=\frac{N_{F/\mathbf Q_2}(u)-1}{4}\pmod2.
+\tag{13}
+\]
+It is a homomorphism on \(U^3\): multiply two norms congruent to 1 modulo 4 and reduce the quotient by 4 modulo 2.
+
+**Quartic local lemma.** For \(u,v\in U^3\),
+\[
+(u,v)_{F,4}=(-1)^{e(u)e(v)}.
+\tag{14}
+\]
+
+**Proof.** First \((U^3)^2=U^5\). If \(x\in\lambda^3\mathcal O_F\), then \((1+x)^2-1=2x+x^2\in\lambda^5\mathcal O_F\). Conversely for \(y\in\lambda^5\mathcal O_F\), solve
+\(x=y/2-x^2/2\) by contraction in \(\lambda^3\mathcal O_F\). The constant term has valuation at least 3, the quadratic term at least 4, and the difference at two arguments is multiplied by \((x+z)/2\), of valuation at least 1. The iterates converge to the required square root in \(U^3\).
+
+The quotient \(U^3/U^5\) has order four, since both successive residue quotients have order two. It has basis
+\[
+g=-1+2i,\qquad h=5.
+\tag{15}
+\]
+Indeed \(v_F(g-1)=3\), \(v_F(h-1)=4\), and \(g^2-1=-4-4i\), \(h^2-1=24\) have valuations 5 and 6. Thus both have order two in the quotient and are independent by their distinct leading levels.
+
+We compute three quartic pairings using the already proved global product formula over \(\mathbf Q(i)\) and the tame formula. This uses no quartic reciprocity theorem. The only odd places involved lie over 5, generated by \(g\) and \(\bar g=-1-2i\); both have norm 5, and \(5=g\bar g\). For \((g,g)_4\), the tame factor at \(g\) is \(-1\), and every other odd factor is 1. For \((h,h)_4\), each of the two places over 5 has tame factor \(-1\), with product 1. All infinite factors are trivial. Hence (5) gives
+\[
+(g,g)_{F,4}=-1,\qquad(h,h)_{F,4}=1.
+\tag{16}
+\]
+For \((g,h)_4\), at \(g\) formula (6) gives the residue \(-\bar g=2\pmod g\). Here \(i=3\pmod g\), so that factor is \(-i\). At \(\bar g\), it gives \(g^{-1}=2\pmod{\bar g}\), and \(i=2\pmod{\bar g}\), so that factor is \(i\). Their product is 1, yielding
+\[
+(g,h)_{F,4}=1.
+\tag{17}
+\]
+
+Compatibility of radicals gives \((a,b)_4^2=(a,b)_2\): the square of a fourth root of \(b\) is a square root. The squares of all pairings in (16)–(17) are 1, and the quadratic symbol is skew symmetric. Since \(U^5=(U^3)^2\), its square classes are already accounted for by the two generators (15). Bilinearity therefore shows that the quadratic pairing is trivial on all of \(U^3\times U^3\). Consequently all quartic values there are signs. Also \(U^5\) is in the radical of that restricted quartic pairing, since for \(z,v\in U^3\),
+\((z^2,v)_4=(z,v)_4^2=(z,v)_2=1\), and likewise in the other argument.
+
+Thus (16)–(17) describe the entire restricted pairing on the two-dimensional binary quotient \(U^3/U^5\): its only negative basis pairing is the \(g,g\) entry. Finally \(e(g)=1\), \(e(h)=0\), and \(e\) kills \(U^5\), since the square of a norm congruent to 1 modulo 4 is 1 modulo 8. Its value is precisely the coefficient of \(g\) in this quotient. This proves (14). \(\square\)
+
+**Quartic reciprocity.** For distinct primary Gaussian primes \(\pi,\rho\),
+\[
+\left(\frac\pi\rho\right)_4
+=\left(\frac\rho\pi\right)_4
+(-1)^{((N\pi-1)/4)((N\rho-1)/4)}.
+\tag{18}
+\]
+
+**Proof.** Both local entries at the unique dyadic prime lie in \(U^3\). Their local norms are their ordinary Gaussian norms, so (13)–(14) give exactly the sign in (18). This is the only exceptional finite factor in (7), and the infinite places are complex. Substitute it into (7) to obtain (18). \(\square\)
+
+The term biquadratic reciprocity also denotes this fourth-power law. Its sign is absent from cubic reciprocity because the corresponding primary cubic local pairing vanishes. The local unit quotient computation above explains the quartic sign rather than imposing it as a convention.
+
+## 7. Exercises and complete solutions
+
+### Exercise 1 — The second quadratic supplement (easy)
+
+Derive \((2/p)=(-1)^{(p^2-1)/8}\) for an odd positive prime from the product formula.
+
+**Solution.** In \(\prod_v(2,p)_{v,2}=1\), every odd place other than \(p\) has two unit entries and tame factor 1. The real factor is 1. The factor at \(p\) is the inverse of \((2/p)\) by (4), which is the same sign. The explicit dyadic formula gives \((2,p)_{2,2}=(-1)^{(p^2-1)/8}\). Thus those two remaining signs multiply to 1 and are equal. The exponent is even for \(p\equiv1,7\pmod8\) and odd for \(p\equiv3,5\pmod8\), giving the familiar residue criterion.
+
+### Exercise 2 — Recovering the symbol from Frobenius (medium)
+
+Show that \((a/\mathfrak p)_n\) is determined by the Frobenius in \(K(\sqrt[n]a)/K\), including when the radical extension has degree smaller than \(n\).
+
+**Solution.** Suppose \(a\) is a unit and \(\mathfrak p\nmid n\). A residue root lifts in an unramified local extension because the derivative is a unit. Choose a global root \(\beta\) and a place above \(\mathfrak p\). Arithmetic Frobenius sends its residue to \(\bar\beta^q\), so its ratio with \(\beta\) is a root in \(\mu_n\) reducing to \(\bar a^{(q-1)/n}\). Reduction injectivity on \(\mu_n\) makes this ratio exactly (2). Replacing \(\beta\) by another root multiplies it by an element of \(\mu_n\subset K\), fixed by Frobenius, so changes no ratio. Conjugating the chosen place changes no action in this abelian radical extension. Nothing in these steps asserts degree \(n\); the Frobenius may have smaller order and its ratio then lies in the corresponding subgroup of \(\mu_n\). Finally it is \((\pi,a)_n\), and equals the inverse of \((a,\pi)_n\) with the convention (1).
+
+### Exercise 3 — The quartic symbol of \(i\) (medium)
+
+For an odd Gaussian prime \(\pi\), compute \((i/\pi)_4\). Give examples with values \(i\) and \(-1\).
+
+**Solution.** The residue cardinality satisfies \(4\mid N\pi-1\), since \(\mu_4\) injects into its multiplicative group. Formula (2) says the desired root reduces to \(i^{(N\pi-1)/4}\). This is already a global fourth root of unity, so injectivity gives the exact equality
+\[
+\left(\frac i\pi\right)_4=i^{(N\pi-1)/4}.
+\tag{19}
+\]
+For \(\pi=-1+2i\), norm 5, the exponent is 1 and the value is \(i\). For the inert Gaussian prime \(\pi=-3\), norm 9, it is 2 and the value is \(-1\). Both chosen associates are primary, although (19) requires no primary normalization. Using norm 3 instead of 9 for the second prime would not even give an integer exponent and would be incorrect.
+
+### Exercise 4 — The primary cubic local norm calculation (hard)
+
+Prove cubic reciprocity for nonassociate primary primes by computing the exceptional Hilbert symbol at \(1-\omega\).
+
+**Solution.** Primary primes are \(-1\pmod3\). Their negatives are in \(U^2\subset\mathbf Q_3(\omega)^\times\), and \(-1\) is a cube. It is enough to prove every element of \(U^2\) is a norm from the radical field of any \(b\in U^2\). If \(b\) is a cube this is automatic. Otherwise write \(b=1+\lambda^2c\) and \(\gamma^3=b\). Compute the norm of \(1+t(\gamma-1)\) as in (11). The derivative \(P'(0)=\omega^2\) is a unit, so for every \(d\in\lambda\mathcal O_F\) the equation \(P(t)=d\) has a root near zero. Consequently all of \(U^3\) is in the norm group. Among \(P(1)\) and \(P(-1)\), the residues are \(c\) and \(1-c\); at least one is nonzero and its norm generates the three-element quotient \(U^2/U^3\). The norm group therefore contains all of \(U^2\). The norm criterion proves that the Hilbert symbol of the two primary entries is 1 at \(\lambda\). This is the only exceptional finite place, and complex symbols are trivial. The general reciprocity equation (7) gives (12). This supplies the local calculation itself, rather than citing a wild-symbol formula without its proof.
+
+## What this lesson does not prove
+
+The Kummer, local Hilbert-symbol and global principal reciprocity results are the exact earlier written course inputs specified at the beginning. All five numbered results, the arbitrary-number-field primary quadratic theorem, and the cubic and quartic primary laws are proved here. The necessary wild primary local calculations are given explicitly in sections 5–6. Further unit and ramified-prime supplementary laws for higher powers are not asserted here.
+
+## Editable edition
+
+The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.
+
+## References
+
+The global Hilbert product and the tame formula give the general power-residue identity. The primary quadratic law keeps its real sign. The explicit cubic norm polynomial and quartic local two-generator pairing prove the primary cubic and quartic laws in the lesson.
+
+- [J. S. Milne, Class Field Theory, version 4.03](https://www.jmilne.org/math/CourseNotes/CFT.pdf).
+
+The [proof guide](../FREE_PROOFS.md) gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.

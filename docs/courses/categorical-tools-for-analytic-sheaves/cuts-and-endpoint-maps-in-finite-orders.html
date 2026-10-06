@@ -1,0 +1,343 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cuts and endpoint maps in finite orders</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="cuts-and-endpoint-maps-in-finite-orders">Cuts and endpoint maps in finite orders</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Original text: CC0.</em></p>
+<p>A finite linear order can be recovered from its cuts. Moving a point forward moves the evaluation at that point forward, but moving the order itself forward pulls its cuts backward. This reversal turns injections of finite orders into surjections of their cut orders. Adjoining two endpoints gives a second construction: arbitrary monotone maps become endpoint-preserving maps from the enlarged order.</p>
+<p>We use finite linear orders with arbitrary monotone maps, including the empty order. We distinguish this augmented category from the nonempty simplicial indexing category used in [Stacks, Finite ordered sets]. The category of nonempty finite orders with endpoint-preserving maps will provide its dual. Prerequisites are the complete opposite-category and functor laws in <a href="relations-and-cancellation-in-categories.html#3-functors-and-the-direction-of-a-test">Relations and cancellation in categories</a>, the equivalence criterion in <a href="equivalences-and-chosen-representatives.html#1-recognizing-a-reversible-change-of-category">Equivalences and chosen representatives</a>, and <a href="passing-maps-across-an-adjunction.html#2-the-two-maps-that-reverse-the-correspondence">Passing maps across an adjunction</a>. Basic references are [Stacks, Finite ordered sets], [Simplicial sets, nerves and Kan complexes] and these three prerequisite lessons.</p>
+<p>Fix a universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, and take orders whose underlying finite sets and order relations belong to it. Their Hom sets are finite and belong to <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>; all object data form ambient sets. The small models in Section 5 have <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small object sets. The cut constructions remain within this universe by its finite-set and function-set closure, proved in <a href="universes-and-small-categories.html#2-building-sets-inside-a-universe">Universes and small categories</a>.</p>
+<h2 id="1-the-chain-of-all-cuts">1. The chain of all cuts</h2>
+<p>Write <span class="math" data-tex="\(\mathsf O\)">\(\mathsf O\)</span> for the category of finite linear orders, including the empty order, and monotone maps. Write <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> for the category of nonempty finite linear orders and monotone maps preserving both the least and the greatest element. The least and greatest element of a singleton coincide. Consequently there is no endpoint-preserving map from a singleton to a two-element order. These maps are closed under identities and composition, so <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> is a subcategory of <span class="math" data-tex="\(\mathsf O\)">\(\mathsf O\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathbf2=\{0&lt;1\}\)">\(\mathbf2=\{0&lt;1\}\)</span>. For <span class="math" data-tex="\(P\in\mathsf O\)">\(P\in\mathsf O\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+S(P)=\operatorname{Hom}_{\mathsf O}(P,\mathbf2),
+\tag{1.1}
+\]">\[
+S(P)=\operatorname{Hom}_{\mathsf O}(P,\mathbf2),
+\tag{1.1}
+\]</span>
+<p>ordered pointwise.</p>
+<p><strong>Proposition 1.1.</strong> If <span class="math" data-tex="\(P\)">\(P\)</span> has <span class="math" data-tex="\(n\)">\(n\)</span> elements, <span class="math" data-tex="\(S(P)\)">\(S(P)\)</span> is a nonempty linear order with <span class="math" data-tex="\(n+1\)">\(n+1\)</span> elements. Its endpoints are the constant functions. Precomposition defines a functor <span class="math" data-tex="\(S:\mathsf O\to\mathsf B^{\mathrm{op}}\)">\(S:\mathsf O\to\mathsf B^{\mathrm{op}}\)</span>.</p>
+<p><strong>Proof.</strong> For a finite linear order <span class="math" data-tex="\(P=\{p_1&lt;\cdots&lt;p_n\}\)">\(P=\{p_1&lt;\cdots&lt;p_n\}\)</span>, every monotone map to <span class="math" data-tex="\(\mathbf2\)">\(\mathbf2\)</span> has one initial block of zeros followed by one final block of ones. For <span class="math" data-tex="\(0\leq c\leq n\)">\(0\leq c\leq n\)</span>, let <span class="math" data-tex="\(f_c(p_i)=0\)">\(f_c(p_i)=0\)</span> if <span class="math" data-tex="\(i\leq c\)">\(i\leq c\)</span>, and <span class="math" data-tex="\(f_c(p_i)=1\)">\(f_c(p_i)=1\)</span> if <span class="math" data-tex="\(i&gt;c\)">\(i&gt;c\)</span>. These are all the maps, and for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> their order is</p>
+<span class="math math-display" data-tex="\[
+f_n&lt;f_{n-1}&lt;\cdots&lt;f_0.
+\tag{1.2}
+\]">\[
+f_n&lt;f_{n-1}&lt;\cdots&lt;f_0.
+\tag{1.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(S(P)\)">\(S(P)\)</span> is a nonempty linear order with <span class="math" data-tex="\(n+1\)">\(n+1\)</span> elements. Its least and greatest elements are the constant zero and constant one functions. If <span class="math" data-tex="\(P\)">\(P\)</span> is empty these are the same empty function, and <span class="math" data-tex="\(S(P)\)">\(S(P)\)</span> is a singleton.</p>
+<p>For a monotone <span class="math" data-tex="\(u:P\to P&#x27;\)">\(u:P\to P&#x27;\)</span>, precomposition gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(u):S(P&#x27;)\to S(P),\\
+f\mapsto f u.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+S(u):S(P&#x27;)\to S(P),\\
+f\mapsto f u.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>It is monotone because pointwise inequalities remain inequalities after substitution. It preserves the two constant functions, hence both endpoints. Identity substitution is the identity, and substitution along <span class="math" data-tex="\(vu\)">\(vu\)</span> is first substitution along <span class="math" data-tex="\(v\)">\(v\)</span> and then along <span class="math" data-tex="\(u\)">\(u\)</span>. Consequently <span class="math" data-tex="\(S:\mathsf O\to\mathsf B^{\mathrm{op}}\)">\(S:\mathsf O\to\mathsf B^{\mathrm{op}}\)</span> is a functor. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the three-element chain <span class="math" data-tex="\(a&lt;b&lt;c\)">\(a&lt;b&lt;c\)</span>, the entire cut order and its point evaluations fit in one table:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|ccc}
+S(P)&amp;a&amp;b&amp;c\\ \hline
+f_3&amp;0&amp;0&amp;0\\
+f_2&amp;0&amp;0&amp;1\\
+f_1&amp;0&amp;1&amp;1\\
+f_0&amp;1&amp;1&amp;1
+\end{array}
+\tag{1.4}
+\]">\[
+\begin{array}{c|ccc}
+S(P)&amp;a&amp;b&amp;c\\ \hline
+f_3&amp;0&amp;0&amp;0\\
+f_2&amp;0&amp;0&amp;1\\
+f_1&amp;0&amp;1&amp;1\\
+f_0&amp;1&amp;1&amp;1
+\end{array}
+\tag{1.4}
+\]</span>
+<p><em>Figure 1.1. Rows increase from the least cut to the greatest. Each column is an endpoint-preserving monotone function on that row order. The columns increase in the original point order <span class="math" data-tex="\(a&lt;b&lt;c\)">\(a&lt;b&lt;c\)</span>, which Section 2 recovers by evaluation. The displayed array is the editable source of this exact finite diagram.</em></p>
+<h2 id="2-evaluation-recovers-the-original-points">2. Evaluation recovers the original points</h2>
+<p>For <span class="math" data-tex="\(Q\in\mathsf B\)">\(Q\in\mathsf B\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+T(Q)=\operatorname{Hom}_{\mathsf B}(Q,\mathbf2),
+\tag{2.1}
+\]">\[
+T(Q)=\operatorname{Hom}_{\mathsf B}(Q,\mathbf2),
+\tag{2.1}
+\]</span>
+<p>again ordered pointwise. If <span class="math" data-tex="\(Q=\{q_1&lt;\cdots&lt;q_m\}\)">\(Q=\{q_1&lt;\cdots&lt;q_m\}\)</span>, an endpoint-preserving map must take <span class="math" data-tex="\(q_1\)">\(q_1\)</span> to zero and <span class="math" data-tex="\(q_m\)">\(q_m\)</span> to one. For <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, the possible cuts therefore have <span class="math" data-tex="\(1\leq c\leq m-1\)">\(1\leq c\leq m-1\)</span>. They form a linear order of size <span class="math" data-tex="\(m-1\)">\(m-1\)</span>. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, no such map exists and <span class="math" data-tex="\(T(Q)\)">\(T(Q)\)</span> is the empty order. An endpoint-preserving map <span class="math" data-tex="\(v:Q&#x27;\to Q\)">\(v:Q&#x27;\to Q\)</span> induces the monotone map <span class="math" data-tex="\(T(Q)\to T(Q&#x27;)\)">\(T(Q)\to T(Q&#x27;)\)</span>, <span class="math" data-tex="\(g\mapsto gv\)">\(g\mapsto gv\)</span>. Substitution proves both functor laws. This defines <span class="math" data-tex="\(T:\mathsf B^{\mathrm{op}}\to\mathsf O\)">\(T:\mathsf B^{\mathrm{op}}\to\mathsf O\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> The functors <span class="math" data-tex="\(S:\mathsf O\to\mathsf B^{\mathrm{op}}\)">\(S:\mathsf O\to\mathsf B^{\mathrm{op}}\)</span> and <span class="math" data-tex="\(T:\mathsf B^{\mathrm{op}}\to\mathsf O\)">\(T:\mathsf B^{\mathrm{op}}\to\mathsf O\)</span> are quasi-inverse equivalences. The two comparisons are given by evaluation.</p>
+<p><strong>Proof.</strong> Define the evaluation maps</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e_P:P\to T(S(P)),\\
+e_P(p)(f)=f(p),\\
+d_Q:Q\to S(T(Q)),\\
+d_Q(q)(g)=g(q).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+e_P:P\to T(S(P)),\\
+e_P(p)(f)=f(p),\\
+d_Q:Q\to S(T(Q)),\\
+d_Q(q)(g)=g(q).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>For <span class="math" data-tex="\(e_P\)">\(e_P\)</span>, evaluation is monotone in <span class="math" data-tex="\(f\)">\(f\)</span> and takes the constant zero and one functions to zero and one, respectively. Hence <span class="math" data-tex="\(e_P(p)\)">\(e_P(p)\)</span> belongs to <span class="math" data-tex="\(T(S(P))\)">\(T(S(P))\)</span>. As <span class="math" data-tex="\(p\)">\(p\)</span> increases, every monotone <span class="math" data-tex="\(f\)">\(f\)</span> has nondecreasing values, so <span class="math" data-tex="\(e_P\)">\(e_P\)</span> is monotone. If <span class="math" data-tex="\(p&lt;p&#x27;\)">\(p&lt;p&#x27;\)</span>, there is a cut with value zero at <span class="math" data-tex="\(p\)">\(p\)</span> and one at <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>, so these evaluations are distinct. Both <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(T(S(P))\)">\(T(S(P))\)</span> have <span class="math" data-tex="\(n\)">\(n\)</span> elements, including <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, making <span class="math" data-tex="\(e_P\)">\(e_P\)</span> bijective. A monotone injection between linear orders reflects order: if <span class="math" data-tex="\(p&gt;p&#x27;\)">\(p&gt;p&#x27;\)</span>, its two distinct images have the same strict inequality. A monotone bijection therefore has a monotone inverse. Thus <span class="math" data-tex="\(e_P\)">\(e_P\)</span> is an order isomorphism.</p>
+<p>For <span class="math" data-tex="\(d_Q\)">\(d_Q\)</span>, evaluation is monotone in <span class="math" data-tex="\(g\)">\(g\)</span> and in <span class="math" data-tex="\(q\)">\(q\)</span>. If <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, the endpoints of <span class="math" data-tex="\(Q\)">\(Q\)</span> evaluate to the constant zero and one functions on <span class="math" data-tex="\(T(Q)\)">\(T(Q)\)</span>, so <span class="math" data-tex="\(d_Q\)">\(d_Q\)</span> preserves endpoints. Every pair <span class="math" data-tex="\(q&lt;q&#x27;\)">\(q&lt;q&#x27;\)</span> can be separated by an endpoint-preserving cut between them. Thus the evaluations are distinct, and <span class="math" data-tex="\(Q,S(T(Q))\)">\(Q,S(T(Q))\)</span> both have <span class="math" data-tex="\(m\)">\(m\)</span> elements. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, its target is the singleton set of empty functions; <span class="math" data-tex="\(d_Q\)">\(d_Q\)</span> is the unique order isomorphism and preserves the coincident endpoints.</p>
+<p>For <span class="math" data-tex="\(u:P\to P&#x27;\)">\(u:P\to P&#x27;\)</span>, evaluate either composite in the first identity below at <span class="math" data-tex="\(p\in P\)">\(p\in P\)</span> and <span class="math" data-tex="\(f\in S(P&#x27;)\)">\(f\in S(P&#x27;)\)</span>. The result is <span class="math" data-tex="\(f(u(p))\)">\(f(u(p))\)</span> in both cases. For <span class="math" data-tex="\(v:Q\to Q&#x27;\)">\(v:Q\to Q&#x27;\)</span>, evaluate either composite in the second at <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span> and <span class="math" data-tex="\(g\in T(Q&#x27;)\)">\(g\in T(Q&#x27;)\)</span>; the result is <span class="math" data-tex="\(g(v(q))\)">\(g(v(q))\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T(S(u))\,e_P=e_{P&#x27;}u,\\
+S(T(v))\,d_Q=d_{Q&#x27;}v.
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+T(S(u))\,e_P=e_{P&#x27;}u,\\
+S(T(v))\,d_Q=d_{Q&#x27;}v.
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(S(u):S(P&#x27;)\to S(P)\)">\(S(u):S(P&#x27;)\to S(P)\)</span> and <span class="math" data-tex="\(T(v):T(Q&#x27;)\to T(Q)\)">\(T(v):T(Q&#x27;)\to T(Q)\)</span> are written in their underlying categories, so both equations have the displayed types. They prove both naturality statements. In <span class="math" data-tex="\(\mathsf B^{\mathrm{op}}\)">\(\mathsf B^{\mathrm{op}}\)</span>, the arrow <span class="math" data-tex="\(d_Q^{\mathrm{op}}\)">\(d_Q^{\mathrm{op}}\)</span> goes from <span class="math" data-tex="\(STQ\)">\(STQ\)</span> to <span class="math" data-tex="\(Q\)">\(Q\)</span>. Thus <span class="math" data-tex="\(e:1_{\mathsf O}\Rightarrow TS\)">\(e:1_{\mathsf O}\Rightarrow TS\)</span> and the components <span class="math" data-tex="\(d_Q^{\mathrm{op}}\)">\(d_Q^{\mathrm{op}}\)</span> of <span class="math" data-tex="\(ST\Rightarrow1_{\mathsf B^{\mathrm{op}}}\)">\(ST\Rightarrow1_{\mathsf B^{\mathrm{op}}}\)</span> are natural isomorphisms exhibiting the quasi-inverse functors. We have proved</p>
+<span class="math math-display" data-tex="\[
+\mathsf O\simeq\mathsf B^{\mathrm{op}}.
+\tag{2.4}
+\]">\[
+\mathsf O\simeq\mathsf B^{\mathrm{op}}.
+\tag{2.4}
+\]</span>
+<p><span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The empty order is essential: it corresponds to the singleton endpoint order, whose two endpoints coincide.</p>
+<p>The evaluation comparisons also satisfy the two triangle identities. In the underlying categories these read</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(e_P)d_{S(P)}=1_{S(P)},\\
+T(d_Q)e_{T(Q)}=1_{T(Q)}.
+\end{gathered}
+\tag{2.5}
+\]">\[
+\begin{gathered}
+S(e_P)d_{S(P)}=1_{S(P)},\\
+T(d_Q)e_{T(Q)}=1_{T(Q)}.
+\end{gathered}
+\tag{2.5}
+\]</span>
+<p>For <span class="math" data-tex="\(f\in S(P)\)">\(f\in S(P)\)</span>, the first composite evaluated at <span class="math" data-tex="\(p\)">\(p\)</span> is <span class="math" data-tex="\(d_{S(P)}(f)(e_P(p))=e_P(p)(f)=f(p)\)">\(d_{S(P)}(f)(e_P(p))=e_P(p)(f)=f(p)\)</span>. For <span class="math" data-tex="\(g\in T(Q)\)">\(g\in T(Q)\)</span>, the second evaluated at <span class="math" data-tex="\(q\)">\(q\)</span> is <span class="math" data-tex="\(e_{T(Q)}(g)(d_Q(q))=d_Q(q)(g)=g(q)\)">\(e_{T(Q)}(g)(d_Q(q))=d_Q(q)(g)=g(q)\)</span>. Equality at every point proves the identities, including empty function domains. Theorem 2.2 of <a href="passing-maps-across-an-adjunction.html#2-the-two-maps-that-reverse-the-correspondence">Passing maps across an adjunction</a> therefore makes these specific comparisons an adjoint equivalence as well.</p>
+<h2 id="3-an-injection-becomes-a-surjection-of-cuts">3. An injection becomes a surjection of cuts</h2>
+<p><strong>Theorem 3.1.</strong> For a monotone <span class="math" data-tex="\(u:P\to P&#x27;\)">\(u:P\to P&#x27;\)</span>, the endpoint map <span class="math" data-tex="\(S(u)\)">\(S(u)\)</span> is surjective if and only if <span class="math" data-tex="\(u\)">\(u\)</span> is injective. The equivalence restricts to injections in <span class="math" data-tex="\(\mathsf O\)">\(\mathsf O\)</span> and the opposite of endpoint-preserving surjections in <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(u\)">\(u\)</span> is injective, it identifies <span class="math" data-tex="\(P\)">\(P\)</span> with an ordered subset of <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>. A cut on <span class="math" data-tex="\(P\)">\(P\)</span> extends to a cut on <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>: take the initial zero block in the image, close it downward in <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>, and assign one elsewhere. The downward closure intersects <span class="math" data-tex="\(u(P)\)">\(u(P)\)</span> in exactly the original zero block, since the complementary image points are strictly larger. If the zero block is empty its downward closure is empty. The resulting monotone function therefore restricts to the original cut. Empty <span class="math" data-tex="\(P\)">\(P\)</span> causes no exception: its one empty cut is the restriction of either constant function on <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>.</p>
+<p>If <span class="math" data-tex="\(u\)">\(u\)</span> is not injective, choose <span class="math" data-tex="\(p&lt;p&#x27;\)">\(p&lt;p&#x27;\)</span> with <span class="math" data-tex="\(u(p)=u(p&#x27;)\)">\(u(p)=u(p&#x27;)\)</span>. There is a cut on <span class="math" data-tex="\(P\)">\(P\)</span> taking different values at those points. No function pulled back from <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span> can do so. Therefore <span class="math" data-tex="\(S(u)\)">\(S(u)\)</span> is not surjective.</p>
+<p>The quasi-inverse evaluations in Section 2 are order isomorphisms. In particular, their underlying maps are injective and surjective. For every endpoint map <span class="math" data-tex="\(v:Q\to Q&#x27;\)">\(v:Q\to Q&#x27;\)</span>, (2.3) gives</p>
+<span class="math math-display" data-tex="\[
+S(T(v))=d_{Q&#x27;}v d_Q^{-1}.
+\tag{3.1}
+\]">\[
+S(T(v))=d_{Q&#x27;}v d_Q^{-1}.
+\tag{3.1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(v\)">\(v\)</span> is surjective exactly when <span class="math" data-tex="\(S(T(v))\)">\(S(T(v))\)</span> is. Apply the first assertion to the monotone <span class="math" data-tex="\(T(v):T(Q&#x27;)\to T(Q)\)">\(T(v):T(Q&#x27;)\to T(Q)\)</span>: this happens exactly when <span class="math" data-tex="\(T(v)\)">\(T(v)\)</span> is injective. Consequently both functors restrict to the indicated subcategories. The natural comparisons also restrict, since order isomorphisms are both injective and surjective. They give</p>
+<span class="math math-display" data-tex="\[
+\mathsf O_{\mathrm{inj}}
+\simeq(\mathsf B_{\mathrm{sur}})^{\mathrm{op}},
+\tag{3.2}
+\]">\[
+\mathsf O_{\mathrm{inj}}
+\simeq(\mathsf B_{\mathrm{sur}})^{\mathrm{op}},
+\tag{3.2}
+\]</span>
+<p>with the same objects as before. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-adjoin-boundaries-and-then-forget-them">4. Adjoin boundaries and then forget them</h2>
+<p>Let <span class="math" data-tex="\(J:\mathsf B\to\mathsf O\)">\(J:\mathsf B\to\mathsf O\)</span> be inclusion. For <span class="math" data-tex="\(P\in\mathsf O\)">\(P\in\mathsf O\)</span>, let <span class="math" data-tex="\(A(P)\)">\(A(P)\)</span> be the disjoint ordered sum of a new least point, <span class="math" data-tex="\(P\)">\(P\)</span>, and a new greatest point. The two new points are distinct even when <span class="math" data-tex="\(P\)">\(P\)</span> is empty. Extend a monotone <span class="math" data-tex="\(u\)">\(u\)</span> by fixing the new endpoint labels; this defines an endpoint-preserving <span class="math" data-tex="\(A(u)\)">\(A(u)\)</span>. Its identity and composition laws hold on each of the three summands.</p>
+<p><strong>Theorem 4.1.</strong> Adjoining endpoints is left adjoint to inclusion: <span class="math" data-tex="\(A\dashv J\)">\(A\dashv J\)</span>.</p>
+<p><strong>Proof.</strong> Restriction and extension give a bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf B}(A(P),Q)\\
+\simeq\operatorname{Hom}_{\mathsf O}(P,JQ).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf B}(A(P),Q)\\
+\simeq\operatorname{Hom}_{\mathsf O}(P,JQ).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>Restriction discards the values at the new endpoints. Its inverse sends those endpoints to the least and greatest points of <span class="math" data-tex="\(Q\)">\(Q\)</span>, and agrees with the given map on <span class="math" data-tex="\(P\)">\(P\)</span>. This extension is monotone because every value on <span class="math" data-tex="\(P\)">\(P\)</span> lies between those two endpoints. Restriction after extension returns the given map, while extension after restriction returns the original endpoint-preserving map because its endpoint values were already forced. Composing in <span class="math" data-tex="\(P\)">\(P\)</span> or <span class="math" data-tex="\(Q\)">\(Q\)</span> commutes with the operations, since maps in <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> preserve the two endpoint values. Thus the bijection is natural in both variables and proves <span class="math" data-tex="\(A\dashv J\)">\(A\dashv J\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Its unit includes <span class="math" data-tex="\(P\)">\(P\)</span> in its middle summand; its counit sends the new endpoints of <span class="math" data-tex="\(A(JQ)\)">\(A(JQ)\)</span> to the endpoints of <span class="math" data-tex="\(Q\)">\(Q\)</span> and is the identity on its middle summand. In the first triangle, <span class="math" data-tex="\(A\)">\(A\)</span> of the middle inclusion fixes the new endpoints and includes each old point in the middle of <span class="math" data-tex="\(A(J(A(P)))\)">\(A(J(A(P)))\)</span>; the counit sends those points back and fixes the two endpoints of <span class="math" data-tex="\(A(P)\)">\(A(P)\)</span>. In the second triangle, middle inclusion followed by the counit is the identity at each point of <span class="math" data-tex="\(JQ\)">\(JQ\)</span>. This checks both triangles on their whole domains.</p>
+<p><strong>Proposition 4.2.</strong> The square formed by <span class="math" data-tex="\(A,S,T^{\mathrm{op}},J^{\mathrm{op}}\)">\(A,S,T^{\mathrm{op}},J^{\mathrm{op}}\)</span> commutes up to a specified natural isomorphism.</p>
+<p><strong>Proof.</strong> Apply the same restriction to <span class="math" data-tex="\(Q=\mathbf2\)">\(Q=\mathbf2\)</span>. At each <span class="math" data-tex="\(P\)">\(P\)</span>, it gives an order isomorphism</p>
+<span class="math math-display" data-tex="\[
+r_P:T(A(P))\longrightarrow J(S(P)).
+\tag{4.2}
+\]">\[
+r_P:T(A(P))\longrightarrow J(S(P)).
+\tag{4.2}
+\]</span>
+<p>The inverse is endpoint extension; both preserve pointwise inequalities. For <span class="math" data-tex="\(u:P\to P&#x27;\)">\(u:P\to P&#x27;\)</span>, restricting <span class="math" data-tex="\(h A(u)\)">\(h A(u)\)</span> to the middle summand gives the restriction of <span class="math" data-tex="\(h\)">\(h\)</span> followed by <span class="math" data-tex="\(u\)">\(u\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+r_P T(A(u))=J(S(u))r_{P&#x27;}.
+\tag{4.3}
+\]">\[
+r_P T(A(u))=J(S(u))r_{P&#x27;}.
+\tag{4.3}
+\]</span>
+<p>The symbol <span class="math" data-tex="\(T(A(u))\)">\(T(A(u))\)</span> here means the underlying precomposition arrow <span class="math" data-tex="\(T(A(P&#x27;))\to T(A(P))\)">\(T(A(P&#x27;))\to T(A(P))\)</span>. In categorical composition, use <span class="math" data-tex="\(T^{\mathrm{op}}\circ A:\mathsf O\to\mathsf O^{\mathrm{op}}\)">\(T^{\mathrm{op}}\circ A:\mathsf O\to\mathsf O^{\mathrm{op}}\)</span>. Likewise the other route is <span class="math" data-tex="\(J^{\mathrm{op}}\circ S\)">\(J^{\mathrm{op}}\circ S\)</span>. Reversing (4.2) gives the components in <span class="math" data-tex="\(\mathsf O^{\mathrm{op}}\)">\(\mathsf O^{\mathrm{op}}\)</span> of the natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+J^{\mathrm{op}}S
+\ \xRightarrow{\ \simeq\ }\ T^{\mathrm{op}}A.
+\tag{4.4}
+\]">\[
+J^{\mathrm{op}}S
+\ \xRightarrow{\ \simeq\ }\ T^{\mathrm{op}}A.
+\tag{4.4}
+\]</span>
+<p>Equation (4.3) proves its naturality and identifies the particular comparison, rather than only its existence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-small-models-and-extreme-objects">5. Small models and extreme objects</h2>
+<p><strong>Proposition 5.1.</strong> The full subcategory of <span class="math" data-tex="\(\mathsf O\)">\(\mathsf O\)</span> on <span class="math" data-tex="\([0,n]\)">\([0,n]\)</span>, <span class="math" data-tex="\(n\geq-1\)">\(n\geq-1\)</span>, is a small model of <span class="math" data-tex="\(\mathsf O\)">\(\mathsf O\)</span>. Forgetting order is faithful and reflects existence of an isomorphism between objects.</p>
+<p><strong>Proof.</strong> Every finite linear order has a unique increasing listing: successively take its least remaining element. Its increasing listing identifies it with the chain of the same cardinality; the empty order corresponds to <span class="math" data-tex="\([0,-1]\)">\([0,-1]\)</span>. The full subcategory on those standard chains is fully faithful by definition and essentially surjective by this listing. The complete equivalence criterion cited in the introduction makes it equivalent to <span class="math" data-tex="\(\mathsf O\)">\(\mathsf O\)</span>. Its objects are indexed by the integers <span class="math" data-tex="\(n\geq-1\)">\(n\geq-1\)</span>, a member of <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, and its Hom sets are finite, so it is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small.</p>
+<p>The forgetful functor to finite sets is faithful, because equality of underlying functions is equality of monotone maps. If two underlying finite sets have the same cardinality, matching their points in increasing order gives an order isomorphism. Thus this functor reflects existence of an isomorphism between objects. It need not lift a particular permutation: the transposition of a two-element set is not monotone. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The empty order is initial and the singleton is terminal in <span class="math" data-tex="\(\mathsf O\)">\(\mathsf O\)</span>. In <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span>, the two-element order is initial: its endpoint values determine the unique map to every <span class="math" data-tex="\(Q\)">\(Q\)</span>, including the singleton. The singleton is terminal because the unique constant map from <span class="math" data-tex="\(Q\)">\(Q\)</span> to it preserves both endpoints. The duality exchanges these initial and terminal objects as required.</p>
+<h2 id="6-four-exercises-with-full-solutions">6. Four exercises with full solutions</h2>
+<h3 id="exercise-1-read-a-gap-from-its-dual-map">Exercise 1 — read a gap from its dual map</h3>
+<p><em>Foundation.</em> Let <span class="math" data-tex="\(P=\{0&lt;1&lt;2\}\)">\(P=\{0&lt;1&lt;2\}\)</span>, <span class="math" data-tex="\(P&#x27;=\{0&lt;1&lt;2&lt;3\}\)">\(P&#x27;=\{0&lt;1&lt;2&lt;3\}\)</span>, and let <span class="math" data-tex="\(u:P\to P&#x27;\)">\(u:P\to P&#x27;\)</span> have values <span class="math" data-tex="\((0,2,3)\)">\((0,2,3)\)</span>. List <span class="math" data-tex="\(S(u)\)">\(S(u)\)</span> on all cuts, in increasing cut order. Identify its only nontrivial fibre. Show that applying <span class="math" data-tex="\(T\)">\(T\)</span> to this endpoint map recovers <span class="math" data-tex="\(u\)">\(u\)</span> under the evaluation comparisons.</p>
+<p><strong>Solution.</strong> A string lists the values of a cut at the points in increasing order. The full map is</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\text{cut on }P&#x27;&amp;\text{pullback to }P\\ \hline
+0000&amp;000\\
+0001&amp;001\\
+0011&amp;011\\
+0111&amp;011\\
+1111&amp;111
+\end{array}
+\tag{6.1}
+\]">\[
+\begin{array}{c|c}
+\text{cut on }P&#x27;&amp;\text{pullback to }P\\ \hline
+0000&amp;000\\
+0001&amp;001\\
+0011&amp;011\\
+0111&amp;011\\
+1111&amp;111
+\end{array}
+\tag{6.1}
+\]</span>
+<p>Both columns increase pointwise down the table. The first and last cuts map to the corresponding endpoints. Every cut on <span class="math" data-tex="\(P\)">\(P\)</span> occurs, so <span class="math" data-tex="\(S(u)\)">\(S(u)\)</span> is surjective. Its only fibre with more than one member is <span class="math" data-tex="\(\{0011,0111\}\)">\(\{0011,0111\}\)</span>, whose two cuts differ at the omitted point <span class="math" data-tex="\(1\in P&#x27;\)">\(1\in P&#x27;\)</span>.</p>
+<p>For <span class="math" data-tex="\(p\in P\)">\(p\in P\)</span>, <span class="math" data-tex="\(T(S(u))(e_P(p))\)">\(T(S(u))(e_P(p))\)</span> is the function on <span class="math" data-tex="\(S(P&#x27;)\)">\(S(P&#x27;)\)</span> sending <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(e_P(p)(S(u)(f))=f(u(p))\)">\(e_P(p)(S(u)(f))=f(u(p))\)</span>. It is therefore <span class="math" data-tex="\(e_{P&#x27;}(u(p))\)">\(e_{P&#x27;}(u(p))\)</span>. Under the increasing evaluation identifications its three values are <span class="math" data-tex="\(0,2,3\)">\(0,2,3\)</span>. This recovers the original injection, and explains which omitted point causes the cut fibre.</p>
+<h3 id="exercise-2-count-maps-and-check-the-empty-cases">Exercise 2 — count maps and check the empty cases</h3>
+<p><em>Intermediate.</em> Count monotone maps from an <span class="math" data-tex="\(n\)">\(n\)</span>-element chain to an <span class="math" data-tex="\(m\)">\(m\)</span>-element chain, allowing <span class="math" data-tex="\(n,m=0\)">\(n,m=0\)</span>. Count endpoint-preserving maps from an <span class="math" data-tex="\(a\)">\(a\)</span>-element nonempty chain to a <span class="math" data-tex="\(b\)">\(b\)</span>-element nonempty chain. Deduce numerical checks of both the duality and the endpoint adjunction. Finally count injections and the corresponding endpoint-preserving surjections.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>, a monotone map is determined by the nonnegative fibre sizes <span class="math" data-tex="\(s_1,\ldots,s_m\)">\(s_1,\ldots,s_m\)</span> with sum <span class="math" data-tex="\(n\)">\(n\)</span>. Conversely such sizes specify one monotone map by its successive constant blocks. To count the vectors, place <span class="math" data-tex="\(m-1\)">\(m-1\)</span> separators among a row of <span class="math" data-tex="\(n\)">\(n\)</span> identical marks: choosing the mark positions in the resulting <span class="math" data-tex="\(n+m-1\)">\(n+m-1\)</span> positions gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\#\operatorname{Hom}_{\mathsf O}(n,m)
+=\binom{n+m-1}{n}\\
+(m\geq1).
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+\#\operatorname{Hom}_{\mathsf O}(n,m)
+=\binom{n+m-1}{n}\\
+(m\geq1).
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>This includes <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, with its unique empty map. If <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, there is one map when <span class="math" data-tex="\(n=0\)">\(n=0\)</span> and no map when <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>.</p>
+<p>For endpoint maps, if <span class="math" data-tex="\(b=1\)">\(b=1\)</span> there is exactly one map for every <span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span>. If <span class="math" data-tex="\(a=1&lt;b\)">\(a=1&lt;b\)</span>, there is no map because the single source point would have to map to both distinct target endpoints. If <span class="math" data-tex="\(a,b\geq2\)">\(a,b\geq2\)</span>, the endpoint values are fixed. The other <span class="math" data-tex="\(a-2\)">\(a-2\)</span> entries may be any nondecreasing list of values in the <span class="math" data-tex="\(b\)">\(b\)</span>-element target. The preceding count gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\#\operatorname{Hom}_{\mathsf B}(a,b)
+=\binom{a+b-3}{a-2}\\
+(a,b\geq2).
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+\#\operatorname{Hom}_{\mathsf B}(a,b)
+=\binom{a+b-3}{a-2}\\
+(a,b\geq2).
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p>For the duality, the sizes on the endpoint side are <span class="math" data-tex="\(a=m+1\)">\(a=m+1\)</span>, <span class="math" data-tex="\(b=n+1\)">\(b=n+1\)</span>. If <span class="math" data-tex="\(n,m\geq1\)">\(n,m\geq1\)</span>, (6.3) becomes <span class="math" data-tex="\(\binom{n+m-1}{m-1}=\binom{n+m-1}{n}\)">\(\binom{n+m-1}{m-1}=\binom{n+m-1}{n}\)</span>. If <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the endpoint target is a singleton and there is exactly one map, as on the order side. If <span class="math" data-tex="\(m=0&lt;n\)">\(m=0&lt;n\)</span>, the endpoint source is a singleton with a larger target and there is no map. If both vanish, both Hom sets have one element.</p>
+<p>For the adjunction, the endpoint source <span class="math" data-tex="\(A(P)\)">\(A(P)\)</span> has <span class="math" data-tex="\(a=n+2\)">\(a=n+2\)</span> elements and its target has <span class="math" data-tex="\(b=m\geq1\)">\(b=m\geq1\)</span>. When <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, (6.3) gives exactly (6.2); when <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, both counts are one.</p>
+<p>An injection chooses an <span class="math" data-tex="\(n\)">\(n\)</span>-element ordered subset of the <span class="math" data-tex="\(m\)">\(m\)</span>-element target, so there are <span class="math" data-tex="\(\binom mn\)">\(\binom mn\)</span> injections for <span class="math" data-tex="\(0\leq n\leq m\)">\(0\leq n\leq m\)</span>, and none for <span class="math" data-tex="\(n&gt;m\)">\(n&gt;m\)</span>. This includes the unique empty injection. A monotone surjection from a chain of size <span class="math" data-tex="\(m+1\)">\(m+1\)</span> to one of size <span class="math" data-tex="\(n+1\)">\(n+1\)</span> is determined by its <span class="math" data-tex="\(n+1\)">\(n+1\)</span> positive fibre sizes summing to <span class="math" data-tex="\(m+1\)">\(m+1\)</span>. Choosing their <span class="math" data-tex="\(n\)">\(n\)</span> dividing positions among the <span class="math" data-tex="\(m\)">\(m\)</span> gaps gives <span class="math" data-tex="\(\binom mn\)">\(\binom mn\)</span>, with no choice when <span class="math" data-tex="\(n&gt;m\)">\(n&gt;m\)</span>. Surjectivity forces endpoint preservation. The counts therefore agree with the restricted duality, including a singleton endpoint target.</p>
+<h3 id="exercise-3-what-breaks-for-a-partially-ordered-set">Exercise 3 — what breaks for a partially ordered set</h3>
+<p><em>Advanced.</em> Let <span class="math" data-tex="\(P=\{a,b,c\}\)">\(P=\{a,b,c\}\)</span>, where <span class="math" data-tex="\(a&lt;c\)">\(a&lt;c\)</span>, <span class="math" data-tex="\(b&lt;c\)">\(b&lt;c\)</span>, and <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are incomparable. For this exercise extend the cut construction to finite partially ordered sets and extend the endpoint-cut construction to bounded finite partially ordered sets. List the cuts on <span class="math" data-tex="\(P\)">\(P\)</span> and all endpoint-preserving monotone functions on its cut poset. Does point evaluation recover <span class="math" data-tex="\(P\)">\(P\)</span> as an isomorphism?</p>
+<p><strong>Solution.</strong> List values in the order <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>. The cuts are</p>
+<span class="math math-display" data-tex="\[
+000,\quad001,\quad011,\quad101,\quad111.
+\tag{6.4}
+\]">\[
+000,\quad001,\quad011,\quad101,\quad111.
+\tag{6.4}
+\]</span>
+<p>The cuts <span class="math" data-tex="\(011\)">\(011\)</span> and <span class="math" data-tex="\(101\)">\(101\)</span> are incomparable. The order has least point <span class="math" data-tex="\(000\)">\(000\)</span>, then <span class="math" data-tex="\(001\)">\(001\)</span>, then the two incomparable points <span class="math" data-tex="\(011,101\)">\(011,101\)</span>, then greatest point <span class="math" data-tex="\(111\)">\(111\)</span>. Thus the cut poset is bounded and not a linear order.</p>
+<p>An endpoint-preserving monotone function on it has value zero at <span class="math" data-tex="\(000\)">\(000\)</span> and one at <span class="math" data-tex="\(111\)">\(111\)</span>. Its set of ones is a nonempty upper set excluding <span class="math" data-tex="\(000\)">\(000\)</span>. There are exactly five:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\{111\},\quad\{011,111\},\\
+\{101,111\},\quad\{011,101,111\},\\
+\{001,011,101,111\}.
+\end{gathered}
+\tag{6.5}
+\]">\[
+\begin{gathered}
+\{111\},\quad\{011,111\},\\
+\{101,111\},\quad\{011,101,111\},\\
+\{001,011,101,111\}.
+\end{gathered}
+\tag{6.5}
+\]</span>
+<p>Indeed, including <span class="math" data-tex="\(001\)">\(001\)</span> forces both middle points, and each included middle point forces <span class="math" data-tex="\(111\)">\(111\)</span>; these conditions enumerate every choice.</p>
+<p>Evaluation at <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(c\)">\(c\)</span> has respectively the sets of ones <span class="math" data-tex="\(\{101,111\}\)">\(\{101,111\}\)</span>, <span class="math" data-tex="\(\{011,111\}\)">\(\{011,111\}\)</span>, and <span class="math" data-tex="\(\{001,011,101,111\}\)">\(\{001,011,101,111\}\)</span>. They are distinct and preserve and reflect the order of <span class="math" data-tex="\(P\)">\(P\)</span>. But two of the five functions are not point evaluations: the function with ones <span class="math" data-tex="\(\{111\}\)">\(\{111\}\)</span> is the pointwise meet of evaluation at <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, and the one with ones <span class="math" data-tex="\(\{011,101,111\}\)">\(\{011,101,111\}\)</span> is their pointwise join. Hence evaluation embeds this three-element poset into a five-element one and is not surjective. This example explains why Theorem 2.1 assumes linear orders.</p>
+<h3 id="exercise-4-compute-both-routes-past-new-endpoints">Exercise 4 — compute both routes past new endpoints</h3>
+<p><em>Advanced.</em> Take <span class="math" data-tex="\(P=\{0&lt;1\}\)">\(P=\{0&lt;1\}\)</span> and <span class="math" data-tex="\(Q=\{0&lt;1&lt;2\}\)">\(Q=\{0&lt;1&lt;2\}\)</span>. List every map <span class="math" data-tex="\(P\to JQ\)">\(P\to JQ\)</span> and its adjoint map <span class="math" data-tex="\(A(P)\to Q\)">\(A(P)\to Q\)</span>. Give the unit at <span class="math" data-tex="\(P\)">\(P\)</span> and counit at <span class="math" data-tex="\(Q\)">\(Q\)</span>, and check both triangles in ordered coordinates. For the constant map <span class="math" data-tex="\(u:P\to\{0\}\)">\(u:P\to\{0\}\)</span>, verify the naturality equation (4.3) on every endpoint cut of <span class="math" data-tex="\(A(\{0\})\)">\(A(\{0\})\)</span>.</p>
+<p><strong>Solution.</strong> The six nondecreasing pairs <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(0,0),(0,1),(0,2),\\
+(1,1),(1,2),(2,2).
+\end{gathered}
+\tag{6.6}
+\]">\[
+\begin{gathered}
+(0,0),(0,1),(0,2),\\
+(1,1),(1,2),(2,2).
+\end{gathered}
+\tag{6.6}
+\]</span>
+<p>Their adjoint maps have the four successive values <span class="math" data-tex="\((0,x,y,2)\)">\((0,x,y,2)\)</span> on <span class="math" data-tex="\(A(P)\)">\(A(P)\)</span>. Restriction returns <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>, and extending any endpoint map returns its tuple because its first and last entries were already <span class="math" data-tex="\(0,2\)">\(0,2\)</span>.</p>
+<p>The unit includes the two points in the middle of the four-element order, with values <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span>. The counit at <span class="math" data-tex="\(Q\)">\(Q\)</span> has the five values <span class="math" data-tex="\((0,0,1,2,2)\)">\((0,0,1,2,2)\)</span>. For the first triangle at <span class="math" data-tex="\(A(P)\)">\(A(P)\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span> of the unit has values <span class="math" data-tex="\((0,2,3,5)\)">\((0,2,3,5)\)</span> in the six-element order <span class="math" data-tex="\(A(J(A(P)))\)">\(A(J(A(P)))\)</span>. The counit there has values <span class="math" data-tex="\((0,0,1,2,3,3)\)">\((0,0,1,2,3,3)\)</span>. Composing gives <span class="math" data-tex="\((0,1,2,3)\)">\((0,1,2,3)\)</span>, the identity on <span class="math" data-tex="\(A(P)\)">\(A(P)\)</span>. For the second triangle at <span class="math" data-tex="\(JQ\)">\(JQ\)</span>, the unit has values <span class="math" data-tex="\((1,2,3)\)">\((1,2,3)\)</span>, and the counit just listed sends them to <span class="math" data-tex="\((0,1,2)\)">\((0,1,2)\)</span>, the identity on <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>The three endpoint cuts on <span class="math" data-tex="\(A(P)\)">\(A(P)\)</span>, and their restrictions to <span class="math" data-tex="\(P\)">\(P\)</span>, are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0001\mapsto00,\\
+0011\mapsto01,\\
+0111\mapsto11.
+\end{gathered}
+\tag{6.7}
+\]">\[
+\begin{gathered}
+0001\mapsto00,\\
+0011\mapsto01,\\
+0111\mapsto11.
+\end{gathered}
+\tag{6.7}
+\]</span>
+<p>The order <span class="math" data-tex="\(A(\{0\})\)">\(A(\{0\})\)</span> has three elements and its two endpoint cuts are <span class="math" data-tex="\(001,011\)">\(001,011\)</span>. The map <span class="math" data-tex="\(A(u)\)">\(A(u)\)</span> has values <span class="math" data-tex="\((0,1,1,2)\)">\((0,1,1,2)\)</span>. Pulling those two cuts back gives <span class="math" data-tex="\(0001,0111\)">\(0001,0111\)</span>, whose middle restrictions are <span class="math" data-tex="\(00,11\)">\(00,11\)</span>. The other route first restricts <span class="math" data-tex="\(001,011\)">\(001,011\)</span> to the singleton, giving <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, then precomposes with the constant <span class="math" data-tex="\(u\)">\(u\)</span>, giving <span class="math" data-tex="\(00,11\)">\(00,11\)</span>. Both routes agree on every cut, verifying the exact naturality comparison in this example.</p>
+<h2 id="7-references">7. References</h2>
+<ul>
+<li><strong>[Stacks, Finite ordered sets]</strong> The Stacks Project authors, <em>Simplicial Methods</em>, <a href="https://stacks.math.columbia.edu/tag/0164">“The category of finite ordered sets”</a>. The consulted <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/simplicial.tex#L28-L178">pinned structured chapter</a> uses the nonempty indexing category. Its <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/COPYING">licence</a> is GFDL 1.2 or later. No source expression is incorporated here.</li>
+<li><strong>[Simplicial sets, nerves and Kan complexes]</strong> <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/AG-AS--AG-AS-11.html#1-1-the-indexing-category">Section 1.1, “The indexing category”</a>, a separate course lesson using nonempty standard chains for simplicial objects. Its nerve and homotopy results are not needed for the proofs here.</li>
+<li><strong>[Categorical prerequisites]</strong> <a href="relations-and-cancellation-in-categories.html#3-functors-and-the-direction-of-a-test">Relations and cancellation in categories</a>, <a href="equivalences-and-chosen-representatives.html#1-recognizing-a-reversible-change-of-category">Equivalences and chosen representatives</a>, and <a href="passing-maps-across-an-adjunction.html#2-the-two-maps-that-reverse-the-correspondence">Passing maps across an adjunction</a>, the complete internal functor, equivalence and adjunction interfaces used above.</li>
+</ul>
+</main></body></html>

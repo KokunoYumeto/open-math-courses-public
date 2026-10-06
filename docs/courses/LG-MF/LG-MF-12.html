@@ -1,0 +1,1381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twists, level N and Hecke&#x27;s converse theorem · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-12.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="twists-level-n-and-hecke-s-converse-theorem">Twists, level N and Hecke's converse theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A level changes the scale of the Mellin integral. A character twist changes the coefficients and introduces a Gauss sum into the reflection. Conversely, a functional equation recovers an inversion law. At level one this inversion and the Fourier period generate the modular group; at higher level we need equations for twists to recover the remaining transformations.</p>
+<p>We retain <span class="math" data-tex="\(q=e^{2\pi iz}\)">\(q=e^{2\pi iz}\)</span>, and use <span class="math" data-tex="\(r\)">\(r\)</span> for a character conductor. For a real matrix <span class="math" data-tex="\(A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)">\(A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span> with positive determinant and integral weight, the unitary slash is
+<span class="math math-display" data-tex="\[
+(f\Vert_k A)(z)=\det(A)^{k/2}(cz+d)^{-k}f(Az).
+\tag{0.1}
+\]">\[
+(f\Vert_k A)(z)=\det(A)^{k/2}(cz+d)^{-k}f(Az).
+\tag{0.1}
+\]</span>
+It is a right action. Positive scalar matrices act trivially. Put
+<span class="math math-display" data-tex="\[
+W_N=\begin{pmatrix}0&amp;-1\\N&amp;0\end{pmatrix},\qquad
+(f\Vert_kW_N)(z)=N^{-k/2}z^{-k}f(-1/(Nz)).
+\tag{0.2}
+\]">\[
+W_N=\begin{pmatrix}0&amp;-1\\N&amp;0\end{pmatrix},\qquad
+(f\Vert_kW_N)(z)=N^{-k/2}z^{-k}f(-1/(Nz)).
+\tag{0.2}
+\]</span>
+These are the conventions of <a href="LG-MF-10.html">lesson 10</a>. Initially <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> is even and the original nebentypus is trivial. The more general Hecke correspondence in Section 4 explicitly allows real positive weight and a multiplier.</p>
+<h2 id="1-the-level-in-the-completion">1. The level in the completion</h2>
+<p>Conjugation gives
+<span class="math math-display" data-tex="\[
+W_N^{-1}\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}W_N
+=\begin{pmatrix}d&amp;-c/N\\-Nb&amp;a\end{pmatrix}\in\Gamma_0(N)
+\quad(c\equiv0\pmod N).
+\]">\[
+W_N^{-1}\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}W_N
+=\begin{pmatrix}d&amp;-c/N\\-Nb&amp;a\end{pmatrix}\in\Gamma_0(N)
+\quad(c\equiv0\pmod N).
+\]</span>
+Thus Fricke preserves the modular transformation law with trivial character. It also preserves cusp vanishing: a rational matrix carries a rational cusp to another rational cusp, and the upper triangular factor after choosing its cusp scaling matrix has a positive affine slope. This is the cusp pullback argument after equation (2.3) of <a href="LG-MF-09.html">lesson 9</a>. Also <span class="math" data-tex="\(W_N^2=-NI\)">\(W_N^2=-NI\)</span>, so <span class="math" data-tex="\(\Vert_kW_N\)">\(\Vert_kW_N\)</span> squares to the identity at even weight. Its nonzero eigenvectors have eigenvalue <span class="math" data-tex="\(\epsilon=\pm1\)">\(\epsilon=\pm1\)</span>.</p>
+<p><strong>Theorem 1.1 (level <span class="math" data-tex="\(N\)">\(N\)</span> functional equation).</strong> Let
+<span class="math math-display" data-tex="\[
+f(z)=\sum_{n\ge1}a_nq^n\in S_k(\Gamma_0(N)),\qquad
+f\Vert_kW_N=\epsilon f.
+\]">\[
+f(z)=\sum_{n\ge1}a_nq^n\in S_k(\Gamma_0(N)),\qquad
+f\Vert_kW_N=\epsilon f.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\Lambda_N(f,s)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(f,s),\qquad
+L(f,s)=\sum_{n\ge1}a_nn^{-s},
+\tag{1.1}
+\]">\[
+\Lambda_N(f,s)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(f,s),\qquad
+L(f,s)=\sum_{n\ge1}a_nn^{-s},
+\tag{1.1}
+\]</span>
+initially for <span class="math" data-tex="\(\operatorname{Re}s&gt;k/2+1\)">\(\operatorname{Re}s&gt;k/2+1\)</span>, continues to an entire function bounded on every closed vertical strip. It satisfies
+<span class="math math-display" data-tex="\[
+\Lambda_N(f,s)=w\Lambda_N(f,k-s),\qquad w=i^k\epsilon.
+\tag{1.2}
+\]">\[
+\Lambda_N(f,s)=w\Lambda_N(f,k-s),\qquad w=i^k\epsilon.
+\tag{1.2}
+\]</span>
+In particular, <span class="math" data-tex="\(w=-1\)">\(w=-1\)</span> forces <span class="math" data-tex="\(L(f,k/2)=0\)">\(L(f,k/2)=0\)</span>.</p>
+<p><strong>Proof.</strong> The cusp coefficient estimate gives <span class="math" data-tex="\(|a_n|\le Cn^{k/2}\)">\(|a_n|\le Cn^{k/2}\)</span>, so the initial series converges absolutely and locally uniformly in the stated half-plane. Set
+<span class="math math-display" data-tex="\[
+G(t)=f(it/\sqrt N),\qquad b_N=2\pi/\sqrt N.
+\]">\[
+G(t)=f(it/\sqrt N),\qquad b_N=2\pi/\sqrt N.
+\]</span>
+The slash equation evaluated at <span class="math" data-tex="\(z=it/\sqrt N\)">\(z=it/\sqrt N\)</span> gives
+<span class="math math-display" data-tex="\[
+G(1/t)=i^k\epsilon t^kG(t)=wt^kG(t).
+\tag{1.3}
+\]">\[
+G(1/t)=i^k\epsilon t^kG(t)=wt^kG(t).
+\tag{1.3}
+\]</span>
+For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, the Fourier series and coefficient bound give
+<span class="math math-display" data-tex="\[
+|G(t)|\le C\sum_{n\ge1}n^{k/2}e^{-b_Nnt}
+\le C&#x27;e^{-b_Nt/2}.
+\]">\[
+|G(t)|\le C\sum_{n\ge1}n^{k/2}e^{-b_Nnt}
+\le C&#x27;e^{-b_Nt/2}.
+\]</span>
+Here <span class="math" data-tex="\(nt\ge(n+t)/2\)">\(nt\ge(n+t)/2\)</span> for <span class="math" data-tex="\(n,t\ge1\)">\(n,t\ge1\)</span>. Equation (1.3) then bounds <span class="math" data-tex="\(G(t)\)">\(G(t)\)</span>, for <span class="math" data-tex="\(0&lt;t\le1\)">\(0&lt;t\le1\)</span>, by <span class="math" data-tex="\(C&#x27;t^{-k}e^{-b_N/(2t)}\)">\(C&#x27;t^{-k}e^{-b_N/(2t)}\)</span>. Both estimates remain integrable after multiplication by every fixed real power of <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>On the initial half-plane the absolute sum–integral majorant is
+<span class="math math-display" data-tex="\[
+\sum_n|a_n|\int_0^\infty e^{-b_Nnt}t^{\sigma-1}\,dt
+=\Gamma(\sigma)b_N^{-\sigma}\sum_n|a_n|n^{-\sigma}&lt;\infty.
+\]">\[
+\sum_n|a_n|\int_0^\infty e^{-b_Nnt}t^{\sigma-1}\,dt
+=\Gamma(\sigma)b_N^{-\sigma}\sum_n|a_n|n^{-\sigma}&lt;\infty.
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+\Lambda_N(f,s)=\int_0^\infty G(t)t^{s-1}\,dt.
+\tag{1.4}
+\]">\[
+\Lambda_N(f,s)=\int_0^\infty G(t)t^{s-1}\,dt.
+\tag{1.4}
+\]</span>
+This integral is entire: on a compact set of <span class="math" data-tex="\(s\)">\(s\)</span>, the two exponential bounds also dominate every extra factor <span class="math" data-tex="\(|\log t|^j\)">\(|\log t|^j\)</span> required for differentiation. Substitution <span class="math" data-tex="\(t=1/u\)">\(t=1/u\)</span> in its interval <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> gives, with
+<span class="math" data-tex="\(A(s)=\int_1^\infty G(t)t^{s-1}\,dt\)">\(A(s)=\int_1^\infty G(t)t^{s-1}\,dt\)</span>,
+<span class="math math-display" data-tex="\[
+\Lambda_N(f,s)=A(s)+wA(k-s).
+\tag{1.5}
+\]">\[
+\Lambda_N(f,s)=A(s)+wA(k-s).
+\tag{1.5}
+\]</span>
+Since <span class="math" data-tex="\(w^2=1\)">\(w^2=1\)</span>, this proves (1.2). If <span class="math" data-tex="\(a\le\sigma\le b\)">\(a\le\sigma\le b\)</span>, an integrable majorant for the whole integral is
+<span class="math math-display" data-tex="\[
+|G(t)|\begin{cases}t^{a-1},&amp;0&lt;t\le1,\\t^{b-1},&amp;t\ge1.\end{cases}
+\]">\[
+|G(t)|\begin{cases}t^{a-1},&amp;0&lt;t\le1,\\t^{b-1},&amp;t\ge1.\end{cases}
+\]</span>
+It is independent of <span class="math" data-tex="\(\operatorname{Im}s\)">\(\operatorname{Im}s\)</span>, proving boundedness on the entire strip. Multiplication by the entire function <span class="math" data-tex="\(N^{-s/2}(2\pi)^s/\Gamma(s)\)">\(N^{-s/2}(2\pi)^s/\Gamma(s)\)</span> continues <span class="math" data-tex="\(L(f,s)\)">\(L(f,s)\)</span> too. At the centre, <span class="math" data-tex="\(w=-1\)">\(w=-1\)</span> makes the completion zero; its Gamma and level factors there are nonzero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The eigenvector hypothesis is convenient rather than essential. If <span class="math" data-tex="\(h=f\Vert_kW_N\)">\(h=f\Vert_kW_N\)</span>, the same argument gives
+<span class="math math-display" data-tex="\[
+\Lambda_N(f,s)=i^k\Lambda_N(h,k-s).
+\tag{1.6}
+\]">\[
+\Lambda_N(f,s)=i^k\Lambda_N(h,k-s).
+\tag{1.6}
+\]</span>
+Indeed <span class="math" data-tex="\(h(it/\sqrt N)=i^{-k}t^{-k}G(1/t)\)">\(h(it/\sqrt N)=i^{-k}t^{-k}G(1/t)\)</span>. We will use this paired version for nonreal character twists.</p>
+<h2 id="2-primitive-gauss-sums-and-twisting">2. Primitive Gauss sums and twisting</h2>
+<p>A Dirichlet character <span class="math" data-tex="\(\psi\)">\(\psi\)</span> of conductor <span class="math" data-tex="\(r\)">\(r\)</span> is extended by zero on nonunits. Define
+<span class="math math-display" data-tex="\[
+\tau(\psi)=\sum_{u\bmod r}\psi(u)e^{2\pi iu/r}.
+\]">\[
+\tau(\psi)=\sum_{u\bmod r}\psi(u)e^{2\pi iu/r}.
+\]</span>
+We need primitivity at precisely the following point.</p>
+<p><strong>Lemma 2.1 (the primitive Gauss identities).</strong> For primitive <span class="math" data-tex="\(\psi\)">\(\psi\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{u\bmod r}\psi(u)e^{2\pi inu/r}
+=\overline\psi(n)\tau(\psi),\qquad
+|\tau(\psi)|^2=r,\qquad
+\tau(\psi)\tau(\overline\psi)=\psi(-1)r.
+\tag{2.1}
+\]">\[
+\sum_{u\bmod r}\psi(u)e^{2\pi inu/r}
+=\overline\psi(n)\tau(\psi),\qquad
+|\tau(\psi)|^2=r,\qquad
+\tau(\psi)\tau(\overline\psi)=\psi(-1)r.
+\tag{2.1}
+\]</span></p>
+<p><strong>Proof.</strong> For a unit <span class="math" data-tex="\(n\)">\(n\)</span>, replacing <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(n^{-1}u\)">\(n^{-1}u\)</span> proves the first identity. If <span class="math" data-tex="\(d=(n,r)&gt;1\)">\(d=(n,r)&gt;1\)</span>, the exponential is unchanged by multiplying <span class="math" data-tex="\(u\)">\(u\)</span> by any unit <span class="math" data-tex="\(v\equiv1\pmod{r/d}\)">\(v\equiv1\pmod{r/d}\)</span>. Some such <span class="math" data-tex="\(v\)">\(v\)</span> has <span class="math" data-tex="\(\psi(v)\ne1\)">\(\psi(v)\ne1\)</span>, since otherwise <span class="math" data-tex="\(\psi\)">\(\psi\)</span> would factor through the unit group modulo the proper divisor <span class="math" data-tex="\(r/d\)">\(r/d\)</span>, contrary to primitivity. The reduction to that group is surjective: lift a unit residue and use the Chinese remainder theorem to avoid each additional prime dividing <span class="math" data-tex="\(r\)">\(r\)</span>. Multiplication by this <span class="math" data-tex="\(v\)">\(v\)</span> makes the sum equal to <span class="math" data-tex="\(\psi(v)^{-1}\)">\(\psi(v)^{-1}\)</span> times itself, so it is zero, as is <span class="math" data-tex="\(\overline\psi(n)\)">\(\overline\psi(n)\)</span>.</p>
+<p>Write the left side as <span class="math" data-tex="\(S(n)\)">\(S(n)\)</span>. Expanding its squared modulus and summing over <span class="math" data-tex="\(n\bmod r\)">\(n\bmod r\)</span>, the finite geometric sum is <span class="math" data-tex="\(r\)">\(r\)</span> when its two indices coincide and zero otherwise. Thus
+<span class="math math-display" data-tex="\[
+\sum_{n\bmod r}|S(n)|^2=r\sum_{u\bmod r}|\psi(u)|^2=r\varphi(r).
+\]">\[
+\sum_{n\bmod r}|S(n)|^2=r\sum_{u\bmod r}|\psi(u)|^2=r\varphi(r).
+\]</span>
+By the first identity exactly <span class="math" data-tex="\(\varphi(r)\)">\(\varphi(r)\)</span> summands have modulus <span class="math" data-tex="\(|\tau(\psi)|\)">\(|\tau(\psi)|\)</span>; hence <span class="math" data-tex="\(|\tau(\psi)|^2=r\)">\(|\tau(\psi)|^2=r\)</span>. Finally complex conjugation and <span class="math" data-tex="\(u\mapsto-u\)">\(u\mapsto-u\)</span> give
+<span class="math" data-tex="\(\tau(\overline\psi)=\psi(-1)\overline{\tau(\psi)}\)">\(\tau(\overline\psi)=\psi(-1)\overline{\tau(\psi)}\)</span>, proving the product formula. The conductor-one case consists of the single term one and satisfies the same formulas. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.1a (Poisson summation with a primitive character).</strong> Let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be primitive of conductor <span class="math" data-tex="\(r\)">\(r\)</span>. Use the Fourier convention
+<span class="math" data-tex="\(\widehat\phi(\xi)=\int_{\mathbb R}\phi(u)e^{-2\pi iu\xi}\,du\)">\(\widehat\phi(\xi)=\int_{\mathbb R}\phi(u)e^{-2\pi iu\xi}\,du\)</span>.
+Suppose <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and <span class="math" data-tex="\(\widehat\phi\)">\(\widehat\phi\)</span> are continuous and both are
+<span class="math" data-tex="\(O((1+|u|)^{-1-\delta})\)">\(O((1+|u|)^{-1-\delta})\)</span> for some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{n\in\mathbb Z}\psi(n)\phi(n)\\
+=\frac{\tau(\psi)}r
+ \sum_{m\in\mathbb Z}\overline\psi(m)\widehat\phi(m/r).
+\end{gathered}
+\tag{2.1a}
+\]">\[
+\begin{gathered}
+\sum_{n\in\mathbb Z}\psi(n)\phi(n)\\
+=\frac{\tau(\psi)}r
+ \sum_{m\in\mathbb Z}\overline\psi(m)\widehat\phi(m/r).
+\end{gathered}
+\tag{2.1a}
+\]</span>
+Both sums are absolutely convergent.</p>
+<p><strong>Proof.</strong> For each residue <span class="math" data-tex="\(u\)">\(u\)</span> modulo <span class="math" data-tex="\(r\)">\(r\)</span>, put <span class="math" data-tex="\(h_u(v)=\phi(u+rv)\)">\(h_u(v)=\phi(u+rv)\)</span>. An absolutely convergent change of variable gives
+<span class="math" data-tex="\(\widehat h_u(\xi)=r^{-1}e^{2\pi iu\xi/r}\widehat\phi(\xi/r)\)">\(\widehat h_u(\xi)=r^{-1}e^{2\pi iu\xi/r}\widehat\phi(\xi/r)\)</span>.
+These functions satisfy the decay and continuity hypotheses of ordinary Poisson summation, <a href="../NT-ZETA/NT-ZETA-04.html#periodization-and-its-fourier-coefficients">Poisson summation, theta, and the functional equation</a>, Theorem 1.2. Applying it at zero gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{\ell\in\mathbb Z}\phi(u+r\ell)\\
+=\frac1r\sum_{m\in\mathbb Z}
+ \widehat\phi(m/r)e^{2\pi imu/r}.
+\end{gathered}
+\tag{2.1b}
+\]">\[
+\begin{gathered}
+\sum_{\ell\in\mathbb Z}\phi(u+r\ell)\\
+=\frac1r\sum_{m\in\mathbb Z}
+ \widehat\phi(m/r)e^{2\pi imu/r}.
+\end{gathered}
+\tag{2.1b}
+\]</span>
+Multiply by <span class="math" data-tex="\(\psi(u)\)">\(\psi(u)\)</span> and sum over the finitely many residues. Absolute convergence permits reordering. Lemma 2.1 identifies the inner finite sum as
+<span class="math" data-tex="\(\overline\psi(m)\tau(\psi)\)">\(\overline\psi(m)\tau(\psi)\)</span>, including nonunit <span class="math" data-tex="\(m\)">\(m\)</span>, and proves (2.1a). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, let <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>, <span class="math" data-tex="\(\psi(-1)=(-1)^a\)">\(\psi(-1)=(-1)^a\)</span> with <span class="math" data-tex="\(a\in\{0,1\}\)">\(a\in\{0,1\}\)</span>, and <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>. The Gaussian transform in the same programme lesson, Lemma 2.1, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\phi_{a,x}(u)=u^a e^{-\pi xu^2/r},\\
+\widehat\phi_{a,x}(\xi)\\
+=(-i)^a(r/x)^{a+1/2}\xi^a e^{-\pi r\xi^2/x}.
+\end{gathered}
+\tag{2.1c}
+\]">\[
+\begin{gathered}
+\phi_{a,x}(u)=u^a e^{-\pi xu^2/r},\\
+\widehat\phi_{a,x}(\xi)\\
+=(-i)^a(r/x)^{a+1/2}\xi^a e^{-\pi r\xi^2/x}.
+\end{gathered}
+\tag{2.1c}
+\]</span>
+For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, differentiate the Gaussian transform under its absolutely convergent integral: multiplication by <span class="math" data-tex="\(u\)">\(u\)</span> is <span class="math" data-tex="\(i/(2\pi)\)">\(i/(2\pi)\)</span> times differentiation in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. This gives the minus sign in <span class="math" data-tex="\(-i\xi\)">\(-i\xi\)</span>. Gaussian decay justifies the differentiation and supplies every decay hypothesis of Lemma 2.1a.</p>
+<p>Writing
+<span class="math" data-tex="\(\theta_\psi(x)=\sum_{n\in\mathbb Z}\psi(n)n^a e^{-\pi n^2x/r}\)">\(\theta_\psi(x)=\sum_{n\in\mathbb Z}\psi(n)n^a e^{-\pi n^2x/r}\)</span>,
+substitution of (2.1c) into (2.1a) gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\theta_\psi(x)\\
+=\frac{\tau(\psi)}{i^a\sqrt r}\,
+ x^{-a-1/2}\theta_{\overline\psi}(1/x).
+\end{gathered}
+\tag{2.1d}
+\]">\[
+\begin{gathered}
+\theta_\psi(x)\\
+=\frac{\tau(\psi)}{i^a\sqrt r}\,
+ x^{-a-1/2}\theta_{\overline\psi}(1/x).
+\end{gathered}
+\tag{2.1d}
+\]</span>
+The <span class="math" data-tex="\(r\)">\(r\)</span>-power is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r^{-1}(r/x)^{a+1/2}r^{-a}\\
+=r^{-1/2}x^{-a-1/2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+r^{-1}(r/x)^{a+1/2}r^{-a}\\
+=r^{-1/2}x^{-a-1/2}.
+\end{gathered}
+\]</span>
+Also <span class="math" data-tex="\((-i)^a=i^{-a}\)">\((-i)^a=i^{-a}\)</span>. The zero-index term vanishes because <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span> and <span class="math" data-tex="\(\psi(0)=0\)">\(\psi(0)=0\)</span>. This is the exact theta transformation used in <a href="../NT-DIRL/NT-DIRL-05.html#section-1">The functional equation of Dirichlet L-functions</a>, Theorem 1.1. Its Section 2 gives the full convergent Mellin-integral proof of entire continuation and the completed reflection. These section proofs, together with the residue-class calculation above, supply the classical Dirichlet input used in Solution 4.</p>
+<p>For <span class="math" data-tex="\(A_u=\begin{pmatrix}1&amp;u/r\\0&amp;1\end{pmatrix}\)">\(A_u=\begin{pmatrix}1&amp;u/r\\0&amp;1\end{pmatrix}\)</span>, define the coefficient twist
+<span class="math math-display" data-tex="\[
+f_\psi(z)=\sum_{n\ge1}\psi(n)a_nq^n.
+\]">\[
+f_\psi(z)=\sum_{n\ge1}\psi(n)a_nq^n.
+\]</span>
+The Gauss sum is nonzero, and (2.1) gives the exact averaging formula
+<span class="math math-display" data-tex="\[
+f_\psi=\frac1{\tau(\overline\psi)}
+\sum_{u\bmod r}\overline\psi(u)f\Vert_k A_u.
+\tag{2.2}
+\]">\[
+f_\psi=\frac1{\tau(\overline\psi)}
+\sum_{u\bmod r}\overline\psi(u)f\Vert_k A_u.
+\tag{2.2}
+\]</span>
+All Fourier series involved converge normally on the upper half-plane, so the finite sum and coefficients can be interchanged.</p>
+<p><strong>Theorem 2.2 (level, character and Fricke constant).</strong> Suppose <span class="math" data-tex="\((r,N)=1\)">\((r,N)=1\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is primitive. Then
+<span class="math math-display" data-tex="\[
+f_\psi\in S_k(\Gamma_0(Nr^2),\psi^2).
+\tag{2.3}
+\]">\[
+f_\psi\in S_k(\Gamma_0(Nr^2),\psi^2).
+\tag{2.3}
+\]</span>
+If <span class="math" data-tex="\(f\Vert_kW_N=\epsilon f\)">\(f\Vert_kW_N=\epsilon f\)</span>, then
+<span class="math math-display" data-tex="\[
+f_\psi\Vert_kW_{Nr^2}
+=\epsilon\psi(N)\frac{\tau(\psi)^2}{r}f_{\overline\psi}.
+\tag{2.4}
+\]">\[
+f_\psi\Vert_kW_{Nr^2}
+=\epsilon\psi(N)\frac{\tau(\psi)^2}{r}f_{\overline\psi}.
+\tag{2.4}
+\]</span>
+In particular, its entire, bounded-strip completion satisfies
+<span class="math math-display" data-tex="\[
+\Lambda_{Nr^2}(f_\psi,s)
+=i^k\epsilon\psi(N)\frac{\tau(\psi)^2}{r}
+\Lambda_{Nr^2}(f_{\overline\psi},k-s).
+\tag{2.5}
+\]">\[
+\Lambda_{Nr^2}(f_\psi,s)
+=i^k\epsilon\psi(N)\frac{\tau(\psi)^2}{r}
+\Lambda_{Nr^2}(f_{\overline\psi},k-s).
+\tag{2.5}
+\]</span>
+The notation <span class="math" data-tex="\(\psi^2\)">\(\psi^2\)</span> in (2.3) means its induced nebentypus on units modulo <span class="math" data-tex="\(Nr^2\)">\(Nr^2\)</span>.</p>
+<p><strong>Proof of the level and character.</strong> For
+<span class="math" data-tex="\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\Gamma_0(Nr^2)\)">\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\Gamma_0(Nr^2)\)</span>, choose
+<span class="math" data-tex="\(v\equiv ud a^{-1}\equiv ud^2\pmod r\)">\(v\equiv ud a^{-1}\equiv ud^2\pmod r\)</span>. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+A_u\gamma A_v^{-1}
+=\begin{pmatrix}
+a+uc/r&amp;b+(ud-av)/r-ucv/r^2\\
+c&amp;d-cv/r
+\end{pmatrix}\in\Gamma_0(N).
+\tag{2.6}
+\]">\[
+A_u\gamma A_v^{-1}
+=\begin{pmatrix}
+a+uc/r&amp;b+(ud-av)/r-ucv/r^2\\
+c&amp;d-cv/r
+\end{pmatrix}\in\Gamma_0(N).
+\tag{2.6}
+\]</span>
+Every entry is integral, the lower left is divisible by <span class="math" data-tex="\(N\)">\(N\)</span>, and the determinant is one. Changing <span class="math" data-tex="\(v\)">\(v\)</span> by a multiple of <span class="math" data-tex="\(r\)">\(r\)</span> only adds an integral translation to <span class="math" data-tex="\(A_v\)">\(A_v\)</span>, which fixes <span class="math" data-tex="\(f\)">\(f\)</span>. Therefore <span class="math" data-tex="\(f\Vert_kA_u\gamma=f\Vert_kA_v\)">\(f\Vert_kA_u\gamma=f\Vert_kA_v\)</span>. Multiplication by <span class="math" data-tex="\(d^2\)">\(d^2\)</span> permutes residues, and
+<span class="math" data-tex="\(\overline\psi(u)=\psi(d)^2\overline\psi(v)\)">\(\overline\psi(u)=\psi(d)^2\overline\psi(v)\)</span>. Reindexing (2.2) proves
+<span class="math" data-tex="\(f_\psi\Vert_k\gamma=\psi(d)^2f_\psi\)">\(f_\psi\Vert_k\gamma=\psi(d)^2f_\psi\)</span>.</p>
+<p>For completeness, take a cusp scaling matrix <span class="math" data-tex="\(\beta\in SL_2(\mathbb Z)\)">\(\beta\in SL_2(\mathbb Z)\)</span>. Choose <span class="math" data-tex="\(\alpha\in SL_2(\mathbb Z)\)">\(\alpha\in SL_2(\mathbb Z)\)</span> sending <span class="math" data-tex="\(\infty\)">\(\infty\)</span> to the rational point <span class="math" data-tex="\(A_u\beta\infty\)">\(A_u\beta\infty\)</span>. The matrix <span class="math" data-tex="\(\alpha^{-1}A_u\beta\)">\(\alpha^{-1}A_u\beta\)</span> is upper triangular of determinant one, and its affine slope is positive. Consequently <span class="math" data-tex="\((f\Vert_kA_u)\Vert_k\beta\)">\((f\Vert_kA_u)\Vert_k\beta\)</span> is a constant multiple of <span class="math" data-tex="\(f|_k\alpha\)">\(f|_k\alpha\)</span> at an affine argument whose imaginary part tends to infinity. It tends to zero, uniformly for the real coordinate in a bounded interval. Its finite sum does too. The established transformation law supplies a positive cusp period and a unit modulus multiplier; its Fourier expansion has a possible fractional shift. Decay excludes all nonpositive exponents. Thus (2.3) includes vanishing at every cusp.</p>
+<p><strong>Proof of the Fricke constant.</strong> Terms with nonunit <span class="math" data-tex="\(u\)">\(u\)</span> vanish. For a unit, choose
+<span class="math math-display" data-tex="\[
+v\equiv-(Nu)^{-1}\pmod r,\qquad ar-uNv=1,\qquad
+\gamma_u=\begin{pmatrix}a&amp;u\\Nv&amp;r\end{pmatrix}\in\Gamma_0(N).
+\]">\[
+v\equiv-(Nu)^{-1}\pmod r,\qquad ar-uNv=1,\qquad
+\gamma_u=\begin{pmatrix}a&amp;u\\Nv&amp;r\end{pmatrix}\in\Gamma_0(N).
+\]</span>
+The congruence makes <span class="math" data-tex="\(a=(1+uNv)/r\)">\(a=(1+uNv)/r\)</span> integral. Both sides of the following identity are exactly the displayed matrix:
+<span class="math math-display" data-tex="\[
+A_uW_{Nr^2}=r\gamma_uW_NA_v
+=\begin{pmatrix}Nru&amp;-1\\Nr^2&amp;0\end{pmatrix}.
+\tag{2.7}
+\]">\[
+A_uW_{Nr^2}=r\gamma_uW_NA_v
+=\begin{pmatrix}Nru&amp;-1\\Nr^2&amp;0\end{pmatrix}.
+\tag{2.7}
+\]</span>
+The scalar <span class="math" data-tex="\(r\)">\(r\)</span> acts trivially in (0.1), and <span class="math" data-tex="\(f\Vert_k\gamma_u=f\)">\(f\Vert_k\gamma_u=f\)</span>. Apply (2.7) in (2.2). Since
+<span class="math" data-tex="\(u\equiv-(Nv)^{-1}\pmod r\)">\(u\equiv-(Nv)^{-1}\pmod r\)</span>,
+<span class="math math-display" data-tex="\[
+\overline\psi(u)=\psi(-1)\psi(N)\psi(v).
+\]">\[
+\overline\psi(u)=\psi(-1)\psi(N)\psi(v).
+\]</span>
+It follows that
+<span class="math math-display" data-tex="\[
+f_\psi\Vert_kW_{Nr^2}
+=\epsilon\psi(-1)\psi(N)
+\frac{\tau(\psi)}{\tau(\overline\psi)}f_{\overline\psi}
+=\epsilon\psi(N)\frac{\tau(\psi)^2}{r}f_{\overline\psi}.
+\]">\[
+f_\psi\Vert_kW_{Nr^2}
+=\epsilon\psi(-1)\psi(N)
+\frac{\tau(\psi)}{\tau(\overline\psi)}f_{\overline\psi}
+=\epsilon\psi(N)\frac{\tau(\psi)^2}{r}f_{\overline\psi}.
+\]</span>
+The second equality uses the product formula in (2.1); both appearances of <span class="math" data-tex="\(\psi(-1)\)">\(\psi(-1)\)</span> cancel. This proves (2.4). The paired Mellin argument (1.6), now at level <span class="math" data-tex="\(Nr^2\)">\(Nr^2\)</span>, proves (2.5). Each function decays at both relevant cusps, so the entireness and strip estimates of Theorem 1.1 apply individually. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The phase in (2.5) has modulus one. For a nonreal <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, the equation pairs two different series; it need not be a scalar equation for one series. Applying the paired equations twice is consistent because
+<span class="math" data-tex="\(\psi(N)\overline\psi(N)=1\)">\(\psi(N)\overline\psi(N)=1\)</span> and
+<span class="math" data-tex="\(\tau(\psi)^2\tau(\overline\psi)^2/r^2=1\)">\(\tau(\psi)^2\tau(\overline\psi)^2/r^2=1\)</span>.</p>
+<p>The theorem proves a <strong>containing level</strong>. For a form whose declared level is not its least level, <span class="math" data-tex="\(Nr^2\)">\(Nr^2\)</span> need not be least either. Moreover the coefficient twist, which deletes coefficients divisible by the twisting conductor, must be distinguished from the primitive newform twist characterized by good-prime coefficients. They agree away from the twisting conductor; local newform theory determines the remaining Euler factors and conductor. The distinction is made explicitly by Best et al., Section 11.1, equations (11.1.1)–(11.1.3).</p>
+<h2 id="3-two-complete-examples">3. Two complete examples</h2>
+<h3 id="3-1-the-form-of-level-eleven">3.1. The form of level eleven</h3>
+<p>The complete level eleven example in lesson 9, Section 6, establishes
+<span class="math math-display" data-tex="\[
+f(z)=\eta(z)^2\eta(11z)^2
+=q\prod_{m\ge1}(1-q^m)^2(1-q^{11m})^2
+\in S_2(\Gamma_0(11)).
+\tag{3.1}
+\]">\[
+f(z)=\eta(z)^2\eta(11z)^2
+=q\prod_{m\ge1}(1-q^m)^2(1-q^{11m})^2
+\in S_2(\Gamma_0(11)).
+\tag{3.1}
+\]</span>
+That space has dimension one and no old part, so the first coefficient one normalizes its newform. Write the product after the leading <span class="math" data-tex="\(q\)">\(q\)</span> as <span class="math" data-tex="\(\sum_{j\ge0}b_jq^j\)">\(\sum_{j\ge0}b_jq^j\)</span>. Its logarithmic derivative gives the exact coefficient recursion
+<span class="math math-display" data-tex="\[
+b_0=1,\qquad
+j b_j=-2\sum_{h=1}^j
+\bigl(\sigma_1(h)+11\,\mathbf1_{11\mid h}\sigma_1(h/11)\bigr)b_{j-h},
+\qquad a_n=b_{n-1}.
+\tag{3.2}
+\]">\[
+b_0=1,\qquad
+j b_j=-2\sum_{h=1}^j
+\bigl(\sigma_1(h)+11\,\mathbf1_{11\mid h}\sigma_1(h/11)\bigr)b_{j-h},
+\qquad a_n=b_{n-1}.
+\tag{3.2}
+\]</span>
+For example,
+<span class="math math-display" data-tex="\[
+b_1=-2,\quad 2b_2=-2(-2+3)=-2,\quad
+3b_3=-2(-1-6+4)=6.
+\]">\[
+b_1=-2,\quad 2b_2=-2(-2+3)=-2,\quad
+3b_3=-2(-1-6+4)=6.
+\]</span>
+Applying (3.2) through <span class="math" data-tex="\(j=19\)">\(j=19\)</span> gives all coefficients used below. The last column also anticipates the second example.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(a_n\)">\(a_n\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\psi_3(n)a_n\)">\(\psi_3(n)a_n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">−2</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">−2</td>
+<td style="text-align:right">−2</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">−2</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">−2</td>
+<td style="text-align:right">−2</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">−2</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">−4</td>
+</tr>
+<tr>
+<td style="text-align:right">15</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td style="text-align:right">−4</td>
+<td style="text-align:right">−4</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:right">−2</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">18</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">20</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">−2</td>
+</tr>
+</tbody>
+</table>
+<p>In particular, <span class="math" data-tex="\(a_{11}=1\)">\(a_{11}=1\)</span>. At a good prime the recurrence is
+<span class="math" data-tex="\(a_{p^2}=a_p^2-p\)">\(a_{p^2}=a_p^2-p\)</span>: it gives <span class="math" data-tex="\(a_4=4-2=2\)">\(a_4=4-2=2\)</span> and <span class="math" data-tex="\(a_9=1-3=-2\)">\(a_9=1-3=-2\)</span>. Coprime multiplicativity gives <span class="math" data-tex="\(a_6=a_2a_3=2\)">\(a_6=a_2a_3=2\)</span>, agreeing with the product.</p>
+<p>The squared eta inversion, in the convention used in lesson 9, is
+<span class="math" data-tex="\(\eta(-1/z)^2=-iz\eta(z)^2\)">\(\eta(-1/z)^2=-iz\eta(z)^2\)</span>. Applying it twice gives
+<span class="math math-display" data-tex="\[
+f(-1/(11z))=(-i11z)(-iz)\eta(11z)^2\eta(z)^2
+=-11z^2f(z).
+\]">\[
+f(-1/(11z))=(-i11z)(-iz)\eta(11z)^2\eta(z)^2
+=-11z^2f(z).
+\]</span>
+Thus
+<span class="math math-display" data-tex="\[
+f\Vert_2W_{11}=-f,\qquad \epsilon=-1,\qquad w=i^2\epsilon=+1.
+\tag{3.3}
+\]">\[
+f\Vert_2W_{11}=-f,\qquad \epsilon=-1,\qquad w=i^2\epsilon=+1.
+\tag{3.3}
+\]</span>
+The central point is <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, and the sign imposes no zero there. The Euler product, in the raw coefficient normalization, is
+<span class="math math-display" data-tex="\[
+L(f,s)=(1-11^{-s})^{-1}
+\prod_{p\ne11}(1-a_pp^{-s}+p^{1-2s})^{-1}.
+\tag{3.4}
+\]">\[
+L(f,s)=(1-11^{-s})^{-1}
+\prod_{p\ne11}(1-a_pp^{-s}+p^{1-2s})^{-1}.
+\tag{3.4}
+\]</span>
+The coefficient estimate of lesson 7 gives the initial absolute domain <span class="math" data-tex="\(\operatorname{Re}s&gt;2\)">\(\operatorname{Re}s&gt;2\)</span>. The optimal domain from Ramanujan–Petersson requires the geometric proof still tracked in lesson 11, Section 5; no such bound is used in the calculation below. The good-prime factors at two and three are
+<span class="math" data-tex="\((1+2\cdot2^{-s}+2^{1-2s})^{-1}\)">\((1+2\cdot2^{-s}+2^{1-2s})^{-1}\)</span> and
+<span class="math" data-tex="\((1+3^{-s}+3^{1-2s})^{-1}\)">\((1+3^{-s}+3^{1-2s})^{-1}\)</span>. The completion is
+<span class="math math-display" data-tex="\[
+\Lambda_{11}(f,s)=11^{s/2}(2\pi)^{-s}\Gamma(s)L(f,s)
+=\Lambda_{11}(f,2-s).
+\]">\[
+\Lambda_{11}(f,s)=11^{s/2}(2\pi)^{-s}\Gamma(s)L(f,s)
+=\Lambda_{11}(f,2-s).
+\]</span></p>
+<h3 id="3-2-the-quadratic-twist-of-conductor-three">3.2. The quadratic twist of conductor three</h3>
+<p>Let
+<span class="math math-display" data-tex="\[
+\psi_3(n)=\begin{cases}0,&amp;3\mid n,\\1,&amp;n\equiv1\pmod3,\\-1,&amp;n\equiv2\pmod3.\end{cases}
+\]">\[
+\psi_3(n)=\begin{cases}0,&amp;3\mid n,\\1,&amp;n\equiv1\pmod3,\\-1,&amp;n\equiv2\pmod3.\end{cases}
+\]</span>
+It is primitive, odd and real. With <span class="math" data-tex="\(\zeta_3=e^{2\pi i/3}\)">\(\zeta_3=e^{2\pi i/3}\)</span>,
+<span class="math math-display" data-tex="\[
+\tau(\psi_3)=\zeta_3-\zeta_3^2=i\sqrt3,\qquad
+\psi_3(11)=-1,\qquad \tau(\psi_3)^2/3=-1.
+\]">\[
+\tau(\psi_3)=\zeta_3-\zeta_3^2=i\sqrt3,\qquad
+\psi_3(11)=-1,\qquad \tau(\psi_3)^2/3=-1.
+\]</span>
+Formula (2.2) is explicitly
+<span class="math math-display" data-tex="\[
+f_{\psi_3}(z)=\frac{f(z+1/3)-f(z+2/3)}{i\sqrt3}.
+\tag{3.5}
+\]">\[
+f_{\psi_3}(z)=\frac{f(z+1/3)-f(z+2/3)}{i\sqrt3}.
+\tag{3.5}
+\]</span>
+For <span class="math" data-tex="\(n\equiv1,2,0\pmod3\)">\(n\equiv1,2,0\pmod3\)</span>, its exponential quotient is respectively <span class="math" data-tex="\(1,-1,0\)">\(1,-1,0\)</span>, which computes every coefficient in the table.</p>
+<p>For the matrix proof, the choices <span class="math" data-tex="\((u,v,a)=(1,1,4),(2,2,15)\)">\((u,v,a)=(1,1,4),(2,2,15)\)</span> give
+<span class="math math-display" data-tex="\[
+\gamma_1=\begin{pmatrix}4&amp;1\\11&amp;3\end{pmatrix},\qquad
+\gamma_2=\begin{pmatrix}15&amp;2\\22&amp;3\end{pmatrix}.
+\]">\[
+\gamma_1=\begin{pmatrix}4&amp;1\\11&amp;3\end{pmatrix},\qquad
+\gamma_2=\begin{pmatrix}15&amp;2\\22&amp;3\end{pmatrix}.
+\]</span>
+Their determinants are <span class="math" data-tex="\(12-11=1\)">\(12-11=1\)</span> and <span class="math" data-tex="\(45-44=1\)">\(45-44=1\)</span>, and
+<span class="math" data-tex="\(A_uW_{99}=3\gamma_uW_{11}A_v\)">\(A_uW_{99}=3\gamma_uW_{11}A_v\)</span>. The Fricke constant is
+<span class="math math-display" data-tex="\[
+(-1)(-1)(-1)=-1.
+\]">\[
+(-1)(-1)(-1)=-1.
+\]</span>
+Therefore
+<span class="math math-display" data-tex="\[
+f_{\psi_3}\in S_2(\Gamma_0(99)),\qquad
+f_{\psi_3}\Vert_2W_{99}=-f_{\psi_3},\qquad
+\Lambda_{99}(f_{\psi_3},s)=\Lambda_{99}(f_{\psi_3},2-s).
+\tag{3.6}
+\]">\[
+f_{\psi_3}\in S_2(\Gamma_0(99)),\qquad
+f_{\psi_3}\Vert_2W_{99}=-f_{\psi_3},\qquad
+\Lambda_{99}(f_{\psi_3},s)=\Lambda_{99}(f_{\psi_3},2-s).
+\tag{3.6}
+\]</span>
+Here the induced <span class="math" data-tex="\(\psi_3^2\)">\(\psi_3^2\)</span> is trivial on units. These statements prove the declared level and sign without an additional assertion about least conductor.</p>
+<p>For another coefficient check, <span class="math" data-tex="\(a_2(f_{\psi_3})=2\)">\(a_2(f_{\psi_3})=2\)</span> and <span class="math" data-tex="\(a_4(f_{\psi_3})=2=2^2-2\)">\(a_4(f_{\psi_3})=2=2^2-2\)</span>. Its good-prime factor at two is <span class="math" data-tex="\((1-2\cdot2^{-s}+2^{1-2s})^{-1}\)">\((1-2\cdot2^{-s}+2^{1-2s})^{-1}\)</span>. All multiples of three have coefficient zero, giving factor one at three. At eleven, multiplicativity and <span class="math" data-tex="\(a_{11}=1\)">\(a_{11}=1\)</span> give twisted coefficients <span class="math" data-tex="\((-1)^j\)">\((-1)^j\)</span> at <span class="math" data-tex="\(11^j\)">\(11^j\)</span>, hence factor <span class="math" data-tex="\((1+11^{-s})^{-1}\)">\((1+11^{-s})^{-1}\)</span>. More generally,
+<span class="math math-display" data-tex="\[
+L(f_{\psi_3},s)=(1+11^{-s})^{-1}
+\prod_{p\ne3,11}(1-\psi_3(p)a_pp^{-s}+p^{1-2s})^{-1}.
+\]">\[
+L(f_{\psi_3},s)=(1+11^{-s})^{-1}
+\prod_{p\ne3,11}(1-\psi_3(p)a_pp^{-s}+p^{1-2s})^{-1}.
+\]</span>
+This product concerns the coefficient twist in (3.5).</p>
+<h2 id="4-hecke-s-converse-with-its-constant-term">4. Hecke's converse with its constant term</h2>
+<p>Let <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span> real and <span class="math" data-tex="\(\gamma\in\{1,-1\}\)">\(\gamma\in\{1,-1\}\)</span>. Set
+<span class="math math-display" data-tex="\[
+F(z)=a_0+\sum_{n\ge1}a_ne^{2\pi inz/\lambda},\qquad
+D(s)=\sum_{n\ge1}a_nn^{-s},\qquad
+\Phi(s)=(\lambda/(2\pi))^s\Gamma(s)D(s).
+\tag{4.1}
+\]">\[
+F(z)=a_0+\sum_{n\ge1}a_ne^{2\pi inz/\lambda},\qquad
+D(s)=\sum_{n\ge1}a_nn^{-s},\qquad
+\Phi(s)=(\lambda/(2\pi))^s\Gamma(s)D(s).
+\tag{4.1}
+\]</span>
+Suppose <span class="math" data-tex="\(|a_n|\le Kn^C\)">\(|a_n|\le Kn^C\)</span>, increasing <span class="math" data-tex="\(C\)">\(C\)</span> to a nonnegative integer if necessary. This makes <span class="math" data-tex="\(F\)">\(F\)</span> holomorphic on the upper half-plane and periodic with period <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. In <span class="math" data-tex="\((z/i)^k\)">\((z/i)^k\)</span> we use the holomorphic logarithm on the right half-plane; on <span class="math" data-tex="\(z=iy\)">\(z=iy\)</span> this power is the positive real <span class="math" data-tex="\(y^k\)">\(y^k\)</span>.</p>
+<p><strong>Theorem 4.1 (Hecke correspondence).</strong> The inversion law
+<span class="math math-display" data-tex="\[
+F(-1/z)=\gamma(z/i)^kF(z)
+\tag{4.2}
+\]">\[
+F(-1/z)=\gamma(z/i)^kF(z)
+\tag{4.2}
+\]</span>
+is equivalent to these analytic conditions:</p>
+<ol>
+<li><span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> continues meromorphically, with no poles except possible simple poles at <span class="math" data-tex="\(0,k\)">\(0,k\)</span>, whose residues are <span class="math" data-tex="\(-a_0,\gamma a_0\)">\(-a_0,\gamma a_0\)</span>, respectively.</li>
+<li>The entire function <span class="math" data-tex="\(s(s-k)\Phi(s)\)">\(s(s-k)\Phi(s)\)</span> has finite order on every fixed vertical strip: for each <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span> there are constants <span class="math" data-tex="\(A,B,\rho&gt;0\)">\(A,B,\rho&gt;0\)</span> such that its modulus is at most <span class="math" data-tex="\(A\exp(B(1+|t|)^\rho)\)">\(A\exp(B(1+|t|)^\rho)\)</span> for <span class="math" data-tex="\(a\le\operatorname{Re}s\le b\)">\(a\le\operatorname{Re}s\le b\)</span>.</li>
+<li><span class="math" data-tex="\(\Phi(s)=\gamma\Phi(k-s)\)">\(\Phi(s)=\gamma\Phi(k-s)\)</span>.</li>
+</ol>
+<p>For nonzero <span class="math" data-tex="\(F\)">\(F\)</span> and a discrete group <span class="math" data-tex="\(G_\lambda=\langle z\mapsto z+\lambda,z\mapsto-1/z\rangle\)">\(G_\lambda=\langle z\mapsto z+\lambda,z\mapsto-1/z\rangle\)</span>, these laws give its automorphy with the indicated multiplier and holomorphy at its cusps. In particular, if <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>, <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> is even and <span class="math" data-tex="\(\gamma=i^k\)">\(\gamma=i^k\)</span>, they give <span class="math" data-tex="\(F\in M_k(SL_2(\mathbb Z))\)">\(F\in M_k(SL_2(\mathbb Z))\)</span>; if also <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>, they give <span class="math" data-tex="\(F\in S_k(SL_2(\mathbb Z))\)">\(F\in S_k(SL_2(\mathbb Z))\)</span>.</p>
+<p><strong>Proof, from inversion to analysis.</strong> Write <span class="math" data-tex="\(g(y)=F(iy)-a_0\)">\(g(y)=F(iy)-a_0\)</span>. Its polynomial coefficient bound gives exponential decay as <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>. The inversion law says
+<span class="math math-display" data-tex="\[
+g(y)=\gamma y^{-k}g(1/y)+\gamma a_0y^{-k}-a_0.
+\]">\[
+g(y)=\gamma y^{-k}g(1/y)+\gamma a_0y^{-k}-a_0.
+\]</span>
+For <span class="math" data-tex="\(\operatorname{Re}s&gt;\max(C+1,k)\)">\(\operatorname{Re}s&gt;\max(C+1,k)\)</span>, the Mellin transform of <span class="math" data-tex="\(g\)">\(g\)</span> converges absolutely. Termwise integration, with the finite majorant
+<span class="math" data-tex="\(\Gamma(\sigma)(\lambda/(2\pi))^\sigma\sum_n|a_n|n^{-\sigma}\)">\(\Gamma(\sigma)(\lambda/(2\pi))^\sigma\sum_n|a_n|n^{-\sigma}\)</span>, identifies it with <span class="math" data-tex="\(\Phi(s)\)">\(\Phi(s)\)</span>. Split at one and substitute <span class="math" data-tex="\(y=1/u\)">\(y=1/u\)</span> below one. With the entire function
+<span class="math" data-tex="\(A(s)=\int_1^\infty g(y)y^{s-1}\,dy\)">\(A(s)=\int_1^\infty g(y)y^{s-1}\,dy\)</span>, this gives
+<span class="math math-display" data-tex="\[
+\Phi(s)=A(s)+\gamma A(k-s)
++\frac{\gamma a_0}{s-k}-\frac{a_0}{s}.
+\tag{4.3}
+\]">\[
+\Phi(s)=A(s)+\gamma A(k-s)
++\frac{\gamma a_0}{s-k}-\frac{a_0}{s}.
+\tag{4.3}
+\]</span>
+The entire integrals admit differentiation of every order, dominated by their exponential decay. Formula (4.3) proves the poles, residues and reflection. On any fixed strip, both integrals are bounded independently of <span class="math" data-tex="\(t\)">\(t\)</span>, and the rational terms are bounded outside small neighborhoods of their poles. Thus <span class="math" data-tex="\(s(s-k)\Phi(s)\)">\(s(s-k)\Phi(s)\)</span> has polynomial growth there, which is stronger than the stated finite-order condition.</p>
+<p><strong>Proof, from analysis to inversion.</strong> Choose
+<span class="math math-display" data-tex="\[
+b&gt;\max(C+1,k),\qquad a=k-b&lt;0,\qquad R&gt;1-a.
+\]">\[
+b&gt;\max(C+1,k),\qquad a=k-b&lt;0,\qquad R&gt;1-a.
+\]</span>
+The functions <span class="math" data-tex="\(y^bg(y)\)">\(y^bg(y)\)</span>, <span class="math" data-tex="\(y^{b+1}g&#x27;(y)\)">\(y^{b+1}g&#x27;(y)\)</span>, <span class="math" data-tex="\(y^{b+2}g&#x27;&#x27;(y)\)">\(y^{b+2}g&#x27;&#x27;(y)\)</span> are integrable for <span class="math" data-tex="\(dy/y\)">\(dy/y\)</span>. Indeed termwise differentiation of order <span class="math" data-tex="\(j\le2\)">\(j\le2\)</span> gives <span class="math" data-tex="\(O(y^{-C-j-1})\)">\(O(y^{-C-j-1})\)</span> near zero and exponential decay near infinity. The estimate near zero follows by comparing <span class="math" data-tex="\(\sum n^{C+j}e^{-2\pi ny/\lambda}\)">\(\sum n^{C+j}e^{-2\pi ny/\lambda}\)</span> with its rescaled integral, with a fixed additional first-term bound. Since <span class="math" data-tex="\(b&gt;C+1\)">\(b&gt;C+1\)</span>, all three integrals converge. <a href="LG-MF-11.html">The L-function of a cusp form</a>, Lemma 8.1, proves smooth Mellin inversion under exactly these three conditions, for any real <span class="math" data-tex="\(b\)">\(b\)</span>. It therefore gives
+<span class="math math-display" data-tex="\[
+g(y)=\frac1{2\pi i}\int_{b-i\infty}^{b+i\infty}\Phi(s)y^{-s}\,ds.
+\tag{4.4}
+\]">\[
+g(y)=\frac1{2\pi i}\int_{b-i\infty}^{b+i\infty}\Phi(s)y^{-s}\,ds.
+\tag{4.4}
+\]</span>
+We justify its contour shift under the specified finite-order condition.</p>
+<p>On the line <span class="math" data-tex="\(b+it\)">\(b+it\)</span>, the Dirichlet series is uniformly bounded by <span class="math" data-tex="\(\sum |a_n|n^{-b}\)">\(\sum |a_n|n^{-b}\)</span>. Euler's Gamma integral with <span class="math" data-tex="\(u=e^x\)">\(u=e^x\)</span> is the Fourier transform of <span class="math" data-tex="\(e^{bx-e^x}\)">\(e^{bx-e^x}\)</span>. Every derivative of this function is integrable and vanishes at both ends: at minus infinity it has exponential decay <span class="math" data-tex="\(e^{bx}\)">\(e^{bx}\)</span>, and at plus infinity <span class="math" data-tex="\(e^{-e^x}\)">\(e^{-e^x}\)</span> dominates each polynomial in <span class="math" data-tex="\(e^x\)">\(e^x\)</span>. Repeated integration by parts therefore gives <span class="math" data-tex="\(\Gamma(b+it)=O_M((1+|t|)^{-M})\)">\(\Gamma(b+it)=O_M((1+|t|)^{-M})\)</span> for every fixed integer <span class="math" data-tex="\(M\)">\(M\)</span>. The positive real scale in (4.1) changes this modulus by a constant. Hence <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> decays to every polynomial order on this line. The functional equation gives the same estimate on <span class="math" data-tex="\(a+it\)">\(a+it\)</span>.</p>
+<p>The function
+<span class="math math-display" data-tex="\[
+H(s)=s(s-k)(s+R)^2\Phi(s)
+\]">\[
+H(s)=s(s-k)(s+R)^2\Phi(s)
+\]</span>
+is entire, has finite order in the strip and is bounded on its two boundary lines, taking <span class="math" data-tex="\(M=4\)">\(M=4\)</span>. Let that boundary bound be <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. Put <span class="math" data-tex="\(h=(a+b)/2\)">\(h=(a+b)/2\)</span> and choose <span class="math" data-tex="\(0&lt;\kappa&lt;\pi/(b-a)\)">\(0&lt;\kappa&lt;\pi/(b-a)\)</span>. For <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, consider
+<span class="math math-display" data-tex="\[
+H(s)\exp\{-\delta\cos(\kappa(s-h))\}.
+\]">\[
+H(s)\exp\{-\delta\cos(\kappa(s-h))\}.
+\]</span>
+Throughout the strip,
+<span class="math math-display" data-tex="\[
+\operatorname{Re}\cos(\kappa(s-h))
+\ge\cos(\kappa(b-a)/2)\cosh(\kappa t)&gt;0.
+\]">\[
+\operatorname{Re}\cos(\kappa(s-h))
+\ge\cos(\kappa(b-a)/2)\cosh(\kappa t)&gt;0.
+\]</span>
+Thus the multiplier has modulus at most one on the vertical edges. On the horizontal edges its decay <span class="math" data-tex="\(\exp(-c\delta\cosh(\kappa T))\)">\(\exp(-c\delta\cosh(\kappa T))\)</span> dominates the finite-order bound <span class="math" data-tex="\(A&#x27;\exp(B&#x27;(1+T)^{\rho&#x27;})\)">\(A&#x27;\exp(B&#x27;(1+T)^{\rho&#x27;})\)</span>, including the polynomial factor in <span class="math" data-tex="\(H\)">\(H\)</span>. For each <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, sufficiently tall rectangles have every boundary value bounded by <span class="math" data-tex="\(K_0+\eta\)">\(K_0+\eta\)</span>. The maximum modulus principle gives this bound inside each rectangle. Exhaust the strip, let <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>, and then let <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span> at a fixed point. It follows that <span class="math" data-tex="\(|H(s)|\le K_0\)">\(|H(s)|\le K_0\)</span> throughout the strip. Therefore, uniformly there for <span class="math" data-tex="\(|t|\ge1\)">\(|t|\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+|\Phi(\sigma+it)|=O((1+|t|)^{-4}).
+\tag{4.5}
+\]">\[
+|\Phi(\sigma+it)|=O((1+|t|)^{-4}).
+\tag{4.5}
+\]</span>
+The two cancelled poles lie at height zero and cause no exception to this estimate.</p>
+<p>Apply the residue theorem to <span class="math" data-tex="\(\Phi(s)y^{-s}\)">\(\Phi(s)y^{-s}\)</span> on the rectangle with vertical edges <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, oriented counterclockwise with the right edge upward. Equation (4.5) makes both horizontal integrals tend to zero; <span class="math" data-tex="\(y^{-\sigma}\)">\(y^{-\sigma}\)</span> is bounded on the fixed strip. Its two residues are <span class="math" data-tex="\(-a_0\)">\(-a_0\)</span> and <span class="math" data-tex="\(\gamma a_0y^{-k}\)">\(\gamma a_0y^{-k}\)</span>. The vertical integrals converge absolutely. Thus
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g(y)&amp;=-a_0+\gamma a_0y^{-k}
++\frac1{2\pi i}\int_{a-i\infty}^{a+i\infty}\Phi(s)y^{-s}\,ds\\
+&amp;=-a_0+\gamma a_0y^{-k}
++\frac{\gamma y^{-k}}{2\pi i}\int_{b-i\infty}^{b+i\infty}\Phi(w)y^w\,dw\\
+&amp;=-a_0+\gamma a_0y^{-k}+\gamma y^{-k}g(1/y).
+\end{aligned}
+\tag{4.6}
+\]">\[
+\begin{aligned}
+g(y)&amp;=-a_0+\gamma a_0y^{-k}
++\frac1{2\pi i}\int_{a-i\infty}^{a+i\infty}\Phi(s)y^{-s}\,ds\\
+&amp;=-a_0+\gamma a_0y^{-k}
++\frac{\gamma y^{-k}}{2\pi i}\int_{b-i\infty}^{b+i\infty}\Phi(w)y^w\,dw\\
+&amp;=-a_0+\gamma a_0y^{-k}+\gamma y^{-k}g(1/y).
+\end{aligned}
+\tag{4.6}
+\]</span>
+In the second line <span class="math" data-tex="\(w=k-s\)">\(w=k-s\)</span>; its sign and reversed orientation cancel. Adding <span class="math" data-tex="\(a_0\)">\(a_0\)</span> gives <span class="math" data-tex="\(F(iy)=\gamma y^{-k}F(i/y)\)">\(F(iy)=\gamma y^{-k}F(i/y)\)</span>, equivalently (4.2) on the positive imaginary axis. Both sides of (4.2) are holomorphic with the declared logarithm. The identity theorem extends the equality to the upper half-plane.</p>
+<p>Periodicity supplies the other generator. Composing the two established laws gives the automorphy factor for every word in the generators. For nonzero <span class="math" data-tex="\(F\)">\(F\)</span>, any two words defining the same transformation give equal factors where <span class="math" data-tex="\(F\ne0\)">\(F\ne0\)</span>, hence everywhere by holomorphy. Thus they consistently define its multiplier. For integral weight this is the usual weight slash law, with unit modulus constants on the generators; for real weight the logarithmic branches contribute only unit modulus cocycle constants.</p>
+<p>To check holomorphy at a cusp of a discrete <span class="math" data-tex="\(G_\lambda\)">\(G_\lambda\)</span>, the coefficient estimate gives a bound uniform in the real coordinate,
+<span class="math math-display" data-tex="\[
+|F(x+iy)|=O(y^{-C-1})\quad(0&lt;y\le1).
+\]">\[
+|F(x+iy)|=O(y^{-C-1})\quad(0&lt;y\le1).
+\]</span>
+For a cusp scaling matrix <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, if its lower left entry is nonzero, <span class="math" data-tex="\(\operatorname{Im}(\sigma(x+iy))\)">\(\operatorname{Im}(\sigma(x+iy))\)</span> is comparable to <span class="math" data-tex="\(1/y\)">\(1/y\)</span> as <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>, uniformly on bounded <span class="math" data-tex="\(x\)">\(x\)</span>-intervals. The weight factor then gives polynomial growth for <span class="math" data-tex="\(F\)">\(F\)</span> in this cusp coordinate. If that entry is zero, the original expansion gives bounded growth directly. The parabolic period in the cusp coordinate has a multiplier of modulus one, say <span class="math" data-tex="\(e^{2\pi i\alpha}\)">\(e^{2\pi i\alpha}\)</span> with <span class="math" data-tex="\(0\le\alpha&lt;1\)">\(0\le\alpha&lt;1\)</span>. Its Fourier exponents are <span class="math" data-tex="\(n+\alpha\)">\(n+\alpha\)</span>. Polynomial growth excludes every negative exponent: integrating a Fourier coefficient along a horizontal period bounds it by a polynomial times <span class="math" data-tex="\(e^{2\pi(n+\alpha)y/h}\)">\(e^{2\pi(n+\alpha)y/h}\)</span>, which tends to zero for <span class="math" data-tex="\(n+\alpha&lt;0\)">\(n+\alpha&lt;0\)</span>. The remaining expansion is bounded and holomorphic at the cusp in the appropriate multiplier convention.</p>
+<p>For <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>, even integral <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\gamma=i^k\)">\(\gamma=i^k\)</span>, (4.2) reduces to <span class="math" data-tex="\(F(-1/z)=z^kF(z)\)">\(F(-1/z)=z^kF(z)\)</span>. Together with period one it gives ordinary modularity for <span class="math" data-tex="\(S,T\)">\(S,T\)</span>. There is one cusp orbit. Its Fourier constant <span class="math" data-tex="\(a_0\)">\(a_0\)</span> determines whether the form vanishes there. This proves the final assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The analytic correspondence itself needs no discreteness assumption on <span class="math" data-tex="\(G_\lambda\)">\(G_\lambda\)</span>. We do not conclude that every positive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> gives a discrete group. In the case <span class="math" data-tex="\(\lambda=2\)">\(\lambda=2\)</span>, used in Solution 4, the generators lie in <span class="math" data-tex="\(SL_2(\mathbb Z)\)">\(SL_2(\mathbb Z)\)</span>, so discreteness is immediate. A zero constant at infinity need not mean vanishing at every cusp of a group with more than one cusp orbit.</p>
+<h2 id="5-what-the-twists-recover-weil-s-theorem">5. What the twists recover: Weil's theorem</h2>
+<p>For level one, the untwisted equation recovered both modular generators. At level <span class="math" data-tex="\(N\)">\(N\)</span>, it only relates <span class="math" data-tex="\(f\)">\(f\)</span> to its Fricke transform, besides the already known period one. Weil's converse uses many twists to recover the <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> transformation law. Here is a precise even-weight, trivial-character specialization of his classical statement.</p>
+<p><strong>Theorem 5.1 (Weil).</strong> Let <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> be even, <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, <span class="math" data-tex="\(\epsilon=\pm1\)">\(\epsilon=\pm1\)</span>, and <span class="math" data-tex="\(a_n=O(n^C)\)">\(a_n=O(n^C)\)</span>, not all zero. Let <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> consist of odd primes not dividing <span class="math" data-tex="\(N\)">\(N\)</span>, meeting every reduced arithmetic progression: for all integers <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> and <span class="math" data-tex="\((a,b)=1\)">\((a,b)=1\)</span>, some <span class="math" data-tex="\(r\in\mathcal P\)">\(r\in\mathcal P\)</span> satisfies <span class="math" data-tex="\(r\equiv a\pmod b\)">\(r\equiv a\pmod b\)</span>. Suppose the untwisted completion (1.1) is entire, bounded in every vertical strip and satisfies (1.2). For every primitive nonprincipal character <span class="math" data-tex="\(\psi\)">\(\psi\)</span> modulo every <span class="math" data-tex="\(r\in\mathcal P\)">\(r\in\mathcal P\)</span>, suppose the completion of <span class="math" data-tex="\(\sum\psi(n)a_nn^{-s}\)">\(\sum\psi(n)a_nn^{-s}\)</span> at level <span class="math" data-tex="\(Nr^2\)">\(Nr^2\)</span> is entire, bounded in strips and satisfies (2.5). Then <span class="math" data-tex="\(f=\sum a_nq^n\)">\(f=\sum a_nq^n\)</span> is holomorphic modular of weight <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>, with <span class="math" data-tex="\(f\Vert_kW_N=\epsilon f\)">\(f\Vert_kW_N=\epsilon f\)</span>. If additionally <span class="math" data-tex="\(\sum|a_n|n^{-(k-\delta)}&lt;\infty\)">\(\sum|a_n|n^{-(k-\delta)}&lt;\infty\)</span> for some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, it is cuspidal.</p>
+<p>This is Weil, “Über die Bestimmung Dirichletscher Reihen durch Funktionalgleichungen,” Satz 2. The stated prime-family property is stronger than his formulation allowing conductor four as well. No Euler product is among these hypotheses. The extra convergence condition must be retained when drawing the cuspidal conclusion. <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0168/PPN235181684_0168.pdf">Original article in the Göttingen archive, printed pages 149–156</a>.</p>
+<p><strong>Proof.</strong> We first recover the paired Fricke equations analytically, before assuming any modularity. If two polynomially bounded coefficient sequences have entire completions at a positive integer scale <span class="math" data-tex="\(Q\)">\(Q\)</span>, bounded in strips, and
+<span class="math math-display" data-tex="\[
+\Lambda_Q(A,s)=i^kK\Lambda_Q(B,k-s),
+\]">\[
+\Lambda_Q(A,s)=i^kK\Lambda_Q(B,k-s),
+\]</span>
+then
+<span class="math math-display" data-tex="\[
+A\Vert_kW_Q=KB.
+\tag{5.1}
+\]">\[
+A\Vert_kW_Q=KB.
+\tag{5.1}
+\]</span>
+Here <span class="math" data-tex="\(A,B\)">\(A,B\)</span> denote their Fourier series and <span class="math" data-tex="\(K\ne0\)">\(K\ne0\)</span>. To prove this, put <span class="math" data-tex="\(G_A(t)=A(it/\sqrt Q)\)">\(G_A(t)=A(it/\sqrt Q)\)</span>, and similarly for <span class="math" data-tex="\(B\)">\(B\)</span>. Their Mellin transforms are the stated completions on a line <span class="math" data-tex="\(b\)">\(b\)</span> larger than both coefficient exponents plus one and than <span class="math" data-tex="\(k\)">\(k\)</span>. The three weighted derivative conditions in lesson 11, Lemma 8.1, follow exactly as in (4.4), so both Mellin inversions are absolutely convergent there. Euler's integral and integration by parts, as in the proof of (4.5), give decay to every polynomial order on this line; the paired equation gives the same decay on <span class="math" data-tex="\(a=k-b\)">\(a=k-b\)</span>. Apply the strip argument of Theorem 4.1 to <span class="math" data-tex="\((s+R)^4\Lambda_Q(A,s)\)">\((s+R)^4\Lambda_Q(A,s)\)</span>, choosing <span class="math" data-tex="\(R&gt;1-a\)">\(R&gt;1-a\)</span>. There are no poles, and the assumed boundedness in strips implies finite order after multiplication by this polynomial. It gives uniform <span class="math" data-tex="\(O((1+|t|)^{-4})\)">\(O((1+|t|)^{-4})\)</span> decay throughout the strip. The contour shift therefore has no residues and gives
+<span class="math math-display" data-tex="\[
+G_A(t)=i^kK t^{-k}G_B(1/t).
+\]">\[
+G_A(t)=i^kK t^{-k}G_B(1/t).
+\]</span>
+Substitution of <span class="math" data-tex="\(1/t\)">\(1/t\)</span> for <span class="math" data-tex="\(t\)">\(t\)</span> and the definition of the slash at <span class="math" data-tex="\(it/\sqrt Q\)">\(it/\sqrt Q\)</span> yield (5.1) there. The identity theorem extends it to the upper half-plane. Thus the untwisted equation gives <span class="math" data-tex="\(f\Vert_kW_N=\epsilon f\)">\(f\Vert_kW_N=\epsilon f\)</span>, and the assumed twist equations give (2.4), without using its forward modularity proof.</p>
+<p>Write <span class="math" data-tex="\(T(u)=\begin{pmatrix}1&amp;u\\0&amp;1\end{pmatrix}\)">\(T(u)=\begin{pmatrix}1&amp;u\\0&amp;1\end{pmatrix}\)</span>. Extend the slash linearly to finite formal linear combinations of matrices; every equality below is an equality of holomorphic functions after applying it to <span class="math" data-tex="\(f\)">\(f\)</span>. For an odd prime <span class="math" data-tex="\(m\in\mathcal P\)">\(m\in\mathcal P\)</span> and each unit residue <span class="math" data-tex="\(b\bmod m\)">\(b\bmod m\)</span>, choose integers <span class="math" data-tex="\(a,n\)">\(a,n\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+mn-Nab=1,\\
+\gamma_b=\begin{pmatrix}m&amp;-b\\-Na&amp;n\end{pmatrix}.
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+mn-Nab=1,\\
+\gamma_b=\begin{pmatrix}m&amp;-b\\-Na&amp;n\end{pmatrix}.
+\end{gathered}
+\tag{5.2}
+\]</span>
+Such <span class="math" data-tex="\(a\)">\(a\)</span> exists since <span class="math" data-tex="\((Nb,m)=1\)">\((Nb,m)=1\)</span>; then <span class="math" data-tex="\(n=(1+Nab)/m\)">\(n=(1+Nab)/m\)</span>. Direct multiplication proves
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T(a/m)W_{Nm^2}\\
+=mW_N\gamma_bT(b/m).
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+T(a/m)W_{Nm^2}\\
+=mW_N\gamma_bT(b/m).
+\end{gathered}
+\tag{5.3}
+\]</span>
+The right side has entries <span class="math" data-tex="\(Nam,-1,Nm^2,0\)">\(Nam,-1,Nm^2,0\)</span>, in row order. Thus the scalar <span class="math" data-tex="\(m\)">\(m\)</span> acts trivially. For any nonprincipal character <span class="math" data-tex="\(\psi\bmod m\)">\(\psi\bmod m\)</span>, the averaging formula (2.2) and the paired Fricke equation just proved imply
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;=\sum_{b\bmod m}^{*}\Bigl[\psi(b)\\
+&amp;\quad\cdot\bigl(f\Vert_k(1-\gamma_b)T(b/m)\bigr)\Bigr].
+\end{aligned}
+\tag{5.4}
+\]">\[
+\begin{aligned}
+0&amp;=\sum_{b\bmod m}^{*}\Bigl[\psi(b)\\
+&amp;\quad\cdot\bigl(f\Vert_k(1-\gamma_b)T(b/m)\bigr)\Bigr].
+\end{aligned}
+\tag{5.4}
+\]</span>
+Indeed <span class="math" data-tex="\(a\equiv-(Nb)^{-1}\pmod m\)">\(a\equiv-(Nb)^{-1}\pmod m\)</span>, so
+<span class="math" data-tex="\(\overline\psi(a)=\psi(-N)\psi(b)\)">\(\overline\psi(a)=\psi(-N)\psi(b)\)</span>. Inserting (5.3) into the left side of (2.4), its prefactor is <span class="math" data-tex="\(\epsilon\psi(-N)/\tau(\overline\psi)\)">\(\epsilon\psi(-N)/\tau(\overline\psi)\)</span>. The prefactor on its right, after expressing <span class="math" data-tex="\(f_{\overline\psi}\)">\(f_{\overline\psi}\)</span> by its average, is <span class="math" data-tex="\(\epsilon\psi(N)\tau(\psi)/m\)">\(\epsilon\psi(N)\tau(\psi)/m\)</span>. Their ratio is one, because <span class="math" data-tex="\(\tau(\psi)\tau(\overline\psi)=\psi(-1)m\)">\(\tau(\psi)\tau(\overline\psi)=\psi(-1)m\)</span>. This proves (5.4) with its sign and normalization.</p>
+<p>Character orthogonality now says that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f\Vert_k(1-\gamma_b)T(b/m)\\
+\text{is independent of }b.
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+f\Vert_k(1-\gamma_b)T(b/m)\\
+\text{is independent of }b.
+\end{gathered}
+\tag{5.5}
+\]</span>
+Here is the finite algebra needed for that conclusion. The nonzero residues modulo a prime form a cyclic group: in a finite subgroup of the multiplicative group of a field, choose elements realizing the largest prime-power parts of the element orders; their commuting product has the least common multiple <span class="math" data-tex="\(h\)">\(h\)</span> of all orders. Every group element is a root of <span class="math" data-tex="\(X^h-1\)">\(X^h-1\)</span>, so the root bound for a polynomial gives the group size at most <span class="math" data-tex="\(h\)">\(h\)</span>. Since an element of order <span class="math" data-tex="\(h\)">\(h\)</span> gives the reverse inequality, it generates the group. For a generator of a cyclic group of size <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, its characters are the powers of <span class="math" data-tex="\(e^{2\pi i/(m-1)}\)">\(e^{2\pi i/(m-1)}\)</span>. Summing a geometric series proves their orthogonality. Fourier inversion on this finite list shows that vanishing of all nonconstant character sums leaves only a constant function. Apply this pointwise to the holomorphic functions in (5.4). Every nonprincipal character modulo a prime is primitive: its only proper conductor divisor is one. Thus precisely the necessary character sums are among the hypotheses.</p>
+<p>Next suppose <span class="math" data-tex="\(m,n\in\mathcal P\)">\(m,n\in\mathcal P\)</span> and <span class="math" data-tex="\(mn-Nab=1\)">\(mn-Nab=1\)</span>. Put
+<span class="math math-display" data-tex="\[
+\gamma=\begin{pmatrix}m&amp;-b\\-Na&amp;n\end{pmatrix},\qquad
+\gamma&#x27;=\begin{pmatrix}m&amp;b\\Na&amp;n\end{pmatrix}.
+\]">\[
+\gamma=\begin{pmatrix}m&amp;-b\\-Na&amp;n\end{pmatrix},\qquad
+\gamma&#x27;=\begin{pmatrix}m&amp;b\\Na&amp;n\end{pmatrix}.
+\]</span>
+At conductor <span class="math" data-tex="\(m\)">\(m\)</span>, (5.5) applied to <span class="math" data-tex="\(b,-b\)">\(b,-b\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f\Vert_k(1-\gamma&#x27;)\\
+=f\Vert_k(1-\gamma)T(2b/m).
+\end{gathered}
+\tag{5.6}
+\]">\[
+\begin{gathered}
+f\Vert_k(1-\gamma&#x27;)\\
+=f\Vert_k(1-\gamma)T(2b/m).
+\end{gathered}
+\tag{5.6}
+\]</span>
+The corresponding matrices at conductor <span class="math" data-tex="\(n\)">\(n\)</span> are <span class="math" data-tex="\(\gamma^{-1},(\gamma&#x27;)^{-1}\)">\(\gamma^{-1},(\gamma&#x27;)^{-1}\)</span>, with unit residues <span class="math" data-tex="\(-b,b\)">\(-b,b\)</span>. The same equality there, multiplied on the right by <span class="math" data-tex="\(-\gamma&#x27;\)">\(-\gamma&#x27;\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f\Vert_k(1-\gamma&#x27;)\\
+=f\Vert_k(1-\gamma)\gamma^{-1}T(-2b/n)\gamma&#x27;.
+\end{gathered}
+\tag{5.7}
+\]">\[
+\begin{gathered}
+f\Vert_k(1-\gamma&#x27;)\\
+=f\Vert_k(1-\gamma)\gamma^{-1}T(-2b/n)\gamma&#x27;.
+\end{gathered}
+\tag{5.7}
+\]</span>
+Right multiplication preserves any equality already obtained after slashing by <span class="math" data-tex="\(f\)">\(f\)</span>. Comparing (5.6)–(5.7) therefore shows that <span class="math" data-tex="\(H=f\Vert_k(1-\gamma)\)">\(H=f\Vert_k(1-\gamma)\)</span> satisfies <span class="math" data-tex="\(H\Vert_k\mu=H\)">\(H\Vert_k\mu=H\)</span>, where
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mu=\gamma^{-1}T(-2b/n)\gamma&#x27;T(-2b/m),\\
+\mu=\begin{pmatrix}1&amp;-2b/m\\2Na/n&amp;4/(mn)-3\end{pmatrix}.
+\end{gathered}
+\tag{5.8}
+\]">\[
+\begin{gathered}
+\mu=\gamma^{-1}T(-2b/n)\gamma&#x27;T(-2b/m),\\
+\mu=\begin{pmatrix}1&amp;-2b/m\\2Na/n&amp;4/(mn)-3\end{pmatrix}.
+\end{gathered}
+\tag{5.8}
+\]</span>
+The determinant is one and its trace is <span class="math" data-tex="\(4/(mn)-2\)">\(4/(mn)-2\)</span>. Since <span class="math" data-tex="\(m,n\)">\(m,n\)</span> are odd primes, <span class="math" data-tex="\(mn\ge9\)">\(mn\ge9\)</span>; this trace lies strictly between <span class="math" data-tex="\(-2\)">\(-2\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, and is a noninteger rational number. Hence <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is elliptic and has infinite order. For completeness, if its eigenvalues were roots of unity, their sum would be an algebraic integer. A rational algebraic integer is an integer: substituting a reduced fraction into a monic integer polynomial forces its denominator to divide a power of its numerator. This contradicts the computed trace.</p>
+<p>We prove the analytic consequence rather than invoking an elliptic-invariance lemma. Conjugate its fixed point in the upper half-plane to <span class="math" data-tex="\(i\)">\(i\)</span> by a real determinant-one matrix. The conjugated elliptic matrix is
+<span class="math" data-tex="\(R_\theta=\begin{pmatrix}\cos\theta&amp;\sin\theta\\ -\sin\theta&amp;\cos\theta\end{pmatrix}\)">\(R_\theta=\begin{pmatrix}\cos\theta&amp;\sin\theta\\ -\sin\theta&amp;\cos\theta\end{pmatrix}\)</span>, with <span class="math" data-tex="\(\theta/\pi\)">\(\theta/\pi\)</span> irrational. In disk coordinates <span class="math" data-tex="\(w=(z-i)/(z+i)\)">\(w=(z-i)/(z+i)\)</span>, let
+<span class="math math-display" data-tex="\[
+h(w)=(1-w)^{-k}\widetilde H\bigl(i(1+w)/(1-w)\bigr),
+\]">\[
+h(w)=(1-w)^{-k}\widetilde H\bigl(i(1+w)/(1-w)\bigr),
+\]</span>
+where <span class="math" data-tex="\(\widetilde H\)">\(\widetilde H\)</span> is the conjugated slash of <span class="math" data-tex="\(H\)">\(H\)</span>. A direct substitution gives <span class="math" data-tex="\(w\mapsto e^{2i\theta}w\)">\(w\mapsto e^{2i\theta}w\)</span> and, from <span class="math" data-tex="\(\widetilde H\Vert_kR_\theta=\widetilde H\)">\(\widetilde H\Vert_kR_\theta=\widetilde H\)</span>,
+<span class="math math-display" data-tex="\[
+h(e^{2i\theta}w)=e^{-ik\theta}h(w).
+\]">\[
+h(e^{2i\theta}w)=e^{-ik\theta}h(w).
+\]</span>
+Writing its convergent Taylor series at zero, a nonzero coefficient of degree <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> would require <span class="math" data-tex="\(e^{i(2j+k)\theta}=1\)">\(e^{i(2j+k)\theta}=1\)</span>. This is impossible since <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span> is integral and <span class="math" data-tex="\(\theta/\pi\)">\(\theta/\pi\)</span> is irrational. Every coefficient is zero; the identity theorem gives <span class="math" data-tex="\(H=0\)">\(H=0\)</span>. We have proved
+<span class="math math-display" data-tex="\[
+f\Vert_k\gamma=f
+\quad(m,n\in\mathcal P).
+\tag{5.9}
+\]">\[
+f\Vert_k\gamma=f
+\quad(m,n\in\mathcal P).
+\tag{5.9}
+\]</span></p>
+<p>We now recover every matrix of <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>. Period one gives invariance under <span class="math" data-tex="\(T(1)\)">\(T(1)\)</span>. Together with Fricke invariance it gives invariance under
+<span class="math" data-tex="\(L(Nu)=\begin{pmatrix}1&amp;0\\Nu&amp;1\end{pmatrix}=W_NT(-u)W_N^{-1}\)">\(L(Nu)=\begin{pmatrix}1&amp;0\\Nu&amp;1\end{pmatrix}=W_NT(-u)W_N^{-1}\)</span> for every integer <span class="math" data-tex="\(u\)">\(u\)</span>. Let
+<span class="math" data-tex="\(g=\begin{pmatrix}a&amp;b\\Nc&amp;d\end{pmatrix}\in\Gamma_0(N)\)">\(g=\begin{pmatrix}a&amp;b\\Nc&amp;d\end{pmatrix}\in\Gamma_0(N)\)</span>, with <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>. Its determinant shows <span class="math" data-tex="\((a,Nb)=(d,Nb)=1\)">\((a,Nb)=(d,Nb)=1\)</span>. The assumed progression property supplies
+<span class="math math-display" data-tex="\[
+m=a+Nbs\in\mathcal P,\qquad
+n=d+Nbt\in\mathcal P
+\]">\[
+m=a+Nbs\in\mathcal P,\qquad
+n=d+Nbt\in\mathcal P
+\]</span>
+for some integers <span class="math" data-tex="\(s,t\)">\(s,t\)</span>. Use modulus <span class="math" data-tex="\(|Nb|\)">\(|Nb|\)</span>, so this also covers negative <span class="math" data-tex="\(b\)">\(b\)</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c&#x27;=\frac{mn-1}{Nb}=c+mt+ns-Nbst,\\
+g&#x27;=\begin{pmatrix}m&amp;b\\Nc&#x27;&amp;n\end{pmatrix}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+c&#x27;=\frac{mn-1}{Nb}=c+mt+ns-Nbst,\\
+g&#x27;=\begin{pmatrix}m&amp;b\\Nc&#x27;&amp;n\end{pmatrix}.
+\end{gathered}
+\]</span>
+All entries are integral and the determinant is one. Equation (5.9), with its <span class="math" data-tex="\(a,b\)">\(a,b\)</span> replaced by <span class="math" data-tex="\(-c&#x27;,-b\)">\(-c&#x27;,-b\)</span>, proves invariance under <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span>. Exact multiplication gives
+<span class="math math-display" data-tex="\[
+g=L(-Nt)g&#x27;L(-Ns).
+\tag{5.10}
+\]">\[
+g=L(-Nt)g&#x27;L(-Ns).
+\tag{5.10}
+\]</span>
+Thus <span class="math" data-tex="\(f\Vert_kg=f\)">\(f\Vert_kg=f\)</span>. If <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, the determinant forces <span class="math" data-tex="\(a=d=1\)">\(a=d=1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>; the matrix is a lower unipotent times possibly <span class="math" data-tex="\(-I\)">\(-I\)</span>. The former already fixes <span class="math" data-tex="\(f\)">\(f\)</span>, and the latter does too because <span class="math" data-tex="\(k\)">\(k\)</span> is even. This proves the entire transformation law, without a generating-set assertion or a Dirichlet theorem: the progression property is an explicit hypothesis.</p>
+<p>It remains to prove the cusp statements. Enlarge the coefficient exponent to a nonnegative integer <span class="math" data-tex="\(C\)">\(C\)</span>, retaining <span class="math" data-tex="\(|a_n|\le An^C\)">\(|a_n|\le An^C\)</span> for a suitable constant <span class="math" data-tex="\(A\)">\(A\)</span>. The polynomial coefficient estimate gives <span class="math" data-tex="\(|f(x+iy)|=O(y^{-C-1})\)">\(|f(x+iy)|=O(y^{-C-1})\)</span>, uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>, as in Theorem 4.1. For an integral cusp matrix <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, its slash therefore has polynomial growth as <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>, uniformly on a bounded horizontal interval. The transformation law just established makes that slash periodic with its positive cusp width. A negative Fourier coefficient is zero by integrating over a period at height <span class="math" data-tex="\(y\)">\(y\)</span>: its absolute value is bounded by a polynomial times an exponentially decreasing factor as <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>. There are consequently no negative terms, so the function is holomorphic at every cusp.</p>
+<p>Under the extra convergence hypothesis, reduce <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, if necessary, so that <span class="math" data-tex="\(0&lt;\delta&lt;k\)">\(0&lt;\delta&lt;k\)</span>. Put <span class="math" data-tex="\(S_j=\sum_{n\le j}|a_n|\)">\(S_j=\sum_{n\le j}|a_n|\)</span>. Then
+<span class="math" data-tex="\(S_j\le j^{k-\delta}\sum_{n\ge1}|a_n|n^{-k+\delta}\)">\(S_j\le j^{k-\delta}\sum_{n\ge1}|a_n|n^{-k+\delta}\)</span>.
+For <span class="math" data-tex="\(0&lt;x&lt;1\)">\(0&lt;x&lt;1\)</span>, absolute rearrangement of nonnegative sums gives
+<span class="math math-display" data-tex="\[
+\sum_{n\ge1}|a_n|x^n=(1-x)\sum_{j\ge1}S_jx^j.
+\]">\[
+\sum_{n\ge1}|a_n|x^n=(1-x)\sum_{j\ge1}S_jx^j.
+\]</span>
+An integral comparison for <span class="math" data-tex="\(\sum j^{k-\delta}e^{-2\pi jy}\)">\(\sum j^{k-\delta}e^{-2\pi jy}\)</span> now gives <span class="math" data-tex="\(f(x+iy)=O(y^{-k+\delta})\)">\(f(x+iy)=O(y^{-k+\delta})\)</span>, uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>. In a cusp coordinate with nonzero lower left matrix entry, <span class="math" data-tex="\(\operatorname{Im}(\sigma z)\)">\(\operatorname{Im}(\sigma z)\)</span> is comparable to <span class="math" data-tex="\(1/y\)">\(1/y\)</span> and the slash denominator to <span class="math" data-tex="\(y^k\)">\(y^k\)</span>, uniformly over a bounded interval. Hence <span class="math" data-tex="\(f\Vert_k\sigma=O(y^{-\delta})\to0\)">\(f\Vert_k\sigma=O(y^{-\delta})\to0\)</span>. If the lower left entry is zero, its original zero constant term gives exponential decay. Every cusp constant therefore vanishes, proving cuspidality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses the freely available original article of Weil, Lemmas 1–5 and Satz 2, as mathematical background. The Mellin shifts, finite character argument, matrix identities, infinite-order elliptic step and cusp conclusion have all been supplied above. The broader adelic converse discussed in Getz–Hahn, Section 11.9, is an outlook and supplies no theorem used here.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> At weight two, show that the root number is <span class="math" data-tex="\(-\epsilon\)">\(-\epsilon\)</span>. Determine what <span class="math" data-tex="\(\epsilon=+1\)">\(\epsilon=+1\)</span> forces at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, and whether <span class="math" data-tex="\(\epsilon=-1\)">\(\epsilon=-1\)</span> proves nonvanishing.</li>
+<li><strong>Medium.</strong> Reconstruct the coefficientwise twist, its nebentypus and its Fricke constant from the matrices <span class="math" data-tex="\(A_u\)">\(A_u\)</span>. Determine the containing level. Explain why an exact least-level conclusion needs more information, using <span class="math" data-tex="\(f(z)=\Delta(2z)\)">\(f(z)=\Delta(2z)\)</span> declared at level four and the character <span class="math" data-tex="\(\psi_3\)">\(\psi_3\)</span>.</li>
+<li><strong>Medium, computational.</strong> Use the twenty coefficients in Section 3 to check the level eleven functional equation numerically. First compare the two reciprocal Fricke values independently, with a Fourier tail bound. Then derive the split-integral approximate functional equation and evaluate the completion at <span class="math" data-tex="\(1/2,1,3/2\)">\(1/2,1,3/2\)</span>, and <span class="math" data-tex="\(L(f,1)\)">\(L(f,1)\)</span>. Identify which numerical symmetry is built into that formula.</li>
+<li><strong>Hard.</strong> Put <span class="math" data-tex="\(\vartheta(z)=\sum_{m\in\mathbb Z}e^{\pi im^2z}\)">\(\vartheta(z)=\sum_{m\in\mathbb Z}e^{\pi im^2z}\)</span>, and let <span class="math" data-tex="\(r_2(n)\)">\(r_2(n)\)</span> count ordered signed integer pairs of norm <span class="math" data-tex="\(n\)">\(n\)</span>. Prove <span class="math" data-tex="\(\sum r_2(n)n^{-s}=4\zeta(s)L(s,\chi_{-4})\)">\(\sum r_2(n)n^{-s}=4\zeta(s)L(s,\chi_{-4})\)</span> on its absolute domain. Using Hecke's correspondence with period two, show how its completed functional equation, poles and growth condition imply the inversion of <span class="math" data-tex="\(\vartheta^2\)">\(\vartheta^2\)</span>, and prove the reverse implication. Track the weight-one multiplier and the constant term.</li>
+</ol>
+<h2 id="7-full-solutions">7. Full solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>At <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, <span class="math" data-tex="\(i^k=-1\)">\(i^k=-1\)</span>, so (1.2) has root number <span class="math" data-tex="\(w=-\epsilon\)">\(w=-\epsilon\)</span>. If <span class="math" data-tex="\(\epsilon=+1\)">\(\epsilon=+1\)</span>, evaluation at one gives <span class="math" data-tex="\(\Lambda_N(f,1)=-\Lambda_N(f,1)\)">\(\Lambda_N(f,1)=-\Lambda_N(f,1)\)</span>, hence zero. Since
+<span class="math math-display" data-tex="\[
+\Lambda_N(f,1)=\frac{\sqrt N}{2\pi}L(f,1),
+\]">\[
+\Lambda_N(f,1)=\frac{\sqrt N}{2\pi}L(f,1),
+\]</span>
+the L-value is zero too. If <span class="math" data-tex="\(\epsilon=-1\)">\(\epsilon=-1\)</span>, the equation at one is an identity and supplies no nonvanishing conclusion. Establishing nonvanishing requires additional information, as in the computation below for level eleven.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>Start with the primitive finite Fourier sum in Lemma 2.1, applied to <span class="math" data-tex="\(\overline\psi\)">\(\overline\psi\)</span>. Dividing it by <span class="math" data-tex="\(\tau(\overline\psi)\)">\(\tau(\overline\psi)\)</span> gives the multiplier <span class="math" data-tex="\(\psi(n)\)">\(\psi(n)\)</span> on the <span class="math" data-tex="\(n\)">\(n\)</span>-th coefficient, including zero for nonunits. Thus (2.2) is the requested coefficient twist.</p>
+<p>For <span class="math" data-tex="\(\gamma\in\Gamma_0(Nr^2)\)">\(\gamma\in\Gamma_0(Nr^2)\)</span>, (2.6) factors <span class="math" data-tex="\(A_u\gamma\)">\(A_u\gamma\)</span> into an element of <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> followed by <span class="math" data-tex="\(A_v\)">\(A_v\)</span>, with <span class="math" data-tex="\(v\equiv ud^2\)">\(v\equiv ud^2\)</span>. Reindexing the average changes its character weight by <span class="math" data-tex="\(\psi(d)^2\)">\(\psi(d)^2\)</span>, proving its nebentypus. The rational affine cusp argument in Theorem 2.2 proves vanishing at every cusp, not only infinity. Hence the guaranteed level is <span class="math" data-tex="\(Nr^2\)">\(Nr^2\)</span>.</p>
+<p>For Fricke choose <span class="math" data-tex="\(v\equiv-(Nu)^{-1}\)">\(v\equiv-(Nu)^{-1}\)</span> and <span class="math" data-tex="\(a=(1+uNv)/r\)">\(a=(1+uNv)/r\)</span>. The determinant <span class="math" data-tex="\(ar-uNv=1\)">\(ar-uNv=1\)</span> and the identity (2.7) give, term by term,
+<span class="math math-display" data-tex="\[
+(f\Vert_kA_u)\Vert_kW_{Nr^2}=\epsilon f\Vert_kA_v.
+\]">\[
+(f\Vert_kA_u)\Vert_kW_{Nr^2}=\epsilon f\Vert_kA_v.
+\]</span>
+The character weight becomes <span class="math" data-tex="\(\psi(-1)\psi(N)\psi(v)\)">\(\psi(-1)\psi(N)\psi(v)\)</span>; summing over <span class="math" data-tex="\(v\)">\(v\)</span> contributes <span class="math" data-tex="\(\tau(\psi)f_{\overline\psi}\)">\(\tau(\psi)f_{\overline\psi}\)</span>. Division by the original <span class="math" data-tex="\(\tau(\overline\psi)\)">\(\tau(\overline\psi)\)</span> and
+<span class="math" data-tex="\(\tau(\psi)\tau(\overline\psi)=\psi(-1)r\)">\(\tau(\psi)\tau(\overline\psi)=\psi(-1)r\)</span> give exactly
+<span class="math" data-tex="\(\epsilon\psi(N)\tau(\psi)^2/r\)">\(\epsilon\psi(N)\tau(\psi)^2/r\)</span>. This reconstructs all parts of the twisting identity.</p>
+<p>To see why the level bound can be strict, take <span class="math" data-tex="\(f(z)=\Delta(2z)\)">\(f(z)=\Delta(2z)\)</span>. Dilation gives <span class="math" data-tex="\(f\in S_{12}(\Gamma_0(2))\)">\(f\in S_{12}(\Gamma_0(2))\)</span>, hence also at the declared level four. The level-one inversion of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> gives
+<span class="math math-display" data-tex="\[
+(f\Vert_{12}W_4)(z)
+=4^{-6}z^{-12}\Delta(-1/(2z))
+=2^{-12}z^{-12}(2z)^{12}\Delta(2z)=f(z).
+\]">\[
+(f\Vert_{12}W_4)(z)
+=4^{-6}z^{-12}\Delta(-1/(2z))
+=2^{-12}z^{-12}(2z)^{12}\Delta(2z)=f(z).
+\]</span>
+So even the Fricke eigenvector hypothesis holds at the declared level. The twist has
+<span class="math math-display" data-tex="\[
+f_{\psi_3}(z)=\psi_3(2)\Delta_{\psi_3}(2z)
+=-\Delta_{\psi_3}(2z).
+\]">\[
+f_{\psi_3}(z)=\psi_3(2)\Delta_{\psi_3}(2z)
+=-\Delta_{\psi_3}(2z).
+\]</span>
+Theorem 2.2 applied to <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> gives containing level nine for <span class="math" data-tex="\(\Delta_{\psi_3}\)">\(\Delta_{\psi_3}\)</span>; dilation by two then gives level eighteen for <span class="math" data-tex="\(f_{\psi_3}\)">\(f_{\psi_3}\)</span>. This is smaller than the nominal bound <span class="math" data-tex="\(4\cdot3^2=36\)">\(4\cdot3^2=36\)</span>. Thus no universal equality with the least level follows from the averaging argument. Determining the conductor of a primitive newform twist is an additional local theorem.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>Put <span class="math" data-tex="\(b=2\pi/\sqrt{11}\)">\(b=2\pi/\sqrt{11}\)</span>, <span class="math" data-tex="\(\rho=e^{-b}\)">\(\rho=e^{-b}\)</span>, and
+<span class="math math-display" data-tex="\[
+G_{20}(t)=\sum_{n=1}^{20}a_ne^{-bnt}.
+\]">\[
+G_{20}(t)=\sum_{n=1}^{20}a_ne^{-bnt}.
+\]</span>
+We first test (1.3) directly, evaluating <span class="math" data-tex="\(G_{20}(1/t)\)">\(G_{20}(1/t)\)</span> and <span class="math" data-tex="\(t^2G_{20}(t)\)">\(t^2G_{20}(t)\)</span> as separate sums. The theoretical equation here is <span class="math" data-tex="\(G(1/t)=t^2G(t)\)">\(G(1/t)=t^2G(t)\)</span>.</p>
+<p>We obtain a tail bound directly from the product in (3.1). It requires no optimal Hecke eigenvalue estimate. Choose <span class="math" data-tex="\(r=e^{-b/2}\)">\(r=e^{-b/2}\)</span>, and put
+<span class="math math-display" data-tex="\[
+M=r\exp\left(\frac{2r}{1-r}+\frac{2r^{11}}{1-r^{11}}\right).
+\tag{7.1}
+\]">\[
+M=r\exp\left(\frac{2r}{1-r}+\frac{2r^{11}}{1-r^{11}}\right).
+\tag{7.1}
+\]</span>
+For each finite product, the triangle inequality bounds the absolute value of each coefficient by the corresponding coefficient of
+<span class="math" data-tex="\(q\prod(1+q^m)^2(1+q^{11m})^2\)">\(q\prod(1+q^m)^2(1+q^{11m})^2\)</span>.
+These latter coefficients are nonnegative, and a coefficient of fixed degree stabilizes after finitely many factors. Evaluating at <span class="math" data-tex="\(r\)">\(r\)</span>, their total sum is at most <span class="math" data-tex="\(M\)">\(M\)</span>: use <span class="math" data-tex="\(1+u\le e^u\)">\(1+u\le e^u\)</span>, which follows from the nonnegative exponential series, and sum the two geometric series in <span class="math" data-tex="\(r^m\)">\(r^m\)</span> and <span class="math" data-tex="\(r^{11m}\)">\(r^{11m}\)</span>. Taking increasing finite products proves
+<span class="math math-display" data-tex="\[
+\sum_{n\ge1}|a_n|r^n\le M,
+\qquad |a_n|\le Mr^{-n}.
+\]">\[
+\sum_{n\ge1}|a_n|r^n\le M,
+\qquad |a_n|\le Mr^{-n}.
+\]</span>
+Thus for <span class="math" data-tex="\(t&gt;1/2\)">\(t&gt;1/2\)</span>, with <span class="math" data-tex="\(x=e^{-bt}/r&lt;1\)">\(x=e^{-bt}/r&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_{20}(t)=M\frac{x^{21}}{1-x},\\
+R_{20}(t)\ge |G(t)-G_{20}(t)|.
+\end{gathered}
+\tag{7.2}
+\]">\[
+\begin{gathered}
+R_{20}(t)=M\frac{x^{21}}{1-x},\\
+R_{20}(t)\ge |G(t)-G_{20}(t)|.
+\end{gathered}
+\tag{7.2}
+\]</span>
+This deliberately elementary estimate is sufficient for the numerical checks below.</p>
+<p>Consequently the allowable Fourier truncation discrepancy in the reciprocal test is
+<span class="math" data-tex="\(R_{20}(1/t)+t^2R_{20}(t)\)">\(R_{20}(1/t)+t^2R_{20}(t)\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(t\)">\(t\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(G_{20}(1/t)\)">\(G_{20}(1/t)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(t^2G_{20}(t)\)">\(t^2G_{20}(t)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">0.8</td>
+<td style="text-align:right">0.07545744510502054</td>
+<td style="text-align:right">0.07545744510500609</td>
+</tr>
+<tr>
+<td style="text-align:right">1.25</td>
+<td style="text-align:right">0.11790225797657202</td>
+<td style="text-align:right">0.11790225797659460</td>
+</tr>
+</tbody>
+</table>
+<p>The respective differences are approximately <span class="math" data-tex="\(1.44513\cdot10^{-14}\)">\(1.44513\cdot10^{-14}\)</span> and <span class="math" data-tex="\(-2.25802\cdot10^{-14}\)">\(-2.25802\cdot10^{-14}\)</span>. Formula (7.2) gives the respective upper bounds <span class="math" data-tex="\(1.333\cdot10^{-5}\)">\(1.333\cdot10^{-5}\)</span> and <span class="math" data-tex="\(2.083\cdot10^{-5}\)">\(2.083\cdot10^{-5}\)</span>. Each discrepancy is comfortably inside its allowance. These independently evaluated sums test the coefficient data and the positive sign. Agreement to finite precision remains a numerical check; Theorem 1.1 supplies the proof of the functional equation.</p>
+<p>Next (1.5) gives the exact split-integral formula
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda_{11}(f,s)&amp;=A(s)+A(2-s),\\
+A(s)&amp;=\sum_{n\ge1}a_n(bn)^{-s}\Gamma(s,bn),\\
+\Gamma(s,x)&amp;=\int_x^\infty e^{-u}u^{s-1}\,du.
+\end{aligned}
+\tag{7.3}
+\]">\[
+\begin{aligned}
+\Lambda_{11}(f,s)&amp;=A(s)+A(2-s),\\
+A(s)&amp;=\sum_{n\ge1}a_n(bn)^{-s}\Gamma(s,bn),\\
+\Gamma(s,x)&amp;=\int_x^\infty e^{-u}u^{s-1}\,du.
+\end{aligned}
+\tag{7.3}
+\]</span>
+The sum–integral interchange is absolute for every fixed <span class="math" data-tex="\(s\)">\(s\)</span>: on <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span>, bound <span class="math" data-tex="\(u^{\operatorname{Re}s-1}\)">\(u^{\operatorname{Re}s-1}\)</span> by a fixed nonnegative power, sum <span class="math" data-tex="\(Mr^{-n}e^{-bnu}\)">\(Mr^{-n}e^{-bnu}\)</span>, and use <span class="math" data-tex="\(r=e^{-b/2}\)">\(r=e^{-b/2}\)</span> and <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span> to obtain exponential decay in both indices. Truncating the sum at twenty defines
+<span class="math" data-tex="\(\Lambda_{20}(s)=A_{20}(s)+A_{20}(2-s)\)">\(\Lambda_{20}(s)=A_{20}(s)+A_{20}(2-s)\)</span>.</p>
+<p>For these particular arguments, the integrals reduce to
+<span class="math math-display" data-tex="\[
+\Gamma(1,x)=e^{-x},\qquad
+\Gamma(1/2,x)=\sqrt\pi\,\operatorname{erfc}(\sqrt x),\qquad
+\Gamma(3/2,x)=\tfrac12\Gamma(1/2,x)+\sqrt x\,e^{-x}.
+\tag{7.4}
+\]">\[
+\Gamma(1,x)=e^{-x},\qquad
+\Gamma(1/2,x)=\sqrt\pi\,\operatorname{erfc}(\sqrt x),\qquad
+\Gamma(3/2,x)=\tfrac12\Gamma(1/2,x)+\sqrt x\,e^{-x}.
+\tag{7.4}
+\]</span>
+Here <span class="math" data-tex="\(\operatorname{erfc}(v)=(2/\sqrt\pi)\int_v^\infty e^{-u^2}\,du\)">\(\operatorname{erfc}(v)=(2/\sqrt\pi)\int_v^\infty e^{-u^2}\,du\)</span>; substitution proves the middle identity, and integration by parts proves the last one. Evaluation yields
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda_{20}(1/2)=\Lambda_{20}(3/2)&amp;\approx0.1383305788,\\
+\Lambda_{20}(1)&amp;\approx0.1339922615,\\
+L_{20}(f,1)=b\Lambda_{20}(1)&amp;\approx0.2538418609.
+\end{aligned}
+\tag{7.5}
+\]">\[
+\begin{aligned}
+\Lambda_{20}(1/2)=\Lambda_{20}(3/2)&amp;\approx0.1383305788,\\
+\Lambda_{20}(1)&amp;\approx0.1339922615,\\
+L_{20}(f,1)=b\Lambda_{20}(1)&amp;\approx0.2538418609.
+\end{aligned}
+\tag{7.5}
+\]</span>
+Put <span class="math" data-tex="\(x_0=e^{-b}/r=e^{-b/2}\)">\(x_0=e^{-b}/r=e^{-b/2}\)</span>. For <span class="math" data-tex="\(s=1/2,3/2\)">\(s=1/2,3/2\)</span>, the discarded completed integral is bounded by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+I_n=\int_1^\infty e^{-bnu}(u^{-1/2}+u^{1/2})\,du,\\
+\sum_{n\ge21}Mr^{-n}I_n\\
+\le 2M\sum_{n\ge21}x_0^n
+\left(\frac1{bn}+\frac1{b^2n^2}\right)\\
+\le\frac{2Mx_0^{21}}{21b(1-x_0)}
+\left(1+\frac1{21b}\right)\\
+&lt;2.663\cdot10^{-10}.
+\end{gathered}
+\tag{7.6}
+\]">\[
+\begin{gathered}
+I_n=\int_1^\infty e^{-bnu}(u^{-1/2}+u^{1/2})\,du,\\
+\sum_{n\ge21}Mr^{-n}I_n\\
+\le 2M\sum_{n\ge21}x_0^n
+\left(\frac1{bn}+\frac1{b^2n^2}\right)\\
+\le\frac{2Mx_0^{21}}{21b(1-x_0)}
+\left(1+\frac1{21b}\right)\\
+&lt;2.663\cdot10^{-10}.
+\end{gathered}
+\tag{7.6}
+\]</span>
+The first inequality uses <span class="math" data-tex="\(u^{-1/2}+u^{1/2}\le2u\)">\(u^{-1/2}+u^{1/2}\le2u\)</span>, then evaluates <span class="math" data-tex="\(\int_1^\infty ue^{-bnu}\,du\)">\(\int_1^\infty ue^{-bnu}\,du\)</span> by integration by parts. The next uses <span class="math" data-tex="\(n\ge21\)">\(n\ge21\)</span> and sums a geometric series. At the centre, the discarded <strong>L-value</strong> satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|L(f,1)-L_{20}(f,1)|\\
+\le 2M\sum_{n\ge21}\frac{x_0^n}{n}\\
+\le\frac{2M}{21}\frac{x_0^{21}}{1-x_0}\\
+&lt;4.920\cdot10^{-10}.
+\end{gathered}
+\tag{7.7}
+\]">\[
+\begin{gathered}
+|L(f,1)-L_{20}(f,1)|\\
+\le 2M\sum_{n\ge21}\frac{x_0^n}{n}\\
+\le\frac{2M}{21}\frac{x_0^{21}}{1-x_0}\\
+&lt;4.920\cdot10^{-10}.
+\end{gathered}
+\tag{7.7}
+\]</span>
+Here the factor <span class="math" data-tex="\(b\)">\(b\)</span> converting the completion to the L-value cancels the <span class="math" data-tex="\(1/b\)">\(1/b\)</span> from each integral. Nonvanishing has a direct proof too. For <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, every factor of the product (3.1) at <span class="math" data-tex="\(q=e^{-2\pi y}\)">\(q=e^{-2\pi y}\)</span> is positive, and their product is nonzero: after finitely many factors, <span class="math" data-tex="\(q^m&lt;1/2\)">\(q^m&lt;1/2\)</span>, and <span class="math" data-tex="\(-\log(1-q^m)\le2q^m\)">\(-\log(1-q^m)\le2q^m\)</span>, whose sum converges. Thus <span class="math" data-tex="\(G(t)&gt;0\)">\(G(t)&gt;0\)</span>. Formula (1.5) at the centre gives <span class="math" data-tex="\(\Lambda_{11}(f,1)=2\int_1^\infty G(t)\,dt&gt;0\)">\(\Lambda_{11}(f,1)=2\int_1^\infty G(t)\,dt&gt;0\)</span>, hence <span class="math" data-tex="\(L(f,1)&gt;0\)">\(L(f,1)&gt;0\)</span>. The finite-sum decimals are reproducible approximations; a certified decimal enclosure would also require a rounding calculation.</p>
+<p>These are analytic truncation bounds. The displayed decimal rounding and ordinary floating-point evaluation have their own errors; (7.6)–(7.7) alone do not certify them. For reproducibility, this Python calculation uses the exact coefficient recursion followed by ordinary double-precision evaluation:</p>
+<pre><code class="language-python">import math
+
+bcoef = [1]
+for j in range(1, 20):
+    total = 0
+    for h in range(1, j + 1):
+        sigma = sum(d for d in range(1, h + 1) if h % d == 0)
+        if h % 11 == 0:
+            v = h // 11
+            sigma += 11 * sum(d for d in range(1, v + 1) if v % d == 0)
+        total += sigma * bcoef[j - h]
+    assert (-2 * total) % j == 0
+    bcoef.append((-2 * total) // j)
+a = bcoef
+b = 2 * math.pi / math.sqrt(11)
+
+def G(t):
+    return math.fsum(an * math.exp(-b * n * t)
+                     for n, an in enumerate(a, 1))
+
+r = math.exp(-b / 2)
+M = r * math.exp(2*r/(1-r) + 2*r**11/(1-r**11))
+
+def tail(t):
+    x = math.exp(-b * t) / r
+    assert x &lt; 1
+    return M * x**21 / (1-x)
+
+for t in (0.8, 1.25):
+    print(t, G(1 / t), t*t*G(t), tail(1 / t) + t*t*tail(t))
+
+Ahalf, Aone, Athreehalf = [], [], []
+for n, an in enumerate(a, 1):
+    x = b * n
+    gh = math.sqrt(math.pi) * math.erfc(math.sqrt(x))
+    g3 = gh / 2 + math.sqrt(x) * math.exp(-x)
+    Ahalf.append(an * gh / math.sqrt(x))
+    Aone.append(an * math.exp(-x) / x)
+    Athreehalf.append(an * g3 / x**1.5)
+lamhalf = math.fsum(Ahalf + Athreehalf)
+lamone = 2 * math.fsum(Aone)
+print(lamhalf, lamone, lamhalf, b * lamone)
+</code></pre>
+<p>The equality <span class="math" data-tex="\(\Lambda_{20}(1/2)=\Lambda_{20}(3/2)\)">\(\Lambda_{20}(1/2)=\Lambda_{20}(3/2)\)</span> follows from its symmetric definition, regardless of the supplied coefficients. It therefore cannot by itself validate them. The separate reciprocal-point calculation is the useful numerical test. The approximate functional equation is then an efficient way to compute L-values with a very small analytically bounded tail.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>Let <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span> be zero on even integers, one on <span class="math" data-tex="\(1\pmod4\)">\(1\pmod4\)</span> and minus one on <span class="math" data-tex="\(3\pmod4\)">\(3\pmod4\)</span>. It is primitive of conductor four: the units one and three have different character values but identical reductions modulo two. Write <span class="math" data-tex="\(\beta(s)=L(s,\chi_{-4})\)">\(\beta(s)=L(s,\chi_{-4})\)</span>.</p>
+<p><strong>The coefficient identity.</strong> We first prove
+<span class="math math-display" data-tex="\[
+r_2(n)=4\sum_{d\mid n}\chi_{-4}(d).
+\tag{7.8}
+\]">\[
+r_2(n)=4\sum_{d\mid n}\chi_{-4}(d).
+\tag{7.8}
+\]</span>
+The ring <span class="math" data-tex="\(\mathbb Z[i]\)">\(\mathbb Z[i]\)</span> is Euclidean for <span class="math" data-tex="\(\operatorname{Nm}(a+ib)=a^2+b^2\)">\(\operatorname{Nm}(a+ib)=a^2+b^2\)</span>: round both coordinates of a quotient to integers, leaving a remainder of norm at most half the divisor's norm. The Euclidean algorithm supplies a greatest common divisor and a Bézout identity. If an irreducible <span class="math" data-tex="\(\pi\)">\(\pi\)</span> does not divide <span class="math" data-tex="\(x\)">\(x\)</span>, its gcd with <span class="math" data-tex="\(x\)">\(x\)</span> is one, so Bézout shows that <span class="math" data-tex="\(\pi\mid xy\)">\(\pi\mid xy\)</span> implies <span class="math" data-tex="\(\pi\mid y\)">\(\pi\mid y\)</span>. Thus irreducibles are prime. Induction on the norm gives existence of factorization, and successive cancellation of primes gives uniqueness up to the four units <span class="math" data-tex="\(1,-1,i,-i\)">\(1,-1,i,-i\)</span>.</p>
+<p>Here is the rational prime factorization needed for the count. Two ramifies as <span class="math" data-tex="\(2=-i(1+i)^2\)">\(2=-i(1+i)^2\)</span>. If <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span> had a nontrivial Gaussian factorization, one factor would have norm <span class="math" data-tex="\(p\)">\(p\)</span>, so <span class="math" data-tex="\(p=a^2+b^2\)">\(p=a^2+b^2\)</span>. Neither coordinate could be zero modulo <span class="math" data-tex="\(p\)">\(p\)</span>; their quotient would give a square root of minus one modulo <span class="math" data-tex="\(p\)">\(p\)</span>. But multiplying all nonzero residues by a unit <span class="math" data-tex="\(x\)">\(x\)</span> permutes them, so cancellation of their product gives <span class="math" data-tex="\(x^{p-1}=1\)">\(x^{p-1}=1\)</span>. A square root of minus one would instead give <span class="math" data-tex="\(x^{p-1}=(-1)^{(p-1)/2}=-1\)">\(x^{p-1}=(-1)^{(p-1)/2}=-1\)</span>, a contradiction. Thus these primes remain irreducible.</p>
+<p>If <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span>, pair each nonzero residue with its inverse. Only <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> pair with themselves, so <span class="math" data-tex="\((p-1)!\equiv-1\pmod p\)">\((p-1)!\equiv-1\pmod p\)</span>. Pairing its lower and upper halves also gives
+<span class="math math-display" data-tex="\[
+(p-1)!\equiv(-1)^{(p-1)/2}\left(((p-1)/2)!\right)^2\pmod p.
+\]">\[
+(p-1)!\equiv(-1)^{(p-1)/2}\left(((p-1)/2)!\right)^2\pmod p.
+\]</span>
+The sign is positive, producing a square root <span class="math" data-tex="\(x\)">\(x\)</span> of minus one. The Gaussian gcd <span class="math" data-tex="\(d=(p,x+i)\)">\(d=(p,x+i)\)</span> is a nonunit: otherwise a Bézout identity would make <span class="math" data-tex="\(x+i\)">\(x+i\)</span> invertible modulo <span class="math" data-tex="\(p\)">\(p\)</span>, although its product with the nonzero element <span class="math" data-tex="\(x-i\)">\(x-i\)</span> is zero there. It is not associated to <span class="math" data-tex="\(p\)">\(p\)</span>, since <span class="math" data-tex="\(p\)">\(p\)</span> cannot divide the imaginary coordinate one of <span class="math" data-tex="\(x+i\)">\(x+i\)</span>. Its norm is a proper nontrivial divisor of <span class="math" data-tex="\(p^2\)">\(p^2\)</span>, hence <span class="math" data-tex="\(p\)">\(p\)</span>. Therefore <span class="math" data-tex="\(p=d\overline d\)">\(p=d\overline d\)</span>, and <span class="math" data-tex="\(d,\overline d\)">\(d,\overline d\)</span> are nonassociate primes. If they were associated, their coordinates would force one to be zero or their absolute values to be equal; <span class="math" data-tex="\(p\)">\(p\)</span> would be a square or twice a square, impossible for odd <span class="math" data-tex="\(p\)">\(p\)</span>. Every Gaussian prime belongs to this list: it divides its integer norm, hence by primeness divides some rational prime factor, and is associated to one of the listed Gaussian factors of that prime.</p>
+<p>For <span class="math" data-tex="\(n=\prod_pp^{e_p}\)">\(n=\prod_pp^{e_p}\)</span>, a Gaussian integer of norm <span class="math" data-tex="\(n\)">\(n\)</span> has a uniquely determined exponent <span class="math" data-tex="\(e_2\)">\(e_2\)</span> at <span class="math" data-tex="\(1+i\)">\(1+i\)</span>, and exponent <span class="math" data-tex="\(e_p/2\)">\(e_p/2\)</span> at each inert prime. It exists only when every exponent at <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span> is even. At each split prime <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span>, it can distribute the total exponent <span class="math" data-tex="\(e_p\)">\(e_p\)</span> between its two conjugate factors in <span class="math" data-tex="\(e_p+1\)">\(e_p+1\)</span> ways. Multiplication by the four units gives
+<span class="math math-display" data-tex="\[
+r_2(n)=\begin{cases}
+4\displaystyle\prod_{p\equiv1(4)}(e_p+1),&amp; e_p\text{ even for every }p\equiv3(4),\\
+0,&amp;\text{otherwise}.
+\end{cases}
+\]">\[
+r_2(n)=\begin{cases}
+4\displaystyle\prod_{p\equiv1(4)}(e_p+1),&amp; e_p\text{ even for every }p\equiv3(4),\\
+0,&amp;\text{otherwise}.
+\end{cases}
+\]</span>
+On the other hand, the divisor sum of <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span> is multiplicative. Its local factors are one at two, <span class="math" data-tex="\(e+1\)">\(e+1\)</span> at a split prime and <span class="math" data-tex="\(1-1+\cdots+(-1)^e\)">\(1-1+\cdots+(-1)^e\)</span> at an inert prime. These agree with the count and prove (7.8).</p>
+<p>For <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, the convolution is absolutely summable because
+<span class="math" data-tex="\(\sum_{m,d\ge1}|\chi_{-4}(d)|(md)^{-\sigma}\le\zeta(\sigma)^2&lt;\infty\)">\(\sum_{m,d\ge1}|\chi_{-4}(d)|(md)^{-\sigma}\le\zeta(\sigma)^2&lt;\infty\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+D(s)=\sum_{n\ge1}r_2(n)n^{-s}=4\zeta(s)\beta(s).
+\tag{7.9}
+\]">\[
+D(s)=\sum_{n\ge1}r_2(n)n^{-s}=4\zeta(s)\beta(s).
+\tag{7.9}
+\]</span>
+Also <span class="math" data-tex="\(r_2(n)\le4d(n)\le8\sqrt n\)">\(r_2(n)\le4d(n)\le8\sqrt n\)</span>, giving the polynomial bound needed in Theorem 4.1. The normally convergent double theta series has the expansion
+<span class="math math-display" data-tex="\[
+F(z)=\vartheta(z)^2=1+\sum_{n\ge1}r_2(n)e^{\pi inz},\qquad F(z+2)=F(z).
+\tag{7.10}
+\]">\[
+F(z)=\vartheta(z)^2=1+\sum_{n\ge1}r_2(n)e^{\pi inz},\qquad F(z+2)=F(z).
+\tag{7.10}
+\]</span>
+The coefficient one is the single pair <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>; the nonzero coefficients count all ordered signed pairs, so no factor of two is lost.</p>
+<p><strong>The completed equation and poles.</strong> Use the written continuation proofs in <a href="../NT-ZETA/NT-ZETA-04.html#mellin-transformation-and-reflection-in-the-critical-strip">Poisson summation, theta, and the functional equation</a>, Theorem 3.1, and <a href="../NT-DIRL/NT-DIRL-05.html#section-2">The functional equation of Dirichlet L-functions</a>, Theorem 2.1. For the latter, Lemma 2.1a above supplies its character-Poisson step, and conductor four has parity one. In the present conventions these proofs give
+<span class="math math-display" data-tex="\[
+Z(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)=Z(1-s),
+\]">\[
+Z(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)=Z(1-s),
+\]</span>
+with simple residues <span class="math" data-tex="\(-1,+1\)">\(-1,+1\)</span> at <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, and
+<span class="math math-display" data-tex="\[
+B(s)=(4/\pi)^{(s+1)/2}\Gamma((s+1)/2)\beta(s)=B(1-s),
+\]">\[
+B(s)=(4/\pi)^{(s+1)/2}\Gamma((s+1)/2)\beta(s)=B(1-s),
+\]</span>
+which is entire. The character has <span class="math" data-tex="\(\tau(\chi_{-4})=i-(-i)=2i\)">\(\tau(\chi_{-4})=i-(-i)=2i\)</span>, so its odd-character root number <span class="math" data-tex="\(\tau/(i\sqrt4)\)">\(\tau/(i\sqrt4)\)</span> is one. The raw reflection formula needed in the growth estimate follows from this completed equation and the Gamma reflection and duplication proved in the Gamma lesson. For instance the odd raw equation simplifies to
+<span class="math math-display" data-tex="\[
+\beta(s)=(2/\pi)^{1-s}\Gamma(1-s)\cos(\pi s/2)\beta(1-s).
+\tag{7.11}
+\]">\[
+\beta(s)=(2/\pi)^{1-s}\Gamma(1-s)\cos(\pi s/2)\beta(1-s).
+\tag{7.11}
+\]</span>
+The possible negative odd Gamma poles in <span class="math" data-tex="\(B\)">\(B\)</span> are cancelled by the zeros of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>; the negative even poles in <span class="math" data-tex="\(Z\)">\(Z\)</span> are cancelled by the zeta zeros. Those zeros also follow by substituting the relevant integers in the raw reflection formulas.</p>
+<p>Gamma duplication gives
+<span class="math math-display" data-tex="\[
+Z(s)B(s)=4\pi^{-s}\Gamma(s)\zeta(s)\beta(s)=\Phi(s),
+\tag{7.12}
+\]">\[
+Z(s)B(s)=4\pi^{-s}\Gamma(s)\zeta(s)\beta(s)=\Phi(s),
+\tag{7.12}
+\]</span>
+which is exactly the completion in (4.1) for <span class="math" data-tex="\(\lambda=2\)">\(\lambda=2\)</span>, <span class="math" data-tex="\(D=4\zeta\beta\)">\(D=4\zeta\beta\)</span>. Moreover <span class="math" data-tex="\(\beta(1)=1-1/3+1/5-\cdots=\pi/4\)">\(\beta(1)=1-1/3+1/5-\cdots=\pi/4\)</span>: integrate the finite geometric expansion of <span class="math" data-tex="\(1/(1+x^2)\)">\(1/(1+x^2)\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, whose remainder has integral at most <span class="math" data-tex="\(1/(2m+3)\)">\(1/(2m+3)\)</span>, then use <span class="math" data-tex="\(\arctan(1)=\pi/4\)">\(\arctan(1)=\pi/4\)</span>. Thus <span class="math" data-tex="\(B(1)=1\)">\(B(1)=1\)</span> and, by reflection, <span class="math" data-tex="\(B(0)=1\)">\(B(0)=1\)</span>. Formula (7.12) has precisely the simple poles <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, with residues <span class="math" data-tex="\(-1,+1\)">\(-1,+1\)</span>, and satisfies
+<span class="math math-display" data-tex="\[
+\Phi(s)=\Phi(1-s).
+\tag{7.13}
+\]">\[
+\Phi(s)=\Phi(1-s).
+\tag{7.13}
+\]</span>
+They correspond to <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, <span class="math" data-tex="\(\gamma=1\)">\(\gamma=1\)</span> and <span class="math" data-tex="\(a_0=1\)">\(a_0=1\)</span>, including the nonzero constant term.</p>
+<p><strong>Checking growth rather than assuming it.</strong> Put
+<span class="math" data-tex="\(A_\chi(x)=\sum_{n\le x}\chi_{-4}(n)\)">\(A_\chi(x)=\sum_{n\le x}\chi_{-4}(n)\)</span>, which is bounded. Partial summation gives, first on <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span> and then by continuation to <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\beta(s)=s\int_1^\infty A_\chi(x)x^{-s-1}\,dx,
+\qquad
+\zeta(s)=\frac{s}{s-1}-s\int_1^\infty\{x\}x^{-s-1}\,dx.
+\tag{7.14}
+\]">\[
+\beta(s)=s\int_1^\infty A_\chi(x)x^{-s-1}\,dx,
+\qquad
+\zeta(s)=\frac{s}{s-1}-s\int_1^\infty\{x\}x^{-s-1}\,dx.
+\tag{7.14}
+\]</span>
+These follow respectively by integrating the step sums <span class="math" data-tex="\(A_\chi\)">\(A_\chi\)</span> and <span class="math" data-tex="\(\lfloor x\rfloor=x-\{x\}\)">\(\lfloor x\rfloor=x-\{x\}\)</span>; their boundary terms vanish on the initial domain. The new integrals converge locally uniformly for <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>. On a fixed strip with <span class="math" data-tex="\(\sigma\ge1/2\)">\(\sigma\ge1/2\)</span>, <span class="math" data-tex="\(|t|\ge1\)">\(|t|\ge1\)</span>, they bound <span class="math" data-tex="\(\zeta(s),\beta(s)\)">\(\zeta(s),\beta(s)\)</span> by <span class="math" data-tex="\(O(1+|t|)\)">\(O(1+|t|)\)</span>. On its part with <span class="math" data-tex="\(\sigma\le1/2\)">\(\sigma\le1/2\)</span>, the raw reflection formulas express them in terms of the functions at <span class="math" data-tex="\(1-s\)">\(1-s\)</span>, where those estimates apply. Euler's integral bounds <span class="math" data-tex="\(|\Gamma(1-s)|\le\Gamma(1-\sigma)\)">\(|\Gamma(1-s)|\le\Gamma(1-\sigma)\)</span>, uniformly on this fixed strip, while the sine and cosine factors are at most <span class="math" data-tex="\(O(e^{\pi|t|/2})\)">\(O(e^{\pi|t|/2})\)</span>. Hence both functions have at most polynomial times exponential growth throughout the strip.</p>
+<p>Choose an integer <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span> with <span class="math" data-tex="\(\sigma+m&gt;0\)">\(\sigma+m&gt;0\)</span> throughout it. The recurrence
+<span class="math math-display" data-tex="\[
+\Gamma(s)=\frac{\Gamma(s+m)}{s(s+1)\cdots(s+m-1)}
+\]">\[
+\Gamma(s)=\frac{\Gamma(s+m)}{s(s+1)\cdots(s+m-1)}
+\]</span>
+and Euler's integral bound its modulus by <span class="math" data-tex="\(O(|t|^{-m})\)">\(O(|t|^{-m})\)</span> for <span class="math" data-tex="\(|t|\ge1\)">\(|t|\ge1\)</span>, with the empty product understood when <span class="math" data-tex="\(m=0\)">\(m=0\)</span>. The real scale <span class="math" data-tex="\(\pi^{-s}\)">\(\pi^{-s}\)</span> has bounded modulus there. Therefore <span class="math" data-tex="\(s(s-1)\Phi(s)\)">\(s(s-1)\Phi(s)\)</span> has at most a polynomial times <span class="math" data-tex="\(e^{\pi|t|}\)">\(e^{\pi|t|}\)</span> growth. It is entire by the pole analysis, so it satisfies the exact finite-order condition in Theorem 4.1, including the bounded portion of each strip.</p>
+<p><strong>The two directions.</strong> All hypotheses of Theorem 4.1 now hold for the coefficients in (7.10), with <span class="math" data-tex="\(\lambda=2,k=1,\gamma=1\)">\(\lambda=2,k=1,\gamma=1\)</span>. Its converse gives
+<span class="math math-display" data-tex="\[
+\vartheta(-1/z)^2=(z/i)\vartheta(z)^2=-iz\vartheta(z)^2.
+\tag{7.15}
+\]">\[
+\vartheta(-1/z)^2=(z/i)\vartheta(z)^2=-iz\vartheta(z)^2.
+\tag{7.15}
+\]</span>
+In weight-one slash notation this is <span class="math" data-tex="\(F|_1S=-iF\)">\(F|_1S=-iF\)</span>, while <span class="math" data-tex="\(F|_1T^2=F\)">\(F|_1T^2=F\)</span>. It is a multiplier for the group generated by <span class="math" data-tex="\(S,T^2\)">\(S,T^2\)</span>, rather than trivial-character modularity at odd weight for the full modular group.</p>
+<p>Conversely, suppose (7.15) holds for the theta series. The already proved coefficient identity, polynomial bound and period two allow the forward half of Theorem 4.1. It yields
+<span class="math math-display" data-tex="\[
+\Phi(s)=A(s)+A(1-s)+\frac1{s-1}-\frac1s,
+\qquad A(s)=\int_1^\infty(F(iy)-1)y^{s-1}\,dy,
+\]">\[
+\Phi(s)=A(s)+A(1-s)+\frac1{s-1}-\frac1s,
+\qquad A(s)=\int_1^\infty(F(iy)-1)y^{s-1}\,dy,
+\]</span>
+proving the continuation, both exact residues, finite-order growth and (7.13). Thus the theta inversion and the specified analytic package are equivalent. An isolated formal functional equation, without the pole and growth information, is not the hypothesis of the converse.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<ul>
+<li>The cusp coefficient estimate and Hecke coefficient relations: <a href="LG-MF-07.html">lesson 7</a>, Theorem 2.1; lesson 9, Theorems 2.3 and 3.1. The complete level eleven modularity and dimension computation is lesson 9, Section 6; its squared eta transformation uses the explicitly stated eta input there. Dilation and Fricke normalization are also developed in lesson 10, Sections 1–2.</li>
+<li>The numerical tail bound is proved directly from the product in Solution 3, equations (7.1)–(7.2). It does not use the optimal Ramanujan–Petersson estimate. That result and its remaining geometric proof obligations are tracked in <a href="LG-MF-11.html">lesson 11</a>, Section 5.</li>
+<li>Euler's Gamma integral, meromorphic continuation and recurrence are proved in <a href="../NT-ZETA/NT-ZETA-03.html#from-an-integral-to-an-entire-reciprocal">The Gamma function and Stirling's formula</a>, Theorems 1.1–1.2; its Theorems 2.2–2.3 prove reflection and duplication. <a href="LG-MF-11.html">The L-function of a cusp form</a>, Lemma 8.1, proves smooth Mellin inversion; Theorem 4.1 above verifies its three weighted conditions. The smooth inversion and finite-order strip argument are proved in the named lesson and Theorem 4.1 above.</li>
+<li>Classical zeta continuation, its sole pole of residue one and reflection are proved in <a href="../NT-ZETA/NT-ZETA-04.html#mellin-transformation-and-reflection-in-the-critical-strip">Poisson summation, theta, and the functional equation</a>, Theorem 3.1 and Corollary 3.2. Primitive Dirichlet L-function continuation and completed reflection have full written Mellin proofs in <a href="../NT-DIRL/NT-DIRL-05.html#section-2">The functional equation of Dirichlet L-functions</a>, Theorem 2.1; its Solution 2 derives the raw reflection formula. Lemma 2.1a above supplies that proof's character-Poisson step from the ordinary Poisson theorem and Gaussian transform in the zeta lesson, Theorem 1.2 and Lemma 2.1. The finite primitive Gauss identities are proved in Lemma 2.1 here and in <a href="../NT-DIRL/NT-DIRL-03.html#section-1">Gauss sums</a>, Theorems 1.1 and 2.1. Solution 4 computes the conductor-four phase directly. <a href="https://dlmf.nist.gov/25.15.E5">DLMF (25.15.5)</a> records the corresponding raw normalization.</li>
+<li>The identity theorem, rectangle residue formula, maximum modulus principle and disk power series used above are proved in <a href="LG-MF-11.html">lesson 11</a>, Lemma 8.0. The finite-order strip argument is proved in Theorem 4.1. The continuous sum–integral interchanges use the proof in <a href="LG-MF-01.html">lesson 01</a>, Lemma 0.3, with the explicit majorants supplied here.</li>
+<li>Weil's classical converse, including its cusp qualification: Weil (1967), Satz 2. Theorem 5.1 proves the specified specialization, including the paired Mellin inversion, finite character orthogonality, infinite-order elliptic step, and cusp qualification. Exact local conductor and primitive newform twist assertions beyond (2.3)–(2.5) are not used.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>J. S. Milne, <em>Modular Functions and Modular Forms</em>, author lecture notes, version 1.31 (2017), Section 9, especially Theorems 9.2–9.3. <a href="https://www.jmilne.org/math/CourseNotes/MF.pdf">Free author text</a>. The local proofs include all Mellin and contour-shift steps used here.</p>
+</li>
+<li>
+<p>A. J. Best et al., <em>Computing classical modular forms</em>, <a href="https://arxiv.org/abs/2002.04717v4">arXiv:2002.04717v4</a>, May 2022, Section 9.1, equation (9.1.3), for the root-number convention and Section 11.1 for primitive versus coefficient twists. The raw good-prime Euler factor here retains <span class="math" data-tex="\(p^{k-1}\)">\(p^{k-1}\)</span>, as proved in lesson 11.</p>
+</li>
+<li>
+<p>A. Weil, “Über die Bestimmung Dirichletscher Reihen durch Funktionalgleichungen,” <em>Mathematische Annalen</em> 168 (1967), 149–156, especially Lemmas 1 and 3 and Satz 2. <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0168/PPN235181684_0168.pdf">Freely accessible original article, Göttingen archive</a>.</p>
+</li>
+<li>
+<p>J. R. Getz and H. Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations: With a View toward Trace Formulae</em>, April 2022 draft</a>, Section 11.9 for the adelic outlook.</p>
+</li>
+<li>
+<p>P. Deligne, “La conjecture de Weil I,” <em>Publications Mathématiques de l'IHÉS</em> 43 (1974), 273–307, Theorem (8.2). <a href="https://www.numdam.org/item/PMIHES_1974__43__273_0/">Free original article at NUMDAM</a>.</p>
+</li>
+<li>
+<p>J. Lebl, <em>A Guide to Cultivating Complex Analysis</em>, version 1.9, Sections 2.4, 3.3 and 5.3. <a href="https://www.jirka.org/ca/">Author text</a>.</p>
+</li>
+<li>
+<p>D. H. Fremlin, <em>Measure Theory</em>, Volume 2, Section 252. <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt.htm">Author's volumes</a>.</p>
+</li>
+<li>
+<p><em>NIST Digital Library of Mathematical Functions</em>, Sections 5.2, 5.5, 25.2, 25.4 and 25.15.</p>
+</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-11.html">← The L-function of a cusp form</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-13.html">Theta functions and sums of squares →</a></span></nav>
+<p class="small source-link"><a href="src/twists-level-n-and-heckes-converse-theorem.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

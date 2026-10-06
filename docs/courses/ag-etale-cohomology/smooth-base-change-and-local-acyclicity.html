@@ -1,0 +1,682 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Smooth base change and local acyclicity</title><link rel="stylesheet" href="../../assets/site.css"><style>.lesson{max-width:58rem;margin:auto;padding:1.2rem}body{overflow-wrap:break-word}.math-display,mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main class="lesson"><nav><a href="../../">Open Mathematics Courses</a> · <a href="./">Sites, topoi and étale cohomology</a></nav><h1 id="smooth-base-change-and-local-acyclicity">Smooth base change and local acyclicity</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Original text released under CC0.</em></p>
+<p>A class on a fibre need not extend to nearby fibres. Properness and smoothness control different parts of this problem. Proper base change computes the stalk of a higher direct image from a whole fibre. Smooth base change compares neighbourhoods after a smooth change of base, even when the direct-image morphism is not proper. Combining the two makes the cohomology of a proper smooth family a local system, provided the coefficients are finite and their orders avoid the residue characteristics.</p>
+<p>We first prove smooth base change by an effacement argument on affine curves. We then use that theorem to examine the small geometric fibres of strict localizations. This yields universal local acyclicity, canonical cospecialization maps and the specialization theorem. A nodal degeneration at the end shows precisely what can go wrong.</p>
+<p>The prerequisites are <a href="pushforward-pullback-and-finite-morphisms.html">Pushforward, pullback and finite morphisms</a>, <a href="constructible-sheaves-and-extension-by-zero.html">Constructible sheaves and extension by zero</a>, <a href="torsion-sheaves-on-curves.html">Torsion sheaves on curves</a>, <a href="the-proper-base-change-theorem.html">The proper base change theorem</a>, and the constructibility theorem stated at its exact scope in <a href="cohomology-with-compact-support.html">Cohomology with compact support</a>. All cohomology is étale cohomology. The geometric prerequisites about smooth morphisms are specified below; no smooth base change or local acyclicity theorem is assumed.</p>
+<h2 id="1-which-morphism-is-smooth">1. Which morphism is smooth?</h2>
+<p>Our square is</p>
+<span class="math math-display" data-tex="\[
+\begin{matrix}
+Y=X\times_S T&amp;\xrightarrow{e}&amp;T\\
+h\downarrow&amp;&amp;\downarrow g\\
+X&amp;\xrightarrow{f}&amp;S.
+\end{matrix}
+\tag{1.1}
+\]">\[
+\begin{matrix}
+Y=X\times_S T&amp;\xrightarrow{e}&amp;T\\
+h\downarrow&amp;&amp;\downarrow g\\
+X&amp;\xrightarrow{f}&amp;S.
+\end{matrix}
+\tag{1.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(f\)">\(f\)</span> is the change of base and <span class="math" data-tex="\(g\)">\(g\)</span> is the morphism whose higher direct images we compare. Thus the hypothesis is <strong><span class="math" data-tex="\(f\)">\(f\)</span> smooth</strong>, with <strong><span class="math" data-tex="\(g\)">\(g\)</span> quasi-compact and quasi-separated</strong>. The canonical comparison is</p>
+<span class="math math-display" data-tex="\[
+\beta_{g,f}(E):f^{-1}Rg_*E\longrightarrow Rh_*e^{-1}E.
+\tag{1.2}
+\]">\[
+\beta_{g,f}(E):f^{-1}Rg_*E\longrightarrow Rh_*e^{-1}E.
+\tag{1.2}
+\]</span>
+<p>As in the previous lesson, it comes from the degree-zero adjunction map and resolutions. Exact inverse image makes it a map of cohomological functors. Adjunction units show that it commutes with connecting homomorphisms, étale localization, successive base changes and composition of direct images. These compatibilities concern the actual comparison, not merely an isomorphism between two groups of the same size.</p>
+<p><strong>Theorem 1.1 (smooth base change).</strong> In (1.1), suppose <span class="math" data-tex="\(f\)">\(f\)</span> is smooth and <span class="math" data-tex="\(g\)">\(g\)</span> is quasi-compact and quasi-separated. Let <span class="math" data-tex="\(F\)">\(F\)</span> be an abelian sheaf on <span class="math" data-tex="\(T\)">\(T\)</span> whose stalks are torsion of orders invertible on <span class="math" data-tex="\(S\)">\(S\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+f^{-1}R^qg_*F\xrightarrow{\sim}R^qh_*e^{-1}F
+\qquad(q\geq0).
+\tag{1.3}
+\]">\[
+f^{-1}R^qg_*F\xrightarrow{\sim}R^qh_*e^{-1}F
+\qquad(q\geq0).
+\tag{1.3}
+\]</span>
+<p>“Orders invertible on <span class="math" data-tex="\(S\)">\(S\)</span>” means that each germ is killed by a positive integer which is a unit on <span class="math" data-tex="\(S\)">\(S\)</span>. In particular, <span class="math" data-tex="\(nF=0\)">\(nF=0\)</span> with <span class="math" data-tex="\(n\)">\(n\)</span> invertible on <span class="math" data-tex="\(S\)">\(S\)</span> suffices. A common annihilator is unnecessary. On a mixed-characteristic base, the coefficient condition must be checked; a torsion sheaf is not automatically admissible. Later, for a locally constant sheaf near a fixed geometric point, we work on a strict local base, where an integer prime to the closed residue characteristic is a unit everywhere.</p>
+<p>The theorem also holds for <span class="math" data-tex="\(E\in D^+(T_{\mathrm{ét}})\)">\(E\in D^+(T_{\mathrm{ét}})\)</span> whose cohomology sheaves satisfy this coefficient condition. Section 7 proves that extension. The proof of (1.3) occupies Sections 2–6.</p>
+<h2 id="2-degree-zero-and-the-geometric-inputs">2. Degree zero and the geometric inputs</h2>
+<p>We use these geometric facts about smooth morphisms.</p>
+<ul>
+<li>A smooth morphism is flat and locally of finite presentation. Étale-locally it admits an étale map to affine space over the base. Smoothness is preserved by base change and composition.</li>
+<li>A smooth <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> has an étale covering by affine <span class="math" data-tex="\(U\)">\(U\)</span>'s factoring through an affine étale <span class="math" data-tex="\(V\to S\)">\(V\to S\)</span>, with <span class="math" data-tex="\(U\to V\)">\(U\to V\)</span> smooth, geometrically connected fibres and a section. To obtain this form, use a separable closed point in a fibre, an étale slice through it, and the open connected component along the resulting section. A nonempty open of a connected smooth geometric fibre is connected: that fibre is regular, so its connected components are irreducible.</li>
+<li>Finite-presentation schemes, morphisms, sections, finite étale covers and their finite group actions descend along affine inverse limits. Smoothness and properness hold at a sufficiently late stage when they hold on the limit. Finite locally constant sheaves of finitely presented modules descend by a finite trivializing covering and its descent data.</li>
+<li>Schemes of finite type over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> are Nagata. Their normalizations in finite extensions of function fields are finite. Normalizing the closure of the image of a map from a normal integral scheme gives the factorization used in Section 5.</li>
+</ul>
+<p>These are prerequisites from algebraic geometry, rather than cohomological assertions. The local forms and their proofs are recorded in the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-morphisms.html#more-morphisms-lemma-cover-smooth-by-special">smooth covering lemma</a>. The finite-cover extension theorem needed in Section 5 is stated there separately, with all of its hypotheses.</p>
+<p><strong>Lemma 2.1 (sections along connected fibres).</strong> Let <span class="math" data-tex="\(a:U\to V\)">\(a:U\to V\)</span> be flat and quasi-compact, with nonempty geometrically connected fibres. For every étale sheaf of sets <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>, the adjunction map gives</p>
+<span class="math math-display" data-tex="\[
+\Gamma(V,A)\xrightarrow{\sim}\Gamma(U,a^{-1}A).
+\tag{2.1}
+\]">\[
+\Gamma(V,A)\xrightarrow{\sim}\Gamma(U,a^{-1}A).
+\tag{2.1}
+\]</span>
+<p><em>Proof.</em> The map is injective because the surjective <span class="math" data-tex="\(a\)">\(a\)</span> detects equality on geometric stalks. For surjectivity take a section <span class="math" data-tex="\(b\)">\(b\)</span> upstairs. Étale sheaves, and their sections, have faithfully flat descent, so it suffices to compare the two pullbacks of <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(U\times_V U\)">\(U\times_V U\)</span>. Over a geometric point <span class="math" data-tex="\(\bar v\)">\(\bar v\)</span> the coefficient sheaf is constant with value <span class="math" data-tex="\(A_{\bar v}\)">\(A_{\bar v}\)</span>. A section on the connected <span class="math" data-tex="\(U_{\bar v}\)">\(U_{\bar v}\)</span> has a single value in this set. Both pullbacks therefore have that same value. Every geometric point of <span class="math" data-tex="\(U\times_V U\)">\(U\times_V U\)</span> lies in such a fibre, so the two sections agree. They descend uniquely. □</p>
+<p><strong>Proposition 2.2 (degree-zero smooth base change).</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is smooth, the map <span class="math" data-tex="\(f^{-1}g_*F\to h_*e^{-1}F\)">\(f^{-1}g_*F\to h_*e^{-1}F\)</span> is an isomorphism for every sheaf of sets <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><em>Proof.</em> It suffices to check on an étale covering of each object of <span class="math" data-tex="\(X_{\mathrm{ét}}\)">\(X_{\mathrm{ét}}\)</span>. By the smooth local form just stated, such a covering consists of <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> with a factorization <span class="math" data-tex="\(U\xrightarrow{a}V\to S\)">\(U\xrightarrow{a}V\to S\)</span>, where <span class="math" data-tex="\(V\to S\)">\(V\to S\)</span> is étale and <span class="math" data-tex="\(a\)">\(a\)</span> is flat and quasi-compact with geometrically connected fibres. Restrictions of inverse images and direct images to these localized sites have their usual meaning. Lemma 2.1, first for <span class="math" data-tex="\(a\)">\(a\)</span> and then for its base change to <span class="math" data-tex="\(V\times_S T\)">\(V\times_S T\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Gamma(U,f^{-1}g_*F)
+&amp;=\Gamma(V,g_*F)\\
+&amp;=\Gamma(V\times_S T,F)\\
+&amp;=\Gamma(U\times_S T,e^{-1}F)\\
+&amp;=\Gamma(U,h_*e^{-1}F).
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+\Gamma(U,f^{-1}g_*F)
+&amp;=\Gamma(V,g_*F)\\
+&amp;=\Gamma(V\times_S T,F)\\
+&amp;=\Gamma(U\times_S T,e^{-1}F)\\
+&amp;=\Gamma(U,h_*e^{-1}F).
+\end{aligned}
+\tag{2.2}
+\]</span>
+<p>The equalities are induced by pullback of sections, so the resulting map is the adjunction comparison. They hold on a covering basis and thus identify the sheaves. No torsion hypothesis was used. □</p>
+<p>The same argument works for a flat morphism whose étale objects locally have the connected-fibre factorization. In particular, when the maps on strict localizations are flat with geometrically connected fibres, comparison on a stalk reduces to Lemma 2.1 for the corresponding base-changed strict local schemes. This explains the degree-zero criterion often used alongside smooth base change.</p>
+<h2 id="3-a-class-on-an-affine-curve-can-be-killed">3. A class on an affine curve can be killed</h2>
+<p>The curve theorem from lesson 12 supplies two facts for coefficients of order prime to the characteristic: positive cohomology above degree one vanishes on a smooth affine curve over a separably closed field, and the canonical degree-one comparison is invariant under extensions of separably closed fields. Both facts were proved there without smooth base change.</p>
+<p><strong>Lemma 3.1 (pointed curve effacement).</strong> Let <span class="math" data-tex="\(K/k\)">\(K/k\)</span> be a field extension. Let <span class="math" data-tex="\(C\)">\(C\)</span> be a geometrically connected smooth affine curve over <span class="math" data-tex="\(k\)">\(k\)</span>, with <span class="math" data-tex="\(x\in C(k)\)">\(x\in C(k)\)</span>. Suppose <span class="math" data-tex="\(M\)">\(M\)</span> is an étale abelian sheaf on <span class="math" data-tex="\(\operatorname{Spec}K\)">\(\operatorname{Spec}K\)</span>, killed by an integer <span class="math" data-tex="\(n\)">\(n\)</span> invertible in <span class="math" data-tex="\(k\)">\(k\)</span>. For <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\xi\in H^q(C_K,M|_{C_K}),
+\]">\[
+\xi\in H^q(C_K,M|_{C_K}),
+\]</span>
+<p>there are finite extensions <span class="math" data-tex="\(k&#x27;/k\)">\(k&#x27;/k\)</span>, <span class="math" data-tex="\(K&#x27;/K\)">\(K&#x27;/K\)</span>, with compatible embeddings <span class="math" data-tex="\(k&#x27;\subset K&#x27;\)">\(k&#x27;\subset K&#x27;\)</span>, and a finite étale Galois cover <span class="math" data-tex="\(D\to C_{k&#x27;}\)">\(D\to C_{k&#x27;}\)</span> such that:</p>
+<ul>
+<li>its group has order dividing a power of <span class="math" data-tex="\(n\)">\(n\)</span>;</li>
+<li>it splits over <span class="math" data-tex="\(x_{k&#x27;}\)">\(x_{k&#x27;}\)</span>;</li>
+<li>the pullback of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> to <span class="math" data-tex="\(D_{K&#x27;}\)">\(D_{K&#x27;}\)</span> is zero.</li>
+</ul>
+<p><em>Proof.</em> Choose compatible algebraic closures <span class="math" data-tex="\(\bar k\subset\bar K\)">\(\bar k\subset\bar K\)</span>. If <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>, the class restricts to zero on <span class="math" data-tex="\(C_{\bar K}\)">\(C_{\bar K}\)</span> by the affine-curve theorem. Continuity then kills it over a finite extension <span class="math" data-tex="\(K&#x27;/K\)">\(K&#x27;/K\)</span>; take <span class="math" data-tex="\(k&#x27;=k\)">\(k&#x27;=k\)</span> and the identity cover.</p>
+<p>For <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, the sheaf on <span class="math" data-tex="\(K\)">\(K\)</span> is a discrete continuous Galois module. Each element has a finite Galois orbit. A finite collection of such orbits generates a finite subgroup because the module is killed by <span class="math" data-tex="\(n\)">\(n\)</span>. Thus the module is the filtered union of finite Galois-stable subgroups. Cohomology commutes with that union on the quasi-compact, quasi-separated curve. The class comes from a finite subgroup, whose action becomes trivial over a finite separable extension of <span class="math" data-tex="\(K\)">\(K\)</span>. It remains to kill a class with constant finite abelian coefficient group.</p>
+<p>Write that group as a finite direct sum of cyclic groups <span class="math" data-tex="\(\mathbf Z/d\)">\(\mathbf Z/d\)</span>, <span class="math" data-tex="\(d\mid n\)">\(d\mid n\)</span>. Treat their finitely many classes successively. For one cyclic group, the class on <span class="math" data-tex="\(C_{\bar K}\)">\(C_{\bar K}\)</span> is the pullback of a class on <span class="math" data-tex="\(C_{\bar k}\)">\(C_{\bar k}\)</span>, by the canonical curve invariance theorem. Its torsor <span class="math" data-tex="\(P\to C_{\bar k}\)">\(P\to C_{\bar k}\)</span> is finite étale. A connected component <span class="math" data-tex="\(D_0\)">\(D_0\)</span> is a Galois cover whose group is the stabilizer of that component in <span class="math" data-tex="\(\mathbf Z/d\)">\(\mathbf Z/d\)</span>. To see this, the group permutes the components transitively, and the stabilizer acts simply transitively on the fibre of <span class="math" data-tex="\(D_0\)">\(D_0\)</span>; each component surjects onto the connected base. Its order divides <span class="math" data-tex="\(d\)">\(d\)</span>. Pulling the torsor back to <span class="math" data-tex="\(D_0\)">\(D_0\)</span> gives a section, so the class dies.</p>
+<p>Descend the finite cover, its action and the torsor comparison to a finite extension <span class="math" data-tex="\(k&#x27;/k\)">\(k&#x27;/k\)</span>. Enlarge <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> until a point above <span class="math" data-tex="\(x\)">\(x\)</span> is rational. The group action then splits the whole fibre above <span class="math" data-tex="\(x_{k&#x27;}\)">\(x_{k&#x27;}\)</span>. The class dies after pullback over <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span>; continuity supplies a finite <span class="math" data-tex="\(K&#x27;/K\)">\(K&#x27;/K\)</span> containing the image of <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> where it already dies. For several cyclic factors, take a connected component of the fibre product of their covers after common finite field extensions. Its Galois group is a subgroup of the product of their groups, so its order divides a power of <span class="math" data-tex="\(n\)">\(n\)</span>. A tuple of the chosen rational points retains the splitting over <span class="math" data-tex="\(x\)">\(x\)</span>. All the original classes die on this refinement. □</p>
+<p>The rational point is useful. It removes a constant-field obstruction to extending the generic cover over the base of a smooth family.</p>
+<h2 id="4-reduce-the-theorem-to-injectives-over-finite-models">4. Reduce the theorem to injectives over finite models</h2>
+<p>We prove (1.3) by induction on <span class="math" data-tex="\(q\)">\(q\)</span>. Degree zero is Proposition 2.2. Assume all degrees below <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> are known for every smooth change of base.</p>
+<p>First reduce to a common annihilator. For positive integers <span class="math" data-tex="\(n\)">\(n\)</span> invertible on <span class="math" data-tex="\(S\)">\(S\)</span>, ordered by divisibility, the subsheaves <span class="math" data-tex="\(F[n]\)">\(F[n]\)</span> have filtered colimit <span class="math" data-tex="\(F\)">\(F\)</span>. Both inverse-image functors commute with colimits. Higher direct images along the quasi-compact, quasi-separated <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> commute with filtered colimits by lesson 7. It therefore suffices to work with <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>-sheaves, for a fixed <span class="math" data-tex="\(n\)">\(n\)</span> invertible on <span class="math" data-tex="\(S\)">\(S\)</span>. The case <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is zero; assume <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>.</p>
+<p>The problem is étale-local on <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span>. In smooth local coordinates we factor through <span class="math" data-tex="\(\mathbf A^r_S\)">\(\mathbf A^r_S\)</span>. Étale change of base is formal localization. Write the projection from affine space as a succession of relative affine lines, and paste the canonical comparisons. It is enough to handle a smooth affine morphism <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> of relative dimension one, with <span class="math" data-tex="\(S\)">\(S\)</span> affine.</p>
+<p>Next reduce to affine <span class="math" data-tex="\(T\)">\(T\)</span>. Over affine <span class="math" data-tex="\(S\)">\(S\)</span>, a quasi-compact, quasi-separated <span class="math" data-tex="\(T\)">\(T\)</span> has a finite affine covering; intersections have finite affine coverings. The relative Mayer–Vietoris triangle for <span class="math" data-tex="\(T=W\cup W&#x27;\)">\(T=W\cup W&#x27;\)</span> compares, on both sides of (1.2), the direct images from <span class="math" data-tex="\(W\)">\(W\)</span>, <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>, and <span class="math" data-tex="\(W\cap W&#x27;\)">\(W\cap W&#x27;\)</span>. The five consecutive terms ending with the degree-<span class="math" data-tex="\(q\)">\(q\)</span> image from <span class="math" data-tex="\(W\cap W&#x27;\)">\(W\cap W&#x27;\)</span> show that degree-<span class="math" data-tex="\(q\)">\(q\)</span> comparison on these three schemes, together with the already known lower-degree comparisons, proves it on <span class="math" data-tex="\(T\)">\(T\)</span>. No degree-<span class="math" data-tex="\(q+1\)">\(q+1\)</span> result is needed. Induction on a finite affine covering, first for quasi-compact opens of an affine scheme and then for a general finite affine covering, proves the reduction. Since <span class="math" data-tex="\(X,S,T\)">\(X,S,T\)</span> are affine, so is <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p><strong>Lemma 4.1 (injective test in degree <span class="math" data-tex="\(q\)">\(q\)</span>).</strong> Under the induction hypothesis, it suffices to prove</p>
+<span class="math math-display" data-tex="\[
+R^qh_*e^{-1}I=0
+\tag{4.1}
+\]">\[
+R^qh_*e^{-1}I=0
+\tag{4.1}
+\]</span>
+<p>for every injective <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>-sheaf <span class="math" data-tex="\(I\)">\(I\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><em>Proof.</em> Embed <span class="math" data-tex="\(F\)">\(F\)</span> in an injective <span class="math" data-tex="\(I\)">\(I\)</span>, and let <span class="math" data-tex="\(Q=I/F\)">\(Q=I/F\)</span>. Compare the exact sequences</p>
+<span class="math math-display" data-tex="\[
+f^{-1}R^{q-1}g_*I\longrightarrow f^{-1}R^{q-1}g_*Q
+\longrightarrow f^{-1}R^qg_*F\longrightarrow0
+\]">\[
+f^{-1}R^{q-1}g_*I\longrightarrow f^{-1}R^{q-1}g_*Q
+\longrightarrow f^{-1}R^qg_*F\longrightarrow0
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+R^{q-1}h_*e^{-1}I\longrightarrow R^{q-1}h_*e^{-1}Q
+\longrightarrow R^qh_*e^{-1}F\longrightarrow R^qh_*e^{-1}I.
+\]">\[
+R^{q-1}h_*e^{-1}I\longrightarrow R^{q-1}h_*e^{-1}Q
+\longrightarrow R^qh_*e^{-1}F\longrightarrow R^qh_*e^{-1}I.
+\]</span>
+<p>The first two vertical maps are isomorphisms by induction. If (4.1) holds, the two cokernels coincide under the canonical map. This proves degree <span class="math" data-tex="\(q\)">\(q\)</span>. Cohomology of module injectives computes the underlying abelian-sheaf direct images, as proved in lesson 12. □</p>
+<p><strong>Lemma 4.2 (finite-model reduction).</strong> For (4.1), we may assume <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> are affine of finite type over <span class="math" data-tex="\(\mathbf Z[1/n]\)">\(\mathbf Z[1/n]\)</span>.</p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(S=\operatorname{Spec}A\)">\(S=\operatorname{Spec}A\)</span>, <span class="math" data-tex="\(T=\operatorname{Spec}B\)">\(T=\operatorname{Spec}B\)</span>. The map <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> is a filtered colimit of maps <span class="math" data-tex="\(A_i\to B_i\)">\(A_i\to B_i\)</span> between finite-type <span class="math" data-tex="\(\mathbf Z[1/n]\)">\(\mathbf Z[1/n]\)</span>-algebras. Include finitely many coefficients defining the smooth affine curve and descend it to smooth affine curves <span class="math" data-tex="\(X_i\to S_i\)">\(X_i\to S_i\)</span> of relative dimension one. Set <span class="math" data-tex="\(Y_i=X_i\times_{S_i}T_i\)">\(Y_i=X_i\times_{S_i}T_i\)</span>.</p>
+<p>For <span class="math" data-tex="\(\pi_i:T\to T_i\)">\(\pi_i:T\to T_i\)</span>, the sheaf <span class="math" data-tex="\(I_i=\pi_{i,*}I\)">\(I_i=\pi_{i,*}I\)</span> is injective: its left adjoint <span class="math" data-tex="\(\pi_i^{-1}\)">\(\pi_i^{-1}\)</span> is exact. Moreover</p>
+<span class="math math-display" data-tex="\[
+I=\varinjlim_i\pi_i^{-1}I_i.
+\tag{4.2}
+\]">\[
+I=\varinjlim_i\pi_i^{-1}I_i.
+\tag{4.2}
+\]</span>
+<p>One can check this equality on a basis of finitely presented étale objects: an object and a finite compatibility condition descend to a stage, and the adjunction maps recover its sections after passage to the limit. Equivalently, the stalk computation is the filtered system of these descended pointed objects. This works for arbitrary sheaves, not just constructible ones.</p>
+<p>Apply exact inverse image and continuity for the inverse system of quasi-compact, quasi-separated morphisms <span class="math" data-tex="\(Y_i\to X_i\)">\(Y_i\to X_i\)</span>. It gives</p>
+<span class="math math-display" data-tex="\[
+R^qh_*e^{-1}I
+=\varinjlim_i(X\to X_i)^{-1}R^qh_{i,*}e_i^{-1}I_i.
+\tag{4.3}
+\]">\[
+R^qh_*e^{-1}I
+=\varinjlim_i(X\to X_i)^{-1}R^qh_{i,*}e_i^{-1}I_i.
+\tag{4.3}
+\]</span>
+<p>Thus vanishing for the finite models implies vanishing for the original square. This limit argument uses the continuity theorem from lesson 7; it does not assume smooth base change. □</p>
+<h2 id="5-make-a-generic-class-vanish">5. Make a generic class vanish</h2>
+<p>We now have affine finite-type <span class="math" data-tex="\(\mathbf Z[1/n]\)">\(\mathbf Z[1/n]\)</span>-schemes <span class="math" data-tex="\(S,T\)">\(S,T\)</span>, an affine smooth relative curve <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span>, and an injective <span class="math" data-tex="\(I\)">\(I\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>. We prove (4.1) by induction on <span class="math" data-tex="\(d=\dim T\)">\(d=\dim T\)</span>, beginning with the empty scheme.</p>
+<p>A local section of <span class="math" data-tex="\(R^qh_*e^{-1}I\)">\(R^qh_*e^{-1}I\)</span>, after an étale covering of <span class="math" data-tex="\(X\)">\(X\)</span>, is represented by</p>
+<span class="math math-display" data-tex="\[
+\xi\in H^q(Y,e^{-1}I).
+\tag{5.1}
+\]">\[
+\xi\in H^q(Y,e^{-1}I).
+\tag{5.1}
+\]</span>
+<p>This is the description of a higher direct image as the sheafification of the cohomology presheaf. It is enough to kill this representative on an étale covering of <span class="math" data-tex="\(X\)">\(X\)</span>. The smooth local form of Section 2 lets us replace <span class="math" data-tex="\(X\)">\(X\)</span> and an étale neighbourhood of <span class="math" data-tex="\(S\)">\(S\)</span> until <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> has a section and geometrically connected fibres. The corresponding étale replacement of <span class="math" data-tex="\(T\)">\(T\)</span> has dimension at most <span class="math" data-tex="\(d\)">\(d\)</span>. We still have an affine smooth relative curve.</p>
+<p>Two finite replacements are legitimate.</p>
+<p><strong>Lemma 5.1 (finite replacements).</strong> We may replace <span class="math" data-tex="\(T\)">\(T\)</span> by a finite surjective <span class="math" data-tex="\(\pi:T&#x27;\to T\)">\(\pi:T&#x27;\to T\)</span>, replacing <span class="math" data-tex="\(I\)">\(I\)</span> by an injective containing <span class="math" data-tex="\(\pi^{-1}I\)">\(\pi^{-1}I\)</span>. We may also replace <span class="math" data-tex="\(S\)">\(S\)</span> by a finite <span class="math" data-tex="\(S&#x27;\to S\)">\(S&#x27;\to S\)</span> through which <span class="math" data-tex="\(T\to S\)">\(T\to S\)</span> factors.</p>
+<p><em>Proof.</em> For the first replacement choose <span class="math" data-tex="\(\pi^{-1}I\hookrightarrow I&#x27;\)">\(\pi^{-1}I\hookrightarrow I&#x27;\)</span>. The adjoint <span class="math" data-tex="\(I\to\pi_*I&#x27;\)">\(I\to\pi_*I&#x27;\)</span> is injective because <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is surjective and inverse image detects this on stalks. It splits because <span class="math" data-tex="\(I\)">\(I\)</span> is injective. Finite direct image is exact and commutes with arbitrary base change by lesson 7. For <span class="math" data-tex="\(\pi&#x27;:Y&#x27;=Y\times_T T&#x27;\to Y\)">\(\pi&#x27;:Y&#x27;=Y\times_T T&#x27;\to Y\)</span> we get</p>
+<span class="math math-display" data-tex="\[
+R\pi&#x27;_*e&#x27;^{-1}I&#x27;=e^{-1}\pi_*I&#x27;.
+\tag{5.2}
+\]">\[
+R\pi&#x27;_*e&#x27;^{-1}I&#x27;=e^{-1}\pi_*I&#x27;.
+\tag{5.2}
+\]</span>
+<p>Hence <span class="math" data-tex="\(H^q(Y,e^{-1}I)\)">\(H^q(Y,e^{-1}I)\)</span> is a direct summand of <span class="math" data-tex="\(H^q(Y&#x27;,e&#x27;^{-1}I&#x27;)\)">\(H^q(Y&#x27;,e&#x27;^{-1}I&#x27;)\)</span>, and this remains true after every étale localization on <span class="math" data-tex="\(X\)">\(X\)</span>. Killing the latter class kills the former. A finite map does not increase dimension.</p>
+<p>For the second replacement, put <span class="math" data-tex="\(X&#x27;=X\times_S S&#x27;\)">\(X&#x27;=X\times_S S&#x27;\)</span>. The map <span class="math" data-tex="\(X&#x27;\to X\)">\(X&#x27;\to X\)</span> is finite and <span class="math" data-tex="\(h\)">\(h\)</span> factors as <span class="math" data-tex="\(Y\to X&#x27;\to X\)">\(Y\to X&#x27;\to X\)</span>. Exact finite direct image and Leray identify <span class="math" data-tex="\(R^qh_*e^{-1}I\)">\(R^qh_*e^{-1}I\)</span> with the finite direct image of the corresponding sheaf on <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>. Vanishing of that sheaf proves vanishing on <span class="math" data-tex="\(X\)">\(X\)</span>. Sections and geometrically connected fibres of <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> survive this base change. □</p>
+<p>Reduce and normalize <span class="math" data-tex="\(T\)">\(T\)</span>, using the first replacement. Normalize the closure of its image in <span class="math" data-tex="\(S\)">\(S\)</span> inside its function field, using the second replacement. Finiteness follows from the Nagata property. Work on one component at a time. We may assume <span class="math" data-tex="\(T\to S\)">\(T\to S\)</span> is dominant and both schemes are normal and integral. Let <span class="math" data-tex="\(t,s\)">\(t,s\)</span> be their generic points.</p>
+<p>Apply Lemma 3.1 to the class on the generic curve <span class="math" data-tex="\(Y_t\)">\(Y_t\)</span>, with coefficient <span class="math" data-tex="\(I|_t\)">\(I|_t\)</span> and the rational point supplied by the section. Normalize <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> in the resulting finite field extensions. Lemma 5.1 again permits these replacements. The class now dies on a finite étale Galois cover <span class="math" data-tex="\(D\to X_s\)">\(D\to X_s\)</span>, whose group order divides a power of <span class="math" data-tex="\(n\)">\(n\)</span>, split along the generic point of the section.</p>
+<p>Here we use a theorem of finite-cover geometry:</p>
+<p><strong>Geometric cover extension.</strong> If <span class="math" data-tex="\(S\)">\(S\)</span> is normal integral Noetherian, <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> is smooth with geometrically connected fibres and a section <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and <span class="math" data-tex="\(D\to X_s\)">\(D\to X_s\)</span> is a finite étale Galois cover of group order invertible on <span class="math" data-tex="\(S\)">\(S\)</span>, split over <span class="math" data-tex="\(\sigma(s)\)">\(\sigma(s)\)</span>, then <span class="math" data-tex="\(D\)">\(D\)</span> extends to a finite étale Galois cover <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span>.</p>
+<p>The <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-extend-covering">full geometric proof</a> uses tame ramification, purity for finite covers and depth-two extension. Over a discrete valuation base, splitting along the section kills the tame ramification along the irreducible special fibre; purity extends the cover. In higher base dimension, extend across a maximal punctured local base by the depth-two finite-algebra construction. Near the section the completion is <span class="math" data-tex="\(A[[z_1,\ldots,z_r]]\)">\(A[[z_1,\ldots,z_r]]\)</span>. A cover split along the section is split on the punctured formal neighbourhood by the finite-cover extension theorem for power series over a depth-two normal local ring. It is therefore étale at the generic point of the special fibre; the smooth depth-two purity criterion makes it étale throughout. Descent from the local base contradicts maximality of the open where extension existed. This is an exact geometric prerequisite, including the section, splitting and invertible group-order conditions. No cohomological base change result is part of it.</p>
+<p>Replace <span class="math" data-tex="\(X\)">\(X\)</span> by this finite étale covering <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(Y\)">\(Y\)</span> accordingly. The representative <span class="math" data-tex="\(\xi\)">\(\xi\)</span> vanishes on <span class="math" data-tex="\(Y_t\)">\(Y_t\)</span>. We no longer need connected fibres or the section. The generic point is the inverse limit of nonempty affine opens of <span class="math" data-tex="\(T\)">\(T\)</span>. Continuity gives a nonempty open <span class="math" data-tex="\(V\subset T\)">\(V\subset T\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\xi|_{Y_V}=0.
+\tag{5.3}
+\]">\[
+\xi|_{Y_V}=0.
+\tag{5.3}
+\]</span>
+<p>The remaining work is supported over the smaller-dimensional complement.</p>
+<h2 id="6-finish-the-induction-and-the-theorem">6. Finish the induction and the theorem</h2>
+<p>Let <span class="math" data-tex="\(Z=T\setminus V\)">\(Z=T\setminus V\)</span>, with its reduced closed structure. Write <span class="math" data-tex="\(j:V\hookrightarrow T\)">\(j:V\hookrightarrow T\)</span>, <span class="math" data-tex="\(i:Z\hookrightarrow T\)">\(i:Z\hookrightarrow T\)</span>, and <span class="math" data-tex="\(j&#x27;,i&#x27;\)">\(j&#x27;,i&#x27;\)</span> for their inverse images in <span class="math" data-tex="\(Y\)">\(Y\)</span>. Embed <span class="math" data-tex="\(i^{-1}I\)">\(i^{-1}I\)</span> in an injective <span class="math" data-tex="\(J\)">\(J\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span>. The adjunction maps give</p>
+<span class="math math-display" data-tex="\[
+I\hookrightarrow j_*I|_V\oplus i_*J.
+\tag{6.1}
+\]">\[
+I\hookrightarrow j_*I|_V\oplus i_*J.
+\tag{6.1}
+\]</span>
+<p>It is a monomorphism: on <span class="math" data-tex="\(V\)">\(V\)</span> its first component is the identity, and on <span class="math" data-tex="\(Z\)">\(Z\)</span> its second component is the chosen embedding. Since <span class="math" data-tex="\(I\)">\(I\)</span> is injective, (6.1) splits. Therefore it suffices to kill the images of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> with coefficients in the two summands after inverse image to <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>The map <span class="math" data-tex="\(e:Y\to T\)">\(e:Y\to T\)</span> is smooth. Degree-zero smooth base change, applied to <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span>, and finite base change for <span class="math" data-tex="\(i\)">\(i\)</span>, yield</p>
+<span class="math math-display" data-tex="\[
+e^{-1}j_*I|_V=j&#x27;_*e_V^{-1}I|_V,
+\qquad
+e^{-1}i_*J=i&#x27;_*e_Z^{-1}J.
+\tag{6.2}
+\]">\[
+e^{-1}j_*I|_V=j&#x27;_*e_V^{-1}I|_V,
+\qquad
+e^{-1}i_*J=i&#x27;_*e_Z^{-1}J.
+\tag{6.2}
+\]</span>
+<p>Restriction of an injective to an open is injective, because extension by zero is an exact left adjoint. Thus <span class="math" data-tex="\(I|_V\)">\(I|_V\)</span> is injective. By the induction on cohomological degree, applied to the smooth change of base <span class="math" data-tex="\(e\)">\(e\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R^aj&#x27;_*e_V^{-1}I|_V=e^{-1}R^aj_*I|_V=0
+\quad(1\leq a&lt;q).
+\tag{6.3}
+\]">\[
+R^aj&#x27;_*e_V^{-1}I|_V=e^{-1}R^aj_*I|_V=0
+\quad(1\leq a&lt;q).
+\tag{6.3}
+\]</span>
+<p>The last equality follows because direct image of an injective is acyclic. In the Leray spectral sequence for <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span>, no differential can enter <span class="math" data-tex="\(E_r^{q,0}\)">\(E_r^{q,0}\)</span>: its possible source has second index <span class="math" data-tex="\(r-1\)">\(r-1\)</span>, which is either between <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(q-1\)">\(q-1\)</span> and zero by (6.3), or has negative first index. No differential leaves that term. Its edge map is therefore injective:</p>
+<span class="math math-display" data-tex="\[
+H^q(Y,j&#x27;_*e_V^{-1}I|_V)
+\hookrightarrow H^q(Y_V,e_V^{-1}I|_V).
+\tag{6.4}
+\]">\[
+H^q(Y,j&#x27;_*e_V^{-1}I|_V)
+\hookrightarrow H^q(Y_V,e_V^{-1}I|_V).
+\tag{6.4}
+\]</span>
+<p>By (5.3) the image of our class in the right side is zero, so its image in the first summand of (6.1) is zero already.</p>
+<p>For the closed summand, exact finite direct image gives</p>
+<span class="math math-display" data-tex="\[
+H^q(Y,i&#x27;_*e_Z^{-1}J)=H^q(Y_Z,e_Z^{-1}J).
+\tag{6.5}
+\]">\[
+H^q(Y,i&#x27;_*e_Z^{-1}J)=H^q(Y_Z,e_Z^{-1}J).
+\tag{6.5}
+\]</span>
+<p>The morphism <span class="math" data-tex="\(Z\to S\)">\(Z\to S\)</span> is affine of finite type over <span class="math" data-tex="\(\mathbf Z[1/n]\)">\(\mathbf Z[1/n]\)</span>, and <span class="math" data-tex="\(\dim Z&lt;d\)">\(\dim Z&lt;d\)</span>. The induction on dimension, applied to the square with <span class="math" data-tex="\(Z\)">\(Z\)</span> in place of <span class="math" data-tex="\(T\)">\(T\)</span>, says that the corresponding <span class="math" data-tex="\(R^q\)">\(R^q\)</span> vanishes. Consequently this class dies on an étale covering of <span class="math" data-tex="\(X\)">\(X\)</span>. The split injection (6.1) then kills <span class="math" data-tex="\(\xi\)">\(\xi\)</span> on that covering.</p>
+<p>This proves (4.1) in dimension <span class="math" data-tex="\(d\)">\(d\)</span>, and induction from <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span> proves it for every finite model. Lemma 4.2 removes the finite-model assumption; Lemma 4.1 proves degree <span class="math" data-tex="\(q\)">\(q\)</span>. Induction on <span class="math" data-tex="\(q\)">\(q\)</span>, followed by the filtered-colimit argument and the affine/local-coordinate reductions, proves Theorem 1.1 at its stated generality. □</p>
+<p>Notice the two inductions: the lower cohomological degrees justify (6.3), while the lower dimension treats (6.5). Confusing them would make the argument circular.</p>
+<h2 id="7-complexes-and-limits-of-smooth-changes-of-base">7. Complexes and limits of smooth changes of base</h2>
+<p><strong>Proposition 7.1.</strong> Let <span class="math" data-tex="\(S&#x27;=\varprojlim S_i\)">\(S&#x27;=\varprojlim S_i\)</span>, where the <span class="math" data-tex="\(S_i\to S\)">\(S_i\to S\)</span> are smooth and the transition maps are affine. Let <span class="math" data-tex="\(g:T\to S\)">\(g:T\to S\)</span> be quasi-compact and quasi-separated, and form <span class="math" data-tex="\(T&#x27;=T\times_S S&#x27;\)">\(T&#x27;=T\times_S S&#x27;\)</span>. For <span class="math" data-tex="\(E\in D^+(T_{\mathrm{ét}})\)">\(E\in D^+(T_{\mathrm{ét}})\)</span> whose cohomology sheaves have torsion stalks of orders invertible on <span class="math" data-tex="\(S\)">\(S\)</span>, the canonical map is an isomorphism:</p>
+<span class="math math-display" data-tex="\[
+(S&#x27;\to S)^{-1}Rg_*E
+\xrightarrow{\sim}
+R(T&#x27;\to S&#x27;)_*(E|_{T&#x27;}).
+\tag{7.1}
+\]">\[
+(S&#x27;\to S)^{-1}Rg_*E
+\xrightarrow{\sim}
+R(T&#x27;\to S&#x27;)_*(E|_{T&#x27;}).
+\tag{7.1}
+\]</span>
+<p><em>Proof.</em> For a single smooth change of base, compare the hypercohomology spectral sequences</p>
+<span class="math math-display" data-tex="\[
+R^pg_*H^r(E)\ \Longrightarrow\ H^{p+r}(Rg_*E)
+\tag{7.2}
+\]">\[
+R^pg_*H^r(E)\ \Longrightarrow\ H^{p+r}(Rg_*E)
+\tag{7.2}
+\]</span>
+<p>and the corresponding sequence after base change. Exact inverse image commutes with cohomology sheaves. Theorem 1.1 identifies the <span class="math" data-tex="\(E_2\)">\(E_2\)</span> pages by their canonical maps. Because <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> is bounded below, only finitely many terms contribute to a fixed total degree. The induced maps on the abutments are isomorphisms.</p>
+<p>For the inverse limit, apply the continuity theorem of lesson 7 to the systems of direct images after the <span class="math" data-tex="\(S_i\)">\(S_i\)</span>. It gives the sheaf-level comparison for each <span class="math" data-tex="\(H^r(E)\)">\(H^r(E)\)</span> on <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>. The same finite-diagonal spectral-sequence argument gives (7.1). Étale-local affine charts suffice for this continuity calculation. All identifications come from pullback, hence yield the canonical map and respect refinements of the inverse system. □</p>
+<p>Bounded below is doing actual work here. We have not asserted that the displayed spectral sequence proves base change for an arbitrary unbounded complex.</p>
+<h2 id="8-field-extensions-and-canonical-invariance">8. Field extensions and canonical invariance</h2>
+<p><strong>Lemma 8.1 (field models).</strong> If <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is a separable field extension, <span class="math" data-tex="\(L\)">\(L\)</span> is the filtered union of smooth <span class="math" data-tex="\(K\)">\(K\)</span>-subalgebras. In particular this holds for every extension of perfect fields.</p>
+<p><em>Proof.</em> A finite subset of <span class="math" data-tex="\(L\)">\(L\)</span> lies in a finitely generated subfield <span class="math" data-tex="\(L_0/K\)">\(L_0/K\)</span>. Separability means that <span class="math" data-tex="\(L_0\)">\(L_0\)</span> admits a separating transcendence basis: over a rational function field it is finite separable. Choose a finite-type domain with fraction field <span class="math" data-tex="\(L_0\)">\(L_0\)</span>. At its generic point the algebra is smooth, by the separable generic-point criterion. Invert a nonzero element to obtain a smooth affine algebra, and invert finitely many further denominators to include the given finite subset. Localization preserves smoothness. Applying this construction to the union of two finite sets makes the collection filtered. □</p>
+<p><strong>Proposition 8.2 (all field extensions).</strong> Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be any field extension, and <span class="math" data-tex="\(g:T\to S\)">\(g:T\to S\)</span> a quasi-compact, quasi-separated morphism of <span class="math" data-tex="\(K\)">\(K\)</span>-schemes. If <span class="math" data-tex="\(E\in D^+(T_{\mathrm{ét}})\)">\(E\in D^+(T_{\mathrm{ét}})\)</span> has torsion cohomology stalks of orders invertible in <span class="math" data-tex="\(K\)">\(K\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+(S_L\to S)^{-1}Rg_*E
+\xrightarrow{\sim}Rg_{L,*}(E|_{T_L}).
+\tag{8.1}
+\]">\[
+(S_L\to S)^{-1}Rg_*E
+\xrightarrow{\sim}Rg_{L,*}(E|_{T_L}).
+\tag{8.1}
+\]</span>
+<p><em>Proof.</em> When <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is separable, write <span class="math" data-tex="\(\operatorname{Spec}L\)">\(\operatorname{Spec}L\)</span> as the inverse limit of spectra of the smooth algebras of Lemma 8.1 and apply Proposition 7.1. For general <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, pass to compatible perfect closures <span class="math" data-tex="\(K^{\mathrm{perf}}\subset L^{\mathrm{perf}}\)">\(K^{\mathrm{perf}}\subset L^{\mathrm{perf}}\)</span>. Both maps from the perfect closures are purely inseparable universal homeomorphisms. By lesson 7 they induce equivalences of the relevant étale topoi, compatible with inverse images, direct images and the canonical comparison. The extension of perfect fields is separable, so the preceding case proves the comparison there. Transport it back through those equivalences. □</p>
+<p>The proposition compares <strong>higher direct images as sheaves</strong>. If <span class="math" data-tex="\(K\)">\(K\)</span> is not separably closed, taking global sections also involves its Galois cohomology; cohomology groups over different fields are not thereby identified.</p>
+<p><strong>Theorem 8.3 (separably closed invariance).</strong> Let <span class="math" data-tex="\(k&#x27;/k\)">\(k&#x27;/k\)</span> be an extension of separably closed fields. Let <span class="math" data-tex="\(X\)">\(X\)</span> be quasi-compact and quasi-separated over <span class="math" data-tex="\(k\)">\(k\)</span>, and let <span class="math" data-tex="\(E\in D^+(X_{\mathrm{ét}})\)">\(E\in D^+(X_{\mathrm{ét}})\)</span> have torsion cohomology stalks of orders prime to <span class="math" data-tex="\(\operatorname{char}k\)">\(\operatorname{char}k\)</span>. For <span class="math" data-tex="\(\pi:X_{k&#x27;}\to X\)">\(\pi:X_{k&#x27;}\to X\)</span>, the canonical maps</p>
+<span class="math math-display" data-tex="\[
+H^q(X,E)\xrightarrow{\sim}H^q(X_{k&#x27;},\pi^{-1}E),
+\qquad
+E\xrightarrow{\sim}R\pi_*\pi^{-1}E
+\tag{8.2}
+\]">\[
+H^q(X,E)\xrightarrow{\sim}H^q(X_{k&#x27;},\pi^{-1}E),
+\qquad
+E\xrightarrow{\sim}R\pi_*\pi^{-1}E
+\tag{8.2}
+\]</span>
+<p>are isomorphisms.</p>
+<p><em>Proof.</em> Apply Proposition 8.2 to <span class="math" data-tex="\(X\to\operatorname{Spec}k\)">\(X\to\operatorname{Spec}k\)</span>. Étale sheaves on each of the two separably closed fields are simply abelian groups, and global sections are exact. Their inverse-image functor sends a group to the same group. Thus the comparison of higher direct images gives the first isomorphism in (8.2). The argument includes imperfect separably closed fields, since their algebraic closures are purely inseparable and were handled in Proposition 8.2.</p>
+<p>For the second assertion restrict to a quasi-compact, quasi-separated étale <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span>. The first assertion applied to <span class="math" data-tex="\(U\)">\(U\)</span> says that the adjunction unit induces</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(U,E)\xrightarrow{\sim}R\Gamma(U_{k&#x27;},\pi^{-1}E).
+\]">\[
+R\Gamma(U,E)\xrightarrow{\sim}R\Gamma(U_{k&#x27;},\pi^{-1}E).
+\]</span>
+<p>These are the hypercohomology presheaves of the source and target of the unit. Sheafifying in each degree shows the unit is an isomorphism. Such <span class="math" data-tex="\(U\)">\(U\)</span>'s form a covering basis. This also proves that the cohomological comparison is the canonical pullback, rather than a choice of bases. □</p>
+<p>Finite type over a field implies quasi-compact and quasi-separated, so the theorem includes the invariance for varieties. It also covers singular varieties and nonconstructible admissible torsion sheaves.</p>
+<h2 id="9-local-fibres-and-universal-local-acyclicity">9. Local fibres and universal local acyclicity</h2>
+<p>Let <span class="math" data-tex="\(a:X\to S\)">\(a:X\to S\)</span> be a morphism, <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span> a geometric point, and <span class="math" data-tex="\(\bar s=a(\bar x)\)">\(\bar s=a(\bar x)\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+X_{(\bar x)}=\operatorname{Spec}\mathcal O^{\mathrm{sh}}_{X,\bar x},
+\qquad
+S_{(\bar s)}=\operatorname{Spec}\mathcal O^{\mathrm{sh}}_{S,\bar s}.
+\]">\[
+X_{(\bar x)}=\operatorname{Spec}\mathcal O^{\mathrm{sh}}_{X,\bar x},
+\qquad
+S_{(\bar s)}=\operatorname{Spec}\mathcal O^{\mathrm{sh}}_{S,\bar s}.
+\]</span>
+<p>A geometric point <span class="math" data-tex="\(\bar t\to S_{(\bar s)}\)">\(\bar t\to S_{(\bar s)}\)</span> specifies a geometric generization together with its specialization to <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span>. The relevant local fibre is</p>
+<span class="math math-display" data-tex="\[
+F_{\bar x,\bar t}
+=X_{(\bar x)}\times_{S_{(\bar s)}}\bar t.
+\tag{9.1}
+\]">\[
+F_{\bar x,\bar t}
+=X_{(\bar x)}\times_{S_{(\bar s)}}\bar t.
+\tag{9.1}
+\]</span>
+<p>It is often called a variety of vanishing cycles; it is an affine scheme and need not be a variety of finite type. The coordinate ring of the strict localization retains all sufficiently small étale neighbourhoods of <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span>.</p>
+<p>For <span class="math" data-tex="\(E\in D^+(X_{\mathrm{ét}})\)">\(E\in D^+(X_{\mathrm{ét}})\)</span>, exact global sections on a strictly henselian local scheme identify</p>
+<span class="math math-display" data-tex="\[
+E_{\bar x}=R\Gamma(X_{(\bar x)},E).
+\]">\[
+E_{\bar x}=R\Gamma(X_{(\bar x)},E).
+\]</span>
+<p>Restriction to (9.1) gives</p>
+<span class="math math-display" data-tex="\[
+\alpha_{E,\bar x,\bar t}:E_{\bar x}
+\longrightarrow R\Gamma(F_{\bar x,\bar t},E).
+\tag{9.2}
+\]">\[
+\alpha_{E,\bar x,\bar t}:E_{\bar x}
+\longrightarrow R\Gamma(F_{\bar x,\bar t},E).
+\tag{9.2}
+\]</span>
+<p>We call <span class="math" data-tex="\(a\)">\(a\)</span> <strong>locally acyclic relative to <span class="math" data-tex="\(E\)">\(E\)</span></strong> if (9.2) is an isomorphism for every such pair. It is <strong>universally locally acyclic relative to <span class="math" data-tex="\(E\)">\(E\)</span></strong> if the same holds after every change of base, with the inverse image of <span class="math" data-tex="\(E\)">\(E\)</span>. Without naming <span class="math" data-tex="\(E\)">\(E\)</span>, local acyclicity means this condition for each constant <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span> at <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span>, where <span class="math" data-tex="\(n\)">\(n\)</span> is prime to the residue characteristic at <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span>. For a constant group the condition is explicitly</p>
+<span class="math math-display" data-tex="\[
+H^0(F_{\bar x,\bar t},\mathbf Z/n)=\mathbf Z/n,
+\qquad
+H^q(F_{\bar x,\bar t},\mathbf Z/n)=0\quad(q&gt;0),
+\tag{9.3}
+\]">\[
+H^0(F_{\bar x,\bar t},\mathbf Z/n)=\mathbf Z/n,
+\qquad
+H^q(F_{\bar x,\bar t},\mathbf Z/n)=0\quad(q&gt;0),
+\tag{9.3}
+\]</span>
+<p>with the first equality induced by the constant-section map.</p>
+<p><strong>Theorem 9.1.</strong> Every smooth morphism is universally locally acyclic for torsion coefficients prime to the residue characteristics.</p>
+<p><em>Proof.</em> Smoothness survives arbitrary base change, so it suffices to prove local acyclicity for one smooth <span class="math" data-tex="\(a\)">\(a\)</span>. Replace the base by <span class="math" data-tex="\(S_{(\bar s)}\)">\(S_{(\bar s)}\)</span>. The strict localization at <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span> and its local fibres are unchanged. An integer <span class="math" data-tex="\(n\)">\(n\)</span> prime to the closed residue characteristic is a unit on this local base. Apply Theorem 1.1 to the smooth morphism <span class="math" data-tex="\(X\to S_{(\bar s)}\)">\(X\to S_{(\bar s)}\)</span> and the quasi-compact, quasi-separated morphism <span class="math" data-tex="\(\bar t\to S_{(\bar s)}\)">\(\bar t\to S_{(\bar s)}\)</span>, with coefficient <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span> on <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span>.</p>
+<p>On the stalk at <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span>, the smooth base change comparison is</p>
+<span class="math math-display" data-tex="\[
+H^q(\bar t,\mathbf Z/n)
+\xrightarrow{\sim}H^q(F_{\bar x,\bar t},\mathbf Z/n).
+\tag{9.4}
+\]">\[
+H^q(\bar t,\mathbf Z/n)
+\xrightarrow{\sim}H^q(F_{\bar x,\bar t},\mathbf Z/n).
+\tag{9.4}
+\]</span>
+<p>Indeed the source is computed by the strictly localized base and the target by the strictly localized source, using the higher-direct-image stalk formula of lesson 7. The field of <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span> is separably closed, so the left group is <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span> in degree zero and zero otherwise. In degree zero the map is the constant-section map. This proves (9.3) and hence (9.2). Apply the same argument to each base-changed smooth morphism to obtain universality. □</p>
+<p><strong>Lemma 9.2 (locally constant coefficients).</strong> If <span class="math" data-tex="\(a\)">\(a\)</span> is locally acyclic and <span class="math" data-tex="\(F\)">\(F\)</span> is locally constant with torsion stalks whose element orders are prime to the corresponding residue characteristics, then <span class="math" data-tex="\(a\)">\(a\)</span> is locally acyclic relative to <span class="math" data-tex="\(F[0]\)">\(F[0]\)</span>. For smooth <span class="math" data-tex="\(a\)">\(a\)</span>, it is universally so.</p>
+<p><em>Proof.</em> On <span class="math" data-tex="\(X_{(\bar x)}\)">\(X_{(\bar x)}\)</span>, the locally constant sheaf is constant with group <span class="math" data-tex="\(M=F_{\bar x}\)">\(M=F_{\bar x}\)</span>: a pointed trivializing étale neighbourhood admits a section over the strict localization. The group <span class="math" data-tex="\(M\)">\(M\)</span> is the filtered union of its finite subgroups, each of order prime to the residue characteristic. Decompose each finite subgroup into cyclic groups. Equation (9.3) gives the cohomology for each cyclic summand. Since (9.1) is affine, its cohomology commutes with the filtered union by lesson 7. The resulting comparison is <span class="math" data-tex="\(M\)">\(M\)</span> in degree zero and zero in higher degrees. This is precisely (9.2). Under base change, local constancy persists; a residue field extension has the same characteristic, so the coefficient condition persists as well. Apply Theorem 9.1 after each base change. □</p>
+<p>Universal local acyclicity does not say that an entire smooth affine fibre is acyclic. It says that the local fibres of its strict localizations have (9.3). A smooth proper curve of positive genus has substantial degree-one cohomology on the whole fibre.</p>
+<h2 id="10-specialization-and-cospecialization">10. Specialization and cospecialization</h2>
+<p>Fix <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span> and <span class="math" data-tex="\(\bar t\to S_{(\bar s)}\)">\(\bar t\to S_{(\bar s)}\)</span>. After replacing the base by its strict localization write</p>
+<span class="math math-display" data-tex="\[
+X_{\bar t}\xrightarrow{u}\widetilde X
+\xleftarrow{v}X_{\bar s},
+\qquad
+\widetilde X=X\times_S S_{(\bar s)}.
+\tag{10.1}
+\]">\[
+X_{\bar t}\xrightarrow{u}\widetilde X
+\xleftarrow{v}X_{\bar s},
+\qquad
+\widetilde X=X\times_S S_{(\bar s)}.
+\tag{10.1}
+\]</span>
+<p>Suppose <span class="math" data-tex="\(a\)">\(a\)</span> is locally acyclic relative to the bounded-below <span class="math" data-tex="\(E\)">\(E\)</span>. This property persists for the present strict-local base change: pointed strict localizations are computed by the same cofinal systems of étale neighbourhoods. Equivalently one may use universal local acyclicity in all the smooth applications below.</p>
+<p><strong>Lemma 10.1.</strong> The adjunction unit <span class="math" data-tex="\(b:E|_{\widetilde X}\to Ru_*(E|_{X_{\bar t}})\)">\(b:E|_{\widetilde X}\to Ru_*(E|_{X_{\bar t}})\)</span> becomes an isomorphism after <span class="math" data-tex="\(v^{-1}\)">\(v^{-1}\)</span>.</p>
+<p><em>Proof.</em> At a geometric point <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span> of the closed fibre its stalk is</p>
+<span class="math math-display" data-tex="\[
+E_{\bar x}\longrightarrow
+R\Gamma(X_{(\bar x)}\times_{S_{(\bar s)}}\bar t,E).
+\]">\[
+E_{\bar x}\longrightarrow
+R\Gamma(X_{(\bar x)}\times_{S_{(\bar s)}}\bar t,E).
+\]</span>
+<p>This is (9.2), by the stalk formula for <span class="math" data-tex="\(Ru_*\)">\(Ru_*\)</span>. Local acyclicity says it is an isomorphism. Stalks detect isomorphisms of cohomology sheaves, so <span class="math" data-tex="\(v^{-1}b\)">\(v^{-1}b\)</span> is an isomorphism in the derived category. □</p>
+<p>Define <strong>cospecialization</strong> by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R\Gamma(X_{\bar t},E)
+&amp;=R\Gamma(\widetilde X,Ru_*E|_{X_{\bar t}})\\
+&amp;\longrightarrow R\Gamma(X_{\bar s},v^{-1}Ru_*E|_{X_{\bar t}})\\
+&amp;\xrightarrow{(v^{-1}b)^{-1}}R\Gamma(X_{\bar s},E).
+\end{aligned}
+\tag{10.2}
+\]">\[
+\begin{aligned}
+R\Gamma(X_{\bar t},E)
+&amp;=R\Gamma(\widetilde X,Ru_*E|_{X_{\bar t}})\\
+&amp;\longrightarrow R\Gamma(X_{\bar s},v^{-1}Ru_*E|_{X_{\bar t}})\\
+&amp;\xrightarrow{(v^{-1}b)^{-1}}R\Gamma(X_{\bar s},E).
+\end{aligned}
+\tag{10.2}
+\]</span>
+<p>It points from general-fibre cohomology to special-fibre cohomology. The specialization map of the sheaf complex <span class="math" data-tex="\(Ra_*E\)">\(Ra_*E\)</span> points in the other direction:</p>
+<span class="math math-display" data-tex="\[
+\operatorname{sp}:(Ra_*E)_{\bar s}\longrightarrow(Ra_*E)_{\bar t}.
+\tag{10.3}
+\]">\[
+\operatorname{sp}:(Ra_*E)_{\bar s}\longrightarrow(Ra_*E)_{\bar t}.
+\tag{10.3}
+\]</span>
+<p>For a quasi-compact, quasi-separated <span class="math" data-tex="\(a\)">\(a\)</span>, the stalk formula identifies the source of (10.3) with <span class="math" data-tex="\(R\Gamma(\widetilde X,E)\)">\(R\Gamma(\widetilde X,E)\)</span>. The composition of (10.3) with the fibre comparison at <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span> is restriction along <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p><strong>Lemma 10.2 (comparison identity).</strong> The following square, with its right arrow pointing upwards, commutes:</p>
+<span class="math math-display" data-tex="\[
+\begin{matrix}
+(Ra_*E)_{\bar s}&amp;\longrightarrow&amp;R\Gamma(X_{\bar s},E)\\
+\operatorname{sp}\downarrow&amp;&amp;\uparrow\operatorname{cosp}\\
+(Ra_*E)_{\bar t}&amp;\longrightarrow&amp;R\Gamma(X_{\bar t},E).
+\end{matrix}
+\tag{10.4}
+\]">\[
+\begin{matrix}
+(Ra_*E)_{\bar s}&amp;\longrightarrow&amp;R\Gamma(X_{\bar s},E)\\
+\operatorname{sp}\downarrow&amp;&amp;\uparrow\operatorname{cosp}\\
+(Ra_*E)_{\bar t}&amp;\longrightarrow&amp;R\Gamma(X_{\bar t},E).
+\end{matrix}
+\tag{10.4}
+\]</span>
+<p><em>Proof.</em> Under the strict-local description, restriction along <span class="math" data-tex="\(u\)">\(u\)</span> is the map on derived global sections induced by the unit <span class="math" data-tex="\(b\)">\(b\)</span>. Cospecialization first regards those sections as sections of <span class="math" data-tex="\(Ru_*E\)">\(Ru_*E\)</span>, restricts them by <span class="math" data-tex="\(v\)">\(v\)</span>, and applies the inverse of <span class="math" data-tex="\(v^{-1}b\)">\(v^{-1}b\)</span>. Naturality of restriction identifies this composite with restriction of <span class="math" data-tex="\(E\)">\(E\)</span> along <span class="math" data-tex="\(v\)">\(v\)</span>. That is exactly the upper fibre-comparison map. □</p>
+<p>Units, restriction maps and their inverses also prove functoriality in <span class="math" data-tex="\(E\)">\(E\)</span> and compatibility with long exact cohomology sequences. The direction of cospecialization must be retained when using (10.4).</p>
+<h2 id="11-properness-makes-the-two-maps-inverse">11. Properness makes the two maps inverse</h2>
+<p><strong>Lemma 11.1 (torsion direct images).</strong> For a quasi-compact, quasi-separated <span class="math" data-tex="\(w:Z\to W\)">\(w:Z\to W\)</span>, <span class="math" data-tex="\(Rw_*\)">\(Rw_*\)</span> takes <span class="math" data-tex="\(D^+\)">\(D^+\)</span> complexes with torsion cohomology sheaves to complexes of the same kind.</p>
+<p><em>Proof.</em> For a torsion sheaf <span class="math" data-tex="\(A\)">\(A\)</span>, write <span class="math" data-tex="\(A=\varinjlim A[n]\)">\(A=\varinjlim A[n]\)</span>. On every quasi-compact, quasi-separated inverse image of an affine étale object, continuity identifies <span class="math" data-tex="\(H^q(A)\)">\(H^q(A)\)</span> with the colimit of <span class="math" data-tex="\(H^q(A[n])\)">\(H^q(A[n])\)</span>. Each class from the latter group is killed by <span class="math" data-tex="\(n\)">\(n\)</span>. Thus the cohomology groups, and the higher-direct-image sheaves obtained by sheafifying them, are torsion. For a bounded-below complex, the spectral sequence (7.2) has a finite filtration in each total degree with torsion subquotients. An extension of finitely many torsion groups is torsion. Right derived image preserves the lower bound. □</p>
+<p><strong>Theorem 11.2 (proper locally acyclic specialization).</strong> Suppose <span class="math" data-tex="\(a:X\to S\)">\(a:X\to S\)</span> is proper, <span class="math" data-tex="\(E\in D^+(X_{\mathrm{ét}})\)">\(E\in D^+(X_{\mathrm{ét}})\)</span> has torsion cohomology sheaves, and <span class="math" data-tex="\(a\)">\(a\)</span> is locally acyclic relative to <span class="math" data-tex="\(E\)">\(E\)</span>. Then the specialization and cospecialization maps in (10.4) are inverse isomorphisms, under the canonical proper fibre identifications.</p>
+<p><em>Proof.</em> Proper base change from lesson 13 makes both horizontal maps in (10.4) isomorphisms. We prove that (10.2) is an isomorphism. Its last arrow is one by Lemma 10.1. Its first equality is derived composition of global sections with <span class="math" data-tex="\(u_*\)">\(u_*\)</span>. Its middle arrow is restriction to the closed fibre with coefficient complex</p>
+<span class="math math-display" data-tex="\[
+L=Ru_*(E|_{X_{\bar t}}).
+\]">\[
+L=Ru_*(E|_{X_{\bar t}}).
+\]</span>
+<p>The map <span class="math" data-tex="\(u\)">\(u\)</span> is affine, hence quasi-compact and quasi-separated: it is the base change of the map from a field spectrum to the affine strict-local base. Lemma 11.1 shows that <span class="math" data-tex="\(L\)">\(L\)</span> is bounded below with torsion cohomology sheaves. Apply proper base change to <span class="math" data-tex="\(\widetilde X\to S_{(\bar s)}\)">\(\widetilde X\to S_{(\bar s)}\)</span>, with coefficient <span class="math" data-tex="\(L\)">\(L\)</span>. Since global sections on the strictly henselian local base equal the closed geometric stalk, its comparison is</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(\widetilde X,L)\xrightarrow{\sim}
+R\Gamma(X_{\bar s},v^{-1}L).
+\tag{11.1}
+\]">\[
+R\Gamma(\widetilde X,L)\xrightarrow{\sim}
+R\Gamma(X_{\bar s},v^{-1}L).
+\tag{11.1}
+\]</span>
+<p>This is the middle arrow of (10.2). Cospecialization is therefore an isomorphism. Commutativity of (10.4), with both horizontal maps isomorphisms, identifies specialization with its inverse. □</p>
+<p><strong>Corollary 11.3 (proper smooth specialization).</strong> If <span class="math" data-tex="\(a\)">\(a\)</span> is smooth and proper and <span class="math" data-tex="\(F\)">\(F\)</span> is locally constant with torsion stalks prime to the corresponding residue characteristics, then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{sp}:(Ra_*F)_{\bar s}\xrightarrow{\sim}(Ra_*F)_{\bar t}.
+\tag{11.2}
+\]">\[
+\operatorname{sp}:(Ra_*F)_{\bar s}\xrightarrow{\sim}(Ra_*F)_{\bar t}.
+\tag{11.2}
+\]</span>
+<p><em>Proof.</em> Lemma 9.2 makes <span class="math" data-tex="\(a\)">\(a\)</span> locally acyclic relative to <span class="math" data-tex="\(F\)">\(F\)</span>, including the required strict-local base change. Apply Theorem 11.2. No finiteness of the stalk group is required for (11.2). □</p>
+<h2 id="12-finite-coefficients-give-a-local-system">12. Finite coefficients give a local system</h2>
+<p>A finite locally constant abelian sheaf has finite stalk groups. More generally, for a Noetherian ring <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, “finite type locally constant” means locally constant with finitely generated <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module stalks; their underlying sets need not be finite.</p>
+<p><strong>Lemma 12.1 (a local constancy test).</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be locally Noetherian, <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> Noetherian, and <span class="math" data-tex="\(A\)">\(A\)</span> a constructible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf. If every specialization map between geometric stalks of <span class="math" data-tex="\(A\)">\(A\)</span> is an isomorphism, then <span class="math" data-tex="\(A\)">\(A\)</span> is finite type locally constant.</p>
+<p><em>Proof.</em> At <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span>, the finitely generated stalk <span class="math" data-tex="\(M=A_{\bar s}\)">\(M=A_{\bar s}\)</span> has a finite presentation because <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is Noetherian. Lift its finitely many generators to sections on a pointed étale neighbourhood. Shrink that neighbourhood until the finitely many defining relations vanish. These sections define</p>
+<span class="math math-display" data-tex="\[
+\varphi:\underline M\longrightarrow A|_U
+\tag{12.1}
+\]">\[
+\varphi:\underline M\longrightarrow A|_U
+\tag{12.1}
+\]</span>
+<p>which is an isomorphism at the distinguished geometric point. We may take <span class="math" data-tex="\(U\)">\(U\)</span> affine and Noetherian. The locus where its geometric stalk maps are isomorphisms is preserved under specialization and generization: the stalk maps for <span class="math" data-tex="\(\underline M\)">\(\underline M\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> are isomorphisms, and naturality makes the corresponding squares commute. The existence of lifts of a geometric specialization follows by passing to strict localizations; different choices conjugate the maps and do not change whether they are isomorphisms.</p>
+<p>Remove the finitely many irreducible components of <span class="math" data-tex="\(U\)">\(U\)</span> not passing through the distinguished point. In each remaining component, its generic point is a generization of that point, so belongs to the isomorphism locus. Every point on the component is a specialization of its generic point, so also belongs. Thus <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is an isomorphism on every stalk and hence is an isomorphism of sheaves. It trivializes <span class="math" data-tex="\(A\)">\(A\)</span> near <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span>. Repeat at every geometric point. □</p>
+<p><strong>Theorem 12.2 (proper smooth local constancy).</strong> Let <span class="math" data-tex="\(a:X\to S\)">\(a:X\to S\)</span> be smooth and proper. Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be Noetherian and <span class="math" data-tex="\(F\)">\(F\)</span> a finite type locally constant <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf such that each stalk is killed by an integer prime to its residue characteristic. Then every <span class="math" data-tex="\(R^qa_*F\)">\(R^qa_*F\)</span> is finite type locally constant. In particular, for finite abelian <span class="math" data-tex="\(F\)">\(F\)</span> of order prime to the residue characteristics, every <span class="math" data-tex="\(R^qa_*F\)">\(R^qa_*F\)</span> is finite locally constant.</p>
+<p><em>Proof.</em> Work on an affine open of <span class="math" data-tex="\(S\)">\(S\)</span>. Since <span class="math" data-tex="\(X\)">\(X\)</span> is quasi-compact, a finite étale covering trivializes <span class="math" data-tex="\(F\)">\(F\)</span> on its members. Its stalk modules are finitely generated and torsion, so each has a finite positive annihilator. The smallest positive integer annihilator is locally constant on <span class="math" data-tex="\(X\)">\(X\)</span>, with finitely many values. Decompose <span class="math" data-tex="\(X\)">\(X\)</span> into the finitely many open and closed pieces carrying a fixed value <span class="math" data-tex="\(n\)">\(n\)</span>. Cohomology of this finite disjoint union is the direct sum of the cohomologies of the pieces, so treat one piece.</p>
+<p>Its smooth proper image in <span class="math" data-tex="\(S\)">\(S\)</span> is open and closed, because smooth maps are open and proper maps are closed. Restrict to that image; on its complement all its direct images are zero. On the image, <span class="math" data-tex="\(n\)">\(n\)</span> is invertible: every base residue field is the base of a fibre where the coefficient annihilator is prime to the characteristic. We therefore have a smooth proper family over <span class="math" data-tex="\(\mathbf Z[1/n]\)">\(\mathbf Z[1/n]\)</span>, with <span class="math" data-tex="\(nF=0\)">\(nF=0\)</span>.</p>
+<p>Write the affine base algebra as the filtered union of its finite-type <span class="math" data-tex="\(\mathbf Z[1/n]\)">\(\mathbf Z[1/n]\)</span>-subalgebras. Descend the family to a smooth proper <span class="math" data-tex="\(a_i:X_i\to S_i\)">\(a_i:X_i\to S_i\)</span> at some stage. Descend the finite type locally constant <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf as well. For completeness, choose a finite affine étale trivializing covering of <span class="math" data-tex="\(X\)">\(X\)</span>. Its finitely presented objects and covering property descend; the coefficient modules are finitely presented, and their transition isomorphisms are determined by finitely many generators and relations on a finite covering of each quasi-compact overlap. The finitely many cocycle identities hold at a sufficiently late stage. This gives a finite type locally constant <span class="math" data-tex="\(F_i\)">\(F_i\)</span>. Replacing it by <span class="math" data-tex="\(\ker(n:F_i\to F_i)\)">\(\ker(n:F_i\to F_i)\)</span> retains that property, since <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is Noetherian, and makes it <span class="math" data-tex="\(n\)">\(n\)</span>-torsion with pullback <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>The base <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is Noetherian. The constructibility theorem stated in lesson 14 applies to the proper finite-presentation <span class="math" data-tex="\(a_i\)">\(a_i\)</span> and the constructible <span class="math" data-tex="\(F_i\)">\(F_i\)</span>: <span class="math" data-tex="\(R^qa_{i,*}F_i\)">\(R^qa_{i,*}F_i\)</span> is a constructible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf with finitely generated stalks. Corollary 11.3 makes every specialization map an isomorphism. Lemma 12.1 makes the sheaf finite type locally constant. Proper base change identifies its pullback to <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(R^qa_*F\)">\(R^qa_*F\)</span>, so the latter has the same property. Sum over the finitely many annihilator pieces.</p>
+<p>For a finite abelian coefficient group one may use <span class="math" data-tex="\(\Lambda=\mathbf Z/n\)">\(\Lambda=\mathbf Z/n\)</span> on each piece. A finitely generated module over this finite ring has finite cardinality. This proves the finite version. □</p>
+<p>The finite hypothesis is part of the local-system deduction. Specialization maps alone do not force an infinite sheaf to be étale locally constant. For example on <span class="math" data-tex="\(\operatorname{Spec}\mathbf Q\)">\(\operatorname{Spec}\mathbf Q\)</span>, the sheaf <span class="math" data-tex="\(\bigoplus_{\ell}\mu_\ell\)">\(\bigoplus_{\ell}\mu_\ell\)</span>, summed over primes, has isomorphisms for all specialization maps. There is only one underlying point, and the geometric-point maps act by automorphisms. But no finite field extension trivializes the sheaf: it would contain primitive roots of unity of every prime order, whereas the degrees <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span> of their cyclotomic fields are unbounded. An étale trivializing neighbourhood of a field point would supply just such a finite separable extension. Thus this sheaf is not locally constant. For arbitrary infinite locally constant input in Corollary 11.3, the conclusion proved here is the specialization isomorphism; Theorem 12.2 gives the local constancy assertion with its finite type hypothesis.</p>
+<h2 id="13-three-examples">13. Three examples</h2>
+<p><strong>Example 13.1 (projective space).</strong> Let <span class="math" data-tex="\(k&#x27;/k\)">\(k&#x27;/k\)</span> be an extension of algebraically closed fields and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> a prime invertible in <span class="math" data-tex="\(k\)">\(k\)</span>. For every <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, canonical pullback gives</p>
+<span class="math math-display" data-tex="\[
+H^q(\mathbf P^r_k,\mathbf Z/\ell)
+\xrightarrow{\sim}H^q(\mathbf P^r_{k&#x27;},\mathbf Z/\ell)
+\quad\text{for all }q.
+\tag{13.1}
+\]">\[
+H^q(\mathbf P^r_k,\mathbf Z/\ell)
+\xrightarrow{\sim}H^q(\mathbf P^r_{k&#x27;},\mathbf Z/\ell)
+\quad\text{for all }q.
+\tag{13.1}
+\]</span>
+<p>This follows directly from Theorem 8.3, applied to the finite-type scheme <span class="math" data-tex="\(\mathbf P^r_k\)">\(\mathbf P^r_k\)</span>. Pullback commutes with cup products, so (13.1) is an isomorphism of graded cohomology rings. It also respects the Kummer class of <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>, since that line bundle pulls back to <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>. For <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, lesson 10 computed <span class="math" data-tex="\(H^0=\mathbf Z/\ell\)">\(H^0=\mathbf Z/\ell\)</span>, <span class="math" data-tex="\(H^1=0\)">\(H^1=0\)</span>, <span class="math" data-tex="\(H^2=(\mathbf Z/\ell)(-1)\)">\(H^2=(\mathbf Z/\ell)(-1)\)</span> and zero groups in higher degrees; these particular computations transport with their canonical maps. No projective-space computation in arbitrary dimension is needed to prove (13.1).</p>
+<p>Projective space is proper, so lesson 13 in fact gives its separably closed field invariance for all torsion coefficients, including characteristic torsion. The prime-to-characteristic restriction in smooth base change becomes indispensable for nonproper examples.</p>
+<p><strong>Example 13.2 (new Artin–Schreier classes).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be algebraically closed of characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>. The Artin–Schreier sequence and vanishing of cohomology of the quasi-coherent sheaf <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> on the affine line give</p>
+<span class="math math-display" data-tex="\[
+H^1(\mathbf A^1_k,\mathbf F_p)
+=k[z]/\{b^p-b:b\in k[z]\}.
+\tag{13.2}
+\]">\[
+H^1(\mathbf A^1_k,\mathbf F_p)
+=k[z]/\{b^p-b:b\in k[z]\}.
+\tag{13.2}
+\]</span>
+<p>Here the quotient is one of additive groups. Constants disappear because <span class="math" data-tex="\(b\mapsto b^p-b\)">\(b\mapsto b^p-b\)</span> is onto <span class="math" data-tex="\(k\)">\(k\)</span>. For a monomial of positive degree divisible by <span class="math" data-tex="\(p\)">\(p\)</span>,</p>
+<span class="math math-display" data-tex="\[
+[c z^{pm}]=[c^{1/p}z^m].
+\]">\[
+[c z^{pm}]=[c^{1/p}z^m].
+\]</span>
+<p>Repeatedly lower the exponents in this way. Each class has a representative involving only positive exponents not divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. It is unique: a nonconstant <span class="math" data-tex="\(b\)">\(b\)</span> has <span class="math" data-tex="\(\deg(b^p-b)=p\deg b\)">\(\deg(b^p-b)=p\deg b\)</span>, whereas the leading exponent of a nonzero reduced representative is not divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. Thus, as <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>-vector spaces with their canonical coefficient coordinates,</p>
+<span class="math math-display" data-tex="\[
+H^1(\mathbf A^1_k,\mathbf F_p)
+\cong\bigoplus_{\substack{m\geq1\\ p\nmid m}}k.
+\tag{13.3}
+\]">\[
+H^1(\mathbf A^1_k,\mathbf F_p)
+\cong\bigoplus_{\substack{m\geq1\\ p\nmid m}}k.
+\tag{13.3}
+\]</span>
+<p>If <span class="math" data-tex="\(k&#x27;\supsetneq k\)">\(k&#x27;\supsetneq k\)</span> is algebraically closed, pullback acts on each coordinate by <span class="math" data-tex="\(k\hookrightarrow k&#x27;\)">\(k\hookrightarrow k&#x27;\)</span>. Choose <span class="math" data-tex="\(u\in k&#x27;\setminus k\)">\(u\in k&#x27;\setminus k\)</span>; the class <span class="math" data-tex="\([uz]\)">\([uz]\)</span> in degree-one cohomology over <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> is not in its image. “Growth” here means the appearance of new classes under the specified comparison, not a claim that two infinite abstract dimensions must differ. The torsor is given by <span class="math" data-tex="\(w^p-w=uz\)">\(w^p-w=uz\)</span>.</p>
+<p><strong>Example 13.3 (a family of curves).</strong> Let <span class="math" data-tex="\(a:C\to S\)">\(a:C\to S\)</span> be smooth proper of relative dimension one, with geometrically connected fibres, and let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be invertible on <span class="math" data-tex="\(S\)">\(S\)</span>. Theorem 12.2 makes</p>
+<span class="math math-display" data-tex="\[
+R^1a_*\mathbf F_\ell
+\]">\[
+R^1a_*\mathbf F_\ell
+\]</span>
+<p>a finite locally constant <span class="math" data-tex="\(\mathbf F_\ell\)">\(\mathbf F_\ell\)</span>-sheaf. Proper base change identifies its geometric stalk with <span class="math" data-tex="\(H^1(C_{\bar s},\mathbf F_\ell)\)">\(H^1(C_{\bar s},\mathbf F_\ell)\)</span>. The smooth proper curve computation in lessons 10–12 gives its dimension <span class="math" data-tex="\(2g_{\bar s}\)">\(2g_{\bar s}\)</span>. Local constancy makes this integer locally constant on <span class="math" data-tex="\(S\)">\(S\)</span>. On a connected base, all genera are therefore the same <span class="math" data-tex="\(g\)">\(g\)</span>, and the local system has rank <span class="math" data-tex="\(2g\)">\(2g\)</span>. Specialization maps are the isomorphisms of Corollary 11.3. Global transport between two arbitrary points involves a choice of étale path and can have monodromy.</p>
+<h2 id="14-exercises">14. Exercises</h2>
+<p>In these exercises <span class="math" data-tex="\(\ell\)">\(\ell\)</span> denotes a prime.</p>
+<ol>
+<li>
+<p><strong>Easy — affine space.</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be separably closed and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> invertible in <span class="math" data-tex="\(k\)">\(k\)</span>. Prove <span class="math" data-tex="\(H^q(\mathbf A^r_k,\mathbf F_\ell)=0\)">\(H^q(\mathbf A^r_k,\mathbf F_\ell)=0\)</span> for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, by induction on <span class="math" data-tex="\(r\)">\(r\)</span>, using the affine-line computation and smooth base change. Then prove the stronger statement <span class="math" data-tex="\(H^q(\mathbf A^r_k,\mathbf F_\ell)\cong H^q(k,\mathbf F_\ell)\)">\(H^q(\mathbf A^r_k,\mathbf F_\ell)\cong H^q(k,\mathbf F_\ell)\)</span> for an arbitrary field <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(\ell\)">\(\ell\)</span> invertible. Explain why the vanishing statement needs a condition on <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+</li>
+<li>
+<p><strong>Medium — characteristic torsion.</strong> Over an algebraically closed field <span class="math" data-tex="\(k\)">\(k\)</span> of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, exhibit failure of the canonical cohomology comparison for <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span> after a separably closed field extension, with coefficient <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>. Also exhibit failure in a square whose change-of-base morphism is actually smooth of finite presentation.</p>
+</li>
+<li>
+<p><strong>Medium — constant fibre cohomology.</strong> Let <span class="math" data-tex="\(a:X\to S\)">\(a:X\to S\)</span> be proper smooth with geometrically connected fibres, <span class="math" data-tex="\(S\)">\(S\)</span> connected, and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> invertible on <span class="math" data-tex="\(S\)">\(S\)</span>. Prove that all <span class="math" data-tex="\(H^1(X_{\bar s},\mathbf F_\ell)\)">\(H^1(X_{\bar s},\mathbf F_\ell)\)</span> are isomorphic as vector spaces. Explain the roles of connectedness of the base and monodromy. Apply this to a family of curves.</p>
+</li>
+<li>
+<p><strong>Medium, with an algebraic construction — the node.</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be algebraically closed, <span class="math" data-tex="\(\ell\)">\(\ell\)</span> invertible in <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(a:\mathbf A^2_k\to\mathbf A^1_k\)">\(a:\mathbf A^2_k\to\mathbf A^1_k\)</span> the map <span class="math" data-tex="\(t=xy\)">\(t=xy\)</span>. Show that <span class="math" data-tex="\(a\)">\(a\)</span> is not locally acyclic at the origin for <span class="math" data-tex="\(\mathbf F_\ell\)">\(\mathbf F_\ell\)</span>. In the local geometric generic fibre, find a nonzero Kummer class of <span class="math" data-tex="\(x\)">\(x\)</span>. An irrational Gauss valuation can detect that <span class="math" data-tex="\(x\)">\(x\)</span> is not an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th power. Also explain the literal alternative with source <span class="math" data-tex="\(\operatorname{Spec}k[x,y]/(xy)\)">\(\operatorname{Spec}k[x,y]/(xy)\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> sent to zero.</p>
+</li>
+<li>
+<p><strong>Hard — finite local systems on the base.</strong> Prove that <span class="math" data-tex="\(R^qa_*\mathbf F_\ell\)">\(R^qa_*\mathbf F_\ell\)</span> is finite locally constant for a proper smooth <span class="math" data-tex="\(a:X\to S\)">\(a:X\to S\)</span> and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> invertible on <span class="math" data-tex="\(S\)">\(S\)</span>. Give the generator-and-relation argument that turns constructibility and specialization isomorphisms into local constancy on a Noetherian base, and explain the descent that removes the Noetherian hypothesis.</p>
+</li>
+</ol>
+<p>The first exercise includes the separably closed hypothesis absent from an unqualified affine-space vanishing assertion. In exercise 3, connectedness is a condition on the base as well as on the fibres. In exercise 4 the smoothing is defined by <span class="math" data-tex="\(k[t]\to k[x,y]\)">\(k[t]\to k[x,y]\)</span>, <span class="math" data-tex="\(t\mapsto xy\)">\(t\mapsto xy\)</span>; imposing <span class="math" data-tex="\(xy=0\)">\(xy=0\)</span> before defining the map makes it a constant map instead.</p>
+<h2 id="15-full-solutions">15. Full solutions</h2>
+<p><strong>Solution 1.</strong> Write <span class="math" data-tex="\(b:\mathbf A^1_k\to\operatorname{Spec}k\)">\(b:\mathbf A^1_k\to\operatorname{Spec}k\)</span>. On a separably closed field the affine-line computation from lesson 12 gives <span class="math" data-tex="\(R^qb_*\mathbf F_\ell=0\)">\(R^qb_*\mathbf F_\ell=0\)</span> for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, and <span class="math" data-tex="\(b_*\mathbf F_\ell=\mathbf F_\ell\)">\(b_*\mathbf F_\ell=\mathbf F_\ell\)</span>, with the latter identified by constant sections. Consider the square with change of base <span class="math" data-tex="\(\mathbf A^{r-1}_k\to\operatorname{Spec}k\)">\(\mathbf A^{r-1}_k\to\operatorname{Spec}k\)</span>, which is smooth. Theorem 1.1 gives, for the projection <span class="math" data-tex="\(p:\mathbf A^r_k\to\mathbf A^{r-1}_k\)">\(p:\mathbf A^r_k\to\mathbf A^{r-1}_k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+Rp_*\mathbf F_\ell=\mathbf F_\ell[0].
+\tag{15.1}
+\]">\[
+Rp_*\mathbf F_\ell=\mathbf F_\ell[0].
+\tag{15.1}
+\]</span>
+<p>The Leray spectral sequence has only its row of degree zero and identifies <span class="math" data-tex="\(H^q(\mathbf A^r_k,\mathbf F_\ell)\)">\(H^q(\mathbf A^r_k,\mathbf F_\ell)\)</span> with <span class="math" data-tex="\(H^q(\mathbf A^{r-1}_k,\mathbf F_\ell)\)">\(H^q(\mathbf A^{r-1}_k,\mathbf F_\ell)\)</span>, through the canonical pullback. Induct down to <span class="math" data-tex="\(\operatorname{Spec}k\)">\(\operatorname{Spec}k\)</span>. Its positive cohomology vanishes, proving the first assertion, including <span class="math" data-tex="\(r=0\)">\(r=0\)</span>.</p>
+<p>For an arbitrary <span class="math" data-tex="\(k\)">\(k\)</span>, the geometric stalk of <span class="math" data-tex="\(R^qb_*\mathbf F_\ell\)">\(R^qb_*\mathbf F_\ell\)</span> is the affine-line cohomology over a separable closure of <span class="math" data-tex="\(k\)">\(k\)</span>, by the stalk formula and continuity. The same affine-line computation therefore says <span class="math" data-tex="\(Rb_*\mathbf F_\ell=\mathbf F_\ell[0]\)">\(Rb_*\mathbf F_\ell=\mathbf F_\ell[0]\)</span> as a complex on <span class="math" data-tex="\(\operatorname{Spec}k\)">\(\operatorname{Spec}k\)</span>. Its degree-zero Galois action is trivial, since the constant-section map is an isomorphism. The same smooth squares and Leray induction give</p>
+<span class="math math-display" data-tex="\[
+H^q(k,\mathbf F_\ell)\xrightarrow{\sim}
+H^q(\mathbf A^r_k,\mathbf F_\ell).
+\tag{15.2}
+\]">\[
+H^q(k,\mathbf F_\ell)\xrightarrow{\sim}
+H^q(\mathbf A^r_k,\mathbf F_\ell).
+\tag{15.2}
+\]</span>
+<p>For a finite field with <span class="math" data-tex="\(\ell\)">\(\ell\)</span> different from its characteristic, <span class="math" data-tex="\(H^1(k,\mathbf F_\ell)=\operatorname{Hom}_{\mathrm{cont}}(\widehat{\mathbf Z},\mathbf F_\ell)=\mathbf F_\ell\)">\(H^1(k,\mathbf F_\ell)=\operatorname{Hom}_{\mathrm{cont}}(\widehat{\mathbf Z},\mathbf F_\ell)=\mathbf F_\ell\)</span>. It does not vanish. The origin gives a section of the structure map, so even without (15.2), pullback of that nonzero class could not vanish. □</p>
+<p><strong>Solution 2.</strong> Take <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> to be an algebraic closure of <span class="math" data-tex="\(k(u)\)">\(k(u)\)</span>, with <span class="math" data-tex="\(u\)">\(u\)</span> transcendental. Formula (13.3) shows that the pullback from <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> is not surjective: the first coordinate of <span class="math" data-tex="\([uz]\)">\([uz]\)</span> is <span class="math" data-tex="\(u\notin k\)">\(u\notin k\)</span>. This proves failure of the field-extension consequence when the prime-to-characteristic hypothesis is removed.</p>
+<p>To see failure for an actual smooth change of base, take</p>
+<span class="math math-display" data-tex="\[
+\begin{matrix}
+\mathbf A^2_{k,(u,z)}&amp;\xrightarrow{e}&amp;\mathbf A^1_{k,z}\\
+h\downarrow&amp;&amp;\downarrow g\\
+\mathbf A^1_{k,u}&amp;\xrightarrow{f}&amp;\operatorname{Spec}k,
+\end{matrix}
+\tag{15.3}
+\]">\[
+\begin{matrix}
+\mathbf A^2_{k,(u,z)}&amp;\xrightarrow{e}&amp;\mathbf A^1_{k,z}\\
+h\downarrow&amp;&amp;\downarrow g\\
+\mathbf A^1_{k,u}&amp;\xrightarrow{f}&amp;\operatorname{Spec}k,
+\end{matrix}
+\tag{15.3}
+\]</span>
+<p>where both horizontal maps are the evident base changes and <span class="math" data-tex="\(h\)">\(h\)</span> is projection to <span class="math" data-tex="\(u\)">\(u\)</span>. The morphism <span class="math" data-tex="\(f\)">\(f\)</span> is smooth of finite presentation and <span class="math" data-tex="\(g\)">\(g\)</span> is affine of finite type. On the stalk at a geometric generic point of the <span class="math" data-tex="\(u\)">\(u\)</span>-line, the degree-one comparison with coefficient <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span> is</p>
+<span class="math math-display" data-tex="\[
+H^1(\mathbf A^1_k,\mathbf F_p)
+\longrightarrow H^1(\mathbf A^1_{k&#x27;},\mathbf F_p).
+\tag{15.4}
+\]">\[
+H^1(\mathbf A^1_k,\mathbf F_p)
+\longrightarrow H^1(\mathbf A^1_{k&#x27;},\mathbf F_p).
+\tag{15.4}
+\]</span>
+<p>The strict-local stalk initially uses a separable closure of <span class="math" data-tex="\(k(u)\)">\(k(u)\)</span>; its purely inseparable algebraic closure induces the same étale topos and hence the same groups, by lesson 7. Thus (15.4) is indeed the stalk comparison. The global Artin–Schreier torsor <span class="math" data-tex="\(w^p-w=uz\)">\(w^p-w=uz\)</span> on <span class="math" data-tex="\(\mathbf A^2\)">\(\mathbf A^2\)</span> induces the class just found. It is absent from the source. Consequently <span class="math" data-tex="\(f^{-1}R^1g_*\mathbf F_p\to R^1h_*e^{-1}\mathbf F_p\)">\(f^{-1}R^1g_*\mathbf F_p\to R^1h_*e^{-1}\mathbf F_p\)</span> is not an isomorphism. All geometric finiteness and smoothness conditions hold; the failed condition is that <span class="math" data-tex="\(p\)">\(p\)</span> be invertible. □</p>
+<p><strong>Solution 3.</strong> Theorem 12.2 makes <span class="math" data-tex="\(R^1a_*\mathbf F_\ell\)">\(R^1a_*\mathbf F_\ell\)</span> finite locally constant. Proper base change identifies its stalk with the degree-one cohomology of the geometric fibre. The dimension of a finite locally constant vector-space sheaf is a locally constant integer-valued function. On connected <span class="math" data-tex="\(S\)">\(S\)</span> it is constant. Thus all the vector spaces have the same finite dimension and are isomorphic.</p>
+<p>For points linked by a specified geometric specialization, Corollary 11.3 gives the actual canonical isomorphism. For arbitrary points a transport map uses an étale path. Two choices can differ by the monodromy representation; the statement does not supply one canonical global identification of every stalk. Connected geometric fibres alone would not force equality across different components of the base: a disjoint union of a projective-line family over one point and a positive-genus curve over another is smooth proper with connected geometric fibres, but has different degree-one dimensions. For a connected family of curves the common dimension is <span class="math" data-tex="\(2g\)">\(2g\)</span>, by the earlier curve computation, so the genus is constant and the local system has rank <span class="math" data-tex="\(2g\)">\(2g\)</span>. □</p>
+<p><strong>Solution 4.</strong> The whole geometric generic fibre of <span class="math" data-tex="\(t=xy\)">\(t=xy\)</span> is <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>, but that observation alone does not compute the fibre of the strict localization at the origin. We give a direct obstruction in the correct local fibre.</p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+A=(k[t]_{(t)})^{\mathrm{sh}},\qquad
+B=(k[x,y]_{(x,y)})^{\mathrm{sh}},\qquad t\mapsto xy.
+\]">\[
+A=(k[t]_{(t)})^{\mathrm{sh}},\qquad
+B=(k[x,y]_{(x,y)})^{\mathrm{sh}},\qquad t\mapsto xy.
+\]</span>
+<p>Let <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span> be an algebraic closure of <span class="math" data-tex="\(\operatorname{Frac}A\)">\(\operatorname{Frac}A\)</span>. The local geometric generic fibre is</p>
+<span class="math math-display" data-tex="\[
+F=\operatorname{Spec}(B\otimes_A\bar K).
+\tag{15.5}
+\]">\[
+F=\operatorname{Spec}(B\otimes_A\bar K).
+\tag{15.5}
+\]</span>
+<p>Since <span class="math" data-tex="\(xy=t\)">\(xy=t\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> is a nonzero scalar in <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span>, <span class="math" data-tex="\(x\)">\(x\)</span> is a unit on <span class="math" data-tex="\(F\)">\(F\)</span>. We prove that it is not an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th power there.</p>
+<p>Embed <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(k[[t]]\)">\(k[[t]]\)</span> by the pointed henselian lifting property, and embed <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span> in an algebraic closure <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> of <span class="math" data-tex="\(k((t))\)">\(k((t))\)</span>. Give <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> the extended <span class="math" data-tex="\(t\)">\(t\)</span>-adic valuation, normalized by <span class="math" data-tex="\(v(t)=1\)">\(v(t)=1\)</span>. Its value group is <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> and its residue field is <span class="math" data-tex="\(k\)">\(k\)</span>: every finite extension has rational ramification index, and the algebraically closed residue field has no nontrivial finite algebraic residue extension.</p>
+<p>Choose an irrational real <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(0&lt;c&lt;1\)">\(0&lt;c&lt;1\)</span>. On <span class="math" data-tex="\(\Omega(X)\)">\(\Omega(X)\)</span> put the Gauss valuation</p>
+<span class="math math-display" data-tex="\[
+v\!\left(\sum_i a_iX^i\right)=\min_i\{v(a_i)+ic\}.
+\tag{15.6}
+\]">\[
+v\!\left(\sum_i a_iX^i\right)=\min_i\{v(a_i)+ic\}.
+\tag{15.6}
+\]</span>
+<p>Distinct nonzero terms have different valuations because <span class="math" data-tex="\(c\)">\(c\)</span> is irrational and the coefficient valuations are rational. The term attaining the minimum is unique; multiplication multiplies those leading terms, proving multiplicativity. Extend to rational functions by subtracting valuations. The value group is <span class="math" data-tex="\(\mathbf Q+\mathbf Zc\)">\(\mathbf Q+\mathbf Zc\)</span> and the residue field is <span class="math" data-tex="\(k\)">\(k\)</span>. For the latter assertion, a rational function of value zero has numerator and denominator leading exponents equal, since their difference times <span class="math" data-tex="\(c\)">\(c\)</span> is rational. Their leading coefficient ratio has residue in <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Complete this valued field to <span class="math" data-tex="\(L\)">\(L\)</span>, and let <span class="math" data-tex="\(V\)">\(V\)</span> be its valuation ring. Completion changes neither its value group nor its residue field: a sequence converging to a nonzero element has eventually the same valuation as its limit, and a convergent sequence of units has eventually the same residue. A complete real-valued field is henselian, by the convergent simple-root lifting argument. Thus <span class="math" data-tex="\(V\)">\(V\)</span> is a henselian local ring with separably closed residue field <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Map</p>
+<span class="math math-display" data-tex="\[
+x\longmapsto X,\qquad y\longmapsto t/X.
+\tag{15.7}
+\]">\[
+x\longmapsto X,\qquad y\longmapsto t/X.
+\tag{15.7}
+\]</span>
+<p>Their valuations are <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(1-c\)">\(1-c\)</span>, both positive. A polynomial with nonzero constant term maps to a unit. Hence (15.7) defines a local map <span class="math" data-tex="\(k[x,y]_{(x,y)}\to V\)">\(k[x,y]_{(x,y)}\to V\)</span> inducing the identity on <span class="math" data-tex="\(k\)">\(k\)</span>. The pointed henselian lifting property extends it to <span class="math" data-tex="\(B\to V\)">\(B\to V\)</span>: every pointed étale neighbourhood defining the strict henselization lifts uniquely. Its restriction to <span class="math" data-tex="\(A\)">\(A\)</span> agrees with the chosen map through <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, again by uniqueness of these pointed lifts. We obtain a compatible ring map</p>
+<span class="math math-display" data-tex="\[
+B\otimes_A\bar K\longrightarrow L.
+\tag{15.8}
+\]">\[
+B\otimes_A\bar K\longrightarrow L.
+\tag{15.8}
+\]</span>
+<p>If a unit <span class="math" data-tex="\(z\)">\(z\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span> satisfied <span class="math" data-tex="\(z^\ell=x\)">\(z^\ell=x\)</span>, its image in <span class="math" data-tex="\(L\)">\(L\)</span> would have valuation <span class="math" data-tex="\(c/\ell\)">\(c/\ell\)</span>. But</p>
+<span class="math math-display" data-tex="\[
+c/\ell\notin\mathbf Q+\mathbf Zc:
+\quad c/\ell=q+mc\Longrightarrow(1/\ell-m)c=q
+\]">\[
+c/\ell\notin\mathbf Q+\mathbf Zc:
+\quad c/\ell=q+mc\Longrightarrow(1/\ell-m)c=q
+\]</span>
+<p>would make <span class="math" data-tex="\(c\)">\(c\)</span> rational, since the integer <span class="math" data-tex="\(m\)">\(m\)</span> cannot equal <span class="math" data-tex="\(1/\ell\)">\(1/\ell\)</span>. This contradiction proves the claim.</p>
+<p>The Kummer sequence, with <span class="math" data-tex="\(\ell\)">\(\ell\)</span> invertible, injects the quotient of the unit group by its <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th powers into <span class="math" data-tex="\(H^1(F,\mu_\ell)\)">\(H^1(F,\mu_\ell)\)</span>. The class of <span class="math" data-tex="\(x\)">\(x\)</span> is therefore nonzero. Over the algebraically closed <span class="math" data-tex="\(k\)">\(k\)</span>, choosing a primitive <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th root identifies <span class="math" data-tex="\(\mu_\ell\)">\(\mu_\ell\)</span> with the constant <span class="math" data-tex="\(\mathbf F_\ell\)">\(\mathbf F_\ell\)</span>. Thus <span class="math" data-tex="\(H^1(F,\mathbf F_\ell)\ne0\)">\(H^1(F,\mathbf F_\ell)\ne0\)</span>, whereas the stalk of that coefficient sheaf at the origin is concentrated in degree zero. Map (9.2) is not an isomorphism. This nonzero local class is the required vanishing-cycle obstruction; no comparison with singular cohomology was used.</p>
+<p>Finally, for the literal map <span class="math" data-tex="\(k[t]\to k[x,y]/(xy)\)">\(k[t]\to k[x,y]/(xy)\)</span>, <span class="math" data-tex="\(t\mapsto xy=0\)">\(t\mapsto xy=0\)</span>, the local generic fibre is empty: tensoring with <span class="math" data-tex="\(\bar K\)">\(\bar K\)</span> makes the scalar <span class="math" data-tex="\(t\)">\(t\)</span> both zero and invertible. Its degree-zero cohomology is zero. The coefficient stalk at the origin is <span class="math" data-tex="\(\mathbf F_\ell\)">\(\mathbf F_\ell\)</span>, so even the degree-zero comparison fails. That map is not a nodal smoothing. □</p>
+<p><strong>Solution 5.</strong> First let <span class="math" data-tex="\(S\)">\(S\)</span> be Noetherian. The constant <span class="math" data-tex="\(\mathbf F_\ell\)">\(\mathbf F_\ell\)</span>-sheaf is constructible, and the proper finite-presentation constructibility theorem from lesson 14 makes <span class="math" data-tex="\(R^qa_*\mathbf F_\ell\)">\(R^qa_*\mathbf F_\ell\)</span> constructible with finite-dimensional stalks. Corollary 11.3 proves that all its specialization maps are isomorphisms. At <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span>, choose a basis of its stalk and lift the finitely many basis vectors to a pointed étale neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span>. They define <span class="math" data-tex="\(\underline{\mathbf F_\ell^m}\to R^qa_*\mathbf F_\ell|_U\)">\(\underline{\mathbf F_\ell^m}\to R^qa_*\mathbf F_\ell|_U\)</span>, an isomorphism at the distinguished point. Naturality and invertible specialization maps make its isomorphism locus stable under both specialization and generization. Remove the finitely many irreducible components of the Noetherian affine <span class="math" data-tex="\(U\)">\(U\)</span> not passing through that point. The generic point of every remaining component is in the locus; all its specializations are too. Thus every stalk map is an isomorphism, and the sheaf is constant on <span class="math" data-tex="\(U\)">\(U\)</span>. This is the field-coefficient instance of Lemma 12.1. With general Noetherian coefficient modules, lift generators and their finitely many relations instead of a basis.</p>
+<p>For arbitrary <span class="math" data-tex="\(S\)">\(S\)</span>, work on an affine open and descend the proper smooth finite-presentation morphism to a finite-type <span class="math" data-tex="\(\mathbf Z[1/\ell]\)">\(\mathbf Z[1/\ell]\)</span>-model. Properness and smoothness hold at a sufficiently late stage. The constant coefficient sheaf descends automatically. The model has finite locally constant higher direct images by the Noetherian case. Proper base change identifies their pullbacks with <span class="math" data-tex="\(R^qa_*\mathbf F_\ell\)">\(R^qa_*\mathbf F_\ell\)</span>, and inverse image preserves finite local constancy. This covers <span class="math" data-tex="\(S\)">\(S\)</span> and proves the result. □</p>
+<h2 id="16-sources-scope-and-the-historical-route">16. Sources, scope and the historical route</h2>
+<p>The modern proof targets are the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-smooth-base-change">smooth base change section</a>, including the pointed curve effacement lemma and both full proofs; the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-applications-smooth-base-change">field-extension applications</a>; the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-base-change-f-star">degree-zero preliminaries</a>; the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-local-acyclicity">local acyclicity section</a>; the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-cospecialization">cospecialization construction and proof</a>; and the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-proposition-loc-cst-torsion">finite type locally constant proper smooth theorem</a>. They retain the quasi-compact, quasi-separated and coefficient conditions.</p>
+<p>Additional actual targets include the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-lemma-sections-upstairs">connected-fibre sections lemma</a>, the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-lemma-characterize-locally-constant-module">finite-module local constancy criterion</a>, and the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-colimit-syntomic">field smooth-algebra approximation</a>. Section 2 identifies the smooth geometric inputs; Section 5 isolates the exact prime-to-characteristic finite-cover extension prerequisite. The owned cohomological argument supplies the degree and dimension inductions, limits, local-fibre calculation and proper specialization proof.</p>
+<p>For the historical account, M. Artin's <strong><a href="https://www.normalesup.org/~forgogozo/SGA4/">SGA 4</a>, Exposé XV</strong>, Sections 1–3, develops acyclic and locally acyclic morphisms and proves smooth local acyclicity using henselian local affine lines, tame ramification and finite-cover extension. <strong>Exposé XVI</strong>, Sections 1–2, derives smooth base change and specialization. The order here follows the modern direct effacement proof, then deduces local acyclicity. It does not assume a historical local acyclicity theorem to prove smooth base change and then use smooth base change to prove the same premise.</p>
+<p>P. Deligne's <strong><a href="https://publications.ias.edu/sites/default/files/Number32.pdf">SGA 4½</a>, Cohomologie étale: les points de départ (Arcata), V</strong>, §§1–3, gives the vanishing-cycle and cospecialization viewpoint and its applications. Its prime-to-characteristic coefficient convention is essential. It is used as a historical statement and mechanism comparison; the proofs needed for this course are supplied above.</p>
+<p>In SGA 4, XVI.1.1 has finiteness conditions on the direct-image morphism, and XVI.2.1 requires locally constant <strong>and</strong> constructible coefficients: for arbitrary constructible input the assertion fails, already for the identity morphism and a constructible sheaf that is not locally constant. We keep the necessary input condition. In the affine-curve reduction the higher vanishing holds for <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>; degrees zero and one are treated separately.</p>
+<p>The exercised corrections are mathematical: separably closedness for affine-space vanishing, connectedness of the base for a common fibre rank, finite type coefficients for the local-system deduction, the correct nodal-family coordinate ring, and the prime-to-characteristic condition wherever smooth base change or smooth local acyclicity is used.</p>
+<footer><a href="src/smooth-base-change-and-local-acyclicity.md">Editable Markdown source</a> · <a href="licence.html">Sources and authorship</a></footer></main></body></html>

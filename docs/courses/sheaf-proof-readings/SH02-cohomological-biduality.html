@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>SH02-CB-UNIT — Finite local data and sheaf biduality</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><span id="SH02-CB-UNIT"></span><h1 id="sh02-cb-unit-finite-local-data-and-sheaf-biduality">SH02-CB-UNIT
+— Finite local data and sheaf biduality</h1>
+<p>Status: independently authored English draft. The proofs below retain
+arbitrary locally compact Hausdorff spaces of finite c-soft dimension.</p>
+<p>A stalk records what a section can look like near a point. A costalk
+records what can be supported at that point. Verdier duality exchanges
+these two measurements. To recover a sheaf after two dualizations, we
+need both measurements to be finite in the derived sense, and we need
+the surrounding neighborhood systems to stabilize in the appropriate
+categorical sense. Neither a dimension count nor a statement about
+stalks alone supplies that condition.</p>
+<p>Throughout,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is a commutative unital ring of finite global dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>.
+A space is locally compact Hausdorff and has finite c-soft dimension for
+sheaves of abelian groups. No countability condition on its neighborhood
+bases is imposed. Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>X</mi></msub><mo>:</mo><mi>X</mi><mo>→</mo><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">t</mi></mrow></mrow><annotation encoding="application/x-tex">a_X:X\to\mathrm{pt}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>X</mi></msub><mo>=</mo><msubsup><mi>a</mi><mi>X</mi><mi>!</mi></msubsup><mi>k</mi></mrow><annotation encoding="application/x-tex">\omega_X=a_X^!k</annotation></semantics></math>,
+and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo>=</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><msub><mi>ω</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>D</mi><mi>X</mi><mo>′</mo></msubsup><mi>F</mi><mo>=</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D_XF=R\mathcal Hom(F,\omega_X),\qquad
+D'_XF=R\mathcal Hom(F,k_X).
+</annotation></semantics></math></p>
+<p>The costalk at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+is the complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msubsup><mi>i</mi><mi>x</mi><mi>!</mi></msubsup><mi>F</mi></mrow><annotation encoding="application/x-tex">C_x(F)=R\Gamma_{\{x\}}(X;F)=i_x^!F</annotation></semantics></math>.
+Complexes and morphisms of complexes are cohomologically graded. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>m</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">k[-m]</annotation></semantics></math>
+has its nonzero cohomology in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.</p>
+<span id="SH02-CB-IMPORTS"></span><h2 id="sh02-cb-imports-the-precise-imported-contracts">SH02-CB-IMPORTS
+— The precise imported contracts</h2>
+<p>The <a href="src/SH02/exceptional-operations.md">exceptional
+inverse-image lesson</a> supplies <code>SH02-EX-DUAL-SECTIONS</code>:
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^b(k_X)</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
+R\Gamma(U;D_XF)\simeq
+R\operatorname{Hom}_k(R\Gamma_c(U;F),k)
+</annotation></semantics></math></p>
+<p>for every open
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>,
+and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>;</mo><mi>F</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>K</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
+R\Gamma_K(X;D_XF)\simeq
+R\operatorname{Hom}_k(R\Gamma(K;F|_K),k)
+</annotation></semantics></math></p>
+<p>for compact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+These are the adjunction identifications, with their evaluation
+morphisms; an arbitrary choice of an isomorphism is insufficient in the
+biduality proof. Its <code>SH02-EX-RECTANGLE</code> gives, for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^b(k_X)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G\in D^+(k_Y)</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>×</mo><mi>V</mi><mo>;</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msubsup><mi>q</mi><mi>X</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi><mo>,</mo><msubsup><mi>q</mi><mi>Y</mi><mi>!</mi></msubsup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\Gamma(U\times V;
+ R\mathcal Hom(q_X^{-1}F,q_Y^!G))
+\simeq
+R\operatorname{Hom}_k(R\Gamma_c(U;F),R\Gamma(V;G)).
+</annotation></semantics></math></p>
+<p>The <span class="unlinked">manifold-duality
+lesson</span> supplies <code>SH02-MD-SUBMERSION</code>,
+<code>SH02-MD-RELATIVE</code>, and <code>SH02-MD-CLOSED</code>: the
+orientation line and its shift, the formula
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>q</mi><mi>Y</mi><mi>!</mi></msubsup><mi>G</mi><mo>≃</mo><msubsup><mi>q</mi><mi>X</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><msub><mi>ω</mi><mi>X</mi></msub><msup><mo>⊗</mo><mi>L</mi></msup><msubsup><mi>q</mi><mi>Y</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>G</mi></mrow><annotation encoding="application/x-tex">q_Y^!G\simeq q_X^{-1}\omega_X\otimes^Lq_Y^{-1}G</annotation></semantics></math>
+when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is a topological manifold, and the closed-submanifold costalk formula.
+These imported contracts are not replaced by a field-coefficient or
+finite-rank special case here.</p>
+<p>For the local geometric models, <code>SH02-CA-CONSTANT</code> in the
+<a href="src/SH02/convex-acyclicity.md">convex acyclicity lesson</a>
+proves that ordinary cohomology of a nonempty locally closed convex set
+with constant coefficients is exactly its coefficient module in degree
+zero. Compact-support cohomology of a ball is the orientation
+calculation in the manifold-duality lesson; proper-support base change
+and the projection formula give its product version.</p>
+<p>We also use the following sheaf foundations, owned by the
+prerequisite course: exact filtered colimits of sheaves; injective
+resolutions; compact-neighborhood continuity of sheaf cohomology;
+proper-support extension maps for open embeddings; and derived
+tensor–Hom adjunction. In the continuity statement, compact sets form a
+directed family; a countable local basis is not required.</p>
+<span id="SH02-CB-IMP-PRO-CALCULUS"></span><h3 id="sh02-cb-imp-pro-calculus-formal-systems-and-their-morphisms">SH02-CB-IMP-PRO-CALCULUS
+— Formal systems and their morphisms</h3>
+<p>This prerequisite contract has a limited supporting proof in <a href="src/SH02/formal-system-bridge.md">formal stabilization</a>;
+broader categorical foundations remain owned by SH-01. For systems
+indexed by arbitrary small directed posets or their opposites in the
+locally small categories used here, we require the formal ind/pro Hom
+formulas, the fully faithful constant-object embedding, and invariance
+under cofinal reindexing. In an additive category the zero criterion
+says that a system is formally zero exactly when every stage has a later
+transition equal to zero. A single pro-morphism, including a
+pro-isomorphism, and the finite acyclic diagrams used below admit
+simultaneous level representatives after common cofinal reindexing. A
+pro-isomorphism so represented need not be a levelwise isomorphism. For
+module systems, kernels and cokernels of such strict representatives
+compute the corresponding formal kernels and cokernels; hence a strict
+pro-isomorphism has pro-zero kernel and cokernel. A functor extends to
+formal systems, preserving their isomorphisms; a contravariant functor
+interchanges ind and pro. These are categorical assertions, separate
+from existence or exactness of ordinary limits. The net and duality
+arguments below use this contract. The supporting proofs
+<code>SH02-FSB-HOM</code> through <code>SH02-FSB-FUNCTORS</code>
+establish these formal assertions, with strictification restricted to
+the finite acyclic diagrams actually used.</p>
+<span id="SH02-CB-IMP-DERIVED-COFINALITY"></span><h3 id="sh02-cb-imp-derived-cofinality-derived-limits-of-module-diagrams">SH02-CB-IMP-DERIVED-COFINALITY
+— Derived limits of module diagrams</h3>
+<p>The second contract, proved in <code>SH02-FSB-COFINALITY</code> and
+<code>SH02-FSB-PRISM</code> of the <a href="src/SH02/formal-system-bridge.md">formal stabilization lesson</a>,
+concerns small directed partially ordered sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>,</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">I,J</annotation></semantics></math>
+and an order-preserving map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo>:</mo><mi>J</mi><mo>→</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">\phi:J\to I</annotation></semantics></math>.
+Suppose that for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">i\in I</annotation></semantics></math>
+the upper comma category
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>i</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>j</mi><mo>∈</mo><mi>J</mi><mo>:</mo><mi>i</mi><mo>≤</mo><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">J_i=\{j\in J:i\leq\phi(j)\}</annotation></semantics></math>
+is nonempty and directed. For every inverse system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>:</mo><msup><mi>I</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mo>→</mo><mrow><mi mathvariant="normal">Mod</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A:I^{\mathrm{op}}\to\operatorname{Mod}(k)</annotation></semantics></math>,
+the canonical restriction must induce</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>I</mi></msub><mi>A</mi><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>J</mi></msub><msup><mi>ϕ</mi><mo>*</mo></msup><mi>A</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\underset{\leftarrow}{\lim}_I A\xrightarrow{\sim}R\underset{\leftarrow}{\lim}_J\phi^*A.
+</annotation></semantics></math></p>
+<p>We also require compatibility with natural relations between indexing
+maps: the natural transformation induced by such a relation agrees with
+the canonical comparison after these identifications. The product
+cochain resolution and its comma-category contraction described in
+<code>SH02-CB-NET-ACYCLICITY</code> specify the intended proof,
+including its actual comparison map. They are not an assertion that
+inverse limits are exact. The supporting lesson proves the derived
+comparison by a projective diagram resolution and proves relation
+compatibility by an explicit prism homotopy. Its application
+<code>SH02-FSB-NET</code> verifies the comparison used below for
+arbitrary directed index sets; ordinary inverse limits are not asserted
+exact.</p>
+<span id="SH02-CB-SYSTEMS"></span><h2 id="sh02-cb-systems-what-stabilization-means">SH02-CB-SYSTEMS — What
+stabilization means</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒩</mi><mi>x</mi></msub><annotation encoding="application/x-tex">\mathcal N_x</annotation></semantics></math>
+be the open neighborhoods of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+ordered by shrinking. The restriction maps make
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{R\Gamma(U;F)\}</annotation></semantics></math>
+an ind-system. The extension maps for compact supports make
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{R\Gamma_c(U;F)\}</annotation></semantics></math>
+a pro-system. The words <em>ind</em> and <em>pro</em> retain more
+information than the ordinary colimit or limit of their cohomology
+modules.</p>
+<p>For objects
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>
+of a category
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒟</mi><annotation encoding="application/x-tex">\mathcal D</annotation></semantics></math>,
+the ind-system is represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+when its formal ind-object is isomorphic to the constant object
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>;
+the analogous convention applies to a pro-system. For example, the
+morphism sets of pro-objects are</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mrow><mi mathvariant="normal">Pro</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒟</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><msub><mi>A</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mo form="prefix" stretchy="false">{</mo><msub><mi>B</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>j</mi></msub><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">→</mo></munder><mi>i</mi></msub><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi mathvariant="script">𝒟</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><msub><mi>B</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}_{\operatorname{Pro}(\mathcal D)}
+ (\{A_i\},\{B_j\})
+ =\underset{\leftarrow}{\lim}_j\underset{\rightarrow}{\lim}_i
+   \operatorname{Hom}_{\mathcal D}(A_i,B_j).
+</annotation></semantics></math></p>
+<p>An isomorphism to a constant object allows transient terms. It does
+not say that every sufficiently small neighborhood has exactly the same
+cohomology. In the statements below,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒟</mi><mo>=</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal D=D(k)</annotation></semantics></math>,
+with the boundedness inherited from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+and the finite dimension assumptions.</p>
+<p>A complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+is <strong>perfect</strong> if it is isomorphic in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k)</annotation></semantics></math>
+to a bounded complex of finitely generated projective
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-modules</span>.
+This is the finiteness condition we use. Over an arbitrary nonnoetherian
+ring, it must not be replaced without proof by a statement that its
+cohomology modules are finitely generated.</p>
+<p><strong>Definition.</strong> An object
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^b(k_X)</annotation></semantics></math>
+has cohomologically constructible local data if, at every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>:</p>
+<ol type="1">
+<li>The ind-system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{R\Gamma(U;F)\}</annotation></semantics></math>
+and the pro-system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{R\Gamma_c(U;F)\}</annotation></semantics></math>
+are represented by objects of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k)</annotation></semantics></math>.</li>
+<li>Their canonical comparisons with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>x</mi></msub><annotation encoding="application/x-tex">F_x</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_x(F)</annotation></semantics></math>
+identify the representatives with these two complexes.</li>
+<li>Both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>x</mi></msub><annotation encoding="application/x-tex">F_x</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_x(F)</annotation></semantics></math>
+are perfect.</li>
+</ol>
+<p>We abbreviate this condition by <em>cohomologically
+constructible</em>. The compatibility requirement in the second clause
+is part of the definition until the next argument proves it from the
+first clause. It is never discarded on the strength of an ordinary
+inverse-limit calculation alone.</p>
+<span id="SH02-CB-NET-ACYCLICITY"></span><h2 id="sh02-cb-net-acyclicity-a-neighborhood-argument-without-a-countability-assumption">SH02-CB-NET-ACYCLICITY
+— A neighborhood argument without a countability assumption</h2>
+<p>Here is the homological fact that makes the arbitrary-neighborhood
+argument work.</p>
+<p><strong>Lemma.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+be a directed set and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>:</mo><msup><mi>I</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">p</mi></mrow></msup><mo>→</mo><mrow><mi mathvariant="normal">Mod</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A:I^{\mathrm{op}}\to\operatorname{Mod}(k)</annotation></semantics></math>
+a pro-zero system: for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+there is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">j\geq i</annotation></semantics></math>
+for which
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>j</mi></msub><mo>→</mo><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">A_j\to A_i</annotation></semantics></math>
+is zero. Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mi>p</mi></msup><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>I</mi></msub><mi>A</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R^p\underset{\leftarrow}{\lim}_I A=0</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p\geq0</annotation></semantics></math>.
+Consequently a pro-isomorphism of module systems induces an isomorphism
+on all derived inverse limits.</p>
+<p><strong>Proof.</strong> We spell out the reindexing because an
+arbitrary directed set need not have a countable cofinal subset.
+Form</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>S</mi><mo>⊂</mo><mi>I</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> finite</mtext></mrow><mo>,</mo><mspace width="0.222em"></mspace><mi>n</mi><mo>∈</mo><mi mathvariant="double-struck">ℕ</mi><mo form="postfix" stretchy="false">}</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+J=\{(S,n):S\subset I\text{ finite},\ n\in\mathbb N\},
+</annotation></semantics></math></p>
+<p>ordered by inclusion in the first variable and the ordinary order in
+the second. Each element of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+has only finitely many predecessors. Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">\phi(S,n)\in I</annotation></semantics></math>
+recursively on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>S</mi><mo form="prefix" stretchy="false">|</mo><mi>+</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">|S|+n</annotation></semantics></math>.
+Require it to dominate every member of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+and, for every strict predecessor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>T</mi><mo>,</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(T,m)</annotation></semantics></math>,
+require the map</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>→</mo><msub><mi>A</mi><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>T</mi><mo>,</mo><mi>m</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">
+A_{\phi(S,n)}\longrightarrow A_{\phi(T,m)}
+</annotation></semantics></math></p>
+<p>to be zero. Such a choice exists: each of the finitely many preceding
+targets has an index that kills it, and directedness gives a common
+upper bound for those indices and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+At the first step choose any element of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>.
+This also makes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
+order preserving. For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>,
+the set of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(S,n)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>≥</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">\phi(S,n)\geq i</annotation></semantics></math>
+is nonempty and directed. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
+is cofinal for computing inverse limits and their derived functors.</p>
+<p>The shift
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>,</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">s(S,n)=(S,n+1)</annotation></semantics></math>
+is another cofinal map, and there is a natural relation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mi>J</mi></msub><mo>≤</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">\mathrm{id}_J\leq s</annotation></semantics></math>.
+Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mi>A</mi><mo>∘</mo><mi>ϕ</mi></mrow><annotation encoding="application/x-tex">B=A\circ\phi</annotation></semantics></math>.
+Every component of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>∘</mo><mi>s</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">B\circ s\to B</annotation></semantics></math>
+is zero. On derived inverse limits this map is nevertheless an
+isomorphism: cofinal restriction gives an inverse, and the natural
+relation between the two indexing maps identifies their composite with
+the identity. The resulting zero endomorphism of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>J</mi></msub><mi>B</mi></mrow><annotation encoding="application/x-tex">R\underset{\leftarrow}{\lim}_JB</annotation></semantics></math>
+is therefore invertible. This forces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>J</mi></msub><mi>B</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R\underset{\leftarrow}{\lim}_JB=0</annotation></semantics></math>.</p>
+<p>For clarity, the derived cofinality used here is the ordinary
+cofinality theorem for module-valued diagrams, not an assumption that
+inverse limits are exact. One proof uses the product cochain resolution
+of an inverse system, whose degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+term is the product of the modules over strings of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+composable indexing arrows. For an order-preserving cofinal map, compare
+the two resolutions by the double complex of strings in the
+corresponding comma categories. Each such comma category is nonempty and
+directed. Its augmented chain complex is acyclic: every finite chain
+lies in a subcomplex that is coned off by a common upper bound.
+Exactness of products of modules then gives the claimed comparison of
+total complexes. The same comparison identifies the natural
+transformation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mo>≤</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">\mathrm{id}\leq s</annotation></semantics></math>
+with the identity after restriction.</p>
+<p>A constant module system has ordinary inverse limit equal to that
+module and zero positive derived inverse limits. In the same product
+resolution this is the cohomology of the directed indexing nerve with
+constant coefficients; its augmentation is acyclic by the
+common-upper-bound contraction just described.</p>
+<p>Finally, kernels and cokernels of a strict morphism that is a
+pro-isomorphism are pro-zero. The long exact sequences for derived
+limits prove the last assertion. A general pro-isomorphism can be
+represented after cofinal reindexing by such a strict morphism, and
+derived cofinality makes the conclusion independent of that
+representation.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-CB-COSTALK-CONTINUITY"></span><h3 id="sh02-cb-costalk-continuity-stalk-and-costalk-compatibility">SH02-CB-COSTALK-CONTINUITY
+— Stalk and costalk compatibility</h3>
+<p><strong>Proposition.</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^b(k_X)</annotation></semantics></math>,
+representability of the two neighborhood systems in
+<code>SH02-CB-SYSTEMS</code> implies both of their canonical
+compatibility statements.</p>
+<p><strong>Proof.</strong> For ordinary sections, exactness of filtered
+colimits gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">→</mo></munder><mrow><mi>U</mi><mo>∋</mo><mi>x</mi></mrow></msub><msup><mi>H</mi><mi>r</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>H</mi><mi>r</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>F</mi><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\underset{\rightarrow}{\lim}_{U\ni x}H^r(U;F)=H^r(F_x).
+</annotation></semantics></math></p>
+<p>A represented ind-system has these same colimits, so its comparison
+with the stalk is an isomorphism.</p>
+<p>For compact supports, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒦</mi><mi>x</mi></msub><annotation encoding="application/x-tex">\mathcal K_x</annotation></semantics></math>
+be all compact neighborhoods of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+There is a pro-isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">}</mo><mrow><mi>U</mi><mo>∋</mo><mi>x</mi></mrow></msub><mo>≃</mo><mo form="prefix" stretchy="false">{</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">}</mo><mrow><mi>K</mi><mo>∈</mo><msub><mi mathvariant="script">𝒦</mi><mi>x</mi></msub></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\{R\Gamma_c(U;F)\}_{U\ni x}
+ \simeq
+\{R\Gamma_K(X;F)\}_{K\in\mathcal K_x}.
+</annotation></semantics></math></p>
+<p>To see the actual maps, choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>⊂</mo><mi>K</mi><mo>⊂</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">V\subset K\subset U</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+open,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+compact, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">x\in V</annotation></semantics></math>.
+Extension of supports gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\Gamma_c(V;F)\longrightarrow R\Gamma_K(X;F)
+ \longrightarrow R\Gamma_c(U;F).
+</annotation></semantics></math></p>
+<p>One can insert such a triple inside every prescribed neighborhood,
+and the composites agree with the original transition maps. This proves
+the pro-isomorphism, without selecting a sequence.</p>
+<p>There is also a canonical derived comparison</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mrow><mi>K</mi><mo>∈</mo><msub><mi mathvariant="script">𝒦</mi><mi>x</mi></msub></mrow></msub><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\Gamma_{\{x\}}(X;F)
+ \simeq
+R\underset{\leftarrow}{\lim}_{K\in\mathcal K_x}R\Gamma_K(X;F).
+</annotation></semantics></math></p>
+<p>Indeed, restriction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>K</mi></msub><mo>→</mo><msub><mi>k</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">k_K\to k_L</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>⊂</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">L\subset K</annotation></semantics></math>
+gives the filtered colimit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">→</mo></munder><mi>K</mi></msub><msub><mi>k</mi><mi>K</mi></msub><mo>=</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\underset{\rightarrow}{\lim}_Kk_K=k_{\{x\}}</annotation></semantics></math>.
+Check it on stalks: at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+the value remains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+while any other point is excluded by a sufficiently small compact
+neighborhood. Filtered colimits of sheaves are exact, so this is also
+the derived colimit. Apply derived Hom into an injective resolution of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>.
+The direct-sum resolution for that colimit becomes the product
+resolution computing the derived inverse limit of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>K</mi></msub><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\operatorname{Hom}(k_K,F)=R\Gamma_K(X;F)</annotation></semantics></math>.
+This gives the displayed isomorphism and identifies its component maps
+with extension of supports.</p>
+<p>Suppose the pro-system is represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>.
+After applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mi>q</mi></msup><annotation encoding="application/x-tex">H^q</annotation></semantics></math>,
+it is pro-isomorphic to the constant system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>Q</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^q(Q)</annotation></semantics></math>.
+The preceding lemma says that its positive derived limits vanish and its
+ordinary limit is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>Q</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^q(Q)</annotation></semantics></math>.
+All the support complexes are bounded below by the same lower bound for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>.
+The derived-limit spectral sequence</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mi>p</mi></msup><msub><munder><mi mathvariant="normal">lim</mi><mo accent="true">←</mo></munder><mi>K</mi></msub><msubsup><mi>H</mi><mi>K</mi><mi>q</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>⇒</mo><msubsup><mi>H</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo form="postfix" stretchy="false">}</mo></mrow><mrow><mi>p</mi><mo>+</mo><mi>q</mi></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
+R^p\underset{\leftarrow}{\lim}_K H^q_K(X;F)
+ \Longrightarrow H^{p+q}_{\{x\}}(X;F)
+</annotation></semantics></math></p>
+<p>therefore converges: after shifting that lower bound to zero, it is a
+first-quadrant spectral sequence. It collapses to its
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p=0</annotation></semantics></math>
+column. Consequently the canonical comparison from the costalk to the
+represented pro-object induces an isomorphism in every degree.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The use of pro-zero systems in this proof matters. Surjectivity of
+all transition maps in an arbitrary uncountable inverse system does not,
+by itself, imply vanishing of its higher inverse limits; <a href="https://stacks.math.columbia.edu/tag/0ANX">Stacks, Tag 0ANX</a>
+gives an explicit example. The argument proves a stronger, precisely
+applicable stabilization statement.</p>
+<span id="SH02-CB-PERFECT"></span><h2 id="sh02-cb-perfect-perfect-complexes-supply-the-algebraic-duality">SH02-CB-PERFECT
+— Perfect complexes supply the algebraic duality</h2>
+<p>For a perfect
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>,
+put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>P</mi><mo>∨</mo></msup><mo>=</mo><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P^\vee=R\operatorname{Hom}_k(P,k)</annotation></semantics></math>.
+There are natural isomorphisms</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mover><mo>→</mo><mo accent="false">∼</mo></mover><msup><mi>P</mi><mrow><mi>∨</mi><mo>∨</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>P</mi><mo>∨</mo></msup><msubsup><mo>⊗</mo><mi>k</mi><mi>L</mi></msubsup><mi>M</mi><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
+P\xrightarrow{\sim}P^{\vee\vee},\qquad
+P^\vee\otimes_k^L M\xrightarrow{\sim}
+R\operatorname{Hom}_k(P,M)
+</annotation></semantics></math></p>
+<p>for every complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+for which the expression is formed. To prove them, represent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+by a bounded complex of finite projectives. For a finite projective
+module, evaluation and the tensor–Hom map are isomorphisms: prove this
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>k</mi><mi>r</mi></msup><annotation encoding="application/x-tex">k^r</annotation></semantics></math>
+using coordinates, and then pass to a direct summand. Totalization
+involves only finitely many terms of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+in each degree. The module isomorphisms therefore assemble into the
+displayed isomorphisms of complexes, with the usual Koszul signs. They
+are precisely the evaluation maps, so their compatibility with morphisms
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+is built into the construction. In particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>P</mi><mo>∨</mo></msup><annotation encoding="application/x-tex">P^\vee</annotation></semantics></math>
+is perfect.</p>
+<span id="SH02-CB-BIDUALITY"></span><h2 id="sh02-cb-biduality-duality-exchanges-the-two-local-measurements">SH02-CB-BIDUALITY
+— Duality exchanges the two local measurements</h2>
+<p><strong>Theorem.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^b(k_X)</annotation></semantics></math>
+is cohomologically constructible, then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">D_XF</annotation></semantics></math>
+is cohomologically constructible. Its local measurements are
+canonically</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>≃</mo><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>∨</mo></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msubsup><mi>F</mi><mi>x</mi><mo>∨</mo></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(D_XF)_x\simeq C_x(F)^\vee,
+\qquad
+C_x(D_XF)\simeq F_x^\vee.
+</annotation></semantics></math></p>
+<p>The evaluation morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>→</mo><msub><mi>D</mi><mi>X</mi></msub><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">F\to D_XD_XF</annotation></semantics></math>
+is an isomorphism.</p>
+<p><strong>Proof.</strong> First
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">D_XF</annotation></semantics></math>
+is bounded. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+has cohomology in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a,b]</annotation></semantics></math>
+and the c-soft dimension is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma_c(U;F)</annotation></semantics></math>
+has cohomology in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>+</mo><mi>c</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a,b+c]</annotation></semantics></math>.
+The finite global dimension gives a uniform bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>b</mi><mo>−</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo>−</mo><mi>a</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-b-c,d-a]</annotation></semantics></math>
+for its dual. The dual-sections formula and exact filtered colimits give
+this bound on all stalks of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">D_XF</annotation></semantics></math>.</p>
+<p>Apply the contravariant functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\operatorname{Hom}_k(-,k)</annotation></semantics></math>
+to the represented compact-support pro-system of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>.
+A functor sends an isomorphism of formal systems to an isomorphism of
+formal systems; this step does not require duality to commute with an
+arbitrary ordinary inverse limit. The dual-sections formula therefore
+identifies the ind-system of ordinary sections of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">D_XF</annotation></semantics></math>
+with the constant ind-object
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>∨</mo></msup></mrow><annotation encoding="application/x-tex">C_x(F)^\vee</annotation></semantics></math>.
+The stalk comparison gives the first displayed formula.</p>
+<p>For the other direction, use compact neighborhoods and the second
+dual-sections formula. The ind-system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>;</mo><mi>F</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>K</mi></msub><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">}</mo><mrow><mi>K</mi><mo>∈</mo><msub><mi mathvariant="script">𝒦</mi><mi>x</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">\{R\Gamma(K;F|_K)\}_{K\in\mathcal K_x}</annotation></semantics></math>
+becomes the required support pro-system after applying duality. It is
+ind-isomorphic to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">}</mo><mrow><mi>U</mi><mo>∋</mo><mi>x</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\{R\Gamma(U;F)\}_{U\ni x}</annotation></semantics></math>:
+restriction along the inclusions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>K</mi><mo>′</mo></msup><mo>⊂</mo><mi>U</mi><mo>⊂</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">K'\subset U\subset K</annotation></semantics></math>
+supplies the comparison maps and their transition-compatible composites.
+It is consequently represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>x</mi></msub><annotation encoding="application/x-tex">F_x</annotation></semantics></math>.
+Applying the same contravariant functor shows that the pro-system
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{R\Gamma_K(X;D_XF)\}</annotation></semantics></math>
+is represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>F</mi><mi>x</mi><mo>∨</mo></msubsup><annotation encoding="application/x-tex">F_x^\vee</annotation></semantics></math>.
+The support interleaving and <code>SH02-CB-COSTALK-CONTINUITY</code>
+identify its representative with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_x(D_XF)</annotation></semantics></math>.</p>
+<p>Both representatives are perfect by <code>SH02-CB-PERFECT</code>. We
+have now checked boundedness, representability, compatibility, and
+perfectness separately, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">D_XF</annotation></semantics></math>
+satisfies the full definition.</p>
+<p>Repeat the stalk formula once. The stalk of the evaluation map is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>x</mi></msub><mo>→</mo><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>F</mi><mi>x</mi></msub><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+F_x\longrightarrow
+R\operatorname{Hom}_k(R\operatorname{Hom}_k(F_x,k),k).
+</annotation></semantics></math></p>
+<p>This is the algebraic evaluation map: the identifications above came
+from the adjunction pairings, and extension or restriction of supports
+preserves those pairings. It is an isomorphism because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>x</mi></msub><annotation encoding="application/x-tex">F_x</annotation></semantics></math>
+is perfect. A morphism of sheaf complexes that is an isomorphism on
+every cohomology stalk is an isomorphism, proving biduality.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>Tensoring by a locally constant rank-one projective sheaf and
+shifting preserve this constructibility condition. Here local constancy
+identifies the coefficient sheaf on a neighborhood with a constant
+finitely generated projective
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-module</span>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>;
+it does not make
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+free by shrinking the topological neighborhood. Choose a projective
+complement
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>⊕</mo><mi>Q</mi><mo>≃</mo><msup><mi>k</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">P\oplus Q\simeq k^m</annotation></semantics></math>.
+Tensoring with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+is consequently the image of a fixed idempotent on the finite direct-sum
+functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">(-)^m</annotation></semantics></math>.
+Ordinary sections, compactly supported sections, sections with closed
+support, and stalks commute with this idempotent and with finite direct
+sums, including their derived versions. Their natural comparison maps do
+so as well. Each local formal ind- or pro-system for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>⊗</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">P\otimes F</annotation></semantics></math>
+is therefore the corresponding idempotent summand of the finite direct
+sum of the systems for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>.
+Its representative is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+tensored with the old representative; the constant-system comparison and
+its inverse restrict to that summand. Perfect complexes are closed under
+finite direct sums and idempotent summands, so these representatives
+remain perfect. For duality, the finite-projective evaluation identity
+is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>P</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>M</mi><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msup><mi>P</mi><mo>∨</mo></msup><msup><mo>⊗</mo><mi>L</mi></msup><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>P</mi><mo>∨</mo></msup><mo>=</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>,</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\operatorname{Hom}_k(P\otimes^L M,k)
+\simeq P^\vee\otimes^L R\operatorname{Hom}_k(M,k),
+\qquad P^\vee=\operatorname{Hom}_k(P,k).
+</annotation></semantics></math></p>
+<p>It follows by the same direct-summand argument from the free
+finite-rank identity and preserves the evaluation maps. Shifts simply
+shift the four systems and their representatives. This proves the
+preservation assertion without a freeness assumption on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>.</p>
+<span id="SH02-CB-EXTERNAL-HOM"></span><h2 id="sh02-cb-external-hom-a-constructible-factor-in-a-product">SH02-CB-EXTERNAL-HOM
+— A constructible factor in a product</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>,</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X,Y</annotation></semantics></math>
+be as above, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^b(k_X)</annotation></semantics></math>
+be cohomologically constructible, and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G\in D^+(k_Y)</annotation></semantics></math>.
+Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><msup><mo>⊠</mo><mi>L</mi></msup><mi>G</mi><mo>=</mo><msubsup><mi>q</mi><mi>X</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi><msup><mo>⊗</mo><mi>L</mi></msup><msubsup><mi>q</mi><mi>Y</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>G</mi></mrow><annotation encoding="application/x-tex">F\boxtimes^LG=q_X^{-1}F\otimes^Lq_Y^{-1}G</annotation></semantics></math>.
+The evaluation pairing defines a morphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><msup><mo>⊠</mo><mi>L</mi></msup><mi>G</mi><mo>→</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msubsup><mi>q</mi><mi>X</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi><mo>,</mo><msubsup><mi>q</mi><mi>Y</mi><mi>!</mi></msubsup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D_XF\boxtimes^LG\longrightarrow
+R\mathcal Hom(q_X^{-1}F,q_Y^!G).
+</annotation></semantics></math></p>
+<p><strong>Theorem.</strong> This morphism is an isomorphism. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is a topological manifold, so is the corresponding morphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>D</mi><mi>X</mi><mo>′</mo></msubsup><mi>F</mi><msup><mo>⊠</mo><mi>L</mi></msup><mi>G</mi><mo>→</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msubsup><mi>q</mi><mi>X</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>F</mi><mo>,</mo><msubsup><mi>q</mi><mi>Y</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D'_XF\boxtimes^LG\longrightarrow
+R\mathcal Hom(q_X^{-1}F,q_Y^{-1}G).
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> Test the first map at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math>.
+For a fixed open neighborhood
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>,
+the rectangle contract identifies the section complex of its target over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>×</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">U\times V</annotation></semantics></math>
+with</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\operatorname{Hom}_k(R\Gamma_c(U;F),R\Gamma(V;G)).
+</annotation></semantics></math></p>
+<p>The compact-support pro-system of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+is represented by the perfect complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_x(F)</annotation></semantics></math>.
+Applying the displayed contravariant Hom functor thus identifies the
+ind-system over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+with the constant object</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>∨</mo></msup><msup><mo>⊗</mo><mi>L</mi></msup><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_x(F)^\vee\otimes^LR\Gamma(V;G).
+</annotation></semantics></math></p>
+<p>Now take the ordinary stalk limit over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+A bounded complex of finite projectives commutes with this filtered
+colimit, giving</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>x</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>∨</mo></msup><msup><mo>⊗</mo><mi>L</mi></msup><msub><mi>G</mi><mi>y</mi></msub><mo>≃</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><msup><mo>⊗</mo><mi>L</mi></msup><msub><mi>G</mi><mi>y</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C_x(F)^\vee\otimes^LG_y
+ \simeq (D_XF)_x\otimes^LG_y.
+</annotation></semantics></math></p>
+<p>This is the stalk of the source. The map under these identifications
+is the finite-projective tensor–Hom evaluation from
+<code>SH02-CB-PERFECT</code>, hence is an isomorphism. Rectangles form a
+neighborhood basis in a product, so this proves the claim at every
+stalk. There is no constructibility requirement on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>.</p>
+<p>On a manifold,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>X</mi></msub><annotation encoding="application/x-tex">\omega_X</annotation></semantics></math>
+is an invertible shifted orientation line. Locally trivialize it. Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo>=</mo><msubsup><mi>D</mi><mi>X</mi><mo>′</mo></msubsup><mi>F</mi><mo>⊗</mo><msub><mi>ω</mi><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">D_XF=D'_XF\otimes\omega_X</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>q</mi><mi>Y</mi><mi>!</mi></msubsup><mi>G</mi><mo>=</mo><msubsup><mi>q</mi><mi>X</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><msub><mi>ω</mi><mi>X</mi></msub><mo>⊗</mo><msubsup><mi>q</mi><mi>Y</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>G</mi></mrow><annotation encoding="application/x-tex">q_Y^!G=q_X^{-1}\omega_X\otimes q_Y^{-1}G</annotation></semantics></math>.
+The first result is the second result tensored by the same invertible
+factor. Cancelling that factor proves the second assertion, and the
+local identifications glue because all maps came from evaluation.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-CB-INTERNAL-HOM"></span><h2 id="sh02-cb-internal-hom-internal-hom-and-reversal-of-arrows">SH02-CB-INTERNAL-HOM
+— Internal Hom and reversal of arrows</h2>
+<p>For two cohomologically constructible objects
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>,</mo><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F,G\in D^b(k_X)</annotation></semantics></math>,
+the canonical maps give</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo>,</mo><msub><mi>D</mi><mi>X</mi></msub><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msub><mi>D</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\mathcal Hom(G,F)
+ \simeq R\mathcal Hom(D_XF,D_XG)
+ \simeq D_X(D_XF\otimes^LG).
+</annotation></semantics></math></p>
+<p>Here is a direct proof that also checks the direction of the
+variables. Substitute the canonical isomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>≃</mo><msub><mi>D</mi><mi>X</mi></msub><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">F\simeq D_XD_XF</annotation></semantics></math>,
+then apply tensor–Hom adjunction:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo>,</mo><msub><mi>ω</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><msup><mo>⊗</mo><mi>L</mi></msup><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo>,</mo><msub><mi>ω</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo>,</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msub><mi>ω</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+R\mathcal Hom(G,F)
+&amp;\simeq R\mathcal Hom(G,R\mathcal Hom(D_XF,\omega_X))\\
+&amp;\simeq R\mathcal Hom(G\otimes^LD_XF,\omega_X)\\
+&amp;\simeq R\mathcal Hom(D_XF,R\mathcal Hom(G,\omega_X)).
+\end{aligned}
+</annotation></semantics></math></p>
+<p>The middle expression is the stated dual tensor product, and the last
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo>,</mo><msub><mi>D</mi><mi>X</mi></msub><mi>G</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\mathcal Hom(D_XF,D_XG)</annotation></semantics></math>.
+The symmetry of derived tensor supplies its Koszul signs. On degree-zero
+morphisms this sends a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">G\to F</annotation></semantics></math>
+to the dual map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>X</mi></msub><mi>F</mi><mo>→</mo><msub><mi>D</mi><mi>X</mi></msub><mi>G</mi></mrow><annotation encoding="application/x-tex">D_XF\to D_XG</annotation></semantics></math>.</p>
+<p>This theorem does not assert that the tensor product or the internal
+Hom of two cohomologically constructible sheaves is again
+cohomologically constructible. Its proof uses biduality for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+separately; it supplies no stabilization theorem for their tensor
+product.</p>
+<span id="SH02-CB-SUBMANIFOLDS"></span><h2 id="sh02-cb-submanifolds-closed-submanifolds-and-arbitrary-convex-sets">SH02-CB-SUBMANIFOLDS
+— Closed submanifolds and arbitrary convex sets</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>:</mo><mi>M</mi><mo>↪</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">i:M\hookrightarrow X</annotation></semantics></math>
+be a closed submanifold of dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+and codimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+in a topological manifold. The sheaves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>M</mi></msub><mo>=</mo><msub><mi>i</mi><mo>*</mo></msub><mi>k</mi></mrow><annotation encoding="application/x-tex">k_M=i_*k</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>M</mi></msub><msub><mi>k</mi><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">R\Gamma_Mk_X</annotation></semantics></math>
+are cohomologically constructible. Moreover</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>X</mi></msub><msub><mi>k</mi><mi>M</mi></msub><mo>≃</mo><msub><mi>i</mi><mo>*</mo></msub><msub><mi>ω</mi><mi>M</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>M</mi></msub><msub><mi>k</mi><mi>X</mi></msub><mo>≃</mo><msub><mi>i</mi><mo>*</mo></msub><msub><mrow><mi mathvariant="normal">or</mi><mo>⁡</mo></mrow><mrow><mi>M</mi><mi>/</mi><mi>X</mi></mrow></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>p</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D_Xk_M\simeq i_*\omega_M,
+\qquad
+R\Gamma_Mk_X\simeq i_*\operatorname{or}_{M/X}[-p].
+</annotation></semantics></math></p>
+<p>To verify the local condition, use product coordinate neighborhoods
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">x\in M</annotation></semantics></math>.
+Their intersections with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+are open
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>-balls.
+Ordinary cohomology is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+in degree zero, and compact-support cohomology is the orientation module
+in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+Shrinking balls induces the identity on the ordinary generator and the
+extension map on the orientation generator. These are isomorphisms, so
+both formal systems are represented by perfect complexes. Away from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+they are zero. The orientation formula for a closed embedding gives the
+second sheaf as a shifted rank-one local system on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+so the same calculation applies. Finally, proper-support adjunction for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+identifies the dual of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mo>*</mo></msub><mi>k</mi></mrow><annotation encoding="application/x-tex">i_*k</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mo>*</mo></msub><msup><mi>i</mi><mi>!</mi></msup><msub><mi>ω</mi><mi>X</mi></msub><mo>=</mo><msub><mi>i</mi><mo>*</mo></msub><msub><mi>ω</mi><mi>M</mi></msub></mrow><annotation encoding="application/x-tex">i_*i^!\omega_X=i_*\omega_M</annotation></semantics></math>;
+this is a statement about the trace-normalized map.</p>
+<span id="SH02-CB-CONVEX-CHART"></span><h3 id="sh02-cb-convex-chart-a-boundary-chart-for-every-closed-convex-set">SH02-CB-CONVEX-CHART
+— A boundary chart for every closed convex set</h3>
+<p>We need one elementary geometric fact to cover nonpolyhedral convex
+sets too. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+be a nonempty closed convex subset of a finite-dimensional real affine
+space, and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+be its affine hull. At a relative boundary point, the pair
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo>,</mo><mi>C</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(L,C)</annotation></semantics></math>
+is locally homeomorphic to Euclidean space with a closed half-space.</p>
+<p>Here are details of a boundary chart. Translate the point to zero.
+Choose a relative interior point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+and a ball
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">B(a,r)\subset C</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>.
+Choose a supporting linear functional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+at zero with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>⊂</mo><mo form="prefix" stretchy="false">{</mo><mi>ℓ</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">C\subset\{\ell\geq0\}</annotation></semantics></math>,
+and scale the direction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+to a vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\ell(v)=1</annotation></semantics></math>.
+Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">H=\ker\ell</annotation></semantics></math>.
+Convexity of the hull of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B(a,r)</annotation></semantics></math>
+shows that, for all small
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>∈</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">h\in H</annotation></semantics></math>,
+the line
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>+</mo><mi mathvariant="double-struck">ℝ</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">h+\mathbb Rv</annotation></semantics></math>
+meets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+at some height bounded above by a constant times
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>h</mi><mo form="postfix" stretchy="false">∥</mo></mrow><annotation encoding="application/x-tex">\|h\|</annotation></semantics></math>.
+The supporting inequality bounds that height below by zero. Thus</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">inf</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">{</mo><mi>t</mi><mo>:</mo><mi>h</mi><mo>+</mo><mi>t</mi><mi>v</mi><mo>∈</mo><mi>C</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">
+f(h)=\inf\{t:h+tv\in C\}
+</annotation></semantics></math></p>
+<p>is finite near zero, is attained by closedness, and is convex. A
+finite convex function on an open subset of a finite-dimensional vector
+space is continuous: on a small cube, convexity bounds it above by its
+values at the vertices, and applying that bound on a larger cube bounds
+its difference quotients on the smaller cube. In particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(0)=0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+is continuous near zero.</p>
+<p>Shrink the transverse neighborhood and choose a positive height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+so that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>+</mo><mi>δ</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">h+\delta v</annotation></semantics></math>
+remains in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+in that neighborhood; this follows from the same interior ball, after
+scaling toward zero. Each vertical section of a convex set is an
+interval, so below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+the condition for membership is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≥</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t\geq f(h)</annotation></semantics></math>.
+The coordinate change
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>t</mi><mo>−</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(h,t)\mapsto(h,t-f(h))</annotation></semantics></math>
+is a homeomorphism and sends this local portion of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+to a closed half-space. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+lies in a proper affine subspace, add a complementary normal coordinate
+to view this chart in the original ambient space. The affine hull of a
+nonempty finite-dimensional convex set always has a relative interior
+point: a simplex of maximal affine dimension contained in the set
+supplies one.</p>
+<span id="SH02-CB-CONVEX"></span><h3 id="sh02-cb-convex-constructibility-and-duals-of-convex-set-sheaves">SH02-CB-CONVEX
+— Constructibility and duals of convex-set sheaves</h3>
+<p><strong>Proposition.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+is closed or open and convex in a finite-dimensional real vector space
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+then both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>Z</mi></msub><annotation encoding="application/x-tex">k_Z</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>Z</mi></msub><msub><mi>k</mi><mi>V</mi></msub></mrow><annotation encoding="application/x-tex">R\Gamma_Zk_V</annotation></semantics></math>
+are cohomologically constructible.</p>
+<p><strong>Proof and duals.</strong> Let first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+be closed, nonempty, with affine hull
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+of dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+At a relative interior point, the calculation is that for an
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>-plane.
+At a relative boundary point, use the chart just proved and product
+neighborhoods in it. For the closed half-line model, the compactly
+supported cohomology of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>ε</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[0,\varepsilon)</annotation></semantics></math>
+is zero: the compactification pair
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>ε</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mo form="prefix" stretchy="false">{</mo><mi>ε</mi><mo form="postfix" stretchy="false">}</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">([0,\varepsilon],\{\varepsilon\})</annotation></semantics></math>
+has zero relative cohomology. Ordinary cohomology is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Products with an open
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(m-1)</annotation></semantics></math>-ball
+give the same zero compact-support complex and the ordinary complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+These computations hold with arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>;
+the interval pair is contracted explicitly, and the ball factor
+contributes its shifted orientation line. The transition maps are
+therefore isomorphisms. At points outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>,
+choose a neighborhood disjoint from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.</p>
+<p>This verifies both represented systems and perfectness everywhere.
+The duality theorem gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>V</mi></msub><msub><mi>k</mi><mi>C</mi></msub><mo>≃</mo><msub><mi>k</mi><mrow><mrow><mi mathvariant="normal">ri</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>C</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>⊗</mo><msub><mrow><mi mathvariant="normal">or</mi><mo>⁡</mo></mrow><mi>L</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>m</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+D_Vk_C\simeq k_{\operatorname{ri}(C)}\otimes\operatorname{or}_L[m],
+</annotation></semantics></math></p>
+<p>where the relative interior is extended by zero first in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+and then along the closed inclusion of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+Indeed, the dual has the stated orientation stalk in the relative
+interior and zero stalk at every other point. The adjunction map from
+that extension by zero is consequently an isomorphism on all stalks. Its
+restriction in the relative interior is fixed by the orientation trace,
+which specifies the isomorphism globally.</p>
+<p>Now let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>
+be nonempty open convex. Its closure
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+is closed convex of full dimension, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>=</mo><mrow><mi mathvariant="normal">int</mi><mo>⁡</mo></mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">O=\operatorname{int}C</annotation></semantics></math>.
+For completeness, a point in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">int</mi><mo>⁡</mo></mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">\operatorname{int}C</annotation></semantics></math>
+can be enclosed by a small simplex whose vertices lie in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>,
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>
+is dense in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.
+Convexity then puts that point in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>.
+The preceding formula gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>V</mi></msub><msub><mi>k</mi><mi>C</mi></msub><mo>≃</mo><msub><mi>k</mi><mi>O</mi></msub><mo>⊗</mo><msub><mi>ω</mi><mi>V</mi></msub></mrow><annotation encoding="application/x-tex">D_Vk_C\simeq k_O\otimes\omega_V</annotation></semantics></math>.
+Duality and the invertibility of the orientation line show that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>O</mi></msub><annotation encoding="application/x-tex">k_O</annotation></semantics></math>
+is cohomologically constructible and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>V</mi></msub><msub><mi>k</mi><mi>O</mi></msub><mo>≃</mo><msub><mi>k</mi><mi>C</mi></msub><mo>⊗</mo><msub><mi>ω</mi><mi>V</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D_Vk_O\simeq k_C\otimes\omega_V.
+</annotation></semantics></math></p>
+<p>Finally,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>Z</mi></msub><msub><mi>k</mi><mi>V</mi></msub><mo>=</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Z</mi></msub><mo>,</mo><msub><mi>k</mi><mi>V</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>D</mi><mi>V</mi></msub><msub><mi>k</mi><mi>Z</mi></msub><mo>⊗</mo><msubsup><mi>ω</mi><mi>V</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">R\Gamma_Zk_V=R\mathcal Hom(k_Z,k_V)=D_Vk_Z\otimes\omega_V^{-1}</annotation></semantics></math>.
+The duality theorem and invariance under an orientation twist give its
+cohomological constructibility. The empty set gives the zero complex;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">C=V</annotation></semantics></math>
+has no boundary and recovers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>V</mi></msub><msub><mi>k</mi><mi>V</mi></msub><mo>=</mo><msub><mi>ω</mi><mi>V</mi></msub></mrow><annotation encoding="application/x-tex">D_Vk_V=\omega_V</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-CB-BOUNDARY-CRITERION"></span><h2 id="sh02-cb-boundary-criterion-a-boundary-criterion-and-worked-problems">SH02-CB-BOUNDARY-CRITERION
+— A boundary criterion and worked problems</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>⊂</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">O\subset X</annotation></semantics></math>
+be <strong>open</strong> in a topological manifold, with closure
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.
+Call its boundary cohomologically regular if at every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>C</mi><mo>\</mo><mi>O</mi></mrow><annotation encoding="application/x-tex">x\in C\setminus O</annotation></semantics></math>
+the canonical boundary calculations give</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><msub><mi>k</mi><mi>X</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>k</mi><mover><mo>→</mo><mo accent="false">∼</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>j</mi><mo>*</mo></msub><msub><mi>k</mi><mi>O</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mi>j</mi><mo>:</mo><mi>O</mi><mo>↪</mo><mi>X</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(R\Gamma_Ck_X)_x=0,
+\qquad
+k\xrightarrow{\sim}(Rj_*k_O)_x,
+\quad j:O\hookrightarrow X.
+</annotation></semantics></math></p>
+<p>This is equivalent to the two natural sheaf identifications</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>D</mi><mi>X</mi><mo>′</mo></msubsup><msub><mi>k</mi><mi>C</mi></msub><mo>≃</mo><msub><mi>k</mi><mi>O</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>D</mi><mi>X</mi><mo>′</mo></msubsup><msub><mi>k</mi><mi>O</mi></msub><mo>≃</mo><msub><mi>k</mi><mi>C</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+D'_Xk_C\simeq k_O,
+\qquad
+D'_Xk_O\simeq k_C.
+</annotation></semantics></math></p>
+<p>To prove it, note that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>D</mi><mi>X</mi><mo>′</mo></msubsup><msub><mi>k</mi><mi>C</mi></msub><mo>=</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><msub><mi>k</mi><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">D'_Xk_C=R\Gamma_Ck_X</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>D</mi><mi>X</mi><mo>′</mo></msubsup><msub><mi>k</mi><mi>O</mi></msub><mo>=</mo><mi>R</mi><msub><mi>j</mi><mo>*</mo></msub><msub><mi>k</mi><mi>O</mi></msub></mrow><annotation encoding="application/x-tex">D'_Xk_O=Rj_*k_O</annotation></semantics></math>.
+On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>
+the two comparisons are the identity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>;
+off
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+both sides vanish. Thus the boundary conditions are exactly the
+remaining stalk tests. For the second comparison, the map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>C</mi></msub><mo>→</mo><mi>R</mi><msub><mi>j</mi><mo>*</mo></msub><msub><mi>k</mi><mi>O</mi></msub></mrow><annotation encoding="application/x-tex">k_C\to Rj_*k_O</annotation></semantics></math>
+is restriction of the constant section. If one specifies only that the
+boundary stalk is abstractly isomorphic to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">k[0]</annotation></semantics></math>,
+this map is still an isomorphism: its degree-zero target is a unital
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-algebra
+free of rank one as a module. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>
+is a basis, write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><mi>b</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">1=be</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mn>2</mn></msup><mo>=</mo><mi>a</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">e^2=ae</annotation></semantics></math>;
+the equality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>e</mi><mo>=</mo><mi>e</mi></mrow><annotation encoding="application/x-tex">1e=e</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>b</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">ab=1</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+itself is a basis.</p>
+<p>Cohomological regularity forces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>=</mo><mrow><mi mathvariant="normal">int</mi><mo>⁡</mo></mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">O=\operatorname{int}C</annotation></semantics></math>.
+If a point belonged to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">int</mi><mo>⁡</mo></mrow><mi>C</mi><mo>\</mo><mi>O</mi></mrow><annotation encoding="application/x-tex">\operatorname{int}C\setminus O</annotation></semantics></math>,
+its stalk in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><msub><mi>k</mi><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">R\Gamma_Ck_X</annotation></semantics></math>
+would be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+contradicting the first boundary condition (for the zero coefficient
+ring all statements are vacuous; the topological conclusion is asserted
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ne0</annotation></semantics></math>).
+Every open convex subset of a real vector space has this regularity by
+<code>SH02-CB-CONVEX</code>.</p>
+<span id="SH02-CB-PROBLEMS"></span><h3 id="sh02-cb-problems-three-worked-problems">SH02-CB-PROBLEMS — Three
+worked problems</h3>
+<p><strong>Problem 1: a curved region in a plane inside
+three-space.</strong> In
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">V=\mathbb R^3</annotation></semantics></math>,
+let</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>v</mi><mo>≥</mo><msup><mi>u</mi><mn>4</mn></msup><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C=\{(u,v,0):v\geq u^4\}.
+</annotation></semantics></math></p>
+<p>Find
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>V</mi></msub><msub><mi>k</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">D_Vk_C</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><msub><mi>k</mi><mi>V</mi></msub></mrow><annotation encoding="application/x-tex">R\Gamma_Ck_V</annotation></semantics></math>,
+with orientations and degrees, using the standard ordered
+coordinates.</p>
+<p><strong>Solution.</strong> The affine hull is the oriented plane
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>w</mi><mo>=</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">L=\{w=0\}</annotation></semantics></math>
+of dimension two, and the relative interior is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>v</mi><mo>&gt;</mo><msup><mi>u</mi><mn>4</mn></msup><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">O=\{(u,v,0):v&gt;u^4\}</annotation></semantics></math>.
+Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>V</mi></msub><msub><mi>k</mi><mi>C</mi></msub><mo>=</mo><msub><mi>k</mi><mi>O</mi></msub><mo form="prefix" stretchy="false">[</mo><mn>2</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">D_Vk_C=k_O[2]</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>V</mi></msub><mo>=</mo><msub><mi>k</mi><mi>V</mi></msub><mo form="prefix" stretchy="false">[</mo><mn>3</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\omega_V=k_V[3]</annotation></semantics></math>,
+we obtain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><msub><mi>k</mi><mi>V</mi></msub><mo>=</mo><msub><mi>k</mi><mi>O</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">R\Gamma_Ck_V=k_O[-1]</annotation></semantics></math>.
+In particular the local-support complex vanishes on the curved boundary,
+even though
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>C</mi></msub><annotation encoding="application/x-tex">k_C</annotation></semantics></math>
+has a nonzero stalk there. Reversing the plane orientation changes the
+displayed scalar trivialization, while the formulation with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mi mathvariant="normal">or</mi><mo>⁡</mo></mrow><mi>L</mi></msub><annotation encoding="application/x-tex">\operatorname{or}_L</annotation></semantics></math>
+remains canonical.</p>
+<p><strong>Problem 2: why stalk finiteness alone is inadequate.</strong>
+Take a field
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+a countably infinite discrete set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+and its one-point compactification
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>S</mi><mo>∪</mo><mo form="prefix" stretchy="false">{</mo><mi>∞</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">X=S\cup\{\infty\}</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>:</mo><mi>S</mi><mo>↪</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">j:S\hookrightarrow X</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><msub><mi>j</mi><mi>!</mi></msub><msub><mi>k</mi><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">F=j_!k_S</annotation></semantics></math>.
+Determine the local ordinary and compact-support systems at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>∞</mi><annotation encoding="application/x-tex">\infty</annotation></semantics></math>
+and decide whether
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+is cohomologically constructible.</p>
+<p><strong>Solution.</strong> A basic neighborhood is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>T</mi></msub><mo>=</mo><mi>X</mi><mo>\</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">U_T=X\setminus T</annotation></semantics></math>
+for a finite subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>⊂</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">T\subset S</annotation></semantics></math>.
+On this compact clopen neighborhood, sections of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+have finite support in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>\</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S\setminus T</annotation></semantics></math>,
+because a section must vanish near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>∞</mi><annotation encoding="application/x-tex">\infty</annotation></semantics></math>.
+Thus</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>T</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>T</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mo>⨁</mo><mrow><mi>s</mi><mo>∈</mo><mi>S</mi><mo>\</mo><mi>T</mi></mrow></msub><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\Gamma(U_T;F)=R\Gamma_c(U_T;F)
+ =\bigoplus_{s\in S\setminus T}k[0].
+</annotation></semantics></math></p>
+<p>Higher cohomology vanishes: the space has a basis of compact clopen
+sets, and sections on a compact clopen set are exact by refining a
+finite clopen cover into a disjoint one. The ordinary transition maps
+delete finitely many coordinates. Their ordinary colimit is zero, since
+each individual finitely supported section is eventually deleted, but
+the ind-system is not a constant zero ind-object: no transition map
+between two of these infinite-dimensional spaces is zero. Consequently
+the ordinary system is not representable by its stalk
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>∞</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">F_\infty=0</annotation></semantics></math>.
+The compact-support transition maps are inclusions of cofinite direct
+sums. Their inverse limit is zero, but their pro-system is not pro-zero,
+since no transition is zero. It therefore cannot be represented by that
+zero limit. All stalks of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+are either
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+or zero, yet
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+fails the stabilization clauses. This also shows why replacing formal
+representability by an ordinary limit would lose essential
+information.</p>
+<p><strong>Problem 3: an omitted openness hypothesis.</strong> Explain
+why openness is necessary in the boundary criterion, and why a nonzero
+coefficient ring is necessary in its topological consequence.</p>
+<p><strong>Solution.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>O</mi><annotation encoding="application/x-tex">O</annotation></semantics></math>
+were allowed to be a closed affine hyperplane, then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>O</mi><mo accent="true">¯</mo></mover><mo>\</mo><mi>O</mi></mrow><annotation encoding="application/x-tex">\overline O\setminus O</annotation></semantics></math>
+would be empty. Any condition tested only on that set would hold
+vacuously, although
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>≠</mo><mrow><mi mathvariant="normal">int</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mover><mi>O</mi><mo accent="true">¯</mo></mover><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O\ne\operatorname{int}(\overline O)</annotation></semantics></math>.
+Thus the criterion is a statement about open subsets. For the zero ring
+every sheaf complex is zero, so the boundary vanishing condition cannot
+distinguish any two open sets. These exceptions do not affect the
+convex-set or duality theorems, which remain valid for the zero
+ring.</p>
+<span id="SH02-CB-ANTECEDENTS"></span><h2 id="sh02-cb-antecedents-further-directions-and-antecedents">SH02-CB-ANTECEDENTS
+— Further directions and antecedents</h2>
+<p>An approved readable source is Kashiwara and Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal
+study of sheaves</em></a>, Definition 5.6.1 and Proposition 5.6.2. It formulates cohomological constructibility through
+formal local ordinary and compact-support systems represented by perfect
+complexes and gives the product-Hom comparison. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf"><em>An
+Introduction to Sheaves on Grothendieck Topologies</em></a>, §4.8, presents the corresponding local systems, biduality and
+external-Hom statements, with an explicit Noetherian convention and a
+perfect-complex modification. Its biduality proof is left as an exercise
+and its external-Hom statement has bounded second input. Neither passage
+by itself proves this lesson’s larger locally compact, non-Noetherian
+and arbitrary-directed-neighbourhood scope.</p>
+<p>The independent argument above supplies that scope by formal
+stabilization, a cofinal pro-zero construction, derived local pairings,
+and an evaluation check on stalks. It does not exchange an arbitrary
+derived inverse limit with a stalk without the uniform bound or replace
+formal representability by an ordinary limit. The convex-boundary
+calculation then uses the actual orientation and exceptional-operation
+contracts.</p>
+<p>Two useful next questions require additional work. First, determine
+when proper direct image preserves this local constructibility
+condition, including the needed compactness argument for perfect global
+cohomology. Second, study tensor products at intersections whose
+topology changes infinitely often: biduality for each factor does not
+automatically provide stabilization for the intersection. Neither
+statement is assumed by the internal-Hom theorem in this lesson.</p>
+</main></body></html>

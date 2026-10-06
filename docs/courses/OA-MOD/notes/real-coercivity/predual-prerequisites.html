@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norming, convex separation and bounded functional supports · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/notes/real-coercivity/predual-prerequisites.html">
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="norming-convex-separation-and-bounded-functional-supports">Norming, convex separation and bounded functional supports</h1>
+<p><strong>Original mathematical exposition by GPT-6 Astra / Ultra. Owner proof draft; native CP integration and separate review remain pending.</strong></p>
+<p>These proofs supply the elementary functional-analysis inputs used in the concrete predual construction. We assume the complete real and complex scalar fields, the inner-product axioms and the set-theoretic maximal principle. Hilbert spaces have arbitrary dimension. Locally convex spaces below need not be Hausdorff or complete, and operator limits may be arbitrary directed nets.</p>
+<p>For the norm-extension formulation, the free human source is Yury Kudryashov and Heather Macbeth's <a href="https://github.com/leanprover-community/mathlib4/blob/71a80585ee495fc24472fd0eaffc89d94e4fd8d6/Mathlib/Analysis/Normed/Module/HahnBanach.lean#L44">mathlib Hahn–Banach module, <code>exists_extension_norm_eq</code> and <code>exists_dual_vector</code></a>. NP1 writes the real extension argument and its complex conversion in full. No theorem is supplied by that citation in place of a proof. The bounded operator inputs are the written <a href="../../OA-MOD-BK.html">BK01, BK03, BK04 and BK06</a>; their free-source reconstruction is separate from this note.</p>
+<h2 id="np1-norm-preserving-extension-and-the-norming-identity">NP1 — Norm-preserving extension and the norming identity</h2>
+<p>Let <span class="math" data-tex="\(p\)">\(p\)</span> be a finite sublinear function on a real vector space <span class="math" data-tex="\(X\)">\(X\)</span>, and let <span class="math" data-tex="\(f:D\to\mathbb R\)">\(f:D\to\mathbb R\)</span> be linear on a subspace with <span class="math" data-tex="\(f\le p\)">\(f\le p\)</span>. For <span class="math" data-tex="\(x\notin D\)">\(x\notin D\)</span>, a linear extension assigning value <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span> is dominated by <span class="math" data-tex="\(p\)">\(p\)</span> exactly when
+<span class="math math-display" data-tex="\[
+\sup_{d\in D}\{f(d)-p(d-x)\}\le a
+\le\inf_{e\in D}\{p(e+x)-f(e)\}.
+\tag{NP.1}
+\]">\[
+\sup_{d\in D}\{f(d)-p(d-x)\}\le a
+\le\inf_{e\in D}\{p(e+x)-f(e)\}.
+\tag{NP.1}
+\]</span>
+Each expression on the left is at most each expression on the right, because
+<span class="math" data-tex="\(f(d+e)\le p(d+e)\le p(d-x)+p(e+x)\)">\(f(d+e)\le p(d+e)\le p(d-x)+p(e+x)\)</span>.
+Taking <span class="math" data-tex="\(d=0\)">\(d=0\)</span> and <span class="math" data-tex="\(e=0\)">\(e=0\)</span> shows that both endpoints of this interval are finite. Real completeness supplies a choice of <span class="math" data-tex="\(a\)">\(a\)</span>. The positive and negative coefficients of <span class="math" data-tex="\(x\)">\(x\)</span>, divided by their absolute values, give precisely the two inequalities in (NP.1); hence the extension is dominated on all of <span class="math" data-tex="\(D+\mathbb Rx\)">\(D+\mathbb Rx\)</span>. The union of a chain of dominated extensions is a dominated extension. The maximal principle and the one-dimensional step therefore give an extension to <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>For a bounded real functional on a subspace of a normed space, apply this with <span class="math" data-tex="\(p(x)=C\|x\|\)">\(p(x)=C\|x\|\)</span>, where <span class="math" data-tex="\(C\)">\(C\)</span> is its norm. Domination at <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(-x\)">\(-x\)</span> gives an extension bounded by <span class="math" data-tex="\(C\)">\(C\)</span>, and restriction gives the reverse norm inequality.</p>
+<p>For a complex-linear functional <span class="math" data-tex="\(h\)">\(h\)</span> on a complex subspace, extend <span class="math" data-tex="\(\operatorname{Re}h\)">\(\operatorname{Re}h\)</span> as a real functional <span class="math" data-tex="\(f\)">\(f\)</span>, dominated by <span class="math" data-tex="\(\|h\|\|x\|\)">\(\|h\|\|x\|\)</span>, and set
+<span class="math math-display" data-tex="\[
+L(x)=f(x)-if(ix).
+\tag{NP.2}
+\]">\[
+L(x)=f(x)-if(ix).
+\tag{NP.2}
+\]</span>
+Real linearity and <span class="math" data-tex="\(L(ix)=iL(x)\)">\(L(ix)=iL(x)\)</span> prove complex linearity. On the original subspace, <span class="math" data-tex="\(f(ix)=\operatorname{Re}(ih(x))=-\operatorname{Im}h(x)\)">\(f(ix)=\operatorname{Re}(ih(x))=-\operatorname{Im}h(x)\)</span>, so <span class="math" data-tex="\(L=h\)">\(L=h\)</span>. For each <span class="math" data-tex="\(x\)">\(x\)</span>, rotate by a scalar <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of modulus one making <span class="math" data-tex="\(\lambda L(x)\)">\(\lambda L(x)\)</span> nonnegative real. Then
+<span class="math" data-tex="\(|L(x)|=f(\lambda x)\le\|h\|\|x\|\)">\(|L(x)|=f(\lambda x)\le\|h\|\|x\|\)</span>.
+Restriction again gives equality of norms. This includes the zero functional and does not require the subspace to be closed.</p>
+<p>If <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, the functional <span class="math" data-tex="\(\lambda z\mapsto\lambda\|z\|\)">\(\lambda z\mapsto\lambda\|z\|\)</span> on its real or complex span has norm one. Extend it by the corresponding result. Testing <span class="math" data-tex="\(z\)">\(z\)</span>, together with the defining bound for a functional, proves
+<span class="math math-display" data-tex="\[
+\|z\|=\sup\{|L(z)|:L\in X^*,\ \|L\|\le1\}.
+\tag{NP.3}
+\]">\[
+\|z\|=\sup\{|L(z)|:L\in X^*,\ \|L\|\le1\}.
+\tag{NP.3}
+\]</span>
+For <span class="math" data-tex="\(z=0\)">\(z=0\)</span> both sides vanish. This is the exact norming identity needed for the quotient predual norm.</p>
+<p>Two elementary finite-dimensional steps in that construction can also be made explicit. Given a finite spanning list of Hilbert vectors, successively subtract its projections on the orthonormal vectors already chosen. Skip a zero remainder and normalize a nonzero remainder. Inner-product expansion proves orthogonality at each step, and each discarded or normalized vector remains in the span accumulated so far. After finitely many steps this gives an orthonormal basis of the original span. For a subspace <span class="math" data-tex="\(W\subset\mathbb C^n\)">\(W\subset\mathbb C^n\)</span> and <span class="math" data-tex="\(v\notin W\)">\(v\notin W\)</span>, successively adding vectors outside the current span constructs a basis of <span class="math" data-tex="\(W\)">\(W\)</span>, then a basis of <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> starting with that basis and <span class="math" data-tex="\(v\)">\(v\)</span>. Assigning values zero on the former basis, one on <span class="math" data-tex="\(v\)">\(v\)</span>, and zero on the remaining basis vectors gives a linear functional annihilating <span class="math" data-tex="\(W\)">\(W\)</span> but not <span class="math" data-tex="\(v\)">\(v\)</span>. These are the finite coefficient and annihilator tests in CP02 and CP05.</p>
+<h2 id="np2-point-separation-and-equality-of-convex-closures">NP2 — Point separation and equality of convex closures</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a real locally convex topological vector space, <span class="math" data-tex="\(C\subset X\)">\(C\subset X\)</span> a nonempty closed convex set, and <span class="math" data-tex="\(x_0\notin C\)">\(x_0\notin C\)</span>. The definition of a locally convex topology gives a symmetric open convex neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of zero such that <span class="math" data-tex="\((x_0+V)\cap C=\varnothing\)">\((x_0+V)\cap C=\varnothing\)</span>. Symmetry implies <span class="math" data-tex="\(x_0\notin C+V\)">\(x_0\notin C+V\)</span>. Choose <span class="math" data-tex="\(c_0\in C\)">\(c_0\in C\)</span> and put
+<span class="math math-display" data-tex="\[
+A=C+V-c_0,\qquad y=x_0-c_0.
+\]">\[
+A=C+V-c_0,\qquad y=x_0-c_0.
+\]</span>
+The set <span class="math" data-tex="\(A\)">\(A\)</span> is open and convex, contains zero, and does not contain <span class="math" data-tex="\(y\)">\(y\)</span>. It is absorbing: continuity of <span class="math" data-tex="\(t\mapsto tx\)">\(t\mapsto tx\)</span> at zero places a sufficiently small positive multiple of every <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>. Its gauge is consequently finite:
+<span class="math math-display" data-tex="\[
+p_A(x)=\inf\{t&gt;0:x\in tA\}.
+\tag{NP.4}
+\]">\[
+p_A(x)=\inf\{t&gt;0:x\in tA\}.
+\tag{NP.4}
+\]</span>
+It is nonnegative and positively homogeneous. If <span class="math" data-tex="\(s&gt;p_A(x)\)">\(s&gt;p_A(x)\)</span> and <span class="math" data-tex="\(t&gt;p_A(z)\)">\(t&gt;p_A(z)\)</span>, then <span class="math" data-tex="\(x\in sA\)">\(x\in sA\)</span> and <span class="math" data-tex="\(z\in tA\)">\(z\in tA\)</span>. To see the first assertion, choose a smaller admissible dilation and use convexity with zero to enlarge it to <span class="math" data-tex="\(sA\)">\(sA\)</span>; the second is identical. Convexity now gives <span class="math" data-tex="\(x+z\in(s+t)A\)">\(x+z\in(s+t)A\)</span>. Letting <span class="math" data-tex="\(s,t\)">\(s,t\)</span> decrease to their infima proves subadditivity.</p>
+<p>Moreover <span class="math" data-tex="\(A=\{x:p_A(x)&lt;1\}\)">\(A=\{x:p_A(x)&lt;1\}\)</span>. An admissible dilation smaller than one lies in <span class="math" data-tex="\(A\)">\(A\)</span> by convexity. Conversely, if <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>, openness and continuity of <span class="math" data-tex="\(t\mapsto tx\)">\(t\mapsto tx\)</span> allow a scalar <span class="math" data-tex="\(t&gt;1\)">\(t&gt;1\)</span> with <span class="math" data-tex="\(tx\in A\)">\(tx\in A\)</span>; then <span class="math" data-tex="\(p_A(x)\le1/t&lt;1\)">\(p_A(x)\le1/t&lt;1\)</span>. Thus <span class="math" data-tex="\(p_A(y)\ge1\)">\(p_A(y)\ge1\)</span>.</p>
+<p>On <span class="math" data-tex="\(\mathbb Ry\)">\(\mathbb Ry\)</span>, define <span class="math" data-tex="\(f(ty)=t p_A(y)\)">\(f(ty)=t p_A(y)\)</span>. For positive <span class="math" data-tex="\(t\)">\(t\)</span> this is <span class="math" data-tex="\(p_A(ty)\)">\(p_A(ty)\)</span>; for negative <span class="math" data-tex="\(t\)">\(t\)</span>, domination follows from <span class="math" data-tex="\(-p_A(y)\le p_A(-y)\)">\(-p_A(y)\le p_A(-y)\)</span>, a consequence of subadditivity at zero. NP1 extends <span class="math" data-tex="\(f\)">\(f\)</span> to a real linear <span class="math" data-tex="\(\ell\le p_A\)">\(\ell\le p_A\)</span>. On the open neighborhood <span class="math" data-tex="\(A\cap(-A)\)">\(A\cap(-A)\)</span> we have <span class="math" data-tex="\(|\ell|&lt;1\)">\(|\ell|&lt;1\)</span>, so <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is continuous: scaling this neighborhood by any positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> makes <span class="math" data-tex="\(|\ell|&lt;\varepsilon\)">\(|\ell|&lt;\varepsilon\)</span>.</p>
+<p>We have <span class="math" data-tex="\(\ell(y)=p_A(y)\ge1\)">\(\ell(y)=p_A(y)\ge1\)</span>. A sufficiently small positive multiple <span class="math" data-tex="\(v_0\)">\(v_0\)</span> of <span class="math" data-tex="\(y\)">\(y\)</span> belongs to <span class="math" data-tex="\(V\)">\(V\)</span>; set <span class="math" data-tex="\(\delta=\ell(v_0)&gt;0\)">\(\delta=\ell(v_0)&gt;0\)</span>. For every <span class="math" data-tex="\(c\in C\)">\(c\in C\)</span>, the vector <span class="math" data-tex="\(c+v_0-c_0\)">\(c+v_0-c_0\)</span> belongs to <span class="math" data-tex="\(A\)">\(A\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\ell(c)&lt;\ell(c_0)+1-\delta
+\le\ell(x_0)-\delta.
+\tag{NP.5}
+\]">\[
+\ell(c)&lt;\ell(c_0)+1-\delta
+\le\ell(x_0)-\delta.
+\tag{NP.5}
+\]</span>
+This proves strict point separation with a common positive margin. No Hausdorff assumption entered the proof.</p>
+<p>For completeness, the closure of a convex set is convex. If <span class="math" data-tex="\(a,b\)">\(a,b\)</span> lie in that closure and <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span>, continuity of <span class="math" data-tex="\((u,v)\mapsto tu+(1-t)v\)">\((u,v)\mapsto tu+(1-t)v\)</span> lets points of the original set approximate <span class="math" data-tex="\(ta+(1-t)b\)">\(ta+(1-t)b\)</span> in every neighborhood; each approximating convex combination belongs to the set. Applying (NP.5) to its closure shows that the closure of a nonempty convex set is the intersection of all closed half-spaces, defined by continuous real linear functionals, that contain it. The empty set is closed separately. Thus two locally convex topologies with the same continuous real dual have exactly the same closures of convex sets. There is no boundedness, completeness or sequential-closure restriction. CP09–CP10 establish the requisite dual equality for the operator topologies before using this conclusion.</p>
+<h2 id="np3-supports-of-positive-ultraweakly-continuous-functionals">NP3 — Supports of positive ultraweakly continuous functionals</h2>
+<p>Let <span class="math" data-tex="\(M\subset B(H)\)">\(M\subset B(H)\)</span> be a weak operator closed unital *-algebra and let <span class="math" data-tex="\(\omega:M\to\mathbb C\)">\(\omega:M\to\mathbb C\)</span> be positive and linear. The bounded calculus in BK01 writes a self-adjoint element as a difference of positive elements, so <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is real on self-adjoint elements and preserves adjoints. Positivity of <span class="math" data-tex="\(\omega((x+\lambda y)^*(x+\lambda y))\)">\(\omega((x+\lambda y)^*(x+\lambda y))\)</span>, followed by minimizing in the complex scalar <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, gives
+<span class="math math-display" data-tex="\[
+|\omega(y^*x)|^2\le\omega(x^*x)\omega(y^*y).
+\tag{NP.6}
+\]">\[
+|\omega(y^*x)|^2\le\omega(x^*x)\omega(y^*y).
+\tag{NP.6}
+\]</span>
+If <span class="math" data-tex="\(\omega(y^*y)=0\)">\(\omega(y^*y)=0\)</span>, varying the magnitude and argument of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> instead forces the mixed coefficient to be zero, proving the same inequality. Taking <span class="math" data-tex="\(y=1\)">\(y=1\)</span> and using <span class="math" data-tex="\(x^*x\le\|x\|^2 1\)">\(x^*x\le\|x\|^2 1\)</span> gives <span class="math" data-tex="\(|\omega(x)|\le\omega(1)\|x\|\)">\(|\omega(x)|\le\omega(1)\|x\|\)</span>; testing the unit proves <span class="math" data-tex="\(\|\omega\|=\omega(1)\)">\(\|\omega\|=\omega(1)\)</span>. For the zero algebra all assertions are immediate.</p>
+<p>Assume now that <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is ultraweakly continuous. This is the hypothesis called normal here; no order-normal-to-ultraweak theorem is used. BK04 shows that a bounded increasing positive net converges strongly and ultraweakly to its supremum. Applying <span class="math" data-tex="\(\omega\)">\(\omega\)</span> proves preservation of such suprema.</p>
+<p>For a positive <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, BK06 constructs the range-support projection <span class="math" data-tex="\(s(a)\)">\(s(a)\)</span> and proves
+<span class="math math-display" data-tex="\[
+a(a+\varepsilon I)^{-1}\uparrow s(a)
+\quad(\varepsilon\downarrow0),\qquad
+0\le a(a+\varepsilon I)^{-1}\le\varepsilon^{-1}a.
+\tag{NP.7}
+\]">\[
+a(a+\varepsilon I)^{-1}\uparrow s(a)
+\quad(\varepsilon\downarrow0),\qquad
+0\le a(a+\varepsilon I)^{-1}\le\varepsilon^{-1}a.
+\tag{NP.7}
+\]</span>
+Consequently <span class="math" data-tex="\(\omega(a)=0\)">\(\omega(a)=0\)</span> implies <span class="math" data-tex="\(\omega(s(a))=0\)">\(\omega(s(a))=0\)</span>. For two projections <span class="math" data-tex="\(e,f\)">\(e,f\)</span>, the identity
+<span class="math" data-tex="\(\langle(e+f)\xi,\xi\rangle=\|e\xi\|^2+\|f\xi\|^2\)">\(\langle(e+f)\xi,\xi\rangle=\|e\xi\|^2+\|f\xi\|^2\)</span>
+gives <span class="math" data-tex="\(\ker(e+f)=\ker e\cap\ker f\)">\(\ker(e+f)=\ker e\cap\ker f\)</span>. Thus <span class="math" data-tex="\(s(e+f)\)">\(s(e+f)\)</span> projects onto the closed span of their ranges: it is their least upper projection, denoted <span class="math" data-tex="\(e\vee f\)">\(e\vee f\)</span>. If both projections are <span class="math" data-tex="\(\omega\)">\(\omega\)</span>-null, (NP.7) proves that their join is null as well. No commutation assumption is needed.</p>
+<p>Let <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> be the set of all <span class="math" data-tex="\(\omega\)">\(\omega\)</span>-null projections. For each finite subset <span class="math" data-tex="\(F\subset\mathcal N\)">\(F\subset\mathcal N\)</span>, let <span class="math" data-tex="\(q_F\)">\(q_F\)</span> be its join, with <span class="math" data-tex="\(q_\varnothing=0\)">\(q_\varnothing=0\)</span>. The preceding argument proves that every <span class="math" data-tex="\(q_F\)">\(q_F\)</span> is null. These projections form an increasing net bounded by the identity. By BK04 its supremum <span class="math" data-tex="\(q\in M\)">\(q\in M\)</span> is its strong and ultraweak limit. It is a projection: for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>,
+<span class="math math-display" data-tex="\[
+\|(q_F^2-q^2)\xi\|
+\le\|(q_F-q)\xi\|+\|(q_F-q)q\xi\|\longrightarrow0,
+\]">\[
+\|(q_F^2-q^2)\xi\|
+\le\|(q_F-q)\xi\|+\|(q_F-q)q\xi\|\longrightarrow0,
+\]</span>
+because <span class="math" data-tex="\(\|q_F\|\le1\)">\(\|q_F\|\le1\)</span>. Since <span class="math" data-tex="\(q_F^2=q_F\to q\)">\(q_F^2=q_F\to q\)</span> strongly, we obtain <span class="math" data-tex="\(q^2=q\)">\(q^2=q\)</span>; self-adjointness follows from the positive limit. Ultraweak continuity gives <span class="math" data-tex="\(\omega(q)=0\)">\(\omega(q)=0\)</span>. It contains every member of <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, so it is the largest null projection.</p>
+<p>Set <span class="math" data-tex="\(p=1-q\)">\(p=1-q\)</span>. Using (NP.6) with the pair <span class="math" data-tex="\(q,x^*\)">\(q,x^*\)</span> gives <span class="math" data-tex="\(\omega(xq)=0\)">\(\omega(xq)=0\)</span>; adjoint preservation gives <span class="math" data-tex="\(\omega(qx)=0\)">\(\omega(qx)=0\)</span>. Expanding with <span class="math" data-tex="\(1=p+q\)">\(1=p+q\)</span> proves
+<span class="math math-display" data-tex="\[
+\omega(x)=\omega(pxp)\qquad(x\in M).
+\tag{NP.8}
+\]">\[
+\omega(x)=\omega(pxp)\qquad(x\in M).
+\tag{NP.8}
+\]</span>
+If a projection <span class="math" data-tex="\(e\)">\(e\)</span> has this compression property, then <span class="math" data-tex="\(\omega(1-e)=0\)">\(\omega(1-e)=0\)</span>. Maximality of <span class="math" data-tex="\(q\)">\(q\)</span> implies <span class="math" data-tex="\(1-e\le q\)">\(1-e\le q\)</span>, hence <span class="math" data-tex="\(p\le e\)">\(p\le e\)</span>. Thus <span class="math" data-tex="\(p\)">\(p\)</span> is the least compression projection.</p>
+<p>The restriction to <span class="math" data-tex="\(pMp\)">\(pMp\)</span> is faithful. If <span class="math" data-tex="\(a\in pMp\)">\(a\in pMp\)</span> is positive and <span class="math" data-tex="\(\omega(a)=0\)">\(\omega(a)=0\)</span>, (NP.7) makes <span class="math" data-tex="\(s(a)\)">\(s(a)\)</span> a null projection, so <span class="math" data-tex="\(s(a)\le q\)">\(s(a)\le q\)</span>. Since the range of <span class="math" data-tex="\(a\)">\(a\)</span> lies in <span class="math" data-tex="\(pH\)">\(pH\)</span>, also <span class="math" data-tex="\(s(a)\le p\)">\(s(a)\le p\)</span>. Hence <span class="math" data-tex="\(s(a)=0\)">\(s(a)=0\)</span>, and <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. The zero functional has <span class="math" data-tex="\(q=1\)">\(q=1\)</span> and <span class="math" data-tex="\(p=0\)">\(p=0\)</span>. Otherwise <span class="math" data-tex="\(\omega(p)=\omega(1)&gt;0\)">\(\omega(p)=\omega(1)&gt;0\)</span>, so division by this value gives a state on the support corner. None of these projections is required to be central.</p>
+<h2 id="np4-a-noncommuting-null-projection-example">NP4 — A noncommuting null-projection example</h2>
+<p>Take <span class="math" data-tex="\(M=B(\mathbb C^3)\)">\(M=B(\mathbb C^3)\)</span> and <span class="math" data-tex="\(\omega(x)=\langle xe_3,e_3\rangle\)">\(\omega(x)=\langle xe_3,e_3\rangle\)</span>. Let <span class="math" data-tex="\(q_1\)">\(q_1\)</span> project onto <span class="math" data-tex="\(\mathbb Ce_1\)">\(\mathbb Ce_1\)</span> and <span class="math" data-tex="\(q_2\)">\(q_2\)</span> onto <span class="math" data-tex="\(\mathbb C(e_1+e_2)\)">\(\mathbb C(e_1+e_2)\)</span>. Their matrices give
+<span class="math math-display" data-tex="\[
+a=q_1+q_2=
+\begin{pmatrix}3/2&amp;1/2&amp;0\\1/2&amp;1/2&amp;0\\0&amp;0&amp;0\end{pmatrix},
+\qquad
+q=q_1\vee q_2=\operatorname{diag}(1,1,0),
+\qquad p=\operatorname{diag}(0,0,1).
+\tag{NP.9}
+\]">\[
+a=q_1+q_2=
+\begin{pmatrix}3/2&amp;1/2&amp;0\\1/2&amp;1/2&amp;0\\0&amp;0&amp;0\end{pmatrix},
+\qquad
+q=q_1\vee q_2=\operatorname{diag}(1,1,0),
+\qquad p=\operatorname{diag}(0,0,1).
+\tag{NP.9}
+\]</span>
+The upper two-by-two block has characteristic polynomial <span class="math" data-tex="\(t^2-2t+1/2\)">\(t^2-2t+1/2\)</span>, so the two positive eigenvalues are <span class="math" data-tex="\(\lambda_\pm=1\pm1/\sqrt2\)">\(\lambda_\pm=1\pm1/\sqrt2\)</span>. The third eigenvalue is zero. The product matrices <span class="math" data-tex="\(q_1q_2\)">\(q_1q_2\)</span> and <span class="math" data-tex="\(q_2q_1\)">\(q_2q_1\)</span> differ, although both projections are null for <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. The calculus in (NP.7) has eigenvalues <span class="math" data-tex="\(\lambda_\pm/(\lambda_\pm+\varepsilon)\)">\(\lambda_\pm/(\lambda_\pm+\varepsilon)\)</span> and zero; their limits are exactly the eigenvalues of <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<figure><img src="figures/predual-null-support.svg" alt="Two noncommuting null projections span the null plane; the resolvent cutoff converges to its projection." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><strong>Figure.</strong> Left: the real slice of the two complex range lines inside <span class="math" data-tex="\(\operatorname{span}_{\mathbb C}\{e_1,e_2\}\)">\(\operatorname{span}_{\mathbb C}\{e_1,e_2\}\)</span>. Their join is the entire complex plane indicated; the orthogonal support line <span class="math" data-tex="\(\mathbb Ce_3\)">\(\mathbb Ce_3\)</span> is described by <span class="math" data-tex="\(p\)">\(p\)</span> and is outside this slice. Right: the exact two nonzero eigenvalues of <span class="math" data-tex="\(a(a+\varepsilon I)^{-1}\)">\(a(a+\varepsilon I)^{-1}\)</span>, with the horizontal axis traversed toward <span class="math" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span>, and its identically zero third eigenvalue. This finite-dimensional example illustrates the arbitrary-dimensional net proof in NP3; it does not replace it. Reproducible figure source.</p>
+<h2 id="np5-prerequisite-boundary">NP5 — Prerequisite boundary</h2>
+<p>NP1–NP2 prove norm extension, norming and locally convex separation. NP3 uses only the previously written bounded Hilbert, calculus, topology, monotone-net and range-support proofs in BK01/BK03/BK04/BK06. It does not use a predual, generic weight supports, an approximate-unit theorem, the universal bidual or the characterization of order-normal functionals. The conditional converse paragraph in CP12 remains a later corollary requiring the separately completed normal-weight theorem.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

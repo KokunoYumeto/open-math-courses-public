@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haar convolution as left and right Hilbert algebras · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-HG.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 21 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="haar-convolution-from-both-sides">Haar convolution from both sides</h1>
+<p><em>GPT-6 (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. Self-checked by the writing AI.</em></p>
+<p>Convolution on a nonunimodular group has two natural adjoint operations. The left one contains the modular function; the right one does not. The right structure is imported from the existing foundation theorem and verified here in the same compactly supported convolution algebra. The left calculation remains in this lesson. The argument keeps arbitrary locally compact Hausdorff groups and uses nets rather than a hidden countability assumption.</p>
+<p>The abstract target is the <a href="OA-MOD-HA.html#oa-mod-ha-01">four Hilbert-algebra axioms</a>. The group-analysis input is left Haar measure with its modular and inversion formulas, density of compactly supported continuous functions in the relevant Radon <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-spaces, strong continuity of translations, and compactly supported approximate identities. No separability, sigma-compactness, unimodularity, or finite-Haar-measure hypothesis is imposed.</p>
+<p><strong>Source and statement ownership.</strong> Takesaki, <em>Theory of Operator Algebras II</em>, Example VI.1.2, printed p. 2, gives these two structures. <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/hilbert-algebras/src/left-and-right-hilbert-algebras.md#L166-L229">Left and right Hilbert algebras, Theorem 4.1</a> is the existing programme owner of the right-convolution statements: clauses (1)–(3) give boundedness, the adjoint identity and inversion involution; clause (4) gives the weighted graph core once the closed left model is supplied; clause (5) includes the right Hilbert-algebra conclusion. The worked calculations below verify those clauses in our notation, where <span class="math" data-tex="\(b=\flat\)">\(b=\flat\)</span>. Their Haar/Radon inputs are the exact <a href="../NCG-FOLIATIONS/companions/haar-functional.html">programme Haar proofs</a> named in <span class="unlinked">PF's group-analysis input</span>: Proposition 3.1(2),(4), Theorems 10.1 and 11.1, Theorem 14.2(6), and Theorem 15.1. The right clauses use these inputs and the explicit left model below, with no whole-course import. The broader right-algebra and commutant statements remain with their foundation and <span class="unlinked">PF01</span> proofs.</p>
+<h2 id="one-product-and-two-involutions"><span id="OA-MOD-HG-01"></span><span id="oa-mod-hg-01"></span>One product and two involutions</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact Hausdorff group, fix a left Haar measure <span class="math" data-tex="\(dt\)">\(dt\)</span>, and write <span class="math" data-tex="\(\delta:G\to(0,\infty)\)">\(\delta:G\to(0,\infty)\)</span> for the continuous modular homomorphism in the convention</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_G F(th)\,dt\\
+&amp;\qquad=\delta(h)^{-1}\int_G F(t)\,dt,\\
+&amp;\int_G F(t^{-1})\,dt\\
+&amp;\qquad=\int_G F(t)\delta(t)^{-1}\,dt.
+\end{aligned}
+\tag{HG.1}
+\]">\[
+\begin{aligned}
+&amp;\int_G F(th)\,dt\\
+&amp;\qquad=\delta(h)^{-1}\int_G F(t)\,dt,\\
+&amp;\int_G F(t^{-1})\,dt\\
+&amp;\qquad=\int_G F(t)\delta(t)^{-1}\,dt.
+\end{aligned}
+\tag{HG.1}
+\]</span>
+<p>Put <span class="math" data-tex="\(H=L^2(G,dt)\)">\(H=L^2(G,dt)\)</span>, with inner product linear in the first variable, and let <span class="math" data-tex="\(\mathcal K=C_c(G)\)">\(\mathcal K=C_c(G)\)</span>. For <span class="math" data-tex="\(f,k\in\mathcal K\)">\(f,k\in\mathcal K\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(f*k)(t)
+&amp;=\int_G f(s)\\
+&amp;\qquad{}\cdot k(s^{-1}t)\,ds,
+\end{aligned}
+\tag{HG.2}
+\]">\[
+\begin{aligned}
+(f*k)(t)
+&amp;=\int_G f(s)\\
+&amp;\qquad{}\cdot k(s^{-1}t)\,ds,
+\end{aligned}
+\tag{HG.2}
+\]</span>
+<p>and define two conjugate-linear operations</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f^\sharp(t)&amp;=\delta(t)^{-1}\overline{f(t^{-1})},\\
+f^b(t)&amp;=\overline{f(t^{-1})}.
+\end{aligned}
+\tag{HG.3}
+\]">\[
+\begin{aligned}
+f^\sharp(t)&amp;=\delta(t)^{-1}\overline{f(t^{-1})},\\
+f^b(t)&amp;=\overline{f(t^{-1})}.
+\end{aligned}
+\tag{HG.3}
+\]</span>
+<p>Continuity of translation under a compactly supported integral shows that <span class="math" data-tex="\(f*k\in C_c(G)\)">\(f*k\in C_c(G)\)</span>, with
+<span class="math" data-tex="\(\operatorname{supp}(f*k)\subseteq\operatorname{supp}(f)\operatorname{supp}(k)\)">\(\operatorname{supp}(f*k)\subseteq\operatorname{supp}(f)\operatorname{supp}(k)\)</span>. Both involutions also preserve <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, since inversion is a homeomorphism and <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is continuous and positive.</p>
+<p>Fubini's theorem and left invariance prove associativity. Indeed, after setting <span class="math" data-tex="\(s=ru\)">\(s=ru\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;((f*k)*h)(t)\\
+&amp;=\int_G\!\int_G f(r)k(r^{-1}s)\\
+&amp;\qquad{}\cdot h(s^{-1}t)\,dr\,ds\\
+&amp;=\int_G f(r)\Bigl(\int_G k(u)\\
+&amp;\qquad{}\cdot h(u^{-1}r^{-1}t)\,du\Bigr)dr\\
+&amp;=(f*(k*h))(t).
+\end{aligned}
+\tag{HG.4}
+\]">\[
+\begin{aligned}
+&amp;((f*k)*h)(t)\\
+&amp;=\int_G\!\int_G f(r)k(r^{-1}s)\\
+&amp;\qquad{}\cdot h(s^{-1}t)\,dr\,ds\\
+&amp;=\int_G f(r)\Bigl(\int_G k(u)\\
+&amp;\qquad{}\cdot h(u^{-1}r^{-1}t)\,du\Bigr)dr\\
+&amp;=(f*(k*h))(t).
+\end{aligned}
+\tag{HG.4}
+\]</span>
+<p>Every integrand here has compact support, so the iterated integrals are absolutely convergent.</p>
+<p><strong>Worked verification of Theorem 4.1(3).</strong> The two operations in (HG.3) are involutive anti-automorphisms. For <span class="math" data-tex="\(b\)">\(b\)</span>, left invariance alone gives the useful transparent calculation</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(f*k)^b(t)
+&amp;=\int_G\overline{f(s)}\\
+&amp;\qquad{}\cdot\overline{k(s^{-1}t^{-1})}\,ds\\
+&amp;=\int_G\overline{k(u^{-1})}\\
+&amp;\qquad{}\cdot\overline{f(t^{-1}u)}\,du\\
+&amp;=(k^b*f^b)(t),
+\end{aligned}
+\tag{HG.5}
+\]">\[
+\begin{aligned}
+(f*k)^b(t)
+&amp;=\int_G\overline{f(s)}\\
+&amp;\qquad{}\cdot\overline{k(s^{-1}t^{-1})}\,ds\\
+&amp;=\int_G\overline{k(u^{-1})}\\
+&amp;\qquad{}\cdot\overline{f(t^{-1}u)}\,du\\
+&amp;=(k^b*f^b)(t),
+\end{aligned}
+\tag{HG.5}
+\]</span>
+<p>where <span class="math" data-tex="\(u=ts\)">\(u=ts\)</span>. For <span class="math" data-tex="\(\sharp\)">\(\sharp\)</span>, use inversion in (HG.1) and the homomorphism identity <span class="math" data-tex="\(\delta(rs)=\delta(r)\delta(s)\)">\(\delta(rs)=\delta(r)\delta(s)\)</span> to obtain</p>
+<span class="math math-display" data-tex="\[
+(f*k)^\sharp=k^\sharp*f^\sharp.
+\tag{HG.6}
+\]">\[
+(f*k)^\sharp=k^\sharp*f^\sharp.
+\tag{HG.6}
+\]</span>
+<p>Applying either operation twice gives <span class="math" data-tex="\(f\)">\(f\)</span>: in the <span class="math" data-tex="\(\sharp\)">\(\sharp\)</span>-case the two scalar factors cancel because <span class="math" data-tex="\(\delta(t^{-1})=\delta(t)^{-1}\)">\(\delta(t^{-1})=\delta(t)^{-1}\)</span>. Thus <span class="math" data-tex="\((\mathcal K,*,\sharp)\)">\((\mathcal K,*,\sharp)\)</span> and <span class="math" data-tex="\((\mathcal K,*,b)\)">\((\mathcal K,*,b)\)</span> are involutive algebras on the same underlying product.</p>
+<h2 id="bounded-multiplication-and-the-two-adjoint-identities">Bounded multiplication and the two adjoint identities</h2>
+<p>Define the left and right regular unitaries on <span class="math" data-tex="\(H\)">\(H\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\lambda(s)\xi)(t)&amp;=\xi(s^{-1}t),\\
+(\rho(s)\xi)(t)&amp;=\delta(s)^{1/2}\xi(ts).
+\end{aligned}
+\tag{HG.7}
+\]">\[
+\begin{aligned}
+(\lambda(s)\xi)(t)&amp;=\xi(s^{-1}t),\\
+(\rho(s)\xi)(t)&amp;=\delta(s)^{1/2}\xi(ts).
+\end{aligned}
+\tag{HG.7}
+\]</span>
+<p>Left invariance proves that <span class="math" data-tex="\(\lambda(s)\)">\(\lambda(s)\)</span> is unitary, and the first formula in (HG.1) proves the same for <span class="math" data-tex="\(\rho(s)\)">\(\rho(s)\)</span>. For <span class="math" data-tex="\(f\in\mathcal K\)">\(f\in\mathcal K\)</span>, left convolution extends from <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> to</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_f&amp;=\int_G f(s)\lambda(s)\,ds,\\
+\|L_f\|&amp;\leq\|f\|_1.
+\end{aligned}
+\tag{HG.8}
+\]">\[
+\begin{aligned}
+L_f&amp;=\int_G f(s)\lambda(s)\,ds,\\
+\|L_f\|&amp;\leq\|f\|_1.
+\end{aligned}
+\tag{HG.8}
+\]</span>
+<p>For each <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>, the map <span class="math" data-tex="\(s\mapsto f(s)\lambda(s)\xi\)">\(s\mapsto f(s)\lambda(s)\xi\)</span> is norm continuous and compactly supported. Its <span class="math" data-tex="\(H\)">\(H\)</span>-valued Bochner integral defines <span class="math" data-tex="\(L_f\xi\)">\(L_f\xi\)</span>. The estimate in (HG.8) makes this prescription a bounded operator and gives the displayed weak operator integral. Taking the adjoint, using <span class="math" data-tex="\(\lambda(s)^*=\lambda(s^{-1})\)">\(\lambda(s)^*=\lambda(s^{-1})\)</span>, and then applying Haar inversion yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_f^*
+&amp;=\int_G \overline{f(s)}\lambda(s^{-1})\,ds\\
+&amp;=\int_G \delta(u)^{-1}\overline{f(u^{-1})}\\
+&amp;\qquad{}\cdot\lambda(u)\,du\\
+&amp;=L_{f^\sharp}.
+\end{aligned}
+\tag{HG.9}
+\]">\[
+\begin{aligned}
+L_f^*
+&amp;=\int_G \overline{f(s)}\lambda(s^{-1})\,ds\\
+&amp;=\int_G \delta(u)^{-1}\overline{f(u^{-1})}\\
+&amp;\qquad{}\cdot\lambda(u)\,du\\
+&amp;=L_{f^\sharp}.
+\end{aligned}
+\tag{HG.9}
+\]</span>
+<p>Consequently, for <span class="math" data-tex="\(f,k,h\in\mathcal K\)">\(f,k,h\in\mathcal K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle f*k,h\rangle=\langle k,f^\sharp*h\rangle
+\tag{HG.10}
+\]">\[
+\langle f*k,h\rangle=\langle k,f^\sharp*h\rangle
+\tag{HG.10}
+\]</span>
+<p>which is the left Hilbert-algebra adjoint identity.</p>
+<p><strong>Worked verification of Theorem 4.1(1)–(2).</strong> Right convolution has a different but equally bounded integrated form. Substituting <span class="math" data-tex="\(u=s^{-1}t\)">\(u=s^{-1}t\)</span> in (HG.2) gives, first on <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> and then on <span class="math" data-tex="\(H\)">\(H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;R_k\xi=\xi*k\\
+&amp;=\int_G k(u)\delta(u)^{-1/2}\\
+&amp;\qquad{}\cdot\rho(u^{-1})\xi\,du,\\
+&amp;\|R_k\|\\
+&amp;\qquad\leq\int_G|k(u)|\\
+&amp;\qquad\quad{}\cdot\delta(u)^{-1/2}\,du.
+\end{aligned}
+\tag{HG.11}
+\]">\[
+\begin{aligned}
+&amp;R_k\xi=\xi*k\\
+&amp;=\int_G k(u)\delta(u)^{-1/2}\\
+&amp;\qquad{}\cdot\rho(u^{-1})\xi\,du,\\
+&amp;\|R_k\|\\
+&amp;\qquad\leq\int_G|k(u)|\\
+&amp;\qquad\quad{}\cdot\delta(u)^{-1/2}\,du.
+\end{aligned}
+\tag{HG.11}
+\]</span>
+<p>The bound is finite because <span class="math" data-tex="\(k\)">\(k\)</span> has compact support. Since <span class="math" data-tex="\(\rho(u^{-1})^*=\rho(u)\)">\(\rho(u^{-1})^*=\rho(u)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_k^*
+&amp;=\int_G\overline{k(u)}\delta(u)^{-1/2}\\
+&amp;\qquad{}\cdot\rho(u)\,du.
+\end{aligned}
+\tag{HG.12}
+\]">\[
+\begin{aligned}
+R_k^*
+&amp;=\int_G\overline{k(u)}\delta(u)^{-1/2}\\
+&amp;\qquad{}\cdot\rho(u)\,du.
+\end{aligned}
+\tag{HG.12}
+\]</span>
+<p>On the other hand, insert <span class="math" data-tex="\(k^b(v)=\overline{k(v^{-1})}\)">\(k^b(v)=\overline{k(v^{-1})}\)</span> in (HG.11) and substitute <span class="math" data-tex="\(u=v^{-1}\)">\(u=v^{-1}\)</span>. Haar inversion changes <span class="math" data-tex="\(dv\)">\(dv\)</span> to <span class="math" data-tex="\(\delta(u)^{-1}du\)">\(\delta(u)^{-1}du\)</span>, while <span class="math" data-tex="\(\delta(v)^{-1/2}=\delta(u)^{1/2}\)">\(\delta(v)^{-1/2}=\delta(u)^{1/2}\)</span>. The result is exactly the right side of (HG.12). Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_k^*&amp;=R_{k^b},\\
+\langle f*k,h\rangle&amp;=\langle f,h*k^b\rangle.
+\end{aligned}
+\tag{HG.13}
+\]">\[
+\begin{aligned}
+R_k^*&amp;=R_{k^b},\\
+\langle f*k,h\rangle&amp;=\langle f,h*k^b\rangle.
+\end{aligned}
+\tag{HG.13}
+\]</span>
+<p>Equations (HG.8) and (HG.11) establish the required boundedness from the left and from the right without claiming bounded convolution for an arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-vector.</p>
+<h2 id="closed-involutions-and-the-product-core">Closed involutions and the product core</h2>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> be multiplication by <span class="math" data-tex="\(\delta\)">\(\delta\)</span> on its maximal positive self-adjoint domain and define</p>
+<span class="math math-display" data-tex="\[
+(J\xi)(t)=\delta(t)^{-1/2}\overline{\xi(t^{-1})}.
+\tag{HG.14}
+\]">\[
+(J\xi)(t)=\delta(t)^{-1/2}\overline{\xi(t^{-1})}.
+\tag{HG.14}
+\]</span>
+<p>Haar inversion shows that <span class="math" data-tex="\(J\)">\(J\)</span> is antiunitary. The same calculation, together with <span class="math" data-tex="\(\delta(t^{-1})=\delta(t)^{-1}\)">\(\delta(t^{-1})=\delta(t)^{-1}\)</span>, gives <span class="math" data-tex="\(J^2=I\)">\(J^2=I\)</span>. On <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, the two algebraic involutions have the closed-operator models</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f^\sharp&amp;=JD^{1/2}f,\\
+f^b&amp;=JD^{-1/2}f.
+\end{aligned}
+\tag{HG.15}
+\]">\[
+\begin{aligned}
+f^\sharp&amp;=JD^{1/2}f,\\
+f^b&amp;=JD^{-1/2}f.
+\end{aligned}
+\tag{HG.15}
+\]</span>
+<p>Both operators on the right are closed because <span class="math" data-tex="\(D^{1/2}\)">\(D^{1/2}\)</span> and <span class="math" data-tex="\(D^{-1/2}\)">\(D^{-1/2}\)</span> are closed and <span class="math" data-tex="\(J\)">\(J\)</span> is antiunitary.</p>
+<p><strong>Worked verification of Theorem 4.1(4).</strong> These are not merely closed extensions: <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> is a graph core for each. Write the two graph norms as</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|f\|_\sharp^2
+&amp;:=\|f\|^2+\|D^{1/2}f\|^2\\
+&amp;=\int_G(1+\delta)|f|^2\,dt,\\
+\|f\|_b^2
+&amp;:=\|f\|^2+\|D^{-1/2}f\|^2\\
+&amp;=\int_G(1+\delta^{-1})|f|^2\,dt.
+\end{aligned}
+\tag{HG.16}
+\]">\[
+\begin{aligned}
+\|f\|_\sharp^2
+&amp;:=\|f\|^2+\|D^{1/2}f\|^2\\
+&amp;=\int_G(1+\delta)|f|^2\,dt,\\
+\|f\|_b^2
+&amp;:=\|f\|^2+\|D^{-1/2}f\|^2\\
+&amp;=\int_G(1+\delta^{-1})|f|^2\,dt.
+\end{aligned}
+\tag{HG.16}
+\]</span>
+<p>The measures <span class="math" data-tex="\((1+\delta)dt\)">\((1+\delta)dt\)</span> and <span class="math" data-tex="\((1+\delta^{-1})dt\)">\((1+\delta^{-1})dt\)</span> are Radon measures because their densities are positive and continuous. Compactly supported continuous functions are dense in both <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-spaces. Therefore the closures of the involutions initially defined on <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> are exactly <span class="math" data-tex="\(JD^{1/2}\)">\(JD^{1/2}\)</span> and <span class="math" data-tex="\(JD^{-1/2}\)">\(JD^{-1/2}\)</span>, respectively. In particular, both algebraic involutions are closable.</p>
+<p><strong>The adjoint domain.</strong> Put <span class="math" data-tex="\(S=\overline{\sharp}=JD^{1/2}\)">\(S=\overline{\sharp}=JD^{1/2}\)</span>. Haar inversion gives <span class="math" data-tex="\(JDJ=D^{-1}\)">\(JDJ=D^{-1}\)</span>, with maximal multiplication domains: multiplication by <span class="math" data-tex="\(\delta\)">\(\delta\)</span> becomes multiplication by <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span>. The <span class="unlinked">adjoint-involution theorem TC09</span> therefore gives <span class="math" data-tex="\(S^*=JD^{-1/2}\)">\(S^*=JD^{-1/2}\)</span> on <span class="math" data-tex="\(D(D^{-1/2})\)">\(D(D^{-1/2})\)</span>. Thus the right closure just verified is exactly the adjoint involution in foundation clause (4). Its only left input is the closed multiplication model established in this paragraph; the Fourier-algebra part of PF is not an antecedent of this argument.</p>
+<p>It remains to verify density of products. Direct the identity neighborhoods <span class="math" data-tex="\(U\)">\(U\)</span> by reverse inclusion and choose <span class="math" data-tex="\(u_U\in C_c(G)_+\)">\(u_U\in C_c(G)_+\)</span> with integral one and support contained in <span class="math" data-tex="\(U\)">\(U\)</span>. For every <span class="math" data-tex="\(\xi\in C_c(G)\)">\(\xi\in C_c(G)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|u_U*\xi-\xi\|_2\\
+&amp;\qquad\leq\sup_{s\in U}\|\lambda(s)\xi-\xi\|_2\\
+&amp;\qquad\longrightarrow0.
+\end{aligned}
+\tag{HG.17}
+\]">\[
+\begin{aligned}
+&amp;\|u_U*\xi-\xi\|_2\\
+&amp;\qquad\leq\sup_{s\in U}\|\lambda(s)\xi-\xi\|_2\\
+&amp;\qquad\longrightarrow0.
+\end{aligned}
+\tag{HG.17}
+\]</span>
+<p>by strong continuity of the left regular representation. Each <span class="math" data-tex="\(u_U*\xi\)">\(u_U*\xi\)</span> is a product of two elements of <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>. Since <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> is itself dense in <span class="math" data-tex="\(H\)">\(H\)</span>, the linear span <span class="math" data-tex="\(\mathcal K^2\)">\(\mathcal K^2\)</span> is dense in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>The retained calculations verify all four axioms on arbitrary <span class="math" data-tex="\(G\)">\(G\)</span>, with the right statement supplied by Theorem 4.1(5):</p>
+<ul>
+<li><span class="math" data-tex="\((C_c(G),*,\sharp)\)">\((C_c(G),*,\sharp)\)</span> is a left Hilbert algebra in <span class="math" data-tex="\(L^2(G,dt)\)">\(L^2(G,dt)\)</span>;</li>
+<li><span class="math" data-tex="\((C_c(G),*,b)\)">\((C_c(G),*,b)\)</span> is a right Hilbert algebra in the same Hilbert space.</li>
+</ul>
+<p>The modular factor appears on the side selected by left Haar measure. When <span class="math" data-tex="\(G\)">\(G\)</span> is unimodular, <span class="math" data-tex="\(\delta=1\)">\(\delta=1\)</span> and the two involutions coincide. In general they are genuinely different, even though their product core and Hilbert completion are the same.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-HA.html">← Building the two multiplication actions of a Hilbert algebra</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-BC.html">Polynomial cutoffs recover an operator&#x27;s range →</a></span></nav>
+<p class="small source-link"><a href="src/haar-convolution-hilbert-algebra.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

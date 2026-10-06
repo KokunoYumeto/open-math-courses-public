@@ -1,0 +1,159 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite-rank tests and finite generation</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Subsequent full independent model review: GPT-6 Astra, Ultra; no corrections requested. This review covers the recorded version of this lesson and its specified prerequisite interfaces.</p><h1 id="finite-rank-tests-and-finite-generation">Finite-rank tests and finite generation</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, September 2026. Self-checked; no independent review. Public domain (CC0).</em></p>
+<p>Finiteness enters a Hom calculation in two different ways. A map may have a finite-dimensional image, or a module may need only finitely many generators to test equality of maps. Neither assertion alone controls every map into a filtered colimit. The formal completion makes these distinctions visible, even when ordinary realization erases them.</p>
+<p>Read <a href="formal-colimits-and-compact-presentations.html">Formal colimits and compact presentations</a> for realization and the finite-presentation criterion over an arbitrary ring, <a href="retracts-and-stabilization-of-formal-objects.html">Retracts and stabilization of formal objects</a> for compact constants, and <a href="limits-and-colimits-of-formal-objects.html">Limits and colimits of formal objects</a> for internal coequalizers. The commutative finite-generation criterion is already <a href="https://stacks.math.columbia.edu/tag/0G8N">Stacks, Lemma 10.11.1</a>. Section 3 retains it and checks the same criterion for left modules over an arbitrary unital ring.</p>
+<p>All vector spaces and modules belong to the fixed indexing universe. Unless specified otherwise, the coefficient category of a formal object below is the category of <em>all</em> such vector spaces or modules, rather than just its finite-dimensional or finitely presented subcategory.</p>
+<h2 id="1-a-formal-vector-space-records-finite-rank-maps">1. A formal vector space records finite-rank maps</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field and <span class="math" data-tex="\(V\)">\(V\)</span> a vector space. Its finite-dimensional subspaces form a small filtered poset under inclusion: their sum is a common upper bound. Define</p>
+<span class="math math-display" data-tex="\[
+A_V=\operatorname{colim}_{V_0\subset V,\ \dim V_0&lt;\infty}\iota V_0
+\quad\text{in }\operatorname{Ind}(\mathsf{Vect}(k)).
+\tag{1.1}
+\]">\[
+A_V=\operatorname{colim}_{V_0\subset V,\ \dim V_0&lt;\infty}\iota V_0
+\quad\text{in }\operatorname{Ind}(\mathsf{Vect}(k)).
+\tag{1.1}
+\]</span>
+<p>At a vector-space test <span class="math" data-tex="\(W\)">\(W\)</span>, its value is naturally the finite-rank maps:</p>
+<span class="math math-display" data-tex="\[
+A_V(W)=\{f:W\to V\mid\dim\operatorname{im}f&lt;\infty\}.
+\tag{1.2}
+\]">\[
+A_V(W)=\{f:W\to V\mid\dim\operatorname{im}f&lt;\infty\}.
+\tag{1.2}
+\]</span>
+<p>Indeed, a stage map <span class="math" data-tex="\(W\to V_0\)">\(W\to V_0\)</span> has that property, and a finite-rank map factors through its finite-dimensional image. Two stage maps with the same map into <span class="math" data-tex="\(V\)">\(V\)</span> agree after passing to the sum of their stage subspaces. This proves (1.2), including the equivalence relation in the colimit.</p>
+<p>There is also a tensor description:</p>
+<span class="math math-display" data-tex="\[
+V\otimes_k\operatorname{Hom}_k(W,k)\simeq A_V(W),
+\qquad v\otimes\lambda\longmapsto(w\mapsto\lambda(w)v).
+\tag{1.3}
+\]">\[
+V\otimes_k\operatorname{Hom}_k(W,k)\simeq A_V(W),
+\qquad v\otimes\lambda\longmapsto(w\mapsto\lambda(w)v).
+\tag{1.3}
+\]</span>
+<p>For injectivity, write a tensor using a basis <span class="math" data-tex="\(v_1,\ldots,v_r\)">\(v_1,\ldots,v_r\)</span> of the finite-dimensional span of its vector coefficients. If <span class="math" data-tex="\(\sum_j\lambda_j(w)v_j\)">\(\sum_j\lambda_j(w)v_j\)</span> vanishes for every <span class="math" data-tex="\(w\)">\(w\)</span>, linear independence forces every <span class="math" data-tex="\(\lambda_j=0\)">\(\lambda_j=0\)</span>. For surjectivity, choose a basis of the finite-dimensional image of a finite-rank map and use its coordinate functionals on <span class="math" data-tex="\(W\)">\(W\)</span>. Both constructions give the canonical map displayed in (1.3), which is natural under precomposition in <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>The subspace inclusions give a natural map</p>
+<span class="math math-display" data-tex="\[
+a:A_V\longrightarrow\iota V.
+\tag{1.4}
+\]">\[
+a:A_V\longrightarrow\iota V.
+\tag{1.4}
+\]</span>
+<p>It is pointwise injective by (1.2), hence a monomorphism in presheaves and in the full ind-subcategory. Ordinary realization sends it to the identity identification <span class="math" data-tex="\(\operatorname{colim}_{V_0}V_0=V\)">\(\operatorname{colim}_{V_0}V_0=V\)</span>.</p>
+<p>If <span class="math" data-tex="\(V\)">\(V\)</span> is infinite-dimensional, <span class="math" data-tex="\(A_V\)">\(A_V\)</span> is not constant. Were it constant, it would be finitely presented in the ind-category. Its identity would factor through one stage <span class="math" data-tex="\(\iota V_0\)">\(\iota V_0\)</span>. Realization would then exhibit <span class="math" data-tex="\(V\)">\(V\)</span> as a retract of the finite-dimensional space <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, which is impossible. In particular, (1.3) describes a genuine nonrepresentable ind-object in this coefficient category.</p>
+<p>This does not conflict with <span class="math" data-tex="\(\operatorname{Ind}(\mathsf{Vect}_f(k))\simeq\mathsf{Vect}(k)\)">\(\operatorname{Ind}(\mathsf{Vect}_f(k))\simeq\mathsf{Vect}(k)\)</span>. That equivalence completes only finite-dimensional coefficient objects. Here constant infinite-dimensional vector spaces are also test objects, and their tests carry additional information.</p>
+<h2 id="2-a-nonzero-formal-quotient-with-zero-realization">2. A nonzero formal quotient with zero realization</h2>
+<p>For the same subspace index, form the quotient diagram and its formal colimit</p>
+<span class="math math-display" data-tex="\[
+B_V=\operatorname{colim}_{V_0\subset V,\ \dim V_0&lt;\infty}
+\iota(V/V_0).
+\tag{2.1}
+\]">\[
+B_V=\operatorname{colim}_{V_0\subset V,\ \dim V_0&lt;\infty}
+\iota(V/V_0).
+\tag{2.1}
+\]</span>
+<p>The stage with <span class="math" data-tex="\(V_0=0\)">\(V_0=0\)</span> gives a map <span class="math" data-tex="\(q:\iota V\to B_V\)">\(q:\iota V\to B_V\)</span>. Equivalently it is represented by any quotient map <span class="math" data-tex="\(V\to V/V_0\)">\(V\to V/V_0\)</span>; these maps have the same class after their quotient transitions.</p>
+<p><strong>Proposition 2.1.</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> is infinite-dimensional, <span class="math" data-tex="\(q\ne0\)">\(q\ne0\)</span> but <span class="math" data-tex="\(qa=0\)">\(qa=0\)</span>. Consequently (1.4) is a monomorphism that is not an epimorphism.</p>
+<p><strong>Proof.</strong> Compactness of the constant <span class="math" data-tex="\(V\)">\(V\)</span> identifies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(\iota V,B_V)
+=\operatorname{colim}_{V_0}\operatorname{Hom}_k(V,V/V_0).
+\]">\[
+\operatorname{Hom}(\iota V,B_V)
+=\operatorname{colim}_{V_0}\operatorname{Hom}_k(V,V/V_0).
+\]</span>
+<p>The representative of <span class="math" data-tex="\(q\)">\(q\)</span> at zero is <span class="math" data-tex="\(1_V\)">\(1_V\)</span>. At every later stage it becomes the quotient map <span class="math" data-tex="\(V\to V/V_0\)">\(V\to V/V_0\)</span>, which is nonzero because <span class="math" data-tex="\(V_0\ne V\)">\(V_0\ne V\)</span>. Its class cannot equal the zero class, proving <span class="math" data-tex="\(q\ne0\)">\(q\ne0\)</span>.</p>
+<p>On a stage <span class="math" data-tex="\(\iota V_1\)">\(\iota V_1\)</span> of <span class="math" data-tex="\(A_V\)">\(A_V\)</span>, however, its composite becomes zero at the quotient stage <span class="math" data-tex="\(V/V_1\)">\(V/V_1\)</span>. Thus <span class="math" data-tex="\(qa\)">\(qa\)</span> vanishes on every structural map into <span class="math" data-tex="\(A_V\)">\(A_V\)</span>, and the formal colimit property gives <span class="math" data-tex="\(qa=0\)">\(qa=0\)</span>. The two distinct maps <span class="math" data-tex="\(q,0:\iota V\to B_V\)">\(q,0:\iota V\to B_V\)</span> agree after precomposition with <span class="math" data-tex="\(a\)">\(a\)</span>, so <span class="math" data-tex="\(a\)">\(a\)</span> is not epic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The coequalizer construction in the preceding lesson identifies <span class="math" data-tex="\(B_V\)">\(B_V\)</span> as the internal coequalizer of <span class="math" data-tex="\(a\)">\(a\)</span> and the zero map: at a common stage these are the inclusion <span class="math" data-tex="\(V_0\to V\)">\(V_0\to V\)</span> and zero, whose vector-space coequalizer is <span class="math" data-tex="\(V/V_0\)">\(V/V_0\)</span>. No abelian-category theorem about the whole ind-category is needed for this calculation.</p>
+<p>Nevertheless the ordinary colimit of these quotients is zero. Every vector is killed after including its span in the index. Thus realization sends <span class="math" data-tex="\(B_V\)">\(B_V\)</span> to zero although it is a nonzero formal object. In particular, realization fails to reflect isomorphisms.</p>
+<p>For a concrete countable instance, take <span class="math" data-tex="\(V=k^{\oplus\mathbb Z}\)">\(V=k^{\oplus\mathbb Z}\)</span> and let <span class="math" data-tex="\(V_n\)">\(V_n\)</span> be spanned by the basis vectors with indices between <span class="math" data-tex="\(-n\)">\(-n\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span>. Any finite-dimensional subspace lies in some <span class="math" data-tex="\(V_n\)">\(V_n\)</span>: finitely many basis vectors for that subspace involve only finitely many coordinates in total. Hence this sequence is cofinal in the finite-subspace index. Its inclusion-induced formal map to <span class="math" data-tex="\(\iota V\)">\(\iota V\)</span> is exactly (1.4), and the quotient sequence <span class="math" data-tex="\(V/V_n\)">\(V/V_n\)</span> gives the same non-epimorphism witness.</p>
+<h2 id="3-finite-generation-controls-equality">3. Finite generation controls equality</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be any unital ring, allowing noncommutativity, and take left <span class="math" data-tex="\(R\)">\(R\)</span>-modules. For a small filtered diagram <span class="math" data-tex="\((M_i)\)">\((M_i)\)</span>, there is a canonical comparison</p>
+<span class="math math-display" data-tex="\[
+\operatorname{colim}_i\operatorname{Hom}_R(N,M_i)
+\longrightarrow
+\operatorname{Hom}_R(N,\operatorname{colim}_iM_i).
+\tag{3.1}
+\]">\[
+\operatorname{colim}_i\operatorname{Hom}_R(N,M_i)
+\longrightarrow
+\operatorname{Hom}_R(N,\operatorname{colim}_iM_i).
+\tag{3.1}
+\]</span>
+<p><strong>Theorem 3.1.</strong> This map is injective for every small filtered diagram if and only if <span class="math" data-tex="\(N\)">\(N\)</span> is finitely generated.</p>
+<p>For commutative rings, this is the referenced <a href="https://stacks.math.columbia.edu/tag/0G8N">Stacks criterion</a>. The proof below checks its arbitrary-ring variant without commuting any coefficients.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(n_1,\ldots,n_r\)">\(n_1,\ldots,n_r\)</span> generate <span class="math" data-tex="\(N\)">\(N\)</span>. Given two stage maps with equal maps into the colimit, move them to a common stage. Their values on each <span class="math" data-tex="\(n_j\)">\(n_j\)</span> become equal at some later stage, by the underlying-set description of filtered module colimits. Finitely many witnesses have a common further target. At that target the two maps agree on all generators and therefore on every left linear combination, so they agree on <span class="math" data-tex="\(N\)">\(N\)</span>. This proves injectivity.</p>
+<p>Conversely, index by the small filtered set of finitely generated submodules <span class="math" data-tex="\(N_0\subset N\)">\(N_0\subset N\)</span>, including zero. Their sum gives an upper bound. The quotient modules <span class="math" data-tex="\(N/N_0\)">\(N/N_0\)</span> have ordinary colimit zero: every element is killed at a submodule generated by one representative. At the zero index consider the identity and zero maps from <span class="math" data-tex="\(N\)">\(N\)</span> to <span class="math" data-tex="\(N\)">\(N\)</span>. Their images in <span class="math" data-tex="\(\operatorname{Hom}_R(N,0)\)">\(\operatorname{Hom}_R(N,0)\)</span> agree. Injectivity of (3.1) makes their classes equal in the filtered colimit of Hom sets. At some finitely generated <span class="math" data-tex="\(N_0\)">\(N_0\)</span>, the quotient map <span class="math" data-tex="\(N\to N/N_0\)">\(N\to N/N_0\)</span> is therefore zero. This means <span class="math" data-tex="\(N=N_0\)">\(N=N_0\)</span>, so <span class="math" data-tex="\(N\)">\(N\)</span> is finitely generated. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only equality is being tested. Surjectivity asks that every map into the colimit descend to a stage, and additionally requires finite relations. The earlier module-presentation theorem characterizes bijectivity of (3.1) by finite presentation. Exercise 3 gives a cyclic module where injectivity holds but surjectivity fails.</p>
+<h2 id="4-the-other-yoneda-test-forgets-formal-information">4. The other Yoneda test forgets formal information</h2>
+<p>This last observation works in any locally small category <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Let</p>
+<span class="math math-display" data-tex="\[
+\mathsf C^\vee=\operatorname{Fun}(\mathsf C,\mathsf{Set})^{\mathrm{op}},
+\qquad
+k_{\mathsf C}(X)=\operatorname{Hom}_{\mathsf C}(X,-),
+\]">\[
+\mathsf C^\vee=\operatorname{Fun}(\mathsf C,\mathsf{Set})^{\mathrm{op}},
+\qquad
+k_{\mathsf C}(X)=\operatorname{Hom}_{\mathsf C}(X,-),
+\]</span>
+<p>with the same universe conventions as before. The opposite makes <span class="math" data-tex="\(k_{\mathsf C}\)">\(k_{\mathsf C}\)</span> a covariant functor from <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\Phi(A)(Y)=\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(A,\iota Y),
+\tag{4.1}
+\]">\[
+\Phi(A)(Y)=\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(A,\iota Y),
+\tag{4.1}
+\]</span>
+<p>viewing this covariant set-valued functor as an object of <span class="math" data-tex="\(\mathsf C^\vee\)">\(\mathsf C^\vee\)</span>. A map <span class="math" data-tex="\(A\to A&#x27;\)">\(A\to A&#x27;\)</span> induces precomposition from <span class="math" data-tex="\(\Phi(A&#x27;)\)">\(\Phi(A&#x27;)\)</span> to <span class="math" data-tex="\(\Phi(A)\)">\(\Phi(A)\)</span>; because the target category is opposite, this gives <span class="math" data-tex="\(\Phi(A)\to\Phi(A&#x27;)\)">\(\Phi(A)\to\Phi(A&#x27;)\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> The functor <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> preserves small filtered colimits, restricts to <span class="math" data-tex="\(k_{\mathsf C}\)">\(k_{\mathsf C}\)</span> on constants, and has the presentation</p>
+<span class="math math-display" data-tex="\[
+\Phi(A)\simeq\operatorname{colim}_{(X,x)\in\mathsf E_A}k_{\mathsf C}(X)
+\quad\text{in }\mathsf C^\vee.
+\tag{4.2}
+\]">\[
+\Phi(A)\simeq\operatorname{colim}_{(X,x)\in\mathsf E_A}k_{\mathsf C}(X)
+\quad\text{in }\mathsf C^\vee.
+\tag{4.2}
+\]</span>
+<p>The element-category index may be replaced by its small full cofinal subcategory. If <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> admits small filtered colimits, then</p>
+<span class="math math-display" data-tex="\[
+\Phi\simeq k_{\mathsf C}\sigma,
+\tag{4.3}
+\]">\[
+\Phi\simeq k_{\mathsf C}\sigma,
+\tag{4.3}
+\]</span>
+<p>where <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is ordinary realization.</p>
+<p><strong>Proof.</strong> For a filtered colimit <span class="math" data-tex="\(A=\operatorname{colim}_i A_i\)">\(A=\operatorname{colim}_i A_i\)</span>, its universal property gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(A,\iota Y)
+\simeq\lim_i\operatorname{Hom}(A_i,\iota Y).
+\]">\[
+\operatorname{Hom}(A,\iota Y)
+\simeq\lim_i\operatorname{Hom}(A_i,\iota Y).
+\]</span>
+<p>The right side is a pointwise limit of covariant functors, hence a colimit in their opposite category. This proves preservation by <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. On constants, full faithfulness gives <span class="math" data-tex="\(\Phi(\iota X)(Y)=\operatorname{Hom}_{\mathsf C}(X,Y)\)">\(\Phi(\iota X)(Y)=\operatorname{Hom}_{\mathsf C}(X,Y)\)</span>, the stated restriction. Presenting <span class="math" data-tex="\(A\)">\(A\)</span> by the small cofinal part of its category of elements and applying preservation proves (4.2); cofinality identifies this with the indicated cofinally small index. Finally the realization adjunction gives <span class="math" data-tex="\(\operatorname{Hom}(A,\iota Y)\simeq\operatorname{Hom}_{\mathsf C}(\sigma A,Y)\)">\(\operatorname{Hom}(A,\iota Y)\simeq\operatorname{Hom}_{\mathsf C}(\sigma A,Y)\)</span>, naturally in both variables, proving (4.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This test uses maps <em>out of</em> a formal object into constants. The presheaf embedding uses maps <em>from</em> constants into that object. Formula (4.3) explains why the first can lose information that the second retains.</p>
+<h2 id="5-exercises-with-solutions">5. Exercises with solutions</h2>
+<p><strong>Exercise 1 (introductory: write the tensor).</strong> Let <span class="math" data-tex="\(W,V\)">\(W,V\)</span> have countable bases <span class="math" data-tex="\((e_n)\)">\((e_n)\)</span>, <span class="math" data-tex="\((v_n)\)">\((v_n)\)</span>. Find a tensor describing the map with <span class="math" data-tex="\(f(e_{2j})=v_0\)">\(f(e_{2j})=v_0\)</span>, <span class="math" data-tex="\(f(e_{2j+1})=(j+1)v_1\)">\(f(e_{2j+1})=(j+1)v_1\)</span>. Decide whether the map <span class="math" data-tex="\(g(e_n)=v_{n+1}\)">\(g(e_n)=v_{n+1}\)</span> belongs to <span class="math" data-tex="\(A_V(W)\)">\(A_V(W)\)</span>.</p>
+<p><strong>Solution.</strong> On a finitely supported vector <span class="math" data-tex="\(\sum_n c_ne_n\)">\(\sum_n c_ne_n\)</span>, define <span class="math" data-tex="\(\lambda=\sum_j c_{2j}\)">\(\lambda=\sum_j c_{2j}\)</span> and <span class="math" data-tex="\(\mu=\sum_j(j+1)c_{2j+1}\)">\(\mu=\sum_j(j+1)c_{2j+1}\)</span>. Both sums are finite for each input and define linear functionals. Formula (1.3) sends <span class="math" data-tex="\(v_0\otimes\lambda+v_1\otimes\mu\)">\(v_0\otimes\lambda+v_1\otimes\mu\)</span> to <span class="math" data-tex="\(f\)">\(f\)</span>. Its image is spanned by <span class="math" data-tex="\(v_0,v_1\)">\(v_0,v_1\)</span>, and both occur at <span class="math" data-tex="\(e_0,e_1\)">\(e_0,e_1\)</span>, so its rank is two in any characteristic. The map <span class="math" data-tex="\(g\)">\(g\)</span> has infinitely many independent image vectors. It has infinite rank and is absent from <span class="math" data-tex="\(A_V(W)\)">\(A_V(W)\)</span>.</p>
+<p><strong>Exercise 2 (intermediate: which diagonal maps disappear?).</strong> Take <span class="math" data-tex="\(V=k^{\oplus\mathbb N}\)">\(V=k^{\oplus\mathbb N}\)</span>, with finite initial spans <span class="math" data-tex="\(V_n\)">\(V_n\)</span>, and the quotient witness <span class="math" data-tex="\(q:\iota V\to B_V\)">\(q:\iota V\to B_V\)</span>. For scalars <span class="math" data-tex="\((\lambda_j)\)">\((\lambda_j)\)</span>, let <span class="math" data-tex="\(d_\lambda(e_j)=\lambda_je_j\)">\(d_\lambda(e_j)=\lambda_je_j\)</span>. Prove that <span class="math" data-tex="\(qd_\lambda=0\)">\(qd_\lambda=0\)</span> exactly when only finitely many <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> are nonzero.</p>
+<p><strong>Solution.</strong> The map <span class="math" data-tex="\(qd_\lambda\)">\(qd_\lambda\)</span> is represented in the Hom colimit by the composite <span class="math" data-tex="\(V\xrightarrow{d_\lambda}V\to V/V_n\)">\(V\xrightarrow{d_\lambda}V\to V/V_n\)</span>. Its class is zero precisely when that composite is zero at a later quotient, or equivalently when <span class="math" data-tex="\(d_\lambda(V)\)">\(d_\lambda(V)\)</span> is contained in one finite initial span. For a diagonal map this happens exactly when all nonzero coefficients have bounded indices. In <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span> a bounded subset is finite; a finite subset is bounded. This proves both directions. Each individual basis vector is eventually killed by the quotient diagram even when this formal map is nonzero; the unbounded collection of surviving coordinates prevents a single stage from killing the whole constant-source map.</p>
+<p><strong>Exercise 3 (advanced: one generator, infinitely many relations).</strong> Let <span class="math" data-tex="\(R=k[x_1,x_2,\ldots]\)">\(R=k[x_1,x_2,\ldots]\)</span>, <span class="math" data-tex="\(I=(x_1,x_2,\ldots)\)">\(I=(x_1,x_2,\ldots)\)</span>, and <span class="math" data-tex="\(N=R/I\)">\(N=R/I\)</span>. Show that <span class="math" data-tex="\(N\)">\(N\)</span> is finitely generated but not finitely presented. Exhibit a filtered diagram for which (3.1) is not surjective.</p>
+<p><strong>Solution.</strong> The class of <span class="math" data-tex="\(1\)">\(1\)</span> generates <span class="math" data-tex="\(N\)">\(N\)</span>, so Theorem 3.1 makes every comparison injective. Index finite subsets <span class="math" data-tex="\(F\subset\mathbb N_{&gt;0}\)">\(F\subset\mathbb N_{&gt;0}\)</span>, with <span class="math" data-tex="\(M_F=R/(x_i:i\in F)\)">\(M_F=R/(x_i:i\in F)\)</span>. Their quotient transitions give a filtered diagram with colimit <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Every map <span class="math" data-tex="\(N\to M_F\)">\(N\to M_F\)</span> must send <span class="math" data-tex="\(1\)">\(1\)</span> to an element <span class="math" data-tex="\(a\)">\(a\)</span> annihilated by every <span class="math" data-tex="\(x_j\)">\(x_j\)</span>. Choose <span class="math" data-tex="\(j\notin F\)">\(j\notin F\)</span>. The ring <span class="math" data-tex="\(M_F=k[x_j:j\notin F]\)">\(M_F=k[x_j:j\notin F]\)</span> is an integral domain and its <span class="math" data-tex="\(x_j\)">\(x_j\)</span> is nonzero, so <span class="math" data-tex="\(x_ja=0\)">\(x_ja=0\)</span> forces <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Hence <span class="math" data-tex="\(\operatorname{Hom}_R(N,M_F)=0\)">\(\operatorname{Hom}_R(N,M_F)=0\)</span> for all <span class="math" data-tex="\(F\)">\(F\)</span>. Their colimit cannot supply the identity in <span class="math" data-tex="\(\operatorname{Hom}_R(N,N)\)">\(\operatorname{Hom}_R(N,N)\)</span>. The comparison is not surjective. By the finite-presentation theorem in the preceding module lesson, <span class="math" data-tex="\(N\)">\(N\)</span> is not finitely presented. This also shows explicitly where its infinitely many annihilation relations obstruct a stage representative.</p>
+<p><strong>Exercise 4 (advanced: finite-dimensional tests miss the quotient).</strong> For infinite-dimensional <span class="math" data-tex="\(V\)">\(V\)</span>, prove that <span class="math" data-tex="\(B_V(W)\)">\(B_V(W)\)</span> is a singleton when <span class="math" data-tex="\(W\)">\(W\)</span> is finite-dimensional, but <span class="math" data-tex="\(B_V(V)\)">\(B_V(V)\)</span> contains a nonzero element. Compute <span class="math" data-tex="\(\Phi(B_V)\)">\(\Phi(B_V)\)</span> from Section 4.</p>
+<p><strong>Solution.</strong> A representative <span class="math" data-tex="\(f:W\to V/V_0\)">\(f:W\to V/V_0\)</span> has finitely many basis images. Choose a lift of each to <span class="math" data-tex="\(V\)">\(V\)</span>, and enlarge <span class="math" data-tex="\(V_0\)">\(V_0\)</span> by their finite span to obtain a finite-dimensional <span class="math" data-tex="\(V_1\)">\(V_1\)</span>. The quotient transition to <span class="math" data-tex="\(V/V_1\)">\(V/V_1\)</span> kills <span class="math" data-tex="\(f\)">\(f\)</span>. Thus every element in <span class="math" data-tex="\(B_V(W)\)">\(B_V(W)\)</span> is the zero element. At <span class="math" data-tex="\(W=V\)">\(W=V\)</span>, the nonzero quotient-map class <span class="math" data-tex="\(q\)">\(q\)</span> from Proposition 2.1 survives, so the same conclusion fails. Finally <span class="math" data-tex="\(\sigma B_V=0\)">\(\sigma B_V=0\)</span>, and (4.3) gives <span class="math" data-tex="\(\Phi(B_V)=k_{\mathsf C}(0)\)">\(\Phi(B_V)=k_{\mathsf C}(0)\)</span>: at every target <span class="math" data-tex="\(Y\)">\(Y\)</span>, it is the singleton <span class="math" data-tex="\(\operatorname{Hom}_k(0,Y)\)">\(\operatorname{Hom}_k(0,Y)\)</span>. The dual Yoneda test sees only zero realization, although the original presheaf test at the constant infinite-dimensional <span class="math" data-tex="\(V\)">\(V\)</span> detects the nonzero formal quotient.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project, <em>Commutative Algebra</em>, <a href="https://stacks.math.columbia.edu/tag/0G8N">Lemma 10.11.1</a>, for the existing commutative finite-generation/Hom criterion; the arbitrary-ring left-module variant is checked above. Its text is not copied.</li>
+<li>The Stacks Project, <em>Categories</em>, <a href="https://stacks.math.columbia.edu/tag/05PT">Section 4.22</a>, for formal ind/pro conventions and the distinction between ordinary and essentially constant systems.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Section 2.7, for ind-objects.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>Homological Algebra</em></a>, Section 2.7, for indization and realization in homological algebra.</li>
+</ul>
+<p>These known results and examples are presented in independent English. No new research result or independent mathematical review is claimed.</p>
+</main></body></html>

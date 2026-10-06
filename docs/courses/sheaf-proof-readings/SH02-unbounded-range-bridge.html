@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>SH02-UR — Finite resolutions without a lower bound</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><span id="SH02-UR"></span><h1 id="sh02-ur-finite-resolutions-without-a-lower-bound">SH02-UR —
+Finite resolutions without a lower bound</h1>
+<p>This unit proves an unbounded classical
+proper-support adjunction and its support-comparison square. It also
+proves an unbounded deformation theorem on finite-dimensional manifolds.
+The full unbounded microsupport estimates are a separate obligation,
+identified at the end; they are not consequences claimed here.</p>
+<p>Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k_X)</annotation></semantics></math>
+for the classical derived category of all complexes of sheaves of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-modules
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.
+Cohomological differentials have degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>.
+Tensor totalizations use direct sums, and Hom complexes use products. An
+unbounded complex of flat sheaves need not be K-flat, and an unbounded
+complex of injective sheaves need not be K-injective. We will verify the
+required stronger properties where they occur.</p>
+<p>The proper-support results concern a continuous map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>Y</mi><mo>→</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">f:Y\to X</annotation></semantics></math>
+between locally compact Hausdorff spaces and a commutative unital ring
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Assume one integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r\geq0</annotation></semantics></math>
+satisfies</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mi>q</mi></msup><msub><mi>f</mi><mi>!</mi></msub><mi>A</mi><mo>=</mo><mn>0</mn><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>q</mi><mo>&gt;</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR1)</mtext></mrow><annotation encoding="application/x-tex">
+R^qf_!A=0\qquad(q&gt;r)
+\qquad\text{(UR1)}
+</annotation></semantics></math></p>
+<p>for every sheaf of <strong>abelian groups</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>.
+The bound is integral and uniform; a bound only for selected coefficient
+sheaves is not being substituted. No manifold, constructibility, rank,
+or finite-global-dimension assumption is needed for these results. The
+deformation statements use a finite-dimensional manifold, and allow an
+arbitrary unital coefficient ring because they do not use tensor
+products.</p>
+<span id="SH02-UR-IMPORTS"></span><h2 id="sh02-ur-imports-the-unbounded-classical-prerequisites">SH02-UR-IMPORTS
+— The unbounded classical prerequisites</h2>
+<p>We use two exact Stacks imports. A Grothendieck abelian category has
+K-injective replacements with injective terms: <a href="https://stacks.math.columbia.edu/tag/079P">Tag 079P</a>. Here
+K-injective means that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo>•</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}^{\bullet}(A,I)</annotation></semantics></math>
+is acyclic for every acyclic complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Secondly, if a left exact additive functor has enough acyclic objects
+and finite cohomological dimension, its right derived functor exists on
+the entire derived category; <strong>every complex of acyclic objects
+for that functor computes it</strong>, with no boundedness assumption:
+<a href="https://stacks.math.columbia.edu/tag/07K7">Tag 07K7</a>. The
+theorem also supplies the cohomological amplitude bound on arbitrary
+complexes. The uniform dimension hypothesis is indispensable to this use
+of acyclic resolutions.</p>
+<p>Sheaves of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-modules
+form a Grothendieck abelian category: filtered colimits are exact on
+stalks, and the coproduct of the open generators
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>U</mi></msub><annotation encoding="application/x-tex">k_U</annotation></semantics></math>,
+one for each open subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>,
+is a generator. Indeed a nonzero sheaf morphism is nonzero on some
+section of some open set, and such a section defines a morphism from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>U</mi></msub><annotation encoding="application/x-tex">k_U</annotation></semantics></math>.
+This checks the category hypothesis of the first import.</p>
+<p>The other unbounded inputs are already exact contracts in <a href="src/SH02/open-prerequisites.md">the prerequisite lesson</a>:
+<code>SH02-IMP-KFLAT</code> and <code>SH02-IMP-TENSOR</code> give
+termwise-flat K-flat replacements and derived tensor;
+<code>SH02-IMP-ADJUNCTION</code> gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>⊣</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">f^{-1}\dashv Rf_*</annotation></semantics></math>;
+<code>SH02-IMP-RHOM</code> gives internal derived Hom, tensor–Hom
+adjunction, and open restriction. For constant coefficients inverse
+image is exact, so its left derived functor is itself. These are imports
+about classical module sheaves, not an identification with all sheaves
+valued in a non-hypercomplete infinity-category.</p>
+<p>The topological inputs are exactly those used in <a href="src/SH02/exceptional-operations.md">exceptional operations</a>:
+<code>SH02-EX-FLAT-SOFT</code>, <code>SH02-EX-FINITE-RESOLUTION</code>,
+<code>SH02-EX-REPRESENTING-SHEAF</code>, and the underived flat-soft
+projection calculation in <code>SH02-EX-PROJECTION</code>. Their
+compact-support and fibre prerequisites remain visible there. In
+particular they provide an augmented complex</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>→</mo><msub><mi mathvariant="double-struck">ℤ</mi><mi>Y</mi></msub><mo>→</mo><msup><mi>K</mi><mn>0</mn></msup><mo>→</mo><mi>⋯</mi><mo>→</mo><msup><mi>K</mi><mi>r</mi></msup><mo>→</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR2)</mtext></mrow><annotation encoding="application/x-tex">
+0\longrightarrow\mathbb Z_Y\longrightarrow K^0\longrightarrow\cdots
+\longrightarrow K^r\longrightarrow0,
+\qquad\text{(UR2)}
+</annotation></semantics></math></p>
+<p>with every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mi>p</mi></msup><annotation encoding="application/x-tex">K^p</annotation></semantics></math>
+flat over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>-soft.
+Each constituent short exact sequence has flat cokernel. For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>Y</mi></msub><annotation encoding="application/x-tex">k_Y</annotation></semantics></math>-module
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+the sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><msub><mo>⊗</mo><mi mathvariant="double-struck">ℤ</mi></msub><msup><mi>K</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">M\otimes_{\mathbb Z}K^p</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>-soft
+and the functor</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>p</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><msub><mo>⊗</mo><mi mathvariant="double-struck">ℤ</mi></msub><msup><mi>K</mi><mi>p</mi></msup><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR3)</mtext></mrow><annotation encoding="application/x-tex">
+T_p(M)=f_!(M\otimes_{\mathbb Z}K^p)
+\qquad\text{(UR3)}
+</annotation></semantics></math></p>
+<p>is exact and preserves coproducts. The integral bound (UR1) also
+bounds the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-linear
+derived functor after forgetting scalars. In particular injectives are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>-acyclic,
+so 07K7 applies to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>.</p>
+<span id="SH02-UR-PROPER-IMAGE"></span><h2 id="sh02-ur-proper-image-a-finite-model-for-unbounded-proper-direct-image">SH02-UR-PROPER-IMAGE
+— A finite model for unbounded proper direct image</h2>
+<p><strong>Theorem.</strong> For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G\in D(k_Y)</annotation></semantics></math>,
+represented by any complex with the same name,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi><mo>≃</mo><msub><mrow><mi mathvariant="normal">Tot</mi><mo>⁡</mo></mrow><mo>⊕</mo></msub><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><msub><mo>⊗</mo><mi mathvariant="double-struck">ℤ</mi></msub><msup><mi>K</mi><mo>•</mo></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR4)</mtext></mrow><annotation encoding="application/x-tex">
+Rf_!G\simeq\operatorname{Tot}_{\oplus}
+ f_!(G\otimes_{\mathbb Z}K^\bullet).
+\qquad\text{(UR4)}
+</annotation></semantics></math></p>
+<p>This is the right derived functor of the usual proper direct image.
+It restricts to the previously constructed functor on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mo>+</mo></msup><annotation encoding="application/x-tex">D^+</annotation></semantics></math>,
+and takes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup><annotation encoding="application/x-tex">D^{[a,b]}</annotation></semantics></math>
+into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>+</mo><mi>r</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup><annotation encoding="application/x-tex">D^{[a,b+r]}</annotation></semantics></math>,
+allowing infinite endpoints.</p>
+<p><strong>Proof.</strong> Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Tot</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><msub><mo>⊗</mo><mi mathvariant="double-struck">ℤ</mi></msub><msup><mi>K</mi><mo>•</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E(G)=\operatorname{Tot}(G\otimes_{\mathbb Z}K^\bullet)</annotation></semantics></math>.
+The augmentation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>→</mo><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G\to E(G)</annotation></semantics></math>
+is a quasi-isomorphism. To check convergence explicitly, include the
+augmentation as an extra column. Filter its total complex by horizontal
+degree; there are at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">r+2</annotation></semantics></math>
+columns, so this filtration converges with finitely many steps in every
+total degree. Its first page is vertical cohomology. Flatness of the
+augmented terms identifies that page with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>i</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><msub><mo>⊗</mo><mi mathvariant="double-struck">ℤ</mi></msub><msup><mi>K</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">H^i(G)\otimes_{\mathbb Z}K^p</annotation></semantics></math>,
+including
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>i</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^i(G)</annotation></semantics></math>
+in the augmentation column. The horizontal complexes on this page are
+exact because (UR2) is pure exact. Thus the second page is zero, and
+finite convergence makes the augmentation cone acyclic even when the
+vertical degree ranges over all integers.</p>
+<p>Every term of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E(G)</annotation></semantics></math>
+is a finite sum of sheaves of the form
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mi>i</mi></msup><msub><mo>⊗</mo><mi mathvariant="double-struck">ℤ</mi></msub><msup><mi>K</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">G^i\otimes_{\mathbb Z}K^p</annotation></semantics></math>,
+hence is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>-soft
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>-acyclic.
+By 07K7, applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>
+to this complex computes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi></mrow><annotation encoding="application/x-tex">Rf_!G</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>
+is additive, this is (UR4). The same theorem supplies the stated
+amplitude. On bounded-below complexes this is the identical augmented
+resolution used for the earlier construction, so the comparison is the
+usual derived comparison.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>There is also a useful direct check: the functor on complexes in
+(UR4) sends acyclic complexes to acyclic complexes. Each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>p</mi></msub><annotation encoding="application/x-tex">T_p</annotation></semantics></math>
+is exact, and totalization has only finitely many
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>-columns.
+Consequently it sends quasi-isomorphisms to quasi-isomorphisms. The
+comparison with 07K7 identifies this explicit complex functor with the
+right derived functor, rather than merely producing some functor with
+similar values.</p>
+<span id="SH02-UR-EXCEPTIONAL-ADJOINT"></span><h2 id="sh02-ur-exceptional-adjoint-a-k-injective-model-for-the-right-adjoint">SH02-UR-EXCEPTIONAL-ADJOINT
+— A K-injective model for the right adjoint</h2>
+<p>For an arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>X</mi></msub><annotation encoding="application/x-tex">k_X</annotation></semantics></math>-module
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>,
+define a sheaf on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>
+by</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>p</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><msub><mi>k</mi><mi>X</mi></msub></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msub><mi>T</mi><mi>p</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>U</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>I</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR5)</mtext></mrow><annotation encoding="application/x-tex">
+J_p(I)(U)=\operatorname{Hom}_{k_X}
+       \bigl(T_p(k_U),I\bigr).
+\qquad\text{(UR5)}
+</annotation></semantics></math></p>
+<p>The construction in <code>SH02-EX-REPRESENTING-SHEAF</code> works
+without assuming that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+is injective. To make that point explicit, an open cover of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+gives a right-exact presentation of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>U</mi></msub><annotation encoding="application/x-tex">k_U</annotation></semantics></math>
+by the coproducts of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><msub><mi>U</mi><mi>i</mi></msub></msub><annotation encoding="application/x-tex">k_{U_i}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>∩</mo><msub><mi>U</mi><mi>j</mi></msub></mrow></msub><annotation encoding="application/x-tex">k_{U_i\cap U_j}</annotation></semantics></math>.
+Exactness and preservation of coproducts by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>p</mi></msub><annotation encoding="application/x-tex">T_p</annotation></semantics></math>,
+followed by the left exact contravariant functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mo>,</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}(-,I)</annotation></semantics></math>,
+turn this presentation into the sheaf equalizer. Presenting an arbitrary
+sheaf by open generators then gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>T</mi><mi>p</mi></msub><mi>M</mi><mo>,</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo>,</mo><msub><mi>J</mi><mi>p</mi></msub><mi>I</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR6)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}(T_pM,I)=\operatorname{Hom}(M,J_pI).
+\qquad\text{(UR6)}
+</annotation></semantics></math></p>
+<p>Injectivity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+is needed only for the further conclusion that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>p</mi></msub><mi>I</mi></mrow><annotation encoding="application/x-tex">J_pI</annotation></semantics></math>
+is injective. That conclusion follows because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>p</mi></msub><annotation encoding="application/x-tex">T_p</annotation></semantics></math>
+is exact.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+now be a K-injective complex representing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D(k_X)</annotation></semantics></math>.
+Form the finite Hom totalization
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">J(I)</annotation></semantics></math>
+with</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>n</mi></msup><mo>=</mo><msubsup><mo>⨁</mo><mrow><mi>p</mi><mo>=</mo><mn>0</mn></mrow><mi>r</mi></msubsup><msub><mi>J</mi><mi>p</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>I</mi><mrow><mi>n</mi><mo>+</mo><mi>p</mi></mrow></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR7)</mtext></mrow><annotation encoding="application/x-tex">
+J(I)^n=\bigoplus_{p=0}^r J_p(I^{n+p}).
+\qquad\text{(UR7)}
+</annotation></semantics></math></p>
+<p>The differential is the Hom differential: for a homogeneous family
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+of degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+it is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>I</mi></msub><mi>h</mi><mo>−</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>n</mi></msup><mi>h</mi><msub><mi>d</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">d_Ih-(-1)^n h d_K</annotation></semantics></math>.
+In the second term
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>K</mi></msub><annotation encoding="application/x-tex">d_K</annotation></semantics></math>
+acts by precomposition, using contravariance in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+The componentwise adjunctions (UR6) give an isomorphism of Hom
+complexes</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo>•</mo></msup><mrow><mo form="prefix" stretchy="true">(</mo><mi mathvariant="normal">Tot</mi><msub><mi>T</mi><mo>•</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>I</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>≃</mo><msup><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo>•</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR8)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}^{\bullet}
+ \left(\operatorname{Tot}T_\bullet(G),I\right)
+\simeq\operatorname{Hom}^{\bullet}(G,J(I)).
+\qquad\text{(UR8)}
+</annotation></semantics></math></p>
+<p>For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+the ordinary Hom complex has a product over the degrees of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>.
+Interchanging that product with the <strong>finite</strong> sum over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+is valid. The displayed Hom differential gives the signs in (UR8); there
+is no replacement of an infinite product by a sum.</p>
+<p><strong>Theorem.</strong> The assignment
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mo>=</mo><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f^!F=J(I)</annotation></semantics></math>
+defines a right adjoint to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">Rf_!</annotation></semantics></math>
+on the full unbounded derived categories. Its unit and counit restrict
+to the earlier ones, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mi>!</mi></msup><msup><mi>D</mi><mrow><mo>≥</mo><mi>a</mi></mrow></msup><mo>⊂</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>a</mi><mo>−</mo><mi>r</mi></mrow></msup></mrow><annotation encoding="application/x-tex">f^!D^{\geq a}\subset D^{\geq a-r}</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is acyclic, the direct check following (UR4) makes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Tot</mi><mo>⁡</mo></mrow><msub><mi>T</mi><mo>•</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Tot}T_\bullet(A)</annotation></semantics></math>
+acyclic. K-injectivity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+and (UR8) therefore show that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">J(I)</annotation></semantics></math>
+is K-injective. Hence (UR8), in degree-zero cohomology, identifies
+derived morphisms on both sides:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR9)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}_{D(k_X)}(Rf_!G,F)
+\simeq\operatorname{Hom}_{D(k_Y)}(G,f^!F).
+\qquad\text{(UR9)}
+</annotation></semantics></math></p>
+<p>Replacing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+by another K-injective representative gives the same object and
+adjunction, since quasi-isomorphisms between K-injectives are homotopy
+equivalences and (UR7) preserves such equivalences. The unit and trace
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϵ</mi><mi>F</mi></msub><mo>:</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">\epsilon_F:Rf_!f^!F\to F</annotation></semantics></math>
+are the transposes of identities in (UR9); they satisfy the two
+adjunction identities by the usual inverse transposition calculation. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">F\in D^{\geq a}</annotation></semantics></math>,
+use a bounded-below injective representative with no terms below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Formula (UR7) then has no terms below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>−</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">a-r</annotation></semantics></math>.
+It is precisely the earlier finite model, which proves both the
+amplitude assertion and compatibility with the bounded-below adjunction.
+Uniqueness of a right adjoint, with its counit retained, makes the
+comparison independent of the chosen resolution (UR2).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-UR-PROJECTION"></span><h2 id="sh02-ur-projection-checking-k-flatness-after-proper-direct-image">SH02-UR-PROJECTION
+— Checking K-flatness after proper direct image</h2>
+<p><strong>Theorem.</strong> For arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G\in D(k_Y)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B\in D(k_X)</annotation></semantics></math>,
+the canonical projection map is an isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi><msubsup><mo>⊗</mo><mi>k</mi><mi>L</mi></msubsup><mi>B</mi><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><msubsup><mo>⊗</mo><mi>k</mi><mi>L</mi></msubsup><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR10)</mtext></mrow><annotation encoding="application/x-tex">
+Rf_!G\otimes_k^L B
+\xrightarrow{\sim}Rf_!(G\otimes_k^L f^{-1}B).
+\qquad\text{(UR10)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> Choose a termwise-flat K-flat complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>→</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">P\to G</annotation></semantics></math>.
+Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E=E(P)</annotation></semantics></math>
+as in (UR4). Every term of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+is flat over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>-soft.
+The first assertion follows on stalks:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>P</mi><mi>i</mi></msup><msub><mo>⊗</mo><mi mathvariant="double-struck">ℤ</mi></msub><msup><mi>K</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">P^i\otimes_{\mathbb Z}K^p</annotation></semantics></math>
+tensors a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-module
+with a flat abelian group, so tensoring it over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+preserves exact sequences. The second assertion is the flat-soft tensor
+lemma over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>.</p>
+<p>The complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+is K-flat over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Indeed, if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is an acyclic complex of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>Y</mi></msub><annotation encoding="application/x-tex">k_Y</annotation></semantics></math>-modules,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><msub><mo>⊗</mo><mi>k</mi></msub><mi>A</mi></mrow><annotation encoding="application/x-tex">P\otimes_k A</annotation></semantics></math>
+is acyclic by K-flatness of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>.
+Tensoring with each flat
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mi>p</mi></msup><annotation encoding="application/x-tex">K^p</annotation></semantics></math>
+is exact; the finite totalization over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+is still acyclic. This totalization is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><msub><mo>⊗</mo><mi>k</mi></msub><mi>A</mi></mrow><annotation encoding="application/x-tex">E\otimes_k A</annotation></semantics></math>.</p>
+<p>The underived projection calculation for a flat
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>-soft
+sheaf, applied to each term and then to direct-sum tensor totalizations,
+gives a natural identity of complexes for every complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>f</mi><mi>!</mi></msub><mi>E</mi><mo form="postfix" stretchy="false">)</mo><msub><mo>⊗</mo><mi>k</mi></msub><mi>B</mi><mo>≃</mo><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>E</mi><msub><mo>⊗</mo><mi>k</mi></msub><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR11)</mtext></mrow><annotation encoding="application/x-tex">
+(f_!E)\otimes_k B\simeq
+f_!(E\otimes_k f^{-1}B).
+\qquad\text{(UR11)}
+</annotation></semantics></math></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>
+commutes with the coproducts in each tensor degree. Each term on the
+right is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>-soft:
+it is a sum of sheaves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>P</mi><mi>i</mi></msup><msub><mo>⊗</mo><mi>k</mi></msub><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>B</mi><mi>j</mi></msup><mo form="postfix" stretchy="false">)</mo><msub><mo>⊗</mo><mi mathvariant="double-struck">ℤ</mi></msub><msup><mi>K</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">(P^i\otimes_k f^{-1}B^j)\otimes_{\mathbb Z}K^p</annotation></semantics></math>,
+to which the same flat-soft lemma applies. The terms of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+need not be flat.</p>
+<p>We must prove that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>!</mi></msub><mi>E</mi></mrow><annotation encoding="application/x-tex">f_!E</annotation></semantics></math>
+is K-flat; termwise flatness alone would not suffice. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+is acyclic, exact inverse image and K-flatness of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+make
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><msub><mo>⊗</mo><mi>k</mi></msub><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>B</mi></mrow><annotation encoding="application/x-tex">E\otimes_k f^{-1}B</annotation></semantics></math>
+acyclic. It is a complex of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>-acyclic
+terms, so 07K7 makes the right side of (UR11) acyclic. Thus the left
+side is acyclic for every such
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>,
+which is exactly K-flatness of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>!</mi></msub><mi>E</mi></mrow><annotation encoding="application/x-tex">f_!E</annotation></semantics></math>.</p>
+<p>Now let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+be arbitrary. On the left of (UR11),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>!</mi></msub><mi>E</mi></mrow><annotation encoding="application/x-tex">f_!E</annotation></semantics></math>
+represents
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi></mrow><annotation encoding="application/x-tex">Rf_!G</annotation></semantics></math>
+and is K-flat. On the right,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+is K-flat and represents
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>,
+and 07K7 permits application of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>
+to the displayed soft-term complex. Thus both sides compute the derived
+objects in (UR10). The map is multiplication of supported sections, the
+same map as in the bounded calculation. Its compatibility with tensor
+associativity and symmetry follows from those identities on these
+complexes, with the ordinary cohomological Koszul signs.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-UR-INTERNAL-DUALITY"></span><h2 id="sh02-ur-internal-duality-evaluation-with-unbounded-inputs">SH02-UR-INTERNAL-DUALITY
+— Evaluation with unbounded inputs</h2>
+<p>For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G\in D(k_Y)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D(k_X)</annotation></semantics></math>
+there is a canonical isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>:</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>Y</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR12)</mtext></mrow><annotation encoding="application/x-tex">
+v:Rf_*R\mathcal Hom_Y(G,f^!F)
+\xrightarrow{\sim}R\mathcal Hom_X(Rf_!G,F).
+\qquad\text{(UR12)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C\in D(k_X)</annotation></semantics></math>,
+the unbounded adjunctions and (UR10) give natural bijections</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>C</mi><mo>,</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>C</mi><mo>,</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><msup><mo>⊗</mo><mi>L</mi></msup><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>C</mi><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><msup><mo>⊗</mo><mi>L</mi></msup><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>C</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>C</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>C</mi><mo>,</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR13)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\operatorname{Hom}(C,Rf_*R\mathcal Hom(G,f^!F))
+&amp;=\operatorname{Hom}(f^{-1}C,R\mathcal Hom(G,f^!F))\\
+&amp;=\operatorname{Hom}(G\otimes^L f^{-1}C,f^!F)\\
+&amp;=\operatorname{Hom}(Rf_!(G\otimes^L f^{-1}C),F)\\
+&amp;=\operatorname{Hom}(Rf_!G\otimes^L C,F)\\
+&amp;=\operatorname{Hom}(C,R\mathcal Hom(Rf_!G,F)).
+\end{aligned}
+\qquad\text{(UR13)}
+</annotation></semantics></math></p>
+<p>Yoneda gives (UR12). This also fixes its normalization: its transpose
+is obtained from the ordinary counit, evaluation into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi></mrow><annotation encoding="application/x-tex">f^!F</annotation></semantics></math>,
+the projection isomorphism, and the trace
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϵ</mi><mi>F</mi></msub><annotation encoding="application/x-tex">\epsilon_F</annotation></semantics></math>.
+In particular its restriction is the map of
+<code>SH02-EX-INTERNAL</code>, with the same evaluation order.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-UR-SUPPORT-SQUARE"></span><h2 id="sh02-ur-support-square-forgetting-either-support-gives-the-same-map">SH02-UR-SUPPORT-SQUARE
+— Forgetting either support gives the same map</h2>
+<p>There is a canonical transformation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>π</mi><mi>A</mi></msub><mo>:</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>A</mi><mo>→</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>A</mi></mrow><annotation encoding="application/x-tex">\pi_A:Rf_!A\to Rf_*A</annotation></semantics></math>
+for every unbounded
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Choose a K-injective representative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+with injective terms. The complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>!</mi></msub><mi>I</mi></mrow><annotation encoding="application/x-tex">f_!I</annotation></semantics></math>
+computes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>A</mi></mrow><annotation encoding="application/x-tex">Rf_!A</annotation></semantics></math>
+by 07K7, while
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mo>*</mo></msub><mi>I</mi></mrow><annotation encoding="application/x-tex">f_*I</annotation></semantics></math>
+computes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>A</mi></mrow><annotation encoding="application/x-tex">Rf_*A</annotation></semantics></math>
+by K-injectivity. The inclusion
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>!</mi></msub><mi>I</mi><mo>→</mo><msub><mi>f</mi><mo>*</mo></msub><mi>I</mi></mrow><annotation encoding="application/x-tex">f_!I\to f_*I</annotation></semantics></math>
+defines
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>A</mi></msub><annotation encoding="application/x-tex">\pi_A</annotation></semantics></math>.
+This construction is independent of the representative by the derived
+comparison, and agrees with the usual inclusion on bounded-below
+objects.</p>
+<p>For later normalization, write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>A</mi></msub><mo>:</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>A</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">e_A:f^{-1}Rf_!A\to A</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>π</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">f^{-1}\pi_A</annotation></semantics></math>
+followed by the ordinary counit. There is a natural pairing</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>β</mi><mrow><mi>A</mi><mo>,</mo><mi>B</mi></mrow></msub><mo>:</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>A</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>B</mi><mo>→</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR14)</mtext></mrow><annotation encoding="application/x-tex">
+\beta_{A,B}:Rf_!A\otimes^L Rf_!B
+\longrightarrow Rf_!(A\otimes^L B),
+\qquad\text{(UR14)}
+</annotation></semantics></math></p>
+<p>given by projection followed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>⊗</mo><msub><mi>e</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">1\otimes e_B</annotation></semantics></math>.
+It is symmetric in the graded sense. Here is a resolution check that
+also identifies the maps. Choose termwise-flat K-flat representatives
+and their finite soft resolutions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>A</mi></msub><mo>,</mo><msub><mi>E</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">E_A,E_B</annotation></semantics></math>
+from the preceding proof. Their proper images are K-flat. The complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>A</mi></msub><mo>⊗</mo><msub><mi>E</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">E_A\otimes E_B</annotation></semantics></math>
+has soft terms and is K-flat, so all proper images in (UR14) are
+computed on these complexes. Multiplication of two properly supported
+sections gives a section supported in the intersection of their
+supports. The resulting map</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>!</mi></msub><msub><mi>E</mi><mi>A</mi></msub><mo>⊗</mo><msub><mi>f</mi><mi>!</mi></msub><msub><mi>E</mi><mi>B</mi></msub><mo>→</mo><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>E</mi><mi>A</mi></msub><mo>⊗</mo><msub><mi>E</mi><mi>B</mi></msub><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR15)</mtext></mrow><annotation encoding="application/x-tex">
+f_!E_A\otimes f_!E_B\longrightarrow f_!(E_A\otimes E_B)
+\qquad\text{(UR15)}
+</annotation></semantics></math></p>
+<p>is unchanged if the two factors are exchanged with their Koszul sign.
+It represents (UR14). To verify this last assertion against the derived
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mi>B</mi></msub><annotation encoding="application/x-tex">e_B</annotation></semantics></math>,
+map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>B</mi></msub><annotation encoding="application/x-tex">E_B</annotation></semantics></math>
+to a K-injective representative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>B</mi></msub><annotation encoding="application/x-tex">I_B</annotation></semantics></math>.
+The derived support inclusion is represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>!</mi></msub><msub><mi>E</mi><mi>B</mi></msub><mo>→</mo><msub><mi>f</mi><mo>*</mo></msub><msub><mi>I</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">f_!E_B\to f_*I_B</annotation></semantics></math>,
+and its counit is represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>f</mi><mo>*</mo></msub><msub><mi>I</mi><mi>B</mi></msub><mo>→</mo><msub><mi>I</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">f^{-1}f_*I_B\to I_B</annotation></semantics></math>.
+Naturality of multiplication identifies the resulting composite with
+(UR15) after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>B</mi></msub><mo>→</mo><msub><mi>I</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">E_B\to I_B</annotation></semantics></math>.
+The target proper image is still computed by this mixed tensor complex:
+every term has a flat-soft
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mi>p</mi></msup><annotation encoding="application/x-tex">K^p</annotation></semantics></math>
+factor from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>A</mi></msub><annotation encoding="application/x-tex">E_A</annotation></semantics></math>,
+and K-flatness of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>A</mi></msub><annotation encoding="application/x-tex">E_A</annotation></semantics></math>
+preserves the quasi-isomorphism. This proves the claimed identification
+without treating
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mo>*</mo></msub><msub><mi>E</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">f_*E_B</annotation></semantics></math>
+as a derived direct image. It also proves compatibility of (UR14) with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>
+in either factor.</p>
+<p>Set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>Y</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H=R\mathcal Hom_Y(G,f^!F)</annotation></semantics></math>
+for arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>,</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">F,G</annotation></semantics></math>
+as above. Define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>:</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>H</mi><mo>→</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR16)</mtext></mrow><annotation encoding="application/x-tex">
+u:Rf_!H\longrightarrow R\mathcal Hom_X(Rf_*G,F)
+\qquad\text{(UR16)}
+</annotation></semantics></math></p>
+<p>as the transpose of the pairing</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>H</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>G</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>H</mi><msup><mo>⊗</mo><mi>L</mi></msup><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>G</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>→</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>H</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mover><mo>→</mo><msub><mi>ϵ</mi><mi>F</mi></msub></mover><mi>F</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR17)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+Rf_!H\otimes^L Rf_*G
+&amp;\longrightarrow Rf_!(H\otimes^L f^{-1}Rf_*G)\\
+&amp;\longrightarrow Rf_!(H\otimes^L G)
+\longrightarrow Rf_!f^!F\xrightarrow{\epsilon_F}F.
+\end{aligned}
+\qquad\text{(UR17)}
+</annotation></semantics></math></p>
+<p><strong>Support-comparison theorem.</strong> The following equality
+holds on all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>×</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k_Y)\times D(k_X)</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>π</mi><mi>G</mi></msub><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>∘</mo><mi>u</mi><mo>=</mo><mi>v</mi><mo>∘</mo><msub><mi>π</mi><mi>H</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR18)</mtext></mrow><annotation encoding="application/x-tex">
+R\mathcal Hom_X(\pi_G,F)\circ u
+=v\circ\pi_H.
+\qquad\text{(UR18)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> Transpose both sides against
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi></mrow><annotation encoding="application/x-tex">Rf_!G</annotation></semantics></math>.
+Substituting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>G</mi></msub><annotation encoding="application/x-tex">\pi_G</annotation></semantics></math>
+in (UR17) gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>H</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>G</mi><mover><mo>→</mo><msub><mi>β</mi><mrow><mi>H</mi><mo>,</mo><mi>G</mi></mrow></msub></mover><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>H</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">v</mi></mrow><mo form="postfix" stretchy="false">)</mo></mrow></mover><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi><mover><mo>→</mo><msub><mi>ϵ</mi><mi>F</mi></msub></mover><mi>F</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR19)</mtext></mrow><annotation encoding="application/x-tex">
+Rf_!H\otimes^L Rf_!G
+\xrightarrow{\beta_{H,G}}Rf_!(H\otimes^LG)
+\xrightarrow{Rf_!(\mathrm{ev})}Rf_!f^!F
+\xrightarrow{\epsilon_F}F.
+\qquad\text{(UR19)}
+</annotation></semantics></math></p>
+<p>The transposed definition of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+in (UR13), after precomposition by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>H</mi></msub><annotation encoding="application/x-tex">\pi_H</annotation></semantics></math>,
+gives the same sequence with the two properly supported factors first
+exchanged: it uses projection on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>,
+the counit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mi>H</mi></msub><annotation encoding="application/x-tex">e_H</annotation></semantics></math>,
+then evaluation. By the graded symmetry and support-inclusion
+compatibility verified in (UR15), this is exactly (UR19). No sign is
+added: the symmetry moving
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+back to the first evaluation position is the same symmetry used to
+compare the two beta pairings. Tensor–Hom transposition is a bijection,
+so equality of these pairings proves (UR18).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>This proves the full bounded-below input case of the support-Hom
+exercise, even when its intermediate Hom is unbounded below. It does not
+settle a different issue in a base-change diagram: writing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>g</mi><mi>!</mi></msup><annotation encoding="application/x-tex">g^!</annotation></semantics></math>
+still requires an adjoint for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.
+Condition (UR1) for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+alone is not a hypothesis about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.
+Thus the separate definedness issue in
+<code>SH02-EX-SUPPORT-ERASURE</code> is unchanged.</p>
+<span id="SH02-UR-LOCAL-WINDOW"></span><h2 id="sh02-ur-local-window-uniform-dimension-bounds-for-local-tests">SH02-UR-LOCAL-WINDOW
+— Uniform dimension bounds for local tests</h2>
+<p>Manifolds here have the course convention: Hausdorff, without
+boundary, and countable at infinity. Now let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+be an
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-dimensional
+manifold, or a closed subset of one, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&lt;</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">n&lt;\infty</annotation></semantics></math>.
+Use arbitrary unital coefficients. The cohomological dimension theorem
+<code>SH02-MD-DIMENSION</code> in <span class="unlinked">manifold duality</span> gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H^q(V;M)=0</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>&gt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">q&gt;n</annotation></semantics></math>,
+every open subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+of the manifold, and every sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+A closed subset inherits the bound on each of its opens: realize that
+open as a closed subset of an ambient open set and use exact closed
+direct image, which preserves injectives as a right adjoint to exact
+inverse image.</p>
+<p>For an open embedding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>:</mo><mi>U</mi><mo>↪</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">j:U\hookrightarrow X</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mi>q</mi></msup><msub><mi>j</mi><mo>*</mo></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R^qj_*=0</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>&gt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">q&gt;n</annotation></semantics></math>.
+Indeed, its stalk is the filtered colimit of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>∩</mo><mi>U</mi><mo>;</mo><mi>−</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^q(V\cap U;-)</annotation></semantics></math>
+over open neighborhoods
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+as follows by taking stalks of an injective resolution. For a closed
+subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>,
+the localization triangle</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>Z</mi></msub><mi>A</mi><mo>→</mo><mi>A</mi><mo>→</mo><mi>R</mi><msub><mi>j</mi><mo>*</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><msub><mo form="prefix" stretchy="false">|</mo><mrow><mi>X</mi><mo>\</mo><mi>Z</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mrow><mi>+</mi><mn>1</mn></mrow></mover><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR20)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma_Z A\longrightarrow A\longrightarrow Rj_*(A|_{X\setminus Z})\xrightarrow{+1}
+\qquad\text{(UR20)}
+</annotation></semantics></math></p>
+<p>gives cohomological dimension at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+1</annotation></semantics></math>
+for the sheaf support functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Γ</mi><mi>Z</mi></msub><annotation encoding="application/x-tex">\Gamma_Z</annotation></semantics></math>.
+The module-valued functor of global sections supported on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>
+has the same bound, using
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>\</mo><mi>Z</mi><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma(X;A)\to R\Gamma(X\setminus Z;A)</annotation></semantics></math>
+instead. These functors all have enough acyclics and so admit the
+unbounded computation of 07K7.</p>
+<p>For clarity, (UR20) is valid unboundedly. Use a K-injective
+resolution with injective terms. The termwise localization sequence is
+exact, since injectives are flabby. Open restriction preserves
+K-injectives because its left adjoint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>j</mi><mi>!</mi></msub><annotation encoding="application/x-tex">j_!</annotation></semantics></math>
+is exact; direct image preserves them because inverse image is exact.
+Thus its third term computes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>j</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">Rj_*</annotation></semantics></math>,
+and the first is computed by 07K7. This proves the triangle. The same
+argument gives two-open Mayer–Vietoris and successive closed-support
+identities. Alternatively
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Γ</mi><mi>Z</mi></msub><annotation encoding="application/x-tex">\Gamma_Z</annotation></semantics></math>
+is right adjoint to the exact functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>Z</mi></msub><msub><mo>⊗</mo><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">k_Z\otimes_k(-)</annotation></semantics></math>,
+so it preserves K-injectives; the underived identity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Γ</mi><mi>Z</mi></msub><msub><mi mathvariant="normal">Γ</mi><mi>W</mi></msub><mo>=</mo><msub><mi mathvariant="normal">Γ</mi><mrow><mi>Z</mi><mo>∩</mo><mi>W</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\Gamma_Z\Gamma_W=\Gamma_{Z\cap W}</annotation></semantics></math>
+then derives with one resolution.</p>
+<p><strong>Finite-window lemma.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+be any of these left exact functors with cohomological dimension at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>.
+For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\in D(k_X)</annotation></semantics></math>
+and integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+natural truncation maps give</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mi>T</mi><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msup><mi>H</mi><mi>q</mi></msup><mspace width="-0.167em"></mspace><mrow><mo form="prefix" stretchy="true">(</mo><mi>R</mi><mi>T</mi><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msup><mi>τ</mi><mrow><mo>≥</mo><mi>q</mi><mo>−</mo><mi>d</mi></mrow></msup><msup><mi>τ</mi><mrow><mo>≤</mo><mi>q</mi></mrow></msup><mi>A</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR21)</mtext></mrow><annotation encoding="application/x-tex">
+H^q(RT A)\simeq
+H^q\!\left(RT\bigl(\tau^{\geq q-d}\tau^{\leq q}A\bigr)\right).
+\qquad\text{(UR21)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> The amplitude assertion of 07K7 is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>T</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>a</mi></mrow></msup><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>a</mi></mrow></msup></mrow><annotation encoding="application/x-tex">RT(D^{\geq a})\subset D^{\geq a}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>T</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>D</mi><mrow><mo>≤</mo><mi>b</mi></mrow></msup><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msup><mi>D</mi><mrow><mo>≤</mo><mi>b</mi><mo>+</mo><mi>d</mi></mrow></msup></mrow><annotation encoding="application/x-tex">RT(D^{\leq b})\subset D^{\leq b+d}</annotation></semantics></math>.
+Apply it first to the triangle cutting off
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>τ</mi><mrow><mo>≥</mo><mi>q</mi><mo>+</mo><mn>1</mn></mrow></msup><mi>A</mi></mrow><annotation encoding="application/x-tex">\tau^{\geq q+1}A</annotation></semantics></math>;
+this tail contributes neither in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q-1</annotation></semantics></math>
+nor in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>τ</mi><mrow><mo>≤</mo><mi>q</mi></mrow></msup><mi>A</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\tau^{\leq q}A\to A</annotation></semantics></math>
+gives the first isomorphism in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>.
+Next remove the part in degrees at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mi>d</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q-d-1</annotation></semantics></math>.
+Its image lies in degrees at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q-1</annotation></semantics></math>,
+so it contributes neither in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+nor in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q+1</annotation></semantics></math>.
+This gives the second isomorphism, now from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>τ</mi><mrow><mo>≤</mo><mi>q</mi></mrow></msup><mi>A</mi></mrow><annotation encoding="application/x-tex">\tau^{\leq q}A</annotation></semantics></math>
+to the displayed finite window. The comparisons are a natural zigzag,
+not a claim of a canonical map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+into that window.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The lemma controls one output degree of one operation. It says
+nothing about the microsupport of a truncation. A support-test vanishing
+in every degree cannot be transferred to a truncation by this formula
+alone.</p>
+<span id="SH02-UR-CONTINUITY"></span><h2 id="sh02-ur-continuity-compact-neighborhoods-and-increasing-opens">SH02-UR-CONTINUITY
+— Compact neighborhoods and increasing opens</h2>
+<p><strong>Compact-neighborhood continuity.</strong> For a compact
+subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>⊂</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">K\subset X</annotation></semantics></math>
+and arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\in D(k_X)</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">colim</mi><mrow><mi>V</mi><mo>⊃</mo><mi>K</mi></mrow></munder><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>;</mo><mi>A</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>K</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR22)</mtext></mrow><annotation encoding="application/x-tex">
+\underset{V\supset K}{\operatorname{colim}}H^q(V;A)
+\xrightarrow{\sim}H^q(K;A|_K).
+\qquad\text{(UR22)}
+</annotation></semantics></math></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+runs through open neighborhoods of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+Both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+have cohomological dimension at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
+by the preceding section. Formula (UR21) therefore reduces both sides,
+for fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+to the same bounded truncation window. Restriction is exact and commutes
+with these truncations. The bounded comparison
+<code>SH02-NCD-COMPACT-CONTINUITY</code>, based on <a href="https://stacks.math.columbia.edu/tag/09V3">Stacks, Tag 09V3</a>,
+applies to that window. Naturality of its comparison and of (UR21)
+proves (UR22). This explains the uniform dimension hypothesis; separate
+finite bounds growing with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+would not justify a fixed window.</p>
+<p><strong>Increasing-open continuity.</strong> On any topological
+space, if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msub><mo>⋃</mo><mi>m</mi></msub><msub><mi>V</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">V=\bigcup_m V_m</annotation></semantics></math>
+for an increasing sequence of opens and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\in D(k_X)</annotation></semantics></math>,
+then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>→</mo><munderover><mi mathvariant="normal">lim</mi><mi>m</mi><mn>1</mn></munderover><msup><mi>H</mi><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>V</mi><mi>m</mi></msub><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><munder><mi mathvariant="normal">lim</mi><mi>m</mi></munder><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>V</mi><mi>m</mi></msub><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR23)</mtext></mrow><annotation encoding="application/x-tex">
+0\longrightarrow\lim_m^1 H^{q-1}(V_m;A)
+\longrightarrow H^q(V;A)
+\longrightarrow\lim_m H^q(V_m;A)\longrightarrow0.
+\qquad\text{(UR23)}
+</annotation></semantics></math></p>
+<p>Use a K-injective representative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+with injective terms and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>m</mi></msub><mo>=</mo><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>V</mi><mi>m</mi></msub><mo>;</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_m=\Gamma(V_m;I)</annotation></semantics></math>.
+Restriction preserves K-injectives, so these compute derived sections.
+Termwise flabbiness makes all maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow><mi>j</mi></msubsup><mo>→</mo><msubsup><mi>C</mi><mi>m</mi><mi>j</mi></msubsup></mrow><annotation encoding="application/x-tex">C_{m+1}^j\to C_m^j</annotation></semantics></math>
+surjective. The sheaf axiom identifies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Gamma(V;I)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mi>m</mi></msub><msub><mi>C</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">\lim_m C_m</annotation></semantics></math>,
+term by term. Consequently there is a short exact sequence of
+complexes</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>→</mo><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><munder><mo>∏</mo><mi>m</mi></munder><msub><mi>C</mi><mi>m</mi></msub><mover><mo>→</mo><mrow><mn>1</mn><mo>−</mo><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">t</mi></mrow></mrow></mover><munder><mo>∏</mo><mi>m</mi></munder><msub><mi>C</mi><mi>m</mi></msub><mo>→</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR24)</mtext></mrow><annotation encoding="application/x-tex">
+0\to\Gamma(V;I)\to\prod_m C_m
+\xrightarrow{1-\mathrm{shift}}\prod_m C_m\to0.
+\qquad\text{(UR24)}
+</annotation></semantics></math></p>
+<p>Surjectivity of the last map follows recursively: given
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>y</mi><mi>m</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(y_m)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>m</mi></msub><annotation encoding="application/x-tex">x_m</annotation></semantics></math>,
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">x_{m+1}</annotation></semantics></math>
+restricting to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>m</mi></msub><mo>−</mo><msub><mi>y</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">x_m-y_m</annotation></semantics></math>.
+Products of modules are exact, so cohomology of these products is the
+product of their cohomologies. The long exact sequence of (UR24) gives
+(UR23), where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mn>1</mn></msup><annotation encoding="application/x-tex">\lim^1</annotation></semantics></math>
+is the cokernel of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">t</mi></mrow></mrow><annotation encoding="application/x-tex">1-\mathrm{shift}</annotation></semantics></math>
+on the product of cohomology modules. No lower bound has been used.</p>
+<span id="SH02-UR-INTERVAL"></span><h2 id="sh02-ur-interval-constancy-without-induction-from-a-lowest-degree">SH02-UR-INTERVAL
+— Constancy without induction from a lowest degree</h2>
+<p><strong>Surjective extension lemma.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>t</mi></msub><annotation encoding="application/x-tex">M_t</annotation></semantics></math>
+be an inverse system of modules indexed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>.
+Suppose, for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+both natural maps</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">colim</mi><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow></munder><msub><mi>M</mi><mi>t</mi></msub><mo>→</mo><msub><mi>M</mi><mi>s</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>M</mi><mi>s</mi></msub><mo>→</mo><munder><mi mathvariant="normal">lim</mi><mrow><mi>u</mi><mo>&lt;</mo><mi>s</mi></mrow></munder><msub><mi>M</mi><mi>u</mi></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR25)</mtext></mrow><annotation encoding="application/x-tex">
+\underset{t&gt;s}{\operatorname{colim}}M_t\longrightarrow M_s,
+\qquad M_s\longrightarrow\lim_{u&lt;s}M_u
+\qquad\text{(UR25)}
+</annotation></semantics></math></p>
+<p>are surjective. Then all transition maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>b</mi></msub><mo>→</mo><msub><mi>M</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">M_b\to M_a</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a&lt;b</annotation></semantics></math>,
+are surjective.</p>
+<p><strong>Proof.</strong> Fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>a</mi></msub><mo>∈</mo><msub><mi>M</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">x_a\in M_a</annotation></semantics></math>.
+Consider coherent extensions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mi>t</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>t</mi><mo>∈</mo><mi>I</mi></mrow></msub></mrow><annotation encoding="application/x-tex">(x_t)_{t\in I}</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+is an initial segment of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a,b]</annotation></semantics></math>
+containing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+with the prescribed value at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Order them by extension of the domain and of the family. A chain has its
+union as an upper bound, so a maximal family exists. Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mrow><mi mathvariant="normal">sup</mi><mo>⁡</mo></mrow><mi>I</mi></mrow><annotation encoding="application/x-tex">c=\sup I</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∉</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">c\notin I</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">c&gt;a</annotation></semantics></math>
+and the family, together with restrictions of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>a</mi></msub><annotation encoding="application/x-tex">x_a</annotation></semantics></math>
+at times below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+defines an element of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mrow><mi>u</mi><mo>&lt;</mo><mi>c</mi></mrow></msub><msub><mi>M</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">\lim_{u&lt;c}M_u</annotation></semantics></math>.
+The second surjection in (UR25) extends it to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>,
+contradicting maximality. Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">c\in I</annotation></semantics></math>.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">c&lt;b</annotation></semantics></math>,
+the first surjection in (UR25) extends
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>c</mi></msub><annotation encoding="application/x-tex">x_c</annotation></semantics></math>
+to some
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>&gt;</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">d&gt;c</annotation></semantics></math>.
+Restrict to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>≤</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">d\leq b</annotation></semantics></math>
+if necessary. Using the restrictions of that extension at every
+intermediate time extends the coherent family through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
+again a contradiction. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mi>b</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">c=b\in I</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>b</mi></msub><annotation encoding="application/x-tex">x_b</annotation></semantics></math>
+lifts
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>a</mi></msub><annotation encoding="application/x-tex">x_a</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p><strong>Complex criterion.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>t</mi></msub><annotation encoding="application/x-tex">C_t</annotation></semantics></math>
+be complexes of modules with degreewise surjective transitions. Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>s</mi></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mrow><mi>u</mi><mo>&lt;</mo><mi>s</mi></mrow></msub><msub><mi>C</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">C_s=\lim_{u&lt;s}C_u</annotation></semantics></math>
+termwise, with a countable cofinal sequence allowed in this limit, and
+suppose</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">colim</mi><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow></munder><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>C</mi><mi>t</mi></msub><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>C</mi><mi>s</mi></msub><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR26)</mtext></mrow><annotation encoding="application/x-tex">
+\underset{t&gt;s}{\operatorname{colim}}H^q(C_t)
+\xrightarrow{\sim}H^q(C_s)
+\qquad\text{(UR26)}
+</annotation></semantics></math></p>
+<p>for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">s,q</annotation></semantics></math>.
+Then every transition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>b</mi></msub><mo>→</mo><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_b\to C_a</annotation></semantics></math>
+is a quasi-isomorphism.</p>
+<p><strong>Proof.</strong> The complex calculation (UR24) shows, without
+any induction, that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>C</mi><mi>s</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>→</mo><msub><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mrow><mi>u</mi><mo>&lt;</mo><mi>s</mi></mrow></msub><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>C</mi><mi>u</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^q(C_s)\to\lim_{u&lt;s}H^q(C_u)</annotation></semantics></math>
+is surjective. Apply the surjective extension lemma in each degree,
+using (UR26) for its first map. All cohomological transitions are
+therefore surjective, simultaneously in every degree. Their countable
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mn>1</mn></msup><annotation encoding="application/x-tex">\lim^1</annotation></semantics></math>
+groups vanish by the same recursive calculation as in (UR24). Hence the
+comparison to the left limit is now an isomorphism in every degree.
+Together with (UR26) this satisfies the two-sided interval criterion
+<code>SH02-NCD-INTERVAL-SYSTEM</code> in <a href="src/SH02/noncharacteristic-deformation.md">the deformation
+lesson</a>, which proves every cohomological transition is an
+isomorphism. That elementary criterion uses a supremum argument, not a
+cohomological lower bound. This proves the assertion.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The order matters: first obtain surjectivity in all degrees, then
+eliminate all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mn>1</mn></msup><annotation encoding="application/x-tex">\lim^1</annotation></semantics></math>
+terms, then obtain injectivity. Starting an induction at degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math>
+would not be a proof.</p>
+<span id="SH02-UR-DEFORMATION"></span><h2 id="sh02-ur-deformation-an-unbounded-deformation-theorem-on-manifolds">SH02-UR-DEFORMATION
+— An unbounded deformation theorem on manifolds</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+be a finite-dimensional Hausdorff manifold without boundary, countable
+at infinity, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D(k_X)</annotation></semantics></math>,
+and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mover><mrow><msub><mo>⋃</mo><mi>q</mi></msub><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo>:</mo><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>≠</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">S=\overline{\bigcup_q\{x:H^q(F)_x\ne0\}}</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>t</mi></msub><annotation encoding="application/x-tex">U_t</annotation></semantics></math>
+be open subsets indexed by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+such that:</p>
+<ol type="1">
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>=</mo><msub><mo>⋃</mo><mrow><mi>s</mi><mo>&lt;</mo><mi>t</mi></mrow></msub><msub><mi>U</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">U_t=\bigcup_{s&lt;t}U_s</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true">¯</mo></mover><mo>∩</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">\overline{U_t\setminus U_s}\cap S</annotation></semantics></math>
+is compact whenever
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s&lt;t</annotation></semantics></math>.</li>
+<li>With
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>s</mi></msub><mo>=</mo><msub><mo>⋂</mo><mrow><mi>v</mi><mo>&gt;</mo><mi>s</mi></mrow></msub><mover><mrow><msub><mi>U</mi><mi>v</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">B_s=\bigcap_{v&gt;s}\overline{U_v\setminus U_s}</annotation></semantics></math>,
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s\leq t</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><msub><mi>B</mi><mi>s</mi></msub><mo>\</mo><msub><mi>U</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">x\in B_s\setminus U_t</annotation></semantics></math>
+one has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>X</mi><mo>\</mo><msub><mi>U</mi><mi>t</mi></msub></mrow></msub><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(R\Gamma_{X\setminus U_t}F)_x=0</annotation></semantics></math>.</li>
+</ol>
+<p>Then restriction gives isomorphisms in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(k)</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mspace width="-0.167em"></mspace><mrow><mo form="prefix" stretchy="true">(</mo><munder><mo>⋃</mo><mi>t</mi></munder><msub><mi>U</mi><mi>t</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="true">)</mo></mrow><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>s</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR27)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma\!\left(\bigcup_t U_t;F\right)
+\xrightarrow{\sim}R\Gamma(U_s;F)
+\qquad\text{(UR27)}
+</annotation></semantics></math></p>
+<p>for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>.
+No cohomological lower bound on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+is required.</p>
+<p><strong>Proof.</strong> First restrict to the closed support
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+Exact closed direct image identifies cohomology and local support tests,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+vanishes on the complement. The front computed inside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>∩</mo><msub><mi>B</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">S\cap B_s</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>t</mi></msub><mo>∩</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>\</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>s</mi></msub><mo>∩</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo></mrow><mo accent="true">¯</mo></mover><mrow><mspace width="0.167em"></mspace><mi>S</mi></mrow></msup><mo>⊂</mo><mi>S</mi><mo>∩</mo><msup><mover><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true">¯</mo></mover><mrow><mspace width="0.167em"></mspace><mi>X</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\overline{(U_t\cap S)\setminus(U_s\cap S)}^{\,S}
+\subset S\cap\overline{U_t\setminus U_s}^{\,X}</annotation></semantics></math>.
+Thus the hypotheses persist, all closed increments are compact, and the
+uniform bounds and (UR22) remain valid by the closed-subset form proved
+above. Work on that closed subset from now on.</p>
+<p>Fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+and set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>s</mi></msub><mo>=</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>X</mi><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">Q_s=R\Gamma_{X\setminus U_s}F</annotation></semantics></math>.
+We claim
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow></msub><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>t</mi></msub><mo>;</mo><msub><mi>Q</mi><mi>s</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\operatorname{colim}_{t&gt;s}H^q(U_t;Q_s)=0</annotation></semantics></math>
+for all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+be represented at time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">t&gt;s</annotation></semantics></math>.
+Localizing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>s</mi></msub><annotation encoding="application/x-tex">Q_s</annotation></semantics></math>
+and using successive closed supports gives a triangle</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>X</mi><mo>\</mo><msub><mi>U</mi><mi>t</mi></msub></mrow></msub><mi>F</mi><mo>→</mo><msub><mi>Q</mi><mi>s</mi></msub><mo>→</mo><mi>R</mi><msub><mi>j</mi><mrow><mi>t</mi><mo>*</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>Q</mi><mi>s</mi></msub><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>U</mi><mi>t</mi></msub></msub><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mrow><mi>+</mi><mn>1</mn></mrow></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR28)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma_{X\setminus U_t}F\longrightarrow Q_s
+\longrightarrow Rj_{t*}(Q_s|_{U_t})\xrightarrow{+1}.
+\qquad\text{(UR28)}
+</annotation></semantics></math></p>
+<p>The first two terms vanish on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>
+by hypothesis, including its endpoint case
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s=t</annotation></semantics></math>
+for the second term. At points already in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>t</mi></msub><annotation encoding="application/x-tex">U_t</annotation></semantics></math>
+the first vanishes automatically. Hence the third vanishes on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>.
+This front is compact, and (UR22) applied to the third term implies that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+vanishes on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>∩</mo><msub><mi>U</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">V\cap U_t</annotation></semantics></math>
+for some open neighborhood
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>.</p>
+<p>There exists
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mi>u</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s&lt;u\leq t</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mrow><msub><mi>U</mi><mi>u</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true">¯</mo></mover><mo>⊂</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">\overline{U_u\setminus U_s}\subset V</annotation></semantics></math>.
+To see this, the closed increments for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mi>v</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s&lt;v\leq t</annotation></semantics></math>
+are nested compact subsets of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline{U_t\setminus U_s}</annotation></semantics></math>.
+If none were contained in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+their complements of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+would be nonempty nested compact sets with nonempty intersection,
+contrary to the definition of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>.
+This argument also treats an empty front.</p>
+<p>Now
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>s</mi></msub><annotation encoding="application/x-tex">U_s</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>u</mi></msub><mo>∩</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">U_u\cap V</annotation></semantics></math>
+cover
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>u</mi></msub><annotation encoding="application/x-tex">U_u</annotation></semantics></math>.
+The complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>s</mi></msub><annotation encoding="application/x-tex">Q_s</annotation></semantics></math>
+vanishes on the first and on the intersection. The unbounded two-open
+Mayer–Vietoris triangle therefore identifies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>u</mi></msub><mo>;</mo><msub><mi>Q</mi><mi>s</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma(U_u;Q_s)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>u</mi></msub><mo>∩</mo><mi>V</mi><mo>;</mo><msub><mi>Q</mi><mi>s</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma(U_u\cap V;Q_s)</annotation></semantics></math>.
+The restriction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+is zero there, proving the claim.</p>
+<p>Apply sections on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>t</mi></msub><annotation encoding="application/x-tex">U_t</annotation></semantics></math>
+to the localization triangle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>s</mi></msub><mo>→</mo><mi>F</mi><mo>→</mo><mi>R</mi><msub><mi>j</mi><mrow><mi>s</mi><mo>*</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>U</mi><mi>s</mi></msub></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q_s\to F\to Rj_{s*}(F|_{U_s})</annotation></semantics></math>
+and take the filtered colimit for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">t&gt;s</annotation></semantics></math>.
+The last term has the constant cohomology
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>s</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^q(U_s;F)</annotation></semantics></math>,
+and the first term has zero colimit in every degree by the claim.
+Exactness of filtered colimits gives (UR26) for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>t</mi></msub><mo>=</mo><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>t</mi></msub><mo>;</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_t=\Gamma(U_t;I)</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+is a K-injective representative with injective terms. These complexes
+have surjective termwise restrictions by flabbiness. The equality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>s</mi></msub><mo>=</mo><msub><mo>⋃</mo><mrow><mi>u</mi><mo>&lt;</mo><mi>s</mi></mrow></msub><msub><mi>U</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">U_s=\bigcup_{u&lt;s}U_u</annotation></semantics></math>,
+computed on a sequence increasing to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+gives their termwise left-limit equality by the sheaf axiom. The complex
+criterion proves that all restrictions between times are
+quasi-isomorphisms.</p>
+<p>Finally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>⋃</mo><mi>t</mi></msub><msub><mi>U</mi><mi>t</mi></msub><mo>=</mo><msub><mo>⋃</mo><mrow><mi>m</mi><mo>≥</mo><mn>0</mn></mrow></msub><msub><mi>U</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">\bigcup_tU_t=\bigcup_{m\geq0}U_m</annotation></semantics></math>.
+Apply (UR23). All cohomological transitions are isomorphisms, so the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mn>1</mn></msup><annotation encoding="application/x-tex">\lim^1</annotation></semantics></math>
+term vanishes and the inverse limit is the value at any fixed time. Its
+comparison map is restriction. This proves (UR27) in every degree.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>This result is sufficient for deformation on the finite-dimensional
+spaces of local manifold arguments. A more general unbounded theorem on
+Hausdorff spaces is proved by Marco Robalo and Pierre Schapira, <a href="https://doi.org/10.4171/PRIMS/54-2-5"><em>A lemma for microlocal
+sheaf theory in the infinity-categorical setting</em></a>, Theorem 2.3;
+despite the title, that theorem concerns the classical unbounded derived
+category. Their complex criterion motivates the separation of
+surjectivity from injectivity above. We have supplied the extension
+argument and the finite-dimensional continuity proof explicitly, and do
+not import an unspecified extension of every microsupport theorem from
+that paper.</p>
+<span id="SH02-UR-MICROSUPPORT"></span><h2 id="sh02-ur-microsupport-unbounded-local-tests-and-the-characteristic-estimates">SH02-UR-MICROSUPPORT
+— Unbounded local tests and the characteristic estimates</h2>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D(k_X)</annotation></semantics></math>
+on a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+manifold, define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mi mathvariant="normal">u</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{SS}_{\mathrm{u}}(F)</annotation></semantics></math>
+by the usual support test:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,\xi)</annotation></semantics></math>
+is outside it if there is an open neighborhood
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,\xi)</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>T</mi><mo>*</mo></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">T^*X</annotation></semantics></math>
+such that</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>φ</mi><mo>≥</mo><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo></mrow></msub><mi>F</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>y</mi></msub><mo>=</mo><mn>0</mn><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR29)</mtext></mrow><annotation encoding="application/x-tex">
+\left(R\Gamma_{\{\varphi\geq\varphi(y)\}}F\right)_y=0
+\qquad\text{(UR29)}
+</annotation></semantics></math></p>
+<p>for every point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+and every real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
+defined near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>d</mi><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">(y,d\varphi(y))\in W</annotation></semantics></math>.
+All local functors are the unbounded classical ones of (UR20); the
+equality is vanishing in every degree. On bounded complexes this agrees
+with <code>SH02-MST-TEST</code> in <a href="src/SH02/microsupport-tests.md">the local-test lesson</a>. It uses
+the same
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+tests. An equivalence with other differentiability classes on unbounded
+complexes is not needed or asserted here.</p>
+<p>This definition gives a closed positive-conic subset, is invariant
+under shifts, and satisfies the triangle inequality</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mi mathvariant="normal">u</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>F</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msub><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mi mathvariant="normal">u</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>F</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>∪</mo><msub><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mi mathvariant="normal">u</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>F</mi><mn>3</mn></msub><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR30)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}_{\mathrm{u}}(F_2)
+\subset\operatorname{SS}_{\mathrm{u}}(F_1)
+\cup\operatorname{SS}_{\mathrm{u}}(F_3)
+\qquad\text{(UR30)}
+</annotation></semantics></math></p>
+<p>for a distinguished triangle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>→</mo><msub><mi>F</mi><mn>2</mn></msub><mo>→</mo><msub><mi>F</mi><mn>3</mn></msub><mover><mo>→</mo><mrow><mi>+</mi><mn>1</mn></mrow></mover></mrow><annotation encoding="application/x-tex">F_1\to F_2\to F_3\xrightarrow{+1}</annotation></semantics></math>.
+Indeed the complement is a union of open testing neighborhoods;
+multiplying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
+by a positive constant rescales its covector without changing its
+support set; and each test functor is triangulated. Intersect two
+testing neighborhoods to prove (UR30). The same argument gives the other
+two triangle inequalities. Open restriction is compatible with all
+tests, so the definition is local in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.</p>
+<p>Its intersection with the zero section is exactly the closed support
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+used in the deformation theorem. Outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+the complex vanishes on a neighborhood and so do all its tests.
+Conversely, if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,0)</annotation></semantics></math>
+has a testing neighborhood, that neighborhood contains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(y,0)</annotation></semantics></math>
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+sufficiently near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.
+Testing the constant function makes (UR29) equal to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>y</mi></msub><annotation encoding="application/x-tex">F_y</annotation></semantics></math>.
+Thus all cohomology stalks vanish on one common neighborhood, placing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+These arguments use no boundedness or constructibility.</p>
+<p><strong>The characteristic estimate.</strong> The internal-Hom
+statement, on a smooth manifold
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+for the source’s commutative coefficient ring of finite global dimension
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>,</mo><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F,G\in D^+(k_X)</annotation></semantics></math>,
+is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mi mathvariant="normal">u</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msub><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mi mathvariant="normal">u</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>+</mo><mo accent="true">̂</mo></mover><msub><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mi mathvariant="normal">u</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR31)</mtext></mrow><annotation encoding="application/x-tex">
+\operatorname{SS}_{\mathrm{u}}(R\mathcal Hom(G,F))
+\subset\operatorname{SS}_{\mathrm{u}}(F)
+\widehat+\operatorname{SS}_{\mathrm{u}}(G)^a.
+\qquad\text{(UR31)}
+</annotation></semantics></math></p>
+<p>The tensor counterpart has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>G</mi></mrow><annotation encoding="application/x-tex">F\otimes^LG</annotation></semantics></math>
+and omits the antipode. The operation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mo>+</mo><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\widehat+</annotation></semantics></math>
+is the asymptotic sum defined in <span class="unlinked">characteristic
+estimates</span>; it includes covectors obtained by cancellation of
+unbounded covectors at approaching base points.</p>
+<p>The constructions above make every object and local test in (UR31)
+meaningful. The geometric proof is supplied in <a href="src/SH02/unbounded-characteristic-estimates.md">the unbounded
+characteristic supplement</a>, at the stronger range
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>,</mo><mi>G</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F,G\in D(k_X)</annotation></semantics></math>.
+Its three parts are:</p>
+<ol type="1">
+<li><a href="src/SH02/unbounded-characteristic-estimates.md#SH02-UCE-EXTERNAL-HOM">SH02-UCE-EXTERNAL-HOM</a>
+proves the external estimate for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msubsup><mi>q</mi><mn>2</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>G</mi><mo>,</mo><msubsup><mi>q</mi><mn>1</mn><mi>!</mi></msubsup><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\mathcal Hom(q_2^{-1}G,q_1^!F)</annotation></semantics></math>
+with its possibly unbounded output. It uses open rectangles and an
+explicit opposite-cone lens, retaining both restriction maps.</li>
+<li><a href="src/SH02/unbounded-characteristic-estimates.md#SH02-UCE-RESTRICTION">SH02-UCE-RESTRICTION</a>
+proves the closed-embedding estimate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mi mathvariant="normal">u</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>δ</mi><mi>!</mi></msup><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>⊂</mo><msup><mi>δ</mi><mi>#</mi></msup><msub><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mi mathvariant="normal">u</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{SS}_{\mathrm{u}}(\delta^!A)\subset\delta^\#\operatorname{SS}_{\mathrm{u}}(A)</annotation></semantics></math>
+using raw specialization and radial cutoff. The preceding window and
+test lemmas keep the geometric neighborhoods uniform in all
+degrees.</li>
+<li><a href="src/SH02/unbounded-characteristic-estimates.md#SH02-UCE-DIAGONAL-HOM">SH02-UCE-DIAGONAL-HOM</a>
+identifies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>δ</mi><mi>!</mi></msup><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msubsup><mi>q</mi><mn>2</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>G</mi><mo>,</mo><msubsup><mi>q</mi><mn>1</mn><mi>!</mi></msubsup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\delta^!R\mathcal Hom(q_2^{-1}G,q_1^!F)\simeq R\mathcal Hom(G,F)</annotation></semantics></math>
+by its adjunction maps. The external tensor estimate and ordinary
+restriction give the tensor assertion; both deductions are completed in
+<a href="src/SH02/unbounded-characteristic-estimates.md#SH02-UCE-SUM">SH02-UCE-SUM</a>.</li>
+</ol>
+<p>The unbounded deformation theorem above is one prerequisite of that
+proof. Formula (UR21) alone would not suffice: its window varies with
+the output degree, and cohomological truncation need not preserve
+microsupport. The supplement first proves uniform amplitude bounds for
+the required families of functors, and then applies the geometric tests
+directly to the original complex. This supplies the full estimates
+discussed in <code>SH02-CHE-RANGE</code>, relative to the named
+prerequisites. The bounded classical comparison in <span class="unlinked">the six-operations
+bridge</span> retains its stated bounded scope. Neither this extension nor
+the supplement assumes hypercompleteness or settles the independent
+Fourier normalization.</p>
+<span id="SH02-UR-PROBLEMS"></span><h2 id="sh02-ur-problems-three-checks-that-separate-the-issues">SH02-UR-PROBLEMS
+— Three checks that separate the issues</h2>
+<p><strong>Problem 1.</strong> On a point over a field, put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><msub><mo>⨁</mo><mrow><mi>m</mi><mo>≥</mo><mn>0</mn></mrow></msub><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>m</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">G=\bigoplus_{m\geq0}k[-m]</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">F=k</annotation></semantics></math>.
+Determine the range of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\operatorname{Hom}(G,F)</annotation></semantics></math>
+and check (UR18).</p>
+<p><strong>Solution.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+has one copy of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+in every nonnegative degree. Its Hom into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+has one copy in every nonpositive degree, with zero differential;
+equivalently it is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∏</mo><mrow><mi>m</mi><mo>≥</mo><mn>0</mn></mrow></msub><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mi>m</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\prod_{m\geq0}k[m]</annotation></semantics></math>.
+It is unbounded below. For the identity map, proper and ordinary image
+and exceptional inverse image are identities, both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>
+maps are identities, and both sides of (UR18) are the identity on this
+Hom. The diagram is true, but the bounded-below construction alone could
+not type all its objects.</p>
+<p><strong>Problem 2.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>D</mi><mo>→</mo><mo form="prefix" stretchy="false">{</mo><mi>*</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">f:D\to\{*\}</annotation></semantics></math>
+for an arbitrary discrete set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>.
+Give the unbounded adjunction explicitly, including the trace.</p>
+<p><strong>Solution.</strong> The integral cohomological dimension is
+zero. Proper direct image is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>⨁</mo><mrow><mi>d</mi><mo>∈</mo><mi>D</mi></mrow></msub><msub><mi>G</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">\bigoplus_{d\in D}G_d</annotation></semantics></math>,
+ordinary image is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∏</mo><mrow><mi>d</mi><mo>∈</mo><mi>D</mi></mrow></msub><msub><mi>G</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">\prod_{d\in D}G_d</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mi>!</mi></msup><mi>F</mi></mrow><annotation encoding="application/x-tex">f^!F</annotation></semantics></math>
+has stalk
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+at every point. The adjunction is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mo>⨁</mo><mi>d</mi></msub><msub><mi>G</mi><mi>d</mi></msub><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mo>∏</mo><mi>d</mi></msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>G</mi><mi>d</mi></msub><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}(\bigoplus_dG_d,F)=\prod_d\operatorname{Hom}(G_d,F)</annotation></semantics></math>,
+also for derived morphisms. The trace
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>⨁</mo><mi>d</mi></msub><mi>F</mi><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">\bigoplus_d F\to F</annotation></semantics></math>
+is the finite-sum map. Support forgetting is the canonical inclusion of
+the direct sum in the product. In (UR19), two finitely supported
+families evaluate coordinatewise and their values are added. Either
+route has this same finite sum. No map adding infinitely many
+coordinates is introduced.</p>
+<p><strong>Problem 3.</strong> Explain why right-continuity of
+cohomology and degreewise surjectivity of the complex restrictions do
+not justify the sentence “start with the lowest nonzero degree” for an
+unbounded deformation problem. Give the replacement argument.</p>
+<p><strong>Solution.</strong> There may be a nonzero cohomology group in
+every negative degree, so a lowest degree need not exist. Degreewise
+surjectivity yields the Milnor sequence and therefore surjectivity of
+the cohomological comparison to the left limit. The extension lemma then
+gives surjectivity of all cohomological restrictions in every degree at
+once. These restrictions kill the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mn>1</mn></msup><annotation encoding="application/x-tex">\lim^1</annotation></semantics></math>
+obstruction, giving bijective left-continuity. Combining that with
+right-continuity proves constancy. None of these steps starts an
+induction over all integers.</p>
+<span id="SH02-UR-HOM-PULLBACK"></span><h2 id="sh02-ur-hom-pullback-the-full-exceptional-internal-hom-comparison">SH02-UR-HOM-PULLBACK
+— The full exceptional internal-Hom comparison</h2>
+<p>Retain the locally compact Hausdorff spaces, map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>Y</mi><mo>→</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">f:Y\to X</annotation></semantics></math>,
+and uniform integral proper-support dimension bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+from this lesson. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+be the course coefficient ring. For arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>,</mo><mi>B</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A,B\in D(k_X)</annotation></semantics></math>,
+there is a natural isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mi>!</mi></msup><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>A</mi><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(UR32)</mtext></mrow><annotation encoding="application/x-tex">
+f^!R\mathcal Hom(A,B)
+\xrightarrow{\sim}R\mathcal Hom(f^{-1}A,f^!B).
+\qquad\text{(UR32)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>∈</mo><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C\in D(k_Y)</annotation></semantics></math>,
+the unbounded exceptional adjunction and projection isomorphism proved
+above give the following natural chain:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>C</mi><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>C</mi><mo>,</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>C</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>A</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>C</mi><msup><mo>⊗</mo><mi>L</mi></msup><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>C</mi><msup><mo>⊗</mo><mi>L</mi></msup><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>A</mi><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><mi>B</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>C</mi><mo>,</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>A</mi><mo>,</mo><msup><mi>f</mi><mi>!</mi></msup><mi>B</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\operatorname{Hom}(C,f^!R\mathcal Hom(A,B))
+&amp;\simeq\operatorname{Hom}(Rf_!C,R\mathcal Hom(A,B))\\
+&amp;\simeq\operatorname{Hom}(Rf_!C\otimes^L A,B)\\
+&amp;\simeq\operatorname{Hom}(Rf_!(C\otimes^Lf^{-1}A),B)\\
+&amp;\simeq\operatorname{Hom}(C\otimes^Lf^{-1}A,f^!B)\\
+&amp;\simeq\operatorname{Hom}(C,R\mathcal Hom(f^{-1}A,f^!B)).
+\end{aligned}
+</annotation></semantics></math></p>
+<p>Yoneda proves UR32. No intermediate tensor is required to be bounded
+below. To identify the actual arrow, put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H=R\mathcal Hom(A,B)</annotation></semantics></math>.
+The inverse projection map followed by the adjunction trace defines, by
+transposition,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mi>!</mi></msup><mi>H</mi><msup><mo>⊗</mo><mi>L</mi></msup><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>A</mi><mo>→</mo><msup><mi>f</mi><mi>!</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>H</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f^!H\otimes^Lf^{-1}A\to f^!(H\otimes^LA)</annotation></semantics></math>.
+Apply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mi>!</mi></msup><annotation encoding="application/x-tex">f^!</annotation></semantics></math>
+to evaluation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><msup><mo>⊗</mo><mi>L</mi></msup><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">H\otimes^LA\to B</annotation></semantics></math>
+and curry. Tracking a map from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+through the displayed chain gives exactly this arrow. Thus UR32 uses the
+same tensor comparison and trace as <code>SH02-EX-HOM</code>; it is not
+an unspecified isomorphism between the endpoints.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>In particular, take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≤</mo><mi>a</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\in D^{\le a}(k_X)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>b</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B\in D^{\ge b}(k_X)</annotation></semantics></math>,
+with no lower bound on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Represent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+by a complex zero above degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+by a bounded-below K-injective complex zero below degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.
+The internal Hom complex has no term below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">b-a</annotation></semantics></math>,
+so its derived object lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mrow><mo>≥</mo><mi>b</mi><mo>−</mo><mi>a</mi></mrow></msup><annotation encoding="application/x-tex">D^{\ge b-a}</annotation></semantics></math>.
+The lower-amplitude bound for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mi>!</mi></msup><annotation encoding="application/x-tex">f^!</annotation></semantics></math>
+places the left side of UR32 in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mrow><mo>≥</mo><mi>b</mi><mo>−</mo><mi>a</mi><mo>−</mo><mi>r</mi></mrow></msup><annotation encoding="application/x-tex">D^{\ge b-a-r}</annotation></semantics></math>.
+On the right, exact inverse image preserves the upper bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mi>!</mi></msup><mi>B</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>b</mi><mo>−</mo><mi>r</mi></mrow></msup></mrow><annotation encoding="application/x-tex">f^!B\in D^{\ge b-r}</annotation></semantics></math>,
+giving the same Hom lower bound. Both endpoints therefore belong to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mo>+</mo></msup><annotation encoding="application/x-tex">D^+</annotation></semantics></math>,
+and UR32 restricts to the full
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mo>−</mo></msup><mo>×</mo><msup><mi>D</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">D^-\times D^+</annotation></semantics></math>
+assertion. On the older bounded-first-input range, the adjunctions,
+projection and trace restrict to those of the exceptional-operations
+lesson, so the comparison is exactly its previously defined map.</p>
+</main></body></html>

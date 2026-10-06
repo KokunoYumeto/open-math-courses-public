@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algebraic spaces · Algebraic spaces and stacks</title>
+<meta name="description" content="A lesson of the course Algebraic spaces and stacks. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-AS/algebraic-spaces.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Algebraic spaces and stacks</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and adapted by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="algebraic-spaces">Algebraic spaces</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>A quotient can have good local coordinates even when no affine neighbourhood exists at one of its points. Algebraic spaces let us retain those coordinates. The coordinates are allowed to be étale rather than Zariski local, and the object they describe is a sheaf of sets. Automorphisms of an object are not retained in this construction; retaining them will lead to stacks.</p>
+<p>We will construct quotients before studying their geometry. The decisive question is whether the relation between two coordinate systems is itself represented by a scheme. After answering it, we will compare finite symmetry, an infinite translation action, and an identification that changes at one point.</p>
+<p>We assume the functor of points, fibre products of schemes, the fppf topology, and descent of morphisms. The scheme descent theorem used below is proved at full locally quasi-finite scope in §2.0. We impose no quasi-separatedness condition in the definition of an algebraic space. All groups used in this lesson are abstract groups, acting through their constant group schemes; a profinite group is treated here as an abstract group unless expressly stated otherwise.</p>
+<p>Basic references are [Stacks] and [Behrend]. The term algebraic space used here concerns étale presentations. Serre's earlier use of the same words, discussed in [EGA IV, §10.10], concerns a different construction with closed points of Jacobson schemes.</p>
+<h2 id="1-local-coordinates-without-an-underlying-scheme">1. Local coordinates without an underlying scheme</h2>
+<p>Fix a scheme <span class="math" data-tex="\(S\)">\(S\)</span>. Work on the big fppf site of <span class="math" data-tex="\(S\)">\(S\)</span>-schemes, within a fixed universe. A scheme <span class="math" data-tex="\(V\)">\(V\)</span> is identified with the sheaf</p>
+<span class="math math-display" data-tex="\[
+h_V(T)=\operatorname{Hom}_S(T,V).
+\]">\[
+h_V(T)=\operatorname{Hom}_S(T,V).
+\]</span>
+<p>A transformation <span class="math" data-tex="\(a:F\to G\)">\(a:F\to G\)</span> of sheaves is <strong>representable by schemes</strong> if <span class="math" data-tex="\(T\times_G F\)">\(T\times_G F\)</span> is represented by a scheme for every scheme <span class="math" data-tex="\(T\)">\(T\)</span> and every map <span class="math" data-tex="\(T\to G\)">\(T\to G\)</span>. This condition lets us ask geometric questions about <span class="math" data-tex="\(a\)">\(a\)</span>: it is étale, an open immersion, or surjective if every such base change has that property. Here surjectivity is surjectivity of the resulting maps of schemes, not surjectivity of <span class="math" data-tex="\(F(T)\to G(T)\)">\(F(T)\to G(T)\)</span> for every <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Base change and composition preserve representability by schemes. If a property of scheme morphisms is stable under base change and local on the target for the fppf topology, then its definition for representable transformations can be checked after an fppf cover of any test scheme. If the property is also stable under composition, compositions of representable transformations with that property have the property.</p>
+<p><strong>Proof.</strong> For base change, the test fibre product is still a test fibre product of the original transformation. For <span class="math" data-tex="\(F\to G\to H\)">\(F\to G\to H\)</span> and <span class="math" data-tex="\(T\to H\)">\(T\to H\)</span>, first form the scheme <span class="math" data-tex="\(V=T\times_H G\)">\(V=T\times_H G\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+T\times_H F=V\times_G F
+\]">\[
+T\times_H F=V\times_G F
+\]</span>
+<p>is a scheme. The map to <span class="math" data-tex="\(T\)">\(T\)</span> is the composition of the two tested morphisms. For the local assertion, pull <span class="math" data-tex="\(T\times_G F\to T\)">\(T\times_G F\to T\)</span> back to an fppf covering <span class="math" data-tex="\(\{T_i\to T\}\)">\(\{T_i\to T\}\)</span> and use the stated locality of the property. These observations prove all the assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The diagonal packages all tests involving a pair of objects. A sheaf <span class="math" data-tex="\(X\)">\(X\)</span> has representable diagonal if, for every scheme <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(a,b\in X(T)\)">\(a,b\in X(T)\)</span>, the equality functor</p>
+<span class="math math-display" data-tex="\[
+E_{a,b}(T&#x27;)=\{f:T&#x27;\to T:a|_{T&#x27;}=b|_{T&#x27;}\}
+\]">\[
+E_{a,b}(T&#x27;)=\{f:T&#x27;\to T:a|_{T&#x27;}=b|_{T&#x27;}\}
+\]</span>
+<p>is represented by a scheme over <span class="math" data-tex="\(T\)">\(T\)</span>. This is exactly the base change of <span class="math" data-tex="\(X\to X\times_S X\)">\(X\to X\times_S X\)</span> by <span class="math" data-tex="\((a,b):T\to X\times_S X\)">\((a,b):T\to X\times_S X\)</span>.</p>
+<p><strong>Definition 1.2.</strong> An <strong>algebraic space over <span class="math" data-tex="\(S\)">\(S\)</span></strong> is an fppf sheaf <span class="math" data-tex="\(X\)">\(X\)</span> whose diagonal is representable by schemes and which admits a representable, surjective étale morphism <span class="math" data-tex="\(q:U\to X\)">\(q:U\to X\)</span> from a scheme. Such a morphism is an <strong>étale presentation</strong>.</p>
+<p>If the diagonal is representable, every map from a scheme <span class="math" data-tex="\(V\)">\(V\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span> is representable: <span class="math" data-tex="\(T\times_X V\)">\(T\times_X V\)</span> is the base change of the diagonal by <span class="math" data-tex="\(T\times_S V\to X\times_S X\)">\(T\times_S V\to X\times_S X\)</span>. Thus the word representable in the last condition is redundant once the diagonal condition has been imposed.</p>
+<p>Every scheme is an algebraic space. Its functor of points is an fppf sheaf; its diagonal is a scheme morphism; and its identity is an étale presentation.</p>
+<p>For a presentation, the scheme</p>
+<span class="math math-display" data-tex="\[
+R=U\times_X U
+\]">\[
+R=U\times_X U
+\]</span>
+<p>records equal coordinates. Write <span class="math" data-tex="\(s,t:R\to U\)">\(s,t:R\to U\)</span> for the projections. Both are étale. The map <span class="math" data-tex="\(j=(s,t):R\to U\times_S U\)">\(j=(s,t):R\to U\times_S U\)</span> is a monomorphism, and for every test scheme its image is an equivalence relation. The relation includes an identity arrow, reversal of arrows, and composition. Because <span class="math" data-tex="\(j\)">\(j\)</span> is a monomorphism, these arrows, when they exist, are unique.</p>
+<p>Conversely, an <strong>étale equivalence relation</strong> consists of schemes <span class="math" data-tex="\(U,R\)">\(U,R\)</span> and a monomorphism <span class="math" data-tex="\(j=(s,t):R\to U\times_S U\)">\(j=(s,t):R\to U\times_S U\)</span> which gives an equivalence relation on every test scheme, with <span class="math" data-tex="\(s,t\)">\(s,t\)</span> étale. Its quotient <span class="math" data-tex="\(U/R\)">\(U/R\)</span> will always mean the fppf sheafification of the presheaf <span class="math" data-tex="\(T\mapsto U(T)/R(T)\)">\(T\mapsto U(T)/R(T)\)</span>.</p>
+<p>Sheafification matters. A point of <span class="math" data-tex="\((U/R)(T)\)">\((U/R)(T)\)</span> need not have one coordinate on <span class="math" data-tex="\(T\)">\(T\)</span>. It has coordinates on an fppf cover of <span class="math" data-tex="\(T\)">\(T\)</span>, related on overlaps.</p>
+<h2 id="2-constructing-the-quotient">2. Constructing the quotient</h2>
+<p>We prove the scheme descent theorem first. Its construction uses affine algebras and quasi-affine invariant neighbourhoods, then glues an arbitrary family of those neighbourhoods. This supplies the input to the quotient construction which follows.</p>
+<h3 id="2-0-scheme-descent-before-taking-the-quotient">2.0. Scheme descent before taking the quotient</h3>
+<p><strong>Theorem 2.0 (effective separated locally quasi-finite descent).</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be any scheme and <span class="math" data-tex="\(\{S_i\to S\}_{i\in I}\)">\(\{S_i\to S\}_{i\in I}\)</span> an fppf covering. Suppose that <span class="math" data-tex="\(X_i\to S_i\)">\(X_i\to S_i\)</span> are separated locally quasi-finite morphisms of schemes, with isomorphisms
+<span class="math math-display" data-tex="\[
+\phi_{ij}:X_i\times_S S_j\xrightarrow{\sim}S_i\times_S X_j
+\]">\[
+\phi_{ij}:X_i\times_S S_j\xrightarrow{\sim}S_i\times_S X_j
+\]</span>
+over <span class="math" data-tex="\(S_i\times_S S_j\)">\(S_i\times_S S_j\)</span>, satisfying the cocycle identity on every triple overlap. There exist a separated locally quasi-finite scheme <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> and compatible isomorphisms <span class="math" data-tex="\(X\times_S S_i\cong X_i\)">\(X\times_S S_i\cong X_i\)</span> recovering this datum. They are unique up to a unique compatible isomorphism. Every compatible family of morphisms between two such data descends uniquely.</p>
+<p>There is no quasi-compactness hypothesis on <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, no Noetherian hypothesis on <span class="math" data-tex="\(S\)">\(S\)</span>, and no local finite-presentation hypothesis on <span class="math" data-tex="\(X_i\to S_i\)">\(X_i\to S_i\)</span>. “Locally quasi-finite” includes local finite type and zero-dimensional fibres. The <strong>covering maps</strong> are locally finitely presented, as required in the definition of fppf; this will be essential for the invariant-open construction.</p>
+<p>We first establish the scheme-theoretic descent tools used in the proof. The two other scheme inputs are stated exactly: flat locally finitely presented morphisms are universally open, and separated quasi-finite morphisms are quasi-affine. Their genuine programme homes and current transitive states are recorded at the end.</p>
+<h4 id="2-0-1-affine-algebras-invariant-opens-and-morphisms">2.0.1. Affine algebras, invariant opens and morphisms</h4>
+<p><strong>Affine algebra lemma.</strong> Let <span class="math" data-tex="\(R\to B\)">\(R\to B\)</span> be faithfully flat. A <span class="math" data-tex="\(B\)">\(B\)</span>-algebra <span class="math" data-tex="\(C\)">\(C\)</span> with an algebra descent datum is the base change of an <span class="math" data-tex="\(R\)">\(R\)</span>-algebra <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, uniquely with the prescribed comparison. Compatible algebra maps descend.</p>
+<p><em>Proof.</em> Choose the direction of the algebra datum as
+<span class="math math-display" data-tex="\[
+\theta:C\otimes_R B\xrightarrow{\sim}B\otimes_R C,
+\]">\[
+\theta:C\otimes_R B\xrightarrow{\sim}B\otimes_R C,
+\]</span>
+an isomorphism of <span class="math" data-tex="\(B\otimes_R B\)">\(B\otimes_R B\)</span>-algebras. For the scheme datum directed from <span class="math" data-tex="\(X&#x27;\times_S S&#x27;\)">\(X&#x27;\times_S S&#x27;\)</span> to <span class="math" data-tex="\(S&#x27;\times_S X&#x27;\)">\(S&#x27;\times_S X&#x27;\)</span>, this is the inverse of its pullback on coordinate rings. Define
+<span class="math math-display" data-tex="\[
+\rho:C\longrightarrow B\otimes_R C,\qquad
+\rho(c)=\theta(c\otimes1).
+\]">\[
+\rho:C\longrightarrow B\otimes_R C,\qquad
+\rho(c)=\theta(c\otimes1).
+\]</span>
+This is an <span class="math" data-tex="\(R\)">\(R\)</span>-algebra homomorphism, and is <span class="math" data-tex="\(B\)">\(B\)</span>-linear when <span class="math" data-tex="\(B\)">\(B\)</span> acts on the first factor of its target:
+<span class="math" data-tex="\(\rho(bc)=(b\otimes1)\rho(c)\)">\(\rho(bc)=(b\otimes1)\rho(c)\)</span>.
+The diagonal and cocycle identities for <span class="math" data-tex="\(\theta\)">\(\theta\)</span> give
+<span class="math math-display" data-tex="\[
+\mu\rho=\operatorname{id}_C,\qquad
+(\operatorname{id}_B\otimes\rho)\rho(c)
+ =\sum_\nu b_\nu\otimes1\otimes c_\nu
+ \quad\text{if }\rho(c)=\sum_\nu b_\nu\otimes c_\nu,              \tag{D.1}
+\]">\[
+\mu\rho=\operatorname{id}_C,\qquad
+(\operatorname{id}_B\otimes\rho)\rho(c)
+ =\sum_\nu b_\nu\otimes1\otimes c_\nu
+ \quad\text{if }\rho(c)=\sum_\nu b_\nu\otimes c_\nu,              \tag{D.1}
+\]</span>
+where <span class="math" data-tex="\(\mu:B\otimes_R C\to C\)">\(\mu:B\otimes_R C\to C\)</span> is multiplication by the structural <span class="math" data-tex="\(B\)">\(B\)</span>-action. The first identity follows by pulling <span class="math" data-tex="\(\theta\)">\(\theta\)</span> to the diagonal; the cocycle makes that invertible diagonal map idempotent, hence the identity. The second identity is the cocycle applied to <span class="math" data-tex="\(c\otimes1\otimes1\)">\(c\otimes1\otimes1\)</span>: passage successively from the first to the second and third coordinates equals direct passage from the first to the third.</p>
+<p>Put
+<span class="math math-display" data-tex="\[
+C_0=\{c\in C:\rho(c)=1\otimes c\}.
+\]">\[
+C_0=\{c\in C:\rho(c)=1\otimes c\}.
+\]</span>
+It is an <span class="math" data-tex="\(R\)">\(R\)</span>-subalgebra because both maps in this equalizer are algebra homomorphisms. Flatness of <span class="math" data-tex="\(B/R\)">\(B/R\)</span>, applied to the equalizer of the two <span class="math" data-tex="\(R\)">\(R\)</span>-linear maps <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and <span class="math" data-tex="\(c\mapsto1\otimes c\)">\(c\mapsto1\otimes c\)</span>, identifies
+<span class="math math-display" data-tex="\[
+B\otimes_R C_0
+=\ker\bigl(\operatorname{id}_B\otimes\rho
+              -\operatorname{id}_B\otimes(c\mapsto1\otimes c)\bigr)
+\subset B\otimes_R C .
+\]">\[
+B\otimes_R C_0
+=\ker\bigl(\operatorname{id}_B\otimes\rho
+              -\operatorname{id}_B\otimes(c\mapsto1\otimes c)\bigr)
+\subset B\otimes_R C .
+\]</span>
+By (D.1), <span class="math" data-tex="\(\rho(C)\)">\(\rho(C)\)</span> is contained in this kernel. Thus <span class="math" data-tex="\(\rho\)">\(\rho\)</span> gives an inverse to
+<span class="math math-display" data-tex="\[
+\lambda:B\otimes_R C_0\longrightarrow C,\qquad b\otimes c\longmapsto bc.
+\]">\[
+\lambda:B\otimes_R C_0\longrightarrow C,\qquad b\otimes c\longmapsto bc.
+\]</span>
+Indeed <span class="math" data-tex="\(\mu\rho=\operatorname{id}\)">\(\mu\rho=\operatorname{id}\)</span>, and, for <span class="math" data-tex="\(c\in C_0\)">\(c\in C_0\)</span>,
+<span class="math" data-tex="\(\rho(bc)=b\otimes c\)">\(\rho(bc)=b\otimes c\)</span>. Hence <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is an isomorphism of <span class="math" data-tex="\(B\)">\(B\)</span>-algebras. It respects the full datum: the identity
+<span class="math" data-tex="\(\theta(c\otimes b)=(1\otimes b)\rho(c)\)">\(\theta(c\otimes b)=(1\otimes b)\rho(c)\)</span> shows that <span class="math" data-tex="\(\rho\)">\(\rho\)</span> determines <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, and on <span class="math" data-tex="\(B\otimes_R C_0\)">\(B\otimes_R C_0\)</span> the resulting datum is the canonical one.</p>
+<p>For completeness, the equalizer for a canonical object is its original algebra. For any <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(L\)">\(L\)</span>, the sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow L\longrightarrow B\otimes_R L
+\rightrightarrows B\otimes_R B\otimes_R L                       \tag{D.2}
+\]">\[
+0\longrightarrow L\longrightarrow B\otimes_R L
+\rightrightarrows B\otimes_R B\otimes_R L                       \tag{D.2}
+\]</span>
+is exact. After tensoring with <span class="math" data-tex="\(B\)">\(B\)</span>, the injection has the retraction multiplying the first two <span class="math" data-tex="\(B\)">\(B\)</span>-factors. If
+<span class="math" data-tex="\(z=\sum a_\nu\otimes b_\nu\otimes l_\nu\)">\(z=\sum a_\nu\otimes b_\nu\otimes l_\nu\)</span> is in the equalizer in that tensored sequence, its equality is
+<span class="math math-display" data-tex="\[
+\sum a_\nu\otimes1\otimes b_\nu\otimes l_\nu
+ =\sum a_\nu\otimes b_\nu\otimes1\otimes l_\nu.
+\]">\[
+\sum a_\nu\otimes1\otimes b_\nu\otimes l_\nu
+ =\sum a_\nu\otimes b_\nu\otimes1\otimes l_\nu.
+\]</span>
+Multiplying the first two factors gives
+<span class="math" data-tex="\(z=\sum a_\nu b_\nu\otimes1\otimes l_\nu\)">\(z=\sum a_\nu b_\nu\otimes1\otimes l_\nu\)</span>, precisely the image of the previous term. Faithful flatness reflects exactness and proves (D.2).</p>
+<p>A compatible map between two data commutes with their <span class="math" data-tex="\(\rho\)">\(\rho\)</span>'s and therefore restricts to a map between their equalizers. The base-change isomorphisms recover the original map. Conversely the pullback of an <span class="math" data-tex="\(R\)">\(R\)</span>-algebra map respects the canonical datum, and (D.2) proves uniqueness. Taking spectra proves affine scheme effectivity and full faithfulness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Invariant opens lemma.</strong> Let <span class="math" data-tex="\(q:T&#x27;\to T\)">\(q:T&#x27;\to T\)</span> be a faithfully flat affine morphism. An open <span class="math" data-tex="\(U&#x27;\subset T&#x27;\)">\(U&#x27;\subset T&#x27;\)</span> whose two inverse images in <span class="math" data-tex="\(T&#x27;\times_T T&#x27;\)">\(T&#x27;\times_T T&#x27;\)</span> agree is the pullback of a unique open <span class="math" data-tex="\(U\subset T\)">\(U\subset T\)</span>.</p>
+<p><em>Proof.</em> It is saturated on underlying points. If two points <span class="math" data-tex="\(t&#x27;_1,t&#x27;_2\)">\(t&#x27;_1,t&#x27;_2\)</span> lie above the same <span class="math" data-tex="\(t\)">\(t\)</span>, their residue fields have a nonzero tensor product over <span class="math" data-tex="\(\kappa(t)\)">\(\kappa(t)\)</span>. A prime of that tensor product gives a point of the fibre product mapping to both. Invariance therefore says <span class="math" data-tex="\(t&#x27;_1\in U&#x27;\)">\(t&#x27;_1\in U&#x27;\)</span> if and only if <span class="math" data-tex="\(t&#x27;_2\in U&#x27;\)">\(t&#x27;_2\in U&#x27;\)</span>. Thus <span class="math" data-tex="\(U&#x27;=q^{-1}(q(U&#x27;))\)">\(U&#x27;=q^{-1}(q(U&#x27;))\)</span>.</p>
+<p>A faithfully flat affine morphism is universally a quotient map on topological spaces. The actual proof is AG-FSE, <em>Flat morphisms</em>, Theorem 3.3, which applies after every base change: flatness lifts generizations, and the images of finitely many affine pieces of a closed inverse image are constructibly compact and specialization stable, hence closed. Consequently <span class="math" data-tex="\(q(U&#x27;)\)">\(q(U&#x27;)\)</span> is open. Give it the open subscheme structure. Its pullback equals <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span> as an open subscheme, and surjectivity proves uniqueness. When <span class="math" data-tex="\(q\)">\(q\)</span> is fppf, one may instead use its openness directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same statement holds for arbitrary fppf covering families. Each covering map is open; the union of the images of the invariant opens is open, and the residue-field argument gives equality of all its inverse images. No quasi-compactness is used here.</p>
+<p><strong>Morphism descent lemma.</strong> Morphisms between existing schemes descend uniquely along fppf coverings, without separation or quasi-compactness restrictions on those schemes.</p>
+<p><em>Proof.</em> Begin with <span class="math" data-tex="\(S=\operatorname{Spec}R\)">\(S=\operatorname{Spec}R\)</span>, <span class="math" data-tex="\(S&#x27;=\operatorname{Spec}B\)">\(S&#x27;=\operatorname{Spec}B\)</span>, and <span class="math" data-tex="\(R\to B\)">\(R\to B\)</span> faithfully flat. Let <span class="math" data-tex="\(Y,Z\)">\(Y,Z\)</span> be <span class="math" data-tex="\(S\)">\(S\)</span>-schemes, and let <span class="math" data-tex="\(g&#x27;:Y_{S&#x27;}\to Z_{S&#x27;}\)">\(g&#x27;:Y_{S&#x27;}\to Z_{S&#x27;}\)</span> be compatible with their canonical data. Compose <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span> with <span class="math" data-tex="\(Z_{S&#x27;}\to Z\)">\(Z_{S&#x27;}\to Z\)</span>.</p>
+<p>For an affine open <span class="math" data-tex="\(V\subset Z\)">\(V\subset Z\)</span>, its inverse image <span class="math" data-tex="\(U&#x27;\subset Y_{S&#x27;}\)">\(U&#x27;\subset Y_{S&#x27;}\)</span> is invariant and descends to an open <span class="math" data-tex="\(U\subset Y\)">\(U\subset Y\)</span> by the preceding lemma, applied to <span class="math" data-tex="\(Y_{S&#x27;}\to Y\)">\(Y_{S&#x27;}\to Y\)</span>. Cover <span class="math" data-tex="\(U\)">\(U\)</span> by affine opens <span class="math" data-tex="\(U_\alpha=\operatorname{Spec}D_\alpha\)">\(U_\alpha=\operatorname{Spec}D_\alpha\)</span>. The map upstairs to <span class="math" data-tex="\(V\)">\(V\)</span> corresponds to a homomorphism
+<span class="math math-display" data-tex="\[
+\Gamma(V,\mathcal O_V)\longrightarrow D_\alpha\otimes_R B.
+\]">\[
+\Gamma(V,\mathcal O_V)\longrightarrow D_\alpha\otimes_R B.
+\]</span>
+Compatibility puts its values in the equalizer (D.2), which is <span class="math" data-tex="\(D_\alpha\)">\(D_\alpha\)</span>. It therefore determines a unique map <span class="math" data-tex="\(U_\alpha\to V\)">\(U_\alpha\to V\)</span>. The maps agree on intersections: cover each intersection by affine opens and use the same faithful equalizer. They glue to <span class="math" data-tex="\(U\to V\)">\(U\to V\)</span>. The opens obtained from an affine cover of <span class="math" data-tex="\(Z\)">\(Z\)</span> cover <span class="math" data-tex="\(Y\)">\(Y\)</span>, since their pullbacks cover <span class="math" data-tex="\(Y_{S&#x27;}\)">\(Y_{S&#x27;}\)</span> and the covering is surjective. Their maps glue, again by the equalizer and faithful checking, to the required <span class="math" data-tex="\(Y\to Z\)">\(Y\to Z\)</span>. The two structural maps <span class="math" data-tex="\(Y\to S\)">\(Y\to S\)</span> agree after the cover, hence agree by the same equalizer argument; thus the descended morphism is over <span class="math" data-tex="\(S\)">\(S\)</span>. This proves both existence and uniqueness.</p>
+<p>For an arbitrary fppf covering family over an affine base, take a finite affine refinement, combine its members into one faithfully flat affine covering, and apply this argument. Equality with the original maps on every unchosen member is checked after its base change by that refinement, and follows by the uniqueness just proved. For a general base, repeat on affine opens and glue. This is gluing morphisms between <strong>existing schemes</strong>, so it uses no object-effectivity theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>One consequence we will use is descent of closed immersions for an existing morphism. On an affine target, its pullback along an affine faithfully flat cover is an affine scheme with affine descent data. The affine algebra lemma produces an affine scheme over that target. The morphism descent lemma identifies it with the given source, by descending the comparison isomorphism and its inverse. Write the given morphism as <span class="math" data-tex="\(R\to D\)">\(R\to D\)</span>. Surjectivity after tensoring with the faithfully flat covering algebra forces <span class="math" data-tex="\(\operatorname{coker}(R\to D)=0\)">\(\operatorname{coker}(R\to D)=0\)</span>, so it is a closed immersion. This is target-local and therefore proves the assertion for arbitrary schemes.</p>
+<h4 id="2-0-2-finite-presentation-localization-and-covering-refinements">2.0.2. Finite-presentation localization and covering refinements</h4>
+<p>We spell out the finite-presentation point needed in the preceding reduction and in the main proof. It concerns covering algebras, not the potentially non-finitely-presented schemes being descended.</p>
+<p><strong>Localization lemma.</strong> If <span class="math" data-tex="\(\operatorname{Spec}D\)">\(\operatorname{Spec}D\)</span> has a finite principal-open cover <span class="math" data-tex="\(D(d_1),\ldots,D(d_m)\)">\(D(d_1),\ldots,D(d_m)\)</span>, with every <span class="math" data-tex="\(D_{d_i}\)">\(D_{d_i}\)</span> finitely presented over <span class="math" data-tex="\(R\)">\(R\)</span>, then <span class="math" data-tex="\(D\)">\(D\)</span> is finitely presented over <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><em>Proof.</em> Choose <span class="math" data-tex="\(e_i\in D\)">\(e_i\in D\)</span> with <span class="math" data-tex="\(\sum e_id_i=1\)">\(\sum e_id_i=1\)</span>. For each <span class="math" data-tex="\(i\)">\(i\)</span>, choose finitely many generators of <span class="math" data-tex="\(D_{d_i}\)">\(D_{d_i}\)</span> over <span class="math" data-tex="\(R\)">\(R\)</span>, and express them as fractions with numerators in <span class="math" data-tex="\(D\)">\(D\)</span>. Let <span class="math" data-tex="\(D_0\subset D\)">\(D_0\subset D\)</span> be generated over <span class="math" data-tex="\(R\)">\(R\)</span> by all these numerators and by all <span class="math" data-tex="\(d_i,e_i\)">\(d_i,e_i\)</span>. Then <span class="math" data-tex="\((D_0)_{d_i}=D_{d_i}\)">\((D_0)_{d_i}=D_{d_i}\)</span>. If <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>, at each <span class="math" data-tex="\(i\)">\(i\)</span> some <span class="math" data-tex="\(d_i^{n_i}d\)">\(d_i^{n_i}d\)</span> belongs to <span class="math" data-tex="\(D_0\)">\(D_0\)</span>. The powers <span class="math" data-tex="\(d_i^{n_i}\)">\(d_i^{n_i}\)</span> generate the unit ideal in <span class="math" data-tex="\(D_0\)">\(D_0\)</span>: expand a sufficiently high power of <span class="math" data-tex="\(\sum e_id_i=1\)">\(\sum e_id_i=1\)</span>, so every term contains one of those powers. Hence <span class="math" data-tex="\(d\in D_0\)">\(d\in D_0\)</span>. Thus <span class="math" data-tex="\(D\)">\(D\)</span> is finitely generated over <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>Write <span class="math" data-tex="\(P=R[z_1,\ldots,z_n]\twoheadrightarrow D\)">\(P=R[z_1,\ldots,z_n]\twoheadrightarrow D\)</span>, with kernel <span class="math" data-tex="\(K\)">\(K\)</span>, and lift <span class="math" data-tex="\(d_i,e_i\)">\(d_i,e_i\)</span> to <span class="math" data-tex="\(a_i,b_i\in P\)">\(a_i,b_i\in P\)</span>. The kernels <span class="math" data-tex="\(K_{a_i}\)">\(K_{a_i}\)</span> of <span class="math" data-tex="\(P_{a_i}\to D_{d_i}\)">\(P_{a_i}\to D_{d_i}\)</span> are finitely generated ideals. To justify this usual presentation fact without a Noetherian assumption, take a finite presentation <span class="math" data-tex="\(R[y]/(r_j)\)">\(R[y]/(r_j)\)</span> of the target, express <span class="math" data-tex="\(y\)">\(y\)</span>'s in any chosen finite generating list <span class="math" data-tex="\(z\)">\(z\)</span>, and express that list in the <span class="math" data-tex="\(y\)">\(y\)</span>'s. Substitution gives finitely many kernel generators <span class="math" data-tex="\(r_j(h(z))\)">\(r_j(h(z))\)</span> and <span class="math" data-tex="\(z_\ell-g_\ell(h(z))\)">\(z_\ell-g_\ell(h(z))\)</span>; their quotient and the original presentation have inverse maps. The same argument includes a localization generator and its inverse relation.</p>
+<p>Choose finitely many elements of <span class="math" data-tex="\(K\)">\(K\)</span> whose localizations generate each <span class="math" data-tex="\(K_{a_i}\)">\(K_{a_i}\)</span>, and include
+<span class="math math-display" data-tex="\[
+1-\sum b_ia_i\in K.
+\]">\[
+1-\sum b_ia_i\in K.
+\]</span>
+Let <span class="math" data-tex="\(K_0\)">\(K_0\)</span> be their generated ideal. The map <span class="math" data-tex="\(P/K_0\to D\)">\(P/K_0\to D\)</span> is an isomorphism after localizing at each <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, and the <span class="math" data-tex="\(a_i\)">\(a_i\)</span> generate the unit ideal in <span class="math" data-tex="\(P/K_0\)">\(P/K_0\)</span>. Therefore it is an isomorphism globally: every element of its kernel or cokernel is killed by a power of each <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, and the preceding unit-ideal argument kills that element. Thus <span class="math" data-tex="\(K=K_0\)">\(K=K_0\)</span> is finitely generated. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, an affine locally finitely presented morphism between affine schemes is finitely presented. Around each source point choose an affine finite-presentation chart over a principal target open <span class="math" data-tex="\(\operatorname{Spec}R_r\)">\(\operatorname{Spec}R_r\)</span>, then choose a principal open of the whole affine source contained in that chart. On the chart this is again a principal open, so its algebra is finitely presented over <span class="math" data-tex="\(R_r\)">\(R_r\)</span>: adjoining the inverse of its function adds one generator and one relation. Since <span class="math" data-tex="\(R_r=R[u]/(ru-1)\)">\(R_r=R[u]/(ru-1)\)</span>, the combined generators and relations also give a finite presentation over <span class="math" data-tex="\(R\)">\(R\)</span>. Quasi-compactness selects a finite cover by these principal opens, and the localization lemma applies. Its first paragraph, without its kernel argument, proves the corresponding finite-generation assertion for affine locally finite-type morphisms.</p>
+<p>Now let <span class="math" data-tex="\(\{S_i\to S\}\)">\(\{S_i\to S\}\)</span> be fppf with <span class="math" data-tex="\(S\)">\(S\)</span> affine. The images of affine opens in the <span class="math" data-tex="\(S_i\)">\(S_i\)</span> are open in <span class="math" data-tex="\(S\)">\(S\)</span>, by universal openness of flat locally finitely presented maps, and cover it. Quasi-compactness of <span class="math" data-tex="\(S\)">\(S\)</span> selects finitely many such affine pieces <span class="math" data-tex="\(T_1,\ldots,T_m\)">\(T_1,\ldots,T_m\)</span>. Their maps to <span class="math" data-tex="\(S\)">\(S\)</span> are flat and finitely presented by the preceding paragraph. The finite disjoint union
+<span class="math math-display" data-tex="\[
+S&#x27;=\coprod_{\nu=1}^m T_\nu
+     =\operatorname{Spec}\Bigl(\prod_{\nu=1}^m\Gamma(T_\nu,\mathcal O)\Bigr)
+ \longrightarrow S
+\]">\[
+S&#x27;=\coprod_{\nu=1}^m T_\nu
+     =\operatorname{Spec}\Bigl(\prod_{\nu=1}^m\Gamma(T_\nu,\mathcal O)\Bigr)
+ \longrightarrow S
+\]</span>
+is affine, faithfully flat and finitely presented. It refines the original covering. The finite product is finitely presented: each factor has a finite presentation, and finite products can be presented by adjoining finitely many orthogonal idempotents summing to <span class="math" data-tex="\(1\)">\(1\)</span> together with those presentations on their idempotent factors.</p>
+<p>This gives the promised finite refinement even when the original index set and the original covering schemes are not quasi-compact. It imposes no finiteness on the schemes <span class="math" data-tex="\(X_i\)">\(X_i\)</span>.</p>
+<h4 id="2-0-3-descending-quasi-affine-neighbourhoods">2.0.3. Descending quasi-affine neighbourhoods</h4>
+<p><strong>Quasi-affine lemma.</strong> Let <span class="math" data-tex="\(S&#x27;=\operatorname{Spec}B\to S=\operatorname{Spec}R\)">\(S&#x27;=\operatorname{Spec}B\to S=\operatorname{Spec}R\)</span> be faithfully flat. A quasi-compact quasi-affine <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>-scheme with descent datum descends effectively to a quasi-compact quasi-affine <span class="math" data-tex="\(S\)">\(S\)</span>-scheme, with the given datum.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> be the scheme upstairs. It is separated and quasi-compact over the affine base. Write <span class="math" data-tex="\(C=\Gamma(V&#x27;,\mathcal O_{V&#x27;})\)">\(C=\Gamma(V&#x27;,\mathcal O_{V&#x27;})\)</span>.</p>
+<p>We need the actual flat base-change comparison for this ring. Choose a finite affine cover <span class="math" data-tex="\(V&#x27;=\bigcup U_a\)">\(V&#x27;=\bigcup U_a\)</span>. The intersections <span class="math" data-tex="\(U_a\cap U_b\)">\(U_a\cap U_b\)</span> are affine, because <span class="math" data-tex="\(V&#x27;/S&#x27;\)">\(V&#x27;/S&#x27;\)</span> is separated: the intersection is the inverse image of its closed diagonal in the affine scheme <span class="math" data-tex="\(U_a\times_{S&#x27;}U_b\)">\(U_a\times_{S&#x27;}U_b\)</span>. For every flat <span class="math" data-tex="\(B\)">\(B\)</span>-algebra <span class="math" data-tex="\(B_1\)">\(B_1\)</span>, tensoring the finite sections equalizer by <span class="math" data-tex="\(B_1\)">\(B_1\)</span> gives
+<span class="math math-display" data-tex="\[
+B_1\otimes_B C
+\xrightarrow{\sim}\Gamma(V&#x27;\times_{S&#x27;}\operatorname{Spec}B_1,\mathcal O).
+                                                                    \tag{D.3}
+\]">\[
+B_1\otimes_B C
+\xrightarrow{\sim}\Gamma(V&#x27;\times_{S&#x27;}\operatorname{Spec}B_1,\mathcal O).
+                                                                    \tag{D.3}
+\]</span>
+Flat tensor product preserves the kernel of the difference-of-restrictions map and finite products, so this is the specified natural ring homomorphism, not just an abstract module isomorphism. It is compatible with further flat base changes and with isomorphisms of the schemes.</p>
+<p>We also need the canonical map
+<span class="math math-display" data-tex="\[
+c:V&#x27;\longrightarrow\operatorname{Spec}C
+\]">\[
+c:V&#x27;\longrightarrow\operatorname{Spec}C
+\]</span>
+to be a quasi-compact open immersion. Choose an affine embedding <span class="math" data-tex="\(V&#x27;\subset\operatorname{Spec}E\)">\(V&#x27;\subset\operatorname{Spec}E\)</span>, and finitely many principal opens <span class="math" data-tex="\(D_E(f_a)\)">\(D_E(f_a)\)</span> contained in and covering <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span>. Regard <span class="math" data-tex="\(f_a\)">\(f_a\)</span> as functions on <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span>. Apply the same sections-equalizer argument to localization over <span class="math" data-tex="\(E\)">\(E\)</span>; this is allowed because <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> is a separated quasi-compact <span class="math" data-tex="\(E\)">\(E\)</span>-scheme. It gives
+<span class="math math-display" data-tex="\[
+C_{f_a}=\Gamma(D_E(f_a),\mathcal O)=E_{f_a}.
+\]">\[
+C_{f_a}=\Gamma(D_E(f_a),\mathcal O)=E_{f_a}.
+\]</span>
+Thus <span class="math" data-tex="\(c\)">\(c\)</span> identifies <span class="math" data-tex="\(D_E(f_a)\)">\(D_E(f_a)\)</span> with <span class="math" data-tex="\(D_C(f_a)\)">\(D_C(f_a)\)</span>, by the actual restriction map. These identifications agree on the principal opens for <span class="math" data-tex="\(f_af_b\)">\(f_af_b\)</span>. They identify <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> with the finite union <span class="math" data-tex="\(\bigcup D_C(f_a)\)">\(\bigcup D_C(f_a)\)</span>.</p>
+<p>Both projections <span class="math" data-tex="\(S&#x27;\times_S S&#x27;\to S&#x27;\)">\(S&#x27;\times_S S&#x27;\to S&#x27;\)</span> are flat. Equation (D.3) therefore carries the original descent isomorphism to an algebra descent datum on <span class="math" data-tex="\(C\)">\(C\)</span>. The identities on triple overlaps follow functorially from the original cocycle and the compatible base-change maps. The affine algebra lemma gives an <span class="math" data-tex="\(R\)">\(R\)</span>-algebra <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, with a descent-compatible isomorphism <span class="math" data-tex="\(B\otimes_R C_0\cong C\)">\(B\otimes_R C_0\cong C\)</span>.</p>
+<p>Put <span class="math" data-tex="\(W=\operatorname{Spec}C_0\)">\(W=\operatorname{Spec}C_0\)</span>. The canonical embedding just proved identifies <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> with an open subscheme of <span class="math" data-tex="\(W_{S&#x27;}\)">\(W_{S&#x27;}\)</span>. This open is invariant under the canonical datum: the canonical embedding is functorial, so the original descent isomorphism restricts the descended affine-hull isomorphism to the two copies of this open. The invariant opens lemma descends it to an open <span class="math" data-tex="\(V\subset W\)">\(V\subset W\)</span>. It is quasi-compact, since it is the continuous image of quasi-compact <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> under <span class="math" data-tex="\(W_{S&#x27;}\to W\)">\(W_{S&#x27;}\to W\)</span>. Thus <span class="math" data-tex="\(V/S\)">\(V/S\)</span> is quasi-affine. Its pullback equals <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> as an open subscheme of the identified affine hull, with exactly the prescribed datum. This proves effectivity and recovery. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proofs of (D.3), the canonical embedding and this bridge also occur, with full local arguments, in AG-DFG Lesson 3, Lemmas 4.1–4.2 and Theorem 4.3. Their quasi-affine statement has the exact scope of the bridge just proved.</p>
+<h4 id="2-0-4-invariant-source-neighbourhoods-and-gluing">2.0.4. Invariant source neighbourhoods and gluing</h4>
+<p>We first prove the main theorem for an affine fppf covering
+<span class="math math-display" data-tex="\[
+p:S&#x27;=\operatorname{Spec}B\longrightarrow S=\operatorname{Spec}R
+\]">\[
+p:S&#x27;=\operatorname{Spec}B\longrightarrow S=\operatorname{Spec}R
+\]</span>
+which is faithfully flat and finitely presented. Let <span class="math" data-tex="\(X&#x27;\to S&#x27;\)">\(X&#x27;\to S&#x27;\)</span> be separated and locally quasi-finite with its given datum.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+\mathcal R=X&#x27;\times_S S&#x27;,\qquad
+s:\mathcal R\to X&#x27;,\quad
+t:\mathcal R\xrightarrow{\phi}S&#x27;\times_S X&#x27;\to X&#x27; .
+\]">\[
+\mathcal R=X&#x27;\times_S S&#x27;,\qquad
+s:\mathcal R\to X&#x27;,\quad
+t:\mathcal R\xrightarrow{\phi}S&#x27;\times_S X&#x27;\to X&#x27; .
+\]</span>
+Both <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> are base changes of <span class="math" data-tex="\(p\)">\(p\)</span>, up to the specified isomorphism. In particular they are affine, flat, finitely presented and surjective. The diagonal base coordinates give the identity arrows. Inversion uses <span class="math" data-tex="\(\phi^{-1}\)">\(\phi^{-1}\)</span>, and the cocycle gives composition of arrows: two composable changes of base coordinates equal their direct change. These constructions give a scheme groupoid on <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>. They are just a way to express the specified datum; no quotient algebraic space is being assumed to exist.</p>
+<p>Choose any affine open <span class="math" data-tex="\(U\subset X&#x27;\)">\(U\subset X&#x27;\)</span>, and form its saturation
+<span class="math math-display" data-tex="\[
+V&#x27;=t(s^{-1}(U))\subset X&#x27;.                                    \tag{D.4}
+\]">\[
+V&#x27;=t(s^{-1}(U))\subset X&#x27;.                                    \tag{D.4}
+\]</span>
+It is open because <span class="math" data-tex="\(s^{-1}(U)\)">\(s^{-1}(U)\)</span> is open and <span class="math" data-tex="\(t\)">\(t\)</span> is open. It is quasi-compact: <span class="math" data-tex="\(s^{-1}(U)\)">\(s^{-1}(U)\)</span> is affine, since <span class="math" data-tex="\(s\)">\(s\)</span> is affine and <span class="math" data-tex="\(U\)">\(U\)</span> is affine; its continuous image is quasi-compact. Identity arrows show <span class="math" data-tex="\(U\subset V&#x27;\)">\(U\subset V&#x27;\)</span>.</p>
+<p>The cocycle gives
+<span class="math math-display" data-tex="\[
+s^{-1}(V&#x27;)=t^{-1}(V&#x27;).                                       \tag{D.5}
+\]">\[
+s^{-1}(V&#x27;)=t^{-1}(V&#x27;).                                       \tag{D.5}
+\]</span>
+Here is the pointwise justification, including field comparisons. A point in the image (D.4) has an arrow from a point of <span class="math" data-tex="\(U\)">\(U\)</span>, after extending its residue field. If it has another arrow to a point <span class="math" data-tex="\(x\)">\(x\)</span>, extend both fields to a common field over the residue field of their common endpoint. The tensor product of the two extensions is nonzero, so such a common field exists. Composition in the groupoid gives an arrow from <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>; hence <span class="math" data-tex="\(x\in V&#x27;\)">\(x\in V&#x27;\)</span>. Inversion gives the reverse implication. This argument can be tested on geometric points, where compatible composable arrows are actual points after a common extension. Membership in an open is preserved by extension of residue fields, so it proves equality of the two underlying opens, and therefore equality as open subschemes. Equivalently, it is the cocycle restricted to a source-saturated open.</p>
+<p>The restriction <span class="math" data-tex="\(V&#x27;\to S&#x27;\)">\(V&#x27;\to S&#x27;\)</span> is separated and locally quasi-finite. It is also quasi-compact, since <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> is quasi-compact and <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> affine; preimages of principal opens are covered by finitely many affine principal opens in a finite affine cover of <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span>. Thus it is separated and quasi-finite. The scheme Zariski Main consequence makes it quasi-affine: a separated quasi-finite scheme over an affine scheme is a quasi-compact open in an affine finite completion. The provider is <em>Zariski’s Main Theorem</em> (AG-MO-12), Theorem 4.1, at the prerequisite state recorded below.</p>
+<p>By (D.5) the original datum restricts to <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span>. The quasi-affine lemma descends it to a scheme <span class="math" data-tex="\(V\to S\)">\(V\to S\)</span>. Performing this construction for affine neighbourhoods of every point of <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span> gives an arbitrary open cover
+<span class="math math-display" data-tex="\[
+X&#x27;=\bigcup_{a\in A}V&#x27;_a
+\]">\[
+X&#x27;=\bigcup_{a\in A}V&#x27;_a
+\]</span>
+by invariant quasi-compact opens, and descended schemes <span class="math" data-tex="\(V_a/S\)">\(V_a/S\)</span>. The index set need not be finite.</p>
+<p>We now give the gluing and recovery explicitly. For each pair <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, the intersection <span class="math" data-tex="\(V&#x27;_a\cap V&#x27;_b\)">\(V&#x27;_a\cap V&#x27;_b\)</span> is invariant. Under <span class="math" data-tex="\(V_a\times_S S&#x27;\cong V&#x27;_a\)">\(V_a\times_S S&#x27;\cong V&#x27;_a\)</span>, it descends by the invariant opens lemma to an open <span class="math" data-tex="\(V_{ab}\subset V_a\)">\(V_{ab}\subset V_a\)</span>. Under the other comparison it descends to <span class="math" data-tex="\(V_{ba}\subset V_b\)">\(V_{ba}\subset V_b\)</span>. The identity on <span class="math" data-tex="\(V&#x27;_a\cap V&#x27;_b\)">\(V&#x27;_a\cap V&#x27;_b\)</span> is a compatible morphism of their pullbacks, and the morphism descent lemma gives a unique isomorphism
+<span class="math math-display" data-tex="\[
+\psi_{ab}:V_{ab}\xrightarrow{\sim}V_{ba}.
+\]">\[
+\psi_{ab}:V_{ab}\xrightarrow{\sim}V_{ba}.
+\]</span>
+Its inverse is <span class="math" data-tex="\(\psi_{ba}\)">\(\psi_{ba}\)</span>, because that assertion becomes the identity after the faithfully flat cover.</p>
+<p>On a triple overlap, <span class="math" data-tex="\(V_{ab}\cap V_{ac}\)">\(V_{ab}\cap V_{ac}\)</span> pulls back to <span class="math" data-tex="\(V&#x27;_a\cap V&#x27;_b\cap V&#x27;_c\)">\(V&#x27;_a\cap V&#x27;_b\cap V&#x27;_c\)</span>. The isomorphism <span class="math" data-tex="\(\psi_{ab}\)">\(\psi_{ab}\)</span> takes it onto <span class="math" data-tex="\(V_{ba}\cap V_{bc}\)">\(V_{ba}\cap V_{bc}\)</span>: the corresponding opens have equal inverse images, and the covering is surjective. On this open,
+<span class="math" data-tex="\(\psi_{bc}\psi_{ab}=\psi_{ac}\)">\(\psi_{bc}\psi_{ab}=\psi_{ac}\)</span>, since both pull back to the identity on the triple intersection and morphism descent is faithful. Likewise <span class="math" data-tex="\(\psi_{aa}=\operatorname{id}\)">\(\psi_{aa}=\operatorname{id}\)</span>. Thus these are genuine scheme-gluing data. Ordinary gluing of schemes along open subschemes, for an arbitrary index set, produces <span class="math" data-tex="\(X/S\)">\(X/S\)</span>.</p>
+<p>After base change to <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>, its open pieces are <span class="math" data-tex="\(V&#x27;_a\)">\(V&#x27;_a\)</span>, and the gluing isomorphisms are their actual identities on intersections. The comparisons therefore glue to an isomorphism
+<span class="math math-display" data-tex="\[
+X\times_S S&#x27;\xrightarrow{\sim}X&#x27; .
+\]">\[
+X\times_S S&#x27;\xrightarrow{\sim}X&#x27; .
+\]</span>
+On <span class="math" data-tex="\(S&#x27;\times_S S&#x27;\)">\(S&#x27;\times_S S&#x27;\)</span>, it recovers <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on every invariant open <span class="math" data-tex="\(V&#x27;_a\)">\(V&#x27;_a\)</span>; these opens cover the source, so it recovers <span class="math" data-tex="\(\phi\)">\(\phi\)</span> globally. This proves object effectivity, without any quasi-compactness assumption on <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>.</p>
+<h4 id="2-0-5-recovering-the-covering-and-the-morphism-properties">2.0.5. Recovering the covering and the morphism properties</h4>
+<p>For an arbitrary fppf covering of an affine <span class="math" data-tex="\(S\)">\(S\)</span>, choose the finite affine refinement constructed earlier. Pull the datum to that refinement and combine its finitely many schemes by disjoint union. A finite disjoint union of separated locally quasi-finite morphisms over the corresponding disjoint union of bases has the same properties, because each assertion is checked on an open-and-closed base component. The preceding construction gives <span class="math" data-tex="\(X/S\)">\(X/S\)</span>.</p>
+<p>Fix an original member <span class="math" data-tex="\(S_i\)">\(S_i\)</span>. The refinement pulls back to an fppf covering of <span class="math" data-tex="\(S_i\)">\(S_i\)</span>. On it, the isomorphisms of the original datum identify <span class="math" data-tex="\(X_{S_i}\)">\(X_{S_i}\)</span> with <span class="math" data-tex="\(X_i\)">\(X_i\)</span>. The cocycle makes these comparisons compatible. The morphism descent lemma descends them and their inverses to an isomorphism <span class="math" data-tex="\(X_{S_i}\cong X_i\)">\(X_{S_i}\cong X_i\)</span>. On double overlaps the resulting comparison is exactly <span class="math" data-tex="\(\phi_{ij}\)">\(\phi_{ij}\)</span>, because that equality holds after the refinement. This recovers also the members and overlaps not chosen in the finite refinement.</p>
+<p>For an arbitrary base <span class="math" data-tex="\(S\)">\(S\)</span>, do this on every affine open. On intersections, the local schemes represent the same restricted original datum; morphism descent supplies their unique compatible isomorphisms. On triple intersections those isomorphisms satisfy the cocycle, since the corresponding maps after the covering do. Ordinary Zariski gluing gives the global scheme and its morphism to <span class="math" data-tex="\(S\)">\(S\)</span>, and the local comparisons glue to the required comparisons on every <span class="math" data-tex="\(S_i\)">\(S_i\)</span>.</p>
+<p>It remains to establish the asserted properties of this scheme; existence by itself would not establish them.</p>
+<p>Separatedness descends from the given schemes: the base changes of
+<span class="math" data-tex="\(\Delta_{X/S}:X\to X\times_S X\)">\(\Delta_{X/S}:X\to X\times_S X\)</span> along the covering induced by the <span class="math" data-tex="\(S_i\)">\(S_i\)</span> are closed immersions. The closed-immersion descent consequence of the affine algebra and morphism lemmas makes this diagonal closed.</p>
+<p>Local finite type descends as follows. Reduce the base to <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span> with affine faithfully flat cover <span class="math" data-tex="\(\operatorname{Spec}B\)">\(\operatorname{Spec}B\)</span>, and take an affine <span class="math" data-tex="\(U=\operatorname{Spec}D\subset X\)">\(U=\operatorname{Spec}D\subset X\)</span>. Its base change is affine, and <span class="math" data-tex="\(B\otimes_R D\)">\(B\otimes_R D\)</span> is finitely generated over <span class="math" data-tex="\(B\)">\(B\)</span>, by the finite-generation assertion just established and local finite type upstairs. Expand a finite generating list into tensors, and collect the finitely many elements <span class="math" data-tex="\(d_1,\ldots,d_n\in D\)">\(d_1,\ldots,d_n\in D\)</span> occurring. The inclusion <span class="math" data-tex="\(D_0=R[d_1,\ldots,d_n]\subset D\)">\(D_0=R[d_1,\ldots,d_n]\subset D\)</span> becomes a surjection and an injection after tensoring with <span class="math" data-tex="\(B\)">\(B\)</span>. Faithfulness applied to <span class="math" data-tex="\(D/D_0\)">\(D/D_0\)</span> gives <span class="math" data-tex="\(D=D_0\)">\(D=D_0\)</span>. Hence <span class="math" data-tex="\(X/S\)">\(X/S\)</span> is locally of finite type.</p>
+<p>Finally let <span class="math" data-tex="\(U=\operatorname{Spec}D\)">\(U=\operatorname{Spec}D\)</span> be such an affine source open over the affine base. Its pullback to <span class="math" data-tex="\(\operatorname{Spec}B\)">\(\operatorname{Spec}B\)</span> is quasi-compact and locally quasi-finite, hence quasi-finite. For <span class="math" data-tex="\(s\in\operatorname{Spec}R\)">\(s\in\operatorname{Spec}R\)</span>, choose <span class="math" data-tex="\(s&#x27;\in\operatorname{Spec}B\)">\(s&#x27;\in\operatorname{Spec}B\)</span> above it. The finite-type fibre <span class="math" data-tex="\(U_s\)">\(U_s\)</span> becomes zero-dimensional after the field extension <span class="math" data-tex="\(\kappa(s)\to\kappa(s&#x27;)\)">\(\kappa(s)\to\kappa(s&#x27;)\)</span>. Zero-dimensionality descends here directly: if the fibre ring had a strict chain of primes, choose a prime above its larger member after this faithfully flat field extension and apply flat going down to lift the smaller member. Their distinct contractions give a strict chain upstairs, a contradiction. Thus every fibre of <span class="math" data-tex="\(U/S\)">\(U/S\)</span> is zero-dimensional. A zero-dimensional finite-type algebra over a field is Noetherian and has finitely many irreducible components; each component has only its generic point, which is maximal. Its spectrum is consequently a finite set of closed points, and each singleton is open. All fibre points of <span class="math" data-tex="\(U/S\)">\(U/S\)</span> are therefore isolated. With local finite type this proves <span class="math" data-tex="\(U/S\)">\(U/S\)</span> quasi-finite, and these affine opens prove <span class="math" data-tex="\(X/S\)">\(X/S\)</span> locally quasi-finite. This proof never promotes the whole non-quasi-compact <span class="math" data-tex="\(X/S\)">\(X/S\)</span> to a quasi-finite morphism.</p>
+<p>For two data, their compatible morphisms become compatible maps between the recovered schemes after the original covering, and the morphism descent lemma supplies the unique map over <span class="math" data-tex="\(S\)">\(S\)</span>. In particular, two effectivity constructions are uniquely isomorphic, with the specified comparisons, by descending the identity of the original datum and its inverse. The stated equivalence of categories, including uniqueness, is now proved. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The scheme Zariski Main input is <em>Zariski’s Main Theorem</em> (AG-MO-12), Theorem 4.1: a separated quasi-finite morphism over an arbitrary affine scheme is quasi-affine and has a finite completion. Its full nonaffine proof and conductor foundations are genuinely assigned prerequisite repairs; the present course does not claim that they are already written. Universal openness, quotient topology and flat going down are <em>Flat morphisms</em> (AG-FSE-01), Theorem 2.2 and §3; openness retains that lesson’s finite-presentation Chevalley prerequisite. The local quasi-finiteness criterion is <em>Quasi-finite morphisms and Chevalley’s theorem</em> (AG-MO-06), Theorems 1.1–1.2. The affine equalizers, quasi-affine bridge, gluing and all original comparison maps needed here have been proved above.</p>
+<p>The sources are the Stacks Project authors’ <em>More on Morphisms</em>, Tag 02W8, label <code>lemma-separated-locally-quasi-finite-morphisms-fppf-descend</code>, and <em>Descent</em>, labels <code>lemma-effective-for-fpqc-is-local-upstairs</code> and <code>lemma-quasi-affine</code> (Tag 0247), as read in the AI Integrated Stacks Project at revision <code>565b10e987aba5969b21145a0833f42d69f96790</code>. This proof is independently expressed eligible AI writing under CC0; the consulted source retains its human attribution and GFDL terms.</p>
+<p>The elementary part of quotient sheafification is useful throughout the proof.</p>
+<p><strong>Lemma 2.1.</strong> Put <span class="math" data-tex="\(F=U/R\)">\(F=U/R\)</span>. The map <span class="math" data-tex="\(U\to F\)">\(U\to F\)</span> is an epimorphism of fppf sheaves, and</p>
+<span class="math math-display" data-tex="\[
+U\times_F U\simeq R.
+\]">\[
+U\times_F U\simeq R.
+\]</span>
+<p><strong>Proof.</strong> Locally, a section of a sheafification comes from the presheaf being sheafified, and a presheaf quotient section has a representative in <span class="math" data-tex="\(U\)">\(U\)</span>. This proves the first assertion. Two maps <span class="math" data-tex="\(a,b:T\to U\)">\(a,b:T\to U\)</span> have equal images in <span class="math" data-tex="\(F(T)\)">\(F(T)\)</span> precisely when they are related fppf locally. On a cover <span class="math" data-tex="\(T_i\to T\)">\(T_i\to T\)</span>, choose the corresponding maps <span class="math" data-tex="\(r_i:T_i\to R\)">\(r_i:T_i\to R\)</span>. Their endpoints agree on overlaps. The monomorphism <span class="math" data-tex="\(j\)">\(j\)</span> makes the <span class="math" data-tex="\(r_i\)">\(r_i\)</span> agree there, and the sheaf property of <span class="math" data-tex="\(R\)">\(R\)</span> glues them to a unique map <span class="math" data-tex="\(T\to R\)">\(T\to R\)</span>. Thus being related locally is equivalent to being related globally. This identifies the displayed fibre product as a sheaf, hence proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (étale quotient theorem).</strong> For every étale equivalence relation <span class="math" data-tex="\(R\rightrightarrows U\)">\(R\rightrightarrows U\)</span> over <span class="math" data-tex="\(S\)">\(S\)</span>, the fppf quotient <span class="math" data-tex="\(X=U/R\)">\(X=U/R\)</span> is an algebraic space. The quotient map <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> is representable, surjective and étale, and its relation is the original <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><strong>Proof.</strong> We first construct quotient neighbourhoods from affine pieces of <span class="math" data-tex="\(U\)">\(U\)</span>, and then show that those neighbourhoods glue.</p>
+<p>Suppose first that <span class="math" data-tex="\(U\)">\(U\)</span> is affine. The morphism <span class="math" data-tex="\(U\times_S U\to U\times_{\operatorname{Spec}\mathbf Z}U\)">\(U\times_S U\to U\times_{\operatorname{Spec}\mathbf Z}U\)</span> is a monomorphism. Since the latter target is affine, <span class="math" data-tex="\(U\times_S U\)">\(U\times_S U\)</span> is separated as an absolute scheme. A monomorphism is separated, so <span class="math" data-tex="\(R\)">\(R\)</span> is separated too. In particular <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> are separated. They are locally quasi-finite because they are étale.</p>
+<p>Let <span class="math" data-tex="\(a:T\to X\)">\(a:T\to X\)</span> be a map from a scheme. Lemma 2.1 gives an fppf cover <span class="math" data-tex="\(T_i\to T\)">\(T_i\to T\)</span> and lifts <span class="math" data-tex="\(a_i:T_i\to U\)">\(a_i:T_i\to U\)</span>. On that cover, the sheaf <span class="math" data-tex="\(V=T\times_X U\)">\(V=T\times_X U\)</span> is represented by</p>
+<span class="math math-display" data-tex="\[
+V_i=T_i\times_{a_i,U,s}R.
+\]">\[
+V_i=T_i\times_{a_i,U,s}R.
+\]</span>
+<p>Each <span class="math" data-tex="\(V_i\to T_i\)">\(V_i\to T_i\)</span> is separated and étale. The equality functor defining <span class="math" data-tex="\(V\)">\(V\)</span> supplies canonical identifications on overlaps, satisfying the cocycle condition. The scheme descent theorem produces a scheme representing <span class="math" data-tex="\(V\)">\(V\)</span>. One can see the representation directly: maps into the descended scheme are compatible maps into the <span class="math" data-tex="\(V_i\)">\(V_i\)</span>, and these are exactly sections of the sheaf <span class="math" data-tex="\(V\)">\(V\)</span>. Since each <span class="math" data-tex="\(V_i\to T_i\)">\(V_i\to T_i\)</span> is étale and surjective, the descended morphism has these properties. Surjectivity here follows because <span class="math" data-tex="\(s\)">\(s\)</span> has the identity section. We have proved representability and the presentation condition for <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span>.</p>
+<p>We must still prove representability of the diagonal. The morphism <span class="math" data-tex="\(j:R\to U\times_S U\)">\(j:R\to U\times_S U\)</span> is separated and locally quasi-finite. For local finite type, use that its composition with a projection is étale: a morphism whose composition is locally of finite type is locally of finite type. A monomorphism has at most one geometric point in each geometric fibre, so this local finite type morphism is locally quasi-finite.</p>
+<p>Given <span class="math" data-tex="\((a,b):T\to X\times_S X\)">\((a,b):T\to X\times_S X\)</span>, take an fppf cover on which both sections have lifts to <span class="math" data-tex="\(U\)">\(U\)</span>. On this cover their equality scheme is the base change of <span class="math" data-tex="\(j\)">\(j\)</span>. It is therefore separated and locally quasi-finite. Apply the same scheme descent theorem to these equality schemes. The descended scheme represents <span class="math" data-tex="\(E_{a,b}\)">\(E_{a,b}\)</span>, by the same sheaf argument. This proves the diagonal condition when <span class="math" data-tex="\(U\)">\(U\)</span> is affine.</p>
+<p>We now return to arbitrary <span class="math" data-tex="\(U\)">\(U\)</span>. For any open subscheme <span class="math" data-tex="\(A\subset U\)">\(A\subset U\)</span>, let <span class="math" data-tex="\(R_A=R\times_{U\times_S U}(A\times_S A)\)">\(R_A=R\times_{U\times_S U}(A\times_S A)\)</span>, and let <span class="math" data-tex="\(X_A=A/R_A\)">\(X_A=A/R_A\)</span>. Its map to <span class="math" data-tex="\(X\)">\(X\)</span> is a monomorphism: if two coordinates in <span class="math" data-tex="\(A\)">\(A\)</span> are related in <span class="math" data-tex="\(U\)">\(U\)</span>, their unique relation arrow lies in <span class="math" data-tex="\(R_A\)">\(R_A\)</span>.</p>
+<p>The map <span class="math" data-tex="\(X_A\to X\)">\(X_A\to X\)</span> is represented by open immersions. To prove this without assuming <span class="math" data-tex="\(X\)">\(X\)</span> algebraic, form the saturation</p>
+<span class="math math-display" data-tex="\[
+W_A=t(s^{-1}(A))\subset U.
+\]">\[
+W_A=t(s^{-1}(A))\subset U.
+\]</span>
+<p>It is open because étale morphisms are open. Its points are precisely the points related, after a residue-field extension if necessary, to points of <span class="math" data-tex="\(A\)">\(A\)</span>. The equivalence relation identities give <span class="math" data-tex="\(s^{-1}(W_A)=t^{-1}(W_A)\)">\(s^{-1}(W_A)=t^{-1}(W_A)\)</span> as open subschemes.</p>
+<p>For <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span>, choose lifts <span class="math" data-tex="\(a_i:T_i\to U\)">\(a_i:T_i\to U\)</span> on an fppf cover. The opens <span class="math" data-tex="\(a_i^{-1}(W_A)\)">\(a_i^{-1}(W_A)\)</span> agree on overlaps: the lifts there are endpoints of an arrow in <span class="math" data-tex="\(R\)">\(R\)</span>. They descend to an open <span class="math" data-tex="\(T_A\subset T\)">\(T_A\subset T\)</span>. A section on a test scheme over <span class="math" data-tex="\(T\)">\(T\)</span> belongs to <span class="math" data-tex="\(X_A\)">\(X_A\)</span> exactly when it factors through this open. Indeed, membership in <span class="math" data-tex="\(W_A\)">\(W_A\)</span> can be lifted to <span class="math" data-tex="\(s^{-1}(A)\)">\(s^{-1}(A)\)</span> fppf locally using the surjective étale map <span class="math" data-tex="\(s^{-1}(A)\to W_A\)">\(s^{-1}(A)\to W_A\)</span>; its other endpoint is a coordinate in <span class="math" data-tex="\(A\)">\(A\)</span>. Conversely, a coordinate in <span class="math" data-tex="\(A\)">\(A\)</span> makes any related coordinate lie in <span class="math" data-tex="\(W_A\)">\(W_A\)</span>. Thus <span class="math" data-tex="\(T_A=T\times_X X_A\)">\(T_A=T\times_X X_A\)</span>.</p>
+<p>Take an affine open cover <span class="math" data-tex="\(\{A_\lambda\}\)">\(\{A_\lambda\}\)</span> of <span class="math" data-tex="\(U\)">\(U\)</span>. The quotient opens <span class="math" data-tex="\(X_{A_\lambda}\)">\(X_{A_\lambda}\)</span> cover <span class="math" data-tex="\(X\)">\(X\)</span> and, by the affine case, are algebraic spaces. Here they cover even in the Zariski sense appropriate to representable opens: after pulling back to any <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span>, the opens <span class="math" data-tex="\(T_{A_\lambda}\)">\(T_{A_\lambda}\)</span> cover <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For completeness, the diagonal of <span class="math" data-tex="\(X\)">\(X\)</span> is now represented as follows. For a pair of sections on <span class="math" data-tex="\(T\)">\(T\)</span>, cover <span class="math" data-tex="\(T\)">\(T\)</span> by opens on which the first lies in some <span class="math" data-tex="\(X_{A_\lambda}\)">\(X_{A_\lambda}\)</span>. Its equality with the second is possible only on the open where the second also lies in that same <span class="math" data-tex="\(X_{A_\lambda}\)">\(X_{A_\lambda}\)</span>. There the equality functor is represented by the diagonal of this algebraic space. These schemes glue over their open intersections, since they represent the same equality functor. Thus <span class="math" data-tex="\(\Delta_X\)">\(\Delta_X\)</span> is representable.</p>
+<p>Finally the maps <span class="math" data-tex="\(A_\lambda\to X_{A_\lambda}\to X\)">\(A_\lambda\to X_{A_\lambda}\to X\)</span> are representable étale maps and together are surjective. Their disjoint union is a scheme presentation. Hence <span class="math" data-tex="\(X\)">\(X\)</span> is algebraic. The original map <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> is representable by the diagonal observation in Section 1. On an fppf cover of any test scheme admitting coordinates in <span class="math" data-tex="\(U\)">\(U\)</span>, its base change is a base change of <span class="math" data-tex="\(s:R\to U\)">\(s:R\to U\)</span>. It is therefore étale and surjective. Lemma 2.1 identifies its relation with <span class="math" data-tex="\(R\)">\(R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Stacks, Tag 02WW]. The affine neighbourhoods in the proof are used to make scheme descent effective. They do not assert that <span class="math" data-tex="\(X_{A_\lambda}\)">\(X_{A_\lambda}\)</span> is an affine scheme.</p>
+<p><strong>Corollary 2.3.</strong> An algebraic space is the quotient of any of its étale presentations by the corresponding equivalence relation.</p>
+<p><strong>Proof.</strong> An étale surjection has local sections for the étale topology. Thus <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> is an epimorphism of fppf sheaves. Its kernel relation is <span class="math" data-tex="\(U\times_X U\)">\(U\times_X U\)</span>. Lemma 2.1, or directly the gluing of local coordinates, identifies its quotient with <span class="math" data-tex="\(X\)">\(X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-products-and-gluing">3. Products and gluing</h2>
+<p><strong>Proposition 3.1.</strong> If <span class="math" data-tex="\(X\to Z\leftarrow Y\)">\(X\to Z\leftarrow Y\)</span> are morphisms of algebraic spaces over <span class="math" data-tex="\(S\)">\(S\)</span>, then <span class="math" data-tex="\(X\times_Z Y\)">\(X\times_Z Y\)</span> is an algebraic space and has the expected fibre product universal property.</p>
+<p><strong>Proof.</strong> The fibre product <span class="math" data-tex="\(H\)">\(H\)</span> in sheaves exists. Choose presentations <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span>, <span class="math" data-tex="\(V\to Y\)">\(V\to Y\)</span>. Since <span class="math" data-tex="\(Z\)">\(Z\)</span> has representable diagonal, <span class="math" data-tex="\(W=U\times_Z V\)">\(W=U\times_Z V\)</span> is a scheme. The map <span class="math" data-tex="\(W\to H\)">\(W\to H\)</span> is the composition of base changes of the two presentations, so is representable, étale and surjective.</p>
+<p>For two sections of <span class="math" data-tex="\(H\)">\(H\)</span> over a scheme <span class="math" data-tex="\(T\)">\(T\)</span>, their equality is equivalent to the equality of their <span class="math" data-tex="\(X\)">\(X\)</span>-coordinates and of their <span class="math" data-tex="\(Y\)">\(Y\)</span>-coordinates. The two equality schemes over <span class="math" data-tex="\(T\)">\(T\)</span> exist by the diagonal conditions of <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>. Their scheme fibre product over <span class="math" data-tex="\(T\)">\(T\)</span> represents the equality functor for <span class="math" data-tex="\(H\)">\(H\)</span>. Thus <span class="math" data-tex="\(H\)">\(H\)</span> has representable diagonal. Its universal property is its universal property as a sheaf, since the category of algebraic spaces is a full subcategory of sheaves. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2.</strong> Algebraic spaces can be glued along open subspaces with specified identifications satisfying the cocycle condition. A disjoint union indexed by a set is an algebraic space, subject to the fixed universe convention.</p>
+<p><strong>Proof.</strong> Construct the glued sheaf by identifying the specified open subfunctors. For any test scheme, membership in an open piece is an open condition and the pieces cover. As in the last part of Theorem 2.2, equality schemes can be built on these opens and glued, establishing the diagonal condition. Choose a scheme presentation of each piece. Their disjoint union is a scheme, and its map to the glued sheaf is representable étale and surjective, because each piece is a representable open. The disjoint union is the case of empty overlaps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument is also why ordinary Zariski gluing remains available after passing from schemes to spaces.</p>
+<h2 id="4-symmetry-and-separation">4. Symmetry and separation</h2>
+<p>Suppose an abstract group <span class="math" data-tex="\(G\)">\(G\)</span> acts on an <span class="math" data-tex="\(S\)">\(S\)</span>-scheme <span class="math" data-tex="\(U\)">\(U\)</span>. Use the action relation</p>
+<span class="math math-display" data-tex="\[
+R=\coprod_{g\in G}U,
+\qquad (g,u)\longmapsto (u,g(u)).
+\]">\[
+R=\coprod_{g\in G}U,
+\qquad (g,u)\longmapsto (u,g(u)).
+\]</span>
+<p>This is an equivalence relation precisely when the action has no stabilizers on geometric points. One useful form of that condition is</p>
+<span class="math math-display" data-tex="\[
+g(u)=u\text{ and }g|_{\kappa(u)}=\operatorname{id}
+\quad\Longrightarrow\quad g=1.
+\tag{4.1}
+\]">\[
+g(u)=u\text{ and }g|_{\kappa(u)}=\operatorname{id}
+\quad\Longrightarrow\quad g=1.
+\tag{4.1}
+\]</span>
+<p>It is possible for a group element to fix an ordinary point while moving its residue field. Condition (4.1) permits this. We call an action satisfying it <strong>free</strong>.</p>
+<p><strong>Proposition 4.1.</strong> Under condition (4.1), the action relation is an étale equivalence relation. Its quotient <span class="math" data-tex="\(U/G\)">\(U/G\)</span> is an algebraic space, and <span class="math" data-tex="\(U\to U/G\)">\(U\to U/G\)</span> is a torsor for the constant group in the fppf topology. If <span class="math" data-tex="\(G\)">\(G\)</span> is finite, the quotient map is finite étale and surjective.</p>
+<p><strong>Proof.</strong> A map from a test scheme into <span class="math" data-tex="\(R\)">\(R\)</span> consists of a locally constant choice of <span class="math" data-tex="\(g\)">\(g\)</span> and a map to <span class="math" data-tex="\(U\)">\(U\)</span>. Suppose two such maps have the same pair of endpoints. Locally on the test scheme their group labels are constant. At any point <span class="math" data-tex="\(z\)">\(z\)</span> of a nonempty such piece, equality of endpoints shows that <span class="math" data-tex="\(g^{-1}h\)">\(g^{-1}h\)</span> fixes the image <span class="math" data-tex="\(u\)">\(u\)</span> and acts trivially after the injective field map <span class="math" data-tex="\(\kappa(u)\to\kappa(z)\)">\(\kappa(u)\to\kappa(z)\)</span>. It acts trivially on <span class="math" data-tex="\(\kappa(u)\)">\(\kappa(u)\)</span>, and (4.1) gives <span class="math" data-tex="\(g=h\)">\(g=h\)</span>. The maps to <span class="math" data-tex="\(U\)">\(U\)</span> then agree too. This proves the monomorphism condition, including disconnected test schemes.</p>
+<p>Identity, inversion and multiplication of labels provide reflexivity, symmetry and transitivity. Each projection is, on a component, either the identity of <span class="math" data-tex="\(U\)">\(U\)</span> or an automorphism, and is therefore étale. Theorem 2.2 applies. Lemma 2.1 gives the torsor identity</p>
+<span class="math math-display" data-tex="\[
+G\times U\simeq U\times_{U/G}U.
+\]">\[
+G\times U\simeq U\times_{U/G}U.
+\]</span>
+<p>The quotient map has local sections, and this identity makes the action simply transitive on those local trivializations. If <span class="math" data-tex="\(G\)">\(G\)</span> is finite, a base change of the quotient map by itself is the finite disjoint union of identity maps on <span class="math" data-tex="\(U\)">\(U\)</span>. It is finite étale. Finiteness and étaleness descend fppf locally on the target; the quotient map is therefore finite étale and surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an algebraic space <span class="math" data-tex="\(X\)">\(X\)</span> over <span class="math" data-tex="\(S\)">\(S\)</span>, we use the following separation conditions:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Condition on <span class="math" data-tex="\(\Delta_{X/S}\)">\(\Delta_{X/S}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quasi-separated</td>
+<td>Quasi-compact</td>
+</tr>
+<tr>
+<td>Locally separated</td>
+<td>An immersion</td>
+</tr>
+<tr>
+<td>Separated</td>
+<td>A closed immersion</td>
+</tr>
+</tbody>
+</table>
+<p>The conditions can be tested on the relation of a presentation. Indeed, <span class="math" data-tex="\(j:R\to U\times_S U\)">\(j:R\to U\times_S U\)</span> is the pullback of <span class="math" data-tex="\(\Delta_{X/S}\)">\(\Delta_{X/S}\)</span> along the representable étale surjection <span class="math" data-tex="\(U\times_S U\to X\times_S X\)">\(U\times_S U\to X\times_S X\)</span>. After any test scheme mapping into the latter sheaf, this gives an étale cover by schemes. Quasi-compactness, immersion and closed immersion descend under these covers. Thus the test does not require that <span class="math" data-tex="\(U\)">\(U\)</span> itself be separated.</p>
+<p><strong>Proposition 4.2.</strong> For a free action of a finite group, <span class="math" data-tex="\(U/G\)">\(U/G\)</span> is quasi-separated over <span class="math" data-tex="\(S\)">\(S\)</span> if <span class="math" data-tex="\(U\)">\(U\)</span> is quasi-separated over <span class="math" data-tex="\(S\)">\(S\)</span>, and separated over <span class="math" data-tex="\(S\)">\(S\)</span> if <span class="math" data-tex="\(U\)">\(U\)</span> is separated over <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Proof.</strong> Each graph of <span class="math" data-tex="\(g:U\to U\)">\(g:U\to U\)</span> is obtained from <span class="math" data-tex="\(\Delta_{U/S}\)">\(\Delta_{U/S}\)</span> by an automorphism of <span class="math" data-tex="\(U\times_S U\)">\(U\times_S U\)</span>. In the quasi-separated case all these graphs are quasi-compact morphisms, and their finite disjoint union is quasi-compact. This proves the first assertion by the relation test.</p>
+<p>In the separated case the graphs are closed immersions. Distinct graphs have disjoint underlying images: a point in their intersection would give, over a common residue-field extension, a geometric point fixed by <span class="math" data-tex="\(g^{-1}h\)">\(g^{-1}h\)</span>, contradicting (4.1). A finite family of disjoint closed subschemes has disjoint-union map a closed immersion. To check this on an affine open of the target, the corresponding ideals are pairwise comaximal, and the Chinese remainder theorem gives the required quotient algebra. Apply the relation test again. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>References:</em> [Stacks, Tags 02Z2 and 02Z4].</p>
+<p><strong>Proposition 4.3.</strong> A free action of a finite group on an affine scheme <span class="math" data-tex="\(U=\operatorname{Spec}A\)">\(U=\operatorname{Spec}A\)</span> has affine quotient <span class="math" data-tex="\(\operatorname{Spec}(A^G)\)">\(\operatorname{Spec}(A^G)\)</span>. The algebra <span class="math" data-tex="\(A\)">\(A\)</span> is finite locally free over <span class="math" data-tex="\(A^G\)">\(A^G\)</span>, and the quotient map is finite étale. More generally, if every orbit in a scheme <span class="math" data-tex="\(U\)">\(U\)</span> is contained in an affine open, then <span class="math" data-tex="\(U/G\)">\(U/G\)</span> is a scheme.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(B=A^G\)">\(B=A^G\)</span>. The action graphs in the absolute affine product <span class="math" data-tex="\(U\times U\)">\(U\times U\)</span> are pairwise disjoint closed subschemes by freeness. The Chinese remainder theorem therefore makes the map</p>
+<span class="math math-display" data-tex="\[
+A\otimes_{\mathbf Z}A\longrightarrow\prod_{g\in G}A,
+\qquad a\otimes b\longmapsto (a\,g(b))_g
+\]">\[
+A\otimes_{\mathbf Z}A\longrightarrow\prod_{g\in G}A,
+\qquad a\otimes b\longmapsto (a\,g(b))_g
+\]</span>
+<p>surjective. Choose a finite tensor sum mapping to the vector which is one in the identity component and zero elsewhere. Write its entries as <span class="math" data-tex="\(a_i,b_i\in A\)">\(a_i,b_i\in A\)</span>; thus</p>
+<span class="math math-display" data-tex="\[
+\sum_i a_i g(b_i)=\begin{cases}1&amp;g=1,\\0&amp;g\ne1.\end{cases}
+\tag{4.2}
+\]">\[
+\sum_i a_i g(b_i)=\begin{cases}1&amp;g=1,\\0&amp;g\ne1.\end{cases}
+\tag{4.2}
+\]</span>
+<p>The sum <span class="math" data-tex="\(\operatorname{tr}(c)=\sum_g g(c)\)">\(\operatorname{tr}(c)=\sum_g g(c)\)</span> belongs to <span class="math" data-tex="\(B\)">\(B\)</span>. Equation (4.2) gives, for every <span class="math" data-tex="\(c\in A\)">\(c\in A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_i a_i\operatorname{tr}(b_i c)=c.
+\tag{4.3}
+\]">\[
+\sum_i a_i\operatorname{tr}(b_i c)=c.
+\tag{4.3}
+\]</span>
+<p>This is a finite dual basis: <span class="math" data-tex="\(A\)">\(A\)</span> is a direct summand of a finite free <span class="math" data-tex="\(B\)">\(B\)</span>-module, hence finite projective. Every <span class="math" data-tex="\(c\in A\)">\(c\in A\)</span> satisfies the monic polynomial <span class="math" data-tex="\(\prod_g(T-g(c))\)">\(\prod_g(T-g(c))\)</span> with coefficients in <span class="math" data-tex="\(B\)">\(B\)</span>. The integral inclusion <span class="math" data-tex="\(B\subset A\)">\(B\subset A\)</span> is surjective on spectra by lying over. Consequently this finite projective algebra is faithfully flat.</p>
+<p>The induced map</p>
+<span class="math math-display" data-tex="\[
+\theta:A\otimes_B A\longrightarrow\prod_g A
+\]">\[
+\theta:A\otimes_B A\longrightarrow\prod_g A
+\]</span>
+<p>is still surjective. It is injective as well. If <span class="math" data-tex="\(z=\sum_j c_j\otimes d_j\)">\(z=\sum_j c_j\otimes d_j\)</span> has zero image, then <span class="math" data-tex="\(\sum_j c_jg(d_j)=0\)">\(\sum_j c_jg(d_j)=0\)</span> for every <span class="math" data-tex="\(g\)">\(g\)</span>. Expand each <span class="math" data-tex="\(d_j\)">\(d_j\)</span> with (4.3). The coefficient of <span class="math" data-tex="\(1\otimes a_i\)">\(1\otimes a_i\)</span> in this expansion is</p>
+<span class="math math-display" data-tex="\[
+\sum_j c_j\operatorname{tr}(b_i d_j)
+=\sum_g g(b_i)\sum_j c_jg(d_j)=0.
+\]">\[
+\sum_j c_j\operatorname{tr}(b_i d_j)
+=\sum_g g(b_i)\sum_j c_jg(d_j)=0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. The faithfully flat map <span class="math" data-tex="\(\operatorname{Spec}A\to\operatorname{Spec}B\)">\(\operatorname{Spec}A\to\operatorname{Spec}B\)</span> has the action relation as its fibre relation. Fppf descent of sections of a sheaf therefore identifies its quotient with <span class="math" data-tex="\(\operatorname{Spec}B\)">\(\operatorname{Spec}B\)</span>. After base change by <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span> it is a disjoint union of identity maps, so it is finite étale. This also identifies its rank as <span class="math" data-tex="\(|G|\)">\(|G|\)</span>.</p>
+<p>For the general assertion, first produce invariant affine neighbourhoods. Let an orbit <span class="math" data-tex="\(E\)">\(E\)</span> lie in an affine open <span class="math" data-tex="\(A_0\subset U\)">\(A_0\subset U\)</span>. The intersection <span class="math" data-tex="\(V=\bigcap_g g(A_0)\)">\(V=\bigcap_g g(A_0)\)</span> is a <span class="math" data-tex="\(G\)">\(G\)</span>-invariant open containing <span class="math" data-tex="\(E\)">\(E\)</span>, and is an open of <span class="math" data-tex="\(A_0\)">\(A_0\)</span>. There is a function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(A_0\)">\(A_0\)</span> such that <span class="math" data-tex="\(E\subset D(f)\subset V\)">\(E\subset D(f)\subset V\)</span>. Indeed, the ideal defining the closed complement of <span class="math" data-tex="\(V\)">\(V\)</span> is not contained in any of the finitely many primes in <span class="math" data-tex="\(E\)">\(E\)</span>; finite prime avoidance gives such an <span class="math" data-tex="\(f\)">\(f\)</span>. On <span class="math" data-tex="\(V\)">\(V\)</span>, all translates <span class="math" data-tex="\(g(f)\)">\(g(f)\)</span> are regular. Their product <span class="math" data-tex="\(N=\prod_g g(f)\)">\(N=\prod_g g(f)\)</span> is invariant and nonzero at every point of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>The invariant open <span class="math" data-tex="\(D_V(N)\)">\(D_V(N)\)</span> is affine: it lies in <span class="math" data-tex="\(D_{A_0}(f)\)">\(D_{A_0}(f)\)</span>, and is the principal open of that affine scheme cut out by the restriction of <span class="math" data-tex="\(N\)">\(N\)</span>. This construction does not assume that intersections of affine opens in <span class="math" data-tex="\(U\)">\(U\)</span> are affine.</p>
+<p>These invariant affine opens cover <span class="math" data-tex="\(U\)">\(U\)</span>. Their quotients are affine by the first part. Each quotient maps to <span class="math" data-tex="\(U/G\)">\(U/G\)</span> as a representable open immersion: its pullback to <span class="math" data-tex="\(U\)">\(U\)</span> is precisely the invariant open, or one can apply the saturation argument in Theorem 2.2. Thus the algebraic space <span class="math" data-tex="\(U/G\)">\(U/G\)</span> has a cover by open affine schemes. Gluing these schemes over their open overlaps represents it by a scheme. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Infinite groups behave differently even when every nonidentity element is a very simple automorphism.</p>
+<h2 id="5-three-quotients-that-distinguish-the-definitions">5. Three quotients that distinguish the definitions</h2>
+<h3 id="5-1-identify-opposite-coordinates-except-at-zero">5.1. Identify opposite coordinates except at zero</h3>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field with <span class="math" data-tex="\(2\ne0\)">\(2\ne0\)</span>, and put <span class="math" data-tex="\(U=\mathbf A^1_k\)">\(U=\mathbf A^1_k\)</span>. Use the relation</p>
+<span class="math math-display" data-tex="\[
+R=\mathbf A^1_k\amalg\mathbf G_{m,k},
+\quad j|_{\mathbf A^1}(x)=(x,x),
+\quad j|_{\mathbf G_m}(x)=(x,-x).
+\]">\[
+R=\mathbf A^1_k\amalg\mathbf G_{m,k},
+\quad j|_{\mathbf A^1}(x)=(x,x),
+\quad j|_{\mathbf G_m}(x)=(x,-x).
+\]</span>
+<p>Both projections are étale. The two components have disjoint images: their graphs meet only at zero, which has been removed from the second component. The equivalence relation identities follow from changing sign twice. Thus Theorem 2.2 produces <span class="math" data-tex="\(X=U/R\)">\(X=U/R\)</span>.</p>
+<p>The map <span class="math" data-tex="\(j\)">\(j\)</span> is quasi-compact. In fact both components are quasi-compact schemes, and every open subset of either is quasi-compact, because they are Noetherian. The inverse image of an affine open of <span class="math" data-tex="\(\mathbf A^2_k\)">\(\mathbf A^2_k\)</span> is consequently quasi-compact. Thus <span class="math" data-tex="\(X\)">\(X\)</span> is quasi-separated.</p>
+<p>It is not locally separated. Let <span class="math" data-tex="\(D\)">\(D\)</span> be the diagonal and <span class="math" data-tex="\(L\)">\(L\)</span> the line <span class="math" data-tex="\(y=-x\)">\(y=-x\)</span> in <span class="math" data-tex="\(\mathbf A^2_k\)">\(\mathbf A^2_k\)</span>. The image of <span class="math" data-tex="\(j\)">\(j\)</span> is <span class="math" data-tex="\(D\cup(L\setminus\{0\})\)">\(D\cup(L\setminus\{0\})\)</span>, whose underlying set is the closed set <span class="math" data-tex="\(D\cup L\)">\(D\cup L\)</span>. Suppose <span class="math" data-tex="\(j\)">\(j\)</span> were an immersion. Its underlying space would then have the subspace topology of this union. But the diagonal component is open and closed in <span class="math" data-tex="\(R\)">\(R\)</span>. Its image <span class="math" data-tex="\(D\)">\(D\)</span> is not open in <span class="math" data-tex="\(D\cup L\)">\(D\cup L\)</span>: any open neighbourhood of the origin on the line <span class="math" data-tex="\(L\)">\(L\)</span> contains its generic point, which is in <span class="math" data-tex="\(L\setminus\{0\}\)">\(L\setminus\{0\}\)</span> and outside <span class="math" data-tex="\(D\)">\(D\)</span>. This contradicts the subspace topology. Hence <span class="math" data-tex="\(j\)">\(j\)</span> is not an immersion.</p>
+<p>Every scheme over <span class="math" data-tex="\(k\)">\(k\)</span> is locally separated: on an affine neighbourhood of a point its diagonal is closed, and these neighbourhoods give the immersion property for the full diagonal. Therefore <span class="math" data-tex="\(X\)">\(X\)</span> is not a scheme. The obstruction is visible in the relation, without a search for a hypothetical coordinate ring.</p>
+<p>Away from the image of zero, the quotient is <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>. The map <span class="math" data-tex="\(x\mapsto x^2\)">\(x\mapsto x^2\)</span> is finite étale on <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>, and its fibre relation is exactly the identity and sign-change graphs. It represents the quotient there. Every neighbourhood of the image of zero retains the failure of immersion just proved, so none is a scheme.</p>
+<p><em>Reference:</em> [Stacks, Tag 02Z1].</p>
+<h3 id="5-2-an-algebraic-closure-with-a-discrete-galois-action">5.2. An algebraic closure with a discrete Galois action</h3>
+<p>Let <span class="math" data-tex="\(U=\operatorname{Spec}\overline{\mathbf Q}\)">\(U=\operatorname{Spec}\overline{\mathbf Q}\)</span> and let <span class="math" data-tex="\(G=\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q)\)">\(G=\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q)\)</span> act as an abstract group. Its only ordinary point is fixed by every element, but a nonidentity element acts nontrivially on its residue field. Condition (4.1) holds, so <span class="math" data-tex="\(X=U/G\)">\(X=U/G\)</span> is an algebraic space over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<p>It is not <span class="math" data-tex="\(\operatorname{Spec}\mathbf Q\)">\(\operatorname{Spec}\mathbf Q\)</span>. If it were, its presentation would make <span class="math" data-tex="\(\operatorname{Spec}\overline{\mathbf Q}\to\operatorname{Spec}\mathbf Q\)">\(\operatorname{Spec}\overline{\mathbf Q}\to\operatorname{Spec}\mathbf Q\)</span> étale. A field étale over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> is a finite separable extension; the algebraic closure is infinite. This contradiction already distinguishes the two sheaves.</p>
+<p>In fact <span class="math" data-tex="\(X\)">\(X\)</span> is not a scheme. Here is a useful argument that avoids a classification of finite subgroups of the Galois group. Suppose it were a scheme, and choose an affine open <span class="math" data-tex="\(V\subset X\)">\(V\subset X\)</span> containing the image <span class="math" data-tex="\(x\)">\(x\)</span> of the unique point of <span class="math" data-tex="\(U\)">\(U\)</span>. The preimage of <span class="math" data-tex="\(V\)">\(V\)</span> is all of <span class="math" data-tex="\(U\)">\(U\)</span>, so <span class="math" data-tex="\(U\to V\)">\(U\to V\)</span> is étale. It is locally of finite presentation. Since its source and target are affine and its source has one point, it is also quasi-compact; its separatedness follows from affineness. It is therefore of finite presentation. Its fibre over <span class="math" data-tex="\(x\)">\(x\)</span> shows that <span class="math" data-tex="\(\overline{\mathbf Q}\)">\(\overline{\mathbf Q}\)</span> is finite separable over <span class="math" data-tex="\(\kappa(x)\)">\(\kappa(x)\)</span>.</p>
+<p>The map <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> is invariant under every element of <span class="math" data-tex="\(G\)">\(G\)</span>, so the embedded field <span class="math" data-tex="\(\kappa(x)\subset\overline{\mathbf Q}\)">\(\kappa(x)\subset\overline{\mathbf Q}\)</span> lies in the fixed field <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. As the map is over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, this embedded field is exactly <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. That contradicts the finite-extension conclusion.</p>
+<p>The distinction comes from the group used to form the relation. In this example it is the constant group indexed by the underlying set of <span class="math" data-tex="\(G\)">\(G\)</span>, not a group object carrying the profinite topology.</p>
+<p><em>Reference:</em> [Stacks, Tag 02Z6].</p>
+<h3 id="5-3-translation-by-integers">5.3. Translation by integers</h3>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> have characteristic zero, and let <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> act on <span class="math" data-tex="\(\mathbf A^1_k\)">\(\mathbf A^1_k\)</span> by <span class="math" data-tex="\(x\mapsto x+n\)">\(x\mapsto x+n\)</span>. A nonzero translation has no fixed geometric point. At the generic ordinary point it acts nontrivially on <span class="math" data-tex="\(k(x)\)">\(k(x)\)</span>, so condition (4.1) still holds. Put</p>
+<span class="math math-display" data-tex="\[
+X=\mathbf A^1_k/\mathbf Z.
+\]">\[
+X=\mathbf A^1_k/\mathbf Z.
+\]</span>
+<p>The relation is an infinite disjoint union of affine lines. Its entire inverse image over the affine scheme <span class="math" data-tex="\(\mathbf A^2_k\)">\(\mathbf A^2_k\)</span> is not quasi-compact: the infinitely many nonempty open-and-closed components have no finite subcover. Thus the relation map is not quasi-compact, and <span class="math" data-tex="\(X\)">\(X\)</span> is not quasi-separated.</p>
+<p>A further failure concerns residue fields. The generic point gives <span class="math" data-tex="\(\gamma:\operatorname{Spec}k(x)\to X\)">\(\gamma:\operatorname{Spec}k(x)\to X\)</span>. Unlike a point of a scheme, it cannot factor through a monomorphism from the spectrum of a field. We prove this next, so that the obstruction is explicit.</p>
+<p><strong>Lemma 5.1.</strong> Let a constant abstract group <span class="math" data-tex="\(G\)">\(G\)</span> act freely on <span class="math" data-tex="\(U\)">\(U\)</span>, and let <span class="math" data-tex="\(\operatorname{Spec}L\to U/G\)">\(\operatorname{Spec}L\to U/G\)</span> be any field-valued point. For each connected component <span class="math" data-tex="\(\operatorname{Spec}L&#x27;\)">\(\operatorname{Spec}L&#x27;\)</span> of its pullback to <span class="math" data-tex="\(U\)">\(U\)</span>, the extension <span class="math" data-tex="\(L&#x27;/L\)">\(L&#x27;/L\)</span> is finite Galois and its Galois group is isomorphic to the subgroup of <span class="math" data-tex="\(G\)">\(G\)</span> preserving that component.</p>
+<p><strong>Proof.</strong> The pullback <span class="math" data-tex="\(P\to\operatorname{Spec}L\)">\(P\to\operatorname{Spec}L\)</span> is a nonempty étale scheme. It is a disjoint union of spectra of finite separable extensions of <span class="math" data-tex="\(L\)">\(L\)</span>, and <span class="math" data-tex="\(P\)">\(P\)</span> is a <span class="math" data-tex="\(G\)">\(G\)</span>-torsor by Proposition 4.1. Let <span class="math" data-tex="\(H\)">\(H\)</span> preserve the chosen component <span class="math" data-tex="\(P_0=\operatorname{Spec}L&#x27;\)">\(P_0=\operatorname{Spec}L&#x27;\)</span>. Restricting the torsor identity gives</p>
+<span class="math math-display" data-tex="\[
+H\times P_0\simeq P_0\times_L P_0.
+\]">\[
+H\times P_0\simeq P_0\times_L P_0.
+\]</span>
+<p>The right side is finite over <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, of degree <span class="math" data-tex="\([L&#x27;:L]\)">\([L&#x27;:L]\)</span>, so <span class="math" data-tex="\(H\)">\(H\)</span> is finite with that cardinality. The isomorphism identifies its elements with all <span class="math" data-tex="\(L\)">\(L\)</span>-automorphisms of <span class="math" data-tex="\(L&#x27;\)">\(L&#x27;\)</span>. A finite separable extension with as many automorphisms as its degree is Galois. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Suppose <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> factored as</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Spec}k(x)\longrightarrow\operatorname{Spec}L
+\xrightarrow{m}X
+\]">\[
+\operatorname{Spec}k(x)\longrightarrow\operatorname{Spec}L
+\xrightarrow{m}X
+\]</span>
+<p>with <span class="math" data-tex="\(m\)">\(m\)</span> a monomorphism. Pull <span class="math" data-tex="\(m\)">\(m\)</span> back to <span class="math" data-tex="\(\mathbf A^1_k\)">\(\mathbf A^1_k\)</span>, obtaining a monomorphism <span class="math" data-tex="\(P\to\mathbf A^1_k\)">\(P\to\mathbf A^1_k\)</span> with a lift of the generic point. A component <span class="math" data-tex="\(\operatorname{Spec}L&#x27;\subset P\)">\(\operatorname{Spec}L&#x27;\subset P\)</span> therefore receives <span class="math" data-tex="\(\operatorname{Spec}k(x)\)">\(\operatorname{Spec}k(x)\)</span> and maps to the generic point of the affine line. The composite</p>
+<span class="math math-display" data-tex="\[
+k(x)\longrightarrow L&#x27;\longrightarrow k(x)
+\]">\[
+k(x)\longrightarrow L&#x27;\longrightarrow k(x)
+\]</span>
+<p>is the identity. Since a field map is injective, these maps force <span class="math" data-tex="\(L&#x27;=k(x)\)">\(L&#x27;=k(x)\)</span>: the second map embeds <span class="math" data-tex="\(L&#x27;\)">\(L&#x27;\)</span> into <span class="math" data-tex="\(k(x)\)">\(k(x)\)</span> and its image already contains all of <span class="math" data-tex="\(k(x)\)">\(k(x)\)</span>. Lemma 5.1 says that <span class="math" data-tex="\(L&#x27;/L\)">\(L&#x27;/L\)</span> has Galois group a finite subgroup of <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, hence is trivial. Thus <span class="math" data-tex="\(L=L&#x27;=k(x)\)">\(L=L&#x27;=k(x)\)</span>.</p>
+<p>However, restricting the relation to the generic point gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Spec}k(x)\times_X\operatorname{Spec}k(x)
+\simeq\coprod_{n\in\mathbf Z}\operatorname{Spec}k(x).
+\]">\[
+\operatorname{Spec}k(x)\times_X\operatorname{Spec}k(x)
+\simeq\coprod_{n\in\mathbf Z}\operatorname{Spec}k(x).
+\]</span>
+<p>There is one component for each translation automorphism of the rational function field. The diagonal lands in the component indexed by zero and is not an isomorphism. Therefore <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is not a monomorphism, contradicting the factorization. This explains why the points of general algebraic spaces must be defined by equivalence classes of field-valued maps rather than by monomorphisms from spectra of fields.</p>
+<p><em>References:</em> [Stacks, Tags 02Z5 and 02Z7].</p>
+<h2 id="6-exercises-and-solutions">6. Exercises and solutions</h2>
+<p>The following exercises revisit the constructions through different tests: equality of coordinates, gluing, and the effect of changing the group. The final exercise develops the affine-neighbourhood question for finite quotients.</p>
+<p><strong>Exercise 6.1 (first steps).</strong> For a scheme <span class="math" data-tex="\(V\)">\(V\)</span>, identify the equality scheme for two maps <span class="math" data-tex="\(T\to V\)">\(T\to V\)</span>. Then construct a presentation of <span class="math" data-tex="\(\coprod_i X_i\)">\(\coprod_i X_i\)</span> from presentations <span class="math" data-tex="\(U_i\to X_i\)">\(U_i\to X_i\)</span>.</p>
+<p><strong>Solution.</strong> The equality scheme is <span class="math" data-tex="\(T\times_{V\times_S V}V\)">\(T\times_{V\times_S V}V\)</span>, using the diagonal of <span class="math" data-tex="\(V\)">\(V\)</span>. Thus schemes satisfy the diagonal condition, and the identity gives their presentations. For the disjoint union, use <span class="math" data-tex="\(\coprod_i U_i\)">\(\coprod_i U_i\)</span>. The equality functor between two sections splits over the open-and-closed parts of <span class="math" data-tex="\(T\)">\(T\)</span> on which both choose the same index. On each such part it is the equality scheme for <span class="math" data-tex="\(X_i\)">\(X_i\)</span>; on parts with different indices it is empty. These schemes glue, and the disjoint-union presentation is representable étale and surjective.</p>
+<p><strong>Exercise 6.2 (separation).</strong> In the sign-identification example, replace the removed origin in the second graph by an arbitrary finite set of closed points invariant under sign. Require that the set contain zero. Describe the quotient off that set, and show that it is not locally separated at the image of zero when the second graph is nonempty.</p>
+<p><strong>Solution.</strong> On the invariant complement <span class="math" data-tex="\(A\subset\mathbf A^1\)">\(A\subset\mathbf A^1\)</span>, sign is a free action of the two-element group. The square map identifies <span class="math" data-tex="\(A/\{\pm1\}\)">\(A/\{\pm1\}\)</span> with the open of <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span> obtained by removing the squares of the excluded points, and this open is contained in <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>. The restricted relation is its fibre relation. For the full quotient, the second graph remains dense in <span class="math" data-tex="\(L:y=-x\)">\(L:y=-x\)</span>, while its origin is absent. The image of the diagonal component is not open near the origin in the union of the two lines. The topology argument of Section 5.1 again proves that the relation is not an immersion. In the original example, the same argument also proves quasi-separatedness because both components are Noetherian and quasi-compact.</p>
+<p><strong>Exercise 6.3 (finite torsors).</strong> Let a finite group act freely on <span class="math" data-tex="\(U\)">\(U\)</span>. Find the degree of <span class="math" data-tex="\(U\to U/G\)">\(U\to U/G\)</span> and explain why a <span class="math" data-tex="\((U/G)(T)\)">\((U/G)(T)\)</span>-point need not lift to <span class="math" data-tex="\(U(T)\)">\(U(T)\)</span>.</p>
+<p><strong>Solution.</strong> Proposition 4.1 proves that the map is finite étale; its pullback by itself is <span class="math" data-tex="\(|G|\)">\(|G|\)</span> copies of <span class="math" data-tex="\(U\)">\(U\)</span>. Therefore it is finite locally free of constant rank <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. A point of the quotient over <span class="math" data-tex="\(T\)">\(T\)</span> pulls back to a <span class="math" data-tex="\(G\)">\(G\)</span>-torsor on <span class="math" data-tex="\(T\)">\(T\)</span>. It has a lift precisely when that torsor has a section. Such a section trivializes the torsor; a nontrivial torsor has local sections but no global section. For example, a nontrivial quadratic finite separable extension <span class="math" data-tex="\(L/k\)">\(L/k\)</span> defines the free Galois action on <span class="math" data-tex="\(\operatorname{Spec}L\)">\(\operatorname{Spec}L\)</span>, whose quotient is <span class="math" data-tex="\(\operatorname{Spec}k\)">\(\operatorname{Spec}k\)</span>. The latter's identity point does not lift to <span class="math" data-tex="\(\operatorname{Spec}L(k)\)">\(\operatorname{Spec}L(k)\)</span>.</p>
+<p><strong>Exercise 6.4 (infinite symmetry).</strong> Replace the integer translation action by translation by the additive group of a nonzero finitely generated subgroup <span class="math" data-tex="\(\Lambda\subset k\)">\(\Lambda\subset k\)</span>, where <span class="math" data-tex="\(k\)">\(k\)</span> has characteristic zero. Show that the quotient is not quasi-separated and that its generic point has no factorization through a field-spectrum monomorphism.</p>
+<p><strong>Solution.</strong> The group <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is infinite and torsion-free. Its action is free on geometric points, and its action on <span class="math" data-tex="\(k(x)\)">\(k(x)\)</span> is faithful. The relation is the disjoint union of <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span> indexed by <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Its inverse image over <span class="math" data-tex="\(\mathbf A^2\)">\(\mathbf A^2\)</span> is not quasi-compact, proving the first assertion. For the second, the proof after Lemma 5.1 applies unchanged: a hypothetical factorization forces <span class="math" data-tex="\(L&#x27;=k(x)\)">\(L&#x27;=k(x)\)</span>, and then the finite stabilizer subgroup is trivial. The restricted relation on <span class="math" data-tex="\(\operatorname{Spec}k(x)\)">\(\operatorname{Spec}k(x)\)</span> still has one component for each <span class="math" data-tex="\(\lambda\in\Lambda\)">\(\lambda\in\Lambda\)</span>, contradicting the monomorphism. Taking <span class="math" data-tex="\(\Lambda=\mathbf Z\cdot1\)">\(\Lambda=\mathbf Z\cdot1\)</span> gives the original integer example.</p>
+<p><strong>Exercise 6.5 (affine neighbourhoods).</strong> Suppose a finite group acts freely on a scheme <span class="math" data-tex="\(U\)">\(U\)</span> quasi-projective over an affine scheme. Show that every orbit lies in an invariant affine open and that <span class="math" data-tex="\(U/G\)">\(U/G\)</span> is a scheme. Why would simply taking the intersection of all translates of an affine open require an extra argument?</p>
+<p><strong>Solution.</strong> A quasi-projective scheme over an affine base has an ample invertible sheaf, and every finite subset lies in an affine open. The precise scheme result is [Stacks, Tag 01ZY]. One way to obtain the affine neighbourhood is to embed <span class="math" data-tex="\(U\)">\(U\)</span> as a locally closed subscheme of a projective space over the base. Choose homogeneous functions whose standard opens cover the finite set and avoid the boundary of <span class="math" data-tex="\(U\)">\(U\)</span> in its closure. Homogeneous prime avoidance supplies one homogeneous function in their generated ideal avoiding every prime in the finite set. Its standard open avoids the boundary; its intersection with <span class="math" data-tex="\(U\)">\(U\)</span> is closed in an affine standard open and is therefore affine.</p>
+<p>The homogeneous prime avoidance used here is [Stacks, Tag 00JS]. Apply the affine-neighbourhood result to the orbit, then apply the norm construction in Proposition 4.3 to obtain an invariant affine open. Its quotient is the spectrum of the invariant ring, and these affine quotients give an open scheme cover of <span class="math" data-tex="\(U/G\)">\(U/G\)</span>. The intersection of the translates is invariant and open, but affineness of an open subscheme does not follow just from its being contained in an affine scheme. In the present quasi-projective case separatedness also gives affineness of finite intersections of affine opens. The norm construction proves the needed refinement even without that shortcut.</p>
+<h2 id="prerequisites-and-sources"><span id="what-this-lesson-does-not-prove"></span>Prerequisites and sources</h2>
+<p>The scheme effectiveness theorem for separated, locally quasi-finite descent data [Stacks, Tag 02W8] is proved in §2.0, including arbitrary non-quasi-compact sources and recovery of the complete original descent datum. Its genuine Zariski Main prerequisite state is recorded there. The scheme descent references for opens, étaleness, surjectivity, finiteness, quasi-compactness, immersion and closed immersion are respectively [Stacks, Tags 03N0, 02VN, 02KV, 02LA, 02KQ, 02YM and 02L6]. For immersions, the locality asserted here is for fppf coverings. We also use the ample finite-set lemma [Stacks, Tag 01ZY] and homogeneous prime avoidance [Stacks, Tag 00JS]. These are statements about schemes, not additional quotient assertions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Stacks]</strong> The Stacks project, <em>Algebraic Spaces</em> and <em>More on Morphisms</em>, especially Tags 02WW, 02W8, 02Z1, 02Z2, 02Z4, 02Z5, 02Z6 and 02Z7. The corresponding text is also available in <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/spaces.html">AI Integrated Stacks Project, Algebraic Spaces</a>, an edition with AI-proposed corrections and AI-written additions which has not been reviewed by the Stacks project's maintainers. The <a href="https://stacks.math.columbia.edu/">official Stacks project</a> retains its own publication and tags.</li>
+<li><strong>[Behrend]</strong> K. Behrend, <em>Introduction to algebraic stacks</em>, lecture notes, 2012. <a href="https://personal.math.ubc.ca/~behrend/math615A/stacksintro.pdf">Author's lecture notes</a>.</li>
+<li><strong>[EGA IV]</strong> A. Grothendieck and J. Dieudonné, <em>Éléments de géométrie algébrique IV</em>, third part, Publications Mathématiques de l'IHÉS 28 (1966), §10.10, for the earlier terminology concerning Serre's algebraic spaces. <a href="https://www.numdam.org/item/PMIHES_1966__28__5_0/">Original text</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="bootstrap-theorem.html">The bootstrap theorem →</a></span></nav>
+<p class="small source-link"><a href="src/algebraic-spaces.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. Lessons 6–9 adapt proofs by the Stacks project authors, as distributed in the AI Integrated Stacks Project, and retain the GNU FDL 1.2 or any later version (licenses/GFDL-1.2.txt).</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-AS">Repository</a></nav>
+</footer>
+</body>
+</html>

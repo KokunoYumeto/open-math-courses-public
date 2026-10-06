@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Weighted inversion on a half-line</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="weighted-inversion-on-a-half-line">Weighted inversion on a half-line</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>The characteristic Cauchy construction needs estimates on a half-line rather than on the whole time axis. Taking an infimum over Schwartz extensions does not automatically preserve a full-line identity: the inverse must also preserve the half-line restriction. We prove that exact point for polynomials whose roots lie in the upper half-plane, including repeated roots and both norm endpoints.</p>
+<p>Read <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a>, <a href="AN02-L057.html">Regular balls, moving roots and complex gauges</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz Fourier inversion; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies finite coordinates, scalar calculus and compact cutoffs; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the norm, extension and integration estimates.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs use the linked prerequisite lessons and any stated planned theorem.</p>
+<h2 id="the-weight-and-the-quotient-are-exact">The weight and the quotient are exact</h2>
+<p>Let <span class="math" data-tex="\(k:\mathbb R\to(0,\infty)\)">\(k:\mathbb R\to(0,\infty)\)</span> be measurable and satisfy, for fixed <span class="math" data-tex="\(C\ge0\)">\(C\ge0\)</span> and integer <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k(\xi+\eta)\le k(\xi)(1+C|\eta|)^N.
+ \\
+\quad
+ \|u\|_{p,k}=(2\pi)^{-1/p}
+       \|k\widehat u\|_{L^p(\mathbb R)},\\
+\quad u\in\mathcal S(\mathbb R),
+ \\
+\quad 1\le p\le\infty.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+k(\xi+\eta)\le k(\xi)(1+C|\eta|)^N.
+ \\
+\quad
+ \|u\|_{p,k}=(2\pi)^{-1/p}
+       \|k\widehat u\|_{L^p(\mathbb R)},\\
+\quad u\in\mathcal S(\mathbb R),
+ \\
+\quad 1\le p\le\infty.
+\end{gathered}
+\tag{1}
+\]</span>
+The factor is one when <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>. Both weight directions follow by using <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> and then <span class="math" data-tex="\(\eta=-\xi\)">\(\eta=-\xi\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k(0)(1+C|\xi|)^{-N}\\
+\le k(\xi)
+ \\
+\le k(0)(1+C|\xi|)^N.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+k(0)(1+C|\xi|)^{-N}\\
+\le k(\xi)
+ \\
+\le k(0)(1+C|\xi|)^N.
+\end{gathered}
+\tag{2}
+\]</span>
+Thus every Schwartz function has finite norm, and the reciprocal weight has at most polynomial growth.</p>
+<p>Let <span class="math" data-tex="\(\mathbb R_-=\{t:t&lt;0\}\)">\(\mathbb R_-=\{t:t&lt;0\}\)</span>. For <span class="math" data-tex="\(u\in\mathcal S\)">\(u\in\mathcal S\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|u\|^-_{p,k}
+ \\
+=\inf\{\|v\|_{p,k}:v\in\mathcal S,\ v\\
+=u\text{ on }\mathbb R_-\}.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+\|u\|^-_{p,k}
+ \\
+=\inf\{\|v\|_{p,k}:v\in\mathcal S,\ v\\
+=u\text{ on }\mathbb R_-\}.
+\end{gathered}
+\tag{3}
+\]</span>
+This depends only on the restriction to the open negative half-line. It is the norm of its class in <span class="math" data-tex="\(\mathcal S/\mathcal N\)">\(\mathcal S/\mathcal N\)</span>, where <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> consists of Schwartz functions vanishing there; completeness of this quotient is not assumed here.</p>
+<p>For precision, it really is a norm of restriction classes, not a possibly degenerate seminorm. Let <span class="math" data-tex="\(\phi\in C_c^\infty(\mathbb R_-)\)">\(\phi\in C_c^\infty(\mathbb R_-)\)</span> and let <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> be the conjugate exponent. Schwartz inversion, its bilinear product identity, and Hölder give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\left|\int u(t)\phi(t)\,dt\right|
+ \\
+\le (2\pi)^{-1/p&#x27;}\left\|
+           \frac{\widehat\phi(-\xi)}{k(\xi)}
+        \right\|_{p&#x27;}\|u\|^-_{p,k}.
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+\left|\int u(t)\phi(t)\,dt\right|
+ \\
+\le (2\pi)^{-1/p&#x27;}\left\|
+           \frac{\widehat\phi(-\xi)}{k(\xi)}
+        \right\|_{p&#x27;}\|u\|^-_{p,k}.
+\end{gathered}
+\tag{4}
+\]</span>
+Indeed the pairing is unchanged by replacing <span class="math" data-tex="\(u\)">\(u\)</span> with any extension <span class="math" data-tex="\(v\)">\(v\)</span>, and its Fourier integral is <span class="math" data-tex="\((2\pi)^{-1}\int\widehat v(\xi)\widehat\phi(-\xi)\,d\xi\)">\((2\pi)^{-1}\int\widehat v(\xi)\widehat\phi(-\xi)\,d\xi\)</span>. The displayed constant is finite by(2), including <span class="math" data-tex="\(p&#x27;=1,\infty\)">\(p&#x27;=1,\infty\)</span>. Take the infimum over <span class="math" data-tex="\(v\)">\(v\)</span>. If the quotient norm is zero, every such test pairing is zero. A nonzero continuous value of <span class="math" data-tex="\(u\)">\(u\)</span> on the negative half-line would be detected by a sufficiently small nonnegative smooth cutoff, multiplied by a fixed complex phase; this contradicts that conclusion. Hence <span class="math" data-tex="\(u=0\)">\(u=0\)</span> there. Homogeneity and the triangle inequality follow by scaling and adding extensions within any positive error of their infima.</p>
+<h2 id="a-causal-inverse-preserves-the-restriction">A causal inverse preserves the restriction</h2>
+<p>For <span class="math" data-tex="\(\lambda=a+ib\)">\(\lambda=a+ib\)</span>, <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_\lambda(r)=i\,\mathbf1_{\{r\ge0\}}e^{i\lambda r},\\
+\qquad
+ T_\lambda f(t)=\int_0^\infty i e^{i\lambda r}f(t-r)\,dr.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+K_\lambda(r)=i\,\mathbf1_{\{r\ge0\}}e^{i\lambda r},\\
+\qquad
+ T_\lambda f(t)=\int_0^\infty i e^{i\lambda r}f(t-r)\,dr.
+\end{gathered}
+\tag{5}
+\]</span>
+The kernel is in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and has every absolute moment:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_0^\infty r^j|K_\lambda(r)|\,dr=j!\,b^{-j-1},
+ \\
+\qquad j\ge0.
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+\int_0^\infty r^j|K_\lambda(r)|\,dr=j!\,b^{-j-1},
+ \\
+\qquad j\ge0.
+\end{gathered}
+\tag{6}
+\]</span>
+For <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, evaluate the exponential integral; ordinary integration by parts proves the recursion for higher <span class="math" data-tex="\(j\)">\(j\)</span>, with both endpoint terms controlled by exponential decay.</p>
+<p>Differentiation under the integral is valid at every fixed order, since the corresponding derivative of a Schwartz function is bounded and the kernel is integrable. For every integer <span class="math" data-tex="\(L\ge0\)">\(L\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_t |t|^L|\partial_t^\ell T_\lambda f(t)|
+ \\
+\le\sum_{j=0}^L {L\choose j}j!b^{-j-1}
+             \sup_y |y|^{L-j}|\partial_y^\ell f(y)|.
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+\sup_t |t|^L|\partial_t^\ell T_\lambda f(t)|
+ \\
+\le\sum_{j=0}^L {L\choose j}j!b^{-j-1}
+             \sup_y |y|^{L-j}|\partial_y^\ell f(y)|.
+\end{gathered}
+\tag{7}
+\]</span>
+This follows by <span class="math" data-tex="\(|t|^L\le\sum_j{L\choose j}r^j|t-r|^{L-j}\)">\(|t|^L\le\sum_j{L\choose j}r^j|t-r|^{L-j}\)</span>. It proves that <span class="math" data-tex="\(T_\lambda\)">\(T_\lambda\)</span> continuously maps <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> into itself, with every Schwartz seminorm controlled by finitely many actual seminorms of <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Directly evaluating the absolutely convergent kernel transform gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat K_\lambda(\xi)
+   =i\int_0^\infty e^{i(\lambda-\xi)r}\,dr
+   =\frac1{\xi-\lambda},
+ \\
+\qquad \xi\in\mathbb R.
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+\widehat K_\lambda(\xi)
+   =i\int_0^\infty e^{i(\lambda-\xi)r}\,dr
+   =\frac1{\xi-\lambda},
+ \\
+\qquad \xi\in\mathbb R.
+\end{gathered}
+\tag{8}
+\]</span>
+The convolution Fourier identity follows by Fubini, since the absolute double integral is bounded by <span class="math" data-tex="\(\|K_\lambda\|_1\|f\|_1\)">\(\|K_\lambda\|_1\|f\|_1\)</span>. The written Fourier inversion and differentiation identities now give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(D-\lambda)T_\lambda f=f,\\
+\qquad
+ T_\lambda(D-\lambda)f=f,\\
+\qquad D=-i\partial_t.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+(D-\lambda)T_\lambda f=f,\\
+\qquad
+ T_\lambda(D-\lambda)f=f,\\
+\qquad D=-i\partial_t.
+\end{gathered}
+\tag{9}
+\]</span>
+Most importantly, <span class="math" data-tex="\(T_\lambda f(t)=0\)">\(T_\lambda f(t)=0\)</span> for <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span> whenever <span class="math" data-tex="\(f=0\)">\(f=0\)</span> for <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>: each sampled point <span class="math" data-tex="\(t-r\)">\(t-r\)</span> is negative. Thus <span class="math" data-tex="\(T_\lambda\mathcal N\subset\mathcal N\)">\(T_\lambda\mathcal N\subset\mathcal N\)</span>. The forward differential operator also preserves <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, by locality.</p>
+<h2 id="the-exact-polynomial-quotient-identity">The exact polynomial quotient identity</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(q\)">\(q\)</span> be a nonzero one-variable polynomial all of whose zeros have positive imaginary part. Constants are allowed. Then, for every <span class="math" data-tex="\(u\in\mathcal S(\mathbb R)\)">\(u\in\mathcal S(\mathbb R)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|u\|^-_{p,|q|k}=\|q(D)u\|^-_{p,k},
+ \\
+\qquad 1\le p\le\infty.
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+\|u\|^-_{p,|q|k}=\|q(D)u\|^-_{p,k},
+ \\
+\qquad 1\le p\le\infty.
+\end{gathered}
+\tag{10}
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(q(\xi)=c\prod_{\nu=1}^m(\xi-\lambda_\nu)\)">\(q(\xi)=c\prod_{\nu=1}^m(\xi-\lambda_\nu)\)</span>, with repetitions included and <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>. Set <span class="math" data-tex="\(T_q=c^{-1}T_{\lambda_1}\cdots T_{\lambda_m}\)">\(T_q=c^{-1}T_{\lambda_1}\cdots T_{\lambda_m}\)</span>. For degree zero set <span class="math" data-tex="\(T_q=c^{-1}I\)">\(T_q=c^{-1}I\)</span>. Equations(7)–(9) prove that <span class="math" data-tex="\(T_q\)">\(T_q\)</span> is the two-sided inverse of <span class="math" data-tex="\(q(D)\)">\(q(D)\)</span> on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Both maps preserve <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v=u\text{ on }\mathbb R_-
+ \\
+\quad\Longleftrightarrow\\
+\quad
+ q(D)v=q(D)u\text{ on }\mathbb R_-.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+v=u\text{ on }\mathbb R_-
+ \\
+\quad\Longleftrightarrow\\
+\quad
+ q(D)v=q(D)u\text{ on }\mathbb R_-.
+\end{gathered}
+\tag{11}
+\]</span>
+The forward implication is locality. For the reverse, apply <span class="math" data-tex="\(T_q\)">\(T_q\)</span> to <span class="math" data-tex="\(q(D)(v-u)\in\mathcal N\)">\(q(D)(v-u)\in\mathcal N\)</span>. This is also an exact bijection between the two extension families: for any Schwartz extension <span class="math" data-tex="\(w\)">\(w\)</span> of <span class="math" data-tex="\(q(D)u\)">\(q(D)u\)</span>, the function <span class="math" data-tex="\(v=T_qw\)">\(v=T_qw\)</span> is a Schwartz extension of <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(q(D)v=w\)">\(q(D)v=w\)</span>.</p>
+<p>On the whole line, the Fourier multiplier identity gives <span class="math" data-tex="\(\|v\|_{p,|q|k}=\|q(D)v\|_{p,k}\)">\(\|v\|_{p,|q|k}=\|q(D)v\|_{p,k}\)</span>. Use the just-proved bijection in the infimum:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\inf_{v|_{\mathbb R_-}=u|_{\mathbb R_-}}\|v\|_{p,|q|k}
+ \\
+=\inf_{w|_{\mathbb R_-}=q(D)u|_{\mathbb R_-}}\|w\|_{p,k}.
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+\inf_{v|_{\mathbb R_-}=u|_{\mathbb R_-}}\|v\|_{p,|q|k}
+ \\
+=\inf_{w|_{\mathbb R_-}=q(D)u|_{\mathbb R_-}}\|w\|_{p,k}.
+\end{gathered}
+\tag{12}
+\]</span>
+This proves(10), without requiring that either infimum be attained.</p>
+<p>The new weight <span class="math" data-tex="\(|q|k\)">\(|q|k\)</span> remains in the stated weight class. For real <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>, each factor satisfies
+<span class="math math-display" data-tex="\[
+ \frac{|\xi+\eta-\lambda_\nu|}{|\xi-\lambda_\nu|}
+ \le1+\frac{|\eta|}{\operatorname{Im}\lambda_\nu}.
+ \]">\[
+ \frac{|\xi+\eta-\lambda_\nu|}{|\xi-\lambda_\nu|}
+ \le1+\frac{|\eta|}{\operatorname{Im}\lambda_\nu}.
+ \]</span>
+Choose a common constant at least <span class="math" data-tex="\(C\)">\(C\)</span> and every reciprocal imaginary part. Multiplying the factor inequalities and(1) gives the same weight inequality with exponent <span class="math" data-tex="\(N+m\)">\(N+m\)</span>. No zero on the real axis occurs. This also justifies applying the restriction-norm argument to <span class="math" data-tex="\(|q|k\)">\(|q|k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a single root, <span class="math" data-tex="\(|\xi-\lambda|\ge b=\operatorname{Im}\lambda\)">\(|\xi-\lambda|\ge b=\operatorname{Im}\lambda\)</span> on the real axis. The full-line pointwise norm inequality passes to the common extension infimum. With(10), it gives the precise estimate
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b\,\|u\|^-_{p,k}
+ \le\|(D-\lambda)u\|^-_{p,k},\\
+\qquad b&gt;0.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+b\,\|u\|^-_{p,k}
+ \le\|(D-\lambda)u\|^-_{p,k},\\
+\qquad b&gt;0.
+\end{gathered}
+\tag{13}
+\]</span>
+All endpoints <span class="math" data-tex="\(p=1,\infty\)">\(p=1,\infty\)</span> are included. For a general <span class="math" data-tex="\(q\)">\(q\)</span> with roots as above, the same reasoning gives <span class="math" data-tex="\(|c|\prod_\nu\operatorname{Im}\lambda_\nu\)">\(|c|\prod_\nu\operatorname{Im}\lambda_\nu\)</span> as one valid lower-bound coefficient.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — basic: phase and preservation.</strong> Prove(9) directly from the integral, and explain why it preserves vanishing on the negative half-line.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(I(t)=\int_0^\infty e^{i\lambda r}f(t-r)\,dr\)">\(I(t)=\int_0^\infty e^{i\lambda r}f(t-r)\,dr\)</span>, so <span class="math" data-tex="\(T_\lambda f=iI\)">\(T_\lambda f=iI\)</span>. Use <span class="math" data-tex="\(\partial_t f(t-r)=-\partial_r f(t-r)\)">\(\partial_t f(t-r)=-\partial_r f(t-r)\)</span>, and integrate in <span class="math" data-tex="\(r\)">\(r\)</span>. The upper endpoint is zero by exponential decay; the lower endpoint is <span class="math" data-tex="\(f(t)\)">\(f(t)\)</span>. The result is <span class="math" data-tex="\(\partial_tT_\lambda f=i f+i\lambda T_\lambda f\)">\(\partial_tT_\lambda f=i f+i\lambda T_\lambda f\)</span>, hence <span class="math" data-tex="\((D-\lambda)T_\lambda f=f\)">\((D-\lambda)T_\lambda f=f\)</span>. All derivatives are legitimate by the Schwartz bound and exponential moments. The other inverse identity follows by the same calculation with <span class="math" data-tex="\(f\)">\(f\)</span> replaced by <span class="math" data-tex="\(Df-\lambda f\)">\(Df-\lambda f\)</span>, or by the already proved Fourier identity. If <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, every <span class="math" data-tex="\(t-r&lt;0\)">\(t-r&lt;0\)</span>, so a forcing zero on that half-line makes its inverse zero there too. A coefficient <span class="math" data-tex="\(-i\)">\(-i\)</span> instead of <span class="math" data-tex="\(i\)">\(i\)</span> would give <span class="math" data-tex="\(-f\)">\(-f\)</span>.</p>
+<p><strong>Exercise 2 — intermediate: a repeated root.</strong> Give the kernel of the inverse of <span class="math" data-tex="\(q(D)=(D-i)^2\)">\(q(D)=(D-i)^2\)</span>, prove its sign, and state the exact quotient norm identity.</p>
+<p><strong>Solution.</strong> The two identical first-order kernels convolve. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, their integrand on <span class="math" data-tex="\(0&lt;r&lt;t\)">\(0&lt;r&lt;t\)</span> is <span class="math" data-tex="\(i^2e^{-r}e^{-(t-r)}=-e^{-t}\)">\(i^2e^{-r}e^{-(t-r)}=-e^{-t}\)</span>; for <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span> their supports do not meet. Thus
+<span class="math math-display" data-tex="\[
+ K_q(t)=-\mathbf1_{\{t\ge0\}}\,t e^{-t}.
+ \tag{14}
+\]">\[
+ K_q(t)=-\mathbf1_{\{t\ge0\}}\,t e^{-t}.
+ \tag{14}
+\]</span>
+It has all absolute moments and maps Schwartz functions into Schwartz functions. One application of <span class="math" data-tex="\(D-i\)">\(D-i\)</span> sends this kernel to <span class="math" data-tex="\(i\mathbf1_{\{t\ge0\}}e^{-t}\)">\(i\mathbf1_{\{t\ge0\}}e^{-t}\)</span>: ordinary differentiation of <span class="math" data-tex="\(te^{-t}\)">\(te^{-t}\)</span> gives that expression, and the possible Dirac coefficient at zero is zero because <span class="math" data-tex="\(te^{-t}\)">\(te^{-t}\)</span> vanishes there. A second application gives <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>, with the first-order <span class="math" data-tex="\(i\)">\(i\)</span> phase. The theorem says <span class="math" data-tex="\(\|u\|^-_{p,(\xi^2+1)k}=\|(D-i)^2u\|^-_{p,k}\)">\(\|u\|^-_{p,(\xi^2+1)k}=\|(D-i)^2u\|^-_{p,k}\)</span>, including <span class="math" data-tex="\(p=1,\infty\)">\(p=1,\infty\)</span>. Repetition creates a polynomial factor in the causal kernel and no new restriction ambiguity.</p>
+<p><strong>Exercise 3 — advanced: why the upper half-plane matters.</strong> For <span class="math" data-tex="\(\operatorname{Im}\lambda&lt;0\)">\(\operatorname{Im}\lambda&lt;0\)</span>, construct a nonzero Schwartz restriction on <span class="math" data-tex="\(\mathbb R_-\)">\(\mathbb R_-\)</span> whose image under <span class="math" data-tex="\(D-\lambda\)">\(D-\lambda\)</span> is zero there. Explain the failure of(10).</p>
+<p><strong>Solution.</strong> Choose a smooth function <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one on <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span> and zero on <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, with a smooth transition on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, using the flat cutoff. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u(t)=\chi(t)e^{i\lambda t},\\
+\qquad
+ (D-\lambda)u=-i\chi&#x27;(t)e^{i\lambda t}.
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+u(t)=\chi(t)e^{i\lambda t},\\
+\qquad
+ (D-\lambda)u=-i\chi&#x27;(t)e^{i\lambda t}.
+\end{gathered}
+\tag{15}
+\]</span>
+As <span class="math" data-tex="\(t\to-\infty\)">\(t\to-\infty\)</span>, the exponential modulus <span class="math" data-tex="\(e^{-\operatorname{Im}\lambda\,t}\)">\(e^{-\operatorname{Im}\lambda\,t}\)</span> decays, and every derivative has the same exponential decay up to a fixed constant. On the positive side the function is compactly supported. Thus <span class="math" data-tex="\(u\in\mathcal S\)">\(u\in\mathcal S\)</span>, and it is nonzero on the negative half-line. Its image is supported in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and vanishes on <span class="math" data-tex="\(\mathbb R_-\)">\(\mathbb R_-\)</span>; the image quotient norm is zero. The restriction norm <span class="math" data-tex="\(\|u\|^-_{p,|\xi-\lambda|k}\)">\(\|u\|^-_{p,|\xi-\lambda|k}\)</span> is positive by the test-separation proof(4), since that real-axis weight is positive and moderate by the same absolute-imaginary-part argument. Therefore the asserted equality fails. A full-line inverse remains available, but it does not preserve this particular half-line restriction.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

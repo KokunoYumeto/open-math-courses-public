@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Fourier kernels as radial averaging</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><h1 id="fourier-kernels-as-radial-averaging">Fourier kernels as radial
+averaging</h1>
+<p>The proofs below establish the
+displayed comparison, cone, equivalence, and section formulas relative
+to the explicit sheaf-operation prerequisites. The <a href="src/SH02/fourier-duality-normalization.md">duality supplement</a>
+supplies conditional proofs of the two duality identities. The
+separately proved <a href="src/SH02/fourier-literal-normalization.md">normalization
+theorem</a>, SH02-NDF-SOURCE-MAPS, constructs the unique opposite
+comparison giving the prescribed paired inverse identities and computes
+its exact relation to the literal comparison.</p>
+<p>The Fourier–Sato definitions and theorem statements are compared with
+Kashiwara and Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf#page=42"><em>Microlocal
+Study of Sheaves</em>, Astérisque 128 (1985), §2.1, pp. 39–40</a>. That
+section explicitly omits the proofs. The arguments below supply the
+halfspace comparison and the full vector-bundle inversion through a
+radial averaging kernel, including the zero section. The source
+comparison at the end identifies the additional open proof passages and
+their scope. The examples and problems are independently written; local
+identifiers belong to this course.</p>
+<span id="SH02-FS-SETUP"></span><h2 id="sh02-fs-setup-the-two-integration-rules">SH02-FS-SETUP — The two
+integration rules</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+be a commutative ring with identity and finite global dimension. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+be a locally compact Hausdorff space and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>:</mo><mi>E</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">\tau:E\to B</annotation></semantics></math>
+a real vector bundle of constant finite rank
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>;
+write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo>:</mo><msup><mi>E</mi><mo>*</mo></msup><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">\pi:E^*\to B</annotation></semantics></math>
+for its dual. Everything is local on the base, so a locally constant
+finite rank can instead be treated on its rank components, with the
+usual boundedness conditions on the operations. In this unit the rank is
+fixed. No assumption of a field, noetherian coefficients,
+constructibility, finite rank of coefficient sheaves, compact base, or
+proper bundle projection is imposed.</p>
+<p>Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>O</mi><mi>E</mi></msub><annotation encoding="application/x-tex">O_E</annotation></semantics></math>
+for the relative orientation local system on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.
+Its pullback to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+is the orientation sheaf of the fibers; the relative dualizing complex
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>τ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>O</mi><mi>E</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\tau^{-1}O_E[n]</annotation></semantics></math>.
+Dual bases give a specified <strong>positive dual-orientation
+identification</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>E</mi></msub><mo>≃</mo><msub><mi>O</mi><msup><mi>E</mi><mo>*</mo></msup></msub></mrow><annotation encoding="application/x-tex">O_E\simeq O_{E^*}</annotation></semantics></math>,
+and the sign representation gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>E</mi></msub><msub><mo>⊗</mo><mi>k</mi></msub><msub><mi>O</mi><mi>E</mi></msub><mo>≃</mo><msub><mi>k</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">O_E\otimes_k O_E\simeq k_B</annotation></semantics></math>.
+These local systems are locally free of rank one. Tensoring with them
+needs no derived correction. All other tensor products of complexes
+below are derived unless one factor is explicitly a flat constant
+extension sheaf.</p>
+<p>An object of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>D</mi><msub><mi mathvariant="double-struck">ℝ</mi><mrow><mo>&gt;</mo><mn>0</mn></mrow></msub><mo>+</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo>;</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^+_{\mathbb R_{&gt;0}}(E;k)</annotation></semantics></math>
+has bounded-below cohomology sheaves locally constant on every positive
+scalar orbit. We use the equivalent natural scalar-invariance
+isomorphism. The zero section is a separate fixed orbit in each fiber; a
+condition on punctured fibers alone does not determine an object’s
+behavior there.</p>
+<p>Set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>E</mi><msub><mo>×</mo><mi>B</mi></msub><msup><mi>E</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">X=E\times_B E^*</annotation></semantics></math>,
+with projections
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">p:X\to E</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>:</mo><mi>X</mi><mo>→</mo><msup><mi>E</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">q:X\to E^*</annotation></semantics></math>,
+and closed subsets</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>N</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≤</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+C=\{(x,\xi):\langle x,\xi\rangle\geq0\},\qquad
+N=\{(x,\xi):\langle x,\xi\rangle\leq0\}.
+</annotation></semantics></math></p>
+<p>For a locally closed set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>A</mi></msub><annotation encoding="application/x-tex">k_A</annotation></semantics></math>
+means the constant sheaf on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+extended by zero using the open embedding followed by the closed
+embedding. We set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>A</mi></msub><mo>=</mo><mi>H</mi><mo>⊗</mo><msub><mi>k</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">H_A=H\otimes k_A</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>A</mi></msub><mi>H</mi><mo>=</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>A</mi></msub><mo>,</mo><mi>H</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma_AH=R\mathcal Hom(k_A,H)</annotation></semantics></math>.
+These are different operations, including when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is closed.</p>
+<p>Define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><mi>F</mi><mo>=</mo><mi>R</mi><msub><mi>q</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>p</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>N</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>S</mi><mi>E</mi></msub><mi>G</mi><mo>=</mo><mi>R</mi><msub><mi>p</mi><mo>*</mo></msub><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>N</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>q</mi><mi>!</mi></msup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS1)</mtext></mrow><annotation encoding="application/x-tex">
+T_EF=Rq_!((p^{-1}F)_N),\qquad
+S_EG=Rp_*R\Gamma_N(q^!G).
+\qquad\text{(FS1)}
+</annotation></semantics></math></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>q</mi><mi>!</mi></msup><mi>G</mi><mo>=</mo><msup><mi>q</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi><mo>⊗</mo><msup><mi>ρ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>O</mi><mi>E</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">q^!G=q^{-1}G\otimes \rho^{-1}O_E[n]</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">\rho:X\to B</annotation></semantics></math>.
+In particular the orientation in this formula is that of the
+<strong>fiber of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+namely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math></strong>.
+The negative pairing is used in both definitions.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>E</mi></msub><annotation encoding="application/x-tex">T_E</annotation></semantics></math>
+is left adjoint to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>E</mi></msub><annotation encoding="application/x-tex">S_E</annotation></semantics></math>:
+tensor–Hom adjunction,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>!</mi></msub><mo>⊣</mo><msup><mi>q</mi><mi>!</mi></msup></mrow><annotation encoding="application/x-tex">q_!\dashv q^!</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>p</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>⊣</mo><mi>R</mi><msub><mi>p</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">p^{-1}\dashv Rp_*</annotation></semantics></math>
+give, in order,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>T</mi><mi>E</mi></msub><mi>F</mi><mo>,</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>p</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>N</mi></msub><mo>,</mo><msup><mi>q</mi><mi>!</mi></msup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo>,</mo><msub><mi>S</mi><mi>E</mi></msub><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS2)</mtext></mrow><annotation encoding="application/x-tex">
+R\operatorname{Hom}(T_EF,G)
+\simeq R\operatorname{Hom}((p^{-1}F)_N,q^!G)
+\simeq R\operatorname{Hom}(F,S_EG).
+\qquad\text{(FS2)}
+</annotation></semantics></math></p>
+<p>The notation is derived
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-module</span>
+Hom, so this includes all degree shifts and identifies the actual
+adjunction. The usual finite-dimensional fiber bounds and the bounded
+flat kernels ensure that these operations preserve the indicated
+bounded-below categories. Scalar equivariance preserves conicity. The
+proper-support symbol
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>!</mi><annotation encoding="application/x-tex">!</annotation></semantics></math>
+in FS1 is essential:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+usually are not proper.</p>
+<p>The imported operation package consists of the open–closed
+localization triangles, proper-support base change and its stalk
+formula, projection formula, composition of proper-support images,
+tensor–Hom adjunction, exceptional inverse image for a real
+vector-bundle projection, and the relative orientation trace. We also
+use conic contraction: for a vector-bundle projection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
+zero section
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>,
+and conic
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>,
+the natural maps identify
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>r</mi><mo>*</mo></msub><mi>H</mi></mrow><annotation encoding="application/x-tex">Rr_*H</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>H</mi></mrow><annotation encoding="application/x-tex">i^{-1}H</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>r</mi><mi>!</mi></msub><mi>H</mi></mrow><annotation encoding="application/x-tex">Rr_!H</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mi>!</mi></msup><mi>H</mi></mrow><annotation encoding="application/x-tex">i^!H</annotation></semantics></math>.</p>
+<span id="SH02-FS-HALFSPACE"></span><h2 id="sh02-fs-halfspace-compactly-supported-cohomology-that-detects-a-boundary">SH02-FS-HALFSPACE
+— Compactly supported cohomology that detects a boundary</h2>
+<p>The following elementary facts are used to calculate kernels, rather
+than to infer a global sheaf from an unconstructed collection of stalk
+isomorphisms.</p>
+<p><strong>Lemma.</strong> For a nonempty open convex subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+of an oriented real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-space,
+the orientation trace identifies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>;</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma_c(U;k)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">k[-n]</annotation></semantics></math>.
+The extension map induced by an inclusion of two such open sets is the
+identity under their traces. A closed halfspace in a
+positive-dimensional vector space has zero compactly supported
+cohomology. More generally a nonzero closed convex cone containing no
+line has zero compactly supported cohomology. Finally, if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+is open convex and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">\ell</annotation></semantics></math>
+is linear, then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>c</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo>∩</mo><mo form="prefix" stretchy="false">{</mo><mi>ℓ</mi><mo>≤</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>;</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mi>U</mi><mo>∩</mo><mo form="prefix" stretchy="false">{</mo><mi>ℓ</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>≠</mo><mi>⌀</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS3)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma_c(U\cap\{\ell\leq0\};k)=0
+\quad\text{if }U\cap\{\ell&gt;0\}\ne\varnothing.
+\qquad\text{(FS3)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> An open convex set is contractible and is a
+manifold with the inherited orientation. Poincaré duality for this
+manifold identifies its compactly supported cohomology with the dual
+orientation generator in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>;
+no dualization of a coefficient module is involved. Naturality of the
+orientation trace for an open inclusion identifies the map on this
+generator. One can equivalently use an orientation-preserving radial
+homeomorphism with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb R^n</annotation></semantics></math>:
+after selecting an interior point, the Minkowski gauge of the translated
+open convex set gives a continuous radial reparametrization, including
+the directions in which the radial endpoint is infinite.</p>
+<p>The localization triangle for the closed halfline in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+reduces its compactly supported cohomology to the extension map from an
+open halfline to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>.
+Both are oriented one-manifolds and that map is an isomorphism by the
+preceding paragraph. A closed halfspace is a product of a closed
+halfline with a Euclidean space, so the proper-support projection
+formula gives the asserted vanishing.</p>
+<p>For the cone assertion, finite-dimensional separation supplies a
+linear functional strictly positive on every nonzero point of the cone.
+Its level-one slice
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is nonempty compact convex. The cone is the quotient of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>×</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\times[0,\infty)</annotation></semantics></math>
+that identifies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>×</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">A\times\{0\}</annotation></semantics></math>.
+Its one-point compactification is the suspension of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>:
+the other endpoint is the point at infinity. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is contractible, this suspension is contractible. The identification of
+compactly supported sheaf cohomology with reduced cohomology of this
+compactification therefore gives zero. These spaces are locally
+contractible metrizable spaces, so the comparison with singular
+cohomology applies. This argument explains why the prohibition on lines
+matters: a vector subspace has nonzero top compactly supported
+cohomology.</p>
+<p>For FS3 apply compactly supported cohomology to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mrow><mi>U</mi><mo>∩</mo><mo form="prefix" stretchy="false">{</mo><mi>ℓ</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo>→</mo><msub><mi>k</mi><mi>U</mi></msub><mo>→</mo><msub><mi>k</mi><mrow><mi>U</mi><mo>∩</mo><mo form="prefix" stretchy="false">{</mo><mi>ℓ</mi><mo>≤</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo>→</mo></mrow><annotation encoding="application/x-tex">k_{U\cap\{\ell&gt;0\}}\to k_U\to k_{U\cap\{\ell\leq0\}}\to</annotation></semantics></math>.
+When the first open set is nonempty it, too, is open convex of dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
+Its map to the middle term is an isomorphism by trace compatibility, so
+the third term vanishes. This proof covers both a genuine cut and the
+case where the intersection with the closed halfspace is empty. Rank
+zero is handled directly: the only nonempty fiber is a point.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-FS-COMPARE"></span><h2 id="sh02-fs-compare-why-ordinary-image-and-proper-support-image-agree-in-the-transform">SH02-FS-COMPARE
+— Why ordinary image and proper-support image agree in the
+transform</h2>
+<p><strong>Theorem.</strong> There are natural isomorphisms</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><mi>F</mi><mo>≃</mo><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>p</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>S</mi><mi>E</mi></msub><mi>G</mi><mo>≃</mo><mi>R</mi><msub><mi>p</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>q</mi><mi>!</mi></msup><mi>G</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>C</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS4)</mtext></mrow><annotation encoding="application/x-tex">
+T_EF\simeq Rq_*R\Gamma_C(p^{-1}F),\qquad
+S_EG\simeq Rp_!((q^!G)_C).
+\qquad\text{(FS4)}
+</annotation></semantics></math></p>
+<p><strong>Proof of the first isomorphism.</strong> Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><msup><mi>p</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi></mrow><annotation encoding="application/x-tex">L=p^{-1}F</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><mi>L</mi></mrow><annotation encoding="application/x-tex">H=R\Gamma_CL</annotation></semantics></math>.
+First we construct the local-support interchange</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>L</mi><mi>N</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><msub><mi>H</mi><mi>N</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS5)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma_C(L_N)\simeq H_N.
+\qquad\text{(FS5)}
+</annotation></semantics></math></p>
+<p>The open complement
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><mi>X</mi><mo>\</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">W=X\setminus N</annotation></semantics></math>
+lies in the interior of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>,
+and its closure lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>L</mi><mi>W</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>L</mi><mi>W</mi></msub></mrow><annotation encoding="application/x-tex">R\Gamma_C(L_W)=L_W</annotation></semantics></math>.
+Apply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">R\Gamma_C</annotation></semantics></math>
+to the localization triangle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>W</mi></msub><mo>→</mo><mi>L</mi><mo>→</mo><msub><mi>L</mi><mi>N</mi></msub><mo>→</mo></mrow><annotation encoding="application/x-tex">L_W\to L\to L_N\to</annotation></semantics></math>.
+The first two terms identify with the first two terms of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>W</mi></msub><mo>→</mo><mi>H</mi><mo>→</mo><msub><mi>H</mi><mi>N</mi></msub><mo>→</mo></mrow><annotation encoding="application/x-tex">H_W\to H\to H_N\to</annotation></semantics></math>,
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>W</mi></msub><mo>=</mo><mi>L</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>W</mi></msub></mrow><annotation encoding="application/x-tex">H|_W=L|_W</annotation></semantics></math>.
+The functorial localization construction identifies their third terms,
+proving FS5. This is a special consequence of the two complementary
+halfspace inequalities, not an assertion that restriction to an
+arbitrary closed set commutes with arbitrary local cohomology.</p>
+<p>Next
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi>N</mi></msub><annotation encoding="application/x-tex">H_N</annotation></semantics></math>
+is supported on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><msub><mo>×</mo><mi>B</mi></msub><msup><mi>E</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">\{0\}\times_BE^*</annotation></semantics></math>.
+Indeed, near a point with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x\ne0</annotation></semantics></math>,
+choose a bundle coordinate in the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>-variable
+equal to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">t=\langle x,\xi\rangle</annotation></semantics></math>.
+Complete it by coordinates in the kernel of that nonzero linear
+functional. This is a local change of fiber coordinates over the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-space.
+In these coordinates
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+is pulled back from the remaining variables and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>t</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">C=\{t\geq0\}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>t</mi><mo>≤</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">N=\{t\leq0\}</annotation></semantics></math>.
+The triangle defining
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>t</mi><mo>≥</mo><mn>0</mn></mrow></msub></mrow><annotation encoding="application/x-tex">R\Gamma_{t\geq0}</annotation></semantics></math>
+shows that its stalk at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>
+is zero: the restriction from an interval to its negative half-interval
+induces the identity on the pulled-back coefficient complex. This last
+assertion follows by taking product neighborhoods and the
+contractible-interval projection formula, and then the filtered colimit
+over those neighborhoods. Its restriction to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t&lt;0</annotation></semantics></math>
+is zero as well. Hence its restriction to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+vanishes. This works with an arbitrary bounded-below coefficient complex
+on the remaining locally compact base.</p>
+<p>All four objects
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>,</mo><msub><mi>L</mi><mi>N</mi></msub><mo>,</mo><mi>H</mi><mo>,</mo><msub><mi>H</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">L,L_N,H,H_N</annotation></semantics></math>
+are conic in the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-fiber.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>:</mo><msup><mi>E</mi><mo>*</mo></msup><mo>→</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">i:E^*\to X</annotation></semantics></math>
+be its zero section. The morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>L</mi><mi>N</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>→</mo><msub><mi>L</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">R\Gamma_C(L_N)\to L_N</annotation></semantics></math>
+becomes an isomorphism after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>q</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">Rq_!</annotation></semantics></math>:
+conic contraction identifies this with applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mi>!</mi></msup><annotation encoding="application/x-tex">i^!</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mi>!</mi></msup><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><mo>=</mo><msup><mi>i</mi><mi>!</mi></msup></mrow><annotation encoding="application/x-tex">i^!R\Gamma_C=i^!</annotation></semantics></math>
+because the zero section lies in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.
+The map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>→</mo><msub><mi>H</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">H\to H_N</annotation></semantics></math>
+becomes an isomorphism after
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">Rq_*</annotation></semantics></math>:
+conic contraction identifies this with applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">i^{-1}</annotation></semantics></math>,
+which sees no change on restricting to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>.
+Finally, the natural map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>q</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><mi>N</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><mi>N</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Rq_!(H_N)\to Rq_*(H_N)</annotation></semantics></math>
+is an isomorphism because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi>N</mi></msub><annotation encoding="application/x-tex">H_N</annotation></semantics></math>
+is supported on the zero section, where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+is the identity and is proper. Therefore the following chain, with its
+displayed arrows, constructs FS4:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>q</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>L</mi><mi>N</mi></msub><mo form="postfix" stretchy="false">)</mo><mspace width="0.222em"></mspace><mo>←</mo><mspace width="0.222em"></mspace><mi>R</mi><msub><mi>q</mi><mi>!</mi></msub><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>L</mi><mi>N</mi></msub><mo form="postfix" stretchy="false">)</mo><mspace width="0.222em"></mspace><mo>≃</mo><mspace width="0.222em"></mspace><mi>R</mi><msub><mi>q</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><mi>N</mi></msub><mo form="postfix" stretchy="false">)</mo><mspace width="0.222em"></mspace><mo>→</mo><mspace width="0.222em"></mspace><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><mi>N</mi></msub><mo form="postfix" stretchy="false">)</mo><mspace width="0.222em"></mspace><mo>←</mo><mspace width="0.222em"></mspace><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub><mi>H</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS6)</mtext></mrow><annotation encoding="application/x-tex">
+Rq_!(L_N)\ \longleftarrow\ Rq_!R\Gamma_C(L_N)
+\ \simeq\ Rq_!(H_N)\ \longrightarrow\ Rq_*(H_N)
+\ \longleftarrow\ Rq_*H.
+\qquad\text{(FS6)}
+</annotation></semantics></math></p>
+<p>Each arrow is now proved invertible. No assertion that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+itself is proper has been used. Interchange the vector bundle and its
+dual, reverse the two inequalities, and include the base-pulled
+orientation complex in the coefficient object. The same argument gives
+the second isomorphism of FS4.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-FS-CONE"></span><h2 id="sh02-fs-cone-two-cone-formulas-with-their-boundary-conventions">SH02-FS-CONE
+— Two cone formulas, with their boundary conventions</h2>
+<p>For a subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">A\subset E</annotation></semantics></math>,
+define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mo>∘</mo></msup><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>ξ</mi><mo>∈</mo><msup><mi>E</mi><mo>*</mo></msup><mo>:</mo><mi>π</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mi>τ</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≥</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> for every </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>∈</mo><msub><mi>A</mi><mrow><mi>π</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A^\circ=\{\xi\in E^*: \pi(\xi)\in\tau(A),\ 
+\langle x,\xi\rangle\geq0\text{ for every }x\in A_{\pi(\xi)}\}.
+</annotation></semantics></math></p>
+<p>The requirement
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mi>τ</mi><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pi(\xi)\in\tau(A)</annotation></semantics></math>
+is part of this definition. An empty fiber does not acquire the whole
+dual fiber through a vacuous inequality. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+denote fiberwise negation. Convexity and absence of lines below are
+fiberwise conditions; openness and closedness are in the total bundle
+topology.</p>
+<p><strong>Theorem.</strong> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">\gamma\subset E</annotation></semantics></math>
+is a closed convex cone containing the entire zero section and each
+fiber contains no line, then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msub><mi>k</mi><mi>γ</mi></msub><mo>≃</mo><msub><mi>k</mi><mrow><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>γ</mi><mo>∘</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS7)</mtext></mrow><annotation encoding="application/x-tex">
+T_Ek_\gamma\simeq k_{\operatorname{Int}(\gamma^\circ)}.
+\qquad\text{(FS7)}
+</annotation></semantics></math></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Int</mi><annotation encoding="application/x-tex">\operatorname{Int}</annotation></semantics></math>
+is total-space interior. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">U\subset E</annotation></semantics></math>
+is an open fiberwise convex cone, possibly with empty fibers, then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msub><mi>k</mi><mi>U</mi></msub><mo>≃</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>U</mi><mo>∘</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup></mrow></msub><mo>⊗</mo><msup><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>O</mi><mi>E</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>n</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS8)</mtext></mrow><annotation encoding="application/x-tex">
+T_Ek_U\simeq k_{(U^\circ)^a}\otimes\pi^{-1}O_E[-n].
+\qquad\text{(FS8)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> By proper-support base change, the stalk in
+FS7 is the compactly supported cohomology of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mi>b</mi></msub><mo>∩</mo><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo>:</mo><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≤</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\gamma_b\cap\{x:\langle x,\xi\rangle\leq0\}</annotation></semantics></math>.
+This is a closed cone containing no line. It is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{0\}</annotation></semantics></math>
+exactly when the pairing is strictly positive on every nonzero point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>γ</mi><mi>b</mi></msub><annotation encoding="application/x-tex">\gamma_b</annotation></semantics></math>;
+otherwise it is a nonzero cone and the lemma gives zero.</p>
+<p>The strict-positivity locus just described is precisely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>γ</mi><mo>∘</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Int}(\gamma^\circ)</annotation></semantics></math>.
+To verify the statement in the total topology, trivialize near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+and intersect
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+with the unit-sphere bundle. Its projection is closed locally, because
+the sphere is compact. Strict positivity on the compact fiber slice
+consequently persists on a neighborhood of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b,\xi)</annotation></semantics></math>.
+If the slice is empty, the same compactness argument shows that it
+remains empty on a base neighborhood. Conversely a nonzero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><msub><mi>γ</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">x\in\gamma_b</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\langle x,\xi\rangle\leq0</annotation></semantics></math>
+prevents interior: a small perturbation of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math>
+makes the pairing negative if necessary. This also covers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mi>b</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\gamma_b=\{0\}</annotation></semantics></math>;
+it must not be replaced by an argument assuming a full-dimensional
+cone.</p>
+<p>To produce the sheaf isomorphism, use the restriction morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>γ</mi></msub><mo>→</mo><msub><mi>k</mi><msub><mn>0</mn><mi>B</mi></msub></msub></mrow><annotation encoding="application/x-tex">k_\gamma\to k_{0_B}</annotation></semantics></math>.
+Its transform maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msub><mi>k</mi><mi>γ</mi></msub></mrow><annotation encoding="application/x-tex">T_Ek_\gamma</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><msup><mi>E</mi><mo>*</mo></msup></msub><annotation encoding="application/x-tex">k_{E^*}</annotation></semantics></math>.
+On the open strict-positivity locus, its fiber is the identity of the
+point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{0\}</annotation></semantics></math>,
+so restriction gives a sheaf isomorphism there. Off that open set the
+transform has zero stalks. The open–closed localization triangle then
+identifies it with extension by zero of that constant restriction. This
+constructs FS7 rather than merely listing its stalks.</p>
+<p>For FS8 put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>0</mn></msub><mo>=</mo><mi>τ</mi><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B_0=\tau(U)</annotation></semantics></math>,
+an open subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>,
+and first work over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mn>0</mn></msub><annotation encoding="application/x-tex">B_0</annotation></semantics></math>.
+There every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>b</mi></msub><annotation encoding="application/x-tex">U_b</annotation></semantics></math>
+is nonempty open convex of dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
+Set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>U</mi><mo>∘</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup></mrow><annotation encoding="application/x-tex">D=(U^\circ)^a</annotation></semantics></math>.
+It is closed in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>E</mi><mo>*</mo></msup><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>B</mi><mn>0</mn></msub></msub></mrow><annotation encoding="application/x-tex">E^*|_{B_0}</annotation></semantics></math>:
+its complement is the projection of the open set where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">x\in U</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\langle x,\xi\rangle&gt;0</annotation></semantics></math>,
+and that projection is open. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∉</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">\xi\notin D</annotation></semantics></math>,
+FS3 makes the transform stalk zero. On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>,
+the negative halfspace contains the whole of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>b</mi></msub><annotation encoding="application/x-tex">U_b</annotation></semantics></math>.
+Restriction and proper-support base change therefore identify the
+transform with the proper-support image of the open subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><msub><mo>×</mo><msub><mi>B</mi><mn>0</mn></msub></msub><mi>D</mi></mrow><annotation encoding="application/x-tex">U\times_{B_0}D</annotation></semantics></math>
+of the
+rank-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+bundle over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>.
+Its relative orientation trace is an isomorphism, since every fiber is
+nonempty open convex. This gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>O</mi><mi>E</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\pi^{-1}O_E[-n]</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>.
+Closed extension in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>E</mi><mo>*</mo></msup><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>B</mi><mn>0</mn></msub></msub></mrow><annotation encoding="application/x-tex">E^*|_{B_0}</annotation></semantics></math>
+constructs the claimed object there. Finally, base-change compatibility
+with extension by zero from the open base
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mn>0</mn></msub><annotation encoding="application/x-tex">B_0</annotation></semantics></math>
+proves FS8 on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>E</mi><mo>*</mo></msup><annotation encoding="application/x-tex">E^*</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+is allowed to be only locally closed in the full total space.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-FS-KERNEL"></span><h2 id="sh02-fs-kernel-a-kernel-identity-that-remembers-gluing-at-the-zero-section">SH02-FS-KERNEL
+— A kernel identity that remembers gluing at the zero section</h2>
+<p>The next calculation is the main inversion argument. Matching only
+the stalks of its final two objects would leave their extension across
+the zero section undetermined.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mi>E</mi><msub><mo>×</mo><mi>B</mi></msub><mi>E</mi></mrow><annotation encoding="application/x-tex">Y=E\times_BE</annotation></semantics></math>,
+with points denoted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math>.
+Over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>,
+integrate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∈</mo><msubsup><mi>E</mi><mi>b</mi><mo>*</mo></msubsup></mrow><annotation encoding="application/x-tex">\xi\in E^*_b</annotation></semantics></math>.
+Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+for that projection and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">u=\langle x,\xi\rangle</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mo form="prefix" stretchy="false">⟨</mo><mi>y</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">v=\langle y,\xi\rangle</annotation></semantics></math>.
+Define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mi>R</mi><msub><mi>r</mi><mi>!</mi></msub><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>u</mi><mo>≤</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>v</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo>⊗</mo><msub><mi>O</mi><msup><mi>E</mi><mo>*</mo></msup></msub><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mi>y</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>s</mi><mo>≥</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>h</mi><mo>+</mo></msub><mo>=</mo><mi>h</mi><msub><mo form="prefix" stretchy="false">|</mo><mrow><mi>s</mi><mo>&gt;</mo><mn>0</mn></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+K=Rr_!k_{\{u\leq0,\ v\geq0\}}\otimes O_{E^*}[n],
+\quad h(y,s)=(sy,y),\quad s\geq0,
+\quad h_+=h|_{s&gt;0}.
+</annotation></semantics></math></p>
+<p>Orientation sheaves in this paragraph are pulled back from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.</p>
+<p><strong>Kernel lemma.</strong> There is a natural isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>≃</mo><mi>R</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>h</mi><mo>+</mo></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>!</mi></msub><msub><mi>k</mi><mrow><mi>E</mi><mo>×</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS9)</mtext></mrow><annotation encoding="application/x-tex">
+K\simeq R(h_+)_!k_{E\times(0,\infty)}[1].
+\qquad\text{(FS9)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> Cut the inequality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u\leq0</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v&lt;0</annotation></semantics></math>
+and its complement. This gives a specified triangle</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>→</mo><mi>D</mi><mo>→</mo><mi>K</mi><mo>→</mo><mi>J</mi><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>J</mi><mo>=</mo><mi>R</mi><msub><mi>r</mi><mi>!</mi></msub><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>u</mi><mo>≤</mo><mn>0</mn><mo>,</mo><mi>v</mi><mo>&lt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo>⊗</mo><msub><mi>O</mi><msup><mi>E</mi><mo>*</mo></msup></msub><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>D</mi><mo>=</mo><mi>R</mi><msub><mi>r</mi><mi>!</mi></msub><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>u</mi><mo>≤</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo>⊗</mo><msub><mi>O</mi><msup><mi>E</mi><mo>*</mo></msup></msub><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS10)</mtext></mrow><annotation encoding="application/x-tex">
+J\longrightarrow D\longrightarrow K\longrightarrow J[1],
+\quad
+J=Rr_!k_{\{u\leq0,v&lt;0\}}\otimes O_{E^*}[n],
+\quad D=Rr_!k_{\{u\leq0\}}\otimes O_{E^*}[n].
+\qquad\text{(FS10)}
+</annotation></semantics></math></p>
+<p>Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo>=</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">Z=\{x=0\}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>y</mi><mo>≠</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">V=\{y\ne0\}</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mi>V</mi><mo>:</mo><mi>x</mi><mo>=</mo><mi>s</mi><mi>y</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> for some </mtext><mspace width="0.333em"></mspace></mrow><mi>s</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">A=\{(x,y)\in V:x=sy\text{ for some }s\geq0\}</annotation></semantics></math>.
+The latter is closed in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+This can be checked in a local trivialization by choosing a linear
+functional nonzero on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>;
+on a smaller neighborhood the scalar
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+when it exists, is the continuous quotient of that functional on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.
+Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>:</mo><mi>A</mi><mo>↪</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">i:A\hookrightarrow V</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>:</mo><mi>V</mi><mo>↪</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">j:V\hookrightarrow Y</annotation></semantics></math>.</p>
+<p>The restriction from the full vector bundle to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u\leq0</annotation></semantics></math>,
+together with orientation trace for the full bundle, constructs a
+morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>Y</mi></msub><mo>→</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">k_Y\to D</annotation></semantics></math>.
+At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+it is the identity trace. At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x\ne0</annotation></semantics></math>
+the fiber is a closed halfspace and its compactly supported cohomology
+is zero. Restricting the constructed morphism to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>,
+and then using closed extension, gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>≃</mo><msub><mi>k</mi><mi>Z</mi></msub></mrow><annotation encoding="application/x-tex">D\simeq k_Z</annotation></semantics></math>.</p>
+<p>On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+integration of the open halfspace
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v&lt;0</annotation></semantics></math>,
+with the same orientation twist, is canonically
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>V</mi></msub><annotation encoding="application/x-tex">k_V</annotation></semantics></math>.
+Restriction to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u\leq0</annotation></semantics></math>
+constructs a map from this sheaf to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>V</mi></msub></mrow><annotation encoding="application/x-tex">J|_V</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>s</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">x=sy</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s\geq0</annotation></semantics></math>,
+that restriction does nothing to the fiber. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+is a negative multiple of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>,
+the fiber is empty. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math>
+are independent, the fiber is a product of a closed halfline, an open
+halfline, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℝ</mi><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">\mathbb R^{n-2}</annotation></semantics></math>,
+whose compactly supported cohomology is zero. At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>
+the strict inequality
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v&lt;0</annotation></semantics></math>
+is impossible. These cases, and restriction of the constructed map to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>≃</mo><msub><mi>j</mi><mi>!</mi></msub><msub><mi>i</mi><mo>*</mo></msub><msub><mi>k</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">J\simeq j_!i_*k_A</annotation></semantics></math>.
+In particular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+are actual sheaves in degree zero.</p>
+<p>Under these identifications the arrow
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>→</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">J\to D</annotation></semantics></math>
+in FS10 is restriction to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∩</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">A\cap Z</annotation></semantics></math>,
+followed by extension by zero from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>∩</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">Z\cap V</annotation></semantics></math>
+into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math>.
+At a point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,y)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y\ne0</annotation></semantics></math>,
+the map is the compact-support extension from an open halfspace to the
+full fiber, and the orientation traces make it the identity. At every
+other stalk either the source or the target is zero. Equality here is
+equality of <strong>already constructed maps between degree-zero
+sheaves</strong>, so checking their stalk maps proves equality of the
+maps themselves.</p>
+<p>Now apply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>h</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">Rh_!</annotation></semantics></math>
+to the open–closed triangle in the scalar parameter. Rotating once
+gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>h</mi><mi>!</mi></msub><msub><mi>k</mi><mrow><mi>E</mi><mo>×</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>→</mo><msub><mi>k</mi><mi>Z</mi></msub><mo>→</mo><mi>R</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>h</mi><mo>+</mo></msub><msub><mo form="postfix" stretchy="false">)</mo><mi>!</mi></msub><msub><mi>k</mi><mrow><mi>E</mi><mo>×</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>→</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS11)</mtext></mrow><annotation encoding="application/x-tex">
+Rh_!k_{E\times[0,\infty)}\longrightarrow k_Z
+\longrightarrow R(h_+)_!k_{E\times(0,\infty)}[1]\longrightarrow.
+\qquad\text{(FS11)}
+</annotation></semantics></math></p>
+<p>Over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+is a homeomorphism onto the closed set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Over the zero pair its fiber is the closed halfline, with vanishing
+compactly supported cohomology. Hence restriction over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+followed by extension by zero, identifies the first term with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mi>!</mi></msub><msub><mi>i</mi><mo>*</mo></msub><msub><mi>k</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">j_!i_*k_A</annotation></semantics></math>.
+Its arrow to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>Z</mi></msub><annotation encoding="application/x-tex">k_Z</annotation></semantics></math>
+is exactly the restriction morphism just identified in FS10: it is the
+identity at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,y)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y\ne0</annotation></semantics></math>,
+and all other relevant stalk maps are zero.</p>
+<p>Thus FS10 and FS11 are cofibers of the same identified sheaf
+morphism. Use the functorial cofiber in the usual derived enhancement,
+or the explicit cone of this degree-zero map; this gives FS9 naturally.
+An arbitrary nonfunctorial choice of a triangulated-category cone is
+unnecessary. All constructions use restriction, extension, and
+orientation trace, so they glue over the base. Rank zero is included:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">J=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><msub><mi>k</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">D=k_B</annotation></semantics></math>,
+and the positive halfline shifted by one has compactly supported
+cohomology
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-FS-INVERSION"></span><h2 id="sh02-fs-inversion-inversion-and-the-same-sign-square">SH02-FS-INVERSION
+— Inversion and the same-sign square</h2>
+<p><strong>Theorem.</strong> The functors
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>E</mi></msub><annotation encoding="application/x-tex">T_E</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>E</mi></msub><annotation encoding="application/x-tex">S_E</annotation></semantics></math>
+are inverse equivalences between
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>D</mi><msub><mi mathvariant="double-struck">ℝ</mi><mrow><mo>&gt;</mo><mn>0</mn></mrow></msub><mo>+</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo>;</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^+_{\mathbb R_{&gt;0}}(E;k)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>D</mi><msub><mi mathvariant="double-struck">ℝ</mi><mrow><mo>&gt;</mo><mn>0</mn></mrow></msub><mo>+</mo></msubsup><mo form="prefix" stretchy="false">(</mo><msup><mi>E</mi><mo>*</mo></msup><mo>;</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^+_{\mathbb R_{&gt;0}}(E^*;k)</annotation></semantics></math>.
+In particular the unit and counit of the adjunction FS2 are
+isomorphisms. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><msup><mi>E</mi><mo>*</mo></msup></msub><annotation encoding="application/x-tex">T_{E^*}</annotation></semantics></math>
+uses the same nonpositive pairing convention as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>E</mi></msub><annotation encoding="application/x-tex">T_E</annotation></semantics></math>,
+then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><msup><mi>E</mi><mo>*</mo></msup></msub><msub><mi>T</mi><mi>E</mi></msub><mi>F</mi><mo>≃</mo><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi><mo>⊗</mo><msup><mi>τ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>O</mi><mi>E</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>n</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS12)</mtext></mrow><annotation encoding="application/x-tex">
+T_{E^*}T_EF\simeq a^{-1}F\otimes\tau^{-1}O_E[-n].
+\qquad\text{(FS12)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> Use the second description of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>E</mi></msub><annotation encoding="application/x-tex">S_E</annotation></semantics></math>
+in FS4. Composition of proper-support kernel functors, base change, and
+projection formula identify
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>E</mi></msub><msub><mi>T</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">S_ET_E</annotation></semantics></math>
+with the kernel
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+of FS9. More explicitly, in the triple product the two restrictions are
+precisely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\langle x,\xi\rangle\leq0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>y</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\langle y,\xi\rangle\geq0</annotation></semantics></math>.
+The exceptional inverse image in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>E</mi></msub><annotation encoding="application/x-tex">S_E</annotation></semantics></math>
+contributes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>E</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">O_E[n]</annotation></semantics></math>;
+to integrate the intermediate fiber
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>E</mi><mo>*</mo></msup><annotation encoding="application/x-tex">E^*</annotation></semantics></math>,
+identify this with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><msup><mi>E</mi><mo>*</mo></msup></msub><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">O_{E^*}[n]</annotation></semantics></math>
+by the specified positive dual-orientation identification. The
+intersection kernel is the tensor product of the two flat
+constant-extension kernels. No properness is imposed on their common
+support; it is proper-support integration that composes.</p>
+<p>After FS9, projection formula for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mo>+</mo></msub><annotation encoding="application/x-tex">h_+</annotation></semantics></math>
+turns this kernel operation into</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mrow><mi mathvariant="normal">pr</mi><mo>⁡</mo></mrow><mi>!</mi></msub><msup><mi>μ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">pr</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>y</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>μ</mi><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>s</mi><mi>y</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>s</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\operatorname{pr}_!\mu^{-1}F[1],\qquad
+\operatorname{pr}(y,s)=y,\quad \mu(y,s)=sy,\quad s&gt;0.
+</annotation></semantics></math></p>
+<p>Conicity identifies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>μ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi></mrow><annotation encoding="application/x-tex">\mu^{-1}F</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mi mathvariant="normal">pr</mi><mo>⁡</mo></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi></mrow><annotation encoding="application/x-tex">\operatorname{pr}^{-1}F</annotation></semantics></math>,
+naturally also over the fixed zero section. Proper-support projection
+formula and the oriented positive halfline give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mrow><mi mathvariant="normal">pr</mi><mo>⁡</mo></mrow><mi>!</mi></msub><msup><mrow><mi mathvariant="normal">pr</mi><mo>⁡</mo></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>≃</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">R\operatorname{pr}_!\operatorname{pr}^{-1}F[1]\simeq F</annotation></semantics></math>.
+This constructs a natural isomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>E</mi></msub><msub><mi>T</mi><mi>E</mi></msub><mo>≃</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mrow><annotation encoding="application/x-tex">S_ET_E\simeq\mathrm{id}</annotation></semantics></math>.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msub><mi>S</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">T_ES_E</annotation></semantics></math>,
+the intermediate fiber is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>,
+its orientation twist is already
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>O</mi><mi>E</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">O_E[n]</annotation></semantics></math>,
+and its two inequalities are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\langle x,\xi\rangle\geq0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>x</mi><mo>,</mo><mi>η</mi><mo form="postfix" stretchy="false">⟩</mo><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\langle x,\eta\rangle\leq0</annotation></semantics></math>.
+Apply the same kernel proof with the perfect pairing replaced by its
+negative. It gives the radial relation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>=</mo><mi>s</mi><mi>η</mi></mrow><annotation encoding="application/x-tex">\xi=s\eta</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s&gt;0</annotation></semantics></math>,
+and the same averaging argument gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msub><mi>S</mi><mi>E</mi></msub><mo>≃</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mrow><annotation encoding="application/x-tex">T_ES_E\simeq\mathrm{id}</annotation></semantics></math>.
+These two natural isomorphisms establish equivalence. A right adjoint to
+an equivalence has invertible adjunction unit and counit, so the actual
+unit and counit of FS2 are isomorphisms as well. This last categorical
+step asserts invertibility; it does not identify a separately
+constructed radial map with a particular normalized adjunction map.</p>
+<p>Finally the positive-kernel expression for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>E</mi></msub><annotation encoding="application/x-tex">S_E</annotation></semantics></math>
+directly gives
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>E</mi></msub><mi>G</mi><mo>≃</mo><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>T</mi><msup><mi>E</mi><mo>*</mo></msup></msub><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>⊗</mo><msup><mi>τ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>O</mi><mi>E</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+S_EG\simeq a^{-1}(T_{E^*}G)\otimes\tau^{-1}O_E[n].
+</annotation></semantics></math> Insert
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><msub><mi>T</mi><mi>E</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">G=T_EF</annotation></semantics></math>,
+apply the just-proved inversion, and cancel the orientation line using
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>O</mi><mi>E</mi><mrow><mi>⊗</mi><mn>2</mn></mrow></msubsup><mo>≃</mo><msub><mi>k</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">O_E^{\otimes2}\simeq k_B</annotation></semantics></math>.
+Negation is an involution and fixes every base-pulled local system. This
+yields FS12, including both its antipode and its shift.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-FS-NORMALIZATION"></span><h3 id="sh02-fs-normalization-what-is-and-is-not-normalized">SH02-FS-NORMALIZATION
+— What is and is not normalized</h3>
+<p>FS2 names a specific adjunction and FS6 names a specific comparison.
+The equivalence proof establishes invertibility without claiming that
+all isomorphisms arising from these constructions are literally
+equal.</p>
+<p>There are two concrete signs to retain. In the scalar triangle used
+in FS11, with the increasing coordinate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+as orientation, the connecting map from the endpoint class to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>H</mi><mi>c</mi><mn>1</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo><mo>;</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H_c^1((0,\infty);k)</annotation></semantics></math>
+is minus the integration generator. For example, a cutoff equal to one
+near zero and zero near infinity has differential of integral
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>.
+This calculation may be read over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+to fix the integral sign convention; the sign itself is the same
+cellular boundary sign over every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
+Changing to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn><mi>/</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">t=1/s</annotation></semantics></math>
+reverses orientation. Independently, the orientation identification
+induced by a negative-definite identification
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>→</mo><msup><mi>E</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">E\to E^*</annotation></semantics></math>
+differs from positive dual orientation by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">(-1)^n</annotation></semantics></math>.
+Indeed, in a positive orthonormal basis its matrix is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>I</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">-I_n</annotation></semantics></math>,
+of determinant sign
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">(-1)^n</annotation></semantics></math>;
+the calculation is local and does not require a globally chosen
+metric.</p>
+<span id="SH02-FS-NORM-OPEN"></span><h4 id="sh02-fs-norm-open-equality-of-normalized-adjunction-maps">SH02-FS-NORM-OPEN
+— Equality of normalized adjunction maps</h4>
+<p><strong>Normalization theorem.</strong> With FS6 as the first
+comparison and the prescribed negative-definite trace identification in
+the second adjunction, <a href="src/SH02/fourier-literal-normalization.md">The geometric
+normalization of Fourier adjunctions</a>, SH02-NDF-SOURCE-MAPS,
+constructs the unique second comparison for which both pairs of
+adjunction maps are inverse. It is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mrow><mi mathvariant="normal">a</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">j</mi></mrow></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>n</mi></msup><msub><mi>d</mi><mrow><mi mathvariant="normal">l</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">d_{\mathrm{adj}}=(-1)^n d_{\mathrm{lit}}</annotation></semantics></math>,
+where the literal comparison is the explicit reversed-halfspace chain
+NDF2. NDF4 computes its complete natural-transformation defect before
+NDF5–NDF10 prove the two inverse equations and uniqueness. This is a theorem about
+the two explicit course comparisons. It does not identify an unspecified
+comparison in another treatment or settle a later microlocal mate.</p>
+<span id="SH02-FS-SECTIONS"></span><h2 id="sh02-fs-sections-testing-a-transform-on-regions">SH02-FS-SECTIONS —
+Testing a transform on regions</h2>
+<p>Derived sections on an open set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+mean
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>V</mi></msub><mo>,</mo><mi>−</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\operatorname{Hom}(k_V,-)</annotation></semantics></math>.
+For a locally closed set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
+define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>Y</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>R</mi><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>A</mi></msub><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma_A(Y;F)=R\operatorname{Hom}(k_A,F)</annotation></semantics></math>;
+this convention makes sense even when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is closed only over an open part of the base.</p>
+<p><strong>Corollary.</strong> For an open fiberwise convex cone
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>⊂</mo><msup><mi>E</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">V\subset E^*</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><msub><mi>T</mi><mi>E</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><msup><mi>V</mi><mo>∘</mo></msup></msub><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS13)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma(V;T_EF)\simeq R\Gamma_{V^\circ}(E;F).
+\qquad\text{(FS13)}
+</annotation></semantics></math></p>
+<p>For a closed fiberwise convex cone
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>⊂</mo><msup><mi>E</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">\delta\subset E^*</annotation></semantics></math>,
+containing the zero section and containing no line in any fiber,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>δ</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>E</mi><mo>*</mo></msup><mo>;</mo><msub><mi>T</mi><mi>E</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>δ</mi><mo>∘</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup><mo form="postfix" stretchy="false">)</mo><mo>;</mo><mi>F</mi><mo>⊗</mo><msup><mi>τ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>O</mi><mi>E</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>n</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(FS14)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma_\delta(E^*;T_EF)
+\simeq
+R\Gamma(\operatorname{Int}((\delta^\circ)^a);
+F\otimes\tau^{-1}O_E)[-n].
+\qquad\text{(FS14)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> Apply the fully faithful inverse equivalence
+to both arguments of derived Hom. FS8 and the positive-kernel expression
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>E</mi></msub><annotation encoding="application/x-tex">S_E</annotation></semantics></math>
+give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>E</mi></msub><msub><mi>k</mi><mi>V</mi></msub><mo>≃</mo><msub><mi>k</mi><msup><mi>V</mi><mo>∘</mo></msup></msub></mrow><annotation encoding="application/x-tex">S_Ek_V\simeq k_{V^\circ}</annotation></semantics></math>:
+the two shifts cancel and the two dual orientation lines contract.
+Consequently
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>V</mi></msub><mo>,</mo><msub><mi>T</mi><mi>E</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>R</mi><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><msup><mi>V</mi><mo>∘</mo></msup></msub><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\operatorname{Hom}(k_V,T_EF)\simeq R\operatorname{Hom}(k_{V^\circ},F)</annotation></semantics></math>,
+proving FS13. Empty base fibers are governed by the definition of polar
+and locally closed extension, exactly as in FS8.</p>
+<p>Likewise FS7 gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>E</mi></msub><msub><mi>k</mi><mi>δ</mi></msub><mo>≃</mo><msub><mi>k</mi><mrow><mrow><mi mathvariant="normal">Int</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>δ</mi><mo>∘</mo></msup><msup><mo form="postfix" stretchy="false">)</mo><mi>a</mi></msup><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>⊗</mo><msup><mi>τ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>O</mi><mi>E</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">S_Ek_\delta\simeq k_{\operatorname{Int}((\delta^\circ)^a)}\otimes\tau^{-1}O_E[n]</annotation></semantics></math>.
+Move the locally free orientation line and the shift across derived Hom,
+and use the characterization of derived sections on an open set. This
+proves FS14. The orientation factor stays <strong>inside</strong>
+derived global sections: on a nontrivial bundle it is not a fixed
+coefficient module that can be moved outside.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-FS-EXAMPLES"></span><h2 id="sh02-fs-examples-worked-checks-over-integral-coefficients">SH02-FS-EXAMPLES
+— Worked checks over integral coefficients</h2>
+<ol type="1">
+<li><p><strong>A nonsymmetric wedge.</strong> Work over a point with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">k=\mathbb Z</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E=\mathbb R^2</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>u</mi><mo>≥</mo><mi>v</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\gamma=\{(u,v):u\geq v\geq0\}</annotation></semantics></math>,
+generated by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1,0)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>.
+Its polar is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>α</mi><mo>≥</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>α</mi><mo>+</mo><mi>β</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{(\alpha,\beta):\alpha\geq0,\ \alpha+\beta\geq0\}</annotation></semantics></math>.
+Thus
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msub><mi>k</mi><mi>γ</mi></msub><mo>=</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>α</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>α</mi><mo>+</mo><mi>β</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+T_Ek_\gamma=k_{\{\alpha&gt;0,\ \alpha+\beta&gt;0\}}.
+</annotation></semantics></math> At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\alpha,\beta)=(0,1)</annotation></semantics></math>,
+the compact-support fiber is the closed ray generated by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1,0)</annotation></semantics></math>,
+so the transform stalk is zero. This checks that the boundary is
+excluded. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>u</mi><mo>&gt;</mo><mi>v</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">U=\{u&gt;v&gt;0\}</annotation></semantics></math>,
+the answer instead is
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msub><mi>k</mi><mi>U</mi></msub><mo>=</mo><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>α</mi><mo>≤</mo><mn>0</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>α</mi><mo>+</mo><mi>β</mi><mo>≤</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>2</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">
+T_Ek_U=k_{\{\alpha\leq0,\ \alpha+\beta\leq0\}}[-2]
+</annotation></semantics></math> after choosing the usual orientation.
+At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,-1)</annotation></semantics></math>,
+all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+survives the inequality and its compactly supported cohomology is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>2</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\mathbb Z[-2]</annotation></semantics></math>;
+the boundary is included.</p></li>
+<li><p><strong>A coefficient sheaf with torsion on a nonorientable
+bundle.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>→</mo><msup><mi>S</mi><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">E\to S^1</annotation></semantics></math>
+be the Möbius real line bundle and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+the constant
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">\mathbb Z/6</annotation></semantics></math>-sheaf
+on the base, regarded as a sheaf of
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>-modules</span>.
+Projection formula and FS8 with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">U=E</annotation></semantics></math>
+give
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>τ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>i</mi><mo>*</mo></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>M</mi><mo>⊗</mo><msub><mi>O</mi><mi>E</mi></msub><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+T_E(\tau^{-1}M)=i_*\bigl(M\otimes O_E\bigr)[-1],
+</annotation></semantics></math> where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+is the zero section of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>E</mi><mo>*</mo></msup><annotation encoding="application/x-tex">E^*</annotation></semantics></math>.
+The monodromy on the displayed coefficient module is multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>,
+which is nontrivial modulo six. The coefficient ring is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>,
+of finite global dimension; the example does not incorrectly take the
+quotient
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">\mathbb Z/6</annotation></semantics></math>
+itself as a finite-global-dimension base ring. Omitting the orientation
+line would change the answer.</p></li>
+<li><p><strong>A cone whose base behavior matters.</strong> In
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msub><mi mathvariant="double-struck">ℝ</mi><mi>b</mi></msub><mo>×</mo><msub><mi mathvariant="double-struck">ℝ</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">E=\mathbb R_b\times\mathbb R_x</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+be the union of the zero section and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>b</mi><mo>=</mo><mn>0</mn><mo>,</mo><mi>x</mi><mo>≥</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{b=0,x\geq0\}</annotation></semantics></math>.
+It is closed, conic, and fiberwise proper convex. Its polar is the whole
+dual fiber for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b\ne0</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\xi\geq0</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b=0</annotation></semantics></math>.
+The transform is the constant extension on the open set
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>b</mi><mo>≠</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mspace width="0.222em"></mspace><mo>∪</mo><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">{</mo><mi>b</mi><mo>=</mo><mn>0</mn><mo>,</mo><mi>ξ</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\{b\ne0\}\ \cup\ \{b=0,\xi&gt;0\}.
+</annotation></semantics></math> At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b,\xi)=(0,0)</annotation></semantics></math>
+the transform is zero. This example forces one to check total-space
+interior and the gluing supplied by the sheaf map in the proof; it is
+not a bundle of cones with constant combinatorics.</p></li>
+</ol>
+<span id="SH02-FS-PROBLEMS"></span><h2 id="sh02-fs-problems-problems-with-solutions">SH02-FS-PROBLEMS —
+Problems with solutions</h2>
+<p><strong>Problem 1.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>B</mi><mo>;</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">M\in D^+(B;k)</annotation></semantics></math>
+be arbitrary. Compute the transforms of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mo>*</mo></msub><mi>M</mi></mrow><annotation encoding="application/x-tex">i_*M</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>τ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>M</mi></mrow><annotation encoding="application/x-tex">\tau^{-1}M</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>:</mo><mi>B</mi><mo>↪</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">i:B\hookrightarrow E</annotation></semantics></math>
+is the zero section. Explain why
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+need not have finite-rank cohomology.</p>
+<p><strong>Solution.</strong> On the zero section the negative-pairing
+restriction is automatic and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+restricts to the identity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>E</mi><mo>*</mo></msup><annotation encoding="application/x-tex">E^*</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msub><mi>i</mi><mo>*</mo></msub><mi>M</mi><mo>=</mo><msup><mi>π</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>M</mi></mrow><annotation encoding="application/x-tex">T_Ei_*M=\pi^{-1}M</annotation></semantics></math>.
+FS8 for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">U=E</annotation></semantics></math>,
+followed by projection formula, gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msup><mi>τ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>M</mi><mo>=</mo><msubsup><mi>i</mi><mo>*</mo><mo>′</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo>⊗</mo><msub><mi>O</mi><mi>E</mi></msub><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">T_E\tau^{-1}M=i'_* (M\otimes O_E)[-n]</annotation></semantics></math>.
+Only tensoring with flat constant-extension kernels and a locally free
+orientation line occurs. The proper-support projection formula used here
+has no finite-rank requirement on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>;
+it is part of the stated bounded derived operation package.</p>
+<p><strong>Problem 2.</strong> Over a point and with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">E=\mathbb R</annotation></semantics></math>
+oriented, compute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">T_Ek_{[0,\infty)}</annotation></semantics></math>,
+then apply the same-sign transform again. Check FS12 including its
+antipode.</p>
+<p><strong>Solution.</strong> FS7 gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><annotation encoding="application/x-tex">k_{(0,\infty)}</annotation></semantics></math>.
+FS8 gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>∞</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">]</mo></mrow></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">k_{(-\infty,0]}[-1]</annotation></semantics></math>
+for its next transform. This is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>k</mi><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a^{-1}k_{[0,\infty)}[-1]</annotation></semantics></math>.
+The change from a closed ray to an open ray on the first step and back
+to a closed ray on the second is essential; discarding the endpoint on
+the last step would contradict inversion.</p>
+<p><strong>Problem 3.</strong> In the proof of FS9, why does the fiber
+calculation alone not establish the kernel isomorphism? Give the missing
+data and explain where they were supplied.</p>
+<p><strong>Solution.</strong> Stalk modules with the same dimensions and
+degrees can have different specialization maps and extension classes
+across a closed stratum. Here the positive radial locus meets the zero
+pair. The proof constructs
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+as degree-zero sheaves using restriction maps and traces, identifies the
+actual sheaf morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>→</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">J\to D</annotation></semantics></math>
+with the radial boundary restriction, and takes its functorial cofiber.
+Equality of the two already constructed sheaf maps is checked stalkwise.
+This supplies the gluing data that a bare stalk inventory would
+lack.</p>
+<p><strong>Problem 4.</strong> Explain why a closed linear subspace
+cannot replace the cone hypothesis in FS7, and compute the transform of
+a linear subspace
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>⊂</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">L\subset E</annotation></semantics></math>
+over a point.</p>
+<p><strong>Solution.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mrow><mi mathvariant="normal">dim</mi><mo>⁡</mo></mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">d=\dim L</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∉</mo><msup><mi>L</mi><mo>⟂</mo></msup></mrow><annotation encoding="application/x-tex">\xi\notin L^\perp</annotation></semantics></math>,
+the negative-pairing slice in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+is a closed halfspace and has zero compactly supported cohomology. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∈</mo><msup><mi>L</mi><mo>⟂</mo></msup></mrow><annotation encoding="application/x-tex">\xi\in L^\perp</annotation></semantics></math>,
+it is all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>,
+with compactly supported cohomology
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">or</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>d</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\operatorname{or}(L)[-d]</annotation></semantics></math>.
+Restriction to the closed annihilator, followed by its relative
+orientation trace, constructs
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>E</mi></msub><msub><mi>k</mi><mi>L</mi></msub><mo>=</mo><msub><mi>k</mi><msup><mi>L</mi><mo>⟂</mo></msup></msub><mo>⊗</mo><mrow><mi mathvariant="normal">or</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>d</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">T_Ek_L=k_{L^\perp}\otimes\operatorname{or}(L)[-d]</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d&gt;0</annotation></semantics></math>,
+the interior of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mo>⟂</mo></msup><annotation encoding="application/x-tex">L^\perp</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>E</mi><mo>*</mo></msup><annotation encoding="application/x-tex">E^*</annotation></semantics></math>
+is empty, so FS7 would falsely predict zero. A cone containing a line
+fails exactly the vanishing lemma used there. This calculation is an
+additional example, not an unauthorized weakening of that lemma’s
+assumptions.</p>
+<span id="SH02-FS-SOURCES"></span><h2 id="sh02-fs-sources-source-comparison-and-the-proof-across-the-zero-section">SH02-FS-SOURCES
+— Source comparison and the proof across the zero section</h2>
+<p>Astérisque 128, Proposition 2.1.1 and Definition 2.1.2, give the two
+presentations used in FS1 and FS4. Theorem 2.1.3(i) states inversion on
+the bounded-below conic category over a locally compact base.
+Proposition 2.1.4 gives convex-region section formulas. Those statements
+identify the classical results; their omitted proofs are not programme
+proof providers. In particular, FS13–FS14 are the precise conic-region
+formulas proved here, with the orientation factor kept inside global
+sections.</p>
+<p>Schapira’s <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf#page=19"><em>A
+short review on microlocal sheaf theory</em>, 19 January 2016, §4.1,
+Definition 4.1, Theorem 4.2 and Example 4.3(i)–(ii), pp. 19–20</a>
+provides the bounded, real-manifold comparison for the transforms and
+the open and closed cone formulas. Its examples specify the antipode,
+interior and orientation shift. The proofs here retain the stated
+locally compact base and bounded-below range; the torsion, varying-base
+and nonorientable examples test features not determined by the pointwise
+formulas alone.</p>
+<p>A proof comparison is available in Schapira’s <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=111"><em>An
+Introduction to Sheaves on Grothendieck Topologies</em>, 1 August 2026,
+§5.4, pp. 111–115</a>. Lemma 5.4.2 reduces the halfspace comparison to a
+product coordinate and the vanishing for a closed halfline. Theorem
+5.4.3 then proves inversion for sphere bundles through a convolution
+kernel. The vector-bundle theorem is stated separately as Theorem 5.4.6;
+the sphere argument does not by itself recover a conic sheaf’s extension
+at the zero section.</p>
+<p>FS5–FS6 construct the comparison on the full bundle: the two support
+inequalities give a localization comparison, the product-coordinate
+calculation puts its remaining support on the zero section, and
+properness on that support compares the two direct images. FS9–FS11 then
+identify two degree-zero sheaves and the actual restriction map between
+them. Taking its specified cofiber retains the gluing at the zero pair.
+This is the step needed before radial averaging can establish inversion;
+matching compact-support stalk groups alone would not supply it. The
+positive and negative orientation conventions, and the distinct
+adjunction normalization, remain as stated above.</p>
+<p>The foundational comparison is with SHV, Theorem 4.5.3
+(proper-support base change), Theorem 4.4.7 (the bounded projection
+formula), and Theorem 4.6.1 (exceptional adjunction). The bounded-below
+uses, conic contraction, orientation trace, singular/sheaf comparison
+for the pointed-cone compactification, and functorial derived cofibers
+retain their explicit programme proof obligations. The companion duality
+reading gives the truncation argument that extends the bounded
+projection formula in the range it uses. No source reference replaces
+these requirements. The source prose and diagrams are not incorporated;
+independently written programme text is CC0 and actual human components
+retain their recorded terms.</p>
+<span id="SH02-FS-OPEN"></span><h2 id="sh02-fs-open-exact-continuation-boundary">SH02-FS-OPEN — Exact
+continuation boundary</h2>
+<p>The comparison formulas FS4, cone formulas FS7–FS8, kernel lemma FS9,
+equivalence and square FS12, and section formulas FS13–FS14 have proofs
+in this draft relative to the named operation and conic-contraction
+prerequisites. They are not yet separately admitted or formally
+verified.</p>
+<span id="SH02-FS-DUALITY-OPEN"></span><h3 id="sh02-fs-duality-open-historical-pointer-to-the-duality-proofs">SH02-FS-DUALITY-OPEN
+— Historical pointer to the duality proofs</h3>
+<p>The former writing gap is addressed by <a href="src/SH02/fourier-duality-normalization.md#SH02-FDN-BASE">SH02-FDN-BASE</a>
+and <a href="src/SH02/fourier-duality-normalization.md#SH02-FDN-DUALITIES">SH02-FDN-DUALITIES</a>
+in the duality supplement, which retain the precise boundedness and
+ambient dualizing hypotheses. Bundle-map functoriality,
+specialization, microlocalization, microlocal Hom, microsupport
+estimates, and involutivity have their own course units and ledgers;
+none is certified by this unit.</p>
+</main></body></html>

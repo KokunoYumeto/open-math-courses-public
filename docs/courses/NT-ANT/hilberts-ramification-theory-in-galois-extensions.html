@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hilbert&#x27;s ramification theory in Galois extensions · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="hilbert-s-ramification-theory-in-galois-extensions">Hilbert's ramification theory in Galois extensions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>In a Galois extension, prime decomposition is controlled by subgroups of the Galois group. One subgroup preserves a chosen prime; a smaller subgroup acts trivially on its residue field. At an unramified prime, the residue field's power map lifts to a unique field automorphism. This is the Frobenius element, and its action often turns a calculation with polynomials into a calculation with permutations.</p>
+<h2 id="what-this-lesson-assumes">What this lesson assumes</h2>
+<p>Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be a finite Galois extension of number fields, let <span class="math" data-tex="\(G=\operatorname{Gal}(L/K)\)">\(G=\operatorname{Gal}(L/K)\)</span>, and put <span class="math" data-tex="\(A=\mathcal O_K\)">\(A=\mathcal O_K\)</span>, <span class="math" data-tex="\(B=\mathcal O_L\)">\(B=\mathcal O_L\)</span>. Fix a nonzero prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>. All primes discussed are finite primes.</p>
+<p>We use <a href="decomposition-of-primes-in-extensions.html"><em>Decomposition of primes in extensions</em></a>: finite integral closures, the fundamental identity <span class="math" data-tex="\(\sum ef=[L:K]\)">\(\sum ef=[L:K]\)</span>, ideal norms, Kummer–Dedekind, and the discriminant criterion. We also use finite Galois theory: <span class="math" data-tex="\(\#G=[L:K]\)">\(\#G=[L:K]\)</span>, the correspondence <span class="math" data-tex="\(H\leftrightarrow L^H\)">\(H\leftrightarrow L^H\)</span>, <span class="math" data-tex="\([L:L^H]=\#H\)">\([L:L^H]=\#H\)</span>, and the quotient group description when <span class="math" data-tex="\(H\)">\(H\)</span> is normal [Milne FGT, Theorem 3.17]. These are algebra prerequisites, not ramification results assumed in advance.</p>
+<p>Write <span class="math" data-tex="\(\kappa(\mathfrak p)=A/\mathfrak p\)">\(\kappa(\mathfrak p)=A/\mathfrak p\)</span>, <span class="math" data-tex="\(\kappa(\mathfrak P)=B/\mathfrak P\)">\(\kappa(\mathfrak P)=B/\mathfrak P\)</span>, and <span class="math" data-tex="\(q=\#\kappa(\mathfrak p)=N\mathfrak p\)">\(q=\#\kappa(\mathfrak p)=N\mathfrak p\)</span>. The integer <span class="math" data-tex="\(q\)">\(q\)</span> is the size of the base residue field, not a residue degree. Finite residue fields are separable over their subfields, so unramifiedness here is equivalent to ramification index one.</p>
+<h2 id="all-primes-above-a-prime-are-conjugate">All primes above a prime are conjugate</h2>
+<p>Every <span class="math" data-tex="\(\sigma\in G\)">\(\sigma\in G\)</span> carries <span class="math" data-tex="\(B\)">\(B\)</span> to itself, since integrality is preserved, and sends a prime <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> to another such prime.</p>
+<p><strong>Theorem 6.1.</strong> The action of <span class="math" data-tex="\(G\)">\(G\)</span> on the primes above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is transitive. Their ramification indices have one common value <span class="math" data-tex="\(e\)">\(e\)</span>, their residue degrees one common value <span class="math" data-tex="\(f\)">\(f\)</span>, and, if there are <span class="math" data-tex="\(g\)">\(g\)</span> primes, then
+<span class="math math-display" data-tex="\[
+efg=[L:K]. \tag{1}
+\]">\[
+efg=[L:K]. \tag{1}
+\]</span></p>
+<p><strong>Proof.</strong> Suppose that <span class="math" data-tex="\(\mathfrak Q\)">\(\mathfrak Q\)</span> is not in the orbit of <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>. Chinese remainders give <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span> with
+<span class="math math-display" data-tex="\[
+x\equiv0\pmod{\mathfrak Q},
+\qquad x\equiv1\pmod{\sigma\mathfrak P}
+\quad\text{for every }\sigma\in G.
+\]">\[
+x\equiv0\pmod{\mathfrak Q},
+\qquad x\equiv1\pmod{\sigma\mathfrak P}
+\quad\text{for every }\sigma\in G.
+\]</span>
+Its norm <span class="math" data-tex="\(a=\prod_{\sigma\in G}\sigma(x)\)">\(a=\prod_{\sigma\in G}\sigma(x)\)</span> belongs to <span class="math" data-tex="\(A\)">\(A\)</span>. Since one factor is <span class="math" data-tex="\(x\)">\(x\)</span>, it belongs to <span class="math" data-tex="\(\mathfrak Q\)">\(\mathfrak Q\)</span>, and hence to <span class="math" data-tex="\(\mathfrak Q\cap A=\mathfrak p\)">\(\mathfrak Q\cap A=\mathfrak p\)</span>. But no <span class="math" data-tex="\(\sigma(x)\)">\(\sigma(x)\)</span> belongs to <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>: membership would say <span class="math" data-tex="\(x\in\sigma^{-1}\mathfrak P\)">\(x\in\sigma^{-1}\mathfrak P\)</span>. Primality implies <span class="math" data-tex="\(a\notin\mathfrak P\)">\(a\notin\mathfrak P\)</span>, contradicting <span class="math" data-tex="\(a\in\mathfrak p\)">\(a\in\mathfrak p\)</span>.</p>
+<p>An automorphism fixes the ideal <span class="math" data-tex="\(\mathfrak pB\)">\(\mathfrak pB\)</span>; uniqueness of its prime factorization makes the exponents equal on conjugate primes. It also induces an isomorphism <span class="math" data-tex="\(B/\mathfrak P\to B/\sigma\mathfrak P\)">\(B/\mathfrak P\to B/\sigma\mathfrak P\)</span> fixing <span class="math" data-tex="\(A/\mathfrak p\)">\(A/\mathfrak p\)</span>, so the residue degrees are equal. The fundamental identity now gives (1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define the <strong>decomposition group</strong>
+<span class="math math-display" data-tex="\[
+D_{\mathfrak P}=\{\sigma\in G\mid\sigma\mathfrak P=\mathfrak P\}.
+\]">\[
+D_{\mathfrak P}=\{\sigma\in G\mid\sigma\mathfrak P=\mathfrak P\}.
+\]</span>
+Orbit–stabilizer and (1) give
+<span class="math math-display" data-tex="\[
+[G:D_{\mathfrak P}]=g,\qquad
+\#D_{\mathfrak P}=ef. \tag{2}
+\]">\[
+[G:D_{\mathfrak P}]=g,\qquad
+\#D_{\mathfrak P}=ef. \tag{2}
+\]</span>
+Changing the chosen prime conjugates the subgroup:
+<span class="math math-display" data-tex="\[
+D_{\sigma\mathfrak P}=\sigma D_{\mathfrak P}\sigma^{-1}. \tag{3}
+\]">\[
+D_{\sigma\mathfrak P}=\sigma D_{\mathfrak P}\sigma^{-1}. \tag{3}
+\]</span>
+These definitions agree with [Stacks, Tag 09EC].</p>
+<h2 id="residue-fields-and-inertia">Residue fields and inertia</h2>
+<p>We first make the residue automorphism explicit. If <span class="math" data-tex="\(E/k\)">\(E/k\)</span> is an extension of finite fields, <span class="math" data-tex="\(\#k=q\)">\(\#k=q\)</span> and <span class="math" data-tex="\([E:k]=f\)">\([E:k]=f\)</span>, then <span class="math" data-tex="\(E\)">\(E\)</span> has <span class="math" data-tex="\(q^f\)">\(q^f\)</span> elements. The map
+<span class="math math-display" data-tex="\[
+\varphi:E\longrightarrow E,\qquad x\longmapsto x^q
+\]">\[
+\varphi:E\longrightarrow E,\qquad x\longmapsto x^q
+\]</span>
+is a <span class="math" data-tex="\(k\)">\(k\)</span>-automorphism. It fixes <span class="math" data-tex="\(k\)">\(k\)</span>, and it is bijective because it is an injective map of a finite field. Its <span class="math" data-tex="\(f\)">\(f\)</span>-th power is the identity. If its order were <span class="math" data-tex="\(d&lt;f\)">\(d&lt;f\)</span>, every element of <span class="math" data-tex="\(E\)">\(E\)</span> would be a root of <span class="math" data-tex="\(X^{q^d}-X\)">\(X^{q^d}-X\)</span>, contradicting the polynomial root bound. Thus its order is <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>The field <span class="math" data-tex="\(E\)">\(E\)</span> is the splitting field of <span class="math" data-tex="\(X^{q^f}-X\)">\(X^{q^f}-X\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span>; this polynomial has derivative <span class="math" data-tex="\(-1\)">\(-1\)</span>. Therefore <span class="math" data-tex="\(E/k\)">\(E/k\)</span> is Galois, and its group, of order <span class="math" data-tex="\(f\)">\(f\)</span>, is generated by <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. We call <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> the <strong>arithmetic Frobenius</strong>.</p>
+<p>Every member of <span class="math" data-tex="\(D_{\mathfrak P}\)">\(D_{\mathfrak P}\)</span> induces an automorphism of <span class="math" data-tex="\(\kappa(\mathfrak P)\)">\(\kappa(\mathfrak P)\)</span> over <span class="math" data-tex="\(\kappa(\mathfrak p)\)">\(\kappa(\mathfrak p)\)</span>. Define the <strong>inertia group</strong> by
+<span class="math math-display" data-tex="\[
+I_{\mathfrak P}=
+\ker\!\left(D_{\mathfrak P}\longrightarrow
+\operatorname{Gal}(\kappa(\mathfrak P)/\kappa(\mathfrak p))\right).
+\]">\[
+I_{\mathfrak P}=
+\ker\!\left(D_{\mathfrak P}\longrightarrow
+\operatorname{Gal}(\kappa(\mathfrak P)/\kappa(\mathfrak p))\right).
+\]</span>
+Equivalently, <span class="math" data-tex="\(\sigma\in I_{\mathfrak P}\)">\(\sigma\in I_{\mathfrak P}\)</span> exactly when
+<span class="math" data-tex="\(\sigma(x)\equiv x\pmod{\mathfrak P}\)">\(\sigma(x)\equiv x\pmod{\mathfrak P}\)</span> for every <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span>.</p>
+<p><strong>Theorem 6.2.</strong> The residue field extension is Galois, and there is an exact sequence
+<span class="math math-display" data-tex="\[
+1\longrightarrow I_{\mathfrak P}\longrightarrow D_{\mathfrak P}
+\longrightarrow
+\operatorname{Gal}(\kappa(\mathfrak P)/\kappa(\mathfrak p))
+\longrightarrow1.
+\]">\[
+1\longrightarrow I_{\mathfrak P}\longrightarrow D_{\mathfrak P}
+\longrightarrow
+\operatorname{Gal}(\kappa(\mathfrak P)/\kappa(\mathfrak p))
+\longrightarrow1.
+\]</span>
+In particular,
+<span class="math math-display" data-tex="\[
+\#D_{\mathfrak P}=ef,\qquad
+\#I_{\mathfrak P}=e,\qquad
+D_{\mathfrak P}/I_{\mathfrak P}\cong C_f. \tag{4}
+\]">\[
+\#D_{\mathfrak P}=ef,\qquad
+\#I_{\mathfrak P}=e,\qquad
+D_{\mathfrak P}/I_{\mathfrak P}\cong C_f. \tag{4}
+\]</span></p>
+<p><strong>Proof.</strong> The finite-field argument proves the first assertion. To prove surjectivity, choose a nonzero element <span class="math" data-tex="\(u\)">\(u\)</span> generating <span class="math" data-tex="\(\kappa(\mathfrak P)\)">\(\kappa(\mathfrak P)\)</span> over <span class="math" data-tex="\(\kappa(\mathfrak p)\)">\(\kappa(\mathfrak p)\)</span>. Such an element exists: the multiplicative group of the finite field is cyclic, by the elementary argument in the preceding lesson, and its generator generates the field. Chinese remainders give <span class="math" data-tex="\(a\in B\)">\(a\in B\)</span> whose residue at <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> is <span class="math" data-tex="\(u\)">\(u\)</span>, and whose residue at every other prime above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is zero.</p>
+<p>The polynomial
+<span class="math math-display" data-tex="\[
+F(X)=\prod_{\sigma\in G}(X-\sigma(a))
+\]">\[
+F(X)=\prod_{\sigma\in G}(X-\sigma(a))
+\]</span>
+has coefficients in <span class="math" data-tex="\(A\)">\(A\)</span>: they are integral and fixed by <span class="math" data-tex="\(G\)">\(G\)</span>, hence belong to the integrally closed ring <span class="math" data-tex="\(A\subset K\)">\(A\subset K\)</span>. Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be an automorphism of <span class="math" data-tex="\(\kappa(\mathfrak P)\)">\(\kappa(\mathfrak P)\)</span> over <span class="math" data-tex="\(\kappa(\mathfrak p)\)">\(\kappa(\mathfrak p)\)</span>. Since <span class="math" data-tex="\(u\)">\(u\)</span> is a root of <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span>, so is <span class="math" data-tex="\(\tau(u)\)">\(\tau(u)\)</span>. The displayed product, reduced in <span class="math" data-tex="\(\kappa(\mathfrak P)\)">\(\kappa(\mathfrak P)\)</span>, gives
+<span class="math math-display" data-tex="\[
+\tau(u)=\overline{\sigma(a)}
+\quad\text{for some }\sigma\in G.
+\]">\[
+\tau(u)=\overline{\sigma(a)}
+\quad\text{for some }\sigma\in G.
+\]</span>
+This residue is nonzero. If <span class="math" data-tex="\(\sigma\notin D_{\mathfrak P}\)">\(\sigma\notin D_{\mathfrak P}\)</span>, then <span class="math" data-tex="\(\sigma^{-1}\mathfrak P\ne\mathfrak P\)">\(\sigma^{-1}\mathfrak P\ne\mathfrak P\)</span>, so <span class="math" data-tex="\(a\in\sigma^{-1}\mathfrak P\)">\(a\in\sigma^{-1}\mathfrak P\)</span> by construction and <span class="math" data-tex="\(\sigma(a)\in\mathfrak P\)">\(\sigma(a)\in\mathfrak P\)</span>, a contradiction. Thus <span class="math" data-tex="\(\sigma\in D_{\mathfrak P}\)">\(\sigma\in D_{\mathfrak P}\)</span>, and its residue action agrees with <span class="math" data-tex="\(\tau\)">\(\tau\)</span> on the field generator <span class="math" data-tex="\(u\)">\(u\)</span>. It agrees everywhere.</p>
+<p>Surjectivity and (2) give <span class="math" data-tex="\(\#I=ef/f=e\)">\(\#I=ef/f=e\)</span>. The remaining assertions follow from the kernel definition and the finite-field group calculation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For general discrete valuation rings the residue extension is normal but can be inseparable; [Stacks, Tag 09ED] retains this distinction. The formula <span class="math" data-tex="\(\#I=e\)">\(\#I=e\)</span> used here relies on separable residue fields, which number fields supply.</p>
+<h2 id="the-frobenius-element-and-its-functoriality">The Frobenius element and its functoriality</h2>
+<p><strong>Proposition 6.3.</strong> If <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is unramified in <span class="math" data-tex="\(L\)">\(L\)</span>, there is a unique
+<span class="math" data-tex="\(\operatorname{Frob}_{\mathfrak P}\in D_{\mathfrak P}\)">\(\operatorname{Frob}_{\mathfrak P}\in D_{\mathfrak P}\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\operatorname{Frob}_{\mathfrak P}(x)
+\equiv x^q\pmod{\mathfrak P}
+\quad(x\in B).
+\]">\[
+\operatorname{Frob}_{\mathfrak P}(x)
+\equiv x^q\pmod{\mathfrak P}
+\quad(x\in B).
+\]</span>
+It generates <span class="math" data-tex="\(D_{\mathfrak P}\)">\(D_{\mathfrak P}\)</span> and has order <span class="math" data-tex="\(f\)">\(f\)</span>. For <span class="math" data-tex="\(\sigma\in G\)">\(\sigma\in G\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Frob}_{\sigma\mathfrak P}
+=\sigma\operatorname{Frob}_{\mathfrak P}\sigma^{-1}. \tag{5}
+\]">\[
+\operatorname{Frob}_{\sigma\mathfrak P}
+=\sigma\operatorname{Frob}_{\mathfrak P}\sigma^{-1}. \tag{5}
+\]</span>
+If <span class="math" data-tex="\(K\subseteq M\subseteq L\)">\(K\subseteq M\subseteq L\)</span> and <span class="math" data-tex="\(M/K\)">\(M/K\)</span> is Galois, restriction sends
+<span class="math" data-tex="\(\operatorname{Frob}_{\mathfrak P}\)">\(\operatorname{Frob}_{\mathfrak P}\)</span> to
+<span class="math" data-tex="\(\operatorname{Frob}_{\mathfrak P\cap\mathcal O_M}\)">\(\operatorname{Frob}_{\mathfrak P\cap\mathcal O_M}\)</span> for <span class="math" data-tex="\(M/K\)">\(M/K\)</span>.</p>
+<p><strong>Proof.</strong> Unramifiedness gives <span class="math" data-tex="\(e=1\)">\(e=1\)</span>, so Theorem 6.2 makes the residue map an isomorphism. The generator <span class="math" data-tex="\(x\mapsto x^q\)">\(x\mapsto x^q\)</span> has exactly one preimage, which generates <span class="math" data-tex="\(D_{\mathfrak P}\)">\(D_{\mathfrak P}\)</span> and has order <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>For <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span>, put <span class="math" data-tex="\(y=\sigma^{-1}(x)\)">\(y=\sigma^{-1}(x)\)</span>. The congruence at <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>, transported by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, reads
+<span class="math math-display" data-tex="\[
+\sigma\operatorname{Frob}_{\mathfrak P}\sigma^{-1}(x)
+\equiv\sigma(y^q)=x^q\pmod{\sigma\mathfrak P}.
+\]">\[
+\sigma\operatorname{Frob}_{\mathfrak P}\sigma^{-1}(x)
+\equiv\sigma(y^q)=x^q\pmod{\sigma\mathfrak P}.
+\]</span>
+The conjugate preserves <span class="math" data-tex="\(\sigma\mathfrak P\)">\(\sigma\mathfrak P\)</span>, so uniqueness proves (5).</p>
+<p>We justify the restriction assertion, including the group maps it uses. Put <span class="math" data-tex="\(H=\operatorname{Gal}(L/M)\)">\(H=\operatorname{Gal}(L/M)\)</span>, <span class="math" data-tex="\(\mathfrak Q=\mathfrak P\cap\mathcal O_M\)">\(\mathfrak Q=\mathfrak P\cap\mathcal O_M\)</span>. For <span class="math" data-tex="\(L/M\)">\(L/M\)</span>, the decomposition and inertia groups are respectively
+<span class="math math-display" data-tex="\[
+D_{\mathfrak P}\cap H,\qquad I_{\mathfrak P}\cap H. \tag{6}
+\]">\[
+D_{\mathfrak P}\cap H,\qquad I_{\mathfrak P}\cap H. \tag{6}
+\]</span>
+The first equality is the stabilizer definition; the second follows because inertia always means trivial action on the whole residue field <span class="math" data-tex="\(\kappa(\mathfrak P)\)">\(\kappa(\mathfrak P)\)</span>.</p>
+<p>When <span class="math" data-tex="\(H\)">\(H\)</span> is normal, restriction maps <span class="math" data-tex="\(D_{\mathfrak P}\)">\(D_{\mathfrak P}\)</span> onto the decomposition group at <span class="math" data-tex="\(\mathfrak Q\)">\(\mathfrak Q\)</span> for <span class="math" data-tex="\(M/K\)">\(M/K\)</span>. Indeed, lift a member of that group to <span class="math" data-tex="\(\sigma\in G\)">\(\sigma\in G\)</span>. The primes <span class="math" data-tex="\(\sigma\mathfrak P\)">\(\sigma\mathfrak P\)</span> and <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> lie over the same <span class="math" data-tex="\(\mathfrak Q\)">\(\mathfrak Q\)</span>. Transitivity for the Galois extension <span class="math" data-tex="\(L/M\)">\(L/M\)</span> supplies <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span> with <span class="math" data-tex="\(h\sigma\mathfrak P=\mathfrak P\)">\(h\sigma\mathfrak P=\mathfrak P\)</span>, giving a lift in <span class="math" data-tex="\(D_{\mathfrak P}\)">\(D_{\mathfrak P}\)</span>.</p>
+<p>In any tower of these rings, ramification indices and residue degrees multiply:
+<span class="math math-display" data-tex="\[
+e(\mathfrak P\mid\mathfrak p)
+=e(\mathfrak P\mid\mathfrak Q)e(\mathfrak Q\mid\mathfrak p),
+\quad
+f(\mathfrak P\mid\mathfrak p)
+=f(\mathfrak P\mid\mathfrak Q)f(\mathfrak Q\mid\mathfrak p). \tag{7}
+\]">\[
+e(\mathfrak P\mid\mathfrak p)
+=e(\mathfrak P\mid\mathfrak Q)e(\mathfrak Q\mid\mathfrak p),
+\quad
+f(\mathfrak P\mid\mathfrak p)
+=f(\mathfrak P\mid\mathfrak Q)f(\mathfrak Q\mid\mathfrak p). \tag{7}
+\]</span>
+The first equality follows by extending and factoring <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, then each intermediate prime; the second is the degree formula for the residue field tower. The image of <span class="math" data-tex="\(I_{\mathfrak P}\)">\(I_{\mathfrak P}\)</span> is contained in the inertia group at <span class="math" data-tex="\(\mathfrak Q\)">\(\mathfrak Q\)</span>. Its order, by (4), (6), and (7), is
+<span class="math math-display" data-tex="\[
+\frac{e(\mathfrak P\mid\mathfrak p)}
+{e(\mathfrak P\mid\mathfrak Q)}
+=e(\mathfrak Q\mid\mathfrak p).
+\]">\[
+\frac{e(\mathfrak P\mid\mathfrak p)}
+{e(\mathfrak P\mid\mathfrak Q)}
+=e(\mathfrak Q\mid\mathfrak p).
+\]</span>
+Thus restriction is also surjective on inertia groups. In particular, unramifiedness descends. The restricted Frobenius preserves <span class="math" data-tex="\(\mathfrak Q\)">\(\mathfrak Q\)</span> and induces the <span class="math" data-tex="\(q\)">\(q\)</span>-power map on its residue field, so uniqueness identifies it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a ramified prime, Theorem 6.2 still gives one distinguished <strong>Frobenius coset</strong> in <span class="math" data-tex="\(D_{\mathfrak P}/I_{\mathfrak P}\)">\(D_{\mathfrak P}/I_{\mathfrak P}\)</span>, the preimage of the arithmetic residue Frobenius. It gives no distinguished element of <span class="math" data-tex="\(D_{\mathfrak P}\)">\(D_{\mathfrak P}\)</span>. When <span class="math" data-tex="\(G\)">\(G\)</span> is abelian and the prime is unramified, (5) shows that the element depends only on <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. We write the <strong>Artin symbol</strong>
+<span class="math math-display" data-tex="\[
+\left(\frac{L/K}{\mathfrak p}\right)
+=\operatorname{Frob}_{\mathfrak P}.
+\]">\[
+\left(\frac{L/K}{\mathfrak p}\right)
+=\operatorname{Frob}_{\mathfrak P}.
+\]</span>
+For nonabelian <span class="math" data-tex="\(G\)">\(G\)</span>, varying <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> gives a conjugacy class. All conventions here use arithmetic Frobenius; geometric Frobenius is its inverse.</p>
+<h2 id="decomposition-and-inertia-fields">Decomposition and inertia fields</h2>
+<p>Fix <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>, abbreviate <span class="math" data-tex="\(D=D_{\mathfrak P}\)">\(D=D_{\mathfrak P}\)</span>, <span class="math" data-tex="\(I=I_{\mathfrak P}\)">\(I=I_{\mathfrak P}\)</span>, and put
+<span class="math math-display" data-tex="\[
+Z=L^D,\qquad T=L^I.
+\]">\[
+Z=L^D,\qquad T=L^I.
+\]</span>
+Then <span class="math" data-tex="\(K\subseteq Z\subseteq T\subseteq L\)">\(K\subseteq Z\subseteq T\subseteq L\)</span>. Set
+<span class="math" data-tex="\(\mathfrak P_Z=\mathfrak P\cap\mathcal O_Z\)">\(\mathfrak P_Z=\mathfrak P\cap\mathcal O_Z\)</span> and
+<span class="math" data-tex="\(\mathfrak P_T=\mathfrak P\cap\mathcal O_T\)">\(\mathfrak P_T=\mathfrak P\cap\mathcal O_T\)</span>.</p>
+<p><strong>Proposition 6.4.</strong> The chosen primes have the following invariants:
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c}
+\text{prime extension}&amp;e&amp;f\\ \hline
+\mathfrak P_Z/\mathfrak p&amp;1&amp;1\\
+\mathfrak P_T/\mathfrak P_Z&amp;1&amp;f\\
+\mathfrak P/\mathfrak P_T&amp;e&amp;1.
+\end{array}
+\]">\[
+\begin{array}{c|c|c}
+\text{prime extension}&amp;e&amp;f\\ \hline
+\mathfrak P_Z/\mathfrak p&amp;1&amp;1\\
+\mathfrak P_T/\mathfrak P_Z&amp;1&amp;f\\
+\mathfrak P/\mathfrak P_T&amp;e&amp;1.
+\end{array}
+\]</span>
+The extensions <span class="math" data-tex="\(T/Z\)">\(T/Z\)</span> and <span class="math" data-tex="\(L/T\)">\(L/T\)</span> have degrees <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span>, respectively. There is a unique prime of <span class="math" data-tex="\(L\)">\(L\)</span> above <span class="math" data-tex="\(\mathfrak P_Z\)">\(\mathfrak P_Z\)</span>, and a unique prime at each step above it.</p>
+<p><strong>Proof.</strong> The extension <span class="math" data-tex="\(L/Z\)">\(L/Z\)</span> is Galois with group <span class="math" data-tex="\(D\)">\(D\)</span>. Its primes above <span class="math" data-tex="\(\mathfrak P_Z\)">\(\mathfrak P_Z\)</span> form an orbit under <span class="math" data-tex="\(D\)">\(D\)</span>, and every member of <span class="math" data-tex="\(D\)">\(D\)</span> fixes <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>; hence there is only one such prime. Its <span class="math" data-tex="\(e&#x27;,f&#x27;\)">\(e&#x27;,f&#x27;\)</span> satisfy
+<span class="math math-display" data-tex="\[
+e&#x27;f&#x27;=[L:Z]=\#D=ef.
+\]">\[
+e&#x27;f&#x27;=[L:Z]=\#D=ef.
+\]</span>
+By (7), <span class="math" data-tex="\(e&#x27;\leq e\)">\(e&#x27;\leq e\)</span> and <span class="math" data-tex="\(f&#x27;\leq f\)">\(f&#x27;\leq f\)</span>. Their product is already <span class="math" data-tex="\(ef\)">\(ef\)</span>, so <span class="math" data-tex="\(e&#x27;=e,f&#x27;=f\)">\(e&#x27;=e,f&#x27;=f\)</span>, and the remaining indices for <span class="math" data-tex="\(Z/K\)">\(Z/K\)</span> are both one.</p>
+<p>For <span class="math" data-tex="\(L/T\)">\(L/T\)</span>, the group is <span class="math" data-tex="\(I\)">\(I\)</span>, and again <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> is the only prime above <span class="math" data-tex="\(\mathfrak P_T\)">\(\mathfrak P_T\)</span>. Its residue action is trivial. Surjectivity in Theorem 6.2, applied to <span class="math" data-tex="\(L/T\)">\(L/T\)</span>, makes its residue Galois group trivial. Thus <span class="math" data-tex="\(f(\mathfrak P\mid\mathfrak P_T)=1\)">\(f(\mathfrak P\mid\mathfrak P_T)=1\)</span>, and the fundamental identity gives <span class="math" data-tex="\(e(\mathfrak P\mid\mathfrak P_T)=\#I=e\)">\(e(\mathfrak P\mid\mathfrak P_T)=\#I=e\)</span>. Multiplicativity now gives the middle row. Since <span class="math" data-tex="\(I\)">\(I\)</span> is normal in <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(T/Z\)">\(T/Z\)</span> is Galois with group <span class="math" data-tex="\(D/I\)">\(D/I\)</span> and degree <span class="math" data-tex="\(f\)">\(f\)</span>. The degree of <span class="math" data-tex="\(L/T\)">\(L/T\)</span> is <span class="math" data-tex="\(\#I=e\)">\(\#I=e\)</span>. Every prime over <span class="math" data-tex="\(\mathfrak P_Z\)">\(\mathfrak P_Z\)</span> extends to one in <span class="math" data-tex="\(L\)">\(L\)</span>, so uniqueness in <span class="math" data-tex="\(L\)">\(L\)</span> also proves uniqueness in the intermediate fields. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus <span class="math" data-tex="\(T/Z\)">\(T/Z\)</span> is unramified <strong>at <span class="math" data-tex="\(\mathfrak P_Z\)">\(\mathfrak P_Z\)</span></strong> and <span class="math" data-tex="\(L/T\)">\(L/T\)</span> is totally ramified <strong>at <span class="math" data-tex="\(\mathfrak P_T\)">\(\mathfrak P_T\)</span></strong>. These are assertions about the selected primes. They do not assert unramifiedness at every other prime. Nor must <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> split completely in <span class="math" data-tex="\(Z\)">\(Z\)</span> when <span class="math" data-tex="\(D\)">\(D\)</span> is not normal in <span class="math" data-tex="\(G\)">\(G\)</span>: the proposition specifies the single prime <span class="math" data-tex="\(\mathfrak P_Z\)">\(\mathfrak P_Z\)</span>. If <span class="math" data-tex="\(D\)">\(D\)</span> is normal, <span class="math" data-tex="\(Z/K\)">\(Z/K\)</span> is Galois, so transitivity makes every prime over <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> have <span class="math" data-tex="\(e=f=1\)">\(e=f=1\)</span>; in that case it does split completely.</p>
+<h2 id="subfields-and-double-cosets">Subfields and double cosets</h2>
+<p>Let <span class="math" data-tex="\(H\subseteq G\)">\(H\subseteq G\)</span>, <span class="math" data-tex="\(M=L^H\)">\(M=L^H\)</span>, with no normality assumption on <span class="math" data-tex="\(H\)">\(H\)</span>. The primes of <span class="math" data-tex="\(M\)">\(M\)</span> above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> correspond to
+<span class="math math-display" data-tex="\[
+H\backslash G/D,\qquad
+H\sigma D\longmapsto\sigma\mathfrak P\cap\mathcal O_M. \tag{8}
+\]">\[
+H\backslash G/D,\qquad
+H\sigma D\longmapsto\sigma\mathfrak P\cap\mathcal O_M. \tag{8}
+\]</span>
+For the prime attached to this double coset, put
+<span class="math" data-tex="\(D_\sigma=\sigma D\sigma^{-1}\)">\(D_\sigma=\sigma D\sigma^{-1}\)</span> and
+<span class="math" data-tex="\(I_\sigma=\sigma I\sigma^{-1}\)">\(I_\sigma=\sigma I\sigma^{-1}\)</span>. Its invariants over <span class="math" data-tex="\(K\)">\(K\)</span> are
+<span class="math math-display" data-tex="\[
+e_M=\frac{\#I_\sigma}{\#(I_\sigma\cap H)},
+\qquad
+f_M=[D_\sigma:(D_\sigma\cap H)I_\sigma]. \tag{9}
+\]">\[
+e_M=\frac{\#I_\sigma}{\#(I_\sigma\cap H)},
+\qquad
+f_M=[D_\sigma:(D_\sigma\cap H)I_\sigma]. \tag{9}
+\]</span></p>
+<p><strong>Proof.</strong> Right multiplication by <span class="math" data-tex="\(D\)">\(D\)</span> leaves <span class="math" data-tex="\(\sigma\mathfrak P\)">\(\sigma\mathfrak P\)</span> unchanged, and left multiplication by <span class="math" data-tex="\(H\)">\(H\)</span> leaves its contraction to <span class="math" data-tex="\(M\)">\(M\)</span> unchanged. Conversely, two top primes with the same contraction are conjugate under <span class="math" data-tex="\(H\)">\(H\)</span>, by transitivity in <span class="math" data-tex="\(L/M\)">\(L/M\)</span>. This proves the bijection.</p>
+<p>At <span class="math" data-tex="\(\sigma\mathfrak P\)">\(\sigma\mathfrak P\)</span>, the groups for <span class="math" data-tex="\(L/M\)">\(L/M\)</span> are <span class="math" data-tex="\(D_\sigma\cap H\)">\(D_\sigma\cap H\)</span> and <span class="math" data-tex="\(I_\sigma\cap H\)">\(I_\sigma\cap H\)</span>. Divide the corresponding ramification indices using (7) and (4), obtaining the first formula. Dividing the residue degrees gives
+<span class="math math-display" data-tex="\[
+f_M=\frac{\#D_\sigma/\#I_\sigma}
+{\#(D_\sigma\cap H)/\#(I_\sigma\cap H)}
+=\frac{\#D_\sigma}{\#((D_\sigma\cap H)I_\sigma)}.
+\]">\[
+f_M=\frac{\#D_\sigma/\#I_\sigma}
+{\#(D_\sigma\cap H)/\#(I_\sigma\cap H)}
+=\frac{\#D_\sigma}{\#((D_\sigma\cap H)I_\sigma)}.
+\]</span>
+The product in the denominator is a subgroup because <span class="math" data-tex="\(I_\sigma\)">\(I_\sigma\)</span> is normal in <span class="math" data-tex="\(D_\sigma\)">\(D_\sigma\)</span>; its order is the usual product-of-subgroups formula. This proves (9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(e_Mf_M=[D_\sigma:D_\sigma\cap H]\)">\(e_Mf_M=[D_\sigma:D_\sigma\cap H]\)</span>. Summing this over the double cosets gives <span class="math" data-tex="\([G:H]=[M:K]\)">\([G:H]=[M:K]\)</span>, since
+<span class="math" data-tex="\(\#(H\sigma D)=\#H\,\#D_\sigma/\#(H\cap D_\sigma)\)">\(\#(H\sigma D)=\#H\,\#D_\sigma/\#(H\cap D_\sigma)\)</span>.
+This recovers the fundamental identity in <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>There is also a useful tower formula for Frobenius. If <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is unramified in <span class="math" data-tex="\(L\)">\(L\)</span>, <span class="math" data-tex="\(\mathfrak Q=\mathfrak P\cap\mathcal O_M\)">\(\mathfrak Q=\mathfrak P\cap\mathcal O_M\)</span>, then
+<span class="math math-display" data-tex="\[
+\operatorname{Frob}_{\mathfrak P,L/M}
+=\operatorname{Frob}_{\mathfrak P,L/K}^{\,f(\mathfrak Q\mid\mathfrak p)}. \tag{10}
+\]">\[
+\operatorname{Frob}_{\mathfrak P,L/M}
+=\operatorname{Frob}_{\mathfrak P,L/K}^{\,f(\mathfrak Q\mid\mathfrak p)}. \tag{10}
+\]</span>
+Indeed, <span class="math" data-tex="\(D\)">\(D\)</span> is cyclic, generated by the Frobenius, and
+<span class="math" data-tex="\([D:D\cap H]=f(\mathfrak Q\mid\mathfrak p)\)">\([D:D\cap H]=f(\mathfrak Q\mid\mathfrak p)\)</span>. Its indicated power generates <span class="math" data-tex="\(D\cap H\)">\(D\cap H\)</span>, and acts on the top residue field by the power
+<span class="math" data-tex="\(q^{f(\mathfrak Q\mid\mathfrak p)}=\#\kappa(\mathfrak Q)\)">\(q^{f(\mathfrak Q\mid\mathfrak p)}=\#\kappa(\mathfrak Q)\)</span>.
+It is therefore exactly the relative Frobenius. Normality of <span class="math" data-tex="\(M/K\)">\(M/K\)</span> is unnecessary in (10).</p>
+<h3 id="the-largest-fields-with-the-prime-properties">The largest fields with the prime properties</h3>
+<p>For the chosen contracted prime <span class="math" data-tex="\(\mathfrak Q=\mathfrak P\cap\mathcal O_M\)">\(\mathfrak Q=\mathfrak P\cap\mathcal O_M\)</span>, formula (9) at <span class="math" data-tex="\(\sigma=1\)">\(\sigma=1\)</span> gives
+<span class="math math-display" data-tex="\[
+e(\mathfrak Q\mid\mathfrak p)=1
+\Longleftrightarrow I\subseteq H
+\Longleftrightarrow M\subseteq T,
+\]">\[
+e(\mathfrak Q\mid\mathfrak p)=1
+\Longleftrightarrow I\subseteq H
+\Longleftrightarrow M\subseteq T,
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+e(\mathfrak Q\mid\mathfrak p)=f(\mathfrak Q\mid\mathfrak p)=1
+\Longleftrightarrow D\subseteq H
+\Longleftrightarrow M\subseteq Z.
+\]">\[
+e(\mathfrak Q\mid\mathfrak p)=f(\mathfrak Q\mid\mathfrak p)=1
+\Longleftrightarrow D\subseteq H
+\Longleftrightarrow M\subseteq Z.
+\]</span>
+Indeed the two indices are <span class="math" data-tex="\([I:I\cap H]\)">\([I:I\cap H]\)</span> and <span class="math" data-tex="\([D:D\cap H]\)">\([D:D\cap H]\)</span>, the latter being the product <span class="math" data-tex="\(ef\)">\(ef\)</span>. Positive integer factors have product one exactly when both are one. Galois correspondence proves the field containments. Thus <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span> are the largest intermediate fields with these respective properties for this chosen prime.</p>
+<p>To control every prime above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, define the normal closures of the subgroups:
+<span class="math math-display" data-tex="\[
+N_I=\langle\sigma I\sigma^{-1}\mid\sigma\in G\rangle,\qquad
+N_D=\langle\sigma D\sigma^{-1}\mid\sigma\in G\rangle.
+\]">\[
+N_I=\langle\sigma I\sigma^{-1}\mid\sigma\in G\rangle,\qquad
+N_D=\langle\sigma D\sigma^{-1}\mid\sigma\in G\rangle.
+\]</span>
+The double-coset parametrization and formula (9) show that all primes of <span class="math" data-tex="\(M\)">\(M\)</span> are unramified exactly when every conjugate of <span class="math" data-tex="\(I\)">\(I\)</span> lies in <span class="math" data-tex="\(H\)">\(H\)</span>, or equivalently <span class="math" data-tex="\(N_I\subseteq H\)">\(N_I\subseteq H\)</span>. Likewise all have <span class="math" data-tex="\(e=f=1\)">\(e=f=1\)</span> exactly when <span class="math" data-tex="\(N_D\subseteq H\)">\(N_D\subseteq H\)</span>. In the latter case their number is <span class="math" data-tex="\([M:K]\)">\([M:K]\)</span> by the fundamental identity, which is complete splitting. Consequently <span class="math" data-tex="\(L^{N_I}\)">\(L^{N_I}\)</span> is the largest intermediate field unramified at every prime above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, and <span class="math" data-tex="\(L^{N_D}\)">\(L^{N_D}\)</span> is the largest where <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> splits completely. Both are Galois over <span class="math" data-tex="\(K\)">\(K\)</span>, and
+<span class="math math-display" data-tex="\[
+K\subseteq L^{N_D}\subseteq L^{N_I}\subseteq L,\qquad
+L^{N_D}\subseteq Z,\quad L^{N_I}\subseteq T.
+\]">\[
+K\subseteq L^{N_D}\subseteq L^{N_I}\subseteq L,\qquad
+L^{N_D}\subseteq Z,\quad L^{N_I}\subseteq T.
+\]</span>
+In particular, complete splitting in <span class="math" data-tex="\(Z\)">\(Z\)</span> is equivalent to <span class="math" data-tex="\(N_D\subseteq D\)">\(N_D\subseteq D\)</span>, hence to <span class="math" data-tex="\(D\)">\(D\)</span> being normal in <span class="math" data-tex="\(G\)">\(G\)</span>. Unramifiedness at every prime of <span class="math" data-tex="\(T\)">\(T\)</span> is equivalent to <span class="math" data-tex="\(N_I\subseteq I\)">\(N_I\subseteq I\)</span>, hence to <span class="math" data-tex="\(I\)">\(I\)</span> being normal in <span class="math" data-tex="\(G\)">\(G\)</span>. Inertia is always normal in <span class="math" data-tex="\(D\)">\(D\)</span>; it need not be normal in <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>In the <span class="math" data-tex="\(S_3\)">\(S_3\)</span> example below at <span class="math" data-tex="\(5\)">\(5\)</span>, <span class="math" data-tex="\(D=\langle c\rangle\)">\(D=\langle c\rangle\)</span> and <span class="math" data-tex="\(I=1\)">\(I=1\)</span>. Its decomposition field is <span class="math" data-tex="\(\mathbf Q(\alpha)\)">\(\mathbf Q(\alpha)\)</span>, <span class="math" data-tex="\(\alpha=\sqrt[3]2\)">\(\alpha=\sqrt[3]2\)</span>, with the two primes
+<span class="math math-display" data-tex="\[
+(5,\alpha-3),\qquad(5,\alpha^2+3\alpha+4),
+\]">\[
+(5,\alpha-3),\qquad(5,\alpha^2+3\alpha+4),
+\]</span>
+of respective invariants <span class="math" data-tex="\((e,f)=(1,1),(1,2)\)">\((e,f)=(1,1),(1,2)\)</span>, as the polynomial factorization and integral basis show. The first chosen prime has both indices one, while <span class="math" data-tex="\(5\)">\(5\)</span> does not split completely in that field. The conjugate transpositions generate all of <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, so <span class="math" data-tex="\(N_D=G\)">\(N_D=G\)</span>; the largest completely split intermediate field is <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Since <span class="math" data-tex="\(N_I=1\)">\(N_I=1\)</span>, the largest unramified one is the whole splitting field. At <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(D=G\)">\(D=G\)</span> and <span class="math" data-tex="\(I=A_3\)">\(I=A_3\)</span> are normal; the largest fields are respectively <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> and <span class="math" data-tex="\(\mathbf Q(\omega)\)">\(\mathbf Q(\omega)\)</span>. At <span class="math" data-tex="\(3\)">\(3\)</span>, both largest fields are <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<h2 id="when-a-prime-splits-completely">When a prime splits completely</h2>
+<p><strong>Corollary 6.5.</strong> For an unramified prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> in a Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>,
+<span class="math math-display" data-tex="\[
+\mathfrak p\text{ splits completely}
+\quad\Longleftrightarrow\quad
+\operatorname{Frob}_{\mathfrak P}=1.
+\]">\[
+\mathfrak p\text{ splits completely}
+\quad\Longleftrightarrow\quad
+\operatorname{Frob}_{\mathfrak P}=1.
+\]</span>
+For finite extensions <span class="math" data-tex="\(L_1,L_2\)">\(L_1,L_2\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span> inside one algebraic closure, a prime splits completely in <span class="math" data-tex="\(L_1L_2\)">\(L_1L_2\)</span> exactly when it splits completely in each factor.</p>
+<p><strong>Proof.</strong> At an unramified prime <span class="math" data-tex="\(e=1\)">\(e=1\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> is cyclic of order <span class="math" data-tex="\(f\)">\(f\)</span>, generated by Frobenius. This element is one exactly when <span class="math" data-tex="\(f=1\)">\(f=1\)</span>; then (1) gives <span class="math" data-tex="\(g=[L:K]\)">\(g=[L:K]\)</span>, which is complete splitting.</p>
+<p>First suppose both factors are Galois. Their compositum is Galois. Restriction embeds its Galois group into the product of the two groups: an automorphism fixing both fields fixes their compositum. If the prime splits in both factors, the decomposition group of any top prime maps to the trivial decomposition group in each factor, by Proposition 6.3's stabilizer restriction argument. It is consequently trivial, which by (2) means complete splitting in the compositum. Complete splitting descends to every subfield, since each prime in that subfield extends to a top prime and (7) forces its indices to be one.</p>
+<p>To handle arbitrary factors, we establish the Galois closure criterion. If <span class="math" data-tex="\(M/K\)">\(M/K\)</span> is finite and <span class="math" data-tex="\(N/K\)">\(N/K\)</span> its Galois closure, put <span class="math" data-tex="\(G=\operatorname{Gal}(N/K)\)">\(G=\operatorname{Gal}(N/K)\)</span>, <span class="math" data-tex="\(H=\operatorname{Gal}(N/M)\)">\(H=\operatorname{Gal}(N/M)\)</span>. If <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> splits completely in <span class="math" data-tex="\(M\)">\(M\)</span>, (9) says <span class="math" data-tex="\(D_\sigma\subseteq H\)">\(D_\sigma\subseteq H\)</span> for every <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Thus
+<span class="math math-display" data-tex="\[
+D\subseteq\bigcap_{\sigma\in G}\sigma^{-1}H\sigma=\{1\}.
+\]">\[
+D\subseteq\bigcap_{\sigma\in G}\sigma^{-1}H\sigma=\{1\}.
+\]</span>
+The last equality holds because a member of this intersection fixes every conjugate of <span class="math" data-tex="\(M\)">\(M\)</span>, and these generate <span class="math" data-tex="\(N\)">\(N\)</span>. Hence <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> splits completely in <span class="math" data-tex="\(N\)">\(N\)</span>. The reverse implication is descent. Apply this criterion to both factors, the proved Galois compositum assertion to their closures, and descent to <span class="math" data-tex="\(L_1L_2\)">\(L_1L_2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="unramifiedness-in-closures-and-composita">Unramifiedness in closures and composita</h3>
+<p><strong>Corollary 6.6.</strong> A finite prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span> is unramified in a finite extension <span class="math" data-tex="\(M/K\)">\(M/K\)</span> if and only if it is unramified in its Galois closure. For finite extensions <span class="math" data-tex="\(L_1,L_2\)">\(L_1,L_2\)</span> in one algebraic closure, it is unramified in <span class="math" data-tex="\(L_1L_2\)">\(L_1L_2\)</span> if and only if it is unramified in both factors. Unramified means that every prime above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> has ramification index one.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(N/K\)">\(N/K\)</span> be the Galois closure of <span class="math" data-tex="\(M/K\)">\(M/K\)</span>, and write <span class="math" data-tex="\(G=\operatorname{Gal}(N/K)\)">\(G=\operatorname{Gal}(N/K)\)</span>, <span class="math" data-tex="\(H=\operatorname{Gal}(N/M)\)">\(H=\operatorname{Gal}(N/M)\)</span>. Fix a prime of <span class="math" data-tex="\(N\)">\(N\)</span> over <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, with inertia group <span class="math" data-tex="\(I\)">\(I\)</span>. If every prime of <span class="math" data-tex="\(M\)">\(M\)</span> is unramified, formula (9) says
+<span class="math math-display" data-tex="\[
+\sigma I\sigma^{-1}\subseteq H\qquad(\sigma\in G).
+\]">\[
+\sigma I\sigma^{-1}\subseteq H\qquad(\sigma\in G).
+\]</span>
+The formula covers every double coset, and its index is unchanged by changing the representative; hence it holds for every <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+I\subseteq\bigcap_{\sigma\in G}\sigma^{-1}H\sigma=\{1\}.
+\]">\[
+I\subseteq\bigcap_{\sigma\in G}\sigma^{-1}H\sigma=\{1\}.
+\]</span>
+As in the preceding proof, this intersection fixes all conjugates of <span class="math" data-tex="\(M\)">\(M\)</span>, which generate <span class="math" data-tex="\(N\)">\(N\)</span>. Theorem 6.2 now gives unramifiedness in <span class="math" data-tex="\(N\)">\(N\)</span>. Conversely unramifiedness descends by the multiplicative ramification formula (7), since all primes of a subfield extend to <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>For Galois <span class="math" data-tex="\(L_1,L_2\)">\(L_1,L_2\)</span>, their compositum <span class="math" data-tex="\(L\)">\(L\)</span> is Galois and restriction injects <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span> into the product of their groups. An inertia element at a prime of <span class="math" data-tex="\(L\)">\(L\)</span> restricts to an inertia element in each factor: it fixes the contracted prime and acts trivially on its residue subfield. If both factors are unramified, both images are trivial, so the inertia element itself is trivial. This proves unramifiedness in <span class="math" data-tex="\(L\)">\(L\)</span>; the reverse implication is descent. For arbitrary factors, use the just-proved closure criterion, apply the Galois assertion to their closures, and descend to <span class="math" data-tex="\(L_1L_2\)">\(L_1L_2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This corollary supplies the unramified-compositum step used in the coprime-discriminant argument of <em>Cyclotomic fields</em>. Its hypothesis concerns all primes over the selected base prime, not only one chosen prime.</p>
+<h2 id="abelian-examples-including-one-ramified-odd-prime">Abelian examples, including one ramified odd prime</h2>
+<p>In <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span>, an odd prime has Frobenius the identity if <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span>, and complex conjugation <span class="math" data-tex="\(c\)">\(c\)</span> if <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span>, by the quadratic law and Corollary 6.5.</p>
+<p>For <span class="math" data-tex="\(V=\mathbf Q(\sqrt2,\sqrt3)\)">\(V=\mathbf Q(\sqrt2,\sqrt3)\)</span>, the Galois group is <span class="math" data-tex="\(\{1,u,v,uv\}\)">\(\{1,u,v,uv\}\)</span>, where <span class="math" data-tex="\(u\)">\(u\)</span> negates <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> negates <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span>. The degree is four, since <span class="math" data-tex="\(\sqrt3\notin\mathbf Q(\sqrt2)\)">\(\sqrt3\notin\mathbf Q(\sqrt2)\)</span>: squaring a hypothetical <span class="math" data-tex="\(a+b\sqrt2\)">\(a+b\sqrt2\)</span>, <span class="math" data-tex="\(a,b\in\mathbf Q\)">\(a,b\in\mathbf Q\)</span>, would force <span class="math" data-tex="\(ab=0\)">\(ab=0\)</span>, then either <span class="math" data-tex="\(a^2=3\)">\(a^2=3\)</span> or <span class="math" data-tex="\(b^2=3/2\)">\(b^2=3/2\)</span>, neither a rational square.</p>
+<p>The integral basis calculation gives discriminant <span class="math" data-tex="\(2304=2^8 3^2\)">\(2304=2^8 3^2\)</span>, so every prime other than <span class="math" data-tex="\(2,3\)">\(2,3\)</span> is unramified. Restriction to the quadratic subfields gives
+<span class="math math-display" data-tex="\[
+\operatorname{Frob}_p(\sqrt2)=(2/p)\sqrt2,\qquad
+\operatorname{Frob}_p(\sqrt3)=(3/p)\sqrt3.
+\]">\[
+\operatorname{Frob}_p(\sqrt2)=(2/p)\sqrt2,\qquad
+\operatorname{Frob}_p(\sqrt3)=(3/p)\sqrt3.
+\]</span>
+The following table covers the first ten odd primes. The signs can be checked directly by listing squares modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(p\)">\(p\)</span></th>
+<th>Frobenius in <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span></th>
+<th><span class="math" data-tex="\((2/p)\)">\((2/p)\)</span></th>
+<th><span class="math" data-tex="\((3/p)\)">\((3/p)\)</span></th>
+<th>Frobenius in <span class="math" data-tex="\(V\)">\(V\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(c\)">\(c\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td>ramified; no Frobenius element</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(uv\)">\(uv\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td><span class="math" data-tex="\(c\)">\(c\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(11\)">\(11\)</span></td>
+<td><span class="math" data-tex="\(c\)">\(c\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(u\)">\(u\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(13\)">\(13\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(u\)">\(u\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(17\)">\(17\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(19\)">\(19\)</span></td>
+<td><span class="math" data-tex="\(c\)">\(c\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(uv\)">\(uv\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(23\)">\(23\)</span></td>
+<td><span class="math" data-tex="\(c\)">\(c\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(29\)">\(29\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(uv\)">\(uv\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(31\)">\(31\)</span></td>
+<td><span class="math" data-tex="\(c\)">\(c\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(v\)">\(v\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Every nonidentity element of this group has order two. Thus a nonidentity Frobenius gives <span class="math" data-tex="\(e=1,f=2,g=2\)">\(e=1,f=2,g=2\)</span>; identity gives <span class="math" data-tex="\(e=f=1,g=4\)">\(e=f=1,g=4\)</span>.</p>
+<p>At <span class="math" data-tex="\(3\)">\(3\)</span>, the subfield <span class="math" data-tex="\(\mathbf Q(\sqrt2)\)">\(\mathbf Q(\sqrt2)\)</span> has <span class="math" data-tex="\(e=1,f=2\)">\(e=1,f=2\)</span>, and <span class="math" data-tex="\(\mathbf Q(\sqrt3)\)">\(\mathbf Q(\sqrt3)\)</span> has <span class="math" data-tex="\(e=2,f=1\)">\(e=2,f=1\)</span>. Tower multiplicativity forces <span class="math" data-tex="\(e\geq2,f\geq2\)">\(e\geq2,f\geq2\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span>; the degree four forces <span class="math" data-tex="\(e=2,f=2,g=1\)">\(e=2,f=2,g=1\)</span>. Hence <span class="math" data-tex="\(D=G\)">\(D=G\)</span>, <span class="math" data-tex="\(I=\langle v\rangle\)">\(I=\langle v\rangle\)</span>: inertia must fix the unramified subfield <span class="math" data-tex="\(\mathbf Q(\sqrt2)\)">\(\mathbf Q(\sqrt2)\)</span>, and has order two. The distinguished residue Frobenius is the coset <span class="math" data-tex="\(uI=\{u,uv\}\)">\(uI=\{u,uv\}\)</span>.</p>
+<p>For <span class="math" data-tex="\(\omega=\zeta_3\)">\(\omega=\zeta_3\)</span>, the quadratic field <span class="math" data-tex="\(\mathbf Q(\omega)\)">\(\mathbf Q(\omega)\)</span> has discriminant <span class="math" data-tex="\(-3\)">\(-3\)</span>. At <span class="math" data-tex="\(p\ne3\)">\(p\ne3\)</span>, its Frobenius sends <span class="math" data-tex="\(\omega\)">\(\omega\)</span> to <span class="math" data-tex="\(\omega^p\)">\(\omega^p\)</span>. Both sides are conjugate cube roots and have the same residue by the defining congruence; their residues are distinct at such a prime, so they are equal. This includes <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, where Frobenius is conjugation. For <span class="math" data-tex="\(\zeta_4=i\)">\(\zeta_4=i\)</span>, the same argument at odd <span class="math" data-tex="\(p\)">\(p\)</span> gives <span class="math" data-tex="\(i\mapsto i^p\)">\(i\mapsto i^p\)</span>. The general cyclotomic decomposition law is proved in <em>Cyclotomic fields</em>.</p>
+<h2 id="a-nonabelian-example-the-splitting-field-of-x-3-2">A nonabelian example: the splitting field of <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span></h2>
+<p>Let <span class="math" data-tex="\(\alpha=\sqrt[3]{2}\)">\(\alpha=\sqrt[3]{2}\)</span> be real and <span class="math" data-tex="\(L=\mathbf Q(\alpha,\omega)\)">\(L=\mathbf Q(\alpha,\omega)\)</span>, <span class="math" data-tex="\(\omega=\zeta_3\)">\(\omega=\zeta_3\)</span>. Since <span class="math" data-tex="\(\mathbf Q(\alpha)\)">\(\mathbf Q(\alpha)\)</span> is real and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is not, <span class="math" data-tex="\([L:\mathbf Q]=6\)">\([L:\mathbf Q]=6\)</span>. This is the splitting field of <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span>. Its group is <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, generated by
+<span class="math math-display" data-tex="\[
+r(\alpha)=\omega\alpha,\quad r(\omega)=\omega,
+\qquad
+c(\alpha)=\alpha,\quad c(\omega)=\omega^2,
+\qquad crc=r^{-1}.
+\]">\[
+r(\alpha)=\omega\alpha,\quad r(\omega)=\omega,
+\qquad
+c(\alpha)=\alpha,\quad c(\omega)=\omega^2,
+\qquad crc=r^{-1}.
+\]</span>
+The element <span class="math" data-tex="\(r\)">\(r\)</span> cycles the three roots; <span class="math" data-tex="\(c\)">\(c\)</span> fixes one and exchanges two.</p>
+<p>Every <span class="math" data-tex="\(p\ne2,3\)">\(p\ne2,3\)</span> is unramified in <span class="math" data-tex="\(L\)">\(L\)</span>. To prove this without an integral power basis for <span class="math" data-tex="\(L\)">\(L\)</span>, let <span class="math" data-tex="\(\mathfrak P\mid p\)">\(\mathfrak P\mid p\)</span>. The polynomial discriminant <span class="math" data-tex="\(-108\)">\(-108\)</span> is a unit modulo <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>, so all differences of distinct roots remain nonzero there. An inertia element sends a root to a root with the same residue, and must therefore fix that root. It fixes all three roots, which generate <span class="math" data-tex="\(L\)">\(L\)</span>, so inertia is trivial.</p>
+<p>For a polynomial with distinct roots modulo <span class="math" data-tex="\(p\)">\(p\)</span>, Frobenius cycles these roots in lengths equal to the degrees of its irreducible factors over <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>. Here is why. A residue root <span class="math" data-tex="\(a\)">\(a\)</span> has orbit <span class="math" data-tex="\(a,a^p,\ldots\)">\(a,a^p,\ldots\)</span> under Frobenius. The product over its distinct orbit has coefficients fixed by Frobenius, hence in <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>; the fixed field is exactly <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>, by the root bound for <span class="math" data-tex="\(X^p-X\)">\(X^p-X\)</span>. Its minimal polynomial divides this product, while every point of the orbit is a root of the minimal polynomial. The two degree inequalities force equality. Distinct reduction of the original roots transfers these cycles to the field automorphism.</p>
+<p>For <span class="math" data-tex="\(p\ne2,3\)">\(p\ne2,3\)</span> with <span class="math" data-tex="\(p\equiv2\pmod3\)">\(p\equiv2\pmod3\)</span>, restriction to <span class="math" data-tex="\(\mathbf Q(\omega)\)">\(\mathbf Q(\omega)\)</span> is nontrivial, so Frobenius is a transposition. The cube map is bijective on <span class="math" data-tex="\(\mathbf F_p^\times\)">\(\mathbf F_p^\times\)</span>, since <span class="math" data-tex="\(3\)">\(3\)</span> is relatively prime to <span class="math" data-tex="\(p-1\)">\(p-1\)</span>; <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span> has one root and an irreducible quadratic factor. If <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span>, Frobenius is even. When <span class="math" data-tex="\(2\)">\(2\)</span> is a cube modulo <span class="math" data-tex="\(p\)">\(p\)</span>, one root and the two nontrivial cube roots of unity give three linear factors, so Frobenius is the identity. Otherwise the cubic has no root, is irreducible, and Frobenius is a three-cycle.</p>
+<p>In particular,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X^3-2&amp;=(X-3)(X^2+3X+4)&amp;&amp;\text{over }\mathbf F_5,\\
+X^3-2&amp;\text{ is irreducible}&amp;&amp;\text{over }\mathbf F_7,\\
+X^3-2&amp;=(X-4)(X-7)(X-20)&amp;&amp;\text{over }\mathbf F_{31}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+X^3-2&amp;=(X-3)(X^2+3X+4)&amp;&amp;\text{over }\mathbf F_5,\\
+X^3-2&amp;\text{ is irreducible}&amp;&amp;\text{over }\mathbf F_7,\\
+X^3-2&amp;=(X-4)(X-7)(X-20)&amp;&amp;\text{over }\mathbf F_{31}.
+\end{aligned}
+\]</span>
+At <span class="math" data-tex="\(5\)">\(5\)</span>, choose a prime where <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> reduces to <span class="math" data-tex="\(3\)">\(3\)</span>; its Frobenius fixes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, sends <span class="math" data-tex="\(\omega\)">\(\omega\)</span> to <span class="math" data-tex="\(\omega^2\)">\(\omega^2\)</span>, and is <span class="math" data-tex="\(c\)">\(c\)</span>. At <span class="math" data-tex="\(7\)">\(7\)</span>, choose a prime with <span class="math" data-tex="\(\omega\equiv4\)">\(\omega\equiv4\)</span>. Since <span class="math" data-tex="\(\alpha^7=4\alpha\)">\(\alpha^7=4\alpha\)</span>, its Frobenius is <span class="math" data-tex="\(r\)">\(r\)</span>; the conjugate prime with <span class="math" data-tex="\(\omega\equiv2\)">\(\omega\equiv2\)</span> has Frobenius <span class="math" data-tex="\(r^2\)">\(r^2\)</span>. At <span class="math" data-tex="\(31\)">\(31\)</span> every Frobenius is the identity.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Show that in an abelian Galois extension all primes over <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> have the same decomposition and inertia groups.</li>
+<li><strong>Medium.</strong> In <span class="math" data-tex="\(L=\mathbf Q(\sqrt[3]{2},\zeta_3)\)">\(L=\mathbf Q(\sqrt[3]{2},\zeta_3)\)</span>, determine <span class="math" data-tex="\(D_{\mathfrak P}\)">\(D_{\mathfrak P}\)</span>, <span class="math" data-tex="\(I_{\mathfrak P}\)">\(I_{\mathfrak P}\)</span>, and Frobenius at <span class="math" data-tex="\(p=2,3,5,7,31\)">\(p=2,3,5,7,31\)</span>. At ramified primes, specify the Frobenius coset instead of an element.</li>
+<li><strong>Medium.</strong> Prove the Galois closure criterion for complete splitting, including a non-Galois extension. Show that an extension with noncyclic Galois group has no unramified inert prime.</li>
+<li><strong>Hard.</strong> Prove the double coset correspondence and formulas (8)–(9), and apply them to <span class="math" data-tex="\(M=\mathbf Q(\sqrt[3]{2})\)">\(M=\mathbf Q(\sqrt[3]{2})\)</span> inside its splitting field.</li>
+</ol>
+<h2 id="complete-solutions">Complete solutions</h2>
+<p><strong>1.</strong> Transitivity writes every top prime as <span class="math" data-tex="\(\sigma\mathfrak P\)">\(\sigma\mathfrak P\)</span>. Equations (3) and (5)'s kernel version give
+<span class="math math-display" data-tex="\[
+D_{\sigma\mathfrak P}=\sigma D_{\mathfrak P}\sigma^{-1},
+\qquad
+I_{\sigma\mathfrak P}=\sigma I_{\mathfrak P}\sigma^{-1}.
+\]">\[
+D_{\sigma\mathfrak P}=\sigma D_{\mathfrak P}\sigma^{-1},
+\qquad
+I_{\sigma\mathfrak P}=\sigma I_{\mathfrak P}\sigma^{-1}.
+\]</span>
+In an abelian group both conjugates equal the original subgroup. This holds at ramified primes too; the existence of a Frobenius element requires the additional unramified hypothesis.</p>
+<p><strong>2.</strong> Use the generators <span class="math" data-tex="\(r,c\)">\(r,c\)</span> above. At <span class="math" data-tex="\(2\)">\(2\)</span>, the pure cubic subfield has <span class="math" data-tex="\(e=3,f=1\)">\(e=3,f=1\)</span>, while <span class="math" data-tex="\(\mathbf Q(\omega)\)">\(\mathbf Q(\omega)\)</span> is inert with <span class="math" data-tex="\(e=1,f=2\)">\(e=1,f=2\)</span>. The tower identities force <span class="math" data-tex="\(e\)">\(e\)</span> to be divisible by three and <span class="math" data-tex="\(f\)">\(f\)</span> by two. Equation (1), with total degree six, forces <span class="math" data-tex="\(e=3,f=2,g=1\)">\(e=3,f=2,g=1\)</span>. Hence <span class="math" data-tex="\(D=S_3\)">\(D=S_3\)</span>, <span class="math" data-tex="\(I=\langle r\rangle=A_3\)">\(I=\langle r\rangle=A_3\)</span>, and the Frobenius coset is the set of all three transpositions.</p>
+<p>At <span class="math" data-tex="\(3\)">\(3\)</span>, the cubic subfield has <span class="math" data-tex="\(e=3\)">\(e=3\)</span>, while the quadratic subfield has <span class="math" data-tex="\(e=2\)">\(e=2\)</span>. Both divide the top ramification index, so <span class="math" data-tex="\(e=6,f=g=1\)">\(e=6,f=g=1\)</span>. Here <span class="math" data-tex="\(D=I=S_3\)">\(D=I=S_3\)</span>; the residue group is trivial, and its Frobenius coset is the whole group. There is no unique Frobenius element at either <span class="math" data-tex="\(2\)">\(2\)</span> or <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<p>The unramified calculations in the preceding section give the remaining rows:</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(p\)">\(p\)</span></th>
+<th><span class="math" data-tex="\(e\)">\(e\)</span></th>
+<th><span class="math" data-tex="\(f\)">\(f\)</span></th>
+<th><span class="math" data-tex="\(g\)">\(g\)</span></th>
+<th><span class="math" data-tex="\(D_{\mathfrak P}\)">\(D_{\mathfrak P}\)</span></th>
+<th><span class="math" data-tex="\(I_{\mathfrak P}\)">\(I_{\mathfrak P}\)</span></th>
+<th>Frobenius or its coset</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(S_3\)">\(S_3\)</span></td>
+<td><span class="math" data-tex="\(\langle r\rangle\)">\(\langle r\rangle\)</span></td>
+<td>transposition coset</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(S_3\)">\(S_3\)</span></td>
+<td><span class="math" data-tex="\(S_3\)">\(S_3\)</span></td>
+<td>whole group</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(\langle c\rangle\)">\(\langle c\rangle\)</span>, for the chosen prime</td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(c\)">\(c\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\(\langle r\rangle\)">\(\langle r\rangle\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(r\)">\(r\)</span> or <span class="math" data-tex="\(r^2\)">\(r^2\)</span>, as specified above</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(31\)">\(31\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Each row has <span class="math" data-tex="\(efg=6\)">\(efg=6\)</span>. Other primes at <span class="math" data-tex="\(5\)">\(5\)</span> conjugate <span class="math" data-tex="\(\langle c\rangle\)">\(\langle c\rangle\)</span> and its generator. At <span class="math" data-tex="\(2\)">\(2\)</span>, the inertia field is <span class="math" data-tex="\(\mathbf Q(\omega)\)">\(\mathbf Q(\omega)\)</span> and the decomposition field is <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>; their extension is unramified at <span class="math" data-tex="\(2\)">\(2\)</span>, but ramified at <span class="math" data-tex="\(3\)">\(3\)</span>. This illustrates the prime-specific qualification in Proposition 6.4.</p>
+<p><strong>3.</strong> Let <span class="math" data-tex="\(N/K\)">\(N/K\)</span> be the Galois closure of <span class="math" data-tex="\(M/K\)">\(M/K\)</span>. Complete splitting in <span class="math" data-tex="\(N\)">\(N\)</span> descends by (7). Conversely, complete splitting in <span class="math" data-tex="\(M\)">\(M\)</span> makes <span class="math" data-tex="\(e_Mf_M=1\)">\(e_Mf_M=1\)</span> for every prime. Under the double coset correspondence this says <span class="math" data-tex="\(D_\sigma\subseteq H=\operatorname{Gal}(N/M)\)">\(D_\sigma\subseteq H=\operatorname{Gal}(N/M)\)</span> for every <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Thus <span class="math" data-tex="\(D\)">\(D\)</span> fixes every conjugate of <span class="math" data-tex="\(M\)">\(M\)</span>, and therefore their compositum <span class="math" data-tex="\(N\)">\(N\)</span>. It is trivial, so the prime splits completely in <span class="math" data-tex="\(N\)">\(N\)</span>. No prior unramifiedness assumption on <span class="math" data-tex="\(N\)">\(N\)</span> was needed.</p>
+<p>If a prime were unramified and inert in a Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, then <span class="math" data-tex="\(e=g=1\)">\(e=g=1\)</span>, <span class="math" data-tex="\(f=[L:K]\)">\(f=[L:K]\)</span>, and (2) would give <span class="math" data-tex="\(D=G\)">\(D=G\)</span>. Proposition 6.3 makes <span class="math" data-tex="\(D\)">\(D\)</span> cyclic, so a noncyclic <span class="math" data-tex="\(G\)">\(G\)</span> excludes such a prime. Consequently, any prime with only one prime above it in such an extension must belong to its finite ramified set.</p>
+<p><strong>4.</strong> Equality of contractions means that the top primes are conjugate under <span class="math" data-tex="\(H\)">\(H\)</span>, since <span class="math" data-tex="\(L/M\)">\(L/M\)</span> is Galois. Stabilizing the reference prime contributes the right factor <span class="math" data-tex="\(D\)">\(D\)</span>. This gives exactly <span class="math" data-tex="\(H\sigma D\)">\(H\sigma D\)</span>, as proved in (8). At <span class="math" data-tex="\(\sigma\mathfrak P\)">\(\sigma\mathfrak P\)</span>, the top groups for <span class="math" data-tex="\(L/M\)">\(L/M\)</span> are the intersections with <span class="math" data-tex="\(H\)">\(H\)</span>; divide their orders using multiplicativity of <span class="math" data-tex="\(e,f\)">\(e,f\)</span>. The resulting formulas are (9), including the subgroup <span class="math" data-tex="\((D_\sigma\cap H)I_\sigma\)">\((D_\sigma\cap H)I_\sigma\)</span> rather than an intersection in its denominator.</p>
+<p>For <span class="math" data-tex="\(M=\mathbf Q(\alpha)\)">\(M=\mathbf Q(\alpha)\)</span>, take <span class="math" data-tex="\(H=\langle c\rangle\)">\(H=\langle c\rangle\)</span>, the stabilizer of the root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. At <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span>, <span class="math" data-tex="\(D=S_3\)">\(D=S_3\)</span>, so there is one double coset. At <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(I=A_3\)">\(I=A_3\)</span> meets <span class="math" data-tex="\(H\)">\(H\)</span> trivially, giving <span class="math" data-tex="\(e_M=3,f_M=1\)">\(e_M=3,f_M=1\)</span>; at <span class="math" data-tex="\(3\)">\(3\)</span>, <span class="math" data-tex="\(I=S_3\)">\(I=S_3\)</span> gives <span class="math" data-tex="\(e_M=[S_3:H]=3,f_M=1\)">\(e_M=[S_3:H]=3,f_M=1\)</span>.</p>
+<p>At <span class="math" data-tex="\(5\)">\(5\)</span>, <span class="math" data-tex="\(I=1\)">\(I=1\)</span> and <span class="math" data-tex="\(D=\langle c\rangle\)">\(D=\langle c\rangle\)</span> for the chosen prime. There are two double cosets: <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(HrH\)">\(HrH\)</span>. The first has <span class="math" data-tex="\(D\cap H=D\)">\(D\cap H=D\)</span>, giving <span class="math" data-tex="\(e_M=f_M=1\)">\(e_M=f_M=1\)</span>. For the second, the conjugate transposition subgroup meets <span class="math" data-tex="\(H\)">\(H\)</span> trivially, giving <span class="math" data-tex="\(e_M=1,f_M=2\)">\(e_M=1,f_M=2\)</span>. These are the linear and quadratic factors modulo <span class="math" data-tex="\(5\)">\(5\)</span>.</p>
+<p>At <span class="math" data-tex="\(7\)">\(7\)</span>, <span class="math" data-tex="\(D=A_3\)">\(D=A_3\)</span> and <span class="math" data-tex="\(I=1\)">\(I=1\)</span>. Since <span class="math" data-tex="\(HA_3=S_3\)">\(HA_3=S_3\)</span>, there is one double coset and <span class="math" data-tex="\(H\cap A_3=1\)">\(H\cap A_3=1\)</span>, giving <span class="math" data-tex="\(e_M=1,f_M=3\)">\(e_M=1,f_M=3\)</span>. At <span class="math" data-tex="\(31\)">\(31\)</span>, <span class="math" data-tex="\(D=I=1\)">\(D=I=1\)</span>; the three left cosets of <span class="math" data-tex="\(H\)">\(H\)</span> give three primes, each with <span class="math" data-tex="\(e_M=f_M=1\)">\(e_M=f_M=1\)</span>. These recover exactly the pure cubic decompositions already computed by Kummer–Dedekind.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Finite Galois correspondence, subgroup degrees, and the quotient description are imported from [Milne FGT, Theorem 3.17, pp. 39–40]. Prime factorization, the fundamental identity, integral bases used in the examples, and the discriminant criterion are imported from the preceding lessons. The degree and maximality calculation for the biquadratic integral basis has its full proof in <em>Algebraic integers and rings of integers</em>.</p>
+<p>The identification of a decomposition group with the Galois group of a completion belongs to the local-field course and is not used here. Higher ramification groups and their relation to the different are treated in <em>The different and the discriminant</em>. The general cyclotomic calculation is reserved for <em>Cyclotomic fields</em>. Distribution results about Frobenius classes, including density statements, are not asserted.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne ANT]</strong> J. S. Milne, <em>Algebraic Number Theory</em>, version 3.08 (2020), Chapter 8, Propositions 8.10–8.13, properties 8.14–8.17, Examples 8.18–8.19 and Corollary 8.22, pp. 139–145. <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Lecture notes</a>.</li>
+<li><strong>[Milne FGT]</strong> J. S. Milne, <em>Fields and Galois Theory</em>, version 5.10 (2022), Theorem 3.17 and Remark 3.18, pp. 39–40. <a href="https://www.jmilne.org/math/CourseNotes/FT.pdf">Lecture notes</a>.</li>
+<li><strong>[Stacks]</strong> The Stacks project, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-definition-decomposition-inertia">Tag 09EC</a>, decomposition and inertia definitions, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-galois-galois">Tag 09ED</a>, normality and the residue action.</li>
+</ul>
+</article><nav><a href="src/hilberts-ramification-theory-in-galois-extensions.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

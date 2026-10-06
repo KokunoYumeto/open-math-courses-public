@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>From automorphic functions to automorphic sheaves · Geometric Langlands</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],
+processEscapes:false},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']},
+startup:{ready:()=>{MathJax.startup.defaultReady();}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+</head><body><main><nav><a href="index.html">Course contents</a> · <a href="GL-GLC-02.html">Next lesson</a></nav><aside class="notice">Working draft. Required proofs remain open; the full course is in progress.</aside><article class="lesson"><h1>From automorphic functions to automorphic sheaves</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under mathematical proof repair; full proof closure pending. Public domain (CC0).</em></p>
+<p>This lesson remains under proof repair. Every cited theorem used as a mathematical input needs a complete proof here or an exact matching earlier programme proof. The historical self-check did not certify that full dependency closure.</p>
+<p>An unramified Hecke operator changes a bundle at one point and adds the values of a function over the possible changes. This description makes sense algebraically. It also suggests how to replace the function by a sheaf: pull it to the space of changes, then push it to the space of bundles. The purpose of this lesson is to establish that connection precisely.</p>
+<p>We first work out a single modification. We then reconstruct a bundle from all its local lattices, including the step that turns formal lattices into an algebraic sheaf. The rank-one case makes the eigenvalue condition explicit. Finally we explain what traces retain, and what they lose, when a Hecke eigensheaf produces a Hecke eigenfunction.</p>
+<p>The algebraic background is vector bundles and divisors on smooth curves. The relevant core courses are <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D100">Algebraic Geometry Bridge</a> and <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D80">Category Theory and Homological Methods</a>. We assume the construction of the étale fundamental group, the compact-support trace formula, and the normalized spherical Satake isomorphism. Their exact uses are stated below. Basic references are [Frenkel], [Zhu], and [Ben-Zvi].</p>
+<h2>1. A bundle changed at one point</h2>
+<p>Until the last section, let <span class="math-inline">\(X\)</span> be a smooth projective geometrically connected curve over <span class="math-inline">\(\mathbb F_q\)</span>. Write <span class="math-inline">\(F=\mathbb F_q(X)\)</span>. For a closed point <span class="math-inline">\(x\)</span>, put</p>
+<p><span class="math-display">\[
+R_x=\mathcal O_{X,x},\qquad O_x=\widehat{R_x},\qquad
+F_x=\operatorname{Frac}(O_x),\qquad q_x=\#k(x).
+\]</span></p>
+<p>Both <span class="math-inline">\(R_x\)</span> and <span class="math-inline">\(O_x\)</span> are discrete valuation rings. We write <span class="math-inline">\(\pi_x\)</span> for a uniformizer. A lattice in <span class="math-inline">\(F_x^n\)</span> means a free <span class="math-inline">\(O_x\)</span>-submodule of rank <span class="math-inline">\(n\)</span> spanning <span class="math-inline">\(F_x^n\)</span>.</p>
+<p>Fix a rank <span class="math-inline">\(n\)</span> bundle <span class="math-inline">\(E\)</span>. A downward elementary modification of type <span class="math-inline">\(i\)</span>, where <span class="math-inline">\(0\leq i\leq n\)</span>, is an inclusion</p>
+<p><span class="math-display">\[
+E&#x27;\hookrightarrow E,\qquad E/E&#x27;\simeq k(x)^i.
+\]</span></p>
+<p>The quotient here is a skyscraper sheaf. It is annihilated by the maximal ideal of <span class="math-inline">\(R_x\)</span>. In particular, specifying its length alone would be insufficient: a cyclic quotient <span class="math-inline">\(R_x/(\pi_x^i)\)</span> is a different modification when <span class="math-inline">\(i&gt;1\)</span>.</p>
+<p><strong>Proposition 1.1.</strong> Such modifications are classified by the <span class="math-inline">\(i\)</span>-dimensional quotients of <span class="math-inline">\(E\otimes k(x)\)</span>. Their parameter space is the Grassmannian of those quotients. In a trivialization of the completed stalk <span class="math-inline">\(L=\widehat E_x\)</span>, their lattices satisfy</p>
+<p><span class="math-display">\[
+\pi_xL\subset L&#x27;\subset L,\qquad
+\dim_{k(x)}(L/L&#x27;)=i.
+\]</span></p>
+<p><strong>Proof.</strong> A quotient <span class="math-inline">\(E\otimes k(x)\twoheadrightarrow Q\)</span> defines <span class="math-inline">\(E&#x27;\)</span> as the kernel of <span class="math-inline">\(E\to Q_x\)</span>. Away from <span class="math-inline">\(x\)</span> this kernel is <span class="math-inline">\(E\)</span>. At <span class="math-inline">\(x\)</span>, choose a basis of the residue vector space in which the quotient is projection onto the first <span class="math-inline">\(i\)</span> coordinates. Lift the basis to the free <span class="math-inline">\(R_x\)</span>-module <span class="math-inline">\(E_x\)</span>; the lift is a basis because its determinant is a unit. The kernel has basis</p>
+<p><span class="math-display">\[
+\pi_xe_1,\ldots,\pi_xe_i,e_{i+1},\ldots,e_n.
+\]</span></p>
+<p>It is therefore locally free. Conversely, a modification with the stated quotient gives this residue quotient, and taking its kernel recovers the modification. The same argument applies to families of locally free quotients, which is the defining moduli property of the Grassmannian. Completing the displayed basis gives the lattice description. <span class="math-inline">\(\square\)</span></p>
+<p>Consequently</p>
+<p><span class="math-display">\[
+\deg E&#x27;=\deg E-i\deg x.
+\]</span></p>
+<p>For <span class="math-inline">\(n=2,i=1\)</span>, the fibre is the projective line of quotient lines of <span class="math-inline">\(E\otimes k(x)\)</span>. It has <span class="math-inline">\(q_x+1\)</span> rational points. These are different inclusions into the fixed bundle, even when some kernels are isomorphic as abstract bundles.</p>
+<p>For example, at a rational point of <span class="math-inline">\(\mathbb P^1\)</span>, every modification of <span class="math-inline">\(\mathcal O^2\)</span> of this type has kernel isomorphic to <span class="math-inline">\(\mathcal O\oplus\mathcal O(-1)\)</span>. Constant matrices act transitively on the quotient lines, so all kernels are isomorphic. Thus the operator on functions must retain a multiplicity of <span class="math-inline">\(q+1\)</span>, rather than count a single isomorphism class once.</p>
+<h2>2. Recovering an algebraic bundle from formal lattices</h2>
+<p>Define the adèles and integral adèles by</p>
+<p><span class="math-display">\[
+\mathbb A=\prod_{x\in|X|}&#x27;F_x,\qquad
+\mathbb O=\prod_{x\in|X|}O_x.
+\]</span></p>
+<p>The restriction in the product says that an element is integral at all but finitely many points. For invertible matrices it says</p>
+<p><span class="math-display">\[
+GL_n(\mathbb A)=\prod_x&#x27;GL_n(F_x)
+\quad\text{with respect to }GL_n(O_x).
+\]</span></p>
+<p>Thus both a matrix and its inverse are integral almost everywhere. Put <span class="math-inline">\(K=GL_n(\mathbb O)\)</span>.</p>
+<p>The formal-to-algebraic step is small but essential. It cannot be replaced by choosing analytic discs over a finite field.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math-inline">\(R\)</span> be a discrete valuation ring with fraction field <span class="math-inline">\(F\)</span>, completion <span class="math-inline">\(O\)</span>, and completed fraction field <span class="math-inline">\(F_x\)</span>. If <span class="math-inline">\(L\subset F_x^n\)</span> is an <span class="math-inline">\(O\)</span>-lattice, then</p>
+<p><span class="math-display">\[
+M=L\cap F^n
+\]</span></p>
+<p>is an <span class="math-inline">\(R\)</span>-lattice and <span class="math-inline">\(M\otimes_R O=L\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math-inline">\(N\geq0\)</span> with</p>
+<p><span class="math-display">\[
+\pi^NO^n\subset L\subset\pi^{-N}O^n.
+\]</span></p>
+<p>Reduction identifies</p>
+<p><span class="math-display">\[
+\pi^{-N}R^n/\pi^NR^n
+\simeq\pi^{-N}O^n/\pi^NO^n,
+\]</span></p>
+<p>because <span class="math-inline">\(R/(\pi^{2N})\simeq O/(\pi^{2N})\)</span>. Under this identification take the inverse image in <span class="math-inline">\(\pi^{-N}R^n\)</span> of <span class="math-inline">\(L/\pi^NO^n\)</span>. This inverse image is exactly <span class="math-inline">\(M\)</span>: membership in <span class="math-inline">\(L\)</span> is determined by the displayed residue class. It lies between <span class="math-inline">\(\pi^NR^n\)</span> and <span class="math-inline">\(\pi^{-N}R^n\)</span>, so it is finitely generated, torsion free, and of rank <span class="math-inline">\(n\)</span>. A finitely generated torsion-free module over a discrete valuation ring is free, by elementary divisor reduction. Completion of the same inverse-image description gives <span class="math-inline">\(L\)</span>. <span class="math-inline">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (Weil's dictionary).</strong> There is a bijection</p>
+<p><span class="math-display">\[
+GL_n(F)\backslash GL_n(\mathbb A)/K
+\simeq\{\text{rank }n\text{ bundles on }X\}/\simeq.
+\]</span></p>
+<p>The proof works for a smooth projective integral curve over any field, using all its closed points.</p>
+<p><strong>Proof.</strong> For <span class="math-inline">\(a=(a_x)\)</span>, prescribe <span class="math-inline">\(L_x=a_xO_x^n\)</span>. These are the standard lattices outside a finite set <span class="math-inline">\(S\)</span>. Lemma 2.1 gives <span class="math-inline">\(R_x\)</span>-lattices <span class="math-inline">\(M_x=L_x\cap F^n\)</span>.</p>
+<p>Choose an effective divisor <span class="math-inline">\(D\)</span>, supported on <span class="math-inline">\(S\)</span>, sufficiently large that at every point</p>
+<p><span class="math-display">\[
+\mathcal O_X(-D)_x^n\subset M_x
+\subset\mathcal O_X(D)_x^n.
+\]</span></p>
+<p>For each <span class="math-inline">\(x\in S\)</span>, the quotient</p>
+<p><span class="math-display">\[
+Q_x=\mathcal O_X(D)_x^n/M_x
+\]</span></p>
+<p>has finite length. Regard it as a coherent sheaf supported at <span class="math-inline">\(x\)</span>. The natural map to its stalk quotient gives a morphism <span class="math-inline">\(\mathcal O_X(D)^n\to Q_x\)</span>. Define</p>
+<p><span class="math-display">\[
+E(a)=\ker\left(\mathcal O_X(D)^n\longrightarrow
+\bigoplus_{x\in S}Q_x\right).
+\]</span></p>
+<p>This is a coherent sheaf with stalk <span class="math-inline">\(M_x\)</span> at <span class="math-inline">\(x\in S\)</span>, and with stalk <span class="math-inline">\(R_x^n\)</span> elsewhere. The kernel is torsion free, and its stalks are free of rank <span class="math-inline">\(n\)</span> over the discrete valuation rings. It is therefore a vector bundle. Its generic fibre is <span class="math-inline">\(F^n\)</span>, and its completed stalks are exactly <span class="math-inline">\(L_x\)</span>. The description by those stalks shows that a larger choice of <span class="math-inline">\(D\)</span> produces the same subsheaf of rational sections.</p>
+<p>Multiplication of <span class="math-inline">\(a\)</span> on the right by <span class="math-inline">\(k\in K\)</span> leaves every lattice unchanged. Multiplication on the left by <span class="math-inline">\(b\in GL_n(F)\)</span> carries every lattice, and hence the algebraic bundle, isomorphically to the one prescribed by <span class="math-inline">\(ba\)</span>. This defines the map from double cosets.</p>
+<p>Conversely, choose a basis of the generic fibre of a bundle <span class="math-inline">\(E\)</span>. The basis identifies it with <span class="math-inline">\(F^n\)</span>, so its completed stalk at each <span class="math-inline">\(x\)</span> is a lattice <span class="math-inline">\(L_x\subset F_x^n\)</span>. The generic basis extends to a frame on a nonempty open subset: extend its finitely many rational sections and the inverse determinant after removing their poles and zeros. The complement is finite. Thus <span class="math-inline">\(L_x=O_x^n\)</span> almost everywhere. Choose a basis of each lattice, giving matrices <span class="math-inline">\(a_x\)</span>. They form an adèlic matrix. A different lattice basis changes <span class="math-inline">\(a\)</span> on the right by <span class="math-inline">\(K\)</span>, and a different generic basis changes it on the left by <span class="math-inline">\(GL_n(F)\)</span>.</p>
+<p>The kernel construction recovers <span class="math-inline">\(E\)</span>, since it recovers each of its stalks inside its generic fibre. Finally an isomorphism <span class="math-inline">\(E(a)\simeq E(a&#x27;)\)</span> induces a generic matrix <span class="math-inline">\(b\in GL_n(F)\)</span> satisfying <span class="math-inline">\(bL_x=L&#x27;_x\)</span> for every <span class="math-inline">\(x\)</span>. Hence <span class="math-inline">\((a&#x27;_x)^{-1}ba_x\in GL_n(O_x)\)</span> for every <span class="math-inline">\(x\)</span>, or <span class="math-inline">\(a&#x27;=bak\)</span> for some <span class="math-inline">\(k\in K\)</span>. This proves injectivity as well as surjectivity. <span class="math-inline">\(\square\)</span></p>
+<p><em>Reference:</em> [Frenkel, §3.2, Weil's lemma].</p>
+<p>The proof also identifies automorphisms:</p>
+<p><span class="math-display">\[
+\operatorname{Aut}(E(a))
+=GL_n(F)\cap aKa^{-1}.
+\]</span></p>
+<p>Indeed, a generic matrix is a bundle automorphism precisely when it preserves every local lattice. Thus the quotient groupoid remembers more than its set of double cosets. The moduli stack <span class="math-inline">\(\operatorname{Bun}_n\)</span> retains these automorphisms and retains families of bundles, which the set of classes cannot describe.</p>
+<p>For a connected reductive group <span class="math-inline">\(G\)</span>, the analogous adèlic construction initially parametrizes bundles whose generic <span class="math-inline">\(G\)</span>-torsor is trivial. Identifying it with every bundle requires a generic-triviality theorem for the group and field in question. It is not an automatic consequence of the vector-bundle proof. Later uniformization results will state their group hypotheses explicitly.</p>
+<h2>3. Hecke convolution is a sum over modifications</h2>
+<p>For a fixed <span class="math-inline">\(x\)</span>, let <span class="math-inline">\(\mathcal H_{i,x}\)</span> classify the modifications of Proposition 1.1. Write</p>
+<p><span class="math-display">\[
+p(E&#x27;\subset E)=E,\qquad r(E&#x27;\subset E)=E&#x27;.
+\]</span></p>
+<p>Our direction convention is</p>
+<p><span class="math-display">\[
+(T_{i,x}f)(E)=\sum_{E&#x27;\subset E\,\text{of type }i}f(E&#x27;)
+=(p_*r^*f)(E).
+\]</span></p>
+<p>The sum runs over subbundles with their inclusion into the fixed <span class="math-inline">\(E\)</span>. Its fibre is a finite set of Grassmannian rational points. It is therefore defined for every function, without a support restriction. Cuspidality and central characters are additional conditions when we study automorphic representations.</p>
+<p><strong>Theorem 3.1.</strong> Under Theorem 2.2 this operator is right Hecke convolution by the characteristic function of</p>
+<p><span class="math-display">\[
+K_xt_iK_x,\qquad K_x=GL_n(O_x),\qquad
+t_i=\operatorname{diag}(\underbrace{\pi_x,\ldots,\pi_x}_{i},1,\ldots,1),
+\]</span></p>
+<p>with Haar measure normalized by <span class="math-inline">\(\operatorname{vol}(K_x)=1\)</span>.</p>
+<p><strong>Proof.</strong> In the completed lattice <span class="math-inline">\(a_xO_x^n\)</span>, the modifications are <span class="math-inline">\(a_xL&#x27;\)</span>, where</p>
+<p><span class="math-display">\[
+\pi_xO_x^n\subset L&#x27;\subset O_x^n,
+\qquad O_x^n/L&#x27;\simeq k(x)^i.
+\]</span></p>
+<p>The lifted-basis argument of Proposition 1.1 says exactly that <span class="math-inline">\(L&#x27;=hO_x^n\)</span> for <span class="math-inline">\(h\in K_xt_iK_x\)</span>. Two matrices give the same lattice if and only if they differ by right multiplication by <span class="math-inline">\(K_x\)</span>. Thus the modification fibre is <span class="math-inline">\(K_xt_iK_x/K_x\)</span>. Choose right coset representatives <span class="math-inline">\(h_j\)</span>, and view them as adèles supported at <span class="math-inline">\(x\)</span>. Theorem 2.2 identifies the modified bundle with <span class="math-inline">\([ah_j]\)</span>. Every coset <span class="math-inline">\(h_jK_x\)</span> has measure one, and <span class="math-inline">\(f\)</span> is right <span class="math-inline">\(K\)</span>-invariant. Consequently</p>
+<p><span class="math-display">\[
+\int_{K_xt_iK_x}f([ah])\,dh
+=\sum_jf([ah_j]),
+\]</span></p>
+<p>which is the required sum. Replacing the representative <span class="math-inline">\(a\)</span> by <span class="math-inline">\(bak\)</span> only permutes these lattices and changes their generic frame, so the formula is well defined on double cosets. <span class="math-inline">\(\square\)</span></p>
+<p>In particular</p>
+<p><span class="math-display">\[
+T_{1,x}\mathbf1=(1+q_x+\cdots+q_x^{n-1})\mathbf1,
+\qquad
+T_{n,x}f(E)=f(E(-x)).
+\]</span></p>
+<p>The first formula counts quotient lines. The second follows because the only type <span class="math-inline">\(n\)</span> lattice is <span class="math-inline">\(\pi_xL\)</span>.</p>
+<p>There is no division by <span class="math-inline">\(\#\operatorname{Aut}(E)\)</span> in this fixed-bundle fibre sum. For an absolute sum over a stack's isomorphism classes, the groupoid measure does involve automorphism weights. These are different sums. The morphism <span class="math-inline">\(p\)</span> is representable: after fixing <span class="math-inline">\(E\)</span>, it gives the Grassmannian itself, with no automorphisms of an inclusion inducing the identity on <span class="math-inline">\(E\)</span>.</p>
+<h2>4. The rank-one calculation and its arithmetic condition</h2>
+<p>For an idèle <span class="math-inline">\(a=(a_x)\)</span>, define</p>
+<p><span class="math-display">\[
+\operatorname{div}(a)=\sum_xv_x(a_x)[x].
+\]</span></p>
+<p>It is a finite sum, and the map <span class="math-inline">\(\mathbb A^\times\to\operatorname{Div}(X)\)</span> is onto: a uniformizer at one place, and units elsewhere, realizes the corresponding point divisor. Its kernel is <span class="math-inline">\(\mathbb O^\times\)</span>. A rational function gives its principal divisor. Every line bundle has a rational nonzero section and hence comes from a divisor. Therefore</p>
+<p><span class="math-display">\[
+F^\times\backslash\mathbb A^\times/\mathbb O^\times
+\simeq\operatorname{Div}(X)/\operatorname{Prin}(X)
+=\operatorname{Pic}(X).
+\]</span></p>
+<p>Here <span class="math-inline">\(\operatorname{Pic}(X)\)</span> denotes line bundles defined over <span class="math-inline">\(\mathbb F_q\)</span>, up to isomorphism. The direct lattice construction sends <span class="math-inline">\(a\)</span> to <span class="math-inline">\(\mathcal O_X(-\operatorname{div}(a))\)</span>, since its stalk is <span class="math-inline">\(\pi_x^{v_x(a_x)}R_x\)</span>. This differs by inversion from the displayed divisor map; both are bijections, and the sign is now explicit.</p>
+<p>There is one downward modification of a line bundle:</p>
+<p><span class="math-display">\[
+T_xf(L)=f(L(-x)).
+\]</span></p>
+<p>If <span class="math-inline">\(\chi:\operatorname{Pic}(X)\to C^\times\)</span> is a character over a coefficient field <span class="math-inline">\(C\)</span>, then</p>
+<p><span class="math-display">\[
+T_x\chi=\chi(\mathcal O_X(-x))\chi.
+\]</span></p>
+<p>Conversely, suppose a nonzero function satisfies <span class="math-inline">\(T_xf=\lambda_xf\)</span> for every closed point. Since <span class="math-inline">\(T_x\)</span> is invertible, every <span class="math-inline">\(\lambda_x\)</span> is nonzero. The translations by <span class="math-inline">\(\mathcal O(-x)\)</span> generate the Picard group. Thus all values are determined by <span class="math-inline">\(f(\mathcal O)\)</span>, which must be nonzero. A relation between divisors forces the corresponding relation between the <span class="math-inline">\(\lambda_x\)</span>. It follows that <span class="math-inline">\(f/f(\mathcal O)\)</span> is the character with <span class="math-inline">\(\chi(\mathcal O(-x))=\lambda_x\)</span>. This proves that simultaneous nonzero eigenfunctions are precisely scalar multiples of characters.</p>
+<p>Unramified class field theory supplies the arithmetic comparison. With reciprocity normalized so that <span class="math-inline">\(\mathcal O(-x)\)</span> corresponds to geometric Frobenius at <span class="math-inline">\(x\)</span>, a continuous rank-one étale local system <span class="math-inline">\(\mathcal E\)</span> produces the character satisfying</p>
+<p><span class="math-display">\[
+\chi_{\mathcal E}(\mathcal O(-x))
+=\operatorname{Tr}(\operatorname{Fr}_x,\mathcal E_{\bar x}).
+\]</span></p>
+<p>This is the rank-one reciprocity theorem [Frenkel, §4.2], using inversion to match our downward modification convention. For finite-order characters it is the finite unramified class-field correspondence. Continuous characters with infinite arithmetic monodromy require the corresponding continuity condition. The next calculation shows why that condition matters.</p>
+<h3>The projective line</h3>
+<p>Every line bundle on <span class="math-inline">\(\mathbb P^1_{\mathbb F_q}\)</span> is <span class="math-inline">\(\mathcal O(d)\)</span>, and its class is determined by <span class="math-inline">\(d\)</span>. For completeness, use the two affine charts, on which a line bundle is free because <span class="math-inline">\(\mathbb F_q[t]\)</span> and <span class="math-inline">\(\mathbb F_q[t^{-1}]\)</span> are principal ideal domains. The transition function is a unit of <span class="math-inline">\(\mathbb F_q[t,t^{-1}]\)</span>, hence is <span class="math-inline">\(ct^d\)</span>. A change of frame removes <span class="math-inline">\(c\)</span>, leaving the integer <span class="math-inline">\(d\)</span>. Thus <span class="math-inline">\(\operatorname{Pic}(\mathbb P^1)=\mathbb Z\)</span>.</p>
+<p>Let a rank-one local system on the ground field have geometric Frobenius eigenvalue <span class="math-inline">\(\alpha\)</span>, and pull it to <span class="math-inline">\(\mathbb P^1\)</span>. At a degree <span class="math-inline">\(e\)</span> point its trace is <span class="math-inline">\(\alpha^e\)</span>. The character and eigenfunction are</p>
+<p><span class="math-display">\[
+\chi_\alpha(\mathcal O(d))=\alpha^{-d},\qquad
+T_x\chi_\alpha(\mathcal O(d))
+=\alpha^{\deg x}\chi_\alpha(\mathcal O(d)).
+\]</span></p>
+<p>On the degree <span class="math-inline">\(d\)</span> Picard point, take the rank-one Weil sheaf with Frobenius <span class="math-inline">\(\alpha^{-d}\)</span>. Its pullback along <span class="math-inline">\(y\mapsto\mathcal O(-y)\)</span>, the negative Abel map consistent with our Hecke direction, has Frobenius <span class="math-inline">\(\alpha\)</span>. Its trace is exactly this character. Tensor product of line bundles adds degrees, so these Weil sheaves are multiplicative. The positive Abel map would instead give the local system with eigenvalue <span class="math-inline">\(\alpha^{-1}\)</span>.</p>
+<p>Every finite étale connected cover of <span class="math-inline">\(\mathbb P^1_{\overline{\mathbb F}_q}\)</span> has degree one. Indeed the separable Riemann–Hurwitz formula for an étale cover <span class="math-inline">\(Y\to\mathbb P^1\)</span> of degree <span class="math-inline">\(m\)</span> gives <span class="math-inline">\(2g(Y)-2=-2m\)</span>, and <span class="math-inline">\(g(Y)\geq0\)</span> forces <span class="math-inline">\(m=1\)</span>. Hence the geometric étale fundamental group is trivial. A rank-one étale local system on <span class="math-inline">\(\mathbb P^1_{\mathbb F_q}\)</span> therefore comes from the ground field.</p>
+<p>If <span class="math-inline">\(\alpha\)</span> lies in a finite extension <span class="math-inline">\(C\)</span> of <span class="math-inline">\(\mathbb Q_\ell\)</span>, it defines a continuous representation of <span class="math-inline">\(\widehat{\mathbb Z}\)</span> exactly when <span class="math-inline">\(\alpha\)</span> is an <span class="math-inline">\(\ell\)</span>-adic unit. Necessity follows from compactness: valuation maps a compact subgroup of <span class="math-inline">\(C^\times\)</span> to a finite subgroup of <span class="math-inline">\(\mathbb Z\)</span>, hence to zero. Conversely <span class="math-inline">\(\mathcal O_C^\times\)</span> is profinite, so the homomorphism from <span class="math-inline">\(\mathbb Z\)</span> sending the geometric Frobenius generator to <span class="math-inline">\(\alpha\)</span> extends to its profinite completion. A Weil local system only asks for an invertible Frobenius operator and permits any <span class="math-inline">\(\alpha\ne0\)</span>. The finite-determinant arithmetic theorem in rank one further restricts <span class="math-inline">\(\alpha\)</span> to a root of unity.</p>
+<h2>5. From a correspondence of functions to one of sheaves</h2>
+<p>Fix <span class="math-inline">\(\ell\ne\operatorname{char}(\mathbb F_q)\)</span>. A bounded constructible Weil complex <span class="math-inline">\(\mathcal K\)</span> on a finite-type space <span class="math-inline">\(Y\)</span> has trace function</p>
+<p><span class="math-display">\[
+t_{\mathcal K}(y)=\sum_j(-1)^j
+\operatorname{Tr}(\operatorname{Fr}_y,H^j(\mathcal K_{\bar y})).
+\]</span></p>
+<p>All Frobenius operators here are geometric. Pullback pulls back this function; tensor product multiplies functions. For a finite-type morphism <span class="math-inline">\(u:Z\to Y\)</span>, the compact-support trace formula gives</p>
+<p><span class="math-display">\[
+t_{u_!\mathcal K}(y)
+=\sum_{z\in Z_y(\mathbb F_q)}t_{\mathcal K}(z).
+\]</span></p>
+<p>For the modification correspondence, one can apply this formula after fixing a bundle: the fibre is the proper Grassmannian of Proposition 1.1. Thus <span class="math-inline">\(p_!=p_*\)</span> on this correspondence, and</p>
+<p><span class="math-display">\[
+\mathsf H^{\mathrm{raw}}_{i,x}=p_!r^*,\qquad
+t_{\mathsf H^{\mathrm{raw}}_{i,x}\mathcal K}
+=T_{i,x}t_{\mathcal K}.
+\]</span></p>
+<p>This uses the trace formula as a prerequisite. The identification of the actual fibre and of its Hecke convolution has been proved above.</p>
+<p><strong>Proposition 5.1.</strong> For integers <span class="math-inline">\(s,m\)</span>,</p>
+<p><span class="math-display">\[
+t_{\mathcal K[s](m)}(y)=(-1)^s q^{-m}t_{\mathcal K}(y)
+\quad(y\in Y(\mathbb F_q)).
+\]</span></p>
+<p>At a degree <span class="math-inline">\(e\)</span> point, replace <span class="math-inline">\(q\)</span> by <span class="math-inline">\(q^e\)</span>.</p>
+<p><strong>Proof.</strong> By the cohomological convention <span class="math-inline">\(H^j(\mathcal K[s])=H^{j+s}(\mathcal K)\)</span>. Reindexing the alternating sum gives the sign <span class="math-inline">\((-1)^s\)</span>. Geometric Frobenius on <span class="math-inline">\(\mathbb Q_\ell(1)\)</span> is multiplication by <span class="math-inline">\(q^{-1}\)</span>, giving the second factor. <span class="math-inline">\(\square\)</span></p>
+<p><em>Reference:</em> [Frenkel, §3.8] attributes a power of <span class="math-inline">\(q_x\)</span> to a cohomological shift. The shift supplies only the sign above; a Tate twist supplies the power.</p>
+<p>If a normalization uses a half Tate twist, choose the square root of <span class="math-inline">\(q\)</span> and its Weil structure explicitly. For <span class="math-inline">\(d_i=i(n-i)\)</span>, the kernel normalization <span class="math-inline">\([d_i](d_i/2)\)</span> changes the raw trace operator to</p>
+<p><span class="math-display">\[
+(-1)^{d_i}q_x^{-d_i/2}T_{i,x}.
+\]</span></p>
+<p>This statement fixes the trace normalization of that kernel. The full tensor-compatible Satake convention, including its commutativity constraint, belongs to the lesson on Hecke functors. Keeping the raw operator here prevents a hidden shift or sign from entering the arithmetic examples.</p>
+<p>The eigencondition is an isomorphism of sheaves over the moving-point correspondence, together with tensor and symmetry compatibility. Applying trace at a point to such an isomorphism gives an eigenvalue equation. The converse does not follow from traces. For instance <span class="math-inline">\(\mathcal K\oplus\mathcal K[1]\)</span> has identically zero trace but need not be zero. Even on a point, distinct two-dimensional Frobenius representations can have the same trace: eigenvalues <span class="math-inline">\((1,3)\)</span> and <span class="math-inline">\((2,2)\)</span> both give trace four. Traces over extension fields reveal more, but an equality of functions still does not specify coherent eigenisomorphisms.</p>
+<h2>6. What the arithmetic theorem contributes</h2>
+<p>The normalized spherical Satake isomorphism associates a semisimple dual-group parameter to a spherical eigencharacter. In the convention where <span class="math-inline">\(t_i\)</span> is sent to <span class="math-inline">\(q_x^{i(n-i)/2}\)</span> times the character of <span class="math-inline">\(\bigwedge^i\mathrm{std}\)</span>, a parameter with eigenvalues <span class="math-inline">\(z_1,\ldots,z_n\)</span> gives</p>
+<p><span class="math-display">\[
+T_{i,x}f=q_x^{i(n-i)/2}
+e_i(z_1,\ldots,z_n)f.
+\]</span></p>
+<p>The minuscule coweight determines this power; Proposition 5.1 separately determines the sign and twist when a sheaf kernel is used. Inverting the correspondence replaces the dual representation and its parameter by their inverse conventions.</p>
+<p>The unramified instance of the Drinfeld–Lafforgue theorem says the following. Irreducible continuous rank <span class="math-inline">\(n\)</span> representations of <span class="math-inline">\(\pi_1(X)\)</span> over <span class="math-inline">\(\overline{\mathbb Q}_\ell\)</span>, defined over a finite coefficient extension and with finite-order determinant, correspond to everywhere unramified irreducible cuspidal automorphic representations of <span class="math-inline">\(GL_n(\mathbb A)\)</span> with finite-order central character. After fixing coefficient comparison, their normalized Satake parameters are the eigenvalues of geometric Frobenius, with the reciprocity direction chosen consistently. The spherical vector is determined up to nonzero scalar. The theorem is a bijection of these classes; it is not a bijection from all functions on all bundles to all local systems.</p>
+<p><em>Reference:</em> [Frenkel, §§2.2–2.4, Theorem on the Langlands correspondence].</p>
+<p>For general reductive groups, V. Lafforgue's excursion-operator construction associates semisimple global parameters to cuspidal automorphic data. It does not provide a universal inverse correspondence between individual representations and parameters. This distinction is discussed in [Zhu, §2.2].</p>
+<p>The geometric theorem for irreducible <span class="math-inline">\(GL_n\)</span>-local systems constructs Hecke eigensheaves. Its construction is taught later through the averaging and vanishing arguments. The role of the present lesson is the dictionary it requires: the bundle space, its actual modification fibres, the induced operator, and the trace implication.</p>
+<p>Over an algebraically closed field <span class="math-inline">\(k\)</span> of characteristic zero, we continue to study algebraic bundles and their Hecke correspondences, but use de Rham local systems and D-modules. There is no ground-field Frobenius trace construction in this setting. The categorical theorem concerns the specific functor</p>
+<p><span class="math-display">\[
+\mathbb L_G:
+D\operatorname{-mod}_{1/2}(\operatorname{Bun}_G)
+\longrightarrow
+\operatorname{IndCoh}_{\mathrm{Nilp}}
+(\operatorname{LocSys}_{\check G}^{\mathrm{dR}}).
+\]</span></p>
+<p>It is an equivalence for the unramified characteristic-zero setting. The half twist, derived local systems, and nilpotent singular-support condition are essential parts of its statement. The later lessons construct these categories and prove the formal deductions in the five-paper proof. A trace calculation by itself neither establishes nor verifies this equivalence.</p>
+<h2>7. Exercises</h2>
+<p><strong>Exercise 7.1 (easy).</strong> An idèle has valuation <span class="math-inline">\(2\)</span> at a degree-three point <span class="math-inline">\(x\)</span>, valuation <span class="math-inline">\(-1\)</span> at a rational point <span class="math-inline">\(y\)</span>, and valuation zero elsewhere. Compute the degree of its line bundle under the lattice convention. Explain what changes when the idèle is multiplied by a rational function.</p>
+<p><strong>Exercise 7.2 (easy).</strong> For <span class="math-inline">\(E\)</span> of rank two at a degree-two point, compute the number of downward elementary modifications. Deduce the value of <span class="math-inline">\(T_{1,x}\mathbf1\)</span>. Explain why this answer does not require the kernels to be pairwise nonisomorphic.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Prescribe an arbitrary lattice <span class="math-inline">\(L_x\subset F_x^3\)</span> at one point and the standard lattice elsewhere. Give an algebraic kernel construction of its bundle and prove that no choice of a matrix whose coefficients are rational functions is needed. Show that changing the generic frame induces the left quotient in Weil's dictionary.</p>
+<p><strong>Exercise 7.4 (medium).</strong> On <span class="math-inline">\(\operatorname{Pic}(\mathbb P^1)=\mathbb Z\)</span>, solve the equation <span class="math-inline">\(T_yf=af\)</span> at a rational point for <span class="math-inline">\(a\ne0\)</span>. Determine the eigenvalue at a degree-three point. Compute the trace effect of replacing the corresponding Weil sheaf by its shift <span class="math-inline">\([1](2)\)</span>.</p>
+<p><strong>Exercise 7.5 (hard).</strong> Fix a finite extension of <span class="math-inline">\(\mathbb Q_\ell\)</span> containing <span class="math-inline">\(\alpha\ne0\)</span>. Compare the eigenfunction <span class="math-inline">\(d\mapsto\alpha^{-d}\)</span>, the multiplicative Weil sheaf on the Picard points, and a continuous rank-one étale local system on <span class="math-inline">\(\mathbb P^1_{\mathbb F_q}\)</span>. Prove exactly when the last object exists. Treat <span class="math-inline">\(\alpha=\ell\)</span> and a root of unity of order prime to <span class="math-inline">\(\ell\)</span>.</p>
+<h2>8. Solutions</h2>
+<p><strong>Solution 7.1.</strong> The divisor is <span class="math-inline">\(2x-y\)</span>, of degree <span class="math-inline">\(2\cdot3-1=5\)</span>. The lattice convention gives <span class="math-inline">\(\mathcal O(-2x+y)\)</span>, of degree <span class="math-inline">\(-5\)</span>. Multiplication by <span class="math-inline">\(b\in F^\times\)</span> adds <span class="math-inline">\(\operatorname{div}(b)\)</span>; multiplication by <span class="math-inline">\(b\)</span> is an isomorphism between the lattice bundles. Principal divisors have degree zero, so the degree remains <span class="math-inline">\(-5\)</span>. Integral units change neither valuations nor lattices. This also verifies the two quotients in the rank-one dictionary directly.</p>
+<p><strong>Solution 7.2.</strong> The residue field has <span class="math-inline">\(q^2\)</span> elements. Nonzero linear functionals on a two-dimensional vector space number <span class="math-inline">\(q^4-1\)</span>. Two functionals define the same kernel precisely when they differ by a nonzero scalar, so the number is</p>
+<p><span class="math-display">\[
+(q^4-1)/(q^2-1)=q^2+1.
+\]</span></p>
+<p>Every inclusion contributes the value one to the sum, hence <span class="math-inline">\(T_{1,x}\mathbf1=q^2+1\)</span>. Different inclusions are different points of the modification fibre. An abstract isomorphism of kernels does not identify those points.</p>
+<p><strong>Solution 7.3.</strong> Choose <span class="math-inline">\(N\)</span> with <span class="math-inline">\(\pi_x^NO_x^3\subset L_x\subset\pi_x^{-N}O_x^3\)</span>. Let <span class="math-inline">\(M_x=L_x\cap F^3\)</span>, constructed through the finite quotient in Lemma 2.1, and put <span class="math-inline">\(D=Nx\)</span>. The required bundle is</p>
+<p><span class="math-display">\[
+\ker\left(\mathcal O(D)^3\to
+(\mathcal O(D)_x^3/M_x)_x\right).
+\]</span></p>
+<p>Its stalk at <span class="math-inline">\(x\)</span> is <span class="math-inline">\(M_x\)</span>; all other stalks are standard. Completion yields <span class="math-inline">\(L_x\)</span>, and the kernel is locally free by the discrete valuation ring argument. The quotient only uses finitely many residue coefficients of the lattice, so no rational matrix representing the whole formal lattice is required. A generic frame change is a single element <span class="math-inline">\(b\in GL_3(F)\)</span> acting on every lattice at once. The isomorphism identifies the prescribed bundle with that of <span class="math-inline">\(bL_x\)</span> and the transformed other lattices. This is exactly the left action; local frame changes are the right integral action. Applying the same construction to every bundle and the isomorphism argument of Theorem 2.2 proves both directions of the general dictionary.</p>
+<p><strong>Solution 7.4.</strong> At a rational point, <span class="math-inline">\(T_yf(d)=f(d-1)\)</span>. Hence <span class="math-inline">\(f(d-1)=af(d)\)</span> and iteration in both directions gives <span class="math-inline">\(f(d)=c a^{-d}\)</span>, for an arbitrary scalar <span class="math-inline">\(c\)</span>. A degree-three point gives <span class="math-inline">\(f(d-3)=a^3f(d)\)</span>. Taking the Weil sheaf whose Frobenius on component <span class="math-inline">\(d\)</span> is <span class="math-inline">\(a^{-d}\)</span> realizes the normalized character <span class="math-inline">\(c=1\)</span>. Its shift <span class="math-inline">\([1](2)\)</span> has trace <span class="math-inline">\(-q^{-2}a^{-d}\)</span> on an <span class="math-inline">\(\mathbb F_q\)</span>-point of Picard degree <span class="math-inline">\(d\)</span>. At points defined over <span class="math-inline">\(\mathbb F_{q^e}\)</span> the multiplier is <span class="math-inline">\(-q^{-2e}\)</span>. The shift changes the sign and the twist changes the power; their effects are independent.</p>
+<p><strong>Solution 7.5.</strong> The eigenfunction exists for every <span class="math-inline">\(\alpha\ne0\)</span>, and the Weil sheaf exists because an invertible Frobenius operator defines a rank-one Weil object on each Picard point. Their tensor compatibility follows from <span class="math-inline">\(\alpha^{-(d+d&#x27;)}=\alpha^{-d}\alpha^{-d&#x27;}\)</span>. A rank-one étale local system on the projective line has trivial geometric monodromy by the étale-cover argument in section 4. It is therefore the same as a continuous character of <span class="math-inline">\(\operatorname{Gal}(\overline{\mathbb F}_q/\mathbb F_q)=\widehat{\mathbb Z}\)</span> with geometric Frobenius value <span class="math-inline">\(\alpha\)</span>. The compactness argument and profinite-unit construction in section 4 prove that this exists precisely when <span class="math-inline">\(\alpha\)</span> is a unit. For <span class="math-inline">\(\alpha=\ell\)</span> it does not exist, although the function and Weil sheaf still exist. A root of unity gives a character of a finite cyclic quotient, so it exists and has finite-order determinant. Its trace at a degree <span class="math-inline">\(e\)</span> point is <span class="math-inline">\(\alpha^e\)</span>, which equals the eigenvalue of the character at that point's modification. This checks the rank-one arithmetic correspondence on <span class="math-inline">\(\mathbb P^1\)</span>, including continuity and Frobenius direction.</p>
+<h2>What this lesson does not prove</h2>
+<p>The imported arithmetic input is the Drinfeld–Lafforgue theorem with the finite-determinant and cuspidality conditions stated in section 6 [Frenkel, §§2.2–2.4]. Unramified rank-one reciprocity for a general curve is also an input [Frenkel, §4.2]; the projective-line comparison is proved here. The compact-support trace formula is used in the form stated in section 5 [Frenkel, §3.3]. The normalized spherical Satake isomorphism is used only for the eigenvalue interpretation [Frenkel, §5.2]. The étale case of Riemann–Hurwitz is a background result [Stacks, Tag 0C1B]. The geometric <span class="math-inline">\(GL_n\)</span> construction and the categorical characteristic-zero equivalence are later course topics; their mention here is a preview, not their proof. No counting conjecture about local systems is assumed.</p>
+<h2>References</h2>
+<ul>
+<li>[Frenkel] E. Frenkel, <em>Lectures on the Langlands program and conformal field theory</em>, <a href="https://arxiv.org/abs/hep-th/0512172">freely accessible author preprint, arXiv:hep-th/0512172</a>. Sections 2.2–2.4, 3.2–3.3, 3.7–3.8, 4.2, and 5.2.</li>
+<li>[Zhu] X. Zhu, <em>Arithmetic and geometric Langlands program</em>. <a href="https://arxiv.org/abs/2504.07502">Open preprint</a>. Section 2.2.</li>
+<li>[Ben-Zvi] D. Ben-Zvi, <em>What is the geometric Langlands correspondence about?</em> <a href="https://arxiv.org/abs/2605.23167">Open survey</a>. Sections 1–2.</li>
+<li>[Gaitsgory–Raskin] D. Gaitsgory and S. Raskin, <em>Proof of the geometric Langlands conjecture V: the multiplicity one theorem</em>. <a href="https://arxiv.org/abs/2409.09856">Open preprint</a>. Introduction and statement of the main theorem.</li>
+<li>[Stacks] The <a href="https://stacks.math.columbia.edu/">Stacks project</a>, Tag 0C1B, Riemann–Hurwitz. The text used here is the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/curves.html#section-riemann-hurewitz">AI Integrated Stacks Project English edition</a>, which retains these tags and includes AI-proposed corrections and AI-written additions. Those additions are not reviewed by the Stacks project's maintainers. No text from either edition is reproduced here.</li>
+</ul>
+</article><footer>Original programme text: CC0-1.0. Human mathematical sources are credited in each lesson.</footer></main></body></html>

@@ -1,0 +1,288 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="14d1c69babbdca3e54ba0f13b1b85a3dcb5d837aa17c57f74241874e3660b6ea"><title>Dual balls and compact convexity</title><link rel="stylesheet" href="../../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="dual-balls-and-compact-convexity.md">Editable source</a> · <a href="../../LICENCES.html">Licences</a></nav><article><h1 id="dual-balls-and-compact-convexity">Dual balls and compact convexity</h1>
+<p><strong>Programme reading HA-LCA-PRE-DUAL-CONVEX.</strong> Self-checked by the writing AI. The measure statements use the full completed, locally determined Haar domain on an arbitrary locally compact Hausdorff group. The convexity statements apply to weak-star compact subsets of the dual of any complex normed space, without a separability assumption.</p>
+<p>The freely accessible readings are D. H. Fremlin's <em>Measure Theory</em>, <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt243.tex">§243, version of 30 April 2004 in the volume 2 source collection of 2016</a>, 243F–G, and Günther Hörmann's <a href="https://www.mat.univie.ac.at/~gue/lehre/23AFA/AFA.pdf"><em>Advanced Functional Analysis</em>, summer semester 2023, corrected 13 September 2024</a>, §5.11 on printed pages 71–73 and §§6.5–6.6. The local duality proof uses finite-measure Hilbert representation and explicit gluing. The separation proof uses finitely many coordinates and Euclidean minimization. Thus none of the source's external Radon–Nikodým, gluing or Hahn–Banach references is an unproved dependency.</p>
+<p>This adapted component is distributed under the <a href="../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">Design Science License</a>. The unchanged <span class="unlinked">volume 2 source package</span>, with its original notices, is retained. The other reading's prose and figures are not reproduced.</p>
+<h2 id="1-the-full-haar-domain-and-its-duality">1. The full Haar domain and its duality</h2>
+<p>Throughout this section, <span class="math" data-tex="\((G,\Sigma,\mu)\)">\((G,\Sigma,\mu)\)</span> is the space constructed in <a href="nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-3-1">the general Haar domain theorem</a>. In particular, choose an open, closed, sigma-compact subgroup <span class="math" data-tex="\(H\)">\(H\)</span>, representatives <span class="math" data-tex="\(r\)">\(r\)</span> for the left cosets, and an increasing compact exhaustion <span class="math" data-tex="\(K_n\)">\(K_n\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span>. A set is in <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> precisely when its section in each <span class="math" data-tex="\(rH\)">\(rH\)</span> is measurable for the completed Haar measure on that coset. Its measure is the sum of those section measures, where an arbitrary sum of nonnegative numbers means the supremum of its finite subsums. We write
+<span class="math math-display" data-tex="\[
+ \langle f,q\rangle_\mu=\int_G f(x)q(x)\,d\mu(x)
+       \quad(f\in L^1(\mu),\ q\in L^\infty(\mu)).          \tag{1}
+\]">\[
+ \langle f,q\rangle_\mu=\int_G f(x)q(x)\,d\mu(x)
+       \quad(f\in L^1(\mu),\ q\in L^\infty(\mu)).          \tag{1}
+\]</span>
+This pairing is complex bilinear; a bar is not implicit in it.</p>
+<a id="ha-lca-pre-dual-convex-lemma-1-1"></a>
+<h3 id="lemma-1-1-finite-pieces-and-arbitrary-gluing">Lemma 1.1. Finite pieces and arbitrary gluing</h3>
+<p>There is a partition <span class="math" data-tex="\(G=\bigsqcup_{i\in I}E_i\)">\(G=\bigsqcup_{i\in I}E_i\)</span> into measurable sets of finite measure with these properties:</p>
+<ol>
+<li>A subset <span class="math" data-tex="\(A\)">\(A\)</span> belongs to <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> if and only if <span class="math" data-tex="\(A\cap E_i\)">\(A\cap E_i\)</span> is measurable in every piece.</li>
+<li>For every <span class="math" data-tex="\(A\in\Sigma\)">\(A\in\Sigma\)</span>, <span class="math" data-tex="\(\mu(A)=\sum_i\mu(A\cap E_i)\)">\(\mu(A)=\sum_i\mu(A\cap E_i)\)</span>.</li>
+<li>Functions measurable on the pieces glue to a <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>-measurable function; null sets on the pieces glue to a null set.</li>
+<li>If <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> is measurable, then
+<span class="math math-display" data-tex="\[
+\int_G h\,d\mu=\sum_i\int_{E_i}h\,d\mu.                  \tag{2}
+\]">\[
+\int_G h\,d\mu=\sum_i\int_{E_i}h\,d\mu.                  \tag{2}
+\]</span>
+For <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span>, only countably many pieces have a nonzero integral of <span class="math" data-tex="\(|f|\)">\(|f|\)</span>, <span class="math" data-tex="\(f\)">\(f\)</span> is zero almost everywhere off their union, and its restrictions to finite subcollections approximate it in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(K_0=\varnothing\)">\(K_0=\varnothing\)</span>, <span class="math" data-tex="\(D_n=K_n\setminus K_{n-1}\)">\(D_n=K_n\setminus K_{n-1}\)</span>, and <span class="math" data-tex="\(E_{(r,n)}=rD_n\)">\(E_{(r,n)}=rD_n\)</span>. These are disjoint Borel sets covering <span class="math" data-tex="\(G\)">\(G\)</span>, and <span class="math" data-tex="\(\mu(E_{(r,n)})\le\mu(rK_n)&lt;\infty\)">\(\mu(E_{(r,n)})\le\mu(rK_n)&lt;\infty\)</span>. Within a fixed coset, measurability of all intersections with <span class="math" data-tex="\(E_{(r,n)}\)">\(E_{(r,n)}\)</span> is equivalent to measurability of their countable union, by the sigma-algebra property. The defining coset criterion then proves assertion 1. Countable additivity inside each coset, followed by the arbitrary coset sum, proves assertion 2: both iterated sums equal the supremum of sums over finite sets of pairs <span class="math" data-tex="\((r,n)\)">\((r,n)\)</span>. Indeed a finite set of pairs is contained in finitely many rows with finite selections in each, and conversely every such finite selection is a finite set of pairs.</p>
+<p>For a glued function, the inverse image of any Borel set has measurable intersection with every piece, so assertion 1 proves its measurability. Assertion 2 shows that the union of null piece sets has measure zero. This proves assertion 3 even when <span class="math" data-tex="\(I\)">\(I\)</span> is uncountable.</p>
+<p>For a nonnegative simple function, (2) follows from assertion 2 and finite distributivity of nonnegative sums. For a general <span class="math" data-tex="\(h\)">\(h\)</span>, the earlier <a href="integration-and-l1.html#ha-lca-pre-integral-theorem-1-2">definition of the integral and monotone convergence</a> show that every simple <span class="math" data-tex="\(s\le h\)">\(s\le h\)</span> has integral at most the right side of (2), giving the upper bound. For the reverse bound, on any finite collection of pieces choose simple lower approximations to <span class="math" data-tex="\(h\)">\(h\)</span>, extend them by zero and add them. Taking their integral suprema gives the sum of the integrals on that finite collection. Taking the supremum over finite collections gives the reverse inequality, including infinite values.</p>
+<p>If the sum in (2) for <span class="math" data-tex="\(|f|\)">\(|f|\)</span> is finite, for each integer <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> there are only finitely many indices with <span class="math" data-tex="\(\int_{E_i}|f|\ge1/m\)">\(\int_{E_i}|f|\ge1/m\)</span>; otherwise finite subsums would be arbitrarily large. Every positive summand lies in one of these finite sets. Hence there are only countably many positive summands. On each other piece <span class="math" data-tex="\(f=0\)">\(f=0\)</span> almost everywhere by the earlier <a href="integration-and-l1.html#ha-lca-pre-integral-corollary-1-3">zero-integral criterion</a>; assertion 3 glues the exceptional sets to a null set. Enumerating the positive summands and using their convergent sum shows that the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm of the omitted tail tends to zero. If there are no positive summands, <span class="math" data-tex="\(f=0\)">\(f=0\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-dual-convex-theorem-1-2"></a>
+<h3 id="theorem-1-2-l-infty-l-1-with-the-exact-norm">Theorem 1.2. <span class="math" data-tex="\(L^\infty=(L^1)^*\)">\(L^\infty=(L^1)^*\)</span>, with the exact norm</h3>
+<p>Every bounded complex linear functional <span class="math" data-tex="\(\Lambda:L^1(\mu)\to\mathbb C\)">\(\Lambda:L^1(\mu)\to\mathbb C\)</span> has a unique representing class <span class="math" data-tex="\(q\in L^\infty(\mu)\)">\(q\in L^\infty(\mu)\)</span> such that
+<span class="math math-display" data-tex="\[
+ \Lambda(f)=\int_G fq\,d\mu\quad(f\in L^1),\qquad
+ \|\Lambda\|=\|q\|_\infty.                               \tag{3}
+\]">\[
+ \Lambda(f)=\int_G fq\,d\mu\quad(f\in L^1),\qquad
+ \|\Lambda\|=\|q\|_\infty.                               \tag{3}
+\]</span>
+Conversely, every <span class="math" data-tex="\(q\in L^\infty\)">\(q\in L^\infty\)</span> defines such a functional. This is a complex linear isometric bijection.</p>
+<p><strong>Proof.</strong> The bound <span class="math" data-tex="\(\int|fq|\le\|q\|_\infty\int|f|\)">\(\int|fq|\le\|q\|_\infty\int|f|\)</span> follows by choosing a representative bounded by <span class="math" data-tex="\(\|q\|_\infty\)">\(\|q\|_\infty\)</span> off a null set and using monotonicity of the integral. Such a representative exists: intersect the full-measure bounds <span class="math" data-tex="\(|q|\le\|q\|_\infty+1/n\)">\(|q|\le\|q\|_\infty+1/n\)</span>. Thus (1) is well-defined on classes and defines a bounded complex linear functional of norm at most <span class="math" data-tex="\(\|q\|_\infty\)">\(\|q\|_\infty\)</span>.</p>
+<p>For the converse set <span class="math" data-tex="\(C=\|\Lambda\|\)">\(C=\|\Lambda\|\)</span> and use Lemma 1.1. On a piece <span class="math" data-tex="\(E_i\)">\(E_i\)</span> of positive finite measure, extend its functions by zero to <span class="math" data-tex="\(G\)">\(G\)</span>. The earlier <a href="hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-lemma-1-1">Cauchy–Schwarz inequality</a>, applied in the <a href="hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-6-1">complete <span class="math" data-tex="\(L^2(E_i)\)">\(L^2(E_i)\)</span> space</a>, gives
+<span class="math math-display" data-tex="\[
+ \|f\|_1\le\mu(E_i)^{1/2}\|f\|_2.
+\]">\[
+ \|f\|_1\le\mu(E_i)^{1/2}\|f\|_2.
+\]</span>
+Therefore the restriction of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> to <span class="math" data-tex="\(L^2(E_i)\)">\(L^2(E_i)\)</span> is bounded. The earlier <a href="hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-2-3">Hilbert representation theorem</a>, with the inner product linear in the first variable, supplies <span class="math" data-tex="\(v_i\in L^2(E_i)\)">\(v_i\in L^2(E_i)\)</span> such that
+<span class="math math-display" data-tex="\[
+ \Lambda(f)=\int_{E_i} f\,\overline{v_i}\,d\mu
+                  \quad(f\in L^2(E_i)).                 \tag{4}
+\]">\[
+ \Lambda(f)=\int_{E_i} f\,\overline{v_i}\,d\mu
+                  \quad(f\in L^2(E_i)).                 \tag{4}
+\]</span>
+For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, let <span class="math" data-tex="\(A=\{x\in E_i:|v_i(x)|&gt;C+\varepsilon\}\)">\(A=\{x\in E_i:|v_i(x)|&gt;C+\varepsilon\}\)</span>. The function
+<span class="math math-display" data-tex="\[
+ f=1_A\,v_i/|v_i|,
+\]">\[
+ f=1_A\,v_i/|v_i|,
+\]</span>
+defined as zero when its numerator vanishes, is in <span class="math" data-tex="\(L^2(E_i)\)">\(L^2(E_i)\)</span>. If <span class="math" data-tex="\(\mu(A)&gt;0\)">\(\mu(A)&gt;0\)</span>, (4) gives
+<span class="math math-display" data-tex="\[
+ |\Lambda(f)|=\int_A|v_i|\,d\mu
+       \ge(C+\varepsilon)\mu(A)&gt;C\|f\|_1,
+\]">\[
+ |\Lambda(f)|=\int_A|v_i|\,d\mu
+       \ge(C+\varepsilon)\mu(A)&gt;C\|f\|_1,
+\]</span>
+contradicting the definition of <span class="math" data-tex="\(C\)">\(C\)</span>. Thus <span class="math" data-tex="\(\mu(A)=0\)">\(\mu(A)=0\)</span>. Taking <span class="math" data-tex="\(\varepsilon=1/n\)">\(\varepsilon=1/n\)</span> proves <span class="math" data-tex="\(|v_i|\le C\)">\(|v_i|\le C\)</span> almost everywhere.</p>
+<p>Put <span class="math" data-tex="\(q_i=\overline{v_i}\)">\(q_i=\overline{v_i}\)</span> and modify it on its null exceptional set to have <span class="math" data-tex="\(|q_i|\le C\)">\(|q_i|\le C\)</span> everywhere on <span class="math" data-tex="\(E_i\)">\(E_i\)</span>. On a zero-measure piece take <span class="math" data-tex="\(q_i=0\)">\(q_i=0\)</span>. The bounded simple functions on a finite-measure piece are in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and are dense in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by the earlier <a href="integration-and-l1.html#ha-lca-pre-integral-lemma-2-3">simple approximation theorem</a>. Consequently continuity extends (4) to all <span class="math" data-tex="\(L^1\)">\(L^1\)</span> functions on that piece. Choice selects representatives on all pieces; Lemma 1.1 glues them to a measurable <span class="math" data-tex="\(q\)">\(q\)</span> bounded everywhere by <span class="math" data-tex="\(C\)">\(C\)</span>. Finite sums of piece restrictions of an arbitrary <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span> converge to <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Both <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and integration against <span class="math" data-tex="\(q\)">\(q\)</span> are continuous, so their equality on those finite sums gives (3) without its norm equality yet.</p>
+<p>To obtain the exact norm, let <span class="math" data-tex="\(0&lt;a&lt;\|q\|_\infty\)">\(0&lt;a&lt;\|q\|_\infty\)</span>. Then <span class="math" data-tex="\(A=\{|q|&gt;a\}\)">\(A=\{|q|&gt;a\}\)</span> has positive measure. By Lemma 1.1 some <span class="math" data-tex="\(A\cap E_i=F\)">\(A\cap E_i=F\)</span> has <span class="math" data-tex="\(0&lt;\mu(F)&lt;\infty\)">\(0&lt;\mu(F)&lt;\infty\)</span>. Set
+<span class="math math-display" data-tex="\[
+ f(x)=\frac{1_F(x)\overline{q(x)}}{\mu(F)|q(x)|},
+\]">\[
+ f(x)=\frac{1_F(x)\overline{q(x)}}{\mu(F)|q(x)|},
+\]</span>
+with value zero outside <span class="math" data-tex="\(F\)">\(F\)</span>. It has <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm one and
+<span class="math" data-tex="\(\int fq=\mu(F)^{-1}\int_F|q|\ge a\)">\(\int fq=\mu(F)^{-1}\int_F|q|\ge a\)</span>. Hence <span class="math" data-tex="\(\|\Lambda_q\|\ge a\)">\(\|\Lambda_q\|\ge a\)</span>. Letting <span class="math" data-tex="\(a\)">\(a\)</span> increase to <span class="math" data-tex="\(\|q\|_\infty\)">\(\|q\|_\infty\)</span>, and also treating <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, proves the norm equality. Applied to a difference of two representatives of the same functional, this equality proves uniqueness. Linearity of the correspondence is the bilinearity of (1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-dual-convex-corollary-1-3"></a>
+<h3 id="corollary-1-3-continuous-representatives-and-dense-tests">Corollary 1.3. Continuous representatives and dense tests</h3>
+<p>A bounded continuous function has essential-supremum norm equal to its uniform norm. Two bounded continuous functions representing the same <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> class are identical.</p>
+<p>Let <span class="math" data-tex="\(q_d,q\in L^\infty\)">\(q_d,q\in L^\infty\)</span>, with <span class="math" data-tex="\(\sup_d\|q_d\|_\infty\le R\)">\(\sup_d\|q_d\|_\infty\le R\)</span> and <span class="math" data-tex="\(\|q\|_\infty\le R&lt;\infty\)">\(\|q\|_\infty\le R&lt;\infty\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \int fq_d\longrightarrow\int fq\quad(f\in L^1)
+ \quad\Longleftrightarrow\quad
+ \int hq_d\longrightarrow\int hq\quad(h\in C_c(G)).       \tag{5}
+\]">\[
+ \int fq_d\longrightarrow\int fq\quad(f\in L^1)
+ \quad\Longleftrightarrow\quad
+ \int hq_d\longrightarrow\int hq\quad(h\in C_c(G)).       \tag{5}
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(|h(x_0)|&gt;a\)">\(|h(x_0)|&gt;a\)</span> for a continuous <span class="math" data-tex="\(h\)">\(h\)</span>, the set <span class="math" data-tex="\(\{|h|&gt;a\}\)">\(\{|h|&gt;a\}\)</span> contains a nonempty open neighbourhood of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. It has positive Haar measure by the earlier <a href="nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-3-1">full-support theorem</a>. Thus every <span class="math" data-tex="\(a&lt;\|h\|_\infty\)">\(a&lt;\|h\|_\infty\)</span> is at most <span class="math" data-tex="\(\|h\|_{\mathrm{ess}\,\infty}\)">\(\|h\|_{\mathrm{ess}\,\infty}\)</span>. The reverse inequality is immediate. Applying this equality to a difference proves the uniqueness assertion.</p>
+<p>The forward implication in (5) uses <span class="math" data-tex="\(C_c\subseteq L^1\)">\(C_c\subseteq L^1\)</span>, because compact sets have finite measure. Conversely, the earlier <a href="nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-5-1"><span class="math" data-tex="\(C_c\)">\(C_c\)</span> density theorem on the full Haar domain</a> allows an <span class="math" data-tex="\(h\in C_c\)">\(h\in C_c\)</span> with <span class="math" data-tex="\(\|f-h\|_1\)">\(\|f-h\|_1\)</span> arbitrarily small. Then
+<span class="math math-display" data-tex="\[
+ \left|\int f(q_d-q)\right|
+ \le 2R\|f-h\|_1+\left|\int h(q_d-q)\right|.
+\]">\[
+ \left|\int f(q_d-q)\right|
+ \le 2R\|f-h\|_1+\left|\int h(q_d-q)\right|.
+\]</span>
+First choose <span class="math" data-tex="\(h\)">\(h\)</span> and then a sufficiently late <span class="math" data-tex="\(d\)">\(d\)</span>. This proves convergence for every <span class="math" data-tex="\(f\)">\(f\)</span>. If <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, all classes vanish and the assertion is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-weak-star-topology-compactness-and-separation">2. Weak-star topology, compactness and separation</h2>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be a complex normed space. Its dual <span class="math" data-tex="\(E^*\)">\(E^*\)</span> consists of bounded complex linear maps <span class="math" data-tex="\(\ell:E\to\mathbb C\)">\(\ell:E\to\mathbb C\)</span>, with norm
+<span class="math" data-tex="\(\|\ell\|=\sup_{\|x\|\le1}|\ell(x)|\)">\(\|\ell\|=\sup_{\|x\|\le1}|\ell(x)|\)</span>. The <strong>weak-star topology</strong> <span class="math" data-tex="\(\sigma(E^*,E)\)">\(\sigma(E^*,E)\)</span> is the topology generated by the evaluations <span class="math" data-tex="\(\ell\mapsto\ell(x)\)">\(\ell\mapsto\ell(x)\)</span>. A neighbourhood basis at <span class="math" data-tex="\(\ell_0\)">\(\ell_0\)</span> consists of
+<span class="math math-display" data-tex="\[
+ U(\ell_0;x_1,\ldots,x_n;\varepsilon)
+ =\{\ell:|(\ell-\ell_0)(x_j)|&lt;\varepsilon,\ 1\le j\le n\},
+ \qquad \varepsilon&gt;0.                                 \tag{6}
+\]">\[
+ U(\ell_0;x_1,\ldots,x_n;\varepsilon)
+ =\{\ell:|(\ell-\ell_0)(x_j)|&lt;\varepsilon,\ 1\le j\le n\},
+ \qquad \varepsilon&gt;0.                                 \tag{6}
+\]</span>
+Evaluations separate points of <span class="math" data-tex="\(E^*\)">\(E^*\)</span> by the definition of different functions. Hence this topology is Hausdorff. Addition and scalar multiplication are continuous: after fixing finitely many <span class="math" data-tex="\(x_j\)">\(x_j\)</span>, the necessary estimates are the corresponding finite scalar estimates. In particular, sums, scalar multiples and finite convex combinations of convergent nets have the corresponding limits. A net converges weak-star exactly when all its evaluations converge.</p>
+<a id="ha-lca-pre-dual-convex-theorem-2-1"></a>
+<h3 id="theorem-2-1-compact-dual-balls">Theorem 2.1. Compact dual balls</h3>
+<p>For <span class="math" data-tex="\(R\ge0\)">\(R\ge0\)</span>, the ball
+<span class="math math-display" data-tex="\[
+ B_R(E^*)=\{\ell:\|\ell\|\le R\}
+\]">\[
+ B_R(E^*)=\{\ell:\|\ell\|\le R\}
+\]</span>
+is weak-star compact and closed. The dual norm is weak-star lower semicontinuous. Every net in a weak-star compact set has a convergent subnet whose limit belongs to that set.</p>
+<p>In particular, under Theorem 1.2, every closed norm ball of <span class="math" data-tex="\(L^\infty(G,\Sigma,\mu)\)">\(L^\infty(G,\Sigma,\mu)\)</span> is compact for the topology of the pairings (1).</p>
+<p><strong>Proof.</strong> For each <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span> the closed complex disk
+<span class="math" data-tex="\(D_x=\{z:|z|\le R\|x\|\}\)">\(D_x=\{z:|z|\le R\|x\|\}\)</span> is compact by the earlier <a href="banach-spectrum.html#ha-lca-pre-banach-lemma-1-1">finite-dimensional compactness theorem</a>. Thus
+<span class="math math-display" data-tex="\[
+ P=\prod_{x\in E}D_x
+\]">\[
+ P=\prod_{x\in E}D_x
+\]</span>
+is compact by the earlier <a href="banach-spectrum.html#ha-lca-pre-banach-lemma-4-1">arbitrary product theorem</a>. A point <span class="math" data-tex="\(a=(a_x)\)">\(a=(a_x)\)</span> represents an element of <span class="math" data-tex="\(B_R(E^*)\)">\(B_R(E^*)\)</span> exactly when
+<span class="math math-display" data-tex="\[
+ a_{x+y}=a_x+a_y,\qquad a_{\alpha x}=\alpha a_x
+             \quad(x,y\in E,\ \alpha\in\mathbb C).       \tag{7}
+\]">\[
+ a_{x+y}=a_x+a_y,\qquad a_{\alpha x}=\alpha a_x
+             \quad(x,y\in E,\ \alpha\in\mathbb C).       \tag{7}
+\]</span>
+These are closed coordinate conditions. If they hold, <span class="math" data-tex="\(x\mapsto a_x\)">\(x\mapsto a_x\)</span> is complex linear and satisfies <span class="math" data-tex="\(|a_x|\le R\|x\|\)">\(|a_x|\le R\|x\|\)</span>, which proves boundedness and the claimed norm bound. Conversely every element of the ball satisfies (7). The evaluation map therefore identifies the ball with a closed subset of <span class="math" data-tex="\(P\)">\(P\)</span>, and its induced product topology is exactly (6). This proves compactness, including <span class="math" data-tex="\(E=\{0\}\)">\(E=\{0\}\)</span> and <span class="math" data-tex="\(R=0\)">\(R=0\)</span>.</p>
+<p>For any <span class="math" data-tex="\(R\ge0\)">\(R\ge0\)</span>, inside the whole dual the same ball is the intersection of the closed sets
+<span class="math math-display" data-tex="\[
+ \{\ell:|\ell(x)|\le R\|x\|\}\qquad(x\in E).
+\]">\[
+ \{\ell:|\ell(x)|\le R\|x\|\}\qquad(x\in E).
+\]</span>
+Thus every sublevel set of the norm is closed, which is lower semicontinuity. More explicitly, if <span class="math" data-tex="\(\|\ell\|&gt;a\ge0\)">\(\|\ell\|&gt;a\ge0\)</span>, some unit vector <span class="math" data-tex="\(x\)">\(x\)</span> has <span class="math" data-tex="\(|\ell(x)|&gt;a\)">\(|\ell(x)|&gt;a\)</span>; a weak-star neighbourhood of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> retains this strict inequality. It follows in particular that if <span class="math" data-tex="\(\ell_d\to\ell\)">\(\ell_d\to\ell\)</span> and <span class="math" data-tex="\(\|\ell\|=1\)">\(\|\ell\|=1\)</span>, then eventually <span class="math" data-tex="\(\|\ell_d\|&gt;a\)">\(\|\ell_d\|&gt;a\)</span> for each <span class="math" data-tex="\(a&lt;1\)">\(a&lt;1\)</span>.</p>
+<p>The earlier <a href="hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-5-1">compact-net argument</a> was proved for an arbitrary compact space: intersect closures of tails and index a subnet by triples consisting of a tail index, a neighbourhood of the resulting cluster point, and a later index whose point belongs to that neighbourhood. Its index map is both increasing and cofinal. Applying that proved argument to the compact set here gives the asserted subnet, with no countability condition.</p>
+<p>Finally the linear bijection in Theorem 1.2 preserves norms and sends evaluation at <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span> precisely to the pairing (1). It therefore transports both the balls and their stated topologies, proving the <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-dual-convex-lemma-2-2"></a>
+<h3 id="lemma-2-2-separating-a-point-from-a-compact-convex-set">Lemma 2.2. Separating a point from a compact convex set</h3>
+<p>Let <span class="math" data-tex="\(C\subset E^*\)">\(C\subset E^*\)</span> be nonempty, weak-star compact and convex, and let <span class="math" data-tex="\(\ell_0\notin C\)">\(\ell_0\notin C\)</span>. There is <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span> such that
+<span class="math math-display" data-tex="\[
+ \operatorname{Re}\ell_0(x)&gt;
+       \sup_{\ell\in C}\operatorname{Re}\ell(x).         \tag{8}
+\]">\[
+ \operatorname{Re}\ell_0(x)&gt;
+       \sup_{\ell\in C}\operatorname{Re}\ell(x).         \tag{8}
+\]</span>
+The supremum is finite and attained.</p>
+<p><strong>Proof.</strong> A compact subset of a Hausdorff space is closed. For the precise elementary argument used here, for each <span class="math" data-tex="\(c\in C\)">\(c\in C\)</span> choose disjoint neighbourhoods of <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(\ell_0\)">\(\ell_0\)</span>; finitely many of the former cover <span class="math" data-tex="\(C\)">\(C\)</span>, and the intersection of the latter is a neighbourhood of <span class="math" data-tex="\(\ell_0\)">\(\ell_0\)</span> disjoint from <span class="math" data-tex="\(C\)">\(C\)</span>. By (6) there are <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> for which that basic neighbourhood misses <span class="math" data-tex="\(C\)">\(C\)</span>. Necessarily <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Define
+<span class="math math-display" data-tex="\[
+ T:E^*\longrightarrow\mathbb R^{2n},\qquad
+ T\ell=(\operatorname{Re}\ell(x_1),\operatorname{Im}\ell(x_1),
+                    \ldots,\operatorname{Re}\ell(x_n),\operatorname{Im}\ell(x_n)).
+\]">\[
+ T:E^*\longrightarrow\mathbb R^{2n},\qquad
+ T\ell=(\operatorname{Re}\ell(x_1),\operatorname{Im}\ell(x_1),
+                    \ldots,\operatorname{Re}\ell(x_n),\operatorname{Im}\ell(x_n)).
+\]</span>
+This map is continuous and real linear. Its image <span class="math" data-tex="\(D=T(C)\)">\(D=T(C)\)</span> is nonempty, compact and convex. The point <span class="math" data-tex="\(b=T\ell_0\)">\(b=T\ell_0\)</span> is not in <span class="math" data-tex="\(D\)">\(D\)</span>, since equality with a point of <span class="math" data-tex="\(D\)">\(D\)</span> would give all the coordinate differences zero and hence a point of <span class="math" data-tex="\(C\)">\(C\)</span> in the forbidden neighbourhood.</p>
+<p>The continuous function <span class="math" data-tex="\(z\mapsto|b-z|^2\)">\(z\mapsto|b-z|^2\)</span> attains its minimum on <span class="math" data-tex="\(D\)">\(D\)</span>, by the earlier <a href="banach-spectrum.html#ha-lca-pre-banach-lemma-1-1">compact-extrema theorem</a>. Let <span class="math" data-tex="\(z_0\)">\(z_0\)</span> be a minimizer and <span class="math" data-tex="\(v=b-z_0\ne0\)">\(v=b-z_0\ne0\)</span>. For <span class="math" data-tex="\(z\in D\)">\(z\in D\)</span> and <span class="math" data-tex="\(0&lt;t\le1\)">\(0&lt;t\le1\)</span>, convexity and minimality give
+<span class="math math-display" data-tex="\[
+ |v-t(z-z_0)|^2\ge|v|^2.
+\]">\[
+ |v-t(z-z_0)|^2\ge|v|^2.
+\]</span>
+Expanding and dividing by <span class="math" data-tex="\(2t\)">\(2t\)</span> yields
+<span class="math math-display" data-tex="\[
+ v\cdot(z-z_0)\le\tfrac12t|z-z_0|^2.
+\]">\[
+ v\cdot(z-z_0)\le\tfrac12t|z-z_0|^2.
+\]</span>
+Letting <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span> proves <span class="math" data-tex="\(v\cdot z\le v\cdot z_0\)">\(v\cdot z\le v\cdot z_0\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ v\cdot b=v\cdot z_0+|v|^2&gt;\sup_{z\in D}v\cdot z.       \tag{9}
+\]">\[
+ v\cdot b=v\cdot z_0+|v|^2&gt;\sup_{z\in D}v\cdot z.       \tag{9}
+\]</span>
+Write <span class="math" data-tex="\(v=(a_1,b_1,\ldots,a_n,b_n)\)">\(v=(a_1,b_1,\ldots,a_n,b_n)\)</span> and set
+<span class="math" data-tex="\(x=\sum_{j=1}^n(a_j-i b_j)x_j\)">\(x=\sum_{j=1}^n(a_j-i b_j)x_j\)</span>. Complex linearity gives
+<span class="math math-display" data-tex="\[
+ \operatorname{Re}\ell(x)
+  =\sum_j\big(a_j\operatorname{Re}\ell(x_j)
+                         +b_j\operatorname{Im}\ell(x_j)\big)
+  =v\cdot T\ell.
+\]">\[
+ \operatorname{Re}\ell(x)
+  =\sum_j\big(a_j\operatorname{Re}\ell(x_j)
+                         +b_j\operatorname{Im}\ell(x_j)\big)
+  =v\cdot T\ell.
+\]</span>
+Thus (9) is (8). This functional is continuous, so its real image of <span class="math" data-tex="\(C\)">\(C\)</span> is compact and has a maximum, as asserted. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-extreme-points">3. Extreme points</h2>
+<p>For a convex set <span class="math" data-tex="\(K\)">\(K\)</span> in a real or complex vector space, a nonempty convex subset <span class="math" data-tex="\(F\subseteq K\)">\(F\subseteq K\)</span> is a <strong>face</strong> if
+<span class="math math-display" data-tex="\[
+ 0&lt;t&lt;1,\quad a,b\in K,\quad ta+(1-t)b\in F
+                      \quad\Longrightarrow\quad a,b\in F.       \tag{10}
+\]">\[
+ 0&lt;t&lt;1,\quad a,b\in K,\quad ta+(1-t)b\in F
+                      \quad\Longrightarrow\quad a,b\in F.       \tag{10}
+\]</span>
+A point is <strong>extreme</strong> if its singleton is a face. Denote the set of extreme points by <span class="math" data-tex="\(\operatorname{Ext}K\)">\(\operatorname{Ext}K\)</span>. Convexity always uses real coefficients in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<a id="ha-lca-pre-dual-convex-lemma-3-1"></a>
+<h3 id="lemma-3-1-compact-faces-have-extreme-points">Lemma 3.1. Compact faces have extreme points</h3>
+<p>Every nonempty weak-star compact convex <span class="math" data-tex="\(K\subset E^*\)">\(K\subset E^*\)</span> has an extreme point. More generally, each nonempty compact face <span class="math" data-tex="\(F_0\)">\(F_0\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span> contains an extreme point of <span class="math" data-tex="\(K\)">\(K\)</span>. If <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, the functional <span class="math" data-tex="\(\ell\mapsto\operatorname{Re}\ell(x)\)">\(\ell\mapsto\operatorname{Re}\ell(x)\)</span> attains its maximum over <span class="math" data-tex="\(K\)">\(K\)</span> at an extreme point.</p>
+<p><strong>Proof.</strong> Intersections of faces, when nonempty, are faces: convexity and implication (10) hold in every constituent set and therefore in their intersection. A face of a face of <span class="math" data-tex="\(K\)">\(K\)</span> is a face of <span class="math" data-tex="\(K\)">\(K\)</span>: if a strict convex combination in <span class="math" data-tex="\(K\)">\(K\)</span> lies in the smaller face, first apply (10) for the larger face to place its endpoints there, and then apply (10) for the smaller face. Singletons are compact in any topology.</p>
+<p>The set <span class="math" data-tex="\(K\)">\(K\)</span> itself is a face of <span class="math" data-tex="\(K\)">\(K\)</span>. Given a compact face <span class="math" data-tex="\(F_0\)">\(F_0\)</span>, order all nonempty compact faces of <span class="math" data-tex="\(K\)">\(K\)</span> contained in <span class="math" data-tex="\(F_0\)">\(F_0\)</span> by reverse inclusion. Every nonempty chain has an upper bound given by its intersection. Indeed, its members are closed subsets of the compact Hausdorff set <span class="math" data-tex="\(F_0\)">\(F_0\)</span>; a finite subcollection has intersection equal to its smallest member, which is nonempty. Compactness, or equivalently the finite-intersection property obtained by taking complements of open covers, makes the entire intersection nonempty. It is compact and is a face by the first paragraph. An empty chain has upper bound <span class="math" data-tex="\(F_0\)">\(F_0\)</span>. The maximal principle for sets therefore supplies a face <span class="math" data-tex="\(F\)">\(F\)</span> minimal by inclusion.</p>
+<p>Suppose <span class="math" data-tex="\(\ell_1,\ell_2\in F\)">\(\ell_1,\ell_2\in F\)</span> are distinct. Choose <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span> with <span class="math" data-tex="\((\ell_1-\ell_2)(x)\ne0\)">\((\ell_1-\ell_2)(x)\ne0\)</span>. Multiplying <span class="math" data-tex="\(x\)">\(x\)</span> by the conjugate phase of this nonzero number makes
+<span class="math" data-tex="\(\operatorname{Re}\ell_1(x)\ne\operatorname{Re}\ell_2(x)\)">\(\operatorname{Re}\ell_1(x)\ne\operatorname{Re}\ell_2(x)\)</span>. Let
+<span class="math math-display" data-tex="\[
+ c=\max_{\ell\in F}\operatorname{Re}\ell(x),\qquad
+ F&#x27;=\{\ell\in F:\operatorname{Re}\ell(x)=c\}.
+\]">\[
+ c=\max_{\ell\in F}\operatorname{Re}\ell(x),\qquad
+ F&#x27;=\{\ell\in F:\operatorname{Re}\ell(x)=c\}.
+\]</span>
+The maximum exists because <span class="math" data-tex="\(F\)">\(F\)</span> is compact. Its level set is nonempty, closed and convex, and is a proper subset of <span class="math" data-tex="\(F\)">\(F\)</span>, since the displayed functional takes two different values there. It is a face of <span class="math" data-tex="\(F\)">\(F\)</span>: a strict weighted average of two numbers at most <span class="math" data-tex="\(c\)">\(c\)</span> equals <span class="math" data-tex="\(c\)">\(c\)</span> only when both numbers equal <span class="math" data-tex="\(c\)">\(c\)</span>. By face transitivity it is a compact face of <span class="math" data-tex="\(K\)">\(K\)</span>, contradicting minimality. Thus <span class="math" data-tex="\(F\)">\(F\)</span> is a singleton; its point is extreme in <span class="math" data-tex="\(K\)">\(K\)</span>. Taking <span class="math" data-tex="\(F_0=K\)">\(F_0=K\)</span> proves the first assertion.</p>
+<p>Finally the same maximum-level construction applied directly to <span class="math" data-tex="\(K\)">\(K\)</span> gives a nonempty compact face of maximizers for any fixed <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>. The result just proved gives an extreme point of <span class="math" data-tex="\(K\)">\(K\)</span> in that face. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-dual-convex-theorem-3-2"></a>
+<h3 id="theorem-3-2-the-compact-convex-extreme-point-theorem">Theorem 3.2. The compact-convex extreme-point theorem</h3>
+<p>For every nonempty weak-star compact convex <span class="math" data-tex="\(K\subset E^*\)">\(K\subset E^*\)</span>,
+<span class="math math-display" data-tex="\[
+ K=\overline{\operatorname{conv}(\operatorname{Ext}K)}^{\,w^*}.   \tag{11}
+\]">\[
+ K=\overline{\operatorname{conv}(\operatorname{Ext}K)}^{\,w^*}.   \tag{11}
+\]</span>
+The convex hull here consists of finite convex combinations.</p>
+<p><strong>Proof.</strong> Finite convex combinations form a convex set: a convex combination of two finite convex combinations is another such combination, by multiplying their nonnegative coefficients and retaining their total sum one. Every convex set containing <span class="math" data-tex="\(\operatorname{Ext}K\)">\(\operatorname{Ext}K\)</span> contains those combinations by induction on the number of terms.</p>
+<p>The closure of a convex subset <span class="math" data-tex="\(A\)">\(A\)</span> is convex in this topology. To see this directly, if <span class="math" data-tex="\(a,b\in\bar A\)">\(a,b\in\bar A\)</span>, <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, and a finite-coordinate neighbourhood of <span class="math" data-tex="\(ta+(1-t)b\)">\(ta+(1-t)b\)</span> with radius <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is prescribed, choose <span class="math" data-tex="\(a&#x27;,b&#x27;\in A\)">\(a&#x27;,b&#x27;\in A\)</span> approximating <span class="math" data-tex="\(a,b\)">\(a,b\)</span> on those coordinates within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Then the same coordinates of <span class="math" data-tex="\(ta&#x27;+(1-t)b&#x27;\)">\(ta&#x27;+(1-t)b&#x27;\)</span> differ from those of <span class="math" data-tex="\(ta+(1-t)b\)">\(ta+(1-t)b\)</span> by less than <span class="math" data-tex="\(t\varepsilon+(1-t)\varepsilon=\varepsilon\)">\(t\varepsilon+(1-t)\varepsilon=\varepsilon\)</span>. The cases <span class="math" data-tex="\(t=0,1\)">\(t=0,1\)</span> are immediate.</p>
+<p>Set <span class="math" data-tex="\(C=\overline{\operatorname{conv}(\operatorname{Ext}K)}^{\,w^*}\)">\(C=\overline{\operatorname{conv}(\operatorname{Ext}K)}^{\,w^*}\)</span>. By Lemma 3.1 it is nonempty. Since <span class="math" data-tex="\(K\)">\(K\)</span> is compact and Hausdorff, it is closed by the argument in Lemma 2.2, so <span class="math" data-tex="\(C\subseteq K\)">\(C\subseteq K\)</span>. The set <span class="math" data-tex="\(C\)">\(C\)</span> is closed, compact and convex. If some <span class="math" data-tex="\(\ell_0\in K\)">\(\ell_0\in K\)</span> were outside <span class="math" data-tex="\(C\)">\(C\)</span>, Lemma 2.2 would give an <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span> such that
+<span class="math math-display" data-tex="\[
+ \operatorname{Re}\ell_0(x)&gt;
+                \sup_{\ell\in C}\operatorname{Re}\ell(x).
+\]">\[
+ \operatorname{Re}\ell_0(x)&gt;
+                \sup_{\ell\in C}\operatorname{Re}\ell(x).
+\]</span>
+But Lemma 3.1 supplies a point <span class="math" data-tex="\(p\in\operatorname{Ext}K\subseteq C\)">\(p\in\operatorname{Ext}K\subseteq C\)</span> maximizing this functional over <span class="math" data-tex="\(K\)">\(K\)</span>. Then
+<span class="math" data-tex="\(\operatorname{Re}p(x)\ge\operatorname{Re}\ell_0(x)\)">\(\operatorname{Re}p(x)\ge\operatorname{Re}\ell_0(x)\)</span>, contradicting the strict inequality. Hence <span class="math" data-tex="\(K=C\)">\(K=C\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-dual-convex-corollary-3-3"></a>
+<h3 id="corollary-3-3-recovering-a-normalized-boundary">Corollary 3.3. Recovering a normalized boundary</h3>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a nonempty weak-star compact convex subset of <span class="math" data-tex="\(B_1(E^*)\)">\(B_1(E^*)\)</span>, with <span class="math" data-tex="\(0\in K\)">\(0\in K\)</span>. Suppose that every nonzero extreme point of <span class="math" data-tex="\(K\)">\(K\)</span> has norm one. Put
+<span class="math math-display" data-tex="\[
+ A=\operatorname{Ext}K\setminus\{0\}.
+\]">\[
+ A=\operatorname{Ext}K\setminus\{0\}.
+\]</span>
+Every <span class="math" data-tex="\(q\in K\)">\(q\in K\)</span> of norm one is a weak-star limit of finite convex combinations of points of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>This assertion does not require the norm-one subset of <span class="math" data-tex="\(K\)">\(K\)</span> to be closed, compact or convex.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(q\in K\)">\(q\in K\)</span> with <span class="math" data-tex="\(\|q\|=1\)">\(\|q\|=1\)</span>. By Theorem 3.2, every weak-star neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(q\)">\(q\)</span> contains a finite convex combination <span class="math" data-tex="\(s_U\)">\(s_U\)</span> of points of <span class="math" data-tex="\(\operatorname{Ext}K\)">\(\operatorname{Ext}K\)</span>. Direct these neighbourhoods by reverse inclusion and choose one such combination for each. For every neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span>, all later <span class="math" data-tex="\(U\subseteq V\)">\(U\subseteq V\)</span> have <span class="math" data-tex="\(s_U\in V\)">\(s_U\in V\)</span>. Thus <span class="math" data-tex="\(s_U\to q\)">\(s_U\to q\)</span>.</p>
+<p>In the selected expression for <span class="math" data-tex="\(s_U\)">\(s_U\)</span>, omit any zero extreme points and let <span class="math" data-tex="\(t_U\in[0,1]\)">\(t_U\in[0,1]\)</span> be the sum of the remaining coefficients. By the triangle inequality and the assumed norms of the remaining points,
+<span class="math math-display" data-tex="\[
+ \|s_U\|\le t_U\le1.
+\]">\[
+ \|s_U\|\le t_U\le1.
+\]</span>
+The lower semicontinuity conclusion of Theorem 2.1 shows that, for every <span class="math" data-tex="\(a&lt;1\)">\(a&lt;1\)</span>, eventually <span class="math" data-tex="\(\|s_U\|&gt;a\)">\(\|s_U\|&gt;a\)</span>. Consequently <span class="math" data-tex="\(t_U\to1\)">\(t_U\to1\)</span>, and <span class="math" data-tex="\(t_U&gt;0\)">\(t_U&gt;0\)</span> on a tail of the directed set. On that tail set <span class="math" data-tex="\(r_U=s_U/t_U\)">\(r_U=s_U/t_U\)</span>. Dividing the remaining coefficients by <span class="math" data-tex="\(t_U\)">\(t_U\)</span> makes <span class="math" data-tex="\(r_U\)">\(r_U\)</span> a finite convex combination of points of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>For every <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>,
+<span class="math math-display" data-tex="\[
+ |r_U(x)-s_U(x)|
+ =\frac{1-t_U}{t_U}|s_U(x)|
+ \le(1-t_U)\|x\|\longrightarrow0.
+\]">\[
+ |r_U(x)-s_U(x)|
+ =\frac{1-t_U}{t_U}|s_U(x)|
+ \le(1-t_U)\|x\|\longrightarrow0.
+\]</span>
+Together with <span class="math" data-tex="\(s_U(x)\to q(x)\)">\(s_U(x)\to q(x)\)</span>, this proves <span class="math" data-tex="\(r_U\to q\)">\(r_U\to q\)</span> weak-star. In particular, <span class="math" data-tex="\(A\)">\(A\)</span> is nonempty whenever <span class="math" data-tex="\(K\)">\(K\)</span> has a norm-one point. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="source-reading-and-scope">Source reading and scope</h2>
+<p>Fremlin 243F–G motivates the duality problem and its dependence on the measure domain. The full Haar domain has been partitioned and glued explicitly above, so no general localizability or Radon–Nikodým theorem is silently invoked. Hörmann §5.11 supplies the compact-face argument; the required strict separation is proved in Lemma 2.2 in the exact weak-star setting used here. His §§6.5–6.6 supply the product-compactness approach to dual balls; the product theorem itself is already proved in the earlier programme.</p>
+<p>The reading establishes these eight source and proof obligations only. It does not yet identify positive-type functions, prove their GNS theorem, or classify the extreme points of their ball. Those are separate statements in the positive-type lesson.</p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

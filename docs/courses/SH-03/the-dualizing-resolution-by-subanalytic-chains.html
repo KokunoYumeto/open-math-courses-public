@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The dualizing resolution by subanalytic chains · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/the-dualizing-resolution-by-subanalytic-chains.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>The dualizing resolution by subanalytic chains</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Original text by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Source-scope and reader repairs by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the revising AI. New original text and figure/source are public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-dualizing-resolution-by-subanalytic-chains">The dualizing resolution by subanalytic chains</h1>
+<p>A cycle germ below the dimension of its ambient manifold can be swept along a half-ray to produce a primitive. The sweep may be unbounded. What makes it a legitimate chain construction is properness on its closed carrier. Once this local argument is proved, the chain complex resolves the dualizing complex, and its cycle sheaves remain flat with arbitrary sheaf coefficients.</p>
+<p><em>Original text by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Source-scope and reader repairs by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the revising AI. New original text and figure/source are public domain (CC0).</em></p>
+<p><a href="subanalytic-chains-and-closed-cycle-supports.html">Subanalytic chains and closed cycle supports</a> constructs the complex and its canonical orientation map. <a href="supports-products-and-proper-images-of-chains.html">Supports, products and proper images of chains</a> proves chain-stalk flatness, proper pushforward, its boundary compatibility, ordered external products and softness with arbitrary coefficients. We retain their exact current SH-02 duality/trace and Stacks/Claude DC module prerequisites. The geometric inputs are the subanalytic closure and compatible locally finite triangulation prerequisites recorded in <a href="../sheaf-proof-readings/SH03-subanalytic-sets-and-limiting-tangent-directions.html">Subanalytic sets and limiting tangent directions</a>. Their lower and transitive audit obligations remain open.</p>
+<p>This lesson proves that subanalytic chains resolve the dualizing complex, after M. Kashiwara, <a href="https://www.numdam.org/item/AST_1985__130__193_0/"><em>Index theorem for constructible sheaves</em></a>, Astérisque 130 (1985), §1. The proof below includes the local proper-projection argument.</p>
+<h2 id="the-local-problem-and-its-degrees">The local problem and its degrees</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a commutative ring of finite global dimension. Let <span class="math" data-tex="\(X\)">\(X\)</span> be a real analytic <span class="math" data-tex="\(n\)">\(n\)</span>-manifold, Hausdorff and countable at infinity. All statements are local on components of fixed, uniformly bounded dimension. Keep the cohomological convention</p>
+<span class="math math-display" data-tex="\[
+\mathcal C^{-p}=\mathcal C_p,\qquad
+d^{-p}=\partial_p,\qquad
+\mathcal Z_p=\ker(\partial_p),\qquad
+\mathcal C_{-1}=0.
+\qquad\text{(1)}
+\]">\[
+\mathcal C^{-p}=\mathcal C_p,\qquad
+d^{-p}=\partial_p,\qquad
+\mathcal Z_p=\ker(\partial_p),\qquad
+\mathcal C_{-1}=0.
+\qquad\text{(1)}
+\]</span>
+<p>The complex is concentrated in degrees <span class="math" data-tex="\([-n,0]\)">\([-n,0]\)</span>, and the top cycles are the orientation sheaf:</p>
+<span class="math math-display" data-tex="\[
+\mathcal Z_n\simeq\operatorname{or}_X,\qquad
+\omega_X\simeq\operatorname{or}_X[n]
+\longrightarrow \mathcal C.
+\qquad\text{(2)}
+\]">\[
+\mathcal Z_n\simeq\operatorname{or}_X,\qquad
+\omega_X\simeq\operatorname{or}_X[n]
+\longrightarrow \mathcal C.
+\qquad\text{(2)}
+\]</span>
+<p>The map in (2) is the canonical map already constructed from oriented top-dimensional pieces. To prove it is a quasi-isomorphism, it suffices to show that every germ in <span class="math" data-tex="\(\mathcal Z_p\)">\(\mathcal Z_p\)</span> is a boundary for
+<span class="math" data-tex="\(0\leq p&lt;n\)">\(0\leq p&lt;n\)</span>. The degree <span class="math" data-tex="\(p=0\)">\(p=0\)</span> is included: every zero-chain is a cycle, since its outgoing boundary is zero.</p>
+<p>Choose such a germ <span class="math" data-tex="\(\alpha_x\)">\(\alpha_x\)</span>. The closed-cycle presentation gives, after shrinking around <span class="math" data-tex="\(x\)">\(x\)</span>, a closed subanalytic set <span class="math" data-tex="\(S\)">\(S\)</span> of dimension at most <span class="math" data-tex="\(p\)">\(p\)</span> and a section</p>
+<span class="math math-display" data-tex="\[
+\alpha\in H^{-p}(S;\omega_S)
+\subset\Gamma(X;\mathcal Z_p),\qquad
+\operatorname{supp}(\alpha)\subset S.
+\qquad\text{(3)}
+\]">\[
+\alpha\in H^{-p}(S;\omega_S)
+\subset\Gamma(X;\mathcal Z_p),\qquad
+\operatorname{supp}(\alpha)\subset S.
+\qquad\text{(3)}
+\]</span>
+<p>We must choose coordinates in which projection transverse to one coordinate is proper on <span class="math" data-tex="\(S\)">\(S\)</span>. No smoothness or finite-fibre hypothesis on <span class="math" data-tex="\(S\)">\(S\)</span> is needed.</p>
+<h2 id="a-direction-outside-the-point-normal-cone">A direction outside the point normal cone</h2>
+<p>Place <span class="math" data-tex="\(x\)">\(x\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span> in an analytic chart in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. If the cycle germ is zero there is nothing to prove, so we may take <span class="math" data-tex="\(0\in S\)">\(0\in S\)</span>. The point normal cone has the sequence description</p>
+<span class="math math-display" data-tex="\[
+C_0S=\{\,v:\ z_j\in S,\ z_j\to0,\ \lambda_j&gt;0,\
+\lambda_jz_j\to v\,\}.
+\qquad\text{(4)}
+\]">\[
+C_0S=\{\,v:\ z_j\in S,\ z_j\to0,\ \lambda_j&gt;0,\
+\lambda_jz_j\to v\,\}.
+\qquad\text{(4)}
+\]</span>
+<p>It is a closed positive-conic subanalytic set. It is the cone at the point <span class="math" data-tex="\(0\)">\(0\)</span>, rather than a cone formed from differences of two moving points of <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>We need its dimension bound. Consider the positive-parameter deformation</p>
+<span class="math math-display" data-tex="\[
+E=\{(v,t):t&gt;0,\ tv\in S\}.
+\qquad\text{(5)}
+\]">\[
+E=\{(v,t):t&gt;0,\ tv\in S\}.
+\qquad\text{(5)}
+\]</span>
+<p>The analytic diffeomorphism
+<span class="math" data-tex="\((z,t)\mapsto(z/t,t)\)">\((z,t)\mapsto(z/t,t)\)</span> identifies it with <span class="math" data-tex="\(S\times\mathbb R_{&gt;0}\)">\(S\times\mathbb R_{&gt;0}\)</span>; hence
+<span class="math" data-tex="\(\dim E\leq p+1\)">\(\dim E\leq p+1\)</span>. The set <span class="math" data-tex="\(E\)">\(E\)</span> is locally closed and subanalytic.</p>
+<p>Here is the frontier argument behind the dimension loss. In a locally finite compatible triangulation of <span class="math" data-tex="\(E\)">\(E\)</span>, its closure and its frontier, a frontier cell is approached by cells in <span class="math" data-tex="\(E\)">\(E\)</span>. Near any point only finitely many cells occur. At least one of those cells has the frontier cell as a proper face; it cannot be the same cell because the cell in the frontier is disjoint from <span class="math" data-tex="\(E\)">\(E\)</span>. Thus the dimension of each frontier cell is strictly smaller than the dimension of some cell in <span class="math" data-tex="\(E\)">\(E\)</span>. Consequently
+<span class="math" data-tex="\(\dim(\overline E\setminus E)\leq p\)">\(\dim(\overline E\setminus E)\leq p\)</span>.
+The sequence description (4) puts <span class="math" data-tex="\(C_0S\times\{0\}\)">\(C_0S\times\{0\}\)</span> inside this frontier, so</p>
+<span class="math math-display" data-tex="\[
+\dim C_0S\leq p&lt;n.
+\qquad\text{(6)}
+\]">\[
+\dim C_0S\leq p&lt;n.
+\qquad\text{(6)}
+\]</span>
+<p>Both <span class="math" data-tex="\(C_0S\)">\(C_0S\)</span> and <span class="math" data-tex="\(-C_0S\)">\(-C_0S\)</span> have dimension at most <span class="math" data-tex="\(p\)">\(p\)</span>. Their union therefore cannot fill <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Choose a unit vector <span class="math" data-tex="\(v\)">\(v\)</span> with
+<span class="math" data-tex="\(v,-v\notin C_0S\)">\(v,-v\notin C_0S\)</span>. Write a point in orthogonal coordinates as
+<span class="math" data-tex="\(z=(s,y)\in\mathbb R_v\times v^\perp\)">\(z=(s,y)\in\mathbb R_v\times v^\perp\)</span>, and denote the transverse projection by <span class="math" data-tex="\(Pz=y\)">\(Pz=y\)</span>.</p>
+<p>There are <span class="math" data-tex="\(\rho,c&gt;0\)">\(\rho,c&gt;0\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|Pz|\geq c|z|\quad(z\in S,\ |z|&lt;\rho),\qquad
+|s|\leq C|y|,\quad C=1/c.
+\qquad\text{(7)}
+\]">\[
+|Pz|\geq c|z|\quad(z\in S,\ |z|&lt;\rho),\qquad
+|s|\leq C|y|,\quad C=1/c.
+\qquad\text{(7)}
+\]</span>
+<p><strong>Proof.</strong> Otherwise choose nonzero <span class="math" data-tex="\(z_j\in S\)">\(z_j\in S\)</span> tending to <span class="math" data-tex="\(0\)">\(0\)</span> with
+<span class="math" data-tex="\(|Pz_j|/|z_j|\to0\)">\(|Pz_j|/|z_j|\to0\)</span>. A subsequence of <span class="math" data-tex="\(z_j/|z_j|\)">\(z_j/|z_j|\)</span> converges on the unit sphere. Its transverse coordinate is zero, so the limit is <span class="math" data-tex="\(v\)">\(v\)</span> or <span class="math" data-tex="\(-v\)">\(-v\)</span>. Taking <span class="math" data-tex="\(\lambda_j=1/|z_j|\)">\(\lambda_j=1/|z_j|\)</span> in (4) puts that limit in <span class="math" data-tex="\(C_0S\)">\(C_0S\)</span>, a contradiction. The second inequality follows from the first and <span class="math" data-tex="\(|s|\leq|z|\)">\(|s|\leq|z|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choose positive <span class="math" data-tex="\(\epsilon,\delta\)">\(\epsilon,\delta\)</span> with
+<span class="math" data-tex="\(\sqrt{\epsilon^2+\delta^2}&lt;\rho\)">\(\sqrt{\epsilon^2+\delta^2}&lt;\rho\)</span> and <span class="math" data-tex="\(C\delta&lt;\epsilon/2\)">\(C\delta&lt;\epsilon/2\)</span>.
+In the box</p>
+<span class="math math-display" data-tex="\[
+Q=(-\epsilon,\epsilon)\times B_\delta,\qquad S_Q=S\cap Q,
+\quad |s|&lt;\epsilon/2\text{ on }S_Q,
+\qquad\text{(8)}
+\]">\[
+Q=(-\epsilon,\epsilon)\times B_\delta,\qquad S_Q=S\cap Q,
+\quad |s|&lt;\epsilon/2\text{ on }S_Q,
+\qquad\text{(8)}
+\]</span>
+<p>the projection <span class="math" data-tex="\(S_Q\to B_\delta\)">\(S_Q\to B_\delta\)</span> is proper. Indeed, for a compact
+<span class="math" data-tex="\(K\subset B_\delta\)">\(K\subset B_\delta\)</span>, its inverse image is a closed subset of
+<span class="math" data-tex="\([-\epsilon/2,\epsilon/2]\times K\)">\([-\epsilon/2,\epsilon/2]\times K\)</span>, which is compact and lies in <span class="math" data-tex="\(Q\)">\(Q\)</span>.
+Closedness of <span class="math" data-tex="\(S_Q\)">\(S_Q\)</span> is relative to <span class="math" data-tex="\(Q\)">\(Q\)</span>, precisely the ambient space used in this argument.</p>
+<p>Finally replace <span class="math" data-tex="\(s\)">\(s\)</span> by the analytic coordinate</p>
+<span class="math math-display" data-tex="\[
+\sigma=\tan\!\left(\frac{\pi s}{2\epsilon}\right).
+\qquad\text{(9)}
+\]">\[
+\sigma=\tan\!\left(\frac{\pi s}{2\epsilon}\right).
+\qquad\text{(9)}
+\]</span>
+<p>This identifies <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(X&#x27;=\mathbb R_\sigma\times B_\delta\)">\(X&#x27;=\mathbb R_\sigma\times B_\delta\)</span>.
+The transformed <span class="math" data-tex="\(S_Q\)">\(S_Q\)</span> is closed and subanalytic in <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>, has
+<span class="math" data-tex="\(|\sigma|&lt;1\)">\(|\sigma|&lt;1\)</span>, and still projects properly to <span class="math" data-tex="\(B_\delta\)">\(B_\delta\)</span>. The change preserves subanalyticity by analytic inverse image under its inverse diffeomorphism. We have obtained the required local product
+<span class="math" data-tex="\(X&#x27;=\mathbb R\times Y\)">\(X&#x27;=\mathbb R\times Y\)</span>, with <span class="math" data-tex="\(f:X&#x27;\to Y\)">\(f:X&#x27;\to Y\)</span> proper on the closed carrier <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>.
+We now rename these <span class="math" data-tex="\(X,S\)">\(X,S\)</span>.</p>
+<h2 id="the-half-ray-contracts-every-lower-cycle-germ">The half-ray contracts every lower cycle germ</h2>
+<p>Orient the positive coordinate line by increasing <span class="math" data-tex="\(t\)">\(t\)</span>. Its open half-ray has the closed chain support <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, and terminal-minus-initial boundary gives</p>
+<span class="math math-display" data-tex="\[
+h=[(0,\infty)],\qquad \partial h=-[0],\qquad
+\beta=-h,\quad \partial\beta=[0].
+\qquad\text{(10)}
+\]">\[
+h=[(0,\infty)],\qquad \partial h=-[0],\qquad
+\beta=-h,\quad \partial\beta=[0].
+\qquad\text{(10)}
+\]</span>
+<p>There is no endpoint at infinity in the locally finite chain sheaf.
+Place the half-ray factor <strong>first</strong> and form</p>
+<span class="math math-display" data-tex="\[
+\gamma=\beta\boxtimes\alpha
+\in\Gamma(\mathbb R_t\times X;\mathcal C_{p+1}),\qquad
+\operatorname{supp}(\gamma)\subset[0,\infty)\times S.
+\qquad\text{(11)}
+\]">\[
+\gamma=\beta\boxtimes\alpha
+\in\Gamma(\mathbb R_t\times X;\mathcal C_{p+1}),\qquad
+\operatorname{supp}(\gamma)\subset[0,\infty)\times S.
+\qquad\text{(11)}
+\]</span>
+<p>The ordered product rule, and <span class="math" data-tex="\(\partial\alpha=0\)">\(\partial\alpha=0\)</span>, yield</p>
+<span class="math math-display" data-tex="\[
+\partial\gamma
+=(\partial\beta)\boxtimes\alpha
++(-1)^1\beta\boxtimes\partial\alpha
+=i_*\alpha,\qquad i(x)=(0,x).
+\qquad\text{(12)}
+\]">\[
+\partial\gamma
+=(\partial\beta)\boxtimes\alpha
++(-1)^1\beta\boxtimes\partial\alpha
+=i_*\alpha,\qquad i(x)=(0,x).
+\qquad\text{(12)}
+\]</span>
+<p>The support containment is sufficient; it need not be equality for every coefficient ring.</p>
+<p>Use the analytic addition map</p>
+<span class="math math-display" data-tex="\[
+\varphi:\mathbb R_t\times(\mathbb R_s\times Y)
+\longrightarrow\mathbb R_r\times Y,\qquad
+\varphi(t,(s,y))=(t+s,y).
+\qquad\text{(13)}
+\]">\[
+\varphi:\mathbb R_t\times(\mathbb R_s\times Y)
+\longrightarrow\mathbb R_r\times Y,\qquad
+\varphi(t,(s,y))=(t+s,y).
+\qquad\text{(13)}
+\]</span>
+<p>Its restriction to <span class="math" data-tex="\(\mathbb R\times S\)">\(\mathbb R\times S\)</span> is proper. To check this, let <span class="math" data-tex="\(K\)">\(K\)</span> be compact in the target and let <span class="math" data-tex="\(K_Y\)">\(K_Y\)</span> be its projection to <span class="math" data-tex="\(Y\)">\(Y\)</span>. Since <span class="math" data-tex="\(S\to Y\)">\(S\to Y\)</span> is proper, <span class="math" data-tex="\(S_{K_Y}\)">\(S_{K_Y}\)</span> is compact. In particular its <span class="math" data-tex="\(s\)">\(s\)</span>-coordinate is bounded. The coordinate <span class="math" data-tex="\(r=t+s\)">\(r=t+s\)</span> is bounded on <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(t\)">\(t\)</span> is bounded on
+<span class="math" data-tex="\(\varphi^{-1}K\cap(\mathbb R\times S)\)">\(\varphi^{-1}K\cap(\mathbb R\times S)\)</span>. This inverse image is closed in a product of a bounded closed <span class="math" data-tex="\(t\)">\(t\)</span>-interval with <span class="math" data-tex="\(S_{K_Y}\)">\(S_{K_Y}\)</span>; it is compact. The same holds on the closed half-ray carrier.</p>
+<p>Thus the proper-chain operation from the preceding lesson applies to <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+B=\varphi_*\gamma\in\Gamma(X;\mathcal C_{p+1}).
+\qquad
+\partial B=\varphi_*\partial\gamma
+=\varphi_*i_*\alpha=\alpha.
+\qquad\text{(14)}
+\]">\[
+B=\varphi_*\gamma\in\Gamma(X;\mathcal C_{p+1}).
+\qquad
+\partial B=\varphi_*\partial\gamma
+=\varphi_*i_*\alpha=\alpha.
+\qquad\text{(14)}
+\]</span>
+<p>The first equality uses its proved trace/localization boundary compatibility. The last uses composition of the actual proper traces and
+<span class="math" data-tex="\(\varphi i=\operatorname{id}_X\)">\(\varphi i=\operatorname{id}_X\)</span>; it introduces no additional sign.</p>
+<p>We have produced a primitive of each lower cycle germ after a suitable shrink. It depends on the carrier and the chosen coordinates. This is a proof of stalkwise exactness, with no assertion of a single global contracting operator or a compactly supported primitive.</p>
+<p><img src="src/figures/half-ray-chain-contraction.svg" alt="The half-ray sweeps the oriented parabola upwards; a compact target rectangle has an exactly bounded preimage." class="course-figure" style="max-width:100%;height:auto"></p>
+<p><em>Figure 1. In the global parabola example of Exercise 2, <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is oriented by increasing <span class="math" data-tex="\(y\)">\(y\)</span>, <span class="math" data-tex="\(\varphi(t,y)=(t+y^2,y)\)">\(\varphi(t,y)=(t+y^2,y)\)</span>, and <span class="math" data-tex="\(B=-[r&gt;y^2]\)">\(B=-[r&gt;y^2]\)</span> has ordered orientation <span class="math" data-tex="\(dr\wedge dy\)">\(dr\wedge dy\)</span>. Its closed carrier is <span class="math" data-tex="\(r\geq y^2\)">\(r\geq y^2\)</span> and continues upwards beyond the finite view. On the right the exact inverse image of <span class="math" data-tex="\(K=\{|y|\leq1,\ 0\leq r\leq1\}\)">\(K=\{|y|\leq1,\ 0\leq r\leq1\}\)</span> is <span class="math" data-tex="\(0\leq t\leq1-y^2\)">\(0\leq t\leq1-y^2\)</span>, a closed bounded set. This illustrates the sign in (10)–(14) and the compact-inverse-image proof of properness in (13). The <a href="#the-half-ray-contracts-every-lower-cycle-germ">half-ray construction</a> and <a href="#a-signed-sweep-and-a-failure-of-properness">signed sweep exercise</a> give the intrinsic proof. This explicit parabola computation and reproducible figure source are newly written.</em></p>
+<h2 id="the-canonical-map-is-a-quasi-isomorphism">The canonical map is a quasi-isomorphism</h2>
+<p>For <span class="math" data-tex="\(0\leq p&lt;n\)">\(0\leq p&lt;n\)</span>, (14) says
+<span class="math" data-tex="\((\mathcal Z_p)_x=\operatorname{im}(\partial_{p+1})_x\)">\((\mathcal Z_p)_x=\operatorname{im}(\partial_{p+1})_x\)</span> at every <span class="math" data-tex="\(x\)">\(x\)</span>.
+The other cohomology group is
+<span class="math" data-tex="\(H^{-n}(\mathcal C)=\mathcal Z_n=\operatorname{or}_X\)">\(H^{-n}(\mathcal C)=\mathcal Z_n=\operatorname{or}_X\)</span>, since
+<span class="math" data-tex="\(\mathcal C_{n+1}=0\)">\(\mathcal C_{n+1}=0\)</span>. The canonical map (2) induces the orientation identification in this degree. Both objects have zero cohomology outside <span class="math" data-tex="\([-n,0]\)">\([-n,0]\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\omega_X\xrightarrow{\sim}\mathcal C
+\quad\text{in }D^b(A_X).
+\qquad\text{(15)}
+\]">\[
+\omega_X\xrightarrow{\sim}\mathcal C
+\quad\text{in }D^b(A_X).
+\qquad\text{(15)}
+\]</span>
+<p>When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span> is discrete locally, <span class="math" data-tex="\(\mathcal C_0=A_X\)">\(\mathcal C_0=A_X\)</span>, and (15) is the identity in degree zero. There are no lower degrees to contract. At the other extreme the top orientation germ in dimension <span class="math" data-tex="\(n\)">\(n\)</span> survives; the avoidance argument required <span class="math" data-tex="\(p&lt;n\)">\(p&lt;n\)</span>.</p>
+<h2 id="flat-cycles-preserve-coefficient-kernels">Flat cycles preserve coefficient kernels</h2>
+<p>Each <span class="math" data-tex="\(\mathcal C_p\)">\(\mathcal C_p\)</span> is flat by the earlier finite-refinement proof.
+The new exactness gives, for <span class="math" data-tex="\(1\leq p\leq n\)">\(1\leq p\leq n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal Z_p
+\longrightarrow\mathcal C_p
+\xrightarrow{\partial_p}\mathcal Z_{p-1}
+\longrightarrow0,\qquad \mathcal Z_0=\mathcal C_0.
+\qquad\text{(16)}
+\]">\[
+0\longrightarrow\mathcal Z_p
+\longrightarrow\mathcal C_p
+\xrightarrow{\partial_p}\mathcal Z_{p-1}
+\longrightarrow0,\qquad \mathcal Z_0=\mathcal C_0.
+\qquad\text{(16)}
+\]</span>
+<p>The final map lands in cycles because <span class="math" data-tex="\(\partial^2=0\)">\(\partial^2=0\)</span>, and is surjective because <span class="math" data-tex="\(p-1&lt;n\)">\(p-1&lt;n\)</span>. Thus (16) includes <span class="math" data-tex="\(p=n\)">\(p=n\)</span>.</p>
+<p><strong>Proof of flatness.</strong> Work on a stalk. The base module <span class="math" data-tex="\((\mathcal Z_0)_x\)">\((\mathcal Z_0)_x\)</span> is flat. Suppose <span class="math" data-tex="\((\mathcal Z_{p-1})_x\)">\((\mathcal Z_{p-1})_x\)</span> is flat. In the Tor sequence of (16), the neighboring terms
+<span class="math" data-tex="\(\operatorname{Tor}_2^A((\mathcal Z_{p-1})_x,M)\)">\(\operatorname{Tor}_2^A((\mathcal Z_{p-1})_x,M)\)</span> and
+<span class="math" data-tex="\(\operatorname{Tor}_1^A((\mathcal C_p)_x,M)\)">\(\operatorname{Tor}_1^A((\mathcal C_p)_x,M)\)</span> vanish for every module <span class="math" data-tex="\(M\)">\(M\)</span>. Hence
+<span class="math" data-tex="\(\operatorname{Tor}_1^A((\mathcal Z_p)_x,M)=0\)">\(\operatorname{Tor}_1^A((\mathcal Z_p)_x,M)=0\)</span>, proving flatness. Induction proves it for every <span class="math" data-tex="\(p\)">\(p\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an arbitrary sheaf <span class="math" data-tex="\(F\)">\(F\)</span>, write
+<span class="math" data-tex="\(\mathcal C_p(F)=\mathcal C_p\otimes_A F\)">\(\mathcal C_p(F)=\mathcal C_p\otimes_A F\)</span> and
+<span class="math" data-tex="\(\mathcal Z_p(F)=\mathcal Z_p\otimes_A F\)">\(\mathcal Z_p(F)=\mathcal Z_p\otimes_A F\)</span>.
+Flatness of the quotient in (16) makes its tensor sequence exact:</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal Z_p(F)
+\longrightarrow\mathcal C_p(F)
+\longrightarrow\mathcal Z_{p-1}(F)
+\longrightarrow0.
+\qquad\text{(17)}
+\]">\[
+0\longrightarrow\mathcal Z_p(F)
+\longrightarrow\mathcal C_p(F)
+\longrightarrow\mathcal Z_{p-1}(F)
+\longrightarrow0.
+\qquad\text{(17)}
+\]</span>
+<p>In degree <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, that cycle sheaf embeds into <span class="math" data-tex="\(\mathcal C_{p-1}(F)\)">\(\mathcal C_{p-1}(F)\)</span>.
+Since the coefficient boundary factors through this embedding, (17) proves</p>
+<span class="math math-display" data-tex="\[
+\mathcal Z_p(F)=
+\ker\!\left(\mathcal C_p(F)\xrightarrow{\partial_p}
+\mathcal C_{p-1}(F)\right).
+\qquad\text{(18)}
+\]">\[
+\mathcal Z_p(F)=
+\ker\!\left(\mathcal C_p(F)\xrightarrow{\partial_p}
+\mathcal C_{p-1}(F)\right).
+\qquad\text{(18)}
+\]</span>
+<p>The case <span class="math" data-tex="\(p=0\)">\(p=0\)</span> follows from <span class="math" data-tex="\(\mathcal C_{-1}=0\)">\(\mathcal C_{-1}=0\)</span>.
+This is an actual underived kernel identity. It requires no flatness, local constancy or finite-rank hypothesis on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>The coefficient complex has no lower cohomology and has
+<span class="math" data-tex="\(H^{-n}(\mathcal C(F))=\operatorname{or}_X\otimes_A F\)">\(H^{-n}(\mathcal C(F))=\operatorname{or}_X\otimes_A F\)</span>.
+Tensoring the canonical orientation map gives its natural identification</p>
+<span class="math math-display" data-tex="\[
+\omega_X\otimes_A^L F
+\simeq \operatorname{or}_X\otimes_A F[n]
+\xrightarrow{\sim}\mathcal C(F).
+\qquad\text{(19)}
+\]">\[
+\omega_X\otimes_A^L F
+\simeq \operatorname{or}_X\otimes_A F[n]
+\xrightarrow{\sim}\mathcal C(F).
+\qquad\text{(19)}
+\]</span>
+<p>Here <span class="math" data-tex="\(\operatorname{or}_X\)">\(\operatorname{or}_X\)</span> is locally free of rank one, and the bounded complex <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> consists of flat sheaves. Thus both tensor models compute the derived tensor. One may also use bounded complexes <span class="math" data-tex="\(F^\bullet\)">\(F^\bullet\)</span>: totalize with degree <span class="math" data-tex="\(-p+q\)">\(-p+q\)</span>; bounded flatness and the finite filtration by coefficient degrees give the same derived comparison. No unbounded-complex assertion is needed.</p>
+<h2 id="what-global-sections-compute">What global sections compute</h2>
+<p>The cutoff argument in the first chain lesson proves that every
+<span class="math" data-tex="\(\mathcal C_p(F)\)">\(\mathcal C_p(F)\)</span> is soft and c-soft on these manifolds.
+The bounded complex is therefore an acyclic resolution for both ordinary and compactly supported global sections. Formula (19) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^{-p}\Gamma(X;\mathcal C(F))
+&amp;\simeq H^{n-p}(X;\operatorname{or}_X\otimes_A F),\\
+H^{-p}\Gamma_c(X;\mathcal C(F))
+&amp;\simeq H_c^{n-p}(X;\operatorname{or}_X\otimes_A F).
+\end{aligned}
+\qquad\text{(20)}
+\]">\[
+\begin{aligned}
+H^{-p}\Gamma(X;\mathcal C(F))
+&amp;\simeq H^{n-p}(X;\operatorname{or}_X\otimes_A F),\\
+H^{-p}\Gamma_c(X;\mathcal C(F))
+&amp;\simeq H_c^{n-p}(X;\operatorname{or}_X\otimes_A F).
+\end{aligned}
+\qquad\text{(20)}
+\]</span>
+<p>Softness concerns the terms of the resolution. It does not make every global cycle a global boundary. Nor does it make global sections preserve the surjection onto a cycle sheaf in (16). The circle in Exercise 6 detects this distinction.</p>
+<p>Compact support is a second distinction. On the oriented line, the point chain <span class="math" data-tex="\([0]\)">\([0]\)</span> is the boundary of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> in (10), whose support is not compact. A compactly supported one-chain cannot have boundary <span class="math" data-tex="\([0]\)">\([0]\)</span>: proper collapse to a point would send that boundary to <span class="math" data-tex="\(1\in A\)">\(1\in A\)</span>, whereas the image of a one-chain in the zero-dimensional target is zero. For a nonzero coefficient this contradicts boundary compatibility. Formula (20) records the surviving compact class in degree zero.</p>
+<p>Finally, support of the coefficient sheaf can change this calculation. For a sheaf concentrated at a point of a line, the resolution retains the ambient orientation shift <span class="math" data-tex="\([1]\)">\([1]\)</span>. Exercise 5 gives an explicit torsion calculation and a compact primitive. The relevant tensor in (19) uses ordinary restriction of the ambient dualizing complex to the coefficient support.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="a-proper-projection-through-a-cusp">A proper projection through a cusp</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Near the origin in coordinates <span class="math" data-tex="\((s,y)\)">\((s,y)\)</span>, let
+<span class="math" data-tex="\(S=\{s^2=y^3\}\)">\(S=\{s^2=y^3\}\)</span>. Identify a direction avoided by its point normal cone and prove the quantitative bound used in (7). Choose a product box in which <span class="math" data-tex="\(S\)">\(S\)</span> projects properly to the <span class="math" data-tex="\(y\)">\(y\)</span>-coordinate. Explain why the singular point and the changing number of fibres do not invalidate the proof.</p>
+<p><strong>Solution.</strong> The real equation forces <span class="math" data-tex="\(y\geq0\)">\(y\geq0\)</span>, and
+<span class="math" data-tex="\(s=\pm y^{3/2}\)">\(s=\pm y^{3/2}\)</span>. For a nonzero point approaching the origin,
+<span class="math" data-tex="\(|s|/y=\sqrt y\to0\)">\(|s|/y=\sqrt y\to0\)</span>; hence every nonzero limiting radial direction is the positive <span class="math" data-tex="\(y\)">\(y\)</span>-direction. Conversely <span class="math" data-tex="\(y_j&gt;0\)">\(y_j&gt;0\)</span> with <span class="math" data-tex="\(\lambda_j=1/y_j\)">\(\lambda_j=1/y_j\)</span> realizes that direction. Thus <span class="math" data-tex="\(C_0S\)">\(C_0S\)</span> is the nonnegative <span class="math" data-tex="\(y\)">\(y\)</span>-axis. Both vertical <span class="math" data-tex="\(s\)">\(s\)</span>-directions are avoided.</p>
+<p>For <span class="math" data-tex="\(0\leq y\leq\rho\)">\(0\leq y\leq\rho\)</span>,
+<span class="math" data-tex="\(|s|=y^{3/2}\leq\sqrt\rho\,y\)">\(|s|=y^{3/2}\leq\sqrt\rho\,y\)</span>, giving the required bound directly.
+Choose <span class="math" data-tex="\(\delta,\epsilon&gt;0\)">\(\delta,\epsilon&gt;0\)</span> so that the box lies in the chart and
+<span class="math" data-tex="\(\delta^{3/2}&lt;\epsilon/2\)">\(\delta^{3/2}&lt;\epsilon/2\)</span>.
+Its <span class="math" data-tex="\(S\)">\(S\)</span>-points all have <span class="math" data-tex="\(|s|&lt;\epsilon/2\)">\(|s|&lt;\epsilon/2\)</span>. The inverse image of any compact <span class="math" data-tex="\(K\subset(-\delta,\delta)\)">\(K\subset(-\delta,\delta)\)</span> is a closed subset of
+<span class="math" data-tex="\([-\epsilon/2,\epsilon/2]\times K\)">\([-\epsilon/2,\epsilon/2]\times K\)</span>; it is compact inside the box.
+There are two points in a positive <span class="math" data-tex="\(y\)">\(y\)</span>-fibre, one at zero, and none at negative <span class="math" data-tex="\(y\)">\(y\)</span>. Properness follows from compact inverse images despite this variation and the singularity. The tangent-coordinate change (9) then gives the full real factor. Avoidance is a sufficient criterion; we have not asserted its necessity for every proper projection.</p>
+<h3 id="a-signed-sweep-and-a-failure-of-properness">A signed sweep and a failure of properness</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>In <span class="math" data-tex="\(X=\mathbb R_s\times\mathbb R_y\)">\(X=\mathbb R_s\times\mathbb R_y\)</span>, orient the parabola
+<span class="math" data-tex="\(S=\{s=y^2\}\)">\(S=\{s=y^2\}\)</span> by increasing <span class="math" data-tex="\(y\)">\(y\)</span>, and call its cycle <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.
+Compute <span class="math" data-tex="\(B=\varphi_*(\beta\boxtimes\alpha)\)">\(B=\varphi_*(\beta\boxtimes\alpha)\)</span> with the factor order in (11), including its sign and boundary. Compute the inverse image of the rectangle in Figure 1. Then test the same addition construction on <span class="math" data-tex="\(S&#x27;=\mathbb R_s\times\{0\}\)">\(S&#x27;=\mathbb R_s\times\{0\}\)</span>.</p>
+<p><strong>Solution.</strong> The parabola projects properly to <span class="math" data-tex="\(y\)">\(y\)</span>: it is the graph of the continuous function <span class="math" data-tex="\(y^2\)">\(y^2\)</span>, so the inverse image of a compact set is compact. On the swept carrier, coordinates <span class="math" data-tex="\((t,y)\)">\((t,y)\)</span> map to
+<span class="math" data-tex="\((r,y)=(t+y^2,y)\)">\((r,y)=(t+y^2,y)\)</span>. The Jacobian from the ordered coordinates <span class="math" data-tex="\((t,y)\)">\((t,y)\)</span> to <span class="math" data-tex="\((r,y)\)">\((r,y)\)</span> has determinant <span class="math" data-tex="\(1\)">\(1\)</span>. Since <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is minus the increasing-<span class="math" data-tex="\(t\)">\(t\)</span> ray,
+<span class="math math-display" data-tex="\[
+ B=-[r&gt;y^2]\quad\text{with orientation }dr\wedge dy,\qquad
+ \operatorname{supp}(B)=\{r\geq y^2\},\qquad
+ \partial B=\alpha.
+ \qquad\text{(21)}
+\]">\[
+ B=-[r&gt;y^2]\quad\text{with orientation }dr\wedge dy,\qquad
+ \operatorname{supp}(B)=\{r\geq y^2\},\qquad
+ \partial B=\alpha.
+ \qquad\text{(21)}
+\]</span>
+The boundary sign also follows directly from (12): the initial face of the positive ray has sign minus, which is cancelled by the minus in <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. There is no extra sign from moving a factor because no factor was moved.</p>
+<p>For <span class="math" data-tex="\(K=\{|y|\leq1,\ 0\leq r\leq1\}\)">\(K=\{|y|\leq1,\ 0\leq r\leq1\}\)</span>, <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span> and <span class="math" data-tex="\(r=t+y^2\)">\(r=t+y^2\)</span> give
+<span class="math math-display" data-tex="\[
+ \varphi^{-1}K\cap([0,\infty)\times S)
+       =\{(t,y):|y|\leq1,\ 0\leq t\leq1-y^2\}.
+ \qquad\text{(22)}
+\]">\[
+ \varphi^{-1}K\cap([0,\infty)\times S)
+       =\{(t,y):|y|\leq1,\ 0\leq t\leq1-y^2\}.
+ \qquad\text{(22)}
+\]</span>
+This is the exact closed bounded region in the right panel.
+More generally compact target bounds give bounds on <span class="math" data-tex="\(y\)">\(y\)</span>, then on <span class="math" data-tex="\(y^2\)">\(y^2\)</span>, then on <span class="math" data-tex="\(t\)">\(t\)</span>, proving properness for every compact target.</p>
+<p>For <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>, the projection to <span class="math" data-tex="\(y\)">\(y\)</span> is not proper. The inverse image of the target point <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> under the half-ray sweep is
+<span class="math" data-tex="\(\{(t,(s,0)):t\geq0,\ s=-t\}\)">\(\{(t,(s,0)):t\geq0,\ s=-t\}\)</span>, which is noncompact. Thus this chosen sweep cannot be pushed forward as a properly supported chain. The one-cycle on <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> is still locally a boundary in the plane; one must choose a transverse sweep direction satisfying the properness condition.</p>
+<h3 id="local-exactness-does-not-provide-a-compact-primitive">Local exactness does not provide a compact primitive</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, check the signs of
+<span class="math" data-tex="\(-[(0,\infty)]\)">\(-[(0,\infty)]\)</span> and <span class="math" data-tex="\(-[(0,1)]\)">\(-[(0,1)]\)</span>. Compare the germ at <span class="math" data-tex="\(0\)">\(0\)</span>, the global boundary and compactly supported chain homology.</p>
+<p><strong>Solution.</strong> With increasing-coordinate orientations,
+<span class="math" data-tex="\(\partial[(0,\infty)]=-[0]\)">\(\partial[(0,\infty)]=-[0]\)</span> and
+<span class="math" data-tex="\(\partial[(0,1)]=[1]-[0]\)">\(\partial[(0,1)]=[1]-[0]\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ \partial(-[(0,\infty)])=[0],\qquad
+ \partial(-[(0,1)])=[0]-[1].
+ \qquad\text{(23)}
+\]">\[
+ \partial(-[(0,\infty)])=[0],\qquad
+ \partial(-[(0,1)])=[0]-[1].
+ \qquad\text{(23)}
+\]</span>
+The two primitives have the same boundary germ near <span class="math" data-tex="\(0\)">\(0\)</span>, because a sufficiently small neighborhood excludes <span class="math" data-tex="\(1\)">\(1\)</span>. Globally the finite segment has an additional endpoint. This proves local exactness in degree zero while illustrating why it says nothing about a compact global primitive for a single point.</p>
+<p>For a nonzero coefficient <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, suppose a compact one-chain had boundary <span class="math" data-tex="\(a[0]\)">\(a[0]\)</span>. Collapse its compact carrier properly to a point. Its one-chain image is zero by target dimension, while the zero-chain image of <span class="math" data-tex="\(a[0]\)">\(a[0]\)</span> is <span class="math" data-tex="\(a\)">\(a\)</span>. Boundary commutation would give <span class="math" data-tex="\(0=a\)">\(0=a\)</span>, a contradiction. Thus <span class="math" data-tex="\(H^0\Gamma_c(\mathbb R;\mathcal C)=A\)">\(H^0\Gamma_c(\mathbb R;\mathcal C)=A\)</span>; ordinary chain homology in degree zero is zero. These also follow from
+<span class="math" data-tex="\(\omega_{\mathbb R}=A[1]\)">\(\omega_{\mathbb R}=A[1]\)</span>, <span class="math" data-tex="\(H^1(\mathbb R;A)=0\)">\(H^1(\mathbb R;A)=0\)</span>, and
+<span class="math" data-tex="\(H_c^1(\mathbb R;A)=A\)">\(H_c^1(\mathbb R;A)=A\)</span>.</p>
+<h3 id="the-degree-that-cannot-be-contracted">The degree that cannot be contracted</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>On an oriented <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, locate the orientation germ in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> and explain why the half-ray proof excludes it. Include <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<p><strong>Solution.</strong> The orientation germ is a nonzero element of
+<span class="math" data-tex="\(\mathcal Z_n=H^{-n}(\mathcal C)\)">\(\mathcal Z_n=H^{-n}(\mathcal C)\)</span>. It cannot be a boundary because
+<span class="math" data-tex="\(\mathcal C_{n+1}=0\)">\(\mathcal C_{n+1}=0\)</span>. Its local carrier can be the whole neighborhood, whose point normal cone is <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>; there is no vector with both signs outside that cone. The dimension inequality (6) required <span class="math" data-tex="\(p&lt;n\)">\(p&lt;n\)</span>, and fails here.</p>
+<p>Hence the surviving germ is exactly the orientation line in degree <span class="math" data-tex="\(-n\)">\(-n\)</span>, in agreement with <span class="math" data-tex="\(\operatorname{or}[n]\)">\(\operatorname{or}[n]\)</span>. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the local complex has only <span class="math" data-tex="\(\mathcal C_0=A\)">\(\mathcal C_0=A\)</span>, with zero differential, and the surviving orientation is in degree zero. The theorem never requires a lower-degree contraction in that case.</p>
+<h3 id="torsion-coefficients-concentrated-at-a-point">Torsion coefficients concentrated at a point</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Take <span class="math" data-tex="\(A=\mathbb Z\)">\(A=\mathbb Z\)</span>, <span class="math" data-tex="\(M=\mathbb Z/5\)">\(M=\mathbb Z/5\)</span>, and the oriented line. Compare the resolution with constant coefficient sheaf <span class="math" data-tex="\(M_{\mathbb R}\)">\(M_{\mathbb R}\)</span> to the resolution with <span class="math" data-tex="\(F=i_*M\)">\(F=i_*M\)</span>, where <span class="math" data-tex="\(i:\{0\}\hookrightarrow\mathbb R\)">\(i:\{0\}\hookrightarrow\mathbb R\)</span>. Compute the latter differential explicitly, its compact homology, and a compact primitive for its degree-zero point coefficient.</p>
+<p><strong>Solution.</strong> Near <span class="math" data-tex="\(0\)">\(0\)</span>, a one-chain germ has two independent oriented coefficients: <span class="math" data-tex="\(a\)">\(a\)</span> on the left interval and <span class="math" data-tex="\(b\)">\(b\)</span> on the right interval, both intervals oriented by increasing coordinate. The boundary is <span class="math" data-tex="\(a-b\)">\(a-b\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span>. Tensoring these stalks with <span class="math" data-tex="\(M\)">\(M\)</span> gives, for the point-supported coefficient sheaf,
+<span class="math math-display" data-tex="\[
+ \mathcal C_1(i_*M)=i_*(M^2),\qquad
+ \mathcal C_0(i_*M)=i_*M,\qquad
+ \partial(a,b)=a-b.
+ \qquad\text{(24)}
+\]">\[
+ \mathcal C_1(i_*M)=i_*(M^2),\qquad
+ \mathcal C_0(i_*M)=i_*M,\qquad
+ \partial(a,b)=a-b.
+ \qquad\text{(24)}
+\]</span>
+Outside <span class="math" data-tex="\(0\)">\(0\)</span> every coefficient stalk vanishes. The kernel is the diagonal copy of <span class="math" data-tex="\(M\)">\(M\)</span>; the differential is surjective. Thus ordinary and compactly supported cohomology of this two-term complex are <span class="math" data-tex="\(M\)">\(M\)</span> in degree <span class="math" data-tex="\(-1\)">\(-1\)</span> and zero in degree zero. All its sections have compact point support. For any <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span>, the section <span class="math" data-tex="\((m,0)\)">\((m,0)\)</span> is a compact primitive of the zero-chain coefficient <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>The kernel identity uses flatness of <span class="math" data-tex="\(\mathcal Z_1\)">\(\mathcal Z_1\)</span>, not flatness of <span class="math" data-tex="\(M\)">\(M\)</span>; <span class="math" data-tex="\(M\)">\(M\)</span> is not flat over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Formula (19) gives exactly
+<span class="math" data-tex="\(\omega_{\mathbb R}\otimes i_*M=i_*M[1]\)">\(\omega_{\mathbb R}\otimes i_*M=i_*M[1]\)</span>. Its shift comes from
+<span class="math" data-tex="\(i^{-1}\omega_{\mathbb R}=\mathbb Z[1]\)">\(i^{-1}\omega_{\mathbb R}=\mathbb Z[1]\)</span>. By contrast
+<span class="math" data-tex="\(i^!\omega_{\mathbb R}=\omega_{\{0\}}=\mathbb Z\)">\(i^!\omega_{\mathbb R}=\omega_{\{0\}}=\mathbb Z\)</span>, which is a different operation.</p>
+<p>For constant <span class="math" data-tex="\(M_{\mathbb R}\)">\(M_{\mathbb R}\)</span>, formula (20) gives compact cohomology <span class="math" data-tex="\(M\)">\(M\)</span> in degree zero and zero in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. A nonzero point mass then has no compact primitive, by Exercise 3 with coefficient <span class="math" data-tex="\(m\)">\(m\)</span>. The point-supported coefficient sheaf permits a one-chain section whose support is just the point; the pure one-dimensional support assertion for finite locally free coefficient sheaves does not apply to it. This explains why the two calculations differ.</p>
+<h3 id="global-cycles-on-a-circle">Global cycles on a circle</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Orient a circle and take constant coefficients <span class="math" data-tex="\(A\)">\(A\)</span>. Compute
+<span class="math" data-tex="\(H^{-1}\Gamma(\mathcal C)\)">\(H^{-1}\Gamma(\mathcal C)\)</span> and <span class="math" data-tex="\(H^0\Gamma(\mathcal C)\)">\(H^0\Gamma(\mathcal C)\)</span>.
+Explain why these do not contradict local exactness or softness, and detect a global zero-chain obstruction.</p>
+<p><strong>Solution.</strong> The orientation identifies <span class="math" data-tex="\(\omega_{S^1}=A[1]\)">\(\omega_{S^1}=A[1]\)</span>.
+The constant-sheaf cohomology of the circle is <span class="math" data-tex="\(A\)">\(A\)</span> in degrees zero and one. For example the cellular calculation with one vertex and one oriented edge has differential zero: the two incidences of the same vertex have opposite signs. Equivalently a two-arc cover gives the same kernel and cokernel. Formula (20) yields
+<span class="math math-display" data-tex="\[
+ H^{-1}\Gamma(S^1;\mathcal C)=A,\qquad
+ H^0\Gamma(S^1;\mathcal C)=A.
+ \qquad\text{(25)}
+\]">\[
+ H^{-1}\Gamma(S^1;\mathcal C)=A,\qquad
+ H^0\Gamma(S^1;\mathcal C)=A.
+ \qquad\text{(25)}
+\]</span>
+Compact support gives the same groups because the circle is compact.</p>
+<p>The first group contains the global oriented circle. The second is detected by total zero-chain weight: every one-chain boundary has total weight zero, because proper collapse to a point commutes with boundary and kills degree one. A point with coefficient <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span> therefore survives. Oriented arcs show that all point positions represent the same class, and the displayed calculation shows that total weight identifies the group with <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Locally every zero-cycle has a primitive as in (14). A choice of local primitives need not glue to a global one. Although <span class="math" data-tex="\(\mathcal C_1\)">\(\mathcal C_1\)</span> and <span class="math" data-tex="\(\mathcal C_0\)">\(\mathcal C_0\)</span> are soft, the surjection
+<span class="math" data-tex="\(\mathcal C_1\to\mathcal Z_0\)">\(\mathcal C_1\to\mathcal Z_0\)</span> need not be surjective after global sections. The soft complex computes the nonzero global cohomology of the dualizing complex, exactly as its resolution should.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/the-dualizing-resolution-by-subanalytic-chains.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,652 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cartan matrices, Dynkin diagrams and the classification of root systems · Open Mathematics Courses</title><link rel="stylesheet" href="../../assets/site.css"><style>main{max-width:76rem;margin:auto;padding:1.5rem}.lesson{max-width:66rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}img{max-width:100%;height:auto}table{display:block;overflow-x:auto}td,th{padding:.4rem} .math-display{display:block;overflow-x:auto}details{margin:1rem 0}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a href="#main" class="skip-link">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav><a href="index.html">Semisimple Lie algebras</a> · <a href="proof-crosswalk.html">Proof index</a> · <a href="sources.html">Sources and terms</a></nav></div></header><main id="main"><nav class="lesson-nav"><a href="index.html">Course contents</a><a href="src/RT-LIE-09.md" download>Editable source</a><a href="RT-LIE-08.html">← Previous lesson</a><a href="RT-LIE-10.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#proposition-1-1">Proposition 1.1 (components).</a></li><li><a href="#lemma-2-1">Lemma 2.1 (forbidden configurations).</a></li><li><a href="#proposition-5-1">Proposition 5.1 (highest roots).</a></li><li><a href="#lemma-5-2">Lemma 5.2 (vector stabilizers).</a></li></ul></details><article class="lesson"><h1 id="cartan-matrices-dynkin-diagrams-and-the-classification-of-root-systems">Cartan matrices, Dynkin diagrams and the classification of root systems</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Dynkin diagram records the angles and relative lengths of simple roots. Positive definiteness severely restricts its shape. We will first find every possible shape, then construct its roots, and finally compute its Weyl group order and Coxeter number. The exceptional systems will be concrete finite sets of vectors throughout.</p>
+<p>We use the definitions and proved results of <a href="RT-LIE-08.html">Root systems and their Weyl groups</a>: a root system is finite, reduced and crystallographic in a real Euclidean space; simple roots form a basis; every root is conjugate to a simple root; and the Weyl group acts simply transitively on chambers. Products act from right to left. All numbering below is the Bourbaki numbering specified by the displayed bases.</p>
+<h2 id="section-1"><span id="1-recovering-roots-from-a-diagram"></span>1. Recovering roots from a diagram</h2>
+<p>For an ordered base <span class="math" data-tex="\(\Delta=(\alpha_1,\ldots,\alpha_r)\)">\(\Delta=(\alpha_1,\ldots,\alpha_r)\)</span>, define
+<span class="math math-display" data-tex="\[
+a_{ij}=\langle\alpha_i,\alpha_j^\vee\rangle
+=\frac{2(\alpha_i,\alpha_j)}{(\alpha_j,\alpha_j)},\qquad A=(a_{ij}).
+\tag{1.1}
+\]">\[
+a_{ij}=\langle\alpha_i,\alpha_j^\vee\rangle
+=\frac{2(\alpha_i,\alpha_j)}{(\alpha_j,\alpha_j)},\qquad A=(a_{ij}).
+\tag{1.1}
+\]</span>
+The denominator belongs to the <strong>column</strong> root. Thus
+<span class="math math-display" data-tex="\[
+s_i(\alpha_j)=\alpha_j-a_{ji}\alpha_i.
+\tag{1.2}
+\]">\[
+s_i(\alpha_j)=\alpha_j-a_{ji}\alpha_i.
+\tag{1.2}
+\]</span>
+Some books transpose (1.1); their reflection and bracket formulas must then be transposed too.</p>
+<p>The diagonal entries are <span class="math" data-tex="\(2\)">\(2\)</span>. Off the diagonal, <span class="math" data-tex="\(a_{ij}\leq0\)">\(a_{ij}\leq0\)</span>, and
+<span class="math math-display" data-tex="\[
+k_{ij}=a_{ij}a_{ji}\in\{0,1,2,3\}.
+\tag{1.3}
+\]">\[
+k_{ij}=a_{ij}a_{ji}\in\{0,1,2,3\}.
+\tag{1.3}
+\]</span>
+Zero occurs in both positions together. A <strong>Dynkin diagram</strong> has one vertex per simple root and <span class="math" data-tex="\(k_{ij}\)">\(k_{ij}\)</span> lines between vertices <span class="math" data-tex="\(i,j\)">\(i,j\)</span>. A multiple edge has an arrow toward the shorter root. For a single edge the entries are <span class="math" data-tex="\((-1,-1)\)">\((-1,-1)\)</span>. For a double or triple edge, with the long root first, they are <span class="math" data-tex="\((-2,-1)\)">\((-2,-1)\)</span> or <span class="math" data-tex="\((-3,-1)\)">\((-3,-1)\)</span>. Here each pair means <span class="math" data-tex="\((a_{ij},a_{ji})\)">\((a_{ij},a_{ji})\)</span>. These rules recover the full matrix from the numbered diagram.</p>
+<p>We also use its <strong>underlying weighted graph</strong>, with one edge of weight <span class="math" data-tex="\(k_{ij}\)">\(k_{ij}\)</span> for each adjacent pair. The corresponding Coxeter exponents are <span class="math" data-tex="\(m_{ij}=2,3,4,6\)">\(m_{ij}=2,3,4,6\)</span> for <span class="math" data-tex="\(k_{ij}=0,1,2,3\)">\(k_{ij}=0,1,2,3\)</span>. Its Coxeter graph omits nonedges and normally leaves the exponent <span class="math" data-tex="\(3\)">\(3\)</span> unlabeled.</p>
+<p><strong>Theorem 1 (reconstruction).</strong> Root systems with equal Cartan matrices for suitably ordered bases are isomorphic. The Dynkin diagram determines the root system up to isomorphism.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(T\)">\(T\)</span> be the linear map taking one simple basis to the other. Formula (1.2) gives <span class="math" data-tex="\(Ts_i=s'_iT\)">\(Ts_i=s'_iT\)</span>. Every root is a simple-root orbit, so
+<span class="math math-display" data-tex="\[
+T(\Phi)=T(W\Delta)=W'\Delta'=\Phi'.
+\]">\[
+T(\Phi)=T(W\Delta)=W'\Delta'=\Phi'.
+\]</span>
+We must also check the Cartan integers, as required by our definition of isomorphism. Along an edge,
+<span class="math math-display" data-tex="\[
+\frac{(\alpha_i,\alpha_i)}{(\alpha_j,\alpha_j)}=\frac{a_{ij}}{a_{ji}}.
+\]">\[
+\frac{(\alpha_i,\alpha_i)}{(\alpha_j,\alpha_j)}=\frac{a_{ij}}{a_{ji}}.
+\]</span>
+Consequently the two Gram matrices differ by a positive scalar on each connected component. Cross-component entries vanish. The restriction of <span class="math" data-tex="\(T\)">\(T\)</span> to each component is therefore a similarity and preserves every Cartan integer there; cross-component integers are zero. The diagram rules already recover <span class="math" data-tex="\(A\)">\(A\)</span>, proving the second assertion. Changing the base changes <span class="math" data-tex="\(A\)">\(A\)</span> only by a simultaneous permutation, since bases are Weyl-conjugate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="proposition-1-1"><strong>Proposition 1.1 (components).</strong> A diagram is connected exactly when its root system is irreducible. Its connected components give a unique orthogonal decomposition into irreducible root systems.</p>
+<p><strong>Proof.</strong> Partition the simple roots by graph components. Their spans are mutually orthogonal. Reflections belonging to one span fix the others, and every root is an orbit of a simple root, so every root belongs to one of these spans. The roots in each span satisfy the axioms and have its simple roots as a base. Conversely, an orthogonal decomposition partitions the simple roots and leaves no edge across the partition. A component cannot split further, and any decomposition must partition the same vertices into unions of components. This proves uniqueness. It also gives <span class="math" data-tex="\(W=\prod W_i\)">\(W=\prod W_i\)</span>, because the factors act on separate spans. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="section-2"><span id="2-positive-definiteness-classifies-the-shapes"></span>2. Positive definiteness classifies the shapes</h2>
+<p>Put <span class="math" data-tex="\(u_i=\alpha_i/\|\alpha_i\|\)">\(u_i=\alpha_i/\|\alpha_i\|\)</span>. Twice their Gram matrix is
+<span class="math math-display" data-tex="\[
+H_{ii}=2,\qquad H_{ij}=-\sqrt{k_{ij}}\quad(i\ne j).
+\tag{2.1}
+\]">\[
+H_{ii}=2,\qquad H_{ij}=-\sqrt{k_{ij}}\quad(i\ne j).
+\tag{2.1}
+\]</span>
+It is positive definite, as is every principal submatrix. In particular, every nonzero coefficient vector <span class="math" data-tex="\(z\)">\(z\)</span> satisfies <span class="math" data-tex="\(z^tHz&gt;0\)">\(z^tHz&gt;0\)</span>.</p>
+<p id="lemma-2-1"><strong>Lemma 2.1 (forbidden configurations).</strong> A connected diagram has no cycle; its weighted degree at each vertex is at most three; it has at most one branching vertex and at most one double edge. A branching vertex and a double edge cannot coexist. A triple edge is an entire connected component.</p>
+<p><strong>Proof.</strong> On a cycle with <span class="math" data-tex="\(m\)">\(m\)</span> vertices, assign coefficient <span class="math" data-tex="\(1\)">\(1\)</span> to each vertex and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere. There are at least <span class="math" data-tex="\(m\)">\(m\)</span> internal edges, each contributing at most <span class="math" data-tex="\(-2\)">\(-2\)</span>, whereas the diagonal contributes <span class="math" data-tex="\(2m\)">\(2m\)</span>. The resulting quadratic value is nonpositive. Thus the graph is a tree.</p>
+<p>The neighbors of a vertex are now pairwise orthogonal. The orthogonal projection of its unit vector onto their span has squared norm
+<span class="math math-display" data-tex="\[
+\sum_{j\sim i}(u_i,u_j)^2=\frac14\sum_{j\sim i}k_{ij}&lt;1.
+\tag{2.2}
+\]">\[
+\sum_{j\sim i}(u_i,u_j)^2=\frac14\sum_{j\sim i}k_{ij}&lt;1.
+\tag{2.2}
+\]</span>
+The inequality is strict because the simple vectors are independent. Hence the integer sum of edge weights is at most <span class="math" data-tex="\(3\)">\(3\)</span>. A triple edge leaves no room for another incident edge at either endpoint. A branching vertex has precisely three single edges.</p>
+<p>If two branching vertices existed, choose a shortest path between them. Give every vertex on that path coefficient <span class="math" data-tex="\(2\)">\(2\)</span>, and give two additional neighbors at each endpoint coefficient <span class="math" data-tex="\(1\)">\(1\)</span>. If the path has <span class="math" data-tex="\(m\)">\(m\)</span> vertices, the diagonal contributes <span class="math" data-tex="\(8m+8\)">\(8m+8\)</span>; its <span class="math" data-tex="\(m-1\)">\(m-1\)</span> edges contribute at most <span class="math" data-tex="\(-8(m-1)\)">\(-8(m-1)\)</span>; and the four extra edges contribute <span class="math" data-tex="\(-16\)">\(-16\)</span>. The value is at most zero. The four neighbors are distinct and have no other internal edges, because the graph is a tree.</p>
+<p>For two double edges, take a path whose first and last edges are double, with no other double edge between them. Give its outer endpoints coefficient <span class="math" data-tex="\(1\)">\(1\)</span> and every interior vertex coefficient <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>. Two adjacent double edges are already excluded by (2.2). With <span class="math" data-tex="\(m\geq3\)">\(m\geq3\)</span> path vertices, the diagonal is <span class="math" data-tex="\(4m-4\)">\(4m-4\)</span>; the two end edges contribute <span class="math" data-tex="\(-8\)">\(-8\)</span> in total and the <span class="math" data-tex="\(m-3\)">\(m-3\)</span> intervening edges contribute <span class="math" data-tex="\(-4(m-3)\)">\(-4(m-3)\)</span>. The value is zero.</p>
+<p>Finally suppose a branch and a double edge coexist. Follow the path from the branch through the first double edge to its far endpoint. Give coefficient <span class="math" data-tex="\(2\)">\(2\)</span> to its <span class="math" data-tex="\(m\)">\(m\)</span> vertices before that endpoint, <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> to the far endpoint, and <span class="math" data-tex="\(1\)">\(1\)</span> to each of two other neighbors of the branch. The diagonal is <span class="math" data-tex="\(8m+8\)">\(8m+8\)</span>. The single path edges, double edge and two branch edges contribute respectively <span class="math" data-tex="\(-8(m-1),-8,-8\)">\(-8(m-1),-8,-8\)</span>. Again the value is zero. Every contradiction is to positive definiteness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>It remains to decide the lengths of a single branch's arms and the position of a single double edge. Both decisions follow from one chain calculation. Let <span class="math" data-tex="\(H_l\)">\(H_l\)</span> have diagonal <span class="math" data-tex="\(2\)">\(2\)</span> and adjacent entries <span class="math" data-tex="\(-1\)">\(-1\)</span>. Then
+<span class="math math-display" data-tex="\[
+z^tH_lz=z_1^2+z_l^2+\sum_{i=1}^{l-1}(z_i-z_{i+1})^2&gt;0\quad(z\ne0),
+\qquad (H_l^{-1})_{11}=\frac{l}{l+1}.
+\tag{2.3}
+\]">\[
+z^tH_lz=z_1^2+z_l^2+\sum_{i=1}^{l-1}(z_i-z_{i+1})^2&gt;0\quad(z\ne0),
+\qquad (H_l^{-1})_{11}=\frac{l}{l+1}.
+\tag{2.3}
+\]</span>
+For <span class="math" data-tex="\(l=1\)">\(l=1\)</span> the two endpoint terms mean <span class="math" data-tex="\(2z_1^2\)">\(2z_1^2\)</span>. The inverse entry follows by solving <span class="math" data-tex="\(H_lz=e_1\)">\(H_lz=e_1\)</span>: <span class="math" data-tex="\(z_i=(l+1-i)/(l+1)\)">\(z_i=(l+1-i)/(l+1)\)</span>.</p>
+<p>For completeness, the block criterion used next is elementary. If <span class="math" data-tex="\(B\)">\(B\)</span> is positive definite, completing the square gives
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}x\\y\end{pmatrix}^{t}
+\begin{pmatrix}d&amp;b^t\\b&amp;B\end{pmatrix}
+\begin{pmatrix}x\\y\end{pmatrix}
+=(y+B^{-1}bx)^tB(y+B^{-1}bx)+(d-b^tB^{-1}b)x^2.
+\tag{2.4}
+\]">\[
+\begin{pmatrix}x\\y\end{pmatrix}^{t}
+\begin{pmatrix}d&amp;b^t\\b&amp;B\end{pmatrix}
+\begin{pmatrix}x\\y\end{pmatrix}
+=(y+B^{-1}bx)^tB(y+B^{-1}bx)+(d-b^tB^{-1}b)x^2.
+\tag{2.4}
+\]</span>
+Thus the full matrix is positive definite exactly when the final scalar is positive.</p>
+<p><strong>Theorem 2 (classification).</strong> The connected Dynkin diagrams are exactly
+<span class="math math-display" data-tex="\[
+A_n\ (n\geq1),\quad B_n\ (n\geq2),\quad C_n\ (n\geq3),\quad D_n\ (n\geq4),
+\quad E_6,E_7,E_8,F_4,G_2.
+\tag{2.5}
+\]">\[
+A_n\ (n\geq1),\quad B_n\ (n\geq2),\quad C_n\ (n\geq3),\quad D_n\ (n\geq4),
+\quad E_6,E_7,E_8,F_4,G_2.
+\tag{2.5}
+\]</span></p>
+<p><strong>Proof of necessity.</strong> A tree with no branch or multiple edge is a chain, giving <span class="math" data-tex="\(A_n\)">\(A_n\)</span>. A triple edge gives <span class="math" data-tex="\(G_2\)">\(G_2\)</span>. If there is a branch, Lemma 2.1 leaves three single-edged arms of edge lengths <span class="math" data-tex="\(1\leq p\leq q\leq r\)">\(1\leq p\leq q\leq r\)</span>. Eliminate the arms by (2.3)–(2.4). The central scalar is
+<span class="math math-display" data-tex="\[
+2-\frac{p}{p+1}-\frac{q}{q+1}-\frac{r}{r+1}&gt;0,
+\quad\text{or}\quad
+\frac1{p+1}+\frac1{q+1}+\frac1{r+1}&gt;1.
+\tag{2.6}
+\]">\[
+2-\frac{p}{p+1}-\frac{q}{q+1}-\frac{r}{r+1}&gt;0,
+\quad\text{or}\quad
+\frac1{p+1}+\frac1{q+1}+\frac1{r+1}&gt;1.
+\tag{2.6}
+\]</span>
+If <span class="math" data-tex="\(p\geq2\)">\(p\geq2\)</span>, the sum is at most <span class="math" data-tex="\(1\)">\(1\)</span>. Thus <span class="math" data-tex="\(p=1\)">\(p=1\)</span>. If <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, every <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span> works, giving <span class="math" data-tex="\(D_{r+3}\)">\(D_{r+3}\)</span>. If <span class="math" data-tex="\(q\geq3\)">\(q\geq3\)</span>, the sum is at most <span class="math" data-tex="\(1/2+1/4+1/4=1\)">\(1/2+1/4+1/4=1\)</span>. The remaining case <span class="math" data-tex="\(q=2\)">\(q=2\)</span> requires <span class="math" data-tex="\(r&lt;5\)">\(r&lt;5\)</span>, giving <span class="math" data-tex="\((p,q,r)=(1,2,2),(1,2,3),(1,2,4)\)">\((p,q,r)=(1,2,2),(1,2,3),(1,2,4)\)</span>, namely <span class="math" data-tex="\(E_6,E_7,E_8\)">\(E_6,E_7,E_8\)</span>.</p>
+<p>A double edge lies in a chain. Let <span class="math" data-tex="\(p,q\)">\(p,q\)</span> count the vertices in the two chains obtained by removing it. Eliminating one chain and then using the inverse endpoint entry of the other gives
+<span class="math math-display" data-tex="\[
+1-\frac{2pq}{(p+1)(q+1)}&gt;0,
+\quad\text{equivalently}\quad(p-1)(q-1)&lt;2.
+\tag{2.7}
+\]">\[
+1-\frac{2pq}{(p+1)(q+1)}&gt;0,
+\quad\text{equivalently}\quad(p-1)(q-1)&lt;2.
+\tag{2.7}
+\]</span>
+To see the criterion directly, the second block becomes <span class="math" data-tex="\(H_q-2p/(p+1)e_1e_1^t\)">\(H_q-2p/(p+1)e_1e_1^t\)</span>. After the substitution <span class="math" data-tex="\(y=H_q^{-1/2}v\)">\(y=H_q^{-1/2}v\)</span>, its quadratic form is positive exactly when <span class="math" data-tex="\(2p/(p+1)(H_q^{-1})_{11}&lt;1\)">\(2p/(p+1)(H_q^{-1})_{11}&lt;1\)</span>. The integral possibilities are <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, or <span class="math" data-tex="\(p=q=2\)">\(p=q=2\)</span>. A double edge at an end gives <span class="math" data-tex="\(B_n\)">\(B_n\)</span> when the singleton end is short, and <span class="math" data-tex="\(C_n\)">\(C_n\)</span> when it is long. At rank two the two descriptions become the same type after interchanging vertices. The central double edge in four vertices gives <span class="math" data-tex="\(F_4\)">\(F_4\)</span>; reversing the entire numbering interchanges the two choices of arrow. This exhausts the shapes. Existence will be proved in Sections 3–4. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><img alt="Numbered classical Dynkin diagrams, with arrows toward shorter roots" class="course-figure" data-asset-id="dynkin-classical" data-asset-sha256="006CE5F3C01C1382104AFC5F2442FFACB97A3AA96AA6E895E8256168804EDDF3" decoding="async" height="1440" loading="lazy" src="assets/RT-LIE-09/dynkin-classical-006CE5F3C01C1382104AFC5F2442FFACB97A3AA96AA6E895E8256168804EDDF3.png" style="max-width:100%;height:auto" width="1800"/></p>
+<p><em>Figure 2.1. The classical families with Bourbaki numbering. An ellipsis continues the single-edged chain; it is not a vertex. In <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, both fork ends meet vertex <span class="math" data-tex="\(n-2\)">\(n-2\)</span>. The arrow in <span class="math" data-tex="\(B_n\)">\(B_n\)</span> points to <span class="math" data-tex="\(n\)">\(n\)</span>; the arrow in <span class="math" data-tex="\(C_n\)">\(C_n\)</span> points to <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. Teal fill marks shorter roots in systems with two lengths. The bases in Section 3 specify the small ranks without ellipses.</em></p>
+<p><img alt="Numbered exceptional Dynkin diagrams" class="course-figure" data-asset-id="dynkin-exceptional" data-asset-sha256="1CF46907EAA1FD56544FCC76A5C7CFA079A8BC64C781925341339924C74A9400" decoding="async" height="1620" loading="lazy" src="assets/RT-LIE-09/dynkin-exceptional-1CF46907EAA1FD56544FCC76A5C7CFA079A8BC64C781925341339924C74A9400.png" style="max-width:100%;height:auto" width="1800"/></p>
+<p><em>Figure 2.2. In each <span class="math" data-tex="\(E\)">\(E\)</span> diagram, vertex <span class="math" data-tex="\(2\)">\(2\)</span> meets vertex <span class="math" data-tex="\(4\)">\(4\)</span>. In <span class="math" data-tex="\(F_4\)">\(F_4\)</span>, vertices <span class="math" data-tex="\(3,4\)">\(3,4\)</span> are short; in <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, vertex <span class="math" data-tex="\(1\)">\(1\)</span> is short. Sections 4.1–4.3 construct the precise vectors represented here. These are original schematic diagrams of the Cartan data, not projections of the roots in their ambient spaces.</em></p>
+<h2 id="section-3"><span id="3-classical-coordinate-systems"></span>3. Classical coordinate systems</h2>
+<p>The vectors <span class="math" data-tex="\(e_i\)">\(e_i\)</span> are orthonormal. Section 8 of <a href="RT-LIE-08.html">Root systems and their Weyl groups</a> already proves the axioms and bases for
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_n:&amp;\quad \{e_i-e_j:i\ne j\}\subset\{x\in\mathbb R^{n+1}:\sum x_i=0\},
+&amp;&amp;\alpha_i=e_i-e_{i+1}\quad(1\leq i\leq n);\\
+B_n:&amp;\quad \{\pm e_i,\ \pm e_i\pm e_j:i&lt;j\}\subset\mathbb R^n,
+&amp;&amp;\alpha_i=e_i-e_{i+1}\ (i&lt;n),\quad\alpha_n=e_n;\\
+C_n:&amp;\quad \{\pm2e_i,\ \pm e_i\pm e_j:i&lt;j\}\subset\mathbb R^n,
+&amp;&amp;\alpha_i=e_i-e_{i+1}\ (i&lt;n),\quad\alpha_n=2e_n.
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+A_n:&amp;\quad \{e_i-e_j:i\ne j\}\subset\{x\in\mathbb R^{n+1}:\sum x_i=0\},
+&amp;&amp;\alpha_i=e_i-e_{i+1}\quad(1\leq i\leq n);\\
+B_n:&amp;\quad \{\pm e_i,\ \pm e_i\pm e_j:i&lt;j\}\subset\mathbb R^n,
+&amp;&amp;\alpha_i=e_i-e_{i+1}\ (i&lt;n),\quad\alpha_n=e_n;\\
+C_n:&amp;\quad \{\pm2e_i,\ \pm e_i\pm e_j:i&lt;j\}\subset\mathbb R^n,
+&amp;&amp;\alpha_i=e_i-e_{i+1}\ (i&lt;n),\quad\alpha_n=2e_n.
+\end{aligned}
+\tag{3.1}
+\]</span>
+Their root counts are <span class="math" data-tex="\(n(n+1),2n^2,2n^2\)">\(n(n+1),2n^2,2n^2\)</span>. Their Weyl groups are respectively <span class="math" data-tex="\(S_{n+1}\)">\(S_{n+1}\)</span> and the signed permutation group in both of the other cases, of orders <span class="math" data-tex="\((n+1)!\)">\((n+1)!\)</span> and <span class="math" data-tex="\(2^n n!\)">\(2^n n!\)</span>. Taking the inner products in (3.1) gives Figure 2.1 and the arrow orientations there.</p>
+<p>For <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, put
+<span class="math math-display" data-tex="\[
+\Phi(D_n)=\{\pm e_i\pm e_j:i&lt;j\},\qquad
+\alpha_i=e_i-e_{i+1}\ (i&lt;n),\qquad \alpha_n=e_{n-1}+e_n.
+\tag{3.2}
+\]">\[
+\Phi(D_n)=\{\pm e_i\pm e_j:i&lt;j\},\qquad
+\alpha_i=e_i-e_{i+1}\ (i&lt;n),\qquad \alpha_n=e_{n-1}+e_n.
+\tag{3.2}
+\]</span>
+There are <span class="math" data-tex="\(4\binom n2=2n(n-1)\)">\(4\binom n2=2n(n-1)\)</span> roots. Reflection in a difference root swaps two coordinates; reflection in a sum root swaps and negates both. Thus reflections preserve the set. All squared norms are <span class="math" data-tex="\(2\)">\(2\)</span>, so Cartan integers are integral dot products. The set is reduced and spans for <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>. The displayed simple vectors are independent: the first <span class="math" data-tex="\(n-1\)">\(n-1\)</span> span the coordinate-sum-zero hyperplane, and <span class="math" data-tex="\(\alpha_n\)">\(\alpha_n\)</span> has coordinate sum <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p>Difference roots <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span>, <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, are <span class="math" data-tex="\(\sum_{k=i}^{j-1}\alpha_k\)">\(\sum_{k=i}^{j-1}\alpha_k\)</span>. For sum roots the expansions are
+<span class="math math-display" data-tex="\[
+e_i+e_j=
+\begin{cases}
+\displaystyle\sum_{k=i}^{j-1}\alpha_k+2\sum_{k=j}^{n-2}\alpha_k+\alpha_{n-1}+\alpha_n,&amp;i&lt;j&lt;n,\\[2pt]
+\displaystyle\sum_{k=i}^{n-2}\alpha_k+\alpha_n,&amp;i&lt;j=n.
+\end{cases}
+\tag{3.3}
+\]">\[
+e_i+e_j=
+\begin{cases}
+\displaystyle\sum_{k=i}^{j-1}\alpha_k+2\sum_{k=j}^{n-2}\alpha_k+\alpha_{n-1}+\alpha_n,&amp;i&lt;j&lt;n,\\[2pt]
+\displaystyle\sum_{k=i}^{n-2}\alpha_k+\alpha_n,&amp;i&lt;j=n.
+\end{cases}
+\tag{3.3}
+\]</span>
+Empty sums mean zero. Their negatives give all remaining roots, proving the base assertion. The inner products give the chain <span class="math" data-tex="\(1-\cdots-(n-2)\)">\(1-\cdots-(n-2)\)</span> with ends <span class="math" data-tex="\(n-1,n\)">\(n-1,n\)</span> both attached to <span class="math" data-tex="\(n-2\)">\(n-2\)</span>.</p>
+<p>Every reflection changes an even number of coordinate signs. Conversely, the difference reflections generate all permutations. The product of a sum reflection and the difference reflection on the same pair changes exactly those two signs. Such pair changes generate all even sign patterns. Hence
+<span class="math math-display" data-tex="\[
+W(D_n)=\{\text{signed permutations with an even number of sign changes}\},
+\qquad |W(D_n)|=2^{n-1}n!.
+\tag{3.4}
+\]">\[
+W(D_n)=\{\text{signed permutations with an even number of sign changes}\},
+\qquad |W(D_n)|=2^{n-1}n!.
+\tag{3.4}
+\]</span>
+The parity condition refers to sign changes, not to the determinant of the permutation matrix.</p>
+<p>The small-rank duplications can be seen directly. The <span class="math" data-tex="\(B_1,C_1\)">\(B_1,C_1\)</span> sets are scaled copies of <span class="math" data-tex="\(A_1\)">\(A_1\)</span>. The <span class="math" data-tex="\(B_2,C_2\)">\(B_2,C_2\)</span> Cartan matrices are related by exchanging vertices, so Theorem 1 identifies their root systems. In (3.2), <span class="math" data-tex="\(D_2\)">\(D_2\)</span> consists of two orthogonal pairs. The <span class="math" data-tex="\(D_3\)">\(D_3\)</span> simple graph is the chain <span class="math" data-tex="\(2-1-3\)">\(2-1-3\)</span>, so <span class="math" data-tex="\(D_3\cong A_3\)">\(D_3\cong A_3\)</span>. The ranges in (2.5) retain each irreducible type once.</p>
+<h2 id="section-4"><span id="4-exceptional-coordinate-systems"></span>4. Exceptional coordinate systems</h2>
+<h3 id="4-1-the-even-lattice-gives-e8-e7-and-e6">4.1. The even lattice gives E8, E7 and E6</h3>
+<p>Define
+<span class="math math-display" data-tex="\[
+D_8=\{d\in\mathbb Z^8:\sum d_i\text{ is even}\},\qquad
+h=\tfrac12(1,1,1,1,1,1,1,1),\qquad
+L=D_8\cup(D_8+h).
+\tag{4.1}
+\]">\[
+D_8=\{d\in\mathbb Z^8:\sum d_i\text{ is even}\},\qquad
+h=\tfrac12(1,1,1,1,1,1,1,1),\qquad
+L=D_8\cup(D_8+h).
+\tag{4.1}
+\]</span>
+This is an additive group because <span class="math" data-tex="\(2h\in D_8\)">\(2h\in D_8\)</span>. Its dot products are integral: this is clear on <span class="math" data-tex="\(D_8\)">\(D_8\)</span>; <span class="math" data-tex="\((h,d)=\sum d_i/2\)">\((h,d)=\sum d_i/2\)</span> is integral; and <span class="math" data-tex="\((h,h)=2\)">\((h,h)=2\)</span>. Its squared norms are even integers. Indeed, <span class="math" data-tex="\(\sum d_i^2\equiv\sum d_i\pmod2\)">\(\sum d_i^2\equiv\sum d_i\pmod2\)</span>, and
+<span class="math" data-tex="\(\|d+h\|^2=\sum d_i(d_i+1)+2\)">\(\|d+h\|^2=\sum d_i(d_i+1)+2\)</span>.</p>
+<p>Set <span class="math" data-tex="\(\Phi_8=\{x\in L: \|x\|^2=2\}\)">\(\Phi_8=\{x\in L: \|x\|^2=2\}\)</span>. The integral elements are exactly <span class="math" data-tex="\(\pm e_i\pm e_j\)">\(\pm e_i\pm e_j\)</span>, giving <span class="math" data-tex="\(112\)">\(112\)</span> roots. A half-integral element has all eight absolute coordinates at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Squared norm <span class="math" data-tex="\(2\)">\(2\)</span> therefore forces all of them to equal <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Membership in <span class="math" data-tex="\(h+D_8\)">\(h+D_8\)</span> says that the number of minus signs is even, giving <span class="math" data-tex="\(2^7=128\)">\(2^7=128\)</span> roots. Thus
+<span class="math math-display" data-tex="\[
+\Phi_8=\{\pm e_i\pm e_j:i&lt;j\}\ \cup\
+\{\tfrac12(\varepsilon_1,\ldots,\varepsilon_8):\varepsilon_i=\pm1,\ \prod\varepsilon_i=1\},
+\qquad |\Phi_8|=240.
+\tag{4.2}
+\]">\[
+\Phi_8=\{\pm e_i\pm e_j:i&lt;j\}\ \cup\
+\{\tfrac12(\varepsilon_1,\ldots,\varepsilon_8):\varepsilon_i=\pm1,\ \prod\varepsilon_i=1\},
+\qquad |\Phi_8|=240.
+\tag{4.2}
+\]</span>
+For <span class="math" data-tex="\(\alpha\in\Phi_8\)">\(\alpha\in\Phi_8\)</span>, reflection is <span class="math" data-tex="\(x\mapsto x-(x,\alpha)\alpha\)">\(x\mapsto x-(x,\alpha)\alpha\)</span>. It preserves <span class="math" data-tex="\(L\)">\(L\)</span> and the norm, hence permutes <span class="math" data-tex="\(\Phi_8\)">\(\Phi_8\)</span>. Cartan integers are integral dot products; reducedness follows from the common norm. The integral roots already span <span class="math" data-tex="\(\mathbb R^8\)">\(\mathbb R^8\)</span>. This proves all root-system axioms without using a lattice classification theorem.</p>
+<p>Consider the following vectors:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha_1&amp;=\tfrac12(e_1+e_8-e_2-e_3-e_4-e_5-e_6-e_7),&amp;\alpha_2&amp;=e_1+e_2,\\
+\alpha_3&amp;=e_2-e_1,&amp;\alpha_4&amp;=e_3-e_2,\\
+\alpha_5&amp;=e_4-e_3,&amp;\alpha_6&amp;=e_5-e_4,\\
+\alpha_7&amp;=e_6-e_5,&amp;\alpha_8&amp;=e_7-e_6.
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+\alpha_1&amp;=\tfrac12(e_1+e_8-e_2-e_3-e_4-e_5-e_6-e_7),&amp;\alpha_2&amp;=e_1+e_2,\\
+\alpha_3&amp;=e_2-e_1,&amp;\alpha_4&amp;=e_3-e_2,\\
+\alpha_5&amp;=e_4-e_3,&amp;\alpha_6&amp;=e_5-e_4,\\
+\alpha_7&amp;=e_6-e_5,&amp;\alpha_8&amp;=e_7-e_6.
+\end{aligned}
+\tag{4.3}
+\]</span>
+They belong to (4.2). Solving <span class="math" data-tex="\(x=\sum n_i\alpha_i\)">\(x=\sum n_i\alpha_i\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+n_1&amp;=2x_8,&amp; n_8&amp;=x_7+x_8,\\
+n_7&amp;=x_6+x_7+2x_8,&amp;n_6&amp;=x_5+x_6+x_7+3x_8,\\
+n_5&amp;=x_4+x_5+x_6+x_7+4x_8,&amp;n_4&amp;=x_3+x_4+x_5+x_6+x_7+5x_8,\\
+n_2&amp;=(x_1+x_2+n_4)/2,&amp;n_3&amp;=(-x_1+x_2+n_4+2x_8)/2.
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+n_1&amp;=2x_8,&amp; n_8&amp;=x_7+x_8,\\
+n_7&amp;=x_6+x_7+2x_8,&amp;n_6&amp;=x_5+x_6+x_7+3x_8,\\
+n_5&amp;=x_4+x_5+x_6+x_7+4x_8,&amp;n_4&amp;=x_3+x_4+x_5+x_6+x_7+5x_8,\\
+n_2&amp;=(x_1+x_2+n_4)/2,&amp;n_3&amp;=(-x_1+x_2+n_4+2x_8)/2.
+\end{aligned}
+\tag{4.4}
+\]</span>
+These formulas also prove independence. Every coefficient is integral on <span class="math" data-tex="\(L\)">\(L\)</span>: if <span class="math" data-tex="\(S=\sum x_i\)">\(S=\sum x_i\)</span>, then <span class="math" data-tex="\(S\)">\(S\)</span> is an even integer, and the numerators of <span class="math" data-tex="\(n_2,n_3\)">\(n_2,n_3\)</span> are <span class="math" data-tex="\(S+4x_8\)">\(S+4x_8\)</span> and <span class="math" data-tex="\(S-2x_1+6x_8\)">\(S-2x_1+6x_8\)</span>, respectively, both even. The other formulas have an even total number of half-coordinate contributions.</p>
+<p>To prove that (4.3) is a base, choose the sign of a root with <span class="math" data-tex="\(x_8\ne0\)">\(x_8\ne0\)</span> so that <span class="math" data-tex="\(x_8&gt;0\)">\(x_8&gt;0\)</span>. An integral root then has <span class="math" data-tex="\(x_8=1\)">\(x_8=1\)</span> and just one other nonzero coordinate, equal to <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>; (4.4) is nonnegative. A half root has <span class="math" data-tex="\(x_8=1/2\)">\(x_8=1/2\)</span>. The formulas for <span class="math" data-tex="\(n_1,n_3,\ldots,n_8\)">\(n_1,n_3,\ldots,n_8\)</span> have lower bounds zero; the lower bound for <span class="math" data-tex="\(n_2\)">\(n_2\)</span> is <span class="math" data-tex="\(-1/2\)">\(-1/2\)</span>, and its integrality improves this to zero. If <span class="math" data-tex="\(x_8=0\)">\(x_8=0\)</span>, the root is integral on the first seven coordinates. Choose its sign so that its greatest-index nonzero coordinate is positive. Every tail sum in (4.4) is then nonnegative; the formulas for <span class="math" data-tex="\(n_2,n_3\)">\(n_2,n_3\)</span> give <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>. Thus all root expansions have one sign. The inner products of (4.3) give exactly the <span class="math" data-tex="\(E_8\)">\(E_8\)</span> graph in Figure 2.2.</p>
+<p>Let <span class="math" data-tex="\(U_7\)">\(U_7\)</span> and <span class="math" data-tex="\(U_6\)">\(U_6\)</span> be the spans of the first seven and first six simple roots. Formula (4.4) gives
+<span class="math math-display" data-tex="\[
+U_7=\{x:x_7=-x_8\},\qquad
+U_6=\{x:x_6=x_7=-x_8\}.
+\tag{4.5}
+\]">\[
+U_7=\{x:x_7=-x_8\},\qquad
+U_6=\{x:x_6=x_7=-x_8\}.
+\tag{4.5}
+\]</span>
+The sets <span class="math" data-tex="\(\Phi_7=\Phi_8\cap U_7\)">\(\Phi_7=\Phi_8\cap U_7\)</span>, <span class="math" data-tex="\(\Phi_6=\Phi_8\cap U_6\)">\(\Phi_6=\Phi_8\cap U_6\)</span> inherit the axioms: their reflections preserve their subspaces, their simple roots span them, and integrality and reducedness persist. Their bases are the first seven or six roots of (4.3), since the coefficients outside the indicated span vanish. Their graphs are <span class="math" data-tex="\(E_7,E_6\)">\(E_7,E_6\)</span>.</p>
+<p>For <span class="math" data-tex="\(E_7\)">\(E_7\)</span>, the integral roots are the <span class="math" data-tex="\(60\)">\(60\)</span> roots of <span class="math" data-tex="\(D_6\)">\(D_6\)</span> on the first six coordinates and <span class="math" data-tex="\(\pm(e_7-e_8)\)">\(\pm(e_7-e_8)\)</span>. Half roots have opposite final signs; for either choice, the first six signs have odd minus parity, giving <span class="math" data-tex="\(32\)">\(32\)</span> choices. Thus <span class="math" data-tex="\(|\Phi_7|=60+2+64=126\)">\(|\Phi_7|=60+2+64=126\)</span>.</p>
+<p>For <span class="math" data-tex="\(E_6\)">\(E_6\)</span>, the integral roots are the <span class="math" data-tex="\(40\)">\(40\)</span> roots of <span class="math" data-tex="\(D_5\)">\(D_5\)</span> on the first five coordinates. The last three signs of a half root are <span class="math" data-tex="\((-,-,+)\)">\((-,-,+)\)</span> or <span class="math" data-tex="\((+,+,-)\)">\((+,+,-)\)</span>. The first five then have even or odd minus parity, respectively, giving <span class="math" data-tex="\(16\)">\(16\)</span> choices in either case. Thus <span class="math" data-tex="\(|\Phi_6|=40+32=72\)">\(|\Phi_6|=40+32=72\)</span>.</p>
+<h3 id="4-2-the-forty-eight-roots-of-f4">4.2. The forty-eight roots of F4</h3>
+<p>In <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>, define
+<span class="math math-display" data-tex="\[
+\Phi(F_4)=\{\pm e_i\pm e_j:i&lt;j\}\ \cup\ \{\pm e_i\}\ \cup\
+\{\tfrac12(\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4):\varepsilon_i=\pm1\}.
+\tag{4.6}
+\]">\[
+\Phi(F_4)=\{\pm e_i\pm e_j:i&lt;j\}\ \cup\ \{\pm e_i\}\ \cup\
+\{\tfrac12(\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4):\varepsilon_i=\pm1\}.
+\tag{4.6}
+\]</span>
+The three parts have <span class="math" data-tex="\(24,8,16\)">\(24,8,16\)</span> elements. The first has norm squared <span class="math" data-tex="\(2\)">\(2\)</span>; the other two have norm squared <span class="math" data-tex="\(1\)">\(1\)</span>. Spanning and reducedness are immediate.</p>
+<p>Signed permutations preserve the set. They include reflections in axial and diagonal roots. It remains to check a half root; all such reflections are signed conjugates of reflection in <span class="math" data-tex="\(v=(1,1,1,1)/2\)">\(v=(1,1,1,1)/2\)</span>, which is
+<span class="math math-display" data-tex="\[
+s_v(x)=x-\tfrac12\Bigl(\sum x_i\Bigr)(1,1,1,1).
+\tag{4.7}
+\]">\[
+s_v(x)=x-\tfrac12\Bigl(\sum x_i\Bigr)(1,1,1,1).
+\tag{4.7}
+\]</span>
+An axial root becomes a half root. A diagonal root with coordinate sum zero is fixed; one with sum <span class="math" data-tex="\(2\)">\(2\)</span> or <span class="math" data-tex="\(-2\)">\(-2\)</span> becomes a diagonal root on the complementary two coordinates. For a half root, count its minus signs. Counts <span class="math" data-tex="\(0,4\)">\(0,4\)</span> give its negative, counts <span class="math" data-tex="\(1,3\)">\(1,3\)</span> give an axial root, and count <span class="math" data-tex="\(2\)">\(2\)</span> gives a fixed root. Thus (4.7) preserves (4.6).</p>
+<p>Cartan integrality can be checked by the type of the coroot. Axial coroots are <span class="math" data-tex="\(\pm2e_i\)">\(\pm2e_i\)</span>, which pair integrally with every displayed root. Diagonal coroots are the same diagonal vectors; two half coordinates add or subtract to an integer. Half coroots are the four-sign vectors <span class="math" data-tex="\((\varepsilon_i)\)">\((\varepsilon_i)\)</span>; their pairing with a half root is one half of a sum of four signs and is integral. This proves all axioms.</p>
+<p>Take
+<span class="math math-display" data-tex="\[
+\alpha_1=e_2-e_3,\quad\alpha_2=e_3-e_4,\quad
+\alpha_3=e_4,\quad\alpha_4=\tfrac12(e_1-e_2-e_3-e_4).
+\tag{4.8}
+\]">\[
+\alpha_1=e_2-e_3,\quad\alpha_2=e_3-e_4,\quad
+\alpha_3=e_4,\quad\alpha_4=\tfrac12(e_1-e_2-e_3-e_4).
+\tag{4.8}
+\]</span>
+For <span class="math" data-tex="\(x=\sum n_i\alpha_i\)">\(x=\sum n_i\alpha_i\)</span>,
+<span class="math math-display" data-tex="\[
+n_4=2x_1,\quad n_1=x_2+x_1,\quad
+n_2=x_3+x_2+2x_1,\quad n_3=x_4+x_3+x_2+3x_1.
+\tag{4.9}
+\]">\[
+n_4=2x_1,\quad n_1=x_2+x_1,\quad
+n_2=x_3+x_2+2x_1,\quad n_3=x_4+x_3+x_2+3x_1.
+\tag{4.9}
+\]</span>
+These are integral for all roots and prove independence. If <span class="math" data-tex="\(x_1\ne0\)">\(x_1\ne0\)</span>, choose <span class="math" data-tex="\(x_1&gt;0\)">\(x_1&gt;0\)</span>. For an integral root, <span class="math" data-tex="\(x_1=1\)">\(x_1=1\)</span> and there is at most one other nonzero coordinate; for a half root, <span class="math" data-tex="\(x_1=1/2\)">\(x_1=1/2\)</span>. Both cases make every expression in (4.9) nonnegative. If <span class="math" data-tex="\(x_1=0\)">\(x_1=0\)</span>, choose the first nonzero coordinate among <span class="math" data-tex="\(x_2,x_3,x_4\)">\(x_2,x_3,x_4\)</span> positive; its successive partial sums are nonnegative. Hence (4.8) is a base. Its Cartan matrix is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}2&amp;-1&amp;0&amp;0\\-1&amp;2&amp;-2&amp;0\\0&amp;-1&amp;2&amp;-1\\0&amp;0&amp;-1&amp;2\end{pmatrix},
+\tag{4.10}
+\]">\[
+\begin{pmatrix}2&amp;-1&amp;0&amp;0\\-1&amp;2&amp;-2&amp;0\\0&amp;-1&amp;2&amp;-1\\0&amp;0&amp;-1&amp;2\end{pmatrix},
+\tag{4.10}
+\]</span>
+giving <span class="math" data-tex="\(F_4\)">\(F_4\)</span> with the arrow from vertex <span class="math" data-tex="\(2\)">\(2\)</span> to vertex <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<h3 id="4-3-g2-and-completion-of-existence">4.3. G2 and completion of existence</h3>
+<p>Use the already verified rank-two model of Section 6 of <a href="RT-LIE-08.html">Root systems and their Weyl groups</a>:
+<span class="math math-display" data-tex="\[
+\alpha_1=(1,0),\qquad \alpha_2=(-3/2,\sqrt3/2),
+\quad
+\Phi^+=\{\alpha_1,\alpha_2,\alpha_1+\alpha_2,2\alpha_1+\alpha_2,
+3\alpha_1+\alpha_2,3\alpha_1+2\alpha_2\}.
+\tag{4.11}
+\]">\[
+\alpha_1=(1,0),\qquad \alpha_2=(-3/2,\sqrt3/2),
+\quad
+\Phi^+=\{\alpha_1,\alpha_2,\alpha_1+\alpha_2,2\alpha_1+\alpha_2,
+3\alpha_1+\alpha_2,3\alpha_1+2\alpha_2\}.
+\tag{4.11}
+\]</span>
+Together with their negatives these are its <span class="math" data-tex="\(12\)">\(12\)</span> roots. The Cartan matrix is
+<span class="math" data-tex="\(\bigl(\begin{smallmatrix}2&amp;-1\\-3&amp;2\end{smallmatrix}\bigr)\)">\(\bigl(\begin{smallmatrix}2&amp;-1\\-3&amp;2\end{smallmatrix}\bigr)\)</span>, so the triple arrow points to vertex <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Theorem 3 (existence and root counts).</strong> Every diagram in Theorem 2 occurs. In its order of listing, the root counts are
+<span class="math math-display" data-tex="\[
+n(n+1),\quad2n^2,\quad2n^2,\quad2n(n-1),\quad72,126,240,48,12.
+\]">\[
+n(n+1),\quad2n^2,\quad2n^2,\quad2n(n-1),\quad72,126,240,48,12.
+\]</span></p>
+<p><strong>Proof.</strong> The constructions (3.1)–(4.11) verify the axioms, the simple bases, the indicated inner products and all counts. Each constructed graph is connected, so Proposition 1.1 makes the corresponding root system irreducible. This also finishes the sufficiency assertion of Theorem 2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="section-5"><span id="5-highest-roots-and-weyl-group-orders"></span>5. Highest roots and Weyl group orders</h2>
+<p>For roots expressed in our simple basis, write <span class="math" data-tex="\(\beta\leq\gamma\)">\(\beta\leq\gamma\)</span> if <span class="math" data-tex="\(\gamma-\beta\)">\(\gamma-\beta\)</span> has nonnegative integral coefficients. A <strong>highest root</strong> is a positive root dominating every positive root. The following explicit verification proves its existence and uniqueness in each irreducible system.</p>
+<p id="proposition-5-1"><strong>Proposition 5.1 (highest roots).</strong> The highest roots and their coefficient vectors are as follows. The vectors are in the numbered simple bases already specified.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Highest root <span class="math" data-tex="\(\theta\)">\(\theta\)</span></th>
+<th>Coefficients of <span class="math" data-tex="\(\theta\)">\(\theta\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(A_n\)">\(A_n\)</span></td>
+<td><span class="math" data-tex="\(e_1-e_{n+1}\)">\(e_1-e_{n+1}\)</span></td>
+<td><span class="math" data-tex="\((1,\ldots,1)\)">\((1,\ldots,1)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(B_n\)">\(B_n\)</span></td>
+<td><span class="math" data-tex="\(e_1+e_2\)">\(e_1+e_2\)</span></td>
+<td><span class="math" data-tex="\((1,2,\ldots,2)\)">\((1,2,\ldots,2)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(C_n\)">\(C_n\)</span></td>
+<td><span class="math" data-tex="\(2e_1\)">\(2e_1\)</span></td>
+<td><span class="math" data-tex="\((2,\ldots,2,1)\)">\((2,\ldots,2,1)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(D_n\)">\(D_n\)</span></td>
+<td><span class="math" data-tex="\(e_1+e_2\)">\(e_1+e_2\)</span></td>
+<td><span class="math" data-tex="\((1,2,\ldots,2,1,1)\)">\((1,2,\ldots,2,1,1)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(E_6\)">\(E_6\)</span></td>
+<td><span class="math" data-tex="\(\tfrac12(e_1+e_2+e_3+e_4+e_5-e_6-e_7+e_8)\)">\(\tfrac12(e_1+e_2+e_3+e_4+e_5-e_6-e_7+e_8)\)</span></td>
+<td><span class="math" data-tex="\((1,2,2,3,2,1)\)">\((1,2,2,3,2,1)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(E_7\)">\(E_7\)</span></td>
+<td><span class="math" data-tex="\(e_8-e_7\)">\(e_8-e_7\)</span></td>
+<td><span class="math" data-tex="\((2,2,3,4,3,2,1)\)">\((2,2,3,4,3,2,1)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(E_8\)">\(E_8\)</span></td>
+<td><span class="math" data-tex="\(e_7+e_8\)">\(e_7+e_8\)</span></td>
+<td><span class="math" data-tex="\((2,3,4,6,5,4,3,2)\)">\((2,3,4,6,5,4,3,2)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(F_4\)">\(F_4\)</span></td>
+<td><span class="math" data-tex="\(e_1+e_2\)">\(e_1+e_2\)</span></td>
+<td><span class="math" data-tex="\((2,3,4,2)\)">\((2,3,4,2)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(G_2\)">\(G_2\)</span></td>
+<td><span class="math" data-tex="\(3\alpha_1+2\alpha_2\)">\(3\alpha_1+2\alpha_2\)</span></td>
+<td><span class="math" data-tex="\((3,2)\)">\((3,2)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Proof.</strong> Each displayed vector belongs to its root set; substitution verifies its coefficients. It remains to bound all positive-root coefficients by the indicated ones.</p>
+<p>For <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, each positive root is a consecutive sum of simple roots. For <span class="math" data-tex="\(B_n\)">\(B_n\)</span>, the expansions of <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span>, and <span class="math" data-tex="\(e_i+e_j=(e_i-e_j)+2e_j\)">\(e_i+e_j=(e_i-e_j)+2e_j\)</span> bound the first coefficient by <span class="math" data-tex="\(1\)">\(1\)</span> and all others by <span class="math" data-tex="\(2\)">\(2\)</span>. For <span class="math" data-tex="\(C_n\)">\(C_n\)</span>, use
+<span class="math math-display" data-tex="\[
+2e_i=2\sum_{k=i}^{n-1}\alpha_k+\alpha_n,\qquad
+e_i+e_j=\sum_{k=i}^{j-1}\alpha_k+2\sum_{k=j}^{n-1}\alpha_k+\alpha_n.
+\tag{5.1}
+\]">\[
+2e_i=2\sum_{k=i}^{n-1}\alpha_k+\alpha_n,\qquad
+e_i+e_j=\sum_{k=i}^{j-1}\alpha_k+2\sum_{k=j}^{n-1}\alpha_k+\alpha_n.
+\tag{5.1}
+\]</span>
+Difference roots have only coefficients <span class="math" data-tex="\(0,1\)">\(0,1\)</span>. Formula (3.3) gives the stated <span class="math" data-tex="\(D_n\)">\(D_n\)</span> bounds, including <span class="math" data-tex="\(1\)">\(1\)</span> at the first and both fork vertices.</p>
+<p>For <span class="math" data-tex="\(E_8\)">\(E_8\)</span>, a positive integral root with <span class="math" data-tex="\(x_8=1\)">\(x_8=1\)</span> has one other coordinate <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. In (4.4), the maxima of <span class="math" data-tex="\(n_1,n_2,n_3,n_4,n_5,n_6,n_7,n_8\)">\(n_1,n_2,n_3,n_4,n_5,n_6,n_7,n_8\)</span> are at most <span class="math" data-tex="\(2,3,4,6,5,4,3,2\)">\(2,3,4,6,5,4,3,2\)</span>. If <span class="math" data-tex="\(x_8=0\)">\(x_8=0\)</span>, each tail sum is at most <span class="math" data-tex="\(2\)">\(2\)</span>, while <span class="math" data-tex="\(n_2,n_3\leq1\)">\(n_2,n_3\leq1\)</span>. For a positive half root, substitute <span class="math" data-tex="\(x_8=1/2\)">\(x_8=1/2\)</span> and bound each other coordinate by <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. This gives bounds <span class="math" data-tex="\((1,2,3,4,3,2,1,1)\)">\((1,2,3,4,3,2,1,1)\)</span>; for <span class="math" data-tex="\(n_2\)">\(n_2\)</span>, the initial upper bound <span class="math" data-tex="\(5/2\)">\(5/2\)</span> improves to <span class="math" data-tex="\(2\)">\(2\)</span> by integrality. All are below the displayed <span class="math" data-tex="\(E_8\)">\(E_8\)</span> vector.</p>
+<p>For <span class="math" data-tex="\(E_7\)">\(E_7\)</span>, impose <span class="math" data-tex="\(x_7=-x_8\)">\(x_7=-x_8\)</span> in (4.4). The positive integral root with nonzero <span class="math" data-tex="\(x_8\)">\(x_8\)</span> is <span class="math" data-tex="\(e_8-e_7\)">\(e_8-e_7\)</span> itself. Integral roots on the first six coordinates satisfy the smaller tail-sum bounds just used. For half roots the formulas reduce to
+<span class="math math-display" data-tex="\[
+n_7=x_6+x_8,\quad n_6=x_5+x_6+2x_8,\quad
+n_5=x_4+x_5+x_6+3x_8,\quad n_4=x_3+x_4+x_5+x_6+4x_8.
+\]">\[
+n_7=x_6+x_8,\quad n_6=x_5+x_6+2x_8,\quad
+n_5=x_4+x_5+x_6+3x_8,\quad n_4=x_3+x_4+x_5+x_6+4x_8.
+\]</span>
+With <span class="math" data-tex="\(x_8=1/2\)">\(x_8=1/2\)</span>, these are at most <span class="math" data-tex="\(1,2,3,4\)">\(1,2,3,4\)</span>. Also <span class="math" data-tex="\(n_1=1\)">\(n_1=1\)</span>, <span class="math" data-tex="\(n_2\leq\lfloor(1+4)/2\rfloor=2\)">\(n_2\leq\lfloor(1+4)/2\rfloor=2\)</span>, and <span class="math" data-tex="\(n_3\leq(1+4+1)/2=3\)">\(n_3\leq(1+4+1)/2=3\)</span>.</p>
+<p>For <span class="math" data-tex="\(E_6\)">\(E_6\)</span>, impose <span class="math" data-tex="\(x_6=x_7=-x_8\)">\(x_6=x_7=-x_8\)</span>. A half root now has <span class="math" data-tex="\(n_1=1\)">\(n_1=1\)</span>,
+<span class="math math-display" data-tex="\[
+n_6=x_5+x_8\leq1,\quad n_5=x_4+x_5+2x_8\leq2,\quad
+n_4=x_3+x_4+x_5+3x_8\leq3.
+\]">\[
+n_6=x_5+x_8\leq1,\quad n_5=x_4+x_5+2x_8\leq2,\quad
+n_4=x_3+x_4+x_5+3x_8\leq3.
+\]</span>
+Then <span class="math" data-tex="\(n_2\leq2\)">\(n_2\leq2\)</span> and <span class="math" data-tex="\(n_3\leq\lfloor(1+3+1)/2\rfloor=2\)">\(n_3\leq\lfloor(1+3+1)/2\rfloor=2\)</span>. The integral <span class="math" data-tex="\(D_5\)">\(D_5\)</span> roots have <span class="math" data-tex="\(n_1=0\)">\(n_1=0\)</span>, tail coefficients at most <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(n_6\leq1\)">\(n_6\leq1\)</span>, and <span class="math" data-tex="\(n_2,n_3\leq1\)">\(n_2,n_3\leq1\)</span>.</p>
+<p>In <span class="math" data-tex="\(F_4\)">\(F_4\)</span>, a positive root with <span class="math" data-tex="\(x_1=1\)">\(x_1=1\)</span> has at most one further coordinate <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. Formula (4.9) gives bounds <span class="math" data-tex="\((2,3,4,2)\)">\((2,3,4,2)\)</span>. With <span class="math" data-tex="\(x_1=1/2\)">\(x_1=1/2\)</span>, all remaining coordinates are <span class="math" data-tex="\(\pm1/2\)">\(\pm1/2\)</span>, giving the smaller bounds <span class="math" data-tex="\((1,2,3,1)\)">\((1,2,3,1)\)</span>. With <span class="math" data-tex="\(x_1=0\)">\(x_1=0\)</span>, partial sums have bound <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(n_4=0\)">\(n_4=0\)</span>. Finally the six entries in (4.11) give the <span class="math" data-tex="\(G_2\)">\(G_2\)</span> bounds. A dominating positive root is unique because two such roots dominate each other. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>To compute the remaining Weyl orders we need a stabilizer statement, including its proof.</p>
+<p id="lemma-5-2"><strong>Lemma 5.2 (vector stabilizers).</strong> For <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, the subgroup <span class="math" data-tex="\(W_x\)">\(W_x\)</span> is generated by the reflections <span class="math" data-tex="\(s_\alpha\)">\(s_\alpha\)</span> with <span class="math" data-tex="\((x,\alpha)=0\)">\((x,\alpha)=0\)</span>. Equivalently, it is the Weyl group of <span class="math" data-tex="\(\Phi\cap x^\perp\)">\(\Phi\cap x^\perp\)</span>, acting on the span of that subsystem and fixing its orthogonal complement.</p>
+<p><strong>Proof.</strong> Each listed reflection fixes <span class="math" data-tex="\(x\)">\(x\)</span>. For the reverse inclusion, choose a chamber <span class="math" data-tex="\(C\)">\(C\)</span> whose closure contains <span class="math" data-tex="\(x\)">\(x\)</span>, and let <span class="math" data-tex="\(w\in W_x\)">\(w\in W_x\)</span>. Take a sufficiently small ball about <span class="math" data-tex="\(x\)">\(x\)</span> meeting no root hyperplane that does not contain <span class="math" data-tex="\(x\)">\(x\)</span>; there are only finitely many such hyperplanes, all at positive distance from <span class="math" data-tex="\(x\)">\(x\)</span>. The ball meets the interiors of both <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(wC\)">\(wC\)</span>. Join generic points of these interiors by a path in the ball that crosses walls one at a time and avoids intersections of two distinct walls. For example, a small generic perturbation of a polygonal path has these properties: the forbidden choices lie in finitely many proper affine subspaces.</p>
+<p>Every crossed wall contains <span class="math" data-tex="\(x\)">\(x\)</span>. Reflection in that wall takes the current chamber to its adjacent chamber. Their product <span class="math" data-tex="\(v\)">\(v\)</span> therefore fixes <span class="math" data-tex="\(x\)">\(x\)</span> and takes <span class="math" data-tex="\(C\)">\(C\)</span> to <span class="math" data-tex="\(wC\)">\(wC\)</span>. Simple transitivity on chambers gives <span class="math" data-tex="\(v=w\)">\(v=w\)</span>. The intersection roots satisfy the axioms in their span, and these same reflections are precisely their Weyl generators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In an irreducible simply laced system, all roots lie in one Weyl orbit. Root descent takes each root to a simple root. Across a single edge, <span class="math" data-tex="\(s_i s_j\alpha_i=\alpha_j\)">\(s_i s_j\alpha_i=\alpha_j\)</span>. Connectivity then puts all simple roots, and hence all roots, in that orbit.</p>
+<p>For <span class="math" data-tex="\(E_8\)">\(E_8\)</span>, take the root <span class="math" data-tex="\(\eta=e_7+e_8\)">\(\eta=e_7+e_8\)</span>. Its orthogonal subsystem is exactly the <span class="math" data-tex="\(E_7\)">\(E_7\)</span> set in (4.5). For <span class="math" data-tex="\(E_7\)">\(E_7\)</span>, take <span class="math" data-tex="\(e_8-e_7\)">\(e_8-e_7\)</span>. Its orthogonal subsystem has <span class="math" data-tex="\(x_7=x_8=0\)">\(x_7=x_8=0\)</span>, and is exactly <span class="math" data-tex="\(D_6\)">\(D_6\)</span> on the first six coordinates. Orbit–stabilizer and (3.4) give
+<span class="math math-display" data-tex="\[
+|W(E_7)|=126\cdot2^5\cdot6!=2\,903\,040,
+\qquad |W(E_8)|=240\,|W(E_7)|=696\,729\,600.
+\tag{5.2}
+\]">\[
+|W(E_7)|=126\cdot2^5\cdot6!=2\,903\,040,
+\qquad |W(E_8)|=240\,|W(E_7)|=696\,729\,600.
+\tag{5.2}
+\]</span></p>
+<p>For <span class="math" data-tex="\(E_6\)">\(E_6\)</span>, use the root <span class="math" data-tex="\(e_1-e_2\)">\(e_1-e_2\)</span>. Orthogonality means <span class="math" data-tex="\(x_1=x_2\)">\(x_1=x_2\)</span>. Among the integral roots this leaves <span class="math" data-tex="\(\pm(e_1+e_2)\)">\(\pm(e_1+e_2)\)</span> and the <span class="math" data-tex="\(12\)">\(12\)</span> roots on coordinates <span class="math" data-tex="\(3,4,5\)">\(3,4,5\)</span>, hence <span class="math" data-tex="\(14\)">\(14\)</span>. Among the half roots, fix either last-three sign pattern from Section 4.1 and require the first two signs equal. There are two choices for those signs and four choices of the required parity on the next three, giving <span class="math" data-tex="\(8\)">\(8\)</span> per pattern and <span class="math" data-tex="\(16\)">\(16\)</span> in total. The subsystem has <span class="math" data-tex="\(30\)">\(30\)</span> roots. It has rank <span class="math" data-tex="\(5\)">\(5\)</span>, since it lies in a codimension-one subspace of <span class="math" data-tex="\(U_6\)">\(U_6\)</span> and contains the five independent roots
+<span class="math math-display" data-tex="\[
+e_1+e_2,\quad e_3-e_4,\quad e_4-e_5,\quad e_4+e_5,\quad\theta(E_6).
+\]">\[
+e_1+e_2,\quad e_3-e_4,\quad e_4-e_5,\quad e_4+e_5,\quad\theta(E_6).
+\]</span>
+The first four are independent on the first five coordinates; the last has nonzero eighth coordinate. The classification already proved shows that a simply laced irreducible rank-five system is <span class="math" data-tex="\(A_5\)">\(A_5\)</span> or <span class="math" data-tex="\(D_5\)">\(D_5\)</span>, with <span class="math" data-tex="\(30\)">\(30\)</span> or <span class="math" data-tex="\(40\)">\(40\)</span> roots. A reducible simply laced rank-five system has at most <span class="math" data-tex="\(26\)">\(26\)</span> roots: among partitions of five, the largest possibility is <span class="math" data-tex="\(D_4+A_1\)">\(D_4+A_1\)</span>, with <span class="math" data-tex="\(24+2\)">\(24+2\)</span>; the other possible <span class="math" data-tex="\(A,D\)">\(A,D\)</span> components give no larger total. Thus this subsystem is <span class="math" data-tex="\(A_5\)">\(A_5\)</span>, and
+<span class="math math-display" data-tex="\[
+|W(E_6)|=72\cdot6!=51\,840.
+\tag{5.3}
+\]">\[
+|W(E_6)|=72\cdot6!=51\,840.
+\tag{5.3}
+\]</span></p>
+<p>In <span class="math" data-tex="\(F_4\)">\(F_4\)</span>, the short roots form one orbit of size <span class="math" data-tex="\(24\)">\(24\)</span>. Signed permutations connect the axial roots and connect all the half roots; (4.7) connects an axial root to a half root. The subsystem orthogonal to <span class="math" data-tex="\(e_1\)">\(e_1\)</span> consists of the axial and diagonal roots on coordinates <span class="math" data-tex="\(2,3,4\)">\(2,3,4\)</span>, exactly <span class="math" data-tex="\(B_3\)">\(B_3\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+|W(F_4)|=24\cdot2^3\cdot3!=1152.
+\tag{5.4}
+\]">\[
+|W(F_4)|=24\cdot2^3\cdot3!=1152.
+\tag{5.4}
+\]</span>
+The rank-two computation in the preceding lesson gives <span class="math" data-tex="\(|W(G_2)|=12\)">\(|W(G_2)|=12\)</span>. Thus every Weyl group order below has been derived, including the exceptional orders.</p>
+<h2 id="section-6"><span id="6-coxeter-elements-and-coxeter-numbers"></span>6. Coxeter elements and Coxeter numbers</h2>
+<p>A <strong>Coxeter element</strong> is a product containing each simple reflection exactly once. All such products for a connected finite Dynkin diagram are conjugate.</p>
+<p>Here is a proof of this assertion. Orient each underlying edge from the generator appearing earlier to the one appearing later in the product. Two total orders giving the same orientation are connected by adjacent swaps of incomparable vertices: move the desired first minimal element to the beginning across incomparable predecessors, then proceed inductively. Incomparable vertices have no edge, so their generators commute. If a vertex is a source, its generator can be moved to the beginning and the product written <span class="math" data-tex="\(s_iU\)">\(s_iU\)</span>. Conjugation by <span class="math" data-tex="\(s_i\)">\(s_i\)</span> turns it into <span class="math" data-tex="\(Us_i\)">\(Us_i\)</span>, reversing all edges incident to <span class="math" data-tex="\(i\)">\(i\)</span>; sinks work in reverse.</p>
+<p>Any two orientations of a tree are connected by source or sink reversals. Induct after removing a leaf. A legal reversal at its neighbor in the smaller tree can be made legal in the full tree by first reversing the leaf if necessary; a leaf is always a source or a sink. Other reversals lift without adjustment. At the end reverse the leaf if its edge has the wrong orientation. The one-vertex case starts the induction. Lemma 2.1 says our graphs are trees, so the preceding conjugations connect all Coxeter products.</p>
+<p>The <strong>Coxeter number</strong> <span class="math" data-tex="\(h\)">\(h\)</span> is their common order. We now compute it, rather than assume a formula for it.</p>
+<p>For <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, <span class="math" data-tex="\(s_1\cdots s_n\)">\(s_1\cdots s_n\)</span> acts as the cycle <span class="math" data-tex="\(e_1\mapsto e_2\mapsto\cdots\mapsto e_{n+1}\mapsto e_1\)">\(e_1\mapsto e_2\mapsto\cdots\mapsto e_{n+1}\mapsto e_1\)</span>. Its order on the coordinate-sum-zero hyperplane is exactly <span class="math" data-tex="\(n+1\)">\(n+1\)</span>: if a power were the identity there, it would fix every difference <span class="math" data-tex="\(e_i-e_j\)">\(e_i-e_j\)</span>, forcing its coordinate permutation to be the identity. For <span class="math" data-tex="\(B_n,C_n\)">\(B_n,C_n\)</span>, the product acts by
+<span class="math math-display" data-tex="\[
+e_i\mapsto e_{i+1}\ (i&lt;n),\qquad e_n\mapsto-e_1.
+\tag{6.1}
+\]">\[
+e_i\mapsto e_{i+1}\ (i&lt;n),\qquad e_n\mapsto-e_1.
+\tag{6.1}
+\]</span>
+Its <span class="math" data-tex="\(n\)">\(n\)</span>-th power is <span class="math" data-tex="\(-1\)">\(-1\)</span>, and its underlying permutation has order <span class="math" data-tex="\(n\)">\(n\)</span>; its exact order is <span class="math" data-tex="\(2n\)">\(2n\)</span>. For <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, it is the same signed cycle on the first <span class="math" data-tex="\(n-1\)">\(n-1\)</span> coordinates and sends <span class="math" data-tex="\(e_n\)">\(e_n\)</span> to <span class="math" data-tex="\(-e_n\)">\(-e_n\)</span>, giving order <span class="math" data-tex="\(2n-2\)">\(2n-2\)</span>.</p>
+<p>For the exceptional types, one can keep the computation small by using the simple basis. The reflection matrix <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is the identity except for row <span class="math" data-tex="\(i\)">\(i\)</span>, whose entries are <span class="math" data-tex="\(\delta_{ij}-a_{ji}\)">\(\delta_{ij}-a_{ji}\)</span>. For <span class="math" data-tex="\(E_r\)">\(E_r\)</span>, <span class="math" data-tex="\(r=6,7,8\)">\(r=6,7,8\)</span>, multiplication gives the following entire matrix <span class="math" data-tex="\(C_r=S_1\cdots S_r\)">\(C_r=S_1\cdots S_r\)</span>, specified by its action on a coefficient column <span class="math" data-tex="\(y\)">\(y\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(C_ry)_1&amp;=y_2-y_r,&amp;(C_ry)_2&amp;=y_3-y_r,\\
+(C_ry)_3&amp;=y_1+y_2-y_r,&amp;(C_ry)_4&amp;=y_2+y_3-y_r,\\
+(C_ry)_i&amp;=y_{i-1}-y_r&amp;&amp; (5\leq i\leq r).
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+(C_ry)_1&amp;=y_2-y_r,&amp;(C_ry)_2&amp;=y_3-y_r,\\
+(C_ry)_3&amp;=y_1+y_2-y_r,&amp;(C_ry)_4&amp;=y_2+y_3-y_r,\\
+(C_ry)_i&amp;=y_{i-1}-y_r&amp;&amp; (5\leq i\leq r).
+\end{aligned}
+\tag{6.2}
+\]</span>
+For clarity, the determinant calculation can also be made explicit. Put <span class="math" data-tex="\(d=t^3-t-1\)">\(d=t^3-t-1\)</span>. The first three rows of <span class="math" data-tex="\(tI-C_r\)">\(tI-C_r\)</span> have leading block
+<span class="math" data-tex="\(\bigl(\begin{smallmatrix}t&amp;-1&amp;0\\0&amp;t&amp;-1\\-1&amp;-1&amp;t\end{smallmatrix}\bigr)\)">\(\bigl(\begin{smallmatrix}t&amp;-1&amp;0\\0&amp;t&amp;-1\\-1&amp;-1&amp;t\end{smallmatrix}\bigr)\)</span>, of determinant <span class="math" data-tex="\(d\)">\(d\)</span>. Eliminating them in the homogeneous equations gives
+<span class="math" data-tex="\(ty_4=-(t+1)(t^2+t+1)y_r/d\)">\(ty_4=-(t+1)(t^2+t+1)y_r/d\)</span>; the remaining rows give <span class="math" data-tex="\(ty_i=y_{i-1}-y_r\)">\(ty_i=y_{i-1}-y_r\)</span>. Gaussian elimination, with the factors <span class="math" data-tex="\(d\)">\(d\)</span> and the subsequent <span class="math" data-tex="\(t\)">\(t\)</span> pivots retained, yields
+<span class="math math-display" data-tex="\[
+P_r(t)=\det(tI-C_r)
+=d\left(t^{r-3}+\sum_{j=1}^{r-4}t^j\right)+(t+1)(t^2+t+1).
+\tag{6.3}
+\]">\[
+P_r(t)=\det(tI-C_r)
+=d\left(t^{r-3}+\sum_{j=1}^{r-4}t^j\right)+(t+1)(t^2+t+1).
+\tag{6.3}
+\]</span>
+The computation on <span class="math" data-tex="\(td\ne0\)">\(td\ne0\)</span> proves the polynomial identity for every <span class="math" data-tex="\(t\)">\(t\)</span>. It gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_6&amp;=(t^2+t+1)(t^4-t^2+1),\\
+P_7&amp;=(t+1)(t^6-t^3+1),\\
+P_8&amp;=t^8+t^7-t^5-t^4-t^3+t+1.
+\end{aligned}
+\tag{6.4}
+\]">\[
+\begin{aligned}
+P_6&amp;=(t^2+t+1)(t^4-t^2+1),\\
+P_7&amp;=(t+1)(t^6-t^3+1),\\
+P_8&amp;=t^8+t^7-t^5-t^4-t^3+t+1.
+\end{aligned}
+\tag{6.4}
+\]</span>
+For <span class="math" data-tex="\(F_4,G_2\)">\(F_4,G_2\)</span>, direct multiplication and determinant expansion give
+<span class="math math-display" data-tex="\[
+C(F_4)=\begin{pmatrix}0&amp;1&amp;0&amp;-1\\1&amp;1&amp;0&amp;-1\\0&amp;2&amp;0&amp;-1\\0&amp;0&amp;1&amp;-1\end{pmatrix},
+\quad P_{F_4}=t^4-t^2+1;
+\qquad
+C(G_2)=\begin{pmatrix}2&amp;-3\\1&amp;-1\end{pmatrix},
+\quad P_{G_2}=t^2-t+1.
+\tag{6.5}
+\]">\[
+C(F_4)=\begin{pmatrix}0&amp;1&amp;0&amp;-1\\1&amp;1&amp;0&amp;-1\\0&amp;2&amp;0&amp;-1\\0&amp;0&amp;1&amp;-1\end{pmatrix},
+\quad P_{F_4}=t^4-t^2+1;
+\qquad
+C(G_2)=\begin{pmatrix}2&amp;-3\\1&amp;-1\end{pmatrix},
+\quad P_{G_2}=t^2-t+1.
+\tag{6.5}
+\]</span></p>
+<p>Write <span class="math" data-tex="\(\Phi_m(t)\)">\(\Phi_m(t)\)</span> for the product of <span class="math" data-tex="\(t-\zeta\)">\(t-\zeta\)</span> over primitive <span class="math" data-tex="\(m\)">\(m\)</span>-th roots of unity. Separating the roots in <span class="math" data-tex="\(t^m-1\)">\(t^m-1\)</span> by their exact orders verifies that the polynomials in (6.4) are <span class="math" data-tex="\(\Phi_3\Phi_{12},\Phi_2\Phi_{18},\Phi_{30}\)">\(\Phi_3\Phi_{12},\Phi_2\Phi_{18},\Phi_{30}\)</span>, and those in (6.5) are <span class="math" data-tex="\(\Phi_{12},\Phi_6\)">\(\Phi_{12},\Phi_6\)</span>. Thus each divides <span class="math" data-tex="\(t^h-1\)">\(t^h-1\)</span> for <span class="math" data-tex="\(h=12,18,30,12,6\)">\(h=12,18,30,12,6\)</span>, respectively, and contains a primitive <span class="math" data-tex="\(h\)">\(h\)</span>-th root as an eigenvalue. Cayley–Hamilton gives <span class="math" data-tex="\(C^h=I\)">\(C^h=I\)</span>, and that eigenvalue rules out any smaller positive order. The needed form of Cayley–Hamilton follows by expanding the adjugate identity <span class="math" data-tex="\((tI-C)\operatorname{adj}(tI-C)=\det(tI-C)I\)">\((tI-C)\operatorname{adj}(tI-C)=\det(tI-C)I\)</span> in powers of <span class="math" data-tex="\(t\)">\(t\)</span> and substituting <span class="math" data-tex="\(C\)">\(C\)</span> using its coefficient equations.</p>
+<p>The results, together with the preceding counts and orders, are:</p>
+<p>| Type | <span class="math" data-tex="\(|\Phi|\)">\(|\Phi|\)</span> | <span class="math" data-tex="\(|W|\)">\(|W|\)</span> | <span class="math" data-tex="\(h\)">\(h\)</span> |
+|---|---:|---:|---:|
+| <span class="math" data-tex="\(A_n\)">\(A_n\)</span> | <span class="math" data-tex="\(n(n+1)\)">\(n(n+1)\)</span> | <span class="math" data-tex="\((n+1)!\)">\((n+1)!\)</span> | <span class="math" data-tex="\(n+1\)">\(n+1\)</span> |
+| <span class="math" data-tex="\(B_n\)">\(B_n\)</span> | <span class="math" data-tex="\(2n^2\)">\(2n^2\)</span> | <span class="math" data-tex="\(2^n n!\)">\(2^n n!\)</span> | <span class="math" data-tex="\(2n\)">\(2n\)</span> |
+| <span class="math" data-tex="\(C_n\)">\(C_n\)</span> | <span class="math" data-tex="\(2n^2\)">\(2n^2\)</span> | <span class="math" data-tex="\(2^n n!\)">\(2^n n!\)</span> | <span class="math" data-tex="\(2n\)">\(2n\)</span> |
+| <span class="math" data-tex="\(D_n\)">\(D_n\)</span> | <span class="math" data-tex="\(2n(n-1)\)">\(2n(n-1)\)</span> | <span class="math" data-tex="\(2^{n-1}n!\)">\(2^{n-1}n!\)</span> | <span class="math" data-tex="\(2n-2\)">\(2n-2\)</span> |
+| <span class="math" data-tex="\(E_6\)">\(E_6\)</span> | <span class="math" data-tex="\(72\)">\(72\)</span> | <span class="math" data-tex="\(51\,840\)">\(51\,840\)</span> | <span class="math" data-tex="\(12\)">\(12\)</span> |
+| <span class="math" data-tex="\(E_7\)">\(E_7\)</span> | <span class="math" data-tex="\(126\)">\(126\)</span> | <span class="math" data-tex="\(2\,903\,040\)">\(2\,903\,040\)</span> | <span class="math" data-tex="\(18\)">\(18\)</span> |
+| <span class="math" data-tex="\(E_8\)">\(E_8\)</span> | <span class="math" data-tex="\(240\)">\(240\)</span> | <span class="math" data-tex="\(696\,729\,600\)">\(696\,729\,600\)</span> | <span class="math" data-tex="\(30\)">\(30\)</span> |
+| <span class="math" data-tex="\(F_4\)">\(F_4\)</span> | <span class="math" data-tex="\(48\)">\(48\)</span> | <span class="math" data-tex="\(1152\)">\(1152\)</span> | <span class="math" data-tex="\(12\)">\(12\)</span> |
+| <span class="math" data-tex="\(G_2\)">\(G_2\)</span> | <span class="math" data-tex="\(12\)">\(12\)</span> | <span class="math" data-tex="\(12\)">\(12\)</span> | <span class="math" data-tex="\(6\)">\(6\)</span> |</p>
+<p>Adding the coefficients in Proposition 5.1 shows, in every type,
+<span class="math math-display" data-tex="\[
+h=1+\operatorname{ht}(\theta).
+\tag{6.6}
+\]">\[
+h=1+\operatorname{ht}(\theta).
+\tag{6.6}
+\]</span>
+This equality is a consequence of the computations, not a definition used to bypass the order proof.</p>
+<h2 id="section-7"><span id="7-diagram-symmetries-duality-and-a-folding-example"></span>7. Diagram symmetries, duality and a folding example</h2>
+<p>A diagram automorphism preserves edge multiplicities and arrows. Theorem 1 extends every such permutation to a root-system automorphism taking the corresponding simple roots to one another. Conversely, an automorphism preserving the base preserves its Cartan matrix and therefore its diagram.</p>
+<p>For <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, the reversal of the chain gives a group of order two; <span class="math" data-tex="\(A_1\)">\(A_1\)</span> has trivial group. For <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, <span class="math" data-tex="\(n\geq5\)">\(n\geq5\)</span>, the two short arms can be exchanged, giving order two. For <span class="math" data-tex="\(D_4\)">\(D_4\)</span>, all three arms have length one, so every permutation of their vertices <span class="math" data-tex="\(1,3,4\)">\(1,3,4\)</span> fixes the central vertex <span class="math" data-tex="\(2\)">\(2\)</span>. The group is <span class="math" data-tex="\(S_3\)">\(S_3\)</span>; its three-cycles are the diagram <strong>triality</strong>. For <span class="math" data-tex="\(E_6\)">\(E_6\)</span>, the two length-two arms can be exchanged: <span class="math" data-tex="\(1\leftrightarrow6\)">\(1\leftrightarrow6\)</span>, <span class="math" data-tex="\(3\leftrightarrow5\)">\(3\leftrightarrow5\)</span>, with <span class="math" data-tex="\(2,4\)">\(2,4\)</span> fixed. This again gives order two.</p>
+<p>There are no further automorphisms. A tree automorphism preserves its branch point and arm lengths. The <span class="math" data-tex="\(E_7,E_8\)">\(E_7,E_8\)</span> arm lengths are all different, and in <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, <span class="math" data-tex="\(n\geq5\)">\(n\geq5\)</span>, only the two one-edge arms agree. In the multiple-edged chains, any nontrivial chain automorphism would reverse the chain. For <span class="math" data-tex="\(B_n,C_n\)">\(B_n,C_n\)</span>, <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, reversal moves the multiple edge; at rank two it reverses the arrow. For <span class="math" data-tex="\(F_4,G_2\)">\(F_4,G_2\)</span>, reversal also reverses the arrow. These are forbidden. A chain of single edges has just its reversal and identity.</p>
+<p>The coroot system has base <span class="math" data-tex="\(\alpha_i^\vee\)">\(\alpha_i^\vee\)</span> and Cartan matrix <span class="math" data-tex="\(A^t\)">\(A^t\)</span>, by the duality proof in the preceding lesson. Thus duality reverses arrows. In the coordinates (3.1), <span class="math" data-tex="\(B_n^\vee=C_n\)">\(B_n^\vee=C_n\)</span> and <span class="math" data-tex="\(C_n^\vee=B_n\)">\(C_n^\vee=B_n\)</span>. At rank two these are isomorphic; at rank at least three their oriented diagrams differ. The simply laced systems are self-dual after uniform scaling, and classification identifies the duals of <span class="math" data-tex="\(F_4,G_2\)">\(F_4,G_2\)</span> with their respective types after reversing the numbering.</p>
+<p>One elementary calculation explains a folding arrow. In <span class="math" data-tex="\(D_4\)">\(D_4\)</span>, the three outer simple roots <span class="math" data-tex="\(\alpha_1,\alpha_3,\alpha_4\)">\(\alpha_1,\alpha_3,\alpha_4\)</span> are pairwise orthogonal, have squared norm <span class="math" data-tex="\(2\)">\(2\)</span>, and each pairs with <span class="math" data-tex="\(\alpha_2\)">\(\alpha_2\)</span> by <span class="math" data-tex="\(-1\)">\(-1\)</span>. Set
+<span class="math math-display" data-tex="\[
+\beta_1=(\alpha_1+\alpha_3+\alpha_4)/3,\qquad\beta_2=\alpha_2.
+\tag{7.1}
+\]">\[
+\beta_1=(\alpha_1+\alpha_3+\alpha_4)/3,\qquad\beta_2=\alpha_2.
+\tag{7.1}
+\]</span>
+Their squared norms are <span class="math" data-tex="\(2/3,2\)">\(2/3,2\)</span>, and their inner product is <span class="math" data-tex="\(-1\)">\(-1\)</span>, giving the <span class="math" data-tex="\(G_2\)">\(G_2\)</span> Cartan matrix <span class="math" data-tex="\(\bigl(\begin{smallmatrix}2&amp;-1\\-3&amp;2\end{smallmatrix}\bigr)\)">\(\bigl(\begin{smallmatrix}2&amp;-1\\-3&amp;2\end{smallmatrix}\bigr)\)</span>. The map from the two simple vectors in (4.11) to <span class="math" data-tex="\(\beta_1,\beta_2\)">\(\beta_1,\beta_2\)</span> is a similarity: their Gram matrices differ by the scalar <span class="math" data-tex="\(2/3\)">\(2/3\)</span>. It therefore transports that entire root system to this two-dimensional subspace. Replacing the average <span class="math" data-tex="\(\beta_1\)">\(\beta_1\)</span> by the sum <span class="math" data-tex="\(3\beta_1\)">\(3\beta_1\)</span> gives the transpose matrix instead. This produces a similar model of the dual <span class="math" data-tex="\(G_2\)">\(G_2\)</span> system, not the same arrow with the same root lengths.</p>
+<p>An orbit sum and the orbit average in (7.1) differ by the orbit cardinality. Their lengths and Cartan pairings must therefore be computed with the chosen convention. No general folding theorem is needed for our classification.</p>
+<h2 id="section-8"><span id="8-exercises-with-complete-solutions"></span>8. Exercises with complete solutions</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Write every rank-two Cartan matrix and draw its Dynkin diagram. Explain why the two names <span class="math" data-tex="\(B_2,C_2\)">\(B_2,C_2\)</span> give one isomorphism type.</p>
+<p><strong>Solution.</strong> With the numbering in (3.1) and (4.11), the matrices are
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+A_1\times A_1&amp;\begin{pmatrix}2&amp;0\\0&amp;2\end{pmatrix}\\[2pt]
+A_2&amp;\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}\\[2pt]
+B_2&amp;\begin{pmatrix}2&amp;-2\\-1&amp;2\end{pmatrix}\\[2pt]
+C_2&amp;\begin{pmatrix}2&amp;-1\\-2&amp;2\end{pmatrix}\\[2pt]
+G_2&amp;\begin{pmatrix}2&amp;-1\\-3&amp;2\end{pmatrix}
+\end{array}
+\tag{8.1}
+\]">\[
+\begin{array}{c|c}
+A_1\times A_1&amp;\begin{pmatrix}2&amp;0\\0&amp;2\end{pmatrix}\\[2pt]
+A_2&amp;\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}\\[2pt]
+B_2&amp;\begin{pmatrix}2&amp;-2\\-1&amp;2\end{pmatrix}\\[2pt]
+C_2&amp;\begin{pmatrix}2&amp;-1\\-2&amp;2\end{pmatrix}\\[2pt]
+G_2&amp;\begin{pmatrix}2&amp;-1\\-3&amp;2\end{pmatrix}
+\end{array}
+\tag{8.1}
+\]</span>
+For <span class="math" data-tex="\(B_2\)">\(B_2\)</span>, <span class="math" data-tex="\(\alpha_1=e_1-e_2\)">\(\alpha_1=e_1-e_2\)</span> is long and <span class="math" data-tex="\(\alpha_2=e_2\)">\(\alpha_2=e_2\)</span> is short; for <span class="math" data-tex="\(C_2\)">\(C_2\)</span>, <span class="math" data-tex="\(\alpha_1=e_1-e_2\)">\(\alpha_1=e_1-e_2\)</span> is short and <span class="math" data-tex="\(\alpha_2=2e_2\)">\(\alpha_2=2e_2\)</span> is long. Formula (1.1) gives every entry. Interchanging rows and columns simultaneously identifies the two matrices. Theorem 1 therefore proves the isomorphism, while preserving which actual vectors are longer. Equation (1.3) restricts every rank-two pair to products <span class="math" data-tex="\(0,1,2,3\)">\(0,1,2,3\)</span>; nonpositive integral factors give exactly the matrices above and their relabelings. Hence the list is complete.</p>
+<p><img alt="All rank-two Dynkin diagrams in the stated numbering" class="course-figure" data-asset-id="dynkin-rank2" data-asset-sha256="93C12812785C7162CACC20AE659B051F997E8E6FDC98EFB1C68834A7D17B3E87" decoding="async" height="1260" loading="lazy" src="assets/RT-LIE-09/dynkin-rank2-93C12812785C7162CACC20AE659B051F997E8E6FDC98EFB1C68834A7D17B3E87.png" style="max-width:100%;height:auto" width="1800"/></p>
+<p><em>Figure 8.1. Two circles without an edge represent <span class="math" data-tex="\(A_1\times A_1\)">\(A_1\times A_1\)</span>. The remaining edge multiplicities are one, two, two and three. The arrows agree with the column-coroot convention in (8.1) and point toward the shorter simple root. The <span class="math" data-tex="\(B_2,C_2\)">\(B_2,C_2\)</span> pictures become identical after exchanging labels.</em></p>
+<p><strong>Exercise 8.2 (medium).</strong> Prove that the Coxeter graph of a finite root system has no cycle, including a cycle containing a multiple edge.</p>
+<p><strong>Solution.</strong> Suppose a cycle uses vertices <span class="math" data-tex="\(i_1,\ldots,i_m\)">\(i_1,\ldots,i_m\)</span>. Their normalized simple roots are independent, so their sum is nonzero. Each has norm one. Consecutive vertices have inner product <span class="math" data-tex="\(-\sqrt{k}/2\leq-1/2\)">\(-\sqrt{k}/2\leq-1/2\)</span>, and every additional inner product among the chosen vectors is nonpositive. Therefore
+<span class="math math-display" data-tex="\[
+\left\|\sum_{j=1}^m u_{i_j}\right\|^2
+=m+2\sum_{j&lt;l}(u_{i_j},u_{i_l})\leq m-m=0.
+\]">\[
+\left\|\sum_{j=1}^m u_{i_j}\right\|^2
+=m+2\sum_{j&lt;l}(u_{i_j},u_{i_l})\leq m-m=0.
+\]</span>
+This contradicts positive definiteness. A multiple edge makes its contribution still more negative, so it cannot rescue the cycle. The Coxeter graph and weighted Dynkin graph have the same adjacency, which finishes the assertion.</p>
+<p><strong>Exercise 8.3 (medium).</strong> Construct <span class="math" data-tex="\(E_8\)">\(E_8\)</span> from the lattice (4.1), verify the reflection axiom and count all its roots.</p>
+<p><strong>Solution.</strong> The union is closed under addition because <span class="math" data-tex="\(2h=(1,\ldots,1)\)">\(2h=(1,\ldots,1)\)</span> has even coordinate sum, and under negatives because <span class="math" data-tex="\(-h=h-2h\)">\(-h=h-2h\)</span>. The dot products are integral by <span class="math" data-tex="\((h,d)=\sum d_i/2\)">\((h,d)=\sum d_i/2\)</span> and <span class="math" data-tex="\(h^2=2\)">\(h^2=2\)</span>. Hence for every lattice vector <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(\|\alpha\|^2=2\)">\(\|\alpha\|^2=2\)</span> and every <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span>,
+<span class="math" data-tex="\(s_\alpha x=x-(x,\alpha)\alpha\in L\)">\(s_\alpha x=x-(x,\alpha)\alpha\in L\)</span>. Orthogonal reflection preserves the norm, so it permutes the set in (4.2). All Cartan integers are these integral dot products. Every root has the same nonzero norm, establishing reducedness; the roots <span class="math" data-tex="\(e_1-e_2,\ldots,e_7-e_8,e_7+e_8\)">\(e_1-e_2,\ldots,e_7-e_8,e_7+e_8\)</span> are independent, establishing spanning.</p>
+<p>An integral vector with squared norm <span class="math" data-tex="\(2\)">\(2\)</span> has exactly two coordinates <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> and the others zero, giving <span class="math" data-tex="\(\binom82\cdot4=112\)">\(\binom82\cdot4=112\)</span>. A half-integral vector with the same squared norm has all eight coordinates <span class="math" data-tex="\(\pm1/2\)">\(\pm1/2\)</span>; subtracting <span class="math" data-tex="\(h\)">\(h\)</span> shows that membership is equivalent to even minus parity. Choosing the first seven signs freely determines the eighth, giving <span class="math" data-tex="\(128\)">\(128\)</span>. The parts are disjoint, so the total is <span class="math" data-tex="\(240\)">\(240\)</span>. Finally (4.3)–(4.4) give an independent base with the <span class="math" data-tex="\(E_8\)">\(E_8\)</span> Gram matrix and integral expansions of one sign, identifying this constructed system as the required type.</p>
+<p><strong>Exercise 8.4 (hard).</strong> Let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be a finite connected simple graph. Give its vertices the quadratic form with diagonal <span class="math" data-tex="\(2\)">\(2\)</span>, entry <span class="math" data-tex="\(-1\)">\(-1\)</span> across an edge, and entry zero otherwise. Prove that it is positive definite exactly for the graphs <span class="math" data-tex="\(A_n,D_n,E_6,E_7,E_8\)">\(A_n,D_n,E_6,E_7,E_8\)</span>.</p>
+<p><strong>Solution.</strong> Write the form as <span class="math" data-tex="\(Q(z)=2\sum z_i^2-2\sum_{\{i,j\}\text{ edge}}z_i z_j\)">\(Q(z)=2\sum z_i^2-2\sum_{\{i,j\}\text{ edge}}z_i z_j\)</span>. On a cycle, the vector of ones has <span class="math" data-tex="\(Q\leq0\)">\(Q\leq0\)</span>, so the graph is a tree. A vertex with four neighbors gives a principal star: put <span class="math" data-tex="\(2\)">\(2\)</span> at its center and <span class="math" data-tex="\(1\)">\(1\)</span> at four neighbors. Then <span class="math" data-tex="\(Q=2(4+4)-2(8)=0\)">\(Q=2(4+4)-2(8)=0\)</span>. Thus degrees are at most three. If two vertices have degree three, put <span class="math" data-tex="\(2\)">\(2\)</span> along their joining path and <span class="math" data-tex="\(1\)">\(1\)</span> at two extra neighbors at each end. For a path of <span class="math" data-tex="\(m\)">\(m\)</span> vertices,
+<span class="math" data-tex="\(Q=8m+8-8(m-1)-16=0\)">\(Q=8m+8-8(m-1)-16=0\)</span>. Hence at most one vertex branches.</p>
+<p>If there is no branch, the graph is a chain and (2.3) proves positive definiteness. Otherwise its three arms have lengths <span class="math" data-tex="\(p\leq q\leq r\)">\(p\leq q\leq r\)</span>, counting edges. The arm matrices are positive definite chains. Completing the square as in (2.4) makes the full form positive definite exactly when (2.6) holds. For <span class="math" data-tex="\(p\geq2\)">\(p\geq2\)</span> its reciprocal sum is at most one; for <span class="math" data-tex="\(p=1,q\geq3\)">\(p=1,q\geq3\)</span> it is again at most one. With <span class="math" data-tex="\(p=q=1\)">\(p=q=1\)</span>, any <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span> works, giving <span class="math" data-tex="\(D_{r+3}\)">\(D_{r+3}\)</span>. With <span class="math" data-tex="\(p=1,q=2\)">\(p=1,q=2\)</span>, the inequality is <span class="math" data-tex="\(1/(r+1)&gt;1/6\)">\(1/(r+1)&gt;1/6\)</span>, giving <span class="math" data-tex="\(r=2,3,4\)">\(r=2,3,4\)</span> and <span class="math" data-tex="\(E_6,E_7,E_8\)">\(E_6,E_7,E_8\)</span>. These inequalities are strict, so completing the square also proves sufficiency for every listed tree. This proves the exact equivalence, rather than only eliminating some forbidden subgraphs.</p>
+<h2 id="section-9"><span id="9-sources-and-scope"></span>9. Sources and scope</h2>
+<p>The arguments above prove the classification and constructions of reduced crystallographic root systems. The later lesson <em>The isomorphism theorem and Serre's theorem</em> supplies the reconstruction of Lie algebras from their roots, and <em>The simple Lie algebras: classical models and the exceptional algebras</em> constructs the corresponding Lie algebras. General folding theory, affine diagrams and noncrystallographic reflection groups are reading directions, not results imported here. All core numerical tables have been proved.</p>
+<p>Killing's <em>Die Zusammensetzung der stetigen endlichen Transformationsgruppen, Zweiter Theil</em>, <em>Mathematische Annalen</em> <strong>33</strong>, pp.1–48, is the historical precursor: the introduction on p.1 formulates the search for simple structures, §§13–15 study root coefficients, and §18, especially p.48, lists the exceptional dimensions. Its historical list includes two rank-four exceptional candidates; Theorem 2 explains why the modern root classification has a single <span class="math" data-tex="\(F_4\)">\(F_4\)</span> type. The manuscript is dated 2 February 1888. The freely readable <a href="https://geodesic.mathdoc.fr/item/MAN_1889__33/">archival volume</a> provides the historical text.</p>
+<p>For comparison and further reading:</p>
+<ul>
+<li>J. S. Milne, <em>Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field</em>, Appendix C.g, C.52–C.57, pp.625–630 in the corrected 2021 text: Cartan matrices, rank two and the classification statement. This is the <a href="https://www.jmilne.org/math/Books/AG.pdf">author's freely accessible corrected text</a> of the 2017 book.</li>
+<li>M. W. Davis, <em>The Geometry and Topology of Coxeter Groups</em> (2008), Appendix C, pp.433–438, and Appendix D, pp.439–448: positive-definite Coxeter forms and geometric representations, also in broader settings. <a href="https://people.math.osu.edu/davis.12/davisbook.pdf">Author's first-edition PDF</a>.</li>
+<li>A. Kirillov Jr., <em>Introduction to Lie Groups and Lie Algebras</em>, §§7.8 and 7.10, pp.119–123 and 125–127: diagrams and the simply laced classification. The <a href="https://www.math.stonybrook.edu/~kirillov/liegroups/liegroups.pdf">author's notes</a> use the transpose Cartan convention.</li>
+</ul>
+<p>The original diagram source is available as <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/RT-LIE/figures/rt_lie_09_figures.py">reproducible Python plotting code</a>. Figures 2.1, 2.2 and 8.1 represent the Cartan data proved in this lesson.</p>
+<p><strong>What this lesson does not prove.</strong> The full folding correspondence, the classification of affine or noncrystallographic systems, and reconstruction of a semisimple Lie algebra from its roots. None is used to prove Theorems 1–3 or the tables in Sections 5–6.</p>
+</article><nav class="lesson-nav"><a href="index.html">Course contents</a><a href="src/RT-LIE-09.md" download>Editable source</a><a href="RT-LIE-08.html">← Previous lesson</a><a href="RT-LIE-10.html">Next lesson →</a></nav></main></body></html>

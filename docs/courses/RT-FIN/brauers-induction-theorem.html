@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brauer&#x27;s induction theorem · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/brauers-induction-theorem.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="artins-induction-theorem-and-rationality.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-11.md" download>Editable source</a><a href="character-criteria-and-splitting-fields.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#lemma-1-1">Lemma 1.1</a></li><li><a href="#theorem-1-2">Theorem 1.2</a></li><li><a href="#lemma-2-1">Lemma 2.1</a></li><li><a href="#theorem-2-2">Theorem 2.2</a></li><li><a href="#lemma-3-1">Lemma 3.1</a></li><li><a href="#lemma-3-2">Lemma 3.2</a></li><li><a href="#theorem-5-1">Theorem 5.1</a></li></ul></details><h1 id="brauer-s-induction-theorem">Brauer's induction theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the AI that wrote it. Public domain (CC0).</em></p>
+<p>Artin's theorem expresses any virtual character using induced characters of cyclic subgroups, but its coefficients may be rational. Brauer's theorem removes the denominators. It enlarges the subgroup family just enough: a cyclic group of order prime to <span class="math" data-tex="\(p\)">\(p\)</span>, multiplied by a <span class="math" data-tex="\(p\)">\(p\)</span>-group, for various primes <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>The proof has two different ingredients. A nilpotent group has enough abelian normal subgroups to produce every irreducible by induction from a line. For a general finite group, reducing character values modulo a prime shows that inductions from elementary subgroups generate the whole character ring locally. A determinant argument then returns an ordinary integer prime to that prime. Combining these integers gives the integral theorem.</p>
+<p>Basic references are Kramár's <em>Artin's and Brauer's Theorems on Induced Characters</em>, Teleman's <em>Representation Theory</em>, and Gruson–Serganova's <em>A Journey Through Representation Theory</em>. We use <a href="artins-induction-theorem-and-rationality.html">Artin's induction theorem and rationality</a> for cyclotomic fields and Artin induction, <a href="mackey-theory-and-cliffords-theorem.html">Mackey theory and Clifford's theorem</a> for the inertia-group correspondence, and <a href="induced-representations-and-frobenius-reciprocity.html">Induced representations and Frobenius reciprocity</a> for induction, transitivity and the projection formula. Character orthogonality and algebraic-integer facts come from <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a> and <a href="integrality-of-characters-and-burnsides-theorem.html">Integrality of characters and Burnside's <span class="math" data-tex="\(p^a q^b\)">\(p^a q^b\)</span> theorem</a>.</p>
+<p>All groups are finite and all representations are complex unless another ring is explicitly specified. Let <span class="math" data-tex="\(R(G)\)">\(R(G)\)</span> be the ring of virtual characters, with pointwise multiplication. A representation is <strong>monomial</strong> if it is induced from a one-dimensional representation of a subgroup. A group is an <strong>M-group</strong> if all its irreducible representations are monomial.</p>
+<h2 id="1-nilpotent-groups-can-induce-from-lines">1. Nilpotent groups can induce from lines</h2>
+<p>A group <span class="math" data-tex="\(N\)">\(N\)</span> is <strong>nilpotent</strong> if it has a central series</p>
+<span class="math math-display" data-tex="\[
+1=N_0\leq N_1\leq\cdots\leq N_s=N,
+\qquad [N,N_{i+1}]\subseteq N_i.
+\tag{1}
+\]">\[
+1=N_0\leq N_1\leq\cdots\leq N_s=N,
+\qquad [N,N_{i+1}]\subseteq N_i.
+\tag{1}
+\]</span>
+<p>Here <span class="math" data-tex="\([N,N_{i+1}]\)">\([N,N_{i+1}]\)</span> is generated by commutators <span class="math" data-tex="\(xyx^{-1}y^{-1}\)">\(xyx^{-1}y^{-1}\)</span>, with <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, <span class="math" data-tex="\(y\in N_{i+1}\)">\(y\in N_{i+1}\)</span>. We may equivalently use the upper central series <span class="math" data-tex="\(Z_0(N)=1\)">\(Z_0(N)=1\)</span> and</p>
+<span class="math math-display" data-tex="\[
+Z_{i+1}(N)/Z_i(N)=Z(N/Z_i(N)).
+\]">\[
+Z_{i+1}(N)/Z_i(N)=Z(N/Z_i(N)).
+\]</span>
+<p>Indeed (1) implies <span class="math" data-tex="\(N_i\subseteq Z_i(N)\)">\(N_i\subseteq Z_i(N)\)</span> by induction, and the upper central series is itself central. Intersecting a central series with a subgroup gives a central series there. Taking its images in a quotient gives a central series in that quotient. Thus subgroups and quotients of nilpotent groups are nilpotent.</p>
+<p id="lemma-1-1" class="result-link"><strong>Lemma 1.1 (an abelian normal subgroup beyond the centre).</strong> If <span class="math" data-tex="\(N\)">\(N\)</span> is nonabelian and nilpotent, it has an abelian normal subgroup <span class="math" data-tex="\(A\)">\(A\)</span> not contained in <span class="math" data-tex="\(Z(N)\)">\(Z(N)\)</span>.</p>
+<p><strong>Proof.</strong> Its upper central series must have <span class="math" data-tex="\(Z_2(N)&gt;Z_1(N)\)">\(Z_2(N)&gt;Z_1(N)\)</span>. Otherwise <span class="math" data-tex="\(N/Z_1(N)\)">\(N/Z_1(N)\)</span> would have zero centre; every subsequent term of the upper central series would equal <span class="math" data-tex="\(Z_1(N)\)">\(Z_1(N)\)</span>, contradicting termination at the nonabelian group <span class="math" data-tex="\(N\)">\(N\)</span>. Choose <span class="math" data-tex="\(x\in Z_2(N)\setminus Z_1(N)\)">\(x\in Z_2(N)\setminus Z_1(N)\)</span>, and let <span class="math" data-tex="\(A=\langle x,Z_1(N)\rangle\)">\(A=\langle x,Z_1(N)\rangle\)</span>. It is abelian because the other generators are central. For every <span class="math" data-tex="\(g\in N\)">\(g\in N\)</span>, <span class="math" data-tex="\(gxg^{-1}\in xZ_1(N)\)">\(gxg^{-1}\in xZ_1(N)\)</span>, so <span class="math" data-tex="\(A\)">\(A\)</span> is normal. It contains the noncentral element <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-1-2" class="result-link"><strong>Theorem 1.2 (nilpotent monomiality).</strong> Every irreducible representation of a finite nilpotent group is induced from a one-dimensional representation of a subgroup.</p>
+<p><strong>Proof.</strong> Induct on <span class="math" data-tex="\(|N|\)">\(|N|\)</span>, the trivial group being immediate. Let <span class="math" data-tex="\(V\)">\(V\)</span> be irreducible. If its kernel <span class="math" data-tex="\(K\)">\(K\)</span> is nontrivial, it is an irreducible representation of the smaller nilpotent quotient <span class="math" data-tex="\(N/K\)">\(N/K\)</span>. By induction it is induced there from a line on some <span class="math" data-tex="\(\overline H\leq N/K\)">\(\overline H\leq N/K\)</span>. Let <span class="math" data-tex="\(H\)">\(H\)</span> be the inverse image of <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span>, and inflate that line to <span class="math" data-tex="\(H\)">\(H\)</span>. The induced model for <span class="math" data-tex="\(N\)">\(N\)</span> is the inflation of the quotient-induced model: the cosets <span class="math" data-tex="\(N/H\)">\(N/H\)</span> and <span class="math" data-tex="\((N/K)/\overline H\)">\((N/K)/\overline H\)</span> are the same, with the same line operators on each coset. This proves the result in this case.</p>
+<p>We may therefore suppose <span class="math" data-tex="\(V\)">\(V\)</span> faithful. If <span class="math" data-tex="\(N\)">\(N\)</span> is abelian, Schur's lemma makes <span class="math" data-tex="\(V\)">\(V\)</span> one-dimensional, and <span class="math" data-tex="\(H=N\)">\(H=N\)</span> works. Otherwise choose <span class="math" data-tex="\(A\)">\(A\)</span> as in Lemma 1.1. Its irreducibles are linear, so <span class="math" data-tex="\(V|_A\)">\(V|_A\)</span> is a sum of weight spaces.</p>
+<p>There must be at least two distinct weights. If there were just one, every element of <span class="math" data-tex="\(A\)">\(A\)</span> would act by a scalar. For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(g\in N\)">\(g\in N\)</span>, the commutator <span class="math" data-tex="\(gag^{-1}a^{-1}\)">\(gag^{-1}a^{-1}\)</span> would then act trivially. Faithfulness would make <span class="math" data-tex="\(a\)">\(a\)</span> central in <span class="math" data-tex="\(N\)">\(N\)</span>, contradicting the choice of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Choose one weight <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, with inertia group <span class="math" data-tex="\(T\)">\(T\)</span>, the stabilizer of its weight space. Clifford's theorem makes the weights a single <span class="math" data-tex="\(N\)">\(N\)</span>-orbit. Since there is more than one, <span class="math" data-tex="\(T&lt;N\)">\(T&lt;N\)</span>. Its correspondence gives</p>
+<span class="math math-display" data-tex="\[
+V\cong\operatorname{Ind}_T^N W
+\]">\[
+V\cong\operatorname{Ind}_T^N W
+\]</span>
+<p>for an irreducible <span class="math" data-tex="\(T\)">\(T\)</span>-representation <span class="math" data-tex="\(W\)">\(W\)</span>. The proper subgroup <span class="math" data-tex="\(T\)">\(T\)</span> is nilpotent. By induction <span class="math" data-tex="\(W\cong\operatorname{Ind}_H^T\eta\)">\(W\cong\operatorname{Ind}_H^T\eta\)</span> for a line <span class="math" data-tex="\(\eta\)">\(\eta\)</span> on <span class="math" data-tex="\(H\leq T\)">\(H\leq T\)</span>. Induction in stages now gives <span class="math" data-tex="\(V\cong\operatorname{Ind}_H^N\eta\)">\(V\cong\operatorname{Ind}_H^N\eta\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A finite <span class="math" data-tex="\(p\)">\(p\)</span>-group is nilpotent. Its centre is nontrivial by the class equation: noncentral conjugacy classes have sizes divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, so the centre has size divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. Apply the same argument to successive nontrivial quotients in the upper central series; their orders decrease until the series reaches the whole group.</p>
+<p>We will use one consequence of Sylow existence, proved in <a href="integrality-of-characters-and-burnsides-theorem.html">Integrality of characters and Burnside's <span class="math" data-tex="\(p^a q^b\)">\(p^a q^b\)</span> theorem</a>, Lemma 4.2. Every <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup <span class="math" data-tex="\(H\)">\(H\)</span> lies in a conjugate of a fixed Sylow <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup <span class="math" data-tex="\(P\)">\(P\)</span>. Indeed <span class="math" data-tex="\(H\)">\(H\)</span> acts on <span class="math" data-tex="\(G/P\)">\(G/P\)</span>; its nontrivial orbits have sizes divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. Since <span class="math" data-tex="\([G:P]\)">\([G:P]\)</span> is prime to <span class="math" data-tex="\(p\)">\(p\)</span>, there is a fixed coset <span class="math" data-tex="\(xP\)">\(xP\)</span>. Its stabilizer condition gives <span class="math" data-tex="\(H\subseteq xPx^{-1}\)">\(H\subseteq xPx^{-1}\)</span>.</p>
+<p>For a prime <span class="math" data-tex="\(p\)">\(p\)</span>, a group is <strong><span class="math" data-tex="\(p\)">\(p\)</span>-elementary</strong> if</p>
+<span class="math math-display" data-tex="\[
+E=C\times P,\qquad C\text{ cyclic},\quad p\nmid|C|,
+\quad P\text{ a }p\text{-group}.
+\tag{2}
+\]">\[
+E=C\times P,\qquad C\text{ cyclic},\quad p\nmid|C|,
+\quad P\text{ a }p\text{-group}.
+\tag{2}
+\]</span>
+<p>Either factor may be trivial. It is <strong>elementary</strong> if (2) holds for some prime. A direct product of an abelian group and a nilpotent group is nilpotent: combine their central series. Thus all elementary groups are M-groups.</p>
+<p>We will also need that every subgroup <span class="math" data-tex="\(H\leq C\times P\)">\(H\leq C\times P\)</span> is <span class="math" data-tex="\(p\)">\(p\)</span>-elementary. For <span class="math" data-tex="\((c,u)\in H\)">\((c,u)\in H\)</span>, taking powers with exponents equal to <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(|C|\)">\(|C|\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> modulo <span class="math" data-tex="\(|P|\)">\(|P|\)</span>, or conversely, shows that <span class="math" data-tex="\((c,1),(1,u)\in H\)">\((c,1),(1,u)\in H\)</span>. These exponents exist by Bézout's identity. Therefore</p>
+<span class="math math-display" data-tex="\[
+H=(H\cap C)\times(H\cap P),
+\]">\[
+H=(H\cap C)\times(H\cap P),
+\]</span>
+<p>whose first factor is cyclic of order prime to <span class="math" data-tex="\(p\)">\(p\)</span> and whose second is a <span class="math" data-tex="\(p\)">\(p\)</span>-group.</p>
+<h2 id="2-what-remains-after-induction">2. What remains after induction</h2>
+<p>For fixed <span class="math" data-tex="\(p\)">\(p\)</span>, define the additive subgroup</p>
+<span class="math math-display" data-tex="\[
+I_p=\sum_{E\leq G,\ E\ p\text{-elementary}}
+\operatorname{Ind}_E^G R(E)\subseteq R(G).
+\tag{3}
+\]">\[
+I_p=\sum_{E\leq G,\ E\ p\text{-elementary}}
+\operatorname{Ind}_E^G R(E)\subseteq R(G).
+\tag{3}
+\]</span>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be the analogous sum over all elementary subgroups.</p>
+<p id="lemma-2-1" class="result-link"><strong>Lemma 2.1 (induction gives ideals).</strong> Each <span class="math" data-tex="\(I_p\)">\(I_p\)</span>, and <span class="math" data-tex="\(I\)">\(I\)</span>, is an ideal of <span class="math" data-tex="\(R(G)\)">\(R(G)\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\alpha\in R(E)\)">\(\alpha\in R(E)\)</span>, <span class="math" data-tex="\(\beta\in R(G)\)">\(\beta\in R(G)\)</span>, the projection formula says</p>
+<span class="math math-display" data-tex="\[
+\beta\operatorname{Ind}_E^G\alpha
+=\operatorname{Ind}_E^G
+\bigl((\operatorname{Res}_E^G\beta)\alpha\bigr).
+\tag{4}
+\]">\[
+\beta\operatorname{Ind}_E^G\alpha
+=\operatorname{Ind}_E^G
+\bigl((\operatorname{Res}_E^G\beta)\alpha\bigr).
+\tag{4}
+\]</span>
+<p>The expression inside induction belongs to <span class="math" data-tex="\(R(E)\)">\(R(E)\)</span>. Addition gives the assertion for every summand and then for their sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>It suffices to put <span class="math" data-tex="\(1_G\)">\(1_G\)</span> in <span class="math" data-tex="\(I\)">\(I\)</span>. The next result supplies enough integer multiples of it.</p>
+<p id="theorem-2-2" class="result-link"><strong>Theorem 2.2 (the local induction lemma).</strong> For every prime <span class="math" data-tex="\(p\)">\(p\)</span>, there is an integer <span class="math" data-tex="\(n_p\)">\(n_p\)</span> with <span class="math" data-tex="\(p\nmid n_p\)">\(p\nmid n_p\)</span> and</p>
+<span class="math math-display" data-tex="\[
+n_p\,1_G\in I_p.
+\tag{5}
+\]">\[
+n_p\,1_G\in I_p.
+\tag{5}
+\]</span>
+<p>The proof occupies the next two sections. Its scalar coefficients are temporary: statement (5) is an assertion in the ordinary integral character ring.</p>
+<h2 id="3-character-values-modulo-one-prime">3. Character values modulo one prime</h2>
+<p>Choose a primitive <span class="math" data-tex="\(|G|\)">\(|G|\)</span>-th root <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, and set <span class="math" data-tex="\(A=\mathbb Z[\zeta]\)">\(A=\mathbb Z[\zeta]\)</span>. Every character value belongs to <span class="math" data-tex="\(A\)">\(A\)</span>. This ring is a domain, is finite as an additive <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-module, and consists of algebraic integers. The ideal <span class="math" data-tex="\(pA\)">\(pA\)</span> is proper: otherwise <span class="math" data-tex="\(1/p\in A\)">\(1/p\in A\)</span>, contradicting the rational algebraic-integer criterion.</p>
+<p>Choose a maximal ideal <span class="math" data-tex="\(\pi\)">\(\pi\)</span> containing <span class="math" data-tex="\(pA\)">\(pA\)</span>, and form the localization</p>
+<span class="math math-display" data-tex="\[
+D=A_\pi=\{a/s:a\in A,\ s\in A\setminus\pi\}.
+\]">\[
+D=A_\pi=\{a/s:a\in A,\ s\in A\setminus\pi\}.
+\]</span>
+<p>It embeds in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. It is a local ring with maximal ideal <span class="math" data-tex="\(\pi D\)">\(\pi D\)</span>: a fraction whose numerator is outside <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is invertible; a fraction whose numerator is in <span class="math" data-tex="\(\pi\)">\(\pi\)</span> belongs to <span class="math" data-tex="\(\pi D\)">\(\pi D\)</span> and is not a unit. Its residue field <span class="math" data-tex="\(k=D/\pi D\)">\(k=D/\pi D\)</span> has characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. In particular every integer prime to <span class="math" data-tex="\(p\)">\(p\)</span> is a unit of <span class="math" data-tex="\(D\)">\(D\)</span>, by Bézout.</p>
+<p>We use existence of maximal ideals only in this elementary form: the union of an increasing chain of proper ideals is proper, since it cannot contain <span class="math" data-tex="\(1\)">\(1\)</span>. Zorn's lemma then supplies a maximal proper ideal containing any proper ideal.</p>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+R_D=D\otimes_{\mathbb Z}R(G).
+\]">\[
+R_D=D\otimes_{\mathbb Z}R(G).
+\]</span>
+<p>Concretely its elements are finite <span class="math" data-tex="\(D\)">\(D\)</span>-linear combinations of irreducible characters, with pointwise multiplication. The irreducible characters are linearly independent over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, hence over <span class="math" data-tex="\(D\)">\(D\)</span>. Evaluating at representatives <span class="math" data-tex="\(g_1,\ldots,g_c\)">\(g_1,\ldots,g_c\)</span> of the conjugacy classes gives an injective unital ring map</p>
+<span class="math math-display" data-tex="\[
+R_D\longrightarrow B=D^c.
+\tag{6}
+\]">\[
+R_D\longrightarrow B=D^c.
+\tag{6}
+\]</span>
+<p>The ring <span class="math" data-tex="\(R_D\)">\(R_D\)</span> contains the diagonal constants <span class="math" data-tex="\(D\,1_G\)">\(D\,1_G\)</span>. Therefore <span class="math" data-tex="\(B\)">\(B\)</span> is a finite faithful <span class="math" data-tex="\(R_D\)">\(R_D\)</span>-module: its coordinate vectors generate it already over <span class="math" data-tex="\(D\)">\(D\)</span>, and an element annihilating <span class="math" data-tex="\(B\)">\(B\)</span> must annihilate <span class="math" data-tex="\(1_B\)">\(1_B\)</span> and hence be zero.</p>
+<p id="lemma-3-1" class="result-link"><strong>Lemma 3.1 (maximal ideals are reduced evaluations).</strong> Every maximal ideal of <span class="math" data-tex="\(R_D\)">\(R_D\)</span> is the kernel of evaluation at some <span class="math" data-tex="\(g_i\)">\(g_i\)</span>, followed by reduction to <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> be maximal. First show <span class="math" data-tex="\(\mathfrak mB\ne B\)">\(\mathfrak mB\ne B\)</span>. If equality held, choose module generators <span class="math" data-tex="\(b_1,\ldots,b_t\)">\(b_1,\ldots,b_t\)</span>. We could write <span class="math" data-tex="\(b_i=\sum_j a_{ij}b_j\)">\(b_i=\sum_j a_{ij}b_j\)</span> with all <span class="math" data-tex="\(a_{ij}\in\mathfrak m\)">\(a_{ij}\in\mathfrak m\)</span>. Multiplication by the adjugate of <span class="math" data-tex="\(I-(a_{ij})\)">\(I-(a_{ij})\)</span> would show that</p>
+<span class="math math-display" data-tex="\[
+d=\det(I-(a_{ij}))
+\]">\[
+d=\det(I-(a_{ij}))
+\]</span>
+<p>annihilates each generator, hence all of <span class="math" data-tex="\(B\)">\(B\)</span>. Faithfulness would give <span class="math" data-tex="\(d=0\)">\(d=0\)</span>. But <span class="math" data-tex="\(d\equiv1\pmod{\mathfrak m}\)">\(d\equiv1\pmod{\mathfrak m}\)</span>, a contradiction.</p>
+<p>Choose a maximal ideal <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span> containing the proper ideal <span class="math" data-tex="\(\mathfrak mB\)">\(\mathfrak mB\)</span>. Its contraction to <span class="math" data-tex="\(R_D\)">\(R_D\)</span> is proper and contains <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, so equals <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>.</p>
+<p>The coordinate idempotents of <span class="math" data-tex="\(D^c\)">\(D^c\)</span> are orthogonal and sum to <span class="math" data-tex="\(1\)">\(1\)</span>. In the field quotient by <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>, exactly one becomes <span class="math" data-tex="\(1\)">\(1\)</span> and all the others become <span class="math" data-tex="\(0\)">\(0\)</span>. On that surviving coordinate the quotient map is a field quotient of <span class="math" data-tex="\(D\)">\(D\)</span>, whose kernel must be its unique maximal ideal <span class="math" data-tex="\(\pi D\)">\(\pi D\)</span>. Thus <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> is reduction modulo <span class="math" data-tex="\(\pi D\)">\(\pi D\)</span> in one coordinate. Contracting gives the claimed reduced evaluation. It is onto <span class="math" data-tex="\(k\)">\(k\)</span> because <span class="math" data-tex="\(R_D\)">\(R_D\)</span> contains all constants from <span class="math" data-tex="\(D\)">\(D\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, write <span class="math" data-tex="\(g=ab=ba\)">\(g=ab=ba\)</span> with <span class="math" data-tex="\(a\)">\(a\)</span> of order prime to <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> of <span class="math" data-tex="\(p\)">\(p\)</span>-power order. These are the <strong><span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>-part</strong> and <strong><span class="math" data-tex="\(p\)">\(p\)</span>-part</strong>. If <span class="math" data-tex="\(|g|=dp^r\)">\(|g|=dp^r\)</span>, choose <span class="math" data-tex="\(u\equiv1\pmod d\)">\(u\equiv1\pmod d\)</span>, <span class="math" data-tex="\(u\equiv0\pmod{p^r}\)">\(u\equiv0\pmod{p^r}\)</span>; then <span class="math" data-tex="\(a=g^u\)">\(a=g^u\)</span> and <span class="math" data-tex="\(b=g^{1-u}\)">\(b=g^{1-u}\)</span> have the required properties.</p>
+<p id="lemma-3-2" class="result-link"><strong>Lemma 3.2 (the <span class="math" data-tex="\(p\)">\(p\)</span>-part disappears in residue).</strong> For every <span class="math" data-tex="\(f\in R_D\)">\(f\in R_D\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f(g)\equiv f(a)\pmod{\pi D}.
+\tag{7}
+\]">\[
+f(g)\equiv f(a)\pmod{\pi D}.
+\tag{7}
+\]</span>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(f\)">\(f\)</span> be an ordinary character. The commuting finite-order matrices of <span class="math" data-tex="\(a,b\)">\(a,b\)</span> can be simultaneously diagonalized: each eigenspace of the first is stable under the second, which is diagonalizable there. Thus the eigenvalues of <span class="math" data-tex="\(g\)">\(g\)</span> are products <span class="math" data-tex="\(\alpha_j\beta_j\)">\(\alpha_j\beta_j\)</span>, where <span class="math" data-tex="\(\beta_j^{p^r}=1\)">\(\beta_j^{p^r}=1\)</span>. In the characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> field <span class="math" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(\overline{\beta_j}-1)^{p^r}
+=\overline{\beta_j}^{p^r}-1=0.
+\]">\[
+(\overline{\beta_j}-1)^{p^r}
+=\overline{\beta_j}^{p^r}-1=0.
+\]</span>
+<p>A field has no nonzero nilpotents, so <span class="math" data-tex="\(\overline{\beta_j}=1\)">\(\overline{\beta_j}=1\)</span>. Summing <span class="math" data-tex="\(\alpha_j\beta_j\)">\(\alpha_j\beta_j\)</span> and <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> proves the congruence. It extends to virtual characters and then <span class="math" data-tex="\(D\)">\(D\)</span>-linear combinations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-an-elementary-subgroup-detects-every-evaluation">4. An elementary subgroup detects every evaluation</h2>
+<p>Fix <span class="math" data-tex="\(a\)">\(a\)</span> of order <span class="math" data-tex="\(d\)">\(d\)</span> prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Let <span class="math" data-tex="\(P\)">\(P\)</span> be a Sylow <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup of its centralizer <span class="math" data-tex="\(C_G(a)\)">\(C_G(a)\)</span>. The factors <span class="math" data-tex="\(C=\langle a\rangle\)">\(C=\langle a\rangle\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> commute and intersect trivially, so</p>
+<span class="math math-display" data-tex="\[
+E=C\times P
+\]">\[
+E=C\times P
+\]</span>
+<p>is <span class="math" data-tex="\(p\)">\(p\)</span>-elementary. Sylow existence is the only group-theoretic existence theorem used at this step.</p>
+<p>The point indicator <span class="math" data-tex="\(\delta_a\)">\(\delta_a\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span> has the cyclic Fourier expansion</p>
+<span class="math math-display" data-tex="\[
+\delta_a(c)=\frac1d\sum_{\lambda\in\widehat C}
+\lambda(a)^{-1}\lambda(c).
+\tag{8}
+\]">\[
+\delta_a(c)=\frac1d\sum_{\lambda\in\widehat C}
+\lambda(a)^{-1}\lambda(c).
+\tag{8}
+\]</span>
+<p>To check it, choose a generator and sum a geometric progression: the sum is <span class="math" data-tex="\(d\)">\(d\)</span> at <span class="math" data-tex="\(a\)">\(a\)</span> and zero elsewhere. Its coefficients belong to <span class="math" data-tex="\(D\)">\(D\)</span>, since <span class="math" data-tex="\(d\)">\(d\)</span> is a unit there and the character values belong to <span class="math" data-tex="\(A\)">\(A\)</span>. Inflate it to <span class="math" data-tex="\(E\)">\(E\)</span>, trivially on <span class="math" data-tex="\(P\)">\(P\)</span>, giving <span class="math" data-tex="\(\varphi\in D\otimes R(E)\)">\(\varphi\in D\otimes R(E)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(J_p\)">\(J_p\)</span> be the <span class="math" data-tex="\(D\)">\(D\)</span>-linear span in <span class="math" data-tex="\(R_D\)">\(R_D\)</span> of all inductions from <span class="math" data-tex="\(p\)">\(p\)</span>-elementary subgroups. By (4) it is an ideal and contains</p>
+<span class="math math-display" data-tex="\[
+F_a=\operatorname{Ind}_E^G\varphi.
+\]">\[
+F_a=\operatorname{Ind}_E^G\varphi.
+\]</span>
+<p>Regrouping the conjugators in the induction formula by their target element gives</p>
+<span class="math math-display" data-tex="\[
+F_a(a)=\frac{|C_G(a)|}{|E|}
+\sum_{h\in E\cap a^G}\varphi(h)
+=\frac{|C_G(a)|}{d|P|}.
+\tag{9}
+\]">\[
+F_a(a)=\frac{|C_G(a)|}{|E|}
+\sum_{h\in E\cap a^G}\varphi(h)
+=\frac{|C_G(a)|}{d|P|}.
+\tag{9}
+\]</span>
+<p>Indeed a conjugate of <span class="math" data-tex="\(a\)">\(a\)</span> has order prime to <span class="math" data-tex="\(p\)">\(p\)</span>. In <span class="math" data-tex="\(C\times P\)">\(C\times P\)</span>, such an element has trivial <span class="math" data-tex="\(P\)">\(P\)</span>-coordinate. It therefore lies in <span class="math" data-tex="\(C\)">\(C\)</span>, where <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is the point indicator at <span class="math" data-tex="\(a\)">\(a\)</span>. The sum leaves just that one element. The final quotient is an integer prime to <span class="math" data-tex="\(p\)">\(p\)</span>: <span class="math" data-tex="\(E\leq C_G(a)\)">\(E\leq C_G(a)\)</span>, and <span class="math" data-tex="\(|P|\)">\(|P|\)</span> is its full <span class="math" data-tex="\(p\)">\(p\)</span>-part.</p>
+<p>Now take any maximal ideal of <span class="math" data-tex="\(R_D\)">\(R_D\)</span>. By Lemma 3.1 it corresponds to a reduced evaluation at some <span class="math" data-tex="\(g\)">\(g\)</span>. Let <span class="math" data-tex="\(a\)">\(a\)</span> be the <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>-part of <span class="math" data-tex="\(g\)">\(g\)</span>. Equations (7) and (9) show that <span class="math" data-tex="\(F_a(g)\)">\(F_a(g)\)</span> is nonzero modulo <span class="math" data-tex="\(\pi D\)">\(\pi D\)</span>. Thus this maximal ideal does not contain <span class="math" data-tex="\(J_p\)">\(J_p\)</span>. No maximal ideal contains <span class="math" data-tex="\(J_p\)">\(J_p\)</span>, so <span class="math" data-tex="\(J_p=R_D\)">\(J_p=R_D\)</span>.</p>
+<p>We must return to integer coefficients. The following descent is the last part of the local lemma.</p>
+<p>Put <span class="math" data-tex="\(M=R(G)/I_p\)">\(M=R(G)/I_p\)</span>, a finitely generated abelian group. The equality <span class="math" data-tex="\(J_p=R_D\)">\(J_p=R_D\)</span> gives <span class="math" data-tex="\(D\otimes M=0\)">\(D\otimes M=0\)</span>: tensoring a quotient imposes exactly the <span class="math" data-tex="\(D\)">\(D\)</span>-linear relations from <span class="math" data-tex="\(I_p\)">\(I_p\)</span>. Reducing further to the residue field gives</p>
+<span class="math math-display" data-tex="\[
+k\otimes_{\mathbb F_p}(M/pM)=0.
+\tag{10}
+\]">\[
+k\otimes_{\mathbb F_p}(M/pM)=0.
+\tag{10}
+\]</span>
+<p>Here the identification follows directly from the tensor relations: multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> is zero in <span class="math" data-tex="\(k\)">\(k\)</span>, so the second factor is <span class="math" data-tex="\(M/pM\)">\(M/pM\)</span>; its remaining scalar action is over <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>. A nonzero <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>-vector space cannot become zero after extension to the nonzero field <span class="math" data-tex="\(k\)">\(k\)</span>, because any basis remains a basis after scalar extension. Hence <span class="math" data-tex="\(M=pM\)">\(M=pM\)</span>.</p>
+<p>Choose abelian-group generators <span class="math" data-tex="\(u_1,\ldots,u_t\)">\(u_1,\ldots,u_t\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span>. There are integers <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span> such that <span class="math" data-tex="\(u_i=p\sum_j a_{ij}u_j\)">\(u_i=p\sum_j a_{ij}u_j\)</span>. The adjugate argument now shows that</p>
+<span class="math math-display" data-tex="\[
+n_p=\det(I-p(a_{ij}))
+\tag{11}
+\]">\[
+n_p=\det(I-p(a_{ij}))
+\tag{11}
+\]</span>
+<p>annihilates every generator and thus all of <span class="math" data-tex="\(M\)">\(M\)</span>. It satisfies <span class="math" data-tex="\(n_p\equiv1\pmod p\)">\(n_p\equiv1\pmod p\)</span>. In particular <span class="math" data-tex="\(n_p\,1_G\in I_p\)">\(n_p\,1_G\in I_p\)</span>. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, choose <span class="math" data-tex="\(n_p=1\)">\(n_p=1\)</span>. This proves Theorem 2.2, including primes not dividing <span class="math" data-tex="\(|G|\)">\(|G|\)</span>.</p>
+<h2 id="5-brauer-s-integral-theorem">5. Brauer's integral theorem</h2>
+<p id="theorem-5-1" class="result-link"><strong>Theorem 5.1 (Brauer induction).</strong> Every virtual character of <span class="math" data-tex="\(G\)">\(G\)</span> is an integer linear combination of</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_H^G\lambda,
+\qquad H\leq G\text{ elementary},\quad
+\lambda:H\to\mathbb C^\times\text{ one-dimensional}.
+\tag{12}
+\]">\[
+\operatorname{Ind}_H^G\lambda,
+\qquad H\leq G\text{ elementary},\quad
+\lambda:H\to\mathbb C^\times\text{ one-dimensional}.
+\tag{12}
+\]</span>
+<p><strong>Proof.</strong> By Theorem 2.2, <span class="math" data-tex="\(I\)">\(I\)</span> contains <span class="math" data-tex="\(n_p1_G\)">\(n_p1_G\)</span> for every prime <span class="math" data-tex="\(p\)">\(p\)</span>, with <span class="math" data-tex="\(p\nmid n_p\)">\(p\nmid n_p\)</span>. These integers generate the unit ideal in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. To see this without an infinite Bézout sum, start with any nonzero <span class="math" data-tex="\(n_{p_0}\)">\(n_{p_0}\)</span>. If its absolute value exceeds <span class="math" data-tex="\(1\)">\(1\)</span>, choose one <span class="math" data-tex="\(n_q\)">\(n_q\)</span> for each prime divisor <span class="math" data-tex="\(q\)">\(q\)</span> of <span class="math" data-tex="\(n_{p_0}\)">\(n_{p_0}\)</span>. The gcd of this finite list is <span class="math" data-tex="\(1\)">\(1\)</span>, since no prime dividing the first integer divides every entry. The Euclidean algorithm expresses <span class="math" data-tex="\(1\)">\(1\)</span> as an integer combination of that finite list. Therefore <span class="math" data-tex="\(1_G\in I\)">\(1_G\in I\)</span>.</p>
+<p>Lemma 2.1 gives <span class="math" data-tex="\(I=R(G)\)">\(I=R(G)\)</span>. Each character induced from an elementary subgroup <span class="math" data-tex="\(E\)">\(E\)</span> is an integer sum of inductions of its irreducibles. By Theorem 1.2, each such irreducible is <span class="math" data-tex="\(\operatorname{Ind}_H^E\lambda\)">\(\operatorname{Ind}_H^E\lambda\)</span> for a line on a subgroup <span class="math" data-tex="\(H\leq E\)">\(H\leq E\)</span>. That subgroup is itself elementary, by the subgroup argument after (2). Induction in stages gives (12). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem permits negative coefficients. It does not assert that an arbitrary irreducible is itself induced from a line, or even from a proper elementary subgroup.</p>
+<h2 id="6-lines-sums-and-differences-in-small-groups">6. Lines, sums and differences in small groups</h2>
+<p>For <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, the degree-two standard character is <span class="math" data-tex="\(\operatorname{Ind}_{C_3}^{S_3}\omega\)">\(\operatorname{Ind}_{C_3}^{S_3}\omega\)</span>, with <span class="math" data-tex="\(\omega\)">\(\omega\)</span> nontrivial. The two remaining characters satisfy</p>
+<span class="math math-display" data-tex="\[
+1=\operatorname{Ind}_{C_2}^{S_3}1
+-\operatorname{Ind}_{C_3}^{S_3}\omega,\qquad
+\mathrm{sgn}=\operatorname{Ind}_{C_2}^{S_3}\varepsilon
+-\operatorname{Ind}_{C_3}^{S_3}\omega.
+\]">\[
+1=\operatorname{Ind}_{C_2}^{S_3}1
+-\operatorname{Ind}_{C_3}^{S_3}\omega,\qquad
+\mathrm{sgn}=\operatorname{Ind}_{C_2}^{S_3}\varepsilon
+-\operatorname{Ind}_{C_3}^{S_3}\omega.
+\]</span>
+<p>These are the explicit integral decompositions established in the preceding lesson. Both cyclic subgroups are elementary.</p>
+<p>For <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>, the group itself is <span class="math" data-tex="\(2\)">\(2\)</span>-elementary. Its degree-two irreducible is already monomial from the proper subgroup <span class="math" data-tex="\(\langle i\rangle\cong C_4\)">\(\langle i\rangle\cong C_4\)</span>: induce the line <span class="math" data-tex="\(\eta(i)=i\)">\(\eta(i)=i\)</span>. The induced trace is <span class="math" data-tex="\(2,-2,0,0,0\)">\(2,-2,0,0,0\)</span> on its five classes. In particular this induction does not make the representation realizable over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>; the line has nonrational values.</p>
+<p>A more informative example is</p>
+<span class="math math-display" data-tex="\[
+G=Q_8\rtimes\langle t\rangle,\qquad
+t^3=1,\quad t i t^{-1}=j,\quad t j t^{-1}=k.
+\tag{13}
+\]">\[
+G=Q_8\rtimes\langle t\rangle,\qquad
+t^3=1,\quad t i t^{-1}=j,\quad t j t^{-1}=k.
+\tag{13}
+\]</span>
+<p>This is isomorphic to <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb F_3)\)">\(\mathrm{SL}_2(\mathbb F_3)\)</span>. For a direct verification, put</p>
+<span class="math math-display" data-tex="\[
+i=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},
+\quad j=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}
+\]">\[
+i=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},
+\quad j=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}
+\]</span>
+<p>over <span class="math" data-tex="\(\mathbb F_3\)">\(\mathbb F_3\)</span>. They generate <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>. The matrix <span class="math" data-tex="\(v=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)">\(v=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span> has order three and permutes the three pairs <span class="math" data-tex="\(\{\pm i\},\{\pm j\},\{\pm k\}\)">\(\{\pm i\},\{\pm j\},\{\pm k\}\)</span> cyclically by conjugation. Choose signs of the generators and <span class="math" data-tex="\(t=v\)">\(t=v\)</span> or <span class="math" data-tex="\(v^{-1}\)">\(v^{-1}\)</span> to give (13). The subgroup generated has <span class="math" data-tex="\(8\cdot3=24\)">\(8\cdot3=24\)</span> elements. There are exactly <span class="math" data-tex="\(24\)">\(24\)</span> determinant-one matrices: eight nonzero first columns and three second columns of determinant one for each. This proves the isomorphism.</p>
+<p>The quaternion representation has a two-dimensional extension <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to (13). View unit quaternions as complex <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices by</p>
+<span class="math math-display" data-tex="\[
+i\mapsto\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},
+\qquad
+j\mapsto\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}.
+\]">\[
+i\mapsto\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},
+\qquad
+j\mapsto\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}.
+\]</span>
+<p>The unit quaternion <span class="math" data-tex="\(u=(-1+i+j+k)/2\)">\(u=(-1+i+j+k)/2\)</span> has order three: with <span class="math" data-tex="\(w=(i+j+k)/\sqrt3\)">\(w=(i+j+k)/\sqrt3\)</span>, it equals <span class="math" data-tex="\(-1/2+(\sqrt3/2)w\)">\(-1/2+(\sqrt3/2)w\)</span>, where <span class="math" data-tex="\(w^2=-1\)">\(w^2=-1\)</span>. Conjugation by <span class="math" data-tex="\(u\)">\(u\)</span> cyclically permutes <span class="math" data-tex="\(i,j,k\)">\(i,j,k\)</span> in one direction; choose <span class="math" data-tex="\(u\)">\(u\)</span> or <span class="math" data-tex="\(u^{-1}\)">\(u^{-1}\)</span> so it agrees with (13). Its complex eigenvalues are <span class="math" data-tex="\(\omega,\omega^2\)">\(\omega,\omega^2\)</span>, where <span class="math" data-tex="\(\omega=e^{2\pi i/3}\)">\(\omega=e^{2\pi i/3}\)</span>, since its trace is <span class="math" data-tex="\(-1\)">\(-1\)</span>, determinant is <span class="math" data-tex="\(1\)">\(1\)</span>, and it has order three. Sending <span class="math" data-tex="\(t\)">\(t\)</span> to this matrix defines the extension. It is irreducible since its restriction to <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span> is.</p>
+<p>Let <span class="math" data-tex="\(\alpha(t)=\omega\)">\(\alpha(t)=\omega\)</span>, <span class="math" data-tex="\(\alpha|_{Q_8}=1\)">\(\alpha|_{Q_8}=1\)</span>, and write <span class="math" data-tex="\(\chi_r\)">\(\chi_r\)</span> for the character of <span class="math" data-tex="\(\rho\otimes\alpha^r\)">\(\rho\otimes\alpha^r\)</span>, with indices modulo three. They are distinct: their values at <span class="math" data-tex="\(t\)">\(t\)</span> are <span class="math" data-tex="\(-\omega^r\)">\(-\omega^r\)</span>. The central element <span class="math" data-tex="\(z=-1\)">\(z=-1\)</span> acts as <span class="math" data-tex="\(-I\)">\(-I\)</span> in all three.</p>
+<p>Let <span class="math" data-tex="\(K=\langle z,t\rangle\cong C_6\)">\(K=\langle z,t\rangle\cong C_6\)</span>, and let <span class="math" data-tex="\(\lambda_r(z)=-1,\ \lambda_r(t)=\omega^r\)">\(\lambda_r(z)=-1,\ \lambda_r(t)=\omega^r\)</span>. Reciprocity gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_{Q_8}^G\psi=\chi_0+\chi_1+\chi_2,\qquad
+\operatorname{Ind}_K^G\lambda_r=\chi_{r+1}+\chi_{r+2}.
+\tag{14}
+\]">\[
+\operatorname{Ind}_{Q_8}^G\psi=\chi_0+\chi_1+\chi_2,\qquad
+\operatorname{Ind}_K^G\lambda_r=\chi_{r+1}+\chi_{r+2}.
+\tag{14}
+\]</span>
+<p>For the first equality each multiplicity is one by restriction to <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>; the displayed constituents already fill degree six. For the second, the two eigencharacters of <span class="math" data-tex="\(K\)">\(K\)</span> on <span class="math" data-tex="\(\rho\otimes\alpha^s\)">\(\rho\otimes\alpha^s\)</span> are <span class="math" data-tex="\(\lambda_{s+1},\lambda_{s+2}\)">\(\lambda_{s+1},\lambda_{s+2}\)</span>; the two constituents indicated by reciprocity fill degree four. Subtract (14), and use <span class="math" data-tex="\(\psi=\operatorname{Ind}_{C_4}^{Q_8}\eta\)">\(\psi=\operatorname{Ind}_{C_4}^{Q_8}\eta\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\chi_r=\operatorname{Ind}_{C_4}^G\eta
+-\operatorname{Ind}_{C_6}^G\lambda_r.
+\tag{15}
+\]">\[
+\chi_r=\operatorname{Ind}_{C_4}^G\eta
+-\operatorname{Ind}_{C_6}^G\lambda_r.
+\tag{15}
+\]</span>
+<p>This is a concrete Brauer expression using proper cyclic subgroups.</p>
+<p>Yet <span class="math" data-tex="\(G\)">\(G\)</span> is not an M-group. A monomial irreducible of degree two would require a subgroup of index two. Such a subgroup would give a nontrivial homomorphism <span class="math" data-tex="\(G\to C_2\)">\(G\to C_2\)</span>. In any abelian quotient of (13), conjugation gives <span class="math" data-tex="\(i=j=k\)">\(i=j=k\)</span>, and <span class="math" data-tex="\(ij=k\)">\(ij=k\)</span> then forces their common image to be the identity. The quotient is generated by the image of <span class="math" data-tex="\(t\)">\(t\)</span>, of order dividing three. It has no nontrivial <span class="math" data-tex="\(C_2\)">\(C_2\)</span> quotient. Thus these degree-two irreducibles are not monomial. Nilpotent monomiality cannot be extended to all solvable groups: the series <span class="math" data-tex="\(1&lt;\{\pm1\}&lt;Q_8&lt;G\)">\(1&lt;\{\pm1\}&lt;Q_8&lt;G\)</span> has abelian factors, so this particular counterexample is solvable.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> List the elementary subgroups of <span class="math" data-tex="\(S_4\)">\(S_4\)</span> up to conjugacy, and justify completeness.</p>
+<p><strong>Solution.</strong> The list has eight entries:</p>
+<table>
+<thead>
+<tr>
+<th>Subgroup</th>
+<th>Representative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td>the identity subgroup</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(C_2\)">\(C_2\)</span></td>
+<td><span class="math" data-tex="\(\langle(12)\rangle\)">\(\langle(12)\rangle\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(C_2\)">\(C_2\)</span></td>
+<td><span class="math" data-tex="\(\langle(12)(34)\rangle\)">\(\langle(12)(34)\rangle\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(C_3\)">\(C_3\)</span></td>
+<td><span class="math" data-tex="\(\langle(123)\rangle\)">\(\langle(123)\rangle\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(C_4\)">\(C_4\)</span></td>
+<td><span class="math" data-tex="\(\langle(1234)\rangle\)">\(\langle(1234)\rangle\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(V_4\)">\(V_4\)</span></td>
+<td><span class="math" data-tex="\(\{1,(12)(34),(13)(24),(14)(23)\}\)">\(\{1,(12)(34),(13)(24),(14)(23)\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(V_4\)">\(V_4\)</span></td>
+<td><span class="math" data-tex="\(\langle(12),(34)\rangle\)">\(\langle(12),(34)\rangle\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(D_8\)">\(D_8\)</span></td>
+<td><span class="math" data-tex="\(\langle(1234),(13)\rangle\)">\(\langle(1234),(13)\rangle\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Every <span class="math" data-tex="\(2\)">\(2\)</span>-subgroup lies in a conjugate of this Sylow <span class="math" data-tex="\(D_8\)">\(D_8\)</span>. Its subgroups have orders <span class="math" data-tex="\(1,2,4,8\)">\(1,2,4,8\)</span>. The order-four possibilities are <span class="math" data-tex="\(C_4\)">\(C_4\)</span> and <span class="math" data-tex="\(V_4\)">\(V_4\)</span>; a <span class="math" data-tex="\(V_4\)">\(V_4\)</span> with a transposition must also contain its disjoint commuting transposition, whereas one without transpositions is the displayed normal <span class="math" data-tex="\(V_4\)">\(V_4\)</span>. This proves the classification of <span class="math" data-tex="\(2\)">\(2\)</span>-subgroups.</p>
+<p>For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, a nontrivial odd cyclic factor must be <span class="math" data-tex="\(C_3\)">\(C_3\)</span>, since the odd element orders in <span class="math" data-tex="\(S_4\)">\(S_4\)</span> are <span class="math" data-tex="\(1,3\)">\(1,3\)</span>. Its centralizer is <span class="math" data-tex="\(C_3\)">\(C_3\)</span>, so it cannot commute with a nontrivial <span class="math" data-tex="\(2\)">\(2\)</span>-group. This adds just <span class="math" data-tex="\(C_3\)">\(C_3\)</span>. For <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, a nontrivial <span class="math" data-tex="\(3\)">\(3\)</span>-group is <span class="math" data-tex="\(C_3\)">\(C_3\)</span>, whose centralizer again permits no nontrivial cyclic factor prime to three. With trivial <span class="math" data-tex="\(3\)">\(3\)</span>-part the subgroup is cyclic, already on the list. For all other primes the <span class="math" data-tex="\(p\)">\(p\)</span>-part is trivial, so once again the subgroup is cyclic. All eight displayed subgroups are elementary, proving both directions.</p>
+<p><strong>Exercise 2.</strong> Prove monomiality for groups of order <span class="math" data-tex="\(p^3\)">\(p^3\)</span>. In the nonabelian case give a subgroup of index <span class="math" data-tex="\(p\)">\(p\)</span> from which every degree-<span class="math" data-tex="\(p\)">\(p\)</span> irreducible is induced.</p>
+<p><strong>Solution.</strong> An abelian group has only linear complex irreducibles. Suppose <span class="math" data-tex="\(N\)">\(N\)</span> is nonabelian of order <span class="math" data-tex="\(p^3\)">\(p^3\)</span>. Its centre has order <span class="math" data-tex="\(p\)">\(p\)</span>: it is nontrivial, and a centre of index <span class="math" data-tex="\(p\)">\(p\)</span> would make <span class="math" data-tex="\(N/Z(N)\)">\(N/Z(N)\)</span> cyclic, forcing <span class="math" data-tex="\(N\)">\(N\)</span> abelian. To verify that last assertion, write every element as <span class="math" data-tex="\(x^a z\)">\(x^a z\)</span> for one lift <span class="math" data-tex="\(x\)">\(x\)</span> of a quotient generator and central <span class="math" data-tex="\(z\)">\(z\)</span>; all such elements commute.</p>
+<p>Choose <span class="math" data-tex="\(x\notin Z(N)\)">\(x\notin Z(N)\)</span>. The subgroup <span class="math" data-tex="\(A=\langle x,Z(N)\rangle\)">\(A=\langle x,Z(N)\rangle\)</span> is abelian and has order <span class="math" data-tex="\(p^2\)">\(p^2\)</span>. It cannot have order <span class="math" data-tex="\(p\)">\(p\)</span>, since it contains the centre and an element outside it, and cannot have order <span class="math" data-tex="\(p^3\)">\(p^3\)</span>, since <span class="math" data-tex="\(N\)">\(N\)</span> is nonabelian. A subgroup of index <span class="math" data-tex="\(p\)">\(p\)</span> in a <span class="math" data-tex="\(p\)">\(p\)</span>-group is normal. Here is a direct proof: its coset action has transitive <span class="math" data-tex="\(p\)">\(p\)</span>-group image in <span class="math" data-tex="\(S_p\)">\(S_p\)</span>; the <span class="math" data-tex="\(p\)">\(p\)</span>-part of <span class="math" data-tex="\(p!\)">\(p!\)</span> is <span class="math" data-tex="\(p\)">\(p\)</span>, so the image has order <span class="math" data-tex="\(p\)">\(p\)</span> and a point stabilizer is trivial. The original subgroup is therefore the action kernel.</p>
+<p>Character degrees divide <span class="math" data-tex="\(p^3\)">\(p^3\)</span>, and their squares do not exceed <span class="math" data-tex="\(|N|=p^3\)">\(|N|=p^3\)</span>. Thus a nonlinear irreducible has degree <span class="math" data-tex="\(p\)">\(p\)</span>. It is faithful: a nontrivial kernel would give a quotient of order at most <span class="math" data-tex="\(p^2\)">\(p^2\)</span>, which is abelian. A group of order <span class="math" data-tex="\(p^2\)">\(p^2\)</span> is abelian by the same centre and cyclic-quotient argument.</p>
+<p>Restriction to <span class="math" data-tex="\(A\)">\(A\)</span> has at least two distinct linear weights, since faithfulness and a single scalar weight would put <span class="math" data-tex="\(A\)">\(A\)</span> in the centre. Clifford's theorem makes their orbit size a divisor of <span class="math" data-tex="\([N:A]=p\)">\([N:A]=p\)</span>, hence exactly <span class="math" data-tex="\(p\)">\(p\)</span>. The inertia group is <span class="math" data-tex="\(A\)">\(A\)</span>. Its irreducible weight space is a line, and the correspondence gives <span class="math" data-tex="\(V=\operatorname{Ind}_A^N\lambda\)">\(V=\operatorname{Ind}_A^N\lambda\)</span>. Linear irreducibles require no induction from a proper subgroup. This proves the claim, also for <span class="math" data-tex="\(p=2\)">\(p=2\)</span>.</p>
+<p><strong>Exercise 3.</strong> Prove directly from the projection formula that inductions from any chosen family of subgroups generate an ideal in the character ring.</p>
+<p><strong>Solution.</strong> For a family <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, let <span class="math" data-tex="\(L=\sum_{H\in\mathcal F}\operatorname{Ind}_H^G R(H)\)">\(L=\sum_{H\in\mathcal F}\operatorname{Ind}_H^G R(H)\)</span>. It is an additive subgroup by construction. For <span class="math" data-tex="\(\beta\in R(G)\)">\(\beta\in R(G)\)</span>, a generator <span class="math" data-tex="\(\operatorname{Ind}_H^G\gamma\)">\(\operatorname{Ind}_H^G\gamma\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\beta\operatorname{Ind}_H^G\gamma
+=\operatorname{Ind}_H^G((\operatorname{Res}_H^G\beta)\gamma)\in L.
+\]">\[
+\beta\operatorname{Ind}_H^G\gamma
+=\operatorname{Ind}_H^G((\operatorname{Res}_H^G\beta)\gamma)\in L.
+\]</span>
+<p>Distributing multiplication across finite sums gives <span class="math" data-tex="\(\beta L\subseteq L\)">\(\beta L\subseteq L\)</span>. No closure property of the subgroup family is needed. The same calculation after extending coefficients to <span class="math" data-tex="\(D\)">\(D\)</span> proves that the temporary ideal <span class="math" data-tex="\(J_p\)">\(J_p\)</span> in the local proof is an ideal.</p>
+<p><strong>Exercise 4.</strong> Express the trivial character of <span class="math" data-tex="\(A_4\)">\(A_4\)</span> as an explicit integer combination of characters induced from lines on elementary subgroups.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(V=\{1,(12)(34),(13)(24),(14)(23)\}\)">\(V=\{1,(12)(34),(13)(24),(14)(23)\}\)</span>, choose any nontrivial linear character <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span>, and let <span class="math" data-tex="\(C=\langle(123)\rangle\)">\(C=\langle(123)\rangle\)</span>. We claim</p>
+<span class="math math-display" data-tex="\[
+1_{A_4}=\operatorname{Ind}_C^{A_4}1
+-\operatorname{Ind}_V^{A_4}\lambda.
+\tag{16}
+\]">\[
+1_{A_4}=\operatorname{Ind}_C^{A_4}1
+-\operatorname{Ind}_V^{A_4}\lambda.
+\tag{16}
+\]</span>
+<p>Check the four conjugacy classes. The coset permutation character from <span class="math" data-tex="\(C\)">\(C\)</span> has values <span class="math" data-tex="\(4,0,1,1\)">\(4,0,1,1\)</span> at the identity, the double transpositions, and the two three-cycle classes. At a three-cycle, its centralizer has size three and exactly one of the two nonidentity elements of <span class="math" data-tex="\(C\)">\(C\)</span> belongs to the relevant <span class="math" data-tex="\(A_4\)">\(A_4\)</span> class; the induction formula therefore gives <span class="math" data-tex="\(3/3=1\)">\(3/3=1\)</span>. A double transposition has no conjugate in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>The normal subgroup <span class="math" data-tex="\(V\)">\(V\)</span> has index three. On its identity the second induced character is <span class="math" data-tex="\(3\)">\(3\)</span>. Its three nonidentity elements are permuted transitively by <span class="math" data-tex="\(A_4/V\)">\(A_4/V\)</span>, so at a double transposition the value is the sum of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> at those three elements, namely <span class="math" data-tex="\(-1\)">\(-1\)</span>; the sum over all of <span class="math" data-tex="\(V\)">\(V\)</span> is zero for a nontrivial line. Outside <span class="math" data-tex="\(V\)">\(V\)</span> it is zero. Its values are consequently <span class="math" data-tex="\(3,-1,0,0\)">\(3,-1,0,0\)</span>. Subtracting gives <span class="math" data-tex="\(1,1,1,1\)">\(1,1,1,1\)</span>, proving (16). The group <span class="math" data-tex="\(V\)">\(V\)</span> is <span class="math" data-tex="\(2\)">\(2\)</span>-elementary and <span class="math" data-tex="\(C\)">\(C\)</span> is cyclic elementary. The negative term is essential in this expression.</p>
+<h2 id="8-earlier-results-used-without-proof">8. Earlier results used without proof</h2>
+<p>Maschke's theorem over characteristic-zero fields and Schur's lemma are Theorems 2.3 and 3.1 of <a href="representations-and-complete-reducibility.html">Representations and complete reducibility</a>.</p>
+<p>The character basis, degree-square identity, and Hom multiplicities are proved in §§2–4 of <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a>. The centralizer Sylow subgroup used in (9) exists by Lemma 4.2 of <a href="integrality-of-characters-and-burnsides-theorem.html">Integrality of characters and Burnside's <span class="math" data-tex="\(p^a q^b\)">\(p^a q^b\)</span> theorem</a>, with its proof included there. We also use that lesson's Lemma 1.1 on algebraic integers and Theorem 2.2 on divisibility of character degrees; Lemma 1.2 supplies the earlier normalized-trace argument's cyclotomic fixed-field step.</p>
+<p>Induction, reciprocity, transitivity and the projection formula are proved in §§1–4 of <em>Induced representations and Frobenius reciprocity</em>. The inertia-group correspondence is Theorem 4.1 of <em>Mackey theory and Clifford's theorem</em>. General cyclotomic irreducibility is Lemma 1.1 of <em>Artin's induction theorem and rationality</em>. Its Artin theorem gives rational cyclic induction; the proof here does not use Brauer's later splitting-field theorem. The localization, finite-module, residue-field and integer-descent steps needed for the local lemma were all proved above.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>J. Kramár</strong>, <a href="https://www.math.utoronto.ca/murnaghan/courses/mat445/artinbrauer.pdf"><em>Artin's and Brauer's Theorems on Induced Characters</em></a>, 2005, §3, for a proof using integer-valued class functions and elementary centralizers.</li>
+<li><strong>C. Teleman</strong>, <a href="https://math.berkeley.edu/~teleman/math/RepThry.pdf"><em>Representation Theory</em></a>, §18, for the elementary-subgroup induction statement; that treatment refers to Serre for its proof.</li>
+<li><strong>C. Gruson and V. Serganova</strong>, <em>A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras</em>, Universitext, Springer, 2018, Chapter 2 §§7 and 12, for Clifford theory and the Artin precursor.</li>
+</ul>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

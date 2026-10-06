@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monodromy blocks and the passage from supercuspidals to all parameters · The local Langlands correspondence for GL_n</title>
+<meta name="description" content="A lesson of the course The local Langlands correspondence for GL_n. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-LLC/LG-LLC-05.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The local Langlands correspondence for GL_n</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="monodromy-blocks-and-the-passage-from-supercuspidals-to-all-parameters">Monodromy blocks and the passage from supercuspidals to all parameters</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Weil representation records the semisimple part of a local parameter. A nilpotent operator records the extra information that appears, for example, at multiplicative reduction. The important structural fact is that this operator organizes irreducible Weil representations into finite chains. Those chains are the parameter-side counterparts of segments in the representation theory of general linear groups.</p>
+<p>We assume the definitions of Weil representations and local factors, and the Langlands classification by segments from <em>Irreducible representations of general linear groups over a local field</em>. The classification of Weil–Deligne objects is proved here by graded linear algebra. The reduction theorem for the full correspondence is then stated separately from this algebraic bijection. Basic references are [Blasius 2006], [Getz–Hahn 2022] and [Wedhorn 2000].</p>
+<h2 id="1-two-versions-of-the-special-block">1. Two versions of the special block</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a nonarchimedean local field, with <span class="math" data-tex="\(\lVert\Phi\rVert=q^{-1}\)">\(\lVert\Phi\rVert=q^{-1}\)</span> for geometric Frobenius. A Frobenius-semisimple Weil–Deligne representation is a pair <span class="math" data-tex="\((r,N)\)">\((r,N)\)</span> on a finite-dimensional complex vector space, with <span class="math" data-tex="\(r\)">\(r\)</span> smooth on inertia, <span class="math" data-tex="\(r(\Phi)\)">\(r(\Phi)\)</span> semisimple, <span class="math" data-tex="\(N\)">\(N\)</span> nilpotent, and</p>
+<span class="math math-display" data-tex="\[
+r(w)Nr(w)^{-1}=\lVert w\rVert N.
+\tag{1.1}
+\]">\[
+r(w)Nr(w)^{-1}=\lVert w\rVert N.
+\tag{1.1}
+\]</span>
+<p>Define the <strong>uncentered block</strong> <span class="math" data-tex="\(\operatorname{Sp}(k)\)">\(\operatorname{Sp}(k)\)</span> on <span class="math" data-tex="\(e_0,\ldots,e_{k-1}\)">\(e_0,\ldots,e_{k-1}\)</span> by</p>
+<span class="math math-display" data-tex="\[
+r(w)e_j=\lVert w\rVert^j e_j,
+\quad Ne_j=e_{j+1}\ (j&lt;k-1),\quad Ne_{k-1}=0.
+\]">\[
+r(w)e_j=\lVert w\rVert^j e_j,
+\quad Ne_j=e_{j+1}\ (j&lt;k-1),\quad Ne_{k-1}=0.
+\]</span>
+<p>Its <strong>centered block</strong> is</p>
+<span class="math math-display" data-tex="\[
+S_k=\lVert\cdot\rVert^{-(k-1)/2}\operatorname{Sp}(k).
+\tag{1.2}
+\]">\[
+S_k=\lVert\cdot\rVert^{-(k-1)/2}\operatorname{Sp}(k).
+\tag{1.2}
+\]</span>
+<p>The Weil exponents of <span class="math" data-tex="\(S_k\)">\(S_k\)</span> run from <span class="math" data-tex="\(-(k-1)/2\)">\(-(k-1)/2\)</span> to <span class="math" data-tex="\((k-1)/2\)">\((k-1)/2\)</span>. Its determinant is one, and <span class="math" data-tex="\(\ker N\)">\(\ker N\)</span> has exponent <span class="math" data-tex="\((k-1)/2\)">\((k-1)/2\)</span>. We write <span class="math" data-tex="\(S_k\)">\(S_k\)</span>, rather than leaving the centering implicit, when identifying a unitary Steinberg representation. Both conventions will be used, but never interchangeably.</p>
+<h2 id="2-why-frobenius-semisimplicity-gives-enough-semisimplicity">2. Why Frobenius semisimplicity gives enough semisimplicity</h2>
+<p><strong>Lemma 2.1 (Weil-group prerequisite).</strong> If <span class="math" data-tex="\(r\)">\(r\)</span> is smooth on inertia and <span class="math" data-tex="\(r(\Phi)\)">\(r(\Phi)\)</span> is semisimple, then <span class="math" data-tex="\(r\)">\(r\)</span> is a semisimple Weil representation.</p>
+<p>This is <a href="../LG-GAL/representations-of-weil-groups.html">Representations of Weil groups</a>, Theorem 3.1, with the same geometric Frobenius convention. Smoothness gives finite inertia image in finite dimension, exactly the hypothesis of that theorem. We use this semisimplicity to form isotypic components; the graded monodromy classification is proved in the next section.</p>
+<p>If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is irreducible of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, then <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and <span class="math" data-tex="\(\rho\lVert\cdot\rVert^a\)">\(\rho\lVert\cdot\rVert^a\)</span> are nonisomorphic for a nonzero integer <span class="math" data-tex="\(a\)">\(a\)</span>: equality of determinants at <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> would require <span class="math" data-tex="\(q^{-ad}=1\)">\(q^{-ad}=1\)</span>. Thus the integer norm twists of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> form an infinite chain of distinct labels.</p>
+<p>Equation (1.1) says that <span class="math" data-tex="\(N\)">\(N\)</span> maps the <span class="math" data-tex="\(\rho\lVert\cdot\rVert^a\)">\(\rho\lVert\cdot\rVert^a\)</span>-isotypic component into the <span class="math" data-tex="\(\rho\lVert\cdot\rVert^{a+1}\)">\(\rho\lVert\cdot\rVert^{a+1}\)</span>-isotypic component. Different integer-twist orbits therefore do not interact.</p>
+<h2 id="3-a-graded-jordan-basis">3. A graded Jordan basis</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(M=\bigoplus_{a\in\mathbb Z}M_a\)">\(M=\bigoplus_{a\in\mathbb Z}M_a\)</span> have finite support, and let <span class="math" data-tex="\(T:M_a\to M_{a+1}\)">\(T:M_a\to M_{a+1}\)</span> be nilpotent. There is a basis consisting of homogeneous chains</p>
+<span class="math math-display" data-tex="\[
+x,Tx,\ldots,T^{k-1}x,
+\qquad T^kx=0.
+\tag{3.1}
+\]">\[
+x,Tx,\ldots,T^{k-1}x,
+\qquad T^kx=0.
+\tag{3.1}
+\]</span>
+<p>The multiset of starting degrees and chain lengths is uniquely determined.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(F_j=\ker T\cap\operatorname{im}T^j\)">\(F_j=\ker T\cap\operatorname{im}T^j\)</span>. This is a descending graded filtration of <span class="math" data-tex="\(\ker T\)">\(\ker T\)</span>. Choose a homogeneous basis of <span class="math" data-tex="\(\ker T\)">\(\ker T\)</span> compatible with every <span class="math" data-tex="\(F_j\)">\(F_j\)</span>. For a basis vector <span class="math" data-tex="\(y_i\)">\(y_i\)</span>, let <span class="math" data-tex="\(h_i\)">\(h_i\)</span> be the largest <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(y_i\in F_j\)">\(y_i\in F_j\)</span>. Choose a homogeneous lift <span class="math" data-tex="\(x_i\)">\(x_i\)</span> with <span class="math" data-tex="\(T^{h_i}x_i=y_i\)">\(T^{h_i}x_i=y_i\)</span>; it exists in degree <span class="math" data-tex="\(\deg y_i-h_i\)">\(\deg y_i-h_i\)</span>. These are the chains of length <span class="math" data-tex="\(h_i+1\)">\(h_i+1\)</span>.</p>
+<p>They are linearly independent. In a relation among their vectors, give <span class="math" data-tex="\(T^a x_i\)">\(T^a x_i\)</span> its remaining length <span class="math" data-tex="\(h_i-a\)">\(h_i-a\)</span>. Apply <span class="math" data-tex="\(T^b\)">\(T^b\)</span>, where <span class="math" data-tex="\(b\)">\(b\)</span> is the largest remaining length occurring. All shorter terms vanish, and the surviving terms are distinct basis vectors <span class="math" data-tex="\(y_i\)">\(y_i\)</span>. Their coefficients are zero. Repeating proves that every coefficient in the relation was zero.</p>
+<p>They span, because</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_i(h_i+1)&amp;=\sum_{j\ge0}\dim F_j\\
+&amp;=\sum_{j\ge0}(\dim\operatorname{im}T^j-\dim\operatorname{im}T^{j+1})
+=\dim M.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_i(h_i+1)&amp;=\sum_{j\ge0}\dim F_j\\
+&amp;=\sum_{j\ge0}(\dim\operatorname{im}T^j-\dim\operatorname{im}T^{j+1})
+=\dim M.
+\end{aligned}
+\]</span>
+<p>For uniqueness, let <span class="math" data-tex="\(R_{a,b}\)">\(R_{a,b}\)</span> be the rank of <span class="math" data-tex="\(T^{b-a}:M_a\to M_b\)">\(T^{b-a}:M_a\to M_b\)</span>, for <span class="math" data-tex="\(a\le b\)">\(a\le b\)</span>. A chain contributes one to <span class="math" data-tex="\(R_{a,b}\)">\(R_{a,b}\)</span> exactly when its interval contains <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>. Therefore the number of chains with interval exactly <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> is</p>
+<span class="math math-display" data-tex="\[
+R_{a,b}-R_{a-1,b}-R_{a,b+1}+R_{a-1,b+1}.
+\tag{3.2}
+\]">\[
+R_{a,b}-R_{a-1,b}-R_{a,b+1}+R_{a-1,b+1}.
+\tag{3.2}
+\]</span>
+<p>These intrinsic ranks determine every multiplicity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2.</strong> Every Frobenius-semisimple Weil–Deligne representation is a direct sum of blocks</p>
+<span class="math math-display" data-tex="\[
+\rho\otimes\operatorname{Sp}(k),
+\]">\[
+\rho\otimes\operatorname{Sp}(k),
+\]</span>
+<p>where <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is an irreducible Weil representation. Each block is indecomposable. The multiset of pairs <span class="math" data-tex="\((\rho,k)\)">\((\rho,k)\)</span> is unique. Equivalently one may use centered blocks <span class="math" data-tex="\(\tau\otimes S_k\)">\(\tau\otimes S_k\)</span>, with <span class="math" data-tex="\(\tau=\rho\lVert\cdot\rVert^{(k-1)/2}\)">\(\tau=\rho\lVert\cdot\rVert^{(k-1)/2}\)</span>.</p>
+<p><strong>Proof.</strong> Lemma 2.1 decomposes the underlying Weil representation into irreducibles. Choose one representative <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> on each integer-twist orbit and write its part as</p>
+<span class="math math-display" data-tex="\[
+\bigoplus_a(\rho_0\lVert\cdot\rVert^a)\otimes M_a.
+\]">\[
+\bigoplus_a(\rho_0\lVert\cdot\rVert^a)\otimes M_a.
+\]</span>
+<p>By (1.1) and Schur's lemma, <span class="math" data-tex="\(N\)">\(N\)</span> is identity on the irreducible factor, tensored with a linear map <span class="math" data-tex="\(T_a:M_a\to M_{a+1}\)">\(T_a:M_a\to M_{a+1}\)</span>, after fixing the obvious twist identifications. Lemma 3.1 decomposes the multiplicity spaces into interval chains. A chain starting at <span class="math" data-tex="\(a\)">\(a\)</span> of length <span class="math" data-tex="\(k\)">\(k\)</span> is exactly <span class="math" data-tex="\((\rho_0\lVert\cdot\rVert^a)\otimes\operatorname{Sp}(k)\)">\((\rho_0\lVert\cdot\rVert^a)\otimes\operatorname{Sp}(k)\)</span>.</p>
+<p>A single chain is indecomposable: its graded endomorphisms commuting with the consecutive identity maps have one common scalar, so it has no nontrivial idempotent. Formula (3.2) proves uniqueness within each twist orbit, and different orbits do not interact. Finally (1.2) gives the centered version. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Frobenius-semisimple does not mean semisimple as a Weil–Deligne representation. For example <span class="math" data-tex="\(S_2\)">\(S_2\)</span> is indecomposable, with a nonzero monodromy operator. It is not an irreducible Weil representation.</p>
+<h2 id="4-segments-have-the-same-labels-as-monodromy-chains">4. Segments have the same labels as monodromy chains</h2>
+<p>Suppose, in every rank, a twist-compatible bijection <span class="math" data-tex="\(c\)">\(c\)</span> has been given from supercuspidal representations to irreducible Weil representations. Write <span class="math" data-tex="\(\nu=\lvert\det\rvert_F\)">\(\nu=\lvert\det\rvert_F\)</span>. For a segment</p>
+<span class="math math-display" data-tex="\[
+\Delta=[\sigma,\sigma\nu,\ldots,\sigma\nu^{k-1}],
+\]">\[
+\Delta=[\sigma,\sigma\nu,\ldots,\sigma\nu^{k-1}],
+\]</span>
+<p>let <span class="math" data-tex="\(Q(\Delta)\)">\(Q(\Delta)\)</span> be its essentially square-integrable representation. The block assigned to it is</p>
+<span class="math math-display" data-tex="\[
+c(\sigma)\otimes\operatorname{Sp}(k)
+=c(\sigma\nu^{(k-1)/2})\otimes S_k.
+\tag{4.1}
+\]">\[
+c(\sigma)\otimes\operatorname{Sp}(k)
+=c(\sigma\nu^{(k-1)/2})\otimes S_k.
+\tag{4.1}
+\]</span>
+<p>For a Langlands quotient belonging to the multisegment <span class="math" data-tex="\(\{\Delta_1,\ldots,\Delta_t\}\)">\(\{\Delta_1,\ldots,\Delta_t\}\)</span>, take the direct sum of the blocks (4.1).</p>
+<p><strong>Proposition 4.1.</strong> Under the stated supercuspidal bijection and the Langlands classification, this construction is a bijection between irreducible representations of all general linear groups and Frobenius-semisimple Weil–Deligne representations, preserving dimensions.</p>
+<p><strong>Proof.</strong> Langlands classification parametrizes the irreducibles by multisets of segments. Theorem 3.2 parametrizes Weil–Deligne objects by multisets of irreducible starting representations and positive chain lengths. The bijection <span class="math" data-tex="\(c\)">\(c\)</span>, including its compatibility with <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and <span class="math" data-tex="\(\lVert\cdot\rVert\)">\(\lVert\cdot\rVert\)</span>, identifies a segment of length <span class="math" data-tex="\(k\)">\(k\)</span> with a unique block. If <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> has rank <span class="math" data-tex="\(d\)">\(d\)</span>, the segment representation and its parameter both have dimension or rank <span class="math" data-tex="\(dk\)">\(dk\)</span>. Reversing Theorem 3.2 and applying <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span> to each starting label gives the inverse. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is an algebraic parametrization. Preservation of Rankin–Selberg factors requires a further theorem. The reduction theorem says that a family <span class="math" data-tex="\(c\)">\(c\)</span> preserving factors of supercuspidal pairs, character twists, determinants and duals extends by (4.1) to the local Langlands correspondence. Its proof uses the Langlands classification and multiplicativity of local gamma factors; it is not being inferred from the counting of labels in Proposition 4.1. The precise extension formula appears in [Wedhorn 2000, (4.2.2)].</p>
+<p>In rank two this parametrization is particularly concrete. There are exactly three parameter types:</p>
+<ul>
+<li>an irreducible two-dimensional Weil representation with <span class="math" data-tex="\(N=0\)">\(N=0\)</span>;</li>
+<li>a sum of two characters with <span class="math" data-tex="\(N=0\)">\(N=0\)</span>;</li>
+<li>a character times <span class="math" data-tex="\(S_2\)">\(S_2\)</span>, with <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>.</li>
+</ul>
+<p>The last type corresponds to <span class="math" data-tex="\(\operatorname{St}_2\otimes\chi\)">\(\operatorname{St}_2\otimes\chi\)</span>. A character sum corresponds to an irreducible principal series unless the inducing-character ratio is <span class="math" data-tex="\(\lvert\cdot\rvert^{\pm1}\)">\(\lvert\cdot\rvert^{\pm1}\)</span>. At those ratios its Langlands quotient is a character of the determinant. The special constituent at the same reducibility point has the third, nonzero-monodromy parameter. This proves the rank-two non-supercuspidal counting check without conflating the two constituents.</p>
+<h2 id="5-factors-see-the-end-of-the-chain">5. Factors see the end of the chain</h2>
+<p>For <span class="math" data-tex="\(V=(r,N)\)">\(V=(r,N)\)</span>, let <span class="math" data-tex="\(V_N^I=(\ker N)^{I_F}\)">\(V_N^I=(\ker N)^{I_F}\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+L(s,V)=\det(1-q^{-s}r(\Phi)\mid V_N^I)^{-1}.
+\tag{5.1}
+\]">\[
+L(s,V)=\det(1-q^{-s}r(\Phi)\mid V_N^I)^{-1}.
+\tag{5.1}
+\]</span>
+<p><strong>Proposition 5.1.</strong> For irreducible <span class="math" data-tex="\(\rho\)">\(\rho\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L(s,\rho\otimes\operatorname{Sp}(k))
+=L(s,\rho\lVert\cdot\rVert^{k-1}).
+\tag{5.2}
+\]">\[
+L(s,\rho\otimes\operatorname{Sp}(k))
+=L(s,\rho\lVert\cdot\rVert^{k-1}).
+\tag{5.2}
+\]</span>
+<p>If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is ramified the factor is one. If <span class="math" data-tex="\(\rho=\chi\)">\(\rho=\chi\)</span> is unramified and <span class="math" data-tex="\(\alpha=\chi(\varpi)\)">\(\alpha=\chi(\varpi)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi S_k)=(1-\alpha q^{-s-(k-1)/2})^{-1}.
+\tag{5.3}
+\]">\[
+L(s,\chi S_k)=(1-\alpha q^{-s-(k-1)/2})^{-1}.
+\tag{5.3}
+\]</span>
+<p><strong>Proof.</strong> The kernel of monodromy in the uncentered block is its last copy of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, on which Weil action is <span class="math" data-tex="\(\rho\lVert\cdot\rVert^{k-1}\)">\(\rho\lVert\cdot\rVert^{k-1}\)</span>. This proves (5.2) directly from (5.1). The space <span class="math" data-tex="\(\rho^{I_F}\)">\(\rho^{I_F}\)</span> is Weil-stable. Irreducibility makes it either zero or the whole space. In the latter case <span class="math" data-tex="\(\rho\)">\(\rho\)</span> factors through the infinite cyclic quotient, whose irreducible finite-dimensional complex representations are one-dimensional. Thus a ramified irreducible has no invariants, and an unramified irreducible is a character. Centering gives (5.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Weil–Deligne conductor is</p>
+<span class="math math-display" data-tex="\[
+a(r,N)=a(r)+\dim V^{I_F}-\dim(\ker N)^{I_F}.
+\tag{5.4}
+\]">\[
+a(r,N)=a(r)+\dim V^{I_F}-\dim(\ker N)^{I_F}.
+\tag{5.4}
+\]</span>
+<p>Hence <span class="math" data-tex="\(a(\chi S_k)=k-1\)">\(a(\chi S_k)=k-1\)</span> if <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is unramified, and <span class="math" data-tex="\(a(\chi S_k)=k\,a(\chi)\)">\(a(\chi S_k)=k\,a(\chi)\)</span> if it is ramified. In the latter case every Weil summand has conductor <span class="math" data-tex="\(a(\chi)\)">\(a(\chi)\)</span>, and neither space of invariants in the correction term is nonzero.</p>
+<p>For an unramified additive character and self-dual measure, the monodromy correction to the epsilon factor is</p>
+<span class="math math-display" data-tex="\[
+\det(-q^{-s}r(\Phi)\mid V^{I_F}/(\ker N)^{I_F}).
+\]">\[
+\det(-q^{-s}r(\Phi)\mid V^{I_F}/(\ker N)^{I_F}).
+\]</span>
+<p>The underlying unramified Weil summands have epsilon factor one. Multiplying the eigenvalues on the first <span class="math" data-tex="\(k-1\)">\(k-1\)</span> terms of the centered chain gives</p>
+<span class="math math-display" data-tex="\[
+\epsilon(s,\chi S_k,\psi)=(-\alpha)^{k-1}q^{(k-1)(1/2-s)}.
+\tag{5.5}
+\]">\[
+\epsilon(s,\chi S_k,\psi)=(-\alpha)^{k-1}q^{(k-1)(1/2-s)}.
+\tag{5.5}
+\]</span>
+<p>For <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, these formulas give <span class="math" data-tex="\(L(s)= (1-\alpha q^{-s-1/2})^{-1}\)">\(L(s)= (1-\alpha q^{-s-1/2})^{-1}\)</span>, conductor one, and epsilon factor <span class="math" data-tex="\(-\alpha q^{1/2-s}\)">\(-\alpha q^{1/2-s}\)</span>. They fix exactly which line is the kernel of <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<h2 id="6-three-dimensional-examples">6. Three-dimensional examples</h2>
+<p>The centered segment <span class="math" data-tex="\([\nu^{-1},1,\nu]\)">\([\nu^{-1},1,\nu]\)</span> gives <span class="math" data-tex="\(\operatorname{St}_3\)">\(\operatorname{St}_3\)</span> and parameter <span class="math" data-tex="\(S_3\)">\(S_3\)</span>. It has</p>
+<span class="math math-display" data-tex="\[
+L(s,\operatorname{St}_3)=(1-q^{-s-1})^{-1},\quad a(S_3)=2,
+\quad\epsilon(s,S_3,\psi)=q^{1-2s}.
+\]">\[
+L(s,\operatorname{St}_3)=(1-q^{-s-1})^{-1},\quad a(S_3)=2,
+\quad\epsilon(s,S_3,\psi)=q^{1-2s}.
+\]</span>
+<p>The Langlands quotient of <span class="math" data-tex="\(\nu\times1\times\nu^{-1}\)">\(\nu\times1\times\nu^{-1}\)</span>, treating the three singleton segments as separate segments, is the trivial representation of <span class="math" data-tex="\(\operatorname{GL}_3(F)\)">\(\operatorname{GL}_3(F)\)</span>. Its parameter is <span class="math" data-tex="\(\lVert\cdot\rVert\oplus1\oplus\lVert\cdot\rVert^{-1}\)">\(\lVert\cdot\rVert\oplus1\oplus\lVert\cdot\rVert^{-1}\)</span>, with zero monodromy. Its factor is</p>
+<span class="math math-display" data-tex="\[
+\prod_{j=-1}^{1}(1-q^{-s-j})^{-1},
+\]">\[
+\prod_{j=-1}^{1}(1-q^{-s-j})^{-1},
+\]</span>
+<p>and its conductor is zero. The two parameters have the same semisimplified Weil constituents but different <span class="math" data-tex="\(N\)">\(N\)</span>; their <span class="math" data-tex="\(L\)">\(L\)</span>-factors distinguish them.</p>
+<p>Finally choose an unramified character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> whose value <span class="math" data-tex="\(\beta\)">\(\beta\)</span> on a uniformizer is a nontrivial root of unity. The induction <span class="math" data-tex="\(\operatorname{St}_2\times\chi\)">\(\operatorname{St}_2\times\chi\)</span> is irreducible by the nonlinking criterion: its singleton segment is not adjacent to the two-term segment of <span class="math" data-tex="\(\operatorname{St}_2\)">\(\operatorname{St}_2\)</span>. Its parameter is <span class="math" data-tex="\(S_2\oplus\chi\)">\(S_2\oplus\chi\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+L(s)=(1-q^{-s-1/2})^{-1}(1-\beta q^{-s})^{-1},
+\quad a=1,\quad\epsilon(s,\psi)=-q^{1/2-s}.
+\]">\[
+L(s)=(1-q^{-s-1/2})^{-1}(1-\beta q^{-s})^{-1},
+\quad a=1,\quad\epsilon(s,\psi)=-q^{1/2-s}.
+\]</span>
+<p>The qualification on <span class="math" data-tex="\(\chi\)">\(\chi\)</span> ensures irreducibility; for an adjacent singleton one must specify the appropriate Langlands quotient instead.</p>
+<h2 id="7-exercises-with-solutions">7. Exercises with solutions</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Write the centered parameter of <span class="math" data-tex="\(\operatorname{St}_n\)">\(\operatorname{St}_n\)</span> and compute its determinant.</p>
+<p><strong>Solution.</strong> It is <span class="math" data-tex="\(S_n=\lVert\cdot\rVert^{-(n-1)/2}\operatorname{Sp}(n)\)">\(S_n=\lVert\cdot\rVert^{-(n-1)/2}\operatorname{Sp}(n)\)</span>. Its exponents are <span class="math" data-tex="\(j-(n-1)/2\)">\(j-(n-1)/2\)</span> for <span class="math" data-tex="\(0\le j&lt;n\)">\(0\le j&lt;n\)</span>; their sum is zero. The determinant is therefore the trivial character, agreeing with the central character of the untwisted unitary Steinberg representation.</p>
+<p><strong>Exercise 7.2 (medium).</strong> Compute <span class="math" data-tex="\(L(s,\operatorname{St}_3\otimes\chi)\)">\(L(s,\operatorname{St}_3\otimes\chi)\)</span> for an unramified character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, and then for a ramified character.</p>
+<p><strong>Solution.</strong> The parameter is <span class="math" data-tex="\(\chi S_3\)">\(\chi S_3\)</span>. In the unramified case its monodromy kernel has Frobenius eigenvalue <span class="math" data-tex="\(\chi(\varpi)q^{-1}\)">\(\chi(\varpi)q^{-1}\)</span>, giving <span class="math" data-tex="\((1-\chi(\varpi)q^{-s-1})^{-1}\)">\((1-\chi(\varpi)q^{-s-1})^{-1}\)</span>. In the ramified case no vector in the kernel is inertia-fixed, giving one. Formula (5.4) gives conductor two in the first case and <span class="math" data-tex="\(3a(\chi)\)">\(3a(\chi)\)</span> in the second.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Suppose normalized induction from characters <span class="math" data-tex="\(\chi_1,\ldots,\chi_n\)">\(\chi_1,\ldots,\chi_n\)</span> is irreducible. Determine its parameter. Explain why the conclusion about <span class="math" data-tex="\(N\)">\(N\)</span> is different for a Steinberg constituent of a reducible induction.</p>
+<p><strong>Solution.</strong> The Langlands label consists of the singleton segments <span class="math" data-tex="\([\chi_i]\)">\([\chi_i]\)</span>. Each singleton gives its character parameter with zero monodromy, so their direct sum is the parameter and <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. A Steinberg constituent has a different multisegment label: consecutive characters form one segment. The same characters are then connected by the nonzero operator of <span class="math" data-tex="\(S_n\)">\(S_n\)</span>. Being a subquotient of a character induction does not force zero monodromy.</p>
+<p><strong>Exercise 7.4 (hard).</strong> Prove that the segment-to-block construction is injective even when the same Weil irreducible occurs in several overlapping segments.</p>
+<p><strong>Solution.</strong> Separate the integer-twist orbits. On one orbit choose <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span>; the multiplicity spaces <span class="math" data-tex="\(M_a\)">\(M_a\)</span> and the ranks <span class="math" data-tex="\(R_{a,b}\)">\(R_{a,b}\)</span> of their consecutive monodromy maps are intrinsic to the parameter. Formula (3.2) recovers how many segments start at <span class="math" data-tex="\(a\)">\(a\)</span> and end at <span class="math" data-tex="\(b\)">\(b\)</span>, including repetitions and overlapping intervals. Thus it recovers the entire multisegment on that orbit. Repeat for every orbit and apply <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span> to the irreducible starting labels. The recovered multiset determines the Langlands quotient uniquely. Surjectivity is the homogeneous-chain decomposition, so this also supplies a complete inverse to Proposition 4.1.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Weil semisimplicity is the prerequisite <a href="../LG-GAL/representations-of-weil-groups.html">Representations of Weil groups</a>, Theorem 3.1, with its finite-inertia hypothesis checked in Section 2.</p>
+<p>The Langlands and Bernstein–Zelevinsky classifications on the representation side are the inputs in Section 4; see [Getz–Hahn 2022, §§8.4 and 10.5] and [Wedhorn 2000, (2.2.9)]. The existence of the supercuspidal bijection preserving factors is the substantive local Langlands theorem, discussed in <em>The theorem of Harris and Taylor and its strategy</em> and <em>Other existence proofs and further properties</em>. The reduction theorem using multiplicativity of gamma factors is stated in Section 4; see [Wedhorn 2000, (4.2.2)] and [Getz–Hahn 2022, §§11.8 and 12.4]. The definition and normalization of Artin conductors and Weil epsilon factors are taken from [Deligne 1973, §§4–5 and 8]. All chain decomposition, uniqueness, dimension-two counting and block factor calculations in this lesson are proved explicitly.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Blasius 2006] D. Blasius, <a href="https://arxiv.org/abs/math/0511007"><em>Hilbert modular forms and the Ramanujan conjecture</em></a>, in <em>Noncommutative Geometry and Number Theory</em>, Vieweg, 2006, §§1.6–1.7.</li>
+<li>[Getz–Hahn 2022] J. R. Getz and H. Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em></a>, draft of 22 April 2022, §§8.4, 10.5, 11.8 and 12.4.</li>
+<li>[Wedhorn 2000] T. Wedhorn, <a href="https://arxiv.org/abs/math/0011210v2"><em>The local Langlands correspondence for GL(n) over p-adic fields</em></a>, lectures at the School on Automorphic Forms on GL(n), ICTP Trieste, 2000, §§2.2 and 4.2.</li>
+<li>[Deligne 1973] P. Deligne, <a href="https://publications.ias.edu/sites/default/files/Number20.pdf"><em>Les constantes des équations fonctionnelles des fonctions L</em></a>, in <em>Modular Functions of One Variable II</em>, Lecture Notes in Mathematics 349, Springer, 1973, 501–597, §§4–5 and 8.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-LLC-04.html">← The statement of the local Langlands correspondence</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-LLC-06.html">The rank-two correspondence: principal series, Steinberg twists and characters →</a></span></nav>
+<p class="small source-link"><a href="src/LG-LLC-05.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-LLC">Repository</a></nav>
+</footer>
+</body>
+</html>

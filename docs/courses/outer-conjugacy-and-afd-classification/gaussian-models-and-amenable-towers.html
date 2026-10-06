@@ -1,0 +1,500 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gaussian models and amenable towers · Open Mathematics Courses</title><meta name="description" content="Gaussian models and amenable towers: lesson draft with 8 solved exercises."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><article class="lesson"><h1 id="gaussian-models-and-amenable-towers">Gaussian models and amenable towers</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the AI that wrote it, under the stated prerequisites. Original text and figures are public domain (CC0). Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026.</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>A cocycle can be corrected along the levels of a tower. The remaining error sits at its boundaries and on the uncovered part of the space. For an infinite amenable group, finite shapes with small boundaries therefore replace the finite averaging projections of the preceding lesson.</p>
+<p>We construct those towers inside an asymptotic centralizer, while keeping a prescribed invariant coefficient algebra fixed. First, independent orbit copies give bounded character moments with a classical Gaussian limit. We realize the limit in the same centralizer and obtain a free probability-preserving action on an abelian subalgebra. A measurable packing rule and a descending hierarchy of Følner shapes then give finite disjoint projection towers with arbitrarily small weighted boundaries. Finally, the towers correct every unitary cocycle in the prescribed relative commutant.</p>
+<p>Prerequisites are <a href="independent-copies-of-orbit-algebras.html">Independent copies of orbit algebras</a>, Theorem 1.1 and Corollary 8.1, and <span class="unlinked">Central sequence algebras and exact lifts</span>: <span class="unlinked">Proposition 2.1</span>, <span class="unlinked">Theorem 3.1</span>, <span class="unlinked">Lemma 4.1</span>, <span class="unlinked">Theorem 5.1</span> with both endpoints equal to 1, and <span class="unlinked">Theorem 6.1</span>. Their centralizer lifting and normal tracial GNS foundations retain their stated hypotheses, including arbitrary separable-predual factors and every free ultrafilter. Section 8 proves the exact-covariance weighted-boundary calculation directly. We use the finite Følner criterion as the definition of amenability for the countable groups considered here.</p>
+<p>The tensor-tracial limit is compared with [Kuperberg], Section 3. The measurable packing method is treated in [Conley et al.], Lemmas 2.3, 3.3 and 3.4. We prove the bounded Gaussian realization and the finite near-covering estimates below, including the passage to projection towers with fixed coefficients. The conclusion is cohomology in the asymptotic centralizer; action absorption on the original factor requires a further argument.</p>
+<h2 id="1-the-setting-and-the-precise-construction">1. The setting and the precise construction</h2>
+<p>Let <span class="math">\(M\)</span> be a factor with separable predual, and <span class="math">\(F=M_\omega\)</span> its asymptotic centralizer, with its canonical faithful normal normalized trace <span class="math">\(\tau\)</span>. Fix a faithful normal state <span class="math">\(\varphi\)</span> on <span class="math">\(M\)</span>. We use the exact strongly central unitary lifting, quotient trace and strong-star-null criteria of <span class="unlinked">Central sequence algebras and exact lifts</span>, Proposition 2.1 and Theorems 3.1 and 5.1 (with endpoints 1). Our sharp seminorm has no factor 1/2, so it is <span class="math">\(\sqrt2\)</span> times that provider's normalized seminorm. Faithful normal tracial GNS, spectral calculus and bounded strong density have the scope of <a href="independent-copies-of-orbit-algebras.html">Independent copies of orbit algebras</a>, Sections 5–7.</p>
+<p>Let <span class="math">\(Q\)</span> be a countable discrete group. Fix automorphisms <span class="math">\(\beta_{g}\)</span> of <span class="math">\(M\)</span> inducing a genuine trace-preserving action <span class="math">\(\gamma\)</span> of <span class="math">\(Q\)</span> on <span class="math">\(F\)</span>. The <span class="math">\(\beta_{g}\)</span> themselves need not form an action on <span class="math">\(M\)</span>. Suppose <span class="math">\(\gamma_{g}\)</span> is nontrivial for every <span class="math">\(g\)</span> other than the identity. Let <span class="math">\(P\)</span> be a countably generated invariant unital von Neumann subalgebra of <span class="math">\(F\)</span>, and <span class="math">\(D=P^\prime\cap F\)</span>. We use the complete independent-copy theorem and its countably many copies, the independent-copy lesson, Theorem 1.1 and Corollary 8.1, with their exact hypotheses.</p>
+<p>For an amenable <span class="math">\(Q\)</span> we use its finite Følner criterion: given finite <span class="math">\(K\subset Q\)</span> and <span class="math">\(b&gt;0\)</span>, there is nonempty finite <span class="math">\(S\subset Q\)</span> with <span class="math">\(|kS\triangle S|&lt;b|S|\)</span> for every <span class="math">\(k\in K\)</span>. A right translate can arrange that <span class="math">\(S\)</span> contains the identity; it preserves these left-invariance inequalities. This is the only group amenability input below.</p>
+<p><strong>Theorem 1.1.</strong> Under these foundations, <span class="math">\(F\)</span> contains a countably generated <span class="math">\(\gamma\)</span>-invariant abelian von Neumann subalgebra <span class="math">\(A\subset D\)</span>, whose probability-space action is essentially free. If <span class="math">\(Q\)</span> is amenable, then for every finite <span class="math">\(K\subset Q\)</span> and <span class="math">\(\epsilon&gt;0\)</span>, there are finitely many nonempty finite shapes <span class="math">\(R_i\subset Q\)</span> and projections <span class="math">\(E_{i,s}\in D\)</span>, for <span class="math">\(s\in R_i\)</span>, such that all these projections are pairwise orthogonal,</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \delta&amp;=1-\sum_{i,s}\tau(E_{i,s})&lt;\epsilon,\\
+ \gamma_g(E_{i,s})&amp;=E_{i,gs}\quad(s,gs\in R_i),
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.1)</span></div>
+<p>and both weighted boundary masses are less than <span class="math">\(\epsilon\)</span> for every <span class="math">\(g\)</span> in <span class="math">\(K\)</span>:</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ B_g^{\mathrm L}&amp;=\sum_i\sum_{s\in R_i,\,gs\notin R_i}\tau(E_{i,s})&lt;\epsilon,\\
+ B_g^{\mathrm R}&amp;=\sum_i\sum_{s\in R_i,\,g^{-1}s\notin R_i}\tau(E_{i,s})&lt;\epsilon.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.2)</span></div>
+<p>All levels in one shape have the same trace. Distinct shapes need not have equal base traces. The internal covariance defects are exactly zero. If desired, each shape can be reanchored to contain the identity, without changing the inequalities.</p>
+<p>The theorem is proved in Sections 2–7. Section 8 derives exact amenable unitary cohomology, keeping the given cocycle and prescribed coefficients fixed.</p>
+<h2 id="2-independent-copies-have-a-classical-gaussian-limit">2. Independent copies have a classical Gaussian limit</h2>
+<p>Choose for each nonidentity <span class="math">\(g\)</span> a bounded self-adjoint <span class="math">\(a_g\in F\)</span> with <span class="math">\(\gamma_g(a_g)\ne a_g\)</span>, and replace it by <span class="math">\(a_g-\tau(a_g)1\)</span>. Such a self-adjoint choice exists because an automorphism fixing every self-adjoint element fixes every element. Let <span class="math">\(B\)</span> be generated by their entire countable orbits. It is countably generated and invariant. The independent-copy theorem gives equivariant embeddings <span class="math">\(T_r:B\to D\)</span>, for <span class="math">\(r\ge1\)</span>, whose ranges commute and whose finite mixed traces factor. Write <span class="math">\(a^{(r)}=T_r(a)\)</span>, for <span class="math">\(a\in B\)</span>.</p>
+<p>For centered bounded self-adjoint <span class="math">\(a,b\in B\)</span>, put</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ A_N(a)&amp;=N^{-1/2}\sum_{r=1}^N a^{(r)},\\
+ U_N(a,t)&amp;=\exp(itA_N(a)).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(2.1)</span></div>
+<p>These unitaries lie in <span class="math">\(D\)</span>. Their covariance is exact:</p>
+<div class="equation"><div class="math math-display">\[
+ \gamma_g(U_N(a,t))=U_N(\gamma_g(a),t).
+ 
+\]</div><span class="equation-tag">(2.2)</span></div>
+<p>The self-adjoint sums have increasing operator norm, so they will not be treated as uniformly bounded quotient representatives. Their exponential unitaries have norm one, which is the bound used in Section 3.</p>
+<p><strong>Lemma 2.1.</strong> For a fixed finite list of centered bounded self-adjoint elements <span class="math">\(a_1,\ldots,a_l\)</span> and real numbers <span class="math">\(t_1,\ldots,t_l\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ \lim_{N\to\infty}\tau\left(\prod_{j=1}^l U_N(a_j,t_j)\right)\\
+ =\exp\left(-\frac12\left\|\sum_jt_ja_j\right\|_2^2\right).
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(2.3)</span></div>
+<p>The order on the left is the displayed order, and no commutation inside <span class="math">\(B\)</span> is assumed.</p>
+<p><em>Proof.</em> Different copy ranges commute. Exponentiating a sum of commuting copy operators and then regrouping by copy gives</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ \tau\left(\prod_jU_N(a_j,t_j)\right)\\
+ =\left[\tau\left(\prod_j e^{it_ja_j/\sqrt N}\right)\right]^N.
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(2.4)</span></div>
+<p>The product trace in (2.4) is the exact independent-copy trace identity. Set <span class="math">\(h=N^{-1/2}\)</span>. Taylor expansion in operator norm of the finite product gives</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \tau\left(\prod_j e^{iht_ja_j}\right)&amp;=1-h^2C+O(h^3),\\
+ C&amp;=\frac12\sum_jt_j^2\tau(a_j^2)\\
+ &amp;\quad+\sum_{j&lt;k}t_jt_k\tau(a_ja_k)\\
+ &amp;=\frac12\left\|\sum_jt_ja_j\right\|_2^2.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(2.5)</span></div>
+<p>The first-order terms vanish by centering. For self-adjoint <span class="math">\(a,b\)</span>, traciality gives <span class="math">\(\tau(ab)=\tau(ba)=\overline{\tau(ab)}\)</span>, so every cross term is real and symmetric. The exponential Taylor remainder in operator norm is at most <span class="math">\(|h|^3|t|^3\|a\|^3e^{|ht|\|a\|}/6\)</span>. A fixed finite product therefore has a fixed remainder bound for <span class="math">\(|h|\le1\)</span>. Equation (2.5) has an ordinary <span class="math">\(O(N^{-3/2})\)</span> remainder. Taking the <span class="math">\(N\)</span>th power proves (2.3), using the logarithm near 1. Adjoint letters are handled by replacing <span class="math">\(t\)</span> with <span class="math">\(-t\)</span>, so the formula covers every *-word in these unitaries. □</p>
+<p>There is also a direct commutator estimate explaining the classical limit:</p>
+<div class="equation"><div class="math math-display">\[
+ \|[A_N(a),A_N(b)]\|_2^2
+ =N^{-1}\|[a,b]\|_2^2.
+ 
+\]</div><span class="equation-tag">(2.6)</span></div>
+<p>Indeed, the commutator is <span class="math">\(N^{-1}\)</span> times the sum of the <span class="math">\(N\)</span> copy commutators. Each has trace zero, and cross-copy inner products vanish by trace independence. Only the <span class="math">\(N\)</span> diagonal terms remain. For bounded self-adjoint <span class="math">\(X,Y\)</span>, two applications of the integral identity for differentiating unitary exponentials give</p>
+<div class="equation"><div class="math math-display">\[
+ \|[e^{itX},e^{iuY}]\|_2\le |tu|\|[X,Y]\|_2.
+ 
+\]</div><span class="equation-tag">(2.7)</span></div>
+<p>Multiplication by the unitary factors does not change the 2-norm. Applying (2.7) to (2.6) makes all bounded exponential commutators tend to zero. This estimate uses a trace; a nontracial state can retain an imaginary cross term and a quantum commutation law.</p>
+<p>Greg Kuperberg's tracial quantum central limit theorem [Kuperberg], Section 3, treats ordered joint distributions and their commutator estimates. Here (2.4)–(2.5) prove the required characteristic moments directly, and (2.6) is the exact degree-one commutator identity. The next section realizes these bounded moments in the prescribed centralizer.</p>
+<h2 id="3-realizing-the-bounded-moment-limit-in-the-same-centralizer">3. Realizing the bounded moment limit in the same centralizer</h2>
+<p>Enumerate the orbit elements <span class="math">\(\gamma_h(a_g)\)</span> as <span class="math">\(b_j\)</span>, retaining labels even when two values coincide. Take the countable unitaries <span class="math">\(U_N(b_j,t)\)</span> with rational <span class="math">\(t\)</span>. Enumerate all *-words <span class="math">\(W_l\)</span> in these labels. Lemma 2.1 gives a limit <span class="math">\(m_l\)</span> for every word.</p>
+<p>For each <span class="math">\(N\)</span> and each label choose an exact strongly central unitary representative <span class="math">\(u^{(N)}_{j,t,k}\in M\)</span>. Choose fixed bounded strongly central representatives <span class="math">\(p_{v,k}\)</span> for a countable self-adjoint generating family of <span class="math">\(P\)</span>. Let <span class="math">\(\psi_1,\psi_2,\ldots\)</span> be norm dense in the unit ball of <span class="math">\(M_*\)</span>.</p>
+<p>For an output coordinate <span class="math">\(n\)</span>, first choose <span class="math">\(N(n)\ge n\)</span> so that the first <span class="math">\(n\)</span> word moments are within <span class="math">\(1/n\)</span> of their ordinary limits. Then, with that row fixed, choose an input coordinate <span class="math">\(k(n)\ge n\)</span> such that all of the following finite requirements hold:</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|[u^{(N(n))}_{j,t,k(n)},\psi_v]\|&amp;&lt;1/n,\\
+ \|[u^{(N(n))}_{j,t,k(n)},p_{v,n}]\|_\varphi^\sharp&amp;&lt;1/n,
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(3.1)</span></div>
+<p>for the first <span class="math">\(n\)</span> labels and <span class="math">\(v\)</span>≤<span class="math">\(n\)</span>;</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ \left|\varphi(W_{l,k(n)}^{(N(n))})
+ -\tau(W_l(U_{N(n)}))\right|&lt;1/n\\
+ (l\le n),
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(3.2)</span></div>
+<p>and, for the first <span class="math">\(n\)</span> group elements and labels,</p>
+<div class="equation"><div class="math math-display">\[
+ \left\|\beta_g(u^{(N(n))}_{j,t,k(n)})
+ -u^{(N(n))}_{g\cdot j,t,k(n)}\right\|_\varphi^\sharp&lt;1/n.
+ 
+\]</div><span class="equation-tag">(3.3)</span></div>
+<p>Every individual condition holds on an <span class="math">\(\omega\)</span>-large set. Predual centrality gives the first line of (3.1). In its second line, <span class="math">\(n\)</span> is fixed while <span class="math">\(k\)</span> is selected, so each <span class="math">\(p_{v,n}\)</span> is a fixed element of <span class="math">\(M\)</span> and strong centrality applies. The quotient trace gives (3.2). Exact covariance (2.2) says that the strongly central difference in (3.3) represents zero, so the strong-star quotient criterion applies. The first <span class="math">\(n\)</span> words, generators and covariance tests involve finitely many labels even if some indices exceed <span class="math">\(n\)</span>; include those labels in the centrality tests as well. Finite intersections are <span class="math">\(\omega\)</span>-large and nonempty. This proves the simultaneous selection.</p>
+<p>Define the unitary <span class="math">\(V_{j,t}\)</span> as the class of the selected representative sequence. The normal-functional density estimate in the independent-copy lesson, (4.7), proves its strong centrality. The second line of (3.1) makes it commute with the prescribed generators of <span class="math">\(P\)</span>, hence with <span class="math">\(P\)</span>. Equations (3.2)–(3.3) give</p>
+<div class="equation"><div class="math math-display">\[
+ \tau(W_l(V))=m_l,
+ \qquad \gamma_g(V_{j,t})=V_{g\cdot j,t}.
+ 
+\]</div><span class="equation-tag">(3.4)</span></div>
+<p>The fixed coefficients use their original output coordinates <span class="math">\(p_{v,n}\)</span>. The finite selection establishes the relations for these prescribed classes. It requires neither an ultrafilter-preserving substitution nor a saturation theorem or a second ambient ultraproduct.</p>
+<h2 id="4-the-gaussian-probability-space-and-freeness">4. The Gaussian probability space and freeness</h2>
+<p>We first establish the probability ingredients, then construct the action in Section 4.5. The earlier <span class="unlinked">Measure and Hilbert space tools for Haar integration</span> supplies the underlying Lebesgue measure and interval lengths in Section 1, monotone and dominated convergence in Theorems 2.1–2.2, the complete spaces <span class="math">\(L^p\)</span> in Theorems 3.1–3.2, and integration and differentiation in Lemma 6.1. The link identifies the exact programme revision used here. No general existence theorem for stochastic processes is needed.</p>
+<h3 id="41-agreement-on-cylinders-and-finite-iterated-integration">4.1. Agreement on cylinders and finite iterated integration</h3>
+<p>A <strong>Dynkin class</strong> contains the whole space and is closed under complements and countable disjoint unions. It is consequently closed under differences of nested members. If a family <span class="math">\(\mathcal P\)</span> contains the whole space and is closed under finite intersections, its smallest containing Dynkin class <span class="math">\(\mathcal D\)</span> is its generated sigma-algebra. Here is the proof of the needed assertion. For <span class="math">\(A\in\mathcal P\)</span>, the sets <span class="math">\(B\)</span> for which <span class="math">\(A\cap B\in\mathcal D\)</span> form a Dynkin class: use the nested-difference property for complements. This class contains <span class="math">\(\mathcal P\)</span>, hence <span class="math">\(\mathcal D\)</span>. Fixing next <span class="math">\(B\in\mathcal D\)</span> and repeating the argument in <span class="math">\(A\)</span> proves that <span class="math">\(\mathcal D\)</span> is closed under intersections. Complements and intersections give finite unions; disjointification then gives all countable unions. Thus <span class="math">\(\mathcal D\)</span> is a sigma-algebra, as asserted.</p>
+<p>Two finite measures of equal total mass that agree on <span class="math">\(\mathcal P\)</span> therefore agree on its generated sigma-algebra: their agreement sets form a Dynkin class. We will use this for intervals, finite rectangles, and finite-coordinate cylinders. In a finite or countable product of real lines, rectangles with rational endpoints give a countable base for the product topology. Thus its Borel sigma-algebra is generated by those cylinders.</p>
+<p>We also record the integration interchange used below. For finite measures <span class="math">\(\nu,\eta\)</span>, let <span class="math">\(E_x=\{y:(x,y)\in E\}\)</span>. The sets <span class="math">\(E\)</span> with measurable sections and measurable function <span class="math">\(x\mapsto\eta(E_x)\)</span> form a Dynkin class containing rectangles. The assertion just proved gives it for every set in the product sigma-algebra. Then</p>
+<div class="equation"><div class="math math-display">\[
+ \lambda(E)=\int\eta(E_x)\,d\nu(x)
+ 
+\]</div><span class="equation-tag">(G1)</span></div>
+<p>is countably additive by monotone convergence and has rectangle value <span class="math">\(\nu(A)\eta(B)\)</span>. Constructing the measure in the other order gives the same values on rectangles, hence the same measure. Equality of the two iterated integrals follows first for indicators, then simple functions, then nonnegative functions by monotone convergence. An absolutely integrable complex function is treated by its positive and negative real and imaginary parts. Sigma-finite measures are reduced to disjoint countable finite-measure pieces; summing the nonnegative integrals gives the same conclusion. This proves the finite product and interchange facts used here, including Lebesgue measure on finite-dimensional Euclidean spaces.</p>
+<h3 id="42-a-normal-variable-and-countably-many-independent-copies">4.2. A normal variable and countably many independent copies</h3>
+<p>Put</p>
+<div class="equation"><div class="math math-display">\[
+ Z=\int_{\mathbb R}e^{-x^2/2}\,dx,
+ \qquad g(x)=Z^{-1}e^{-x^2/2}.
+ 
+\]</div><span class="equation-tag">(G2)</span></div>
+<p>The constant <span class="math">\(Z\)</span> is positive and finite: on <span class="math">\(|x|\geq1\)</span>, the integrand is bounded by <span class="math">\(e^{-|x|/2}\)</span>, and the remaining interval is bounded. All polynomial moments are finite by the same exponential-tail estimate. Oddness gives <span class="math">\(\int xg(x)\,dx=0\)</span>. Since <span class="math">\(g&#39;=-xg\)</span>, integration by parts on bounded intervals and vanishing of <span class="math">\(xg(x)\)</span> at both ends give <span class="math">\(\int x^2g(x)\,dx=1\)</span>.</p>
+<p>The characteristic function <span class="math">\(F(t)=\int e^{itx}g(x)\,dx\)</span> is differentiable: difference quotients are bounded by <span class="math">\(|x|g(x)\)</span>, so the parameter assertion of Lemma 6.1 applies. Integration by parts, with vanishing boundary terms, gives</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ F&#39;(t)&amp;=i\int xe^{itx}g(x)\,dx\\
+ &amp;=-i\int e^{itx}g&#39;(x)\,dx=-tF(t).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(G3)</span></div>
+<p>Because <span class="math">\(F(0)=1\)</span>, differentiating <span class="math">\(e^{t^2/2}F(t)\)</span> gives <span class="math">\(F(t)=e^{-t^2/2}\)</span>. This specifies the centered normal law of variance one without requiring a separate evaluation of <span class="math">\(Z\)</span>.</p>
+<p>For countably many independent variables, start with Lebesgue probability measure on <span class="math">\([0,1)\)</span>. Let <span class="math">\(b_n(x)\in\{0,1\}\)</span> be the binary digits, choosing the expansion with a zero tail at dyadic rationals. Any specification of <span class="math">\(r\)</span> distinct digits has probability <span class="math">\(2^{-r}\)</span>: refine to all digits up to their largest index and count the corresponding half-open dyadic intervals. Partition the positive integers into disjoint infinite lists <span class="math">\(j(v,1),j(v,2),\ldots\)</span>, one for each positive integer <span class="math">\(v\)</span>, and set</p>
+<div class="equation"><div class="math math-display">\[
+ U_v(x)=\sum_{k\geq1}2^{-k}b_{j(v,k)}(x).
+ 
+\]</div><span class="equation-tag">(G4)</span></div>
+<p>For example, take <span class="math">\(j(v,k)=2^{v-1}(2k-1)\)</span>: every positive integer has a unique odd part and power of two, so these lists form the required partition. The first three lists start with <span class="math">\(1,3,5\)</span>, <span class="math">\(2,6,10\)</span>, and <span class="math">\(4,12,20\)</span>.</p>
+<p>The series are pointwise limits of Borel functions. For each <span class="math">\(v\)</span>, an eventually constant digit tail has probability zero: fixing <span class="math">\(m\)</span> successive tail digits has probability <span class="math">\(2^{-m}\)</span>, and continuity from above gives zero for the infinite tail. The countable union of these exceptional events is null. Outside it, membership of <span class="math">\(U_v\)</span> in a half-open dyadic interval is exactly a finite digit prescription. Distinct <span class="math">\(v\)</span> use disjoint digits, so every finite joint dyadic-rectangle probability is the product of its side lengths. The uniqueness argument of Section 4.1 extends this to all Borel rectangles: the <span class="math">\(U_v\)</span> are independent uniform variables.</p>
+<p>The cumulative distribution <span class="math">\(H(t)=\int_{-\infty}^t g(x)\,dx\)</span> is continuous, strictly increasing and maps <span class="math">\(\mathbb R\)</span> onto <span class="math">\((0,1)\)</span>. Its inverse is continuous. Set <span class="math">\(\xi_v=H^{-1}(U_v)\)</span> where <span class="math">\(0&lt;U_v&lt;1\)</span>, and set it equal to zero at the null endpoint events. Then the <span class="math">\(\xi_v\)</span> are Borel random variables with independent common density <span class="math">\(g\)</span>: check inverse images of intervals and use Section 4.1. Pushing forward Lebesgue probability under <span class="math">\(x\mapsto(\xi_v(x))_v\)</span> constructs a probability measure on <span class="math">\(\mathbb R^{\mathbb N}\)</span> with precisely these finite-coordinate laws. They determine it uniquely by cylinder agreement. For finite <span class="math">\(I\)</span> use the first <span class="math">\(|I|\)</span> coordinates; for empty <span class="math">\(I\)</span> use the one-point probability space. This is the product Gaussian measure used in (4.2).</p>
+<h3 id="43-characteristic-functions-determine-finite-joint-laws">4.3. Characteristic functions determine finite joint laws</h3>
+<p>We give the uniqueness argument, including laws without densities. In <span class="math">\(\mathbb R^d\)</span>, <span class="math">\(d\geq1\)</span>, let</p>
+<div class="equation"><div class="math math-display">\[
+ k_s(x)=\prod_{j=1}^d\frac1s g(x_j/s),
+ \qquad s&gt;0.
+ 
+\]</div><span class="equation-tag">(G5)</span></div>
+<p>Changing the variable in (G3) and multiplying the one-dimensional identities, using Section 4.1, gives</p>
+<div class="equation"><div class="math math-display">\[
+ k_s(x)=Z^{-2d}\int_{\mathbb R^d}
+ e^{-s^2|t|^2/2}e^{-it\cdot x}\,dt.
+ 
+\]</div><span class="equation-tag">(G6)</span></div>
+<p>Indeed, in one dimension the integral on the right before the factor <span class="math">\(Z^{-2}\)</span> is <span class="math">\((Z/s)e^{-x^2/(2s^2)}\)</span>. Thus no Fourier inversion theorem is being assumed in (G6).</p>
+<p>If finite Borel probability measures <span class="math">\(\nu,\eta\)</span> have the same characteristic function <span class="math">\(\widehat\nu(t)=\int e^{it\cdot y}\,d\nu(y)\)</span>, (G6) and absolute integration interchange give</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ \int k_s(x-y)\,d\nu(y)
+ =\int k_s(x-y)\,d\eta(y)
+ \\
+ (x\in\mathbb R^d).
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(G7)</span></div>
+<p>The interchange is justified by the integrable bound <span class="math">\(e^{-s^2|t|^2/2}\)</span> times the total mass one. These are the densities of the two convolutions with the probability density <span class="math">\(k_s\)</span>; the density assertion follows from (G1) and translation invariance of Lebesgue measure.</p>
+<p>For bounded continuous <span class="math">\(f\)</span>, integrate (G7) against <span class="math">\(f(x)\,dx\)</span> and substitute <span class="math">\(x=y+sz\)</span>. The result is equality of</p>
+<div class="equation"><div class="math math-display">\[
+ \int\!\int f(y+sz)k_1(z)\,dz\,d\nu(y)
+ 
+\]</div><span class="equation-tag">(G8)</span></div>
+<p>and the same expression with <span class="math">\(\eta\)</span>. Absolute integrability follows from <span class="math">\(\|f\|_\infty\)</span>. Dominated convergence as <span class="math">\(s\downarrow0\)</span> gives <span class="math">\(\int f\,d\nu=\int f\,d\eta\)</span>. For each open set <span class="math">\(O\ne\mathbb R^d\)</span>, the continuous functions <span class="math">\(\min(1,n\operatorname{dist}(x,O^c))\)</span> increase to <span class="math">\(1_O\)</span>. The whole-space case is immediate. Monotone convergence gives agreement on all open sets. Open sets form an intersection-closed generating family, so Section 4.1 gives <span class="math">\(\nu=\eta\)</span>.</p>
+<p>It follows in particular that a finite vector with characteristic function
+<span class="math">\(\exp(-\tfrac12\sum_j t_j^2)\)</span> has independent standard-normal coordinates: the independent vector constructed in Section 4.2 has that characteristic function, so the laws agree. More generally the characteristic function <span class="math">\(\exp(-\tfrac12\|\sum_j t_jf_j\|^2)\)</span> determines the joint law used below, including degenerate covariance matrices. A zero variance variable is zero almost everywhere, by its squared integral, and causes no density or division assertion.</p>
+<h3 id="44-measurable-limits-and-invariance-of-the-probability-measure">4.4. Measurable limits and invariance of the probability measure</h3>
+<p>For square-summable real coefficients <span class="math">\(c_v\)</span>, independence, zero means and variance one give</p>
+<div class="equation"><div class="math math-display">\[
+ \left\|\sum_{v=m}^n c_v\xi_v\right\|_2^2
+ =\sum_{v=m}^n c_v^2.
+ 
+\]</div><span class="equation-tag">(G9)</span></div>
+<p>The earlier <span class="math">\(L^2\)</span>-completeness theorem therefore supplies the limit in (4.2). A subsequence with summable successive <span class="math">\(L^2\)</span> distances has summable successive <span class="math">\(L^1\)</span> distances, by Cauchy–Schwarz on a probability space. Monotone convergence makes the sum of their pointwise absolute differences finite off a Borel null set. The subsequence converges there; define its limit as zero on that set. To identify this pointwise limit with the <span class="math">\(L^2\)</span> limit, apply Fatou’s inequality from the earlier Theorem 2.2 to its squared difference from each fixed partial sum. The Cauchy property then gives convergence to it in <span class="math">\(L^2\)</span>. Thus it is a Borel version of the specified <span class="math">\(L^2\)</span> limit. Countably many required versions can be chosen simultaneously by taking the union of their exceptional null sets.</p>
+<p>For a finite partial sum, independence and (G3) give its characteristic function; the estimate <span class="math">\(|e^{iu}-e^{iv}|\leq|u-v|\)</span> passes it to the <span class="math">\(L^2\)</span>, hence <span class="math">\(L^1\)</span>, limit. Applying this to every real linear combination of a finite list gives the joint characteristic formula in Section 4.3 and the covariance in (4.2). The coordinates in (4.3) consequently have the same finite joint laws as the original coordinates. Their Borel map has the same pushforward measure on all cylinders, so Section 4.1 proves measure preservation on the entire Borel sigma-algebra. This supplies both the cylinder-extension step and the measurable-limit step used in the action construction.</p>
+<h3 id="45-the-gaussian-action-and-its-embedding">4.5. The Gaussian action and its embedding</h3>
+<p>Let <span class="math">\(H\)</span> be the separable real Hilbert space obtained by completing the real span of all <span class="math">\(b_j\)</span> in <span class="math">\(L^2(F,\tau)\)</span>, with inner product <span class="math">\(\tau(ab)\)</span>. The action <span class="math">\(\gamma\)</span> induces an orthogonal representation <span class="math">\(\rho\)</span> of <span class="math">\(Q\)</span> on <span class="math">\(H\)</span>. Each nonidentity <span class="math">\(g\)</span> moves at least the originally chosen <span class="math">\(a_g\)</span>, so</p>
+<div class="equation"><div class="math math-display">\[
+ \|\rho_g(a_g)-a_g\|_H&gt;0.
+ 
+\]</div><span class="equation-tag">(4.1)</span></div>
+<p>Choose a finite or countable real orthonormal basis <span class="math">\(e_v\)</span>. On the product Gaussian probability space <span class="math">\(X=\mathbb R^I\)</span> with product standard-normal measure <span class="math">\(\mu\)</span>, let <span class="math">\(\xi_v\)</span> be the coordinates and define</p>
+<div class="equation"><div class="math math-display">\[
+ G(f)=\sum_v\langle f,e_v\rangle\xi_v,
+ \qquad f\in H.
+ 
+\]</div><span class="equation-tag">(4.2)</span></div>
+<p>The series converges in <span class="math">\(L^2\)</span>. Sections 4.1–4.4 construct this probability measure and prove the characteristic-function, measurable-limit and cylinder-extension facts used here. Every prescribed countable list of vectors has simultaneously defined measurable versions. The resulting variables are centered Gaussian, with covariance <span class="math">\(\mathbb E(G(f)G(h))=\langle f,h\rangle\)</span> and characteristic function <span class="math">\(e^{-\|f\|^2/2}\)</span>. To justify the infinite case, finite partial sums have these characteristic functions. Their <span class="math">\(L^2\)</span> limit converges in probability, and the bounded exponentials converge in <span class="math">\(L^1\)</span> by the Lipschitz estimate. This proves the limiting formula and every finite joint Gaussian law. Almost-sure subsequences of the partial sums give measurable versions. We choose such versions for all the countably many group, orbit and basis expressions below.</p>
+<p>Define <span class="math">\(T_{g}\)</span> on <span class="math">\(X\)</span> by its coordinates</p>
+<div class="equation"><div class="math math-display">\[
+ (T_gx)_v=G(\rho_{g^{-1}}e_v)(x).
+ 
+\]</div><span class="equation-tag">(4.3)</span></div>
+<p>Every finite coordinate vector on the right consists of independent standard normals, since its covariance matrix is the identity and its joint characteristic function factors. Thus <span class="math">\(T_{g}\)</span> preserves <span class="math">\(\mu\)</span>, first on finite-coordinate cylinders and then on their generated sigma-algebra by the monotone-class argument. For any <span class="math">\(f\)</span> in <span class="math">\(H\)</span>, finite sums followed by <span class="math">\(L^2\)</span> limits give</p>
+<div class="equation"><div class="math math-display">\[
+ G(f)\circ T_g=G(\rho_{g^{-1}}f).
+ 
+\]</div><span class="equation-tag">(4.4)</span></div>
+<p>The validity of taking the <span class="math">\(L^2\)</span> limit after composition follows from measure preservation. Applying (4.4) to the basis coordinates proves <span class="math">\(T_gT_h=T_{gh}\)</span> almost everywhere, and <span class="math">\(T_e=\mathrm{id}\)</span>. Countably many coordinate equalities and group relations hold off one null set. Remove also all its preimages under the countably many <span class="math">\(T_{g}\)</span>. On the remaining conull Borel set the relations hold everywhere, the maps preserve this set, and <span class="math">\(T_g^{-1}=T_{g^{-1}}\)</span>. This supplies a genuine Borel probability-preserving action. Completion of the measure makes no difference to the von Neumann algebra.</p>
+<p>The automorphism <span class="math">\(\alpha_g(f)=f\circ T_{g^{-1}}\)</span> satisfies <span class="math">\(\alpha_g(G(f))=G(\rho_gf)\)</span>. A point fixed by <span class="math">\(T_g\)</span> must have <span class="math">\(G(\rho_{g^{-1}}a_g)-G(a_g)=0\)</span>, by (4.4). This variable is normal with positive variance by (4.1). Its singleton zero has measure zero, since its density is a finite rescaling of the standard Gaussian density. Thus each nonidentity group element has a null fixed-point set. Removing their countable union gives an invariant conull set on which the action is free.</p>
+<p>Consider the bounded Gaussian unitaries <span class="math">\(Z_{j,t}=e^{itG(b_j)}\)</span> for rational <span class="math">\(t\)</span>. Their *-word moments are exactly the limits <span class="math">\(m_l\)</span> of Section 3. They generate <span class="math">\(L^\infty(X,\mu)\)</span>: rational characters determine each real value <span class="math">\(G(b_j)\)</span>, since for all sufficiently large <span class="math">\(n\)</span> the principal argument of <span class="math">\(e^{iG(b_j)/n}\)</span>, multiplied by <span class="math">\(n\)</span>, equals that value. Hence each <span class="math">\(G(b_j)\)</span> is measurable in the generated sigma-algebra. The <span class="math">\(b_j\)</span> span <span class="math">\(H\)</span> densely, so <span class="math">\(L^2\)</span> convergence makes every basis coordinate <span class="math">\(\xi_v\)</span> measurable there as well. Their finite cylinders generate the full product sigma-algebra.</p>
+<p>Word moment equality defines a trace-preserving *-isomorphism of the polynomial algebras <span class="math">\(Z\mapsto V\)</span>. Equality of <span class="math">\(\tau(R^*R)\)</span> detects all relations by faithfulness; the trace-power norm formula of the independent-copy lesson, (5.3), preserves operator norms. The map <span class="math">\(R(Z)1\mapsto R(V)1\)</span> on GNS spaces extends to a unitary and intertwines left multiplication. Taking the generated von Neumann algebras therefore gives a normal trace-preserving isomorphism</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ J:L^\infty(X,\mu)\longrightarrow A\subset D,\\
+ J(Z_{j,t})=V_{j,t}.
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(4.5)</span></div>
+<p>The normality assertion follows from unitary conjugation of the GNS von Neumann algebras, as in the independent-copy lesson. Both directions are normal. Equation (3.4) gives <span class="math">\(J\alpha_g=\gamma_gJ\)</span> on generators and hence throughout by normality. This proves the first assertion of Theorem 1.1. For the trivial group, <span class="math">\(H\)</span> may be zero and <span class="math">\(X\)</span> a one-point space; freeness is then automatic. The Gaussian action need not be ergodic.</p>
+<h2 id="5-a-measurable-packing-rule-with-a-quantitative-stopping-condition">5. A measurable packing rule with a quantitative stopping condition</h2>
+<p>We now work on any standard probability space with a free Borel probability-preserving action of <span class="math">\(Q\)</span>. Write <span class="math">\(sx=T_s(x)\)</span>. Fix a nonempty finite shape <span class="math">\(S\)</span> containing the identity and <span class="math">\(0&lt;a&lt;1\)</span>. For any measurable previously covered set <span class="math">\(U_0\)</span>, we select countably many center sets <span class="math">\(B_c\)</span> and enlarge <span class="math">\(U_0\)</span> by their full <span class="math">\(S\)</span>-tiles. Each new tile keeps at least <span class="math">\((1-a)|S|\)</span> previously uncovered points; all the kept points are disjoint. The coloring and selection mechanism can be compared with [Conley et al.], Lemmas 2.3 and 3.3. We give the countable-color construction and its measure estimate explicitly.</p>
+<p>First partition <span class="math">\(X\)</span> into countably many Borel colors <span class="math">\(C_c\)</span> such that <span class="math">\(Sx\)</span> and <span class="math">\(Sy\)</span> are disjoint for distinct points of the same color. Choose a countable Borel separating family of sets, with binary codes separating all points. The finite forbidden-neighbor set is <span class="math">\(L=S^{-1}S\setminus\{e\}\)</span>. Freeness gives <span class="math">\(lx\ne x\)</span> for all <span class="math">\(l\in L\)</span>. At <span class="math">\(x\)</span> choose the least <span class="math">\(n\)</span> for which its first <span class="math">\(n\)</span> code bits differ from those of every <span class="math">\(lx\)</span>. Color <span class="math">\(x\)</span> by this length and its bit prefix. This is a countable Borel coloring. If adjacent points <span class="math">\(x,y=lx\)</span> had the same color, that prefix would both agree and differ. An overlap <span class="math">\(sx=ty\)</span> with <span class="math">\(x\ne y\)</span> gives <span class="math">\(y=t^{-1}sx\)</span>, precisely such a neighbor. This proves the separation of full tiles.</p>
+<p>Starting with <span class="math">\(U_{0}\)</span>, process all these colors in order. At color c choose</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ B_c&amp;=\left\{x\in C_c:
+       \sum_{s\in S}1_{U_{c-1}}(sx)\le a|S|\right\},\\
+ U_c&amp;=U_{c-1}\cup\bigcup_{s\in S}sB_c.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(5.1)</span></div>
+<p>The selected centers and coverage are measurable. Define at each selected <span class="math">\(x\)</span></p>
+<div class="equation"><div class="math math-display">\[
+ R(x)=\{s\in S:sx\notin U_{c-1}\}.
+ 
+\]</div><span class="equation-tag">(5.2)</span></div>
+<p>At least <span class="math">\((1-a)|S|\)</span> labels are retained. Same-color full tiles are disjoint, so their kept points are disjoint. Each kept point lies outside all earlier full tiles and hence outside all earlier kept points. Let <span class="math">\(U_\infty=\bigcup_cU_c\)</span>. The retained pieces partition <span class="math">\(U_\infty\setminus U_0\)</span>, and consequently</p>
+<div class="equation"><div class="math math-display">\[
+ (1-a)|S|\sum_c\mu(B_c)
+ \le\mu(U_\infty\setminus U_0).
+ 
+\]</div><span class="equation-tag">(5.3)</span></div>
+<p>To justify (5.3) when the retained shape depends on the center, partition each <span class="math">\(B_c\)</span> into the finitely many measurable sets <span class="math">\(B_{c,R}=\{x\in B_c:R(x)=R\}\)</span>. All sets <span class="math">\(sB_{c,R}\)</span>, with <span class="math">\(s\in R\)</span>, are disjoint. Countable additivity and measure preservation give <span class="math">\(\mu(U_\infty\setminus U_0)=\sum_{c,R}|R|\mu(B_{c,R})\)</span>. Apply <span class="math">\(|R|\ge(1-a)|S|\)</span>, then sum the measures of the partition of each <span class="math">\(B_c\)</span>, to obtain (5.3).</p>
+<p>Each point <span class="math">\(x\)</span> is processed at its unique color. If selected, its entire <span class="math">\(S\)</span>-tile is subsequently covered. If not selected, more than <span class="math">\(a|S|\)</span> of its tile labels were already covered, and coverage only increases. Thus for every <span class="math">\(x\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+ \sum_{s\in S}1_{U_\infty}(sx)&gt;a|S|.
+ 
+\]</div><span class="equation-tag">(5.4)</span></div>
+<p>There is no transfinite choice or unmeasurable maximal family in this construction. It uses one countable color pass.</p>
+<p>Put <span class="math">\(C=U_\infty\setminus U_0\)</span> and <span class="math">\(h_0=1-\mu(U_0)\)</span>. Integrate (5.4) on <span class="math">\(X\setminus U_0\)</span>. The contribution from <span class="math">\(C\)</span> is at most <span class="math">\(|S|\mu(C)\)</span>, by measure preservation. The contribution from old coverage is</p>
+<div class="equation"><div class="math math-display">\[
+ \sum_{s\in S}\mu(s^{-1}U_0\setminus U_0)
+ \le\sum_{s\in S}\mu(s^{-1}U_0\mathbin\triangle U_0).
+ 
+\]</div><span class="equation-tag">(5.5)</span></div>
+<p>If each summand on the right is at most <span class="math">\(d/(1-a)\)</span>, this proves</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \mu(C)&amp;\ge ah_0-\frac d{1-a},\\
+ 1-\mu(U_\infty)&amp;\le(1-a)h_0+\frac d{1-a}.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(5.6)</span></div>
+<p>The gain in (5.6) is independent of the cardinality of <span class="math">\(S\)</span>. Controlling old-coverage invariance is the reason for the descending hierarchy in the next section.</p>
+<h2 id="6-a-finite-hierarchy-covers-almost-all-the-space">6. A finite hierarchy covers almost all the space</h2>
+<p>Fix finite <span class="math">\(K\subset Q\)</span>, a required boundary ratio <span class="math">\(\kappa\in(0,1)\)</span>, and required uncovered mass <span class="math">\(\zeta\in(0,1)\)</span>. Put <span class="math">\(a=b=\kappa/8\)</span>. Choose an integer <span class="math">\(L\)</span> and <span class="math">\(d&gt;0\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+ (1-a)^L&lt;\zeta/2,
+ \qquad \frac d{a(1-a)}&lt;\zeta/2.
+ 
+\]</div><span class="equation-tag">(6.1)</span></div>
+<p>Using the finite Følner criterion recursively, choose finite <span class="math">\(S_{1}\)</span>,…,<span class="math">\(S_{L}\)</span> containing the identity such that every <span class="math">\(S_{j}\)</span> is <span class="math">\(b\)</span>-invariant under <span class="math">\(K\)</span> and <span class="math">\(K^{-1}\)</span>, and, for i&lt;<span class="math">\(j\)</span>, is d-invariant under every element of <span class="math">\(S_i^{-1}\)</span>:</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ |gS_j\mathbin\triangle S_j|&amp;&lt;b|S_j|
+       &amp;&amp;(g\in K\cup K^{-1}),\\
+ |tS_j\mathbin\triangle S_j|&amp;&lt;d|S_j|
+       &amp;&amp;(t\in S_i^{-1},\ i&lt;j).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(6.2)</span></div>
+<p>At the jth construction step all earlier <span class="math">\(S_{i}\)</span> are finite and already chosen. Thus their inverse union is a finite test set, and the criterion supplies <span class="math">\(S_{j}\)</span> with the smaller of <span class="math">\(b\)</span>,d as needed. No circular choice of an error after an unknown shape size occurs.</p>
+<p>Apply the color packing rule first to <span class="math">\(S_{L}\)</span> with empty coverage, then <span class="math">\(S_{L-1}\)</span>, and finally down to <span class="math">\(S_{1}\)</span>, always retaining the full covered set from preceding stages. The retained pieces from all stages remain disjoint. Equation (5.3), summed over stages, gives a uniform total multiplicity bound</p>
+<div class="equation"><div class="math math-display">\[
+ \sum_{j,c}|S_j|\mu(B_{j,c})\le\frac1{1-a}.
+ 
+\]</div><span class="equation-tag">(6.3)</span></div>
+<p>Before stage <span class="math">\(i\)</span>, old coverage is a union of full <span class="math">\(S_jB_{j,c}\)</span> tiles with <span class="math">\(j&gt;i\)</span>. For <span class="math">\(t\in S_i^{-1}\)</span>, (6.2), the union symmetric-difference inequality and countable subadditivity give</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \mu(tU_0\mathbin\triangle U_0)
+ &amp;\le\sum_{j&gt;i,c}|tS_j\mathbin\triangle S_j|\mu(B_{j,c})\\
+ &amp;\le d\sum_{j&gt;i,c}|S_j|\mu(B_{j,c})
+ \le\frac d{1-a}.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(6.4)</span></div>
+<p>Here is the set estimate behind (6.4). For a finite shape <span class="math">\(S\)</span> and measurable base <span class="math">\(B\)</span>, one has <span class="math">\(t(SB)\mathbin\triangle SB\subseteq\bigcup_{u\in tS\mathbin\triangle S}uB\)</span>. Indeed, a point in either difference has a label absent from the other shape; any common label would put that point in both unions. Also, the symmetric difference of two unions with the same indexing is contained in the union of the corresponding symmetric differences. Apply these two inclusions to the full tiles and use measure preservation. Their total multiplicity is bounded by (6.3), which was obtained from the disjoint kept pieces. Thus no error from the deleted labels enters (6.4).</p>
+<p>The hypothesis of (5.6) is now verified at every stage. Iterating its scalar recurrence from initial uncovered mass 1 gives</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ h_{\rm final}&amp;\le(1-a)^L
+       +\frac d{1-a}\sum_{r=0}^{L-1}(1-a)^r\\
+ &amp;&lt;(1-a)^L+\frac d{a(1-a)}&lt;\zeta.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(6.5)</span></div>
+<p>We used countably many colors but finitely many original shapes. Each <span class="math">\(S_j\)</span> also has only finitely many retained subsets <span class="math">\(R\)</span>. Group all center sets of stage <span class="math">\(j\)</span> with the same retained subset by defining</p>
+<div class="equation"><div class="math math-display">\[
+ B_{j,R}=\bigcup_c\{x\in B_{j,c}:R(x)=R\}.
+ 
+\]</div><span class="equation-tag">(6.6)</span></div>
+<p>For fixed <span class="math">\(j\)</span>, the center colors are disjoint. The kept sets <span class="math">\(sB_{j,R}\)</span>, for <span class="math">\(s\in R\)</span>, are pairwise disjoint across all <span class="math">\(j,R,s\)</span>, because they are unions of the previously disjoint kept pieces. Their union is the final covered set. There are finitely many pairs <span class="math">\((j,R)\)</span>, and every nonempty base has a shape of size at least <span class="math">\((1-a)|S_j|\)</span>. Omit null bases.</p>
+<p>For <span class="math">\(g\)</span> in <span class="math">\(K\)</span> and a retained R subset <span class="math">\(S_{j}\)</span>, outgoing and incoming missing labels satisfy</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ |\{s\in R:gs\notin R\}|\\
+ \le|gS_j\setminus S_j|+|S_j\setminus R|,\\
+ |\{s\in R:g^{-1}s\notin R\}|\\
+ \le|g^{-1}S_j\setminus S_j|+|S_j\setminus R|.
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(6.7)</span></div>
+<p>For the first bound, targets outside <span class="math">\(S_j\)</span> are counted by <span class="math">\(gS_j\setminus S_j\)</span>; targets in <span class="math">\(S_j\setminus R\)</span> are counted by injectivity of left multiplication. Replace <span class="math">\(g\)</span> by <span class="math">\(g^{-1}\)</span> for the second bound. By (6.2), each ratio to <span class="math">\(|R|\)</span> is at most</p>
+<div class="equation"><div class="math math-display">\[
+ \frac{b+a}{1-a}
+ =\frac{\kappa/4}{1-\kappa/8}&lt;\kappa.
+ 
+\]</div><span class="equation-tag">(6.8)</span></div>
+<p>This proves a finite measurable collection of disjoint towers, with all its shapes approximately invariant and uncovered mass below <span class="math">\(\zeta\)</span>. The descending-shape method is developed in [Conley et al.], Lemma 3.4. Equations (5.5)–(6.5) provide the probability-measure estimate needed here, using full-tile invariance and disjoint retained pieces. Theorem 3.6 of that paper additionally removes the residual set modulo null sets; our finite near-covering proof is complete at (6.8).</p>
+<h2 id="7-projection-towers-and-their-exact-weighted-bounds">7. Projection towers and their exact weighted bounds</h2>
+<p>Use the free Gaussian model <span class="math">\(A\)</span> of Sections 2–4, and apply Sections 5–6 on its probability space. List the finitely many retained shapes and bases as <span class="math">\(R_i,B_i\)</span>. Set</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ E_{i,s}&amp;=J(1_{sB_i})\quad(s\in R_i),\\
+ E_0&amp;=1-\sum_{i,s}E_{i,s}.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(7.1)</span></div>
+<p>The disjointness in Section 6 makes these projections an exact finite partition after adding <span class="math">\(E_0\)</span>. Normality of <span class="math">\(J\)</span> makes their traces equal to their measures. Equivariance gives <span class="math">\(\gamma_g(E_{i,s})=J(1_{gsB_i})=E_{i,gs}\)</span> whenever both labels belong to <span class="math">\(R_i\)</span>. Every internal covariance defect is zero.</p>
+<p>Since each action map preserves measure, <span class="math">\(\tau(E_{i,s})=\mu(B_i)\)</span> for every label in one shape. The weighted boundary estimates, using (6.8), are</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ B_g^{\mathrm L},B_g^{\mathrm R}
+ &amp;&lt;\kappa\sum_i|R_i|\mu(B_i)\le\kappa,\\
+ \delta&amp;=\mu(X\setminus\bigcup_{i,s}sB_i)&lt;\zeta.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(7.2)</span></div>
+<p>Take <span class="math">\(\kappa,\zeta&lt;\min(\epsilon,1)\)</span>. This proves Theorem 1.1, including both weighted boundaries. To reanchor a shape, choose <span class="math">\(r_i\in R_i\)</span>, replace <span class="math">\(R_i\)</span> by <span class="math">\(R_ir_i^{-1}\)</span>, and replace <span class="math">\(B_i\)</span> by <span class="math">\(r_iB_i\)</span>. The levels agree because <span class="math">\((sr_i^{-1})(r_iB_i)=sB_i\)</span>. Cardinalities and left-boundary ratios are unchanged, and the new shape contains the identity.</p>
+<p>These are nonrelative towers when <span class="math">\(P\)</span> is the scalar algebra, and towers in the prescribed commutant for general <span class="math">\(P\)</span>. They have exact internal covariance, but they are not complete exactly equivariant finite partitions under all group elements: the small residual and boundary labels are essential.</p>
+<p><img src="figures/amenable-gaussian-towers.svg" alt="Gaussian movement, retained levels and the proved coverage bound"></p>
+<p>Figure 1. The upper panel shows the bounded character moments of (2.3), the equivariant normal embedding (4.5), and the reflection example <span class="math">\(\delta=G(-f)-G(f)\)</span>, with <span class="math">\(\|f\|=1\)</span>. Its normal density has variance 4. The density at zero is positive, but the singleton zero has probability zero; this is the freeness mechanism of Section 4. The middle panel uses the actual integer labels in Exercise 9.7. Hatched cells are deleted labels. The two oriented boundary sets give the exact ratio <span class="math">\(3/18\)</span> in (6.7). This is one retained shape. The lower panel plots the proved recurrence bound (6.5) for <span class="math">\(a=1/4\)</span> and <span class="math">\(d=3/1600\)</span>. The curve bounds uncovered mass; it is not a sample from a particular action. The hierarchy in (6.2)–(6.4) establishes the bound. The <a href="figures/draw_amenable_gaussian_towers.py">editable figure source</a> uses exactly these coordinates.</p>
+<h2 id="8-exact-amenable-cohomology-with-fixed-coefficients">8. Exact amenable cohomology with fixed coefficients</h2>
+<p><strong>Theorem 8.1.</strong> With the hypotheses of Theorem 1.1 and <span class="math">\(Q\)</span> amenable, every left unitary <span class="math">\(\gamma\)</span>-cocycle <span class="math">\(c_g\in\mathcal U(D)\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+ c_{gh}=c_g\gamma_g(c_h),
+ 
+\]</div><span class="equation-tag">(8.1)</span></div>
+<p>has a correcting unitary <span class="math">\(w\in\mathcal U(D)\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+ c_g=w\gamma_g(w^*)\quad(g\in Q).
+ 
+\]</div><span class="equation-tag">(8.2)</span></div>
+<p><em>Proof.</em> Enlarge <span class="math">\(P\)</span> to the invariant algebra generated by <span class="math">\(P\)</span> and all <span class="math">\(\gamma_h(c_g)\)</span>. It remains countably generated. Apply Theorem 1.1 to this coefficient algebra. The resulting projections commute with every cocycle value and belong to the original <span class="math">\(D\)</span>. For any prescribed finite <span class="math">\(K\)</span>, take the towers of Section 7 and put</p>
+<div class="equation"><div class="math math-display">\[
+ z=\sum_{i,s}c_sE_{i,s}+E_0.
+ 
+\]</div><span class="equation-tag">(8.3)</span></div>
+<p>Every summand has its own initial and final projection, since the level commutes with <span class="math">\(c_s\)</span>. Orthogonality makes <span class="math">\(z\)</span> a unitary in the original <span class="math">\(D\)</span>. For a fixed <span class="math">\(g\)</span>, put</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ O_g&amp;=\sum_{i,\,s\in R_i,\,gs\notin R_i}
+       c_g\gamma_g(c_s)\gamma_g(E_{i,s}),\\
+ I_g&amp;=\sum_{i,\,t\in R_i,\,g^{-1}t\notin R_i}
+       c_tE_{i,t}.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(8.3a)</span></div>
+<p>At each internal pair <span class="math">\(s,gs\in R_i\)</span>, exact covariance and the left cocycle identity give
+<span class="math">\(c_g\gamma_g(c_s)\gamma_g(E_{i,s})=c_{gs}E_{i,gs}\)</span>.
+These are precisely the matching terms of <span class="math">\(c_g\gamma_g(z)\)</span> and <span class="math">\(z\)</span>. Consequently</p>
+<div class="equation"><div class="math math-display">\[
+ c_g\gamma_g(z)-z
+ =O_g-I_g+c_g\gamma_g(E_0)-E_0.
+ 
+\]</div><span class="equation-tag">(8.3b)</span></div>
+<p>The translated outgoing levels are pairwise orthogonal. They commute with every cocycle coefficient, because the enlarged coefficient algebra is invariant. Each coefficient in <span class="math">\(O_g\)</span> is unitary, so <span class="math">\(O_g^*O_g\)</span> is the sum of its translated levels, and <span class="math">\(\|O_g\|_2^2=B_g^{\mathrm L}\)</span>. The untransformed missing levels similarly give <span class="math">\(\|I_g\|_2^2=B_g^{\mathrm R}\)</span>. No orthogonality between <span class="math">\(O_g\)</span> and <span class="math">\(I_g\)</span> is needed. Trace preservation and unitary left multiplication give
+<span class="math">\(\|c_g\gamma_g(E_0)\|_2=\|E_0\|_2=\sqrt\delta\)</span>.
+Apply the triangle inequality to (8.3b), and then multiply on the right by the unitary <span class="math">\(\gamma_g(z^*)\)</span>. The tracial 2-norm is unchanged, giving</p>
+<div class="equation"><div class="math math-display">\[
+ \|c_g-z\gamma_g(z^*)\|_2
+ \le\sqrt{B_g^{\mathrm L}}+\sqrt{B_g^{\mathrm R}}+2\sqrt\delta.
+ 
+\]</div><span class="equation-tag">(8.4)</span></div>
+<p>This calculation uses only exact covariance and commutation of these towers. Choosing <span class="math">\(\kappa,\zeta&lt;\eta^2/64\)</span> makes (8.4) less than <span class="math">\(\eta/2\)</span> for every <span class="math">\(g\in K\)</span>. Thus finite approximate solutions in the original <span class="math">\(D\)</span> have arbitrarily small error.</p>
+<p>For completeness, the final relative diagonal is explicit. Enumerate <span class="math">\(Q\)</span> as <span class="math">\(g_1,g_2,\ldots\)</span>, with repetitions in the finite case. Choose approximate unitaries <span class="math">\(z^{(r)}\in D\)</span> with errors below <span class="math">\(1/(4r)\)</span> for <span class="math">\(g_1,\ldots,g_r\)</span>. Lift them to strongly central exact unitaries <span class="math">\(z^{(r)}_k\in M\)</span>. Lift each given <span class="math">\(c_g\)</span> once to <span class="math">\(c_{g,k}\)</span>, and keep the original representatives <span class="math">\(p_{v,k}\)</span> of the generators of <span class="math">\(P\)</span>. For each <span class="math">\(r\)</span>, choose <span class="math">\(A_r\in\omega\)</span> on which, for <span class="math">\(l,v\le r\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|[z^{(r)}_k,\psi_v]\|&amp;&lt;1/r,\\
+ \|[z^{(r)}_k,p_{v,k}]\|_\varphi^\sharp&amp;&lt;1/r,\\
+ \|c_{g_l,k}-z^{(r)}_k\beta_{g_l}(z^{(r)*}_k)\|_\varphi^\sharp&amp;&lt;1/r.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(8.5)</span></div>
+<p>The first requirements are predual centrality. The second differences represent zero because <span class="math">\(z^{(r)}\)</span> belongs to <span class="math">\(D\)</span>. For the last requirement the <span class="math">\(\omega\)</span> limit of the sharp seminorm is <span class="math">\(\sqrt2\)</span> times the error 2-norm, which is less than <span class="math">\(\sqrt{2}/(4r)&lt;1/r\)</span>. All their finite intersections are <span class="math">\(\omega\)</span>-large. Replace A_r by decreasing finite intersections and impose <span class="math">\(k\)</span>≥<span class="math">\(r\)</span>.</p>
+<p>For <span class="math">\(k\in A_1\)</span>, let <span class="math">\(d(k)\)</span> be the largest <span class="math">\(r\le k\)</span> with <span class="math">\(k\in A_r\)</span>, and define <span class="math">\(w_k=z^{(d(k))}_k\)</span>. Put <span class="math">\(w_k=1\)</span> outside <span class="math">\(A_1\)</span>. Then <span class="math">\(d(k)\to\infty\)</span> along <span class="math">\(\omega\)</span>. The first line of (8.5) proves strong centrality, the second makes <span class="math">\(w\)</span> commute with <span class="math">\(P\)</span>, and the third gives (8.2). Every <span class="math">\(w_k\)</span> is unitary. The prescribed cocycle and coefficient representatives keep their original coordinate <span class="math">\(k\)</span>; only the correcting unitary changes rows. This proves Theorem 8.1. □</p>
+<p>The correcting conjugacy <span class="math">\(\operatorname{Ad}(w)\)</span> fixes <span class="math">\(P\)</span> pointwise, and</p>
+<div class="equation"><div class="math math-display">\[
+ \operatorname{Ad}(c_g)\gamma_g
+ =\operatorname{Ad}(w)\gamma_g\operatorname{Ad}(w^*).
+ 
+\]</div><span class="equation-tag">(8.6)</span></div>
+<p>This is a cohomology theorem in the asymptotic centralizer. Turning it into model absorption or a classification of actions on <span class="math">\(M\)</span> still requires those separate constructions.</p>
+<h2 id="9-exercises-with-solutions">9. Exercises with solutions</h2>
+<p><strong>Exercise 9.1 (noncommuting coordinates, classical covariance).</strong> For the Pauli matrices <span class="math">\(X,Z\)</span> with normalized trace, compute the covariance of <span class="math">\(aX+bZ\)</span> and the commutator norm for their <span class="math">\(N\)</span>-copy sums.</p>
+<p><em>Solution.</em> The Pauli identities are <span class="math">\(X^2=Z^2=1\)</span>, <span class="math">\(XZ=-ZX\)</span> and <span class="math">\(\tau(XZ)=0\)</span>. Expanding the square gives the first identity below. Also <span class="math">\([X,Z]=2XZ\)</span>, whose squared 2-norm is 4. Equation (2.6) gives the second identity. The limiting Gaussian coordinates are independent despite the original anticommutation.</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|aX+bZ\|_2^2&amp;=a^2+b^2,\\
+ \|[A_N(X),A_N(Z)]\|_2^2&amp;=4/N.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(9.1)</span></div>
+<p><strong>Exercise 9.2 (a phase test for the ordered product).</strong> Prove that <span class="math">\(\tau(e^{ihX}e^{ihZ})=\cos^2h\)</span>, and find the <span class="math">\(N\)</span>-copy characteristic limit when <span class="math">\(h=N^{-1/2}\)</span>.</p>
+<p><em>Solution.</em> The exponentials are <span class="math">\(\cos h\,1+i\sin h\,X\)</span> and <span class="math">\(\cos h\,1+i\sin h\,Z\)</span>. Multiplying these expansions gives three nonconstant terms, all of trace zero. The trace is <span class="math">\(\cos^2h\)</span>. Taking the <span class="math">\(N\)</span>th power with <span class="math">\(h=N^{-1/2}\)</span> gives the limit below. The variance of <span class="math">\(X+Z\)</span> is 2, agreeing with (2.3).</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \tau(e^{ihX}e^{ihZ})&amp;=\cos^2h,\\
+ \cos^{2N}(N^{-1/2})&amp;\longrightarrow e^{-1}.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(9.2)</span></div>
+<p><strong>Exercise 9.3 (nontrivial Gaussian motion).</strong> Suppose an orthogonal group element sends a unit vector <span class="math">\(f\)</span> to -<span class="math">\(f\)</span>. Show that its Gaussian transformation has a null fixed-point set. Explain why faithfulness of the orthogonal representation alone suffices for every nonidentity element.</p>
+<p><em>Solution.</em> A fixed point would have <span class="math">\(G(f)=G(-f)=-G(f)\)</span>, hence <span class="math">\(G(f)=0\)</span>. A standard normal variable has no atom at zero. For a general nonidentity orthogonal operator <span class="math">\(\rho_g\)</span>, choose <span class="math">\(f\)</span> with <span class="math">\(\rho_gf\ne f\)</span>. The difference <span class="math">\(G(\rho_gf)-G(f)\)</span> is normal with variance <span class="math">\(\|\rho_gf-f\|^2&gt;0\)</span>, so equality again has probability zero. Countability permits one conull free set for the group. This does not require mixing or ergodicity.</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \operatorname{Var}(G(-f)-G(f))&amp;=4,\\
+ \mu(\{G(f)=0\})&amp;=0\quad(\|f\|=1).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(9.3)</span></div>
+<p><strong>Exercise 9.4 (a color for finite-shape separation).</strong> For a free action and <span class="math">\(S=\{e,s\}\)</span>, identify the forbidden neighbor set and verify the binary-prefix coloring in Section 5.</p>
+<p><em>Solution.</em> <span class="math">\(S^{-1}S\setminus\{e\}\)</span> consists of <span class="math">\(s\)</span> and <span class="math">\(s^{-1}\)</span>, with repetitions removed, except in the trivial-shape case. Freeness separates <span class="math">\(x\)</span> from each distinct forbidden neighbor. Some finite prefix distinguishes <span class="math">\(x\)</span> from all of them. Adjacent points with the same pair (prefix length, prefix) would contradict this distinction at one endpoint. An overlap of their <span class="math">\(S\)</span>-tiles gives precisely such an adjacency. Thus each color supports disjoint full <span class="math">\(S\)</span>-tiles, even when the action of <span class="math">\(s\)</span> has finite order greater than one.</p>
+<div class="equation"><div class="math math-display">\[
+ S^{-1}S\setminus\{e\}=\{s,s^{-1}\}\setminus\{e\}.
+ 
+\]</div><span class="equation-tag">(9.4)</span></div>
+<p><strong>Exercise 9.5 (the stopping inequality).</strong> If <span class="math">\(S\)</span> has four labels and <span class="math">\(a=1/4\)</span>, determine the allowed old overlap, the minimum retained size and the conclusion at every point after a complete color pass.</p>
+<p><em>Solution.</em> A selected center has at most one old covered label, so at least three new labels are retained. After the pass, any unselected center had strictly more than one covered label at its processing time, hence at least two in final coverage. A selected center has all four labels in final coverage. Therefore (5.4) holds everywhere and (5.3) has the exact multiplicity factor 3/4.</p>
+<div class="equation"><div class="math math-display">\[
+ |R(x)|\ge3,\qquad
+ \sum_{s\in S}1_{U_\infty}(sx)&gt;1.
+ 
+\]</div><span class="equation-tag">(9.5)</span></div>
+<p><strong>Exercise 9.6 (the scalar coverage recurrence).</strong> With <span class="math">\(a=1/4\)</span> and <span class="math">\(d=3/1600\)</span>, bound the uncovered mass after twenty stages by (6.5).</p>
+<p><em>Solution.</em> Here <span class="math">\(d/[a(1-a)]=(3/1600)/(3/16)=1/100\)</span>. Substitute into the finite geometric sum in (6.5) to obtain the bound below. The last inequality follows from <span class="math">\((3/4)^{20}&lt;0.00318\)</span>. This is a bound on measured coverage; the required group shapes must still satisfy (6.2).</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ h_{20}&amp;\le(3/4)^{20}+\frac1{100}(1-(3/4)^{20})\\
+ &amp;&lt;0.01318.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(9.6)</span></div>
+<p><strong>Exercise 9.7 (trimming and boundary orientation).</strong> In the additive group of integers take <span class="math">\(S=\{0,1,\ldots,19\}\)</span> and <span class="math">\(R=S\setminus\{7,12\}\)</span>. Count both boundary sets for translation by +1 and verify the general estimate (6.7).</p>
+<p><em>Solution.</em> The outgoing labels are 6,11,19, whose targets are the two holes and 20. The incoming labels are 0,8,13, whose predecessors are -1 and the holes. Both counts are 3. Each is at most the old outgoing count 1 plus the two deleted labels. The two oriented boundary sets differ, even though their cardinalities agree in this example. Right reanchoring by any retained label preserves the counts.</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \{s\in R:s+1\notin R\}&amp;=\{6,11,19\},\\
+ \{s\in R:s-1\notin R\}&amp;=\{0,8,13\}.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(9.7)</span></div>
+<p><strong>Exercise 9.8 (the fixed-cocycle diagonal).</strong> Why would replacing <span class="math">\(c_{g,k}\)</span> in (8.5) by <span class="math">\(c_{g,k(r)}\)</span> fail to prove the theorem? Explain how the stated diagonal preserves the coefficients and produces a unitary in <span class="math">\(D\)</span>.</p>
+<p><em>Solution.</em> Reindexing a prescribed centralizer representative can change its quotient class unless separately controlled. The equation would then concern another cocycle. In (8.5) every row is tested against <span class="math">\(c_{g,k}\)</span> and <span class="math">\(p_{v,k}\)</span> at the actual output coordinate <span class="math">\(k\)</span>. Choosing <span class="math">\(d(k)\)</span> changes only the row of <span class="math">\(z^{(r)}\)</span>, whose lift is unitary. Errors and commutators tend to zero along <span class="math">\(\omega\)</span>, while predual centrality puts the bounded sequence in <span class="math">\(F\)</span>. Its class lies in <span class="math">\(D\)</span> and solves the equation for the original cocycle. No group action on <span class="math">\(M\)</span> is required.</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ w_k&amp;=z^{(d(k))}_k,\\
+ d(k)&amp;\longrightarrow\infty\quad\text{along }\omega.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(9.8)</span></div>
+<h2 id="references">References</h2>
+<p>[Kuperberg] Greg Kuperberg, <em>A tracial quantum central limit theorem</em>, Transactions of the American Mathematical Society 357 (2005), 459–471. <a href="https://arxiv.org/abs/math-ph/0202035v1">Author preprint, arXiv:math-ph/0202035v1</a>, Section 3: ordered joint distributions and commutator estimates. The bounded character calculation used in this lesson is proved in Section 2 above.</p>
+<p>[Conley et al.] Clinton T. Conley, Steve C. Jackson, David Kerr, Andrew S. Marks, Brandon Seward and Robin D. Tucker-Drob, <em>Følner tilings for actions of amenable groups</em>, Mathematische Annalen 371 (2018), 663–683. <a href="https://arxiv.org/abs/1704.00699v2">Author preprint, arXiv:1704.00699v2</a>, Lemma 2.3 (countable Borel coloring), Lemma 3.3 (measurable selection of trimmed tiles), Lemma 3.4 (the descending hierarchy), and Theorem 3.6 (conull tilings). Sections 5–6 above prove the finite measure estimates and both oriented boundary bounds used here.</p>
+</article><nav class="lesson-nav" aria-label="Sources"><a href="src/gaussian-models-and-amenable-towers.md">Editable Markdown</a> · <span class="unlinked">Sources and authorship</span> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

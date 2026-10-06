@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Normalized induction and Jacquet modules · Automorphic forms and representations of GL(2)</title>
+<meta name="description" content="A lesson of the course Automorphic forms and representations of GL(2). Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/automorphic-forms-and-representations-of-gl2/normalized-induction-and-jacquet-modules.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Automorphic forms and representations of GL(2)</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 14</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="normalized-induction-and-jacquet-modules">Normalized induction and Jacquet modules</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).</em></p>
+<p>Parabolic induction builds a representation from two characters of the diagonal torus. The Jacquet module measures what remains when upper unipotent translations are made trivial. Their adjunction tells us exactly why a noncuspidal irreducible representation embeds in a principal series. Keeping the square root of the modulus in both constructions is essential: it determines which character is a subrepresentation, which is a quotient, and what happens to the Steinberg representation.</p>
+<p>We use the smooth representation, exact compact average and contragredient conventions of <a href="smooth-local-representations-and-the-hecke-module-dictionary.html">Smooth local representations and the Hecke-module dictionary</a>. Let <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(G=\mathrm{GL}_2(F)\)">\(G=\mathrm{GL}_2(F)\)</span> and <span class="math" data-tex="\(K_0=\mathrm{GL}_2(\mathcal O)\)">\(K_0=\mathrm{GL}_2(\mathcal O)\)</span> be as there. Haar measure on <span class="math" data-tex="\(G\)">\(G\)</span> has <span class="math" data-tex="\(\operatorname{vol}(K_0)=1\)">\(\operatorname{vol}(K_0)=1\)</span>; additive measure has <span class="math" data-tex="\(\operatorname{vol}(\mathcal O)=1\)">\(\operatorname{vol}(\mathcal O)=1\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+B=TN,\quad T=\{\operatorname{diag}(a,d)\},\quad
+N=\{n(x)=\begin{pmatrix}1&amp;x\\ 0&amp;1\end{pmatrix}\},\quad
+w=\begin{pmatrix}0&amp;-1\\ 1&amp;0\end{pmatrix},\quad \nu(x)=|x|.
+\]">\[
+B=TN,\quad T=\{\operatorname{diag}(a,d)\},\quad
+N=\{n(x)=\begin{pmatrix}1&amp;x\\ 0&amp;1\end{pmatrix}\},\quad
+w=\begin{pmatrix}0&amp;-1\\ 1&amp;0\end{pmatrix},\quad \nu(x)=|x|.
+\]</span>
+<p>We prove the induction, averaging, reciprocity, principal-Jacquet and embedding assertions used here. Section 5 proves both directions of the compact-support characterization of supercuspidality, together with admissibility of every irreducible smooth GL₂ representation.</p>
+<h2 id="1-induction-with-the-square-root-modulus">1. Induction with the square-root modulus</h2>
+<p>The modulus used for normalized induction is</p>
+<span class="math math-display" data-tex="\[
+\delta_B(\operatorname{diag}(a,d))=|a/d|.
+\tag{1.1}
+\]">\[
+\delta_B(\operatorname{diag}(a,d))=|a/d|.
+\tag{1.1}
+\]</span>
+<p>It is the factor by which torus conjugation scales additive Haar measure on <span class="math" data-tex="\(N\)">\(N\)</span>, since <span class="math" data-tex="\(t n(x)t^{-1}=n(ax/d)\)">\(t n(x)t^{-1}=n(ax/d)\)</span>. Some definitions of the modular function of a locally compact group use its reciprocal; (1.1) fixes our induction convention without that ambiguity.</p>
+<p>For a smooth <span class="math" data-tex="\(T\)">\(T\)</span>-representation <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, extend it trivially over <span class="math" data-tex="\(N\)">\(N\)</span>. Define <span class="math" data-tex="\(I(\sigma)\)">\(I(\sigma)\)</span> to be the smooth functions with values in its space such that</p>
+<span class="math math-display" data-tex="\[
+f(ntg)=\delta_B(t)^{1/2}\sigma(t)f(g),
+\qquad (R(h)f)(g)=f(gh).
+\tag{1.2}
+\]">\[
+f(ntg)=\delta_B(t)^{1/2}\sigma(t)f(g),
+\qquad (R(h)f)(g)=f(gh).
+\tag{1.2}
+\]</span>
+<p>Smooth here includes a right compact open stabilizer. In the character case write
+<span class="math" data-tex="\(I(\chi_1,\chi_2)\)">\(I(\chi_1,\chi_2)\)</span> for <span class="math" data-tex="\(\sigma(t)=\chi_1(a)\chi_2(d)\)">\(\sigma(t)=\chi_1(a)\chi_2(d)\)</span>.</p>
+<p>Two elementary decompositions describe these functions. First <span class="math" data-tex="\(G=BK_0\)">\(G=BK_0\)</span>: scale the bottom row of a matrix to a primitive row in <span class="math" data-tex="\(\mathcal O^2\)">\(\mathcal O^2\)</span>, complete it to a matrix in <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, and multiply by its inverse to leave an upper triangular matrix. Thus
+<span class="math" data-tex="\(B\backslash G\simeq\mathbb P^1(F)\)">\(B\backslash G\simeq\mathbb P^1(F)\)</span> is compact. Second,</p>
+<span class="math math-display" data-tex="\[
+G=B\ \sqcup\ BwN.
+\tag{1.3}
+\]">\[
+G=B\ \sqcup\ BwN.
+\tag{1.3}
+\]</span>
+<p>If <span class="math" data-tex="\(g=\begin{pmatrix}a&amp;b\\ c&amp;d\end{pmatrix}\)">\(g=\begin{pmatrix}a&amp;b\\ c&amp;d\end{pmatrix}\)</span> has <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, its explicit open-cell factorization is
+<span class="math" data-tex="\(g=\begin{pmatrix}\det(g)/c&amp;a\\ 0&amp;c\end{pmatrix}w n(d/c)\)">\(g=\begin{pmatrix}\det(g)/c&amp;a\\ 0&amp;c\end{pmatrix}w n(d/c)\)</span>.
+If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, it is in <span class="math" data-tex="\(B\)">\(B\)</span>. The open cell has coordinate <span class="math" data-tex="\(x\in F\)">\(x\in F\)</span>; the remaining closed point corresponds to <span class="math" data-tex="\(B\)">\(B\)</span>. Locally constant sections on this compact quotient have a common right open stabilizer: cover it by finitely many local constant charts and intersect the fixing subgroups. This explains the equivalence with the usual locally constant induction definition.</p>
+<p><strong>Proposition 1.1 — admissibility.</strong> Every character principal series <span class="math" data-tex="\(I(\chi_1,\chi_2)\)">\(I(\chi_1,\chi_2)\)</span> is admissible.</p>
+<p><strong>Proof.</strong> Restriction to <span class="math" data-tex="\(K_0\)">\(K_0\)</span> determines the function by (1.2). If it is fixed by compact open <span class="math" data-tex="\(J\)">\(J\)</span>, it is fixed by <span class="math" data-tex="\(J\cap K_0\)">\(J\cap K_0\)</span>, and its restriction is determined by the finite set <span class="math" data-tex="\(K_0/(J\cap K_0)\)">\(K_0/(J\cap K_0)\)</span>. Some possible values are excluded by the left <span class="math" data-tex="\(B\cap K_0\)">\(B\cap K_0\)</span>-character condition, but that only decreases the dimension. Thus
+<span class="math" data-tex="\(\dim I(\chi_1,\chi_2)^J\leq[K_0:J\cap K_0]&lt;\infty\)">\(\dim I(\chi_1,\chi_2)^J\leq[K_0:J\cap K_0]&lt;\infty\)</span>.
+Smoothness is in the definition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2 — induced contragredient.</strong>
+<span class="math" data-tex="\(I(\chi_1,\chi_2)^\vee\simeq I(\chi_1^{-1},\chi_2^{-1})\)">\(I(\chi_1,\chi_2)^\vee\simeq I(\chi_1^{-1},\chi_2^{-1})\)</span>.</p>
+<p><strong>Proof.</strong> The bilinear pairing can be written, up to a fixed positive scalar, as</p>
+<span class="math math-display" data-tex="\[
+\langle f,f&#x27;\rangle=\int_F f(w n(x))f&#x27;(w n(x))\,dx.
+\tag{1.4}
+\]">\[
+\langle f,f&#x27;\rangle=\int_F f(w n(x))f&#x27;(w n(x))\,dx.
+\tag{1.4}
+\]</span>
+<p>It converges. In Iwasawa coordinates for <span class="math" data-tex="\(w n(x)\)">\(w n(x)\)</span>, the ratio of the diagonal norms is <span class="math" data-tex="\(\max(1,|x|)^{-2}\)">\(\max(1,|x|)^{-2}\)</span>; the two inverse characters cancel in the product, leaving a bound <span class="math" data-tex="\(C\max(1,|x|)^{-2}\)">\(C\max(1,|x|)^{-2}\)</span>. Its integral is finite by the valuation shells. This is the same density integral as the compact <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-pairing; we can verify invariance directly in the open chart.</p>
+<p>Right upper unipotents translate <span class="math" data-tex="\(x\)">\(x\)</span>. For <span class="math" data-tex="\(t=\operatorname{diag}(a,d)\)">\(t=\operatorname{diag}(a,d)\)</span>,
+<span class="math" data-tex="\(w n(x)t=\operatorname{diag}(d,a)w n(xd/a)\)">\(w n(x)t=\operatorname{diag}(d,a)w n(xd/a)\)</span>.
+The product multiplier is <span class="math" data-tex="\(|d/a|\)">\(|d/a|\)</span>, which cancels the change of additive measure. For right <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>,
+<span class="math" data-tex="\(w n(x)w=\begin{pmatrix}x^{-1}&amp;-1\\ 0&amp;x\end{pmatrix}w n(-x^{-1})\)">\(w n(x)w=\begin{pmatrix}x^{-1}&amp;-1\\ 0&amp;x\end{pmatrix}w n(-x^{-1})\)</span>.
+The product multiplier is <span class="math" data-tex="\(|x|^{-2}\)">\(|x|^{-2}\)</span>, exactly the Jacobian of inversion. This change of variables follows on balls avoiding zero from their scaled radii, or from the local-field derivative of inversion. The point zero has measure zero. The elements <span class="math" data-tex="\(N,T,w\)">\(N,T,w\)</span> generate <span class="math" data-tex="\(G\)">\(G\)</span> by (1.3), proving invariance.</p>
+<p>The pairing is nondegenerate. A nonzero section is nonzero on an open-cell ball; pairing with a section supported on a sufficiently small such ball detects it. Smoothness and invariance give an injection of the claimed induced representation into the smooth dual. For <span class="math" data-tex="\(J\subset K_0\)">\(J\subset K_0\)</span>, both inducing characters and their inverses allow values at exactly the same double cosets <span class="math" data-tex="\((B\cap K_0)\backslash K_0/J\)">\((B\cap K_0)\backslash K_0/J\)</span>: a value is allowed precisely when the character is trivial on the corresponding stabilizer. Their fixed-space dimensions are therefore equal. Fixed-space duality from the preceding lesson makes the injection surjective on every <span class="math" data-tex="\(J\)">\(J\)</span>-fixed space, hence on all smooth vectors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-coinvariants-and-exact-averaging">2. Coinvariants and exact averaging</h2>
+<p>For a smooth representation <span class="math" data-tex="\(V\)">\(V\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+V(N)=\operatorname{span}\{\pi(n)v-v:n\in N,v\in V\},\qquad V_N=V/V(N).
+\tag{2.1}
+\]">\[
+V(N)=\operatorname{span}\{\pi(n)v-v:n\in N,v\in V\},\qquad V_N=V/V(N).
+\tag{2.1}
+\]</span>
+<p>The torus acts on <span class="math" data-tex="\(V_N\)">\(V_N\)</span>, since it normalizes <span class="math" data-tex="\(N\)">\(N\)</span>. We use two names to keep its normalization explicit: <span class="math" data-tex="\(V_N\)">\(V_N\)</span> has the original torus action, whereas</p>
+<span class="math math-display" data-tex="\[
+r_N(V)=\delta_B^{-1/2}\otimes V_N
+\tag{2.2}
+\]">\[
+r_N(V)=\delta_B^{-1/2}\otimes V_N
+\tag{2.2}
+\]</span>
+<p>is the normalized Jacquet module. Vanishing is independent of the twist.</p>
+<p>For a compact additive open subgroup <span class="math" data-tex="\(U\subset F\)">\(U\subset F\)</span>, put
+<span class="math" data-tex="\(E_Uv=\operatorname{vol}(U)^{-1}\int_U\pi(n(x))v\,dx\)">\(E_Uv=\operatorname{vol}(U)^{-1}\int_U\pi(n(x))v\,dx\)</span>.
+This is an exact finite-sum average. The subgroups <span class="math" data-tex="\(\varpi^{-m}\mathcal O\)">\(\varpi^{-m}\mathcal O\)</span>, <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>, exhaust <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Lemma 2.1 — Jacquet averaging lemma.</strong> A vector <span class="math" data-tex="\(v\)">\(v\)</span> lies in <span class="math" data-tex="\(V(N)\)">\(V(N)\)</span> if and only if <span class="math" data-tex="\(E_Uv=0\)">\(E_Uv=0\)</span> for some compact additive open <span class="math" data-tex="\(U\)">\(U\)</span>. Once this happens, it holds for every larger such <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(v=\sum_i(\pi(n(x_i))v_i-v_i)\)">\(v=\sum_i(\pi(n(x_i))v_i-v_i)\)</span>, choose <span class="math" data-tex="\(U\)">\(U\)</span> containing all the finitely many <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. Translation invariance of its average kills each difference. Conversely, if <span class="math" data-tex="\(E_Uv=0\)">\(E_Uv=0\)</span>, write the integral as a finite linear combination of orbit vectors. Then <span class="math" data-tex="\(v=v-E_Uv\)">\(v=v-E_Uv\)</span> is the same finite average of differences <span class="math" data-tex="\(v-\pi(n(x))v\)">\(v-\pi(n(x))v\)</span>, and belongs to <span class="math" data-tex="\(V(N)\)">\(V(N)\)</span>. For <span class="math" data-tex="\(U\subset U&#x27;\)">\(U\subset U&#x27;\)</span>, averaging first over <span class="math" data-tex="\(U\)">\(U\)</span> and then over <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span> gives <span class="math" data-tex="\(E_{U&#x27;}E_U=E_{U&#x27;}\)">\(E_{U&#x27;}E_U=E_{U&#x27;}\)</span>, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.2 — exactness.</strong> Both <span class="math" data-tex="\(V\mapsto V_N\)">\(V\mapsto V_N\)</span> and <span class="math" data-tex="\(r_N\)">\(r_N\)</span> preserve short exact sequences of smooth representations.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(0\to V&#x27;\to V\to V&#x27;&#x27;\to0\)">\(0\to V&#x27;\to V\to V&#x27;&#x27;\to0\)</span>, coinvariants are plainly surjective at the right. If <span class="math" data-tex="\(v&#x27;\in V&#x27;\)">\(v&#x27;\in V&#x27;\)</span> maps to zero in <span class="math" data-tex="\(V_N\)">\(V_N\)</span>, Lemma 2.1 gives an average killing it in <span class="math" data-tex="\(V\)">\(V\)</span>, hence also in <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span>, so it was already zero in <span class="math" data-tex="\(V&#x27;_N\)">\(V&#x27;_N\)</span>. If the image of <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span> is zero in <span class="math" data-tex="\(V&#x27;&#x27;_N\)">\(V&#x27;&#x27;_N\)</span>, an average <span class="math" data-tex="\(E_U\)">\(E_U\)</span> kills that image. Thus <span class="math" data-tex="\(E_Uv\in V&#x27;\)">\(E_Uv\in V&#x27;\)</span>, and <span class="math" data-tex="\(v-E_Uv\in V(N)\)">\(v-E_Uv\in V(N)\)</span> by its finite difference expression. The class of <span class="math" data-tex="\(v\)">\(v\)</span> is therefore in the image of <span class="math" data-tex="\(V&#x27;_N\)">\(V&#x27;_N\)</span>. This proves exactness in the middle. Twisting the torus action by a character preserves it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses the increasing compact subgroups of this unipotent group. Coinvariants for an arbitrary group are generally only right exact.</p>
+<h2 id="3-reciprocity-by-evaluating-at-the-identity">3. Reciprocity by evaluating at the identity</h2>
+<p><strong>Theorem 3.1 — normalized Frobenius reciprocity.</strong> For smooth <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span> and smooth <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_G(V,I(\sigma))
+\simeq\operatorname{Hom}_T(V_N,\delta_B^{1/2}\sigma)
+\simeq\operatorname{Hom}_T(r_N(V),\sigma).
+\tag{3.1}
+\]">\[
+\operatorname{Hom}_G(V,I(\sigma))
+\simeq\operatorname{Hom}_T(V_N,\delta_B^{1/2}\sigma)
+\simeq\operatorname{Hom}_T(r_N(V),\sigma).
+\tag{3.1}
+\]</span>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(A:V\to I(\sigma)\)">\(A:V\to I(\sigma)\)</span>, set <span class="math" data-tex="\(\ell(v)=(Av)(1)\)">\(\ell(v)=(Av)(1)\)</span>. Equivariance and (1.2) give
+<span class="math" data-tex="\(\ell(\pi(n)v)=\ell(v)\)">\(\ell(\pi(n)v)=\ell(v)\)</span> and
+<span class="math" data-tex="\(\ell(\pi(t)v)=\delta_B(t)^{1/2}\sigma(t)\ell(v)\)">\(\ell(\pi(t)v)=\delta_B(t)^{1/2}\sigma(t)\ell(v)\)</span>.
+Hence it factors through the stated torus map on the unnormalized coinvariants.</p>
+<p>Conversely, from such an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(A_\ell v)(g)=\ell(\pi(g)v).
+\tag{3.2}
+\]">\[
+(A_\ell v)(g)=\ell(\pi(g)v).
+\tag{3.2}
+\]</span>
+<p>Its left <span class="math" data-tex="\(N,T\)">\(N,T\)</span>-transformation is (1.2). A compact open subgroup fixing <span class="math" data-tex="\(v\)">\(v\)</span> fixes this function on the right, so it is a smooth induced vector. Also <span class="math" data-tex="\(A_\ell(\pi(h)v)(g)=A_\ell v(gh)\)">\(A_\ell(\pi(h)v)(g)=A_\ell v(gh)\)</span>, proving <span class="math" data-tex="\(G\)">\(G\)</span>-equivariance. Evaluation at one recovers <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Starting from <span class="math" data-tex="\(A\)">\(A\)</span>, formula (3.2) gives <span class="math" data-tex="\((A\pi(g)v)(1)=(Av)(g)\)">\((A\pi(g)v)(1)=(Av)(g)\)</span>, recovering <span class="math" data-tex="\(A\)">\(A\)</span>. These are inverse linear maps, natural in both arguments. Moving the square-root twist from the target to the source gives the second isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Evaluation on an induced function transforms by <span class="math" data-tex="\(\delta_B^{1/2}\sigma\)">\(\delta_B^{1/2}\sigma\)</span>, rather than by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> alone. Omitting this factor would change the inducing characters in the embedding theorem.</p>
+<h2 id="4-the-two-bruhat-cells-and-the-principal-series-jacquet-module">4. The two Bruhat cells and the principal-series Jacquet module</h2>
+<p><strong>Theorem 4.1.</strong> There is an exact sequence of torus modules</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\chi_2\otimes\chi_1
+\longrightarrow r_N(I(\chi_1,\chi_2))
+\longrightarrow\chi_1\otimes\chi_2\longrightarrow0.
+\tag{4.1}
+\]">\[
+0\longrightarrow\chi_2\otimes\chi_1
+\longrightarrow r_N(I(\chi_1,\chi_2))
+\longrightarrow\chi_1\otimes\chi_2\longrightarrow0.
+\tag{4.1}
+\]</span>
+<p>In particular its dimension is two and its semisimplification consists of those two characters. This does not assert splitting when the characters coincide.</p>
+<p><strong>Proof.</strong> Evaluation at one gives a surjection of <span class="math" data-tex="\(B\)">\(B\)</span>-modules
+<span class="math" data-tex="\(I\to\mathbb C_{\delta_B^{1/2}(\chi_1\otimes\chi_2)}\)">\(I\to\mathbb C_{\delta_B^{1/2}(\chi_1\otimes\chi_2)}\)</span>, with <span class="math" data-tex="\(N\)">\(N\)</span> trivial on the target. Its kernel consists of sections vanishing near the closed point. On the open cell such a section is exactly
+<span class="math" data-tex="\(\psi(x)=f(w n(x))\in C_c^\infty(F)\)">\(\psi(x)=f(w n(x))\in C_c^\infty(F)\)</span>.
+Conversely a compactly supported locally constant <span class="math" data-tex="\(\psi\)">\(\psi\)</span> extends using (1.2) and zero near the closed point. Thus we have an exact <span class="math" data-tex="\(B\)">\(B\)</span>-sequence with this open-cell kernel.</p>
+<p>Right <span class="math" data-tex="\(n(b)\)">\(n(b)\)</span> acts on it by <span class="math" data-tex="\(\psi(x)\mapsto\psi(x+b)\)">\(\psi(x)\mapsto\psi(x+b)\)</span>. Its coinvariants are one dimensional, identified by <span class="math" data-tex="\(\psi\mapsto\int_F\psi(x)dx\)">\(\psi\mapsto\int_F\psi(x)dx\)</span>. To prove this directly, choose an additive compact open <span class="math" data-tex="\(U\)">\(U\)</span> fixing <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and write it as a finite sum <span class="math" data-tex="\(\sum_i c_i1_{x_i+U}\)">\(\sum_i c_i1_{x_i+U}\)</span>. Its integral is zero exactly when <span class="math" data-tex="\(\sum_i c_i=0\)">\(\sum_i c_i=0\)</span>. In that case it is a sum of the translated differences <span class="math" data-tex="\(1_{x_i+U}-1_U\)">\(1_{x_i+U}-1_U\)</span>. All differences have zero integral; this proves both the kernel and surjectivity claims.</p>
+<p>On this open-cell function the torus action is</p>
+<span class="math math-display" data-tex="\[
+R(t)\psi(x)=|d/a|^{1/2}\chi_1(d)\chi_2(a)\psi(xd/a).
+\tag{4.2}
+\]">\[
+R(t)\psi(x)=|d/a|^{1/2}\chi_1(d)\chi_2(a)\psi(xd/a).
+\tag{4.2}
+\]</span>
+<p>Integration contributes the additional factor <span class="math" data-tex="\(|a/d|\)">\(|a/d|\)</span>, so the open-cell unnormalized coinvariant character is
+<span class="math" data-tex="\(\delta_B^{1/2}(\chi_2\otimes\chi_1)\)">\(\delta_B^{1/2}(\chi_2\otimes\chi_1)\)</span>.
+The closed-cell character is <span class="math" data-tex="\(\delta_B^{1/2}(\chi_1\otimes\chi_2)\)">\(\delta_B^{1/2}(\chi_1\otimes\chi_2)\)</span>. Apply Proposition 2.2 to the two-cell sequence and twist by <span class="math" data-tex="\(\delta_B^{-1/2}\)">\(\delta_B^{-1/2}\)</span>. This proves (4.1), with dimensions one on both ends. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If these two characters are distinct, choose a torus element at which their values differ. Its two distinct eigenvalues split the two-dimensional module, and commuting torus elements preserve the eigenspaces. For equal characters this argument is unavailable; a semisimplification statement is the safe general conclusion.</p>
+<h2 id="5-noncuspidal-embeddings-and-a-support-test">5. Noncuspidal embeddings and a support test</h2>
+<p>A smooth irreducible representation is called <strong>cuspidal</strong> or <strong>supercuspidal</strong> here when <span class="math" data-tex="\(V_N=0\)">\(V_N=0\)</span>. For GL₂ there is one proper parabolic up to conjugacy. The phrase “absolutely cuspidal” in Jacquet–Langlands describes this class.</p>
+<p><strong>Theorem 5.1 — noncuspidal embedding.</strong> Every irreducible smooth representation with <span class="math" data-tex="\(V_N\ne0\)">\(V_N\ne0\)</span> embeds in some <span class="math" data-tex="\(I(\chi_1,\chi_2)\)">\(I(\chi_1,\chi_2)\)</span>.</p>
+<p><strong>Proof.</strong> We first prove the existence of a character quotient of <span class="math" data-tex="\(V_N\)">\(V_N\)</span>, without assuming a separate Jacquet-admissibility theorem. Choose a nonzero cyclic vector <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span>. Its compact <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-orbit spans a finite-dimensional space: smoothness gives a finite orbit modulo an open stabilizer in the compact group. Choose a basis <span class="math" data-tex="\(v_1,\ldots,v_s\)">\(v_1,\ldots,v_s\)</span> of that span. By <span class="math" data-tex="\(G=BK_0\)">\(G=BK_0\)</span>, the classes of these vectors generate <span class="math" data-tex="\(V_N\)">\(V_N\)</span> under <span class="math" data-tex="\(T\)">\(T\)</span>: after <span class="math" data-tex="\(N\)">\(N\)</span> has been made trivial, <span class="math" data-tex="\([\pi(tn)v_i]=\pi(t)[v_i]\)">\([\pi(tn)v_i]=\pi(t)[v_i]\)</span>. Choose an open subgroup <span class="math" data-tex="\(T_0\)">\(T_0\)</span> of the compact unit torus fixing these finitely many classes. Commutativity makes it fix all of <span class="math" data-tex="\(V_N\)">\(V_N\)</span>. Thus <span class="math" data-tex="\(V_N\)">\(V_N\)</span> is a finitely generated module over the commutative group algebra <span class="math" data-tex="\(\mathbb C[T/T_0]\)">\(\mathbb C[T/T_0]\)</span>.</p>
+<p>Such a nonzero module has a maximal proper submodule. In Zorn's argument a chain of proper submodules cannot have union equal to the module, since its finite set of generators would then lie in one member. The simple quotient has countable dimension: the original irreducible smooth <span class="math" data-tex="\(V\)">\(V\)</span> has countable dimension by the coset argument in the preceding lesson. Apply the countable Schur lemma to this simple torus representation. Every torus action commutes with every other one, hence is scalar; simplicity forces the quotient to be one dimensional. This supplies a smooth character <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>Set <span class="math" data-tex="\(\sigma=\delta_B^{-1/2}\lambda\)">\(\sigma=\delta_B^{-1/2}\lambda\)</span>, and write it as <span class="math" data-tex="\(\chi_1\otimes\chi_2\)">\(\chi_1\otimes\chi_2\)</span>, since <span class="math" data-tex="\(T\simeq F^\times\times F^\times\)">\(T\simeq F^\times\times F^\times\)</span>. Its quotient map is a nonzero member of the middle space in (3.1). Reciprocity gives a nonzero map <span class="math" data-tex="\(V\to I(\chi_1,\chi_2)\)">\(V\to I(\chi_1,\chi_2)\)</span>. Its invariant kernel is zero by irreducibility, proving the embedding. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(\ell\in V^\vee\)">\(\ell\in V^\vee\)</span> and <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>, a matrix coefficient is
+<span class="math" data-tex="\(m_{v,\ell}(g)=\ell(\pi(g)v)\)">\(m_{v,\ell}(g)=\ell(\pi(g)v)\)</span>.
+Its support is compact modulo the centre if it is contained in <span class="math" data-tex="\(ZC\)">\(ZC\)</span> for a compact <span class="math" data-tex="\(C\subset G\)">\(C\subset G\)</span>. Scalar central character makes its nonvanishing set centre-invariant; only that support condition, rather than a bound on central growth, is intended.</p>
+<p><strong>Theorem 5.2 — compact coefficients force cuspidality.</strong> If every matrix coefficient of an irreducible smooth <span class="math" data-tex="\(V\)">\(V\)</span> is compactly supported modulo <span class="math" data-tex="\(Z\)">\(Z\)</span>, then <span class="math" data-tex="\(V_N=0\)">\(V_N=0\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(V_N\ne0\)">\(V_N\ne0\)</span>, and choose the embedding of Theorem 5.1. Write <span class="math" data-tex="\(\ell(v)\)">\(\ell(v)\)</span> for evaluation at one after that embedding. It is a nonzero linear functional with
+<span class="math" data-tex="\(\ell(\pi(n)v)=\ell(v)\)">\(\ell(\pi(n)v)=\ell(v)\)</span> and <span class="math" data-tex="\(\ell(\pi(t)v)=\lambda(t)\ell(v)\)">\(\ell(\pi(t)v)=\lambda(t)\ell(v)\)</span>, where <span class="math" data-tex="\(\lambda=\delta_B^{1/2}(\chi_1\otimes\chi_2)\)">\(\lambda=\delta_B^{1/2}(\chi_1\otimes\chi_2)\)</span>. It need not itself be smooth, so we now produce a smooth functional.</p>
+<p>Choose <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> such that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is trivial on diagonal units congruent to one modulo <span class="math" data-tex="\(\varpi^n\)">\(\varpi^n\)</span>. Average
+<span class="math" data-tex="\(\ell_n(u)=\operatorname{vol}(K_n)^{-1}\int_{K_n}\ell(\pi(k)u)dk\)">\(\ell_n(u)=\operatorname{vol}(K_n)^{-1}\int_{K_n}\ell(\pi(k)u)dk\)</span>.
+For each <span class="math" data-tex="\(u\)">\(u\)</span> this is a finite sum, and the resulting functional is <span class="math" data-tex="\(K_n\)">\(K_n\)</span>-fixed, hence in <span class="math" data-tex="\(V^\vee\)">\(V^\vee\)</span>.</p>
+<p>Every <span class="math" data-tex="\(k=\begin{pmatrix}a&amp;b\\ c&amp;d\end{pmatrix}\in K_n\)">\(k=\begin{pmatrix}a&amp;b\\ c&amp;d\end{pmatrix}\in K_n\)</span> has the factorization</p>
+<span class="math math-display" data-tex="\[
+k=n(b/d)\operatorname{diag}(\det(k)/d,d)
+\begin{pmatrix}1&amp;0\\ c/d&amp;1\end{pmatrix}.
+\tag{5.1}
+\]">\[
+k=n(b/d)\operatorname{diag}(\det(k)/d,d)
+\begin{pmatrix}1&amp;0\\ c/d&amp;1\end{pmatrix}.
+\tag{5.1}
+\]</span>
+<p>Both diagonal units are congruent to one, and both unipotent parameters lie in <span class="math" data-tex="\(\varpi^n\mathcal O\)">\(\varpi^n\mathcal O\)</span>. Put <span class="math" data-tex="\(t_r=\operatorname{diag}(\varpi^r,1)\)">\(t_r=\operatorname{diag}(\varpi^r,1)\)</span>, and fix <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(\ell(v)\ne0\)">\(\ell(v)\ne0\)</span>. In <span class="math" data-tex="\(t_r^{-1}kt_r\)">\(t_r^{-1}kt_r\)</span>, the upper parameter expands but remains invisible to <span class="math" data-tex="\(\ell\)">\(\ell\)</span>; the diagonal still has character one; the lower parameter contracts to <span class="math" data-tex="\(\varpi^r c/d\)">\(\varpi^r c/d\)</span>. For all sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>, uniformly in <span class="math" data-tex="\(k\in K_n\)">\(k\in K_n\)</span>, that lower unipotent fixes <span class="math" data-tex="\(v\)">\(v\)</span> by smoothness. Hence</p>
+<span class="math math-display" data-tex="\[
+\ell_n(\pi(t_r)v)
+=\lambda(t_r)\ell(v)\ne0
+\quad(r\text{ sufficiently large}).
+\tag{5.2}
+\]">\[
+\ell_n(\pi(t_r)v)
+=\lambda(t_r)\ell(v)\ne0
+\quad(r\text{ sufficiently large}).
+\tag{5.2}
+\]</span>
+<p>These <span class="math" data-tex="\(t_r\)">\(t_r\)</span> escape every compact subset modulo the centre. For example the continuous centre-invariant function <span class="math" data-tex="\(\|g\|\|g^{-1}\|\)">\(\|g\|\|g^{-1}\|\)</span>, using the maximum-entry norm, is <span class="math" data-tex="\(q^r\)">\(q^r\)</span> on them and bounded on each compact projective subset. Thus the smooth matrix coefficient (5.2) is not compact modulo the centre, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.3 — vanishing Jacquet module gives compact support.</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be an irreducible smooth representation with <span class="math" data-tex="\(V_N=0\)">\(V_N=0\)</span>. For every compact open <span class="math" data-tex="\(J\)">\(J\)</span> and every <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>, the vector-valued function
+<span class="math math-display" data-tex="\[
+g\longmapsto E_J\pi(g)v
+\]">\[
+g\longmapsto E_J\pi(g)v
+\]</span>
+vanishes outside <span class="math" data-tex="\(ZC_{J,v}\)">\(ZC_{J,v}\)</span>, for a compact subset <span class="math" data-tex="\(C_{J,v}\subset G\)">\(C_{J,v}\subset G\)</span>. In particular every smooth matrix coefficient is compactly supported modulo <span class="math" data-tex="\(Z\)">\(Z\)</span>, and <span class="math" data-tex="\(V\)">\(V\)</span> is admissible.</p>
+<p><strong>Proof.</strong> The compact <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-orbit of <span class="math" data-tex="\(v\)">\(v\)</span> spans a finite-dimensional space <span class="math" data-tex="\(W\)">\(W\)</span>. Indeed an open stabilizer has finite index after intersection with <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. Choose a basis <span class="math" data-tex="\(v_1,\ldots,v_s\)">\(v_1,\ldots,v_s\)</span> of <span class="math" data-tex="\(W\)">\(W\)</span>. Since <span class="math" data-tex="\(V_N=0\)">\(V_N=0\)</span>, Lemma 2.1 gives one sufficiently large additive subgroup
+<span class="math math-display" data-tex="\[
+U=\varpi^{-R}\mathcal O,\qquad R\geq0,\qquad E_Uv_i=0
+\quad(1\leq i\leq s).
+\tag{5.3}
+\]">\[
+U=\varpi^{-R}\mathcal O,\qquad R\geq0,\qquad E_Uv_i=0
+\quad(1\leq i\leq s).
+\tag{5.3}
+\]</span>
+Choose <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span> with <span class="math" data-tex="\(K_m\subset J\)">\(K_m\subset J\)</span>. The subgroup <span class="math" data-tex="\(K_m\)">\(K_m\)</span> is normal in <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, since conjugation by an integral invertible matrix preserves <span class="math" data-tex="\(M_2(\mathcal O)\)">\(M_2(\mathcal O)\)</span>.</p>
+<p>We use the Cartan decomposition in the form
+<span class="math math-display" data-tex="\[
+G=\bigcup_{r\geq0}ZK_0t_rK_0,\qquad
+t_r=\operatorname{diag}(\varpi^r,1).
+\tag{5.4}
+\]">\[
+G=\bigcup_{r\geq0}ZK_0t_rK_0,\qquad
+t_r=\operatorname{diag}(\varpi^r,1).
+\tag{5.4}
+\]</span>
+Here is an elementary proof, valid over every nonarchimedean local field. Scale an invertible matrix by a scalar so all its entries are integral and at least one is a unit. Integral row and column permutations move a unit to the first diagonal entry. Scale that entry to one using a diagonal unit, and eliminate its row and column by integral elementary matrices. The result is <span class="math" data-tex="\(\operatorname{diag}(1,b)\)">\(\operatorname{diag}(1,b)\)</span>, with <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span> integral. Write <span class="math" data-tex="\(b=\varpi^ru\)">\(b=\varpi^ru\)</span>, with <span class="math" data-tex="\(u\)">\(u\)</span> a unit and <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, absorb <span class="math" data-tex="\(u\)">\(u\)</span> into <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, and interchange the two coordinates. This is (5.4).</p>
+<p>For <span class="math" data-tex="\(r\geq m+R\)">\(r\geq m+R\)</span>, <span class="math" data-tex="\(x\in U\)">\(x\in U\)</span> and <span class="math" data-tex="\(k\in K_0\)">\(k\in K_0\)</span>, we have
+<span class="math math-display" data-tex="\[
+kt_rn(x)(kt_r)^{-1}
+=kn(\varpi^rx)k^{-1}\in K_m\subset J.
+\tag{5.5}
+\]">\[
+kt_rn(x)(kt_r)^{-1}
+=kn(\varpi^rx)k^{-1}\in K_m\subset J.
+\tag{5.5}
+\]</span>
+The normalized compact average satisfies <span class="math" data-tex="\(E_J\pi(j)=E_J\)">\(E_J\pi(j)=E_J\)</span> for <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+E_J\pi(kt_r)v_i
+=E_J\pi(kt_rn(x))v_i.
+\]">\[
+E_J\pi(kt_r)v_i
+=E_J\pi(kt_rn(x))v_i.
+\]</span>
+Average this identity over <span class="math" data-tex="\(x\in U\)">\(x\in U\)</span>, using the exact finite-sum integral. Equation (5.3) gives
+<span class="math math-display" data-tex="\[
+E_J\pi(kt_r)v_i
+=E_J\pi(kt_r)E_Uv_i=0
+\qquad(r\geq m+R).
+\tag{5.6}
+\]">\[
+E_J\pi(kt_r)v_i
+=E_J\pi(kt_r)E_Uv_i=0
+\qquad(r\geq m+R).
+\tag{5.6}
+\]</span>
+Every <span class="math" data-tex="\(\pi(k_2)v\)">\(\pi(k_2)v\)</span> is a linear combination of the <span class="math" data-tex="\(v_i\)">\(v_i\)</span>. The smooth central character from Lesson 5, Theorem 4.1, makes the scalar <span class="math" data-tex="\(z\)">\(z\)</span> in (5.4) act by <span class="math" data-tex="\(\omega(z)\)">\(\omega(z)\)</span>. Thus the vector-valued function vanishes outside <span class="math" data-tex="\(ZC_{J,v}\)">\(ZC_{J,v}\)</span>, where
+<span class="math math-display" data-tex="\[
+C_{J,v}=\bigcup_{0\leq r&lt;m+R}K_0t_rK_0
+\tag{5.7}
+\]">\[
+C_{J,v}=\bigcup_{0\leq r&lt;m+R}K_0t_rK_0
+\tag{5.7}
+\]</span>
+is a finite union of compact sets.</p>
+<p>If <span class="math" data-tex="\(\ell\in V^\vee\)">\(\ell\in V^\vee\)</span>, choose <span class="math" data-tex="\(J\)">\(J\)</span> fixing it. Then <span class="math" data-tex="\(\ell(u)=\ell(E_Ju)\)">\(\ell(u)=\ell(E_Ju)\)</span>, so (5.6) proves compact support of <span class="math" data-tex="\(\ell(\pi(g)v)\)">\(\ell(\pi(g)v)\)</span> modulo <span class="math" data-tex="\(Z\)">\(Z\)</span>. This support assertion uses no admissibility or Kirillov model.</p>
+<p>To prove admissibility, choose <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. Irreducibility says that its <span class="math" data-tex="\(G\)">\(G\)</span>-orbit spans <span class="math" data-tex="\(V\)">\(V\)</span>, so the vectors <span class="math" data-tex="\(E_J\pi(g)v\)">\(E_J\pi(g)v\)</span> span <span class="math" data-tex="\(V^J\)">\(V^J\)</span>. By the bound just proved, it suffices to use <span class="math" data-tex="\(g\in C_{J,v}\)">\(g\in C_{J,v}\)</span>; central elements only multiply vectors by scalars. The locally constant orbit map <span class="math" data-tex="\(g\mapsto\pi(g)v\)">\(g\mapsto\pi(g)v\)</span> has finite image on this compact set: finitely many right cosets of the open stabilizer of <span class="math" data-tex="\(v\)">\(v\)</span> cover it. Hence these averages span a finite-dimensional space. This proves <span class="math" data-tex="\(\dim V^J&lt;\infty\)">\(\dim V^J&lt;\infty\)</span> for every <span class="math" data-tex="\(J\)">\(J\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Together, Theorems 5.2–5.3 prove the equivalence between vanishing Jacquet module and compact support of all smooth matrix coefficients. The stronger vector-valued support bound is what also gives admissibility; bounding one scalar coefficient at a time would not supply a uniform bound for the fixed space.</p>
+<p><strong>Theorem 5.4 — smooth admissibility for GL₂.</strong> Every irreducible smooth complex representation of <span class="math" data-tex="\(\mathrm{GL}_2(F)\)">\(\mathrm{GL}_2(F)\)</span> is admissible.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(V_N=0\)">\(V_N=0\)</span>, use Theorem 5.3. Otherwise Theorem 5.1 embeds <span class="math" data-tex="\(V\)">\(V\)</span> into a character principal series, whose fixed spaces are finite dimensional by Proposition 1.1. The injection on <span class="math" data-tex="\(J\)">\(J\)</span>-fixed spaces therefore proves the same bound for <span class="math" data-tex="\(V\)">\(V\)</span>. The proof of Theorem 5.1 used compact orbit spans, countable Schur and a finitely generated torus quotient; it did not assume admissibility. Thus there is no circular invocation of the theorem being proved. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-trivial-and-steinberg-representations">6. The trivial and Steinberg representations</h2>
+<p>Let
+<span class="math" data-tex="\(\sigma_-=(\nu^{-1/2},\nu^{1/2})\)">\(\sigma_-=(\nu^{-1/2},\nu^{1/2})\)</span> and
+<span class="math" data-tex="\(\sigma_+=(\nu^{1/2},\nu^{-1/2})\)">\(\sigma_+=(\nu^{1/2},\nu^{-1/2})\)</span>.
+For <span class="math" data-tex="\(I_-=I(\sigma_-)\)">\(I_-=I(\sigma_-)\)</span>, the multiplier in (1.2) is one, so it is <span class="math" data-tex="\(C^\infty(\mathbb P^1(F))\)">\(C^\infty(\mathbb P^1(F))\)</span>, with constant functions a trivial subrepresentation. Define</p>
+<span class="math math-display" data-tex="\[
+\mathrm{St}=I_-/\mathbb C1.
+\tag{6.1}
+\]">\[
+\mathrm{St}=I_-/\mathbb C1.
+\tag{6.1}
+\]</span>
+<p>This is the usual Steinberg space. Its irreducibility will be proved in the following local-classification lesson; the following construction and Jacquet calculation require no classification theorem.</p>
+<p>By Proposition 1.2 and exact smooth duality,
+<span class="math" data-tex="\(I_+\)">\(I_+\)</span> has a trivial quotient and its kernel is <span class="math" data-tex="\(\mathrm{St}^\vee\)">\(\mathrm{St}^\vee\)</span>. We can identify that kernel with <span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span> directly. For <span class="math" data-tex="\(f\in I_-\)">\(f\in I_-\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(Af)(g)=\int_F\bigl(f(w n(x)g)-f(g)\bigr)dx.
+\tag{6.2}
+\]">\[
+(Af)(g)=\int_F\bigl(f(w n(x)g)-f(g)\bigr)dx.
+\tag{6.2}
+\]</span>
+<p>The integrand has compact support in <span class="math" data-tex="\(x\)">\(x\)</span>: large <span class="math" data-tex="\(x\)">\(x\)</span> approaches the closed point of the compact projective line, and local constancy makes both values equal eventually. The formula commutes with right translation and retains every right stabilizer of <span class="math" data-tex="\(f\)">\(f\)</span>. Left upper unipotents translate <span class="math" data-tex="\(x\)">\(x\)</span>, and left <span class="math" data-tex="\(t\)">\(t\)</span> rescales it by <span class="math" data-tex="\(d/a\)">\(d/a\)</span>. Since <span class="math" data-tex="\(f\)">\(f\)</span> is left <span class="math" data-tex="\(B\)">\(B\)</span>-invariant, these operations give
+<span class="math" data-tex="\((Af)(ntg)=\delta_B(t)(Af)(g)\)">\((Af)(ntg)=\delta_B(t)(Af)(g)\)</span>.
+That is exactly the induction multiplier for <span class="math" data-tex="\(I_+\)">\(I_+\)</span>, so <span class="math" data-tex="\(A:I_-\to I_+\)">\(A:I_-\to I_+\)</span> is a smooth intertwiner.</p>
+<p>Its kernel is the constants. If <span class="math" data-tex="\(Af=0\)">\(Af=0\)</span>, take a point where the real part of <span class="math" data-tex="\(f\)">\(f\)</span> achieves its maximum on the compact projective line. At a corresponding <span class="math" data-tex="\(g\)">\(g\)</span>, the real part of the integrand in (6.2) is nonpositive everywhere and is strictly negative on an open ball if that real part is not constant. Its integral cannot then vanish. Thus the real part is constant; applying the same argument to the imaginary part proves the claim. Therefore <span class="math" data-tex="\(A\)">\(A\)</span> injects <span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span> into <span class="math" data-tex="\(I_+\)">\(I_+\)</span>.</p>
+<p>Let <span class="math" data-tex="\(L:I_+\to\mathbb C\)">\(L:I_+\to\mathbb C\)</span> be its nonzero invariant quotient functional, given by pairing with the constant vector in <span class="math" data-tex="\(I_-\)">\(I_-\)</span>. There is no invariant functional on <span class="math" data-tex="\(I_-\)">\(I_-\)</span>. To check this, restrict one to its open-cell <span class="math" data-tex="\(C_c^\infty(F)\)">\(C_c^\infty(F)\)</span>. Translation invariance makes it a multiple of integration by the coinvariant proof in Section 4. Under <span class="math" data-tex="\(T\)">\(T\)</span>, that integration transforms by <span class="math" data-tex="\(\delta_B\)">\(\delta_B\)</span>, so invariance makes the multiple zero. It would then be a multiple of closed-point evaluation; right <span class="math" data-tex="\(w\)">\(w\)</span> applied to an open-cell function nonzero at <span class="math" data-tex="\(w\)">\(w\)</span> shows that evaluation is not invariant. Hence <span class="math" data-tex="\(LA=0\)">\(LA=0\)</span>, and the image lies in <span class="math" data-tex="\(\ker L\)">\(\ker L\)</span>.</p>
+<p>For every <span class="math" data-tex="\(J\subset K_0\)">\(J\subset K_0\)</span>, the restrictions of <span class="math" data-tex="\(I_-\)">\(I_-\)</span> and <span class="math" data-tex="\(I_+\)">\(I_+\)</span> to <span class="math" data-tex="\(K_0\)">\(K_0\)</span> have identical fixed-space dimensions: all the inducing characters are trivial on compact units. Exactness of compact invariants gives
+<span class="math math-display" data-tex="\[
+\dim\mathrm{St}^J=\dim I_-^J-1=\dim I_+^J-1=\dim(\ker L)^J.
+\]">\[
+\dim\mathrm{St}^J=\dim I_-^J-1=\dim I_+^J-1=\dim(\ker L)^J.
+\]</span>
+The injection is therefore onto on each fixed space and onto globally. We have proved</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathrm{St}\longrightarrow
+I(\nu^{1/2},\nu^{-1/2})\longrightarrow1\longrightarrow0,
+\tag{6.3}
+\]">\[
+0\longrightarrow\mathrm{St}\longrightarrow
+I(\nu^{1/2},\nu^{-1/2})\longrightarrow1\longrightarrow0,
+\tag{6.3}
+\]</span>
+<p>and also <span class="math" data-tex="\(\mathrm{St}\simeq\mathrm{St}^\vee\)">\(\mathrm{St}\simeq\mathrm{St}^\vee\)</span>. Reversing the inducing characters instead gives the trivial subrepresentation in (6.1). This explains the subrepresentation/quotient orientation in the example.</p>
+<p>For the trivial representation, unnormalized coinvariants are trivial, so</p>
+<span class="math math-display" data-tex="\[
+r_N(1)=\nu^{-1/2}\otimes\nu^{1/2}=\sigma_-.
+\tag{6.4}
+\]">\[
+r_N(1)=\nu^{-1/2}\otimes\nu^{1/2}=\sigma_-.
+\tag{6.4}
+\]</span>
+<p>Apply exactness to <span class="math" data-tex="\(0\to1\to I_-\to\mathrm{St}\to0\)">\(0\to1\to I_-\to\mathrm{St}\to0\)</span>. The two distinct characters in <span class="math" data-tex="\(r_N(I_-)\)">\(r_N(I_-)\)</span> are <span class="math" data-tex="\(\sigma_-\)">\(\sigma_-\)</span> and <span class="math" data-tex="\(\sigma_+\)">\(\sigma_+\)</span>. Removing the injected <span class="math" data-tex="\(\sigma_-\)">\(\sigma_-\)</span> leaves</p>
+<span class="math math-display" data-tex="\[
+r_N(\mathrm{St})=\nu^{1/2}\otimes\nu^{-1/2}=\sigma_+.
+\tag{6.5}
+\]">\[
+r_N(\mathrm{St})=\nu^{1/2}\otimes\nu^{-1/2}=\sigma_+.
+\tag{6.5}
+\]</span>
+<p>Thus Steinberg is not supercuspidal. In the unnormalized convention its Jacquet character is <span class="math" data-tex="\(\delta_B\)">\(\delta_B\)</span>; the trivial representation's is one. These are receiving calculations, not consequences of the word “special” sometimes used for Steinberg.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 7.1 — the modulus.</strong> Derive (1.1) from the action of <span class="math" data-tex="\(T\)">\(T\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>, and explain the square root in the normalized induction convention.</p>
+<p><strong>Solution 7.1.</strong> Matrix multiplication gives <span class="math" data-tex="\(t n(x)t^{-1}=n((a/d)x)\)">\(t n(x)t^{-1}=n((a/d)x)\)</span>. Additive Haar measure scales by <span class="math" data-tex="\(|a/d|\)">\(|a/d|\)</span>, so the conjugation modulus is <span class="math" data-tex="\(\delta_B(t)=|a/d|\)">\(\delta_B(t)=|a/d|\)</span>. In normalized induction a product of a section and a dual section transforms by <span class="math" data-tex="\(\delta_B\)">\(\delta_B\)</span>, since their character parts cancel and each contributes its square root. In the open Bruhat chart this is exactly the density factor that cancels the coordinate change, as (1.4) verifies. Thus the square root makes the induced dual use inverse characters without an additional modulus twist. For unitary characters, the same density cancellation with complex conjugation gives an invariant positive inner product.</p>
+<p><strong>Exercise 7.2 — the averaging criterion.</strong> Prove Jacquet's lemma, including persistence under enlargement of the averaging subgroup.</p>
+<p><strong>Solution 7.2.</strong> A vector in <span class="math" data-tex="\(V(N)\)">\(V(N)\)</span> is a finite sum of differences with finitely many unipotent parameters. Choose a compact additive open subgroup containing those parameters. Averaging over it kills each difference by translation of its Haar measure. Conversely, if an average kills a vector, subtract that average from the vector; its finite orbit decomposition writes the result as a finite linear combination of unipotent differences. This proves the criterion. For nested subgroups, iterated normalized averages satisfy <span class="math" data-tex="\(E_{U&#x27;}E_U=E_{U&#x27;}\)">\(E_{U&#x27;}E_U=E_{U&#x27;}\)</span>, so once an average is zero all larger ones are zero. Neither direction requires admissibility.</p>
+<p><strong>Exercise 7.3 — two Jacquet modules.</strong> Compute the normalized and unnormalized Jacquet modules of the trivial and Steinberg representations, retaining the inducing order.</p>
+<p><strong>Solution 7.3.</strong> The trivial representation has unnormalized Jacquet character one and normalized character <span class="math" data-tex="\(\delta_B^{-1/2}=\sigma_-\)">\(\delta_B^{-1/2}=\sigma_-\)</span>. Start with <span class="math" data-tex="\(I_-=I(\nu^{-1/2},\nu^{1/2})\)">\(I_-=I(\nu^{-1/2},\nu^{1/2})\)</span>, whose constants give <span class="math" data-tex="\(0\to1\to I_-\to\mathrm{St}\to0\)">\(0\to1\to I_-\to\mathrm{St}\to0\)</span>. The principal-series two-cell computation gives the two distinct normalized characters <span class="math" data-tex="\(\sigma_-\)">\(\sigma_-\)</span> and <span class="math" data-tex="\(\sigma_+\)">\(\sigma_+\)</span>. Exactness injects the one-dimensional <span class="math" data-tex="\(\sigma_-\)">\(\sigma_-\)</span> from the trivial subrepresentation, so the quotient is the one-dimensional <span class="math" data-tex="\(\sigma_+\)">\(\sigma_+\)</span>. Multiplying by <span class="math" data-tex="\(\delta_B^{1/2}\)">\(\delta_B^{1/2}\)</span> makes the unnormalized Steinberg character <span class="math" data-tex="\(\delta_B\)">\(\delta_B\)</span>. Equivalently use (6.3): the quotient trivial character in <span class="math" data-tex="\(I_+\)">\(I_+\)</span> is <span class="math" data-tex="\(\sigma_-\)">\(\sigma_-\)</span>, leaving the Steinberg subrepresentation's <span class="math" data-tex="\(\sigma_+\)">\(\sigma_+\)</span>. Both computations agree and show that its Jacquet module is nonzero.</p>
+<p><strong>Exercise 7.4 — reciprocity and its factor.</strong> Prove (3.1), verifying smoothness and that its two constructions are inverse.</p>
+<p><strong>Solution 7.4.</strong> For an intertwiner <span class="math" data-tex="\(A\)">\(A\)</span>, identity evaluation <span class="math" data-tex="\(\ell(v)=(Av)(1)\)">\(\ell(v)=(Av)(1)\)</span> is unchanged by <span class="math" data-tex="\(\pi(n)\)">\(\pi(n)\)</span>, so it kills <span class="math" data-tex="\(V(N)\)">\(V(N)\)</span>. Its value on <span class="math" data-tex="\(\pi(t)v\)">\(\pi(t)v\)</span> is <span class="math" data-tex="\(\delta_B(t)^{1/2}\sigma(t)\ell(v)\)">\(\delta_B(t)^{1/2}\sigma(t)\ell(v)\)</span>, giving the required map on unnormalized coinvariants. Conversely set <span class="math" data-tex="\((A_\ell v)(g)=\ell(\pi(g)v)\)">\((A_\ell v)(g)=\ell(\pi(g)v)\)</span>. These two transformation identities prove its left induction law. A compact open stabilizer of <span class="math" data-tex="\(v\)">\(v\)</span> fixes the function on the right, proving smoothness. Multiplication <span class="math" data-tex="\(\pi(g)\pi(h)=\pi(gh)\)">\(\pi(g)\pi(h)=\pi(gh)\)</span> proves the intertwining identity. Evaluation at one gives back <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and equivariance of an original <span class="math" data-tex="\(A\)">\(A\)</span> gives <span class="math" data-tex="\((A\pi(g)v)(1)=(Av)(g)\)">\((A\pi(g)v)(1)=(Av)(g)\)</span>, recovering its entire function. Finally twisting the source torus action by <span class="math" data-tex="\(\delta_B^{-1/2}\)">\(\delta_B^{-1/2}\)</span> converts the middle Hom space to <span class="math" data-tex="\(\operatorname{Hom}_T(r_N(V),\sigma)\)">\(\operatorname{Hom}_T(r_N(V),\sigma)\)</span>. This proves the adjunction with its precise normalization.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>H. Jacquet and R. P. Langlands, <a href="https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf"><em>Automorphic Forms on GL(2)</em></a> (1970), §3, equation (3.1), uses <span class="math" data-tex="\(B(\mu_1,\mu_2)\)">\(B(\mu_1,\mu_2)\)</span> with precisely the multiplier <span class="math" data-tex="\(\mu_1(a)\mu_2(d)|a/d|^{1/2}\)">\(\mu_1(a)\mu_2(d)|a/d|^{1/2}\)</span>. Thus its parameters agree with ours; no further twist is needed. The compact-support argument before Proposition 2.20 and the averaging characterization in Proposition 2.22 are original references for the supercuspidal characterization proved here in Theorems 5.2–5.3.</li>
+<li>J. R. Getz and H. Hahn, <em>An Introduction to Automorphic Representations</em>, draft of 22 April 2022, §§8.1–8.3, especially Propositions 8.2.2–8.2.3 and 8.3.1, Theorem 8.3.3 and the smooth admissibility theorem 5.3.4. The <a href="https://sites.duke.edu/jgetz/graduate-text/">author's graduate-text page</a> supplies the reference. Our noncuspidal GL₂ embedding proof uses a finitely generated torus quotient and countable Schur, avoiding a separate quoted theorem on admissibility of Jacquet modules.</li>
+<li>The <a href="smooth-local-representations-and-the-hecke-module-dictionary.html">smooth local lesson</a>, Propositions 1.1 and 2.1, Theorems 4.1 and 5.2, for exact averages, countable Schur, admissible duality and its exactness.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="smooth-local-representations-and-the-hecke-module-dictionary.html">← Smooth local representations and the Hecke-module dictionary</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="whittaker-models-kirillov-models-and-the-local-classification.html">Whittaker models, Kirillov models and the local classification →</a></span></nav>
+<p class="small source-link"><a href="src/normalized-induction-and-jacquet-modules.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/automorphic-forms-and-representations-of-gl2">Repository</a></nav>
+</footer>
+</body>
+</html>

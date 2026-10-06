@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Springer theory · Perverse sheaves and intersection cohomology</title>
+<meta name="description" content="A lesson of the course Perverse sheaves and intersection cohomology. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-PERV/springer-theory.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Perverse sheaves and intersection cohomology</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="springer-theory">Springer theory</h1>
+<p><em>Written and revised by OpenAI models in Codex at Ultra effort, October 2026. Self-checked by the models that wrote it. Public domain (CC0).</em></p>
+<p>A nilpotent matrix determines a space of compatible flags. For a nonzero nilpotent <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrix that space is a point; for the zero matrix it is a projective line. The cohomology of these fibres nevertheless carries the same symmetric group, with different representations in different degrees. Our task is to construct that action, determine its normalization, and explain why irreducible representations are attached to intersection complexes.</p>
+<p>We begin with the fibres themselves. Pairs of flags then supply the dimension estimates needed for the global sheaf. Restriction with supports identifies its endomorphisms after passage to the nilpotent cone. Finally, explicit Fourier kernels lead to a second action, whose difference from the first is the sign character. This order separates the geometry of the resolution, the construction of an action, and the comparison of two constructions.</p>
+<p>The geometric sheaf arguments use <a href="semismall-maps-and-small-resolutions.html">Semismall maps and small resolutions</a>, <a href="intermediate-extensions-and-intersection-complexes.html">Intermediate extensions and intersection complexes</a>, and the operations of <span class="unlinked">Constructible complexes on algebraic varieties</span>. Their exact foundational scope and the Lie-theory inputs specified below are prerequisites, including where they still require proofs. A reference to a free paper does not supply those missing proofs.</p>
+<p>Unless coefficients are explicitly changed, let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be an algebraically closed field of characteristic zero and work on complex varieties. The arithmetic version uses geometric <span class="math" data-tex="\(\overline{\mathbb Q}_\ell\)">\(\overline{\mathbb Q}_\ell\)</span>-sheaves, <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, on a split connected semisimple group in the adjoint-quotient range of Juteau, §4.1: <span class="math" data-tex="\(p\)">\(p\)</span> is not a torsion prime, and <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span> for a type <span class="math" data-tex="\(C\)">\(C\)</span> component. The matrix examples use <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>. Tate twists are retained in arithmetic formulas and suppressed classically. Fourier theory additionally requires a specified nondegenerate invariant symmetric form.</p>
+<h2 id="1-what-the-flag-fibres-look-like">1. What the flag fibres look like</h2>
+<h3 id="two-dimensional-vector-spaces">Two-dimensional vector spaces</h3>
+<p>Write an element of <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> as
+<span class="math math-display" data-tex="\[
+x=\begin{pmatrix}z&amp;a\\-b&amp;-z\end{pmatrix}.
+\]">\[
+x=\begin{pmatrix}z&amp;a\\-b&amp;-z\end{pmatrix}.
+\]</span>
+Its nilpotent cone is the surface <span class="math" data-tex="\(z^2=ab\)">\(z^2=ab\)</span>. Let <span class="math" data-tex="\(V\)">\(V\)</span> be the two-dimensional vector space over the ground field. A complete flag is a line <span class="math" data-tex="\(L\subset V\)">\(L\subset V\)</span>. Compatibility with a nilpotent endomorphism means
+<span class="math math-display" data-tex="\[
+\operatorname{im}x\subset L\subset\ker x.
+\tag{1.1}
+\]">\[
+\operatorname{im}x\subset L\subset\ker x.
+\tag{1.1}
+\]</span>
+For <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, image and kernel are the same line, so there is one flag. For <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, every line is allowed and the fibre is <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>.</p>
+<p>Fixing <span class="math" data-tex="\(L\)">\(L\)</span>, the possible matrices are exactly <span class="math" data-tex="\(\operatorname{Hom}(V/L,L)\)">\(\operatorname{Hom}(V/L,L)\)</span>. Over <span class="math" data-tex="\(\mathbb P(V)\)">\(\mathbb P(V)\)</span>, the tautological line is <span class="math" data-tex="\(\mathcal O(-1)\)">\(\mathcal O(-1)\)</span>, and <span class="math" data-tex="\(V/L\)">\(V/L\)</span> is <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> after fixing a volume form on <span class="math" data-tex="\(V\)">\(V\)</span>. Hence the incidence variety in (1.1) is
+<span class="math math-display" data-tex="\[
+Y_0=\operatorname{Tot}\mathcal O_{\mathbb P^1}(-2)
+=T^*\mathbb P^1.
+\tag{1.2}
+\]">\[
+Y_0=\operatorname{Tot}\mathcal O_{\mathbb P^1}(-2)
+=T^*\mathbb P^1.
+\tag{1.2}
+\]</span>
+It is smooth. Its map to the cone is proper because the incidence conditions are closed in <span class="math" data-tex="\(\mathcal N\times\mathbb P^1\)">\(\mathcal N\times\mathbb P^1\)</span>. Away from the vertex its inverse sends <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(\operatorname{im}x\)">\(\operatorname{im}x\)</span>, a regular map on either nonzero-column chart. Thus this is a resolution with a single exceptional curve. Its normalized pushforward has stalks
+<span class="math math-display" data-tex="\[
+(R\pi_{0*}\Lambda[2])_x=
+\begin{cases}
+\Lambda[2],&amp;x\ne0,\\
+R\Gamma(\mathbb P^1,\Lambda)[2],&amp;x=0.
+\end{cases}
+\tag{1.3}
+\]">\[
+(R\pi_{0*}\Lambda[2])_x=
+\begin{cases}
+\Lambda[2],&amp;x\ne0,\\
+R\Gamma(\mathbb P^1,\Lambda)[2],&amp;x=0.
+\end{cases}
+\tag{1.3}
+\]</span>
+At the vertex the two nonzero cohomology groups have degrees <span class="math" data-tex="\(-2\)">\(-2\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>, the latter carrying twist <span class="math" data-tex="\((-1)\)">\((-1)\)</span>. Determining their Weyl-group labels requires the action constructed below; a picture of the exceptional curve alone does not determine them.</p>
+<h3 id="three-dimensional-vector-spaces"><span id="6-three-fibers-for-mathfrak-sl-_3"></span>Three-dimensional vector spaces</h3>
+<p>A flag now has the form <span class="math" data-tex="\(L\subset H\subset V\)">\(L\subset H\subset V\)</span>, with dimensions one and two. The nilpotent incidence conditions are
+<span class="math math-display" data-tex="\[
+xL=0,\qquad xH\subset L,\qquad xV\subset H.
+\tag{1.4}
+\]">\[
+xL=0,\qquad xH\subset L,\qquad xV\subset H.
+\tag{1.4}
+\]</span>
+For a regular Jordan block of length three, these force <span class="math" data-tex="\(L=\ker x\)">\(L=\ker x\)</span> and <span class="math" data-tex="\(H=\ker x^2\)">\(H=\ker x^2\)</span>. At zero the fibre is the full flag variety: choosing <span class="math" data-tex="\(L\)">\(L\)</span> gives <span class="math" data-tex="\(\mathbb P^2\)">\(\mathbb P^2\)</span>, and choosing <span class="math" data-tex="\(H\)">\(H\)</span> above it gives a projective-line bundle. The projective-bundle unit and first Chern class compute its cohomology as
+<span class="math math-display" data-tex="\[
+\dim H^{2a}(\mathcal B,\Lambda)=1,2,2,1
+\quad(a=0,1,2,3),\qquad H^{2a+1}=0.
+\tag{1.5}
+\]">\[
+\dim H^{2a}(\mathcal B,\Lambda)=1,2,2,1
+\quad(a=0,1,2,3),\qquad H^{2a+1}=0.
+\tag{1.5}
+\]</span>
+The degree <span class="math" data-tex="\(2a\)">\(2a\)</span> terms have twist <span class="math" data-tex="\((-a)\)">\((-a)\)</span>.</p>
+<p>The remaining Jordan type has a basis with <span class="math" data-tex="\(xe_2=e_1\)">\(xe_2=e_1\)</span> and <span class="math" data-tex="\(xe_1=xe_3=0\)">\(xe_1=xe_3=0\)</span>. Put <span class="math" data-tex="\(I=\langle e_1\rangle\)">\(I=\langle e_1\rangle\)</span> and <span class="math" data-tex="\(K=\langle e_1,e_3\rangle\)">\(K=\langle e_1,e_3\rangle\)</span>. If <span class="math" data-tex="\(H=K\)">\(H=K\)</span>, (1.4) permits every line of <span class="math" data-tex="\(K\)">\(K\)</span>; these flags form a curve <span class="math" data-tex="\(C_1\simeq\mathbb P^1\)">\(C_1\simeq\mathbb P^1\)</span>. If <span class="math" data-tex="\(H\ne K\)">\(H\ne K\)</span>, then <span class="math" data-tex="\(xH=I\)">\(xH=I\)</span>, so <span class="math" data-tex="\(L=I\)">\(L=I\)</span>. Conversely every plane through <span class="math" data-tex="\(I\)">\(I\)</span>, paired with <span class="math" data-tex="\(L=I\)">\(L=I\)</span>, satisfies (1.4). These flags form <span class="math" data-tex="\(C_2\simeq\mathbb P^1\)">\(C_2\simeq\mathbb P^1\)</span>. Their only common point is <span class="math" data-tex="\((I,K)\)">\((I,K)\)</span>.</p>
+<p>Consequently the reduced subregular fibre is <span class="math" data-tex="\(C_1\cup C_2\)">\(C_1\cup C_2\)</span>. Nilpotent thickenings do not change the classical or étale sheaf calculation. The difference of restriction values gives the exact sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow\Lambda_{C_1\cup C_2}
+\longrightarrow\Lambda_{C_1}\oplus\Lambda_{C_2}
+\longrightarrow\Lambda_{(I,K)}\longrightarrow0.
+\tag{1.6}
+\]">\[
+0\longrightarrow\Lambda_{C_1\cup C_2}
+\longrightarrow\Lambda_{C_1}\oplus\Lambda_{C_2}
+\longrightarrow\Lambda_{(I,K)}\longrightarrow0.
+\tag{1.6}
+\]</span>
+On degree-zero cohomology the last map is <span class="math" data-tex="\((u,v)\mapsto u-v\)">\((u,v)\mapsto u-v\)</span>, hence is surjective. Its long exact sequence gives <span class="math" data-tex="\(H^0=\Lambda\)">\(H^0=\Lambda\)</span>, <span class="math" data-tex="\(H^1=0\)">\(H^1=0\)</span>, and <span class="math" data-tex="\(H^2=\Lambda(-1)^2\)">\(H^2=\Lambda(-1)^2\)</span>, with no other groups. The two top classes will carry the two-dimensional standard representation of <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, rather than an action obtained merely by permuting the two components.</p>
+<h2 id="2-pairs-of-flags-construct-the-global-action">2. Pairs of flags construct the global action</h2>
+<p>Now let <span class="math" data-tex="\(G\)">\(G\)</span> be a connected reductive group, <span class="math" data-tex="\(B\)">\(B\)</span> a Borel subgroup, <span class="math" data-tex="\(T\subset B\)">\(T\subset B\)</span> a maximal torus, and <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> the nilradical of <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span>. Use
+<span class="math math-display" data-tex="\[
+\mathcal B=G/B,\qquad W=N_G(T)/T,\qquad
+r=\dim T,\quad n=\dim\mathcal B=|\Phi^+|,\quad D=2n+r.
+\]">\[
+\mathcal B=G/B,\qquad W=N_G(T)/T,\qquad
+r=\dim T,\quad n=\dim\mathcal B=|\Phi^+|,\quad D=2n+r.
+\]</span>
+The Lie-theory prerequisites used here are the Bruhat decomposition and its root-space descriptions, the regular semisimple Cartan and adjoint-quotient theory, and the assertion that each Lie algebra element belongs to a Borel. For the nilpotent cone we also need irreducibility, dimension <span class="math" data-tex="\(2n\)">\(2n\)</span>, finitely many orbits, and uniqueness of a containing Borel for a regular nilpotent element. These inputs are not proved by the ensuing dimension calculation. We define <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> by conjugates of Borel nilradicals; a central torus therefore contributes only its zero element.</p>
+<p>Consider the two vector bundles and their proper projections:
+<span class="math math-display" data-tex="\[
+Y=G\times^B\mathfrak b\xrightarrow{\pi}\mathfrak g,
+\qquad Y_0=G\times^B\mathfrak n\xrightarrow{\pi_0}\mathcal N.
+\tag{2.1}
+\]">\[
+Y=G\times^B\mathfrak b\xrightarrow{\pi}\mathfrak g,
+\qquad Y_0=G\times^B\mathfrak n\xrightarrow{\pi_0}\mathcal N.
+\tag{2.1}
+\]</span>
+They are smooth of dimensions <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(2n\)">\(2n\)</span>. Both incidence varieties are closed in the product of their target with the projective flag variety. In particular their projections are projective. The specified Lie inputs imply surjectivity.</p>
+<h3 id="the-dimension-calculation"><span id="1-smallness-from-pairs-of-borels"></span>The dimension calculation</h3>
+<p>Diagonal <span class="math" data-tex="\(G\)">\(G\)</span>-orbits in <span class="math" data-tex="\(\mathcal B\times\mathcal B\)">\(\mathcal B\times\mathcal B\)</span> have relative positions <span class="math" data-tex="\(w\in W\)">\(w\in W\)</span>. For <span class="math" data-tex="\((B,wBw^{-1})\)">\((B,wBw^{-1})\)</span>, the common positive roots number <span class="math" data-tex="\(n-\ell(w)\)">\(n-\ell(w)\)</span>. A common Cartan contributes the remaining <span class="math" data-tex="\(r\)">\(r\)</span> dimensions in the Borel intersection. Thus
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\text{space}&amp;\text{dimension}\\ \hline
+G\cdot(B,wBw^{-1})&amp;n+\ell(w)\\
+\mathfrak b\cap w\mathfrak b&amp;r+n-\ell(w)\\
+\mathfrak n\cap w\mathfrak n&amp;n-\ell(w).
+\end{array}
+\tag{2.2}
+\]">\[
+\begin{array}{c|c}
+\text{space}&amp;\text{dimension}\\ \hline
+G\cdot(B,wBw^{-1})&amp;n+\ell(w)\\
+\mathfrak b\cap w\mathfrak b&amp;r+n-\ell(w)\\
+\mathfrak n\cap w\mathfrak n&amp;n-\ell(w).
+\end{array}
+\tag{2.2}
+\]</span>
+The part of <span class="math" data-tex="\(Z=Y\times_{\mathfrak g}Y\)">\(Z=Y\times_{\mathfrak g}Y\)</span> above that pair orbit is the vector bundle with fibre <span class="math" data-tex="\(\mathfrak b\cap w\mathfrak b\)">\(\mathfrak b\cap w\mathfrak b\)</span>; call it <span class="math" data-tex="\(Z_w\)">\(Z_w\)</span>. Its dimension is <span class="math" data-tex="\(D\)">\(D\)</span>. The corresponding part <span class="math" data-tex="\(Z_{0,w}\)">\(Z_{0,w}\)</span> of <span class="math" data-tex="\(Z_0=Y_0\times_{\mathcal N}Y_0\)">\(Z_0=Y_0\times_{\mathcal N}Y_0\)</span> has dimension <span class="math" data-tex="\(2n\)">\(2n\)</span>. The fibre-product criterion of Lesson 9 therefore proves semismallness of both projections.</p>
+<p>For <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the inequality is strict away from the regular semisimple locus. Indeed, the common Cartan in every intersection of Borels contains regular semisimple elements. Intersecting that vector space with <span class="math" data-tex="\(C=\mathfrak g\setminus\mathfrak g^{\rm rs}\)">\(C=\mathfrak g\setminus\mathfrak g^{\rm rs}\)</span> gives a proper closed subset and lowers dimension by at least one. Hence <span class="math" data-tex="\(\dim Z|_C\le D-1\)">\(\dim Z|_C\le D-1\)</span>. If <span class="math" data-tex="\(S\subset C\)">\(S\subset C\)</span> is an adapted stratum and <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span>, the dimension of its fibre product is
+<span class="math math-display" data-tex="\[
+\dim S+2\dim\pi^{-1}(x)\le D-1.
+\tag{2.3}
+\]">\[
+\dim S+2\dim\pi^{-1}(x)\le D-1.
+\tag{2.3}
+\]</span>
+This proves smallness, without knowing each Springer fibre separately.</p>
+<h3 id="from-a-torsor-to-an-intermediate-extension"><span id="2-the-global-sheaf-and-its-entire-endomorphism-algebra"></span>From a torsor to an intermediate extension</h3>
+<p>Let <span class="math" data-tex="\(\mathfrak t^{\rm reg}\)">\(\mathfrak t^{\rm reg}\)</span> be the complement of the root hyperplanes. The Cartan description identifies the regular semisimple restriction of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> with
+<span class="math math-display" data-tex="\[
+Y^{\rm rs}\simeq\mathfrak g^{\rm rs}
+\times_{\mathfrak t^{\rm reg}/W}\mathfrak t^{\rm reg}.
+\tag{2.4}
+\]">\[
+Y^{\rm rs}\simeq\mathfrak g^{\rm rs}
+\times_{\mathfrak t^{\rm reg}/W}\mathfrak t^{\rm reg}.
+\tag{2.4}
+\]</span>
+The map assigns the class of an element in the containing Borel modulo its nilradical. The free action on <span class="math" data-tex="\(\mathfrak t^{\rm reg}\)">\(\mathfrak t^{\rm reg}\)</span> makes this a finite étale <span class="math" data-tex="\(W\)">\(W\)</span>-torsor. The Cartan isomorphism, including étaleness, is needed here: counting <span class="math" data-tex="\(|W|\)">\(|W|\)</span> points would not establish it.</p>
+<p>Put <span class="math" data-tex="\(L=\pi^{\rm rs}_*\Lambda\)">\(L=\pi^{\rm rs}_*\Lambda\)</span>, without a shift. Smallness and the strict boundary characterization in Lessons 4 and 9 give
+<span class="math math-display" data-tex="\[
+\mathsf S_{\mathfrak g}:=R\pi_*\Lambda_Y[D]
+=\operatorname{IC}_{\mathfrak g}(L).
+\tag{2.5}
+\]">\[
+\mathsf S_{\mathfrak g}:=R\pi_*\Lambda_Y[D]
+=\operatorname{IC}_{\mathfrak g}(L).
+\tag{2.5}
+\]</span>
+Every map of local systems extends uniquely to a map of intermediate extensions. For existence, apply the map to the natural morphisms from perverse extension by zero to perverse direct image, then take their images. For uniqueness, an endomorphism zero on the open set has image supported on the boundary; an intermediate extension has no such nonzero subobject. This proves the full faithfulness being used.</p>
+<p>Since <span class="math" data-tex="\(Y\)">\(Y\)</span> is irreducible, <span class="math" data-tex="\(Y^{\rm rs}\)">\(Y^{\rm rs}\)</span> is connected. Thus the monodromy of its torsor is the full group <span class="math" data-tex="\(W\)">\(W\)</span>, acting regularly on its fibre. Label a basis by <span class="math" data-tex="\(e_a\)">\(e_a\)</span>, <span class="math" data-tex="\(a\in W\)">\(a\in W\)</span>, so monodromy acts on the left. Define the deck convention by
+<span class="math math-display" data-tex="\[
+\rho(w)e_a=e_{aw^{-1}}.
+\tag{2.6}
+\]">\[
+\rho(w)e_a=e_{aw^{-1}}.
+\tag{2.6}
+\]</span>
+Then <span class="math" data-tex="\(\rho(w)\rho(v)=\rho(wv)\)">\(\rho(w)\rho(v)=\rho(wv)\)</span>. A commuting endomorphism is determined by its value on <span class="math" data-tex="\(e_1\)">\(e_1\)</span>, and any value defines one by equivariance. Its space has dimension <span class="math" data-tex="\(|W|\)">\(|W|\)</span>, with basis the operators (2.6). Consequently
+<span class="math math-display" data-tex="\[
+\operatorname{End}(\mathsf S_{\mathfrak g})
+=\operatorname{End}(L)=\Lambda[W].
+\tag{2.7}
+\]">\[
+\operatorname{End}(\mathsf S_{\mathfrak g})
+=\operatorname{End}(L)=\Lambda[W].
+\tag{2.7}
+\]</span>
+All endomorphisms in this lesson have degree zero. For characteristic-zero coefficients the regular bimodule decomposes into <span class="math" data-tex="\(V\otimes V^\vee\)">\(V\otimes V^\vee\)</span>. The first factor describes monodromy; the dual describes deck multiplicity. We shall label the eventual correspondence by the deck representations, retaining this left/right convention.</p>
+<h3 id="why-the-same-small-map-argument-works-integrally">Why the same small-map argument works integrally</h3>
+<p>Later we need (2.5)–(2.7) over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> or a coefficient discrete valuation ring <span class="math" data-tex="\(A\)">\(A\)</span>, not merely a field. Here is the additional bound rather than an appeal to self-duality of an entire integral perverse heart. Write <span class="math" data-tex="\(K=R\pi_*A[D]\)">\(K=R\pi_*A[D]\)</span>. Properness and smooth orientation give <span class="math" data-tex="\(\mathbb D K=K(D)\)">\(\mathbb D K=K(D)\)</span>. For a boundary stratum of dimension <span class="math" data-tex="\(s\)">\(s\)</span>, smallness and the fibre-cohomology bound give
+<span class="math math-display" data-tex="\[
+i_S^*K\in D^{\le -s-1}.
+\]">\[
+i_S^*K\in D^{\le -s-1}.
+\]</span>
+Refine the stratum so its cohomology sheaves are locally constant. Its dualizing complex is <span class="math" data-tex="\(A[2s](s)\)">\(A[2s](s)\)</span>. The spectral sequence computing <span class="math" data-tex="\(R\operatorname{Hom}_A(C,A)\)">\(R\operatorname{Hom}_A(C,A)\)</span> for a bounded complex <span class="math" data-tex="\(C\in D^{\le -s-1}\)">\(C\in D^{\le -s-1}\)</span> has terms from nonnegative Ext degrees only, so it lies in <span class="math" data-tex="\(D^{\ge s+1}\)">\(D^{\ge s+1}\)</span>. Dualizing on the stratum and shifting by <span class="math" data-tex="\([2s]\)">\([2s]\)</span> therefore yields
+<span class="math math-display" data-tex="\[
+i_S^!K\in D^{\ge -s+1}.
+\tag{2.8}
+\]">\[
+i_S^!K\in D^{\ge -s+1}.
+\tag{2.8}
+\]</span>
+The two strict bounds, together with the free local system on the open stratum, characterize the integral intermediate extension. This uses constructible duality over a ring of finite global dimension; it does not assert that Verdier duality is exact for the ordinary integral perverse heart. Full faithfulness and the regular-module calculation above then prove <span class="math" data-tex="\(\operatorname{End}(K)=A[W]\)">\(\operatorname{End}(K)=A[W]\)</span>. The ordinary and adic operation foundations at this coefficient scope remain required.</p>
+<h2 id="3-restriction-retains-every-endomorphism"><span id="3-restriction-and-the-springer-correspondence"></span>3. Restriction retains every endomorphism</h2>
+<p>Let <span class="math" data-tex="\(i:\mathcal N\hookrightarrow\mathfrak g\)">\(i:\mathcal N\hookrightarrow\mathfrak g\)</span>. Proper base change in (2.1) and the equality <span class="math" data-tex="\(D=2n+r\)">\(D=2n+r\)</span> give
+<span class="math math-display" data-tex="\[
+\mathsf S_{\mathcal N}:=R\pi_{0*}\Lambda_{Y_0}[2n]
+=i^*\mathsf S_{\mathfrak g}[-r].
+\tag{3.1}
+\]">\[
+\mathsf S_{\mathcal N}:=R\pi_{0*}\Lambda_{Y_0}[2n]
+=i^*\mathsf S_{\mathfrak g}[-r].
+\tag{3.1}
+\]</span>
+Semismallness makes this perverse. Applying <span class="math" data-tex="\(i^*[-r]\)">\(i^*[-r]\)</span> to the deck action defines the <em>restriction action</em> <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. The shift is minus the rank: for a one-dimensional torus the global resolution is the identity on a line, and restriction takes <span class="math" data-tex="\(\Lambda[1]\)">\(\Lambda[1]\)</span> to the same complex on a point. Only <span class="math" data-tex="\([-1]\)">\([-1]\)</span> gives the point's perverse constant sheaf. Formula (3.1) says nothing about exactness of restriction on arbitrary perverse sheaves.</p>
+<p>We will show that restriction gives an algebra isomorphism
+<span class="math math-display" data-tex="\[
+\operatorname{End}(\mathsf S_{\mathfrak g})
+\xrightarrow{\ \sim\ }\operatorname{End}(\mathsf S_{\mathcal N}).
+\tag{3.2}
+\]">\[
+\operatorname{End}(\mathsf S_{\mathfrak g})
+\xrightarrow{\ \sim\ }\operatorname{End}(\mathsf S_{\mathcal N}).
+\tag{3.2}
+\]</span>
+It is essential to identify this particular map. Equality of dimensions of the two algebras would not suffice.</p>
+<h3 id="expressing-the-map-by-cohomology-with-supports">Expressing the map by cohomology with supports</h3>
+<p>For a proper map <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span> from a smooth <span class="math" data-tex="\(d\)">\(d\)</span>-fold, put <span class="math" data-tex="\(Z=Y\times_XY\)">\(Z=Y\times_XY\)</span> and let <span class="math" data-tex="\(p_2:Z\to Y\)">\(p_2:Z\to Y\)</span> be the second projection. Define Borel–Moore homology by <span class="math" data-tex="\(H_b^{\rm BM}(Z)=H^{-b}(Z,\omega_Z)\)">\(H_b^{\rm BM}(Z)=H^{-b}(Z,\omega_Z)\)</span>. Proper base change followed by the adjunctions <span class="math" data-tex="\((f^*,Rf_*)\)">\((f^*,Rf_*)\)</span> and <span class="math" data-tex="\((Rp_{2!},p_2^!)\)">\((Rp_{2!},p_2^!)\)</span> yields
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{End}(Rf_*\Lambda[d])
+&amp;=\operatorname{Hom}(f^*Rf_*\Lambda[d],\Lambda[d])\\
+&amp;=\operatorname{Hom}(Rp_{2*}\Lambda_Z[d],\Lambda_Y[d])\\
+&amp;=\operatorname{Hom}(\Lambda_Z,\omega_Z[-2d](-d))\\
+&amp;=H_{2d}^{\rm BM}(Z)(-d).
+\end{aligned}
+\tag{3.3}
+\]">\[
+\begin{aligned}
+\operatorname{End}(Rf_*\Lambda[d])
+&amp;=\operatorname{Hom}(f^*Rf_*\Lambda[d],\Lambda[d])\\
+&amp;=\operatorname{Hom}(Rp_{2*}\Lambda_Z[d],\Lambda_Y[d])\\
+&amp;=\operatorname{Hom}(\Lambda_Z,\omega_Z[-2d](-d))\\
+&amp;=H_{2d}^{\rm BM}(Z)(-d).
+\end{aligned}
+\tag{3.3}
+\]</span>
+The orientation identity used in the third line is <span class="math" data-tex="\(\omega_Y=\Lambda(d)[2d]\)">\(\omega_Y=\Lambda(d)[2d]\)</span>; <span class="math" data-tex="\(Z\)">\(Z\)</span> itself need not be smooth.</p>
+<p>For our two maps use the notation <span class="math" data-tex="\(Z,Z_0\)">\(Z,Z_0\)</span> of §2. Nilpotence forces the Cartan class in any containing Borel to be zero, so also <span class="math" data-tex="\(Z_0=Y\times_{\mathfrak g}Y_0\)">\(Z_0=Y\times_{\mathfrak g}Y_0\)</span>. Inside the smooth spaces <span class="math" data-tex="\(M=Y\times Y\)">\(M=Y\times Y\)</span> and <span class="math" data-tex="\(M_0=Y\times Y_0\)">\(M_0=Y\times Y_0\)</span>, respectively, the groups in (3.3) become
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_{2D}^{\rm BM}(Z)(-D)&amp;=H_Z^{2D}(M)(D),\\
+H_{4n}^{\rm BM}(Z_0)(-2n)&amp;=H_{Z_0}^{2D}(M_0)(D).
+\end{aligned}
+\tag{3.4}
+\]">\[
+\begin{aligned}
+H_{2D}^{\rm BM}(Z)(-D)&amp;=H_Z^{2D}(M)(D),\\
+H_{4n}^{\rm BM}(Z_0)(-2n)&amp;=H_{Z_0}^{2D}(M_0)(D).
+\end{aligned}
+\tag{3.4}
+\]</span>
+For a smooth ambient <span class="math" data-tex="\(h\)">\(h\)</span>-fold this is the identity
+<span class="math" data-tex="\(H_b^{\rm BM}(Z)=H_Z^{2h-b}(M)(h)\)">\(H_b^{\rm BM}(Z)=H_Z^{2h-b}(M)(h)\)</span>, obtained from <span class="math" data-tex="\(\omega_Z=e^!\omega_M\)">\(\omega_Z=e^!\omega_M\)</span>. Pullback of relative cochains for the pair <span class="math" data-tex="\((M,M\setminus Z)\)">\((M,M\setminus Z)\)</span> to <span class="math" data-tex="\((M_0,M_0\setminus Z_0)\)">\((M_0,M_0\setminus Z_0)\)</span> defines a map in (3.4). In the étale formulation, pull back the supported morphism <span class="math" data-tex="\(\Lambda_M\to e_*e^!\Lambda_M[2D](D)\)">\(\Lambda_M\to e_*e^!\Lambda_M[2D](D)\)</span> and use closed-support exchange. This decreases the Borel–Moore degree by <span class="math" data-tex="\(2r\)">\(2r\)</span>; it is not ordinary restriction of homology to a closed subset.</p>
+<p>To verify that it gives (3.2), set <span class="math" data-tex="\(P=R\pi_*\Lambda[D]\)">\(P=R\pi_*\Lambda[D]\)</span> and <span class="math" data-tex="\(e_0:Y_0\hookrightarrow Y\)">\(e_0:Y_0\hookrightarrow Y\)</span>. Under adjunction,
+<span class="math math-display" data-tex="\[
+\operatorname{End}(i^*P)=\operatorname{Hom}(P,i_*i^*P).
+\]">\[
+\operatorname{End}(i^*P)=\operatorname{Hom}(P,i_*i^*P).
+\]</span>
+Restriction of an endomorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> corresponds to the composite of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with the unit <span class="math" data-tex="\(P\to i_*i^*P\)">\(P\to i_*i^*P\)</span>. Proper base change identifies this unit with the pushforward of
+<span class="math" data-tex="\(\Lambda_Y[D]\to e_{0*}\Lambda_{Y_0}[D]\)">\(\Lambda_Y[D]\to e_{0*}\Lambda_{Y_0}[D]\)</span>.
+Applying the two adjunctions of (3.3) to that composite restricts its second factor from <span class="math" data-tex="\(Y\)">\(Y\)</span> to <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>. In particular <span class="math" data-tex="\(Rp_{2*}\Lambda_Z[D]\)">\(Rp_{2*}\Lambda_Z[D]\)</span> changes to the corresponding pushforward from <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span>, and the target becomes <span class="math" data-tex="\(\Lambda_{Y_0}[D]\)">\(\Lambda_{Y_0}[D]\)</span>. The final orientation is <span class="math" data-tex="\(\omega_{Y_0}=\Lambda(2n)[4n]\)">\(\omega_{Y_0}=\Lambda(2n)[4n]\)</span>, giving the second group of (3.4). The closed unit used here is the same unit defining pullback with supports; the base-change morphisms are its adjunction mates. Hence these identifications take restriction of endomorphisms to that pullback, with no undetermined scalar. Notice that <span class="math" data-tex="\(i^*P=\mathsf S_{\mathcal N}[r]\)">\(i^*P=\mathsf S_{\mathcal N}[r]\)</span>: the mixed Hom target before canceling equal shifts must retain <span class="math" data-tex="\([r]\)">\([r]\)</span>.</p>
+<h3 id="computing-restriction-on-top-component-classes">Computing restriction on top component classes</h3>
+<p>Order the Bruhat strata by a linear extension of Bruhat order. A downward-closed set <span class="math" data-tex="\(I\subset W\)">\(I\subset W\)</span> gives closed unions <span class="math" data-tex="\(Z_I\)">\(Z_I\)</span> and <span class="math" data-tex="\(Z_{0,I}\)">\(Z_{0,I}\)</span>. Their maximal-dimensional components are the closures of the smooth connected bundles <span class="math" data-tex="\(Z_w\)">\(Z_w\)</span> and <span class="math" data-tex="\(Z_{0,w}\)">\(Z_{0,w}\)</span> in (2.2). Top Borel–Moore homology is free on these component classes: remove the intersections and singular loci of the components, whose dimensions are smaller, and apply localization and the top-dimension bound. This is the top-class argument in Lesson 9, applicable also to integral coefficients.</p>
+<p>If <span class="math" data-tex="\(w\)">\(w\)</span> is a new maximal member and <span class="math" data-tex="\(J=I\setminus\{w\}\)">\(J=I\setminus\{w\}\)</span>, localization therefore gives
+<span class="math math-display" data-tex="\[
+0\longrightarrow H_{2D}^{\rm BM}(Z_J)
+\longrightarrow H_{2D}^{\rm BM}(Z_I)
+\longrightarrow H_{2D}^{\rm BM}(Z_w)\longrightarrow0,
+\tag{3.5}
+\]">\[
+0\longrightarrow H_{2D}^{\rm BM}(Z_J)
+\longrightarrow H_{2D}^{\rm BM}(Z_I)
+\longrightarrow H_{2D}^{\rm BM}(Z_w)\longrightarrow0,
+\tag{3.5}
+\]</span>
+and the analogous sequence in degree <span class="math" data-tex="\(4n\)">\(4n\)</span> for <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span>. Surjectivity at the right is supplied by the class of <span class="math" data-tex="\(\overline{Z_w}\)">\(\overline{Z_w}\)</span>, which restricts to the fundamental class of <span class="math" data-tex="\(Z_w\)">\(Z_w\)</span>. No vanishing assertion about the previous odd-degree group is needed.</p>
+<p>The intersection of <span class="math" data-tex="\(Z_w\)">\(Z_w\)</span> with <span class="math" data-tex="\(M_0\)">\(M_0\)</span> is transverse. Indeed, the second Borel's Cartan-class map <span class="math" data-tex="\(Z_w\to\mathfrak t\)">\(Z_w\to\mathfrak t\)</span> is surjective on each vector fibre: a common Cartan maps isomorphically to the Cartan quotient. It is therefore smooth, and its zero fibre is <span class="math" data-tex="\(Z_{0,w}\)">\(Z_{0,w}\)</span>. In local normal coordinates, the supported orientation class is the product of the oriented normal-coordinate classes. Pulling it back along a transverse coordinate inclusion gives precisely the corresponding product for the intersection. Its coefficient is <span class="math" data-tex="\(+1\)">\(+1\)</span>, by complex orientation, or by normalized smooth trace in the étale coordinates. Thus the top-class map for each pair <span class="math" data-tex="\(Z_w,Z_{0,w}\)">\(Z_w,Z_{0,w}\)</span> is an isomorphism.</p>
+<p>The maps with closed support and with open complement commute with pullback of these relative cochains. Equivalently the closed units and their base-change mates commute with the localization triangles. Hence the two sequences (3.5) form a commutative diagram with the restriction maps. Induction on <span class="math" data-tex="\(I\)">\(I\)</span> proves the isomorphism for <span class="math" data-tex="\(I=W\)">\(I=W\)</span>. By the map identification in (3.4), this proves (3.2) as an algebra map:
+<span class="math math-display" data-tex="\[
+\operatorname{End}(\mathsf S_{\mathcal N})=\Lambda[W].
+\tag{3.6}
+\]">\[
+\operatorname{End}(\mathsf S_{\mathcal N})=\Lambda[W].
+\tag{3.6}
+\]</span>
+The argument neither divides by <span class="math" data-tex="\(|W|\)">\(|W|\)</span> nor computes a convolution table. Together with §2's coefficient bounds it works over coefficient fields and, with the stated operation foundations, over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and a coefficient discrete valuation ring.</p>
+<h3 id="from-the-algebra-to-springer-pairs">From the algebra to Springer pairs</h3>
+<p>Return to characteristic-zero coefficients. Averaging makes the regular <span class="math" data-tex="\(W\)">\(W\)</span>-local system semisimple; its global IC extension has a decomposition
+<span class="math" data-tex="\(\mathsf S_{\mathfrak g}=\bigoplus_V Q_V\otimes V\)">\(\mathsf S_{\mathfrak g}=\bigoplus_V Q_V\otimes V\)</span>
+with distinct simple <span class="math" data-tex="\(Q_V\)">\(Q_V\)</span>, indexed by irreducible deck representations. Applying <span class="math" data-tex="\(i^*[-r]\)">\(i^*[-r]\)</span> preserves this direct-sum decomposition. Each resulting constituent is perverse because it is a direct summand of (3.1). The semismall decomposition theorem in Lesson 9 makes the latter sheaf semisimple. Finally (3.2) preserves its primitive matrix blocks: the restricted <span class="math" data-tex="\(Q_V\)">\(Q_V\)</span> is nonzero, has endomorphism field <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and has no morphisms to a different restricted constituent. A nonzero semisimple object with that endomorphism field is simple. Thus
+<span class="math math-display" data-tex="\[
+\mathsf S_{\mathcal N}\simeq
+\bigoplus_{V\in\operatorname{Irr}W}
+\operatorname{IC}_{\overline{\mathcal O_V}}(E_V)\otimes V.
+\tag{3.7}
+\]">\[
+\mathsf S_{\mathcal N}\simeq
+\bigoplus_{V\in\operatorname{Irr}W}
+\operatorname{IC}_{\overline{\mathcal O_V}}(E_V)\otimes V.
+\tag{3.7}
+\]</span>
+ICs are normalized by the dimension of their support. The pairs <span class="math" data-tex="\((\mathcal O_V,E_V)\)">\((\mathcal O_V,E_V)\)</span> form the <em>Springer pairs</em>. This is a bijection onto the pairs occurring in this sheaf; it does not assert that every equivariant local system on every orbit occurs.</p>
+<p>At a relevant orbit of dimension <span class="math" data-tex="\(s\)">\(s\)</span>, the multiplicity local system is top fibre cohomology <span class="math" data-tex="\(H^{2n-s}(\pi_0^{-1}(x),\Lambda)\)">\(H^{2n-s}(\pi_0^{-1}(x),\Lambda)\)</span>. The component group <span class="math" data-tex="\(A_x=\pi_0Z_G(x)\)">\(A_x=\pi_0Z_G(x)\)</span> acts on the components of that fibre. Its action commutes with the Weyl action, and its irreducible constituents specify the orbit local systems in (3.7). The regular nilpotent fibre is a point and receives the trivial deck representation. More globally, the invariant summand of <span class="math" data-tex="\(\mathsf S_{\mathfrak g}\)">\(\mathsf S_{\mathfrak g}\)</span> is <span class="math" data-tex="\(\operatorname{IC}_{\mathfrak g}(\Lambda)=\Lambda_{\mathfrak g}[D]\)">\(\operatorname{IC}_{\mathfrak g}(\Lambda)=\Lambda_{\mathfrak g}[D]\)</span>; restriction gives <span class="math" data-tex="\(\Lambda_{\mathcal N}[2n]\)">\(\Lambda_{\mathcal N}[2n]\)</span>. The simplicity just proved identifies this with the full-support constituent.</p>
+<p>This deduction uses geometric semisimplicity at exactly the scope of Lessons 7–9. The endomorphism calculation alone does not prove semisimplicity, and so cannot substitute for those prerequisites.</p>
+<h2 id="4-the-two-fourier-kernels-and-their-normalizations"><span id="4-what-fourier-transform-identifies"></span>4. The two Fourier kernels and their normalizations</h2>
+<p>Fix a nondegenerate invariant symmetric pairing on <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. Invariance under the torus makes root spaces orthogonal unless their weights are opposite. It follows that <span class="math" data-tex="\(\mathfrak b^\perp\)">\(\mathfrak b^\perp\)</span> contains <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>; their dimensions agree, so
+<span class="math" data-tex="\(\mathfrak b^\perp=\mathfrak n\)">\(\mathfrak b^\perp=\mathfrak n\)</span>.
+In particular the nilradical bundle in (2.1) is <span class="math" data-tex="\(T^*\mathcal B\)">\(T^*\mathcal B\)</span>. The pairing is a real hypothesis. A reductive Lie algebra's Killing form vanishes on its centre. In characteristic zero one can combine the semisimple Killing form with a nondegenerate form on that centre. For <span class="math" data-tex="\(\mathfrak{sl}_m\)">\(\mathfrak{sl}_m\)</span>, <span class="math" data-tex="\(m=2,3\)">\(m=2,3\)</span>, the trace pairing works when <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>: inside all matrices the orthogonal complement of the traceless matrices is the scalar line, and its intersection with them is zero precisely under that condition.</p>
+<h3 id="compact-integration-of-a-character"><span id="4-1-the-kernel-computation-and-the-borel-subbundle"></span>Compact integration of a character</h3>
+<p>Over a field of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, choose a nontrivial character <span class="math" data-tex="\(\psi:\mathbb F_p\to k^\times\)">\(\psi:\mathbb F_p\to k^\times\)</span>, where the coefficient field <span class="math" data-tex="\(k\)">\(k\)</span> has characteristic different from <span class="math" data-tex="\(p\)">\(p\)</span> and contains the necessary roots of unity. The étale Artin–Schreier covering <span class="math" data-tex="\(t\mapsto t^p-t\)">\(t\mapsto t^p-t\)</span> has group <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>. Its character projectors are defined because <span class="math" data-tex="\(p\)">\(p\)</span> is invertible. Its compact cohomology is that of the covering affine line, namely <span class="math" data-tex="\(k(-1)[-2]\)">\(k(-1)[-2]\)</span>. Each deck translation extends to a degree-one automorphism of the projective line and therefore fixes the top trace class. Only the trivial character contributes to this cohomology. Thus its nontrivial character sheaf satisfies
+<span class="math math-display" data-tex="\[
+R\Gamma_c(\mathbb A^1,\mathcal L_\psi)=0.
+\tag{4.1}
+\]">\[
+R\Gamma_c(\mathbb A^1,\mathcal L_\psi)=0.
+\tag{4.1}
+\]</span>
+The affine-line trace, iterated by compact-support composition and projection, also gives <span class="math" data-tex="\(R\Gamma_c(\mathbb A^b,k)=k(-b)[-2b]\)">\(R\Gamma_c(\mathbb A^b,k)=k(-b)[-2b]\)</span>. Any nonzero linear functional is a coordinate after a linear change of basis. Its character sheaf has zero compact integral by (4.1) and the same iteration.</p>
+<p>For a rank-<span class="math" data-tex="\(D\)">\(D\)</span> vector bundle <span class="math" data-tex="\(E\to S\)">\(E\to S\)</span>, define the relative arithmetic transform on the dual bundle by
+<span class="math math-display" data-tex="\[
+\mathcal F_E(K)=Rp_{2!}\bigl(p_1^*K\otimes\mathcal L_\psi(\langle x,\xi\rangle)\bigr)[D].
+\]">\[
+\mathcal F_E(K)=Rp_{2!}\bigl(p_1^*K\otimes\mathcal L_\psi(\langle x,\xi\rangle)\bigr)[D].
+\]</span>
+If <span class="math" data-tex="\(v:V\hookrightarrow E\)">\(v:V\hookrightarrow E\)</span> is a rank-<span class="math" data-tex="\(b\)">\(b\)</span> subbundle, its value at a covector is the compact integral over <span class="math" data-tex="\(V_s\)">\(V_s\)</span>, with total shift <span class="math" data-tex="\([D+b]\)">\([D+b]\)</span>. It vanishes unless the covector annihilates <span class="math" data-tex="\(V_s\)">\(V_s\)</span>. On the annihilator the kernel is canonically constant, and the vector trace supplies <span class="math" data-tex="\(k(-b)[D-b]\)">\(k(-b)[D-b]\)</span>. Closed base change followed by localization therefore identifies the whole complex:
+<span class="math math-display" data-tex="\[
+\mathcal F_E(v_*k_V[b])
+=v^\perp_*k_{V^\perp}[D-b](-b).
+\tag{4.2}
+\]">\[
+\mathcal F_E(v_*k_V[b])
+=v^\perp_*k_{V^\perp}[D-b](-b).
+\tag{4.2}
+\]</span>
+This is stronger than an equality of stalk dimensions. A complex vanishing on the complementary open is the closed extension of its restriction, and the restriction here comes with the specified trace isomorphism. The traces agree under changes of frame.</p>
+<p>The arithmetic kernel also proves inversion without a perverse-exactness theorem. In two successive transforms, integration over the middle vector <span class="math" data-tex="\(y\)">\(y\)</span> has kernel <span class="math" data-tex="\(\mathcal L_\psi(\langle y,x+z\rangle)\)">\(\mathcal L_\psi(\langle y,x+z\rangle)\)</span>. The character-addition isomorphism follows by adding lifts in the two Artin–Schreier torsors. Formula (4.1) makes this integral zero off <span class="math" data-tex="\(x+z=0\)">\(x+z=0\)</span>; on that graph it is <span class="math" data-tex="\(k(-D)[-2D]\)">\(k(-D)[-2D]\)</span>. Localization identifies its graph extension. The two shifts <span class="math" data-tex="\([D]\)">\([D]\)</span> cancel the cohomological shift, giving, for <span class="math" data-tex="\(a(x)=-x\)">\(a(x)=-x\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal F_{E^\vee}\mathcal F_E(K)=a_*K(-D).
+\tag{4.3}
+\]">\[
+\mathcal F_{E^\vee}\mathcal F_E(K)=a_*K(-D).
+\tag{4.3}
+\]</span>
+Fubini for compact pushforwards and the projection formula move an arbitrary constructible <span class="math" data-tex="\(K\)">\(K\)</span> outside the middle integration. Thus (4.3) is functorial, proves a derived equivalence, and specifies its inverse using negation and twist <span class="math" data-tex="\((D)\)">\((D)\)</span>.</p>
+<h3 id="compact-integration-of-a-half-space">Compact integration of a half-space</h3>
+<p>On a complex vector bundle instead use
+<span class="math math-display" data-tex="\[
+Q=\{(x,\xi):\operatorname{Re}\langle x,\xi\rangle\le0\},
+\qquad \mathcal F_E^{\rm S}=R\check q_!q^*[D],
+\]">\[
+Q=\{(x,\xi):\operatorname{Re}\langle x,\xi\rangle\le0\},
+\qquad \mathcal F_E^{\rm S}=R\check q_!q^*[D],
+\]</span>
+with projections from <span class="math" data-tex="\(Q\)">\(Q\)</span>. Above a covector annihilating <span class="math" data-tex="\(V_s\)">\(V_s\)</span>, the fibre of this kernel on <span class="math" data-tex="\(V\)">\(V\)</span> is the entire complex <span class="math" data-tex="\(b\)">\(b\)</span>-space. Otherwise it is a closed real half-space, homeomorphic to <span class="math" data-tex="\(\mathbb R^{2b-1}\times[0,\infty)\)">\(\mathbb R^{2b-1}\times[0,\infty)\)</span>. The compact cohomology of the last factor is zero: its one-point compactification computes the relative cohomology of an interval and one endpoint, and that endpoint inclusion is a homotopy equivalence. Integrating the other real coordinates preserves zero. At the annihilator complex orientation gives <span class="math" data-tex="\(k[-2b]\)">\(k[-2b]\)</span>. Closed base change, localization and gluing of the oriented trace prove
+<span class="math math-display" data-tex="\[
+\mathcal F_E^{\rm S}(v_*k_V[b])
+=v^\perp_*k_{V^\perp}[D-b].
+\tag{4.4}
+\]">\[
+\mathcal F_E^{\rm S}(v_*k_V[b])
+=v^\perp_*k_{V^\perp}[D-b].
+\tag{4.4}
+\]</span>
+The proof also works over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. It fixes the exchange map by trace. General conic inversion and general perverse exactness are separate assertions: <a href="../sheaf-proof-readings/SH02-kernel-calculus.html">SH-02's kernel-calculus unit</a> develops kernel composition relative to its operation inputs but still leaves conic Fourier–Sato theory open.</p>
+<h3 id="apply-the-kernels-to-the-incidence-bundle">Apply the kernels to the incidence bundle</h3>
+<p>Take <span class="math" data-tex="\(E=\mathcal B\times\mathfrak g\)">\(E=\mathcal B\times\mathfrak g\)</span>, with subbundle <span class="math" data-tex="\(Y\)">\(Y\)</span> of rank <span class="math" data-tex="\(b=n+r\)">\(b=n+r\)</span> and annihilator <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> of rank <span class="math" data-tex="\(n\)">\(n\)</span>. Its source normalization <span class="math" data-tex="\([D]\)">\([D]\)</span> is <span class="math" data-tex="\([b]\)">\([b]\)</span> followed by <span class="math" data-tex="\([n]\)">\([n]\)</span>. The proper projection off <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> commutes with both kernel operations: both composite expressions integrate over the same flag and vector variables, with the same pulled-back kernel. Proper base change, projection and composition identify these maps. Equations (4.2) and (4.4) now give
+<span class="math math-display" data-tex="\[
+\mathcal F_\psi(\mathsf S_{\mathfrak g})
+=i_*\mathsf S_{\mathcal N}(-n-r),\qquad
+\mathcal F^{\rm S}(\mathsf S_{\mathfrak g})=i_*\mathsf S_{\mathcal N}.
+\tag{4.5}
+\]">\[
+\mathcal F_\psi(\mathsf S_{\mathfrak g})
+=i_*\mathsf S_{\mathcal N}(-n-r),\qquad
+\mathcal F^{\rm S}(\mathsf S_{\mathfrak g})=i_*\mathsf S_{\mathcal N}.
+\tag{4.5}
+\]</span>
+For the arithmetic transform, (4.3) and the negation-invariance of the incidence bundle imply
+<span class="math math-display" data-tex="\[
+\mathcal F_\psi(i_*\mathsf S_{\mathcal N})=\mathsf S_{\mathfrak g}(-n).
+\tag{4.6}
+\]">\[
+\mathcal F_\psi(i_*\mathsf S_{\mathcal N})=\mathsf S_{\mathfrak g}(-n).
+\tag{4.6}
+\]</span>
+The twists add to <span class="math" data-tex="\((-D)\)">\((-D)\)</span>, as inversion requires. Closed extension is fully faithful, so arithmetic Fourier equivalence gives another algebra isomorphism from <span class="math" data-tex="\(\Lambda[W]\)">\(\Lambda[W]\)</span> to <span class="math" data-tex="\(\operatorname{End}(\mathsf S_{\mathcal N})\)">\(\operatorname{End}(\mathsf S_{\mathcal N})\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\phi(w)\)">\(\phi(w)\)</span> denote the deck endomorphism transported through the specified exchange (4.5), and retain <span class="math" data-tex="\(\rho(w)\)">\(\rho(w)\)</span> for restriction. Neither object identity identifies these actions. We next prove their precise comparison,
+<span class="math math-display" data-tex="\[
+\phi(w)=\varepsilon(w)\rho(w),\qquad \varepsilon(w)=(-1)^{\ell(w)}.
+\tag{4.7}
+\]">\[
+\phi(w)=\varepsilon(w)\rho(w),\qquad \varepsilon(w)=(-1)^{\ell(w)}.
+\tag{4.7}
+\]</span>
+For adic coefficients the kernel operations above require the normalized adic pushforward and coefficient foundations of Lesson 1. The finite character calculation does not by itself construct those functors.</p>
+<h2 id="5-why-the-classical-actions-differ-by-sign"><span id="4-3-classical-exchange-and-the-sign-of-the-action"></span>5. Why the classical actions differ by sign</h2>
+<p>Work over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, initially with integral cohomology. The Lie-theory input identifies
+<span class="math" data-tex="\(q_T:G/T\to\mathcal B\)">\(q_T:G/T\to\mathcal B\)</span>
+as a locally trivial affine-space bundle of complex rank <span class="math" data-tex="\(n\)">\(n\)</span>. Ordinary pullback and compact oriented trace transport the right normalizer maps on <span class="math" data-tex="\(G/T\)">\(G/T\)</span> to two actions on flag cohomology, written <span class="math" data-tex="\(O\)">\(O\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span>, respectively. For each <span class="math" data-tex="\(w\)">\(w\)</span>, use pullback under <span class="math" data-tex="\(gT\mapsto g\dot wT\)">\(gT\mapsto g\dot wT\)</span>, equivalently covariant transport under <span class="math" data-tex="\(gT\mapsto g\dot w^{-1}T\)">\(gT\mapsto g\dot w^{-1}T\)</span>. Right translations compose in reverse order, so these pullbacks give <span class="math" data-tex="\(O(w)O(v)=O(wv)\)">\(O(w)O(v)=O(wv)\)</span>, and likewise for <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<h3 id="the-top-class-and-the-mixed-pairing">The top class and the mixed pairing</h3>
+<p>On <span class="math" data-tex="\(G/T\)">\(G/T\)</span>, the pullback of <span class="math" data-tex="\(T\mathcal B\)">\(T\mathcal B\)</span> splits into the root lines of <span class="math" data-tex="\(\mathfrak g/\mathfrak b\)">\(\mathfrak g/\mathfrak b\)</span>, with weights <span class="math" data-tex="\(-\Phi^+\)">\(-\Phi^+\)</span>. If <span class="math" data-tex="\(L_\chi=G\times^T\mathbb C_\chi\)">\(L_\chi=G\times^T\mathbb C_\chi\)</span>, right translation pulls it back to <span class="math" data-tex="\(L_{w\chi}\)">\(L_{w\chi}\)</span>: its frame changes by <span class="math" data-tex="\(\chi(\dot w^{-1}t\dot w)\)">\(\chi(\dot w^{-1}t\dot w)\)</span>. The product expression for the top Chern class and <span class="math" data-tex="\(c_1(L_{-\alpha})=-c_1(L_\alpha)\)">\(c_1(L_{-\alpha})=-c_1(L_\alpha)\)</span> give
+<span class="math math-display" data-tex="\[
+q_T^*c_n(T\mathcal B)=\prod_{\alpha&gt;0}c_1(L_{-\alpha}),
+\qquad O(w)c_n(T\mathcal B)=\varepsilon(w)c_n(T\mathcal B).
+\tag{5.1}
+\]">\[
+q_T^*c_n(T\mathcal B)=\prod_{\alpha&gt;0}c_1(L_{-\alpha}),
+\qquad O(w)c_n(T\mathcal B)=\varepsilon(w)c_n(T\mathcal B).
+\tag{5.1}
+\]</span>
+Exactly <span class="math" data-tex="\(\ell(w)\)">\(\ell(w)\)</span> positive roots change sign; all Chern factors have even degree and commute.</p>
+<p>This class is nonzero integrally. A regular Cartan element induces a vector field on <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> with precisely <span class="math" data-tex="\(|W|\)">\(|W|\)</span> zeros, the Borels containing it. At each zero, the root eigenvalues of its tangent linearization are nonzero. The local index is <span class="math" data-tex="\(+1\)">\(+1\)</span>, since an invertible complex-linear map has positive real determinant <span class="math" data-tex="\(|\det_{\mathbb C}|^2\)">\(|\det_{\mathbb C}|^2\)</span>. Restricting the oriented Thom class to disjoint neighbourhoods of these zeros and using localization computes the Euler class as their sum. Complex line normalization and multiplicativity identify that Euler class with <span class="math" data-tex="\(c_n\)">\(c_n\)</span>. Therefore <span class="math" data-tex="\(\int_{\mathcal B}c_n=|W|\)">\(\int_{\mathcal B}c_n=|W|\)</span>. Since <span class="math" data-tex="\(H^{2n}(\mathcal B,\mathbb Z)=\mathbb Z\)">\(H^{2n}(\mathcal B,\mathbb Z)=\mathbb Z\)</span>, equation (5.1) forces the ordinary top action to be <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. This integral conclusion precedes any reduction modulo a prime; no modular division by <span class="math" data-tex="\(|W|\)">\(|W|\)</span> occurs.</p>
+<p>The compact top action is trivial. Its trace identification comes from <span class="math" data-tex="\(H_c^{4n}(G/T,\mathbb Z)\)">\(H_c^{4n}(G/T,\mathbb Z)\)</span>, whose complex-oriented generator is fixed by every holomorphic right translation. Put <span class="math" data-tex="\(u:H_c^\bullet(\mathcal B)\to H^\bullet(\mathcal B)\)">\(u:H_c^\bullet(\mathcal B)\to H^\bullet(\mathcal B)\)</span> for the usual identification on the proper flag variety. Bruhat cells have even real dimension, so the integral cellular complex has zero differentials and free cohomology. Poincaré duality gives a perfect cup pairing. The mixed ordinary/compact pairing on <span class="math" data-tex="\(G/T\)">\(G/T\)</span>, and the projection formula for <span class="math" data-tex="\(q_T\)">\(q_T\)</span>, make it equivariant for <span class="math" data-tex="\(O,C\)">\(O,C\)</span>. For complementary <span class="math" data-tex="\(v,z\)">\(v,z\)</span> this gives
+<span class="math math-display" data-tex="\[
+O(w)v\cdot uC(w)z=v\cdot uz,\qquad
+O(w)v\cdot O(w)uz=\varepsilon(w)v\cdot uz.
+\]">\[
+O(w)v\cdot uC(w)z=v\cdot uz,\qquad
+O(w)v\cdot O(w)uz=\varepsilon(w)v\cdot uz.
+\]</span>
+Perfection, allowing <span class="math" data-tex="\(O(w)v\)">\(O(w)v\)</span> to range over every complementary class, proves
+<span class="math math-display" data-tex="\[
+uC(w)=\varepsilon(w)O(w)u.
+\tag{5.2}
+\]">\[
+uC(w)=\varepsilon(w)O(w)u.
+\tag{5.2}
+\]</span>
+The pairing and the equality hold integrally and after extension to every coefficient field.</p>
+<h3 id="faithfulness-in-characteristic-zero">Faithfulness in characteristic zero</h3>
+<p>The right <span class="math" data-tex="\(W\)">\(W\)</span>-action on <span class="math" data-tex="\(G/T\)">\(G/T\)</span> is free: <span class="math" data-tex="\(g\dot wT=gT\)">\(g\dot wT=gT\)</span> implies <span class="math" data-tex="\(\dot w\in T\)">\(\dot w\in T\)</span>. We use here the explicit topological prerequisite that its semialgebraic quotient has a finite triangulation compatible with a frontier filtration. Each open cell is a real ball; its inverse image in the finite covering is <span class="math" data-tex="\(|W|\)">\(|W|\)</span> balls permuted regularly. Choose the orientations of the lifted balls by deck transport from one lift. Their compact cohomology is one regular <span class="math" data-tex="\(\mathbb Q[W]\)">\(\mathbb Q[W]\)</span>-module in the cell's degree.</p>
+<p>In an equivariant long exact cohomology sequence, alternating traces add, since the traces on successive images cancel. Compact localization along the finite cell filtration therefore gives zero Euler trace on <span class="math" data-tex="\(G/T\)">\(G/T\)</span> for <span class="math" data-tex="\(w\ne1\)">\(w\ne1\)</span>. Compact trace for <span class="math" data-tex="\(q_T\)">\(q_T\)</span> identifies its cohomology with flag cohomology shifted by <span class="math" data-tex="\(2n\)">\(2n\)</span>; all the flag degrees are even. Hence this Euler trace is the character of total flag cohomology under <span class="math" data-tex="\(C\)">\(C\)</span>. At <span class="math" data-tex="\(1\)">\(1\)</span> the dimension is the number <span class="math" data-tex="\(|W|\)">\(|W|\)</span> of Bruhat cells. It is the regular character. Averaging and the characteristic-zero character criterion identify the representation as regular, so it is faithful as a group-algebra representation. Equation (5.2) makes <span class="math" data-tex="\(O\)">\(O\)</span> regular as well. Tensoring the free integral modules with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> also proves integral faithfulness. This argument makes no claim of modular faithfulness or of an Euler-character formula for wild étale covers.</p>
+<h3 id="identify-the-two-sheaf-actions-on-a-flag-fibre">Identify the two sheaf actions on a flag fibre</h3>
+<p>The regular semisimple Cartan description refines (2.4) to
+<span class="math math-display" data-tex="\[
+Y^{\rm rs}=G/T\times\mathfrak t^{\rm reg},\qquad
+(gT,h)\longmapsto(\operatorname{Ad}(g)h,gBg^{-1}).
+\tag{5.3}
+\]">\[
+Y^{\rm rs}=G/T\times\mathfrak t^{\rm reg},\qquad
+(gT,h)\longmapsto(\operatorname{Ad}(g)h,gBg^{-1}).
+\tag{5.3}
+\]</span>
+Its inverse uses unique conjugation by the Borel unipotent radical to the Cartan representative, one of the stated Lie inputs. The deck map for <span class="math" data-tex="\(w\)">\(w\)</span> is <span class="math" data-tex="\((gT,h)\mapsto(g\dot w^{-1}T,wh)\)">\((gT,h)\mapsto(g\dot w^{-1}T,wh)\)</span>.</p>
+<p>Ordinary restriction <span class="math" data-tex="\(H^\bullet(Y)\to H^\bullet(Y^{\rm rs})\)">\(H^\bullet(Y)\to H^\bullet(Y^{\rm rs})\)</span> sends a flag class <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(q_T^*v\otimes1\)">\(q_T^*v\otimes1\)</span>. It is injective: evaluate at any Cartan point and use the affine-bundle pullback isomorphism. Naturality of restriction identifies the extended deck action on <span class="math" data-tex="\(H^\bullet(Y)\)">\(H^\bullet(Y)\)</span> with <span class="math" data-tex="\(O\)">\(O\)</span>. Restriction to the zero section identifies that cohomology with <span class="math" data-tex="\(H^\bullet(\mathcal B)\)">\(H^\bullet(\mathcal B)\)</span>; proper base change identifies the latter with the zero stalk of the normalized pushforward. These are actual restriction maps, so <span class="math" data-tex="\(\rho\)">\(\rho\)</span> acts there by <span class="math" data-tex="\(O\)">\(O\)</span>.</p>
+<p>For compact supports choose the trace-one top class <span class="math" data-tex="\(\eta\in H_c^{2r}(\mathfrak t^{\rm reg},\mathbb Z)\)">\(\eta\in H_c^{2r}(\mathfrak t^{\rm reg},\mathbb Z)\)</span>. The external product and open extension give
+<span class="math math-display" data-tex="\[
+H_c^a(G/T)\otimes\mathbb Z\eta
+\longrightarrow H_c^{a+2r}(Y^{\rm rs})
+\longrightarrow H_c^{a+2r}(Y).
+\tag{5.4}
+\]">\[
+H_c^a(G/T)\otimes\mathbb Z\eta
+\longrightarrow H_c^{a+2r}(Y^{\rm rs})
+\longrightarrow H_c^{a+2r}(Y).
+\tag{5.4}
+\]</span>
+After compact traces to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, this composite is an isomorphism. To check the map, trivialize over a flag chart. The open fibre <span class="math" data-tex="\(B/T\times\mathfrak t^{\rm reg}\)">\(B/T\times\mathfrak t^{\rm reg}\)</span> maps into the Borel vector space; extension by zero sends its oriented top class to the oriented top class with coefficient <span class="math" data-tex="\(+1\)">\(+1\)</span>, by excision. The trace identifications glue and give the identity on the shifted constant flag sheaf, hence in every flag cohomology degree. Normalizer translation fixes <span class="math" data-tex="\(\eta\)">\(\eta\)</span> by complex orientation. Naturality of open extension therefore identifies the extended deck action on <span class="math" data-tex="\(H_c^\bullet(Y)\)">\(H_c^\bullet(Y)\)</span> with <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>At the zero covector the classical Fourier kernel is the entire vector space. Base change in (4.5) gives
+<span class="math math-display" data-tex="\[
+(\mathcal F^{\rm S}\mathsf S_{\mathfrak g})_0
+=R\Gamma_c(Y,k)[2D]
+=R\Gamma(\mathcal B,k)[2n].
+\tag{5.5}
+\]">\[
+(\mathcal F^{\rm S}\mathsf S_{\mathfrak g})_0
+=R\Gamma_c(Y,k)[2D]
+=R\Gamma(\mathcal B,k)[2n].
+\tag{5.5}
+\]</span>
+The last map is the rank-<span class="math" data-tex="\((n+r)\)">\((n+r)\)</span> vector trace. It is exactly the zero restriction of the exchange map (4.4): integrating the flag and vector variables in either order uses the same composed trace, normalized to <span class="math" data-tex="\(+1\)">\(+1\)</span> on each complex vector fibre. Thus the Fourier action is <span class="math" data-tex="\(uCu^{-1}\)">\(uCu^{-1}\)</span> on this stalk, with no freedom to choose a different identification.</p>
+<p>For characteristic-zero coefficients, (5.2) proves (4.7) on flag cohomology. The map from sheaf endomorphisms to endomorphisms of this cohomology is injective: composing with (3.2) gives the faithful <span class="math" data-tex="\(O\)">\(O\)</span>-representation of the group algebra. This proves the equality of sheaf endomorphisms.</p>
+<h3 id="extend-the-equality-to-other-classical-coefficients">Extend the equality to other classical coefficients</h3>
+<p>By the integral smallness bounds in §2 and the free top-component calculation in §3, the integral restriction algebra is <span class="math" data-tex="\(\mathbb Z[W]\)">\(\mathbb Z[W]\)</span>. It injects into its rational version. The integral endomorphism <span class="math" data-tex="\(\phi(w)-\varepsilon(w)\rho(w)\)">\(\phi(w)-\varepsilon(w)\rho(w)\)</span> becomes zero rationally by the preceding proof, so it is zero already over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p>Derived tensor with a field <span class="math" data-tex="\(k\)">\(k\)</span> preserves all the maps defining these actions. A field, regarded as a <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-module, has a free resolution of length at most one. Pullback commutes with that tensor complex; proper and compact pushforward do so by projection, or by bounded c-soft models and direct sums. The closed units, composition maps and orientation traces retain their integral normalization on these models. Both constant pushforward complexes become their <span class="math" data-tex="\(k\)">\(k\)</span>-coefficient versions. On the regular semisimple open the reduced map is the deck action; uniqueness of intermediate extension identifies its global extension. The half-space trace reduces to the specific exchange (4.4). Thus (4.7) holds over every classical coefficient field, including characteristic two, without testing modular sheaf maps on fibre cohomology.</p>
+<h2 id="6-transport-the-compact-action-to-finite-characteristic"><span id="4-4-arithmetic-flag-comparison-and-the-sign"></span>6. Transport the compact action to finite characteristic</h2>
+<p>The arithmetic comparison needs more than identical root systems. We must transport the specified compact action, retain its trace normalization, and only then recover the ordinary action. The providers used for this are Pinnings and the classification of split reductive groups, Automorphisms, forms and parabolic subgroups, and the proper-support, cup-product and point-orientation parts of <a href="../ag-etale-cohomology/comparison-with-singular-cohomology.html">Comparison with singular cohomology</a>. Their own stated prerequisites remain part of the proof obligation.</p>
+<p>There is a precise scope for the curve comparison at the base of the latter provider's dimension induction. <a href="../AG-QC/serres-comparison-theorems-and-chows-theorem.html">Serre's comparison theorems and Chow's theorem</a>, §§1–5, supplies projective GAGA relative to its analytic foundations. Algebraizing a coherent analytic line bundle and descending rank-one local freeness by faithful flatness gives the line-bundle comparison; full faithfulness and tensor compatibility give the Picard comparison. <a href="../AG-DFG/comparison-with-topology.html">Comparison with the topological fundamental group</a>, §§1–3, puts an analytic structure on a finite cover and algebraizes its coherent algebra. Multiplication and the unit algebraize by full faithfulness; faithful flatness descends finite local freeness and the vanishing of relative differentials, hence étaleness. The same argument applies to algebra maps and group actions. On a smooth projective curve these steps require projective GAGA, not the stronger proper-scheme assertion. In the later induction, algebraic finite local systems are trivialized by algebraic finite étale covers; a general finite-type Riemann-existence theorem and a resolution-of-singularities comparison are not used here.</p>
+<h3 id="affine-bundles-with-both-pushforwards-specified">Affine bundles, with both pushforwards specified</h3>
+<p>Start with <span class="math" data-tex="\(A_m=\mathbb Z/\ell^m\)">\(A_m=\mathbb Z/\ell^m\)</span>, <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>. For an affine-space bundle <span class="math" data-tex="\(q\)">\(q\)</span> of rank <span class="math" data-tex="\(d\)">\(d\)</span> over an algebraically closed field of characteristic different from <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, we need
+<span class="math math-display" data-tex="\[
+Rq_*A_m=A_m,\qquad Rq_!A_m=A_m(-d)[-2d].
+\tag{6.1}
+\]">\[
+Rq_*A_m=A_m,\qquad Rq_!A_m=A_m(-d)[-2d].
+\tag{6.1}
+\]</span>
+For the ordinary assertion, compactify an affine line to <span class="math" data-tex="\(g:\mathbb P^1_S\to S\)">\(g:\mathbb P^1_S\to S\)</span>. The unit and <span class="math" data-tex="\(c_1(\mathcal O(1))\)">\(c_1(\mathcal O(1))\)</span> identify <span class="math" data-tex="\(Rg_*A_m=A_m\oplus A_m(-1)[-2]\)">\(Rg_*A_m=A_m\oplus A_m(-1)[-2]\)</span>, as proper base change checks on each fibre. The support triangle for infinity, using the smooth-pair purity of Lesson 1, has Gysin map equal to the identity on the second summand: the infinity point has degree one. Its cone is the first summand, proving the affine-line unit isomorphism. Products give affine space; the canonical unit glues it over bundle charts. The compact assertion is the normalized affine-space trace. These apply to <span class="math" data-tex="\(q_T:G/T\to\mathcal B\)">\(q_T:G/T\to\mathcal B\)</span>, whose fibre <span class="math" data-tex="\(B/T\)">\(B/T\)</span> is affine <span class="math" data-tex="\(n\)">\(n\)</span>-space in ordered root coordinates, and to <span class="math" data-tex="\(Y\to\mathcal B\)">\(Y\to\mathcal B\)</span>. They define <span class="math" data-tex="\(O_{A_m}\)">\(O_{A_m}\)</span> and <span class="math" data-tex="\(C_{A_m}\)">\(C_{A_m}\)</span> with §5's right-translation convention.</p>
+<h3 id="use-a-proper-family-to-compare-the-actions">Use a proper family to compare the actions</h3>
+<p>A pinning gives a split integral group with compatible torus, Borel and normalizer representatives. Over <span class="math" data-tex="\(S=\operatorname{Spec}\mathbb Z[1/\ell]\)">\(S=\operatorname{Spec}\mathbb Z[1/\ell]\)</span> its flag family <span class="math" data-tex="\(a:\mathcal B_S\to S\)">\(a:\mathcal B_S\to S\)</span> is smooth projective of relative dimension <span class="math" data-tex="\(n\)">\(n\)</span>. Put <span class="math" data-tex="\(h:(G/T)_S\to S\)">\(h:(G/T)_S\to S\)</span>. There is a specified relative compact-trace isomorphism
+<span class="math math-display" data-tex="\[
+Rh_!A_m=Ra_*A_m(-n)[-2n].
+\tag{6.2}
+\]">\[
+Rh_!A_m=Ra_*A_m(-n)[-2n].
+\tag{6.2}
+\]</span>
+One can construct this without absolute purity over a mixed-characteristic trait. On an affine-line chart use the open–closed triangle for <span class="math" data-tex="\(\mathbb A^1\subset\mathbb P^1\)">\(\mathbb A^1\subset\mathbb P^1\)</span>. Restriction to infinity is the identity on the unit summand of the projective-line formula and zero on its Chern-class summand, because <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> restricts trivially to the section. The triangle gives <span class="math" data-tex="\(Rq_!A_m=A_m(-1)[-2]\)">\(Rq_!A_m=A_m(-1)[-2]\)</span>. Iterate and glue. Changes of affine-space frame preserve the point-normalized trace on every geometric fibre, so proper-support base change verifies agreement of these trace maps on overlaps. This proves (6.2) compatibly with base change and coefficient reduction.</p>
+<p>Right normalizer translation is defined over <span class="math" data-tex="\(S\)">\(S\)</span> and acts on <span class="math" data-tex="\(Rh_!A_m\)">\(Rh_!A_m\)</span>. Transfer that action through (6.2) to the proper complex <span class="math" data-tex="\(Ra_*A_m\)">\(Ra_*A_m\)</span>. Its fibre is precisely <span class="math" data-tex="\(C_{A_m}\)">\(C_{A_m}\)</span>. Naturality of proper base change preserves the action, and proper smooth specialization is invertible by <a href="../ag-etale-cohomology/smooth-base-change-and-local-acyclicity.html">Smooth base change and local acyclicity</a>, Corollary 11.3. A strict henselian trait above <span class="math" data-tex="\(p\)">\(p\)</span> compares the positive-characteristic flag to a geometric characteristic-zero flag. Since the generic group is defined over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, geometric proper base change compares this with the complex flag through <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>.</p>
+<p>Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, proper-support comparison for <span class="math" data-tex="\(G/T\)">\(G/T\)</span>, proper comparison for the flag, and the normalized trace commute with (6.2). Thus the transported action is the classical <span class="math" data-tex="\(C_{A_m}\)">\(C_{A_m}\)</span> itself. The maps preserve cup products, the flag trace and reduction <span class="math" data-tex="\(A_{m+1}\to A_m\)">\(A_{m+1}\to A_m\)</span>. Classical flag cohomology is free and concentrated in even degrees; the compared <span class="math" data-tex="\(A_m\)">\(A_m\)</span>-modules have perfect cup pairing and degree-one point class at the top.</p>
+<p>Only compact cohomology of <span class="math" data-tex="\(G/T\)">\(G/T\)</span> has been transported. Recover the ordinary action on each fibre from its mixed pairing with <span class="math" data-tex="\(C_{A_m}\)">\(C_{A_m}\)</span>: projection makes the pairing equivariant, and translation fixes the top compact trace. Its perfection determines <span class="math" data-tex="\(O_{A_m}\)">\(O_{A_m}\)</span> uniquely. Transporting (5.2) therefore gives
+<span class="math math-display" data-tex="\[
+uC_{A_m}(w)=\varepsilon(w)O_{A_m}(w)u
+\tag{6.3}
+\]">\[
+uC_{A_m}(w)=\varepsilon(w)O_{A_m}(w)u
+\tag{6.3}
+\]</span>
+even when <span class="math" data-tex="\(\ell\mid|W|\)">\(\ell\mid|W|\)</span>. This avoids any claim of smooth proper specialization for a nonproper ordinary direct image.</p>
+<p>The coefficient limit here is legitimate on the proper flag complex. The classical cellular model is bounded and finite free, with surjective maps on its coefficient quotients. In cohomology the towers have stabilizing images, so their first derived limits vanish. It follows that the <span class="math" data-tex="\(\mathbb Z_\ell\)">\(\mathbb Z_\ell\)</span>-cohomology is integral classical flag cohomology tensored with <span class="math" data-tex="\(\mathbb Z_\ell\)">\(\mathbb Z_\ell\)</span>, with the compatible limiting actions. Flat extension to a finite coefficient DVR <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, followed by passage to its fraction field <span class="math" data-tex="\(K\)">\(K\)</span>, preserves (6.3). The <span class="math" data-tex="\(O_K\)">\(O_K\)</span>-representation is faithful because it is scalar extension of the characteristic-zero regular representation in §5. This calculation on a proper flag does not establish the general theory of adic pushforwards.</p>
+<h3 id="identify-fourier-and-restriction-after-this-transport">Identify Fourier and restriction after this transport</h3>
+<p>The Cartan isomorphism (5.3) holds under the arithmetic Lie hypotheses. The ordinary units of (6.1) make <span class="math" data-tex="\(H^\bullet(Y,A_m)\to H^\bullet(Y^{\rm rs},A_m)\)">\(H^\bullet(Y,A_m)\to H^\bullet(Y^{\rm rs},A_m)\)</span> injective: restrict to one Cartan point and then use <span class="math" data-tex="\(q_T^*\)">\(q_T^*\)</span>. The zero section identifies the source with flag cohomology. Naturality of restriction and proper base change therefore identify the sheaf action <span class="math" data-tex="\(\rho\)">\(\rho\)</span> at zero with <span class="math" data-tex="\(O_{A_m}\)">\(O_{A_m}\)</span>.</p>
+<p>For compact supports take the trace-one element
+<span class="math" data-tex="\(\eta\in H_c^{2r}(\mathfrak t^{\rm reg},A_m(r))\)">\(\eta\in H_c^{2r}(\mathfrak t^{\rm reg},A_m(r))\)</span>.
+This top group is <span class="math" data-tex="\(A_m\)">\(A_m\)</span>, since the Cartan open is connected and smooth; point normalization makes its Weyl action trivial. In the arithmetic version of (5.4), extension by zero from the open fibre <span class="math" data-tex="\(B/T\times\mathfrak t^{\rm reg}\)">\(B/T\times\mathfrak t^{\rm reg}\)</span> into the Borel vector space preserves a point-normalized top class. Its coefficient is <span class="math" data-tex="\(+1\)">\(+1\)</span>. Relative trace and proper-support base change glue that calculation to the identity on the shifted constant flag sheaf. Thus the global deck action on <span class="math" data-tex="\(H_c^\bullet(Y,A_m)\)">\(H_c^\bullet(Y,A_m)\)</span> is <span class="math" data-tex="\(C_{A_m}\)">\(C_{A_m}\)</span>. Units, open extensions and traces commute with the same coefficient limits.</p>
+<p>At the zero covector the character kernel has its canonical trivialization. The exchange (4.5) consequently has zero-stalk map
+<span class="math math-display" data-tex="\[
+(\mathcal F_\psi\mathsf S_{\mathfrak g})_0
+=R\Gamma_c(Y,K)[2D]
+=R\Gamma(\mathcal B,K)[2n](-n-r).
+\tag{6.4}
+\]">\[
+(\mathcal F_\psi\mathsf S_{\mathfrak g})_0
+=R\Gamma_c(Y,K)[2D]
+=R\Gamma(\mathcal B,K)[2n](-n-r).
+\tag{6.4}
+\]</span>
+This is exactly the rank-<span class="math" data-tex="\((n+r)\)">\((n+r)\)</span> trace used in the subbundle formula, by composition of compact integrations. The twist has trivial Weyl action. Hence <span class="math" data-tex="\(\phi_K=uC_Ku^{-1}\)">\(\phi_K=uC_Ku^{-1}\)</span> there. Equation (6.3), the restriction algebra (3.2), and faithfulness of <span class="math" data-tex="\(O_K\)">\(O_K\)</span> prove <span class="math" data-tex="\(\phi_K(w)=\varepsilon(w)\rho_K(w)\)">\(\phi_K(w)=\varepsilon(w)\rho_K(w)\)</span> as sheaf maps.</p>
+<p>Finally choose <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> to contain the needed primitive <span class="math" data-tex="\(p\)">\(p\)</span>-th root of unity; a finite unramified extension of <span class="math" data-tex="\(\mathbb Z_\ell\)">\(\mathbb Z_\ell\)</span> suffices. Sections 2–3 give the injective coefficient map
+<span class="math math-display" data-tex="\[
+\operatorname{End}(\mathsf S_{\mathcal N,\mathcal O})
+=\mathcal O[W]\hookrightarrow K[W].
+\tag{6.5}
+\]">\[
+\operatorname{End}(\mathsf S_{\mathcal N,\mathcal O})
+=\mathcal O[W]\hookrightarrow K[W].
+\tag{6.5}
+\]</span>
+The character projector uses division by <span class="math" data-tex="\(p\)">\(p\)</span>, a unit in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. Thus (4.1)–(4.5) and their trace maps exist over <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. The difference of the two sides of (4.7) is an integral endomorphism zero over <span class="math" data-tex="\(K\)">\(K\)</span>; (6.5) makes it zero integrally.</p>
+<p>Derived reduction to the residue field uses its two-term finite free DVR resolution. Pullbacks and closed units commute with this resolution, and projection proves the compatibility for proper and compact pushforward. The character projector reduces because <span class="math" data-tex="\(p\)">\(p\)</span> is a unit; the trace keeps its normalization. The reduced action is the deck action on the regular semisimple open, so uniqueness of its intermediate extension identifies its global extension. This proves (4.7) over the residue field and, by flat extension, over every larger finite coefficient field defining the character. Extension from a finite fraction field also gives the <span class="math" data-tex="\(\overline{\mathbb Q}_\ell\)">\(\overline{\mathbb Q}_\ell\)</span> statement. These integral and rational adic arguments retain the general operation foundations of Lesson 1 as prerequisites.</p>
+<h2 id="7-representation-labels-and-the-change-of-coefficients"><span id="5-the-complete-rank-one-calculation"></span>7. Representation labels and the change of coefficients</h2>
+<p>Return first to characteristic-zero coefficients and the concrete fibres of §1. For <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span>, the semismall calculation in Lesson 9, with the finite-quotient IC computation of Lesson 8, gives
+<span class="math math-display" data-tex="\[
+\mathsf S_{\mathcal N}
+=\Lambda_{\mathcal N}[2]\otimes\mathbf1
+\ \oplus\ \Lambda_{\{0\}}(-1)\otimes\operatorname{sgn}.
+\tag{7.1}
+\]">\[
+\mathsf S_{\mathcal N}
+=\Lambda_{\mathcal N}[2]\otimes\mathbf1
+\ \oplus\ \Lambda_{\{0\}}(-1)\otimes\operatorname{sgn}.
+\tag{7.1}
+\]</span>
+Indeed <span class="math" data-tex="\(\operatorname{IC}_{\mathcal N}=\Lambda_{\mathcal N}[2]\)">\(\operatorname{IC}_{\mathcal N}=\Lambda_{\mathcal N}[2]\)</span>, the full-support term is trivial by §3, and the restriction algebra forces the other simple term to receive the other irreducible <span class="math" data-tex="\(S_2\)">\(S_2\)</span>-representation. At zero, <span class="math" data-tex="\(H^0(\mathbb P^1)\)">\(H^0(\mathbb P^1)\)</span> is trivial and <span class="math" data-tex="\(H^2(\mathbb P^1)=\Lambda(-1)\otimes\operatorname{sgn}\)">\(H^2(\mathbb P^1)=\Lambda(-1)\otimes\operatorname{sgn}\)</span>. This action cannot be induced by algebraic automorphisms of <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, which all preserve its top class.</p>
+<p>The corresponding global decomposition is
+<span class="math math-display" data-tex="\[
+\mathsf S_{\mathfrak{sl}_2}
+=\Lambda_{\mathfrak{sl}_2}[3]\oplus
+\operatorname{IC}_{\mathfrak{sl}_2}(L_{\rm sgn}).
+\tag{7.2}
+\]">\[
+\mathsf S_{\mathfrak{sl}_2}
+=\Lambda_{\mathfrak{sl}_2}[3]\oplus
+\operatorname{IC}_{\mathfrak{sl}_2}(L_{\rm sgn}).
+\tag{7.2}
+\]</span>
+On the regular semisimple open its two eigenlines form the regular representation. At a nonzero nilpotent its only stalk group has degree <span class="math" data-tex="\(-3\)">\(-3\)</span>. At zero its stalk groups have degrees <span class="math" data-tex="\(-3,-1\)">\(-3,-1\)</span>, with twists <span class="math" data-tex="\(0,-1\)">\(0,-1\)</span>, by the projective-line fibre. The constant summand accounts for degree <span class="math" data-tex="\(-3\)">\(-3\)</span>; the sign IC vanishes on the nonzero nilpotent orbit and contributes only degree <span class="math" data-tex="\(-1\)">\(-1\)</span> at zero. Applying <span class="math" data-tex="\([-1]\)">\([-1]\)</span> gives degrees <span class="math" data-tex="\(-2,0\)">\(-2,0\)</span>, confirming (7.1). The opposite shift would give <span class="math" data-tex="\(-4,-2\)">\(-4,-2\)</span>.</p>
+<p>For <span class="math" data-tex="\(SL_3\)">\(SL_3\)</span>, the regular and zero orbits have dimensions <span class="math" data-tex="\(6,0\)">\(6,0\)</span>. For the subregular matrix in §1 the invertible commuting matrices have form
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}a&amp;b&amp;c\\0&amp;a&amp;0\\0&amp;d&amp;e\end{pmatrix},\qquad a^2e\ne0.
+\tag{7.3}
+\]">\[
+\begin{pmatrix}a&amp;b&amp;c\\0&amp;a&amp;0\\0&amp;d&amp;e\end{pmatrix},\qquad a^2e\ne0.
+\tag{7.3}
+\]</span>
+The determinant-one condition gives <span class="math" data-tex="\(e=a^{-2}\)">\(e=a^{-2}\)</span>. This centralizer is connected of dimension four, so its orbit has dimension <span class="math" data-tex="\(8-4=4\)">\(8-4=4\)</span>, and its equivariant component local systems are trivial. The zero centralizer is connected too; the regular orbit's point fibre already supplies a constant top local system, independently of its centralizer's component group.</p>
+<p>The fibre dimensions <span class="math" data-tex="\(0,1,3\)">\(0,1,3\)</span> satisfy <span class="math" data-tex="\(s+2\dim\mathcal B_x=6\)">\(s+2\dim\mathcal B_x=6\)</span> on all three orbits. Their top-cohomology multiplicities have ranks <span class="math" data-tex="\(1,2,1\)">\(1,2,1\)</span>, by §1. Section 3 identifies them with distinct irreducible <span class="math" data-tex="\(S_3\)">\(S_3\)</span>-representations: the regular orbit receives the trivial one, the zero orbit the other one-dimensional representation, and the subregular orbit the standard two-dimensional representation. Thus
+<span class="math math-display" data-tex="\[
+\mathsf S_{\mathcal N}
+=\operatorname{IC}_{\mathcal N}\otimes\mathbf1
+\oplus\operatorname{IC}_{\overline{\mathcal O}_{(2,1)}}(\Lambda)
+\otimes V_{\rm std}(-1)
+\oplus\Lambda_{\{0\}}\otimes\operatorname{sgn}(-3).
+\tag{7.4}
+\]">\[
+\mathsf S_{\mathcal N}
+=\operatorname{IC}_{\mathcal N}\otimes\mathbf1
+\oplus\operatorname{IC}_{\overline{\mathcal O}_{(2,1)}}(\Lambda)
+\otimes V_{\rm std}(-1)
+\oplus\Lambda_{\{0\}}\otimes\operatorname{sgn}(-3).
+\tag{7.4}
+\]</span>
+The standard representation is the three-coordinate permutation representation with its constant line removed. Subtracting the trivial character from <span class="math" data-tex="\(3,1,0\)">\(3,1,0\)</span> gives its character <span class="math" data-tex="\(2,0,-1\)">\(2,0,-1\)</span> on the identity, transpositions and three-cycles. In the Fourier normalization every label in (7.1) and (7.4) is tensored with sign.</p>
+<h3 id="what-fails-in-modular-coefficients"><span id="4-2-which-assertions-survive-changing-coefficients"></span>What fails in modular coefficients</h3>
+<p>The small-map description, minus-rank shift, and restriction endomorphism algebra do not divide by <span class="math" data-tex="\(|W|\)">\(|W|\)</span>. The semisimple decomposition does. Over a field <span class="math" data-tex="\(k\)">\(k\)</span>, the regular <span class="math" data-tex="\(k[W]\)">\(k[W]\)</span>-module is semisimple precisely when <span class="math" data-tex="\(\operatorname{char}k\nmid|W|\)">\(\operatorname{char}k\nmid|W|\)</span>. Averaging proves sufficiency. Conversely, a splitting of its augmentation to the trivial module would provide an invariant vector of augmentation <span class="math" data-tex="\(1\)">\(1\)</span>. Every invariant vector is a scalar multiple of <span class="math" data-tex="\(\sum_{w\in W}w\)">\(\sum_{w\in W}w\)</span>, whose augmentation is <span class="math" data-tex="\(|W|\)">\(|W|\)</span>. When that number vanishes in <span class="math" data-tex="\(k\)">\(k\)</span>, no splitting exists. Since intermediate extension is additive, fully faithful and preserves simplicity of irreducible local systems, the global IC sheaf of this nonsemisimple regular system is nonsemisimple as well.</p>
+<p>For the complex <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> nilpotent resolution and coefficient characteristic two, the exceptional intersection form is <span class="math" data-tex="\((-2)\)">\((-2)\)</span>. Lesson 9's criterion makes its pushforward indecomposable, with no point summand. Nevertheless (3.6) still gives
+<span class="math math-display" data-tex="\[
+\operatorname{End}(\mathsf S_{\mathcal N,k})
+=k[S_2]=k[\epsilon]/(\epsilon^2),\qquad \epsilon=w-1.
+\tag{7.5}
+\]">\[
+\operatorname{End}(\mathsf S_{\mathcal N,k})
+=k[S_2]=k[\epsilon]/(\epsilon^2),\qquad \epsilon=w-1.
+\tag{7.5}
+\]</span>
+This algebra has no nontrivial idempotents, consistently with indecomposability. Its nonzero element <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> acts as zero on both one-dimensional cohomology groups of the zero fibre: a one-dimensional <span class="math" data-tex="\(S_2\)">\(S_2\)</span>-representation in characteristic two is trivial. Thus that fibre's individual cohomology groups do not detect all sheaf maps. Equation (4.7) still holds, with sign now trivial, by integral reduction; characteristic-zero faithfulness was used before reduction. General modular and generalized Springer correspondences require their own constructions and are not proved by (7.5).</p>
+<h2 id="8-exercises-with-solutions"><span id="7-exercises-with-solutions"></span>8. Exercises with solutions</h2>
+<h3 id="exercise-1-the-cotangent-resolution"><span id="exercise-1-easy-identify-the-rank-one-cotangent-bundle"></span>Exercise 1 — the cotangent resolution</h3>
+<p>Construct the rank-one nilpotent resolution from a line in a two-dimensional vector space. Identify its bundle, its map to the cone, and its properness.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(L\subset V\)">\(L\subset V\)</span> be a line. The compatible endomorphisms factor as <span class="math" data-tex="\(V\to V/L\to L\to V\)">\(V\to V/L\to L\to V\)</span>, so their vector space is <span class="math" data-tex="\(\operatorname{Hom}(V/L,L)\)">\(\operatorname{Hom}(V/L,L)\)</span>. The tangent space to the line variety at <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\(\operatorname{Hom}(L,V/L)\)">\(\operatorname{Hom}(L,V/L)\)</span>, and composition followed by trace is a perfect pairing between these two one-dimensional spaces. The incidence bundle is therefore <span class="math" data-tex="\(T^*\mathbb P(V)\)">\(T^*\mathbb P(V)\)</span>. Its line-bundle description is <span class="math" data-tex="\(\operatorname{Hom}(\mathcal O(1),\mathcal O(-1))=\mathcal O(-2)\)">\(\operatorname{Hom}(\mathcal O(1),\mathcal O(-1))=\mathcal O(-2)\)</span>. Composition produces a traceless square-zero matrix, hence a point of <span class="math" data-tex="\(z^2=ab\)">\(z^2=ab\)</span>. Conversely every incident pair in (1.1) factors in this way. The conditions defining the pair are closed in <span class="math" data-tex="\(\mathcal N\times\mathbb P(V)\)">\(\mathcal N\times\mathbb P(V)\)</span>, so projection is projective. The total space is smooth, and the unique line <span class="math" data-tex="\(\operatorname{im}x\)">\(\operatorname{im}x\)</span> gives its inverse over the nonzero cone. These facts prove it is the claimed resolution.</p>
+<h3 id="exercise-2-rank-one-cohomology-and-its-labels"><span id="exercise-2-easy-rank-one-fibers-and-representations"></span>Exercise 2 — rank-one cohomology and its labels</h3>
+<p>Calculate both nilpotent fibres for <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span>, their cohomology, and their restriction and Fourier representation labels.</p>
+<p><strong>Solution.</strong> A nonzero nilpotent has rank one and square zero, whence <span class="math" data-tex="\(\operatorname{im}x=\ker x\)">\(\operatorname{im}x=\ker x\)</span>; its fibre is one line, with <span class="math" data-tex="\(H^0=\Lambda\)">\(H^0=\Lambda\)</span>. Zero permits all lines, giving <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, whose unit and hyperplane class give <span class="math" data-tex="\(H^0=\Lambda\)">\(H^0=\Lambda\)</span> and <span class="math" data-tex="\(H^2=\Lambda(-1)\)">\(H^2=\Lambda(-1)\)</span>, with no other cohomology. The semismall decomposition is the constant IC of the <span class="math" data-tex="\(A_1\)">\(A_1\)</span> cone together with <span class="math" data-tex="\(\Lambda_0(-1)\)">\(\Lambda_0(-1)\)</span>: the quotient IC calculation and the nonzero intersection form are supplied in Lessons 8–9. Restriction of the global deck-invariant constant summand gives the full-support constituent with trivial label. The restriction algebra is <span class="math" data-tex="\(\Lambda[S_2]\)">\(\Lambda[S_2]\)</span>, so the distinct simple point constituent must have the other irreducible label, sign. Thus the nonzero fibre is trivial and the zero fibre has trivial <span class="math" data-tex="\(H^0\)">\(H^0\)</span>, sign <span class="math" data-tex="\(H^2\)">\(H^2\)</span>. Formula (4.7) interchanges these labels for Fourier transport, while retaining their degrees and Tate twists. This answer assumes characteristic-zero coefficients; equation (7.5) explains the characteristic-two failure of the direct sum.</p>
+<h3 id="exercise-3-establish-the-two-dimension-inequalities"><span id="exercise-3-medium-prove-smallness"></span>Exercise 3 — establish the two dimension inequalities</h3>
+<p>Prove the Grothendieck map is small and the nilpotent map is semismall by using their fibre products. Locate the step where strictness enters.</p>
+<p><strong>Solution.</strong> Relative-position <span class="math" data-tex="\(w\)">\(w\)</span> flag pairs have dimension <span class="math" data-tex="\(n+\ell(w)\)">\(n+\ell(w)\)</span>. Their common Borel algebra has dimension <span class="math" data-tex="\(r+n-\ell(w)\)">\(r+n-\ell(w)\)</span>, so the global fibre-product piece has dimension <span class="math" data-tex="\(2n+r=D\)">\(2n+r=D\)</span>. Every common Borel algebra contains a Cartan with a nonempty regular semisimple open. Its intersection with the closed non-regular-semisimple set therefore has dimension at most <span class="math" data-tex="\(r+n-\ell(w)-1\)">\(r+n-\ell(w)-1\)</span>. The global fibre product over that closed set has dimension at most <span class="math" data-tex="\(D-1\)">\(D-1\)</span>. For an adapted boundary stratum <span class="math" data-tex="\(S\)">\(S\)</span> with fibre dimension <span class="math" data-tex="\(h\)">\(h\)</span>, its part has dimension <span class="math" data-tex="\(\dim S+2h\)">\(\dim S+2h\)</span>. Hence <span class="math" data-tex="\(\dim S+2h&lt;D\)">\(\dim S+2h&lt;D\)</span>; over the regular semisimple open the Cartan description supplies the finite étale torsor. These are the smallness conditions. For nilpotence replace the common Borel algebra by the common nilradical, of dimension <span class="math" data-tex="\(n-\ell(w)\)">\(n-\ell(w)\)</span>. Each resulting piece has dimension <span class="math" data-tex="\(2n\)">\(2n\)</span>, the dimension of the nilpotent source. This proves the non-strict semismall inequalities. There is no corresponding dimension loss on every nilpotent boundary stratum; the exceptional fibres of §1 realize equality.</p>
+<h3 id="exercise-4-extend-maps-and-compute-the-algebra"><span id="exercise-4-medium-compute-the-endomorphism-algebra"></span>Exercise 4 — extend maps and compute the algebra</h3>
+<p>Show directly that degree-zero maps of an intermediate extension are determined by their open restriction. Apply this to the regular system of a connected <span class="math" data-tex="\(W\)">\(W\)</span>-torsor, including the multiplication convention.</p>
+<p><strong>Solution.</strong> Given a map of open local systems, perverse extension by zero and perverse direct image produce a commutative square. Taking the images of the horizontal natural maps defines a map of their intermediate extensions. If a map of those images vanishes on the open, its image in the perverse heart is boundary-supported. The target intermediate extension has no such nonzero subobject, so the map is zero. This proves both existence and uniqueness.</p>
+<p>For the connected torsor, monodromy is the full left regular group on the basis <span class="math" data-tex="\(\{e_a:a\in W\}\)">\(\{e_a:a\in W\}\)</span>. If a commuting endomorphism sends <span class="math" data-tex="\(e_1\)">\(e_1\)</span> to <span class="math" data-tex="\(\sum_b c_b e_b\)">\(\sum_b c_b e_b\)</span>, it must send <span class="math" data-tex="\(e_a\)">\(e_a\)</span> to <span class="math" data-tex="\(\sum_b c_b e_{ab}\)">\(\sum_b c_b e_{ab}\)</span>; conversely that formula commutes with every left translation. Thus the centralizer has dimension <span class="math" data-tex="\(|W|\)">\(|W|\)</span>. The operators <span class="math" data-tex="\(R_w(e_a)=e_{aw^{-1}}\)">\(R_w(e_a)=e_{aw^{-1}}\)</span> are independent and satisfy <span class="math" data-tex="\(R_wR_v(e_a)=e_{av^{-1}w^{-1}}=R_{wv}(e_a)\)">\(R_wR_v(e_a)=e_{av^{-1}w^{-1}}=R_{wv}(e_a)\)</span>. They form its basis and identify its algebra with <span class="math" data-tex="\(\Lambda[W]\)">\(\Lambda[W]\)</span>. Full faithfulness gives the same algebra on the global IC. This argument computes degree-zero endomorphisms, not all derived Ext groups.</p>
+<h3 id="exercise-5-the-subregular-fibre-and-its-character"><span id="exercise-5-hard-the-subregular-mathfrak-sl-_3-fiber"></span>Exercise 5 — the subregular fibre and its character</h3>
+<p>For <span class="math" data-tex="\(xe_2=e_1\)">\(xe_2=e_1\)</span>, <span class="math" data-tex="\(xe_1=xe_3=0\)">\(xe_1=xe_3=0\)</span> in <span class="math" data-tex="\(\mathfrak{sl}_3\)">\(\mathfrak{sl}_3\)</span>, describe every compatible flag and calculate the character on its top cohomology. Exhibit matrices for the adjacent transpositions in a representation basis.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(I=\operatorname{im}x=\langle e_1\rangle\)">\(I=\operatorname{im}x=\langle e_1\rangle\)</span> and <span class="math" data-tex="\(K=\ker x=\langle e_1,e_3\rangle\)">\(K=\ker x=\langle e_1,e_3\rangle\)</span>. The flag conditions give <span class="math" data-tex="\(L\subset K\)">\(L\subset K\)</span>, <span class="math" data-tex="\(I\subset H\)">\(I\subset H\)</span>, and <span class="math" data-tex="\(xH\subset L\)">\(xH\subset L\)</span>. With <span class="math" data-tex="\(H=K\)">\(H=K\)</span>, any line of <span class="math" data-tex="\(K\)">\(K\)</span> works, a projective line. With <span class="math" data-tex="\(H\ne K\)">\(H\ne K\)</span>, its image is <span class="math" data-tex="\(I\)">\(I\)</span>, forcing <span class="math" data-tex="\(L=I\)">\(L=I\)</span>; the planes through <span class="math" data-tex="\(I\)">\(I\)</span> form another projective line, including <span class="math" data-tex="\(K\)">\(K\)</span>. Thus the two families meet at exactly <span class="math" data-tex="\((I,K)\)">\((I,K)\)</span>. In the normalization sequence (1.6) the degree-zero map is <span class="math" data-tex="\((u,v)\mapsto u-v\)">\((u,v)\mapsto u-v\)</span>, which is onto. Its kernel is the diagonal line, and there is no degree-one cohomology on either component. It follows that <span class="math" data-tex="\(H^0=\Lambda\)">\(H^0=\Lambda\)</span>, <span class="math" data-tex="\(H^1=0\)">\(H^1=0\)</span>, and <span class="math" data-tex="\(H^2=\Lambda(-1)^2\)">\(H^2=\Lambda(-1)^2\)</span>, with no higher groups.</p>
+<p>The centralizer computation (7.3) gives a connected group and an orbit of dimension four. Thus its rank-two top local system is constant. The other relevant orbits have top multiplicity ranks one and one; all three obey <span class="math" data-tex="\(s+2h=6\)">\(s+2h=6\)</span>. The restriction endomorphism theorem and semisimplicity attach distinct irreducible <span class="math" data-tex="\(S_3\)">\(S_3\)</span>-modules to these three supports. The regular orbit has the trivial label, so the middle rank-two multiplicity must be <span class="math" data-tex="\(V_{\rm std}\)">\(V_{\rm std}\)</span>, and the zero-orbit label is sign. Hence the requested top cohomology is <span class="math" data-tex="\(V_{\rm std}(-1)\)">\(V_{\rm std}(-1)\)</span>.</p>
+<p>The permutation character on three coordinates counts fixed coordinates and is <span class="math" data-tex="\(3,1,0\)">\(3,1,0\)</span> on the three conjugacy classes. Removing its constant line gives <span class="math" data-tex="\(2,0,-1\)">\(2,0,-1\)</span>. On the root-space basis <span class="math" data-tex="\(\alpha_1=e_1-e_2,\alpha_2=e_2-e_3\)">\(\alpha_1=e_1-e_2,\alpha_2=e_2-e_3\)</span>, the adjacent transpositions are
+<span class="math math-display" data-tex="\[
+s_1=\begin{pmatrix}-1&amp;1\\0&amp;1\end{pmatrix},
+\qquad s_2=\begin{pmatrix}1&amp;0\\1&amp;-1\end{pmatrix}.
+\]">\[
+s_1=\begin{pmatrix}-1&amp;1\\0&amp;1\end{pmatrix},
+\qquad s_2=\begin{pmatrix}1&amp;0\\1&amp;-1\end{pmatrix}.
+\]</span>
+Their squares are the identity, and <span class="math" data-tex="\(s_1s_2=\begin{pmatrix}0&amp;-1\\1&amp;-1\end{pmatrix}\)">\(s_1s_2=\begin{pmatrix}0&amp;-1\\1&amp;-1\end{pmatrix}\)</span> has characteristic polynomial <span class="math" data-tex="\(t^2+t+1\)">\(t^2+t+1\)</span> and cube the identity. Its trace is <span class="math" data-tex="\(-1\)">\(-1\)</span>; each transposition has trace zero. This specifies the representation, with a chosen algebraic basis rather than a claimed permutation basis of the two curve components.</p>
+<h2 id="exact-prerequisites-still-required"><span id="what-this-lesson-does-not-prove"></span>Exact prerequisites still required</h2>
+<p>The general group arguments use the Bruhat and root-intersection geometry, regular semisimple Cartan isomorphisms, adjoint-quotient hypotheses, and regular nilpotent uniqueness specified in §2. The root and normalizer prerequisites include <a href="../representations-of-compact-groups/reader/courses/representations-of-compact-groups/roots-and-the-weyl-group-of-a-compact-lie-group.html">Roots and the Weyl group of a compact Lie group</a>. The classical faithfulness proof also requires finite semialgebraic triangulation of the free Weyl quotient. These are explicit inputs, not consequences of counting the dimensions of the two fibre products.</p>
+<p>The degree-zero restriction argument uses smooth orientation, constructible duality, supported pullback and its adjunction compatibility, localization, and the integral top-component bounds. Its arithmetic form requires the corresponding finite and normalized adic operations. The integral costalk bound in §2 supplies a specific step needed for the coefficient argument, without settling this entire foundation. The characteristic-zero correspondence additionally uses the geometric semisimplicity of Lessons 7–9 and their own prerequisites.</p>
+<p>Sections 4–6 compute the particular Fourier exchanges, arithmetic inversion, flag comparison and sign equality relative to these operations and the exact comparison providers identified in §6. The classical conic equivalence and its full perversity theorem remain separate SH-02 obligations. The projective GAGA, finite-cover, integral-group and smooth-specialization providers still require their own stated foundational proofs to be checked. The proper flag's coefficient limit does not provide general adic functors.</p>
+<p>The assigned broader generalized and modular Springer correspondences remain to be proved in the expanded programme. The modular obstruction and the coefficient-compatible equality of the two actions here are parts of that subject, not substitutes for those correspondences. No arbitrary restriction functor has been asserted to preserve perversity, simplicity or semisimplicity.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>D. Nadler, <a href="https://arxiv.org/abs/0806.4566"><em>Springer theory via the Hitchin fibration</em></a>, §4.1, free author manuscript. With the normalizations used here, proper base change gives <span class="math" data-tex="\(i^*\mathsf S_{\mathfrak g}[-r]=\mathsf S_{\mathcal N}\)">\(i^*\mathsf S_{\mathfrak g}[-r]=\mathsf S_{\mathcal N}\)</span>. A nondegenerate invariant form must be specified for the Fourier identification.</li>
+<li>D. Juteau, <a href="https://arxiv.org/abs/1410.1471"><em>Modular Springer correspondence, decomposition matrices and basic sets</em></a>, version 1 (2014), free author manuscript, especially §§4.1–4.2 for the Lie hypotheses, restriction normalization and Fourier formulas.</li>
+<li>S. Riche, <a href="https://riche.perso.math.cnrs.fr/springer-restriction-final.pdf"><em>Borel–Moore homology and the Springer correspondence by restriction</em></a>, freely available notes (2013). The degree-zero supported-restriction proof here uses transverse Cartan restriction and top component classes; it does not claim the full equivariant graded theorem of these notes.</li>
+<li>P. N. Achar, A. Henderson, D. Juteau and S. Riche, <a href="https://arxiv.org/abs/1304.2642v2"><em>Weyl group actions on the Springer sheaf</em></a>, version 2 (2013), free author manuscript. The sign comparison here tracks the ordinary and compact flag actions, their trace identifications and coefficient passage.</li>
+<li>M. A. A. de Cataldo and L. Migliorini, <a href="https://arxiv.org/abs/0712.0349"><em>The decomposition theorem, perverse sheaves and the topology of algebraic maps</em></a>, free author manuscript, §4.2.2. The nilpotent restriction requires the rank shift in (3.1).</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="semismall-maps-and-small-resolutions.html">← Semismall maps and small resolutions</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="equivariant-perverse-sheaves-and-perverse-sheaves-on-stacks.html">Equivariant perverse sheaves and perverse sheaves on stacks →</a></span></nav>
+<p class="small source-link"><a href="src/springer-theory.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-PERV">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>From symbol estimates to operators on every Sobolev scale</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="from-symbol-estimates-to-operators-on-every-sobolev-scale">From symbol estimates to operators on every Sobolev scale</h1>
+<p><strong>AN-03 · Unit AN03-U010 · Independent English AI draft, not admitted.</strong></p>
+<p>Frequency differentiation improves a symbol, while differentiation in the base variable may worsen it. The balance between those two effects controls an expansion. Boundedness requires a different argument: a decomposition into frequency bands continues to work when the two effects exactly balance. We develop these mechanisms separately, then combine them to construct inverses and act on Sobolev and Besov spaces.</p>
+<p>We use the Fourier conventions of AN03-DEP-001 and AN03-GAU-001: the forward kernel is <span class="math" data-tex="\(e^{-ix\cdot\xi}\)">\(e^{-ix\cdot\xi}\)</span>, inverse transformation has factor <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>, and <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. Fourier inversion and Plancherel, including their extension to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, are explicit prerequisites. The additional entry contracts are completeness of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, density of Schwartz functions in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, the usual integration and dominated-convergence theorems for Lebesgue measure, Taylor's formula and the multivariable product rule. Distributional Fourier transformation, invertible linear pullback on tempered distributions, and the tempered Schwartz kernel theorem are the same explicit contracts as in AN03-WP-004. In particular the kernel theorem means that every continuous linear map <span class="math" data-tex="\(\mathcal S(\mathbb R^n)\to\mathcal S&#x27;(\mathbb R^n)\)">\(\mathcal S(\mathbb R^n)\to\mathcal S&#x27;(\mathbb R^n)\)</span> has exactly one kernel in <span class="math" data-tex="\(\mathcal S&#x27;(\mathbb R^{2n})\)">\(\mathcal S&#x27;(\mathbb R^{2n})\)</span>, and conversely. Its foundational proof is not repeated or claimed here.</p>
+<p>The quantitative quadratic-multiplier theorem AN03-GAU-007–008 and the classical metric verification AN03-WP-008 are proved earlier in this course. We use those results with specified metrics below. All statements are for a fixed finite dimension. Scalar symbols may be replaced by matrices between fixed finite-dimensional complex Hermitian spaces: norms replace absolute values, products keep their displayed order, and adjoints are conjugate transposes. The inverse theorem uses square matrices and a lower bound for their smallest singular value. No infinite-dimensional operator-valued extension is implicit.</p>
+<h2 id="AN03-EUC-001"><span id="an03-euc-001"></span><span id="an03-euc-001-the-symbol-topology-and-the-order-budget"></span>AN03-EUC-001 — The symbol topology and the order budget</h2>
+<p>Fix
+<span class="math math-display" data-tex="\[
+0&lt;\rho\leq1,\qquad 0\leq\delta&lt;1,\qquad m\in\mathbb R,
+\qquad \langle\xi\rangle=(1+|\xi|^2)^{1/2}.
+\tag{E1}
+\]">\[
+0&lt;\rho\leq1,\qquad 0\leq\delta&lt;1,\qquad m\in\mathbb R,
+\qquad \langle\xi\rangle=(1+|\xi|^2)^{1/2}.
+\tag{E1}
+\]</span>
+The space <span class="math" data-tex="\(S^m_{\rho,\delta}\)">\(S^m_{\rho,\delta}\)</span> consists of smooth functions on <span class="math" data-tex="\(\mathbb R_x^n\times\mathbb R_\xi^n\)">\(\mathbb R_x^n\times\mathbb R_\xi^n\)</span> for which every seminorm
+<span class="math math-display" data-tex="\[
+p_{m,L}(a)=\max_{|\alpha|+|\beta|\leq L}
+\sup_{x,\xi}\langle\xi\rangle^{-m+\rho|\alpha|-\delta|\beta|}
+\|\partial_\xi^\alpha\partial_x^\beta a(x,\xi)\|
+\tag{E2}
+\]">\[
+p_{m,L}(a)=\max_{|\alpha|+|\beta|\leq L}
+\sup_{x,\xi}\langle\xi\rangle^{-m+\rho|\alpha|-\delta|\beta|}
+\|\partial_\xi^\alpha\partial_x^\beta a(x,\xi)\|
+\tag{E2}
+\]</span>
+is finite. Bounds hold for all base points with the same constants. Estimates only on compact sets in <span class="math" data-tex="\(x\)">\(x\)</span> define a different, local topology. We write <span class="math" data-tex="\(S^m=S^m_{1,0}\)">\(S^m=S^m_{1,0}\)</span>, <span class="math" data-tex="\(S^{-\infty}=\bigcap_m S^m_{\rho,\delta}\)">\(S^{-\infty}=\bigcap_m S^m_{\rho,\delta}\)</span>, and <span class="math" data-tex="\(S^\infty_{\rho,\delta}=\bigcup_mS^m_{\rho,\delta}\)">\(S^\infty_{\rho,\delta}=\bigcup_mS^m_{\rho,\delta}\)</span>. The intersection is independent of the parameters in (E1): it consists precisely of functions all of whose derivatives decrease faster than every power of <span class="math" data-tex="\(\langle\xi\rangle\)">\(\langle\xi\rangle\)</span>, uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>These are Fréchet spaces. Indeed, a Cauchy sequence in all seminorms has uniformly Cauchy derivatives on every compact set. Successive integration along coordinate segments identifies the limits as derivatives of a smooth function. Passing to the limit in each weighted uniform bound proves convergence in that seminorm and completeness. The seminorm family is countable and separates points.</p>
+<p>Differentiation is continuous with its exact order change,
+<span class="math math-display" data-tex="\[
+\partial_\xi^\alpha\partial_x^\beta:
+S^m_{\rho,\delta}\longrightarrow
+S^{m-\rho|\alpha|+\delta|\beta|}_{\rho,\delta}.
+\tag{E3}
+\]">\[
+\partial_\xi^\alpha\partial_x^\beta:
+S^m_{\rho,\delta}\longrightarrow
+S^{m-\rho|\alpha|+\delta|\beta|}_{\rho,\delta}.
+\tag{E3}
+\]</span>
+Multiplication is continuous bilinear from orders <span class="math" data-tex="\(m,m&#x27;\)">\(m,m&#x27;\)</span> to order <span class="math" data-tex="\(m+m&#x27;\)">\(m+m&#x27;\)</span>. To see the finite-seminorm assertion, expand a derivative of <span class="math" data-tex="\(ab\)">\(ab\)</span>: each term is
+<span class="math" data-tex="\(\binom\alpha\gamma\binom\beta\nu
+(\partial_\xi^\gamma\partial_x^\nu a)
+(\partial_\xi^{\alpha-\gamma}\partial_x^{\beta-\nu}b)\)">\(\binom\alpha\gamma\binom\beta\nu
+(\partial_\xi^\gamma\partial_x^\nu a)
+(\partial_\xi^{\alpha-\gamma}\partial_x^{\beta-\nu}b)\)</span>.
+The powers contributed by the two factors add to
+<span class="math" data-tex="\(m+m&#x27;-\rho|\alpha|+\delta|\beta|\)">\(m+m&#x27;-\rho|\alpha|+\delta|\beta|\)</span>. Summing the finitely many coefficients gives
+<span class="math" data-tex="\(p_{m+m&#x27;,L}(ab)\leq C_Lp_{m,L}(a)p_{m&#x27;,L}(b)\)">\(p_{m+m&#x27;,L}(ab)\leq C_Lp_{m,L}(a)p_{m&#x27;,L}(b)\)</span>.
+This calculation also explains why exchanging two matrix factors is not allowed.</p>
+<p>We will need one elementary stability property. If <span class="math" data-tex="\(a_1,\ldots,a_k\in S^0_{\rho,\delta}\)">\(a_1,\ldots,a_k\in S^0_{\rho,\delta}\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> is a smooth real-variable function on <span class="math" data-tex="\(\mathbb C^k\)">\(\mathbb C^k\)</span>, then <span class="math" data-tex="\(F(a_1,\ldots,a_k)\in S^0_{\rho,\delta}\)">\(F(a_1,\ldots,a_k)\in S^0_{\rho,\delta}\)</span>. Their ranges have compact closure in a bounded subset of <span class="math" data-tex="\(\mathbb C^k\)">\(\mathbb C^k\)</span>, so every derivative of <span class="math" data-tex="\(F\)">\(F\)</span> needed at a given stage is bounded there. An iterated chain-rule term is a derivative of <span class="math" data-tex="\(F\)">\(F\)</span> times a product of positive-order derivatives of the <span class="math" data-tex="\(a_j\)">\(a_j\)</span>; their total frequency and base derivative counts are <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span> and <span class="math" data-tex="\(|\beta|\)">\(|\beta|\)</span>. Equation (E2) follows. The same proof works when <span class="math" data-tex="\(F\)">\(F\)</span> is defined on an open neighborhood of that compact closure. In particular inversion of a matrix-valued order-zero symbol whose inverse is uniformly bounded preserves order zero: differentiate <span class="math" data-tex="\(a^{-1}a=I\)">\(a^{-1}a=I\)</span>, obtaining <span class="math" data-tex="\(\partial a^{-1}=-a^{-1}(\partial a)a^{-1}\)">\(\partial a^{-1}=-a^{-1}(\partial a)a^{-1}\)</span>, and iterate with the original factor order.</p>
+<h2 id="AN03-EUC-002"><span id="an03-euc-002"></span><span id="an03-euc-002-completing-formal-expansions-without-losing-support"></span>AN03-EUC-002 — Completing formal expansions without losing support</h2>
+<p><strong>Frequency rescaling.</strong> If <span class="math" data-tex="\(a\in S^0\)">\(a\in S^0\)</span>, then <span class="math" data-tex="\(a_\varepsilon(x,\xi)=a(x,\varepsilon\xi)\)">\(a_\varepsilon(x,\xi)=a(x,\varepsilon\xi)\)</span>, <span class="math" data-tex="\(0\leq\varepsilon\leq1\)">\(0\leq\varepsilon\leq1\)</span>, is a bounded family in <span class="math" data-tex="\(S^0\)">\(S^0\)</span>, and
+<span class="math math-display" data-tex="\[
+a_\varepsilon\longrightarrow a(x,0)\quad\hbox{in }S^t
+\quad(t&gt;0).
+\tag{E4}
+\]">\[
+a_\varepsilon\longrightarrow a(x,0)\quad\hbox{in }S^t
+\quad(t&gt;0).
+\tag{E4}
+\]</span>
+For <span class="math" data-tex="\(0&lt;t\leq1\)">\(0&lt;t\leq1\)</span>, each fixed <span class="math" data-tex="\(S^t\)">\(S^t\)</span> seminorm of the difference is at most <span class="math" data-tex="\(C\varepsilon^t\)">\(C\varepsilon^t\)</span>, with a finite number of seminorms of <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>. For derivatives with <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, boundedness and the mean-value formula give a bound <span class="math" data-tex="\(C\min(1,\varepsilon|\xi|)\leq C(\varepsilon|\xi|)^t\)">\(C\min(1,\varepsilon|\xi|)\leq C(\varepsilon|\xi|)^t\)</span>. For <span class="math" data-tex="\(q=|\alpha|\geq1\)">\(q=|\alpha|\geq1\)</span>, derivatives of the limit vanish and
+<span class="math math-display" data-tex="\[
+\varepsilon^q\langle\xi\rangle^{q-t}
+\langle\varepsilon\xi\rangle^{-q}\leq\varepsilon^t,
+\tag{E5}
+\]">\[
+\varepsilon^q\langle\xi\rangle^{q-t}
+\langle\varepsilon\xi\rangle^{-q}\leq\varepsilon^t,
+\tag{E5}
+\]</span>
+because <span class="math" data-tex="\(\varepsilon\langle\xi\rangle\leq\langle\varepsilon\xi\rangle\)">\(\varepsilon\langle\xi\rangle\leq\langle\varepsilon\xi\rangle\)</span> and <span class="math" data-tex="\(q\geq t\)">\(q\geq t\)</span>. The estimates also prove boundedness at order zero. Values <span class="math" data-tex="\(t&gt;1\)">\(t&gt;1\)</span> follow by the inclusion <span class="math" data-tex="\(S^1\subset S^t\)">\(S^1\subset S^t\)</span>. Convergence in <span class="math" data-tex="\(S^0\)">\(S^0\)</span> need not hold: <span class="math" data-tex="\(a(\xi)=\xi_1/\langle\xi\rangle\)">\(a(\xi)=\xi_1/\langle\xi\rangle\)</span> has <span class="math" data-tex="\(a(x,0)=0\)">\(a(x,0)=0\)</span> and <span class="math" data-tex="\(\sup_\xi|a(\varepsilon\xi)|=1\)">\(\sup_\xi|a(\varepsilon\xi)|=1\)</span> for every positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p><strong>Summation theorem.</strong> Let <span class="math" data-tex="\(a_j\in S^{m_j}_{\rho,\delta}\)">\(a_j\in S^{m_j}_{\rho,\delta}\)</span>, <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, with <span class="math" data-tex="\(m_j\to-\infty\)">\(m_j\to-\infty\)</span>, without assuming monotonicity. Put <span class="math" data-tex="\(M_k=\max_{j\geq k}m_j\)">\(M_k=\max_{j\geq k}m_j\)</span>. There exists <span class="math" data-tex="\(a\in S^{M_0}_{\rho,\delta}\)">\(a\in S^{M_0}_{\rho,\delta}\)</span> such that
+<span class="math math-display" data-tex="\[
+\operatorname{supp}a\subset\bigcup_j\operatorname{supp}a_j,
+\qquad a-\sum_{j&lt;k}a_j\in S^{M_k}_{\rho,\delta}\quad(k\geq0).
+\tag{E6}
+\]">\[
+\operatorname{supp}a\subset\bigcup_j\operatorname{supp}a_j,
+\qquad a-\sum_{j&lt;k}a_j\in S^{M_k}_{\rho,\delta}\quad(k\geq0).
+\tag{E6}
+\]</span>
+Any two such sums differ by <span class="math" data-tex="\(S^{-\infty}\)">\(S^{-\infty}\)</span>. Permuting the terms does not change their sum modulo that space.</p>
+<p><strong>Proof.</strong> Choose a smooth function <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near zero and with compact support. For each <span class="math" data-tex="\(j\)">\(j\)</span> choose <span class="math" data-tex="\(R_j\to\infty\)">\(R_j\to\infty\)</span>, strictly increasing if necessary, so that
+<span class="math math-display" data-tex="\[
+\|(1-\chi(\xi/R_j))a_j\|_{m_j+1,L}\leq2^{-j}
+\quad(0\leq L\leq j).
+\tag{E7}
+\]">\[
+\|(1-\chi(\xi/R_j))a_j\|_{m_j+1,L}\leq2^{-j}
+\quad(0\leq L\leq j).
+\tag{E7}
+\]</span>
+Here <span class="math" data-tex="\(\|\cdot\|_{m,L}\)">\(\|\cdot\|_{m,L}\)</span> means (E2). This choice is possible: on the support of the high-frequency cutoff, <span class="math" data-tex="\(\langle\xi\rangle^{-1}\to0\)">\(\langle\xi\rangle^{-1}\to0\)</span> uniformly as <span class="math" data-tex="\(R_j\to\infty\)">\(R_j\to\infty\)</span>. A frequency derivative of order <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> hitting the cutoff gives <span class="math" data-tex="\(R_j^{-|\gamma|}\)">\(R_j^{-|\gamma|}\)</span>, supported where <span class="math" data-tex="\(|\xi|\asymp R_j\)">\(|\xi|\asymp R_j\)</span>; since <span class="math" data-tex="\(\rho\leq1\)">\(\rho\leq1\)</span>, it is bounded by a constant times <span class="math" data-tex="\(\langle\xi\rangle^{-\rho|\gamma|}\)">\(\langle\xi\rangle^{-\rho|\gamma|}\)</span>. The remaining factors have their stipulated symbol bounds. For a fixed finite set of derivatives these estimates prove (E7).</p>
+<p>Let <span class="math" data-tex="\(A_j=(1-\chi(\xi/R_j))a_j\)">\(A_j=(1-\chi(\xi/R_j))a_j\)</span> and <span class="math" data-tex="\(a=\sum_jA_j\)">\(a=\sum_jA_j\)</span>. The sum is locally finite in frequency, hence smooth. For fixed <span class="math" data-tex="\(k,L\)">\(k,L\)</span>, choose <span class="math" data-tex="\(J\geq\max(k,L)\)">\(J\geq\max(k,L)\)</span> so large that <span class="math" data-tex="\(m_j+1\leq M_k\)">\(m_j+1\leq M_k\)</span> for all <span class="math" data-tex="\(j\geq J\)">\(j\geq J\)</span>. The tail <span class="math" data-tex="\(\sum_{j\geq J}A_j\)">\(\sum_{j\geq J}A_j\)</span> converges in the order-<span class="math" data-tex="\(M_k\)">\(M_k\)</span>, derivative-<span class="math" data-tex="\(L\)">\(L\)</span> seminorm by (E7). The remaining terms in
+<span class="math" data-tex="\(a-\sum_{j&lt;k}a_j\)">\(a-\sum_{j&lt;k}a_j\)</span> are finitely many symbols of order at most <span class="math" data-tex="\(M_k\)">\(M_k\)</span>, together with finitely many <span class="math" data-tex="\(-\chi(\xi/R_j)a_j\)">\(-\chi(\xi/R_j)a_j\)</span>. The latter are in <span class="math" data-tex="\(S^{-\infty}\)">\(S^{-\infty}\)</span>, since their frequency support is bounded and all base derivatives are uniformly bounded there. This proves every differentiated estimate in (E6).</p>
+<p>Support is also preserved at points outside the union. Near such a point only finitely many <span class="math" data-tex="\(A_j\)">\(A_j\)</span> can be nonzero, and each of those vanishes in some neighborhood of the point; intersect those neighborhoods. Uniqueness follows by taking <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>. For a permutation and a specified finite initial segment of it, let <span class="math" data-tex="\(M\)">\(M\)</span> be the largest order among the omitted terms. Choose an original initial segment containing the specified terms and all terms of order greater than <span class="math" data-tex="\(M\)">\(M\)</span>. Subtracting its expansion expresses the new remainder as finitely many symbols of order at most <span class="math" data-tex="\(M\)">\(M\)</span>, plus a remainder of that order. This proves the permuted version of (E6). ∎</p>
+<p><strong>Recognition from values.</strong> Suppose <span class="math" data-tex="\(a\)">\(a\)</span> is smooth, every one of its derivatives has some polynomial bound in <span class="math" data-tex="\(\langle\xi\rangle\)">\(\langle\xi\rangle\)</span>, uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>, and
+<span class="math math-display" data-tex="\[
+\left\|a-\sum_{j&lt;k}a_j\right\|\leq C_k\langle\xi\rangle^{\mu_k},
+\qquad \mu_k\to-\infty.
+\tag{E8}
+\]">\[
+\left\|a-\sum_{j&lt;k}a_j\right\|\leq C_k\langle\xi\rangle^{\mu_k},
+\qquad \mu_k\to-\infty.
+\tag{E8}
+\]</span>
+Then <span class="math" data-tex="\(a\)">\(a\)</span> has the full symbol expansion (E6). In particular no differentiated remainder assumptions are needed in (E8).</p>
+<p>To prove this, subtract a sum <span class="math" data-tex="\(a_0\)">\(a_0\)</span> constructed above. The difference <span class="math" data-tex="\(f=a-a_0\)">\(f=a-a_0\)</span> decreases faster than every frequency power: for a prescribed power choose <span class="math" data-tex="\(k\)">\(k\)</span> for which both <span class="math" data-tex="\(\mu_k\)">\(\mu_k\)</span> and <span class="math" data-tex="\(M_k\)">\(M_k\)</span> are sufficiently negative. Every derivative of <span class="math" data-tex="\(f\)">\(f\)</span> still has a polynomial bound. If <span class="math" data-tex="\(\partial_j^2 f\)">\(\partial_j^2 f\)</span> has growth exponent <span class="math" data-tex="\(q\)">\(q\)</span>, the one-dimensional Taylor formula in either a base or a frequency coordinate gives, for <span class="math" data-tex="\(0&lt;h\leq1\)">\(0&lt;h\leq1\)</span>,
+<span class="math math-display" data-tex="\[
+|\partial_j f(x,\xi)|
+\leq h^{-1}|f((x,\xi)+he_j)-f(x,\xi)|
++C h\langle\xi\rangle^q.
+\tag{E9}
+\]">\[
+|\partial_j f(x,\xi)|
+\leq h^{-1}|f((x,\xi)+he_j)-f(x,\xi)|
++C h\langle\xi\rangle^q.
+\tag{E9}
+\]</span>
+The weight at the shifted point is comparable to the original weight. Given an arbitrary desired decay power <span class="math" data-tex="\(N\)">\(N\)</span>, take <span class="math" data-tex="\(h=\langle\xi\rangle^{-L}\)">\(h=\langle\xi\rangle^{-L}\)</span> with <span class="math" data-tex="\(L&gt;q+N\)">\(L&gt;q+N\)</span>, then use the already known decay of <span class="math" data-tex="\(f\)">\(f\)</span> of degree greater than <span class="math" data-tex="\(L+N\)">\(L+N\)</span>. Both terms in (E9) are <span class="math" data-tex="\(O(\langle\xi\rangle^{-N})\)">\(O(\langle\xi\rangle^{-N})\)</span>. Thus every first derivative decreases rapidly. Reapply the same argument to each derivative already treated; the necessary second derivative has a polynomial bound by hypothesis. Induction proves rapid decrease of every derivative, so <span class="math" data-tex="\(f\in S^{-\infty}\)">\(f\in S^{-\infty}\)</span>. This proof and the summation construction work throughout (E1), including <span class="math" data-tex="\(\delta&gt;\rho\)">\(\delta&gt;\rho\)</span>.</p>
+<p><strong>Complex homogeneous expansions.</strong> For <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span> and <span class="math" data-tex="\(h=1/q\)">\(h=1/q\)</span>, with <span class="math" data-tex="\(q\)">\(q\)</span> a positive integer, a polyhomogeneous symbol of degree <span class="math" data-tex="\(z\)">\(z\)</span> and step <span class="math" data-tex="\(h\)">\(h\)</span> is a symbol <span class="math" data-tex="\(a\in S^{\operatorname{Re}z}\)">\(a\in S^{\operatorname{Re}z}\)</span> satisfying <span class="math" data-tex="\(a\sim\sum_{j\geq0}a_j\)">\(a\sim\sum_{j\geq0}a_j\)</span> in the sense of (E6), where <span class="math" data-tex="\(a_j\)">\(a_j\)</span> is homogeneous of degree <span class="math" data-tex="\(z-jh\)">\(z-jh\)</span> outside the unit frequency ball. The convention is <span class="math" data-tex="\(t^z=e^{z\log t}\)">\(t^z=e^{z\log t}\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Smooth angular coefficients whose base and angular derivatives are uniformly bounded have the required symbol estimates: polar differentiation lowers the radial degree by one for each frequency derivative. Multiplying each homogeneous term by a fixed cutoff near zero makes it globally smooth; such choices differ in <span class="math" data-tex="\(S^{-\infty}\)">\(S^{-\infty}\)</span>. The summation theorem then constructs the symbol. Without the uniform angular/base bounds, a homogeneous formula alone would give only a local-in-base symbol. Integer frequency differentiations change the degree by an integer, which is an integral multiple of the stipulated step <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<h2 id="AN03-EUC-003"><span id="an03-euc-003"></span><span id="an03-euc-003-quantization-kernels-and-a-sign-check"></span>AN03-EUC-003 — Quantization, kernels, and a sign check</h2>
+<p>For every symbol in (E1), left quantization is
+<span class="math math-display" data-tex="\[
+\operatorname{Op}(a)u(x)=(2\pi)^{-n}
+\int e^{ix\cdot\xi}a(x,\xi)\widehat u(\xi)\,d\xi,
+\qquad u\in\mathcal S.
+\tag{E10}
+\]">\[
+\operatorname{Op}(a)u(x)=(2\pi)^{-n}
+\int e^{ix\cdot\xi}a(x,\xi)\widehat u(\xi)\,d\xi,
+\qquad u\in\mathcal S.
+\tag{E10}
+\]</span>
+This integral and all its differentiated versions converge absolutely. The map <span class="math" data-tex="\((a,u)\mapsto\operatorname{Op}(a)u\)">\((a,u)\mapsto\operatorname{Op}(a)u\)</span> is continuous bilinear from <span class="math" data-tex="\(S^m_{\rho,\delta}\times\mathcal S\)">\(S^m_{\rho,\delta}\times\mathcal S\)</span> into <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, throughout (E1). Indeed, output derivatives create finitely many powers of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and base derivatives of <span class="math" data-tex="\(a\)">\(a\)</span>. To estimate <span class="math" data-tex="\(x^\gamma\partial_x^\beta\operatorname{Op}(a)u\)">\(x^\gamma\partial_x^\beta\operatorname{Op}(a)u\)</span>, move <span class="math" data-tex="\(|\gamma|\)">\(|\gamma|\)</span> frequency derivatives off the exponential by integration by parts. Each resulting integrand is a derivative of <span class="math" data-tex="\(a\)">\(a\)</span>, a polynomial, and a derivative of <span class="math" data-tex="\(\widehat u\)">\(\widehat u\)</span>. Its absolute integral is bounded by one sufficiently large Schwartz seminorm of <span class="math" data-tex="\(u\)">\(u\)</span> times finitely many seminorms (E2), after choosing the remaining weight less than <span class="math" data-tex="\(-n\)">\(-n\)</span>. Boundary terms vanish by the same rapid decrease. This gives every Schwartz seminorm and the asserted joint continuity.</p>
+<p>Differentiation and one integration by parts give
+<span class="math math-display" data-tex="\[
+[\operatorname{Op}(a),D_j]=i\operatorname{Op}(\partial_{x_j}a),
+\qquad
+[\operatorname{Op}(a),x_j]=-i\operatorname{Op}(\partial_{\xi_j}a).
+\tag{E11}
+\]">\[
+[\operatorname{Op}(a),D_j]=i\operatorname{Op}(\partial_{x_j}a),
+\qquad
+[\operatorname{Op}(a),x_j]=-i\operatorname{Op}(\partial_{\xi_j}a).
+\tag{E11}
+\]</span>
+If <span class="math" data-tex="\(a(x,\xi)=\sum_\alpha a_\alpha(x)\xi^\alpha\)">\(a(x,\xi)=\sum_\alpha a_\alpha(x)\xi^\alpha\)</span>, then
+<span class="math" data-tex="\(\operatorname{Op}(a)=\sum_\alpha a_\alpha(x)D^\alpha\)">\(\operatorname{Op}(a)=\sum_\alpha a_\alpha(x)D^\alpha\)</span>: coefficients stand on the left. Such a polynomial belongs to a global symbol class only when its coefficients have the relevant uniform derivative bounds.</p>
+<p>There is also an exact definition for every <span class="math" data-tex="\(a\in\mathcal S&#x27;(\mathbb R^{2n})\)">\(a\in\mathcal S&#x27;(\mathbb R^{2n})\)</span>. Take the partial inverse Fourier transform in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, call its second variable <span class="math" data-tex="\(z\)">\(z\)</span>, and use the invertible linear substitution <span class="math" data-tex="\(z=x-y\)">\(z=x-y\)</span>. The result is a tempered kernel <span class="math" data-tex="\(K_a\)">\(K_a\)</span>. Conversely,
+<span class="math math-display" data-tex="\[
+K_a(x,y)=(2\pi)^{-n}\int e^{i(x-y)\cdot\xi}a(x,\xi)\,d\xi,
+\quad
+a(x,\xi)=\int e^{-iz\cdot\xi}K_a(x,x-z)\,dz
+\tag{E12}
+\]">\[
+K_a(x,y)=(2\pi)^{-n}\int e^{i(x-y)\cdot\xi}a(x,\xi)\,d\xi,
+\quad
+a(x,\xi)=\int e^{-iz\cdot\xi}K_a(x,x-z)\,dz
+\tag{E12}
+\]</span>
+are inverse operations on tempered distributions. The displayed integrals mean Fourier transforms there, not potentially divergent ordinary integrals. Each step is a continuous linear isomorphism, so the symbol–kernel correspondence is bijective and continuous in both directions. Combined with the explicit tempered kernel theorem contract, it identifies arbitrary continuous <span class="math" data-tex="\(\mathcal S\to\mathcal S&#x27;\)">\(\mathcal S\to\mathcal S&#x27;\)</span> maps with tempered symbol-distributions. For smooth symbols (E12) agrees with (E10), by testing against two Schwartz functions and Fourier inversion.</p>
+<p>Use the sesquilinear pairing <span class="math" data-tex="\((u,v)=\int u\overline v\)">\((u,v)=\int u\overline v\)</span>, linear in <span class="math" data-tex="\(u\)">\(u\)</span>. Transposing and conjugating the kernel sends <span class="math" data-tex="\(K_a(x,y)\)">\(K_a(x,y)\)</span> to <span class="math" data-tex="\(K_a(y,x)^*\)">\(K_a(y,x)^*\)</span>. Its left symbol is
+<span class="math math-display" data-tex="\[
+a^\dagger=Q_1(a^*),\qquad
+Q_t=\exp\bigl(it\langle D_x,D_\xi\rangle\bigr).
+\tag{E13}
+\]">\[
+a^\dagger=Q_1(a^*),\qquad
+Q_t=\exp\bigl(it\langle D_x,D_\xi\rangle\bigr).
+\tag{E13}
+\]</span>
+Here <span class="math" data-tex="\(Q_t\)">\(Q_t\)</span> is the Fourier multiplier <span class="math" data-tex="\(e^{itp\cdot q}\)">\(e^{itp\cdot q}\)</span> in the variables dual to <span class="math" data-tex="\((x,\xi)\)">\((x,\xi)\)</span>. It preserves <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> and <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> because all derivatives of that multiplier grow at most polynomially. To check the sign directly, apply (E12) first to <span class="math" data-tex="\(a(x,\xi)=e^{i(p\cdot x+q\cdot\xi)}\)">\(a(x,\xi)=e^{i(p\cdot x+q\cdot\xi)}\)</span>. Its operator is multiplication by <span class="math" data-tex="\(e^{ip\cdot x}\)">\(e^{ip\cdot x}\)</span> followed by translation <span class="math" data-tex="\(u(x)\mapsto u(x+q)\)">\(u(x)\mapsto u(x+q)\)</span>. Its adjoint is therefore
+<span class="math" data-tex="\(v(x)\mapsto e^{-ip\cdot(x-q)}v(x-q)\)">\(v(x)\mapsto e^{-ip\cdot(x-q)}v(x-q)\)</span>, whose symbol is
+<span class="math" data-tex="\(e^{ip\cdot q}e^{-i(p\cdot x+q\cdot\xi)}\)">\(e^{ip\cdot q}e^{-i(p\cdot x+q\cdot\xi)}\)</span>. This is exactly (E13). Integrating this identity against Schwartz Fourier transforms proves it for Schwartz symbols, and continuity of the kernel and Fourier operations proves it for all tempered symbols. Thus
+<span class="math" data-tex="\((\operatorname{Op}(a)u,v)=(u,\operatorname{Op}(a^\dagger)v)\)">\((\operatorname{Op}(a)u,v)=(u,\operatorname{Op}(a^\dagger)v)\)</span>
+whenever <span class="math" data-tex="\(u,v\in\mathcal S\)">\(u,v\in\mathcal S\)</span>, with distributional pairing when needed.</p>
+<h2 id="AN03-EUC-004"><span id="an03-euc-004"></span><span id="an03-euc-004-a-gaussian-reduction-with-explicit-parameters"></span>AN03-EUC-004 — A Gaussian reduction with explicit parameters</h2>
+<p>Assume now <span class="math" data-tex="\(\delta\leq\rho\)">\(\delta\leq\rho\)</span>. Set <span class="math" data-tex="\(\kappa=\rho-\delta\)">\(\kappa=\rho-\delta\)</span>. AN03-WP-008 applies to
+<span class="math math-display" data-tex="\[
+g_{(x,\xi)}(y,\eta)=\langle\xi\rangle^{2\delta}|y|^2
++\langle\xi\rangle^{-2\rho}|\eta|^2,
+\qquad m_a=\langle\xi\rangle^m.
+\tag{E14}
+\]">\[
+g_{(x,\xi)}(y,\eta)=\langle\xi\rangle^{2\delta}|y|^2
++\langle\xi\rangle^{-2\rho}|\eta|^2,
+\qquad m_a=\langle\xi\rangle^m.
+\tag{E14}
+\]</span>
+Its slow variation and temperateness hold uniformly, and its symplectic parameter is <span class="math" data-tex="\(\langle\xi\rangle^{-\kappa}\)">\(\langle\xi\rangle^{-\kappa}\)</span>. Consequently, for every fixed real <span class="math" data-tex="\(t\)">\(t\)</span>,
+<span class="math math-display" data-tex="\[
+Q_t:S^m_{\rho,\delta}\longrightarrow S^m_{\rho,\delta},
+\quad
+Q_ta-\sum_{|\alpha|&lt;N}\frac{t^{|\alpha|}}{\alpha!}
+\partial_\xi^\alpha D_x^\alpha a
+\in S^{m-N\kappa}_{\rho,\delta}.
+\tag{E15}
+\]">\[
+Q_t:S^m_{\rho,\delta}\longrightarrow S^m_{\rho,\delta},
+\quad
+Q_ta-\sum_{|\alpha|&lt;N}\frac{t^{|\alpha|}}{\alpha!}
+\partial_\xi^\alpha D_x^\alpha a
+\in S^{m-N\kappa}_{\rho,\delta}.
+\tag{E15}
+\]</span>
+For each output seminorm only finitely many input seminorms are used. These maps preserve convergence in the local smooth topology on bounded source sets. The phase convention matters: for <span class="math" data-tex="\(A(p,q)=t p\cdot q\)">\(A(p,q)=t p\cdot q\)</span>, the symmetric representative is <span class="math" data-tex="\(t/2\)">\(t/2\)</span> times the swap map, so the Gauss parameter is <span class="math" data-tex="\(|t|\langle\xi\rangle^{-\kappa}/2\)">\(|t|\langle\xi\rangle^{-\kappa}/2\)</span>. A fixed rescaling of (E14) makes it at most one if necessary. This proves (E15) directly from AN03-GAU-008 with precisely the hypotheses checked in AN03-WP-008.</p>
+<p>For composition we need a parameter version that retains more information before restricting to a diagonal. Let
+<span class="math math-display" data-tex="\[
+c(x,\xi,y,\eta)=a(x,\eta)b(y,\xi),\qquad
+\mathcal B=\exp(i\langle D_y,D_\eta\rangle)c.
+\tag{E16}
+\]">\[
+c(x,\xi,y,\eta)=a(x,\eta)b(y,\xi),\qquad
+\mathcal B=\exp(i\langle D_y,D_\eta\rangle)c.
+\tag{E16}
+\]</span>
+At fixed <span class="math" data-tex="\((x,\xi)\)">\((x,\xi)\)</span>, let <span class="math" data-tex="\(s=\langle\xi\rangle\)">\(s=\langle\xi\rangle\)</span> and equip the <span class="math" data-tex="\((y,\eta)\)">\((y,\eta)\)</span> variables with
+<span class="math math-display" data-tex="\[
+G_{(y,\eta)}(v,w)=s^{2\delta}|v|^2+
+\langle\eta\rangle^{-2\rho}|w|^2.
+\tag{E17}
+\]">\[
+G_{(y,\eta)}(v,w)=s^{2\delta}|v|^2+
+\langle\eta\rangle^{-2\rho}|w|^2.
+\tag{E17}
+\]</span>
+The evaluation points needed for composition have <span class="math" data-tex="\(\eta=\xi\)">\(\eta=\xi\)</span>. At these points the Gauss parameter for the phase <span class="math" data-tex="\(p_y\cdot p_\eta\)">\(p_y\cdot p_\eta\)</span> is <span class="math" data-tex="\(s^{-\kappa}/2\)">\(s^{-\kappa}/2\)</span>. We verify the uniform global hypotheses for that evaluation instead of assuming uncertainty at every <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p>Write <span class="math" data-tex="\(r=\langle\eta\rangle\)">\(r=\langle\eta\rangle\)</span>, <span class="math" data-tex="\(d=|\eta-\xi|\)">\(d=|\eta-\xi|\)</span>. The phase-dual distance based at <span class="math" data-tex="\((y,\eta)\)">\((y,\eta)\)</span> includes <span class="math" data-tex="\(4s^{-2\delta}d^2\)">\(4s^{-2\delta}d^2\)</span>. Both ratios <span class="math" data-tex="\(r/s\)">\(r/s\)</span> and <span class="math" data-tex="\(s/r\)">\(s/r\)</span> are bounded by a fixed power of
+<span class="math" data-tex="\(1+s^{-2\delta}d^2\)">\(1+s^{-2\delta}d^2\)</span>, with constants depending only on <span class="math" data-tex="\(\delta&lt;1\)">\(\delta&lt;1\)</span>. If <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> are within a factor two this is immediate. If <span class="math" data-tex="\(r&gt;2s\)">\(r&gt;2s\)</span>, then <span class="math" data-tex="\(d&gt;r/2\)">\(d&gt;r/2\)</span> and
+<span class="math" data-tex="\(s^{-2\delta}d^2\geq (r/s)^2/4\)">\(s^{-2\delta}d^2\geq (r/s)^2/4\)</span>, since <span class="math" data-tex="\(s^{2-2\delta}\geq1\)">\(s^{2-2\delta}\geq1\)</span>.
+If <span class="math" data-tex="\(s&gt;2r\)">\(s&gt;2r\)</span>, then <span class="math" data-tex="\(d&gt;s/2\)">\(d&gt;s/2\)</span>, so the same expression is at least <span class="math" data-tex="\(s^{2(1-\delta)}/4\)">\(s^{2(1-\delta)}/4\)</span>; choosing a sufficiently large power bounds <span class="math" data-tex="\(s/r\leq s\)">\(s/r\leq s\)</span>. These inequalities control the ratio of the two frequency coefficients of (E17), every real power weight <span class="math" data-tex="\(r^q\)">\(r^q\)</span>, and their reciprocals. The base coefficient is constant. Slow variation follows from <span class="math" data-tex="\(\rho\leq1\)">\(\rho\leq1\)</span> and the Lipschitz inequality for <span class="math" data-tex="\(\langle\eta\rangle\)">\(\langle\eta\rangle\)</span>; the same comparison proves local continuity of <span class="math" data-tex="\(r^q\)">\(r^q\)</span>. Thus every condition of the observation-point form of AN03-GAU-007–008 holds, with constants independent of <span class="math" data-tex="\(x,\xi,y\)">\(x,\xi,y\)</span>.</p>
+<p>The tensor <span class="math" data-tex="\(c\)">\(c\)</span> has weight <span class="math" data-tex="\(r^{m_1}s^{m_2}\)">\(r^{m_1}s^{m_2}\)</span> in (E17): each <span class="math" data-tex="\(y\)">\(y\)</span>-derivative costs at most <span class="math" data-tex="\(s^\delta\)">\(s^\delta\)</span>, and each <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-derivative costs at most <span class="math" data-tex="\(r^{-\rho}\)">\(r^{-\rho}\)</span>. Applying the Gauss theorem and then restricting <span class="math" data-tex="\(y=x,\eta=\xi\)">\(y=x,\eta=\xi\)</span> gives a remainder of order <span class="math" data-tex="\(m_1+m_2-N\kappa\)">\(m_1+m_2-N\kappa\)</span>. To obtain every derivative estimate, differentiate (E16) first. Derivatives commute with its constant-coefficient multiplier. For example
+<span class="math" data-tex="\(\partial_\xi^\alpha\partial_x^\beta
+\partial_\eta^{\alpha&#x27;}\partial_y^{\beta&#x27;}c\)">\(\partial_\xi^\alpha\partial_x^\beta
+\partial_\eta^{\alpha&#x27;}\partial_y^{\beta&#x27;}c\)</span>
+has weight
+<span class="math" data-tex="\(r^{m_1-\rho|\alpha&#x27;|+\delta|\beta|}
+s^{m_2-\rho|\alpha|+\delta|\beta&#x27;|}\)">\(r^{m_1-\rho|\alpha&#x27;|+\delta|\beta|}
+s^{m_2-\rho|\alpha|+\delta|\beta&#x27;|}\)</span>.
+Apply the same theorem with those modified real exponents. Finally, differentiation of the diagonal restriction is the sum of the corresponding derivatives in the two sets of variables. Each term has the required total order in (E2). The product rule bounds every input seminorm by a finite sum of products of seminorms of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>For the classical case <span class="math" data-tex="\((\rho,\delta)=(1,0)\)">\((\rho,\delta)=(1,0)\)</span>, this argument holds at every <span class="math" data-tex="\((y,\eta)\)">\((y,\eta)\)</span>, not just <span class="math" data-tex="\(\eta=\xi\)">\(\eta=\xi\)</span>, because (E17) no longer depends on <span class="math" data-tex="\(s\)">\(s\)</span>. It gives the stronger, pre-diagonal estimate
+<span class="math math-display" data-tex="\[
+\begin{split}
+&amp;\left\|\partial_\xi^\alpha\partial_x^\beta
+\partial_\eta^{\alpha&#x27;}\partial_y^{\beta&#x27;}
+\left(\mathcal B-
+\sum_{|\gamma|&lt;N}\frac{\partial_\eta^\gamma a(x,\eta)
+D_y^\gamma b(y,\xi)}{\gamma!}\right)\right\|\\
+&amp;\hspace{12mm}\leq C
+\langle\eta\rangle^{m_1-N-|\alpha&#x27;|}
+\langle\xi\rangle^{m_2-|\alpha|}.
+\end{split}
+\tag{E18}
+\]">\[
+\begin{split}
+&amp;\left\|\partial_\xi^\alpha\partial_x^\beta
+\partial_\eta^{\alpha&#x27;}\partial_y^{\beta&#x27;}
+\left(\mathcal B-
+\sum_{|\gamma|&lt;N}\frac{\partial_\eta^\gamma a(x,\eta)
+D_y^\gamma b(y,\xi)}{\gamma!}\right)\right\|\\
+&amp;\hspace{12mm}\leq C
+\langle\eta\rangle^{m_1-N-|\alpha&#x27;|}
+\langle\xi\rangle^{m_2-|\alpha|}.
+\end{split}
+\tag{E18}
+\]</span>
+In particular the loss is attached to the transformed frequency variable before evaluation. The constants in (E18) also involve only finitely many source seminorms.</p>
+<p>All these Gauss limits agree with the distributional multipliers wherever both are defined. Multiply the symbols by cutoffs in both variables that tend to one. They stay in bounded symbol sets and converge locally smoothly; their polynomial growth gives convergence in <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>. The distributional multiplier is continuous there, while the Gauss estimate gives the same locally smooth limit on its evaluation set. This also justifies differentiating with respect to the fixed parameters in (E16): differentiated approximants have the estimates just proved, converge locally, and their limits are successive derivatives by the fundamental theorem of calculus along parameter segments.</p>
+<h2 id="AN03-EUC-005"><span id="an03-euc-005"></span><span id="an03-euc-005-adjoints-products-and-their-exact-domain"></span>AN03-EUC-005 — Adjoints, products, and their exact domain</h2>
+<p><strong>Theorem.</strong> For <span class="math" data-tex="\(\delta\leq\rho\)">\(\delta\leq\rho\)</span>, the adjoint symbol (E13) belongs to <span class="math" data-tex="\(S^m_{\rho,\delta}\)">\(S^m_{\rho,\delta}\)</span>, and left quantization extends continuously to <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> by transposition of its adjoint's Schwartz action. If <span class="math" data-tex="\(a\in S^{m_1}_{\rho,\delta}\)">\(a\in S^{m_1}_{\rho,\delta}\)</span> and <span class="math" data-tex="\(b\in S^{m_2}_{\rho,\delta}\)">\(b\in S^{m_2}_{\rho,\delta}\)</span>, then
+<span class="math math-display" data-tex="\[
+\operatorname{Op}(a)\operatorname{Op}(b)=\operatorname{Op}(a\circ b),
+\quad a\circ b=\mathcal B(x,\xi,x,\xi)
+\in S^{m_1+m_2}_{\rho,\delta}.
+\tag{E19}
+\]">\[
+\operatorname{Op}(a)\operatorname{Op}(b)=\operatorname{Op}(a\circ b),
+\quad a\circ b=\mathcal B(x,\xi,x,\xi)
+\in S^{m_1+m_2}_{\rho,\delta}.
+\tag{E19}
+\]</span>
+The identity holds on both <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> and <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>. The product is continuous bilinear. For every <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+a^\dagger-\sum_{|\alpha|&lt;N}
+\frac{\partial_\xi^\alpha D_x^\alpha(a^*)}{\alpha!}
+\in S^{m-N\kappa}_{\rho,\delta},
+\tag{E20}
+\]">\[
+a^\dagger-\sum_{|\alpha|&lt;N}
+\frac{\partial_\xi^\alpha D_x^\alpha(a^*)}{\alpha!}
+\in S^{m-N\kappa}_{\rho,\delta},
+\tag{E20}
+\]</span>
+<span class="math math-display" data-tex="\[
+a\circ b-\sum_{|\alpha|&lt;N}
+\frac{(\partial_\xi^\alpha a)(D_x^\alpha b)}{\alpha!}
+\in S^{m_1+m_2-N\kappa}_{\rho,\delta}.
+\tag{E21}
+\]">\[
+a\circ b-\sum_{|\alpha|&lt;N}
+\frac{(\partial_\xi^\alpha a)(D_x^\alpha b)}{\alpha!}
+\in S^{m_1+m_2-N\kappa}_{\rho,\delta}.
+\tag{E21}
+\]</span>
+Each remainder map has finite-seminorm control as described above. Adjoint transformation sends bounded sequences converging locally smoothly to sequences with the same property; the product has the analogous bounded-set continuity in both factors.</p>
+<p><strong>Proof.</strong> The symbol assertions and their estimates follow from (E15)–(E18), including <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. Formula (E13) and the Schwartz action prove extension to tempered distributions. For Schwartz symbols and <span class="math" data-tex="\(u\in\mathcal S\)">\(u\in\mathcal S\)</span>, Fubini's theorem applied to two instances of (E10) gives
+<span class="math math-display" data-tex="\[
+(a\circ b)(x,\xi)=(2\pi)^{-n}
+\iint e^{i(x-y)\cdot(\eta-\xi)}a(x,\eta)b(y,\xi)\,dy\,d\eta,
+\tag{E22}
+\]">\[
+(a\circ b)(x,\xi)=(2\pi)^{-n}
+\iint e^{i(x-y)\cdot(\eta-\xi)}a(x,\eta)b(y,\xi)\,dy\,d\eta,
+\tag{E22}
+\]</span>
+which equals (E16) restricted to the diagonal. The sign can also be checked by taking <span class="math" data-tex="\(a=a(\xi)\)">\(a=a(\xi)\)</span>, <span class="math" data-tex="\(b=e^{iv\cdot x}b_0(\xi)\)">\(b=e^{iv\cdot x}b_0(\xi)\)</span>: (E22) becomes <span class="math" data-tex="\(e^{iv\cdot x}a(\xi+v)b_0(\xi)\)">\(e^{iv\cdot x}a(\xi+v)b_0(\xi)\)</span>, agreeing with (E21).</p>
+<p>Choose compactly supported smooth approximants <span class="math" data-tex="\(a_j,b_j\)">\(a_j,b_j\)</span> as at the end of AN03-EUC-004. Their symbols and products remain bounded in their respective orders and converge locally smoothly. For any fixed <span class="math" data-tex="\(u\in\mathcal S\)">\(u\in\mathcal S\)</span>, (E10) and dominated convergence give local smooth convergence of the outputs. The Schwartz estimates of AN03-EUC-003 bound all output Schwartz seminorms uniformly. Local convergence plus those stronger uniform seminorms gives convergence in every Schwartz seminorm: outside a large base ball use one extra power of <span class="math" data-tex="\(\langle x\rangle\)">\(\langle x\rangle\)</span>, and inside use local convergence. Thus <span class="math" data-tex="\(\operatorname{Op}(a_j)u\to\operatorname{Op}(a)u\)">\(\operatorname{Op}(a_j)u\to\operatorname{Op}(a)u\)</span> in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, and similarly for <span class="math" data-tex="\(b_j\)">\(b_j\)</span> and their products. Boundedness of the Schwartz operator seminorms allows passage through the double composition. This proves (E19) on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>.</p>
+<p>Taking adjoints there identifies the transpose of the product with the reverse product of the transposes. Apply their continuous extensions to <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> and test against <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> to obtain (E19) on <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>. Equivalently, the identities of pairings determine the extension uniquely. Kernel injectivity proves associativity of <span class="math" data-tex="\(\circ\)">\(\circ\)</span> and that the constant symbol <span class="math" data-tex="\(I\)">\(I\)</span> is its unit. ∎</p>
+<p>When <span class="math" data-tex="\(\delta&lt;\rho\)">\(\delta&lt;\rho\)</span>, (E20)–(E21) are asymptotic expansions in decreasing orders. When <span class="math" data-tex="\(\delta=\rho&lt;1\)">\(\delta=\rho&lt;1\)</span>, closure and every finite remainder estimate survive, but all their target orders are the original order. Taking more terms then supplies no smoothing assertion. This distinction will be used in the inverse construction.</p>
+<h2 id="AN03-EUC-006"><span id="an03-euc-006"></span><span id="an03-euc-006-a-finite-derivative-l-2-estimate"></span>AN03-EUC-006 — A finite-derivative <span class="math" data-tex="\(L^2\)">\(L^2\)</span> estimate</h2>
+<p>We first prove an estimate that involves no symbol order. Suppose <span class="math" data-tex="\(a(x,\xi)\)">\(a(x,\xi)\)</span> is smooth and all derivatives up to a sufficiently large fixed order are bounded. Then
+<span class="math math-display" data-tex="\[
+\|\operatorname{Op}(a)u\|_2\leq C_n M\|u\|_2,
+\qquad
+M=\max_{|\alpha|+|\beta|\leq L_n}
+\|\partial_\xi^\alpha\partial_x^\beta a\|_\infty.
+\tag{E23}
+\]">\[
+\|\operatorname{Op}(a)u\|_2\leq C_n M\|u\|_2,
+\qquad
+M=\max_{|\alpha|+|\beta|\leq L_n}
+\|\partial_\xi^\alpha\partial_x^\beta a\|_\infty.
+\tag{E23}
+\]</span>
+The number <span class="math" data-tex="\(L_n\)">\(L_n\)</span> is finite; the proof permits <span class="math" data-tex="\(L_n=4N\)">\(L_n=4N\)</span> for any integer <span class="math" data-tex="\(N&gt;n/2\)">\(N&gt;n/2\)</span>. Only this estimate, not an optimal derivative count, is needed.</p>
+<p>We record the integral estimate used in its proof. If a measurable kernel <span class="math" data-tex="\(K(s,t)\)">\(K(s,t)\)</span> on any two copies of a measure space satisfies
+<span class="math" data-tex="\(\sup_t\int|K(s,t)|\,ds\leq A\)">\(\sup_t\int|K(s,t)|\,ds\leq A\)</span> and
+<span class="math" data-tex="\(\sup_s\int|K(s,t)|\,dt\leq B\)">\(\sup_s\int|K(s,t)|\,dt\leq B\)</span>, then its operator has <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm at most <span class="math" data-tex="\(\sqrt{AB}\)">\(\sqrt{AB}\)</span>. In fact,
+<span class="math math-display" data-tex="\[
+\left|\int K(s,t)u(t)\,dt\right|^2
+\leq\left(\int|K(s,t)|\,dt\right)
+\left(\int|K(s,t)||u(t)|^2\,dt\right).
+\tag{E24}
+\]">\[
+\left|\int K(s,t)u(t)\,dt\right|^2
+\leq\left(\int|K(s,t)|\,dt\right)
+\left(\int|K(s,t)||u(t)|^2\,dt\right).
+\tag{E24}
+\]</span>
+Integration in <span class="math" data-tex="\(s\)">\(s\)</span> and Tonelli's theorem give <span class="math" data-tex="\(AB\|u\|_2^2\)">\(AB\|u\|_2^2\)</span>. Truncation first handles any existence issue, and the estimate supplies the extension. This includes continuous kernels with equal marginal bound <span class="math" data-tex="\(A=B=C\)">\(A=B=C\)</span> and norm at most <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><strong>Proof of (E23).</strong> Fix <span class="math" data-tex="\(\phi\in\mathcal S(\mathbb R^n)\)">\(\phi\in\mathcal S(\mathbb R^n)\)</span> with <span class="math" data-tex="\(\|\phi\|_2=1\)">\(\|\phi\|_2=1\)</span>, and put
+<span class="math" data-tex="\(\phi_{q,p}(x)=e^{ip\cdot x}\phi(x-q)\)">\(\phi_{q,p}(x)=e^{ip\cdot x}\phi(x-q)\)</span>.
+Use phase-space measure <span class="math" data-tex="\(d\mu(q,p)=(2\pi)^{-n}dq\,dp\)">\(d\mu(q,p)=(2\pi)^{-n}dq\,dp\)</span>. The packet transform
+<span class="math" data-tex="\(Vu(q,p)=(u,\phi_{q,p})\)">\(Vu(q,p)=(u,\phi_{q,p})\)</span> is an isometry from <span class="math" data-tex="\(L^2\)">\(L^2\)</span> into <span class="math" data-tex="\(L^2(d\mu)\)">\(L^2(d\mu)\)</span>: Plancherel in <span class="math" data-tex="\(p\)">\(p\)</span>, followed by integration in <span class="math" data-tex="\(q\)">\(q\)</span>, gives
+<span class="math math-display" data-tex="\[
+\int|Vu(q,p)|^2d\mu(q,p)
+=\iint |u(x)|^2|\phi(x-q)|^2\,dx\,dq=\|u\|_2^2.
+\tag{E25}
+\]">\[
+\int|Vu(q,p)|^2d\mu(q,p)
+=\iint |u(x)|^2|\phi(x-q)|^2\,dx\,dq=\|u\|_2^2.
+\tag{E25}
+\]</span>
+The synthesis map <span class="math" data-tex="\(V^*f=\int f(Q)\phi_Q\,d\mu(Q)\)">\(V^*f=\int f(Q)\phi_Q\,d\mu(Q)\)</span>, initially for bounded compactly supported <span class="math" data-tex="\(f\)">\(f\)</span>, has norm at most one: pairing with an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function, applying Cauchy–Schwarz and (E25), and taking the supremum over unit vectors proves this bound. Completeness extends synthesis to every <span class="math" data-tex="\(f\in L^2(d\mu)\)">\(f\in L^2(d\mu)\)</span>. Polarization of (E25) gives <span class="math" data-tex="\(V^*V=I\)">\(V^*V=I\)</span>. For Schwartz <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(Vu\)">\(Vu\)</span> decreases rapidly in both packet variables; integration by parts in <span class="math" data-tex="\(x\)">\(x\)</span> controls the momentum variable and the product of two Schwartz functions controls the position variable. Thus the reconstruction <span class="math" data-tex="\(u=\int Vu(Q)\phi_Q\,d\mu(Q)\)">\(u=\int Vu(Q)\phi_Q\,d\mu(Q)\)</span> converges in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>.</p>
+<p>Consider the matrix of <span class="math" data-tex="\(A=\operatorname{Op}(a)\)">\(A=\operatorname{Op}(a)\)</span> between two packets, with output packet <span class="math" data-tex="\((q,p)\)">\((q,p)\)</span> and input packet <span class="math" data-tex="\((q&#x27;,p&#x27;)\)">\((q&#x27;,p&#x27;)\)</span>. Substitute <span class="math" data-tex="\(x=q+s\)">\(x=q+s\)</span>, <span class="math" data-tex="\(\xi=p&#x27;+t\)">\(\xi=p&#x27;+t\)</span> in (E10). Apart from a factor of absolute value one it is
+<span class="math math-display" data-tex="\[
+(2\pi)^{-n}\iint
+e^{i[s\cdot(p&#x27;-p)+t\cdot(q-q&#x27;)]}
+e^{is\cdot t}a(q+s,p&#x27;+t)\widehat\phi(t)\overline{\phi(s)},ds\,dt.
+\tag{E26}
+\]">\[
+(2\pi)^{-n}\iint
+e^{i[s\cdot(p&#x27;-p)+t\cdot(q-q&#x27;)]}
+e^{is\cdot t}a(q+s,p&#x27;+t)\widehat\phi(t)\overline{\phi(s)},ds\,dt.
+\tag{E26}
+\]</span>
+Apply <span class="math" data-tex="\((1-\Delta_s)^N(1-\Delta_t)^N\)">\((1-\Delta_s)^N(1-\Delta_t)^N\)</span> to the last three factors by integration by parts. Derivatives of <span class="math" data-tex="\(e^{is\cdot t}\)">\(e^{is\cdot t}\)</span> create only polynomials in <span class="math" data-tex="\(s,t\)">\(s,t\)</span>; derivatives of the two fixed Schwartz functions absorb those polynomials. Consequently the absolute integral of all differentiated amplitudes is bounded by <span class="math" data-tex="\(C_{n,N,\phi}M\)">\(C_{n,N,\phi}M\)</span>, uniformly in all four packet parameters. The derivative order of <span class="math" data-tex="\(a\)">\(a\)</span> is at most <span class="math" data-tex="\(4N\)">\(4N\)</span>. We obtain
+<span class="math math-display" data-tex="\[
+|(A\phi_{q&#x27;,p&#x27;},\phi_{q,p})|
+\leq CM\langle q-q&#x27;\rangle^{-2N}
+\langle p-p&#x27;\rangle^{-2N}.
+\tag{E27}
+\]">\[
+|(A\phi_{q&#x27;,p&#x27;},\phi_{q,p})|
+\leq CM\langle q-q&#x27;\rangle^{-2N}
+\langle p-p&#x27;\rangle^{-2N}.
+\tag{E27}
+\]</span>
+Since <span class="math" data-tex="\(2N&gt;n\)">\(2N&gt;n\)</span>, both phase-space marginals are integrable and uniformly bounded by <span class="math" data-tex="\(CM\)">\(CM\)</span>. Equation (E24) bounds the corresponding operator <span class="math" data-tex="\(\mathcal M\)">\(\mathcal M\)</span> on <span class="math" data-tex="\(L^2(d\mu)\)">\(L^2(d\mu)\)</span>. The zeroth bound on <span class="math" data-tex="\(a\)">\(a\)</span> already makes (E10) a continuous map <span class="math" data-tex="\(\mathcal S\to\mathcal S&#x27;\)">\(\mathcal S\to\mathcal S&#x27;\)</span>, since its outputs are bounded functions. For Schwartz <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, their packet reconstructions and (E27) give
+<span class="math" data-tex="\((Au,v)=(\mathcal M Vu,Vv)\)">\((Au,v)=(\mathcal M Vu,Vv)\)</span>.
+All integrals converge by the decay just proved. Hence <span class="math" data-tex="\(A=V^*\mathcal M V\)">\(A=V^*\mathcal M V\)</span> on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> as distributions, which establishes both membership of <span class="math" data-tex="\(Au\)">\(Au\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and the norm bound. No <span class="math" data-tex="\(L^2\)">\(L^2\)</span> boundedness of <span class="math" data-tex="\(A\)">\(A\)</span> was assumed in forming its packet matrix. This proves (E23), and density gives the extension. ∎</p>
+<p>The calculation works for fixed-size matrices by estimating the matrix norm in (E26) and applying the scalar majorant to the norm of the vector input. It therefore has no positivity or scalar-commutativity assumption.</p>
+<p>Two consequences also isolate the lower-order mechanisms in the classical calculus. If <span class="math" data-tex="\(a\in S^q_{\rho,\delta}\)">\(a\in S^q_{\rho,\delta}\)</span> with <span class="math" data-tex="\(q&lt;-n\)">\(q&lt;-n\)</span>, its kernel is an ordinary continuous function. Every <span class="math" data-tex="\((x-y)^\alpha K_a(x,y)\)">\((x-y)^\alpha K_a(x,y)\)</span> is, up to a fixed power of <span class="math" data-tex="\(i\)">\(i\)</span>, the inverse-frequency transform of <span class="math" data-tex="\(\partial_\xi^\alpha a\)">\(\partial_\xi^\alpha a\)</span>. That derivative has integrable absolute value uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>. Dominated convergence on compact base sets proves continuity, and integration by parts, first with a cutoff and then letting it tend to one, gives
+<span class="math" data-tex="\(|K_a(x,y)|\leq C_N\langle x-y\rangle^{-N}\)">\(|K_a(x,y)|\leq C_N\langle x-y\rangle^{-N}\)</span> for every <span class="math" data-tex="\(N\)">\(N\)</span>. Taking <span class="math" data-tex="\(N&gt;n\)">\(N&gt;n\)</span> verifies both marginals in (E24). For classical symbols this proves boundedness at all sufficiently negative orders without the packet estimate. If boundedness is known at order <span class="math" data-tex="\(2q\)">\(2q\)</span>, the identity <span class="math" data-tex="\(\|\operatorname{Op}(a)u\|_2^2=(\operatorname{Op}(a^\dagger\circ a)u,u)\)">\(\|\operatorname{Op}(a)u\|_2^2=(\operatorname{Op}(a^\dagger\circ a)u,u)\)</span> proves it at order <span class="math" data-tex="\(q\)">\(q\)</span>, since the composed symbol has order <span class="math" data-tex="\(2q\)">\(2q\)</span>. A finite number of doublings brings any fixed <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span> below <span class="math" data-tex="\(-n\)">\(-n\)</span>. This proves boundedness at every negative order, including order minus one.</p>
+<p>For scalar classical <span class="math" data-tex="\(a\in S^0\)">\(a\in S^0\)</span>, choose <span class="math" data-tex="\(M&gt;\sup|a|^2\)">\(M&gt;\sup|a|^2\)</span> with a fixed positive gap and set <span class="math" data-tex="\(c=(M-|a|^2)^{1/2}\in S^0\)">\(c=(M-|a|^2)^{1/2}\in S^0\)</span>, using AN03-EUC-001. Equations (E20)–(E21) give
+<span class="math" data-tex="\(a^\dagger\circ a+c^\dagger\circ c=M+r\)">\(a^\dagger\circ a+c^\dagger\circ c=M+r\)</span>, <span class="math" data-tex="\(r\in S^{-1}\)">\(r\in S^{-1}\)</span>.
+Taking the quadratic form on Schwartz functions and discarding <span class="math" data-tex="\(\|\operatorname{Op}(c)u\|_2^2\geq0\)">\(\|\operatorname{Op}(c)u\|_2^2\geq0\)</span> proves order-zero boundedness from the negative-order result. Thus the classical square-root argument is justified in full, while the packet and band argument below supplies the additional equality endpoint where a decreasing remainder is unavailable.</p>
+<h2 id="AN03-EUC-007"><span id="an03-euc-007"></span><span id="an03-euc-007-equality-of-the-derivative-costs-still-allows-l-2-boundedness"></span>AN03-EUC-007 — Equality of the derivative costs still allows <span class="math" data-tex="\(L^2\)">\(L^2\)</span> boundedness</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(\delta\leq\rho\)">\(\delta\leq\rho\)</span> in (E1), then
+<span class="math math-display" data-tex="\[
+a\in S^0_{\rho,\delta}
+\quad\Longrightarrow\quad
+\|\operatorname{Op}(a)\|_{L^2\to L^2}
+\leq C p_{0,L}(a)
+\tag{E28}
+\]">\[
+a\in S^0_{\rho,\delta}
+\quad\Longrightarrow\quad
+\|\operatorname{Op}(a)\|_{L^2\to L^2}
+\leq C p_{0,L}(a)
+\tag{E28}
+\]</span>
+for some finite <span class="math" data-tex="\(L\)">\(L\)</span>, with <span class="math" data-tex="\(C,L\)">\(C,L\)</span> depending only on the fixed parameters and dimension. In particular (E28) includes <span class="math" data-tex="\(0&lt;\rho=\delta&lt;1\)">\(0&lt;\rho=\delta&lt;1\)</span>.</p>
+<p><strong>Proof.</strong> Take a smooth dyadic partition <span class="math" data-tex="\(1=\sum_{j\geq0}\chi_j(\xi)\)">\(1=\sum_{j\geq0}\chi_j(\xi)\)</span>, with <span class="math" data-tex="\(\chi_0\)">\(\chi_0\)</span> supported in a fixed ball and, for <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> supported where <span class="math" data-tex="\(2^{j-1}\leq|\xi|\leq2^{j+1}\)">\(2^{j-1}\leq|\xi|\leq2^{j+1}\)</span>. All frequency derivatives obey the corresponding <span class="math" data-tex="\(2^{-j|\alpha|}\)">\(2^{-j|\alpha|}\)</span> bounds. Set <span class="math" data-tex="\(a_j=a\chi_j\)">\(a_j=a\chi_j\)</span>. Under the unitary dilation
+<span class="math" data-tex="\(u(x)\mapsto 2^{-jn\rho/2}u(2^{-j\rho}x)\)">\(u(x)\mapsto 2^{-jn\rho/2}u(2^{-j\rho}x)\)</span>, the symbol of the conjugated operator is
+<span class="math math-display" data-tex="\[
+\widetilde a_j(X,\Xi)=a_j(2^{-j\rho}X,2^{j\rho}\Xi).
+\tag{E29}
+\]">\[
+\widetilde a_j(X,\Xi)=a_j(2^{-j\rho}X,2^{j\rho}\Xi).
+\tag{E29}
+\]</span>
+Its derivatives are uniformly bounded: a base derivative gives
+<span class="math" data-tex="\(2^{-j\rho}2^{j\delta}\leq1\)">\(2^{-j\rho}2^{j\delta}\leq1\)</span>, and a frequency derivative gives <span class="math" data-tex="\(2^{j\rho}2^{-j\rho}=1\)">\(2^{j\rho}2^{-j\rho}=1\)</span>. Cutoff derivatives satisfy the same bounds because <span class="math" data-tex="\(\rho\leq1\)">\(\rho\leq1\)</span>. Hence (E23) gives <span class="math" data-tex="\(\|\operatorname{Op}(a_j)\|\leq C p_{0,L_n}(a)\)">\(\|\operatorname{Op}(a_j)\|\leq C p_{0,L_n}(a)\)</span>, uniformly in <span class="math" data-tex="\(j\)">\(j\)</span>. This alone would not justify summing their norms.</p>
+<p>Separate each <span class="math" data-tex="\(a_j\)">\(a_j\)</span> into a symbol with small base Fourier support and an error. Choose <span class="math" data-tex="\(\psi\in\mathcal S\)">\(\psi\in\mathcal S\)</span> with <span class="math" data-tex="\(\widehat\psi\in C_c^\infty\)">\(\widehat\psi\in C_c^\infty\)</span>, equal to one near zero, and with its Fourier support in the unit ball. With the Fourier normalization fixed above, <span class="math" data-tex="\(\int\psi=1\)">\(\int\psi=1\)</span>, and every nonconstant polynomial moment of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is zero. For <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, put <span class="math" data-tex="\(\lambda_j=2^{j-4}\)">\(\lambda_j=2^{j-4}\)</span> and
+<span class="math math-display" data-tex="\[
+\ell_j(x,\xi)=\int\psi(z)a_j(x-z/\lambda_j,\xi)\,dz,
+\qquad r_j=a_j-\ell_j.
+\tag{E30}
+\]">\[
+\ell_j(x,\xi)=\int\psi(z)a_j(x-z/\lambda_j,\xi)\,dz,
+\qquad r_j=a_j-\ell_j.
+\tag{E30}
+\]</span>
+Convolution preserves the uniform derivative bounds used in (E29), up to <span class="math" data-tex="\(\|\psi\|_1\)">\(\|\psi\|_1\)</span>. Taylor expansion in <span class="math" data-tex="\(x\)">\(x\)</span> to order <span class="math" data-tex="\(K-1\)">\(K-1\)</span>, together with the vanished moments, gives
+<span class="math math-display" data-tex="\[
+\|\partial_x^\beta\partial_\xi^\alpha r_j\|_\infty
+\leq C_K\lambda_j^{-K}
+\max_{|\nu|=K}\|\partial_x^{\beta+\nu}
+\partial_\xi^\alpha a_j\|_\infty
+\leq C p_{0,L}(a)
+2^{-jK(1-\delta)}2^{j\delta|\beta|-j\rho|\alpha|}.
+\tag{E31}
+\]">\[
+\|\partial_x^\beta\partial_\xi^\alpha r_j\|_\infty
+\leq C_K\lambda_j^{-K}
+\max_{|\nu|=K}\|\partial_x^{\beta+\nu}
+\partial_\xi^\alpha a_j\|_\infty
+\leq C p_{0,L}(a)
+2^{-jK(1-\delta)}2^{j\delta|\beta|-j\rho|\alpha|}.
+\tag{E31}
+\]</span>
+The integral Taylor remainder is bounded using <span class="math" data-tex="\(\int|z|^K|\psi(z)|dz&lt;\infty\)">\(\int|z|^K|\psi(z)|dz&lt;\infty\)</span>. Thus after the dilation (E29), (E23) implies
+<span class="math math-display" data-tex="\[
+\|\operatorname{Op}(r_j)\|_{2\to2}
+\leq C p_{0,L}(a)2^{-jK(1-\delta)}.
+\tag{E32}
+\]">\[
+\|\operatorname{Op}(r_j)\|_{2\to2}
+\leq C p_{0,L}(a)2^{-jK(1-\delta)}.
+\tag{E32}
+\]</span>
+Choose for example <span class="math" data-tex="\(K=1\)">\(K=1\)</span>. Since <span class="math" data-tex="\(\delta&lt;1\)">\(\delta&lt;1\)</span>, these norms are summable, with finite bound depending on <span class="math" data-tex="\(1-2^{-(1-\delta)}\)">\(1-2^{-(1-\delta)}\)</span>. Larger <span class="math" data-tex="\(K\)">\(K\)</span> is available when needed.</p>
+<p>The symbol <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span> has base Fourier support <span class="math" data-tex="\(|\theta|\leq2^{j-4}\)">\(|\theta|\leq2^{j-4}\)</span>, in the distributional sense; multiplication by <span class="math" data-tex="\(\widehat\psi(\theta/\lambda_j)\)">\(\widehat\psi(\theta/\lambda_j)\)</span> proves this even though the base variable is not integrable. Its frequency support remains that of <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span>. In the Fourier representation of (E10), output frequency equals input frequency plus base Fourier frequency. Hence <span class="math" data-tex="\(\operatorname{Op}(\ell_j)\)">\(\operatorname{Op}(\ell_j)\)</span> kills inputs outside the <span class="math" data-tex="\(j\)">\(j\)</span>-th frequency annulus and its outputs are supported in a slightly enlarged annulus, for example
+<span class="math" data-tex="\(2^{j-2}\leq|\eta|\leq2^{j+2}\)">\(2^{j-2}\leq|\eta|\leq2^{j+2}\)</span>.
+One can verify the support assertion by testing against compactly supported frequency test functions with disjoint sum supports, using the distributional Fourier formula; it requires no pointwise Fourier transform of <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span>.</p>
+<p>Let <span class="math" data-tex="\(P_j\)">\(P_j\)</span> be the sharp <span class="math" data-tex="\(L^2\)">\(L^2\)</span> projection onto the support annulus of <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span>. Then <span class="math" data-tex="\(\operatorname{Op}(\ell_j)=\operatorname{Op}(\ell_j)P_j\)">\(\operatorname{Op}(\ell_j)=\operatorname{Op}(\ell_j)P_j\)</span>, and <span class="math" data-tex="\(\sum_j\|P_ju\|_2^2\leq C\|u\|_2^2\)">\(\sum_j\|P_ju\|_2^2\leq C\|u\|_2^2\)</span> because the annuli overlap only finitely often. The enlarged output annuli have the same finite-overlap property. Pointwise Cauchy–Schwarz in Fourier space and Plancherel therefore give, for every finite sum,
+<span class="math math-display" data-tex="\[
+\left\|\sum_j\operatorname{Op}(\ell_j)u\right\|_2^2
+\leq C\sum_j\|\operatorname{Op}(\ell_j)P_ju\|_2^2
+\leq C p_{0,L}(a)^2\|u\|_2^2.
+\tag{E33}
+\]">\[
+\left\|\sum_j\operatorname{Op}(\ell_j)u\right\|_2^2
+\leq C\sum_j\|\operatorname{Op}(\ell_j)P_ju\|_2^2
+\leq C p_{0,L}(a)^2\|u\|_2^2.
+\tag{E33}
+\]</span>
+The same estimate for tails shows convergence for each <span class="math" data-tex="\(u\in L^2\)">\(u\in L^2\)</span>, since the tail of <span class="math" data-tex="\(\sum\|P_ju\|^2\)">\(\sum\|P_ju\|^2\)</span> tends to zero. The single low-frequency term <span class="math" data-tex="\(a_0\)">\(a_0\)</span> is bounded by (E23). Adding (E32) proves a bounded operator with estimate (E28). On Schwartz inputs the dyadic symbol sum converges in (E10), with all Schwartz output seminorms, by the rapid decrease of <span class="math" data-tex="\(\widehat u\)">\(\widehat u\)</span> and the already established seminorm estimates. The bounded operator is therefore exactly <span class="math" data-tex="\(\operatorname{Op}(a)\)">\(\operatorname{Op}(a)\)</span>. ∎</p>
+<p>This proof uses <span class="math" data-tex="\(\delta\leq\rho\)">\(\delta\leq\rho\)</span> in the rescaling and <span class="math" data-tex="\(\delta&lt;1\)">\(\delta&lt;1\)</span> in the summable error. It never treats the zero gain <span class="math" data-tex="\(\rho-\delta\)">\(\rho-\delta\)</span> as positive.</p>
+<p>There is a useful complementary result with no frequency differentiability. Suppose <span class="math" data-tex="\(a(x,\xi)\)">\(a(x,\xi)\)</span> is measurable and, for each <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, is <span class="math" data-tex="\(C^{n+1}\)">\(C^{n+1}\)</span> in <span class="math" data-tex="\(x\)">\(x\)</span>, with
+<span class="math math-display" data-tex="\[
+\sup_\xi\sum_{|\alpha|\leq n+1}
+\int\|D_x^\alpha a(x,\xi)\|\,dx\leq M.
+\tag{E34}
+\]">\[
+\sup_\xi\sum_{|\alpha|\leq n+1}
+\int\|D_x^\alpha a(x,\xi)\|\,dx\leq M.
+\tag{E34}
+\]</span>
+Then <span class="math" data-tex="\(\operatorname{Op}(a)\)">\(\operatorname{Op}(a)\)</span> is bounded on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, with norm at most <span class="math" data-tex="\(C_nM\)">\(C_nM\)</span>. Define it initially when <span class="math" data-tex="\(\widehat u\in C_c^\infty\)">\(\widehat u\in C_c^\infty\)</span>. Let
+<span class="math" data-tex="\(A(\theta,\xi)=(2\pi)^{-n}\mathcal F_xa(\theta,\xi)\)">\(A(\theta,\xi)=(2\pi)^{-n}\mathcal F_xa(\theta,\xi)\)</span>.
+Integration by parts in the sense of integrable weak derivatives gives
+<span class="math math-display" data-tex="\[
+\|A(\theta,\xi)\|\leq C_nM\langle\theta\rangle^{-n-1}.
+\tag{E35}
+\]">\[
+\|A(\theta,\xi)\|\leq C_nM\langle\theta\rangle^{-n-1}.
+\tag{E35}
+\]</span>
+Indeed the Fourier transforms of all derivatives of order at most <span class="math" data-tex="\(n+1\)">\(n+1\)</span> are bounded by their <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norms, and the corresponding monomials dominate <span class="math" data-tex="\(\langle\theta\rangle^{n+1}\)">\(\langle\theta\rangle^{n+1}\)</span>. Cutoffs in <span class="math" data-tex="\(x\)">\(x\)</span>, followed by their limit in these <span class="math" data-tex="\(L^1\)">\(L^1\)</span> derivative norms, justify the integration by parts. Fubini gives
+<span class="math" data-tex="\(\widehat{\operatorname{Op}(a)u}(\eta)=\int A(\eta-\xi,\xi)\widehat u(\xi)d\xi\)">\(\widehat{\operatorname{Op}(a)u}(\eta)=\int A(\eta-\xi,\xi)\widehat u(\xi)d\xi\)</span>.
+Both kernel marginals are bounded by <span class="math" data-tex="\(C_nM\)">\(C_nM\)</span> using (E35). Apply (E24) and Plancherel, then density. Joint measurability and the derivative hypotheses suffice; no hidden <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-smoothness is used.</p>
+<h2 id="AN03-EUC-008"><span id="an03-euc-008"></span><span id="an03-euc-008-all-real-sobolev-orders-and-all-dyadic-sequence-endpoints"></span>AN03-EUC-008 — All real Sobolev orders and all dyadic sequence endpoints</h2>
+<p>For real <span class="math" data-tex="\(s\)">\(s\)</span>, let <span class="math" data-tex="\(H^s\)">\(H^s\)</span> be the tempered distributions whose Fourier transforms are locally square integrable and satisfy
+<span class="math math-display" data-tex="\[
+\|u\|_{H^s}^2=(2\pi)^{-n}
+\int\langle\xi\rangle^{2s}|\widehat u(\xi)|^2\,d\xi&lt;\infty.
+\tag{E36}
+\]">\[
+\|u\|_{H^s}^2=(2\pi)^{-n}
+\int\langle\xi\rangle^{2s}|\widehat u(\xi)|^2\,d\xi&lt;\infty.
+\tag{E36}
+\]</span>
+The multiplier <span class="math" data-tex="\(J^s=\langle D\rangle^s\)">\(J^s=\langle D\rangle^s\)</span> is an isometric isomorphism <span class="math" data-tex="\(H^s\to L^2\)">\(H^s\to L^2\)</span>, by the Fourier <span class="math" data-tex="\(L^2\)">\(L^2\)</span> contract. Its symbol belongs to <span class="math" data-tex="\(S^s_{\rho,\delta}\)">\(S^s_{\rho,\delta}\)</span> in (E1): actual frequency derivatives lose one order, which is at least the required loss <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and all nonzero base derivatives vanish.</p>
+<p>For <span class="math" data-tex="\(a\in S^m_{\rho,\delta}\)">\(a\in S^m_{\rho,\delta}\)</span> with <span class="math" data-tex="\(\delta\leq\rho\)">\(\delta\leq\rho\)</span>, the composition theorem gives
+<span class="math" data-tex="\(J^{s-m}\operatorname{Op}(a)J^{-s}\in\operatorname{Op}(S^0_{\rho,\delta})\)">\(J^{s-m}\operatorname{Op}(a)J^{-s}\in\operatorname{Op}(S^0_{\rho,\delta})\)</span>.
+The finite-seminorm bounds in (E21) and (E28) therefore prove
+<span class="math math-display" data-tex="\[
+\operatorname{Op}(a):H^s\longrightarrow H^{s-m}
+\quad\hbox{continuously for every real }s.
+\tag{E37}
+\]">\[
+\operatorname{Op}(a):H^s\longrightarrow H^{s-m}
+\quad\hbox{continuously for every real }s.
+\tag{E37}
+\]</span>
+This is the restriction of the already defined tempered-distribution operator: it agrees first on Schwartz functions and then by continuity and density in <span class="math" data-tex="\(H^s\)">\(H^s\)</span>. For integer nonnegative <span class="math" data-tex="\(s\)">\(s\)</span>, (E36) is equivalent to the sum of squared <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norms of the derivatives through order <span class="math" data-tex="\(s\)">\(s\)</span>, by expanding <span class="math" data-tex="\((1+|\xi|^2)^s\)">\((1+|\xi|^2)^s\)</span>; negative and noninteger orders retain the Fourier definition.</p>
+<p>The relevant Besov scale uses an <span class="math" data-tex="\(\ell^p\)">\(\ell^p\)</span> index, not an <span class="math" data-tex="\(L^p\)">\(L^p\)</span> index in the base variable. Its domain consists of tempered distributions with locally square-integrable Fourier transforms. Set
+<span class="math" data-tex="\(A_0=\{|\xi|&lt;1\}\)">\(A_0=\{|\xi|&lt;1\}\)</span>, <span class="math" data-tex="\(A_j=\{2^{j-1}\leq|\xi|&lt;2^j\}\)">\(A_j=\{2^{j-1}\leq|\xi|&lt;2^j\}\)</span> for <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, and let <span class="math" data-tex="\(\Pi_j\)">\(\Pi_j\)</span> be their sharp Fourier projections. For <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>, define
+<span class="math math-display" data-tex="\[
+\|u\|_{B^s_{2,p}}=
+\left\|(2^{js}\|\Pi_ju\|_2)_{j\geq0}\right\|_{\ell^p},
+\tag{E38}
+\]">\[
+\|u\|_{B^s_{2,p}}=
+\left\|(2^{js}\|\Pi_ju\|_2)_{j\geq0}\right\|_{\ell^p},
+\tag{E38}
+\]</span>
+with the supremum when <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>. A distribution in this space has a locally <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Fourier transform. The sharp projections are consequently well defined; conversely a sequence of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> functions on these annuli with at most polynomial growth defines a tempered distribution by summation. Cauchy–Schwarz on each annulus and rapid decay of a Schwartz test function make that series convergent. Thus (E38) is a Banach norm, by completeness of the weighted <span class="math" data-tex="\(\ell^p\)">\(\ell^p\)</span> sum of the Hilbert spaces <span class="math" data-tex="\(L^2(A_j)\)">\(L^2(A_j)\)</span>. It is equivalent to the norm using <span class="math" data-tex="\(\|\Pi_ju\|_{H^s}\)">\(\|\Pi_ju\|_{H^s}\)</span>, since <span class="math" data-tex="\(\langle\xi\rangle\asymp2^j\)">\(\langle\xi\rangle\asymp2^j\)</span> on each annulus. The latter is the convention often denoted <span class="math" data-tex="\({}^pH_{(s)}\)">\({}^pH_{(s)}\)</span>. In particular <span class="math" data-tex="\(B^s_{2,2}=H^s\)">\(B^s_{2,2}=H^s\)</span> with equivalent norms. Smooth dyadic cutoffs give the same spaces: each smooth piece meets finitely many sharp annuli and vice versa, so the two finite-overlap triangle estimates give norm equivalence.</p>
+<p>Here is a proof of the exact interpolation implication needed for the calculus. Suppose a linear operator <span class="math" data-tex="\(T\)">\(T\)</span> is consistent and bounded from <span class="math" data-tex="\(H^{s_-}\)">\(H^{s_-}\)</span> to <span class="math" data-tex="\(H^{s_--m}\)">\(H^{s_--m}\)</span> and from <span class="math" data-tex="\(H^{s_+}\)">\(H^{s_+}\)</span> to <span class="math" data-tex="\(H^{s_+-m}\)">\(H^{s_+-m}\)</span>, with <span class="math" data-tex="\(s_-&lt;s&lt;s_+\)">\(s_-&lt;s&lt;s_+\)</span>. On <span class="math" data-tex="\(\Pi_ju\)">\(\Pi_ju\)</span>, the two estimates imply
+<span class="math math-display" data-tex="\[
+2^{k(s-m)}\|\Pi_kT\Pi_ju\|_2
+\leq C\min\{2^{(k-j)(s-s_-)},
+2^{(k-j)(s-s_+)}\}\,
+2^{js}\|\Pi_ju\|_2.
+\tag{E39}
+\]">\[
+2^{k(s-m)}\|\Pi_kT\Pi_ju\|_2
+\leq C\min\{2^{(k-j)(s-s_-)},
+2^{(k-j)(s-s_+)}\}\,
+2^{js}\|\Pi_ju\|_2.
+\tag{E39}
+\]</span>
+For example insert <span class="math" data-tex="\(2^{-k(s_--m)}\|T\Pi_ju\|_{H^{s_--m}}\)">\(2^{-k(s_--m)}\|T\Pi_ju\|_{H^{s_--m}}\)</span>, then use <span class="math" data-tex="\(\|\Pi_ju\|_{H^{s_-}}\leq C2^{js_-}\|\Pi_ju\|_2\)">\(\|\Pi_ju\|_{H^{s_-}}\leq C2^{js_-}\|\Pi_ju\|_2\)</span>; the other endpoint is identical. The sequence
+<span class="math" data-tex="\(c_l=\min(2^{l(s-s_-)},2^{l(s-s_+)})\)">\(c_l=\min(2^{l(s-s_-)},2^{l(s-s_+)})\)</span> is summable over <span class="math" data-tex="\(l\in\mathbb Z\)">\(l\in\mathbb Z\)</span>. For a nonnegative sequence <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math" data-tex="\(\|c*v\|_{\ell^p}\leq\|c\|_{\ell^1}\|v\|_{\ell^p}\)">\(\|c*v\|_{\ell^p}\leq\|c\|_{\ell^1}\|v\|_{\ell^p}\)</span>: for finite sums this is the triangle inequality for translations; monotone passage to the sum proves the assertion, also for <span class="math" data-tex="\(p=1,\infty\)">\(p=1,\infty\)</span>. Equation (E39) thus bounds the output norm (E38).</p>
+<p>For a general input of finite (E38) norm, the annular sum converges in <span class="math" data-tex="\(H^{s_-}\)">\(H^{s_-}\)</span>, because its weighted <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> norm there is bounded by an exponentially decreasing sequence times a bounded sequence. Hence <span class="math" data-tex="\(Tu\)">\(Tu\)</span> is already defined by the lower endpoint. Passing to each fixed output projection and using (E39) proves the asserted Besov bound, even for <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, where finite annular sums need not converge in the Besov norm. For <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span> those sums do converge in that norm by the tail property of <span class="math" data-tex="\(\ell^p\)">\(\ell^p\)</span>.</p>
+<p>Applying this implication to (E37), with any <span class="math" data-tex="\(s_-&lt;s&lt;s_+\)">\(s_-&lt;s&lt;s_+\)</span>, proves
+<span class="math math-display" data-tex="\[
+\operatorname{Op}(a):B^s_{2,p}\longrightarrow B^{s-m}_{2,p}
+\quad(1\leq p\leq\infty,\ s\in\mathbb R).
+\tag{E40}
+\]">\[
+\operatorname{Op}(a):B^s_{2,p}\longrightarrow B^{s-m}_{2,p}
+\quad(1\leq p\leq\infty,\ s\in\mathbb R).
+\tag{E40}
+\]</span>
+All constants are controlled by finitely many symbol seminorms. Multiplication by any smooth function with all derivatives bounded is the order-zero special case; in particular it is continuous on every space in (E38). For a distribution <span class="math" data-tex="\(u\)">\(u\)</span> on an open set, its product with <span class="math" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span> of that set extends by zero to a compactly supported tempered distribution. The local space is therefore defined by the seminorms <span class="math" data-tex="\(\|\chi u\|_{B^s_{2,p}}\)">\(\|\chi u\|_{B^s_{2,p}}\)</span> of these extensions. Equivalent cutoff families follow by partitions of unity and this multiplication estimate. Coordinate invariance and the later microlocal assertions require their own geometric arguments; (E40) supplies their exact global continuity input.</p>
+<h2 id="AN03-EUC-009"><span id="an03-euc-009"></span><span id="an03-euc-009-elliptic-inversion-uses-a-strictly-positive-gain"></span>AN03-EUC-009 — Elliptic inversion uses a strictly positive gain</h2>
+<p>Assume <span class="math" data-tex="\(\delta&lt;\rho\)">\(\delta&lt;\rho\)</span>, so <span class="math" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span>, and let <span class="math" data-tex="\(a\in S^m_{\rho,\delta}\)">\(a\in S^m_{\rho,\delta}\)</span> be scalar. The following global ellipticity condition is equivalent to the existence of a symbol <span class="math" data-tex="\(b\in S^{-m}_{\rho,\delta}\)">\(b\in S^{-m}_{\rho,\delta}\)</span> with both products inverse modulo smoothing:
+<span class="math math-display" data-tex="\[
+|a(x,\xi)|\geq c\langle\xi\rangle^m
+\quad\hbox{for all }x\hbox{ and }|\xi|\geq R,
+\tag{E41}
+\]">\[
+|a(x,\xi)|\geq c\langle\xi\rangle^m
+\quad\hbox{for all }x\hbox{ and }|\xi|\geq R,
+\tag{E41}
+\]</span>
+<span class="math math-display" data-tex="\[
+a\circ b-I\in S^{-\infty},\qquad
+b\circ a-I\in S^{-\infty}.
+\tag{E42}
+\]">\[
+a\circ b-I\in S^{-\infty},\qquad
+b\circ a-I\in S^{-\infty}.
+\tag{E42}
+\]</span>
+Moreover either of the two relations in (E42), for a given <span class="math" data-tex="\(b\)">\(b\)</span>, implies the other and determines <span class="math" data-tex="\(b\)">\(b\)</span> uniquely modulo <span class="math" data-tex="\(S^{-\infty}\)">\(S^{-\infty}\)</span>. Either implies
+<span class="math math-display" data-tex="\[
+ab-I\in S^{-\kappa}_{\rho,\delta}.
+\tag{E43}
+\]">\[
+ab-I\in S^{-\kappa}_{\rho,\delta}.
+\tag{E43}
+\]</span>
+In the classical case the gain in (E43) is one. For square matrices replace (E41) by <span class="math" data-tex="\(\|a(x,\xi)v\|\geq c\langle\xi\rangle^m\|v\|\)">\(\|a(x,\xi)v\|\geq c\langle\xi\rangle^m\|v\|\)</span>; all assertions remain true.</p>
+<p><strong>Proof.</strong> Normalize <span class="math" data-tex="\(a\)">\(a\)</span> pointwise by <span class="math" data-tex="\(a_0=\langle\xi\rangle^{-m}a\)">\(a_0=\langle\xi\rangle^{-m}a\)</span>. It belongs to <span class="math" data-tex="\(S^0_{\rho,\delta}\)">\(S^0_{\rho,\delta}\)</span>. Condition (E41) makes its scalar reciprocal, or matrix inverse, uniformly bounded outside the ball. Choose a frequency cutoff <span class="math" data-tex="\(\theta\)">\(\theta\)</span> supported in that region and equal to one outside a larger ball. Define
+<span class="math" data-tex="\(b_0=\theta\langle\xi\rangle^{-m}a_0^{-1}\)">\(b_0=\theta\langle\xi\rangle^{-m}a_0^{-1}\)</span>, extended by zero across the interior neighborhood where <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span>. The chain-rule/inverse estimates of AN03-EUC-001 show <span class="math" data-tex="\(b_0\in S^{-m}_{\rho,\delta}\)">\(b_0\in S^{-m}_{\rho,\delta}\)</span>, and
+<span class="math" data-tex="\(ab_0=b_0a=I\)">\(ab_0=b_0a=I\)</span> for sufficiently large <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span>. Thus (E21) gives
+<span class="math" data-tex="\(r=I-a\circ b_0\in S^{-\kappa}\)">\(r=I-a\circ b_0\in S^{-\kappa}\)</span> and
+<span class="math" data-tex="\(\ell=I-b_0\circ a\in S^{-\kappa}\)">\(\ell=I-b_0\circ a\in S^{-\kappa}\)</span>.</p>
+<p>For a right inverse take the formal series
+<span class="math" data-tex="\(\sum_{j\geq0}b_0\circ r^{\circ j}\)">\(\sum_{j\geq0}b_0\circ r^{\circ j}\)</span>, whose terms have orders <span class="math" data-tex="\(-m-j\kappa\)">\(-m-j\kappa\)</span>. Use (E6) to obtain a sum <span class="math" data-tex="\(b_R\)">\(b_R\)</span>. Its first <span class="math" data-tex="\(N\)">\(N\)</span> terms satisfy the exact telescoping identity
+<span class="math math-display" data-tex="\[
+a\circ\sum_{j&lt;N}b_0\circ r^{\circ j}=I-r^{\circ N}.
+\tag{E44}
+\]">\[
+a\circ\sum_{j&lt;N}b_0\circ r^{\circ j}=I-r^{\circ N}.
+\tag{E44}
+\]</span>
+Continuity of composition and the remainder order in (E6) show
+<span class="math" data-tex="\(a\circ b_R-I\in S^{-N\kappa}\)">\(a\circ b_R-I\in S^{-N\kappa}\)</span> for every <span class="math" data-tex="\(N\)">\(N\)</span>, hence it is smoothing. Similarly the series <span class="math" data-tex="\(\sum_{j\geq0}\ell^{\circ j}\circ b_0\)">\(\sum_{j\geq0}\ell^{\circ j}\circ b_0\)</span> gives <span class="math" data-tex="\(b_L\)">\(b_L\)</span> with <span class="math" data-tex="\(b_L\circ a-I\)">\(b_L\circ a-I\)</span> smoothing. The class <span class="math" data-tex="\(S^{-\infty}\)">\(S^{-\infty}\)</span> is a two-sided ideal for composition with a finite-order symbol: apply (E19) at arbitrarily negative source orders. Therefore
+<span class="math math-display" data-tex="\[
+b_L-b_R=b_L\circ(I-a\circ b_R)
++(b_L\circ a-I)\circ b_R\in S^{-\infty}.
+\tag{E45}
+\]">\[
+b_L-b_R=b_L\circ(I-a\circ b_R)
++(b_L\circ a-I)\circ b_R\in S^{-\infty}.
+\tag{E45}
+\]</span>
+Either choice is a two-sided inverse.</p>
+<p>Conversely, a right relation in (E42) and (E21) with <span class="math" data-tex="\(N=1\)">\(N=1\)</span> give (E43). In fact (E43) alone implies (E41). Since <span class="math" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span>, <span class="math" data-tex="\(ab\)">\(ab\)</span> is uniformly within <span class="math" data-tex="\(1/2\)">\(1/2\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span> at large frequency. In the scalar case
+<span class="math" data-tex="\(1/2\leq|a||b|\leq C|a|\langle\xi\rangle^{-m}\)">\(1/2\leq|a||b|\leq C|a|\langle\xi\rangle^{-m}\)</span>, proving (E41). In the square matrix case <span class="math" data-tex="\(ab\)">\(ab\)</span> is invertible there by the convergent geometric series in operator norm; a square matrix with a right inverse is invertible by finite-dimensional linear algebra, and <span class="math" data-tex="\(\|a^{-1}\|=\|b(ab)^{-1}\|\leq C\langle\xi\rangle^{-m}\)">\(\|a^{-1}\|=\|b(ab)^{-1}\|\leq C\langle\xi\rangle^{-m}\)</span>. A left relation works in the same way. The construction already gives a two-sided inverse <span class="math" data-tex="\(c\)">\(c\)</span>, and if <span class="math" data-tex="\(a\circ b-I\)">\(a\circ b-I\)</span> is smoothing then
+<span class="math" data-tex="\(b-c=c\circ(a\circ b-I)-(c\circ a-I)\circ b\)">\(b-c=c\circ(a\circ b-I)-(c\circ a-I)\circ b\)</span> is smoothing. The other side follows. This also proves uniqueness and covers a given one-sided inverse. ∎</p>
+<p>The geometric-series argument here is formal in decreasing symbol orders, followed by (E6); no convergence of the operator Neumann series is assumed. At <span class="math" data-tex="\(\delta=\rho\)">\(\delta=\rho\)</span> the orders <span class="math" data-tex="\(-m-j\kappa\)">\(-m-j\kappa\)</span> do not tend to <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>. The construction therefore makes no elliptic-parametrix claim at that endpoint. A positive lower bound for the order-zero symbol is a different fact from a positive symbolic remainder gain.</p>
+<h2 id="AN03-EUC-010"><span id="an03-euc-010"></span><span id="an03-euc-010-the-exact-constant-coefficient-interface"></span><span id="an03-euc-010--the-exact-constant-coefficient-interface"></span>AN03-EUC-010 — The exact constant-coefficient interface</h2>
+<p>The origin of more general symbol orders includes reciprocals of hypoelliptic polynomials. That implication has a separate other-volume prerequisite, <strong>AN03-DEP-EUC-HYPO</strong>: if a nonzero complex polynomial <span class="math" data-tex="\(P\)">\(P\)</span> defines a hypoelliptic constant-coefficient operator, meaning that <span class="math" data-tex="\(P(D)u\)">\(P(D)u\)</span> smooth implies <span class="math" data-tex="\(u\)">\(u\)</span> smooth on every open set for every distribution <span class="math" data-tex="\(u\)">\(u\)</span>, then <span class="math" data-tex="\(P(\xi)\ne0\)">\(P(\xi)\ne0\)</span> for all sufficiently large real <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span>, and there are constants <span class="math" data-tex="\(c&gt;0,C,R\)">\(c&gt;0,C,R\)</span> such that
+<span class="math math-display" data-tex="\[
+\left|\frac{\partial^\alpha P(\xi)}{P(\xi)}\right|
+\leq C|\xi|^{-c|\alpha|}
+\quad (\alpha\ne0,\ \xi\in\mathbb R^n,\ |\xi|&gt;R).
+\tag{E48}
+\]">\[
+\left|\frac{\partial^\alpha P(\xi)}{P(\xi)}\right|
+\leq C|\xi|^{-c|\alpha|}
+\quad (\alpha\ne0,\ \xi\in\mathbb R^n,\ |\xi|&gt;R).
+\tag{E48}
+\]</span>
+Only finitely many nonzero derivatives occur, so a common <span class="math" data-tex="\(C\)">\(C\)</span> is possible. This is the quantitative implication of Hörmander II, Theorem 11.1.3, with hypoellipticity as in Theorem 11.1.1/Definition 11.1.2. Its proof, including the algebraic growth theorem needed to pass from a qualitative limit to a power bound, remains an explicit external dependency; the symbol-space definition is not a proof of (E48).</p>
+<p>Here is the complete adapter from that contract to the present calculus. If <span class="math" data-tex="\(P\)">\(P\)</span> has degree <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, replace <span class="math" data-tex="\(c\)">\(c\)</span> by <span class="math" data-tex="\(\rho=\min(c,1)&gt;0\)">\(\rho=\min(c,1)&gt;0\)</span>. A derivative of total degree <span class="math" data-tex="\(d\)">\(d\)</span> is a nonzero constant for some multiindex, so (E48) yields <span class="math" data-tex="\(|P(\xi)|^{-1}\leq C|\xi|^{-d\rho}\)">\(|P(\xi)|^{-1}\leq C|\xi|^{-d\rho}\)</span>. Repeated differentiation of <span class="math" data-tex="\(P^{-1}P=1\)">\(P^{-1}P=1\)</span> expresses each derivative of <span class="math" data-tex="\(P^{-1}\)">\(P^{-1}\)</span> as a finite sum of
+<span class="math math-display" data-tex="\[
+P^{-1}\prod_{\nu=1}^k
+\frac{\partial^{\alpha_\nu}P}{P},
+\qquad \alpha_\nu\ne0,\qquad
+\alpha_1+\cdots+\alpha_k=\alpha,
+\tag{E49}
+\]">\[
+P^{-1}\prod_{\nu=1}^k
+\frac{\partial^{\alpha_\nu}P}{P},
+\qquad \alpha_\nu\ne0,\qquad
+\alpha_1+\cdots+\alpha_k=\alpha,
+\tag{E49}
+\]</span>
+with numerical coefficients. Induction follows by differentiating one factor at a time, using the quotient rule; total derivative degree increases by one in each resulting term. Equation (E48) bounds (E49) by <span class="math" data-tex="\(C_\alpha\langle\xi\rangle^{-d\rho-\rho|\alpha|}\)">\(C_\alpha\langle\xi\rangle^{-d\rho-\rho|\alpha|}\)</span>. A smooth cutoff <span class="math" data-tex="\(\theta\)">\(\theta\)</span> that is zero on a sufficiently large ball and one outside a larger ball therefore gives
+<span class="math" data-tex="\(\theta(\xi)/P(\xi)\in S^{-d\rho}_{\rho,0}\)">\(\theta(\xi)/P(\xi)\in S^{-d\rho}_{\rho,0}\)</span>, independent of <span class="math" data-tex="\(x\)">\(x\)</span>.
+Cutoff derivatives occur only in a compact region where <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> and do not change the conclusion. A nonzero constant polynomial has its constant reciprocal in <span class="math" data-tex="\(S^0_{\rho,0}\)">\(S^0_{\rho,0}\)</span> for any allowed <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. No reciprocal is asserted across real zeros of a nonconstant polynomial. Thus the adapter is proved, while the hypoellipticity characterization itself remains with its other-volume owner.</p>
+<h2 id="an03-euc-ex-001-two-exact-products-and-an-endpoint-obstruction">AN03-EUC-EX-001 — Two exact products and an endpoint obstruction</h2>
+<p>For a bounded smooth matrix function <span class="math" data-tex="\(B(x)\)">\(B(x)\)</span> with bounded derivatives and a constant matrix <span class="math" data-tex="\(M\)">\(M\)</span>, take <span class="math" data-tex="\(a(\xi)=M\xi_j\)">\(a(\xi)=M\xi_j\)</span>, <span class="math" data-tex="\(b(x,\xi)=B(x)\)">\(b(x,\xi)=B(x)\)</span>. Formula (E21) terminates because <span class="math" data-tex="\(a\)">\(a\)</span> is frequency-linear:
+<span class="math math-display" data-tex="\[
+a\circ b=M\xi_jB+M D_jB,
+\qquad b\circ a=BM\xi_j.
+\tag{E46}
+\]">\[
+a\circ b=M\xi_jB+M D_jB,
+\qquad b\circ a=BM\xi_j.
+\tag{E46}
+\]</span>
+One can also prove termination directly from <span class="math" data-tex="\(MD_j(Bu)=MB D_ju+M(D_jB)u\)">\(MD_j(Bu)=MB D_ju+M(D_jB)u\)</span>; kernel injectivity identifies the symbols. The leading commutator contains <span class="math" data-tex="\((MB-BM)\xi_j\)">\((MB-BM)\xi_j\)</span>, which has order one. Scalar Poisson-bracket cancellation cannot remove it.</p>
+<p>For a scalar example, <span class="math" data-tex="\(a(x,\xi)=2+\tfrac14\sin x_1+\langle\xi\rangle^2\)">\(a(x,\xi)=2+\tfrac14\sin x_1+\langle\xi\rangle^2\)</span> is uniformly elliptic of order two. The initial inverse is its ordinary reciprocal, of order minus two, but it is usually not the inverse symbol for composition. The first correction term in <span class="math" data-tex="\(a\circ a^{-1}-1\)">\(a\circ a^{-1}-1\)</span> is
+<span class="math" data-tex="\(\sum_j(\partial_{\xi_j}a)D_j(a^{-1})\)">\(\sum_j(\partial_{\xi_j}a)D_j(a^{-1})\)</span>, which the general calculus places in order at most minus one. In this particular example its base derivatives give the sharper order minus three. The theorem corrects the error recursively without imposing any periodic-boundary or compact-base condition.</p>
+<p>The loss of gain at equality is visible in one dimension. Fix <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>, let <span class="math" data-tex="\(R_j=2^{Lj}\)">\(R_j=2^{Lj}\)</span> for a fixed large integer <span class="math" data-tex="\(L\)">\(L\)</span>, and put <span class="math" data-tex="\(\lambda_j=R_j^r\)">\(\lambda_j=R_j^r\)</span>. Start the sequence at an index large enough that intervals of radius <span class="math" data-tex="\(3\lambda_j\)">\(3\lambda_j\)</span> about <span class="math" data-tex="\(R_j\)">\(R_j\)</span> are disjoint. Choose <span class="math" data-tex="\(\varphi,\omega\in C_c^\infty(\mathbb R)\)">\(\varphi,\omega\in C_c^\infty(\mathbb R)\)</span>, supported in <span class="math" data-tex="\((-2,2)\)">\((-2,2)\)</span> and <span class="math" data-tex="\((-1/10,1/10)\)">\((-1/10,1/10)\)</span>, respectively, with <span class="math" data-tex="\(\omega(0)=1\)">\(\omega(0)=1\)</span> and <span class="math" data-tex="\(\varphi(1)\ne\varphi(0)\)">\(\varphi(1)\ne\varphi(0)\)</span>. Define
+<span class="math math-display" data-tex="\[
+a(\xi)=\sum_j\varphi((\xi-R_j)/\lambda_j),
+\qquad
+b(x,\xi)=\sum_j e^{i\lambda_j x}
+\omega((\xi-R_j)/\lambda_j).
+\tag{E47}
+\]">\[
+a(\xi)=\sum_j\varphi((\xi-R_j)/\lambda_j),
+\qquad
+b(x,\xi)=\sum_j e^{i\lambda_j x}
+\omega((\xi-R_j)/\lambda_j).
+\tag{E47}
+\]</span>
+Disjoint supports and <span class="math" data-tex="\(\langle\xi\rangle\asymp R_j\)">\(\langle\xi\rangle\asymp R_j\)</span> on each term prove <span class="math" data-tex="\(a,b\in S^0_{r,r}\)">\(a,b\in S^0_{r,r}\)</span>: a base derivative costs <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>, and a frequency derivative costs <span class="math" data-tex="\(\lambda_j^{-1}\)">\(\lambda_j^{-1}\)</span>. On the support of the <span class="math" data-tex="\(j\)">\(j\)</span>-th term of <span class="math" data-tex="\(b\)">\(b\)</span>, the exact frequency-shift calculation after (E22) gives
+<span class="math" data-tex="\((a\circ b)(x,\xi)=e^{i\lambda_jx}a(\xi+\lambda_j)\omega((\xi-R_j)/\lambda_j)\)">\((a\circ b)(x,\xi)=e^{i\lambda_jx}a(\xi+\lambda_j)\omega((\xi-R_j)/\lambda_j)\)</span>.
+At <span class="math" data-tex="\(\xi=R_j\)">\(\xi=R_j\)</span>, the difference from <span class="math" data-tex="\(ab\)">\(ab\)</span> has absolute value
+<span class="math" data-tex="\(|\varphi(1)-\varphi(0)|&gt;0\)">\(|\varphi(1)-\varphi(0)|&gt;0\)</span>. It therefore belongs to no strictly negative symbol order. Nevertheless (E28), (E37) and (E40) apply to both operators. This example separates boundedness from decreasing-order asymptotics.</p>
+<h2 id="an03-euc-ps-001-problems-with-solutions">AN03-EUC-PS-001 — Problems with solutions</h2>
+<p><strong>Problem 1.</strong> Let <span class="math" data-tex="\(m_{2j}=-j\)">\(m_{2j}=-j\)</span>, <span class="math" data-tex="\(m_{2j+1}=3-j\)">\(m_{2j+1}=3-j\)</span>, and choose arbitrary <span class="math" data-tex="\(a_j\in S^{m_j}_{\rho,\delta}\)">\(a_j\in S^{m_j}_{\rho,\delta}\)</span>. What order is guaranteed for the remainder after the first four terms? Does summing the even terms first preserve the same meaning?</p>
+<p><strong>Solution.</strong> The remaining orders start with <span class="math" data-tex="\(m_4=-2\)">\(m_4=-2\)</span>, <span class="math" data-tex="\(m_5=1\)">\(m_5=1\)</span>, <span class="math" data-tex="\(m_6=-3\)">\(m_6=-3\)</span>, <span class="math" data-tex="\(m_7=0\)">\(m_7=0\)</span>; their maximum is one. Thus (E6) gives remainder order one after four terms. A genuine permutation of the natural numbers preserves the expansion modulo smoothing. The instruction “all even terms first, then all odd terms” is not a permutation indexed by the natural numbers, since no odd term occurs at a finite position. One may separately sum both subsequences and add the resulting two symbols; each tail still has orders tending to minus infinity, and (E6) verifies that the resulting sum has the original expansion. This is an additional two-sum construction, not a nonexistent enumeration.</p>
+<p><strong>Problem 2.</strong> In one dimension compute the exact left symbol of <span class="math" data-tex="\(D^2 M_{e^{3ix}}\)">\(D^2 M_{e^{3ix}}\)</span>, where <span class="math" data-tex="\(M_f\)">\(M_f\)</span> denotes multiplication by <span class="math" data-tex="\(f\)">\(f\)</span>. Check the coefficient of the first derivative term.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(D(e^{3ix}u)=e^{3ix}(D+3)u\)">\(D(e^{3ix}u)=e^{3ix}(D+3)u\)</span>, the symbol is
+<span class="math" data-tex="\(e^{3ix}(\xi+3)^2=e^{3ix}(\xi^2+6\xi+9)\)">\(e^{3ix}(\xi+3)^2=e^{3ix}(\xi^2+6\xi+9)\)</span>.
+In (E21), the first derivative term is <span class="math" data-tex="\((2\xi)D_xe^{3ix}=6\xi e^{3ix}\)">\((2\xi)D_xe^{3ix}=6\xi e^{3ix}\)</span>; the second is <span class="math" data-tex="\((2)D_x^2e^{3ix}/2!=9e^{3ix}\)">\((2)D_x^2e^{3ix}/2!=9e^{3ix}\)</span>. Higher frequency derivatives of <span class="math" data-tex="\(\xi^2\)">\(\xi^2\)</span> vanish. The sign is positive in the frequency shift, which agrees with (E13) and (E22).</p>
+<p><strong>Problem 3.</strong> Show explicitly why the proof of (E28) gives no uniform constant as <span class="math" data-tex="\(\delta\uparrow1\)">\(\delta\uparrow1\)</span>, even when <span class="math" data-tex="\(\delta\leq\rho\)">\(\delta\leq\rho\)</span>.</p>
+<p><strong>Solution.</strong> With fixed Taylor order <span class="math" data-tex="\(K\)">\(K\)</span>, the error norms in (E32) sum to at most a constant times
+<span class="math" data-tex="\(\sum_{j\geq1}2^{-jK(1-\delta)}
+=2^{-K(1-\delta)}/(1-2^{-K(1-\delta)})\)">\(\sum_{j\geq1}2^{-jK(1-\delta)}
+=2^{-K(1-\delta)}/(1-2^{-K(1-\delta)})\)</span>.
+This tends to infinity. The finite-band part remains bounded, but the estimate for the errors no longer sums at <span class="math" data-tex="\(\delta=1\)">\(\delta=1\)</span>. This is a precise failure of this proof's uniform bound; it is not a proof that every particular type-<span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> operator is unbounded.</p>
+<p><strong>Problem 4.</strong> Construct a distribution in <span class="math" data-tex="\(B^0_{2,\infty}\)">\(B^0_{2,\infty}\)</span> that does not belong to <span class="math" data-tex="\(H^0\)">\(H^0\)</span>, and explain why Schwartz density must not be used in the <span class="math" data-tex="\(B^0_{2,\infty}\)">\(B^0_{2,\infty}\)</span> proof.</p>
+<p><strong>Solution.</strong> For every <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, choose a smooth Fourier function <span class="math" data-tex="\(f_j\)">\(f_j\)</span> supported strictly inside <span class="math" data-tex="\(A_j\)">\(A_j\)</span>, normalized so that the inverse Fourier transform has <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm one. The distribution with Fourier transform <span class="math" data-tex="\(\sum_jf_j\)">\(\sum_jf_j\)</span> is tempered: on each annulus Cauchy–Schwarz bounds its pairing with a Schwartz function by that function's annular <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm, and those norms form a summable rapidly decreasing sequence. Every dyadic <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm is one, so its <span class="math" data-tex="\(B^0_{2,\infty}\)">\(B^0_{2,\infty}\)</span> norm is one, while its squared <span class="math" data-tex="\(H^0\)">\(H^0\)</span> norm is <span class="math" data-tex="\(\sum_j1=\infty\)">\(\sum_j1=\infty\)</span>. The tails of its finite annular sums all have Besov norm one. For any Schwartz function the annular norms tend to zero, so its distance from this distribution in that norm is at least one. The proof after (E39) instead uses convergence in a strictly weaker Sobolev space and estimates each fixed output band; it remains valid at the sequence endpoint.</p>
+<p><strong>Problem 5.</strong> Suppose <span class="math" data-tex="\(a\in S^m_{\rho,\delta}\)">\(a\in S^m_{\rho,\delta}\)</span>, <span class="math" data-tex="\(\delta&lt;\rho\)">\(\delta&lt;\rho\)</span>, is square-matrix elliptic, <span class="math" data-tex="\(b\in S^{-m}_{\rho,\delta}\)">\(b\in S^{-m}_{\rho,\delta}\)</span>, and <span class="math" data-tex="\(a\circ b-I\)">\(a\circ b-I\)</span> is smoothing. A proposed proof of <span class="math" data-tex="\(b\circ a-I\)">\(b\circ a-I\)</span> interchanges <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> in every differential coefficient. Identify the problem and give a valid replacement.</p>
+<p><strong>Solution.</strong> Matrix factors in (E21) do not commute, and the derivatives fall on different factors in the two orders. Even their leading products need not agree. Use (E43) to obtain a uniform inverse bound for the pointwise matrix <span class="math" data-tex="\(a\)">\(a\)</span>, construct a two-sided parametrix <span class="math" data-tex="\(c\)">\(c\)</span> by (E44)–(E45), and compute
+<span class="math" data-tex="\(b-c=c\circ(a\circ b-I)-(c\circ a-I)\circ b\)">\(b-c=c\circ(a\circ b-I)-(c\circ a-I)\circ b\)</span>.
+Both terms are smoothing because it is a two-sided ideal. Hence <span class="math" data-tex="\(b\circ a-I=(b-c)\circ a+(c\circ a-I)\)">\(b\circ a-I=(b-c)\circ a+(c\circ a-I)\)</span> is smoothing. Associativity and the ideal property replace commutativity.</p>
+<p><strong>Problem 6.</strong> Let <span class="math" data-tex="\(a(x,\xi)=f(x)g(\xi)\)">\(a(x,\xi)=f(x)g(\xi)\)</span>, where <span class="math" data-tex="\(f\in C^{n+1}(\mathbb R^n)\)">\(f\in C^{n+1}(\mathbb R^n)\)</span> and all its derivatives through order <span class="math" data-tex="\(n+1\)">\(n+1\)</span> are integrable, while <span class="math" data-tex="\(g\)">\(g\)</span> is only bounded and measurable. Prove <span class="math" data-tex="\(L^2\)">\(L^2\)</span> boundedness and state whether (E21) follows.</p>
+<p><strong>Solution.</strong> Condition (E34) holds with
+<span class="math" data-tex="\(M=\|g\|_\infty\sum_{|\alpha|\leq n+1}\|D^\alpha f\|_1\)">\(M=\|g\|_\infty\sum_{|\alpha|\leq n+1}\|D^\alpha f\|_1\)</span>, so the rough-frequency theorem gives the asserted bound. It does not imply a differentiated composition formula: <span class="math" data-tex="\(g\)">\(g\)</span> need not have a first frequency derivative, whereas (E21) is a theorem about smooth symbols with all the specified derivative bounds. The simpler factorization is multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> after the bounded Fourier multiplier <span class="math" data-tex="\(g(D)\)">\(g(D)\)</span>; the hypotheses also imply <span class="math" data-tex="\(f\)">\(f\)</span> is bounded, as follows from the integrable Fourier bound (E35).</p>
+<h2 id="references-and-research-directions">References and research directions</h2>
+<p>The mathematical antecedent for the assigned calculus is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators</em>, corrected second printing (1994), §18.1 and Appendix B.1. The metric and quadratic-multiplier framework used here is developed independently in AN03-U001, AN03-U002 and AN03-U004. Nicolas Lerner's author-hosted <a href="https://webusers.imj-prg.fr/~nicolas.lerner/ch1booklerner.pdf">first chapter</a>, Lemma 1.1.24 and Remark 1.1.28, compares classical summation and the parameter ranges; the <a href="https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf">metric chapter</a>, Lemma 2.2.18 and Theorems 2.3.7 and 2.5.1, supplies further metric composition and boundedness readings. The checked chapter files have September 2009 metadata; their byte identities, rather than an assumed final-print edition, fix the comparison. Richard Melrose's <a href="https://math.mit.edu/~rbm/18.157-F05.pdf">pseudodifferential-operator lectures</a>, version 0.7E of November 29, 2006, provide another classical reading. The checked classical summation results do not themselves supply the entire <span class="math" data-tex="\(\delta&gt;\rho\)">\(\delta&gt;\rho\)</span> range or the Besov sequence endpoints proved here. These are comparison readings; no source prose, figures or exercises are imported.</p>
+<p>The next structural questions have distinct hypotheses: coordinate changes introduce a lower bound on <span class="math" data-tex="\(\delta\)">\(\delta\)</span> relative to <span class="math" data-tex="\(1-\rho\)">\(1-\rho\)</span>; positivity estimates depend on more than boundedness; and boundary kernels require additional structure near the normal-frequency directions. The endpoint example (E47) is a useful test for any proposed extension that claims a decreasing symbolic error at <span class="math" data-tex="\(\delta=\rho\)">\(\delta=\rho\)</span>.</p>
+<p>This independently written programme text carries CC0 1.0, as specified by the course license. Its proofs are relative to the explicit entry contracts and cited internal theorems. Independent mathematical, correspondence, prerequisite and expression review, followed by render verification, remain required.</p>
+<footer><p>CC0 1.0. <a href="notices/AN-03/RIGHTS.md">Rights</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 dedication</a> · <a href="notices/AN-03/TITLE_PAGE.md">Original title</a> · <a href="notices/AN-03/HISTORY.md">Original history</a> · <a href="notices/AN-02/RENDERING.md">This rendering</a></p><p><a href="src/euclidean-symbol-calculus.md">Editable Markdown</a>. Source commit ab6fb17dcee250eb2fb6c550358b6b3362854f30.</p></footer></main></body></html>

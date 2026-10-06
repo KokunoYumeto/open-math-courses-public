@@ -1,0 +1,345 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Matrix eigenvectors and tensor absorption · Open Mathematics Courses</title><meta name="description" content="Matrix eigenvectors and tensor absorption: lesson draft with 6 solved exercises."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><aside class="draft-notice" aria-label="Prerequisite scope"><p>The full no-finite-type-I-summand matrix lemma, unit-circle phase condition and original-action small-perturbation statement are supplied. Exact centralizer and strong-stability providers are identified; their infinite-product, finite AFD, projection and finite-action foundations remain explicit. TF0–TF4 now supply the precise normal-functional and specified tracial product interfaces; broader tensor foundations retain their scope.</p></aside><article class="lesson"><h1 id="matrix-eigenvectors-and-tensor-absorption">Matrix eigenvectors and tensor absorption</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Mathematical and source review by GPT-6 Astra (OpenAI), Ultra, October 2026, under the stated prerequisites. New original text is public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>An automorphism can carry a matrix algebra with a prescribed phase on every matrix entry. If we can place infinitely many such algebras so that they commute and become increasingly central, their union forms a hyperfinite tensor factor. The automorphism then contains a concrete product action on that factor.</p>
+<p>This is the mechanism of tensor absorption. A model of period <span class="math">\(p\)</span> can be absorbed exactly when the automorphism's asymptotic period is divisible by <span class="math">\(p\)</span>. Infinite asymptotic period is denoted by <span class="math">\(0\)</span>; the model indexed by <span class="math">\(0\)</span> tests every nonzero power.</p>
+<p>The matrix and absorption arguments are [Connes], Lemmas 2.3.3–2.3.6 and Theorem 2.3.1; the related book treatment is [Takesaki III], Lemmas XVII.2.1, XVII.2.6–2.7 and Theorem XVII.2.10. We separate the finite tests, matrix estimates, product models and convergence controls. [Connes periodic] supplies classification background, and [Ando–Haagerup] supplies modern quotient context; neither substitutes for a programme proof below. The prerequisites are <a href="central-towers-and-unitary-cocycles.html">Central towers and unitary cocycles</a>, specifically Lemma 2.1 for proper outerness and Theorem 5.1 for aperiodic centralizer cohomology; <span class="unlinked">Central sequence algebras and exact lifts</span>, for the canonical trace, normal induced actions and exact lifts; and <span class="unlinked">Strong stability and tensor absorption</span>, for the general tensor construction. The finite-action input is the complete local proof in <a href="finite-free-actions-and-coboundaries.html">Finite free actions and unitary coboundaries</a>. We use center-valued trace comparison, finite matrix tensor decompositions and the strong stability theorem in the precise forms stated below.</p>
+<h2 id="1-the-tensor-and-finite-action-prerequisites">1. The tensor and finite-action prerequisites</h2>
+<p>Let <span class="math">\(R\)</span> be the hyperfinite factor of type II₁ with its normalized trace. A factor <span class="math">\(M\)</span> is <strong>strongly stable</strong> when <span class="math">\(M\cong M\overline\otimes R\)</span>. Throughout Sections 2–3 and the absorption theorem, <span class="math">\(M\)</span> is a strongly stable factor with separable predual. A bounded sequence <span class="math">\((x_n)\)</span> is <strong>strongly central</strong> if <span class="math">\(\|[x_n,\psi]\|\to0\)</span> for every <span class="math">\(\psi\in M_*\)</span>. An automorphism is <strong>centrally trivial</strong> if it fixes every such sequence modulo strong-star null sequences. The <strong>asymptotic period</strong> <span class="math">\(p_a(\theta)\)</span> is the least positive integer <span class="math">\(q\)</span> for which <span class="math">\(\theta^q\)</span> is centrally trivial, or <span class="math">\(0\)</span> if there is none. Section 2 of the central-tower prerequisite proves that this is the order of <span class="math">\(\theta_\omega\)</span> for every free ultrafilter, with infinite order written as <span class="math">\(0\)</span>. Inner automorphisms induce the identity there, so inner perturbation preserves this period. Every automorphism and isomorphism in this lesson is normal.</p>
+<p>The following two consequences of strong stability are required.</p>
+<ol>
+<li>Given finitely many elements and normal functionals, one can find a unital copy of <span class="math">\(M_2(\mathbb C)\)</span> whose matrix entries almost commute with the elements in specified strong-star seminorms and with the functionals in predual norm. The same statement holds in the relative commutant of any unital finite matrix factor. Such a relative commutant is again strongly stable.</li>
+<li>Suppose mutually commuting unital matrix factors <span class="math">\(K_v\cong M_{d_v}(\mathbb C)\)</span>, <span class="math">\(d_v\geq2\)</span>, lie in <span class="math">\(M\)</span>. Write</li>
+</ol>
+<div class="equation"><div class="math math-display">\[
+   E_v(x)=\int_{\mathcal U(K_v)}uxu^*\,du,
+   
+   \]</div><span class="equation-tag">(1.1)</span></div>
+<p>with normalized Haar measure. If a norm-total countable family <span class="math">\((\psi_j)\subset M_*\)</span> satisfies</p>
+<div class="equation"><div class="math math-display">\[
+   \sum_v\|\psi_j-\psi_j\circ E_v\|&lt;\infty\quad\text{for every }j,
+   
+   \]</div><span class="equation-tag">(1.2)</span></div>
+<p>then <span class="math">\(K=\bigvee_vK_v\)</span> is a hyperfinite II₁ factor and multiplication identifies</p>
+<div class="equation"><div class="math math-display">\[
+   M=K\overline\otimes(K&#39;\cap M).
+   
+   \]</div><span class="equation-tag">(1.3)</span></div>
+<p>The first consequence follows from <span class="unlinked">Strong stability and tensor absorption, Theorem 5.1</span>: its proof constructs ordinary centralizing unital matrix systems; predual centrality also gives strong-star commutation with each fixed element. <span class="unlinked">Lemma 4.1</span> identifies the centralizers after removing a finite matrix factor, and Theorem 5.1 consequently gives strong stability of that relative commutant. The second consequence is the general normal-functional proof of <span class="unlinked">Theorem 3.1</span>, which allows every separable-predual von Neumann algebra, without a trace or factor assumption.</p>
+<p>Here (1.2) uses a norm-total family rather than a norm-dense sequence of states. This is sufficient for the two density steps of that proof. Put <span class="math">\(F_{m,N}=E_m\cdots E_N\)</span>. If <span class="math">\(\eta=\sum_{j\in J}c_j\psi_j\)</span>, with <span class="math">\(J\)</span> finite, then commutativity and contractivity give, for <span class="math">\(L&gt;N\geq m\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;\|\psi\circ F_{m,L}-\psi\circ F_{m,N}\|\\
+&amp;\quad\leq2\|\psi-\eta\|\\
+&amp;\qquad+\sum_{j\in J}|c_j|\sum_{v=N+1}^{L}
+\|\psi_j-\psi_j\circ E_v\|.
+\end{aligned}
+
+\]</div><span class="equation-tag">(1.2a)</span></div>
+<p>First approximate <span class="math">\(\psi\)</span> by <span class="math">\(\eta\)</span>, then use (1.2), to obtain the normal infinite-tail map <span class="math">\(T_m\)</span>. The same argument gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;\|\psi-\psi\circ T_m\|\\
+&amp;\quad\leq2\|\psi-\eta\|\\
+&amp;\qquad+\sum_{j\in J}|c_j|\sum_{v\geq m}
+\|\psi_j-\psi_j\circ E_v\|.
+\end{aligned}
+
+\]</div><span class="equation-tag">(1.2b)</span></div>
+<p>Thus <span class="math">\(\psi\circ T_m\to\psi\)</span> for every normal functional. The rest of Theorem 3.1's proof gives faithfulness, generation by <span class="math">\(K\)</span> and its relative commutant, and the spatial product (1.3), with all <span class="math">\(d_v\geq2\)</span> as required here. These arguments retain the provider's stated infinite-product, finite AFD, exact-lifting and functional-analytic foundations. The historical strong-stability and summability results are [Connes], Theorem 2.2.1 and Lemma 2.3.6.</p>
+<p>We also use this finite-action result. If a finite group acts freely on a finite von Neumann algebra <span class="math">\(Q\)</span>, meaning that every nonidentity group element acts properly outerly, then</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+Z(Q^G)=Z(Q)^G,\\
+u_{st}=u_s\alpha_s(u_t) \Longrightarrow\ u_s=v^*\alpha_s(v)
+\end{gathered}
+
+\]</div><span class="equation-tag">(1.4)</span></div>
+<p>for some unitary <span class="math">\(v\in Q\)</span>. Both statements have no separability assumption. The complete construction is <a href="finite-free-actions-and-coboundaries.html">Finite free actions and unitary coboundaries</a>, theorem (B1)–(B3), specialized here to finite <span class="math">\(Q\)</span>. Section 5, (C4), proves the center identification. In Section 4, (M1)–(M2), the action on <span class="math">\(Q\overline\otimes M_2\)</span> is twisted by <span class="math">\(\operatorname{diag}(1,u_s)\)</span>. Section 10, (D2)–(D3), proves that its two fixed diagonal projections have equal center-valued trace and are equivalent inside the fixed algebra. With initial projection <span class="math">\(1\otimes e_{22}\)</span> and final projection <span class="math">\(1\otimes e_{11}\)</span>, their fixed off-diagonal partial isometry has entry <span class="math">\(v\)</span>, and (M2) is exactly <span class="math">\(\alpha_s(v)u_s^*=v\)</span>, hence (1.4). The center identification is what makes this trace comparison legitimate. The local lesson states and supplies its full projection, trace, fixed-point, support and topology routes; its general theorem imposes no finiteness, factor or countability assumption on the ambient algebra. [Connes], Lemma 2.3.3, retains its historical role.</p>
+<p>The projection-division input is proved in <a href="type-ii-projection-division.html">Dividing type-II projections and constructing matrix units</a>, Theorem 1.1 and Corollaries 1.2–1.3. Its complete construction works with arbitrary center and cardinality: in a finite algebra it gives <span class="math">\(T(f)=T(e)/(n+1)\)</span> for a nonzero piece of any nonzero <span class="math">\(e\)</span>, and unital matrix systems of every finite size. Section 6 also checks cancellation on the central support of <span class="math">\(e\)</span> without assuming a bounded inverse of <span class="math">\(T(e)\)</span>. These are the exact inputs to Lemmas 1.1 and 3.1 below.</p>
+<p><strong>Lemma 1.1 (the fixed algebra still has type II).</strong> If <span class="math">\(Q\)</span> is finite with no nonzero type I direct summand, and a finite group acts freely, then <span class="math">\(Q^G\)</span> also has no nonzero type I direct summand.</p>
+<p><em>Proof.</em> Put <span class="math">\(F=Q^G\)</span>, <span class="math">\(n=|G|\)</span>, and <span class="math">\(E=n^{-1}\sum_s\alpha_s\)</span>. Suppose a nonzero type I summand of <span class="math">\(F\)</span> existed. It would contain a nonzero abelian projection <span class="math">\(e\)</span>:</p>
+<div class="equation"><div class="math math-display">\[
+eFe=Z(F)e.
+\]</div></div>
+<p>Since <span class="math">\(e\)</span> is fixed, <span class="math">\(E\)</span> restricts to a unital expectation on <span class="math">\(eQe\)</span>, and <span class="math">\(E(x)\geq x/n\)</span> for positive <span class="math">\(x\)</span>.</p>
+<p>Let <span class="math">\(T:Q\to Z(Q)\)</span> be its normalized center-valued trace. The corner <span class="math">\(eQe\)</span> is still of type II, so choose a projection <span class="math">\(f\leq e\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+T(f)=\frac{T(e)}{n+1}.
+\]</div></div>
+<p>Naturality of <span class="math">\(T\)</span> and fixedness of <span class="math">\(e\)</span> give <span class="math">\(T(E(f))=T(e)/(n+1)\)</span>. But <span class="math">\(E(f)=ae\)</span> for some <span class="math">\(a\in Z(F)\subset Z(Q)\)</span>, by (1.4). Thus <span class="math">\(aT(e)=T(e)/(n+1)\)</span>, and faithfulness of <span class="math">\(T\)</span> on the central support of <span class="math">\(e\)</span> gives <span class="math">\(E(f)=e/(n+1)\)</span>. This contradicts <span class="math">\(E(f)\geq f/n\)</span>, after compression by the nonzero <span class="math">\(f\)</span>. Therefore no such <span class="math">\(e\)</span> exists. <span class="math">\(\square\)</span></p>
+<p><strong>Corollary 1.2 (matrices in an unrestricted fixed algebra).</strong> Suppose <span class="math">\(Q\ne0\)</span> has no nonzero direct summand of finite type I and a finite group acts freely on <span class="math">\(Q\)</span>. Then <span class="math">\(Q^G\)</span> also has no nonzero finite type I direct summand and contains a unital matrix algebra of every size <span class="math">\(d\geq2\)</span>. No countability or finiteness assumption is imposed on <span class="math">\(Q\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math">\(z\in Z(Q)\)</span> be the finite central part: <span class="math">\(zQ\)</span> is finite and <span class="math">\((1-z)Q\)</span> is properly infinite. Automorphisms preserve finiteness, so <span class="math">\(z\)</span> is fixed, and it is central in <span class="math">\(Q^G\)</span>. Freeness restricts to either nonzero invariant central part: an intertwiner in that part, extended by zero, would be an intertwiner in <span class="math">\(Q\)</span>.</p>
+<p>The finite algebra <span class="math">\(zQ\)</span> is type II, so Lemma 1.1 shows that <span class="math">\((zQ)^G=zQ^G\)</span> is type II. On the other part, the fixed-corner assertion of the finite free-action theorem, (B1)–(B3), makes the fixed unit <span class="math">\(1-z\)</span> properly infinite in <span class="math">\(((1-z)Q)^G\)</span>. A properly infinite unit has no nonzero finite central compression. Thus neither part of <span class="math">\(Q^G\)</span> has a finite type I summand.</p>
+<p>Use the type-II division theorem on the finite part. On the properly infinite part, use the two-piece split (NP5) in Section 2.8 of the finite-action lesson repeatedly: retain one piece and split the remaining piece until there are <span class="math">\(d\)</span> orthogonal projections, all equivalent to the unit and summing to it. If these are <span class="math">\(q_j\)</span>, choose partial isometries <span class="math">\(v_j\)</span> from <span class="math">\(q_1\)</span> to <span class="math">\(q_j\)</span>, with <span class="math">\(v_1=q_1\)</span>. The elements <span class="math">\(v_i v_j^*\)</span> are matrix units with diagonal sum <span class="math">\(1-z\)</span>. Add these units to those on <span class="math">\(z\)</span>; the central summands are orthogonal, so their sums are unital matrix units in <span class="math">\(Q^G\)</span>. A zero central part is simply absent. <span class="math">\(\square\)</span></p>
+<h2 id="2-large-matrices-in-relative-centralizers">2. Large matrices in relative centralizers</h2>
+<p>Write <span class="math">\(F=M_\omega\)</span> for the asymptotic centralizer, with its canonical trace from <span class="unlinked">Central sequence algebras and exact lifts, Theorem 3.1</span>, where <span class="math">\(\omega\)</span> is any free ultrafilter. Here <span class="math">\(M\)</span> is a strongly stable factor with separable predual.</p>
+<p><strong>Proposition 2.1.</strong> For every von Neumann subalgebra <span class="math">\(P\subset F\)</span> with separable predual, the finite algebra <span class="math">\(P&#39;\cap F\)</span> has no type I direct summand.</p>
+<p><em>Proof.</em> Choose a strong-star dense sequence <span class="math">\((X_j)\)</span> in the unit ball of <span class="math">\(P\)</span> and central representatives <span class="math">\(x_{j,k}\)</span>. Choose a norm-dense sequence <span class="math">\((\psi_j)\)</span> in <span class="math">\(M_*\)</span> and a faithful normal state <span class="math">\(\varphi\)</span>. At coordinate <span class="math">\(k\)</span>, the first strong stability prerequisite supplies unital matrix units <span class="math">\(e_{ab,k}\)</span>, <span class="math">\(a,b\in\{1,2\}\)</span>, satisfying</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\|[e_{ab,k},\psi_j]\|&lt;1/k,\\
+\|[e_{ab,k},x_{j,k}]\|_\varphi^\sharp&lt;1/k
+\quad(j\leq k).
+\end{gathered}
+
+\]</div><span class="equation-tag">(2.1)</span></div>
+<p>Here <span class="math">\(\|x\|_\varphi^\sharp=(\varphi(x^*x)+\varphi(xx^*))^{1/2}\)</span>. Their classes are unital matrix units in <span class="math">\(P&#39;\cap F\)</span>. Commutation extends from the dense sequence to <span class="math">\(P\)</span> by bounded strong-star continuity of multiplication.</p>
+<p>Repeat the construction after adjoining each finite family of matrix units to <span class="math">\(P\)</span>. The enlarged algebra still has separable predual. Consequently <span class="math">\(P&#39;\cap F\)</span> contains mutually commuting unital copies of <span class="math">\(M_2\)</span>, and hence unital copies of <span class="math">\(M_{2^r}\)</span> for every <span class="math">\(r\)</span>.</p>
+<p>If a finite type I summand were nonzero, some nonzero homogeneous central summand would have type I<span class="math">\(_d\)</span> for a finite integer <span class="math">\(d\)</span>. Compressing every one of these unital embeddings to that summand would force <span class="math">\(2^r\mid d\)</span> for every <span class="math">\(r\)</span>, which is impossible. A finite von Neumann algebra has no infinite type I summand. Thus <span class="math">\(P&#39;\cap F\)</span> is of type II. <span class="math">\(\square\)</span></p>
+<p>The word “unital” is essential. A small nonunital matrix corner is compatible with a type I summand; arbitrary unital matrix sizes are not.</p>
+<h2 id="3-prescribed-phases-on-matrix-entries">3. Prescribed phases on matrix entries</h2>
+<p>Call an automorphism <span class="math">\(\alpha\)</span> of <span class="math">\(Q\)</span> <strong>stable</strong> if every unitary <span class="math">\(u\in Q\)</span> can be written <span class="math">\(u=v^*\alpha(v)\)</span>. This is equivalent to the cohomology convention <span class="math">\(\alpha(w)=uw\)</span>: apply that equation to <span class="math">\(u^*\)</span> and take adjoints.</p>
+<p><strong>Lemma 3.1 (matrix eigenvectors).</strong> Let <span class="math">\(Q\ne0\)</span> be a von Neumann algebra with no nonzero direct summand of finite type I, let <span class="math">\(\alpha\in\operatorname{Aut}Q\)</span>, let <span class="math">\(d\geq2\)</span>, and let <span class="math">\(\lambda\in\mathbb T\)</span>. Suppose either:</p>
+<ul>
+<li><span class="math">\(\alpha\)</span> is stable; or</li>
+<li><span class="math">\(\alpha^n=\mathrm{id}\)</span>, its first <span class="math">\(n-1\)</span> powers are properly outer, and <span class="math">\(\lambda^n=1\)</span>.</li>
+</ul>
+<p>Then there are unital <span class="math">\(d\)</span>-by-<span class="math">\(d\)</span> matrix units <span class="math">\((f_{ij})\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+\alpha(f_{ij})=\lambda^{i-j}f_{ij}.
+
+\]</div><span class="equation-tag">(3.1)</span></div>
+<p><em>Proof in the stable case.</em> Split <span class="math">\(Q\)</span> into its invariant finite and properly infinite central parts, as in Corollary 1.2. On the finite part choose unital matrix units by type-II division. Their first diagonal and its image under <span class="math">\(\alpha\)</span> both have normalized center-valued trace <span class="math">\(1/d\)</span>, so trace comparison makes them equivalent. On the properly infinite part choose the diagonal pieces all equivalent to its unit, using (NP5); the first diagonal and its image are then equivalent to that same unit. Add the two systems across the central split to obtain unital matrix units <span class="math">\((e_{ij})\)</span> in <span class="math">\(Q\)</span>. The orthogonal sum of the two comparison partial isometries gives <span class="math">\(w\in Q\)</span> with <span class="math">\(w^*w=e_{11}\)</span> and <span class="math">\(ww^*=\alpha(e_{11})\)</span>. The unitary</p>
+<div class="equation"><div class="math math-display">\[
+b=\sum_{j=1}^d\alpha(e_{j1})w e_{1j}
+\]</div></div>
+<p>satisfies <span class="math">\(be_{ij}b^*=\alpha(e_{ij})\)</span>. Set <span class="math">\(a=\sum_j\lambda^j e_{jj}\)</span> and <span class="math">\(u=ab^*\)</span>. Then</p>
+<div class="equation"><div class="math math-display">\[
+\operatorname{Ad}u\circ\alpha(e_{ij})=\lambda^{i-j}e_{ij}.
+\]</div></div>
+<p>By stability, <span class="math">\(u=v^*\alpha(v)\)</span>. Hence <span class="math">\(\operatorname{Ad}u\circ\alpha=\operatorname{Ad}(v^*)\circ\alpha\circ\operatorname{Ad}v\)</span>. Multiplying the last displayed eigenvector identity by <span class="math">\(v\)</span> and <span class="math">\(v^*\)</span> shows that <span class="math">\(f_{ij}=ve_{ij}v^*\)</span> satisfies (3.1).</p>
+<p><em>Proof in the periodic case.</em> Corollary 1.2 gives unital matrix units <span class="math">\(e_{ij}\)</span> in <span class="math">\(Q^\alpha\)</span>. With <span class="math">\(a=\sum_j\lambda^j e_{jj}\)</span>, fixedness and <span class="math">\(\lambda^n=1\)</span> make <span class="math">\(u_k=a^k\)</span>, <span class="math">\(0\leq k&lt;n\)</span>, a cocycle for the cyclic action. The unrestricted coboundary assertion (B2) of the finite-action prerequisite gives <span class="math">\(a=v^*\alpha(v)\)</span>; its orientation is the same as (1.4). As above, <span class="math">\(\operatorname{Ad}a\circ\alpha(e_{ij})=\lambda^{i-j}e_{ij}\)</span>, so <span class="math">\(ve_{ij}v^*\)</span> are the required units. The case <span class="math">\(n=1\)</span> simply uses <span class="math">\(\lambda=1\)</span> and <span class="math">\(\alpha=\mathrm{id}\)</span>. <span class="math">\(\square\)</span></p>
+<p>This retains the unrestricted ambient algebra of [Takesaki III], Lemma XVII.2.6, as well as the finite type-II case of [Connes], Lemma 2.3.3. The stable case allows every <span class="math">\(\lambda\in\mathbb T\)</span>; a root-of-unity condition belongs only to the finite-period case.</p>
+<p>We use two further exact lifting statements for the asymptotic centralizer. Unital matrix units in <span class="math">\(F\)</span> have central representatives that are unital matrix units at every coordinate. Also, if equivalent projections <span class="math">\(e_k,f_k\)</span> represent the same projection <span class="math">\(E\in F\)</span>, there are partial isometries <span class="math">\(w_k\)</span> from <span class="math">\(e_k\)</span> to <span class="math">\(f_k\)</span> whose class is <span class="math">\(E\)</span>. Their full proofs are <span class="unlinked">Central sequence algebras and exact lifts, Theorem 6.1</span> for exact unital matrix systems, and <span class="unlinked">Theorem 5.1</span>, with <span class="math">\(U=E\)</span>, for the prescribed equivalent endpoints. Both keep the separable-predual factor hypothesis and every free ultrafilter. [Connes], Proposition 1.1.3 and Lemma 1.1.4, are the historical lifting references. On infinite factors their proofs leave small infinite complements before completing a polar partial isometry; equivalence alone does not justify an arbitrary completion being close to the identity.</p>
+<p><strong>Theorem 3.2 (an exact finite matrix after a small perturbation).</strong> Let <span class="math">\(M\)</span> be a strongly stable factor with separable predual, let <span class="math">\(\theta\in\operatorname{Aut}M\)</span>, let <span class="math">\(d\geq2\)</span>, let <span class="math">\(\lambda\in\mathbb T\)</span>, and suppose</p>
+<div class="equation"><div class="math math-display">\[
+\lambda^{p_a(\theta)}=1.
+
+\]</div><span class="equation-tag">(3.2)</span></div>
+<p>When <span class="math">\(p_a(\theta)=0\)</span>, (3.2) permits every <span class="math">\(\lambda\in\mathbb T\)</span>. Given finitely many <span class="math">\(\psi_l\in M_*\)</span>, a faithful normal state <span class="math">\(\varphi\)</span> and <span class="math">\(\varepsilon&gt;0\)</span>, there are unital matrix units <span class="math">\(e_{ij}\in M\)</span> and a unitary <span class="math">\(a\in M\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\|[e_{ij},\psi_l]\|&lt;\varepsilon,\\
+\operatorname{Ad}a\circ\theta(e_{ij})=\lambda^{i-j}e_{ij},\\
+\|a-1\|_\varphi^\sharp&lt;\varepsilon.
+\end{gathered}
+
+\]</div><span class="equation-tag">(3.3)</span></div>
+<p>For <span class="math">\(d=1\)</span>, the same conclusion holds with <span class="math">\(e_{11}=1\)</span> and <span class="math">\(a=1\)</span>.</p>
+<p><em>Proof.</em> Proposition 2.1 with <span class="math">\(P=\mathbb C\)</span> makes <span class="math">\(F\)</span> of type II. Put <span class="math">\(\gamma=\theta_\omega\)</span>. If <span class="math">\(p_a(\theta)=0\)</span>, the cohomology theorem makes <span class="math">\(\gamma\)</span> stable. If <span class="math">\(p_a(\theta)=n&gt;0\)</span>, then <span class="math">\(\gamma^n=\mathrm{id}\)</span>; the proper-outerness theorem for the centralizer makes its first <span class="math">\(n-1\)</span> powers properly outer. Lemma 3.1 gives matrix units <span class="math">\(E_{ij}\in F\)</span> with <span class="math">\(\gamma(E_{ij})=\lambda^{i-j}E_{ij}\)</span>.</p>
+<p>Lift them to central systems <span class="math">\(e_{ij,k}\)</span>. Their first diagonals and their images under <span class="math">\(\theta\)</span> are equivalent, since both belong to unital <span class="math">\(d\)</span>-by-<span class="math">\(d\)</span> systems in the factor <span class="math">\(M\)</span>. They represent the same <span class="math">\(E_{11}\)</span>. Use the lifting statement to choose <span class="math">\(w_k\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+w_k^*w_k=e_{11,k},\\
+w_kw_k^*=\theta(e_{11,k}),\qquad [(w_k)]=E_{11}.
+\end{gathered}
+\]</div></div>
+<p>Define</p>
+<div class="equation"><div class="math math-display">\[
+b_k=\sum_{j=1}^d\lambda^{1-j}\theta(e_{j1,k})w_ke_{1j,k}.
+
+\]</div><span class="equation-tag">(3.4)</span></div>
+<p>Matrix multiplication gives <span class="math">\(b_k^*b_k=b_kb_k^*=1\)</span> and</p>
+<div class="equation"><div class="math math-display">\[
+b_ke_{ij,k}b_k^*=\lambda^{j-i}\theta(e_{ij,k}).
+
+\]</div><span class="equation-tag">(3.5)</span></div>
+<p>The class of (3.4) is <span class="math">\(\sum_jE_{jj}=1\)</span>, because the factors <span class="math">\(\lambda^{1-j}\)</span> cancel the eigenvalues of <span class="math">\(\gamma(E_{j1})\)</span>. Thus <span class="math">\(b_k-1\)</span> tends strongly-star to zero along <span class="math">\(\omega\)</span>. Choose a coordinate at which the finitely many centrality tests and this state test are below <span class="math">\(\varepsilon\)</span>, and take <span class="math">\(a=b_k^*\)</span>. Rearranging (3.5) gives (3.3). <span class="math">\(\square\)</span></p>
+<h2 id="4-matrix-averaging-and-finite-tensor-corners">4. Matrix averaging and finite tensor corners</h2>
+<p>The induction needs a bound that turns matrix-entry centrality into predual control of a conditional expectation.</p>
+<p><strong>Lemma 4.1.</strong> If <span class="math">\(K\cong M_d(\mathbb C)\)</span> is unital in <span class="math">\(M\)</span>, with matrix units <span class="math">\(e_{ij}\)</span>, and <span class="math">\(E_K\)</span> is its Haar averaging expectation onto <span class="math">\(K&#39;\cap M\)</span>, then</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\|\psi-\psi\circ E_K\|\leq d^2\max_{i,j}\|[e_{ij},\psi]\|\\
+(\psi\in M_*).
+\end{gathered}
+
+\]</div><span class="equation-tag">(4.1)</span></div>
+<p><em>Proof.</em> Put <span class="math">\(C=K&#39;\cap M\)</span> and <span class="math">\(\eta=\max_{i,j}\|[e_{ij},\psi]\|\)</span>. For <span class="math">\(x\in C\)</span>, <span class="math">\(\|x\|\leq1\)</span>, and <span class="math">\(i\ne j\)</span>, apply the commutator with <span class="math">\(e_{ii}\)</span> to <span class="math">\(xe_{ij}\)</span> to get <span class="math">\(|\psi(xe_{ij})|\leq\eta\)</span>. Applying the commutator with <span class="math">\(e_{ij}\)</span> to <span class="math">\(xe_{ji}\)</span> gives</p>
+<div class="equation"><div class="math math-display">\[
+|\psi(xe_{ii})-\psi(xe_{jj})|\leq\eta.
+\]</div></div>
+<p>Average this over <span class="math">\(j\)</span>; since <span class="math">\(\sum_je_{jj}=1\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+|\psi(xe_{ii})-\psi(x)/d|\leq\eta.
+\]</div></div>
+<p>Every contraction <span class="math">\(y\in M=K\overline\otimes C\)</span> has a matrix expansion <span class="math">\(y=\sum_{i,j}x_{ij}e_{ij}\)</span>, with <span class="math">\(x_{ij}\in C\)</span> contractions. On the off-diagonal entries <span class="math">\(E_K\)</span> is zero; on each diagonal it replaces <span class="math">\(x_{ii}e_{ii}\)</span> by <span class="math">\(x_{ii}/d\)</span>. Summing the <span class="math">\(d(d-1)\)</span> off-diagonal and <span class="math">\(d\)</span> diagonal bounds yields (4.1). <span class="math">\(\square\)</span></p>
+<p><strong>Lemma 4.2 (asymptotic period survives a finite matrix leg).</strong> Let <span class="math">\(M\)</span> be a factor with separable predual, <span class="math">\(b\in\mathcal U(M_d(\mathbb C))\)</span>, and <span class="math">\(\beta\in\operatorname{Aut}C\)</span>. If</p>
+<div class="equation"><div class="math math-display">\[
+M=M_d(\mathbb C)\overline\otimes C,\qquad
+\theta=\operatorname{Ad}b\otimes\beta,
+\]</div></div>
+<p>then <span class="math">\(p_a(\theta)=p_a(\beta)\)</span>.</p>
+<p><em>Proof.</em> A bounded central sequence commutes strongly-star with all fixed scalar matrix units. Its difference from its matrix-trace average</p>
+<div class="equation"><div class="math math-display">\[
+E(x)=\frac1d\sum_{i,j}e_{ij}xe_{ji}\in1\otimes C
+\]</div></div>
+<p>is strongly-star null. This follows by subtracting <span class="math">\(x=d^{-1}\sum_{i,j}e_{ij}e_{ji}x\)</span> and using the finitely many fixed matrix-unit commutators. Normal functionals on the finite matrix tensor product have finitely many coefficient functionals, so <span class="math">\((1\otimes x_k)\)</span> is central in <span class="math">\(M\)</span> precisely when <span class="math">\((x_k)\)</span> is central in <span class="math">\(C\)</span>. The same statement holds for the null ideal. Thus <span class="math">\(C_\omega\to M_\omega\)</span>, <span class="math">\([(x_k)]\mapsto[(1\otimes x_k)]\)</span>, is an isomorphism intertwining <span class="math">\(\beta_\omega\)</span> and <span class="math">\(\theta_\omega\)</span>. Their orders agree. <span class="math">\(\square\)</span></p>
+<p>The assertion uses a finite matrix leg. It does not identify the centralizers of arbitrary infinite tensor products this way.</p>
+<h2 id="5-concrete-product-models">5. Concrete product models</h2>
+<p>For <span class="math">\(p\geq2\)</span>, put <span class="math">\(\zeta_p=e^{2\pi i/p}\)</span>, choose standard matrix units in <span class="math">\(M_p\)</span>, and set</p>
+<div class="equation"><div class="math math-display">\[
+c_p=\sum_{j=1}^p\zeta_p^j e_{jj},\qquad
+\sigma_p=\bigotimes_{v=1}^\infty\operatorname{Ad}c_p
+
+\]</div><span class="equation-tag">(5.1)</span></div>
+<p>on the tracial infinite product, which is isomorphic to <span class="math">\(R\)</span>. Set <span class="math">\(\sigma_1=\mathrm{id}_R\)</span>. For <span class="math">\(p=0\)</span>, choose a sequence <span class="math">\((d_v)\)</span> in which each integer <span class="math">\(d\geq2\)</span> occurs infinitely often, and set</p>
+<div class="equation"><div class="math math-display">\[
+\sigma_0=\bigotimes_v\operatorname{Ad}c_{d_v}.
+
+\]</div><span class="equation-tag">(5.2)</span></div>
+<p>Here and below a tracial product means the von Neumann algebra in the GNS representation of the tensor-product trace. The complete construction and normal extension of each specified coordinate map are supplied by <a href="normal-tensor-and-tracial-product-foundations.html">Normal tensor tests and tracial GNS identifications</a>, TF0–TF3; TF1 and TF4 supply all product-functional and finite-head limits used here and in Section 6. Each finite-coordinate automorphism preserves that trace and is compatible with inclusion of larger finite heads. On their algebraic union, <span class="math">\(x\Omega\mapsto\sigma(x)\Omega\)</span> is therefore an isometry with an inverse. Its unitary extension implements a normal automorphism of the generated algebra. This constructs the actions in (5.1)–(5.2).</p>
+<p>A bijection between two coordinate sets that matches each matrix size sends a finite elementary tensor to the tensor with the same entries in the matched coordinates. It is a unital star isomorphism of the algebraic tensor unions and preserves the product trace. The same GNS isometry and its inverse extend it to a normal trace-preserving isomorphism of the von Neumann products. Matching the sizes also matches the diagonal clocks, so this isomorphism intertwines their actions. Thus the choice of sequence in (5.2) does not change its conjugacy class. The identification of each tracial matrix product with <span class="math">\(R\)</span> uses the infinite-product and finite AFD uniqueness foundations stated in Section 1.</p>
+<p><strong>Proposition 5.1.</strong> These models satisfy</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+p_a(\sigma_p)=p,\qquad p_o(\sigma_p)=p,\\
+\sigma_p\otimes\sigma_p\cong\sigma_p.
+\end{gathered}
+
+\]</div><span class="equation-tag">(5.3)</span></div>
+<p>Here <span class="math">\(p_o\)</span> is the order in the outer automorphism group, with infinite order denoted by <span class="math">\(0\)</span>.</p>
+<p><em>Proof.</em> For <span class="math">\(p\geq2\)</span>, <span class="math">\(\sigma_p^p=\mathrm{id}\)</span>. If <span class="math">\(p\nmid q\)</span>, let <span class="math">\(x_v\)</span> be the entry <span class="math">\(e_{12}\)</span> in coordinate <span class="math">\(v\)</span>. It is a bounded strongly central sequence. To check the predual norm, first take a functional <span class="math">\(\psi_y(x)=\tau(yx)\)</span> with <span class="math">\(y\)</span> in a finite tensor head. Every later <span class="math">\(x_v\)</span> commutes with <span class="math">\(y\)</span>, and traciality gives <span class="math">\([x_v,\psi_y]=0\)</span>. Such functionals are norm dense in the predual by TF4: truncate a concrete predual vector series, approximate its vectors by finite-head vectors, and use traciality. The customary <span class="math">\(L^1\)</span> route also uses bounded-density approximation in <span class="math">\(L^2\)</span>, hence in <span class="math">\(L^1\)</span>; the supplied TF4 proof establishes the needed density directly. The uniform bound <span class="math">\(\|[x_v,\psi]\|\leq2\|\psi\|\)</span> extends the claim to every normal functional. Moreover,</p>
+<div class="equation"><div class="math math-display">\[
+\|\sigma_p^q(x_v)-x_v\|_2
+=|\zeta_p^{-q}-1|/\sqrt p&gt;0.
+
+\]</div><span class="equation-tag">(5.4)</span></div>
+<p>Thus that power is not centrally trivial. Inner automorphisms are centrally trivial, so it is also outer. This gives both periods. For <span class="math">\(\sigma_0\)</span>, given <span class="math">\(q\ne0\)</span>, choose <span class="math">\(d&gt;|q|\)</span> and use (5.4) along its infinitely many coordinates. No nonzero power is centrally trivial or inner. The assertions for <span class="math">\(p=1\)</span> are immediate.</p>
+<p>Interlacing two sequences of size <span class="math">\(p\)</span> coordinates proves the last assertion for <span class="math">\(p\geq2\)</span>, using the trace-GNS extension just established. For <span class="math">\(p=0\)</span>, each size occurs countably infinitely often in both the single and doubled coordinate sets, so choose a bijection within each size and apply the same extension. For <span class="math">\(p=1\)</span>, interlace the tracial <span class="math">\(M_2\)</span> coordinates of <span class="math">\(R\overline\otimes R\)</span>; the actions on both sides are identities. These constructions give a normal isomorphism <span class="math">\(J_p:R\to R\overline\otimes R\)</span> with <span class="math">\(J_p\sigma_p=(\sigma_p\otimes\sigma_p)J_p\)</span> in every case. <span class="math">\(\square\)</span></p>
+<p>For example, <span class="math">\(\sigma_3^2\)</span> moves each far-out <span class="math">\(e_{12}\)</span> by the fixed phase <span class="math">\(e^{-4\pi i/3}\)</span>. Moving the entry farther out makes it central but does not reduce this displacement.</p>
+<h2 id="6-absorbing-a-model-with-a-small-inner-perturbation">6. Absorbing a model with a small inner perturbation</h2>
+<p>Automorphisms <span class="math">\(\theta\)</span> on <span class="math">\(M\)</span> and <span class="math">\(\eta\)</span> on <span class="math">\(N\)</span> are <strong>outer conjugate</strong> if an isomorphism <span class="math">\(\pi:M\to N\)</span> and a unitary <span class="math">\(u\in M\)</span> satisfy</p>
+<div class="equation"><div class="math math-display">\[
+\eta=\pi\circ\operatorname{Ad}u\circ\theta\circ\pi^{-1}.
+
+\]</div><span class="equation-tag">(6.1)</span></div>
+<p>For a single automorphism, viewed as an action of <span class="math">\(\mathbb Z\)</span>, its inner perturbation determines a cocycle by iteration. For a finite cyclic group, one must additionally check that this iterated cocycle equals <span class="math">\(1\)</span> after a full period. We retain that distinction in periodic classification.</p>
+<p><strong>Theorem 6.1 (tensor absorption).</strong> Let <span class="math">\(M\)</span> be a strongly stable factor with separable predual and <span class="math">\(\theta\in\operatorname{Aut}M\)</span>. For <span class="math">\(p\in\{0,1,2,\ldots\}\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math">\(p\)</span> divides <span class="math">\(p_a(\theta)\)</span>, where divisibility by <span class="math">\(0\)</span> means <span class="math">\(p_a(\theta)=0\)</span>.</li>
+<li><span class="math">\(\theta\)</span> and <span class="math">\(\theta\otimes\sigma_p\)</span> are outer conjugate.</li>
+<li>For every faithful normal state <span class="math">\(\varphi\)</span> and <span class="math">\(\delta&gt;0\)</span>, there is a unitary <span class="math">\(u\)</span> with <span class="math">\(\|u-1\|_\varphi^\sharp&lt;\delta\)</span> such that <span class="math">\(\theta&#39;=\operatorname{Ad}u\circ\theta\)</span> is conjugate to <span class="math">\(\theta&#39;\otimes\sigma_p\)</span>.</li>
+</ol>
+<p><em>Proof of (1) implies (3).</em> Choose matrix sizes and phases: for <span class="math">\(p\geq2\)</span>, take <span class="math">\(d_v=p\)</span>, <span class="math">\(\lambda_v=\zeta_p\)</span>; for <span class="math">\(p=1\)</span>, take <span class="math">\(d_v=2\)</span>, <span class="math">\(\lambda_v=1\)</span>; for <span class="math">\(p=0\)</span>, use the sequence of (5.2), with <span class="math">\(\lambda_v=\zeta_{d_v}\)</span>. Choose a norm-dense sequence <span class="math">\((\psi_j)\)</span> in the unit ball of <span class="math">\(M_*\)</span>.</p>
+<p>We construct commuting unital matrix factors <span class="math">\(K_v\)</span> with units <span class="math">\(e_{ij}^{(v)}\)</span>, correcting unitaries <span class="math">\(a_v\)</span>, and products <span class="math">\(U_v=a_v\cdots a_1\)</span>. At every stage require</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;a_v\in(K_1\vee\cdots\vee K_{v-1})&#39;\cap M,\\
+&amp;\|[e_{ab}^{(v)},\psi_j]\|&lt;2^{-v}/d_v^2\\
+&amp;\qquad(1\leq a,b\leq d_v,\ j\leq v),\\
+&amp;\theta_v(e_{ij}^{(k)})=\lambda_k^{i-j}e_{ij}^{(k)}
+\quad(k\leq v),\\
+&amp;\theta_v=\operatorname{Ad}U_v\circ\theta,\\
+&amp;\|U_v-U_{v-1}\|_\varphi^\sharp&lt;\delta\,2^{-v-1},
+\end{aligned}
+
+\]</div><span class="equation-tag">(6.2)</span></div>
+<p>where <span class="math">\(U_0=1\)</span>. Each entry is tested against every listed functional.</p>
+<p>Assume the construction through <span class="math">\(v-1\)</span>. Put <span class="math">\(N=K_1\vee\cdots\vee K_{v-1}\)</span> and <span class="math">\(C=N&#39;\cap M\)</span>. This is a finite matrix tensor decomposition <span class="math">\(M=N\overline\otimes C\)</span>. The first strong stability prerequisite makes <span class="math">\(C\)</span> strongly stable. The eigenvector identities already imposed make <span class="math">\(\theta_{v-1}\)</span> preserve <span class="math">\(N\)</span> and <span class="math">\(C\)</span>; on <span class="math">\(N\)</span> its action is inner. Its restriction <span class="math">\(\beta\)</span> to <span class="math">\(C\)</span> has <span class="math">\(p_a(\beta)=p_a(\theta)\)</span>, by Lemma 4.2 and invariance of asymptotic period under inner perturbation. Therefore <span class="math">\(\lambda_v^{p_a(\beta)}=1\)</span>.</p>
+<p>Expand the finitely many <span class="math">\(\psi_1,\ldots,\psi_v\)</span> into coefficient functionals for <span class="math">\(N\overline\otimes C\)</span>. Making a contraction in <span class="math">\(C\)</span> commute in predual norm with this finite list of coefficients makes its commutators with every original <span class="math">\(\psi_j\)</span> arbitrarily small: each is a finite sum of coefficient commutators. Thus Theorem 3.2 in <span class="math">\(C\)</span> can meet the second line of (6.2).</p>
+<p>The last line requires care because <span class="math">\(U_{v-1}\)</span> varies. On <span class="math">\(C\)</span> use the faithful state obtained by normalizing the restriction of</p>
+<div class="equation"><div class="math math-display">\[
+\chi=\varphi+\varphi\circ\operatorname{Ad}(U_{v-1}^*).
+
+\]</div><span class="equation-tag">(6.3)</span></div>
+<p>If <span class="math">\(a\in C\)</span> is close enough to <span class="math">\(1\)</span> in <span class="math">\(\|\cdot\|_\chi^\sharp\)</span>, then</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;\|(a-1)U_{v-1}\|_\varphi^\sharp{}^2\\
+&amp;\quad={}(\varphi\circ\operatorname{Ad}(U_{v-1}^*))((a-1)^*(a-1))\\
+&amp;\qquad+\varphi((a-1)(a-1)^*),
+\end{aligned}
+
+\]</div><span class="equation-tag">(6.4)</span></div>
+<p>is as small as required. Apply Theorem 3.2 with this state and the coefficient functionals. Set its matrix units to be <span class="math">\(e_{ij}^{(v)}\)</span>, and its unitary to be <span class="math">\(a_v\)</span>. It commutes with all previous <span class="math">\(K_k\)</span>, so their eigenvector identities persist; the new identities follow from (3.3). This completes the induction.</p>
+<p>The faithful-state criterion and its uniform finite-test estimate are proved in <a href="bounded-topology-and-tracial-representations.html">Bounded topology and tracial representations, Section 3A</a>, with the exact preceding proofs in its companion. These results also justify the completeness step used here. In a faithful normal representation, a bounded strong-star Cauchy sequence has pointwise limits <span class="math">\(T\xi\)</span> and <span class="math">\(S\xi\)</span> for the operators and their adjoints, by Hilbert-space completeness. Uniform boundedness of the sequence makes <span class="math">\(T\)</span> and <span class="math">\(S\)</span> bounded linear operators. Passing to the adjoint pairings gives <span class="math">\(S=T^*\)</span>. The represented von Neumann algebra is strongly closed, so <span class="math">\(T\)</span> belongs to it. For a sequence of unitaries, bounded strong continuity of multiplication passes both identities <span class="math">\(U_v^*U_v=U_vU_v^*=1\)</span> to the limit; hence <span class="math">\(T\)</span> is unitary. The faithful-state estimate applies to the bounded differences of two sequence terms, so state-seminorm Cauchy control supplies exactly this strong-star Cauchy hypothesis.</p>
+<p>The summable last line of (6.2) makes both <span class="math">\(U_v\)</span> and <span class="math">\(U_v^*\)</span> Cauchy in the state seminorm. On bounded sets a faithful state generates the intrinsic strong-star topology, and bounded strong-star Cauchy sequences are complete. Hence <span class="math">\(U_v\to u\)</span> strongly-star for a unitary <span class="math">\(u\)</span>, and <span class="math">\(\|u-1\|_\varphi^\sharp\leq\delta/2&lt;\delta\)</span>. Conjugation by <span class="math">\(U_v\)</span> converges to conjugation by <span class="math">\(u\)</span>, so all eigenvector identities pass to <span class="math">\(\theta&#39;=\operatorname{Ad}u\circ\theta\)</span>.</p>
+<p>By Lemma 4.1, for every fixed <span class="math">\(j\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\sum_{v\geq j}\|\psi_j-\psi_j\circ E_v\|
+\leq\sum_{v\geq j}2^{-v}&lt;\infty.
+\]</div></div>
+<p>The finitely many earlier terms are finite. The tensor-splitting prerequisite therefore gives <span class="math">\(M=K\overline\otimes C_\infty\)</span>, where <span class="math">\(K=\bigvee_vK_v\cong R\)</span> and <span class="math">\(C_\infty=K&#39;\cap M\)</span>. The eigenvector identities identify <span class="math">\(\theta&#39;|_K\)</span> with <span class="math">\(\sigma_p\)</span>. Since <span class="math">\(\theta&#39;\)</span> preserves <span class="math">\(K\)</span>, it also preserves <span class="math">\(C_\infty\)</span>; write its restriction there as <span class="math">\(\beta_\infty\)</span>. Then</p>
+<div class="equation"><div class="math math-display">\[
+\theta&#39;\cong\sigma_p\otimes\beta_\infty
+\cong\sigma_p\otimes\sigma_p\otimes\beta_\infty
+\cong\theta&#39;\otimes\sigma_p,
+\]</div></div>
+<p>using Proposition 5.1. More explicitly, let <span class="math">\(\Phi:M\to R\overline\otimes C_\infty\)</span> be the normal tensor isomorphism just constructed, with <span class="math">\(\Phi\theta&#39;=(\sigma_p\otimes\beta_\infty)\Phi\)</span>. Let <span class="math">\(\mathrm{flip}_{23}:R\overline\otimes R\overline\otimes C_\infty\to R\overline\otimes C_\infty\overline\otimes R\)</span> interchange the last two factors. Then the normal isomorphism</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+\Xi:M&amp;\longrightarrow M\overline\otimes R,\\
+\Xi&amp;=(\Phi^{-1}\otimes\mathrm{id}_R)\circ\mathrm{flip}_{23}\\
+&amp;\qquad\circ(J_p\otimes\mathrm{id}_{C_\infty})\circ\Phi
+\end{aligned}
+\]</div></div>
+<p>satisfies <span class="math">\(\Xi\theta&#39;=(\theta&#39;\otimes\sigma_p)\Xi\)</span>. Each factor is an isomorphism with the displayed source and target; the intertwining follows from the two identities for <span class="math">\(\Phi\)</span> and <span class="math">\(J_p\)</span>. This proves (3).</p>
+<p><em>Proof of (3) implies (2).</em> Put <span class="math">\(\eta=\theta\otimes\sigma_p\)</span>, and let <span class="math">\(h:M\to M\overline\otimes R\)</span> conjugate <span class="math">\(\theta&#39;=\operatorname{Ad}u\circ\theta\)</span> to <span class="math">\(\theta&#39;\otimes\sigma_p\)</span>. Then</p>
+<div class="equation"><div class="math math-display">\[
+h\circ\operatorname{Ad}u\circ\theta\circ h^{-1}
+=\operatorname{Ad}(u\otimes1)\circ\eta.
+\]</div></div>
+<p>The unitary <span class="math">\(v=h^{-1}(u^*\otimes1)u\in M\)</span> therefore satisfies <span class="math">\(h\circ\operatorname{Ad}v\circ\theta\circ h^{-1}=\eta\)</span>, which is (6.1).</p>
+<p><em>Proof of (2) implies (1).</em> Outer conjugacy preserves asymptotic period, since inner automorphisms act trivially on the asymptotic centralizer. If <span class="math">\(p_a(\theta)=0\)</span>, condition (1) holds for every <span class="math">\(p\)</span>. Otherwise let <span class="math">\(q=p_a(\theta)&gt;0\)</span>. If <span class="math">\(p\nmid q\)</span>, Proposition 5.1 supplies a bounded central sequence <span class="math">\((x_v)\)</span> in <span class="math">\(R\)</span> for which <span class="math">\(\sigma_p^q(x_v)-x_v\)</span> does not tend strongly-star to zero. This includes <span class="math">\(p=0\)</span> and any <span class="math">\(q&gt;0\)</span>. The sequence <span class="math">\((1\otimes x_v)\)</span> is strongly central in <span class="math">\(M\overline\otimes R\)</span>: check product normal functionals and then use their norm density. It is moved by <span class="math">\((\theta\otimes\sigma_p)^q\)</span>. Thus that power is not centrally trivial, whereas <span class="math">\(\theta^q\)</span> is. This contradicts (2), proving (1). <span class="math">\(\square\)</span></p>
+<p>The near-identity statement concerns <span class="math">\(\theta&#39;\)</span> and its own tensor product. It does not assert that <span class="math">\(\theta\)</span> is conjugate to its tensor product without an inner perturbation.</p>
+<p><strong>Corollary 6.2 (extracting the factor).</strong> Under condition (1), the unitary in (3) can be chosen so that there is a tensor decomposition <span class="math">\(M\cong R\overline\otimes C\)</span> in which <span class="math">\(\operatorname{Ad}u\circ\theta=\sigma_p\otimes\beta\)</span> for an automorphism <span class="math">\(\beta\)</span> of <span class="math">\(C\)</span>.</p>
+<p><em>Proof.</em> This is the factor <span class="math">\(K\)</span> and its relative commutant constructed in the proof of (1) implies (3), before its last reindexing. <span class="math">\(\square\)</span></p>
+<p><strong>Proposition 6.3 (an arbitrarily small perturbation of the original action).</strong> Under the equivalent conditions of Theorem 6.1, for every faithful normal state <span class="math">\(\varphi\)</span> and <span class="math">\(\delta&gt;0\)</span>, there are a unitary <span class="math">\(v\in M\)</span> and a normal isomorphism <span class="math">\(h:M\to M\overline\otimes R\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\|v-1\|_\varphi^\sharp&lt;\delta,\\
+h\circ\operatorname{Ad}v\circ\theta\circ h^{-1}
+=\theta\otimes\sigma_p.
+\end{gathered}
+\]</div></div>
+<p>This is the near-identity formulation printed in [Takesaki III], Theorem XVII.2.10(iii). Its right-hand action is the unperturbed <span class="math">\(\theta\otimes\sigma_p\)</span>, whereas Theorem 6.1(3) uses the perturbed action on both sides.</p>
+<p><em>Proof.</em> Corollary 6.2 gives a unitary <span class="math">\(u\)</span>, an action <span class="math">\(\alpha=\operatorname{Ad}u\circ\theta\)</span>, and a decomposition <span class="math">\(M=K\overline\otimes C\)</span>, where <span class="math">\(\alpha=\sigma_p\otimes\beta\)</span>. Keep the particular matrix coordinates <span class="math">\(K_v\)</span> constructed there, and put <span class="math">\(A_m=K_1\vee\cdots\vee K_m\)</span>. Choose a faithful normal state <span class="math">\(\chi\)</span> on <span class="math">\(C\)</span>, and let <span class="math">\(\rho=\tau_K\otimes\chi\)</span> on <span class="math">\(M\)</span>.</p>
+<p>For each <span class="math">\(m\)</span>, the coordinate bijection giving <span class="math">\(J_p\)</span> in Proposition 5.1 can fix the first <span class="math">\(m\)</span> coordinates in the first output copy of <span class="math">\(K\)</span>. The remaining coordinates still match the two output tails size by size: for <span class="math">\(p=0\)</span> every size occurs infinitely often even after deleting a finite head; for <span class="math">\(p\geq2\)</span> every size is <span class="math">\(p\)</span>; for <span class="math">\(p=1\)</span> use size two with identity action. Extend this bijection through the trace GNS spaces and leave <span class="math">\(C\)</span> fixed. After interchanging the final factors, this gives a normal isomorphism</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+h_m:M\longrightarrow M\overline\otimes R,\\
+h_m\alpha=(\alpha\otimes\sigma_p)h_m,\\
+(\rho\otimes\tau_R)\circ h_m=\rho,\\
+h_m(y)=y\otimes1\quad(y\in A_m\vee C).
+\end{gathered}
+\]</div></div>
+<p>These identities hold first on elementary tensors and then on the von Neumann algebras by normality.</p>
+<p>The expectation <span class="math">\(F_m:M\to A_m\vee C\)</span> obtained by tracing out the later <span class="math">\(K\)</span>-coordinates is normal, unital and <span class="math">\(\rho\)</span>-preserving. It sends contractions to contractions and <span class="math">\(F_m(x)\to x\)</span> in <span class="math">\(\|\cdot\|_\rho^\sharp\)</span>. Indeed, on the product GNS space it acts on <span class="math">\(x\Omega_\rho\)</span> as the orthogonal projection onto the first <span class="math">\(m\)</span> matrix coordinates tensored with the entire <span class="math">\(C\)</span>-space; these subspaces increase to a dense subspace. Apply the same argument to <span class="math">\(x^*\)</span>. With <span class="math">\(y=F_m(u^*)\)</span>, the last two identities for <span class="math">\(h_m\)</span> give</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;\|h_m(u^*)-u^*\otimes1\|_{\rho\otimes\tau_R}^\sharp\\
+&amp;\qquad\leq2\|u^*-F_m(u^*)\|_\rho^\sharp\longrightarrow0.
+\end{aligned}
+\]</div></div>
+<p>Thus <span class="math">\(d_m=h_m^{-1}(u^*\otimes1)-u^*\)</span> tends to zero strongly-star: its sharp seminorm equals the preceding one, it is bounded, and <span class="math">\(\rho\)</span> is faithful. Fixed right multiplication by <span class="math">\(u\)</span> preserves that convergence. The unitaries</p>
+<div class="equation"><div class="math math-display">\[
+v_m=h_m^{-1}(u^*\otimes1)u
+\]</div></div>
+<p>therefore tend strongly-star to <span class="math">\(1\)</span>, in particular in <span class="math">\(\|\cdot\|_\varphi^\sharp\)</span>. The calculation in the proof of (3) implies (2), now with <span class="math">\(h=h_m\)</span>, gives</p>
+<div class="equation"><div class="math math-display">\[
+h_m\circ\operatorname{Ad}v_m\circ\theta\circ h_m^{-1}
+=\theta\otimes\sigma_p
+\]</div></div>
+<p>for every <span class="math">\(m\)</span>. Choose <span class="math">\(m\)</span> with the required <span class="math">\(\varphi\)</span>-error below <span class="math">\(\delta\)</span>. This proves the full assertion for all periods, including <span class="math">\(0\)</span>. <span class="math">\(\square\)</span></p>
+<h2 id="7-exercises-with-solutions">7. Exercises with solutions</h2>
+<p><strong>Exercise 7.1 (introductory: a phase table).</strong> In <span class="math">\(M_3\)</span>, take <span class="math">\(\lambda=e^{2\pi i/3}\)</span> and <span class="math">\(a=\sum_{j=1}^3\lambda^je_{jj}\)</span>. Find the eigenvalue of <span class="math">\(e_{13}\)</span> under <span class="math">\(\operatorname{Ad}a\)</span>, and verify that diagonal entries are fixed.</p>
+<p><em>Solution.</em> Matrix multiplication gives <span class="math">\(ae_{ij}a^*=\lambda^{i-j}e_{ij}\)</span>. For <span class="math">\(e_{13}\)</span> this is <span class="math">\(\lambda^{-2}=\lambda\)</span>. For <span class="math">\(i=j\)</span> the eigenvalue is <span class="math">\(1\)</span>.</p>
+<p><strong>Exercise 7.2 (intermediate: recover the lifting sign).</strong> With <span class="math">\(b_k\)</span> defined in (3.4), explain why the correcting unitary is <span class="math">\(b_k^*\)</span>, and check the phase on <span class="math">\(e_{12,k}\)</span>.</p>
+<p><em>Solution.</em> Equation (3.5) says <span class="math">\(b_ke_{12,k}b_k^*=\lambda\theta(e_{12,k})\)</span>. Thus <span class="math">\(b_k^*\theta(e_{12,k})b_k=\lambda^{-1}e_{12,k}\)</span>, the required phase <span class="math">\(\lambda^{1-2}\)</span>. Choosing <span class="math">\(b_k\)</span> instead reverses the needed rearrangement.</p>
+<p><strong>Exercise 7.3 (intermediate: summable centrality).</strong> Suppose the <span class="math">\(v\)</span>-th matrix factor has size <span class="math">\(d_v\)</span>, and for <span class="math">\(j\leq v\)</span> every entry has <span class="math">\(\|[e_{ab}^{(v)},\psi_j]\|\leq3^{-v}/d_v^2\)</span>. Show the tensor-splitting sum (1.2) converges for every fixed <span class="math">\(j\)</span>, even if <span class="math">\(d_v\to\infty\)</span>.</p>
+<p><em>Solution.</em> Lemma 4.1 bounds each term for <span class="math">\(v\geq j\)</span> by <span class="math">\(3^{-v}\)</span>. Its tail sums to <span class="math">\(3^{1-j}/2\)</span>. There are only finitely many earlier terms, each at most <span class="math">\(2\|\psi_j\|\)</span>. The matrix size cancels in the estimate, so unbounded sizes cause no problem.</p>
+<p><strong>Exercise 7.4 (advanced: a periodic cocycle test).</strong> Suppose <span class="math">\(\alpha^n=\mathrm{id}\)</span> and <span class="math">\(a\)</span> is a fixed unitary. What condition makes <span class="math">\(u_k=a^k\)</span> a cocycle for <span class="math">\(\mathbb Z/n\mathbb Z\)</span>? Why is <span class="math">\(a\)</span> being fixed insufficient by itself?</p>
+<p><em>Solution.</em> Fixedness gives <span class="math">\(u_k\alpha^k(u_l)=a^{k+l}\)</span>. Reduction of the index modulo <span class="math">\(n\)</span> respects this identity exactly when <span class="math">\(a^n=1\)</span>. Without it, the cocycle identity fails at the full-period wrap. In Lemma 3.1, <span class="math">\(a^n=1\)</span> follows from <span class="math">\(\lambda^n=1\)</span>.</p>
+<p><strong>Exercise 7.5 (advanced: the period obstruction).</strong> An automorphism has asymptotic period <span class="math">\(6\)</span>. Which of the models <span class="math">\(\sigma_0,\sigma_1,\sigma_2,\sigma_3,\sigma_4,\sigma_6\)</span> does Theorem 6.1 allow it to absorb?</p>
+<p><em>Solution.</em> It allows exactly <span class="math">\(\sigma_1,\sigma_2,\sigma_3,\sigma_6\)</span>, since their indices divide <span class="math">\(6\)</span>. The model <span class="math">\(\sigma_4\)</span> has a central sequence moved by its sixth power, and <span class="math">\(\sigma_0\)</span> has such a sequence for every nonzero power. Either would contradict central triviality of the sixth power after outer conjugacy.</p>
+<p><strong>Exercise 7.6 (advanced: why both adjoints matter).</strong> On <span class="math">\(\ell^2(\mathbb N)\)</span>, let <span class="math">\(u_n\)</span> cyclically permute the first <span class="math">\(n\)</span> basis vectors, sending the first to the second, and fix all remaining basis vectors. Show <span class="math">\(u_n\)</span> converges strongly to the unilateral shift, but its adjoints do not converge strongly. Explain the relevance to (6.2).</p>
+<p><em>Solution.</em> For each fixed basis vector <span class="math">\(e_j\)</span>, eventually <span class="math">\(u_ne_j=e_{j+1}\)</span>; uniform boundedness extends this to strong convergence on all vectors. But <span class="math">\(u_n^*e_1=e_n\)</span>, which is not norm Cauchy. The limit is an isometry that is not onto. Strong-star Cauchy control of both products and their adjoints in (6.2) excludes this defect and makes their limit unitary.</p>
+<h2 id="references">References</h2>
+<p>[Connes] Alain Connes, <em>Outer conjugacy classes of automorphisms of factors</em>, Annales scientifiques de l'École Normale Supérieure, série 4, 8 (1975), 383–419. Theorem 2.2.1, Lemmas 2.3.3–2.3.6 and Theorem 2.3.1 give the matrix, splitting and absorption arguments. <a href="https://numdam.org/articles/10.24033/asens.1295/">Article and original text</a>.</p>
+<p>[Connes periodic] Alain Connes, <em>Periodic automorphisms of the hyperfinite factor of type II₁</em>, Acta Scientiarum Mathematicarum 39 (1977), 39–66. Background for periodic classification; no theorem from this paper is imported in the proof above. <a href="https://alainconnes.org/wp-content/uploads/szego.pdf">Open original text</a>.</p>
+<p>[Ando–Haagerup] Hiroshi Ando and Uffe Haagerup, <em>Ultraproducts of von Neumann algebras</em>, Journal of Functional Analysis 266 (2014), 6842–6913. Definition 4.34 and Proposition 4.35, pages 38–39 of arXiv version 3, give quotient context; the exact programme lifting proofs used here are those cited above. <a href="https://arxiv.org/abs/1212.5457v3">Open author version</a>.</p>
+<p>[OA-APPROX] <em>Central sequence algebras and exact lifts</em> (<span class="unlinked">pinned source</span>), Theorems 3.1, 5.1 and 6.1; and <em>Strong stability and tensor absorption</em> (<span class="unlinked">pinned source</span>), Theorem 3.1, Lemma 4.1 and Theorem 5.1. These pinned programme proofs supply the exact interfaces cited above; their stated projection, halving, infinite-product, finite AFD and functional-analytic prerequisites remain in force. Both lesson sources retain their original CC0 attribution.</p>
+<p>[Takesaki III] Masamichi Takesaki, <em>Theory of Operator Algebras III</em>, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. Lemma XVII.2.1; the product models; Lemmas XVII.2.6–2.7; Definition XVII.2.8 and Remark XVII.2.9; and Theorem XVII.2.10. Lemma 3.1 retains the full no-finite-type-I-summand scope; the small-perturbation theorem and absorption theorem retain the strongly stable separable-predual factor hypotheses and the zero-period model. <a href="https://link.springer.com/book/10.1007/978-3-662-10453-8">Publisher record</a>.</p>
+</article><nav class="lesson-nav" aria-label="Sources"><a href="src/matrix-eigenvectors-and-tensor-absorption.md">Editable Markdown</a> · <span class="unlinked">Sources and authorship</span> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

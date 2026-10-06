@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The decomposition theorem · Perverse sheaves and intersection cohomology</title>
+<meta name="description" content="A lesson of the course Perverse sheaves and intersection cohomology. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-PERV/the-decomposition-theorem.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Perverse sheaves and intersection cohomology</a> <span aria-hidden="true">›</span> <span>Lesson 8 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-decomposition-theorem">The decomposition theorem</h1>
+<p><em>Written by GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).</em></p>
+<p>The stalk of a proper direct image is the cohomology of a fibre. The decomposition problem asks how those stalks assemble: which local systems occur, on which closed supports, and in which perverse degrees? There are two distinct assertions to establish. The complex must split into its shifted perverse cohomology objects, and those objects must themselves be sums of simple perverse sheaves. We begin with a finite map where the splitting can be constructed by projectors. We then separate the categorical splitting argument from the weight and hyperplane arguments that supply the general theorem.</p>
+<p>Our conventions and prerequisites are <span class="unlinked">Gluing t-structures</span>, <a href="the-perverse-t-structure.html">The perverse t-structure</a>, <a href="intermediate-extensions-and-intersection-complexes.html">Intermediate extensions and intersection complexes</a>, <a href="affine-morphisms-artin-vanishing-and-perverse-cohomology.html">Affine morphisms, Artin vanishing and perverse cohomology</a>, and <a href="weights-purity-and-semisimplicity-over-finite-fields.html">Weights, purity and semisimplicity over finite fields</a>. Local monodromy calculations use <span class="unlinked">Nearby and vanishing cycles</span>. The ordinary operations and the elementary curve topology used below are developed in <span class="unlinked">Constructible complexes on algebraic varieties</span>.</p>
+<p>All varieties are separated and of finite type over the indicated field. In the classical setting the maps are algebraic maps of complex varieties. Write <span class="math" data-tex="\(\operatorname{IC}_Z(L)=j_{!*}(L[s])\)">\(\operatorname{IC}_Z(L)=j_{!*}(L[s])\)</span>, where <span class="math" data-tex="\(Z\)">\(Z\)</span> is irreducible of dimension <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> is an irreducible local system on a dense smooth open <span class="math" data-tex="\(j:U\hookrightarrow Z\)">\(j:U\hookrightarrow Z\)</span>. A closed inclusion into the ambient space is understood. A semisimple complex means a finite sum of shifted simple perverse sheaves; being perverse is not part of that definition. Our shifts satisfy <span class="math" data-tex="\(\mathcal H^i(K[a])=\mathcal H^{i+a}(K)\)">\(\mathcal H^i(K[a])=\mathcal H^{i+a}(K)\)</span>.</p>
+<p>Over finite fields we use <span class="math" data-tex="\(\overline{\mathbb Q}_\ell\)">\(\overline{\mathbb Q}_\ell\)</span>, with <span class="math" data-tex="\(\ell\)">\(\ell\)</span> invertible on the variety, and retain Tate twists. Subscript <span class="math" data-tex="\(0\)">\(0\)</span> denotes arithmetic descent; removing it denotes pullback to an algebraic closure. The complex geometric-origin theorem is stated with complex coefficients. The rational constant-IC form used in the resolution examples is also retained, with its coefficient comparison identified in the closing prerequisite paragraph.</p>
+<h2 id="1-a-finite-map-determines-its-own-summands"><span id="a-double-cover-of-the-projective-line"></span>1. A finite map determines its own summands</h2>
+<p>Let <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> be finite, surjective and generically étale, with <span class="math" data-tex="\(X\)">\(X\)</span> smooth and irreducible of dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Choose a dense smooth open <span class="math" data-tex="\(V\subset Y\)">\(V\subset Y\)</span> such that its inverse image <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> is dense and <span class="math" data-tex="\(f|_{V&#x27;}\)">\(f|_{V&#x27;}\)</span> is étale. Put <span class="math" data-tex="\(M=(f|_{V&#x27;})_*\Lambda\)">\(M=(f|_{V&#x27;})_*\Lambda\)</span>. We claim
+<span class="math math-display" data-tex="\[
+Rf_*\Lambda_X[d]=j_{!*}(M[d]),\qquad j:V\hookrightarrow Y.
+\tag{1.1}
+\]">\[
+Rf_*\Lambda_X[d]=j_{!*}(M[d]),\qquad j:V\hookrightarrow Y.
+\tag{1.1}
+\]</span>
+The claim applies classically, and in the geometric étale setting with characteristic-zero coefficients.</p>
+<p>Here is the boundary argument. Finite direct image is perverse exact by the dimension bounds of lesson 5, so <span class="math" data-tex="\(P=Rf_*\Lambda_X[d]\)">\(P=Rf_*\Lambda_X[d]\)</span> is perverse. If <span class="math" data-tex="\(i:Y\setminus V\hookrightarrow Y\)">\(i:Y\setminus V\hookrightarrow Y\)</span> and <span class="math" data-tex="\(i&#x27;:X\setminus V&#x27;\hookrightarrow X\)">\(i&#x27;:X\setminus V&#x27;\hookrightarrow X\)</span>, proper base change and its dual identify <span class="math" data-tex="\(i^*P\)">\(i^*P\)</span> and <span class="math" data-tex="\(i^!P\)">\(i^!P\)</span> with the finite images of <span class="math" data-tex="\(i&#x27;^*\Lambda_X[d]\)">\(i&#x27;^*\Lambda_X[d]\)</span> and <span class="math" data-tex="\(i&#x27;^!\Lambda_X[d]\)">\(i&#x27;^!\Lambda_X[d]\)</span>. The smooth constant sheaf is the intermediate extension of its restriction to <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span>. Consequently these two boundary complexes have zero perverse cohomology in degree zero. Exactness of finite image preserves that vanishing. Lesson 4's uniqueness characterization now identifies <span class="math" data-tex="\(P\)">\(P\)</span> with (1.1).</p>
+<p>The local system <span class="math" data-tex="\(M\)">\(M\)</span> has finite monodromy. A representation of a finite group over a characteristic-zero field is semisimple: average any linear retraction to a subrepresentation over the group, dividing by its order, to obtain an equivariant retraction. Iterating on dimension gives a sum of irreducibles. Intermediate extension commutes with finite direct sums, since its defining image does. Thus (1.1) decomposes into the intersection complexes of the irreducible constituents of <span class="math" data-tex="\(M\)">\(M\)</span>. No general decomposition theorem was needed for this calculation.</p>
+<p>For <span class="math" data-tex="\(f:\mathbb P^1\to\mathbb P^1\)">\(f:\mathbb P^1\to\mathbb P^1\)</span>, <span class="math" data-tex="\(z\mapsto z^2\)">\(z\mapsto z^2\)</span>, let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> be the deck involution. The idempotents <span class="math" data-tex="\((1+\sigma)/2\)">\((1+\sigma)/2\)</span> and <span class="math" data-tex="\((1-\sigma)/2\)">\((1-\sigma)/2\)</span> give the two constituents over <span class="math" data-tex="\(\mathbb G_m\)">\(\mathbb G_m\)</span>. The first is constant and the second, denoted <span class="math" data-tex="\(L_-\)">\(L_-\)</span>, has monodromy <span class="math" data-tex="\(-1\)">\(-1\)</span> around both omitted points. At either puncture the two-term boundary complex has differential <span class="math" data-tex="\(T-1=-2\)">\(T-1=-2\)</span>; hence it is acyclic. The sign summand has zero boundary stalk and costalk. The branched fibre consists of a single fixed point, contributing only the constant summand. Therefore
+<span class="math math-display" data-tex="\[
+f_*\Lambda[1]=\Lambda_{\mathbb P^1}[1]\oplus j_{!*}(L_-[1]).
+\tag{1.2}
+\]">\[
+f_*\Lambda[1]=\Lambda_{\mathbb P^1}[1]\oplus j_{!*}(L_-[1]).
+\tag{1.2}
+\]</span>
+There are no point summands. Over a finite field the characteristic must be odd for this description of the cover.</p>
+<h3 id="the-quotient-surface-in-both-coefficient-settings">The quotient surface in both coefficient settings</h3>
+<p>The same method gives the IC calculation needed later for <span class="math" data-tex="\(X=\{xy=z^2\}\)">\(X=\{xy=z^2\}\)</span>. In characteristic different from two the finite map
+<span class="math math-display" data-tex="\[
+p:\mathbb A^2\longrightarrow X,\qquad (u,v)\longmapsto(u^2,v^2,uv)
+\tag{1.3}
+\]">\[
+p:\mathbb A^2\longrightarrow X,\qquad (u,v)\longmapsto(u^2,v^2,uv)
+\tag{1.3}
+\]</span>
+is the quotient by <span class="math" data-tex="\((u,v)\mapsto(-u,-v)\)">\((u,v)\mapsto(-u,-v)\)</span>. Indeed the invariant monomials are generated by <span class="math" data-tex="\(u^2,uv,v^2\)">\(u^2,uv,v^2\)</span>, whose sole relation is <span class="math" data-tex="\(xy=z^2\)">\(xy=z^2\)</span>: reduce a polynomial using that relation to monomials with at most one factor <span class="math" data-tex="\(z\)">\(z\)</span>, whose images are distinct monomials in <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. The coordinates <span class="math" data-tex="\(u,v\)">\(u,v\)</span> are integral over the invariant ring, so the map is finite. Away from the vertex it is an étale double cover. On <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>, for example, its coordinate description is adjoining the invertible square root <span class="math" data-tex="\(u\)">\(u\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>; the other chart is analogous.</p>
+<p>Take the invariant projector on <span class="math" data-tex="\(p_*\Lambda[2]\)">\(p_*\Lambda[2]\)</span>. The resulting summand is <span class="math" data-tex="\(\Lambda_X[2]\)">\(\Lambda_X[2]\)</span>. To check this assertion as a sheaf statement, use the unit <span class="math" data-tex="\(\Lambda_X\to p_*\Lambda\)">\(\Lambda_X\to p_*\Lambda\)</span>: on each geometric fibre the invariant functions are precisely the constants, whether the fibre has two points or one. Finite proper base change gives no higher fibre cohomology, so this stalk check proves the assertion for the complex as well. Formula (1.1) and the two projectors then show
+<span class="math math-display" data-tex="\[
+\operatorname{IC}_X=\Lambda_X[2].
+\tag{1.4}
+\]">\[
+\operatorname{IC}_X=\Lambda_X[2].
+\tag{1.4}
+\]</span>
+This is a proof for the odd-characteristic étale quotient as well as the classical quotient. It uses the exact finite-image and base-change foundations just stated; it does not infer an étale calculation from the classical link <span class="math" data-tex="\(\mathbb {RP}^3\)">\(\mathbb {RP}^3\)</span>.</p>
+<h2 id="2-removing-the-extreme-cohomology-groups"><span id="splitting-once-lefschetz-is-known"></span>2. Removing the extreme cohomology groups</h2>
+<p>Before treating proper maps, we isolate a categorical statement. Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> have a bounded t-structure, with cohomology functors <span class="math" data-tex="\(H^i\)">\(H^i\)</span>, and an exact t-exact autoequivalence <span class="math" data-tex="\((1)\)">\((1)\)</span>. Suppose
+<span class="math math-display" data-tex="\[
+e:M\longrightarrow M(1)[2],\qquad
+H^{-r}(e^r):H^{-r}M\xrightarrow{\sim}H^rM(r)
+\quad(r\ge0).
+\tag{2.1}
+\]">\[
+e:M\longrightarrow M(1)[2],\qquad
+H^{-r}(e^r):H^{-r}M\xrightarrow{\sim}H^rM(r)
+\quad(r\ge0).
+\tag{2.1}
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+M\simeq\bigoplus_iH^iM[-i].
+\tag{2.2}
+\]">\[
+M\simeq\bigoplus_iH^iM[-i].
+\tag{2.2}
+\]</span>
+This is Deligne's Lefschetz splitting criterion. We prove it by removing the two outermost cohomology degrees, so no primitive decomposition is needed.</p>
+<p>First, a retraction <span class="math" data-tex="\(r:M\to A\)">\(r:M\to A\)</span> of <span class="math" data-tex="\(a:A\to M\)">\(a:A\to M\)</span> produces a complement inside a triangulated category. Complete <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(A\to M\xrightarrow{v}N\xrightarrow{\delta}A[1]\)">\(A\to M\xrightarrow{v}N\xrightarrow{\delta}A[1]\)</span>. Applying <span class="math" data-tex="\(\operatorname{Hom}(-,A)\)">\(\operatorname{Hom}(-,A)\)</span> shows <span class="math" data-tex="\(\delta=0\)">\(\delta=0\)</span>, since <span class="math" data-tex="\(\operatorname{id}_A=ra\)">\(\operatorname{id}_A=ra\)</span> lifts. Hence <span class="math" data-tex="\(v\)">\(v\)</span> has a section <span class="math" data-tex="\(t\)">\(t\)</span>. Replace <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(t-art\)">\(t-art\)</span>, so <span class="math" data-tex="\(rt=0\)">\(rt=0\)</span>. Now <span class="math" data-tex="\((r,v)(a,t)=1\)">\((r,v)(a,t)=1\)</span>. Conversely <span class="math" data-tex="\(d=1-ar-tv\)">\(d=1-ar-tv\)</span> satisfies <span class="math" data-tex="\(vd=0\)">\(vd=0\)</span>, and therefore <span class="math" data-tex="\(d=ah\)">\(d=ah\)</span> by the triangle's exact Hom sequence. Since <span class="math" data-tex="\(rd=0\)">\(rd=0\)</span>, also <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. Thus <span class="math" data-tex="\((a,t)\)">\((a,t)\)</span> is an isomorphism <span class="math" data-tex="\(A\oplus N\to M\)">\(A\oplus N\to M\)</span>. This uses the triangle axioms, without a separate idempotent-completeness assumption.</p>
+<p>Choose <span class="math" data-tex="\(n\)">\(n\)</span> with all cohomology of <span class="math" data-tex="\(M\)">\(M\)</span> in <span class="math" data-tex="\([-n,n]\)">\([-n,n]\)</span>. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the assertion is truncation. Otherwise set
+<span class="math math-display" data-tex="\[
+A=H^{-n}M[n],\quad B=H^nM[-n],\quad
+\lambda=H^{-n}(e^n):H^{-n}M\xrightarrow{\sim}H^nM(n).
+\]">\[
+A=H^{-n}M[n],\quad B=H^nM[-n],\quad
+\lambda=H^{-n}(e^n):H^{-n}M\xrightarrow{\sim}H^nM(n).
+\]</span>
+The extreme truncations give maps <span class="math" data-tex="\(a:A\to M\)">\(a:A\to M\)</span> and <span class="math" data-tex="\(p:M\to B\)">\(p:M\to B\)</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r&amp;=\lambda^{-1}[n]\circ p(n)[2n]\circ e^n:M\to A,\\
+s&amp;=e^n(-n)[-2n]\circ a(-n)[-2n]
+       \circ\bigl(\lambda(-n)^{-1}\bigr)[-n]:B\to M.
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+r&amp;=\lambda^{-1}[n]\circ p(n)[2n]\circ e^n:M\to A,\\
+s&amp;=e^n(-n)[-2n]\circ a(-n)[-2n]
+       \circ\bigl(\lambda(-n)^{-1}\bigr)[-n]:B\to M.
+\end{aligned}
+\tag{2.3}
+\]</span>
+The middle target in the first formula is <span class="math" data-tex="\(H^nM(n)[n]\)">\(H^nM(n)[n]\)</span>. In the second, the rightmost map lands in <span class="math" data-tex="\(H^{-n}M(-n)[-n]\)">\(H^{-n}M(-n)[-n]\)</span>, after which <span class="math" data-tex="\(a(-n)[-2n]\)">\(a(-n)[-2n]\)</span> lands in <span class="math" data-tex="\(M(-n)[-2n]\)">\(M(-n)[-2n]\)</span>. These observations verify all the displayed types.</p>
+<p>Taking extreme cohomology gives <span class="math" data-tex="\(ra=1_A\)">\(ra=1_A\)</span> and <span class="math" data-tex="\(ps=1_B\)">\(ps=1_B\)</span>; endomorphisms of a shifted heart object are determined by that cohomology. Orthogonality gives <span class="math" data-tex="\(pa=0\)">\(pa=0\)</span>, because <span class="math" data-tex="\(A\in\mathcal D^{\le-n}\)">\(A\in\mathcal D^{\le-n}\)</span> and <span class="math" data-tex="\(B\in\mathcal D^{\ge n}\)">\(B\in\mathcal D^{\ge n}\)</span>. There is no reason for <span class="math" data-tex="\(rs\)">\(rs\)</span> to vanish. Correct it by setting <span class="math" data-tex="\(s&#x27;=s-ars\)">\(s&#x27;=s-ars\)</span>. Then
+<span class="math math-display" data-tex="\[
+(r,p)(a,s&#x27;)=1_{A\oplus B}.
+\]">\[
+(r,p)(a,s&#x27;)=1_{A\oplus B}.
+\]</span>
+The preceding split-triangle argument yields <span class="math" data-tex="\(M=A\oplus B\oplus N\)">\(M=A\oplus B\oplus N\)</span>, where <span class="math" data-tex="\(N\)">\(N\)</span> has cohomology only in <span class="math" data-tex="\([-n+1,n-1]\)">\([-n+1,n-1]\)</span>. Write <span class="math" data-tex="\(t:N\to M\)">\(t:N\to M\)</span> and <span class="math" data-tex="\(v:M\to N\)">\(v:M\to N\)</span> for inclusion and projection, and put <span class="math" data-tex="\(e_N=v(1)[2]et\)">\(e_N=v(1)[2]et\)</span>.</p>
+<p>For each <span class="math" data-tex="\(r&lt;n\)">\(r&lt;n\)</span>, the successive degrees <span class="math" data-tex="\(-r,-r+2,\ldots,r\)">\(-r,-r+2,\ldots,r\)</span> lie entirely in the remaining interval. In those degrees <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> identify the cohomology of <span class="math" data-tex="\(N\)">\(N\)</span> with that of <span class="math" data-tex="\(M\)">\(M\)</span>. Thus <span class="math" data-tex="\(H^{-r}(e_N^r)\)">\(H^{-r}(e_N^r)\)</span> is the original isomorphism. For <span class="math" data-tex="\(r\ge n\)">\(r\ge n\)</span> both ends vanish. Induction proves (2.2).</p>
+<p>For any cohomological functor <span class="math" data-tex="\(F\)">\(F\)</span>, define <span class="math" data-tex="\(F^a(K)=F(K[a])\)">\(F^a(K)=F(K[a])\)</span>. Apply the functorial truncation tower to a chosen isomorphism (2.2). It becomes the finite direct sum of the towers for the individual shifted heart objects. Each has a single cohomology row, so every differential after the cohomology page is zero. Additivity of the exact couples gives degeneration for their sum:
+<span class="math math-display" data-tex="\[
+E_2^{a,b}=F^a(H^bM)\Longrightarrow F^{a+b}(M).
+\tag{2.4}
+\]">\[
+E_2^{a,b}=F^a(H^bM)\Longrightarrow F^{a+b}(M).
+\tag{2.4}
+\]</span>
+Boundedness makes the filtration finite. Neither this argument nor (2.2) asserts semisimplicity of the objects <span class="math" data-tex="\(H^iM\)">\(H^iM\)</span>. It also does not select a unique splitting. Deligne's 1994 construction of normalized primitive lifts supplies additional choices attached to the specified class <span class="math" data-tex="\(e\)">\(e\)</span>; that is extra structure beyond the existence argument here.</p>
+<h2 id="3-weights-supply-the-geometric-decomposition"><span id="1-the-finite-field-decomposition-and-geometric-origin"></span>3. Weights supply the geometric decomposition</h2>
+<h3 id="finite-fields">Finite fields</h3>
+<p>Suppose <span class="math" data-tex="\(f:X_0\to Y_0\)">\(f:X_0\to Y_0\)</span> is proper and <span class="math" data-tex="\(K_0\)">\(K_0\)</span> is pure of weight <span class="math" data-tex="\(w\)">\(w\)</span>. The results proved conditionally in lesson 7 give proper purity, the perverse weight criterion, geometric semisimplicity of pure perverse sheaves, and splitting of a geometric pure complex. In that order they imply
+<span class="math math-display" data-tex="\[
+Rf_*K_0\text{ pure of weight }w,\qquad
+{}^pH^n(Rf_*K_0)\text{ pure of weight }w+n,
+\]">\[
+Rf_*K_0\text{ pure of weight }w,\qquad
+{}^pH^n(Rf_*K_0)\text{ pure of weight }w+n,
+\]</span>
+and then
+<span class="math math-display" data-tex="\[
+Rf_*K\simeq\bigoplus_n{}^pH^n(Rf_*K)[-n],
+\qquad {}^pH^n(Rf_*K)\text{ geometrically semisimple}.
+\tag{3.1}
+\]">\[
+Rf_*K\simeq\bigoplus_n{}^pH^n(Rf_*K)[-n],
+\qquad {}^pH^n(Rf_*K)\text{ geometrically semisimple}.
+\tag{3.1}
+\]</span>
+The last line is over the algebraic closure. The preceding weight statements concern the arithmetic objects. Those statements do not make arithmetic Frobenius diagonalizable or furnish a Frobenius-equivariant splitting of (3.1). The remaining ordinary weight and adic foundations of lesson 7 remain prerequisites here.</p>
+<h3 id="the-finite-construction-defining-geometric-origin"><span id="2-pure-models-and-passage-to-complex-varieties"></span><span id="selecting-an-arithmetic-model-of-a-geometric-constituent"></span><span id="transporting-decomposition-and-lefschetz"></span>The finite construction defining geometric origin</h3>
+<p>For complex varieties, start with the constant rank-one sheaf on a point. From previously obtained simple perverse sheaves, permit the following operations: take any simple constituent of any perverse cohomology of <span class="math" data-tex="\(Rf_*A,Rf_!A,f^*A,f^!A\)">\(Rf_*A,Rf_!A,f^*A,f^!A\)</span>, or, for objects on the same space, of <span class="math" data-tex="\(A\otimes^LB\)">\(A\otimes^LB\)</span> and <span class="math" data-tex="\(R\mathcal Hom(A,B)\)">\(R\mathcal Hom(A,B)\)</span>. The smallest collection closed under these rules is the collection of simple perverse sheaves of geometric origin. A semisimple complex of geometric origin is a finite direct sum of shifts of members of this collection. This is the hypothesis of BBD, 6.2.4–6.2.5.</p>
+<p>Every such object has a finite construction. Indeed the union of the successive finite stages of these rules is already closed under them, since every rule has finitely many inputs. On a smooth variety, the constant local system comes from pullback from a point. For an irreducible variety, choose a dense smooth open and take its shifted constant sheaf. Its intermediate extension is a simple constituent of the degree-zero perverse cohomology of the open extension by zero, by the image description in lesson 2. Thus the permitted operations also generate the constant IC on that variety. A finite-monodromy irreducible local system is a constituent of the finite-cover regular representation: averaging proves semisimplicity, and a nonzero vector gives a surjection from the regular representation onto any irreducible representation. Consequently these local systems and their IC extensions are also of geometric origin.</p>
+<p>We use the following specific comparison construction. Descend a finite diagram of varieties, sheaves, morphisms, strata and operations to a finitely generated ring. After restricting its spectrum, classical/étale comparison and specialization give equivalences for the constructible categories with the specified allowed local-system constituents. These equivalences are fully faithful and perverse t-exact, and preserve the six operations, tensor products and internal Hom appearing in that diagram. Their hearts are closed under subquotients. Include proper maps, and when required a projective map, its ample line bundle and its Chern-class morphisms, before making the comparison. The integral models and stable-lattice qualifications in BBD, 6.1.2 are part of this input. No equivalence of unrestricted constructible categories on arbitrary fibres is being asserted. A complete construction of these comparisons is still required for P514.</p>
+<p>We prove the further pure-model step. Let <span class="math" data-tex="\(G_0\)">\(G_0\)</span> be mixed perverse over a finite field, and let <span class="math" data-tex="\(S\)">\(S\)</span> be a simple constituent after geometric pullback. Its weight filtration has a pure graded piece <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> whose geometric pullback contains <span class="math" data-tex="\(S\)">\(S\)</span>. By geometric semisimplicity, <span class="math" data-tex="\(Q\)">\(Q\)</span> is a sum of isotypic pieces. A finite residue-field extension makes the class of <span class="math" data-tex="\(S\)">\(S\)</span> fixed under Frobenius, so its full isotypic piece becomes stable. Write it <span class="math" data-tex="\(S\otimes M\)">\(S\otimes M\)</span>.</p>
+<p>Here <span class="math" data-tex="\(\operatorname{End}(S)=\overline{\mathbb Q}_\ell\)">\(\operatorname{End}(S)=\overline{\mathbb Q}_\ell\)</span>: restriction to the dense local-system stratum embeds the endomorphism ring in a finite-dimensional matrix algebra, and every endomorphism of an irreducible object over an algebraically closed field has an eigenvalue; its corresponding nonzero kernel forces it to be scalar. Choose an isomorphism <span class="math" data-tex="\(\operatorname{Fr}^*S\simeq S\)">\(\operatorname{Fr}^*S\simeq S\)</span>. The Frobenius action on <span class="math" data-tex="\(S\otimes M\)">\(S\otimes M\)</span> is then that isomorphism tensored with an invertible linear operator on <span class="math" data-tex="\(M\)">\(M\)</span>. An eigenline of that operator selects a stable copy of <span class="math" data-tex="\(S\)">\(S\)</span>. It inherits continuous arithmetic descent as a subobject of <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> over the extended field. Pure perverse subobjects are pure, by the weight bounds of lesson 7. Thus <span class="math" data-tex="\(S\)">\(S\)</span> has a pure arithmetic model after a finite extension. The continuity conclusion comes from this embedding in an existing arithmetic object, not from assigning an arbitrary Frobenius matrix.</p>
+<p>Apply this argument inductively to a geometric-origin construction. The starting constant point sheaf has its weight-zero model. At a later step take pure models of the inputs over a common finite extension of the closed fibre's residue field. Their required operation is mixed by the mixed-operation theorem, and each of its perverse cohomologies is mixed. Comparison identifies the selected geometric constituent with a constituent of that mixed object. The argument of the preceding paragraph gives it a pure model, after another finite extension. This proves the claim for every construction step, including tensor product and internal Hom. Enlarging the finite diagram handles finitely many desired objects simultaneously. Purity of every generating operation is unnecessary; mixedness and constituent selection suffice.</p>
+<p><strong>The complex geometric-origin theorem.</strong> If <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> is proper and <span class="math" data-tex="\(K\)">\(K\)</span> is a semisimple complex of geometric origin, then <span class="math" data-tex="\(Rf_*K\)">\(Rf_*K\)</span> is again a semisimple complex of geometric origin. In particular it has an expression
+<span class="math math-display" data-tex="\[
+Rf_*K\simeq\bigoplus_{n,a}\operatorname{IC}_{Z_{n,a}}(L_{n,a})[-n].
+\tag{3.2}
+\]">\[
+Rf_*K\simeq\bigoplus_{n,a}\operatorname{IC}_{Z_{n,a}}(L_{n,a})[-n].
+\tag{3.2}
+\]</span></p>
+<p>To prove it from the specified comparisons, first take a simple perverse source <span class="math" data-tex="\(P\)">\(P\)</span>. Include <span class="math" data-tex="\(f,P,Rf_*P\)">\(f,P,Rf_*P\)</span>, the needed perverse cohomologies and their finite constructions in the diagram. The preceding induction produces a pure arithmetic model on an allowed closed geometric fibre. Properness descends, so (3.1) applies there. Full faithfulness of the inverse comparison lifts a splitting and its inverse to actual morphisms; t-exactness identifies their terms with the perverse cohomologies on the characteristic-zero fibre. The equivalence preserves and reflects simple objects, hence semisimplicity. Classical comparison gives the claimed complex-algebraic splitting. Its simple constituents are of geometric origin by the defining direct-image rule. Finally take finite sums and shifts of the argument for simple sources. This proves (3.2), relative to the comparison and weight foundations. The support classification is lesson 4's simple-object theorem.</p>
+<p>The perverse cohomology objects are canonical. Their simple isomorphism classes and multiplicities are determined. An isomorphism (3.2), including the individual inclusions and projections, generally requires choices.</p>
+<h3 id="the-larger-semisimple-source-statement">The larger semisimple-source statement</h3>
+<p>Geometric origin is the scope of the arithmetic reduction just proved, not the limit of the known complex-algebraic theorem. For a proper map of complex varieties and a semisimple perverse sheaf with rational or complex coefficients, the direct image is semisimple as a complex. For a projective map its relatively ample class also satisfies relative hard Lefschetz. No quasi-projectivity or smoothness assumption on the two varieties is required in this formulation. The exact statements are de Cataldo, <em>Decomposition theorem for semi-simples</em>, Theorems 2.1.1–2.1.2 and Corollary 2.2.1. Its proof extends the smooth quasi-projective theorem of Mochizuki and Sabbah using resolution, Chow envelopes and coefficient descent. This broader statement is retained here as a proof obligation; neither its analytic starting theorem nor the full reduction is proved by the finite-field argument above. None of the calculations below uses that extension. Saito's mixed Hodge modules and the Hodge-theoretic proof of de Cataldo–Migliorini are further approaches, discussed in the freely available survey, §3.</p>
+<h2 id="4-hyperplane-restriction-becomes-a-lefschetz-isomorphism"><span id="5-lefschetz-splitting-and-degeneration"></span>4. Hyperplane restriction becomes a Lefschetz isomorphism</h2>
+<h3 id="the-arithmetic-lefschetz-argument">The arithmetic Lefschetz argument</h3>
+<p>Let <span class="math" data-tex="\(f:X_0\to Y_0\)">\(f:X_0\to Y_0\)</span> be projective, let <span class="math" data-tex="\(F_0\)">\(F_0\)</span> be pure perverse, and let <span class="math" data-tex="\(\eta=c_1(\mathcal L)\)">\(\eta=c_1(\mathcal L)\)</span> for an <span class="math" data-tex="\(f\)">\(f\)</span>-ample line bundle. We prove
+<span class="math math-display" data-tex="\[
+\eta^r:{}^pH^{-r}(Rf_*F_0)\xrightarrow{\sim}
+{}^pH^r(Rf_*F_0)(r),\qquad r\ge0.
+\tag{4.1}
+\]">\[
+\eta^r:{}^pH^{-r}(Rf_*F_0)\xrightarrow{\sim}
+{}^pH^r(Rf_*F_0)(r),\qquad r\ge0.
+\tag{4.1}
+\]</span>
+This argument uses the ordinary operations, affine bounds and conditional purity/semisimplicity results of the earlier lessons. Those weight results are obtained before this argument and do not assume (4.1).</p>
+<p>Work geometrically while retaining all arithmetic models. Locally on <span class="math" data-tex="\(Y\)">\(Y\)</span>, a positive power of <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> gives a closed embedding into <span class="math" data-tex="\(\mathbb P^d\times Y\)">\(\mathbb P^d\times Y\)</span>, with <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>. Multiplication of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> by the positive integer does not change the isomorphism question over a characteristic-zero coefficient field. We may use the hyperplane class of this embedding.</p>
+<p>Set <span class="math" data-tex="\(T=(\mathbb P^d)^\vee\)">\(T=(\mathbb P^d)^\vee\)</span>, <span class="math" data-tex="\(Y&#x27;=T\times Y\)">\(Y&#x27;=T\times Y\)</span>, <span class="math" data-tex="\(X&#x27;=T\times X\)">\(X&#x27;=T\times X\)</span>, and let <span class="math" data-tex="\(v:H\hookrightarrow X&#x27;\)">\(v:H\hookrightarrow X&#x27;\)</span> be the universal incidence divisor. Write <span class="math" data-tex="\(u:Y&#x27;\to Y\)">\(u:Y&#x27;\to Y\)</span>, <span class="math" data-tex="\(q:X&#x27;\to X\)">\(q:X&#x27;\to X\)</span>, <span class="math" data-tex="\(f&#x27;:X&#x27;\to Y&#x27;\)">\(f&#x27;:X&#x27;\to Y&#x27;\)</span> and <span class="math" data-tex="\(h=f&#x27;v\)">\(h=f&#x27;v\)</span>. The maps <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(qv\)">\(qv\)</span> are smooth projective bundles of dimensions <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. In particular
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F&#x27;&amp;=q^*F[d],&amp; F_H&amp;=(qv)^*F[d-1],\\
+M&amp;=Rf_*F,&amp; A&amp;=Rf&#x27;_*F&#x27;=u^*M[d],&amp; L&amp;=Rh_*F_H.
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+F&#x27;&amp;=q^*F[d],&amp; F_H&amp;=(qv)^*F[d-1],\\
+M&amp;=Rf_*F,&amp; A&amp;=Rf&#x27;_*F&#x27;=u^*M[d],&amp; L&amp;=Rh_*F_H.
+\end{aligned}
+\tag{4.2}
+\]</span>
+have <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> and <span class="math" data-tex="\(F_H\)">\(F_H\)</span> perverse. If <span class="math" data-tex="\(F_0\)">\(F_0\)</span> has weight <span class="math" data-tex="\(w\)">\(w\)</span>, then <span class="math" data-tex="\(F_H\)">\(F_H\)</span> has weight <span class="math" data-tex="\(w+d-1\)">\(w+d-1\)</span>. Proper purity and the perverse weight criterion make <span class="math" data-tex="\(S={}^pH^0L\)">\(S={}^pH^0L\)</span> pure of that weight, hence geometrically semisimple.</p>
+<p>We need the projective-bundle calculation with its maps. For <span class="math" data-tex="\(b:E\to Z\)">\(b:E\to Z\)</span> a projective bundle of dimension <span class="math" data-tex="\(e\)">\(e\)</span>, unit followed by powers of <span class="math" data-tex="\(\beta=c_1(\mathcal O_E(1))\)">\(\beta=c_1(\mathcal O_E(1))\)</span> defines
+<span class="math math-display" data-tex="\[
+\bigoplus_{a=0}^e K[-2a](-a)\xrightarrow{\sim}Rb_*b^*K.
+\tag{4.3}
+\]">\[
+\bigoplus_{a=0}^e K[-2a](-a)\xrightarrow{\sim}Rb_*b^*K.
+\tag{4.3}
+\]</span>
+Proper base change reduces the assertion to a geometric fibre. Filter <span class="math" data-tex="\(\mathbb P^e\)">\(\mathbb P^e\)</span> by its standard hyperplane and affine complement. Localization, and the single compact cohomology group of <span class="math" data-tex="\(\mathbb A^e\)">\(\mathbb A^e\)</span>, give one group in each even degree <span class="math" data-tex="\(0,2,\ldots,2e\)">\(0,2,\ldots,2e\)</span> and none in odd degree. Hyperplane Gysin identifies the successive generators with <span class="math" data-tex="\(1,\beta,\ldots,\beta^e\)">\(1,\beta,\ldots,\beta^e\)</span>. Smooth trace normalizes the class of the transverse intersection of <span class="math" data-tex="\(e\)">\(e\)</span> hyperplanes to <span class="math" data-tex="\(+1\)">\(+1\)</span>. This proves that the displayed map is a fibrewise isomorphism, with its stated twists, using the earlier smooth trace and purity foundations.</p>
+<p>Consider the heart functor <span class="math" data-tex="\(U(P)=u^*P[d]\)">\(U(P)=u^*P[d]\)</span>. It is exact. Formula (4.3) and adjunction show full faithfulness and also
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(UP,UQ[1])
+=\bigoplus_{a=0}^d\operatorname{Hom}(P,Q(-a)[1-2a])
+=\operatorname{Hom}(P,Q[1]).
+\tag{4.4}
+\]">\[
+\operatorname{Hom}(UP,UQ[1])
+=\bigoplus_{a=0}^d\operatorname{Hom}(P,Q(-a)[1-2a])
+=\operatorname{Hom}(P,Q[1]).
+\tag{4.4}
+\]</span>
+All summands with <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> vanish by negative-degree orthogonality. Its essential image is a Serre subcategory of the perverse heart. For completeness, smooth base change and t-exactness show that <span class="math" data-tex="\(U\)">\(U\)</span> commutes with intermediate extension. It preserves a simple IC: the product projection induces a surjection of fundamental groups, since it has a section, so pullback preserves irreducibility of the defining local system. Degree-one derived Hom classifies heart extensions, so (4.4) lifts every extension between image objects. Finite length now shows that any subobject or quotient of an image object, assembled from the same simple constituents, is in the image too.</p>
+<p>The right adjoint to <span class="math" data-tex="\(U\)">\(U\)</span> on hearts is
+<span class="math math-display" data-tex="\[
+R(S)={}^pH^{-d}(Ru_*S).
+\tag{4.5}
+\]">\[
+R(S)={}^pH^{-d}(Ru_*S).
+\tag{4.5}
+\]</span>
+The lower fibre bound places <span class="math" data-tex="\(Ru_*S[-d]\)">\(Ru_*S[-d]\)</span> in <span class="math" data-tex="\({}^pD^{\ge0}\)">\({}^pD^{\ge0}\)</span>, so truncation and adjunction give (4.5). Formula (4.3) identifies <span class="math" data-tex="\(RU\)">\(RU\)</span> with the identity through its unit. The counit <span class="math" data-tex="\(UR(S)\to S\)">\(UR(S)\to S\)</span> is a monomorphism: its kernel lies in the image Serre subcategory, and applying the left-exact right adjoint annihilates that kernel because the counit becomes the identity on <span class="math" data-tex="\(R(S)\)">\(R(S)\)</span>. An image object killed by <span class="math" data-tex="\(R\)">\(R\)</span> is zero. By adjunction, every map from an image object to <span class="math" data-tex="\(S\)">\(S\)</span> factors through this counit. Thus it is the largest subobject of <span class="math" data-tex="\(S\)">\(S\)</span> belonging to the image.</p>
+<p>The complement of the incidence divisor is affine over <span class="math" data-tex="\(Y&#x27;\)">\(Y&#x27;\)</span>: it is closed in the universal affine hyperplane complement. Apply localization to <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> and use the compact-support affine bound on that complement. Perverse cohomology gives restriction maps
+<span class="math math-display" data-tex="\[
+a_j:U({}^pH^jM)\longrightarrow{}^pH^{j+1}L,
+\tag{4.6}
+\]">\[
+a_j:U({}^pH^jM)\longrightarrow{}^pH^{j+1}L,
+\tag{4.6}
+\]</span>
+which are isomorphisms for <span class="math" data-tex="\(j&lt;-1\)">\(j&lt;-1\)</span> and injective for <span class="math" data-tex="\(j=-1\)">\(j=-1\)</span>. In particular <span class="math" data-tex="\(C=U({}^pH^{-1}M)\)">\(C=U({}^pH^{-1}M)\)</span> injects into <span class="math" data-tex="\(S\)">\(S\)</span>. We show it is precisely the largest image subobject just described.</p>
+<p>Put <span class="math" data-tex="\(B=L[1]\)">\(B=L[1]\)</span>, so (4.6) comes from <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> and identifies their truncations in degrees at most <span class="math" data-tex="\(-2\)">\(-2\)</span>. Apply (4.3), using the hyperplane class of <span class="math" data-tex="\(T\)">\(T\)</span> for both bundles. It gives
+<span class="math math-display" data-tex="\[
+Ru_*A=\bigoplus_{a=0}^d M[d-2a](-a),\qquad
+Ru_*B=\bigoplus_{a=0}^{d-1} M[d-2a](-a).
+\tag{4.7}
+\]">\[
+Ru_*A=\bigoplus_{a=0}^d M[d-2a](-a),\qquad
+Ru_*B=\bigoplus_{a=0}^{d-1} M[d-2a](-a).
+\tag{4.7}
+\]</span>
+Restriction is the identity on the first <span class="math" data-tex="\(d\)">\(d\)</span> columns. Subtracting the possibly nonzero components of the last column identifies its fibre with <span class="math" data-tex="\(M[-d](-d)\)">\(M[-d](-d)\)</span>. The bound <span class="math" data-tex="\(M\in{}^pD^{\ge-d}\)">\(M\in{}^pD^{\ge-d}\)</span> puts this fibre in <span class="math" data-tex="\({}^pD^{\ge0}\)">\({}^pD^{\ge0}\)</span>. Therefore the two total images agree in every degree below zero.</p>
+<p>Compare the two truncation triangles at degrees <span class="math" data-tex="\(-2,-1\)">\(-2,-1\)</span> after applying <span class="math" data-tex="\(Ru_*\)">\(Ru_*\)</span>. Their lower terms agree; their total terms agree in degrees <span class="math" data-tex="\(-d-1\)">\(-d-1\)</span> and <span class="math" data-tex="\(-d\)">\(-d\)</span>, both below zero. The five terms of the two long exact sequences around the upper-tail group in degree <span class="math" data-tex="\(-d-1\)">\(-d-1\)</span> imply that these tail groups agree. The lower amplitude bound of <span class="math" data-tex="\(Ru_*\)">\(Ru_*\)</span> identifies them as
+<span class="math math-display" data-tex="\[
+{}^pH^{-d}Ru_*({}^pH^{-1}A)=R(C),\qquad
+{}^pH^{-d}Ru_*({}^pH^{-1}B)=R(S).
+\]">\[
+{}^pH^{-d}Ru_*({}^pH^{-1}A)=R(C),\qquad
+{}^pH^{-d}Ru_*({}^pH^{-1}B)=R(S).
+\]</span>
+Thus <span class="math" data-tex="\(R(C)\to R(S)\)">\(R(C)\to R(S)\)</span> is an isomorphism. Adjunction identifies <span class="math" data-tex="\(C\to S\)">\(C\to S\)</span> with its maximal image subobject. Apply the same proof to <span class="math" data-tex="\(DF\)">\(DF\)</span> and dualize. Smooth duality preserves the image of <span class="math" data-tex="\(U\)">\(U\)</span>, and the dual restriction, namely Gysin, identifies <span class="math" data-tex="\(U({}^pH^1M)(1)\)">\(U({}^pH^1M)(1)\)</span> as the maximal quotient of <span class="math" data-tex="\(S\)">\(S\)</span> in that image.</p>
+<p>In a semisimple finite-length object, the sum of the simple factors belonging to a Serre subcategory is both its largest subobject and its largest quotient in that subcategory. The composite between those two objects is an isomorphism: the other factors have no maps to or from them. Apply this to <span class="math" data-tex="\(S\)">\(S\)</span>. Restriction followed by Gysin gives an isomorphism from <span class="math" data-tex="\(U({}^pH^{-1}M)\)">\(U({}^pH^{-1}M)\)</span> to <span class="math" data-tex="\(U({}^pH^1M)(1)\)">\(U({}^pH^1M)(1)\)</span>.</p>
+<p>We must identify that map, including its class. The incidence is a regular Cartier divisor; on a chart where one coordinate of <span class="math" data-tex="\(x\)">\(x\)</span> is nonzero its equation solves for a hyperplane coefficient. Smooth duality for <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(qv\)">\(qv\)</span>, with transitivity of exceptional pullback, gives
+<span class="math" data-tex="\(v^!F&#x27;=F_H[-1](-1)\)">\(v^!F&#x27;=F_H[-1](-1)\)</span>.
+The restriction and counit therefore supply the restriction–Gysin composite. By the divisor class construction it is cup product with
+<span class="math math-display" data-tex="\[
+c_1(\mathcal O_{X&#x27;}(H))=q^*\eta+f&#x27;^*\beta.
+\tag{4.8}
+\]">\[
+c_1(\mathcal O_{X&#x27;}(H))=q^*\eta+f&#x27;^*\beta.
+\tag{4.8}
+\]</span>
+The plus sign comes from the tensor product of the two hyperplane line bundles and the positive divisor orientation. With the localization convention of lesson 6, Appendix E, the Kummer localization boundary of a parameter is the <em>negative</em> of its supported divisor class; it must not be silently substituted with the opposite sign. The oriented Gysin map in (4.8) uses the positive class.</p>
+<p>A base class acts by zero between distinct perverse cohomology degrees. Indeed cup product by <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is a natural transformation <span class="math" data-tex="\(K\to K(1)[2]\)">\(K\to K(1)[2]\)</span>. Compare it with <span class="math" data-tex="\({}^p\tau^{\le j}K\to K\)">\({}^p\tau^{\le j}K\to K\)</span>. The latter is an isomorphism on <span class="math" data-tex="\({}^pH^j\)">\({}^pH^j\)</span>, whereas the degree-<span class="math" data-tex="\(j\)">\(j\)</span> group of <span class="math" data-tex="\(({}^p\tau^{\le j}K)(1)[2]\)">\(({}^p\tau^{\le j}K)(1)[2]\)</span> is zero. Naturality kills the map to <span class="math" data-tex="\({}^pH^{j+2}K(1)\)">\({}^pH^{j+2}K(1)\)</span>. Thus the preceding isomorphism is exactly <span class="math" data-tex="\(U(\eta)\)">\(U(\eta)\)</span>, and faithfulness gives (4.1) for <span class="math" data-tex="\(r=1\)">\(r=1\)</span>.</p>
+<p>Induct on <span class="math" data-tex="\(r\)">\(r\)</span>, simultaneously for all projective maps and pure perverse sources. For <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>, (4.6) and its dual give the outer isomorphisms in
+<span class="math math-display" data-tex="\[
+U({}^pH^{-r}M)\longrightarrow{}^pH^{1-r}L
+\xrightarrow{\eta_H^{r-1}}{}^pH^{r-1}L(r-1)
+\longrightarrow U({}^pH^rM)(r),
+\tag{4.9}
+\]">\[
+U({}^pH^{-r}M)\longrightarrow{}^pH^{1-r}L
+\xrightarrow{\eta_H^{r-1}}{}^pH^{r-1}L(r-1)
+\longrightarrow U({}^pH^rM)(r),
+\tag{4.9}
+\]</span>
+where <span class="math" data-tex="\(\eta_H=(qv)^*\eta\)">\(\eta_H=(qv)^*\eta\)</span> is relatively ample for <span class="math" data-tex="\(h\)">\(h\)</span>. The middle arrow is an isomorphism by induction applied to <span class="math" data-tex="\(F_H\)">\(F_H\)</span>. Projection formula identifies the composite with the action of <span class="math" data-tex="\((q^*\eta+f&#x27;^*\beta)(q^*\eta)^{r-1}\)">\((q^*\eta+f&#x27;^*\beta)(q^*\eta)^{r-1}\)</span>. The term containing <span class="math" data-tex="\(\beta\)">\(\beta\)</span> vanishes on the relevant perverse cohomology by the same naturality argument. We obtain <span class="math" data-tex="\(U(\eta^r)\)">\(U(\eta^r)\)</span>, hence (4.1). The case <span class="math" data-tex="\(r=0\)">\(r=0\)</span> is the identity. Since the maps descend and geometric pullback is conservative, the arithmetic maps are isomorphisms as well. This completes the universal-hyperplane argument of BBD, 5.4.10–5.4.15, relative to the identified ordinary foundations.</p>
+<h3 id="transport-to-complex-varieties">Transport to complex varieties</h3>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> is semisimple perverse of geometric origin and <span class="math" data-tex="\(f\)">\(f\)</span> is projective over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, include <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, its Chern map and all nonzero perverse degrees in the finite diagram of §3. A simple constituent of <span class="math" data-tex="\(P\)">\(P\)</span> has a pure model on an allowed closed fibre. Formula (4.1) makes the descended Lefschetz maps isomorphisms. Comparison carries their actual morphisms to the corresponding complex-fibre morphisms. Their cones vanish on one side of an equivalence and hence on the other. Finite sums prove
+<span class="math math-display" data-tex="\[
+\eta^r:{}^pH^{-r}(Rf_*P)\xrightarrow{\sim}{}^pH^r(Rf_*P)(r).
+\tag{4.10}
+\]">\[
+\eta^r:{}^pH^{-r}(Rf_*P)\xrightarrow{\sim}{}^pH^r(Rf_*P)(r).
+\tag{4.10}
+\]</span>
+Geometric Tate coefficients may be trivialized. The comparison of the Chern maps, not just of the objects, is essential to this proof. The categorical result of §2 then supplies a derived splitting. Proper decomposition in §3 also applies when a relatively ample class has not been supplied.</p>
+<h2 id="5-the-natural-consequences-of-a-chosen-decomposition">5. The natural consequences of a chosen decomposition</h2>
+<h3 id="intersection-cohomology-inside-a-resolution"><span id="3-a-resolution-contains-intersection-cohomology"></span>Intersection cohomology inside a resolution</h3>
+<p>For a proper resolution <span class="math" data-tex="\(f:\widetilde X\to X\)">\(f:\widetilde X\to X\)</span> of an irreducible <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional variety, with <span class="math" data-tex="\(\widetilde X\)">\(\widetilde X\)</span> smooth, the unique full-support summand of <span class="math" data-tex="\(Rf_*\Lambda[d]\)">\(Rf_*\Lambda[d]\)</span> is <span class="math" data-tex="\(\operatorname{IC}_X\)">\(\operatorname{IC}_X\)</span>, with multiplicity one and shift zero. To see this, restrict a decomposition to a dense smooth open where <span class="math" data-tex="\(f\)">\(f\)</span> is an isomorphism and which avoids all the other proper supports. The restriction is <span class="math" data-tex="\(\Lambda[d]\)">\(\Lambda[d]\)</span>. It has exactly one rank-one perverse constituent in degree zero. Consequently there is exactly one full-support term, and its intermediate extension is <span class="math" data-tex="\(\operatorname{IC}_X\)">\(\operatorname{IC}_X\)</span>. All other terms have smaller support. In global degree <span class="math" data-tex="\(r-d\)">\(r-d\)</span> this yields
+<span class="math math-display" data-tex="\[
+IH^r(X,\Lambda)\text{ is a direct summand of }H^r(\widetilde X,\Lambda).
+\tag{5.1}
+\]">\[
+IH^r(X,\Lambda)\text{ is a direct summand of }H^r(\widetilde X,\Lambda).
+\tag{5.1}
+\]</span>
+The definition is <span class="math" data-tex="\(IH^r(X)=H^{r-d}(X,\operatorname{IC}_X)\)">\(IH^r(X)=H^{r-d}(X,\operatorname{IC}_X)\)</span>, so both sides have the displayed degree. A chosen derived splitting induces the inclusion and retraction. The theorem proves existence of these maps, not their canonicity. In particular, whenever the groups are finite-dimensional, their dimensions satisfy the corresponding inequality in every degree.</p>
+<h3 id="global-invariant-cycles"><span id="4-global-and-local-invariant-cycles"></span>Global invariant cycles</h3>
+<p>Let <span class="math" data-tex="\(A=Rf_*K\)">\(A=Rf_*K\)</span>, with <span class="math" data-tex="\(f\)">\(f\)</span> proper and <span class="math" data-tex="\(K\)">\(K\)</span> semisimple of geometric origin. Suppose <span class="math" data-tex="\(V\subset Y\)">\(V\subset Y\)</span> is Zariski open and <span class="math" data-tex="\(\mathcal H^iA|_V\)">\(\mathcal H^iA|_V\)</span> is locally constant. Then the natural edge and restriction map
+<span class="math math-display" data-tex="\[
+H^i(X,K)\longrightarrow H^0(V,\mathcal H^iA|_V)
+\tag{5.2}
+\]">\[
+H^i(X,K)\longrightarrow H^0(V,\mathcal H^iA|_V)
+\tag{5.2}
+\]</span>
+is surjective.</p>
+<p>We first compute the bottom ordinary degree of a simple IC. If <span class="math" data-tex="\(s=\dim Z\)">\(s=\dim Z\)</span> and <span class="math" data-tex="\(j:U\hookrightarrow Z\)">\(j:U\hookrightarrow Z\)</span> is its defining dense smooth open, the successive ordinary truncations in lesson 4 never cut below degree <span class="math" data-tex="\(-s\)">\(-s\)</span>. At every step the derived open image has no lower cohomology, and its degree <span class="math" data-tex="\(-s\)">\(-s\)</span> sheaf is the ordinary direct image of the preceding bottom sheaf. Thus
+<span class="math math-display" data-tex="\[
+\mathcal H^b\operatorname{IC}_Z(L)=0\ (b&lt;-s),\quad
+\mathcal H^{-s}\operatorname{IC}_Z(L)=j_*L,\quad
+H^{-s}(Z,\operatorname{IC}_Z(L))=H^0(U,L).
+\tag{5.3}
+\]">\[
+\mathcal H^b\operatorname{IC}_Z(L)=0\ (b&lt;-s),\quad
+\mathcal H^{-s}\operatorname{IC}_Z(L)=j_*L,\quad
+H^{-s}(Z,\operatorname{IC}_Z(L))=H^0(U,L).
+\tag{5.3}
+\]</span>
+For the last equality the lowest-degree hypercohomology spectral sequence has only its degree-zero sheaf-cohomology term; the possible outgoing targets have ordinary degree below <span class="math" data-tex="\(-s\)">\(-s\)</span>.</p>
+<p>Choose (3.2). Each <span class="math" data-tex="\(\mathcal H^i\)">\(\mathcal H^i\)</span> of a summand, restricted to <span class="math" data-tex="\(V\)">\(V\)</span>, is a direct summand of the local system <span class="math" data-tex="\(\mathcal H^iA|_V\)">\(\mathcal H^iA|_V\)</span>, so is itself locally constant. For a term <span class="math" data-tex="\(\operatorname{IC}_Z(L)[-n]\)">\(\operatorname{IC}_Z(L)[-n]\)</span>, its generic value is zero unless <span class="math" data-tex="\(i-n=-s\)">\(i-n=-s\)</span>. A locally constant sheaf that vanishes on a dense open of its possible support cannot acquire a nonzero rank just on its boundary. Terms whose supports miss <span class="math" data-tex="\(V\)">\(V\)</span> also contribute nothing. For a contributing term, choose its dense smooth defining open <span class="math" data-tex="\(U\)">\(U\)</span> inside <span class="math" data-tex="\(V\cap Z\)">\(V\cap Z\)</span>; shrinking does not change IC, as proved in lesson 4. Formula (5.3) identifies its source and target in (5.2) with the same <span class="math" data-tex="\(H^0(U,L)\)">\(H^0(U,L)\)</span>. The induced map is the identity. Summing proves surjectivity. Composition of derived sections identifies <span class="math" data-tex="\(H^i(Y,A)\)">\(H^i(Y,A)\)</span> with <span class="math" data-tex="\(H^i(X,K)\)">\(H^i(X,K)\)</span>.</p>
+<p>If <span class="math" data-tex="\(V\)">\(V\)</span> is connected and <span class="math" data-tex="\(y\in V\)">\(y\in V\)</span>, a section of a local system is determined by its value at <span class="math" data-tex="\(y\)">\(y\)</span>, and that value must be fixed by every loop. Conversely an invariant value extends by transport along paths, independently of the path. Proper base change therefore identifies the target of (5.2) with
+<span class="math math-display" data-tex="\[
+H^i(X_y,K|_{X_y})^{\pi_1(V,y)}.
+\tag{5.4}
+\]">\[
+H^i(X_y,K|_{X_y})^{\pi_1(V,y)}.
+\tag{5.4}
+\]</span>
+The choice of decomposition proves surjectivity of a map defined without that choice.</p>
+<h3 id="local-invariant-cycles">Local invariant cycles</h3>
+<p>Fix <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span>. For a sufficiently small ball <span class="math" data-tex="\(B\)">\(B\)</span> about <span class="math" data-tex="\(y\)">\(y\)</span> in a local embedding, intersected with <span class="math" data-tex="\(Y\)">\(Y\)</span>, the local version is
+<span class="math math-display" data-tex="\[
+H^i(X_y,K|_{X_y})\longrightarrow
+H^0(B\cap V,\mathcal H^iA|_{B\cap V})
+\quad\text{surjective}.
+\tag{5.5}
+\]">\[
+H^i(X_y,K|_{X_y})\longrightarrow
+H^0(B\cap V,\mathcal H^iA|_{B\cap V})
+\quad\text{surjective}.
+\tag{5.5}
+\]</span>
+The neighborhood input is simultaneous stabilization, on sufficiently small such balls, of the finitely many constructible section groups involved. One must also identify cohomology on the small ball with the stalk before inverting that comparison to define the displayed map. These are the constructible-neighborhood statements in BBD, 6.2.9; lesson 1's normal-neighborhood arguments address their geometry, but their exact small-ball scope and recursive prerequisites still need verification here.</p>
+<p>Given this input, apply the preceding IC argument on <span class="math" data-tex="\(B\)">\(B\)</span>. A contributing bottom sheaf is <span class="math" data-tex="\(j_*L\)">\(j_*L\)</span>. Its stalk at <span class="math" data-tex="\(y\)">\(y\)</span> is the colimit of <span class="math" data-tex="\(H^0(B&#x27;\cap U,L)\)">\(H^0(B&#x27;\cap U,L)\)</span> over shrinking neighborhoods. Stabilization identifies that stalk with the corresponding sections on the chosen <span class="math" data-tex="\(B\)">\(B\)</span>. Since <span class="math" data-tex="\(U\subset V\)">\(U\subset V\)</span>, the direct-image identity identifies those sections with the target for this summand in (5.5). All remaining summands have zero target. Their sum gives the surjection, and proper base change supplies its source. On a punctured disc the target is <span class="math" data-tex="\(\ker(T-1)\)">\(\ker(T-1)\)</span>; it need not be the entire nearby fibre group.</p>
+<h3 id="the-perverse-leray-filtration">The perverse Leray filtration</h3>
+<p>Use §2's single-row argument on (3.2). It proves degeneration of
+<span class="math math-display" data-tex="\[
+E_2^{a,b}=H^a(Y,{}^pH^b(Rf_*K))\Longrightarrow H^{a+b}(X,K).
+\tag{5.6}
+\]">\[
+E_2^{a,b}=H^a(Y,{}^pH^b(Rf_*K))\Longrightarrow H^{a+b}(X,K).
+\tag{5.6}
+\]</span>
+The truncation filtration is canonical, whereas a splitting of it inherits the choice of a derived decomposition. This is the perverse Leray sequence. For a smooth proper family over a smooth base of dimension <span class="math" data-tex="\(b\)">\(b\)</span>, the ordinary direct-image sheaves are local systems; shifting those sheaves by <span class="math" data-tex="\([b]\)">\([b]\)</span> makes them perverse. The two index systems then translate into one another and give ordinary Leray degeneration. With singular fibres, replacing the perverse terms in (5.6) by ordinary cohomology sheaves is not justified by this argument.</p>
+<h2 id="6-exceptional-fibres-and-a-vanishing-loop"><span id="6-three-direct-image-calculations"></span>6. Exceptional fibres and a vanishing loop</h2>
+<h3 id="a-single-exceptional-projective-line"><span id="the-blow-up-of-the-affine-plane"></span>A single exceptional projective line</h3>
+<p>The blow-up of the origin in <span class="math" data-tex="\(\mathbb A^2\)">\(\mathbb A^2\)</span> is the incidence surface <span class="math" data-tex="\(xv=yu\)">\(xv=yu\)</span> in <span class="math" data-tex="\(\mathbb A^2\times\mathbb P^1\)">\(\mathbb A^2\times\mathbb P^1\)</span>. On <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span> its coordinates are <span class="math" data-tex="\((x,v/u)\)">\((x,v/u)\)</span>, with <span class="math" data-tex="\(y=xv/u\)">\(y=xv/u\)</span>; the other chart is symmetric. The surface is smooth, its projection <span class="math" data-tex="\(f\)">\(f\)</span> is projective, and it is an isomorphism away from the origin with exceptional fibre <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>.</p>
+<p>Put <span class="math" data-tex="\(P=Rf_*\Lambda[2]\)">\(P=Rf_*\Lambda[2]\)</span>. At the origin its stalk has <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in degree <span class="math" data-tex="\(-2\)">\(-2\)</span> and <span class="math" data-tex="\(\Lambda(-1)\)">\(\Lambda(-1)\)</span> in degree zero. Smooth duality and properness give <span class="math" data-tex="\(DP=P(2)\)">\(DP=P(2)\)</span>, so its costalk has degrees zero and two. Off the origin it is <span class="math" data-tex="\(\Lambda[2]\)">\(\Lambda[2]\)</span>. The support and cosupport tests therefore make <span class="math" data-tex="\(P\)">\(P\)</span> perverse. The decomposition theorem supplies semisimplicity. Generic restriction fixes its full-support summand as <span class="math" data-tex="\(\Lambda_{\mathbb A^2}[2]\)">\(\Lambda_{\mathbb A^2}[2]\)</span>; the unused degree-zero stalk is one point coefficient. Hence
+<span class="math math-display" data-tex="\[
+Rf_*\Lambda_{\widetilde{\mathbb A^2}}[2]
+\simeq\Lambda_{\mathbb A^2}[2]\oplus i_*\Lambda(-1).
+\tag{6.1}
+\]">\[
+Rf_*\Lambda_{\widetilde{\mathbb A^2}}[2]
+\simeq\Lambda_{\mathbb A^2}[2]\oplus i_*\Lambda(-1).
+\tag{6.1}
+\]</span>
+Classically the Tate factor is omitted. This calculation shows explicitly why the resolution summand can be a proper summand of the direct image.</p>
+<h3 id="the-monodromy-of-a-nodal-cubic-family"><span id="an-elliptic-curve-acquires-a-node"></span>The monodromy of a nodal cubic family</h3>
+<p>Consider the projective family
+<span class="math math-display" data-tex="\[
+y^2z=x^3+x^2z+t z^3
+\tag{6.2}
+\]">\[
+y^2z=x^3+x^2z+t z^3
+\tag{6.2}
+\]</span>
+over the complex line with <span class="math" data-tex="\(-4/27\)">\(-4/27\)</span> removed. In the affine chart <span class="math" data-tex="\(z=1\)">\(z=1\)</span>, differentiation with respect to <span class="math" data-tex="\(t\)">\(t\)</span> proves smoothness of the total space. At infinity its only point is <span class="math" data-tex="\([0:1:0]\)">\([0:1:0]\)</span>, where differentiation with respect to <span class="math" data-tex="\(z\)">\(z\)</span> is nonzero. The cubic polynomial in <span class="math" data-tex="\(x\)">\(x\)</span> has discriminant <span class="math" data-tex="\(-t(4+27t)\)">\(-t(4+27t)\)</span>; equivalently a repeated root must solve <span class="math" data-tex="\(3x^2+2x=0\)">\(3x^2+2x=0\)</span>, giving exactly those two parameter values. Near zero the noncentral fibres are smooth plane cubics and have Betti numbers <span class="math" data-tex="\(1,2,1\)">\(1,2,1\)</span>, by lesson 1, Appendix E. The central fibre is the nodal cubic with normalization <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> and two points above the node, calculated in Appendix L; its Betti numbers are <span class="math" data-tex="\(1,1,1\)">\(1,1,1\)</span>.</p>
+<p>We spell out why the local monodromy has a single nontrivial unipotent block. Near the node the convergent branch of <span class="math" data-tex="\(\sqrt{1+x}\)">\(\sqrt{1+x}\)</span> defines
+<span class="math math-display" data-tex="\[
+a=y-x\sqrt{1+x},\qquad b=y+x\sqrt{1+x},\qquad ab=t.
+\tag{6.3}
+\]">\[
+a=y-x\sqrt{1+x},\qquad b=y+x\sqrt{1+x},\qquad ab=t.
+\tag{6.3}
+\]</span>
+The coordinate Jacobian at the origin is nonzero. For fixed small nonzero <span class="math" data-tex="\(t\)">\(t\)</span>, the region <span class="math" data-tex="\(|a|,|b|\le\varepsilon\)">\(|a|,|b|\le\varepsilon\)</span> is an annulus in the <span class="math" data-tex="\(a\)">\(a\)</span>-coordinate, with radii <span class="math" data-tex="\(|t|/\varepsilon\)">\(|t|/\varepsilon\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The outer boundary is parametrized by <span class="math" data-tex="\(a\)">\(a\)</span>, and the inner boundary by <span class="math" data-tex="\(b=t/a\)">\(b=t/a\)</span>. When <span class="math" data-tex="\(t\)">\(t\)</span> runs through <span class="math" data-tex="\(t_0e^{i\theta}\)">\(t_0e^{i\theta}\)</span>, keeping <span class="math" data-tex="\(a\)">\(a\)</span> fixed on the outer boundary and <span class="math" data-tex="\(b\)">\(b\)</span> fixed on the inner boundary changes the argument of <span class="math" data-tex="\(a\)">\(a\)</span> by zero at the outer edge and by <span class="math" data-tex="\(\theta\)">\(\theta\)</span> at the inner edge.</p>
+<p>Choose a radial cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to zero near the outer edge and one near the inner edge. The maps <span class="math" data-tex="\(a\mapsto a e^{i\theta\chi(|a|)}\)">\(a\mapsto a e^{i\theta\chi(|a|)}\)</span>, with <span class="math" data-tex="\(b=t_0e^{i\theta}/a\)">\(b=t_0e^{i\theta}/a\)</span>, realize that transport. At <span class="math" data-tex="\(\theta=2\pi\)">\(\theta=2\pi\)</span> it is one annular twist fixing both boundary circles. Outside the node region the family is a compact smooth submersion with boundary over the whole small disc. The relative vector-field construction in lesson 1, Appendix I.1, supplies a trivialization there: prescribe the displayed boundary lifts on collars, extend a horizontal lift by a partition of unity, and integrate along radial paths in the disc. Compactness gives the required complete flows. The collar prescription makes this trivialization agree with the chosen boundary parameters. Thus the annular twist is the whole monodromy up to isotopy.</p>
+<p>The exterior of the central node is the normalization sphere with two discs removed, an annulus; the same is true of the exterior in the smooth fibres by that trivialization. Gluing it to the smoothing annulus gives a torus. A core circle <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of the smoothing annulus and a curve <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> crossing that annulus once form a homology basis: cutting along both leaves a disc, with the usual four-edge boundary and one two-cell whose cellular boundary is zero. The twist fixes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The crossing curve winds one additional time around the annulus, so, choosing its orientation accordingly, it sends <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> to <span class="math" data-tex="\(\gamma+\alpha\)">\(\gamma+\alpha\)</span>. Therefore the cohomological inverse transpose has one size-two unipotent Jordan block and
+<span class="math math-display" data-tex="\[
+\dim\ker(T-1)=1.
+\tag{6.4}
+\]">\[
+\dim\ker(T-1)=1.
+\tag{6.4}
+\]</span>
+This argument uses the actual plumbing coordinates and the stated smooth-flow and sheaf/topology comparisons, rather than taking a Picard–Lefschetz formula as an unexplained input.</p>
+<p>Let <span class="math" data-tex="\(B\)">\(B\)</span> be a small disc, <span class="math" data-tex="\(j:B^*\hookrightarrow B\)">\(j:B^*\hookrightarrow B\)</span>, and <span class="math" data-tex="\(L=R^1f_*\Lambda|_{B^*}\)">\(L=R^1f_*\Lambda|_{B^*}\)</span>. Restrict the algebraic decomposition to this disc. The open fibre cohomology fixes the full-support terms as
+<span class="math math-display" data-tex="\[
+Rf_*\Lambda[2]|_B
+\simeq\Lambda_B[2]\oplus j_{!*}(L[1])\oplus\Lambda_B.
+\tag{6.5}
+\]">\[
+Rf_*\Lambda[2]|_B
+\simeq\Lambda_B[2]\oplus j_{!*}(L[1])\oplus\Lambda_B.
+\tag{6.5}
+\]</span>
+To check completeness of the list, lesson 6's disc calculation puts <span class="math" data-tex="\(\ker(T-1)\)">\(\ker(T-1)\)</span> in stalk degree <span class="math" data-tex="\(-1\)">\(-1\)</span> of <span class="math" data-tex="\(j_{!*}(L[1])\)">\(j_{!*}(L[1])\)</span>, and gives zero in degree zero. The other two terms have stalk degrees <span class="math" data-tex="\(-2\)">\(-2\)</span> and zero. They already account for all three dimensions of the central fibre. Any extra shifted point sheaf would add dimension in some degree, so none occurs. Formula (5.5) identifies the one-dimensional central <span class="math" data-tex="\(H^1\)">\(H^1\)</span> isomorphically with the invariant subspace of the two-dimensional nearby <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. It does not identify it with all nearby cohomology.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<h3 id="exercise-1-the-exceptional-coefficient"><span id="exercise-1-easy-the-exceptional-term"></span>Exercise 1 — the exceptional coefficient</h3>
+<p>Compute both shifts of the direct image of the blow-up of <span class="math" data-tex="\(\mathbb A^2\)">\(\mathbb A^2\)</span> at zero, including the arithmetic coefficient.</p>
+<p><strong>Solution.</strong> The smooth open fixes the full-support perverse constituent <span class="math" data-tex="\(\Lambda_{\mathbb A^2}[2]\)">\(\Lambda_{\mathbb A^2}[2]\)</span>. The exceptional <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> contributes stalk groups in degrees <span class="math" data-tex="\(-2\)">\(-2\)</span> and zero after shifting by two, with coefficients <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and <span class="math" data-tex="\(\Lambda(-1)\)">\(\Lambda(-1)\)</span>. Duality gives the costalk bounds required for perversity. The full-support term uses the first stalk group, so semisimplicity leaves exactly <span class="math" data-tex="\(i_*\Lambda(-1)\)">\(i_*\Lambda(-1)\)</span> as the second perverse term. Undoing the shift in (6.1) gives <span class="math" data-tex="\(Rf_*\Lambda=\Lambda_{\mathbb A^2}\oplus i_*\Lambda(-1)[-2]\)">\(Rf_*\Lambda=\Lambda_{\mathbb A^2}\oplus i_*\Lambda(-1)[-2]\)</span>. Over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> the exceptional coefficient has geometric Frobenius eigenvalue <span class="math" data-tex="\(q\)">\(q\)</span>, and both shifted summands are pure of weight two. There is no arithmetic twist in the classical formula.</p>
+<h3 id="exercise-2-characters-at-a-branch-point"><span id="exercise-2-easy-the-two-characters-of-a-double-cover"></span>Exercise 2 — characters at a branch point</h3>
+<p>Decompose the unshifted direct image for <span class="math" data-tex="\(z\mapsto z^2\)">\(z\mapsto z^2\)</span> on <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, and compute its branch-point stalks.</p>
+<p><strong>Solution.</strong> On a two-point fibre the involution exchanges the two coordinates of <span class="math" data-tex="\(\Lambda^2\)">\(\Lambda^2\)</span>. Its invariant vector spans the trivial representation and its anti-invariant vector spans the sign representation. The two averaging projectors act on the global direct-image sheaf. At a branch point the fibre has one point and the involution acts trivially, so only the invariant summand has a stalk there. For the sign local system on <span class="math" data-tex="\(\mathbb G_m\)">\(\mathbb G_m\)</span>, the puncture complex has invertible differential <span class="math" data-tex="\(-2\)">\(-2\)</span>, proving zero boundary stalk and costalk for its IC extension. Thus <span class="math" data-tex="\(f_*\Lambda=\Lambda\oplus(j_{!*}(L_-[1]))[-1]\)">\(f_*\Lambda=\Lambda\oplus(j_{!*}(L_-[1]))[-1]\)</span>. Formula (1.2) is its shift by one, with no skyscraper term. The projectors explicitly construct the splitting.</p>
+<h3 id="exercise-3-the-natural-invariant-cycle-map"><span id="exercise-3-medium-invariant-cycles-from-a-decomposition"></span>Exercise 3 — the natural invariant-cycle map</h3>
+<p>Deduce global invariant cycles from (3.2), keeping track of which map is surjective.</p>
+<p><strong>Solution.</strong> Apply ordinary degree <span class="math" data-tex="\(i\)">\(i\)</span> to each IC summand and restrict to <span class="math" data-tex="\(V\)">\(V\)</span>. The result is locally constant because it is a direct summand of <span class="math" data-tex="\(\mathcal H^i(Rf_*K)|_V\)">\(\mathcal H^i(Rf_*K)|_V\)</span>. A support of dimension <span class="math" data-tex="\(s\)">\(s\)</span> contributes only for shift <span class="math" data-tex="\(n=i+s\)">\(n=i+s\)</span>: in any other degree its generic stalk is zero, forcing the locally constant summand to vanish. Shrink its defining smooth open to <span class="math" data-tex="\(U\subset V\cap Z\)">\(U\subset V\cap Z\)</span>. The lowest-degree calculation (5.3) identifies both its degree-<span class="math" data-tex="\(i\)">\(i\)</span> global cohomology and its restricted section group with <span class="math" data-tex="\(H^0(U,L)\)">\(H^0(U,L)\)</span>. The edge and restriction map becomes the identity on that group. Sum these maps and identify <span class="math" data-tex="\(R\Gamma(Y,Rf_*K)=R\Gamma(X,K)\)">\(R\Gamma(Y,Rf_*K)=R\Gamma(X,K)\)</span>; this gives precisely (5.2), not a newly chosen map. On a connected <span class="math" data-tex="\(V\)">\(V\)</span>, parallel transport identifies its target with the invariant vectors in a fibre, and proper base change gives (5.4).</p>
+<h3 id="exercise-4-the-unique-full-support-resolution-term"><span id="exercise-4-medium-the-multiplicity-of-the-resolution-summand"></span>Exercise 4 — the unique full-support resolution term</h3>
+<p>Determine the multiplicity and shift of IC in a resolution pushforward, and the resulting cohomological summand.</p>
+<p><strong>Solution.</strong> Choose a dense smooth open on which the resolution is an isomorphism, avoiding every smaller support in a decomposition. Its direct image there is the single rank-one perverse sheaf <span class="math" data-tex="\(\Lambda[d]\)">\(\Lambda[d]\)</span>. Exactly one full-support simple term can therefore occur, with shift zero and constant rank-one local system. Uniqueness of intermediate extension identifies that term with <span class="math" data-tex="\(\operatorname{IC}_X\)">\(\operatorname{IC}_X\)</span>. Applying global cohomology in degree <span class="math" data-tex="\(r-d\)">\(r-d\)</span> gives (5.1). Multiplicity and the abstract constituent are intrinsic; the derived inclusion and projection come from the chosen splitting. Exceptional-fibre summands are not removed by the argument.</p>
+<h3 id="exercise-5-the-minimal-resolution-of-xy-z-2"><span id="exercise-5-hard-the-minimal-resolution-of-an-a_1-surface"></span>Exercise 5 — the minimal resolution of <span class="math" data-tex="\(xy=z^2\)">\(xy=z^2\)</span></h3>
+<p>Construct the minimal resolution of this surface, over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> or over a finite field of odd characteristic with characteristic-zero étale coefficients. Determine the complete shifted direct image.</p>
+<p><strong>Solution.</strong> Let the tautological line <span class="math" data-tex="\(\lambda\subset k^2\)">\(\lambda\subset k^2\)</span> vary over <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, and map its square <span class="math" data-tex="\(\lambda^{\otimes2}\)">\(\lambda^{\otimes2}\)</span> into <span class="math" data-tex="\(\operatorname{Sym}^2k^2\)">\(\operatorname{Sym}^2k^2\)</span>. The total space is <span class="math" data-tex="\(Y=\mathcal O_{\mathbb P^1}(-2)\)">\(Y=\mathcal O_{\mathbb P^1}(-2)\)</span>, and the map sends a fibre coordinate to <span class="math" data-tex="\((x,y,z)=(t u^2,t v^2,tuv)\)">\((x,y,z)=(t u^2,t v^2,tuv)\)</span>. Rescaling <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> rescales <span class="math" data-tex="\(t\)">\(t\)</span> inversely by its square, so the formula is well-defined. Its incidence equations are <span class="math" data-tex="\(xv=zu\)">\(xv=zu\)</span>, <span class="math" data-tex="\(zv=yu\)">\(zv=yu\)</span> in <span class="math" data-tex="\(X\times\mathbb P^1\)">\(X\times\mathbb P^1\)</span>.</p>
+<p>On <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>, put <span class="math" data-tex="\(a=v/u\)">\(a=v/u\)</span>. The equations give <span class="math" data-tex="\(z=ax\)">\(z=ax\)</span>, <span class="math" data-tex="\(y=a^2x\)">\(y=a^2x\)</span>; hence <span class="math" data-tex="\((x,a)\)">\((x,a)\)</span> are smooth coordinates. The other chart has coordinates <span class="math" data-tex="\((y,u/v)\)">\((y,u/v)\)</span>. Projection <span class="math" data-tex="\(\pi:Y\to X\)">\(\pi:Y\to X\)</span> is projective, is an isomorphism off the vertex, and has exceptional fibre <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>. Its normal bundle is <span class="math" data-tex="\(\mathcal O(-2)\)">\(\mathcal O(-2)\)</span>, so the sole exceptional curve has self-intersection <span class="math" data-tex="\(-2\)">\(-2\)</span>. It cannot be contracted to a smooth point. Indeed the coordinate transition <span class="math" data-tex="\(y=a^2x\)">\(y=a^2x\)</span>, <span class="math" data-tex="\(b=1/a\)">\(b=1/a\)</span> gives <span class="math" data-tex="\(dy\wedge db=-dx\wedge da\)">\(dy\wedge db=-dx\wedge da\)</span>, so the canonical line of <span class="math" data-tex="\(Y\)">\(Y\)</span> restricts trivially to the exceptional curve <span class="math" data-tex="\(E\)">\(E\)</span>. If a contraction <span class="math" data-tex="\(g\)">\(g\)</span> to a smooth surface existed, its Jacobian would identify <span class="math" data-tex="\(K_Y\otimes g^*K_Z^{-1}\)">\(K_Y\otimes g^*K_Z^{-1}\)</span> with <span class="math" data-tex="\(\mathcal O(aE)\)">\(\mathcal O(aE)\)</span> for a positive integer <span class="math" data-tex="\(a\)">\(a\)</span>: it is invertible off <span class="math" data-tex="\(E\)">\(E\)</span> and vanishes on <span class="math" data-tex="\(E\)">\(E\)</span>, where the differential kills its tangent direction. Restricting to <span class="math" data-tex="\(E\)">\(E\)</span>, the left side has degree zero, since <span class="math" data-tex="\(g(E)\)">\(g(E)\)</span> is a point. The right side has degree <span class="math" data-tex="\(-2a\)">\(-2a\)</span>, a contradiction. Thus there is no further contraction to a smooth resolution, which gives minimality.</p>
+<p>The vertex stalk of <span class="math" data-tex="\(P=R\pi_*\Lambda[2]\)">\(P=R\pi_*\Lambda[2]\)</span> has <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in degree <span class="math" data-tex="\(-2\)">\(-2\)</span> and <span class="math" data-tex="\(\Lambda(-1)\)">\(\Lambda(-1)\)</span> in degree zero. Proper smooth-source duality says <span class="math" data-tex="\(DP=P(2)\)">\(DP=P(2)\)</span>, giving costalk degrees zero and two. These bounds and the smooth open show perversity, and the decomposition theorem gives semisimplicity. The resolution argument supplies one full-support IC term. Formula (1.4), proved by finite quotient and projectors in both settings, identifies it with <span class="math" data-tex="\(\Lambda_X[2]\)">\(\Lambda_X[2]\)</span>. Its stalk consumes exactly the degree-<span class="math" data-tex="\(-2\)">\(-2\)</span> coefficient. The only remaining term is therefore
+<span class="math math-display" data-tex="\[
+R\pi_*\Lambda_Y[2]\simeq\operatorname{IC}_X\oplus i_*\Lambda(-1).
+\tag{7.1}
+\]">\[
+R\pi_*\Lambda_Y[2]\simeq\operatorname{IC}_X\oplus i_*\Lambda(-1).
+\tag{7.1}
+\]</span>
+Every other possible point term would add a stalk dimension. Unshifted, the terms are <span class="math" data-tex="\(\Lambda_X\)">\(\Lambda_X\)</span> and <span class="math" data-tex="\(i_*\Lambda(-1)[-2]\)">\(i_*\Lambda(-1)[-2]\)</span>. Over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, geometric Frobenius on the exceptional term is <span class="math" data-tex="\(q\)">\(q\)</span>. The coefficient and the intersection number <span class="math" data-tex="\(-2\)">\(-2\)</span> agree with the intersection-form calculation developed in the next lesson.</p>
+<h2 id="exact-prerequisites-still-required"><span id="what-this-lesson-does-not-prove"></span>Exact prerequisites still required</h2>
+<p>The finite-data classical/étale and specialization comparisons, including their stable lattices and compatibility with Chern maps, remain unproved inputs in §3. The rational IC-source version used in the resolution calculations is the version stated in de Cataldo–Migliorini, Theorem 1.6.1; its full coefficient passage must also be supplied. Lesson 7's ordinary weight, mixed-operation, curve-conductor and generic-local-acyclicity foundations, together with the exact normalized adic operations, remain prerequisites of §§3–4. The divisor class identity, smooth trace, finite and proper base change, and their coefficient comparisons must be checked at the precise versions used. The abstract splitting proof does not remove any of these obligations.</p>
+<p>The small-ball comparisons specified before (5.5) require their exact earlier proof and recursive prerequisite check. The plumbing calculation in §6 refers to lesson 1's written smooth-flow, plane-curve, normalization and sheaf–singular arguments; their entire prerequisite closure is not established by this reference. Finally, the broader semisimple-source theorem stated in §3 remains an assigned proof obligation at its full stated generality. A free reference identifies the statement and supplies material for its eventual proof; it does not discharge any of these obligations.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>A. Beilinson, J. Bernstein and P. Deligne, with results of O. Gabber, <em>Faisceaux pervers</em>, Astérisque <strong>100</strong> (1982): 5.3.8, 5.4.4–5.4.5, 5.4.10–5.4.15, 6.1 and 6.2.4–6.2.10. <a href="https://www.numdam.org/item/AST_1982__100__1_0/">Free original volume</a>.</li>
+<li>P. Deligne, <em>Théorème de Lefschetz et critères de dégénérescence de suites spectrales</em>, Publications Mathématiques de l'IHÉS <strong>35</strong> (1968), 107–126: Proposition 1.2, Theorem 1.5 and Remark 1.8. <a href="https://www.numdam.org/item/PMIHES_1968__35__107_0/">Free original article</a>.</li>
+<li>M. A. de Cataldo and L. Migliorini, <em>The decomposition theorem, perverse sheaves and the topology of algebraic maps</em>: Theorem 1.6.1, Remark 1.6.2 and §3. <a href="https://arxiv.org/abs/0712.0349">Free author preprint</a>.</li>
+<li>P. Deligne, <a href="https://publications.ias.edu/sites/default/files/68_Decompositionsdans.pdf"><em>Décompositions dans la catégorie dérivée</em></a>, 1994: §1 and 2.4–2.5. Free author-hosted text.</li>
+<li>M. A. de Cataldo, <em>Decomposition theorem for semi-simples</em>, 2017 preprint: Theorems 2.1.1–2.1.2, Corollary 2.2.1 and §2.3. <a href="https://arxiv.org/abs/1702.06775v1">Free author preprint, version 1</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="weights-purity-and-semisimplicity-over-finite-fields.html">← Weights, purity and semisimplicity over finite fields</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="semismall-maps-and-small-resolutions.html">Semismall maps and small resolutions →</a></span></nav>
+<p class="small source-link"><a href="src/the-decomposition-theorem.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-PERV">Repository</a></nav>
+</footer>
+</body>
+</html>

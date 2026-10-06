@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D-modules on stacks, ind-schemes and the de Rham prestack · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/stacks-ind-schemes-and-the-de-rham-prestack.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Lesson 9 of 10</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="d-modules-on-stacks-ind-schemes-and-the-de-rham-prestack">D-modules on stacks, ind-schemes and the de Rham prestack</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A quotient stack remembers the symmetries of its points. For a connected group acting on a point, strong equivariance leaves only vector spaces in the abelian category. Nevertheless the derived category on the quotient remembers the cohomology of the group. This difference is essential on the automorphic side of geometric Langlands.</p>
+<p>We work over an algebraically closed field <span class="math" data-tex="$k$">$k$</span> of characteristic zero. Categories in this lesson are presentable <span class="math" data-tex="$k$">$k$</span>-linear stable infinity-categories, or equivalently their DG models; <span class="math" data-tex="$\operatorname{Vect}$">$\operatorname{Vect}$</span> means complexes of vector spaces. A limit includes compatible objects, maps, and all their homotopies. Taking a limit of triangulated homotopy categories would discard part of this information.</p>
+<p>On smooth schemes we retain left D-modules and the convention of Inverse images:
+<span class="math math-display" data-tex="\[
+f^!M=Lf^*M[r]\quad\text{if }f\text{ is smooth of relative dimension }r.
+                                                               \tag{0.1}
+\]">\[
+f^!M=Lf^*M[r]\quad\text{if }f\text{ is smooth of relative dimension }r.
+                                                               \tag{0.1}
+\]</span>
+The normalized pullback <span class="math" data-tex="$f^\natural=f^![-r]$">$f^\natural=f^![-r]$</span> is exact on the usual module hearts. It is also useful to distinguish the smooth de Rham pullback
+<span class="math" data-tex="$f_{\rm dR}^*=f^![-2r]$">$f_{\rm dR}^*=f^![-2r]$</span>: for a schematic quasi-compact smooth map this is the left adjoint of <span class="math" data-tex="$f_{\rm dR,*}$">$f_{\rm dR,*}$</span>. Thus <span class="math" data-tex="$f^\natural$">$f^\natural$</span> and <span class="math" data-tex="$f_{\rm dR}^*$">$f_{\rm dR}^*$</span> are different normalizations.</p>
+<p>We use <a href="equivariant-and-twisted-d-modules.html">Equivariant and twisted D-modules</a>, smooth descent for algebraic stacks, and the Spencer and Kashiwara constructions from earlier lessons. The categorical prerequisites are homotopy limits, DG modules, Ind-completion, and derived tensor products. The general theories of prestacks, <span class="math" data-tex="$\operatorname{QCoh}$">$\operatorname{QCoh}$</span>, <span class="math" data-tex="$\operatorname{IndCoh}$">$\operatorname{IndCoh}$</span>, and formal completions are inputs from derived algebraic geometry.</p>
+<h2 id="1-descent-includes-the-higher-maps">1. Descent includes the higher maps</h2>
+<p>Let <span class="math" data-tex="$\mathcal Y$">$\mathcal Y$</span> be a smooth algebraic stack with affine diagonal, initially quasi-compact. Choose a smooth surjective atlas <span class="math" data-tex="$q:U\to\mathcal Y$">$q:U\to\mathcal Y$</span> with <span class="math" data-tex="$U$">$U$</span> affine. Its nerve is
+<span class="math math-display" data-tex="\[
+U_p=\underbrace{U\times_{\mathcal Y}\cdots\times_{\mathcal Y}U}_{p+1}.
+\]">\[
+U_p=\underbrace{U\times_{\mathcal Y}\cdots\times_{\mathcal Y}U}_{p+1}.
+\]</span>
+The affine-diagonal assumption makes these schemes affine. On components where <span class="math" data-tex="$q$">$q$</span> has relative dimension <span class="math" data-tex="$r$">$r$</span>, the augmentation <span class="math" data-tex="$q_p:U_p\to\mathcal Y$">$q_p:U_p\to\mathcal Y$</span> has relative dimension <span class="math" data-tex="$r_p=(p+1)r$">$r_p=(p+1)r$</span>; variable dimensions are handled componentwise.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+\mathrm{Dmod}(\mathcal Y)=\operatorname{Tot}\bigl(\mathrm{Dmod}(U_\bullet),\,!\bigr).
+                                                               \tag{1.1}
+\]">\[
+\mathrm{Dmod}(\mathcal Y)=\operatorname{Tot}\bigl(\mathrm{Dmod}(U_\bullet),\,!\bigr).
+                                                               \tag{1.1}
+\]</span>
+An object is a complex <span class="math" data-tex="$M_p$">$M_p$</span> on every level with equivalences between its !-pullbacks along the nerve maps, satisfying homotopy-coherent compatibility. In the heart, the normalized objects are <span class="math" data-tex="$M_p[-r_p]$">$M_p[-r_p]$</span>. Their face identifications use the exact pullbacks <span class="math" data-tex="$f^\natural$">$f^\natural$</span>, since a face map has relative dimension <span class="math" data-tex="$r_p-r_{p-1}$">$r_p-r_{p-1}$</span>.</p>
+<p><strong>Theorem 1.1 (the descent heart).</strong> The category (1.1) has a nondegenerate t-structure characterized by
+<span class="math math-display" data-tex="\[
+M\in\mathrm{Dmod}(\mathcal Y)^{\leq0}
+\ \Longleftrightarrow\ q^!M[-r]\in\mathrm{Dmod}(U)^{\leq0},
+                                                               \tag{1.2}
+\]">\[
+M\in\mathrm{Dmod}(\mathcal Y)^{\leq0}
+\ \Longleftrightarrow\ q^!M[-r]\in\mathrm{Dmod}(U)^{\leq0},
+                                                               \tag{1.2}
+\]</span>
+and the corresponding condition for <span class="math" data-tex="$\geq0$">$\geq0$</span>. Its heart is the abelian category of D-modules obtained by normalized smooth descent.</p>
+<p><strong>Proof.</strong> Work first with the face maps of the nerve; this is its semisimplicial, or fat, totalization. It computes the same descent category: units and degeneracies supply identity identifications, while the face compatibilities retain their coherent compositions. Every face pullback, after subtracting the difference of the <span class="math" data-tex="$r_p$">$r_p$</span>, is t-exact. Consequently the prescriptions
+<span class="math math-display" data-tex="\[
+(M^{\leq0})_p=\tau^{\leq0}(M_p[-r_p])[r_p],\qquad
+(M^{\geq1})_p=\tau^{\geq1}(M_p[-r_p])[r_p]
+\]">\[
+(M^{\leq0})_p=\tau^{\leq0}(M_p[-r_p])[r_p],\qquad
+(M^{\geq1})_p=\tau^{\geq1}(M_p[-r_p])[r_p]
+\]</span>
+commute with the face identifications and their homotopies. They therefore define descent objects and a triangle
+<span class="math" data-tex="$M^{\leq0}\to M\to M^{\geq1}$">$M^{\leq0}\to M\to M^{\geq1}$</span>.</p>
+<p>For normalized level objects <span class="math" data-tex="$A\in D^{\leq0}$">$A\in D^{\leq0}$</span> and <span class="math" data-tex="$B\in D^{\geq1}$">$B\in D^{\geq1}$</span>, the mapping space is contractible: its homotopy groups are
+<span class="math" data-tex="$\operatorname{Hom}(A[i],B)$">$\operatorname{Hom}(A[i],B)$</span> for <span class="math" data-tex="$i\geq0$">$i\geq0$</span>, and all vanish. Mapping spaces in the descent category are limits of the level mapping spaces. The limit is contractible too. This proves orthogonality; the shift conditions follow from the level t-structures.</p>
+<p>The atlas pullback is conservative, since every level is obtained from level zero by a projection. Hence the t-structure is nondegenerate and (1.2) suffices to test it. An object in both halves has ordinary D-modules as all its normalized levels. Mapping spaces between such modules are discrete, so the higher descent data reduce to the ordinary isomorphism and cocycle. Conversely these ordinary data define a heart object. This identifies the heart. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For <span class="math" data-tex="$\mathcal Y=[X/G]$">$\mathcal Y=[X/G]$</span> the heart is the category of strongly <span class="math" data-tex="$G$">$G$</span>-equivariant D-modules on <span class="math" data-tex="$X$">$X$</span> calculated in the preceding lesson. The theorem does <strong>not</strong> identify (1.1) with the ordinary derived category of that heart. Section 5 gives an explicit obstruction.</p>
+<h2 id="2-changing-atlases-and-hypercovers">2. Changing atlases and hypercovers</h2>
+<p>We give the descent argument behind Beilinson–Drinfeld, §§7.3.4 and 7.5.2. An admissible smooth hypercover has levels that are disjoint unions of quasi-compact separated smooth algebraic spaces, with the usual smooth covering maps to matching objects. Affine refinements may be chosen throughout.</p>
+<p>The basic calculation is an augmented Čech resolution. For a faithfully flat affine cover <span class="math" data-tex="$\pi:V\to S$">$\pi:V\to S$</span> and a quasi-coherent module <span class="math" data-tex="$E$">$E$</span>, its terms are the iterated pullbacks to <span class="math" data-tex="$V^{p+1}_S$">$V^{p+1}_S$</span>, pushed to <span class="math" data-tex="$S$">$S$</span>. After pulling back to <span class="math" data-tex="$V$">$V$</span>, insert the distinguished first vertex. If <span class="math" data-tex="$s$">$s$</span> is this extra degeneracy and <span class="math" data-tex="$d$">$d$</span> the alternating face differential, the identities between faces give
+<span class="math math-display" data-tex="\[
+ds+sd=\operatorname{id}-\text{augmentation}.
+                                                               \tag{2.1}
+\]">\[
+ds+sd=\operatorname{id}-\text{augmentation}.
+                                                               \tag{2.1}
+\]</span>
+Thus the augmented complex contracts after this faithfully flat pullback and is exact before it. For complexes, the same calculation respects the internal differential, with the total-complex signs.</p>
+<p>For D-modules this calculation can be made in the de Rham DG-algebra model: an <span class="math" data-tex="$\Omega_S^\bullet$">$\Omega_S^\bullet$</span>-complex is localized at maps inducing isomorphisms on its associated D-module cohomology. The Spencer adjunction compares this model with D-module complexes. Affine pushforward and flat pullback make the augmented Čech calculation valid for that cohomology too; the dimension shifts used in (1.2) supply the normalization. Consequently restriction to the cover and the augmented Čech reconstruction have unit and counit inducing isomorphisms on D-module cohomology. This is effective derived descent, rather than just descent of degree-zero modules.</p>
+<p>In an unbounded calculation, totalization means a homotopy limit, with products where necessary. One may verify the preceding assertion on normalized bounded-below truncations and then pass to their limit. On an affine chart, complexes of modules satisfy
+<span class="math" data-tex="$M\simeq\lim_n\tau^{\geq-n}M$">$M\simeq\lim_n\tau^{\geq-n}M$</span>. Exact normalized smooth pullbacks commute with these truncations, and the contraction (2.1) is compatible with them. This gives the unbounded calculation chartwise. It does not justify replacing an infinite product by an infinite direct sum.</p>
+<p><strong>Theorem 2.1 (independence of the presentation).</strong> Admissible smooth hypercovers of a smooth stack define canonically equivalent DG descent categories. These equivalences identify the normalized t-structures and hearts.</p>
+<p><strong>Proof.</strong> Begin with two atlases <span class="math" data-tex="$U$">$U$</span> and <span class="math" data-tex="$U&#x27;$">$U&#x27;$</span>. Refine <span class="math" data-tex="$U\times_{\mathcal Y}U&#x27;$">$U\times_{\mathcal Y}U&#x27;$</span> by affine smooth charts. The two Čech directions give a bisimplicial refinement <span class="math" data-tex="$V_{\bullet,\bullet}$">$V_{\bullet,\bullet}$</span>. In each column the augmented Čech reconstruction above is inverse to restriction; the same is true in each row. Thus
+<span class="math math-display" data-tex="\[
+\operatorname{Tot}\mathrm{Dmod}(U_\bullet)
+\ \simeq\
+\operatorname{Tot}_{m,n}\mathrm{Dmod}(V_{m,n})
+\ \simeq\
+\operatorname{Tot}\mathrm{Dmod}(U&#x27;_\bullet).
+                                                               \tag{2.2}
+\]">\[
+\operatorname{Tot}\mathrm{Dmod}(U_\bullet)
+\ \simeq\
+\operatorname{Tot}_{m,n}\mathrm{Dmod}(V_{m,n})
+\ \simeq\
+\operatorname{Tot}\mathrm{Dmod}(U&#x27;_\bullet).
+                                                               \tag{2.2}
+\]</span>
+The equivalences are those of categories and mapping complexes, since both the unit and counit were checked, not merely the cohomology of objects.</p>
+<p>For hypercovers, perform the same refinement recursively on matching objects. At stage <span class="math" data-tex="$n$">$n$</span>, the previously chosen levels specify the matching data; their pullback against the covering at level <span class="math" data-tex="$n$">$n$</span> admits an affine smooth cover. The augmented reconstruction in each direction gives (2.2) again. For bounded-below normalized complexes this is the usual hypercover resolution: filtering by the nerve degree and using exact augmented covering resolutions proves that its augmentation is a quasi-isomorphism. Each total cohomological degree involves only finitely many terms. For unbounded complexes use the compatible truncations and chartwise homotopy limits described above.</p>
+<p>Finally take three presentations and a common trisimplicial refinement. An iterated homotopy limit equals the limit over the product indexing category: both satisfy the universal property of compatible cones. Hence the composite comparison from the first presentation through the second is the comparison through the third refinement. Changing an auxiliary refinement is handled by a further common refinement and the same augmentation. Inserting vertices gives the compatible contraction homotopies; repeating it supplies their higher compatibilities. This proves independence, including coherence of the comparisons. The constructions preserve normalized cohomology, so they preserve the t-structures and identify the ordinary descent hearts. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For the affine-diagonal quasi-compact stack of Section 1, the inverse can also be represented by the augmented <span class="math" data-tex="$\Omega$">$\Omega$</span>-Čech complex on the stack itself: the levels map affinely to it, so the same cohomology check applies. Thus the definition by localized global <span class="math" data-tex="$\Omega$">$\Omega$</span>-complexes agrees with (1.1). This completes the comparison needed for the version of Theorem 1.1 in Beilinson–Drinfeld, §7.3.4.</p>
+<h3 id="pushforward-has-finiteness-conditions">Pushforward has finiteness conditions</h3>
+<p>For a schematic quasi-compact map <span class="math" data-tex="$f:\mathcal Y\to\mathcal Z$">$f:\mathcal Y\to\mathcal Z$</span>, define <span class="math" data-tex="$f_{\rm dR,*}$">$f_{\rm dR,*}$</span> on a chart <span class="math" data-tex="$S\to\mathcal Z$">$S\to\mathcal Z$</span> by the scheme pushforward on <span class="math" data-tex="$\mathcal Y\times_{\mathcal Z}S\to S$">$\mathcal Y\times_{\mathcal Z}S\to S$</span>. !-base change, proved in <a href="adjunctions-base-change-and-the-projection-formula.html">Adjunctions, base change and the projection formula</a>, makes these chart objects compatible. The construction preserves colimits, composes correctly, and satisfies the projection formula. For proper <span class="math" data-tex="$f$">$f$</span>, <span class="math" data-tex="$f_{\rm dR,*}\dashv f^!$">$f_{\rm dR,*}\dashv f^!$</span>; for an open immersion <span class="math" data-tex="$j$">$j$</span>, <span class="math" data-tex="$j^!\dashv j_*$">$j^!\dashv j_*$</span>; for smooth schematic quasi-compact <span class="math" data-tex="$f$">$f$</span>, <span class="math" data-tex="$f_{\rm dR}^*\dashv f_{\rm dR,*}$">$f_{\rm dR}^*\dashv f_{\rm dR,*}$</span>. There is no universal adjunction <span class="math" data-tex="$f_{\rm dR,*}\dashv f^!$">$f_{\rm dR,*}\dashv f^!$</span> for arbitrary maps.</p>
+<p>The original <span class="math" data-tex="$\Omega$">$\Omega$</span>-complex construction for a quasi-compact morphism of smooth stacks defines pushforward first on bounded-below normalized complexes; finite cohomological-dimension hypotheses permit an unbounded extension (Beilinson–Drinfeld, §§7.3.6–7.3.11 and 7.5.6). A nonrepresentable stack pushforward can fail to preserve colimits even on a quasi-compact stack. For example, de Rham global sections on <span class="math" data-tex="$B\mathbb G_m$">$B\mathbb G_m$</span> fail that test in Section 5. For a non-quasi-compact source, restrictions to small opens define its category; a global direct image requires its own construction and finiteness checks.</p>
+<h2 id="3-closed-filtrations-and-infinitesimal-neighborhoods">3. Closed filtrations and infinitesimal neighborhoods</h2>
+<p>Let <span class="math" data-tex="$\mathcal X=\operatorname{colim}_i X_i$">$\mathcal X=\operatorname{colim}_i X_i$</span> be a strict ind-scheme, presented by finite-type schemes and closed embeddings <span class="math" data-tex="$i_{ij}:X_i\hookrightarrow X_j$">$i_{ij}:X_i\hookrightarrow X_j$</span>. In the modern presentable theory,
+<span class="math math-display" data-tex="\[
+\mathrm{Dmod}(\mathcal X)
+\simeq\operatorname{colim}_{i,\,i_{ij,\rm dR,*}}\mathrm{Dmod}(X_i)
+\simeq\lim_{i,\,i_{ij}^!}\mathrm{Dmod}(X_i).
+                                                               \tag{3.1}
+\]">\[
+\mathrm{Dmod}(\mathcal X)
+\simeq\operatorname{colim}_{i,\,i_{ij,\rm dR,*}}\mathrm{Dmod}(X_i)
+\simeq\lim_{i,\,i_{ij}^!}\mathrm{Dmod}(X_i).
+                                                               \tag{3.1}
+\]</span>
+The second expression follows from the prestack definition in Section 4; the first is the general limit/colimit correspondence for a diagram of adjoint continuous functors. Closed pushforwards are fully faithful by Kashiwara's equivalence. These facts identify (3.1) with the category generated under colimits by the finite stages, and show independence of a cofinal closed presentation. The categorical limit/colimit correspondence is an input, stated in Drinfeld–Gaitsgory, <em>Compact generation</em>, Proposition 1.7.5.</p>
+<p>An arbitrary object need not come from a single finite stage. If the stages are compactly generated and the closed pushforwards preserve compactness, compact objects do come from finite stages, after idempotent completion: a finite cone or retract of finitely many stage generators can be taken in one later stage. General objects are colimits of such objects. Finite-type D-module categories and their closed pushforwards satisfy these conditions.</p>
+<p>The older formally smooth ind-scheme theory in Beilinson–Drinfeld, §7.11, requires care when compared with (3.1). Its derived category in §7.11.14 uses complexes with quasi-compact support; the footnote there discusses extending it and warns against the naive category of all complexes. We use the presentable completion, while retaining its finite-support calculations.</p>
+<p>There are also two underlying module notions. On an affine formal ind-scheme
+<span class="math" data-tex="$\operatorname{colim}\operatorname{Spec}(A/I_i)$">$\operatorname{colim}\operatorname{Spec}(A/I_i)$</span>, an <span class="math" data-tex="$\mathcal O^p$">$\mathcal O^p$</span>-module is described by compatible pullbacks and complete modules. An <span class="math" data-tex="$\mathcal O^!$">$\mathcal O^!$</span>-module is discrete: each element is annihilated by some open ideal, and its finite-stage pieces are connected using <span class="math" data-tex="$i^!=\operatorname{Hom}_A(A/I_i,-)$">$i^!=\operatorname{Hom}_A(A/I_i,-)$</span> in the abelian description. They cannot be exchanged.</p>
+<p>For example, on <span class="math" data-tex="$\operatorname{Spf}k[[t]]$">$\operatorname{Spf}k[[t]]$</span>, the complete module <span class="math" data-tex="$k[[t]]$">$k[[t]]$</span> is not discrete, whereas <span class="math" data-tex="$k[t^{-1}]/k$">$k[t^{-1}]/k$</span> is discrete with its evident <span class="math" data-tex="$k[[t]]$">$k[[t]]$</span>-action. An element represented by <span class="math" data-tex="$t^{-m}$">$t^{-m}$</span> is killed by <span class="math" data-tex="$t^m$">$t^m$</span>. This elementary difference explains why a completed ring of operators does not authorize using arbitrary complete modules as D-modules.</p>
+<p>On a reasonable formally smooth ind-scheme of ind-finite type, Beilinson–Drinfeld, Propositions 7.11.8 and §7.11.11, constructs a topological differential algebra with order symbols <span class="math" data-tex="$\operatorname{Sym}\Theta_{\mathcal X}$">$\operatorname{Sym}\Theta_{\mathcal X}$</span>, acting on discrete right modules. Its crystal interpretation is §7.11.6. We state that construction, without extending the finite-dimensional formula <span class="math" data-tex="$\omega_X\otimes M$">$\omega_X\otimes M$</span> to a nonexistent top exterior power in infinite dimension. The left convention is implemented on finite smooth charts; an infinite-dimensional comparison needs its specified lattice and determinant data.</p>
+<h3 id="a-discrete-grassmannian-example">A discrete Grassmannian example</h3>
+<p>For a field <span class="math" data-tex="$k$">$k$</span>, every invertible Laurent series is uniquely <span class="math" data-tex="$t^n u(t)$">$t^n u(t)$</span> with <span class="math" data-tex="$u(t)\in k[[t]]^\times$">$u(t)\in k[[t]]^\times$</span>. Hence the reduced affine Grassmannian of <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span> is the discrete ind-scheme <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>, with <span class="math" data-tex="$n$">$n$</span> corresponding to the lattice <span class="math" data-tex="$t^n k[[t]]$">$t^n k[[t]]$</span>. This reduced-ind-scheme identification, including families, is the torus Grassmannian result recalled in Hilburn–Raskin, §2; it is not inferred from field-valued points alone.</p>
+<p>Nilpotent directions of the full Grassmannian are invisible to its de Rham prestack. Thus its D-module category is that of <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>:
+<span class="math math-display" data-tex="\[
+\mathrm{Dmod}(\mathbb Z)=\prod_{n\in\mathbb Z}\operatorname{Vect}.
+                                                               \tag{3.2}
+\]">\[
+\mathrm{Dmod}(\mathbb Z)=\prod_{n\in\mathbb Z}\operatorname{Vect}.
+                                                               \tag{3.2}
+\]</span>
+This means all families <span class="math" data-tex="$(V_n)$">$(V_n)$</span>, rather than only finite-support families. A compact object has finite support and perfect, finite-dimensional bounded complexes at its nonzero entries. Indeed each coordinate tests perfectness; an infinite-support object is the filtered colimit of its finite-support subfamilies, and its identity cannot factor through one of them. Conversely finite support and coordinatewise perfectness make its mapping functor commute with colimits.</p>
+<p>There is an explicit character transform
+<span class="math math-display" data-tex="\[
+(V_n)_{n\in\mathbb Z}\longmapsto
+\bigoplus_{n\in\mathbb Z}V_n\otimes\chi^n
+\quad\text{in }\operatorname{QCoh}(B\mathbb G_m).
+                                                               \tag{3.3}
+\]">\[
+(V_n)_{n\in\mathbb Z}\longmapsto
+\bigoplus_{n\in\mathbb Z}V_n\otimes\chi^n
+\quad\text{in }\operatorname{QCoh}(B\mathbb G_m).
+                                                               \tag{3.3}
+\]</span>
+Rational <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>-representations decompose into integer weight spaces, and weight extraction is exact. This gives the inverse and proves the DG equivalence in (3.3). Convolution of families has weight-<span class="math" data-tex="$m$">$m$</span> term <span class="math" data-tex="$\bigoplus_{a+b=m}V_a\otimes W_b$">$\bigoplus_{a+b=m}V_a\otimes W_b$</span>, which becomes tensor product of representations. This character Fourier transform identifies <span class="math" data-tex="$\mathrm{Dmod}(\mathbb Z)$">$\mathrm{Dmod}(\mathbb Z)$</span> with <span class="math" data-tex="$\operatorname{QCoh}(B\mathbb G_m)$">$\operatorname{QCoh}(B\mathbb G_m)$</span>, a category different from <span class="math" data-tex="$\mathrm{Dmod}(B\mathbb G_m)$">$\mathrm{Dmod}(B\mathbb G_m)$</span>.</p>
+<h2 id="4-the-de-rham-prestack-and-its-two-realizations">4. The de Rham prestack and its two realizations</h2>
+<p>A prestack is a functor from derived affine schemes to spaces. For a connective commutative DG algebra <span class="math" data-tex="$R$">$R$</span> put
+<span class="math math-display" data-tex="\[
+\mathcal Y_{\rm dR}(\operatorname{Spec}R)
+=\mathcal Y\bigl(\operatorname{Spec}(H^0(R)_{\rm red})\bigr).
+                                                               \tag{4.1}
+\]">\[
+\mathcal Y_{\rm dR}(\operatorname{Spec}R)
+=\mathcal Y\bigl(\operatorname{Spec}(H^0(R)_{\rm red})\bigr).
+                                                               \tag{4.1}
+\]</span>
+One first takes the underlying classical ring, then its reduced quotient. The canonical map <span class="math" data-tex="$\mathcal Y\to\mathcal Y_{\rm dR}$">$\mathcal Y\to\mathcal Y_{\rm dR}$</span> forgets infinitesimal information.</p>
+<p>For <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span>, its value on <span class="math" data-tex="$k[\eta]/(\eta^2)$">$k[\eta]/(\eta^2)$</span> records <span class="math" data-tex="$a$">$a$</span>, whereas the ordinary affine line records <span class="math" data-tex="$a+b\eta$">$a+b\eta$</span>. Two such lifts with the same <span class="math" data-tex="$a$">$a$</span> are infinitesimally close. For a smooth scheme <span class="math" data-tex="$X$">$X$</span>, the terms of the nerve of <span class="math" data-tex="$X\to X_{\rm dR}$">$X\to X_{\rm dR}$</span> are the formal completions of <span class="math" data-tex="$X^{p+1}$">$X^{p+1}$</span> along the small diagonal. Descent there is infinitesimal parallel transport; its heart is the Taylor crystal calculated in <a href="kashiwaras-equivalence-and-singular-spaces.html">Kashiwara's equivalence and D-modules on singular spaces</a>.</p>
+<p><strong>Theorem 4.1 (foundational comparison, stated).</strong> For a smooth finite-type scheme <span class="math" data-tex="$X$">$X$</span>, the DG category of left D-module complexes is equivalent to
+<span class="math" data-tex="$\operatorname{QCoh}(X_{\rm dR})$">$\operatorname{QCoh}(X_{\rm dR})$</span>. For a prestack <span class="math" data-tex="$\mathcal Y$">$\mathcal Y$</span> locally almost of finite type, right crystals are
+<span class="math" data-tex="$\operatorname{IndCoh}(\mathcal Y_{\rm dR})$">$\operatorname{IndCoh}(\mathcal Y_{\rm dR})$</span>, and the natural functor
+<span class="math math-display" data-tex="\[
+\Upsilon_{\mathcal Y_{\rm dR}}:
+\operatorname{QCoh}(\mathcal Y_{\rm dR})
+\ \xrightarrow{\ \sim\ }\operatorname{IndCoh}(\mathcal Y_{\rm dR})
+                                                               \tag{4.2}
+\]">\[
+\Upsilon_{\mathcal Y_{\rm dR}}:
+\operatorname{QCoh}(\mathcal Y_{\rm dR})
+\ \xrightarrow{\ \sim\ }\operatorname{IndCoh}(\mathcal Y_{\rm dR})
+                                                               \tag{4.2}
+\]</span>
+is an equivalence. These are Gaitsgory–Rozenblyum, <em>Crystals and D-modules</em>, §5.5 and Proposition 2.4.4; right crystals are defined in §2.3.</p>
+<p>For singular schemes the right realization supplies the canonical support-based D-module theory, rather than modules over the naive ring of differential operators on a singular scheme. But it would be incorrect to say that <span class="math" data-tex="$\operatorname{QCoh}(X_{\rm dR})$">$\operatorname{QCoh}(X_{\rm dR})$</span> stops working merely because <span class="math" data-tex="$X$">$X$</span> is singular: (4.2) still applies. The forgetful realizations on <span class="math" data-tex="$X$">$X$</span> itself differ, and <span class="math" data-tex="$\Upsilon_X:\operatorname{QCoh}(X)\to\operatorname{IndCoh}(X)$">$\Upsilon_X:\operatorname{QCoh}(X)\to\operatorname{IndCoh}(X)$</span> need not be an equivalence.</p>
+<p>There is a dimension normalization in applying this theorem to our !-descent category. Write <span class="math" data-tex="$\Phi_X$">$\Phi_X$</span> for the usual left-module/crystal equivalence, which sends a connection <span class="math" data-tex="$M$">$M$</span> to its Taylor crystal. On a smooth <span class="math" data-tex="$d$">$d$</span>-dimensional scheme use
+<span class="math math-display" data-tex="\[
+E_X(M)=\Phi_X(M)[-d].
+                                                               \tag{4.3}
+\]">\[
+E_X(M)=\Phi_X(M)[-d].
+                                                               \tag{4.3}
+\]</span>
+Then for a smooth <span class="math" data-tex="$f:X\to Y$">$f:X\to Y$</span> of relative dimension <span class="math" data-tex="$r$">$r$</span>,
+<span class="math" data-tex="$E_X(f^!M)=(f_{\rm dR})^*E_Y(M)$">$E_X(f^!M)=(f_{\rm dR})^*E_Y(M)$</span>, where the pullback on the right is <strong>QCoh pullback on de Rham prestacks</strong>. Indeed the shifts are <span class="math" data-tex="$r-d_X=-d_Y$">$r-d_X=-d_Y$</span>. The parenthesized <span class="math" data-tex="$(f_{\rm dR})^*$">$(f_{\rm dR})^*$</span> is separate from the smooth D-module functor <span class="math" data-tex="$f_{\rm dR}^*=f^![-2r]$">$f_{\rm dR}^*=f^![-2r]$</span> in (0.1). In the right-crystal realization it is <span class="math" data-tex="$(f_{\rm dR})^!$">$(f_{\rm dR})^!$</span> and is simply called <span class="math" data-tex="$f^!$">$f^!$</span>.</p>
+<p>The reason for (4.3) is that <span class="math" data-tex="$\Upsilon_X$">$\Upsilon_X$</span> tensors with the dualizing <strong>complex</strong>
+<span class="math" data-tex="$\omega_X[d]$">$\omega_X[d]$</span>, while ordinary side-changing tensors with the canonical <strong>line</strong> <span class="math" data-tex="$\omega_X$">$\omega_X$</span>. Forgetting that difference would shift the heart incorrectly. With (4.3), the tensor unit is the descent object <span class="math" data-tex="$\omega_{\mathcal Y}$">$\omega_{\mathcal Y}$</span> characterized by <span class="math" data-tex="$q^!\omega_{\mathcal Y}=\omega_U[d_U]$">$q^!\omega_{\mathcal Y}=\omega_U[d_U]$</span> in right-module notation, or <span class="math" data-tex="$\mathcal O_U[d_U]$">$\mathcal O_U[d_U]$</span> on the left. On a smooth stack of dimension <span class="math" data-tex="$d_{\mathcal Y}$">$d_{\mathcal Y}$</span> its normalized heart object is <span class="math" data-tex="$\omega_{\mathcal Y}[-d_{\mathcal Y}]$">$\omega_{\mathcal Y}[-d_{\mathcal Y}]$</span>.</p>
+<p>For arbitrary locally almost finite-type prestacks the !-definition may also be written
+<span class="math math-display" data-tex="\[
+\mathrm{Dmod}(\mathcal Y)=
+\lim_{(S\to\mathcal Y)}\mathrm{Dmod}(S),
+                                                               \tag{4.4}
+\]">\[
+\mathrm{Dmod}(\mathcal Y)=
+\lim_{(S\to\mathcal Y)}\mathrm{Dmod}(S),
+                                                               \tag{4.4}
+\]</span>
+with finite-type affine charts and !-transitions. Gaitsgory–Rozenblyum, Corollary 2.3.9, gives this comparison; for algebraic stacks smooth charts suffice (Drinfeld–Gaitsgory, <em>Compact generation</em>, §2.1). It agrees with Sections 1–2. De Rham pushforward is the corresponding pushforward of right crystals when defined, with the continuity conditions already discussed. The de Rham prestack description does not eliminate those conditions.</p>
+<p>Gaitsgory's <em>Outline for GL(2)</em>, §3.1, uses left crystals <span class="math" data-tex="$\operatorname{QCoh}(\mathcal Y_{\rm dR})$">$\operatorname{QCoh}(\mathcal Y_{\rm dR})$</span> and calls their pullback <span class="math" data-tex="$f^\dagger$">$f^\dagger$</span>. Its formula uses the classical reduced derived affine, exactly as in (4.1). The comparison (4.3), rather than an unexplained equality of pullback symbols, translates that convention into ours.</p>
+<h3 id="infinite-dimensional-operators-require-an-actual-category">Infinite-dimensional operators require an actual category</h3>
+<p>Hilburn–Raskin's <em>Tate's thesis in the de Rham setting</em> develops <span class="math" data-tex="$\operatorname{IndCoh}^*$">$\operatorname{IndCoh}^*$</span> on its infinite-dimensional spectral spaces in §4, using specified coherent subcategories, colimits, and weak Grassmannian invariants. A pushforward there need not preserve bounded-below complexes (§4.2). The construction is not obtained by declaring all complexes over an arbitrary infinite polynomial ring coherent.</p>
+<p>Its spectral space <span class="math" data-tex="$\mathcal Y$">$\mathcal Y$</span> parametrizes a rank-one connection on the punctured formal disc with a horizontal section. In a trivialization the data are <span class="math" data-tex="$(g,\alpha)$">$(g,\alpha)$</span> satisfying <span class="math" data-tex="$dg=g\alpha$">$dg=g\alpha$</span>, modulo the gauge action <span class="math" data-tex="$(g,\alpha)\mapsto(fg,\alpha+d\log f)$">$(g,\alpha)\mapsto(fg,\alpha+d\log f)$</span>. In <span class="math" data-tex="$\mathcal Y_{\log}$">$\mathcal Y_{\log}$</span> a lattice extending the line over the disc is retained; <span class="math" data-tex="$\mathcal Z$">$\mathcal Z$</span> imposes that the section extend over it. Superscript <span class="math" data-tex="$\leq n$">$\leq n$</span> bounds the pole order of the connection form.</p>
+<p>In §5.1 the compact object
+<span class="math" data-tex="$\mathcal F_n=\operatorname{Av}_!^{\mathrm{Gr}_{\mathbb G_m}^{\leq n},w}
+(i_{n,*}\mathcal O_{\mathcal Z^{\leq n}})$">$\mathcal F_n=\operatorname{Av}_!^{\mathrm{Gr}_{\mathbb G_m}^{\leq n},w}
+(i_{n,*}\mathcal O_{\mathcal Z^{\leq n}})$</span>
+is constructed in <span class="math" data-tex="$\operatorname{IndCoh}^*(\mathcal Y^{\leq n})$">$\operatorname{IndCoh}^*(\mathcal Y^{\leq n})$</span>. Here <span class="math" data-tex="$i_n$">$i_n$</span> includes the locus where the section extends, and averaging forgets the chosen lattice with its prescribed weak equivariance. The result is an action of <span class="math" data-tex="$W_n^{\rm op}$">$W_n^{\rm op}$</span>, where <span class="math" data-tex="$W_n$">$W_n$</span> is the differential-operator algebra on
+<span class="math" data-tex="$\operatorname{Spec}\operatorname{Sym}(t^{-n}k[[t]]\,dt/k[[t]]\,dt)\simeq\mathbb A^n$">$\operatorname{Spec}\operatorname{Sym}(t^{-n}k[[t]]\,dt/k[[t]]\,dt)\simeq\mathbb A^n$</span>.
+The function and vector-field operators obey
+<span class="math math-display" data-tex="\[
+[\xi_f,\varphi_\alpha]=-\operatorname{Res}(f\alpha)\operatorname{id}.
+                                                               \tag{4.5}
+\]">\[
+[\xi_f,\varphi_\alpha]=-\operatorname{Res}(f\alpha)\operatorname{id}.
+                                                               \tag{4.5}
+\]</span>
+For bases <span class="math" data-tex="$f_j=t^j$">$f_j=t^j$</span>, <span class="math" data-tex="$\alpha_i=t^{-i-1}dt$">$\alpha_i=t^{-i-1}dt$</span> (<span class="math" data-tex="$0\leq i,j&lt;n$">$0\leq i,j&lt;n$</span>), the residue is <span class="math" data-tex="$\delta_{ij}$">$\delta_{ij}$</span>. Ordinary Weyl operators have <span class="math" data-tex="$[\partial_j,x_i]=\delta_{ij}$">$[\partial_j,x_i]=\delta_{ij}$</span>; reversing multiplication gives the minus sign in (4.5). This proves the sign translation. The geometric construction and its later full-faithfulness theorem (§7.1) are stated inputs here.</p>
+<h2 id="5-the-full-category-on-a-point-quotient">5. The full category on a point quotient</h2>
+<p>Put <span class="math" data-tex="$\mathcal B=B\mathbb G_m$">$\mathcal B=B\mathbb G_m$</span> and <span class="math" data-tex="$p:\mathrm{pt}\to\mathcal B$">$p:\mathrm{pt}\to\mathcal B$</span>. Its relative dimension is one. Let <span class="math" data-tex="$C$">$C$</span> be the constant descent object normalized by <span class="math" data-tex="$p^!C=k$">$p^!C=k$</span>; it is the !-tensor unit <span class="math" data-tex="$\omega_{\mathcal B}$">$\omega_{\mathcal B}$</span>. The constant object in the normalized left heart is <span class="math" data-tex="$H=C[1]$">$H=C[1]$</span>. A different convention for the constant sheaf may shift <span class="math" data-tex="$C$">$C$</span>; all the self-Ext and compactness conclusions below are shift-invariant.</p>
+<p>The functor <span class="math" data-tex="$p^!$">$p^!$</span> is conservative by descent and preserves colimits. Its left adjoint <span class="math" data-tex="$p_!$">$p_!$</span> exists on the whole category in this example. One can construct it on the atlas by the groupoid bar construction, using compactly supported de Rham pushforward in the nerve direction: the augmentation and extra-degeneracy identities give
+<span class="math" data-tex="$\operatorname{RHom}(p_!V,M)=\operatorname{RHom}(V,p^!M)$">$\operatorname{RHom}(p_!V,M)=\operatorname{RHom}(V,p^!M)$</span>.
+This special adjoint is also supplied by Drinfeld–Gaitsgory, <em>Finiteness questions</em>, §7.2.2. It is not an assertion that every stack map has such an adjoint.</p>
+<p>Set <span class="math" data-tex="$K=p_!k$">$K=p_!k$</span>. Then
+<span class="math math-display" data-tex="\[
+\operatorname{RHom}(K,M)=p^!M.
+                                                               \tag{5.1}
+\]">\[
+\operatorname{RHom}(K,M)=p^!M.
+                                                               \tag{5.1}
+\]</span>
+Thus <span class="math" data-tex="$K$">$K$</span> is compact, and is a generator: the right side preserves colimits and detects the zero object. Base change on the groupoid identifies its endomorphism algebra, up to the opposite for left modules, with compact de Rham chains of <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>, with multiplication induced by group multiplication. Equivalently these chains are the dual of the de Rham cochains of <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>; the compact pushforward of its dualizing object gives the same complex by duality.</p>
+<p>The cochains have <span class="math" data-tex="$H^*=k\oplus k\,d t/t$">$H^*=k\oplus k\,d t/t$</span> in degrees zero and one. The chains therefore have <span class="math" data-tex="$H^*=k\oplus k\epsilon$">$H^*=k\oplus k\epsilon$</span> in degrees zero and minus one. The unit is in degree zero. This calculation also proves formality as an associative DG algebra. In a strictly unital minimal <span class="math" data-tex="$A_\infty$">$A_\infty$</span> model, any operation <span class="math" data-tex="$m_n$">$m_n$</span> on <span class="math" data-tex="$n$">$n$</span> nonunit inputs has output degree
+<span class="math" data-tex="$-n+(2-n)=2-2n$">$-n+(2-n)=2-2n$</span>; for <span class="math" data-tex="$n\geq2$">$n\geq2$</span> this degree is absent. All these operations vanish. Operations with a unit vanish by strict unitality, except for multiplication by the unit. Hence the algebra is
+<span class="math math-display" data-tex="\[
+A=\Lambda(\epsilon)=k[\epsilon]/(\epsilon^2),\quad
+|\epsilon|=-1,\quad d\epsilon=0.
+                                                               \tag{5.2}
+\]">\[
+A=\Lambda(\epsilon)=k[\epsilon]/(\epsilon^2),\quad
+|\epsilon|=-1,\quad d\epsilon=0.
+                                                               \tag{5.2}
+\]</span>
+The use of a minimal strictly unital model is the standard homological-transfer theorem for DG algebras; it is a categorical input. Here the degree argument checks every possible higher product. Since (5.2) is graded commutative, its opposite causes no change.</p>
+<p><strong>Theorem 5.1.</strong> There is an equivalence
+<span class="math math-display" data-tex="\[
+\mathrm{Dmod}(B\mathbb G_m)\simeq A\text{-}\mathrm{mod}
+\simeq\operatorname{QCoh}
+(\mathrm{pt}\mathbin{\times^{\mathbf R}_{\mathbb A^1}}\mathrm{pt}).
+                                                               \tag{5.3}
+\]">\[
+\mathrm{Dmod}(B\mathbb G_m)\simeq A\text{-}\mathrm{mod}
+\simeq\operatorname{QCoh}
+(\mathrm{pt}\mathbin{\times^{\mathbf R}_{\mathbb A^1}}\mathrm{pt}).
+                                                               \tag{5.3}
+\]</span>
+The object <span class="math" data-tex="$K$">$K$</span> goes to the free module <span class="math" data-tex="$A$">$A$</span>, and <span class="math" data-tex="$C$">$C$</span> goes to its augmentation module <span class="math" data-tex="$k$">$k$</span>. The normalized heart constant <span class="math" data-tex="$H$">$H$</span> goes to <span class="math" data-tex="$k[1]$">$k[1]$</span>.</p>
+<p><strong>Proof.</strong> With <span class="math" data-tex="$A=\operatorname{End}(K)^{\rm op}$">$A=\operatorname{End}(K)^{\rm op}$</span>, let
+<span class="math" data-tex="$F=\operatorname{RHom}(K,-)$">$F=\operatorname{RHom}(K,-)$</span> and <span class="math" data-tex="$L(V)=K\otimes_A^{\mathbf L}V$">$L(V)=K\otimes_A^{\mathbf L}V$</span>.
+They are adjoint, <span class="math" data-tex="$F$">$F$</span> preserves colimits by (5.1), and <span class="math" data-tex="$F(K)=A$">$F(K)=A$</span>. The unit <span class="math" data-tex="$V\to FL(V)$">$V\to FL(V)$</span> is an equivalence for <span class="math" data-tex="$V=A$">$V=A$</span>, for its shifts and sums, and then for all DG modules: the usual free bar resolution expresses every module as the realization of a diagram of free modules, and both functors preserve that realization. Apply <span class="math" data-tex="$F$">$F$</span> to the counit <span class="math" data-tex="$LF(M)\to M$">$LF(M)\to M$</span>. The unit and triangle identities make it an equivalence after <span class="math" data-tex="$F$">$F$</span>, so its cone is zero because <span class="math" data-tex="$F$">$F$</span> is conservative. This proves the first equivalence.</p>
+<p>The action on <span class="math" data-tex="$F(C)=p^!C=k$">$F(C)=p^!C=k$</span> is the augmentation: constant descent makes transport trivial, and the degree-minus-one chain generator acts by zero. Finally resolve <span class="math" data-tex="$k$">$k$</span> over <span class="math" data-tex="$k[x]$">$k[x]$</span> by the Koszul DG algebra <span class="math" data-tex="$k[x,\epsilon]$">$k[x,\epsilon]$</span> with <span class="math" data-tex="$|\epsilon|=-1$">$|\epsilon|=-1$</span> and <span class="math" data-tex="$d\epsilon=x$">$d\epsilon=x$</span>. Tensoring with <span class="math" data-tex="$k$">$k$</span> at <span class="math" data-tex="$x=0$">$x=0$</span> leaves exactly (5.2). Thus the derived intersection is <span class="math" data-tex="$\operatorname{Spec}A$">$\operatorname{Spec}A$</span>, whose quasi-coherent category is <span class="math" data-tex="$A$">$A$</span>-modules. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This proves the category equivalence mentioned in Arinkin–Gaitsgory, §11.2, and separates it from the calculation of the endomorphisms of only one object. The equivalence is not claimed t-exact for the usual DG-module t-structure.</p>
+<h3 id="the-constant-object-is-not-a-compact-generator">The constant object is not a compact generator</h3>
+<p>A semifree resolution of the augmentation module is
+<span class="math math-display" data-tex="\[
+P=\bigoplus_{n\geq0}Ae_n,\quad |e_n|=-2n,\qquad
+de_0=0,\quad de_n=\epsilon e_{n-1}\ (n\geq1).
+                                                               \tag{5.4}
+\]">\[
+P=\bigoplus_{n\geq0}Ae_n,\quad |e_n|=-2n,\qquad
+de_0=0,\quad de_n=\epsilon e_{n-1}\ (n\geq1).
+                                                               \tag{5.4}
+\]</span>
+The graded Leibniz rule gives <span class="math" data-tex="$d(\epsilon e_n)=0$">$d(\epsilon e_n)=0$</span>. Every negative-degree cycle <span class="math" data-tex="$\epsilon e_n$">$\epsilon e_n$</span> is the boundary of <span class="math" data-tex="$e_{n+1}$">$e_{n+1}$</span>, and the remaining degree-zero class is <span class="math" data-tex="$e_0$">$e_0$</span>. Thus <span class="math" data-tex="$P\to k$">$P\to k$</span> is a resolution.</p>
+<p>Applying <span class="math" data-tex="$\operatorname{Hom}_A(-,k)$">$\operatorname{Hom}_A(-,k)$</span> gives zero differential and one class in each even nonnegative degree. The degree-two chain map <span class="math" data-tex="$e_n\mapsto e_{n-1}$">$e_n\mapsto e_{n-1}$</span> for <span class="math" data-tex="$n&gt;0$">$n&gt;0$</span>, and <span class="math" data-tex="$e_0\mapsto0$">$e_0\mapsto0$</span>, lifts the first class. Its <span class="math" data-tex="$m$">$m$</span>th power followed by augmentation is nonzero on <span class="math" data-tex="$e_m$">$e_m$</span>. Consequently its Yoneda powers give
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^*_A(k,k)=k[c],\quad |c|=2.
+                                                               \tag{5.5}
+\]">\[
+\operatorname{Ext}^*_A(k,k)=k[c],\quad |c|=2.
+                                                               \tag{5.5}
+\]</span>
+This is <span class="math" data-tex="$H^*_{\rm dR}(B\mathbb G_m)$">$H^*_{\rm dR}(B\mathbb G_m)$</span>: on the atlas nerve, <span class="math" data-tex="$d t/t$">$d t/t$</span> is primitive under group multiplication, and its reduced cobar tensor of length <span class="math" data-tex="$m$">$m$</span> has total degree <span class="math" data-tex="$2m$">$2m$</span>. The reduced differential is zero. Shuffle products give <span class="math" data-tex="$\binom{a+b}{a}$">$\binom{a+b}{a}$</span> times the length-<span class="math" data-tex="$a+b$">$a+b$</span> class; factorial rescaling identifies the polynomial products in characteristic zero. Over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, degreewise de Rham comparison identifies this with topological <span class="math" data-tex="$H^*(B\mathbb G_m,\mathbb C)$">$H^*(B\mathbb G_m,\mathbb C)$</span>.</p>
+<p>A compact DG <span class="math" data-tex="$A$">$A$</span>-module is a retract of a finite cell module. Since <span class="math" data-tex="$A$">$A$</span> is bounded and finite dimensional, any such module has bounded self-Hom cohomology. Equation (5.5) is unbounded, so <span class="math" data-tex="$k$">$k$</span>, and hence every shift of <span class="math" data-tex="$C$">$C$</span>, is not compact. The free module <span class="math" data-tex="$A$">$A$</span>, corresponding to the compactly supported pushforward <span class="math" data-tex="$K$">$K$</span>, is compact.</p>
+<p>There is a direct continuity test as well. Form the telescope
+<span class="math" data-tex="$C\xrightarrow{c}C[2]\xrightarrow{c}C[4]\to\cdots$">$C\xrightarrow{c}C[2]\xrightarrow{c}C[4]\to\cdots$</span>.
+After <span class="math" data-tex="$p^!$">$p^!$</span> the maps are zero in <span class="math" data-tex="$\operatorname{Vect}$">$\operatorname{Vect}$</span>, so its colimit is zero; conservativity proves that it was zero on <span class="math" data-tex="$\mathcal B$">$\mathcal B$</span>. Applying <span class="math" data-tex="$\operatorname{RHom}(C,-)$">$\operatorname{RHom}(C,-)$</span> gives successive multiplication by <span class="math" data-tex="$c$">$c$</span> on shifted copies of <span class="math" data-tex="$k[c]$">$k[c]$</span>. Their colimit is nonzero: the degree-zero class represented by <span class="math" data-tex="$c^m$">$c^m$</span> at stage <span class="math" data-tex="$m$">$m$</span> survives at every later stage. Thus this mapping functor, or the correspondingly normalized de Rham global-sections functor, fails to commute with colimits.</p>
+<p>Meanwhile the normalized heart is <span class="math" data-tex="$\operatorname{Vect}^{\heart}$">$\operatorname{Vect}^{\heart}$</span>: a strong rational <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>-representation has zero infinitesimal action, hence only weight zero. Its ordinary derived category has no positive self-Ext for its constant one-dimensional object. Formula (5.5) proves why it cannot be (5.3).</p>
+<h2 id="6-the-moduli-of-bundles-and-its-dual">6. The moduli of bundles and its dual</h2>
+<p>Let <span class="math" data-tex="$X$">$X$</span> be a smooth complete connected curve and <span class="math" data-tex="$G$">$G$</span> a connected reductive group. The stack <span class="math" data-tex="$\mathrm{Bun}_G(X)$">$\mathrm{Bun}_G(X)$</span> is smooth, locally of finite type, and has affine diagonal. Its usual dimension is <span class="math" data-tex="$(g(X)-1)\dim G$">$(g(X)-1)\dim G$</span>. For groups such as <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>, its components have unbounded degree, so it is not quasi-compact.</p>
+<p>For any locally finite-type stack with affine diagonal, the poset of quasi-compact opens is directed by finite unions. Intersections are quasi-compact. We have
+<span class="math math-display" data-tex="\[
+\mathrm{Dmod}(\mathcal Y)
+\simeq\lim_{U\subset\mathcal Y\ {\rm qc\ open}}\mathrm{Dmod}(U),
+                                                               \tag{6.1}
+\]">\[
+\mathrm{Dmod}(\mathcal Y)
+\simeq\lim_{U\subset\mathcal Y\ {\rm qc\ open}}\mathrm{Dmod}(U),
+                                                               \tag{6.1}
+\]</span>
+with restriction transitions.</p>
+<p><strong>Proof.</strong> Restriction clearly defines a functor. Conversely suppose compatible objects on all <span class="math" data-tex="$U$">$U$</span> are given. A quasi-compact smooth chart <span class="math" data-tex="$S\to\mathcal Y$">$S\to\mathcal Y$</span> has quasi-compact image. Cover that image by open finite-type neighborhoods; finitely many suffice, and their union is a quasi-compact open <span class="math" data-tex="$U$">$U$</span>. Pull its object to <span class="math" data-tex="$S$">$S$</span>. If <span class="math" data-tex="$U&#x27;$">$U&#x27;$</span> is another choice, <span class="math" data-tex="$U\cup U&#x27;$">$U\cup U&#x27;$</span> contains both and the compatibility identifies the two pullbacks.</p>
+<p>Apply this construction to a smooth atlas and every level of its nerve, refining non-quasi-compact levels by quasi-compact charts. All face comparisons agree because they are obtained from one larger finite union whenever finitely many charts are involved. The original coherent compatibility supplies all higher comparisons. Theorem 2.1 glues these data to an object of <span class="math" data-tex="$\mathrm{Dmod}(\mathcal Y)$">$\mathrm{Dmod}(\mathcal Y)$</span> whose restriction is the given family. The same argument for maps, or the mapping-complex formula for limits, proves full faithfulness:
+<span class="math math-display" data-tex="\[
+\operatorname{RHom}_{\mathcal Y}(M,N)
+\simeq\lim_U\operatorname{RHom}_U(M|_U,N|_U).
+                                                               \tag{6.2}
+\]">\[
+\operatorname{RHom}_{\mathcal Y}(M,N)
+\simeq\lim_U\operatorname{RHom}_U(M|_U,N|_U).
+                                                               \tag{6.2}
+\]</span>
+Thus the constructions are inverse. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>A cofinal exhaustion gives the same limit. Compact generation does not follow just from (6.1).</p>
+<p><strong>Theorem 6.1 (Drinfeld–Gaitsgory, stated).</strong> For <span class="math" data-tex="$G$">$G$</span> and <span class="math" data-tex="$X$">$X$</span> as above, <span class="math" data-tex="$\mathrm{Dmod}(\mathrm{Bun}_G)$">$\mathrm{Dmod}(\mathrm{Bun}_G)$</span> is compactly generated. More precisely, <span class="math" data-tex="$\mathrm{Bun}_G$">$\mathrm{Bun}_G$</span> is truncatable: it has a cofinal supply of quasi-compact co-truncative opens. For such an open <span class="math" data-tex="$j:U\hookrightarrow\mathrm{Bun}_G$">$j:U\hookrightarrow\mathrm{Bun}_G$</span>, <span class="math" data-tex="$j_!$">$j_!$</span> is defined on all D-modules on <span class="math" data-tex="$U$">$U$</span>. These statements are <em>Compact generation</em>, Theorems 0.1.2 and 0.2.5, with the definition in §4.1. The analogous twisted assertion is §0.4.1. The proofs require the Harder–Narasimhan stratification and contraction arguments, which we do not reproduce.</p>
+<p>The usual heart/coherence condition is local on smooth charts; compactness is a global mapping-functor condition. They differ even for the quasi-compact stack <span class="math" data-tex="$B\mathbb G_m$">$B\mathbb G_m$</span>, as Section 5 shows.</p>
+<p>The half-twist from the preceding lesson is retained in the 2024 automorphic category. Put
+<span class="math math-display" data-tex="\[
+\mathcal C=\mathrm{Dmod}_{1/2}(\mathrm{Bun}_G),\qquad
+\mathcal C_{\rm co}=
+\operatorname{colim}_{U,\,(j_{12})_*}\mathrm{Dmod}_{1/2}(U).
+                                                               \tag{6.3}
+\]">\[
+\mathcal C=\mathrm{Dmod}_{1/2}(\mathrm{Bun}_G),\qquad
+\mathcal C_{\rm co}=
+\operatorname{colim}_{U,\,(j_{12})_*}\mathrm{Dmod}_{1/2}(U).
+                                                               \tag{6.3}
+\]</span>
+This is the definition in <em>Proof of geometric Langlands IV</em>, §2.1. Its canonical duality is
+<span class="math math-display" data-tex="\[
+\mathcal C^\vee\simeq\mathcal C_{\rm co},\qquad
+(j^!)^\vee=j_{{\rm co},*}.
+                                                               \tag{6.4}
+\]">\[
+\mathcal C^\vee\simeq\mathcal C_{\rm co},\qquad
+(j^!)^\vee=j_{{\rm co},*}.
+                                                               \tag{6.4}
+\]</span>
+The half-twist is self-opposite under the corresponding Verdier convention, since reversing the square-root character of <span class="math" data-tex="$\mu_2$">$\mu_2$</span> leaves the same character.</p>
+<p>Here is the reason for the colimit and its arrows. The category on every quasi-compact open is dualizable and Verdier self-dual. Duality changes the restriction diagram into the opposite diagram; restriction is dual to <span class="math" data-tex="$j_*$">$j_*$</span>. For <span class="math" data-tex="$\mathrm{Bun}_G$">$\mathrm{Bun}_G$</span>, co-truncative opens are cofinal by Theorem 6.1. The compactness conditions there allow categorical duality to turn (6.1) into this colimit. This is the argument of Drinfeld–Gaitsgory, <em>Compact generation</em>, Corollary 4.3.2; (6.4) in the twisted conventions is explicitly recorded in geometric Langlands IV, §2.1.</p>
+<p>There is also a naive comparison
+<span class="math" data-tex="$\mathrm{Ps\!-\!Id}^{\rm nv}:\mathcal C_{\rm co}\to\mathcal C$">$\mathrm{Ps\!-\!Id}^{\rm nv}:\mathcal C_{\rm co}\to\mathcal C$</span>
+characterized by
+<span class="math" data-tex="$\mathrm{Ps\!-\!Id}^{\rm nv}\circ j_{{\rm co},*}=j_*$">$\mathrm{Ps\!-\!Id}^{\rm nv}\circ j_{{\rm co},*}=j_*$</span>.
+It is a specified functor, not an automatic equivalence. If <span class="math" data-tex="$\mathcal Y$">$\mathcal Y$</span> is quasi-compact, its final open supplies both categories, so this comparison is an equivalence. In the non-quasi-compact situation one must preserve which category and which comparison are intended. A different, nontrivial duality functor can give an equivalence; that would not make the naive comparison automatically invertible.</p>
+<p>The square-root gerbe, determinant normalization and choice-dependent untwisting of <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span> are those of Gaitsgory–Raskin, <em>Proof of geometric Langlands I</em>, §1.1, calculated in <a href="equivariant-and-twisted-d-modules.html">Equivariant and twisted D-modules</a>. The co-version and !-conventions are additional structure needed to interpret the global adjunction in <a href="beilinson-bernstein-localization.html">Beilinson–Bernstein localization</a>.</p>
+<h2 id="7-exercises-and-solutions">7. Exercises and solutions</h2>
+<p><strong>Exercise 17.1 (easy).</strong> Identify the abelian D-module category on <span class="math" data-tex="$BG$">$BG$</span> for connected affine <span class="math" data-tex="$G$">$G$</span>.</p>
+<p><strong>Solution.</strong> The normalized descent heart is strong rational representations on a point. Strongness makes the differentiated action zero. For any vector, its orbit map lies in a finite-dimensional rational subrepresentation and has zero differential. Every regular function on a connected smooth group with zero differential is constant in characteristic zero: this can be checked in its function field using a separating transcendence basis. Thus the orbit map is constant and its value is the original vector. All representations are trivial; arbitrary vector spaces with that trivial action are permitted. Morphisms are all linear maps. The category is <span class="math" data-tex="$\operatorname{Vect}^{\heart}$">$\operatorname{Vect}^{\heart}$</span>, not a claim about its derived descent category.</p>
+<p><strong>Exercise 17.2 (easy).</strong> For a smooth map of smooth stacks of relative dimension <span class="math" data-tex="$d$">$d$</span>, prove the normalized t-exactness assertion for !-pullback.</p>
+<p><strong>Solution.</strong> Test on a smooth chart <span class="math" data-tex="$S\to\mathcal Y$">$S\to\mathcal Y$</span> of the source, of relative dimension <span class="math" data-tex="$r$">$r$</span>. Its composite with the target has relative dimension <span class="math" data-tex="$r+d$">$r+d$</span>. If <span class="math" data-tex="$M$">$M$</span> is in the target heart, <span class="math" data-tex="$(f\circ q)^!M[-r-d]$">$(f\circ q)^!M[-r-d]$</span> is an ordinary module by (1.2). Since <span class="math" data-tex="$q^!f^!=(f\circ q)^!$">$q^!f^!=(f\circ q)^!$</span>, the normalized pullback of <span class="math" data-tex="$f^!M[-d]$">$f^!M[-d]$</span> to <span class="math" data-tex="$S$">$S$</span> is exactly this module. The same argument with truncation halves proves that <span class="math" data-tex="$f^![-d]$">$f^![-d]$</span> is t-exact. On schemes this is <span class="math" data-tex="$Lf^*$">$Lf^*$</span>, using flatness; it agrees with (0.1). The functor <span class="math" data-tex="$f^![-2d]$">$f^![-2d]$</span> has the smooth de Rham adjunction normalization instead.</p>
+<p><strong>Exercise 17.3 (medium).</strong> Compute the graded self-Ext algebra of the constant object on <span class="math" data-tex="$B\mathbb G_m$">$B\mathbb G_m$</span>.</p>
+<p><strong>Solution.</strong> Under (5.3) it is the augmentation module, up to a common shift. The resolution (5.4) has exactly the displayed cycles and boundaries. Its Hom into <span class="math" data-tex="$k$">$k$</span> has a basis in degrees <span class="math" data-tex="$0,2,4,\ldots$">$0,2,4,\ldots$</span>. The degree-two shift map on the generators of the resolution has nonzero <span class="math" data-tex="$m$">$m$</span>th power on <span class="math" data-tex="$e_m$">$e_m$</span> after augmentation. Hence both the groups and the products are <span class="math" data-tex="$k[c]$">$k[c]$</span>, <span class="math" data-tex="$|c|=2$">$|c|=2$</span>, rather than just a list of even-dimensional groups. The primitive class <span class="math" data-tex="$dt/t$">$dt/t$</span> on the atlas nerve and its factorial-normalized cobar powers identify <span class="math" data-tex="$c$">$c$</span> with the de Rham classifying-space generator. Over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> this is the topological cohomology generator under comparison.</p>
+<p><strong>Exercise 17.4 (medium).</strong> Explain why the constant object is not compact, and identify a compact generator.</p>
+<p><strong>Solution.</strong> The augmentation <span class="math" data-tex="$k$">$k$</span> has unbounded self-Ext by Exercise 17.3. A compact <span class="math" data-tex="$A$">$A$</span>-module is a retract of a finite cell module; its self-Hom is bounded because <span class="math" data-tex="$A$">$A$</span> has just two finite-dimensional graded pieces. Thus <span class="math" data-tex="$k$">$k$</span> is not compact. The same holds for the shift corresponding to the heart constant. The free module <span class="math" data-tex="$A$">$A$</span> is compact, since <span class="math" data-tex="$\operatorname{RHom}_A(A,-)$">$\operatorname{RHom}_A(A,-)$</span> is the underlying complex functor, and it detects zero. Its inverse image is <span class="math" data-tex="$p_!k$">$p_!k$</span>. This is the compactly supported pushforward, not a substitution of ordinary <span class="math" data-tex="$p_{\rm dR,*}k$">$p_{\rm dR,*}k$</span>. The telescope following (5.5) also directly exhibits the constant's failure of compactness.</p>
+<p><strong>Exercise 17.5 (hard).</strong> Prove that <span class="math" data-tex="$\mathrm{Dmod}(\mathrm{Bun}_G)$">$\mathrm{Dmod}(\mathrm{Bun}_G)$</span> is the limit over quasi-compact opens, and show independence of a cofinal exhaustion.</p>
+<p><strong>Solution.</strong> The chartwise construction in (6.1) applies because <span class="math" data-tex="$\mathrm{Bun}_G$">$\mathrm{Bun}_G$</span> is locally finite type with affine diagonal. Every quasi-compact chart is contained, in the sense of its image, in a finite union of quasi-compact opens. Pull back the object on that union. Enlarging the union gives canonical comparison maps; all finite overlap and nerve diagrams lie in a larger union, where their compatibilities hold. Descent glues the objects, and (6.2) glues every mapping complex, proving essential surjectivity and full faithfulness. If <span class="math" data-tex="$(U_i)$">$(U_i)$</span> is cofinal, every quasi-compact open lies in some <span class="math" data-tex="$U_i$">$U_i$</span>; use restriction from that <span class="math" data-tex="$U_i$">$U_i$</span> to reconstruct its object. Two choices become comparable in a later <span class="math" data-tex="$U_j$">$U_j$</span>, so the reconstruction is independent and respects all higher maps. This proves the exhaustion version. It neither computes a direct image from the whole stack nor proves its compact generation.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use ordinary scheme-level Spencer theory, Kashiwara's equivalence and base change from earlier lessons. The categorical inputs are existence and universal properties of homotopy limits, module bar resolutions, the finite-cell description of compact DG modules, and strictly unital minimal-model transfer. General fppf descent of crystals is Gaitsgory–Rozenblyum, Corollary 3.2.4 (following h-descent, Proposition 3.2.2); Section 2 gives the covering reconstruction and comparison argument needed here. General prestack/crystal comparison and left/right equivalence are stated in Theorem 4.1, with §5.5, Proposition 2.4.4 and Corollary 2.3.9 as their locators. They require the planned derived algebraic geometry foundations.</p>
+<p>The general categorical limit/colimit correspondence in (3.1) is Drinfeld–Gaitsgory, <em>Compact generation</em>, Proposition 1.7.5; finite-stage compactness is Corollary 1.9.4 and Lemma 1.9.5. The topological differential-algebra construction on formally smooth ind-schemes is Beilinson–Drinfeld, §7.11, specifically Proposition 7.11.8 and §§7.11.9–7.11.14. The reduced torus Grassmannian in families, Hilburn–Raskin, §2, and its spectral coherent-category and Weyl-action constructions, §§4–5, are stated; their full-faithfulness result is §7.1. We have proved the character transform (3.3), its compactness criterion, and the residue/Weyl sign (4.5).</p>
+<p>Compact generation and truncatability of <span class="math" data-tex="$\mathrm{Bun}_G$">$\mathrm{Bun}_G$</span>, including the twisted extension, are the stated Theorem 6.1. The dual automorphic identification uses <em>Compact generation</em>, Corollary 4.3.2, and <em>Proof of geometric Langlands IV</em>, §2.1. The determinant and half-root moduli assertions are <em>Proof I</em>, §1.1. We do not prove the geometric Langlands equivalence or a miraculous-duality theorem. Sections 1–2, 5 and the proof of (6.1) give the owned descent, point-quotient and open-exhaustion arguments.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>A. Beilinson and V. Drinfeld, <a href="https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf"><em>Quantization of Hitchin's integrable system and Hecke eigensheaves</em></a>, §§7.3–7.5 and 7.10–7.11.</li>
+<li>D. Gaitsgory and N. Rozenblyum, <a href="https://arxiv.org/abs/1111.2087"><em>Crystals and D-modules</em></a>, §§1.1–1.3, 2.1–2.4, 3.2 and 5.5.</li>
+<li>V. Drinfeld and D. Gaitsgory, <a href="https://people.mpim-bonn.mpg.de/gaitsgde/GL/Finiteness.pdf"><em>On some finiteness questions for algebraic stacks</em></a>, §§5.3.5, 6.1 and 7.1–7.2.</li>
+<li>V. Drinfeld and D. Gaitsgory, <a href="https://people.mpim-bonn.mpg.de/gaitsgde/GL/Dmod%28BunG%29.pdf"><em>Compact generation of the category of D-modules on the stack of G-bundles on a curve</em></a>, §§0.1–0.4, 1.7, 1.9, 2.1–2.3 and 4.3.</li>
+<li>D. Arinkin and D. Gaitsgory, <a href="https://arxiv.org/abs/1201.6343"><em>Singular support of coherent sheaves, and the geometric Langlands conjecture</em></a>, §11.2.</li>
+<li>D. Gaitsgory, <a href="https://arxiv.org/abs/1302.2506"><em>Outline of the proof of the geometric Langlands conjecture for GL(2)</em></a>, §3.1.</li>
+<li>D. Gaitsgory and S. Raskin, <a href="https://arxiv.org/abs/2405.03599"><em>Proof of the geometric Langlands conjecture I: construction of the functor</em></a>, §1.1.</li>
+<li>D. Arinkin, D. Beraldo, L. Chen, J. Færgeman, D. Gaitsgory, K. Lin, S. Raskin and N. Rozenblyum, <a href="https://arxiv.org/abs/2409.08670"><em>Proof of the geometric Langlands conjecture IV: ambidexterity</em></a>, §2.1.</li>
+<li>J. Hilburn and S. Raskin, <a href="https://arxiv.org/abs/2107.11325"><em>Tate's thesis in the de Rham setting</em></a>, §§2, 4, 5.1–5.2 and 7.1.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="beilinson-bernstein-localization.html">← Beilinson-Bernstein localization</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-fourier-transform-of-d-modules.html">The Fourier transform of D-modules →</a></span></nav>
+<p class="small source-link"><a href="src/stacks-ind-schemes-and-the-de-rham-prestack.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

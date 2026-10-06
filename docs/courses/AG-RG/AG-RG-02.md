@@ -1,0 +1,372 @@
+# Regular elements and centralizers
+
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+
+A maximal torus describes a reductive group by diagonal symmetries. A regular semisimple element describes the same torus by one element: the torus is the identity component of its centralizer. This observation is useful in families, where the centralizer of a section is easier to specify than a choice of eigenvectors.
+
+We use the torus deformation and conjugacy arguments of [Tori, maximal tori and their conjugacy](AG-RG-01.md). The classical geometric input concerning Borel subgroups is used below to prove the centralizer theorem, rather than importing that theorem from a reference. All centralizers are scheme-theoretic. Over a field, a geometric assertion means an assertion after algebraic closure.
+
+## 1. The geometry behind the centralizer theorem
+
+We first work over an algebraically closed field $k$. A Borel subgroup of a smooth connected affine group $H$ is a maximal smooth connected solvable subgroup. Write $B=U\rtimes T$ for a Borel subgroup and one of its maximal tori. The solvable-group construction in the preceding lesson identifies $U$ with the unipotent radical of $B$.
+
+We shall need several consequences of that construction. Every connected solvable subgroup lies in a Borel subgroup. The varieties $H/B$ are projective, and all Borel subgroups are conjugate. The scheme-theoretic normalizer theorem is proved below, after the centralizer and Borel-intersection arguments needed for its induction.
+
+**Lemma 1.A (unipotent radicals).** A smooth connected affine \(H/k\) has a unique largest smooth connected normal unipotent subgroup \(R_u(H)\). It is preserved by every automorphism. Every smooth connected normal unipotent subgroup lies in every Borel. If \(K\) is a smooth connected normal solvable subgroup of \(H\), then \(R_u(K)\) is normal in \(H\).
+
+**Proof.** If \(N_1\),\(N_2\) are smooth connected normal unipotent subgroups, their product is the closed image of the multiplication homomorphism \(N_1\rtimes N_2\to H\). AG-GS-03, Proposition 5.8 makes this a reduced closed subgroup and makes the source map faithfully flat; reducedness over the perfect \(k\) gives smoothness. It is connected as the image of the connected source, and is normal.
+
+This product is unipotent. In any nonzero finite-dimensional representation \(W\), AG-RG-01, Lemma 2.A makes \(W^{N_1}\ne0\). Normality makes this subspace \(N_2\)-stable, so AG-RG-01, Lemma 2.A supplies a nonzero vector fixed by both groups, and hence by their product: the latter equality follows faithfully flatly from the surjective multiplication map. Applying the same argument to successive quotients gives a trivial-quotient full flag. A faithful representation of the affine image is therefore unitriangular.
+
+Choose a smooth connected normal unipotent subgroup of maximal dimension, possible since the dimensions are bounded by \(\dim H\). Its product with any other such subgroup is again of this type. Maximal dimension and connectedness force that product to equal it: a proper closed subgroup of the same dimension cannot be contained in an irreducible smooth connected group. This proves greatestness and uniqueness. Automorphisms preserve its defining property, so preserve the subgroup.
+
+For a Borel \(B\) and such a normal \(N\), the product \(NB\) is similarly the smooth connected closed image of \(N\rtimes B\). It is solvable. Indeed its quotient by \(N\) is a quotient of the solvable \(B\), and the derived sequence reaches \(N\) after finitely many steps; \(N\) has its unitriangular central filtration and is solvable. Thereafter finitely many further derived steps give the identity. Thus maximality of \(B\) gives \(NB=B\), and \(N\) lies in \(B\).
+
+If \(K\) is normal in \(H\), every conjugation by \(H(k)\) gives an automorphism of \(K\) and preserves its unique \(R_u(K)\). The whole conjugation morphism \(H\times R_u(K)\to H\) factors through that closed subgroup: the source is reduced by AG-RG-S08, Lemma G.4.1, and its defining equations vanish at all closed points, so are zero by the Nullstellensatz. This proves scheme normality in \(H\). In the solvable \(K\), the decomposition constructed in AG-RG-01, Section 2 \(K=U\rtimes T\) identifies its radical with \(U\): every smooth connected unipotent subgroup, including one not assumed normal in \(K\), projects trivially to \(T\) by AG-RG-01, Lemma 2.A and is contained in \(U\). \(\square\)
+
+**Lemma 1.1.** The centralizer of a torus in $H$ is smooth and connected.
+
+**Proof.** Smoothness is the invariant-cohomology argument in the preceding lesson. Choose a cocharacter $\lambda$ of $A$ that is nonzero on every nonzero $A$-weight in a finite generating subspace of $k[H]$. Then $C_H(A)=C_H(\lambda)$: in the conjugation grading, a generating function has degree zero for $\lambda$ precisely when it has weight zero for $A$, so the two fixed-subgroup ideals agree.
+
+Use the general cocharacter construction proved in the preceding lesson, Lemma 3.3. Its proof is a grading and smoothness argument for arbitrary smooth affine groups and uses no reductive centralizer theorem. Multiplication gives an open immersion
+
+$$
+U_H(-\lambda)\times C_H(\lambda)\times U_H(\lambda)\longrightarrow H.
+$$
+
+The domain is nonempty. Its image is an open subvariety of the irreducible variety $H$, so the domain is irreducible. Its projection onto $C_H(\lambda)$ is surjective; hence that centralizer is connected. This proves the result without making an assertion about the Borel containing an arbitrary element. $\square$
+
+The cocharacter lemma and the classical fixed-point arguments are independent of the root classification and of the reductive centralizer theorem proved below.
+
+**Lemma 1.B (fixed unipotent groups are smooth connected).** Let a diagonalizable \(D\) act on \(U\) as in AG-RG-01, Lemma 2.C. Then \(U^D\) is smooth connected. Moreover the sequence
+\[
+1\longrightarrow U_1^D\longrightarrow U^D
+\longrightarrow (U/U_1)^D\longrightarrow1
+\]
+is exact as fppf sheaves.
+
+**Proof.** Fixed subschemes are affine finitely presented and smooth by the coordinate and infinitesimal proofs in AG-GS-05, Proposition 3.2 and Theorem 3.4, including a nonreduced \(D\). Let x be a \(D\)-fixed quotient section on any test algebra. Choose a lift u fppf locally. The defect
+\[
+c(d)=u^{-1}d(u)
+\]
+lies in \(U_1\) and is a regular crossed homomorphism. Write it fppf locally as \(c(d)=v d(v)^{-1}\) by AG-RG-01, Lemma 2.C. Then u v is fixed, since \(d(u v)=u c(d)d(v)=u v\). This proves surjectivity of the last map of the displayed sequence, with the kernel equality evident on every test scheme. Differences of two fixed lifts belong to \(U_1^D\), so the last map is a torsor under \(U_1^D\). On its local trivializations it is the projection from that smooth affine group, so it is itself smooth and fppf by descent. Thus the displayed sequence has the full torsor relation and the openness used below.
+
+For a vector line of character \(\chi\), its \(D\)-fixed subgroup is the whole line if \(\chi=0\), and is zero otherwise: comparison of the two distinct basis monomials \(e^\chi\) and 1 forces the vector coordinate to vanish, including over nonreduced tests. Induct through the filtration. The kernel in the displayed sequence is smooth connected by induction, and the quotient is either \(\mathbf G_a\) or 1. Its fibres are torsors under that connected kernel and hence are connected over an algebraic closure. The quotient map is open, since it is fppf. A partition of \(U^D\) into two nonempty open-and-closed pieces would give a partition of this connected quotient: connected fibres belong to only one piece, and openness makes their two images open. This is impossible. Thus \(U^D\) is connected. \(\square\)
+
+For \(A\subset T\subset B=U\rtimes T\), these proofs give
+\[
+C_B(A)=U^A\rtimes T,
+\]
+so this centralizer is smooth connected and solvable.
+
+**Lemma 1.2.** A unipotent group acting on an affine variety has closed orbits.
+
+**Proof.** Choose a faithful unitriangular embedding of the given unipotent group \(N\). No smoothness or connectedness assumption is imposed on \(N\). Over the perfect \(k\) its reduction is a smooth subgroup; put \(H=(N_{\mathrm{red}})^0\). There are finitely many components and \(N(k)=N_{\mathrm{red}}(k)\). First take an \(H\)-orbit, with reduced irreducible closure \(X\). It is locally closed by AG-RG-S08, Theorem G.4.2; that same written proof makes \(X\) and its boundary \(Z\) invariant under \(H\) schematically, using reducedness of \(H\times X\). If \(Z\) is nonempty, its ideal contains a nonzero finite-dimensional stable subspace by AG-GS-01, Lemma 5.1. AG-RG-01, Lemma 2.A gives a nonzero invariant function in that subspace. It is constant on the dense orbit and hence on \(X\), but vanishes on \(Z\), a contradiction. Thus each \(H\)-orbit is closed. An \(N\)-point-orbit is a finite union of translates of this closed \(H\)-orbit, so is closed too. Finally AG-GS-03, Theorem 7.13 gives the full schematic orbit as an immersion. Its underlying image is this closed set, so the immersion is a closed immersion: its locally closed defining ideals glue over the target together with the unit ideal on the complement. This also proves closedness of the possibly nonreduced schematic orbit. \(\square\)
+
+Put $X=H/B$, initially as a homogeneous space with stabilizer $B$. Let $T\subset B$ be maximal and $C=C_H(T)$. We justify both finiteness of $X^T$ and the assertion that $C$ fixes it, instead of assuming either one.
+
+First $C=T\times U_C$, with $U_C$ smooth connected unipotent. Indeed $C/T$ is affine: the line detecting the central subgroup $T$ spans a representation on which $T$ acts by scalars, and the resulting projective representation has kernel exactly $T$. Its closed image gives the affine quotient. That quotient has no torus, because the inverse image of a torus would be an extension of tori by tori and contradict maximality of $T$. AG-RG-01, Lemma 2.D therefore makes $C/T$ unipotent; $C$ is solvable, and its central torus gives the displayed direct product.
+
+The scheme $X^T$ is smooth. Indeed an equivariant projective embedding gives a $T$-stable affine chart at each fixed point by choosing a nonzero weight coordinate. Exactness of weight projections lifts a weight basis of the cotangent space to homogeneous parameters in the completed local ring. Smoothness of $X$ identifies that ring with the power-series ring in these parameters; imposing fixedness kills precisely the parameters of nonzero weight. The remaining power-series ring proves smoothness of the fixed locus. At each fixed point, the orbit map from $C$ has surjective differential: taking invariants in $\mathfrak h/\mathfrak b'$ is exact, so its tangent space is the quotient of $\mathfrak h^T=\operatorname{Lie}C$ by $\operatorname{Lie}C_{B'}(T)$. By AG-RG-S02, Lemma 3.A, the orbit map is smooth near that point, so each $C$-orbit is open in $X^T$. There are finitely many of these disjoint open orbits, and each is also closed and complete. Since $T$ fixes the point and is central in $C$, such an orbit is a $U_C$-orbit. Every homogeneous space of a unipotent group is affine: its line-stabilizer character is trivial, so it is a vector orbit, and Lemma 1.2 makes that orbit closed in affine space. A complete affine orbit has dimension zero. Hence all these orbits are points. We have proved that $X^T$ is finite and that $C$ fixes it pointwise. In particular $C\subset B'$ for every Borel $B'$ containing $T$.
+
+The normalizer acts transitively on $X^T$. If $gB$ is fixed, conjugate $g^{-1}Tg$ to $T$ within $B$ to obtain a representative in $N_H(T)$. Its stabilizer is $N_B(T)=C_B(T)=C$, since conjugation in the solvable decomposition induces the identity on $B/R_u(B)$. Thus $X^T$ is the set $N_H(T)/C_H(T)$, with a simply transitive action of that quotient. A cocharacter separating the finitely many weights in an equivariant projective embedding has exactly the same fixed points as $T$.
+
+**Borel intersections.** For a torus $A\subset B$, the subgroup $C_H(A)\cap B$ is a Borel subgroup of $C_H(A)$. It is connected and smooth by Lemma 1.B applied to the solvable group $B$. To prove completeness of its quotient, put $C=C_H(A)$ and consider the closure of $CB$ in $H$. On that connected closure, the condition $g^{-1}Ag\subset B$ is closed. The composite to the torus $B/R_u(B)$ is constant as a homomorphism from $A$, since such homomorphisms are discrete. At the identity it is the given projection of $A$. Conjugate $g^{-1}Ag$ into a fixed maximal torus of $B$ by $u\in R_u(B)$. The two torus embeddings now have the same projection to $B/R_u(B)$, whose restriction to that maximal torus is an isomorphism. Thus $gu\in C$. This proves that every point of the closure already belongs to $CB$. Therefore the image $C/(C\cap B)$ is closed in the complete $H/B$ and is complete. A connected solvable subgroup with complete quotient is Borel, by the fixed-point theorem applied to a Borel acting on that quotient. Conjugacy in $C$ shows that all its Borels arise in this manner.
+
+**Normalizer theorem.** Every Borel subgroup of a smooth connected affine group over an algebraically closed field satisfies $N_H(B)=B$ as group schemes. We give the induction which supplies the full equality.
+
+First every element of $H$ lies in a Borel. For generic $t\in T$, none of its nonzero adjoint weights takes the value one. The conjugation map $H\times C_H(T)\to H$ has, at $(1,t)$, differential $(1-\operatorname{Ad}t)X+Y$, which is surjective since $\operatorname{Lie}C_H(T)=\mathfrak h^T$. AG-RG-S02, Lemma 3.A, makes this map smooth near $(1,t)$, so its image contains a dense open subset. This image lies in the union of conjugates of $B$, since $C_H(T)\subset B$. That union is closed: it is the image of the closed fixed-point incidence in $H\times H/B$ under the proper projection, by AG-RG-01, Lemma 2.1 and [AG-RG-S01, Lemma 7.A and Corollary 7.B](AG-RG-S01.html#projective-properness). Hence it is all of $H$. In particular a normal Borel of $H$ equals $H$.
+
+The normalizer is smooth. Its tangent quotient is $(\mathfrak h/\mathfrak b)^B$, contained in $(\mathfrak h/\mathfrak b)^T=0$, because $\mathfrak h^T\subset\mathfrak b$. Thus its tangent dimension equals $\dim B$, as does its local dimension, since it contains $B$. Translation proves smoothness everywhere. It suffices to prove the assertion on geometric points.
+
+Let $n\in N_H(B)(k)$, and conjugate $nTn^{-1}$ back to $T$ by an element of $B$. The resulting $n$ normalizes $T$. Consider the homomorphism $f:T\to T$, $t\mapsto ntn^{-1}t^{-1}$. If $T=1$, AG-RG-01, Lemma 2.D gives $H=B$. Otherwise, if $f$ is not surjective, its kernel contains a nontrivial torus $A$. Then $n\in C_H(A)$ and normalizes its Borel $C_H(A)\cap B$. If this centralizer is proper, induction on dimension puts $n$ in that Borel. If the centralizer is all of $H$, the torus $A$ is central. Apply induction to the affine quotient $H/A$; the image of $B$ is a Borel since its quotient is the same complete $H/B$. Again $n\in B$.
+
+If $f$ is surjective, choose a representation and line with stabilizer $N_H(B)$. Write $v$ for a generator of the line, and $\chi$ for its character on this stabilizer. Since $\chi$ kills commutators, $\chi\circ f=1$; surjectivity gives $\chi|_T=1$. The unipotent radical of $B$ has no character either, so $B$ fixes $v$. The map $H/B\to V$ given by $gB\mapsto gv$ has complete image in an affine space, so is constant. Thus $H$ fixes $v$, meaning $H=N_H(B)$. The Borel is now normal, and the density argument makes $H=B$. This finishes the induction and proves the scheme equality.
+
+We may consequently identify $H/B$ with the variety of Borel subgroups. The preceding simply transitive action on its torus-fixed points is also the action on the Borels containing $T$.
+
+**Lemma 1.3.** Put $I=(\bigcap_{B'\in\mathcal B^T}R_u(B'))^0_{\mathrm{red}}$. Then $I\subset R_u(H)$.
+
+**Proof.** We give the projective argument, including the affine charts that make Lemma 1.2 applicable. Embed $\mathcal B$ equivariantly in $\mathbf P(V)$ using a line with stabilizer $B$, and replace $V$ by the span of the image. Choose a cocharacter $\lambda$ that separates the finitely many $T$-weights in $V$ and whose fixed points on $\mathcal B$ are $\mathcal B^T$.
+
+Among these fixed points there is a unique attracting point $x$ for a dense open set: project the generic point of the irreducible variety onto its lowest nonzero weight coordinate. The lowest weight space occurring there is a line. To check this last assertion, its projectivization meets $\mathcal B$ in finitely many fixed points, while the limits of the dense irreducible open form an irreducible set; nondegeneracy then makes that weight space one-dimensional. The attracting set is therefore
+
+$$
+X_x=\mathcal B\cap\{\text{the lowest-weight coordinate is nonzero}\},
+$$
+
+an affine open chart. The normalizer of $T$ acts transitively on $\mathcal B^T$, so transporting this chart gives an affine open $X_y$ for every $y\in\mathcal B^T$. It equals $\{z:y\in\overline{Tz}\}$. These charts cover $\mathcal B$: the closure of every $T$-orbit in a complete variety has a fixed point.
+
+Each chart is stable under $I$. Here is the required check. The hyperplane complementary to $X_x$ is the kernel of the lowest-weight covector $\ell$. Every $H$-orbit in $\mathbf P(V^*)$ meets the chart where evaluation on the lowest-weight vector $v$ is nonzero: otherwise its covectors would vanish on every translate of $v$, which spans $V$. On this chart $\lambda^{-1}$ contracts to $[\ell]$. Choose a closed $H$-orbit in the projective space by the closed-orbit lemma. Its closure contains $[\ell]$, so this orbit is exactly $H[\ell]$ and is closed. Thus the stabilizer $P$ of that line has proper homogeneous quotient, by [AG-RG-S01, Lemma 7.A and Corollary 7.B](AG-RG-S01.html#projective-properness) applied to this closed projective orbit. The fixed-point theorem for a Borel's action on this quotient puts a conjugate of an $H$-Borel inside $P$. It is contained in $P^0$, and contains a maximal torus of $H$. Since $T\subset P^0$ is also maximal, conjugacy of maximal tori in the smooth connected group $(P^0)_{\mathrm{red}}$ gives an $H$-Borel containing $T$ inside $P$. The group $I$ belongs to its unipotent radical, hence preserves $[\ell]$ and $X_x$. Transporting by $N_H(T)$ proves stability of every $X_y$; the intersection defining $I$ is invariant under that normalizer. This argument does not presume connectedness or self-normalization of parabolic subgroups.
+
+For $z\in\mathcal B$, the complete closure $\overline{Iz}$ has an $I$-fixed point $z_0$. Choose an invariant affine chart $X_y$ containing $z_0$. Its invariant closed complement cannot meet $Iz$, since otherwise it would contain the entire orbit closure and hence $z_0$. Thus $Iz\subset X_y$. Lemma 1.2 makes this orbit closed in $X_y$, so it contains $z_0$ and is a point. We have proved that $I$ fixes every point of $\mathcal B$.
+
+The kernel of this action is the intersection of all Borel subgroups; its reduced identity component is a normal solvable subgroup of $H$. Its unipotent radical is normal in $H$ and contains $I$, because $I$ is unipotent. It is consequently contained in $R_u(H)$. $\square$
+
+This is the geometric mechanism in Chevalley's description of the unipotent radical. It gives exactly the part needed for centralizers without presupposing roots.
+
+## 2. Centralizers and weight zero
+
+**Theorem 2.1.** If $G$ is connected reductive over an algebraically closed field and $T$ is maximal, then $C_G(T)=T$. More generally, the centralizer of any torus in $G$ is connected reductive.
+
+**Proof.** First take $T$ maximal. We already have $C=T\times U_C$ and a finite fixed-point set on $X=G/B$. There is a direct affine-chart proof that $U_C\subset R_u(G)$. Embed $X$ equivariantly in $\mathbf P(V)$ and replace $V$ by the span of $X$. Choose a cocharacter separating its distinct torus weights. The lowest weight space meeting $X$ is one-dimensional: its projective intersection with $X$ is finite, whereas projection of the irreducible open set where that component is nonzero has irreducible image, so is one point; since $X$ spans $V$, its projections span that weight space. The corresponding nonzero-coordinate chart of $X$ is affine. It is stable under $U_C$, since $U_C$ commutes with $T$ and acts trivially on this one-dimensional weight space and its coordinate covector. Transport it by $N_G(T)$ to a chart about every fixed point. These charts remain $U_C$-stable, because that normalizer preserves the characteristic unipotent subgroup of $C$. They cover $X$: a torus orbit closure has a fixed point, and a closed torus-stable complement containing the original point would also contain that limit.
+
+The complete closure of any $U_C$-orbit has a fixed point by the fixed-point theorem. A stable affine chart about that point contains the whole orbit: otherwise its stable closed complement would contain the orbit closure. Within this chart the orbit is closed by Lemma 1.2, so it contains the fixed point and is itself a point. Thus $U_C$ fixes all of $X$. The reduced identity component of the action kernel is a normal solvable subgroup of $G$, since it is contained in $B$. Its unipotent radical is normal in $G$ and contains $U_C$. Reductivity makes it trivial. Therefore $C=T$.
+
+Now let $A\subset G$ be any torus and choose a maximal torus $T\supset A$. Put $C=C_G(A)$. Its Borel subgroups are the intersections $C\cap B'$ for Borel subgroups $B'$ of $G$ containing $A$. To verify this, $C\cap B'$ is connected solvable, and its quotient in $C$ is closed in $G/B'$: if $c_i b_i$ tends to $g$, rigidity of maps from $A$ to $B'/R_u(B')$, followed by conjugacy of torus embeddings in $B'$, changes $g$ by an element of $R_u(B')$ into $C$. Thus $CB'$ is closed; completeness and the fixed-point criterion identify $C\cap B'$ as a Borel subgroup. Conjugating in $C$ supplies all its Borel subgroups.
+
+In particular $R_u(C)$ lies in each $B'$ containing $T$, and, being unipotent, in each $R_u(B')$. Lemma 1.3 gives $R_u(C)\subset R_u(G)=1$. Smoothness and connectedness were Lemma 1.1. This proves reductivity. $\square$
+
+The closedness argument just used can also be written without limits. On the closure $\overline{CB'}$, the condition $g^{-1}Ag\subset B'$ is closed. The induced map $A\to B'/R_u(B')$ is constant as $g$ varies on the connected closure, since maps between tori form a discrete sheaf. Conjugate $g^{-1}Ag$ into a fixed maximal torus of $B'$ by an element $u\in R_u(B')$. Equality of its projection to $B'/R_u(B')$ with that of $A$ then says $gu\in C$. This proves $\overline{CB'}=CB'$ and completes the asserted quotient argument.
+
+**Theorem 2.2.** If $G\to S$ is reductive and $T$ is a maximal $S$-torus, then $C_G(T)=T$. For any subtorus $A$, $C_G(A)$ is a reductive $S$-group.
+
+**Proof.** The centralizer construction commutes with base change and is smooth. Each of its geometric fibres has the properties in Theorem 2.1. For maximal $T$, the inclusion $T\to C_G(T)$ is an isomorphism on geometric fibres. It is an isomorphism over $S$: both schemes are smooth of finite presentation; the differential is an isomorphism, so AG-RG-S02, Lemma 3.A, makes this inclusion étale; an étale monomorphism is an open immersion; fibrewise surjectivity makes its image all of the target. The second assertion follows directly from the definition of a reductive group scheme. $\square$
+
+**Theorem 2.3.** A reductive group scheme admits maximal tori étale locally. Any two maximal tori are conjugate étale locally.
+
+**Proof.** At a point $s$, choose a geometrically maximal torus after a finite separable extension of $k(s)$. The existence of such a torus follows either from Theorem 4.2 of the preceding lesson, which gives one over $k(s)$ itself, or from smoothness of the torus-embedding functor; we use Theorem 4.2 to keep one route. Make the residue extension by an étale neighbourhood and apply Lemma 3.1 of the preceding lesson.
+
+In the reductive special fibre a maximal torus is its own centralizer. Theorems 2.1 and 2.2 above prove this equality from Borel-quotient geometry, before the present application. The centralizer of the lifted torus is smooth. Near the chosen fibre its identity component has the same dimension as the torus: a smooth subgroup containing the identity section has locally constant relative dimension near that section. On these neighbouring fibres the torus has no larger torus in its centralizer, hence is maximal in $G$. This proves local existence.
+
+For two maximal tori, their geometric fibres are conjugate by Theorem 2.2 of the preceding lesson. The transporter is therefore a smooth surjection onto $S$ by Lemma 3.1 of that lesson. Every smooth surjective morphism admits sections étale locally; a section of this transporter is the desired conjugating element. $\square$
+
+The statement is local around every point, and the conjugating element belongs to the group over the chosen neighbourhood. It does not assert a global section of the transporter.
+
+If $T$ is split, write
+
+$$
+\mathfrak g=\mathfrak t\oplus\bigoplus_{\alpha\in\Phi}\mathfrak g_\alpha.
+$$
+
+Here $\Phi$ is the finite collection of nonzero weights on a neighbourhood where their ranks are constant. Theorem 2.2 says that the zero-weight summand is exactly $\mathfrak t$. In the next lesson we prove that the nonzero summands have rank one and construct their root groups. The arguments about regularity below need the weight decomposition and weight zero; they do not need that rank-one conclusion.
+
+## 3. Three uses of the word regular
+
+Let $G$ be connected reductive over an algebraically closed field, with rank $r=\dim T$. A group element is **dimension-regular** if its centralizer has the minimum dimension $r$. A **regular semisimple** element is a semisimple element $g$ such that $C_G(g)^0$ is a maximal torus. A **strongly regular semisimple** element additionally has $C_G(g)$ itself equal to that torus. This last condition is stronger.
+
+There is also the convention used in SGA 3, Exposé XIII: a group element is regular if the generalized eigenspace for eigenvalue $1$ in its adjoint action has the minimum dimension, the nilpotent rank. For reductive groups this minimum is $r$, and this condition selects exactly the regular semisimple elements. We verify this identification below. Thus dimension-regular unipotent elements are not regular in that convention.
+
+For $t\in T$, define
+
+$$
+T_{\mathrm{rs}}=\{t:\alpha(t)\ne1\text{ for every }\alpha\in\Phi\}.
+$$
+
+The inequalities mean invertibility of the indicated functions over a general base. Since every $\alpha$ is a nontrivial character, its equation $\alpha=1$ is a proper closed subset of a torus over an algebraically closed field. A finite union of such subsets cannot cover the irreducible torus. Hence $T_{\mathrm{rs}}$ is open and dense, and is nonempty in every geometric fibre in the relative case.
+
+For a semisimple $t$, its centralizer is smooth: the closure of the subgroup generated by $t$ is of multiplicative type, and invariants for such a group are exact. Its Lie algebra is the fixed space of $\operatorname{Ad}(t)$. Consequently
+
+$$
+\operatorname{Lie}(C_G(t))=\mathfrak t\oplus
+\bigoplus_{\alpha(t)=1}\mathfrak g_\alpha.
+$$
+
+The identity centralizer equals $T$ precisely on $T_{\mathrm{rs}}$.
+
+**Theorem 3.1.** The regular semisimple locus $G_{\mathrm{rs}}$ is a dense open subset. Its elements lie in a unique maximal torus.
+
+**Proof.** First construct an open set of conjugates of torus elements. Consider the conjugation map
+
+$$
+q:G\times T_{\mathrm{rs}}\longrightarrow G,\qquad(g,t)\longmapsto gtg^{-1}.
+$$
+
+After translations identify tangent spaces, its differential at $(1,t)$ is
+
+$$
+(X,Y)\longmapsto (1-\operatorname{Ad}(t))X+Y.
+$$
+
+It is surjective: the second term covers $\mathfrak t$, while the first is invertible on every nonzero weight summand. AG-RG-S02, Lemma 3.A, therefore makes $q$ smooth, and its image is a nonempty open, hence dense in the connected smooth group $G$.
+
+Here is a useful consequence of that density. Choose a Borel $B$ containing $T$. In $G\times G/B$ the incidence scheme
+
+$$
+I=\{(g,z):gz=z\}
+$$
+
+is closed, since the flag variety is separated. Its projection to $G$ is proper: AG-RG-01, Lemma 2.1 and [AG-RG-S01, Lemma 7.A and Corollary 7.B](AG-RG-S01.html#projective-properness) make $G/B$ proper, and Corollary 7.B preserves properness under this base change and restriction to the closed incidence. Its image contains the dense open just constructed, and is consequently all of $G$. Over our algebraically closed field, a nonempty fibre has a rational point. Thus **every element of $G$ belongs to a Borel subgroup**.
+
+Let b be a semisimple element of \(B=U\rtimes T\). In a faithful representation diagonalize b and take the reduced closure \(D\) of its integral powers. It is a closed subgroup of a diagonal torus, hence diagonalizable by the explicit Hopf-quotient proof in AG-GS-05, Theorem 4.2. Since it is reduced, its finite character torsion has order invertible in \(k\), by the equation calculation of AG-GS-05, Theorem 4.4.
+
+The intersection \(D\cap U\) is trivial by AG-RG-01, Lemma 2.A. Thus \(D\to T\) is a monomorphism and a closed immersion by a direct character calculation. Write \(D=D(M)\) and \(T=D(\mathbf Z^r)\). The kernel has character group \(M/\operatorname{im}(\mathbf Z^r\to M)\), by AG-GS-05 Theorem 4.1. A diagonalizable group is trivial only when its character group is zero, by its monomial basis. Thus the character map is surjective, and so is the group-algebra map defining \(D\to T\). Let \(A\) denote that image. In \(U\rtimes A\), the subgroup \(D\) is the graph of a regular crossed homomorphism \(A\to U\). AG-RG-01, Lemma 2.B supplies a \(T\)-stable filtration of \(U\), hence an \(A\)-stable one, and AG-RG-01, Lemma 2.C makes this cocycle principal. Conjugation by its correcting \(u\in U(k)\) places \(D\) and b in \(T\).
+
+The incidence proof just given puts every group element in a Borel. Its multiplicative Jordan factors belong to that same closed group, by the Jordan proof in AG-RG-01, Section 4. Applying the preceding paragraph to the semisimple factor proves that every semisimple group element belongs to a maximal torus. Hence the conjugation map \(G\times T_{\mathrm{rs}}\to G\), whose differential was computed above, has image exactly the regular semisimple locus.
+
+Any maximal torus containing $g$ belongs to $C_G(g)^0$, because a torus is connected. That identity centralizer is already a maximal torus. This proves uniqueness. $\square$
+
+Minimum centralizer dimension is indeed $r$. On the open set just constructed it is $r$. Upper semicontinuity of fibre dimension at the identity section of the universal centralizer would make any locus of dimension less than $r$ an open set; it would meet the dense open set and contradict the computation there.
+
+For the SGA convention, write the adjoint characteristic polynomial as
+
+$$
+P_g(x)=\det(x-\operatorname{Ad}(g))=(x-1)^rQ_g(x).
+$$
+
+This divisibility holds for all $g$, since it holds on the dense open locus already proved, and the coefficients are regular functions. The SGA regularity condition is $Q_g(1)\ne0$. Jordan decomposition $g=g_sg_u$ preserves the eigenvalues of the adjoint action, so this condition first implies that $g_s\in G_{\mathrm{rs}}$.
+
+Choose a Borel containing $g$, by the incidence argument. Its Jordan factors belong to this Borel. Conjugate within it to arrange $g_s=t\in T_{\mathrm{rs}}$. Its commuting unipotent factor $g_u$ belongs to $U$, because a unipotent element in the torus quotient is one.
+
+Let \(D\) be the reduced diagonalizable closure of the powers of t. Then \(C_U(t)=U^D\): regular conjugation identities holding on all powers hold on their schematic closure, and the reverse containment is immediate. Lemma 1.B makes this group smooth connected. Its Lie algebra is the t-fixed part of \(\operatorname{Lie}U\), by AG-GS-05, Theorem 3.4. Since \(U\cap T=1\), \(\operatorname{Lie}U\cap\operatorname{Lie}T=0\). Regular semisimplicity gives \((\operatorname{Lie}G)^t=\operatorname{Lie}T\); consequently \(\operatorname{Lie}(U^D)=0\). A smooth connected zero-dimensional algebraic group over \(k\) is the identity. Thus \(g_u=1\).
+
+Conversely a regular semisimple element has exactly r eigenvalue-one directions by the weight calculation. This proves the claimed equivalence in all characteristics. \(\square\)
+
+The minimum generalized zero-eigenspace dimension for $\operatorname{ad}(X)$ similarly defines SGA regularity in a Lie algebra. It is distinct from minimum kernel dimension. Its open set is detected by the first nonzero coefficient after the universal power of $x$ in $\det(x-\operatorname{ad}(X))$. A semisimple $X\in\mathfrak t$ has Lie centralizer $\mathfrak t$ precisely when every root differential $d\alpha(X)$ is nonzero. Such vectors exist when none of the root differentials vanishes identically. In characteristic zero this always holds. In positive characteristic it may fail, and group regularity still works.
+
+## 4. Matrix centralizers and the missing component
+
+For a diagonal matrix $d=\operatorname{diag}(a_1,\ldots,a_n)$ over a field,
+
+$$
+(Ad-dA)_{ij}=(a_j-a_i)a_{ij}.
+$$
+
+If the eigenvalues are distinct, $A$ is diagonal. Thus a regular semisimple element in $\operatorname{GL}_n$ has diagonal-torus centralizer, and is strongly regular semisimple. Repeated eigenvalues give a product of general linear groups on the corresponding eigenspaces, of larger dimension.
+
+In $\operatorname{SL}_2$, a noncentral diagonal element has centralizer the diagonal torus. For
+
+$$
+u=\begin{pmatrix}1&1\\0&1\end{pmatrix},
+$$
+
+commutation says $c=0$ and $d=a$ for a matrix $\begin{pmatrix}a&b\\c&d\end{pmatrix}$, and the determinant condition says $a^2=1$. Scheme-theoretically
+
+$$
+C_{\operatorname{SL}_2}(u)=
+\left\{\begin{pmatrix}a&b\\0&a\end{pmatrix}:a^2=1\right\}
+\simeq\mu_2\times\mathbf G_a,
+$$
+
+via $(a,x)\mapsto a\begin{pmatrix}1&x\\0&1\end{pmatrix}$. Its dimension is one; $u$ is dimension-regular and is not semisimple. In characteristic two this centralizer is non-smooth. This is why tangent dimension alone cannot define dimension-regularity in every characteristic.
+
+For $\operatorname{PGL}_2$ over a field of characteristic different from two, take the class $t$ of $\operatorname{diag}(-1,1)$. Its root character has value $-1$, so $t$ is regular semisimple. A representative $A$ centralizes the class if $AtA^{-1}=ct$ for some scalar $c$. The eigenvalues force $c=1$ or $-1$. For $c=1$, $A$ is diagonal; for $c=-1$, it is anti-diagonal. Hence
+
+$$
+C_{\operatorname{PGL}_2}(t)=T\rtimes(\mathbb Z/2\mathbb Z).
+$$
+
+The identity component is the unique torus containing $t$, while the full centralizer has a second component. Regular semisimple must not silently be strengthened to strongly regular semisimple.
+
+In characteristic two, $\mathfrak t\subset\mathfrak{sl}_2$ consists of scalar matrices. Every $\operatorname{ad}(X)$ for $X\in\mathfrak t$ is zero. Nevertheless a diagonal group element with $t^2\ne1$ acts on the upper root space by $t^2\ne1$. Differentiation has lost a nontrivial character.
+
+## 5. Regular sections in a family
+
+Let $G\to S$ be reductive. Define $G_{\mathrm{rs}}$ fibrewise using geometric regular semisimplicity. This is an open subscheme, compatible with every base change. To prove this without making assumptions about $S$, choose a maximal torus étale locally by Theorem 2.3 and split it étale locally. The same differential calculation makes
+
+$$
+G\times_S T_{\mathrm{rs}}\longrightarrow G
+$$
+
+smooth by AG-RG-S02, Lemma 3.A. Its image is open and, on every geometric fibre, precisely the required locus. These opens agree on overlaps and descend. Their fibres are dense and nonempty.
+
+**Theorem 5.1.** A geometrically regular semisimple section \(s:S\to G\) of a reductive group lies in a unique maximal \(S\)-torus. This construction commutes with arbitrary base change.
+
+**Proof.** The existence and conjugacy of maximal tori étale locally have already been proved in this lesson, Theorem 2.3. On such a neighbourhood choose and split a maximal torus \(T\). Write the adjoint weight decomposition
+
+\[
+\operatorname{Lie}G=\operatorname{Lie}T\oplus\bigoplus_{\chi\ne0} M_\chi.
+\]
+
+The zero-weight equality is Theorem 2.2. Here the nonzero characters are just Lie weights; their root-group construction is unnecessary. Put \(T_{\mathrm{rs}}=\{t:1-\chi(t)\text{ is invertible for every occurring }\chi\ne0\}\). The differential of
+
+\[
+q:G\times T_{\mathrm{rs}}\longrightarrow G,\qquad (g,t)\longmapsto gtg^{-1}
+\]
+
+at \((1,t)\), after translations, is \((Y,Z)\mapsto(1-\operatorname{Ad}t)Y+Z\). It is surjective on the displayed weight decomposition. AG-RG-S02, Lemma 3.A, makes \(q\) smooth. Its image on each geometric fibre is exactly the regular semisimple locus proved in Section 3. Thus its pullback over \(s\) is smooth and surjective. A smooth surjection has sections étale locally; such a section gives \(s=gtg^{-1}\) with \(t\in T_{\mathrm{rs}}\), and the torus \(gTg^{-1}\) contains \(s\).
+
+We prove uniqueness over all test schemes, including nilpotent ones. It suffices to prove that, when \(s\in T_{\mathrm{rs}}(S)\), the closed subgroup \(T\) is also open in the scheme centralizer \(C=C_G(s)\). This is a local assertion on \(S\), so write \(S=\operatorname{Spec}A\). First assume that \(A\) is Noetherian. Set \(B=A[G]\), let \(I\) be its augmentation ideal, let \(K\) be the ideal of \(T\), and let \(J\subset K\) be the equalizer ideal defining \(C\).
+
+After shrinking \(S\), choose a homogeneous basis of \(I/I^2\). Such a choice is possible because the torus weight summands are finite locally free, and exactness of weight projections lifts their basis elements to homogeneous elements \(q_i\in I\). Smoothness of \(G/A\) identifies its formal completion along the identity with
+
+\[
+\widehat B_I\simeq A[[q_1,\ldots,q_N]].
+\]
+
+For completeness, the coordinate assertion follows by taking the associated graded along the smooth identity section: \(\operatorname{gr}_I B=\operatorname{Sym}_A(I/I^2)\). The chosen lifts give an isomorphism at each successive graded piece, hence by induction modulo each power of \(I\), and then on inverse limits. Locally this associated-graded assertion is the regular-parameter calculation for a section of a smooth morphism: the chosen-coordinate conclusion of AG-RG-S02, Lemma 3.A, makes these parameters an étale chart after a local shrink. Subtracting their values on the section sends it to zero, and its ideal is generated by those parameters.
+
+The cotangent map to \(T\) is an isomorphism on weight zero and is zero on every nonzero weight. Indeed conjugation on \(T\) is trivial and the zero-weight Lie space of \(G\) is exactly \(\operatorname{Lie}T\). Consequently the completed ideal \(\widehat K\) is generated by the \(q_i\) of nonzero weight. One can check this directly: these elements vanish on \(T\); the remaining weight-zero elements are formal coordinates on the smooth torus, so the quotient by the displayed generators is exactly its formal coordinate ring.
+
+If \(q_i\) has weight \(\chi_i\ne0\), conjugation by \(s\) gives the exact equality \(s\cdot q_i=\chi_i(s)q_i\). Thus \((\chi_i(s)-1)q_i\in J\), and the coefficient is a unit. Every moving parameter belongs to \(\widehat J\). Since \(J\subset K\), we have \(\widehat J=\widehat K\). In particular,
+
+\[
+K\subset J+I^n\qquad\text{for every }n\ge1.
+\]
+
+Here is the ideal-separation step. At a prime \(\mathfrak p\supset I\), work in the Noetherian local ring \(R=B_\mathfrak p/J_\mathfrak p\), with ideal \(L\) the image of \(I\). It is contained in the maximal ideal. The preceding inclusions put the image of \(K\) inside \(\bigcap_n L^nR=0\). To see the last equality without importing a separatedness theorem, set \(N=\bigcap_n L^nR\). The Rees ring \(R[Lt]\) is Noetherian, since \(L\) is finitely generated and this ring is a quotient of a polynomial ring. The submodule \(\bigoplus_n(L^nR\cap N)t^n\) of the finite Rees module \(\bigoplus_n L^nR,t^n\) has finitely many homogeneous generators. If their degrees are at most \(c\), then
+
+\[
+L^nR\cap N=L^{n-c}(L^cR\cap N)\quad(n\ge c).
+\]
+
+Both intersections on the left and at degree \(c\) equal \(N\), so taking \(n=c+1\) gives \(N=LN\). The ideal \(N\) is finitely generated. Nakayama's lemma gives \(N=0\): in generators, the equality writes the identity minus a matrix with entries in the maximal ideal times their column as zero; its determinant is a unit and annihilates every generator. Thus \(K_\mathfrak p=J_\mathfrak p\).
+
+The finite \(B\)-module \(K/J\) consequently vanishes at every point of the identity section. Its support is closed. The complementary open in \(C\) is an open \(W\), contains the entire identity section, and is contained scheme-theoretically in \(T\). Translation now supplies openness along all of \(T\): the action map \(T\times C\to C\) is smooth, being a projection after the isomorphism \((t,c)\mapsto(t,tc)\). Its image on \(T\times W\) is therefore open. This image is contained in \(T\) and contains \(T\), because \(W\) contains the identity section. Hence \(T\) is open in \(C\), as claimed.
+
+For a general ring \(A\), descend this finite collection of data to a finitely generated \(\mathbf Z\)-algebra \(A_0\): the finitely presented smooth group \(G\), the closed torus embedding, its conjugation action, the section \(s\), the finite Lie weight decomposition, the equality of its zero part with \(\operatorname{Lie}T\), and the inverses of the finitely many \(1-\chi(s)\). AG-MO-03, Theorem 5.1, Lemma 3.1 and Theorems 4.1–4.2 descend these presentations, maps and finite-module isomorphisms. The finite splitting-witness proof in AG-RG-S02, Lemma 3.1 and Proposition 3.2 retains smoothness at a sufficiently large stage. Enlarging that stage makes the finite identities valid there. No spreading of reductivity is needed: the proof just given uses smoothness and these explicit weight conditions. Thus it proves that \(T_0\) is open and closed in \(C_{G_0}(s_0)\). Equalizers commute with base change, and openness and closedness persist under it. We obtain the same conclusion over \(A\).
+
+Let \(T'\) be any maximal torus containing \(s\). It maps to \(C\). The inverse image of the open and closed \(T\) is open and closed in \(T'\) and contains the identity section. Each geometric fibre of a torus is connected, so this inverse image has every point of every geometric fibre and is all of \(T'\). Thus \(T'\subset T\). The inclusion of two smooth maximal tori is an isomorphism on geometric fibres. Its differential is therefore an isomorphism. AG-RG-S02, Lemma 3.A, makes the inclusion an étale monomorphism and hence an open immersion. Fibrewise surjectivity makes it an isomorphism. This proves uniqueness on every base change.
+
+The local tori obtained above consequently agree on overlaps as subgroup schemes, and their unique descent identifications satisfy the cocycle condition. Affine faithfully flat descent produces the desired global maximal torus. The same uniqueness shows that pulling it back gives the torus associated with the pulled-back section. \(\square\)
+
+The full centralizer can have additional components supported on special loci. For example, in $\operatorname{PGL}_2$ take the section $\operatorname{diag}(a,1)$ over a field of characteristic different from two, with $a$ and $a-1$ invertible. Its diagonal torus is present throughout; an anti-diagonal component occurs only on $a=-1$. That component is not flat over the base. The open and closed torus just identified remains the unique maximal torus containing the section.
+
+**Theorem 5.2.** Let \(G/S\) be reductive. Let \(X\) be a section of \(\operatorname{Lie}G\) such that every geometric fibre is conjugate into the Lie algebra of a maximal torus and every occurring nonzero Lie-weight differential there is nonzero on \(X\). There is a unique maximal S-torus whose Lie algebra contains \(X\), and the construction commutes with every base change.
+
+**Proof.** Existence is the smooth conjugation map with the same differential calculation as Theorem 5.1: after splitting a local maximal torus, the differential of \((g,X)\mapsto\operatorname{Ad}(g)X\) is \((Y,Z)\mapsto[Y,X]+Z\). Its moving weights have invertible coefficients, and its zero part is the torus Lie algebra by Theorem 2.2. AG-RG-S02, Lemma 3.A, therefore makes it smooth; its fibrewise image contains the section, so a smooth surjective pullback supplies étale local lifts.
+
+For uniqueness work on one such chart, with \(X\in\operatorname{Lie}T\). Let \(C\) be its scheme stabilizer in \(G\). It is affine finitely presented: in a finite local frame of \(\operatorname{Lie}G\), the finitely many coordinates of \(\operatorname{Ad}(g)X-X\) are defining equations. Their formation commutes with all base changes. Let \(A\) be the local affine base, first Noetherian, let \(B=A[G]\), let \(I\) be its identity ideal, let \(K\) define \(T\), and let \(J\subset K\) define \(C\).
+
+Choose homogeneous identity parameters of the conjugation action of \(T\). The completed-coordinate proof in Theorem 5.1 gives
+\[
+\widehat B_I=A[[z_1,\ldots,z_r,m_1,\ldots,m_d]],
+\qquad \widehat K=(m_1,\ldots,m_d),
+\]
+where the \(z_i\) have weight zero and the \(m_j\) have nonzero weights. The linearization of the equations defining J is \(Y\mapsto[Y,X]\). It is zero on the z-part and is invertible on the m-part by the hypotheses. Select d coordinate equations \(f_i\) whose d by d matrix on these moving directions is invertible.
+
+Each \(f_i\) vanishes on \(T\), so its completed expansion lies in \((m)\). Factor it as
+\[
+f_i=\sum_j a_{ij}(z,m)m_j.
+\]
+The constant matrix \((a_{ij}(0,0))\) is the invertible moving differential. Its determinant has unit constant term, hence is a unit in \(A[[z,m]]\). The adjugate matrix therefore expresses every \(m_j\) as a completed linear combination of the \(f_i\). It follows that
+\[
+\widehat J=\widehat K.
+\]
+This is the complete implicit-system argument: it does not infer ideal equality merely from equality of tangent spaces.
+
+Consequently \(K\subset J+I^n\) for every n. At any prime containing \(I\), pass to the Noetherian local quotient \(B_\mathfrak p/J_\mathfrak p\). The Rees-module Artin–Rees and Nakayama argument written in Theorem 5.1 makes the intersection of powers of the image of \(I\) zero. Thus \(K_\mathfrak p=J_\mathfrak p\). The finite module \(K/J\) has closed support avoiding the identity section, so its complementary open in \(C\) lies in \(T\) and contains that section. Translation by the smooth \(T\) makes \(T\) open along all of itself. It is already closed.
+
+For arbitrary \(A\), descend \(G\), \(T\), \(X\), the finite weight decomposition, the zero-weight isomorphism, and the inverses of the moving differentials to a finitely generated \(\mathbf Z\)-algebra. The affine limit and presentation proofs are AG-MO-03, Theorem 5.1, Lemma 3.1, and Theorems 4.1–4.2. The finite module presentations, their maps and inverse maps involve finite lists of coefficients and identities, so the same generator-and-relation argument retains them at a common stage. Smoothness of the stage is supplied by the full finite splitting-witness proof in AG-RG-S02, Lemma 3.1 and Proposition 3.2. The proof just given uses only smoothness and those finite identities, so applies there without requiring a reductive stage. Its open-and-closed conclusion pulls back to \(A\).
+
+Any torus \(T'\) with \(X\in\operatorname{Lie}T'\) centralizes \(X\) as a section of its Lie algebra: conjugation on the Lie algebra of a commutative group is trivial. Hence it maps to \(C\). The inverse image of the open-and-closed \(T\) in \(T'\) contains its identity section and is all of each connected geometric torus fibre, so is all of \(T'\). Thus \(T'\subset T\). If \(T'\) is maximal, its inclusion is a fibrewise isomorphism of smooth tori; the differential is an isomorphism, so AG-RG-S02, Lemma 3.A, makes it an étale monomorphism and hence an open immersion. Surjectivity on every fibre makes it an isomorphism. These statements persist on every test scheme. The local tori consequently agree as subgroup schemes on overlaps; the affine descent proof in AG-RG-S04 Section A glues them, and uniqueness proves arbitrary base-change compatibility. \(\square\)
+
+In characteristic zero the fibre condition holds for every semisimple Lie element with centralizer dimension equal to the rank. Indeed the algebraic closure of its formal exponential is a torus $D$: in a faithful representation its entries are $e^{\lambda_i t}$, whose only Laurent relations are the integer relations among the $\lambda_i$, by exponential independence. The formal exponential lies in the group by the invariant-derivation argument in the first lesson. It follows that $X\in\operatorname{Lie}D$, and a maximal torus containing $D$ contains $X$ in its Lie algebra. The centralizer-dimension condition then says exactly that no root differential vanishes. General SGA-regular Lie sections in small characteristic need not meet this condition; the characteristic-two example above explains why the group regular-section theorem is the unrestricted reductive statement.
+
+For a general smooth connected affine group over a field, a **Cartan subgroup** is $C_G(T)$ for a geometrically maximal torus. Lemma 1.1 and the solvable structure give a smooth connected nilpotent group; over an algebraic closure it is $T$ times a unipotent group. Cartan subgroups are geometrically conjugate by conjugacy of maximal tori. In a reductive group the unipotent factor is trivial by Theorem 2.1, so Cartan subgroups are exactly maximal tori. SGA 3's broader relative Cartan theorem requires a smooth scheme of Cartan subgroups (for instance an affine smooth group with locally constant reductive rank); the reductive case proved here satisfies those hypotheses.
+
+## 6. Exercises and solutions
+
+**Exercise 6.1 (first steps).** Compute the centralizer of a diagonal matrix with distinct eigenvalues in $\operatorname{GL}_n$. If its eigenvalues have multiplicities $m_1,\ldots,m_a$, compute the dimension of its centralizer.
+
+**Solution.** The equations $(a_j-a_i)a_{ij}=0$ allow matrix entries only between equal-eigenvalue subspaces. The centralizer is $\prod_i\operatorname{GL}_{m_i}$ and has dimension $\sum_i m_i^2$. For distinct eigenvalues all $m_i=1$, giving the diagonal torus and dimension $n$.
+
+**Exercise 6.2 (centralizers).** In characteristic different from two, prove $C_{\operatorname{SL}_2}(u)=\mu_2\times U$ for the upper unipotent element displayed above. Determine its component group. Explain what changes in characteristic two.
+
+**Solution.** Multiplying out gives $c=0$, $a=d$ and $a^2=1$. The map $(a,x)\mapsto\begin{pmatrix}a&ax\\0&a\end{pmatrix}$ is an isomorphism of group schemes. In characteristic different from two, $\mu_2$ is étale with two points, so the component group is the constant group of order two. In characteristic two $\mu_2$ is connected and nonreduced, and the centralizer has one geometric component and a two-dimensional tangent space despite having dimension one.
+
+**Exercise 6.3 (universal equations).** Over an arbitrary base scheme, prove that the centralizer of the diagonal torus in $\operatorname{GL}_n$ is that torus. Why is checking only the base field's rational points insufficient?
+
+**Solution.** Use the universal diagonal matrix with independent Laurent coordinates $z_i$. The equation $a_{ij}(z_i-z_j)=0$ forces $a_{ij}=0$ for $i\ne j$ by independence of Laurent monomials over every ring. The diagonal entries are units since the matrix is invertible. Over a finite field the rational points of a torus may not separate all its characters, and over nonreduced algebras rational-point equations may miss infinitesimal conditions; the universal computation avoids both problems.
+
+**Exercise 6.4 (geometry).** Show that the regular semisimple locus of $\operatorname{GL}_n$ is exactly the nonvanishing locus of the discriminant of its characteristic polynomial, and is dense over every algebraically closed field.
+
+**Solution.** If the roots are $a_i$, the discriminant is $\prod_{i<j}(a_i-a_j)^2$, a symmetric polynomial in them and thus a polynomial in the characteristic coefficients. It is nonzero precisely when all eigenvalues are distinct. A matrix with this property is diagonalizable, and Exercise 6.1 gives its torus centralizer. Conversely a semisimple matrix with repeated eigenvalues has larger centralizer, so is not regular semisimple. The polynomial does not vanish identically: choose distinct nonzero elements in the infinite algebraically closed field and take their diagonal matrix. Its nonvanishing locus in the irreducible variety $\operatorname{GL}_n$ is therefore open dense. No assertion that this locus has a rational point over every finite field is needed.
+
+The course prerequisite guide records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
+
+## References
+
+- [Milne’s freely accessible *Algebraic Groups*, version 2.00 (2015)](https://www.jmilne.org/math/CourseNotes/iAG200.pdf). This exact free author edition provides comparison material; its citations do not replace the programme proofs.
+- Brian Conrad, [*Reductive group schemes*](https://math.stanford.edu/~conrad/papers/luminysga3.pdf), 2014, §§1.1–1.2, 2.2 and 3.2. These references receive mathematical credit; the centralizer proof above is written out independently.
+- A. Grothendieck and the SGA 3 contributors, [*Schémas en groupes*](https://webusers.imj-prg.fr/~patrick.polo/SGA3/), Exposé XIII, Theorem 3.1 and Corollary 3.2, for the relative regular-section theorem and its convention; Exposé XIV for the applications to maximal tori.

@@ -1,0 +1,473 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Quasi-characters and Hecke characters</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/course.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="index.html">Course contents</a> · Lesson 6 of 12</nav><aside class="notice"><p>Author-self-checked draft. Independent programme review is pending.</p><p>Lessons 1 and 4, as revised adaptations: CC BY-NC-SA 4.0; their previously original CC0 components retain that dedication. Other original course text: CC0. The marked edge-stabilizer adaptation in lesson 11: CC BY 4.0. Source credits and changes appear in the lessons. Prerequisite snapshots retain their edition-specific notices. MathJax and font licences are retained in the assets folder.</p><p>The five separate prerequisites <a href="prerequisites/HA-LCA-02.md">HA-LCA-02</a>, <a href="prerequisites/HA-LCA-03.md">HA-LCA-03</a>, <a href="prerequisites/HA-LCA-09.md">HA-LCA-09</a>, <a href="prerequisites/HA-LCA-10.md">HA-LCA-10</a>, <a href="prerequisites/HA-LCA-11.md">HA-LCA-11</a> are Design Science License adaptations of D. H. Fremlin. Their exact editable lessons retain all human-source credits, copyright, adaptation, change and warranty notices. Their <a href="prerequisites/assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">full licence</a> and <span class="unlinked">unchanged author source package</span> are bundled. The archive retains all auxiliary notices. These separate components retain their own terms; independent NT-ADL lesson licences remain as stated.</p></aside><article class="lesson"><h1 id="quasi-characters-and-hecke-characters">Quasi-characters and Hecke characters</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Hecke character assigns compatible multiplicative data to all completions of a number field. The compatibility is the requirement that a diagonal nonzero field element have value one. This explains both the inverse on the ramified units of a Dirichlet character and the relation between an ideal character's infinity type and its actual archimedean idèlic component.</p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field, <span class="math" data-tex="\(J_K\)">\(J_K\)</span> its idèle group, and <span class="math" data-tex="\(C_K=J_K/K^\times\)">\(C_K=J_K/K^\times\)</span>. We use the normalized absolute values of <a href="NT-ADL-03.html">Idèles and the idèle class group</a>: at a finite place with residue cardinality <span class="math" data-tex="\(q_v\)">\(q_v\)</span>, <span class="math" data-tex="\(|\pi_v|_v=q_v^{-1}\)">\(|\pi_v|_v=q_v^{-1}\)</span>, and at a complex place <span class="math" data-tex="\(|z|_v=z\bar z\)">\(|z|_v=z\bar z\)</span>. Put <span class="math" data-tex="\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)">\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)</span>. A <strong>quasi-character</strong> has values in <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span>; a <strong>character</strong> has values in <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. Every homomorphism called a character or quasi-character here is continuous unless its domain is a discrete ideal group.</p>
+<p>We use weak approximation, compactness of <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span>, and the ray class identifications from the preceding lessons. Local unit filtrations and the decomposition of a finite local multiplicative group are the prerequisites stated under <em>Prerequisites and further directions</em>. The ideal comparison below follows the classical definition of a Größencharakter, as in [Shurman, Definition 2.2], with its conventions translated explicitly.</p>
+<h2 id="local-parameters-and-conductors">Local parameters and conductors</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a finite extension of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, with integral ring <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>, maximal ideal <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, and uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Define
+<span class="math math-display" data-tex="\[
+ U^{(0)}=\mathcal O_F^\times,\qquad
+ U^{(n)}=1+\mathfrak p^n\quad(n\geq1).
+ \tag{1}
+\]">\[
+ U^{(0)}=\mathcal O_F^\times,\qquad
+ U^{(n)}=1+\mathfrak p^n\quad(n\geq1).
+ \tag{1}
+\]</span>
+The value <span class="math" data-tex="\(n=0\)">\(n=0\)</span> is specified separately: <span class="math" data-tex="\(1+\mathcal O_F\)">\(1+\mathcal O_F\)</span> is not the definition of <span class="math" data-tex="\(U^{(0)}\)">\(U^{(0)}\)</span>.</p>
+<p><strong>Proposition 6.1.</strong> Every local quasi-character has the following form.</p>
+<ol>
+<li>Over <span class="math" data-tex="\(F\)">\(F\)</span>, choose <span class="math" data-tex="\(A\in\mathbb C^\times\)">\(A\in\mathbb C^\times\)</span> and a finite-image continuous character <span class="math" data-tex="\(\eta:\mathcal O_F^\times\to\mathbb T\)">\(\eta:\mathcal O_F^\times\to\mathbb T\)</span>. Then
+<span class="math math-display" data-tex="\[
+c(\pi^j u)=A^j\eta(u),\qquad j\in\mathbb Z,
+\quad u\in\mathcal O_F^\times,
+\tag{2}
+\]">\[
+c(\pi^j u)=A^j\eta(u),\qquad j\in\mathbb Z,
+\quad u\in\mathcal O_F^\times,
+\tag{2}
+\]</span>
+gives all quasi-characters, with unique parameters for the chosen <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Its conductor exponent is
+<span class="math math-display" data-tex="\[
+a(c)=\min\{n\geq0:c(U^{(n)})=1\}.
+\tag{3}
+\]">\[
+a(c)=\min\{n\geq0:c(U^{(n)})=1\}.
+\tag{3}
+\]</span>
+It is unramified exactly when <span class="math" data-tex="\(a(c)=0\)">\(a(c)=0\)</span>, equivalently when <span class="math" data-tex="\(c=|\cdot|_F^s\)">\(c=|\cdot|_F^s\)</span> for some <span class="math" data-tex="\(s\in\mathbb C\)">\(s\in\mathbb C\)</span>. Such an <span class="math" data-tex="\(s\)">\(s\)</span> is determined modulo <span class="math" data-tex="\(2\pi i/\log q\)">\(2\pi i/\log q\)</span>.</li>
+<li>Over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, the unique parameters are <span class="math" data-tex="\(\epsilon\in\{0,1\}\)">\(\epsilon\in\{0,1\}\)</span> and <span class="math" data-tex="\(s\in\mathbb C\)">\(s\in\mathbb C\)</span>, and
+<span class="math math-display" data-tex="\[
+c(x)=\operatorname{sgn}(x)^\epsilon |x|^s.
+\tag{4}
+\]">\[
+c(x)=\operatorname{sgn}(x)^\epsilon |x|^s.
+\tag{4}
+\]</span></li>
+<li>Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, the unique parameters are <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span> and <span class="math" data-tex="\(s\in\mathbb C\)">\(s\in\mathbb C\)</span>, and
+<span class="math math-display" data-tex="\[
+c(z)=\left(\frac{z}{|z|}\right)^n |z|_{\mathbb C}^s.
+\tag{5}
+\]">\[
+c(z)=\left(\frac{z}{|z|}\right)^n |z|_{\mathbb C}^s.
+\tag{5}
+\]</span>
+In <span class="math" data-tex="\(z/|z|\)">\(z/|z|\)</span>, the denominator is the ordinary complex modulus, so <span class="math" data-tex="\(|z|_{\mathbb C}=|z|^2\)">\(|z|_{\mathbb C}=|z|^2\)</span>.</li>
+</ol>
+<p>In all three cases there is a unique real number <span class="math" data-tex="\(\sigma(c)\)">\(\sigma(c)\)</span> such that
+<span class="math math-display" data-tex="\[
+ |c(x)|=|x|_F^{\sigma(c)}.
+ \tag{6}
+\]">\[
+ |c(x)|=|x|_F^{\sigma(c)}.
+ \tag{6}
+\]</span>
+Consequently <span class="math" data-tex="\(c=\omega|\cdot|_F^{\sigma(c)}\)">\(c=\omega|\cdot|_F^{\sigma(c)}\)</span> with a unique unitary <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. One may instead use a complex exponent <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(\operatorname{Re}s=\sigma(c)\)">\(\operatorname{Re}s=\sigma(c)\)</span>, absorbing its imaginary part into <span class="math" data-tex="\(\omega\)">\(\omega\)</span>; that decomposition is not unique.</p>
+<p><em>Proof.</em> We first record the small-neighborhood argument used several times below. The neighborhood
+<span class="math math-display" data-tex="\[
+ W=\{z\in\mathbb C^\times:1/2&lt;|z|&lt;2,
+                  \ |\arg z|&lt;\pi/2\}
+ \tag{7}
+\]">\[
+ W=\{z\in\mathbb C^\times:1/2&lt;|z|&lt;2,
+                  \ |\arg z|&lt;\pi/2\}
+ \tag{7}
+\]</span>
+contains no nontrivial subgroup. Indeed, all positive and negative powers of a subgroup element lie in <span class="math" data-tex="\(W\)">\(W\)</span>, forcing its modulus to be one. A nonidentity point of the circle has an integral power outside the indicated arc: represent its angle in <span class="math" data-tex="\((-\pi,\pi]\)">\((-\pi,\pi]\)</span>; if its absolute value is smaller than <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span>, the least positive multiple reaching <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span> has absolute value less than <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>The image of the compact group <span class="math" data-tex="\(\mathcal O_F^\times\)">\(\mathcal O_F^\times\)</span> under <span class="math" data-tex="\(|c|\)">\(|c|\)</span> is a compact subgroup of <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span>. Taking logarithms shows it is trivial, since a nonzero real number has unbounded multiples. Thus <span class="math" data-tex="\(\eta=c|_{\mathcal O_F^\times}\)">\(\eta=c|_{\mathcal O_F^\times}\)</span> is unitary. Continuity provides some <span class="math" data-tex="\(U^{(n)}\)">\(U^{(n)}\)</span> whose image lies in <span class="math" data-tex="\(W\)">\(W\)</span>, and the subgroup argument makes that image trivial. The finite quotient <span class="math" data-tex="\(\mathcal O_F^\times/U^{(n)}\)">\(\mathcal O_F^\times/U^{(n)}\)</span> then gives finite image. The topological decomposition <span class="math" data-tex="\(F^\times=\pi^{\mathbb Z}\times\mathcal O_F^\times\)">\(F^\times=\pi^{\mathbb Z}\times\mathcal O_F^\times\)</span> proves (2), its converse, and the existence of (3).</p>
+<p>If <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span>, choose <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(e^{-s\log q}=A\)">\(e^{-s\log q}=A\)</span>. Conversely a norm power is trivial on the units. Equality of two exponents is equivalent to <span class="math" data-tex="\(e^{-(s-s&#x27;)\log q}=1\)">\(e^{-(s-s&#x27;)\log q}=1\)</span>, giving the stated period. Taking
+<span class="math math-display" data-tex="\[
+ \sigma(c)=-\frac{\log|A|}{\log q}
+ \tag{8}
+\]">\[
+ \sigma(c)=-\frac{\log|A|}{\log q}
+ \tag{8}
+\]</span>
+proves (6) in the finite case.</p>
+<p>A continuous homomorphism <span class="math" data-tex="\(h:(\mathbb R,+)\to\mathbb C^\times\)">\(h:(\mathbb R,+)\to\mathbb C^\times\)</span> has the form <span class="math" data-tex="\(h(t)=e^{(a+ib)t}\)">\(h(t)=e^{(a+ib)t}\)</span>, for unique real <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. To see this, <span class="math" data-tex="\(\log|h(t)|\)">\(\log|h(t)|\)</span> is continuous additive, hence equals <span class="math" data-tex="\(at\)">\(at\)</span>, first on rational multiples of a fixed real argument and then by continuity. For the unitary part, choose a continuous argument near zero. On a sufficiently small interval the homomorphism law makes that argument additive, because the discrepancy is an integral multiple of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, continuous and zero at the origin. It is therefore <span class="math" data-tex="\(bt\)">\(bt\)</span> there; subdivision extends the formula to every <span class="math" data-tex="\(t\)">\(t\)</span>. Uniqueness follows by varying <span class="math" data-tex="\(t\)">\(t\)</span> over an interval.</p>
+<p>Apply this to <span class="math" data-tex="\(t\mapsto c(e^t)\)">\(t\mapsto c(e^t)\)</span>. Since <span class="math" data-tex="\(c(-1)^2=1\)">\(c(-1)^2=1\)</span>, the decomposition <span class="math" data-tex="\(\mathbb R^\times=\{\pm1\}\times\mathbb R_{&gt;0}\)">\(\mathbb R^\times=\{\pm1\}\times\mathbb R_{&gt;0}\)</span> gives (4). For <span class="math" data-tex="\(\mathbb C^\times=\mathbb T\times\mathbb R_{&gt;0}\)">\(\mathbb C^\times=\mathbb T\times\mathbb R_{&gt;0}\)</span>, compactness again makes the restriction to the circle unitary. Pulled back along <span class="math" data-tex="\(t\mapsto e^{it}\)">\(t\mapsto e^{it}\)</span>, that restriction is <span class="math" data-tex="\(e^{ibt}\)">\(e^{ibt}\)</span>; period <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> forces <span class="math" data-tex="\(b\in\mathbb Z\)">\(b\in\mathbb Z\)</span>. The radial homomorphism is <span class="math" data-tex="\(r\mapsto r^{2s}\)">\(r\mapsto r^{2s}\)</span>. This proves (5) and uniqueness. Taking real parts proves (6), and division by that norm power gives the unique unitary factor. ∎</p>
+<p>Finite-order archimedean characters are especially simple. Connectedness of <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span> and <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> makes their image in a finite group trivial. Thus they are sign characters at real places and trivial at complex places. The integer <span class="math" data-tex="\(n\)">\(n\)</span> in (5) is an angular parameter, not a finite conductor exponent.</p>
+<h2 id="a-global-character-and-its-local-restrictions">A global character and its local restrictions</h2>
+<p>For a place <span class="math" data-tex="\(v\)">\(v\)</span>, let <span class="math" data-tex="\(j_v:K_v^\times\to J_K\)">\(j_v:K_v^\times\to J_K\)</span> insert its argument at <span class="math" data-tex="\(v\)">\(v\)</span> and one elsewhere. Define <span class="math" data-tex="\(c_v=c\circ j_v\)">\(c_v=c\circ j_v\)</span>.</p>
+<p><strong>Proposition 6.2.</strong> A quasi-character <span class="math" data-tex="\(c\)">\(c\)</span> of <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is uniquely a product
+<span class="math math-display" data-tex="\[
+ c(x)=\prod_v c_v(x_v),
+ \qquad c_v|_{\mathcal O_v^\times}=1
+       \text{ for almost every finite }v.
+ \tag{9}
+\]">\[
+ c(x)=\prod_v c_v(x_v),
+ \qquad c_v|_{\mathcal O_v^\times}=1
+       \text{ for almost every finite }v.
+ \tag{9}
+\]</span>
+Conversely any such family defines a continuous quasi-character of <span class="math" data-tex="\(J_K\)">\(J_K\)</span>. It is a Hecke quasi-character precisely when the product is one on every diagonal <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>.</p>
+<p>Every Hecke quasi-character has a unique decomposition
+<span class="math math-display" data-tex="\[
+ c(x)=\omega(x)|x|^{\sigma},\qquad
+ \sigma\in\mathbb R,
+ \tag{10}
+\]">\[
+ c(x)=\omega(x)|x|^{\sigma},\qquad
+ \sigma\in\mathbb R,
+ \tag{10}
+\]</span>
+with <span class="math" data-tex="\(\omega\)">\(\omega\)</span> a unitary Hecke character. In particular it can be written <span class="math" data-tex="\(\omega_s|\cdot|^s\)">\(\omega_s|\cdot|^s\)</span> for any <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(\operatorname{Re}s=\sigma\)">\(\operatorname{Re}s=\sigma\)</span>.</p>
+<p><em>Proof.</em> Continuity at one and (7) give a basic restricted-product neighborhood whose image lies in <span class="math" data-tex="\(W\)">\(W\)</span>. Outside a finite set <span class="math" data-tex="\(S\)">\(S\)</span> of places, that neighborhood contains the entire subgroup
+<span class="math math-display" data-tex="\[
+ H_S=\prod_{v\notin S}\mathcal O_v^\times,
+ \tag{11}
+\]">\[
+ H_S=\prod_{v\notin S}\mathcal O_v^\times,
+ \tag{11}
+\]</span>
+embedded with coordinates one on <span class="math" data-tex="\(S\)">\(S\)</span>. Consequently <span class="math" data-tex="\(c(H_S)=1\)">\(c(H_S)=1\)</span>. This proves almost-all unramifiedness and, more strongly, triviality on the whole compact tail. Given <span class="math" data-tex="\(x\)">\(x\)</span>, enlarge <span class="math" data-tex="\(S\)">\(S\)</span> to contain its nonunit coordinates. The idèle splits into finitely many supported local factors and an element of <span class="math" data-tex="\(H_S\)">\(H_S\)</span>, proving (9). This also proves uniqueness. Conversely (9) is a finite product on each open restricted-product chart containing all exceptional places. It is continuous on that chart and hence on <span class="math" data-tex="\(J_K\)">\(J_K\)</span>. Triviality on <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span> is exactly the condition for descent through the quotient map to <span class="math" data-tex="\(C_K\)">\(C_K\)</span>.</p>
+<p>Now suppose <span class="math" data-tex="\(c\)">\(c\)</span> descends to <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. Its absolute value on compact <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span> is a compact subgroup of <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span>, hence trivial. The norm therefore induces a homomorphism <span class="math" data-tex="\(|c|:\mathbb R_{&gt;0}\to\mathbb R_{&gt;0}\)">\(|c|:\mathbb R_{&gt;0}\to\mathbb R_{&gt;0}\)</span>. It is continuous: the norm has the continuous section constructed in Proposition 3.5. Its logarithm is continuous additive and equals <span class="math" data-tex="\(\sigma\log t\)">\(\sigma\log t\)</span>. Thus <span class="math" data-tex="\(|c(x)|=|x|^\sigma\)">\(|c(x)|=|x|^\sigma\)</span>. The norm is onto, so <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is unique. The product formula makes <span class="math" data-tex="\(|\cdot|^\sigma\)">\(|\cdot|^\sigma\)</span> trivial on <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>, and division proves (10). Finally set <span class="math" data-tex="\(\omega_s=\omega|\cdot|^{\sigma-s}\)">\(\omega_s=\omega|\cdot|^{\sigma-s}\)</span>, a unitary character whenever <span class="math" data-tex="\(\operatorname{Re}s=\sigma\)">\(\operatorname{Re}s=\sigma\)</span>. ∎</p>
+<p>All local absolute-value exponents of a Hecke quasi-character equal this same <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>: apply (10) to a supported idèle. This equality is a global consequence of compactness, rather than a condition one may omit when assembling arbitrary local quasi-characters.</p>
+<p>Its <strong>finite conductor</strong> is the integral ideal
+<span class="math math-display" data-tex="\[
+ \mathfrak f(c)=\prod_{v\nmid\infty}\mathfrak p_v^{a(c_v)}.
+ \tag{12}
+\]">\[
+ \mathfrak f(c)=\prod_{v\nmid\infty}\mathfrak p_v^{a(c_v)}.
+ \tag{12}
+\]</span>
+Only finitely many factors are nontrivial. Norm twists do not change it. For an integral ideal <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, write
+<span class="math math-display" data-tex="\[
+ U_f(\mathfrak m)=\prod_{v\mid\infty}\{1\}
+          \times\prod_{v\nmid\infty}U_v^{(\operatorname{ord}_v\mathfrak m)}.
+ \tag{13}
+\]">\[
+ U_f(\mathfrak m)=\prod_{v\mid\infty}\{1\}
+          \times\prod_{v\nmid\infty}U_v^{(\operatorname{ord}_v\mathfrak m)}.
+ \tag{13}
+\]</span>
+Then <span class="math" data-tex="\(c(U_f(\mathfrak m))=1\)">\(c(U_f(\mathfrak m))=1\)</span> if and only if <span class="math" data-tex="\(\mathfrak f(c)\mid\mathfrak m\)">\(\mathfrak f(c)\mid\mathfrak m\)</span>. Necessity follows from the supported unit groups. For sufficiency, (9) makes the value on any element of (13) a finite product of values one. This finite-conductor subgroup has archimedean coordinates one; it must be distinguished from a ray subgroup that includes archimedean identity components.</p>
+<h2 id="from-ideals-to-idèles-with-the-inverse-fixed">From ideals to idèles, with the inverse fixed</h2>
+<p>Let <span class="math" data-tex="\(I^{\mathfrak m}\)">\(I^{\mathfrak m}\)</span> be the group of fractional ideals having valuation zero at primes dividing <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. Let
+<span class="math math-display" data-tex="\[
+ B_f(\mathfrak m)=(\mathcal O_K/\mathfrak m)^\times,
+ \qquad K^{(\mathfrak m)}=
+ \{a\in K^\times:\operatorname{ord}_v(a)=0\text{ for }v\mid\mathfrak m\}.
+ \tag{14}
+\]">\[
+ B_f(\mathfrak m)=(\mathcal O_K/\mathfrak m)^\times,
+ \qquad K^{(\mathfrak m)}=
+ \{a\in K^\times:\operatorname{ord}_v(a)=0\text{ for }v\mid\mathfrak m\}.
+ \tag{14}
+\]</span>
+For <span class="math" data-tex="\(a\in K^{(\mathfrak m)}\)">\(a\in K^{(\mathfrak m)}\)</span>, its residue in <span class="math" data-tex="\(B_f(\mathfrak m)\)">\(B_f(\mathfrak m)\)</span> is defined by the local unit residues and the Chinese remainder theorem. This includes fractions whose denominator is coprime to <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>.</p>
+<p>A <strong>Größencharakter modulo <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span></strong> is a homomorphism <span class="math" data-tex="\(\chi:I^{\mathfrak m}\to\mathbb T\)">\(\chi:I^{\mathfrak m}\to\mathbb T\)</span> for which there are characters <span class="math" data-tex="\(\chi_f:B_f(\mathfrak m)\to\mathbb T\)">\(\chi_f:B_f(\mathfrak m)\to\mathbb T\)</span> and <span class="math" data-tex="\(\chi_\infty:K_\infty^\times\to\mathbb T\)">\(\chi_\infty:K_\infty^\times\to\mathbb T\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ \chi((a))=\chi_f(a)\chi_\infty(a)
+ \quad(a\in K^{(\mathfrak m)}).
+ \tag{15}
+\]">\[
+ \chi((a))=\chi_f(a)\chi_\infty(a)
+ \quad(a\in K^{(\mathfrak m)}).
+ \tag{15}
+\]</span>
+Here <span class="math" data-tex="\(K_\infty^\times=\prod_{v\mid\infty}K_v^\times\)">\(K_\infty^\times=\prod_{v\mid\infty}K_v^\times\)</span>. The identity for coprime integral <span class="math" data-tex="\(a\)">\(a\)</span> already implies (15) for fractions, by dividing the two identities.</p>
+<p><strong>Theorem 6.3.</strong> Größencharaktere modulo <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> correspond bijectively to unitary Hecke characters <span class="math" data-tex="\(\omega\)">\(\omega\)</span> with <span class="math" data-tex="\(\mathfrak f(\omega)\mid\mathfrak m\)">\(\mathfrak f(\omega)\mid\mathfrak m\)</span>, under the normalization
+<span class="math math-display" data-tex="\[
+ \chi(\mathfrak p_v)=\omega_v(\pi_v)
+                  \quad(v\nmid\mathfrak m\infty).
+ \tag{16}
+\]">\[
+ \chi(\mathfrak p_v)=\omega_v(\pi_v)
+                  \quad(v\nmid\mathfrak m\infty).
+ \tag{16}
+\]</span>
+The auxiliary characters in (15) are uniquely determined by <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. In this correspondence
+<span class="math math-display" data-tex="\[
+ \chi_f=\left(\omega\big|_{\prod_{v\mid\mathfrak m}\mathcal O_v^\times}\right)^{-1},
+ \qquad \chi_\infty=\omega_\infty^{-1},
+ \tag{17}
+\]">\[
+ \chi_f=\left(\omega\big|_{\prod_{v\mid\mathfrak m}\mathcal O_v^\times}\right)^{-1},
+ \qquad \chi_\infty=\omega_\infty^{-1},
+ \tag{17}
+\]</span>
+where the first restriction factors through <span class="math" data-tex="\(B_f(\mathfrak m)\)">\(B_f(\mathfrak m)\)</span>. Finite conductor exponents agree. The conductor is the smallest finite modulus to which the ideal character extends with the same infinity type.</p>
+<p>The inverse in (17) is also the convention in Shurman, §6: the classical formula on principal ideals uses the inverse of the infinite component of the corresponding idèlic character. Thus the auxiliary ideal infinity type and the actual idèlic infinity type are inverse characters. Equation (18) below derives that inversion directly from diagonal triviality, so it also fixes the finite unit convention for Dirichlet characters.</p>
+<p><em>Proof.</em> Given <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, define <span class="math" data-tex="\(\chi\)">\(\chi\)</span> multiplicatively by (16). At these places <span class="math" data-tex="\(\omega_v\)">\(\omega_v\)</span> is unramified, so the value is independent of the uniformizer. Formula (13) ensures the restriction in (17) factors through the residue group. For diagonal <span class="math" data-tex="\(a\in K^{(\mathfrak m)}\)">\(a\in K^{(\mathfrak m)}\)</span>, (9) and <span class="math" data-tex="\(\omega(a)=1\)">\(\omega(a)=1\)</span> give
+<span class="math math-display" data-tex="\[
+ 1=\chi((a))\prod_{v\mid\mathfrak m}\omega_v(a)
+                           \prod_{v\mid\infty}\omega_v(a).
+ \tag{18}
+\]">\[
+ 1=\chi((a))\prod_{v\mid\mathfrak m}\omega_v(a)
+                           \prod_{v\mid\infty}\omega_v(a).
+ \tag{18}
+\]</span>
+Rearrangement gives (15) and (17).</p>
+<p>To prove uniqueness of <span class="math" data-tex="\(\chi_f,\chi_\infty\)">\(\chi_f,\chi_\infty\)</span>, divide two candidate pairs. Their product is one on the image of <span class="math" data-tex="\(K^{(\mathfrak m)}\)">\(K^{(\mathfrak m)}\)</span> in <span class="math" data-tex="\(B_f(\mathfrak m)\times K_\infty^\times\)">\(B_f(\mathfrak m)\times K_\infty^\times\)</span>. That image is dense: prescribe any unit residue at the finitely many primes dividing <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> and any sufficiently small neighborhoods of nonzero archimedean targets; weak approximation supplies an element meeting all of them. Continuity makes the quotient character trivial on the whole product. Testing each factor gives uniqueness separately.</p>
+<p>Conversely suppose (15) holds. Use the open subgroup
+<span class="math math-display" data-tex="\[
+ H^{(\mathfrak m)}=K_\infty^\times
+      \times\prod_{v\mid\mathfrak m}\mathcal O_v^\times
+      \times\prod_{v\nmid\mathfrak m\infty}&#x27;K_v^\times
+ \tag{19}
+\]">\[
+ H^{(\mathfrak m)}=K_\infty^\times
+      \times\prod_{v\mid\mathfrak m}\mathcal O_v^\times
+      \times\prod_{v\nmid\mathfrak m\infty}&#x27;K_v^\times
+ \tag{19}
+\]</span>
+of <span class="math" data-tex="\(J_K\)">\(J_K\)</span>, with the usual integral unit subgroups in the last restricted product. For <span class="math" data-tex="\(x\in H^{(\mathfrak m)}\)">\(x\in H^{(\mathfrak m)}\)</span>, put
+<span class="math math-display" data-tex="\[
+ \mathfrak a(x)=\prod_{v\nmid\mathfrak m\infty}
+                       \mathfrak p_v^{\operatorname{ord}_v(x_v)},\qquad
+ b(x)=(x_v\bmod\mathfrak p_v^{\operatorname{ord}_v\mathfrak m})_{v\mid\mathfrak m},
+\]">\[
+ \mathfrak a(x)=\prod_{v\nmid\mathfrak m\infty}
+                       \mathfrak p_v^{\operatorname{ord}_v(x_v)},\qquad
+ b(x)=(x_v\bmod\mathfrak p_v^{\operatorname{ord}_v\mathfrak m})_{v\mid\mathfrak m},
+\]</span>
+and define
+<span class="math math-display" data-tex="\[
+ \omega_H(x)=\chi(\mathfrak a(x))
+                 \chi_f(b(x))^{-1}\chi_\infty(x_\infty)^{-1}.
+ \tag{20}
+\]">\[
+ \omega_H(x)=\chi(\mathfrak a(x))
+                 \chi_f(b(x))^{-1}\chi_\infty(x_\infty)^{-1}.
+ \tag{20}
+\]</span>
+The ideal map is continuous to a discrete group: its fibers are translates of the open subgroup with every finite coordinate a unit. The residue map is continuous to a finite group. Thus (20) is a continuous unitary homomorphism. On <span class="math" data-tex="\(H^{(\mathfrak m)}\cap K^\times=K^{(\mathfrak m)}\)">\(H^{(\mathfrak m)}\cap K^\times=K^{(\mathfrak m)}\)</span>, (15) makes it one.</p>
+<p>Weak approximation gives <span class="math" data-tex="\(J_K=H^{(\mathfrak m)}K^\times\)">\(J_K=H^{(\mathfrak m)}K^\times\)</span>. For each <span class="math" data-tex="\(x\in J_K\)">\(x\in J_K\)</span>, choose <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> with <span class="math" data-tex="\(\operatorname{ord}_v(a)=\operatorname{ord}_v(x_v)\)">\(\operatorname{ord}_v(a)=\operatorname{ord}_v(x_v)\)</span> at all <span class="math" data-tex="\(v\mid\mathfrak m\)">\(v\mid\mathfrak m\)</span>; then <span class="math" data-tex="\(h=x/a\in H^{(\mathfrak m)}\)">\(h=x/a\in H^{(\mathfrak m)}\)</span>. Set <span class="math" data-tex="\(\omega(x)=\omega_H(h)\)">\(\omega(x)=\omega_H(h)\)</span>. Two choices have ratio in <span class="math" data-tex="\(H^{(\mathfrak m)}\cap K^\times\)">\(H^{(\mathfrak m)}\cap K^\times\)</span>, so this is well-defined. Multiplying decompositions proves multiplicativity and triviality on <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>. On every open coset of <span class="math" data-tex="\(H^{(\mathfrak m)}\)">\(H^{(\mathfrak m)}\)</span>, the extension is a translate of <span class="math" data-tex="\(\omega_H\)">\(\omega_H\)</span>, so it is continuous. Formula (20) gives (16), (17), and triviality on (13). The two constructions agree on <span class="math" data-tex="\(H^{(\mathfrak m)}\)">\(H^{(\mathfrak m)}\)</span> and on <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>, proving they are inverse.</p>
+<p>By the Chinese remainder theorem, <span class="math" data-tex="\(\chi_f\)">\(\chi_f\)</span> is a product of characters of <span class="math" data-tex="\((\mathcal O_v/\mathfrak p_v^{e_v})^\times\)">\((\mathcal O_v/\mathfrak p_v^{e_v})^\times\)</span>. The least <span class="math" data-tex="\(n\in\{0,\ldots,e_v\}\)">\(n\in\{0,\ldots,e_v\}\)</span> through which its <span class="math" data-tex="\(v\)">\(v\)</span>-factor descends is exactly the least <span class="math" data-tex="\(n\)">\(n\)</span> for which <span class="math" data-tex="\(\omega_v(U_v^{(n)})=1\)">\(\omega_v(U_v^{(n)})=1\)</span>, because those restrictions are inverses. Their exponents therefore match. Removing excess prime powers, or an entire prime with exponent zero, is possible by applying the first construction to the same <span class="math" data-tex="\(\omega\)">\(\omega\)</span> at its smaller conductor. Conversely any such ideal extension gives the same <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, by the proved uniqueness on (19) and <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>, so its modulus is divisible by (12). ∎</p>
+<p>In particular the pair <span class="math" data-tex="\((\chi_f,\chi_\infty)\)">\((\chi_f,\chi_\infty)\)</span> necessarily satisfies
+<span class="math math-display" data-tex="\[
+ \chi_f(\varepsilon)\chi_\infty(\varepsilon)=1
+                  \quad(\varepsilon\in\mathcal O_K^\times).
+ \tag{21}
+\]">\[
+ \chi_f(\varepsilon)\chi_\infty(\varepsilon)=1
+                  \quad(\varepsilon\in\mathcal O_K^\times).
+ \tag{21}
+\]</span>
+This is also sufficient for a pair to occur. Indeed it makes <span class="math" data-tex="\((a)\mapsto\chi_f(a)\chi_\infty(a)\)">\((a)\mapsto\chi_f(a)\chi_\infty(a)\)</span> a well-defined character of the principal ideals in <span class="math" data-tex="\(I^{\mathfrak m}\)">\(I^{\mathfrak m}\)</span>. Their quotient in <span class="math" data-tex="\(I^{\mathfrak m}\)">\(I^{\mathfrak m}\)</span> is the ordinary class group, finite by Corollary 3.4 and the coprime-representative argument in Proposition 4.3. A character of a subgroup with finite quotient extends to the whole abelian group with values in <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>: adjoin a lift <span class="math" data-tex="\(g\)">\(g\)</span> of a quotient generator, let <span class="math" data-tex="\(d\)">\(d\)</span> be its order modulo the subgroup, choose a <span class="math" data-tex="\(d\)">\(d\)</span>-th root of the prescribed value on <span class="math" data-tex="\(g^d\)">\(g^d\)</span>, and define the value on <span class="math" data-tex="\(hg^j\)">\(hg^j\)</span> multiplicatively. The only relation to check is <span class="math" data-tex="\(g^d\)">\(g^d\)</span> in the subgroup, which the chosen root satisfies. Finitely many adjoining steps finish the extension. Different extensions can differ by class group characters.</p>
+<h2 id="finite-order-and-the-rational-case">Finite order and the rational case</h2>
+<p>For a modulus <span class="math" data-tex="\(\mathfrak m=\mathfrak m_f\mathfrak m_\infty\)">\(\mathfrak m=\mathfrak m_f\mathfrak m_\infty\)</span>, with <span class="math" data-tex="\(\mathfrak m_\infty\)">\(\mathfrak m_\infty\)</span> a set of real places, retain the ray subgroup <span class="math" data-tex="\(U_{\mathfrak m}\)">\(U_{\mathfrak m}\)</span> of Theorem 4.2: its archimedean factor is <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span> at selected real places, all of <span class="math" data-tex="\(\mathbb R^\times\)">\(\mathbb R^\times\)</span> at other real places, and all of <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> at complex places. Its finite factor is that of (13).</p>
+<p><strong>Proposition 6.4.</strong> The finite-order Hecke characters are exactly the pullbacks of characters of ray class groups
+<span class="math math-display" data-tex="\[
+ C_K/(U_{\mathfrak m}K^\times/K^\times)
+           \simeq\operatorname{Cl}_{\mathfrak m}(K).
+ \tag{22}
+\]">\[
+ C_K/(U_{\mathfrak m}K^\times/K^\times)
+           \simeq\operatorname{Cl}_{\mathfrak m}(K).
+ \tag{22}
+\]</span>
+Their smallest ray modulus consists of the finite conductor (12) and exactly the real places where the local sign character is nontrivial.</p>
+<p>For <span class="math" data-tex="\(K=\mathbb Q\)">\(K=\mathbb Q\)</span>, primitive Dirichlet characters <span class="math" data-tex="\(\chi\)">\(\chi\)</span> correspond bijectively to finite-order Hecke characters <span class="math" data-tex="\(\omega_\chi\)">\(\omega_\chi\)</span>, normalized by
+<span class="math math-display" data-tex="\[
+ \omega_\chi(j_\ell(\ell))=\chi(\ell)\quad(\ell\nmid m),
+ \qquad \omega_{\chi,\infty}=\operatorname{sgn}^{\epsilon},
+ \quad \chi(-1)=(-1)^\epsilon,
+ \tag{23}
+\]">\[
+ \omega_\chi(j_\ell(\ell))=\chi(\ell)\quad(\ell\nmid m),
+ \qquad \omega_{\chi,\infty}=\operatorname{sgn}^{\epsilon},
+ \quad \chi(-1)=(-1)^\epsilon,
+ \tag{23}
+\]</span>
+and by triviality on <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span>. On the finite unit factors at primes dividing <span class="math" data-tex="\(m\)">\(m\)</span>, its restriction is <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span>. Its finite conductor is the primitive Dirichlet conductor <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><em>Proof.</em> A finite-order character has finite image, so its kernel is open: choose a neighborhood of one excluding all other image points. Proposition 4.4 places a ray subgroup in that kernel, giving (22). Conversely ray class groups are finite by Proposition 4.3, so their characters have finite order.</p>
+<p>More precisely, Proposition 6.1 shows that a finite-order character is trivial on archimedean identity components. At a real place it is either one or the sign, and at a complex place it is one. Formula (9) then proves that it kills <span class="math" data-tex="\(U_{\mathfrak m}\)">\(U_{\mathfrak m}\)</span> exactly when its finite conductor divides <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> and every nontrivial real sign occurs in <span class="math" data-tex="\(\mathfrak m_\infty\)">\(\mathfrak m_\infty\)</span>. Necessity follows by supported factors; sufficiency follows from the entire product formula. This proves the minimality assertion.</p>
+<p>For <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, Proposition 3.6 gives <span class="math" data-tex="\(C_{\mathbb Q}=\mathbb R_{&gt;0}\times\widehat{\mathbb Z}^{\times}\)">\(C_{\mathbb Q}=\mathbb R_{&gt;0}\times\widehat{\mathbb Z}^{\times}\)</span>. Explicitly, for an idèle <span class="math" data-tex="\(x\)">\(x\)</span>, put
+<span class="math math-display" data-tex="\[
+ q_x=\operatorname{sgn}(x_\infty)\prod_p p^{\operatorname{ord}_p(x_p)},
+ \quad t_x=x_\infty/q_x&gt;0,
+ \quad u_{x,p}=x_p/q_x\in\mathbb Z_p^\times.
+ \tag{24}
+\]">\[
+ q_x=\operatorname{sgn}(x_\infty)\prod_p p^{\operatorname{ord}_p(x_p)},
+ \quad t_x=x_\infty/q_x&gt;0,
+ \quad u_{x,p}=x_p/q_x\in\mathbb Z_p^\times.
+ \tag{24}
+\]</span>
+The product is finite. Multiplication by a diagonal rational number does not change <span class="math" data-tex="\((t_x,u_x)\)">\((t_x,u_x)\)</span>. Define
+<span class="math math-display" data-tex="\[
+ \omega_\chi(x)=\chi(u_x\bmod m)^{-1}.
+ \tag{25}
+\]">\[
+ \omega_\chi(x)=\chi(u_x\bmod m)^{-1}.
+ \tag{25}
+\]</span>
+This is a continuous finite-order character and trivial on diagonal rationals. At <span class="math" data-tex="\(j_\ell(\ell)\)">\(j_\ell(\ell)\)</span>, for <span class="math" data-tex="\(\ell\nmid m\)">\(\ell\nmid m\)</span>, one has <span class="math" data-tex="\(q_x=\ell\)">\(q_x=\ell\)</span> and <span class="math" data-tex="\(u_x\bmod m=\ell^{-1}\)">\(u_x\bmod m=\ell^{-1}\)</span>, proving the first formula in (23). A supported positive real coordinate changes only <span class="math" data-tex="\(t_x\)">\(t_x\)</span>; a negative one has <span class="math" data-tex="\(q_x=-1\)">\(q_x=-1\)</span> and residue <span class="math" data-tex="\(-1\)">\(-1\)</span>, proving the second formula. A supported finite unit changes exactly that unit coordinate, giving the inverse restriction.</p>
+<p>For completeness these conditions determine the ramified uniformizer values too. Factor the Dirichlet character by the Chinese remainder theorem as
+<span class="math math-display" data-tex="\[
+ \chi=\prod_{p\mid m}\chi_p,
+ \qquad \chi_p:(\mathbb Z/p^{e_p}\mathbb Z)^\times\to\mathbb T.
+ \tag{26}
+\]">\[
+ \chi=\prod_{p\mid m}\chi_p,
+ \qquad \chi_p:(\mathbb Z/p^{e_p}\mathbb Z)^\times\to\mathbb T.
+ \tag{26}
+\]</span>
+At <span class="math" data-tex="\(p\mid m\)">\(p\mid m\)</span>, for <span class="math" data-tex="\(x_p=p^j u\)">\(x_p=p^j u\)</span>, (24) gives <span class="math" data-tex="\(q_x=p^j\)">\(q_x=p^j\)</span>, unit coordinate <span class="math" data-tex="\(u\)">\(u\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span>, and unit <span class="math" data-tex="\(p^{-j}\)">\(p^{-j}\)</span> at every other prime dividing <span class="math" data-tex="\(m\)">\(m\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ \omega_{\chi,p}(p^j u)=
+       \left(\prod_{r\mid m,\ r\ne p}\chi_r(p)\right)^j
+                                      \chi_p(u)^{-1}.
+ \tag{27}
+\]">\[
+ \omega_{\chi,p}(p^j u)=
+       \left(\prod_{r\mid m,\ r\ne p}\chi_r(p)\right)^j
+                                      \chi_p(u)^{-1}.
+ \tag{27}
+\]</span>
+At <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>, the formula is instead <span class="math" data-tex="\(\omega_{\chi,p}(p^j u)=\chi(p)^j\)">\(\omega_{\chi,p}(p^j u)=\chi(p)^j\)</span>. Thus ramified uniformizers need not all have value one. Their unit conductors are the least exponents through which <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span> factors, so the product of their prime powers is <span class="math" data-tex="\(m\)">\(m\)</span> when <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is primitive.</p>
+<p>Conversely a finite-order character of <span class="math" data-tex="\(C_{\mathbb Q}\)">\(C_{\mathbb Q}\)</span> kills the connected factor <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span>. Its restriction to <span class="math" data-tex="\(\widehat{\mathbb Z}^{\times}\)">\(\widehat{\mathbb Z}^{\times}\)</span> has open kernel and hence contains
+<span class="math math-display" data-tex="\[
+ V_m=\prod_{p\mid m}(1+p^{e_p}\mathbb Z_p)
+                \times\prod_{p\nmid m}\mathbb Z_p^\times
+ \tag{28}
+\]">\[
+ V_m=\prod_{p\mid m}(1+p^{e_p}\mathbb Z_p)
+                \times\prod_{p\nmid m}\mathbb Z_p^\times
+ \tag{28}
+\]</span>
+for some <span class="math" data-tex="\(m\)">\(m\)</span>, with the displayed factors interpreted as the units congruent to one. Reduction identifies the quotient with <span class="math" data-tex="\((\mathbb Z/m\mathbb Z)^\times\)">\((\mathbb Z/m\mathbb Z)^\times\)</span>. The inverse of its quotient character is <span class="math" data-tex="\(\chi\)">\(\chi\)</span> in (25). At each prime choose the least possible exponent; (26) then produces the unique primitive Dirichlet character. This includes the trivial character of conductor one and the absence of a primitive nontrivial character of conductor two. ∎</p>
+<p>For example, if <span class="math" data-tex="\(p\)">\(p\)</span> is odd and <span class="math" data-tex="\(\chi(a)=(a/p)\)">\(\chi(a)=(a/p)\)</span> is the Legendre symbol, (27) becomes
+<span class="math math-display" data-tex="\[
+ \omega_{\chi,p}(p^j u)=\left(\frac{\bar u}{p}\right),\qquad
+ \omega_{\chi,\ell}(\ell)=\left(\frac{\ell}{p}\right)\ (\ell\ne p),\qquad
+ \omega_{\chi,\infty}=\operatorname{sgn}^{(p-1)/2\bmod2}.
+ \tag{29}
+\]">\[
+ \omega_{\chi,p}(p^j u)=\left(\frac{\bar u}{p}\right),\qquad
+ \omega_{\chi,\ell}(\ell)=\left(\frac{\ell}{p}\right)\ (\ell\ne p),\qquad
+ \omega_{\chi,\infty}=\operatorname{sgn}^{(p-1)/2\bmod2}.
+ \tag{29}
+\]</span>
+The parity in (29) can be checked directly. Pairing each nonzero residue with its inverse shows that <span class="math" data-tex="\((p-1)!\equiv-1\pmod p\)">\((p-1)!\equiv-1\pmod p\)</span>, since only <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> are their own inverses. Pairing <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(p-a\)">\(p-a\)</span> then gives <span class="math" data-tex="\(((p-1)/2)!^2\equiv(-1)^{(p+1)/2}\)">\(((p-1)/2)!^2\equiv(-1)^{(p+1)/2}\)</span>. If <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span>, this exhibits a square root of <span class="math" data-tex="\(-1\)">\(-1\)</span>. If <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span>, a square root <span class="math" data-tex="\(b\)">\(b\)</span> would give <span class="math" data-tex="\(b^{p-1}=(-1)^{(p-1)/2}=-1\)">\(b^{p-1}=(-1)^{(p-1)/2}=-1\)</span>, contradicting Lagrange's theorem in the multiplicative group of the finite field. Thus <span class="math" data-tex="\(\chi(-1)=(-1)^{(p-1)/2}\)">\(\chi(-1)=(-1)^{(p-1)/2}\)</span>.</p>
+<p>The inverse on the units is invisible for this quadratic character, but remains essential for higher-order Dirichlet characters. For a concrete composite example, modulo <span class="math" data-tex="\(15\)">\(15\)</span> take the nontrivial quadratic <span class="math" data-tex="\(\chi_3\)">\(\chi_3\)</span> and the character <span class="math" data-tex="\(\chi_5\)">\(\chi_5\)</span> with <span class="math" data-tex="\(\chi_5(2)=i\)">\(\chi_5(2)=i\)</span>. Since <span class="math" data-tex="\(2\)">\(2\)</span> has order four modulo <span class="math" data-tex="\(5\)">\(5\)</span>, this defines <span class="math" data-tex="\(\chi_5\)">\(\chi_5\)</span>. Both factors are primitive, so their product has conductor <span class="math" data-tex="\(15\)">\(15\)</span>. Formula (27) gives
+<span class="math math-display" data-tex="\[
+ \omega_{\chi,3}(3)=\chi_5(3)=-i,
+ \qquad \omega_{\chi,5}(5)=\chi_3(5)=-1.
+ \tag{30}
+\]">\[
+ \omega_{\chi,3}(3)=\chi_5(3)=-i,
+ \qquad \omega_{\chi,5}(5)=\chi_3(5)=-1.
+ \tag{30}
+\]</span>
+Here <span class="math" data-tex="\(\chi(-1)=(-1)(-1)=1\)">\(\chi(-1)=(-1)(-1)=1\)</span>, so the real component is trivial. On diagonal <span class="math" data-tex="\(3\)">\(3\)</span>, the other ramified local value is <span class="math" data-tex="\(\chi_5(3)^{-1}=i\)">\(\chi_5(3)^{-1}=i\)</span>, canceling <span class="math" data-tex="\(-i\)">\(-i\)</span>; on diagonal <span class="math" data-tex="\(5\)">\(5\)</span>, the two ramified values are both <span class="math" data-tex="\(-1\)">\(-1\)</span>. These checks exhibit why the local uniformizer values and the inverse unit values belong to the same construction.</p>
+<h2 id="angular-characters-over-the-gaussian-field">Angular characters over the Gaussian field</h2>
+<p>The integral ring of <span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span> is <span class="math" data-tex="\(\mathbb Z[i]\)">\(\mathbb Z[i]\)</span>, as checked in Solution 2 of <em>The adèle ring of a number field</em>. It is Euclidean for <span class="math" data-tex="\(N(a)=|a|^2\)">\(N(a)=|a|^2\)</span>: round both coordinates of <span class="math" data-tex="\(a/b\)">\(a/b\)</span> to integers to obtain <span class="math" data-tex="\(q\in\mathbb Z[i]\)">\(q\in\mathbb Z[i]\)</span> with <span class="math" data-tex="\(N(a-bq)\leq N(b)/2&lt;N(b)\)">\(N(a-bq)\leq N(b)/2&lt;N(b)\)</span>. Euclidean division makes every ideal principal. The units have norm one, hence are <span class="math" data-tex="\(\{1,-1,i,-i\}\)">\(\{1,-1,i,-i\}\)</span>. Therefore, for <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>,
+<span class="math math-display" data-tex="\[
+ \chi_k((a))=\left(\frac{a}{|a|}\right)^{4k}
+                    \quad(a\in\mathbb Q(i)^\times)
+ \tag{31}
+\]">\[
+ \chi_k((a))=\left(\frac{a}{|a|}\right)^{4k}
+                    \quad(a\in\mathbb Q(i)^\times)
+ \tag{31}
+\]</span>
+is a well-defined multiplicative character of all fractional ideals. Multiplying a generator by a unit changes its angular factor by a fourth root of unity, which disappears in the exponent <span class="math" data-tex="\(4k\)">\(4k\)</span>. Equation (15) holds with finite part one and ideal infinity type <span class="math" data-tex="\((z/|z|)^{4k}\)">\((z/|z|)^{4k}\)</span>.</p>
+<p>Here is its full idèlic form. For <span class="math" data-tex="\(x\in J_{\mathbb Q(i)}\)">\(x\in J_{\mathbb Q(i)}\)</span>, choose a generator <span class="math" data-tex="\(a_x\)">\(a_x\)</span> of
+<span class="math math-display" data-tex="\[
+ \mathfrak a(x_f)=\prod_{v\nmid\infty}
+                          \mathfrak p_v^{\operatorname{ord}_v(x_v)}.
+\]">\[
+ \mathfrak a(x_f)=\prod_{v\nmid\infty}
+                          \mathfrak p_v^{\operatorname{ord}_v(x_v)}.
+\]</span>
+Then Theorem 6.3 gives
+<span class="math math-display" data-tex="\[
+ \omega_k(x)=
+       \left(\frac{a_x}{|a_x|}\right)^{4k}
+       \left(\frac{x_\infty}{|x_\infty|}\right)^{-4k}.
+ \tag{32}
+\]">\[
+ \omega_k(x)=
+       \left(\frac{a_x}{|a_x|}\right)^{4k}
+       \left(\frac{x_\infty}{|x_\infty|}\right)^{-4k}.
+ \tag{32}
+\]</span>
+It is independent of the choice of generator, continuous because the ideal map is locally constant, and multiplicative because generators multiply up to a unit. Multiplication by diagonal <span class="math" data-tex="\(b\in\mathbb Q(i)^\times\)">\(b\in\mathbb Q(i)^\times\)</span> multiplies the two factors by inverse angular powers of <span class="math" data-tex="\(b\)">\(b\)</span>; hence it is trivial on the field. Every finite unit has value one, so its finite conductor is one. For <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>, its archimedean circle image is all of <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, so it has infinite order.</p>
+<p>The <strong>actual idèlic</strong> infinity type <span class="math" data-tex="\((z/|z|)^4\)">\((z/|z|)^4\)</span> belongs to <span class="math" data-tex="\(\omega_{-1}\)">\(\omega_{-1}\)</span>, the inverse of <span class="math" data-tex="\(\omega_1\)">\(\omega_1\)</span>. Its ideal character is <span class="math" data-tex="\(\chi_{-1}\)">\(\chi_{-1}\)</span>. Equation (31) has positive ideal angular exponent, while (32) has negative idèlic angular exponent. Recording which one is meant prevents an inversion when these examples enter local functional equations.</p>
+<p>An ideal-theoretic <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span>-valued Hecke character is called <strong>algebraic</strong> if its auxiliary infinity type in (15) is
+<span class="math math-display" data-tex="\[
+ \chi_\infty(x)=
+ \prod_{v\text{ real}}x_v^{m_v}
+ \prod_{v\text{ complex}}z_v^{m_v}\bar z_v^{m_{\bar v}},
+ \qquad m_v,m_{\bar v}\in\mathbb Z.
+ \tag{33}
+\]">\[
+ \chi_\infty(x)=
+ \prod_{v\text{ real}}x_v^{m_v}
+ \prod_{v\text{ complex}}z_v^{m_v}\bar z_v^{m_{\bar v}},
+ \qquad m_v,m_{\bar v}\in\mathbb Z.
+ \tag{33}
+\]</span>
+We choose one complex embedding for each complex place. Equivalently, use integral exponents for all embeddings of <span class="math" data-tex="\(K\)">\(K\)</span> into <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Its actual archimedean idèlic component is the inverse of (33). The comparison proof works unchanged with <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> in place of <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>; finite residue characters still have finite image. This definition imposes a condition on an existing Hecke character and does not assert that arbitrary exponent lists satisfy the unit condition (21).</p>
+<p>The angular infinity type in (31) is algebraic:
+<span class="math math-display" data-tex="\[
+ (z/|z|)^{4k}=z^{2k}\bar z^{-2k}.
+ \tag{34}
+\]">\[
+ (z/|z|)^{4k}=z^{2k}\bar z^{-2k}.
+ \tag{34}
+\]</span>
+Algebraic Hecke characters also occur in the description of elliptic curves with complex multiplication. Their associated Hecke <span class="math" data-tex="\(L\)">\(L\)</span>-functions describe the curve's <span class="math" data-tex="\(L\)">\(L\)</span>-function; this is the separate complex-multiplication theory discussed in <a href="https://www.jmilne.org/math/Books/EC2.pdf">Milne, <em>Elliptic Curves</em>, second edition, IV §10, discussion preceding Remark 10.4</a>. No association to a particular elliptic curve is asserted for (31).</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Find every quasi-character of <span class="math" data-tex="\(\mathbb Q_p^\times\)">\(\mathbb Q_p^\times\)</span> trivial on <span class="math" data-tex="\(1+p\mathbb Z_p\)">\(1+p\mathbb Z_p\)</span>, including the case <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. Give its conductor and its real absolute-value exponent.</li>
+<li><strong>Medium.</strong> For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, construct the Hecke character attached to the Legendre symbol, derive all local components, and verify directly on every diagonal rational number that their product is one.</li>
+<li><strong>Medium.</strong> Prove that every finite-order Hecke character of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, trivial on <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span>, arises from a unique primitive Dirichlet character with the normalization (23). Explain why the positive-real condition is automatic.</li>
+<li><strong>Hard.</strong> Construct a Hecke character of <span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span> with actual idèlic infinity type <span class="math" data-tex="\((z/|z|)^4\)">\((z/|z|)^4\)</span>, directly on idèles. Check continuity, independence of ideal generators, triviality on <span class="math" data-tex="\(\mathbb Q(i)^\times\)">\(\mathbb Q(i)^\times\)</span>, finite conductor, and the sign of its associated ideal infinity type.</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> Reduction gives <span class="math" data-tex="\(\mathbb Z_p^\times/(1+p\mathbb Z_p)\simeq\mathbb F_p^\times\)">\(\mathbb Z_p^\times/(1+p\mathbb Z_p)\simeq\mathbb F_p^\times\)</span>. Thus all answers are
+<span class="math math-display" data-tex="\[
+ c(p^j u)=A^j\eta(\bar u),\qquad
+ A\in\mathbb C^\times,\quad
+ \eta\in\operatorname{Hom}(\mathbb F_p^\times,\mathbb T).
+\]">\[
+ c(p^j u)=A^j\eta(\bar u),\qquad
+ A\in\mathbb C^\times,\quad
+ \eta\in\operatorname{Hom}(\mathbb F_p^\times,\mathbb T).
+\]</span>
+Every finite group character is continuous, and the valuation is locally constant, so these formulas give continuous quasi-characters. Uniqueness follows by evaluating at <span class="math" data-tex="\(p\)">\(p\)</span> and at units. Their conductor is zero for <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span> and one otherwise, and <span class="math" data-tex="\(\sigma=-\log|A|/\log p\)">\(\sigma=-\log|A|/\log p\)</span>. Equivalently the finite residue characters, together with the arbitrary uniformizer value, are the two parameters. At <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(\mathbb F_2^\times\)">\(\mathbb F_2^\times\)</span> is trivial and <span class="math" data-tex="\(1+2\mathbb Z_2=\mathbb Z_2^\times\)">\(1+2\mathbb Z_2=\mathbb Z_2^\times\)</span>; only unramified answers occur. No character of conductor exponent one exists there.</p>
+<p><strong>Solution 2.</strong> Set <span class="math" data-tex="\(\chi(a)=(a/p)\)">\(\chi(a)=(a/p)\)</span> on <span class="math" data-tex="\((\mathbb Z/p\mathbb Z)^\times\)">\((\mathbb Z/p\mathbb Z)^\times\)</span>. This is a nontrivial quadratic character: in <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span> the squaring homomorphism has kernel <span class="math" data-tex="\(\{\pm1\}\)">\(\{\pm1\}\)</span>, so its image has index two. For an idèle use (24) and define <span class="math" data-tex="\(\omega(x)=(\bar u_{x,p}/p)\)">\(\omega(x)=(\bar u_{x,p}/p)\)</span>. Continuity and multiplicativity follow from the rational idèle decomposition. Evaluating supported idèles yields (29); in particular the supported uniformizer at the ramified prime <span class="math" data-tex="\(p\)">\(p\)</span> has value one. The parity evaluation <span class="math" data-tex="\(\chi(-1)=(-1)^{(p-1)/2}\)">\(\chi(-1)=(-1)^{(p-1)/2}\)</span> was proved following (29).</p>
+<p>A direct diagonal check also follows without the decomposition. Write
+<span class="math math-display" data-tex="\[
+ r=(-1)^e p^j\prod_{\ell\ne p}\ell^{j_\ell}
+ \quad(e\in\{0,1\},\ j,j_\ell\in\mathbb Z),
+\]">\[
+ r=(-1)^e p^j\prod_{\ell\ne p}\ell^{j_\ell}
+ \quad(e\in\{0,1\},\ j,j_\ell\in\mathbb Z),
+\]</span>
+with finitely many nonzero <span class="math" data-tex="\(j_\ell\)">\(j_\ell\)</span>. At <span class="math" data-tex="\(p\)">\(p\)</span>, the unit part is <span class="math" data-tex="\((-1)^e\prod_{\ell\ne p}\ell^{j_\ell}\)">\((-1)^e\prod_{\ell\ne p}\ell^{j_\ell}\)</span>, giving value
+<span class="math" data-tex="\(\chi(-1)^e\prod_{\ell\ne p}\chi(\ell)^{j_\ell}\)">\(\chi(-1)^e\prod_{\ell\ne p}\chi(\ell)^{j_\ell}\)</span>. The other finite components give <span class="math" data-tex="\(\prod_{\ell\ne p}\chi(\ell)^{j_\ell}\)">\(\prod_{\ell\ne p}\chi(\ell)^{j_\ell}\)</span>, and the infinite component gives <span class="math" data-tex="\(\chi(-1)^e\)">\(\chi(-1)^e\)</span>. Their product is one because each value is <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. The ramified unit restriction is nontrivial but kills <span class="math" data-tex="\(1+p\mathbb Z_p\)">\(1+p\mathbb Z_p\)</span>, proving finite conductor <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Solution 3.</strong> A finite subgroup of <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> is discrete. A continuous map from the connected group <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span> into it is constant, so the condition is automatic. Proposition 3.6 therefore reduces the character to a continuous finite-image character <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of <span class="math" data-tex="\(\widehat{\mathbb Z}^{\times}\)">\(\widehat{\mathbb Z}^{\times}\)</span>. Its open kernel contains a product subgroup as in (28): choose a basic product neighborhood, and shrink the finitely many exceptional factors to principal-unit subgroups. Hence <span class="math" data-tex="\(\theta\)">\(\theta\)</span> descends through reduction modulo some <span class="math" data-tex="\(m\)">\(m\)</span>. Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be the inverse of that quotient character. Equation (25) reconstructs the original Hecke character. For each prime, the local unit restriction has a least conductor exponent by Proposition 6.1. Taking their product gives the least possible finite modulus, and CRT makes the corresponding character primitive. Any second primitive character giving the same <span class="math" data-tex="\(\theta\)">\(\theta\)</span> has the same local exponents and inverse local unit characters, so it is identical. Evaluating the supported prime and the negative real factor proves (23), rather than choosing those signs separately.</p>
+<p><strong>Solution 4.</strong> For the finite ideal <span class="math" data-tex="\(\mathfrak a(x_f)=(a_x)\)">\(\mathfrak a(x_f)=(a_x)\)</span>, define
+<span class="math math-display" data-tex="\[
+ \Omega(x)=
+ \left(\frac{x_\infty}{|x_\infty|}\right)^4
+ \left(\frac{a_x}{|a_x|}\right)^{-4}.
+\]">\[
+ \Omega(x)=
+ \left(\frac{x_\infty}{|x_\infty|}\right)^4
+ \left(\frac{a_x}{|a_x|}\right)^{-4}.
+\]</span>
+Replacing <span class="math" data-tex="\(a_x\)">\(a_x\)</span> by a Gaussian unit times <span class="math" data-tex="\(a_x\)">\(a_x\)</span> leaves the expression unchanged. For <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, a generator for the product ideal differs from <span class="math" data-tex="\(a_xa_y\)">\(a_xa_y\)</span> by a unit, so <span class="math" data-tex="\(\Omega(xy)=\Omega(x)\Omega(y)\)">\(\Omega(xy)=\Omega(x)\Omega(y)\)</span>. On a fiber of the finite ideal map the second factor is constant, and that fiber is open; the first factor is continuous. This proves continuity. For diagonal <span class="math" data-tex="\(b\)">\(b\)</span>, the ideal generator can be chosen as <span class="math" data-tex="\(b\)">\(b\)</span>, making <span class="math" data-tex="\(\Omega(b)=1\)">\(\Omega(b)=1\)</span>. More generally multiplying any idèle by <span class="math" data-tex="\(b\)">\(b\)</span> leaves the value unchanged. The supported complex coordinate has value <span class="math" data-tex="\((z/|z|)^4\)">\((z/|z|)^4\)</span>. Every finite supported unit has value one, and the whole finite unit tail is killed; hence the conductor is one. A supported uniformizer at a finite prime whose ideal generator is <span class="math" data-tex="\(a\)">\(a\)</span> has value <span class="math" data-tex="\((a/|a|)^{-4}\)">\((a/|a|)^{-4}\)</span>. Thus the ideal infinity type is <span class="math" data-tex="\((z/|z|)^{-4}\)">\((z/|z|)^{-4}\)</span>, with algebraic exponents <span class="math" data-tex="\((-2,2)\)">\((-2,2)\)</span>; the actual idèlic type has exponents <span class="math" data-tex="\((2,-2)\)">\((2,-2)\)</span>. Its circle image is all of <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, which also proves infinite order.</p>
+<h2 id="what-this-lesson-does-not-prove">Prerequisites and further directions</h2>
+<ul>
+<li>The local multiplicative decomposition <span class="math" data-tex="\(F^\times=\pi^{\mathbb Z}\times\mathcal O_F^\times\)">\(F^\times=\pi^{\mathbb Z}\times\mathcal O_F^\times\)</span>, compactness of <span class="math" data-tex="\(\mathcal O_F^\times\)">\(\mathcal O_F^\times\)</span>, and its principal-unit neighborhood basis are imported from <a href="prerequisites/NT-LOC-11.html">The multiplicative group of a local field</a>, Proposition 1.1 and its proof. The quasi-character classification using them is proved in Proposition 6.1.</li>
+<li>Weak approximation follows from this course's strong approximation, Theorem 2.3: for a finite set of prescribed coordinates, omit any place outside it and use density in the resulting restricted product. Norm-one idèle-class compactness, the topological rational idèle decomposition, ordinary class-group finiteness, and the idèlic ray class isomorphism are imported from Theorem 3.3, Proposition 3.6, Corollary 3.4, and Theorem 4.2 respectively. No class field reciprocity is needed for the comparison theorem.</li>
+<li>The complex-multiplication association between elliptic curves and algebraic Hecke characters, and its identification of <span class="math" data-tex="\(L\)">\(L\)</span>-functions, is mentioned with the Milne locator above. No part of its proof is needed here.</li>
+<li>Weil groups and local reciprocity are outside this lesson. [Deligne 1973, §§2.2–2.3, 3.2, 3.6] relate local quasi-characters to one-dimensional Weil-group representations and normalize geometric Frobenius to a uniformizer. The Euler factors and functional equations are developed in the next lessons; none are imported here as proved consequences.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>J. Shurman, <a href="https://people.reed.edu/~jerry/361/lectures/heckechar.pdf"><em>Hecke characters classically and idèlically</em></a>, Reed College number theory notes, Definitions 2.1, 2.2 and 6.1 and §§3, 5 and 6: the classical and idèlic definitions, conductor and infinity type, Dirichlet characters, the angular characters of <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span> and the ideal/idèle comparison. Its classical formula uses the inverse of the infinite component, as in (15)–(18).</li>
+<li>Bjorn Poonen, <a href="https://math.mit.edu/~poonen/786/notes.pdf"><em>Tate’s Thesis</em>, MIT 18.786, Spring 2015</a>, §§4.6 and 5.8, especially Example 5.13; and James-Michael Leahy, <a href="https://www.math.mcgill.ca/darmon/theses/leahy/thesis.pdf"><em>An introduction to Tate’s Thesis</em> (2010)</a>, §4.8, Proposition 4.8.1 and Example 4.8.3: local character classification, the norm split and rational profinite characters. Equations (23)–(27) specify the finite unit inverse and uniformizer values for our ideal-character convention.</li>
+<li>P. Deligne, <a href="https://publications.ias.edu/sites/default/files/Number20.pdf"><em>Les constantes des équations fonctionnelles des fonctions L</em>, IAS edition</a>, 1973, §§2.2–2.3, 3.2 and 3.6, printed pages 521–529: the one-dimensional Weil-group comparison mentioned above. Local reciprocity is a further direction.</li>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/Books/EC2.pdf"><em>Elliptic Curves</em>, second edition</a>, 2021, IV §10 discussion preceding Remark 10.4 and Remark 10.4(a): the separate complex-multiplication motivation.</li>
+</ul>
+</article><nav class="pager"><a rel="prev" href="NT-ADL-05.html">Previous lesson</a><a href="index.html">Course contents</a><a rel="next" href="NT-ADL-07.html">Next lesson</a></nav><p><a href="src/NT-ADL-06.md">Markdown source</a></p></main></body></html>

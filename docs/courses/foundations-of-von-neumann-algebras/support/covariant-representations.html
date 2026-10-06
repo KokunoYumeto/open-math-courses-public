@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Covariant integration and recovery with nonunital coefficients · Foundations of von Neumann algebras</title>
+<meta content="A lesson of the course Foundations of von Neumann algebras. Draft, written by AI; English only for now." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<link href="../../../assets/site.css" rel="stylesheet"/>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script defer="" id="MathJax-script" src="../../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math"><main id="main"><nav class="crumbs"><a href="../index.html">Foundations of von Neumann algebras</a></nav><article class="lesson"><h1 id="covariant-integration-and-recovery-with-nonunital-coefficients">Covariant integration and recovery with nonunital coefficients</h1>
+<p>Programme contribution adapted from <em>Crossed products and the flow of weights</em>, lessons OA-FLOW-L24 and OA-FLOW-L25, written by GPT-6 Astra and GPT-6 Sol (OpenAI), in Codex, at Ultra (maximum reasoning effort), and self-checked by those authors. This bounded adaptation and proof replay is by GPT-6.1 Sol (OpenAI), Ultra. Original programme lesson text and these adaptations are dedicated under <strong>CC0 1.0</strong>; works cited retain their own rights. No human-source prose or figures are reproduced here.</p>
+<p>This support module supplies the algebra laws, covariant representation correspondence, regular faithfulness and transformation models consumed by the foundations course. Coefficients may be nonunital, and the group, algebra and Hilbert spaces may be nonseparable.</p>
+<h2 id="OA-FLOW.CCOV.SETTING"><span id="oa-flow.ccov.setting"></span>Left coefficients and a Banach convolution algebra</h2>
+<p>Let A be a C-star algebra, let G be a locally compact Hausdorff group, and let
+<span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(A)\)">\(\alpha:G\to\operatorname{Aut}(A)\)</span> be an action such that <span class="math" data-tex="\(s\mapsto\alpha_s(a)\)">\(s\mapsto\alpha_s(a)\)</span> is norm continuous for every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>. The algebra and Hilbert spaces need not be separable; G need not be sigma compact or unimodular. Fix left Haar measure and the convention</p>
+<span class="math math-display" data-tex="$$\int q(rs)\,dr=\Delta(s)^{-1}\int q(r)\,dr.\tag{C1}$$">$$\int q(rs)\,dr=\Delta(s)^{-1}\int q(r)\,dr.\tag{C1}$$</span>
+<p>Write <span class="math" data-tex="\(B=L^1(G,A)\)">\(B=L^1(G,A)\)</span> for Bochner-integrable A-valued functions modulo null sets, with <span class="math" data-tex="\(\|f\|_1=\int\|f(s)\|\,ds\)">\(\|f\|_1=\int\|f(s)\|\,ds\)</span>. Scalar and vector spaces use the completed localizable Haar interpretation of the <a href="group-representations.html#OA-FLOW.GRP.IMPORT.FOUNDATIONS">scalar support module</a>. Put</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;(f*g)(r)\\
+&amp;=\int f(s)\alpha_s(g(s^{-1}r))\,ds,\\
+&amp;f^\sharp(r)\\
+&amp;=\Delta(r)^{-1}\alpha_r(f(r^{-1})^*).
+\end{aligned}
+\tag{C2}
+$$">$$
+\begin{aligned}
+&amp;(f*g)(r)\\
+&amp;=\int f(s)\alpha_s(g(s^{-1}r))\,ds,\\
+&amp;f^\sharp(r)\\
+&amp;=\Delta(r)^{-1}\alpha_r(f(r^{-1})^*).
+\end{aligned}
+\tag{C2}
+$$</span>
+<p>The action in the involution is <span class="math" data-tex="\(\alpha_r\)">\(\alpha_r\)</span>. The choice is forced by integrating coefficients on the left of group unitaries.</p>
+<p>A representation of B is a complex-linear algebraic star homomorphism <span class="math" data-tex="\(\Pi:B\to B(H)\)">\(\Pi:B\to B(H)\)</span>; boundedness will follow. It is nondegenerate if <span class="math" data-tex="\(\operatorname{span}\Pi(B)H\)">\(\operatorname{span}\Pi(B)H\)</span> is dense. A covariant pair <span class="math" data-tex="\((\rho,U)\)">\((\rho,U)\)</span> consists of a nondegenerate star representation <span class="math" data-tex="\(\rho:A\to B(H)\)">\(\rho:A\to B(H)\)</span> and a strongly continuous unitary representation of G satisfying</p>
+<span class="math math-display" data-tex="$$U_s\rho(a)U_s^*=\rho(\alpha_s(a)).\tag{C3}$$">$$U_s\rho(a)U_s^*=\rho(\alpha_s(a)).\tag{C3}$$</span>
+<p>When <span class="math" data-tex="\(A=0\)">\(A=0\)</span> or <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, the nondegenerate assertions have their unique zero interpretation. There is no unit in A unless one is explicitly assumed.</p>
+<h2 id="OA-FLOW.CCOV.IMPORT.FOUNDATIONS"><span id="oa-flow.ccov.import.foundations"></span>Exact coefficient inputs</h2>
+<p>Use the exact Haar, Banach, Hilbert and vector-integration results in <a href="group-representations.html#OA-FLOW.GRP.IMPORT.FOUNDATIONS">the scalar support module's foundational section</a>. Its proofs cover Banach-valued integrals and <span class="math" data-tex="\(L^2(G,K)\)">\(L^2(G,K)\)</span> at arbitrary Hilbert dimension, and keep every product calculation on its actual sigma-finite Radon support. Its <a href="group-representations.html#OA-FLOW.GRP.CONTRACTIVITY">contractivity argument</a> applies to any Banach star algebra with submultiplicative norm and isometric involution after its laws are proved.</p>
+<p>The additional coefficient inputs are <a href="../banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#oa-fnd-bn-05">BA Proposition 3.4 and its forced-unitization construction</a>, <a href="../c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-12">CF Theorem 4.2</a>, <a href="../c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-15">CF Proposition 8.5(2),(10)</a> and <a href="../c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-19">CF Theorem 11.4 with Corollary 11.5(1)</a>. These supply the C*-unitization of A, contractivity of star homomorphisms, the inequality <span class="math" data-tex="\(a^*a\leq\|a\|^2 1\)">\(a^*a\leq\|a\|^2 1\)</span>, its positive square root and a positive contractive two-sided approximate identity <span class="math" data-tex="\((e_i)\)">\((e_i)\)</span>. The Banach unitization of B used for automatic boundedness is distinct from this C*-unitization of A. A faithful coefficient representation is an explicit hypothesis of the regular-faithfulness theorem; existence of a faithful representation is not an extra premise needed for the correspondence proof.</p>
+<p>For transformation spaces, compact cutoffs come from <a href="../../harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups.html#1-conventions">Haar Conventions T1–T3</a>, which are stated for all LCH spaces. <a href="../banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#oa-fnd-bn-01">BA Proposition 1.2</a> supplies the C*-algebra <span class="math" data-tex="\(C_0(\Omega)\)">\(C_0(\Omega)\)</span>. Its compact-support density is the earlier programme result cited in that proposition; it can also be checked directly: for <span class="math" data-tex="\(a\in C_0(\Omega)\)">\(a\in C_0(\Omega)\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, take a compact cutoff equal to one on <span class="math" data-tex="\(\{|a|\geq\varepsilon\}\)">\(\{|a|\geq\varepsilon\}\)</span>; then <span class="math" data-tex="\(\|a-ha\|_\infty\leq\varepsilon\)">\(\|a-ha\|_\infty\leq\varepsilon\)</span> and <span class="math" data-tex="\(ha\in C_c(\Omega)\)">\(ha\in C_c(\Omega)\)</span>. <a href="../banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#oa-fnd-bn-20">BA Proposition 12.1 and the immediately following Bochner-space identification</a> identify the completed compact transformation convolution algebra with <span class="math" data-tex="\(L^1(G,C_0(\Omega))\)">\(L^1(G,C_0(\Omega))\)</span>. That algebra construction does not use representation recovery, so this dependency has no reverse edge to the present module.</p>
+<p>The vector-integration lemma gives density of <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span> in B: approximate a finite-valued simple function by a finite sum of compact scalar continuous functions times its coefficient values. Point-norm continuity of the action is uniform on every compact norm subset of A: choose a finite epsilon-net and use the isometry of every automorphism to control both approximation errors uniformly in the group parameter. Compact scalar translation estimates and that finite-net argument prove the vector translation estimates used below. Neither G, A nor any Hilbert space is assumed separable.</p>
+<h2 id="OA-FLOW.CCOV.ALGEBRA"><span id="oa-flow.ccov.algebra"></span>Norm bounds and a product approximate identity</h2>
+<p>Define bounded operations on B by</p>
+<span class="math math-display" data-tex="$$\begin{aligned}
+L_a f(r)&amp;=a f(r),\\
+M_s f(r)&amp;=\alpha_s(f(s^{-1}r)),\\
+N_s f(r)&amp;=\Delta(s)^{-1}f(rs^{-1}).
+\end{aligned}\tag{C4}$$">$$\begin{aligned}
+L_a f(r)&amp;=a f(r),\\
+M_s f(r)&amp;=\alpha_s(f(s^{-1}r)),\\
+N_s f(r)&amp;=\Delta(s)^{-1}f(rs^{-1}).
+\end{aligned}\tag{C4}$$</span>
+<p>The last two are isometries. The map <span class="math" data-tex="\(s\mapsto M_s f\)">\(s\mapsto M_s f\)</span> is norm continuous: for <span class="math" data-tex="\(f\in C_c(G,A)\)">\(f\in C_c(G,A)\)</span>, the moving support stays in one compact set near a fixed s, and point-norm continuity of the action is uniform on compact subsets of A. The latter follows by a finite approximation and the isometry of automorphisms. This gives a uniform integrand estimate on the common support. Density extends the result to B. The same proof, using continuity of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, gives continuity of <span class="math" data-tex="\(s\mapsto N_s f\)">\(s\mapsto N_s f\)</span>. These are assertions about nets.</p>
+<p><strong>Proposition.</strong> Equation (C2) makes B a Banach star algebra and</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;\|f*g\|_1\leq\|f\|_1\|g\|_1,\\
+&amp;\|f^\sharp\|_1=\|f\|_1.
+\end{aligned}
+\tag{C5}
+$$">$$
+\begin{aligned}
+&amp;\|f*g\|_1\leq\|f\|_1\|g\|_1,\\
+&amp;\|f^\sharp\|_1=\|f\|_1.
+\end{aligned}
+\tag{C5}
+$$</span>
+<p>It has a positive-coefficient contractive approximate identity</p>
+<span class="math math-display" data-tex="$$
+\begin{gathered}
+b_{V,i}(s)=\varphi_V(s)e_i,\\
+\varphi_V\in C_c(G),\\
+\varphi_V\geq0,\\
+\int\varphi_V=1,\\
+\operatorname{supp}\varphi_V\subset V,
+\end{gathered}
+\tag{C6}
+$$">$$
+\begin{gathered}
+b_{V,i}(s)=\varphi_V(s)e_i,\\
+\varphi_V\in C_c(G),\\
+\varphi_V\geq0,\\
+\int\varphi_V=1,\\
+\operatorname{supp}\varphi_V\subset V,
+\end{gathered}
+\tag{C6}
+$$</span>
+<p>where identity neighborhoods V shrink and i increases, independently in the product directed set. Positivity here describes the coefficients; it does not assert that <span class="math" data-tex="\(b_{V,i}\)">\(b_{V,i}\)</span> is positive in every completion.</p>
+<p><strong>Proof.</strong> Haar invariance and the isometry of <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span> give (C5). The common iterated expression for both associative bracketings is
+<span class="math" data-tex="\(\int\!\int f(s)\alpha_s(g(t))\alpha_{st}(h(t^{-1}s^{-1}r))\,dt\,ds\)">\(\int\!\int f(s)\alpha_s(g(t))\alpha_{st}(h(t^{-1}s^{-1}r))\,dt\,ds\)</span>, whose integrated norm is bounded by the product of the three L1 norms. For the involution law, multiplication of modular factors gives</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;(g^\sharp*f^\sharp)(r)\\
+&amp;=\Delta(r)^{-1}\int\begin{aligned}[t]
+&amp;\alpha_s(g(s^{-1})^*)\\
+&amp;\quad{}\cdot\alpha_r(f(r^{-1}s)^*)\,ds
+\end{aligned}\\
+&amp;=\Delta(r)^{-1}\\
+&amp;\quad{}\cdot\alpha_r\left(\int\begin{aligned}[t]
+&amp;f(t)\\
+&amp;{}\cdot\alpha_t(g(t^{-1}r^{-1}))\,dt
+\end{aligned}\right)^*\\
+&amp;=(f*g)^\sharp(r).
+\end{aligned}
+\tag{C7}
+$$">$$
+\begin{aligned}
+&amp;(g^\sharp*f^\sharp)(r)\\
+&amp;=\Delta(r)^{-1}\int\begin{aligned}[t]
+&amp;\alpha_s(g(s^{-1})^*)\\
+&amp;\quad{}\cdot\alpha_r(f(r^{-1}s)^*)\,ds
+\end{aligned}\\
+&amp;=\Delta(r)^{-1}\\
+&amp;\quad{}\cdot\alpha_r\left(\int\begin{aligned}[t]
+&amp;f(t)\\
+&amp;{}\cdot\alpha_t(g(t^{-1}r^{-1}))\,dt
+\end{aligned}\right)^*\\
+&amp;=(f*g)^\sharp(r).
+\end{aligned}
+\tag{C7}
+$$</span>
+<p>The second line uses the left change <span class="math" data-tex="\(s=rt\)">\(s=rt\)</span>. Applying the involution twice gives f. These calculations first hold on <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span>, where continuity, compact supports and Bochner Fubini apply, and extend by the norm estimates. Completeness is a Banach input.</p>
+<p>For the left approximate identity, (C2) gives</p>
+<span class="math math-display" data-tex="$$b_{V,i}*f=\int\varphi_V(s)L_{e_i}M_s f\,ds.$$">$$b_{V,i}*f=\int\varphi_V(s)L_{e_i}M_s f\,ds.$$</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;\|b_{V,i}*f-f\|_1\\
+&amp;\leq\|L_{e_i}f-f\|_1+\\
+&amp;\quad\sup_{s\in V}\|M_s f-f\|_1.
+\end{aligned}
+\tag{C8}
+$$">$$
+\begin{aligned}
+&amp;\|b_{V,i}*f-f\|_1\\
+&amp;\leq\|L_{e_i}f-f\|_1+\\
+&amp;\quad\sup_{s\in V}\|M_s f-f\|_1.
+\end{aligned}
+\tag{C8}
+$$</span>
+<p>For the right one put <span class="math" data-tex="\(q_i(r)=f(r)\alpha_r(e_i)\)">\(q_i(r)=f(r)\alpha_r(e_i)\)</span>. Inversion in the convolution variable gives</p>
+<span class="math math-display" data-tex="$$f*b_{V,i}=\int\varphi_V(s)N_s q_i\,ds,$$">$$f*b_{V,i}=\int\varphi_V(s)N_s q_i\,ds,$$</span>
+<p>and hence</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;\|f*b_{V,i}-f\|_1\\
+&amp;\leq\|q_i-f\|_1+\\
+&amp;\quad\sup_{s\in V}\|N_s f-f\|_1.
+\end{aligned}
+\tag{C9}
+$$">$$
+\begin{aligned}
+&amp;\|f*b_{V,i}-f\|_1\\
+&amp;\leq\|q_i-f\|_1+\\
+&amp;\quad\sup_{s\in V}\|N_s f-f\|_1.
+\end{aligned}
+\tag{C9}
+$$</span>
+<p>For f in <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span>, its image is compact, and so is the image of <span class="math" data-tex="\(r\mapsto\alpha_{r^{-1}}(f(r))\)">\(r\mapsto\alpha_{r^{-1}}(f(r))\)</span>. A contractive approximate identity acts uniformly on each compact subset of A, by a finite-cover estimate. Thus <span class="math" data-tex="\(L_{e_i}f\to f\)">\(L_{e_i}f\to f\)</span> and <span class="math" data-tex="\(q_i\to f\)">\(q_i\to f\)</span> in L1. Contractivity and density extend both limits to every f in B. Equations (C8)–(C9) prove convergence of the actual product net, without dominated convergence for arbitrary nets. Finally <span class="math" data-tex="\(\|b_{V,i}\|_1\leq1\)">\(\|b_{V,i}\|_1\leq1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Automatic boundedness.</strong> Every algebraic star representation of B is contractive. Apply the unitization spectral argument of <a href="group-representations.html#OA-FLOW.GRP.CONTRACTIVITY">the scalar contractivity lemma</a> to <span class="math" data-tex="\(f^\sharp*f\)">\(f^\sharp*f\)</span>; (C5) supplies precisely the required norm bound. If <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> is nondegenerate, then <span class="math" data-tex="\(\Pi(b_{V,i})\to I\)">\(\Pi(b_{V,i})\to I\)</span> strongly, first on <span class="math" data-tex="\(\Pi(B)H\)">\(\Pi(B)H\)</span> by the left approximate identity and then by the uniform bound on all of H.</p>
+<h2 id="OA-FLOW.CCOV.INTEGRATION"><span id="oa-flow.ccov.integration"></span>From a covariant pair to convolution</h2>
+<p>For a covariant pair define</p>
+<span class="math math-display" data-tex="$$\Pi_{\rho,U}(f)\xi=\int\rho(f(s))U_s\xi\,ds.\tag{C10}$$">$$\Pi_{\rho,U}(f)\xi=\int\rho(f(s))U_s\xi\,ds.\tag{C10}$$</span>
+<p>For a compactly supported continuous f the vector integrand is continuous with compact image. The norm bound <span class="math" data-tex="\(\|f\|_1\|\xi\|\)">\(\|f\|_1\|\xi\|\)</span> extends the integral to B exactly as in the scalar module’s vector-integration lemma.</p>
+<p><strong>Theorem.</strong> Equation (C10) is a contractive nondegenerate star representation of B.</p>
+<p><strong>Proof.</strong> Moving a coefficient through a unitary by (C3) turns the product integrand into
+<span class="math" data-tex="\(\rho(f(s)\alpha_s(g(t)))U_{st}\)">\(\rho(f(s)\alpha_s(g(t)))U_{st}\)</span>. The left change <span class="math" data-tex="\(r=st\)">\(r=st\)</span> yields (C2). For the adjoint, inversion gives</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;\Pi(f)^*\\
+&amp;=\int U_{s^{-1}}\rho(f(s)^*)\,ds\\
+&amp;=\int\rho\left(\begin{aligned}[t]
+&amp;\Delta(r)^{-1}\\
+&amp;{}\cdot\alpha_r(f(r^{-1})^*)
+\end{aligned}\right)U_r\,dr\\
+&amp;=\Pi(f^\sharp).
+\end{aligned}
+\tag{C11}
+$$">$$
+\begin{aligned}
+&amp;\Pi(f)^*\\
+&amp;=\int U_{s^{-1}}\rho(f(s)^*)\,ds\\
+&amp;=\int\rho\left(\begin{aligned}[t]
+&amp;\Delta(r)^{-1}\\
+&amp;{}\cdot\alpha_r(f(r^{-1})^*)
+\end{aligned}\right)U_r\,dr\\
+&amp;=\Pi(f^\sharp).
+\end{aligned}
+\tag{C11}
+$$</span>
+<p>Fubini proves these identities first on compact supports and the norm estimate extends them. Nondegeneracy of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> gives <span class="math" data-tex="\(\rho(e_i)\to I\)">\(\rho(e_i)\to I\)</span> strongly, by the approximate identity on represented vectors. If <span class="math" data-tex="\(U(\varphi_V)=\int\varphi_V(s)U_s\,ds\)">\(U(\varphi_V)=\int\varphi_V(s)U_s\,ds\)</span>, the <a href="group-representations.html#OA-FLOW.GRP.INTEGRATION">scalar integration theorem</a> gives <span class="math" data-tex="\(U(\varphi_V)\to I\)">\(U(\varphi_V)\to I\)</span> strongly. Thus</p>
+<span class="math math-display" data-tex="$$\Pi(b_{V,i})=\rho(e_i)U(\varphi_V)\longrightarrow I\tag{C12}$$">$$\Pi(b_{V,i})=\rho(e_i)U(\varphi_V)\longrightarrow I\tag{C12}$$</span>
+<p>strongly on the product net; the error on <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is bounded by
+<span class="math" data-tex="\(\|(U(\varphi_V)-I)\xi\|+\|(\rho(e_i)-I)\xi\|\)">\(\|(U(\varphi_V)-I)\xi\|+\|(\rho(e_i)-I)\xi\|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FLOW.CCOV.COEFFICIENTRECOVERY"><span id="oa-flow.ccov.coefficientrecovery"></span>Recover the coefficient algebra by a norm comparison</h2>
+<p>Let <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> be a nondegenerate representation of B and put
+<span class="math" data-tex="\(D=\operatorname{span}\Pi(B)H\)">\(D=\operatorname{span}\Pi(B)H\)</span>. For a in A prescribe</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;\rho(a)\sum_j\Pi(f_j)\xi_j\\
+&amp;=\sum_j\Pi(L_a f_j)\xi_j.
+\end{aligned}
+\tag{C13}
+$$">$$
+\begin{aligned}
+&amp;\rho(a)\sum_j\Pi(f_j)\xi_j\\
+&amp;=\sum_j\Pi(L_a f_j)\xi_j.
+\end{aligned}
+\tag{C13}
+$$</span>
+<p>The operations <span class="math" data-tex="\(L_a\)">\(L_a\)</span> also make sense for a in the unitization of A.</p>
+<p><strong>Lemma.</strong> Formula (C13) is well-defined and extends to a nondegenerate star representation of A with <span class="math" data-tex="\(\|\rho(a)\|\leq\|a\|\)">\(\|\rho(a)\|\leq\|a\|\)</span>.</p>
+<p><strong>Proof.</strong> Direct substitution in (C2) gives, for a,b in the unitization,</p>
+<span class="math math-display" data-tex="$$(L_a g)^\sharp*(L_b f)=g^\sharp*L_{a^*b}f.\tag{C14}$$">$$(L_a g)^\sharp*(L_b f)=g^\sharp*L_{a^*b}f.\tag{C14}$$</span>
+<p>For a fixed a take <span class="math" data-tex="\(c=(\|a\|^2 1-a^*a)^{1/2}\)">\(c=(\|a\|^2 1-a^*a)^{1/2}\)</span>. Expanding the squared norms of the two finite sums produced by <span class="math" data-tex="\(L_a\)">\(L_a\)</span> and <span class="math" data-tex="\(L_c\)">\(L_c\)</span>, equation (C14) gives</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;\left\|\sum_j\Pi(L_a f_j)\xi_j\right\|^2\\
+&amp;{}+\left\|\sum_j\Pi(L_c f_j)\xi_j\right\|^2\\
+&amp;=\|a\|^2\left\|\sum_j\Pi(f_j)\xi_j\right\|^2.
+\end{aligned}
+\tag{C15}
+$$">$$
+\begin{aligned}
+&amp;\left\|\sum_j\Pi(L_a f_j)\xi_j\right\|^2\\
+&amp;{}+\left\|\sum_j\Pi(L_c f_j)\xi_j\right\|^2\\
+&amp;=\|a\|^2\left\|\sum_j\Pi(f_j)\xi_j\right\|^2.
+\end{aligned}
+\tag{C15}
+$$</span>
+<p>Therefore the first sum has norm at most <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span> times the original vector norm; in particular a zero vector has zero image. This proves well-definedness and the bound. Linearity and multiplication follow from the corresponding laws of <span class="math" data-tex="\(L_a\)">\(L_a\)</span>. The mixed Gram identity (C14), with one coefficient equal to 1, gives the adjoint identity on D, hence on H. Finally <span class="math" data-tex="\(L_{e_i}f\to f\)">\(L_{e_i}f\to f\)</span> in L1 implies <span class="math" data-tex="\(\rho(e_i)\to I\)">\(\rho(e_i)\to I\)</span> strongly on D and then on H. This proves nondegeneracy. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The square root is taken in the unitization only to prove an inequality. It does not turn the nonunital coefficient algebra into a unital hypothesis.</p>
+<h2 id="OA-FLOW.CCOV.GROUPRECOVERY"><span id="oa-flow.ccov.grouprecovery"></span>Recover the group and its covariance</h2>
+<p>On the same dense D prescribe</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;U_s\sum_j\Pi(f_j)\xi_j\\
+&amp;=\sum_j\Pi(M_s f_j)\xi_j.
+\end{aligned}
+\tag{C16}
+$$">$$
+\begin{aligned}
+&amp;U_s\sum_j\Pi(f_j)\xi_j\\
+&amp;=\sum_j\Pi(M_s f_j)\xi_j.
+\end{aligned}
+\tag{C16}
+$$</span>
+<p><strong>Theorem.</strong> These operators extend to a strongly continuous unitary representation. Together with (C13) they form the unique covariant pair integrating to <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>.</p>
+<p><strong>Proof.</strong> The second Gram identity is</p>
+<span class="math math-display" data-tex="$$(M_s g)^\sharp*(M_s f)=g^\sharp*f.\tag{C17}$$">$$(M_s g)^\sharp*(M_s f)=g^\sharp*f.\tag{C17}$$</span>
+<p>One way to check it is to write</p>
+<span class="math math-display" data-tex="$$(g^\sharp*f)(r)=\int\alpha_{t^{-1}}(g(t)^*f(tr))\,dt.$$">$$(g^\sharp*f)(r)=\int\alpha_{t^{-1}}(g(t)^*f(tr))\,dt.$$</span>
+<p>Replacing g and f by <span class="math" data-tex="\(M_s g,M_s f\)">\(M_s g,M_s f\)</span> and putting <span class="math" data-tex="\(t=su\)">\(t=su\)</span> returns this integral. Thus finite Gram sums show that (C16) is well-defined and isometric. The identities <span class="math" data-tex="\(M_sM_t=M_{st}\)">\(M_sM_t=M_{st}\)</span> and <span class="math" data-tex="\(M_{s^{-1}}=M_s^{-1}\)">\(M_{s^{-1}}=M_s^{-1}\)</span> give unitaries after completion. The L1 continuity of <span class="math" data-tex="\(M_s f\)">\(M_s f\)</span> gives continuity on D, and density with the unitary bound gives strong continuity on H.</p>
+<p>On B, <span class="math" data-tex="\(M_sL_a=L_{\alpha_s(a)}M_s\)">\(M_sL_a=L_{\alpha_s(a)}M_s\)</span>. Hence (C3) holds on D and then on H. Finally</p>
+<span class="math math-display" data-tex="$$(f*g)=\int L_{f(s)}M_s g\,ds\quad\text{in }B.$$">$$(f*g)=\int L_{f(s)}M_s g\,ds\quad\text{in }B.$$</span>
+<p>Passing the bounded map <span class="math" data-tex="\(h\mapsto\Pi(h)\xi\)">\(h\mapsto\Pi(h)\xi\)</span> through this Bochner integral gives</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;\Pi_{\rho,U}(f)\Pi(g)\xi\\
+&amp;=\int\rho(f(s))U_s\Pi(g)\xi\,ds\\
+&amp;=\Pi(f*g)\xi\\
+&amp;=\Pi(f)\Pi(g)\xi.
+\end{aligned}
+\tag{C18}
+$$">$$
+\begin{aligned}
+&amp;\Pi_{\rho,U}(f)\Pi(g)\xi\\
+&amp;=\int\rho(f(s))U_s\Pi(g)\xi\,ds\\
+&amp;=\Pi(f*g)\xi\\
+&amp;=\Pi(f)\Pi(g)\xi.
+\end{aligned}
+\tag{C18}
+$$</span>
+<p>Density identifies the integrated representation with <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>. Conversely every integrating pair satisfies
+<span class="math" data-tex="\(\rho(a)\Pi(f)=\Pi(L_a f)\)">\(\rho(a)\Pi(f)=\Pi(L_a f)\)</span> and <span class="math" data-tex="\(U_s\Pi(f)=\Pi(M_s f)\)">\(U_s\Pi(f)=\Pi(M_s f)\)</span>, so (C13) and (C16) determine it uniquely. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Bounded intertwiners are also preserved. An intertwiner of two covariant pairs passes through (C10). An intertwiner of their integrated representations commutes with both recovery prescriptions on their dense essential spaces, and hence intertwines both recovered families. In particular unitary equivalence, commutants and reducing subspaces are preserved.</p>
+<p>For a degenerate <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>, its essential space <span class="math" data-tex="\(H_0=\overline{\Pi(B)H}\)">\(H_0=\overline{\Pi(B)H}\)</span> reduces the representation, and the representation is zero on <span class="math" data-tex="\(H_0^\perp\)">\(H_0^\perp\)</span>. Apply the theorem on <span class="math" data-tex="\(H_0\)">\(H_0\)</span>. If the coefficient representation in the covariance equation is allowed to be degenerate, the pair may carry arbitrary group action on the complementary zero-coefficient summand; integration does not recover that action. This is why the correspondence specifies nondegeneracy.</p>
+<h2 id="OA-FLOW.CCOV.REGULAR"><span id="oa-flow.ccov.regular"></span>Faithfulness on the convolution algebra</h2>
+<p>Let <span class="math" data-tex="\(\rho:A\to B(K)\)">\(\rho:A\to B(K)\)</span> be nondegenerate. On <span class="math" data-tex="\(L^2(G,K)\)">\(L^2(G,K)\)</span> put</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;[\widetilde\rho(a)\xi](r)\\
+&amp;=\rho(\alpha_{r^{-1}}(a))\xi(r),\\
+&amp;[\lambda_s\xi](r)=\xi(s^{-1}r).
+\end{aligned}
+\tag{C19}
+$$">$$
+\begin{aligned}
+&amp;[\widetilde\rho(a)\xi](r)\\
+&amp;=\rho(\alpha_{r^{-1}}(a))\xi(r),\\
+&amp;[\lambda_s\xi](r)=\xi(s^{-1}r).
+\end{aligned}
+\tag{C19}
+$$</span>
+<p>Point-norm continuity makes the coefficient field continuous and bounded. Thus these are bounded coefficient operators and strongly continuous unitary translations. Multiplication and adjoints are pointwise, and substitution proves covariance. Nondegeneracy of <span class="math" data-tex="\(\widetilde\rho\)">\(\widetilde\rho\)</span> can be checked without convergence theorems for nets: for <span class="math" data-tex="\(h\in C_c(G)\)">\(h\in C_c(G)\)</span>, <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(\eta\in K\)">\(\eta\in K\)</span>, the functions <span class="math" data-tex="\(r\mapsto h(r)\rho(a)\eta\)">\(r\mapsto h(r)\rho(a)\eta\)</span> are approximated by applying <span class="math" data-tex="\(\widetilde\rho(e_i)\)">\(\widetilde\rho(e_i)\)</span>, since the compact family <span class="math" data-tex="\(\alpha_r(a)\)">\(\alpha_r(a)\)</span> satisfies <span class="math" data-tex="\(e_i\alpha_r(a)\to\alpha_r(a)\)">\(e_i\alpha_r(a)\to\alpha_r(a)\)</span> uniformly on <span class="math" data-tex="\(\operatorname{supp}h\)">\(\operatorname{supp}h\)</span>. These functions span a dense subspace, and the operators are contractions.</p>
+<p>Denote the integrated representation by <span class="math" data-tex="\(T_\rho\)">\(T_\rho\)</span>. On compact test sections,</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;[T_\rho(f)\xi](r)\\
+&amp;=\int\rho(\alpha_{r^{-1}}(f(s)))\\
+&amp;\quad\xi(s^{-1}r)\,ds.
+\end{aligned}
+\tag{C20}
+$$">$$
+\begin{aligned}
+&amp;[T_\rho(f)\xi](r)\\
+&amp;=\int\rho(\alpha_{r^{-1}}(f(s)))\\
+&amp;\quad\xi(s^{-1}r)\,ds.
+\end{aligned}
+\tag{C20}
+$$</span>
+<p>This follows first on compact supports by vector testing and Fubini, and extends in L1 by the operator norm bound. It is an almost-everywhere formula, not a point-evaluation definition for arbitrary sections.</p>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is faithful, <span class="math" data-tex="\(T_\rho\)">\(T_\rho\)</span> is faithful on B.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(T_\rho(f)=0\)">\(T_\rho(f)=0\)</span>. Fix <span class="math" data-tex="\(g\in C_c(G,A)\)">\(g\in C_c(G,A)\)</span> and <span class="math" data-tex="\(\eta\in K\)">\(\eta\in K\)</span>, and use the compact continuous section</p>
+<span class="math math-display" data-tex="$$\xi_{g,\eta}(r)=\rho(\alpha_{r^{-1}}(g(r)))\eta.$$">$$\xi_{g,\eta}(r)=\rho(\alpha_{r^{-1}}(g(r)))\eta.$$</span>
+<p>Equation (C20) gives</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;[T_\rho(f)\xi_{g,\eta}](r)\\
+&amp;=\rho(\alpha_{r^{-1}}((f*g)(r)))\eta.
+\end{aligned}
+\tag{C21}
+$$">$$
+\begin{aligned}
+&amp;[T_\rho(f)\xi_{g,\eta}](r)\\
+&amp;=\rho(\alpha_{r^{-1}}((f*g)(r)))\eta.
+\end{aligned}
+\tag{C21}
+$$</span>
+<p>Here <span class="math" data-tex="\(h=f*g\)">\(h=f*g\)</span> has a bounded continuous representative. Indeed <span class="math" data-tex="\(\|h\|_\infty\leq\|f\|_1\|g\|_\infty\)">\(\|h\|_\infty\leq\|f\|_1\|g\|_\infty\)</span>, and right-uniform continuity of a compactly supported continuous g gives
+<span class="math" data-tex="\(\sup_t\|g(tu)-g(t)\|\to0\)">\(\sup_t\|g(tu)-g(t)\|\to0\)</span> as <span class="math" data-tex="\(u\to e\)">\(u\to e\)</span>. Applying this estimate inside the convolution integral proves continuity of h. Equation (C21) first holds for compactly supported f. If <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span> in L1 with <span class="math" data-tex="\(f_n\in C_c(G,A)\)">\(f_n\in C_c(G,A)\)</span>, then <span class="math" data-tex="\(f_n*g\to h\)">\(f_n*g\to h\)</span> uniformly, while the left sides converge in L2. On each compact set K the right sides converge in local L2 to the displayed continuous function. Because <span class="math" data-tex="\(T_\rho(f)=0\)">\(T_\rho(f)=0\)</span> the global L2 norms of the left sides tend to zero. Thus the limit continuous function is zero in L2 on each compact K. This argument only uses finite-measure compact restrictions; it does not require a global pointwise identification for a general f.</p>
+<p>The continuous function on the right of (C21) is therefore zero everywhere: a nonzero value would stay bounded away from zero on a relatively compact nonempty open set of positive Haar measure. For each r this is true for every <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, so faithfulness of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> gives <span class="math" data-tex="\(h(r)=0\)">\(h(r)=0\)</span>. We have proved <span class="math" data-tex="\(f*g=0\)">\(f*g=0\)</span> for every <span class="math" data-tex="\(g\in C_c(G,A)\)">\(g\in C_c(G,A)\)</span>. Taking <span class="math" data-tex="\(g=b_{V,i}\)">\(g=b_{V,i}\)</span> and using (C9) gives f=0 in B. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This theorem uses faithfulness only at the final coefficient implication. It does not claim that every covariant representation with faithful coefficient part has faithful integration.</p>
+<h2 id="OA-FLOW.CCOV.TRANSFORMATIONS"><span id="oa-flow.ccov.transformations"></span>Right actions and two worked models</h2>
+<p>Let <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> be locally compact Hausdorff and let <span class="math" data-tex="\((\omega,s)\mapsto\omega s\)">\((\omega,s)\mapsto\omega s\)</span> be a continuous right action of G. On <span class="math" data-tex="\(A=C_0(\Omega)\)">\(A=C_0(\Omega)\)</span> set
+<span class="math" data-tex="\(\alpha_s(a)(\omega)=a(\omega s)\)">\(\alpha_s(a)(\omega)=a(\omega s)\)</span>. This is a point-norm continuous action. For <span class="math" data-tex="\(a\in C_c(\Omega)\)">\(a\in C_c(\Omega)\)</span>, continuity on compact parameter sets and a common compact support near the identity prove norm continuity; density extends it to <span class="math" data-tex="\(C_0(\Omega)\)">\(C_0(\Omega)\)</span>. Thus the algebra, integration, recovery and regular-faithfulness theorems apply, with</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;(f*g)(r)(\omega)\\
+&amp;=\int f(s)(\omega)g(s^{-1}r)(\omega s)\,ds,\\
+&amp;f^\sharp(r)(\omega)\\
+&amp;=\Delta(r)^{-1}\overline{f(r^{-1})(\omega r)}.
+\end{aligned}
+\tag{C27}
+$$">$$
+\begin{aligned}
+&amp;(f*g)(r)(\omega)\\
+&amp;=\int f(s)(\omega)g(s^{-1}r)(\omega s)\,ds,\\
+&amp;f^\sharp(r)(\omega)\\
+&amp;=\Delta(r)^{-1}\overline{f(r^{-1})(\omega r)}.
+\end{aligned}
+\tag{C27}
+$$</span>
+<p>The coefficient and group recovery operations are</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;L_a f(r)(\omega)=a(\omega)f(r)(\omega),\\
+&amp;M_t f(r)(\omega)\\
+&amp;=f(t^{-1}r)(\omega t).
+\end{aligned}
+\tag{C28}
+$$">$$
+\begin{aligned}
+&amp;L_a f(r)(\omega)=a(\omega)f(r)(\omega),\\
+&amp;M_t f(r)(\omega)\\
+&amp;=f(t^{-1}r)(\omega t).
+\end{aligned}
+\tag{C28}
+$$</span>
+<p>Neither coordinate shift can be omitted or moved without changing the integrated convention. Compactly supported continuous functions on <span class="math" data-tex="\(G\times\Omega\)">\(G\times\Omega\)</span> map into <span class="math" data-tex="\(C_c(G,C_0(\Omega))\)">\(C_c(G,C_0(\Omega))\)</span>. They are dense there in the L1 norm: the compact norm image of a coefficient function can be approximated uniformly by cutting off all its values outside one compact subset of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Its L1 completion is therefore B, as also proved in BA Proposition 12.1, and bounded nondegenerate star representations of this compact transformation algebra extend uniquely to B and have exactly the representation correspondence proved above. Indeed, a bounded map extends to the completion, multiplication and involution persist by continuity, and approximating B elements by compact functions preserves its essential space. Conversely restriction of a contractive B-representation is bounded and has the same essential space. A claim about all algebraic representations of that uncompleted smaller algebra would require a separate boundedness hypothesis or theorem.</p>
+<p><strong>Three moving points.</strong> Take <span class="math" data-tex="\(G=\Omega=\mathbb Z/3\mathbb Z\)">\(G=\Omega=\mathbb Z/3\mathbb Z\)</span>, counting Haar measure and right addition. On <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span>, let <span class="math" data-tex="\(\rho(a)\)">\(\rho(a)\)</span> be diagonal multiplication and <span class="math" data-tex="\([U_s\xi](j)=\xi(j+s)\)">\([U_s\xi](j)=\xi(j+s)\)</span>. For i,j modulo 3, let <span class="math" data-tex="\(f_{ij}\)">\(f_{ij}\)</span> be supported at group element <span class="math" data-tex="\(j-i\)">\(j-i\)</span>, with coefficient the indicator of point i. Direct substitution in (C27) gives</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;f_{ij}*f_{kl}=\delta_{jk}f_{il},\\
+&amp;f_{ij}^\sharp=f_{ji},\\
+&amp;\Pi_{\rho,U}(f_{ij})=E_{ij}.
+\end{aligned}
+\tag{C29}
+$$">$$
+\begin{aligned}
+&amp;f_{ij}*f_{kl}=\delta_{jk}f_{il},\\
+&amp;f_{ij}^\sharp=f_{ji},\\
+&amp;\Pi_{\rho,U}(f_{ij})=E_{ij}.
+\end{aligned}
+\tag{C29}
+$$</span>
+<p>These nine functions span B, so B is the matrix star algebra <span class="math" data-tex="\(M_3(\mathbb C)\)">\(M_3(\mathbb C)\)</span>. The displayed integrated representation identifies B faithfully with the matrix star algebra, since it sends a basis to the nine matrix units. This checks the direction of both coordinate shifts without a completion or norm-comparison theorem. For example, the product has coefficient at point i only when its second index j equals k, and then its group support is (j-i)+(l-k)=l-i; the involution changes that support to i-j and its coefficient point from i to j. Acting on a vector gives the coordinate at i equal to its former coordinate at j, exactly E_{ij}.</p>
+<p><strong>A nonunital translation calculation.</strong> For <span class="math" data-tex="\(A=C_0(\mathbb R)\)">\(A=C_0(\mathbb R)\)</span>, <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span> and <span class="math" data-tex="\(\alpha_s(a)(x)=a(x+s)\)">\(\alpha_s(a)(x)=a(x+s)\)</span>, use multiplication on <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span> and <span class="math" data-tex="\([U_s\xi](x)=\xi(x+s)\)">\([U_s\xi](x)=\xi(x+s)\)</span>. If <span class="math" data-tex="\(\eta,\zeta\in C_c(\mathbb R)\)">\(\eta,\zeta\in C_c(\mathbb R)\)</span>, put
+<span class="math" data-tex="\(f(s)(x)=\eta(x)\overline{\zeta(x+s)}\)">\(f(s)(x)=\eta(x)\overline{\zeta(x+s)}\)</span>. This belongs to <span class="math" data-tex="\(C_c(\mathbb R,C_0(\mathbb R))\)">\(C_c(\mathbb R,C_0(\mathbb R))\)</span>: its group support lies in the compact difference of the two supports, and translations of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> are uniformly continuous. Changing <span class="math" data-tex="\(y=x+s\)">\(y=x+s\)</span> gives</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;[\Pi(f)\xi](x)\\
+&amp;=\eta(x)\int\overline{\zeta(y)}\xi(y)\,dy.
+\end{aligned}
+\tag{C30}
+$$">$$
+\begin{aligned}
+&amp;[\Pi(f)\xi](x)\\
+&amp;=\eta(x)\int\overline{\zeta(y)}\xi(y)\,dy.
+\end{aligned}
+\tag{C30}
+$$</span>
+<p>Thus integrated operators include the rank-one operators formed from compact continuous vectors. Taking two orthonormal such vectors gives four explicit matrix units. Meanwhile compact coefficient cutoffs <span class="math" data-tex="\(0\leq e_i\leq1\)">\(0\leq e_i\leq1\)</span>, equal to 1 on compact intervals increasing to cover all of the real line, give multiplication operators converging strongly to I, with <span class="math" data-tex="\(\|\rho(e_i)-I\|=1\)">\(\|\rho(e_i)-I\|=1\)</span> for every compactly supported cutoff. Coefficient recovery therefore naturally uses strong convergence even in this elementary nonunital example. No identification of the entire completion is inferred from the rank-one calculation alone.</p>
+<h2 id="programme-provenance">Programme provenance</h2>
+<p>The original programme records the transformation antecedents as Takesaki, <em>Theory of Operator Algebras I</em>, Chapter I, exercises 1.2 and 9.5, and the coefficient convolution antecedent in <em>Theory of Operator Algebras II</em>, Chapter X, exercise 4.1. The full argument reused here is the programme’s independent exposition, whose proofs retain arbitrary coefficients, groups and Hilbert spaces. Exact consumed ranges and byte hashes, source credit and dependency correspondence are in the accompanying receipt.</p>
+<p><a href="src/covariant-representations.md">Editable source</a> · <span class="unlinked">Programme provenance and exact proof scopes</span> · <a href="../source-notices.html">Sources and licences</a></p></article></main></body></html>

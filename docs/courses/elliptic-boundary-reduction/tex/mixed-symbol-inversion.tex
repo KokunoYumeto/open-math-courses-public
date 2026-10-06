@@ -1,0 +1,841 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Inverting mixed symbols without commuting matrix
+factors}\label{inverting-mixed-symbols-without-commuting-matrix-factors}
+
+The inversion problem addressed here is pointwise in phase space. Its
+output is a symbol with quantitative derivative estimates, so it can
+subsequently enter an operator construction. No composition or
+boundedness theorem for pseudodifferential operators is needed for the
+inversion itself.
+
+\href{euclidean-symbol-calculus.pdf}{From symbol estimates to operators
+on every Sobolev scale} supplies the earlier symbol-space context. The
+calculation below uses multivariable differentiation, the product rule,
+matrix norms and smooth cutoffs; every mixed estimate needed here is
+proved directly.
+
+\subsection{1. The two frequency
+weights}\label{the-two-frequency-weights}
+
+Fix integers \(n,N\geq1\). Write
+
+\[
+x=(x_1,\ldots,x_n)\in\mathbb R^n,
+\qquad
+\xi=(\xi',\xi_n)\in\mathbb R^{n-1}\times\mathbb R.
+\tag{MSI1}
+\]
+
+The matrix space is \(M_N(\mathbb C)\), equipped with the operator norm
+induced by the Euclidean norm on \(\mathbb C^N\). Thus
+\(\|UV\|\leq\|U\|\|V\|\), \(\|I_N\|=1\), and scalar multiplication has
+its usual absolute-value norm. For \(n=1\), the vector \(\xi'\) has no
+coordinates, its norm is zero, and every multiindex in its coordinates
+has length zero.
+
+For real numbers \(p,q\) and multiindices
+\(\alpha,\beta\in\mathbb N_0^n\), put
+\(\alpha'=(\alpha_1,\ldots,\alpha_{n-1})\) and
+
+\[
+W_{p,q;\alpha}(\xi)
+=(1+|\xi|)^{p-\alpha_n}
+ (1+|\xi'|)^{q-|\alpha'|}.
+\tag{MSI2}
+\]
+
+The original weights \(1+|\xi|\) and \(1+|\xi'|\) are retained
+throughout. They are positive numerical weights; differentiability of
+these weights at the origin is neither assumed nor used.
+
+A smooth function
+\(a:\mathbb R_x^n\times\mathbb R_\xi^n\to M_N(\mathbb C)\) belongs to
+\(S^{p,q}\) when every number
+
+\[
+\|a\|_{p,q;\beta,\alpha}
+=\sup_{x,\xi}
+\frac{\|\partial_x^\beta\partial_\xi^\alpha a(x,\xi)\|}
+     {W_{p,q;\alpha}(\xi)}
+\tag{MSI3}
+\]
+
+is finite. In particular the constants are uniform in all
+\(x\in\mathbb R^n\); there is no implicit compact restriction on \(x\).
+The convention \(D_j=-i\partial_j\), if used in an operator realization,
+gives the same seminorms, because each derivative of fixed multiindex
+differs by a scalar of modulus one. We use ordinary derivatives in the
+identities below so that every sign is explicit.
+
+The product of two smooth matrix symbols satisfies the exact Leibniz
+identity
+
+\[
+\partial_x^\beta\partial_\xi^\alpha(uv)
+=\sum_{\substack{\delta\leq\beta\\\varepsilon\leq\alpha}}
+ \binom\beta\delta\binom\alpha\varepsilon
+ (\partial_x^\delta\partial_\xi^\varepsilon u)
+ (\partial_x^{\beta-\delta}\partial_\xi^{\alpha-\varepsilon}v).
+\tag{MSI4}
+\]
+
+No factors on the right are interchanged. To prove this identity, apply
+the ordinary one-coordinate product rule repeatedly; choosing which of
+the \(\beta_j\) derivatives acts on the left factor gives
+\(\binom{\beta_j}{\delta_j}\) choices, and the frequency derivatives
+give the second collection of binomial factors. Multiplying these
+independent counts gives (MSI4). Since
+
+\[
+W_{p,q;\varepsilon}
+W_{r,t;\alpha-\varepsilon}
+=W_{p+r,q+t;\alpha},
+\tag{MSI5}
+\]
+
+submultiplicativity and (MSI4) prove that \(uv\in S^{p+r,q+t}\) whenever
+\(u\in S^{p,q}\) and \(v\in S^{r,t}\). More precisely, its
+\((\beta,\alpha)\) seminorm is bounded by the sum in (MSI4) with each
+differentiated factor replaced by its corresponding seminorm. This
+argument also applies on a subset of phase space whenever all
+derivatives in the displayed estimates exist in a neighborhood of each
+of its points.
+
+\subsubsection{Exact identity map to bracket-weight
+conventions}\label{exact-identity-map-to-bracket-weight-conventions}
+
+Some statements use \(\langle\xi\rangle=(1+|\xi|^2)^{1/2}\) and
+\(\langle\xi'\rangle=(1+|\xi'|^2)^{1/2}\). We retain the original
+weights and prove their precise correspondence with these additional
+weights. For every \(s\geq0\), \[
+ 1+s^2\leq(1+s)^2\leq2(1+s^2),
+\] because the first difference is \(2s\geq0\) and the second difference
+is \((s-1)^2\geq0\). Thus the two positive ratios \[
+ \frac{1+|\xi|}{\langle\xi\rangle},\qquad
+ \frac{1+|\xi'|}{\langle\xi'\rangle}
+ \quad\hbox{belong to }[1,\sqrt2].
+ \tag{MSI5a}
+\] When \(n=1\), the second ratio is exactly one. For a real number
+\(t\), put \(t_+=\max(t,0)\), \(t_-=\max(-t,0)\). Raising a number in
+\([1,\sqrt2]\) to \(t\) gives a number in \([2^{-t_-/2},2^{t_+/2}]\);
+for \(t<0\) the inequality reverses on taking the reciprocal, which
+proves this assertion in that case as well.
+
+Define the second, unchanged-derivative weight \[
+ \widetilde W_{p,q;\alpha}(\xi)
+ =\langle\xi\rangle^{p-\alpha_n}
+  \langle\xi'\rangle^{q-|\alpha'|},
+ \qquad u=p-\alpha_n,\quad v=q-|\alpha'|.
+ \tag{MSI5b}
+\] Multiplying the two ratio bounds gives, for these exact real
+exponents, \[
+ 2^{-(u_-+v_-)/2}\widetilde W_{p,q;\alpha}
+ \leq W_{p,q;\alpha}
+ \leq2^{(u_++v_+)/2}\widetilde W_{p,q;\alpha}.
+ \tag{MSI5c}
+\] Let \(\widetilde{\|f\|}_{p,q;\beta,\alpha}\) denote (MSI3) with only
+its denominator changed to \(\widetilde W\). Division by the positive
+bounds in (MSI5c), followed by the same supremum over all \(x,\xi\),
+proves \[
+\begin{aligned}
+ \|f\|_{p,q;\beta,\alpha}
+ &\leq2^{(u_-+v_-)/2}\widetilde{\|f\|}_{p,q;\beta,\alpha},\\
+ \widetilde{\|f\|}_{p,q;\beta,\alpha}
+ &\leq2^{(u_++v_+)/2}\|f\|_{p,q;\beta,\alpha}.
+\end{aligned}
+ \tag{MSI5d}
+\] Therefore the identity on the actual smooth matrix functions is a
+continuous linear bijection between the two symbol spaces with their
+families of seminorms. The two inequalities prove continuity in both
+directions. It commutes with every derivative, preserves matrix
+multiplication in its original order, and preserves the actual cutoff
+inverse \(b\). These are literal identities on the functions, not
+changes of phase-space coordinates or of the operator convention.
+
+The ellipticity constants also have definite transformations. Write
+\(c_R,C_R\) for scalar lower-bound and inverse-norm constants using
+\(R=1+|\xi|\), and \(c_{\langle\cdot\rangle},C_{\langle\cdot\rangle}\)
+for constants using \(\langle\xi\rangle\). The following choices are
+valid on exactly the same set: \[
+\begin{aligned}
+ |a|\geq c_R R^m
+   &\ \Longrightarrow\ c_{\langle\cdot\rangle}=c_R2^{-m_-/2},\\
+ |a|\geq c_{\langle\cdot\rangle}\langle\xi\rangle^m
+   &\ \Longrightarrow\ c_R=c_{\langle\cdot\rangle}2^{-m_+/2},\\
+ \|a^{-1}\|\leq C_R R^{-m}
+   &\ \Longrightarrow\ C_{\langle\cdot\rangle}=C_R2^{m_-/2},\\
+ \|a^{-1}\|\leq C_{\langle\cdot\rangle}\langle\xi\rangle^{-m}
+   &\ \Longrightarrow\ C_R=C_{\langle\cdot\rangle}2^{m_+/2}.
+\end{aligned}
+ \tag{MSI5e}
+\] For example the first implication follows from
+\(R^m\geq2^{-m_-/2}\langle\xi\rangle^m\); the second follows from
+\(\langle\xi\rangle^m\geq2^{-m_+/2}R^m\). The last two apply the
+corresponding upper bounds to exponent \(-m\). This proves all four
+implications, including negative and zero orders. Together with (MSI5d),
+it transfers every hypothesis and conclusion of the inverse theorem in
+both directions with explicit constants, retaining both weight
+presentations.
+
+\subsection{2. An exact finite formula for inverse
+derivatives}\label{an-exact-finite-formula-for-inverse-derivatives}
+
+Use a combined multiindex \(\mu=(\beta,\alpha)\in\mathbb N_0^{2n}\), and
+write \(\partial^\mu=\partial_x^\beta\partial_\xi^\alpha\). Inequalities
+and sums of combined multiindices are componentwise;
+\(\mu!=\prod_{j=1}^{2n}\mu_j!\), and \(0<|\nu|\) means that \(\nu\) is
+nonzero.
+
+Let \(a\) be smooth on an open set \(V\subset\mathbb R^{2n}\), with
+every \(a(z)\) invertible. The inverse \(r=a^{-1}\) is smooth: the
+cofactor formula expresses each entry of \(r\) as a polynomial in the
+entries of \(a\) divided by \(\det a\), a nowhere-zero smooth function
+on \(V\). For \(\mu\ne0\),
+
+\[
+\partial^\mu r
+=\sum_{k=1}^{|\mu|}(-1)^k
+ \sum_{\substack{\nu_1+\cdots+\nu_k=\mu\\|\nu_i|>0}}
+ \frac{\mu!}{\nu_1!\cdots\nu_k!}
+ r(\partial^{\nu_1}a)r\cdots
+   (\partial^{\nu_k}a)r.
+\tag{MSI6}
+\]
+
+The inner sum is over ordered lists. This is essential: in general, two
+lists obtained by interchanging \(\nu_i\) and \(\nu_j\) produce
+different matrix products.
+
+Here is a finite algebraic proof of (MSI6). Fix \(z\in V\) and
+\(L\geq|\mu|\). Work with polynomials in \(2n\) formal commuting
+variables \(h=(h_1,\ldots,h_{2n})\), with matrix coefficients, and
+identify two polynomials when their difference contains only monomials
+of total degree greater than \(L\). For any smooth matrix function
+\(f\), form the finite polynomial
+
+\[
+J_Lf(h)=\sum_{|\eta|\leq L}
+ \frac{\partial^\eta f(z)}{\eta!}h^\eta.
+\tag{MSI7}
+\]
+
+Formula (MSI4), coefficient by coefficient, proves
+\(J_L(fg)=(J_Lf)(J_Lg)\) in this finite quotient algebra. Let
+\(A=a(z)\), \(R=A^{-1}\), and \(H=J_La-A\). Every monomial of \(H\) has
+positive degree. Consequently \((RH)^{L+1}=0\) in the quotient. Direct
+multiplication, without commuting \(R\) and \(H\), now gives
+
+\[
+(A+H)^{-1}
+=\sum_{k=0}^{L}(-RH)^kR.
+\tag{MSI8}
+\]
+
+Indeed \(A+H=A(I_N+RH)\), and \((I_N+RH)\sum_{k=0}^{L}(-RH)^k=I_N\),
+with the same identity in the reverse order. On the other hand,
+\(J_La\,J_Lr=J_Lr\,J_La=I_N\), because \(ar=ra=I_N\) as actual smooth
+functions. An inverse in any associative algebra is unique: if
+\(XY=YX=I_N\) and \(XZ=ZX=I_N\), then \(Y=Y(XZ)=(YX)Z=Z\). Thus \(J_Lr\)
+equals (MSI8). The coefficient of \(h^\mu\) in \((-RH)^kR\) is the
+ordered product sum in (MSI6), divided by \(\mu!\). Comparing
+coefficients proves the formula at the arbitrary point \(z\).
+
+In particular, for a single coordinate \(z_j\) and for any two
+coordinates \(z_j,z_l\),
+
+\[
+\partial_jr=-r(\partial_ja)r,
+\qquad
+\partial_l\partial_jr
+=r(\partial_la)r(\partial_ja)r
+ +r(\partial_ja)r(\partial_la)r
+ -r(\partial_l\partial_ja)r.
+\tag{MSI9}
+\]
+
+These identities hold for matrices with no symmetry, normality,
+positivity, or commutation assumptions.
+
+\subsection{3. A cutoff inverse in the full mixed
+class}\label{a-cutoff-inverse-in-the-full-mixed-class}
+
+\textbf{Theorem.} Let \(m\in\mathbb R\),
+\(a\in S^{m,0}(\mathbb R^n\times\mathbb R^n;M_N(\mathbb C))\), and
+\(\chi\in C_c^\infty(\mathbb R_\xi^n;\mathbb C)\). Write
+
+\[
+\theta(\xi)=1-\chi(\xi),\qquad
+S=\operatorname{supp}\theta.
+\tag{MSI10}
+\]
+
+Suppose that \(a(x,\xi)\) is invertible whenever \(x\in\mathbb R^n\) and
+\(\xi\in S\), and that a constant \(C_0>0\) satisfies
+
+\[
+\|a(x,\xi)^{-1}\|
+\leq C_0(1+|\xi|)^{-m}
+\qquad (x\in\mathbb R^n,\ \xi\in S).
+\tag{MSI11}
+\]
+
+Define the function on the whole phase space by
+
+\[
+b(x,\xi)=
+\begin{cases}
+\theta(\xi)a(x,\xi)^{-1},&\xi\in S,\\
+0,&\xi\notin S.
+\end{cases}
+\tag{MSI12}
+\]
+
+Then \(b\in S^{-m,0}\), and the two pointwise identities
+
+\[
+a(x,\xi)b(x,\xi)=b(x,\xi)a(x,\xi)
+=\theta(\xi)I_N
+\tag{MSI13}
+\]
+
+hold on all of \(\mathbb R^{2n}\). In particular \(b=a^{-1}\) outside
+\(\operatorname{supp}\chi\). The theorem imposes no invertibility
+condition where \(\theta\) is identically zero in a neighborhood, and
+imposes neither reality nor \(0\leq\chi\leq1\) on the cutoff.
+
+For \(N=1\), the scalar hypothesis
+
+\[
+|a(x,\xi)|\geq c(1+|\xi|)^m
+\quad (x\in\mathbb R^n,\ \xi\in S),\qquad c>0,
+\tag{MSI14}
+\]
+
+is sufficient, with \(C_0=c^{-1}\). In that case (MSI12) is precisely
+the smooth extension of \((1-\chi(\xi))/a(x,\xi)\) by zero on the open
+region where \(1-\chi\) vanishes.
+
+\textbf{Proof, including seminorm constants.} First we justify
+smoothness of the globally defined function. If \(\xi_0\notin S\), then
+\(\theta\) is identically zero on a neighborhood of \(\xi_0\), so \(b\)
+is smooth near every \((x_0,\xi_0)\). If \(\xi_0\in S\), the invertible
+matrix \(a(x_0,\xi_0)\) remains invertible on some open neighborhood of
+\((x_0,\xi_0)\), because its continuous determinant is nonzero there
+after shrinking the neighborhood. On that neighborhood the smooth
+function \(\theta a^{-1}\) agrees with (MSI12): at points outside \(S\),
+\(\theta=0\). Thus it is a local smooth representative of \(b\) at every
+such point, including points of the boundary of \(S\). This proves
+smoothness without imposing an additional neighborhood lower bound in
+the hypotheses. Formula (MSI13) follows directly on \(S\); outside
+\(S\), both sides are zero.
+
+For every combined multiindex \(\nu=(\delta,\varepsilon)\), let
+
+\[
+A_\nu=\|a\|_{m,0;\delta,\varepsilon}.
+\tag{MSI15}
+\]
+
+Define the nonnegative finite constants
+
+\[
+Q_0=C_0,
+\qquad
+Q_\mu=
+\sum_{k=1}^{|\mu|}
+ \sum_{\substack{\nu_1+\cdots+\nu_k=\mu\\|\nu_i|>0}}
+ \frac{\mu!}{\nu_1!\cdots\nu_k!}
+ C_0^{k+1}\prod_{i=1}^{k}A_{\nu_i}
+\quad(\mu\ne0).
+\tag{MSI16}
+\]
+
+At a point with \(\xi\in S\), the inverse derivatives are understood
+through the local smooth inverse just constructed. Every term in (MSI6)
+has \(k+1\) factors \(a^{-1}\) and \(k\) differentiated factors \(a\).
+If \(\nu_i=(\beta^{(i)},\alpha^{(i)})\) and
+\(\sum_i\nu_i=(\beta,\alpha)\), its total first-weight exponent is
+
+\[
+-(k+1)m+\sum_{i=1}^{k}(m-\alpha_n^{(i)})
+=-m-\alpha_n;
+\tag{MSI17}
+\]
+
+its second-weight exponent is \(-\sum_i|\alpha'^{(i)}|=-|\alpha'|\).
+Therefore (MSI6), (MSI11), and the triangle inequality give the fully
+uniform bounds
+
+\[
+\|\partial_x^\beta\partial_\xi^\alpha a^{-1}(x,\xi)\|
+\leq Q_{(\beta,\alpha)}W_{-m,0;\alpha}(\xi)
+\qquad (\xi\in S).
+\tag{MSI18}
+\]
+
+For \(\alpha=\beta=0\), this is exactly (MSI11), so no derivative
+induction lacks a starting case.
+
+Choose a number \(R\geq1\) with
+\(\operatorname{supp}\chi\subset\{|\xi|\leq R\}\); \(R=1\) is allowed
+when \(\chi=0\). Set
+
+\[
+T_\delta=\sup_\xi|\partial_\xi^\delta\theta(\xi)|,
+\qquad
+L_\delta=
+\begin{cases}1,&\delta=0,\\(1+R)^{|\delta|},&\delta\ne0.
+\end{cases}
+\tag{MSI19}
+\]
+
+All \(T_\delta\) are finite. For \(\delta\ne0\), the derivative
+\(\partial^\delta\theta=-\partial^\delta\chi\) is supported in the ball
+of radius \(R\). On that support,
+
+\[
+\frac{W_{-m,0;\alpha-\delta}(\xi)}
+     {W_{-m,0;\alpha}(\xi)}
+=(1+|\xi|)^{\delta_n}(1+|\xi'|)^{|\delta'|}
+\leq (1+R)^{|\delta|}=L_\delta.
+\tag{MSI20}
+\]
+
+For \(\delta=0\), this ratio equals one everywhere. The product rule for
+\(b=\theta a^{-1}\), valid locally at every point of \(S\), now yields
+
+\[
+\|b\|_{-m,0;\beta,\alpha}
+\leq
+\sum_{\delta\leq\alpha}
+ \binom\alpha\delta T_\delta L_\delta
+ Q_{(\beta,\alpha-\delta)}.
+\tag{MSI21}
+\]
+
+To see why this is also a global estimate, at every point outside \(S\)
+all derivatives of \(b\) vanish on a neighborhood, and at every point of
+\(S\) the preceding local calculation applies. This includes every
+boundary point; no omitted limiting argument is needed. The right side
+of (MSI21) is a finite number depending only on the explicitly listed
+constants and derivative orders. Hence all seminorms required for
+\(S^{-m,0}\) are finite. In the scalar case, (MSI14) gives (MSI11) by
+taking reciprocals of the positive numerical lower bound. This proves
+every assertion. \(\square\)
+
+\subsection{4. Improvement for an individual frequency
+derivative}\label{improvement-for-an-individual-frequency-derivative}
+
+\textbf{Theorem.} Retain all hypotheses of Section 3. Fix one index
+\(j\in\{1,\ldots,n\}\). If
+
+\[
+a_j:=\partial_{\xi_j}a\in S^{m-1,0},
+\tag{MSI22}
+\]
+
+then
+
+\[
+\partial_{\xi_j}b\in S^{-m-1,0}.
+\tag{MSI23}
+\]
+
+There is no hypothesis here on the other first frequency derivatives
+beyond \(a\in S^{m,0}\). Consequently the same conclusion holds for any
+collection of indices for which (MSI22) holds, including all indices
+when the stronger assumption holds for all of them.
+
+\textbf{Proof.} At every point with \(\xi\in S\), the exact matrix
+identity (MSI9) gives
+
+\[
+\partial_{\xi_j}b
+=-\theta a^{-1}a_j a^{-1}
+  +(\partial_{\xi_j}\theta)a^{-1}.
+\tag{MSI24}
+\]
+
+The order of the two inverses and \(a_j\) is fixed. Each term has a
+smooth global extension by zero outside \(S\). Indeed near a point of
+\(S\) it is the displayed product of smooth functions and the locally
+defined smooth inverse. At a point outside \(S\), \(\theta\), all its
+derivatives, and the extended terms vanish on a neighborhood. On an
+overlap these local definitions agree. For the term involving
+\(\partial_{\xi_j}\theta\), observe that every derivative of \(\theta\)
+vanishes outside \(S\), because \(\theta\) is locally zero there. Thus
+the same gluing argument applies to that term.
+
+We give explicit bounds for every derivative in (MSI24). Let
+
+\[
+H^{(j)}_\kappa
+=\|a_j\|_{m-1,0;\kappa_x,\kappa_\xi}
+\quad
+\text{for }\kappa=(\kappa_x,\kappa_\xi)\in\mathbb N_0^{2n}.
+\tag{MSI25}
+\]
+
+When \(\mu=(\beta,\alpha)\), a term in the repeated product rule for
+\(\theta a^{-1}a_j a^{-1}\) is indexed by
+
+\[
+(0,\delta)+\nu+\kappa+\lambda=\mu,
+\qquad \delta\in\mathbb N_0^n,
+\quad \nu,\kappa,\lambda\in\mathbb N_0^{2n}.
+\tag{MSI26}
+\]
+
+The differentiated three matrix factors have combined first exponent
+\(-m+(m-1)-m-(\alpha_n-\delta_n)=-m-1-\alpha_n+\delta_n\), and combined
+second exponent \(-|\alpha'|+|\delta'|\). If \(\delta=0\), these are
+exactly the desired exponents. If \(\delta\ne0\), the cutoff derivative
+restricts the term to \(|\xi|\leq R\), and the weight correction is
+bounded by \(L_\delta\), exactly as in (MSI20). Thus the
+\((\beta,\alpha)\) seminorm of the first term of (MSI24), in
+\(S^{-m-1,0}\), is at most
+
+\[
+U_\mu^{(j)}=
+\sum_{(0,\delta)+\nu+\kappa+\lambda=\mu}
+ \frac{\mu!}{\delta!\nu!\kappa!\lambda!}
+ T_\delta L_\delta Q_\nu H^{(j)}_\kappa Q_\lambda.
+\tag{MSI27}
+\]
+
+Here \((0,\delta)!=\delta!\), which accounts for the denominator. The
+finite multinomial count follows from the same derivative-choice
+argument that proved (MSI4), now with four factors.
+
+For the second term of (MSI24), apply the product rule with
+\(\delta\leq\alpha\) derivatives hitting \(\partial_{\xi_j}\theta\). All
+such cutoff factors are supported in \(|\xi|\leq R\), even for
+\(\delta=0\), because their total derivative order \(|\delta|+1\) is
+positive. Their weight comparison is
+
+\[
+\frac{W_{-m,0;\alpha-\delta}(\xi)}
+     {W_{-m-1,0;\alpha}(\xi)}
+=(1+|\xi|)^{1+\delta_n}
+ (1+|\xi'|)^{|\delta'|}
+\leq(1+R)^{1+|\delta|}.
+\tag{MSI28}
+\]
+
+If \(e_j\in\mathbb N_0^n\) is the \(j\)-th frequency multiindex, the
+second term therefore has seminorm at most
+
+\[
+V_\mu^{(j)}=
+\sum_{\delta\leq\alpha}
+ \binom\alpha\delta T_{\delta+e_j}
+ (1+R)^{1+|\delta|}Q_{(\beta,\alpha-\delta)}.
+\tag{MSI29}
+\]
+
+Combining (MSI24), (MSI27), and (MSI29) gives
+
+\[
+\|\partial_{\xi_j}b\|_{-m-1,0;\beta,\alpha}
+\leq U_{(\beta,\alpha)}^{(j)}+V_{(\beta,\alpha)}^{(j)}<\infty.
+\tag{MSI30}
+\]
+
+The local extension argument again makes these global bounds. This
+proves (MSI23) for the chosen \(j\), without invoking any condition on
+another first derivative. \(\square\)
+
+There is an immediate distinction between the normal and tangential
+indices. The normal case \(j=n\) of (MSI22) follows already from
+\(a\in S^{m,0}\), since
+
+\[
+W_{m,0;\alpha+e_n}=W_{m-1,0;\alpha}.
+\tag{MSI31}
+\]
+
+For \(j<n\), the original class instead yields
+\(\partial_{\xi_j}a\in S^{m,-1}\). The first-frequency weight and
+second-frequency weight have different behavior when
+\(|\xi_n|\to\infty\) while \(\xi'\) is fixed. The following explicit
+example proves that the tangential improvement cannot be inferred from
+the original class alone.
+
+\subsection{5. Two examples with different
+purposes}\label{two-examples-with-different-purposes}
+
+\textbf{A singular matrix in the discarded region.} Let \(N=2\),
+\(n\geq1\), \(m=2\), and
+
+\[
+J=\begin{pmatrix}0&1\\0&0\end{pmatrix},
+\qquad
+a(x,\xi)=|\xi|^2I_2+J.
+\tag{MSI32}
+\]
+
+This symbol is independent of \(x\), and \(J^2=0\), \(\|J\|=1\). It
+belongs to \(S^{2,0}\), as may be checked at every derivative order
+directly. At order zero, \(\|a\|\leq|\xi|^2+1\leq(1+|\xi|)^2\). At a
+first frequency derivative, \(\partial_{\xi_j}a=2\xi_jI_2\). For
+\(j=n\), this is bounded by \(2(1+|\xi|)\), the required normal weight.
+For \(j<n\), \(|\xi_j|\leq|\xi'|\), so
+
+\[
+2|\xi_j|(1+|\xi'|)
+\leq2|\xi'|(1+|\xi'|)
+\leq2(1+|\xi|)^2.
+\tag{MSI33}
+\]
+
+At order two, the only nonzero derivatives are
+\(\partial_{\xi_j}^2a=2I_2\). For \(j=n\), the prescribed weight is one.
+For \(j<n\), it is \((1+|\xi|)^2(1+|\xi'|)^{-2}\geq1\). All mixed second
+derivatives, all derivatives of order greater than two, and every
+positive-order \(x\) derivative vanish. These observations prove all
+required seminorm bounds.
+
+Every \(a_j=2\xi_jI_2\) also lies in \(S^{1,0}\). At order zero its norm
+is at most \(2(1+|\xi|)\). Its only possibly nonzero positive-order
+derivative is \(\partial_{\xi_j}a_j=2I_2\); the required weight is one
+if \(j=n\), and \((1+|\xi|)/(1+|\xi'|)\geq1\) if \(j<n\). All other
+derivatives vanish.
+
+Choose a smooth cutoff \(\chi(\xi)\) equal to one when \(|\xi|\leq1\),
+equal to zero when \(|\xi|\geq2\), and taking values in \([0,1]\). Such
+a cutoff can be made explicitly. Define \(h(t)=e^{-1/t}\) for \(t>0\)
+and \(h(t)=0\) for \(t\leq0\); repeated differentiation for \(t>0\)
+gives a polynomial in \(t^{-1}\) times \(e^{-1/t}\), which tends to zero
+as \(t\downarrow0\), at every derivative order. Thus \(h\) is smooth.
+Set
+
+\[
+\chi(\xi)
+=\frac{h(4-|\xi|^2)}
+       {h(4-|\xi|^2)+h(|\xi|^2-1)}.
+\tag{MSI34}
+\]
+
+The denominator is strictly positive for every \(\xi\): if
+\(|\xi|^2\leq1\), the first term is positive; if \(|\xi|^2\geq4\), the
+second is positive; in between both are positive. This proves smoothness
+and all stated cutoff properties, including compact support. Every
+\(\xi\in\operatorname{supp}(1-\chi)\) has \(|\xi|\geq1\). For such
+\(\xi\), direct multiplication using \(J^2=0\) gives
+
+\[
+a(x,\xi)^{-1}=|\xi|^{-2}I_2-|\xi|^{-4}J,
+\qquad
+\|a(x,\xi)^{-1}\|
+\leq2|\xi|^{-2}\leq8(1+|\xi|)^{-2}.
+\tag{MSI35}
+\]
+
+Thus (MSI11) holds with \(C_0=8\). The resulting \(b\) belongs to
+\(S^{-2,0}\), and every frequency derivative belongs to \(S^{-3,0}\).
+Although \(a(x,0)=J\) is singular, \(b=0\) on \(|\xi|\leq1\), and the
+globally smooth inverse construction remains valid. This verifies
+concretely why global invertibility of \(a\) is unnecessary.
+
+\textbf{A tangential derivative that does not improve.} Let \(n\geq2\),
+and choose a real-valued \(\varphi\in C_c^\infty(\mathbb R^{n-1})\) with
+\(|\varphi|\leq1/2\) and \(\partial_{\xi_1}\varphi(\eta)\ne0\) at some
+point \(\eta\). Such a function is obtained by multiplying the
+coordinate \(\xi_1\) by a smooth cutoff equal to one near the origin and
+then multiplying by a sufficiently small positive constant; the cutoff
+is constructed by the same one-variable function \(h\) as in (MSI34).
+Put
+
+\[
+a(x,\xi)=2+\varphi(\xi'),\qquad \chi=0,
+\qquad b(x,\xi)=\frac1{2+\varphi(\xi')}.
+\tag{MSI36}
+\]
+
+The symbol \(a\) is scalar and at least \(3/2\). To verify
+\(a\in S^{0,0}\), if \(\alpha_n>0\) or \(\beta\ne0\), the required
+derivative is zero. If \(\beta=0\), \(\alpha_n=0\), and \(|\alpha'|>0\),
+the derivative \(\partial_{\xi'}^{\alpha'}\varphi\) has compact support
+in \(\xi'\). If that support lies in \(|\xi'|\leq R_\varphi\), the
+required seminorm is at most
+\(\|\partial^{\alpha'}\varphi\|_\infty(1+R_\varphi)^{|\alpha'|}\). The
+order-zero seminorm is at most \(5/2\). Thus every required estimate is
+established. The inverse bound (MSI11) holds for \(m=0\) with
+\(C_0=2/3\), and Section 3 yields \(b\in S^{0,0}\).
+
+At \(\xi'=\eta\), however,
+
+\[
+\partial_{\xi_1}b(x,\eta,\xi_n)
+=-\frac{\partial_{\xi_1}\varphi(\eta)}
+        {(2+\varphi(\eta))^2}\ne0,
+\tag{MSI37}
+\]
+
+independently of \(\xi_n\). The order-zero estimate for membership in
+\(S^{-1,0}\) would bound the absolute value of this nonzero constant by
+\(C(1+\sqrt{|\eta|^2+\xi_n^2})^{-1}\) for all \(\xi_n\). The right side
+tends to zero as \(|\xi_n|\to\infty\), which is impossible. Therefore
+\(\partial_{\xi_1}b\notin S^{-1,0}\). The same argument shows
+\(\partial_{\xi_1}a\notin S^{-1,0}\). This example preserves the full
+original mixed class while proving that the extra tangential assumption
+in (MSI22) has mathematical content.
+
+\subsection{6. Solved exercise: detect an invalid
+commutation}\label{solved-exercise-detect-an-invalid-commutation}
+
+\textbf{Exercise.} For \(n\geq1\), take a matrix symbol independent of
+\(\xi\) and of \(x_2,\ldots,x_n\), defined by
+
+\[
+a(x,\xi)=
+\begin{pmatrix}1&\sin x_1\\\cos x_1&1\end{pmatrix},
+\qquad \chi=0.
+\tag{MSI38}
+\]
+
+Prove that Section 3 applies with \(m=0\). Compute \(b\),
+\(\partial_{x_1}b\), and \(\partial_{x_1}^2b\) at \(x_1=0\). Determine
+whether replacing the inverse derivative by \(- (\partial_{x_1}a)b^2\)
+gives the correct first derivative there. Finally, explain the
+frequency-derivative conclusion for this example.
+
+\textbf{Solution.} Every \(x_1\) derivative of every entry of \(a\) is
+bounded, and all positive-order frequency derivatives vanish. These
+facts verify every seminorm of \(S^{0,0}\): when \(\alpha=0\), the
+denominator in (MSI3) is one; when \(\alpha\ne0\), the numerator
+vanishes. The determinant is
+
+\[
+d(x_1)=1-\sin x_1\cos x_1\geq\tfrac12,
+\qquad
+b(x,\xi)=\frac1{d(x_1)}
+\begin{pmatrix}1&-\sin x_1\\-\cos x_1&1\end{pmatrix}.
+\tag{MSI39}
+\]
+
+The bound on the determinant follows from
+\(2|\sin x_1\cos x_1|\leq\sin^2x_1+\cos^2x_1=1\). The numerator matrix
+has squared Frobenius norm \(2+\sin^2x_1+\cos^2x_1=3\), so its Euclidean
+operator norm is at most \(\sqrt3\): for any vector \(v\), the scalar
+Cauchy--Schwarz inequality applied to each row gives
+\(\|Mv\|^2\leq(\sum_{k,l}|M_{kl}|^2)\|v\|^2\). Consequently
+\(\|b\|\leq2\sqrt3\), and (MSI11) holds with \(C_0=2\sqrt3\). In
+particular the theorem supplies all inverse-symbol seminorms without
+assuming them in advance.
+
+At \(x_1=0\), write
+
+\[
+A=\begin{pmatrix}1&0\\1&1\end{pmatrix},
+\quad R=A^{-1}=\begin{pmatrix}1&0\\-1&1\end{pmatrix},
+\quad A_1=\begin{pmatrix}0&1\\0&0\end{pmatrix},
+\quad A_2=\begin{pmatrix}0&0\\-1&0\end{pmatrix}.
+\tag{MSI40}
+\]
+
+Formula (MSI9), with the products performed in their written order,
+gives
+
+\[
+\left.\partial_{x_1}b\right|_{x_1=0}
+=-RA_1R
+=\begin{pmatrix}1&-1\\-1&1\end{pmatrix},
+\tag{MSI41}
+\]
+
+and
+
+\[
+\left.\partial_{x_1}^2b\right|_{x_1=0}
+=2RA_1RA_1R-RA_2R
+=\begin{pmatrix}2&-2\\-1&2\end{pmatrix}.
+\tag{MSI42}
+\]
+
+For a direct check of the first multiplication,
+\(RA_1R=\bigl(\begin{smallmatrix}-1&1\\1&-1\end{smallmatrix}\bigr)\).
+For the second,
+\(RA_1RA_1R=\bigl(\begin{smallmatrix}1&-1\\-1&1\end{smallmatrix}\bigr)\)
+and \(RA_2R=\bigl(\begin{smallmatrix}0&0\\-1&0\end{smallmatrix}\bigr)\);
+these two explicit products yield (MSI42).
+
+By contrast,
+
+\[
+-A_1R^2
+=\begin{pmatrix}2&-1\\0&0\end{pmatrix}
+\ne
+\begin{pmatrix}1&-1\\-1&1\end{pmatrix}.
+\tag{MSI43}
+\]
+
+The proposed commutation therefore fails even for a uniformly
+invertible, smooth, globally bounded symbol. Every positive-order
+frequency derivative of \(a\) and \(b\) is zero. The symbols themselves
+have bounded position derivatives of every order, so both belong to
+\(S^{0,0}\). Indeed their entries are rational functions of sine and
+cosine with denominators bounded away from zero; repeated position
+differentiation therefore remains bounded. The nonzero symbols are not
+asserted to belong to every mixed order class. In particular (MSI22) and
+(MSI23) hold for each \(j\in\{1,\ldots,n\}\) with \(m=0\). This last
+conclusion comes from actual vanishing, whereas the noncommuting \(x_1\)
+derivatives above remain nonzero. \(\square\)
+
+\subsection{References}\label{references}
+
+\end{document}

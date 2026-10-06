@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The partial Legendre kernel and its adjoint shift · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/the-partial-legendre-kernel-and-its-adjoint-shift.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 4</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-partial-legendre-kernel-and-its-adjoint-shift">The partial Legendre kernel and its adjoint shift</h1>
+<p>The partial Legendre transformation exchanges some position coordinates with ratios of covector coordinates. Its kernel is supported on a smooth incidence equation. We will derive both the contact map and the shift that makes its right adjoint carry one coordinate subspace to a hypersurface. Calculating the right adjoint is essential: the unshifted transposed kernel and the relative dual kernel initially have different degrees.</p>
+<p>Use <a href="../sheaf-proof-readings/SH03-when-a-kernel-quantizes-a-contact-transformation.html">When a kernel quantizes a contact transformation</a> and <a href="../sheaf-proof-readings/SH03-dual-kernels-and-an-unchanged-parameter.html">Dual kernels and an unchanged parameter</a>. Their closed-submanifold, constructible-duality and localized adjunction prerequisites remain the inputs to the sheaf argument. The geometry and fibre calculation below are explicit.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</em></p>
+<h2 id="the-coordinate-transformation-and-its-inverse">The coordinate transformation and its inverse</h2>
+<p>Let <span class="math" data-tex="\(X=Y=\mathbb R^n\)">\(X=Y=\mathbb R^n\)</span>, with <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, and choose <span class="math" data-tex="\(0\leq p&lt;n\)">\(0\leq p&lt;n\)</span>. Put
+<span class="math" data-tex="\(I=\{1,\ldots,p\}\)">\(I=\{1,\ldots,p\}\)</span>, <span class="math" data-tex="\(J=\{p+1,\ldots,n-1\}\)">\(J=\{p+1,\ldots,n-1\}\)</span>, and <span class="math" data-tex="\(r=|J|=n-p-1\)">\(r=|J|=n-p-1\)</span>. Empty sums are zero. On
+<span class="math" data-tex="\(\Omega_X=\{\xi_n\ne0\}\)">\(\Omega_X=\{\xi_n\ne0\}\)</span> define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y_k&amp;=x_k,&amp;\eta_k&amp;=\xi_k &amp;&amp;(k\in I),\\
+y_j&amp;=\xi_j/\xi_n,&amp;\eta_j&amp;=-x_j\xi_n &amp;&amp;(j\in J),\\
+y_n&amp;=x_n+\sum_{j\in J}x_j\xi_j/\xi_n,&amp;\eta_n&amp;=\xi_n.
+\end{aligned}
+\qquad\text{(1)}
+\]">\[
+\begin{aligned}
+y_k&amp;=x_k,&amp;\eta_k&amp;=\xi_k &amp;&amp;(k\in I),\\
+y_j&amp;=\xi_j/\xi_n,&amp;\eta_j&amp;=-x_j\xi_n &amp;&amp;(j\in J),\\
+y_n&amp;=x_n+\sum_{j\in J}x_j\xi_j/\xi_n,&amp;\eta_n&amp;=\xi_n.
+\end{aligned}
+\qquad\text{(1)}
+\]</span>
+<p>Thus the last base coordinate is also
+<span class="math" data-tex="\(y_n=(\sum_{j=p+1}^n x_j\xi_j)/\xi_n\)">\(y_n=(\sum_{j=p+1}^n x_j\xi_j)/\xi_n\)</span>; its sum includes <span class="math" data-tex="\(j=n\)">\(j=n\)</span>. The image lies in <span class="math" data-tex="\(\Omega_Y=\{\eta_n\ne0\}\)">\(\Omega_Y=\{\eta_n\ne0\}\)</span>. Solving these equations gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+x_k&amp;=y_k,&amp;\xi_k&amp;=\eta_k &amp;&amp;(k\in I),\\
+x_j&amp;=-\eta_j/\eta_n,&amp;\xi_j&amp;=y_j\eta_n &amp;&amp;(j\in J),\\
+x_n&amp;=y_n+\sum_{j\in J}\eta_jy_j/\eta_n,&amp;\xi_n&amp;=\eta_n.
+\end{aligned}
+\qquad\text{(2)}
+\]">\[
+\begin{aligned}
+x_k&amp;=y_k,&amp;\xi_k&amp;=\eta_k &amp;&amp;(k\in I),\\
+x_j&amp;=-\eta_j/\eta_n,&amp;\xi_j&amp;=y_j\eta_n &amp;&amp;(j\in J),\\
+x_n&amp;=y_n+\sum_{j\in J}\eta_jy_j/\eta_n,&amp;\xi_n&amp;=\eta_n.
+\end{aligned}
+\qquad\text{(2)}
+\]</span>
+<p>Substitution in either direction gives the identity. Both maps are smooth on the indicated open sets. Their base coordinates are unchanged by positive cotangent scaling, and their output covectors scale by the same factor. Hence (1) defines a homogeneous diffeomorphism <span class="math" data-tex="\(\chi:\Omega_X\to\Omega_Y\)">\(\chi:\Omega_X\to\Omega_Y\)</span>.</p>
+<p>It preserves the tautological form exactly. In fact, using <span class="math" data-tex="\(y_j=\xi_j/\xi_n\)">\(y_j=\xi_j/\xi_n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_i\eta_i\,dy_i
+&amp;=\sum_{k\in I}\xi_k\,dx_k
+-\sum_{j\in J}x_j\xi_n\,dy_j
++\xi_n\,d\left(x_n+\sum_{j\in J}x_jy_j\right)\\
+&amp;=\sum_{k\in I}\xi_k\,dx_k+\xi_n\,dx_n
++\sum_{j\in J}\xi_n y_j\,dx_j
+=\sum_i\xi_i\,dx_i.
+\end{aligned}
+\qquad\text{(3)}
+\]">\[
+\begin{aligned}
+\sum_i\eta_i\,dy_i
+&amp;=\sum_{k\in I}\xi_k\,dx_k
+-\sum_{j\in J}x_j\xi_n\,dy_j
++\xi_n\,d\left(x_n+\sum_{j\in J}x_jy_j\right)\\
+&amp;=\sum_{k\in I}\xi_k\,dx_k+\xi_n\,dx_n
++\sum_{j\in J}\xi_n y_j\,dx_j
+=\sum_i\xi_i\,dx_i.
+\end{aligned}
+\qquad\text{(3)}
+\]</span>
+<p>The terms in <span class="math" data-tex="\(dy_j\)">\(dy_j\)</span> cancel before taking an exterior derivative. Thus <span class="math" data-tex="\(\chi^*\theta_Y=\theta_X\)">\(\chi^*\theta_Y=\theta_X\)</span>, and <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is a contact transformation in the homogeneous symplectic convention used by the course.</p>
+<h2 id="deriving-the-conormal-graph">Deriving the conormal graph</h2>
+<p>In <span class="math" data-tex="\(P=X\times Y\)">\(P=X\times Y\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+S=\left\{x_k-y_k=0\ (k\in I),\quad
+h=x_n-y_n+\sum_{j\in J}x_jy_j=0\right\}.
+\qquad\text{(4)}
+\]">\[
+S=\left\{x_k-y_k=0\ (k\in I),\quad
+h=x_n-y_n+\sum_{j\in J}x_jy_j=0\right\}.
+\qquad\text{(4)}
+\]</span>
+<p>The differentials of these <span class="math" data-tex="\(p+1\)">\(p+1\)</span> equations are linearly independent: the <span class="math" data-tex="\(dy_k\)">\(dy_k\)</span> coordinates distinguish the first <span class="math" data-tex="\(p\)">\(p\)</span>, and the <span class="math" data-tex="\(dy_n\)">\(dy_n\)</span> coefficient of <span class="math" data-tex="\(dh\)">\(dh\)</span> is <span class="math" data-tex="\(-1\)">\(-1\)</span>. This proves that <span class="math" data-tex="\(S\)">\(S\)</span> is closed and smooth of codimension <span class="math" data-tex="\(p+1\)">\(p+1\)</span>. A conormal is
+<span class="math" data-tex="\(\sum_{k\in I}a_k\,d(x_k-y_k)+b\,dh\)">\(\sum_{k\in I}a_k\,d(x_k-y_k)+b\,dh\)</span>.
+Its physical components are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|ccc}
+&amp;k\in I&amp;j\in J&amp;n\\\hline
+\xi&amp; a_k&amp;b y_j&amp;b\\
+\zeta&amp;-a_k&amp;b x_j&amp;-b.
+\end{array}
+\qquad\text{(5)}
+\]">\[
+\begin{array}{c|ccc}
+&amp;k\in I&amp;j\in J&amp;n\\\hline
+\xi&amp; a_k&amp;b y_j&amp;b\\
+\zeta&amp;-a_k&amp;b x_j&amp;-b.
+\end{array}
+\qquad\text{(5)}
+\]</span>
+<p>The input convention for a kernel on <span class="math" data-tex="\(X\times Y\)">\(X\times Y\)</span> is <span class="math" data-tex="\(\eta=-\zeta\)">\(\eta=-\zeta\)</span>. For <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, (5) is exactly (1), including <span class="math" data-tex="\(\eta_j=-x_j\xi_n\)">\(\eta_j=-x_j\xi_n\)</span>. The equation <span class="math" data-tex="\(h=0\)">\(h=0\)</span> supplies its last base coordinate. Conversely (1) satisfies (4) and (5) with <span class="math" data-tex="\(a_k=\xi_k\)">\(a_k=\xi_k\)</span>, <span class="math" data-tex="\(b=\xi_n\)">\(b=\xi_n\)</span>. Therefore the selected conormal relation is the graph of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, viewed as a correspondence whose forward kernel direction is from <span class="math" data-tex="\(Y\)">\(Y\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span>. The transformation of <span class="math" data-tex="\(\Phi_K\)">\(\Phi_K\)</span> is <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span>; the transformation of <span class="math" data-tex="\(\Psi_K\)">\(\Psi_K\)</span> is <span class="math" data-tex="\(\chi\)">\(\chi\)</span>.</p>
+<p>One selected component is present if and only if <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, if and only if the other selected component is present. This verifies the union of the selected regions. The two relation projections are diffeomorphisms by (1)–(2), and hence proper homeomorphisms on that relation.</p>
+<p>For any integer <span class="math" data-tex="\(d\)">\(d\)</span>, let <span class="math" data-tex="\(K_d=k_S[d]\)">\(K_d=k_S[d]\)</span>. Here <span class="math" data-tex="\(k\)">\(k\)</span> is a commutative ring with identity and finite global dimension, and all input complexes are bounded. The smooth closed-submanifold model makes <span class="math" data-tex="\(K_d\)">\(K_d\)</span> cohomologically constructible and places its microsupport in <span class="math" data-tex="\(T_S^*P\)">\(T_S^*P\)</span>. The submanifold microlocal Hom formula and the zero-section Fourier computation give</p>
+<span class="math math-display" data-tex="\[
+\mu\operatorname{hom}(k_S[d],k_S[d])|_{T_S^*P}
+\simeq k_{T_S^*P}.
+\qquad\text{(6)}
+\]">\[
+\mu\operatorname{hom}(k_S[d],k_S[d])|_{T_S^*P}
+\simeq k_{T_S^*P}.
+\qquad\text{(6)}
+\]</span>
+<p>The two shifts cancel in Hom. Under (6) the actual identity-induced map sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(\operatorname{id}_k\)">\(\operatorname{id}_k\)</span>, and is invertible. The local identity normalizations glue, without an orientation choice. The contact-kernel theorem therefore proves, for every <span class="math" data-tex="\(d\)">\(d\)</span>, inverse equivalences</p>
+<span class="math math-display" data-tex="\[
+\Phi_{K_d}:\mathcal D_Y(\Omega_Y)\rightleftarrows
+\mathcal D_X(\Omega_X):\Psi_{K_d}.
+\qquad\text{(7)}
+\]">\[
+\Phi_{K_d}:\mathcal D_Y(\Omega_Y)\rightleftarrows
+\mathcal D_X(\Omega_X):\Psi_{K_d}.
+\qquad\text{(7)}
+\]</span>
+<p>The shift we calculate next normalizes particular objects under these equivalences.</p>
+<h2 id="the-two-subspaces-correspond">The two subspaces correspond</h2>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+M=\{x_{p+1}=\cdots=x_n=0\}\subset X,\qquad
+N=\{y_n=0\}\subset Y.
+\qquad\text{(8)}
+\]">\[
+M=\{x_{p+1}=\cdots=x_n=0\}\subset X,\qquad
+N=\{y_n=0\}\subset Y.
+\qquad\text{(8)}
+\]</span>
+<p>At a point of <span class="math" data-tex="\(T_M^*X\cap\Omega_X\)">\(T_M^*X\cap\Omega_X\)</span>, the base coordinates <span class="math" data-tex="\(x_J,x_n\)">\(x_J,x_n\)</span> and the tangent covectors <span class="math" data-tex="\(\xi_I\)">\(\xi_I\)</span> vanish. Formula (1) gives <span class="math" data-tex="\(y_n=0\)">\(y_n=0\)</span>, <span class="math" data-tex="\(\eta_I=\eta_J=0\)">\(\eta_I=\eta_J=0\)</span>, and <span class="math" data-tex="\(\eta_n\ne0\)">\(\eta_n\ne0\)</span>. These are exactly the conditions for <span class="math" data-tex="\(T_N^*Y\cap\Omega_Y\)">\(T_N^*Y\cap\Omega_Y\)</span>. Conversely (2) recovers the stated vanishing coordinates from any such point of <span class="math" data-tex="\(T_N^*Y\)">\(T_N^*Y\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\chi(T_M^*X\cap\Omega_X)=T_N^*Y\cap\Omega_Y.
+\qquad\text{(9)}
+\]">\[
+\chi(T_M^*X\cap\Omega_X)=T_N^*Y\cap\Omega_Y.
+\qquad\text{(9)}
+\]</span>
+<p>The free coordinates <span class="math" data-tex="\(y_J\)">\(y_J\)</span> encode the ratios of the normal covectors to <span class="math" data-tex="\(M\)">\(M\)</span>; they are not additional tangent covectors to <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<h2 id="the-right-adjoint-and-the-required-degree">The right adjoint and the required degree</h2>
+<p>Let <span class="math" data-tex="\(q_Y:P\to Y\)">\(q_Y:P\to Y\)</span>. The right relative dual kernel is</p>
+<span class="math math-display" data-tex="\[
+Q_d=\mathrm tR\mathcal Hom_P(k_S[d],q_Y^{-1}\omega_Y)
+\simeq\mathrm t\left(k_S\otimes\operatorname{or}_{S/P}
+\otimes q_Y^{-1}\operatorname{or}_Y\right)[n-(p+1)-d].
+\qquad\text{(10)}
+\]">\[
+Q_d=\mathrm tR\mathcal Hom_P(k_S[d],q_Y^{-1}\omega_Y)
+\simeq\mathrm t\left(k_S\otimes\operatorname{or}_{S/P}
+\otimes q_Y^{-1}\operatorname{or}_Y\right)[n-(p+1)-d].
+\qquad\text{(10)}
+\]</span>
+<p>This uses exceptional degree <span class="math" data-tex="\(-(p+1)\)">\(-(p+1)\)</span> for the closed embedding, degree <span class="math" data-tex="\(n\)">\(n\)</span> for <span class="math" data-tex="\(\omega_Y\)">\(\omega_Y\)</span>, and degree <span class="math" data-tex="\(-d\)">\(-d\)</span> for dualizing the kernel shift. The total is <span class="math" data-tex="\(r-d\)">\(r-d\)</span>. We retain the intrinsic line in (10) before choosing its trivialization. The ordered defining functions in (4) trivialize the normal orientation system, and the standard coordinates orient <span class="math" data-tex="\(Y\)">\(Y\)</span>. Fix these choices. They give</p>
+<span class="math math-display" data-tex="\[
+Q_d\simeq k_{S^{\mathsf t}}[r-d].
+\qquad\text{(11)}
+\]">\[
+Q_d\simeq k_{S^{\mathsf t}}[r-d].
+\qquad\text{(11)}
+\]</span>
+<p>The exact constructible dual-kernel theorem identifies <span class="math" data-tex="\(\Psi_{K_d}\)">\(\Psi_{K_d}\)</span> with convolution by <span class="math" data-tex="\(Q_d\)">\(Q_d\)</span> on the selected cotangent regions. This is its adjunction comparison, not an identification inferred just from the support of a kernel.</p>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be any bounded complex of <span class="math" data-tex="\(k\)">\(k\)</span>-modules. We calculate this convolution on <span class="math" data-tex="\(A_M\)">\(A_M\)</span>, the constant coefficient complex supported on <span class="math" data-tex="\(M\)">\(M\)</span>. The tensor support is <span class="math" data-tex="\(S\cap(M\times Y)\)">\(S\cap(M\times Y)\)</span>. Its equations reduce to</p>
+<span class="math math-display" data-tex="\[
+x_k=y_k\ (k\in I),\qquad x_J=x_n=0,\qquad y_n=0.
+\qquad\text{(12)}
+\]">\[
+x_k=y_k\ (k\in I),\qquad x_J=x_n=0,\qquad y_n=0.
+\qquad\text{(12)}
+\]</span>
+<p>The projection of (12) to <span class="math" data-tex="\(Y\)">\(Y\)</span> is an isomorphism onto <span class="math" data-tex="\(N\)">\(N\)</span>: every <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span> has the unique preimage <span class="math" data-tex="\(x=(y_I,0,\ldots,0)\)">\(x=(y_I,0,\ldots,0)\)</span>. This projection is proper on the support. The tensor of the two closed constant support sheaves is the constant sheaf on their intersection; this statement follows on stalks from the flat coefficients <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span>. Tensoring further with a flat resolution of <span class="math" data-tex="\(A\)">\(A\)</span> gives the same statement for arbitrary bounded derived coefficients. Proper pushforward along the displayed isomorphism has no fibre degree or additional orientation factor. Consequently (11) yields</p>
+<span class="math math-display" data-tex="\[
+Q_d\circ_X A_M\simeq A_N[r-d],\qquad
+\Psi_{K_d}(A_M)\simeq A_N[r-d]
+\quad\text{in }\mathcal D_Y(\Omega_Y).
+\qquad\text{(13)}
+\]">\[
+Q_d\circ_X A_M\simeq A_N[r-d],\qquad
+\Psi_{K_d}(A_M)\simeq A_N[r-d]
+\quad\text{in }\mathcal D_Y(\Omega_Y).
+\qquad\text{(13)}
+\]</span>
+<p>The first is an ordinary convolution calculation with the chosen line trivialization; the second uses the localized dual-kernel comparison. No perfection assumption on <span class="math" data-tex="\(A\)">\(A\)</span> was used.</p>
+<p>The required normalization is therefore</p>
+<span class="math math-display" data-tex="\[
+\boxed{d=n-p-1=r,\qquad
+\Psi_{k_S[r]}(A_M)\simeq A_N\text{ on }\Omega_Y.}
+\qquad\text{(14)}
+\]">\[
+\boxed{d=n-p-1=r,\qquad
+\Psi_{k_S[r]}(A_M)\simeq A_N\text{ on }\Omega_Y.}
+\qquad\text{(14)}
+\]</span>
+<p>For a nonzero ring <span class="math" data-tex="\(k\)">\(k\)</span>, this degree is forced already by <span class="math" data-tex="\(A=k\)">\(A=k\)</span>: at any selected conormal point of <span class="math" data-tex="\(N\)">\(N\)</span>, the exact submanifold test detects <span class="math" data-tex="\(k[r-d]\)">\(k[r-d]\)</span>. A nonzero module concentrated in degree zero cannot be isomorphic to its nonzero shift. When the coefficient complex is zero, the normalization assertion is of course vacuous for that object.</p>
+<p>The equivalence (7) then also gives <span class="math" data-tex="\(\Phi_{k_S[r]}(A_N)\simeq A_M\)">\(\Phi_{k_S[r]}(A_N)\simeq A_M\)</span> on <span class="math" data-tex="\(\Omega_X\)">\(\Omega_X\)</span>. It gives this by the invertible counit. An ordinary forward fibre calculation can have contributions away from <span class="math" data-tex="\(M\)">\(M\)</span>; the localization in this last assertion is essential.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="an-explicit-three-dimensional-transformation">An explicit three-dimensional transformation</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Take <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, <span class="math" data-tex="\(x=(1,2,3)\)">\(x=(1,2,3)\)</span>, and <span class="math" data-tex="\(\xi=(4,5,2)\)">\(\xi=(4,5,2)\)</span>. Calculate <span class="math" data-tex="\(y,\eta\)">\(y,\eta\)</span>, recover <span class="math" data-tex="\(x,\xi\)">\(x,\xi\)</span>, and give the normalized kernel shift.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(J=\{1,2\}\)">\(J=\{1,2\}\)</span> and <span class="math" data-tex="\(r=2\)">\(r=2\)</span>. Formula (1) gives <span class="math" data-tex="\(y=(2,5/2,10)\)">\(y=(2,5/2,10)\)</span>, since <span class="math" data-tex="\(3+1\cdot2+2\cdot(5/2)=10\)">\(3+1\cdot2+2\cdot(5/2)=10\)</span>, and <span class="math" data-tex="\(\eta=(-2,-4,2)\)">\(\eta=(-2,-4,2)\)</span>. Formula (2) gives <span class="math" data-tex="\(x_1=1\)">\(x_1=1\)</span>, <span class="math" data-tex="\(x_2=2\)">\(x_2=2\)</span>, <span class="math" data-tex="\(x_3=10+((-2)2+(-4)(5/2))/2=3\)">\(x_3=10+((-2)2+(-4)(5/2))/2=3\)</span>, and <span class="math" data-tex="\(\xi=(4,5,2)\)">\(\xi=(4,5,2)\)</span>. The normalized kernel is <span class="math" data-tex="\(k_S[2]\)">\(k_S[2]\)</span>; its right dual is the unshifted transposed support sheaf after the specified orientation trivializations.</p>
+<h3 id="the-empty-exchange-block">The empty exchange block</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>What happens when <span class="math" data-tex="\(p=n-1\)">\(p=n-1\)</span>? Include <span class="math" data-tex="\(n=1\)">\(n=1\)</span> in the answer.</p>
+<p><strong>Solution.</strong> The set <span class="math" data-tex="\(J\)">\(J\)</span> is empty and <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Equations (1) are <span class="math" data-tex="\(y=x\)">\(y=x\)</span>, <span class="math" data-tex="\(\eta=\xi\)">\(\eta=\xi\)</span>. Equations (4) say <span class="math" data-tex="\(x_i=y_i\)">\(x_i=y_i\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, so <span class="math" data-tex="\(S\)">\(S\)</span> is the diagonal. Also <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> are the same coordinate hyperplane in their respective copies. The shift in (14) is zero and the two localized operators are the identity. When <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, necessarily <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, and the same calculation gives the diagonal and the point hyperplanes <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, on the regions with nonzero sole covector.</p>
+<h3 id="transposition-does-not-perform-relative-duality">Transposition does not perform relative duality</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, the ordinary convolution <span class="math" data-tex="\(k_{S^{\mathsf t}}\circ_X k_M\)">\(k_{S^{\mathsf t}}\circ_X k_M\)</span> is unshifted <span class="math" data-tex="\(k_N\)">\(k_N\)</span>. Why does this calculation not give the desired right-adjoint normalization for <span class="math" data-tex="\(K_0=k_S\)">\(K_0=k_S\)</span>? Calculate <span class="math" data-tex="\(\Psi_{K_0}(k_M)\)">\(\Psi_{K_0}(k_M)\)</span>.</p>
+<p><strong>Solution.</strong> Transposition exchanges the two support factors but contributes no duality complex. The right adjoint uses the relative dual in (10). The exceptional normal degree is <span class="math" data-tex="\(-(p+1)\)">\(-(p+1)\)</span>, and the input dualizing degree is <span class="math" data-tex="\(n\)">\(n\)</span>, whose sum is <span class="math" data-tex="\(r\)">\(r\)</span>. Hence its kernel is <span class="math" data-tex="\(k_{S^{\mathsf t}}[r]\)">\(k_{S^{\mathsf t}}[r]\)</span> after orientation choices, and <span class="math" data-tex="\(\Psi_{K_0}(k_M)\simeq k_N[r]\)">\(\Psi_{K_0}(k_M)\simeq k_N[r]\)</span> on <span class="math" data-tex="\(\Omega_Y\)">\(\Omega_Y\)</span>. The unshifted transposed kernel becomes the right relative dual only after shifting the original kernel by <span class="math" data-tex="\(r\)">\(r\)</span>. Keeping track of which operator the question asks for determines the sign and value of the normalization.</p>
+<h3 id="an-ordinary-forward-contribution-away-from-the-subspace">An ordinary forward contribution away from the subspace</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Assume <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span> and <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>. At <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(x_J\ne0\)">\(x_J\ne0\)</span>, compute the fibre of <span class="math" data-tex="\(S\cap(X\times N)\to X\)">\(S\cap(X\times N)\to X\)</span> and the ordinary stalk of <span class="math" data-tex="\(\Phi_{k_S[r]}(k_N)\)">\(\Phi_{k_S[r]}(k_N)\)</span>. Reconcile it with the localized conclusion after (14).</p>
+<p><strong>Solution.</strong> The conditions fix <span class="math" data-tex="\(y_I=x_I\)">\(y_I=x_I\)</span>, <span class="math" data-tex="\(y_n=0\)">\(y_n=0\)</span>, and impose <span class="math" data-tex="\(\sum_{j\in J}x_jy_j=-x_n\)">\(\sum_{j\in J}x_jy_j=-x_n\)</span> on the <span class="math" data-tex="\(r\)">\(r\)</span> remaining coordinates. Since <span class="math" data-tex="\(x_J\ne0\)">\(x_J\ne0\)</span>, this is an affine space of dimension <span class="math" data-tex="\(r-1\)">\(r-1\)</span>. Its compactly supported cohomology is <span class="math" data-tex="\(k[-(r-1)]\)">\(k[-(r-1)]\)</span>, with the affine orientation line understood and locally trivialized. The kernel shift gives the stalk <span class="math" data-tex="\(k[1]\)">\(k[1]\)</span>, whereas <span class="math" data-tex="\((k_M)_x=0\)">\((k_M)_x=0\)</span>. On the open set <span class="math" data-tex="\(x_J\ne0\)">\(x_J\ne0\)</span>, these affine fibres form a smooth locally trivial affine bundle, so this contribution is locally constant, up to its orientation line and degree. Its microsupport there lies in the zero section and misses <span class="math" data-tex="\(\xi_n\ne0\)">\(\xi_n\ne0\)</span>. Thus its nonzero ordinary stalk is consistent with the equivalence on <span class="math" data-tex="\(\Omega_X\)">\(\Omega_X\)</span>. The global ordinary sheaf need not equal <span class="math" data-tex="\(k_M\)">\(k_M\)</span>.</p>
+<h3 id="coefficients-and-the-identity-condition">Coefficients and the identity condition</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(A=[A^{-1}\to A^0]\)">\(A=[A^{-1}\to A^0]\)</span> be a bounded coefficient complex whose modules need not be projective or finitely generated. Explain why (13) still applies, and why this does not weaken the constructibility hypothesis on the kernel in (7).</p>
+<p><strong>Solution.</strong> Resolve <span class="math" data-tex="\(A\)">\(A\)</span> by a bounded flat complex, possible because the coefficient ring has finite global dimension. The two constant support factors have stalks <span class="math" data-tex="\(0\)">\(0\)</span> or the flat module <span class="math" data-tex="\(k\)">\(k\)</span>, so their tensor produces exactly the intersection support. The support projection (12) is an isomorphism onto <span class="math" data-tex="\(N\)">\(N\)</span>, and its pushforward carries each coefficient differential to the same differential. Thus the result is <span class="math" data-tex="\(A_N[r-d]\)">\(A_N[r-d]\)</span>, with the stated orientation choices. The contact criterion is imposed on <span class="math" data-tex="\(K_d=k_S[d]\)">\(K_d=k_S[d]\)</span>, whose coefficients are locally rank-one perfect, not on the arbitrary input <span class="math" data-tex="\(A_M\)">\(A_M\)</span>. Its identity map in (6) remains <span class="math" data-tex="\(1\mapsto\operatorname{id}_k\)">\(1\mapsto\operatorname{id}_k\)</span>; allowing arbitrary bounded inputs neither changes that map nor replaces the kernel's constructibility requirement.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="projective-incidence-as-a-contact-kernel.html">← Projective incidence as a contact kernel</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="fourier-sato-transport-of-microlocal-morphisms.html">Fourier-Sato transport of microlocal morphisms →</a></span></nav>
+<p class="small source-link"><a href="src/the-partial-legendre-kernel-and-its-adjoint-shift.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

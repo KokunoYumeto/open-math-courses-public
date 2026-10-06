@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modular curves and their genus · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-03.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="modular-curves-and-their-genus">Modular curves and their genus</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A fundamental set records how a group identifies points. A modular curve turns those identifications into a complex surface, with one added point for each end. The genus then measures how much topology remains after the identifications. Three finite counts determine it: the index, the elliptic points and the cusps.</p>
+<p>We use <a href="LG-MF-02.html">Congruence subgroups, cusps and elliptic points</a>, basic complex analysis and the topology of compact oriented surfaces. The free background texts are [Voight open book, Chapters 34–35], [Teleman 2003] and [Stein author PDF, Chapter 6]. The genus calculation below derives its covering count from the explicit two-triangle decomposition of the modular domain; it does not take a general covering formula as an unexplained numerical input.</p>
+<p>Throughout, <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is a subgroup of finite index in <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span>, and
+<span class="math math-display" data-tex="\[
+G=\mathrm{PSL}_2(\mathbb Z),\qquad H=\bar{\Gamma}\subset G,\qquad d=[G:H].
+\]">\[
+G=\mathrm{PSL}_2(\mathbb Z),\qquad H=\bar{\Gamma}\subset G,\qquad d=[G:H].
+\]</span>
+The action and all surface invariants depend on <span class="math" data-tex="\(H\)">\(H\)</span>. In particular, an irregular cusp still has its <em>projective</em> width, as defined in the preceding lesson. Write
+<span class="math math-display" data-tex="\[
+Y(\Gamma)=H\backslash\mathfrak H,\qquad
+X(\Gamma)=H\backslash\mathfrak H^*,\qquad
+\mathfrak H^*=\mathfrak H\cup\mathbb P^1(\mathbb Q).
+\]">\[
+Y(\Gamma)=H\backslash\mathfrak H,\qquad
+X(\Gamma)=H\backslash\mathfrak H^*,\qquad
+\mathfrak H^*=\mathfrak H\cup\mathbb P^1(\mathbb Q).
+\]</span>
+We will specify the topology on the last two spaces. We use <span class="math" data-tex="\(X_0(N)\)">\(X_0(N)\)</span>, <span class="math" data-tex="\(X_1(N)\)">\(X_1(N)\)</span> and <span class="math" data-tex="\(X(N)\)">\(X(N)\)</span> for the groups <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>, <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span> and <span class="math" data-tex="\(\Gamma(N)\)">\(\Gamma(N)\)</span>.</p>
+<h2 id="1-why-the-quotient-is-a-surface">1. Why the quotient is a surface</h2>
+<p><strong>Lemma 1.1 (finiteness on compact sets).</strong> For compact subsets <span class="math" data-tex="\(K_1,K_2\subset\mathfrak H\)">\(K_1,K_2\subset\mathfrak H\)</span>, only finitely many <span class="math" data-tex="\(\gamma\in\mathrm{SL}_2(\mathbb Z)\)">\(\gamma\in\mathrm{SL}_2(\mathbb Z)\)</span> satisfy <span class="math" data-tex="\(\gamma K_1\cap K_2\ne\varnothing\)">\(\gamma K_1\cap K_2\ne\varnothing\)</span>.</p>
+<p><em>Proof.</em> Empty sets cause no difficulty, so choose constants <span class="math" data-tex="\(0&lt;A\le B\)">\(0&lt;A\le B\)</span> and <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span> such that every point of either compact set has height between <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>, and real part of absolute value at most <span class="math" data-tex="\(M\)">\(M\)</span>. If
+<span class="math math-display" data-tex="\[
+\gamma=\begin{pmatrix}a&amp;b\\c&amp;d_0\end{pmatrix},
+\quad z\in K_1,\quad \gamma z\in K_2,
+\]">\[
+\gamma=\begin{pmatrix}a&amp;b\\c&amp;d_0\end{pmatrix},
+\quad z\in K_1,\quad \gamma z\in K_2,
+\]</span>
+the imaginary-part identity from the first lesson gives
+<span class="math math-display" data-tex="\[
+|cz+d_0|^2=\frac{\operatorname{Im}z}{\operatorname{Im}(\gamma z)}
+\le B/A.
+\]">\[
+|cz+d_0|^2=\frac{\operatorname{Im}z}{\operatorname{Im}(\gamma z)}
+\le B/A.
+\]</span>
+Put <span class="math" data-tex="\(R=\sqrt{B/A}\)">\(R=\sqrt{B/A}\)</span>. The imaginary part of <span class="math" data-tex="\(cz+d_0\)">\(cz+d_0\)</span> gives <span class="math" data-tex="\(|c|\le R/A\)">\(|c|\le R/A\)</span>; its real part then gives <span class="math" data-tex="\(|d_0|\le R+|c|M\)">\(|d_0|\le R+|c|M\)</span>. There are finitely many possible integral bottom rows.</p>
+<p>For each such primitive row choose one determinant-one matrix <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span> with that row. Any other has top row differing by an integral multiple of <span class="math" data-tex="\((c,d_0)\)">\((c,d_0)\)</span>, because the difference has zero determinant with this primitive row. Thus it is <span class="math" data-tex="\(T^n\gamma_0\)">\(T^n\gamma_0\)</span>, where <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>. The compact set <span class="math" data-tex="\(\gamma_0K_1\)">\(\gamma_0K_1\)</span> has bounded real parts, and <span class="math" data-tex="\(T^n\)">\(T^n\)</span> adds <span class="math" data-tex="\(n\)">\(n\)</span>. Meeting <span class="math" data-tex="\(K_2\)">\(K_2\)</span> therefore bounds <span class="math" data-tex="\(n\)">\(n\)</span>. There are finitely many choices altogether. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2.</strong> The space <span class="math" data-tex="\(Y(\Gamma)\)">\(Y(\Gamma)\)</span> is Hausdorff. At each <span class="math" data-tex="\(\tau\in\mathfrak H\)">\(\tau\in\mathfrak H\)</span> there is an open neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> with
+<span class="math math-display" data-tex="\[
+\{\gamma\in H:\gamma U\cap U\ne\varnothing\}
+=\operatorname{Stab}_H(\tau).
+\]">\[
+\{\gamma\in H:\gamma U\cap U\ne\varnothing\}
+=\operatorname{Stab}_H(\tau).
+\]</span>
+The neighborhood may be chosen invariant under the stabilizer.</p>
+<p><em>Proof.</em> Choose a small closed disc about <span class="math" data-tex="\(\tau\)">\(\tau\)</span> lying in <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>. Lemma 1.1 leaves only finitely many elements whose translates can meet it. For each of these that does not fix <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, shrink an open neighborhood so that its translate misses it; continuity and <span class="math" data-tex="\(\gamma\tau\ne\tau\)">\(\gamma\tau\ne\tau\)</span> permit this. The intersection of the finitely many neighborhoods has the required exclusion property. Intersect its translates under the finite stabilizer to make it invariant. Every stabilizer element then meets it, since it contains <span class="math" data-tex="\(\tau\)">\(\tau\)</span>.</p>
+<p>For Hausdorffness take points <span class="math" data-tex="\(\tau,\sigma\)">\(\tau,\sigma\)</span> in distinct orbits and small compact disc neighborhoods. Only finitely many <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> can carry the first disc into the second. For each, <span class="math" data-tex="\(\gamma\tau\ne\sigma\)">\(\gamma\tau\ne\sigma\)</span>, so shrink the two neighborhoods to exclude that intersection. Their orbit images are disjoint open sets. These images are open because the inverse image of an orbit image is the union of all translates of the original open set. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, use the disc coordinate
+<span class="math math-display" data-tex="\[
+w_\tau(z)=\frac{z-\tau}{z-\bar\tau}.
+\]">\[
+w_\tau(z)=\frac{z-\tau}{z-\bar\tau}.
+\]</span>
+It maps <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span> biholomorphically to the unit disc and sends <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>: solving for <span class="math" data-tex="\(z\)">\(z\)</span> gives <span class="math" data-tex="\(z=(\tau-w\bar\tau)/(1-w)\)">\(z=(\tau-w\bar\tau)/(1-w)\)</span>, and direct subtraction of its conjugate gives positive imaginary part exactly when <span class="math" data-tex="\(|w|&lt;1\)">\(|w|&lt;1\)</span>. For a real determinant-one matrix <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> with bottom row <span class="math" data-tex="\((c,d_0)\)">\((c,d_0)\)</span>, direct cross-multiplication gives
+<span class="math math-display" data-tex="\[
+w_{\gamma\tau}(\gamma z)
+=\frac{c\bar\tau+d_0}{c\tau+d_0}w_\tau(z).
+\]">\[
+w_{\gamma\tau}(\gamma z)
+=\frac{c\bar\tau+d_0}{c\tau+d_0}w_\tau(z).
+\]</span>
+The multiplier has modulus one. Thus a transformation fixing <span class="math" data-tex="\(\tau\)">\(\tau\)</span> becomes a rotation, without invoking Schwarz's lemma. The trivial rotation subgroup is cyclic of order one. For a nontrivial finite subgroup take its smallest positive argument <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, divide every other argument by <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with a remainder in <span class="math" data-tex="\([0,\theta)\)">\([0,\theta)\)</span>, and use closure under quotient to rule out a positive remainder. Dividing <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> in the same way shows <span class="math" data-tex="\(2\pi=e\theta\)">\(2\pi=e\theta\)</span>. The subgroup consists of all <span class="math" data-tex="\(e\)">\(e\)</span>-th roots of unity.</p>
+<p><strong>Proposition 1.3 (the interior charts).</strong> A coordinate on <span class="math" data-tex="\(Y(\Gamma)\)">\(Y(\Gamma)\)</span> near the orbit of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is
+<span class="math math-display" data-tex="\[
+u=w_\tau(z)^e,\qquad e=|\operatorname{Stab}_H(\tau)|.
+\]">\[
+u=w_\tau(z)^e,\qquad e=|\operatorname{Stab}_H(\tau)|.
+\]</span>
+Here <span class="math" data-tex="\(e=1,2\)">\(e=1,2\)</span> or <span class="math" data-tex="\(3\)">\(3\)</span>. These charts make <span class="math" data-tex="\(Y(\Gamma)\)">\(Y(\Gamma)\)</span> a Riemann surface.</p>
+<p><em>Proof.</em> Choose a sufficiently small round disc <span class="math" data-tex="\(|w_\tau|&lt;r\)">\(|w_\tau|&lt;r\)</span> satisfying Proposition 1.2. Two points in this disc have the same orbit exactly when their <span class="math" data-tex="\(w_\tau\)">\(w_\tau\)</span>-coordinates differ by an <span class="math" data-tex="\(e\)">\(e\)</span>-th root of unity. The power map consequently identifies its quotient with the disc <span class="math" data-tex="\(|u|&lt;r^e\)">\(|u|&lt;r^e\)</span>. It is a homeomorphism on the quotient: the power map is open and its fibers are exactly these finite rotation orbits. The possible orders follow from the stabilizer classification in the first lesson.</p>
+<p>Away from the centers, a local branch of the <span class="math" data-tex="\(e\)">\(e\)</span>-th root has nonzero derivative. Changes of lift are fractional linear transformations, so all transitions there are holomorphic with nonzero derivative. If an overlap contains an elliptic center, its two lifts are <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and <span class="math" data-tex="\(\gamma\tau\)">\(\gamma\tau\)</span> for some <span class="math" data-tex="\(\gamma\in H\)">\(\gamma\in H\)</span>. The map
+<span class="math math-display" data-tex="\[
+w_{\gamma\tau}(\gamma z)=\lambda w_\tau(z),\qquad |\lambda|=1,
+\]">\[
+w_{\gamma\tau}(\gamma z)=\lambda w_\tau(z),\qquad |\lambda|=1,
+\]</span>
+is a disc automorphism fixing zero. Both stabilizers have the same order. Hence the transition between the quotient coordinates is <span class="math" data-tex="\(u\mapsto\lambda^e u\)">\(u\mapsto\lambda^e u\)</span>, again biholomorphic. This checks the centers as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An elliptic point is therefore a smooth point of the resulting Riemann surface. The quotient map from <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span> branches there. The hyperbolic metric retains a cone angle <span class="math" data-tex="\(2\pi/e\)">\(2\pi/e\)</span>, which is additional geometric information; it does not make the complex surface singular.</p>
+<h2 id="2-filling-each-end-with-a-cusp">2. Filling each end with a cusp</h2>
+<p>For <span class="math" data-tex="\(Y&gt;0\)">\(Y&gt;0\)</span>, put
+<span class="math math-display" data-tex="\[
+B_Y=\{z\in\mathfrak H:\operatorname{Im}z&gt;Y\}.
+\]">\[
+B_Y=\{z\in\mathfrak H:\operatorname{Im}z&gt;Y\}.
+\]</span>
+Give <span class="math" data-tex="\(\mathfrak H^*\)">\(\mathfrak H^*\)</span> its usual topology on <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span> and the neighborhoods
+<span class="math math-display" data-tex="\[
+\alpha B_Y\cup\{\alpha\infty\},
+\qquad \alpha\in\mathrm{SL}_2(\mathbb Z),
+\]">\[
+\alpha B_Y\cup\{\alpha\infty\},
+\qquad \alpha\in\mathrm{SL}_2(\mathbb Z),
+\]</span>
+at a rational boundary point. A different integral <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with the same boundary point differs by <span class="math" data-tex="\(\pm T^n\)">\(\pm T^n\)</span>; it defines the same horoballs. The modular group acts by homeomorphisms. We give <span class="math" data-tex="\(X(\Gamma)\)">\(X(\Gamma)\)</span> the quotient topology.</p>
+<p><strong>Lemma 2.1 (separation of horoballs).</strong> If <span class="math" data-tex="\(Y&gt;1\)">\(Y&gt;1\)</span>, two horoballs <span class="math" data-tex="\(\alpha B_Y\)">\(\alpha B_Y\)</span> and <span class="math" data-tex="\(\gamma\beta B_Y\)">\(\gamma\beta B_Y\)</span>, with <span class="math" data-tex="\(\gamma\in H\)">\(\gamma\in H\)</span>, can meet only if <span class="math" data-tex="\(\alpha\infty\)">\(\alpha\infty\)</span> and <span class="math" data-tex="\(\beta\infty\)">\(\beta\infty\)</span> are the same cusp of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><em>Proof.</em> Set <span class="math" data-tex="\(g=\alpha^{-1}\gamma\beta\)">\(g=\alpha^{-1}\gamma\beta\)</span> and write its bottom row as <span class="math" data-tex="\((c,d_0)\)">\((c,d_0)\)</span>. If <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span> and <span class="math" data-tex="\(\operatorname{Im}z=y&gt;Y\)">\(\operatorname{Im}z=y&gt;Y\)</span>, then
+<span class="math math-display" data-tex="\[
+\operatorname{Im}(gz)
+=\frac{y}{|cz+d_0|^2}
+\le\frac{1}{c^2y}&lt;1/Y&lt;Y.
+\]">\[
+\operatorname{Im}(gz)
+=\frac{y}{|cz+d_0|^2}
+\le\frac{1}{c^2y}&lt;1/Y&lt;Y.
+\]</span>
+So <span class="math" data-tex="\(gB_Y\)">\(gB_Y\)</span> cannot meet <span class="math" data-tex="\(B_Y\)">\(B_Y\)</span>. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, the integral determinant-one matrix <span class="math" data-tex="\(g\)">\(g\)</span> fixes <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, so <span class="math" data-tex="\(\gamma\beta\infty=\alpha\infty\)">\(\gamma\beta\infty=\alpha\infty\)</span>, as asserted. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(s=\alpha\infty\)">\(s=\alpha\infty\)</span>, and let <span class="math" data-tex="\(h\)">\(h\)</span> be its projective width. The stabilizer of <span class="math" data-tex="\(\infty\)">\(\infty\)</span> in <span class="math" data-tex="\(\alpha^{-1}H\alpha\)">\(\alpha^{-1}H\alpha\)</span> is generated by <span class="math" data-tex="\(T^h\)">\(T^h\)</span>.</p>
+<p><strong>Proposition 2.2 (the cusp chart).</strong> On a sufficiently high horoball, the coordinate
+<span class="math math-display" data-tex="\[
+q_s=\exp\left(\frac{2\pi i\,\alpha^{-1}z}{h}\right)
+\]">\[
+q_s=\exp\left(\frac{2\pi i\,\alpha^{-1}z}{h}\right)
+\]</span>
+identifies a neighborhood of <span class="math" data-tex="\(s\)">\(s\)</span> in <span class="math" data-tex="\(X(\Gamma)\)">\(X(\Gamma)\)</span> with a disc, sending <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>. It is compatible with the interior charts.</p>
+<p><em>Proof.</em> Lemma 2.1 says that any identification within <span class="math" data-tex="\(\alpha B_Y\)">\(\alpha B_Y\)</span> comes from the stabilizer of <span class="math" data-tex="\(s\)">\(s\)</span>. In the coordinate <span class="math" data-tex="\(\zeta=\alpha^{-1}z\)">\(\zeta=\alpha^{-1}z\)</span>, these identifications are exactly <span class="math" data-tex="\(\zeta\mapsto\zeta+nh\)">\(\zeta\mapsto\zeta+nh\)</span>. Exponentiation identifies the quotient of <span class="math" data-tex="\(B_Y\)">\(B_Y\)</span> with
+<span class="math math-display" data-tex="\[
+0&lt;|q_s|&lt;\exp(-2\pi Y/h).
+\]">\[
+0&lt;|q_s|&lt;\exp(-2\pi Y/h).
+\]</span>
+Its fibers are exactly those translations; it is open, and its derivative never vanishes. Adding <span class="math" data-tex="\(s\)">\(s\)</span> fills the puncture. The horoball neighborhoods correspond to smaller discs about zero, so this extension is a homeomorphism.</p>
+<p>For a second representative of the same cusp, write <span class="math" data-tex="\(\beta=\gamma\alpha T^n\)">\(\beta=\gamma\alpha T^n\)</span> projectively, with <span class="math" data-tex="\(\gamma\in H\)">\(\gamma\in H\)</span>. The width is still <span class="math" data-tex="\(h\)">\(h\)</span>; on the quotient the new coordinate is <span class="math" data-tex="\(\exp(-2\pi i n/h)q_s\)">\(\exp(-2\pi i n/h)q_s\)</span>. Thus transitions at a cusp are biholomorphic. Overlaps with interior charts avoid the added point. There we may choose a branch of the logarithm and, where needed, of the root used in Proposition 1.3. These recover the holomorphic lifts with nonzero derivative. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.3.</strong> The space <span class="math" data-tex="\(X(\Gamma)\)">\(X(\Gamma)\)</span> is a compact connected Riemann surface.</p>
+<p><em>Proof.</em> We first check the remaining separation issue. Distinct cusps have disjoint neighborhoods by Lemma 2.1. A cusp can also be separated from an interior orbit. For a compact disc <span class="math" data-tex="\(K\subset\mathfrak H\)">\(K\subset\mathfrak H\)</span>, let <span class="math" data-tex="\(A\le\operatorname{Im}z\le B\)">\(A\le\operatorname{Im}z\le B\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. Every integral fractional linear image of a point of <span class="math" data-tex="\(K\)">\(K\)</span> has height at most <span class="math" data-tex="\(\max(B,1/A)\)">\(\max(B,1/A)\)</span>: if its bottom-left entry is zero, its bottom-right entry is <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>; otherwise use the estimate in Lemma 2.1. Apply this to <span class="math" data-tex="\(\alpha^{-1}\gamma K\)">\(\alpha^{-1}\gamma K\)</span>, for all <span class="math" data-tex="\(\gamma\in H\)">\(\gamma\in H\)</span>, and choose a higher horoball. Its cusp neighborhood misses the orbit image of the interior of <span class="math" data-tex="\(K\)">\(K\)</span>. Together with Proposition 1.2 this proves Hausdorffness.</p>
+<p>The charts in Propositions 1.3 and 2.2 give the compatible complex structure. Second countability can also be checked directly: use a countable disc base on <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, and at each of the countably many rational cusps use heights <span class="math" data-tex="\(Y\in\mathbb Z_{&gt;0}\)">\(Y\in\mathbb Z_{&gt;0}\)</span>. Their orbit images form a countable base because the quotient map is open.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+F=\{z\in\mathfrak H:|\operatorname{Re}z|\le1/2,\ |z|\ge1\}.
+\]">\[
+F=\{z\in\mathfrak H:|\operatorname{Re}z|\le1/2,\ |z|\ge1\}.
+\]</span>
+The space <span class="math" data-tex="\(F\cup\{\infty\}\)">\(F\cup\{\infty\}\)</span>, with the topology just defined, is compact. Indeed, any open cover contains a neighborhood of <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, hence covers the part of <span class="math" data-tex="\(F\)">\(F\)</span> above some height <span class="math" data-tex="\(Y\)">\(Y\)</span>. The remainder has <span class="math" data-tex="\(\sqrt3/2\le y\le Y\)">\(\sqrt3/2\le y\le Y\)</span> and <span class="math" data-tex="\(|x|\le1/2\)">\(|x|\le1/2\)</span>; it is a compact Euclidean set and has a finite subcover.</p>
+<p>Choose representatives <span class="math" data-tex="\(r_1,\ldots,r_d\)">\(r_1,\ldots,r_d\)</span> for <span class="math" data-tex="\(H\backslash G\)">\(H\backslash G\)</span>. Reduction to <span class="math" data-tex="\(F\)">\(F\)</span> shows that <span class="math" data-tex="\(\bigcup_j r_jF\)">\(\bigcup_j r_jF\)</span> maps onto <span class="math" data-tex="\(Y(\Gamma)\)">\(Y(\Gamma)\)</span>. Every rational cusp is <span class="math" data-tex="\(g\infty\)">\(g\infty\)</span> for some <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>; writing <span class="math" data-tex="\(g=hr_j\)">\(g=hr_j\)</span> shows that the same finite union of <span class="math" data-tex="\(r_j(F\cup\{\infty\})\)">\(r_j(F\cup\{\infty\})\)</span> maps onto <span class="math" data-tex="\(X(\Gamma)\)">\(X(\Gamma)\)</span>. These are continuous images of compact spaces, proving compactness. Finally <span class="math" data-tex="\(Y(\Gamma)\)">\(Y(\Gamma)\)</span> is connected as an image of <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, and every added cusp is in its closure. Hence <span class="math" data-tex="\(X(\Gamma)\)">\(X(\Gamma)\)</span> is connected. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-covering-map-and-the-genus">3. The covering map and the genus</h2>
+<p>Write <span class="math" data-tex="\(X(1)=G\backslash\mathfrak H^*\)">\(X(1)=G\backslash\mathfrak H^*\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> The underlying topological space of <span class="math" data-tex="\(X(1)\)">\(X(1)\)</span> is a sphere.</p>
+<p><em>Proof.</em> Cut <span class="math" data-tex="\(F\cup\{\infty\}\)">\(F\cup\{\infty\}\)</span> along the positive imaginary axis. The two pieces are closed topological triangles, with vertices <span class="math" data-tex="\((\rho,i,\infty)\)">\((\rho,i,\infty)\)</span> and <span class="math" data-tex="\((\rho+1,i,\infty)\)">\((\rho+1,i,\infty)\)</span>, where <span class="math" data-tex="\(\rho=(-1+i\sqrt3)/2\)">\(\rho=(-1+i\sqrt3)/2\)</span>. Their vertical sides are identified by <span class="math" data-tex="\(T\)">\(T\)</span>, their circular sides by <span class="math" data-tex="\(S\)">\(S\)</span>, and their common imaginary side by the identity. The complete boundary-identification theorem from the first lesson supplies precisely these identifications, including their endpoints. Thus the quotient consists of two closed discs with their boundary circles identified by a homeomorphism. Extending a parametrization of that boundary into each disc identifies the quotient with the two hemispheres of a sphere. Equivalently, it has three vertices, three edges and two faces, hence Euler characteristic <span class="math" data-tex="\(3-3+2=2\)">\(3-3+2=2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is a topological statement. The later construction of <span class="math" data-tex="\(j\)">\(j\)</span> will give a particular holomorphic isomorphism <span class="math" data-tex="\(X(1)\to\mathbb P^1(\mathbb C)\)">\(X(1)\to\mathbb P^1(\mathbb C)\)</span>.</p>
+<p><strong>Proposition 3.2 (all branching).</strong> The natural map
+<span class="math math-display" data-tex="\[
+\pi:X(\Gamma)\longrightarrow X(1)
+\]">\[
+\pi:X(\Gamma)\longrightarrow X(1)
+\]</span>
+is holomorphic of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Away from the images of <span class="math" data-tex="\(i,\rho,\infty\)">\(i,\rho,\infty\)</span> it is unramified. At an interior lift <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, let <span class="math" data-tex="\(E=|\operatorname{Stab}_G(\tau)|\)">\(E=|\operatorname{Stab}_G(\tau)|\)</span> and <span class="math" data-tex="\(e=|\operatorname{Stab}_H(\tau)|\)">\(e=|\operatorname{Stab}_H(\tau)|\)</span>. Its ramification index is <span class="math" data-tex="\(E/e\)">\(E/e\)</span>. At a cusp its ramification index is the projective width <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><em>Proof.</em> At an ordinary point the same small disc is a coordinate upstairs and downstairs, so the map is locally a biholomorphism. At an elliptic lift, the coordinates constructed above are <span class="math" data-tex="\(u=w_\tau^e\)">\(u=w_\tau^e\)</span> and <span class="math" data-tex="\(v=w_\tau^E\)">\(v=w_\tau^E\)</span>. The map is
+<span class="math math-display" data-tex="\[
+v=u^{E/e}.
+\]">\[
+v=u^{E/e}.
+\]</span>
+At a cusp <span class="math" data-tex="\(s=\alpha\infty\)">\(s=\alpha\infty\)</span>, use <span class="math" data-tex="\(\zeta=\alpha^{-1}z\)">\(\zeta=\alpha^{-1}z\)</span>. The downstairs width is <span class="math" data-tex="\(1\)">\(1\)</span>, so its coordinate is <span class="math" data-tex="\(\exp(2\pi i\zeta)\)">\(\exp(2\pi i\zeta)\)</span>, while the upstairs coordinate is <span class="math" data-tex="\(\exp(2\pi i\zeta/h)\)">\(\exp(2\pi i\zeta/h)\)</span>. The map is <span class="math" data-tex="\(q\mapsto q^h\)">\(q\mapsto q^h\)</span>. These formulas prove holomorphicity, including the added points, and identify all the ramification.</p>
+<p>For a point <span class="math" data-tex="\(z\in\mathfrak H\)">\(z\in\mathfrak H\)</span> with trivial <span class="math" data-tex="\(G\)">\(G\)</span>-stabilizer, its fiber consists of the points represented by <span class="math" data-tex="\(gz\)">\(gz\)</span>, indexed without repetitions by <span class="math" data-tex="\(H\backslash G\)">\(H\backslash G\)</span>. There are <span class="math" data-tex="\(d\)">\(d\)</span> of them. This proves the degree assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The only general formula needed is the following.</p>
+<p><strong>Riemann–Hurwitz formula.</strong> If <span class="math" data-tex="\(f:C\to D\)">\(f:C\to D\)</span> is a nonconstant holomorphic map of degree <span class="math" data-tex="\(d_f\)">\(d_f\)</span> between compact connected Riemann surfaces, and <span class="math" data-tex="\(r_P\)">\(r_P\)</span> is its local ramification index at <span class="math" data-tex="\(P\)">\(P\)</span>, then
+<span class="math math-display" data-tex="\[
+2g(C)-2=d_f(2g(D)-2)+\sum_{P\in C}(r_P-1).
+\]">\[
+2g(C)-2=d_f(2g(D)-2)+\sum_{P\in C}(r_P-1).
+\]</span>
+Only finitely many summands are nonzero. The general statement is recorded in the free notes [Teleman 2003, Theorem 5.17 and Lecture 7]. Here is a direct proof of exactly the modular-cover case used in this lesson.</p>
+<p><em>Proof for <span class="math" data-tex="\(\pi:X(\Gamma)\to X(1)\)">\(\pi:X(\Gamma)\to X(1)\)</span>.</em> The two triangles in Lemma 3.1 give a finite cell decomposition of the sphere: three vertices <span class="math" data-tex="\(i,\rho,\infty\)">\(i,\rho,\infty\)</span>, three edges and two faces. Proposition 3.2 places every branch value at a vertex. Each open edge and face has <span class="math" data-tex="\(d\)">\(d\)</span> disjoint lifts. Indeed, path lifting on an edge follows by continuing local inverses along successive small coordinate discs; compactness prevents a continuation from escaping. For a triangle interior, two continued inverses along homotopic paths agree: subdivide a path homotopy into rectangles lying in coordinate discs and use uniqueness of the local inverse on each rectangle. The interior is a disc, so every loop contracts, and the <span class="math" data-tex="\(d\)">\(d\)</span> inverse branches extend throughout it. Closure of the lifted cells attaches at their endpoint vertices by the local maps <span class="math" data-tex="\(u\mapsto u^{r_P}\)">\(u\mapsto u^{r_P}\)</span> in Proposition 3.2. There are consequently <span class="math" data-tex="\(3d\)">\(3d\)</span> edges and <span class="math" data-tex="\(2d\)">\(2d\)</span> faces upstairs.</p>
+<p>Over any vertex the local indices sum to <span class="math" data-tex="\(d\)">\(d\)</span>, since a nearby ordinary point has <span class="math" data-tex="\(d\)">\(d\)</span> inverse images and a local map of index <span class="math" data-tex="\(r_P\)">\(r_P\)</span> supplies <span class="math" data-tex="\(r_P\)">\(r_P\)</span> of them. Thus the number of vertices upstairs is
+<span class="math math-display" data-tex="\[
+3d-\sum_P(r_P-1).
+\]">\[
+3d-\sum_P(r_P-1).
+\]</span>
+Subtracting the edge count and adding the face count gives
+<span class="math" data-tex="\(\chi(X)=2d-\sum_P(r_P-1)\)">\(\chi(X)=2d-\sum_P(r_P-1)\)</span>. Using Appendix A, Theorem S, this cell count is <span class="math" data-tex="\(2-2g\)">\(2-2g\)</span>, with <span class="math" data-tex="\(g\)">\(g\)</span> the number of torus handles. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(\varepsilon_2,\varepsilon_3\)">\(\varepsilon_2,\varepsilon_3\)</span> be the numbers of elliptic points of <span class="math" data-tex="\(H\)">\(H\)</span> of orders <span class="math" data-tex="\(2,3\)">\(2,3\)</span>, and let <span class="math" data-tex="\(c\)">\(c\)</span> be its number of cusps.</p>
+<p><strong>Theorem 3.3 (the genus formula).</strong>
+<span class="math math-display" data-tex="\[
+\boxed{\displaystyle
+g(X(\Gamma))=1+\frac d{12}
+-\frac{\varepsilon_2}{4}
+-\frac{\varepsilon_3}{3}
+-\frac c2.}
+\]">\[
+\boxed{\displaystyle
+g(X(\Gamma))=1+\frac d{12}
+-\frac{\varepsilon_2}{4}
+-\frac{\varepsilon_3}{3}
+-\frac c2.}
+\]</span></p>
+<p><em>Proof.</em> The fiber over <span class="math" data-tex="\(i\)">\(i\)</span> contains <span class="math" data-tex="\(\varepsilon_2\)">\(\varepsilon_2\)</span> points with ramification index <span class="math" data-tex="\(1\)">\(1\)</span>; the other points have ramification index <span class="math" data-tex="\(2\)">\(2\)</span>. Since the indices in this fiber sum to <span class="math" data-tex="\(d\)">\(d\)</span>, there are <span class="math" data-tex="\((d-\varepsilon_2)/2\)">\((d-\varepsilon_2)/2\)</span> of the latter, contributing <span class="math" data-tex="\((d-\varepsilon_2)/2\)">\((d-\varepsilon_2)/2\)</span> to Riemann–Hurwitz. More explicitly, right multiplication by <span class="math" data-tex="\(S\)">\(S\)</span> partitions <span class="math" data-tex="\(H\backslash G\)">\(H\backslash G\)</span> into fixed points and two-cycles. A fixed coset is exactly a point whose upstairs stabilizer retains the order-two symmetry.</p>
+<p>Similarly, right multiplication by <span class="math" data-tex="\(ST\)">\(ST\)</span> has fixed points and three-cycles. The fiber over <span class="math" data-tex="\(\rho\)">\(\rho\)</span> contributes <span class="math" data-tex="\(2(d-\varepsilon_3)/3\)">\(2(d-\varepsilon_3)/3\)</span>. The cusps contribute
+<span class="math math-display" data-tex="\[
+\sum_s(h_s-1)=d-c,
+\]">\[
+\sum_s(h_s-1)=d-c,
+\]</span>
+because the cusp-width sum is <span class="math" data-tex="\(d\)">\(d\)</span>, as proved in the preceding lesson. Proposition 3.2 excludes all other ramification. Since <span class="math" data-tex="\(X(1)\)">\(X(1)\)</span> has genus zero, Riemann–Hurwitz now gives
+<span class="math math-display" data-tex="\[
+2g-2=-2d+\frac{d-\varepsilon_2}{2}
++\frac{2(d-\varepsilon_3)}3+d-c
+=\frac d6-\frac{\varepsilon_2}{2}
+-\frac{2\varepsilon_3}{3}-c.
+\]">\[
+2g-2=-2d+\frac{d-\varepsilon_2}{2}
++\frac{2(d-\varepsilon_3)}3+d-c
+=\frac d6-\frac{\varepsilon_2}{2}
+-\frac{2\varepsilon_3}{3}-c.
+\]</span>
+Dividing by two and adding one proves the formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>As a check on the signs, multiplying a fundamental set's area <span class="math" data-tex="\(\pi/3\)">\(\pi/3\)</span> by <span class="math" data-tex="\(d\)">\(d\)</span> and rearranging this identity yields
+<span class="math math-display" data-tex="\[
+\mu(Y(\Gamma))
+=2\pi\left(2g-2+c+\frac{\varepsilon_2}{2}
++\frac{2\varepsilon_3}{3}\right).
+\]">\[
+\mu(Y(\Gamma))
+=2\pi\left(2g-2+c+\frac{\varepsilon_2}{2}
++\frac{2\varepsilon_3}{3}\right).
+\]</span>
+Thus the cusp and elliptic terms correct the Euler characteristic in exactly the way the local geometry suggests.</p>
+<h2 id="4-computing-the-examples">4. Computing the examples</h2>
+<p>For <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>, the preceding lesson gives
+<span class="math math-display" data-tex="\[
+d=N\prod_{p\mid N}(1+p^{-1}),\qquad
+c=\sum_{\delta\mid N}\varphi(\gcd(\delta,N/\delta)).
+\]">\[
+d=N\prod_{p\mid N}(1+p^{-1}),\qquad
+c=\sum_{\delta\mid N}\varphi(\gcd(\delta,N/\delta)).
+\]</span>
+The counts <span class="math" data-tex="\(\varepsilon_2,\varepsilon_3\)">\(\varepsilon_2,\varepsilon_3\)</span> are respectively the numbers of roots of <span class="math" data-tex="\(x^2+1\)">\(x^2+1\)</span> and <span class="math" data-tex="\(x^2+x+1\)">\(x^2+x+1\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>. The empty product at <span class="math" data-tex="\(N=1\)">\(N=1\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. The prime-power root formulas and the Chinese remainder theorem evaluate them. Here is the whole calculation for <span class="math" data-tex="\(N\le30\)">\(N\le30\)</span>; each row displays every input to Theorem 3.3.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(N\)">\(N\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(d\)">\(d\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\varepsilon_2\)">\(\varepsilon_2\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\varepsilon_3\)">\(\varepsilon_3\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(c\)">\(c\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(g(X_0(N))\)">\(g(X_0(N))\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">14</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">15</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">18</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">20</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">21</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">22</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">24</td>
+<td style="text-align:right">48</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">25</td>
+<td style="text-align:right">30</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">26</td>
+<td style="text-align:right">42</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">27</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">28</td>
+<td style="text-align:right">48</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">29</td>
+<td style="text-align:right">30</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">30</td>
+<td style="text-align:right">72</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">3</td>
+</tr>
+</tbody>
+</table>
+<p>For example, the divisors of <span class="math" data-tex="\(18\)">\(18\)</span> give cusp contributions <span class="math" data-tex="\(1,1,2,2,1,1\)">\(1,1,2,2,1,1\)</span>, so <span class="math" data-tex="\(c=8\)">\(c=8\)</span>. Its index is <span class="math" data-tex="\(18(3/2)(4/3)=36\)">\(18(3/2)(4/3)=36\)</span>. Reduction modulo <span class="math" data-tex="\(3\)">\(3\)</span> excludes roots of <span class="math" data-tex="\(x^2+1\)">\(x^2+1\)</span>; reduction modulo <span class="math" data-tex="\(2\)">\(2\)</span> excludes roots of <span class="math" data-tex="\(x^2+x+1\)">\(x^2+x+1\)</span>. Hence its genus is <span class="math" data-tex="\(1+36/12-8/2=0\)">\(1+36/12-8/2=0\)</span>. At <span class="math" data-tex="\(25\)">\(25\)</span>, the cusp contributions are <span class="math" data-tex="\(1,4,1\)">\(1,4,1\)</span>; the two roots of <span class="math" data-tex="\(x^2+1\)">\(x^2+1\)</span> modulo <span class="math" data-tex="\(5\)">\(5\)</span> lift uniquely modulo <span class="math" data-tex="\(25\)">\(25\)</span>, and <span class="math" data-tex="\(x^2+x+1\)">\(x^2+x+1\)</span> has no root already modulo <span class="math" data-tex="\(5\)">\(5\)</span>. Thus <span class="math" data-tex="\(1+30/12-2/4-6/2=0\)">\(1+30/12-2/4-6/2=0\)</span>.</p>
+<p><strong>Prime levels.</strong> At <span class="math" data-tex="\(11\)">\(11\)</span>, both elliptic counts vanish and there are two cusps:
+<span class="math math-display" data-tex="\[
+g(X_0(11))=1+12/12-2/2=1.
+\]">\[
+g(X_0(11))=1+12/12-2/2=1.
+\]</span>
+At <span class="math" data-tex="\(23\)">\(23\)</span> the same counts give <span class="math" data-tex="\(g=1+24/12-1=2\)">\(g=1+24/12-1=2\)</span>. At <span class="math" data-tex="\(37\)">\(37\)</span>, both elliptic counts are <span class="math" data-tex="\(2\)">\(2\)</span>, so
+<span class="math math-display" data-tex="\[
+g(X_0(37))=1+38/12-2/4-2/3-1=2.
+\]">\[
+g(X_0(37))=1+38/12-2/4-2/3-1=2.
+\]</span>
+For a prime <span class="math" data-tex="\(p\equiv1\pmod{12}\)">\(p\equiv1\pmod{12}\)</span>, this simplifies to
+<span class="math math-display" data-tex="\[
+g(X_0(p))=\frac{p-13}{12}.
+\]">\[
+g(X_0(p))=\frac{p-13}{12}.
+\]</span>
+For completeness, when <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>, the four residue classes <span class="math" data-tex="\(1,5,7,11\)">\(1,5,7,11\)</span> modulo <span class="math" data-tex="\(12\)">\(12\)</span> give respectively
+<span class="math math-display" data-tex="\[
+\frac{p-13}{12},\quad\frac{p-5}{12},\quad
+\frac{p-7}{12},\quad\frac{p+1}{12}.
+\]">\[
+\frac{p-13}{12},\quad\frac{p-5}{12},\quad
+\frac{p-7}{12},\quad\frac{p+1}{12}.
+\]</span>
+These follow by inserting <span class="math" data-tex="\((\varepsilon_2,\varepsilon_3)=(2,2),(2,0),(0,2),(0,0)\)">\((\varepsilon_2,\varepsilon_3)=(2,2),(2,0),(0,2),(0,0)\)</span>.</p>
+<p><strong>Principal level.</strong> For <span class="math" data-tex="\(N\ge3\)">\(N\ge3\)</span>, the projective index is
+<span class="math math-display" data-tex="\[
+d=\frac{N^3}{2}\prod_{p\mid N}(1-p^{-2}),
+\]">\[
+d=\frac{N^3}{2}\prod_{p\mid N}(1-p^{-2}),
+\]</span>
+there are no elliptic points, and every cusp has width <span class="math" data-tex="\(N\)">\(N\)</span>. To see the last assertion, normality reduces it to <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, where <span class="math" data-tex="\(T^h\equiv\pm I\pmod N\)">\(T^h\equiv\pm I\pmod N\)</span> forces the positive sign, since <span class="math" data-tex="\(1\not\equiv-1\pmod N\)">\(1\not\equiv-1\pmod N\)</span>, and then <span class="math" data-tex="\(N\mid h\)">\(N\mid h\)</span>. The width sum gives <span class="math" data-tex="\(c=d/N\)">\(c=d/N\)</span>. In particular <span class="math" data-tex="\(X(7)\)">\(X(7)\)</span> has <span class="math" data-tex="\(d=168\)">\(d=168\)</span>, <span class="math" data-tex="\(c=24\)">\(c=24\)</span>, and
+<span class="math math-display" data-tex="\[
+g(X(7))=1+168/12-24/2=3.
+\]">\[
+g(X(7))=1+168/12-24/2=3.
+\]</span>
+Here are the small principal levels, including the exceptional index at <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(N\)">\(N\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(d\)">\(d\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(c\)">\(c\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(g(X(N))\)">\(g(X(N))\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">60</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">72</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">168</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">192</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">324</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">360</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">13</td>
+</tr>
+</tbody>
+</table>
+<p>At <span class="math" data-tex="\(N=2\)">\(N=2\)</span>, torsion-freeness, index <span class="math" data-tex="\(6\)">\(6\)</span> and the three width-two cusps were proved in the preceding lesson, giving the first row directly.</p>
+<p><strong>A marked point of order eleven.</strong> The projective index for <span class="math" data-tex="\(\Gamma_1(11)\)">\(\Gamma_1(11)\)</span> is <span class="math" data-tex="\(60\)">\(60\)</span>, and it has no elliptic points. Its cusp count is
+<span class="math math-display" data-tex="\[
+c=\frac12\sum_{\delta\mid11}\varphi(\delta)\varphi(11/\delta)
+=\frac12(10+10)=10.
+\]">\[
+c=\frac12\sum_{\delta\mid11}\varphi(\delta)\varphi(11/\delta)
+=\frac12(10+10)=10.
+\]</span>
+Thus <span class="math" data-tex="\(g(X_1(11))=1+60/12-10/2=1\)">\(g(X_1(11))=1+60/12-10/2=1\)</span>.</p>
+<p><strong>An irregular cusp does not change the surface coordinate.</strong> The image of <span class="math" data-tex="\(\Gamma_1(4)\)">\(\Gamma_1(4)\)</span> equals the image of <span class="math" data-tex="\(\Gamma_0(4)\)">\(\Gamma_0(4)\)</span>: a diagonal unit modulo <span class="math" data-tex="\(4\)">\(4\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, and changing the matrix sign puts it in <span class="math" data-tex="\(\Gamma_1(4)\)">\(\Gamma_1(4)\)</span>. Consequently <span class="math" data-tex="\(X_1(4)\)">\(X_1(4)\)</span> has <span class="math" data-tex="\(d=6\)">\(d=6\)</span>, no elliptic points and three cusps of projective widths <span class="math" data-tex="\(1,4,1\)">\(1,4,1\)</span>. Its genus is <span class="math" data-tex="\(0\)">\(0\)</span>. The cusp <span class="math" data-tex="\(1/2\)">\(1/2\)</span> is irregular; using its positive width <span class="math" data-tex="\(2\)">\(2\)</span> in the surface construction would give the wrong width sum. The surface chart uses projective width <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Use the index, root and cusp formulas to calculate <span class="math" data-tex="\(g(X_0(13))\)">\(g(X_0(13))\)</span> and <span class="math" data-tex="\(g(X_0(22))\)">\(g(X_0(22))\)</span>. Display all four inputs, rather than only the resulting genus.</li>
+<li><strong>Medium.</strong> Determine exactly which <span class="math" data-tex="\(N\le25\)">\(N\le25\)</span> have <span class="math" data-tex="\(g(X_0(N))=0\)">\(g(X_0(N))=0\)</span>. Explain why the finite list is exhaustive.</li>
+<li><strong>Medium.</strong> Show that <span class="math" data-tex="\(X(2)\)">\(X(2)\)</span> has three cusps and genus zero. Identify cusp representatives and explain the degree of its map to <span class="math" data-tex="\(X(1)\)">\(X(1)\)</span>.</li>
+<li><strong>Hard.</strong> For every <span class="math" data-tex="\(N\ge3\)">\(N\ge3\)</span>, prove
+<span class="math math-display" data-tex="\[
+g(X(N))=1+\frac{N^2(N-6)}{24}
+\prod_{p\mid N}(1-p^{-2}).
+\]">\[
+g(X(N))=1+\frac{N^2(N-6)}{24}
+\prod_{p\mid N}(1-p^{-2}).
+\]</span>
+Explain why the calculation must be adjusted at <span class="math" data-tex="\(N=2\)">\(N=2\)</span>.</li>
+</ol>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>1.</strong> For <span class="math" data-tex="\(13\)">\(13\)</span>, <span class="math" data-tex="\(d=14\)">\(d=14\)</span>, the two elliptic counts are <span class="math" data-tex="\(2\)">\(2\)</span>, and the divisors <span class="math" data-tex="\(1,13\)">\(1,13\)</span> each contribute one cusp. Therefore
+<span class="math math-display" data-tex="\[
+g=1+14/12-2/4-2/3-2/2=0.
+\]">\[
+g=1+14/12-2/4-2/3-2/2=0.
+\]</span>
+For <span class="math" data-tex="\(22=2\cdot11\)">\(22=2\cdot11\)</span>, <span class="math" data-tex="\(d=22(3/2)(12/11)=36\)">\(d=22(3/2)(12/11)=36\)</span>. The factor <span class="math" data-tex="\(11\equiv3\pmod4\)">\(11\equiv3\pmod4\)</span> excludes order-two elliptic points, and reduction modulo <span class="math" data-tex="\(2\)">\(2\)</span> excludes order-three elliptic points. Since <span class="math" data-tex="\(22\)">\(22\)</span> is squarefree, every divisor <span class="math" data-tex="\(\delta\)">\(\delta\)</span> has <span class="math" data-tex="\(\gcd(\delta,22/\delta)=1\)">\(\gcd(\delta,22/\delta)=1\)</span>; its four divisors each contribute one cusp. Thus
+<span class="math math-display" data-tex="\[
+g=1+36/12-0-0-4/2=2.
+\]">\[
+g=1+36/12-0-0-4/2=2.
+\]</span></p>
+<p><strong>2.</strong> The zero-genus levels in the table are
+<span class="math math-display" data-tex="\[
+1,2,3,4,5,6,7,8,9,10,12,13,16,18,25.
+\]">\[
+1,2,3,4,5,6,7,8,9,10,12,13,16,18,25.
+\]</span>
+The remaining levels up to <span class="math" data-tex="\(25\)">\(25\)</span> are <span class="math" data-tex="\(11,14,15,17,19,20,21,22,23,24\)">\(11,14,15,17,19,20,21,22,23,24\)</span>; their genera, in that order, are
+<span class="math math-display" data-tex="\[
+1,1,1,1,1,1,1,2,2,1.
+\]">\[
+1,1,1,1,1,1,1,2,2,1.
+\]</span>
+Every integer from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(25\)">\(25\)</span> appears in exactly one of these lists. The table was obtained by the proved finite formulas, with all inputs displayed, so this proves both inclusion and exclusion. No assertion about levels above <span class="math" data-tex="\(25\)">\(25\)</span> is needed.</p>
+<p><strong>3.</strong> Surjective reduction gives
+<span class="math math-display" data-tex="\[
+G/\bar{\Gamma}(2)\simeq\mathrm{SL}_2(\mathbb F_2),
+\]">\[
+G/\bar{\Gamma}(2)\simeq\mathrm{SL}_2(\mathbb F_2),
+\]</span>
+of order <span class="math" data-tex="\(6\)">\(6\)</span>. The cusps can be classified by the nonzero reductions of primitive first columns modulo <span class="math" data-tex="\(2\)">\(2\)</span>. There are three: <span class="math" data-tex="\((1,0),(0,1),(1,1)\)">\((1,0),(0,1),(1,1)\)</span>, represented by <span class="math" data-tex="\(\infty,0,1\)">\(\infty,0,1\)</span>. Here is also a proof that these labels are complete. Given two primitive integral first columns with the same nonzero reduction, complete each to a determinant-one matrix. Their second columns modulo <span class="math" data-tex="\(2\)">\(2\)</span> can differ only by a multiple of their common first column. Right multiplication of one matrix by an appropriate <span class="math" data-tex="\(T^n\)">\(T^n\)</span> makes the entire reductions equal, without changing its cusp. The quotient of the adjusted matrices is then in <span class="math" data-tex="\(\Gamma(2)\)">\(\Gamma(2)\)</span>. Conversely a matrix in <span class="math" data-tex="\(\Gamma(2)\)">\(\Gamma(2)\)</span> fixes each first-column reduction. Thus there are exactly three cusp orbits.</p>
+<p>The group is projectively torsion-free, and normality makes the widths equal to the width at <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, namely <span class="math" data-tex="\(2\)">\(2\)</span>. Hence
+<span class="math math-display" data-tex="\[
+g=1+6/12-3/2=0.
+\]">\[
+g=1+6/12-3/2=0.
+\]</span>
+The covering has degree <span class="math" data-tex="\(6\)">\(6\)</span>, with three points of ramification index <span class="math" data-tex="\(2\)">\(2\)</span> over <span class="math" data-tex="\(i\)">\(i\)</span>, two of index <span class="math" data-tex="\(3\)">\(3\)</span> over <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and the three width-two cusps over <span class="math" data-tex="\(\infty\)">\(\infty\)</span>. Their total contribution is <span class="math" data-tex="\(3+4+3=10\)">\(3+4+3=10\)</span>, and Riemann–Hurwitz checks <span class="math" data-tex="\(2g-2=-12+10=-2\)">\(2g-2=-12+10=-2\)</span>.</p>
+<p><strong>4.</strong> For <span class="math" data-tex="\(N\ge3\)">\(N\ge3\)</span>, the projective index is half the <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span>-index, giving
+<span class="math math-display" data-tex="\[
+d=\frac{N^3}{2}\prod_{p\mid N}(1-p^{-2}).
+\]">\[
+d=\frac{N^3}{2}\prod_{p\mid N}(1-p^{-2}).
+\]</span>
+Torsion-freeness makes both elliptic counts zero. Normality and the congruence calculation at <span class="math" data-tex="\(\infty\)">\(\infty\)</span> above give width <span class="math" data-tex="\(N\)">\(N\)</span> at every cusp, and hence <span class="math" data-tex="\(c=d/N\)">\(c=d/N\)</span>. Substitution gives
+<span class="math math-display" data-tex="\[
+g=1+\frac d{12}-\frac d{2N}
+=1+\frac{d(N-6)}{12N}
+=1+\frac{N^2(N-6)}{24}\prod_{p\mid N}(1-p^{-2}).
+\]">\[
+g=1+\frac d{12}-\frac d{2N}
+=1+\frac{d(N-6)}{12N}
+=1+\frac{N^2(N-6)}{24}\prod_{p\mid N}(1-p^{-2}).
+\]</span>
+At <span class="math" data-tex="\(2\)">\(2\)</span>, the matrix <span class="math" data-tex="\(-I\)">\(-I\)</span> already belongs to <span class="math" data-tex="\(\Gamma(2)\)">\(\Gamma(2)\)</span>. Its projective index is therefore the full <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span>-index <span class="math" data-tex="\(6\)">\(6\)</span>, not half that number. The widths are still <span class="math" data-tex="\(2\)">\(2\)</span>, yielding three cusps and genus zero as in Solution 3.</p>
+<h2 id="appendix-a-from-polygon-cells-to-the-genus">Appendix A. From polygon cells to the genus</h2>
+<p>The modular covering in Section 3 supplies a finite polygonal presentation. The following proof identifies its cell count with the number of torus handles. It also proves independence of that count for any other finite polygon presentation of the same surface. A surface given only by an arbitrary topological atlas would require an additional finite-presentation theorem; that hypothesis is already supplied in the present application.</p>
+<p>The complex charts orient the modular surface. A holomorphic transition with derivative <span class="math" data-tex="\(f&#x27;\ne0\)">\(f&#x27;\ne0\)</span> has real derivative matrix
+<span class="math math-display" data-tex="\[
+ \begin{pmatrix}
+ \operatorname{Re}f&#x27;&amp;-\operatorname{Im}f&#x27;\\
+ \operatorname{Im}f&#x27;&amp;\operatorname{Re}f&#x27;
+ \end{pmatrix},
+\]">\[
+ \begin{pmatrix}
+ \operatorname{Re}f&#x27;&amp;-\operatorname{Im}f&#x27;\\
+ \operatorname{Im}f&#x27;&amp;\operatorname{Re}f&#x27;
+ \end{pmatrix},
+\]</span>
+whose determinant is <span class="math" data-tex="\(|f&#x27;|^2&gt;0\)">\(|f&#x27;|^2&gt;0\)</span>. The quotient charts of Sections 1–2 give disk neighborhoods, including the elliptic and cusp points. Thus the lifted polygon cells in Section 3 meet the oriented-surface and disk-neighborhood hypotheses of Theorem S.</p>
+<p>The elementary foundations retained here are quotient topology, finite graphs and reduced words, compactness of closed finite polyhedra, the intermediate value property, and continuity in intervals and disks. No surface classification, general triangulation, homology classification, van Kampen or Jordan–Schoenflies theorem is assumed. The disk, rectangle and homotopy operations needed below are written out.</p>
+<p><strong>Theorem S.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be a compact connected oriented surface without boundary, supplied with a finite polygonal cell decomposition. Its face interiors are disks, its edge interiors are intervals, every edge has two face-side incidences, and the finite corner identifications have the disk neighborhoods required of a surface. If its numbers of vertices, edges and faces are <span class="math" data-tex="\(V,E,F\)">\(V,E,F\)</span>, then there is a unique integer <span class="math" data-tex="\(g\geq0\)">\(g\geq0\)</span> such that <span class="math" data-tex="\(X\)">\(X\)</span> is homeomorphic to a sphere with <span class="math" data-tex="\(g\)">\(g\)</span> torus handles, and
+<span class="math math-display" data-tex="\[
+ V-E+F=2-2g. \tag{S0}
+\]">\[
+ V-E+F=2-2g. \tag{S0}
+\]</span>
+The count is independent of the supplied finite polygon decomposition. Here a torus is specifically <span class="math" data-tex="\(\mathbb R^2/\mathbb Z^2\)">\(\mathbb R^2/\mathbb Z^2\)</span>. Adding a handle means removing a disk from each of the current closed surface and that torus and identifying the two boundary circles with opposite boundary orientations. The genus in (S0) is this number of handles, not a number newly defined from the Euler count.</p>
+<h3 id="a-1-disk-operations-and-refinement-of-the-supplied-cells">A.1. Disk operations and refinement of the supplied cells</h3>
+<p>A prescribed homeomorphism of boundary circles extends to the disks: in radial coordinates the extension is <span class="math" data-tex="\(re^{i\theta}\mapsto r h(e^{i\theta})\)">\(re^{i\theta}\mapsto r h(e^{i\theta})\)</span>, with the center mapped to the center. This map and its inverse are continuous at the center as well as elsewhere. An interval homeomorphism extends across a rectangle by acting in its first coordinate. These extensions permit all gluing parametrizations below to be straightened.</p>
+<p>Two disks glued along one boundary interval are a disk. To see the map rather than appeal to the appearance of a picture, identify the disks with the upper and lower halves of a round disk, and the interval with their shared diameter. First parametrize the two boundaries so that the chosen intervals are precisely the diameter boundaries of the half-disks and agree there; extend these boundary parametrizations into the half-disks by the preceding cone construction. They give a continuous bijection from the glued pair to the disk. Its inverse is continuous on each half and agrees on the diameter. The same argument shows that two disks joined by a rectangle, using its two short sides, form a disk: divide the rectangle in half and absorb a half into each disk using the interval gluing just proved. These facts also hold for polygon disks, after triangulating a convex polygon from its center and mapping the resulting sectors radially.</p>
+<p>The input decomposition can have loops, multiple edges, or repeated vertices on the boundary of one face. We first refine it, rather than silently treat it as a simplicial complex. Insert two distinct new points in every edge interior, dividing each edge into three. In every abstract polygon insert a new interior center and join it to each successive boundary vertex. Because each old side now has two new vertices, each resulting triangle has three distinct vertices in the quotient; its closed triangular disk is embedded. Its new radial edges can still have the same endpoints as another radial edge, but are distinct cells. The change from subdividing an edge has equal increments in <span class="math" data-tex="\(V,E\)">\(V,E\)</span>. A face with <span class="math" data-tex="\(k\)">\(k\)</span> boundary sides, counted with their incidences, is replaced by <span class="math" data-tex="\(k\)">\(k\)</span> triangles; adding its center and radial edges changes the count by
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \Delta(V-E+F)&amp;=1-k+(k-1)\\
+ &amp;=0.
+ \end{aligned}\tag{S1}
+\]">\[
+ \begin{aligned}
+ \Delta(V-E+F)&amp;=1-k+(k-1)\\
+ &amp;=0.
+ \end{aligned}\tag{S1}
+\]</span></p>
+<p>This is now a finite regular triangular cell structure: every closed triangle and closed edge is embedded, and any intersection is a union of its cells. Subdivide it barycentrically, placing a distinct midpoint in every edge and a distinct center in every triangle. The new triangles correspond to flags <span class="math" data-tex="\(v\subset e\subset f\)">\(v\subset e\subset f\)</span>. No two flags give the same triple of new vertices, since vertices identify individual old cells, so this is a genuine finite simplicial complex. Its realization maps to <span class="math" data-tex="\(X\)">\(X\)</span> by the linear maps in the individual triangular cells; the maps agree on shared cells, and their inverses agree as well. If the regular triangular structure had counts <span class="math" data-tex="\(V_1,E_1,F_1\)">\(V_1,E_1,F_1\)</span>, the new counts are
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ V_2=V_1+E_1+F_1,\\
+ E_2=2E_1+6F_1,\\
+ F_2=6F_1.
+ \end{gathered}
+\]">\[
+ \begin{gathered}
+ V_2=V_1+E_1+F_1,\\
+ E_2=2E_1+6F_1,\\
+ F_2=6F_1.
+ \end{gathered}
+\]</span>
+Thus its count is again <span class="math" data-tex="\(V_1-E_1+F_1\)">\(V_1-E_1+F_1\)</span>. This proves the required preservation under this refinement by actual counts, without a general invariance theorem.</p>
+<p>Here is why the local construction has the required disk geometry. In a polygon quotient the corner sectors at a vertex form the cone on their link. Every link vertex has degree two, because an edge interior has exactly two sides in a surface. The finite link is consequently a disjoint union of circles. There can be only one circle at a vertex: otherwise the punctured sufficiently small corner neighborhood has several components; a smaller coordinate disk about the vertex would meet all the sectors and have connected punctured interior, which is impossible. Its cone is a disk, with each incident half-edge meeting the boundary in its cyclic order. This gives the vertex disks and edge rectangles used in the following steps. It also proves the local link statement for the refined triangulation rather than assuming it from a drawing.</p>
+<p>For the reduction we may therefore work with that finite triangulation. Denote its counts by <span class="math" data-tex="\(V,E,F\)">\(V,E,F\)</span> temporarily; (S1) and the barycentric count show that its Euler count equals the original input count.</p>
+<h3 id="a-2-merge-faces-along-a-dual-spanning-tree">A.2. Merge faces along a dual spanning tree</h3>
+<p>The dual graph has one vertex for each triangle and one edge for each shared triangle side. It is connected. Indeed, the surface is path connected: in a locally path connected space the set of points reachable from a fixed point is open, and its complement is also open, so connectedness gives the assertion. A path between two face interiors can be moved off the finitely many triangulation vertices, using a small punctured vertex disk. Inside the triangles and the small edge rectangles it can be replaced by finitely many polygonal arcs transverse to sides. This yields a succession of side-adjacent triangles and hence a dual path. The finite replacement follows by subdividing the compact path into portions contained in these finite disk and rectangle neighborhoods.</p>
+<p>Choose a spanning tree of this finite dual graph. It exists by adding edges that reach new vertices until all vertices are reached, and has <span class="math" data-tex="\(F-1\)">\(F-1\)</span> edges. Glue the <strong>abstract</strong> triangles along only these chosen side pairs. Attaching a leaf triangle to the previously glued component is gluing disks along an interval, so induction produces one abstract polygonal disk <span class="math" data-tex="\(P\)">\(P\)</span>. The remaining original side identifications are still to be made on its boundary. This construction is about abstract disks: unchosen sides are not identified prematurely, even when their original faces are already in the same component.</p>
+<p>Every original vertex still has at least one corner on the boundary of <span class="math" data-tex="\(P\)">\(P\)</span>. The triangles around a vertex form a cyclic fan. If all its sides were removed by the dual tree, that tree would contain the complete cycle of adjacent triangles around the vertex, a contradiction. We used a genuine simplicial triangulation here so that this fan is an actual cycle. The remaining edges and their endpoints give an embedded connected graph <span class="math" data-tex="\(G\subset X\)">\(G\subset X\)</span>: it is the image of the connected boundary of <span class="math" data-tex="\(P\)">\(P\)</span>, and contains all the original vertices. Its counts and the number of faces are
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ V_G=V,\\
+ E_G=E-F+1,\\
+ F_G=1.
+ \end{gathered}\tag{S2}
+\]">\[
+ \begin{gathered}
+ V_G=V,\\
+ E_G=E-F+1,\\
+ F_G=1.
+ \end{gathered}\tag{S2}
+\]</span>
+Orientation makes the two occurrences of each boundary edge run in opposite directions. The face merging removes one edge and one face each time, so its Euler count remains <span class="math" data-tex="\(V-E+F\)">\(V-E+F\)</span>.</p>
+<p>Take small disjoint disks about the vertices of <span class="math" data-tex="\(G\)">\(G\)</span>, and a narrow rectangle along the interior of each edge, its short ends attached to disjoint intervals in the vertex-disk boundaries. Their union <span class="math" data-tex="\(N\)">\(N\)</span> is a closed neighborhood of <span class="math" data-tex="\(G\)">\(G\)</span>. It can be constructed directly from <span class="math" data-tex="\(P\)">\(P\)</span>: cut off small corner sectors and narrow strips along the boundary sides before making the boundary identifications. At each quotient vertex the sectors assemble into the disk described in A.1, and the paired strips assemble into the edge rectangles. The part of <span class="math" data-tex="\(P\)">\(P\)</span> left after trimming is a disk. Thus
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ X=N\cup D,\\
+ N\cap D=\partial N=\partial D\cong S^1.
+ \end{gathered}\tag{S3}
+\]">\[
+ \begin{gathered}
+ X=N\cup D,\\
+ N\cap D=\partial N=\partial D\cong S^1.
+ \end{gathered}\tag{S3}
+\]</span>
+and <span class="math" data-tex="\(N\)">\(N\)</span> has exactly one boundary component. This explicitly identifies the complement; we have not inferred it from an Euler count.</p>
+<p>Choose a spanning tree <span class="math" data-tex="\(T\subset G\)">\(T\subset G\)</span>. The vertex disks and just the <span class="math" data-tex="\(V-1\)">\(V-1\)</span> rectangles of <span class="math" data-tex="\(T\)">\(T\)</span> form a disk <span class="math" data-tex="\(D_0\)">\(D_0\)</span>. Prove this by removing a leaf of the tree: its vertex disk and its incident rectangle attach to the previous disk by the disk-plus-rectangle operation of A.1. Starting with a single vertex disk completes the induction. There remain
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ r&amp;=E_G-(V-1)\\
+  &amp;=E-V-F+2\\
+  &amp;=2-(V-E+F).
+ \end{aligned}\tag{S4}
+\]">\[
+ \begin{aligned}
+ r&amp;=E_G-(V-1)\\
+  &amp;=E-V-F+2\\
+  &amp;=2-(V-E+F).
+ \end{aligned}\tag{S4}
+\]</span>
+rectangles, each attached along two disjoint intervals on the boundary of what has already been built. Such a rectangle is called a band. All of its future attaching intervals remain available until that band is attached. Formula (S4) is an exact edge count, and <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>.</p>
+<h3 id="a-3-what-an-oriented-band-does">A.3. What an oriented band does</h3>
+<p>Write <span class="math" data-tex="\(S_{g,b}\)">\(S_{g,b}\)</span>, for <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span>, for the concrete surface obtained from a sphere by adding <span class="math" data-tex="\(g\)">\(g\)</span> standard torus handles and deleting <span class="math" data-tex="\(b\)">\(b\)</span> open disks in a planar portion away from those handles. The disks are chosen with disjoint collars. In particular <span class="math" data-tex="\(S_{0,1}\)">\(S_{0,1}\)</span> is a disk and <span class="math" data-tex="\(S_{0,2}\)">\(S_{0,2}\)</span> is an annulus. We establish, rather than import from classification, the following two rules for attaching a band in an oriented surface:
+For ends on the same boundary component the result is <span class="math" data-tex="\(S_{g,b+1}\)">\(S_{g,b+1}\)</span>, with <span class="math" data-tex="\(b+1\)">\(b+1\)</span> boundary components. For ends on distinct boundary components the result is <span class="math" data-tex="\(S_{g+1,b-1}\)">\(S_{g+1,b-1}\)</span>, with <span class="math" data-tex="\(b-1\)">\(b-1\)</span> boundary components:
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ S_{g,b}\longmapsto S_{g,b+1}\quad\text{(same)},\\
+ S_{g,b}\longmapsto S_{g+1,b-1}\quad\text{(distinct)}.
+ \end{gathered}\tag{S5}
+\]">\[
+ \begin{gathered}
+ S_{g,b}\longmapsto S_{g,b+1}\quad\text{(same)},\\
+ S_{g,b}\longmapsto S_{g+1,b-1}\quad\text{(distinct)}.
+ \end{gathered}\tag{S5}
+\]</span>
+In the second rule <span class="math" data-tex="\(b\geq2\)">\(b\geq2\)</span>. An oriented band is attached with the reversals required for the orientation of the surface and rectangle to agree at both seams. The alternative gluing on one boundary would give a twisted band and a nonorientable neighborhood, so is excluded by the orientation already on <span class="math" data-tex="\(N\subset X\)">\(N\subset X\)</span>.</p>
+<p>The boundary change can also be checked without either block identification. Remove the two attaching intervals and insert the rectangle's two long sides. If the intervals belonged to one oriented circle, its two remaining arcs close separately along the two long sides, giving two circles. If they belonged to different circles, the two remaining arcs and both long sides form one circle. All other circles are untouched. These are respectively the changes <span class="math" data-tex="\(+1\)">\(+1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> in (S5); the orientation determines which ends of the arcs are joined.</p>
+<p>First normalize the endpoint intervals. On a boundary circle an orientation-preserving reparametrization can carry any two prescribed disjoint intervals to fixed positions in their cyclic order. It extends to a collar, fixing the other edge of that collar: if its increasing lift is <span class="math" data-tex="\(H:\mathbb R\to\mathbb R\)">\(H:\mathbb R\to\mathbb R\)</span> with <span class="math" data-tex="\(H(t+1)=H(t)+1\)">\(H(t+1)=H(t)+1\)</span>, use the lifts
+<span class="math" data-tex="\(H_s(t)=(1-s)H(t)+st\)">\(H_s(t)=(1-s)H(t)+st\)</span>, <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>. Each is strictly increasing, and its inverse varies continuously, so this is a collar homeomorphism. For ends on different circles do this independently in their disjoint collars. The short-side parametrizations of the band are straightened by the rectangle extension in A.1. Consequently the local homeomorphism type does not depend on the lengths or positions of the endpoint intervals.</p>
+<p>There are two elementary blocks to check. A disk with one oriented band is an annulus: identify the disk and band with consecutive rectangles in a strip whose two ends are identified preserving the transverse coordinate. This is <span class="math" data-tex="\(S^1\times[0,1]\)">\(S^1\times[0,1]\)</span>; the two long edges are its two boundary circles. If a second band joins these two circles, the result is a torus with one disk removed. Here is an exact square model. Identify opposite sides of <span class="math" data-tex="\([0,1]^2\)">\([0,1]^2\)</span> by translations. The map to <span class="math" data-tex="\(\mathbb R^2/\mathbb Z^2\)">\(\mathbb R^2/\mathbb Z^2\)</span> is bijective after these identifications, and has its continuous inverse in the usual quotient charts. A small neighborhood of the image of the square boundary consists of one vertex disk and two bands. The four attaching intervals on that disk occur in alternating order
+<span class="math math-display" data-tex="\[
+ a,\ b,\ a^{-1},\ b^{-1}. \tag{S6}
+\]">\[
+ a,\ b,\ a^{-1},\ b^{-1}. \tag{S6}
+\]</span>
+The first band creates an annulus. In that annulus the two intervals for the second band lie on different boundary components: following the unused boundary arcs after the first gluing verifies this directly. The square's remaining central portion is a disk. Thus this two-band neighborhood is the claimed punctured torus. Conversely, the collar reparametrizations above carry any annulus band joining the two boundaries to this model. This proves the block assertion independently of the surface classification theorem.</p>
+<p>For the first rule of (S5), take a narrow collar of the affected boundary. A band attached to its one outer boundary replaces the collar annulus by a sphere with three disks removed, usually called a pair of pants. To verify the block, cap the collar's inner circle temporarily. There is then a disk with one oriented band, the annulus just checked. Removing the temporary cap produces the annulus minus one disk, equivalently a sphere minus three disks. One collar boundary used to attach this block to the rest of <span class="math" data-tex="\(S_{g,b}\)">\(S_{g,b}\)</span> is unchanged; its previous other boundary has become two. The block is planar and contains no handle. Gluing it back gives the concrete model <span class="math" data-tex="\(S_{g,b+1}\)">\(S_{g,b+1}\)</span>.</p>
+<p>For the second rule, the deleted disks in the model <span class="math" data-tex="\(S_{g,b}\)">\(S_{g,b}\)</span> lie in a planar region. Join the chosen two disks by a polygonal simple arc avoiding the other deleted disks. Such an arc is obtained from a polygonal path in that connected planar region, detouring round the finitely many obstructing disks and removing a segment between a pair of self-intersections whenever one occurs. A narrow neighborhood of the two disks and this arc is itself a disk: it is two disks joined by a rectangular strip, as in A.1. Its intersection with <span class="math" data-tex="\(S_{g,b}\)">\(S_{g,b}\)</span> is a pair of pants <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, with two boundary circles equal to the chosen boundary components and a third circle attached to the unaffected rest of the surface. The complement is still the planar region with this neighborhood treated as one hole, together with the <span class="math" data-tex="\(g\)">\(g\)</span> already existing handles.</p>
+<p>The pair of pants may be viewed as an annulus with a disk removed, with the annulus's two boundary circles being the <strong>chosen</strong> two circles. The boundary permutation needed for this assertion has an explicit model: take a sphere minus three congruent small round caps with centers equally spaced on its equator. Its rotations by <span class="math" data-tex="\(2\pi/3\)">\(2\pi/3\)</span> about the polar axis, and by <span class="math" data-tex="\(\pi\)">\(\pi\)</span> about an axis through one cap center, realize respectively a three-cycle and a transposition of its boundary components, all preserving surface orientation. Stereographic projection from inside a cap realizes it as a disk minus two disks. Collar reparametrization and radial extension normalize their parametrizations. Equivalently, cut the disk-with-two-holes model along two narrow disjoint corridors to its outer boundary; it becomes a disk, and these boundary maps extend by the disk cone construction and glue back. These give the required identification of <span class="math" data-tex="\(P_0\)">\(P_0\)</span> with the symmetric model, with any designated boundary labels.</p>
+<p>One can check the last cut-to-disk operation in finite rectangle coordinates, so that it is not an appeal to a general planar curve theorem. Take the outer rectangle <span class="math" data-tex="\([-3,3]\times[-2,2]\)">\([-3,3]\times[-2,2]\)</span>, remove the two inner open rectangles <span class="math" data-tex="\((-2,-1)\times(-1,1)\)">\((-2,-1)\times(-1,1)\)</span> and <span class="math" data-tex="\((1,2)\times(-1,1)\)">\((1,2)\times(-1,1)\)</span>, and cut from their bottom sides to the outer bottom side along <span class="math" data-tex="\(x=-3/2\)">\(x=-3/2\)</span> and <span class="math" data-tex="\(x=3/2\)">\(x=3/2\)</span>. The cut space consists of the top bar <span class="math" data-tex="\([-3,3]\times[1,2]\)">\([-3,3]\times[1,2]\)</span>, the three vertical bars with <span class="math" data-tex="\(x\)">\(x\)</span>-ranges <span class="math" data-tex="\([-3,-2],[-1,1],[2,3]\)">\([-3,-2],[-1,1],[2,3]\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>-range <span class="math" data-tex="\([-2,1]\)">\([-2,1]\)</span>, and the four half-rectangles below the two holes separated by the cuts. The top bar is joined to the three vertical bars, and each half-rectangle to its adjacent vertical bar. This adjacency is a tree with eight vertices and seven interval gluings. A.1 proves that its union is a disk. Round boundaries are obtained from these rectangle boundaries by radial parametrizations in collars. For the disk-and-strip neighborhood defining <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, use the two disk collars and the strip coordinates to make these same two cuts; their unrolled collar pieces and strip pieces have the same disk gluing pattern. The same construction applies after stereographic projection to the three-cap model. Choose the boundary map of the two cut disks to agree on each paired cut side as well as on the three boundary contours. Its cone extension then respects those pairs and descends to the desired pair-of-pants homeomorphism. This supplies the finite disk-gluing justification for the boundary permutation, including the label of the boundary attached to the rest of the surface.</p>
+<p>Now attach the new band to the two chosen circles of this annulus-minus-a-disk. The annulus-plus-band computation (S6) shows that the block becomes a torus with <strong>two</strong> disks removed: one is the annulus-plus-band block's remaining boundary, and the other is the disk already removed from the pair of pants. Glue its designated third boundary back to the unaffected rest. This adds exactly one torus handle and replaces the two original boundary circles by one. The concrete result is <span class="math" data-tex="\(S_{g+1,b-1}\)">\(S_{g+1,b-1}\)</span>. In particular a pair of pants plus this band has two boundary components, not one; confusing this count would invalidate the handle argument.</p>
+<p>The collar and disk extensions also show that the standard disks used in these models can be transported within a planar patch. To exchange two disks, take a disk-and-strip neighborhood of the two, map it to a round disk with two symmetric holes, rotate the inside through <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and taper that rotation to the identity in its outside collar. To reposition a disk along a polygonal corridor use a finite succession of such disk neighborhoods. These constructions justify choosing the two holes in the preceding argument and making all residual holes lie in the chosen planar region. They do not require a classification of surfaces with boundary.</p>
+<p>Attach the <span class="math" data-tex="\(r\)">\(r\)</span> bands of A.2 in any order. Start with <span class="math" data-tex="\(D_0=S_{0,1}\)">\(D_0=S_{0,1}\)</span>. The rules (S5), proved in the explicit models, show inductively that every intermediate surface is some <span class="math" data-tex="\(S_{g,b}\)">\(S_{g,b}\)</span>. Let <span class="math" data-tex="\(s\)">\(s\)</span> be the number of attachments with both ends on the same boundary component, and let <span class="math" data-tex="\(m\)">\(m\)</span> be the number with ends on different components. Then
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ r=s+m,\\
+ b=1+s-m,\\
+ g=m.
+ \end{gathered} \tag{S7}
+\]">\[
+ \begin{gathered}
+ r=s+m,\\
+ b=1+s-m,\\
+ g=m.
+ \end{gathered} \tag{S7}
+\]</span>
+The final neighborhood <span class="math" data-tex="\(N\)">\(N\)</span> has <span class="math" data-tex="\(b=1\)">\(b=1\)</span> by (S3). Hence <span class="math" data-tex="\(s=m\)">\(s=m\)</span>, <span class="math" data-tex="\(r=2m=2g\)">\(r=2m=2g\)</span>, and capping that boundary disk gives a sphere with <span class="math" data-tex="\(g\)">\(g\)</span> standard torus handles. Equations (S4) and (S7) prove
+<span class="math math-display" data-tex="\[
+ V-E+F=2-r=2-2g. \tag{S8}
+\]">\[
+ V-E+F=2-r=2-2g. \tag{S8}
+\]</span>
+At this point existence and the count for the supplied presentation are proved. Uniqueness and independence of presentation still need an invariant; we supply it next.</p>
+<h3 id="a-4-an-elementary-invariant-with-the-required-attachment-proof">A.4. An elementary invariant, with the required attachment proof</h3>
+<p>For a based space let <span class="math" data-tex="\(\pi_1\)">\(\pi_1\)</span> be the group of based loops modulo based homotopies, with multiplication given by concatenation. Reparametrizing a concatenation gives associativity on classes; reversing a path gives its inverse since traversing a path and immediately reversing it contracts by shortening the distance traversed. A homeomorphism gives an isomorphism by composition with loops and homotopies. Moving the basepoint along a path gives the isomorphism <span class="math" data-tex="\(\gamma\mapsto p\gamma p^{-1}\)">\(\gamma\mapsto p\gamma p^{-1}\)</span>, with inverse obtained by the reversed path. These facts follow from the displayed constructions and are sufficient here.</p>
+<p>The neighborhood <span class="math" data-tex="\(N\)">\(N\)</span> deformation retracts onto its core graph <span class="math" data-tex="\(G\)">\(G\)</span> by an explicit quotient homotopy. Choose a boundary parametrization of the abstract polygon disk <span class="math" data-tex="\(P\)">\(P\)</span> and extend it radially to the disk as in A.1. Let <span class="math" data-tex="\(N\)">\(N\)</span> be the quotient of its outer annular collar, with the outer edge identified by the polygon boundary map <span class="math" data-tex="\(w\colon\partial P\to G\)">\(w\colon\partial P\to G\)</span>; its remaining inner circle is <span class="math" data-tex="\(\partial N\)">\(\partial N\)</span>. This is the neighborhood already constructed in (S3), after straightening the corner sectors and edge strips. Equivalently it is the mapping cylinder <span class="math" data-tex="\((\partial P\times[0,1])\sqcup G\)">\((\partial P\times[0,1])\sqcup G\)</span>, with <span class="math" data-tex="\((x,0)\)">\((x,0)\)</span> identified to <span class="math" data-tex="\(w(x)\)">\(w(x)\)</span>. The homotopy <span class="math" data-tex="\([x,t]\mapsto[x,(1-s)t]\)">\([x,t]\mapsto[x,(1-s)t]\)</span>, fixing each point of <span class="math" data-tex="\(G\)">\(G\)</span>, is continuous on this quotient and is a deformation retraction at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. It proves the group comparison by composition with loops and homotopies; no general regular-neighborhood theorem is used.</p>
+<p>For a finite connected graph, a spanning tree gives <span class="math" data-tex="\(E_G-V_G+1=r\)">\(E_G-V_G+1=r\)</span> loop generators and no relations other than free cancellation. Here are the needed path and homotopy details. Cover the graph by small vertex stars and the interiors of its edge intervals, each a tree. Subdivide a loop into finitely many pieces within these sets and replace each piece by the unique reduced arc between its endpoints in that small tree. Sliding in a tree to this arc is a homotopy, obtained by contracting its finite branches. This gives an edge path after joining successive portions and, if necessary, inserting edge subdivisions. A homotopy of loops is a map from a compact square. The inverse images of the small trees have a Lebesgue number: otherwise subsets of diameter tending to zero with no member containing them would have a convergent sequence of points and eventually lie in the member containing the limit, a contradiction. A sufficiently fine square grid therefore has each closed triangle mapped into one small tree. Its boundary edge paths reduce to the empty path; sweeping its triangles replaces paths only by insertion or removal of a consecutive edge and its reverse. Thus a graph homotopy introduces precisely these cancellations.</p>
+<p>Use the unique tree paths from a fixed root to the endpoints of every edge outside <span class="math" data-tex="\(T\)">\(T\)</span> to make its generator loop. A tree-edge traversal contributes no letter after cancellation; an edge outside <span class="math" data-tex="\(T\)">\(T\)</span> contributes its generator or its inverse. Conversely replacing such letters by their generator loops recovers every based edge path up to cancellation. Hence reduced words in the <span class="math" data-tex="\(r\)">\(r\)</span> generators give exactly the graph group. In particular its abelianization, the quotient obtained by making all generators commute, is <span class="math" data-tex="\(\mathbb Z^r\)">\(\mathbb Z^r\)</span>: a commuting word is determined by its exponent sums, and every integer exponent vector occurs.</p>
+<p>We must determine what capping <span class="math" data-tex="\(N\)">\(N\)</span> does to this group. We prove the specific cell-attachment assertion required rather than cite van Kampen. Take open neighborhoods <span class="math" data-tex="\(U,V\subset X\)">\(U,V\subset X\)</span>, where <span class="math" data-tex="\(U\)">\(U\)</span> consists of <span class="math" data-tex="\(N\)">\(N\)</span> with a collar extending a little into the cap, and <span class="math" data-tex="\(V\)">\(V\)</span> is the cap disk with a collar extending a little into <span class="math" data-tex="\(N\)">\(N\)</span>. Then <span class="math" data-tex="\(U\)">\(U\)</span> retracts to <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(V\)">\(V\)</span> is an open disk and hence contractible, and <span class="math" data-tex="\(C=U\cap V\)">\(C=U\cap V\)</span> is an open annulus. Put the basepoint in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>Every loop in <span class="math" data-tex="\(X\)">\(X\)</span> can be subdivided into finitely many pieces in <span class="math" data-tex="\(U\)">\(U\)</span> or <span class="math" data-tex="\(V\)">\(V\)</span>, by the compactness argument for a Lebesgue number just given. Where its type changes, its endpoints lie in <span class="math" data-tex="\(C\)">\(C\)</span>. Join these endpoints to the basepoint by paths in <span class="math" data-tex="\(C\)">\(C\)</span>. Inserting a connector followed by its reverse expresses the original loop as a product of loops in <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>. The <span class="math" data-tex="\(V\)">\(V\)</span>-loops contract. A loop in <span class="math" data-tex="\(C\)">\(C\)</span>, considered in <span class="math" data-tex="\(U\)">\(U\)</span>, contracts in <span class="math" data-tex="\(V\)">\(V\)</span>, so all its conjugates and products lie in the kernel of <span class="math" data-tex="\(\pi_1(U)\to\pi_1(X)\)">\(\pi_1(U)\to\pi_1(X)\)</span>.</p>
+<p>There are no further relations. For completeness, subdivide a null-homotopy square into a fine triangular grid so that every closed triangle maps into <span class="math" data-tex="\(U\)">\(U\)</span> or <span class="math" data-tex="\(V\)">\(V\)</span>. At each grid vertex choose a path from the basepoint in <span class="math" data-tex="\(U\)">\(U\)</span>, in <span class="math" data-tex="\(V\)">\(V\)</span>, or in <span class="math" data-tex="\(C\)">\(C\)</span>, respectively when its image belongs only to <span class="math" data-tex="\(U\)">\(U\)</span>, only to <span class="math" data-tex="\(V\)">\(V\)</span>, or to both. An edge in a triangle of type <span class="math" data-tex="\(U\)">\(U\)</span> then has both endpoint paths in <span class="math" data-tex="\(U\)">\(U\)</span>, and defines a based <span class="math" data-tex="\(U\)">\(U\)</span>-loop by those paths and the image edge; similarly for <span class="math" data-tex="\(V\)">\(V\)</span>. The product around each triangle is trivial in its assigned group because its image fills that triangle there. If an edge is shared by triangles of different types, its image and both endpoint paths lie in <span class="math" data-tex="\(C\)">\(C\)</span>; its two descriptions agree after imposing the <span class="math" data-tex="\(C\)">\(C\)</span>-loop identifications. Here is an ordered cancellation, so that noncommutativity causes no omitted step. Work in the group of the <span class="math" data-tex="\(U,V\)">\(U,V\)</span> loop words with the <span class="math" data-tex="\(C\)">\(C\)</span> identifications just described. For an oriented grid edge <span class="math" data-tex="\(u\to v\)">\(u\to v\)</span>, let <span class="math" data-tex="\(g_{uv}\)">\(g_{uv}\)</span> be its based loop class using the chosen endpoint paths, so <span class="math" data-tex="\(g_{vu}=g_{uv}^{-1}\)">\(g_{vu}=g_{uv}^{-1}\)</span>. A triangle with successively oriented vertices <span class="math" data-tex="\(u,v,z\)">\(u,v,z\)</span> gives
+<span class="math math-display" data-tex="\[
+ g_{uv}g_{vz}=g_{uz}.
+ \tag{S9a}
+\]">\[
+ g_{uv}g_{vz}=g_{uz}.
+ \tag{S9a}
+\]</span>
+Give every small grid square the southwest-to-northeast diagonal. Sweep squares from left to right in the bottom row, then from left to right in each successive row above it. In the bottom row, insert each square's west-side triangle first and its southeast triangle second; start with the west-side triangle of the bottom-left square. In every higher row, insert the south-side triangle first and the northwest triangle second. This choice matters: the first triangle of a later bottom-row square shares its west edge with the preceding square, while the first triangle of a higher-row square shares its south edge with the completed row below. The second triangle shares the diagonal and, if applicable, the other already exposed side. Finish both triangles of one square before moving to the next. At each step the new triangle meets the already swept region in one boundary edge or in two consecutive boundary edges. Replace that oriented boundary arc by the remaining edge or edges of the triangle using (S9a), or its inverse, inside the unchanged preceding and following boundary words. This substitution preserves the ordered product; it does not commute any factors. The reverse-edge identity handles the orientation opposite to the displayed one. The swept region is a disk at every such step, as is seen directly from the rectangular row order; the first triangle has trivial boundary word by its own relation. Induction therefore gives the identity for the final outer boundary word. The constant parts of the null-homotopy boundary contribute the identity, so the original loop word is trivial in this group. This supplies the finite grid argument with its noncommutative order fixed. This verifies the reverse kernel inclusion. Paths on the outer boundary can use the original subdivision; refine the grid there to include its finitely many endpoints.</p>
+<p>The open annulus has group <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> generated by a core circle. In its product coordinates, contracting the interval coordinate to a fixed interior value is a deformation retraction to that circle. This core is homotopic in <span class="math" data-tex="\(U\)">\(U\)</span> to the original capping circle <span class="math" data-tex="\(\partial N\)">\(\partial N\)</span>, through the collar. A path in the circle has a continuous angle lift, obtained by successively choosing inverse angles on overlapping proper arcs; its endpoint change on a loop is an integral multiple of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. It is unchanged in a homotopy by subdividing the homotopy square into arc neighborhoods and using uniqueness of the local lifts. A zero-change lifted loop contracts by linear interpolation of its lifted angle with its initial angle. Every integer occurs by going round the circle that many times. This proves the asserted circle and annulus calculation. Therefore the attachment just proved gives
+<span class="math math-display" data-tex="\[
+ \pi_1(X)=\pi_1(G)/\langle\!\langle w\rangle\!\rangle, \tag{S9}
+\]">\[
+ \pi_1(X)=\pi_1(G)/\langle\!\langle w\rangle\!\rangle, \tag{S9}
+\]</span>
+where <span class="math" data-tex="\(w\)">\(w\)</span> is the boundary circle of <span class="math" data-tex="\(N\)">\(N\)</span> and the double brackets mean the subgroup generated by its conjugates and their inverses.</p>
+<p>Under the retraction to <span class="math" data-tex="\(G\)">\(G\)</span>, this boundary goes along each edge once on each of its two sides. Orientation makes these traversals opposite. Every generator edge outside the spanning tree thus has exponent sum zero in <span class="math" data-tex="\(w\)">\(w\)</span>. Making (S9) abelian kills no additional exponent vector: the normal subgroup generated by <span class="math" data-tex="\(w\)">\(w\)</span> has zero image in <span class="math" data-tex="\(\mathbb Z^r\)">\(\mathbb Z^r\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ \pi_1(X)^{\mathrm{ab}}\cong\mathbb Z^r=\mathbb Z^{2g}. \tag{S10}
+\]">\[
+ \pi_1(X)^{\mathrm{ab}}\cong\mathbb Z^r=\mathbb Z^{2g}. \tag{S10}
+\]</span></p>
+<p>The standard <span class="math" data-tex="\(h\)">\(h\)</span>-handle model itself has a disk-and-<span class="math" data-tex="\(2h\)">\(2h\)</span>-band presentation: starting from a disk, attach one band to split its boundary and a second to join the resulting two components, returning to one boundary and adding exactly the torus block (S6); repeat this pair <span class="math" data-tex="\(h\)">\(h\)</span> times and cap the remaining boundary. The local connected-sum description in A.3 identifies each pair with one standard handle. The argument (S9)–(S10) for this presentation gives abelianization <span class="math" data-tex="\(\mathbb Z^{2h}\)">\(\mathbb Z^{2h}\)</span>, without assuming that a handle count already determines Euler characteristic.</p>
+<p>This is a homeomorphism invariant by the loop construction. If <span class="math" data-tex="\(\mathbb Z^r\cong\mathbb Z^{r&#x27;}\)">\(\mathbb Z^r\cong\mathbb Z^{r&#x27;}\)</span>, quotienting by doubles gives groups with respectively <span class="math" data-tex="\(2^r\)">\(2^r\)</span> and <span class="math" data-tex="\(2^{r&#x27;}\)">\(2^{r&#x27;}\)</span> elements, so <span class="math" data-tex="\(r=r&#x27;\)">\(r=r&#x27;\)</span>. We used no classification theorem for finitely generated abelian groups. In particular two handle models of <span class="math" data-tex="\(X\)">\(X\)</span> have the same <span class="math" data-tex="\(g\)">\(g\)</span>. Repeating A.1–A.4 for any other finite polygon decomposition of <span class="math" data-tex="\(X\)">\(X\)</span> gives the same <span class="math" data-tex="\(r\)">\(r\)</span>, hence the same Euler count <span class="math" data-tex="\(2-r\)">\(2-r\)</span>. The theorem S is proved for its stated finite-presentation hypothesis, including the uniqueness and invariance assertions.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Section 3 proves the required Riemann–Hurwitz count for the modular covering from its explicit cells. The general Riemann–Hurwitz statement is retained for context, but no unproved general instance is used. Appendix A, Theorem S, proves the identification of that finite-polygon cell count with <span class="math" data-tex="\(2-2g\)">\(2-2g\)</span>, where genus counts torus handles, including uniqueness and independence of the presentation. Planar compactness and the real-analysis foundations also remain without verified earlier programme proof locators here. These are residual proof-closure gaps, not consequences certified merely by citing free notes.</p>
+<p>We also mention, without using it in the construction or genus calculation, the algebraization theorem: every compact connected Riemann surface is the analytic surface of a smooth projective complex algebraic curve. [Teleman 2003, Lecture 14] explains the theorem through meromorphic functions and a finite map to the projective line. Serre's GAGA comparison theorems apply once projectivity is available; they alone are not the existence theorem needed here. See [Serre 1956, introduction and §3]. The algebraic Riemann–Hurwitz formula in characteristic zero is [Stacks, Tag 0C1B]; it concerns smooth proper curves and is not used to assume algebraicity prematurely.</p>
+<p>The index, cusp-width, root-count and torsion-freeness results used in Section 4 were proved in the preceding lesson. We do not yet construct <span class="math" data-tex="\(j\)">\(j\)</span> or a projective equation for any positive-genus modular curve.</p>
+<p>The local power-series, inverse and branching facts have a written earlier proof in <a href="LG-MF-01.html">lesson 01</a>, Lemma 0.2 and its local inverse consequence. The finite-polygon topology and handle-genus identification are proved in Appendix A. Algebraization and the elementary foundations listed above remain separate obligations.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p><strong>Teleman 2003.</strong> C. Teleman, <em>Riemann Surfaces</em>, Lent-term lecture notes. Theorem 5.17 and Lecture 7 contain the analytic Riemann–Hurwitz statement and proof; Lecture 14 discusses algebraization. <a href="https://math.berkeley.edu/~teleman/math/Riemann.pdf">Author's notes</a>.</p>
+</li>
+<li>
+<p><strong>Voight open book.</strong> J. Voight, <em>Quaternion Algebras</em>, freely distributed stable post-publication version 1.0.5 (10 January 2024), Chapters 34–35, especially Theorem 34.2.1 and Sections 34.3–34.8 and 35.4. <a href="https://jvoight.github.io/quat-book-v1.0.5.pdf">Author's stable free PDF</a>.</p>
+</li>
+<li>
+<p><strong>Stein author PDF.</strong> W. Stein, <em>Modular Forms: A Computational Approach</em>, freely distributed PDF on the author's website, Chapter 6, §§6.1–6.2. <a href="https://wstein.org/books/modform/stein-modform.pdf">Free author PDF</a>.</p>
+</li>
+<li>
+<p><strong>Serre 1956.</strong> J.-P. Serre, <em>Géométrie algébrique et géométrie analytique</em>, introduction and §3. <a href="https://www.numdam.org/item/AIF_1956__6__1_0/">Original paper</a>.</p>
+</li>
+<li>
+<p><strong>Stacks.</strong> The Stacks project, <a href="https://stacks.math.columbia.edu/tag/0C1B">Tag 0C1B</a>, Riemann–Hurwitz. We consult the corresponding text in the AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions not reviewed by the official Stacks project maintainers; its <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">English reader</a> retains the original tags.</p>
+</li>
+<li>
+<p><strong>Gallier.</strong> J. Gallier, <em>The Classification Theorem for Compact Surfaces And A Detour On Fractals</em>, §§5.1–5.3. <a href="https://arxiv.org/abs/0805.0562v1">Free arXiv version</a>. The finite-polygon proof required here is written in Appendix A.</p>
+</li>
+<li>
+<p><strong>Hatcher.</strong> A. Hatcher, <em>Algebraic Topology</em>, Chapter 1, §1.2, Proposition 1.26(a). <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch1.pdf">Author's free Chapter 1</a>. Appendix A.4 proves the particular cell-attachment assertion used here.</p>
+</li>
+<li>
+<p><strong>Putman.</strong> A. Putman, <em>A quick proof of the classification of surfaces</em>. <a href="https://academicweb.nd.edu/~andyp/notes/ClassificationSurfaces.pdf">Author's free note</a>.</p>
+</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-02.html">← Congruence subgroups, cusps and elliptic points</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-04.html">Modular forms, lattice functions and Eisenstein series →</a></span></nav>
+<p class="small source-link"><a href="src/modular-curves-and-their-genus.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

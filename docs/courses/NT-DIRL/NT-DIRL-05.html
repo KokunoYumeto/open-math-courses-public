@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The functional equation of Dirichlet L-functions · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-05.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-functional-equation-of-dirichlet-l-functions">The functional equation of Dirichlet L-functions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Public domain (CC0).</em></p>
+<p>The functional equation connects a Dirichlet series in its original half-plane to values on the other side of the critical strip. Its constant remembers the phase of the Gauss sum. A theta integral makes both the continuation and that constant explicit; the same integral controls the order of the completed function, and hence its product over zeros.</p>
+<p>Throughout this lesson, <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is primitive of conductor <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>,
+<span class="math" data-tex="\(\chi(-1)=(-1)^a\)">\(\chi(-1)=(-1)^a\)</span>, with <span class="math" data-tex="\(a\in\{0,1\}\)">\(a\in\{0,1\}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\xi(s,\chi)=\left(\frac q\pi\right)^{(s+a)/2}
+\Gamma\left(\frac{s+a}2\right)L(s,\chi),\qquad
+\varepsilon(\chi)=\frac{\tau(\chi)}{i^a\sqrt q}.
+\tag{1.1}
+\]">\[
+\xi(s,\chi)=\left(\frac q\pi\right)^{(s+a)/2}
+\Gamma\left(\frac{s+a}2\right)L(s,\chi),\qquad
+\varepsilon(\chi)=\frac{\tau(\chi)}{i^a\sqrt q}.
+\tag{1.1}
+\]</span>
+<p>The square root of <span class="math" data-tex="\(q\)">\(q\)</span> is positive real. We use the character Poisson identity from <em>Character sums: the Pólya–Vinogradov inequality</em>, with <span class="math" data-tex="\(\widehat f(\eta)=\int f(u)e(-u\eta)\,du\)">\(\widehat f(\eta)=\int f(u)e(-u\eta)\,du\)</span>. The Gamma identities used below are proved in <em>The Gamma function and Stirling's formula</em>, in the course <em>The Riemann zeta function</em>: continuation and residues in Theorem 1.1, nonvanishing in Theorem 1.2, reflection and duplication in Theorems 2.2–2.3, sector Stirling in Theorem 3.1 and its vertical consequence in Corollary 4.1. The general Hadamard theorem used in Section 4 belongs to that course's planned lesson <em>Entire functions of order one and the Hadamard product of ξ</em>; its exact hypothesis and conclusion are stated there and below.</p>
+<h2 id="1-a-theta-series-with-the-right-parity"><span id="section-1"></span>1. A theta series with the right parity</h2>
+<p>For <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\theta(x,\chi)=\sum_{n\in\mathbb Z}
+\chi(n)n^a\exp(-\pi n^2x/q).
+\tag{1.2}
+\]">\[
+\theta(x,\chi)=\sum_{n\in\mathbb Z}
+\chi(n)n^a\exp(-\pi n^2x/q).
+\tag{1.2}
+\]</span>
+<p>The term at <span class="math" data-tex="\(n=0\)">\(n=0\)</span> is zero, also when <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Since
+<span class="math" data-tex="\(\chi(-n)(-n)^a=\chi(n)n^a\)">\(\chi(-n)(-n)^a=\chi(n)n^a\)</span>, the series is twice its positive-index part. It and all its derivatives with respect to <span class="math" data-tex="\(x\)">\(x\)</span> converge locally uniformly on <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>.</p>
+<p><strong>Theorem 1.1 (theta transformation).</strong> For every <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\theta(x,\chi)=\varepsilon(\chi)x^{-a-1/2}
+\theta(1/x,\overline\chi).
+\tag{1.3}
+\]">\[
+\theta(x,\chi)=\varepsilon(\chi)x^{-a-1/2}
+\theta(1/x,\overline\chi).
+\tag{1.3}
+\]</span>
+<p>Equivalently,
+<span class="math" data-tex="\(\theta(1/x,\chi)=\varepsilon(\chi)x^{a+1/2}\theta(x,\overline\chi)\)">\(\theta(1/x,\chi)=\varepsilon(\chi)x^{a+1/2}\theta(x,\overline\chi)\)</span>.</p>
+<p><strong>Proof.</strong> The Gaussian Fourier transform proved in <em>Gauss sums</em> gives
+<span class="math" data-tex="\(\widehat{\exp(-\pi u^2)}(\eta)=\exp(-\pi\eta^2)\)">\(\widehat{\exp(-\pi u^2)}(\eta)=\exp(-\pi\eta^2)\)</span>.
+Differentiation under the integral is justified by the Gaussian majorant and gives</p>
+<span class="math math-display" data-tex="\[
+\widehat{u\exp(-\pi u^2)}(\eta)
+=-i\eta\exp(-\pi\eta^2).
+\]">\[
+\widehat{u\exp(-\pi u^2)}(\eta)
+=-i\eta\exp(-\pi\eta^2).
+\]</span>
+<p>Thus <span class="math" data-tex="\(f(u)=u^a\exp(-\pi u^2)\)">\(f(u)=u^a\exp(-\pi u^2)\)</span> satisfies <span class="math" data-tex="\(\widehat f=(-i)^a f\)">\(\widehat f=(-i)^a f\)</span>. Put <span class="math" data-tex="\(N=\sqrt{q/x}\)">\(N=\sqrt{q/x}\)</span>. Character Poisson summation says</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\theta(x,\chi)
+&amp;=N^a\sum_n\chi(n)f(n/N)\\
+&amp;=\frac{\tau(\chi)N^{a+1}}q
+\sum_m\overline{\chi(m)}(-i)^a(mN/q)^a
+\exp(-\pi m^2N^2/q^2)\\
+&amp;=\frac{\tau(\chi)(-i)^a}{\sqrt q}
+x^{-a-1/2}\theta(1/x,\overline\chi).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\theta(x,\chi)
+&amp;=N^a\sum_n\chi(n)f(n/N)\\
+&amp;=\frac{\tau(\chi)N^{a+1}}q
+\sum_m\overline{\chi(m)}(-i)^a(mN/q)^a
+\exp(-\pi m^2N^2/q^2)\\
+&amp;=\frac{\tau(\chi)(-i)^a}{\sqrt q}
+x^{-a-1/2}\theta(1/x,\overline\chi).
+\end{aligned}
+\]</span>
+<p>Since <span class="math" data-tex="\((-i)^a=i^{-a}\)">\((-i)^a=i^{-a}\)</span>, the prefactor is <span class="math" data-tex="\(\varepsilon(\chi)\)">\(\varepsilon(\chi)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Gauss identities also give</p>
+<span class="math math-display" data-tex="\[
+|\varepsilon(\chi)|=1,\qquad
+\varepsilon(\chi)\varepsilon(\overline\chi)=1,
+\tag{1.4}
+\]">\[
+|\varepsilon(\chi)|=1,\qquad
+\varepsilon(\chi)\varepsilon(\overline\chi)=1,
+\tag{1.4}
+\]</span>
+<p>because <span class="math" data-tex="\(\tau(\chi)\tau(\overline\chi)=(-1)^a q\)">\(\tau(\chi)\tau(\overline\chi)=(-1)^a q\)</span> and <span class="math" data-tex="\(i^{2a}=(-1)^a\)">\(i^{2a}=(-1)^a\)</span>. In particular <span class="math" data-tex="\(\varepsilon(\overline\chi)=\overline{\varepsilon(\chi)}\)">\(\varepsilon(\overline\chi)=\overline{\varepsilon(\chi)}\)</span>.</p>
+<h2 id="2-mellin-transformation-and-continuation"><span id="section-2"></span>2. Mellin transformation and continuation</h2>
+<p>For <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>, absolute convergence permits termwise integration:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac12\int_0^\infty\theta(x,\chi)x^{(s+a)/2-1}\,dx
+&amp;=\sum_{n\ge1}\chi(n)n^a
+\Gamma\left(\frac{s+a}2\right)
+\left(\frac q{\pi n^2}\right)^{(s+a)/2}\\
+&amp;=\xi(s,\chi).
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+\frac12\int_0^\infty\theta(x,\chi)x^{(s+a)/2-1}\,dx
+&amp;=\sum_{n\ge1}\chi(n)n^a
+\Gamma\left(\frac{s+a}2\right)
+\left(\frac q{\pi n^2}\right)^{(s+a)/2}\\
+&amp;=\xi(s,\chi).
+\end{aligned}
+\tag{2.1}
+\]</span>
+<p>For <span class="math" data-tex="\(x\ge1\)">\(x\ge1\)</span>, the series in (1.2) is <span class="math" data-tex="\(O_q(e^{-c_qx})\)">\(O_q(e^{-c_qx})\)</span>, for some <span class="math" data-tex="\(c_q&gt;0\)">\(c_q&gt;0\)</span>. For example,
+<span class="math" data-tex="\(n^2x\ge(n^2+x)/2\)">\(n^2x\ge(n^2+x)/2\)</span> when <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(x\ge1\)">\(x\ge1\)</span>, so summing
+<span class="math" data-tex="\(n^a e^{-\pi n^2/(2q)}e^{-\pi x/(2q)}\)">\(n^a e^{-\pi n^2/(2q)}e^{-\pi x/(2q)}\)</span> proves such an estimate. Formula (1.3) gives the corresponding exponential decay in <span class="math" data-tex="\(1/x\)">\(1/x\)</span> as <span class="math" data-tex="\(x\downarrow0\)">\(x\downarrow0\)</span>, with only a fixed power of <span class="math" data-tex="\(x\)">\(x\)</span> in front. Consequently the integral in (2.1) converges locally uniformly for every complex <span class="math" data-tex="\(s\)">\(s\)</span>; its derivatives introduce only powers of <span class="math" data-tex="\(\log x\)">\(\log x\)</span>, which remain integrable with these exponential bounds.</p>
+<p>Splitting at 1, applying (1.3) on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, and substituting <span class="math" data-tex="\(u=1/x\)">\(u=1/x\)</span>, we obtain the particularly useful entire representation</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\xi(s,\chi)
+={}&amp;\frac12\int_1^\infty\theta(x,\chi)x^{(s+a)/2-1}\,dx\\
+&amp;+\frac{\varepsilon(\chi)}2
+\int_1^\infty\theta(x,\overline\chi)x^{(1-s+a)/2-1}\,dx.
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+\xi(s,\chi)
+={}&amp;\frac12\int_1^\infty\theta(x,\chi)x^{(s+a)/2-1}\,dx\\
+&amp;+\frac{\varepsilon(\chi)}2
+\int_1^\infty\theta(x,\overline\chi)x^{(1-s+a)/2-1}\,dx.
+\end{aligned}
+\tag{2.2}
+\]</span>
+<p><strong>Theorem 2.1 (functional equation).</strong> Both <span class="math" data-tex="\(\xi(s,\chi)\)">\(\xi(s,\chi)\)</span> and <span class="math" data-tex="\(L(s,\chi)\)">\(L(s,\chi)\)</span> are entire, and</p>
+<span class="math math-display" data-tex="\[
+\boxed{\xi(s,\chi)=\varepsilon(\chi)\xi(1-s,\overline\chi).}
+\tag{2.3}
+\]">\[
+\boxed{\xi(s,\chi)=\varepsilon(\chi)\xi(1-s,\overline\chi).}
+\tag{2.3}
+\]</span>
+<p>For real primitive characters, <span class="math" data-tex="\(\varepsilon(\chi)=1\)">\(\varepsilon(\chi)=1\)</span>.</p>
+<p><strong>Proof.</strong> Representation (2.2) proves that <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is entire. Apply it to <span class="math" data-tex="\(1-s,\overline\chi\)">\(1-s,\overline\chi\)</span>, multiply by <span class="math" data-tex="\(\varepsilon(\chi)\)">\(\varepsilon(\chi)\)</span>, and use (1.4). The two integrals exchange positions, proving (2.3). Since <span class="math" data-tex="\(1/\Gamma\)">\(1/\Gamma\)</span> is entire,</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)=\left(\frac q\pi\right)^{-(s+a)/2}
+\frac{\xi(s,\chi)}{\Gamma((s+a)/2)}
+\tag{2.4}
+\]">\[
+L(s,\chi)=\left(\frac q\pi\right)^{-(s+a)/2}
+\frac{\xi(s,\chi)}{\Gamma((s+a)/2)}
+\tag{2.4}
+\]</span>
+<p>is entire and agrees with the original series where <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>. Finally, Theorem 5.1 of <em>Gauss sums</em> proves the phase identity <span class="math" data-tex="\(\tau(\chi)=i^a\sqrt q\)">\(\tau(\chi)=i^a\sqrt q\)</span> for every real primitive character. It makes the root number exactly 1, not merely a sign of modulus 1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An equivalent inverse form of (2.3) has coefficient <span class="math" data-tex="\(i^a\sqrt q/\tau(\chi)\)">\(i^a\sqrt q/\tau(\chi)\)</span>. This is another common convention. The theta coefficient <span class="math" data-tex="\(i^a\sqrt q/\tau(\overline\chi)\)">\(i^a\sqrt q/\tau(\overline\chi)\)</span> is also equivalent to (1.3), since <span class="math" data-tex="\(\tau(\overline\chi)=(-1)^a q/\tau(\chi)\)">\(\tau(\overline\chi)=(-1)^a q/\tau(\chi)\)</span>. The conjugation in the denominator must be retained when converting that version.</p>
+<p>The version directly involving the uncompleted functions is</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)=\varepsilon(\chi)
+\left(\frac q\pi\right)^{1/2-s}
+\frac{\Gamma((1-s+a)/2)}{\Gamma((s+a)/2)}
+L(1-s,\overline\chi).
+\tag{2.5}
+\]">\[
+L(s,\chi)=\varepsilon(\chi)
+\left(\frac q\pi\right)^{1/2-s}
+\frac{\Gamma((1-s+a)/2)}{\Gamma((s+a)/2)}
+L(1-s,\overline\chi).
+\tag{2.5}
+\]</span>
+<p>Apparent singularities of the right side cancel as prescribed by the entire left side.</p>
+<h2 id="3-where-the-zeros-can-be">3. Where the zeros can be</h2>
+<p>The Euler product proved earlier excludes zeros when <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>. To exclude zeros on the boundary too, a positivity argument is needed. Merely knowing <span class="math" data-tex="\(L(1,\chi)\ne0\)">\(L(1,\chi)\ne0\)</span> does not settle the other points <span class="math" data-tex="\(1+it\)">\(1+it\)</span>.</p>
+<p><strong>Lemma 3.1 (nonvanishing on the line 1).</strong> Every Dirichlet character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has <span class="math" data-tex="\(L(1+it,\chi)\ne0\)">\(L(1+it,\chi)\ne0\)</span> for <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>. For a nonprincipal character it is also nonzero at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>.</p>
+<p><strong>Proof.</strong> The assertion at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> was proved in <em>Dirichlet's theorem on primes in arithmetic progressions</em>. Fix <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>. The functions <span class="math" data-tex="\(L(s,\chi)\)">\(L(s,\chi)\)</span> and <span class="math" data-tex="\(L(s,\chi^2)\)">\(L(s,\chi^2)\)</span> are holomorphic near <span class="math" data-tex="\(1+it\)">\(1+it\)</span> and <span class="math" data-tex="\(1+2it\)">\(1+2it\)</span>, respectively. For nonprincipal characters this follows from periodic continuation to <span class="math" data-tex="\(\Re s&gt;0\)">\(\Re s&gt;0\)</span>; for principal ones it follows from
+<span class="math" data-tex="\(L(s,\chi_0)=\zeta(s)\prod_{p\mid q}(1-p^{-s})\)">\(L(s,\chi_0)=\zeta(s)\prod_{p\mid q}(1-p^{-s})\)</span>, with the only pole in that half-plane at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>.</p>
+<p>For real <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, expand the logarithms of the absolutely convergent Euler products. For <span class="math" data-tex="\(p\nmid q\)">\(p\nmid q\)</span> and <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, put <span class="math" data-tex="\(z=\chi(p)^k p^{-ikt}\)">\(z=\chi(p)^k p^{-ikt}\)</span>, so <span class="math" data-tex="\(|z|=1\)">\(|z|=1\)</span>. The contribution of this prime power to the logarithm of</p>
+<span class="math math-display" data-tex="\[
+\zeta(\sigma)^3
+|L(\sigma+it,\chi)|^4
+|L(\sigma+2it,\chi^2)|
+\tag{3.1}
+\]">\[
+\zeta(\sigma)^3
+|L(\sigma+it,\chi)|^4
+|L(\sigma+2it,\chi^2)|
+\tag{3.1}
+\]</span>
+<p>is <span class="math" data-tex="\((3+4\Re z+\Re z^2)/(kp^{k\sigma})\)">\((3+4\Re z+\Re z^2)/(kp^{k\sigma})\)</span>. If <span class="math" data-tex="\(z=e^{iu}\)">\(z=e^{iu}\)</span>, its numerator is <span class="math" data-tex="\(2(1+\cos u)^2\ge0\)">\(2(1+\cos u)^2\ge0\)</span>. For <span class="math" data-tex="\(p\mid q\)">\(p\mid q\)</span>, only the positive contribution from <span class="math" data-tex="\(\zeta^3\)">\(\zeta^3\)</span> remains. Thus (3.1) is at least 1.</p>
+<p>If <span class="math" data-tex="\(L(1+it,\chi)=0\)">\(L(1+it,\chi)=0\)</span>, holomorphy gives
+<span class="math" data-tex="\(|L(\sigma+it,\chi)|=O_t(\sigma-1)\)">\(|L(\sigma+it,\chi)|=O_t(\sigma-1)\)</span>. The final factor of (3.1) stays bounded, and <span class="math" data-tex="\(\zeta(\sigma)=O((\sigma-1)^{-1})\)">\(\zeta(\sigma)=O((\sigma-1)^{-1})\)</span>. The whole product tends to zero as <span class="math" data-tex="\(\sigma\downarrow1\)">\(\sigma\downarrow1\)</span>, contradicting its lower bound 1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (trivial zeros and symmetry).</strong> For a primitive character of conductor <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>, the zeros of <span class="math" data-tex="\(L(s,\chi)\)">\(L(s,\chi)\)</span> in <span class="math" data-tex="\(\Re s\le0\)">\(\Re s\le0\)</span> are exactly</p>
+<span class="math math-display" data-tex="\[
+s=-a-2k,\qquad k=0,1,2,\ldots,
+\tag{3.2}
+\]">\[
+s=-a-2k,\qquad k=0,1,2,\ldots,
+\tag{3.2}
+\]</span>
+<p>and they are simple. All other zeros, counted with multiplicity, lie in <span class="math" data-tex="\(0&lt;\Re s&lt;1\)">\(0&lt;\Re s&lt;1\)</span>. If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is one of these nontrivial zeros, so is <span class="math" data-tex="\(1-\overline\rho\)">\(1-\overline\rho\)</span>, with the same multiplicity.</p>
+<p><strong>Proof.</strong> Gamma has no zeros, so <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is nonzero on <span class="math" data-tex="\(\Re s\ge1\)">\(\Re s\ge1\)</span> by the Euler product and Lemma 3.1. The functional equation makes it nonzero on <span class="math" data-tex="\(\Re s\le0\)">\(\Re s\le0\)</span> as well. In (2.4), the only zeros in that half-plane are therefore the simple zeros of <span class="math" data-tex="\(1/\Gamma((s+a)/2)\)">\(1/\Gamma((s+a)/2)\)</span>, exactly (3.2). This includes <span class="math" data-tex="\(s=0\)">\(s=0\)</span> precisely for even characters. Elsewhere in the plane the Gamma factor is finite and nonzero, so the zeros of <span class="math" data-tex="\(L\)">\(L\)</span> are those of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p>Conjugating the original Dirichlet series, and then continuing, gives
+<span class="math" data-tex="\(\overline{\xi(\overline s,\chi)}=\xi(s,\overline\chi)\)">\(\overline{\xi(\overline s,\chi)}=\xi(s,\overline\chi)\)</span>.
+Combine this with (2.3) to see that
+<span class="math" data-tex="\(\xi(s,\chi)=\varepsilon(\chi)\overline{\xi(1-\overline s,\chi)}\)">\(\xi(s,\chi)=\varepsilon(\chi)\overline{\xi(1-\overline s,\chi)}\)</span>.
+It reflects each zero, preserving its order. A complex character need not have symmetry under <span class="math" data-tex="\(\rho\mapsto\overline\rho\)">\(\rho\mapsto\overline\rho\)</span> by itself; conjugation also changes the character. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an imprimitive character induced by <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span>, the extra factors</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)=L(s,\chi^*)
+\prod_{p\mid q\atop p\nmid q^*}(1-\chi^*(p)p^{-s})
+\tag{3.3}
+\]">\[
+L(s,\chi)=L(s,\chi^*)
+\prod_{p\mid q\atop p\nmid q^*}(1-\chi^*(p)p^{-s})
+\tag{3.3}
+\]</span>
+<p>can have additional zeros on <span class="math" data-tex="\(\Re s=0\)">\(\Re s=0\)</span>. Indeed <span class="math" data-tex="\(p^s=\chi^*(p)\)">\(p^s=\chi^*(p)\)</span> has real part of its logarithm zero. Those zeros are separate from the nontrivial zeros of the primitive completed function. Formula (3.2) is a primitive-character statement.</p>
+<h2 id="4-the-entire-function-product-and-its-constant">4. The entire-function product and its constant</h2>
+<p>An entire function has order at most 1 if, for every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, its maximum modulus is eventually bounded by <span class="math" data-tex="\(\exp(C_\eta R^{1+\eta})\)">\(\exp(C_\eta R^{1+\eta})\)</span> on <span class="math" data-tex="\(|s|\le R\)">\(|s|\le R\)</span>. The general theorem assigned to the planned lesson <em>Entire functions of order one and the Hadamard product of ξ</em> says that, for such a nonzero function with <span class="math" data-tex="\(f(0)\ne0\)">\(f(0)\ne0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f(s)=e^{A+Bs}\prod_{f(\rho)=0}
+(1-s/\rho)e^{s/\rho},
+\tag{4.1}
+\]">\[
+f(s)=e^{A+Bs}\prod_{f(\rho)=0}
+(1-s/\rho)e^{s/\rho},
+\tag{4.1}
+\]</span>
+<p>with multiplicities; the product converges normally on compact sets, and
+<span class="math" data-tex="\(\sum_\rho|\rho|^{-1-\eta}&lt;\infty\)">\(\sum_\rho|\rho|^{-1-\eta}&lt;\infty\)</span> for every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. This theorem is an exact planned prerequisite in the zeta course, rather than an unproved factorization specific to this lesson. We now verify its hypotheses and determine the part of <span class="math" data-tex="\(B\)">\(B\)</span> controlled by the functional equation.</p>
+<p><strong>Proposition 4.1.</strong> For fixed <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(\xi(s,\chi)\)">\(\xi(s,\chi)\)</span> has order exactly 1, and</p>
+<span class="math math-display" data-tex="\[
+\xi(s,\chi)=e^{A(\chi)+B(\chi)s}
+\prod_\rho(1-s/\rho)e^{s/\rho},
+\quad e^{A(\chi)}=\xi(0,\chi),
+\tag{4.2}
+\]">\[
+\xi(s,\chi)=e^{A(\chi)+B(\chi)s}
+\prod_\rho(1-s/\rho)e^{s/\rho},
+\quad e^{A(\chi)}=\xi(0,\chi),
+\tag{4.2}
+\]</span>
+<p>where <span class="math" data-tex="\(\rho\)">\(\rho\)</span> runs over its nontrivial zeros. Moreover,</p>
+<span class="math math-display" data-tex="\[
+B(\chi)=\frac{\xi&#x27;(0,\chi)}{\xi(0,\chi)},\qquad
+\boxed{\Re B(\chi)=-\sum_\rho\Re\frac1\rho.}
+\tag{4.3}
+\]">\[
+B(\chi)=\frac{\xi&#x27;(0,\chi)}{\xi(0,\chi)},\qquad
+\boxed{\Re B(\chi)=-\sum_\rho\Re\frac1\rho.}
+\tag{4.3}
+\]</span>
+<p>The last sum converges absolutely. It is a statement about the real part only.</p>
+<p><strong>Proof.</strong> The two exponentially decaying integrals in (2.2) bound the maximum modulus on <span class="math" data-tex="\(|s|\le R\)">\(|s|\le R\)</span> by
+<span class="math" data-tex="\(C_q\int_1^\infty e^{-c_qx}x^{(R+a)/2}\,dx\)">\(C_q\int_1^\infty e^{-c_qx}x^{(R+a)/2}\,dx\)</span>.
+Enlarging the domain to <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> expresses this bound by a Gamma value; real Stirling gives</p>
+<span class="math math-display" data-tex="\[
+\log\max_{|s|\le R}|\xi(s,\chi)|
+\le C_q R\log(R+2).
+\tag{4.4}
+\]">\[
+\log\max_{|s|\le R}|\xi(s,\chi)|
+\le C_q R\log(R+2).
+\tag{4.4}
+\]</span>
+<p>Hence the order is at most 1. As real <span class="math" data-tex="\(\sigma\to+\infty\)">\(\sigma\to+\infty\)</span>, the original series gives <span class="math" data-tex="\(L(\sigma,\chi)=1+O(2^{-\sigma})\)">\(L(\sigma,\chi)=1+O(2^{-\sigma})\)</span>, while real Stirling in (1.1) gives
+<span class="math" data-tex="\(\log|\xi(\sigma,\chi)|=(\sigma/2)\log\sigma+O_q(\sigma)\)">\(\log|\xi(\sigma,\chi)|=(\sigma/2)\log\sigma+O_q(\sigma)\)</span>.
+The order is consequently at least 1. Theorem 3.2 gives <span class="math" data-tex="\(\xi(0,\chi)\ne0\)">\(\xi(0,\chi)\ne0\)</span>. Applying (4.1) proves (4.2); logarithmic differentiation at zero gives its formula for <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Normal convergence permits logarithmic differentiation away from zeros:</p>
+<span class="math math-display" data-tex="\[
+\frac{\xi&#x27;}{\xi}(s,\chi)
+=B(\chi)+\sum_\rho
+\left(\frac1{s-\rho}+\frac1\rho\right).
+\tag{4.5}
+\]">\[
+\frac{\xi&#x27;}{\xi}(s,\chi)
+=B(\chi)+\sum_\rho
+\left(\frac1{s-\rho}+\frac1\rho\right).
+\tag{4.5}
+\]</span>
+<p>The terms in parentheses are <span class="math" data-tex="\(O_s(|\rho|^{-2})\)">\(O_s(|\rho|^{-2})\)</span>. Since <span class="math" data-tex="\(0&lt;\Re\rho&lt;1\)">\(0&lt;\Re\rho&lt;1\)</span>,
+<span class="math" data-tex="\(0&lt;\Re(1/\rho)&lt;|\rho|^{-2}\)">\(0&lt;\Re(1/\rho)&lt;|\rho|^{-2}\)</span>. This proves absolute convergence of the real sum in (4.3). The reflection <span class="math" data-tex="\(\rho\mapsto1-\overline\rho\)">\(\rho\mapsto1-\overline\rho\)</span> permutes all zeros, so</p>
+<span class="math math-display" data-tex="\[
+\sum_\rho\Re\frac1{1-\rho}
+=\sum_\rho\Re\frac1\rho=:H.
+\]">\[
+\sum_\rho\Re\frac1{1-\rho}
+=\sum_\rho\Re\frac1\rho=:H.
+\]</span>
+<p>At <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, the real part of (4.5) is therefore <span class="math" data-tex="\(\Re B+2H\)">\(\Re B+2H\)</span>. On the other hand, the logarithmic derivative of the reflected functional equation gives
+<span class="math" data-tex="\(\Re(\xi&#x27;/\xi)(1,\chi)=-\Re(\xi&#x27;/\xi)(0,\chi)=-\Re B\)">\(\Re(\xi&#x27;/\xi)(1,\chi)=-\Re(\xi&#x27;/\xi)(0,\chi)=-\Re B\)</span>.
+Thus <span class="math" data-tex="\(\Re B+2H=-\Re B\)">\(\Re B+2H=-\Re B\)</span>, proving (4.3). Every reindexing here involved an absolutely convergent real sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Taking the logarithmic derivative of (1.1) also gives, away from zeros and poles of the displayed individual terms,</p>
+<span class="math math-display" data-tex="\[
+\frac{L&#x27;}L(s,\chi)=B(\chi)
+-\frac12\log(q/\pi)
+-\frac12\frac{\Gamma&#x27;}\Gamma((s+a)/2)
++\sum_\rho\left(\frac1{s-\rho}+\frac1\rho\right).
+\tag{4.6}
+\]">\[
+\frac{L&#x27;}L(s,\chi)=B(\chi)
+-\frac12\log(q/\pi)
+-\frac12\frac{\Gamma&#x27;}\Gamma((s+a)/2)
++\sum_\rho\left(\frac1{s-\rho}+\frac1\rho\right).
+\tag{4.6}
+\]</span>
+<p>The cancellations at trivial zeros are interpreted meromorphically. This formula will be the starting point for zero-free regions.</p>
+<h2 id="5-bernoulli-numbers-and-the-values-at-integers">5. Bernoulli numbers and the values at integers</h2>
+<p>Define the Bernoulli polynomials by the convergent power series near <span class="math" data-tex="\(t=0\)">\(t=0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{t e^{ut}}{e^t-1}=\sum_{n\ge0}B_n(u)\frac{t^n}{n!},
+\]">\[
+\frac{t e^{ut}}{e^t-1}=\sum_{n\ge0}B_n(u)\frac{t^n}{n!},
+\]</span>
+<p>so <span class="math" data-tex="\(B_0(u)=1\)">\(B_0(u)=1\)</span> and <span class="math" data-tex="\(B_1(u)=u-1/2\)">\(B_1(u)=u-1/2\)</span>. The generalized Bernoulli numbers are defined by</p>
+<span class="math math-display" data-tex="\[
+\sum_{b=1}^q\chi(b)\frac{t e^{bt}}{e^{qt}-1}
+=\sum_{n\ge0}B_{n,\chi}\frac{t^n}{n!}.
+\tag{5.1}
+\]">\[
+\sum_{b=1}^q\chi(b)\frac{t e^{bt}}{e^{qt}-1}
+=\sum_{n\ge0}B_{n,\chi}\frac{t^n}{n!}.
+\tag{5.1}
+\]</span>
+<p>Substituting <span class="math" data-tex="\(qt\)">\(qt\)</span> in the polynomial generating series gives the useful finite formula</p>
+<span class="math math-display" data-tex="\[
+B_{n,\chi}=q^{n-1}\sum_{b=1}^q\chi(b)B_n(b/q).
+\tag{5.2}
+\]">\[
+B_{n,\chi}=q^{n-1}\sum_{b=1}^q\chi(b)B_n(b/q).
+\tag{5.2}
+\]</span>
+<p>In particular <span class="math" data-tex="\(B_{0,\chi}=0\)">\(B_{0,\chi}=0\)</span> and
+<span class="math" data-tex="\(B_{1,\chi}=q^{-1}\sum_b b\chi(b)\)">\(B_{1,\chi}=q^{-1}\sum_b b\chi(b)\)</span>.</p>
+<p><strong>Theorem 5.1.</strong> For every integer <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{L(1-n,\chi)=-\frac{B_{n,\chi}}n.}
+\tag{5.3}
+\]">\[
+\boxed{L(1-n,\chi)=-\frac{B_{n,\chi}}n.}
+\tag{5.3}
+\]</span>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+L(0,\chi)=-\frac1q\sum_{b=1}^q b\chi(b),
+\tag{5.4}
+\]">\[
+L(0,\chi)=-\frac1q\sum_{b=1}^q b\chi(b),
+\tag{5.4}
+\]</span>
+<p>which is zero for even <span class="math" data-tex="\(\chi\)">\(\chi\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, periodicity gives the exact exponentially convergent sum</p>
+<span class="math math-display" data-tex="\[
+\Phi_\chi(t)=\sum_{m\ge1}\chi(m)e^{-mt}
+=\frac{\sum_{b=1}^q\chi(b)e^{-bt}}{1-e^{-qt}}.
+\]">\[
+\Phi_\chi(t)=\sum_{m\ge1}\chi(m)e^{-mt}
+=\frac{\sum_{b=1}^q\chi(b)e^{-bt}}{1-e^{-qt}}.
+\]</span>
+<p>It has a removable singularity at zero, since <span class="math" data-tex="\(\sum_b\chi(b)=0\)">\(\sum_b\chi(b)=0\)</span>. Evaluating (5.1) at <span class="math" data-tex="\(-t\)">\(-t\)</span> gives its Taylor series</p>
+<span class="math math-display" data-tex="\[
+\Phi_\chi(t)=\sum_{n\ge1}
+\frac{(-1)^n B_{n,\chi}}{n!}t^{n-1}.
+\tag{5.5}
+\]">\[
+\Phi_\chi(t)=\sum_{n\ge1}
+\frac{(-1)^n B_{n,\chi}}{n!}t^{n-1}.
+\tag{5.5}
+\]</span>
+<p>For <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>, termwise integration yields
+<span class="math" data-tex="\(\Gamma(s)L(s,\chi)=\int_0^\infty\Phi_\chi(t)t^{s-1}\,dt\)">\(\Gamma(s)L(s,\chi)=\int_0^\infty\Phi_\chi(t)t^{s-1}\,dt\)</span>.
+Choose <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> within the Taylor radius. Split the integral at <span class="math" data-tex="\(r\)">\(r\)</span>. Its upper part is entire in <span class="math" data-tex="\(s\)">\(s\)</span>, by exponential decay. In the lower part subtract the first <span class="math" data-tex="\(K\)">\(K\)</span> terms of (5.5); its remainder is <span class="math" data-tex="\(O(t^K)\)">\(O(t^K)\)</span>, so the remainder integral is holomorphic on <span class="math" data-tex="\(\Re s&gt;-K\)">\(\Re s&gt;-K\)</span>. The subtracted terms contribute</p>
+<span class="math math-display" data-tex="\[
+\sum_{n=1}^{K}
+\frac{(-1)^n B_{n,\chi}}{n!}
+\frac{r^{s+n-1}}{s+n-1}.
+\tag{5.6}
+\]">\[
+\sum_{n=1}^{K}
+\frac{(-1)^n B_{n,\chi}}{n!}
+\frac{r^{s+n-1}}{s+n-1}.
+\tag{5.6}
+\]</span>
+<p>This continues <span class="math" data-tex="\(\Gamma(s)L(s,\chi)\)">\(\Gamma(s)L(s,\chi)\)</span> to the plane. At <span class="math" data-tex="\(s=1-n\)">\(s=1-n\)</span> its residue is <span class="math" data-tex="\((-1)^nB_{n,\chi}/n!\)">\((-1)^nB_{n,\chi}/n!\)</span>. Gamma has residue <span class="math" data-tex="\((-1)^{n-1}/(n-1)!\)">\((-1)^{n-1}/(n-1)!\)</span> there. Since <span class="math" data-tex="\(L\)">\(L\)</span> is entire, division of these residues proves (5.3), also when the numerator residue is zero.</p>
+<p>For even <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, pairing <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(q-b\)">\(q-b\)</span> gives
+<span class="math" data-tex="\(\sum_b b\chi(b)=(q/2)\sum_b\chi(b)=0\)">\(\sum_b b\chi(b)=(q/2)\sum_b\chi(b)=0\)</span>, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The generating function itself records the parity: replacing <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(-t\)">\(-t\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(q-b\)">\(q-b\)</span> shows that its left side is multiplied by <span class="math" data-tex="\(\chi(-1)\)">\(\chi(-1)\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+B_{n,\chi}=0\quad\text{if }n\not\equiv a\pmod2.
+\tag{5.7}
+\]">\[
+B_{n,\chi}=0\quad\text{if }n\not\equiv a\pmod2.
+\tag{5.7}
+\]</span>
+<p>These vanishing values agree exactly with the trivial-zero pattern in (3.2).</p>
+<h3 id="the-hurwitz-continuation-gives-the-same-values">The Hurwitz continuation gives the same values</h3>
+<p>For <span class="math" data-tex="\(0&lt;u\le1\)">\(0&lt;u\le1\)</span>, the Hurwitz function initially means
+<span class="math" data-tex="\(\zeta(s,u)=\sum_{k\ge0}(k+u)^{-s}\)">\(\zeta(s,u)=\sum_{k\ge0}(k+u)^{-s}\)</span>, <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>. Its Mellin representation is</p>
+<span class="math math-display" data-tex="\[
+\Gamma(s)\zeta(s,u)
+=\int_0^\infty\frac{e^{-ut}}{1-e^{-t}}t^{s-1}\,dt.
+\tag{5.8}
+\]">\[
+\Gamma(s)\zeta(s,u)
+=\int_0^\infty\frac{e^{-ut}}{1-e^{-t}}t^{s-1}\,dt.
+\tag{5.8}
+\]</span>
+<p>The Laurent series of the kernel at zero is
+<span class="math" data-tex="\(\sum_{n\ge0}B_n(1-u)t^{n-1}/n!\)">\(\sum_{n\ge0}B_n(1-u)t^{n-1}/n!\)</span>. The same subtraction argument as (5.6), now including <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, continues the right side meromorphically with possible simple poles at <span class="math" data-tex="\(1,0,-1,\ldots\)">\(1,0,-1,\ldots\)</span>. Multiplication by <span class="math" data-tex="\(1/\Gamma(s)\)">\(1/\Gamma(s)\)</span> cancels all except the pole at 1, whose residue is 1. At <span class="math" data-tex="\(s=1-n\)">\(s=1-n\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, division of residues gives</p>
+<span class="math math-display" data-tex="\[
+\zeta(1-n,u)=-\frac{B_n(u)}n,
+\tag{5.9}
+\]">\[
+\zeta(1-n,u)=-\frac{B_n(u)}n,
+\tag{5.9}
+\]</span>
+<p>because <span class="math" data-tex="\(B_n(1-u)=(-1)^nB_n(u)\)">\(B_n(1-u)=(-1)^nB_n(u)\)</span>. That polynomial identity follows immediately by replacing <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(-t\)">\(-t\)</span> in its generating function. These arguments establish the continuation and the values, rather than presupposing a formula for the Hurwitz function.</p>
+<p>Splitting a Dirichlet series into residue classes gives, initially on <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span> and hence everywhere by continuation,</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)=q^{-s}\sum_{b=1}^q\chi(b)\zeta(s,b/q).
+\tag{5.10}
+\]">\[
+L(s,\chi)=q^{-s}\sum_{b=1}^q\chi(b)\zeta(s,b/q).
+\tag{5.10}
+\]</span>
+<p>The residue at 1 vanishes because <span class="math" data-tex="\(\sum_b\chi(b)=0\)">\(\sum_b\chi(b)=0\)</span>; thus this route also proves that <span class="math" data-tex="\(L\)">\(L\)</span> is entire. Equations (5.2) and (5.9) reproduce (5.3). The theta route supplies the functional equation directly; the Hurwitz route supplies the integer values directly. Their entire continuations agree on the original half-plane and therefore agree everywhere.</p>
+<h2 id="6-convexity-with-a-logarithm">6. Convexity with a logarithm</h2>
+<p><strong>Theorem 6.1.</strong> Uniformly for primitive characters of conductor <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span> and real <span class="math" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L(1/2+it,\chi)
+\ll\bigl(q(|t|+1)\bigr)^{1/4}
+\log\bigl(q(|t|+2)\bigr).
+\tag{6.1}
+\]">\[
+L(1/2+it,\chi)
+\ll\bigl(q(|t|+1)\bigr)^{1/4}
+\log\bigl(q(|t|+2)\bigr).
+\tag{6.1}
+\]</span>
+<p>The implied constant is absolute.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(0&lt;\delta\le1/2\)">\(0&lt;\delta\le1/2\)</span>. Absolute convergence gives</p>
+<span class="math math-display" data-tex="\[
+|L(1+\delta+iu,\chi)|\le\zeta(1+\delta)
+\le1+\delta^{-1}\ll\delta^{-1}.
+\tag{6.2}
+\]">\[
+|L(1+\delta+iu,\chi)|\le\zeta(1+\delta)
+\le1+\delta^{-1}\ll\delta^{-1}.
+\tag{6.2}
+\]</span>
+<p>The functional equation (2.5) and uniform vertical Stirling give</p>
+<span class="math math-display" data-tex="\[
+|L(-\delta+iu,\chi)|
+\ll\delta^{-1}\bigl(q(|u|+2)\bigr)^{1/2+\delta}.
+\tag{6.3}
+\]">\[
+|L(-\delta+iu,\chi)|
+\ll\delta^{-1}\bigl(q(|u|+2)\bigr)^{1/2+\delta}.
+\tag{6.3}
+\]</span>
+<p>The Gamma ratio used here has bound</p>
+<span class="math math-display" data-tex="\[
+\left|\frac{\Gamma((1+\delta+a-iu)/2)}
+{\Gamma((-\delta+a+iu)/2)}\right|
+\ll(|u|+2)^{1/2+\delta}
+\tag{6.4}
+\]">\[
+\left|\frac{\Gamma((1+\delta+a-iu)/2)}
+{\Gamma((-\delta+a+iu)/2)}\right|
+\ll(|u|+2)^{1/2+\delta}
+\tag{6.4}
+\]</span>
+<p>uniformly for <span class="math" data-tex="\(a\in\{0,1\}\)">\(a\in\{0,1\}\)</span>, <span class="math" data-tex="\(0\le\delta\le1/2\)">\(0\le\delta\le1/2\)</span>. For <span class="math" data-tex="\(|u|\ge1\)">\(|u|\ge1\)</span>, this follows from Corollary 4.1 of <em>The Gamma function and Stirling's formula</em>: the exponential decays cancel and the powers subtract to <span class="math" data-tex="\(1/2+\delta\)">\(1/2+\delta\)</span>. For <span class="math" data-tex="\(|u|\le1\)">\(|u|\le1\)</span>, the numerator's argument stays in a compact set away from Gamma poles, and the reciprocal Gamma in the denominator is entire and bounded on its compact argument set. This proves (6.4), including the limit <span class="math" data-tex="\(\delta=0\)">\(\delta=0\)</span>.</p>
+<p>To interpolate while keeping the height uniform, fix <span class="math" data-tex="\(t\)">\(t\)</span> and apply the bounded three-lines principle on <span class="math" data-tex="\(-\delta\le\Re z\le1+\delta\)">\(-\delta\le\Re z\le1+\delta\)</span> to</p>
+<span class="math math-display" data-tex="\[
+G(z)=L(z+it,\chi)\exp((z-1/2)^2).
+\]">\[
+G(z)=L(z+it,\chi)\exp((z-1/2)^2).
+\]</span>
+<p>The required principle is assigned to <em>Growth in the critical strip: convexity and the Lindelöf hypothesis</em>, the planned zeta-course prerequisite: for a bounded holomorphic function on a closed vertical strip with boundary suprema <span class="math" data-tex="\(A_0,A_1\)">\(A_0,A_1\)</span>, its modulus at a point a fraction <span class="math" data-tex="\(v\)">\(v\)</span> of the way across is at most <span class="math" data-tex="\(A_0^{1-v}A_1^v\)">\(A_0^{1-v}A_1^v\)</span>. Here boundedness follows from (2.4), (4.4), and the reciprocal-Gamma bound <span class="math" data-tex="\(\log\max_{|z|\le R}|1/\Gamma(z)|=O(R\log(R+2))\)">\(\log\max_{|z|\le R}|1/\Gamma(z)|=O(R\log(R+2))\)</span>, proved in Proposition 4.2 of the Gamma lesson. The Gaussian damping dominates that growth as <span class="math" data-tex="\(|\Im z|\to\infty\)">\(|\Im z|\to\infty\)</span>.</p>
+<p>On the right boundary (6.2) bounds <span class="math" data-tex="\(G\)">\(G\)</span> by <span class="math" data-tex="\(C/\delta\)">\(C/\delta\)</span>. On the left, put <span class="math" data-tex="\(u=t+\Im z\)">\(u=t+\Im z\)</span> in (6.3). Since
+<span class="math" data-tex="\(|t+v|+2\le(|t|+2)(1+|v|)\)">\(|t+v|+2\le(|t|+2)(1+|v|)\)</span>, and
+<span class="math" data-tex="\(\sup_v(1+|v|)^{1/2+\delta}e^{-v^2}\)">\(\sup_v(1+|v|)^{1/2+\delta}e^{-v^2}\)</span> is bounded absolutely for our range of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, the left boundary bound is
+<span class="math" data-tex="\(C\delta^{-1}(q(|t|+2))^{1/2+\delta}\)">\(C\delta^{-1}(q(|t|+2))^{1/2+\delta}\)</span>.
+The point <span class="math" data-tex="\(z=1/2\)">\(z=1/2\)</span> is halfway across this strip and its damping factor is 1. Hence</p>
+<span class="math math-display" data-tex="\[
+|L(1/2+it,\chi)|
+\ll\delta^{-1}(q(|t|+2))^{1/4+\delta/2}.
+\tag{6.5}
+\]">\[
+|L(1/2+it,\chi)|
+\ll\delta^{-1}(q(|t|+2))^{1/4+\delta/2}.
+\tag{6.5}
+\]</span>
+<p>Put <span class="math" data-tex="\(H=q(|t|+2)\)">\(H=q(|t|+2)\)</span> and choose <span class="math" data-tex="\(\delta=\min(1/2,1/\log H)\)">\(\delta=\min(1/2,1/\log H)\)</span>. Then <span class="math" data-tex="\(\delta^{-1}\ll\log H\)">\(\delta^{-1}\ll\log H\)</span> and <span class="math" data-tex="\(H^{\delta/2}\le e^{1/2}\)">\(H^{\delta/2}\le e^{1/2}\)</span>. Finally <span class="math" data-tex="\(|t|+2\le2(|t|+1)\)">\(|t|+2\le2(|t|+1)\)</span>. This proves (6.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The parameter <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is chosen after establishing an estimate with an absolute constant uniform on <span class="math" data-tex="\(0&lt;\delta\le1/2\)">\(0&lt;\delta\le1/2\)</span>. A bound with an uncontrolled <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-dependent interpolation constant would not justify this last optimization.</p>
+<h2 id="7-two-root-number-examples">7. Two root-number examples</h2>
+<p>For <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span>, the conductor is 4, the parity is odd, and <span class="math" data-tex="\(\tau(\chi_{-4})=2i\)">\(\tau(\chi_{-4})=2i\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\xi(s,\chi_{-4})=(4/\pi)^{(s+1)/2}
+\Gamma((s+1)/2)L(s,\chi_{-4}),\qquad
+\varepsilon(\chi_{-4})=1.
+\]">\[
+\xi(s,\chi_{-4})=(4/\pi)^{(s+1)/2}
+\Gamma((s+1)/2)L(s,\chi_{-4}),\qquad
+\varepsilon(\chi_{-4})=1.
+\]</span>
+<p>The finite value formula gives
+<span class="math" data-tex="\(L(0,\chi_{-4})=-(1-3)/4=1/2\)">\(L(0,\chi_{-4})=-(1-3)/4=1/2\)</span>.
+Also <span class="math" data-tex="\(L(-1,\chi_{-4})=0\)">\(L(-1,\chi_{-4})=0\)</span>, a simple trivial zero. The entire completed function has no zero there, because its Gamma pole cancels that zero.</p>
+<p>For the quartic character modulo 5 with <span class="math" data-tex="\(\chi(2)=i\)">\(\chi(2)=i\)</span>, the values at <span class="math" data-tex="\(1,2,3,4\)">\(1,2,3,4\)</span> are <span class="math" data-tex="\(1,i,-i,-1\)">\(1,i,-i,-1\)</span>, so <span class="math" data-tex="\(a=1\)">\(a=1\)</span>. Directly pairing exponentials gives</p>
+<span class="math math-display" data-tex="\[
+\tau(\chi)=-2\sin(\pi/5)+2i\sin(2\pi/5),
+\quad
+\varepsilon(\chi)=\frac{2\sin(2\pi/5)+2i\sin(\pi/5)}{\sqrt5}.
+\tag{7.1}
+\]">\[
+\tau(\chi)=-2\sin(\pi/5)+2i\sin(2\pi/5),
+\quad
+\varepsilon(\chi)=\frac{2\sin(2\pi/5)+2i\sin(\pi/5)}{\sqrt5}.
+\tag{7.1}
+\]</span>
+<p>Numerically the root number is
+<span class="math" data-tex="\(0.8506508084+0.5257311121i\)">\(0.8506508084+0.5257311121i\)</span>. Its modulus is 1, since
+<span class="math" data-tex="\(4(\sin^2(\pi/5)+\sin^2(2\pi/5))=5\)">\(4(\sin^2(\pi/5)+\sin^2(2\pi/5))=5\)</span>.
+For this character <span class="math" data-tex="\(L(0,\chi)=(3+i)/5\)">\(L(0,\chi)=(3+i)/5\)</span>, also directly from (5.4). Its functional equation connects <span class="math" data-tex="\(\chi\)">\(\chi\)</span> with <span class="math" data-tex="\(\overline\chi\)">\(\overline\chi\)</span>; the real-character root number 1 cannot be transferred to this example.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Show that <span class="math" data-tex="\(\varepsilon(\chi)=1\)">\(\varepsilon(\chi)=1\)</span> for every real primitive character, including both parity cases.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Derive the asymmetric functional equation</p>
+<span class="math math-display" data-tex="\[
+L(1-s,\chi)=\frac{\tau(\chi)}q
+\left(\frac q{2\pi}\right)^s\Gamma(s)
+\bigl(e^{-\pi is/2}+\chi(-1)e^{\pi is/2}\bigr)
+L(s,\overline\chi).
+\tag{8.1}
+\]">\[
+L(1-s,\chi)=\frac{\tau(\chi)}q
+\left(\frac q{2\pi}\right)^s\Gamma(s)
+\bigl(e^{-\pi is/2}+\chi(-1)e^{\pi is/2}\bigr)
+L(s,\overline\chi).
+\tag{8.1}
+\]</span>
+</li>
+<li>
+<p><strong>Medium.</strong> Prove (5.4), and prove its vanishing for even nonprincipal characters.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Continue <span class="math" data-tex="\(L\)">\(L\)</span> by (5.10), prove cancellation of its possible pole, and compare this continuation with the theta integral.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Prove
+<span class="math" data-tex="\(L(1/2+it,\chi)\ll_\eta(q(|t|+1))^{1/4+\eta}\)">\(L(1/2+it,\chi)\ll_\eta(q(|t|+1))^{1/4+\eta}\)</span>
+for each <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, with a constant independent of the primitive character.</p>
+</li>
+</ol>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>1.</strong> The exact real Gauss phase proved in <em>Gauss sums</em> is <span class="math" data-tex="\(\sqrt q\)">\(\sqrt q\)</span> when <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, and <span class="math" data-tex="\(i\sqrt q\)">\(i\sqrt q\)</span> when <span class="math" data-tex="\(a=1\)">\(a=1\)</span>. In both cases division by <span class="math" data-tex="\(i^a\sqrt q\)">\(i^a\sqrt q\)</span> gives 1. The weaker fact <span class="math" data-tex="\(|\tau|=\sqrt q\)">\(|\tau|=\sqrt q\)</span> would prove only a modulus statement and would not answer the exercise.</p>
+<p><strong>2.</strong> Apply (2.3) at <span class="math" data-tex="\(1-s\)">\(1-s\)</span> and divide by its completion factors. This gives</p>
+<span class="math math-display" data-tex="\[
+L(1-s,\chi)=\frac{\tau(\chi)}{i^a\sqrt q}
+\left(\frac q\pi\right)^{s-1/2}
+\frac{\Gamma((s+a)/2)}{\Gamma((1-s+a)/2)}
+L(s,\overline\chi).
+\]">\[
+L(1-s,\chi)=\frac{\tau(\chi)}{i^a\sqrt q}
+\left(\frac q\pi\right)^{s-1/2}
+\frac{\Gamma((s+a)/2)}{\Gamma((1-s+a)/2)}
+L(s,\overline\chi).
+\]</span>
+<p>For <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, reflection at <span class="math" data-tex="\((1+s)/2\)">\((1+s)/2\)</span> and duplication at <span class="math" data-tex="\(s/2\)">\(s/2\)</span> yield</p>
+<span class="math math-display" data-tex="\[
+\frac{\Gamma(s/2)}{\Gamma((1-s)/2)}
+=\frac{2^{1-s}}{\sqrt\pi}\Gamma(s)\cos(\pi s/2).
+\]">\[
+\frac{\Gamma(s/2)}{\Gamma((1-s)/2)}
+=\frac{2^{1-s}}{\sqrt\pi}\Gamma(s)\cos(\pi s/2).
+\]</span>
+<p>For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, reflection at <span class="math" data-tex="\(s/2\)">\(s/2\)</span> and the same duplication yield</p>
+<span class="math math-display" data-tex="\[
+\frac{\Gamma((s+1)/2)}{\Gamma(1-s/2)}
+=\frac{2^{1-s}}{\sqrt\pi}\Gamma(s)\sin(\pi s/2).
+\]">\[
+\frac{\Gamma((s+1)/2)}{\Gamma(1-s/2)}
+=\frac{2^{1-s}}{\sqrt\pi}\Gamma(s)\sin(\pi s/2).
+\]</span>
+<p>Inserting these ratios gives the common prefactor
+<span class="math" data-tex="\((\tau(\chi)/q)(q/(2\pi))^s\Gamma(s)\)">\((\tau(\chi)/q)(q/(2\pi))^s\Gamma(s)\)</span>, times <span class="math" data-tex="\(2\cos(\pi s/2)\)">\(2\cos(\pi s/2)\)</span> in the even case and <span class="math" data-tex="\(-2i\sin(\pi s/2)\)">\(-2i\sin(\pi s/2)\)</span> in the odd case. Those two factors are exactly the parentheses in (8.1). The calculation first holds away from the individual Gamma poles; continuation gives the identity of meromorphic expressions everywhere, with removable singularities determined by the entire left side.</p>
+<p><strong>3.</strong> The coefficient of <span class="math" data-tex="\(t\)">\(t\)</span> in (5.1) is
+<span class="math" data-tex="\(B_{1,\chi}=\sum_b\chi(b)(b/q-1/2)=q^{-1}\sum_b b\chi(b)\)">\(B_{1,\chi}=\sum_b\chi(b)(b/q-1/2)=q^{-1}\sum_b b\chi(b)\)</span>.
+The equality <span class="math" data-tex="\(L(0,\chi)=-B_{1,\chi}\)">\(L(0,\chi)=-B_{1,\chi}\)</span> follows by the explicit Mellin-subtraction proof of Theorem 5.1: the residue of <span class="math" data-tex="\(\Gamma(s)L(s,\chi)\)">\(\Gamma(s)L(s,\chi)\)</span> at zero is <span class="math" data-tex="\(-B_{1,\chi}\)">\(-B_{1,\chi}\)</span>, and the residue of <span class="math" data-tex="\(\Gamma(s)\)">\(\Gamma(s)\)</span> there is 1. For even <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, substituting <span class="math" data-tex="\(b\mapsto q-b\)">\(b\mapsto q-b\)</span> gives
+<span class="math" data-tex="\(\sum_b b\chi(b)=\sum_b(q-b)\chi(b)\)">\(\sum_b b\chi(b)=\sum_b(q-b)\chi(b)\)</span>. Thus twice that sum equals <span class="math" data-tex="\(q\sum_b\chi(b)=0\)">\(q\sum_b\chi(b)=0\)</span>, proving the vanishing.</p>
+<p><strong>4.</strong> The residue-class splitting on <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span> is absolutely convergent and proves (5.10). To continue each Hurwitz term, use its integral (5.8), choose a radius within the Taylor disk of its kernel, and subtract any desired number of Laurent terms in the integral from zero to that radius. The remainder becomes holomorphic on a correspondingly larger left half-plane. Dividing by Gamma cancels the simple possible poles at <span class="math" data-tex="\(0,-1,\ldots\)">\(0,-1,\ldots\)</span>, leaving just a simple pole at 1 of residue 1. In (5.10) the sum of these residues is <span class="math" data-tex="\(q^{-1}\sum_b\chi(b)=0\)">\(q^{-1}\sum_b\chi(b)=0\)</span>. The resulting entire function agrees with the original series, and so with the theta continuation by the identity theorem. The subtraction also proves (5.9), rather than using the Hurwitz values without their continuation.</p>
+<p><strong>5.</strong> Establish the uniform boundary bounds (6.2) and (6.3) for <span class="math" data-tex="\(0&lt;\delta\le1/2\)">\(0&lt;\delta\le1/2\)</span>, with the compact-argument treatment of the Gamma ratio in (6.4). Damping about the desired height gives (6.5) by bounded three-lines, with an absolute constant. Fix <span class="math" data-tex="\(\delta=\min(1/2,\eta)\)">\(\delta=\min(1/2,\eta)\)</span>; then <span class="math" data-tex="\(\delta/2\le\eta\)">\(\delta/2\le\eta\)</span>, and its reciprocal can be absorbed into the <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-dependent constant. Replacing <span class="math" data-tex="\(|t|+2\)">\(|t|+2\)</span> by at most <span class="math" data-tex="\(2(|t|+1)\)">\(2(|t|+1)\)</span> proves the requested estimate. Alternatively (6.1) implies it because <span class="math" data-tex="\(\log(2X)\ll_\eta X^\eta\)">\(\log(2X)\ll_\eta X^\eta\)</span> for <span class="math" data-tex="\(X\ge1\)">\(X\ge1\)</span>, as follows by maximizing <span class="math" data-tex="\((\log(2X))/X^\eta\)">\((\log(2X))/X^\eta\)</span>.</p>
+<h2 id="what-this-lesson-takes-from-the-zeta-course">What this lesson takes from the zeta course</h2>
+<p>The Gamma continuation, residues, nonvanishing, reflection, duplication, Stirling estimates and reciprocal-Gamma growth come from the written lesson <em>The Gamma function and Stirling's formula</em>, at the locators specified above. The general factorization (4.1) for an entire function of order at most 1 with nonzero value at zero comes from the planned lesson <em>Entire functions of order one and the Hadamard product of ξ</em>. The bounded three-lines principle used in Section 6 comes from the planned lesson <em>Growth in the critical strip: convexity and the Lindelöf hypothesis</em>. These are analytical prerequisites with existing course assignments; the character theta transformation, completion, boundary nonvanishing, zero locations, real part of the product constant, integer values and character convexity estimate are proved here. Generalized Riemann hypothesis remains a conjecture: it asserts that the nontrivial zeros are all on <span class="math" data-tex="\(\Re s=1/2\)">\(\Re s=1/2\)</span>, not merely in the open strip proved here.</p>
+<h2 id="references">References</h2>
+<p>D. Koukoulopoulos, <em>The Distribution of Prime Numbers</em>, Theorem 11.1, gives the theta route, and Lemma 11.2 gives related bounds from character sums. The residue-subtraction and interpolation arguments above supply their details for our stated conventions. The finite integer-value formula is the classical generalized-Bernoulli formula. E. Hecke, <em>Vorlesungen über die Theorie der algebraischen Zahlen</em>, Chapter VIII, develops the historical theta approach; the phase used here was proved in the preceding Gauss-sum lesson.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-04.html">← Character sums: the Pólya–Vinogradov inequality</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-06.html">Values of Dirichlet L-functions at s = 1 →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-05.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

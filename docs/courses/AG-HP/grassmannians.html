@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grassmannians · Hilbert and Picard schemes, deformations and representability</title>
+<meta name="description" content="A lesson of the course Hilbert and Picard schemes, deformations and representability. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-HP/grassmannians.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Hilbert and Picard schemes, deformations and representability</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 11</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="grassmannians">Grassmannians</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Grassmannian turns linear algebra into a family of geometric objects. Its points classify quotients of a vector space, while its maps from a parameter scheme classify quotients of a vector bundle on that scheme. The kernel must remain a subbundle after base change. This is what distinguishes a family of subspaces from a collection of subsheaves having the expected rank at some points.</p>
+<p>We construct the Grassmannian with matrices, then use determinants to place it inside projective space. The same matrices compute infinitesimal motion. Finally, we examine equations, cells, and a first application to lines on a hypersurface. We also construct the functor for arbitrary quasi-coherent modules, separating representability from the stronger properties available for vector bundles.</p>
+<p>The prerequisite is <a href="representable-functors-and-the-functor-of-points.html">Representable functors and the functor of points</a>, together with finite locally free modules, exterior powers, and smoothness of affine space over its base. Basic references are [Stacks], [AI Integrated Stacks Project], and [Vakil].</p>
+<h2 id="1-matrices-as-families-of-quotients">1 Matrices as families of quotients</h2>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be a scheme, <span class="math" data-tex="\(E\)">\(E\)</span> a locally free module of rank <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(0\leq r\leq n\)">\(0\leq r\leq n\)</span>. Define <span class="math" data-tex="\(\operatorname{Gr}_r(E)(T)\)">\(\operatorname{Gr}_r(E)(T)\)</span>, for <span class="math" data-tex="\(f:T\to S\)">\(f:T\to S\)</span>, to be isomorphism classes of surjections</p>
+<span class="math math-display" data-tex="\[
+q:f^*E\twoheadrightarrow Q,
+\qquad Q\text{ locally free of rank }r.
+\]">\[
+q:f^*E\twoheadrightarrow Q,
+\qquad Q\text{ locally free of rank }r.
+\]</span>
+<p>The quotient convention is fixed throughout. An isomorphism preserves <span class="math" data-tex="\(q\)">\(q\)</span>; because <span class="math" data-tex="\(q\)">\(q\)</span> is surjective it is unique if it exists. Pullback gives the functorial maps.</p>
+<p>Locally <span class="math" data-tex="\(Q\)">\(Q\)</span> is free and <span class="math" data-tex="\(q\)">\(q\)</span> splits. Its kernel <span class="math" data-tex="\(K\)">\(K\)</span> is therefore locally free of rank <span class="math" data-tex="\(n-r\)">\(n-r\)</span>, and the exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow K\longrightarrow f^*E\longrightarrow Q\longrightarrow0
+\]">\[
+0\longrightarrow K\longrightarrow f^*E\longrightarrow Q\longrightarrow0
+\]</span>
+<p>remains exact after arbitrary pullback. Conversely, a rank-<span class="math" data-tex="\((n-r)\)">\((n-r)\)</span> subbundle of <span class="math" data-tex="\(f^*E\)">\(f^*E\)</span>, meaning a subsheaf with locally free quotient, gives this quotient. Dualizing identifies rank-<span class="math" data-tex="\(r\)">\(r\)</span> quotients of <span class="math" data-tex="\(E\)">\(E\)</span> with rank-<span class="math" data-tex="\(r\)">\(r\)</span> subbundles of <span class="math" data-tex="\(E^\vee\)">\(E^\vee\)</span>. There is no basis-free identification with rank-<span class="math" data-tex="\(r\)">\(r\)</span> subspaces of <span class="math" data-tex="\(E\)">\(E\)</span> itself.</p>
+<p>Suppose first that <span class="math" data-tex="\(E=\mathcal O_S^n\)">\(E=\mathcal O_S^n\)</span>, with basis <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span>. For an increasing <span class="math" data-tex="\(r\)">\(r\)</span>-subset <span class="math" data-tex="\(I\)">\(I\)</span>, select the families for which the images of <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, form a basis of <span class="math" data-tex="\(Q\)">\(Q\)</span>. This condition defines an open subfunctor: the determinant of the corresponding map <span class="math" data-tex="\(\mathcal O_T^r\to Q\)">\(\mathcal O_T^r\to Q\)</span> is invertible precisely on its required open. At each point some minor is nonzero, so these opens cover every family.</p>
+<p>On such a chart, use those images as the basis of <span class="math" data-tex="\(Q\)">\(Q\)</span>. The quotient has a unique matrix <span class="math" data-tex="\(M_I\)">\(M_I\)</span> whose columns indexed by <span class="math" data-tex="\(I\)">\(I\)</span> form the identity. Its other <span class="math" data-tex="\(r(n-r)\)">\(r(n-r)\)</span> entries are arbitrary functions. Conversely, every such matrix is a surjection. Thus the chart is <span class="math" data-tex="\(\mathbb A_S^{r(n-r)}\)">\(\mathbb A_S^{r(n-r)}\)</span>. If another column set <span class="math" data-tex="\(J\)">\(J\)</span> is a basis, its determinant is a unit, and the change of chart is</p>
+<span class="math math-display" data-tex="\[
+M_J=(M_I|_J)^{-1}M_I.
+\]">\[
+M_J=(M_I|_J)^{-1}M_I.
+\]</span>
+<p>These transitions satisfy the cocycle condition because they are changes of basis in the same quotient.</p>
+<p><strong>Theorem 1.1.</strong> The quotient functor <span class="math" data-tex="\(\operatorname{Gr}_r(E)\)">\(\operatorname{Gr}_r(E)\)</span> is represented by a scheme. It is smooth over <span class="math" data-tex="\(S\)">\(S\)</span>, of relative dimension <span class="math" data-tex="\(r(n-r)\)">\(r(n-r)\)</span>, and commutes with arbitrary base change.</p>
+<p><strong>Proof.</strong> Quotient pairs glue as a Zariski sheaf: the unique isomorphisms preserving their quotient maps satisfy the cocycle condition, and locally free modules glue. For free <span class="math" data-tex="\(E\)">\(E\)</span>, the representable open charts just constructed give a scheme by the gluing theorem of the preceding lesson. Their morphisms to <span class="math" data-tex="\(S\)">\(S\)</span> are smooth of the stated relative dimension. These properties are local on the source, so they hold for the Grassmannian.</p>
+<p>For general <span class="math" data-tex="\(E\)">\(E\)</span>, trivialize on a cover of <span class="math" data-tex="\(S\)">\(S\)</span>. A change of frame induces, by precomposition of quotients, an isomorphism between the resulting Grassmannian functors and hence between their schemes. The cocycle equality follows either from matrix composition or from Yoneda. Glue these schemes over <span class="math" data-tex="\(S\)">\(S\)</span>. The quotient description proves representability on all test schemes. It also shows that its pullback to <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> represents <span class="math" data-tex="\(\operatorname{Gr}_r(E|_{S&#x27;})\)">\(\operatorname{Gr}_r(E|_{S&#x27;})\)</span>. Smoothness and dimension follow on the trivializing cover. When <span class="math" data-tex="\(r=0\)">\(r=0\)</span> or <span class="math" data-tex="\(r=n\)">\(r=n\)</span>, the only quotient is respectively zero or the identity, so the scheme is <span class="math" data-tex="\(S\)">\(S\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a universal exact sequence on <span class="math" data-tex="\(G=\operatorname{Gr}_r(E)\)">\(G=\operatorname{Gr}_r(E)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal K\longrightarrow\pi^*E
+\longrightarrow\mathcal Q\longrightarrow0.
+\]">\[
+0\longrightarrow\mathcal K\longrightarrow\pi^*E
+\longrightarrow\mathcal Q\longrightarrow0.
+\]</span>
+<p>The matrices above are local descriptions of this sequence, not extra choices in the moduli problem.</p>
+<h2 id="2-determinants-recover-the-quotient">2 Determinants recover the quotient</h2>
+<p>Taking the top exterior power of the universal quotient gives an invertible quotient</p>
+<span class="math math-display" data-tex="\[
+\bigwedge^r\pi^*E\twoheadrightarrow\det\mathcal Q.
+\]">\[
+\bigwedge^r\pi^*E\twoheadrightarrow\det\mathcal Q.
+\]</span>
+<p>The projective-space description from the preceding lesson therefore defines the <strong>Plücker morphism</strong></p>
+<span class="math math-display" data-tex="\[
+\iota:G\longrightarrow\mathbb P\!\left(\bigwedge^rE\right).
+\]">\[
+\iota:G\longrightarrow\mathbb P\!\left(\bigwedge^rE\right).
+\]</span>
+<p>For free <span class="math" data-tex="\(E\)">\(E\)</span>, write <span class="math" data-tex="\(p_I\)">\(p_I\)</span> for the homogeneous coordinate indexed by an increasing <span class="math" data-tex="\(r\)">\(r\)</span>-subset. It is the determinant of the columns <span class="math" data-tex="\(I\)">\(I\)</span> of a quotient matrix. Thus <span class="math" data-tex="\(\iota^{-1}(D_+(p_I))\)">\(\iota^{-1}(D_+(p_I))\)</span> is exactly the chart used in Section 1.</p>
+<p><strong>Theorem 2.1.</strong> The Plücker morphism is a closed immersion. In particular <span class="math" data-tex="\(G\to S\)">\(G\to S\)</span> is projective, and</p>
+<span class="math math-display" data-tex="\[
+\iota^*\mathcal O(1)\simeq\det\mathcal Q.
+\]">\[
+\iota^*\mathcal O(1)\simeq\det\mathcal Q.
+\]</span>
+<p><strong>Proof.</strong> On the target chart <span class="math" data-tex="\(D_+(p_I)\)">\(D_+(p_I)\)</span>, normalize <span class="math" data-tex="\(p_I=1\)">\(p_I=1\)</span>. Its coordinate algebra is a polynomial algebra on the ratios <span class="math" data-tex="\(p_J/p_I\)">\(p_J/p_I\)</span>, for <span class="math" data-tex="\(J\ne I\)">\(J\ne I\)</span>. The Grassmannian chart has coordinate algebra <span class="math" data-tex="\(\mathcal O_S[a_{ij}]\)">\(\mathcal O_S[a_{ij}]\)</span>, describing the columns outside <span class="math" data-tex="\(I\)">\(I\)</span>. For each entry <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>, replace the corresponding identity column in <span class="math" data-tex="\(I\)">\(I\)</span> by column <span class="math" data-tex="\(j\)">\(j\)</span>. The resulting determinant is <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span> times a sign fixed by reordering columns. Hence the homomorphism from the target coordinate algebra to the Grassmannian coordinate algebra contains every generator of the latter in its image. It is surjective, so the restricted morphism is a closed immersion.</p>
+<p>The opens <span class="math" data-tex="\(D_+(p_I)\)">\(D_+(p_I)\)</span> cover the entire target projective bundle, and closed immersions are local on the target. This proves the assertion when <span class="math" data-tex="\(E\)">\(E\)</span> is free; the argument on a trivializing cover proves it for <span class="math" data-tex="\(E\)">\(E\)</span>. The target is the projectivization of a finite locally free module, so a closed subscheme is projective over <span class="math" data-tex="\(S\)">\(S\)</span>. The identity of line bundles follows from the definition of the morphism by the displayed quotient. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof establishes the scheme structure of the image, including nilpotents, over an arbitrary base. A monomorphism that is injective on tangent spaces alone would not establish a closed immersion; for example, an open immersion can have both properties.</p>
+<p>Properness also has an illuminating lattice interpretation. Let <span class="math" data-tex="\(R\)">\(R\)</span> be a valuation ring with fraction field <span class="math" data-tex="\(F\)">\(F\)</span>, and let <span class="math" data-tex="\(E_R\)">\(E_R\)</span> be a finite free module. A quotient of <span class="math" data-tex="\(E_F\)">\(E_F\)</span> with kernel <span class="math" data-tex="\(K_F\)">\(K_F\)</span> extends by setting</p>
+<span class="math math-display" data-tex="\[
+K_R=E_R\cap K_F,
+\qquad Q_R=E_R/K_R.
+\]">\[
+K_R=E_R\cap K_F,
+\qquad Q_R=E_R/K_R.
+\]</span>
+<p>Here the intersection is taken inside <span class="math" data-tex="\(E_F\)">\(E_F\)</span>. To verify local freeness even for a nondiscrete valuation, choose a matrix for the quotient over <span class="math" data-tex="\(F\)">\(F\)</span>. Among its nonzero maximal minors choose one whose valuation is minimal. Divide by its submatrix to normalize those columns to the identity. Cramer's rule expresses every other entry as a signed ratio of a maximal minor to the chosen one. Its valuation is nonnegative, so all entries lie in <span class="math" data-tex="\(R\)">\(R\)</span>. This normalized matrix is a surjection <span class="math" data-tex="\(R^n\to R^r\)">\(R^n\to R^r\)</span>, and its kernel is precisely <span class="math" data-tex="\(K_R\)">\(K_R\)</span>. Thus the intersection construction gives a free quotient.</p>
+<p>It is the only extension: any extending quotient is torsion-free, and its kernel is saturated, hence equals the intersection with its generic kernel. This gives existence and uniqueness in the valuative criterion, in agreement with projectivity. The choice of a minimal minor works because there are only finitely many minors and the value group is totally ordered.</p>
+<h2 id="3-infinitesimal-motion-of-a-kernel">3 Infinitesimal motion of a kernel</h2>
+<p>Let <span class="math" data-tex="\(s:\operatorname{Spec}k\to S\)">\(s:\operatorname{Spec}k\to S\)</span> be a field-valued point and let <span class="math" data-tex="\(q:E_s\to Q\)">\(q:E_s\to Q\)</span> represent a point of the Grassmannian, with kernel <span class="math" data-tex="\(K\)">\(K\)</span>. We compute the tangent space in the fibre over <span class="math" data-tex="\(s\)">\(s\)</span>. A tangent vector is a quotient over <span class="math" data-tex="\(D=k[\epsilon]/(\epsilon^2)\)">\(D=k[\epsilon]/(\epsilon^2)\)</span> reducing to <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>Proposition 3.1.</strong> There is a canonical identification</p>
+<span class="math math-display" data-tex="\[
+T_{[q]}\operatorname{Gr}_r(E_s)\simeq\operatorname{Hom}_k(K,Q).
+\]">\[
+T_{[q]}\operatorname{Gr}_r(E_s)\simeq\operatorname{Hom}_k(K,Q).
+\]</span>
+<p>More generally the relative tangent bundle of <span class="math" data-tex="\(G\to S\)">\(G\to S\)</span> is <span class="math" data-tex="\(\mathcal H om(\mathcal K,\mathcal Q)\)">\(\mathcal H om(\mathcal K,\mathcal Q)\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(K_D\subset E_s\otimes_k D\)">\(K_D\subset E_s\otimes_k D\)</span> be the lifted kernel. For <span class="math" data-tex="\(v\in K\)">\(v\in K\)</span>, choose a lift <span class="math" data-tex="\(v+\epsilon w\in K_D\)">\(v+\epsilon w\in K_D\)</span>. Send <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(q(w)\)">\(q(w)\)</span>. The choice of <span class="math" data-tex="\(w\)">\(w\)</span> changes by an element of <span class="math" data-tex="\(K\)">\(K\)</span>: the difference of two lifts lies in <span class="math" data-tex="\(\epsilon K_D\)">\(\epsilon K_D\)</span>, since <span class="math" data-tex="\(K_D\)">\(K_D\)</span> is a direct summand and reduces to <span class="math" data-tex="\(K\)">\(K\)</span>. Hence the map <span class="math" data-tex="\(K\to Q\)">\(K\to Q\)</span> is well defined and linear.</p>
+<p>Choose a splitting <span class="math" data-tex="\(E_s=K\oplus Q\)">\(E_s=K\oplus Q\)</span> to check that this construction is a bijection. Given <span class="math" data-tex="\(\phi:K\to Q\)">\(\phi:K\to Q\)</span>, the submodule generated by <span class="math" data-tex="\(v+\epsilon\phi(v)\)">\(v+\epsilon\phi(v)\)</span> is the graph of <span class="math" data-tex="\(\epsilon\phi\)">\(\epsilon\phi\)</span>, a direct summand with free quotient. It gives the inverse construction. Every lifted direct summand has this graph form, and the canonical map just defined reads off <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Thus the answer is independent of the auxiliary splitting.</p>
+<p>The same argument works locally on <span class="math" data-tex="\(G\)">\(G\)</span>, with square-zero coefficients in any module. It identifies infinitesimal kernel changes with homomorphisms from the universal kernel to the universal quotient. These identifications are intrinsic, so they glue to the asserted tangent bundle. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If one instead identifies a deformation by the first-order change of the quotient map, its restriction to <span class="math" data-tex="\(K\)">\(K\)</span> has the opposite sign. Our convention reads the displacement of the kernel. The vector space is the same; fixing this sign avoids ambiguity when comparing descriptions.</p>
+<p>On a normalized matrix chart a deformation is <span class="math" data-tex="\([1\mid A+\epsilon B]\)">\([1\mid A+\epsilon B]\)</span>. Its kernel vectors change by <span class="math" data-tex="\(-\epsilon Bv\)">\(-\epsilon Bv\)</span>, so the canonical homomorphism is <span class="math" data-tex="\(-B\)">\(-B\)</span>. There are <span class="math" data-tex="\(r(n-r)\)">\(r(n-r)\)</span> independent entries, matching both the tangent dimension and the relative dimension of Theorem 1.1.</p>
+<h2 id="4-equations-of-the-plücker-image">4 Equations of the Plücker image</h2>
+<p>Extend <span class="math" data-tex="\(p_I\)">\(p_I\)</span> to all ordered <span class="math" data-tex="\(r\)">\(r\)</span>-tuples by alternation, and set it to zero on repeated indices. For ordered tuples <span class="math" data-tex="\(A=(a_1,\ldots,a_{r-1})\)">\(A=(a_1,\ldots,a_{r-1})\)</span> and <span class="math" data-tex="\(B=(b_1,\ldots,b_{r+1})\)">\(B=(b_1,\ldots,b_{r+1})\)</span>, the <strong>Plücker relations</strong> are</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^{r+1}(-1)^j
+p_{a_1\cdots a_{r-1}b_j}
+p_{b_1\cdots\widehat b_j\cdots b_{r+1}}=0.
+\]">\[
+\sum_{j=1}^{r+1}(-1)^j
+p_{a_1\cdots a_{r-1}b_j}
+p_{b_1\cdots\widehat b_j\cdots b_{r+1}}=0.
+\]</span>
+<p>They are identities among maximal minors over every commutative ring. One verification is to use the alternating relation among <span class="math" data-tex="\(r+1\)">\(r+1\)</span> vectors <span class="math" data-tex="\(v_1,\ldots,v_{r+1}\)">\(v_1,\ldots,v_{r+1}\)</span> in a free rank-<span class="math" data-tex="\(r\)">\(r\)</span> module:</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^{r+1}(-1)^j
+\det(v_1,\ldots,\widehat v_j,\ldots,v_{r+1})v_j=0.
+\]">\[
+\sum_{j=1}^{r+1}(-1)^j
+\det(v_1,\ldots,\widehat v_j,\ldots,v_{r+1})v_j=0.
+\]</span>
+<p>Each coordinate is a determinant with a repeated row, hence zero. Apply the alternating linear form obtained by wedging against the columns indexed by <span class="math" data-tex="\(A\)">\(A\)</span> to obtain the stated relation. This is a polynomial identity, so it remains valid without assuming that any minor is a unit.</p>
+<p><strong>Proposition 4.1.</strong> These relations cut out the Plücker image as a closed subscheme of <span class="math" data-tex="\(\mathbb P(\bigwedge^rE)\)">\(\mathbb P(\bigwedge^rE)\)</span>, on every trivializing open of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Proof.</strong> Work in the chart <span class="math" data-tex="\(p_I=1\)">\(p_I=1\)</span>. The single replacements of elements of <span class="math" data-tex="\(I\)">\(I\)</span> specify entries <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>, with the signs fixed by the minors of the normalized matrix. We show that every remaining <span class="math" data-tex="\(p_J\)">\(p_J\)</span> is forced to equal the corresponding minor of this matrix.</p>
+<p>Induct on <span class="math" data-tex="\(d=|J\setminus I|\)">\(d=|J\setminus I|\)</span>. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, this is the normalization; for <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, it is the definition of the entries. If <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, choose <span class="math" data-tex="\(i\in I\setminus J\)">\(i\in I\setminus J\)</span> and use the relation with <span class="math" data-tex="\(A=I\setminus\{i\}\)">\(A=I\setminus\{i\}\)</span> and <span class="math" data-tex="\(B=(i,J)\)">\(B=(i,J)\)</span>, maintaining ordered indices and their alternating signs. The term belonging to <span class="math" data-tex="\(i\)">\(i\)</span> is <span class="math" data-tex="\(\pm p_Ip_J\)">\(\pm p_Ip_J\)</span>. Terms for indices in <span class="math" data-tex="\(I\cap J\)">\(I\cap J\)</span> vanish by repeated indices in the first factor. Every other term is a single-replacement coordinate times a coordinate indexed by <span class="math" data-tex="\(\{i\}\cup(J\setminus\{j\})\)">\(\{i\}\cup(J\setminus\{j\})\)</span>. The latter has distance <span class="math" data-tex="\(d-1\)">\(d-1\)</span> from <span class="math" data-tex="\(I\)">\(I\)</span>. Since <span class="math" data-tex="\(p_I=1\)">\(p_I=1\)</span>, this relation determines <span class="math" data-tex="\(p_J\)">\(p_J\)</span> from coordinates already determined by induction.</p>
+<p>The normalized matrix minors satisfy that same relation and the same initial values, so they are the forced values. Therefore the chart algebra defined by the relations is generated by the <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>, and its map to the polynomial algebra in those entries is inverse to the map assigning the single-replacement coordinates. There are no additional relations on those entries: an arbitrary normalized matrix satisfies all the displayed equations. These inverse maps identify the two chart schemes. The projective standard charts cover the scheme cut out by the relations, proving equality with the image. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(r=2,n=4\)">\(r=2,n=4\)</span>, the only needed equation is</p>
+<span class="math math-display" data-tex="\[
+p_{12}p_{34}-p_{13}p_{24}+p_{14}p_{23}=0.
+\]">\[
+p_{12}p_{34}-p_{13}p_{24}+p_{14}p_{23}=0.
+\]</span>
+<p>On <span class="math" data-tex="\(p_{12}=1\)">\(p_{12}=1\)</span>, write the quotient matrix as</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}1&amp;0&amp;a&amp;b\\0&amp;1&amp;c&amp;d\end{pmatrix}.
+\]">\[
+\begin{pmatrix}1&amp;0&amp;a&amp;b\\0&amp;1&amp;c&amp;d\end{pmatrix}.
+\]</span>
+<p>Its other coordinates are</p>
+<span class="math math-display" data-tex="\[
+p_{13}=c,\quad p_{14}=d,\quad p_{23}=-a,
+\quad p_{24}=-b,\quad p_{34}=ad-bc.
+\]">\[
+p_{13}=c,\quad p_{14}=d,\quad p_{23}=-a,
+\quad p_{24}=-b,\quad p_{34}=ad-bc.
+\]</span>
+<p>The quadratic equation eliminates <span class="math" data-tex="\(p_{34}\)">\(p_{34}\)</span>, leaving the four free entries. Permuting indices gives the same verification on every chart, so this single quadric defines <span class="math" data-tex="\(\operatorname{Gr}_2(k^4)\)">\(\operatorname{Gr}_2(k^4)\)</span> over any field, including characteristic two. Its partial derivatives cannot all vanish at a projective point: they are the six coordinates, paired up with signs. Thus it is smooth.</p>
+<p>For <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, the functor is the rank-one quotient functor, so <span class="math" data-tex="\(\operatorname{Gr}_1(E)=\mathbb P(E)\)">\(\operatorname{Gr}_1(E)=\mathbb P(E)\)</span>. For <span class="math" data-tex="\(r=n-1\)">\(r=n-1\)</span>, kernel lines give <span class="math" data-tex="\(\operatorname{Gr}_{n-1}(E)=\mathbb P(E^\vee)\)">\(\operatorname{Gr}_{n-1}(E)=\mathbb P(E^\vee)\)</span>. These statements specify which dual appears.</p>
+<h2 id="5-general-modules-and-equations-on-quotients">5 General modules and equations on quotients</h2>
+<p>The quotient functor makes sense for an arbitrary quasi-coherent <span class="math" data-tex="\(E\)">\(E\)</span>. It still has a representing scheme. However, its charts need not be affine spaces or of finite type, and no general smoothness or projectivity assertion follows.</p>
+<p><strong>Proposition 5.1.</strong> For a quasi-coherent module <span class="math" data-tex="\(E\)">\(E\)</span> on any scheme <span class="math" data-tex="\(S\)">\(S\)</span> and an integer <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, the functor of locally free rank-<span class="math" data-tex="\(r\)">\(r\)</span> quotients of <span class="math" data-tex="\(f^*E\)">\(f^*E\)</span> is represented by a scheme.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(\operatorname{Spec}A\subset S\)">\(\operatorname{Spec}A\subset S\)</span>, write <span class="math" data-tex="\(E=\widetilde M\)">\(E=\widetilde M\)</span>. For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, choose an ordered <span class="math" data-tex="\(r\)">\(r\)</span>-tuple <span class="math" data-tex="\((m_1,\ldots,m_r)\)">\((m_1,\ldots,m_r)\)</span> of elements of <span class="math" data-tex="\(M\)">\(M\)</span>. Select the open condition that their images form a basis of the quotient. In this basis, a quotient is exactly an <span class="math" data-tex="\(A\)">\(A\)</span>-linear map <span class="math" data-tex="\(M\to R^r\)">\(M\to R^r\)</span> sending <span class="math" data-tex="\(m_j\)">\(m_j\)</span> to the <span class="math" data-tex="\(j\)">\(j\)</span>-th standard basis vector, for every <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>Introduce symbols <span class="math" data-tex="\(z_{i,m}\)">\(z_{i,m}\)</span>, linear in <span class="math" data-tex="\(m\)">\(m\)</span>, for <span class="math" data-tex="\(1\leq i\leq r\)">\(1\leq i\leq r\)</span>. The algebra representing such maps is</p>
+<span class="math math-display" data-tex="\[
+C_{\boldsymbol m}
+=\operatorname{Sym}_A(M^{\oplus r})/
+(z_{i,m_j}-\delta_{ij})_{i,j}.
+\]">\[
+C_{\boldsymbol m}
+=\operatorname{Sym}_A(M^{\oplus r})/
+(z_{i,m_j}-\delta_{ij})_{i,j}.
+\]</span>
+<p>The symmetric algebra already encodes additivity and <span class="math" data-tex="\(A\)">\(A\)</span>-linearity in each copy of <span class="math" data-tex="\(M\)">\(M\)</span>. The specified images ensure surjectivity. This algebra represents the selected chart on affine tests; on general tests, its maps and the linear maps both glue, so it represents the chart there too.</p>
+<p>The images of elements of <span class="math" data-tex="\(M\)">\(M\)</span> generate every quotient. At a point choose <span class="math" data-tex="\(r\)">\(r\)</span> of them forming a basis modulo the maximal ideal; the determinant remains invertible in a neighborhood. These charts therefore cover the functor. Their membership conditions are open and commute with base change. Quotient pairs form a Zariski sheaf by the uniqueness of their compatible isomorphisms. The gluing criterion represents the functor on this affine base. Applying the same argument over an affine cover of <span class="math" data-tex="\(S\)">\(S\)</span>, the canonical functorial identifications glue the resulting schemes. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, the zero quotient gives <span class="math" data-tex="\(S\)">\(S\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, let <span class="math" data-tex="\(E=\mathcal O_S/(t)\)">\(E=\mathcal O_S/(t)\)</span> and <span class="math" data-tex="\(r=1\)">\(r=1\)</span>. A locally free rank-one quotient can exist only when <span class="math" data-tex="\(t=0\)">\(t=0\)</span> on the parameter scheme: multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> annihilates a line bundle only if it is zero. Conversely, on <span class="math" data-tex="\(V(t)\)">\(V(t)\)</span> the identity line quotient is unique. Thus the Grassmannian is <span class="math" data-tex="\(V(t)\)">\(V(t)\)</span>, which need not be smooth or flat over <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>Suppose a finite locally free <span class="math" data-tex="\(E_0\)">\(E_0\)</span> surjects onto <span class="math" data-tex="\(E\)">\(E\)</span>, with kernel <span class="math" data-tex="\(N\)">\(N\)</span>. On <span class="math" data-tex="\(\operatorname{Gr}_r(E_0)\)">\(\operatorname{Gr}_r(E_0)\)</span>, the quotient factors through <span class="math" data-tex="\(E\)">\(E\)</span> exactly when the composite <span class="math" data-tex="\(N\to\mathcal Q\)">\(N\to\mathcal Q\)</span> is zero. Locally choose a frame of <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>. The coordinates of the images of all local sections of <span class="math" data-tex="\(N\)">\(N\)</span> generate an ideal; its zero scheme represents this condition. The ideals agree when the frame changes. This gives a closed Grassmannian of quotients satisfying additional relations, a construction that will recur for Quot schemes.</p>
+<h2 id="6-cells-and-lines-on-hypersurfaces">6 Cells and lines on hypersurfaces</h2>
+<p>Over a field, dualize a rank-<span class="math" data-tex="\(r\)">\(r\)</span> quotient to its row space, an <span class="math" data-tex="\(r\)">\(r\)</span>-subspace of the dual <span class="math" data-tex="\(n\)">\(n\)</span>-space. Fix the ordered basis and write the unique reduced row-echelon form. For pivot positions</p>
+<span class="math math-display" data-tex="\[
+1\leq i_1&lt;\cdots&lt;i_r\leq n,
+\]">\[
+1\leq i_1&lt;\cdots&lt;i_r\leq n,
+\]</span>
+<p>row <span class="math" data-tex="\(a\)">\(a\)</span> has pivot <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(i_a\)">\(i_a\)</span>, zeros before it, and zeros in other pivot columns. The entries after its pivot in nonpivot columns are free. Their number is</p>
+<span class="math math-display" data-tex="\[
+d_I=\sum_{a=1}^r(n-r+a-i_a).
+\]">\[
+d_I=\sum_{a=1}^r(n-r+a-i_a).
+\]</span>
+<p>These descriptions also give locally closed subschemes: require the ranks of successive initial-column matrices to take prescribed values, using vanishing of larger minors and nonvanishing of chosen minors. Row reduction then identifies each stratum with <span class="math" data-tex="\(\mathbb A^{d_I}\)">\(\mathbb A^{d_I}\)</span>. These are the Schubert cells for the chosen flag. They are a stratification, rather than an open cover; the largest cell has dimension <span class="math" data-tex="\(r(n-r)\)">\(r(n-r)\)</span>, and the final pivot set gives a zero-dimensional cell.</p>
+<p>For a finite field, each cell contributes <span class="math" data-tex="\(q^{d_I}\)">\(q^{d_I}\)</span> points. The resulting polynomial is the Gaussian binomial coefficient</p>
+<span class="math math-display" data-tex="\[
+\#\operatorname{Gr}_r(\mathbb F_q^n)(\mathbb F_q)
+=\begin{bmatrix}n\\r\end{bmatrix}_q
+=\prod_{a=0}^{r-1}\frac{q^{n-a}-1}{q^{r-a}-1}.
+\]">\[
+\#\operatorname{Gr}_r(\mathbb F_q^n)(\mathbb F_q)
+=\begin{bmatrix}n\\r\end{bmatrix}_q
+=\prod_{a=0}^{r-1}\frac{q^{n-a}-1}{q^{r-a}-1}.
+\]</span>
+<p>The counting interpretation and the limit at <span class="math" data-tex="\(q=1\)">\(q=1\)</span> are developed in <a href="../the-field-with-one-element/counting-over-finite-fields-and-the-limit-q-1.html">Counting over finite fields and the limit q to one</a>. Here the cells explain geometrically why this count is a polynomial with nonnegative coefficients.</p>
+<p>A rank-two quotient <span class="math" data-tex="\(V\to Q\)">\(V\to Q\)</span> gives the line <span class="math" data-tex="\(\mathbb P(Q)\subset\mathbb P(V)\)">\(\mathbb P(Q)\subset\mathbb P(V)\)</span>. Thus lines in our quotient projective space <span class="math" data-tex="\(\mathbb P(V)\)">\(\mathbb P(V)\)</span> are parametrized by <span class="math" data-tex="\(\operatorname{Gr}_2(V)\)">\(\operatorname{Gr}_2(V)\)</span>. A degree-<span class="math" data-tex="\(d\)">\(d\)</span> hypersurface has equation <span class="math" data-tex="\(f\in\operatorname{Sym}^dV\)">\(f\in\operatorname{Sym}^dV\)</span>, and contains this line exactly when the image of <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(\operatorname{Sym}^dQ\)">\(\operatorname{Sym}^dQ\)</span> is zero. On the Grassmannian this is the zero scheme of a section of <span class="math" data-tex="\(\operatorname{Sym}^d\mathcal Q\)">\(\operatorname{Sym}^d\mathcal Q\)</span>, a bundle of rank <span class="math" data-tex="\(d+1\)">\(d+1\)</span>. It therefore defines a closed scheme of lines, including their infinitesimal families.</p>
+<p>For a cubic in projective three-space, <span class="math" data-tex="\(\operatorname{Gr}_2(V)\)">\(\operatorname{Gr}_2(V)\)</span> has dimension four and the section has rank four. This suggests a zero-dimensional scheme when the section is sufficiently transverse; it does not yet prove transversality or the number of lines. Those questions belong to the lesson on Hilbert tangent spaces and obstructions.</p>
+<h2 id="7-exercises">7 Exercises</h2>
+<ol>
+<li>
+<p><strong>Basic.</strong> Compute the Grassmannians of rank zero, rank one, and full-rank quotients. Explain the duality relating a rank-<span class="math" data-tex="\((n-1)\)">\((n-1)\)</span> quotient to a line subbundle.</p>
+</li>
+<li>
+<p><strong>Intermediate.</strong> In <span class="math" data-tex="\(\operatorname{Gr}_2(k^4)\)">\(\operatorname{Gr}_2(k^4)\)</span>, take the chart <span class="math" data-tex="\(p_{12}=1\)">\(p_{12}=1\)</span> displayed in Section 4. Describe the overlap with <span class="math" data-tex="\(p_{13}\ne0\)">\(p_{13}\ne0\)</span> and write its normalized quotient matrix. Verify the quadratic equation on this overlap.</p>
+</li>
+<li>
+<p><strong>Intermediate.</strong> Extend a quotient over the fraction field of a valuation ring using a maximal minor of minimal valuation. Prove that the resulting kernel is saturated and that the extension is unique.</p>
+</li>
+<li>
+<p><strong>Intermediate.</strong> Deform the matrix <span class="math" data-tex="\([1\mid A]\)">\([1\mid A]\)</span> to <span class="math" data-tex="\([1\mid A+\epsilon B]\)">\([1\mid A+\epsilon B]\)</span>. Compute the tangent homomorphism <span class="math" data-tex="\(K\to Q\)">\(K\to Q\)</span>, including its sign. Explain how the answer changes on switching matrix charts.</p>
+</li>
+<li>
+<p><strong>Advanced.</strong> Prove that the Plücker relations define the image over an arbitrary ring by reconstructing all coordinates from single replacements on <span class="math" data-tex="\(p_I=1\)">\(p_I=1\)</span>. Explain why checking only geometric points would be insufficient.</p>
+</li>
+<li>
+<p><strong>Intermediate.</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> have dimension four and <span class="math" data-tex="\(f\in\operatorname{Sym}^3V\)">\(f\in\operatorname{Sym}^3V\)</span>. Write the four equations on the chart <span class="math" data-tex="\([1\mid A]\)">\([1\mid A]\)</span> imposing that the associated line lie in <span class="math" data-tex="\(V(f)\)">\(V(f)\)</span>. Determine why these equations commute with every base change.</p>
+</li>
+</ol>
+<h2 id="8-solutions">8 Solutions</h2>
+<p><strong>1.</strong> The zero quotient and the identity quotient are unique, so their schemes are the base. A rank-one quotient is exactly the functor represented by <span class="math" data-tex="\(\mathbb P(E)\)">\(\mathbb P(E)\)</span>. For a rank-<span class="math" data-tex="\((n-1)\)">\((n-1)\)</span> quotient, the kernel is a line subbundle of <span class="math" data-tex="\(E\)">\(E\)</span>; dualizing the split exact sequence makes its dual an invertible quotient of <span class="math" data-tex="\(E^\vee\)">\(E^\vee\)</span>. Thus its scheme is <span class="math" data-tex="\(\mathbb P(E^\vee)\)">\(\mathbb P(E^\vee)\)</span>. “Subbundle” is essential to preserve exactness after base change.</p>
+<p><strong>2.</strong> Here <span class="math" data-tex="\(p_{13}=c\)">\(p_{13}=c\)</span>, so the overlap is <span class="math" data-tex="\(D(c)\subset\mathbb A^4\)">\(D(c)\subset\mathbb A^4\)</span>. The columns numbered <span class="math" data-tex="\(1,3\)">\(1,3\)</span> form <span class="math" data-tex="\(\begin{pmatrix}1&amp;a\\0&amp;c\end{pmatrix}\)">\(\begin{pmatrix}1&amp;a\\0&amp;c\end{pmatrix}\)</span>. Multiplying its inverse into the original matrix gives</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+1&amp;-a/c&amp;0&amp;b-ad/c\\
+0&amp;1/c&amp;1&amp;d/c
+\end{pmatrix}.
+\]">\[
+\begin{pmatrix}
+1&amp;-a/c&amp;0&amp;b-ad/c\\
+0&amp;1/c&amp;1&amp;d/c
+\end{pmatrix}.
+\]</span>
+<p>Its minors are those of the original matrix divided by <span class="math" data-tex="\(c\)">\(c\)</span>, since the change-of-basis determinant is <span class="math" data-tex="\(1/c\)">\(1/c\)</span>. The quadratic expression is therefore divided by <span class="math" data-tex="\(c^2\)">\(c^2\)</span>, and remains zero. Conversely, on the projective chart where <span class="math" data-tex="\(p_{13}=1\)">\(p_{13}=1\)</span>, the equation solves for the missing complementary coordinate. Repeating by permutation on all six charts verifies the quadric scheme, rather than merely its field-valued points.</p>
+<p><strong>3.</strong> Cramer's rule gives entries that are ratios of maximal minors. Minimal valuation puts them all in the valuation ring, and identity columns make the matrix surjective there. Its quotient is free, so if <span class="math" data-tex="\(a v\)">\(a v\)</span> is in the kernel for nonzero <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span>, then <span class="math" data-tex="\(a q(v)=0\)">\(a q(v)=0\)</span> implies <span class="math" data-tex="\(q(v)=0\)">\(q(v)=0\)</span>; the kernel is saturated. Its generic kernel is the prescribed one, so it equals <span class="math" data-tex="\(R^n\cap K_F\)">\(R^n\cap K_F\)</span>. For any other extending quotient, the same saturation argument gives the same kernel. Quotient pairs with the same kernel are canonically isomorphic, which proves uniqueness.</p>
+<p><strong>4.</strong> Identify the original kernel by <span class="math" data-tex="\(v\mapsto(-Av,v)\)">\(v\mapsto(-Av,v)\)</span>. A lifted kernel vector is <span class="math" data-tex="\((-(A+\epsilon B)v,v)\)">\((-(A+\epsilon B)v,v)\)</span>, whose first-order displacement has image <span class="math" data-tex="\(-Bv\)">\(-Bv\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span>. Thus the tangent homomorphism is <span class="math" data-tex="\(-B\)">\(-B\)</span> in these bases. On another chart the quotient and kernel bases change, and the homomorphism changes by their induced precomposition and postcomposition. Its definition by lifting a kernel vector is intrinsic, so these changes glue exactly to <span class="math" data-tex="\(\mathcal H om(\mathcal K,\mathcal Q)\)">\(\mathcal H om(\mathcal K,\mathcal Q)\)</span>.</p>
+<p><strong>5.</strong> The alternating determinant identity proves every relation on a quotient matrix. In the other direction, normalize <span class="math" data-tex="\(p_I=1\)">\(p_I=1\)</span>, define matrix entries by single replacements, and induct on <span class="math" data-tex="\(|J\setminus I|\)">\(|J\setminus I|\)</span>. The relation with <span class="math" data-tex="\(A=I\setminus\{i\}\)">\(A=I\setminus\{i\}\)</span>, <span class="math" data-tex="\(i\in I\setminus J\)">\(i\in I\setminus J\)</span>, and <span class="math" data-tex="\(B=(i,J)\)">\(B=(i,J)\)</span> expresses <span class="math" data-tex="\(p_J\)">\(p_J\)</span> in terms of closer coordinates. The minors of the constructed matrix obey that recurrence with the same initial values. Thus the normalized coordinate algebra is the polynomial algebra in its free entries. These algebra isomorphisms hold over arbitrary rings and glue over the projective charts. Equality on geometric points alone could miss a nilpotent thickening of the image; algebra isomorphisms rule it out.</p>
+<p><strong>6.</strong> Write the quotient basis as <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. Replace each of the four basis elements of <span class="math" data-tex="\(V\)">\(V\)</span> in <span class="math" data-tex="\(f\)">\(f\)</span> by its image, namely the corresponding linear form in <span class="math" data-tex="\(u,v\)">\(u,v\)</span> given by a column of <span class="math" data-tex="\([1\mid A]\)">\([1\mid A]\)</span>. The result is a binary cubic</p>
+<span class="math math-display" data-tex="\[
+F_0(A)u^3+F_1(A)u^2v+F_2(A)uv^2+F_3(A)v^3.
+\]">\[
+F_0(A)u^3+F_1(A)u^2v+F_2(A)uv^2+F_3(A)v^3.
+\]</span>
+<p>The four coefficient polynomials <span class="math" data-tex="\(F_i(A)\)">\(F_i(A)\)</span> must vanish. A change of quotient basis changes this four-component vector by the invertible matrix of <span class="math" data-tex="\(\operatorname{Sym}^3\)">\(\operatorname{Sym}^3\)</span> of that basis change, preserving its zero scheme. Symmetric powers and evaluating a polynomial commute with arbitrary base change, so these chart ideals glue to the required functorial closed subscheme.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use smoothness of affine space and locality of smoothness, as in [Stacks, Tags 01V4–01V5], and properness of projective morphisms, as in [Stacks, Tag 01W7 and the projective-morphism section]. The valuation computation supplies its own extension argument. We do not compute the degree of the scheme of lines on a cubic or its reducedness here. We also do not claim that the quadratic relations generate the unsaturated homogeneous ideal as a graded ideal; Proposition 4.1 proves the equality of the projective closed subschemes, which is the assertion needed for the closed immersion.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Stacks] The Stacks project, <em>Constructions of Schemes</em>, Tags 089R, 089T, 089U and 089V, retained in the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#section-grassmannian">Grassmannian section of AI Integrated Stacks Project</a>.</li>
+<li>[AI Integrated Stacks Project] <em>Constructions of Schemes</em>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-grassmannian-pluecker">Plücker closed-immersion lemma</a>. This edition has AI-proposed corrections and AI-written additions; they have not been reviewed by the Stacks project's maintainers.</li>
+<li>[Vakil] R. Vakil, <em>The Rising Sea: Foundations of Algebraic Geometry</em>, public draft of 27 July 2024, sections 7.7 and 16.4.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="representable-functors-and-the-functor-of-points.html">← Representable functors and the functor of points</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="regularity-and-bounded-families.html">Castelnuovo–Mumford regularity and boundedness →</a></span></nav>
+<p class="small source-link"><a href="src/grassmannians.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-HP">Repository</a></nav>
+</footer>
+</body>
+</html>

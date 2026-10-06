@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Constructible gluing on an interval</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><h1 id="constructible-gluing-on-an-interval">Constructible gluing on an
+interval</h1>
+<p>A constructible sheaf can change at a small set of points while
+remaining locally constant elsewhere. The change is not described by a
+list of stalks alone. We must also know how a section near a singular
+point restricts to each neighboring region. On an interval with one
+distinguished point, this produces a diagram of three modules. We will
+construct the sheaf from that diagram, calculate its cohomology and
+costalk, and extend the calculation to bounded complexes.</p>
+<p>We assume the definition of a sheaf, exactness detected at stalks,
+the localization triangle for an open subset and its closed complement,
+and derived adjunction for extension by zero. We also use the elementary
+sheaf-cohomology calculation for a constant sheaf on a contractible
+interval. A prerequisite is <a href="../AG-LTF/support/derived-categories-and-sheaf-operations--sheaves-of-modules-and-their-derived-categories.html">Sheaves
+of modules and their derived categories</a>; extension-by-zero
+adjunction is also required. The source account below identifies the
+classical operations and the exact scope of their use.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author
+self-check recorded; not independently reviewed. New original text is
+public domain (CC0).</em></p>
+<p>The <a href="../categorical-tools-for-analytic-sheaves/pointwise-abelian-structure-and-natural-splittings.html#2-why-all-diagrams-form-an-abelian-category">licensed
+pointwise universal-object proof</a> supplies the abelian diagram
+category. Below we construct its interval sheaves and compare ambient
+derived cohomology; these are additional sheaf-theoretic obligations,
+not consequences of evaluation alone.</p>
+<h2 id="restriction-data-at-one-point">Restriction data at one
+point</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I=(-1,1)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mo>−</mo></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I_-=(-1,0)</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mo>+</mo></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I_+=(0,1)</annotation></semantics></math>.
+A sheaf of
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-modules</span>
+is weakly constructible for this decomposition if its restrictions to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mo>−</mo></msub><annotation encoding="application/x-tex">I_-</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mo>+</mo></msub><annotation encoding="application/x-tex">I_+</annotation></semantics></math>
+are locally constant. They are constant because each interval is simply
+connected. This statement uses no finiteness condition on the modules
+and no global-dimension condition on the ring
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.</p>
+<p>Choose trivializations of the two restrictions. Denote their values
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>,
+and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msub><mi>F</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">V=F_0</annotation></semantics></math>.
+A germ at zero has a representative on a sufficiently small interval.
+Its restrictions to the two half intervals give homomorphisms</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mover><mo>←</mo><msub><mi>r</mi><mo>−</mo></msub></mover><mi>V</mi><mover><mo>→</mo><msub><mi>r</mi><mo>+</mo></msub></mover><mi>R</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(1)</mtext></mrow><annotation encoding="application/x-tex">
+L\xleftarrow{r_-}V\xrightarrow{r_+}R.
+\qquad\text{(1)}
+</annotation></semantics></math></p>
+<p>The arrows point away from the singular point. This is the direction
+in which a germ at zero determines nearby values. They need not be
+injective or surjective.</p>
+<p><strong>Theorem 1.</strong> Weakly constructible sheaves on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+are equivalent to diagrams (1). Morphisms are triples of module
+homomorphisms commuting with both arrows. Kernels, cokernels and exact
+sequences are calculated at the three modules.</p>
+<p><strong>Proof.</strong> We first construct a sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+from a diagram. On an open subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>⊂</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">U\subset I</annotation></semantics></math>,
+a section consists of a locally constant
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>-valued
+function on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>∩</mo><msub><mi>I</mi><mo>−</mo></msub></mrow><annotation encoding="application/x-tex">U\cap I_-</annotation></semantics></math>,
+a locally constant
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>-valued
+function on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>∩</mo><msub><mi>I</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">U\cap I_+</annotation></semantics></math>,
+and, if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>∈</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">0\in U</annotation></semantics></math>,
+an element
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">v\in V</annotation></semantics></math>.
+Near zero the two functions must have the constant values
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r_-(v)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r_+(v)</annotation></semantics></math>.
+There is no condition on connected components of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>U</mi><annotation encoding="application/x-tex">U</annotation></semantics></math>
+away from zero.</p>
+<p>Restriction forgets parts of the two functions and, when necessary,
+the value at zero. Compatible local functions glue uniquely. If an open
+covering contains zero, at least one member contains a neighborhood of
+it; the values
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+agree on overlaps containing zero. The near-zero condition therefore
+glues too. This proves the sheaf axiom.</p>
+<p>At a point of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mo>−</mo></msub><annotation encoding="application/x-tex">I_-</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mo>+</mo></msub><annotation encoding="application/x-tex">I_+</annotation></semantics></math>,
+the stalk is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>.
+At zero, a section on a sufficiently small connected interval is
+uniquely determined by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
+because each half interval is connected and its value is prescribed.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>0</mn></msub><mo>=</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">E_0=V</annotation></semantics></math>,
+and its two restriction maps are the chosen arrows.</p>
+<p>Conversely, construct (1) from a sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>.
+Independence of the representative of a germ follows by shrinking its
+neighborhood; a locally constant function on the connected half interval
+has one value. A section of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+determines the two locally constant functions and its germ at zero. This
+gives a natural sheaf morphism from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+to the constructed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>.
+It is an isomorphism on each of the three types of stalk, hence an
+isomorphism of sheaves. The two constructions also identify morphisms.
+Finally, sheaf exactness is stalkwise, so exactness is componentwise in
+(1).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>For example,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mi>R</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">L=R=k</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V=0</annotation></semantics></math>
+gives a sheaf with nonzero values on both sides but no germ at zero.
+Taking
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">V=k</annotation></semantics></math>
+and both arrows the identity gives the constant sheaf on all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>.
+These sheaves have the same values away from zero and different
+gluing.</p>
+<h2 id="cohomology-of-the-whole-interval">Cohomology of the whole
+interval</h2>
+<p>For a diagram (1), every section on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+is determined by its value in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">\Gamma(I;F)=V</annotation></semantics></math>.
+The corresponding derived assertion needs a proof in the category of all
+sheaves, rather than only exactness within the diagram category.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mo>±</mo></msub><mo>:</mo><msub><mi>I</mi><mo>±</mo></msub><mo>↪</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">j_\pm:I_\pm\hookrightarrow I</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>:</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>↪</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">i:\{0\}\hookrightarrow I</annotation></semantics></math>.
+The exact sequence separating the closed point from the two open pieces
+is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>j</mi><mrow><mi>−</mi><mi>!</mi></mrow></msub><msub><mi>L</mi><msub><mi>I</mi><mo>−</mo></msub></msub><mo>⊕</mo><msub><mi>j</mi><mrow><mi>+</mi><mi>!</mi></mrow></msub><msub><mi>R</mi><msub><mi>I</mi><mo>+</mo></msub></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>F</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>i</mi><mo>*</mo></msub><mi>V</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(2)</mtext></mrow><annotation encoding="application/x-tex">
+0\longrightarrow j_{-!}L_{I_-}\oplus j_{+!}R_{I_+}
+\longrightarrow F\longrightarrow i_*V\longrightarrow0.
+\qquad\text{(2)}
+</annotation></semantics></math></p>
+<p>Exactness follows from stalks: the first map is the identity away
+from zero and has zero stalk at zero; the last map is the identity at
+zero and zero elsewhere.</p>
+<p><strong>Proposition 2.</strong> For every module diagram (1),</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mi>V</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(3)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma(I;F)\simeq V
+\qquad\text{(3)}
+</annotation></semantics></math></p>
+<p>with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+in degree zero.</p>
+<p><strong>Proof.</strong> The constant sheaf with value
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+on the closed half interval
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">(-1,0]</annotation></semantics></math>,
+pushed into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>,
+fits into</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>j</mi><mrow><mi>−</mi><mi>!</mi></mrow></msub><msub><mi>L</mi><msub><mi>I</mi><mo>−</mo></msub></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>L</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">]</mo></mrow></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>i</mi><mo>*</mo></msub><mi>L</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(4)</mtext></mrow><annotation encoding="application/x-tex">
+0\longrightarrow j_{-!}L_{I_-}
+\longrightarrow L_{(-1,0]}
+\longrightarrow i_*L\longrightarrow0.
+\qquad\text{(4)}
+</annotation></semantics></math></p>
+<p>The closed half interval is contractible, and its constant-sheaf
+cohomology is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+in degree zero. The point has the same cohomology. The map on
+degree-zero cohomology in (4) is the identity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>.
+The long exact cohomology sequence gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>;</mo><msub><mi>j</mi><mrow><mi>−</mi><mi>!</mi></mrow></msub><msub><mi>L</mi><msub><mi>I</mi><mo>−</mo></msub></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R\Gamma(I;j_{-!}L_{I_-})=0</annotation></semantics></math>.
+The right half interval gives the same statement for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mrow><mi>+</mi><mi>!</mi></mrow></msub><msub><mi>R</mi><msub><mi>I</mi><mo>+</mo></msub></msub></mrow><annotation encoding="application/x-tex">j_{+!}R_{I_+}</annotation></semantics></math>.
+Apply derived global sections to (2). Both open-piece terms vanish, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>;</mo><msub><mi>i</mi><mo>*</mo></msub><mi>V</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">R\Gamma(I;i_*V)=V</annotation></semantics></math>,
+proving (3).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The constant-sheaf interval calculation used here holds for arbitrary
+coefficient modules. The programme proof is <a href="../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#constant-box-compact-cohomology">compact-interval
+acyclicity and its constant-module argument</a>, followed by <a href="../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#proper-interval-homotopy">homotopy
+invariance through a proper interval</a>. Each open, closed or half-open
+interval used here contracts inside itself to a point. Evaluation at
+that point and the constant-section map have one composite equal to the
+identity by definition; homotopy invariance identifies the other
+composite with the identity induced by the interval contraction. This
+gives the ordinary cohomology identification, naturally in the module.
+Finite truncation triangles give the same assertion for a bounded
+coefficient complex. No compact-support cohomology of an open half
+interval has been substituted for ordinary cohomology on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>.</p>
+<h2 id="bounded-complexes-of-diagrams">Bounded complexes of
+diagrams</h2>
+<p>We now assume that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is a commutative ring of finite global dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒜</mi><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math>
+be the abelian category of diagrams (1). Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>D</mi><mi mathvariant="script">𝒮</mi><mi>b</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>I</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^b_{\mathcal S}(k_I)</annotation></semantics></math>
+denote bounded complexes of sheaves whose cohomology sheaves are weakly
+constructible for the three pieces.</p>
+<p><strong>Theorem 3.</strong> The exact sheaf construction in Theorem 1
+induces an equivalence</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒜</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msubsup><mi>D</mi><mi mathvariant="script">𝒮</mi><mi>b</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>I</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(5)</mtext></mrow><annotation encoding="application/x-tex">
+D^b(\mathcal A)\xrightarrow{\sim}D^b_{\mathcal S}(k_I).
+\qquad\text{(5)}
+</annotation></semantics></math></p>
+<p>Under this equivalence a bounded complex can be represented by three
+complexes and two cochain maps</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mo>•</mo></msup><mover><mo>←</mo><msub><mi>r</mi><mo>−</mo></msub></mover><msup><mi>V</mi><mo>•</mo></msup><mover><mo>→</mo><msub><mi>r</mi><mo>+</mo></msub></mover><msup><mi>R</mi><mo>•</mo></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(6)</mtext></mrow><annotation encoding="application/x-tex">
+L^\bullet\xleftarrow{r_-}V^\bullet\xrightarrow{r_+}R^\bullet.
+\qquad\text{(6)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> We give the homological-algebra argument
+because passing from sheaves to complexes must preserve extension
+data.</p>
+<p>For a module
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+form the following diagrams:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>P</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mover><mo>←</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mover><mi>M</mi><mover><mo>→</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mover><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>P</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo>←</mo><mn>0</mn><mo>→</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>P</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>←</mo><mn>0</mn><mo>→</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+P_0(M)&amp;=(M\xleftarrow{\mathrm{id}}M\xrightarrow{\mathrm{id}}M),\\
+P_-(M)&amp;=(M\leftarrow0\to0),\\
+P_+(M)&amp;=(0\leftarrow0\to M).
+\end{aligned}
+</annotation></semantics></math></p>
+<p>Here the notation always lists left value, middle value, right value.
+A map from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_0(M)</annotation></semantics></math>
+to (1) is determined by a map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>→</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">M\to V</annotation></semantics></math>;
+maps from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_-(M)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_+(M)</annotation></semantics></math>
+are determined by maps to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>.
+Consequently these diagrams are projective when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is projective, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="script">𝒜</mi><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math>
+has enough projectives.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo>←</mo><mi>V</mi><mo>→</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E=(L\leftarrow V\to R)</annotation></semantics></math>
+there is a functorial exact sequence</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>→</mo><msub><mi>P</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo form="postfix" stretchy="false">)</mo><mo>⊕</mo><msub><mi>P</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><msub><mi>P</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo form="postfix" stretchy="false">)</mo><mo>⊕</mo><msub><mi>P</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mo>⊕</mo><msub><mi>P</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>E</mi><mo>→</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(7)</mtext></mrow><annotation encoding="application/x-tex">
+0\to P_-(V)\oplus P_+(V)
+\to P_0(V)\oplus P_-(L)\oplus P_+(R)
+\to E\to0.
+\qquad\text{(7)}
+</annotation></semantics></math></p>
+<p>The last map is the identity at the middle module. On the left and
+right it sends
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo>,</mo><mi>l</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(v,l)</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>l</mi></mrow><annotation encoding="application/x-tex">r_-(v)+l</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo>,</mo><mi>r</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(v,r)</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">r_+(v)+r</annotation></semantics></math>.
+The first map on the left sends
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo>,</mo><mi>−</mi><msub><mi>r</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(v,-r_-(v))</annotation></semantics></math>,
+and on the right sends
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo>,</mo><mi>−</mi><msub><mi>r</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(v,-r_+(v))</annotation></semantics></math>.
+These formulas prove exactness at every module.</p>
+<p>Each of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>,</mo><mi>L</mi><mo>,</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">V,L,R</annotation></semantics></math>
+has a projective resolution of length at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.
+The functors
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub><mo>,</mo><msub><mi>P</mi><mo>−</mo></msub><mo>,</mo><msub><mi>P</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">P_0,P_-,P_+</annotation></semantics></math>
+are exact and carry projective modules to projective diagrams. Resolving
+the terms of (7), and taking the mapping cone of a lifted resolution
+map, gives a projective diagram resolution of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+of length at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">g+1</annotation></semantics></math>.</p>
+<p>Next, these projective diagrams have no higher sheaf Ext into a
+weakly constructible sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>.
+The sheaf associated to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_0(M)</annotation></semantics></math>
+is the constant sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>I</mi></msub><annotation encoding="application/x-tex">M_I</annotation></semantics></math>.
+Derived adjunction identifies its derived Hom into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+with</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>;</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R\operatorname{Hom}_k(M,R\Gamma(I;G)).
+</annotation></semantics></math></p>
+<p>By Proposition 2, the second argument is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mn>0</mn></msub><annotation encoding="application/x-tex">G_0</annotation></semantics></math>
+in degree zero. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is projective, this has no higher cohomology. The sheaves associated to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_-(M)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_+(M)</annotation></semantics></math>
+are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mrow><mi>−</mi><mi>!</mi></mrow></msub><msub><mi>M</mi><msub><mi>I</mi><mo>−</mo></msub></msub></mrow><annotation encoding="application/x-tex">j_{-!}M_{I_-}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mrow><mi>+</mi><mi>!</mi></mrow></msub><msub><mi>M</mi><msub><mi>I</mi><mo>+</mo></msub></msub></mrow><annotation encoding="application/x-tex">j_{+!}M_{I_+}</annotation></semantics></math>.
+Extension-by-zero adjunction gives instead
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>I</mi><mo>±</mo></msub><mo>;</mo><mi>G</mi><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>I</mi><mo>±</mo></msub></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\operatorname{Hom}_k(M,R\Gamma(I_\pm;G|_{I_\pm}))</annotation></semantics></math>.
+The restriction is constant on a contractible interval, so these
+complexes too have no higher cohomology for projective
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.</p>
+<p>A finite projective diagram resolution can therefore calculate both
+diagram Ext and sheaf Ext into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>.
+In degree zero the Hom groups agree by Theorem 1; the resolution maps
+agree as well. Dimension shifting yields equality of Ext groups in every
+degree. The induced functor on bounded derived categories is fully
+faithful: apply these Ext comparisons successively to the truncation
+triangles of the two bounded complexes.</p>
+<p>For essential surjectivity, take a bounded sheaf complex with
+constructible cohomology. If it has one nonzero cohomology sheaf, it is
+a shift of a sheaf in Theorem 1. Induct on the number of possibly
+nonzero cohomology degrees. A truncation triangle expresses the complex
+as an extension of its lower truncation by its highest cohomology sheaf
+with a shift. By the induction hypothesis these two objects come from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><mi mathvariant="script">𝒜</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^b(\mathcal A)</annotation></semantics></math>;
+by full faithfulness the connecting morphism comes from that category
+too. Its cone produces a preimage of the original complex. This proves
+(5). Finally, a bounded complex in the diagram category is exactly the
+data (6).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>This proof concerns the one-point interval decomposition. It does not
+assert the corresponding theorem for an arbitrary stratification or
+triangulation.</p>
+<p>For a cochain map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>:</mo><msup><mi>A</mi><mo>•</mo></msup><mo>→</mo><msup><mi>B</mi><mo>•</mo></msup></mrow><annotation encoding="application/x-tex">u:A^\bullet\to B^\bullet</annotation></semantics></math>,
+our cone has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Cone</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>u</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>n</mi></msup><mo>=</mo><msup><mi>B</mi><mi>n</mi></msup><mo>⊕</mo><msup><mi>A</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\operatorname{Cone}(u)^n=B^n\oplus A^{n+1}</annotation></semantics></math>
+and differential
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo form="prefix" stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>d</mi><mi>B</mi></msub><mi>b</mi><mo>+</mo><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mi>−</mi><msub><mi>d</mi><mi>A</mi></msub><mi>a</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d(b,a)=(d_Bb+u(a),-d_Aa)</annotation></semantics></math>.
+We use the connecting-arrow convention of <strong>Sheaves of modules and
+their derived categories</strong>. The fibre objects calculated below
+are cones shifted by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-1]</annotation></semantics></math>;
+their cohomology degrees are independent of negating a triangle’s
+connecting arrow.</p>
+<h2 id="stalks-and-costalks">Stalks and costalks</h2>
+<p>For the complex (6), the stalk at zero is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mo>•</mo></msup><annotation encoding="application/x-tex">V^\bullet</annotation></semantics></math>.
+The costalk
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi></mrow><annotation encoding="application/x-tex">Ri^!F</annotation></semantics></math>
+measures cohomology supported at zero. It is sensitive to the
+restriction maps.</p>
+<p>Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>:</mo><mi>I</mi><mo>\</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo><mo>↪</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">j:I\setminus\{0\}\hookrightarrow I</annotation></semantics></math>.
+The localization triangle is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mo>*</mo></msub><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>F</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><msub><mi>j</mi><mo>*</mo></msub><msup><mi>j</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>i</mi><mo>*</mo></msub><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(8)</mtext></mrow><annotation encoding="application/x-tex">
+i_*Ri^!F\longrightarrow F\longrightarrow Rj_*j^{-1}F\longrightarrow i_*Ri^!F[1].
+\qquad\text{(8)}
+</annotation></semantics></math></p>
+<p>At zero the third term is the cohomology of two small punctured half
+intervals. Each is contractible, and the restrictions in (6) are
+constant complexes there. Hence its stalk is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mo>•</mo></msup><mo>⊕</mo><msup><mi>R</mi><mo>•</mo></msup></mrow><annotation encoding="application/x-tex">L^\bullet\oplus R^\bullet</annotation></semantics></math>,
+and the middle map in (8) is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>r</mi><mo>−</mo></msub><mo>,</mo><msub><mi>r</mi><mo>+</mo></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(r_-,r_+)</annotation></semantics></math>.</p>
+<p><strong>Proposition 4.</strong> There is a natural isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi><mo>≃</mo><mrow><mi mathvariant="normal">Cone</mi><mo>⁡</mo></mrow><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msup><mi>V</mi><mo>•</mo></msup><mover><mo>→</mo><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>r</mi><mo>−</mo></msub><mo>,</mo><msub><mi>r</mi><mo>+</mo></msub><mo form="postfix" stretchy="false">)</mo></mrow></mover><msup><mi>L</mi><mo>•</mo></msup><mo>⊕</mo><msup><mi>R</mi><mo>•</mo></msup><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(9)</mtext></mrow><annotation encoding="application/x-tex">
+Ri^!F\simeq
+\operatorname{Cone}\bigl(V^\bullet\xrightarrow{(r_-,r_+)}L^\bullet\oplus R^\bullet\bigr)[-1].
+\qquad\text{(9)}
+</annotation></semantics></math></p>
+<p>For a sheaf in degree zero this gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msup><mi>H</mi><mn>0</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>→</mo><mi>L</mi><mo>⊕</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msup><mi>H</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">coker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>→</mo><mi>L</mi><mo>⊕</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(10)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+H^0(Ri^!F)&amp;=\ker(V\to L\oplus R),\\
+H^1(Ri^!F)&amp;=\operatorname{coker}(V\to L\oplus R),
+\end{aligned}
+\qquad\text{(10)}
+</annotation></semantics></math></p>
+<p>and all other cohomology groups vanish.</p>
+<p><strong>Proof.</strong> Taking a stalk is exact and takes (8) to a
+distinguished triangle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi><mo>→</mo><msup><mi>V</mi><mo>•</mo></msup><mo>→</mo><msup><mi>L</mi><mo>•</mo></msup><mo>⊕</mo><msup><mi>R</mi><mo>•</mo></msup><mo>→</mo><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">Ri^!F\to V^\bullet\to L^\bullet\oplus R^\bullet\to Ri^!F[1]</annotation></semantics></math>.
+The fibre of the middle map is its cone shifted by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>,
+giving (9). For degree-zero modules, the long exact sequence gives (10).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>In particular, the constant sheaf has diagonal restriction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>→</mo><mi>k</mi><mo>⊕</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">k\to k\oplus k</annotation></semantics></math>.
+Its costalk has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+in degree one, or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">k[-1]</annotation></semantics></math>.
+This agrees with the one-dimensional local orientation calculation after
+choosing an orientation of the interval. The skyscraper
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mo>*</mo></msub><mi>k</mi></mrow><annotation encoding="application/x-tex">i_*k</annotation></semantics></math>
+has zero neighboring modules and costalk
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+in degree zero. A stalk and a costalk can therefore occupy different
+degrees.</p>
+<h2 id="perfect-values-and-finite-coefficients">Perfect values and
+finite coefficients</h2>
+<p>A complex of
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-modules</span>
+is perfect if it is quasi-isomorphic to a bounded complex of finitely
+generated projective modules. In this lesson a bounded weakly
+constructible complex is constructible if each stalk is perfect. For
+(6), this means precisely that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>V</mi><mo>•</mo></msup><mo>,</mo><msup><mi>L</mi><mo>•</mo></msup><mo>,</mo><msup><mi>R</mi><mo>•</mo></msup></mrow><annotation encoding="application/x-tex">V^\bullet,L^\bullet,R^\bullet</annotation></semantics></math>
+are perfect.</p>
+<p>This definition is valid without assuming that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is Noetherian. Perfect complexes are closed under finite direct sums,
+shifts and cones. To see the cone statement, represent two perfect
+complexes by bounded complexes of finitely generated projectives. A
+derived morphism between them is represented by a cochain map because
+its source is a bounded projective complex. Its ordinary mapping cone is
+another bounded complex of finitely generated projectives. Formula (9)
+therefore shows that a constructible complex in this model also has
+perfect costalk at zero.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is Noetherian as well as of finite global dimension, a bounded complex
+is perfect exactly when its cohomology modules are finitely generated.
+One direction follows because kernels and cokernels of maps between
+finitely generated modules are finitely generated. For the other,
+resolve a finitely generated cohomology module by finite free modules;
+Noetherianity keeps the successive kernels finitely generated, and
+finite global dimension makes a sufficiently high kernel projective.
+This gives a finite resolution by finitely generated projectives. Use
+the finitely many truncation triangles and closure under cones for a
+bounded complex.</p>
+<p>Over a field, perfect simply means bounded with finite-dimensional
+cohomology. The diagram with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msub><mo>⨁</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></msub><mi>k</mi></mrow><annotation encoding="application/x-tex">V=\bigoplus_{n\geq0}k</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mi>R</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L=R=0</annotation></semantics></math>
+is weakly constructible but not constructible: its stalk at zero is
+infinite dimensional. The geometry of the decomposition alone supplies
+no finiteness of coefficients.</p>
+<h2 id="one-diagram-from-sections-to-a-closed-layer-correction">One
+diagram from sections to a closed-layer correction</h2>
+<p>Use this example throughout the <a href="index.html#learner-route-from-a-diagram-to-a-heart">diagram-to-heart
+route</a>. Over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>,
+take</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>V</mi><mo>=</mo><msup><mi mathvariant="double-struck">ℤ</mi><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>R</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>r</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>a</mi><mo>+</mo><mn>4</mn><mi>b</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>r</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>a</mi><mo>+</mo><mn>2</mn><mi>b</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(B1)</mtext></mrow><annotation encoding="application/x-tex">
+ L=\mathbb Z,\qquad V=\mathbb Z^2,\qquad R=\mathbb Z,\qquad
+ r_-(a,b)=2a+4b,\qquad r_+(a,b)=a+2b.
+ \qquad\text{(B1)}
+</annotation></semantics></math></p>
+<p>Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>a</mi><mo>+</mo><mn>2</mn><mi>b</mi></mrow><annotation encoding="application/x-tex">q(a,b)=a+2b</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>2</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u=(-2,1)</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+be its sheaf. All three modules are finite free, but neither their ranks
+nor their perfection determines its local tests. The combined attachment
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>q</mi><mo>,</mo><mi>q</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>V</mi><mo>→</mo><mi>L</mi><mo>⊕</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">\rho=(2q,q):V\to L\oplus R</annotation></semantics></math>.</p>
+<p>Proposition 2 gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>I</mi><mo>;</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi mathvariant="double-struck">ℤ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R\Gamma(I;E)=\mathbb Z^2</annotation></semantics></math>
+in degree zero. Under this identification the maps restricting a global
+section to either half interval are exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>q</mi></mrow><annotation encoding="application/x-tex">2q</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>.
+At zero, ordinary restriction also gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+The costalk, by Proposition 4, has the model</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mo form="prefix" stretchy="false">[</mo><mspace width="0.167em"></mspace><msup><mi mathvariant="double-struck">ℤ</mi><mn>2</mn></msup><mover><mo>→</mo><mrow><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>q</mi><mo>,</mo><mi>q</mi><mo form="postfix" stretchy="false">)</mo><mspace width="0.222em"></mspace></mrow></mover><msup><mi mathvariant="double-struck">ℤ</mi><mn>2</mn></msup><mspace width="0.167em"></mspace><mo form="postfix" stretchy="false">]</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">in degrees </mtext><mspace width="0.333em"></mspace></mrow><mn>0</mn><mo>,</mo><mn>1</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(B2)</mtext></mrow><annotation encoding="application/x-tex">
+ K=[\,\mathbb Z^2\xrightarrow{\ (2q,q)\ }\mathbb Z^2\,]
+       \quad\text{in degrees }0,1.
+ \qquad\text{(B2)}
+</annotation></semantics></math></p>
+<p>Here and in the two directional models we identify the shifted cone
+with the displayed positive differential by negating its degree-one
+target. We make the same change for all three cones, so their projection
+maps commute. Its degree-zero cohomology is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\mathbb Zu</annotation></semantics></math>.
+The functional
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo>−</mo><mn>2</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">\ell(x,y)=x-2y</annotation></semantics></math>
+induces an isomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">coker</mi><mo>⁡</mo></mrow><mi>ρ</mi><mo>→</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">\operatorname{coker}\rho\to\mathbb Z</annotation></semantics></math>:
+it kills
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2,1)</annotation></semantics></math>,
+is onto, and its kernel is precisely
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbb Z(2,1)</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>1</mn></msup><mi>K</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">H^1K=\mathbb Z</annotation></semantics></math>.</p>
+<p>The <a href="SH03-directional-tests-at-a-constructible-boundary.html#the-fixed-diagrams-test-and-comparison-maps">directional
+tests</a> are</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mo>+</mo></msub><mo>=</mo><mo form="prefix" stretchy="false">[</mo><mspace width="0.167em"></mspace><mi>V</mi><mover><mo>→</mo><mrow><mspace width="0.167em"></mspace><mn>2</mn><mi>q</mi><mspace width="0.167em"></mspace></mrow></mover><mi mathvariant="double-struck">ℤ</mi><mspace width="0.167em"></mspace><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>J</mi><mo>−</mo></msub><mo>=</mo><mo form="prefix" stretchy="false">[</mo><mspace width="0.167em"></mspace><mi>V</mi><mover><mo>→</mo><mrow><mspace width="0.167em"></mspace><mi>q</mi><mspace width="0.167em"></mspace></mrow></mover><mi mathvariant="double-struck">ℤ</mi><mspace width="0.167em"></mspace><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(B3)</mtext></mrow><annotation encoding="application/x-tex">
+ J_+=[\,V\xrightarrow{\,2q\,}\mathbb Z\,],\qquad
+ J_-=[\,V\xrightarrow{\,q\,}\mathbb Z\,].
+ \qquad\text{(B3)}
+</annotation></semantics></math></p>
+<p>Both have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">H^0=\mathbb Zu</annotation></semantics></math>;
+their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math>
+are respectively
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\mathbb Z/2</annotation></semantics></math>
+and zero. In particular both nonzero covector directions occur, even
+though the right attachment is onto. Absence requires a
+quasi-isomorphism, so its nonzero kernel matters too.</p>
+<p>These models give more than three independent cohomology
+calculations. Projection to the left coordinate induces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>→</mo><msub><mi>J</mi><mo>+</mo></msub></mrow><annotation encoding="application/x-tex">K\to J_+</annotation></semantics></math>,
+with identity in degree zero and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>↦</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">(x,y)\mapsto x</annotation></semantics></math>
+in degree one. On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>0</mn></msup><annotation encoding="application/x-tex">H^0</annotation></semantics></math>
+it is the identity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\mathbb Zu</annotation></semantics></math>.
+On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math>
+it is reduction modulo two, because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≡</mo><mi>ℓ</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mrow><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">mod</mi><mo>⁡</mo></mrow><mspace width="0.222em"></mspace><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">x\equiv\ell(x,y)\pmod2</annotation></semantics></math>.
+Its kernel complex is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">R[-1]</annotation></semantics></math>,
+included by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y\mapsto(0,y)</annotation></semantics></math>.
+Consequently the cohomology sequence contains the actual maps</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mo>=</mo><mi>R</mi><mover><mo>→</mo><mrow><mspace width="0.222em"></mspace><mo>−</mo><mn>2</mn><mspace width="0.222em"></mspace></mrow></mover><mi mathvariant="double-struck">ℤ</mi><mo>=</mo><msup><mi>H</mi><mn>1</mn></msup><mi>K</mi><mover><mo>→</mo><mrow><mspace width="0.222em"></mspace><mrow><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">mod</mi><mo>⁡</mo></mrow><mspace width="0.222em"></mspace><mn>2</mn></mrow><mspace width="0.222em"></mspace></mrow></mover><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>2</mn><mo>=</mo><msup><mi>H</mi><mn>1</mn></msup><msub><mi>J</mi><mo>+</mo></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(B4)</mtext></mrow><annotation encoding="application/x-tex">
+ \mathbb Z=R\xrightarrow{\ -2\ }\mathbb Z=H^1K
+        \xrightarrow{\ \bmod2\ }\mathbb Z/2=H^1J_+\longrightarrow0.
+ \qquad\text{(B4)}
+</annotation></semantics></math></p>
+<p>The sign comes from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℓ</mi><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mn>2</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">\ell(0,y)=-2y</annotation></semantics></math>.
+Projection to the right coordinate gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>→</mo><msub><mi>J</mi><mo>−</mo></msub></mrow><annotation encoding="application/x-tex">K\to J_-</annotation></semantics></math>,
+again the identity on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>0</mn></msup><annotation encoding="application/x-tex">H^0</annotation></semantics></math>,
+and zero on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mn>1</mn></msup><annotation encoding="application/x-tex">H^1</annotation></semantics></math>.
+Keeping the attachment maps accounts for both the torsion and this
+comparison.</p>
+<p>The ordinary smart lower cut of (B2) at zero is the subgroup
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\mathbb Zu</annotation></semantics></math>
+in degree zero, with its inclusion into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+Its upper cut starts with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">coker</mi><mo>⁡</mo></mrow><mi>ρ</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">\operatorname{coker}\rho=\mathbb Z</annotation></semantics></math>
+in degree one. Deleting the target would leave all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+rather than its kernel.</p>
+<h2 id="the-interval-dictionary-in-the-perverse-construction">The
+interval dictionary in the perverse construction</h2>
+<p>After learning the abstract heart and the perverse stratum criterion,
+return to the same diagram. For the real perversity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">p(s)=-s</annotation></semantics></math>,
+the open-layer cutoff is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+is in ordinary degree zero there, its lower open cut is zero. The full
+<a href="SH03-perverse-support-costalks-and-truncation-triangles.html#calculate-the-origin-correction-before-the-induction">closed-layer
+calculation</a> therefore takes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">G=E</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><msup><mi>τ</mi><mrow><mo>≤</mo><mn>0</mn></mrow></msup><msup><mi>i</mi><mi>!</mi></msup><mi>G</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">C=\tau^{\le0}i^!G=\mathbb Zu</annotation></semantics></math>,
+and uses the exceptional counit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mo>*</mo></msub><mi mathvariant="double-struck">ℤ</mi><mi>u</mi><mo>→</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">i_*\mathbb Zu\to E</annotation></semantics></math>,
+whose point map is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>2</mn><mi>z</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">z\mapsto(-2z,z)</annotation></semantics></math>.
+Its ordinary quotient is the sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+with diagram
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mover><mo>←</mo><mrow><mspace width="0.167em"></mspace><mn>2</mn><mspace width="0.167em"></mspace></mrow></mover><mi mathvariant="double-struck">ℤ</mi><mover><mo>→</mo><mrow><mspace width="0.167em"></mspace><mn>1</mn><mspace width="0.167em"></mspace></mrow></mover><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb Z\xleftarrow{\,2\,}\mathbb Z\xrightarrow{\,1\,}\mathbb Z</annotation></semantics></math>.
+The quotient at zero is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+and it is the identity on both open pieces. Its point costalk has no
+degree-zero cohomology and has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>
+in degree one. Thus the triangle is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mo>*</mo></msub><mi mathvariant="double-struck">ℤ</mi><mi>u</mi><mo>→</mo><mi>E</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">i_*\mathbb Zu\to E\to B</annotation></semantics></math>,
+with the exact stratum bounds required of the two perverse cuts. The
+general theorem retains arbitrary coefficients and geometry; this single
+diagram supplies its map-level example.</p>
+<h2 id="evaluation-does-not-supply-a-natural-splitting">Evaluation does
+not supply a natural splitting</h2>
+<p>The separately licensed <a href="../categorical-tools-for-analytic-sheaves/pointwise-abelian-structure-and-natural-splittings.html#4-pointwise-splittings-need-an-extra-compatibility">pointwise
+abelian and natural-splitting treatment</a> explains the distinction
+between evaluating a diagram and splitting it naturally. Its human
+source is Tom Leinster, <em>Basic Category Theory</em>, arXiv version 2,
+26 August 2025; that component and its AI additions retain CC BY-NC-SA
+4.0. This lesson applies its universal objects to the interval; it does
+not reproduce that adapted exposition or change its licence.</p>
+<p>For a direct interval example, the usual sheaf sequence
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>j</mi><mi>!</mi></msub><msub><mi mathvariant="double-struck">ℤ</mi><mrow><mi>I</mi><mo>\</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi mathvariant="double-struck">ℤ</mi><mi>I</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>i</mi><mo>*</mo></msub><mi mathvariant="double-struck">ℤ</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mn>0</mn><mspace width="2.0em"></mspace><mtext mathvariant="normal">(B5)</mtext></mrow><annotation encoding="application/x-tex">
+ 0\longrightarrow j_!\mathbb Z_{I\setminus\{0\}}
+   \longrightarrow\mathbb Z_I\longrightarrow i_*\mathbb Z
+   \longrightarrow0
+ \qquad\text{(B5)}
+</annotation></semantics></math> is split after evaluating at every
+stratum. At zero its quotient is the identity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>;
+on an open half the quotient is zero. A section as a diagram would have
+to be the identity at zero and zero on both halves. Naturality along
+either attachment would say
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">1=0</annotation></semantics></math>,
+because the middle constant sheaf has identity attachments. No such
+section exists. Stalkwise exactness and stalkwise splitness have
+different conclusions.</p>
+<p>The <a href="#a-hidden-differential">hidden-differential exercise</a>
+is a second check: the complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>k</mi><mover><mo>→</mo><mn>1</mn></mover><mi>k</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[k\xrightarrow{1}k]</annotation></semantics></math>
+is zero in the derived category even though its two terms are nonzero.
+Neither a termwise dimension list nor a family of unrelated splittings
+removes the need to retain all maps.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<h3 id="three-boundary-conditions">Three boundary conditions</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\neq0</annotation></semantics></math>.
+Give the diagrams and costalks for the constant sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>I</mi></msub><annotation encoding="application/x-tex">k_I</annotation></semantics></math>,
+the extension by zero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mrow><mi>+</mi><mi>!</mi></mrow></msub><msub><mi>k</mi><msub><mi>I</mi><mo>+</mo></msub></msub></mrow><annotation encoding="application/x-tex">j_{+!}k_{I_+}</annotation></semantics></math>,
+and the ordinary direct image
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mrow><mi>+</mi><mo>*</mo></mrow></msub><msub><mi>k</mi><msub><mi>I</mi><mo>+</mo></msub></msub></mrow><annotation encoding="application/x-tex">j_{+*}k_{I_+}</annotation></semantics></math>.</p>
+<p><strong>Solution.</strong> The constant sheaf has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>L</mi><mo>=</mo><mi>R</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">V=L=R=k</annotation></semantics></math>
+and both arrows the identity. Its costalk is the fibre of the diagonal
+map, hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">k[-1]</annotation></semantics></math>.
+Extension by zero has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>L</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V=L=0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">R=k</annotation></semantics></math>;
+its costalk is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">k[-1]</annotation></semantics></math>
+by (9), even though its stalk at zero vanishes. Ordinary direct image
+has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>R</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">V=R=k</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mo>+</mo></msub><mo>=</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mrow><annotation encoding="application/x-tex">r_+=\mathrm{id}</annotation></semantics></math>;
+its costalk is zero. On a small interval, sections of the latter sheaf
+are determined by the constant value on its positive half, which
+explains its nonzero stalk at zero. The higher direct-image stalks
+vanish because the punctured positive half interval is contractible.</p>
+<h3 id="torsion-from-gluing">Torsion from gluing</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">k=\mathbb Z</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>L</mi><mo>=</mo><mi>R</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">V=L=R=\mathbb Z</annotation></semantics></math>,
+and maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mo>−</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>v</mi></mrow><annotation encoding="application/x-tex">r_-(v)=2v</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mo>+</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>6</mn><mi>v</mi></mrow><annotation encoding="application/x-tex">r_+(v)=6v</annotation></semantics></math>.
+Calculate the stalk, global cohomology and costalk of the resulting
+sheaf.</p>
+<p><strong>Solution.</strong> The stalk at zero and the global
+cohomology are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℤ</mi><annotation encoding="application/x-tex">\mathbb Z</annotation></semantics></math>
+in degree zero, by construction and Proposition 2. The map to the two
+neighboring values is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>v</mi><mo>,</mo><mn>6</mn><mi>v</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v\mapsto(2v,6v)</annotation></semantics></math>,
+which is injective. Its cokernel is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mo>⊕</mo><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\mathbb Z\oplus\mathbb Z/2</annotation></semantics></math>:
+replace the second coordinate by the second minus three times the first,
+so the map becomes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>v</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v\mapsto(2v,0)</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H^0(Ri^!F)=0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>1</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mo>⊕</mo><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">H^1(Ri^!F)=\mathbb Z\oplus\mathbb Z/2</annotation></semantics></math>.
+Every stalk module is finite free, while the costalk detects torsion
+created by the restriction maps.</p>
+<h3 id="a-hidden-differential">A hidden differential</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Work over a field. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mo>•</mo></msup><mo>=</mo><msup><mi>R</mi><mo>•</mo></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L^\bullet=R^\bullet=0</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>V</mi><mo>•</mo></msup><mo>=</mo><mo form="prefix" stretchy="false">[</mo><mi>k</mi><mover><mo>→</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mover><mi>k</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">V^\bullet=[k\xrightarrow{\mathrm{id}}k]</annotation></semantics></math>
+in degrees zero and one. Compare this complex with the skyscraper
+complex having
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">V=k</annotation></semantics></math>
+in degree zero.</p>
+<p><strong>Solution.</strong> The first
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>V</mi><mo>•</mo></msup><annotation encoding="application/x-tex">V^\bullet</annotation></semantics></math>
+is acyclic, so all stalks of its associated sheaf complex are acyclic.
+That sheaf complex is zero in the derived category, as is its costalk.
+The second has nonzero degree-zero stalk and costalk. The list of term
+dimensions is not a substitute for cohomology or for the differentials
+in a derived diagram.</p>
+<h3 id="euler-characteristic-at-the-singular-point">Euler characteristic
+at the singular point</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+be a field and assume the three complexes in (6) are perfect. Define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>C</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mo>∑</mo><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>j</mi></msup><msub><mrow><mi mathvariant="normal">dim</mi><mo>⁡</mo></mrow><mi>k</mi></msub><msup><mi>H</mi><mi>j</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>C</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\chi(C)=\sum_j(-1)^j\dim_kH^j(C)</annotation></semantics></math>.
+Prove</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msup><mi>i</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>V</mi><mo>•</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>L</mi><mo>•</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>R</mi><mo>•</mo></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\chi(Ri^!F)=\chi(V^\bullet)-\chi(L^\bullet)-\chi(R^\bullet).
+</annotation></semantics></math></p>
+<p>Evaluate it for the constant sheaf and the skyscraper.</p>
+<p><strong>Solution.</strong> A distinguished triangle of bounded
+finite-dimensional complexes has additive Euler characteristic, by its
+finite long exact cohomology sequence. Apply this to the stalk triangle
+of (8). It gives the stated difference. For the constant sheaf the
+result is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mn>1</mn><mo>−</mo><mn>1</mn><mo>=</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">1-1-1=-1</annotation></semantics></math>,
+agreeing with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">k[-1]</annotation></semantics></math>.
+For the skyscraper it is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mn>0</mn><mo>−</mo><mn>0</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1-0-0=1</annotation></semantics></math>,
+agreeing with a degree-zero costalk. This identity describes the costalk
+in this decomposition; it has not defined a characteristic-cycle sign
+convention.</p>
+<h2 id="references">References</h2>
+<p><strong>Classical sheaf operations.</strong> Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf"><em>An
+Introduction to Sheaves on Grothendieck Topologies</em>, 1 August
+2026</a>, §3.2, pp. 66–68, gives open extension, closed restriction and
+their exact sequences, then derives the supported-cohomology triangles
+by internal Hom. The exact sequences in (2), (4) and (8) are instances
+of these classical constructions; they are checked here on stalks and
+used with the displayed attachment maps. The nonsplitting of the
+constant-sheaf quotient in (B5) is the familiar phenomenon in Exercise
+3.3 of those notes. Its pointwise splitting does not give a natural
+section. The separate Leinster-based diagram component retains the CC
+BY-NC-SA 4.0 terms stated above.</p>
+<p><strong>Intervals and coefficient scope.</strong> Schapira’s Lemmas
+3.5.1–2 and Proposition 3.5.3, pp. 72–73, prove interval cohomology
+bounds and constancy by continuation along overlapping intervals.
+Theorem 3.6.3 and Corollary 3.6.7, pp. 74–76, obtain
+constant-coefficient acyclicity by homotopy. Those notes have a standing
+finite-global-dimension convention. Our sheaf classification and
+ordinary interval calculation allow arbitrary coefficient modules over
+the stated ring: the classification is constructed directly, while the
+arbitrary-module cohomology calculation is bound above to the
+programme’s compact-interval and homotopy proofs. Finite global
+dimension is imposed only when the lesson passes to finite projective
+diagram resolutions and bounded derived realization. Finite generation
+is a different condition and enters only in the perfect-stalk
+discussion.</p>
+<p><strong>Derived algebra and the local realization proof.</strong> The
+Stacks Project, <a href="https://stacks.math.columbia.edu/tag/08DJ"><em>Cohomology of
+Sheaves</em>, Internal hom in the derived category, Tag 08DJ</a>,
+constructs internal Hom with a K-injective target, proves its tensor
+adjunction, and identifies derived Hom by sections. The checked native
+source is revision <code>a04446e5</code>. This is background for the
+derived Hom formalism, not a theorem identifying every constructible
+derived category with a diagram category. Theorem 3 supplies the
+interval-specific argument: the two-arrow resolution (7), higher-Ext
+vanishing for its projective terms, dimension shifting, and lifting the
+truncation extension by full faithfulness. Each step is needed;
+componentwise exactness alone does not prove (5).</p>
+<p><strong>Teaching route and remaining prerequisites.</strong> This
+lesson follows one attachment diagram from sections through the costalk
+and directional tests to an explicit closed-layer correction. Its
+integral example keeps the quotient coordinate, torsion and actual
+comparison signs; the exercises test these maps and the hidden
+differential. These are independently written calculations using
+classical sheaf operations. The complete construction of derived
+categories, their adjunctions and the separately linked perverse
+truncation theorem remain programme prerequisites with their own proof
+obligations.</p>
+</main></body></html>

@@ -1,0 +1,324 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Étale morphisms and their local structure</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="étale-morphisms-and-their-local-structure">Étale morphisms and their local structure</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent local AI review found corrections in the preceding version; this revision awaits independent correction verification. Public domain (CC0).</em></p>
+<p>An étale morphism combines the absence of relative infinitesimal motion with flatness. Its fibres are separable points, but those points need not form separate Zariski sheets. Over a field of characteristic different from two, the map taking an invertible coordinate to its square already exhibits this distinction. The main algebraic result of this lesson is more precise: near any point, an étale morphism is described by a monic polynomial whose derivative is invertible.</p>
+<p>We use <strong>Flat morphisms</strong>, <strong>Flatness criteria, dimension and the flat locus</strong>, and <strong>Unramified morphisms</strong>. The algebraic prerequisites are <strong>Formally smooth, unramified and étale ring maps</strong>, <strong>Smooth algebras over a field and the Jacobian criterion</strong>, and <strong>Zariski's Main Theorem</strong>. For local-ring properties we also use the depth and normality criteria from <strong>Regular sequences, depth and Cohen–Macaulay modules</strong> and <strong>Discrete valuation rings, normal rings and Serre's criterion</strong>. Exact imported statements appear at the end.</p>
+<h2 id="1-a-definition-and-its-geometric-tests">1. A definition and its geometric tests</h2>
+<p>An <span class="math" data-tex="$A$">$A$</span>-algebra is <strong>étale</strong> if it is finitely presented and formally étale: every <span class="math" data-tex="$A$">$A$</span>-algebra map to a quotient by a square-zero ideal has a unique lift. A scheme morphism is étale at <span class="math" data-tex="$x$">$x$</span> if it has étale affine charts around <span class="math" data-tex="$x$">$x$</span> and its image, and is étale if this holds everywhere. Formal lifting here is an algebraic definition. Lesson <strong>Infinitesimal lifting and the invariance of étale morphisms under thickenings</strong> will establish the corresponding global scheme statements.</p>
+<p>The algebraic prerequisites say that formal étaleness is formal smoothness together with vanishing differentials. They also say that a smooth algebra is locally standard smooth. Consequently an étale algebra is locally of the form</p>
+<span class="math math-display" data-tex="$$
+D=\left(A[X_1,\ldots,X_n]/(F_1,\ldots,F_n)\right)_{h\Delta},
+\qquad
+\Delta=\det\left(\frac{\partial F_i}{\partial X_j}\right).
+\tag{1.1}
+$$">$$
+D=\left(A[X_1,\ldots,X_n]/(F_1,\ldots,F_n)\right)_{h\Delta},
+\qquad
+\Delta=\det\left(\frac{\partial F_i}{\partial X_j}\right).
+\tag{1.1}
+$$</span>
+<p>Indeed, the standard smooth presentation has differentials free of rank equal to the number of variables minus the number of equations; their vanishing makes these numbers equal. Conversely (1.1) is smooth and has zero differentials, hence is étale. Localization can also be incorporated into a square presentation: adjoining <span class="math" data-tex="$Z$">$Z$</span> and the equation <span class="math" data-tex="$h\Delta Z-1$">$h\Delta Z-1$</span> adds a Jacobian row and column with invertible new diagonal entry.</p>
+<p><strong>Lemma 1.1.</strong> An étale morphism is flat, locally of finite presentation and unramified.</p>
+<p><strong>Proof.</strong> An étale algebra over an arbitrary commutative ring is flat, unramified and finitely presented by <a href="../../AG-CA/AG-CA-18.html">Smooth algebras over a field and the Jacobian criterion</a>, Corollary 6.2, whose flatness assertion uses its Theorem 6.1. Apply this exact algebraic result to the étale affine charts defining the morphism. Flatness and local finite presentation are local on source and target, and the differential criterion of <strong>Unramified morphisms</strong> passes algebraic unramifiedness to these scheme charts. ∎</p>
+<p>Here is a useful converse proof which does not assume that the base is Noetherian.</p>
+<p><strong>Lemma 1.2.</strong> Let <span class="math" data-tex="$B$">$B$</span> be a finite type <span class="math" data-tex="$A$">$A$</span>-algebra and <span class="math" data-tex="$\mathfrak q\in\operatorname{Spec}B$">$\mathfrak q\in\operatorname{Spec}B$</span>. If <span class="math" data-tex="$\Omega_{B/A,\mathfrak q}=0$">$\Omega_{B/A,\mathfrak q}=0$</span>, then a neighbourhood of <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span> is a quotient of an étale <span class="math" data-tex="$A$">$A$</span>-algebra of the square form (1.1). If <span class="math" data-tex="$B$">$B$</span> is finitely presented and <span class="math" data-tex="$B_{\mathfrak q}$">$B_{\mathfrak q}$</span> is flat over <span class="math" data-tex="$A_{\mathfrak p}$">$A_{\mathfrak p}$</span>, where <span class="math" data-tex="$\mathfrak p=\mathfrak q\cap A$">$\mathfrak p=\mathfrak q\cap A$</span>, then <span class="math" data-tex="$A\to B$">$A\to B$</span> is étale at <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>.</p>
+<p><strong>Proof.</strong> Choose a presentation <span class="math" data-tex="$B=A[X_1,\ldots,X_n]/I$">$B=A[X_1,\ldots,X_n]/I$</span>. The conormal sequence gives</p>
+<span class="math math-display" data-tex="$$
+I/I^2\longrightarrow B^n\longrightarrow\Omega_{B/A}\longrightarrow0.
+$$">$$
+I/I^2\longrightarrow B^n\longrightarrow\Omega_{B/A}\longrightarrow0.
+$$</span>
+<p>After tensoring with <span class="math" data-tex="$\kappa(\mathfrak q)$">$\kappa(\mathfrak q)$</span>, the first map is surjective. Choose <span class="math" data-tex="$n$">$n$</span> relations <span class="math" data-tex="$F_i\in I$">$F_i\in I$</span> whose Jacobian determinant <span class="math" data-tex="$\Delta$">$\Delta$</span> is nonzero at <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+D=\left(A[X_1,\ldots,X_n]/(F_1,\ldots,F_n)\right)_\Delta
+\twoheadrightarrow B_\Delta
+\tag{1.2}
+$$">$$
+D=\left(A[X_1,\ldots,X_n]/(F_1,\ldots,F_n)\right)_\Delta
+\twoheadrightarrow B_\Delta
+\tag{1.2}
+$$</span>
+<p>has étale source. This proves the first assertion without finite presentation of <span class="math" data-tex="$B$">$B$</span>.</p>
+<p>For the second, the kernel of (1.2) is finitely generated because <span class="math" data-tex="$I$">$I$</span> is finitely generated. Localize at the inverse image <span class="math" data-tex="$\mathfrak r$">$\mathfrak r$</span> of <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>, obtaining</p>
+<span class="math math-display" data-tex="$$
+0\longrightarrow K\longrightarrow D_{\mathfrak r}
+\longrightarrow B_{\mathfrak q}\longrightarrow0.
+$$">$$
+0\longrightarrow K\longrightarrow D_{\mathfrak r}
+\longrightarrow B_{\mathfrak q}\longrightarrow0.
+$$</span>
+<p>Both fibre local rings over <span class="math" data-tex="$\kappa(\mathfrak p)$">$\kappa(\mathfrak p)$</span> are fields: this follows for <span class="math" data-tex="$D$">$D$</span> from Lemma 1.1 and the unramified fibre classification, and for <span class="math" data-tex="$B$">$B$</span> from that same classification at the point. Their quotient map is therefore an isomorphism. Flatness of <span class="math" data-tex="$B_{\mathfrak q}$">$B_{\mathfrak q}$</span> makes reduction of the displayed sequence modulo <span class="math" data-tex="$\mathfrak p A_{\mathfrak p}$">$\mathfrak p A_{\mathfrak p}$</span> injective on <span class="math" data-tex="$K/\mathfrak pK$">$K/\mathfrak pK$</span>. Thus <span class="math" data-tex="$K/\mathfrak pK=0$">$K/\mathfrak pK=0$</span>. Nakayama applies to the finite <span class="math" data-tex="$D_{\mathfrak r}$">$D_{\mathfrak r}$</span>-module <span class="math" data-tex="$K$">$K$</span>, since <span class="math" data-tex="$\mathfrak pD_{\mathfrak r}$">$\mathfrak pD_{\mathfrak r}$</span> is contained in its maximal ideal, and gives <span class="math" data-tex="$K=0$">$K=0$</span>.</p>
+<p>The finitely many generators of the kernel of (1.2) consequently vanish after one further principal localization avoiding <span class="math" data-tex="$\mathfrak r$">$\mathfrak r$</span>. There (1.2) is an isomorphism, so <span class="math" data-tex="$B$">$B$</span> is étale near <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>. ∎</p>
+<p><strong>Theorem 1.3 (equivalent descriptions).</strong> For a morphism <span class="math" data-tex="$f:X\to S$">$f:X\to S$</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="$f$">$f$</span> is étale.</li>
+<li><span class="math" data-tex="$f$">$f$</span> is flat and G-unramified, meaning locally of finite presentation with <span class="math" data-tex="$\Omega_{X/S}=0$">$\Omega_{X/S}=0$</span>.</li>
+<li><span class="math" data-tex="$f$">$f$</span> is smooth and unramified.</li>
+<li><span class="math" data-tex="$f$">$f$</span> is flat and locally of finite presentation, and every fibre is a disjoint union of spectra of finite separable extensions of the base residue field.</li>
+<li><span class="math" data-tex="$f$">$f$</span> is flat and locally of finite presentation, and every geometric fibre is a disjoint union of reduced points.</li>
+</ol>
+<p><strong>Proof.</strong> Lemmas 1.1–1.2 give (1)<span class="math" data-tex="$\Leftrightarrow$">$\Leftrightarrow$</span>(2). For (3), smoothness gives a local standard smooth presentation; unramifiedness makes its free differential module zero, so the presentation is square and étale. The reverse implication follows directly from the algebraic definition. Differential base change and the unramified field classification in the preceding lesson give (2)<span class="math" data-tex="$\Leftrightarrow$">$\Leftrightarrow$</span>(4). That classification is unchanged by extension to an algebraic closure: finite separable fields split into products of the algebraic closure, whereas a nonseparable extension produces nonreduced geometric fibres. Equivalently, vanishing of the finite differential module can be tested after a faithfully flat field extension. This gives (4)<span class="math" data-tex="$\Leftrightarrow$">$\Leftrightarrow$</span>(5). ∎</p>
+<p><strong>Pointwise form.</strong> Suppose <span class="math" data-tex="$f$">$f$</span> is locally of finite presentation, <span class="math" data-tex="$s=f(x)$">$s=f(x)$</span>, <span class="math" data-tex="$A=\mathcal O_{S,s}$">$A=\mathcal O_{S,s}$</span> and <span class="math" data-tex="$B=\mathcal O_{X,x}$">$B=\mathcal O_{X,x}$</span>. Then each of the following tests is equivalent to étaleness at <span class="math" data-tex="$x$">$x$</span>:</p>
+<ul>
+<li><span class="math" data-tex="$B$">$B$</span> is flat over <span class="math" data-tex="$A$">$A$</span> and the fibre is étale at <span class="math" data-tex="$x$">$x$</span>;</li>
+<li><span class="math" data-tex="$B$">$B$</span> is flat over <span class="math" data-tex="$A$">$A$</span> and the fibre is unramified at <span class="math" data-tex="$x$">$x$</span>;</li>
+<li><span class="math" data-tex="$B$">$B$</span> is flat over <span class="math" data-tex="$A$">$A$</span> and <span class="math" data-tex="$\Omega_{X/S,x}=0$">$\Omega_{X/S,x}=0$</span>;</li>
+<li><span class="math" data-tex="$B$">$B$</span> is flat over <span class="math" data-tex="$A$">$A$</span> and <span class="math" data-tex="$\Omega_{X/S,x}\otimes_B\kappa(x)=0$">$\Omega_{X/S,x}\otimes_B\kappa(x)=0$</span>;</li>
+<li><span class="math" data-tex="$B$">$B$</span> is flat over <span class="math" data-tex="$A$">$A$</span>, <span class="math" data-tex="$\mathfrak m_A B=\mathfrak m_B$">$\mathfrak m_A B=\mathfrak m_B$</span>, and <span class="math" data-tex="$\kappa(x)/\kappa(s)$">$\kappa(x)/\kappa(s)$</span> is finite separable;</li>
+<li>there is a square Jacobian chart as in (1.1) around <span class="math" data-tex="$x$">$x$</span>.</li>
+</ul>
+<p>The differential module is finite, so Nakayama equates its vanishing with vanishing after tensoring with <span class="math" data-tex="$\kappa(x)$">$\kappa(x)$</span>. The six unramified pointwise tests proved in the preceding lesson identify the fibre and residue-field conditions. Lemma 1.2 then supplies the étale neighbourhood. We will add the one-variable standard form in Section 3. These are the tests of [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-etale-smooth-unramified">02GK</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-etale-flat-etale-fibres">02GM</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-etale-at-point">02GU</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-flat-unramified-etale">02GV</a>].</p>
+<h2 id="2-permanence-and-standard-étale-algebras">2. Permanence and standard étale algebras</h2>
+<p>Étaleness is local on source and target and is preserved by composition and arbitrary base change. One can check composition by flatness and the differential exact sequence</p>
+<span class="math math-display" data-tex="$$
+f^*\Omega_{Y/S}\longrightarrow\Omega_{X/S}\longrightarrow\Omega_{X/Y}\longrightarrow0;
+$$">$$
+f^*\Omega_{Y/S}\longrightarrow\Omega_{X/S}\longrightarrow\Omega_{X/Y}\longrightarrow0;
+$$</span>
+<p>local finite presentation is preserved by composition. Base change follows from flat base change, differential base change and finite presentation. Open immersions are étale because their local maps are localizations. In particular products of étale morphisms are étale [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-composition-etale">02GN</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-base-change-etale">02GO</a>].</p>
+<p><strong>Proposition 2.1 (cancellation).</strong> If <span class="math" data-tex="$X$">$X$</span> and <span class="math" data-tex="$Y$">$Y$</span> are étale over <span class="math" data-tex="$S$">$S$</span>, every <span class="math" data-tex="$S$">$S$</span>-morphism <span class="math" data-tex="$a:X\to Y$">$a:X\to Y$</span> is étale.</p>
+<p><strong>Proof.</strong> Factor it as</p>
+<span class="math math-display" data-tex="$$
+X\xrightarrow{\Gamma_a}X\times_S Y\xrightarrow{\operatorname{pr}_Y}Y.
+$$">$$
+X\xrightarrow{\Gamma_a}X\times_S Y\xrightarrow{\operatorname{pr}_Y}Y.
+$$</span>
+<p>The graph is a section of the unramified projection <span class="math" data-tex="$X\times_S Y\to X$">$X\times_S Y\to X$</span>, hence is an open immersion by the section theorem of <strong>Unramified morphisms</strong>. The other projection is a base change of the étale map <span class="math" data-tex="$X\to S$">$X\to S$</span>. Composition proves the assertion. No separatedness hypothesis is needed. ∎</p>
+<p>A <strong>standard étale algebra</strong> means</p>
+<span class="math math-display" data-tex="$$
+E=(A[T]/(f))_g,\qquad f\in A[T]\text{ monic},\qquad f&#x27;\in E^\times.
+\tag{2.1}
+$$">$$
+E=(A[T]/(f))_g,\qquad f\in A[T]\text{ monic},\qquad f&#x27;\in E^\times.
+\tag{2.1}
+$$</span>
+<p>It is étale: the single equation has invertible derivative, so it is a standard smooth presentation of relative dimension zero. Equivalently, a lifted approximate root across a square-zero ideal is corrected uniquely by subtracting its error divided by <span class="math" data-tex="$f&#x27;$">$f&#x27;$</span>. Monicity implies that <span class="math" data-tex="$A[T]/(f)$">$A[T]/(f)$</span> is free over <span class="math" data-tex="$A$">$A$</span>, with basis <span class="math" data-tex="$1,T,\ldots,T^{d-1}$">$1,T,\ldots,T^{d-1}$</span> when <span class="math" data-tex="$d=\deg f$">$d=\deg f$</span>. The localization in (2.1) need not be finite over <span class="math" data-tex="$A$">$A$</span>.</p>
+<p>Base changes and principal localizations of a standard étale algebra remain standard étale; in a localization, multiply <span class="math" data-tex="$g$">$g$</span> by a polynomial representing the element to be inverted. We do not require a composition to have a single global presentation (2.1). The local structure theorem is what supplies such a presentation near each point [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-standard-etale">00UB</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-standard-etale">00UC</a>].</p>
+<h2 id="3-why-one-monic-polynomial-is-enough">3. Why one monic polynomial is enough</h2>
+<p><strong>Theorem 3.1 (local standard form).</strong> If <span class="math" data-tex="$A\to B$">$A\to B$</span> is étale at <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>, some <span class="math" data-tex="$B_b$">$B_b$</span>, with <span class="math" data-tex="$b\notin\mathfrak q$">$b\notin\mathfrak q$</span>, is standard étale over <span class="math" data-tex="$A$">$A$</span> [Stacks, Tag <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-etale-locally-standard">00UE</a>].</p>
+<p><strong>Proof.</strong> We give the reduction and the monic-polynomial construction explicitly.</p>
+<p>First replace <span class="math" data-tex="$B$">$B$</span> by an étale square Jacobian neighbourhood of <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>. Its finitely many coefficients descend to a finitely generated <span class="math" data-tex="$\mathbf Z$">$\mathbf Z$</span>-subalgebra <span class="math" data-tex="$A_0\subset A$">$A_0\subset A$</span>, giving an étale algebra <span class="math" data-tex="$B_0$">$B_0$</span> and <span class="math" data-tex="$B=A\otimes_{A_0}B_0$">$B=A\otimes_{A_0}B_0$</span>. The contraction of <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span> is a point of <span class="math" data-tex="$B_0$">$B_0$</span>. A standard presentation around that point base changes to the desired presentation. Thus it suffices to treat Noetherian <span class="math" data-tex="$A$">$A$</span>.</p>
+<p>Now <span class="math" data-tex="$B$">$B$</span> is quasi-finite near <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>, by the unramified fibre classification. Algebraic Zariski's Main Theorem gives an integral subalgebra whose localization agrees with <span class="math" data-tex="$B$">$B$</span> near <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>. It can be replaced by a finite <span class="math" data-tex="$A$">$A$</span>-subalgebra <span class="math" data-tex="$C$">$C$</span>: include the integral localization element and finitely many integral numerators for algebra generators of the common localization. Then <span class="math" data-tex="$C_c\simeq B_c$">$C_c\simeq B_c$</span> for some <span class="math" data-tex="$c$">$c$</span> avoiding <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>. It is enough to construct the standard neighbourhood for <span class="math" data-tex="$C$">$C$</span> and further invert <span class="math" data-tex="$c$">$c$</span>. We may therefore suppose <span class="math" data-tex="$B$">$B$</span> is finite over <span class="math" data-tex="$A$">$A$</span>, retaining étaleness at the selected point only.</p>
+<p>Put <span class="math" data-tex="$\mathfrak p=\mathfrak q\cap A$">$\mathfrak p=\mathfrak q\cap A$</span> and <span class="math" data-tex="$k=\kappa(\mathfrak p)$">$k=\kappa(\mathfrak p)$</span>. The finite fibre algebra decomposes into Artinian local factors</p>
+<span class="math math-display" data-tex="$$
+B\otimes_A k=L\times R_2\times\cdots\times R_r,
+\qquad L=\kappa(\mathfrak q).
+\tag{3.1}
+$$">$$
+B\otimes_A k=L\times R_2\times\cdots\times R_r,
+\qquad L=\kappa(\mathfrak q).
+\tag{3.1}
+$$</span>
+<p>The first factor is a finite separable field because the map is unramified at <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>. Choose a nonzero primitive element <span class="math" data-tex="$\alpha$">$\alpha$</span> of <span class="math" data-tex="$L/k$">$L/k$</span>. The element <span class="math" data-tex="$(\alpha,0,\ldots,0)$">$(\alpha,0,\ldots,0)$</span> of (3.1), after multiplication by a nonzero scalar in <span class="math" data-tex="$k$">$k$</span> to clear a denominator from <span class="math" data-tex="$A\setminus\mathfrak p$">$A\setminus\mathfrak p$</span>, lifts to <span class="math" data-tex="$t\in B$">$t\in B$</span>. The scaled element still generates <span class="math" data-tex="$L$">$L$</span>.</p>
+<p>Let <span class="math" data-tex="$C=A[t]\subset B$">$C=A[t]\subset B$</span> and <span class="math" data-tex="$\mathfrak r=C\cap\mathfrak q$">$\mathfrak r=C\cap\mathfrak q$</span>. Both <span class="math" data-tex="$C$">$C$</span> and <span class="math" data-tex="$B$">$B$</span> are finite over <span class="math" data-tex="$A$">$A$</span>. The only prime of <span class="math" data-tex="$B$">$B$</span> over <span class="math" data-tex="$\mathfrak r$">$\mathfrak r$</span> is <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>: the other factors in (3.1) send <span class="math" data-tex="$t$">$t$</span> to zero, while its image at <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span> is nonzero. Localizing the finite extension at <span class="math" data-tex="$\mathfrak r$">$\mathfrak r$</span> therefore gives the local finite algebra <span class="math" data-tex="$B_{\mathfrak q}$">$B_{\mathfrak q}$</span>. The map</p>
+<span class="math math-display" data-tex="$$
+C_{\mathfrak r}\longrightarrow B_{\mathfrak q}
+$$">$$
+C_{\mathfrak r}\longrightarrow B_{\mathfrak q}
+$$</span>
+<p>is injective. Moreover <span class="math" data-tex="$\mathfrak pB_{\mathfrak q}=\mathfrak qB_{\mathfrak q}$">$\mathfrak pB_{\mathfrak q}=\mathfrak qB_{\mathfrak q}$</span> and <span class="math" data-tex="$\kappa(\mathfrak r)=L$">$\kappa(\mathfrak r)=L$</span>, since the image of <span class="math" data-tex="$t$">$t$</span> is primitive. Its cokernel is finite over <span class="math" data-tex="$C_{\mathfrak r}$">$C_{\mathfrak r}$</span> and has zero reduction modulo the maximal ideal; Nakayama makes the map surjective. Hence it is an isomorphism. The finite <span class="math" data-tex="$C$">$C$</span>-module <span class="math" data-tex="$B/C$">$B/C$</span> vanishes at <span class="math" data-tex="$\mathfrak r$">$\mathfrak r$</span>, so one <span class="math" data-tex="$h\in C\setminus\mathfrak r$">$h\in C\setminus\mathfrak r$</span> kills it after localization, giving <span class="math" data-tex="$C_h=B_h$">$C_h=B_h$</span>.</p>
+<p>We may now work with the finite monogenic algebra <span class="math" data-tex="$C=A[T]/I$">$C=A[T]/I$</span>, étale at <span class="math" data-tex="$\mathfrak r$">$\mathfrak r$</span>. The ideal <span class="math" data-tex="$\overline I\subset k[T]$">$\overline I\subset k[T]$</span> is principal. Choose <span class="math" data-tex="$u\in I$">$u\in I$</span> whose reduction is a nonzero scalar times its generator, clearing denominators if necessary. At the root <span class="math" data-tex="$\alpha$">$\alpha$</span>, that generator has a simple separable factor: the corresponding local fibre is the field <span class="math" data-tex="$L$">$L$</span>. Thus <span class="math" data-tex="$\overline u&#x27;(\alpha)\ne0$">$\overline u&#x27;(\alpha)\ne0$</span>.</p>
+<p>Integrality of <span class="math" data-tex="$t$">$t$</span> supplies a monic <span class="math" data-tex="$m\in I$">$m\in I$</span>. Choose an integer <span class="math" data-tex="$e\ge2$">$e\ge2$</span> with <span class="math" data-tex="$e\deg m&gt;\deg u$">$e\deg m&gt;\deg u$</span>, and set</p>
+<span class="math math-display" data-tex="$$
+f=m^e+u.
+\tag{3.2}
+$$">$$
+f=m^e+u.
+\tag{3.2}
+$$</span>
+<p>This polynomial is monic and belongs to <span class="math" data-tex="$I$">$I$</span>. At <span class="math" data-tex="$\alpha$">$\alpha$</span>, <span class="math" data-tex="$\overline m(\alpha)=0$">$\overline m(\alpha)=0$</span>, so <span class="math" data-tex="$\overline f&#x27;(\alpha)=\overline u&#x27;(\alpha)\ne0$">$\overline f&#x27;(\alpha)=\overline u&#x27;(\alpha)\ne0$</span>. Consequently</p>
+<span class="math math-display" data-tex="$$
+D=(A[T]/(f))_{f&#x27;}\twoheadrightarrow C_{f&#x27;}
+$$">$$
+D=(A[T]/(f))_{f&#x27;}\twoheadrightarrow C_{f&#x27;}
+$$</span>
+<p>is a surjection from a standard étale algebra, and the selected point survives. Further localize both sides by a lifted element so that the target is étale, using the pointwise criterion of Section 1. The source remains standard étale. By Proposition 2.1 the resulting quotient map is étale, in particular flat and finitely presented.</p>
+<p>The flat closed-subscheme theorem of <strong>Flat morphisms</strong> says that a finitely presented flat quotient is cut out by a finitely generated pure ideal, hence by an idempotent. Such a quotient is a principal localization: <span class="math" data-tex="$D/(e_0)=D_{1-e_0}$">$D/(e_0)=D_{1-e_0}$</span> for an idempotent <span class="math" data-tex="$e_0$">$e_0$</span>. A principal localization of a standard étale algebra is standard étale. Restoring the localizations made earlier, and then base changing from <span class="math" data-tex="$A_0$">$A_0$</span>, proves the theorem. ∎</p>
+<p><strong>Corollary 3.2 (geometric form).</strong> Let <span class="math" data-tex="$f:X\to Y$">$f:X\to Y$</span> be étale at <span class="math" data-tex="$x$">$x$</span> and let <span class="math" data-tex="$V=\operatorname{Spec}A$">$V=\operatorname{Spec}A$</span> be any affine neighbourhood of <span class="math" data-tex="$f(x)$">$f(x)$</span>. There is an affine neighbourhood <span class="math" data-tex="$U$">$U$</span> of <span class="math" data-tex="$x$">$x$</span> mapping into <span class="math" data-tex="$V$">$V$</span>, a monic <span class="math" data-tex="$f_0\in A[T]$">$f_0\in A[T]$</span>, and an open immersion over <span class="math" data-tex="$V$">$V$</span></p>
+<span class="math math-display" data-tex="$$
+U\hookrightarrow\operatorname{Spec}(A[T]/(f_0))_{f_0&#x27;}.
+\tag{3.3}
+$$">$$
+U\hookrightarrow\operatorname{Spec}(A[T]/(f_0))_{f_0&#x27;}.
+\tag{3.3}
+$$</span>
+<p><strong>Proof.</strong> Take an étale affine neighbourhood inside the inverse image of <span class="math" data-tex="$V$">$V$</span> and apply Theorem 3.1. In its standard presentation the derivative is invertible, so the presentation is a further principal localization of the algebra on the right of (3.3). ∎</p>
+<p>This also completes the pointwise tests: a one-variable chart <span class="math" data-tex="$(A[T]/(f_0))_g$">$(A[T]/(f_0))_g$</span> with <span class="math" data-tex="$f_0$">$f_0$</span> monic and <span class="math" data-tex="$f_0&#x27;(x)\ne0$">$f_0&#x27;(x)\ne0$</span> is equivalent to étaleness at <span class="math" data-tex="$x$">$x$</span>, after shrinking by the derivative [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-theorem-structure-etale">025B</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-theorem-geometric-structure">025C</a>].</p>
+<p><strong>Corollary 3.3 (unramified form).</strong> An unramified morphism is locally a closed subscheme of a standard étale scheme. In local-ring language, an essentially finite type local map <span class="math" data-tex="$A\to B$">$A\to B$</span> with <span class="math" data-tex="$\Omega_{B/A}=0$">$\Omega_{B/A}=0$</span> presents <span class="math" data-tex="$B$">$B$</span> as a quotient of a standard étale <span class="math" data-tex="$A$">$A$</span>-algebra localized at a prime [Stacks, Tag <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-theorem-structure-unramified">039O</a>].</p>
+<p><strong>Proof.</strong> Lemma 1.2 constructs a surjection from a square Jacobian étale algebra to a neighbourhood of the point. Apply Theorem 3.1 to that algebra at the inverse image of the point and localize the quotient correspondingly. Localization at the point gives the local-ring statement. The quotient ideal need not be finitely generated; unramifiedness only imposes local finite type. ∎</p>
+<p>For precision, an <strong>essentially étale local map</strong> means a localization at a prime of an étale algebra over the base local ring. For Noetherian local rings <span class="math" data-tex="$A,B$">$A,B$</span>, an essentially finite type local map is essentially étale if and only if it is flat, <span class="math" data-tex="$\mathfrak m_AB=\mathfrak m_B$">$\mathfrak m_AB=\mathfrak m_B$</span>, and the residue extension is finite separable. To see the converse, write <span class="math" data-tex="$B=C_{\mathfrak q}$">$B=C_{\mathfrak q}$</span> for a finite type <span class="math" data-tex="$A$">$A$</span>-algebra. Noetherianity makes <span class="math" data-tex="$C$">$C$</span> finitely presented, and the pointwise criterion applies. Theorem 3.1 then gives the local form (2.1). This distinguishes a local map obtained by localization from an algebra required itself to be finitely presented.</p>
+<h2 id="4-the-topology-and-the-open-immersion-criterion">4. The topology and the open-immersion criterion</h2>
+<p>An étale map is open because it is flat and locally of finite presentation, by the openness theorem of <strong>Flat morphisms</strong>. It is locally quasi-finite because it is unramified. Neither conclusion requires quasi-compactness or separatedness [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-etale-locally-quasi-finite">03WS</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-etale-open">03WT</a>].</p>
+<p><strong>Theorem 4.1.</strong> For <span class="math" data-tex="$f:X\to Y$">$f:X\to Y$</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="$f$">$f$</span> is an open immersion.</li>
+<li><span class="math" data-tex="$f$">$f$</span> is étale and universally injective.</li>
+<li><span class="math" data-tex="$f$">$f$</span> is a flat monomorphism locally of finite presentation.</li>
+</ol>
+<p><strong>Proof.</strong> An open immersion is étale, and every base change is an open immersion, giving (1)<span class="math" data-tex="$\Rightarrow$">$\Rightarrow$</span>(2). By <strong>Unramified morphisms</strong>, an unramified universally injective map is a monomorphism; Lemma 1.1 gives (2)<span class="math" data-tex="$\Rightarrow$">$\Rightarrow$</span>(3).</p>
+<p>Assume (3). Openness and injectivity make <span class="math" data-tex="$X\to V=f(X)$">$X\to V=f(X)$</span> a homeomorphism, where <span class="math" data-tex="$V$">$V$</span> is open in <span class="math" data-tex="$Y$">$Y$</span>. We show that its local rings agree. Choose affine charts <span class="math" data-tex="$\operatorname{Spec}B\subset X$">$\operatorname{Spec}B\subset X$</span> and <span class="math" data-tex="$\operatorname{Spec}A\subset V$">$\operatorname{Spec}A\subset V$</span>. Their map is a monomorphism, so <span class="math" data-tex="$B\otimes_A B\to B$">$B\otimes_A B\to B$</span> is an isomorphism. At corresponding primes <span class="math" data-tex="$\mathfrak q,\mathfrak p$">$\mathfrak q,\mathfrak p$</span>, the map <span class="math" data-tex="$A_{\mathfrak p}\to B_{\mathfrak q}$">$A_{\mathfrak p}\to B_{\mathfrak q}$</span> is therefore a ring epimorphism; it is also faithfully flat, being flat and local.</p>
+<p>For any faithfully flat ring map <span class="math" data-tex="$R\to T$">$R\to T$</span>, the equalizer sequence</p>
+<span class="math math-display" data-tex="$$
+0\longrightarrow R\longrightarrow T
+\xrightarrow{\,t\mapsto t\otimes1-1\otimes t\,}T\otimes_R T
+\tag{4.1}
+$$">$$
+0\longrightarrow R\longrightarrow T
+\xrightarrow{\,t\mapsto t\otimes1-1\otimes t\,}T\otimes_R T
+\tag{4.1}
+$$</span>
+<p>is exact. Here is the needed elementary verification: tensor with <span class="math" data-tex="$T$">$T$</span>. If <span class="math" data-tex="$z\in T\otimes_R T$">$z\in T\otimes_R T$</span> satisfies <span class="math" data-tex="$z\otimes1$">$z\otimes1$</span> equal to the element obtained by inserting <span class="math" data-tex="$1$">$1$</span> in the middle, multiplication of the first two factors shows <span class="math" data-tex="$z=\mu(z)\otimes1$">$z=\mu(z)\otimes1$</span>. Thus the tensored sequence is exact; faithful flatness reflects exactness. For a ring epimorphism the last arrow in (4.1) is zero, so <span class="math" data-tex="$R\to T$">$R\to T$</span> is an isomorphism. Apply this to the local rings above. A homeomorphism inducing isomorphisms of all stalks is an isomorphism of schemes. Hence <span class="math" data-tex="$X\simeq V$">$X\simeq V$</span>, proving (1). ∎</p>
+<p>This proves [Stacks, Tag <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-theorem-etale-radicial-open">025G</a>] directly, including its arbitrary-base scope.</p>
+<p><strong>Proposition 4.2 (one-point finite fibre).</strong> Suppose <span class="math" data-tex="$f:X\to S$">$f:X\to S$</span> is finite étale, <span class="math" data-tex="$X_s$">$X_s$</span> has exactly one point <span class="math" data-tex="$x$">$x$</span>, and <span class="math" data-tex="$\kappa(x)/\kappa(s)$">$\kappa(x)/\kappa(s)$</span> is purely inseparable. Then <span class="math" data-tex="$f^{-1}(U)\to U$">$f^{-1}(U)\to U$</span> is an isomorphism for some open neighbourhood <span class="math" data-tex="$U$">$U$</span> of <span class="math" data-tex="$s$">$s$</span> [Stacks, Tag <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-lemma-finite-etale-one-point">04DH</a>].</p>
+<p><strong>Proof.</strong> The residue extension is also finite separable, so it is trivial; the entire fibre algebra is <span class="math" data-tex="$\kappa(s)$">$\kappa(s)$</span>. On an affine neighbourhood write <span class="math" data-tex="$X=\operatorname{Spec}B$">$X=\operatorname{Spec}B$</span> over <span class="math" data-tex="$\operatorname{Spec}A$">$\operatorname{Spec}A$</span>. A finite étale algebra is a finite locally free <span class="math" data-tex="$A$">$A$</span>-module: a finite finitely presented algebra is finitely presented as a module, and finite presented flat modules are locally free. Near <span class="math" data-tex="$s$">$s$</span> its rank is the fibre dimension, namely one. The element <span class="math" data-tex="$1\in B$">$1\in B$</span> is a basis at <span class="math" data-tex="$s$">$s$</span>, so it is a basis after shrinking. Then <span class="math" data-tex="$A\to B$">$A\to B$</span> is an isomorphism of modules and hence of algebras on that neighbourhood. ∎</p>
+<h2 id="5-what-happens-to-noetherian-local-rings">5. What happens to Noetherian local rings</h2>
+<p>Throughout this section <span class="math" data-tex="$A\to B$">$A\to B$</span> is an essentially étale local map of Noetherian local rings. Put <span class="math" data-tex="$\mathfrak m=\mathfrak m_A$">$\mathfrak m=\mathfrak m_A$</span>, <span class="math" data-tex="$\mathfrak n=\mathfrak m_B$">$\mathfrak n=\mathfrak m_B$</span>, <span class="math" data-tex="$k=A/\mathfrak m$">$k=A/\mathfrak m$</span>, and <span class="math" data-tex="$l=B/\mathfrak n$">$l=B/\mathfrak n$</span>. We have a faithfully flat map, <span class="math" data-tex="$\mathfrak mB=\mathfrak n$">$\mathfrak mB=\mathfrak n$</span>, and a finite separable extension <span class="math" data-tex="$l/k$">$l/k$</span>.</p>
+<p><strong>Theorem 5.1.</strong> The following equalities and equivalences hold:</p>
+<span class="math math-display" data-tex="$$
+\dim A=\dim B,\qquad \operatorname{depth}A=\operatorname{depth}B;
+$$">$$
+\dim A=\dim B,\qquad \operatorname{depth}A=\operatorname{depth}B;
+$$</span>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+A\text{ Cohen–Macaulay}&amp;\Longleftrightarrow B\text{ Cohen–Macaulay},\\
+A\text{ regular}&amp;\Longleftrightarrow B\text{ regular},\\
+A\text{ reduced}&amp;\Longleftrightarrow B\text{ reduced},\\
+A\text{ a normal domain}&amp;\Longleftrightarrow B\text{ a normal domain}.
+\end{aligned}
+\tag{5.1}
+$$">$$
+\begin{aligned}
+A\text{ Cohen–Macaulay}&amp;\Longleftrightarrow B\text{ Cohen–Macaulay},\\
+A\text{ regular}&amp;\Longleftrightarrow B\text{ regular},\\
+A\text{ reduced}&amp;\Longleftrightarrow B\text{ reduced},\\
+A\text{ a normal domain}&amp;\Longleftrightarrow B\text{ a normal domain}.
+\end{aligned}
+\tag{5.1}
+$$</span>
+<p><strong>Proof of dimension and depth.</strong> The flat local dimension formula of <strong>Flatness criteria, dimension and the flat locus</strong> gives</p>
+<span class="math math-display" data-tex="$$
+\dim B=\dim A+\dim(B/\mathfrak mB)=\dim A.
+$$">$$
+\dim B=\dim A+\dim(B/\mathfrak mB)=\dim A.
+$$</span>
+<p>For depth, take a free resolution <span class="math" data-tex="$F_\bullet\to k$">$F_\bullet\to k$</span> over <span class="math" data-tex="$A$">$A$</span> with each term of finite rank; such a resolution exists because <span class="math" data-tex="$A$">$A$</span> is Noetherian. Flatness makes <span class="math" data-tex="$F_\bullet\otimes_A B$">$F_\bullet\otimes_A B$</span> a free resolution of <span class="math" data-tex="$l=B/\mathfrak mB$">$l=B/\mathfrak mB$</span>. Termwise finite freeness identifies the cochain complexes</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Hom}_B(F_\bullet\otimes_A B,B)
+=\operatorname{Hom}_A(F_\bullet,A)\otimes_A B.
+$$">$$
+\operatorname{Hom}_B(F_\bullet\otimes_A B,B)
+=\operatorname{Hom}_A(F_\bullet,A)\otimes_A B.
+$$</span>
+<p>Flat tensor product commutes with their cohomology. Hence</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Ext}_B^i(l,B)
+\simeq\operatorname{Ext}_A^i(k,A)\otimes_A B.
+$$">$$
+\operatorname{Ext}_B^i(l,B)
+\simeq\operatorname{Ext}_A^i(k,A)\otimes_A B.
+$$</span>
+<p>Faithful flatness preserves whether these modules vanish. The Ext characterization of depth therefore gives equality of depths. Equality of dimension and depth immediately gives the Cohen–Macaulay equivalence [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-lemma-etale-dimension">039S</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-proposition-etale-depth">039T</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-proposition-etale-CM">025Q</a>].</p>
+<p><strong>Proof of regularity.</strong> Flatness identifies <span class="math" data-tex="$\mathfrak m\otimes_A B$">$\mathfrak m\otimes_A B$</span> with <span class="math" data-tex="$\mathfrak mB=\mathfrak n$">$\mathfrak mB=\mathfrak n$</span> and identifies the corresponding quotient by <span class="math" data-tex="$\mathfrak m^2$">$\mathfrak m^2$</span>. Consequently</p>
+<span class="math math-display" data-tex="$$
+\mathfrak n/\mathfrak n^2
+\simeq (\mathfrak m/\mathfrak m^2)\otimes_k l.
+\tag{5.2}
+$$">$$
+\mathfrak n/\mathfrak n^2
+\simeq (\mathfrak m/\mathfrak m^2)\otimes_k l.
+\tag{5.2}
+$$</span>
+<p>Thus the two local rings have the same embedding dimension. Their Krull dimensions are equal, so the criterion “embedding dimension equals dimension” gives regularity in both directions [Stacks, Tag <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-proposition-etale-regular">025N</a>].</p>
+<p><strong>Proof of reducedness.</strong> Faithful flatness embeds <span class="math" data-tex="$A$">$A$</span> into <span class="math" data-tex="$B$">$B$</span>, so reducedness descends. If <span class="math" data-tex="$A$">$A$</span> is reduced, let <span class="math" data-tex="$\mathfrak p_1,\ldots,\mathfrak p_r$">$\mathfrak p_1,\ldots,\mathfrak p_r$</span> be its minimal primes and <span class="math" data-tex="$K_i=\operatorname{Frac}(A/\mathfrak p_i)$">$K_i=\operatorname{Frac}(A/\mathfrak p_i)$</span>. There is an injection <span class="math" data-tex="$A\hookrightarrow\prod_i K_i$">$A\hookrightarrow\prod_i K_i$</span>, since the intersection of the minimal primes is zero. Flatness gives</p>
+<span class="math math-display" data-tex="$$
+B\hookrightarrow\prod_i(B\otimes_A K_i).
+$$">$$
+B\hookrightarrow\prod_i(B\otimes_A K_i).
+$$</span>
+<p>Each algebra on the right is a localization of an étale finite type <span class="math" data-tex="$K_i$">$K_i$</span>-algebra, hence a localization of a finite product of finite separable fields. It is reduced. A subring of a reduced ring is reduced, proving ascent [Stacks, Tag <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-proposition-etale-reduced">025O</a>].</p>
+<p><strong>Proof of normality.</strong> Use Serre's criterion for Noetherian rings: normality is equivalent to <span class="math" data-tex="$(R_1)$">$(R_1)$</span> and <span class="math" data-tex="$(S_2)$">$(S_2)$</span>. At every prime <span class="math" data-tex="$\mathfrak q\subset B$">$\mathfrak q\subset B$</span>, with contraction <span class="math" data-tex="$\mathfrak p\subset A$">$\mathfrak p\subset A$</span>, the map <span class="math" data-tex="$A_{\mathfrak p}\to B_{\mathfrak q}$">$A_{\mathfrak p}\to B_{\mathfrak q}$</span> is again essentially étale and local. The dimension, depth and regularity arguments just proved apply there. They transfer the requirements</p>
+<span class="math math-display" data-tex="$$
+\dim A_{\mathfrak p}\le1\ \Rightarrow\ A_{\mathfrak p}\text{ regular},
+\qquad
+\operatorname{depth}A_{\mathfrak p}\ge\min(2,\dim A_{\mathfrak p})
+$$">$$
+\dim A_{\mathfrak p}\le1\ \Rightarrow\ A_{\mathfrak p}\text{ regular},
+\qquad
+\operatorname{depth}A_{\mathfrak p}\ge\min(2,\dim A_{\mathfrak p})
+$$</span>
+<p>to the corresponding requirements for <span class="math" data-tex="$B_{\mathfrak q}$">$B_{\mathfrak q}$</span>. Thus normality ascends. Conversely faithful flatness makes <span class="math" data-tex="$\operatorname{Spec}B\to\operatorname{Spec}A$">$\operatorname{Spec}B\to\operatorname{Spec}A$</span> surjective. For each <span class="math" data-tex="$\mathfrak p$">$\mathfrak p$</span> choose a prime above it and use the same equalities and equivalence to descend <span class="math" data-tex="$(R_1)$">$(R_1)$</span> and <span class="math" data-tex="$(S_2)$">$(S_2)$</span>. Finally a normal Noetherian local ring is a domain, so this proves precisely the last line of (5.1) [Stacks, Tag <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale.html#etale-proposition-etale-normal">025P</a>]. ∎</p>
+<h2 id="6-examples-that-distinguish-the-hypotheses">6. Examples that distinguish the hypotheses</h2>
+<p><strong>Roots of unity.</strong> For a positive integer <span class="math" data-tex="$n$">$n$</span> and <span class="math" data-tex="$A=\mathbf Z[1/n]$">$A=\mathbf Z[1/n]$</span>, the algebra</p>
+<span class="math math-display" data-tex="$$
+A[T]/(T^n-1)
+$$">$$
+A[T]/(T^n-1)
+$$</span>
+<p>is finite free of rank <span class="math" data-tex="$n$">$n$</span>. The element <span class="math" data-tex="$T$">$T$</span> is invertible and the derivative <span class="math" data-tex="$nT^{n-1}$">$nT^{n-1}$</span> is a unit, so the algebra is finite étale. Over a residue field <span class="math" data-tex="$k$">$k$</span> of <span class="math" data-tex="$A$">$A$</span>, <span class="math" data-tex="$T^n-1$">$T^n-1$</span> factors into distinct irreducible separable polynomials. The fibre is the product of the corresponding finite separable fields. Over an algebraic closure it consists of <span class="math" data-tex="$n$">$n$</span> distinct roots of unity.</p>
+<p><strong>The power map on the torus.</strong> Over a field <span class="math" data-tex="$k$">$k$</span>, the map <span class="math" data-tex="$\mathbf G_m\to\mathbf G_m$">$\mathbf G_m\to\mathbf G_m$</span> taking <span class="math" data-tex="$z$">$z$</span> to <span class="math" data-tex="$z^n$">$z^n$</span> has coordinate algebra</p>
+<span class="math math-display" data-tex="$$
+k[t,t^{-1}]\longrightarrow k[z,z^{-1}],\qquad t\longmapsto z^n.
+$$">$$
+k[t,t^{-1}]\longrightarrow k[z,z^{-1}],\qquad t\longmapsto z^n.
+$$</span>
+<p>The target is free with basis <span class="math" data-tex="$1,z,\ldots,z^{n-1}$">$1,z,\ldots,z^{n-1}$</span>. Its presentation by <span class="math" data-tex="$Z^n-t$">$Z^n-t$</span> has derivative <span class="math" data-tex="$nZ^{n-1}$">$nZ^{n-1}$</span>, so the map is finite étale exactly when <span class="math" data-tex="$n\ne0$">$n\ne0$</span> in <span class="math" data-tex="$k$">$k$</span>. If <span class="math" data-tex="$n=0$">$n=0$</span> in <span class="math" data-tex="$k$">$k$</span>, its differential module is the nonzero free module <span class="math" data-tex="$k[z,z^{-1}]\,dz$">$k[z,z^{-1}]\,dz$</span>. More generally over a nonempty base it is étale exactly when <span class="math" data-tex="$n$">$n$</span> is invertible in the base ring, as the same differential computation shows. For <span class="math" data-tex="$n&gt;1$">$n&gt;1$</span> over a field, no nonempty source open maps isomorphically to a target open: such an isomorphism would identify the function fields, but <span class="math" data-tex="$[k(z):k(z^n)]=n$">$[k(z):k(z^n)]=n$</span>. One verifies this degree by the linear independence of <span class="math" data-tex="$1,z,\ldots,z^{n-1}$">$1,z,\ldots,z^{n-1}$</span> over <span class="math" data-tex="$k(z^n)$">$k(z^n)$</span>, grouping polynomial exponents modulo <span class="math" data-tex="$n$">$n$</span>.</p>
+<p><strong>Artin–Schreier.</strong> In characteristic <span class="math" data-tex="$p$">$p$</span>,</p>
+<span class="math math-display" data-tex="$$
+\mathbf F_p[x]\longrightarrow
+\mathbf F_p[x,y]/(y^p-y-x)\simeq\mathbf F_p[y]
+$$">$$
+\mathbf F_p[x]\longrightarrow
+\mathbf F_p[x,y]/(y^p-y-x)\simeq\mathbf F_p[y]
+$$</span>
+<p>is monic of degree <span class="math" data-tex="$p$">$p$</span> in <span class="math" data-tex="$y$">$y$</span> and has derivative <span class="math" data-tex="$-1$">$-1$</span>. It is a connected finite étale cover of degree <span class="math" data-tex="$p$">$p$</span>. Over an algebraic closure, each fibre has the <span class="math" data-tex="$p$">$p$</span> distinct roots <span class="math" data-tex="$a+c$">$a+c$</span>, <span class="math" data-tex="$c\in\mathbf F_p$">$c\in\mathbf F_p$</span>, for any one root <span class="math" data-tex="$a$">$a$</span>.</p>
+<p><strong>A bijective étale map.</strong> The map <span class="math" data-tex="$\operatorname{Spec}\mathbf C\to\operatorname{Spec}\mathbf R$">$\operatorname{Spec}\mathbf C\to\operatorname{Spec}\mathbf R$</span> is finite étale and bijective on points. After base change to <span class="math" data-tex="$\mathbf C$">$\mathbf C$</span>, however,</p>
+<span class="math math-display" data-tex="$$
+\mathbf C\otimes_{\mathbf R}\mathbf C\simeq\mathbf C\times\mathbf C.
+$$">$$
+\mathbf C\otimes_{\mathbf R}\mathbf C\simeq\mathbf C\times\mathbf C.
+$$</span>
+<p>Its fibre has two points. It is not universally injective and therefore is not an open immersion.</p>
+<p><strong>A bijective unramified map.</strong> Let <span class="math" data-tex="$k$">$k$</span> have characteristic different from <span class="math" data-tex="$2$">$2$</span> and let</p>
+<span class="math math-display" data-tex="$$
+C=\operatorname{Spec} k[x,y]/(y^2-x^2(x+1)).
+$$">$$
+C=\operatorname{Spec} k[x,y]/(y^2-x^2(x+1)).
+$$</span>
+<p>Its normalization is parametrized by <span class="math" data-tex="$x=u^2-1$">$x=u^2-1$</span>, <span class="math" data-tex="$y=u(u^2-1)$">$y=u(u^2-1)$</span>. Restrict the normalization to <span class="math" data-tex="$N=\mathbf A^1_k\setminus\{-1\}$">$N=\mathbf A^1_k\setminus\{-1\}$</span>. Away from the node <span class="math" data-tex="$(0,0)$">$(0,0)$</span> the inverse is <span class="math" data-tex="$u=y/x$">$u=y/x$</span>; over the node only <span class="math" data-tex="$u=1$">$u=1$</span> remains. Thus <span class="math" data-tex="$N\to C$">$N\to C$</span> is bijective on points, including points with nontrivial residue fields. Its relative differentials are generated by <span class="math" data-tex="$du$">$du$</span> with relations</p>
+<span class="math math-display" data-tex="$$
+2u\,du=0,\qquad(3u^2-1)\,du=0.
+$$">$$
+2u\,du=0,\qquad(3u^2-1)\,du=0.
+$$</span>
+<p>These coefficients generate the unit ideal, since <span class="math" data-tex="$2$">$2$</span> is invertible and <span class="math" data-tex="$3u^2-1$">$3u^2-1$</span> is <span class="math" data-tex="$-1$">$-1$</span> modulo <span class="math" data-tex="$(u)$">$(u)$</span>. The map is unramified. At the node, the local ring of <span class="math" data-tex="$C$">$C$</span> has embedding dimension <span class="math" data-tex="$2$">$2$</span>, while the local ring at <span class="math" data-tex="$u=1$">$u=1$</span> has embedding dimension <span class="math" data-tex="$1$">$1$</span>. Moreover its maximal ideal is generated by the images of <span class="math" data-tex="$x,y$">$x,y$</span>, since <span class="math" data-tex="$u+1$">$u+1$</span> is a unit there and <span class="math" data-tex="$x=(u-1)(u+1)$">$x=(u-1)(u+1)$</span>. If the map were flat at this point, the flat-ideal argument in (5.2), with identical residue fields, would make those embedding dimensions equal. It is therefore not flat, not étale, and not an open immersion.</p>
+<p><strong>Why finite presentation matters.</strong> Let <span class="math" data-tex="$A=\prod_{j\ge1}k$">$A=\prod_{j\ge1}k$</span> and let <span class="math" data-tex="$I\subset A$">$I\subset A$</span> be the ideal of sequences of finite support. Every <span class="math" data-tex="$a\in I$">$a\in I$</span> satisfies <span class="math" data-tex="$a=ae$">$a=ae$</span> for a finite-support idempotent <span class="math" data-tex="$e\in I$">$e\in I$</span>. The pure-ideal criterion of <strong>Flat morphisms</strong> makes <span class="math" data-tex="$A/I$">$A/I$</span> flat over <span class="math" data-tex="$A$">$A$</span>. It is a quotient algebra, so it is of finite type and has zero relative differentials; the map is unramified. But <span class="math" data-tex="$I$">$I$</span> is not finitely generated: finitely many generators have support in one finite set and cannot generate an idempotent supported outside it. Hence <span class="math" data-tex="$A\to A/I$">$A\to A/I$</span> is not finitely presented and is not étale. This gives flat plus unramified without G-unramified over a non-Noetherian base.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 1 (easy).</strong> Classify schemes étale over a separably closed field. Must such a scheme be finite?</p>
+<p><strong>Exercise 2 (medium).</strong> Prove that <span class="math" data-tex="$y^p-y=x$">$y^p-y=x$</span> defines a connected finite étale cover of <span class="math" data-tex="$\mathbf A^1_{\mathbf F_p}$">$\mathbf A^1_{\mathbf F_p}$</span> of degree <span class="math" data-tex="$p$">$p$</span>. Describe its geometric fibres and its translations over the base.</p>
+<p><strong>Exercise 3 (medium).</strong> Prove the cancellation law using the graph of an <span class="math" data-tex="$S$">$S$</span>-morphism <span class="math" data-tex="$X\to Y$">$X\to Y$</span>, and specify which projection makes the graph a section.</p>
+<p><strong>Exercise 4 (medium).</strong> For the nodal cubic of Section 6, prove that removing one preimage of the node gives a bijective unramified map. Identify the failed hypothesis of Theorem 4.1 by a local calculation.</p>
+<p><strong>Exercise 5 (hard).</strong> Let <span class="math" data-tex="$A\to B$">$A\to B$</span> be an essentially étale local map of Noetherian local rings. Prove regularity in both directions by comparing dimension and cotangent spaces.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 1.</strong> The unramified fibre classification makes the scheme a disjoint union of spectra of finite separable extensions of the base field. A separably closed field has no nontrivial such extension, so the scheme is a disjoint union of copies of its spectrum. Conversely any such disjoint union is étale, as each component is an open chart with identity structure map. The indexing set may be infinite. It is finite exactly when the scheme is quasi-compact: its components form an open cover, and a finite subcover exists precisely for finitely many components.</p>
+<p><strong>Solution 2.</strong> As a polynomial in <span class="math" data-tex="$y$">$y$</span>, <span class="math" data-tex="$y^p-y-x$">$y^p-y-x$</span> is monic of degree <span class="math" data-tex="$p$">$p$</span>. Polynomial division gives a free basis <span class="math" data-tex="$1,y,\ldots,y^{p-1}$">$1,y,\ldots,y^{p-1}$</span> over <span class="math" data-tex="$\mathbf F_p[x]$">$\mathbf F_p[x]$</span>, so the morphism is finite of degree <span class="math" data-tex="$p$">$p$</span>. Its derivative is <span class="math" data-tex="$-1$">$-1$</span>, giving a standard étale algebra. Eliminating <span class="math" data-tex="$x$">$x$</span> gives the integral domain <span class="math" data-tex="$\mathbf F_p[y]$">$\mathbf F_p[y]$</span>, hence a connected source. At a geometric point <span class="math" data-tex="$x=b$">$x=b$</span>, choose a root <span class="math" data-tex="$a$">$a$</span> of <span class="math" data-tex="$Y^p-Y-b$">$Y^p-Y-b$</span>. Every <span class="math" data-tex="$a+c$">$a+c$</span> with <span class="math" data-tex="$c\in\mathbf F_p$">$c\in\mathbf F_p$</span> is a root; these <span class="math" data-tex="$p$">$p$</span> distinct roots exhaust a polynomial of degree <span class="math" data-tex="$p$">$p$</span>. The transformations <span class="math" data-tex="$y\mapsto y+c$">$y\mapsto y+c$</span> fix <span class="math" data-tex="$x=y^p-y$">$x=y^p-y$</span>, act transitively and freely on each geometric fibre, and compose by addition in <span class="math" data-tex="$\mathbf F_p$">$\mathbf F_p$</span>.</p>
+<p><strong>Solution 3.</strong> The graph <span class="math" data-tex="$\Gamma_a:X\to X\times_S Y$">$\Gamma_a:X\to X\times_S Y$</span> is a section of <span class="math" data-tex="$\operatorname{pr}_X$">$\operatorname{pr}_X$</span>, which is the base change of the unramified map <span class="math" data-tex="$Y\to S$">$Y\to S$</span>. Pulling back its open diagonal shows that the section is an open immersion. The projection <span class="math" data-tex="$\operatorname{pr}_Y$">$\operatorname{pr}_Y$</span> is the base change of the étale map <span class="math" data-tex="$X\to S$">$X\to S$</span>, and is étale. Thus <span class="math" data-tex="$a=\operatorname{pr}_Y\circ\Gamma_a$">$a=\operatorname{pr}_Y\circ\Gamma_a$</span> is étale. The two projections have different roles; no closed-diagonal or separatedness argument is needed.</p>
+<p><strong>Solution 4.</strong> The parametrization satisfies the equation because <span class="math" data-tex="$y^2=u^2(u^2-1)^2=x^2(x+1)$">$y^2=u^2(u^2-1)^2=x^2(x+1)$</span>. On <span class="math" data-tex="$D(x)$">$D(x)$</span> its inverse is <span class="math" data-tex="$u=y/x$">$u=y/x$</span>. The complement of <span class="math" data-tex="$D(x)$">$D(x)$</span> on the underlying curve is just the node, whose normalization preimages are <span class="math" data-tex="$u=\pm1$">$u=\pm1$</span>. Deleting <span class="math" data-tex="$-1$">$-1$</span> leaves exactly one rational preimage, proving bijectivity. The differential quotient is <span class="math" data-tex="$k[u]du/(2u,3u^2-1)du=0$">$k[u]du/(2u,3u^2-1)du=0$</span>; localizing at <span class="math" data-tex="$u+1$">$u+1$</span> retains this equality. The map is locally of finite type and unramified. At the node the equation has no linear term, so the classes of <span class="math" data-tex="$x,y$">$x,y$</span> form a two-dimensional cotangent space. At the remaining preimage the cotangent space is generated by <span class="math" data-tex="$u-1$">$u-1$</span>. The images of <span class="math" data-tex="$x,y$">$x,y$</span> generate that maximal ideal and the residue fields are both <span class="math" data-tex="$k$">$k$</span>. Flatness would identify the two cotangent spaces by flat tensor product, a contradiction. Thus the missing condition is étaleness, specifically flatness. Bijectivity and unramifiedness alone do not give the second condition of Theorem 4.1.</p>
+<p><strong>Solution 5.</strong> Write <span class="math" data-tex="$\mathfrak n=\mathfrak mB$">$\mathfrak n=\mathfrak mB$</span> and <span class="math" data-tex="$l/k$">$l/k$</span> for the finite separable residue extension. The flat local dimension formula gives <span class="math" data-tex="$\dim B=\dim A$">$\dim B=\dim A$</span>, since the local fibre is the field <span class="math" data-tex="$l$">$l$</span>. Flatness of <span class="math" data-tex="$B$">$B$</span> over <span class="math" data-tex="$A$">$A$</span> gives <span class="math" data-tex="$\mathfrak m\otimes_A B\simeq\mathfrak n$">$\mathfrak m\otimes_A B\simeq\mathfrak n$</span> and, after taking the quotient by <span class="math" data-tex="$\mathfrak m^2$">$\mathfrak m^2$</span>, gives</p>
+<span class="math math-display" data-tex="$$
+\mathfrak n/\mathfrak n^2\simeq(\mathfrak m/\mathfrak m^2)\otimes_k l.
+$$">$$
+\mathfrak n/\mathfrak n^2\simeq(\mathfrak m/\mathfrak m^2)\otimes_k l.
+$$</span>
+<p>The vector-space dimensions over <span class="math" data-tex="$l$">$l$</span> and <span class="math" data-tex="$k$">$k$</span> are equal. A Noetherian local ring is regular exactly when the dimension of this cotangent space is its Krull dimension. The two quantities agree on one side exactly when they agree on the other, proving both ascent and descent.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The following exact algebraic prerequisites are imported, rather than replacing any of the local structure or geometric equivalence proofs above.</p>
+<ul>
+<li>Formal smoothness plus <span class="math" data-tex="$\Omega=0$">$\Omega=0$</span> is formal étaleness; smooth finitely presented algebras are locally standard smooth; a standard smooth presentation has differentials locally free of rank “variables minus equations.” These are results of <strong>Formally smooth, unramified and étale ring maps</strong> [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-formally-etale-etale">00UR</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-smooth-syntomic">00TA</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-standard-smooth">00T7</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-standard-etale">00UB</a>].</li>
+<li>Over an arbitrary commutative base, every smooth algebra is flat and every étale algebra is flat, unramified and finitely presented: <a href="../../AG-CA/AG-CA-18.html">Smooth algebras over a field and the Jacobian criterion</a>, Theorem 6.1 and Corollary 6.2. Lemma 1.1 applies these algebraic statements to scheme charts. Standard étale algebras are étale by <a href="../../AG-CA/AG-CA-17.html">Formally smooth, unramified and étale ring maps</a>, Proposition 6.1; its proof supplies the unique square-zero root lift used by the standard presentations here.</li>
+<li>Algebraic Zariski's Main Theorem: if <span class="math" data-tex="$A\to B$">$A\to B$</span> is finite type and quasi-finite at <span class="math" data-tex="$\mathfrak q$">$\mathfrak q$</span>, its integral closure <span class="math" data-tex="$C$">$C$</span> of <span class="math" data-tex="$A$">$A$</span> in <span class="math" data-tex="$B$">$B$</span> contains <span class="math" data-tex="$c\notin\mathfrak q$">$c\notin\mathfrak q$</span> with <span class="math" data-tex="$C_c=B_c$">$C_c=B_c$</span> [Stacks, Tag <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-theorem-main-theorem">00Q9</a>], from <strong>Zariski's Main Theorem</strong>. Section 3 explains why a finite subalgebra suffices.</li>
+<li>For a Noetherian local ring <span class="math" data-tex="$(R,\mathfrak m,k)$">$(R,\mathfrak m,k)$</span>, <span class="math" data-tex="$\operatorname{depth}R=\inf\{i:\operatorname{Ext}_R^i(k,R)\ne0\}$">$\operatorname{depth}R=\inf\{i:\operatorname{Ext}_R^i(k,R)\ne0\}$</span>, from <strong>Regular sequences, depth and Cohen–Macaulay modules</strong> [Stacks, Tag <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-depth-ext">00LW</a>]. Serre's normality criterion is <span class="math" data-tex="$(R_1)+(S_2)$">$(R_1)+(S_2)$</span>, from <strong>Discrete valuation rings, normal rings and Serre's criterion</strong> [Stacks, Tag <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-criterion-normal">031S</a>].</li>
+<li>A finite finitely presented algebra is finitely presented as a module, and a finitely presented flat module is finite locally free [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-finite-finitely-presented-extension">0564</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-finite-projective">00NX</a>]. These are elementary finite-module criteria used in Proposition 4.2.</li>
+</ul>
+<p>Our principal references are the Stacks Project, the cited tags, and Vakil's <em>The Rising Sea</em>, §§13.6 and 24.8. The next lesson develops smooth morphisms in positive relative dimension, including the étale factorization through affine space. Étale-local splitting over henselian rings belongs to <strong>Étale neighbourhoods, henselization and quasi-finite morphisms</strong>.
+The arbitrary-base algebraic Zariski Main provider is <a href="../../AG-MO/AG-MO-12.html">Zariski’s Main Theorem</a>, Theorem 1.1. Its main induction is written in Sections 1–2. The complete supporting proofs are also available in the programme’s AI Integrated Stacks Project algebra chapter: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-all-coefficients-in-J">Coefficients in the radical of a conductor</a> (Tag 00PY, with its conductor setup and leading-coefficient lemma) and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-reduced-strongly-transcendental-not-quasi-finite">Strong transcendence excludes quasi-finite points</a> (Tag 00Q2, for reduced rings finite over the algebra generated by the strongly transcendental element). The same proofs are included in the portable programme reader. They are prerequisites of the algebraic theorem and are not consequences of the étale local structure proved here. The Stacks Project supplies these proofs, retained under GNU FDL 1.2 in the <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex">pinned AI Integrated Stacks Project edition</a>; that source credit and licence remain in force. Availability and the checked correspondence of these named proofs do not assert that all their recursive prerequisites have been checked.</p>
+</article></main></body></html>

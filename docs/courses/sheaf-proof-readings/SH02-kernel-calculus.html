@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Composing sheaf operators through an intermediate space</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><h1 id="composing-sheaf-operators-through-an-intermediate-space">Composing
+sheaf operators through an intermediate space</h1>
+<p>Course: SH-02. Unit: SH02-KER. Language: English.</p>
+<p>Programme draft. The proofs use the explicit prerequisite contracts
+below. Complete proofs and review of those foundational contracts remain
+unfinished.</p>
+<p>Original text is dedicated under CC0 1.0 Universal. Linked materials
+retain their own licenses.</p>
+<p>The aim is to calculate a composite sheaf operator by eliminating its
+intermediate variable, then determine when that calculation supplies an
+inverse. A kernel here is a complex of sheaves on a product. Its support
+may have noncompact fibers, its stalks may be infinitely generated, and
+its coefficients may have torsion. Proper support is part of the
+operation used to eliminate the variable.</p>
+<span id="SH02-KER-001"></span><h2 id="sh02-ker-001.-ambient-objects-and-conventions">SH02-KER-001.
+Ambient objects and conventions</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+be a commutative ring with identity and finite global dimension. Fix an
+integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g\geq 0</annotation></semantics></math>
+bounding its global dimension. No Noetherian, field, or
+finite-generation assumption is imposed. The zero ring is allowed in
+statements that do not expressly exclude it. The extra condition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A\ne 0</annotation></semantics></math>
+will be used only for detecting a nonzero cohomological shift.</p>
+<p>For a topological space
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>,
+write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>T</mi></msub><annotation encoding="application/x-tex">A_T</annotation></semantics></math>
+for its constant coefficient sheaf and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>T</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(A_T)</annotation></semantics></math>
+for the derived category of sheaves of
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>T</mi></msub><annotation encoding="application/x-tex">A_T</annotation></semantics></math>-modules</span>.
+Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>T</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^+(A_T)</annotation></semantics></math>
+for objects whose cohomology vanishes below a single integer, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>T</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^b(A_T)</annotation></semantics></math>
+for objects whose cohomology vanishes outside a finite interval. These
+are global bounds on the object; stalkwise bounds that vary without a
+uniform bound do not suffice. We use cochain complexes:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>i</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>H</mi><mrow><mi>i</mi><mo>+</mo><mi>s</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H^i(E[s])=H^{i+s}(E).
+</annotation></semantics></math></p>
+<p>All tensor products of complexes below are derived over the indicated
+constant coefficient sheaf, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">R\mathcal Hom</annotation></semantics></math>
+is the internal derived Hom. An expression
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>T</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>E</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}_{D(A_T)}(E,F)</annotation></semantics></math>
+denotes a morphism set, rather than an internal Hom sheaf.</p>
+<p>The spaces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>,</mo><mi>Y</mi><mo>,</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">X,Y,Z</annotation></semantics></math>
+are locally compact Hausdorff spaces of finite c-soft dimension. This
+topological dimension condition is taken for sheaves of abelian groups,
+not merely for sheaves over a specially chosen coefficient ring. A
+c-soft sheaf is one whose sections over a compact subset extend to the
+whole space. Fix finite bounds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>T</mi></msub><annotation encoding="application/x-tex">d_T</annotation></semantics></math>
+for the lengths of c-soft resolutions on each space
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+that occurs. The foundational dimension theorem recalled below allows us
+to use the same bounds for compact-support cohomology and for
+projections with fiber
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>.
+Products occurring in the construction have finite c-soft dimension as
+well.</p>
+<p>For a continuous map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>U</mi><mo>→</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">f:U\to V</annotation></semantics></math>,
+the sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>!</mi></msub><mi>E</mi></mrow><annotation encoding="application/x-tex">f_!E</annotation></semantics></math>
+consists locally of sections of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+whose support is proper over the open subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+under consideration. Proper means that inverse images of compact sets
+are compact. In particular,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>
+is not being replaced by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mo>*</mo></msub><annotation encoding="application/x-tex">f_*</annotation></semantics></math>.
+We use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">Rf_!</annotation></semantics></math>
+and its right adjoint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mi>!</mi></msup><annotation encoding="application/x-tex">f^!</annotation></semantics></math>,
+as well as the ordinary adjunction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>⊣</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">f^{-1}\dashv Rf_*</annotation></semantics></math>.
+For constant coefficients,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">f^{-1}</annotation></semantics></math>
+is exact and preserves the tensor unit and derived tensor products.</p>
+<p>This unit has no manifold, orientation, noncharacteristic,
+constructibility, or finite-rank hypotheses. It also makes no claim that
+an arbitrary sheaf kernel is determined by its induced functor.</p>
+<span id="SH02-KER-002"></span><h2 id="sh02-ker-002.-the-prerequisite-contract">SH02-KER-002. The
+prerequisite contract</h2>
+<p>The following imports state exactly what the proofs use. Listing an
+import is not a proof of it. The ordinary derived-category imports are
+matched to open Stacks material below; the full topological
+proper-support and duality imports remain dependencies of the course’s
+foundational units.</p>
+<span id="SH02-KER-IMP-DER"></span><h3 id="sh02-ker-imp-der.-derived-sheaf-algebra">SH02-KER-IMP-DER.
+Derived sheaf algebra</h3>
+<p>Sheaves admit the resolutions needed to construct derived tensor and
+internal Hom. The resulting tensor product is associative and symmetric,
+with symmetry on homogeneous terms given by the Koszul sign
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>i</mi><mi>j</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(-1)^{ij}</annotation></semantics></math>.
+Inverse image preserves it. There are natural adjunction bijections</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>B</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>C</mi><mo>,</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>C</mi><mo>,</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>B</mi><mo>,</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>C</mi><mo>,</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>C</mi><mo>,</mo><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}(B\otimes_A^L C,D)
+ \simeq \operatorname{Hom}(C,R\mathcal Hom_A(B,D)),
+\qquad
+\operatorname{Hom}(f^{-1}C,D)
+ \simeq \operatorname{Hom}(C,Rf_*D).
+</annotation></semantics></math></p>
+<p>The constant-coefficient specializations of the Stacks Project’s <a href="https://stacks.math.columbia.edu/tag/06Y7">flat resolutions and
+derived tensor product</a>, <a href="https://stacks.math.columbia.edu/tag/06YI">derived pullback</a>,
+and <a href="https://stacks.math.columbia.edu/tag/08DJ">internal derived
+Hom adjunction</a> supply these algebraic constructions. They do not, by
+themselves, supply exceptional inverse image or proper-support base
+change. Course-level checking of the complete dependency chain remains
+an outstanding import obligation.</p>
+<span id="SH02-KER-IMP-GEOM"></span><h3 id="sh02-ker-imp-geom.-compact-supports-and-dimension">SH02-KER-IMP-GEOM.
+Compact supports and dimension</h3>
+<p>We import the c-soft resolution theorem, its characterization of
+finite c-soft dimension by uniform compact-support cohomological bounds,
+and its consequences for coefficients. For a projection
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>:</mo><mi>S</mi><mo>×</mo><mi>T</mi><mo>→</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">p:S\times T\to S</annotation></semantics></math>,
+proper base change gives, for every sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>R</mi><mi>j</mi></msup><msub><mi>p</mi><mi>!</mi></msub><mi>M</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>s</mi></msub><mo>≃</mo><msubsup><mi>H</mi><mi>c</mi><mi>j</mi></msubsup><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>T</mi><mo>;</mo><mi>M</mi><msub><mo form="prefix" stretchy="false">|</mo><mrow><mo form="prefix" stretchy="false">{</mo><mi>s</mi><mo form="postfix" stretchy="false">}</mo><mo>×</mo><mi>T</mi></mrow></msub><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-G1)</mtext></mrow><annotation encoding="application/x-tex">
+(R^j p_!M)_s
+ \simeq H_c^j\bigl(T;M|_{\{s\}\times T}\bigr).
+\qquad\text{(KER-G1)}
+</annotation></semantics></math></p>
+<p>Consequently
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>!</mi></msub><annotation encoding="application/x-tex">p_!</annotation></semantics></math>
+has cohomological dimension at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>T</mi></msub><annotation encoding="application/x-tex">d_T</annotation></semantics></math>,
+including on sheaves of abelian groups. There are composition
+isomorphisms</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>R</mi><msub><mi>h</mi><mi>!</mi></msub><mo>≃</mo><mi>R</mi><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mi>h</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>!</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
+Rf_!Rh_!\simeq R(fh)_!,
+</annotation></semantics></math></p>
+<p>and the associated compact-support Leray and hypercohomology spectral
+sequences. A closed embedding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>i</mi><mi>!</mi></msub><mo>=</mo><msub><mi>i</mi><mo>*</mo></msub><mo>=</mo><msub><mi>i</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">Ri_!=i_*=i_!</annotation></semantics></math>,
+an exact functor.</p>
+<p>Here is the useful dimension consequence, with its argument made
+explicit. For a sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>×</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">S\times T</annotation></semantics></math>,
+the compact-support Leray sequence has terms</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>H</mi><mi>c</mi><mi>p</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>;</mo><msup><mi>R</mi><mi>q</mi></msup><msub><mi>p</mi><mi>!</mi></msub><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mo>⟹</mo><msubsup><mi>H</mi><mi>c</mi><mrow><mi>p</mi><mo>+</mo><mi>q</mi></mrow></msubsup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>×</mo><mi>T</mi><mo>;</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H_c^p(S;R^q p_!M)
+ \Longrightarrow H_c^{p+q}(S\times T;M).
+</annotation></semantics></math></p>
+<p>The terms vanish for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>&gt;</mo><msub><mi>d</mi><mi>T</mi></msub></mrow><annotation encoding="application/x-tex">q&gt;d_T</annotation></semantics></math>
+by (KER-G1), and for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&gt;</mo><msub><mi>d</mi><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">p&gt;d_S</annotation></semantics></math>
+by the c-soft dimension bound on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>H</mi><mi>c</mi><mi>j</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>S</mi><mo>×</mo><mi>T</mi><mo>;</mo><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_c^j(S\times T;M)=0</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&gt;</mo><msub><mi>d</mi><mi>S</mi></msub><mo>+</mo><msub><mi>d</mi><mi>T</mi></msub></mrow><annotation encoding="application/x-tex">j&gt;d_S+d_T</annotation></semantics></math>,
+uniformly in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+The imported dimension criterion gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mrow><mi>S</mi><mo>×</mo><mi>T</mi></mrow></msub><mo>≤</mo><msub><mi>d</mi><mi>S</mi></msub><mo>+</mo><msub><mi>d</mi><mi>T</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-G2)</mtext></mrow><annotation encoding="application/x-tex">
+d_{S\times T}\leq d_S+d_T.
+\qquad\text{(KER-G2)}
+</annotation></semantics></math></p>
+<p>Applying this to abelian sheaves first establishes the topological
+bound required for exceptional inverse image. Iteration treats threefold
+products. No coefficient global-dimension term is needed in (KER-G2);
+that term will enter only when taking derived tensor products.</p>
+<span id="SH02-KER-IMP-BCPF"></span><h3 id="sh02-ker-imp-bcpf.-two-specified-comparison-isomorphisms">SH02-KER-IMP-BCPF.
+Two specified comparison isomorphisms</h3>
+<p>For a Cartesian square of the spaces under consideration,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="center" style="text-align: center"><msup><mi>U</mi><mo>′</mo></msup></mtd><mtd columnalign="center" style="text-align: center"><mover><mo>→</mo><mi>u</mi></mover></mtd><mtd columnalign="center" style="text-align: center"><mi>U</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msup><mi>f</mi><mo>′</mo></msup><mo>↓</mo></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mo>↓</mo><mi>f</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msup><mi>V</mi><mo>′</mo></msup></mtd><mtd columnalign="center" style="text-align: center"><mover><mo>→</mo><mi>v</mi></mover></mtd><mtd columnalign="center" style="text-align: center"><mi>V</mi><mo>,</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{array}{ccc}
+U'&amp;\xrightarrow{u}&amp;U\\
+{f'}\downarrow&amp;&amp;\downarrow f\\
+V'&amp;\xrightarrow{v}&amp;V,
+\end{array}
+</annotation></semantics></math></p>
+<p>we use the proper-support base-change isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>:</mo><msup><mi>v</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>M</mi><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><msubsup><mi>f</mi><mi>!</mi><mo>′</mo></msubsup><msup><mi>u</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>M</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-BC)</mtext></mrow><annotation encoding="application/x-tex">
+\beta:v^{-1}Rf_!M\xrightarrow{\sim}Rf'_!u^{-1}M.
+\qquad\text{(KER-BC)}
+</annotation></semantics></math></p>
+<p>Its underlying comparison takes a local proper-supported section to
+its pullback; properness of its support persists under this Cartesian
+pullback. Derived base change is the corresponding canonical comparison
+on resolutions. The theorem asserts that it is an isomorphism; it does
+not require
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+itself to be proper.</p>
+<p>We also use the proper-support projection formula</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>π</mi><mi>f</mi></msub><mo>:</mo><mi>N</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>M</mi><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>N</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-PF)</mtext></mrow><annotation encoding="application/x-tex">
+\pi_f:N\otimes_A^L Rf_!M
+ \xrightarrow{\sim}
+ Rf_!(f^{-1}N\otimes_A^L M).
+\qquad\text{(KER-PF)}
+</annotation></semantics></math></p>
+<p>The comparison comes from tensoring a pulled-back local section of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+with a section of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+proper over the base; its support remains proper. The derived comparison
+is formed using flat and proper-support-acyclic resolutions. The
+required range here is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>,</mo><mi>N</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">M,N\in D^+</annotation></semantics></math>
+with at least one of them bounded, with the above finite coefficient and
+map-dimension bounds. The passage from the bounded-input formula to this
+mixed range is proved in SH02-KER-PF-RANGE below. Both directions of
+(KER-PF), together with the stated tensor symmetry, will be used
+explicitly. Unlike the usual perfect-object projection formula for
+arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">Rf_*</annotation></semantics></math>,
+this import is for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">Rf_!</annotation></semantics></math>
+on locally compact Hausdorff spaces and does not require a perfect
+kernel.</p>
+<span id="SH02-KER-IMP-DUAL"></span><h3 id="sh02-ker-imp-dual.-the-exceptional-adjunction">SH02-KER-IMP-DUAL.
+The exceptional adjunction</h3>
+<p>For the relevant maps with finite cohomological dimension of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>
+on abelian sheaves, we import the construction</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mi>!</mi></msup><mo>:</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>V</mi></msub><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>U</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo>⊣</mo><msup><mi>f</mi><mi>!</mi></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f^!:D^+(A_V)\longrightarrow D^+(A_U),
+\qquad Rf_!\dashv f^!.
+</annotation></semantics></math></p>
+<p>Its unit is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>η</mi><mi>f</mi></msup><mo>:</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mo>→</mo><msup><mi>f</mi><mi>!</mi></msup><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">\eta^f:\mathrm{id}\to f^!Rf_!</annotation></semantics></math>,
+and its counit is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ϵ</mi><mi>f</mi></msup><mo>:</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>f</mi><mi>!</mi></msup><mo>→</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mrow><annotation encoding="application/x-tex">\epsilon^f:Rf_!f^!\to\mathrm{id}</annotation></semantics></math>.
+Their triangle identities and naturality are part of this adjunction.
+The construction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mi>!</mi></msup><annotation encoding="application/x-tex">f^!</annotation></semantics></math>,
+including its passage from abelian-sheaf dimension to general
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>-coefficients,
+is an outstanding foundation owned by the appropriate course unit. We
+use neither a manifold formula for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mi>!</mi></msup><annotation encoding="application/x-tex">f^!</annotation></semantics></math>
+nor a replacement of internal Hom by tensoring with a dual.</p>
+<span id="SH02-KER-003"></span><h2 id="sh02-ker-003.-bounds-that-make-the-operators-well-defined">SH02-KER-003.
+Bounds that make the operators well-defined</h2>
+<p><strong>Lemma.</strong> Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>T</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B\in D^{[a,b]}(A_T)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>m</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>T</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C\in D^{\geq m}(A_T)</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>t</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>T</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q\in D^{\geq t}(A_T)</annotation></semantics></math>.
+Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>C</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>a</mi><mo>+</mo><mi>m</mi><mo>−</mo><mi>g</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>T</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>B</mi><mo>,</mo><mi>Q</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>t</mi><mo>−</mo><mi>b</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>T</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-A1)</mtext></mrow><annotation encoding="application/x-tex">
+B\otimes_A^L C\in D^{\geq a+m-g}(A_T),
+\qquad
+R\mathcal Hom_A(B,Q)\in D^{\geq t-b}(A_T).
+\qquad\text{(KER-A1)}
+</annotation></semantics></math></p>
+<p>If also
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≤</mo><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">C\in D^{\leq n}</annotation></semantics></math>,
+then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>C</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>+</mo><mi>m</mi><mo>−</mo><mi>g</mi><mo>,</mo><mi>b</mi><mo>+</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>T</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-A2)</mtext></mrow><annotation encoding="application/x-tex">
+B\otimes_A^L C\in D^{[a+m-g,b+n]}(A_T).
+\qquad\text{(KER-A2)}
+</annotation></semantics></math></p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>!</mi></msub><annotation encoding="application/x-tex">f_!</annotation></semantics></math>
+has cohomological dimension at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
+then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup><mo>⊂</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo>+</mo><mi>d</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>f</mi><mi>!</mi></msup><msup><mi>D</mi><mrow><mo>≥</mo><mi>m</mi></mrow></msup><mo>⊂</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>m</mi><mo>−</mo><mi>d</mi></mrow></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-A3)</mtext></mrow><annotation encoding="application/x-tex">
+Rf_!D^{[u,v]}\subset D^{[u,v+d]},
+\qquad
+f^!D^{\geq m}\subset D^{\geq m-d}.
+\qquad\text{(KER-A3)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> The tensor bounds can be checked at stalks: a
+K-flat sheaf resolution remains K-flat on taking a stalk. At each stalk,
+the hyper-Tor spectral sequence has entries</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>⨁</mo><mrow><mi>i</mi><mo>+</mo><mi>j</mi><mo>=</mo><mi>q</mi></mrow></msub><msubsup><mrow><mi mathvariant="normal">Tor</mi><mo>⁡</mo></mrow><mi>p</mi><mi>A</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msup><mi>H</mi><mi>i</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>B</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>,</mo><msup><mi>H</mi><mi>j</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>C</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">in total degree </mtext><mspace width="0.333em"></mspace></mrow><mi>q</mi><mo>−</mo><mi>p</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\bigoplus_{i+j=q}
+\operatorname{Tor}^A_p(H^i(B)_x,H^j(C)_x)
+\quad\text{in total degree }q-p.
+</annotation></semantics></math></p>
+<p>They vanish unless
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a\leq i\leq b</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≥</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">j\geq m</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>p</mi><mo>≤</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">0\leq p\leq g</annotation></semantics></math>.
+This puts every possible total degree at least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>m</mi><mo>−</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">a+m-g</annotation></semantics></math>.
+With
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j\leq n</annotation></semantics></math>,
+every total degree is at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">b+n</annotation></semantics></math>.
+The finite
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>-range
+and finite Tor range ensure that every total degree receives only
+finitely many terms even when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+is unbounded above; equivalently, one obtains the same bounds by finite
+truncation of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>,
+finite flat dimension, and truncating
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+above the degree being tested. Thus the bounded-below spectral sequence
+converges in the range used. Vanishing at all stalks proves the asserted
+sheaf bounds.</p>
+<p>For internal Hom, choose a representative of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+zero outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a,b]</annotation></semantics></math>
+and a bounded-below injective representative of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Q</mi><annotation encoding="application/x-tex">Q</annotation></semantics></math>
+zero below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
+The total internal Hom complex in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+has factors</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>B</mi><mi>i</mi></msup><mo>,</mo><msup><mi>I</mi><mrow><mi>i</mi><mo>+</mo><mi>r</mi></mrow></msup><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathcal Hom_A(B^i,I^{i+r}).
+</annotation></semantics></math></p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&lt;</mo><mi>t</mi><mo>−</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">r&lt;t-b</annotation></semantics></math>,
+each factor is zero. This complex computes the internal derived Hom by
+SH02-KER-IMP-DER. Hence the second bound in (KER-A1) holds. This
+argument supplies a lower bound only; it does not assert an upper bound
+on internal Hom for arbitrary sheaves.</p>
+<p>The first assertion in (KER-A3) follows from the hypercohomology
+spectral sequence for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">Rf_!</annotation></semantics></math>:
+its sheaf cohomology indices lie in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[u,v]</annotation></semantics></math>,
+and its derived-functor indices lie in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>d</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,d]</annotation></semantics></math>.
+Right derived functors of left exact functors also preserve a lower
+bound for a bounded-below input.</p>
+<p>For the assertion about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mi>!</mi></msup><annotation encoding="application/x-tex">f^!</annotation></semantics></math>,
+its existence as a functor on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mo>+</mo></msup><annotation encoding="application/x-tex">D^+</annotation></semantics></math>
+is the import SH02-KER-IMP-DUAL. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>m</mi></mrow></msup></mrow><annotation encoding="application/x-tex">Q\in D^{\geq m}</annotation></semantics></math>
+and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><msup><mi>f</mi><mi>!</mi></msup><mi>Q</mi></mrow><annotation encoding="application/x-tex">E=f^!Q</annotation></semantics></math>.
+If</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>0</mn></msub><mo>=</mo><msub><mi>τ</mi><mrow><mo>≤</mo><mi>m</mi><mo>−</mo><mi>d</mi><mo>−</mo><mn>1</mn></mrow></msub><mi>E</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+B_0=\tau_{\leq m-d-1}E,
+</annotation></semantics></math></p>
+<p>then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mn>0</mn></msub><annotation encoding="application/x-tex">B_0</annotation></semantics></math>
+is bounded, since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">E\in D^+</annotation></semantics></math>.
+The first assertion of (KER-A3) gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msub><mi>B</mi><mn>0</mn></msub><mo>∈</mo><msup><mi>D</mi><mrow><mo>≤</mo><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">Rf_!B_0\in D^{\leq m-1}</annotation></semantics></math>.
+The standard derived-category orthogonality and the exceptional
+adjunction yield</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>B</mi><mn>0</mn></msub><mo>,</mo><mi>E</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msub><mi>B</mi><mn>0</mn></msub><mo>,</mo><mi>Q</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{Hom}(B_0,E)
+ \simeq\operatorname{Hom}(Rf_!B_0,Q)=0.
+</annotation></semantics></math></p>
+<p>The truncation map
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>0</mn></msub><mo>→</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">B_0\to E</annotation></semantics></math>
+is therefore zero. It induces isomorphisms on cohomology in every degree
+at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>−</mo><mi>d</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m-d-1</annotation></semantics></math>,
+so those cohomology sheaves vanish. This proves the last bound.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The finite Tor bound is the only part of this lemma that uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>.
+Finite weak global dimension would suffice for that tensor estimate. We
+retain finite global dimension throughout the unit because it is the
+coefficient convention of the source-range results being covered; we do
+not use the weaker tensor hypothesis to make an unverified change to the
+other imports.</p>
+<span id="SH02-KER-PF-RANGE"></span><h3 id="sh02-ker-pf-range-extending-the-bounded-projection-formula">SH02-KER-PF-RANGE
+— Extending the bounded projection formula</h3>
+<p>The bounded-input projection formula is enough for the mixed ranges
+used in (KER-C4) and (KER-C5). Here is the reduction, including its
+canonical map. Assume the comparison (KER-PF) has been constructed
+naturally on bounded-below objects, and is known to be an isomorphism
+when both inputs are bounded. These are the bounded formula and
+resolution constructions in SH02-KER-IMP-BCPF.</p>
+<p>First let the base factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+be bounded with lower bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+be bounded below. For an integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+use the truncation triangle</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mrow><mo>≤</mo><mi>t</mi></mrow></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>M</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>T</mi><mi>t</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>M</mi><mrow><mo>≤</mo><mi>t</mi></mrow></msub><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>T</mi><mi>t</mi></msub><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+M_{\leq t}\longrightarrow M\longrightarrow T_t\longrightarrow M_{\leq t}[1],
+\qquad T_t\in D^{\geq t+1}.
+</annotation></semantics></math></p>
+<p>The truncation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mrow><mo>≤</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">M_{\leq t}</annotation></semantics></math>
+is bounded. Apply the two exact functors on the sides of (KER-PF) to
+this triangle. By (KER-A1), exactness of inverse image and lower-bound
+preservation by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">Rf_!</annotation></semantics></math>,
+both resulting tail objects satisfy</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><msub><mi>T</mi><mi>t</mi></msub><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>t</mi><mo>+</mo><mn>1</mn><mo>+</mo><mi>a</mi><mo>−</mo><mi>g</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>N</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msub><mi>T</mi><mi>t</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>t</mi><mo>+</mo><mn>1</mn><mo>+</mo><mi>a</mi><mo>−</mo><mi>g</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+N\otimes_A^L Rf_!T_t\in D^{\geq t+1+a-g},
+\qquad
+Rf_!(f^{-1}N\otimes_A^L T_t)\in D^{\geq t+1+a-g}.
+</annotation></semantics></math></p>
+<p>For a fixed degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+so large that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>+</mo><mi>a</mi><mo>−</mo><mi>g</mi><mo>&gt;</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">t+a-g&gt;q</annotation></semantics></math>.
+The tails have zero cohomology in degrees
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q-1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+so the truncation maps induce isomorphisms in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+on both sides. Naturality gives a commutative square between the
+comparison for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mrow><mo>≤</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">M_{\leq t}</annotation></semantics></math>
+and the comparison for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+The former is an isomorphism by the bounded formula. Hence the latter is
+an isomorphism on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mi>q</mi></msup><annotation encoding="application/x-tex">H^q</annotation></semantics></math>.
+This works for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+proving (KER-PF) in this case.</p>
+<p>Next let the source factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+be bounded with lower bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+be bounded below. Truncate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>,
+with tail
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">S_t\in D^{\geq t+1}</annotation></semantics></math>.
+Finite cohomological dimension makes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>M</mi></mrow><annotation encoding="application/x-tex">Rf_!M</annotation></semantics></math>
+bounded, with the same lower bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+Thus</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mi>M</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>t</mi><mo>+</mo><mn>1</mn><mo>+</mo><mi>a</mi><mo>−</mo><mi>g</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>R</mi><msub><mi>f</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>S</mi><mi>t</mi></msub><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>M</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>t</mi><mo>+</mo><mn>1</mn><mo>+</mo><mi>a</mi><mo>−</mo><mi>g</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+S_t\otimes_A^L Rf_!M\in D^{\geq t+1+a-g},
+\qquad
+Rf_!(f^{-1}S_t\otimes_A^L M)\in D^{\geq t+1+a-g}.
+</annotation></semantics></math></p>
+<p>The same truncation square proves the comparison an isomorphism in
+each degree. The natural comparison itself, rather than an unspecified
+isomorphism between its endpoints, has therefore been proved invertible
+in both required ranges. No direct image has been interchanged with an
+infinite limit, and no perfectness or finite-generation hypothesis has
+been added. The bounded projection formula, resolution existence and
+finite map-dimension assumptions remain the declared inputs.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-KER-004"></span><h2 id="sh02-ker-004.-kernels-as-operators-and-their-right-adjoints">SH02-KER-004.
+Kernels as operators and their right adjoints</h2>
+<p>Let</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>:</mo><mi>X</mi><mo>×</mo><mi>Y</mi><mo>→</mo><mi>X</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>q</mi><mo>:</mo><mi>X</mi><mo>×</mo><mi>Y</mi><mo>→</mo><mi>Y</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>K</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mrow><mi>X</mi><mo>×</mo><mi>Y</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+p:X\times Y\to X,\qquad q:X\times Y\to Y,
+\qquad K\in D^b(A_{X\times Y}).
+</annotation></semantics></math></p>
+<p>Define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>R</mi><msub><mi>p</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msup><mi>q</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-O1)</mtext></mrow><annotation encoding="application/x-tex">
+\Phi_K(G)=Rp_!(K\otimes_A^L q^{-1}G),
+\qquad G\in D^+(A_Y),
+\qquad\text{(KER-O1)}
+</annotation></semantics></math></p>
+<p>and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>,</mo><msup><mi>p</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-O2)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi_K(F)=Rq_*R\mathcal Hom_A(K,p^!F),
+\qquad F\in D^+(A_X).
+\qquad\text{(KER-O2)}
+</annotation></semantics></math></p>
+<p>The first coordinate is the output coordinate of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Φ</mi><annotation encoding="application/x-tex">\Phi</annotation></semantics></math>.
+Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><annotation encoding="application/x-tex">\Phi_K</annotation></semantics></math>
+goes from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+while
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><annotation encoding="application/x-tex">\Psi_K</annotation></semantics></math>
+goes from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">K\in D^{[a,b]}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>m</mi></mrow></msup></mrow><annotation encoding="application/x-tex">G\in D^{\geq m}</annotation></semantics></math>,
+the tensor in (KER-O1) has lower bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>m</mi><mo>−</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">a+m-g</annotation></semantics></math>.
+Consequently
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Phi_K(G)\in D^+(A_X)</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">G\in D^{[m,n]}</annotation></semantics></math>,
+the stronger bound is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>+</mo><mi>m</mi><mo>−</mo><mi>g</mi><mo>,</mo><mi>b</mi><mo>+</mo><mi>n</mi><mo>+</mo><msub><mi>d</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">]</mo></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-O3)</mtext></mrow><annotation encoding="application/x-tex">
+\Phi_K(G)\in D^{[a+m-g,b+n+d_Y]}(A_X).
+\qquad\text{(KER-O3)}
+</annotation></semantics></math></p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>m</mi></mrow></msup></mrow><annotation encoding="application/x-tex">F\in D^{\geq m}</annotation></semantics></math>,
+(KER-A3) gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>p</mi><mi>!</mi></msup><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>m</mi><mo>−</mo><msub><mi>d</mi><mi>Y</mi></msub></mrow></msup></mrow><annotation encoding="application/x-tex">p^!F\in D^{\geq m-d_Y}</annotation></semantics></math>,
+(KER-A1) gives internal Hom lower bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>−</mo><msub><mi>d</mi><mi>Y</mi></msub><mo>−</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">m-d_Y-b</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">Rq_*</annotation></semantics></math>
+preserves this lower bound. Therefore</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>m</mi><mo>−</mo><msub><mi>d</mi><mi>Y</mi></msub><mo>−</mo><mi>b</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-O4)</mtext></mrow><annotation encoding="application/x-tex">
+\Psi_K(F)\in D^{\geq m-d_Y-b}(A_Y).
+\qquad\text{(KER-O4)}
+</annotation></semantics></math></p>
+<p>This proves that both displayed operators have the stated
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mo>+</mo></msup><annotation encoding="application/x-tex">D^+</annotation></semantics></math>
+domains and codomains. Formula (KER-O3) also proves that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><annotation encoding="application/x-tex">\Phi_K</annotation></semantics></math>
+preserves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mi>b</mi></msup><annotation encoding="application/x-tex">D^b</annotation></semantics></math>.
+We do not impose an upper cohomological bound on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Psi_K(F)</annotation></semantics></math>
+for a general bounded input.</p>
+<p>A kernel morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>:</mo><mi>K</mi><mo>→</mo><msup><mi>K</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">u:K\to K'</annotation></semantics></math>
+induces a natural transformation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>u</mi></msub><mo>:</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo>→</mo><msub><mi mathvariant="normal">Φ</mi><msup><mi>K</mi><mo>′</mo></msup></msub></mrow><annotation encoding="application/x-tex">\Phi_u:\Phi_K\to\Phi_{K'}</annotation></semantics></math>
+by tensoring with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+and applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>p</mi><mi>!</mi></msub></mrow><annotation encoding="application/x-tex">Rp_!</annotation></semantics></math>.
+Contravariance of internal Hom gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>u</mi></msub><mo>:</mo><msub><mi mathvariant="normal">Ψ</mi><msup><mi>K</mi><mo>′</mo></msup></msub><mo>→</mo><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">\Psi_u:\Psi_{K'}\to\Psi_K</annotation></semantics></math>.
+These are adjoint mates under the next proposition. All these functors
+are exact, and the shift rules are</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mrow><mi>K</mi><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo></mrow></msub><mo>=</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi mathvariant="normal">Ψ</mi><mrow><mi>K</mi><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo></mrow></msub><mo>=</mo><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-O5)</mtext></mrow><annotation encoding="application/x-tex">
+\Phi_{K[s]}=\Phi_K[s],\qquad
+\Psi_{K[s]}=\Psi_K[-s],\qquad
+\Psi_K(F[s])=\Psi_K(F)[s].
+\qquad\text{(KER-O5)}
+</annotation></semantics></math></p>
+<span id="SH02-KER-005"></span><h2 id="sh02-ker-005.-the-adjunction-with-its-structural-maps">SH02-KER-005.
+The adjunction, with its structural maps</h2>
+<p><strong>Proposition.</strong> There is a natural adjunction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo>⊣</mo><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">\Phi_K\dashv\Psi_K</annotation></semantics></math>
+on the categories in SH02-KER-004.</p>
+<p><strong>Proof.</strong> For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G\in D^+(A_Y)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^+(A_X)</annotation></semantics></math>,
+first transpose a map across
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>p</mi><mi>!</mi></msub><mo>⊣</mo><msup><mi>p</mi><mi>!</mi></msup></mrow><annotation encoding="application/x-tex">Rp_!\dashv p^!</annotation></semantics></math>,
+then across the tensor-Hom adjunction, then across
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>q</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>⊣</mo><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">q^{-1}\dashv Rq_*</annotation></semantics></math>.
+This gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mrow><mi>X</mi><mo>×</mo><mi>Y</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msup><mi>q</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi><mo>,</mo><msup><mi>p</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mrow><mi>X</mi><mo>×</mo><mi>Y</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><msup><mi>q</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi><mo>,</mo><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>,</mo><msup><mi>p</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><msub><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mrow><mi>D</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-ADJ)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\operatorname{Hom}_{D(A_X)}(\Phi_KG,F)
+&amp;\simeq
+\operatorname{Hom}_{D(A_{X\times Y})}
+ (K\otimes_A^L q^{-1}G,p^!F)\\
+&amp;\simeq
+\operatorname{Hom}_{D(A_{X\times Y})}
+ (q^{-1}G,R\mathcal Hom_A(K,p^!F))\\
+&amp;\simeq
+\operatorname{Hom}_{D(A_Y)}(G,\Psi_KF).
+\end{aligned}
+\qquad\text{(KER-ADJ)}
+</annotation></semantics></math></p>
+<p>Every transposition is a bijection with inverse given by the
+corresponding counit or evaluation. Their composite is therefore a
+bijection, natural in both arguments. All intermediate objects lie in
+the needed bounded-below categories by SH02-KER-003 and SH02-KER-004.
+This is the required adjunction.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>For clarity, its unit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>η</mi><mi>G</mi><mi>K</mi></msubsup><mo>:</mo><mi>G</mi><mo>→</mo><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mi>G</mi></mrow><annotation encoding="application/x-tex">\eta^K_G:G\to\Psi_K\Phi_KG</annotation></semantics></math>
+is the composite</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>G</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub><msup><mi>q</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>,</mo><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msup><mi>q</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>,</mo><msup><mi>p</mi><mi>!</mi></msup><mi>R</mi><msub><mi>p</mi><mi>!</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msup><mi>q</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-UNIT)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+G
+&amp;\longrightarrow Rq_*q^{-1}G\\
+&amp;\longrightarrow
+Rq_*R\mathcal Hom_A(K,K\otimes_A^L q^{-1}G)\\
+&amp;\longrightarrow
+Rq_*R\mathcal Hom_A
+ (K,p^!Rp_!(K\otimes_A^L q^{-1}G)).
+\end{aligned}
+\qquad\text{(KER-UNIT)}
+</annotation></semantics></math></p>
+<p>The arrows are, respectively, the ordinary inverse-image unit, the
+tensor-Hom unit, and the image under
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>,</mo><mi>−</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Rq_*R\mathcal Hom_A(K,-)</annotation></semantics></math>
+of the exceptional unit for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>.
+Its counit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ϵ</mi><mi>F</mi><mi>K</mi></msubsup><mo>:</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi><mo>→</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">\epsilon^K_F:\Phi_K\Psi_KF\to F</annotation></semantics></math>
+is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>R</mi><msub><mi>p</mi><mi>!</mi></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msup><mi>q</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>,</mo><msup><mi>p</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><msub><mi>p</mi><mi>!</mi></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>R</mi><mi mathvariant="script">ℋ</mi><mi>o</mi><msub><mi>m</mi><mi>A</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>,</mo><msup><mi>p</mi><mi>!</mi></msup><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><msub><mi>p</mi><mi>!</mi></msub><msup><mi>p</mi><mi>!</mi></msup><mi>F</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>F</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-COUN)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+Rp_!\bigl(K\otimes_A^L
+ q^{-1}Rq_*R\mathcal Hom_A(K,p^!F)\bigr)
+&amp;\longrightarrow
+Rp_!\bigl(K\otimes_A^L R\mathcal Hom_A(K,p^!F)\bigr)\\
+&amp;\longrightarrow Rp_!p^!F
+\longrightarrow F.
+\end{aligned}
+\qquad\text{(KER-COUN)}
+</annotation></semantics></math></p>
+<p>Here the first arrow uses the counit of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>q</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>⊣</mo><mi>R</mi><msub><mi>q</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">q^{-1}\dashv Rq_*</annotation></semantics></math>,
+the second is tensor-Hom evaluation, and the third is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ϵ</mi><mi>p</mi></msup><annotation encoding="application/x-tex">\epsilon^p</annotation></semantics></math>.
+The evaluation uses the stated symmetry when the standard Hom convention
+places
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+on the other side. Thus it includes the usual Koszul signs.</p>
+<p>These maps satisfy the triangle identities: (KER-UNIT) is the image
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mi>G</mi></mrow></msub><annotation encoding="application/x-tex">\mathrm{id}_{\Phi_KG}</annotation></semantics></math>
+under (KER-ADJ), and (KER-COUN) is the inverse image of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi></mrow></msub><annotation encoding="application/x-tex">\mathrm{id}_{\Psi_KF}</annotation></semantics></math>.
+Naturality of (KER-ADJ), applied to these identities, gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ϵ</mi><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mi>G</mi></mrow><mi>K</mi></msubsup><mo>∘</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><msubsup><mi>η</mi><mi>G</mi><mi>K</mi></msubsup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><msubsup><mi>ϵ</mi><mi>F</mi><mi>K</mi></msubsup><mo form="postfix" stretchy="false">)</mo><mo>∘</mo><msubsup><mi>η</mi><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi></mrow><mi>K</mi></msubsup><mo>=</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\epsilon^K_{\Phi_KG}\circ\Phi_K(\eta^K_G)=\mathrm{id},
+\qquad
+\Psi_K(\epsilon^K_F)\circ\eta^K_{\Psi_KF}=\mathrm{id}.
+</annotation></semantics></math></p>
+<p>The same transposition, with a morphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>:</mo><mi>K</mi><mo>→</mo><msup><mi>K</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">u:K\to K'</annotation></semantics></math>
+inserted in the tensor factor, puts that morphism in the first,
+contravariant input of internal Hom. This verifies the mate statement
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Φ</mi><mi>u</mi></msub><annotation encoding="application/x-tex">\Phi_u</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mi>u</mi></msub><annotation encoding="application/x-tex">\Psi_u</annotation></semantics></math>,
+including its direction.</p>
+<span id="SH02-KER-006"></span><h2 id="sh02-ker-006.-eliminating-the-middle-variable">SH02-KER-006.
+Eliminating the middle variable</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mrow><mi>X</mi><mo>×</mo><mi>Y</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">K\in D^b(A_{X\times Y})</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mrow><mi>Y</mi><mo>×</mo><mi>Z</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L\in D^b(A_{Y\times Z})</annotation></semantics></math>.
+On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>×</mo><mi>Y</mi><mo>×</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">X\times Y\times Z</annotation></semantics></math>,
+write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>12</mn></msub><mo>,</mo><msub><mi>r</mi><mn>13</mn></msub><mo>,</mo><msub><mi>r</mi><mn>23</mn></msub></mrow><annotation encoding="application/x-tex">r_{12},r_{13},r_{23}</annotation></semantics></math>
+for the two-coordinate projections. Define their convolution over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>
+by</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><msub><mo>⋆</mo><mi>Y</mi></msub><mi>L</mi><mo>=</mo><mi>R</mi><msub><mi>r</mi><mrow><mn>13</mn><mi>!</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><msubsup><mi>r</mi><mn>12</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msubsup><mi>r</mi><mn>23</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>L</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-C1)</mtext></mrow><annotation encoding="application/x-tex">
+K\star_Y L
+ =Rr_{13!}(r_{12}^{-1}K\otimes_A^L r_{23}^{-1}L).
+\qquad\text{(KER-C1)}
+</annotation></semantics></math></p>
+<p>The order in this notation agrees with operator composition: the
+right factor acts first. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">K\in D^{[a,b]}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>c</mi><mo>,</mo><mi>e</mi><mo form="postfix" stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">L\in D^{[c,e]}</annotation></semantics></math>,
+then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><msub><mo>⋆</mo><mi>Y</mi></msub><mi>L</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>+</mo><mi>c</mi><mo>−</mo><mi>g</mi><mo>,</mo><mi>b</mi><mo>+</mo><mi>e</mi><mo>+</mo><msub><mi>d</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">]</mo></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mrow><mi>X</mi><mo>×</mo><mi>Z</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-C2)</mtext></mrow><annotation encoding="application/x-tex">
+K\star_Y L\in
+D^{[a+c-g,b+e+d_Y]}(A_{X\times Z}).
+\qquad\text{(KER-C2)}
+</annotation></semantics></math></p>
+<p>Indeed, inverse image is exact, (KER-A2) bounds the tensor, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mn>13</mn></msub><annotation encoding="application/x-tex">r_{13}</annotation></semantics></math>
+has fiber
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>
+and proper-support cohomological dimension at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>Y</mi></msub><annotation encoding="application/x-tex">d_Y</annotation></semantics></math>.
+Thus the convolution is again a bounded kernel; no properness assumption
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{supp}(K)</annotation></semantics></math>
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>L</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{supp}(L)</annotation></semantics></math>
+has entered.</p>
+<p><strong>Proposition.</strong> There are natural isomorphisms</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>:</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub><mover><mo>→</mo><mo accent="false">∼</mo></mover><msub><mi mathvariant="normal">Φ</mi><mrow><mi>K</mi><msub><mo>⋆</mo><mi>Y</mi></msub><mi>L</mi></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>σ</mi><mo>:</mo><msub><mi mathvariant="normal">Ψ</mi><mi>L</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mover><mo>→</mo><mo accent="false">∼</mo></mover><msub><mi mathvariant="normal">Ψ</mi><mrow><mi>K</mi><msub><mo>⋆</mo><mi>Y</mi></msub><mi>L</mi></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-C3)</mtext></mrow><annotation encoding="application/x-tex">
+\theta:\Phi_K\Phi_L\xrightarrow{\sim}\Phi_{K\star_Y L},
+\qquad
+\sigma:\Psi_L\Psi_K\xrightarrow{\sim}\Psi_{K\star_Y L}.
+\qquad\text{(KER-C3)}
+</annotation></semantics></math></p>
+<p><strong>Proof of the first isomorphism.</strong> Denote the
+projections by</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>a</mi><mo>:</mo><mi>X</mi><mo>×</mo><mi>Y</mi><mo>→</mo><mi>X</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>b</mi><mo>:</mo><mi>X</mi><mo>×</mo><mi>Y</mi><mo>→</mo><mi>Y</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>c</mi><mo>:</mo><mi>Y</mi><mo>×</mo><mi>Z</mi><mo>→</mo><mi>Y</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>d</mi><mo>:</mo><mi>Y</mi><mo>×</mo><mi>Z</mi><mo>→</mo><mi>Z</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>e</mi><mo>:</mo><mi>X</mi><mo>×</mo><mi>Z</mi><mo>→</mo><mi>X</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mo>:</mo><mi>X</mi><mo>×</mo><mi>Z</mi><mo>→</mo><mi>Z</mi><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{array}{lll}
+a:X\times Y\to X,&amp;b:X\times Y\to Y,\\
+c:Y\times Z\to Y,&amp;d:Y\times Z\to Z,\\
+e:X\times Z\to X,&amp;f:X\times Z\to Z.
+\end{array}
+</annotation></semantics></math></p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>X</mi></msub><mo>,</mo><msub><mi>t</mi><mi>Z</mi></msub></mrow><annotation encoding="application/x-tex">t_X,t_Z</annotation></semantics></math>
+be the first and third projections from the threefold product. Given
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>Z</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G\in D^+(A_Z)</annotation></semantics></math>,
+put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mi>L</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msup><mi>d</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi></mrow><annotation encoding="application/x-tex">B=L\otimes_A^L d^{-1}G</annotation></semantics></math>.
+Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">B\in D^+</annotation></semantics></math>.
+The square with maps
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>12</mn></msub><mo>,</mo><msub><mi>r</mi><mn>23</mn></msub><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">r_{12},r_{23},b,c</annotation></semantics></math>
+is Cartesian, so (KER-BC) supplies the indicated second line in the
+following calculation:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub><mi>G</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mi>R</mi><msub><mi>a</mi><mi>!</mi></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msup><mi>b</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>R</mi><msub><mi>c</mi><mi>!</mi></msub><mi>B</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><munderover><mo>→</mo><mi>β</mi><mo accent="false">∼</mo></munderover><mi>R</mi><msub><mi>a</mi><mi>!</mi></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>R</mi><msub><mi>r</mi><mrow><mn>12</mn><mi>!</mi></mrow></msub><msubsup><mi>r</mi><mn>23</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>B</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><munderover><mo>→</mo><msub><mi>π</mi><msub><mi>r</mi><mn>12</mn></msub></msub><mo accent="false">∼</mo></munderover><mi>R</mi><msub><mi>a</mi><mi>!</mi></msub><mi>R</mi><msub><mi>r</mi><mrow><mn>12</mn><mi>!</mi></mrow></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msubsup><mi>r</mi><mn>12</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msubsup><mi>r</mi><mn>23</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>B</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><msub><mi>t</mi><mrow><mi>X</mi><mi>!</mi></mrow></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msubsup><mi>r</mi><mn>12</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msubsup><mi>r</mi><mn>23</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>L</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msubsup><mi>t</mi><mi>Z</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>G</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-C4)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\Phi_K\Phi_LG
+&amp;=Ra_!\bigl(K\otimes_A^L b^{-1}Rc_!B\bigr)\\
+&amp;\xrightarrow[\beta]{\sim}
+Ra_!\bigl(K\otimes_A^L Rr_{12!}r_{23}^{-1}B\bigr)\\
+&amp;\xrightarrow[\pi_{r_{12}}]{\sim}
+Ra_!Rr_{12!}
+ \bigl(r_{12}^{-1}K\otimes_A^L r_{23}^{-1}B\bigr)\\
+&amp;\xrightarrow{\sim}
+Rt_{X!}\bigl(r_{12}^{-1}K\otimes_A^L
+ r_{23}^{-1}L\otimes_A^L t_Z^{-1}G\bigr).
+\end{aligned}
+\qquad\text{(KER-C4)}
+</annotation></semantics></math></p>
+<p>The third line is exactly (KER-PF), with bounded base factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+The last line uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><msub><mi>r</mi><mn>12</mn></msub><mo>=</mo><msub><mi>t</mi><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">ar_{12}=t_X</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi>r</mi><mn>23</mn></msub><mo>=</mo><msub><mi>t</mi><mi>Z</mi></msub></mrow><annotation encoding="application/x-tex">dr_{23}=t_Z</annotation></semantics></math>,
+composition of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>!</mi><annotation encoding="application/x-tex">!</annotation></semantics></math>-images,
+and monoidality of inverse image. Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><msubsup><mi>r</mi><mn>12</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>K</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msubsup><mi>r</mi><mn>23</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>L</mi></mrow><annotation encoding="application/x-tex">M=r_{12}^{-1}K\otimes_A^L r_{23}^{-1}L</annotation></semantics></math>,
+a bounded complex. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>X</mi></msub><mo>=</mo><mi>e</mi><msub><mi>r</mi><mn>13</mn></msub></mrow><annotation encoding="application/x-tex">t_X=er_{13}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>Z</mi></msub><mo>=</mo><mi>f</mi><msub><mi>r</mi><mn>13</mn></msub></mrow><annotation encoding="application/x-tex">t_Z=fr_{13}</annotation></semantics></math>,
+the final expression in (KER-C4) continues as</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>R</mi><msub><mi>e</mi><mi>!</mi></msub><mi>R</mi><msub><mi>r</mi><mrow><mn>13</mn><mi>!</mi></mrow></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>M</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msubsup><mi>r</mi><mn>13</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><munderover><mo>→</mo><msubsup><mi>π</mi><msub><mi>r</mi><mn>13</mn></msub><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo accent="false">∼</mo></munderover><mi>R</mi><msub><mi>e</mi><mi>!</mi></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mi>R</mi><msub><mi>r</mi><mrow><mn>13</mn><mi>!</mi></mrow></msub><mi>M</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><msub><mi mathvariant="normal">Φ</mi><mrow><mi>K</mi><msub><mo>⋆</mo><mi>Y</mi></msub><mi>L</mi></mrow></msub><mi>G</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-C5)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+Re_!Rr_{13!}
+ \bigl(M\otimes_A^L r_{13}^{-1}f^{-1}G\bigr)
+&amp;\xrightarrow[\pi_{r_{13}}^{-1}]{\sim}
+Re_!\bigl(Rr_{13!}M\otimes_A^L f^{-1}G\bigr)\\
+&amp;=\Phi_{K\star_Y L}G.
+\end{aligned}
+\qquad\text{(KER-C5)}
+</annotation></semantics></math></p>
+<p>The first arrow is the inverse projection formula, expressed with the
+base factor on the right using the specified tensor symmetry. Its
+bounded factor is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+while
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>G</mi></mrow><annotation encoding="application/x-tex">f^{-1}G</annotation></semantics></math>
+is only required to be bounded below. All direct images have finite
+cohomological dimension by the projection and product bounds. Thus no
+unbounded totalization or unsupported extension of (KER-PF) is implicit.
+The composite (KER-C4)-(KER-C5) defines
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>,
+naturally in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>,</mo><mi>L</mi><mo>,</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">K,L,G</annotation></semantics></math>.</p>
+<p><strong>Proof and definition of the second isomorphism.</strong> Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mi>K</mi><msub><mo>⋆</mo><mi>Y</mi></msub><mi>L</mi></mrow><annotation encoding="application/x-tex">C=K\star_Y L</annotation></semantics></math>.
+For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>Z</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G\in D^+(A_Z)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^+(A_X)</annotation></semantics></math>,
+the first part and SH02-KER-005 give</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><mi>L</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mover><mo>→</mo><mrow><mspace width="0.167em"></mspace><msubsup><mi>θ</mi><mi>G</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mspace width="0.167em"></mspace></mrow></mover><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>C</mi></msub><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><mi>C</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-C6)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\operatorname{Hom}(G,\Psi_L\Psi_KF)
+&amp;\simeq\operatorname{Hom}(\Phi_K\Phi_LG,F)\\
+&amp;\xrightarrow{\,\theta_G^{-1}\,}
+\operatorname{Hom}(\Phi_CG,F)\\
+&amp;\simeq\operatorname{Hom}(G,\Psi_CF).
+\end{aligned}
+\qquad\text{(KER-C6)}
+</annotation></semantics></math></p>
+<p>The middle map is precomposition by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>θ</mi><mi>G</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><annotation encoding="application/x-tex">\theta_G^{-1}</annotation></semantics></math>,
+so its direction is specified. These are natural bijections. Yoneda
+gives a unique natural isomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>F</mi></msub><annotation encoding="application/x-tex">\sigma_F</annotation></semantics></math>
+inducing them.</p>
+<p>In terms of the already specified units and counits,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>F</mi></msub><annotation encoding="application/x-tex">\sigma_F</annotation></semantics></math>
+is the following explicit mate. Start with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>L</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">\Psi_L\Psi_KF</annotation></semantics></math>,
+apply
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>η</mi><mi>C</mi></msup><annotation encoding="application/x-tex">\eta^C</annotation></semantics></math>,
+replace
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Φ</mi><mi>C</mi></msub><annotation encoding="application/x-tex">\Phi_C</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">\Phi_K\Phi_L</annotation></semantics></math>
+using
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>θ</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">\theta^{-1}</annotation></semantics></math>,
+then use the two counits:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi mathvariant="normal">Ψ</mi><mi>L</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi mathvariant="normal">Ψ</mi><mi>C</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>C</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>L</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi mathvariant="normal">Ψ</mi><mi>C</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>L</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mover><mo>→</mo><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>C</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">(</mo><msubsup><mi>ϵ</mi><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi></mrow><mi>L</mi></msubsup><mo form="postfix" stretchy="false">)</mo></mrow></mover><msub><mi mathvariant="normal">Ψ</mi><mi>C</mi></msub><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mover><mo>→</mo><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>C</mi></msub><mo form="prefix" stretchy="false">(</mo><msubsup><mi>ϵ</mi><mi>F</mi><mi>K</mi></msubsup><mo form="postfix" stretchy="false">)</mo></mrow></mover><msub><mi mathvariant="normal">Ψ</mi><mi>C</mi></msub><mi>F</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-C7)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\Psi_L\Psi_KF
+&amp;\longrightarrow\Psi_C\Phi_C\Psi_L\Psi_KF\\
+&amp;\longrightarrow\Psi_C\Phi_K\Phi_L\Psi_L\Psi_KF\\
+&amp;\xrightarrow{\Psi_C\Phi_K(\epsilon^L_{\Psi_KF})}
+ \Psi_C\Phi_K\Psi_KF\\
+&amp;\xrightarrow{\Psi_C(\epsilon^K_F)}\Psi_CF.
+\end{aligned}
+\qquad\text{(KER-C7)}
+</annotation></semantics></math></p>
+<p>The first two arrows are respectively
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>η</mi><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>L</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi></mrow><mi>C</mi></msubsup><annotation encoding="application/x-tex">\eta^C_{\Psi_L\Psi_KF}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>C</mi></msub><mo form="prefix" stretchy="false">(</mo><msubsup><mi>θ</mi><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>L</mi></msub><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Psi_C(\theta^{-1}_{\Psi_L\Psi_KF})</annotation></semantics></math>.
+Equation (KER-C6) proves that (KER-C7) is invertible. This argument
+obtains the right-adjoint composition from the proved
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>!</mi><annotation encoding="application/x-tex">!</annotation></semantics></math>-composition
+and adjunction. It does not presume that arbitrary inverse image
+commutes with internal Hom or that ordinary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>*</mi><annotation encoding="application/x-tex">*</annotation></semantics></math>-base
+change is always invertible.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-KER-007"></span><h2 id="sh02-ker-007.-the-diagonal-test">SH02-KER-007. The diagonal
+test</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>δ</mi><mi>X</mi></msub><mo>:</mo><mi>X</mi><mo>→</mo><mi>X</mi><mo>×</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">\delta_X:X\to X\times X</annotation></semantics></math>
+be the diagonal, and set</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>X</mi></msub><mo>=</mo><msub><mi>δ</mi><mrow><mi>X</mi><mo>*</mo></mrow></msub><msub><mi>A</mi><mi>X</mi></msub><mo>=</mo><msub><mi>A</mi><msub><mi mathvariant="normal">Δ</mi><mi>X</mi></msub></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+I_X=\delta_{X*}A_X=A_{\Delta_X}.
+</annotation></semantics></math></p>
+<p>The diagonal is closed because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is Hausdorff. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>X</mi></msub><annotation encoding="application/x-tex">I_X</annotation></semantics></math>
+is a bounded kernel in degree zero, with stalk
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+on the diagonal and zero elsewhere.</p>
+<p><strong>Proposition.</strong> There are natural isomorphisms</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><msub><mi>I</mi><mi>X</mi></msub></msub><mo>≃</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mrow><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi mathvariant="normal">Ψ</mi><msub><mi>I</mi><mi>X</mi></msub></msub><mo>≃</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mrow><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-D1)</mtext></mrow><annotation encoding="application/x-tex">
+\Phi_{I_X}\simeq\mathrm{id}_{D^+(A_X)},
+\qquad
+\Psi_{I_X}\simeq\mathrm{id}_{D^+(A_X)}.
+\qquad\text{(KER-D1)}
+</annotation></semantics></math></p>
+<p><strong>Proof.</strong> Write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">p_1,p_2</annotation></semantics></math>
+for the projections from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>×</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">X\times X</annotation></semantics></math>.
+The projection formula for the closed embedding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>δ</mi><mi>X</mi></msub><annotation encoding="application/x-tex">\delta_X</annotation></semantics></math>,
+followed by exactness of its direct image, gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>X</mi></msub><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msubsup><mi>p</mi><mn>2</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>G</mi><mo>≃</mo><mi>R</mi><msub><mi>δ</mi><mrow><mi>X</mi><mi>!</mi></mrow></msub><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><msub><mi>A</mi><mi>X</mi></msub><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><msubsup><mi>δ</mi><mi>X</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><msubsup><mi>p</mi><mn>2</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mi>G</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo><mo>≃</mo><msub><mi>δ</mi><mrow><mi>X</mi><mi>!</mi></mrow></msub><mi>G</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+I_X\otimes_A^L p_2^{-1}G
+ \simeq R\delta_{X!}
+ \bigl(A_X\otimes_A^L\delta_X^{-1}p_2^{-1}G\bigr)
+ \simeq\delta_{X!}G.
+</annotation></semantics></math></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>2</mn></msub><msub><mi>δ</mi><mi>X</mi></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">p_2\delta_X=\mathrm{id}_X</annotation></semantics></math>.
+Applying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>p</mi><mrow><mn>1</mn><mi>!</mi></mrow></msub></mrow><annotation encoding="application/x-tex">Rp_{1!}</annotation></semantics></math>
+and using
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><msub><mi>δ</mi><mi>X</mi></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">p_1\delta_X=\mathrm{id}_X</annotation></semantics></math>
+proves the first assertion with a specified natural comparison. The
+identity functor is right adjoint to itself. By SH02-KER-005,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><msub><mi>I</mi><mi>X</mi></msub></msub><annotation encoding="application/x-tex">\Psi_{I_X}</annotation></semantics></math>
+is right adjoint to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Φ</mi><msub><mi>I</mi><mi>X</mi></msub></msub><annotation encoding="application/x-tex">\Phi_{I_X}</annotation></semantics></math>;
+the first assertion and uniqueness of a representing right adjoint prove
+the second. More explicitly,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><msub><mi>I</mi><mi>X</mi></msub></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>≃</mo><mrow><mi mathvariant="normal">Hom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>G</mi><mo>,</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Hom}(G,\Psi_{I_X}F)\simeq\operatorname{Hom}(G,F)</annotation></semantics></math>
+naturally for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>,
+and Yoneda supplies the isomorphism.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>In particular,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mrow><msub><mi>I</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo></mrow></msub><mo>≃</mo><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi mathvariant="normal">Ψ</mi><mrow><msub><mi>I</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo></mrow></msub><mo>≃</mo><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-D2)</mtext></mrow><annotation encoding="application/x-tex">
+\Phi_{I_X[s]}\simeq[s],\qquad
+\Psi_{I_X[s]}\simeq[-s].
+\qquad\text{(KER-D2)}
+</annotation></semantics></math></p>
+<p>The absence of a dimension or orientation shift in (KER-D1) follows
+from the two identity composites of the diagonal with the projections.
+It does not follow from identifying an exceptional inverse image with an
+ordinary inverse image.</p>
+<span id="SH02-KER-008"></span><h2 id="sh02-ker-008.-two-inverse-kernels-including-shifts">SH02-KER-008.
+Two inverse kernels, including shifts</h2>
+<p><strong>Theorem.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mrow><mi>X</mi><mo>×</mo><mi>Y</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">K\in D^b(A_{X\times Y})</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mrow><mi>Y</mi><mo>×</mo><mi>X</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L\in D^b(A_{Y\times X})</annotation></semantics></math>.
+Suppose specified isomorphisms of kernels give</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><msub><mo>⋆</mo><mi>X</mi></msub><mi>K</mi><mo>≃</mo><msub><mi>I</mi><mi>Y</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>r</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>K</mi><msub><mo>⋆</mo><mi>Y</mi></msub><mi>L</mi><mo>≃</mo><msub><mi>I</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-E1)</mtext></mrow><annotation encoding="application/x-tex">
+L\star_X K\simeq I_Y[r],\qquad
+K\star_Y L\simeq I_X[s]
+\qquad\text{(KER-E1)}
+</annotation></semantics></math></p>
+<p>for integers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>,</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">r,s</annotation></semantics></math>.
+Then each of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo>,</mo><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mo>,</mo><msub><mi mathvariant="normal">Ψ</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">\Phi_K,\Phi_L,\Psi_K,\Psi_L</annotation></semantics></math>
+is an equivalence between its stated bounded-below derived categories.
+One has</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi mathvariant="normal">Φ</mi><mi>K</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mo>≃</mo><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>r</mi><mo form="postfix" stretchy="false">]</mo><mo>≃</mo><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msubsup><mi mathvariant="normal">Φ</mi><mi>L</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≃</mo><msub><mi mathvariant="normal">Ψ</mi><mi>L</mi></msub><mo>≃</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>r</mi><mo form="postfix" stretchy="false">]</mo><mo>≃</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-E2)</mtext></mrow><annotation encoding="application/x-tex">
+\begin{aligned}
+\Phi_K^{-1}&amp;\simeq\Psi_K
+ \simeq\Phi_L[-r]\simeq\Phi_L[-s],\\
+\Phi_L^{-1}&amp;\simeq\Psi_L
+ \simeq\Phi_K[-r]\simeq\Phi_K[-s].
+\end{aligned}
+\qquad\text{(KER-E2)}
+</annotation></semantics></math></p>
+<p>They also restrict to equivalences between the bounded derived
+categories. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A\ne0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>≠</mo><mi>⌀</mi></mrow><annotation encoding="application/x-tex">X\ne\varnothing</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">r=s</annotation></semantics></math>.</p>
+<p><strong>Proof.</strong> Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">F=\Phi_K</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">G=\Phi_L</annotation></semantics></math>.
+Kernel morphism functoriality, SH02-KER-006, and the shifted diagonal
+formula imply</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mi>F</mi><mo>≃</mo><mo form="prefix" stretchy="false">[</mo><mi>r</mi><mo form="postfix" stretchy="false">]</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> on </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>F</mi><mi>G</mi><mo>≃</mo><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> on </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-E3)</mtext></mrow><annotation encoding="application/x-tex">
+GF\simeq[r]\text{ on }D^+(A_Y),\qquad
+FG\simeq[s]\text{ on }D^+(A_X).
+\qquad\text{(KER-E3)}
+</annotation></semantics></math></p>
+<p>We first prove equivalence without presupposing equality of the
+shifts. Because exact functors commute with shifts,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><mi>G</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>r</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">H=G[-r]</annotation></semantics></math>
+is a left inverse of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mi>G</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>s</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">J=G[-s]</annotation></semantics></math>
+is a right inverse. Write the isomorphisms as</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>:</mo><mi>H</mi><mi>F</mi><mover><mo>→</mo><mo accent="false">∼</mo></mover><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mrow><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>Y</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>β</mi><mo>:</mo><mi>F</mi><mi>J</mi><mover><mo>→</mo><mo accent="false">∼</mo></mover><msub><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow><mrow><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\alpha:HF\xrightarrow{\sim}\mathrm{id}_{D^+(A_Y)},
+\qquad
+\beta:FJ\xrightarrow{\sim}\mathrm{id}_{D^+(A_X)}.
+</annotation></semantics></math></p>
+<p>There is a natural isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mover><mo>→</mo><mrow><mi>H</mi><msup><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow></mover><mi>H</mi><mi>F</mi><mi>J</mi><mover><mo>→</mo><mrow><mi>α</mi><mi>J</mi></mrow></mover><mi>J</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-E4)</mtext></mrow><annotation encoding="application/x-tex">
+H\xrightarrow{H\beta^{-1}}HFJ
+ \xrightarrow{\alpha J}J.
+\qquad\text{(KER-E4)}
+</annotation></semantics></math></p>
+<p>Consequently
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>H</mi><mo>≃</mo><mi>F</mi><mi>J</mi><mo>≃</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mrow><annotation encoding="application/x-tex">FH\simeq FJ\simeq\mathrm{id}</annotation></semantics></math>
+as well as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mi>F</mi><mo>≃</mo><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">d</mi></mrow></mrow><annotation encoding="application/x-tex">HF\simeq\mathrm{id}</annotation></semantics></math>,
+proving that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+is an equivalence. Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mi>H</mi><mo form="prefix" stretchy="false">[</mo><mi>r</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">G=H[r]</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+is also an equivalence. This elementary argument uses only the two
+supplied natural isomorphisms; it places no triangle-coherence
+requirement on the originally supplied kernel isomorphisms in
+(KER-E1).</p>
+<p>Every quasi-inverse of an equivalence is both a left and a right
+adjoint: the Hom bijection is obtained by applying the equivalence and
+the inverse isomorphisms, or equivalently by transporting identity
+morphisms across the fully faithful functor. Thus uniqueness of right
+adjoints identifies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><annotation encoding="application/x-tex">\Psi_K</annotation></semantics></math>
+with both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>.
+Interchanging
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>,</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">F,G</annotation></semantics></math>
+gives the second line of (KER-E2). This proves the equivalence of all
+four functors.</p>
+<p>The bound (KER-O3) proves that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>,</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">F,G</annotation></semantics></math>
+preserve bounded objects. Their shifted quasi-inverses do too. Hence
+their inverse isomorphisms restrict to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mi>b</mi></msup><annotation encoding="application/x-tex">D^b</annotation></semantics></math>,
+and (KER-E2) shows that the right adjoints preserve bounded objects
+under the present inverse-kernel hypotheses. No general upper bound for
+arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Ψ</mi><annotation encoding="application/x-tex">\Psi</annotation></semantics></math>
+was used.</p>
+<p>Finally, associating
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>G</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">FGF</annotation></semantics></math>
+in the two ways in (KER-E3) yields a natural isomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo form="prefix" stretchy="false">[</mo><mi>r</mi><mo form="postfix" stretchy="false">]</mo><mo>≃</mo><mi>F</mi><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">F[r]\simeq F[s]</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+is essentially surjective and commutes with shifts, every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q\in D^+(A_X)</annotation></semantics></math>
+satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo form="prefix" stretchy="false">[</mo><mi>r</mi><mo form="postfix" stretchy="false">]</mo><mo>≃</mo><mi>Q</mi><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">Q[r]\simeq Q[s]</annotation></semantics></math>.
+Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><msub><mi>A</mi><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">Q=A_X</annotation></semantics></math>.
+At any point of the nonempty space
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>,
+the stalk of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>r</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">A_X[r]</annotation></semantics></math>
+has its only nonzero cohomology in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">-r</annotation></semantics></math>,
+and that of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">A_X[s]</annotation></semantics></math>
+in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">-s</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A\ne0</annotation></semantics></math>,
+these degrees coincide. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">r=s</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>The exceptional cases matter. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A=0</annotation></semantics></math>,
+all the sheaf categories and both diagonal kernels vanish; arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>,</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">r,s</annotation></semantics></math>
+satisfy the same assertions, so equality of shifts cannot be deduced. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A\ne0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is empty, (KER-E1) forces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>
+to be empty as well: otherwise its nonzero diagonal could not be
+isomorphic to the zero convolution. When both spaces are empty, all
+shifts act on the zero category and there is again no shift rigidity. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A\ne0</annotation></semantics></math>
+and exactly one space is empty, (KER-E1) is impossible.</p>
+<span id="SH02-KER-009"></span><h2 id="sh02-ker-009.-worked-example-infinite-fibers-distinguish-the-two-adjoints">SH02-KER-009.
+Worked example: infinite fibers distinguish the two adjoints</h2>
+<p>Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">A=\mathbb Z</annotation></semantics></math>
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>Y</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">X=Y=\mathbb Z</annotation></semantics></math>
+with the discrete topology. These are locally compact Hausdorff spaces
+of c-soft dimension zero. A sheaf is a family of abelian groups; a
+complex of sheaves is a family of complexes with the global
+cohomological bound required by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mo>+</mo></msup><annotation encoding="application/x-tex">D^+</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><msub><mi>A</mi><mrow><mi>X</mi><mo>×</mo><mi>Y</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K=A_{X\times Y}</annotation></semantics></math>,
+concentrated in degree zero.</p>
+<p>For a point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>,
+compact subsets of its discrete fiber are finite. Proper-supported
+direct image is therefore direct sum over the fiber, so</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mi>G</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>=</mo><msub><mo>⨁</mo><mrow><mi>y</mi><mo>∈</mo><mi mathvariant="double-struck">ℤ</mi></mrow></msub><msub><mi>G</mi><mi>y</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-M1)</mtext></mrow><annotation encoding="application/x-tex">
+(\Phi_K G)_x=\bigoplus_{y\in\mathbb Z}G_y.
+\qquad\text{(KER-M1)}
+</annotation></semantics></math></p>
+<p>This holds for complexes as written: direct sums of modules are
+exact, and no higher fiber cohomology occurs. On the same discrete
+spaces, the right adjoint of summation along a fiber is the repetition
+of the object on each point of that fiber. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>p</mi><mi>!</mi></msup><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mo>=</mo><msub><mi>F</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">(p^!F)_{(x,y)}=F_x</annotation></semantics></math>.
+Internal Hom from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is the identity, and ordinary direct image along
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+is product. Products of modules are exact, giving</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>y</mi></msub><mo>=</mo><munder><mo>∏</mo><mrow><mi>x</mi><mo>∈</mo><mi mathvariant="double-struck">ℤ</mi></mrow></munder><msub><mi>F</mi><mi>x</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(KER-M2)</mtext></mrow><annotation encoding="application/x-tex">
+(\Psi_K F)_y=\prod_{x\in\mathbb Z}F_x.
+\qquad\text{(KER-M2)}
+</annotation></semantics></math></p>
+<p>The adjunction reduces to a transparent statement: maps from each
+summand
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mi>y</mi></msub><annotation encoding="application/x-tex">G_y</annotation></semantics></math>
+to each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>x</mi></msub><annotation encoding="application/x-tex">F_x</annotation></semantics></math>
+can be indexed either first by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+or first by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.
+This is exactly the Hom bijection between (KER-M1) and (KER-M2).</p>
+<p>The support of this kernel is the entire product, and its projections
+have infinite fibers. With
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>y</mi></msub><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">G_y=\mathbb Z</annotation></semantics></math>,
+replacing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>!</mi><annotation encoding="application/x-tex">!</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>*</mi><annotation encoding="application/x-tex">*</annotation></semantics></math>
+in (KER-M1) would replace the direct sum by the product. The family
+equal to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+at every integer belongs to the product and not to the direct sum. Thus
+that substitution would change the operator even in degree zero.
+Infinite-rank stalks or torsion families can equally be used in this
+example.</p>
+<span id="SH02-KER-010"></span><h2 id="sh02-ker-010.-exercise-a-translated-diagonal-and-the-sign-of-the-inverse">SH02-KER-010.
+Exercise: a translated diagonal and the sign of the inverse</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>Y</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">X=Y=\mathbb Z</annotation></semantics></math>
+be discrete and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+satisfy SH02-KER-001. Define the closed subsets</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>x</mi><mo>=</mo><mi>y</mi><mo>+</mo><mn>3</mn><mo form="postfix" stretchy="false">}</mo><mo>⊂</mo><mi>X</mi><mo>×</mo><mi>Y</mi><mo>,</mo><mspace width="2.0em"></mspace><msup><mi mathvariant="normal">Γ</mi><mo>′</mo></msup><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>x</mi><mo>=</mo><mi>y</mi><mo>+</mo><mn>3</mn><mo form="postfix" stretchy="false">}</mo><mo>⊂</mo><mi>Y</mi><mo>×</mo><mi>X</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\Gamma=\{(x,y):x=y+3\}\subset X\times Y,
+\qquad
+\Gamma'=\{(y,x):x=y+3\}\subset Y\times X.
+</annotation></semantics></math></p>
+<p>For integers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u,v</annotation></semantics></math>,
+set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><msub><mi>A</mi><mi mathvariant="normal">Γ</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">K=A_\Gamma[u]</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><msub><mi>A</mi><msup><mi mathvariant="normal">Γ</mi><mo>′</mo></msup></msub><mo form="prefix" stretchy="false">[</mo><mi>v</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L=A_{\Gamma'}[v]</annotation></semantics></math>.
+Compute both convolutions, the two
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Φ</mi><annotation encoding="application/x-tex">\Phi</annotation></semantics></math>-operators,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><annotation encoding="application/x-tex">\Psi_K</annotation></semantics></math>.
+Which shift of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+gives an actual inverse kernel for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>?
+Prove your answer for arbitrary modules, not only for finite-dimensional
+vector spaces.</p>
+<p><strong>Solution.</strong> On the discrete threefold product, the
+tensor defining
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><msub><mo>⋆</mo><mi>Y</mi></msub><mi>L</mi></mrow><annotation encoding="application/x-tex">K\star_Y L</annotation></semantics></math>
+is supported at triples satisfying
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi><mo>+</mo><mn>3</mn><mo>=</mo><msup><mi>x</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">x=y+3=x'</annotation></semantics></math>.
+For each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mi>x</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">x=x'</annotation></semantics></math>,
+exactly one integer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y=x-3</annotation></semantics></math>
+occurs. Each surviving tensor stalk is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><msubsup><mo>⊗</mo><mi>A</mi><mi>L</mi></msubsup><mi>A</mi><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi>A</mi><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">A\otimes_A^L A[u+v]=A[u+v]</annotation></semantics></math>,
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is free of rank one over itself. Projection along the middle coordinate
+therefore has no higher direct image and gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><msub><mo>⋆</mo><mi>Y</mi></msub><mi>L</mi><mo>=</mo><msub><mi>I</mi><mi>X</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+K\star_Y L=I_X[u+v].
+</annotation></semantics></math></p>
+<p>The same calculation for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><msub><mo>⋆</mo><mi>X</mi></msub><mi>K</mi></mrow><annotation encoding="application/x-tex">L\star_X K</annotation></semantics></math>
+uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi><mo>+</mo><mn>3</mn><mo>=</mo><msup><mi>y</mi><mo>′</mo></msup><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x=y+3=y'+3</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>y</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">y=y'</annotation></semantics></math>,
+and gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>Y</mi></msub><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">I_Y[u+v]</annotation></semantics></math>.
+Directly from the single-point fibers,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mi>G</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>=</mo><msub><mi>G</mi><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></msub><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>L</mi></msub><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>y</mi></msub><mo>=</mo><msub><mi>F</mi><mrow><mi>y</mi><mo>+</mo><mn>3</mn></mrow></msub><mo form="prefix" stretchy="false">[</mo><mi>v</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(\Phi_KG)_x=G_{x-3}[u],\qquad
+(\Phi_LF)_y=F_{y+3}[v].
+</annotation></semantics></math></p>
+<p>To undo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><annotation encoding="application/x-tex">\Phi_K</annotation></semantics></math>,
+one must translate back and shift by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">-u</annotation></semantics></math>.
+The inverse-kernel normalization is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msub><mi>A</mi><msup><mi mathvariant="normal">Γ</mi><mo>′</mo></msup></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Ψ</mi><mi>K</mi></msub><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>y</mi></msub><mo>=</mo><msub><mi>F</mi><mrow><mi>y</mi><mo>+</mo><mn>3</mn></mrow></msub><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+L[-(u+v)]=A_{\Gamma'}[-u],
+\qquad
+(\Psi_KF)_y=F_{y+3}[-u].
+</annotation></semantics></math></p>
+<p>This also follows from (KER-E2). All computations used only the
+tensor unit, exact finite summation, and shifts; arbitrary stalk modules
+and every ring in the stated class are included. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A=0</annotation></semantics></math>,
+the displayed formulas still hold, although shifts are no longer
+distinguishable.</p>
+<span id="SH02-KER-011"></span><h2 id="sh02-ker-011.-exercise-torsion-detects-the-lower-tensor-bound">SH02-KER-011.
+Exercise: torsion detects the lower tensor bound</h2>
+<p>Let both spaces be a point,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi></mrow><annotation encoding="application/x-tex">A=\mathbb Z</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>6</mn><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">[</mo><mn>2</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">K=(\mathbb Z/6)[2]</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">G=\mathbb Z/10</annotation></semantics></math>
+in degree zero. Compute the cohomology of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mi>G</mi></mrow><annotation encoding="application/x-tex">\Phi_KG</annotation></semantics></math>.
+Then explain which part of the definition would be lost by using
+ordinary tensor product.</p>
+<p><strong>Solution.</strong> Use the free resolution
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi mathvariant="double-struck">ℤ</mi><mover><mo>→</mo><mn>6</mn></mover><mi mathvariant="double-struck">ℤ</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[\mathbb Z\xrightarrow{6}\mathbb Z]</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">\mathbb Z/6</annotation></semantics></math>,
+in degrees
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">-1,0</annotation></semantics></math>.
+After tensoring with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">\mathbb Z/10</annotation></semantics></math>,
+the kernel and cokernel of multiplication by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>6</mn><annotation encoding="application/x-tex">6</annotation></semantics></math>
+are both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\mathbb Z/2</annotation></semantics></math>.
+After the shift by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>,
+the only nonzero cohomology groups are</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mrow><mi>−</mi><mn>3</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>2</mn><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>H</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi mathvariant="normal">Φ</mi><mi>K</mi></msub><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi mathvariant="double-struck">ℤ</mi><mi>/</mi><mn>2</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H^{-3}(\Phi_KG)=\mathbb Z/2,
+\qquad
+H^{-2}(\Phi_KG)=\mathbb Z/2.
+</annotation></semantics></math></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>2</mn><mo>,</mo><mi>−</mi><mn>2</mn><mo form="postfix" stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">K\in D^{[-2,-2]}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">G\in D^{[0,0]}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">g=1</annotation></semantics></math>,
+and the point has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d=0</annotation></semantics></math>.
+The interval predicted by (KER-O3) is exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>−</mi><mn>3</mn><mo>,</mo><mi>−</mi><mn>2</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-3,-2]</annotation></semantics></math>.
+Ordinary tensor product would retain the cokernel in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math>
+and discard the Tor group in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">-3</annotation></semantics></math>.
+Hence passing silently to vector-space intuition would lose part of this
+operator.</p>
+<span id="SH02-KER-012"></span><h2 id="sh02-ker-012.-antecedents-reuse-and-exact-remaining-work">SH02-KER-012.
+Antecedents, reuse, and exact remaining work</h2>
+<p>The kernel formalism is presented in Pierre Schapira’s freely
+available <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf">An
+Introduction to Sheaves on Grothendieck Topologies, version dated 1
+August 2026, §4.9, pp. 100–101</a>. Equation (4.9.2) defines
+proper-support composition of bounded kernels; Proposition 4.9.1 gives
+its associative comparison, with the detailed calculation on a product
+of four spaces assigned to Exercise 4.7. Equations (4.9.4)–(4.9.7)
+describe a kernel operator, composition of operators and its right
+adjoint. Proposition 4.9.2 realizes the ordinary and proper-support
+sheaf operations by graph kernels.</p>
+<p>The coordinate convention needs care. This reading makes the first
+coordinate the output, using the source’s operation “kernel composed
+with input.” Its named operator instead places the input on the first
+coordinate. Swapping the two factors identifies its convention with
+ours; without that swap, a quoted adjoint or composition formula would
+have the wrong domain and codomain.</p>
+<table>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Construction in this reading</th>
+<th>Exact source comparison and proof supplied here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coefficients and topological dimension</td>
+<td>The notes’ general convention on p. 9 is a commutative unital ring
+of finite global dimension. Their “soft” condition in Definition 4.3.1,
+p. 86, is extension from compact subsets, which is the c-soft convention
+used here. Definition 4.3.13, p. 89, records the finite-dimension
+conditions. The product bound (KER-G2) is derived here from
+compact-support Leray and the explicitly imported dimension
+criterion.</td>
+</tr>
+<tr>
+<td>Proper-support base change</td>
+<td>Theorem 4.5.3, p. 93, treats bounded-below objects and includes the
+compact-support fibre formula (4.5.4). Its proof uses exact inverse
+image and sheaves acyclic on the fibres. This is the base-change
+comparison in (KER-C4); it imposes no properness on the whole kernel
+support.</td>
+</tr>
+<tr>
+<td>Projection formula and its range</td>
+<td>Theorem 4.4.7, p. 91, takes a bounded source factor and a
+bounded-above base factor; its proof uses almost-free and
+proper-image-acyclic resolutions. Its bounded-input case is the
+foundational input here. SH02-KER-PF-RANGE proves the two mixed
+bounded/bounded-below extensions needed by (KER-C4)–(KER-C5), using the
+lower bounds already proved in SH02-KER-003.</td>
+</tr>
+<tr>
+<td>Right adjoint and actual comparison maps</td>
+<td>Theorem 4.6.1, p. 94, supplies the exceptional adjoint under finite
+cohomological dimension and invokes representability for its existence.
+Formula (4.9.6), p. 101, gives the kernel adjoint after the coordinate
+swap. Here (KER-ADJ) composes three Hom transpositions on the full
+stated category, (KER-UNIT) and (KER-COUN) specify the structural maps,
+and (KER-C6)–(KER-C7) construct the right-adjoint composition as the
+mate of the proved left-adjoint comparison.</td>
+</tr>
+<tr>
+<td>Diagonals, inverse kernels and examples</td>
+<td>Proposition 4.9.2 explains the graph-kernel mechanism. Here the
+diagonal proof uses its two identity projections directly. The shifted
+inverse criterion then uses the explicit isomorphism between a left and
+a right inverse, followed by a nonzero-stalk test for equality of
+shifts. The zero-ring and empty-space cases, infinite discrete fibres,
+translated diagonal and torsion calculation are treated by the arguments
+and solutions in this reading.</td>
+</tr>
+</tbody>
+</table>
+<p>The bounded input range of the notes’ §4.9 does not by itself settle
+the bounded-below operator and test-object range here. The explicit
+estimates (KER-A1)–(KER-A3), the projection-range proof, and
+(KER-O3)–(KER-O4) justify that passage under the stated foundational
+contracts. In particular, the right adjoint is only asserted to preserve
+bounded objects when the inverse-kernel hypotheses have been imposed.
+Proper-support
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>!</mi><annotation encoding="application/x-tex">!</annotation></semantics></math>-composition
+is essential: ordinary direct image
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>f</mi><mo>*</mo></msub></mrow><annotation encoding="application/x-tex">Rf_*</annotation></semantics></math>
+is never substituted for proper-support direct image in the convolution;
+the infinite discrete example shows the difference already in degree
+zero.</p>
+<p>The algebraic constructions in SH02-KER-IMP-DER are compared with the
+official Stacks Project native source at revision <a href="https://github.com/stacks/stacks-project/tree/a04446e57ec1fbc252a871afcec7752fb2807b14">a04446e5</a>.
+In cohomology.tex, <a href="https://stacks.math.columbia.edu/tag/06Y7">Tag 06Y7</a> constructs
+derived tensor products using K-flat resolutions, proves that K-flatness
+can be checked on stalks, and records the graded symmetry. <a href="https://stacks.math.columbia.edu/tag/06YI">Tag 06YI</a> constructs
+derived pullback and its compatibility with tensor products. For the
+constant coefficient sheaves used here, this specializes to exact
+inverse image. <a href="https://stacks.math.columbia.edu/tag/08DJ">Tag
+08DJ</a> proves the internal Hom adjunction through K-flat and
+K-injective representatives and its sections over open sets. These are
+constructions of ringed-space derived algebra; they do not supply
+topological proper supports or exceptional inverse image.</p>
+<p>This exposition develops the boundedness estimates before the
+operator calculus, constructs the units and counits, calculates the
+middle-variable elimination in its two projection-formula
+configurations, and only then tests diagonal and inverse kernels. The
+discrete and torsion examples exercise precisely the support and
+coefficient issues those steps use. The classical constructions are
+credited above; the independently written course text is CC0. The linked
+human works retain their own terms, including the Stacks Project’s <a href="https://github.com/stacks/stacks-project/blob/a04446e57ec1fbc252a871afcec7752fb2807b14/COPYING">GFDL
+terms</a>.</p>
+<p>The remaining foundational work is the full resolution and
+derived-algebra chain in SH02-KER-IMP-DER; the c-soft dimension
+criterion, compact-support spectral sequences and coefficient transfer
+in SH02-KER-IMP-GEOM; the bounded projection formula and topological
+base-change construction in SH02-KER-IMP-BCPF; and exceptional-adjoint
+existence in SH02-KER-IMP-DUAL. The projection-range argument supplies
+the mixed-range step from the bounded formula, not these underlying
+constructions. Separate source, expression and mathematical review of
+the complete dependency chain remains unfinished.</p>
+<p>The spherical-kernel calculation, conic Fourier transformation,
+manifold duality, specialization, microlocalization, microlocal Hom,
+microsupport estimates and involutivity require their own hypotheses and
+proofs. They are not consequences asserted by this unit.</p>
+</main></body></html>

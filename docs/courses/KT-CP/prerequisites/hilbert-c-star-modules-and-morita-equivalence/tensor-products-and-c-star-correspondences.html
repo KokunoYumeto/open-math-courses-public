@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="9DABA13E015B1CC27EA0519246C0F7D01654DA68142A1FA687B2419B009F4CFF">
+<title>Tensor products and C*-correspondences — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-hilbert-c-star-modules-and-morita-equivalence/tensor-products-and-c-star-correspondences</span></nav>
+<article id="lesson" class="lesson"><h1 id="tensor-products-and-c--correspondences">Tensor products and C*-correspondences</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A tensor product can change the coefficient algebra of a Hilbert module. It can also turn a module into a Hilbert space, compose two bimodules, or combine modules over unrelated algebras. These constructions share a positivity mechanism, but their balancing relations are different. Keeping those relations visible prevents a common mistake: an operator on the second factor does not automatically act on an interior tensor product.</p>
+<p>We assume the results of <a href="hilbert-c-star-modules.html">Hilbert C*-modules</a>, <a href="adjointable-operators.html">Adjointable operators</a>, and <a href="compact-operators-multipliers-and-the-strict-topology.html">Compact operators, multipliers and the strict topology</a>. Inner products are linear in the second variable. All coefficient algebras may be nonunital. Basic references are [Li 2024], [Blackadar 1998], [Blackadar 2006] and [Connes 1994]; [Emerson 2024] discusses operator applications.</p>
+<h2 id="1-the-left-action-is-part-of-the-data">1. The left action is part of the data</h2>
+<p><span id="definition-1-1"></span><strong>Definition 1.1.</strong> An <span class="math" data-tex="\(A\)">\(A\)</span>-<span class="math" data-tex="\(B\)">\(B\)</span> correspondence consists of a right Hilbert <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(F\)">\(F\)</span> and a *-homomorphism</p>
+<span class="math math-display" data-tex="\[
+\varphi:A\longrightarrow\mathcal L_B(F).
+\]">\[
+\varphi:A\longrightarrow\mathcal L_B(F).
+\]</span>
+<p>We write <span class="math" data-tex="\(ay=\varphi(a)y\)">\(ay=\varphi(a)y\)</span>. It is nondegenerate when the linear span of <span class="math" data-tex="\(\varphi(A)F\)">\(\varphi(A)F\)</span> is dense in <span class="math" data-tex="\(F\)">\(F\)</span>. We allow degenerate left actions in the tensor construction and state nondegeneracy separately when it is needed.</p>
+<p>A homomorphism <span class="math" data-tex="\(\alpha:A\to M(B)\)">\(\alpha:A\to M(B)\)</span> gives a correspondence <span class="math" data-tex="\(F=B_B\)">\(F=B_B\)</span>, with left action by multiplication. A Hilbert <span class="math" data-tex="\(B\)">\(B\)</span>-module has its canonical compact left action by <span class="math" data-tex="\(\mathcal K(F)\)">\(\mathcal K(F)\)</span>; this action is nondegenerate by the compact-action lemma. An ordinary representation <span class="math" data-tex="\(A\to\mathcal B(H)\)">\(A\to\mathcal B(H)\)</span> is a correspondence from <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p>The left action is not generally a left Hilbert-module structure. Correspondences need neither a left inner product nor fullness. Those extra structures enter the later lesson on imprimitivity bimodules.</p>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module. Form the balanced algebraic tensor product <span class="math" data-tex="\(E\odot_A F\)">\(E\odot_A F\)</span> by imposing</p>
+<span id="equation-1-1"></span><span class="math math-display" data-tex="\[
+xa\odot y=x\odot\varphi(a)y.
+\tag{1.1}
+\]">\[
+xa\odot y=x\odot\varphi(a)y.
+\tag{1.1}
+\]</span>
+<p>It is a right <span class="math" data-tex="\(B\)">\(B\)</span>-module, with <span class="math" data-tex="\((x\odot y)b=x\odot(yb)\)">\((x\odot y)b=x\odot(yb)\)</span>.</p>
+<p><span id="theorem-1-2"></span><strong>Theorem 1.2 (Interior tensor product).</strong> The formula</p>
+<span id="equation-1-2"></span><span class="math math-display" data-tex="\[
+\langle x\odot y,x&#x27;\odot y&#x27;\rangle
+=\langle y,\varphi(\langle x,x&#x27;\rangle_A)y&#x27;\rangle_B
+\tag{1.2}
+\]">\[
+\langle x\odot y,x&#x27;\odot y&#x27;\rangle
+=\langle y,\varphi(\langle x,x&#x27;\rangle_A)y&#x27;\rangle_B
+\tag{1.2}
+\]</span>
+<p>defines a positive semidefinite <span class="math" data-tex="\(B\)">\(B\)</span>-valued inner product on the balanced tensor product. Dividing out its null vectors and completing gives a Hilbert <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(E\otimes_\varphi F\)">\(E\otimes_\varphi F\)</span>.</p>
+<p><em>Proof.</em> Before balancing, extend the formula sesquilinearly to finite sums. In the first variable,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle xa\odot y,x&#x27;\odot y&#x27;\rangle
+&amp;=\langle y,\varphi(a^*)\varphi(\langle x,x&#x27;\rangle)y&#x27;\rangle\\
+&amp;=\langle\varphi(a)y,\varphi(\langle x,x&#x27;\rangle)y&#x27;\rangle.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle xa\odot y,x&#x27;\odot y&#x27;\rangle
+&amp;=\langle y,\varphi(a^*)\varphi(\langle x,x&#x27;\rangle)y&#x27;\rangle\\
+&amp;=\langle\varphi(a)y,\varphi(\langle x,x&#x27;\rangle)y&#x27;\rangle.
+\end{aligned}
+\]</span>
+<p>This is the value obtained from <span class="math" data-tex="\(x\odot\varphi(a)y\)">\(x\odot\varphi(a)y\)</span>. The second-variable relation follows either directly or by conjugate symmetry. Hence every balancing generator pairs to zero with every tensor, and the form descends. The right-module identity follows from the corresponding identity in <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>For <span class="math" data-tex="\(z=\sum_{i=1}^n x_i\odot y_i\)">\(z=\sum_{i=1}^n x_i\odot y_i\)</span>, the Gram matrix</p>
+<span class="math math-display" data-tex="\[
+G=(\langle x_i,x_j\rangle_A)_{i,j}
+\]">\[
+G=(\langle x_i,x_j\rangle_A)_{i,j}
+\]</span>
+<p>is positive in <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>. Applying <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> entrywise gives a positive adjointable operator <span class="math" data-tex="\(\varphi_n(G)\)">\(\varphi_n(G)\)</span> on <span class="math" data-tex="\(F^n\)">\(F^n\)</span>: a square root of <span class="math" data-tex="\(G\)">\(G\)</span> gives a factorization of its image as <span class="math" data-tex="\(C^*C\)">\(C^*C\)</span>. Thus, for <span class="math" data-tex="\(y=(y_i)\)">\(y=(y_i)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle z,z\rangle
+=\sum_{i,j}\langle y_i,\varphi(G_{ij})y_j\rangle
+=\langle y,\varphi_n(G)y\rangle_{F^n}\geq0.
+\]">\[
+\langle z,z\rangle
+=\sum_{i,j}\langle y_i,\varphi(G_{ij})y_j\rangle
+=\langle y,\varphi_n(G)y\rangle_{F^n}\geq0.
+\]</span>
+<p>This proves positivity for every finite sum, rather than only for simple tensors.</p>
+<p>The null-quotient and completion theorem for pre-Hilbert modules now applies. Null vectors pair to zero by Cauchy–Schwarz, so the quotient form is well defined; the module action and inner product extend continuously to its completion. ∎</p>
+<p>The image of a simple tensor satisfies</p>
+<span id="equation-1-3"></span><span class="math math-display" data-tex="\[
+\|x\otimes y\|\leq\|x\|\|y\|,
+\tag{1.3}
+\]">\[
+\|x\otimes y\|\leq\|x\|\|y\|,
+\tag{1.3}
+\]</span>
+<p>because <span class="math" data-tex="\(0\leq\varphi(\langle x,x\rangle)\leq\|x\|^2 1_F\)">\(0\leq\varphi(\langle x,x\rangle)\leq\|x\|^2 1_F\)</span>. It can have norm zero even when its factors are nonzero. The tensor product measures the part of the left action seen by the first module.</p>
+<p><span id="example-1-3"></span><strong>Example 1.3 (The essential part).</strong> Put <span class="math" data-tex="\(F_{\mathrm{ess}}=\overline{\operatorname{span}}\varphi(A)F\)">\(F_{\mathrm{ess}}=\overline{\operatorname{span}}\varphi(A)F\)</span>. The formula</p>
+<span id="equation-1-4"></span><span class="math math-display" data-tex="\[
+U:A^n\otimes_\varphi F\longrightarrow F_{\mathrm{ess}}^n,
+\qquad
+U((a_i)\otimes y)=(\varphi(a_i)y)_i
+\tag{1.4}
+\]">\[
+U:A^n\otimes_\varphi F\longrightarrow F_{\mathrm{ess}}^n,
+\qquad
+U((a_i)\otimes y)=(\varphi(a_i)y)_i
+\tag{1.4}
+\]</span>
+<p>is unitary. Balancing follows from multiplicativity. For two simple tensors, their inner product is</p>
+<span class="math math-display" data-tex="\[
+\left\langle y,\varphi\!\left(\sum_i a_i^*b_i\right)y&#x27;\right\rangle
+=\sum_i\langle\varphi(a_i)y,\varphi(b_i)y&#x27;\rangle.
+\]">\[
+\left\langle y,\varphi\!\left(\sum_i a_i^*b_i\right)y&#x27;\right\rangle
+=\sum_i\langle\varphi(a_i)y,\varphi(b_i)y&#x27;\rangle.
+\]</span>
+<p>Sesquilinearity proves that <span class="math" data-tex="\(U\)">\(U\)</span> is isometric on all finite sums. Its range contains all coordinate vectors with an entry <span class="math" data-tex="\(\varphi(a)y\)">\(\varphi(a)y\)</span>, so it is dense in <span class="math" data-tex="\(F_{\mathrm{ess}}^n\)">\(F_{\mathrm{ess}}^n\)</span>. The completed isometry has closed range and is onto.</p>
+<p>In particular <span class="math" data-tex="\(A^n\otimes_\varphi F\cong F^n\)">\(A^n\otimes_\varphi F\cong F^n\)</span> when <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is nondegenerate. Without that condition, even <span class="math" data-tex="\(n=1\)">\(n=1\)</span> can fail: the zero action of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> on the nonzero Hilbert space <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> gives a zero tensor product. No orthogonal complement for <span class="math" data-tex="\(F_{\mathrm{ess}}\)">\(F_{\mathrm{ess}}\)</span> is asserted.</p>
+<h2 id="2-operators-which-respect-balancing">2. Operators which respect balancing</h2>
+<p><span id="theorem-2-1"></span><strong>Theorem 2.1 (The first factor).</strong> If <span class="math" data-tex="\(T\in\mathcal L_A(E,E&#x27;)\)">\(T\in\mathcal L_A(E,E&#x27;)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+(T\otimes1)(x\otimes y)=Tx\otimes y
+\]">\[
+(T\otimes1)(x\otimes y)=Tx\otimes y
+\]</span>
+<p>defines an adjointable map <span class="math" data-tex="\(E\otimes_\varphi F\to E&#x27;\otimes_\varphi F\)">\(E\otimes_\varphi F\to E&#x27;\otimes_\varphi F\)</span>, with adjoint <span class="math" data-tex="\(T^*\otimes1\)">\(T^*\otimes1\)</span> and norm at most <span class="math" data-tex="\(\|T\|\)">\(\|T\|\)</span>. For <span class="math" data-tex="\(E&#x27;=E\)">\(E&#x27;=E\)</span>, this is a unital *-homomorphism of adjointable operator algebras.</p>
+<p><em>Proof.</em> Module linearity makes the formula balanced. For <span class="math" data-tex="\(z=\sum_i x_i\otimes y_i\)">\(z=\sum_i x_i\otimes y_i\)</span>, compare the two Gram matrices of <span class="math" data-tex="\(x_i\)">\(x_i\)</span> and <span class="math" data-tex="\(Tx_i\)">\(Tx_i\)</span>. Their difference</p>
+<span class="math math-display" data-tex="\[
+\left(\|T\|^2\langle x_i,x_j\rangle
+-\langle Tx_i,Tx_j\rangle\right)_{i,j}
+\]">\[
+\left(\|T\|^2\langle x_i,x_j\rangle
+-\langle Tx_i,Tx_j\rangle\right)_{i,j}
+\]</span>
+<p>is positive: it is the Gram matrix of
+<span class="math" data-tex="\((\|T\|^2 1_E-T^*T)^{1/2}x_i\)">\((\|T\|^2 1_E-T^*T)^{1/2}x_i\)</span>. The positive operator exists by the adjointable-operator order theorem. Applying <span class="math" data-tex="\(\varphi_n\)">\(\varphi_n\)</span> and testing against <span class="math" data-tex="\((y_i)\)">\((y_i)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\langle(T\otimes1)z,(T\otimes1)z\rangle
+\leq\|T\|^2\langle z,z\rangle.
+\]">\[
+\langle(T\otimes1)z,(T\otimes1)z\rangle
+\leq\|T\|^2\langle z,z\rangle.
+\]</span>
+<p>The formula therefore preserves null vectors and extends boundedly to the completion. On simple tensors (1.2) gives the adjoint identity with <span class="math" data-tex="\(T^*\otimes1\)">\(T^*\otimes1\)</span>; linearity and density extend it to all vectors. Products and the identity act as claimed on simple tensors, hence everywhere. ∎</p>
+<p><span id="proposition-2-2"></span><strong>Proposition 2.2 (The second factor).</strong> If <span class="math" data-tex="\(S\in\mathcal L_B(F)\)">\(S\in\mathcal L_B(F)\)</span> commutes with <span class="math" data-tex="\(\varphi(A)\)">\(\varphi(A)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+(1\otimes S)(x\otimes y)=x\otimes Sy
+\]">\[
+(1\otimes S)(x\otimes y)=x\otimes Sy
+\]</span>
+<p>defines an adjointable operator of norm at most <span class="math" data-tex="\(\|S\|\)">\(\|S\|\)</span>, with adjoint <span class="math" data-tex="\(1\otimes S^*\)">\(1\otimes S^*\)</span>.</p>
+<p><em>Proof.</em> Commutation makes the formula balanced; taking adjoints shows that <span class="math" data-tex="\(S^*\)">\(S^*\)</span> commutes too. For a Gram matrix <span class="math" data-tex="\(G\)">\(G\)</span>, let <span class="math" data-tex="\(D=\operatorname{diag}(S,\ldots,S)\)">\(D=\operatorname{diag}(S,\ldots,S)\)</span> on <span class="math" data-tex="\(F^n\)">\(F^n\)</span>. It commutes with the positive operator <span class="math" data-tex="\(\varphi_n(G)\)">\(\varphi_n(G)\)</span> and its square root. Consequently</p>
+<span class="math math-display" data-tex="\[
+D^*\varphi_n(G)D
+=\varphi_n(G)^{1/2}D^*D\varphi_n(G)^{1/2}
+\leq\|S\|^2\varphi_n(G).
+\]">\[
+D^*\varphi_n(G)D
+=\varphi_n(G)^{1/2}D^*D\varphi_n(G)^{1/2}
+\leq\|S\|^2\varphi_n(G).
+\]</span>
+<p>Testing this inequality against <span class="math" data-tex="\((y_i)\)">\((y_i)\)</span> proves the norm estimate and preservation of null vectors. The adjoint identity follows from (1.2) and commutation. ∎</p>
+<p>Commutation is a sufficient condition and is necessary if the formula is to work for every first module when <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is nondegenerate. Testing <span class="math" data-tex="\(E=A\)">\(E=A\)</span>, balancing and (1.4) force</p>
+<span class="math math-display" data-tex="\[
+\varphi(b)(\varphi(a)S-S\varphi(a))y=0
+\]">\[
+\varphi(b)(\varphi(a)S-S\varphi(a))y=0
+\]</span>
+<p>for every <span class="math" data-tex="\(a,b,y\)">\(a,b,y\)</span>. Apply an approximate identity in place of <span class="math" data-tex="\(b\)">\(b\)</span>. Nondegeneracy makes its action converge to the identity on <span class="math" data-tex="\(F\)">\(F\)</span>, so the commutator vanishes. This argument also covers nonunital <span class="math" data-tex="\(A\)">\(A\)</span>. For a particular first module, some coefficients may be invisible; for example, a zero tensor product places no such requirement.</p>
+<p><span id="example-2-3"></span><strong>Example 2.3 (A formula that is not balanced).</strong> Take <span class="math" data-tex="\(A=M_2(\mathbb C)\)">\(A=M_2(\mathbb C)\)</span>, <span class="math" data-tex="\(E=A_A\)">\(E=A_A\)</span>, <span class="math" data-tex="\(F=\mathbb C^2\)">\(F=\mathbb C^2\)</span>, and the defining left action. Let <span class="math" data-tex="\(S\)">\(S\)</span> be projection onto the first coordinate. With <span class="math" data-tex="\(a=e_{12}\)">\(a=e_{12}\)</span> and <span class="math" data-tex="\(y=e_2\)">\(y=e_2\)</span>, balancing says</p>
+<span class="math math-display" data-tex="\[
+a\otimes e_2=1\otimes e_1.
+\]">\[
+a\otimes e_2=1\otimes e_1.
+\]</span>
+<p>The proposed <span class="math" data-tex="\(1\otimes S\)">\(1\otimes S\)</span> sends the left expression to zero and the right expression to <span class="math" data-tex="\(1\otimes e_1\)">\(1\otimes e_1\)</span>, which is nonzero under <span class="math" data-tex="\(A\otimes F\cong F\)">\(A\otimes F\cong F\)</span>. The formula is not even well defined on the balanced quotient.</p>
+<p>To describe the resulting connection problem precisely, for <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span> define</p>
+<span class="math math-display" data-tex="\[
+R_x:F\to E\otimes_\varphi F,\qquad R_xy=x\otimes y.
+\]">\[
+R_x:F\to E\otimes_\varphi F,\qquad R_xy=x\otimes y.
+\]</span>
+<p>It is adjointable, with</p>
+<span id="equation-2-1"></span><span class="math math-display" data-tex="\[
+R_x^*(z\otimes y)=\varphi(\langle x,z\rangle)y.
+\tag{2.1}
+\]">\[
+R_x^*(z\otimes y)=\varphi(\langle x,z\rangle)y.
+\tag{2.1}
+\]</span>
+<p>Here is the boundedness detail. The map <span class="math" data-tex="\(R_x\)">\(R_x\)</span> is bounded by (1.3). For a finite tensor sum <span class="math" data-tex="\(v\)">\(v\)</span>, the candidate on the right of (2.1) satisfies
+<span class="math" data-tex="\(\langle y,R_x^*v\rangle=\langle R_xy,v\rangle\)">\(\langle y,R_x^*v\rangle=\langle R_xy,v\rangle\)</span>. The norm-duality formula in a Hilbert module therefore gives
+<span class="math" data-tex="\(\|R_x^*v\|\leq\|R_x\|\|v\|\)">\(\|R_x^*v\|\leq\|R_x\|\|v\|\)</span>. It extends to the completion, proving the asserted adjoint.</p>
+<p>For two modules <span class="math" data-tex="\(M,N\)">\(M,N\)</span>, write <span class="math" data-tex="\(\mathcal K(M,N)\)">\(\mathcal K(M,N)\)</span> for the norm closure of maps <span class="math" data-tex="\(z\mapsto u\langle v,z\rangle\)">\(z\mapsto u\langle v,z\rangle\)</span>, <span class="math" data-tex="\(u\in N,v\in M\)">\(u\in N,v\in M\)</span>. Adjointable composition on either side preserves these compact maps, by the rank-one formulas.</p>
+<p>An ungraded <span class="math" data-tex="\(S\)">\(S\)</span>-connection is an operator <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(E\otimes_\varphi F\)">\(E\otimes_\varphi F\)</span> for which</p>
+<span id="equation-2-2"></span><span class="math math-display" data-tex="\[
+GR_x-R_xS\in\mathcal K(F,E\otimes_\varphi F),\qquad
+G^*R_x-R_xS^*\in\mathcal K(F,E\otimes_\varphi F)
+\tag{2.2}
+\]">\[
+GR_x-R_xS\in\mathcal K(F,E\otimes_\varphi F),\qquad
+G^*R_x-R_xS^*\in\mathcal K(F,E\otimes_\varphi F)
+\tag{2.2}
+\]</span>
+<p>for every <span class="math" data-tex="\(x\)">\(x\)</span>. These compact comparison conditions replace exact tensoring of <span class="math" data-tex="\(S\)">\(S\)</span> in the connection problem used in the Kasparov product. They are not the complete definition of that product, and no existence theorem for connections is asserted here.</p>
+<p><span id="theorem-2-4"></span><strong>Theorem 2.4 (Compact left actions).</strong> If <span class="math" data-tex="\(\varphi(A)\subseteq\mathcal K(F)\)">\(\varphi(A)\subseteq\mathcal K(F)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+T\in\mathcal K(E)\quad\Longrightarrow\quad
+T\otimes1\in\mathcal K(E\otimes_\varphi F).
+\]">\[
+T\in\mathcal K(E)\quad\Longrightarrow\quad
+T\otimes1\in\mathcal K(E\otimes_\varphi F).
+\]</span>
+<p><em>Proof.</em> We have <span class="math" data-tex="\(R_x^*R_x=\varphi(\langle x,x\rangle)\)">\(R_x^*R_x=\varphi(\langle x,x\rangle)\)</span>, which is compact by assumption. Let <span class="math" data-tex="\(u_\lambda\)">\(u_\lambda\)</span> be a positive contractive approximate identity of <span class="math" data-tex="\(\mathcal K(F)\)">\(\mathcal K(F)\)</span>. Then <span class="math" data-tex="\(R_xu_\lambda\)">\(R_xu_\lambda\)</span> is a compact map, and</p>
+<span class="math math-display" data-tex="\[
+\|R_x-R_xu_\lambda\|^2
+=\|(1-u_\lambda)R_x^*R_x(1-u_\lambda)\|\longrightarrow0.
+\]">\[
+\|R_x-R_xu_\lambda\|^2
+=\|(1-u_\lambda)R_x^*R_x(1-u_\lambda)\|\longrightarrow0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(R_x\)">\(R_x\)</span> is compact. On simple tensors,</p>
+<span class="math math-display" data-tex="\[
+(\theta_{x,z}\otimes1)(w\otimes y)
+=x\otimes\varphi(\langle z,w\rangle)y
+=R_xR_z^*(w\otimes y).
+\]">\[
+(\theta_{x,z}\otimes1)(w\otimes y)
+=x\otimes\varphi(\langle z,w\rangle)y
+=R_xR_z^*(w\otimes y).
+\]</span>
+<p>The product is compact. Finite sums and the contractive homomorphism of Theorem 2.1 extend the conclusion to every compact <span class="math" data-tex="\(T\)">\(T\)</span>. ∎</p>
+<p>The hypothesis cannot be omitted. Take <span class="math" data-tex="\(E=\mathbb C\)">\(E=\mathbb C\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> an infinite-dimensional Hilbert space with the scalar left action. The identity on <span class="math" data-tex="\(E\)">\(E\)</span> is compact, but its tensor image is the noncompact identity on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<h2 id="3-composition-units-and-coefficient-support">3. Composition, units and coefficient support</h2>
+<p><span id="theorem-3-1"></span><strong>Theorem 3.1 (Associativity).</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be an <span class="math" data-tex="\(A\)">\(A\)</span>-<span class="math" data-tex="\(B\)">\(B\)</span> correspondence and <span class="math" data-tex="\(G\)">\(G\)</span> a <span class="math" data-tex="\(B\)">\(B\)</span>-<span class="math" data-tex="\(C\)">\(C\)</span> correspondence with left action <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Then</p>
+<span id="equation-3-1"></span><span class="math math-display" data-tex="\[
+(E\otimes_\varphi F)\otimes_\psi G
+\cong E\otimes_A(F\otimes_\psi G)
+\tag{3.1}
+\]">\[
+(E\otimes_\varphi F)\otimes_\psi G
+\cong E\otimes_A(F\otimes_\psi G)
+\tag{3.1}
+\]</span>
+<p>unitarily, by <span class="math" data-tex="\((x\otimes y)\otimes z\mapsto x\otimes(y\otimes z)\)">\((x\otimes y)\otimes z\mapsto x\otimes(y\otimes z)\)</span>. The left <span class="math" data-tex="\(A\)">\(A\)</span>-action on <span class="math" data-tex="\(F\otimes_\psi G\)">\(F\otimes_\psi G\)</span> is <span class="math" data-tex="\(\varphi(a)\otimes1\)">\(\varphi(a)\otimes1\)</span>.</p>
+<p><em>Proof.</em> Theorem 2.1 provides that left action. Both balancing relations are respected by the displayed map. The inner product of two triple tensors on either side is</p>
+<span class="math math-display" data-tex="\[
+\left\langle z,\psi\!\left(
+\langle y,\varphi(\langle x,x&#x27;\rangle)y&#x27;\rangle
+\right)z&#x27;\right\rangle_C.
+\]">\[
+\left\langle z,\psi\!\left(
+\langle y,\varphi(\langle x,x&#x27;\rangle)y&#x27;\rangle
+\right)z&#x27;\right\rangle_C.
+\]</span>
+<p>Finite sums therefore have identical inner products. Their spans are dense on both sides: approximate a completed intermediate vector by finite tensor sums and use (1.3) to tensor the approximation with a fixed vector. The map descends through null vectors and extends isometrically with dense, hence closed and full, range. ∎</p>
+<p>Repeated reassociation is coherent: every composite sends a finite fourfold tensor to the same ordered four factors. Equality on their dense span gives equality of the unitaries. Tensoring also distributes over finite orthogonal direct sums, since expansion of (1.2) gives the summed inner product and the coordinate images have dense span.</p>
+<p><span id="proposition-3-2"></span><strong>Proposition 3.2 (Units).</strong> The map</p>
+<span id="equation-3-2"></span><span class="math math-display" data-tex="\[
+E\otimes_A A\longrightarrow E,\quad x\otimes a\longmapsto xa
+\tag{3.2}
+\]">\[
+E\otimes_A A\longrightarrow E,\quad x\otimes a\longmapsto xa
+\tag{3.2}
+\]</span>
+<p>is unitary, for the standard left action on <span class="math" data-tex="\(A_A\)">\(A_A\)</span>. For a general correspondence <span class="math" data-tex="\(F\)">\(F\)</span>, the left-unit map <span class="math" data-tex="\(A\otimes_\varphi F\to F\)">\(A\otimes_\varphi F\to F\)</span> has range <span class="math" data-tex="\(F_{\mathrm{ess}}\)">\(F_{\mathrm{ess}}\)</span>, and is unitary onto <span class="math" data-tex="\(F\)">\(F\)</span> exactly when the left action is nondegenerate.</p>
+<p><em>Proof.</em> In (3.2), both inner products are <span class="math" data-tex="\(a^*\langle x,x&#x27;\rangle a&#x27;\)">\(a^*\langle x,x&#x27;\rangle a&#x27;\)</span>, so the map is isometric. Its range is dense because the coefficient action is nondegenerate, <span class="math" data-tex="\(\overline{EA}=E\)">\(\overline{EA}=E\)</span>, proved in the first lesson. Completion makes it onto. The other assertion is Example 1.3 with <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. ∎</p>
+<p>Thus nondegenerate correspondences, up to unitary bimodule isomorphism, form a category with C*-algebras as objects and <span class="math" data-tex="\(A_A\)">\(A_A\)</span> as identity. Composition is the interior tensor product. If both left actions are nondegenerate, the composite action is nondegenerate: vectors with first factor in the dense span <span class="math" data-tex="\(AE\)">\(AE\)</span> span a dense subspace of the tensor product. Degenerate correspondences still admit the associative tensor construction, but the usual left identity can fail; one cannot simply include all of them in this category with the same unit law.</p>
+<p>Write <span class="math" data-tex="\(J_E=\overline{\operatorname{span}}\langle E,E\rangle\)">\(J_E=\overline{\operatorname{span}}\langle E,E\rangle\)</span> for the coefficient ideal.</p>
+<p><span id="proposition-3-3"></span><strong>Proposition 3.3 (Fullness after tensoring).</strong></p>
+<span id="equation-3-3"></span><span class="math math-display" data-tex="\[
+J_{E\otimes_\varphi F}
+=\overline{\operatorname{span}}
+\{\langle y,\varphi(a)y&#x27;\rangle:a\in J_E,\ y,y&#x27;\in F\}.
+\tag{3.3}
+\]">\[
+J_{E\otimes_\varphi F}
+=\overline{\operatorname{span}}
+\{\langle y,\varphi(a)y&#x27;\rangle:a\in J_E,\ y,y&#x27;\in F\}.
+\tag{3.3}
+\]</span>
+<p>If <span class="math" data-tex="\(E\)">\(E\)</span> is full and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is nondegenerate, this is <span class="math" data-tex="\(J_F\)">\(J_F\)</span>; consequently tensoring a full <span class="math" data-tex="\(E\)">\(E\)</span> with a full nondegenerate correspondence gives a full module.</p>
+<p><em>Proof.</em> Formula (1.2) shows that the left side is the closed span on the right with <span class="math" data-tex="\(a=\langle x,x&#x27;\rangle\)">\(a=\langle x,x&#x27;\rangle\)</span>. Finite linear combinations and continuity allow exactly every <span class="math" data-tex="\(a\in J_E\)">\(a\in J_E\)</span>. When <span class="math" data-tex="\(J_E=A\)">\(J_E=A\)</span>, density of <span class="math" data-tex="\(\varphi(A)F\)">\(\varphi(A)F\)</span> implies that all inner products <span class="math" data-tex="\(\langle y,w\rangle\)">\(\langle y,w\rangle\)</span> are limits of this span. This proves equality with <span class="math" data-tex="\(J_F\)">\(J_F\)</span>. ∎</p>
+<p>Fullness of the two underlying right modules alone is insufficient: <span class="math" data-tex="\(E=A=\mathbb C\)">\(E=A=\mathbb C\)</span> and <span class="math" data-tex="\(F=\mathbb C\)">\(F=\mathbb C\)</span> are full, but the zero left action gives a zero tensor product.</p>
+<h2 id="4-hilbert-space-localization-and-induction">4. Hilbert-space localization and induction</h2>
+<p>Let <span class="math" data-tex="\(\pi:A\to\mathcal B(H)\)">\(\pi:A\to\mathcal B(H)\)</span> be a representation. Regard <span class="math" data-tex="\(H\)">\(H\)</span> as a Hilbert <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>-module. Theorem 1.2 then produces the Hilbert space <span class="math" data-tex="\(E\otimes_\pi H\)">\(E\otimes_\pi H\)</span>; Theorem 2.1 gives a representation</p>
+<span class="math math-display" data-tex="\[
+\pi_E:\mathcal L(E)\to\mathcal B(E\otimes_\pi H),
+\qquad T\mapsto T\otimes1.
+\]">\[
+\pi_E:\mathcal L(E)\to\mathcal B(E\otimes_\pi H),
+\qquad T\mapsto T\otimes1.
+\]</span>
+<p><span id="theorem-4-1"></span><strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is faithful, then <span class="math" data-tex="\(\pi_E\)">\(\pi_E\)</span> is faithful and</p>
+<span id="equation-4-1"></span><span class="math math-display" data-tex="\[
+\|T\otimes1\|=\|T\|.
+\tag{4.1}
+\]">\[
+\|T\otimes1\|=\|T\|.
+\tag{4.1}
+\]</span>
+<p><em>Proof.</em> If <span class="math" data-tex="\(T\otimes1=0\)">\(T\otimes1=0\)</span>, then for every <span class="math" data-tex="\(x\in E,h\in H\)">\(x\in E,h\in H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0=\|Tx\otimes h\|^2
+=\langle h,\pi(\langle Tx,Tx\rangle)h\rangle.
+\]">\[
+0=\|Tx\otimes h\|^2
+=\langle h,\pi(\langle Tx,Tx\rangle)h\rangle.
+\]</span>
+<p>This positive operator has zero quadratic form, so it is zero. Faithfulness of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> gives <span class="math" data-tex="\(\langle Tx,Tx\rangle=0\)">\(\langle Tx,Tx\rangle=0\)</span>, and hence <span class="math" data-tex="\(Tx=0\)">\(Tx=0\)</span>. Thus the homomorphism is injective, and the C*-algebra isometry theorem gives (4.1). No fullness of <span class="math" data-tex="\(E\)">\(E\)</span> is needed. ∎</p>
+<p>For a state <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, use its GNS triple <span class="math" data-tex="\((H_\omega,\pi_\omega,\Omega_\omega)\)">\((H_\omega,\pi_\omega,\Omega_\omega)\)</span>, with scalar inner product linear in the second variable. The map</p>
+<span class="math math-display" data-tex="\[
+x\longmapsto x\otimes\Omega_\omega
+\]">\[
+x\longmapsto x\otimes\Omega_\omega
+\]</span>
+<p>has squared norm <span class="math" data-tex="\(\omega(\langle x,x\rangle)\)">\(\omega(\langle x,x\rangle)\)</span>. Its image is dense, because cyclicity and balancing turn <span class="math" data-tex="\(x\otimes\pi_\omega(a)\Omega_\omega\)">\(x\otimes\pi_\omega(a)\Omega_\omega\)</span> into <span class="math" data-tex="\(xa\otimes\Omega_\omega\)">\(xa\otimes\Omega_\omega\)</span>. It therefore identifies <span class="math" data-tex="\(E\otimes_{\pi_\omega}H_\omega\)">\(E\otimes_{\pi_\omega}H_\omega\)</span> with the state-localized Hilbert space obtained by null quotient and completion in <em>Adjointable operators</em>. Under this identification the operator representations agree. A single GNS representation need not be faithful; the equality of norms in (4.1) uses faithfulness, whereas the supremum over all state localizations always recovers the norm.</p>
+<p>For an <span class="math" data-tex="\(A\)">\(A\)</span>-<span class="math" data-tex="\(B\)">\(B\)</span> correspondence <span class="math" data-tex="\(F\)">\(F\)</span> and a representation <span class="math" data-tex="\(\rho:B\to\mathcal B(H)\)">\(\rho:B\to\mathcal B(H)\)</span>, define</p>
+<span id="equation-4-2"></span><span class="math math-display" data-tex="\[
+\operatorname{Ind}_F(\rho)(a)=\varphi(a)\otimes1
+\quad\text{on }F\otimes_\rho H.
+\tag{4.2}
+\]">\[
+\operatorname{Ind}_F(\rho)(a)=\varphi(a)\otimes1
+\quad\text{on }F\otimes_\rho H.
+\tag{4.2}
+\]</span>
+<p>This is a representation by Theorem 2.1. It is nondegenerate when the left action on <span class="math" data-tex="\(F\)">\(F\)</span> is nondegenerate, because the dense span of <span class="math" data-tex="\(AF\)">\(AF\)</span> yields a dense span of induced vectors.</p>
+<p>Induction is a functor on representations and bounded intertwiners. If <span class="math" data-tex="\(V:H\to H&#x27;\)">\(V:H\to H&#x27;\)</span> intertwines <span class="math" data-tex="\(\rho,\rho&#x27;\)">\(\rho,\rho&#x27;\)</span>, put
+<span class="math" data-tex="\((1\otimes V)(x\otimes h)=x\otimes Vh\)">\((1\otimes V)(x\otimes h)=x\otimes Vh\)</span>.
+To verify its norm bound, use the positive matrix <span class="math" data-tex="\(\rho_n((\langle x_i,x_j\rangle))\)">\(\rho_n((\langle x_i,x_j\rangle))\)</span> on <span class="math" data-tex="\(H^n\)">\(H^n\)</span>. The diagonal operator with entries <span class="math" data-tex="\(V^*V\)">\(V^*V\)</span> commutes with this matrix and is at most <span class="math" data-tex="\(\|V\|^2\)">\(\|V\|^2\)</span> times the identity, because <span class="math" data-tex="\(V^*V\)">\(V^*V\)</span> commutes with <span class="math" data-tex="\(\rho(B)\)">\(\rho(B)\)</span>. The same square-root calculation as Proposition 2.2 proves the bound <span class="math" data-tex="\(\|1\otimes V\|\leq\|V\|\)">\(\|1\otimes V\|\leq\|V\|\)</span>. Balancing and the adjoint identity with <span class="math" data-tex="\(V^*\)">\(V^*\)</span> follow from intertwining. Identities and composition are verified on simple tensors. Associativity identifies induction through a tensor product of correspondences with successive induction.</p>
+<p><span id="example-4-2"></span><strong>Example 4.2 (Tensoring bundles).</strong> Let <span class="math" data-tex="\(V,W\)">\(V,W\)</span> be Hermitian vector bundles over compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span>. With pointwise left multiplication on <span class="math" data-tex="\(\Gamma(W)\)">\(\Gamma(W)\)</span>, the map</p>
+<span class="math math-display" data-tex="\[
+\Gamma(V)\otimes_{C(X)}\Gamma(W)\longrightarrow
+\Gamma(V\otimes W),\quad s\otimes t\longmapsto
+(x\mapsto s(x)\otimes t(x))
+\]">\[
+\Gamma(V)\otimes_{C(X)}\Gamma(W)\longrightarrow
+\Gamma(V\otimes W),\quad s\otimes t\longmapsto
+(x\mapsto s(x)\otimes t(x))
+\]</span>
+<p>preserves inner products by the tensor-product metric on each fibre. It is onto. Indeed take a finite Parseval frame <span class="math" data-tex="\(s_i\)">\(s_i\)</span> for <span class="math" data-tex="\(\Gamma(V)\)">\(\Gamma(V)\)</span>, supplied by the preceding lesson. For any section <span class="math" data-tex="\(u\)">\(u\)</span> of <span class="math" data-tex="\(V\otimes W\)">\(V\otimes W\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+t_i(x)=(\langle s_i(x),\,\cdot\,\rangle\otimes1)u(x).
+\]">\[
+t_i(x)=(\langle s_i(x),\,\cdot\,\rangle\otimes1)u(x).
+\]</span>
+<p>These are continuous sections of <span class="math" data-tex="\(W\)">\(W\)</span>, and the fibrewise frame identity gives <span class="math" data-tex="\(u=\sum_i s_i\otimes t_i\)">\(u=\sum_i s_i\otimes t_i\)</span>. Thus the completed isometry is unitary.</p>
+<h2 id="5-exterior-tensor-products-and-compact-operators">5. Exterior tensor products and compact operators</h2>
+<p>We first establish the spatial norm facts needed for the exterior completion. The representation prerequisite is <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html">Representations and positive functionals: the GNS construction and the Gelfand–Naimark theorem</a>, Proposition 1.5, Theorems 5.4–5.5 and Theorem 7.2: representations decompose into cyclic parts, positive functionals have their cyclic representations, and every C*-algebra has a faithful representation.</p>
+<p><strong>Lemma (Hilbert-space tensors and the spatial norm).</strong> For bounded Hilbert-space operators, <span class="math" data-tex="\(T\otimes S\)">\(T\otimes S\)</span> extends to the completed Hilbert tensor product, has adjoint <span class="math" data-tex="\(T^*\otimes S^*\)">\(T^*\otimes S^*\)</span>, and has norm <span class="math" data-tex="\(\|T\|\|S\|\)">\(\|T\|\|S\|\)</span>. For C*-algebras <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, every pair of faithful representations computes the same norm on <span class="math" data-tex="\(A\odot B\)">\(A\odot B\)</span>, the minimal spatial tensor norm.</p>
+<p><em>Proof.</em> A finite tensor sum is contained in the tensor product of two finite-dimensional subspaces. Choosing orthonormal bases there makes its tensor inner product the ordinary coefficient Euclidean inner product, proving positivity and definiteness. On finite sums, expand the second factor in an orthonormal basis to get <span class="math" data-tex="\(\|(T\otimes1)\xi\|\leq\|T\|\|\xi\|\)">\(\|(T\otimes1)\xi\|\leq\|T\|\|\xi\|\)</span>; expanding the first gives the analogous estimate for <span class="math" data-tex="\(1\otimes S\)">\(1\otimes S\)</span>. Their composition extends boundedly with the upper product bound. Unit elementary tensors whose factors nearly attain the two operator norms give the lower bound. The adjoint identity follows on elementary tensors, hence on their dense span and completion.</p>
+<p>For the algebraic spatial norm, take the supremum over pairs of representations. This is finite, bounded by <span class="math" data-tex="\(\sum_j\|a_j\|\|b_j\|\)">\(\sum_j\|a_j\|\|b_j\|\)</span> for <span class="math" data-tex="\(z=\sum_ja_j\otimes b_j\)">\(z=\sum_ja_j\otimes b_j\)</span>. It is a C*-norm: the C*-identity holds in each operator representation; a faithful pair is algebraically injective, because finite linearly independent operator coefficients can be separated by vector functionals. Cyclic decomposition reduces this supremum to pairs of GNS representations of states. In a cyclic pair, the vectors obtained by applying algebraic tensors <span class="math" data-tex="\(w\)">\(w\)</span> to the product cyclic vector are dense. Its squared operator norm is therefore the supremum of</p>
+<span id="equation-5-0"></span><span class="math math-display" data-tex="\[
+\frac{(\varphi\otimes\psi)(w^*z^*zw)}
+{(\varphi\otimes\psi)(w^*w)},
+\tag{5.0}
+\]">\[
+\frac{(\varphi\otimes\psi)(w^*z^*zw)}
+{(\varphi\otimes\psi)(w^*w)},
+\tag{5.0}
+\]</span>
+<p>over states and positive denominators.</p>
+<p>Fix a faithful nondegenerate pair <span class="math" data-tex="\(\pi,\sigma\)">\(\pi,\sigma\)</span>, and set <span class="math" data-tex="\(c=\|(\pi\odot\sigma)(z)\|\)">\(c=\|(\pi\odot\sigma)(z)\|\)</span>. In either faithful representation, convex combinations of unit-vector states are weak-* dense in all states. Otherwise Hahn–Banach separation produces a self-adjoint element whose value at a missing state exceeds its supremum on unit vectors. That supremum is its upper spectral bound, preserved by faithfulness, so no state can exceed it. For nonunital algebras, apply this argument to the canonical minimal unitization and its faithful representation; restriction yields the same conclusion. For unital algebras use the algebra itself.</p>
+<p>Product vector states satisfy</p>
+<span class="math math-display" data-tex="\[
+(\varphi\otimes\psi)(w^*z^*zw)
+\leq c^2(\varphi\otimes\psi)(w^*w).
+\]">\[
+(\varphi\otimes\psi)(w^*z^*zw)
+\leq c^2(\varphi\otimes\psi)(w^*w).
+\]</span>
+<p>Taking finite convex combinations in both factors and then their weak-* limits preserves this inequality: the two expressions involve only finitely many coefficient evaluations. It consequently holds for all pairs of states. Formula (5.0) bounds the supremum over all representations by <span class="math" data-tex="\(c\)">\(c\)</span>; the reverse inequality is part of its definition. Thus every faithful nondegenerate pair realizes the same norm. A degenerate faithful representation has a faithful nondegenerate active summand, giving the same norms. If either algebra is zero the assertion is immediate. ∎</p>
+<p>The spatial-norm argument is also developed in <em>Tensor norms and independent systems</em>, Theorem 3.1; that programme proof is original CC0 writing. The argument above supplies the bridge here, with the module course's inner-product convention. Historical references include Blackadar, II.9.1.3.</p>
+<p>Here <span class="math" data-tex="\(E\)">\(E\)</span> is a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module and <span class="math" data-tex="\(F\)">\(F\)</span> a Hilbert <span class="math" data-tex="\(B\)">\(B\)</span>-module, with no left action prescribed. Their exterior tensor product, written <span class="math" data-tex="\(E\boxtimes F\)">\(E\boxtimes F\)</span>, has coefficient algebra <span class="math" data-tex="\(A\otimes_{\min}B\)">\(A\otimes_{\min}B\)</span>.</p>
+<p>On <span class="math" data-tex="\(E\odot_{\mathbb C}F\)">\(E\odot_{\mathbb C}F\)</span>, define the action of <span class="math" data-tex="\(A\odot B\)">\(A\odot B\)</span> componentwise and set</p>
+<span id="equation-5-1"></span><span class="math math-display" data-tex="\[
+\langle x\odot y,x&#x27;\odot y&#x27;\rangle
+=\langle x,x&#x27;\rangle_A\otimes\langle y,y&#x27;\rangle_B.
+\tag{5.1}
+\]">\[
+\langle x\odot y,x&#x27;\odot y&#x27;\rangle
+=\langle x,x&#x27;\rangle_A\otimes\langle y,y&#x27;\rangle_B.
+\tag{5.1}
+\]</span>
+<p>We justify both positivity and the completion over the completed coefficient algebra.</p>
+<p>For a finite list of elementary tensors, let <span class="math" data-tex="\(G_E,G_F\)">\(G_E,G_F\)</span> be the two positive Gram matrices. Their tensor product is positive in <span class="math" data-tex="\(M_{n^2}(A\otimes_{\min}B)\)">\(M_{n^2}(A\otimes_{\min}B)\)</span>: tensor their square roots to get a factorization <span class="math" data-tex="\(C^*C\)">\(C^*C\)</span>. Compress to the diagonal index pairs <span class="math" data-tex="\((i,i)\)">\((i,i)\)</span>. The resulting matrix has entries
+<span class="math" data-tex="\(\langle x_i,x_j\rangle\otimes\langle y_i,y_j\rangle\)">\(\langle x_i,x_j\rangle\otimes\langle y_i,y_j\rangle\)</span> and is positive. Multiplication on both sides by the scalar column with all entries one shows positivity of (5.1) on a finite tensor sum. For vectors <span class="math" data-tex="\(z_\alpha=\sum_i x_{\alpha i}\odot y_{\alpha i}\)">\(z_\alpha=\sum_i x_{\alpha i}\odot y_{\alpha i}\)</span>, apply the same construction to the combined index <span class="math" data-tex="\((\alpha,i)\)">\((\alpha,i)\)</span>, obtaining a positive matrix <span class="math" data-tex="\(H\)">\(H\)</span>. The scalar rectangular matrix <span class="math" data-tex="\(C_{(\alpha,i),\beta}=\delta_{\alpha\beta}\)">\(C_{(\alpha,i),\beta}=\delta_{\alpha\beta}\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+(C^*HC)_{\alpha\beta}=\langle z_\alpha,z_\beta\rangle.
+\]">\[
+(C^*HC)_{\alpha\beta}=\langle z_\alpha,z_\beta\rangle.
+\]</span>
+<p>Thus every Gram matrix of finite sums is positive.</p>
+<p>A positive two-by-two Gram matrix gives Cauchy–Schwarz without requiring an action by inverses outside <span class="math" data-tex="\(A\odot B\)">\(A\odot B\)</span>. In fact, for
+<span class="math" data-tex="\(\begin{pmatrix}a&amp;c\\c^*&amp;b\end{pmatrix}\geq0\)">\(\begin{pmatrix}a&amp;c\\c^*&amp;b\end{pmatrix}\geq0\)</span>, add <span class="math" data-tex="\(\varepsilon1\)">\(\varepsilon1\)</span> to its upper-left entry and multiply on both sides by the column
+<span class="math" data-tex="\((-(a+\varepsilon1)^{-1}c,1)^t\)">\((-(a+\varepsilon1)^{-1}c,1)^t\)</span> and its adjoint in the coefficient unitization. Positivity gives</p>
+<span class="math math-display" data-tex="\[
+c^*(a+\varepsilon1)^{-1}c\leq b.
+\]">\[
+c^*(a+\varepsilon1)^{-1}c\leq b.
+\]</span>
+<p>Since <span class="math" data-tex="\((a+\varepsilon1)^{-1}\geq(\|a\|+\varepsilon)^{-1}1\)">\((a+\varepsilon1)^{-1}\geq(\|a\|+\varepsilon)^{-1}1\)</span>, this implies <span class="math" data-tex="\(c^*c\leq(\|a\|+\varepsilon)b\)">\(c^*c\leq(\|a\|+\varepsilon)b\)</span>; let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to zero. Hence <span class="math" data-tex="\(\|c\|\leq\|a\|^{1/2}\|b\|^{1/2}\)">\(\|c\|\leq\|a\|^{1/2}\|b\|^{1/2}\)</span>. The triangle inequality, null quotient and continuous inner product now follow just as for pre-Hilbert modules.</p>
+<p>For an algebraic coefficient <span class="math" data-tex="\(d\in A\odot B\)">\(d\in A\odot B\)</span>, compatibility gives</p>
+<span class="math math-display" data-tex="\[
+\|zd\|^2=\|d^*\langle z,z\rangle d\|
+\leq\|d\|_{\min}^2\|z\|^2.
+\]">\[
+\|zd\|^2=\|d^*\langle z,z\rangle d\|
+\leq\|d\|_{\min}^2\|z\|^2.
+\]</span>
+<p>Complete the null quotient first. This estimate extends its coefficient action uniquely from the dense algebra <span class="math" data-tex="\(A\odot B\)">\(A\odot B\)</span> to <span class="math" data-tex="\(A\otimes_{\min}B\)">\(A\otimes_{\min}B\)</span>. The extended identities and positive inner product make it a Hilbert module <span class="math" data-tex="\(E\boxtimes F\)">\(E\boxtimes F\)</span>. In particular
+<span class="math" data-tex="\(\|x\boxtimes y\|=\|x\|\|y\|\)">\(\|x\boxtimes y\|=\|x\|\|y\|\)</span>, using the spatial cross norm.</p>
+<p><span id="theorem-5-1"></span><strong>Theorem 5.1 (Exterior compact algebra).</strong></p>
+<span id="equation-5-2"></span><span class="math math-display" data-tex="\[
+\mathcal K(E)\otimes_{\min}\mathcal K(F)
+\cong\mathcal K(E\boxtimes F),
+\tag{5.2}
+\]">\[
+\mathcal K(E)\otimes_{\min}\mathcal K(F)
+\cong\mathcal K(E\boxtimes F),
+\tag{5.2}
+\]</span>
+<p>by the map</p>
+<span id="equation-5-3"></span><span class="math math-display" data-tex="\[
+\theta_{x,x&#x27;}\otimes\theta_{y,y&#x27;}
+\longmapsto\theta_{x\boxtimes y,x&#x27;\boxtimes y&#x27;}.
+\tag{5.3}
+\]">\[
+\theta_{x,x&#x27;}\otimes\theta_{y,y&#x27;}
+\longmapsto\theta_{x\boxtimes y,x&#x27;\boxtimes y&#x27;}.
+\tag{5.3}
+\]</span>
+<p><em>Proof.</em> Choose faithful nondegenerate representations <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. Their existence is a C*-algebra prerequisite. Put <span class="math" data-tex="\(H_E=E\otimes_\rho H\)">\(H_E=E\otimes_\rho H\)</span>, <span class="math" data-tex="\(K_F=F\otimes_\sigma K\)">\(K_F=F\otimes_\sigma K\)</span>. The localized representations of <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span> and <span class="math" data-tex="\(\mathcal L(F)\)">\(\mathcal L(F)\)</span> are faithful by Theorem 4.1.</p>
+<p>For <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, the bounded map <span class="math" data-tex="\(r_x:H\to H_E\)">\(r_x:H\to H_E\)</span>, <span class="math" data-tex="\(h\mapsto x\otimes h\)">\(h\mapsto x\otimes h\)</span>, satisfies</p>
+<span class="math math-display" data-tex="\[
+r_x^*r_{x&#x27;}=\rho(\langle x,x&#x27;\rangle).
+\]">\[
+r_x^*r_{x&#x27;}=\rho(\langle x,x&#x27;\rangle).
+\]</span>
+<p>This follows from the adjoint construction (2.1); define <span class="math" data-tex="\(s_y:K\to K_F\)">\(s_y:K\to K_F\)</span> similarly. For <span class="math" data-tex="\(z=\sum_i x_i\boxtimes y_i\)">\(z=\sum_i x_i\boxtimes y_i\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+R_z=\sum_i r_{x_i}\otimes s_{y_i}:H\otimes K\to H_E\otimes K_F.
+\]">\[
+R_z=\sum_i r_{x_i}\otimes s_{y_i}:H\otimes K\to H_E\otimes K_F.
+\]</span>
+<p>Then</p>
+<span id="equation-5-4"></span><span class="math math-display" data-tex="\[
+R_z^*R_z=(\rho\otimes\sigma)(\langle z,z\rangle).
+\tag{5.4}
+\]">\[
+R_z^*R_z=(\rho\otimes\sigma)(\langle z,z\rangle).
+\tag{5.4}
+\]</span>
+<p>Faithfulness of the spatial coefficient representation gives <span class="math" data-tex="\(\|R_z\|=\|z\|\)">\(\|R_z\|=\|z\|\)</span>, so this map extends to completed vectors.</p>
+<p>For <span class="math" data-tex="\(u=\sum_j T_j\otimes S_j\)">\(u=\sum_j T_j\otimes S_j\)</span> in the algebraic tensor product of the two adjointable algebras, its componentwise action on <span class="math" data-tex="\(z\)">\(z\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+R_{uz}=\left(\sum_j(T_j\otimes1_H)\otimes(S_j\otimes1_K)\right)R_z.
+\]">\[
+R_{uz}=\left(\sum_j(T_j\otimes1_H)\otimes(S_j\otimes1_K)\right)R_z.
+\]</span>
+<p>The faithful spatial representations show that the operator in parentheses has norm <span class="math" data-tex="\(\|u\|_{\min}\)">\(\|u\|_{\min}\)</span>. Thus <span class="math" data-tex="\(\|uz\|\leq\|u\|_{\min}\|z\|\)">\(\|uz\|\leq\|u\|_{\min}\|z\|\)</span>. Adjoints act componentwise by (5.1). We obtain a *-homomorphism</p>
+<span class="math math-display" data-tex="\[
+\mathcal L(E)\otimes_{\min}\mathcal L(F)
+\longrightarrow\mathcal L(E\boxtimes F).
+\]">\[
+\mathcal L(E)\otimes_{\min}\mathcal L(F)
+\longrightarrow\mathcal L(E\boxtimes F).
+\]</span>
+<p>It is injective: if the image of <span class="math" data-tex="\(u\)">\(u\)</span> is zero, (5.4) shows that its faithful spatial representation annihilates every <span class="math" data-tex="\(R_z(h\otimes k)\)">\(R_z(h\otimes k)\)</span>. Their span is dense in <span class="math" data-tex="\(H_E\otimes K_F\)">\(H_E\otimes K_F\)</span>, since it contains <span class="math" data-tex="\((x\otimes h)\otimes(y\otimes k)\)">\((x\otimes h)\otimes(y\otimes k)\)</span>. Hence that spatial operator, and then <span class="math" data-tex="\(u\)">\(u\)</span>, is zero. The argument extends from algebraic <span class="math" data-tex="\(u\)">\(u\)</span> by norm continuity.</p>
+<p>Restrict to the compact algebras. Direct substitution gives (5.3), so their tensor product maps into <span class="math" data-tex="\(\mathcal K(E\boxtimes F)\)">\(\mathcal K(E\boxtimes F)\)</span>. Every vector of the exterior product is approximated by finite tensor sums. The estimate</p>
+<span class="math math-display" data-tex="\[
+\|\theta_{\xi,\eta}-\theta_{\xi&#x27;,\eta&#x27;}\|
+\leq\|\xi-\xi&#x27;\|\|\eta\|+\|\xi&#x27;\|\|\eta-\eta&#x27;\|
+\]">\[
+\|\theta_{\xi,\eta}-\theta_{\xi&#x27;,\eta&#x27;}\|
+\leq\|\xi-\xi&#x27;\|\|\eta\|+\|\xi&#x27;\|\|\eta-\eta&#x27;\|
+\]</span>
+<p>shows that their rank-one operators are approximated by sums of the operators in (5.3). The injective *-homomorphism is isometric, so its range is closed; density therefore proves surjectivity. ∎</p>
+<p>No nuclearity, fullness or countability is needed in (5.2). Specifying the minimal tensor norm is essential to the faithful spatial-representation argument.</p>
+<p><span id="example-5-2"></span><strong>Example 5.2 (The standard module).</strong> The map from finite sums in
+<span class="math" data-tex="\(\ell^2\boxtimes A\)">\(\ell^2\boxtimes A\)</span> to <span class="math" data-tex="\(H_A\)">\(H_A\)</span> sending <span class="math" data-tex="\(e_j\boxtimes a\)">\(e_j\boxtimes a\)</span> to the column with entry <span class="math" data-tex="\(a\)">\(a\)</span> in coordinate <span class="math" data-tex="\(j\)">\(j\)</span> preserves the inner product <span class="math" data-tex="\(\sum_j a_j^*b_j\)">\(\sum_j a_j^*b_j\)</span>. Its range contains all finite columns, dense in <span class="math" data-tex="\(H_A\)">\(H_A\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\ell^2\boxtimes A\cong H_A.
+\]">\[
+\ell^2\boxtimes A\cong H_A.
+\]</span>
+<p>Theorem 5.1 then recovers <span class="math" data-tex="\(\mathcal K(H_A)\cong\mathbb K\otimes_{\min}A\)">\(\mathcal K(H_A)\cong\mathbb K\otimes_{\min}A\)</span>.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><strong>Exercise 6.1 (Basic: columns).</strong> Identify <span class="math" data-tex="\(A^n\otimes_\varphi F\)">\(A^n\otimes_\varphi F\)</span>, including a degenerate left action.</p>
+<p><em>Solution.</em> Map <span class="math" data-tex="\((a_i)\otimes y\)">\((a_i)\otimes y\)</span> to <span class="math" data-tex="\((\varphi(a_i)y)_i\)">\((\varphi(a_i)y)_i\)</span>. Multiplicativity proves balancing, and the equality of inner products in (1.4) proves isometry for all finite sums. Single-coordinate vectors <span class="math" data-tex="\((0,\ldots,a,\ldots,0)\otimes y\)">\((0,\ldots,a,\ldots,0)\otimes y\)</span> span a dense image in <span class="math" data-tex="\(F_{\mathrm{ess}}^n\)">\(F_{\mathrm{ess}}^n\)</span>. Completion therefore gives a unitary onto that module. For a nondegenerate action it is <span class="math" data-tex="\(F^n\)">\(F^n\)</span>. The zero action on nonzero <span class="math" data-tex="\(F\)">\(F\)</span> gives zero instead, proving that the nondegeneracy condition cannot be dropped. ∎</p>
+<p><strong>Exercise 6.2 (Interior positivity).</strong> Prove positivity of the inner product of a finite balanced tensor sum, and explain why testing simple tensors is insufficient.</p>
+<p><em>Solution.</em> For <span class="math" data-tex="\(z=\sum_i x_i\otimes y_i\)">\(z=\sum_i x_i\otimes y_i\)</span>, the Gram matrix <span class="math" data-tex="\(G=(\langle x_i,x_j\rangle)\)">\(G=(\langle x_i,x_j\rangle)\)</span> is positive. Its entrywise image under the *-homomorphism is positive on <span class="math" data-tex="\(F^n\)">\(F^n\)</span>; writing <span class="math" data-tex="\(G=C^*C\)">\(G=C^*C\)</span> proves this directly. Therefore <span class="math" data-tex="\(\langle z,z\rangle=\langle(y_i),\varphi_n(G)(y_i)\rangle\geq0\)">\(\langle z,z\rangle=\langle(y_i),\varphi_n(G)(y_i)\rangle\geq0\)</span>. The balancing check in Theorem 1.2 makes this independent of representatives. The cross terms <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span> are part of the squared norm of a sum, so positivity on individual simple tensors alone would not establish positivity of the form. Null vectors are then removed before completion. ∎</p>
+<p><strong>Exercise 6.3 (An undefined operator).</strong> Give a bounded adjointable <span class="math" data-tex="\(S\)">\(S\)</span> for which <span class="math" data-tex="\(x\otimes y\mapsto x\otimes Sy\)">\(x\otimes y\mapsto x\otimes Sy\)</span> does not respect balancing.</p>
+<p><em>Solution.</em> Use <span class="math" data-tex="\(E=M_2(\mathbb C)\)">\(E=M_2(\mathbb C)\)</span>, <span class="math" data-tex="\(F=\mathbb C^2\)">\(F=\mathbb C^2\)</span>, the defining left action, and <span class="math" data-tex="\(S=\operatorname{diag}(1,0)\)">\(S=\operatorname{diag}(1,0)\)</span>. Both sides of <span class="math" data-tex="\(e_{12}\otimes e_2=1\otimes e_1\)">\(e_{12}\otimes e_2=1\otimes e_1\)</span> represent <span class="math" data-tex="\(e_1\)">\(e_1\)</span> under the unit identification. Applying the proposed formula to the first representative gives zero; applying it to the second gives <span class="math" data-tex="\(e_1\)">\(e_1\)</span>. The map is therefore undefined on the quotient. The obstruction is <span class="math" data-tex="\(Se_{12}\ne e_{12}S\)">\(Se_{12}\ne e_{12}S\)</span>, not lack of boundedness or an adjoint. ∎</p>
+<p><strong>Exercise 6.4 (Faithful localization).</strong> Show that localization through a faithful representation preserves the norm of every adjointable operator.</p>
+<p><em>Solution.</em> Theorem 1.2 gives a complete scalar-inner-product space, hence a Hilbert space. If <span class="math" data-tex="\(T\otimes1=0\)">\(T\otimes1=0\)</span>, then <span class="math" data-tex="\(\langle h,\pi(\langle Tx,Tx\rangle)h\rangle=0\)">\(\langle h,\pi(\langle Tx,Tx\rangle)h\rangle=0\)</span> for every <span class="math" data-tex="\(x,h\)">\(x,h\)</span>. Positivity and faithfulness imply <span class="math" data-tex="\(\langle Tx,Tx\rangle=0\)">\(\langle Tx,Tx\rangle=0\)</span>, so <span class="math" data-tex="\(T=0\)">\(T=0\)</span>. Thus the contractive *-homomorphism on adjointable operators is injective and isometric. For comparison, evaluation at zero on <span class="math" data-tex="\(A=C[0,1]\)">\(A=C[0,1]\)</span> kills the nonzero multiplication operator by the coordinate <span class="math" data-tex="\(t\)">\(t\)</span>; faithfulness really is needed for this conclusion about a single localization. ∎</p>
+<p><strong>Exercise 6.5 (Exterior compacts).</strong> Prove (5.2), paying attention to its tensor norm.</p>
+<p><em>Solution.</em> Faithful coefficient representations localize <span class="math" data-tex="\(E,F\)">\(E,F\)</span> to Hilbert spaces with faithful adjointable-operator representations. Formula (5.4) embeds each completed exterior-module vector as an operator between the spatial tensor Hilbert spaces. It gives the norm bound for the action of the minimal tensor product of the two compact algebras. If that action vanishes, its faithful spatial representation vanishes on the dense span of <span class="math" data-tex="\((x\otimes h)\otimes(y\otimes k)\)">\((x\otimes h)\otimes(y\otimes k)\)</span>, proving injectivity. Finally the rank-one product identity (5.3) puts the algebraic image in the compact algebra. Approximate arbitrary exterior-module vectors by finite tensor sums and apply the rank-one norm estimate in Theorem 5.1; the image is dense. Injectivity makes the image closed, so it is all the compact algebra. This proves the isomorphism with the minimal norm, without an assumption of nuclearity. ∎</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use the preceding course proofs of Gram positivity, null quotient and completion, adjointable operator order estimates, compact approximate identities and the isometry of injective C*-homomorphisms.</p>
+<p>The representation prerequisites are the cyclic decomposition, GNS construction and faithful representation theorem in <em>Representations and positive functionals</em>, Proposition 1.5, Theorems 5.4–5.5 and Theorem 7.2. The Hilbert-space tensor operator norm and independence of faithful spatial representations are proved in the opening lemma of Section 5. Blackadar II.6.4, II.9.1.3 and I.2.5 provide historical treatments.</p>
+<p>The compact bundle example uses the frame constructed in <em>Finite projective modules, frames and K₀</em>. We do not construct geometric groupoid correspondences, prove existence of Kasparov connections, or prove an equivalence of representation categories: the latter requires an imprimitivity bimodule and will be developed later.</p>
+<h2 id="references">References</h2>
+<p>[Li 2024] Y. Li, <em>Groupoid C*-algebras</em>, <a href="https://ncg-leiden.github.io/groupoid2022/groupoid_notes.pdf">Leiden Noncommutative Geometry Seminar notes</a>, updated 2024, Section 4.2 for correspondences and their composition.</p>
+<p>[Connes 1994] Alain Connes, <em>Noncommutative Geometry</em>, Academic Press, 1994, Chapter II, Appendix A, Proposition 6. <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">Author's electronic edition</a>.</p>
+<p>[Blackadar 1998] Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Cambridge University Press, 1998, Section 13.5. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</p>
+<p>[Blackadar 2006] Bruce Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Springer, 2006, II.7.4 for interior tensor products and correspondences, and II.9.1 for spatial tensor products. <a href="https://www.bruceblackadar.com/Mathematics/Cycr.pdf">Author's revised edition</a>.</p>
+<p>[Emerson 2024] Heath Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser, 2024, Section 5.5 for Hilbert-module operators and tensor-product applications.</p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/hilbert-c-star-modules-and-morita-equivalence/tensor-products-and-c-star-correspondences.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

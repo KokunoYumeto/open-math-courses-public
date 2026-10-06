@@ -1,0 +1,760 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cohomology with compact support</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="cohomology-with-compact-support">Cohomology with compact support</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Original text released under CC0.</em></p>
+<p>A section on an open curve can remain nonzero arbitrarily close to a missing point. Compact support imposes a different condition: its nonzero locus must be proper over the base. To retain that condition in higher cohomology, extend the coefficient complex by zero into a compactification and then use proper direct image. The main work is showing that every compactification produces the same functor and the same comparison maps.</p>
+<p>We use <a href="../support/ag-etale-cohomology--the-proper-base-change-theorem.html">The proper base change theorem</a>, <a href="../support/ag-etale-cohomology--torsion-sheaves-on-curves.html">Torsion sheaves on curves</a>, and <a href="../support/ag-etale-cohomology--constructible-sheaves-and-extension-by-zero.html">Constructible sheaves and extension by zero</a>. Proper and projective morphisms provide the geometric vocabulary. Sections 4–5 supply the dimension and unbounded-complex arguments needed in this lesson; they are not deferred to a later cohomological-dimension theorem.</p>
+<h2 id="1-coefficients-and-the-statements">1. Coefficients and the statements</h2>
+<p>All sites are small étale sites. A coefficient ring <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is commutative with identity. Write <span class="math" data-tex="\(D(X,\Lambda)\)">\(D(X,\Lambda)\)</span> for the derived category of sheaves of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-modules on <span class="math" data-tex="\(X\)">\(X\)</span>. The subcategory <span class="math" data-tex="\(D^+_{\mathrm{tors}}(X,\Lambda)\)">\(D^+_{\mathrm{tors}}(X,\Lambda)\)</span> consists of bounded-below complexes whose cohomology sheaves are torsion as abelian sheaves. Different sections can have different annihilators. A <em>torsion ring</em> satisfies <span class="math" data-tex="\(n\Lambda=0\)">\(n\Lambda=0\)</span> for some positive integer <span class="math" data-tex="\(n\)">\(n\)</span>: the additive order of its identity supplies such an integer.</p>
+<p>For a separated morphism of finite type <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> between quasi-compact, quasi-separated schemes, we construct</p>
+<span class="math math-display" data-tex="\[
+Rf_!:D^+_{\mathrm{tors}}(X,\Lambda)
+\longrightarrow D^+_{\mathrm{tors}}(Y,\Lambda).
+\tag{1.1}
+\]">\[
+Rf_!:D^+_{\mathrm{tors}}(X,\Lambda)
+\longrightarrow D^+_{\mathrm{tors}}(Y,\Lambda).
+\tag{1.1}
+\]</span>
+<p>When <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is torsion, the construction works on the entire, possibly unbounded, category <span class="math" data-tex="\(D(X,\Lambda)\)">\(D(X,\Lambda)\)</span>. Every subsequent assertion about <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> uses one of these two domains. Exact inverse image is denoted <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span>, and tensors in the derived category are derived tensors.</p>
+<p><strong>Theorem 1.1.</strong> The functor <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> is canonically independent of compactification. There are canonical, associative isomorphisms</p>
+<span class="math math-display" data-tex="\[
+Rg_!Rf_!\simeq R(gf)_!,
+\qquad g^{-1}Rf_!\simeq Rf&#x27;_!a^{-1}
+\tag{1.2}
+\]">\[
+Rg_!Rf_!\simeq R(gf)_!,
+\qquad g^{-1}Rf_!\simeq Rf&#x27;_!a^{-1}
+\tag{1.2}
+\]</span>
+<p>for composable separated finite-type morphisms and for a cartesian square</p>
+<span class="math math-display" data-tex="\[
+\begin{matrix}
+X&#x27;=X\times_Y Y&#x27;&amp;\xrightarrow{a}&amp;X\\
+f&#x27;\downarrow&amp;&amp;\downarrow f\\
+Y&#x27;&amp;\xrightarrow{g}&amp;Y.
+\end{matrix}
+\tag{1.3}
+\]">\[
+\begin{matrix}
+X&#x27;=X\times_Y Y&#x27;&amp;\xrightarrow{a}&amp;X\\
+f&#x27;\downarrow&amp;&amp;\downarrow f\\
+Y&#x27;&amp;\xrightarrow{g}&amp;Y.
+\end{matrix}
+\tag{1.3}
+\]</span>
+<p>Base change is arbitrary; it need not be flat. For a torsion ring and arbitrary complexes <span class="math" data-tex="\(E\in D(X,\Lambda)\)">\(E\in D(X,\Lambda)\)</span>, <span class="math" data-tex="\(M\in D(Y,\Lambda)\)">\(M\in D(Y,\Lambda)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+Rf_!E\otimes^L_\Lambda M
+\simeq Rf_!(E\otimes^L_\Lambda f^{-1}M).
+\tag{1.4}
+\]">\[
+Rf_!E\otimes^L_\Lambda M
+\simeq Rf_!(E\otimes^L_\Lambda f^{-1}M).
+\tag{1.4}
+\]</span>
+<p>For an open immersion with quasi-compact domain <span class="math" data-tex="\(j:U\to X\)">\(j:U\to X\)</span> and its closed complement <span class="math" data-tex="\(i:Z\to X\)">\(i:Z\to X\)</span>, these functors give the excision triangle. If every geometric fibre of <span class="math" data-tex="\(f\)">\(f\)</span> has dimension at most <span class="math" data-tex="\(d\)">\(d\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+R^qf_!\mathcal F=0\quad(q&gt;2d)
+\tag{1.5}
+\]">\[
+R^qf_!\mathcal F=0\quad(q&gt;2d)
+\tag{1.5}
+\]</span>
+<p>for every torsion sheaf <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. No constructibility assumption enters this bound. Sections 6–12 prove these assertions and the curve finiteness theorem.</p>
+<h2 id="2-properly-supported-sections">2. Properly supported sections</h2>
+<p>Let <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> be separated and locally of finite type. For an étale <span class="math" data-tex="\(V\to Y\)">\(V\to Y\)</span>, write <span class="math" data-tex="\(X_V=X\times_YV\)">\(X_V=X\times_YV\)</span>. A section <span class="math" data-tex="\(s\in\mathcal F(X_V)\)">\(s\in\mathcal F(X_V)\)</span> has a closed support: its complement is the union of open loci where its germ is zero. Properness of this closed subset over <span class="math" data-tex="\(V\)">\(V\)</span> means that its reduced induced closed subscheme is proper over <span class="math" data-tex="\(V\)">\(V\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+f_!\mathcal F(V)=
+\{s\in\mathcal F(X_V):\operatorname{Supp}(s)\to V
+\text{ is proper}\}.
+\tag{2.1}
+\]">\[
+f_!\mathcal F(V)=
+\{s\in\mathcal F(X_V):\operatorname{Supp}(s)\to V
+\text{ is proper}\}.
+\tag{2.1}
+\]</span>
+<p><strong>Lemma 2.1.</strong> Formula (2.1) defines an additive subsheaf of <span class="math" data-tex="\(f_*\mathcal F\)">\(f_*\mathcal F\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> is proper, <span class="math" data-tex="\(f_!=f_*\)">\(f_!=f_*\)</span>. If <span class="math" data-tex="\(j:X\hookrightarrow\overline X\)">\(j:X\hookrightarrow\overline X\)</span> is an open immersion over <span class="math" data-tex="\(Y\)">\(Y\)</span>, and <span class="math" data-tex="\(p:\overline X\to Y\)">\(p:\overline X\to Y\)</span> is proper, then</p>
+<span class="math math-display" data-tex="\[
+f_!\mathcal F=p_*j_!\mathcal F.
+\tag{2.2}
+\]">\[
+f_!\mathcal F=p_*j_!\mathcal F.
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> The support of a sum is contained in the union of the two supports. Finite unions and closed subsets of properly supported closed subsets are properly supported. Pulling back a section pulls back its support, and properness survives base change. To check gluing, first glue the sections in <span class="math" data-tex="\(f_*\mathcal F\)">\(f_*\mathcal F\)</span>. Their supports on an étale covering are the pullbacks of the support of the glued section. Properness descends through that covering: finite type, separatedness and universal closedness can each be checked faithfully flat locally on the target. Thus the glued section satisfies (2.1).</p>
+<p>When <span class="math" data-tex="\(f\)">\(f\)</span> is proper every closed support is proper. For (2.2), a section of <span class="math" data-tex="\(j_!\mathcal F\)">\(j_!\mathcal F\)</span> on <span class="math" data-tex="\(\overline X_V\)">\(\overline X_V\)</span> has closed support contained in <span class="math" data-tex="\(X_V\)">\(X_V\)</span>, because the boundary stalks are zero. That closed support is proper over <span class="math" data-tex="\(V\)">\(V\)</span>. Conversely a support proper over <span class="math" data-tex="\(V\)">\(V\)</span> is closed in <span class="math" data-tex="\(\overline X_V\)">\(\overline X_V\)</span>: its map there is proper, using separatedness of <span class="math" data-tex="\(\overline X_V/V\)">\(\overline X_V/V\)</span>. Glue the given section on <span class="math" data-tex="\(X_V\)">\(X_V\)</span> to zero off its support. This produces a section of <span class="math" data-tex="\(j_!\mathcal F\)">\(j_!\mathcal F\)</span>, uniquely, and the two operations are inverse. □</p>
+<p><strong>Lemma 2.2.</strong> Suppose <span class="math" data-tex="\(f\)">\(f\)</span> is separated and locally quasi-finite. For a geometric point <span class="math" data-tex="\(\bar y\)">\(\bar y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(f_!\mathcal F)_{\bar y}
+=\bigoplus_{\bar x\in X_{\bar y}}\mathcal F_{\bar x}.
+\tag{2.3}
+\]">\[
+(f_!\mathcal F)_{\bar y}
+=\bigoplus_{\bar x\in X_{\bar y}}\mathcal F_{\bar x}.
+\tag{2.3}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(f_!\)">\(f_!\)</span> is exact and commutes with direct sums and arbitrary base change. For separated étale <span class="math" data-tex="\(f\)">\(f\)</span>, this is the exact extension-by-zero functor of lesson 11.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(X/Y\)">\(X/Y\)</span> is finite type and <span class="math" data-tex="\(Y\)">\(Y\)</span> affine. Compactify it. Equation (2.2), degree-zero proper base change, and the base change of open extension by zero identify the left side with</p>
+<span class="math math-display" data-tex="\[
+H^0(\overline X_{\bar y},j_{\bar y,!}\mathcal F|_{X_{\bar y}})
+=H^0_c(X_{\bar y},\mathcal F|_{X_{\bar y}}).
+\tag{2.4}
+\]">\[
+H^0(\overline X_{\bar y},j_{\bar y,!}\mathcal F|_{X_{\bar y}})
+=H^0_c(X_{\bar y},\mathcal F|_{X_{\bar y}}).
+\tag{2.4}
+\]</span>
+<p>The locally quasi-finite geometric fibre is a disjoint union of zero-dimensional local schemes. Their étale topoi are point topoi: nilpotents do not change that topos, and the residue fields are algebraically closed. A proper closed support in this discrete fibre consists of finitely many points. Formula (2.4) is therefore the sum in (2.3).</p>
+<p>For a general locally quasi-finite <span class="math" data-tex="\(f\)">\(f\)</span>, work near <span class="math" data-tex="\(\bar y\)">\(\bar y\)</span> in an affine base. A properly supported section has quasi-compact support, hence is contained in a quasi-compact open of <span class="math" data-tex="\(X\)">\(X\)</span>. Such an open is separated and finite type over the affine base. Extension by zero from these opens identifies <span class="math" data-tex="\(f_!\)">\(f_!\)</span> with their filtered union: supports proper over the base stay closed in the larger separated scheme. The fibre sum is the corresponding union of finite sums. This proves (2.3) without a global quasi-compactness hypothesis on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Exactness and sums now follow from exactness of stalks and of direct sums of modules. For base change, pull back a section with its support. This defines the canonical map <span class="math" data-tex="\(g^{-1}f_!\mathcal F\to f&#x27;_!a^{-1}\mathcal F\)">\(g^{-1}f_!\mathcal F\to f&#x27;_!a^{-1}\mathcal F\)</span>. At <span class="math" data-tex="\(\bar y&#x27;\)">\(\bar y&#x27;\)</span> both sums are indexed by the identical fibre <span class="math" data-tex="\(X_{\bar y&#x27;}\)">\(X_{\bar y&#x27;}\)</span>, and each summand is identified by inverse image of germs. The map is the identity on these sums, so it is an isomorphism. For étale <span class="math" data-tex="\(f\)">\(f\)</span>, lesson 11's extension by zero has the same canonical summand maps: a section on a local branch extends by zero to that branch. Étale locally the finite support lies in finitely many such branches, which proves the identification with (2.1). □</p>
+<p>A finite formal-support description sometimes extends this construction to nonseparated locally quasi-finite maps. One sheafifies sums <span class="math" data-tex="\((T,s)\)">\((T,s)\)</span>, with <span class="math" data-tex="\(T\)">\(T\)</span> locally closed and finite over the target and <span class="math" data-tex="\(s\)">\(s\)</span> supported on <span class="math" data-tex="\(T\)">\(T\)</span>, subject to addition and enlargement-of-support relations. For separated maps each such <span class="math" data-tex="\(T\)">\(T\)</span> is closed in <span class="math" data-tex="\(X_V\)">\(X_V\)</span>, so this gives exactly (2.1). Our finite-type derived construction throughout this lesson requires separatedness.</p>
+<h2 id="3-compactifications-and-refinements">3. Compactifications and refinements</h2>
+<p><strong>Nagata compactification, stated.</strong> A separated finite-type morphism to a quasi-compact, quasi-separated scheme factors</p>
+<span class="math math-display" data-tex="\[
+X\xrightarrow{j}\overline X\xrightarrow{p}Y,
+\qquad j\text{ open},\quad p\text{ proper}.
+\tag{3.1}
+\]">\[
+X\xrightarrow{j}\overline X\xrightarrow{p}Y,
+\qquad j\text{ open},\quad p\text{ proper}.
+\tag{3.1}
+\]</span>
+<p>This is Nagata's compactification theorem <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/flat.html#flat-theorem-nagata">Tag 0F41</a>, used without proof. Finite presentation of <span class="math" data-tex="\(f\)">\(f\)</span> is not required. Taking the schematic closure of <span class="math" data-tex="\(X\)">\(X\)</span> in <span class="math" data-tex="\(\overline X\)">\(\overline X\)</span> gives a compactification with <span class="math" data-tex="\(X\)">\(X\)</span> dense and schematically dense; call such a compactification dense. The open is quasi-compact, so its schematic closure exists and restricts to <span class="math" data-tex="\(X\)">\(X\)</span> on that open.</p>
+<p>A morphism of compactifications is a <span class="math" data-tex="\(Y\)">\(Y\)</span>-map <span class="math" data-tex="\(h:\overline X_1\to\overline X_2\)">\(h:\overline X_1\to\overline X_2\)</span> restricting to the identity on <span class="math" data-tex="\(X\)">\(X\)</span>. It is proper: its graph is closed in <span class="math" data-tex="\(\overline X_1\times_Y\overline X_2\)">\(\overline X_1\times_Y\overline X_2\)</span>, and projection from that product to <span class="math" data-tex="\(\overline X_2\)">\(\overline X_2\)</span> is proper.</p>
+<p><strong>Lemma 3.1.</strong> The category of compactifications is cofiltered. Dense compactifications suffice to refine any finite collection of choices. For a refinement with dense source,</p>
+<span class="math math-display" data-tex="\[
+h^{-1}(X)=X.
+\tag{3.2}
+\]">\[
+h^{-1}(X)=X.
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> Nonemptiness is Nagata. For two compactifications take the schematic closure of the diagonal copy of <span class="math" data-tex="\(X\)">\(X\)</span> in <span class="math" data-tex="\(\overline X_1\times_Y\overline X_2\)">\(\overline X_1\times_Y\overline X_2\)</span>. It is proper over <span class="math" data-tex="\(Y\)">\(Y\)</span>. Above the open <span class="math" data-tex="\(X\)">\(X\)</span> in the first factor, that copy is the graph of <span class="math" data-tex="\(X\to\overline X_2\)">\(X\to\overline X_2\)</span>, which is closed because <span class="math" data-tex="\(\overline X_2/Y\)">\(\overline X_2/Y\)</span> is separated. The closure thus restricts to that graph, and the copy of <span class="math" data-tex="\(X\)">\(X\)</span> is open in the closure. Both projections give refinements.</p>
+<p>Two parallel morphisms are equalized by their closed equalizer in the source; the equalizer is proper and contains the same open <span class="math" data-tex="\(X\)">\(X\)</span>. Taking its schematic closure if needed makes a dense refining object. These are exactly the three cofilteredness requirements.</p>
+<p>For (3.2), inside <span class="math" data-tex="\(h^{-1}(X)\)">\(h^{-1}(X)\)</span> the given copy of <span class="math" data-tex="\(X\)">\(X\)</span> is an open section of a proper morphism to <span class="math" data-tex="\(X\)">\(X\)</span>. That section is also closed. Its complement is therefore open in <span class="math" data-tex="\(h^{-1}(X)\)">\(h^{-1}(X)\)</span>, hence open in <span class="math" data-tex="\(\overline X_1\)">\(\overline X_1\)</span>, and disjoint from the dense <span class="math" data-tex="\(X\)">\(X\)</span>. It is empty. An open subscheme is determined by its underlying open subset, which gives (3.2). Finally two maps out of a schematically dense compactification that agree on <span class="math" data-tex="\(X\)">\(X\)</span> agree everywhere: their closed equalizer has ideal restricting to zero on <span class="math" data-tex="\(X\)">\(X\)</span>, and schematic density makes that ideal zero. □</p>
+<p>Nagata's theorem is used only for existence. The refinement and equalizer arguments, which provide the canonical nature of our cohomological construction, have been proved here.</p>
+<h2 id="4-the-proper-dimension-bound">4. The proper dimension bound</h2>
+<p>We need a bound before passing to unbounded complexes. The geometric foundations used in this section are these: normalization of a reduced finite-type scheme over a field is finite; an integral normal scheme is regular at codimension-one points; a rational map from such a scheme to a proper curve extends at those points; and a dominant morphism from an integral <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional scheme to a curve has fibres of dimension at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. In the last assertion, on an affine piece the special fibre is cut out by a nonzero parameter, while the generic fibre has dimension <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. These are geometric facts about finite-type schemes, without a cohomological premise.</p>
+<p><strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(p:T\to S\)">\(p:T\to S\)</span> is proper and every geometric fibre has dimension at most <span class="math" data-tex="\(d\)">\(d\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+R^qp_*\mathcal F=0\quad(q&gt;2d)
+\tag{4.1}
+\]">\[
+R^qp_*\mathcal F=0\quad(q&gt;2d)
+\tag{4.1}
+\]</span>
+<p>for every torsion abelian sheaf <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>.</p>
+<p><strong>Proof.</strong> Induct on <span class="math" data-tex="\(d\)">\(d\)</span>, proving the assertion for all proper morphisms at once. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the morphism is proper and quasi-finite, hence finite; lesson 7 proves exactness of its direct image. For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, proper base change reduces the assertion to the proper curve theorem of lesson 12 over an algebraically closed field.</p>
+<p>For the induction step, proper base change again reduces to <span class="math" data-tex="\(H^q(T,\mathcal F)=0\)">\(H^q(T,\mathcal F)=0\)</span> for <span class="math" data-tex="\(T\)">\(T\)</span> proper over an algebraically closed field, <span class="math" data-tex="\(\dim T\leq d\)">\(\dim T\leq d\)</span>. Replace <span class="math" data-tex="\(T\)">\(T\)</span> by its reduction using topological invariance. Let <span class="math" data-tex="\(\nu:T^\nu\to T\)">\(\nu:T^\nu\to T\)</span> be its finite normalization, a disjoint union of normal integral components. The adjunction map</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal F\longrightarrow
+\nu_*\nu^{-1}\mathcal F\longrightarrow i_*\mathcal G
+\longrightarrow0
+\tag{4.2}
+\]">\[
+0\longrightarrow\mathcal F\longrightarrow
+\nu_*\nu^{-1}\mathcal F\longrightarrow i_*\mathcal G
+\longrightarrow0
+\tag{4.2}
+\]</span>
+<p>is injective since every geometric point has a lift to the surjective <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. It is an isomorphism on a dense open containing the generic points, so the cokernel is supported on a proper closed subscheme <span class="math" data-tex="\(Z\)">\(Z\)</span> of dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. Closed pushforward identifies it with <span class="math" data-tex="\(i_*\mathcal G\)">\(i_*\mathcal G\)</span>. By induction <span class="math" data-tex="\(H^q(Z,\mathcal G)=0\)">\(H^q(Z,\mathcal G)=0\)</span> for <span class="math" data-tex="\(q&gt;2d-2\)">\(q&gt;2d-2\)</span>. Since finite pushforward is exact, the long exact sequence reduces the desired vanishing to the normal integral components of <span class="math" data-tex="\(T^\nu\)">\(T^\nu\)</span>. Components of dimension below <span class="math" data-tex="\(d\)">\(d\)</span> are already covered by induction.</p>
+<p>Now let <span class="math" data-tex="\(T\)">\(T\)</span> be normal integral of dimension <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>. Choose a nonconstant rational function. Its graph closure supplies</p>
+<span class="math math-display" data-tex="\[
+T\xleftarrow{b}T&#x27;\xrightarrow{r}\mathbf P^1.
+\tag{4.3}
+\]">\[
+T\xleftarrow{b}T&#x27;\xrightarrow{r}\mathbf P^1.
+\tag{4.3}
+\]</span>
+<p>Both arrows are proper. The first is an isomorphism where the rational map is defined. The complementary closed subset <span class="math" data-tex="\(Z\subset T\)">\(Z\subset T\)</span> has codimension at least two: at a codimension-one point, the local ring is a discrete valuation ring and the rational map extends to the proper <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> by its valuative criterion. Every fibre of <span class="math" data-tex="\(b\)">\(b\)</span> is a closed subscheme of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>, hence has dimension at most one. Thus <span class="math" data-tex="\(Rb_*b^{-1}\mathcal F\)">\(Rb_*b^{-1}\mathcal F\)</span> has cohomology only in degrees <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>. For the triangle</p>
+<span class="math math-display" data-tex="\[
+\mathcal F\longrightarrow Rb_*b^{-1}\mathcal F
+\longrightarrow Q\longrightarrow\mathcal F[1],
+\tag{4.4}
+\]">\[
+\mathcal F\longrightarrow Rb_*b^{-1}\mathcal F
+\longrightarrow Q\longrightarrow\mathcal F[1],
+\tag{4.4}
+\]</span>
+<p>surjectivity of <span class="math" data-tex="\(b\)">\(b\)</span> makes the degree-zero adjunction injective. Therefore <span class="math" data-tex="\(Q\)">\(Q\)</span> has cohomology only in degrees <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>, supported on <span class="math" data-tex="\(Z\)">\(Z\)</span>; those sheaves are torsion. The induction hypothesis and the finite hypercohomology spectral sequence give</p>
+<span class="math math-display" data-tex="\[
+H^m(T,Q)=0\quad(m&gt;2\dim Z+2),
+\qquad 2\dim Z+2\leq2d-2.
+\tag{4.5}
+\]">\[
+H^m(T,Q)=0\quad(m&gt;2\dim Z+2),
+\qquad 2\dim Z+2\leq2d-2.
+\tag{4.5}
+\]</span>
+<p>Consequently it suffices to bound <span class="math" data-tex="\(H^q(T&#x27;,b^{-1}\mathcal F)\)">\(H^q(T&#x27;,b^{-1}\mathcal F)\)</span>. The graph closure is integral and <span class="math" data-tex="\(r\)">\(r\)</span> is dominant, so its fibres have dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. Induction gives <span class="math" data-tex="\(R^jr_*b^{-1}\mathcal F=0\)">\(R^jr_*b^{-1}\mathcal F=0\)</span> for <span class="math" data-tex="\(j&gt;2d-2\)">\(j&gt;2d-2\)</span>. Each of the remaining sheaves is torsion, and the proper curve theorem gives zero cohomology on <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> above degree two. The Leray spectral sequence</p>
+<span class="math math-display" data-tex="\[
+H^i(\mathbf P^1,R^jr_*b^{-1}\mathcal F)
+\Longrightarrow H^{i+j}(T&#x27;,b^{-1}\mathcal F)
+\tag{4.6}
+\]">\[
+H^i(\mathbf P^1,R^jr_*b^{-1}\mathcal F)
+\Longrightarrow H^{i+j}(T&#x27;,b^{-1}\mathcal F)
+\tag{4.6}
+\]</span>
+<p>has no entries above total degree <span class="math" data-tex="\(2d\)">\(2d\)</span>. This proves the absolute vanishing, and hence the relative vanishing by the geometric-stalk formula. □</p>
+<p>For a proper finite-type morphism over a quasi-compact base a finite fibre-dimension bound exists. On each of finitely many affine charts of source and target, a finite list of algebra generators bounds the dimension of every fibre by the length of that list. This gives a uniform integer, even when the base is not Noetherian.</p>
+<h2 id="5-finite-amplitude-and-unbounded-proper-base-change">5. Finite amplitude and unbounded proper base change</h2>
+<p>We use the foundational existence of K-injective resolutions in a Grothendieck category of sheaves: a complex admits a quasi-isomorphism into a K-injective complex whose terms are injective. Derived direct image is computed on such a resolution. The following argument explains why bounded cohomological dimension allows <em>any</em> termwise acyclic resolution, including unbounded ones.</p>
+<p><strong>Lemma 5.1.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be left exact, with enough injectives and <span class="math" data-tex="\(R^qF=0\)">\(R^qF=0\)</span> for <span class="math" data-tex="\(q&gt;N\)">\(q&gt;N\)</span>. A complex of <span class="math" data-tex="\(F\)">\(F\)</span>-acyclic objects computes <span class="math" data-tex="\(RF\)">\(RF\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+RF(D^{\geq a})\subset D^{\geq a},
+\qquad RF(D^{\leq b})\subset D^{\leq b+N}.
+\tag{5.1}
+\]">\[
+RF(D^{\geq a})\subset D^{\geq a},
+\qquad RF(D^{\leq b})\subset D^{\leq b+N}.
+\tag{5.1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(H^i(RFE)\)">\(H^i(RFE)\)</span> is determined by the finite cohomology window <span class="math" data-tex="\([i-N,i]\)">\([i-N,i]\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Proof.</strong> Consider an exact complex <span class="math" data-tex="\(L^\bullet\)">\(L^\bullet\)</span> of acyclic objects and put <span class="math" data-tex="\(Z^t=\ker d^t\)">\(Z^t=\ker d^t\)</span>. From</p>
+<span class="math math-display" data-tex="\[
+0\to Z^t\to L^t\to Z^{t+1}\to0
+\tag{5.2}
+\]">\[
+0\to Z^t\to L^t\to Z^{t+1}\to0
+\tag{5.2}
+\]</span>
+<p>we obtain <span class="math" data-tex="\(R^qF(Z^{t+1})=R^{q+1}F(Z^t)\)">\(R^qF(Z^{t+1})=R^{q+1}F(Z^t)\)</span> for <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>. Iterating to the left <span class="math" data-tex="\(N+1\)">\(N+1\)</span> times makes every positive derived functor of each cycle zero. Applying <span class="math" data-tex="\(F\)">\(F\)</span> to (5.2) is consequently exact, so <span class="math" data-tex="\(F(L^\bullet)\)">\(F(L^\bullet)\)</span> is exact. The cone of a quasi-isomorphism between complexes of acyclic objects has acyclic terms and is exact. Applying <span class="math" data-tex="\(F\)">\(F\)</span> to that cone proves that the quasi-isomorphism remains one. Comparing with a termwise injective K-injective resolution proves the computation claim.</p>
+<p>The lower bound in (5.1) follows by choosing a bounded-below injective resolution for an object of <span class="math" data-tex="\(D^{\geq a}\)">\(D^{\geq a}\)</span>. For the upper bound, use a termwise injective resolution <span class="math" data-tex="\(I^\bullet\)">\(I^\bullet\)</span> of <span class="math" data-tex="\(E\in D^{\leq b}\)">\(E\in D^{\leq b}\)</span>. It is exact in degrees above <span class="math" data-tex="\(b\)">\(b\)</span>. For <span class="math" data-tex="\(i&gt;b+N\)">\(i&gt;b+N\)</span>, the cohomology of <span class="math" data-tex="\(F(I^\bullet)\)">\(F(I^\bullet)\)</span> in degree <span class="math" data-tex="\(i\)">\(i\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{coker}(F(I^{i-1})\to F(Z^i))
+=R^1F(Z^{i-1})
+=R^{N+1}F(Z^{i-N-1})=0.
+\tag{5.3}
+\]">\[
+\operatorname{coker}(F(I^{i-1})\to F(Z^i))
+=R^1F(Z^{i-1})
+=R^{N+1}F(Z^{i-N-1})=0.
+\tag{5.3}
+\]</span>
+<p>The short exact cycle sequences used here are valid because their right-hand cycle degrees exceed <span class="math" data-tex="\(b\)">\(b\)</span>; the final sequence uses <span class="math" data-tex="\(I^b\to Z^{b+1}\)">\(I^b\to Z^{b+1}\)</span> only when <span class="math" data-tex="\(i=b+N+1\)">\(i=b+N+1\)</span>. If <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span> is exact and the same conclusion is immediate. Apply (5.1) to the cones of <span class="math" data-tex="\(\tau_{\leq i}E\to E\)">\(\tau_{\leq i}E\to E\)</span> and <span class="math" data-tex="\(E\to\tau_{\geq i-N}E\)">\(E\to\tau_{\geq i-N}E\)</span>. They contribute no cohomology that can change <span class="math" data-tex="\(H^i\)">\(H^i\)</span>, giving the finite-window assertion. □</p>
+<p><strong>Proposition 5.2.</strong> For a proper morphism, proper base change holds on unbounded complexes over a torsion ring. On a quasi-compact base <span class="math" data-tex="\(Rp_*\)">\(Rp_*\)</span> has finite amplitude, and commutes with arbitrary direct sums.</p>
+<p><strong>Proof.</strong> Work locally on the base to bound fibre dimensions by <span class="math" data-tex="\(d\)">\(d\)</span>. Theorem 4.1 bounds sheaf cohomological dimension by <span class="math" data-tex="\(N=2d\)">\(N=2d\)</span>. Sheaf-of-module cohomology agrees with the underlying abelian-sheaf cohomology, as proved in lesson 12; hence the same bound applies to <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-modules. Choose a K-injective, termwise injective complex <span class="math" data-tex="\(I^\bullet\)">\(I^\bullet\)</span> representing <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>In the base change square, the bounded-below theorem applied to each single sheaf <span class="math" data-tex="\(I^t\)">\(I^t\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+R^qp&#x27;_*a^{-1}I^t=0\quad(q&gt;0),
+\qquad g^{-1}p_*I^t=p&#x27;_*a^{-1}I^t.
+\tag{5.4}
+\]">\[
+R^qp&#x27;_*a^{-1}I^t=0\quad(q&gt;0),
+\qquad g^{-1}p_*I^t=p&#x27;_*a^{-1}I^t.
+\tag{5.4}
+\]</span>
+<p>Lemma 5.1 lets the termwise <span class="math" data-tex="\(p&#x27;_*\)">\(p&#x27;_*\)</span>-acyclic complex <span class="math" data-tex="\(a^{-1}I^\bullet\)">\(a^{-1}I^\bullet\)</span> compute <span class="math" data-tex="\(Rp&#x27;_*a^{-1}E\)">\(Rp&#x27;_*a^{-1}E\)</span>. Equation (5.4) identifies its image with <span class="math" data-tex="\(g^{-1}p_*I^\bullet\)">\(g^{-1}p_*I^\bullet\)</span>, proving unbounded base change with the usual canonical map. This argument uses the common annihilator supplied by the torsion ring.</p>
+<p>For sums choose such <span class="math" data-tex="\(I_\alpha^\bullet\)">\(I_\alpha^\bullet\)</span> for each input. Quasi-compact, quasi-separated higher direct images commute with filtered colimits of sheaves, by lesson 7. They therefore commute with sums, a sum being the filtered colimit of its finite subsums. Every <span class="math" data-tex="\(\bigoplus_\alpha I_\alpha^t\)">\(\bigoplus_\alpha I_\alpha^t\)</span> is <span class="math" data-tex="\(p_*\)">\(p_*\)</span>-acyclic. Lemma 5.1 computes the image termwise, and <span class="math" data-tex="\(p_*\bigoplus I_\alpha^\bullet=\bigoplus p_*I_\alpha^\bullet\)">\(p_*\bigoplus I_\alpha^\bullet=\bigoplus p_*I_\alpha^\bullet\)</span>. This proves the direct-sum assertion. Finite amplitude is (5.1). □</p>
+<p>Over an arbitrary ring, bounded-below complexes with torsion cohomology remain covered by lesson 13. Their direct images have torsion cohomology: on a geometric proper fibre, write a torsion sheaf as the filtered union of its annihilator subsheaves; each cohomology group is then a filtered colimit of torsion groups. A bounded-below hypercohomology filtration has finitely many contributing terms in each total degree. The same argument covers bounded-below families with a common lower bound. We do not infer an unbounded arbitrary-ring statement from that filtration.</p>
+<h2 id="6-the-proper-open-exchange-and-its-coherence">6. The proper–open exchange and its coherence</h2>
+<p><strong>Lemma 6.1.</strong> Suppose</p>
+<span class="math math-display" data-tex="\[
+\begin{matrix}
+U&amp;\xrightarrow{j}&amp;T\\
+p&#x27;\downarrow&amp;&amp;\downarrow p\\
+V&amp;\xrightarrow{i}&amp;S
+\end{matrix}
+\tag{6.1}
+\]">\[
+\begin{matrix}
+U&amp;\xrightarrow{j}&amp;T\\
+p&#x27;\downarrow&amp;&amp;\downarrow p\\
+V&amp;\xrightarrow{i}&amp;S
+\end{matrix}
+\tag{6.1}
+\]</span>
+<p>commutes, with horizontal arrows open and vertical arrows proper. The square need not be cartesian. There is a canonical isomorphism</p>
+<span class="math math-display" data-tex="\[
+\epsilon:i_!Rp&#x27;_*E\xrightarrow{\sim}Rp_*j_!E.
+\tag{6.2}
+\]">\[
+\epsilon:i_!Rp&#x27;_*E\xrightarrow{\sim}Rp_*j_!E.
+\tag{6.2}
+\]</span>
+<p>It is compatible with stacking squares vertically or horizontally and with arbitrary base change.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(T_V=T\times_SV\)">\(T_V=T\times_SV\)</span>. The induced map <span class="math" data-tex="\(k:U\to T_V\)">\(k:U\to T_V\)</span> is open and proper: its graph argument uses properness of <span class="math" data-tex="\(U/V\)">\(U/V\)</span> and separatedness of <span class="math" data-tex="\(T_V/V\)">\(T_V/V\)</span>. Thus <span class="math" data-tex="\(k\)">\(k\)</span> is an open-and-closed immersion, for which <span class="math" data-tex="\(k_!=k_*\)">\(k_!=k_*\)</span> is exact. Restricting the right side of (6.2) to <span class="math" data-tex="\(V\)">\(V\)</span> identifies it with</p>
+<span class="math math-display" data-tex="\[
+R(p|_{T_V})_*k_!E=Rp&#x27;_*E.
+\tag{6.3}
+\]">\[
+R(p|_{T_V})_*k_!E=Rp&#x27;_*E.
+\tag{6.3}
+\]</span>
+<p>The inverse of this identification defines (6.2) by the derived adjunction <span class="math" data-tex="\(i_!\dashv i^{-1}\)">\(i_!\dashv i^{-1}\)</span>. That adjunction holds since both functors are exact; <span class="math" data-tex="\(i^{-1}\)">\(i^{-1}\)</span> also takes K-injective complexes to K-injectives because its exact left adjoint is <span class="math" data-tex="\(i_!\)">\(i_!\)</span>.</p>
+<p>On <span class="math" data-tex="\(V\)">\(V\)</span>, the map is the isomorphism (6.3). On the closed complement of <span class="math" data-tex="\(V\)">\(V\)</span>, proper base change says that <span class="math" data-tex="\(Rp_*j_!E\)">\(Rp_*j_!E\)</span> is the proper direct image of the zero complex: the support open <span class="math" data-tex="\(U\)">\(U\)</span> has no points there. The left side is also zero. Geometric stalks on these two loci detect a quasi-isomorphism, proving (6.2) on both coefficient domains.</p>
+<p>Here are the map compatibilities. In a vertically stacked diagram, proper direct image composition identifies the restriction of both the composed exchanges and the outer exchange with the same proper direct image of the same clopen-supported complex. Both identifications are formed from the composition of direct-image adjunction units. The identity
+<span class="math" data-tex="\(\eta_{pq}=p_*\eta_q\circ\eta_p\)">\(\eta_{pq}=p_*\eta_q\circ\eta_p\)</span>, with the indicated inverse images inserted, gives equality. Since the source is extension by zero from the bottom open, its adjunction determines the whole map from this restriction. Horizontally stacking opens uses <span class="math" data-tex="\((ii&#x27;)_!=i_!i&#x27;_!\)">\((ii&#x27;)_!=i_!i&#x27;_!\)</span>. Restrict to the smallest open: the two maps again give the identical clopen pushforward identification (6.3). The same adjunction proves equality globally. Exchanges on disjoint positions of a diagram commute by naturality of transformations, so these two pasting rules also apply to a grid of squares.</p>
+<p>After base change, open extension by zero, proper direct image comparison, and the clopen identification (6.3) are all natural. Restrict the two candidate maps to the pulled-back open. There they are the composition-compatible proper base change maps of lesson 13 or Proposition 5.2. Their equality, followed by the open adjunction, proves base-change compatibility. Thus the isomorphism and all its pasting properties concern actual canonical maps. □</p>
+<h2 id="7-definition-and-independence-of-compactification">7. Definition and independence of compactification</h2>
+<p>Choose (3.1) and define</p>
+<span class="math math-display" data-tex="\[
+Rf_!E=Rp_*j_!E.
+\tag{7.1}
+\]">\[
+Rf_!E=Rp_*j_!E.
+\tag{7.1}
+\]</span>
+<p>The exact functor <span class="math" data-tex="\(j_!\)">\(j_!\)</span> acts termwise on complexes and preserves torsion cohomology. Proper direct image preserves the domains specified in Section 1. For a sheaf, its degree-zero image is (2.2); this justifies the notation <span class="math" data-tex="\(f_!\)">\(f_!\)</span>. The symbol <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> in (7.1) denotes the compactification construction. It is not a claim that taking a right derived functor of the ordinary properly supported-section functor produces (7.1).</p>
+<p><strong>Theorem 7.1.</strong> Definition (7.1) is independent of compactification up to a canonical isomorphism. These isomorphisms satisfy the identity and cocycle conditions.</p>
+<p><strong>Proof.</strong> A refinement <span class="math" data-tex="\(h:\overline X_1\to\overline X_2\)">\(h:\overline X_1\to\overline X_2\)</span> gives a square of the form (6.1), with top open <span class="math" data-tex="\(j_1:X\to\overline X_1\)">\(j_1:X\to\overline X_1\)</span>, bottom open <span class="math" data-tex="\(j_2:X\to\overline X_2\)">\(j_2:X\to\overline X_2\)</span>, and left proper map <span class="math" data-tex="\(\mathrm{id}_X\)">\(\mathrm{id}_X\)</span>. Lemma 6.1 gives</p>
+<span class="math math-display" data-tex="\[
+j_{2,!}\xrightarrow{\sim}Rh_*j_{1,!}.
+\tag{7.2}
+\]">\[
+j_{2,!}\xrightarrow{\sim}Rh_*j_{1,!}.
+\tag{7.2}
+\]</span>
+<p>Applying <span class="math" data-tex="\(Rp_{2,*}\)">\(Rp_{2,*}\)</span>, and using proper composition, gives a comparison from the functor for compactification 2 to the functor for compactification 1. For two successive refinements, vertical pasting in Lemma 6.1 says precisely that the composite comparison equals the comparison for their composite; for an identity it is the identity.</p>
+<p>For arbitrary choices choose a common refinement <span class="math" data-tex="\(C\)">\(C\)</span> and compare both functors to the functor for <span class="math" data-tex="\(C\)">\(C\)</span>. If another common refinement is chosen, cofilteredness gives a further refinement of both. Composition compatibility shows that both comparisons become equal there, hence were equal already, since refinement comparisons are isomorphisms. Parallel refining maps are equalized by a further refinement; their functor maps likewise become equal and hence agree. This proves independence of all choices. Taking a common refinement of three choices proves the cocycle condition by cancellation of their maps to that common object. □</p>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> is proper, choose <span class="math" data-tex="\(j=\mathrm{id}_X\)">\(j=\mathrm{id}_X\)</span>; thus <span class="math" data-tex="\(Rf_!=Rf_*\)">\(Rf_!=Rf_*\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> is quasi-finite, separated and finite type, Zariski's main theorem gives <span class="math" data-tex="\(X\hookrightarrow\overline X\)">\(X\hookrightarrow\overline X\)</span> with <span class="math" data-tex="\(\overline X/Y\)">\(\overline X/Y\)</span> finite. Then</p>
+<span class="math math-display" data-tex="\[
+Rf_!=\overline f_*j_!=f_!
+\tag{7.3}
+\]">\[
+Rf_!=\overline f_*j_!=f_!
+\tag{7.3}
+\]</span>
+<p>as exact functors. In particular <span class="math" data-tex="\(Rj_!=j_!\)">\(Rj_!=j_!\)</span> for a quasi-compact open immersion, and the same agreement holds for separated finite-type étale morphisms.</p>
+<h2 id="8-composition-including-associativity">8. Composition, including associativity</h2>
+<p><strong>Theorem 8.1.</strong> For <span class="math" data-tex="\(X\xrightarrow{f}Y\xrightarrow{g}Z\)">\(X\xrightarrow{f}Y\xrightarrow{g}Z\)</span> separated and finite type between quasi-compact, quasi-separated schemes,</p>
+<span class="math math-display" data-tex="\[
+c_{g,f}:Rg_!Rf_!\xrightarrow{\sim}R(gf)_!
+\tag{8.1}
+\]">\[
+c_{g,f}:Rg_!Rf_!\xrightarrow{\sim}R(gf)_!
+\tag{8.1}
+\]</span>
+<p>is canonical and associative.</p>
+<p><strong>Proof.</strong> Compactify <span class="math" data-tex="\(g\)">\(g\)</span> as <span class="math" data-tex="\(Y\xrightarrow{i}D\xrightarrow{q}Z\)">\(Y\xrightarrow{i}D\xrightarrow{q}Z\)</span>. Compactify the separated finite-type composite <span class="math" data-tex="\(if\)">\(if\)</span> as <span class="math" data-tex="\(X\hookrightarrow C\xrightarrow{p}D\)">\(X\hookrightarrow C\xrightarrow{p}D\)</span>. Put <span class="math" data-tex="\(U=p^{-1}(Y)\)">\(U=p^{-1}(Y)\)</span>, write <span class="math" data-tex="\(j:X\hookrightarrow U\)">\(j:X\hookrightarrow U\)</span>, <span class="math" data-tex="\(k:U\hookrightarrow C\)">\(k:U\hookrightarrow C\)</span>, and <span class="math" data-tex="\(h:U\to Y\)">\(h:U\to Y\)</span>. The map <span class="math" data-tex="\(h\)">\(h\)</span> is proper. These choices compute</p>
+<span class="math math-display" data-tex="\[
+Rf_!=Rh_*j_!,\quad Rg_!=Rq_*i_!,
+\quad R(gf)_!=R(qp)_*k_!j_!.
+\tag{8.2}
+\]">\[
+Rf_!=Rh_*j_!,\quad Rg_!=Rq_*i_!,
+\quad R(gf)_!=R(qp)_*k_!j_!.
+\tag{8.2}
+\]</span>
+<p>The cartesian proper–open square <span class="math" data-tex="\((U,C;Y,D)\)">\((U,C;Y,D)\)</span> supplies</p>
+<span class="math math-display" data-tex="\[
+Rq_*i_!Rh_*j_!
+\xrightarrow{Rq_*\epsilon j_!}
+Rq_*Rp_*k_!j_!
+=R(qp)_*k_!j_!,
+\tag{8.3}
+\]">\[
+Rq_*i_!Rh_*j_!
+\xrightarrow{Rq_*\epsilon j_!}
+Rq_*Rp_*k_!j_!
+=R(qp)_*k_!j_!,
+\tag{8.3}
+\]</span>
+<p>which is (8.1) for this system.</p>
+<p>We verify choice independence. Given two systems <span class="math" data-tex="\((C_t,D_t)\)">\((C_t,D_t)\)</span>, choose a dense common refinement <span class="math" data-tex="\(D_3\to D_1,D_2\)">\(D_3\to D_1,D_2\)</span>. In
+<span class="math" data-tex="\(C_1\times_ZC_2\times_ZD_3\)">\(C_1\times_ZC_2\times_ZD_3\)</span>, impose the closed equations equating the two maps to each <span class="math" data-tex="\(D_t\)">\(D_t\)</span>. They are closed because <span class="math" data-tex="\(D_t/Z\)">\(D_t/Z\)</span> is separated. The resulting scheme is proper over <span class="math" data-tex="\(D_3\)">\(D_3\)</span>, contains the diagonal copy of <span class="math" data-tex="\(X\)">\(X\)</span>, and its schematic closure of that copy gives <span class="math" data-tex="\(C_3\)">\(C_3\)</span>. The copy is open: over <span class="math" data-tex="\(X\subset C_1\)">\(X\subset C_1\)</span> it is the graph of the other two maps, closed by separatedness. Thus <span class="math" data-tex="\((C_3,D_3)\)">\((C_3,D_3)\)</span> refines both systems, compatibly at every vertex. The opens <span class="math" data-tex="\(U_t\)">\(U_t\)</span> also pull back to <span class="math" data-tex="\(U_3\)">\(U_3\)</span>, because a dense refinement has inverse image <span class="math" data-tex="\(Y\)">\(Y\)</span> equal to <span class="math" data-tex="\(Y\)">\(Y\)</span>, by (3.2).</p>
+<p>Compare (8.3) under one such refinement. There are exchanges for refinement of <span class="math" data-tex="\(C\)">\(C\)</span>, for refinement of <span class="math" data-tex="\(D\)">\(D\)</span>, and for the middle proper–open square. Expanding each comparison into these exchanges yields two routes through the same grid. Vertical pasting identifies the exchanges along a composite proper map, horizontal pasting identifies those along composite opens, and the exchanges in separate positions commute by naturality. Both routes are therefore the exchange for the outer rectangle followed by the same proper composition. This proves the comparison square commutes. The common refinement now gives choice independence by Theorem 7.1.</p>
+<p>For three maps <span class="math" data-tex="\(f,g,h\)">\(f,g,h\)</span>, compactify successively the last target, the preceding source over that compactification, and then the first source over the next compactification. Taking inverse images of the successive opens gives one compatible triangular array of opens and proper maps. Both parenthesizations of <span class="math" data-tex="\(Rh_!Rg_!Rf_!\)">\(Rh_!Rg_!Rf_!\)</span> move the same two middle opens past the same proper maps. A pasting across adjacent squares combines to the outer exchange by Lemma 6.1; exchanges in separated positions commute by naturality. Hence both routes give the same map to <span class="math" data-tex="\(R(hgf)_!\)">\(R(hgf)_!\)</span>. Independence of the chosen array has just been proved. Identity maps use identity compactifications and identity exchanges. This proves the associative, unital composition law. □</p>
+<h2 id="9-arbitrary-base-change-and-the-fibre-formula">9. Arbitrary base change and the fibre formula</h2>
+<p><strong>Theorem 9.1.</strong> In (1.3), the canonical comparison</p>
+<span class="math math-display" data-tex="\[
+\beta_{g,f}:g^{-1}Rf_!E\xrightarrow{\sim}Rf&#x27;_!a^{-1}E
+\tag{9.1}
+\]">\[
+\beta_{g,f}:g^{-1}Rf_!E\xrightarrow{\sim}Rf&#x27;_!a^{-1}E
+\tag{9.1}
+\]</span>
+<p>is an isomorphism on both domains of Section 1. It is independent of compactification, compatible with composition of morphisms, and compatible with successive changes of base.</p>
+<p><strong>Proof.</strong> Compactify <span class="math" data-tex="\(f\)">\(f\)</span> as <span class="math" data-tex="\(pj\)">\(pj\)</span>, and base change that factorization. Let <span class="math" data-tex="\(\bar a:\overline X&#x27;=\overline X\times_YY&#x27;\to\overline X\)">\(\bar a:\overline X&#x27;=\overline X\times_YY&#x27;\to\overline X\)</span> be the projection. The pulled-back <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> is proper and <span class="math" data-tex="\(j&#x27;:X&#x27;\hookrightarrow\overline X&#x27;\)">\(j&#x27;:X&#x27;\hookrightarrow\overline X&#x27;\)</span> is open. Define (9.1) by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g^{-1}Rp_*j_!E
+&amp;\xrightarrow{\mathrm{proper\ BC}}
+Rp&#x27;_*\bar a^{-1}j_!E\\
+&amp;\xrightarrow{\mathrm{open\ BC}}
+Rp&#x27;_*j&#x27;_!a^{-1}E.
+\end{aligned}
+\tag{9.2}
+\]">\[
+\begin{aligned}
+g^{-1}Rp_*j_!E
+&amp;\xrightarrow{\mathrm{proper\ BC}}
+Rp&#x27;_*\bar a^{-1}j_!E\\
+&amp;\xrightarrow{\mathrm{open\ BC}}
+Rp&#x27;_*j&#x27;_!a^{-1}E.
+\end{aligned}
+\tag{9.2}
+\]</span>
+<p>The first map is an isomorphism by lesson 13 for bounded-below torsion complexes, or by Proposition 5.2 for unbounded complexes over a torsion ring. The second is the exact open base change isomorphism, which acts termwise on any complex.</p>
+<p>For a refinement <span class="math" data-tex="\(t:\overline X_1\to\overline X_2\)">\(t:\overline X_1\to\overline X_2\)</span>, the comparisons between its two definitions use the exchange <span class="math" data-tex="\(j_{2,!}\to Rt_*j_{1,!}\)">\(j_{2,!}\to Rt_*j_{1,!}\)</span>. Base-change compatibility of that exchange, proved in Lemma 6.1, and composition compatibility of proper base change show that the refinement comparison square for (9.2) commutes. A common refinement handles arbitrary choices. Thus the map is independent of compactification, rather than only an abstract isomorphism between the two functors.</p>
+<p>For a composite <span class="math" data-tex="\(gf\)">\(gf\)</span>, use the system (8.2). Expanding the two routes through (9.2) leaves proper base change maps for <span class="math" data-tex="\(p,q,h\)">\(p,q,h\)</span>, open base change maps for <span class="math" data-tex="\(i,j,k\)">\(i,j,k\)</span>, and the middle exchange <span class="math" data-tex="\(i_!Rh_*\to Rp_*k_!\)">\(i_!Rh_*\to Rp_*k_!\)</span>. The proper maps compose compatibly, the open maps compose compatibly, and Lemma 6.1 makes the middle square commute. This is precisely the square comparing (9.1) with (8.1). For two successive base changes of a single <span class="math" data-tex="\(f\)">\(f\)</span>, the expansion is just two successive proper comparisons followed by two successive open comparisons. Their pasting equals the comparison for the composite base change; hence so does (9.1). □</p>
+<p>For a separated finite-type scheme <span class="math" data-tex="\(X\)">\(X\)</span> over a field <span class="math" data-tex="\(k\)">\(k\)</span>, with structure map <span class="math" data-tex="\(s\)">\(s\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_c(X,E)=R\Gamma(\operatorname{Spec}k,Rs_!E),
+\qquad H^q_c(X,E)=H^q(R\Gamma_c(X,E)).
+\tag{9.3}
+\]">\[
+R\Gamma_c(X,E)=R\Gamma(\operatorname{Spec}k,Rs_!E),
+\qquad H^q_c(X,E)=H^q(R\Gamma_c(X,E)).
+\tag{9.3}
+\]</span>
+<p>The field need not be algebraically closed. If <span class="math" data-tex="\(j:X\hookrightarrow\overline X\)">\(j:X\hookrightarrow\overline X\)</span> is a proper compactification over <span class="math" data-tex="\(k\)">\(k\)</span>, derived direct image composition gives</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_c(X,E)=R\Gamma(\overline X,j_!E).
+\tag{9.4}
+\]">\[
+R\Gamma_c(X,E)=R\Gamma(\overline X,j_!E).
+\tag{9.4}
+\]</span>
+<p>These equalities include the canonical comparison isomorphisms of Section 7.</p>
+<p><strong>Corollary 9.2.</strong> For any geometric point <span class="math" data-tex="\(\bar y:\operatorname{Spec}\Omega\to Y\)">\(\bar y:\operatorname{Spec}\Omega\to Y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(Rf_!E)_{\bar y}
+\simeq R\Gamma_c(X_{\bar y},E|_{X_{\bar y}}).
+\tag{9.5}
+\]">\[
+(Rf_!E)_{\bar y}
+\simeq R\Gamma_c(X_{\bar y},E|_{X_{\bar y}}).
+\tag{9.5}
+\]</span>
+<p>In particular <span class="math" data-tex="\((R^qf_!\mathcal F)_{\bar y}=H^q_c(X_{\bar y},\mathcal F|_{X_{\bar y}})\)">\((R^qf_!\mathcal F)_{\bar y}=H^q_c(X_{\bar y},\mathcal F|_{X_{\bar y}})\)</span>.</p>
+<p><strong>Proof.</strong> Apply (9.1) to <span class="math" data-tex="\(g=\bar y\)">\(g=\bar y\)</span>. Inverse image at this point is the exact geometric-stalk functor. The small étale topos of the algebraically closed <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is a point topos, whose global sections are exact. Thus its derived global sections do not introduce further cohomology, and (9.3) gives (9.5). □</p>
+<p>For an extension <span class="math" data-tex="\(K/k\)">\(K/k\)</span> of algebraically closed fields, the same theorem gives the canonical isomorphism on compactly supported cohomology after scalar extension, even though ordinary cohomology of a nonproper scheme can fail such invariance. Over general fields the theorem compares the complexes <span class="math" data-tex="\(Rs_!E\)">\(Rs_!E\)</span> on their field topoi; applying global sections additionally involves their Galois cohomology. One must not identify the latter groups without an argument about the fields.</p>
+<h2 id="10-projection-formula-for-arbitrary-complexes">10. Projection formula for arbitrary complexes</h2>
+<p>There is a standard adjunction map</p>
+<span class="math math-display" data-tex="\[
+Rp_*E\otimes^L M
+\longrightarrow Rp_*(E\otimes^Lp^{-1}M)
+\tag{10.1}
+\]">\[
+Rp_*E\otimes^L M
+\longrightarrow Rp_*(E\otimes^Lp^{-1}M)
+\tag{10.1}
+\]</span>
+<p>for a morphism <span class="math" data-tex="\(p\)">\(p\)</span>: its adjoint is the tensor of the counit <span class="math" data-tex="\(p^{-1}Rp_*E\to E\)">\(p^{-1}Rp_*E\to E\)</span> with <span class="math" data-tex="\(p^{-1}M\)">\(p^{-1}M\)</span>. Here and below tensors are over <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. We prove that this map is an isomorphism for proper <span class="math" data-tex="\(p\)">\(p\)</span> and torsion <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p><strong>Lemma 10.1.</strong> Suppose <span class="math" data-tex="\(T\)">\(T\)</span> is quasi-compact, quasi-separated and has finite étale cohomological dimension for <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-modules. If <span class="math" data-tex="\(E\in D(T,\Lambda)\)">\(E\in D(T,\Lambda)\)</span>, <span class="math" data-tex="\(M\in D(\Lambda)\)">\(M\in D(\Lambda)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(T,E)\otimes^L M
+\xrightarrow{\sim}
+R\Gamma(T,E\otimes^L\underline M).
+\tag{10.2}
+\]">\[
+R\Gamma(T,E)\otimes^L M
+\xrightarrow{\sim}
+R\Gamma(T,E\otimes^L\underline M).
+\tag{10.2}
+\]</span>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(E\)">\(E\)</span>. Both sides are exact functors of <span class="math" data-tex="\(M\)">\(M\)</span> and commute with arbitrary sums. For the right side this uses the direct-sum argument of Proposition 5.2, now with the global-sections functor and its assumed finite cohomological dimension. The left side commutes with sums by tensor adjunction. The comparison is visibly the identity for <span class="math" data-tex="\(M=\Lambda[t]\)">\(M=\Lambda[t]\)</span>.</p>
+<p>We explain why this tests every complex. A module has a free resolution in nonpositive degrees. A bounded portion of that resolution is constructed from sums of shifts of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> by finitely many cones. Its entire resolution is the homotopy colimit of its successively longer brutal truncations. A homotopy colimit of a sequence is the cone of <span class="math" data-tex="\(1-\mathrm{shift}\)">\(1-\mathrm{shift}\)</span> on the sum of its terms. Since the functors preserve sums and cones, an isomorphism for all terms implies one for that colimit. Hence (10.2) holds for every module. For a bounded-above complex, use its increasingly long brutal truncations, each a bounded complex assembled by cones from modules, and the same homotopy-colimit argument. Finally any complex <span class="math" data-tex="\(M\)">\(M\)</span> is the homotopy colimit of its good upper truncations <span class="math" data-tex="\(\tau_{\leq b}M\)">\(\tau_{\leq b}M\)</span> as <span class="math" data-tex="\(b\to\infty\)">\(b\to\infty\)</span>: filtered colimits of modules are exact, and in every fixed cohomological degree these truncations stabilize. Each upper truncation is bounded above. This proves the assertion for arbitrary <span class="math" data-tex="\(M\)">\(M\)</span>, without a finite Tor-dimension assumption. □</p>
+<p><strong>Proposition 10.2.</strong> For proper <span class="math" data-tex="\(p\)">\(p\)</span>, (10.1) is an isomorphism for all <span class="math" data-tex="\(E,M\)">\(E,M\)</span> over a torsion ring.</p>
+<p><strong>Proof.</strong> Check geometric stalks at <span class="math" data-tex="\(\bar y\)">\(\bar y\)</span>. Inverse image commutes with derived tensor: choose K-flat resolutions, whose tensor products remain valid after exact inverse image; flatness is detected on module stalks. Unbounded proper base change identifies (10.1) there with</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R\Gamma(T_{\bar y},E|_{T_{\bar y}})\otimes^L M_{\bar y}
+\longrightarrow
+R\Gamma\bigl(T_{\bar y},
+E|_{T_{\bar y}}\otimes^L\underline{M_{\bar y}}\bigr).
+\end{aligned}
+\tag{10.3}
+\]">\[
+\begin{aligned}
+R\Gamma(T_{\bar y},E|_{T_{\bar y}})\otimes^L M_{\bar y}
+\longrightarrow
+R\Gamma\bigl(T_{\bar y},
+E|_{T_{\bar y}}\otimes^L\underline{M_{\bar y}}\bigr).
+\end{aligned}
+\tag{10.3}
+\]</span>
+<p>The proper geometric fibre has finite dimension, so Theorem 4.1 gives the finite cohomological dimension required by Lemma 10.1. Thus every stalk comparison is an isomorphism, proving the proposition. □</p>
+<p><strong>Theorem 10.3.</strong> For separated finite-type <span class="math" data-tex="\(f\)">\(f\)</span>, over a torsion ring and with arbitrary complexes,</p>
+<span class="math math-display" data-tex="\[
+Rf_!E\otimes^L M
+\xrightarrow{\sim}Rf_!(E\otimes^Lf^{-1}M).
+\tag{10.4}
+\]">\[
+Rf_!E\otimes^L M
+\xrightarrow{\sim}Rf_!(E\otimes^Lf^{-1}M).
+\tag{10.4}
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(f=pj\)">\(f=pj\)</span>. Exact open extension by zero satisfies</p>
+<span class="math math-display" data-tex="\[
+j_!E\otimes^Lp^{-1}M
+\simeq j_!(E\otimes^Lj^{-1}p^{-1}M).
+\tag{10.5}
+\]">\[
+j_!E\otimes^Lp^{-1}M
+\simeq j_!(E\otimes^Lj^{-1}p^{-1}M).
+\tag{10.5}
+\]</span>
+<p>To verify this, extend a K-flat representative of <span class="math" data-tex="\(E\)">\(E\)</span> by zero. It remains K-flat: tensoring it with any acyclic complex restricts on the open to an acyclic tensor product and is zero outside; exactness is tested on stalks. Formula (10.5) is the usual tensor identification on the open and zero on the complement. Combine it with Proposition 10.2:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Rp_*j_!E\otimes^LM
+&amp;\simeq Rp_*(j_!E\otimes^Lp^{-1}M)\\
+&amp;\simeq Rp_*j_!(E\otimes^Lf^{-1}M).
+\end{aligned}
+\tag{10.6}
+\]">\[
+\begin{aligned}
+Rp_*j_!E\otimes^LM
+&amp;\simeq Rp_*(j_!E\otimes^Lp^{-1}M)\\
+&amp;\simeq Rp_*j_!(E\otimes^Lf^{-1}M).
+\end{aligned}
+\tag{10.6}
+\]</span>
+<p>The map is canonical. Under a refinement, the open tensor identification is natural, and the proper projection maps are defined from the same direct-image counits. Restricting to the support open makes their compatibility with the refinement exchange immediate; the open adjunction of Lemma 6.1 extends this equality globally. Thus (10.6) is independent of compactification under the comparisons of Section 7. □</p>
+<p>No assumption says that a derived tensor of bounded-below <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-complexes is bounded below. Over a ring of infinite global dimension it need not be. The unbounded torsion-ring domain proved in Section 5 is what makes (10.4) valid in that situation.</p>
+<h2 id="11-excision-compact-sections-and-mayer-vietoris">11. Excision, compact sections and Mayer–Vietoris</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be separated finite type over a field, <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span> an open, and <span class="math" data-tex="\(i:Z\hookrightarrow X\)">\(i:Z\hookrightarrow X\)</span> the closed complement. These schemes are Noetherian, so the open is quasi-compact and the morphisms are within our finite-type category.</p>
+<p><strong>Theorem 11.1.</strong> For a complex <span class="math" data-tex="\(E\)">\(E\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> in one of the two domains of Section 1,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R\Gamma_c(U,j^{-1}E)&amp;\longrightarrow R\Gamma_c(X,E)
+\longrightarrow R\Gamma_c(Z,i^{-1}E)\\
+&amp;\longrightarrow R\Gamma_c(U,j^{-1}E)[1]
+\end{aligned}
+\tag{11.1}
+\]">\[
+\begin{aligned}
+R\Gamma_c(U,j^{-1}E)&amp;\longrightarrow R\Gamma_c(X,E)
+\longrightarrow R\Gamma_c(Z,i^{-1}E)\\
+&amp;\longrightarrow R\Gamma_c(U,j^{-1}E)[1]
+\end{aligned}
+\tag{11.1}
+\]</span>
+<p>is a distinguished triangle, natural in <span class="math" data-tex="\(E\)">\(E\)</span>. Its relative version for <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> holds whenever <span class="math" data-tex="\(U\)">\(U\)</span> is quasi-compact.</p>
+<p><strong>Proof.</strong> Lesson 11 gives the termwise exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to j_!j^{-1}E^t\to E^t\to i_*i^{-1}E^t\to0.
+\tag{11.2}
+\]">\[
+0\to j_!j^{-1}E^t\to E^t\to i_*i^{-1}E^t\to0.
+\tag{11.2}
+\]</span>
+<p>The maps are restriction and extension by zero; on each geometric point the sequence is either <span class="math" data-tex="\(0\to E^t\to E^t\to0\)">\(0\to E^t\to E^t\to0\)</span> or <span class="math" data-tex="\(0\to0\to E^t\to E^t\to0\)">\(0\to0\to E^t\to E^t\to0\)</span>. This termwise exact sequence of complexes gives a distinguished triangle. Apply the exact triangulated functor <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span>. Composition, <span class="math" data-tex="\(Rj_!=j_!\)">\(Rj_!=j_!\)</span>, and <span class="math" data-tex="\(Ri_!=Ri_*=i_*\)">\(Ri_!=Ri_*=i_*\)</span> identify the three terms with <span class="math" data-tex="\(R(fj)_!j^{-1}E\)">\(R(fj)_!j^{-1}E\)</span>, <span class="math" data-tex="\(Rf_!E\)">\(Rf_!E\)</span>, and <span class="math" data-tex="\(R(fi)_!i^{-1}E\)">\(R(fi)_!i^{-1}E\)</span>. This proves the relative triangle. For the structural morphism apply <span class="math" data-tex="\(R\Gamma(\operatorname{Spec}k,-)\)">\(R\Gamma(\operatorname{Spec}k,-)\)</span> to obtain (11.1). All maps are the termwise canonical maps of (11.2), so the triangle is natural. □</p>
+<p>For a sheaf <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, equations (9.4) and (2.2) identify</p>
+<span class="math math-display" data-tex="\[
+H^0_c(X,\mathcal F)=
+\{s\in H^0(X,\mathcal F):\operatorname{Supp}(s)
+\text{ is proper over }k\}.
+\tag{11.3}
+\]">\[
+H^0_c(X,\mathcal F)=
+\{s\in H^0(X,\mathcal F):\operatorname{Supp}(s)
+\text{ is proper over }k\}.
+\tag{11.3}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(j_!\mathcal F\)">\(j_!\mathcal F\)</span> is a sheaf in degree zero, so its degree-zero derived global sections are ordinary sections; the support argument in Lemma 2.1 applies over the field. For proper <span class="math" data-tex="\(X\)">\(X\)</span>, all of its ordinary cohomology agrees with compactly supported cohomology.</p>
+<p><strong>Proposition 11.2.</strong> If <span class="math" data-tex="\(X=U\cup V\)">\(X=U\cup V\)</span> with quasi-compact opens and <span class="math" data-tex="\(W=U\cap V\)">\(W=U\cap V\)</span>, there is a relative distinguished triangle</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(f|_W)_!E|_W&amp;\longrightarrow
+R(f|_U)_!E|_U\oplus R(f|_V)_!E|_V\\
+&amp;\longrightarrow Rf_!E\longrightarrow R(f|_W)_!E|_W[1].
+\end{aligned}
+\tag{11.4}
+\]">\[
+\begin{aligned}
+R(f|_W)_!E|_W&amp;\longrightarrow
+R(f|_U)_!E|_U\oplus R(f|_V)_!E|_V\\
+&amp;\longrightarrow Rf_!E\longrightarrow R(f|_W)_!E|_W[1].
+\end{aligned}
+\tag{11.4}
+\]</span>
+<p><strong>Proof.</strong> In each term of a representative complex, the sequence of extensions by zero from <span class="math" data-tex="\(W,U,V\)">\(W,U,V\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span> is exact, with first arrow <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span> and second arrow addition. At a point in both opens this is the usual sequence <span class="math" data-tex="\(0\to A\to A\oplus A\to A\to0\)">\(0\to A\to A\oplus A\to A\to0\)</span>; at a point in only one it is the identity sequence. Apply <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> and composition as in Theorem 11.1. □</p>
+<p>Compact support also has pullback for proper maps. If <span class="math" data-tex="\(u:X\to Y\)">\(u:X\to Y\)</span> is proper over a field, the adjunction unit <span class="math" data-tex="\(E\to Ru_*u^{-1}E=Ru_!u^{-1}E\)">\(E\to Ru_*u^{-1}E=Ru_!u^{-1}E\)</span>, followed by composition, gives</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_c(Y,E)\longrightarrow R\Gamma_c(X,u^{-1}E).
+\tag{11.5}
+\]">\[
+R\Gamma_c(Y,E)\longrightarrow R\Gamma_c(X,u^{-1}E).
+\tag{11.5}
+\]</span>
+<p>Its composition law is the composition law for these units and Theorem 8.1. For opens, extension by zero instead gives the first arrow of excision, from the open's compact cohomology into that of the ambient scheme.</p>
+<h2 id="12-bounds-curve-finiteness-and-the-stated-general-theorems">12. Bounds, curve finiteness and the stated general theorems</h2>
+<p><strong>Theorem 12.1.</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> is separated finite type of dimension <span class="math" data-tex="\(d\)">\(d\)</span> over an algebraically closed field, then for every torsion sheaf</p>
+<span class="math math-display" data-tex="\[
+H^q_c(X,\mathcal F)=0\quad(q&gt;2d).
+\tag{12.1}
+\]">\[
+H^q_c(X,\mathcal F)=0\quad(q&gt;2d).
+\tag{12.1}
+\]</span>
+<p>If the fibres of <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> have dimension at most <span class="math" data-tex="\(d\)">\(d\)</span>, then <span class="math" data-tex="\(R^qf_!\mathcal F=0\)">\(R^qf_!\mathcal F=0\)</span> for <span class="math" data-tex="\(q&gt;2d\)">\(q&gt;2d\)</span>. On both coefficient domains,</p>
+<span class="math math-display" data-tex="\[
+H^i(E)=0\ (i\notin[a,b])
+\quad\Longrightarrow\quad
+H^i(Rf_!E)=0\ (i\notin[a,b+2d]).
+\tag{12.2}
+\]">\[
+H^i(E)=0\ (i\notin[a,b])
+\quad\Longrightarrow\quad
+H^i(Rf_!E)=0\ (i\notin[a,b+2d]).
+\tag{12.2}
+\]</span>
+<p><strong>Proof.</strong> Choose a dense compactification over the field. It has the same dimension as <span class="math" data-tex="\(X\)">\(X\)</span>, since every irreducible component meets the dense open and its dimension is unchanged on a nonempty open. By (9.4) and Theorem 4.1,
+<span class="math" data-tex="\(H^q_c(X,\mathcal F)=H^q(\overline X,j_!\mathcal F)=0\)">\(H^q_c(X,\mathcal F)=H^q(\overline X,j_!\mathcal F)=0\)</span> above <span class="math" data-tex="\(2d\)">\(2d\)</span>. This proves (12.1). Formula (9.5) applies this absolute bound to every actual geometric fibre of <span class="math" data-tex="\(f\)">\(f\)</span>, and geometric stalks detect zero; this proves the relative sheaf bound. The fibres of a chosen compactification might be larger, but the bound here uses a dense compactification of each fibre itself, so it remains the stated <span class="math" data-tex="\(2d\)">\(2d\)</span>.</p>
+<p>For bounded-below complexes, the hypercohomology spectral sequence</p>
+<span class="math math-display" data-tex="\[
+R^pf_!H^q(E)\Longrightarrow H^{p+q}(Rf_!E)
+\tag{12.3}
+\]">\[
+R^pf_!H^q(E)\Longrightarrow H^{p+q}(Rf_!E)
+\tag{12.3}
+\]</span>
+<p>has <span class="math" data-tex="\(0\leq p\leq2d\)">\(0\leq p\leq2d\)</span>, proving (12.2). This spectral sequence can be obtained by applying the exact triangulated <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> to successive good truncation triangles; at a fixed total degree its filtration is finite. For unbounded complexes over a torsion ring, the chosen proper compactification first supplies a uniform finite amplitude <span class="math" data-tex="\(N\)">\(N\)</span> by Section 5. The finite-window argument reduces a fixed output degree to a bounded complex, where (12.3) is valid. Its sheaf bound <span class="math" data-tex="\(2d\)">\(2d\)</span> now sharpens the original <span class="math" data-tex="\(N\)">\(N\)</span> and proves (12.2) for all complexes. The same reasoning shows that the window <span class="math" data-tex="\([i-2d,i]\)">\([i-2d,i]\)</span> suffices to compute <span class="math" data-tex="\(H^i(Rf_!E)\)">\(H^i(Rf_!E)\)</span>. □</p>
+<p><strong>Theorem 12.2, curve finiteness.</strong> Let <span class="math" data-tex="\(\dim X\leq1\)">\(\dim X\leq1\)</span>, with <span class="math" data-tex="\(X\)">\(X\)</span> separated finite type over an algebraically closed field. If <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is Noetherian and <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> is a constructible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module sheaf that is torsion as an abelian sheaf, then each <span class="math" data-tex="\(H^q_c(X,\mathcal F)\)">\(H^q_c(X,\mathcal F)\)</span> is a finitely generated <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module and is zero for <span class="math" data-tex="\(q&gt;2\)">\(q&gt;2\)</span>. For a constructible finite abelian sheaf, the groups have finite cardinality.</p>
+<p><strong>Proof.</strong> A dense proper compactification <span class="math" data-tex="\(\overline X\)">\(\overline X\)</span> has dimension at most one. Its open immersion <span class="math" data-tex="\(j\)">\(j\)</span> is quasi-compact. Lesson 11 proves that <span class="math" data-tex="\(j_!\mathcal F\)">\(j_!\mathcal F\)</span> is constructible; on the boundary stratum it is zero. The proper coefficient-ring curve theorem of lesson 12 applies to <span class="math" data-tex="\(\overline X\)">\(\overline X\)</span> and <span class="math" data-tex="\(j_!\mathcal F\)">\(j_!\mathcal F\)</span>. Equation (9.4) identifies its groups with the compact-support groups and gives finite generation. The bound follows either from that theorem or from Theorem 12.1. If <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> is finite abelian, quasi-compactness and its finite constructible strata supply a common annihilator <span class="math" data-tex="\(n\)">\(n\)</span>. Regard it as a constructible <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>-module sheaf. A finitely generated module over this finite ring is a finite group. □</p>
+<p>The word “finite” for a module over a general Noetherian ring means finitely generated. It need not mean a finite underlying set, even when the ring has positive characteristic.</p>
+<p>Here are two general results that this lesson states without proof; both are proved in the Stacks project. Let <span class="math" data-tex="\(D_c\)">\(D_c\)</span> mean that every cohomology sheaf is constructible; it does not impose boundedness. Let <span class="math" data-tex="\(D^+_{\mathrm{tors},c}\)">\(D^+_{\mathrm{tors},c}\)</span> impose constructibility, torsion and a lower bound.</p>
+<p><strong>General constructibility, stated.</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is separated of finite presentation between quasi-compact, quasi-separated schemes and <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is Noetherian, then <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> takes <span class="math" data-tex="\(D^+_{\mathrm{tors},c}(X,\Lambda)\)">\(D^+_{\mathrm{tors},c}(X,\Lambda)\)</span> into <span class="math" data-tex="\(D^+_{\mathrm{tors},c}(Y,\Lambda)\)">\(D^+_{\mathrm{tors},c}(Y,\Lambda)\)</span>. If <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is torsion, it also takes <span class="math" data-tex="\(D_c(X,\Lambda)\)">\(D_c(X,\Lambda)\)</span> into <span class="math" data-tex="\(D_c(Y,\Lambda)\)">\(D_c(Y,\Lambda)\)</span>. This is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-theorem-constructible-shriek">Tag 0GL0</a>. Finite presentation, rather than just finite type, is part of this assertion over a non-Noetherian base.</p>
+<p><strong>General finiteness, stated.</strong> For separated finite-type <span class="math" data-tex="\(X\)">\(X\)</span> over an algebraically closed field and Noetherian <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, each <span class="math" data-tex="\(H^i_c(X,E)\)">\(H^i_c(X,E)\)</span> is a finitely generated <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module for <span class="math" data-tex="\(E\in D^+_{\mathrm{tors},c}(X,\Lambda)\)">\(E\in D^+_{\mathrm{tors},c}(X,\Lambda)\)</span>, or <span class="math" data-tex="\(E\in D_c(X,\Lambda)\)">\(E\in D_c(X,\Lambda)\)</span> when <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is torsion. This is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-finiteness-compactly-supported">Tag 0GLH</a>. For finite coefficients it gives finite groups. For a bounded constructible complex, (12.2) additionally bounds the possible degrees; an unbounded complex need not have only finitely many nonzero groups.</p>
+<p>The next lesson proves the relevant smooth base change theorem. Its proper smooth consequence concerns locally constant finite coefficients whose orders are invertible on the base: the sheaves <span class="math" data-tex="\(R^qf_*\mathcal F\)">\(R^qf_*\mathcal F\)</span> are locally constant. Removing invertibility would incorrectly include characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> variation of <span class="math" data-tex="\(p\)">\(p\)</span>-torsion cohomology. The general compact-support constructibility statement above, however, allows torsion of every order.</p>
+<h2 id="13-three-calculations-and-the-role-of-the-coefficients">13. Three calculations and the role of the coefficients</h2>
+<p>Assume first that <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, and <span class="math" data-tex="\(n\)">\(n\)</span> is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>. Put <span class="math" data-tex="\(A=\mathbf Z/n\)">\(A=\mathbf Z/n\)</span>. Our earlier curve calculations give</p>
+<span class="math math-display" data-tex="\[
+H^q(\mathbf P^1,A)=
+\begin{cases}A&amp;q=0,\\ A(-1)&amp;q=2,\\0&amp;\text{otherwise}.\end{cases}
+\tag{13.1}
+\]">\[
+H^q(\mathbf P^1,A)=
+\begin{cases}A&amp;q=0,\\ A(-1)&amp;q=2,\\0&amp;\text{otherwise}.\end{cases}
+\tag{13.1}
+\]</span>
+<p>The twist is retained: <span class="math" data-tex="\(A(1)=\mu_n\)">\(A(1)=\mu_n\)</span> and <span class="math" data-tex="\(A(-1)=\operatorname{Hom}_A(\mu_n,A)\)">\(A(-1)=\operatorname{Hom}_A(\mu_n,A)\)</span>. Although <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> is constant over <span class="math" data-tex="\(k\)">\(k\)</span>, identifying its generator with <span class="math" data-tex="\(1\in A\)">\(1\in A\)</span> requires a choice. More intrinsically, <span class="math" data-tex="\(H^2(\mathbf P^1,\mu_n)=A\)">\(H^2(\mathbf P^1,\mu_n)=A\)</span> is normalized by degree one, and (13.1) follows by tensoring with the constant free rank-one <span class="math" data-tex="\(A(-1)\)">\(A(-1)\)</span> and the projection formula.</p>
+<p><strong>Example 13.1, the affine line.</strong> Compactify <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span> by the single point <span class="math" data-tex="\(\infty\)">\(\infty\)</span> in <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>. Excision gives</p>
+<span class="math math-display" data-tex="\[
+0\to H^0_c(\mathbf A^1,A)\to A
+\xrightarrow{1}A\to H^1_c(\mathbf A^1,A)\to0,
+\tag{13.2}
+\]">\[
+0\to H^0_c(\mathbf A^1,A)\to A
+\xrightarrow{1}A\to H^1_c(\mathbf A^1,A)\to0,
+\tag{13.2}
+\]</span>
+<p>and <span class="math" data-tex="\(H^2_c(\mathbf A^1,A)=H^2(\mathbf P^1,A)\)">\(H^2_c(\mathbf A^1,A)=H^2(\mathbf P^1,A)\)</span>. A point has zero positive cohomology, and Theorem 12.1 bounds the rest. Therefore</p>
+<span class="math math-display" data-tex="\[
+H^q_c(\mathbf A^1,A)=
+\begin{cases}A(-1)&amp;q=2,\\0&amp; q\ne2.\end{cases}
+\tag{13.3}
+\]">\[
+H^q_c(\mathbf A^1,A)=
+\begin{cases}A(-1)&amp;q=2,\\0&amp; q\ne2.\end{cases}
+\tag{13.3}
+\]</span>
+<p>The identity in (13.2) is actual restriction of a constant section to the boundary. □</p>
+<p><strong>Example 13.2, the multiplicative group.</strong> Its compactification in <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> has boundary <span class="math" data-tex="\(\{0,\infty\}\)">\(\{0,\infty\}\)</span>. Restriction is the diagonal <span class="math" data-tex="\(A\to A^2\)">\(A\to A^2\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+H^0_c(\mathbf G_m,A)=0,\quad
+H^1_c(\mathbf G_m,A)=A^2/\Delta A,\quad
+H^2_c(\mathbf G_m,A)=A(-1).
+\tag{13.4}
+\]">\[
+H^0_c(\mathbf G_m,A)=0,\quad
+H^1_c(\mathbf G_m,A)=A^2/\Delta A,\quad
+H^2_c(\mathbf G_m,A)=A(-1).
+\tag{13.4}
+\]</span>
+<p>The difference map <span class="math" data-tex="\((a_0,a_\infty)\mapsto a_\infty-a_0\)">\((a_0,a_\infty)\mapsto a_\infty-a_0\)</span> identifies <span class="math" data-tex="\(A^2/\Delta A\)">\(A^2/\Delta A\)</span> with <span class="math" data-tex="\(A\)">\(A\)</span>; the ordering of the two boundary points fixes this sign. All other degrees vanish. □</p>
+<p><strong>Example 13.3, extension by zero and ordinary direct image.</strong> For <span class="math" data-tex="\(j:\mathbf A^1\hookrightarrow\mathbf P^1\)">\(j:\mathbf A^1\hookrightarrow\mathbf P^1\)</span>, <span class="math" data-tex="\(Rj_!=j_!\)">\(Rj_!=j_!\)</span>. Its stalk at <span class="math" data-tex="\(\infty\)">\(\infty\)</span> is zero. The stalk of <span class="math" data-tex="\(j_*A\)">\(j_*A\)</span> there is <span class="math" data-tex="\(A\)">\(A\)</span>: the punctured strict local neighbourhood is connected, so its constant sections are <span class="math" data-tex="\(A\)">\(A\)</span>. In fact its <span class="math" data-tex="\(R^1j_*A\)">\(R^1j_*A\)</span> stalk is <span class="math" data-tex="\(A(-1)\)">\(A(-1)\)</span>, by the valuation/Kummer computation on that punctured neighbourhood. Thus the canonical map <span class="math" data-tex="\(j_!A\to Rj_*A\)">\(j_!A\to Rj_*A\)</span> is not an isomorphism. Globally,</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(\mathbf P^1,j_!A)=R\Gamma_c(\mathbf A^1,A),
+\qquad
+R\Gamma(\mathbf P^1,Rj_*A)=R\Gamma(\mathbf A^1,A).
+\tag{13.5}
+\]">\[
+R\Gamma(\mathbf P^1,j_!A)=R\Gamma_c(\mathbf A^1,A),
+\qquad
+R\Gamma(\mathbf P^1,Rj_*A)=R\Gamma(\mathbf A^1,A).
+\tag{13.5}
+\]</span>
+<p>For example the first has zero degree-zero group, whereas the second has <span class="math" data-tex="\(A\)">\(A\)</span> in degree zero. □</p>
+<p>The assumption that <span class="math" data-tex="\(n\)">\(n\)</span> is invertible cannot be suppressed in (13.1)–(13.4). To see the difference, let <span class="math" data-tex="\(\operatorname{char}k=p&gt;0\)">\(\operatorname{char}k=p&gt;0\)</span>. Artin–Schreier and <span class="math" data-tex="\(H^1(\mathbf P^1,\mathcal O)=0\)">\(H^1(\mathbf P^1,\mathcal O)=0\)</span> give</p>
+<span class="math math-display" data-tex="\[
+H^q(\mathbf P^1,\mathbf F_p)=0\quad(q&gt;0),
+\qquad H^0(\mathbf P^1,\mathbf F_p)=\mathbf F_p.
+\tag{13.6}
+\]">\[
+H^q(\mathbf P^1,\mathbf F_p)=0\quad(q&gt;0),
+\qquad H^0(\mathbf P^1,\mathbf F_p)=\mathbf F_p.
+\tag{13.6}
+\]</span>
+<p>Here <span class="math" data-tex="\(x\mapsto x^p-x\)">\(x\mapsto x^p-x\)</span> is surjective on the algebraically closed <span class="math" data-tex="\(k\)">\(k\)</span>, and the coherent cohomology above degree one is zero; the full Artin–Schreier long exact sequence proves (13.6). The same boundary restrictions now give</p>
+<span class="math math-display" data-tex="\[
+H^q_c(\mathbf A^1,\mathbf F_p)=0\ \text{for every }q,
+\qquad
+H^q_c(\mathbf G_m,\mathbf F_p)=
+\begin{cases}\mathbf F_p&amp;q=1,\\0&amp;q\ne1.\end{cases}
+\tag{13.7}
+\]">\[
+H^q_c(\mathbf A^1,\mathbf F_p)=0\ \text{for every }q,
+\qquad
+H^q_c(\mathbf G_m,\mathbf F_p)=
+\begin{cases}\mathbf F_p&amp;q=1,\\0&amp;q\ne1.\end{cases}
+\tag{13.7}
+\]</span>
+<p>This contrasts with the large ordinary <span class="math" data-tex="\(H^1(\mathbf A^1,\mathbf F_p)\)">\(H^1(\mathbf A^1,\mathbf F_p)\)</span> computed in lesson 12. Compact-support finiteness allows characteristic torsion; its groups simply differ from the prime-to-characteristic groups. Successive exact sequences of constant <span class="math" data-tex="\(p\)">\(p\)</span>-power sheaves give the corresponding compact groups for <span class="math" data-tex="\(\mathbf Z/p^a\)">\(\mathbf Z/p^a\)</span>: the affine-line groups remain zero, while the multiplicative group has <span class="math" data-tex="\(\mathbf Z/p^a\)">\(\mathbf Z/p^a\)</span> in degree one and zero elsewhere. One can also see the latter directly as the cokernel of the diagonal boundary restriction on <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>.</p>
+<h2 id="14-exercises">14. Exercises</h2>
+<p>Throughout Exercises 1–2, <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed and <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>. Write <span class="math" data-tex="\(A=\mathbf Z/n\)">\(A=\mathbf Z/n\)</span>.</p>
+<ol>
+<li><strong>Easy.</strong> Compute all <span class="math" data-tex="\(H^q_c(\mathbf A^1,A)\)">\(H^q_c(\mathbf A^1,A)\)</span> using <span class="math" data-tex="\(\mathbf A^1\subset\mathbf P^1\)">\(\mathbf A^1\subset\mathbf P^1\)</span>. Identify the boundary restriction map, rather than only the ranks.</li>
+<li><strong>Medium.</strong> For <span class="math" data-tex="\(r\)">\(r\)</span> distinct points of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>, compute the compact cohomology of their complement. Include <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Compute the Euler characteristic, using <span class="math" data-tex="\(A\)">\(A\)</span>-ranks of the resulting free modules; when <span class="math" data-tex="\(n\)">\(n\)</span> is prime this is the usual vector-space Euler characteristic.</li>
+<li><strong>Medium.</strong> Prove that <span class="math" data-tex="\(Rf_!=Rf_*\)">\(Rf_!=Rf_*\)</span> for a proper morphism. For a separated finite-type étale morphism, prove that <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> agrees with the exact properly supported-section functor of Section 2. Explain the local extension to a separated étale morphism without a global finite-type assumption.</li>
+<li><strong>Medium.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be separated finite type over an algebraically closed field and <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> any torsion sheaf. Prove <span class="math" data-tex="\(H^q_c(X,\mathcal F)=0\)">\(H^q_c(X,\mathcal F)=0\)</span> for <span class="math" data-tex="\(q&gt;2\dim X\)">\(q&gt;2\dim X\)</span>, without assuming constructibility. Retain separatedness, which is part of this lesson's definition of compact support.</li>
+<li><strong>Hard.</strong> Construct arbitrary base change for <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> from proper base change and open extension by zero. Prove that its map is independent of compactification and compatible with composition. Treat the unbounded torsion-ring case as well as bounded-below torsion complexes.</li>
+</ol>
+<h2 id="15-complete-solutions">15. Complete solutions</h2>
+<p><strong>Solution 1.</strong> Let <span class="math" data-tex="\(j:\mathbf A^1\hookrightarrow\mathbf P^1\)">\(j:\mathbf A^1\hookrightarrow\mathbf P^1\)</span> and <span class="math" data-tex="\(i:\{\infty\}\hookrightarrow\mathbf P^1\)">\(i:\{\infty\}\hookrightarrow\mathbf P^1\)</span>. The exact sequence <span class="math" data-tex="\(0\to j_!A\to A\to i_*A\to0\)">\(0\to j_!A\to A\to i_*A\to0\)</span> gives the excision long exact sequence. Constant sections on the connected projective line and on the boundary point are both <span class="math" data-tex="\(A\)">\(A\)</span>; their restriction is <span class="math" data-tex="\(a\mapsto a\)">\(a\mapsto a\)</span>, an isomorphism. Since <span class="math" data-tex="\(H^1(\mathbf P^1,A)=0\)">\(H^1(\mathbf P^1,A)=0\)</span>, exactness gives <span class="math" data-tex="\(H^0_c=H^1_c=0\)">\(H^0_c=H^1_c=0\)</span>. The point has no positive cohomology, so the segment surrounding degree two identifies <span class="math" data-tex="\(H^2_c(\mathbf A^1,A)\)">\(H^2_c(\mathbf A^1,A)\)</span> with <span class="math" data-tex="\(H^2(\mathbf P^1,A)=A(-1)\)">\(H^2(\mathbf P^1,A)=A(-1)\)</span>. Higher groups vanish by (12.1), and negative groups vanish because a sheaf and its compact cohomology have no negative degrees. Thus (13.3) lists every group. The map to degree-two projective cohomology is the extension-by-zero map; with <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> coefficients its target has the degree-one normalization from lesson 10. □</p>
+<p><strong>Solution 2.</strong> Put <span class="math" data-tex="\(D=\{x_1,\ldots,x_r\}\)">\(D=\{x_1,\ldots,x_r\}\)</span> and <span class="math" data-tex="\(U=\mathbf P^1\setminus D\)">\(U=\mathbf P^1\setminus D\)</span>. If <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, the scheme is proper, so its groups are <span class="math" data-tex="\(A\)">\(A\)</span> in degree zero, <span class="math" data-tex="\(A(-1)\)">\(A(-1)\)</span> in degree two, and zero otherwise; its Euler characteristic is two.</p>
+<p>If <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, <span class="math" data-tex="\(H^0(D,A)=A^r\)">\(H^0(D,A)=A^r\)</span>, and the restriction from <span class="math" data-tex="\(H^0(\mathbf P^1,A)\)">\(H^0(\mathbf P^1,A)\)</span> is the injective diagonal <span class="math" data-tex="\(a\mapsto(a,\ldots,a)\)">\(a\mapsto(a,\ldots,a)\)</span>. The boundary has no positive cohomology. The complete nontrivial segments of excision consequently give</p>
+<span class="math math-display" data-tex="\[
+H^0_c(U,A)=0,\quad
+H^1_c(U,A)=A^r/\Delta A,\quad
+H^2_c(U,A)=A(-1).
+\tag{15.1}
+\]">\[
+H^0_c(U,A)=0,\quad
+H^1_c(U,A)=A^r/\Delta A,\quad
+H^2_c(U,A)=A(-1).
+\tag{15.1}
+\]</span>
+<p>All other groups are zero as in Solution 1. The map
+<span class="math" data-tex="\((a_1,\ldots,a_r)\mapsto(a_2-a_1,\ldots,a_r-a_1)\)">\((a_1,\ldots,a_r)\mapsto(a_2-a_1,\ldots,a_r-a_1)\)</span> is surjective onto <span class="math" data-tex="\(A^{r-1}\)">\(A^{r-1}\)</span>, with kernel <span class="math" data-tex="\(\Delta A\)">\(\Delta A\)</span>, so the middle group is free of rank <span class="math" data-tex="\(r-1\)">\(r-1\)</span>, even for composite <span class="math" data-tex="\(n\)">\(n\)</span>. The Euler characteristic is <span class="math" data-tex="\(-(r-1)+1=2-r\)">\(-(r-1)+1=2-r\)</span>. Its definition by ranks is meaningful here because every displayed module is free. The quotient <span class="math" data-tex="\(A^r/\Delta A\)">\(A^r/\Delta A\)</span> is canonical and carries boundary permutations; the chosen difference coordinates depend on the distinguished point <span class="math" data-tex="\(x_1\)">\(x_1\)</span>. □</p>
+<p><strong>Solution 3.</strong> For proper <span class="math" data-tex="\(f\)">\(f\)</span>, the factorization <span class="math" data-tex="\(X\xrightarrow{\mathrm{id}}X\xrightarrow fY\)">\(X\xrightarrow{\mathrm{id}}X\xrightarrow fY\)</span> is a compactification. Formula (7.1) gives <span class="math" data-tex="\(Rf_!=Rf_*\)">\(Rf_!=Rf_*\)</span>. Theorem 7.1 identifies this with any other choice, including its canonical maps.</p>
+<p>For separated finite-type étale <span class="math" data-tex="\(f\)">\(f\)</span>, quasi-finiteness and Zariski's main theorem give <span class="math" data-tex="\(X\xrightarrow j\overline X\xrightarrow pY\)">\(X\xrightarrow j\overline X\xrightarrow pY\)</span>, with <span class="math" data-tex="\(p\)">\(p\)</span> finite. Lesson 7 gives <span class="math" data-tex="\(Rp_*=p_*\)">\(Rp_*=p_*\)</span> and its exactness. Open <span class="math" data-tex="\(j_!\)">\(j_!\)</span> is exact. Therefore <span class="math" data-tex="\(Rf_!=p_*j_!\)">\(Rf_!=p_*j_!\)</span> is exact and, by Lemma 2.1, equals <span class="math" data-tex="\(f_!\)">\(f_!\)</span> of (2.1) on sheaves, hence termwise on all complexes of the two domains of Section 1. Lemma 2.2 identifies it with the étale extension-by-zero functor, whose stalk is the sum over geometric lifts.</p>
+<p>For separated étale <span class="math" data-tex="\(f\)">\(f\)</span> without global finite type, the ordinary functor is still given by (2.1). A properly supported section near an affine target has support contained in some quasi-compact open of the source. Such opens are finite type over that target and exhaust the section functor by extension of supports, as in Lemma 2.2. Its stalks remain the same direct sums, and so it is exact. This local statement does not require extending the global finite-type definition (7.1) to other morphisms. □</p>
+<p><strong>Solution 4.</strong> The empty scheme has zero groups, so suppose <span class="math" data-tex="\(X\ne\varnothing\)">\(X\ne\varnothing\)</span> and put <span class="math" data-tex="\(d=\dim X\)">\(d=\dim X\)</span>. Nagata supplies <span class="math" data-tex="\(j:X\hookrightarrow\overline X\)">\(j:X\hookrightarrow\overline X\)</span> proper over the field. Replace <span class="math" data-tex="\(\overline X\)">\(\overline X\)</span> by the schematic closure of <span class="math" data-tex="\(X\)">\(X\)</span>. Then every irreducible component meets <span class="math" data-tex="\(X\)">\(X\)</span> in a dense open, and <span class="math" data-tex="\(\dim\overline X=d\)">\(\dim\overline X=d\)</span>. The sheaf <span class="math" data-tex="\(j_!\mathcal F\)">\(j_!\mathcal F\)</span> is torsion on <span class="math" data-tex="\(\overline X\)">\(\overline X\)</span> because its stalks are either those of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> or zero. Theorem 4.1, proved using proper base change, the curve theorem, normalization and the rational-function graph induction, gives</p>
+<span class="math math-display" data-tex="\[
+H^q(\overline X,j_!\mathcal F)=0\quad(q&gt;2d).
+\tag{15.2}
+\]">\[
+H^q(\overline X,j_!\mathcal F)=0\quad(q&gt;2d).
+\tag{15.2}
+\]</span>
+<p>By definition and proper direct image composition the left side is <span class="math" data-tex="\(H^q_c(X,\mathcal F)\)">\(H^q_c(X,\mathcal F)\)</span>. No finiteness of stalks, common annihilator, or finite stratification was used. Torsion of every order is included. The argument applies to the separated finite-type schemes for which our compactification construction is defined. □</p>
+<p><strong>Solution 5.</strong> Choose <span class="math" data-tex="\(X\xrightarrow j\overline X\xrightarrow pY\)">\(X\xrightarrow j\overline X\xrightarrow pY\)</span>, and pull the factorization back along <span class="math" data-tex="\(g:Y&#x27;\to Y\)">\(g:Y&#x27;\to Y\)</span>. Properness and openness survive arbitrary base change, so it computes both compact direct images. With <span class="math" data-tex="\(\bar a:\overline X&#x27;\to\overline X\)">\(\bar a:\overline X&#x27;\to\overline X\)</span>, the required map is exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g^{-1}Rp_*j_!E
+&amp;\longrightarrow Rp&#x27;_*\bar a^{-1}j_!E\\
+&amp;\longrightarrow Rp&#x27;_*j&#x27;_!a^{-1}E.
+\end{aligned}
+\tag{15.3}
+\]">\[
+\begin{aligned}
+g^{-1}Rp_*j_!E
+&amp;\longrightarrow Rp&#x27;_*\bar a^{-1}j_!E\\
+&amp;\longrightarrow Rp&#x27;_*j&#x27;_!a^{-1}E.
+\end{aligned}
+\tag{15.3}
+\]</span>
+<p>The first arrow is proper base change. The second is open base change, the identity on the pulled-back support open and zero elsewhere. For a bounded-below torsion complex both are isomorphisms by lesson 13 and exactness of <span class="math" data-tex="\(j_!\)">\(j_!\)</span>. For an unbounded complex over a torsion ring, take a termwise injective K-injective resolution of <span class="math" data-tex="\(j_!E\)">\(j_!E\)</span>. Proper base change for its individual terms makes their inverse images <span class="math" data-tex="\(p&#x27;_*\)">\(p&#x27;_*\)</span>-acyclic. The finite-dimensional proper fibres and Theorem 4.1 provide a uniform finite cohomological bound locally on the base; Lemma 5.1 allows that entire unbounded complex to compute <span class="math" data-tex="\(Rp&#x27;_*\)">\(Rp&#x27;_*\)</span>. Hence the first arrow of (15.3) is again an isomorphism. No boundedness or finite Tor dimension of <span class="math" data-tex="\(E\)">\(E\)</span> is substituted for this argument.</p>
+<p>For independence, let <span class="math" data-tex="\(t:\overline X_1\to\overline X_2\)">\(t:\overline X_1\to\overline X_2\)</span> refine a compactification. Its comparison is <span class="math" data-tex="\(j_{2,!}E\to Rt_*j_{1,!}E\)">\(j_{2,!}E\to Rt_*j_{1,!}E\)</span>, followed by <span class="math" data-tex="\(Rp_{2,*}\)">\(Rp_{2,*}\)</span>. Pulling back that exchange produces the same exchange in the pulled-back square, by Lemma 6.1. Proper comparison along <span class="math" data-tex="\(p_2t\)">\(p_2t\)</span> is the composite of those along <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(p_2\)">\(p_2\)</span>. Expanding (15.3) with these identifications therefore gives the same map for both choices. Cofilteredness supplies a common refinement for any two choices, and the cocycle comparisons of Theorem 7.1 finish independence.</p>
+<p>For a composite of separated finite-type maps use (8.2). Its composition map (8.3) exchanges <span class="math" data-tex="\(i_!\)">\(i_!\)</span> with the middle proper image <span class="math" data-tex="\(Rh_*\)">\(Rh_*\)</span>. Pulling back the exchange commutes with it by Lemma 6.1. The remaining proper and open comparisons compose by their adjunction and extension-by-zero laws. Thus the composite base-change map agrees with the one for the composite morphism. For successive changes of base the same expansion contains only consecutive proper comparisons and consecutive open comparisons, each of which pastes to the outer comparison. These arguments also prove the naturality and the asserted compatibility of the canonical maps. □</p>
+<h2 id="16-sources-and-the-boundary-of-the-proof">16. Sources and the boundary of the proof</h2>
+<p>The corresponding sections of the AI-integrated Stacks project are <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-section-compact-support">Sections with compact support</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-section-finite-support">Sections with finite support</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-section-derived-lower-shriek-compactification">Derived lower shriek via compactifications</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-section-derived-lower-shriek-properties">Properties of derived lower shriek</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-section-compactly-supported-cohomology">Compactly supported cohomology</a>. The relevant targets are 0F4V–0F52, 0F6E/0F6R, 0F7A/0F7H–0F7L, 0G28/0G2A/0GKN/0GKP/0GL5, and 0GJY/0GJZ/0GK1/0GKR. The proper dimension argument is 095U in 0A5I; its proof is developed in Section 4. Unbounded acyclic-complex computation and the direct-sum/free-resolution argument have been supplied rather than replaced by a bounded-below tensor claim.</p>
+<p>The historical reference is P. Deligne's <a href="https://www.normalesup.org/~forgogozo/SGA4/">SGA 4</a>, Exposé XVII: §3.2–3.3 for compactification refinement and gluing; §5.1.5–5.1.16 for exchange, construction, composition and localization; and §5.2.3–5.2.9 for canonical base change, the fibre bound and projection. The present text uses constant commutative coefficient rings and states its two derived domains explicitly.</p>
+<p>For the Nagata historical passage, Deligne, <em>Le théorème de plongement de Nagata</em>, Kyoto Journal of Mathematics 50 (2010), 661–670, Theorem 1.6 on page 668, states the embedding in a proper scheme under the paper's global Noetherian convention. Taking the closure of the locally closed image makes the embedding open in a proper scheme. The quasi-compact, quasi-separated generality used here is the modern statement 0F41; it is not attributed to the broader scope of that historical paper. No proof of Nagata is required in this lesson.</p>
+<p>The general constructibility and finiteness inputs are exactly 0GL0 and 0GLH, with Noetherian coefficients and the finite-presentation condition specified in Section 12. Curve finiteness, the vanishing bounds, compactification independence, coherent composition, arbitrary base change, the projection formula, excision, and every exercise solution have been proved in the lesson using the indicated earlier course results. The examples and smooth-base-change preview retain their invertibility hypotheses; characteristic torsion is included in the general compact-support construction and bounds.</p>
+</article></main></body></html>

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SH02-SPH — Inverse operators from complementary hemisphere boundaries · Microlocal sheaves</title>
+<meta name="description" content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/sphere-kernels.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <span class="unlinked">Microlocal sheaves</span> <span aria-hidden="true">›</span> <span>SH02-SPH — Inverse operators from complementary hemisphere boundaries</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by AI in Codex.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="sh02-sph-inverse-operators-from-complementary-hemisphere-boundaries">SH02-SPH — Inverse operators from complementary hemisphere boundaries</h1>
+<p>Local unit: <code>SH02-SPH</code>. Intended license: GFDL-1.2-or-later, with no invariant sections or cover texts. The arguments below are complete relative to the stated proper-support, orientation and kernel-composition imports. Formalization, translation and publication have not occurred.</p>
+<p>An integral kernel can recover all of an input sheaf even when its support is much larger than a diagonal. Here the intermediate variable ranges over covector directions. A closed inequality followed by an open inequality leaves an open hemisphere above the diagonal. Away from the diagonal it leaves a closed halfspace, whose compactly supported cohomology vanishes. The boundary condition is the mechanism of inversion.</p>
+<h2 id="sh02-sph-setup-directions-and-relative-correspondences">SH02-SPH-SETUP — Directions and relative correspondences</h2>
+<p>Fix a commutative ring <span class="math" data-tex="$k$">$k$</span> of finite global dimension. Let <span class="math" data-tex="$E\to B$">$E\to B$</span> be a real vector bundle of fixed rank <span class="math" data-tex="$n$">$n$</span> over a locally compact Hausdorff space. There is no orientation, constructibility, field, finite-stalk or compact-base assumption. Put</p>
+<span class="math math-display" data-tex="\[
+S=S(E)=(E\setminus0)/\mathbb R_{&gt;0},\qquad
+S^\vee=S(E^*)=(E^*\setminus0)/\mathbb R_{&gt;0}.
+\]">\[
+S=S(E)=(E\setminus0)/\mathbb R_{&gt;0},\qquad
+S^\vee=S(E^*)=(E^*\setminus0)/\mathbb R_{&gt;0}.
+\]</span>
+<p>These are spaces of positive rays; opposite rays are distinct. Local bundle trivializations identify each projection with <span class="math" data-tex="$U\times S^{n-1}\to U$">$U\times S^{n-1}\to U$</span> when <span class="math" data-tex="$n&gt;0$">$n&gt;0$</span>. Thus the projections are proper topological submersions of relative dimension <span class="math" data-tex="$n-1$">$n-1$</span>. This construction uses no globally chosen metric. A local metric can identify positive rays with unit vectors, and the resulting ray space is independent of that choice.</p>
+<p>We use relative products over <span class="math" data-tex="$B$">$B$</span>. Write <span class="math" data-tex="$p:S\times_B S^\vee\to S$">$p:S\times_B S^\vee\to S$</span> and <span class="math" data-tex="$q:S\times_B S^\vee\to S^\vee$">$q:S\times_B S^\vee\to S^\vee$</span>. Define two incidence sets, with the order of the variables indicated:</p>
+<span class="math math-display" data-tex="\[
+D=\{(u,\xi):\xi(u)\geq0\}\subset S\times_B S^\vee,
+\qquad
+J=\{(\xi,u):\xi(u)&gt;0\}\subset S^\vee\times_B S.
+\tag{SPH1}
+\]">\[
+D=\{(u,\xi):\xi(u)\geq0\}\subset S\times_B S^\vee,
+\qquad
+J=\{(\xi,u):\xi(u)&gt;0\}\subset S^\vee\times_B S.
+\tag{SPH1}
+\]</span>
+<p>Evaluation has a well-defined sign on rays because changing either representative multiplies it by a positive number. The sets <span class="math" data-tex="$D$">$D$</span> and <span class="math" data-tex="$J$">$J$</span> are respectively closed and open in their relative products. As elsewhere, <span class="math" data-tex="$k_D$">$k_D$</span> and <span class="math" data-tex="$k_J$">$k_J$</span> mean restriction of constant coefficients followed by extension by zero. They do not denote local-cohomology functors.</p>
+<p>Let <span class="math" data-tex="$O_E$">$O_E$</span> be the orientation local system of <span class="math" data-tex="$E$">$E$</span> on <span class="math" data-tex="$B$">$B$</span>. There is a positive dual-orientation identification <span class="math" data-tex="$O_E\simeq O_{E^*}$">$O_E\simeq O_{E^*}$</span> and a canonical pairing <span class="math" data-tex="$O_E\otimes O_{E^*}\simeq k_B$">$O_E\otimes O_{E^*}\simeq k_B$</span>. Let</p>
+<span class="math math-display" data-tex="\[
+\omega_{S^\vee/B}=\operatorname{or}_{S^\vee/B}[n-1].
+\]">\[
+\omega_{S^\vee/B}=\operatorname{or}_{S^\vee/B}[n-1].
+\]</span>
+<p>The first kernel includes this complex pulled back from its second factor:</p>
+<span class="math math-display" data-tex="\[
+K=k_D\otimes q^{-1}\omega_{S^\vee/B},
+\qquad L=k_J.
+\tag{SPH2}
+\]">\[
+K=k_D\otimes q^{-1}\omega_{S^\vee/B},
+\qquad L=k_J.
+\tag{SPH2}
+\]</span>
+<p>The tensor products are derived. The cutoff sheaves are flat: each stalk is either <span class="math" data-tex="$k$">$k$</span> or zero. Orientation sheaves are locally free of rank one.</p>
+<p>For relative kernels <span class="math" data-tex="$A$">$A$</span> on <span class="math" data-tex="$P\times_B Q$">$P\times_B Q$</span> and <span class="math" data-tex="$C$">$C$</span> on <span class="math" data-tex="$Q\times_B R$">$Q\times_B R$</span>, define</p>
+<span class="math math-display" data-tex="\[
+A\circ C=Rr_{13!}(r_{12}^{-1}A\otimes r_{23}^{-1}C).
+\tag{SPH3}
+\]">\[
+A\circ C=Rr_{13!}(r_{12}^{-1}A\otimes r_{23}^{-1}C).
+\tag{SPH3}
+\]</span>
+<p>The projections in this unit have finite-dimensional sphere or Euclidean fibres. Proper-support base change and the fibre dimension bound give the required finite cohomological dimensions. Consequently these convolution operations and their exceptional adjoints are available on <span class="math" data-tex="$D^+$">$D^+$</span> and preserve <span class="math" data-tex="$D^b$">$D^b$</span> in the instances below. This relative formulation requires no finite c-soft dimension of the base. When the absolute product kernel formalism of SH02-KER is used, its ambient finite c-soft dimension assumptions are retained; extending the relative kernels by the closed embeddings into the absolute products gives the same ordinary integral operators.</p>
+<p>The proof uses the actual composition and adjunction comparisons of SH02-KER-006 and SH02-KER-008. Their relative versions follow from the same Cartesian projection squares and the same tensor/Hom adjunctions. It also uses proper-support base change and the oriented-submersion trace: for an oriented <span class="math" data-tex="$d$">$d$</span>-dimensional Euclidean fibre, integration identifies <span class="math" data-tex="$R\Gamma_c(\mathbb R^d;k[d])$">$R\Gamma_c(\mathbb R^d;k[d])$</span> with <span class="math" data-tex="$k$">$k$</span>. The manifold-duality unit must supply that trace and its orientation and base-change compatibilities. These are explicit imports, not consequences of stalk calculations alone.</p>
+<h2 id="sh02-sph-halfspace-why-a-closed-boundary-kills-compact-cohomology">SH02-SPH-HALFSPACE — Why a closed boundary kills compact cohomology</h2>
+<p>For a <span class="math" data-tex="$k$">$k$</span>-module <span class="math" data-tex="$M$">$M$</span> and <span class="math" data-tex="$d\geq1$">$d\geq1$</span>,</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_c([0,\infty)\times\mathbb R^{d-1};M)=0.
+\tag{SPH4}
+\]">\[
+R\Gamma_c([0,\infty)\times\mathbb R^{d-1};M)=0.
+\tag{SPH4}
+\]</span>
+<p>Here the coefficient sheaf is constant on the displayed space. To prove the statement, compactify each coordinate. The space becomes</p>
+<span class="math math-display" data-tex="\[
+W=[0,1)\times(-1,1)^{d-1}\subset Q=[0,1]\times[-1,1]^{d-1}.
+\]">\[
+W=[0,1)\times(-1,1)^{d-1}\subset Q=[0,1]\times[-1,1]^{d-1}.
+\]</span>
+<p>Its closed complement is</p>
+<span class="math math-display" data-tex="\[
+A=(\{1\}\times[-1,1]^{d-1})
+\cup([0,1]\times\partial[-1,1]^{d-1}).
+\]">\[
+A=(\{1\}\times[-1,1]^{d-1})
+\cup([0,1]\times\partial[-1,1]^{d-1}).
+\]</span>
+<p>For <span class="math" data-tex="$d=1$">$d=1$</span>, this means <span class="math" data-tex="$A=\{1\}$">$A=\{1\}$</span>. The homotopy <span class="math" data-tex="$(s,y)\mapsto((1-t)s+t,y)$">$(s,y)\mapsto((1-t)s+t,y)$</span> preserves <span class="math" data-tex="$A$">$A$</span> and retracts it onto its right face. That face and <span class="math" data-tex="$Q$">$Q$</span> are nonempty compact convex sets, so their constant-coefficient cohomology is <span class="math" data-tex="$M$">$M$</span> in degree zero by SH02-OR-CONVEX-COMPACT.</p>
+<p>For clarity, the homotopy assertion used here has a sheaf proof. If <span class="math" data-tex="$T$">$T$</span> is compact Hausdorff, the projection <span class="math" data-tex="$T\times[0,1]\to T$">$T\times[0,1]\to T$</span> is proper. Proper base change and interval acyclicity make the constant-coefficient pullback unit an isomorphism. Each endpoint restriction is its inverse. Thus homotopic maps induce the same map on constant-coefficient cohomology. Applying this to the displayed retraction gives <span class="math" data-tex="$R\Gamma(A;M_A)\simeq M$">$R\Gamma(A;M_A)\simeq M$</span>. The restriction from <span class="math" data-tex="$Q$">$Q$</span> to <span class="math" data-tex="$A$">$A$</span> is the identity on constant sections and therefore is an isomorphism on all cohomology groups.</p>
+<p>The exact sequence for an open subset and its closed complement gives the triangle</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(Q;j_!M_W)\longrightarrow R\Gamma(Q;M_Q)
+\longrightarrow R\Gamma(A;M_A)\xrightarrow{+1}.
+\]">\[
+R\Gamma(Q;j_!M_W)\longrightarrow R\Gamma(Q;M_Q)
+\longrightarrow R\Gamma(A;M_A)\xrightarrow{+1}.
+\]</span>
+<p>The last nonshifted arrow is an isomorphism. Since <span class="math" data-tex="$Q$">$Q$</span> is compact, the first term is <span class="math" data-tex="$R\Gamma_c(W;M_W)$">$R\Gamma_c(W;M_W)$</span>. This proves (SPH4). It holds for arbitrary modules, including torsion and infinitely generated modules. For a bounded-below constant coefficient complex, the compact-support hypercohomology spectral sequence gives the same vanishing; boundedness below ensures convergence in each total degree.</p>
+<p>By contrast, an open halfspace in <span class="math" data-tex="$\mathbb R^d$">$\mathbb R^d$</span> is homeomorphic to <span class="math" data-tex="$\mathbb R^d$">$\mathbb R^d$</span> and has compact cohomology <span class="math" data-tex="$M[-d]$">$M[-d]$</span> after an orientation is chosen. It cannot be substituted into (SPH4).</p>
+<h2 id="sh02-sph-first-eliminating-the-covector-direction">SH02-SPH-FIRST — Eliminating the covector direction</h2>
+<p>There is an isomorphism of kernels on <span class="math" data-tex="$S\times_B S$">$S\times_B S$</span>,</p>
+<span class="math math-display" data-tex="\[
+K\circ L\simeq k_{\Delta_S}.
+\tag{SPH5}
+\]">\[
+K\circ L\simeq k_{\Delta_S}.
+\tag{SPH5}
+\]</span>
+<p>The isomorphism will be obtained from a restriction to the diagonal followed by the oriented trace.</p>
+<p>On <span class="math" data-tex="$S\times_B S^\vee\times_B S$">$S\times_B S^\vee\times_B S$</span> the support of the convolution integrand is</p>
+<span class="math math-display" data-tex="\[
+T=\{(u,\xi,v):\xi(u)\geq0,\ \xi(v)&gt;0\}.
+\]">\[
+T=\{(u,\xi,v):\xi(u)\geq0,\ \xi(v)&gt;0\}.
+\]</span>
+<p>Fix <span class="math" data-tex="$(u,v)$">$(u,v)$</span> in a fibre over <span class="math" data-tex="$b$">$b$</span>. Choose a nonzero representative of <span class="math" data-tex="$v$">$v$</span>. Each positive covector ray satisfying <span class="math" data-tex="$\xi(v)&gt;0$">$\xi(v)&gt;0$</span> has a unique representative satisfying <span class="math" data-tex="$\xi(v)=1$">$\xi(v)=1$</span>. The remaining variables form an affine space of dimension <span class="math" data-tex="$n-1$">$n-1$</span>. In this affine space the other condition is <span class="math" data-tex="$\xi(u)\geq0$">$\xi(u)\geq0$</span>.</p>
+<p>There are exactly three cases. If <span class="math" data-tex="$u=v$">$u=v$</span> as positive rays, the condition holds throughout the affine space. If <span class="math" data-tex="$u=-v$">$u=-v$</span>, it holds nowhere. Otherwise <span class="math" data-tex="$u$">$u$</span> and <span class="math" data-tex="$v$">$v$</span> are linearly independent, the affine function <span class="math" data-tex="$\xi\mapsto\xi(u)$">$\xi\mapsto\xi(u)$</span> is nonconstant, and the condition cuts out a closed affine halfspace. In the last case necessarily <span class="math" data-tex="$n\geq2$">$n\geq2$</span>.</p>
+<p>Proper-support base change identifies the convolution stalk with compact cohomology of this fibre with coefficients in the restricted orientation complex. On a hemisphere the orientation sheaf is locally constant on an affine space and is therefore constant; its shift is <span class="math" data-tex="$[n-1]$">$[n-1]$</span>. The empty and closed-halfspace cases have zero compact cohomology by (SPH4). Thus every cohomology sheaf of <span class="math" data-tex="$K\circ L$">$K\circ L$</span> vanishes away from <span class="math" data-tex="$\Delta_S$">$\Delta_S$</span>.</p>
+<p>Let <span class="math" data-tex="$i:\Delta_S\hookrightarrow S\times_B S$">$i:\Delta_S\hookrightarrow S\times_B S$</span>. The unit</p>
+<span class="math math-display" data-tex="\[
+K\circ L\longrightarrow i_*i^{-1}(K\circ L)
+\tag{SPH6}
+\]">\[
+K\circ L\longrightarrow i_*i^{-1}(K\circ L)
+\tag{SPH6}
+\]</span>
+<p>is an isomorphism: it is the identity on stalks on the diagonal, and both sides vanish elsewhere. This step identifies the sheaf object, rather than inferring an object from a list of stalk groups.</p>
+<p>Base change identifies the restriction on the right with the compact direct image along</p>
+<span class="math math-display" data-tex="\[
+h:\{(u,\xi):\xi(u)&gt;0\}\longrightarrow S.
+\]">\[
+h:\{(u,\xi):\xi(u)&gt;0\}\longrightarrow S.
+\]</span>
+<p>Locally on <span class="math" data-tex="$S$">$S$</span>, choose a continuously varying representative of <span class="math" data-tex="$u$">$u$</span> and a covector evaluating to one on it. The remaining covectors form a vector space of dimension <span class="math" data-tex="$n-1$">$n-1$</span>. Hence <span class="math" data-tex="$h$">$h$</span> is locally a Euclidean-space bundle. Its relative dualizing complex is the restriction of <span class="math" data-tex="$q^{-1}\omega_{S^\vee/B}$">$q^{-1}\omega_{S^\vee/B}$</span>, because it is an open subspace of the product of the two ray spheres over <span class="math" data-tex="$B$">$B$</span>. The counit</p>
+<span class="math math-display" data-tex="\[
+Rh_!h^!k_S\longrightarrow k_S
+\tag{SPH7}
+\]">\[
+Rh_!h^!k_S\longrightarrow k_S
+\tag{SPH7}
+\]</span>
+<p>is an isomorphism by the Euclidean-fibre integration trace. Compose (SPH6), base change, and (SPH7) to obtain (SPH5). No global orientation or basis was chosen, and the orientation transitions in the integrand are precisely the transitions in the trace.</p>
+<h2 id="sh02-sph-second-eliminating-the-vector-direction">SH02-SPH-SECOND — Eliminating the vector direction</h2>
+<p>The other convolution satisfies</p>
+<span class="math math-display" data-tex="\[
+L\circ K\simeq k_{\Delta_{S^\vee}}.
+\tag{SPH8}
+\]">\[
+L\circ K\simeq k_{\Delta_{S^\vee}}.
+\tag{SPH8}
+\]</span>
+<p>Its support above a pair <span class="math" data-tex="$(\xi,\eta)$">$(\xi,\eta)$</span> consists of rays <span class="math" data-tex="$u$">$u$</span> satisfying <span class="math" data-tex="$\xi(u)&gt;0$">$\xi(u)&gt;0$</span> and <span class="math" data-tex="$\eta(u)\geq0$">$\eta(u)\geq0$</span>. Normalize by <span class="math" data-tex="$\xi(u)=1$">$\xi(u)=1$</span>. The same affine calculation gives all of <span class="math" data-tex="$\mathbb R^{n-1}$">$\mathbb R^{n-1}$</span> when <span class="math" data-tex="$\eta=\xi$">$\eta=\xi$</span>, the empty set when <span class="math" data-tex="$\eta=-\xi$">$\eta=-\xi$</span>, and a closed halfspace otherwise. Therefore the convolution again vanishes off its diagonal, and its canonical restriction unit identifies it with the pushforward of its diagonal restriction.</p>
+<p>There is an extra orientation issue: the complex in <span class="math" data-tex="$K$">$K$</span> comes from the endpoint <span class="math" data-tex="$\eta$">$\eta$</span>, whereas the integration variable is now <span class="math" data-tex="$u$">$u$</span>. We make the cancellation explicit. For a positive vector ray <span class="math" data-tex="$u$">$u$</span>, place its positive radial direction first in an oriented basis of <span class="math" data-tex="$E_b$">$E_b$</span>. This gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{or}_{S/B}|_u\simeq O_{E,b}.
+\]">\[
+\operatorname{or}_{S/B}|_u\simeq O_{E,b}.
+\]</span>
+<p>There is the corresponding convention for covector rays. On the incidence space <span class="math" data-tex="$\xi(u)&gt;0$">$\xi(u)&gt;0$</span>, choose a representative with <span class="math" data-tex="$\xi(u)=1$">$\xi(u)=1$</span>. Then</p>
+<span class="math math-display" data-tex="\[
+E_b=\mathbb Ru\oplus\ker\xi,
+\qquad
+E_b^*=\mathbb R\xi\oplus\operatorname{ann}(u).
+\]">\[
+E_b=\mathbb Ru\oplus\ker\xi,
+\qquad
+E_b^*=\mathbb R\xi\oplus\operatorname{ann}(u).
+\]</span>
+<p>The last two summands are perfectly paired, and the first two one-dimensional summands pair positively. A basis of <span class="math" data-tex="$\ker\xi$">$\ker\xi$</span> and its dual basis in <span class="math" data-tex="$\operatorname{ann}(u)$">$\operatorname{ann}(u)$</span> therefore induce the positive dual-orientation identification. Replacing such a basis multiplies both orientation generators by the same sign. Scaling <span class="math" data-tex="$u$">$u$</span> or <span class="math" data-tex="$\xi$">$\xi$</span> positively changes no orientation. These identifications hence glue over the whole incidence space.</p>
+<p>In particular, on the incidence space above the diagonal <span class="math" data-tex="$\eta=\xi$">$\eta=\xi$</span>, the pulled-back endpoint complex <span class="math" data-tex="$\omega_{S^\vee/B}$">$\omega_{S^\vee/B}$</span> is canonically the relative dualizing complex for projection onto <span class="math" data-tex="$\xi$">$\xi$</span>. Its degree is <span class="math" data-tex="$n-1$">$n-1$</span>, and its orientation local system agrees with that of the integrated hemisphere. Integration therefore gives</p>
+<span class="math math-display" data-tex="\[
+R\widetilde h_!\bigl(\widetilde h^{-1}\omega_{S^\vee/B}
+\big|_{\{\xi(u)&gt;0\}}\bigr)\simeq k_{S^\vee},
+\]">\[
+R\widetilde h_!\bigl(\widetilde h^{-1}\omega_{S^\vee/B}
+\big|_{\{\xi(u)&gt;0\}}\bigr)\simeq k_{S^\vee},
+\]</span>
+<p>where the notation inside the pushforward means the endpoint orientation complex on the incidence space. More explicitly, locally this is <span class="math" data-tex="$O_E[-(n-1)]\otimes O_{E^*}[n-1]\simeq k$">$O_E[-(n-1)]\otimes O_{E^*}[n-1]\simeq k$</span>. This cancellation is transported from the integration counit, with the tensor-shift signs included; it is not an independently chosen degree-zero multiplication. The positive dual pairing fixes its orientation convention, and the two shifts cancel. The restriction-to-diagonal construction followed by this trace proves (SPH8). It introduces neither an antipodal map nor a residual shift.</p>
+<h2 id="sh02-sph-equivalence-the-induced-inverse-operators">SH02-SPH-EQUIVALENCE — The induced inverse operators</h2>
+<p>For <span class="math" data-tex="$F\in D^+(S^\vee;k)$">$F\in D^+(S^\vee;k)$</span> and <span class="math" data-tex="$G\in D^+(S;k)$">$G\in D^+(S;k)$</span>, put</p>
+<span class="math math-display" data-tex="\[
+\Phi_K(F)=Rp_!(K\otimes q^{-1}F),
+\qquad
+\Phi_L(G)=R\widetilde p_!(L\otimes\widetilde q^{-1}G),
+\]">\[
+\Phi_K(F)=Rp_!(K\otimes q^{-1}F),
+\qquad
+\Phi_L(G)=R\widetilde p_!(L\otimes\widetilde q^{-1}G),
+\]</span>
+<p>where <span class="math" data-tex="$\widetilde p:S^\vee\times_B S\to S^\vee$">$\widetilde p:S^\vee\times_B S\to S^\vee$</span> and <span class="math" data-tex="$\widetilde q:S^\vee\times_B S\to S$">$\widetilde q:S^\vee\times_B S\to S$</span>. The kernel-composition comparison and the diagonal kernel unit give</p>
+<span class="math math-display" data-tex="\[
+\Phi_K\Phi_L\simeq1_{D^+(S;k)},\qquad
+\Phi_L\Phi_K\simeq1_{D^+(S^\vee;k)}.
+\tag{SPH9}
+\]">\[
+\Phi_K\Phi_L\simeq1_{D^+(S;k)},\qquad
+\Phi_L\Phi_K\simeq1_{D^+(S^\vee;k)}.
+\tag{SPH9}
+\]</span>
+<p>These are equivalences on all sheaves in the indicated bounded-below categories, and restrict to bounded categories. The projections have fibres of uniformly bounded finite dimension, the kernel shifts are fixed, and the coefficient ring has finite global dimension; these facts supply the bounds for the displayed operations.</p>
+<p>Each operator has the actual kernel right adjoint, for example</p>
+<span class="math math-display" data-tex="\[
+\Psi_K(G)=Rq_*R\mathcal Hom(K,p^!G).
+\]">\[
+\Psi_K(G)=Rq_*R\mathcal Hom(K,p^!G).
+\]</span>
+<p>The unit and counit of <span class="math" data-tex="$\Phi_K\dashv\Psi_K$">$\Phi_K\dashv\Psi_K$</span> are isomorphisms because <span class="math" data-tex="$\Phi_K$">$\Phi_K$</span> is an equivalence. Here is the categorical reason without assuming a chosen inverse is automatically the given adjoint. Fully faithfulness makes the adjunction unit an isomorphism; essential surjectivity and the triangle identity then make the counit an isomorphism. Thus <span class="math" data-tex="$\Psi_K$">$\Psi_K$</span> is an inverse equivalence and is isomorphic to <span class="math" data-tex="$\Phi_L$">$\Phi_L$</span> as the inverse right adjoint. The corresponding assertion holds for <span class="math" data-tex="$\Psi_L$">$\Psi_L$</span>. This proves equivalence of all four operators. It does not identify arbitrary, separately normalized natural transformations merely from their invertibility.</p>
+<p>When <span class="math" data-tex="$n=0$">$n=0$</span>, both ray spaces are empty, and all their sheaf categories are the zero category. The kernels and diagonals are zero; the assertions are the unique equivalences of zero categories. This case requires no expression with a sphere of dimension minus one. For <span class="math" data-tex="$n=1$">$n=1$</span>, the ray fibres have two points, there is no halfspace case, and all traces have degree zero.</p>
+<h2 id="sh02-sph-examples-boundary-and-orientation-tests">SH02-SPH-EXAMPLES — Boundary and orientation tests</h2>
+<p><strong>An open-open replacement is not inverse.</strong> Take <span class="math" data-tex="$B$">$B$</span> a point and <span class="math" data-tex="$E=\mathbb R^2$">$E=\mathbb R^2$</span>. Replace the closed condition in <span class="math" data-tex="$D$">$D$</span> by a strict one. At the distinct vector rays <span class="math" data-tex="$u=(1,0)$">$u=(1,0)$</span> and <span class="math" data-tex="$v=(0,1)$">$v=(0,1)$</span>, normalization gives <span class="math" data-tex="$\xi=(a,1)$">$\xi=(a,1)$</span> with <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>. This is an open line interval and has compact cohomology <span class="math" data-tex="$k[-1]$">$k[-1]$</span>. The orientation shift in <span class="math" data-tex="$K$">$K$</span> is <span class="math" data-tex="$[1]$">$[1]$</span>, so the resulting convolution stalk is <span class="math" data-tex="$k$">$k$</span> in degree zero. It is nonzero away from the diagonal when <span class="math" data-tex="$k\ne0$">$k\ne0$</span>. The change of one boundary inequality destroys (SPH5).</p>
+<p><strong>A line with orientation monodromy.</strong> Let <span class="math" data-tex="$E$">$E$</span> be the Möbius real line bundle on a circle. Its ray bundle is the connected double cover of that circle. A positive vector ray determines the positive dual covector ray by the condition <span class="math" data-tex="$\xi(u)&gt;0$">$\xi(u)&gt;0$</span>, giving a canonical isomorphism <span class="math" data-tex="$S(E)\simeq S(E^*)$">$S(E)\simeq S(E^*)$</span>. In rank one, the closed and open conditions in (SPH1) coincide, since a nonzero covector never vanishes on a nonzero vector. Both incidence kernels are graphs of this isomorphism. The relative ray-space orientation is canonically trivial in dimension zero. Hence the two operators are transport along mutually inverse graph maps. No choice of orientation of the Möbius bundle is involved.</p>
+<h2 id="sh02-sph-exercises-calculations-with-solutions">SH02-SPH-EXERCISES — Calculations with solutions</h2>
+<ol>
+<li>
+<p>For <span class="math" data-tex="$n=3$">$n=3$</span>, fix independent representatives <span class="math" data-tex="$u,v$">$u,v$</span>. Describe the off-diagonal fibre and explain why its orientation shift cannot rescue a nonzero compact cohomology class.</p>
+<p><em>Solution.</em> Choose coordinates with <span class="math" data-tex="$v=e_3$">$v=e_3$</span> and <span class="math" data-tex="$u=e_1$">$u=e_1$</span>. A covector normalized by <span class="math" data-tex="$\xi(v)=1$">$\xi(v)=1$</span> has coordinates <span class="math" data-tex="$(a,b,1)$">$(a,b,1)$</span>. The condition <span class="math" data-tex="$\xi(u)\geq0$">$\xi(u)\geq0$</span> is <span class="math" data-tex="$a\geq0$">$a\geq0$</span>, so the fibre is <span class="math" data-tex="$[0,\infty)\times\mathbb R$">$[0,\infty)\times\mathbb R$</span>. Its constant-coefficient compact cohomology is zero by (SPH4). Tensoring by a rank-one orientation line and shifting by two leaves the zero object zero. The vanishing depends on retaining the boundary <span class="math" data-tex="$a=0$">$a=0$</span>.</p>
+</li>
+<li>
+<p>Explain why proving only that all diagonal stalks are isomorphic to <span class="math" data-tex="$k$">$k$</span> would not finish the convolution calculation.</p>
+<p><em>Solution.</em> A locally constant sheaf can have stalk <span class="math" data-tex="$k$">$k$</span> everywhere while carrying nontrivial monodromy. Stalk dimensions also do not specify a preferred map. The restriction unit (SPH6) first places the convolution on the diagonal as a sheaf object. The globally defined, orientation-compatible integration trace then identifies that object with the constant diagonal sheaf. These maps eliminate the possible local-system ambiguity.</p>
+</li>
+<li>
+<p>Replace <span class="math" data-tex="$K$">$K$</span> by <span class="math" data-tex="$K[r]$">$K[r]$</span> and <span class="math" data-tex="$L$">$L$</span> by <span class="math" data-tex="$L[-r]$">$L[-r]$</span> for an integer <span class="math" data-tex="$r$">$r$</span>. Determine both convolutions and the corresponding change of operators.</p>
+<p><em>Solution.</em> Derived tensor and direct image commute with shifts, so each convolution receives total shift <span class="math" data-tex="$r-r=0$">$r-r=0$</span>. They remain the diagonal kernels with the isomorphisms induced from (SPH5) and (SPH8). The operators become <span class="math" data-tex="$\Phi_K[r]$">$\Phi_K[r]$</span> and <span class="math" data-tex="$\Phi_L[-r]$">$\Phi_L[-r]$</span>, which are still inverse. This calculation concerns complementary shifts of actual kernels; it does not assert that an arbitrary object with the same stalks defines the same kernel.</p>
+</li>
+</ol>
+<h2 id="sh02-sph-boundary-antecedents-and-remaining-verification">SH02-SPH-BOUNDARY — Antecedents and remaining verification</h2>
+<p>The ray–sphere kernel construction comes from the Fourier–Sato theory of M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §2.1. The lesson is organized around the separate closed-halfspace calculation, the two diagonal restriction maps and their differently placed orientation factors.</p>
+<p>The exact foundations needed are proper-support base change and composition, the compact constant-coefficient calculations in SH02-CA, the relative orientation trace with positive dual orientation in SH02-MD-TRACE and SH02-MD-SPHERE, and the actual kernel-composition/adjunction comparisons in SH02-KER. The private correspondence ledger records source locators and the distinction between relative products over an arbitrary locally compact base and the ambient hypotheses of the absolute product formalism. No copied source image, exercise, proof paragraph or private locator belongs to this public lesson.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><span class="unlinked">Course contents</span><span></span></nav>
+<p class="small source-link"><a href="src/sphere-kernels.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-02">Repository</a></nav>
+</footer>
+</body>
+</html>

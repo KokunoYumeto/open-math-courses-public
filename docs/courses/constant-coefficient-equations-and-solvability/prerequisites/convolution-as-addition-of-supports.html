@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Convolution as addition of supports</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="convolution-as-addition-of-supports">Convolution as addition of supports</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>Convolution combines a measurement at one point with a measurement at another and assigns the result to their sum. This description works for point masses, functions and distributions. Its main restriction is geometric: points escaping to infinity must not keep contributing to one bounded output region. Once that restriction is understood, smoothing, differentiation and translation invariance become consequences of the same construction.</p>
+<p>We use <a href="tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a> for independent pairings and their limits, <a href="referenced-prerequisite-statements.html#reference-977312df506e">Local data and compatible products</a> for tests compact only on a distribution’s support, and <a href="referenced-prerequisite-statements.html#reference-abf2b43f981b">Order, positivity and distributional limits</a> for finite-regularity tests. The last section uses <a href="referenced-prerequisite-statements.html#reference-e160323ee579">Distributions as kernels of continuous operators</a>, <a href="weak-equations-and-classical-functions.html">Weak equations and classical functions</a>, and the compact approximation result in <a href="referenced-prerequisite-statements.html#reference-4b7c50465df8">When a kernel is smooth</a>. Entry requirements are ordinary integration, Taylor’s formula, compact cutoffs and partitions of unity. Basic references are [Dyatlov 2026], for convolution, and [Melrose 2016] and [Schwartz 1952], for the kernel perspective.</p>
+<h2 id="which-pairs-can-contribute-to-an-output">Which pairs can contribute to an output</h2>
+<p>All pairings are complex-linear. For a distribution on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, define translation by</p>
+<span class="math math-display" data-tex="\[
+\langle\tau_pu,\phi\rangle
+=\langle u,\phi(\,\cdot\,+p)\rangle.
+\tag{1.1}
+\]">\[
+\langle\tau_pu,\phi\rangle
+=\langle u,\phi(\,\cdot\,+p)\rangle.
+\tag{1.1}
+\]</span>
+<p>For functions, <span class="math" data-tex="\(\tau_pf(x)=f(x-p)\)">\(\tau_pf(x)=f(x-p)\)</span>. Thus <span class="math" data-tex="\(\tau_p\delta_0=\delta_p\)">\(\tau_p\delta_0=\delta_p\)</span>.</p>
+<p>Let <span class="math" data-tex="\(F,G\subset\mathbb R^n\)">\(F,G\subset\mathbb R^n\)</span> be closed. Addition is <strong>proper on the two supports</strong> if, for every compact <span class="math" data-tex="\(L\subset\mathbb R^n\)">\(L\subset\mathbb R^n\)</span>, the set</p>
+<span class="math math-display" data-tex="\[
+S_L=\{(s,t)\in F\times G:s+t\in L\}
+\tag{1.2}
+\]">\[
+S_L=\{(s,t)\in F\times G:s+t\in L\}
+\tag{1.2}
+\]</span>
+<p>is compact. Equivalently, for every <span class="math" data-tex="\(R&lt;\infty\)">\(R&lt;\infty\)</span> there is <span class="math" data-tex="\(T&lt;\infty\)">\(T&lt;\infty\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+s\in F,\ t\in G,\ |s+t|\le R
+\quad\Longrightarrow\quad |s|,|t|\le T.
+\tag{1.3}
+\]">\[
+s\in F,\ t\in G,\ |s+t|\le R
+\quad\Longrightarrow\quad |s|,|t|\le T.
+\tag{1.3}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(S_L\)">\(S_L\)</span> is closed, so boundedness gives compactness. Condition (1.3) follows from compactness for a closed ball. If either support is compact, properness follows: <span class="math" data-tex="\(t=s+t-s\)">\(t=s+t-s\)</span> remains bounded when the output and <span class="math" data-tex="\(s\)">\(s\)</span> do.</p>
+<p>Properness also makes <span class="math" data-tex="\(F+G\)">\(F+G\)</span> closed. If <span class="math" data-tex="\(s_j+t_j\to x\)">\(s_j+t_j\to x\)</span>, these outputs lie in one compact ball. A subsequence of <span class="math" data-tex="\((s_j,t_j)\)">\((s_j,t_j)\)</span> converges in <span class="math" data-tex="\(F\times G\)">\(F\times G\)</span>, and its sum is <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><strong>Theorem 1.1 (convolution by addition).</strong> Suppose <span class="math" data-tex="\(u,v\in\mathcal D&#x27;(\mathbb R^n)\)">\(u,v\in\mathcal D&#x27;(\mathbb R^n)\)</span>, with supports contained in <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, and addition is proper on <span class="math" data-tex="\(F\times G\)">\(F\times G\)</span>. There is a canonical distribution <span class="math" data-tex="\(u*v\)">\(u*v\)</span> given by</p>
+<span class="math math-display" data-tex="\[
+\langle u*v,\phi\rangle
+=\langle u(s)\otimes v(t),\phi(s+t)\rangle,
+\qquad\phi\in\mathcal D(\mathbb R^n).
+\tag{1.4}
+\]">\[
+\langle u*v,\phi\rangle
+=\langle u(s)\otimes v(t),\phi(s+t)\rangle,
+\qquad\phi\in\mathcal D(\mathbb R^n).
+\tag{1.4}
+\]</span>
+<p>The right side is the support-relative pairing. In particular,</p>
+<span class="math math-display" data-tex="\[
+u*v=v*u,\qquad
+\operatorname{supp}(u*v)\subset F+G.
+\tag{1.5}
+\]">\[
+u*v=v*u,\qquad
+\operatorname{supp}(u*v)\subset F+G.
+\tag{1.5}
+\]</span>
+<p>If the factors have order at most <span class="math" data-tex="\(r,s\)">\(r,s\)</span>, the result has order at most <span class="math" data-tex="\(r+s\)">\(r+s\)</span>. Derivatives satisfy</p>
+<span class="math math-display" data-tex="\[
+\partial^\alpha(u*v)
+=(\partial^\alpha u)*v
+=u*(\partial^\alpha v).
+\tag{1.6}
+\]">\[
+\partial^\alpha(u*v)
+=(\partial^\alpha u)*v
+=u*(\partial^\alpha v).
+\tag{1.6}
+\]</span>
+<p><strong>Proof.</strong> The support of <span class="math" data-tex="\(u\otimes v\)">\(u\otimes v\)</span> is contained in <span class="math" data-tex="\(F\times G\)">\(F\times G\)</span>. The intersection of that set with the support of <span class="math" data-tex="\(\phi(s+t)\)">\(\phi(s+t)\)</span> is contained in the compact set <span class="math" data-tex="\(S_{\operatorname{supp}\phi}\)">\(S_{\operatorname{supp}\phi}\)</span>. It is closed, hence compact. The support-relative test theorem therefore defines (1.4).</p>
+<p>For all tests supported in a fixed compact <span class="math" data-tex="\(L\)">\(L\)</span>, choose one smooth compact cutoff <span class="math" data-tex="\(\chi(s,t)\)">\(\chi(s,t)\)</span> equal to one near <span class="math" data-tex="\(S_L\)">\(S_L\)</span>. The right side becomes</p>
+<span class="math math-display" data-tex="\[
+\langle u\otimes v,\chi(s,t)\phi(s+t)\rangle.
+\tag{1.7}
+\]">\[
+\langle u\otimes v,\chi(s,t)\phi(s+t)\rangle.
+\tag{1.7}
+\]</span>
+<p>The tensor estimate on the compact support of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> bounds this by a finite derivative seminorm of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. If the factors have orders <span class="math" data-tex="\(r,s\)">\(r,s\)</span>, the estimate differentiates the first variable at most <span class="math" data-tex="\(r\)">\(r\)</span> times and the second at most <span class="math" data-tex="\(s\)">\(s\)</span> times. The product and chain rules require at most <span class="math" data-tex="\(r+s\)">\(r+s\)</span> derivatives of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. This proves continuity and the stated order bound.</p>
+<p>Interchanging the two tensor factors and their variables leaves addition unchanged, proving commutativity. If <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is supported outside <span class="math" data-tex="\(F+G\)">\(F+G\)</span>, its pullback has support disjoint from <span class="math" data-tex="\(F\times G\)">\(F\times G\)</span>, so its pairing is zero. Since <span class="math" data-tex="\(F+G\)">\(F+G\)</span> is closed, this proves the support inclusion.</p>
+<p>For derivatives, integration by parts in the first variable gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle (\partial^\alpha u)*v,\phi\rangle
+&amp;=(-1)^{|\alpha|}
+\langle u\otimes v,(\partial^\alpha\phi)(s+t)\rangle\\
+&amp;=\langle\partial^\alpha(u*v),\phi\rangle.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle (\partial^\alpha u)*v,\phi\rangle
+&amp;=(-1)^{|\alpha|}
+\langle u\otimes v,(\partial^\alpha\phi)(s+t)\rangle\\
+&amp;=\langle\partial^\alpha(u*v),\phi\rangle.
+\end{aligned}
+\]</span>
+<p>To justify this with compact tests, choose <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one on a neighborhood of the relevant support intersections before differentiating. Every term containing a derivative of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> vanishes near the tensor support wherever the pulled-back test is nonzero. Its distributional pairing is zero. Differentiating in the second variable proves the other equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+\delta_p*u=\tau_pu,\qquad
+\delta_0*u=u,\qquad
+(\partial^\alpha\delta_0)*u=\partial^\alpha u.
+\tag{1.8}
+\]">\[
+\delta_p*u=\tau_pu,\qquad
+\delta_0*u=u,\qquad
+(\partial^\alpha\delta_0)*u=\partial^\alpha u.
+\tag{1.8}
+\]</span>
+<p>For a constant-coefficient differential operator <span class="math" data-tex="\(P\)">\(P\)</span>, the same calculation gives</p>
+<span class="math math-display" data-tex="\[
+Pu=(P\delta_0)*u,\qquad
+P(u*v)=(Pu)*v=u*(Pv).
+\tag{1.9}
+\]">\[
+Pu=(P\delta_0)*u,\qquad
+P(u*v)=(Pu)*v=u*(Pv).
+\tag{1.9}
+\]</span>
+<p>All convolutions in these identities obey the preceding support hypotheses.</p>
+<p>Sometimes properness holds only over part of the output space. Let <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> be the union of open balls <span class="math" data-tex="\(B\)">\(B\)</span> for which <span class="math" data-tex="\(S_{\overline B}\)">\(S_{\overline B}\)</span> is compact. For each compact <span class="math" data-tex="\(L\subset\Omega\)">\(L\subset\Omega\)</span>, a finite ball cover shows that <span class="math" data-tex="\(S_L\)">\(S_L\)</span> is compact. Formula (1.4) then defines <span class="math" data-tex="\(u*v\)">\(u*v\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, and the proof of Theorem 1.1 applies to tests there. The set <span class="math" data-tex="\((F+G)\cap\Omega\)">\((F+G)\cap\Omega\)</span> is relatively closed: a sequence of sums converging to a point of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> eventually lies in one of these balls and has a convergent sequence of contributing pairs. Thus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}_\Omega(u*v)
+\subset(F+G)\cap\Omega.
+\tag{1.10}
+\]">\[
+\operatorname{supp}_\Omega(u*v)
+\subset(F+G)\cap\Omega.
+\tag{1.10}
+\]</span>
+<p>This <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is the largest open set over which addition on these supports is proper. Properness on any other open output region gives a compact preimage of the closure of a sufficiently small ball about each of its points.</p>
+<h2 id="smoothing-and-the-exact-derivative-count">Smoothing and the exact derivative count</h2>
+<p><strong>Theorem 2.1 (a regular factor).</strong> For <span class="math" data-tex="\(u\in\mathcal D&#x27;(\mathbb R^n)\)">\(u\in\mathcal D&#x27;(\mathbb R^n)\)</span> and <span class="math" data-tex="\(f\in C_c^\infty(\mathbb R^n)\)">\(f\in C_c^\infty(\mathbb R^n)\)</span>, the convolution is the smooth function</p>
+<span class="math math-display" data-tex="\[
+(u*f)(x)=\langle u(s),f(x-s)\rangle.
+\tag{2.1}
+\]">\[
+(u*f)(x)=\langle u(s),f(x-s)\rangle.
+\tag{2.1}
+\]</span>
+<p>It satisfies</p>
+<span class="math math-display" data-tex="\[
+\partial^\alpha(u*f)
+=(\partial^\alpha u)*f=u*(\partial^\alpha f).
+\tag{2.2}
+\]">\[
+\partial^\alpha(u*f)
+=(\partial^\alpha u)*f=u*(\partial^\alpha f).
+\tag{2.2}
+\]</span>
+<p>The map <span class="math" data-tex="\(f\mapsto u*f\)">\(f\mapsto u*f\)</span> is continuous from <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> to <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span>. If <span class="math" data-tex="\(u\)">\(u\)</span> is compactly supported, (2.1) also defines a continuous map <span class="math" data-tex="\(C^\infty\to C^\infty\)">\(C^\infty\to C^\infty\)</span>; it maps <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> continuously into <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>.</p>
+<p>More generally, let <span class="math" data-tex="\(j,k\ge0\)">\(j,k\ge0\)</span> be integers. If <span class="math" data-tex="\(u\)">\(u\)</span> has order at most <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(f\in C_c^{j+k}\)">\(f\in C_c^{j+k}\)</span>, (2.1) defines a <span class="math" data-tex="\(C^k\)">\(C^k\)</span> function representing <span class="math" data-tex="\(u*f\)">\(u*f\)</span>. The same conclusion holds for compactly supported <span class="math" data-tex="\(u\)">\(u\)</span> of order at most <span class="math" data-tex="\(j\)">\(j\)</span> and arbitrary <span class="math" data-tex="\(f\in C^{j+k}\)">\(f\in C^{j+k}\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(x\)">\(x\)</span> in a compact neighborhood <span class="math" data-tex="\(L\)">\(L\)</span>, the tests <span class="math" data-tex="\(f(x-\,\cdot\,)\)">\(f(x-\,\cdot\,)\)</span> have common compact support in <span class="math" data-tex="\(L-\operatorname{supp}f\)">\(L-\operatorname{supp}f\)</span>. The parameter differentiation lemma gives smoothness and derivatives for smooth <span class="math" data-tex="\(f\)">\(f\)</span>. If <span class="math" data-tex="\(u\)">\(u\)</span> is compactly supported, a fixed cutoff near its support gives the same argument for every smooth <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>The function formula agrees with (1.4). Pair (2.1) against <span class="math" data-tex="\(\phi(x)\)">\(\phi(x)\)</span>, pass the integral through the distribution, and substitute <span class="math" data-tex="\(t=x-s\)">\(t=x-s\)</span>. This gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int\phi(x)\langle u(s),f(x-s)\rangle\,dx
+&amp;=\left\langle u(s),\int\phi(s+t)f(t)\,dt\right\rangle.
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+\int\phi(x)\langle u(s),f(x-s)\rangle\,dx
+&amp;=\left\langle u(s),\int\phi(s+t)f(t)\,dt\right\rangle.
+\end{aligned}
+\tag{2.3}
+\]</span>
+<p>The interchange follows by approximating the compact parameter integral by Riemann sums in the finite derivative seminorm controlling <span class="math" data-tex="\(u\)">\(u\)</span>. One common cutoff supplies compact support in <span class="math" data-tex="\(s\)">\(s\)</span>. The tensor theorem identifies the last expression with (1.4).</p>
+<p>For the continuity assertions, fix the input support <span class="math" data-tex="\(M\)">\(M\)</span> and output compact set <span class="math" data-tex="\(L\)">\(L\)</span>. A local order <span class="math" data-tex="\(r\)">\(r\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span> on a compact neighborhood of <span class="math" data-tex="\(L-M\)">\(L-M\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\max_{|\alpha|\le a}\sup_{x\in L}
+|\partial^\alpha(u*f)(x)|
+\le C_{L,M,a}\max_{|\beta|\le r+a}\sup|\partial^\beta f|.
+\tag{2.4}
+\]">\[
+\max_{|\alpha|\le a}\sup_{x\in L}
+|\partial^\alpha(u*f)(x)|
+\le C_{L,M,a}\max_{|\beta|\le r+a}\sup|\partial^\beta f|.
+\tag{2.4}
+\]</span>
+<p>This proves continuity on each input support space and hence on <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. For compact <span class="math" data-tex="\(u\)">\(u\)</span>, its support fixes the region needed for a <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span> input. If the input is compact, (1.5) gives one compact output support for all inputs supported in <span class="math" data-tex="\(M\)">\(M\)</span>, and (2.4) proves continuity into that support space.</p>
+<p>For finite regularity, the canonical order-<span class="math" data-tex="\(j\)">\(j\)</span> pairing acts on compact <span class="math" data-tex="\(C^j\)">\(C^j\)</span> tests. Difference quotients of <span class="math" data-tex="\(f(x-\,\cdot\,)\)">\(f(x-\,\cdot\,)\)</span>, including all derivatives in <span class="math" data-tex="\(s\)">\(s\)</span> through order <span class="math" data-tex="\(j\)">\(j\)</span>, converge in <span class="math" data-tex="\(C^j\)">\(C^j\)</span> to the corresponding parameter derivatives whenever their total order is at most <span class="math" data-tex="\(j+k\)">\(j+k\)</span>. Taylor’s formula and uniform continuity of the highest derivatives on compact sets justify the last derivative. This proves <span class="math" data-tex="\(C^k\)">\(C^k\)</span> regularity. Formula (2.3) is still justified in the <span class="math" data-tex="\(C^j\)">\(C^j\)</span> seminorm, and proves equality with the distribution convolution. For compact <span class="math" data-tex="\(u\)">\(u\)</span>, insert the same fixed cutoff as above. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2 (Riemann sums with derivatives).</strong> If <span class="math" data-tex="\(f\in C_c^j(\mathbb R^n)\)">\(f\in C_c^j(\mathbb R^n)\)</span>, <span class="math" data-tex="\(g\in C_c^0(\mathbb R^n)\)">\(g\in C_c^0(\mathbb R^n)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+R_h(x)=h^n\sum_{m\in\mathbb Z^n}f(x-hm)g(hm)
+\longrightarrow f*g(x)
+\quad\text{in }C_c^j\text{ as }h\downarrow0.
+\tag{2.5}
+\]">\[
+R_h(x)=h^n\sum_{m\in\mathbb Z^n}f(x-hm)g(hm)
+\longrightarrow f*g(x)
+\quad\text{in }C_c^j\text{ as }h\downarrow0.
+\tag{2.5}
+\]</span>
+<p>All sums and the limit have support in the same compact set <span class="math" data-tex="\(\operatorname{supp}f+\operatorname{supp}g\)">\(\operatorname{supp}f+\operatorname{supp}g\)</span>.</p>
+<p><strong>Proof.</strong> Each sum is finite. Differentiate it through order <span class="math" data-tex="\(j\)">\(j\)</span>. For a multi-index <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, compare its sum to the integral of <span class="math" data-tex="\((\partial^\alpha f)(x-y)g(y)\)">\((\partial^\alpha f)(x-y)g(y)\)</span> by partitioning <span class="math" data-tex="\(y\)">\(y\)</span>-space into cubes <span class="math" data-tex="\(hm+[0,h]^n\)">\(hm+[0,h]^n\)</span>. The difference on a cube is bounded by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|g\|_\infty\,
+\omega_{\partial^\alpha f}(\sqrt n\,h)
++\|\partial^\alpha f\|_\infty\,
+\omega_g(\sqrt n\,h),
+\end{aligned}
+\tag{2.6}
+\]">\[
+\begin{aligned}
+&amp;\|g\|_\infty\,
+\omega_{\partial^\alpha f}(\sqrt n\,h)
++\|\partial^\alpha f\|_\infty\,
+\omega_g(\sqrt n\,h),
+\end{aligned}
+\tag{2.6}
+\]</span>
+<p>where the functions are extended by zero and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> denotes their global modulus of continuity. Both moduli tend to zero. Only cubes meeting a fixed compact neighborhood of <span class="math" data-tex="\(\operatorname{supp}g\)">\(\operatorname{supp}g\)</span> contribute; their total volume is bounded independently of small <span class="math" data-tex="\(h\)">\(h\)</span>. Thus the error tends uniformly to zero in <span class="math" data-tex="\(x\)">\(x\)</span>, for every <span class="math" data-tex="\(|\alpha|\le j\)">\(|\alpha|\le j\)</span>. A nonzero summand requires <span class="math" data-tex="\(hm\in\operatorname{supp}g\)">\(hm\in\operatorname{supp}g\)</span> and <span class="math" data-tex="\(x-hm\in\operatorname{supp}f\)">\(x-hm\in\operatorname{supp}f\)</span>, proving the common support claim. The integral has the same support by continuity or directly from its integrand. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular a finite-order distribution may be passed through these Riemann sums. Convergence of scalar Riemann sums alone would not justify that step.</p>
+<h2 id="associativity-and-continuity-need-support-control">Associativity and continuity need support control</h2>
+<p><strong>Theorem 3.1 (associativity).</strong> Suppose addition of three closed supports <span class="math" data-tex="\(F,G,H\)">\(F,G,H\)</span> is proper: the triples <span class="math" data-tex="\((s,t,r)\)">\((s,t,r)\)</span> with <span class="math" data-tex="\(s+t+r\)">\(s+t+r\)</span> in any compact set form a compact set. For distributions supported in these sets,</p>
+<span class="math math-display" data-tex="\[
+(u*v)*w=u*(v*w),
+\tag{3.1}
+\]">\[
+(u*v)*w=u*(v*w),
+\tag{3.1}
+\]</span>
+<p>and both sides equal the support-relative pairing of <span class="math" data-tex="\(u\otimes v\otimes w\)">\(u\otimes v\otimes w\)</span> with <span class="math" data-tex="\(\phi(s+t+r)\)">\(\phi(s+t+r)\)</span>. In particular this applies whenever at least two factors are compactly supported.</p>
+<p><strong>Proof.</strong> If any factor is zero the assertion is immediate. Otherwise the supports are nonempty. Fixing one point of <span class="math" data-tex="\(H\)">\(H\)</span> shows that <span class="math" data-tex="\(F\times G\)">\(F\times G\)</span> sums properly, and similarly for the other pairs. Addition on <span class="math" data-tex="\((F+G)\times H\)">\((F+G)\times H\)</span> is also proper. To see this, take a sequence <span class="math" data-tex="\((a_i,r_i)\)">\((a_i,r_i)\)</span> with bounded sums and choose <span class="math" data-tex="\(a_i=s_i+t_i\)">\(a_i=s_i+t_i\)</span>, <span class="math" data-tex="\(s_i\in F\)">\(s_i\in F\)</span>, <span class="math" data-tex="\(t_i\in G\)">\(t_i\in G\)</span>. Triple properness gives a convergent subsequence of <span class="math" data-tex="\((s_i,t_i,r_i)\)">\((s_i,t_i,r_i)\)</span>, hence of <span class="math" data-tex="\((a_i,r_i)\)">\((a_i,r_i)\)</span>. Closedness of <span class="math" data-tex="\(F+G\)">\(F+G\)</span> completes the argument. The other association is allowed for the same reason.</p>
+<p>For a fixed test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, triple properness makes all contributing triples compact. Choose separate cutoffs equal to one near their three compact projections. Replacing each factor by its cut-off version does not change either iterated pairing: the difference has support in sums where at least one contributing coordinate lies outside its cutoff-one neighborhood, and none of those triples has sum in <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span>. The support inclusion in Theorem 1.1 makes each such difference vanish on the test. All three cut-off factors are now compact. Their tensor product may act on every smooth function, and the two iterated formulas of the tensor theorem give the same pairing with <span class="math" data-tex="\(\phi(s+t+r)\)">\(\phi(s+t+r)\)</span>. They also equal the original support-relative triple pairing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(u\in\mathcal D&#x27;\)">\(u\in\mathcal D&#x27;\)</span>, <span class="math" data-tex="\(f\in C_c^\infty\)">\(f\in C_c^\infty\)</span>, <span class="math" data-tex="\(g\in C_c^0\)">\(g\in C_c^0\)</span>, this gives the smooth-function identity</p>
+<span class="math math-display" data-tex="\[
+(u*f)*g=u*(f*g).
+\tag{3.2}
+\]">\[
+(u*f)*g=u*(f*g).
+\tag{3.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(f*g\)">\(f*g\)</span> is smooth and compactly supported: each derivative differentiates <span class="math" data-tex="\(f\)">\(f\)</span>, with compact ordinary integration against <span class="math" data-tex="\(g\)">\(g\)</span>. The left side is also smooth. Equality as distributions from Theorem 3.1 therefore gives pointwise equality. Lemma 2.2 supplies a direct justification of the ordinary-integral interchanges, even for merely continuous <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p>When one of <span class="math" data-tex="\(u,v\)">\(u,v\)</span> is compactly supported, convolution is also characterized uniquely by</p>
+<span class="math math-display" data-tex="\[
+(u*v)*f=u*(v*f),\qquad f\in C_c^\infty.
+\]">\[
+(u*v)*f=u*(v*f),\qquad f\in C_c^\infty.
+\]</span>
+<p>Existence of this identity follows from Theorem 3.1, since the smooth third factor is compact. If another distribution has the same identity, its difference from <span class="math" data-tex="\(u*v\)">\(u*v\)</span> has zero convolution with every compact smooth <span class="math" data-tex="\(f\)">\(f\)</span>. Choose shrinking nonnegative normalized <span class="math" data-tex="\(f\)">\(f\)</span>’s. Theorem 5.2 below makes these convolutions tend to the difference itself, which must therefore be zero.</p>
+<p><strong>Theorem 3.2 (continuity with fixed support sets).</strong> Fix closed <span class="math" data-tex="\(F,G\)">\(F,G\)</span> on which addition is proper. Convolution is separately continuous for both the weak and strong distribution topologies when the variable factors have supports in the designated sets. If <span class="math" data-tex="\(u_i\to u\)">\(u_i\to u\)</span> and <span class="math" data-tex="\(v_i\to v\)">\(v_i\to v\)</span> are weakly convergent sequences with supports in <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, then <span class="math" data-tex="\(u_i*v_i\to u*v\)">\(u_i*v_i\to u*v\)</span> weakly.</p>
+<p><strong>Proof.</strong> For one fixed test, choose the compact cutoff in (1.7). Tensoring is separately weakly continuous on a fixed compact product: its inner pairing gives a fixed compact test for the varying factor. Thus separate weak convergence transfers to (1.7).</p>
+<p>For a bounded family of output tests, all supports lie in one compact <span class="math" data-tex="\(L\)">\(L\)</span>, and all derivatives are uniformly bounded. The same cutoff works for the entire family. Pairing one tensor variable produces a bounded test family in the other variable, by its local finite-order bound. Consequently a strong-dual seminorm of the convolution is bounded by a strong-dual seminorm of the varying factor. This proves separate strong continuity. For two weakly convergent sequences, apply the joint sequential tensor theorem to the single compact test <span class="math" data-tex="\(\chi(s,t)\phi(s+t)\)">\(\chi(s,t)\phi(s+t)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The fixed supports are substantive. For example,</p>
+<span class="math math-display" data-tex="\[
+\delta_i\to0,\qquad\delta_{-i}\to0
+\quad\text{in }\mathcal D&#x27;(\mathbb R),
+\qquad
+\delta_i*\delta_{-i}=\delta_0.
+\tag{3.3}
+\]">\[
+\delta_i\to0,\qquad\delta_{-i}\to0
+\quad\text{in }\mathcal D&#x27;(\mathbb R),
+\qquad
+\delta_i*\delta_{-i}=\delta_0.
+\tag{3.3}
+\]</span>
+<p>Both input masses escape every compact set, but their sums stay at the origin. Theorem 3.2 therefore makes no assertion for this pair of sequences.</p>
+<p><strong>Proposition 3.3 (a cone algebra).</strong> Let <span class="math" data-tex="\(C\subset\mathbb R^n\)">\(C\subset\mathbb R^n\)</span> be a nonempty closed convex cone containing no nonzero line. Distributions supported in <span class="math" data-tex="\(C\)">\(C\)</span> form a commutative associative algebra under convolution, with identity <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>.</p>
+<p><strong>Proof.</strong> For any fixed number of factors, suppose sums stay bounded while the contributing coordinates do not. Divide all coordinates by their maximum norm, which tends to infinity, and pass to a subsequence. The limits lie in <span class="math" data-tex="\(C\)">\(C\)</span>, at least one has norm one, and their sum is zero. The negative of that nonzero limit is the sum of the others, hence lies in <span class="math" data-tex="\(C\)">\(C\)</span> by convexity and the cone property. This gives a nonzero line in <span class="math" data-tex="\(C\)">\(C\)</span>, a contradiction. Thus addition of any fixed number of such supports is proper. Also <span class="math" data-tex="\(C+C\subset C\)">\(C+C\subset C\)</span>. Theorems 1.1 and 3.1 prove the algebra assertions, and (1.8) supplies the identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, <span class="math" data-tex="\(H=\mathbf1_{[0,\infty)}\)">\(H=\mathbf1_{[0,\infty)}\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> can be convolved with itself. Ordinary integration over <span class="math" data-tex="\(0\le t\le x\)">\(0\le t\le x\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+H*H=x_+.
+\tag{3.4}
+\]">\[
+H*H=x_+.
+\tag{3.4}
+\]</span>
+<p>Two opposite half-lines do not sum properly. For a nonnegative test <span class="math" data-tex="\(\phi\)">\(\phi\)</span> positive near zero, the positive-function pairing proposed for <span class="math" data-tex="\(H(x)*H(-x)\)">\(H(x)*H(-x)\)</span> would contain</p>
+<span class="math math-display" data-tex="\[
+\int_{s\ge0}\int_{t\le0}\phi(s+t)\,dt\,ds=\infty.
+\tag{3.5}
+\]">\[
+\int_{s\ge0}\int_{t\le0}\phi(s+t)\,dt\,ds=\infty.
+\tag{3.5}
+\]</span>
+<p>Indeed for every sufficiently large <span class="math" data-tex="\(s\)">\(s\)</span>, an interval of <span class="math" data-tex="\(t\)">\(t\)</span>’s near <span class="math" data-tex="\(-s\)">\(-s\)</span> contributes the same positive lower bound. Formula (1.4) does not define this convolution.</p>
+<h2 id="local-smoothness-can-come-from-either-factor">Local smoothness can come from either factor</h2>
+<p><strong>Theorem 4.1 (finite regularity at an output point).</strong> Let <span class="math" data-tex="\(u\in\mathcal D&#x27;(\mathbb R^n)\)">\(u\in\mathcal D&#x27;(\mathbb R^n)\)</span> and <span class="math" data-tex="\(v\in\mathcal E&#x27;(\mathbb R^n)\)">\(v\in\mathcal E&#x27;(\mathbb R^n)\)</span>. Fix <span class="math" data-tex="\(x_0\)">\(x_0\)</span> and <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>. Suppose that for every <span class="math" data-tex="\(t\in\operatorname{supp}v\)">\(t\in\operatorname{supp}v\)</span>, there are an integer <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> and a neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(t\)">\(t\)</span> such that either</p>
+<span class="math math-display" data-tex="\[
+\begin{cases}
+u|_{x_0-V}\in\mathcal D&#x27;^{\,j}(x_0-V),\\
+v|_V\in C^{k+j}(V),
+\end{cases}
+\tag{4.1}
+\]">\[
+\begin{cases}
+u|_{x_0-V}\in\mathcal D&#x27;^{\,j}(x_0-V),\\
+v|_V\in C^{k+j}(V),
+\end{cases}
+\tag{4.1}
+\]</span>
+<p>or</p>
+<span class="math math-display" data-tex="\[
+\begin{cases}
+u|_{x_0-V}\in C^{k+j}(x_0-V),\\
+v|_V\in\mathcal D&#x27;^{\,j}(V).
+\end{cases}
+\tag{4.2}
+\]">\[
+\begin{cases}
+u|_{x_0-V}\in C^{k+j}(x_0-V),\\
+v|_V\in\mathcal D&#x27;^{\,j}(V).
+\end{cases}
+\tag{4.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathcal D&#x27;^{\,j}(W)\)">\(\mathcal D&#x27;^{\,j}(W)\)</span> means distributions of order at most <span class="math" data-tex="\(j\)">\(j\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span>, and membership in <span class="math" data-tex="\(C^{k+j}(W)\)">\(C^{k+j}(W)\)</span> means representation by a function of that regularity. Then <span class="math" data-tex="\(u*v\)">\(u*v\)</span> is <span class="math" data-tex="\(C^k\)">\(C^k\)</span> near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>.</p>
+<p><strong>Proof.</strong> Choose finitely many smaller neighborhoods whose closures lie in the corresponding <span class="math" data-tex="\(V\)">\(V\)</span>’s and cover <span class="math" data-tex="\(\operatorname{supp}v\)">\(\operatorname{supp}v\)</span>. A smooth partition gives</p>
+<span class="math math-display" data-tex="\[
+v=\sum_{\ell=1}^N v_\ell,\qquad
+v_\ell=\chi_\ell v,
+\qquad\operatorname{supp}\chi_\ell\Subset V_\ell.
+\tag{4.3}
+\]">\[
+v=\sum_{\ell=1}^N v_\ell,\qquad
+v_\ell=\chi_\ell v,
+\qquad\operatorname{supp}\chi_\ell\Subset V_\ell.
+\tag{4.3}
+\]</span>
+<p>Choose <span class="math" data-tex="\(\eta_\ell\in C_c^\infty(x_0-V_\ell)\)">\(\eta_\ell\in C_c^\infty(x_0-V_\ell)\)</span> equal to one near <span class="math" data-tex="\(x_0-\operatorname{supp}\chi_\ell\)">\(x_0-\operatorname{supp}\chi_\ell\)</span>. Compactness gives a neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(x_0\)">\(x_0\)</span> such that, for every <span class="math" data-tex="\(x\in W\)">\(x\in W\)</span>,</p>
+<span class="math math-display" data-tex="\[
+x-\operatorname{supp}\chi_\ell
+\subset\{\eta_\ell=1\}^{\circ}.
+\tag{4.4}
+\]">\[
+x-\operatorname{supp}\chi_\ell
+\subset\{\eta_\ell=1\}^{\circ}.
+\tag{4.4}
+\]</span>
+<p>The support inclusion proves <span class="math" data-tex="\(u*v_\ell=(\eta_\ell u)*v_\ell\)">\(u*v_\ell=(\eta_\ell u)*v_\ell\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span>: the missing part of <span class="math" data-tex="\(u\)">\(u\)</span> cannot add to a point in <span class="math" data-tex="\(W\)">\(W\)</span> with a point of <span class="math" data-tex="\(\operatorname{supp}v_\ell\)">\(\operatorname{supp}v_\ell\)</span>. In case (4.1), the first cut-off factor has order at most <span class="math" data-tex="\(j\)">\(j\)</span> and the second is compact <span class="math" data-tex="\(C^{k+j}\)">\(C^{k+j}\)</span>. In case (4.2), those roles are reversed. Theorem 2.1 makes each convolution <span class="math" data-tex="\(C^k\)">\(C^k\)</span>. Their finite sum proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2 (singular support).</strong> Under the same compact-support hypothesis,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{sing\,supp}(u*v)
+\subset
+\operatorname{sing\,supp}u+
+\operatorname{sing\,supp}v.
+\tag{4.5}
+\]">\[
+\operatorname{sing\,supp}(u*v)
+\subset
+\operatorname{sing\,supp}u+
+\operatorname{sing\,supp}v.
+\tag{4.5}
+\]</span>
+<p><strong>Proof.</strong> The right side is closed, since the second singular support is compact. If <span class="math" data-tex="\(x_0\)">\(x_0\)</span> is outside it, each <span class="math" data-tex="\(t\in\operatorname{supp}v\)">\(t\in\operatorname{supp}v\)</span> has either a smooth neighborhood for <span class="math" data-tex="\(v\)">\(v\)</span>, or a neighborhood on whose reflection about <span class="math" data-tex="\(x_0\)">\(x_0\)</span> the distribution <span class="math" data-tex="\(u\)">\(u\)</span> is smooth. The other factor has a finite local order after shrinking to relatively compact neighborhoods. The construction in Theorem 4.1 then works for every <span class="math" data-tex="\(k\)">\(k\)</span>, with smooth factors allowing all needed derivatives. On a fixed resulting neighborhood the convolution is smooth. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The ordinary support inclusion can be strict even for two compact distributions. With</p>
+<span class="math math-display" data-tex="\[
+u=\delta_0-2\delta_1,\qquad
+v=\delta_0+2\delta_1,
+\]">\[
+u=\delta_0-2\delta_1,\qquad
+v=\delta_0+2\delta_1,
+\]</span>
+<p>the two contributions at <span class="math" data-tex="\(1\)">\(1\)</span> cancel, and</p>
+<span class="math math-display" data-tex="\[
+u*v=\delta_0-4\delta_2.
+\tag{4.6}
+\]">\[
+u*v=\delta_0-4\delta_2.
+\tag{4.6}
+\]</span>
+<p>Thus the sum of the input supports is <span class="math" data-tex="\(\{0,1,2\}\)">\(\{0,1,2\}\)</span>, whereas the output support is <span class="math" data-tex="\(\{0,2\}\)">\(\{0,2\}\)</span>.</p>
+<h2 id="smoothing-inside-an-arbitrary-open-set">Smoothing inside an arbitrary open set</h2>
+<p><strong>Proposition 5.1 (the local convolution domain).</strong> Let <span class="math" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be open, <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span>, and let <span class="math" data-tex="\(v\in\mathcal E&#x27;(\mathbb R^n)\)">\(v\in\mathcal E&#x27;(\mathbb R^n)\)</span>, with <span class="math" data-tex="\(C=\operatorname{supp}v\)">\(C=\operatorname{supp}v\)</span>. Then <span class="math" data-tex="\(u*v\)">\(u*v\)</span> is canonically defined on the open set</p>
+<span class="math math-display" data-tex="\[
+X_C=\{x:x-C\subset X\}.
+\tag{5.1}
+\]">\[
+X_C=\{x:x-C\subset X\}.
+\tag{5.1}
+\]</span>
+<p>It depends only on <span class="math" data-tex="\(u\)">\(u\)</span> near <span class="math" data-tex="\(x-C\)">\(x-C\)</span> at an output point <span class="math" data-tex="\(x\)">\(x\)</span>. Its derivative identities remain valid there, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}_{X_C}(u*v)
+\subset
+(\operatorname{supp}_Xu+C)\cap X_C.
+\tag{5.2}
+\]">\[
+\operatorname{supp}_{X_C}(u*v)
+\subset
+(\operatorname{supp}_Xu+C)\cap X_C.
+\tag{5.2}
+\]</span>
+<p>For <span class="math" data-tex="\(v=\rho\in C_c^\infty\)">\(v=\rho\in C_c^\infty\)</span>, the formula is the smooth local function <span class="math" data-tex="\(u_s(\rho(x-s))\)">\(u_s(\rho(x-s))\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(x\in X_C\)">\(x\in X_C\)</span>, the compact set <span class="math" data-tex="\(x-C\)">\(x-C\)</span> lies inside <span class="math" data-tex="\(X\)">\(X\)</span>. Its positive distance from <span class="math" data-tex="\(X^c\)">\(X^c\)</span> gives a neighborhood of <span class="math" data-tex="\(x\)">\(x\)</span> still in <span class="math" data-tex="\(X_C\)">\(X_C\)</span>, so this set is open. For a compact output set <span class="math" data-tex="\(L\subset X_C\)">\(L\subset X_C\)</span>, the set <span class="math" data-tex="\(L-C\)">\(L-C\)</span> is compact in <span class="math" data-tex="\(X\)">\(X\)</span>. The tensor pairing in <span class="math" data-tex="\(X\times\mathbb R^n\)">\(X\times\mathbb R^n\)</span>, with cutoffs near these sets, defines convolution exactly as in (1.4). Different cutoffs agree by the support-relative theorem. This also proves dependence on the local data and all derivative identities.</p>
+<p>The right side of (5.2) is relatively closed. If <span class="math" data-tex="\(f_i+c_i\to x\in X_C\)">\(f_i+c_i\to x\in X_C\)</span>, pass to a subsequence with <span class="math" data-tex="\(c_i\to c\in C\)">\(c_i\to c\in C\)</span>. Then <span class="math" data-tex="\(f_i\to x-c\in X\)">\(f_i\to x-c\in X\)</span>; relative closedness of <span class="math" data-tex="\(\operatorname{supp}_Xu\)">\(\operatorname{supp}_Xu\)</span> puts the limit in that support. Tests outside the sum have zero pairing, proving (5.2). The parameter lemma gives the smooth function assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, take <span class="math" data-tex="\(C=\varnothing\)">\(C=\varnothing\)</span>, so <span class="math" data-tex="\(X_C=\mathbb R^n\)">\(X_C=\mathbb R^n\)</span> and the result is zero everywhere.</p>
+<p><strong>Theorem 5.2 (shrinking smooth averages).</strong> Let <span class="math" data-tex="\(\rho_\lambda\in C_c^\infty(\mathbb R^n)\)">\(\rho_\lambda\in C_c^\infty(\mathbb R^n)\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+\int\rho_\lambda=1,\qquad
+\sup_\lambda\|\rho_\lambda\|_{L^1}&lt;\infty,
+\qquad
+\operatorname{supp}\rho_\lambda\subset\overline B(0,r_\lambda),
+\quad r_\lambda\to0.
+\tag{5.3}
+\]">\[
+\int\rho_\lambda=1,\qquad
+\sup_\lambda\|\rho_\lambda\|_{L^1}&lt;\infty,
+\qquad
+\operatorname{supp}\rho_\lambda\subset\overline B(0,r_\lambda),
+\quad r_\lambda\to0.
+\tag{5.3}
+\]</span>
+<p>For <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span>, the local smooth functions <span class="math" data-tex="\(u*\rho_\lambda\)">\(u*\rho_\lambda\)</span> converge to <span class="math" data-tex="\(u\)">\(u\)</span> strongly on tests in <span class="math" data-tex="\(X\)">\(X\)</span>. In particular this holds for every family of nonnegative normalized profiles whose supports shrink to zero; no single fixed rescaled profile is required.</p>
+<p><strong>Proof.</strong> On each compact test support <span class="math" data-tex="\(L\Subset X\)">\(L\Subset X\)</span>, the convolution is defined for all sufficiently small radii. Put <span class="math" data-tex="\(\check\rho(t)=\rho(-t)\)">\(\check\rho(t)=\rho(-t)\)</span>. The tensor formula gives</p>
+<span class="math math-display" data-tex="\[
+\langle u*\rho_\lambda,\phi\rangle
+=\langle u,\check\rho_\lambda*\phi\rangle,
+\qquad
+(\check\rho_\lambda*\phi)(s)
+=\int\rho_\lambda(t)\phi(s+t)\,dt.
+\tag{5.4}
+\]">\[
+\langle u*\rho_\lambda,\phi\rangle
+=\langle u,\check\rho_\lambda*\phi\rangle,
+\qquad
+(\check\rho_\lambda*\phi)(s)
+=\int\rho_\lambda(t)\phi(s+t)\,dt.
+\tag{5.4}
+\]</span>
+<p>The averaged tests and <span class="math" data-tex="\(\phi\)">\(\phi\)</span> have support in a fixed compact neighborhood of <span class="math" data-tex="\(L\)">\(L\)</span> inside <span class="math" data-tex="\(X\)">\(X\)</span>. For each integer <span class="math" data-tex="\(m\)">\(m\)</span>, the mean-value estimate and normalization imply</p>
+<span class="math math-display" data-tex="\[
+\|\check\rho_\lambda*\phi-\phi\|_{C^m}
+\le C_n r_\lambda\|\rho_\lambda\|_{L^1}
+\|\phi\|_{C^{m+1}}.
+\tag{5.5}
+\]">\[
+\|\check\rho_\lambda*\phi-\phi\|_{C^m}
+\le C_n r_\lambda\|\rho_\lambda\|_{L^1}
+\|\phi\|_{C^{m+1}}.
+\tag{5.5}
+\]</span>
+<p>Apply the local order estimate of <span class="math" data-tex="\(u\)">\(u\)</span> on that common compact neighborhood. For a bounded family of tests, <span class="math" data-tex="\(\|\phi\|_{C^{m+1}}\)">\(\|\phi\|_{C^{m+1}}\)</span> is uniformly bounded. The right side therefore tends to zero uniformly over the family. This is precisely strong distribution convergence. Nonnegative normalized profiles have <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.3 (compact smooth approximation).</strong> On every open <span class="math" data-tex="\(X\)">\(X\)</span>, each <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span> is the strong distribution limit of a sequence in <span class="math" data-tex="\(C_c^\infty(X)\)">\(C_c^\infty(X)\)</span>.</p>
+<p><strong>Proof.</strong> Choose increasing compact sets with interiors exhausting <span class="math" data-tex="\(X\)">\(X\)</span>, and compact smooth cutoffs <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span> equal to one on neighborhoods of the <span class="math" data-tex="\(i\)">\(i\)</span>-th sets. The compact distribution <span class="math" data-tex="\(\chi_i u\)">\(\chi_i u\)</span> extends by zero to <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Choose a nonnegative smooth profile of integral one supported in the ball of radius <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+0&lt;\varepsilon_i\le1/i,\qquad
+\varepsilon_i&lt;\tfrac12
+\operatorname{dist}(\operatorname{supp}\chi_i,X^c).
+\tag{5.6}
+\]">\[
+0&lt;\varepsilon_i\le1/i,\qquad
+\varepsilon_i&lt;\tfrac12
+\operatorname{dist}(\operatorname{supp}\chi_i,X^c).
+\tag{5.6}
+\]</span>
+<p>When <span class="math" data-tex="\(X=\mathbb R^n\)">\(X=\mathbb R^n\)</span>, only the first bound is needed. Put <span class="math" data-tex="\(f_i=(\chi_i u)*\rho_i\)">\(f_i=(\chi_i u)*\rho_i\)</span>. The compact smoothing theorem gives <span class="math" data-tex="\(f_i\in C_c^\infty(X)\)">\(f_i\in C_c^\infty(X)\)</span>. On a fixed compact test support, <span class="math" data-tex="\(\chi_i\)">\(\chi_i\)</span> eventually equals one on the entire small neighborhood needed in (5.4). Thus the pairing of <span class="math" data-tex="\(f_i\)">\(f_i\)</span> is exactly the local pairing of <span class="math" data-tex="\(u*\rho_i\)">\(u*\rho_i\)</span> there. Theorem 5.2 proves convergence uniformly on every bounded test family. The already proved compact approximation lemma in <em>When a kernel is smooth</em> is the fixed-compact version of this construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="translation-invariant-operators-have-one-convolution-kernel">Translation-invariant operators have one convolution kernel</h2>
+<p><strong>Theorem 6.1 (translation invariance).</strong> Let</p>
+<span class="math math-display" data-tex="\[
+A:\mathcal D(\mathbb R^n)\longrightarrow\mathcal D&#x27;(\mathbb R^n)
+\tag{6.1}
+\]">\[
+A:\mathcal D(\mathbb R^n)\longrightarrow\mathcal D&#x27;(\mathbb R^n)
+\tag{6.1}
+\]</span>
+<p>be a linear weakly continuous map satisfying <span class="math" data-tex="\(A\tau_h=\tau_hA\)">\(A\tau_h=\tau_hA\)</span> for every <span class="math" data-tex="\(h\in\mathbb R^n\)">\(h\in\mathbb R^n\)</span>. There is a unique <span class="math" data-tex="\(u\in\mathcal D&#x27;(\mathbb R^n)\)">\(u\in\mathcal D&#x27;(\mathbb R^n)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+A\phi=u*\phi\qquad(\phi\in\mathcal D).
+\tag{6.2}
+\]">\[
+A\phi=u*\phi\qquad(\phi\in\mathcal D).
+\tag{6.2}
+\]</span>
+<p>In particular every output is smooth, and <span class="math" data-tex="\(A\)">\(A\)</span> is continuous into <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span>.</p>
+<p>The conclusion also applies to a linear map <span class="math" data-tex="\(A:\mathcal D\to C^0\)">\(A:\mathcal D\to C^0\)</span> which commutes with translations and sends every sequence tending to zero in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> to a sequence tending to zero uniformly on compact output sets.</p>
+<p><strong>Proof.</strong> The kernel theorem gives a unique <span class="math" data-tex="\(K\in\mathcal D&#x27;(\mathbb R^n_x\times\mathbb R^n_y)\)">\(K\in\mathcal D&#x27;(\mathbb R^n_x\times\mathbb R^n_y)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\langle A\phi,\psi\rangle
+=\langle K,\psi(x)\phi(y)\rangle.
+\tag{6.3}
+\]">\[
+\langle A\phi,\psi\rangle
+=\langle K,\psi(x)\phi(y)\rangle.
+\tag{6.3}
+\]</span>
+<p>Commutation with translations gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle K,\psi(x-h)\phi(y-h)\rangle
+&amp;=\langle A\tau_h\phi,\tau_h\psi\rangle\\
+&amp;=\langle\tau_hA\phi,\tau_h\psi\rangle
+=\langle A\phi,\psi\rangle.
+\end{aligned}
+\tag{6.4}
+\]">\[
+\begin{aligned}
+\langle K,\psi(x-h)\phi(y-h)\rangle
+&amp;=\langle A\tau_h\phi,\tau_h\psi\rangle\\
+&amp;=\langle\tau_hA\phi,\tau_h\psi\rangle
+=\langle A\phi,\psi\rangle.
+\end{aligned}
+\tag{6.4}
+\]</span>
+<p>Density of product tests transfers this to every test on the product. Change coordinates to <span class="math" data-tex="\(s=x-y\)">\(s=x-y\)</span>, <span class="math" data-tex="\(r=y\)">\(r=y\)</span>; the linear change has absolute determinant one. Define the transformed distribution by</p>
+<span class="math math-display" data-tex="\[
+\langle J,H(s,r)\rangle
+=\langle K,H(x-y,y)\rangle.
+\tag{6.5}
+\]">\[
+\langle J,H(s,r)\rangle
+=\langle K,H(x-y,y)\rangle.
+\tag{6.5}
+\]</span>
+<p>Equation (6.4) says that <span class="math" data-tex="\(J\)">\(J\)</span> is invariant under translation in <span class="math" data-tex="\(r\)">\(r\)</span>. Difference quotients of compact tests converge in their test topology, so <span class="math" data-tex="\(\partial_{r_j}J=0\)">\(\partial_{r_j}J=0\)</span> for every coordinate. Repeated application of the constant-parameter theorem in <em>Weak equations and classical functions</em> gives a unique <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(J=u(s)\otimes1(r)\)">\(J=u(s)\otimes1(r)\)</span>. Applying this to (6.3) yields</p>
+<span class="math math-display" data-tex="\[
+\langle A\phi,\psi\rangle
+=\left\langle u(s),\int\psi(s+r)\phi(r)\,dr\right\rangle
+=\langle u*\phi,\psi\rangle,
+\tag{6.6}
+\]">\[
+\langle A\phi,\psi\rangle
+=\left\langle u(s),\int\psi(s+r)\phi(r)\,dr\right\rangle
+=\langle u*\phi,\psi\rangle,
+\tag{6.6}
+\]</span>
+<p>where the last equality is (2.3). Theorem 2.1 proves smoothness and continuity into <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span>. Uniqueness follows from uniqueness of <span class="math" data-tex="\(K\)">\(K\)</span> and of the constant-parameter factor. Alternatively, after smoothness has been proved, the kernel is recovered by</p>
+<span class="math math-display" data-tex="\[
+\langle u,\theta\rangle
+=(A\check\theta)(0).
+\tag{6.7}
+\]">\[
+\langle u,\theta\rangle
+=(A\check\theta)(0).
+\tag{6.7}
+\]</span>
+<p>For the final assertion, regard a continuous function output as a distribution. For each fixed output test <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, the scalar functional <span class="math" data-tex="\(\phi\mapsto\int(A\phi)\psi\)">\(\phi\mapsto\int(A\phi)\psi\)</span> is sequentially continuous on every fixed input support space. The distribution sequential criterion makes it a continuous test functional. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is weakly continuous into <span class="math" data-tex="\(\mathcal D&#x27;\)">\(\mathcal D&#x27;\)</span>, and the first part applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof explains the geometry of the kernel: translation moves <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> together, leaving only their difference. The theorem requires no polynomial growth of <span class="math" data-tex="\(u\)">\(u\)</span>, and no Fourier transform.</p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (basic: cancellation and derivative signs).</strong> Let <span class="math" data-tex="\(u=\delta_0-2\delta_1\)">\(u=\delta_0-2\delta_1\)</span>, <span class="math" data-tex="\(v=\delta_0+2\delta_1\)">\(v=\delta_0+2\delta_1\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Compute <span class="math" data-tex="\(u*v\)">\(u*v\)</span>, <span class="math" data-tex="\(u*\delta&#x27;_0\)">\(u*\delta&#x27;_0\)</span>, and their pairings on a test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Compare the support of <span class="math" data-tex="\(u*v\)">\(u*v\)</span> with the sum of the two input supports.</p>
+<p><strong>Solution 1.</strong> Bilinearity and <span class="math" data-tex="\(\delta_a*\delta_b=\delta_{a+b}\)">\(\delta_a*\delta_b=\delta_{a+b}\)</span> give <span class="math" data-tex="\(u*v=\delta_0-4\delta_2\)">\(u*v=\delta_0-4\delta_2\)</span>. Its pairing is <span class="math" data-tex="\(\phi(0)-4\phi(2)\)">\(\phi(0)-4\phi(2)\)</span>. Formula (1.8) gives <span class="math" data-tex="\(u*\delta&#x27;_0=u&#x27;=\delta&#x27;_0-2\delta&#x27;_1\)">\(u*\delta&#x27;_0=u&#x27;=\delta&#x27;_0-2\delta&#x27;_1\)</span>, whose pairing is <span class="math" data-tex="\(-\phi&#x27;(0)+2\phi&#x27;(1)\)">\(-\phi&#x27;(0)+2\phi&#x27;(1)\)</span>. The input-support sum is <span class="math" data-tex="\(\{0,1,2\}\)">\(\{0,1,2\}\)</span>, but the output support is <span class="math" data-tex="\(\{0,2\}\)">\(\{0,2\}\)</span>; the two terms at <span class="math" data-tex="\(1\)">\(1\)</span> cancel exactly.</p>
+<p><strong>Exercise 2 (intermediate: causal integration and a delayed jump).</strong> Put <span class="math" data-tex="\(H=\mathbf1_{[0,\infty)}\)">\(H=\mathbf1_{[0,\infty)}\)</span> and <span class="math" data-tex="\(w=\delta&#x27;_0-\delta&#x27;_1\)">\(w=\delta&#x27;_0-\delta&#x27;_1\)</span>. Compute both <span class="math" data-tex="\(H*(H*w)\)">\(H*(H*w)\)</span> and <span class="math" data-tex="\((H*H)*w\)">\((H*H)*w\)</span>, and justify associativity for these noncompact factors.</p>
+<p><strong>Solution 2.</strong> Every support lies in <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, a closed cone with no line, so Proposition 3.3 applies. Since <span class="math" data-tex="\(H&#x27;=\delta_0\)">\(H&#x27;=\delta_0\)</span>, one has <span class="math" data-tex="\(H*w=\delta_0-\delta_1\)">\(H*w=\delta_0-\delta_1\)</span>. Hence <span class="math" data-tex="\(H*(H*w)=H-\tau_1H\)">\(H*(H*w)=H-\tau_1H\)</span>, the indicator of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> up to irrelevant endpoint values. On the other side, <span class="math" data-tex="\(H*H=x_+\)">\(H*H=x_+\)</span>, and differentiation gives <span class="math" data-tex="\((H*H)*w=(x_+)&#x27;-(x-1)_+&#x27;=H-\tau_1H\)">\((H*H)*w=(x_+)&#x27;-(x-1)_+&#x27;=H-\tau_1H\)</span>. Both pair with <span class="math" data-tex="\(\phi\)">\(\phi\)</span> as <span class="math" data-tex="\(\int_0^1\phi(x)\,dx\)">\(\int_0^1\phi(x)\,dx\)</span>.</p>
+<p><strong>Exercise 3 (advanced: normalized shrinking kernels without a norm bound).</strong> Choose an even nonnegative <span class="math" data-tex="\(\rho\in C_c^\infty((-1,1))\)">\(\rho\in C_c^\infty((-1,1))\)</span> with integral one. Let <span class="math" data-tex="\(\rho_\varepsilon(x)=\varepsilon^{-1}\rho(x/\varepsilon)\)">\(\rho_\varepsilon(x)=\varepsilon^{-1}\rho(x/\varepsilon)\)</span>, and set <span class="math" data-tex="\(q_\varepsilon=\rho_\varepsilon+\rho&#x27;_\varepsilon\)">\(q_\varepsilon=\rho_\varepsilon+\rho&#x27;_\varepsilon\)</span>. Show that <span class="math" data-tex="\(q_\varepsilon\)">\(q_\varepsilon\)</span> has integral one and shrinking support, but converges to <span class="math" data-tex="\(\delta_0+\delta&#x27;_0\)">\(\delta_0+\delta&#x27;_0\)</span>. Explain why this does not contradict Theorem 5.2.</p>
+<p><strong>Solution 3.</strong> The derivative has integral zero, so the normalization and support assertions hold. For every test,</p>
+<span class="math math-display" data-tex="\[
+\langle q_\varepsilon,\phi\rangle
+=\int\rho(y)\phi(\varepsilon y)\,dy
+-\int\rho(y)\phi&#x27;(\varepsilon y)\,dy
+\longrightarrow\phi(0)-\phi&#x27;(0).
+\]">\[
+\langle q_\varepsilon,\phi\rangle
+=\int\rho(y)\phi(\varepsilon y)\,dy
+-\int\rho(y)\phi&#x27;(\varepsilon y)\,dy
+\longrightarrow\phi(0)-\phi&#x27;(0).
+\]</span>
+<p>This is the stated limit. The <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norms cannot be uniformly bounded: the reverse triangle inequality gives</p>
+<span class="math math-display" data-tex="\[
+\|q_\varepsilon\|_1
+\ge\varepsilon^{-1}\|\rho&#x27;\|_1-1\longrightarrow\infty.
+\]">\[
+\|q_\varepsilon\|_1
+\ge\varepsilon^{-1}\|\rho&#x27;\|_1-1\longrightarrow\infty.
+\]</span>
+<p>Here <span class="math" data-tex="\(\rho&#x27;\ne0\)">\(\rho&#x27;\ne0\)</span>, because a nonzero compact smooth function of integral one is not constant. The missing hypothesis is exactly the uniform <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bound. For <span class="math" data-tex="\(u=\delta_0\)">\(u=\delta_0\)</span>, the convolutions are these kernels themselves, so normalization and shrinking support alone do not ensure convergence to <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p><strong>Exercise 4 (intermediate: a finite-regularity threshold).</strong> Let <span class="math" data-tex="\(f(x)=(1-x^2)^4\)">\(f(x)=(1-x^2)^4\)</span> for <span class="math" data-tex="\(|x|&lt;1\)">\(|x|&lt;1\)</span>, and <span class="math" data-tex="\(f(x)=0\)">\(f(x)=0\)</span> otherwise. Show that <span class="math" data-tex="\(\delta&#x27;&#x27;_0*f\)">\(\delta&#x27;&#x27;_0*f\)</span> is <span class="math" data-tex="\(C^1\)">\(C^1\)</span> but is not <span class="math" data-tex="\(C^2\)">\(C^2\)</span>. Identify the values of <span class="math" data-tex="\(j,k\)">\(j,k\)</span> in Theorem 2.1.</p>
+<p><strong>Solution 4.</strong> The fourth-order vanishing at each endpoint makes <span class="math" data-tex="\(f\)">\(f\)</span> compact <span class="math" data-tex="\(C^3\)">\(C^3\)</span>. Its fourth derivative from inside tends to <span class="math" data-tex="\(384\)">\(384\)</span> at either endpoint, whereas outside it is zero; hence <span class="math" data-tex="\(f\notin C^4\)">\(f\notin C^4\)</span>. Since <span class="math" data-tex="\(\delta&#x27;&#x27;_0\)">\(\delta&#x27;&#x27;_0\)</span> has order two, the theorem with <span class="math" data-tex="\(j=2\)">\(j=2\)</span>, <span class="math" data-tex="\(k=1\)">\(k=1\)</span> gives a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> convolution equal to</p>
+<span class="math math-display" data-tex="\[
+f&#x27;&#x27;(x)=
+\begin{cases}
+(1-x^2)^2(56x^2-8),&amp;|x|&lt;1,\\
+0,&amp;|x|\ge1.
+\end{cases}
+\]">\[
+f&#x27;&#x27;(x)=
+\begin{cases}
+(1-x^2)^2(56x^2-8),&amp;|x|&lt;1,\\
+0,&amp;|x|\ge1.
+\end{cases}
+\]</span>
+<p>Near either endpoint the interior expression vanishes to order two, with coefficient <span class="math" data-tex="\(192\)">\(192\)</span> in the inward distance squared. Its second derivative has interior limit <span class="math" data-tex="\(384\)">\(384\)</span> and exterior value zero. Thus this convolution is not <span class="math" data-tex="\(C^2\)">\(C^2\)</span>. The threshold <span class="math" data-tex="\(C^{j+k}=C^3\)">\(C^{j+k}=C^3\)</span> is attained without a further derivative of regularity.</p>
+<p><strong>Exercise 5 (basic: the output domain shifts).</strong> Let <span class="math" data-tex="\(X=(-2,2)\)">\(X=(-2,2)\)</span>, let <span class="math" data-tex="\(u\)">\(u\)</span> be the restriction of <span class="math" data-tex="\(\operatorname{pv}(1/x)\)">\(\operatorname{pv}(1/x)\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span>, and let <span class="math" data-tex="\(v=\delta_1\)">\(v=\delta_1\)</span>. Find the local convolution domain in Proposition 5.1, its singular support there, and its test pairing.</p>
+<p><strong>Solution 5.</strong> The condition <span class="math" data-tex="\(x-1\in(-2,2)\)">\(x-1\in(-2,2)\)</span> gives <span class="math" data-tex="\(X_C=(-1,3)\)">\(X_C=(-1,3)\)</span>. Translation gives the restriction of <span class="math" data-tex="\(\operatorname{pv}(1/(x-1))\)">\(\operatorname{pv}(1/(x-1))\)</span> to this interval. Its only singular point is <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(\phi\in C_c^\infty((-1,3))\)">\(\phi\in C_c^\infty((-1,3))\)</span>, the function <span class="math" data-tex="\(s\mapsto\phi(s+1)\)">\(s\mapsto\phi(s+1)\)</span> is compactly supported in <span class="math" data-tex="\(X\)">\(X\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\langle u*v,\phi\rangle
+=\lim_{a\downarrow0}\int_{\substack{s\in(-2,2)\\|s|&gt;a}}
+\frac{\phi(s+1)}s\,ds.
+\]">\[
+\langle u*v,\phi\rangle
+=\lim_{a\downarrow0}\int_{\substack{s\in(-2,2)\\|s|&gt;a}}
+\frac{\phi(s+1)}s\,ds.
+\]</span>
+<p>No values of <span class="math" data-tex="\(u\)">\(u\)</span> outside <span class="math" data-tex="\(X\)">\(X\)</span> are needed. Near <span class="math" data-tex="\(x=1\)">\(x=1\)</span>, translation preserves the principal-value singularity; elsewhere the function <span class="math" data-tex="\(1/(x-1)\)">\(1/(x-1)\)</span> is smooth.</p>
+<p><strong>Exercise 6 (intermediate: reflection does not commute with translation).</strong> Consider <span class="math" data-tex="\(A\phi(x)=\phi(-x)\)">\(A\phi(x)=\phi(-x)\)</span>. Verify that <span class="math" data-tex="\(A\)">\(A\)</span> is continuous on test functions but cannot be convolution with one distribution. Use both translation and formula (6.7).</p>
+<p><strong>Solution 6.</strong> Reflection preserves compactness and every derivative supremum, so it is continuous. But <span class="math" data-tex="\(A\tau_h=\tau_{-h}A\)">\(A\tau_h=\tau_{-h}A\)</span>, which differs from <span class="math" data-tex="\(\tau_hA\)">\(\tau_hA\)</span> for a nonzero <span class="math" data-tex="\(h\)">\(h\)</span> and a test concentrated near one point. Therefore Theorem 6.1’s commutation hypothesis fails. If a convolution representation existed, (6.7) would give <span class="math" data-tex="\(u(\theta)=\theta(0)\)">\(u(\theta)=\theta(0)\)</span>, so <span class="math" data-tex="\(u=\delta_0\)">\(u=\delta_0\)</span>. Convolution with that distribution is the identity, whereas reflection sends a nonzero odd test to its negative. This is a contradiction.</p>
+<p><strong>Exercise 7 (advanced: a geometric properness estimate).</strong> In <span class="math" data-tex="\(\mathbb R\times\mathbb R^d\)">\(\mathbb R\times\mathbb R^d\)</span>, let <span class="math" data-tex="\(C=\{(t,z):t\ge|z|\}\)">\(C=\{(t,z):t\ge|z|\}\)</span>. Give a direct bound for every contributing coordinate when the sum of any fixed number of points of <span class="math" data-tex="\(C\)">\(C\)</span> lies in a ball of radius <span class="math" data-tex="\(R\)">\(R\)</span>. Then explain the obstruction if a closed convex cone contains a nonzero line.</p>
+<p><strong>Solution 7.</strong> Each <span class="math" data-tex="\(t_i\ge0\)">\(t_i\ge0\)</span>, and <span class="math" data-tex="\(\sum_i t_i\le R\)">\(\sum_i t_i\le R\)</span>, so <span class="math" data-tex="\(0\le t_i\le R\)">\(0\le t_i\le R\)</span>. Also <span class="math" data-tex="\(|z_i|\le t_i\le R\)">\(|z_i|\le t_i\le R\)</span>. Every point therefore has Euclidean norm at most <span class="math" data-tex="\(\sqrt2R\)">\(\sqrt2R\)</span>. Closedness gives compactness of the contributing tuples. If a cone contains <span class="math" data-tex="\(\mathbb Re\)">\(\mathbb Re\)</span>, with <span class="math" data-tex="\(|e|=1\)">\(|e|=1\)</span>, then pairs <span class="math" data-tex="\((me,-me)\)">\((me,-me)\)</span> have zero sum and unbounded coordinates. Addition is not proper. The positive locally finite distributions <span class="math" data-tex="\(\sum_{m\ge0}\delta_{me}\)">\(\sum_{m\ge0}\delta_{me}\)</span> and <span class="math" data-tex="\(\sum_{m\ge0}\delta_{-me}\)">\(\sum_{m\ge0}\delta_{-me}\)</span> give infinitely many positive contributions at zero, so their proposed positive convolution is not locally finite. This demonstrates failure of the construction for that pair, without asserting failure for every pair supported in the cone.</p>
+<p><strong>Exercise 8 (advanced: translation invariance and locality).</strong> Assume <span class="math" data-tex="\(A\)">\(A\)</span> satisfies Theorem 6.1 and is local in the sense that <span class="math" data-tex="\(\operatorname{supp}(A\phi)\subset\operatorname{supp}\phi\)">\(\operatorname{supp}(A\phi)\subset\operatorname{supp}\phi\)</span> for every test. Show that <span class="math" data-tex="\(A\)">\(A\)</span> is a finite constant-coefficient differential operator. Prove the converse.</p>
+<p><strong>Solution 8.</strong> Recover its convolution distribution by (6.7). If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is supported away from zero, so is <span class="math" data-tex="\(\check\theta\)">\(\check\theta\)</span>. Locality and smoothness of the output imply <span class="math" data-tex="\((A\check\theta)(0)=0\)">\((A\check\theta)(0)=0\)</span>. Thus <span class="math" data-tex="\(u\)">\(u\)</span> has support in <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. The point-support theorem in <a href="jets-supported-distributions-and-local-operators.html">Jets, supported distributions and local operators</a> gives a finite sum <span class="math" data-tex="\(u=\sum_{|\alpha|\le m}c_\alpha\partial^\alpha\delta_0\)">\(u=\sum_{|\alpha|\le m}c_\alpha\partial^\alpha\delta_0\)</span>. Equation (1.8) gives <span class="math" data-tex="\(A\phi=\sum c_\alpha\partial^\alpha\phi\)">\(A\phi=\sum c_\alpha\partial^\alpha\phi\)</span>. Conversely any such operator is continuous, commutes with translations, and has output support contained in the input support, because differentiation vanishes wherever the original smooth function vanishes on a neighborhood.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, MIT, September 28, 2026, Chapters 6 and 8. Smooth convolution, properly summing supports and singular support. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Open notes</a>.</li>
+<li>[Melrose 2016] Richard Melrose, <em>18.155 Lecture 15: Schwartz’s kernel theorem</em>, MIT, 2016. The kernel perspective used in the translation-invariance proof. <a href="https://math.mit.edu/~rbm/18.155-F16/L15.pdf">Open lecture</a>.</li>
+<li>[Schwartz 1952] Laurent Schwartz, <em>Théorie des noyaux</em>, Proceedings of the International Congress of Mathematicians, Cambridge, Massachusetts, 1950, volume I, American Mathematical Society, 1952. <a href="https://www.mathunion.org/icm/proceedings">Proceedings archive</a>.</li>
+</ul>
+<footer><p>Original text: CC0.</p><p><a href="src/convolution-as-addition-of-supports.md">Editable original Markdown</a>. Source commit 45254444b969214e28f87b68f421a2b11a02a63e.</p></footer></main></body></html>

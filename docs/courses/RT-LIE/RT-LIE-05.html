@@ -1,0 +1,463 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Representations of sl(2) · Open Mathematics Courses</title><link rel="stylesheet" href="../../assets/site.css"><style>main{max-width:76rem;margin:auto;padding:1.5rem}.lesson{max-width:66rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}img{max-width:100%;height:auto}table{display:block;overflow-x:auto}td,th{padding:.4rem} .math-display{display:block;overflow-x:auto}details{margin:1rem 0}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a href="#main" class="skip-link">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav><a href="index.html">Semisimple Lie algebras</a> · <a href="proof-crosswalk.html">Proof index</a> · <a href="sources.html">Sources and terms</a></nav></div></header><main id="main"><nav class="lesson-nav"><a href="index.html">Course contents</a><a href="src/RT-LIE-05.md" download>Editable source</a><a href="RT-LIE-04.html">← Previous lesson</a><a href="RT-LIE-06.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#theorem-2-1">Theorem 2.1.</a></li><li><a href="#proposition-2-2">Proposition 2.2.</a></li><li><a href="#corollary-3-1">Corollary 3.1.</a></li><li><a href="#proposition-4-1">Proposition 4.1.</a></li><li><a href="#theorem-4-2">Theorem 4.2 (Clebsch–Gordan).</a></li><li><a href="#lemma-5-1">Lemma 5.1.</a></li><li><a href="#theorem-5-2">Theorem 5.2.</a></li></ul></details><article class="lesson"><h1 id="representations-of-mathfrak-sl-_2">Representations of <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span></h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The three operators of <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> move along one sequence of weights. In finite dimension that sequence has two endpoints, and the commutator relation determines both its length and every coefficient. The same formulas, continued without a lower endpoint, produce Verma modules. This lesson develops both constructions and uses the finite ones to compute tensor products.</p>
+<p>All vector spaces and Lie algebras here are over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. We use <a href="RT-LIE-04.html">Complete reducibility: Casimir elements and Weyl's theorem</a>, especially Weyl's theorem and preservation of Jordan decomposition, and the enveloping-algebra universal property from <a href="RT-LIE-01.html">Lie algebras: definitions, examples and first constructions</a>. We distinguish a highest weight from a dimension: <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span> has highest weight <span class="math" data-tex="\(n\)">\(n\)</span> and dimension <span class="math" data-tex="\(n+1\)">\(n+1\)</span>.</p>
+<h2 id="section-1"><span id="1-the-commutator-determines-the-sequence"></span>1. The commutator determines the sequence</h2>
+<p>Fix
+<span class="math math-display" data-tex="\[
+e=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\quad
+h=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\quad
+f=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}.
+\]">\[
+e=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\quad
+h=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\quad
+f=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}.
+\]</span>
+Their relations are
+<span class="math math-display" data-tex="\[
+[h,e]=2e,\qquad [h,f]=-2f,\qquad [e,f]=h.
+\tag{1.1}
+\]">\[
+[h,e]=2e,\qquad [h,f]=-2f,\qquad [e,f]=h.
+\tag{1.1}
+\]</span>
+The Killing-form calculation in the preceding lessons proves that this algebra is semisimple. Its adjoint action makes <span class="math" data-tex="\(h\)">\(h\)</span> semisimple, with eigenvalues <span class="math" data-tex="\(2,0,-2\)">\(2,0,-2\)</span>; the adjoint actions of <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> are nilpotent, each with cube zero. Preservation of Jordan decomposition therefore says that, on every finite-dimensional module, <span class="math" data-tex="\(h\)">\(h\)</span> is diagonalizable and <span class="math" data-tex="\(e,f\)">\(e,f\)</span> are nilpotent.</p>
+<p>For a module with diagonalizable <span class="math" data-tex="\(h\)">\(h\)</span>, define its <strong>weight space</strong>
+<span class="math math-display" data-tex="\[
+V[\lambda]=\{v:hv=\lambda v\}.
+\]">\[
+V[\lambda]=\{v:hv=\lambda v\}.
+\]</span>
+Equation (1.1) gives
+<span class="math math-display" data-tex="\[
+eV[\lambda]\subseteq V[\lambda+2],\qquad
+fV[\lambda]\subseteq V[\lambda-2]:
+\tag{1.2}
+\]">\[
+eV[\lambda]\subseteq V[\lambda+2],\qquad
+fV[\lambda]\subseteq V[\lambda-2]:
+\tag{1.2}
+\]</span>
+indeed <span class="math" data-tex="\(h(ev)=ehv+2ev=(\lambda+2)ev\)">\(h(ev)=ehv+2ev=(\lambda+2)ev\)</span>, and <span class="math" data-tex="\(h(fv)=fhv-2fv=(\lambda-2)fv\)">\(h(fv)=fhv-2fv=(\lambda-2)fv\)</span>.</p>
+<p>A <strong>highest-weight vector</strong> is a nonzero vector <span class="math" data-tex="\(v\)">\(v\)</span> such that <span class="math" data-tex="\(ev=0\)">\(ev=0\)</span> and <span class="math" data-tex="\(hv=\lambda v\)">\(hv=\lambda v\)</span>. Every nonzero finite-dimensional module contains one. Take a nonzero <span class="math" data-tex="\(h\)">\(h\)</span>-eigenvector and apply <span class="math" data-tex="\(e\)">\(e\)</span> until the last nonzero iterate; nilpotence guarantees such an iterate, and (1.2) keeps it an eigenvector.</p>
+<p>The following identity applies to any highest-weight vector, in finite or infinite dimension:
+<span class="math math-display" data-tex="\[
+h f^i v=(\lambda-2i)f^i v,\qquad
+e f^i v=i(\lambda-i+1)f^{i-1}v \quad(i\ge1).
+\tag{1.3}
+\]">\[
+h f^i v=(\lambda-2i)f^i v,\qquad
+e f^i v=i(\lambda-i+1)f^{i-1}v \quad(i\ge1).
+\tag{1.3}
+\]</span>
+The first assertion follows by repeating (1.2). For the second, the case <span class="math" data-tex="\(i=1\)">\(i=1\)</span> is <span class="math" data-tex="\(efv=f ev+hv=\lambda v\)">\(efv=f ev+hv=\lambda v\)</span>. If it holds for <span class="math" data-tex="\(i\)">\(i\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+ef^{i+1}v
+&amp;=(fe+h)f^iv\\
+&amp;=\bigl(i(\lambda-i+1)+\lambda-2i\bigr)f^iv\\
+&amp;=(i+1)(\lambda-i)f^iv.
+\end{aligned}
+\]">\[
+\begin{aligned}
+ef^{i+1}v
+&amp;=(fe+h)f^iv\\
+&amp;=\bigl(i(\lambda-i+1)+\lambda-2i\bigr)f^iv\\
+&amp;=(i+1)(\lambda-i)f^iv.
+\end{aligned}
+\]</span>
+This proves it by induction.</p>
+<p>If <span class="math" data-tex="\(v\)">\(v\)</span> belongs to a finite-dimensional module, let <span class="math" data-tex="\(n\)">\(n\)</span> be the last index for which <span class="math" data-tex="\(f^nv\ne0\)">\(f^nv\ne0\)</span>. It exists because <span class="math" data-tex="\(f\)">\(f\)</span> is nilpotent. The earlier iterates are nonzero, and their distinct <span class="math" data-tex="\(h\)">\(h\)</span>-weights make them independent. Applying (1.3) to the zero vector <span class="math" data-tex="\(f^{n+1}v\)">\(f^{n+1}v\)</span> yields
+<span class="math math-display" data-tex="\[
+0=(n+1)(\lambda-n)f^nv.
+\]">\[
+0=(n+1)(\lambda-n)f^nv.
+\]</span>
+Thus
+<span class="math math-display" data-tex="\[
+\lambda=n\in\mathbb Z_{\ge0}.
+\tag{1.4}
+\]">\[
+\lambda=n\in\mathbb Z_{\ge0}.
+\tag{1.4}
+\]</span>
+This calculation is the reason that highest weights in finite dimension are nonnegative integers.</p>
+<h2 id="section-2"><span id="2-all-finite-dimensional-simple-modules"></span>2. All finite-dimensional simple modules</h2>
+<p id="theorem-2-1"><strong>Theorem 2.1.</strong> For every <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span> there is, up to isomorphism, exactly one irreducible <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>-module <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span> of dimension <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. It has a basis <span class="math" data-tex="\(v_0,\ldots,v_n\)">\(v_0,\ldots,v_n\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+hv_i&amp;=(n-2i)v_i,\\
+fv_i&amp;=v_{i+1}\quad(i&lt;n),\qquad fv_n=0,\\
+ev_i&amp;=i(n-i+1)v_{i-1}\quad(i&gt;0),\qquad ev_0=0.
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+hv_i&amp;=(n-2i)v_i,\\
+fv_i&amp;=v_{i+1}\quad(i&lt;n),\qquad fv_n=0,\\
+ev_i&amp;=i(n-i+1)v_{i-1}\quad(i&gt;0),\qquad ev_0=0.
+\end{aligned}
+\tag{2.1}
+\]</span>
+Every finite-dimensional irreducible module is one of these. Its weights are <span class="math" data-tex="\(n,n-2,\ldots,-n\)">\(n,n-2,\ldots,-n\)</span>, each with multiplicity one.</p>
+<p><strong>Proof.</strong> First construct <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span>. On the homogeneous polynomials of degree <span class="math" data-tex="\(n\)">\(n\)</span> in variables <span class="math" data-tex="\(u,t\)">\(u,t\)</span>, put
+<span class="math math-display" data-tex="\[
+e=u\partial_t,\qquad f=t\partial_u,\qquad
+h=u\partial_u-t\partial_t.
+\tag{2.2}
+\]">\[
+e=u\partial_t,\qquad f=t\partial_u,\qquad
+h=u\partial_u-t\partial_t.
+\tag{2.2}
+\]</span>
+The product rule gives their brackets. For example, on any polynomial <span class="math" data-tex="\(P\)">\(P\)</span>,
+<span class="math math-display" data-tex="\[
+(ef-fe)P=u\partial_uP-t\partial_tP=hP;
+\]">\[
+(ef-fe)P=u\partial_uP-t\partial_tP=hP;
+\]</span>
+the mixed second derivatives cancel. Computing similarly gives <span class="math" data-tex="\([h,e]P=2eP\)">\([h,e]P=2eP\)</span> and <span class="math" data-tex="\([h,f]P=-2fP\)">\([h,f]P=-2fP\)</span>. Degree is preserved, so this is a representation on the indicated space.</p>
+<p>Its basis
+<span class="math math-display" data-tex="\[
+v_i=f^i u^n=\frac{n!}{(n-i)!}u^{n-i}t^i,\qquad 0\le i\le n,
+\tag{2.3}
+\]">\[
+v_i=f^i u^n=\frac{n!}{(n-i)!}u^{n-i}t^i,\qquad 0\le i\le n,
+\tag{2.3}
+\]</span>
+satisfies (2.1). The coefficients in (2.3) are nonzero, including the coefficient for <span class="math" data-tex="\(i=0\)">\(i=0\)</span>. The monomials are a basis, so these vectors are independent and span.</p>
+<p>To prove irreducibility, let <span class="math" data-tex="\(W\)">\(W\)</span> be a nonzero submodule. A nonzero vector of <span class="math" data-tex="\(W\)">\(W\)</span> has a nonzero component along some <span class="math" data-tex="\(v_i\)">\(v_i\)</span>. Polynomial interpolation in <span class="math" data-tex="\(h\)">\(h\)</span> isolates that component: the polynomial which is <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(n-2i\)">\(n-2i\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> on the other finitely many weights sends it to a nonzero multiple of <span class="math" data-tex="\(v_i\)">\(v_i\)</span>. Hence <span class="math" data-tex="\(v_i\in W\)">\(v_i\in W\)</span>. All coefficients encountered in <span class="math" data-tex="\(e^i v_i\)">\(e^i v_i\)</span> are nonzero, so <span class="math" data-tex="\(v_0\in W\)">\(v_0\in W\)</span>. Its successive <span class="math" data-tex="\(f\)">\(f\)</span>-iterates give every <span class="math" data-tex="\(v_j\)">\(v_j\)</span>, and <span class="math" data-tex="\(W=V(n)\)">\(W=V(n)\)</span>.</p>
+<p>Now take any finite-dimensional irreducible module and a highest-weight vector <span class="math" data-tex="\(v\)">\(v\)</span>. Section 1 gives its weight <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>. The span of <span class="math" data-tex="\(v,fv,\ldots,f^nv\)">\(v,fv,\ldots,f^nv\)</span> is a nonzero submodule by (1.3); irreducibility makes it the entire module. Its basis has precisely (2.1), so sending <span class="math" data-tex="\(v_i\)">\(v_i\)</span> to <span class="math" data-tex="\(f^iv\)">\(f^iv\)</span> gives an isomorphism with the constructed <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span>. Finally, different <span class="math" data-tex="\(n\)">\(n\)</span>'s have different dimensions. This proves existence, uniqueness and exhaustiveness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(V(0)\)">\(V(0)\)</span> is the trivial line and <span class="math" data-tex="\(V(1)\)">\(V(1)\)</span> is the standard module. The module <span class="math" data-tex="\(V(2)\)">\(V(2)\)</span> is the adjoint module. An explicit intertwiner is
+<span class="math math-display" data-tex="\[
+v_0\longmapsto e,\qquad v_1\longmapsto-h,\qquad
+v_2\longmapsto-2f.
+\tag{2.4}
+\]">\[
+v_0\longmapsto e,\qquad v_1\longmapsto-h,\qquad
+v_2\longmapsto-2f.
+\tag{2.4}
+\]</span>
+Bracketing these images with <span class="math" data-tex="\(e,h,f\)">\(e,h,f\)</span> gives exactly (2.1).</p>
+<h3 id="2-2-the-polynomial-action-of-sl_2">2.2. The polynomial action of <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span></h3>
+<p id="proposition-2-2"><strong>Proposition 2.2.</strong> For every commutative ring <span class="math" data-tex="\(R\)">\(R\)</span>, the free module of homogeneous polynomials <span class="math" data-tex="\(R[u,t]_n\cong\operatorname{Sym}^n(R^2)\)">\(R[u,t]_n\cong\operatorname{Sym}^n(R^2)\)</span> has the polynomial <span class="math" data-tex="\(SL_2(R)\)">\(SL_2(R)\)</span>-action
+<span class="math math-display" data-tex="\[
+\rho_n\!\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}P(u,t)
+=P(au+ct,bu+dt).
+\tag{2.5}
+\]">\[
+\rho_n\!\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}P(u,t)
+=P(au+ct,bu+dt).
+\tag{2.5}
+\]</span>
+These actions commute with homomorphisms of ground rings. Their differentials are exactly (2.2). Over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and after any characteristic-zero field extension, this differential representation is <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span>.</p>
+<p><strong>Proof.</strong> Regard <span class="math" data-tex="\((u,t)\)">\((u,t)\)</span> as a row of formal variables. Formula (2.5) substitutes <span class="math" data-tex="\((u,t)g\)">\((u,t)g\)</span> for <span class="math" data-tex="\((u,t)\)">\((u,t)\)</span>. Applying the substitutions for <span class="math" data-tex="\(h\)">\(h\)</span> and then <span class="math" data-tex="\(g\)">\(g\)</span> yields <span class="math" data-tex="\(P((u,t)gh)\)">\(P((u,t)gh)\)</span>, so <span class="math" data-tex="\(\rho_n(g)\rho_n(h)=\rho_n(gh)\)">\(\rho_n(g)\rho_n(h)=\rho_n(gh)\)</span>. The identity matrix acts identically and <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> gives the inverse. Linear substitution preserves homogeneous degree. Expanding monomials shows that all matrix coefficients are polynomials with integer coefficients in <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span>, so the formula defines an action of the group scheme <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span>, and extension of coefficients preserves it.</p>
+<p>To differentiate, work with <span class="math" data-tex="\(\varepsilon^2=0\)">\(\varepsilon^2=0\)</span>. The upper unipotent matrix with entry <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> sends <span class="math" data-tex="\((u,t)\)">\((u,t)\)</span> to <span class="math" data-tex="\((u,t+\varepsilon u)\)">\((u,t+\varepsilon u)\)</span>, giving <span class="math" data-tex="\(u\partial_t\)">\(u\partial_t\)</span>. The lower unipotent sends it to <span class="math" data-tex="\((u+\varepsilon t,t)\)">\((u+\varepsilon t,t)\)</span>, giving <span class="math" data-tex="\(t\partial_u\)">\(t\partial_u\)</span>. The diagonal matrix with entries <span class="math" data-tex="\(1+\varepsilon,1-\varepsilon\)">\(1+\varepsilon,1-\varepsilon\)</span> gives <span class="math" data-tex="\(u\partial_u-t\partial_t\)">\(u\partial_u-t\partial_t\)</span>. Thus the three infinitesimal generators agree with (2.2). Over a characteristic-zero field the basis change (2.3) has nonzero factorial coefficients, and the same weight-projection and raising/lowering proof of Theorem 2.1 proves irreducibility. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The group action exists over rings and in positive characteristic, while the irreducibility statement has its characteristic-zero hypothesis. For example, in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, the two-dimensional span of <span class="math" data-tex="\(u^p,t^p\)">\(u^p,t^p\)</span> is preserved inside <span class="math" data-tex="\(R[u,t]_p\)">\(R[u,t]_p\)</span>, because <span class="math" data-tex="\((au+ct)^p=a^pu^p+c^pt^p\)">\((au+ct)^p=a^pu^p+c^pt^p\)</span>; over a field this is a proper submodule. The polynomial construction therefore supplies an integral action without extending the characteristic-zero classification to characteristic <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>The basis in (2.1) uses <span class="math" data-tex="\(f^iv_0\)">\(f^iv_0\)</span>, without dividing by <span class="math" data-tex="\(i!\)">\(i!\)</span>. If the diagonal generator is instead <span class="math" data-tex="\(h/2\)">\(h/2\)</span>, its eigenvalues are half the weights used here and the spin parameter is <span class="math" data-tex="\(j=n/2\)">\(j=n/2\)</span>. Replacing the basis by <span class="math" data-tex="\(f^iv_0/i!\)">\(f^iv_0/i!\)</span> changes the displayed raising and lowering coefficients by the corresponding factorial ratios. These changes of normalization do not change the module.</p>
+<h2 id="section-3"><span id="3-a-weight-count-determines-the-decomposition"></span>3. A weight count determines the decomposition</h2>
+<p id="corollary-3-1"><strong>Corollary 3.1.</strong> Every finite-dimensional module is a finite direct sum of the <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span>. If
+<span class="math math-display" data-tex="\[
+d_r=\dim V[r],\qquad r\in\mathbb Z,
+\]">\[
+d_r=\dim V[r],\qquad r\in\mathbb Z,
+\]</span>
+then the multiplicity <span class="math" data-tex="\(a_n\)">\(a_n\)</span> of <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span>, for <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, is
+<span class="math math-display" data-tex="\[
+a_n=d_n-d_{n+2}.
+\tag{3.1}
+\]">\[
+a_n=d_n-d_{n+2}.
+\tag{3.1}
+\]</span>
+In particular its weights and their multiplicities determine its isomorphism class.</p>
+<p><strong>Proof.</strong> Weyl's theorem and Theorem 2.1 give the direct sum. A copy of <span class="math" data-tex="\(V(q)\)">\(V(q)\)</span> contributes one to <span class="math" data-tex="\(d_n\)">\(d_n\)</span> exactly when <span class="math" data-tex="\(q\ge n\)">\(q\ge n\)</span> and <span class="math" data-tex="\(q-n\)">\(q-n\)</span> is even. Therefore
+<span class="math math-display" data-tex="\[
+d_n=a_n+a_{n+2}+a_{n+4}+\cdots,
+\]">\[
+d_n=a_n+a_{n+2}+a_{n+4}+\cdots,
+\]</span>
+a finite sum. Subtract the corresponding formula for <span class="math" data-tex="\(d_{n+2}\)">\(d_{n+2}\)</span> to obtain (3.1). The multiplicities are unique, and direct sums with those multiplicities are isomorphic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All weights are integers and <span class="math" data-tex="\(d_r=d_{-r}\)">\(d_r=d_{-r}\)</span>. For instance, if a module has multiplicities
+<span class="math math-display" data-tex="\[
+d_4=d_{-4}=1,\quad d_2=d_{-2}=3,\quad d_0=4
+\]">\[
+d_4=d_{-4}=1,\quad d_2=d_{-2}=3,\quad d_0=4
+\]</span>
+and no other weights, then it is <span class="math" data-tex="\(V(4)\oplus2V(2)\oplus V(0)\)">\(V(4)\oplus2V(2)\oplus V(0)\)</span>, of dimension <span class="math" data-tex="\(5+6+1=12\)">\(5+6+1=12\)</span>.</p>
+<p>For each <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>, the correctly directed weight-reversal maps are
+<span class="math math-display" data-tex="\[
+f^r:V[r]\longrightarrow V[-r],\qquad
+e^r:V[-r]\longrightarrow V[r],
+\tag{3.2}
+\]">\[
+f^r:V[r]\longrightarrow V[-r],\qquad
+e^r:V[-r]\longrightarrow V[r],
+\tag{3.2}
+\]</span>
+and both are isomorphisms. On each simple summand having these weights, the relevant indices in (2.1) are <span class="math" data-tex="\((n-r)/2\)">\((n-r)/2\)</span> and <span class="math" data-tex="\((n+r)/2\)">\((n+r)/2\)</span>. The first map traverses <span class="math" data-tex="\(r\)">\(r\)</span> nonzero lowering steps; the second traverses <span class="math" data-tex="\(r\)">\(r\)</span> raising steps with nonzero coefficients. Summands having neither weight contribute zero spaces. Direct sums prove (3.2), including <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Raising by <span class="math" data-tex="\(e\)">\(e\)</span> cannot map a positive weight to its negative; the two operator names in the displayed maps of [Kirillov, Theorem 4.60(2)] are interchanged.</p>
+<p>For bookkeeping write
+<span class="math math-display" data-tex="\[
+\operatorname{ch}V=\sum_{r\in\mathbb Z}d_r z^r.
+\]">\[
+\operatorname{ch}V=\sum_{r\in\mathbb Z}d_r z^r.
+\]</span>
+This is a finite Laurent polynomial, called the <strong>formal character</strong>. Characters add on direct sums and multiply on tensor products: the tensor action of <span class="math" data-tex="\(h\)">\(h\)</span> adds the two weights, and tensor products of weight-space bases give a basis of each resulting weight space. Equation (3.1) proves that equal characters imply isomorphic finite-dimensional modules.</p>
+<h2 id="section-4"><span id="4-tensor-products-and-the-form-used-for-the-casimir"></span>4. Tensor products and the form used for the Casimir</h2>
+<p>Let <span class="math" data-tex="\(B(x,y)=\operatorname{tr}_{\mathbb C^2}(xy)\)">\(B(x,y)=\operatorname{tr}_{\mathbb C^2}(xy)\)</span> on the algebra. The preceding lesson proved centrality of
+<span class="math math-display" data-tex="\[
+C_B=ef+fe+\frac12h^2,\qquad C_\kappa=\frac14C_B,
+\tag{4.1}
+\]">\[
+C_B=ef+fe+\frac12h^2,\qquad C_\kappa=\frac14C_B,
+\tag{4.1}
+\]</span>
+where <span class="math" data-tex="\(\kappa=4B\)">\(\kappa=4B\)</span> is the Killing form.</p>
+<p id="proposition-4-1"><strong>Proposition 4.1.</strong> On <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span> these elements act, respectively, by
+<span class="math math-display" data-tex="\[
+\frac{n(n+2)}2,\qquad \frac{n(n+2)}8.
+\tag{4.2}
+\]">\[
+\frac{n(n+2)}2,\qquad \frac{n(n+2)}8.
+\tag{4.2}
+\]</span></p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(ev_0=0\)">\(ev_0=0\)</span>, <span class="math" data-tex="\(fev_0=0\)">\(fev_0=0\)</span> and <span class="math" data-tex="\(efv_0=hv_0=nv_0\)">\(efv_0=hv_0=nv_0\)</span>. Thus <span class="math" data-tex="\(C_Bv_0=(n+n^2/2)v_0\)">\(C_Bv_0=(n+n^2/2)v_0\)</span>. Centrality makes <span class="math" data-tex="\(C_B\)">\(C_B\)</span> commute with <span class="math" data-tex="\(f\)">\(f\)</span>, so it has this scalar on all <span class="math" data-tex="\(f^iv_0\)">\(f^iv_0\)</span>. Scaling gives the Killing value. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The form <span class="math" data-tex="\(B\)">\(B\)</span> in (4.1) is the trace form of the standard two-dimensional module, even when the element acts on another module. It is not the trace form of <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span>. In fact, for <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span> the latter is
+<span class="math math-display" data-tex="\[
+B_n=\frac{n(n+1)(n+2)}6 B.
+\tag{4.3}
+\]">\[
+B_n=\frac{n(n+1)(n+2)}6 B.
+\tag{4.3}
+\]</span>
+Here is a direct check. In (2.1),
+<span class="math math-display" data-tex="\[
+\operatorname{tr}(h^2)=\sum_{i=0}^n(n-2i)^2
+=\frac{n(n+1)(n+2)}3.
+\]">\[
+\operatorname{tr}(h^2)=\sum_{i=0}^n(n-2i)^2
+=\frac{n(n+1)(n+2)}3.
+\]</span>
+The sum follows by expansion using
+<span class="math" data-tex="\(\sum i=n(n+1)/2\)">\(\sum i=n(n+1)/2\)</span> and <span class="math" data-tex="\(\sum i^2=n(n+1)(2n+1)/6\)">\(\sum i^2=n(n+1)(2n+1)/6\)</span>, both verified by induction. The products <span class="math" data-tex="\(e^2,f^2,eh,he,fh,hf\)">\(e^2,f^2,eh,he,fh,hf\)</span> have zero diagonal. Trace cyclicity and (1.1) give
+<span class="math" data-tex="\(\operatorname{tr}(h^2)=\operatorname{tr}(h[e,f])=\operatorname{tr}([h,e]f)=2\operatorname{tr}(ef)\)">\(\operatorname{tr}(h^2)=\operatorname{tr}(h[e,f])=\operatorname{tr}([h,e]f)=2\operatorname{tr}(ef)\)</span>.
+These nine pairings prove (4.3). Consequently the Casimir for <span class="math" data-tex="\(B_n\)">\(B_n\)</span> has scalar <span class="math" data-tex="\(3/(n+1)\)">\(3/(n+1)\)</span>, as the faithful trace-form theorem predicts. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, <span class="math" data-tex="\(B_n=0\)">\(B_n=0\)</span> and cannot define a dual-basis Casimir.</p>
+<p id="theorem-4-2"><strong>Theorem 4.2 (Clebsch–Gordan).</strong> For <span class="math" data-tex="\(m,n\ge0\)">\(m,n\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+V(m)\otimes V(n)\simeq
+\bigoplus_{k=0}^{\min(m,n)}V(m+n-2k).
+\tag{4.4}
+\]">\[
+V(m)\otimes V(n)\simeq
+\bigoplus_{k=0}^{\min(m,n)}V(m+n-2k).
+\tag{4.4}
+\]</span></p>
+<p><strong>Proof from weights.</strong> Interchanging tensor factors is an intertwiner, so suppose <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span>. The multiplicity of weight <span class="math" data-tex="\(m+n-2r\)">\(m+n-2r\)</span> in the tensor product is the number of pairs
+<span class="math math-display" data-tex="\[
+0\le a\le m,\quad0\le b\le n,\quad a+b=r.
+\]">\[
+0\le a\le m,\quad0\le b\le n,\quad a+b=r.
+\]</span>
+For <span class="math" data-tex="\(0\le r\le m+n\)">\(0\le r\le m+n\)</span>, it is
+<span class="math math-display" data-tex="\[
+\min(m,r)-\max(0,r-n)+1
+=\min(m,r,m+n-r)+1.
+\tag{4.5}
+\]">\[
+\min(m,r)-\max(0,r-n)+1
+=\min(m,r,m+n-r)+1.
+\tag{4.5}
+\]</span>
+The equality follows in the three ranges <span class="math" data-tex="\(r\le m\)">\(r\le m\)</span>, <span class="math" data-tex="\(m\le r\le n\)">\(m\le r\le n\)</span>, and <span class="math" data-tex="\(r\ge n\)">\(r\ge n\)</span>. Outside this interval the multiplicity is zero.</p>
+<p>In the right side of (4.4), that weight occurs in <span class="math" data-tex="\(V(m+n-2k)\)">\(V(m+n-2k)\)</span> exactly when <span class="math" data-tex="\(k\le r\le m+n-k\)">\(k\le r\le m+n-k\)</span>, with <span class="math" data-tex="\(0\le k\le m\)">\(0\le k\le m\)</span>. Its multiplicity is therefore also (4.5). All other weights have zero multiplicity on both sides. The character and multiplicity result of Section 3 proves the claimed isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>One can also locate every summand explicitly. In the bases (2.1), write the tensor factors' vectors as <span class="math" data-tex="\(v_i,w_j\)">\(v_i,w_j\)</span>. For <span class="math" data-tex="\(0\le k\le\min(m,n)\)">\(0\le k\le\min(m,n)\)</span>, set
+<span class="math math-display" data-tex="\[
+q_k=\sum_{i=0}^k c_i v_i\otimes w_{k-i},\qquad c_0=1,
+\]">\[
+q_k=\sum_{i=0}^k c_i v_i\otimes w_{k-i},\qquad c_0=1,
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+c_{i+1}=-c_i\,
+\frac{(k-i)(n-k+i+1)}{(i+1)(m-i)}
+\quad(0\le i&lt;k).
+\tag{4.6}
+\]">\[
+c_{i+1}=-c_i\,
+\frac{(k-i)(n-k+i+1)}{(i+1)(m-i)}
+\quad(0\le i&lt;k).
+\tag{4.6}
+\]</span>
+All denominators are nonzero. The coefficient of <span class="math" data-tex="\(v_i\otimes w_{k-1-i}\)">\(v_i\otimes w_{k-1-i}\)</span> in <span class="math" data-tex="\(eq_k\)">\(eq_k\)</span> is
+<span class="math math-display" data-tex="\[
+c_{i+1}(i+1)(m-i)+c_i(k-i)(n-k+i+1)=0.
+\]">\[
+c_{i+1}(i+1)(m-i)+c_i(k-i)(n-k+i+1)=0.
+\]</span>
+Thus <span class="math" data-tex="\(q_k\)">\(q_k\)</span> is a nonzero highest-weight vector of weight <span class="math" data-tex="\(m+n-2k\)">\(m+n-2k\)</span>. Section 1 and Theorem 2.1 show that its iterates generate the corresponding simple module. Their Casimir scalars (4.2) are distinct, since these highest weights are distinct nonnegative integers. Polynomial projection in <span class="math" data-tex="\(C_B\)">\(C_B\)</span> makes their sum direct. Its dimension, when <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span>, is
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^m(m+n-2k+1)=(m+1)(n+1),
+\]">\[
+\sum_{k=0}^m(m+n-2k+1)=(m+1)(n+1),
+\]</span>
+so these explicitly constructed submodules exhaust the tensor product.</p>
+<p>For example,
+<span class="math math-display" data-tex="\[
+V(1)\otimes V(1)=V(2)\oplus V(0),\qquad
+V(1)^{\otimes3}=V(3)\oplus2V(1).
+\tag{4.7}
+\]">\[
+V(1)\otimes V(1)=V(2)\oplus V(0),\qquad
+V(1)^{\otimes3}=V(3)\oplus2V(1).
+\tag{4.7}
+\]</span>
+In the first tensor square, <span class="math" data-tex="\(v_0\otimes v_1-v_1\otimes v_0\)">\(v_0\otimes v_1-v_1\otimes v_0\)</span> generates the trivial summand. Its <span class="math" data-tex="\(e,f,h\)">\(e,f,h\)</span> images all vanish. The highest-weight-two vector <span class="math" data-tex="\(v_0\otimes v_0\)">\(v_0\otimes v_0\)</span> generates the other summand. Applying (4.4) to these two summands and the third factor gives the second decomposition. The weight-three, one, minus-one, minus-three dimensions are <span class="math" data-tex="\(1,3,3,1\)">\(1,3,3,1\)</span>, confirming multiplicities <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span> by (3.1).</p>
+<h2 id="section-5"><span id="5-continue-the-sequence-verma-modules"></span>5. Continue the sequence: Verma modules</h2>
+<p>Let <span class="math" data-tex="\(\mathfrak b=\mathbb Ch\oplus\mathbb Ce\)">\(\mathfrak b=\mathbb Ch\oplus\mathbb Ce\)</span>, the upper triangular subalgebra. For <span class="math" data-tex="\(\lambda\in\mathbb C\)">\(\lambda\in\mathbb C\)</span>, let <span class="math" data-tex="\(\mathbb C_\lambda\)">\(\mathbb C_\lambda\)</span> be its one-dimensional module with <span class="math" data-tex="\(h\)">\(h\)</span> acting by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> by zero. Its action respects <span class="math" data-tex="\([h,e]=2e\)">\([h,e]=2e\)</span>.</p>
+<p>Define the <strong>Verma module</strong>
+<span class="math math-display" data-tex="\[
+M(\lambda)=U(\mathfrak{sl}_2)\otimes_{U(\mathfrak b)}\mathbb C_\lambda.
+\tag{5.1}
+\]">\[
+M(\lambda)=U(\mathfrak{sl}_2)\otimes_{U(\mathfrak b)}\mathbb C_\lambda.
+\tag{5.1}
+\]</span>
+Equivalently it is the left module
+<span class="math math-display" data-tex="\[
+U(\mathfrak{sl}_2)\big/\bigl(U(\mathfrak{sl}_2)e+
+U(\mathfrak{sl}_2)(h-\lambda)\bigr).
+\tag{5.2}
+\]">\[
+U(\mathfrak{sl}_2)\big/\bigl(U(\mathfrak{sl}_2)e+
+U(\mathfrak{sl}_2)(h-\lambda)\bigr).
+\tag{5.2}
+\]</span>
+To check the equivalence, the coset <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(1\)">\(1\)</span> in (5.2) satisfies <span class="math" data-tex="\(ev=0\)">\(ev=0\)</span>, <span class="math" data-tex="\(hv=\lambda v\)">\(hv=\lambda v\)</span>. Every element <span class="math" data-tex="\(a\in U(\mathfrak b)\)">\(a\in U(\mathfrak b)\)</span> acts on <span class="math" data-tex="\(v\)">\(v\)</span> by its scalar action on <span class="math" data-tex="\(\mathbb C_\lambda\)">\(\mathbb C_\lambda\)</span>, as follows by induction on products of <span class="math" data-tex="\(e,h\)">\(e,h\)</span>. Therefore <span class="math" data-tex="\(u\otimes c\mapsto cuv\)">\(u\otimes c\mapsto cuv\)</span> is well-defined. Conversely <span class="math" data-tex="\(u\mapsto u\otimes1\)">\(u\mapsto u\otimes1\)</span> kills the displayed left ideal and induces a map from (5.2). The two maps are inverse on generators.</p>
+<p>More generally, if a module <span class="math" data-tex="\(N\)">\(N\)</span> contains a highest-weight vector <span class="math" data-tex="\(w\)">\(w\)</span> of weight <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, there is a unique module map
+<span class="math math-display" data-tex="\[
+M(\lambda)\longrightarrow N,\qquad u\otimes1\longmapsto uw.
+\tag{5.3}
+\]">\[
+M(\lambda)\longrightarrow N,\qquad u\otimes1\longmapsto uw.
+\tag{5.3}
+\]</span>
+The formula is well-defined by the same tensor relation, and uniqueness follows because <span class="math" data-tex="\(v=1\otimes1\)">\(v=1\otimes1\)</span> generates. This is the highest-weight universal property.</p>
+<p id="lemma-5-1"><strong>Lemma 5.1.</strong> The vectors <span class="math" data-tex="\(v_i=f^iv\)">\(v_i=f^iv\)</span>, <span class="math" data-tex="\(i\ge0\)">\(i\ge0\)</span>, are a basis of <span class="math" data-tex="\(M(\lambda)\)">\(M(\lambda)\)</span>, and
+<span class="math math-display" data-tex="\[
+fv_i=v_{i+1},\qquad hv_i=(\lambda-2i)v_i,\qquad
+ev_i=i(\lambda-i+1)v_{i-1},
+\tag{5.4}
+\]">\[
+fv_i=v_{i+1},\qquad hv_i=(\lambda-2i)v_i,\qquad
+ev_i=i(\lambda-i+1)v_{i-1},
+\tag{5.4}
+\]</span>
+with <span class="math" data-tex="\(ev_0=0\)">\(ev_0=0\)</span>.</p>
+<p><strong>Proof.</strong> For spanning, order the letters as <span class="math" data-tex="\(f&lt;h&lt;e\)">\(f&lt;h&lt;e\)</span>. The relations replace every adjacent out-of-order pair by its ordered pair and a word of smaller length:
+<span class="math math-display" data-tex="\[
+ef=fe+h,\qquad eh=he-2e,\qquad hf=fh-2f.
+\]">\[
+ef=fe+h,\qquad eh=he-2e,\qquad hf=fh-2f.
+\]</span>
+Induction first on length and then on the number of inversions shows that <span class="math" data-tex="\(U(\mathfrak{sl}_2)\)">\(U(\mathfrak{sl}_2)\)</span> is spanned by <span class="math" data-tex="\(f^a h^b e^c\)">\(f^a h^b e^c\)</span>. In (5.2), acting on <span class="math" data-tex="\(v\)">\(v\)</span> eliminates <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>; for <span class="math" data-tex="\(c=0\)">\(c=0\)</span> the value is <span class="math" data-tex="\(\lambda^b f^av\)">\(\lambda^b f^av\)</span>. Thus the stated vectors span. No independence of all ordered enveloping monomials was assumed.</p>
+<p>For independence, construct a vector space with independent basis <span class="math" data-tex="\(t_0,t_1,\ldots\)">\(t_0,t_1,\ldots\)</span>, and give it the formulas (5.4). The weight shifts give <span class="math" data-tex="\([h,e]=2e\)">\([h,e]=2e\)</span> and <span class="math" data-tex="\([h,f]=-2f\)">\([h,f]=-2f\)</span>. On <span class="math" data-tex="\(t_i\)">\(t_i\)</span>,
+<span class="math math-display" data-tex="\[
+(ef-fe)t_i=
+\bigl((i+1)(\lambda-i)-i(\lambda-i+1)\bigr)t_i
+=(\lambda-2i)t_i.
+\]">\[
+(ef-fe)t_i=
+\bigl((i+1)(\lambda-i)-i(\lambda-i+1)\bigr)t_i
+=(\lambda-2i)t_i.
+\]</span>
+This includes <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, with the absent negative-index term zero. Hence it is a Lie representation. Its vector <span class="math" data-tex="\(t_0\)">\(t_0\)</span> has the required highest weight, so (5.3) maps <span class="math" data-tex="\(f^iv\)">\(f^iv\)</span> to <span class="math" data-tex="\(t_i\)">\(t_i\)</span>. Independence of these images proves independence in <span class="math" data-tex="\(M(\lambda)\)">\(M(\lambda)\)</span>. Finally (1.3) gives its action formulas. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the particular basis needed here directly. For comparison, the PBW theorem for this ordered basis states that the monomials <span class="math" data-tex="\(f^a h^b e^c\)">\(f^a h^b e^c\)</span>, with <span class="math" data-tex="\(a,b,c\ge0\)">\(a,b,c\ge0\)</span>, form a basis of <span class="math" data-tex="\(U(\mathfrak{sl}_2)\)">\(U(\mathfrak{sl}_2)\)</span>. That stronger assertion is stated here without proof and is not used above. Its general form will be proved in <em>The universal enveloping algebra and the Poincaré–Birkhoff–Witt theorem</em>.</p>
+<p id="theorem-5-2"><strong>Theorem 5.2.</strong> The module <span class="math" data-tex="\(M(\lambda)\)">\(M(\lambda)\)</span> is irreducible exactly when <span class="math" data-tex="\(\lambda\notin\mathbb Z_{\ge0}\)">\(\lambda\notin\mathbb Z_{\ge0}\)</span>. If <span class="math" data-tex="\(\lambda=n\ge0\)">\(\lambda=n\ge0\)</span>, it has exactly one proper nonzero submodule:
+<span class="math math-display" data-tex="\[
+\langle v_{n+1},v_{n+2},\ldots\rangle\simeq M(-n-2).
+\tag{5.5}
+\]">\[
+\langle v_{n+1},v_{n+2},\ldots\rangle\simeq M(-n-2).
+\tag{5.5}
+\]</span>
+Its quotient is <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span>.</p>
+<p><strong>Proof.</strong> Every vector is a finite linear combination of the <span class="math" data-tex="\(v_i\)">\(v_i\)</span>, whose weights <span class="math" data-tex="\(\lambda-2i\)">\(\lambda-2i\)</span> are distinct. Given a submodule <span class="math" data-tex="\(W\)">\(W\)</span>, interpolation in <span class="math" data-tex="\(h\)">\(h\)</span> isolates each nonzero weight component of any vector of <span class="math" data-tex="\(W\)">\(W\)</span>. Thus <span class="math" data-tex="\(W\)">\(W\)</span> is spanned by the <span class="math" data-tex="\(v_i\)">\(v_i\)</span> which it contains.</p>
+<p>If <span class="math" data-tex="\(W\ne0\)">\(W\ne0\)</span>, choose the least <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(v_j\in W\)">\(v_j\in W\)</span>. Applying <span class="math" data-tex="\(f\)">\(f\)</span> gives all vectors with index at least <span class="math" data-tex="\(j\)">\(j\)</span>, and minimality excludes lower ones. Hence
+<span class="math math-display" data-tex="\[
+W=\langle v_j,v_{j+1},\ldots\rangle.
+\]">\[
+W=\langle v_j,v_{j+1},\ldots\rangle.
+\]</span>
+If <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, this is the whole module. If <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>, invariance under <span class="math" data-tex="\(e\)">\(e\)</span> requires
+<span class="math math-display" data-tex="\[
+j(\lambda-j+1)=0,
+\]">\[
+j(\lambda-j+1)=0,
+\]</span>
+since <span class="math" data-tex="\(v_{j-1}\notin W\)">\(v_{j-1}\notin W\)</span>. It follows that <span class="math" data-tex="\(\lambda=j-1=n\ge0\)">\(\lambda=j-1=n\ge0\)</span>, and <span class="math" data-tex="\(j=n+1\)">\(j=n+1\)</span>. Conversely, for this parameter the indicated tail is invariant: <span class="math" data-tex="\(e v_{n+1}=0\)">\(e v_{n+1}=0\)</span>, and all later actions stay in the tail. This proves both irreducibility outside those parameters and uniqueness of the proper nonzero submodule at them.</p>
+<p>Its vector <span class="math" data-tex="\(v_{n+1}\)">\(v_{n+1}\)</span> has highest weight <span class="math" data-tex="\(-n-2\)">\(-n-2\)</span>. Sending the <span class="math" data-tex="\(i\)">\(i\)</span>-th basis vector of <span class="math" data-tex="\(M(-n-2)\)">\(M(-n-2)\)</span> to <span class="math" data-tex="\(v_{n+1+i}\)">\(v_{n+1+i}\)</span> matches <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span>. Its <span class="math" data-tex="\(e\)">\(e\)</span>-coefficient is
+<span class="math math-display" data-tex="\[
+(n+1+i)(-i)=i(-n-2-i+1),
+\]">\[
+(n+1+i)(-i)=i(-n-2-i+1),
+\]</span>
+so the map also intertwines <span class="math" data-tex="\(e\)">\(e\)</span>. It is a basis bijection and proves (5.5). The quotient has basis <span class="math" data-tex="\(v_0,\ldots,v_n\)">\(v_0,\ldots,v_n\)</span> with (2.1), hence is <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, the resulting exact sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow M(-n-2)\longrightarrow M(n)
+\longrightarrow V(n)\longrightarrow0
+\tag{5.6}
+\]">\[
+0\longrightarrow M(-n-2)\longrightarrow M(n)
+\longrightarrow V(n)\longrightarrow0
+\tag{5.6}
+\]</span>
+does not split. The operator <span class="math" data-tex="\(f\)">\(f\)</span> is injective on <span class="math" data-tex="\(M(n)\)">\(M(n)\)</span>, as it shifts its basis. On a nonzero finite-dimensional module it is nilpotent and therefore has a nonzero kernel. An invariant complement in (5.6) would be a copy of <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span> inside <span class="math" data-tex="\(M(n)\)">\(M(n)\)</span>, contradicting those two properties.</p>
+<p>In particular, <span class="math" data-tex="\(M(0)\)">\(M(0)\)</span> has <span class="math" data-tex="\(hv_i=-2iv_i\)">\(hv_i=-2iv_i\)</span> and <span class="math" data-tex="\(ev_i=i(1-i)v_{i-1}\)">\(ev_i=i(1-i)v_{i-1}\)</span>; its unique proper nonzero submodule is <span class="math" data-tex="\(M(-2)\)">\(M(-2)\)</span>, starting at <span class="math" data-tex="\(v_1\)">\(v_1\)</span>, and its quotient is the trivial line. This is the infinite-dimensional nonsplitting example constructed in the preceding lesson.</p>
+<p>Centrality and the cyclic highest-weight vector also give
+<span class="math math-display" data-tex="\[
+C_B|_{M(\lambda)}=\frac{\lambda(\lambda+2)}2\,1.
+\tag{5.7}
+\]">\[
+C_B|_{M(\lambda)}=\frac{\lambda(\lambda+2)}2\,1.
+\tag{5.7}
+\]</span>
+The reflected parameter <span class="math" data-tex="\(-\lambda-2\)">\(-\lambda-2\)</span> has the same scalar. Conversely equality of these quadratic scalars means that two parameters are equal or are related by that reflection, by factoring their difference. This equality does not assert that the Verma modules are isomorphic.</p>
+<h2 id="section-6"><span id="6-exercises-with-complete-solutions"></span>6. Exercises with complete solutions</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Write the matrices of <span class="math" data-tex="\(e,h,f\)">\(e,h,f\)</span> on <span class="math" data-tex="\(V(2)\)">\(V(2)\)</span> in the basis (2.1), and identify this module with the adjoint representation.</p>
+<p><strong>Solution.</strong> Columns are images of basis vectors, so
+<span class="math math-display" data-tex="\[
+e=\begin{pmatrix}0&amp;2&amp;0\\0&amp;0&amp;2\\0&amp;0&amp;0\end{pmatrix},\quad
+h=\begin{pmatrix}2&amp;0&amp;0\\0&amp;0&amp;0\\0&amp;0&amp;-2\end{pmatrix},\quad
+f=\begin{pmatrix}0&amp;0&amp;0\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}.
+\]">\[
+e=\begin{pmatrix}0&amp;2&amp;0\\0&amp;0&amp;2\\0&amp;0&amp;0\end{pmatrix},\quad
+h=\begin{pmatrix}2&amp;0&amp;0\\0&amp;0&amp;0\\0&amp;0&amp;-2\end{pmatrix},\quad
+f=\begin{pmatrix}0&amp;0&amp;0\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}.
+\]</span>
+The independent vectors <span class="math" data-tex="\(e,-h,-2f\)">\(e,-h,-2f\)</span> of the algebra have these same action columns under brackets. For example <span class="math" data-tex="\([e,-h]=2e\)">\([e,-h]=2e\)</span>, <span class="math" data-tex="\([e,-2f]=-2h\)">\([e,-2f]=-2h\)</span>, <span class="math" data-tex="\([f,e]=-h\)">\([f,e]=-h\)</span>, and <span class="math" data-tex="\([f,-h]=-2f\)">\([f,-h]=-2f\)</span>; the <span class="math" data-tex="\(h\)">\(h\)</span>-weights are <span class="math" data-tex="\(2,0,-2\)">\(2,0,-2\)</span>. Sending the ordered module basis to these three vectors is the required intertwining isomorphism.</p>
+<p><strong>Exercise 6.2 (medium).</strong> Prove Clebsch–Gordan from weight multiplicities, including the endpoints and the case of a trivial factor.</p>
+<p><strong>Solution.</strong> Assume <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span> by the tensor flip. Weight <span class="math" data-tex="\(m+n-2r\)">\(m+n-2r\)</span> has multiplicity equal to the number of integers <span class="math" data-tex="\(a\)">\(a\)</span> between <span class="math" data-tex="\(\max(0,r-n)\)">\(\max(0,r-n)\)</span> and <span class="math" data-tex="\(\min(m,r)\)">\(\min(m,r)\)</span>. For <span class="math" data-tex="\(0\le r\le m\)">\(0\le r\le m\)</span> this number is <span class="math" data-tex="\(r+1\)">\(r+1\)</span>; for <span class="math" data-tex="\(m\le r\le n\)">\(m\le r\le n\)</span> it is <span class="math" data-tex="\(m+1\)">\(m+1\)</span>; for <span class="math" data-tex="\(n\le r\le m+n\)">\(n\le r\le m+n\)</span> it is <span class="math" data-tex="\(m+n-r+1\)">\(m+n-r+1\)</span>. No pair exists outside <span class="math" data-tex="\(0\le r\le m+n\)">\(0\le r\le m+n\)</span>.</p>
+<p>In <span class="math" data-tex="\(\bigoplus_{k=0}^m V(m+n-2k)\)">\(\bigoplus_{k=0}^m V(m+n-2k)\)</span>, the same weight appears once for each <span class="math" data-tex="\(k\)">\(k\)</span> satisfying <span class="math" data-tex="\(0\le k\le\min(m,r,m+n-r)\)">\(0\le k\le\min(m,r,m+n-r)\)</span>. This gives exactly those three numbers and zero outside the interval. All weights have the same parity as <span class="math" data-tex="\(m+n\)">\(m+n\)</span>, so none were omitted. Equality of characters and (3.1) prove the isomorphism. If <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, the sum has only <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span>, consistent with tensoring by the trivial line. The endpoint weights correspond to <span class="math" data-tex="\(r=0,m+n\)">\(r=0,m+n\)</span>, each of multiplicity one.</p>
+<p><strong>Exercise 6.3 (medium).</strong> Compute the Casimir eigenvalues on <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span> for the trace form of <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> and for the Killing form. Convert them to the spin normalization.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(B(x,y)=\operatorname{tr}_{\mathbb C^2}(xy)\)">\(B(x,y)=\operatorname{tr}_{\mathbb C^2}(xy)\)</span>, the basis <span class="math" data-tex="\(e,h,f\)">\(e,h,f\)</span> has dual <span class="math" data-tex="\(f,h/2,e\)">\(f,h/2,e\)</span>. Thus <span class="math" data-tex="\(C_B=ef+fe+h^2/2\)">\(C_B=ef+fe+h^2/2\)</span>. On the highest vector, <span class="math" data-tex="\(ef\)">\(ef\)</span> acts by <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(fe\)">\(fe\)</span> by zero and <span class="math" data-tex="\(h^2/2\)">\(h^2/2\)</span> by <span class="math" data-tex="\(n^2/2\)">\(n^2/2\)</span>. Commutation with <span class="math" data-tex="\(f\)">\(f\)</span> gives scalar <span class="math" data-tex="\(n(n+2)/2\)">\(n(n+2)/2\)</span> on the whole module. Since <span class="math" data-tex="\(\kappa=4B\)">\(\kappa=4B\)</span>, <span class="math" data-tex="\(C_\kappa=C_B/4\)">\(C_\kappa=C_B/4\)</span> has scalar <span class="math" data-tex="\(n(n+2)/8\)">\(n(n+2)/8\)</span>. Put <span class="math" data-tex="\(J_3=h/2\)">\(J_3=h/2\)</span>, <span class="math" data-tex="\(J_+=e\)">\(J_+=e\)</span>, <span class="math" data-tex="\(J_-=f\)">\(J_-=f\)</span>. The usual spin element
+<span class="math math-display" data-tex="\[
+J^2=\tfrac12(J_+J_-+J_-J_+)+J_3^2
+=\tfrac12 C_B=2C_\kappa
+\]">\[
+J^2=\tfrac12(J_+J_-+J_-J_+)+J_3^2
+=\tfrac12 C_B=2C_\kappa
+\]</span>
+has scalar <span class="math" data-tex="\(n(n+2)/4=j(j+1)\)">\(n(n+2)/4=j(j+1)\)</span> with <span class="math" data-tex="\(j=n/2\)">\(j=n/2\)</span>. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the first two values are <span class="math" data-tex="\(3/2,3/8\)">\(3/2,3/8\)</span>; for <span class="math" data-tex="\(n=2\)">\(n=2\)</span> they are <span class="math" data-tex="\(4,1\)">\(4,1\)</span>, verifying the standard and adjoint normalizations.</p>
+<p><strong>Exercise 6.4 (hard).</strong> Prove the Verma-module irreducibility and unique-submodule assertion, and determine the quotient when it is reducible.</p>
+<p><strong>Solution.</strong> The normal-ordering and explicit-model argument of Lemma 5.1 gives a basis <span class="math" data-tex="\(v_i=f^iv_0\)">\(v_i=f^iv_0\)</span>, with <span class="math" data-tex="\(hv_i=(\lambda-2i)v_i\)">\(hv_i=(\lambda-2i)v_i\)</span> and <span class="math" data-tex="\(ev_i=i(\lambda-i+1)v_{i-1}\)">\(ev_i=i(\lambda-i+1)v_{i-1}\)</span>. For any nonzero submodule, each vector has finite support, and polynomial interpolation in <span class="math" data-tex="\(h\)">\(h\)</span> puts every one of its weight components in that submodule. Choose its least occupied index <span class="math" data-tex="\(j\)">\(j\)</span>. Since <span class="math" data-tex="\(f\)">\(f\)</span> moves from <span class="math" data-tex="\(v_i\)">\(v_i\)</span> to <span class="math" data-tex="\(v_{i+1}\)">\(v_{i+1}\)</span>, the submodule is exactly the tail beginning at <span class="math" data-tex="\(v_j\)">\(v_j\)</span>. If <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, it is all of <span class="math" data-tex="\(M(\lambda)\)">\(M(\lambda)\)</span>. If <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>, its <span class="math" data-tex="\(e\)">\(e\)</span>-stability forces <span class="math" data-tex="\(j(\lambda-j+1)=0\)">\(j(\lambda-j+1)=0\)</span>, so <span class="math" data-tex="\(\lambda=j-1=n\ge0\)">\(\lambda=j-1=n\ge0\)</span>.</p>
+<p>Conversely the tail beginning at <span class="math" data-tex="\(v_{n+1}\)">\(v_{n+1}\)</span> is invariant, since its first vector is killed by <span class="math" data-tex="\(e\)">\(e\)</span>. It is the only possible proper nonzero submodule by the preceding argument. The map from <span class="math" data-tex="\(M(-n-2)\)">\(M(-n-2)\)</span> taking its <span class="math" data-tex="\(i\)">\(i\)</span>-th basis vector to <span class="math" data-tex="\(v_{n+1+i}\)">\(v_{n+1+i}\)</span> is a basis bijection; its <span class="math" data-tex="\(h\)">\(h\)</span>-weight is <span class="math" data-tex="\(-n-2-2i\)">\(-n-2-2i\)</span> and its <span class="math" data-tex="\(e\)">\(e\)</span>-coefficient is <span class="math" data-tex="\(-i(n+1+i)\)">\(-i(n+1+i)\)</span>, precisely those of <span class="math" data-tex="\(M(-n-2)\)">\(M(-n-2)\)</span>. Hence it is an intertwiner. The quotient has the finite basis through <span class="math" data-tex="\(v_n\)">\(v_n\)</span> and the action (2.1), so is <span class="math" data-tex="\(V(n)\)">\(V(n)\)</span>. No proper nonzero submodule is possible for any other <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, proving the complete assertion.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Weyl's theorem, preservation of Jordan decomposition in finite-dimensional representations, and the enveloping-algebra universal property are the proved imports identified at the start. The Killing-form normalization and centrality of the two Casimir elements come from the preceding lessons.</p>
+<p>Every classification, multiplicity, tensor-product and Verma-module assertion made here is proved. The basis of <span class="math" data-tex="\(M(\lambda)\)">\(M(\lambda)\)</span> is established directly, without importing full PBW. No statement about exponentiating infinite-dimensional modules, unitary representations or topological completions is needed. The group version for <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> belongs to <em>SU(2) and SO(3)</em>; general Verma modules and category <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> belong to the later lessons with those titles.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne]</strong> J. S. Milne, <em>Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field</em>, corrected 2021 text, published 2022, §§20g and 20k. These describe <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> and its torus and root subgroups; the Lie-module proofs are provided here. <a href="https://www.jmilne.org/math/Books/AG.pdf">Author's corrected 2021 edition</a>.</li>
+<li><strong>[Kirillov]</strong> A. Kirillov Jr., <em>An Introduction to Lie Groups and Lie Algebras</em>, §4.8, especially Theorems 4.59–4.60. The weight-reversal operator names in the latter are corrected in (3.2). <a href="https://math.stonybrook.edu/~kirillov/liegroups/liegroups.pdf">Author's notes</a>.</li>
+</ul>
+</article><nav class="lesson-nav"><a href="index.html">Course contents</a><a href="src/RT-LIE-05.md" download>Editable source</a><a href="RT-LIE-04.html">← Previous lesson</a><a href="RT-LIE-06.html">Next lesson →</a></nav></main></body></html>

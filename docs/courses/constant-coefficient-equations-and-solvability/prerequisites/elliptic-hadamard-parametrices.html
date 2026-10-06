@@ -1,0 +1,1314 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Building a local inverse from radial singularities</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="building-a-local-inverse-from-radial-singularities">Building a local inverse from radial singularities</h1>
+
+<p>A local inverse of a differential operator has more structure than its mapping estimates reveal. Near the diagonal, its leading singularity is the Euclidean inverse kernel measured in the metric of the principal symbol. Successive corrections are found by ordinary differential equations along short geodesics. The corrections improve the error by two orders at a time, while the same radial kernels continue to describe the singular part.</p>
+<p>The construction below separates three operations: choosing the radial coordinate, transporting a smooth amplitude, and controlling the distribution that the amplitude multiplies. This separation is useful for systems. A positive scalar principal symbol still determines one Riemannian metric, while the amplitudes are matrices whose multiplication order must be retained.</p>
+<h2 id="AN03-EHP-001"><span id="an03-ehp-001"></span><span id="an03-ehp-001-operators-densities-and-the-meaning-of-a-finite-parametrix"></span>AN03-EHP-001 — Operators, densities, and the meaning of a finite parametrix</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be an open subset of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Consider an operator on <span class="math" data-tex="\(\mathbb C^r\)">\(\mathbb C^r\)</span>-valued functions of the form
+<span class="math math-display" data-tex="\[
+ P=-\sum_{j,k=1}^n\partial_j\bigl(g^{jk}(x)\partial_k\bigr)I_r
+       +\sum_{j=1}^n b^j(x)\partial_j+c(x).                    \tag{H1}
+\]">\[
+ P=-\sum_{j,k=1}^n\partial_j\bigl(g^{jk}(x)\partial_k\bigr)I_r
+       +\sum_{j=1}^n b^j(x)\partial_j+c(x).                    \tag{H1}
+\]</span>
+The matrix <span class="math" data-tex="\(G(x)=(g^{jk}(x))\)">\(G(x)=(g^{jk}(x))\)</span> is real, symmetric, smooth, and positive definite at each point. The lower-order coefficients <span class="math" data-tex="\(b^j,c\)">\(b^j,c\)</span> are smooth complex <span class="math" data-tex="\(r\)">\(r\)</span>-by-<span class="math" data-tex="\(r\)">\(r\)</span> matrices; they act on the left. We write <span class="math" data-tex="\(H(x)=G(x)^{-1}=(g_{jk}(x))\)">\(H(x)=G(x)^{-1}=(g_{jk}(x))\)</span>. Positive definiteness is a local assumption. On a compact coordinate neighborhood it gives uniform bounds, but no uniform bound on all of <span class="math" data-tex="\(X\)">\(X\)</span> is imposed.</p>
+<p>Fix
+<span class="math math-display" data-tex="\[
+                         z\in\mathbb C\setminus[0,\infty).     \tag{H2}
+\]">\[
+                         z\in\mathbb C\setminus[0,\infty).     \tag{H2}
+\]</span>
+The parameter will be suppressed from most kernel notation. Constants may depend on this fixed <span class="math" data-tex="\(z\)">\(z\)</span>. In particular, no estimate uniform as <span class="math" data-tex="\(z\)">\(z\)</span> approaches the excluded ray is asserted. The exclusion includes zero.</p>
+<p>The metric on tangent vectors is <span class="math" data-tex="\(H\)">\(H\)</span>, and its volume density is
+<span class="math math-display" data-tex="\[
+                   d\mu(x)=\rho(x)\,dx,
+ \qquad \rho(x)=(\det G(x))^{-1/2}.                            \tag{H3}
+\]">\[
+                   d\mu(x)=\rho(x)\,dx,
+ \qquad \rho(x)=(\det G(x))^{-1/2}.                            \tag{H3}
+\]</span>
+A kernel <span class="math" data-tex="\(K(x,y):\mathbb C^r\to\mathbb C^r\)">\(K(x,y):\mathbb C^r\to\mathbb C^r\)</span> acts with this density in its second variable. Consequently its identity kernel, written as a distribution in the ordinary coordinate variable <span class="math" data-tex="\(x\)">\(x\)</span>, is
+<span class="math math-display" data-tex="\[
+              \delta_\mu(x,y)I_r
+                  =\rho(y)^{-1}\delta_y(x)I_r.                \tag{H4}
+\]">\[
+              \delta_\mu(x,y)I_r
+                  =\rho(y)^{-1}\delta_y(x)I_r.                \tag{H4}
+\]</span>
+This convention explains the determinant factor in the construction. A change from coordinate volume to Riemannian volume is part of the kernel formula, not a modification of the differential equation.</p>
+<p>For each sufficiently large integer <span class="math" data-tex="\(N\)">\(N\)</span> we shall construct a properly supported kernel <span class="math" data-tex="\(K_N\)">\(K_N\)</span>, smooth away from the diagonal, with
+<span class="math math-display" data-tex="\[
+                    (P_x-z)K_N=\delta_\mu I_r+R_N,             \tag{H5}
+\]">\[
+                    (P_x-z)K_N=\delta_\mu I_r+R_N,             \tag{H5}
+\]</span>
+where <span class="math" data-tex="\(R_N\)">\(R_N\)</span> has at least <span class="math" data-tex="\(2N+1-n\)">\(2N+1-n\)</span> continuous derivatives whenever this number is nonnegative. Thus a prescribed finite error regularity is obtained by choosing <span class="math" data-tex="\(N\)">\(N\)</span>. A fixed finite expansion is distinguished throughout from an expansion completed modulo a smooth kernel.</p>
+<p>The proof uses the following exact entry interfaces.</p>
+<ul>
+<li><strong>DEP-EHP-FOURIER:</strong> the Fourier convention, Schwartz inversion, and tempered-distribution extension in AN03-DEP-001 and AN03-DEP-002 of <em>Prerequisite bridges</em>. The estimates for the particular radial multipliers are proved in this unit.</li>
+<li><strong>DEP-EHP-BASE:</strong> elementary smooth multivariable calculus, finite-dimensional linear algebra, the inverse function theorem, local existence and uniqueness with smooth parameter dependence for a smooth finite-dimensional ordinary differential equation, smooth partitions and cutoffs, and distributional differentiation and multiplication by smooth functions. The matrix transport result below is proved directly by its convergent iterated-integral series. The geometry proof derives the normal-coordinate identities from the geodesic equation.</li>
+<li><strong>DEP-EHP-CALCULUS:</strong> only the exact asymptotic-summation proof in AN03-EUC-002 and the Fourier quantization convention in AN03-EUC-003 of <em>From symbol estimates to operators on every Sobolev scale</em> are used below. The amplitude reduction, distributional action, wavefront noncreation, smooth completion, matrix adjoint construction, and left/right comparison are proved here. No scalar-only elliptic-inversion theorem is used to close the matrix case.</li>
+<li><strong>DEP-EHP-WF-COORD:</strong> the standard coordinate transformation rule for the distribution wavefront set under a smooth diffeomorphism, with covectors transformed by its transposed differential, and its invariance under a smooth invertible frame. This is needed only to phrase the proved coordinatewise statement intrinsically on a manifold. Its exact scope is restated in AN03-EHP-010; it is an explicit other-volume prerequisite, not a propagation or elliptic regularity theorem.</li>
+</ul>
+<p>These interfaces record the proof boundary.</p>
+<h2 id="AN03-EHP-002"><span id="an03-ehp-002"></span><span id="an03-ehp-002-an-estimate-that-turns-frequency-decay-into-an-integrable-kernel"></span>AN03-EHP-002 — An estimate that turns frequency decay into an integrable kernel</h2>
+<p>For a real number <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, suppose <span class="math" data-tex="\(a\in C^\infty(\mathbb R^n)\)">\(a\in C^\infty(\mathbb R^n)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ |\partial_\xi^\beta a(\xi)|\leq C_\beta\langle\xi\rangle^{-m-|\beta|}
+ \quad\text{for every multi-index }\beta.
+ \tag{RK1}
+\]">\[
+ |\partial_\xi^\beta a(\xi)|\leq C_\beta\langle\xi\rangle^{-m-|\beta|}
+ \quad\text{for every multi-index }\beta.
+ \tag{RK1}
+\]</span>
+Use
+<span class="math math-display" data-tex="\[
+ \widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,\qquad
+ \mathcal F^{-1}a(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}a(\xi)\,d\xi
+ \tag{RK2}
+\]">\[
+ \widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,\qquad
+ \mathcal F^{-1}a(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}a(\xi)\,d\xi
+ \tag{RK2}
+\]</span>
+when the integrals exist; elsewhere the second formula means the tempered inverse transform. Put <span class="math" data-tex="\(K=\mathcal F^{-1}a\)">\(K=\mathcal F^{-1}a\)</span>.</p>
+<p>Then <span class="math" data-tex="\(K\)">\(K\)</span> is smooth outside the origin. Whenever <span class="math" data-tex="\(|\alpha|&lt;m\)">\(|\alpha|&lt;m\)</span>, its distributional derivative <span class="math" data-tex="\(\partial^\alpha K\)">\(\partial^\alpha K\)</span> is represented by an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function. For <span class="math" data-tex="\(0&lt;r=|x|\leq1\)">\(0&lt;r=|x|\leq1\)</span>, every derivative, evaluated outside the origin, satisfies
+<span class="math math-display" data-tex="\[
+ |\partial^\alpha K(x)|\leq C_\alpha
+ \begin{cases}
+ r^{m-n-|\alpha|},&amp;n+|\alpha|&gt;m,\\
+ 1+|\log r|,&amp;n+|\alpha|=m,\\
+ 1,&amp;n+|\alpha|&lt;m.
+ \end{cases}
+ \tag{RK3}
+\]">\[
+ |\partial^\alpha K(x)|\leq C_\alpha
+ \begin{cases}
+ r^{m-n-|\alpha|},&amp;n+|\alpha|&gt;m,\\
+ 1+|\log r|,&amp;n+|\alpha|=m,\\
+ 1,&amp;n+|\alpha|&lt;m.
+ \end{cases}
+ \tag{RK3}
+\]</span>
+All these derivatives decrease faster than any fixed inverse power of <span class="math" data-tex="\(|x|\)">\(|x|\)</span> for <span class="math" data-tex="\(|x|\geq1\)">\(|x|\geq1\)</span>. In addition,
+<span class="math math-display" data-tex="\[
+ k\in\mathbb N_0,\quad k&lt;m-n
+ \quad\Longrightarrow\quad K\in C^k(\mathbb R^n).
+ \tag{RK4}
+\]">\[
+ k\in\mathbb N_0,\quad k&lt;m-n
+ \quad\Longrightarrow\quad K\in C^k(\mathbb R^n).
+ \tag{RK4}
+\]</span>
+The constants can be chosen uniformly for families having uniform bounds in (RK1).</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(\eta\in C_c^\infty\)">\(\eta\in C_c^\infty\)</span> equal to one on the unit ball, supported in the ball of radius two, and set
+<span class="math math-display" data-tex="\[
+ \theta(\xi)=\eta(\xi/2)-\eta(\xi),\qquad
+ a_{\mathrm{low}}=\eta a,\qquad
+ a_j(\xi)=\theta(2^{-j}\xi)a(\xi),\quad j\geq0.
+\]">\[
+ \theta(\xi)=\eta(\xi/2)-\eta(\xi),\qquad
+ a_{\mathrm{low}}=\eta a,\qquad
+ a_j(\xi)=\theta(2^{-j}\xi)a(\xi),\quad j\geq0.
+\]</span>
+Telescoping gives <span class="math" data-tex="\(a=a_{\mathrm{low}}+\sum_{j\geq0}a_j\)">\(a=a_{\mathrm{low}}+\sum_{j\geq0}a_j\)</span> in tempered distributions. Indeed the partial sum equals <span class="math" data-tex="\(\eta(2^{-J-1}\xi)a(\xi)\)">\(\eta(2^{-J-1}\xi)a(\xi)\)</span>, whose pairing with any Schwartz function converges by dominated convergence. The functions
+<span class="math math-display" data-tex="\[
+ b_j(\zeta)=2^{jm}a_j(2^j\zeta)
+\]">\[
+ b_j(\zeta)=2^{jm}a_j(2^j\zeta)
+\]</span>
+have support in one fixed annulus and all their derivatives are bounded independently of <span class="math" data-tex="\(j\)">\(j\)</span>. Differentiating the inverse transform, scaling <span class="math" data-tex="\(\xi=2^j\zeta\)">\(\xi=2^j\zeta\)</span>, and integrating by parts in <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> give, for every integer <span class="math" data-tex="\(A\geq0\)">\(A\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+ |\partial^\alpha K_j(x)|
+ \leq C_{\alpha,A}2^{j(n-m+|\alpha|)}
+                   (1+2^j|x|)^{-A},\qquad K_j=\mathcal F^{-1}a_j.
+ \tag{RK5}
+\]">\[
+ |\partial^\alpha K_j(x)|
+ \leq C_{\alpha,A}2^{j(n-m+|\alpha|)}
+                   (1+2^j|x|)^{-A},\qquad K_j=\mathcal F^{-1}a_j.
+ \tag{RK5}
+\]</span>
+For completeness, repeated application of <span class="math" data-tex="\(1-\Delta_\zeta\)">\(1-\Delta_\zeta\)</span> to
+<span class="math" data-tex="\((i\zeta)^\alpha b_j(\zeta)\)">\((i\zeta)^\alpha b_j(\zeta)\)</span> has a uniformly bounded integral, while its action on the exponential multiplies that exponential by <span class="math" data-tex="\(1+|2^jx|^2\)">\(1+|2^jx|^2\)</span>. This proves (RK5) for even powers, and increasing that power gives every stated <span class="math" data-tex="\(A\)">\(A\)</span>. The low-frequency kernel is Schwartz by the same integration by parts.</p>
+<p>Integration of (RK5), with <span class="math" data-tex="\(A&gt;n\)">\(A&gt;n\)</span>, gives
+<span class="math math-display" data-tex="\[
+ \|\partial^\alpha K_j\|_{L^1}
+ \leq C_\alpha2^{-j(m-|\alpha|)}.
+ \tag{RK6}
+\]">\[
+ \|\partial^\alpha K_j\|_{L^1}
+ \leq C_\alpha2^{-j(m-|\alpha|)}.
+ \tag{RK6}
+\]</span>
+For <span class="math" data-tex="\(|\alpha|&lt;m\)">\(|\alpha|&lt;m\)</span>, the derivatives therefore sum in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Their distributional limit is <span class="math" data-tex="\(\partial^\alpha K\)">\(\partial^\alpha K\)</span>, by the already established tempered convergence. Thus the assertion concerns the distributional derivative itself: no distribution supported at the origin has been discarded.</p>
+<p>On a compact set not containing zero, choose <span class="math" data-tex="\(A&gt;n-m+|\alpha|\)">\(A&gt;n-m+|\alpha|\)</span> in (RK5). The derivative series converges uniformly, for every <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, which proves smoothness there. If <span class="math" data-tex="\(|x|\geq1\)">\(|x|\geq1\)</span>, the same choice with arbitrarily large <span class="math" data-tex="\(A\)">\(A\)</span> proves the assertion at infinity. If <span class="math" data-tex="\(0&lt;r\leq1\)">\(0&lt;r\leq1\)</span>, split the sum at the integer <span class="math" data-tex="\(J\)">\(J\)</span> satisfying <span class="math" data-tex="\(2^J\leq r^{-1}&lt;2^{J+1}\)">\(2^J\leq r^{-1}&lt;2^{J+1}\)</span>. For <span class="math" data-tex="\(j\leq J\)">\(j\leq J\)</span>, sum <span class="math" data-tex="\(2^{j(n-m+|\alpha|)}\)">\(2^{j(n-m+|\alpha|)}\)</span>. This is a geometric sum, a sum of <span class="math" data-tex="\(J+1\)">\(J+1\)</span> ones, or a bounded sum according as its exponent is positive, zero, or negative. For <span class="math" data-tex="\(j&gt;J\)">\(j&gt;J\)</span>, take <span class="math" data-tex="\(A&gt;\max(0,n-m+|\alpha|)\)">\(A&gt;\max(0,n-m+|\alpha|)\)</span>; the sum is bounded by
+<span class="math" data-tex="\(C r^{-A}2^{J(n-m+|\alpha|-A)}\)">\(C r^{-A}2^{J(n-m+|\alpha|-A)}\)</span>.
+These estimates give (RK3). Finally, if <span class="math" data-tex="\(n-m+k&lt;0\)">\(n-m+k&lt;0\)</span>, the bound (RK5) with <span class="math" data-tex="\(A=0\)">\(A=0\)</span> is summable uniformly in <span class="math" data-tex="\(x\)">\(x\)</span> for every <span class="math" data-tex="\(|\alpha|\leq k\)">\(|\alpha|\leq k\)</span>. Uniform convergence of these derivative series proves (RK4). This also proves the assertion about parameter-uniform constants. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The strict inequalities in the two conclusions are essential. For example, the critical second derivatives of the inverse of <span class="math" data-tex="\(|\xi|^2-z\)">\(|\xi|^2-z\)</span> will have a Dirac contribution. Absolute integration of its undifferentiated multiplier is not needed for the construction.</p>
+<p><strong>RK02 — The family and its exact algebra</strong></p>
+<p>Fix <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> and <span class="math" data-tex="\(z\in\mathbb C\setminus[0,\infty)\)">\(z\in\mathbb C\setminus[0,\infty)\)</span>. For every integer <span class="math" data-tex="\(\nu\geq0\)">\(\nu\geq0\)</span>, define
+<span class="math math-display" data-tex="\[
+ a_\nu(\xi,z)=\nu!(|\xi|^2-z)^{-\nu-1},\qquad
+ F_\nu(\,\cdot\,,z)=\mathcal F^{-1}a_\nu(\,\cdot\,,z).
+ \tag{RK7}
+\]">\[
+ a_\nu(\xi,z)=\nu!(|\xi|^2-z)^{-\nu-1},\qquad
+ F_\nu(\,\cdot\,,z)=\mathcal F^{-1}a_\nu(\,\cdot\,,z).
+ \tag{RK7}
+\]</span>
+More explicitly, for <span class="math" data-tex="\(\phi\in\mathcal S\)">\(\phi\in\mathcal S\)</span>,
+<span class="math math-display" data-tex="\[
+ \langle F_\nu,\phi\rangle
+ =(2\pi)^{-n}\int a_\nu(\xi,z)\widehat\phi(-\xi)\,d\xi.
+ \tag{RK8}
+\]">\[
+ \langle F_\nu,\phi\rangle
+ =(2\pi)^{-n}\int a_\nu(\xi,z)\widehat\phi(-\xi)\,d\xi.
+ \tag{RK8}
+\]</span>
+This integral is absolutely convergent. It defines a continuous functional on the Schwartz space, since <span class="math" data-tex="\(a_\nu\)">\(a_\nu\)</span> is bounded and a Schwartz seminorm controls the integral of <span class="math" data-tex="\(|\widehat\phi|\)">\(|\widehat\phi|\)</span>.</p>
+<p>For each compact <span class="math" data-tex="\(Q\subset\mathbb C\setminus[0,\infty)\)">\(Q\subset\mathbb C\setminus[0,\infty)\)</span>, there is <span class="math" data-tex="\(c_Q&gt;0\)">\(c_Q&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+ |t-z|\geq c_Q(1+t)\qquad(t\geq0,\ z\in Q).
+ \tag{RK9}
+\]">\[
+ |t-z|\geq c_Q(1+t)\qquad(t\geq0,\ z\in Q).
+ \tag{RK9}
+\]</span>
+To see this, first take <span class="math" data-tex="\(t\)">\(t\)</span> larger than twice the maximum of <span class="math" data-tex="\(|z|\)">\(|z|\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span>, and then minimize the positive continuous quotient <span class="math" data-tex="\(|t-z|/(1+t)\)">\(|t-z|/(1+t)\)</span> on the remaining compact set. Repeated differentiation in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, using (RK9), proves (RK1) for <span class="math" data-tex="\(a_\nu\)">\(a_\nu\)</span> with <span class="math" data-tex="\(m=2\nu+2\)">\(m=2\nu+2\)</span>. Consequently <span class="math" data-tex="\(F_\nu\)">\(F_\nu\)</span> is smooth outside zero and
+<span class="math math-display" data-tex="\[
+ |\alpha|&lt;2\nu+2\quad\Longrightarrow\quad
+ \partial^\alpha F_\nu\in L^1(\mathbb R^n).
+ \tag{RK10}
+\]">\[
+ |\alpha|&lt;2\nu+2\quad\Longrightarrow\quad
+ \partial^\alpha F_\nu\in L^1(\mathbb R^n).
+ \tag{RK10}
+\]</span>
+In particular, all derivatives through order two are locally integrable when <span class="math" data-tex="\(\nu\geq1\)">\(\nu\geq1\)</span>, and the derivatives through order one are locally integrable when <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>. Also
+<span class="math math-display" data-tex="\[
+ 0\leq k&lt;2\nu+2-n\quad\Longrightarrow\quad F_\nu\in C^k.
+ \tag{RK11}
+\]">\[
+ 0\leq k&lt;2\nu+2-n\quad\Longrightarrow\quad F_\nu\in C^k.
+ \tag{RK11}
+\]</span>
+For an integer <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(2N+1-n\geq0\)">\(2N+1-n\geq0\)</span>, this gives the precise useful endpoint <span class="math" data-tex="\(F_N\in C^{2N+1-n}\)">\(F_N\in C^{2N+1-n}\)</span>. It does not assert differentiability of the next order.</p>
+<p>Orthogonal changes of variable leave <span class="math" data-tex="\(a_\nu\)">\(a_\nu\)</span> invariant. Applying such changes in (RK8) proves that <span class="math" data-tex="\(F_\nu\)">\(F_\nu\)</span> is rotationally invariant as a distribution; its smooth representative on the punctured space therefore depends only on <span class="math" data-tex="\(|x|\)">\(|x|\)</span>. We write that representative as <span class="math" data-tex="\(f_\nu(r,z)\)">\(f_\nu(r,z)\)</span>, and occasionally abbreviate <span class="math" data-tex="\(F_\nu(x,z)\)">\(F_\nu(x,z)\)</span> by <span class="math" data-tex="\(F_\nu(r,z)\)">\(F_\nu(r,z)\)</span>. These are radial distributions on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>; no one-dimensional pullback at <span class="math" data-tex="\(r=0\)">\(r=0\)</span> is implicit in the notation.</p>
+<p>The following identities hold in <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>:
+<span class="math math-display" data-tex="\[
+ (-\Delta-z)F_0=\delta_0,\qquad
+ (-\Delta-z)F_\nu=\nu F_{\nu-1}\quad(\nu\geq1),
+ \tag{RK12}
+\]">\[
+ (-\Delta-z)F_0=\delta_0,\qquad
+ (-\Delta-z)F_\nu=\nu F_{\nu-1}\quad(\nu\geq1),
+ \tag{RK12}
+\]</span>
+<span class="math math-display" data-tex="\[
+ -2\partial_{x_j}F_\nu=x_jF_{\nu-1}\quad(\nu\geq1).
+ \tag{RK13}
+\]">\[
+ -2\partial_{x_j}F_\nu=x_jF_{\nu-1}\quad(\nu\geq1).
+ \tag{RK13}
+\]</span>
+Indeed multiplication by <span class="math" data-tex="\(|\xi|^2-z\)">\(|\xi|^2-z\)</span> sends <span class="math" data-tex="\(a_0\)">\(a_0\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(a_\nu\)">\(a_\nu\)</span> to <span class="math" data-tex="\(\nu a_{\nu-1}\)">\(\nu a_{\nu-1}\)</span>. With (RK2), the inverse transform of <span class="math" data-tex="\(1\)">\(1\)</span> is exactly <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>. For the derivative identity, the Fourier transforms of its two sides are respectively
+<span class="math math-display" data-tex="\[
+ -2i\xi_j\nu!(|\xi|^2-z)^{-\nu-1},\qquad
+ i\partial_{\xi_j}\big((\nu-1)!(|\xi|^2-z)^{-\nu}\big),
+\]">\[
+ -2i\xi_j\nu!(|\xi|^2-z)^{-\nu-1},\qquad
+ i\partial_{\xi_j}\big((\nu-1)!(|\xi|^2-z)^{-\nu}\big),
+\]</span>
+and these coincide. The index restriction <span class="math" data-tex="\(\nu\geq1\)">\(\nu\geq1\)</span> is part of the assertion. There is no <span class="math" data-tex="\(F_{-1}\)">\(F_{-1}\)</span> in this family.</p>
+<p>Differentiating (RK8) in <span class="math" data-tex="\(z\)">\(z\)</span>, justified locally by (RK9) and the Schwartz decay, also gives
+<span class="math math-display" data-tex="\[
+ \partial_zF_\nu=F_{\nu+1},\qquad F_\nu=\partial_z^\nu F_0.
+ \tag{RK14}
+\]">\[
+ \partial_zF_\nu=F_{\nu+1},\qquad F_\nu=\partial_z^\nu F_0.
+ \tag{RK14}
+\]</span>
+The same domination proves holomorphic dependence as a tempered distribution; on the punctured space the differentiated dyadic estimates give locally uniform dependence with all <span class="math" data-tex="\(x\)">\(x\)</span>-derivatives. These facts do not extend the asserted spectral domain to the excluded ray.</p>
+<p><strong>RK03 — What occurs at the critical Hessian</strong></p>
+<p>Let <span class="math" data-tex="\(\sigma_{n-1}\)">\(\sigma_{n-1}\)</span> denote the area of the unit sphere in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Define the tempered, locally integrable distribution
+<span class="math math-display" data-tex="\[
+ E_n(x)=
+ \begin{cases}
+ \displaystyle\frac{|x|^{2-n}}{(n-2)\sigma_{n-1}},&amp; n\geq3,\\[4pt]
+ \displaystyle-\frac{\log|x|}{2\pi},&amp; n=2,\\[4pt]
+ \displaystyle-\frac{|x|}{2},&amp; n=1.
+ \end{cases}
+ \tag{RK15}
+\]">\[
+ E_n(x)=
+ \begin{cases}
+ \displaystyle\frac{|x|^{2-n}}{(n-2)\sigma_{n-1}},&amp; n\geq3,\\[4pt]
+ \displaystyle-\frac{\log|x|}{2\pi},&amp; n=2,\\[4pt]
+ \displaystyle-\frac{|x|}{2},&amp; n=1.
+ \end{cases}
+ \tag{RK15}
+\]</span>
+Then <span class="math" data-tex="\(-\Delta E_n=\delta_0\)">\(-\Delta E_n=\delta_0\)</span>. Here and below the additive constant in the logarithmic kernel has been fixed by (RK15); another constant would change only a smooth term.</p>
+<p>For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> and <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+ \partial_jE_n(x)=-\frac{x_j}{\sigma_{n-1}|x|^n},\qquad
+ H_{jk}(x)=\partial_k\partial_jE_n(x)
+ =\frac{n x_jx_k-\delta_{jk}|x|^2}
+        {\sigma_{n-1}|x|^{n+2}}.
+ \tag{RK16}
+\]">\[
+ \partial_jE_n(x)=-\frac{x_j}{\sigma_{n-1}|x|^n},\qquad
+ H_{jk}(x)=\partial_k\partial_jE_n(x)
+ =\frac{n x_jx_k-\delta_{jk}|x|^2}
+        {\sigma_{n-1}|x|^{n+2}}.
+ \tag{RK16}
+\]</span>
+Both <span class="math" data-tex="\(E_n\)">\(E_n\)</span> and its displayed first derivatives are locally integrable. For the derivative identity itself, excise a ball of radius <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, integrate by parts, and let <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> decrease to zero. The possible first-derivative boundary integral is bounded by
+<span class="math" data-tex="\(C\epsilon\)">\(C\epsilon\)</span> for <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, and by <span class="math" data-tex="\(C\epsilon|\log\epsilon|\)">\(C\epsilon|\log\epsilon|\)</span> for <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, hence vanishes.</p>
+<p>The angular mean of <span class="math" data-tex="\(H_{jk}\)">\(H_{jk}\)</span> is zero:
+<span class="math math-display" data-tex="\[
+ \int_{S^{n-1}}(n\omega_j\omega_k-\delta_{jk})\,d\omega=0.
+ \tag{RK17}
+\]">\[
+ \int_{S^{n-1}}(n\omega_j\omega_k-\delta_{jk})\,d\omega=0.
+ \tag{RK17}
+\]</span>
+Reflection gives zero for the off-diagonal integrals; coordinate symmetry and
+<span class="math" data-tex="\(\sum_j\omega_j^2=1\)">\(\sum_j\omega_j^2=1\)</span> give
+<span class="math" data-tex="\(\int\omega_j^2=\sigma_{n-1}/n\)">\(\int\omega_j^2=\sigma_{n-1}/n\)</span>.
+It follows that
+<span class="math math-display" data-tex="\[
+ \langle\operatorname{pv}H_{jk},\phi\rangle
+ =\lim_{\epsilon\downarrow0}
+   \int_{|x|&gt;\epsilon}H_{jk}(x)\phi(x)\,dx
+ \tag{RK18}
+\]">\[
+ \langle\operatorname{pv}H_{jk},\phi\rangle
+ =\lim_{\epsilon\downarrow0}
+   \int_{|x|&gt;\epsilon}H_{jk}(x)\phi(x)\,dx
+ \tag{RK18}
+\]</span>
+exists. In a fixed small ball subtract <span class="math" data-tex="\(\phi(0)\)">\(\phi(0)\)</span>; the remaining integrand has absolute radial bound <span class="math" data-tex="\(C\,dr\)">\(C\,dr\)</span>, because <span class="math" data-tex="\(\phi(x)-\phi(0)=O(|x|)\)">\(\phi(x)-\phi(0)=O(|x|)\)</span>. The subtracted constant integrates to zero by (RK17).</p>
+<p>A second integration by parts gives the full distributional formula
+<span class="math math-display" data-tex="\[
+ \partial_j\partial_kE_n
+ =\operatorname{pv}H_{jk}-\frac{\delta_{jk}}{n}\delta_0,
+ \qquad n\geq2.
+ \tag{RK19}
+\]">\[
+ \partial_j\partial_kE_n
+ =\operatorname{pv}H_{jk}-\frac{\delta_{jk}}{n}\delta_0,
+ \qquad n\geq2.
+ \tag{RK19}
+\]</span>
+Here is the boundary sign. Put <span class="math" data-tex="\(v_j=-x_j/(\sigma_{n-1}|x|^n)\)">\(v_j=-x_j/(\sigma_{n-1}|x|^n)\)</span> and integrate
+<span class="math" data-tex="\(-v_j\partial_k\phi\)">\(-v_j\partial_k\phi\)</span> over the punctured domain. Its inward spherical boundary has outward normal <span class="math" data-tex="\(-\omega\)">\(-\omega\)</span>. The boundary term to subtract is
+<span class="math math-display" data-tex="\[
+ \int_{|x|=\epsilon}v_j(-\omega_k)\phi\,dS
+ =\frac{1}{\sigma_{n-1}}
+   \int_{S^{n-1}}\omega_j\omega_k\phi(\epsilon\omega)\,d\omega
+ \longrightarrow \frac{\delta_{jk}}n\phi(0).
+\]">\[
+ \int_{|x|=\epsilon}v_j(-\omega_k)\phi\,dS
+ =\frac{1}{\sigma_{n-1}}
+   \int_{S^{n-1}}\omega_j\omega_k\phi(\epsilon\omega)\,d\omega
+ \longrightarrow \frac{\delta_{jk}}n\phi(0).
+\]</span>
+The interior term is the truncated integral of <span class="math" data-tex="\(H_{jk}\phi\)">\(H_{jk}\phi\)</span>, proving (RK19). Summing in <span class="math" data-tex="\(j=k\)">\(j=k\)</span>, its principal-value terms cancel pointwise and its Dirac terms sum to <span class="math" data-tex="\(-\delta_0\)">\(-\delta_0\)</span>. This proves the stated fundamental-solution normalization as well. In dimension one, direct integration on the two half-lines gives
+<span class="math math-display" data-tex="\[
+ E_1&#x27;=-\tfrac12\operatorname{sgn}x,\qquad E_1&#x27;&#x27;=-\delta_0.
+ \tag{RK20}
+\]">\[
+ E_1&#x27;=-\tfrac12\operatorname{sgn}x,\qquad E_1&#x27;&#x27;=-\delta_0.
+ \tag{RK20}
+\]</span></p>
+<p>Both terms on the right of (RK19) are homogeneous distributions of degree <span class="math" data-tex="\(-n\)">\(-n\)</span>. More explicitly, they satisfy <span class="math" data-tex="\(T(\lambda\,\cdot)=\lambda^{-n}T\)">\(T(\lambda\,\cdot)=\lambda^{-n}T\)</span> for every <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. For the principal value this follows by the substitution <span class="math" data-tex="\(y=\lambda x\)">\(y=\lambda x\)</span> in its excised integrals; (RK17) prevents a logarithmic defect. The logarithmic function <span class="math" data-tex="\(E_2\)">\(E_2\)</span> itself is not homogeneous, but its additive scaling constant disappears after differentiation. In dimension one, (RK20) is homogeneous of degree <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p>We now prove that these are exactly the exceptional terms needed for <span class="math" data-tex="\(F_0\)">\(F_0\)</span>:
+<span class="math math-display" data-tex="\[
+ F_0=E_n+R_z,\qquad R_z\in W_{\mathrm{loc}}^{2,1}(\mathbb R^n).
+ \tag{RK21}
+\]">\[
+ F_0=E_n+R_z,\qquad R_z\in W_{\mathrm{loc}}^{2,1}(\mathbb R^n).
+ \tag{RK21}
+\]</span>
+This comparison must not treat <span class="math" data-tex="\(|\xi|^{-2}\)">\(|\xi|^{-2}\)</span> as a locally integrable multiplier near zero in dimensions one or two. Instead, Fourier transformation of the already proved equation for <span class="math" data-tex="\(E_n\)">\(E_n\)</span> gives
+<span class="math" data-tex="\(|\xi|^2\widehat E_n=1\)">\(|\xi|^2\widehat E_n=1\)</span>. Hence on <span class="math" data-tex="\(\mathbb R^n\setminus\{0\}\)">\(\mathbb R^n\setminus\{0\}\)</span> its Fourier transform equals the smooth function <span class="math" data-tex="\(|\xi|^{-2}\)">\(|\xi|^{-2}\)</span>. With the cutoff <span class="math" data-tex="\(\eta\)">\(\eta\)</span> from RK01, put
+<span class="math math-display" data-tex="\[
+ r_z(\xi)=\frac1{|\xi|^2-z}-\frac{1-\eta(\xi)}{|\xi|^2}.
+ \tag{RK22}
+\]">\[
+ r_z(\xi)=\frac1{|\xi|^2-z}-\frac{1-\eta(\xi)}{|\xi|^2}.
+ \tag{RK22}
+\]</span>
+This is smooth everywhere. Outside a compact set it equals
+<span class="math math-display" data-tex="\[
+ \frac{z}{|\xi|^2(|\xi|^2-z)},
+\]">\[
+ \frac{z}{|\xi|^2(|\xi|^2-z)},
+\]</span>
+so it satisfies (RK1) with <span class="math" data-tex="\(m=4\)">\(m=4\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+ R_z=\mathcal F^{-1}r_z-\mathcal F^{-1}(\eta\widehat E_n).
+ \tag{RK23}
+\]">\[
+ R_z=\mathcal F^{-1}r_z-\mathcal F^{-1}(\eta\widehat E_n).
+ \tag{RK23}
+\]</span>
+The first term has its derivatives through order two in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by (RK10)'s dyadic argument. The second term is smooth: the inverse transform of any compactly supported distribution <span class="math" data-tex="\(T\)">\(T\)</span> is the function
+<span class="math" data-tex="\((2\pi)^{-n}\langle T(\xi),\chi(\xi)e^{ix\cdot\xi}\rangle\)">\((2\pi)^{-n}\langle T(\xi),\chi(\xi)e^{ix\cdot\xi}\rangle\)</span>,
+where <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near its support. Every <span class="math" data-tex="\(x\)">\(x\)</span>-derivative may be taken inside this pairing, using the finite-order estimate defining a compactly supported distribution. Pairing with a Schwartz test function and interchanging its absolutely convergent seminorm-bounded integral verifies the inverse-transform assertion. Thus (RK23) proves (RK21) without a low-frequency division at zero.</p>
+<p>Combining (RK19)–(RK23), for <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>,
+<span class="math math-display" data-tex="\[
+ \partial_j\partial_kF_0
+ =\operatorname{pv}H_{jk}-\frac{\delta_{jk}}n\delta_0
+  +\partial_j\partial_kR_z,\qquad
+ \partial_j\partial_kR_z\in L^1_{\mathrm{loc}}.
+ \tag{RK24}
+\]">\[
+ \partial_j\partial_kF_0
+ =\operatorname{pv}H_{jk}-\frac{\delta_{jk}}n\delta_0
+  +\partial_j\partial_kR_z,\qquad
+ \partial_j\partial_kR_z\in L^1_{\mathrm{loc}}.
+ \tag{RK24}
+\]</span>
+For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(F_0&#x27;&#x27;=-\delta_0+R_z&#x27;&#x27;\)">\(F_0&#x27;&#x27;=-\delta_0+R_z&#x27;&#x27;\)</span>.
+The singular homogeneous term is independent of <span class="math" data-tex="\(z\)">\(z\)</span>. It cannot in general be absorbed into an ordinary locally integrable function.</p>
+<p>A useful consequence for later variable coefficients is the following. If <span class="math" data-tex="\(q\)">\(q\)</span> is smooth and <span class="math" data-tex="\(q(x)=O(|x|^2)\)">\(q(x)=O(|x|^2)\)</span> near zero, then
+<span class="math math-display" data-tex="\[
+ q\,\partial_j\partial_kE_n=qH_{jk}
+ \quad(n\geq2)
+ \tag{RK25}
+\]">\[
+ q\,\partial_j\partial_kE_n=qH_{jk}
+ \quad(n\geq2)
+ \tag{RK25}
+\]</span>
+as distributions, and the right side is locally integrable, with bound
+<span class="math" data-tex="\(C|x|^{2-n}\)">\(C|x|^{2-n}\)</span>. Indeed <span class="math" data-tex="\(q\delta_0=0\)">\(q\delta_0=0\)</span>, and the integral in (RK18) becomes absolutely convergent after multiplication by <span class="math" data-tex="\(q\)">\(q\)</span>. In dimension one <span class="math" data-tex="\(qE_1&#x27;&#x27;=0\)">\(qE_1&#x27;&#x27;=0\)</span>. A derivative of <span class="math" data-tex="\(q\)">\(q\)</span> times a first derivative of <span class="math" data-tex="\(E_n\)">\(E_n\)</span> is likewise locally integrable. Together with (RK21), this gives the precise elementary interface for removing an apparent singular defect when metric coefficients differ by <span class="math" data-tex="\(O(|x|^2)\)">\(O(|x|^2)\)</span>.</p>
+<p><strong>RK04 — Low-dimensional models, including the logarithmic endpoint</strong></p>
+<p>In dimension one choose the square root <span class="math" data-tex="\(\kappa=\sqrt{-z}\)">\(\kappa=\sqrt{-z}\)</span> with
+<span class="math" data-tex="\(\operatorname{Re}\kappa&gt;0\)">\(\operatorname{Re}\kappa&gt;0\)</span>, which exists uniquely on the stated spectral domain. Then
+<span class="math math-display" data-tex="\[
+ F_0(x,z)=\frac{e^{-\kappa|x|}}{2\kappa},\qquad
+ F_0&#x27;&#x27;=\frac{\kappa}{2}e^{-\kappa|x|}-\delta_0.
+ \tag{RK26}
+\]">\[
+ F_0(x,z)=\frac{e^{-\kappa|x|}}{2\kappa},\qquad
+ F_0&#x27;&#x27;=\frac{\kappa}{2}e^{-\kappa|x|}-\delta_0.
+ \tag{RK26}
+\]</span>
+To verify this, differentiate separately on the half-lines and use the jump
+<span class="math" data-tex="\(F_0&#x27;(0+)-F_0&#x27;(0-)=-1\)">\(F_0&#x27;(0+)-F_0&#x27;(0-)=-1\)</span>. Thus
+<span class="math" data-tex="\((-\partial_x^2+\kappa^2)F_0=\delta_0\)">\((-\partial_x^2+\kappa^2)F_0=\delta_0\)</span>.
+The function is integrable and hence tempered. Uniqueness of a tempered solution follows by Fourier transformation: multiplication by the nowhere-vanishing smooth function <span class="math" data-tex="\(\xi^2-z\)">\(\xi^2-z\)</span> is injective on <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>, because its smooth inverse and all its derivatives have polynomial bounds and therefore multiply the Schwartz space continuously. This identifies the formula with (RK7), not merely with some fundamental solution.</p>
+<p>Writing <span class="math" data-tex="\(r=|x|\)">\(r=|x|\)</span>, (RK13) becomes
+<span class="math math-display" data-tex="\[
+ f_\nu&#x27;(r)=-\tfrac r2 f_{\nu-1}(r),\qquad r&gt;0,\quad \nu\geq1.
+ \tag{RK27}
+\]">\[
+ f_\nu&#x27;(r)=-\tfrac r2 f_{\nu-1}(r),\qquad r&gt;0,\quad \nu\geq1.
+ \tag{RK27}
+\]</span>
+In dimension one each <span class="math" data-tex="\(f_\nu\)">\(f_\nu\)</span> is continuous at zero, so integration from zero is legitimate. Formula (RK26) and repeated use of (RK27) show
+<span class="math math-display" data-tex="\[
+ f_\nu(r)=p_\nu(r^2)
+ +\frac{(-1)^{\nu+1}\nu!}{2(2\nu+1)!}r^{2\nu+1}
+ +O(r^{2\nu+2}),
+ \tag{RK28}
+\]">\[
+ f_\nu(r)=p_\nu(r^2)
+ +\frac{(-1)^{\nu+1}\nu!}{2(2\nu+1)!}r^{2\nu+1}
+ +O(r^{2\nu+2}),
+ \tag{RK28}
+\]</span>
+where <span class="math" data-tex="\(p_\nu\)">\(p_\nu\)</span> is a polynomial of degree at most <span class="math" data-tex="\(\nu\)">\(\nu\)</span>; its coefficients depend on <span class="math" data-tex="\(z\)">\(z\)</span>. The remainder estimate can also be differentiated twice on <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Indeed the starting exponential has a convergent power series in <span class="math" data-tex="\(r\)">\(r\)</span>, and integration in (RK27) divides its coefficients by positive integers. The odd leading coefficient follows from the initial value <span class="math" data-tex="\(-1/2\)">\(-1/2\)</span> and the recursion
+<span class="math" data-tex="\(A_\nu=-A_{\nu-1}/(2(2\nu+1))\)">\(A_\nu=-A_{\nu-1}/(2(2\nu+1))\)</span>.
+The cusp produces the Dirac mass in (RK26) only at <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>; for <span class="math" data-tex="\(\nu\geq1\)">\(\nu\geq1\)</span> the first two distributional derivatives are ordinary locally integrable functions, in agreement with RK02.</p>
+<p>In dimension two the comparison (RK23), (RK3), and (RK4) give
+<span class="math math-display" data-tex="\[
+ f_0(r)=-\frac{\log r}{2\pi}+C_z+\rho_0(r),
+ \quad
+ |\rho_0^{(\ell)}(r)|
+ \leq C r^{2-\ell}(1+|\log r|),\quad 0\leq\ell\leq2,
+ \tag{RK29}
+\]">\[
+ f_0(r)=-\frac{\log r}{2\pi}+C_z+\rho_0(r),
+ \quad
+ |\rho_0^{(\ell)}(r)|
+ \leq C r^{2-\ell}(1+|\log r|),\quad 0\leq\ell\leq2,
+ \tag{RK29}
+\]</span>
+for small positive <span class="math" data-tex="\(r\)">\(r\)</span>. To justify the improved zeroth- and first-order bounds in this formula, initially (RK23) gives <span class="math" data-tex="\(R_z\in C^1\)">\(R_z\in C^1\)</span> and <span class="math" data-tex="\(D^2R_z=O(1+|\log r|)\)">\(D^2R_z=O(1+|\log r|)\)</span> outside zero. Radial <span class="math" data-tex="\(C^1\)">\(C^1\)</span> regularity implies <span class="math" data-tex="\(R_z&#x27;(0)=0\)">\(R_z&#x27;(0)=0\)</span>. The radial equation <span class="math" data-tex="\((-\Delta-z)F_0=0\)">\((-\Delta-z)F_0=0\)</span> away from zero implies
+<span class="math math-display" data-tex="\[
+ (rR_z&#x27;(r))&#x27;=-z r f_0(r).
+\]">\[
+ (rR_z&#x27;(r))&#x27;=-z r f_0(r).
+\]</span>
+Since <span class="math" data-tex="\(rR_z&#x27;(r)\to0\)">\(rR_z&#x27;(r)\to0\)</span>, integration gives
+<span class="math" data-tex="\(R_z&#x27;(r)=-z r^{-1}\int_0^r s f_0(s)\,ds
+=O(r(1+|\log r|))\)">\(R_z&#x27;(r)=-z r^{-1}\int_0^r s f_0(s)\,ds
+=O(r(1+|\log r|))\)</span>.
+A further integration gives
+<span class="math" data-tex="\(R_z(r)-R_z(0)=O(r^2(1+|\log r|))\)">\(R_z(r)-R_z(0)=O(r^2(1+|\log r|))\)</span>.
+The equation then supplies the second derivative bound. Taking
+<span class="math" data-tex="\(C_z=R_z(0)\)">\(C_z=R_z(0)\)</span> proves (RK29).</p>
+<p>For every <span class="math" data-tex="\(\nu\geq1\)">\(\nu\geq1\)</span>, integrate (RK27), using (RK29) as the initial case. One obtains
+<span class="math math-display" data-tex="\[
+ f_\nu(r)=p_\nu(r^2)
+ +\frac{(-1)^{\nu+1}}{2\pi\,4^\nu\nu!}r^{2\nu}\log r
+ +\rho_\nu(r),
+ \tag{RK30}
+\]">\[
+ f_\nu(r)=p_\nu(r^2)
+ +\frac{(-1)^{\nu+1}}{2\pi\,4^\nu\nu!}r^{2\nu}\log r
+ +\rho_\nu(r),
+ \tag{RK30}
+\]</span>
+where <span class="math" data-tex="\(p_\nu\)">\(p_\nu\)</span> has degree at most <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, and
+<span class="math math-display" data-tex="\[
+ |\rho_\nu^{(\ell)}(r)|
+ \leq C r^{2\nu+2-\ell}(1+|\log r|),
+ \qquad 0\leq\ell\leq2.
+ \tag{RK31}
+\]">\[
+ |\rho_\nu^{(\ell)}(r)|
+ \leq C r^{2\nu+2-\ell}(1+|\log r|),
+ \qquad 0\leq\ell\leq2.
+ \tag{RK31}
+\]</span>
+In this induction the constant <span class="math" data-tex="\(f_\nu(0)\)">\(f_\nu(0)\)</span> exists by (RK11), and contributes to <span class="math" data-tex="\(p_\nu\)">\(p_\nu\)</span>. Integrating <span class="math" data-tex="\(s^{2\nu-1}\log s\)">\(s^{2\nu-1}\log s\)</span> creates both the next logarithmic term and a polynomial term. Its logarithmic coefficient satisfies
+<span class="math" data-tex="\(A_\nu=-A_{\nu-1}/(4\nu)\)">\(A_\nu=-A_{\nu-1}/(4\nu)\)</span>, starting with <span class="math" data-tex="\(A_0=-1/(2\pi)\)">\(A_0=-1/(2\pi)\)</span>, which proves the constant in (RK30). Integrating the previous remainder proves (RK31); its first two derivatives follow by differentiating that integral. Cartesian second derivatives of a radial remainder are combinations of <span class="math" data-tex="\(\rho_\nu&#x27;&#x27;\)">\(\rho_\nu&#x27;&#x27;\)</span> and <span class="math" data-tex="\(\rho_\nu&#x27;/r\)">\(\rho_\nu&#x27;/r\)</span>, so the same bounds control them.</p>
+<p>For example, <span class="math" data-tex="\(F_1\)">\(F_1\)</span> in dimension two has the term
+<span class="math" data-tex="\(r^2\log r/(8\pi)\)">\(r^2\log r/(8\pi)\)</span>. Its Hessian has a logarithmic singularity and is locally integrable, although <span class="math" data-tex="\(F_1\)">\(F_1\)</span> need not be <span class="math" data-tex="\(C^2\)">\(C^2\)</span>. Meanwhile the logarithmic leading term of <span class="math" data-tex="\(F_0\)">\(F_0\)</span> has the Hessian (RK19), including the Dirac coefficient <span class="math" data-tex="\(-\delta_{jk}/2\)">\(-\delta_{jk}/2\)</span>. These are distinct endpoints.</p>
+<h2 id="AN03-EHP-003"><span id="an03-ehp-003"></span><span id="an03-ehp-003-constant-metric-transport-and-the-density-normalization"></span>AN03-EHP-003 — Constant metric transport and the density normalization</h2>
+<p>Let <span class="math" data-tex="\(G=(g^{jk})\)">\(G=(g^{jk})\)</span> be a real symmetric positive definite matrix, and set
+<span class="math math-display" data-tex="\[
+ r_G(x)=\sqrt{x^{\mathsf T}G^{-1}x},\qquad
+ L_G=-\sum_{j,k}g^{jk}\partial_j\partial_k.
+\]">\[
+ r_G(x)=\sqrt{x^{\mathsf T}G^{-1}x},\qquad
+ L_G=-\sum_{j,k}g^{jk}\partial_j\partial_k.
+\]</span>
+Choose any real invertible <span class="math" data-tex="\(T\)">\(T\)</span> such that <span class="math" data-tex="\(G=T^{-1}T^{-\mathsf T}\)">\(G=T^{-1}T^{-\mathsf T}\)</span>, for example <span class="math" data-tex="\(T=G^{-1/2}\)">\(T=G^{-1/2}\)</span>. Then <span class="math" data-tex="\(r_G(x)=|Tx|\)">\(r_G(x)=|Tx|\)</span>. For a distribution <span class="math" data-tex="\(u\)">\(u\)</span>, define its invertible linear pullback by
+<span class="math math-display" data-tex="\[
+ \langle T^*u,\phi\rangle
+ =|\det T|^{-1}\langle u,\phi\circ T^{-1}\rangle.
+ \tag{RK32}
+\]">\[
+ \langle T^*u,\phi\rangle
+ =|\det T|^{-1}\langle u,\phi\circ T^{-1}\rangle.
+ \tag{RK32}
+\]</span>
+This formula defines a continuous map on tempered distributions, since composition with an invertible linear map is continuous on the Schwartz space. For regular distributions it is exactly the function <span class="math" data-tex="\(u(Tx)\)">\(u(Tx)\)</span>, by change of variables. Distributional integration by parts proves the chain rule
+<span class="math" data-tex="\(\partial_{x_j}T^*u=\sum_aT_{aj}T^*(\partial_{y_a}u)\)">\(\partial_{x_j}T^*u=\sum_aT_{aj}T^*(\partial_{y_a}u)\)</span>.
+It follows that <span class="math" data-tex="\(L_GT^*u=T^*(-\Delta u)\)">\(L_GT^*u=T^*(-\Delta u)\)</span>, because <span class="math" data-tex="\(TGT^{\mathsf T}=I\)">\(TGT^{\mathsf T}=I\)</span>.</p>
+<p>Define <span class="math" data-tex="\(K_{\nu,G}=T^*F_\nu\)">\(K_{\nu,G}=T^*F_\nu\)</span>. Radial invariance makes this independent of the choice of <span class="math" data-tex="\(T\)">\(T\)</span>, and as a locally integrable function it is <span class="math" data-tex="\(F_\nu(r_G(x),z)\)">\(F_\nu(r_G(x),z)\)</span>. Pulling back (RK12) yields
+<span class="math math-display" data-tex="\[
+ (L_G-z)K_{\nu,G}=\nu K_{\nu-1,G}\quad(\nu\geq1),\qquad
+ (L_G-z)K_{0,G}=\sqrt{\det G}\,\delta_0.
+ \tag{RK33}
+\]">\[
+ (L_G-z)K_{\nu,G}=\nu K_{\nu-1,G}\quad(\nu\geq1),\qquad
+ (L_G-z)K_{0,G}=\sqrt{\det G}\,\delta_0.
+ \tag{RK33}
+\]</span>
+The constant follows directly from (RK32):
+<span class="math" data-tex="\(T^*\delta_0=|\det T|^{-1}\delta_0\)">\(T^*\delta_0=|\det T|^{-1}\delta_0\)</span>, and
+<span class="math" data-tex="\(|\det T|^{-1}=\sqrt{\det G}\)">\(|\det T|^{-1}=\sqrt{\det G}\)</span>.
+This factor is present because <span class="math" data-tex="\(K_{0,G}\)">\(K_{0,G}\)</span> has not been multiplied by a determinant prefactor.</p>
+<p>The derivative relation becomes
+<span class="math math-display" data-tex="\[
+ -2\sum_k g^{jk}\partial_{x_k}K_{\nu,G}
+ =x_jK_{\nu-1,G},\qquad \nu\geq1.
+ \tag{RK34}
+\]">\[
+ -2\sum_k g^{jk}\partial_{x_k}K_{\nu,G}
+ =x_jK_{\nu-1,G},\qquad \nu\geq1.
+ \tag{RK34}
+\]</span>
+Indeed (RK13) and the chain rule give
+<span class="math" data-tex="\(-2\nabla_xK_{\nu,G}=T^{\mathsf T}Tx\,K_{\nu-1,G}
+=G^{-1}x\,K_{\nu-1,G}\)">\(-2\nabla_xK_{\nu,G}=T^{\mathsf T}Tx\,K_{\nu-1,G}
+=G^{-1}x\,K_{\nu-1,G}\)</span>; multiplication by <span class="math" data-tex="\(G\)">\(G\)</span> proves (RK34).</p>
+<p>Thus the kernel for Lebesgue integration normalized to a unit Dirac mass is
+<span class="math math-display" data-tex="\[
+ (\det G)^{-1/2}F_0(r_G(x-y),z).
+ \tag{RK35}
+\]">\[
+ (\det G)^{-1/2}F_0(r_G(x-y),z).
+ \tag{RK35}
+\]</span>
+Equivalently, the unscaled kernel <span class="math" data-tex="\(F_0(r_G(x-y),z)\)">\(F_0(r_G(x-y),z)\)</span> is correctly normalized when integrated against the metric density
+<span class="math" data-tex="\(d\mu_G(y)=(\det G)^{-1/2}dy\)">\(d\mu_G(y)=(\det G)^{-1/2}dy\)</span>.
+This distinguishes the coefficient matrix <span class="math" data-tex="\(G=(g^{jk})\)">\(G=(g^{jk})\)</span> from its inverse metric matrix <span class="math" data-tex="\(G^{-1}=(g_{jk})\)">\(G^{-1}=(g_{jk})\)</span>.</p>
+<p>Invertible pullback preserves local integrability and differentiability, so all the earlier regularity conclusions remain valid. The homogeneous Hessian distribution in (RK24) pulls back to a homogeneous distribution of degree <span class="math" data-tex="\(-n\)">\(-n\)</span>; multiplication by a smooth coefficient vanishing to second order still gives a locally integrable function. On compact families of positive definite matrices, these estimates are uniform by boundedness of <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(T^{-1}\)">\(T^{-1}\)</span>, and their determinants.</p>
+<h2 id="AN03-EHP-004"><span id="an03-ehp-004"></span><span id="an03-ehp-004-normal-coordinates-without-orthonormalizing-the-center"></span>AN03-EHP-004 — Normal coordinates without orthonormalizing the center</h2>
+<p>Fix a center <span class="math" data-tex="\(y\)">\(y\)</span>. The geodesic equation for <span class="math" data-tex="\(H\)">\(H\)</span>, in an ordinary coordinate chart, is
+<span class="math math-display" data-tex="\[
+ \ddot x^i+\sum_{j,k}\Gamma^i_{jk}(x)\dot x^j\dot x^k=0,
+ \qquad x(0)=y,\quad\dot x(0)=v,                               \tag{HG1}
+\]">\[
+ \ddot x^i+\sum_{j,k}\Gamma^i_{jk}(x)\dot x^j\dot x^k=0,
+ \qquad x(0)=y,\quad\dot x(0)=v,                               \tag{HG1}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+ \Gamma^i_{jk}=\frac12\sum_l g^{il}
+             (\partial_jg_{kl}+\partial_kg_{jl}-\partial_lg_{jk}).
+                                                                    \tag{HG2}
+\]">\[
+ \Gamma^i_{jk}=\frac12\sum_l g^{il}
+             (\partial_jg_{kl}+\partial_kg_{jl}-\partial_lg_{jk}).
+                                                                    \tag{HG2}
+\]</span>
+For <span class="math" data-tex="\(v\)">\(v\)</span> small enough, the solution exists for <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span> and depends smoothly on <span class="math" data-tex="\((t,v,y)\)">\((t,v,y)\)</span>. Put <span class="math" data-tex="\(\gamma(v,y)=x(1;v,y)\)">\(\gamma(v,y)=x(1;v,y)\)</span>. Uniqueness in (HG1) and the change of parameter in that equation give
+<span class="math math-display" data-tex="\[
+ x(t;v,y)=\gamma(tv,y),\qquad
+ \gamma(0,y)=y,\qquad d_v\gamma(0,y)=I.                         \tag{HG3}
+\]">\[
+ x(t;v,y)=\gamma(tv,y),\qquad
+ \gamma(0,y)=y,\qquad d_v\gamma(0,y)=I.                         \tag{HG3}
+\]</span>
+For the last assertion, the solution at <span class="math" data-tex="\(v=0\)">\(v=0\)</span> is constant; its first variation in the initial velocity solves <span class="math" data-tex="\(\ddot V=0\)">\(\ddot V=0\)</span>, <span class="math" data-tex="\(V(0)=0\)">\(V(0)=0\)</span>, <span class="math" data-tex="\(\dot V(0)=w\)">\(\dot V(0)=w\)</span>, and hence is <span class="math" data-tex="\(tw\)">\(tw\)</span>.</p>
+<p>The inverse function theorem now gives a diffeomorphism
+<span class="math math-display" data-tex="\[
+ (v,y)\longmapsto(\gamma(v,y),y)                                \tag{HG4}
+\]">\[
+ (v,y)\longmapsto(\gamma(v,y),y)                                \tag{HG4}
+\]</span>
+from a neighborhood of the zero section onto a neighborhood of the diagonal. Its fibers can be chosen to be small convex balls about <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. To justify this simultaneously over noncompact <span class="math" data-tex="\(X\)">\(X\)</span>, first use the parameter-dependent inverse function theorem near each <span class="math" data-tex="\((0,y)\)">\((0,y)\)</span>. Shrink in the base variable so that a positive velocity radius works throughout that base neighborhood. A locally finite refinement and a positive smooth minorant of these local radii give a smaller neighborhood with ball fibers on which the same map is locally invertible and injective in each fiber. Points with different second coordinates cannot have the same image, so the total map is injective as well. No global injectivity radius is assumed. Over a fixed compact set of centers, a finite subcover gives a common positive lower radius after shrinking the coordinate neighborhoods.</p>
+<p>Write <span class="math" data-tex="\(\widetilde H(v,y)\)">\(\widetilde H(v,y)\)</span> for the metric pulled back in the first variable by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The normal coordinates here retain the original coordinates on <span class="math" data-tex="\(T_yX\)">\(T_yX\)</span>; thus
+<span class="math math-display" data-tex="\[
+                       \widetilde H(0,y)=H(y).                  \tag{HG5}
+\]">\[
+                       \widetilde H(0,y)=H(y).                  \tag{HG5}
+\]</span>
+The matrix at the center need not be the identity.</p>
+<p><strong>Radial metric identity.</strong> In these coordinates,
+<span class="math math-display" data-tex="\[
+       \sum_k\widetilde g_{jk}(v,y)v_k
+                 =\sum_k g_{jk}(y)v_k.                         \tag{HG6}
+\]">\[
+       \sum_k\widetilde g_{jk}(v,y)v_k
+                 =\sum_k g_{jk}(y)v_k.                         \tag{HG6}
+\]</span>
+Here is a derivation of the identity, including its variational input. The connection with coefficients (HG2) is torsion free because it is symmetric in <span class="math" data-tex="\(j,k\)">\(j,k\)</span>. Substitution in (HG2) also gives metric compatibility: differentiating <span class="math" data-tex="\(\langle A,B\rangle_H\)">\(\langle A,B\rangle_H\)</span> along a curve equals the sum of the two pairings with its covariant derivatives. For the geodesic <span class="math" data-tex="\(q(t)=\gamma(tv,y)\)">\(q(t)=\gamma(tv,y)\)</span>, this shows that <span class="math" data-tex="\(\langle\dot q,\dot q\rangle_H=\langle v,v\rangle_{H(y)}\)">\(\langle\dot q,\dot q\rangle_H=\langle v,v\rangle_{H(y)}\)</span> is constant.</p>
+<p>Vary the initial velocity to <span class="math" data-tex="\(v+sw\)">\(v+sw\)</span>, and let <span class="math" data-tex="\(V(t)=\partial_s q(t,s)|_{s=0}\)">\(V(t)=\partial_s q(t,s)|_{s=0}\)</span>. Torsion freeness gives <span class="math" data-tex="\(\nabla_tV=\nabla_s\dot q\)">\(\nabla_tV=\nabla_s\dot q\)</span>. Since <span class="math" data-tex="\(\nabla_t\dot q=0\)">\(\nabla_t\dot q=0\)</span>,
+<span class="math math-display" data-tex="\[
+ \frac d{dt}\langle\dot q,V\rangle_H
+       =\frac12\partial_s\langle\dot q,\dot q\rangle_H
+       =\langle v,w\rangle_{H(y)}.                             \tag{HG7}
+\]">\[
+ \frac d{dt}\langle\dot q,V\rangle_H
+       =\frac12\partial_s\langle\dot q,\dot q\rangle_H
+       =\langle v,w\rangle_{H(y)}.                             \tag{HG7}
+\]</span>
+The initial value is zero. At <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, the equality is therefore
+<span class="math math-display" data-tex="\[
+ \big\langle d_v\gamma(v,y)v,d_v\gamma(v,y)w\big\rangle_H
+                         =\langle v,w\rangle_{H(y)}.
+\]">\[
+ \big\langle d_v\gamma(v,y)v,d_v\gamma(v,y)w\big\rangle_H
+                         =\langle v,w\rangle_{H(y)}.
+\]</span>
+As this holds for every <span class="math" data-tex="\(w\)">\(w\)</span>, it is exactly (HG6).</p>
+<p>Two consequences of this identity will be used in the distribution calculation. First,
+<span class="math math-display" data-tex="\[
+ \widetilde H(v,y)-H(y)=O(|v|^2),\qquad
+ \widetilde G(v,y)-G(y)=O(|v|^2),                               \tag{HG8}
+\]">\[
+ \widetilde H(v,y)-H(y)=O(|v|^2),\qquad
+ \widetilde G(v,y)-G(y)=O(|v|^2),                               \tag{HG8}
+\]</span>
+locally uniformly with the center and with all needed smooth parameter bounds. To prove the first assertion, let <span class="math" data-tex="\(A_{ijk}=\partial_k\widetilde g_{ij}(0,y)\)">\(A_{ijk}=\partial_k\widetilde g_{ij}(0,y)\)</span>. Symmetry gives <span class="math" data-tex="\(A_{ijk}=A_{jik}\)">\(A_{ijk}=A_{jik}\)</span>, while the quadratic terms in (HG6) give <span class="math" data-tex="\(A_{ijk}=-A_{ikj}\)">\(A_{ijk}=-A_{ikj}\)</span>. Combining these relations yields
+<span class="math math-display" data-tex="\[
+ A_{ijk}=-A_{ikj}=-A_{kij}=A_{kji}=A_{jki}=-A_{jik}=-A_{ijk}.
+\]">\[
+ A_{ijk}=-A_{ikj}=-A_{kij}=A_{kji}=A_{jki}=-A_{jik}=-A_{ijk}.
+\]</span>
+Thus every first derivative is zero, and Taylor's formula proves the first bound in (HG8). The smooth inverse-matrix formula proves the second. In particular their first derivatives are <span class="math" data-tex="\(O(|v|)\)">\(O(|v|)\)</span>.</p>
+<p>Second, the geodesic distance from the center is
+<span class="math math-display" data-tex="\[
+ s(\gamma(v,y),y)^2=v^tH(y)v.                                  \tag{HG9}
+\]">\[
+ s(\gamma(v,y),y)^2=v^tH(y)v.                                  \tag{HG9}
+\]</span>
+To see the minimizing assertion, put <span class="math" data-tex="\(r=(v^tH(y)v)^{1/2}\)">\(r=(v^tH(y)v)^{1/2}\)</span> away from zero. By (HG6), its metric gradient is <span class="math" data-tex="\(v/r\)">\(v/r\)</span>, of metric length one. Along any piecewise smooth curve staying in the normal neighborhood, <span class="math" data-tex="\(|dr/dt|\)">\(|dr/dt|\)</span> is therefore at most its speed. Its length from the center to <span class="math" data-tex="\(v\)">\(v\)</span> is at least <span class="math" data-tex="\(r\)">\(r\)</span>, while the radial geodesic has exactly that length. Shrink the neighborhood so that leaving the original normal neighborhood costs more length than any retained radial segment. This is possible because the metric is bounded below on a compact coordinate neighborhood and the center stays a positive coordinate distance from its boundary. It rules out a shorter path that leaves and returns. The same argument is uniform on a sufficiently small compact set of centers; a finite cover gives the earlier compact-center statement. This proves (HG9) for the ordinary Riemannian distance after the stated shrinking.</p>
+<p>The inverse map in (HG4) is smooth, so (HG9) proves that <span class="math" data-tex="\(s^2\)">\(s^2\)</span> is jointly smooth near the diagonal. The function <span class="math" data-tex="\(s\)">\(s\)</span> itself is smooth off the diagonal there. Its failure to be smooth on the diagonal is precisely the radial singularity that the construction will retain.</p>
+<p>We shall also need the exact coordinate form of the operator. If <span class="math" data-tex="\(x=\gamma(v,y)\)">\(x=\gamma(v,y)\)</span>, <span class="math" data-tex="\(J(v,y)=|\det d_v\gamma(v,y)|\)">\(J(v,y)=|\det d_v\gamma(v,y)|\)</span>, and tildes denote pullback, then
+<span class="math math-display" data-tex="\[
+\begin{split}
+ \widetilde G&amp;=(d_v\gamma)^{-1}G(\gamma(v,y))(d_v\gamma)^{-t},\\
+ \widetilde b^{\,i}
+   &amp;=\sum_j(d_v\gamma)^{-1}_{ij}b^j(\gamma(v,y))
+               -\sum_k\widetilde g^{ik}\partial_k\log J\,I_r,\\
+ \widetilde c&amp;=c(\gamma(v,y)).
+\end{split}                                                       \tag{HG10}
+\]">\[
+\begin{split}
+ \widetilde G&amp;=(d_v\gamma)^{-1}G(\gamma(v,y))(d_v\gamma)^{-t},\\
+ \widetilde b^{\,i}
+   &amp;=\sum_j(d_v\gamma)^{-1}_{ij}b^j(\gamma(v,y))
+               -\sum_k\widetilde g^{ik}\partial_k\log J\,I_r,\\
+ \widetilde c&amp;=c(\gamma(v,y)).
+\end{split}                                                       \tag{HG10}
+\]</span>
+Indeed divergence transforms to <span class="math" data-tex="\(J^{-1}\partial_i(J\widetilde g^{ik}\partial_k)\)">\(J^{-1}\partial_i(J\widetilde g^{ik}\partial_k)\)</span>. This follows either by the chain rule in a smooth test integral with <span class="math" data-tex="\(dx=J\,dv\)">\(dx=J\,dv\)</span>, or by expanding that expression and changing variables back. Expanding the derivative of <span class="math" data-tex="\(J\)">\(J\)</span> proves the drift correction in (HG10). It is smooth, and <span class="math" data-tex="\(J(0,y)=1\)">\(J(0,y)=1\)</span>. Omitting this term would generally give the wrong transported amplitude even for the Riemannian Laplacian.</p>
+<h2 id="AN03-EHP-005"><span id="an03-ehp-005"></span><span id="an03-ehp-005-scalar-transport-with-a-regular-center"></span>AN03-EHP-005 — Scalar transport with a regular center</h2>
+<p>The transport equation needed below has a useful form independent of the elliptic kernel. Let <span class="math" data-tex="\(V\subset\mathbb R^n\)">\(V\subset\mathbb R^n\)</span> be star shaped about zero, let <span class="math" data-tex="\(h,f\)">\(h,f\)</span> be smooth complex functions, and assume <span class="math" data-tex="\(h(0)=0\)">\(h(0)=0\)</span>. Put <span class="math" data-tex="\(E=v\cdot\partial_v\)">\(E=v\cdot\partial_v\)</span>. We first solve
+<span class="math math-display" data-tex="\[
+                       2Eu_0=hu_0,\qquad u_0(0)=1.            \tag{HS1}
+\]">\[
+                       2Eu_0=hu_0,\qquad u_0(0)=1.            \tag{HS1}
+\]</span>
+The solution is
+<span class="math math-display" data-tex="\[
+ u_0(v)=\exp A(v),\qquad
+                  A(v)=\frac12\int_0^1\frac{h(tv)}t\,dt.       \tag{HS2}
+\]">\[
+ u_0(v)=\exp A(v),\qquad
+                  A(v)=\frac12\int_0^1\frac{h(tv)}t\,dt.       \tag{HS2}
+\]</span>
+This formula is regular at its apparent singular endpoint. In fact
+<span class="math math-display" data-tex="\[
+ \frac{h(tv)}t
+       =\sum_jv_j\int_0^1(\partial_jh)(\sigma tv)\,d\sigma       \tag{HS3}
+\]">\[
+ \frac{h(tv)}t
+       =\sum_jv_j\int_0^1(\partial_jh)(\sigma tv)\,d\sigma       \tag{HS3}
+\]</span>
+for <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>, with the right side providing the value at zero. It is jointly smooth in <span class="math" data-tex="\((t,v)\)">\((t,v)\)</span>; the formula and all its derivatives are bounded on compact parameter sets. Thus <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(u_0\)">\(u_0\)</span> are smooth, and <span class="math" data-tex="\(u_0\)">\(u_0\)</span> never vanishes.</p>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, substitution <span class="math" data-tex="\(s=rt\)">\(s=rt\)</span> gives
+<span class="math math-display" data-tex="\[
+ A(rv)=\frac12\int_0^r\frac{h(sv)}s\,ds.
+\]">\[
+ A(rv)=\frac12\int_0^r\frac{h(sv)}s\,ds.
+\]</span>
+Differentiating proves (HS1) along each ray, and continuity proves the equation at the center. Conversely, the restriction of any solution to a ray solves the scalar linear ordinary differential equation with coefficient <span class="math" data-tex="\(h(rv)/(2r)\)">\(h(rv)/(2r)\)</span>, which extends continuously to <span class="math" data-tex="\(r=0\)">\(r=0\)</span> by (HS3). Its initial value fixes it uniquely. This also proves uniqueness among smooth solutions on all of the star-shaped set.</p>
+<p>Now let <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> be any real number, not necessarily an integer. The equation
+<span class="math math-display" data-tex="\[
+                     (2\nu-h)u+2Eu=f                         \tag{HS4}
+\]">\[
+                     (2\nu-h)u+2Eu=f                         \tag{HS4}
+\]</span>
+has exactly one smooth solution,
+<span class="math math-display" data-tex="\[
+       u(v)=u_0(v)\int_0^1
+                   t^{\nu-1}\frac{f(tv)}{2u_0(tv)}\,dt.        \tag{HS5}
+\]">\[
+       u(v)=u_0(v)\int_0^1
+                   t^{\nu-1}\frac{f(tv)}{2u_0(tv)}\,dt.        \tag{HS5}
+\]</span>
+To prove this, set <span class="math" data-tex="\(u=u_0w\)">\(u=u_0w\)</span>. Equation (HS1) reduces (HS4) to
+<span class="math math-display" data-tex="\[
+                             \nu w+Ew=g,
+                      \qquad g=f/(2u_0).                       \tag{HS6}
+\]">\[
+                             \nu w+Ew=g,
+                      \qquad g=f/(2u_0).                       \tag{HS6}
+\]</span>
+Along a ray, multiplication by <span class="math" data-tex="\(r^{\nu-1}\)">\(r^{\nu-1}\)</span> gives
+<span class="math math-display" data-tex="\[
+             \frac d{dr}\bigl(r^\nu w(rv)\bigr)
+                               =r^{\nu-1}g(rv).                \tag{HS7}
+\]">\[
+             \frac d{dr}\bigl(r^\nu w(rv)\bigr)
+                               =r^{\nu-1}g(rv).                \tag{HS7}
+\]</span>
+Integrating from zero is legitimate for a bounded solution because <span class="math" data-tex="\(r^\nu w(rv)\to0\)">\(r^\nu w(rv)\to0\)</span>. Substitution <span class="math" data-tex="\(r=t\)">\(r=t\)</span> gives (HS5). Conversely, differentiating its integral proves (HS6). Each derivative in <span class="math" data-tex="\(v\)">\(v\)</span> introduces a nonnegative power of <span class="math" data-tex="\(t\)">\(t\)</span> in derivatives of <span class="math" data-tex="\(g(tv)\)">\(g(tv)\)</span>; the factor <span class="math" data-tex="\(t^{\nu-1}\)">\(t^{\nu-1}\)</span> is integrable. Uniform domination on compact subsets proves smoothness of every order. The same argument proves smooth dependence on any extra parameters, including the center, as long as <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> is fixed.</p>
+<p>There is no independent datum at the center in (HS4): evaluation there gives
+<span class="math math-display" data-tex="\[
+                            u(0)=f(0)/(2\nu).                   \tag{HS8}
+\]">\[
+                            u(0)=f(0)/(2\nu).                   \tag{HS8}
+\]</span>
+The difference of two bounded solutions would be <span class="math" data-tex="\(r^{-\nu}\)">\(r^{-\nu}\)</span> times a constant along each ray, and boundedness forces that constant to vanish. These arguments cover complex <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span>; no positivity or reality is used in the transport lemma.</p>
+<h2 id="AN03-EHP-006"><span id="an03-ehp-006"></span><span id="an03-ehp-006-matrix-transport-and-the-order-of-multiplication"></span>AN03-EHP-006 — Matrix transport and the order of multiplication</h2>
+<p>Let now <span class="math" data-tex="\(h(v)\)">\(h(v)\)</span> be a smooth <span class="math" data-tex="\(r\)">\(r\)</span>-by-<span class="math" data-tex="\(r\)">\(r\)</span> complex matrix with <span class="math" data-tex="\(h(0)=0\)">\(h(0)=0\)</span>. We seek an invertible matrix <span class="math" data-tex="\(S(v)\)">\(S(v)\)</span> such that
+<span class="math math-display" data-tex="\[
+                             2ES=hS,\qquad S(0)=I_r.           \tag{HM1}
+\]">\[
+                             2ES=hS,\qquad S(0)=I_r.           \tag{HM1}
+\]</span>
+In general <span class="math" data-tex="\(S\)">\(S\)</span> is not the ordinary exponential of the integral in (HS2), because the matrices at different points on a ray need not commute.</p>
+<p>For fixed <span class="math" data-tex="\(v\)">\(v\)</span>, define the smooth coefficient
+<span class="math math-display" data-tex="\[
+                   A_v(t)=\frac{h(tv)}{2t},\qquad0\leq t\leq1,
+                                                                    \tag{HM2}
+\]">\[
+                   A_v(t)=\frac{h(tv)}{2t},\qquad0\leq t\leq1,
+                                                                    \tag{HM2}
+\]</span>
+where (HS3) is applied entry by entry at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. The solution of <span class="math" data-tex="\(Y&#x27;=A_vY\)">\(Y&#x27;=A_vY\)</span>, <span class="math" data-tex="\(Y(0)=I_r\)">\(Y(0)=I_r\)</span>, is given by the absolutely convergent series
+<span class="math math-display" data-tex="\[
+ Y_v(t)=I_r+\sum_{k=1}^{\infty}
+  \int_{0&lt;t_k&lt;\cdots&lt;t_1&lt;t}
+          A_v(t_1)\cdots A_v(t_k)\,dt_k\cdots dt_1.             \tag{HM3}
+\]">\[
+ Y_v(t)=I_r+\sum_{k=1}^{\infty}
+  \int_{0&lt;t_k&lt;\cdots&lt;t_1&lt;t}
+          A_v(t_1)\cdots A_v(t_k)\,dt_k\cdots dt_1.             \tag{HM3}
+\]</span>
+On a compact set of <span class="math" data-tex="\(v\)">\(v\)</span>'s, the norm of the <span class="math" data-tex="\(k\)">\(k\)</span>-th term is at most <span class="math" data-tex="\(M^kt^k/k!\)">\(M^kt^k/k!\)</span>. Each fixed number <span class="math" data-tex="\(l\)">\(l\)</span> of parameter derivatives is a sum of at most a fixed multiple of <span class="math" data-tex="\(k^l\)">\(k^l\)</span> products, each bounded by <span class="math" data-tex="\(C_l^k\)">\(C_l^k\)</span>; their series still converges uniformly by the factorial denominator. Thus the sum is smooth in all parameters, and termwise integration or differentiation verifies the integral equation and the differential equation. Subtracting two solutions, iterating the integral equation <span class="math" data-tex="\(k\)">\(k\)</span> times, and taking <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span> proves uniqueness by the same factorial bound. This proves the needed parameter theorem for this particular transport equation without a commutativity assumption.</p>
+<p>The equation <span class="math" data-tex="\(Z&#x27;=-ZA_v\)">\(Z&#x27;=-ZA_v\)</span>, <span class="math" data-tex="\(Z(0)=I_r\)">\(Z(0)=I_r\)</span>, has the analogous iterated-integral construction. Differentiating <span class="math" data-tex="\(ZY\)">\(ZY\)</span> gives zero, so <span class="math" data-tex="\(Z_v(t)Y_v(t)=I_r\)">\(Z_v(t)Y_v(t)=I_r\)</span>. In finite dimension this proves that <span class="math" data-tex="\(Y_v(t)\)">\(Y_v(t)\)</span> is invertible, with inverse <span class="math" data-tex="\(Z_v(t)\)">\(Z_v(t)\)</span>. Set <span class="math" data-tex="\(S(v)=Y_v(1)\)">\(S(v)=Y_v(1)\)</span>. The equation for <span class="math" data-tex="\(Y_{rv}(t)\)">\(Y_{rv}(t)\)</span> is the equation for <span class="math" data-tex="\(Y_v(rt)\)">\(Y_v(rt)\)</span>, so uniqueness gives <span class="math" data-tex="\(Y_{rv}(t)=Y_v(rt)\)">\(Y_{rv}(t)=Y_v(rt)\)</span> whenever the ray segments in question are present. It follows that <span class="math" data-tex="\(S(rv)=Y_v(r)\)">\(S(rv)=Y_v(r)\)</span>, which proves (HM1). Invertibility and smoothness of <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> follow from the constructed inverse. Initial-value uniqueness proves that this is the unique smooth normalized solution.</p>
+<p>For a smooth matrix-valued right side <span class="math" data-tex="\(f\)">\(f\)</span> and any real <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, the unique smooth solution of
+<span class="math math-display" data-tex="\[
+                  (2\nu I_r-h)u+2Eu=f                         \tag{HM4}
+\]">\[
+                  (2\nu I_r-h)u+2Eu=f                         \tag{HM4}
+\]</span>
+is
+<span class="math math-display" data-tex="\[
+      u(v)=S(v)\int_0^1
+                  t^{\nu-1}S(tv)^{-1}\frac{f(tv)}2\,dt.        \tag{HM5}
+\]">\[
+      u(v)=S(v)\int_0^1
+                  t^{\nu-1}S(tv)^{-1}\frac{f(tv)}2\,dt.        \tag{HM5}
+\]</span>
+Indeed put <span class="math" data-tex="\(u=Sw\)">\(u=Sw\)</span> and use the product rule:
+<span class="math math-display" data-tex="\[
+ (2\nu I_r-h)Sw+2E(Sw)=2S(\nu w+Ew).
+\]">\[
+ (2\nu I_r-h)Sw+2E(Sw)=2S(\nu w+Ew).
+\]</span>
+Left multiplication by <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> reduces the equation to (HS6) entry by entry, with <span class="math" data-tex="\(g=S^{-1}f/2\)">\(g=S^{-1}f/2\)</span>. The scalar integration argument proves (HM5), smoothness, and uniqueness. The order <span class="math" data-tex="\(S(tv)^{-1}f(tv)\)">\(S(tv)^{-1}f(tv)\)</span> is fixed by this calculation. Moving <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> to the right of <span class="math" data-tex="\(f\)">\(f\)</span> would solve a different equation.</p>
+<p>For the operator in (H1), use the transformed coefficients (HG10) in normal coordinates and set
+<span class="math math-display" data-tex="\[
+                h(v,y)=\sum_{j,k}g_{jk}(y)\,
+                                   \widetilde b^{\,j}(v,y)v_k.
+                                                                    \tag{HM6}
+\]">\[
+                h(v,y)=\sum_{j,k}g_{jk}(y)\,
+                                   \widetilde b^{\,j}(v,y)v_k.
+                                                                    \tag{HM6}
+\]</span>
+This is smooth and vanishes at <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. The amplitudes are now fixed recursively by
+<span class="math math-display" data-tex="\[
+\begin{split}
+ u_0(v,y)&amp;=S(v,y),\qquad u_{-1}=0,\\
+ (2\nu I_r-h)u_\nu+2Eu_\nu&amp;=-2\widetilde P u_{\nu-1},
+                       \qquad \nu=1,2,\ldots .
+\end{split}                                                       \tag{HM7}
+\]">\[
+\begin{split}
+ u_0(v,y)&amp;=S(v,y),\qquad u_{-1}=0,\\
+ (2\nu I_r-h)u_\nu+2Eu_\nu&amp;=-2\widetilde P u_{\nu-1},
+                       \qquad \nu=1,2,\ldots .
+\end{split}                                                       \tag{HM7}
+\]</span>
+The operator <span class="math" data-tex="\(\widetilde P\)">\(\widetilde P\)</span> acts on the first variable and on each column, with its matrix lower-order coefficients acting on the left. Formula (HM5) proves existence and uniqueness at every step, and all amplitudes are jointly smooth in <span class="math" data-tex="\((v,y)\)">\((v,y)\)</span>. On compact sets of centers and sufficiently small common velocity balls, the construction and each finite collection of its derivatives have uniform bounds, by the parameter estimates in (HM3) and (HM5). The amplitudes in this particular normalization are independent of <span class="math" data-tex="\(z\)">\(z\)</span>; its dependence is entirely in the radial kernel family.</p>
+<p>This includes operators on a smooth vector bundle with positive scalar principal symbol. In a local trivialization the differential expression has the form (H1). Changing frame conjugates its action and changes the lower-order coefficients, while the scalar principal matrix remains <span class="math" data-tex="\(G I_r\)">\(G I_r\)</span>. The normalized amplitude is a map from the fiber at the center to the fiber at the running point. On overlapping frames it transforms as
+<span class="math math-display" data-tex="\[
+                  U_\nu(x,y)\longmapsto
+                    T(x)^{-1}U_\nu(x,y)T(y).                  \tag{HM8}
+\]">\[
+                  U_\nu(x,y)\longmapsto
+                    T(x)^{-1}U_\nu(x,y)T(y).                  \tag{HM8}
+\]</span>
+The transport equation transforms in the same manner because it was obtained from the invariant operator product, and its initial value is the identity map of the center fiber. Uniqueness then gives (HM8). Thus these locally constructed amplitudes have the correct bundle meaning; no simultaneous diagonalization of the matrices is used.</p>
+<p>The Hodge Laplacian is an example. The principal symbols of exterior differentiation and its formal adjoint are, up to the Fourier sign convention, exterior multiplication by a covector and contraction by its metric dual. For a covector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, their anticommutator on forms is <span class="math" data-tex="\(|\xi|_G^2 I\)">\(|\xi|_G^2 I\)</span>: the formula follows by expanding contraction of <span class="math" data-tex="\(\xi\wedge\alpha\)">\(\xi\wedge\alpha\)</span>. Therefore the principal symbol of <span class="math" data-tex="\(d\delta+\delta d\)">\(d\delta+\delta d\)</span> is <span class="math" data-tex="\(|\xi|_G^2 I\)">\(|\xi|_G^2 I\)</span>. In any smooth local frame its remaining coefficients are smooth matrices, so the construction applies. This identifies the exact principal-symbol class; it does not identify the lower-order matrix coefficients with a scalar operator.</p>
+<h2 id="AN03-EHP-007"><span id="an03-ehp-007"></span><span id="an03-ehp-007-the-flux-identity-and-the-finite-cancellation"></span>AN03-EHP-007 — The flux identity and the finite cancellation</h2>
+<p>Fix a center and work in its normal velocity coordinates. In this section write <span class="math" data-tex="\(G_0=G(y)\)">\(G_0=G(y)\)</span>, <span class="math" data-tex="\(H_0=G_0^{-1}\)">\(H_0=G_0^{-1}\)</span>, <span class="math" data-tex="\(r^2=v^tH_0v\)">\(r^2=v^tH_0v\)</span>, <span class="math" data-tex="\(G=\widetilde G(v,y)\)">\(G=\widetilde G(v,y)\)</span>, and <span class="math" data-tex="\(P=\widetilde P\)">\(P=\widetilde P\)</span>. The tildes will return when the center varies. The inverse form of (HG6) is
+<span class="math math-display" data-tex="\[
+                         G(v)H_0v=v.                         \tag{HT1}
+\]">\[
+                         G(v)H_0v=v.                         \tag{HT1}
+\]</span>
+For a smooth one-variable function <span class="math" data-tex="\(f\)">\(f\)</span>, the chain rule therefore gives
+<span class="math math-display" data-tex="\[
+ G(v)\nabla_v f(r^2)=2v f&#x27;(r^2)=G_0\nabla_v f(r^2).            \tag{HT2}
+\]">\[
+ G(v)\nabla_v f(r^2)=2v f&#x27;(r^2)=G_0\nabla_v f(r^2).            \tag{HT2}
+\]</span>
+This equality remains true for the actual distributional gradient of every <span class="math" data-tex="\(F_\nu(r)\)">\(F_\nu(r)\)</span>. Indeed those gradients are locally integrable by (RK10). Away from zero they are radial and (HT2) applies. Equality of the locally integrable vector fields away from a set of measure zero is equality as distributions. Taking a distributional divergence consequently gives
+<span class="math math-display" data-tex="\[
+ -\partial_j\bigl(g^{jk}(v)\partial_kF_\nu(r)\bigr)
+             =-g_0^{jk}\partial_j\partial_kF_\nu(r).           \tag{HT3}
+\]">\[
+ -\partial_j\bigl(g^{jk}(v)\partial_kF_\nu(r)\bigr)
+             =-g_0^{jk}\partial_j\partial_kF_\nu(r).           \tag{HT3}
+\]</span>
+Repeated indices in this section are summed. This proof includes the Dirac mass at the center; it has not argued only on the punctured neighborhood.</p>
+<p>The expanded second-derivative calculation gives the same conclusion. By (HG8), <span class="math" data-tex="\(g^{jk}-g_0^{jk}=O(|v|^2)\)">\(g^{jk}-g_0^{jk}=O(|v|^2)\)</span>, and its first derivatives are <span class="math" data-tex="\(O(|v|)\)">\(O(|v|)\)</span>. Formula (RK24), after the invertible linear pullback of (RK32), separates the critical Hessian into a homogeneous degree <span class="math" data-tex="\(-n\)">\(-n\)</span> distribution and a locally integrable function. The quadratic coefficient times that homogeneous distribution is the ordinary locally integrable product, by (RK25); its Dirac part vanishes. The derivative of the coefficient times the first derivative of <span class="math" data-tex="\(F_0\)">\(F_0\)</span> is also locally integrable. Their sum is zero off the center by differentiating (HT2), hence zero as a distribution. For <span class="math" data-tex="\(\nu\geq1\)">\(\nu\geq1\)</span> there is no exceptional Hessian and the argument is simpler. Thus the flux proof and the expanded proof agree at the only delicate endpoint.</p>
+<p>For <span class="math" data-tex="\(\nu\geq1\)">\(\nu\geq1\)</span>, (RK34) and (HT1) give
+<span class="math math-display" data-tex="\[
+       G\nabla F_\nu=-\tfrac12v F_{\nu-1},\qquad
+       b^j\partial_jF_\nu=-\tfrac12 hF_{\nu-1},               \tag{HT4}
+\]">\[
+       G\nabla F_\nu=-\tfrac12v F_{\nu-1},\qquad
+       b^j\partial_jF_\nu=-\tfrac12 hF_{\nu-1},               \tag{HT4}
+\]</span>
+where <span class="math" data-tex="\(h=b^j(H_0v)_j\)">\(h=b^j(H_0v)_j\)</span> is a matrix. Let <span class="math" data-tex="\(u\)">\(u\)</span> be a smooth matrix amplitude. Put <span class="math" data-tex="\(L=-\partial_j(g^{jk}\partial_k)\)">\(L=-\partial_j(g^{jk}\partial_k)\)</span>, a scalar operator. Expanding the differential product, with each coefficient on its stated side, gives
+<span class="math math-display" data-tex="\[
+\begin{split}
+ (P-z)(uF_\nu)
+ &amp;=u(L-z)F_\nu+(Pu)F_\nu
+       -2g^{jk}(\partial_ju)(\partial_kF_\nu)
+       +(b^ju)(\partial_jF_\nu)\\
+ &amp;=(Pu)F_\nu+
+       \bigl(\nu u+Eu-\tfrac12hu\bigr)F_{\nu-1}.
+\end{split}                                                    \tag{HT5}
+\]">\[
+\begin{split}
+ (P-z)(uF_\nu)
+ &amp;=u(L-z)F_\nu+(Pu)F_\nu
+       -2g^{jk}(\partial_ju)(\partial_kF_\nu)
+       +(b^ju)(\partial_jF_\nu)\\
+ &amp;=(Pu)F_\nu+
+       \bigl(\nu u+Eu-\tfrac12hu\bigr)F_{\nu-1}.
+\end{split}                                                    \tag{HT5}
+\]</span>
+The last term in the first line is <span class="math" data-tex="\(b^ju\)">\(b^ju\)</span>, not <span class="math" data-tex="\(ub^j\)">\(ub^j\)</span>. This distinction produces <span class="math" data-tex="\(hu\)">\(hu\)</span> in the second line. The distributional product rule is valid because the amplitude is smooth, and (HT3) and (RK33) supply the first term exactly.</p>
+<p>There is no <span class="math" data-tex="\(F_{-1}\)">\(F_{-1}\)</span>. For <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>, write <span class="math" data-tex="\(F_0(r)=f(r^2)\)">\(F_0(r)=f(r^2)\)</span> off zero. The full formula is
+<span class="math math-display" data-tex="\[
+ (P-z)(uF_0)
+   =u(0)\sqrt{\det G_0}\,\delta_0
+         +(Pu)F_0+2(hu-2Eu)f&#x27;(r^2).                           \tag{HT6}
+\]">\[
+ (P-z)(uF_0)
+   =u(0)\sqrt{\det G_0}\,\delta_0
+         +(Pu)F_0+2(hu-2Eu)f&#x27;(r^2).                           \tag{HT6}
+\]</span>
+The last expression means its locally integrable extension: <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(Eu\)">\(Eu\)</span> vanish to first order, and each of its individual terms is a smooth coefficient times a first derivative of <span class="math" data-tex="\(F_0\)">\(F_0\)</span>. Thus the formula does not require an independently defined distribution <span class="math" data-tex="\(f&#x27;(r^2)\)">\(f&#x27;(r^2)\)</span> at zero. One may instead retain those gradient products as its definition. The sign follows directly from the drift contribution <span class="math" data-tex="\(+2hu f&#x27;\)">\(+2hu f&#x27;\)</span> and the principal cross term <span class="math" data-tex="\(-4Eu f&#x27;\)">\(-4Eu f&#x27;\)</span>. For the normalized amplitude <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, the expression is zero off zero by (HM1), and hence zero as a locally integrable distribution. Therefore
+<span class="math math-display" data-tex="\[
+          (P-z)(u_0F_0)=\sqrt{\det G_0}\,\delta_0I_r+(Pu_0)F_0.
+                                                               \tag{HT7}
+\]">\[
+          (P-z)(u_0F_0)=\sqrt{\det G_0}\,\delta_0I_r+(Pu_0)F_0.
+                                                               \tag{HT7}
+\]</span></p>
+<p>With the amplitudes in (HM7), (HT5) reads
+<span class="math math-display" data-tex="\[
+       (P-z)(u_\nu F_\nu)
+                 =(Pu_\nu)F_\nu-(Pu_{\nu-1})F_{\nu-1}.
+                                                               \tag{HT8}
+\]">\[
+       (P-z)(u_\nu F_\nu)
+                 =(Pu_\nu)F_\nu-(Pu_{\nu-1})F_{\nu-1}.
+                                                               \tag{HT8}
+\]</span>
+Adding (HT7) and (HT8) for <span class="math" data-tex="\(1\leq\nu\leq N\)">\(1\leq\nu\leq N\)</span> cancels every intermediate term, including the <span class="math" data-tex="\((Pu_0)F_0\)">\((Pu_0)F_0\)</span> at the lower endpoint. The uncancelled last term is
+<span class="math math-display" data-tex="\[
+ (P-z)\sum_{\nu=0}^{N}u_\nu F_\nu
+       =\sqrt{\det G_0}\,\delta_0I_r+(Pu_N)F_N.                \tag{HT9}
+\]">\[
+ (P-z)\sum_{\nu=0}^{N}u_\nu F_\nu
+       =\sqrt{\det G_0}\,\delta_0I_r+(Pu_N)F_N.                \tag{HT9}
+\]</span>
+The formula also holds for <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, by (HT7). It is a finite identity of distributions, for every matrix size and every fixed parameter in (H2).</p>
+<h2 id="AN03-EHP-008"><span id="an03-ehp-008"></span><span id="an03-ehp-008-moving-the-center-and-recovering-the-correct-identity-operator"></span>AN03-EHP-008 — Moving the center and recovering the correct identity operator</h2>
+<p>Let <span class="math" data-tex="\(v=v(x,y)\)">\(v=v(x,y)\)</span> be the inverse of (HG4), and define
+<span class="math math-display" data-tex="\[
+                    U_\nu(x,y)=u_\nu(v(x,y),y).                \tag{HB1}
+\]">\[
+                    U_\nu(x,y)=u_\nu(v(x,y),y).                \tag{HB1}
+\]</span>
+These are jointly smooth, because both factors in their construction are jointly smooth, and <span class="math" data-tex="\(U_0(y,y)=I_r\)">\(U_0(y,y)=I_r\)</span>. We claim that on a sufficiently small neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of the diagonal,
+<span class="math math-display" data-tex="\[
+ (P_x-z)\sum_{\nu=0}^{N}U_\nu(x,y)F_\nu(s(x,y))
+       =\rho(y)^{-1}\delta_y(x)I_r
+                    +(P_xU_N(x,y))F_N(s(x,y)).                \tag{HB2}
+\]">\[
+ (P_x-z)\sum_{\nu=0}^{N}U_\nu(x,y)F_\nu(s(x,y))
+       =\rho(y)^{-1}\delta_y(x)I_r
+                    +(P_xU_N(x,y))F_N(s(x,y)).                \tag{HB2}
+\]</span>
+For a fixed <span class="math" data-tex="\(y\)">\(y\)</span>, the change from <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(x=\gamma(v,y)\)">\(x=\gamma(v,y)\)</span> converts the differential expression by (HG10). Its derivative at the center is the identity, so its Jacobian there is one. The transformation of the Dirac term in (HT9) consequently retains its coefficient <span class="math" data-tex="\(\sqrt{\det G(y)}=\rho(y)^{-1}\)">\(\sqrt{\det G(y)}=\rho(y)^{-1}\)</span>. This proves (HB2) for each center, including the delta normalization.</p>
+<p>There is also a direct joint-distribution justification. On a compact set of centers choose the positive symmetric square root <span class="math" data-tex="\(T(y)=H(y)^{1/2}\)">\(T(y)=H(y)^{1/2}\)</span>. Its smoothness can be seen from the equation <span class="math" data-tex="\(T^2=H\)">\(T^2=H\)</span>: the differential in a symmetric perturbation <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(TS+ST\)">\(TS+ST\)</span>, whose entries in an eigenbasis are <span class="math" data-tex="\((\lambda_j+\lambda_k)S_{jk}\)">\((\lambda_j+\lambda_k)S_{jk}\)</span>. Every <span class="math" data-tex="\(\lambda_j+\lambda_k\)">\(\lambda_j+\lambda_k\)</span> is positive, so the inverse function theorem gives a smooth square root locally; uniqueness of the positive root identifies these local choices. The variable <span class="math" data-tex="\(w=T(y)v\)">\(w=T(y)v\)</span>, together with <span class="math" data-tex="\(y\)">\(y\)</span>, is a smooth coordinate system near the zero section. The radial kernel in (HB2) is the pullback of the locally integrable function <span class="math" data-tex="\(F_\nu(w)\)">\(F_\nu(w)\)</span>. Multiplication by a smooth amplitude and smooth Jacobians preserves local integrability. Test against a compactly supported smooth function of <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>, change to <span class="math" data-tex="\((w,y)\)">\((w,y)\)</span>, and use Fubini for these integrable functions and their first derivatives. The fixed-center distribution identity then integrates to (HB2) as an identity on <span class="math" data-tex="\(W\)">\(W\)</span>. The delta term acts by the ordinary smooth diagonal restriction of the test function. No undefined pullback by the nonsmooth function <span class="math" data-tex="\(s\)">\(s\)</span> has been used.</p>
+<p>Integrating (HB2) against <span class="math" data-tex="\(f(y)d\mu(y)\)">\(f(y)d\mu(y)\)</span> gives exactly <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> for its first term. Omitting <span class="math" data-tex="\(\rho(y)\)">\(\rho(y)\)</span> from the operator while retaining the unscaled kernel would instead give <span class="math" data-tex="\(\rho(x)^{-1}f(x)\)">\(\rho(x)^{-1}f(x)\)</span>. This distinguishes an inverse relative to the metric density from one relative to coordinate volume.</p>
+<p>On a manifold the distance, the metric density, and the differential operator are geometric objects. The transport equations can be read off invariantly from the product calculation (HT5)–(HT6), and their normalized solutions are unique along each radial geodesic. Thus the local amplitudes agree on common normal neighborhoods, with the fiber transformation (HM8) for a bundle. A coordinate change in the second variable changes its coordinate volume and the identity-delta coefficient by reciprocal Jacobians; their combination <span class="math" data-tex="\(\delta_\mu\)">\(\delta_\mu\)</span> is invariant. Choosing a smaller neighborhood of the diagonal if needed makes all these descriptions agree. This proves the manifold and bundle extension of (HB2), without assuming a globally trivial bundle, an orthonormal coordinate system at every center, or a compact manifold.</p>
+<h2 id="AN03-EHP-009"><span id="an03-ehp-009"></span><span id="an03-ehp-009-frequency-coordinates-for-the-singularity-and-a-finite-error-budget"></span>AN03-EHP-009 — Frequency coordinates for the singularity and a finite error budget</h2>
+<p>We next put the bivariate radial kernel into a form that controls both variables at once. Work in a small coordinate neighborhood of a diagonal point. Since <span class="math" data-tex="\(v(y,y)=0\)">\(v(y,y)=0\)</span>, the fundamental theorem of calculus gives a smooth matrix <span class="math" data-tex="\(A(x,y)\)">\(A(x,y)\)</span> with
+<span class="math math-display" data-tex="\[
+ v(x,y)=A(x,y)(x-y),\qquad
+ A(x,y)=\int_0^1d_xv(y+t(x-y),y)\,dt,
+ \qquad A(y,y)=I.                                             \tag{HA1}
+\]">\[
+ v(x,y)=A(x,y)(x-y),\qquad
+ A(x,y)=\int_0^1d_xv(y+t(x-y),y)\,dt,
+ \qquad A(y,y)=I.                                             \tag{HA1}
+\]</span>
+After shrinking, the line segment stays in the coordinate neighborhood and <span class="math" data-tex="\(A\)">\(A\)</span> is invertible. Put <span class="math" data-tex="\(L(x,y)=T(y)A(x,y)\)">\(L(x,y)=T(y)A(x,y)\)</span>. Then
+<span class="math math-display" data-tex="\[
+                 s(x,y)=|L(x,y)(x-y)|.                        \tag{HA2}
+\]">\[
+                 s(x,y)=|L(x,y)(x-y)|.                        \tag{HA2}
+\]</span>
+The Fourier formula (RK7) and the invertible frequency substitution <span class="math" data-tex="\(\eta=L(x,y)^t\xi\)">\(\eta=L(x,y)^t\xi\)</span> give the distributional identity
+<span class="math math-display" data-tex="\[
+ F_\nu(s(x,y))=(2\pi)^{-n}\int e^{i(x-y)\cdot\eta}
+       \frac{\nu!\,|\det L(x,y)|^{-1}}
+            {\bigl(|L(x,y)^{-t}\eta|^2-z\bigr)^{\nu+1}}\,d\eta.
+                                                               \tag{HA3}
+\]">\[
+ F_\nu(s(x,y))=(2\pi)^{-n}\int e^{i(x-y)\cdot\eta}
+       \frac{\nu!\,|\det L(x,y)|^{-1}}
+            {\bigl(|L(x,y)^{-t}\eta|^2-z\bigr)^{\nu+1}}\,d\eta.
+                                                               \tag{HA3}
+\]</span>
+One rigorous interpretation uses the locally integrable pullback described after (HB2). Decompose its Fourier multiplier into the dyadic pieces of (RK5) and perform the frequency change separately on each piece. Each transformed integral is an ordinary smooth kernel equal to that dyadic kernel evaluated at <span class="math" data-tex="\(L(x,y)(x-y)\)">\(L(x,y)(x-y)\)</span>. The <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bounds (RK6), after the local coordinate change to <span class="math" data-tex="\((w,y)\)">\((w,y)\)</span>, show summability against compact tests. Thus their limit is exactly the locally integrable pullback. Integration by parts against compact tests also identifies this sum with the oscillatory amplitude integral in (HA3). Dependence of <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> causes no change in the exponential after the frequency substitution.</p>
+<p>On each compact base set the amplitude in (HA3), and that amplitude times any smooth matrix, satisfies
+<span class="math math-display" data-tex="\[
+ |\partial_x^\alpha\partial_y^\beta\partial_\eta^\gamma
+                         a_\nu(x,y,\eta)|
+       \leq C_{\alpha\beta\gamma}\langle\eta\rangle^{-2\nu-2-|\gamma|}.
+                                                               \tag{HA4}
+\]">\[
+ |\partial_x^\alpha\partial_y^\beta\partial_\eta^\gamma
+                         a_\nu(x,y,\eta)|
+       \leq C_{\alpha\beta\gamma}\langle\eta\rangle^{-2\nu-2-|\gamma|}.
+                                                               \tag{HA4}
+\]</span>
+Here the real quadratic form <span class="math" data-tex="\(|L^{-t}\eta|^2\)">\(|L^{-t}\eta|^2\)</span> is uniformly comparable to <span class="math" data-tex="\(|\eta|^2\)">\(|\eta|^2\)</span>. Inequality (RK9) therefore bounds its denominator below by a positive multiple of <span class="math" data-tex="\(1+|\eta|^2\)">\(1+|\eta|^2\)</span>. A base derivative of the quadratic form has degree two and is divided by an additional denominator of degree two, so it does not increase the order. A frequency derivative reduces the total degree by one. Repeated product and chain rules prove every bound in (HA4), including mixed derivatives. This gives an explicit proof of the amplitude class, rather than inferring it merely from radiality.</p>
+<p>If <span class="math" data-tex="\(k&lt;2\nu+2-n\)">\(k&lt;2\nu+2-n\)</span> is a nonnegative integer, all derivatives in <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> through order <span class="math" data-tex="\(k\)">\(k\)</span> of the integral in (HA3) are absolutely integrable: differentiating its exponential adds at most <span class="math" data-tex="\(k\)">\(k\)</span> frequency powers, and (HA4) leaves an integrable power strictly below <span class="math" data-tex="\(-n\)">\(-n\)</span>. Dominated convergence consequently proves joint <span class="math" data-tex="\(C^k\)">\(C^k\)</span> regularity. In particular,
+<span class="math math-display" data-tex="\[
+               F_N(s(x,y))\in C^{2N+1-n}(W)
+                   \quad\hbox{if }2N+1-n\geq0.                \tag{HA5}
+\]">\[
+               F_N(s(x,y))\in C^{2N+1-n}(W)
+                   \quad\hbox{if }2N+1-n\geq0.                \tag{HA5}
+\]</span>
+This is a joint conclusion; continuity in the running point separately from the center would not have sufficed.</p>
+<p>Choose a smooth function <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on <span class="math" data-tex="\(X\times X\)">\(X\times X\)</span>, equal to one on a neighborhood of the diagonal, whose support lies in <span class="math" data-tex="\(W\)">\(W\)</span>, and whose two support projections are proper. Such a choice exists without compactness of <span class="math" data-tex="\(X\)">\(X\)</span>. Use a locally finite precompact cover <span class="math" data-tex="\(V_j\)">\(V_j\)</span>, a partition <span class="math" data-tex="\(\theta_j(x)\)">\(\theta_j(x)\)</span>, and larger precompact sets <span class="math" data-tex="\(V&#x27;_j\)">\(V&#x27;_j\)</span> whose closures still lie within the permitted pair neighborhood over <span class="math" data-tex="\(\operatorname{supp}\theta_j\)">\(\operatorname{supp}\theta_j\)</span>. Choose <span class="math" data-tex="\(\psi_j(y)=1\)">\(\psi_j(y)=1\)</span> on a neighborhood of <span class="math" data-tex="\(\operatorname{supp}\theta_j\)">\(\operatorname{supp}\theta_j\)</span> and supported in <span class="math" data-tex="\(V&#x27;_j\)">\(V&#x27;_j\)</span>. The refinement and its enlargements can be chosen locally finite. Then <span class="math" data-tex="\(\chi=\sum_j\theta_j(x)\psi_j(y)\)">\(\chi=\sum_j\theta_j(x)\psi_j(y)\)</span> is one near the diagonal and has support in <span class="math" data-tex="\(W\)">\(W\)</span>. If one projection is restricted to a compact set, local finiteness gives only finitely many possible indices and the other projection lies in a finite union of precompact sets. This proves properness of both projections. All refinements take place inside the original small diagonal neighborhood; the same construction in locally finite bundle charts works on a manifold.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+        K_N(x,y)=\chi(x,y)\sum_{\nu=0}^NU_\nu(x,y)F_\nu(s(x,y)).
+                                                               \tag{HA6}
+\]">\[
+        K_N(x,y)=\chi(x,y)\sum_{\nu=0}^NU_\nu(x,y)F_\nu(s(x,y)).
+                                                               \tag{HA6}
+\]</span>
+The product rule and (HB2) imply
+<span class="math math-display" data-tex="\[
+\begin{split}
+ (P_x-z)K_N&amp;=\delta_\mu I_r+R_N,\\
+ R_N&amp;=\chi(P_xU_N)F_N(s)
+         +[P_x,\chi]\sum_{\nu=0}^NU_\nu F_\nu(s).
+\end{split}                                                    \tag{HA7}
+\]">\[
+\begin{split}
+ (P_x-z)K_N&amp;=\delta_\mu I_r+R_N,\\
+ R_N&amp;=\chi(P_xU_N)F_N(s)
+         +[P_x,\chi]\sum_{\nu=0}^NU_\nu F_\nu(s).
+\end{split}                                                    \tag{HA7}
+\]</span>
+All derivatives of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> vanish near the diagonal. The commutator term is therefore smooth; the kernel family is smooth away from the diagonal by (RK5) and the smoothness of <span class="math" data-tex="\(s\)">\(s\)</span> there. Formula (HA5) proves the claimed <span class="math" data-tex="\(C^{2N+1-n}\)">\(C^{2N+1-n}\)</span> regularity of <span class="math" data-tex="\(R_N\)">\(R_N\)</span>, and the cutoff makes the resulting operators properly supported. Its local amplitude order is <span class="math" data-tex="\(-2N-2\)">\(-2N-2\)</span>, because its first term has that order in (HA4) and the commutator is smooth. The order of <span class="math" data-tex="\(K_N\)">\(K_N\)</span> is <span class="math" data-tex="\(-2\)">\(-2\)</span>, irrespective of how many terms are used. Passing from metric-density integration to coordinate integration multiplies these amplitudes by the smooth positive factor <span class="math" data-tex="\(\rho(y)\)">\(\rho(y)\)</span>, and hence changes none of their orders.</p>
+<p>For a prescribed nonnegative integer <span class="math" data-tex="\(k\)">\(k\)</span>, it is enough to choose
+<span class="math math-display" data-tex="\[
+                  N\geq\left\lceil\frac{k+n-1}{2}\right\rceil.
+                                                               \tag{HA8}
+\]">\[
+                  N\geq\left\lceil\frac{k+n-1}{2}\right\rceil.
+                                                               \tag{HA8}
+\]</span>
+Equality in this inequality still leaves the strict integrability margin required above. It gives a finite error budget. In dimension two, the <span class="math" data-tex="\(r^2\log r\)">\(r^2\log r\)</span> term of <span class="math" data-tex="\(F_1\)">\(F_1\)</span> shows why replacing that finite budget by unlimited differentiability would be false in general.</p>
+<h2 id="AN03-EHP-010"><span id="an03-ehp-010"></span><span id="an03-ehp-010-action-on-distributions-and-preservation-of-microlocal-regularity"></span>AN03-EHP-010 — Action on distributions and preservation of microlocal regularity</h2>
+<p>We record the needed operator argument explicitly. Suppose that a matrix amplitude <span class="math" data-tex="\(a(x,y,\xi)\)">\(a(x,y,\xi)\)</span> has compact base support and
+<span class="math math-display" data-tex="\[
+ |\partial_x^\alpha\partial_y^\beta\partial_\xi^\gamma a|
+                   \leq C_{\alpha\beta\gamma}\langle\xi\rangle^{m-|\gamma|}.
+                                                               \tag{HW1}
+\]">\[
+ |\partial_x^\alpha\partial_y^\beta\partial_\xi^\gamma a|
+                   \leq C_{\alpha\beta\gamma}\langle\xi\rangle^{m-|\gamma|}.
+                                                               \tag{HW1}
+\]</span>
+Define its operator by the oscillatory kernel <span class="math" data-tex="\((2\pi)^{-n}\int e^{i(x-y)\xi}a\,d\xi\)">\((2\pi)^{-n}\int e^{i(x-y)\xi}a\,d\xi\)</span>. For a compactly supported smooth input, integration by parts in <span class="math" data-tex="\(y\)">\(y\)</span>, using <span class="math" data-tex="\((1-\Delta_y)^J\)">\((1-\Delta_y)^J\)</span>, gives arbitrary inverse powers of <span class="math" data-tex="\(\langle\xi\rangle\)">\(\langle\xi\rangle\)</span>. Derivatives of the input and amplitude have compact base support. Thus the integral, after this integration by parts, is absolutely convergent with every output derivative. Its bounds involve finitely many input seminorms. The same argument applies to the transposed kernel, with <span class="math" data-tex="\(x,y\)">\(x,y\)</span> exchanged. Consequently the operator and its transpose act continuously on test functions and extend by transposition to compactly supported distributions; with proper support they act on all distributions locally. These extensions agree with the integral on smooth inputs. Localizing a properly supported kernel in both variables reduces it to this compact-base case, plus kernels smooth off the diagonal.</p>
+<p>Here is a useful exact reduction, with its estimate. The operator has a left symbol
+<span class="math math-display" data-tex="\[
+ q(x,\xi)=(2\pi)^{-n}\iint e^{i(x-y)\cdot\eta}
+                           a(x,y,\xi+\eta)\,dy\,d\eta.         \tag{HW2}
+\]">\[
+ q(x,\xi)=(2\pi)^{-n}\iint e^{i(x-y)\cdot\eta}
+                           a(x,y,\xi+\eta)\,dy\,d\eta.         \tag{HW2}
+\]</span>
+To interpret the integral, first carry out the compact <span class="math" data-tex="\(y\)">\(y\)</span>-integration. Integrating by parts <span class="math" data-tex="\(J\)">\(J\)</span> times there bounds it by
+<span class="math math-display" data-tex="\[
+ C_J\langle\eta\rangle^{-2J}\langle\xi+\eta\rangle^m.
+\]">\[
+ C_J\langle\eta\rangle^{-2J}\langle\xi+\eta\rangle^m.
+\]</span>
+The elementary inequalities
+<span class="math" data-tex="\(\langle\xi+\eta\rangle\leq\sqrt2\langle\xi\rangle\langle\eta\rangle\)">\(\langle\xi+\eta\rangle\leq\sqrt2\langle\xi\rangle\langle\eta\rangle\)</span>
+and the same inequality with <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and <span class="math" data-tex="\(\xi+\eta\)">\(\xi+\eta\)</span> interchanged give
+<span class="math math-display" data-tex="\[
+ \langle\xi+\eta\rangle^t
+             \leq C_t\langle\xi\rangle^t\langle\eta\rangle^{|t|}
+                  \qquad(t\in\mathbb R).                     \tag{HW3}
+\]">\[
+ \langle\xi+\eta\rangle^t
+             \leq C_t\langle\xi\rangle^t\langle\eta\rangle^{|t|}
+                  \qquad(t\in\mathbb R).                     \tag{HW3}
+\]</span>
+Choose <span class="math" data-tex="\(2J&gt;n+|m|\)">\(2J&gt;n+|m|\)</span>. The <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-integral is absolutely convergent and bounded by <span class="math" data-tex="\(C\langle\xi\rangle^m\)">\(C\langle\xi\rangle^m\)</span>. For <span class="math" data-tex="\(\partial_x^\alpha\partial_\xi^\gamma q\)">\(\partial_x^\alpha\partial_\xi^\gamma q\)</span>, output derivatives introduce at most <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span> extra powers of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>; frequency derivatives replace <span class="math" data-tex="\(m\)">\(m\)</span> by <span class="math" data-tex="\(m-|\gamma|\)">\(m-|\gamma|\)</span>. Increasing <span class="math" data-tex="\(J\)">\(J\)</span> proves
+<span class="math math-display" data-tex="\[
+               |\partial_x^\alpha\partial_\xi^\gamma q|
+                    \leq C_{\alpha\gamma}\langle\xi\rangle^{m-|\gamma|}.
+                                                               \tag{HW4}
+\]">\[
+               |\partial_x^\alpha\partial_\xi^\gamma q|
+                    \leq C_{\alpha\gamma}\langle\xi\rangle^{m-|\gamma|}.
+                                                               \tag{HW4}
+\]</span>
+These bounds also justify differentiation under the integrated expression. Insert the Fourier inversion formula for a Schwartz input into the amplitude operator and put <span class="math" data-tex="\(\eta=\zeta-\xi\)">\(\eta=\zeta-\xi\)</span>, where <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> was its original amplitude frequency. The identity
+<span class="math" data-tex="\(e^{i(x-y)\zeta}e^{iy\xi}=e^{ix\xi}e^{i(x-y)\eta}\)">\(e^{i(x-y)\zeta}e^{iy\xi}=e^{ix\xi}e^{i(x-y)\eta}\)</span>
+gives exactly <span class="math" data-tex="\(\operatorname{Op}(q)\)">\(\operatorname{Op}(q)\)</span>, with the convention (E10) of AN03-EUC-003. Perform the compact <span class="math" data-tex="\(y\)">\(y\)</span>-integration first. The bounds just established, combined with rapid decay of the input Fourier transform, make the remaining integrals absolutely convergent and justify the interchange. Frequency cutoffs converge under those same bounds. Thus (HW2) is an equality of operators, not only an asymptotic expansion. This argument is entrywise and applies to matrices.</p>
+<p>For completeness, define <span class="math" data-tex="\((x_0,\xi_0)\notin\operatorname{WF}(u)\)">\((x_0,\xi_0)\notin\operatorname{WF}(u)\)</span>, where <span class="math" data-tex="\(\xi_0\ne0\)">\(\xi_0\ne0\)</span>, to mean that some smooth compact cutoff equal to one near <span class="math" data-tex="\(x_0\)">\(x_0\)</span> makes <span class="math" data-tex="\(\widehat{\theta u}(\xi)\)">\(\widehat{\theta u}(\xi)\)</span> decrease faster than every inverse power of <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span> in an open cone containing <span class="math" data-tex="\(\xi_0\)">\(\xi_0\)</span>. For a vector distribution take the union over its components. We prove
+<span class="math math-display" data-tex="\[
+                    \operatorname{WF}(\mathcal K_Nu)\subset
+                                 \operatorname{WF}(u).       \tag{HW5}
+\]">\[
+                    \operatorname{WF}(\mathcal K_Nu)\subset
+                                 \operatorname{WF}(u).       \tag{HW5}
+\]</span>
+Choose <span class="math" data-tex="\(\theta\)">\(\theta\)</span> giving the indicated decay, and a smaller output cutoff <span class="math" data-tex="\(\phi\)">\(\phi\)</span> supported where <span class="math" data-tex="\(\theta=1\)">\(\theta=1\)</span>. The contribution from <span class="math" data-tex="\((1-\theta)u\)">\((1-\theta)u\)</span> is smooth near <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span>, because its kernel is separated from the diagonal. Proper support reduces the relevant part of this distribution to compact support, so its finite-order estimate proves the smoothness by differentiation of that smooth kernel.</p>
+<p>For the localized part, put <span class="math" data-tex="\(v=\theta u\)">\(v=\theta u\)</span>. Choose another input cutoff equal to one near <span class="math" data-tex="\(\operatorname{supp}v\)">\(\operatorname{supp}v\)</span>, and apply (HW2) with that cutoff and <span class="math" data-tex="\(\phi\)">\(\phi\)</span> inserted in the amplitude. Its compact base support and (HW4) imply
+<span class="math math-display" data-tex="\[
+ |\mathcal F_x q(\eta-\xi,\xi)|
+              \leq C_J\langle\eta-\xi\rangle^{-J}\langle\xi\rangle^m.
+                                                               \tag{HW6}
+\]">\[
+ |\mathcal F_x q(\eta-\xi,\xi)|
+              \leq C_J\langle\eta-\xi\rangle^{-J}\langle\xi\rangle^m.
+                                                               \tag{HW6}
+\]</span>
+Thus the Fourier transform of the output is the integral of <span class="math" data-tex="\((2\pi)^{-n}\mathcal F_xq(\eta-\xi,\xi)\widehat v(\xi)\)">\((2\pi)^{-n}\mathcal F_xq(\eta-\xi,\xi)\widehat v(\xi)\)</span>. A compactly supported distribution has a polynomially bounded Fourier transform: apply its finite-order test-function estimate to a cutoff times <span class="math" data-tex="\(e^{-iy\xi}\)">\(e^{-iy\xi}\)</span>. It is rapidly decreasing in the given cone.</p>
+<p>For <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in that cone, the product <span class="math" data-tex="\(\langle\xi\rangle^m|\widehat v(\xi)|\)">\(\langle\xi\rangle^m|\widehat v(\xi)|\)</span> is bounded by <span class="math" data-tex="\(C_M\langle\xi\rangle^{-M}\)">\(C_M\langle\xi\rangle^{-M}\)</span> for every <span class="math" data-tex="\(M\)">\(M\)</span>. The integral against <span class="math" data-tex="\(\langle\eta-\xi\rangle^{-J}\)">\(\langle\eta-\xi\rangle^{-J}\)</span> is rapidly decreasing in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>: if <span class="math" data-tex="\(|\xi|\geq|\eta|/2\)">\(|\xi|\geq|\eta|/2\)</span>, allocate any desired power of <span class="math" data-tex="\(\langle\eta\rangle^{-1}\)">\(\langle\eta\rangle^{-1}\)</span> from <span class="math" data-tex="\(\langle\xi\rangle^{-M}\)">\(\langle\xi\rangle^{-M}\)</span>, leaving an integrable weight in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>; if <span class="math" data-tex="\(|\xi|&lt;|\eta|/2\)">\(|\xi|&lt;|\eta|/2\)</span>, allocate that power from <span class="math" data-tex="\(\langle\eta-\xi\rangle^{-J}\)">\(\langle\eta-\xi\rangle^{-J}\)</span>, again leaving an integrable convolution bound. Outside the original cone and for <span class="math" data-tex="\(\eta\)">\(\eta\)</span> in a smaller cone with closure inside it, angular separation gives
+<span class="math math-display" data-tex="\[
+                   |\eta-\xi|\geq c(|\eta|+|\xi|).             \tag{HW7}
+\]">\[
+                   |\eta-\xi|\geq c(|\eta|+|\xi|).             \tag{HW7}
+\]</span>
+The estimate (HW6) then defeats any fixed polynomial growth of <span class="math" data-tex="\(\widehat v\)">\(\widehat v\)</span> and gives any prescribed decay in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, by choosing <span class="math" data-tex="\(J\)">\(J\)</span> sufficiently large. For fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, the same estimates make the integral absolutely convergent. Apply the argument first to smooth regularizations of <span class="math" data-tex="\(v\)">\(v\)</span>; their Fourier transforms have a common polynomial bound and converge pointwise, so dominated convergence identifies the limit with the operator already defined by transposition. This proves (HW5).</p>
+<p>The definition is used in local coordinates. Its coordinate-invariance rule, when the result is stated intrinsically on a manifold, is the exact entry interface <strong>DEP-EHP-WF-COORD</strong>: under a smooth coordinate diffeomorphism <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, the covector transforms by <span class="math" data-tex="\((d\kappa)^t\)">\((d\kappa)^t\)</span>, and multiplication by a smooth invertible frame does not alter the transformed wavefront set. No propagation theorem or elliptic theorem is included in that interface. The preceding proof establishes (HW5) in every chart; this coordinate rule gives its invariant formulation. It remains an explicit other-volume prerequisite unless independently supplied by the course foundation.</p>
+<p>The identity (HA7) now acts on distributions in the form
+<span class="math math-display" data-tex="\[
+                       (P-z)\mathcal K_N=I+\mathcal R_N.      \tag{HW8}
+\]">\[
+                       (P-z)\mathcal K_N=I+\mathcal R_N.      \tag{HW8}
+\]</span>
+Although <span class="math" data-tex="\(R_N\)">\(R_N\)</span> has a finite <span class="math" data-tex="\(C^k\)">\(C^k\)</span> representative, its operator on arbitrary distributions is defined by the amplitude/transposition construction. One must not pair an arbitrary-order distribution directly with an insufficiently differentiable function. If <span class="math" data-tex="\(u\)">\(u\)</span> has order at most <span class="math" data-tex="\(d\)">\(d\)</span> on a relevant compact set and <span class="math" data-tex="\(k\geq d\)">\(k\geq d\)</span>, its ordinary finite-order pairing with the <span class="math" data-tex="\(C^k\)">\(C^k\)</span> kernel is valid and shows
+<span class="math math-display" data-tex="\[
+                        \mathcal R_Nu\in C^{k-d}
+                              \quad(k=2N+1-n).                \tag{HW9}
+\]">\[
+                        \mathcal R_Nu\in C^{k-d}
+                              \quad(k=2N+1-n).                \tag{HW9}
+\]</span>
+Indeed each output derivative through order <span class="math" data-tex="\(k-d\)">\(k-d\)</span> leaves at least <span class="math" data-tex="\(d\)">\(d\)</span> continuous input derivatives. The finite-order estimate extends the pairing continuously to those <span class="math" data-tex="\(C^d\)">\(C^d\)</span> functions, and uniform continuity on compact sets justifies differentiation and continuity of the pairing. Smooth approximation in the relevant <span class="math" data-tex="\(C^d\)">\(C^d\)</span> seminorms shows that this agrees with the transposition extension. This states the finite-error consequence at its actual distribution order.</p>
+<h2 id="AN03-EHP-011"><span id="an03-ehp-011"></span><span id="an03-ehp-011-completing-the-expansion-then-comparing-left-and-right-inverses"></span>AN03-EHP-011 — Completing the expansion, then comparing left and right inverses</h2>
+<p>There is a precise optional completion of the finite construction. It uses the asymptotic-summation argument of AN03-EUC-002 at <span class="math" data-tex="\((\rho,\delta)=(1,0)\)">\((\rho,\delta)=(1,0)\)</span>, with <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> as its base variables. That proof uses only finitely many base derivatives in each seminorm; their number need not equal the frequency dimension. It therefore applies to amplitudes satisfying (HW1). For localized amplitudes <span class="math" data-tex="\(a_\nu\)">\(a_\nu\)</span> of the summands in (HA6), the orders are <span class="math" data-tex="\(-2\nu-2\)">\(-2\nu-2\)</span>. The sum can be chosen with the same base support and
+<span class="math math-display" data-tex="\[
+       a_\infty-\sum_{\nu=0}^{N}a_\nu
+                 \text{ of amplitude order }-2N-4.           \tag{HC1}
+\]">\[
+       a_\infty-\sum_{\nu=0}^{N}a_\nu
+                 \text{ of amplitude order }-2N-4.           \tag{HC1}
+\]</span>
+Here and below the amplitudes include <span class="math" data-tex="\(\rho(y)\)">\(\rho(y)\)</span> when acting relative to coordinate volume. Concretely, replace the <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-th amplitude, for <span class="math" data-tex="\(\nu\geq1\)">\(\nu\geq1\)</span>, by
+<span class="math" data-tex="\((1-\vartheta(\xi/R_\nu))a_\nu\)">\((1-\vartheta(\xi/R_\nu))a_\nu\)</span>, with <span class="math" data-tex="\(R_\nu\to\infty\)">\(R_\nu\to\infty\)</span> chosen so that its first <span class="math" data-tex="\(\nu\)">\(\nu\)</span> seminorms at order <span class="math" data-tex="\(-2\nu-1\)">\(-2\nu-1\)</span> are at most <span class="math" data-tex="\(2^{-\nu}\)">\(2^{-\nu}\)</span>. On the support of the high-frequency factor, one extra inverse frequency power makes these seminorms arbitrarily small. Keep <span class="math" data-tex="\(a_0\)">\(a_0\)</span> itself. The series is locally finite in frequency. For a fixed remainder order, all sufficiently late terms have their controlled order below that remainder order, so their seminorms sum geometrically. The remaining finitely many terms already have the required order, and finitely many removed low-frequency pieces are smooth kernels. This proves (HC1) and the support assertion.</p>
+<p>For noncompact base sets choose the radii successively on a countable compact exhaustion and for the first <span class="math" data-tex="\(\nu\)">\(\nu\)</span> local seminorms. Alternatively, take a locally finite diagonal cover, a smooth partition of one near the diagonal supported in that cover, and perform the amplitude summation in each chart after multiplying each original summand by the same partition. Outside that diagonal neighborhood all original kernels are smooth and may be extended arbitrarily by a properly supported smooth kernel. A compact set meets only finitely many partition terms, so (HC1) remains a local operator-order statement there, including after two derivatives. This constructs a global properly supported kernel with the asserted expansion without imposing uniform estimates over the whole manifold.</p>
+<p>Let <span class="math" data-tex="\(\mathcal K_\infty\)">\(\mathcal K_\infty\)</span> be the resulting operator. Applying the order-two differential operator to (HC1) raises the amplitude order by at most two: a derivative of the exponential inserts one frequency factor, while a base derivative preserves the symbol order. Therefore
+<span class="math math-display" data-tex="\[
+ (P-z)(\mathcal K_\infty-\mathcal K_N)
+                         \text{ has order at most }-2N-2.    \tag{HC2}
+\]">\[
+ (P-z)(\mathcal K_\infty-\mathcal K_N)
+                         \text{ has order at most }-2N-2.    \tag{HC2}
+\]</span>
+By (HA7), <span class="math" data-tex="\(\mathcal R_N\)">\(\mathcal R_N\)</span> has that same order, apart from a smooth kernel. It follows from (HW8) that <span class="math" data-tex="\((P-z)\mathcal K_\infty-I\)">\((P-z)\mathcal K_\infty-I\)</span> has a kernel of every finite differentiability order: for any prescribed derivative count choose <span class="math" data-tex="\(N\)">\(N\)</span> so large that the power in (HC2) is integrable after all those derivatives. These are identities for the same kernel, so
+<span class="math math-display" data-tex="\[
+                     (P-z)\mathcal K_\infty=I+\mathcal R_\infty,
+                       \qquad R_\infty\in C^\infty.           \tag{HC3}
+\]">\[
+                     (P-z)\mathcal K_\infty=I+\mathcal R_\infty,
+                       \qquad R_\infty\in C^\infty.           \tag{HC3}
+\]</span>
+The infinite completion is nonunique; its finite initial singularity expansions are fixed modulo their stated orders. Every completion still has order <span class="math" data-tex="\(-2\)">\(-2\)</span> and the wavefront property (HW5).</p>
+<p>Choose a smooth Hermitian metric on the bundle; in the trivial case use the usual inner product on <span class="math" data-tex="\(\mathbb C^r\)">\(\mathbb C^r\)</span>. With respect to this metric and <span class="math" data-tex="\(d\mu\)">\(d\mu\)</span>, let <span class="math" data-tex="\(P^{*\mu}\)">\(P^{*\mu}\)</span> be the formal adjoint. In a trivial orthonormal frame it is obtained by <span class="math" data-tex="\(P^{*\mu}=\rho^{-1}P^{*dx}\rho\)">\(P^{*\mu}=\rho^{-1}P^{*dx}\rho\)</span>, where
+<span class="math math-display" data-tex="\[
+ P^{*dx}=-\partial_j(g^{jk}\partial_k)I_r
+                            -\partial_j(b^{j*}\,\cdot)+c^*.
+                                                               \tag{HC4}
+\]">\[
+ P^{*dx}=-\partial_j(g^{jk}\partial_k)I_r
+                            -\partial_j(b^{j*}\,\cdot)+c^*.
+                                                               \tag{HC4}
+\]</span>
+Expanding the derivatives verifies that <span class="math" data-tex="\(P^{*\mu}\)">\(P^{*\mu}\)</span> still has smooth complex matrix lower-order coefficients and positive scalar principal symbol <span class="math" data-tex="\(g^{jk}\xi_j\xi_k I_r\)">\(g^{jk}\xi_j\xi_k I_r\)</span>. A nonorthonormal bundle frame adds the smooth fiber-metric factors on either side of this formula and leaves that principal symbol unchanged. The adjoint of <span class="math" data-tex="\(P-z\)">\(P-z\)</span> is <span class="math" data-tex="\(P^{*\mu}-\bar z\)">\(P^{*\mu}-\bar z\)</span>, and <span class="math" data-tex="\(\bar z\)">\(\bar z\)</span> lies in the same slit domain.</p>
+<p>Apply the finite construction to <span class="math" data-tex="\(P^{*\mu}-\bar z\)">\(P^{*\mu}-\bar z\)</span>, obtaining <span class="math" data-tex="\((P^{*\mu}-\bar z)\mathcal Q_N=I+\mathcal S_N\)">\((P^{*\mu}-\bar z)\mathcal Q_N=I+\mathcal S_N\)</span>. Taking formal adjoints of its distributional kernel identity gives
+<span class="math math-display" data-tex="\[
+                      \mathcal Q_N^{*\mu}(P-z)=I+\mathcal S_N^{*\mu}.
+                                                               \tag{HC5}
+\]">\[
+                      \mathcal Q_N^{*\mu}(P-z)=I+\mathcal S_N^{*\mu}.
+                                                               \tag{HC5}
+\]</span>
+In orthonormal frames the adjoint kernel relative to <span class="math" data-tex="\(d\mu\)">\(d\mu\)</span> is <span class="math" data-tex="\(Q_N(y,x)^*\)">\(Q_N(y,x)^*\)</span>; the density is already in the integration convention, so no additional density ratio belongs in that kernel. Intrinsically the star is the fiber-metric adjoint. The kernel <span class="math" data-tex="\(S_N(y,x)^*\)">\(S_N(y,x)^*\)</span> has the same finite differentiability as <span class="math" data-tex="\(S_N\)">\(S_N\)</span>. This is the left finite parametrix, with both the parameter conjugation and the density accounted for. Completing <span class="math" data-tex="\(\mathcal Q_N\)">\(\mathcal Q_N\)</span> as above gives a left parametrix <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> with smooth error; denote a completed right one by <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>.</p>
+<p>If <span class="math" data-tex="\((P-z)\mathcal K=I+\mathcal R\)">\((P-z)\mathcal K=I+\mathcal R\)</span> and <span class="math" data-tex="\(\mathcal L(P-z)=I+\mathcal S\)">\(\mathcal L(P-z)=I+\mathcal S\)</span>, associativity on test functions and then distributions gives
+<span class="math math-display" data-tex="\[
+                  \mathcal K-\mathcal L
+                       =\mathcal L\mathcal R-\mathcal S\mathcal K.
+                                                               \tag{HC6}
+\]">\[
+                  \mathcal K-\mathcal L
+                       =\mathcal L\mathcal R-\mathcal S\mathcal K.
+                                                               \tag{HC6}
+\]</span>
+Both terms on the right have smooth kernels. For example, a properly supported smooth kernel <span class="math" data-tex="\(R(x,y)\)">\(R(x,y)\)</span>, with <span class="math" data-tex="\(y\)">\(y\)</span> in a compact set, is a smoothly parameterized family of compactly supported smooth functions of <span class="math" data-tex="\(x\)">\(x\)</span> after localization. The seminorm bounds established for amplitude operators show that <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> sends it to a smooth family of smooth functions. This proves smoothness of <span class="math" data-tex="\(\mathcal L\mathcal R\)">\(\mathcal L\mathcal R\)</span>. Apply the corresponding transpose statement for <span class="math" data-tex="\(\mathcal S\mathcal K\)">\(\mathcal S\mathcal K\)</span>. Proper support makes the intermediate integrations local and justifies their associativity. Formula (HC6) proves that completed left and right constructions have the same singularities, including for systems. It does not assert that their finite truncations differ by a smooth kernel.</p>
+<p>A direct consequence is the local equality
+<span class="math math-display" data-tex="\[
+                 \operatorname{WF}((P-z)u)=\operatorname{WF}(u).
+                                                               \tag{HC7}
+\]">\[
+                 \operatorname{WF}((P-z)u)=\operatorname{WF}(u).
+                                                               \tag{HC7}
+\]</span>
+One inclusion follows by differentiating and multiplying localized Fourier transforms: derivatives insert frequency polynomials, and smooth cutoffs give rapidly decreasing convolutions, preserving conic rapid decay by the cone argument of (HW6)–(HW7). For the reverse inclusion use <span class="math" data-tex="\(u=\mathcal L(P-z)u-\mathcal S u\)">\(u=\mathcal L(P-z)u-\mathcal S u\)</span>, localize to a relatively compact neighborhood, and apply (HW5). The smooth kernel makes <span class="math" data-tex="\(\mathcal S u\)">\(\mathcal S u\)</span> smooth there. In particular <span class="math" data-tex="\((P-z)u\in C^\infty\)">\((P-z)u\in C^\infty\)</span> implies <span class="math" data-tex="\(u\in C^\infty\)">\(u\in C^\infty\)</span>. To identify emptiness of the defined wavefront set with smoothness, cover the compact unit sphere by finitely many good cones. Choose one cutoff supported in the intersection of the corresponding base neighborhoods. Multiplication by this further cutoff preserves conic rapid decay on smaller cones, by convolution with its Schwartz Fourier transform and (HW7). The resulting localized Fourier transform therefore decays in every direction. Its inverse transform and all derivatives are absolutely convergent. The converse follows by integration by parts for a smooth compactly supported function.</p>
+<p>This local microlocal conclusion is what has been proved here. Global solvability, boundary conditions, Fredholm obstructions, and the complete existence and regularity results for other elliptic classes require their own course units or exact other-volume interfaces. The Hadamard calculation is not a substitute for those broader theorems.</p>
+<h2 id="AN03-EHP-012"><span id="an03-ehp-012"></span><span id="an03-ehp-012-three-calculations-that-test-the-construction"></span>AN03-EHP-012 — Three calculations that test the construction</h2>
+<p><strong>An anisotropic point source.</strong> In three dimensions take <span class="math" data-tex="\(G=\operatorname{diag}(4,1,9)\)">\(G=\operatorname{diag}(4,1,9)\)</span>, no lower-order terms, and <span class="math" data-tex="\(z=-1\)">\(z=-1\)</span>. Then
+<span class="math math-display" data-tex="\[
+ r(x,y)^2=(x_1-y_1)^2/4+(x_2-y_2)^2+(x_3-y_3)^2/9,
+ \qquad d\mu=\tfrac16\,dy.                                    \tag{HE1}
+\]">\[
+ r(x,y)^2=(x_1-y_1)^2/4+(x_2-y_2)^2+(x_3-y_3)^2/9,
+ \qquad d\mu=\tfrac16\,dy.                                    \tag{HE1}
+\]</span>
+The Euclidean kernel is <span class="math" data-tex="\(F_0(r,-1)=e^{-r}/(4\pi r)\)">\(F_0(r,-1)=e^{-r}/(4\pi r)\)</span>. To verify its normalization, the radial Laplacian gives <span class="math" data-tex="\((-\Delta+1)F_0=0\)">\((-\Delta+1)F_0=0\)</span> for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, and the inward flux at a shrinking sphere is
+<span class="math" data-tex="\(-4\pi r^2\partial_rF_0\to1\)">\(-4\pi r^2\partial_rF_0\to1\)</span>. Integration by parts therefore gives a unit Dirac mass, with the locally integrable zeroth-order term producing no point mass. The linear change of variables in AN03-EHP-003 now gives
+<span class="math math-display" data-tex="\[
+ \bigl(-4\partial_1^2-\partial_2^2-9\partial_3^2+1\bigr)
+               F_0(r(x,y),-1)=6\delta_y(x).                   \tag{HE2}
+\]">\[
+ \bigl(-4\partial_1^2-\partial_2^2-9\partial_3^2+1\bigr)
+               F_0(r(x,y),-1)=6\delta_y(x).                   \tag{HE2}
+\]</span>
+The unscaled kernel is an inverse with respect to <span class="math" data-tex="\(d\mu\)">\(d\mu\)</span>. With respect to <span class="math" data-tex="\(dy\)">\(dy\)</span>, its coefficient is <span class="math" data-tex="\(1/6\)">\(1/6\)</span>. Because the coefficients are constant, <span class="math" data-tex="\(U_0=1\)">\(U_0=1\)</span> and every <span class="math" data-tex="\(U_\nu\)">\(U_\nu\)</span>, <span class="math" data-tex="\(\nu\geq1\)">\(\nu\geq1\)</span>, is zero. A proper cutoff introduces only an error away from the diagonal. This example tests the inverse metric, the square root of the determinant and the integration density at once.</p>
+<p><strong>A drift absorbed by its leading amplitude.</strong> In one dimension let
+<span class="math" data-tex="\(P=-\partial_x^2+\beta\partial_x+c\)">\(P=-\partial_x^2+\beta\partial_x+c\)</span>, with constant complex <span class="math" data-tex="\(\beta,c\)">\(\beta,c\)</span>. Center the coordinates at <span class="math" data-tex="\(y\)">\(y\)</span> and put <span class="math" data-tex="\(v=x-y\)">\(v=x-y\)</span>. Here <span class="math" data-tex="\(h=\beta v\)">\(h=\beta v\)</span>, so the leading amplitude and its residual are
+<span class="math math-display" data-tex="\[
+ S(v)=e^{\beta v/2},\qquad PS=\lambda S,
+                  \qquad\lambda=c+\beta^2/4.                 \tag{HE3}
+\]">\[
+ S(v)=e^{\beta v/2},\qquad PS=\lambda S,
+                  \qquad\lambda=c+\beta^2/4.                 \tag{HE3}
+\]</span>
+Indeed <span class="math" data-tex="\(S&#x27;=\beta S/2\)">\(S&#x27;=\beta S/2\)</span>, and direct differentiation gives the stated residual. The unique amplitudes are
+<span class="math math-display" data-tex="\[
+                     u_\nu(v)=\frac{(-\lambda)^\nu}{\nu!}S(v).
+                                                               \tag{HE4}
+\]">\[
+                     u_\nu(v)=\frac{(-\lambda)^\nu}{\nu!}S(v).
+                                                               \tag{HE4}
+\]</span>
+To check the recursion, write <span class="math" data-tex="\(u_\nu=a_\nu S\)">\(u_\nu=a_\nu S\)</span>. The homogeneous transport cancels the derivative of <span class="math" data-tex="\(S\)">\(S\)</span>, leaving <span class="math" data-tex="\(2\nu a_\nu S=-2\lambda a_{\nu-1}S\)">\(2\nu a_\nu S=-2\lambda a_{\nu-1}S\)</span>; the normalization <span class="math" data-tex="\(a_0=1\)">\(a_0=1\)</span> yields (HE4). Thus the finite Hadamard sum is the finite resolvent-power expansion after the exact local conjugation
+<span class="math math-display" data-tex="\[
+              P(Sw)=S(-w&#x27;&#x27;+\lambda w).                        \tag{HE5}
+\]">\[
+              P(Sw)=S(-w&#x27;&#x27;+\lambda w).                        \tag{HE5}
+\]</span>
+Its last residual is <span class="math" data-tex="\(\lambda(-\lambda)^N S F_N/N!\)">\(\lambda(-\lambda)^N S F_N/N!\)</span>. There is no claim here that an infinite geometric series converges for arbitrary <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, or that multiplication by a complex exponential preserves a chosen global function space. The finite identity is valid without either assertion.</p>
+<p><strong>A matrix amplitude that detects ordering.</strong> Still in one dimension, set <span class="math" data-tex="\(G=1\)">\(G=1\)</span>, <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, and <span class="math" data-tex="\(b(x)=2A+2xB\)">\(b(x)=2A+2xB\)</span>, where <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are constant matrices. Use center zero. Then <span class="math" data-tex="\(h(x)=2xA+2x^2B\)">\(h(x)=2xA+2x^2B\)</span>, and the coefficient in the ordered integral series is <span class="math" data-tex="\(A_x(t)=xA+tx^2B\)">\(A_x(t)=xA+tx^2B\)</span>. Expanding that series through degree three gives
+<span class="math math-display" data-tex="\[
+\begin{split}
+ S(x)={}&amp;I+xA+\tfrac{x^2}{2}(B+A^2)\\
+       &amp;+x^3\bigl(AB/6+BA/3+A^3/6\bigr)+O(x^4).
+\end{split}             \tag{HE6}
+\]">\[
+\begin{split}
+ S(x)={}&amp;I+xA+\tfrac{x^2}{2}(B+A^2)\\
+       &amp;+x^3\bigl(AB/6+BA/3+A^3/6\bigr)+O(x^4).
+\end{split}             \tag{HE6}
+\]</span>
+The first integral contributes <span class="math" data-tex="\(xA+x^2B/2\)">\(xA+x^2B/2\)</span>. In the second integral the mixed terms have coefficients
+<span class="math" data-tex="\(\int_0^1\int_0^{t_1}t_2\,dt_2dt_1=1/6\)">\(\int_0^1\int_0^{t_1}t_2\,dt_2dt_1=1/6\)</span> and
+<span class="math" data-tex="\(\int_0^1\int_0^{t_1}t_1\,dt_2dt_1=1/3\)">\(\int_0^1\int_0^{t_1}t_1\,dt_2dt_1=1/3\)</span>; the third integral contributes <span class="math" data-tex="\(x^3A^3/6\)">\(x^3A^3/6\)</span>. Every later integral or unused term has degree at least four, with a uniformly convergent derivative expansion near zero. By contrast, <span class="math" data-tex="\(\exp(xA+x^2B/2)\)">\(\exp(xA+x^2B/2)\)</span> has mixed cubic coefficient <span class="math" data-tex="\((AB+BA)/4\)">\((AB+BA)/4\)</span>. The difference at that order is <span class="math" data-tex="\(x^3(BA-AB)/12\)">\(x^3(BA-AB)/12\)</span>. Choosing, for instance,
+<span class="math math-display" data-tex="\[
+ A=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\qquad
+ B=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}                       \tag{HE7}
+\]">\[
+ A=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\qquad
+ B=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}                       \tag{HE7}
+\]</span>
+makes it nonzero. Scalar transport cannot supply this matrix amplitude by an ordinary exponential shortcut.</p>
+<h2 id="AN03-EHP-013"><span id="an03-ehp-013"></span><span id="an03-ehp-013-problems-with-complete-solutions"></span>AN03-EHP-013 — Problems with complete solutions</h2>
+<p><strong>Problem 1 — The point mass in a second derivative.</strong> In dimension one, with <span class="math" data-tex="\(z=-1\)">\(z=-1\)</span>, verify directly that <span class="math" data-tex="\(F_0(x)=e^{-|x|}/2\)">\(F_0(x)=e^{-|x|}/2\)</span> has a locally integrable first derivative but its second distributional derivative is <span class="math" data-tex="\(F_0-\delta_0\)">\(F_0-\delta_0\)</span>. Explain what would fail in a product calculation that kept only the ordinary derivative off zero.</p>
+<p><strong>Solution.</strong> Away from zero,
+<span class="math" data-tex="\(F_0&#x27;=-\operatorname{sgn}(x)e^{-|x|}/2\)">\(F_0&#x27;=-\operatorname{sgn}(x)e^{-|x|}/2\)</span> and <span class="math" data-tex="\(F_0&#x27;&#x27;=F_0\)">\(F_0&#x27;&#x27;=F_0\)</span>. The function <span class="math" data-tex="\(F_0\)">\(F_0\)</span> is continuous at zero, so integration by parts on the two half-lines produces no delta term in its first derivative. Its first derivative has right and left limits <span class="math" data-tex="\(-1/2\)">\(-1/2\)</span> and <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. A second integration by parts against a compact smooth test <span class="math" data-tex="\(\phi\)">\(\phi\)</span> gives
+<span class="math math-display" data-tex="\[
+               \langle F_0&#x27;&#x27;,\phi\rangle
+                      =\int F_0(x)\phi(x)\,dx-\phi(0).       \tag{HP1}
+\]">\[
+               \langle F_0&#x27;&#x27;,\phi\rangle
+                      =\int F_0(x)\phi(x)\,dx-\phi(0).       \tag{HP1}
+\]</span>
+Both displayed ordinary functions are integrable. The jump contributes <span class="math" data-tex="\(-\delta_0\)">\(-\delta_0\)</span>, proving the assertion and <span class="math" data-tex="\((-\partial_x^2+1)F_0=\delta_0\)">\((-\partial_x^2+1)F_0=\delta_0\)</span>. If <span class="math" data-tex="\(u\)">\(u\)</span> is smooth, the distribution product rule contains <span class="math" data-tex="\(-u(0)\delta_0\)">\(-u(0)\delta_0\)</span> in <span class="math" data-tex="\((uF_0)&#x27;&#x27;\)">\((uF_0)&#x27;&#x27;\)</span>. Keeping only derivatives off zero would erase the identity operator from the parametrix equation. A coefficient vanishing at zero removes this delta contribution, but one must establish that vanishing before discarding it.</p>
+<p><strong>Problem 2 — An integrability threshold is not a vanishing order.</strong> In dimension three and at <span class="math" data-tex="\(z=-1\)">\(z=-1\)</span>, prove <span class="math" data-tex="\(F_1(0)=1/(8\pi)\)">\(F_1(0)=1/(8\pi)\)</span>. Why can no estimate <span class="math" data-tex="\(|F_1(x)|\leq C|x|\)">\(|F_1(x)|\leq C|x|\)</span> hold on a full neighborhood of zero? Derive the first nonconstant term using the radial derivative recursion.</p>
+<p><strong>Solution.</strong> The multiplier <span class="math" data-tex="\((1+|\xi|^2)^{-2}\)">\((1+|\xi|^2)^{-2}\)</span> is integrable in three dimensions. Dominated convergence in its inverse Fourier integral proves continuity at zero, and polar coordinates give
+<span class="math math-display" data-tex="\[
+ F_1(0)=(2\pi)^{-3}4\pi\int_0^\infty
+                     \frac{r^2}{(1+r^2)^2}\,dr=\frac1{8\pi}.
+                                                               \tag{HP2}
+\]">\[
+ F_1(0)=(2\pi)^{-3}4\pi\int_0^\infty
+                     \frac{r^2}{(1+r^2)^2}\,dr=\frac1{8\pi}.
+                                                               \tag{HP2}
+\]</span>
+For the integral substitute <span class="math" data-tex="\(r=\tan t\)">\(r=\tan t\)</span>, <span class="math" data-tex="\(0&lt;t&lt;\pi/2\)">\(0&lt;t&lt;\pi/2\)</span>; the integrand times <span class="math" data-tex="\(dr\)">\(dr\)</span> becomes <span class="math" data-tex="\(\sin^2t\,dt\)">\(\sin^2t\,dt\)</span>, whose integral is <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span>. An upper bound tending to zero would contradict the positive value and continuity. For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, (RK13) says <span class="math" data-tex="\(-2F_1&#x27;(r)=rF_0(r)=e^{-r}/(4\pi)\)">\(-2F_1&#x27;(r)=rF_0(r)=e^{-r}/(4\pi)\)</span>, so integration from zero gives
+<span class="math" data-tex="\(F_1(r)=F_1(0)-(1-e^{-r})/(8\pi)=e^{-r}/(8\pi)\)">\(F_1(r)=F_1(0)-(1-e^{-r})/(8\pi)=e^{-r}/(8\pi)\)</span>.
+In particular <span class="math" data-tex="\(F_1(r)=1/(8\pi)-r/(8\pi)+O(r^2)\)">\(F_1(r)=1/(8\pi)-r/(8\pi)+O(r^2)\)</span>. It is continuous but its radial cusp prevents differentiability at the origin as a function on <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>. This distinguishes the bounded regime in (RK3) from a false positive power of vanishing.</p>
+<p><strong>Problem 3 — A forced center value.</strong> Suppose <span class="math" data-tex="\(h(v)=\ell\cdot v\)">\(h(v)=\ell\cdot v\)</span> is scalar and <span class="math" data-tex="\(f(v)=f_0+q\cdot v\)">\(f(v)=f_0+q\cdot v\)</span>, with complex constants. For an arbitrary real <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, compute the value and gradient at zero of the smooth solution to <span class="math" data-tex="\((2\nu-h)u+2Eu=f\)">\((2\nu-h)u+2Eu=f\)</span>. Explain why specifying a different value at zero cannot yield another smooth solution.</p>
+<p><strong>Solution.</strong> At zero the equation gives <span class="math" data-tex="\(2\nu u(0)=f_0\)">\(2\nu u(0)=f_0\)</span>. Differentiate it in <span class="math" data-tex="\(v_j\)">\(v_j\)</span>. Since <span class="math" data-tex="\(\partial_j(Eu)=\partial_ju+E\partial_ju\)">\(\partial_j(Eu)=\partial_ju+E\partial_ju\)</span>, evaluation at zero gives
+<span class="math math-display" data-tex="\[
+ u(0)=\frac{f_0}{2\nu},\qquad
+ \partial_ju(0)=\frac{q_j+\ell_j f_0/(2\nu)}{2(\nu+1)}.       \tag{HP3}
+\]">\[
+ u(0)=\frac{f_0}{2\nu},\qquad
+ \partial_ju(0)=\frac{q_j+\ell_j f_0/(2\nu)}{2(\nu+1)}.       \tag{HP3}
+\]</span>
+The denominator is nonzero for every stated parameter. Existence follows directly from (HS5); differentiating that integral gives the same result because <span class="math" data-tex="\(u_0(v)=e^{\ell\cdot v/2}\)">\(u_0(v)=e^{\ell\cdot v/2}\)</span>, <span class="math" data-tex="\(\int_0^1t^{\nu-1}dt=1/\nu\)">\(\int_0^1t^{\nu-1}dt=1/\nu\)</span>, and <span class="math" data-tex="\(\int_0^1t^\nu dt=1/(\nu+1)\)">\(\int_0^1t^\nu dt=1/(\nu+1)\)</span>. For uniqueness, divide a homogeneous difference by the nonvanishing <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. Along a ray it is <span class="math" data-tex="\(Cr^{-\nu}\)">\(Cr^{-\nu}\)</span>; boundedness at the center forces <span class="math" data-tex="\(C=0\)">\(C=0\)</span>. The forced center value is a compatibility condition, not an extra free initial datum.</p>
+<p><strong>Problem 4 — Changing coordinates changes the drift.</strong> In one dimension let <span class="math" data-tex="\(P=-\partial_x(g(x)\partial_x)\)">\(P=-\partial_x(g(x)\partial_x)\)</span>, with <span class="math" data-tex="\(g&gt;0\)">\(g&gt;0\)</span> smooth. Fix <span class="math" data-tex="\(y\)">\(y\)</span>, and choose its unnormalized normal coordinate by <span class="math" data-tex="\(\gamma(0)=y\)">\(\gamma(0)=y\)</span>, <span class="math" data-tex="\(\gamma&#x27;(v)=\sqrt{g(\gamma(v))/g(y)}\)">\(\gamma&#x27;(v)=\sqrt{g(\gamma(v))/g(y)}\)</span>. Compute the transformed principal coefficient and drift. Find the normalized leading transport amplitude.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(\gamma&#x27;&gt;0\)">\(\gamma&#x27;&gt;0\)</span> near zero, the change is invertible and its Jacobian is <span class="math" data-tex="\(J=\gamma&#x27;\)">\(J=\gamma&#x27;\)</span>. The transformed principal coefficient is
+<span class="math" data-tex="\(g(\gamma)/(\gamma&#x27;)^2=g(y)\)">\(g(\gamma)/(\gamma&#x27;)^2=g(y)\)</span>, a constant. Acting on a smooth function of <span class="math" data-tex="\(v\)">\(v\)</span>, the original divergence expression becomes
+<span class="math math-display" data-tex="\[
+       -J^{-1}\partial_v(Jg(y)\partial_v)
+          =-g(y)\partial_v^2-g(y)(\partial_v\log J)\partial_v.
+                                                               \tag{HP4}
+\]">\[
+       -J^{-1}\partial_v(Jg(y)\partial_v)
+          =-g(y)\partial_v^2-g(y)(\partial_v\log J)\partial_v.
+                                                               \tag{HP4}
+\]</span>
+There was no original drift, yet the transformed drift is generally nonzero. The inverse metric at the center is <span class="math" data-tex="\(1/g(y)\)">\(1/g(y)\)</span>, hence <span class="math" data-tex="\(h(v)=-v\partial_v\log J(v)\)">\(h(v)=-v\partial_v\log J(v)\)</span>. The transport equation <span class="math" data-tex="\(2vS&#x27;=hS\)">\(2vS&#x27;=hS\)</span> reduces off zero to <span class="math" data-tex="\(2S&#x27;/S=-\partial_v\log J\)">\(2S&#x27;/S=-\partial_v\log J\)</span>. Since <span class="math" data-tex="\(J(0)=1\)">\(J(0)=1\)</span>, its normalized smooth solution is
+<span class="math math-display" data-tex="\[
+                    S(v)=J(v)^{-1/2}
+                         =\bigl(g(\gamma(v))/g(y)\bigr)^{-1/4}.
+                                                               \tag{HP5}
+\]">\[
+                    S(v)=J(v)^{-1/2}
+                         =\bigl(g(\gamma(v))/g(y)\bigr)^{-1/4}.
+                                                               \tag{HP5}
+\]</span>
+The formula extends smoothly across zero and verifies the equation there. Taking the leading amplitude to be one would miss this Jacobian correction except when <span class="math" data-tex="\(g\)">\(g\)</span> is locally constant along the coordinate.</p>
+<p><strong>Problem 5 — Choose a finite error for a singular input.</strong> Work in dimension seven. A compactly supported input distribution has order at most three. Choose the least integer <span class="math" data-tex="\(N\)">\(N\)</span> guaranteed by (HA5) and (HW9) to make the residual <span class="math" data-tex="\(\mathcal R_Nu\)">\(\mathcal R_Nu\)</span> twice continuously differentiable. Show directly why the available joint derivatives suffice. Does this choice guarantee a smooth residual for every distribution?</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(k=2N+1-7=2N-6\)">\(k=2N+1-7=2N-6\)</span>. The guaranteed output regularity is <span class="math" data-tex="\(k-3=2N-9\)">\(k-3=2N-9\)</span>. Requiring at least two derivatives gives <span class="math" data-tex="\(N\geq11/2\)">\(N\geq11/2\)</span>, so the least integer supplied by these bounds is <span class="math" data-tex="\(N=6\)">\(N=6\)</span>. It gives <span class="math" data-tex="\(k=6\)">\(k=6\)</span>, in fact three continuous output derivatives. With two output derivatives, the joint <span class="math" data-tex="\(C^6\)">\(C^6\)</span> kernel still has at least four continuous input derivatives, more than the three needed to pair with the distribution. The finite-order estimate bounds that pairing by the input <span class="math" data-tex="\(C^3\)">\(C^3\)</span> seminorm, and uniform continuity on the relevant compact product set proves continuity of each differentiated output. The smaller choice <span class="math" data-tex="\(N=5\)">\(N=5\)</span> provides only <span class="math" data-tex="\(k=4\)">\(k=4\)</span>, hence only one output derivative by this argument. This is a statement about the guaranteed bound; cancellation might improve a particular operator. A fixed <span class="math" data-tex="\(N=6\)">\(N=6\)</span> gives neither unlimited kernel derivatives nor control of arbitrary distribution order by this elementary pairing. The amplitude construction still defines its action on all distributions, but a smooth residual requires the separate completion of AN03-EHP-011.</p>
+<p><strong>Problem 6 — One parametrix becomes two.</strong> Let <span class="math" data-tex="\(A=P-z\)">\(A=P-z\)</span>. Suppose properly supported operators <span class="math" data-tex="\(K,L\)">\(K,L\)</span>, each with amplitude order <span class="math" data-tex="\(-2\)">\(-2\)</span>, satisfy <span class="math" data-tex="\(AK=I+R\)">\(AK=I+R\)</span> and <span class="math" data-tex="\(LA=I+S\)">\(LA=I+S\)</span>, where <span class="math" data-tex="\(R,S\)">\(R,S\)</span> have smooth kernels. Prove that <span class="math" data-tex="\(K\)">\(K\)</span> is also a left parametrix with smooth error. Track the order in the algebra, and explain why the same assertion with “smooth” cannot be deduced from only one fixed finite <span class="math" data-tex="\(C^k\)">\(C^k\)</span> bound for the error kernels.</p>
+<p><strong>Solution.</strong> Associativity gives <span class="math" data-tex="\(LAK=K+SK=L+LR\)">\(LAK=K+SK=L+LR\)</span>, so <span class="math" data-tex="\(K-L=LR-SK\)">\(K-L=LR-SK\)</span>. As proved after (HC6), a properly supported amplitude operator on either side of a properly supported smooth kernel gives a smooth kernel. Therefore <span class="math" data-tex="\(T=K-L\)">\(T=K-L\)</span> is smooth and properly supported. Now
+<span class="math math-display" data-tex="\[
+                         KA=LA+TA=I+S+TA.                    \tag{HP6}
+\]">\[
+                         KA=LA+TA=I+S+TA.                    \tag{HP6}
+\]</span>
+The right composition <span class="math" data-tex="\(TA\)">\(TA\)</span> differentiates the smooth kernel in its input variable, after the formal transpose and the integration density are included. All such derivatives are smooth, so <span class="math" data-tex="\(S+TA\)">\(S+TA\)</span> is a smooth error. The products used were <span class="math" data-tex="\(LR\)">\(LR\)</span> and <span class="math" data-tex="\(SK\)">\(SK\)</span>; no commutation of matrices or operators was invoked. With errors known only in one finite <span class="math" data-tex="\(C^k\)">\(C^k\)</span> class, applying or composing the operators consumes derivatives, and arbitrary smoothness of these products has not been established. The finite construction retains its explicit regularity budget; completing it is a logically separate step.</p>
+<h2 id="reading-provenance-and-further-directions">Reading, provenance and further directions</h2>
+<p>The mathematical antecedent is the Hadamard construction as treated by Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators</em>, corrected second printing, 1994, §17.4. This exposition develops a dyadic kernel estimate before the geometry, derives the exceptional Hessian term and flux identity explicitly, and separates matrix transport, finite error accounting and asymptotic completion. The examples and problems above were constructed for those distinctions.</p>
+<p>One intermediate zero-index product display on printed page 32 has the opposite cross-term sign from (HT6). Direct differentiation gives the drift contribution <span class="math" data-tex="\(+2hu f&#x27;\)">\(+2hu f&#x27;\)</span> and the principal cross contribution <span class="math" data-tex="\(-4Eu f&#x27;\)">\(-4Eu f&#x27;\)</span>, as recorded there. The normalized transport equation makes their sum zero; the finite parametrix identity and the source theorem are unaffected. This reconciliation is limited to that intermediate display.</p>
+<p>David Dos Santos Ferreira, Carlos E. Kenig and Mikko Salo, <a href="https://arxiv.org/abs/1112.3216v1"><em>On L^p resolvent estimates for Laplace-Beltrami operators on compact manifolds</em>, arXiv:1112.3216v1</a>, §3, pp. 8–11, is a useful comparison for the scalar resolvent construction. Its spectral parameter is the negative of the parameter used here. The inspected version does not supply the general matrix transport or the detailed finite-regularity and exceptional-distribution proofs required here. Problem 2 also explains why its displayed positive-power bound for all radial indices needs qualification. Semyon Dyatlov's <a href="https://math.mit.edu/~dyatlov/18.155-F21/Lecture15.pdf"><em>Lecture 15: variable-coefficient elliptic PDE</em>, MIT 18.155, Fall 2021, final notes</a>, §15.3 and its symbol-summation proof, offers a complementary symbolic construction. Its singular-support statements and bilinear transpose require the additional wavefront and density-adjoint arguments supplied above. These are comparison readings. Their exposition is not reproduced here.</p>
+<p>Three continuations help locate the result within the course. First, one can track which finitely many coefficient derivatives control a prescribed remainder norm on a specified compact set of centers. The proof supplies the mechanisms, but a sharp seminorm count would require optimizing its estimates. Second, the same transport amplitudes can be coupled to the causal radial wave family; the support, time traces and cone singularities of that family require the separate wave-kernel unit. Third, at a boundary the reflected geometry and boundary-matching transport must be constructed explicitly. Interior normal coordinates alone do not produce a boundary parametrix. These are further course and research routes, not claims that the corresponding known mathematics is conjectural.</p>
+<p>The independently written programme exposition is dedicated under <strong>CC0 1.0 Universal</strong>, as specified in the course license.</p>
+<footer><p>CC0 1.0. <a href="notices/AN-03/RIGHTS.md">Rights</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 dedication</a> · <a href="notices/AN-03/TITLE_PAGE.md">Original title</a> · <a href="notices/AN-03/HISTORY.md">Original history</a> · <a href="notices/AN-02/RENDERING.md">This rendering</a></p><p><span class="unlinked">Editable Markdown</span>. Source commit ab6fb17dcee250eb2fb6c550358b6b3362854f30.</p></footer></main></body></html>

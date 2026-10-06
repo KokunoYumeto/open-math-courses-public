@@ -1,0 +1,287 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="ef20db2c562c9fb68f31cfc0b9c6e9cec0abce7fe0d31f41b109c2d932a2d598"><title>Spectral radius and characters of a Banach algebra</title><link rel="stylesheet" href="../../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="banach-spectrum.md">Editable source</a> · <a href="../../LICENCES.html">Licences</a></nav><article><h1 id="spectral-radius-and-characters-of-a-banach-algebra">Spectral radius and characters of a Banach algebra</h1>
+<p><strong>Programme reading HA-LCA-PRE-BANACH.</strong> This reading precedes HA-LCA-02 and HA-LCA-03. It proves the spectral-radius and character results used later in Bochner's theorem, including the case without an identity. Its final section supplies the product compactness needed for the topology of the character space.</p>
+<p>We use set theory with choice, taking the maximal principle as the form of the choice axiom: a partially ordered set in which every chain has an upper bound has a maximal element. We also use the complete ordered real field and its complexification, and the definitions of vector space, norm, completeness, topology and continuity. The analytic and compactness results used below are proved here. A Banach space is a complete normed complex vector space. Algebra multiplication is associative and complex bilinear.</p>
+<h2 id="1-the-integration-facts-needed-for-the-resolvent">1. The integration facts needed for the resolvent</h2>
+<p><a id="ha-lca-pre-banach-lemma-1-1"></a>
+<strong>Lemma 1.1 (elementary compactness).</strong> A closed bounded subset of a finite-dimensional real coordinate space is compact. A continuous map from a compact metric space to a normed space is bounded and uniformly continuous. A real continuous function on a nonempty compact space attains its extrema. A real continuous function on an interval takes every value between its endpoint values.</p>
+<p><strong>Proof.</strong> Suppose an open cover of a closed box has no finite subcover. Bisect every coordinate interval and select one of the finitely many resulting closed boxes still having no finite subcover. Repeat. The nested coordinate intervals have lengths tending to zero, and completeness of the real field gives a common point: its coordinates are the suprema of the left endpoints. An open member of the cover containing this point contains all of a sufficiently small selected box. This contradicts the selection. A closed subset of the box is compact by adding its open complement to a cover. Every closed bounded set lies in a box.</p>
+<p>For a continuous map <span class="math" data-tex="\(f:K\to E\)">\(f:K\to E\)</span>, continuity gives, at each <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, a radius <span class="math" data-tex="\(r_x&gt;0\)">\(r_x&gt;0\)</span> such that
+<span class="math" data-tex="\(d(x,y)&lt;2r_x\)">\(d(x,y)&lt;2r_x\)</span> implies <span class="math" data-tex="\(\|f(y)-f(x)\|&lt;\varepsilon/2\)">\(\|f(y)-f(x)\|&lt;\varepsilon/2\)</span>.
+Choose a finite cover of <span class="math" data-tex="\(K\)">\(K\)</span> by the balls of radii <span class="math" data-tex="\(r_x\)">\(r_x\)</span>. If <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is the minimum of their radii, two points at distance less than <span class="math" data-tex="\(\delta\)">\(\delta\)</span> that meet the same selected ball of radius <span class="math" data-tex="\(r_x\)">\(r_x\)</span> both lie in its ball of radius <span class="math" data-tex="\(2r_x\)">\(2r_x\)</span>. The triangle inequality proves uniform continuity. The analogous finite cover with image oscillation less than one proves boundedness.</p>
+<p>A continuous image of a compact space is compact, since inverse images turn an open cover into an open cover. A compact subset of a Hausdorff space is closed: for a point outside it, separate that point from each point of the compact set, and then take a finite subcover on the compact side and the intersection of the corresponding neighbourhoods on the other side. Thus a compact subset of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> contains its supremum and infimum. Finally, for a continuous function with opposite signs at the endpoints, successively bisect and retain a half interval whose endpoint signs are opposite, unless a zero has already been found. The common point of the retained intervals is a zero by continuity. Subtracting the desired value proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-banach-lemma-1-2"></a>
+<strong>Lemma 1.2 (Banach-valued elementary calculus).</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a Banach space.</p>
+<ol>
+<li>A continuous <span class="math" data-tex="\(f:[a,b]\to E\)">\(f:[a,b]\to E\)</span> has a Riemann integral. It is linear, additive over adjacent intervals, and satisfies
+<span class="math math-display" data-tex="\[
+\left\|\int_a^b f(t)\,dt\right\|\le (b-a)\sup_{[a,b]}\|f(t)\|.
+\]">\[
+\left\|\int_a^b f(t)\,dt\right\|\le (b-a)\sup_{[a,b]}\|f(t)\|.
+\]</span>
+Uniform limits commute with this integral.</li>
+<li>If <span class="math" data-tex="\(F:[a,b]\to E\)">\(F:[a,b]\to E\)</span> is continuously differentiable, with one-sided derivatives at the endpoints, then
+<span class="math math-display" data-tex="\[
+F(b)-F(a)=\int_a^b F&#x27;(t)\,dt.
+\]">\[
+F(b)-F(a)=\int_a^b F&#x27;(t)\,dt.
+\]</span></li>
+<li>If <span class="math" data-tex="\(q(r,t)\)">\(q(r,t)\)</span> and its partial derivative <span class="math" data-tex="\(\partial_rq(r,t)\)">\(\partial_rq(r,t)\)</span> are continuous on a compact rectangle, then in its interior
+<span class="math math-display" data-tex="\[
+\frac{d}{dr}\int_a^b q(r,t)\,dt
+=\int_a^b\partial_rq(r,t)\,dt.
+\]">\[
+\frac{d}{dr}\int_a^b q(r,t)\,dt
+=\int_a^b\partial_rq(r,t)\,dt.
+\]</span></li>
+<li>Uniformly convergent series can be integrated term by term. A series of continuously differentiable functions whose derivatives converge uniformly, and whose values converge at one point, can be differentiated term by term on a compact interval.</li>
+</ol>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\omega(\delta)=\sup\{\|f(s)-f(t)\|:|s-t|\le\delta\}\)">\(\omega(\delta)=\sup\{\|f(s)-f(t)\|:|s-t|\le\delta\}\)</span>. Lemma 1.1 gives <span class="math" data-tex="\(\omega(\delta)\to0\)">\(\omega(\delta)\to0\)</span>. A tagged Riemann sum and any refinement differ by at most <span class="math" data-tex="\((b-a)\omega(\delta)\)">\((b-a)\omega(\delta)\)</span>, where <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is the original mesh. Comparing two sums through a common refinement proves that all sums of small mesh have the same limit in <span class="math" data-tex="\(E\)">\(E\)</span>. The norm estimate, linearity and additivity pass from sums to their limits. The estimate applied to a difference proves continuity under uniform limits.</p>
+<p>Here is a norm-valued substitute for the real mean-value argument. If a differentiable <span class="math" data-tex="\(H\)">\(H\)</span> satisfies <span class="math" data-tex="\(\|H&#x27;(t)\|\le M\)">\(\|H&#x27;(t)\|\le M\)</span>, then
+<span class="math math-display" data-tex="\[
+\|H(v)-H(u)\|\le M(v-u)\quad(u&lt;v).
+\]">\[
+\|H(v)-H(u)\|\le M(v-u)\quad(u&lt;v).
+\]</span>
+Otherwise choose <span class="math" data-tex="\(c&gt;M\)">\(c&gt;M\)</span> with <span class="math" data-tex="\(\|H(v)-H(u)\|&gt;c(v-u)\)">\(\|H(v)-H(u)\|&gt;c(v-u)\)</span>. At least one half interval has the same strict inequality with <span class="math" data-tex="\(c\)">\(c\)</span>, by the triangle inequality. Nested bisection produces intervals <span class="math" data-tex="\([u_j,v_j]\)">\([u_j,v_j]\)</span> containing a common point <span class="math" data-tex="\(t_0\)">\(t_0\)</span>. Differentiability at <span class="math" data-tex="\(t_0\)">\(t_0\)</span> gives
+<span class="math math-display" data-tex="\[
+H(v_j)-H(u_j)=H&#x27;(t_0)(v_j-u_j)+o(v_j-u_j),
+\]">\[
+H(v_j)-H(u_j)=H&#x27;(t_0)(v_j-u_j)+o(v_j-u_j),
+\]</span>
+since <span class="math" data-tex="\(|v_j-t_0|+|u_j-t_0|=v_j-u_j\)">\(|v_j-t_0|+|u_j-t_0|=v_j-u_j\)</span>. This contradicts <span class="math" data-tex="\(c&gt;M\)">\(c&gt;M\)</span>. One-sided differentiability handles an endpoint. In particular, a function with zero derivative is constant.</p>
+<p>For continuous <span class="math" data-tex="\(f\)">\(f\)</span>, the function <span class="math" data-tex="\(J(t)=\int_a^t f(s)\,ds\)">\(J(t)=\int_a^t f(s)\,ds\)</span> has derivative <span class="math" data-tex="\(f(t)\)">\(f(t)\)</span>: the difference quotient is the average over a small interval, whose difference from <span class="math" data-tex="\(f(t)\)">\(f(t)\)</span> is bounded by its local oscillation. Apply this to <span class="math" data-tex="\(f=F&#x27;\)">\(f=F&#x27;\)</span>. The difference <span class="math" data-tex="\(F-J\)">\(F-J\)</span> has zero derivative, proving assertion 2.</p>
+<p>For assertion 3, assertion 2 in the <span class="math" data-tex="\(r\)">\(r\)</span> variable gives
+<span class="math math-display" data-tex="\[
+\frac{q(r+h,t)-q(r,t)}h-\partial_rq(r,t)
+=\frac1h\int_r^{r+h}\bigl(\partial_rq(s,t)-\partial_rq(r,t)\bigr)\,ds.
+\]">\[
+\frac{q(r+h,t)-q(r,t)}h-\partial_rq(r,t)
+=\frac1h\int_r^{r+h}\bigl(\partial_rq(s,t)-\partial_rq(r,t)\bigr)\,ds.
+\]</span>
+Its norm tends uniformly to zero in <span class="math" data-tex="\(t\)">\(t\)</span>, by Lemma 1.1. Assertion 1 now proves differentiation under the integral. For assertion 4, apply assertion 1 to partial sums. For derivatives, integrate the uniformly convergent derivative series and use the identity in assertion 2 for each partial sum and the convergent values at the fixed point. This gives both uniform convergence of the original series and the claimed derivative. The product and chain rules used with these assertions follow by subtracting and adding the intermediate product, or by substituting the defining first-order remainder; bounded bilinear multiplication controls the product remainder. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-banach-lemma-1-3"></a>
+<strong>Lemma 1.3 (a periodic parametrization).</strong> There is a number <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span> and a continuously differentiable scalar function <span class="math" data-tex="\(e(t)\)">\(e(t)\)</span>, <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, such that
+<span class="math math-display" data-tex="\[
+e(0)=e(\tau)=1,\qquad e(t+s)=e(t)e(s),\qquad
+e&#x27;(t)=ie(t),\qquad |e(t)|=1.
+\]">\[
+e(0)=e(\tau)=1,\qquad e(t+s)=e(t)e(s),\qquad
+e&#x27;(t)=ie(t),\qquad |e(t)|=1.
+\]</span>
+For every integer <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+\int_0^\tau e(t)^k\,dt=0,
+\qquad \int_0^\tau 1\,dt=\tau.
+\]">\[
+\int_0^\tau e(t)^k\,dt=0,
+\qquad \int_0^\tau 1\,dt=\tau.
+\]</span>
+One may write <span class="math" data-tex="\(\tau=2\pi\)">\(\tau=2\pi\)</span> and <span class="math" data-tex="\(e(t)=\exp(it)\)">\(e(t)=\exp(it)\)</span>.</p>
+<p><strong>Proof.</strong> Define <span class="math" data-tex="\(\exp z=\sum_{n\ge0}z^n/n!\)">\(\exp z=\sum_{n\ge0}z^n/n!\)</span>. On <span class="math" data-tex="\(|z|\le R\)">\(|z|\le R\)</span>, the terms of this series and of its formal derivative are bounded by a summable sequence: after any integer larger than <span class="math" data-tex="\(2R+2\)">\(2R+2\)</span>, the ratios of successive majorants are at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. The scalar majorant bounds every difference of partial sums; completeness therefore gives a uniform limit for each series. Lemma 1.2 applied on real parameter intervals gives
+<span class="math" data-tex="\(d\exp(it)/dt=i\exp(it)\)">\(d\exp(it)/dt=i\exp(it)\)</span>.</p>
+<p>Absolutely convergent series can be multiplied and regrouped: discard tails so that the sum of norms of all omitted products is small, and perform the remaining finite multiplication. The binomial formula, obtained by expanding a finite product, then gives <span class="math" data-tex="\(\exp(z+w)=\exp z\exp w\)">\(\exp(z+w)=\exp z\exp w\)</span>. Conjugating the series and putting <span class="math" data-tex="\(w=-z\)">\(w=-z\)</span> shows <span class="math" data-tex="\(|\exp(it)|^2=1\)">\(|\exp(it)|^2=1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(c(t)=\operatorname{Re}\exp(it)\)">\(c(t)=\operatorname{Re}\exp(it)\)</span> and <span class="math" data-tex="\(s(t)=\operatorname{Im}\exp(it)\)">\(s(t)=\operatorname{Im}\exp(it)\)</span>. Then <span class="math" data-tex="\(c&#x27;=-s\)">\(c&#x27;=-s\)</span>, <span class="math" data-tex="\(s&#x27;=c\)">\(s&#x27;=c\)</span>, <span class="math" data-tex="\(c(0)=1\)">\(c(0)=1\)</span>, <span class="math" data-tex="\(s(0)=0\)">\(s(0)=0\)</span>. Also <span class="math" data-tex="\(c(2)&lt;0\)">\(c(2)&lt;0\)</span>: its series begins <span class="math" data-tex="\(1-2+2/3\)">\(1-2+2/3\)</span>, and the remaining alternating terms have negative sum, since their absolute values strictly decrease; this last assertion follows by grouping successive negative-positive pairs and taking the tail limit. Lemma 1.1 supplies a zero in <span class="math" data-tex="\((0,2)\)">\((0,2)\)</span>. The closed set of zeros in <span class="math" data-tex="\([0,2]\)">\([0,2]\)</span> has a least member <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>; continuity and the intermediate-value assertion give <span class="math" data-tex="\(c(t)&gt;0\)">\(c(t)&gt;0\)</span> on <span class="math" data-tex="\([0,\alpha)\)">\([0,\alpha)\)</span>. Hence
+<span class="math" data-tex="\(s(\alpha)=\int_0^\alpha c(t)\,dt&gt;0\)">\(s(\alpha)=\int_0^\alpha c(t)\,dt&gt;0\)</span>.
+The strict inequality follows by integrating over a small interval where <span class="math" data-tex="\(c&gt;1/2\)">\(c&gt;1/2\)</span>; elsewhere <span class="math" data-tex="\(c\ge0\)">\(c\ge0\)</span>. Since <span class="math" data-tex="\(c^2+s^2=1\)">\(c^2+s^2=1\)</span>, we obtain <span class="math" data-tex="\(s(\alpha)=1\)">\(s(\alpha)=1\)</span> and <span class="math" data-tex="\(\exp(i\alpha)=i\)">\(\exp(i\alpha)=i\)</span>. Put <span class="math" data-tex="\(\tau=4\alpha\)">\(\tau=4\alpha\)</span>. The multiplication law gives <span class="math" data-tex="\(\exp(i\tau)=1\)">\(\exp(i\tau)=1\)</span> and periodicity. For every integer <span class="math" data-tex="\(k\)">\(k\)</span>, including negative integers, differentiation of <span class="math" data-tex="\(e^k\)">\(e^k\)</span> gives <span class="math" data-tex="\(ik e^k\)">\(ik e^k\)</span>; inverses exist because <span class="math" data-tex="\(|e|=1\)">\(|e|=1\)</span>. The integral identities follow from Lemma 1.2 and equal endpoint values. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-banach-lemma-1-4"></a>
+<strong>Lemma 1.4 (radial coefficient identity).</strong> Suppose <span class="math" data-tex="\(H\)">\(H\)</span> is a Banach-valued complex differentiable function with continuous complex derivative on the annulus <span class="math" data-tex="\(r_0&lt;|z|&lt;r_1\)">\(r_0&lt;|z|&lt;r_1\)</span>. For each integer <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, set
+<span class="math math-display" data-tex="\[
+J_n(r)=\frac1\tau\int_0^\tau
+ r^{n+1}e(t)^{n+1}H(re(t))\,dt
+\quad(r_0&lt;r&lt;r_1).
+\]">\[
+J_n(r)=\frac1\tau\int_0^\tau
+ r^{n+1}e(t)^{n+1}H(re(t))\,dt
+\quad(r_0&lt;r&lt;r_1).
+\]</span>
+Then <span class="math" data-tex="\(J_n(r)\)">\(J_n(r)\)</span> is independent of <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><strong>Proof.</strong> On a compact subinterval of the permitted radii, the integrand <span class="math" data-tex="\(Q(r,t)\)">\(Q(r,t)\)</span> and both partial derivatives are continuous. The chain rule gives
+<span class="math math-display" data-tex="\[
+\partial_tQ=ir\,\partial_rQ.
+\]">\[
+\partial_tQ=ir\,\partial_rQ.
+\]</span>
+Consequently Lemma 1.2 yields
+<span class="math math-display" data-tex="\[
+J_n&#x27;(r)=\frac1{ir\tau}\int_0^\tau\partial_tQ(r,t)\,dt
+=\frac{Q(r,\tau)-Q(r,0)}{ir\tau}=0.
+\]">\[
+J_n&#x27;(r)=\frac1{ir\tau}\int_0^\tau\partial_tQ(r,t)\,dt
+=\frac{Q(r,\tau)-Q(r,0)}{ir\tau}=0.
+\]</span>
+The final equality is Lemma 1.3. The zero-derivative assertion in Lemma 1.2 proves constancy between any two permitted radii. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-resolvents-and-the-spectral-radius">2. Resolvents and the spectral radius</h2>
+<p>A <strong>Banach algebra</strong> <span class="math" data-tex="\(A\)">\(A\)</span> has a complete norm satisfying <span class="math" data-tex="\(\|ab\|\le\|a\|\|b\|\)">\(\|ab\|\le\|a\|\|b\|\)</span>. A unital Banach algebra in this section is nonzero and has identity <span class="math" data-tex="\(1\)">\(1\)</span> of norm one. An inverse always means a two-sided inverse. Write
+<span class="math math-display" data-tex="\[
+\sigma_A(a)=\{z\in\mathbb C:z1-a\text{ is not invertible in }A\}.
+\]">\[
+\sigma_A(a)=\{z\in\mathbb C:z1-a\text{ is not invertible in }A\}.
+\]</span></p>
+<p><a id="ha-lca-pre-banach-lemma-2-1"></a>
+<strong>Lemma 2.1 (geometric inversion).</strong> If <span class="math" data-tex="\(\|b\|&lt;1\)">\(\|b\|&lt;1\)</span>, then
+<span class="math math-display" data-tex="\[
+(1-b)^{-1}=\sum_{k=0}^\infty b^k.
+\]">\[
+(1-b)^{-1}=\sum_{k=0}^\infty b^k.
+\]</span>
+The invertible elements form an open set and inversion is continuous there. For fixed <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, its resolvent <span class="math" data-tex="\(R(z)=(z1-a)^{-1}\)">\(R(z)=(z1-a)^{-1}\)</span> has continuous complex derivative <span class="math" data-tex="\(R&#x27;(z)=-R(z)^2\)">\(R&#x27;(z)=-R(z)^2\)</span> wherever it is defined. Moreover,
+<span class="math math-display" data-tex="\[
+|z|&gt;\|a\|\quad\Longrightarrow\quad
+R(z)=\sum_{k=0}^\infty a^k z^{-k-1},\qquad
+\|R(z)\|\le\frac1{|z|-\|a\|}.
+\]">\[
+|z|&gt;\|a\|\quad\Longrightarrow\quad
+R(z)=\sum_{k=0}^\infty a^k z^{-k-1},\qquad
+\|R(z)\|\le\frac1{|z|-\|a\|}.
+\]</span></p>
+<p><strong>Proof.</strong> Every series with summable norms converges in a Banach space: the norm of a difference of partial sums is bounded by the corresponding scalar tail. Multiplication of the partial geometric sum by <span class="math" data-tex="\(1-b\)">\(1-b\)</span>, on either side, gives <span class="math" data-tex="\(1-b^{N+1}\to1\)">\(1-b^{N+1}\to1\)</span>. This proves the first assertion.</p>
+<p>If <span class="math" data-tex="\(u\)">\(u\)</span> is invertible and <span class="math" data-tex="\(\|u^{-1}v\|&lt;1\)">\(\|u^{-1}v\|&lt;1\)</span>, then
+<span class="math" data-tex="\(u+v=u(1+u^{-1}v)\)">\(u+v=u(1+u^{-1}v)\)</span> is invertible, and its inverse converges to <span class="math" data-tex="\(u^{-1}\)">\(u^{-1}\)</span> as <span class="math" data-tex="\(v\to0\)">\(v\to0\)</span>, by the geometric tail bound. This proves openness and continuity. Factoring <span class="math" data-tex="\(z1-a=z(1-a/z)\)">\(z1-a=z(1-a/z)\)</span> proves the last display. Near a resolvent point <span class="math" data-tex="\(z\)">\(z\)</span>,
+<span class="math math-display" data-tex="\[
+R(z+h)=(1+hR(z))^{-1}R(z)
+=R(z)-hR(z)^2+O(|h|^2).
+\]">\[
+R(z+h)=(1+hR(z))^{-1}R(z)
+=R(z)-hR(z)^2+O(|h|^2).
+\]</span>
+The geometric tail bounds the remainder in norm; continuity of inversion gives continuity of the displayed derivative. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-banach-theorem-2-2"></a>
+<strong>Theorem 2.2 (nonempty spectrum and spectral radius).</strong> The spectrum of <span class="math" data-tex="\(a\)">\(a\)</span> is nonempty and compact. Its radius satisfies the full limit formula
+<span class="math math-display" data-tex="\[
+r_A(a):=\max_{z\in\sigma_A(a)}|z|
+=\lim_{n\to\infty}\|a^n\|^{1/n}
+=\inf_{n\ge1}\|a^n\|^{1/n}.                 \tag{1}
+\]">\[
+r_A(a):=\max_{z\in\sigma_A(a)}|z|
+=\lim_{n\to\infty}\|a^n\|^{1/n}
+=\inf_{n\ge1}\|a^n\|^{1/n}.                 \tag{1}
+\]</span>
+The algebra need not be commutative.</p>
+<p><strong>Proof.</strong> Lemma 2.1 says the complement of the spectrum is open and contains <span class="math" data-tex="\(\{|z|&gt;\|a\|\}\)">\(\{|z|&gt;\|a\|\}\)</span>. Thus the spectrum is closed and bounded, and Lemma 1.1 makes it compact.</p>
+<p>For <span class="math" data-tex="\(r&gt;\|a\|\)">\(r&gt;\|a\|\)</span>, insert the uniformly convergent geometric resolvent series into Lemma 1.4. Its <span class="math" data-tex="\(k\)">\(k\)</span>-th integrated term is
+<span class="math math-display" data-tex="\[
+a^k r^{n-k}\frac1\tau\int_0^\tau e(t)^{n-k}\,dt.
+\]">\[
+a^k r^{n-k}\frac1\tau\int_0^\tau e(t)^{n-k}\,dt.
+\]</span>
+Only <span class="math" data-tex="\(k=n\)">\(k=n\)</span> survives, by Lemma 1.3. Therefore
+<span class="math math-display" data-tex="\[
+J_n(r)=a^n.                                  \tag{2}
+\]">\[
+J_n(r)=a^n.                                  \tag{2}
+\]</span>
+If the spectrum were empty, <span class="math" data-tex="\(R\)">\(R\)</span> would be defined on all of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Lemma 1.4 would make <span class="math" data-tex="\(J_0(r)=1\)">\(J_0(r)=1\)</span> for every <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. But continuity of <span class="math" data-tex="\(R\)">\(R\)</span> near zero would give
+<span class="math" data-tex="\(\|J_0(r)\|\le r\sup_{0\le t\le\tau}\|R(re(t))\|\to0\)">\(\|J_0(r)\|\le r\sup_{0\le t\le\tau}\|R(re(t))\|\to0\)</span>,
+a contradiction. This proves nonemptiness and justifies the maximum defining <span class="math" data-tex="\(r_A(a)\)">\(r_A(a)\)</span>.</p>
+<p>For any fixed <span class="math" data-tex="\(r&gt;r_A(a)\)">\(r&gt;r_A(a)\)</span>, the whole annulus <span class="math" data-tex="\(r_A(a)&lt;|z|&lt;\infty\)">\(r_A(a)&lt;|z|&lt;\infty\)</span> lies in the resolvent set. Lemma 1.4 extends (2) to this <span class="math" data-tex="\(r\)">\(r\)</span>. Hence, with finite <span class="math" data-tex="\(M_r=\sup_t\|R(re(t))\|\)">\(M_r=\sup_t\|R(re(t))\|\)</span>,
+<span class="math math-display" data-tex="\[
+\|a^n\|\le r^{n+1}M_r.
+\]">\[
+\|a^n\|\le r^{n+1}M_r.
+\]</span>
+Taking <span class="math" data-tex="\(n\)">\(n\)</span>-th roots gives <span class="math" data-tex="\(\limsup_n\|a^n\|^{1/n}\le r\)">\(\limsup_n\|a^n\|^{1/n}\le r\)</span>, and then at most <span class="math" data-tex="\(r_A(a)\)">\(r_A(a)\)</span> by letting <span class="math" data-tex="\(r\downarrow r_A(a)\)">\(r\downarrow r_A(a)\)</span>. The elementary limit <span class="math" data-tex="\(C^{1/n}\to1\)">\(C^{1/n}\to1\)</span> for <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> follows, for example, because <span class="math" data-tex="\((1+\varepsilon)^n\ge1+n\varepsilon\to\infty\)">\((1+\varepsilon)^n\ge1+n\varepsilon\to\infty\)</span>; apply this also to <span class="math" data-tex="\(1/C\)">\(1/C\)</span> when <span class="math" data-tex="\(C&lt;1\)">\(C&lt;1\)</span>. Thus the argument includes <span class="math" data-tex="\(r_A(a)=0\)">\(r_A(a)=0\)</span>.</p>
+<p>For the reverse bound, let <span class="math" data-tex="\(z\in\sigma_A(a)\)">\(z\in\sigma_A(a)\)</span>. The factorization
+<span class="math math-display" data-tex="\[
+z^n1-a^n=(z1-a)\sum_{j=0}^{n-1}z^{n-1-j}a^j
+\]">\[
+z^n1-a^n=(z1-a)\sum_{j=0}^{n-1}z^{n-1-j}a^j
+\]</span>
+has commuting factors. If commuting elements <span class="math" data-tex="\(u,v\)">\(u,v\)</span> have invertible product <span class="math" data-tex="\(uv\)">\(uv\)</span>, then <span class="math" data-tex="\(u\)">\(u\)</span> is invertible: both <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> commute with <span class="math" data-tex="\((uv)^{-1}\)">\((uv)^{-1}\)</span>, and <span class="math" data-tex="\(v(uv)^{-1}\)">\(v(uv)^{-1}\)</span> is a two-sided inverse for <span class="math" data-tex="\(u\)">\(u\)</span>. The commutation with the inverse follows by multiplying <span class="math" data-tex="\(u(uv)=(uv)u\)">\(u(uv)=(uv)u\)</span> on both sides by that inverse. It follows that <span class="math" data-tex="\(z^n\in\sigma_A(a^n)\)">\(z^n\in\sigma_A(a^n)\)</span>. Lemma 2.1 applied to <span class="math" data-tex="\(a^n\)">\(a^n\)</span> now gives <span class="math" data-tex="\(|z|^n\le\|a^n\|\)">\(|z|^n\le\|a^n\|\)</span>. Maximize over <span class="math" data-tex="\(z\)">\(z\)</span>. Every root in (1) is at least <span class="math" data-tex="\(r_A(a)\)">\(r_A(a)\)</span>, while their upper limit is at most that number. They therefore converge to it, and their infimum is also that number. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-banach-corollary-2-3"></a>
+<strong>Corollary 2.3 (division algebras).</strong> A nonzero unital complex Banach algebra in which every nonzero element is invertible consists exactly of scalar multiples of its identity.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(a\)">\(a\)</span>, choose <span class="math" data-tex="\(z\in\sigma_A(a)\)">\(z\in\sigma_A(a)\)</span> by Theorem 2.2. The noninvertible element <span class="math" data-tex="\(z1-a\)">\(z1-a\)</span> must be zero. Thus every <span class="math" data-tex="\(a\)">\(a\)</span> is a scalar multiple of <span class="math" data-tex="\(1\)">\(1\)</span>, uniquely since <span class="math" data-tex="\(1\ne0\)">\(1\ne0\)</span>. The identification with <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> preserves sums, products and norm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-ideals-characters-and-adjoining-an-identity">3. Ideals, characters and adjoining an identity</h2>
+<p><a id="ha-lca-pre-banach-lemma-3-1"></a>
+<strong>Lemma 3.1 (closed quotients).</strong> If <span class="math" data-tex="\(I\)">\(I\)</span> is a closed two-sided ideal in a Banach algebra <span class="math" data-tex="\(A\)">\(A\)</span>, then <span class="math" data-tex="\(A/I\)">\(A/I\)</span>, with
+<span class="math math-display" data-tex="\[
+\|a+I\|=\inf_{y\in I}\|a+y\|,
+\]">\[
+\|a+I\|=\inf_{y\in I}\|a+y\|,
+\]</span>
+is a Banach algebra. If <span class="math" data-tex="\(A\)">\(A\)</span> is unital and <span class="math" data-tex="\(I\)">\(I\)</span> proper, the quotient identity has norm one.</p>
+<p><strong>Proof.</strong> The infimum is independent of representative. Homogeneity and the triangle inequality follow by choosing representatives within an arbitrary positive error of their infima. Norm zero means the representative lies in the closure of <span class="math" data-tex="\(I\)">\(I\)</span>, hence in <span class="math" data-tex="\(I\)">\(I\)</span>. Multiplication is well-defined because <span class="math" data-tex="\(I\)">\(I\)</span> is two-sided. Choosing separate nearly minimal representatives for two cosets proves submultiplicativity, on letting their errors tend to zero.</p>
+<p>For completeness, take a Cauchy sequence of cosets and a subsequence <span class="math" data-tex="\(q_j\)">\(q_j\)</span> with <span class="math" data-tex="\(\|q_{j+1}-q_j\|&lt;2^{-j-1}\)">\(\|q_{j+1}-q_j\|&lt;2^{-j-1}\)</span>. Choose a representative <span class="math" data-tex="\(b_j\)">\(b_j\)</span> of <span class="math" data-tex="\(q_{j+1}-q_j\)">\(q_{j+1}-q_j\)</span> with <span class="math" data-tex="\(\|b_j\|&lt;2^{-j}\)">\(\|b_j\|&lt;2^{-j}\)</span>. For a representative <span class="math" data-tex="\(b_0\)">\(b_0\)</span> of <span class="math" data-tex="\(q_1\)">\(q_1\)</span>, the convergent series <span class="math" data-tex="\(b_0+\sum_{j\ge1}b_j\)">\(b_0+\sum_{j\ge1}b_j\)</span> represents the limit of the subsequence. The quotient norm is at most the norm of each representative, so the coset convergence follows from the series tail estimate. The original Cauchy sequence has the same limit by its Cauchy property.</p>
+<p>The quotient identity has norm at most one. If it had norm less than one, there would be <span class="math" data-tex="\(y\in I\)">\(y\in I\)</span> with <span class="math" data-tex="\(\|1-y\|&lt;1\)">\(\|1-y\|&lt;1\)</span>. Lemma 2.1 would make <span class="math" data-tex="\(y\)">\(y\)</span> invertible, forcing <span class="math" data-tex="\(1\in I\)">\(1\in I\)</span>, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-banach-lemma-3-2"></a>
+<strong>Lemma 3.2 (maximal ideals).</strong> In a commutative unital Banach algebra, each proper ideal is contained in a maximal proper ideal. Every maximal proper ideal <span class="math" data-tex="\(M\)">\(M\)</span> is closed, and <span class="math" data-tex="\(A/M\)">\(A/M\)</span> is canonically <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p><strong>Proof.</strong> Order the proper ideals containing a fixed proper ideal by inclusion. The union of a chain is an ideal: any finite list of its elements lies in one member of the chain. The union is proper because none of its members contains <span class="math" data-tex="\(1\)">\(1\)</span>. The maximal principle therefore supplies a maximal proper ideal.</p>
+<p>The closure of an ideal is an ideal, by continuity of addition and multiplication. The closure of a proper ideal is proper: otherwise some element of the ideal would be at distance less than one from <span class="math" data-tex="\(1\)">\(1\)</span>, contrary to Lemma 2.1. Maximality now makes <span class="math" data-tex="\(M\)">\(M\)</span> closed. For <span class="math" data-tex="\(a\notin M\)">\(a\notin M\)</span>, the ideal <span class="math" data-tex="\(M+Aa\)">\(M+Aa\)</span> is all of <span class="math" data-tex="\(A\)">\(A\)</span>, so <span class="math" data-tex="\(1=m+ba\)">\(1=m+ba\)</span> for some <span class="math" data-tex="\(m\in M,b\in A\)">\(m\in M,b\in A\)</span>. Thus the nonzero coset of <span class="math" data-tex="\(a\)">\(a\)</span> is invertible in <span class="math" data-tex="\(A/M\)">\(A/M\)</span>. Lemma 3.1 and Corollary 2.3 identify this quotient with the scalars. The identification is canonical because it sends the quotient identity to <span class="math" data-tex="\(1\in\mathbb C\)">\(1\in\mathbb C\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-banach-theorem-3-3"></a>
+<strong>Theorem 3.3 (spectrum through characters).</strong> A character is a nonzero complex-linear multiplicative map <span class="math" data-tex="\(\chi:A\to\mathbb C\)">\(\chi:A\to\mathbb C\)</span>. On a commutative unital Banach algebra every character is continuous, has norm one, and sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. Moreover,
+<span class="math math-display" data-tex="\[
+\sigma_A(a)=\{\chi(a):\chi\text{ a character}\},\qquad
+r_A(a)=\sup_\chi|\chi(a)|.                    \tag{3}
+\]">\[
+\sigma_A(a)=\{\chi(a):\chi\text{ a character}\},\qquad
+r_A(a)=\sup_\chi|\chi(a)|.                    \tag{3}
+\]</span>
+The kernels of characters are exactly the maximal proper ideals, and each such ideal is the kernel of exactly one character.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(\chi(b)\ne0\)">\(\chi(b)\ne0\)</span>. From <span class="math" data-tex="\(\chi(b)=\chi(1)\chi(b)\)">\(\chi(b)=\chi(1)\chi(b)\)</span> we get <span class="math" data-tex="\(\chi(1)=1\)">\(\chi(1)=1\)</span>. An invertible element has nonzero character value, by applying <span class="math" data-tex="\(\chi\)">\(\chi\)</span> to its inverse identity. Therefore <span class="math" data-tex="\(\chi(a)1-a\)">\(\chi(a)1-a\)</span> is noninvertible and <span class="math" data-tex="\(\chi(a)\in\sigma_A(a)\)">\(\chi(a)\in\sigma_A(a)\)</span>. Lemma 2.1 gives <span class="math" data-tex="\(|\chi(a)|\le\|a\|\)">\(|\chi(a)|\le\|a\|\)</span>, proving continuity and norm at most one; evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> gives equality.</p>
+<p>The kernel is maximal: if an ideal <span class="math" data-tex="\(J\)">\(J\)</span> strictly contains it, choose <span class="math" data-tex="\(b\in J\)">\(b\in J\)</span> with <span class="math" data-tex="\(\chi(b)\ne0\)">\(\chi(b)\ne0\)</span>. Then <span class="math" data-tex="\(b-\chi(b)1\)">\(b-\chi(b)1\)</span> lies in the kernel and hence in <span class="math" data-tex="\(J\)">\(J\)</span>, so subtraction and division by <span class="math" data-tex="\(\chi(b)\)">\(\chi(b)\)</span> put <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(J\)">\(J\)</span>. Thus <span class="math" data-tex="\(J=A\)">\(J=A\)</span>. Conversely Lemma 3.2 constructs a character with kernel any given maximal ideal. If a character has kernel <span class="math" data-tex="\(M\)">\(M\)</span>, the equality <span class="math" data-tex="\(a+M=z1+M\)">\(a+M=z1+M\)</span> forces <span class="math" data-tex="\(\chi(a)=z\)">\(\chi(a)=z\)</span>; hence it is unique.</p>
+<p>If <span class="math" data-tex="\(z\in\sigma_A(a)\)">\(z\in\sigma_A(a)\)</span>, the ideal <span class="math" data-tex="\(A(z1-a)\)">\(A(z1-a)\)</span> is proper: containing <span class="math" data-tex="\(1\)">\(1\)</span> would give an inverse, using commutativity. Put it inside a maximal ideal, and apply its character. This gives <span class="math" data-tex="\(z=\chi(a)\)">\(z=\chi(a)\)</span>, proving the reverse inclusion in (3). Taking absolute values proves the radius statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-banach-theorem-3-4"></a>
+<strong>Theorem 3.4 (the case without an identity).</strong> For any complex Banach algebra <span class="math" data-tex="\(A\)">\(A\)</span>, including the zero algebra, its unitization is
+<span class="math math-display" data-tex="\[
+A^+=\mathbb C\oplus A,\qquad
+(\lambda,a)(\mu,b)=(\lambda\mu,\lambda b+\mu a+ab),
+\qquad \|(\lambda,a)\|=|\lambda|+\|a\|.
+\]">\[
+A^+=\mathbb C\oplus A,\qquad
+(\lambda,a)(\mu,b)=(\lambda\mu,\lambda b+\mu a+ab),
+\qquad \|(\lambda,a)\|=|\lambda|+\|a\|.
+\]</span>
+It is a unital Banach algebra, and <span class="math" data-tex="\(a\mapsto(0,a)\)">\(a\mapsto(0,a)\)</span> is an isometric algebra embedding. If <span class="math" data-tex="\(A\)">\(A\)</span> is commutative and <span class="math" data-tex="\(\Delta(A)\)">\(\Delta(A)\)</span> is its set of characters, then
+<span class="math math-display" data-tex="\[
+\sigma_{A^+}((0,a))=\{0\}\cup\{\chi(a):\chi\in\Delta(A)\},
+\qquad
+\lim_{n\to\infty}\|a^n\|^{1/n}
+=\sup\bigl(\{0\}\cup\{|\chi(a)|:\chi\in\Delta(A)\}\bigr).
+                                                        \tag{4}
+\]">\[
+\sigma_{A^+}((0,a))=\{0\}\cup\{\chi(a):\chi\in\Delta(A)\},
+\qquad
+\lim_{n\to\infty}\|a^n\|^{1/n}
+=\sup\bigl(\{0\}\cup\{|\chi(a)|:\chi\in\Delta(A)\}\bigr).
+                                                        \tag{4}
+\]</span>
+All characters of <span class="math" data-tex="\(A\)">\(A\)</span> are contractive. For a unital <span class="math" data-tex="\(A\)">\(A\)</span>, using this unitization merely adds zero to its ordinary spectrum and leaves its radius unchanged.</p>
+<p><strong>Proof.</strong> Bilinearity is immediate. Expanding a triple product on either association gives scalar part <span class="math" data-tex="\(\lambda\mu\nu\)">\(\lambda\mu\nu\)</span> and vector part
+<span class="math math-display" data-tex="\[
+\lambda\mu c+\lambda\nu b+\mu\nu a+\lambda bc+\mu ac+\nu ab+(ab)c,
+\]">\[
+\lambda\mu c+\lambda\nu b+\mu\nu a+\lambda bc+\mu ac+\nu ab+(ab)c,
+\]</span>
+with <span class="math" data-tex="\((ab)c=a(bc)\)">\((ab)c=a(bc)\)</span>. This proves associativity, even when <span class="math" data-tex="\(A\)">\(A\)</span> is noncommutative. The identity is <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, of norm one. The triangle inequality and submultiplicativity in <span class="math" data-tex="\(A\)">\(A\)</span> bound the norm of a product by <span class="math" data-tex="\((|\lambda|+\|a\|)(|\mu|+\|b\|)\)">\((|\lambda|+\|a\|)(|\mu|+\|b\|)\)</span>. A Cauchy sequence has Cauchy scalar and vector coordinates, so the norm is complete. The embedding and its norm assertion follow directly from the definition.</p>
+<p>Every <span class="math" data-tex="\(\chi\in\Delta(A)\)">\(\chi\in\Delta(A)\)</span> extends to a character
+<span class="math" data-tex="\(\chi^+(\lambda,a)=\lambda+\chi(a)\)">\(\chi^+(\lambda,a)=\lambda+\chi(a)\)</span>; direct expansion verifies multiplication. By Theorem 3.3 it is contractive, so <span class="math" data-tex="\(|\chi(a)|\le\|a\|\)">\(|\chi(a)|\le\|a\|\)</span>. Every character of <span class="math" data-tex="\(A^+\)">\(A^+\)</span> restricts either to a character of <span class="math" data-tex="\(A\)">\(A\)</span>, in which case it is this extension, or to zero, in which case it is <span class="math" data-tex="\(\epsilon(\lambda,a)=\lambda\)">\(\epsilon(\lambda,a)=\lambda\)</span>. Apply Theorems 3.3 and 2.2 in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>, and note <span class="math" data-tex="\((0,a)^n=(0,a^n)\)">\((0,a)^n=(0,a^n)\)</span>, to obtain (4). If <span class="math" data-tex="\(A\)">\(A\)</span> already has an identity, Theorem 3.3 identifies the nonzero-character values with its ordinary spectrum, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-compactness-and-the-gelfand-transform">4. Compactness and the Gelfand transform</h2>
+<p><a id="ha-lca-pre-banach-lemma-4-1"></a>
+<strong>Lemma 4.1 (arbitrary product compactness).</strong> A product of compact Hausdorff spaces, with the product topology, is compact Hausdorff. No countability hypothesis is needed.</p>
+<p><strong>Proof.</strong> A proper filter on a set is a family of subsets closed under supersets and finite intersections, containing the whole set and not the empty set. A maximal such filter is an ultrafilter. Every proper filter extends to one by the maximal principle: a chain union is again a proper filter. An ultrafilter contains, for every subset <span class="math" data-tex="\(S\)">\(S\)</span>, either <span class="math" data-tex="\(S\)">\(S\)</span> or its complement. Indeed, if adjoining <span class="math" data-tex="\(S\)">\(S\)</span> cannot generate a proper filter, some member of the original filter is disjoint from <span class="math" data-tex="\(S\)">\(S\)</span>, which puts the complement in the filter. Otherwise maximality puts <span class="math" data-tex="\(S\)">\(S\)</span> in it. It cannot contain both.</p>
+<p>A space is compact if and only if every ultrafilter on its underlying set converges to some point, where convergence means that every neighbourhood of the point belongs to the filter. To prove the forward implication, the closures of filter members have the finite-intersection property. Compactness implies their common intersection is nonempty, since otherwise their open complements would have a finite subcover. Choose a point <span class="math" data-tex="\(x\)">\(x\)</span> in that intersection. If an open neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> were absent from the filter, its closed complement would belong to the filter, contradicting the choice of <span class="math" data-tex="\(x\)">\(x\)</span>. Thus the filter converges. Conversely, a cover with no finite subcover has complements generating a proper filter. An ultrafilter extending it could not converge: a covering open set containing a putative limit and its complement would both belong to the filter. This proves the characterization.</p>
+<p>If a product has an empty factor, it is empty and hence compact. Otherwise choice supplies an element of each factor. Given an ultrafilter on the product, its image filter in coordinate <span class="math" data-tex="\(j\)">\(j\)</span>, defined by <span class="math" data-tex="\(S\mapsto p_j^{-1}(S)\)">\(S\mapsto p_j^{-1}(S)\)</span>, is an ultrafilter on that factor. Choose a limit <span class="math" data-tex="\(x_j\)">\(x_j\)</span> in each compact factor. Every basic neighbourhood of <span class="math" data-tex="\(x=(x_j)_j\)">\(x=(x_j)_j\)</span> imposes conditions on only finitely many coordinates. Its inverse-image conditions belong to the original filter, and so does their finite intersection. The original filter therefore converges to <span class="math" data-tex="\(x\)">\(x\)</span>. The characterization proves compactness. Two distinct product points differ in a coordinate; disjoint neighbourhoods in that Hausdorff factor separate the points in the product. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-banach-theorem-4-2"></a>
+<strong>Theorem 4.2 (topology of the character space).</strong> Give <span class="math" data-tex="\(\Delta(A)\)">\(\Delta(A)\)</span> the topology of pointwise convergence on <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>For a commutative unital Banach algebra it is a nonempty compact Hausdorff space. For a general commutative Banach algebra it is locally compact Hausdorff, and each function
+<span class="math math-display" data-tex="\[
+\widehat a:\Delta(A)\to\mathbb C,\qquad \widehat a(\chi)=\chi(a),
+\]">\[
+\widehat a:\Delta(A)\to\mathbb C,\qquad \widehat a(\chi)=\chi(a),
+\]</span>
+belongs to <span class="math" data-tex="\(C_0(\Delta(A))\)">\(C_0(\Delta(A))\)</span>. The Gelfand transform <span class="math" data-tex="\(a\mapsto\widehat a\)">\(a\mapsto\widehat a\)</span> is a contractive algebra homomorphism and
+<span class="math math-display" data-tex="\[
+\|\widehat a\|_\infty=r_{A^+}((0,a))
+=\lim_n\|a^n\|^{1/n}.                       \tag{5}
+\]">\[
+\|\widehat a\|_\infty=r_{A^+}((0,a))
+=\lim_n\|a^n\|^{1/n}.                       \tag{5}
+\]</span>
+For the empty character space its uniform norm is zero. Injectivity or density of its range is not asserted for an arbitrary Banach algebra.</p>
+<p><strong>Proof.</strong> In the unital case place the character space inside
+<span class="math" data-tex="\(\prod_{a\in A}\{z\in\mathbb C:|z|\le\|a\|\}\)">\(\prod_{a\in A}\{z\in\mathbb C:|z|\le\|a\|\}\)</span>.
+Each factor is compact by Lemma 1.1, so the product is compact Hausdorff by Lemma 4.1. The equations expressing additivity, complex homogeneity, multiplication and value one at <span class="math" data-tex="\(1\)">\(1\)</span> are closed conditions on the coordinates; subtraction and multiplication of finitely many complex coordinates are continuous. They specify exactly the characters. A closed subset of a compact space is compact, as proved in Lemma 1.1, and a subspace of a Hausdorff space is Hausdorff. Existence follows from Lemma 3.2 and Theorem 3.3.</p>
+<p>For general <span class="math" data-tex="\(A\)">\(A\)</span>, Theorem 3.4 identifies <span class="math" data-tex="\(\Delta(A)\)">\(\Delta(A)\)</span> with <span class="math" data-tex="\(\Delta(A^+)\setminus\{\epsilon\}\)">\(\Delta(A^+)\setminus\{\epsilon\}\)</span>, where <span class="math" data-tex="\(\epsilon(\lambda,a)=\lambda\)">\(\epsilon(\lambda,a)=\lambda\)</span>. This is a homeomorphism: restriction is continuous coordinate by coordinate, and the inverse extension has coordinate values <span class="math" data-tex="\(\lambda+\chi(a)\)">\(\lambda+\chi(a)\)</span>, also continuous. The point <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> is closed in the compact Hausdorff space, so its complement is open. An open subspace of a compact Hausdorff space is locally compact: for a point in the open subspace, separate it from each point of the closed compact complement, take a finite subcover of that complement, and intersect the corresponding neighbourhoods of the first point. The closure of this intersection avoids the complement and is compact. If the complement is empty, the whole compact space itself is a compact neighbourhood. This supplies the required local compactness in every case.</p>
+<p>The continuous coordinate function <span class="math" data-tex="\(\widehat{(0,a)}\)">\(\widehat{(0,a)}\)</span> on <span class="math" data-tex="\(\Delta(A^+)\)">\(\Delta(A^+)\)</span> vanishes at <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Therefore for every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, its closed level set <span class="math" data-tex="\(\{|\widehat{(0,a)}|\ge\delta\}\)">\(\{|\widehat{(0,a)}|\ge\delta\}\)</span> is compact and avoids <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Restricted to <span class="math" data-tex="\(\Delta(A)\)">\(\Delta(A)\)</span>, this is exactly the assertion that <span class="math" data-tex="\(\widehat a\)">\(\widehat a\)</span> vanishes at infinity. Linearity and multiplication are coordinatewise identities. Contractivity and (5) are Theorem 3.4. In the already unital case the added zero leaves the radius unchanged. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="source-reading">Source reading</h2>
+<p>The freely accessible author versions used for comparison are Michael Taylor's <a href="https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/banalg.pdf"><em>Lectures on Banach Algebras</em></a>, §1, §2 through Proposition 2.6 and Appendix B through Proposition B.1, and Jacob Lurie's <a href="https://people.math.harvard.edu/~lurie/261ynotes/lecture2.pdf"><em>Math 261y: von Neumann Algebras, Lecture 2</em></a>, 2 September 2011, Proposition 5 through Remark 15. Both were accessed on 4 October 2026. This reading supplies its own complete derivations, including the radial integral argument and the supporting calculus, quotient and compactness proofs; none of the source citations is used in place of a proof.</p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

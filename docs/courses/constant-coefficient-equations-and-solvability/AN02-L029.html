@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Uniform interior estimates with distance weights</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="uniform-interior-estimates-with-distance-weights">Uniform interior estimates with distance weights</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>An interior derivative estimate has two scales: the frequency scale at which the equation controls a direction, and the physical distance left before reaching the boundary. We connect them with a Fourier weight built from the complex zeros of the symbol. The resulting estimate works on every open set, with a constant independent of its shape.</p>
+<p>Read <a href="AN02-L021.html">Hypoellipticity and complex zeros</a> for the quantitative comparison between zero-set distance and symbol derivatives. <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a> provides the convolution estimate used for multiplication by cutoffs. The local Sobolev estimates needed later are discussed in Grubb [Grubb].</p>
+<p>Throughout, <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, <span class="math" data-tex="\(P\)">\(P\)</span> is a nonconstant hypoelliptic polynomial of degree <span class="math" data-tex="\(m\)">\(m\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P^{(\alpha)}=\partial_\xi^\alpha P,
+\\ d(\xi)=\operatorname{dist}(\xi,\{P=0\}\subset\mathbb C^n).
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+P^{(\alpha)}=\partial_\xi^\alpha P,
+\\ d(\xi)=\operatorname{dist}(\xi,\{P=0\}\subset\mathbb C^n).
+\end{gathered}
+\tag{1}
+\]</span>
+The distance is measured in the Euclidean norm of <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. Its restriction to real <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>-Lipschitz. Polynomial coefficients may be complex. A nonzero constant symbol has only the zero homogeneous solution and is treated directly.</p>
+<h2 id="the-energy-and-the-directional-bound">The energy and the directional bound</h2>
+<p>For an open set <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_\varepsilon(u;X)^2
+\\ =\sum_{0&lt;|\alpha|\leq m}\varepsilon^{-2|\alpha|}
+\|P^{(\alpha)}(D)u\|_{L^2(X)}^2.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+E_\varepsilon(u;X)^2
+\\ =\sum_{0&lt;|\alpha|\leq m}\varepsilon^{-2|\alpha|}
+\|P^{(\alpha)}(D)u\|_{L^2(X)}^2.
+\end{gathered}
+\tag{2}
+\]</span>
+The undifferentiated symbol is excluded from this sum. Some derivative of order <span class="math" data-tex="\(m\)">\(m\)</span> is a nonzero constant, so this energy controls the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm of <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>Fix a real vector <span class="math" data-tex="\(y\)">\(y\)</span>, and suppose that, for <span class="math" data-tex="\(\rho\geq1\)">\(\rho\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+|y\cdot\xi|\leq C(1+d(\xi))^\rho
+\quad(\xi\in\mathbb R^n).
+\tag{3}
+\]">\[
+|y\cdot\xi|\leq C(1+d(\xi))^\rho
+\quad(\xi\in\mathbb R^n).
+\tag{3}
+\]</span>
+If <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, every directional estimate below is immediate. For a nonzero direction, no exponent smaller than one can satisfy (3): along <span class="math" data-tex="\(\xi=ty\)">\(\xi=ty\)</span>, the distance to any fixed complex zero is <span class="math" data-tex="\(O(t)\)">\(O(t)\)</span>, while <span class="math" data-tex="\(|y\cdot\xi|\)">\(|y\cdot\xi|\)</span> grows linearly.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+X_\delta=\{x\in X:\operatorname{dist}(x,\mathbb R^n\setminus X)&gt;\delta\}.
+\tag{4}
+\]">\[
+X_\delta=\{x\in X:\operatorname{dist}(x,\mathbb R^n\setminus X)&gt;\delta\}.
+\tag{4}
+\]</span>
+For <span class="math" data-tex="\(X=\mathbb R^n\)">\(X=\mathbb R^n\)</span>, the distance in (4) is <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> Under (3), there is a constant <span class="math" data-tex="\(C\)">\(C\)</span>, independent of <span class="math" data-tex="\(X,u,\delta\)">\(X,u,\delta\)</span>, such that every distributional solution of <span class="math" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span> in <span class="math" data-tex="\(X\)">\(X\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_\delta((y\cdot D)u;X_\delta)
+\\ \leq C\delta^{-\rho}E_\delta(u;X),\quad 0&lt;\delta&lt;1.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+E_\delta((y\cdot D)u;X_\delta)
+\\ \leq C\delta^{-\rho}E_\delta(u;X),\quad 0&lt;\delta&lt;1.
+\end{gathered}
+\tag{5}
+\]</span>
+No regularity of <span class="math" data-tex="\(\partial X\)">\(\partial X\)</span> or boundedness of <span class="math" data-tex="\(X\)">\(X\)</span> is required. An infinite right side is interpreted in the extended sense.</p>
+<p>Hypoellipticity first makes <span class="math" data-tex="\(u\)">\(u\)</span> smooth. We prove (5) by establishing a weighted gain, localizing on a ball, and then averaging the ball estimates over their centers.</p>
+<h2 id="a-fourier-weight-with-uniform-scale-control">A Fourier weight with uniform scale control</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w_\varepsilon(\xi)=1+\varepsilon d(\xi),
+\\ \|v\|_{s,\varepsilon}^2=(2\pi)^{-n}\int
+w_\varepsilon(\xi)^{2s}|\widehat v(\xi)|^2\,d\xi.
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+w_\varepsilon(\xi)=1+\varepsilon d(\xi),
+\\ \|v\|_{s,\varepsilon}^2=(2\pi)^{-n}\int
+w_\varepsilon(\xi)^{2s}|\widehat v(\xi)|^2\,d\xi.
+\end{gathered}
+\tag{6}
+\]</span>
+For every real <span class="math" data-tex="\(s\)">\(s\)</span>, these are weighted <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norms. The triangle inequality gives
+<span class="math math-display" data-tex="\[
+w_\varepsilon(\xi+\eta)
+\leq w_\varepsilon(\xi)(1+\varepsilon|\eta|).
+\tag{7}
+\]">\[
+w_\varepsilon(\xi+\eta)
+\leq w_\varepsilon(\xi)(1+\varepsilon|\eta|).
+\tag{7}
+\]</span>
+Interchanging the two frequency points also bounds the reciprocal ratio. Consequently
+<span class="math math-display" data-tex="\[
+\frac{w_\varepsilon(\xi)^s}{w_\varepsilon(\eta)^s}
+\leq(1+\varepsilon|\xi-\eta|)^{|s|}.
+\tag{8}
+\]">\[
+\frac{w_\varepsilon(\xi)^s}{w_\varepsilon(\eta)^s}
+\leq(1+\varepsilon|\xi-\eta|)^{|s|}.
+\tag{8}
+\]</span></p>
+<p>Define the positive-symbol-derivative energy in this Fourier norm by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{s,\varepsilon}(v)^2
+\\ =\sum_{0&lt;|\alpha|\leq m}\varepsilon^{-2|\alpha|}
+\|P^{(\alpha)}(D)v\|_{s,\varepsilon}^2.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+A_{s,\varepsilon}(v)^2
+\\ =\sum_{0&lt;|\alpha|\leq m}\varepsilon^{-2|\alpha|}
+\|P^{(\alpha)}(D)v\|_{s,\varepsilon}^2.
+\end{gathered}
+\tag{9}
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> For every real <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{s+1,\varepsilon}(v)^2
+\\ \leq C\bigl(A_{s,\varepsilon}(v)^2+\|P(D)v\|_{s,\varepsilon}^2\bigr).
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+A_{s+1,\varepsilon}(v)^2
+\\ \leq C\bigl(A_{s,\varepsilon}(v)^2+\|P(D)v\|_{s,\varepsilon}^2\bigr).
+\end{gathered}
+\tag{10}
+\]</span>
+The constant is independent of <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p><strong>Proof.</strong> It is enough to prove the pointwise polynomial inequality
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w_\varepsilon(\xi)^2\sum_{\alpha\ne0}\varepsilon^{-2|\alpha|}|P^{(\alpha)}(\xi)|^2
+\\ \leq C\sum_{\alpha}\varepsilon^{-2|\alpha|}|P^{(\alpha)}(\xi)|^2.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+w_\varepsilon(\xi)^2\sum_{\alpha\ne0}\varepsilon^{-2|\alpha|}|P^{(\alpha)}(\xi)|^2
+\\ \leq C\sum_{\alpha}\varepsilon^{-2|\alpha|}|P^{(\alpha)}(\xi)|^2.
+\end{gathered}
+\tag{11}
+\]</span>
+All sums stop at degree <span class="math" data-tex="\(m\)">\(m\)</span>. When <span class="math" data-tex="\(\varepsilon d(\xi)\leq1\)">\(\varepsilon d(\xi)\leq1\)</span>, the left weight is at most four, so (11) is immediate.</p>
+<p>When <span class="math" data-tex="\(\varepsilon d(\xi)&gt;1\)">\(\varepsilon d(\xi)&gt;1\)</span>, the symbol does not vanish. The derivative-distance estimate from the complex-zero criterion gives
+<span class="math math-display" data-tex="\[
+|P^{(\alpha)}(\xi)|
+\leq C_\alpha d(\xi)^{-|\alpha|}|P(\xi)|.
+\tag{12}
+\]">\[
+|P^{(\alpha)}(\xi)|
+\leq C_\alpha d(\xi)^{-|\alpha|}|P(\xi)|.
+\tag{12}
+\]</span>
+For <span class="math" data-tex="\(k=|\alpha|\geq1\)">\(k=|\alpha|\geq1\)</span>, the corresponding left summand in (11) is bounded by
+<span class="math math-display" data-tex="\[
+C_\alpha(\varepsilon d(\xi))^{-2(k-1)}
+|P(\xi)|^2
+\leq C_\alpha|P(\xi)|^2.
+\]">\[
+C_\alpha(\varepsilon d(\xi))^{-2(k-1)}
+|P(\xi)|^2
+\leq C_\alpha|P(\xi)|^2.
+\]</span>
+There are finitely many summands. This proves (11). Multiplying by
+<span class="math" data-tex="\((2\pi)^{-n}w_\varepsilon^{2s}|\widehat v|^2\)">\((2\pi)^{-n}w_\varepsilon^{2s}|\widehat v|^2\)</span> and integrating proves (10). The case of a real zero was already included in the first region; no division by <span class="math" data-tex="\(P\)">\(P\)</span> occurs there. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2.</strong> Let <span class="math" data-tex="\(\phi\in C_c^\infty(\mathbb R^n)\)">\(\phi\in C_c^\infty(\mathbb R^n)\)</span>, and set
+<span class="math" data-tex="\(\phi_\varepsilon(x)=\phi(x/\varepsilon)\)">\(\phi_\varepsilon(x)=\phi(x/\varepsilon)\)</span>. For every multi-index <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and real <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math math-display" data-tex="\[
+\|(D^\beta\phi_\varepsilon)h\|_{s,\varepsilon}
+\leq C_{\phi,\beta,s}\varepsilon^{-|\beta|}
+\|h\|_{s,\varepsilon},
+\tag{13}
+\]">\[
+\|(D^\beta\phi_\varepsilon)h\|_{s,\varepsilon}
+\leq C_{\phi,\beta,s}\varepsilon^{-|\beta|}
+\|h\|_{s,\varepsilon},
+\tag{13}
+\]</span>
+with a constant independent of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p><strong>Proof.</strong> The Fourier transform of the scaled cutoff is
+<span class="math" data-tex="\(\widehat{\phi_\varepsilon}(\eta)=\varepsilon^n\widehat\phi(\varepsilon\eta)\)">\(\widehat{\phi_\varepsilon}(\eta)=\varepsilon^n\widehat\phi(\varepsilon\eta)\)</span>.
+Thus the change of variable <span class="math" data-tex="\(\theta=\varepsilon\eta\)">\(\theta=\varepsilon\eta\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int|\eta^\beta\widehat{\phi_\varepsilon}(\eta)|
+(1+\varepsilon|\eta|)^{|s|}\,d\eta\\
+&amp;=\varepsilon^{-|\beta|}
+\int|\theta^\beta\widehat\phi(\theta)|
+(1+|\theta|)^{|s|}\,d\theta.
+\end{aligned}
+\tag{14}
+\]">\[
+\begin{aligned}
+&amp;\int|\eta^\beta\widehat{\phi_\varepsilon}(\eta)|
+(1+\varepsilon|\eta|)^{|s|}\,d\eta\\
+&amp;=\varepsilon^{-|\beta|}
+\int|\theta^\beta\widehat\phi(\theta)|
+(1+|\theta|)^{|s|}\,d\theta.
+\end{aligned}
+\tag{14}
+\]</span>
+The last integral is finite because <span class="math" data-tex="\(\widehat\phi\)">\(\widehat\phi\)</span> is a Schwartz function. The product formula, (8), and Young's <span class="math" data-tex="\(L^1*L^2\)">\(L^1*L^2\)</span> inequality now imply (13), including the Fourier normalization factor <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span> in its constant. The argument works for negative as well as positive <span class="math" data-tex="\(s\)">\(s\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="gaining-weighted-regularity-inside-a-ball">Gaining weighted regularity inside a ball</h2>
+<p><strong>Lemma 3.1.</strong> Suppose <span class="math" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span> in <span class="math" data-tex="\(B_\varepsilon\)">\(B_\varepsilon\)</span>. For every
+<span class="math" data-tex="\(\phi\in C_c^\infty(B_1)\)">\(\phi\in C_c^\infty(B_1)\)</span> and integer <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+A_{s,\varepsilon}(\phi_\varepsilon u)
+\leq C_{\phi,s}E_\varepsilon(u;B_\varepsilon).
+\tag{15}
+\]">\[
+A_{s,\varepsilon}(\phi_\varepsilon u)
+\leq C_{\phi,s}E_\varepsilon(u;B_\varepsilon).
+\tag{15}
+\]</span>
+The constant is independent of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p><strong>Proof.</strong> At <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, use the exact Leibniz identity
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varepsilon^{-|\alpha|}P^{(\alpha)}(D)(\phi_\varepsilon u)
+\\ =\sum_\beta b_{\beta,\varepsilon}
+\varepsilon^{-|\alpha+\beta|}P^{(\alpha+\beta)}(D)u,
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+\varepsilon^{-|\alpha|}P^{(\alpha)}(D)(\phi_\varepsilon u)
+\\ =\sum_\beta b_{\beta,\varepsilon}
+\varepsilon^{-|\alpha+\beta|}P^{(\alpha+\beta)}(D)u,
+\end{gathered}
+\tag{16}
+\]</span>
+The sum is finite. If <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, every <span class="math" data-tex="\(\alpha+\beta\)">\(\alpha+\beta\)</span> is still positive. Here <span class="math" data-tex="\(b_{\beta,\varepsilon}=\varepsilon^{|\beta|}D^\beta\phi_\varepsilon/\beta!\)">\(b_{\beta,\varepsilon}=\varepsilon^{|\beta|}D^\beta\phi_\varepsilon/\beta!\)</span>. These scaled cutoff coefficients are uniformly bounded. The finite <span class="math" data-tex="\(L^2\)">\(L^2\)</span> triangle inequality proves (15). This base step does not use the homogeneous equation.</p>
+<p>Suppose the statement is proved at level <span class="math" data-tex="\(s-1\)">\(s-1\)</span> for every unit-ball cutoff. Choose
+<span class="math" data-tex="\(\psi\in C_c^\infty(B_1)\)">\(\psi\in C_c^\infty(B_1)\)</span>, equal to one near <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span>.
+Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)(\phi_\varepsilon u)
+\\ =\sum_{\beta\ne0}\frac{D^\beta\phi_\varepsilon}{\beta!}
+P^{(\beta)}(D)(\psi_\varepsilon u).
+\end{gathered}
+\tag{17}
+\]">\[
+\begin{gathered}
+P(D)(\phi_\varepsilon u)
+\\ =\sum_{\beta\ne0}\frac{D^\beta\phi_\varepsilon}{\beta!}
+P^{(\beta)}(D)(\psi_\varepsilon u).
+\end{gathered}
+\tag{17}
+\]</span>
+Indeed the zero-order term is
+<span class="math" data-tex="\(\phi_\varepsilon P(D)(\psi_\varepsilon u)
+=\phi_\varepsilon P(D)u=0\)">\(\phi_\varepsilon P(D)(\psi_\varepsilon u)
+=\phi_\varepsilon P(D)u=0\)</span>; all derivatives of <span class="math" data-tex="\(\psi_\varepsilon\)">\(\psi_\varepsilon\)</span> miss the relevant support.</p>
+<p>By Lemma 2.2 and the finite-sum inequality,
+<span class="math math-display" data-tex="\[
+\|P(D)(\phi_\varepsilon u)\|_{s-1,\varepsilon}
+\leq C A_{s-1,\varepsilon}(\psi_\varepsilon u).
+\tag{18}
+\]">\[
+\|P(D)(\phi_\varepsilon u)\|_{s-1,\varepsilon}
+\leq C A_{s-1,\varepsilon}(\psi_\varepsilon u).
+\tag{18}
+\]</span>
+Apply Lemma 2.1 to <span class="math" data-tex="\(\phi_\varepsilon u\)">\(\phi_\varepsilon u\)</span>, and use the induction hypothesis for both <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. This proves (15) at level <span class="math" data-tex="\(s\)">\(s\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2.</strong> Under (3), every homogeneous solution in <span class="math" data-tex="\(B_\varepsilon\)">\(B_\varepsilon\)</span>, <span class="math" data-tex="\(0&lt;\varepsilon\leq1\)">\(0&lt;\varepsilon\leq1\)</span>, satisfies
+<span class="math math-display" data-tex="\[
+\varepsilon^\rho
+E_\varepsilon((y\cdot D)u;B_{\varepsilon/2})
+\leq C E_\varepsilon(u;B_\varepsilon).
+\tag{19}
+\]">\[
+\varepsilon^\rho
+E_\varepsilon((y\cdot D)u;B_{\varepsilon/2})
+\leq C E_\varepsilon(u;B_\varepsilon).
+\tag{19}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(s=\lceil\rho\rceil\)">\(s=\lceil\rho\rceil\)</span>. Equation (3) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varepsilon^\rho|y\cdot\xi|&amp;\leq C(\varepsilon+\varepsilon d(\xi))^\rho\\
+&amp;\leq Cw_\varepsilon(\xi)^s.
+\end{aligned}
+\tag{20}
+\]">\[
+\begin{aligned}
+\varepsilon^\rho|y\cdot\xi|&amp;\leq C(\varepsilon+\varepsilon d(\xi))^\rho\\
+&amp;\leq Cw_\varepsilon(\xi)^s.
+\end{aligned}
+\tag{20}
+\]</span>
+By Parseval,
+<span class="math" data-tex="\(\varepsilon^\rho\|(y\cdot D)v\|_2\leq C\|v\|_{s,\varepsilon}\)">\(\varepsilon^\rho\|(y\cdot D)v\|_2\leq C\|v\|_{s,\varepsilon}\)</span>.
+Choose <span class="math" data-tex="\(\phi\in C_c^\infty(B_1)\)">\(\phi\in C_c^\infty(B_1)\)</span>, equal to one in <span class="math" data-tex="\(B_{1/2}\)">\(B_{1/2}\)</span>, and apply this inequality to
+<span class="math" data-tex="\(v=P^{(\alpha)}(D)(\phi_\varepsilon u)\)">\(v=P^{(\alpha)}(D)(\phi_\varepsilon u)\)</span> for every <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>.
+The constant-coefficient operators commute. Sum their squares with the weights in (2), and apply Lemma 3.1. In the smaller ball, the cutoff is one, so the localized expressions equal the original ones. This proves (19). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="averaging-over-centers">Averaging over centers</h2>
+<p><strong>Proof of Theorem 1.1.</strong> For every <span class="math" data-tex="\(z\in X_\varepsilon\)">\(z\in X_\varepsilon\)</span>, apply (19) to <span class="math" data-tex="\(u(z+\cdot)\)">\(u(z+\cdot)\)</span>, square it, and integrate in <span class="math" data-tex="\(z\)">\(z\)</span>. Tonelli's theorem applies to all the nonnegative integrands.</p>
+<p>For a fixed source point <span class="math" data-tex="\(x\)">\(x\)</span>, the measure of right-side centers is at most
+<span class="math" data-tex="\(|B_\varepsilon|\)">\(|B_\varepsilon|\)</span>, and is zero outside <span class="math" data-tex="\(X\)">\(X\)</span>. If <span class="math" data-tex="\(x\in X_{2\varepsilon}\)">\(x\in X_{2\varepsilon}\)</span>, every center in <span class="math" data-tex="\(B_{\varepsilon/2}(x)\)">\(B_{\varepsilon/2}(x)\)</span> belongs to <span class="math" data-tex="\(X_\varepsilon\)">\(X_\varepsilon\)</span>, since boundary distance is <span class="math" data-tex="\(1\)">\(1\)</span>-Lipschitz. The left-side center measure is then exactly
+<span class="math math-display" data-tex="\[
+|B_{\varepsilon/2}|=2^{-n}|B_\varepsilon|.
+\]">\[
+|B_{\varepsilon/2}|=2^{-n}|B_\varepsilon|.
+\]</span>
+Discard the other nonnegative left-side contributions and cancel the common ball volume. We obtain
+<span class="math math-display" data-tex="\[
+\varepsilon^\rho
+E_\varepsilon((y\cdot D)u;X_{2\varepsilon})
+\leq C E_\varepsilon(u;X).
+\tag{21}
+\]">\[
+\varepsilon^\rho
+E_\varepsilon((y\cdot D)u;X_{2\varepsilon})
+\leq C E_\varepsilon(u;X).
+\tag{21}
+\]</span>
+Set <span class="math" data-tex="\(\varepsilon=\delta/2\)">\(\varepsilon=\delta/2\)</span>. For every domain and function,
+<span class="math math-display" data-tex="\[
+E_\delta\leq E_{\delta/2}\leq2^mE_\delta.
+\tag{22}
+\]">\[
+E_\delta\leq E_{\delta/2}\leq2^mE_\delta.
+\tag{22}
+\]</span>
+Using (22) on the two sides of (21) gives exactly (5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The averaging argument is why the constant does not depend on the boundary. The proof requires only that the balls centered in <span class="math" data-tex="\(X_\varepsilon\)">\(X_\varepsilon\)</span> lie in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<h2 id="retaining-the-derivatives-of-an-inhomogeneous-datum">Retaining the derivatives of an inhomogeneous datum</h2>
+<p>For an integer <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, define
+<span class="math math-display" data-tex="\[
+F_{r,\delta}(f;X)^2
+=\sum_{|\beta|\leq r}
+\delta^{2|\beta|}\|D^\beta f\|_{L^2(X)}^2.
+\tag{23}
+\]">\[
+F_{r,\delta}(f;X)^2
+=\sum_{|\beta|\leq r}
+\delta^{2|\beta|}\|D^\beta f\|_{L^2(X)}^2.
+\tag{23}
+\]</span></p>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span>, with <span class="math" data-tex="\(f\)">\(f\)</span> smooth in <span class="math" data-tex="\(X\)">\(X\)</span>. Under (3), put <span class="math" data-tex="\(r=\lceil\rho\rceil-1\)">\(r=\lceil\rho\rceil-1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_\delta((y\cdot D)u;X_\delta)
+\\ \leq C\delta^{-\rho}
+\bigl(E_\delta(u;X)+F_{r,\delta}(f;X)\bigr),
+\\ 0&lt;\delta&lt;1.
+\end{gathered}
+\tag{24}
+\]">\[
+\begin{gathered}
+E_\delta((y\cdot D)u;X_\delta)
+\\ \leq C\delta^{-\rho}
+\bigl(E_\delta(u;X)+F_{r,\delta}(f;X)\bigr),
+\\ 0&lt;\delta&lt;1.
+\end{gathered}
+\tag{24}
+\]</span>
+Again <span class="math" data-tex="\(C\)">\(C\)</span> is independent of <span class="math" data-tex="\(X,u,\delta\)">\(X,u,\delta\)</span>. Smoothness of <span class="math" data-tex="\(f\)">\(f\)</span> makes a distributional <span class="math" data-tex="\(u\)">\(u\)</span> smooth by hypoellipticity.</p>
+<p><strong>Proof.</strong> The base case of Lemma 3.1 is unchanged. For higher weighted levels, (17) gains the term <span class="math" data-tex="\(\phi_\varepsilon f\)">\(\phi_\varepsilon f\)</span>. A finite nested chain of cutoffs, with a terminal cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near every preceding support, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{s,\varepsilon}(\phi_\varepsilon u)
+\\ \leq C\bigl(E_\varepsilon(u;B_\varepsilon)
++\|\chi_\varepsilon f\|_{s-1,\varepsilon}\bigr),
+\\ s\geq1.
+\end{gathered}
+\tag{25}
+\]">\[
+\begin{gathered}
+A_{s,\varepsilon}(\phi_\varepsilon u)
+\\ \leq C\bigl(E_\varepsilon(u;B_\varepsilon)
++\|\chi_\varepsilon f\|_{s-1,\varepsilon}\bigr),
+\\ s\geq1.
+\end{gathered}
+\tag{25}
+\]</span>
+To verify the induction, Lemma 2.1 at level <span class="math" data-tex="\(s-1\)">\(s-1\)</span> uses the positive cutoff energies at that level and the additional source norm at that level. Every source norm from a previous step has a smaller power of <span class="math" data-tex="\(w_\varepsilon\)">\(w_\varepsilon\)</span>. Since <span class="math" data-tex="\(w_\varepsilon\geq1\)">\(w_\varepsilon\geq1\)</span>, it is bounded by the terminal norm in (25). Multiplication by each intermediate cutoff has a scale-independent norm by Lemma 2.2 with <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>. There are finitely many levels and cutoffs.</p>
+<p>Choose one fixed complex zero <span class="math" data-tex="\(\zeta_0\)">\(\zeta_0\)</span>. Since <span class="math" data-tex="\(d(\xi)\leq|\xi-\zeta_0|\)">\(d(\xi)\leq|\xi-\zeta_0|\)</span>, for <span class="math" data-tex="\(0&lt;\varepsilon\leq1\)">\(0&lt;\varepsilon\leq1\)</span>,
+<span class="math math-display" data-tex="\[
+w_\varepsilon(\xi)^{s-1}
+\leq C(1+\varepsilon|\xi|)^{s-1}.
+\tag{26}
+\]">\[
+w_\varepsilon(\xi)^{s-1}
+\leq C(1+\varepsilon|\xi|)^{s-1}.
+\tag{26}
+\]</span>
+Integer-order polynomial norm comparison and Parseval bound the last norm in (25) by <span class="math" data-tex="\(C F_{s-1,\varepsilon}(f;B_\varepsilon)\)">\(C F_{s-1,\varepsilon}(f;B_\varepsilon)\)</span>. The product rule justifies the cutoff here: a derivative of <span class="math" data-tex="\(\chi_\varepsilon\)">\(\chi_\varepsilon\)</span> contributes <span class="math" data-tex="\(\varepsilon^{-|\gamma|}\)">\(\varepsilon^{-|\gamma|}\)</span>, which cancels the corresponding positive scale factor in the Sobolev norm.</p>
+<p>Take <span class="math" data-tex="\(s=\lceil\rho\rceil\)">\(s=\lceil\rho\rceil\)</span>, repeat the directional estimate (20), and average centers as before. The squared sum of the two right-side terms is bounded by twice the sum of their squares. Equation (22) converts the energy scale; the source norm at <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span> is bounded by the one at <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. This proves (24). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a finite iteration, let <span class="math" data-tex="\(T=y\cdot D\)">\(T=y\cdot D\)</span>, <span class="math" data-tex="\(a=C\delta^{-\rho}\)">\(a=C\delta^{-\rho}\)</span>, and <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_\delta(T^ju;X_{j\delta})
+\\ \leq a^jE_\delta(u;X)
+\\ {}+\sum_{\ell=0}^{j-1}a^{j-\ell}F_{r,\delta}(T^\ell f;X).
+\end{gathered}
+\tag{27}
+\]">\[
+\begin{gathered}
+E_\delta(T^ju;X_{j\delta})
+\\ \leq a^jE_\delta(u;X)
+\\ {}+\sum_{\ell=0}^{j-1}a^{j-\ell}F_{r,\delta}(T^\ell f;X).
+\end{gathered}
+\tag{27}
+\]</span>
+Apply (24) to each <span class="math" data-tex="\(T^\ell u\)">\(T^\ell u\)</span>, use <span class="math" data-tex="\(P(D)T^\ell u=T^\ell f\)">\(P(D)T^\ell u=T^\ell f\)</span>, and restrict successive domains. The erosion losses add because
+<span class="math math-display" data-tex="\[
+X_{(\ell+1)\delta}\subset (X_{\ell\delta})_\delta.
+\tag{28}
+\]">\[
+X_{(\ell+1)\delta}\subset (X_{\ell\delta})_\delta.
+\tag{28}
+\]</span>
+For <span class="math" data-tex="\(x\in X_{\ell\delta}\)">\(x\in X_{\ell\delta}\)</span>, its distance to the complement of that set is at least <span class="math" data-tex="\(d_X(x)-\ell\delta\)">\(d_X(x)-\ell\delta\)</span>, which proves (28).</p>
+<p>Formula (27) keeps the datum's derivative growth explicit. An arbitrary smooth <span class="math" data-tex="\(f\)">\(f\)</span> need not have analytic or Gevrey derivative bounds.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1. Introductory: negative weight powers.</strong> Prove (8) when <span class="math" data-tex="\(s&lt;0\)">\(s&lt;0\)</span>, and explain why a one-sided use of (7) is insufficient.</p>
+<p><strong>Solution.</strong> Interchange the frequency points in (7) to get
+<span class="math" data-tex="\(w_\varepsilon(\eta)\leq w_\varepsilon(\xi)(1+\varepsilon|\xi-\eta|)\)">\(w_\varepsilon(\eta)\leq w_\varepsilon(\xi)(1+\varepsilon|\xi-\eta|)\)</span>.
+For <span class="math" data-tex="\(s=-a\)">\(s=-a\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the required ratio is
+<span class="math" data-tex="\((w_\varepsilon(\eta)/w_\varepsilon(\xi))^a\)">\((w_\varepsilon(\eta)/w_\varepsilon(\xi))^a\)</span>, which this reversed inequality bounds by the right side of (8). The original order controls the reciprocal ratio and therefore does not alone prove the negative-power assertion.</p>
+<p><strong>Exercise 2. Introductory: changing the energy scale.</strong> Prove (22), including the factor <span class="math" data-tex="\(2^m\)">\(2^m\)</span> rather than <span class="math" data-tex="\(2^{2m}\)">\(2^{2m}\)</span>.</p>
+<p><strong>Solution.</strong> Each squared summand at scale <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span> is <span class="math" data-tex="\(2^{2|\alpha|}\)">\(2^{2|\alpha|}\)</span> times its counterpart at scale <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. These factors lie between one and <span class="math" data-tex="\(2^{2m}\)">\(2^{2m}\)</span>. Sum the inequalities and then take square roots. This yields (22).</p>
+<p><strong>Exercise 3. Intermediate: the zero-order commutator.</strong> Derive (17) from the full Leibniz formula and identify precisely where homogeneity of the equation is used.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(\phi_\varepsilon u=\phi_\varepsilon(\psi_\varepsilon u)\)">\(\phi_\varepsilon u=\phi_\varepsilon(\psi_\varepsilon u)\)</span>. The polynomial product formula is the sum over all <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of
+<span class="math" data-tex="\((D^\beta\phi_\varepsilon)P^{(\beta)}(D)(\psi_\varepsilon u)/\beta!\)">\((D^\beta\phi_\varepsilon)P^{(\beta)}(D)(\psi_\varepsilon u)/\beta!\)</span>.
+Its <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span> term equals <span class="math" data-tex="\(\phi_\varepsilon P(D)u\)">\(\phi_\varepsilon P(D)u\)</span>: near the support of <span class="math" data-tex="\(\phi_\varepsilon\)">\(\phi_\varepsilon\)</span>, <span class="math" data-tex="\(\psi_\varepsilon=1\)">\(\psi_\varepsilon=1\)</span> and its derivatives vanish. Only the assertion <span class="math" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span> removes this term. For an inhomogeneous equation it is <span class="math" data-tex="\(\phi_\varepsilon f\)">\(\phi_\varepsilon f\)</span>.</p>
+<p><strong>Exercise 4. Intermediate: center counting on an irregular domain.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be any open set. Prove that for <span class="math" data-tex="\(x\in X_{2\varepsilon}\)">\(x\in X_{2\varepsilon}\)</span>, the centers in <span class="math" data-tex="\(X_\varepsilon\)">\(X_\varepsilon\)</span> satisfying <span class="math" data-tex="\(|z-x|&lt;\varepsilon/2\)">\(|z-x|&lt;\varepsilon/2\)</span> have measure exactly <span class="math" data-tex="\(|B_{\varepsilon/2}|\)">\(|B_{\varepsilon/2}|\)</span>.</p>
+<p><strong>Solution.</strong> Boundary distance obeys <span class="math" data-tex="\(d_X(z)\geq d_X(x)-|z-x|&gt;3\varepsilon/2&gt;\varepsilon\)">\(d_X(z)\geq d_X(x)-|z-x|&gt;3\varepsilon/2&gt;\varepsilon\)</span>. Hence every point in the entire ball <span class="math" data-tex="\(B_{\varepsilon/2}(x)\)">\(B_{\varepsilon/2}(x)\)</span> is an admissible center. The condition <span class="math" data-tex="\(|z-x|&lt;\varepsilon/2\)">\(|z-x|&lt;\varepsilon/2\)</span> allows no centers outside that ball. Its measure is the claimed one, irrespective of the boundary's shape.</p>
+<p><strong>Exercise 5. Advanced: an equation with arbitrarily large datum growth.</strong> Show that no conclusion of analyticity follows from smoothness of <span class="math" data-tex="\(f\)">\(f\)</span> alone, even for the elliptic operator <span class="math" data-tex="\(P(D)=D\)">\(P(D)=D\)</span> in one dimension.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(u(x)=0\)">\(u(x)=0\)</span> for <span class="math" data-tex="\(x\leq0\)">\(x\leq0\)</span> and <span class="math" data-tex="\(u(x)=e^{-1/x^2}\)">\(u(x)=e^{-1/x^2}\)</span> for <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>. Differentiating on the right gives a polynomial in <span class="math" data-tex="\(1/x\)">\(1/x\)</span> times the same exponential; every such expression tends to zero at the origin. Thus <span class="math" data-tex="\(u\)">\(u\)</span> is smooth, and all its Taylor coefficients there vanish. It is positive immediately to the right, so it is not analytic. Its datum <span class="math" data-tex="\(f=Du\)">\(f=Du\)</span> is smooth. Formula (27) remains valid and includes the derivatives of this <span class="math" data-tex="\(f\)">\(f\)</span>; it makes no factorial bound on them.</p>
+<p><strong>Exercise 6. Advanced: iterating on arbitrary open sets.</strong> Prove (28), and use it to derive (27) by induction on <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(d_X(x)&gt;(\ell+1)\delta\)">\(d_X(x)&gt;(\ell+1)\delta\)</span>, every <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\(|z-x|&lt;\delta\)">\(|z-x|&lt;\delta\)</span> satisfies <span class="math" data-tex="\(d_X(z)&gt;\ell\delta\)">\(d_X(z)&gt;\ell\delta\)</span>, so <span class="math" data-tex="\(B_\delta(x)\subset X_{\ell\delta}\)">\(B_\delta(x)\subset X_{\ell\delta}\)</span>. The strict inequality also leaves a positive extra margin, giving <span class="math" data-tex="\(x\in(X_{\ell\delta})_\delta\)">\(x\in(X_{\ell\delta})_\delta\)</span>.</p>
+<p>For the induction, apply (24) on <span class="math" data-tex="\(X_{(j-1)\delta}\)">\(X_{(j-1)\delta}\)</span> to <span class="math" data-tex="\(T^{j-1}u\)">\(T^{j-1}u\)</span>, restrict the left side to <span class="math" data-tex="\(X_{j\delta}\)">\(X_{j\delta}\)</span>, and enlarge the datum norm to <span class="math" data-tex="\(X\)">\(X\)</span>. This gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_\delta(T^ju;X_{j\delta})
+\\ \leq a E_\delta(T^{j-1}u;X_{(j-1)\delta})
++a F_{r,\delta}(T^{j-1}f;X).
+\end{gathered}
+\]">\[
+\begin{gathered}
+E_\delta(T^ju;X_{j\delta})
+\\ \leq a E_\delta(T^{j-1}u;X_{(j-1)\delta})
++a F_{r,\delta}(T^{j-1}f;X).
+\end{gathered}
+\]</span>
+Substitute the preceding inductive formula. Multiplying its terms by <span class="math" data-tex="\(a\)">\(a\)</span>, and appending the last term, gives exactly the sum in (27). The case <span class="math" data-tex="\(j=1\)">\(j=1\)</span> is (24).</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Grubb]</strong> Gerd Grubb, <em>Distributions and Operators</em>, open lectures on Fourier transformation, Sobolev spaces, and interior regularity. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+</ul>
+</main></body></html>

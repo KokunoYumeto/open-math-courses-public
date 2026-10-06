@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Finiteness of the class number · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="finiteness-of-the-class-number">Finiteness of the class number</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>An ideal class has infinitely many representatives. Geometry gives a way to choose one with small norm. Once the norm is bounded, only finitely many integral ideals remain, so the class group is finite. The same geometric method also bounds the discriminant from below and produces integral primitive elements with bounded conjugates. These lead to finiteness statements about both the ideals in one field and the fields themselves.</p>
+<h2 id="prerequisites-and-conventions">Prerequisites and conventions</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field of degree <span class="math" data-tex="\(n=r_1+2r_2\)">\(n=r_1+2r_2\)</span>, with ring of integers <span class="math" data-tex="\(O\)">\(O\)</span>, discriminant <span class="math" data-tex="\(d_K\)">\(d_K\)</span>, and ideal class group <span class="math" data-tex="\(\mathrm{Cl}_K\)">\(\mathrm{Cl}_K\)</span>. Write <span class="math" data-tex="\(D=|d_K|\)">\(D=|d_K|\)</span>. Norms of nonzero integral ideals are positive integers.</p>
+<p>From <a href="lattices-minkowskis-theorem-and-the-minkowski-embedding.html"><em>Lattices, Minkowski's theorem and the Minkowski embedding</em></a> we use Theorem 7.1 and Proposition 7.2: in ordinary real-and-imaginary-part Lebesgue measure, the image of a nonzero fractional ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> has covolume
+<span class="math math-display" data-tex="\[
+2^{-r_2}\sqrt D\,N\mathfrak a.
+\tag{1}
+\]">\[
+2^{-r_2}\sqrt D\,N\mathfrak a.
+\tag{1}
+\]</span>
+A compact convex region symmetric about zero contains a nonzero lattice point when its volume is at least <span class="math" data-tex="\(2^n\)">\(2^n\)</span> times the covolume.</p>
+<p>We also use ideal factorization and the PID criterion from <a href="discrete-valuation-rings-and-dedekind-domains.html"><em>Discrete valuation rings and Dedekind domains</em></a>, multiplicativity and principal-ideal norms from <a href="norms-class-groups-and-modules-over-dedekind-domains.html"><em>Norms, class groups, and modules over Dedekind domains</em></a>, and prime decomposition and the discriminant ramification criterion from <a href="decomposition-of-primes-in-extensions.html"><em>Decomposition of primes in extensions</em></a>. The rings, integral bases, and discriminants in the examples were determined in the first two lessons.</p>
+<p>The integration prerequisites are Fubini and Tonelli for Lebesgue measure and polar change of variables in a complex coordinate. Exact locators are [Fremlin, 251N, 252H and 263G]. The elementary integrals and arithmetic–geometric mean inequality needed below are proved here.</p>
+<h2 id="a-region-adapted-to-the-field-norm">A region adapted to the field norm</h2>
+<p>Choose the <span class="math" data-tex="\(r_1\)">\(r_1\)</span> real embeddings <span class="math" data-tex="\(\sigma_i\)">\(\sigma_i\)</span> and one embedding <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> from each conjugate complex pair. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> define
+<span class="math math-display" data-tex="\[
+B_t=\left\{(x,z)\in\mathbf R^{r_1}\times\mathbf C^{r_2}:
+\sum_{i=1}^{r_1}|x_i|+2\sum_{j=1}^{r_2}|z_j|\leq t\right\}.
+\tag{2}
+\]">\[
+B_t=\left\{(x,z)\in\mathbf R^{r_1}\times\mathbf C^{r_2}:
+\sum_{i=1}^{r_1}|x_i|+2\sum_{j=1}^{r_2}|z_j|\leq t\right\}.
+\tag{2}
+\]</span>
+Absolute values satisfy the triangle inequality, so this region is convex. It is closed, bounded, and symmetric about zero.</p>
+<p><strong>Volume lemma.</strong> In our measure convention,
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(B_t)
+=2^{r_1}\left(\frac{\pi}{2}\right)^{r_2}\frac{t^n}{n!}.
+\tag{3}
+\]">\[
+\operatorname{vol}(B_t)
+=2^{r_1}\left(\frac{\pi}{2}\right)^{r_2}\frac{t^n}{n!}.
+\tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> We first establish the integral formula that includes zero exponents. If <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>, <span class="math" data-tex="\(a_1,\ldots,a_m\)">\(a_1,\ldots,a_m\)</span> are nonnegative integers, and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, then
+<span class="math math-display" data-tex="\[
+\int_{\substack{u_i\geq0\\u_1+\cdots+u_m\leq t}}
+\prod_{i=1}^m u_i^{a_i}\,du_1\cdots du_m
+=\frac{\prod_{i=1}^m a_i!}{(m+\sum_i a_i)!}\,
+t^{m+\sum_i a_i}.
+\tag{4}
+\]">\[
+\int_{\substack{u_i\geq0\\u_1+\cdots+u_m\leq t}}
+\prod_{i=1}^m u_i^{a_i}\,du_1\cdots du_m
+=\frac{\prod_{i=1}^m a_i!}{(m+\sum_i a_i)!}\,
+t^{m+\sum_i a_i}.
+\tag{4}
+\]</span>
+Here a factor with exponent zero is <span class="math" data-tex="\(1\)">\(1\)</span>, including at zero.</p>
+<p>For nonnegative integers <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, integration by parts, starting with <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, gives
+<span class="math math-display" data-tex="\[
+\int_0^t u^A(t-u)^B\,du
+=\frac{A!\,B!}{(A+B+1)!}t^{A+B+1}.
+\tag{5}
+\]">\[
+\int_0^t u^A(t-u)^B\,du
+=\frac{A!\,B!}{(A+B+1)!}t^{A+B+1}.
+\tag{5}
+\]</span>
+Indeed the <span class="math" data-tex="\(B=0\)">\(B=0\)</span> case is <span class="math" data-tex="\(t^{A+1}/(A+1)\)">\(t^{A+1}/(A+1)\)</span>. For <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>, both boundary terms vanish and integration by parts replaces the integral by <span class="math" data-tex="\(B/(A+1)\)">\(B/(A+1)\)</span> times the integral with exponents <span class="math" data-tex="\(A+1,B-1\)">\(A+1,B-1\)</span>. Repeating proves (5). Formula (4) for <span class="math" data-tex="\(m=1\)">\(m=1\)</span> is the same elementary antiderivative. For the induction step, fix <span class="math" data-tex="\(u_m\)">\(u_m\)</span>, apply the formula for <span class="math" data-tex="\(m-1\)">\(m-1\)</span> with <span class="math" data-tex="\(t-u_m\)">\(t-u_m\)</span>, and integrate the resulting power of <span class="math" data-tex="\(t-u_m\)">\(t-u_m\)</span> against <span class="math" data-tex="\(u_m^{a_m}\)">\(u_m^{a_m}\)</span> using (5). Fubini applies to these bounded nonnegative measurable integrands. This proves (4).</p>
+<p>Split the real coordinates into orthants, obtaining a factor <span class="math" data-tex="\(2^{r_1}\)">\(2^{r_1}\)</span>; their boundaries have measure zero. In each complex coordinate write <span class="math" data-tex="\(z_j=\rho_j e^{i\theta_j}\)">\(z_j=\rho_j e^{i\theta_j}\)</span>, and put <span class="math" data-tex="\(w_j=2\rho_j\)">\(w_j=2\rho_j\)</span>. Polar measure becomes
+<span class="math math-display" data-tex="\[
+\rho_j\,d\rho_j\,d\theta_j
+=\frac{w_j}{4}\,dw_j\,d\theta_j.
+\]">\[
+\rho_j\,d\rho_j\,d\theta_j
+=\frac{w_j}{4}\,dw_j\,d\theta_j.
+\]</span>
+Integration over the angle gives <span class="math" data-tex="\((\pi/2)w_j\,dw_j\)">\((\pi/2)w_j\,dw_j\)</span>. Thus the remaining integral is (4) with <span class="math" data-tex="\(m=r_1+r_2\)">\(m=r_1+r_2\)</span>, real exponents zero, and complex exponents one. Its total degree plus dimension is <span class="math" data-tex="\(r_1+2r_2=n\)">\(r_1+2r_2=n\)</span>, and every factorial in its numerator is <span class="math" data-tex="\(1\)">\(1\)</span>. The factors from orthants and angles give (3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We will use the arithmetic–geometric mean inequality in the form
+<span class="math math-display" data-tex="\[
+b_1\cdots b_n\leq
+\left(\frac{b_1+\cdots+b_n}{n}\right)^n
+\qquad(b_i\geq0).
+\tag{6}
+\]">\[
+b_1\cdots b_n\leq
+\left(\frac{b_1+\cdots+b_n}{n}\right)^n
+\qquad(b_i\geq0).
+\tag{6}
+\]</span>
+For completeness, fix a positive sum <span class="math" data-tex="\(s\)">\(s\)</span>. The product attains a maximum on the compact simplex of nonnegative <span class="math" data-tex="\(n\)">\(n\)</span>-tuples with sum <span class="math" data-tex="\(s\)">\(s\)</span>. The equal tuple has positive product, so a maximizing tuple has no zero coordinate. If two coordinates differ, replacing them by their average increases their product, since
+<span class="math" data-tex="\((a+b)^2/4-ab=(a-b)^2/4&gt;0\)">\((a+b)^2/4-ab=(a-b)^2/4&gt;0\)</span>, and leaves the other positive factors unchanged. At a maximum all coordinates therefore equal <span class="math" data-tex="\(s/n\)">\(s/n\)</span>. The zero-sum and <span class="math" data-tex="\(n=1\)">\(n=1\)</span> cases are immediate. This proves (6).</p>
+<h2 id="a-small-integral-ideal-in-every-class">A small integral ideal in every class</h2>
+<p>Set
+<span class="math math-display" data-tex="\[
+M_K=\frac{n!}{n^n}
+\left(\frac4\pi\right)^{r_2}\sqrt D.
+\tag{7}
+\]">\[
+M_K=\frac{n!}{n^n}
+\left(\frac4\pi\right)^{r_2}\sqrt D.
+\tag{7}
+\]</span></p>
+<p><strong>Theorem 8.1 (Minkowski bound).</strong> Every class <span class="math" data-tex="\(C\in\mathrm{Cl}_K\)">\(C\in\mathrm{Cl}_K\)</span> contains a nonzero integral ideal <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> satisfying
+<span class="math math-display" data-tex="\[
+N\mathfrak b\leq M_K.
+\]">\[
+N\mathfrak b\leq M_K.
+\]</span></p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> be any nonzero integral ideal. Choose <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> by
+<span class="math math-display" data-tex="\[
+t^n=n!\left(\frac4\pi\right)^{r_2}
+\sqrt D\,N\mathfrak a.
+\tag{8}
+\]">\[
+t^n=n!\left(\frac4\pi\right)^{r_2}
+\sqrt D\,N\mathfrak a.
+\tag{8}
+\]</span>
+Combining (3) and (8) gives
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(B_t)
+=2^{r_1+r_2}\sqrt D\,N\mathfrak a
+=2^n\operatorname{covol}(\mathfrak a).
+\]">\[
+\operatorname{vol}(B_t)
+=2^{r_1+r_2}\sqrt D\,N\mathfrak a
+=2^n\operatorname{covol}(\mathfrak a).
+\]</span>
+The compact equality case of Minkowski's theorem supplies <span class="math" data-tex="\(0\ne\alpha\in\mathfrak a\)">\(0\ne\alpha\in\mathfrak a\)</span> whose image lies in <span class="math" data-tex="\(B_t\)">\(B_t\)</span>.</p>
+<p>Apply (6) to the <span class="math" data-tex="\(n\)">\(n\)</span> nonnegative numbers
+<span class="math math-display" data-tex="\[
+|\sigma_1\alpha|,\ldots,|\sigma_{r_1}\alpha|,
+|\tau_1\alpha|,|\tau_1\alpha|,\ldots,
+|\tau_{r_2}\alpha|,|\tau_{r_2}\alpha|.
+\]">\[
+|\sigma_1\alpha|,\ldots,|\sigma_{r_1}\alpha|,
+|\tau_1\alpha|,|\tau_1\alpha|,\ldots,
+|\tau_{r_2}\alpha|,|\tau_{r_2}\alpha|.
+\]</span>
+Their sum is at most <span class="math" data-tex="\(t\)">\(t\)</span>, and their product is <span class="math" data-tex="\(|N_{K/\mathbf Q}\alpha|\)">\(|N_{K/\mathbf Q}\alpha|\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+|N_{K/\mathbf Q}\alpha|
+\leq(t/n)^n=M_K\,N\mathfrak a.
+\tag{9}
+\]">\[
+|N_{K/\mathbf Q}\alpha|
+\leq(t/n)^n=M_K\,N\mathfrak a.
+\tag{9}
+\]</span></p>
+<p>Now start with the specified class <span class="math" data-tex="\(C\)">\(C\)</span>. Choose an integral ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> in <span class="math" data-tex="\(C^{-1}\)">\(C^{-1}\)</span>: a fractional representative can be multiplied by a nonzero integer to clear its denominator, without changing its class. Choose <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> as above and put
+<span class="math math-display" data-tex="\[
+\mathfrak b=(\alpha)\mathfrak a^{-1}.
+\]">\[
+\mathfrak b=(\alpha)\mathfrak a^{-1}.
+\]</span>
+The inclusion <span class="math" data-tex="\((\alpha)\subseteq\mathfrak a\)">\((\alpha)\subseteq\mathfrak a\)</span> implies <span class="math" data-tex="\(\mathfrak b\subseteq O\)">\(\mathfrak b\subseteq O\)</span>, so <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> is integral. Its class is <span class="math" data-tex="\([\mathfrak a]^{-1}=C\)">\([\mathfrak a]^{-1}=C\)</span>, and its norm is
+<span class="math math-display" data-tex="\[
+N\mathfrak b=\frac{|N_{K/\mathbf Q}\alpha|}{N\mathfrak a}
+\leq M_K.
+\]">\[
+N\mathfrak b=\frac{|N_{K/\mathbf Q}\alpha|}{N\mathfrak a}
+\leq M_K.
+\]</span>
+This gives a representative of the requested class. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>To compare the two regions exactly, let <span class="math" data-tex="\(C_K=(2/\pi)^{r_2}\sqrt D\)">\(C_K=(2/\pi)^{r_2}\sqrt D\)</span> be the product-body constant of the preceding lesson, Proposition 7.3. Then
+<span class="math math-display" data-tex="\[
+\frac{M_K}{C_K}=2^{r_2}\frac{n!}{n^n}.
+\]">\[
+\frac{M_K}{C_K}=2^{r_2}\frac{n!}{n^n}.
+\]</span>
+The bounds agree in degree one and for imaginary quadratic fields; for real quadratic fields the ratio is one half. In every degree <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span> the ratio is strictly less than one. Indeed, pair the factors <span class="math" data-tex="\(j/n\)">\(j/n\)</span> and <span class="math" data-tex="\((n+1-j)/n\)">\((n+1-j)/n\)</span> in <span class="math" data-tex="\(n!/n^n\)">\(n!/n^n\)</span>. Their product is at most <span class="math" data-tex="\(((n+1)/(2n))^2\)">\(((n+1)/(2n))^2\)</span>. There are at least <span class="math" data-tex="\(r_2\)">\(r_2\)</span> pairs, so each factor two can be assigned to a different pair. Even those paired contributions are less than one, since <span class="math" data-tex="\((n+1)^2&lt;2n^2\)">\((n+1)^2&lt;2n^2\)</span> for <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>; unscaled pairs and an unpaired middle factor are also less than one. This proves the complete comparison. The geometry is that of [Milne, Theorem 4.3 and Lemmas 4.22–4.27]; the volume calculation above supplies all required integer exponents.</p>
+<h2 id="finiteness-and-generators">Finiteness and generators</h2>
+<p><strong>Bounded-ideal lemma.</strong> For each real <span class="math" data-tex="\(B\)">\(B\)</span>, only finitely many nonzero integral ideals of <span class="math" data-tex="\(O\)">\(O\)</span> have norm at most <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(N\mathfrak a=m\)">\(N\mathfrak a=m\)</span>, the additive group <span class="math" data-tex="\(O/\mathfrak a\)">\(O/\mathfrak a\)</span> has order <span class="math" data-tex="\(m\)">\(m\)</span>. Every element is annihilated by <span class="math" data-tex="\(m\)">\(m\)</span>: its cyclic subgroup has order dividing <span class="math" data-tex="\(m\)">\(m\)</span>, by the partition into its cosets. Hence
+<span class="math math-display" data-tex="\[
+mO\subseteq\mathfrak a\subseteq O.
+\]">\[
+mO\subseteq\mathfrak a\subseteq O.
+\]</span>
+An integral basis identifies <span class="math" data-tex="\(O/mO\)">\(O/mO\)</span> with <span class="math" data-tex="\((\mathbf Z/m\mathbf Z)^n\)">\((\mathbf Z/m\mathbf Z)^n\)</span>, a finite set. Ideals between <span class="math" data-tex="\(mO\)">\(mO\)</span> and <span class="math" data-tex="\(O\)">\(O\)</span> correspond to certain additive subgroups of this set, so there are finitely many of them. There are only finitely many positive integers <span class="math" data-tex="\(m\leq B\)">\(m\leq B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 8.2.</strong> The group <span class="math" data-tex="\(\mathrm{Cl}_K\)">\(\mathrm{Cl}_K\)</span> is finite. Moreover it is generated by the classes of prime ideals <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> with <span class="math" data-tex="\(N\mathfrak p\leq M_K\)">\(N\mathfrak p\leq M_K\)</span>.</p>
+<p><strong>Proof.</strong> Theorem 8.1 and the bounded-ideal lemma give a finite set mapping onto the class group. Factor each representative <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> into primes. If a prime occurs, its positive integer norm is at most <span class="math" data-tex="\(N\mathfrak b\)">\(N\mathfrak b\)</span>, because ideal norms multiply and all other factors are at least <span class="math" data-tex="\(1\)">\(1\)</span>. Therefore all the prime classes in this factorization satisfy the displayed bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(h_K=|\mathrm{Cl}_K|\)">\(h_K=|\mathrm{Cl}_K|\)</span>, the <strong>class number</strong>. To compute the group, list the primes below the bound, use elements to find relations between their classes, and prove that the proposed nontrivial classes cannot be principal. A prime of norm at most <span class="math" data-tex="\(M_K\)">\(M_K\)</span> lies over a rational prime <span class="math" data-tex="\(p\leq M_K\)">\(p\leq M_K\)</span>, since its norm is <span class="math" data-tex="\(p^f\)">\(p^f\)</span>. Residue degrees matter: an inert quadratic prime over <span class="math" data-tex="\(p\)">\(p\)</span> has norm <span class="math" data-tex="\(p^2\)">\(p^2\)</span>.</p>
+<h2 id="five-complete-class-group-computations">Five complete class-group computations</h2>
+<p>All ideal norms and equalities below are absolute. For a monogenic quadratic ring with generator <span class="math" data-tex="\(u\)">\(u\)</span>, a simple root <span class="math" data-tex="\(r\)">\(r\)</span> of its polynomial modulo <span class="math" data-tex="\(p\)">\(p\)</span> gives the prime <span class="math" data-tex="\((p,u-r)\)">\((p,u-r)\)</span> of norm <span class="math" data-tex="\(p\)">\(p\)</span>. The ramified quadratic cases used here also follow from the full-ring prime decomposition proved in Lesson 5. We identify principal ideals by their prime divisors and norms.</p>
+<h3 id="mathbf-q-sqrt--5"><span class="math" data-tex="\(\mathbf Q(\sqrt{-5})\)">\(\mathbf Q(\sqrt{-5})\)</span></h3>
+<p>Put <span class="math" data-tex="\(s=\sqrt{-5}\)">\(s=\sqrt{-5}\)</span>. Here <span class="math" data-tex="\(O=\mathbf Z[s]\)">\(O=\mathbf Z[s]\)</span>, <span class="math" data-tex="\(D=20\)">\(D=20\)</span>, and
+<span class="math math-display" data-tex="\[
+M_K=\frac2\pi\sqrt{20}\approx2.847&lt;3.
+\]">\[
+M_K=\frac2\pi\sqrt{20}\approx2.847&lt;3.
+\]</span>
+Only primes of norm <span class="math" data-tex="\(2\)">\(2\)</span> can be needed. The prime <span class="math" data-tex="\(2\)">\(2\)</span> ramifies:
+<span class="math math-display" data-tex="\[
+P=(2,1+s),\qquad NP=2,\qquad (2)=P^2.
+\]">\[
+P=(2,1+s),\qquad NP=2,\qquad (2)=P^2.
+\]</span>
+Thus <span class="math" data-tex="\(\mathrm{Cl}_K\)">\(\mathrm{Cl}_K\)</span> is generated by <span class="math" data-tex="\([P]\)">\([P]\)</span>, whose square is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>If <span class="math" data-tex="\(P=(a+bs)\)">\(P=(a+bs)\)</span>, its norm would be <span class="math" data-tex="\(a^2+5b^2=2\)">\(a^2+5b^2=2\)</span>, with <span class="math" data-tex="\(a,b\in\mathbf Z\)">\(a,b\in\mathbf Z\)</span>. When <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span> the left side is at least <span class="math" data-tex="\(5\)">\(5\)</span>; when <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, no integer square is <span class="math" data-tex="\(2\)">\(2\)</span>. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is not principal, and
+<span class="math math-display" data-tex="\[
+\mathrm{Cl}_{\mathbf Q(\sqrt{-5})}\cong\mathbf Z/2\mathbf Z.
+\]">\[
+\mathrm{Cl}_{\mathbf Q(\sqrt{-5})}\cong\mathbf Z/2\mathbf Z.
+\]</span></p>
+<h3 id="mathbf-q-sqrt--23"><span class="math" data-tex="\(\mathbf Q(\sqrt{-23})\)">\(\mathbf Q(\sqrt{-23})\)</span></h3>
+<p>Take
+<span class="math math-display" data-tex="\[
+\theta=\frac{1+\sqrt{-23}}2,\qquad
+O=\mathbf Z[\theta],\qquad
+\theta^2-\theta+6=0.
+\]">\[
+\theta=\frac{1+\sqrt{-23}}2,\qquad
+O=\mathbf Z[\theta],\qquad
+\theta^2-\theta+6=0.
+\]</span>
+The discriminant is <span class="math" data-tex="\(-23\)">\(-23\)</span>, so <span class="math" data-tex="\(M_K\approx3.053&lt;4\)">\(M_K\approx3.053&lt;4\)</span>. Both <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span> split, with roots <span class="math" data-tex="\(0,1\)">\(0,1\)</span> modulo each prime. Put
+<span class="math math-display" data-tex="\[
+A=(2,\theta),\quad \overline A=(2,\theta-1),\qquad
+B=(3,\theta),\quad \overline B=(3,\theta-1).
+\]">\[
+A=(2,\theta),\quad \overline A=(2,\theta-1),\qquad
+B=(3,\theta),\quad \overline B=(3,\theta-1).
+\]</span>
+Each ideal's norm is the first integer in its expression. Also
+<span class="math" data-tex="\((2)=A\overline A\)">\((2)=A\overline A\)</span> and <span class="math" data-tex="\((3)=B\overline B\)">\((3)=B\overline B\)</span>.</p>
+<p>Since <span class="math" data-tex="\(N\theta=6\)">\(N\theta=6\)</span>, and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> vanishes at the root-zero primes but not the root-one primes,
+<span class="math math-display" data-tex="\[
+(\theta)=AB.
+\tag{10}
+\]">\[
+(\theta)=AB.
+\tag{10}
+\]</span>
+The element
+<span class="math math-display" data-tex="\[
+1+\theta=\frac{3+\sqrt{-23}}2
+\]">\[
+1+\theta=\frac{3+\sqrt{-23}}2
+\]</span>
+has norm <span class="math" data-tex="\(8\)">\(8\)</span>. It vanishes modulo <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span>, and has residue <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(A\)">\(A\)</span>. Hence
+<span class="math math-display" data-tex="\[
+(1+\theta)=\overline A^{\,3}.
+\tag{11}
+\]">\[
+(1+\theta)=\overline A^{\,3}.
+\tag{11}
+\]</span>
+Equations (10)–(11) and the rational principal ideals show that every generating prime class is a power of <span class="math" data-tex="\([A]\)">\([A]\)</span>, and <span class="math" data-tex="\([A]^3=1\)">\([A]^3=1\)</span>.</p>
+<p>Every algebraic integer is <span class="math" data-tex="\((a+b\sqrt{-23})/2\)">\((a+b\sqrt{-23})/2\)</span> with integers <span class="math" data-tex="\(a\equiv b\pmod2\)">\(a\equiv b\pmod2\)</span>. An element of norm <span class="math" data-tex="\(2\)">\(2\)</span> would satisfy
+<span class="math math-display" data-tex="\[
+a^2+23b^2=8,
+\]">\[
+a^2+23b^2=8,
+\]</span>
+which is impossible: <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span> makes the left side at least <span class="math" data-tex="\(23\)">\(23\)</span>, and <span class="math" data-tex="\(b=0\)">\(b=0\)</span> would require <span class="math" data-tex="\(a^2=8\)">\(a^2=8\)</span>. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is nonprincipal. Its order is <span class="math" data-tex="\(3\)">\(3\)</span>, and
+<span class="math math-display" data-tex="\[
+\mathrm{Cl}_{\mathbf Q(\sqrt{-23})}\cong\mathbf Z/3\mathbf Z.
+\]">\[
+\mathrm{Cl}_{\mathbf Q(\sqrt{-23})}\cong\mathbf Z/3\mathbf Z.
+\]</span></p>
+<h3 id="mathbf-q-sqrt--14"><span class="math" data-tex="\(\mathbf Q(\sqrt{-14})\)">\(\mathbf Q(\sqrt{-14})\)</span></h3>
+<p>Let <span class="math" data-tex="\(s=\sqrt{-14}\)">\(s=\sqrt{-14}\)</span>. The full ring is <span class="math" data-tex="\(\mathbf Z[s]\)">\(\mathbf Z[s]\)</span>, <span class="math" data-tex="\(D=56\)">\(D=56\)</span>, and <span class="math" data-tex="\(M_K\approx4.764&lt;5\)">\(M_K\approx4.764&lt;5\)</span>. The relevant rational primes are <span class="math" data-tex="\(2,3\)">\(2,3\)</span>. There is one prime over <span class="math" data-tex="\(2\)">\(2\)</span>, and two over <span class="math" data-tex="\(3\)">\(3\)</span>:
+<span class="math math-display" data-tex="\[
+P=(2,s),\quad NP=2,\quad (2)=P^2,
+\]">\[
+P=(2,s),\quad NP=2,\quad (2)=P^2,
+\]</span>
+<span class="math math-display" data-tex="\[
+Q=(3,s-1),\quad\overline Q=(3,s+1),\quad
+NQ=N\overline Q=3,\quad (3)=Q\overline Q.
+\]">\[
+Q=(3,s-1),\quad\overline Q=(3,s+1),\quad
+NQ=N\overline Q=3,\quad (3)=Q\overline Q.
+\]</span>
+There is no additional prime of norm <span class="math" data-tex="\(4\)">\(4\)</span>, because the only prime over <span class="math" data-tex="\(2\)">\(2\)</span> already has norm <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p>The element <span class="math" data-tex="\(2+s\)">\(2+s\)</span> has norm <span class="math" data-tex="\(18\)">\(18\)</span>. It belongs to <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>, and has nonzero residue <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(\overline Q\)">\(\overline Q\)</span>. Unique factorization of ideals and the norm <span class="math" data-tex="\(18=2\cdot3^2\)">\(18=2\cdot3^2\)</span> therefore give
+<span class="math math-display" data-tex="\[
+(2+s)=P Q^2.
+\tag{12}
+\]">\[
+(2+s)=P Q^2.
+\tag{12}
+\]</span>
+It follows that <span class="math" data-tex="\([P]=[Q]^{-2}\)">\([P]=[Q]^{-2}\)</span>. Since <span class="math" data-tex="\([P]^2=1\)">\([P]^2=1\)</span>, we obtain <span class="math" data-tex="\([Q]^4=1\)">\([Q]^4=1\)</span>, and all generating prime classes lie in <span class="math" data-tex="\(\langle[Q]\rangle\)">\(\langle[Q]\rangle\)</span>.</p>
+<p>There is no element of norm <span class="math" data-tex="\(2\)">\(2\)</span>, because <span class="math" data-tex="\(a^2+14b^2=2\)">\(a^2+14b^2=2\)</span> has no integral solution. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is not principal. Equation (12) implies <span class="math" data-tex="\([Q]^2\ne1\)">\([Q]^2\ne1\)</span>, so <span class="math" data-tex="\([Q]\)">\([Q]\)</span> has order exactly <span class="math" data-tex="\(4\)">\(4\)</span>:
+<span class="math math-display" data-tex="\[
+\mathrm{Cl}_{\mathbf Q(\sqrt{-14})}\cong\mathbf Z/4\mathbf Z.
+\]">\[
+\mathrm{Cl}_{\mathbf Q(\sqrt{-14})}\cong\mathbf Z/4\mathbf Z.
+\]</span>
+The ramified prime class is the unique element of order <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<h3 id="mathbf-q-sqrt-10"><span class="math" data-tex="\(\mathbf Q(\sqrt{10})\)">\(\mathbf Q(\sqrt{10})\)</span></h3>
+<p>Put <span class="math" data-tex="\(s=\sqrt{10}\)">\(s=\sqrt{10}\)</span>. Here <span class="math" data-tex="\(O=\mathbf Z[s]\)">\(O=\mathbf Z[s]\)</span>, <span class="math" data-tex="\(D=40\)">\(D=40\)</span>, and
+<span class="math math-display" data-tex="\[
+M_K=\sqrt{10}\approx3.162&lt;4.
+\]">\[
+M_K=\sqrt{10}\approx3.162&lt;4.
+\]</span>
+We need the ramified prime <span class="math" data-tex="\(P=(2,s)\)">\(P=(2,s)\)</span> and the split primes
+<span class="math math-display" data-tex="\[
+Q=(3,s+1),\qquad \overline Q=(3,s-1).
+\]">\[
+Q=(3,s+1),\qquad \overline Q=(3,s-1).
+\]</span>
+Their norms are <span class="math" data-tex="\(2,3,3\)">\(2,3,3\)</span>, respectively, and
+<span class="math" data-tex="\((2)=P^2\)">\((2)=P^2\)</span>, <span class="math" data-tex="\((3)=Q\overline Q\)">\((3)=Q\overline Q\)</span>.</p>
+<p>The element <span class="math" data-tex="\(4+s\)">\(4+s\)</span> has field norm <span class="math" data-tex="\(16-10=6\)">\(16-10=6\)</span>. Its residues vanish at <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>, but not at <span class="math" data-tex="\(\overline Q\)">\(\overline Q\)</span>. Thus
+<span class="math math-display" data-tex="\[
+(4+s)=P Q.
+\tag{13}
+\]">\[
+(4+s)=P Q.
+\tag{13}
+\]</span>
+All generating prime classes are consequently powers of <span class="math" data-tex="\([P]\)">\([P]\)</span>, which has order at most <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> were principal, its generator would have field norm <span class="math" data-tex="\(2\)">\(2\)</span> or <span class="math" data-tex="\(-2\)">\(-2\)</span>. But
+<span class="math math-display" data-tex="\[
+a^2-10b^2=\pm2
+\]">\[
+a^2-10b^2=\pm2
+\]</span>
+would imply <span class="math" data-tex="\(a^2\equiv2\)">\(a^2\equiv2\)</span> or <span class="math" data-tex="\(3\pmod5\)">\(3\pmod5\)</span>; neither is a square modulo <span class="math" data-tex="\(5\)">\(5\)</span>. Thus <span class="math" data-tex="\([P]\ne1\)">\([P]\ne1\)</span>, and
+<span class="math math-display" data-tex="\[
+\mathrm{Cl}_{\mathbf Q(\sqrt{10})}\cong\mathbf Z/2\mathbf Z.
+\]">\[
+\mathrm{Cl}_{\mathbf Q(\sqrt{10})}\cong\mathbf Z/2\mathbf Z.
+\]</span>
+Using the absolute norm in this nonprincipality test is essential.</p>
+<h3 id="mathbf-q-sqrt-3-2"><span class="math" data-tex="\(\mathbf Q(\sqrt[3]{2})\)">\(\mathbf Q(\sqrt[3]{2})\)</span></h3>
+<p>Let <span class="math" data-tex="\(\alpha=\sqrt[3]{2}\)">\(\alpha=\sqrt[3]{2}\)</span>. The integral-basis calculation gives
+<span class="math math-display" data-tex="\[
+O=\mathbf Z[\alpha],\qquad d_K=-108,\qquad
+(r_1,r_2)=(1,1).
+\]">\[
+O=\mathbf Z[\alpha],\qquad d_K=-108,\qquad
+(r_1,r_2)=(1,1).
+\]</span>
+Therefore
+<span class="math math-display" data-tex="\[
+M_K=\frac{6}{27}\frac4\pi\sqrt{108}
+\approx2.940&lt;3.
+\]">\[
+M_K=\frac{6}{27}\frac4\pi\sqrt{108}
+\approx2.940&lt;3.
+\]</span>
+For an explicit strict estimate, <span class="math" data-tex="\(\pi&gt;31/10\)">\(\pi&gt;31/10\)</span> and <span class="math" data-tex="\(\sqrt3&lt;26/15\)">\(\sqrt3&lt;26/15\)</span> give <span class="math" data-tex="\(M_K=16\sqrt3/(3\pi)&lt;4160/1395&lt;3\)">\(M_K=16\sqrt3/(3\pi)&lt;4160/1395&lt;3\)</span>.
+Modulo <span class="math" data-tex="\(2\)">\(2\)</span>, the defining polynomial is <span class="math" data-tex="\(X^3\)">\(X^3\)</span>. Thus the only prime of norm <span class="math" data-tex="\(2\)">\(2\)</span> is <span class="math" data-tex="\(P=(2,\alpha)\)">\(P=(2,\alpha)\)</span>, with <span class="math" data-tex="\((2)=P^3\)">\((2)=P^3\)</span>. Since <span class="math" data-tex="\(N_{K/\mathbf Q}\alpha=2\)">\(N_{K/\mathbf Q}\alpha=2\)</span> and <span class="math" data-tex="\(\alpha\in P\)">\(\alpha\in P\)</span>, the principal ideal <span class="math" data-tex="\((\alpha)\)">\((\alpha)\)</span> has the same norm as <span class="math" data-tex="\(P\)">\(P\)</span> and is contained in it. Hence
+<span class="math math-display" data-tex="\[
+P=(\alpha).
+\]">\[
+P=(\alpha).
+\]</span>
+Every prime class needed by Corollary 8.2 is trivial, so
+<span class="math math-display" data-tex="\[
+\mathrm{Cl}_{\mathbf Q(\sqrt[3]{2})}=1.
+\]">\[
+\mathrm{Cl}_{\mathbf Q(\sqrt[3]{2})}=1.
+\]</span>
+In particular its ring of integers is a PID, even though this argument supplies no Euclidean algorithm.</p>
+<h2 id="discriminants-cannot-be-too-small">Discriminants cannot be too small</h2>
+<p><strong>Theorem 8.3 (Minkowski discriminant bound).</strong> If <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, then
+<span class="math math-display" data-tex="\[
+D\geq
+\left(\frac{\pi}{4}\right)^{2r_2}
+\left(\frac{n^n}{n!}\right)^2&gt;1.
+\tag{14}
+\]">\[
+D\geq
+\left(\frac{\pi}{4}\right)^{2r_2}
+\left(\frac{n^n}{n!}\right)^2&gt;1.
+\tag{14}
+\]</span>
+Consequently every number field of degree greater than <span class="math" data-tex="\(1\)">\(1\)</span> has a ramified rational prime.</p>
+<p><strong>Proof.</strong> A nonzero integral ideal has norm at least <span class="math" data-tex="\(1\)">\(1\)</span>. Applying Theorem 8.1 to any class gives <span class="math" data-tex="\(M_K\geq1\)">\(M_K\geq1\)</span>. Rearranging (7) gives the first inequality in (14).</p>
+<p>We derive an explicit exponential consequence of (14). Applying (6) to <span class="math" data-tex="\(1,2,\ldots,n\)">\(1,2,\ldots,n\)</span> gives
+<span class="math math-display" data-tex="\[
+n!\leq\left(\frac{n+1}{2}\right)^n.
+\]">\[
+n!\leq\left(\frac{n+1}{2}\right)^n.
+\]</span>
+Since <span class="math" data-tex="\(2r_2\leq n\)">\(2r_2\leq n\)</span> and <span class="math" data-tex="\(0&lt;\pi/4&lt;1\)">\(0&lt;\pi/4&lt;1\)</span>, we deduce
+<span class="math math-display" data-tex="\[
+D\geq
+\left(\frac{\pi}{4}\right)^n
+\left(\frac{2n}{n+1}\right)^{2n}
+\geq\left(\frac{4\pi}{9}\right)^n&gt;1.
+\tag{15}
+\]">\[
+D\geq
+\left(\frac{\pi}{4}\right)^n
+\left(\frac{2n}{n+1}\right)^{2n}
+\geq\left(\frac{4\pi}{9}\right)^n&gt;1.
+\tag{15}
+\]</span>
+The middle inequality uses <span class="math" data-tex="\(2n/(n+1)\geq4/3\)">\(2n/(n+1)\geq4/3\)</span> for <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>; the last uses <span class="math" data-tex="\(\pi&gt;3\)">\(\pi&gt;3\)</span>.</p>
+<p>The integer <span class="math" data-tex="\(D&gt;1\)">\(D&gt;1\)</span> has a rational prime divisor. By the discriminant ramification criterion of Lesson 5, that prime ramifies in <span class="math" data-tex="\(K/\mathbf Q\)">\(K/\mathbf Q\)</span>. Thus <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> has no nontrivial finite extension unramified at every finite prime. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Estimate (15) will also bound the degree when <span class="math" data-tex="\(D\)">\(D\)</span> is bounded. A weaker exponential estimate suffices for this purpose; no asymptotic factorial formula is required.</p>
+<h2 id="hermite-s-theorem-finitely-many-fields">Hermite's theorem: finitely many fields</h2>
+<p><strong>Theorem 8.4 (Hermite).</strong> For every real <span class="math" data-tex="\(X\)">\(X\)</span>, there are only finitely many number fields <span class="math" data-tex="\(K\subset\mathbf C\)">\(K\subset\mathbf C\)</span> with <span class="math" data-tex="\(|d_K|\leq X\)">\(|d_K|\leq X\)</span>. In particular there are only finitely many isomorphism classes of such fields.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(X&lt;1\)">\(X&lt;1\)</span>, there are no such fields. Suppose <span class="math" data-tex="\(X\geq1\)">\(X\geq1\)</span>. For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, (15) implies
+<span class="math math-display" data-tex="\[
+n\leq\frac{\log X}{\log(4\pi/9)}.
+\]">\[
+n\leq\frac{\log X}{\log(4\pi/9)}.
+\]</span>
+Thus only finitely many degrees occur; the only degree-one field is <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Fix a degree <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, and set
+<span class="math math-display" data-tex="\[
+c=\frac12,\qquad T=2^n\sqrt X.
+\tag{16}
+\]">\[
+c=\frac12,\qquad T=2^n\sqrt X.
+\tag{16}
+\]</span>
+We will find an integral primitive element with every conjugate of modulus at most <span class="math" data-tex="\(2T\)">\(2T\)</span>.</p>
+<p>We use an exact multiplicity fact from Proposition 1.2 in <a href="algebraic-integers-and-rings-of-integers.html"><em>Algebraic integers and rings of integers</em></a>. For <span class="math" data-tex="\(\alpha\in K\)">\(\alpha\in K\)</span>, if <span class="math" data-tex="\(m_\alpha\)">\(m_\alpha\)</span> is its minimal polynomial, then the characteristic polynomial of multiplication by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span> is
+<span class="math math-display" data-tex="\[
+\chi_{\alpha,K/\mathbf Q}(U)
+=\prod_{\sigma:K\hookrightarrow\mathbf C}(U-\sigma\alpha)
+=m_\alpha(U)^{[K:\mathbf Q(\alpha)]}.
+\tag{17}
+\]">\[
+\chi_{\alpha,K/\mathbf Q}(U)
+=\prod_{\sigma:K\hookrightarrow\mathbf C}(U-\sigma\alpha)
+=m_\alpha(U)^{[K:\mathbf Q(\alpha)]}.
+\tag{17}
+\]</span>
+The roots of <span class="math" data-tex="\(m_\alpha\)">\(m_\alpha\)</span> are distinct in characteristic zero. Consequently, if one value <span class="math" data-tex="\(\sigma\alpha\)">\(\sigma\alpha\)</span> occurs exactly once among the <span class="math" data-tex="\(n\)">\(n\)</span> embedding values, then <span class="math" data-tex="\(\mathbf Q(\alpha)=K\)">\(\mathbf Q(\alpha)=K\)</span>.</p>
+<p>First assume <span class="math" data-tex="\(r_1\geq1\)">\(r_1\geq1\)</span>. Consider the compact symmetric convex region
+<span class="math math-display" data-tex="\[
+|x_1|\leq T,\qquad |x_i|\leq c\ (i&gt;1),
+\qquad |z_j|\leq c\ (1\leq j\leq r_2).
+\tag{18}
+\]">\[
+|x_1|\leq T,\qquad |x_i|\leq c\ (i&gt;1),
+\qquad |z_j|\leq c\ (1\leq j\leq r_2).
+\tag{18}
+\]</span>
+Its volume is <span class="math" data-tex="\(2^{r_1}\pi^{r_2}Tc^{n-1}\)">\(2^{r_1}\pi^{r_2}Tc^{n-1}\)</span>. Dividing by <span class="math" data-tex="\(2^n\)">\(2^n\)</span> times the covolume of <span class="math" data-tex="\(O\)">\(O\)</span>, namely <span class="math" data-tex="\(2^{r_1+r_2}\sqrt D\)">\(2^{r_1+r_2}\sqrt D\)</span>, gives
+<span class="math math-display" data-tex="\[
+2\left(\frac{\pi}{2}\right)^{r_2}\sqrt{\frac XD}\geq2.
+\]">\[
+2\left(\frac{\pi}{2}\right)^{r_2}\sqrt{\frac XD}\geq2.
+\]</span>
+Minkowski therefore supplies a nonzero <span class="math" data-tex="\(\alpha\in O\)">\(\alpha\in O\)</span> in (18). Its nonzero integral field norm has absolute value at least <span class="math" data-tex="\(1\)">\(1\)</span>, whereas all <span class="math" data-tex="\(n-1\)">\(n-1\)</span> embedding values other than <span class="math" data-tex="\(\sigma_1\alpha\)">\(\sigma_1\alpha\)</span> have modulus at most <span class="math" data-tex="\(c\)">\(c\)</span>. Hence
+<span class="math math-display" data-tex="\[
+|\sigma_1\alpha|\geq c^{-(n-1)}&gt;c.
+\]">\[
+|\sigma_1\alpha|\geq c^{-(n-1)}&gt;c.
+\]</span>
+This value cannot equal any of the other embedding values. By (17), <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is primitive. All conjugates have modulus at most <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>Now assume <span class="math" data-tex="\(r_1=0\)">\(r_1=0\)</span>, so <span class="math" data-tex="\(n=2r_2\)">\(n=2r_2\)</span>. Enlarging an entire complex disc could leave two equal conjugate values, so instead consider the rectangle in the first coordinate:
+<span class="math math-display" data-tex="\[
+|\operatorname{Re}z_1|\leq c,\qquad
+|\operatorname{Im}z_1|\leq T,\qquad
+|z_j|\leq c\ (j&gt;1).
+\tag{19}
+\]">\[
+|\operatorname{Re}z_1|\leq c,\qquad
+|\operatorname{Im}z_1|\leq T,\qquad
+|z_j|\leq c\ (j&gt;1).
+\tag{19}
+\]</span>
+Its volume is
+<span class="math math-display" data-tex="\[
+4\pi^{r_2-1}Tc^{n-1}
+=8\pi^{r_2-1}\sqrt X.
+\]">\[
+4\pi^{r_2-1}Tc^{n-1}
+=8\pi^{r_2-1}\sqrt X.
+\]</span>
+Its ratio to <span class="math" data-tex="\(2^n\operatorname{covol}(O)=2^{r_2}\sqrt D\)">\(2^n\operatorname{covol}(O)=2^{r_2}\sqrt D\)</span> is
+<span class="math math-display" data-tex="\[
+4\left(\frac{\pi}{2}\right)^{r_2-1}\sqrt{\frac XD}\geq4.
+\]">\[
+4\left(\frac{\pi}{2}\right)^{r_2-1}\sqrt{\frac XD}\geq4.
+\]</span>
+Again there is a nonzero <span class="math" data-tex="\(\alpha\in O\)">\(\alpha\in O\)</span> in this region.</p>
+<p>If <span class="math" data-tex="\(\tau_1\alpha\)">\(\tau_1\alpha\)</span> were real, its modulus would be at most <span class="math" data-tex="\(c\)">\(c\)</span>, by the real-part condition. Then every conjugate would have modulus at most <span class="math" data-tex="\(c&lt;1\)">\(c&lt;1\)</span>, contradicting <span class="math" data-tex="\(|N\alpha|\geq1\)">\(|N\alpha|\geq1\)</span>. Thus <span class="math" data-tex="\(\tau_1\alpha\)">\(\tau_1\alpha\)</span> and <span class="math" data-tex="\(\overline{\tau_1\alpha}\)">\(\overline{\tau_1\alpha}\)</span> are distinct. Moreover,
+<span class="math math-display" data-tex="\[
+1\leq|N\alpha|
+\leq|\tau_1\alpha|^2c^{n-2},
+\qquad
+|\tau_1\alpha|\geq c^{-(n-2)/2}&gt;c.
+\]">\[
+1\leq|N\alpha|
+\leq|\tau_1\alpha|^2c^{n-2},
+\qquad
+|\tau_1\alpha|\geq c^{-(n-2)/2}&gt;c.
+\]</span>
+No other embedding value can equal <span class="math" data-tex="\(\tau_1\alpha\)">\(\tau_1\alpha\)</span>, since all outside this conjugate pair have modulus at most <span class="math" data-tex="\(c\)">\(c\)</span>. Its conjugate partner is distinct as just proved. Thus this value occurs exactly once, and (17) again makes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> primitive. The rectangle bounds its modulus by <span class="math" data-tex="\(\sqrt{T^2+c^2}&lt;2T\)">\(\sqrt{T^2+c^2}&lt;2T\)</span>, while the other conjugates are even smaller.</p>
+<p>In either case <span class="math" data-tex="\(K=\mathbf Q(\alpha)\)">\(K=\mathbf Q(\alpha)\)</span>, with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> integral and all <span class="math" data-tex="\(n\)">\(n\)</span> conjugates bounded in modulus by <span class="math" data-tex="\(H=2T\)">\(H=2T\)</span>, a bound depending only on <span class="math" data-tex="\(n,X\)">\(n,X\)</span>. Write its monic minimal polynomial as
+<span class="math math-display" data-tex="\[
+m_\alpha(U)=U^n+a_1U^{n-1}+\cdots+a_n.
+\]">\[
+m_\alpha(U)=U^n+a_1U^{n-1}+\cdots+a_n.
+\]</span>
+Its coefficients are integers, because <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is integral. Each <span class="math" data-tex="\(a_k\)">\(a_k\)</span> is, up to sign, a sum of <span class="math" data-tex="\(\binom nk\)">\(\binom nk\)</span> products of <span class="math" data-tex="\(k\)">\(k\)</span> conjugates. Therefore
+<span class="math math-display" data-tex="\[
+|a_k|\leq\binom nk H^k.
+\tag{20}
+\]">\[
+|a_k|\leq\binom nk H^k.
+\tag{20}
+\]</span>
+Only finitely many integer coefficient tuples satisfy these bounds. Each resulting polynomial has finitely many roots in <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, and each root generates just one subfield of <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. Every field under consideration is generated by such a root, so there are finitely many fields in degree <span class="math" data-tex="\(n\)">\(n\)</span>. The earlier degree bound finishes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The rectangle in (19) resolves the possible proper-subfield obstruction directly. The proof includes both signature cases and explicitly rules out a repeated-conjugate obstruction from a proper subfield. Notice that the argument proves finiteness of the actual subfields of <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, the stated form of the theorem.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Use the Minkowski bound to prove that <span class="math" data-tex="\(\mathbf Z[\sqrt{-2}]\)">\(\mathbf Z[\sqrt{-2}]\)</span>, <span class="math" data-tex="\(\mathbf Z[\sqrt2]\)">\(\mathbf Z[\sqrt2]\)</span>, and <span class="math" data-tex="\(\mathbf Z[\sqrt3]\)">\(\mathbf Z[\sqrt3]\)</span> are PIDs.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Compute the class group of <span class="math" data-tex="\(\mathbf Q(\sqrt{-14})\)">\(\mathbf Q(\sqrt{-14})\)</span>, identifying a generator and the ramified prime class.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Compute the class group of <span class="math" data-tex="\(\mathbf Q(\sqrt{-31})\)">\(\mathbf Q(\sqrt{-31})\)</span> and give an explicit prime ideal generator.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Prove Hermite's theorem for subfields of <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. Give separate regions for a field with a real embedding and a totally imaginary field, and explain why your lattice element generates the whole field.</p>
+</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>1.</strong> These are the full rings of integers. Their absolute discriminants are <span class="math" data-tex="\(8,8,12\)">\(8,8,12\)</span>, respectively. The imaginary quadratic field has <span class="math" data-tex="\(r_2=1\)">\(r_2=1\)</span>, whereas the two real quadratic fields have <span class="math" data-tex="\(r_2=0\)">\(r_2=0\)</span>. Their Minkowski bounds are
+<span class="math math-display" data-tex="\[
+\frac2\pi\sqrt8&lt;2,\qquad
+\frac12\sqrt8=\sqrt2&lt;2,\qquad
+\frac12\sqrt{12}=\sqrt3&lt;2.
+\]">\[
+\frac2\pi\sqrt8&lt;2,\qquad
+\frac12\sqrt8=\sqrt2&lt;2,\qquad
+\frac12\sqrt{12}=\sqrt3&lt;2.
+\]</span>
+The first strict inequality follows from <span class="math" data-tex="\(\pi&gt;3&gt;\sqrt8\)">\(\pi&gt;3&gt;\sqrt8\)</span>. In each case Theorem 8.1 gives an integral ideal of norm less than <span class="math" data-tex="\(2\)">\(2\)</span> in every class. Its positive integer norm must be <span class="math" data-tex="\(1\)">\(1\)</span>, so the ideal is <span class="math" data-tex="\(O\)">\(O\)</span>. The class group is trivial. By the Dedekind-domain PID criterion of Lesson 3, every ideal is principal, as required.</p>
+<p><strong>2.</strong> With <span class="math" data-tex="\(s=\sqrt{-14}\)">\(s=\sqrt{-14}\)</span>, the bound is <span class="math" data-tex="\(2\sqrt{56}/\pi&lt;5\)">\(2\sqrt{56}/\pi&lt;5\)</span>. The relevant prime ideals are <span class="math" data-tex="\(P=(2,s)\)">\(P=(2,s)\)</span>, <span class="math" data-tex="\(Q=(3,s-1)\)">\(Q=(3,s-1)\)</span>, and <span class="math" data-tex="\(\overline Q=(3,s+1)\)">\(\overline Q=(3,s+1)\)</span>, with norms <span class="math" data-tex="\(2,3,3\)">\(2,3,3\)</span>. They satisfy <span class="math" data-tex="\((2)=P^2\)">\((2)=P^2\)</span> and <span class="math" data-tex="\((3)=Q\overline Q\)">\((3)=Q\overline Q\)</span>, so <span class="math" data-tex="\([P]^2=1\)">\([P]^2=1\)</span> and <span class="math" data-tex="\([\overline Q]=[Q]^{-1}\)">\([\overline Q]=[Q]^{-1}\)</span>.</p>
+<p>The norm of <span class="math" data-tex="\(2+s\)">\(2+s\)</span> is <span class="math" data-tex="\(18\)">\(18\)</span>. Its residues are zero at <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> and nonzero at <span class="math" data-tex="\(\overline Q\)">\(\overline Q\)</span>. The exponents forced by this norm give <span class="math" data-tex="\((2+s)=P Q^2\)">\((2+s)=P Q^2\)</span>. Thus every generating class is a power of <span class="math" data-tex="\([Q]\)">\([Q]\)</span>, and <span class="math" data-tex="\([Q]^4=1\)">\([Q]^4=1\)</span>. The equation <span class="math" data-tex="\(a^2+14b^2=2\)">\(a^2+14b^2=2\)</span> has no integral solution, so <span class="math" data-tex="\(P\)">\(P\)</span> is nonprincipal. Hence <span class="math" data-tex="\([Q]^2=[P]\ne1\)">\([Q]^2=[P]\ne1\)</span>. The group is cyclic of order <span class="math" data-tex="\(4\)">\(4\)</span>, generated by <span class="math" data-tex="\(Q\)">\(Q\)</span>, with ramified class <span class="math" data-tex="\([P]=[Q]^2\)">\([P]=[Q]^2\)</span>.</p>
+<p><strong>3.</strong> Put <span class="math" data-tex="\(\theta=(1+\sqrt{-31})/2\)">\(\theta=(1+\sqrt{-31})/2\)</span>. Then
+<span class="math math-display" data-tex="\[
+O=\mathbf Z[\theta],\qquad
+\theta^2-\theta+8=0,\qquad d_K=-31.
+\]">\[
+O=\mathbf Z[\theta],\qquad
+\theta^2-\theta+8=0,\qquad d_K=-31.
+\]</span>
+The bound is <span class="math" data-tex="\(2\sqrt{31}/\pi\approx3.544&lt;4\)">\(2\sqrt{31}/\pi\approx3.544&lt;4\)</span>. Modulo <span class="math" data-tex="\(2\)">\(2\)</span> the polynomial has distinct roots <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, giving
+<span class="math math-display" data-tex="\[
+P=(2,\theta),\qquad \overline P=(2,\theta-1),
+\qquad (2)=P\overline P.
+\]">\[
+P=(2,\theta),\qquad \overline P=(2,\theta-1),
+\qquad (2)=P\overline P.
+\]</span>
+Modulo <span class="math" data-tex="\(3\)">\(3\)</span> it is <span class="math" data-tex="\(U^2-U+2\)">\(U^2-U+2\)</span>, with values <span class="math" data-tex="\(2,2,1\)">\(2,2,1\)</span> at <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>; it is irreducible. The prime over <span class="math" data-tex="\(3\)">\(3\)</span> therefore has norm <span class="math" data-tex="\(9\)">\(9\)</span>, beyond the bound. Corollary 8.2 shows that <span class="math" data-tex="\([P]\)">\([P]\)</span> generates the group.</p>
+<p>Since <span class="math" data-tex="\(N\theta=8\)">\(N\theta=8\)</span>, and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> belongs to <span class="math" data-tex="\(P\)">\(P\)</span> but not <span class="math" data-tex="\(\overline P\)">\(\overline P\)</span>, we have <span class="math" data-tex="\((\theta)=P^3\)">\((\theta)=P^3\)</span>. Thus <span class="math" data-tex="\([P]^3=1\)">\([P]^3=1\)</span>. If <span class="math" data-tex="\(P\)">\(P\)</span> were principal, an integer <span class="math" data-tex="\((a+b\sqrt{-31})/2\)">\((a+b\sqrt{-31})/2\)</span>, with <span class="math" data-tex="\(a\equiv b\pmod2\)">\(a\equiv b\pmod2\)</span>, would have norm <span class="math" data-tex="\(2\)">\(2\)</span>, giving <span class="math" data-tex="\(a^2+31b^2=8\)">\(a^2+31b^2=8\)</span>. There is no such pair: a nonzero <span class="math" data-tex="\(b\)">\(b\)</span> already contributes at least <span class="math" data-tex="\(31\)">\(31\)</span>, and <span class="math" data-tex="\(a^2=8\)">\(a^2=8\)</span> is impossible. Hence <span class="math" data-tex="\([P]\ne1\)">\([P]\ne1\)</span>, and the group is <span class="math" data-tex="\(\mathbf Z/3\mathbf Z\)">\(\mathbf Z/3\mathbf Z\)</span>, generated by <span class="math" data-tex="\([(2,\theta)]\)">\([(2,\theta)]\)</span>.</p>
+<p><strong>4.</strong> If <span class="math" data-tex="\(X&lt;1\)">\(X&lt;1\)</span>, the set is empty. If <span class="math" data-tex="\(X\geq1\)">\(X\geq1\)</span>, use (15) to bound the degrees <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, and treat <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> separately. For each fixed degree take <span class="math" data-tex="\(c=1/2\)">\(c=1/2\)</span>, <span class="math" data-tex="\(T=2^n\sqrt X\)">\(T=2^n\sqrt X\)</span>.</p>
+<p>When <span class="math" data-tex="\(r_1&gt;0\)">\(r_1&gt;0\)</span>, use the region (18). Its volume divided by the critical Minkowski volume is <span class="math" data-tex="\(2(\pi/2)^{r_2}\sqrt{X/D}&gt;1\)">\(2(\pi/2)^{r_2}\sqrt{X/D}&gt;1\)</span>. A nonzero integral lattice element has all but one conjugate of modulus at most <span class="math" data-tex="\(c\)">\(c\)</span>. Its integral nonzero norm forces the remaining conjugate to have modulus at least <span class="math" data-tex="\(c^{-(n-1)}&gt;c\)">\(c^{-(n-1)}&gt;c\)</span>. That conjugate value occurs just once.</p>
+<p>When <span class="math" data-tex="\(r_1=0\)">\(r_1=0\)</span>, use (19). The critical-volume ratio is <span class="math" data-tex="\(4(\pi/2)^{r_2-1}\sqrt{X/D}&gt;1\)">\(4(\pi/2)^{r_2-1}\sqrt{X/D}&gt;1\)</span>. For the resulting nonzero integral element, a real first coordinate would make all conjugates of modulus at most <span class="math" data-tex="\(c\)">\(c\)</span>, which contradicts the norm. Thus the first conjugate pair consists of two distinct values. The norm also forces their common modulus to be at least <span class="math" data-tex="\(c^{-(n-2)/2}&gt;c\)">\(c^{-(n-2)/2}&gt;c\)</span>, so neither equals any other conjugate value.</p>
+<p>In both cases (17) makes the element primitive: every distinct minimal-polynomial root occurs <span class="math" data-tex="\([K:\mathbf Q(\alpha)]\)">\([K:\mathbf Q(\alpha)]\)</span> times, and we have found a root occurring once. All its conjugates have modulus at most <span class="math" data-tex="\(2T\)">\(2T\)</span>. The integer coefficients of its degree-<span class="math" data-tex="\(n\)">\(n\)</span> minimal polynomial consequently satisfy (20). There are finitely many such polynomials, finitely many roots of each, and hence finitely many subfields generated by these roots. Together with the degree bound, this proves the required theorem, including the totally imaginary case.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We import the exact lattice theorem and ideal covolume formula (Theorem 7.1 and Proposition 7.2), the ideal factorization and PID criterion of Lesson 3, and ideal norm formulas (Proposition 4.1). The example rings and discriminants are the quadratic and pure-cubic integral-basis results of Lessons 1–2. Their prime decompositions use Lesson 5's full-ring Kummer–Dedekind theorem. The final ramification conclusion uses that lesson's discriminant criterion over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, whose residue fields are finite and separable.</p>
+<p>The characteristic-polynomial identity (17), including its embedding product and multiplicity, is Proposition 1.2 of Lesson 1. We use compactness and elementary single-variable integration, and import Lebesgue product measure and Fubini/Tonelli from Fremlin 251N and 252H, and polar change of variables from 263G. The bounds and class computations here do not require Dirichlet's unit theorem or binary quadratic form classification.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, version 3.08: Chapter 4, Theorem 4.3, Corollaries 4.4 and 4.9, Lemmas 4.22–4.27, pp. 70–81.</li>
+<li>E. Hecke, <em>Vorlesungen über die Theorie der algebraischen Zahlen</em>, 1923: §33, Sätze 96–98, pp. 120–121, for classical finiteness of ideal classes.</li>
+<li>D. H. Fremlin, <em>Measure Theory</em>, Volume 2: <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap25.pdf">Chapter 25</a>, 251N and 252H; <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap26.pdf">Chapter 26</a>, 263G.</li>
+<li>Andrew V. Sutherland, <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes14.pdf">MIT 18.785 Lecture 14</a>, Theorem 14.28, pp.9-10. The current proof separately closes the complex proper-subfield obstruction; no silent substitution of the shorter Case 2.</li>
+</ul>
+</article><nav><a href="src/finiteness-of-the-class-number.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

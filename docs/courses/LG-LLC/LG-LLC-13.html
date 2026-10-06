@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beyond general linear groups: parameters and packets · The local Langlands correspondence for GL_n</title>
+<meta name="description" content="A lesson of the course The local Langlands correspondence for GL_n. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-LLC/LG-LLC-13.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The local Langlands correspondence for GL_n</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="beyond-general-linear-groups-parameters-and-packets">Beyond general linear groups: parameters and packets</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>For <span class="math" data-tex="\(\mathrm{GL}_n\)">\(\mathrm{GL}_n\)</span>, a parameter identifies one irreducible representation. Passing to <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span> already changes this: restricting one representation of <span class="math" data-tex="\(\mathrm{GL}_2(F)\)">\(\mathrm{GL}_2(F)\)</span> can produce two or four inequivalent irreducibles. They share a projective parameter. We explain the general packet formulation, prove the restriction and counting arguments, and calculate both sizes explicitly.</p>
+<p>Here <span class="math" data-tex="\(F\)">\(F\)</span> is a finite extension of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>. This keeps the restriction statements within the hypotheses of the cited local theorem, including when <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. The earlier positive-characteristic existence theorem for <span class="math" data-tex="\(\mathrm{GL}_n\)">\(\mathrm{GL}_n\)</span> remains a separate result.</p>
+<h2 id="1-dual-groups-and-full-local-parameters">1. Dual groups and full local parameters</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a connected reductive group over <span class="math" data-tex="\(F\)">\(F\)</span>. A based root datum consists of the character and cocharacter lattices, the roots and coroots, and a choice of simple roots:
+<span class="math math-display" data-tex="\[
+\bigl(X^*(T),\Phi,X_*(T),\Phi^\vee,\Delta\bigr).
+\]">\[
+\bigl(X^*(T),\Phi,X_*(T),\Phi^\vee,\Delta\bigr).
+\]</span>
+Exchanging the two lattices and the roots with the coroots defines the complex dual group <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>. The Galois action on the based datum acts through pinned automorphisms of <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>. Its restriction to <span class="math" data-tex="\(W_F\)">\(W_F\)</span> gives
+<span class="math math-display" data-tex="\[
+{}^LG=\widehat G\rtimes W_F.
+\tag{1.1}
+\]">\[
+{}^LG=\widehat G\rtimes W_F.
+\tag{1.1}
+\]</span>
+The action has finite image. For split <span class="math" data-tex="\(G\)">\(G\)</span>, (1.1) is a direct product. Inner forms have the same based dual datum and the same <span class="math" data-tex="\(L\)">\(L\)</span>-group; their relevant parameters and packet enhancements carry the additional information.</p>
+<p>Some split examples make the exchange visible.</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(G\)">\(G\)</span></th>
+<th><span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\mathbb G_m\)">\(\mathbb G_m\)</span></td>
+<td><span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{GL}_n\)">\(\mathrm{GL}_n\)</span></td>
+<td><span class="math" data-tex="\(\mathrm{GL}_n(\mathbb C)\)">\(\mathrm{GL}_n(\mathbb C)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{SL}_n\)">\(\mathrm{SL}_n\)</span></td>
+<td><span class="math" data-tex="\(\mathrm{PGL}_n(\mathbb C)\)">\(\mathrm{PGL}_n(\mathbb C)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{PGL}_n\)">\(\mathrm{PGL}_n\)</span></td>
+<td><span class="math" data-tex="\(\mathrm{SL}_n(\mathbb C)\)">\(\mathrm{SL}_n(\mathbb C)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{Sp}_{2n}\)">\(\mathrm{Sp}_{2n}\)</span></td>
+<td><span class="math" data-tex="\(\mathrm{SO}_{2n+1}(\mathbb C)\)">\(\mathrm{SO}_{2n+1}(\mathbb C)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{SO}_{2n+1}\)">\(\mathrm{SO}_{2n+1}\)</span></td>
+<td><span class="math" data-tex="\(\mathrm{Sp}_{2n}(\mathbb C)\)">\(\mathrm{Sp}_{2n}(\mathbb C)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The simply connected and adjoint forms exchange because the root and weight lattices exchange. For example, <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span> has roots <span class="math" data-tex="\(\pm2\)">\(\pm2\)</span> in its character lattice <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and coroots <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> in its cocharacter lattice. The exchanged datum is that of <span class="math" data-tex="\(\mathrm{PGL}_2\)">\(\mathrm{PGL}_2\)</span>.</p>
+<p>An <span class="math" data-tex="\(L\)">\(L\)</span>-parameter is a <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>-conjugacy class of homomorphisms
+<span class="math math-display" data-tex="\[
+\phi:W_F\times\mathrm{SL}_2(\mathbb C)\longrightarrow{}^LG
+\tag{1.2}
+\]">\[
+\phi:W_F\times\mathrm{SL}_2(\mathbb C)\longrightarrow{}^LG
+\tag{1.2}
+\]</span>
+Its projection to <span class="math" data-tex="\(W_F\)">\(W_F\)</span> sends <span class="math" data-tex="\((w,h)\)">\((w,h)\)</span> to <span class="math" data-tex="\(w\)">\(w\)</span>. Write
+<span class="math math-display" data-tex="\[
+\phi(w,1)=(c(w),w),\qquad
+c(wu)=c(w)\,a(w)(c(u)),
+\tag{1.2a}
+\]">\[
+\phi(w,1)=(c(w),w),\qquad
+c(wu)=c(w)\,a(w)(c(u)),
+\tag{1.2a}
+\]</span>
+where <span class="math" data-tex="\(a(w)\)">\(a(w)\)</span> is the pinned action. Choose a finite Galois quotient <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> through which that action factors. The quotient homomorphism
+<span class="math" data-tex="\(\widehat G\rtimes W_F\to\widehat G\rtimes\Gamma\)">\(\widehat G\rtimes W_F\to\widehat G\rtimes\Gamma\)</span> sends <span class="math" data-tex="\((g,w)\)">\((g,w)\)</span> to <span class="math" data-tex="\((g,\bar w)\)">\((g,\bar w)\)</span>.
+Admissibility requires a continuous Weil restriction whose images in this finite-action target are semisimple, a finite image of <span class="math" data-tex="\(c|_{I_F}\)">\(c|_{I_F}\)</span>, and an algebraic restriction to <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb C)\)">\(\mathrm{SL}_2(\mathbb C)\)</span>. Equivalently, the inertia image in <span class="math" data-tex="\(\widehat G\rtimes\Gamma\)">\(\widehat G\rtimes\Gamma\)</span> is finite: it is contained in <span class="math" data-tex="\(c(I_F)\times\Gamma\)">\(c(I_F)\times\Gamma\)</span>, and its first coordinates recover <span class="math" data-tex="\(c(I_F)\)">\(c(I_F)\)</span>, proving both implications.</p>
+<p>The full inertia image in (1.1) is infinite, since its projection is the identity on <span class="math" data-tex="\(I_F\)">\(I_F\)</span>. Inertia is itself infinite: its tame quotients have every order prime to <span class="math" data-tex="\(p\)">\(p\)</span>, obtained by adjoining corresponding roots of a uniformizer over the maximal unramified extension. Thus the finite condition concerns the dual coordinate, rather than the entire Weil-form target. For split <span class="math" data-tex="\(G\)">\(G\)</span>, the parameter <span class="math" data-tex="\(\phi(w,h)=(1,w)\)">\(\phi(w,h)=(1,w)\)</span> satisfies it. We impose the usual relevance condition for the chosen form of <span class="math" data-tex="\(G\)">\(G\)</span>: parabolic <span class="math" data-tex="\(L\)">\(L\)</span>-subgroups containing the image must correspond to <span class="math" data-tex="\(F\)">\(F\)</span>-parabolic subgroups of that form.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+S_\phi=Z_{\widehat G}(\operatorname{im}\phi),\qquad
+\mathcal S_\phi=\pi_0\bigl(S_\phi/Z(\widehat G)^{W_F}\bigr).
+\tag{1.3}
+\]">\[
+S_\phi=Z_{\widehat G}(\operatorname{im}\phi),\qquad
+\mathcal S_\phi=\pi_0\bigl(S_\phi/Z(\widehat G)^{W_F}\bigr).
+\tag{1.3}
+\]</span>
+The fixed center is contained in <span class="math" data-tex="\(S_\phi\)">\(S_\phi\)</span>, and <span class="math" data-tex="\(\mathcal S_\phi\)">\(\mathcal S_\phi\)</span> is a finite group. A parameter is tempered if the <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>-coordinates of <span class="math" data-tex="\(\phi(w,1)\)">\(\phi(w,1)\)</span>, for <span class="math" data-tex="\(w\in W_F\)">\(w\in W_F\)</span>, have compact closure. Boundedness is a condition on this Weil restriction. A nontrivial algebraic <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb C)\)">\(\mathrm{SL}_2(\mathbb C)\)</span>-factor is not bounded and is nevertheless allowed in a tempered parameter.</p>
+<p>A tempered parameter is discrete when its image is in no proper relevant Levi <span class="math" data-tex="\(L\)">\(L\)</span>-subgroup; equivalently its centralizer modulo the fixed center is finite. This is the parameter condition corresponding to square integrability modulo the center.</p>
+<p>For <span class="math" data-tex="\(\mathrm{GL}_n\)">\(\mathrm{GL}_n\)</span>, the full parameter (1.2) and a Frobenius-semisimple Weil–Deligne pair are equivalent. The conversion retains the convention
+<span class="math math-display" data-tex="\[
+r(w)=\phi\left(w,
+\begin{pmatrix}\|w\|^{1/2}&amp;0\\0&amp;\|w\|^{-1/2}\end{pmatrix}\right),
+\qquad
+N=d\phi\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},
+\qquad
+r(w)Nr(w)^{-1}=\|w\|N.
+\tag{1.4}
+\]">\[
+r(w)=\phi\left(w,
+\begin{pmatrix}\|w\|^{1/2}&amp;0\\0&amp;\|w\|^{-1/2}\end{pmatrix}\right),
+\qquad
+N=d\phi\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},
+\qquad
+r(w)Nr(w)^{-1}=\|w\|N.
+\tag{1.4}
+\]</span>
+In (1.4) we use the <span class="math" data-tex="\(\mathrm{GL}_n(\mathbb C)\)">\(\mathrm{GL}_n(\mathbb C)\)</span>-coordinate of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Here <span class="math" data-tex="\(\operatorname{Art}_F(\varpi)=\Phi_F\)">\(\operatorname{Art}_F(\varpi)=\Phi_F\)</span> and <span class="math" data-tex="\(\|\Phi_F\|=q^{-1}\)">\(\|\Phi_F\|=q^{-1}\)</span>. For a centered block <span class="math" data-tex="\(S_k\)">\(S_k\)</span>, the Weil restriction of (1.2) is scalar on the <span class="math" data-tex="\(k\)">\(k\)</span>-dimensional algebraic factor, whereas the <span class="math" data-tex="\(r\)">\(r\)</span> in (1.4) has the centered norm weights. This distinction makes Steinberg tempered.</p>
+<p>The ordinary reductive-group <span class="math" data-tex="\(L\)">\(L\)</span>-group should also be distinguished from that of a nonlinear covering group. [Gan–Gao–Weissman, §§1–3] develops central extensions, their universal extensions and their local structure. A covering group has extra extension data; the root-datum construction (1.1) alone does not supply its complete Langlands theory.</p>
+<h2 id="2-the-packet-conjecture">2. The packet conjecture</h2>
+<p><strong>Conjectural framework (stated).</strong> The irreducible admissible representations of <span class="math" data-tex="\(G(F)\)">\(G(F)\)</span> are partitioned into finite packets
+<span class="math math-display" data-tex="\[
+\operatorname{Irr}G(F)=\coprod_{\phi\in\Phi(G)}\Pi_\phi(G),
+\tag{2.1}
+\]">\[
+\operatorname{Irr}G(F)=\coprod_{\phi\in\Phi(G)}\Pi_\phi(G),
+\tag{2.1}
+\]</span>
+indexed by relevant parameters. Tempered representations correspond to bounded Weil parameters. In the tempered part, square-integrable representations modulo the center correspond to discrete parameters. Induction from a Levi is compatible with the inclusion of its <span class="math" data-tex="\(L\)">\(L\)</span>-group. The nontempered correspondence is formulated through the Langlands quotient classification.</p>
+<p>For a quasi-split group, fixing a Whittaker datum is part of the internal normalization of a tempered packet. The expected internal parametrization uses
+<span class="math math-display" data-tex="\[
+\operatorname{Irr}(\mathcal S_\phi),
+\tag{2.2}
+\]">\[
+\operatorname{Irr}(\mathcal S_\phi),
+\tag{2.2}
+\]</span>
+with the generic member corresponding to the trivial representation. “Irreducible representations” in (2.2) is essential: a general component group need not be abelian, so one cannot replace them all by one-dimensional characters. For inner forms, one uses a suitable central extension or enhanced component group, with central character prescribed by the inner-twist data. Pure and rigid inner twists organize this refinement; (2.2) without that data is not a statement covering all inner forms.</p>
+<p>The tempered formulation and Whittaker normalization are [Getz–Hahn, §12.5, Conjectures 12.5.1, 12.5.3 and 12.5.4]; the quotient extension is explained in [Arthur, <em>Introduction to the trace formula</em>, §28, equation (28.9)]. These are conjectural assertions for a general group.</p>
+<p>A partition alone would be too weak. Endoscopic character identities characterize how packet members combine. In the quasi-split tempered formulation, the stable packet distribution is weighted by the dimensions of the representations in (2.2); more generally, evaluation at an element of <span class="math" data-tex="\(\mathcal S_\phi\)">\(\mathcal S_\phi\)</span> gives the coefficients of an endoscopic transfer. For abelian component groups these dimensions are all one. Changing the Whittaker datum can change the labels.</p>
+<p>Why are general-linear packets singletons? Write a full parameter as
+<span class="math math-display" data-tex="\[
+V=\bigoplus_i U_i\otimes M_i,
+\tag{2.3}
+\]">\[
+V=\bigoplus_i U_i\otimes M_i,
+\tag{2.3}
+\]</span>
+where the <span class="math" data-tex="\(U_i\)">\(U_i\)</span> are pairwise inequivalent irreducible representations of <span class="math" data-tex="\(W_F\times\mathrm{SL}_2(\mathbb C)\)">\(W_F\times\mathrm{SL}_2(\mathbb C)\)</span>, and <span class="math" data-tex="\(M_i\)">\(M_i\)</span> are their multiplicity spaces. Complete reducibility follows from finite inertia, Frobenius semisimplicity and the algebraic <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span>-representation, as in the earlier parameter classification. Schur's lemma says that a commuting endomorphism is identity on each <span class="math" data-tex="\(U_i\)">\(U_i\)</span> and arbitrary on <span class="math" data-tex="\(M_i\)">\(M_i\)</span>. Its invertible elements therefore form
+<span class="math math-display" data-tex="\[
+S_\phi\simeq\prod_i\mathrm{GL}(M_i).
+\tag{2.4}
+\]">\[
+S_\phi\simeq\prod_i\mathrm{GL}(M_i).
+\tag{2.4}
+\]</span>
+Each factor is connected. The quotient by the scalar center is connected too, so <span class="math" data-tex="\(\mathcal S_\phi=1\)">\(\mathcal S_\phi=1\)</span>. Repeated summands require the general linear factors in (2.4), rather than just scalar tori. The trivial component group agrees with the singleton bijection proved earlier.</p>
+<h2 id="3-restriction-to-mathrm-sl-_2-the-precise-input">3. Restriction to <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span>: the precise input</h2>
+<p>Put <span class="math" data-tex="\(G_2=\mathrm{GL}_2(F)\)">\(G_2=\mathrm{GL}_2(F)\)</span>, <span class="math" data-tex="\(H=\mathrm{SL}_2(F)\)">\(H=\mathrm{SL}_2(F)\)</span>, and let <span class="math" data-tex="\(Z\)">\(Z\)</span> be the center of <span class="math" data-tex="\(G_2\)">\(G_2\)</span>.</p>
+<p><strong>Theorem 3.1 (restriction theorem, stated).</strong> For an irreducible admissible representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, its restriction to <span class="math" data-tex="\(H\)">\(H\)</span> is a finite direct sum of pairwise inequivalent irreducible admissible representations. Every irreducible admissible representation of <span class="math" data-tex="\(H\)">\(H\)</span> occurs in such a restriction. The sets of constituents are the <span class="math" data-tex="\(L\)">\(L\)</span>-packets of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>The finite decomposition and lifting are [Labesse–Langlands, §2, Lemmas 2.4–2.5], and multiplicity one is [Lemma 2.6]. The definition and partition into local <span class="math" data-tex="\(L\)">\(L\)</span>-indistinguishability classes follow Lemma 2.8. With the <span class="math" data-tex="\(\mathrm{GL}_2\)">\(\mathrm{GL}_2\)</span> correspondence, the packet's parameter is the projectivization
+<span class="math math-display" data-tex="\[
+\overline\phi:W_F\times\mathrm{SL}_2(\mathbb C)
+\xrightarrow{\operatorname{rec}\pi}\mathrm{GL}_2(\mathbb C)
+\longrightarrow\mathrm{PGL}_2(\mathbb C).
+\tag{3.1}
+\]">\[
+\overline\phi:W_F\times\mathrm{SL}_2(\mathbb C)
+\xrightarrow{\operatorname{rec}\pi}\mathrm{GL}_2(\mathbb C)
+\longrightarrow\mathrm{PGL}_2(\mathbb C).
+\tag{3.1}
+\]</span>
+A determinant twist does not change (3.1) or the restriction to <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>We use the finite decomposition as input and prove the Clifford and counting assertions ourselves.</p>
+<p><strong>Proposition 3.2 (transitivity and stabilizer).</strong> The constituents of <span class="math" data-tex="\(\pi|_H\)">\(\pi|_H\)</span> form one <span class="math" data-tex="\(G_2\)">\(G_2\)</span>-orbit. If <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a constituent and <span class="math" data-tex="\(S\)">\(S\)</span> its stabilizer in <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, their number is exactly
+<span class="math math-display" data-tex="\[
+k=[G_2:S].
+\tag{3.2}
+\]">\[
+k=[G_2:S].
+\tag{3.2}
+\]</span>
+The subgroup <span class="math" data-tex="\(S\)">\(S\)</span> contains <span class="math" data-tex="\(ZH\)">\(ZH\)</span> and is open.</p>
+<p><strong>Proof.</strong> Normality of <span class="math" data-tex="\(H\)">\(H\)</span> makes <span class="math" data-tex="\(\pi(g)V_\tau\)">\(\pi(g)V_\tau\)</span> an <span class="math" data-tex="\(H\)">\(H\)</span>-subrepresentation with conjugate action, for every <span class="math" data-tex="\(g\in G_2\)">\(g\in G_2\)</span>. The direct sum of constituent spaces in any orbit is <span class="math" data-tex="\(G_2\)">\(G_2\)</span>-stable. It is nonzero, so irreducibility of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> says it is the whole space. Thus there is only one orbit. The map <span class="math" data-tex="\(gS\mapsto g\cdot\tau\)">\(gS\mapsto g\cdot\tau\)</span> is well-defined, surjective and injective by the definition of stabilizer, proving (3.2).</p>
+<p>Elements of <span class="math" data-tex="\(H\)">\(H\)</span> preserve every constituent space, and the center acts by the central character of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>; hence <span class="math" data-tex="\(ZH\subset S\)">\(ZH\subset S\)</span>. To prove openness, take a nonzero vector <span class="math" data-tex="\(v\in V_\tau\)">\(v\in V_\tau\)</span>. Smoothness gives a compact open subgroup <span class="math" data-tex="\(K_v\)">\(K_v\)</span> fixing <span class="math" data-tex="\(v\)">\(v\)</span>. For <span class="math" data-tex="\(g\in K_v\)">\(g\in K_v\)</span>, the spaces <span class="math" data-tex="\(V_\tau\)">\(V_\tau\)</span> and <span class="math" data-tex="\(\pi(g)V_\tau\)">\(\pi(g)V_\tau\)</span> intersect in <span class="math" data-tex="\(v\)">\(v\)</span>. In a multiplicity-free direct sum of inequivalent irreducibles this forces equality. Thus <span class="math" data-tex="\(K_v\subset S\)">\(K_v\subset S\)</span>. The index in (3.2) is finite, and in particular the constituent number divides that index, with equality. ∎</p>
+<h2 id="4-counting-by-self-twists-with-proof">4. Counting by self-twists, with proof</h2>
+<p>Define the finite self-twist group
+<span class="math math-display" data-tex="\[
+X(\pi)=\{\chi:F^\times\longrightarrow\mathbb C^\times
+\text{ smooth character}:\pi\otimes(\chi\circ\det)\simeq\pi\}.
+\tag{4.1}
+\]">\[
+X(\pi)=\{\chi:F^\times\longrightarrow\mathbb C^\times
+\text{ smooth character}:\pi\otimes(\chi\circ\det)\simeq\pi\}.
+\tag{4.1}
+\]</span></p>
+<p><strong>Proposition 4.1.</strong> Assuming Theorem 3.1,
+<span class="math math-display" data-tex="\[
+k=|X(\pi)|.
+\tag{4.2}
+\]">\[
+k=|X(\pi)|.
+\tag{4.2}
+\]</span>
+More precisely, <span class="math" data-tex="\(X(\pi)\)">\(X(\pi)\)</span> is the character group of <span class="math" data-tex="\(G_2/S\)">\(G_2/S\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(H\subset S\)">\(H\subset S\)</span> and <span class="math" data-tex="\(G_2/H\simeq F^\times\)">\(G_2/H\simeq F^\times\)</span> by determinant, <span class="math" data-tex="\(S\)">\(S\)</span> is the preimage of a subgroup of this abelian group. It is therefore normal. The finite quotient <span class="math" data-tex="\(A=G_2/S\)">\(A=G_2/S\)</span> acts freely and transitively on the <span class="math" data-tex="\(k\)">\(k\)</span> constituent spaces. Label them <span class="math" data-tex="\(V_a\)">\(V_a\)</span> for <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, with <span class="math" data-tex="\(V_1=V_\tau\)">\(V_1=V_\tau\)</span>.</p>
+<p>For a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>, define <span class="math" data-tex="\(T_\chi\)">\(T_\chi\)</span> to be multiplication by <span class="math" data-tex="\(\chi(a)\)">\(\chi(a)\)</span> on <span class="math" data-tex="\(V_a\)">\(V_a\)</span>. Every multiplier is nonzero, so <span class="math" data-tex="\(T_\chi\)">\(T_\chi\)</span> is invertible. If <span class="math" data-tex="\(g\)">\(g\)</span> has image <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span>, then <span class="math" data-tex="\(\pi(g)V_a=V_{ba}\)">\(\pi(g)V_a=V_{ba}\)</span>, and hence
+<span class="math math-display" data-tex="\[
+T_\chi\pi(g)=\chi(b)\pi(g)T_\chi.
+\tag{4.3}
+\]">\[
+T_\chi\pi(g)=\chi(b)\pi(g)T_\chi.
+\tag{4.3}
+\]</span>
+This is an intertwiner from <span class="math" data-tex="\(\pi\)">\(\pi\)</span> to its twist. Since <span class="math" data-tex="\(S\)">\(S\)</span> is open, the inflated character is smooth and belongs to (4.1).</p>
+<p>Conversely, a self-twist has an invertible intertwiner <span class="math" data-tex="\(T\)">\(T\)</span> satisfying (4.3). It commutes with <span class="math" data-tex="\(H\)">\(H\)</span>. Schur's lemma and multiplicity one force
+<span class="math math-display" data-tex="\[
+T|_{V_a}=t_a\,\operatorname{id},\qquad t_a\ne0.
+\]">\[
+T|_{V_a}=t_a\,\operatorname{id},\qquad t_a\ne0.
+\]</span>
+For <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>, restrict (4.3) to <span class="math" data-tex="\(V_1\)">\(V_1\)</span>: both sides have the same nonzero scalar <span class="math" data-tex="\(t_1\)">\(t_1\)</span>, so <span class="math" data-tex="\(\chi(\det s)=1\)">\(\chi(\det s)=1\)</span>. Thus <span class="math" data-tex="\(\chi\)">\(\chi\)</span> factors through <span class="math" data-tex="\(A\)">\(A\)</span>. All self-twists are precisely its characters. A finite abelian group has as many complex characters as elements: decompose it into cyclic groups, each with its full set of roots-of-unity characters, and take products. Therefore <span class="math" data-tex="\(|X(\pi)|=|A|=k\)">\(|X(\pi)|=|A|=k\)</span>. ∎</p>
+<p>Every <span class="math" data-tex="\(\chi\in X(\pi)\)">\(\chi\in X(\pi)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\chi^2=1.
+\tag{4.4}
+\]">\[
+\chi^2=1.
+\tag{4.4}
+\]</span>
+Indeed, the scalar matrix <span class="math" data-tex="\(zI\)">\(zI\)</span> acts on the twist by <span class="math" data-tex="\(\omega_\pi(z)\chi(z^2)\)">\(\omega_\pi(z)\chi(z^2)\)</span>. Equality of central characters and cancellation of <span class="math" data-tex="\(\omega_\pi(z)\ne0\)">\(\omega_\pi(z)\ne0\)</span> give <span class="math" data-tex="\(\chi(z)^2=1\)">\(\chi(z)^2=1\)</span> for every <span class="math" data-tex="\(z\in F^\times\)">\(z\in F^\times\)</span>.</p>
+<p>The earlier rank-two classification and parameter twist compatibility now give <span class="math" data-tex="\(k\in\{1,2,4\}\)">\(k\in\{1,2,4\}\)</span>. A determinant character has only the trivial self-twist, since determinant is surjective. A special representation <span class="math" data-tex="\(\mathrm{St}_2\otimes\mu\)">\(\mathrm{St}_2\otimes\mu\)</span> also has only the trivial one: its full parameter is <span class="math" data-tex="\(\widehat\mu\otimes\operatorname{Std}_{\mathrm{SL}_2}\)">\(\widehat\mu\otimes\operatorname{Std}_{\mathrm{SL}_2}\)</span>, whose commuting algebra on the algebraic <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span>-factor is scalar. The principal-series case is calculated next. For supercuspidals, the dimension-four endomorphism argument in Section 6 proves the remaining bound.</p>
+<h2 id="5-a-two-element-packet-and-the-dihedral-self-twist">5. A two-element packet and the dihedral self-twist</h2>
+<p>Let <span class="math" data-tex="\(\eta\ne1\)">\(\eta\ne1\)</span> be a quadratic character and let
+<span class="math math-display" data-tex="\[
+\pi=I(\mu,\mu\eta)
+\]">\[
+\pi=I(\mu,\mu\eta)
+\]</span>
+be normalized induction for <span class="math" data-tex="\(\mathrm{GL}_2(F)\)">\(\mathrm{GL}_2(F)\)</span>. The ratio <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is different from <span class="math" data-tex="\(\nu^{\pm1}\)">\(\nu^{\pm1}\)</span>, so this representation is irreducible. Twisting replaces its unordered inducing pair by <span class="math" data-tex="\(\{\mu\chi,\mu\eta\chi\}\)">\(\{\mu\chi,\mu\eta\chi\}\)</span>. Equality with the original unordered pair gives either <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> or <span class="math" data-tex="\(\chi=\eta\)">\(\chi=\eta\)</span>, and both work. Hence
+<span class="math math-display" data-tex="\[
+X(\pi)=\{1,\eta\},\qquad |\Pi_{\overline\phi}(\mathrm{SL}_2)|=2.
+\tag{5.1}
+\]">\[
+X(\pi)=\{1,\eta\},\qquad |\Pi_{\overline\phi}(\mathrm{SL}_2)|=2.
+\tag{5.1}
+\]</span>
+On the diagonal <span class="math" data-tex="\(\operatorname{diag}(a,a^{-1})\)">\(\operatorname{diag}(a,a^{-1})\)</span>, the inducing character restricts to <span class="math" data-tex="\(\eta(a)\)">\(\eta(a)\)</span>. Every element of <span class="math" data-tex="\(G_2\)">\(G_2\)</span> lies in <span class="math" data-tex="\(B_{G_2}H\)">\(B_{G_2}H\)</span>, since the determinant map on <span class="math" data-tex="\(B_{G_2}\)">\(B_{G_2}\)</span> is surjective, and <span class="math" data-tex="\(B_{G_2}\cap H=B_H\)">\(B_{G_2}\cap H=B_H\)</span>. Restricting the induction functions therefore identifies the two induced spaces. The modulus factors for the two Borels agree there. Thus the restriction is the normalized principal series
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_{B_H}^{H}\eta=\tau_+\oplus\tau_-.
+\tag{5.2}
+\]">\[
+\operatorname{Ind}_{B_H}^{H}\eta=\tau_+\oplus\tau_-.
+\tag{5.2}
+\]</span>
+There is a concrete description of its summands. Choose the nontrivial self-twist intertwiner <span class="math" data-tex="\(T\)">\(T\)</span> from Proposition 4.1. It acts by <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(V_1\)">\(V_1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> on the other constituent. Then <span class="math" data-tex="\(T^2=1\)">\(T^2=1\)</span>, both eigenspaces are nonzero, and
+<span class="math math-display" data-tex="\[
+\tau_\pm=\ker(T\mp1).
+\tag{5.3}
+\]">\[
+\tau_\pm=\ker(T\mp1).
+\tag{5.3}
+\]</span>
+They are irreducible and inequivalent by Theorem 3.1. The labels can be reversed; a Whittaker normalization fixes which member is generic. Equations (5.1)–(5.3) fully specify the decomposition without assuming that the two representations are isomorphic.</p>
+<p>Now let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be quadratic, let <span class="math" data-tex="\(\theta\ne\theta^\sigma\)">\(\theta\ne\theta^\sigma\)</span>, and put <span class="math" data-tex="\(r=\operatorname{Ind}_{W_E}^{W_F}\widehat\theta\)">\(r=\operatorname{Ind}_{W_E}^{W_F}\widehat\theta\)</span>. Write <span class="math" data-tex="\(\eta_{E/F}\)">\(\eta_{E/F}\)</span> for the quadratic character trivial on <span class="math" data-tex="\(W_E\)">\(W_E\)</span>.</p>
+<p><strong>Proposition 5.1 (dihedral self-twist).</strong>
+<span class="math math-display" data-tex="\[
+r\otimes\eta_{E/F}\simeq r,\qquad
+\pi(\theta)\otimes(\eta_{E/F}\circ\det)\simeq\pi(\theta).
+\tag{5.4}
+\]">\[
+r\otimes\eta_{E/F}\simeq r,\qquad
+\pi(\theta)\otimes(\eta_{E/F}\circ\det)\simeq\pi(\theta).
+\tag{5.4}
+\]</span>
+Consequently its <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span>-packet has at least two members.</p>
+<p><strong>Proof.</strong> In the two-coset induction basis, <span class="math" data-tex="\(W_E\)">\(W_E\)</span> acts diagonally through <span class="math" data-tex="\(\widehat\theta\)">\(\widehat\theta\)</span> and <span class="math" data-tex="\(\widehat\theta^\sigma\)">\(\widehat\theta^\sigma\)</span>; every element outside <span class="math" data-tex="\(W_E\)">\(W_E\)</span> exchanges the two lines. The matrix <span class="math" data-tex="\(D=\operatorname{diag}(1,-1)\)">\(D=\operatorname{diag}(1,-1)\)</span> commutes with the diagonal matrices and changes the sign of each exchanging matrix under conjugation. Therefore
+<span class="math math-display" data-tex="\[
+Dr(w)D^{-1}=\eta_{E/F}(w)r(w)
+\]">\[
+Dr(w)D^{-1}=\eta_{E/F}(w)r(w)
+\]</span>
+for every <span class="math" data-tex="\(w\)">\(w\)</span>, providing the intertwiner. Alternatively induction commutes with tensoring and <span class="math" data-tex="\(\eta_{E/F}|_{W_E}=1\)">\(\eta_{E/F}|_{W_E}=1\)</span>. The parameter has <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. Twist compatibility and injectivity of LLC prove the second identity in (5.4), whether <span class="math" data-tex="\(\theta\)">\(\theta\)</span> denotes the parameter character directly or an automorphic admissible-pair character with its rectifier. The nontrivial quadratic character lies in <span class="math" data-tex="\(X(\pi(\theta))\)">\(X(\pi(\theta))\)</span>; (4.2) proves the packet bound. ∎</p>
+<h2 id="6-four-members-exactly-for-projective-klein-four-image">6. Four members exactly for projective Klein-four image</h2>
+<p><strong>Proposition 6.1.</strong> A rank-two packet has four members precisely when its full projective parameter has image
+<span class="math math-display" data-tex="\[
+V_4\simeq(\mathbb Z/2\mathbb Z)^2.
+\tag{6.1}
+\]">\[
+V_4\simeq(\mathbb Z/2\mathbb Z)^2.
+\tag{6.1}
+\]</span>
+Such a parameter has trivial algebraic <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span>-factor and an irreducible two-dimensional Weil lift.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(r\)">\(r\)</span> be irreducible. A self-twist <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has an invertible matrix <span class="math" data-tex="\(T_\chi\)">\(T_\chi\)</span> with
+<span class="math math-display" data-tex="\[
+T_\chi r(w)T_\chi^{-1}=\chi(w)r(w).
+\tag{6.2}
+\]">\[
+T_\chi r(w)T_\chi^{-1}=\chi(w)r(w).
+\tag{6.2}
+\]</span>
+The determinant implies <span class="math" data-tex="\(\chi^2=1\)">\(\chi^2=1\)</span>. Schur's lemma says the intertwiner line for each <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has dimension one. Distinct characters give independent eigenvectors for conjugation on <span class="math" data-tex="\(\operatorname{End}(\mathbb C^2)\)">\(\operatorname{End}(\mathbb C^2)\)</span>. One can verify independence by applying conjugation by a Weil element that distinguishes two characters to a shortest hypothetical linear relation and subtracting a scalar multiple of that relation. Its shorter nonzero relation is impossible. Thus there are at most four self-twists. They form a finite group of exponent two, so their number is <span class="math" data-tex="\(1,2\)">\(1,2\)</span>, or <span class="math" data-tex="\(4\)">\(4\)</span>.</p>
+<p>If there are four, choose independent nontrivial characters with intertwiners <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. Each matrix has scalar square, since twisting twice is trivial. Its trace is zero: some Weil element conjugates it to its negative. Rescale so <span class="math" data-tex="\(A^2=B^2=1\)">\(A^2=B^2=1\)</span>. The products <span class="math" data-tex="\(AB\)">\(AB\)</span> and <span class="math" data-tex="\(BA\)">\(BA\)</span> intertwine the same twist, so <span class="math" data-tex="\(AB=cBA\)">\(AB=cBA\)</span>; determinants give <span class="math" data-tex="\(c^2=1\)">\(c^2=1\)</span>. If <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, diagonalizing the nonscalar involution <span class="math" data-tex="\(A\)">\(A\)</span> makes <span class="math" data-tex="\(B\)">\(B\)</span> diagonal too, and <span class="math" data-tex="\(1,A,B,AB\)">\(1,A,B,AB\)</span> span at most a two-dimensional space. They instead lie in four independent character lines. Hence <span class="math" data-tex="\(c=-1\)">\(c=-1\)</span>. In a suitable basis,
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},
+\qquad
+B=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\tag{6.3}
+\]">\[
+A=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},
+\qquad
+B=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\tag{6.3}
+\]</span>
+Their common centralizer in <span class="math" data-tex="\(\mathrm{PGL}_2(\mathbb C)\)">\(\mathrm{PGL}_2(\mathbb C)\)</span> is exactly the four classes of <span class="math" data-tex="\(1,A,B,AB\)">\(1,A,B,AB\)</span>: projective commutation with <span class="math" data-tex="\(A\)">\(A\)</span> forces a matrix to be diagonal or off-diagonal, and commutation with <span class="math" data-tex="\(B\)">\(B\)</span> leaves two classes of each kind. Equation (6.2) makes the projective image of <span class="math" data-tex="\(r\)">\(r\)</span> lie in this group. A proper subgroup is trivial or cyclic of order two. Its lifts would be scalar multiples of powers of one diagonalizable matrix, preserving its eigenlines; this contradicts irreducibility. Thus the projective image is all <span class="math" data-tex="\(V_4\)">\(V_4\)</span>.</p>
+<p>Conversely, suppose the projective image is <span class="math" data-tex="\(V_4\)">\(V_4\)</span>. Its common projective centralizer is the same <span class="math" data-tex="\(V_4\)">\(V_4\)</span>. Each of the four centralizing classes has a lift <span class="math" data-tex="\(T\)">\(T\)</span>, and
+<span class="math math-display" data-tex="\[
+Tr(w)T^{-1}=\chi_T(w)r(w)
+\]">\[
+Tr(w)T^{-1}=\chi_T(w)r(w)
+\]</span>
+defines a character: multiplication of two Weil elements proves multiplicativity, continuity follows from the representation, and determinants give <span class="math" data-tex="\(\chi_T^2=1\)">\(\chi_T^2=1\)</span>. Two classes yielding the same character differ by a scalar, by Schur's lemma. Thus they give four distinct self-twists. Equation (4.2) gives four constituents.</p>
+<p>The other rank-two types cannot give four: determinant and special representations have only one self-twist; an irreducible principal series has at most the two choices obtained by permuting its inducing pair. Conversely a finite full projective image cannot contain a nontrivial algebraic image of the connected group <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb C)\)">\(\mathrm{SL}_2(\mathbb C)\)</span>. A reducible semisimple Weil lift has projective image in a torus, whose finite subgroups are cyclic, so it cannot give <span class="math" data-tex="\(V_4\)">\(V_4\)</span>. This completes both directions for all types. ∎</p>
+<p>For odd residue characteristic, these parameters exist for every residue cardinality <span class="math" data-tex="\(q\)">\(q\)</span>. Let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be unramified quadratic and choose a tame character of <span class="math" data-tex="\(E^\times\)">\(E^\times\)</span> whose residue character has order <span class="math" data-tex="\(2(q-1)\)">\(2(q-1)\)</span>, possible since this divides <span class="math" data-tex="\(q^2-1\)">\(q^2-1\)</span>. On inertia, <span class="math" data-tex="\(\theta^\sigma=\theta^q\)">\(\theta^\sigma=\theta^q\)</span>, so <span class="math" data-tex="\(\theta/\theta^\sigma=\theta^{1-q}\)">\(\theta/\theta^\sigma=\theta^{1-q}\)</span> is nontrivial quadratic. The character is regular. The induced representation's projective inertia has order two. A Frobenius exchanges its two lines and has scalar square, so its projective class has order two and lies outside projective inertia. They commute projectively, giving <span class="math" data-tex="\(V_4\)">\(V_4\)</span>. This argument also works when <span class="math" data-tex="\(q\equiv1\pmod4\)">\(q\equiv1\pmod4\)</span>.</p>
+<p>The narrower condition <span class="math" data-tex="\(q\equiv-1\pmod4\)">\(q\equiv-1\pmod4\)</span> concerns a particular tame quotient with inertia of order four and a Frobenius that inverts it, yielding a dihedral group of order eight. That condition is not a condition on the existence of projective Klein-four parameters.</p>
+<h2 id="7-the-four-element-packet-over-mathbb-q_3">7. The four-element packet over <span class="math" data-tex="\(\mathbb Q_3\)">\(\mathbb Q_3\)</span></h2>
+<p>Let <span class="math" data-tex="\(\alpha^4=3\)">\(\alpha^4=3\)</span> and <span class="math" data-tex="\(K=\mathbb Q_3(i,\alpha)\)">\(K=\mathbb Q_3(i,\alpha)\)</span>. The field <span class="math" data-tex="\(\mathbb Q_3(i)\)">\(\mathbb Q_3(i)\)</span> is unramified quadratic because <span class="math" data-tex="\(x^2+1\)">\(x^2+1\)</span> is irreducible modulo three. The polynomial <span class="math" data-tex="\(x^4-3\)">\(x^4-3\)</span> is Eisenstein over it, so <span class="math" data-tex="\([K:\mathbb Q_3]=8\)">\([K:\mathbb Q_3]=8\)</span>. It contains all four roots and is Galois. Its automorphisms
+<span class="math math-display" data-tex="\[
+R(\alpha)=i\alpha,\quad R(i)=i;\qquad
+S(\alpha)=\alpha,\quad S(i)=-i
+\]">\[
+R(\alpha)=i\alpha,\quad R(i)=i;\qquad
+S(\alpha)=\alpha,\quad S(i)=-i
+\]</span>
+satisfy
+<span class="math math-display" data-tex="\[
+R^4=S^2=1,\qquad SRS^{-1}=R^{-1}.
+\]">\[
+R^4=S^2=1,\qquad SRS^{-1}=R^{-1}.
+\]</span>
+They generate the dihedral group of order eight. Its irreducible representation
+<span class="math math-display" data-tex="\[
+r(R)=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},
+\qquad
+r(S)=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}
+\tag{7.1}
+\]">\[
+r(R)=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},
+\qquad
+r(S)=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}
+\tag{7.1}
+\]</span>
+is irreducible because <span class="math" data-tex="\(R\)">\(R\)</span> has two eigenlines and <span class="math" data-tex="\(S\)">\(S\)</span> exchanges them. Projectively, <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> are commuting independent involutions. Thus the image is <span class="math" data-tex="\(V_4\)">\(V_4\)</span>, and the associated supercuspidal restricts to four inequivalent representations of <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Q_3)\)">\(\mathrm{SL}_2(\mathbb Q_3)\)</span>.</p>
+<p>The self-twists are
+<span class="math math-display" data-tex="\[
+1,\quad\eta_{\mathbb Q_3(i)/\mathbb Q_3},\quad
+\eta_{\mathbb Q_3(\sqrt3)/\mathbb Q_3},\quad
+\eta_{\mathbb Q_3(\sqrt{-3})/\mathbb Q_3}.
+\tag{7.2}
+\]">\[
+1,\quad\eta_{\mathbb Q_3(i)/\mathbb Q_3},\quad
+\eta_{\mathbb Q_3(\sqrt3)/\mathbb Q_3},\quad
+\eta_{\mathbb Q_3(\sqrt{-3})/\mathbb Q_3}.
+\tag{7.2}
+\]</span>
+To check the fields directly, <span class="math" data-tex="\(S\)">\(S\)</span> negates <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> fixes it; <span class="math" data-tex="\(R\)">\(R\)</span> negates <span class="math" data-tex="\(\alpha^2=\sqrt3\)">\(\alpha^2=\sqrt3\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> fixes it; both negate <span class="math" data-tex="\(i\alpha^2=\sqrt{-3}\)">\(i\alpha^2=\sqrt{-3}\)</span>. These are the three nontrivial characters of the quotient by the commutator <span class="math" data-tex="\(\langle R^2\rangle\)">\(\langle R^2\rangle\)</span>. Matrices in the four classes of (6.3) realize their self-intertwiners.</p>
+<p>In this example <span class="math" data-tex="\(S_{\overline\phi}=V_4\)">\(S_{\overline\phi}=V_4\)</span> in <span class="math" data-tex="\(\mathrm{PGL}_2\)">\(\mathrm{PGL}_2\)</span>, whose center is trivial; hence <span class="math" data-tex="\(\mathcal S_{\overline\phi}=V_4\)">\(\mathcal S_{\overline\phi}=V_4\)</span>. Its four one-dimensional characters account for the four split-group packet members. A Whittaker datum chooses the trivial label. An unramified scalar change in a two-dimensional lift, including a rectifier needed for an admissible-pair convention, does not change this projective packet.</p>
+<h2 id="8-endoscopy-and-known-classification-results">8. Endoscopy and known classification results</h2>
+<p>For general groups, geometrically conjugate regular semisimple elements can split into several <span class="math" data-tex="\(G(F)\)">\(G(F)\)</span>-conjugacy classes. A stable orbital integral sums the orbital integrals over that stable class. An endoscopic transfer uses specified transfer factors to form a weighted sum. Spectral transfer relates that geometric identity to a combination of characters within a packet. This is why the packet structure is part of the correspondence.</p>
+<p>For unramified endoscopic data <span class="math" data-tex="\(H_{\mathrm{end}}\)">\(H_{\mathrm{end}}\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>, with compatible hyperspecial subgroups and normalized transfer factors, the ordinary fundamental lemma asserts
+<span class="math math-display" data-tex="\[
+SO_{\gamma_{\mathrm{end}}}(1_{K_{\mathrm{end}}})
+=\sum_{\gamma\leftrightarrow\gamma_{\mathrm{end}}}
+\Delta(\gamma_{\mathrm{end}},\gamma)\,O_\gamma(1_K).
+\tag{8.1}
+\]">\[
+SO_{\gamma_{\mathrm{end}}}(1_{K_{\mathrm{end}}})
+=\sum_{\gamma\leftrightarrow\gamma_{\mathrm{end}}}
+\Delta(\gamma_{\mathrm{end}},\gamma)\,O_\gamma(1_K).
+\tag{8.1}
+\]</span>
+Here <span class="math" data-tex="\(\gamma_{\mathrm{end}}\)">\(\gamma_{\mathrm{end}}\)</span> is strongly <span class="math" data-tex="\(G\)">\(G\)</span>-regular, the sum is over the matching ordinary conjugacy classes, and measures on corresponding centralizers are compatible. [Hales, §§6 and 8] gives the full normalization, including the importance of the base point.</p>
+<p><strong>Fundamental-lemma theorem (stated).</strong> Ngô proves the Lie-algebra identity and the nonstandard identity in [Ngô 2010, Introduction, Theorems 1–2; Theorems 1.11.1 and 1.12.7]. In those exact statements the residue characteristic is greater than twice the relevant Coxeter number; the nonstandard statement also retains the paired root data and the good-characteristic hypotheses specified in §1.12. The proof is geometric in equal characteristic; the mixed-characteristic and group versions use Waldspurger's reductions, described in that Introduction and in [Hales, §7]. The argument globalizes affine Springer fibers into the Hitchin fibration and compares their cohomology through the support theorem. This is an input to endoscopic classification, not a proof of every variant of a fundamental lemma.</p>
+<p><strong>Classical-group classification (stated in its cited framework).</strong> Over a characteristic-zero nonarchimedean local field, [Arthur 2012, Theorem 7.1(b)] partitions the tempered representations of quasi-split symplectic and special orthogonal groups into finite packets with their component-group labels. For even special orthogonal groups the theorem is formulated using the indicated outer-automorphism orbits. The precise trace-formula hypothesis is retained in [Getz–Hahn, Theorem 12.5.5 and §13.8]: stabilization of the twisted trace formula. Their Theorem 12.5.6 states the parallel quasi-split unitary result, citing [Mok 2015, Theorem 2.5.1], under that same framework.</p>
+<p>Arthur's theorem also constructs packets for parameters with an additional algebraic factor,
+<span class="math math-display" data-tex="\[
+\psi:W_F\times\mathrm{SL}_2(\mathbb C)_{\mathrm{WD}}
+\times\mathrm{SL}_2(\mathbb C)_{\mathrm{Arthur}}\longrightarrow{}^LG.
+\tag{8.2}
+\]">\[
+\psi:W_F\times\mathrm{SL}_2(\mathbb C)_{\mathrm{WD}}
+\times\mathrm{SL}_2(\mathbb C)_{\mathrm{Arthur}}\longrightarrow{}^LG.
+\tag{8.2}
+\]</span>
+The second named factor in (8.2) organizes potentially nontempered automorphic contributions. Such Arthur packets are not the disjoint Langlands partition (2.1); their internal maps can have different fibers. [Arthur 2012, Theorem 7.1(a) and the remarks following it] explicitly makes this distinction. The global multiplicity formula is [Arthur 2012, Theorem 7.2], explained in [Getz–Hahn, §13.8].</p>
+<p>Inner forms of general linear groups were treated by the Jacquet–Langlands lesson. For other inner forms, relevance and the enhanced internal labels must be supplied, rather than transferring the split packet cardinality unchanged. [Arthur, <em>Introduction to the trace formula</em>, §§27–30] explains the stable and spectral mechanisms and the dependence on ordinary, weighted and twisted inputs. Its 2005 statements are read with their stated hypotheses. The preceding lesson's Fargues–Scholze construction supplies general semisimple parameters and a spectral action; it does not by itself replace the full conjectural packet structure.</p>
+<h2 id="9-exercises-and-complete-solutions">9. Exercises and complete solutions</h2>
+<p><strong>Exercise 9.1 (easy).</strong> Prove that <span class="math" data-tex="\(\pi\otimes(\chi\circ\det)\simeq\pi\)">\(\pi\otimes(\chi\circ\det)\simeq\pi\)</span> forces <span class="math" data-tex="\(\chi^2=1\)">\(\chi^2=1\)</span>.</p>
+<p><strong>Solution.</strong> Evaluate the equality of central characters at <span class="math" data-tex="\(zI\)">\(zI\)</span>. Its determinant is <span class="math" data-tex="\(z^2\)">\(z^2\)</span>, so <span class="math" data-tex="\(\omega_\pi(z)\chi(z)^2=\omega_\pi(z)\)">\(\omega_\pi(z)\chi(z)^2=\omega_\pi(z)\)</span>. Since a character never vanishes, cancellation gives <span class="math" data-tex="\(\chi(z)^2=1\)">\(\chi(z)^2=1\)</span> for every <span class="math" data-tex="\(z\)">\(z\)</span>. The assertion holds for all the representation types, including characters of determinant.</p>
+<p><strong>Exercise 9.2 (medium).</strong> Decompose <span class="math" data-tex="\(I(\mu,\mu\eta)|_H\)">\(I(\mu,\mu\eta)|_H\)</span> for a nontrivial quadratic <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p><strong>Solution.</strong> The ratio of its inducing characters is <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, which is different from <span class="math" data-tex="\(\nu^{\pm1}\)">\(\nu^{\pm1}\)</span>; the general-linear principal series is irreducible. Restricting its inducing data to <span class="math" data-tex="\(\operatorname{diag}(a,a^{-1})\)">\(\operatorname{diag}(a,a^{-1})\)</span> gives <span class="math" data-tex="\(\eta(a)\)">\(\eta(a)\)</span>, with the same normalized modulus. Its self-twists must permute <span class="math" data-tex="\(\{\mu,\mu\eta\}\)">\(\{\mu,\mu\eta\}\)</span>, giving exactly <span class="math" data-tex="\(1,\eta\)">\(1,\eta\)</span>. Proposition 4.1 therefore gives precisely two irreducible constituents. On their spaces choose the self-twist operator with eigenvalues <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>. Its eigenspaces give
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_{B_H}^{H}\eta=\ker(T-1)\oplus\ker(T+1).
+\]">\[
+\operatorname{Ind}_{B_H}^{H}\eta=\ker(T-1)\oplus\ker(T+1).
+\]</span>
+They are both nonzero, irreducible and inequivalent by the restriction theorem. A change of the sign of <span class="math" data-tex="\(T\)">\(T\)</span> swaps the labels, and a fixed Whittaker normalization selects the generic label.</p>
+<p><strong>Exercise 9.3 (medium).</strong> Show that a dihedral supercuspidal has the self-twist <span class="math" data-tex="\(\eta_{E/F}\)">\(\eta_{E/F}\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(r=\operatorname{Ind}_{W_E}^{W_F}\widehat\theta\)">\(r=\operatorname{Ind}_{W_E}^{W_F}\widehat\theta\)</span>, the restriction of <span class="math" data-tex="\(\eta_{E/F}\)">\(\eta_{E/F}\)</span> to <span class="math" data-tex="\(W_E\)">\(W_E\)</span> is trivial. The induction tensor identity therefore gives <span class="math" data-tex="\(r\otimes\eta_{E/F}\simeq r\)">\(r\otimes\eta_{E/F}\simeq r\)</span>. Explicitly, the operator <span class="math" data-tex="\(\operatorname{diag}(1,-1)\)">\(\operatorname{diag}(1,-1)\)</span> commutes with the two diagonal character actions and negates the exchanging matrices. Both parameters have <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. LLC twist compatibility and bijectivity give the self-twist of the corresponding <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Proposition 4.1 shows that its packet has at least two members.</p>
+<p><strong>Exercise 9.4 (hard).</strong> Characterize four-element packets and relate the result to the two-dimensional Weil classification.</p>
+<p><strong>Solution.</strong> For an irreducible Weil lift, self-twist operators occupy distinct character eigenspaces of the four-dimensional endomorphism space, so there are at most four; determinants make their group of exponent two. Four give two nonscalar involutions <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. Their character lines force <span class="math" data-tex="\(AB=-BA\)">\(AB=-BA\)</span>, so they have the Pauli forms (6.3). Projective commutation traps the projective Weil image in their common centralizer <span class="math" data-tex="\(V_4\)">\(V_4\)</span>. Irreducibility excludes its proper cyclic subgroups. Conversely the four centralizing projective classes for a <span class="math" data-tex="\(V_4\)">\(V_4\)</span> image yield four distinct quadratic self-twists by (6.2), and Proposition 4.1 yields four constituents. The principal, special and determinant types give at most two and cannot have full projective image <span class="math" data-tex="\(V_4\)">\(V_4\)</span>.</p>
+<p>Such an irreducible lift is dihedral for each of its three quadratic self-twist fields: the index-two kernel of a nontrivial twist preserves the two eigenlines of its intertwiner, and an element outside exchanges them, expressing the lift as induction of one line. This is the index-two argument from the two-dimensional Weil lesson. Primitive projective <span class="math" data-tex="\(A_4\)">\(A_4\)</span> or <span class="math" data-tex="\(S_4\)">\(S_4\)</span> parameters consequently do not give four-element packets. Over <span class="math" data-tex="\(\mathbb Q_3\)">\(\mathbb Q_3\)</span>, (7.1) realizes <span class="math" data-tex="\(V_4\)">\(V_4\)</span> and its three quadratic fields are exactly (7.2).</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The general packet conjecture, enhanced inner-form refinements and endoscopic character identities are stated; see [Getz–Hahn, §12.5] and [Arthur, <em>Introduction to the trace formula</em>, §§27–30]. The full ordinary reductive-group <span class="math" data-tex="\(L\)">\(L\)</span>-group construction is used as standard root-datum theory; [Hales, §§2–3] gives its unramified instances. [Gan–Gao–Weissman, §§1–3] is the separate central-extension background.</p>
+<p>Finite semisimple restriction, lifting and multiplicity one are [Labesse–Langlands, §2, Lemmas 2.4–2.6]. Their packet partition is stated after Lemma 2.8. We proved transitivity, openness, the exact stabilizer index, self-twist counting and the dihedral twist, as well as the complete two- and four-member calculations. Schur's lemma and the earlier <span class="math" data-tex="\(\mathrm{GL}_2\)">\(\mathrm{GL}_2\)</span> classification and LLC are the prerequisites to those proofs.</p>
+<p>The fundamental lemma and its geometric proof are stated with locators [Ngô 2010, Theorems 1.11.1 and 1.12.7; Introduction, Theorems 1–2]; its group normalization and reduction are [Hales, §§6–8]. Arthur's local and global classifications are [Arthur 2012, Theorems 7.1–7.2] in the framework specified in Section 8. The unitary statement is [Mok 2015, Theorem 2.5.1], also stated in [Getz–Hahn, Theorem 12.5.6]. No proof of these deep classification or transfer theorems is claimed here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Labesse–Langlands 1979] Jean-Pierre Labesse and Robert P. Langlands, <a href="https://publications.ias.edu/sites/default/files/ll-ps.pdf"><em>L-indistinguishability for SL(2)</em></a>, <em>Canadian Journal of Mathematics</em> 31 (1979), 726–785; §2 locators refer to the IAS re-typeset edition, pp.9–13.</li>
+<li>[Getz–Hahn 2022] Jayce R. Getz and Heekyoung Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em></a>, draft of 22 April 2022, §§12.5 and 13.8.</li>
+<li>[Gan–Gao–Weissman 2018] Wee Teck Gan, Fan Gao and Martin H. Weissman, <a href="https://arxiv.org/abs/1705.07559"><em>L-groups and the Langlands program for covering groups: a historical introduction</em></a>, <em>Astérisque</em> 398 (2018), §§1–3.</li>
+<li>[Clay 4] James Arthur, <em>An introduction to the trace formula</em>, §§27–30; Thomas C. Hales, <em>A statement of the fundamental lemma</em>, §§1–9; both in <a href="https://www.claymath.org/wp-content/uploads/2022/03/cmip04c.pdf"><em>Harmonic Analysis, the Trace Formula, and Shimura Varieties</em></a>, Clay Mathematics Proceedings 4 (2005).</li>
+<li>[Arthur 2012] James Arthur, <a href="https://www.math.toronto.edu/arthur/pdf/Classifying_automorphic_representations.pdf"><em>Classifying automorphic representations</em></a>, in <em>Current Developments in Mathematics 2012</em>, International Press, 2013, Preface and §7, Theorems 7.1–7.2.</li>
+<li>[Ngô 2010] Bao Châu Ngô, <a href="https://www.numdam.org/item/PMIHES_2010__111__1_0/"><em>Le lemme fondamental pour les algèbres de Lie</em></a>, <em>Publications Mathématiques de l'IHÉS</em> 111 (2010), 1–169, Introduction and §§1.11–1.12.</li>
+<li>[Mok 2015] Chung Pang Mok, <a href="https://arxiv.org/abs/1206.0882v5"><em>Endoscopic Classification of Representations of Quasi-Split Unitary Groups</em></a>, <em>Memoirs of the AMS</em> 235 (2015), Theorem 2.5.1.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-LLC-12.html">← Other proofs, functoriality and the formal-degree formula</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/LG-LLC-13.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-LLC">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Growth in the critical strip: convexity and the Lindelöf hypothesis · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-06.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 6 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="growth-in-the-critical-strip-convexity-and-the-lindelöf-hypothesis">Growth in the critical strip: convexity and the Lindelöf hypothesis</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The Dirichlet series bounds zeta to the right of the critical strip, and the functional equation transfers that information to the left. Inside the strip, the series no longer converges absolutely. We first replace it by a finite sum with a controlled tail. A maximum principle for an infinite strip then interpolates the boundary estimates. The resulting exponent is called the convexity bound. Improving it requires information about cancellation in the finite sum.</p>
+<p>We use the continuation and summation formula from <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, the uniform vertical estimates in <a href="NT-ZETA-03.html">The Gamma function and Stirling's formula</a>, and the functional equation in <a href="NT-ZETA-04.html">Poisson summation, theta, and the functional equation</a>. We write
+<span class="math math-display" data-tex="$$
+s=\sigma+it,\qquad \tau=|t|+4.
+$$">$$
+s=\sigma+it,\qquad \tau=|t|+4.
+$$</span>
+Free comparison sources are the author-hosted Montgomery–Vaughan II draft, Section 16.2, and Koukoulopoulos’s preliminary version, Chapter 6, listed below. The proofs below include the uniform tail estimate and the growth condition needed for interpolation.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-a-finite-sum-with-a-small-remainder">1. A finite sum with a small remainder</h2>
+<p><strong>Theorem 1.1 (truncation at the height).</strong> For <span class="math" data-tex="$\sigma&gt;0$">$\sigma&gt;0$</span>, <span class="math" data-tex="$s\ne1$">$s\ne1$</span>, and real <span class="math" data-tex="$x\ge\tau$">$x\ge\tau$</span>,
+<span class="math math-display" data-tex="$$
+\boxed{\displaystyle
+\zeta(s)=\sum_{n\le x}n^{-s}
+ +\frac{x^{1-s}}{s-1}+O(x^{-\sigma}).}
+\tag{1.1}
+$$">$$
+\boxed{\displaystyle
+\zeta(s)=\sum_{n\le x}n^{-s}
+ +\frac{x^{1-s}}{s-1}+O(x^{-\sigma}).}
+\tag{1.1}
+$$</span>
+The implied constant can be chosen independently of <span class="math" data-tex="$\sigma,t,x$">$\sigma,t,x$</span>. In particular it is uniform for every range <span class="math" data-tex="$\sigma\ge\sigma_0&gt;0$">$\sigma\ge\sigma_0&gt;0$</span>.</p>
+<p>The pole term has a plus sign when its denominator is <span class="math" data-tex="$s-1$">$s-1$</span>. This corrects the sign in the displayed statement of [Montgomery–Vaughan II, Theorem 16.15]; the summation formula in that theorem's proof has the sign in (1.1).</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="$b(u)=\{u\}-1/2$">$b(u)=\{u\}-1/2$</span>. At a positive integer <span class="math" data-tex="$N$">$N$</span>, partial summation, first for <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>, gives
+<span class="math math-display" data-tex="$$
+\zeta(s)=\sum_{n\le N}n^{-s}
+ +\frac{N^{1-s}}{s-1}-\frac12N^{-s}
+ -s\int_N^\infty b(u)u^{-s-1}\,du.
+\tag{1.2}
+$$">$$
+\zeta(s)=\sum_{n\le N}n^{-s}
+ +\frac{N^{1-s}}{s-1}-\frac12N^{-s}
+ -s\int_N^\infty b(u)u^{-s-1}\,du.
+\tag{1.2}
+$$</span>
+For example, this follows by writing the tail as <span class="math" data-tex="$\int_N^\infty u^{-s}\,d\lfloor u\rfloor$">$\int_N^\infty u^{-s}\,d\lfloor u\rfloor$</span> and integrating the fractional-part contribution by parts. The integral is locally uniformly convergent for <span class="math" data-tex="$\sigma&gt;0$">$\sigma&gt;0$</span>, so continuation proves (1.2) throughout that half-plane.</p>
+<p>The bound <span class="math" data-tex="$|b|\le1/2$">$|b|\le1/2$</span> alone loses a factor of the height. We retain the oscillation of <span class="math" data-tex="$b$">$b$</span>. For <span class="math" data-tex="$0&lt;q&lt;1$">$0&lt;q&lt;1$</span>, set
+<span class="math math-display" data-tex="$$
+b_q(u)=-\sum_{k\ge1}\frac{q^k\sin(2\pi ku)}{\pi k}.
+$$">$$
+b_q(u)=-\sum_{k\ge1}\frac{q^k\sin(2\pi ku)}{\pi k}.
+$$</span>
+The series is uniformly absolutely convergent. The power series for <span class="math" data-tex="$-\log(1-z)$">$-\log(1-z)$</span> shows that
+<span class="math math-display" data-tex="$$
+b_q(u)=\frac1\pi\arg(1-qe^{2\pi iu}),
+\qquad |b_q(u)|\le\frac12.
+$$">$$
+b_q(u)=\frac1\pi\arg(1-qe^{2\pi iu}),
+\qquad |b_q(u)|\le\frac12.
+$$</span>
+Here the real part of <span class="math" data-tex="$1-qe^{2\pi iu}$">$1-qe^{2\pi iu}$</span> is positive. As <span class="math" data-tex="$q\uparrow1$">$q\uparrow1$</span>, <span class="math" data-tex="$b_q(u)\to b(u)$">$b_q(u)\to b(u)$</span> off the integers: for <span class="math" data-tex="$0&lt;\theta&lt;2\pi$">$0&lt;\theta&lt;2\pi$</span>, the argument of <span class="math" data-tex="$1-e^{i\theta}$">$1-e^{i\theta}$</span> is <span class="math" data-tex="$\theta/2-\pi/2$">$\theta/2-\pi/2$</span>. Dominated convergence therefore applies to the integral in (1.2).</p>
+<p>Suppose <span class="math" data-tex="$N\ge |t|$">$N\ge |t|$</span>. For each sign and <span class="math" data-tex="$k\ge1$">$k\ge1$</span>, consider
+<span class="math math-display" data-tex="$$
+I_{\pm k}=\int_N^\infty u^{-\sigma-1}
+ e^{i\phi_{\pm k}(u)}\,du,
+\qquad \phi_{\pm k}(u)=\pm2\pi ku-t\log u.
+$$">$$
+I_{\pm k}=\int_N^\infty u^{-\sigma-1}
+ e^{i\phi_{\pm k}(u)}\,du,
+\qquad \phi_{\pm k}(u)=\pm2\pi ku-t\log u.
+$$</span>
+For <span class="math" data-tex="$u\ge N$">$u\ge N$</span>,
+<span class="math math-display" data-tex="$$
+|\phi_{\pm k}&#x27;(u)|\ge(2\pi-1)k,
+\qquad |\phi_{\pm k}&#x27;&#x27;(u)|=|t|/u^2.
+$$">$$
+|\phi_{\pm k}&#x27;(u)|\ge(2\pi-1)k,
+\qquad |\phi_{\pm k}&#x27;&#x27;(u)|=|t|/u^2.
+$$</span>
+Integration by parts using <span class="math" data-tex="$e^{i\phi}=(i\phi&#x27;)^{-1}(e^{i\phi})&#x27;$">$e^{i\phi}=(i\phi&#x27;)^{-1}(e^{i\phi})&#x27;$</span> bounds the endpoint and the derivative of the amplitude by
+<span class="math math-display" data-tex="$$
+\frac{N^{-\sigma-1}}{(2\pi-1)k}
+ +\frac{\sigma+1}{(2\pi-1)k}
+   \int_N^\infty u^{-\sigma-2}\,du
+=\frac{2N^{-\sigma-1}}{(2\pi-1)k}.
+$$">$$
+\frac{N^{-\sigma-1}}{(2\pi-1)k}
+ +\frac{\sigma+1}{(2\pi-1)k}
+   \int_N^\infty u^{-\sigma-2}\,du
+=\frac{2N^{-\sigma-1}}{(2\pi-1)k}.
+$$</span>
+The derivative of <span class="math" data-tex="$1/\phi&#x27;$">$1/\phi&#x27;$</span> contributes at most
+<span class="math math-display" data-tex="$$
+\frac{|t|}{(2\pi-1)^2k^2}
+\int_N^\infty u^{-\sigma-3}\,du
+\le \frac{N^{-\sigma-1}}{2(2\pi-1)^2k^2}.
+$$">$$
+\frac{|t|}{(2\pi-1)^2k^2}
+\int_N^\infty u^{-\sigma-3}\,du
+\le \frac{N^{-\sigma-1}}{2(2\pi-1)^2k^2}.
+$$</span>
+Thus <span class="math" data-tex="$|I_{\pm k}|\ll N^{-\sigma-1}/k$">$|I_{\pm k}|\ll N^{-\sigma-1}/k$</span>, uniformly in <span class="math" data-tex="$\sigma&gt;0$">$\sigma&gt;0$</span>. Integrating the series for <span class="math" data-tex="$b_q$">$b_q$</span>, summing <span class="math" data-tex="$k^{-2}$">$k^{-2}$</span>, and letting <span class="math" data-tex="$q\uparrow1$">$q\uparrow1$</span> proves
+<span class="math math-display" data-tex="$$
+\left|\int_N^\infty b(u)u^{-s-1}\,du\right|
+\ll N^{-\sigma-1}.
+\tag{1.3}
+$$">$$
+\left|\int_N^\infty b(u)u^{-s-1}\,du\right|
+\ll N^{-\sigma-1}.
+\tag{1.3}
+$$</span>
+The error in (1.2) is consequently
+<span class="math" data-tex="$O(N^{-\sigma}(1+|s|/N))$">$O(N^{-\sigma}(1+|s|/N))$</span>.</p>
+<p>Now let <span class="math" data-tex="$x\ge|t|+4$">$x\ge|t|+4$</span>. If <span class="math" data-tex="$0&lt;\sigma&lt;x$">$0&lt;\sigma&lt;x$</span>, take <span class="math" data-tex="$N=\lfloor x\rfloor$">$N=\lfloor x\rfloor$</span>. Then <span class="math" data-tex="$N\ge|t|$">$N\ge|t|$</span>, <span class="math" data-tex="$N\ge3x/4$">$N\ge3x/4$</span>, and <span class="math" data-tex="$|s|/N\ll1$">$|s|/N\ll1$</span>. The sums with cutoffs <span class="math" data-tex="$N,x$">$N,x$</span> coincide, and
+<span class="math math-display" data-tex="$$
+\frac{x^{1-s}-N^{1-s}}{s-1}
+=-\int_N^x u^{-s}\,du=O(N^{-\sigma}).
+$$">$$
+\frac{x^{1-s}-N^{1-s}}{s-1}
+=-\int_N^x u^{-s}\,du=O(N^{-\sigma}).
+$$</span>
+Moreover,
+<span class="math math-display" data-tex="$$
+N^{-\sigma}\le x^{-\sigma}e^{\sigma/N}
+\le e^{4/3}x^{-\sigma}.
+$$">$$
+N^{-\sigma}\le x^{-\sigma}e^{\sigma/N}
+\le e^{4/3}x^{-\sigma}.
+$$</span>
+This proves the required uniform estimate in this case.</p>
+<p>If <span class="math" data-tex="$\sigma\ge x\ge4$">$\sigma\ge x\ge4$</span>, absolute convergence is more efficient. Put <span class="math" data-tex="$M=\lfloor x\rfloor+1&gt;x$">$M=\lfloor x\rfloor+1&gt;x$</span>. The decreasing-function estimate gives
+<span class="math math-display" data-tex="$$
+\left|\sum_{n&gt;x}n^{-s}\right|
+\le M^{-\sigma}+\frac{M^{1-\sigma}}{\sigma-1}
+\le x^{-\sigma}\left(1+\frac{x}{\sigma-1}\right)
+\ll x^{-\sigma}.
+$$">$$
+\left|\sum_{n&gt;x}n^{-s}\right|
+\le M^{-\sigma}+\frac{M^{1-\sigma}}{\sigma-1}
+\le x^{-\sigma}\left(1+\frac{x}{\sigma-1}\right)
+\ll x^{-\sigma}.
+$$</span>
+Also <span class="math" data-tex="$|x^{1-s}/(s-1)|\le x^{-\sigma}x/(\sigma-1)\ll x^{-\sigma}$">$|x^{1-s}/(s-1)|\le x^{-\sigma}x/(\sigma-1)\ll x^{-\sigma}$</span>. This covers arbitrarily large real parts and completes the proof. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Corollary 1.2 (the logarithmic boundary bound).</strong> Uniformly for <span class="math" data-tex="$|t|\ge1$">$|t|\ge1$</span> and <span class="math" data-tex="$\sigma\ge1-1/\log\tau$">$\sigma\ge1-1/\log\tau$</span>,
+<span class="math math-display" data-tex="$$
+\zeta(\sigma+it)\ll\log\tau.
+\tag{1.4}
+$$">$$
+\zeta(\sigma+it)\ll\log\tau.
+\tag{1.4}
+$$</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="$\sigma\ge2$">$\sigma\ge2$</span> use absolute convergence. Otherwise apply (1.1) with <span class="math" data-tex="$x=\tau$">$x=\tau$</span>. Since <span class="math" data-tex="$n^{1/\log\tau}\le e$">$n^{1/\log\tau}\le e$</span> for <span class="math" data-tex="$n\le\tau$">$n\le\tau$</span>, the finite sum is at most <span class="math" data-tex="$e\sum_{n\le\tau}1/n\ll\log\tau$">$e\sum_{n\le\tau}1/n\ll\log\tau$</span>. The pole term has modulus at most <span class="math" data-tex="$e/|t|$">$e/|t|$</span>, and the error is bounded. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For fixed <span class="math" data-tex="$0&lt;\sigma&lt;1$">$0&lt;\sigma&lt;1$</span>, the same argument gives
+<span class="math math-display" data-tex="$$
+\zeta(\sigma+it)\ll
+\tau^{1-\sigma}\left(1+\frac1{1-\sigma}\right)
+\qquad(|t|\ge1).
+\tag{1.5}
+$$">$$
+\zeta(\sigma+it)\ll
+\tau^{1-\sigma}\left(1+\frac1{1-\sigma}\right)
+\qquad(|t|\ge1).
+\tag{1.5}
+$$</span>
+Indeed, compare the sum of <span class="math" data-tex="$n^{-\sigma}$">$n^{-\sigma}$</span> with its integral, and bound the pole term by <span class="math" data-tex="$\tau^{1-\sigma}$">$\tau^{1-\sigma}$</span>. Formula (1.5) estimates each term in absolute value; it does not yet use cancellation among the terms.</p>
+<p><strong>Example 1.3.</strong> At <span class="math" data-tex="$s=1/2+100i$">$s=1/2+100i$</span>, <span class="math" data-tex="$x=104$">$x=104$</span>, direct computation gives
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\sum_{n\le104}n^{-s}&amp;\approx2.68922495+0.08579087i,\\
+\frac{104^{1-s}}{s-1}&amp;\approx0.04992826-0.08892080i,\\
+\zeta(s)&amp;\approx2.69261989-0.02038603i.
+\end{aligned}
+$$">$$
+\begin{aligned}
+\sum_{n\le104}n^{-s}&amp;\approx2.68922495+0.08579087i,\\
+\frac{104^{1-s}}{s-1}&amp;\approx0.04992826-0.08892080i,\\
+\zeta(s)&amp;\approx2.69261989-0.02038603i.
+\end{aligned}
+$$</span>
+Their respective moduli are about <span class="math" data-tex="$2.69059304$">$2.69059304$</span>, <span class="math" data-tex="$0.10197912$">$0.10197912$</span>, and <span class="math" data-tex="$2.69269706$">$2.69269706$</span>. The residual in (1.1) is about <span class="math" data-tex="$-0.04653332-0.01725609i$">$-0.04653332-0.01725609i$</span>, of modulus <span class="math" data-tex="$0.04962986$">$0.04962986$</span>; multiplied by <span class="math" data-tex="$104^{1/2}$">$104^{1/2}$</span>, this is <span class="math" data-tex="$0.50612722$">$0.50612722$</span>. These numbers illustrate the scale of the remainder, rather than asserting that the asymptotic constant is <span class="math" data-tex="$0.50612722$">$0.50612722$</span>.</p>
+<h2 id="2-interpolation-on-an-infinite-strip">2. Interpolation on an infinite strip</h2>
+<p>The maximum principle on a rectangle does not automatically extend to an infinite strip: the horizontal edges may carry large values. The following damping argument controls them.</p>
+<p><strong>Theorem 2.1 (Phragmén–Lindelöf).</strong> Let <span class="math" data-tex="$a&lt;b$">$a&lt;b$</span>, and let <span class="math" data-tex="$f$">$f$</span> be holomorphic in <span class="math" data-tex="$a&lt;\operatorname{Re}s&lt;b$">$a&lt;\operatorname{Re}s&lt;b$</span> and continuous on the closed strip. Suppose, uniformly on it,
+<span class="math math-display" data-tex="$$
+|f(\sigma+it)|\le D\exp(D(1+|t|)^C)
+\tag{2.1}
+$$">$$
+|f(\sigma+it)|\le D\exp(D(1+|t|)^C)
+\tag{2.1}
+$$</span>
+for some finite <span class="math" data-tex="$C,D&gt;0$">$C,D&gt;0$</span>. If, for real <span class="math" data-tex="$\alpha,\beta$">$\alpha,\beta$</span> and <span class="math" data-tex="$m\ge0$">$m\ge0$</span>,
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+|f(a+it)|&amp;\le A(|t|+4)^\alpha(\log(|t|+4))^m,\\
+|f(b+it)|&amp;\le B(|t|+4)^\beta(\log(|t|+4))^m,
+\end{aligned}
+$$">$$
+\begin{aligned}
+|f(a+it)|&amp;\le A(|t|+4)^\alpha(\log(|t|+4))^m,\\
+|f(b+it)|&amp;\le B(|t|+4)^\beta(\log(|t|+4))^m,
+\end{aligned}
+$$</span>
+then, uniformly for <span class="math" data-tex="$a\le\sigma\le b$">$a\le\sigma\le b$</span>,
+<span class="math math-display" data-tex="$$
+|f(\sigma+it)|\ll
+(|t|+4)^{\ell(\sigma)}(\log(|t|+4))^m,
+\quad
+\ell(\sigma)=\frac{b-\sigma}{b-a}\alpha
+ +\frac{\sigma-a}{b-a}\beta.
+\tag{2.2}
+$$">$$
+|f(\sigma+it)|\ll
+(|t|+4)^{\ell(\sigma)}(\log(|t|+4))^m,
+\quad
+\ell(\sigma)=\frac{b-\sigma}{b-a}\alpha
+ +\frac{\sigma-a}{b-a}\beta.
+\tag{2.2}
+$$</span>
+The constant depends on the fixed strip and boundary estimates. In particular <span class="math" data-tex="$m=0$">$m=0$</span> gives polynomial interpolation with no loss in the exponent.</p>
+<p><em>Proof.</em> Fix a height <span class="math" data-tex="$t_0$">$t_0$</span>, put <span class="math" data-tex="$T=|t_0|+4$">$T=|t_0|+4$</span>, and extend <span class="math" data-tex="$\ell$">$\ell$</span> to the affine holomorphic function
+<span class="math math-display" data-tex="$$
+L(z)=\alpha+\frac{\beta-\alpha}{b-a}(z-a).
+$$">$$
+L(z)=\alpha+\frac{\beta-\alpha}{b-a}(z-a).
+$$</span>
+Choose a real <span class="math" data-tex="$c$">$c$</span> with <span class="math" data-tex="$c+a\ge1$">$c+a\ge1$</span>, and an integer <span class="math" data-tex="$N\ge\max(|\alpha|,|\beta|)+m$">$N\ge\max(|\alpha|,|\beta|)+m$</span>. Define
+<span class="math math-display" data-tex="$$
+g(z)=\frac{f(z+it_0)\,T^{-L(z)}}{(z+c)^N(\log T)^m},
+\quad T^{-L(z)}=\exp(-L(z)\log T).
+$$">$$
+g(z)=\frac{f(z+it_0)\,T^{-L(z)}}{(z+c)^N(\log T)^m},
+\quad T^{-L(z)}=\exp(-L(z)\log T).
+$$</span>
+There are no denominator zeros on the strip. For every real <span class="math" data-tex="$y$">$y$</span>, both ratios of <span class="math" data-tex="$|t_0+y|+4$">$|t_0+y|+4$</span> and <span class="math" data-tex="$T$">$T$</span> are at most <span class="math" data-tex="$1+|y|$">$1+|y|$</span>. Also
+<span class="math math-display" data-tex="$$
+\log(|t_0+y|+4)\le\log T+\log(1+|y|)
+\le(\log T)(1+|y|).
+$$">$$
+\log(|t_0+y|+4)\le\log T+\log(1+|y|)
+\le(\log T)(1+|y|).
+$$</span>
+Since <span class="math" data-tex="$|a+c+iy|$">$|a+c+iy|$</span> and <span class="math" data-tex="$|b+c+iy|$">$|b+c+iy|$</span> are comparable with <span class="math" data-tex="$1+|y|$">$1+|y|$</span>, the two vertical boundary values of <span class="math" data-tex="$g$">$g$</span> are bounded by a constant <span class="math" data-tex="$K$">$K$</span> independent of <span class="math" data-tex="$t_0$">$t_0$</span>. This works for negative as well as positive exponents.</p>
+<p>Put <span class="math" data-tex="$w=b-a$">$w=b-a$</span>, <span class="math" data-tex="$d=(a+b)/2$">$d=(a+b)/2$</span>, and choose <span class="math" data-tex="$0&lt;k&lt;\pi/w$">$0&lt;k&lt;\pi/w$</span>. For <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, multiply by
+<span class="math math-display" data-tex="$$
+g_\varepsilon(z)=g(z)\exp(-\varepsilon\cos(k(z-d))).
+$$">$$
+g_\varepsilon(z)=g(z)\exp(-\varepsilon\cos(k(z-d))).
+$$</span>
+For <span class="math" data-tex="$z=\sigma+iy$">$z=\sigma+iy$</span> in the strip,
+<span class="math math-display" data-tex="$$
+\operatorname{Re}\cos(k(z-d))
+=\cos(k(\sigma-d))\cosh(ky)
+\ge\cos(kw/2)\cosh(ky)&gt;0.
+\tag{2.3}
+$$">$$
+\operatorname{Re}\cos(k(z-d))
+=\cos(k(\sigma-d))\cosh(ky)
+\ge\cos(kw/2)\cosh(ky)&gt;0.
+\tag{2.3}
+$$</span>
+Thus the vertical boundary bounds stay at most <span class="math" data-tex="$K$">$K$</span>. For fixed <span class="math" data-tex="$t_0,\varepsilon$">$t_0,\varepsilon$</span>, (2.1) and (2.3) imply that <span class="math" data-tex="$g_\varepsilon\to0$">$g_\varepsilon\to0$</span> uniformly on the horizontal edges at heights <span class="math" data-tex="$\pm H$">$\pm H$</span> as <span class="math" data-tex="$H\to\infty$">$H\to\infty$</span>: the negative term of size <span class="math" data-tex="$\varepsilon e^{kH}$">$\varepsilon e^{kH}$</span> in the logarithm dominates every fixed power of <span class="math" data-tex="$H$">$H$</span>. Apply the maximum principle to these rectangles and let <span class="math" data-tex="$H\to\infty$">$H\to\infty$</span>. We obtain <span class="math" data-tex="$|g_\varepsilon(z)|\le K$">$|g_\varepsilon(z)|\le K$</span>, with <span class="math" data-tex="$K$">$K$</span> independent of <span class="math" data-tex="$t_0,\varepsilon$">$t_0,\varepsilon$</span>. Letting <span class="math" data-tex="$\varepsilon\downarrow0$">$\varepsilon\downarrow0$</span> gives <span class="math" data-tex="$|g(z)|\le K$">$|g(z)|\le K$</span>. At real <span class="math" data-tex="$z=\sigma$">$z=\sigma$</span>,
+<span class="math math-display" data-tex="$$
+|f(\sigma+it_0)|\le K(\sigma+c)^N
+ T^{\ell(\sigma)}(\log T)^m.
+$$">$$
+|f(\sigma+it_0)|\le K(\sigma+c)^N
+ T^{\ell(\sigma)}(\log T)^m.
+$$</span>
+The factor <span class="math" data-tex="$(\sigma+c)^N$">$(\sigma+c)^N$</span> is bounded on the fixed strip. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The proof also explains the sharp scale of the growth restriction. It still works for a bound <span class="math" data-tex="$D\exp(D e^{c_0|t|})$">$D\exp(D e^{c_0|t|})$</span> whenever <span class="math" data-tex="$c_0&lt;\pi/(b-a)$">$c_0&lt;\pi/(b-a)$</span>: choose <span class="math" data-tex="$c_0&lt;k&lt;\pi/(b-a)$">$c_0&lt;k&lt;\pi/(b-a)$</span>. Exercise 5 shows why equality at this threshold cannot be allowed in general.</p>
+<h2 id="3-the-convexity-bound-and-the-growth-exponent">3. The convexity bound and the growth exponent</h2>
+<p>Write the functional equation as
+<span class="math math-display" data-tex="$$
+\zeta(s)=\chi(s)\zeta(1-s),\qquad
+\chi(s)=\pi^{s-1/2}
+\frac{\Gamma((1-s)/2)}{\Gamma(s/2)}.
+$$">$$
+\zeta(s)=\chi(s)\zeta(1-s),\qquad
+\chi(s)=\pi^{s-1/2}
+\frac{\Gamma((1-s)/2)}{\Gamma(s/2)}.
+$$</span>
+On every fixed bounded interval of real parts, vertical Stirling gives the two-sided estimate
+<span class="math math-display" data-tex="$$
+|\chi(\sigma+it)|\asymp\tau^{1/2-\sigma}
+\qquad(|t|\ge1).
+\tag{3.1}
+$$">$$
+|\chi(\sigma+it)|\asymp\tau^{1/2-\sigma}
+\qquad(|t|\ge1).
+\tag{3.1}
+$$</span>
+Both gamma factors have height <span class="math" data-tex="$|t|/2$">$|t|/2$</span>; their exponential factors cancel, while their power ratio is <span class="math" data-tex="$|t|^{1/2-\sigma}$">$|t|^{1/2-\sigma}$</span>. The bounded interval <span class="math" data-tex="$1\le|t|\le t_1$">$1\le|t|\le t_1$</span> causes no problem, since neither factor has a zero or pole there. Conjugation gives the same estimates at both signs of the height.</p>
+<p>We need an initial growth bound before applying Theorem 2.1. Formula (1.1), used at <span class="math" data-tex="$x=\tau$">$x=\tau$</span>, bounds zeta by a fixed power of <span class="math" data-tex="$\tau$">$\tau$</span> uniformly on each bounded strip with <span class="math" data-tex="$\sigma\ge1/4$">$\sigma\ge1/4$</span>, for <span class="math" data-tex="$|t|\ge1$">$|t|\ge1$</span>. For <span class="math" data-tex="$\sigma\le1/4$">$\sigma\le1/4$</span>, use (3.1) and the estimate at <span class="math" data-tex="$1-\sigma\ge3/4$">$1-\sigma\ge3/4$</span>. Thus <span class="math" data-tex="$(s-1)\zeta(s)$">$(s-1)\zeta(s)$</span>, which is entire, has polynomial growth on every bounded vertical strip. Its values with <span class="math" data-tex="$|t|\le1$">$|t|\le1$</span> are bounded by compactness.</p>
+<p><strong>Theorem 3.1 (convexity with a logarithm).</strong> Uniformly for <span class="math" data-tex="$0\le\sigma\le1$">$0\le\sigma\le1$</span> and <span class="math" data-tex="$|t|\ge1$">$|t|\ge1$</span>,
+<span class="math math-display" data-tex="$$
+\boxed{\displaystyle
+\zeta(\sigma+it)\ll\tau^{(1-\sigma)/2}\log\tau.}
+\tag{3.2}
+$$">$$
+\boxed{\displaystyle
+\zeta(\sigma+it)\ll\tau^{(1-\sigma)/2}\log\tau.}
+\tag{3.2}
+$$</span>
+In particular <span class="math" data-tex="$\zeta(1/2+it)\ll\tau^{1/4}\log\tau$">$\zeta(1/2+it)\ll\tau^{1/4}\log\tau$</span>.</p>
+<p><em>Proof.</em> The right boundary is (1.4). On the left boundary, (3.1) gives
+<span class="math" data-tex="$|\zeta(it)|\ll\tau^{1/2}\log\tau$">$|\zeta(it)|\ll\tau^{1/2}\log\tau$</span>. Remove the pole without changing these height powers by setting
+<span class="math math-display" data-tex="$$
+F(s)=\frac{s-1}{s+2}\zeta(s).
+$$">$$
+F(s)=\frac{s-1}{s+2}\zeta(s).
+$$</span>
+This function is holomorphic on the closed strip <span class="math" data-tex="$0\le\sigma\le1$">$0\le\sigma\le1$</span>; the apparent singularity at 1 is removable. It has polynomial growth and boundary estimates with exponents <span class="math" data-tex="$1/2,0$">$1/2,0$</span> and the common factor <span class="math" data-tex="$\log\tau$">$\log\tau$</span>. Theorem 2.1 gives the same interpolated estimate for <span class="math" data-tex="$F$">$F$</span>. For <span class="math" data-tex="$|t|\ge1$">$|t|\ge1$</span>, <span class="math" data-tex="$|(s+2)/(s-1)|$">$|(s+2)/(s-1)|$</span> is bounded on the strip, so (3.2) follows. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For each real <span class="math" data-tex="$\sigma$">$\sigma$</span>, define
+<span class="math math-display" data-tex="$$
+\mu(\sigma)=\inf\{v\in\mathbb R:
+|\zeta(\sigma+it)|\ll_\sigma |t|^v
+\text{ for }|t|\ge1\}.
+\tag{3.3}
+$$">$$
+\mu(\sigma)=\inf\{v\in\mathbb R:
+|\zeta(\sigma+it)|\ll_\sigma |t|^v
+\text{ for }|t|\ge1\}.
+\tag{3.3}
+$$</span>
+The constant in this set may also depend on <span class="math" data-tex="$v$">$v$</span>. An infimum need not be attained: a logarithm does not change <span class="math" data-tex="$\mu$">$\mu$</span>, although it can prevent a bound with the exact infimum exponent.</p>
+<p><strong>Theorem 3.2.</strong> The function <span class="math" data-tex="$\mu$">$\mu$</span> is finite, convex, continuous, and nonincreasing. It satisfies
+<span class="math math-display" data-tex="$$
+\begin{gathered}
+\mu(\sigma)=0\quad(\sigma\ge1),\qquad
+\mu(\sigma)=\tfrac12-\sigma\quad(\sigma\le0),\\
+\mu(\sigma)=\tfrac12-\sigma+\mu(1-\sigma)
+\quad(\sigma\in\mathbb R).
+\tag{3.4}
+\end{gathered}
+$$" data-render-adaptation="whole-display-tag-outside-subenvironment-v1" data-render-tex="$$
+\begin{gathered}
+\mu(\sigma)=0\quad(\sigma\ge1),\qquad
+\mu(\sigma)=\tfrac12-\sigma\quad(\sigma\le0),\\
+\mu(\sigma)=\tfrac12-\sigma+\mu(1-\sigma)
+\quad(\sigma\in\mathbb R).
+\end{gathered}
+\tag{3.4}
+$$" title="Display-only adjustment: the unchanged whole-display label is outside aligned/gathered; original TeX is retained in data-tex.">$$
+\begin{gathered}
+\mu(\sigma)=0\quad(\sigma\ge1),\qquad
+\mu(\sigma)=\tfrac12-\sigma\quad(\sigma\le0),\\
+\mu(\sigma)=\tfrac12-\sigma+\mu(1-\sigma)
+\quad(\sigma\in\mathbb R).
+\end{gathered}
+\tag{3.4}
+$$</span>
+For <span class="math" data-tex="$0\le\sigma\le1$">$0\le\sigma\le1$</span>,
+<span class="math math-display" data-tex="$$
+\max(0,\tfrac12-\sigma)\le\mu(\sigma)
+\le\frac{1-\sigma}{2}.
+\tag{3.5}
+$$">$$
+\max(0,\tfrac12-\sigma)\le\mu(\sigma)
+\le\frac{1-\sigma}{2}.
+\tag{3.5}
+$$</span></p>
+<p><em>Proof.</em> The initial polynomial bound makes the set in (3.3) nonempty. For <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>, the Euler product and reciprocal Dirichlet series give
+<span class="math math-display" data-tex="$$
+\frac1{\zeta(\sigma)}\le|\zeta(\sigma+it)|
+\le\zeta(\sigma).
+\tag{3.6}
+$$">$$
+\frac1{\zeta(\sigma)}\le|\zeta(\sigma+it)|
+\le\zeta(\sigma).
+\tag{3.6}
+$$</span>
+Hence <span class="math" data-tex="$\mu(\sigma)=0$">$\mu(\sigma)=0$</span> there.</p>
+<p>To rule out negative values or <span class="math" data-tex="$-\infty$">$-\infty$</span> on the remaining lines, suppose that at some <span class="math" data-tex="$a\le1$">$a\le1$</span> there were an admissible negative exponent <span class="math" data-tex="$v$">$v$</span>. Choose <span class="math" data-tex="$1&lt;c&lt;b$">$1&lt;c&lt;b$</span>. Apply Theorem 2.1 to the entire function <span class="math" data-tex="$(s-1)\zeta(s)$">$(s-1)\zeta(s)$</span> on <span class="math" data-tex="$[a,b]$">$[a,b]$</span>, with boundary exponents <span class="math" data-tex="$v+1$">$v+1$</span> and 1. After dividing by <span class="math" data-tex="$|s-1|\asymp |t|$">$|s-1|\asymp |t|$</span> at <span class="math" data-tex="$\sigma=c$">$\sigma=c$</span>, the conclusion would be
+<span class="math math-display" data-tex="$$
+|\zeta(c+it)|\ll |t|^{v(b-c)/(b-a)},
+$$">$$
+|\zeta(c+it)|\ll |t|^{v(b-c)/(b-a)},
+$$</span>
+which tends to zero and contradicts (3.6). Thus all admissible exponents on these lines are nonnegative. This proves <span class="math" data-tex="$0\le\mu(\sigma)&lt;\infty$">$0\le\mu(\sigma)&lt;\infty$</span> everywhere.</p>
+<p>If <span class="math" data-tex="$v_a&gt;\mu(a)$">$v_a&gt;\mu(a)$</span> and <span class="math" data-tex="$v_b&gt;\mu(b)$">$v_b&gt;\mu(b)$</span>, these exponents are admissible: by the definition of an infimum there is an admissible exponent below each, and a larger exponent retains the bound for <span class="math" data-tex="$|t|\ge1$">$|t|\ge1$</span>. The same pole-removal argument gives
+<span class="math math-display" data-tex="$$
+\mu(\sigma)\le
+\frac{b-\sigma}{b-a}v_a+\frac{\sigma-a}{b-a}v_b.
+$$">$$
+\mu(\sigma)\le
+\frac{b-\sigma}{b-a}v_a+\frac{\sigma-a}{b-a}v_b.
+$$</span>
+Let <span class="math" data-tex="$v_a\downarrow\mu(a)$">$v_a\downarrow\mu(a)$</span>, <span class="math" data-tex="$v_b\downarrow\mu(b)$">$v_b\downarrow\mu(b)$</span>. This is convexity. A finite convex function on <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span> is continuous: its difference quotients on any interior compact interval lie between the secant slopes from two fixed exterior points, which gives a local Lipschitz bound. Consequently <span class="math" data-tex="$\mu(1)=0$">$\mu(1)=0$</span>. If <span class="math" data-tex="$x&lt;y$">$x&lt;y$</span>, take <span class="math" data-tex="$z&gt;\max(1,y)$">$z&gt;\max(1,y)$</span>; convexity and nonnegativity imply
+<span class="math math-display" data-tex="$$
+\mu(y)\le\frac{z-y}{z-x}\mu(x)\le\mu(x),
+$$">$$
+\mu(y)\le\frac{z-y}{z-x}\mu(x)\le\mu(x),
+$$</span>
+so <span class="math" data-tex="$\mu$">$\mu$</span> is nonincreasing.</p>
+<p>Equation (3.1), the functional equation and conjugation give
+<span class="math math-display" data-tex="$$
+|\zeta(\sigma+it)|\asymp_\sigma
+|t|^{1/2-\sigma}|\zeta(1-\sigma+it)|.
+$$">$$
+|\zeta(\sigma+it)|\asymp_\sigma
+|t|^{1/2-\sigma}|\zeta(1-\sigma+it)|.
+$$</span>
+Multiplication by this two-sided power shifts the set of admissible exponents exactly; taking infima proves the symmetry in (3.4). For <span class="math" data-tex="$\sigma\le0$">$\sigma\le0$</span>, use <span class="math" data-tex="$\mu(1-\sigma)=0$">$\mu(1-\sigma)=0$</span>. On <span class="math" data-tex="$[0,1]$">$[0,1]$</span>, convexity gives the chord upper bound from <span class="math" data-tex="$\mu(0)=1/2$">$\mu(0)=1/2$</span> and <span class="math" data-tex="$\mu(1)=0$">$\mu(1)=0$</span>. Nonnegativity and the symmetry give the lower bound. <span class="math" data-tex="$\square$">$\square$</span></p>
+<figure><img src="figures/NT-ZETA-06/growth_envelopes.png" alt="Convexity gives upper and lower envelopes for the unknown growth exponent. The Lindelöf hypothesis would identify it with the lower envelope." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1.</em> The left panel shows proved envelopes (3.5), with the exact outer values from (3.4); the shaded region bounds the unknown function, rather than plotting measured values. The right panel shows the conditional equality under the Lindelöf hypothesis. The point <span class="math" data-tex="$(1/2,1/4)$">$(1/2,1/4)$</span> belongs to the upper envelope and is not claimed to be the actual value of <span class="math" data-tex="$\mu$">$\mu$</span>.</p>
+<h2 id="4-the-lindelöf-hypothesis">4. The Lindelöf hypothesis</h2>
+<p><strong>Definition 4.1.</strong> The <strong>Lindelöf hypothesis</strong> is the assertion <span class="math" data-tex="$\mu(1/2)=0$">$\mu(1/2)=0$</span>.</p>
+<p><strong>Proposition 4.2.</strong> The Lindelöf hypothesis is equivalent to
+<span class="math math-display" data-tex="$$
+\mu(\sigma)=\max(0,\tfrac12-\sigma)
+\qquad(\sigma\in\mathbb R).
+\tag{4.1}
+$$">$$
+\mu(\sigma)=\max(0,\tfrac12-\sigma)
+\qquad(\sigma\in\mathbb R).
+\tag{4.1}
+$$</span></p>
+<p><em>Proof.</em> If <span class="math" data-tex="$\mu(1/2)=0$">$\mu(1/2)=0$</span>, nonincrease and nonnegativity give <span class="math" data-tex="$\mu(\sigma)=0$">$\mu(\sigma)=0$</span> for <span class="math" data-tex="$\sigma\ge1/2$">$\sigma\ge1/2$</span>. The symmetry (3.4) then gives <span class="math" data-tex="$\mu(\sigma)=1/2-\sigma$">$\mu(\sigma)=1/2-\sigma$</span> for <span class="math" data-tex="$\sigma\le1/2$">$\sigma\le1/2$</span>. Conversely, evaluate (4.1) at <span class="math" data-tex="$1/2$">$1/2$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The hypothesis is an exponent assertion, not a claim that zeta is bounded on the critical line. It allows powers of logarithms and other factors smaller than every positive power of the height. Exercise 4 makes the quantifiers precise.</p>
+<p>In the next lesson, <strong>Exponential sums and a subconvex bound</strong>, we will prove the unconditional exponent <span class="math" data-tex="$1/6$">$1/6$</span>, followed by the exponent-pair improvement <span class="math" data-tex="$27/164$">$27/164$</span> from [Montgomery–Vaughan II, Corollary 16.27]. These improvements require the exponential-sum methods developed there. <strong>The Riemann hypothesis implies the Lindelöf hypothesis</strong> will prove the implication named in its title. Neither hypothesis has been proved here. The present unconditional conclusion is (3.2).</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<ol>
+<li><strong>The convexity chord.</strong> Derive <span class="math" data-tex="$\mu(\sigma)\le(1-\sigma)/2$">$\mu(\sigma)\le(1-\sigma)/2$</span> on <span class="math" data-tex="$[0,1]$">$[0,1]$</span> directly from convexity and the two endpoint values. Explain the role of the logarithm in (3.2).</li>
+<li><strong>A cutoff at <span class="math" data-tex="$|t|$">$|t|$</span>.</strong> Prove <span class="math" data-tex="$\zeta(1+it)\ll\log|t|$">$\zeta(1+it)\ll\log|t|$</span> for <span class="math" data-tex="$|t|\ge2$">$|t|\ge2$</span>, using a finite sum with cutoff <span class="math" data-tex="$x=|t|$">$x=|t|$</span>. Justify this cutoff, since Theorem 1.1 is stated for <span class="math" data-tex="$x\ge|t|+4$">$x\ge|t|+4$</span>.</li>
+<li><strong>Reciprocal gamma on a strip.</strong> Apply Theorem 2.1 to a holomorphic normalization of <span class="math" data-tex="$1/\Gamma(s)$">$1/\Gamma(s)$</span> and obtain, on each fixed bounded strip,
+<span class="math math-display" data-tex="$$
+\frac1{|\Gamma(\sigma+it)|}
+\ll (|t|+4)^{1/2-\sigma}e^{\pi|t|/2}.
+$$">$$
+\frac1{|\Gamma(\sigma+it)|}
+\ll (|t|+4)^{1/2-\sigma}e^{\pi|t|/2}.
+$$</span>
+Compare the conclusion with Stirling. Explain why the theorem cannot be applied directly to <span class="math" data-tex="$1/\Gamma$">$1/\Gamma$</span> with polynomial boundary estimates.</li>
+<li><strong>The epsilon formulation.</strong> Prove that LH is equivalent to
+<span class="math" data-tex="$\zeta(1/2+it)\ll_\varepsilon |t|^\varepsilon$">$\zeta(1/2+it)\ll_\varepsilon |t|^\varepsilon$</span> for every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, <span class="math" data-tex="$|t|\ge1$">$|t|\ge1$</span>.</li>
+<li><strong>The limiting growth scale.</strong> On the strip <span class="math" data-tex="$-1/2\le\sigma\le1/2$">$-1/2\le\sigma\le1/2$</span>, examine
+<span class="math" data-tex="$f(s)=\exp(\exp(-i\pi s))$">$f(s)=\exp(\exp(-i\pi s))$</span>. Show that its boundary modulus is 1, but it is unbounded on the middle line. Prove that the bound <span class="math" data-tex="$|f(\sigma+it)|\le D\exp(D e^{c|t|})$">$|f(\sigma+it)|\le D\exp(D e^{c|t|})$</span>, with <span class="math" data-tex="$c&lt;\pi$">$c&lt;\pi$</span>, would suffice for the bounded-boundary strip principle.</li>
+</ol>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>Solution 1.</strong> Write <span class="math" data-tex="$\sigma=(1-\sigma)0+\sigma1$">$\sigma=(1-\sigma)0+\sigma1$</span>. Convexity gives
+<span class="math" data-tex="$\mu(\sigma)\le(1-\sigma)\mu(0)+\sigma\mu(1)=(1-\sigma)/2$">$\mu(\sigma)\le(1-\sigma)\mu(0)+\sigma\mu(1)=(1-\sigma)/2$</span>. For each <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, <span class="math" data-tex="$\log\tau\ll_\varepsilon\tau^\varepsilon$">$\log\tau\ll_\varepsilon\tau^\varepsilon$</span>. Thus (3.2) has this infimum exponent; it need not make that exponent admissible without the logarithm. This distinction is why (3.3) uses an infimum.</p>
+<p><strong>Solution 2.</strong> Put <span class="math" data-tex="$u=|t|\ge2$">$u=|t|\ge2$</span>. Apply (1.1) first at <span class="math" data-tex="$x=u+4$">$x=u+4$</span>. The sum over <span class="math" data-tex="$u&lt;n\le u+4$">$u&lt;n\le u+4$</span> contains at most four terms, each of modulus at most <span class="math" data-tex="$1/u$">$1/u$</span>. Also
+<span class="math math-display" data-tex="$$
+\frac{(u+4)^{-it}-u^{-it}}{it}
+=-\int_u^{u+4}v^{-1-it}\,dv=O(1/u).
+$$">$$
+\frac{(u+4)^{-it}-u^{-it}}{it}
+=-\int_u^{u+4}v^{-1-it}\,dv=O(1/u).
+$$</span>
+The remainder at <span class="math" data-tex="$u+4$">$u+4$</span> is <span class="math" data-tex="$O(1/u)$">$O(1/u)$</span>. Therefore
+<span class="math math-display" data-tex="$$
+\zeta(1+it)=\sum_{n\le u}n^{-1-it}
+ +\frac{u^{-it}}{it}+O(1/u).
+$$">$$
+\zeta(1+it)=\sum_{n\le u}n^{-1-it}
+ +\frac{u^{-it}}{it}+O(1/u).
+$$</span>
+The sum is bounded by the harmonic sum <span class="math" data-tex="$\ll\log u$">$\ll\log u$</span>, and the pole term has modulus <span class="math" data-tex="$1/u$">$1/u$</span>. This proves the estimate, with the requested smaller cutoff now justified.</p>
+<p><strong>Solution 3.</strong> First take a strip <span class="math" data-tex="$[a,b]$">$[a,b]$</span> of width less than 2 and midpoint <span class="math" data-tex="$d$">$d$</span>. The entire reciprocal gamma function has the exponential boundary factor <span class="math" data-tex="$e^{\pi|t|/2}$">$e^{\pi|t|/2}$</span>, so polynomial interpolation does not apply to it directly. Instead set
+<span class="math math-display" data-tex="$$
+Q(s)=\frac{1}{\Gamma(s)\cos(\pi(s-d)/2)}.
+$$">$$
+Q(s)=\frac{1}{\Gamma(s)\cos(\pi(s-d)/2)}.
+$$</span>
+The zeros of the cosine are the real points <span class="math" data-tex="$d+1+2j$">$d+1+2j$</span>; none is in the closed strip. Moreover,
+<span class="math math-display" data-tex="$$
+|\cos(\pi(\sigma-d+it)/2)|^2
+=\cos^2(\pi(\sigma-d)/2)+\sinh^2(\pi t/2).
+$$">$$
+|\cos(\pi(\sigma-d+it)/2)|^2
+=\cos^2(\pi(\sigma-d)/2)+\sinh^2(\pi t/2).
+$$</span>
+Since <span class="math" data-tex="$|\sigma-d|\le(b-a)/2&lt;1$">$|\sigma-d|\le(b-a)/2&lt;1$</span>, this is comparable, uniformly, with <span class="math" data-tex="$e^{\pi|t|}$">$e^{\pi|t|}$</span>. Thus the normalization removes the exponential factor at both ends of the height range. Vertical Stirling on the two boundary lines gives
+<span class="math math-display" data-tex="$$
+Q(a+it)\ll\tau^{1/2-a},\qquad
+Q(b+it)\ll\tau^{1/2-b}.
+$$">$$
+Q(a+it)\ll\tau^{1/2-a},\qquad
+Q(b+it)\ll\tau^{1/2-b}.
+$$</span>
+At bounded heights these estimates follow by compactness; reciprocal gamma has removable zeros at the gamma poles. The same uniform Stirling estimate on the whole strip supplies the initial finite growth bound required by Theorem 2.1. Interpolation yields <span class="math" data-tex="$Q(\sigma+it)\ll\tau^{1/2-\sigma}$">$Q(\sigma+it)\ll\tau^{1/2-\sigma}$</span>. Multiply by the cosine upper bound to obtain the stated estimate. Cover any wider fixed strip by finitely many strips of width less than 2. Stirling also supplies the reverse estimate for <span class="math" data-tex="$|t|\ge1$">$|t|\ge1$</span>, with leading factor <span class="math" data-tex="$(2\pi)^{-1/2}$">$(2\pi)^{-1/2}$</span>; interpolation recovers its power and exponential rate but does not determine that constant.</p>
+<p><strong>Solution 4.</strong> If <span class="math" data-tex="$\mu(1/2)=0$">$\mu(1/2)=0$</span>, the infimum property in (3.3) makes every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span> admissible, as explained in Theorem 3.2. Conversely, bounds for all such <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> imply <span class="math" data-tex="$\mu(1/2)\le0$">$\mu(1/2)\le0$</span>. Its nonnegativity gives equality. The constants may depend on <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>; a single constant for all <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> is not required.</p>
+<p><strong>Solution 5.</strong> Directly,
+<span class="math math-display" data-tex="$$
+|f(\sigma+it)|=
+\exp(e^{\pi t}\cos(\pi\sigma)).
+$$">$$
+|f(\sigma+it)|=
+\exp(e^{\pi t}\cos(\pi\sigma)).
+$$</span>
+On <span class="math" data-tex="$\sigma=\pm1/2$">$\sigma=\pm1/2$</span> this is 1; on <span class="math" data-tex="$\sigma=0$">$\sigma=0$</span> it tends to infinity as <span class="math" data-tex="$t\to+\infty$">$t\to+\infty$</span>. Its logarithm on the middle line is <span class="math" data-tex="$e^{\pi t}$">$e^{\pi t}$</span>, which exceeds every fixed power of <span class="math" data-tex="$|t|$">$|t|$</span>, so it violates (2.1).</p>
+<p>For a function satisfying the smaller double-exponential bound in the question, choose <span class="math" data-tex="$c&lt;k&lt;\pi$">$c&lt;k&lt;\pi$</span>. On this strip
+<span class="math math-display" data-tex="$$
+\operatorname{Re}\cos(ks)
+\ge\cos(k/2)\cosh(kt).
+$$">$$
+\operatorname{Re}\cos(ks)
+\ge\cos(k/2)\cosh(kt).
+$$</span>
+Multiplication by <span class="math" data-tex="$\exp(-\varepsilon\cos(ks))$">$\exp(-\varepsilon\cos(ks))$</span> decreases the bounded vertical-edge values. On the horizontal edges at height <span class="math" data-tex="$\pm H$">$\pm H$</span>, its logarithmic modulus is at most
+<span class="math math-display" data-tex="$$
+\log D+D e^{cH}-\varepsilon\cos(k/2)\cosh(kH),
+$$">$$
+\log D+D e^{cH}-\varepsilon\cos(k/2)\cosh(kH),
+$$</span>
+which tends to <span class="math" data-tex="$-\infty$">$-\infty$</span>. The rectangle maximum principle, followed by <span class="math" data-tex="$H\to\infty$">$H\to\infty$</span> and <span class="math" data-tex="$\varepsilon\downarrow0$">$\varepsilon\downarrow0$</span>, bounds the function by its vertical-edge bound. The strict inequality <span class="math" data-tex="$c&lt;\pi$">$c&lt;\pi$</span> enables the choice of <span class="math" data-tex="$k$">$k$</span>; the displayed counterexample shows failure at equality.</p>
+<h2 id="freely-readable-sources">Freely readable sources</h2>
+<ul>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, freely readable author preliminary version, 367 pages. Chapter 6, Theorems 6.2–6.3.</li>
+<li>H. L. Montgomery and R. C. Vaughan, <a href="https://personal.science.psu.edu/rcv4/571s25/montgomery-vaughanII.pdf"><em>Multiplicative Number Theory II: Primes and Sieves</em></a>, freely readable author-hosted 472-page draft. Section 16.2, Lemma 16.14 and Theorems 16.15–16.16; the corrected pole sign is proved in (1.1).</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-05.html">← Entire functions of order one and the Hadamard product of ξ</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-07.html">Exponential sums and a subconvex bound →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-06.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Normal-state orbit diameter at a positive type III parameter · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-HC.html">Previous lesson</a><a href="OA-FLOW-UC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-DP.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original complete proof and illustrations by GPT-6.1 Sol (OpenAI), Ultra; independent complete mathematical review by GPT-6 Astra (OpenAI), Ultra, at exact earlier programme inputs. Human review and formal verification are not asserted.</p><h1 id="normal-state-orbit-diameter-at-a-positive-type-iii-parameter">Normal-state orbit diameter at a positive type III parameter</h1>
+<p>This is an original private exposition of the compact-core spectral method, followed by a sharp scalar argument using probability mixtures. The spectral method is reconstructed from the freely readable Haagerup–Størmer paper, §5; its final isometry theorem is <strong>proved below</strong>, not imported. No state-diameter theorem is a premise. The argument concerns the predual norm of finite normal states. It makes no assertion about an extended metric on infinite weights.</p>
+<p>The positive-parameter theorem is proved at the actual earlier programme proofs linked below. The complete discrete-decomposition existence theorem supplies the periodic weight; no classification premise remains in Section 2. The spectral-family construction in Section 6 is written locally.</p>
+<p>Any rights held in the original exposition, illustration and reproduction code supplied in this folder are dedicated under CC0-1.0. The cited sources retain their own terms. No claim of a new historical theorem is made.</p>
+<h2 id="1-statement-norm-and-exact-scope">1. Statement, norm and exact scope</h2>
+<p>Let <span class="math" data-tex="$M$">$M$</span> be a nonzero factor with separable predual of type <span class="math" data-tex="${\rm III}_\lambda$">${\rm III}_\lambda$</span>, where <span class="math" data-tex="$0&lt;\lambda&lt;1$">$0&lt;\lambda&lt;1$</span>. For a unitary <span class="math" data-tex="$u$">$u$</span>, write</p>
+<p><a id="equation-d1"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \phi^u(x)=\phi(u^*xu),\qquad
+ d(\phi,\psi)=\inf_{u\in\mathcal U(M)}\|\phi^u-\psi\|,
+ \qquad \phi,\psi\in S_*(M).
+ \tag{D1}
+$$">$$
+ \phi^u(x)=\phi(u^*xu),\qquad
+ d(\phi,\psi)=\inf_{u\in\mathcal U(M)}\|\phi^u-\psi\|,
+ \qquad \phi,\psi\in S_*(M).
+ \tag{D1}
+$$</span></p>
+<p>Here <span class="math" data-tex="$S_*(M)=\{\phi\in M_*^+:\phi(1)=1\}$">$S_*(M)=\{\phi\in M_*^+:\phi(1)=1\}$</span>, including nonfaithful states, and the norm is the supremum on the operator-norm unit ball of <span class="math" data-tex="$M$">$M$</span>. The desired assertion is</p>
+<p><a id="equation-d2"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \sup_{\phi,\psi\in S_*(M)}d(\phi,\psi)
+ =\frac{2(1-\sqrt\lambda)}{1+\sqrt\lambda}.
+ \tag{D2}
+$$">$$
+ \sup_{\phi,\psi\in S_*(M)}d(\phi,\psi)
+ =\frac{2(1-\sqrt\lambda)}{1+\sqrt\lambda}.
+ \tag{D2}
+$$</span></p>
+<p>Our conjugation convention agrees with the opposite convention in an orbit infimum, since inversion permutes the unitary group. The factor is assumed to have separable predual throughout; no wider sigma-finite theorem is silently substituted.</p>
+<p><span id="OA-FLOW.DP.1"></span><a id="oa-flow.dp.1"></a></p>
+<p>The infimum in (D1) is unchanged upon replacing either state by an element of its norm orbit closure. Indeed, unitary conjugation is isometric, so</p>
+<p><a id="equation-d3"></a></p>
+<p><span class="math math-display" data-tex="$$
+ |d(\phi,\psi)-d(\phi',\psi')|
+ \le \|\phi-\phi'\|+\|\psi-\psi'\|.
+ \tag{D3}
+$$">$$
+ |d(\phi,\psi)-d(\phi',\psi')|
+ \le \|\phi-\phi'\|+\|\psi-\psi'\|.
+ \tag{D3}
+$$</span></p>
+<p>It is symmetric by inversion. Composing two unitaries proves the triangle inequality. Thus <span class="math" data-tex="$d=0$">$d=0$</span> is an equivalence relation and <span class="math" data-tex="$d$">$d$</span> defines a metric on norm orbit closures. We will use only these elementary facts, not a classification of those closures.</p>
+<p><span id="OA-FLOW.DP.2"></span><a id="oa-flow.dp.2"></a></p>
+<h2 id="2-precisely-what-the-compact-core-foundations-supply">2. Precisely what the compact-core foundations supply</h2>
+<p>Put <span class="math" data-tex="$L=-\log\lambda&gt;0$">$L=-\log\lambda&gt;0$</span> and <span class="math" data-tex="$P=2\pi/L$">$P=2\pi/L$</span>. The complete <a href="OA-FLOW-DD.html#oa-flow.dd.1">DD existence theorem, proved in DD1–8</a>, constructs from precisely this nonzero separable-predual type <span class="math" data-tex="${\rm III}_\lambda$">${\rm III}_\lambda$</span> hypothesis, without an assumed periodic weight, a type <span class="math" data-tex="${\rm II}_\infty$">${\rm II}_\infty$</span> factor <span class="math" data-tex="$A$">$A$</span>, an n.s.f. trace <span class="math" data-tex="$\tau_A$">$\tau_A$</span>, an automorphism <span class="math" data-tex="$\alpha$">$\alpha$</span> with <span class="math" data-tex="$\tau_A\alpha=\lambda\tau_A$">$\tau_A\alpha=\lambda\tau_A$</span>, and</p>
+<p><a id="equation-c1"></a></p>
+<p><span class="math math-display" data-tex="$$
+ M=A\rtimes_\alpha\mathbb Z,
+ \qquad \sigma_t^\omega(a)=a,
+ \qquad \sigma_t^\omega(U)=\lambda^{it}U,
+ \tag{C1}
+$$">$$
+ M=A\rtimes_\alpha\mathbb Z,
+ \qquad \sigma_t^\omega(a)=a,
+ \qquad \sigma_t^\omega(U)=\lambda^{it}U,
+ \tag{C1}
+$$</span></p>
+<p>where <span class="math" data-tex="$\omega$">$\omega$</span> is the generalized trace and <span class="math" data-tex="$U a U^*=\alpha(a)$">$U a U^*=\alpha(a)$</span>. In particular <span class="math" data-tex="$\sigma_P^\omega=\operatorname{id}$">$\sigma_P^\omega=\operatorname{id}$</span>. Define the <strong>compact</strong> modular crossed product</p>
+<p><a id="equation-c2"></a></p>
+<p><span class="math math-display" data-tex="$$
+ B=M\rtimes_{\sigma^\omega}(\mathbb R/P\mathbb Z),
+ \tag{C2}
+$$">$$
+ B=M\rtimes_{\sigma^\omega}(\mathbb R/P\mathbb Z),
+ \tag{C2}
+$$</span></p>
+<p>with named inclusions <span class="math" data-tex="$\pi:M\to B$">$\pi:M\to B$</span> and <span class="math" data-tex="$\ell(t)$">$\ell(t)$</span>, <span class="math" data-tex="$t\in\mathbb R/P\mathbb Z$">$t\in\mathbb R/P\mathbb Z$</span>. The full normal double-duality proof <a href="OA-FLOW-VD.html#oa-flow.vd.0">VD0–6</a>, including the onto Fourier shear, complete tensor commutant and conditional type theorem, gives <span class="math" data-tex="$B\cong A\bar\otimes B(\ell^2\mathbb Z)$">$B\cong A\bar\otimes B(\ell^2\mathbb Z)$</span>, hence <span class="math" data-tex="$B$">$B$</span> is a type <span class="math" data-tex="${\rm II}_\infty$">${\rm II}_\infty$</span> factor.</p>
+<p>Let <span class="math" data-tex="$\beta$">$\beta$</span> be the dual generator with signs</p>
+<p><a id="equation-c3"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \beta(\pi(x))=\pi(x),\qquad
+ \beta(\ell(t))=e^{-iLt}\ell(t).
+ \tag{C3}
+$$">$$
+ \beta(\pi(x))=\pi(x),\qquad
+ \beta(\ell(t))=e^{-iLt}\ell(t).
+ \tag{C3}
+$$</span></p>
+<p>The complete Fourier construction in <a href="OA-FLOW-CC.html#oa-flow.cc.8">CC0–2 and CC8</a> gives a nonsingular positive affiliated <span class="math" data-tex="$H_0$">$H_0$</span> with <span class="math" data-tex="$H_0^{it}=\ell(t)$">$H_0^{it}=\ell(t)$</span>. Equation (C3) gives <span class="math" data-tex="$\beta(H_0)=\lambda H_0$">$\beta(H_0)=\lambda H_0$</span>. With counting measure on the dual integer group, the normal operator-valued weight is</p>
+<p><a id="equation-c4"></a></p>
+<p><span class="math math-display" data-tex="$$
+ E(y)=\sum_{n\in\mathbb Z}\beta^n(y),\qquad y\in B_+,
+ \quad B^\beta=\pi(M).
+ \tag{C4}
+$$">$$
+ E(y)=\sum_{n\in\mathbb Z}\beta^n(y),\qquad y\in B_+,
+ \quad B^\beta=\pi(M).
+ \tag{C4}
+$$</span></p>
+<p>The sum is the increasing extended-positive supremum over finite subsets. It is faithful, semifinite and <span class="math" data-tex="$\pi(M)$">$\pi(M)$</span>-bimodular. The actual fixed algebra is proved in <a href="OA-FLOW-CC.html#oa-flow.cc.3">CC3</a>; <a href="OA-FLOW-CC.html#oa-flow.cc.4">CC4–6</a> proves the entire sum, arbitrary-net normality, exact bounded-value finite ideal and its density. Its scalar composition with <span class="math" data-tex="$\omega\pi^{-1}$">$\omega\pi^{-1}$</span> is the dual weight <span class="math" data-tex="$\widetilde\omega$">$\widetilde\omega$</span>, proved faithful normal semifinite and dual-invariant in <a href="OA-FLOW-CC.html#oa-flow.cc.7">CC7</a>. The complete canonical GNS and modular proof <a href="OA-FLOW-CD.html#oa-flow.cd.3">CD0–3</a> gives <span class="math" data-tex="$\sigma_t^{\widetilde\omega}=\operatorname{Ad}(H_0^{it})$">$\sigma_t^{\widetilde\omega}=\operatorname{Ad}(H_0^{it})$</span>; consequently</p>
+<p><a id="equation-c5"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \tau=\widetilde\omega(H_0^{-1}\,\cdot)
+ \quad\hbox{is an n.s.f. trace on }B,
+ \qquad \tau\beta=\lambda\tau.
+ \tag{C5}
+$$">$$
+ \tau=\widetilde\omega(H_0^{-1}\,\cdot)
+ \quad\hbox{is an n.s.f. trace on }B,
+ \qquad \tau\beta=\lambda\tau.
+ \tag{C5}
+$$</span></p>
+<p>Products in (C5) mean the positive closed-form sandwich and its normal extension. The scaling follows directly from dual invariance and <span class="math" data-tex="$\beta^{-1}(H_0^{-1})=\lambda H_0^{-1}$">$\beta^{-1}(H_0^{-1})=\lambda H_0^{-1}$</span>. The full unbounded perturbation and trace conversion are proved in <a href="OA-FLOW-CZ.html#oa-flow.cz.2">CZ2–7</a>, with the normalized cocycle in <a href="OA-FLOW-CZ.html#oa-flow.cz.6">CZ6</a> and exact automorphism scaling in <a href="OA-FLOW-CZ.html#oa-flow.cz.7">CZ7</a>. The complete given-period application is proved in <a href="OA-FLOW-CD.html#oa-flow.cd.4">CD4</a>, including clock centralizer affiliation, all infinite values, full finite domains and the exact scalar normalization.</p>
+<p>For a bounded normal positive functional <span class="math" data-tex="$\phi$">$\phi$</span>, its dual <span class="math" data-tex="$\widetilde\phi=\phi\pi^{-1}E$">$\widetilde\phi=\phi\pi^{-1}E$</span> is normal and semifinite: its finite ideal contains the dense bounded-value ideal of <span class="math" data-tex="$E$">$E$</span>. The complete tracial correspondence proved in <span class="unlinked">TD2–6</span>, including the nonfaithful semifinite case in <span class="unlinked">TD6</span>, gives a unique positive self-adjoint affiliated density <span class="math" data-tex="$H_\phi$">$H_\phi$</span> such that</p>
+<p><a id="equation-c6"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \widetilde\phi=\tau(H_\phi\,\cdot),\qquad
+ \beta(H_\phi)=\lambda H_\phi,
+ \qquad s(H_\phi)=\pi(s(\phi)).
+ \tag{C6}
+$$">$$
+ \widetilde\phi=\tau(H_\phi\,\cdot),\qquad
+ \beta(H_\phi)=\lambda H_\phi,
+ \qquad s(H_\phi)=\pi(s(\phi)).
+ \tag{C6}
+$$</span></p>
+<p>Density order is proved in <span class="unlinked">TD5</span>; arbitrary sums and bounded sandwiches, with their complete finite and infinite domains, are proved in <span class="unlinked">TD7</span>. The finite cyclic pairings used below are proved by explicit cutoffs in <span class="unlinked">TD8</span>. The support of a normal positive functional, its compression identity and faithful supported restriction are proved in <a href="OA-FLOW-NF.html#oa-flow.nf.1">NF1</a>. The support identity then follows from bimodularity: the dual vanishes on <span class="math" data-tex="$1-\pi(s\phi)$">$1-\pi(s\phi)$</span>, while on the supported corner faithfulness of <span class="math" data-tex="$\phi$">$\phi$</span> and <span class="math" data-tex="$E$">$E$</span> makes it faithful. The scaling identity follows from (C5), dual invariance and uniqueness of density.</p>
+<p>The complete <strong>faithful</strong> descent proof <a href="OA-FLOW-FD.html#oa-flow.fd.0">FD0–8</a> shows that every faithful n.s.f. weight on <span class="math" data-tex="$B$">$B$</span> invariant under <span class="math" data-tex="$\beta$">$\beta$</span> is the dual of a unique faithful n.s.f. weight on <span class="math" data-tex="$M$">$M$</span>. It uses exactly the full counting operator-valued weight (C4) and trace scaling (C5), with all extended-positive, finite-ideal and GNS domains proved. We arrange faithful densities before applying it, so no nonfaithful descent theorem is needed.</p>
+<p>The source ancestry for the compact spectral method is Haagerup–Størmer 1990, Section 5. The proof inputs here are the actual complete programme bodies: DD1–8, CC0–8, CD0–4, TD1–8 and FD0–6. References at the end credit the free primary works used in their development; they do not replace any of these proofs.</p>
+<p>The <a href="OA-FLOW-DD.html#oa-flow.dd.5">DD proof</a> supplies (C1), including the onto regular integer crossed product and full modular domains; <a href="OA-FLOW-DD.html#oa-flow.dd.8">DD8</a> supplies the compact double dual through VD. CC proves the given-period counting weight and fixed algebra; CD proves its canonical GNS modular formula and exact trace normalization; TD proves the complete tracial correspondence; FD proves faithful invariant-weight descent directly. These use the same reciprocal period and negative dual convention as (C1)–(C5). The compact factor in (C2) is the one used throughout. No continuous-core center formula is needed.</p>
+<p>The elementary inputs used in the metric and scalar proofs are <span class="unlinked">CF1</span> (maximality), <span class="unlinked">CF6–8</span> (norm series and bounded positive calculus), <a href="OA-FLOW-SC.html#sc-01">SC1–5</a> (Borel measures and scalar convergence), <a href="OA-FLOW-GNS.html#gns-lemma-2-1">GNS2.1–2.2</a> and <a href="OA-FLOW-GNS.html#gns-theorem-4-1">GNS4.1</a> (positive-functional Cauchy–Schwarz and its norm), <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4/6</a> (normal vector-series topology and the predual), <span class="unlinked">ST1</span> (the weak compact interval), <a href="OA-FLOW-SF.html#oa-flow.sf.sb4">SF SB4/SF1–2</a> (full spectral domains and normal transport), and <span class="unlinked">PC1–3,5,7–8</span> (polar comparison, countability and type III unitary completion). Finite equal-trace projections are equivalent by <a href="OA-FLOW-PF.html#oa-flow.pf.6">PF6</a>. Each use below has the matching projection, trace, support or normality hypotheses.</p>
+<p><span id="OA-FLOW.DP.SI"></span><a id="oa-flow.dp.si"></a></p>
+<h3 id="scalar-interchange-of-nonnegative-integrals">Scalar interchange of nonnegative integrals</h3>
+<p>We record the precise scalar interchange needed below. Let <span class="math" data-tex="$X,Y$">$X,Y$</span> be Borel subsets of the real line, with finite Borel measures <span class="math" data-tex="$m,n$">$m,n$</span>. If <span class="math" data-tex="$h:X\times Y\to[0,\infty]$">$h:X\times Y\to[0,\infty]$</span> is Borel, then both section integrals are measurable and</p>
+<p><a id="equation-sc1"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \int_X\!\left(\int_Y h(x,y)\,dn(y)\right)dm(x)
+ =\int_Y\!\left(\int_X h(x,y)\,dm(x)\right)dn(y).
+ \tag{SC1}
+$$">$$
+ \int_X\!\left(\int_Y h(x,y)\,dn(y)\right)dm(x)
+ =\int_Y\!\left(\int_X h(x,y)\,dm(x)\right)dn(y).
+ \tag{SC1}
+$$</span></p>
+<p>The same statement holds for sigma-finite measures. If either iterated integral of <span class="math" data-tex="$|h|$">$|h|$</span> is finite, it also holds for complex <span class="math" data-tex="$h$">$h$</span>, with the section integrals defined almost everywhere. We prove the statement from countable additivity, simple integration and monotone convergence; no product-measure existence theorem is needed.</p>
+<p>First, a family <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span> of subsets of a set <span class="math" data-tex="$Z$">$Z$</span> is called a lambda-system if it contains <span class="math" data-tex="$Z$">$Z$</span>, is closed under complements in <span class="math" data-tex="$Z$">$Z$</span>, and is closed under countable disjoint unions. Such a family is closed under <span class="math" data-tex="$B\setminus A$">$B\setminus A$</span> whenever <span class="math" data-tex="$A\subset B$">$A\subset B$</span> and both belong to the family: use the complement of the disjoint union <span class="math" data-tex="$A\cup(Z\setminus B)$">$A\cup(Z\setminus B)$</span>.</p>
+<p>Here is the elementary closure argument we will use. Suppose that a family <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span> contains <span class="math" data-tex="$Z$">$Z$</span> and is closed under finite intersections, and let <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span> be the smallest lambda-system containing <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span>, obtained by intersection of all such lambda-systems. For fixed <span class="math" data-tex="$A\in\mathcal P$">$A\in\mathcal P$</span>, the family</p>
+<p><span class="math math-display" data-tex="$$
+ \{B\in\mathcal D:A\cap B\in\mathcal D\}
+$$">$$
+ \{B\in\mathcal D:A\cap B\in\mathcal D\}
+$$</span></p>
+<p>is a lambda-system: the complement step uses <span class="math" data-tex="$A\setminus(A\cap B)$">$A\setminus(A\cap B)$</span> and the nested-difference property just proved. It contains <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span>, so it is all of <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span>. Now fix any <span class="math" data-tex="$B\in\mathcal D$">$B\in\mathcal D$</span> and run the same argument on <span class="math" data-tex="$\{A\in\mathcal D:A\cap B\in\mathcal D\}$">$\{A\in\mathcal D:A\cap B\in\mathcal D\}$</span>; the first step shows it contains <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span>. Thus <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span> is closed under intersections. Complements and intersections give finite unions and differences; disjointifying a countable union then proves closure under arbitrary countable unions. Hence <span class="math" data-tex="$\mathcal D$">$\mathcal D$</span> is a sigma-algebra, and equals the sigma-algebra generated by <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span>.</p>
+<p>Apply this with <span class="math" data-tex="$Z=X\times Y$">$Z=X\times Y$</span> and the rectangles <span class="math" data-tex="$A\times B$">$A\times B$</span>, where <span class="math" data-tex="$A,B$">$A,B$</span> are Borel. These generate the Borel sigma-algebra of <span class="math" data-tex="$X\times Y$">$X\times Y$</span>: open sets are countable unions of intersections with open rectangles having rational endpoints. Every Borel set <span class="math" data-tex="$E$">$E$</span> has Borel sections <span class="math" data-tex="$E_x$">$E_x$</span> and <span class="math" data-tex="$E^y$">$E^y$</span>, since the sets with that property form a sigma-algebra containing the rectangles.</p>
+<p>Let <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span> be the Borel sets <span class="math" data-tex="$E$">$E$</span> for which <span class="math" data-tex="$x\mapsto n(E_x)$">$x\mapsto n(E_x)$</span> and <span class="math" data-tex="$y\mapsto m(E^y)$">$y\mapsto m(E^y)$</span> are measurable and their integrals agree. A rectangle belongs to <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span>, with common integral <span class="math" data-tex="$m(A)n(B)$">$m(A)n(B)$</span>. The whole product also does. Complements preserve <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span>, because the section measures are subtracted from the finite constants <span class="math" data-tex="$n(Y)$">$n(Y)$</span> and <span class="math" data-tex="$m(X)$">$m(X)$</span>, and both iterated integrals are subtracted from <span class="math" data-tex="$m(X)n(Y)$">$m(X)n(Y)$</span>. Countable disjoint unions preserve <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span>, by countable additivity on each section and monotone convergence for the partial sums. Therefore <span class="math" data-tex="$\mathcal C$">$\mathcal C$</span> is a lambda-system, and the preceding closure argument proves that it contains all Borel sets.</p>
+<p>This proves (SC1) for indicators, and finite linear combinations prove it for nonnegative simple functions. Choose nonnegative simple <span class="math" data-tex="$h_k\uparrow h$">$h_k\uparrow h$</span>. Monotone convergence in the inner and outer integrals proves their measurability and (SC1) for <span class="math" data-tex="$h$">$h$</span>.</p>
+<p>For sigma-finite <span class="math" data-tex="$m,n$">$m,n$</span>, choose disjoint Borel partitions <span class="math" data-tex="$X=\bigsqcup_i X_i$">$X=\bigsqcup_i X_i$</span>, <span class="math" data-tex="$Y=\bigsqcup_jY_j$">$Y=\bigsqcup_jY_j$</span> into finite-measure pieces. Apply the finite result on every <span class="math" data-tex="$X_i\times Y_j$">$X_i\times Y_j$</span> and sum. Monotone convergence permits the sums through the integrals. The order of two nonnegative countable sums is immaterial, since both equal the supremum of the sums over finite subsets of pairs. This proves the sigma-finite version. For an absolutely integrable complex function, the section integrals of <span class="math" data-tex="$|h|$">$|h|$</span> are finite almost everywhere: a nonnegative function with finite integral can be infinite only on a null set, since its integral dominates every positive constant times the measure of that set. Define exceptional section integrals to be zero. Finally apply the nonnegative equality to <span class="math" data-tex="$|h|$">$|h|$</span>, then to the positive and negative parts of the real and imaginary parts of an absolutely integrable complex <span class="math" data-tex="$h$">$h$</span>, to prove the last assertion. This also justifies the triangle inequality under all iterated scalar integrals below.</p>
+<p>The earlier scalar foundations are <span class="unlinked">CF Section 1</span> and <a href="OA-FLOW-SC.html#sc-01">SC-01–05</a>: construction and normalization of Lebesgue measure, continuity of measures, simple integration and monotone/dominated convergence. These actual earlier proofs supply every scalar input of the additional interchange argument proved above.</p>
+<p><span id="OA-FLOW.DP.3"></span><a id="oa-flow.dp.3"></a></p>
+<h2 id="3-spectral-tails-reconstruct-the-state-and-its-mass">3. Spectral tails reconstruct the state and its mass</h2>
+<p>For <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>, set</p>
+<p><a id="equation-s1"></a></p>
+<p><span class="math math-display" data-tex="$$
+ e_\phi(a)=1_{(a,\infty)}(H_\phi),
+ \qquad f_\phi(a)=\tau(e_\phi(a)).
+ \tag{S1}
+$$">$$
+ e_\phi(a)=1_{(a,\infty)}(H_\phi),
+ \qquad f_\phi(a)=\tau(e_\phi(a)).
+ \tag{S1}
+$$</span></p>
+<p>The tail function is decreasing and continuous from the right. We first prove that its values are finite and that</p>
+<p><a id="equation-s2"></a></p>
+<p><span class="math math-display" data-tex="$$
+ f_\phi(\lambda a)=\lambda^{-1}f_\phi(a),
+ \qquad
+ \phi(x)=\int_\lambda^1\tau(\pi(x)e_\phi(a))\,da
+ \quad(x\in M).
+ \tag{S2}
+$$">$$
+ f_\phi(\lambda a)=\lambda^{-1}f_\phi(a),
+ \qquad
+ \phi(x)=\int_\lambda^1\tau(\pi(x)e_\phi(a))\,da
+ \quad(x\in M).
+ \tag{S2}
+$$</span></p>
+<p>For <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>, define <span class="math" data-tex="$g_a(0)=0$">$g_a(0)=0$</span> and <span class="math" data-tex="$g_a(t)=t^{-1}1_{(a,\infty)}(t)$">$g_a(t)=t^{-1}1_{(a,\infty)}(t)$</span>, <span class="math" data-tex="$t&gt;0$">$t&gt;0$</span>. Then</p>
+<p><a id="equation-s3"></a></p>
+<p><span class="math math-display" data-tex="$$
+ G_a(t)=\sum_{n\in\mathbb Z}g_a(\lambda^n t),
+ \quad G_a(0)=0.
+ \tag{S3}
+$$">$$
+ G_a(t)=\sum_{n\in\mathbb Z}g_a(\lambda^n t),
+ \quad G_a(0)=0.
+ \tag{S3}
+$$</span></p>
+<p>For <span class="math" data-tex="$\lambda a&lt;t\le a$">$\lambda a&lt;t\le a$</span>, only <span class="math" data-tex="$n\le-1$">$n\le-1$</span> contribute, so</p>
+<p><a id="equation-s4"></a></p>
+<p><span class="math math-display" data-tex="$$
+ G_a(t)=\frac{\lambda}{(1-\lambda)t}.
+ \tag{S4}
+$$">$$
+ G_a(t)=\frac{\lambda}{(1-\lambda)t}.
+ \tag{S4}
+$$</span></p>
+<p>Reindexing gives <span class="math" data-tex="$G_a(\lambda t)=G_a(t)$">$G_a(\lambda t)=G_a(t)$</span>. Thus <span class="math" data-tex="$0\le G_a\le ((1-\lambda)a)^{-1}$">$0\le G_a\le ((1-\lambda)a)^{-1}$</span>, and spectral calculus in (C4) gives</p>
+<p><a id="equation-s5"></a></p>
+<p><span class="math math-display" data-tex="$$
+ E(g_a(H_\phi))=G_a(H_\phi)\in\pi(M)_+.
+ \tag{S5}
+$$">$$
+ E(g_a(H_\phi))=G_a(H_\phi)\in\pi(M)_+.
+ \tag{S5}
+$$</span></p>
+<p>Pairing with the dual weight and using <span class="math" data-tex="$H_\phi g_a(H_\phi)=e_\phi(a)$">$H_\phi g_a(H_\phi)=e_\phi(a)$</span>, we obtain</p>
+<p><a id="equation-s6"></a></p>
+<p><span class="math math-display" data-tex="$$
+ f_\phi(a)=\phi\bigl(\pi^{-1}(G_a(H_\phi))\bigr)
+ \le\frac{\phi(1)}{(1-\lambda)a}&lt;\infty.
+ \tag{S6}
+$$">$$
+ f_\phi(a)=\phi\bigl(\pi^{-1}(G_a(H_\phi))\bigr)
+ \le\frac{\phi(1)}{(1-\lambda)a}&lt;\infty.
+ \tag{S6}
+$$</span></p>
+<p>For the identity with <span class="math" data-tex="$x$">$x$</span>, normal operator-valued-weight bimodularity on its finite ideal and tracial cyclicity give</p>
+<p><a id="equation-s7"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \tau(\pi(x)e_\phi(a))
+ =\widetilde\phi(\pi(x)g_a(H_\phi))
+ =\phi\bigl(x\pi^{-1}(G_a(H_\phi))\bigr).
+ \tag{S7}
+$$">$$
+ \tau(\pi(x)e_\phi(a))
+ =\widetilde\phi(\pi(x)g_a(H_\phi))
+ =\phi\bigl(x\pi^{-1}(G_a(H_\phi))\bigr).
+ \tag{S7}
+$$</span></p>
+<p>All expressions in (S7) are defined: <span class="math" data-tex="$g_a(H_\phi)$">$g_a(H_\phi)$</span> is positive with bounded <span class="math" data-tex="$E$">$E$</span>-value and therefore belongs to the finite linear algebra <span class="math" data-tex="$m_E$">$m_E$</span> of <a href="OA-FLOW-CC.html#oa-flow.cc.6">CC6</a>. That algebra is a <span class="math" data-tex="$\pi(M)$">$\pi(M)$</span>-bimodule. Because <span class="math" data-tex="$\phi$">$\phi$</span> is bounded, <span class="math" data-tex="$N_E\subset N_{\widetilde\phi}$">$N_E\subset N_{\widetilde\phi}$</span> and <span class="math" data-tex="$m_E\subset m_{\widetilde\phi}$">$m_E\subset m_{\widetilde\phi}$</span>; hence <span class="math" data-tex="$\pi(x)g_a(H_\phi)$">$\pi(x)g_a(H_\phi)$</span> lies in both finite linear domains before either extension is used. Equation (S6) makes <span class="math" data-tex="$e_\phi(a)$">$e_\phi(a)$</span> trace-integrable, and <span class="math" data-tex="$G_a(H_\phi)$">$G_a(H_\phi)$</span> is bounded. Polarization of the positive sandwiches and the justified trace cutoffs in <span class="unlinked">TD8</span> give (S7). No commutation of <span class="math" data-tex="$x$">$x$</span> with <span class="math" data-tex="$H_\phi$">$H_\phi$</span> is asserted.</p>
+<p>Tonelli and the substitutions <span class="math" data-tex="$b=\lambda^{-n}a$">$b=\lambda^{-n}a$</span> give, for <span class="math" data-tex="$t&gt;0$">$t&gt;0$</span>,</p>
+<p><a id="equation-s8"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \int_\lambda^1G_a(t)\,da
+ =\frac1t\sum_{n\in\mathbb Z}\lambda^{-n}
+   \int_\lambda^1 1_{a&lt;\lambda^n t}\,da
+ =\frac1t\int_0^\infty 1_{b&lt;t}\,db=1.
+ \tag{S8}
+$$">$$
+ \int_\lambda^1G_a(t)\,da
+ =\frac1t\sum_{n\in\mathbb Z}\lambda^{-n}
+   \int_\lambda^1 1_{a&lt;\lambda^n t}\,da
+ =\frac1t\int_0^\infty 1_{b&lt;t}\,db=1.
+ \tag{S8}
+$$</span></p>
+<p>The intervals <span class="math" data-tex="$\lambda^{-n}[\lambda,1]$">$\lambda^{-n}[\lambda,1]$</span> tile <span class="math" data-tex="$(0,\infty)$">$(0,\infty)$</span> up to endpoints. For <span class="math" data-tex="$t=0$">$t=0$</span> the integral is zero. Normal spectral integration therefore gives <span class="math" data-tex="$\int_\lambda^1G_a(H_\phi)\,da=s(H_\phi)$">$\int_\lambda^1G_a(H_\phi)\,da=s(H_\phi)$</span>. Integrating (S7) proves the state reconstruction in (S2); absolute integrability follows from</p>
+<p><span class="math math-display" data-tex="$$
+ |\tau(\pi(x)e_\phi(a))|\le\|x\|f_\phi(a).
+$$">$$
+ |\tau(\pi(x)e_\phi(a))|\le\|x\|f_\phi(a).
+$$</span></p>
+<p>The scaling in (S2) is <span class="math" data-tex="$\beta(e_\phi(a))=e_\phi(a/\lambda)$">$\beta(e_\phi(a))=e_\phi(a/\lambda)$</span> followed by <span class="math" data-tex="$\tau\beta=\lambda\tau$">$\tau\beta=\lambda\tau$</span>. In particular</p>
+<p><a id="equation-s9"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \int_\lambda^1 f_\phi(a)\,da=\phi(1).
+ \tag{S9}
+$$">$$
+ \int_\lambda^1 f_\phi(a)\,da=\phi(1).
+ \tag{S9}
+$$</span></p>
+<p>The same calculation applies to a normal semifinite weight whose tails on <span class="math" data-tex="$[\lambda,1]$">$[\lambda,1]$</span> are finite and integrable, and then proves its value at <span class="math" data-tex="$1$">$1$</span> is that integral. This fact is used only to show the faithfully descended weight in §6 is a finite state.</p>
+<p><span id="OA-FLOW.DP.4"></span><a id="oa-flow.dp.4"></a></p>
+<h2 id="4-a-lower-bound-valid-for-every-unitary">4. A lower bound valid for every unitary</h2>
+<p>If positive affiliated operators <span class="math" data-tex="$H\le K$">$H\le K$</span> have finite trace tails, then</p>
+<p><a id="equation-s10"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \tau(1_{(a,\infty)}(H))\le\tau(1_{(a,\infty)}(K)).
+ \tag{S10}
+$$">$$
+ \tau(1_{(a,\infty)}(H))\le\tau(1_{(a,\infty)}(K)).
+ \tag{S10}
+$$</span></p>
+<p>This is a rank comparison, not an assertion that their spectral projections are ordered. To prove it, suppose the first trace were larger. Cut its projection further at a finite upper spectral bound, obtaining <span class="math" data-tex="$e=1_{(a,b]}(H)$">$e=1_{(a,b]}(H)$</span> with <span class="math" data-tex="$\tau(e)&gt;\tau(q)$">$\tau(e)&gt;\tau(q)$</span>, where <span class="math" data-tex="$q=1_{(a,\infty)}(K)$">$q=1_{(a,\infty)}(K)$</span>. The polar decomposition of <span class="math" data-tex="$qe$">$qe$</span> identifies its initial projection <span class="math" data-tex="$e-e\wedge(1-q)$">$e-e\wedge(1-q)$</span> with a subprojection of <span class="math" data-tex="$q$">$q$</span>. Therefore</p>
+<p><span class="math math-display" data-tex="$$
+ \tau(e-e\wedge(1-q))\le\tau(q)&lt;\tau(e).
+$$">$$
+ \tau(e-e\wedge(1-q))\le\tau(q)&lt;\tau(e).
+$$</span></p>
+<p>Thus <span class="math" data-tex="$e\wedge(1-q)\ne0$">$e\wedge(1-q)\ne0$</span>. A nonzero vector in this intersection has finite <span class="math" data-tex="$H$">$H$</span>-energy strictly greater than <span class="math" data-tex="$a\|\xi\|^2$">$a\|\xi\|^2$</span>, and <span class="math" data-tex="$K$">$K$</span>-energy at most <span class="math" data-tex="$a\|\xi\|^2$">$a\|\xi\|^2$</span>, contrary to the form order. The upper cutoff and the low spectral subspace ensure membership in both form domains. This proves (S10).</p>
+<p><a id="normal-functional-jordan"></a></p>
+<p>We next prove the normal-functional decomposition needed for a common majorant. The earlier proofs are <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP-4–6</a> for predual duality and normal compressed functionals, <span class="unlinked">ST-1</span> for weak-star compactness, <a href="OA-FLOW-SF.html#oa-flow.sf.sb4">SB-4–6</a> for bounded spectral calculus, <a href="OA-FLOW-SF.html#oa-flow.sf.sf2">SF-2</a> for normal continuity on bounded strong limits, <span class="unlinked">CF-3</span> for differentiating bounded exponential series, and <a href="OA-FLOW-GNS.html#gns-lemma-2-1">GNS Lemmas 2.1–2.2 and Theorem 4.1</a> for positive-functional Cauchy–Schwarz and its norm.</p>
+<p>Let <span class="math" data-tex="$\delta\in M_*$">$\delta\in M_*$</span> be self-adjoint. The order interval <span class="math" data-tex="$[0,1]$">$[0,1]$</span> is weak-star closed, since normal vector functionals define its positivity inequalities. It is therefore compact. Let <span class="math" data-tex="$a\in[0,1]$">$a\in[0,1]$</span> maximize <span class="math" data-tex="$\delta(a)$">$\delta(a)$</span>, and write this maximum as <span class="math" data-tex="$\alpha$">$\alpha$</span>. Put <span class="math" data-tex="$p=1_{\{1\}}(a)$">$p=1_{\{1\}}(a)$</span>.</p>
+<p>For <span class="math" data-tex="$0&lt;\varepsilon&lt;1/2$">$0&lt;\varepsilon&lt;1/2$</span>, set <span class="math" data-tex="$r_\varepsilon=1_{[\varepsilon,1-\varepsilon]}(a)$">$r_\varepsilon=1_{[\varepsilon,1-\varepsilon]}(a)$</span> and <span class="math" data-tex="$b_\varepsilon=ar_\varepsilon$">$b_\varepsilon=ar_\varepsilon$</span>. Spectral calculus shows that <span class="math" data-tex="$a\pm t b_\varepsilon\in[0,1]$">$a\pm t b_\varepsilon\in[0,1]$</span> for <span class="math" data-tex="$0&lt;t\le\varepsilon/2$">$0&lt;t\le\varepsilon/2$</span>. Maximality forces <span class="math" data-tex="$\delta(b_\varepsilon)=0$">$\delta(b_\varepsilon)=0$</span>. As <span class="math" data-tex="$\varepsilon\downarrow0$">$\varepsilon\downarrow0$</span>, <span class="math" data-tex="$b_\varepsilon$">$b_\varepsilon$</span> converges strongly to <span class="math" data-tex="$a-p$">$a-p$</span>. Normality therefore gives <span class="math" data-tex="$\delta(p)=\delta(a)=\alpha$">$\delta(p)=\delta(a)=\alpha$</span>.</p>
+<p>Put <span class="math" data-tex="$q=1-p$">$q=1-p$</span>. If <span class="math" data-tex="$0\le b\le p$">$0\le b\le p$</span>, then <span class="math" data-tex="$p-b\in[0,1]$">$p-b\in[0,1]$</span>, so <span class="math" data-tex="$\delta(b)\ge0$">$\delta(b)\ge0$</span>. If <span class="math" data-tex="$0\le c\le q$">$0\le c\le q$</span>, then <span class="math" data-tex="$p+c\in[0,1]$">$p+c\in[0,1]$</span>, so <span class="math" data-tex="$\delta(c)\le0$">$\delta(c)\le0$</span>. We also need the mixed corners to vanish. For every bounded self-adjoint <span class="math" data-tex="$h$">$h$</span>, the projection</p>
+<p><span class="math math-display" data-tex="$$
+ p_t=e^{ith}pe^{-ith}
+$$">$$
+ p_t=e^{ith}pe^{-ith}
+$$</span></p>
+<p>belongs to <span class="math" data-tex="$[0,1]$">$[0,1]$</span>, so the differentiable real function <span class="math" data-tex="$\delta(p_t)$">$\delta(p_t)$</span> has a maximum at zero. Its derivative gives <span class="math" data-tex="$\delta(i[h,p])=0$">$\delta(i[h,p])=0$</span>. Given <span class="math" data-tex="$z=pxq$">$z=pxq$</span>, use <span class="math" data-tex="$h=z+z^*$">$h=z+z^*$</span> and <span class="math" data-tex="$h=i(z-z^*)$">$h=i(z-z^*)$</span>. The two resulting identities respectively force the imaginary and real parts of <span class="math" data-tex="$\delta(z)$">$\delta(z)$</span> to vanish. Hence <span class="math" data-tex="$\delta(pxq)=\delta(qxp)=0$">$\delta(pxq)=\delta(qxp)=0$</span> for every <span class="math" data-tex="$x$">$x$</span>.</p>
+<p>Define bounded normal positive functionals</p>
+<p><span class="math math-display" data-tex="$$
+ \delta_+(x)=\delta(pxp),\qquad
+ \delta_-(x)=-\delta(qxq).
+$$">$$
+ \delta_+(x)=\delta(pxp),\qquad
+ \delta_-(x)=-\delta(qxq).
+$$</span></p>
+<p>The previous paragraphs prove positivity and <span class="math" data-tex="$\delta=\delta_+-\delta_-$">$\delta=\delta_+-\delta_-$</span>. For a positive functional <span class="math" data-tex="$\eta$">$\eta$</span>, Cauchy–Schwarz gives <span class="math" data-tex="$|\eta(x)|^2\le\eta(1)\eta(x^*x)\le\eta(1)^2\|x\|^2$">$|\eta(x)|^2\le\eta(1)\eta(x^*x)\le\eta(1)^2\|x\|^2$</span>, so <span class="math" data-tex="$\|\eta\|=\eta(1)$">$\|\eta\|=\eta(1)$</span>. The triangle inequality consequently gives <span class="math" data-tex="$\|\delta\|\le\delta_+(1)+\delta_-(1)$">$\|\delta\|\le\delta_+(1)+\delta_-(1)$</span>. Testing on the self-adjoint contraction <span class="math" data-tex="$p-q$">$p-q$</span> gives the reverse inequality. Thus</p>
+<p><span class="math math-display" data-tex="$$
+ \|\delta\|=\delta_+(1)+\delta_-(1).
+$$">$$
+ \|\delta\|=\delta_+(1)+\delta_-(1).
+$$</span></p>
+<p>No polar-decomposition or Jordan theorem for normal functionals has been imported; the specific decomposition and norm identity have just been proved. Let <span class="math" data-tex="$|\delta|=\delta_++\delta_-$">$|\delta|=\delta_++\delta_-$</span>. For <span class="math" data-tex="$\delta=\phi-\psi$">$\delta=\phi-\psi$</span>, put</p>
+<p><a id="equation-s11"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \chi=\psi+\delta_+=\phi+\delta_-
+ =\tfrac12(\phi+\psi+|\delta|).
+ \tag{S11}
+$$">$$
+ \chi=\psi+\delta_+=\phi+\delta_-
+ =\tfrac12(\phi+\psi+|\delta|).
+ \tag{S11}
+$$</span></p>
+<p>Then <span class="math" data-tex="$\chi\ge\phi,\psi$">$\chi\ge\phi,\psi$</span> and <span class="math" data-tex="$2\chi(1)-\phi(1)-\psi(1)=\|\phi-\psi\|$">$2\chi(1)-\phi(1)-\psi(1)=\|\phi-\psi\|$</span>. Density order and (S10) give <span class="math" data-tex="$f_\chi\ge f_\phi,f_\psi$">$f_\chi\ge f_\phi,f_\psi$</span>, whence</p>
+<p><a id="equation-s12"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \int_\lambda^1|f_\phi-f_\psi|\,da
+ \le\int_\lambda^1(2f_\chi-f_\phi-f_\psi)\,da
+ =\|\phi-\psi\|.
+ \tag{S12}
+$$">$$
+ \int_\lambda^1|f_\phi-f_\psi|\,da
+ \le\int_\lambda^1(2f_\chi-f_\phi-f_\psi)\,da
+ =\|\phi-\psi\|.
+ \tag{S12}
+$$</span></p>
+<p>This lower bound uses the explicitly proved decomposition above. The compactness and spectral/topological facts have the complete earlier proofs linked before the decomposition; the tracial density-order step has the complete earlier proof <span class="unlinked">TD5</span>, applied to the trace constructed under Section 2's proved compact-core construction.</p>
+<p>Bimodularity and trace cyclicity show <span class="math" data-tex="$H_{\phi^u}=\pi(u)H_\phi\pi(u)^*$">$H_{\phi^u}=\pi(u)H_\phi\pi(u)^*$</span>, so <span class="math" data-tex="$f_{\phi^u}=f_\phi$">$f_{\phi^u}=f_\phi$</span>. Applying (S12) to every conjugate proves</p>
+<p><a id="equation-s13"></a></p>
+<p><span class="math math-display" data-tex="$$
+ d(\phi,\psi)\ge\int_\lambda^1|f_\phi(a)-f_\psi(a)|\,da.
+ \tag{S13}
+$$">$$
+ d(\phi,\psi)\ge\int_\lambda^1|f_\phi(a)-f_\psi(a)|\,da.
+ \tag{S13}
+$$</span></p>
+<p><span id="OA-FLOW.DP.5"></span><a id="oa-flow.dp.5"></a></p>
+<h2 id="5-equal-tails-give-zero-orbit-distance-including-nonfaithful-states">5. Equal tails give zero orbit distance, including nonfaithful states</h2>
+<p>Assume <span class="math" data-tex="$f_\phi=f_\psi$">$f_\phi=f_\psi$</span> for two states. Fix <span class="math" data-tex="$m\ge1$">$m\ge1$</span>, and put <span class="math" data-tex="$r=\lambda^{1/m}$">$r=\lambda^{1/m}$</span>. Define finite-trace bands</p>
+<p><a id="equation-s14"></a></p>
+<p><span class="math math-display" data-tex="$$
+ a_n=1_{(r^{n+1},r^n]}(H_\phi),
+ \quad b_n=1_{(r^{n+1},r^n]}(H_\psi),\qquad n\in\mathbb Z.
+ \tag{S14}
+$$">$$
+ a_n=1_{(r^{n+1},r^n]}(H_\phi),
+ \quad b_n=1_{(r^{n+1},r^n]}(H_\psi),\qquad n\in\mathbb Z.
+ \tag{S14}
+$$</span></p>
+<p>Their traces agree, since each is the difference of two tail traces. Equal finite-trace projections in a semifinite factor are equivalent. Choose <span class="math" data-tex="$v_j^*v_j=a_j$">$v_j^*v_j=a_j$</span>, <span class="math" data-tex="$v_jv_j^*=b_j$">$v_jv_j^*=b_j$</span>, <span class="math" data-tex="$0\le j&lt;m$">$0\le j&lt;m$</span>, allowing <span class="math" data-tex="$v_j=0$">$v_j=0$</span>. Since <span class="math" data-tex="$\beta(a_n)=a_{n-m}$">$\beta(a_n)=a_{n-m}$</span>, <span class="math" data-tex="$\beta(b_n)=b_{n-m}$">$\beta(b_n)=b_{n-m}$</span>, use the consistent extension</p>
+<p><a id="equation-s15"></a></p>
+<p><span class="math math-display" data-tex="$$
+ v_{j-km}=\beta^k(v_j)\qquad(k\in\mathbb Z, 0\le j&lt;m).
+ \tag{S15}
+$$">$$
+ v_{j-km}=\beta^k(v_j)\qquad(k\in\mathbb Z, 0\le j&lt;m).
+ \tag{S15}
+$$</span></p>
+<p>The sums of the separately orthogonal initial and final bands converge strongly to <span class="math" data-tex="$s(H_\phi)$">$s(H_\phi)$</span> and <span class="math" data-tex="$s(H_\psi)$">$s(H_\psi)$</span>. Consequently <span class="math" data-tex="$v=\sum_{n\in\mathbb Z}v_n$">$v=\sum_{n\in\mathbb Z}v_n$</span> converges strongly with its adjoint to a partial isometry. Reindexing gives <span class="math" data-tex="$\beta(v)=v$">$\beta(v)=v$</span>, so <span class="math" data-tex="$v=\pi(w)$">$v=\pi(w)$</span> for a partial isometry <span class="math" data-tex="$w\in M$">$w\in M$</span>, with <span class="math" data-tex="$w^*w=s\phi$">$w^*w=s\phi$</span> and <span class="math" data-tex="$ww^*=s\psi$">$ww^*=s\psi$</span>.</p>
+<p>On the band <span class="math" data-tex="$b_n$">$b_n$</span>, both <span class="math" data-tex="$vH_\phi v^*$">$vH_\phi v^*$</span> and <span class="math" data-tex="$H_\psi$">$H_\psi$</span> have spectrum in <span class="math" data-tex="$(r^{n+1},r^n]$">$(r^{n+1},r^n]$</span>. Comparing each with the scalar endpoints on that band, then summing their nonnegative quadratic forms, yields</p>
+<p><a id="equation-s16"></a></p>
+<p><span class="math math-display" data-tex="$$
+ rH_\psi\le vH_\phi v^*\le r^{-1}H_\psi.
+ \tag{S16}
+$$">$$
+ rH_\psi\le vH_\phi v^*\le r^{-1}H_\psi.
+ \tag{S16}
+$$</span></p>
+<p>The zero support complements are included. The density <span class="math" data-tex="$vH_\phi v^*$">$vH_\phi v^*$</span> is the dual density of <span class="math" data-tex="$\phi^w(x)=\phi(w^*xw)$">$\phi^w(x)=\phi(w^*xw)$</span>. We prove order reflection directly for this <span class="math" data-tex="$E$">$E$</span>, without importing a general operator-valued-weight surjectivity theorem. Fix a faithful normal state <span class="math" data-tex="$\rho$">$\rho$</span>. Its density is nonsingular. Formula (S4) and periodicity give</p>
+<p><span class="math math-display" data-tex="$$
+ \frac{\lambda}{(1-\lambda)a}\,1
+ \le G_a(H_\rho)\le\frac1{(1-\lambda)a}\,1.
+$$">$$
+ \frac{\lambda}{(1-\lambda)a}\,1
+ \le G_a(H_\rho)\le\frac1{(1-\lambda)a}\,1.
+$$</span></p>
+<p>Thus <span class="math" data-tex="$b=\pi^{-1}(G_a(H_\rho))$">$b=\pi^{-1}(G_a(H_\rho))$</span> is bounded and invertible. Put</p>
+<p><span class="math math-display" data-tex="$$
+ y=\pi(b^{-1/2})g_a(H_\rho)\pi(b^{-1/2})\ge0.
+$$">$$
+ y=\pi(b^{-1/2})g_a(H_\rho)\pi(b^{-1/2})\ge0.
+$$</span></p>
+<p>By (S5) and bimodularity, <span class="math" data-tex="$E(y)=1$">$E(y)=1$</span>. For every <span class="math" data-tex="$x\in M_+$">$x\in M_+$</span>, the bounded positive operator <span class="math" data-tex="$y_x=\pi(x^{1/2})y\pi(x^{1/2})$">$y_x=\pi(x^{1/2})y\pi(x^{1/2})$</span> satisfies <span class="math" data-tex="$E(y_x)=\pi(x)$">$E(y_x)=\pi(x)$</span>. Test the inequality between dual weights on <span class="math" data-tex="$y_x$">$y_x$</span>. This reflects it to the coefficient functionals, including at zero supports. Thus (S16) implies</p>
+<p><a id="equation-s17"></a></p>
+<p><span class="math math-display" data-tex="$$
+ r\psi\le\phi^w\le r^{-1}\psi.
+ \tag{S17}
+$$">$$
+ r\psi\le\phi^w\le r^{-1}\psi.
+ \tag{S17}
+$$</span></p>
+<p>This argument never restricts the dual weights to <span class="math" data-tex="$\pi(M)$">$\pi(M)$</span>, where their values can all be infinite. It constructs the required finite preimages instead.</p>
+<p>Set <span class="math" data-tex="$c=r^{-1}-1$">$c=r^{-1}-1$</span>. Since <span class="math" data-tex="$1-r\le c$">$1-r\le c$</span>, (S17) gives <span class="math" data-tex="$-c\psi\le\phi^w-\psi\le c\psi$">$-c\psi\le\phi^w-\psi\le c\psi$</span>. For any self-adjoint contraction <span class="math" data-tex="$x=2a-1$">$x=2a-1$</span>, <span class="math" data-tex="$0\le a\le1$">$0\le a\le1$</span>,</p>
+<p><span class="math math-display" data-tex="$$
+ |(\phi^w-\psi)(x)|
+ \le c\psi(a)+c\psi(1-a)=c.
+$$">$$
+ |(\phi^w-\psi)(x)|
+ \le c\psi(a)+c\psi(1-a)=c.
+$$</span></p>
+<p>The norm of a self-adjoint functional is its supremum on self-adjoint contractions: multiply any tested scalar value by a phase and take the self-adjoint real part of the tested operator. Hence</p>
+<p><a id="equation-s18"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \|\phi^w-\psi\|\le r^{-1}-1.
+ \tag{S18}
+$$">$$
+ \|\phi^w-\psi\|\le r^{-1}-1.
+ \tag{S18}
+$$</span></p>
+<p>We still need actual unitaries. Put <span class="math" data-tex="$p=w^*w$">$p=w^*w$</span>, <span class="math" data-tex="$q=ww^*$">$q=ww^*$</span>. In a countably decomposable type III factor, every nonzero projection is properly infinite and any two nonzero projections are equivalent. Choose nonzero projections <span class="math" data-tex="$t_k\le p$">$t_k\le p$</span> decreasing strongly to zero; for example use the tails of a countable orthogonal filling decomposition of <span class="math" data-tex="$p$">$p$</span>. Both</p>
+<p><span class="math math-display" data-tex="$$
+ 1-p+t_k,\qquad 1-q+wt_kw^*
+$$">$$
+ 1-p+t_k,\qquad 1-q+wt_kw^*
+$$</span></p>
+<p>are nonzero. Choose <span class="math" data-tex="$z_k$">$z_k$</span> with those initial and final projections, and set</p>
+<p><a id="equation-s19"></a></p>
+<p><span class="math math-display" data-tex="$$
+ u_k=w(p-t_k)+z_k.
+ \tag{S19}
+$$">$$
+ u_k=w(p-t_k)+z_k.
+ \tag{S19}
+$$</span></p>
+<p>Orthogonality gives <span class="math" data-tex="$u_k^*u_k=u_ku_k^*=1$">$u_k^*u_k=u_ku_k^*=1$</span>. On the support of <span class="math" data-tex="$\phi$">$\phi$</span>, <span class="math" data-tex="$(u_k-w)p=(z_k-w)t_k$">$(u_k-w)p=(z_k-w)t_k$</span>, so</p>
+<p><span class="math math-display" data-tex="$$
+ \phi((u_k-w)^*(u_k-w))\le4\phi(t_k)\longrightarrow0.
+$$">$$
+ \phi((u_k-w)^*(u_k-w))\le4\phi(t_k)\longrightarrow0.
+$$</span></p>
+<p>Expanding the difference and using Cauchy–Schwarz for <span class="math" data-tex="$\phi$">$\phi$</span> proves</p>
+<p><a id="equation-s20"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \|\phi^{u_k}-\phi^w\|\le4\sqrt{\phi(t_k)}\longrightarrow0.
+ \tag{S20}
+$$">$$
+ \|\phi^{u_k}-\phi^w\|\le4\sqrt{\phi(t_k)}\longrightarrow0.
+ \tag{S20}
+$$</span></p>
+<p>Thus <span class="math" data-tex="$d(\phi,\psi)\le r^{-1}-1$">$d(\phi,\psi)\le r^{-1}-1$</span>. Letting <span class="math" data-tex="$m\to\infty$">$m\to\infty$</span> proves <span class="math" data-tex="$d(\phi,\psi)=0$">$d(\phi,\psi)=0$</span>. No faithfulness of either input state was used.</p>
+<p><span id="OA-FLOW.DP.6"></span><a id="oa-flow.dp.6"></a></p>
+<h2 id="6-a-filling-equivariant-flag-and-faithful-realizations">6. A filling equivariant flag and faithful realizations</h2>
+<p>Let <span class="math" data-tex="$\rho$">$\rho$</span> be a faithful normal state on <span class="math" data-tex="$M$">$M$</span>. Here is the elementary separability step: choose a countable norm-dense sequence of normal states <span class="math" data-tex="$\rho_n$">$\rho_n$</span> and put <span class="math" data-tex="$\rho=\sum_{n=1}^{\infty}2^{-n}\rho_n$">$\rho=\sum_{n=1}^{\infty}2^{-n}\rho_n$</span>. The state space is nonempty and norm separable as a subset of the separable predual. If <span class="math" data-tex="$x\in M_+$">$x\in M_+$</span> is nonzero, a normal vector state detects <span class="math" data-tex="$x$">$x$</span>, and some norm approximation <span class="math" data-tex="$\rho_n$">$\rho_n$</span> also has <span class="math" data-tex="$\rho_n(x)&gt;0$">$\rho_n(x)&gt;0$</span>. Hence <span class="math" data-tex="$\rho(x)&gt;0$">$\rho(x)&gt;0$</span>, proving faithfulness. This uses only the predual and normal vector-functional interface, rather than a classification theorem.</p>
+<p>By (C6) and (S6), <span class="math" data-tex="$H_\rho$">$H_\rho$</span> is nonsingular with finite tails. Choose <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span> with <span class="math" data-tex="$e=1_{(c,\infty)}(H_\rho)\ne0$">$e=1_{(c,\infty)}(H_\rho)\ne0$</span>, and put <span class="math" data-tex="$A_0=\tau(e)$">$A_0=\tau(e)$</span>. Then</p>
+<p><a id="equation-f1"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \beta(e)=1_{(c/\lambda,\infty)}(H_\rho)\le e,
+ \quad \tau(e-\beta(e))=(1-\lambda)A_0&gt;0,
+ \quad \bigvee_{n\in\mathbb Z}\beta^n(e)=1.
+ \tag{F1}
+$$">$$
+ \beta(e)=1_{(c/\lambda,\infty)}(H_\rho)\le e,
+ \quad \tau(e-\beta(e))=(1-\lambda)A_0&gt;0,
+ \quad \bigvee_{n\in\mathbb Z}\beta^n(e)=1.
+ \tag{F1}
+$$</span></p>
+<p>The last identity uses nonsingularity, since those thresholds tend to zero in one direction. This filling property avoids a nonfaithful descent theorem.</p>
+<p>In the type II finite corner <span class="math" data-tex="$fBf$">$fBf$</span>, <span class="math" data-tex="$f=e-\beta(e)$">$f=e-\beta(e)$</span>, construct a continuous nested flag <span class="math" data-tex="$q(t)$">$q(t)$</span>, <span class="math" data-tex="$0\le t\le1$">$0\le t\le1$</span>, with <span class="math" data-tex="$\tau(q(t))=(1-\lambda)A_0t$">$\tau(q(t))=(1-\lambda)A_0t$</span>, <span class="math" data-tex="$q(0)=0$">$q(0)=0$</span>, <span class="math" data-tex="$q(1)=f$">$q(1)=f$</span>. We give the dimension step instead of importing it. Every nonzero finite projection in a type II factor splits into two nonzero projections. Repeatedly choosing the smaller-trace piece gives nonzero projections of arbitrarily small trace. Given <span class="math" data-tex="$0&lt;c&lt;\tau(g)$">$0&lt;c&lt;\tau(g)$</span>, partially order the projections <span class="math" data-tex="$h\le g$">$h\le g$</span> with <span class="math" data-tex="$\tau(h)\le c$">$\tau(h)\le c$</span> by inclusion. Every chain has its projection supremum in that set, by trace normality. A maximal member exists. If its trace were less than <span class="math" data-tex="$c$">$c$</span>, a sufficiently small nonzero piece of <span class="math" data-tex="$g-h$">$g-h$</span> could be added, a contradiction. Thus a projection of trace exactly <span class="math" data-tex="$c$">$c$</span> exists.</p>
+<p>Repeatedly split every dyadic interval projection into two equal-trace pieces. At dyadic <span class="math" data-tex="$t$">$t$</span>, sum the pieces preceding <span class="math" data-tex="$t$">$t$</span>. At general <span class="math" data-tex="$t$">$t$</span>, take the strong supremum over dyadic <span class="math" data-tex="$s&lt;t$">$s&lt;t$</span>. Trace normality gives the asserted trace, nesting and continuity. In particular <span class="math" data-tex="$\|q(t)-q(s)\|_1=(1-\lambda)A_0|t-s|$">$\|q(t)-q(s)\|_1=(1-\lambda)A_0|t-s|$</span>. Equal-trace finite projections, used in §5, are equivalent by the polar and central-support bridge proofs <span class="unlinked">PC-1–2</span>: a maximal partial isometry leaves two residual projections; if both were nonzero factoriality supplies another bridge, while equality of their finite traces prevents precisely one residual projection from being nonzero.</p>
+<p>On <span class="math" data-tex="$[\lambda A_0,A_0]$">$[\lambda A_0,A_0]$</span>, put</p>
+<p><a id="equation-f2"></a></p>
+<p><span class="math math-display" data-tex="$$
+ p(s)=\beta(e)+q\left(\frac{s-\lambda A_0}{(1-\lambda)A_0}\right).
+ \tag{F2}
+$$">$$
+ p(s)=\beta(e)+q\left(\frac{s-\lambda A_0}{(1-\lambda)A_0}\right).
+ \tag{F2}
+$$</span></p>
+<p>Extend to <span class="math" data-tex="$(0,\infty)$">$(0,\infty)$</span> by <span class="math" data-tex="$p(s)=\beta^n(p(\lambda^{-n}s))$">$p(s)=\beta^n(p(\lambda^{-n}s))$</span> when <span class="math" data-tex="$\lambda^{n+1}A_0&lt;s\le\lambda^nA_0$">$\lambda^{n+1}A_0&lt;s\le\lambda^nA_0$</span>, and put <span class="math" data-tex="$p(0)=0$">$p(0)=0$</span>. The endpoints in (F2) agree across neighboring intervals. We obtain</p>
+<p><a id="equation-f3"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \tau(p(s))=s,\quad p(s)\le p(t)\ (s\le t),\quad
+ \beta(p(s))=p(\lambda s),\quad
+ \|p(s)-p(t)\|_1=|s-t|.
+ \tag{F3}
+$$">$$
+ \tau(p(s))=s,\quad p(s)\le p(t)\ (s\le t),\quad
+ \beta(p(s))=p(\lambda s),\quad
+ \|p(s)-p(t)\|_1=|s-t|.
+ \tag{F3}
+$$</span></p>
+<p>Moreover <span class="math" data-tex="$p(s)\uparrow1$">$p(s)\uparrow1$</span> as <span class="math" data-tex="$s\to\infty$">$s\to\infty$</span>, by (F1), and <span class="math" data-tex="$p(s)\downarrow0$">$p(s)\downarrow0$</span> as <span class="math" data-tex="$s\downarrow0$">$s\downarrow0$</span>, by its trace. Trace of nested differences proves strong continuity at every finite <span class="math" data-tex="$s$">$s$</span>. Thus this flag fills <span class="math" data-tex="$B$">$B$</span>, rather than a proper supported corner.</p>
+<p>Let <span class="math" data-tex="$f:(0,\infty)\to[0,\infty)$">$f:(0,\infty)\to[0,\infty)$</span> be decreasing, right-continuous, finite-valued, with</p>
+<p><a id="equation-f4"></a></p>
+<p><span class="math math-display" data-tex="$$
+ f(\lambda t)=\lambda^{-1}f(t),\qquad \int_\lambda^1f(t)\,dt=1.
+ \tag{F4}
+$$">$$
+ f(\lambda t)=\lambda^{-1}f(t),\qquad \int_\lambda^1f(t)\,dt=1.
+ \tag{F4}
+$$</span></p>
+<p>It is strictly positive everywhere: a zero and monotonicity, transported by all powers of <span class="math" data-tex="$\lambda$">$\lambda$</span>, would make it identically zero. Scaling gives <span class="math" data-tex="$f(t)\to0$">$f(t)\to0$</span> at infinity and <span class="math" data-tex="$f(t)\to\infty$">$f(t)\to\infty$</span> at zero. The decreasing strongly right-continuous family <span class="math" data-tex="$p(f(t))$">$p(f(t))$</span> therefore is the family of tails of a unique nonsingular positive self-adjoint affiliated operator <span class="math" data-tex="$H_f$">$H_f$</span>: define its spectral resolution by <span class="math" data-tex="$1_{[0,t]}(H_f)=1-p(f(t))$">$1_{[0,t]}(H_f)=1-p(f(t))$</span>. This tends to zero at zero and to one at infinity, so there is neither a kernel nor an infinite spectral part.</p>
+<h3 id="the-spectral-operator-is-constructed-on-its-full-domain">The spectral operator is constructed on its full domain</h3>
+<p>Apply the following local construction to the decreasing tail family <span class="math" data-tex="$P(t)=p(f(t))$">$P(t)=p(f(t))$</span>. Its hypotheses have just been proved.</p>
+<p><a id="spectral-tail-construction"></a></p>
+<p>Put <span class="math" data-tex="\(F(0)=0,F(1)=I\)">\(F(0)=0,F(1)=I\)</span>, and, for <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>, put</p>
+<p><a id="equation-t1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ F(s)=I-P\!\left(\frac{s}{1-s}\right).
+ \tag{T1}
+\]">\[
+ F(s)=I-P\!\left(\frac{s}{1-s}\right).
+ \tag{T1}
+\]</span>
+These projections increase and commute. They are strongly continuous from the right on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>; moreover <span class="math" data-tex="\(F(s)\uparrow I\)">\(F(s)\uparrow I\)</span> as <span class="math" data-tex="\(s\uparrow1\)">\(s\uparrow1\)</span>. For <span class="math" data-tex="\(N=2^k\)">\(N=2^k\)</span>, the projections</p>
+<p><a id="equation-t2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ E_{k,j}=F(j/N)-F((j-1)/N),\qquad
+ A_k=\sum_{j=1}^{N}\frac{j}{N}E_{k,j}
+ \quad(1\le j\le N)
+ \tag{T2}
+\]">\[
+ E_{k,j}=F(j/N)-F((j-1)/N),\qquad
+ A_k=\sum_{j=1}^{N}\frac{j}{N}E_{k,j}
+ \quad(1\le j\le N)
+ \tag{T2}
+\]</span>
+are orthogonal, have sum <span class="math" data-tex="\(I\)">\(I\)</span>, and give a positive contraction <span class="math" data-tex="\(A_k\in B\)">\(A_k\in B\)</span>. Every <span class="math" data-tex="\(F(s)\)">\(F(s)\)</span> commutes with <span class="math" data-tex="\(A_k\)">\(A_k\)</span>. A finer dyadic band lies in one coarse band, and its right endpoint differs from that coarse right endpoint by at most <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span>. Orthogonality on the common refinement consequently proves</p>
+<p><a id="equation-t3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ 0\le A_k-A_l\le2^{-k}I\quad(l\ge k),\qquad
+ A=\lim_k A_k\in B,\quad
+ 0\le A_k-A\le2^{-k}I.
+ \tag{T3}
+\]">\[
+ 0\le A_k-A_l\le2^{-k}I\quad(l\ge k),\qquad
+ A=\lim_k A_k\in B,\quad
+ 0\le A_k-A\le2^{-k}I.
+ \tag{T3}
+\]</span>
+Bounded-operator norm completeness is proved in the corresponding paragraph of <span class="unlinked">CF-8</span>; the commutant characterization shows that its limit still belongs to <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>We identify every spectral threshold of this bounded <span class="math" data-tex="\(A\)">\(A\)</span>. For <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>, a band meeting <span class="math" data-tex="\(F(s)K\)">\(F(s)K\)</span> has right endpoint at most <span class="math" data-tex="\(s+2^{-k}\)">\(s+2^{-k}\)</span>, so <span class="math" data-tex="\(A|_{F(s)K}\le sI\)">\(A|_{F(s)K}\le sI\)</span> after taking the norm limit. A band meeting <span class="math" data-tex="\((I-F(s+\epsilon))K\)">\((I-F(s+\epsilon))K\)</span>, where <span class="math" data-tex="\(0&lt;\epsilon&lt;1-s\)">\(0&lt;\epsilon&lt;1-s\)</span>, has right endpoint greater than <span class="math" data-tex="\(s+\epsilon\)">\(s+\epsilon\)</span>, so <span class="math" data-tex="\(A\)">\(A\)</span> on that subspace is at least <span class="math" data-tex="\((s+\epsilon)I\)">\((s+\epsilon)I\)</span>. All these subspaces reduce <span class="math" data-tex="\(A\)">\(A\)</span>. The bounded spectral integral now gives</p>
+<p><a id="equation-t4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ F(s)\le1_{[0,s]}(A)\le F(s+\epsilon).
+ \tag{T4}
+\]">\[
+ F(s)\le1_{[0,s]}(A)\le F(s+\epsilon).
+ \tag{T4}
+\]</span>
+For clarity, the first inequality follows because a nonzero spectral band above <span class="math" data-tex="\(s\)">\(s\)</span> inside <span class="math" data-tex="\(F(s)K\)">\(F(s)K\)</span> would have a strictly larger quadratic value than <span class="math" data-tex="\(s\|\xi\|^2\)">\(s\|\xi\|^2\)</span>; take a band at distance at least <span class="math" data-tex="\(1/n\)">\(1/n\)</span> and then its countable union. For the second inequality, a vector in <span class="math" data-tex="\(1_{[0,s]}(A)K\cap(I-F(s+\epsilon))K\)">\(1_{[0,s]}(A)K\cap(I-F(s+\epsilon))K\)</span> would have quadratic value both at most <span class="math" data-tex="\(s\|\xi\|^2\)">\(s\|\xi\|^2\)</span> and at least <span class="math" data-tex="\((s+\epsilon)\|\xi\|^2\)">\((s+\epsilon)\|\xi\|^2\)</span>. Commuting projections make a nonzero difference precisely such an intersection. Strong right continuity in (T4) proves</p>
+<p><a id="equation-t5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ 1_{[0,s]}(A)=F(s),\qquad
+ 1_{\{0\}}(A)=1_{\{1\}}(A)=0.
+ \tag{T5}
+\]">\[
+ 1_{[0,s]}(A)=F(s),\qquad
+ 1_{\{0\}}(A)=1_{\{1\}}(A)=0.
+ \tag{T5}
+\]</span>
+The endpoint equalities follow respectively by <span class="math" data-tex="\(s\downarrow0\)">\(s\downarrow0\)</span> and by the strong join as <span class="math" data-tex="\(s\uparrow1\)">\(s\uparrow1\)</span>.</p>
+<p>The finite Borel function <span class="math" data-tex="\(r\mapsto r/(1-r)\)">\(r\mapsto r/(1-r)\)</span> on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, assigned arbitrary finite values at the two null endpoint projections, therefore defines a nonsingular positive self-adjoint operator</p>
+<p><a id="equation-t6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ H=\frac{A}{1-A},\qquad
+ D(H)=\left\{\xi:\int_{(0,1)}\frac{r^2}{(1-r)^2}\,d\mu_\xi^A(r)&lt;\infty\right\},
+ \qquad 1_{(t,\infty)}(H)=P(t).
+ \tag{T6}
+\]">\[
+ H=\frac{A}{1-A},\qquad
+ D(H)=\left\{\xi:\int_{(0,1)}\frac{r^2}{(1-r)^2}\,d\mu_\xi^A(r)&lt;\infty\right\},
+ \qquad 1_{(t,\infty)}(H)=P(t).
+ \tag{T6}
+\]</span>
+Its spectral projections belong to <span class="math" data-tex="\(B\)">\(B\)</span>, so it is affiliated with <span class="math" data-tex="\(B\)">\(B\)</span>. Its domain is dense by bounded spectral cutoffs, it has zero kernel, and there is no infinite-value projection. More generally SF gives the exact domains of <span class="math" data-tex="\(H^z\)">\(H^z\)</span> and <span class="math" data-tex="\(\log H\)">\(\log H\)</span> by integrating <span class="math" data-tex="\((r/(1-r))^{2\operatorname{Re}z}\)">\((r/(1-r))^{2\operatorname{Re}z}\)</span> and <span class="math" data-tex="\(|\log(r/(1-r))|^2\)">\(|\log(r/(1-r))|^2\)</span>, respectively. All graph assertions are full domains, not merely equalities on cutoffs.</p>
+<p>Uniqueness also follows locally. If <span class="math" data-tex="\(H'\)">\(H'\)</span> has these same tails, the bounded transform <span class="math" data-tex="\(A'=H'/(1+H')\)">\(A'=H'/(1+H')\)</span> has spectral thresholds <span class="math" data-tex="\(F(s)\)">\(F(s)\)</span>. Its dyadic right-endpoint sums are exactly (T2), with uniform spectral error at most <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span>. Hence <span class="math" data-tex="\(A'=A\)">\(A'=A\)</span>, and the full Borel-domain formula recovers <span class="math" data-tex="\(H'=H\)">\(H'=H\)</span>. If a normal automorphism <span class="math" data-tex="\(\beta\)">\(\beta\)</span> satisfies <span class="math" data-tex="\(\beta(P(t))=P(t/c)\)">\(\beta(P(t))=P(t/c)\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, <a href="OA-FLOW-SF.html#oa-flow.sf1.normal-transport">SF-1 normal transport</a> and this uniqueness give <span class="math" data-tex="\(\beta(H)=cH\)">\(\beta(H)=cH\)</span>, including equality of the transported complete operator domains.</p>
+<p>Here <span class="math" data-tex="$\beta(P(t))=p(\lambda f(t))=p(f(t/\lambda))$">$\beta(P(t))=p(\lambda f(t))=p(f(t/\lambda))$</span> by (F3)–(F4). The final covariance clause of the construction applies with <span class="math" data-tex="$c=\lambda$">$c=\lambda$</span>. Thus equations (F3)–(F4) give</p>
+<p><a id="equation-f5"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \beta(H_f)=\lambda H_f,\qquad
+ \tau(H_f\,\cdot)\circ\beta=\tau(H_f\,\cdot).
+ \tag{F5}
+$$">$$
+ \beta(H_f)=\lambda H_f,\qquad
+ \tau(H_f\,\cdot)\circ\beta=\tau(H_f\,\cdot).
+ \tag{F5}
+$$</span></p>
+<p>This is a <strong>faithful</strong> normal semifinite weight. Faithful descent gives an n.s.f. weight <span class="math" data-tex="$\phi_f$">$\phi_f$</span> on <span class="math" data-tex="$M$">$M$</span> whose dual is <span class="math" data-tex="$\tau(H_f\,\cdot)$">$\tau(H_f\,\cdot)$</span>. We first verify boundedness before applying the bounded-functional reconstruction. Fix <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>. The bounded positive function <span class="math" data-tex="$g_a$">$g_a$</span> and its counting sum from §3 give</p>
+<p><a id="equation-f5a"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \phi_f\!\left(\pi^{-1}G_a(H_f)\right)
+ =\widetilde\phi_f(g_a(H_f))
+ =\tau\!\left(1_{(a,\infty)}(H_f)\right)
+ =f(a)&lt;\infty.
+ \tag{F5a}
+$$">$$
+ \phi_f\!\left(\pi^{-1}G_a(H_f)\right)
+ =\widetilde\phi_f(g_a(H_f))
+ =\tau\!\left(1_{(a,\infty)}(H_f)\right)
+ =f(a)&lt;\infty.
+ \tag{F5a}
+$$</span></p>
+<p>The nonsingularity of <span class="math" data-tex="$H_f$">$H_f$</span> and the formula (S4) and its multiplicative periodicity give</p>
+<p><a id="equation-f5b"></a></p>
+<p><span class="math math-display" data-tex="$$
+ G_a(H_f)\ge\frac{\lambda}{(1-\lambda)a}\,1,
+ \qquad
+ \phi_f(1)\le\frac{(1-\lambda)a}{\lambda}\,f(a)&lt;\infty.
+ \tag{F5b}
+$$">$$
+ G_a(H_f)\ge\frac{\lambda}{(1-\lambda)a}\,1,
+ \qquad
+ \phi_f(1)\le\frac{(1-\lambda)a}{\lambda}\,f(a)&lt;\infty.
+ \tag{F5b}
+$$</span></p>
+<p>Thus <span class="math" data-tex="$\phi_f$">$\phi_f$</span> is a bounded normal positive functional. Equations (S7)–(S9) now apply at their proved bounded-functional scope and show</p>
+<p><a id="equation-f6"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \phi_f(1)=\int_\lambda^1\tau(p(f(a)))\,da=1.
+ \tag{F6}
+$$">$$
+ \phi_f(1)=\int_\lambda^1\tau(p(f(a)))\,da=1.
+ \tag{F6}
+$$</span></p>
+<p>Hence <span class="math" data-tex="$\phi_f$">$\phi_f$</span> is a faithful normal state, and <span class="math" data-tex="$f_{\phi_f}=f$">$f_{\phi_f}=f$</span>. This constructs every admissible profile using only faithful descent. Every state, including a nonfaithful one, has the same profile as some faithful state and therefore lies in its norm orbit closure by §5.</p>
+<p>For arbitrary states <span class="math" data-tex="$\phi,\psi$">$\phi,\psi$</span>, realize their two profiles on this <strong>same</strong> flag as <span class="math" data-tex="$\phi',\psi'$">$\phi',\psi'$</span>. Formula (S2), (F3), and the trace pairing inequality yield</p>
+<p><a id="equation-f7"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \|\phi'-\psi'\|
+ \le\int_\lambda^1\|p(f_\phi(a))-p(f_\psi(a))\|_1\,da
+ =\int_\lambda^1|f_\phi(a)-f_\psi(a)|\,da.
+ \tag{F7}
+$$">$$
+ \|\phi'-\psi'\|
+ \le\int_\lambda^1\|p(f_\phi(a))-p(f_\psi(a))\|_1\,da
+ =\int_\lambda^1|f_\phi(a)-f_\psi(a)|\,da.
+ \tag{F7}
+$$</span></p>
+<p>By §5, <span class="math" data-tex="$d(\phi,\phi')=d(\psi,\psi')=0$">$d(\phi,\phi')=d(\psi,\psi')=0$</span>. Apply (D3) and the triangle inequality, then (S13). We have proved, rather than assumed, the exact reduction</p>
+<p><a id="equation-f8"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \boxed{d(\phi,\psi)=\int_\lambda^1|f_\phi(a)-f_\psi(a)|\,da.}
+ \tag{F8}
+$$">$$
+ \boxed{d(\phi,\psi)=\int_\lambda^1|f_\phi(a)-f_\psi(a)|\,da.}
+ \tag{F8}
+$$</span></p>
+<p><span id="OA-FLOW.DP.7"></span><a id="oa-flow.dp.7"></a></p>
+<h2 id="7-every-profile-is-a-probability-mixture-of-elementary-steps">7. Every profile is a probability mixture of elementary steps</h2>
+<p>For <span class="math" data-tex="$a\in[\lambda,1)$">$a\in[\lambda,1)$</span>, define on all <span class="math" data-tex="$t&gt;0$">$t&gt;0$</span></p>
+<p><a id="equation-m1"></a></p>
+<p><span class="math math-display" data-tex="$$
+ F_a(t)=\frac1a\sum_{n\in\mathbb Z}\lambda^{-n}1_{(0,\lambda^n a)}(t).
+ \tag{M1}
+$$">$$
+ F_a(t)=\frac1a\sum_{n\in\mathbb Z}\lambda^{-n}1_{(0,\lambda^n a)}(t).
+ \tag{M1}
+$$</span></p>
+<p>At each <span class="math" data-tex="$t$">$t$</span>, the contributing integers are bounded above and the terms tend geometrically to zero toward negative infinity. This defines a finite decreasing right-continuous function. Reindexing proves its scaling. On the fundamental interval,</p>
+<p><a id="equation-m2"></a></p>
+<p><span class="math math-display" data-tex="$$
+ F_a(t)=\frac{\lambda/(1-\lambda)+1_{t&lt;a}}a,
+ \qquad \lambda\le t&lt;1.
+ \tag{M2}
+$$">$$
+ F_a(t)=\frac{\lambda/(1-\lambda)+1_{t&lt;a}}a,
+ \qquad \lambda\le t&lt;1.
+ \tag{M2}
+$$</span></p>
+<p>Its integral is <span class="math" data-tex="$(\lambda+a-\lambda)/a=1$">$(\lambda+a-\lambda)/a=1$</span>. In particular <span class="math" data-tex="$F_\lambda$">$F_\lambda$</span> is the constant <span class="math" data-tex="$1/(1-\lambda)$">$1/(1-\lambda)$</span> on <span class="math" data-tex="$[\lambda,1)$">$[\lambda,1)$</span>. All <span class="math" data-tex="$F_a$">$F_a$</span> are realizable by faithful normal states through §6.</p>
+<p>For a general profile <span class="math" data-tex="$f$">$f$</span> satisfying (F4), we construct its measure explicitly. This uses Lebesgue measure on the positive real line and its elementary change of scale; no separate measure-existence theorem for distribution functions is needed. By §6, <span class="math" data-tex="$f$">$f$</span> is strictly positive, finite, decreasing and right-continuous, with limits infinity at zero and zero at infinity. For <span class="math" data-tex="$y&gt;0$">$y&gt;0$</span>, put</p>
+<p><a id="equation-m3a"></a></p>
+<p><span class="math math-display" data-tex="$$
+ Q(y)=\inf\{t&gt;0:f(t)\le y\}.
+ \tag{M3a}
+$$">$$
+ Q(y)=\inf\{t&gt;0:f(t)\le y\}.
+ \tag{M3a}
+$$</span></p>
+<p>The two limits give <span class="math" data-tex="$0&lt;Q(y)&lt;\infty$">$0&lt;Q(y)&lt;\infty$</span>. For every <span class="math" data-tex="$t,y&gt;0$">$t,y&gt;0$</span>,</p>
+<p><a id="equation-m3b"></a></p>
+<p><span class="math math-display" data-tex="$$
+ Q(y)&gt;t\quad\Longleftrightarrow\quad y&lt;f(t).
+ \tag{M3b}
+$$">$$
+ Q(y)&gt;t\quad\Longleftrightarrow\quad y&lt;f(t).
+ \tag{M3b}
+$$</span></p>
+<p>If <span class="math" data-tex="$f(t)\le y$">$f(t)\le y$</span>, the point <span class="math" data-tex="$t$">$t$</span> belongs to the set in (M3a), so <span class="math" data-tex="$Q(y)\le t$">$Q(y)\le t$</span>. If <span class="math" data-tex="$y&lt;f(t)$">$y&lt;f(t)$</span>, right continuity supplies <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span> with <span class="math" data-tex="$f(t+\varepsilon)&gt;y$">$f(t+\varepsilon)&gt;y$</span>; monotonicity then excludes every point at most <span class="math" data-tex="$t+\varepsilon$">$t+\varepsilon$</span> from that set, proving <span class="math" data-tex="$Q(y)&gt;t$">$Q(y)&gt;t$</span>. Thus the preimage under <span class="math" data-tex="$Q$">$Q$</span> of every open right half-line is an interval, so <span class="math" data-tex="$Q$">$Q$</span> is Borel measurable.</p>
+<p>For each Borel set <span class="math" data-tex="$E\subset(0,\infty)$">$E\subset(0,\infty)$</span>, define</p>
+<p><a id="equation-m3c"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \mu(E)=\big|\{y&gt;0:Q(y)\in E\}\big|,
+ \tag{M3c}
+$$">$$
+ \mu(E)=\big|\{y&gt;0:Q(y)\in E\}\big|,
+ \tag{M3c}
+$$</span></p>
+<p>where the bars denote Lebesgue measure. Preimages preserve disjoint unions, so countable additivity and <span class="math" data-tex="$\mu(\varnothing)=0$">$\mu(\varnothing)=0$</span> follow directly from those properties of Lebesgue measure. Equation (M3b) gives the exact tail formula <span class="math" data-tex="$\mu((t,\infty))=f(t)$">$\mu((t,\infty))=f(t)$</span>. Consequently <span class="math" data-tex="$\mu$">$\mu$</span> is sigma-finite, and subtraction of two finite tails gives</p>
+<p><a id="equation-m3"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \mu((s,t])=f(s)-f(t),\qquad 0&lt;s&lt;t.
+ \tag{M3}
+$$">$$
+ \mu((s,t])=f(s)-f(t),\qquad 0&lt;s&lt;t.
+ \tag{M3}
+$$</span></p>
+<p>The scaling in (F4), in both integer directions, also gives directly</p>
+<p><a id="equation-m3d"></a></p>
+<p><span class="math math-display" data-tex="$$
+ Q(\lambda^{-n}y)=\lambda^n Q(y),\qquad
+ Q^{-1}(\lambda^n E)=\lambda^{-n}Q^{-1}(E),\qquad
+ \mu(\lambda^n E)=\lambda^{-n}\mu(E)
+ \quad(n\in\mathbb Z).
+ \tag{M3d}
+$$">$$
+ Q(\lambda^{-n}y)=\lambda^n Q(y),\qquad
+ Q^{-1}(\lambda^n E)=\lambda^{-n}Q^{-1}(E),\qquad
+ \mu(\lambda^n E)=\lambda^{-n}\mu(E)
+ \quad(n\in\mathbb Z).
+ \tag{M3d}
+$$</span></p>
+<p>Indeed, substitute <span class="math" data-tex="$t=\lambda^n s$">$t=\lambda^n s$</span> in the defining infimum, and then use the change of scale of Lebesgue measure. No uniqueness theorem for measures is being invoked. The restriction to <span class="math" data-tex="$[\lambda,1)$">$[\lambda,1)$</span> is finite because this set lies in <span class="math" data-tex="$(\lambda/2,\infty)$">$(\lambda/2,\infty)$</span>. Continuity of a finite measure from above applied to (M3) shows <span class="math" data-tex="$\mu(\{a\})=f(a^-)-f(a)$">$\mu(\{a\})=f(a^-)-f(a)$</span>; thus a jump at <span class="math" data-tex="$\lambda$">$\lambda$</span> belongs to this fundamental set, while a jump at <span class="math" data-tex="$1$">$1$</span> belongs to the adjacent set.</p>
+<p>The disjoint sets <span class="math" data-tex="$\lambda^n[\lambda,1)$">$\lambda^n[\lambda,1)$</span>, <span class="math" data-tex="$n\in\mathbb Z$">$n\in\mathbb Z$</span>, cover <span class="math" data-tex="$(0,\infty)$">$(0,\infty)$</span>. Using (M3d) on each set, countable additivity and nonnegative integration therefore give</p>
+<p><a id="equation-m4"></a></p>
+<p><span class="math math-display" data-tex="$$
+\begin{aligned}
+ f(t)
+ &amp;=\mu((t,\infty))\\
+ &amp;=\sum_{n\in\mathbb Z}\lambda^{-n}
+       \int_{[\lambda,1)}1_{\{t&lt;\lambda^n a\}}\,\mu(da)\\
+ &amp;=\int_{[\lambda,1)}F_a(t)\,a\mu(da).
+\end{aligned}
+ \tag{M4}
+$$">$$
+\begin{aligned}
+ f(t)
+ &amp;=\mu((t,\infty))\\
+ &amp;=\sum_{n\in\mathbb Z}\lambda^{-n}
+       \int_{[\lambda,1)}1_{\{t&lt;\lambda^n a\}}\,\mu(da)\\
+ &amp;=\int_{[\lambda,1)}F_a(t)\,a\mu(da).
+\end{aligned}
+ \tag{M4}
+$$</span></p>
+<p>The strict inequality in the integrand makes this an equality at every jump point as well. In particular (M2) gives, for <span class="math" data-tex="$\lambda\le t&lt;1$">$\lambda\le t&lt;1$</span>,</p>
+<p><a id="equation-m5"></a></p>
+<p><span class="math math-display" data-tex="$$
+ f(t)=\frac{\lambda}{1-\lambda}\mu([\lambda,1))+
+       \mu((t,1)).
+ \tag{M5}
+$$">$$
+ f(t)=\frac{\lambda}{1-\lambda}\mu([\lambda,1))+
+       \mu((t,1)).
+ \tag{M5}
+$$</span></p>
+<p>Tonelli's theorem, applied to the nonnegative Borel function <span class="math" data-tex="$(t,a)\mapsto F_a(t)a$">$(t,a)\mapsto F_a(t)a$</span> on the finite fundamental measures, gives</p>
+<p><span class="math math-display" data-tex="$$
+ 1=\int_\lambda^1 f(t)\,dt
+   =\int_{[\lambda,1)}\left(\int_\lambda^1 F_a(t)\,dt\right)a\mu(da)
+   =\int_{[\lambda,1)}a\mu(da).
+$$">$$
+ 1=\int_\lambda^1 f(t)\,dt
+   =\int_{[\lambda,1)}\left(\int_\lambda^1 F_a(t)\,dt\right)a\mu(da)
+   =\int_{[\lambda,1)}a\mu(da).
+$$</span></p>
+<p>Thus <span class="math" data-tex="$\nu(da)=a\mu(da)$">$\nu(da)=a\mu(da)$</span> is a probability measure and (M4) is the required probability mixture. The scalar inputs are supplied by <a href="OA-FLOW-SC.html#sc-01">SC-01–05</a>, <a href="OA-FLOW-SC.html#sc-08">SC-08</a>, and the full scalar interchange proof in Section 2 above: Lebesgue integration and scaling, countable additivity, continuity from above, monotone convergence and nonnegative interchange. The construction above supplies the distribution-function measure step itself. No assertion about extreme points of an infinite-dimensional compact convex set is needed.</p>
+<p>If <span class="math" data-tex="$f=\int F_a\nu(da)$">$f=\int F_a\nu(da)$</span> and <span class="math" data-tex="$g=\int F_b\eta(db)$">$g=\int F_b\eta(db)$</span>, both mixing measures are probabilities. Absolute integration and the triangle inequality give</p>
+<p><a id="equation-m6"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \|f-g\|_{L^1[\lambda,1]}
+ \le\int\!\int\|F_a-F_b\|_{L^1[\lambda,1]}\,\nu(da)\eta(db)
+ \le\sup_{a,b\in[\lambda,1)}\|F_a-F_b\|_1.
+ \tag{M6}
+$$">$$
+ \|f-g\|_{L^1[\lambda,1]}
+ \le\int\!\int\|F_a-F_b\|_{L^1[\lambda,1]}\,\nu(da)\eta(db)
+ \le\sup_{a,b\in[\lambda,1)}\|F_a-F_b\|_1.
+ \tag{M6}
+$$</span></p>
+<p><span id="OA-FLOW.DP.8"></span><a id="oa-flow.dp.8"></a></p>
+<h2 id="8-the-sharp-maximum-and-an-actual-extremal-pair">8. The sharp maximum and an actual extremal pair</h2>
+<p>Suppose <span class="math" data-tex="$\lambda\le a\le b&lt;1$">$\lambda\le a\le b&lt;1$</span>. Since <span class="math" data-tex="$a\ge\lambda b$">$a\ge\lambda b$</span>, (M2) shows <span class="math" data-tex="$F_a-F_b\ge0$">$F_a-F_b\ge0$</span> on <span class="math" data-tex="$[\lambda,a)$">$[\lambda,a)$</span> and <span class="math" data-tex="$[b,1)$">$[b,1)$</span>, and <span class="math" data-tex="$F_a-F_b\le0$">$F_a-F_b\le0$</span> on <span class="math" data-tex="$[a,b)$">$[a,b)$</span>. Their masses agree, so integration over the negative part gives</p>
+<p><a id="equation-m7"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \|F_a-F_b\|_1
+ =\frac{2(b-a)(a-\lambda b)}{ab(1-\lambda)}.
+ \tag{M7}
+$$">$$
+ \|F_a-F_b\|_1
+ =\frac{2(b-a)(a-\lambda b)}{ab(1-\lambda)}.
+ \tag{M7}
+$$</span></p>
+<p>Put <span class="math" data-tex="$R=b/a$">$R=b/a$</span>. Then <span class="math" data-tex="$1\le R&lt;\lambda^{-1}$">$1\le R&lt;\lambda^{-1}$</span>, and</p>
+<p><a id="equation-m8"></a></p>
+<p><span class="math math-display" data-tex="$$
+ \|F_a-F_b\|_1
+ =\frac2{1-\lambda}\left(1+\lambda-R^{-1}-\lambda R\right)
+ \le\frac2{1-\lambda}(1+\lambda-2\sqrt\lambda)
+ =\frac{2(1-\sqrt\lambda)}{1+\sqrt\lambda}.
+ \tag{M8}
+$$">$$
+ \|F_a-F_b\|_1
+ =\frac2{1-\lambda}\left(1+\lambda-R^{-1}-\lambda R\right)
+ \le\frac2{1-\lambda}(1+\lambda-2\sqrt\lambda)
+ =\frac{2(1-\sqrt\lambda)}{1+\sqrt\lambda}.
+ \tag{M8}
+$$</span></p>
+<p>The inequality is <span class="math" data-tex="$(R^{-1/2}-\sqrt\lambda R^{1/2})^2\ge0$">$(R^{-1/2}-\sqrt\lambda R^{1/2})^2\ge0$</span>. Equality holds at <span class="math" data-tex="$R=\lambda^{-1/2}$">$R=\lambda^{-1/2}$</span>. Choose the permitted values <span class="math" data-tex="$a=\lambda$">$a=\lambda$</span>, <span class="math" data-tex="$b=\sqrt\lambda$">$b=\sqrt\lambda$</span>; then (M7) attains (M8).</p>
+<p>For the upper bound, (M6), (M8), and (F8) apply to <strong>every</strong> pair of normal states. For every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span> the defining infimum therefore supplies a unitary with norm distance less than the bound plus <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>.</p>
+<p>For the lower bound, §6 realizes <span class="math" data-tex="$F_\lambda,F_{\sqrt\lambda}$">$F_\lambda,F_{\sqrt\lambda}$</span> by faithful normal states <span class="math" data-tex="$\phi_*,\psi_*$">$\phi_*,\psi_*$</span>. Equation (S13) bounds the distance after <strong>every</strong> unitary below by (M8); (F8) gives equality for their orbit distance. Taking the supremum proves (D2) at the exact compact-core and foundational hypotheses in §2.</p>
+<p>For <span class="math" data-tex="$\lambda=1/4$">$\lambda=1/4$</span>, <span class="math" data-tex="$F_\lambda=4/3$">$F_\lambda=4/3$</span>, while <span class="math" data-tex="$F_{\sqrt\lambda}=8/3$">$F_{\sqrt\lambda}=8/3$</span> on <span class="math" data-tex="$[1/4,1/2)$">$[1/4,1/2)$</span> and <span class="math" data-tex="$2/3$">$2/3$</span> on <span class="math" data-tex="$[1/2,1)$">$[1/2,1)$</span>. The two difference areas are <span class="math" data-tex="$1/3$">$1/3$</span> each, giving the sharp diameter <span class="math" data-tex="$2/3$">$2/3$</span>. The accompanying original figure shows this exact example and the whole ratio formula (M8); it is a profile diagram, not a drawing of a type III factor as a finite-dimensional matrix algebra.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact spectral profiles and sharp distance at lambda one quarter" src="assets/positive-parameter-diameter/figures/positive-lambda-state-profiles.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>The two shaded areas are each 1/3. Their sum is the distance 2/3. The second panel shows the maximum at phase ratio 2; the endpoint 4 is only a continuous scalar extension. Proof locators: F6, F8 and M4–M8. <a href="assets/positive-parameter-diameter/illustrate_profiles.py">Reproduce the original figure</a>.</p>
+<h2 id="9-exact-parameter-boundary-and-proof-scope">9. Exact parameter boundary and proof scope</h2>
+<p>The construction requires <span class="math" data-tex="$0&lt;\lambda&lt;1$">$0&lt;\lambda&lt;1$</span>: the compact modular period, trace-scaling generator, tiling fundamental interval, and probability-mixture normalization all use that assumption. Letting the scalar answer tend to <span class="math" data-tex="$2$">$2$</span> as <span class="math" data-tex="$\lambda\downarrow0$">$\lambda\downarrow0$</span> does <strong>not</strong> prove that any fixed type III₀ factor has diameter <span class="math" data-tex="$2$">$2$</span>. That boundary requires a different all-state invariant or a new construction in its generally nonperiodic flow. No such proof is supplied here.</p>
+<p>The separately completed III₁ argument concerns the endpoint <span class="math" data-tex="$\lambda=1$">$\lambda=1$</span>. It is not a premise for this positive-parameter theorem or its III₀ boundary.</p>
+<p>The theorem proved here is exactly the <span class="math" data-tex="$0&lt;\lambda&lt;1$">$0&lt;\lambda&lt;1$</span>, separable-predual factor, all-normal-state clause. Its local proof uses complete earlier DD, compact-core, density and descent bodies, together with the elementary local arguments above.</p>
+<h2 id="freely-readable-primary-sources-used-to-develop-this-draft">Freely readable primary sources used to develop this draft</h2>
+<ul>
+<li><a href="https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-haagerup/1990s/1990_Equivalence_of_normal_states_on_von_Neumann_algebras_and_the_flow_of_weights.pdf">Haagerup–Størmer, Equivalence of normal states on von Neumann algebras and the flow of weights (1990), §5</a>. This supplies the compact spectral method; §§3–8 above give the required proofs. Its state-diameter statements elsewhere in the paper are not premises.</li>
+<li><a href="https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=89">Connes, Une classification des facteurs de type III (1973), Theorem 4.3.2(a) and Corollary 4.3.3, printed 220–222</a>. This is historical free-source ancestry for DD; the complete earlier DD1–8 proof supplies the existence theorem actually used here. The converse classification is not used.</li>
+<li><a href="https://projecteuclid.org/euclid.acta/1485889792">Takesaki, Duality for crossed products and the structure of von Neumann algebras of type III (1973), Theorem 4.5</a>.</li>
+<li><a href="https://journals.msp.org/mscand/article/view/1879">Haagerup, On the dual weights for crossed products of von Neumann algebras I (1978), Theorem 3.2, Lemma 3.6 and Theorem 3.7</a>. The descent statement is faithful; §6 arranges faithful densities before applying it.</li>
+<li><a href="https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-haagerup/1970s/1979_Operator_valued_weights_in_von_Neumann_algebras_I.pdf">Haagerup, Operator valued weights in von Neumann algebras I (1979), Theorem 1.12 and Proposition 2.3</a>. These give the tracial-density and composition interfaces. Proposition 2.5(2) there is a related statement; our order-reflection step instead constructs bounded preimages explicitly.</li>
+</ul>
+<h3 id="why-the-nested-tails-really-give-an-operator">Why the nested tails really give an operator</h3>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact dyadic multiplication model and the full density domain" src="assets/positive-parameter-diameter/figures/spectral-tail-construction.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>The upper panels are an exact commutative explanatory model on <span class="math" data-tex="\(K=L^2((0,1),dr)\)">\(K=L^2((0,1),dr)\)</span>, rather than a finite-dimensional approximation to the type III factor. Put <span class="math" data-tex="\(A=M_r\)">\(A=M_r\)</span> and <span class="math" data-tex="\(F(s)=M_{1_{(0,s]}}\)">\(F(s)=M_{1_{(0,s]}}\)</span>. The left panel shows the dyadic right-endpoint multiplier <span class="math" data-tex="\(A_k\)">\(A_k\)</span>: on <span class="math" data-tex="\(((j-1)/N,j/N]\)">\(((j-1)/N,j/N]\)</span>, its value is <span class="math" data-tex="\(j/N\)">\(j/N\)</span>. The displayed grids are exactly <span class="math" data-tex="\(N=4\)">\(N=4\)</span> and <span class="math" data-tex="\(N=16\)">\(N=16\)</span>; the shaded band corresponds to the proved operator bound <span class="math" data-tex="\(0\le A_k-A\le N^{-1}I\)">\(0\le A_k-A\le N^{-1}I\)</span>. At a dyadic endpoint the coarse step takes the value of the band ending there; open and filled circles mark the interval convention. Single endpoints have zero Lebesgue spectral projection in this model. This is the common-refinement mechanism in <a href="OA-FLOW-DP.html#spectral-tail-construction">(T2)–(T3)</a>.</p>
+<p>The right panel shows the strictly increasing change of spectral coordinate <span class="math" data-tex="\(h(r)=r/(1-r)\)">\(h(r)=r/(1-r)\)</span>. The plotted curve ends at <span class="math" data-tex="\(r=0.95\)">\(r=0.95\)</span>, where <span class="math" data-tex="\(h(r)=19\)">\(h(r)=19\)</span>; it does not cap the unbounded operator. Its tails are exactly <span class="math" data-tex="\(P(t)=M_{1_{(t/(1+t),1)}}\)">\(P(t)=M_{1_{(t/(1+t),1)}}\)</span>, and <span class="math" data-tex="\(H=M_h\)">\(H=M_h\)</span> has full domain
+<span class="math math-display" data-tex="\[
+ D(H)=\left\{\xi\in L^2(0,1):
+ \int_0^1\frac{r^2}{(1-r)^2}|\xi(r)|^2\,dr&lt;\infty\right\}.
+\]">\[
+ D(H)=\left\{\xi\in L^2(0,1):
+ \int_0^1\frac{r^2}{(1-r)^2}|\xi(r)|^2\,dr&lt;\infty\right\}.
+\]</span>
+There is no eigenvector at either excluded endpoint. The vector <span class="math" data-tex="\(\xi(r)=1-r\)">\(\xi(r)=1-r\)</span> lies in this domain: its squared image norm is <span class="math" data-tex="\(\int_0^1r^2dr=1/3\)">\(\int_0^1r^2dr=1/3\)</span>, by CF1's fundamental theorem and SC00's power derivative. The constant vector <span class="math" data-tex="\(1\)">\(1\)</span> lies in <span class="math" data-tex="\(L^2(0,1)\)">\(L^2(0,1)\)</span> and does not belong to <span class="math" data-tex="\(D(H)\)">\(D(H)\)</span>; on <span class="math" data-tex="\((1/2,1)\)">\((1/2,1)\)</span> its integrand is at least <span class="math" data-tex="\(1/(4(1-r)^2)\)">\(1/(4(1-r)^2)\)</span>, whose integrals over intervals approaching one diverge. Thus a dense spectral-cutoff domain must not be replaced by the whole Hilbert space. These are the precise full-domain conclusions of <a href="OA-FLOW-DP.html#spectral-tail-construction">(T5)–(T6)</a>.</p>
+<p>The lower chain describes the actual factor argument. Its first object is the filling equivariant flag <span class="math" data-tex="\(p(s)\)">\(p(s)\)</span> from (F1)–(F3), composed with an admissible profile <span class="math" data-tex="\(f(t)\)">\(f(t)\)</span>. The local dyadic construction produces <span class="math" data-tex="\(H_f\)">\(H_f\)</span> with exactly those tails and <span class="math" data-tex="\(\beta(H_f)=\lambda H_f\)">\(\beta(H_f)=\lambda H_f\)</span>. TD2/6 makes <span class="math" data-tex="\(\tau_{H_f}\)">\(\tau_{H_f}\)</span> faithful normal semifinite, and the complete FD theorem descends it to <span class="math" data-tex="\(\phi_f\)">\(\phi_f\)</span>. Equations (F5a)–(F6) prove boundedness and mass one before any bounded-state reconstruction is invoked. The arrows assert those proved maps; the commutative upper model alone proves no descent or type statement.</p>
+<p>Native image: <span class="math" data-tex="\(3200\times2200\)">\(3200\times2200\)</span> pixels. Original illustration, exact <a href="assets/positive-parameter-diameter/figures/spectral-tail-construction-data.json">data</a>, <a href="assets/positive-parameter-diameter/figures/spectral-tail-construction.svg">editable SVG</a> and <a href="assets/positive-parameter-diameter/render_tail_construction.py">reproduction code</a>: CC0-1.0 to the extent of rights held. The complete local proof accompanies the illustration. The tail-family assertion goes back to <a href="https://www.isibang.ac.in/~soumyashant/misc/collected-works-of-haagerup/1990s/1990_Equivalence_of_normal_states_on_von_Neumann_algebras_and_the_flow_of_weights.pdf">Haagerup–Størmer, Theorem 5.5(i)</a>.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-HC.html">Previous lesson</a><a href="OA-FLOW-UC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-DP.md">Lesson source</a></nav></main></body></html>

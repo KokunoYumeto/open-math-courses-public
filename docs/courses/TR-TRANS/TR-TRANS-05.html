@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Siegel&#x27;s lemma, analytic estimates and the six exponentials theorem · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-05.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="siegel-s-lemma-analytic-estimates-and-the-six-exponentials-theorem">Siegel's lemma, analytic estimates and the six exponentials theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Public domain (CC0).</em></p>
+<p>Hermite and Lindemann built their auxiliary polynomials explicitly. A more flexible method chooses many coefficients at once, requiring their function to vanish at a large set of points. Linear algebra supplies a solution; Siegel's lemma supplies a solution whose arithmetic size is controlled. Analysis then makes a new value small, while an integral norm prevents it from being too small. The six exponentials theorem is a complete example in which all three estimates can be seen together.</p>
+<p>We use the height conventions of <a href="TR-TRANS-02.html">Heights of algebraic numbers</a>. In particular, the <strong>house</strong> of an algebraic number is</p>
+<span class="math math-display" data-tex="\[
+\overline{\alpha}=\max_{\sigma:\mathbb Q(\alpha)\hookrightarrow\mathbb C}
+|\sigma(\alpha)|.
+\]">\[
+\overline{\alpha}=\max_{\sigma:\mathbb Q(\alpha)\hookrightarrow\mathbb C}
+|\sigma(\alpha)|.
+\]</span>
+<p>It is not the naive polynomial height or the absolute multiplicative height. If <span class="math" data-tex="\(\alpha\in K\)">\(\alpha\in K\)</span>, taking the maximum over all embeddings of the number field <span class="math" data-tex="\(K\)">\(K\)</span> gives the same house, since every embedding of <span class="math" data-tex="\(\mathbb Q(\alpha)\)">\(\mathbb Q(\alpha)\)</span> extends to <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Two exact internal number-field prerequisites are used. The existing course <em>Number fields</em>, lesson <em>Algebraic integers and rings of integers</em>, Propositions 1.1–1.2, supplies the ring property of algebraic integers, denominator clearing, embeddings and the integrality of norms. Its lesson <em>Discriminants and integral bases</em>, Proposition 2.1 and Theorem 2.3, supplies the following statements for every number field <span class="math" data-tex="\(K/\mathbb Q\)">\(K/\mathbb Q\)</span> of degree <span class="math" data-tex="\(D\)">\(D\)</span>: the embedding matrix of any <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-basis is invertible, and <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> has an integral basis of <span class="math" data-tex="\(D\)">\(D\)</span> elements. These number-field results supply the basis and denominator statements needed in the construction below.</p>
+<p>We prove the required analytic estimates below from convergent local Taylor series. The exact open prerequisite is Theorem 3.3.1 of the Complex Analysis source, Jiří Lebl's <a href="https://www.jirka.org/ca/ca.pdf"><em>Guide to Cultivating Complex Analysis</em></a>, version 1.9, July 11, 2026; Theorem 3.3.3 also proves the repeated holomorphic differentiability used with those series. The linked proofs retain <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, selected from the book's dual licence. Every auxiliary-function estimate used in this lesson is proved below.</p>
+<h2 id="1-small-solutions-of-integer-equations">1. Small solutions of integer equations</h2>
+<p>A homogeneous system with more unknowns than equations has a nonzero rational solution. Clearing its denominators proves existence of an integer solution, but gives no useful bound. Counting points in a box gives both existence and a bound.</p>
+<h3 id="lemma-5-1-siegel-s-lemma-with-row-sums">Lemma 5.1. Siegel's lemma with row sums</h3>
+<p>Let <span class="math" data-tex="\(0&lt;M&lt;N\)">\(0&lt;M&lt;N\)</span>, let <span class="math" data-tex="\(u_{ij}\in\mathbb Z\)">\(u_{ij}\in\mathbb Z\)</span>, and let real numbers <span class="math" data-tex="\(A_i\)">\(A_i\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+A_i\geq\max\left(1,\sum_{j=1}^N|u_{ij}|\right)
+\qquad(1\leq i\leq M).
+\]">\[
+A_i\geq\max\left(1,\sum_{j=1}^N|u_{ij}|\right)
+\qquad(1\leq i\leq M).
+\]</span>
+<p>There is a nonzero vector <span class="math" data-tex="\(x\in\mathbb Z^N\)">\(x\in\mathbb Z^N\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^N u_{ij}x_j=0\quad(1\leq i\leq M),\qquad
+\max_j|x_j|\leq
+B:=\left(\prod_{i=1}^M A_i\right)^{1/(N-M)}.
+\tag{5.1}
+\]">\[
+\sum_{j=1}^N u_{ij}x_j=0\quad(1\leq i\leq M),\qquad
+\max_j|x_j|\leq
+B:=\left(\prod_{i=1}^M A_i\right)^{1/(N-M)}.
+\tag{5.1}
+\]</span>
+<p>In particular, if <span class="math" data-tex="\(|u_{ij}|\leq U\)">\(|u_{ij}|\leq U\)</span> with <span class="math" data-tex="\(U\geq1\)">\(U\geq1\)</span>, one can take</p>
+<span class="math math-display" data-tex="\[
+\max_j|x_j|\leq(NU)^{M/(N-M)}.
+\tag{5.2}
+\]">\[
+\max_j|x_j|\leq(NU)^{M/(N-M)}.
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(H=\lfloor B\rfloor\)">\(H=\lfloor B\rfloor\)</span>, and map the <span class="math" data-tex="\((H+1)^N\)">\((H+1)^N\)</span> integer vectors in <span class="math" data-tex="\(\{0,\ldots,H\}^N\)">\(\{0,\ldots,H\}^N\)</span> to their <span class="math" data-tex="\(M\)">\(M\)</span> left sides. For row <span class="math" data-tex="\(i\)">\(i\)</span>, let <span class="math" data-tex="\(P_i\)">\(P_i\)</span> be the sum of its positive coefficients and <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> the sum of the absolute values of its negative coefficients. The image in that coordinate lies in the integer interval</p>
+<span class="math math-display" data-tex="\[
+[-HQ_i,HP_i],
+\]">\[
+[-HQ_i,HP_i],
+\]</span>
+<p>which has at most</p>
+<span class="math math-display" data-tex="\[
+H(P_i+Q_i)+1\leq HA_i+1\leq A_i(H+1)
+\]">\[
+H(P_i+Q_i)+1\leq HA_i+1\leq A_i(H+1)
+\]</span>
+<p>elements. Thus the whole image has at most</p>
+<span class="math math-display" data-tex="\[
+\left(\prod_i A_i\right)(H+1)^M
+=B^{N-M}(H+1)^M&lt;(H+1)^N
+\]">\[
+\left(\prod_i A_i\right)(H+1)^M
+=B^{N-M}(H+1)^M&lt;(H+1)^N
+\]</span>
+<p>elements: the last inequality is strict because <span class="math" data-tex="\(H+1&gt;B\)">\(H+1&gt;B\)</span>, even when <span class="math" data-tex="\(B\)">\(B\)</span> is an integer. Two distinct input vectors have the same image. Their difference is nonzero, solves the system, and has coordinates of absolute value at most <span class="math" data-tex="\(H\leq B\)">\(H\leq B\)</span>. Taking every <span class="math" data-tex="\(A_i=NU\)">\(A_i=NU\)</span> gives (5.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The use of a one-sided input box is what avoids an unnecessary factor of two. The row-sum version also recognizes a sparse or unusually small row.</p>
+<p><strong>Example.</strong> Consider</p>
+<span class="math math-display" data-tex="\[
+x_1+2x_2-x_3=0,\qquad 2x_1-x_2+x_3=0.
+\]">\[
+x_1+2x_2-x_3=0,\qquad 2x_1-x_2+x_3=0.
+\]</span>
+<p>Both row sums are <span class="math" data-tex="\(4\)">\(4\)</span>. Formula (5.1) gives <span class="math" data-tex="\(\max|x_j|\leq16\)">\(\max|x_j|\leq16\)</span>, while the entrywise bound <span class="math" data-tex="\(U=2\)">\(U=2\)</span> gives <span class="math" data-tex="\(36\)">\(36\)</span>. In fact, substituting <span class="math" data-tex="\(x_3=x_1+2x_2\)">\(x_3=x_1+2x_2\)</span> yields <span class="math" data-tex="\(x_2=-3x_1\)">\(x_2=-3x_1\)</span> and <span class="math" data-tex="\(x_3=-5x_1\)">\(x_3=-5x_1\)</span>. Every integer solution is a multiple of <span class="math" data-tex="\((1,-3,-5)\)">\((1,-3,-5)\)</span>, so the smallest possible nonzero maximum is <span class="math" data-tex="\(5\)">\(5\)</span>. Siegel's lemma is a uniform existence estimate, not a claim to find the shortest vector.</p>
+<h2 id="2-passing-to-a-number-field">2. Passing to a number field</h2>
+<p>Fix an integral basis <span class="math" data-tex="\(\omega_1,\ldots,\omega_D\)">\(\omega_1,\ldots,\omega_D\)</span> of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, and enumerate the embeddings <span class="math" data-tex="\(\sigma_1,\ldots,\sigma_D:K\hookrightarrow\mathbb C\)">\(\sigma_1,\ldots,\sigma_D:K\hookrightarrow\mathbb C\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+E=(\sigma_t(\omega_k))_{t,k},\qquad
+\eta=\max_k\sum_t|(E^{-1})_{kt}|,\qquad
+\Omega=\max_t\sum_k|\sigma_t(\omega_k)|.
+\]">\[
+E=(\sigma_t(\omega_k))_{t,k},\qquad
+\eta=\max_k\sum_t|(E^{-1})_{kt}|,\qquad
+\Omega=\max_t\sum_k|\sigma_t(\omega_k)|.
+\]</span>
+<p>The prerequisite discriminant theorem guarantees that <span class="math" data-tex="\(E\)">\(E\)</span> is invertible. If</p>
+<span class="math math-display" data-tex="\[
+\alpha=\sum_k a_k\omega_k\in\mathcal O_K,
+\]">\[
+\alpha=\sum_k a_k\omega_k\in\mathcal O_K,
+\]</span>
+<p>then <span class="math" data-tex="\(a_k\in\mathbb Z\)">\(a_k\in\mathbb Z\)</span> and inversion of <span class="math" data-tex="\(E\)">\(E\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+|a_k|\leq\eta\overline\alpha.
+\tag{5.3}
+\]">\[
+|a_k|\leq\eta\overline\alpha.
+\tag{5.3}
+\]</span>
+<p>Multiplication in the integral basis has integer structure constants:</p>
+<span class="math math-display" data-tex="\[
+\omega_k\omega_\ell=\sum_m c_{k\ell m}\omega_m,
+\qquad c_{k\ell m}\in\mathbb Z.
+\]">\[
+\omega_k\omega_\ell=\sum_m c_{k\ell m}\omega_m,
+\qquad c_{k\ell m}\in\mathbb Z.
+\]</span>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+\kappa=\max_{\ell,m}\sum_k|c_{k\ell m}|,\qquad
+C=\max\{1,\Omega,D\max(1,\eta\kappa)\}.
+\tag{5.4}
+\]">\[
+\kappa=\max_{\ell,m}\sum_k|c_{k\ell m}|,\qquad
+C=\max\{1,\Omega,D\max(1,\eta\kappa)\}.
+\tag{5.4}
+\]</span>
+<p>This is one explicit choice of a constant depending only on the fixed field and basis.</p>
+<h3 id="lemma-5-2-siegel-s-lemma-over-the-ring-of-integers">Lemma 5.2. Siegel's lemma over the ring of integers</h3>
+<p>For <span class="math" data-tex="\(N&gt;M&gt;0\)">\(N&gt;M&gt;0\)</span>, suppose <span class="math" data-tex="\(\alpha_{ij}\in\mathcal O_K\)">\(\alpha_{ij}\in\mathcal O_K\)</span> and <span class="math" data-tex="\(\overline{\alpha_{ij}}\leq A\)">\(\overline{\alpha_{ij}}\leq A\)</span>, where <span class="math" data-tex="\(A\geq1\)">\(A\geq1\)</span>. Then there is a nonzero vector <span class="math" data-tex="\(x\in\mathcal O_K^N\)">\(x\in\mathcal O_K^N\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\sum_j\alpha_{ij}x_j=0\quad(1\leq i\leq M),\qquad
+\overline{x_j}\leq C(CNA)^{M/(N-M)}.
+\tag{5.5}
+\]">\[
+\sum_j\alpha_{ij}x_j=0\quad(1\leq i\leq M),\qquad
+\overline{x_j}\leq C(CNA)^{M/(N-M)}.
+\tag{5.5}
+\]</span>
+<p>The constant in (5.4) is sufficient. If instead <span class="math" data-tex="\(\alpha_{ij}\in K\)">\(\alpha_{ij}\in K\)</span> have house at most <span class="math" data-tex="\(A\)">\(A\)</span>, and positive integers <span class="math" data-tex="\(d_i\)">\(d_i\)</span> clear the denominators in row <span class="math" data-tex="\(i\)">\(i\)</span>, then with <span class="math" data-tex="\(d=\max_i d_i\)">\(d=\max_i d_i\)</span> the bound is</p>
+<span class="math math-display" data-tex="\[
+\overline{x_j}\leq C(CNdA)^{M/(N-M)}.
+\tag{5.6}
+\]">\[
+\overline{x_j}\leq C(CNdA)^{M/(N-M)}.
+\tag{5.6}
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\alpha_{ij}=\sum_k a_{ijk}\omega_k\)">\(\alpha_{ij}=\sum_k a_{ijk}\omega_k\)</span> and seek <span class="math" data-tex="\(x_j=\sum_\ell y_{j\ell}\omega_\ell\)">\(x_j=\sum_\ell y_{j\ell}\omega_\ell\)</span>, with integer unknowns <span class="math" data-tex="\(y_{j\ell}\)">\(y_{j\ell}\)</span>. Equation (5.3) bounds <span class="math" data-tex="\(|a_{ijk}|\)">\(|a_{ijk}|\)</span> by <span class="math" data-tex="\(\eta A\)">\(\eta A\)</span>. Comparing basis coordinates, the original system becomes the <span class="math" data-tex="\(DM\)">\(DM\)</span> integer equations</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^N\sum_{\ell=1}^D
+\left(\sum_k a_{ijk}c_{k\ell m}\right)y_{j\ell}=0
+\qquad(1\leq i\leq M,\ 1\leq m\leq D).
+\]">\[
+\sum_{j=1}^N\sum_{\ell=1}^D
+\left(\sum_k a_{ijk}c_{k\ell m}\right)y_{j\ell}=0
+\qquad(1\leq i\leq M,\ 1\leq m\leq D).
+\]</span>
+<p>Each coefficient has absolute value at most <span class="math" data-tex="\(\eta\kappa A\)">\(\eta\kappa A\)</span>. Apply (5.2) to these <span class="math" data-tex="\(DN\)">\(DN\)</span> unknowns with</p>
+<span class="math math-display" data-tex="\[
+U=\max(1,\eta\kappa)A.
+\]">\[
+U=\max(1,\eta\kappa)A.
+\]</span>
+<p>The exponent is unchanged:</p>
+<span class="math math-display" data-tex="\[
+\frac{DM}{DN-DM}=\frac{M}{N-M}.
+\]">\[
+\frac{DM}{DN-DM}=\frac{M}{N-M}.
+\]</span>
+<p>We obtain a nonzero integer vector <span class="math" data-tex="\(y\)">\(y\)</span> with</p>
+<span class="math math-display" data-tex="\[
+|y_{j\ell}|\leq(DNU)^{M/(N-M)}
+\leq(CNA)^{M/(N-M)}.
+\]">\[
+|y_{j\ell}|\leq(DNU)^{M/(N-M)}
+\leq(CNA)^{M/(N-M)}.
+\]</span>
+<p>Linear independence of the integral basis ensures that the corresponding vector <span class="math" data-tex="\(x\)">\(x\)</span> is nonzero. For every embedding,</p>
+<span class="math math-display" data-tex="\[
+|\sigma_t(x_j)|
+\leq\sum_\ell |y_{j\ell}|\,|\sigma_t(\omega_\ell)|
+\leq\Omega(CNA)^{M/(N-M)}.
+\]">\[
+|\sigma_t(x_j)|
+\leq\sum_\ell |y_{j\ell}|\,|\sigma_t(\omega_\ell)|
+\leq\Omega(CNA)^{M/(N-M)}.
+\]</span>
+<p>This proves (5.5). For (5.6), multiply the <span class="math" data-tex="\(i\)">\(i\)</span>-th equation by <span class="math" data-tex="\(d_i\)">\(d_i\)</span>. Its coefficients are now algebraic integers of house at most <span class="math" data-tex="\(dA\)">\(dA\)</span>, and its solution set is unchanged. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The number of embeddings introduces constants but does not multiply the Siegel exponent. This cancellation will matter when the number field containing our assumed algebraic values has a large degree.</p>
+<h2 id="3-zeros-and-analytic-size">3. Zeros and analytic size</h2>
+<p>For a function analytic on a neighbourhood of the closed disc <span class="math" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+|f|_R=\max_{|z|=R}|f(z)|.
+\]">\[
+|f|_R=\max_{|z|=R}|f(z)|.
+\]</span>
+<p>We first justify why the boundary controls the whole disc.</p>
+<h3 id="proposition-5-3-maximum-modulus">Proposition 5.3. Maximum modulus</h3>
+<p>If an analytic function on a connected open set has a local maximum of its modulus at an interior point, it is constant. Consequently an analytic function on a neighbourhood of a closed disc satisfies</p>
+<span class="math math-display" data-tex="\[
+\max_{|z|\leq R}|f(z)|=|f|_R.
+\]">\[
+\max_{|z|\leq R}|f(z)|=|f|_R.
+\]</span>
+<p><strong>Proof.</strong> Let the local maximum occur at <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. On a sufficiently small disc its convergent Taylor expansion is</p>
+<span class="math math-display" data-tex="\[
+f(z_0+w)=\sum_{k\geq0}a_kw^k.
+\]">\[
+f(z_0+w)=\sum_{k\geq0}a_kw^k.
+\]</span>
+<p>For a small fixed <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, uniform convergence permits termwise integration of the product of this series and its conjugate. The integrals of <span class="math" data-tex="\(e^{i(k-\ell)t}\)">\(e^{i(k-\ell)t}\)</span> vanish unless <span class="math" data-tex="\(k=\ell\)">\(k=\ell\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi}\int_0^{2\pi}|f(z_0+re^{it})|^2\,dt
+=\sum_{k\geq0}|a_k|^2r^{2k}.
+\]">\[
+\frac1{2\pi}\int_0^{2\pi}|f(z_0+re^{it})|^2\,dt
+=\sum_{k\geq0}|a_k|^2r^{2k}.
+\]</span>
+<p>The local maximum makes the left side at most <span class="math" data-tex="\(|a_0|^2\)">\(|a_0|^2\)</span>. All other coefficients must vanish, and <span class="math" data-tex="\(f\)">\(f\)</span> is constant near <span class="math" data-tex="\(z_0\)">\(z_0\)</span>.</p>
+<p>For completeness, an analytic function equal to a constant on a nonempty open subset is equal to it throughout a connected domain. A nonzero local Taylor series has a first nonzero coefficient; factoring out its corresponding power shows its zeros are isolated. Thus zeros with an interior limit point force the local series to vanish identically. The set of points having a neighbourhood on which <span class="math" data-tex="\(f\)">\(f\)</span> equals the given constant is both open and closed in the domain, and hence is the whole domain. This proves the first assertion. A maximum on a compact disc exists by continuity; if an interior maximum occurs, the function is constant, and otherwise a maximum occurs on its boundary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-5-4-schwarz-s-estimate-with-multiplicity">Lemma 5.4. Schwarz's estimate with multiplicity</h3>
+<p>If <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is analytic on a neighbourhood of <span class="math" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span> and has a zero of order at least <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span>, then for <span class="math" data-tex="\(0&lt;r\leq R\)">\(0&lt;r\leq R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\Psi|_r\leq\left(\frac rR\right)^T|\Psi|_R.
+\tag{5.7}
+\]">\[
+|\Psi|_r\leq\left(\frac rR\right)^T|\Psi|_R.
+\tag{5.7}
+\]</span>
+<p><strong>Proof.</strong> The function <span class="math" data-tex="\(g(z)=\Psi(z)/z^T\)">\(g(z)=\Psi(z)/z^T\)</span> extends analytically to <span class="math" data-tex="\(0\)">\(0\)</span> by its Taylor series. On <span class="math" data-tex="\(|z|=R\)">\(|z|=R\)</span> it has modulus at most <span class="math" data-tex="\(|\Psi|_R/R^T\)">\(|\Psi|_R/R^T\)</span>. Proposition 5.3 bounds it by the same quantity throughout the disc, and multiplication by <span class="math" data-tex="\(|z|^T\leq r^T\)">\(|z|^T\leq r^T\)</span> gives (5.7). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-5-5-jensen-s-inequality">Lemma 5.5. Jensen's inequality</h3>
+<p>Suppose <span class="math" data-tex="\(f\)">\(f\)</span> is analytic on a neighbourhood of <span class="math" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span> and <span class="math" data-tex="\(f(0)\ne0\)">\(f(0)\ne0\)</span>. List its zeros in <span class="math" data-tex="\(|z|&lt;R\)">\(|z|&lt;R\)</span>, with multiplicity, as <span class="math" data-tex="\(z_1,\ldots,z_q\)">\(z_1,\ldots,z_q\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+|f(0)|\leq|f|_R\prod_{j=1}^q\frac{|z_j|}{R}.
+\tag{5.8}
+\]">\[
+|f(0)|\leq|f|_R\prod_{j=1}^q\frac{|z_j|}{R}.
+\tag{5.8}
+\]</span>
+<p>If <span class="math" data-tex="\(\nu(x)\)">\(\nu(x)\)</span> counts its zeros in <span class="math" data-tex="\(|z|&lt;x\)">\(|z|&lt;x\)</span>, with multiplicity, then</p>
+<span class="math math-display" data-tex="\[
+\int_0^R\frac{\nu(x)}x\,dx
+\leq\log|f|_R-\log|f(0)|.
+\tag{5.9}
+\]">\[
+\int_0^R\frac{\nu(x)}x\,dx
+\leq\log|f|_R-\log|f(0)|.
+\tag{5.9}
+\]</span>
+<p><strong>Proof.</strong> There are finitely many zeros in the closed disc: otherwise compactness supplies an interior accumulation point in the neighbourhood of analyticity, contradicting isolation of zeros. None of the listed zeros is <span class="math" data-tex="\(0\)">\(0\)</span>. Remove their factors and form</p>
+<span class="math math-display" data-tex="\[
+g(z)=f(z)\prod_{j=1}^q
+\frac{R^2-\overline{z_j}z}{R(z-z_j)}.
+\]">\[
+g(z)=f(z)\prod_{j=1}^q
+\frac{R^2-\overline{z_j}z}{R(z-z_j)}.
+\]</span>
+<p>The apparent poles are removable by the specified multiplicities. On <span class="math" data-tex="\(|z|=R\)">\(|z|=R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|R^2-\overline{z_j}z|^2
+=R^2|z-z_j|^2,
+\]">\[
+|R^2-\overline{z_j}z|^2
+=R^2|z-z_j|^2,
+\]</span>
+<p>so each quotient has modulus <span class="math" data-tex="\(1\)">\(1\)</span>. Hence <span class="math" data-tex="\(|g|_R=|f|_R\)">\(|g|_R=|f|_R\)</span>, while</p>
+<span class="math math-display" data-tex="\[
+|g(0)|=|f(0)|\prod_j\frac R{|z_j|}.
+\]">\[
+|g(0)|=|f(0)|\prod_j\frac R{|z_j|}.
+\]</span>
+<p>Maximum modulus proves (5.8). Taking logarithms and summing the integrals</p>
+<span class="math math-display" data-tex="\[
+\log\frac R{|z_j|}=\int_{|z_j|}^R\frac{dx}{x}
+\]">\[
+\log\frac R{|z_j|}=\int_{|z_j|}^R\frac{dx}{x}
+\]</span>
+<p>gives (5.9). Zeros on the boundary contribute neither to the list nor to the integral, so they cause no exceptional case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-5-6-a-growth-bound-controls-the-number-of-zeros">Corollary 5.6. A growth bound controls the number of zeros</h3>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be a nonzero entire function, and suppose, for fixed <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span> and <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, that</p>
+<span class="math math-display" data-tex="\[
+\log|f|_R\leq a+bR^\rho\qquad(R\geq1).
+\tag{5.10}
+\]">\[
+\log|f|_R\leq a+bR^\rho\qquad(R\geq1).
+\tag{5.10}
+\]</span>
+<p>Then <span class="math" data-tex="\(\nu_f(R)=O_f(R^\rho)\)">\(\nu_f(R)=O_f(R^\rho)\)</span>. More explicitly, let <span class="math" data-tex="\(T\)">\(T\)</span> be the order of its zero at <span class="math" data-tex="\(0\)">\(0\)</span>, and set <span class="math" data-tex="\(g=f/z^T\)">\(g=f/z^T\)</span>, so <span class="math" data-tex="\(g(0)\ne0\)">\(g(0)\ne0\)</span>. For <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\nu_f(R)\leq T+
+\frac{a+b(2R)^\rho-T\log(2R)-\log|g(0)|}{\log2}.
+\tag{5.11}
+\]">\[
+\nu_f(R)\leq T+
+\frac{a+b(2R)^\rho-T\log(2R)-\log|g(0)|}{\log2}.
+\tag{5.11}
+\]</span>
+<p><strong>Proof.</strong> Every zero of <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(|z|&lt;R\)">\(|z|&lt;R\)</span> contributes at least <span class="math" data-tex="\(\log2\)">\(\log2\)</span> to (5.9) on the disc of radius <span class="math" data-tex="\(2R\)">\(2R\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\nu_g(R)\log2\leq\log|g|_{2R}-\log|g(0)|.
+\]">\[
+\nu_g(R)\log2\leq\log|g|_{2R}-\log|g(0)|.
+\]</span>
+<p>On the boundary, <span class="math" data-tex="\(|g|_{2R}=|f|_{2R}/(2R)^T\)">\(|g|_{2R}=|f|_{2R}/(2R)^T\)</span>. Use (5.10), and add the <span class="math" data-tex="\(T\)">\(T\)</span> zeros at the origin. Dropping the nonpositive term <span class="math" data-tex="\(-T\log(2R)\)">\(-T\log(2R)\)</span> gives the asserted <span class="math" data-tex="\(O\)">\(O\)</span>-bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here the required convention is the explicit bound (5.10), sometimes called <strong>strict order at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span></strong> or a growth bound of exponent <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. The usual order</p>
+<span class="math math-display" data-tex="\[
+\limsup_{R\to\infty}
+\frac{\log\log\max(e,|f|_R)}{\log R}
+\]">\[
+\limsup_{R\to\infty}
+\frac{\log\log\max(e,|f|_R)}{\log R}
+\]</span>
+<p>being at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span> only guarantees analogous bounds with exponent <span class="math" data-tex="\(\rho+\varepsilon\)">\(\rho+\varepsilon\)</span>, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>; it need not guarantee (5.10) at the endpoint. We will always display the bound actually used. In particular a finite exponential sum has <span class="math" data-tex="\(\log|f|_R\leq a+bR\)">\(\log|f|_R\leq a+bR\)</span>, so its zero count is <span class="math" data-tex="\(O_f(R)\)">\(O_f(R)\)</span>.</p>
+<h3 id="lemma-5-7-estimating-a-value-from-many-prescribed-zeros">Lemma 5.7. Estimating a value from many prescribed zeros</h3>
+<p>Suppose <span class="math" data-tex="\(f\)">\(f\)</span> is analytic on a neighbourhood of <span class="math" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span> and vanishes at distinct points <span class="math" data-tex="\(v_1,\ldots,v_q\)">\(v_1,\ldots,v_q\)</span> with <span class="math" data-tex="\(|v_j|\leq V&lt;R\)">\(|v_j|\leq V&lt;R\)</span>. If <span class="math" data-tex="\(|w|&lt;R\)">\(|w|&lt;R\)</span> and <span class="math" data-tex="\(w\ne v_j\)">\(w\ne v_j\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+|f(w)|\leq |f|_R
+\prod_{j=1}^q\frac{|w-v_j|}{R-V}.
+\tag{5.12}
+\]">\[
+|f(w)|\leq |f|_R
+\prod_{j=1}^q\frac{|w-v_j|}{R-V}.
+\tag{5.12}
+\]</span>
+<p><strong>Proof.</strong> Divide <span class="math" data-tex="\(f(z)\)">\(f(z)\)</span> by <span class="math" data-tex="\(\prod_j(z-v_j)\)">\(\prod_j(z-v_j)\)</span>. The quotient extends analytically across the listed zeros, and on the boundary its modulus is at most <span class="math" data-tex="\(|f|_R/(R-V)^q\)">\(|f|_R/(R-V)^q\)</span>. Apply maximum modulus and then multiply back at <span class="math" data-tex="\(w\)">\(w\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Unlike (5.8), this estimate is centred at a new evaluation point and needs no assumption about <span class="math" data-tex="\(f(0)\)">\(f(0)\)</span>. Counting each prescribed point once is enough; any additional multiplicities can only improve the estimate.</p>
+<h2 id="4-the-six-exponentials-theorem">4. The six exponentials theorem</h2>
+<h3 id="theorem-5-8-six-exponentials">Theorem 5.8. Six exponentials</h3>
+<p>Let <span class="math" data-tex="\(x_1,x_2\in\mathbb C\)">\(x_1,x_2\in\mathbb C\)</span> be linearly independent over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and let <span class="math" data-tex="\(y_1,y_2,y_3\in\mathbb C\)">\(y_1,y_2,y_3\in\mathbb C\)</span> be linearly independent over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Then at least one of the six numbers</p>
+<span class="math math-display" data-tex="\[
+e^{x_i y_j}\qquad(1\leq i\leq2,\ 1\leq j\leq3)
+\]">\[
+e^{x_i y_j}\qquad(1\leq i\leq2,\ 1\leq j\leq3)
+\]</span>
+<p>is transcendental.</p>
+<p>The theorem is due to Siegel, Lang and Ramachandra. Soundararajan's notes, §12, give the same auxiliary-function proof; Waldschmidt's <em>Transcendence Methods</em>, Theorem 3.2.1, obtains the theorem by Schneider's method, with either set of numbers in the role of the exponents. All constants below depend on the six fixed numbers and their number field, never on the parameters <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>Proof.</strong> Suppose all six numbers</p>
+<span class="math math-display" data-tex="\[
+b_{ij}=e^{x_i y_j}
+\]">\[
+b_{ij}=e^{x_i y_j}
+\]</span>
+<p>are algebraic, and let <span class="math" data-tex="\(K\subset\mathbb C\)">\(K\subset\mathbb C\)</span> contain them. Put <span class="math" data-tex="\(D=[K:\mathbb Q]\)">\(D=[K:\mathbb Q]\)</span>. Choose a positive integer <span class="math" data-tex="\(d\)">\(d\)</span> such that every <span class="math" data-tex="\(db_{ij}\)">\(db_{ij}\)</span> is an algebraic integer, and put</p>
+<span class="math math-display" data-tex="\[
+B=\max(1,\overline{b_{11}},\ldots,\overline{b_{23}}),
+\quad X=|x_1|+|x_2|,
+\quad Y=|y_1|+|y_2|+|y_3|.
+\]">\[
+B=\max(1,\overline{b_{11}},\ldots,\overline{b_{23}}),
+\quad X=|x_1|+|x_2|,
+\quad Y=|y_1|+|y_2|+|y_3|.
+\]</span>
+<p>Both <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> are positive. Let <span class="math" data-tex="\(C\geq1\)">\(C\geq1\)</span> be the constant in Lemma 5.2 for this field.</p>
+<p><strong>Constructing the function.</strong> Choose an integer <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, to be made sufficiently large, and set</p>
+<span class="math math-display" data-tex="\[
+r=\lceil8n^{3/2}\rceil.
+\]">\[
+r=\lceil8n^{3/2}\rceil.
+\]</span>
+<p>Thus</p>
+<span class="math math-display" data-tex="\[
+64n^3\leq r^2,\qquad r\leq9n^{3/2},\qquad
+\frac{n^3}{r^2-n^3}\leq\frac1{63}.
+\tag{5.13}
+\]">\[
+64n^3\leq r^2,\qquad r\leq9n^{3/2},\qquad
+\frac{n^3}{r^2-n^3}\leq\frac1{63}.
+\tag{5.13}
+\]</span>
+<p>Seek coefficients <span class="math" data-tex="\(a_{uv}\in\mathcal O_K\)">\(a_{uv}\in\mathcal O_K\)</span>, not all zero, such that</p>
+<span class="math math-display" data-tex="\[
+F(z)=\sum_{u,v=1}^r a_{uv}e^{(ux_1+vx_2)z}
+\tag{5.14}
+\]">\[
+F(z)=\sum_{u,v=1}^r a_{uv}e^{(ux_1+vx_2)z}
+\tag{5.14}
+\]</span>
+<p>vanishes at every point</p>
+<span class="math math-display" data-tex="\[
+z_k=k_1y_1+k_2y_2+k_3y_3,
+\qquad 1\leq k_j\leq n.
+\tag{5.15}
+\]">\[
+z_k=k_1y_1+k_2y_2+k_3y_3,
+\qquad 1\leq k_j\leq n.
+\tag{5.15}
+\]</span>
+<p>There are <span class="math" data-tex="\(n^3\)">\(n^3\)</span> linear equations in <span class="math" data-tex="\(r^2\)">\(r^2\)</span> unknowns. Their coefficients belong to <span class="math" data-tex="\(K\)">\(K\)</span>, since</p>
+<span class="math math-display" data-tex="\[
+e^{(ux_1+vx_2)z_k}
+=\prod_{j=1}^3 b_{1j}^{uk_j}b_{2j}^{vk_j}.
+\tag{5.16}
+\]">\[
+e^{(ux_1+vx_2)z_k}
+=\prod_{j=1}^3 b_{1j}^{uk_j}b_{2j}^{vk_j}.
+\tag{5.16}
+\]</span>
+<p>The total exponent in this product is at most <span class="math" data-tex="\(6rn\)">\(6rn\)</span>. Consequently its house is at most <span class="math" data-tex="\(B^{6rn}\)">\(B^{6rn}\)</span>, and multiplication by <span class="math" data-tex="\(d^{6rn}\)">\(d^{6rn}\)</span> makes it integral: write each factor as a power of <span class="math" data-tex="\(db_{ij}\)">\(db_{ij}\)</span>, and fill any unused denominator powers with the integer <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>Lemma 5.2 gives a nonzero coefficient vector with</p>
+<span class="math math-display" data-tex="\[
+\overline{a_{uv}}
+\leq C\bigl(Cr^2(dB)^{6rn}\bigr)^{1/63}
+\leq e^{c_1n^{5/2}},
+\tag{5.17}
+\]">\[
+\overline{a_{uv}}
+\leq C\bigl(Cr^2(dB)^{6rn}\bigr)^{1/63}
+\leq e^{c_1n^{5/2}},
+\tag{5.17}
+\]</span>
+<p>where, for example, the fixed positive constant</p>
+<span class="math math-display" data-tex="\[
+c_1=1+\log C+
+\frac{\log C+2\log9+3+54\log(dB)}{63}
+\]">\[
+c_1=1+\log C+
+\frac{\log C+2\log9+3+54\log(dB)}{63}
+\]</span>
+<p>is sufficient. Indeed, <span class="math" data-tex="\(rn\leq9n^{5/2}\)">\(rn\leq9n^{5/2}\)</span>, <span class="math" data-tex="\(2\log r\leq2\log9+3\log n\)">\(2\log r\leq2\log9+3\log n\)</span>, and <span class="math" data-tex="\(\log n\leq n^{5/2}\)">\(\log n\leq n^{5/2}\)</span>. The ceiling in <span class="math" data-tex="\(r\)">\(r\)</span> is essential: the equation <span class="math" data-tex="\(r^2=64n^3\)">\(r^2=64n^3\)</span> need not have an integer solution. The inequalities (5.13) retain the desired exponent without this defect.</p>
+<p><strong>Nonvanishing and a first new point.</strong> The frequencies <span class="math" data-tex="\(ux_1+vx_2\)">\(ux_1+vx_2\)</span> are pairwise distinct. An equality between two of them would give a nonzero integer relation between <span class="math" data-tex="\(x_1\)">\(x_1\)</span> and <span class="math" data-tex="\(x_2\)">\(x_2\)</span>. Exponentials with distinct frequencies <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_N\)">\(\lambda_1,\ldots,\lambda_N\)</span> are linearly independent: differentiating an identically zero relation at <span class="math" data-tex="\(0\)">\(0\)</span>, for orders <span class="math" data-tex="\(0,\ldots,N-1\)">\(0,\ldots,N-1\)</span>, gives the matrix <span class="math" data-tex="\((\lambda_j^k)_{0\leq k&lt;N,\,1\leq j\leq N}\)">\((\lambda_j^k)_{0\leq k&lt;N,\,1\leq j\leq N}\)</span>. Its determinant is</p>
+<span class="math math-display" data-tex="\[
+\prod_{i&lt;j}(\lambda_j-\lambda_i)\ne0.
+\]">\[
+\prod_{i&lt;j}(\lambda_j-\lambda_i)\ne0.
+\]</span>
+<p>The determinant identity follows by observing that it is an alternating polynomial of the same total degree as this product, divisible by every difference, with coefficient <span class="math" data-tex="\(1\)">\(1\)</span> in its leading term. Thus the coefficient vector in (5.17) makes <span class="math" data-tex="\(F\)">\(F\)</span> a nonzero entire function.</p>
+<p>For every <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|F|_R\leq r^2\exp(c_1n^{5/2}+rXR).
+\tag{5.18}
+\]">\[
+|F|_R\leq r^2\exp(c_1n^{5/2}+rXR).
+\tag{5.18}
+\]</span>
+<p>With <span class="math" data-tex="\(n\)">\(n\)</span> fixed, Corollary 5.6 therefore gives only <span class="math" data-tex="\(O_F(R)\)">\(O_F(R)\)</span> zeros in a disc of radius <span class="math" data-tex="\(R\)">\(R\)</span>. In contrast, the positive box</p>
+<span class="math math-display" data-tex="\[
+\{k_1y_1+k_2y_2+k_3y_3:1\leq k_j\leq t\}
+\]">\[
+\{k_1y_1+k_2y_2+k_3y_3:1\leq k_j\leq t\}
+\]</span>
+<p>has <span class="math" data-tex="\(t^3\)">\(t^3\)</span> distinct points, all of modulus at most <span class="math" data-tex="\(Yt\)">\(Yt\)</span>. Distinctness follows from the rational independence of the three <span class="math" data-tex="\(y_j\)">\(y_j\)</span>. These boxes cannot all consist of zeros of <span class="math" data-tex="\(F\)">\(F\)</span>, since <span class="math" data-tex="\(t^3\)">\(t^3\)</span> eventually exceeds <span class="math" data-tex="\(O_F(Yt)\)">\(O_F(Yt)\)</span>. Notice that the zero-count constant may depend on <span class="math" data-tex="\(n\)">\(n\)</span>; the argument only needs it for each single function.</p>
+<p>There is therefore a largest integer <span class="math" data-tex="\(s\)">\(s\)</span> such that <span class="math" data-tex="\(F\)">\(F\)</span> vanishes on the whole box <span class="math" data-tex="\(1\leq k_j\leq s\)">\(1\leq k_j\leq s\)</span>. It satisfies <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span>. In the next box choose</p>
+<span class="math math-display" data-tex="\[
+w=k_1y_1+k_2y_2+k_3y_3,
+\qquad1\leq k_j\leq s+1,
+\qquad F(w)\ne0.
+\tag{5.19}
+\]">\[
+w=k_1y_1+k_2y_2+k_3y_3,
+\qquad1\leq k_j\leq s+1,
+\qquad F(w)\ne0.
+\tag{5.19}
+\]</span>
+<p>At least one coordinate <span class="math" data-tex="\(k_j\)">\(k_j\)</span> equals <span class="math" data-tex="\(s+1\)">\(s+1\)</span>. No assertion about discreteness or density of the positive boxes is required.</p>
+<p><strong>The arithmetic lower bound.</strong> By (5.16), now with <span class="math" data-tex="\(k_j\leq s+1\)">\(k_j\leq s+1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Theta=d^{6r(s+1)}F(w)
+\]">\[
+\Theta=d^{6r(s+1)}F(w)
+\]</span>
+<p>is a nonzero algebraic integer in <span class="math" data-tex="\(K\)">\(K\)</span>. For every embedding <span class="math" data-tex="\(\sigma:K\hookrightarrow\mathbb C\)">\(\sigma:K\hookrightarrow\mathbb C\)</span>, applying it to the algebraic products in (5.16) gives</p>
+<span class="math math-display" data-tex="\[
+|\sigma(\Theta)|
+\leq r^2\exp(c_1n^{5/2})(dB)^{6r(s+1)}
+\leq\exp(c_2s^{5/2}),
+\tag{5.20}
+\]">\[
+|\sigma(\Theta)|
+\leq r^2\exp(c_1n^{5/2})(dB)^{6r(s+1)}
+\leq\exp(c_2s^{5/2}),
+\tag{5.20}
+\]</span>
+<p>where one may take</p>
+<span class="math math-display" data-tex="\[
+c_2=c_1+108\log(dB)+2\log9+3.
+\]">\[
+c_2=c_1+108\log(dB)+2\log9+3.
+\]</span>
+<p>Here <span class="math" data-tex="\(n\leq s\)">\(n\leq s\)</span>, <span class="math" data-tex="\(r\leq9s^{3/2}\)">\(r\leq9s^{3/2}\)</span> and <span class="math" data-tex="\(s+1\leq2s\)">\(s+1\leq2s\)</span> have all been used. The norm is a nonzero integer, so</p>
+<span class="math math-display" data-tex="\[
+1\leq|N_{K/\mathbb Q}(\Theta)|
+\leq |\Theta|\exp((D-1)c_2s^{5/2}).
+\]">\[
+1\leq|N_{K/\mathbb Q}(\Theta)|
+\leq |\Theta|\exp((D-1)c_2s^{5/2}).
+\]</span>
+<p>Undoing the denominator yields</p>
+<span class="math math-display" data-tex="\[
+\log|F(w)|\geq-c_3s^{5/2},
+\qquad c_3=108\log d+(D-1)c_2.
+\tag{5.21}
+\]">\[
+\log|F(w)|\geq-c_3s^{5/2},
+\qquad c_3=108\log d+(D-1)c_2.
+\tag{5.21}
+\]</span>
+<p>The norm is taken only of an algebraic value at a point of the prescribed additive group. No field automorphism is applied to <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, <span class="math" data-tex="\(y_j\)">\(y_j\)</span> or an arbitrary transcendental exponential.</p>
+<p><strong>The analytic upper bound.</strong> Choose</p>
+<span class="math math-display" data-tex="\[
+R=s^{3/2}.
+\]">\[
+R=s^{3/2}.
+\]</span>
+<p>Take <span class="math" data-tex="\(n\)">\(n\)</span> sufficiently large that <span class="math" data-tex="\(\sqrt n&gt;4Y\)">\(\sqrt n&gt;4Y\)</span>. Then <span class="math" data-tex="\(R&gt;2Y(s+1)\)">\(R&gt;2Y(s+1)\)</span>, so the circle encloses <span class="math" data-tex="\(w\)">\(w\)</span> and the preceding <span class="math" data-tex="\(s^3\)">\(s^3\)</span> zeros. Every preceding zero <span class="math" data-tex="\(z_k\)">\(z_k\)</span> has <span class="math" data-tex="\(|z_k|\leq Ys\)">\(|z_k|\leq Ys\)</span>, while</p>
+<span class="math math-display" data-tex="\[
+|w-z_k|\leq Y(s+1)+Ys\leq3Ys,
+\qquad R-Ys&gt;R/2.
+\]">\[
+|w-z_k|\leq Y(s+1)+Ys\leq3Ys,
+\qquad R-Ys&gt;R/2.
+\]</span>
+<p>Lemma 5.7 gives</p>
+<span class="math math-display" data-tex="\[
+|F(w)|\leq|F|_R\left(\frac{6Ys}{R}\right)^{s^3}.
+\tag{5.22}
+\]">\[
+|F(w)|\leq|F|_R\left(\frac{6Ys}{R}\right)^{s^3}.
+\tag{5.22}
+\]</span>
+<p>Put <span class="math" data-tex="\(C_0=\max(1,6Y)\)">\(C_0=\max(1,6Y)\)</span>. Combining (5.18) and (5.22), and using <span class="math" data-tex="\(r\leq9s^{3/2}\)">\(r\leq9s^{3/2}\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log|F(w)|
+&amp;\leq2\log r+c_1n^{5/2}+rXs^{3/2}
++s^3\left(\log C_0-\tfrac12\log s\right)\\
+&amp;\leq c_4s^{5/2}+K_0s^3-\tfrac12s^3\log s,
+\end{aligned}
+\tag{5.23}
+\]">\[
+\begin{aligned}
+\log|F(w)|
+&amp;\leq2\log r+c_1n^{5/2}+rXs^{3/2}
++s^3\left(\log C_0-\tfrac12\log s\right)\\
+&amp;\leq c_4s^{5/2}+K_0s^3-\tfrac12s^3\log s,
+\end{aligned}
+\tag{5.23}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+c_4=c_1+2\log9+3,\qquad K_0=9X+\log C_0.
+\]">\[
+c_4=c_1+2\log9+3,\qquad K_0=9X+\log C_0.
+\]</span>
+<p>Bounds (5.21) and (5.23) together require</p>
+<span class="math math-display" data-tex="\[
+\frac12\log s\leq K_0+\frac{c_3+c_4}{\sqrt s}.
+\tag{5.24}
+\]">\[
+\frac12\log s\leq K_0+\frac{c_3+c_4}{\sqrt s}.
+\tag{5.24}
+\]</span>
+<p>Finally choose <span class="math" data-tex="\(n\)">\(n\)</span> so large that, in addition to the radius requirement,</p>
+<span class="math math-display" data-tex="\[
+\frac12\log n&gt;K_0+\frac{c_3+c_4}{\sqrt n}.
+\]">\[
+\frac12\log n&gt;K_0+\frac{c_3+c_4}{\sqrt n}.
+\]</span>
+<p>Such integers exist since the left side grows without bound. For every <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span>, the left side of (5.24) is at least <span class="math" data-tex="\(\frac12\log n\)">\(\frac12\log n\)</span> and its right side at most the displayed right side with <span class="math" data-tex="\(n\)">\(n\)</span>. This is a contradiction. The assumption that all six exponentials are algebraic was false. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The estimates can be read from the following parameter table. Constants in the bounds are fixed before <span class="math" data-tex="\(n\)">\(n\)</span> is chosen.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Choice or bound</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial zeros</td>
+<td><span class="math" data-tex="\(n^3\)">\(n^3\)</span></td>
+<td>Three independent directions of evaluation</td>
+</tr>
+<tr>
+<td>Frequencies</td>
+<td><span class="math" data-tex="\(r^2\geq64n^3\)">\(r^2\geq64n^3\)</span></td>
+<td>More coefficients than equations</td>
+</tr>
+<tr>
+<td>Siegel exponent</td>
+<td><span class="math" data-tex="\(n^3/(r^2-n^3)\leq1/63\)">\(n^3/(r^2-n^3)\leq1/63\)</span></td>
+<td>Keeps coefficients small</td>
+</tr>
+<tr>
+<td>Coefficient log house</td>
+<td><span class="math" data-tex="\(c_1n^{5/2}\)">\(c_1n^{5/2}\)</span></td>
+<td>Arithmetic cost of constructing <span class="math" data-tex="\(F\)">\(F\)</span></td>
+</tr>
+<tr>
+<td>Last complete box</td>
+<td><span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span>, containing <span class="math" data-tex="\(s^3\)">\(s^3\)</span> zeros</td>
+<td>Selects a nonzero algebraic value in the next box</td>
+</tr>
+<tr>
+<td>Radius</td>
+<td><span class="math" data-tex="\(R=s^{3/2}\)">\(R=s^{3/2}\)</span></td>
+<td>Larger than the box; still controls growth</td>
+</tr>
+<tr>
+<td>Arithmetic lower bound</td>
+<td><span class="math" data-tex="\(-c_3s^{5/2}\)">\(-c_3s^{5/2}\)</span> for <span class="math" data-tex="\(\log\lvert F(w)\rvert\)">\(\log\lvert F(w)\rvert\)</span></td>
+<td>Integral norm cannot be arbitrarily small</td>
+</tr>
+<tr>
+<td>Analytic upper bound</td>
+<td><span class="math" data-tex="\(-\tfrac12s^3\log s+K_0s^3+c_4s^{5/2}\)">\(-\tfrac12s^3\log s+K_0s^3+c_4s^{5/2}\)</span></td>
+<td>Gain from many zeros dominates both costs</td>
+</tr>
+</tbody>
+</table>
+<p>The role of the last complete box is worth emphasizing. An initial set of zeros does not ensure that a conveniently chosen nearby value is nonzero. Choosing <span class="math" data-tex="\(s\)">\(s\)</span> makes nonvanishing automatic at some point of the next box, while preserving the relation <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span> needed in every estimate.</p>
+<h2 id="5-powers-of-algebraic-numbers-and-the-four-exponentials-problem">5. Powers of algebraic numbers and the four exponentials problem</h2>
+<p>For a positive real number <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(t\in\mathbb C\)">\(t\in\mathbb C\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+a^t=e^{t\log a},
+\]">\[
+a^t=e^{t\log a},
+\]</span>
+<p>where <span class="math" data-tex="\(\log a\)">\(\log a\)</span> is its real logarithm. For general nonzero complex <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, a power in this lesson always means <span class="math" data-tex="\(e^{t\lambda}\)">\(e^{t\lambda}\)</span> with a fixed choice <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> satisfying <span class="math" data-tex="\(e^\lambda=\alpha\)">\(e^\lambda=\alpha\)</span>.</p>
+<h3 id="corollary-5-9-three-prime-bases">Corollary 5.9. Three prime bases</h3>
+<p>If <span class="math" data-tex="\(t\in\mathbb C\)">\(t\in\mathbb C\)</span> and <span class="math" data-tex="\(2^t,3^t,5^t\)">\(2^t,3^t,5^t\)</span> are all algebraic, then <span class="math" data-tex="\(t\in\mathbb Q\)">\(t\in\mathbb Q\)</span>. If all three are integers, then <span class="math" data-tex="\(t\)">\(t\)</span> is a nonnegative integer. In particular at least one of <span class="math" data-tex="\(2^\pi,3^\pi,5^\pi\)">\(2^\pi,3^\pi,5^\pi\)</span> is transcendental.</p>
+<p><strong>Proof.</strong> The real numbers <span class="math" data-tex="\(\log2,\log3,\log5\)">\(\log2,\log3,\log5\)</span> are linearly independent over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Clearing a rational relation would give</p>
+<span class="math math-display" data-tex="\[
+2^a3^b5^c=1\qquad(a,b,c\in\mathbb Z),
+\]">\[
+2^a3^b5^c=1\qquad(a,b,c\in\mathbb Z),
+\]</span>
+<p>and unique prime factorization, after moving negative exponents to the other side, forces <span class="math" data-tex="\(a=b=c=0\)">\(a=b=c=0\)</span>. If <span class="math" data-tex="\(t\notin\mathbb Q\)">\(t\notin\mathbb Q\)</span>, the pair <span class="math" data-tex="\(1,t\)">\(1,t\)</span> is rationally independent. Theorem 5.8 applied to these two pairs would make at least one of</p>
+<span class="math math-display" data-tex="\[
+2,3,5,2^t,3^t,5^t
+\]">\[
+2,3,5,2^t,3^t,5^t
+\]</span>
+<p>transcendental, a contradiction.</p>
+<p>Write the resulting rational <span class="math" data-tex="\(t=a/b\)">\(t=a/b\)</span> in lowest terms, with <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. If <span class="math" data-tex="\(2^t\)">\(2^t\)</span> is an integer, it is positive. A negative <span class="math" data-tex="\(a\)">\(a\)</span> would make it strictly between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>. If <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, then <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Otherwise set <span class="math" data-tex="\(u=2^{a/b}\in\mathbb Z_{&gt;0}\)">\(u=2^{a/b}\in\mathbb Z_{&gt;0}\)</span>. From <span class="math" data-tex="\(u^b=2^a\)">\(u^b=2^a\)</span>, prime valuations give <span class="math" data-tex="\(b\,v_2(u)=a\)">\(b\,v_2(u)=a\)</span>. Thus <span class="math" data-tex="\(b\mid a\)">\(b\mid a\)</span>, and coprimality forces <span class="math" data-tex="\(b=1\)">\(b=1\)</span>. The final assertion follows since <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is irrational, as already implied by its transcendence in the preceding lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-5-10-three-multiplicatively-independent-algebraic-bases">Corollary 5.10. Three multiplicatively independent algebraic bases</h3>
+<p>Let <span class="math" data-tex="\(\alpha_1,\alpha_2,\alpha_3\)">\(\alpha_1,\alpha_2,\alpha_3\)</span> be nonzero algebraic numbers with no nontrivial relation <span class="math" data-tex="\(\prod_j\alpha_j^{m_j}=1\)">\(\prod_j\alpha_j^{m_j}=1\)</span>, <span class="math" data-tex="\(m_j\in\mathbb Z\)">\(m_j\in\mathbb Z\)</span>. Fix any logarithms <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> of these numbers. If all three <span class="math" data-tex="\(e^{\beta\lambda_j}\)">\(e^{\beta\lambda_j}\)</span> are algebraic, then <span class="math" data-tex="\(\beta\in\mathbb Q\)">\(\beta\in\mathbb Q\)</span>.</p>
+<p><strong>Proof.</strong> A rational linear relation between the <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>, after clearing denominators and exponentiating, would give precisely a forbidden multiplicative relation. Hence the three logarithms are rationally independent, regardless of their chosen branches. If <span class="math" data-tex="\(1,\beta\)">\(1,\beta\)</span> were rationally independent, Theorem 5.8 would contradict the algebraicity of the six numbers <span class="math" data-tex="\(\alpha_j,e^{\beta\lambda_j}\)">\(\alpha_j,e^{\beta\lambda_j}\)</span>. Thus <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is rational. Conversely, for <span class="math" data-tex="\(\beta=a/b\)">\(\beta=a/b\)</span>, <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, any such branch value satisfies <span class="math" data-tex="\(X^b-\alpha_j^a=0\)">\(X^b-\alpha_j^a=0\)</span> and is algebraic by closure of the algebraic numbers. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The four exponentials conjecture.</strong> If <span class="math" data-tex="\(x_1,x_2\)">\(x_1,x_2\)</span> are rationally independent complex numbers and <span class="math" data-tex="\(y_1,y_2\)">\(y_1,y_2\)</span> are rationally independent complex numbers, at least one of the four <span class="math" data-tex="\(e^{x_i y_j}\)">\(e^{x_i y_j}\)</span> should be transcendental. This is Schneider's four exponentials problem, also discussed by Lang and Ramachandra. It remains a conjecture; the six exponentials proof above does not prove it. Waldschmidt's <em>The Four Exponentials Problem and the Schanuel Conjecture</em>, §4, discusses the formulation and its relation to logarithms.</p>
+<p>Conditional on this conjecture, the same proof as Corollary 5.9, using only <span class="math" data-tex="\(\log2,\log3\)">\(\log2,\log3\)</span>, would show that algebraicity of <span class="math" data-tex="\(2^t\)">\(2^t\)</span> and <span class="math" data-tex="\(3^t\)">\(3^t\)</span> forces <span class="math" data-tex="\(t\in\mathbb Q\)">\(t\in\mathbb Q\)</span>. If both were integers, it would then force a nonnegative integer. It would also show that at least one of <span class="math" data-tex="\(2^\pi,3^\pi\)">\(2^\pi,3^\pi\)</span> is transcendental. These are conditional statements, not consequences claimed from the six exponentials theorem alone.</p>
+<p>The dimension balance explains the difficulty. Two evaluation directions supply <span class="math" data-tex="\(s^2\)">\(s^2\)</span> zeros, while the two frequency directions require <span class="math" data-tex="\(r\)">\(r\)</span> of order <span class="math" data-tex="\(n\)">\(n\)</span>. Making the radius much larger than the box then costs too much exponential growth. The final exercise makes this obstruction precise; it concerns this particular construction, not a proof that every auxiliary-function method must fail.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy — row sums.</strong> Prove Lemma 5.1 directly by counting a one-sided integer box. Explain why the comparison is strict even if <span class="math" data-tex="\((A_1\cdots A_M)^{1/(N-M)}\)">\((A_1\cdots A_M)^{1/(N-M)}\)</span> is an integer. Compute the two stated bounds and the smallest nonzero solution size for the two-equation example.</p>
+</li>
+<li>
+<p><strong>Easy — prime powers.</strong> Prove that at least one of <span class="math" data-tex="\(2^\pi,3^\pi,5^\pi\)">\(2^\pi,3^\pi,5^\pi\)</span> is transcendental. State exactly which logarithms are being used and why their rational independence holds.</p>
+</li>
+<li>
+<p><strong>Medium — complex branches.</strong> Suppose three nonzero algebraic numbers <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> are multiplicatively independent. Fix arbitrary logarithms <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>. If <span class="math" data-tex="\(e^{\beta\lambda_j}\)">\(e^{\beta\lambda_j}\)</span> is algebraic for each <span class="math" data-tex="\(j\)">\(j\)</span>, prove that <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is rational. Check that changing the fixed logarithms does not invalidate the argument.</p>
+</li>
+<li>
+<p><strong>Medium — removing zeros.</strong> Prove Jensen's inequality by applying maximum modulus to</p>
+<span class="math math-display" data-tex="\[
+f(z)\prod_j\frac{R^2-\overline{z_j}z}{R(z-z_j)}.
+\]">\[
+f(z)\prod_j\frac{R^2-\overline{z_j}z}{R(z-z_j)}.
+\]</span>
+<p>Verify the boundary identity, removable singularities, multiplicities and the case of zeros on the outer circle.</p>
+</li>
+<li>
+<p><strong>Hard — the missing dimension.</strong> Repeat the construction with two evaluation directions. Take <span class="math" data-tex="\(r=\lceil cn\rceil\)">\(r=\lceil cn\rceil\)</span>, with fixed <span class="math" data-tex="\(c&gt;1\)">\(c&gt;1\)</span>, and compare the scales of the coefficient bound, arithmetic lower bound and zero gain when <span class="math" data-tex="\(s=n\)">\(s=n\)</span>. Show why a radius <span class="math" data-tex="\(R=n^q\)">\(R=n^q\)</span> with <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span> cannot give the same asymptotic contradiction. Also analyze <span class="math" data-tex="\(R=tn\)">\(R=tn\)</span> with fixed <span class="math" data-tex="\(t\)">\(t\)</span>. More generally, if there are <span class="math" data-tex="\(a\)">\(a\)</span> frequency directions and <span class="math" data-tex="\(b\)">\(b\)</span> evaluation directions, derive the necessary interval for <span class="math" data-tex="\(q\)">\(q\)</span> in this power-counting argument.</p>
+</li>
+</ol>
+<h2 id="7-solutions">7. Solutions</h2>
+<ol>
+<li>
+<p>Put <span class="math" data-tex="\(B=(\prod_iA_i)^{1/(N-M)}\)">\(B=(\prod_iA_i)^{1/(N-M)}\)</span> and <span class="math" data-tex="\(H=\lfloor B\rfloor\)">\(H=\lfloor B\rfloor\)</span>. Row <span class="math" data-tex="\(i\)">\(i\)</span> maps <span class="math" data-tex="\(\{0,\ldots,H\}^N\)">\(\{0,\ldots,H\}^N\)</span> into an integer interval of length <span class="math" data-tex="\(H\sum_j|u_{ij}|\)">\(H\sum_j|u_{ij}|\)</span>, containing at most <span class="math" data-tex="\(A_i(H+1)\)">\(A_i(H+1)\)</span> integers. The whole image therefore contains at most <span class="math" data-tex="\(B^{N-M}(H+1)^M\)">\(B^{N-M}(H+1)^M\)</span> points, strictly fewer than <span class="math" data-tex="\((H+1)^N\)">\((H+1)^N\)</span>, since <span class="math" data-tex="\(H+1&gt;B\)">\(H+1&gt;B\)</span>. Subtract two inputs with equal image to obtain the required nonzero kernel vector of maximum at most <span class="math" data-tex="\(H\)">\(H\)</span>. This includes integer <span class="math" data-tex="\(B\)">\(B\)</span>, for which <span class="math" data-tex="\(H+1=B+1\)">\(H+1=B+1\)</span>. In the example the row sums give <span class="math" data-tex="\(4\cdot4=16\)">\(4\cdot4=16\)</span>; <span class="math" data-tex="\(N=3,M=2,U=2\)">\(N=3,M=2,U=2\)</span> gives <span class="math" data-tex="\(6^2=36\)">\(6^2=36\)</span>. Elimination gives all integer solutions <span class="math" data-tex="\(k(1,-3,-5)\)">\(k(1,-3,-5)\)</span>; a nonzero integer <span class="math" data-tex="\(k\)">\(k\)</span> has <span class="math" data-tex="\(|k|\geq1\)">\(|k|\geq1\)</span>, so the minimum maximum is <span class="math" data-tex="\(5\)">\(5\)</span>.</p>
+</li>
+<li>
+<p>Use the real logarithms. A rational relation among <span class="math" data-tex="\(\log2,\log3,\log5\)">\(\log2,\log3,\log5\)</span> becomes <span class="math" data-tex="\(2^a3^b5^c=1\)">\(2^a3^b5^c=1\)</span> after clearing denominators and exponentiating. Prime factorization gives <span class="math" data-tex="\(a=b=c=0\)">\(a=b=c=0\)</span>. The pair <span class="math" data-tex="\(1,\pi\)">\(1,\pi\)</span> is rationally independent because <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is irrational. If the three displayed powers were algebraic, all six entries for these pairs would be algebraic, contradicting Theorem 5.8. The theorem identifies at least one transcendental entry among the three powers; this argument does not identify which one.</p>
+</li>
+<li>
+<p>If <span class="math" data-tex="\(\sum_jq_j\lambda_j=0\)">\(\sum_jq_j\lambda_j=0\)</span>, clear denominators to obtain integers <span class="math" data-tex="\(m_j\)">\(m_j\)</span>, and exponentiate to get <span class="math" data-tex="\(\prod_j\alpha_j^{m_j}=1\)">\(\prod_j\alpha_j^{m_j}=1\)</span>. Multiplicative independence forces all <span class="math" data-tex="\(m_j=0\)">\(m_j=0\)</span>, and hence all <span class="math" data-tex="\(q_j=0\)">\(q_j=0\)</span>. Thus Theorem 5.8 applies to <span class="math" data-tex="\(y_j=\lambda_j\)">\(y_j=\lambda_j\)</span> and <span class="math" data-tex="\(x_1=1,x_2=\beta\)">\(x_1=1,x_2=\beta\)</span> unless <span class="math" data-tex="\(\beta\in\mathbb Q\)">\(\beta\in\mathbb Q\)</span>. Its six exponentials would all be algebraic by the hypotheses, so this exception must occur. For any other fixed logarithms, the same exponentiation still gives the same <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span>, and proves their rational independence again. Powers must use the very logarithms appearing in the hypothesis; one cannot change a branch while keeping an unrelated value of <span class="math" data-tex="\(\alpha_j^\beta\)">\(\alpha_j^\beta\)</span>.</p>
+</li>
+<li>
+<p>For <span class="math" data-tex="\(|z|=R\)">\(|z|=R\)</span>, expansion of both squares gives</p>
+<span class="math math-display" data-tex="\[
+|R^2-\overline wz|^2
+=R^4-2R^2\operatorname{Re}(\overline wz)+R^2|w|^2
+=R^2|z-w|^2.
+\]">\[
+|R^2-\overline wz|^2
+=R^4-2R^2\operatorname{Re}(\overline wz)+R^2|w|^2
+=R^2|z-w|^2.
+\]</span>
+<p>Hence the quotient has modulus <span class="math" data-tex="\(1\)">\(1\)</span>. If a zero <span class="math" data-tex="\(w\)">\(w\)</span> has multiplicity <span class="math" data-tex="\(m\)">\(m\)</span>, listing it <span class="math" data-tex="\(m\)">\(m\)</span> times cancels exactly <span class="math" data-tex="\((z-w)^m\)">\((z-w)^m\)</span> from the local Taylor factorization; all resulting poles are removable. Maximum modulus bounds the transformed function at <span class="math" data-tex="\(0\)">\(0\)</span> by <span class="math" data-tex="\(|f|_R\)">\(|f|_R\)</span>, and its value there has modulus <span class="math" data-tex="\(|f(0)|\prod_j R/|z_j|\)">\(|f(0)|\prod_j R/|z_j|\)</span>. Rearranging proves (5.8). No listed <span class="math" data-tex="\(z_j\)">\(z_j\)</span> is zero because <span class="math" data-tex="\(f(0)\ne0\)">\(f(0)\ne0\)</span>. Zeros on <span class="math" data-tex="\(|z|=R\)">\(|z|=R\)</span> need not be removed: they lie outside the open-disc list and correspond to the factor <span class="math" data-tex="\(\log(R/R)=0\)">\(\log(R/R)=0\)</span> in the integrated inequality. Thus both the inequality and the integral formula remain valid with outer boundary zeros.</p>
+</li>
+<li>
+<p>Two evaluation directions impose <span class="math" data-tex="\(n^2\)">\(n^2\)</span> conditions on <span class="math" data-tex="\(r^2\)">\(r^2\)</span> coefficients. With <span class="math" data-tex="\(r\sim cn\)">\(r\sim cn\)</span>, the Siegel exponent is asymptotically <span class="math" data-tex="\(1/(c^2-1)\)">\(1/(c^2-1)\)</span>. The logarithm of the coefficient size is <span class="math" data-tex="\(O(rn)=O(n^2)\)">\(O(rn)=O(n^2)\)</span>. At a first new point after a box of side <span class="math" data-tex="\(s\)">\(s\)</span>, norm estimates give <span class="math" data-tex="\(\log|F(w)|\geq-O(n^2+rs)\geq-O(s^2)\)">\(\log|F(w)|\geq-O(n^2+rs)\geq-O(s^2)\)</span>. Zero removal gives an analytic upper estimate of the form</p>
+<span class="math math-display" data-tex="\[
+\log|F(w)|\leq O(n^2)+rXR+s^2\log(C_0s/R),
+\]">\[
+\log|F(w)|\leq O(n^2)+rXR+s^2\log(C_0s/R),
+\]</span>
+<p>with fixed constants. The construction only ensures <span class="math" data-tex="\(s\geq n\)">\(s\geq n\)</span>, so it must in particular work in the possible case <span class="math" data-tex="\(s=n\)">\(s=n\)</span>. There, <span class="math" data-tex="\(R=n^q\)">\(R=n^q\)</span> with <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span> would give a negative gain <span class="math" data-tex="\(-(q-1)n^2\log n+O(n^2)\)">\(-(q-1)n^2\log n+O(n^2)\)</span>, but the positive growth allowance <span class="math" data-tex="\(rXR\)">\(rXR\)</span> has size <span class="math" data-tex="\(n^{1+q}\)">\(n^{1+q}\)</span>. Since <span class="math" data-tex="\(n^{q-1}/\log n\to\infty\)">\(n^{q-1}/\log n\to\infty\)</span>, this allowance dominates the gain. This says the available upper estimate fails to force smallness; it does not claim the actual function attains that upper bound.</p>
+<p>With <span class="math" data-tex="\(R=tn\)">\(R=tn\)</span>, the zero term is <span class="math" data-tex="\(n^2\log(C_0/t)\)">\(n^2\log(C_0/t)\)</span> and the growth term is asymptotically <span class="math" data-tex="\(cXt\,n^2\)">\(cXt\,n^2\)</span>. After division by <span class="math" data-tex="\(n^2\)">\(n^2\)</span>, all terms are fixed constants. Increasing <span class="math" data-tex="\(n\)">\(n\)</span> supplies no new advantage, while taking <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span> increases the linear positive cost faster than the logarithmic negative gain. No sign contradiction uniform in the original data follows from these estimates. A very large last box could improve particular estimates, but the construction does not guarantee one.</p>
+<p>With <span class="math" data-tex="\(a\)">\(a\)</span> frequency directions and <span class="math" data-tex="\(b\)">\(b\)</span> evaluation directions, balancing <span class="math" data-tex="\(r^a\)">\(r^a\)</span> against <span class="math" data-tex="\(n^b\)">\(n^b\)</span> requires <span class="math" data-tex="\(r\)">\(r\)</span> of order <span class="math" data-tex="\(n^{b/a}\)">\(n^{b/a}\)</span>. At <span class="math" data-tex="\(s=n\)">\(s=n\)</span>, a radius <span class="math" data-tex="\(n^q\)">\(n^q\)</span> must have <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span> to gain a negative multiple of <span class="math" data-tex="\(n^b\log n\)">\(n^b\log n\)</span>. To keep the growth allowance <span class="math" data-tex="\(rR\)">\(rR\)</span> from exceeding this scale, one needs</p>
+<span class="math math-display" data-tex="\[
+\frac ba+q\leq b.
+\]">\[
+\frac ba+q\leq b.
+\]</span>
+<p>Thus the required interval is <span class="math" data-tex="\(1&lt;q\leq b-b/a\)">\(1&lt;q\leq b-b/a\)</span>, which is nonempty exactly when <span class="math" data-tex="\(ab&gt;a+b\)">\(ab&gt;a+b\)</span>. For <span class="math" data-tex="\((a,b)=(2,3)\)">\((a,b)=(2,3)\)</span>, it allows <span class="math" data-tex="\(1&lt;q\leq3/2\)">\(1&lt;q\leq3/2\)</span>, the choice in Theorem 5.8. For <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span>, it demands <span class="math" data-tex="\(1&lt;q\leq1\)">\(1&lt;q\leq1\)</span>, an empty interval. This identifies the dimension obstruction in this proof without resolving the four exponentials conjecture.</p>
+</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>J.-H. Evertse, <em>Diophantine Approximation</em>, Leiden course notes: <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-3.pdf">Chapter 3</a>, Theorems 3.18 and 3.20, for Siegel's lemma over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and over the ring of integers of a number field, with coefficients measured by the house; <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-4.pdf">Chapter 4</a>, Lemmas 4.25–4.26, for the maximum modulus principle and the estimate from many zeros.</p>
+</li>
+<li>
+<p>Michel Waldschmidt, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/QueensPaper52.pdf"><em>Transcendence Methods</em></a>, Queen's Papers in Pure and Applied Mathematics 52, Queen's University, Kingston, 1979: §1.2, Lemma 1.2.1, for Siegel's lemma with the bound from the sums of positive and negative coefficients; §1.3, Lemma 1.3.1, for Schwarz's lemma with multiplicities; §3.2, Theorem 3.2.1, for the six exponentials theorem by Schneider's method, in either formulation.</p>
+</li>
+<li>
+<p>K. Soundararajan, <a href="https://math.stanford.edu/~ksound/TransNotes.pdf"><em>Transcendental Number Theory</em></a>, Math 249A course notes, Stanford University, Fall 2010, written up by I. Petrow, §12, Theorem 21 and Lemma 4: the auxiliary-function proof of the six exponentials theorem and the number-field Siegel lemma.</p>
+</li>
+<li>
+<p>Jiří Lebl, <a href="https://www.jirka.org/ca/ca.pdf"><em>Guide to Cultivating Complex Analysis</em></a>, version 1.9, July 11, 2026: Theorems 3.3.1 and 3.3.3, the exact open Taylor-expansion and differentiability prerequisites. Copyright © 2019–2026 Jiří Lebl; dual CC BY-NC-SA 4.0 / CC BY-SA 4.0, with CC BY-SA used for these linked proofs. The original text of this lesson remains CC0.</p>
+</li>
+<li>
+<p>Michel Waldschmidt, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/FourExponentialsSchanuel.pdf"><em>The Four Exponentials Problem and the Schanuel Conjecture</em></a>, author manuscript dated May 26, 2022, §4: historical attribution and the conjectural four-exponentials formulation. Its availability online is not treated as permission to reproduce its text.</p>
+</li>
+<li>
+<p>K. Ramachandra, “Contributions to the theory of transcendental numbers” <a href="https://matwbn.icm.edu.pl/ksiazki/aa/aa14/aa1416.pdf">I</a> and <a href="https://matwbn.icm.edu.pl/ksiazki/aa/aa14/aa1417.pdf">II</a>, <em>Acta Arithmetica</em> 14 (1968), 65–72 and 73–88. Lang published the six exponentials theorem in 1966; Ramachandra notes in his first paper that the result was known earlier to Schneider and Siegel without publication. Waldschmidt's survey above, §4, recounts this history.</p>
+</li>
+<li>
+<p>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, version 3.08, July 19, 2020: Proposition 2.26 proves nondegeneracy of the embedding matrix, and Proposition 2.29 supplies a full integral basis for a number field. These give parallel proofs of the arithmetic prerequisites specified above.</p>
+</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="TR-TRANS-04.html">← Lindemann, pi and the Lindemann–Weierstrass theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-TRANS-06.html">Gelfond–Schneider and Hilbert&#x27;s seventh problem →</a></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-05.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

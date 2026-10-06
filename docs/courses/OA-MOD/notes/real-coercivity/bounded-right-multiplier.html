@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From a coercive vector equation to bounded multiplication · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/notes/real-coercivity/bounded-right-multiplier.html">
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="from-a-coercive-vector-equation-to-bounded-multiplication">From a coercive vector equation to bounded multiplication</h1>
+<p><strong>Original exposition and proof: OpenAI Codex (GPT-6 Astra, Ultra), October 2026. CC0-1.0.</strong></p>
+<p>A solution in the Hilbert norm need not be a bounded multiplier. This note proves the extra conclusion needed in the bounded construction of the modular theorem. It develops the graph argument in Rieffel and Van Daele's <a href="https://msp.org/pjm/1977/69-1/pjm-v69-n1-p17-s.pdf#page=24">Lemmas 5.4 and 5.6, printed pages 209–213</a>, starting with the corrected real equation in <a href="real-coercive-equations.html">RC.1–RC.5</a>. The proof below uses continuous cutoffs and proves the required bounded calculus explicitly.</p>
+<p>All Hilbert spaces may be nonseparable. Inner products are linear in the first variable. The only Hilbert geometry used is completeness and the inner-product axioms, together with the projection and real Riesz proofs in the preceding note. No modular commutant theorem, right-algebra density theorem, unbounded spectral theorem, or polar decomposition is an input.</p>
+<h2 id="gp0-the-bounded-calculus-used-in-the-proof">GP0. The bounded calculus used in the proof</h2>
+<p>Norm limits of bounded operators exist whenever the operator sequence is Cauchy: for each vector <span class="math" data-tex="\(x\)">\(x\)</span>, completeness of <span class="math" data-tex="\(H\)">\(H\)</span> gives <span class="math" data-tex="\(Tx=\lim_n T_nx\)">\(Tx=\lim_n T_nx\)</span>. Passing to the limit proves linearity and boundedness; a uniform Cauchy estimate <span class="math" data-tex="\(\|(T_n-T_m)x\|\leq\varepsilon\|x\|\)">\(\|(T_n-T_m)x\|\leq\varepsilon\|x\|\)</span> then proves operator-norm convergence as <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span>. In particular an operator series whose norms have finite sum converges in operator norm. This justifies the calculus limits and the geometric inverse below.</p>
+<p>We record the tools so that the later cutoff is an actual proof step. Cauchy–Schwarz follows by applying positivity to <span class="math" data-tex="\(x-ty\)">\(x-ty\)</span> and minimizing over the complex scalar <span class="math" data-tex="\(t\)">\(t\)</span>; the same argument applies to any positive semidefinite sesquilinear form. For a bounded positive operator <span class="math" data-tex="\(A\)">\(A\)</span>, put
+<span class="math math-display" data-tex="\[
+m=\sup_{\|x\|=1}\langle Ax,x\rangle.
+\]">\[
+m=\sup_{\|x\|=1}\langle Ax,x\rangle.
+\]</span>
+Form Cauchy–Schwarz and the identity <span class="math" data-tex="\(\|v\|=\sup_{\|y\|=1}|\langle v,y\rangle|\)">\(\|v\|=\sup_{\|y\|=1}|\langle v,y\rangle|\)</span> give
+<span class="math math-display" data-tex="\[
+\|Ax\|^2\leq m\langle Ax,x\rangle\leq m^2\|x\|^2.
+\tag{GP0.1}
+\]">\[
+\|Ax\|^2\leq m\langle Ax,x\rangle\leq m^2\|x\|^2.
+\tag{GP0.1}
+\]</span>
+Thus <span class="math" data-tex="\(\|A\|=m\)">\(\|A\|=m\)</span>. In particular, if <span class="math" data-tex="\(0\leq A\leq I\)">\(0\leq A\leq I\)</span>, then <span class="math" data-tex="\(A-A^2\geq0\)">\(A-A^2\geq0\)</span>.</p>
+<p>Bounded adjoints require no extra representation theorem here. The real Riesz proof gives a vector representing the real part of a bounded complex-linear functional. Testing also at <span class="math" data-tex="\(ix\)">\(ix\)</span> recovers its imaginary part, and hence its representation as <span class="math" data-tex="\(x\mapsto\langle x,v\rangle\)">\(x\mapsto\langle x,v\rangle\)</span>. Applying this to <span class="math" data-tex="\(x\mapsto\langle Tx,y\rangle\)">\(x\mapsto\langle Tx,y\rangle\)</span> defines <span class="math" data-tex="\(T^*y\)">\(T^*y\)</span>; the defining equality proves linearity, the product rule, and <span class="math" data-tex="\(\|T^*\|=\|T\|\)">\(\|T^*\|=\|T\|\)</span>. It also gives <span class="math" data-tex="\(\|T^*T\|=\|T\|^2\)">\(\|T^*T\|=\|T\|^2\)</span>: one inequality is the operator norm bound, and the other follows from <span class="math" data-tex="\(\|Tx\|^2=\langle T^*Tx,x\rangle\)">\(\|Tx\|^2=\langle T^*Tx,x\rangle\)</span>.</p>
+<p>Here is continuous calculus for a positive contraction <span class="math" data-tex="\(A\)">\(A\)</span>, in precisely the form we need. For a continuous real function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, its Bernstein polynomial is
+<span class="math math-display" data-tex="\[
+B_n f(t)=\sum_{k=0}^n f(k/n){n\choose k}t^k(1-t)^{n-k}.
+\tag{GP0.2}
+\]">\[
+B_n f(t)=\sum_{k=0}^n f(k/n){n\choose k}t^k(1-t)^{n-k}.
+\tag{GP0.2}
+\]</span>
+These polynomials converge uniformly to <span class="math" data-tex="\(f\)">\(f\)</span>. Indeed the nonnegative binomial weights sum to one, have mean <span class="math" data-tex="\(t\)">\(t\)</span>, and have variance <span class="math" data-tex="\(t(1-t)/n\leq1/(4n)\)">\(t(1-t)/n\leq1/(4n)\)</span>; the mean and variance follow by differentiating <span class="math" data-tex="\((s+t)^n\)">\((s+t)^n\)</span> once and twice and then setting <span class="math" data-tex="\(s=1-t\)">\(s=1-t\)</span>. Uniform continuity gives, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, a <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> on which the oscillation of <span class="math" data-tex="\(f\)">\(f\)</span> is at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The sum of the weights with <span class="math" data-tex="\(|k/n-t|\geq\delta\)">\(|k/n-t|\geq\delta\)</span> is at most <span class="math" data-tex="\(1/(4n\delta^2)\)">\(1/(4n\delta^2)\)</span>, by multiplying each of those weights by the lower bound for its squared deviation. Consequently
+<span class="math math-display" data-tex="\[
+|B_nf(t)-f(t)|\leq\varepsilon+\frac{2\|f\|_\infty}{4n\delta^2}.
+\tag{GP0.3}
+\]">\[
+|B_nf(t)-f(t)|\leq\varepsilon+\frac{2\|f\|_\infty}{4n\delta^2}.
+\tag{GP0.3}
+\]</span>
+The uniform continuity used here follows from interval compactness: otherwise pairs at distance tending to zero with a fixed positive oscillation have a common convergent subsequence, contradicting continuity. Interval compactness follows by nested bisection and completeness of the real numbers.</p>
+<p>Each operator <span class="math" data-tex="\(A^k(I-A)^{n-k}\)">\(A^k(I-A)^{n-k}\)</span> is positive. Remove the even powers as the same polynomial factor on both sides of a quadratic form; the remaining factor is one of <span class="math" data-tex="\(I,A,I-A,A(I-A)\)">\(I,A,I-A,A(I-A)\)</span>, all positive by (GP0.1). The operator binomial weights therefore are positive and sum to <span class="math" data-tex="\(I\)">\(I\)</span>. It follows that
+<span class="math math-display" data-tex="\[
+-\|f\|_\infty I\leq B_nf(A)\leq\|f\|_\infty I,
+\qquad \|B_nf(A)\|\leq\|f\|_\infty.
+\tag{GP0.4}
+\]">\[
+-\|f\|_\infty I\leq B_nf(A)\leq\|f\|_\infty I,
+\qquad \|B_nf(A)\|\leq\|f\|_\infty.
+\tag{GP0.4}
+\]</span>
+For the last norm estimate, a self-adjoint <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(-cI\leq T\leq cI\)">\(-cI\leq T\leq cI\)</span> has norm at most <span class="math" data-tex="\(c\)">\(c\)</span>: for <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, apply (GP0.1) to <span class="math" data-tex="\((T+cI)/(2c)\)">\((T+cI)/(2c)\)</span> to obtain <span class="math" data-tex="\(T^2\leq c^2I\)">\(T^2\leq c^2I\)</span>; the case <span class="math" data-tex="\(c=0\)">\(c=0\)</span> follows by polarization.</p>
+<p>For a fixed polynomial <span class="math" data-tex="\(p\)">\(p\)</span>, the coefficients of <span class="math" data-tex="\(B_np\)">\(B_np\)</span> converge to those of <span class="math" data-tex="\(p\)">\(p\)</span>. One elementary verification for the monomial <span class="math" data-tex="\(t^j\)">\(t^j\)</span> is to express <span class="math" data-tex="\(k^j\)">\(k^j\)</span> as a linear combination of the falling products <span class="math" data-tex="\(k(k-1)\cdots(k-r+1)\)">\(k(k-1)\cdots(k-r+1)\)</span>, <span class="math" data-tex="\(0\leq r\leq j\)">\(0\leq r\leq j\)</span>, whose highest coefficient is one. Binomial differentiation gives the expectation of that product as <span class="math" data-tex="\(n(n-1)\cdots(n-r+1)t^r\)">\(n(n-1)\cdots(n-r+1)t^r\)</span>. After division by <span class="math" data-tex="\(n^j\)">\(n^j\)</span>, only <span class="math" data-tex="\(r=j\)">\(r=j\)</span> survives in the limit. Linearity proves the assertion. Thus (GP0.4) implies <span class="math" data-tex="\(\|p(A)\|\leq\|p\|_\infty\)">\(\|p(A)\|\leq\|p\|_\infty\)</span> for real polynomials. For a complex polynomial use <span class="math" data-tex="\(p(A)^*p(A)=(\overline p p)(A)\)">\(p(A)^*p(A)=(\overline p p)(A)\)</span> and the adjoint norm identity.</p>
+<p>Uniform polynomial approximation now defines <span class="math" data-tex="\(f(A)\)">\(f(A)\)</span> for every continuous complex <span class="math" data-tex="\(f\)">\(f\)</span>. The limit is independent of the approximating sequence, preserves sums, products and conjugation, and has norm at most <span class="math" data-tex="\(\|f\|_\infty\)">\(\|f\|_\infty\)</span>. Positivity follows by using the nonnegative Bernstein weights when <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>; hence scalar inequalities are preserved. An operator commuting with <span class="math" data-tex="\(A\)">\(A\)</span> commutes with every <span class="math" data-tex="\(f(A)\)">\(f(A)\)</span>, by polynomial approximation. In particular square roots of positive contractions are available, and
+<span class="math math-display" data-tex="\[
+\langle Ax,x\rangle=\|A^{1/2}x\|^2.
+\tag{GP0.5}
+\]">\[
+\langle Ax,x\rangle=\|A^{1/2}x\|^2.
+\tag{GP0.5}
+\]</span>
+Positive operators of arbitrary finite norm are reduced to contractions by scaling. This proves all the continuous calculus needed below. It makes no Borel or unbounded calculus assertion.</p>
+<h2 id="gp1-algebraic-setting-and-the-coercive-vector">GP1. Algebraic setting and the coercive vector</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be a dense complex involutive algebra in a Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>, with involution <span class="math" data-tex="\(x\mapsto x^\sharp\)">\(x\mapsto x^\sharp\)</span>. Assume:</p>
+<ol>
+<li>Each left multiplication <span class="math" data-tex="\(L_x y=xy\)">\(L_x y=xy\)</span> extends boundedly to <span class="math" data-tex="\(H\)">\(H\)</span>.</li>
+<li><span class="math" data-tex="\(L_x^*=L_{x^\sharp}\)">\(L_x^*=L_{x^\sharp}\)</span>.</li>
+<li>The linear span <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span> of products is dense in <span class="math" data-tex="\(H\)">\(H\)</span>.</li>
+</ol>
+<p>Every left Hilbert algebra has these properties. We will not need its additional closability axiom for the assertion in this note. Define
+<span class="math math-display" data-tex="\[
+K=\overline{\operatorname{span}_{\mathbb R}\{x^\sharp x:x\in\mathcal A\}},
+\qquad E=(iK)^{\perp_{\mathbb R}}.
+\tag{GP1.1}
+\]">\[
+K=\overline{\operatorname{span}_{\mathbb R}\{x^\sharp x:x\in\mathcal A\}},
+\qquad E=(iK)^{\perp_{\mathbb R}}.
+\tag{GP1.1}
+\]</span>
+For <span class="math" data-tex="\(\xi\in K\)">\(\xi\in K\)</span>, <span class="math" data-tex="\(\lambda\in\mathbb C\)">\(\lambda\in\mathbb C\)</span>, and <span class="math" data-tex="\(\alpha=\operatorname{Re}\lambda&gt;0\)">\(\alpha=\operatorname{Re}\lambda&gt;0\)</span>, the preceding real coercivity proof supplies a unique <span class="math" data-tex="\(\eta\in E\)">\(\eta\in E\)</span> such that
+<span class="math math-display" data-tex="\[
+\langle\xi,z\rangle
+=\operatorname{Re}(\lambda\langle\eta,z\rangle)
+\quad(z\in E),\qquad
+\|\eta\|\leq\alpha^{-1}\|\xi\|.
+\tag{GP1.2}
+\]">\[
+\langle\xi,z\rangle
+=\operatorname{Re}(\lambda\langle\eta,z\rangle)
+\quad(z\in E),\qquad
+\|\eta\|\leq\alpha^{-1}\|\xi\|.
+\tag{GP1.2}
+\]</span></p>
+<p><strong>Theorem.</strong> If in addition <span class="math" data-tex="\(\xi\in\mathcal A\)">\(\xi\in\mathcal A\)</span>, there is a bounded self-adjoint operator <span class="math" data-tex="\(R_\eta\)">\(R_\eta\)</span> satisfying
+<span class="math math-display" data-tex="\[
+R_\eta x=L_x\eta\quad(x\in\mathcal A),\qquad
+R_\eta L_x=L_xR_\eta,
+\qquad
+\|R_\eta\|\leq\frac{\|L_\xi\|}{\alpha}.
+\tag{GP1.3}
+\]">\[
+R_\eta x=L_x\eta\quad(x\in\mathcal A),\qquad
+R_\eta L_x=L_xR_\eta,
+\qquad
+\|R_\eta\|\leq\frac{\|L_\xi\|}{\alpha}.
+\tag{GP1.3}
+\]</span>
+Thus <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a bounded right-algebra vector with <span class="math" data-tex="\(\eta^\flat=\eta\)">\(\eta^\flat=\eta\)</span>. The conclusion retains arbitrary Hilbert spaces and nonunital algebras.</p>
+<p>For use in the proof, define <span class="math" data-tex="\(\mathcal A&#x27;\)">\(\mathcal A&#x27;\)</span> to consist of vectors <span class="math" data-tex="\(w\)">\(w\)</span> for which bounded <span class="math" data-tex="\(R_w\)">\(R_w\)</span> and a vector <span class="math" data-tex="\(w^\flat\)">\(w^\flat\)</span> obey
+<span class="math math-display" data-tex="\[
+R_w x=L_xw,\qquad R_w^*x=L_xw^\flat\quad(x\in\mathcal A).
+\tag{GP1.4}
+\]">\[
+R_w x=L_xw,\qquad R_w^*x=L_xw^\flat\quad(x\in\mathcal A).
+\tag{GP1.4}
+\]</span>
+Both objects are unique. Density of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> determines the operator. If <span class="math" data-tex="\(L_xv=0\)">\(L_xv=0\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(v\)">\(v\)</span> is orthogonal to every <span class="math" data-tex="\(L_x^*y=x^\sharp y\)">\(L_x^*y=x^\sharp y\)</span>, and density of products gives <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. This determines the vector. Taking adjoints proves <span class="math" data-tex="\((w^\flat)^\flat=w\)">\((w^\flat)^\flat=w\)</span>. Linear combinations are in <span class="math" data-tex="\(\mathcal A&#x27;\)">\(\mathcal A&#x27;\)</span>, with the usual conjugate coefficients for their flat vectors.</p>
+<p>Every <span class="math" data-tex="\(R_w\)">\(R_w\)</span> commutes with all <span class="math" data-tex="\(L_y\)">\(L_y\)</span>: on <span class="math" data-tex="\(x\in\mathcal A\)">\(x\in\mathcal A\)</span>, associativity gives
+<span class="math math-display" data-tex="\[
+R_wL_yx=L_{yx}w=L_yL_xw=L_yR_wx.
+\]">\[
+R_wL_yx=L_{yx}w=L_yL_xw=L_yR_wx.
+\]</span>
+If <span class="math" data-tex="\(w=w^\flat\)">\(w=w^\flat\)</span>, then <span class="math" data-tex="\(R_w\)">\(R_w\)</span> is self-adjoint and
+<span class="math math-display" data-tex="\[
+\langle w,x^\sharp x\rangle=\langle L_xw,x\rangle
+=\langle R_wx,x\rangle\in\mathbb R.
+\tag{GP1.5}
+\]">\[
+\langle w,x^\sharp x\rangle=\langle L_xw,x\rangle
+=\langle R_wx,x\rangle\in\mathbb R.
+\tag{GP1.5}
+\]</span>
+So <span class="math" data-tex="\(w\in E\)">\(w\in E\)</span>. Every <span class="math" data-tex="\(w\in\mathcal A&#x27;\)">\(w\in\mathcal A&#x27;\)</span> decomposes as <span class="math" data-tex="\(u+iv\)">\(u+iv\)</span>, where <span class="math" data-tex="\(u=(w+w^\flat)/2\)">\(u=(w+w^\flat)/2\)</span> and <span class="math" data-tex="\(v=(w-w^\flat)/(2i)\)">\(v=(w-w^\flat)/(2i)\)</span> are flat-self-adjoint and belong to <span class="math" data-tex="\(E\)">\(E\)</span>. No density of <span class="math" data-tex="\(\mathcal A&#x27;\)">\(\mathcal A&#x27;\)</span> has been assumed.</p>
+<h2 id="gp2-a-closed-graph-subspace-and-its-four-blocks">GP2. A closed graph subspace and its four blocks</h2>
+<p>For the vector <span class="math" data-tex="\(\eta\in E\)">\(\eta\in E\)</span> in (GP1.2), form the closed complex subspace
+<span class="math math-display" data-tex="\[
+G=\overline{\{(x,L_x\eta):x\in\mathcal A\}}\subset H\oplus H.
+\tag{GP2.1}
+\]">\[
+G=\overline{\{(x,L_x\eta):x\in\mathcal A\}}\subset H\oplus H.
+\tag{GP2.1}
+\]</span>
+We initially use only a closed subspace, without assuming that its closure is the graph of an everywhere-defined operator. The projection proof in the preceding note applies to <span class="math" data-tex="\(G\)">\(G\)</span> as a real subspace. Since <span class="math" data-tex="\(G\)">\(G\)</span> and its real orthogonal complement are stable under multiplication by <span class="math" data-tex="\(i\)">\(i\)</span>, the projection is complex-linear; its real orthogonality is also complex orthogonality. Write it as
+<span class="math math-display" data-tex="\[
+P_G=\begin{pmatrix}a&amp;b\\b^*&amp;c\end{pmatrix}.
+\tag{GP2.2}
+\]">\[
+P_G=\begin{pmatrix}a&amp;b\\b^*&amp;c\end{pmatrix}.
+\tag{GP2.2}
+\]</span>
+Diagonal left multiplication preserves the generating graph and its closure. The same is true for its adjoint, by assumption 2. It follows that the orthogonal complement is invariant too, so the projection commutes with diagonal left multiplication. Thus <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span> all commute with every <span class="math" data-tex="\(L_x\)">\(L_x\)</span>. Positivity, contractivity and <span class="math" data-tex="\(P_G^2=P_G\)">\(P_G^2=P_G\)</span> give
+<span class="math math-display" data-tex="\[
+0\leq a,c\leq I,\quad bb^*=a(I-a),\quad
+b^*b=c(I-c),\quad bc=(I-a)b.
+\tag{GP2.3}
+\]">\[
+0\leq a,c\leq I,\quad bb^*=a(I-a),\quad
+b^*b=c(I-c),\quad bc=(I-a)b.
+\tag{GP2.3}
+\]</span>
+Since <span class="math" data-tex="\((x,L_x\eta)\in G\)">\((x,L_x\eta)\in G\)</span>, applying the projection and moving its blocks past <span class="math" data-tex="\(L_x\)">\(L_x\)</span> yields
+<span class="math math-display" data-tex="\[
+L_xb\eta=(I-a)x,\qquad L_x(I-c)\eta=b^*x.
+\tag{GP2.4}
+\]">\[
+L_xb\eta=(I-a)x,\qquad L_x(I-c)\eta=b^*x.
+\tag{GP2.4}
+\]</span></p>
+<p>The condition <span class="math" data-tex="\(\eta\in E\)">\(\eta\in E\)</span> says that <span class="math" data-tex="\(\langle L_x\eta,x\rangle=\langle\eta,x^\sharp x\rangle\)">\(\langle L_x\eta,x\rangle=\langle\eta,x^\sharp x\rangle\)</span> is real. Polarization gives
+<span class="math math-display" data-tex="\[
+\langle L_x\eta,y\rangle=\langle x,L_y\eta\rangle
+\quad(x,y\in\mathcal A).
+\tag{GP2.5}
+\]">\[
+\langle L_x\eta,y\rangle=\langle x,L_y\eta\rangle
+\quad(x,y\in\mathcal A).
+\tag{GP2.5}
+\]</span>
+For completeness, subtract the two sides to form a sesquilinear form <span class="math" data-tex="\(D(x,y)\)">\(D(x,y)\)</span> with <span class="math" data-tex="\(D(x,x)=0\)">\(D(x,x)=0\)</span>. Substitution of <span class="math" data-tex="\(x+y\)">\(x+y\)</span> and <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span> gives <span class="math" data-tex="\(D(x,y)+D(y,x)=0\)">\(D(x,y)+D(y,x)=0\)</span> and <span class="math" data-tex="\(-iD(x,y)+iD(y,x)=0\)">\(-iD(x,y)+iD(y,x)=0\)</span>, forcing both terms to vanish. Hence <span class="math" data-tex="\((L_x\eta,-x)\in G^\perp\)">\((L_x\eta,-x)\in G^\perp\)</span>. The zero projection of this vector gives
+<span class="math math-display" data-tex="\[
+L_xa\eta=bx,\qquad L_xb^*\eta=cx.
+\tag{GP2.6}
+\]">\[
+L_xa\eta=bx,\qquad L_xb^*\eta=cx.
+\tag{GP2.6}
+\]</span></p>
+<p>The first block is injective. If <span class="math" data-tex="\(av=0\)">\(av=0\)</span>, then (GP2.3) gives <span class="math" data-tex="\(\|b^*v\|^2=\langle a(I-a)v,v\rangle=0\)">\(\|b^*v\|^2=\langle a(I-a)v,v\rangle=0\)</span>. Therefore <span class="math" data-tex="\(P_G(v,0)=0\)">\(P_G(v,0)=0\)</span>. Orthogonality to (GP2.1) implies <span class="math" data-tex="\(\langle v,x\rangle=0\)">\(\langle v,x\rangle=0\)</span> for every <span class="math" data-tex="\(x\in\mathcal A\)">\(x\in\mathcal A\)</span>, so <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Injectivity alone does not yet give a bounded inverse.</p>
+<h2 id="gp3-cutoff-vectors-that-may-be-tested-in-the-equation">GP3. Cutoff vectors that may be tested in the equation</h2>
+<p>Let <span class="math" data-tex="\(e=f(a)\)">\(e=f(a)\)</span>, where <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span> is continuous on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. It commutes with <span class="math" data-tex="\(a\)">\(a\)</span> and all <span class="math" data-tex="\(L_x\)">\(L_x\)</span>, but we do not assume that it commutes with <span class="math" data-tex="\(b\)">\(b\)</span>. Set
+<span class="math math-display" data-tex="\[
+w=e bb^*\eta=e a(I-a)\eta,
+\qquad w^\flat=b^*e b\eta,
+\qquad d=e(I-a)b.
+\tag{GP3.1}
+\]">\[
+w=e bb^*\eta=e a(I-a)\eta,
+\qquad w^\flat=b^*e b\eta,
+\qquad d=e(I-a)b.
+\tag{GP3.1}
+\]</span>
+These names satisfy the right-algebra definition: equations (GP2.4–6) give
+<span class="math math-display" data-tex="\[
+L_xw=e b c x=e(I-a)b x=dx,
+\qquad L_xw^\flat=b^*e(I-a)x=d^*x.
+\tag{GP3.2}
+\]">\[
+L_xw=e b c x=e(I-a)b x=dx,
+\qquad L_xw^\flat=b^*e(I-a)x=d^*x.
+\tag{GP3.2}
+\]</span>
+Consequently <span class="math" data-tex="\(w\in\mathcal A&#x27;\)">\(w\in\mathcal A&#x27;\)</span> with exactly the flat vector displayed in (GP3.1).</p>
+<p>Equation (GP1.2), first applied to the flat-self-adjoint parts of a vector <span class="math" data-tex="\(z\in\mathcal A&#x27;\)">\(z\in\mathcal A&#x27;\)</span>, gives the complex identity
+<span class="math math-display" data-tex="\[
+2\langle\xi,z\rangle
+=\lambda\langle\eta,z\rangle
++\overline\lambda\langle z^\flat,\eta\rangle.
+\tag{GP3.3}
+\]">\[
+2\langle\xi,z\rangle
+=\lambda\langle\eta,z\rangle
++\overline\lambda\langle z^\flat,\eta\rangle.
+\tag{GP3.3}
+\]</span>
+Indeed it holds for a flat-self-adjoint <span class="math" data-tex="\(z\in E\)">\(z\in E\)</span> by taking a real part; writing <span class="math" data-tex="\(z=u+iv\)">\(z=u+iv\)</span> then proves the formula, because both sides are conjugate-linear in this decomposition variable. This justification is needed before using a cutoff vector which need not itself belong to <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Substitute <span class="math" data-tex="\(z=w^\flat\)">\(z=w^\flat\)</span> in (GP3.3). The numbers <span class="math" data-tex="\(\langle\eta,b^*eb\eta\rangle\)">\(\langle\eta,b^*eb\eta\rangle\)</span> and <span class="math" data-tex="\(\langle e a(I-a)\eta,\eta\rangle\)">\(\langle e a(I-a)\eta,\eta\rangle\)</span> are real and nonnegative. Taking real parts and using the weighted inequality <span class="math" data-tex="\(2rs\leq\alpha^{-1}r^2+\alpha s^2\)">\(2rs\leq\alpha^{-1}r^2+\alpha s^2\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha\bigl(\|e^{1/2}b\eta\|^2+\langle ea(I-a)\eta,\eta\rangle\bigr)
+&amp;=2\operatorname{Re}\langle e^{1/2}b\xi,e^{1/2}b\eta\rangle\\
+&amp;\leq\alpha^{-1}\|e^{1/2}b\xi\|^2
+ +\alpha\|e^{1/2}b\eta\|^2.
+\end{aligned}
+\tag{GP3.4}
+\]">\[
+\begin{aligned}
+\alpha\bigl(\|e^{1/2}b\eta\|^2+\langle ea(I-a)\eta,\eta\rangle\bigr)
+&amp;=2\operatorname{Re}\langle e^{1/2}b\xi,e^{1/2}b\eta\rangle\\
+&amp;\leq\alpha^{-1}\|e^{1/2}b\xi\|^2
+ +\alpha\|e^{1/2}b\eta\|^2.
+\end{aligned}
+\tag{GP3.4}
+\]</span>
+All terms are finite. Cancel the common term and use <span class="math" data-tex="\(b\xi=L_\xi a\eta\)">\(b\xi=L_\xi a\eta\)</span> from (GP2.6). Since <span class="math" data-tex="\(e^{1/2}\)">\(e^{1/2}\)</span> commutes with <span class="math" data-tex="\(L_\xi\)">\(L_\xi\)</span>, we obtain, with <span class="math" data-tex="\(C=\|L_\xi\|/\alpha\)">\(C=\|L_\xi\|/\alpha\)</span>,
+<span class="math math-display" data-tex="\[
+\langle ea(I-a)\eta,\eta\rangle
+\leq C^2\langle ea^2\eta,\eta\rangle.
+\tag{GP3.5}
+\]">\[
+\langle ea(I-a)\eta,\eta\rangle
+\leq C^2\langle ea^2\eta,\eta\rangle.
+\tag{GP3.5}
+\]</span></p>
+<h2 id="gp4-a-lower-bound-for-the-projection-block">GP4. A lower bound for the projection block</h2>
+<p>Put <span class="math" data-tex="\(\delta=(1+C^2)^{-1}\)">\(\delta=(1+C^2)^{-1}\)</span>. We prove
+<span class="math math-display" data-tex="\[
+a\geq\delta I.
+\tag{GP4.1}
+\]">\[
+a\geq\delta I.
+\tag{GP4.1}
+\]</span>
+Choose <span class="math" data-tex="\(0&lt;\varepsilon&lt;\delta\)">\(0&lt;\varepsilon&lt;\delta\)</span>, and a nonnegative continuous <span class="math" data-tex="\(f\)">\(f\)</span> supported in <span class="math" data-tex="\([0,\varepsilon]\)">\([0,\varepsilon]\)</span>; put <span class="math" data-tex="\(e=f(a)\)">\(e=f(a)\)</span>. The scalar inequality on its support and GP0 give
+<span class="math math-display" data-tex="\[
+\bigl(1-(1+C^2)\varepsilon\bigr)\langle ea\eta,\eta\rangle
+\leq\langle ea(I-(1+C^2)a)\eta,\eta\rangle\leq0.
+\tag{GP4.2}
+\]">\[
+\bigl(1-(1+C^2)\varepsilon\bigr)\langle ea\eta,\eta\rangle
+\leq\langle ea(I-(1+C^2)a)\eta,\eta\rangle\leq0.
+\tag{GP4.2}
+\]</span>
+The coefficient is positive. Since <span class="math" data-tex="\(ea\geq0\)">\(ea\geq0\)</span>, (GP0.5) gives <span class="math" data-tex="\(ea\eta=0\)">\(ea\eta=0\)</span>. For every <span class="math" data-tex="\(x\in\mathcal A\)">\(x\in\mathcal A\)</span>,
+<span class="math math-display" data-tex="\[
+ebx=eL_xa\eta=L_xea\eta=0.
+\]">\[
+ebx=eL_xa\eta=L_xea\eta=0.
+\]</span>
+Density implies <span class="math" data-tex="\(eb=0\)">\(eb=0\)</span>, and hence <span class="math" data-tex="\(ea(I-a)=ebb^*=0\)">\(ea(I-a)=ebb^*=0\)</span>. Choose a continuous function <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> which equals <span class="math" data-tex="\((1-t)^{-1}\)">\((1-t)^{-1}\)</span> on <span class="math" data-tex="\([0,\varepsilon]\)">\([0,\varepsilon]\)</span>. Multiplying by <span class="math" data-tex="\(h(a)\)">\(h(a)\)</span> gives <span class="math" data-tex="\(ea=0\)">\(ea=0\)</span>. Injectivity of <span class="math" data-tex="\(a\)">\(a\)</span>, proved in GP2, now implies <span class="math" data-tex="\(e=0\)">\(e=0\)</span>.</p>
+<p>In particular take <span class="math" data-tex="\(f(t)=(\varepsilon-t)_+\)">\(f(t)=(\varepsilon-t)_+\)</span>. We have proved <span class="math" data-tex="\((\varepsilon I-a)_+=0\)">\((\varepsilon I-a)_+=0\)</span>. Since the scalar identity
+<span class="math math-display" data-tex="\[
+t-\varepsilon=(t-\varepsilon)_+-(\varepsilon-t)_+
+\]">\[
+t-\varepsilon=(t-\varepsilon)_+-(\varepsilon-t)_+
+\]</span>
+is preserved by GP0, it follows that <span class="math" data-tex="\(a\geq\varepsilon I\)">\(a\geq\varepsilon I\)</span>. Letting <span class="math" data-tex="\(\varepsilon\uparrow\delta\)">\(\varepsilon\uparrow\delta\)</span> in each quadratic form proves (GP4.1). This is a continuous-cutoff proof of a lower spectral bound; no spectral projection has been imported.</p>
+<p>Now <span class="math" data-tex="\(0\leq I-a\leq(1-\delta)I\)">\(0\leq I-a\leq(1-\delta)I\)</span>, so (GP0.1) gives <span class="math" data-tex="\(\|I-a\|\leq1-\delta&lt;1\)">\(\|I-a\|\leq1-\delta&lt;1\)</span>. The norm-convergent geometric series <span class="math" data-tex="\(\sum_{n\geq0}(I-a)^n\)">\(\sum_{n\geq0}(I-a)^n\)</span> is a two-sided inverse of <span class="math" data-tex="\(a\)">\(a\)</span>. It lies in the same commutant, and <span class="math" data-tex="\(\|a^{-1}\|\leq\delta^{-1}\)">\(\|a^{-1}\|\leq\delta^{-1}\)</span>.</p>
+<h2 id="gp5-the-bounded-multiplier-and-its-sharp-estimate">GP5. The bounded multiplier and its sharp estimate</h2>
+<p>Define <span class="math" data-tex="\(R=a^{-1}b\)">\(R=a^{-1}b\)</span>. Equation (GP2.6) gives
+<span class="math math-display" data-tex="\[
+Rx=a^{-1}L_xa\eta=L_x\eta\quad(x\in\mathcal A).
+\tag{GP5.1}
+\]">\[
+Rx=a^{-1}L_xa\eta=L_x\eta\quad(x\in\mathcal A).
+\tag{GP5.1}
+\]</span>
+It commutes with every <span class="math" data-tex="\(L_x\)">\(L_x\)</span>. Equation (GP2.5) shows that <span class="math" data-tex="\(\langle Rx,y\rangle=\langle x,Ry\rangle\)">\(\langle Rx,y\rangle=\langle x,Ry\rangle\)</span> on the dense algebra; boundedness extends the equality to all <span class="math" data-tex="\(H\)">\(H\)</span>, so <span class="math" data-tex="\(R=R^*\)">\(R=R^*\)</span>. This proves that <span class="math" data-tex="\(\eta\in\mathcal A&#x27;\)">\(\eta\in\mathcal A&#x27;\)</span> with <span class="math" data-tex="\(\eta^\flat=\eta\)">\(\eta^\flat=\eta\)</span>.</p>
+<p>Finally (GP2.3) gives the exact operator identity
+<span class="math math-display" data-tex="\[
+R^2=RR^*=a^{-1}bb^*a^{-1}=a^{-1}-I.
+\tag{GP5.2}
+\]">\[
+R^2=RR^*=a^{-1}bb^*a^{-1}=a^{-1}-I.
+\tag{GP5.2}
+\]</span>
+The positive inverse has norm at most <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span>, whence
+<span class="math math-display" data-tex="\[
+0\leq R^2\leq(\delta^{-1}-1)I=C^2I,
+\qquad \|R\|\leq C.
+\tag{GP5.3}
+\]">\[
+0\leq R^2\leq(\delta^{-1}-1)I=C^2I,
+\qquad \|R\|\leq C.
+\tag{GP5.3}
+\]</span>
+This proves the theorem, including its multiplier norm bound. If <span class="math" data-tex="\(C=0\)">\(C=0\)</span>, then <span class="math" data-tex="\(a=I\)">\(a=I\)</span>, <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, and nondegeneracy gives <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>; the same argument therefore covers that endpoint.</p>
+<p>The closure (GP2.1) is now the graph of <span class="math" data-tex="\(R\)">\(R\)</span>, because <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is dense and <span class="math" data-tex="\(R\)">\(R\)</span> is bounded. Moreover (GP5.2) identifies
+<span class="math math-display" data-tex="\[
+a=(I+R^2)^{-1},\qquad b=aR,
+\qquad c=R^2(I+R^2)^{-1}.
+\tag{GP5.4}
+\]">\[
+a=(I+R^2)^{-1},\qquad b=aR,
+\qquad c=R^2(I+R^2)^{-1}.
+\tag{GP5.4}
+\]</span>
+For the last formula, the projection onto the graph of a bounded self-adjoint <span class="math" data-tex="\(R\)">\(R\)</span> sends <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> to <span class="math" data-tex="\((x,Rx)\)">\((x,Rx)\)</span>, where orthogonality to all <span class="math" data-tex="\((y,Ry)\)">\((y,Ry)\)</span> gives <span class="math" data-tex="\((I+R^2)x=u+Rv\)">\((I+R^2)x=u+Rv\)</span>. This proves the entire block formula and explains the geometry of (GP4.1).</p>
+<h2 id="gp6-equality-example-and-the-next-modular-step">GP6. Equality example and the next modular step</h2>
+<p>For <span class="math" data-tex="\(H=\mathbb C\)">\(H=\mathbb C\)</span> and <span class="math" data-tex="\(\mathcal A=\mathbb C\)">\(\mathcal A=\mathbb C\)</span> with ordinary multiplication and inner product, <span class="math" data-tex="\(K=E=\mathbb R\)">\(K=E=\mathbb R\)</span>. Choose <span class="math" data-tex="\(\lambda=\alpha&gt;0\)">\(\lambda=\alpha&gt;0\)</span>, <span class="math" data-tex="\(\xi=\alpha C\)">\(\xi=\alpha C\)</span>, <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span>. Then <span class="math" data-tex="\(\eta=C\)">\(\eta=C\)</span>, <span class="math" data-tex="\(R_\eta=CI\)">\(R_\eta=CI\)</span>, and equality holds in both the multiplier estimate and the projection-block bound. At <span class="math" data-tex="\(C=2\)">\(C=2\)</span>, the graph projection is
+<span class="math math-display" data-tex="\[
+P_G=\frac15\begin{pmatrix}1&amp;2\\2&amp;4\end{pmatrix},
+\qquad P_G(1,0)=(1/5,2/5).
+\tag{GP6.1}
+\]">\[
+P_G=\frac15\begin{pmatrix}1&amp;2\\2&amp;4\end{pmatrix},
+\qquad P_G(1,0)=(1/5,2/5).
+\tag{GP6.1}
+\]</span></p>
+<figure><img src="figures/bounded-right-graph.svg" alt="The real slice of the graph y=2x, with the orthogonal projection of (1,0) at (1/5,2/5)." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Exact real coordinate slice of the complex graph in (GP6.1). The dashed segment is perpendicular to the graph: its direction <span class="math" data-tex="\((4/5,-2/5)\)">\((4/5,-2/5)\)</span> has zero dot product with <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span>. If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is the graph angle, then <span class="math" data-tex="\(a=\cos^2\theta=1/5\)">\(a=\cos^2\theta=1/5\)</span> and <span class="math" data-tex="\(\|R_\eta\|=\tan\theta=2\)">\(\|R_\eta\|=\tan\theta=2\)</span>. Thus the lower bound for the first projection block gives the upper bound for the multiplier. This is an equality example, not a claim that all graph subspaces are two-dimensional. Reproducible figure source.</em></p>
+<p>Together with RC.5, GP1–GP5 prove both assertions of the free paper's Lemma 5.6, and quantify the second for every <span class="math" data-tex="\(\operatorname{Re}\lambda&gt;0\)">\(\operatorname{Re}\lambda&gt;0\)</span>. Its later real-subspace identities, integral kernels and modular commutant theorem are separate steps. In particular this note does not assert that <span class="math" data-tex="\(\mathcal A&#x27;\)">\(\mathcal A&#x27;\)</span> is dense or that the current full modular manuscript has been reconstructed. It supplies the corrected vector-and-multiplier input for that reconstruction.</p>
+<p>The continuation <a href="bounded-real-subspaces.html">Real subspaces and the bounded modular equation</a> now proves the associated bounded geometry, the unitary group, right-vector density, and both equations corresponding to Lemma 5.8.</p>
+<p><strong>Free mathematical source.</strong> Marc A. Rieffel and Alfons Van Daele, <em>A bounded operator approach to Tomita–Takesaki theory</em>, Pacific Journal of Mathematics <strong>69</strong> (1977), 187–221, <a href="https://msp.org/pjm/1977/69-1/pjm-v69-n1-p17-s.pdf">freely readable publisher PDF</a>. The selected source material is Notation 5.1, Definition 5.2, Proposition 5.3, Lemma 5.4 and Lemma 5.6. The nonsymmetric existence step is replaced by RC.1–RC.5. Continuous cutoffs replace the source's spectral projections in the proof above, and the exact multiplier bound is derived in GP5.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

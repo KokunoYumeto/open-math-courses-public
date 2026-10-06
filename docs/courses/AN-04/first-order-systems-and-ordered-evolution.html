@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First-order systems and ordered evolution · Fourier-integral operators</title>
+<meta name="description" content="A lesson of the course Fourier-integral operators. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AN-04/first-order-systems-and-ordered-evolution.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Fourier-integral operators</a> <span aria-hidden="true">›</span> <span>Lesson 9 of 10</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="first-order-systems-and-ordered-evolution">First-order systems and ordered evolution</h1>
+<p>A matrix equation can exchange energy between components. Positivity must therefore control the Hermitian quadratic form of its symbol. We prove the forward Cauchy theorem with that condition, construct its evolution in the correct coefficient order, and distinguish it from the additional hypotheses needed to solve backwards. An explicit coupled two-speed equation shows why a system's singularities need not follow a single scalar Hamiltonian.</p>
+<p>The scalar energy and Hilbert representation arguments are proved in <a href="reconstructions/20261005-restored-first-order-cauchy/first-order-cauchy-energy-and-wavefront.html">First-order Cauchy problems: energy and wavefront transport</a>, Sections 1–3. The exact Hilbert-valued composition, adjoint, Sobolev and positivity providers are Sections 1–6 of AN-03's <a href="../bott-and-weyl-traces/positive-quantization.html">Positivity through a moving family of scalar probes</a>, specifically (P7)–(P15) and (P22)–(P47), at <span class="math" data-tex="\(\rho=1,\delta=0\)">\(\rho=1,\delta=0\)</span>. That programme proof allows arbitrary Hilbert coefficients and preserves the order of every operator product. Its combined lesson is GFDL-1.2-only, with no invariant sections or cover texts; its expression is not reproduced here. The present receiving argument and examples are independently written. Hörmander III, §23.1, is the scalar source comparison, rather than an external proof provider.</p>
+<h2 id="1-hilbert-coefficients-and-the-uniform-hermitian-condition">1. Hilbert coefficients and the uniform Hermitian condition</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a separable complex Hilbert space, with inner product linear in its first entry. Finite systems correspond to <span class="math" data-tex="\(K=\mathbb C^N\)">\(K=\mathbb C^N\)</span>, with its Euclidean norm. Put
+<span class="math math-display" data-tex="\[
+ \mathcal H^s=H^s(\mathbb R^n;K),\qquad
+ E_s=\langle D\rangle^s I_K,\qquad
+ \|v\|_s^2=(2\pi)^{-n}\int
+       \langle\xi\rangle^{2s}\|\widehat v(\xi)\|_K^2\,d\xi. \tag{SY1}
+\]">\[
+ \mathcal H^s=H^s(\mathbb R^n;K),\qquad
+ E_s=\langle D\rangle^s I_K,\qquad
+ \|v\|_s^2=(2\pi)^{-n}\int
+       \langle\xi\rangle^{2s}\|\widehat v(\xi)\|_K^2\,d\xi. \tag{SY1}
+\]</span>
+Hilbert-valued Plancherel, Schwartz density and completeness are supplied by (P14)–(P15) of the stated programme provider. The Sobolev dual is <span class="math" data-tex="\(\mathcal H^{-s}\)">\(\mathcal H^{-s}\)</span>, under the pairing extending the integrated <span class="math" data-tex="\(K\)">\(K\)</span> inner product. In particular <span class="math" data-tex="\(E_{2s}:\mathcal H^s\to\mathcal H^{-s}\)">\(E_{2s}:\mathcal H^s\to\mathcal H^{-s}\)</span> is an isometry, and
+<span class="math" data-tex="\(\langle v,E_{2s}v\rangle=\|v\|_s^2\)">\(\langle v,E_{2s}v\rangle=\|v\|_s^2\)</span>.</p>
+<p>Consider, on <span class="math" data-tex="\(0\leq t\leq T&lt;\infty\)">\(0\leq t\leq T&lt;\infty\)</span>,
+<span class="math math-display" data-tex="\[
+ P u=\partial_tu+A(t)u=f,\qquad
+ A(t)=\operatorname{Op}(a(t)),\qquad u(0)=\phi. \tag{SY2}
+\]">\[
+ P u=\partial_tu+A(t)u=f,\qquad
+ A(t)=\operatorname{Op}(a(t)),\qquad u(0)=\phi. \tag{SY2}
+\]</span>
+Left quantization uses <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> and the inverse Fourier coefficient <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>. The hypotheses are:</p>
+<ol>
+<li>The functions <span class="math" data-tex="\(a(t,x,\xi)\)">\(a(t,x,\xi)\)</span> are norm-smooth in <span class="math" data-tex="\((x,\xi)\)">\((x,\xi)\)</span>, with values in <span class="math" data-tex="\(\mathcal L(K)\)">\(\mathcal L(K)\)</span>, and form a bounded subset of the global ordinary class <span class="math" data-tex="\(S^1_{1,0}(K,K)\)">\(S^1_{1,0}(K,K)\)</span>.</li>
+<li>Every spatial and frequency derivative of <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span> is continuous in <span class="math" data-tex="\(t\)">\(t\)</span>, locally in <span class="math" data-tex="\((x,\xi)\)">\((x,\xi)\)</span>, in operator norm.</li>
+<li>There is one finite <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span> such that
+<span class="math math-display" data-tex="\[
+h(t,x,\xi):=\tfrac12(a+a^*)(t,x,\xi)\geq-C I_K
+\quad\hbox{as a Hermitian form, uniformly in }t,x,\xi. \tag{SY3}
+\]">\[
+h(t,x,\xi):=\tfrac12(a+a^*)(t,x,\xi)\geq-C I_K
+\quad\hbox{as a Hermitian form, uniformly in }t,x,\xi. \tag{SY3}
+\]</span></li>
+</ol>
+<p>For a finite system, distributional continuity of the matrix entries is equivalent to hypothesis 2 under hypothesis 1. Indeed on each compact set the uniformly bounded derivatives give precompactness of each entry and its derivatives, by Arzelà–Ascoli. Every subsequential smooth limit equals the prescribed distributional limit. If local smooth convergence failed, a failing sequence would have a convergent subsequence with the wrong limit, a contradiction. There are finitely many entries, so their smooth convergence is convergence in matrix operator norm. For general <span class="math" data-tex="\(K\)">\(K\)</span>, hypothesis 2 is the stated norm hypothesis; weak matrix-coefficient continuity is not substituted for it.</p>
+<p>The entrywise calculus is not the positivity argument. Applying the Hilbert-valued sharp lower bound (P44)–(P47), with <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, to <span class="math" data-tex="\(a+C I_K\)">\(a+C I_K\)</span>, gives a finite uniform <span class="math" data-tex="\(c\)">\(c\)</span> such that
+<span class="math math-display" data-tex="\[
+ \operatorname{Re}\langle A(t)v,v\rangle
+       \geq-c\|v\|_0^2,\qquad v\in\mathcal H^1. \tag{SY4}
+\]">\[
+ \operatorname{Re}\langle A(t)v,v\rangle
+       \geq-c\|v\|_0^2,\qquad v\in\mathcal H^1. \tag{SY4}
+\]</span>
+The provider first proves this on <span class="math" data-tex="\(K\)">\(K\)</span>-valued Schwartz functions. Its order-one mapping bound and Schwartz density in <span class="math" data-tex="\(\mathcal H^1\)">\(\mathcal H^1\)</span> pass both sides to the asserted domain. Its constants depend on finitely many operator-norm symbol seminorms and on <span class="math" data-tex="\(C,n\)">\(C,n\)</span>, without a factor counting the dimension of <span class="math" data-tex="\(K\)">\(K\)</span>. This neither asserts positivity of left quantization nor tests the eigenvalues of <span class="math" data-tex="\(a\)">\(a\)</span> alone. The Jordan example in Exercise 16 of the preceding scalar lesson proves why those replacements fail.</p>
+<p>The same exact calculus proves
+<span class="math math-display" data-tex="\[
+ \sup_t\|A(t)\|_{\mathcal H^s\to\mathcal H^{s-1}}\leq M_s,
+ \qquad A(t)v\longrightarrow A(t_0)v
+       \text{ in }\mathcal H^{s-1}\quad(v\in\mathcal H^s). \tag{SY5}
+\]">\[
+ \sup_t\|A(t)\|_{\mathcal H^s\to\mathcal H^{s-1}}\leq M_s,
+ \qquad A(t)v\longrightarrow A(t_0)v
+       \text{ in }\mathcal H^{s-1}\quad(v\in\mathcal H^s). \tag{SY5}
+\]</span>
+Here is the time-continuity step. For a Schwartz vector, norm-valued dominated frequency integration gives local convergence of every output derivative. The global symbol seminorms uniformly control every output Schwartz seminorm; one extra position weight makes the complement of a large position ball uniformly small. This proves Schwartz convergence. Approximate an arbitrary <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span> by Schwartz vectors and use the uniform <span class="math" data-tex="\(2M_s\)">\(2M_s\)</span> bound on the error. For a varying continuous vector <span class="math" data-tex="\(v(t)\)">\(v(t)\)</span>, adding the fixed-vector and varying-vector errors gives continuity of <span class="math" data-tex="\(A(t)v(t)\)">\(A(t)v(t)\)</span> in <span class="math" data-tex="\(\mathcal H^{s-1}\)">\(\mathcal H^{s-1}\)</span>. Operator-norm continuity between these Sobolev spaces is not assumed.</p>
+<h2 id="2-the-energy-estimate-and-the-formal-adjoint">2. The energy estimate and the formal adjoint</h2>
+<p>For any real <span class="math" data-tex="\(s\)">\(s\)</span>, the scalar multipliers <span class="math" data-tex="\(E_s\)">\(E_s\)</span> commute with the coefficient operators pointwise. The ordered composition theorem therefore gives
+<span class="math math-display" data-tex="\[
+ B_s(t)=E_sA(t)E_{-s}=A(t)+R_s(t),\qquad
+ R_s(t)\in\operatorname{Op}(S^0(K,K)), \tag{SY6}
+\]">\[
+ B_s(t)=E_sA(t)E_{-s}=A(t)+R_s(t),\qquad
+ R_s(t)\in\operatorname{Op}(S^0(K,K)), \tag{SY6}
+\]</span>
+uniformly in <span class="math" data-tex="\(t\)">\(t\)</span>. The leading product is
+<span class="math" data-tex="\(\langle\xi\rangle^s a\langle\xi\rangle^{-s}=a\)">\(\langle\xi\rangle^s a\langle\xi\rangle^{-s}=a\)</span>; every other product term and the first finite remainder lose at least one order. Consequently the Sobolev bound for <span class="math" data-tex="\(R_s\)">\(R_s\)</span>, together with (SY4), gives
+<span class="math math-display" data-tex="\[
+ \operatorname{Re}\langle B_s(t)v,v\rangle
+       \geq-c_s\|v\|_0^2,\qquad v\in\mathcal H^1. \tag{SY7}
+\]">\[
+ \operatorname{Re}\langle B_s(t)v,v\rangle
+       \geq-c_s\|v\|_0^2,\qquad v\in\mathcal H^1. \tag{SY7}
+\]</span>
+The constant is uniform in <span class="math" data-tex="\(t\)">\(t\)</span>. No two matrix coefficients have been commuted in this calculation.</p>
+<p>Let <span class="math" data-tex="\(u\in C^1([0,T];\mathcal H^s)\cap C([0,T];\mathcal H^{s+1})\)">\(u\in C^1([0,T];\mathcal H^s)\cap C([0,T];\mathcal H^{s+1})\)</span>. Applying (SY7) to <span class="math" data-tex="\(E_su\)">\(E_su\)</span>, with <span class="math" data-tex="\(f=Pu\)">\(f=Pu\)</span>, gives
+<span class="math math-display" data-tex="\[
+ \frac{d}{dt}\|u(t)\|_s^2
+ \leq2\|f(t)\|_s\|u(t)\|_s+2c_s\|u(t)\|_s^2. \tag{SY8}
+\]">\[
+ \frac{d}{dt}\|u(t)\|_s^2
+ \leq2\|f(t)\|_s\|u(t)\|_s+2c_s\|u(t)\|_s^2. \tag{SY8}
+\]</span>
+Take <span class="math" data-tex="\(c_s\geq0\)">\(c_s\geq0\)</span> by increasing it. With <span class="math" data-tex="\(w(t)=e^{-c_st}u(t)\)">\(w(t)=e^{-c_st}u(t)\)</span> and
+<span class="math" data-tex="\(M(t)=\max_{0\leq r\leq t}\|w(r)\|_s\)">\(M(t)=\max_{0\leq r\leq t}\|w(r)\|_s\)</span>, integration gives
+<span class="math math-display" data-tex="\[
+ M(t)^2\leq\|u(0)\|_s^2+
+             2M(t)\int_0^t e^{-c_sr}\|f(r)\|_s\,dr. \tag{SY9}
+\]">\[
+ M(t)^2\leq\|u(0)\|_s^2+
+             2M(t)\int_0^t e^{-c_sr}\|f(r)\|_s\,dr. \tag{SY9}
+\]</span>
+The nonnegative root is at most
+<span class="math" data-tex="\(\|u(0)\|_s+2\int_0^t e^{-c_sr}\|f(r)\|_sdr\)">\(\|u(0)\|_s+2\int_0^t e^{-c_sr}\|f(r)\|_sdr\)</span>, including when <span class="math" data-tex="\(M=0\)">\(M=0\)</span>. Thus for any <span class="math" data-tex="\(\lambda&gt;\max(0,2c_s)\)">\(\lambda&gt;\max(0,2c_s)\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ e^{-\lambda t}\|u(t)\|_s
+ &amp;\leq e^{-\lambda t/2}\|u(0)\|_s\\
+ &amp;\quad+2\int_0^t
+        e^{-\lambda(t-r)/2}e^{-\lambda r}\|f(r)\|_s\,dr. 
+ \end{split} \tag{SY10}
+\]">\[
+ \begin{split}
+ e^{-\lambda t}\|u(t)\|_s
+ &amp;\leq e^{-\lambda t/2}\|u(0)\|_s\\
+ &amp;\quad+2\int_0^t
+        e^{-\lambda(t-r)/2}e^{-\lambda r}\|f(r)\|_s\,dr. 
+ \end{split} \tag{SY10}
+\]</span>
+For <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>, extend the weighted forcing by zero to the half-line and apply Minkowski's integral inequality. The kernel's <span class="math" data-tex="\(L^p\)">\(L^p\)</span> norm is
+<span class="math" data-tex="\((2/(p\lambda))^{1/p}\leq(2/\lambda)^{1/p}\)">\((2/(p\lambda))^{1/p}\leq(2/\lambda)^{1/p}\)</span>. Its maximum is one. Hence
+<span class="math math-display" data-tex="\[
+ \left(\frac{\lambda}{2}\int_0^T
+       \|e^{-\lambda t}u(t)\|_s^pdt\right)^{1/p}
+ \leq\|u(0)\|_s+
+         2\int_0^T e^{-\lambda t}\|Pu(t)\|_sdt. \tag{SY11}
+\]">\[
+ \left(\frac{\lambda}{2}\int_0^T
+       \|e^{-\lambda t}u(t)\|_s^pdt\right)^{1/p}
+ \leq\|u(0)\|_s+
+         2\int_0^T e^{-\lambda t}\|Pu(t)\|_sdt. \tag{SY11}
+\]</span>
+For <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, the left side is
+<span class="math" data-tex="\(\max_{[0,T]}e^{-\lambda t}\|u(t)\|_s\)">\(\max_{[0,T]}e^{-\lambda t}\|u(t)\|_s\)</span>, with no prefactor. The threshold depends on <span class="math" data-tex="\(s\)">\(s\)</span> and the displayed uniform bounds, and is independent of <span class="math" data-tex="\(p\)">\(p\)</span>. On a subinterval, translating its initial time gives the same estimate and threshold.</p>
+<p>The formal Hilbert adjoint is an operator, rather than simply the quantization of the pointwise adjoint. Specifically (P13) gives
+<span class="math math-display" data-tex="\[
+ A(t)^*|_{\mathcal S(K)}
+   =\operatorname{Op}(a^\dagger(t))|_{\mathcal S(K)},\qquad
+ a^\dagger=a^*+r^\dagger,\quad r^\dagger\in S^0(K,K). \tag{SY12}
+\]">\[
+ A(t)^*|_{\mathcal S(K)}
+   =\operatorname{Op}(a^\dagger(t))|_{\mathcal S(K)},\qquad
+ a^\dagger=a^*+r^\dagger,\quad r^\dagger\in S^0(K,K). \tag{SY12}
+\]</span>
+It has the required strong time continuity. Its form has the same real part as <span class="math" data-tex="\(A\)">\(A\)</span>'s form on <span class="math" data-tex="\(\mathcal H^1\)">\(\mathcal H^1\)</span>; its symbol also obeys (SY3) with a changed constant because <span class="math" data-tex="\(r^\dagger\)">\(r^\dagger\)</span> is uniformly bounded. The energy estimate therefore applies to the reversed adjoint equation
+<span class="math" data-tex="\(-v_t+A(t)^*v=g\)">\(-v_t+A(t)^*v=g\)</span>, with <span class="math" data-tex="\(v(T)=0\)">\(v(T)=0\)</span>. Replacing <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(T-r\)">\(T-r\)</span> yields a forward equation with coefficient <span class="math" data-tex="\(A(T-r)^*\)">\(A(T-r)^*\)</span>. It does not replace the coefficient by <span class="math" data-tex="\(-A\)">\(-A\)</span>.</p>
+<h2 id="3-existence-the-trace-and-uniqueness-for-integrable-forcing">3. Existence, the trace and uniqueness for integrable forcing</h2>
+<p><strong>Theorem.</strong> Under hypotheses 1–3, for every <span class="math" data-tex="\(s\in\mathbb R\)">\(s\in\mathbb R\)</span>,
+<span class="math" data-tex="\(\phi\in\mathcal H^s\)">\(\phi\in\mathcal H^s\)</span> and <span class="math" data-tex="\(f\in L^1((0,T);\mathcal H^s)\)">\(f\in L^1((0,T);\mathcal H^s)\)</span>, there is exactly one
+<span class="math math-display" data-tex="\[
+ u\in C([0,T];\mathcal H^s),\qquad
+ u_t\in L^1((0,T);\mathcal H^{s-1}), \tag{SY13}
+\]">\[
+ u\in C([0,T];\mathcal H^s),\qquad
+ u_t\in L^1((0,T);\mathcal H^{s-1}), \tag{SY13}
+\]</span>
+satisfying (SY2) in distributions with the displayed trace. It is absolutely continuous with values in <span class="math" data-tex="\(\mathcal H^{s-1}\)">\(\mathcal H^{s-1}\)</span>, and satisfies (SY11) for every <span class="math" data-tex="\(p\)">\(p\)</span>. All constants have the uniform dependence described above.</p>
+<p><strong>Proof.</strong> The Hilbert representation construction in Section 3 of the preceding lesson uses separability and Hilbert norms, rather than scalar coefficient multiplication. We give its receiving construction explicitly, so every domain and the vector trace are identified.</p>
+<p>Choose smooth tests <span class="math" data-tex="\(v\)">\(v\)</span> vanishing near <span class="math" data-tex="\(T\)">\(T\)</span>, allowed to be nonzero at <span class="math" data-tex="\(0\)">\(0\)</span>, with smooth compactly supported spatial components in finite-dimensional spans of <span class="math" data-tex="\(K\)">\(K\)</span>. Put <span class="math" data-tex="\(g=-v_t+A^*v\)">\(g=-v_t+A^*v\)</span>. The reversed adjoint energy estimate at order <span class="math" data-tex="\(-s\)">\(-s\)</span> gives
+<span class="math math-display" data-tex="\[
+ \max_{[0,T]}\|v(t)\|_{-s}
+       \leq C_{s,T}\|g\|_{L^1\mathcal H^{-s}}. \tag{SY14}
+\]">\[
+ \max_{[0,T]}\|v(t)\|_{-s}
+       \leq C_{s,T}\|g\|_{L^1\mathcal H^{-s}}. \tag{SY14}
+\]</span>
+Thus this test map is injective. On its range define the conjugate-linear functional
+<span class="math math-display" data-tex="\[
+ \mathcal F(g)=\int_0^T\langle f(t),v(t)\rangle\,dt+
+                         \langle\phi,v(0)\rangle. \tag{SY15}
+\]">\[
+ \mathcal F(g)=\int_0^T\langle f(t),v(t)\rangle\,dt+
+                         \langle\phi,v(0)\rangle. \tag{SY15}
+\]</span>
+It is well defined and bounded by
+<span class="math" data-tex="\(K_0\|g\|_{L^1\mathcal H^{-s}}\)">\(K_0\|g\|_{L^1\mathcal H^{-s}}\)</span>, where
+<span class="math" data-tex="\(K_0=C_{s,T}(\|f\|_{L^1\mathcal H^s}+\|\phi\|_s)\)">\(K_0=C_{s,T}(\|f\|_{L^1\mathcal H^s}+\|\phi\|_s)\)</span>.
+Apply the complex Hahn–Banach theorem to its conjugate, and then conjugate back, to extend it to the whole <span class="math" data-tex="\(L^1\)">\(L^1\)</span> space with the same bound.</p>
+<p>The finite time interval and separability of <span class="math" data-tex="\(\mathcal H^{-s}\)">\(\mathcal H^{-s}\)</span> make
+<span class="math" data-tex="\(L^2((0,T);\mathcal H^{-s})\)">\(L^2((0,T);\mathcal H^{-s})\)</span> a separable Hilbert space. Its completeness follows by choosing a Cauchy subsequence with summable successive <span class="math" data-tex="\(L^2\)">\(L^2\)</span> distances: Minkowski bounds the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm of the pointwise sum of its distances, so that sum is finite almost everywhere; Hilbert completeness gives a pointwise limit and the same tail estimate gives <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence. Step functions on rational intervals with coefficients in a countable dense subset prove separability and density. Restrict the extended functional to this <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space, where its bound is <span class="math" data-tex="\(K_0\sqrt T\)">\(K_0\sqrt T\)</span>. The orthonormal-basis Hilbert representation proof in the preceding lesson now gives a representing <span class="math" data-tex="\(u\in L^2\mathcal H^s\)">\(u\in L^2\mathcal H^s\)</span>, using the Sobolev dual isometry in (SY1).</p>
+<p>The <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bound implies <span class="math" data-tex="\(\|u(t)\|_s\leq K_0\)">\(\|u(t)\|_s\leq K_0\)</span> almost everywhere. Otherwise on a positive-measure set <span class="math" data-tex="\(B\)">\(B\)</span> where this norm exceeds <span class="math" data-tex="\(K_0+\epsilon\)">\(K_0+\epsilon\)</span>, the vector
+<span class="math math-display" data-tex="\[
+ g(t)=1_B(t)\frac{E_{2s}u(t)}{\|u(t)\|_s} \tag{SY16}
+\]">\[
+ g(t)=1_B(t)\frac{E_{2s}u(t)}{\|u(t)\|_s} \tag{SY16}
+\]</span>
+is strongly measurable, belongs to <span class="math" data-tex="\(L^2\mathcal H^{-s}\)">\(L^2\mathcal H^{-s}\)</span>, has norm <span class="math" data-tex="\(1_B\)">\(1_B\)</span>, and pairs with <span class="math" data-tex="\(u\)">\(u\)</span> to give <span class="math" data-tex="\(\int_B\|u(t)\|_sdt&gt;K_0|B|\)">\(\int_B\|u(t)\|_sdt&gt;K_0|B|\)</span>. This contradicts the extended bound. Bounded simple Hilbert-valued functions are dense in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, so the representation extends to all <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. In particular
+<span class="math math-display" data-tex="\[
+ \int_0^T\langle u,-v_t+A^*v\rangle\,dt
+   =\int_0^T\langle f,v\rangle\,dt+\langle\phi,v(0)\rangle. \tag{SY17}
+\]">\[
+ \int_0^T\langle u,-v_t+A^*v\rangle\,dt
+   =\int_0^T\langle f,v\rangle\,dt+\langle\phi,v(0)\rangle. \tag{SY17}
+\]</span>
+No formula for the dual of an arbitrary Banach-valued <span class="math" data-tex="\(L^1\)">\(L^1\)</span> space is being assumed.</p>
+<p>Interior tests imply <span class="math" data-tex="\(u_t=f-Au\)">\(u_t=f-Au\)</span>. The strong continuity in (SY5) makes <span class="math" data-tex="\(Au\)">\(Au\)</span> strongly measurable: approximate <span class="math" data-tex="\(u\)">\(u\)</span> pointwise by strongly measurable simple vectors, apply <span class="math" data-tex="\(A(t)\)">\(A(t)\)</span> to each, and use the uniform operator bound. It belongs to <span class="math" data-tex="\(L^\infty\mathcal H^{s-1}\)">\(L^\infty\mathcal H^{s-1}\)</span>. Thus <span class="math" data-tex="\(u_t\in L^1\mathcal H^{s-1}\)">\(u_t\in L^1\mathcal H^{s-1}\)</span>. Subtracting the Bochner primitive of <span class="math" data-tex="\(f-Au\)">\(f-Au\)</span> from <span class="math" data-tex="\(u\)">\(u\)</span> gives a vector distribution with zero derivative. Scalarizing against a countable separating orthonormal family shows it equals a single constant vector almost everywhere: choose one time in the common full-measure set to identify its coordinates with an actual Hilbert vector. Hence <span class="math" data-tex="\(u\)">\(u\)</span> has an absolutely continuous <span class="math" data-tex="\(\mathcal H^{s-1}\)">\(\mathcal H^{s-1}\)</span> representative. Integrating that representative by parts in (SY17) gives <span class="math" data-tex="\(u(0)=\phi\)">\(u(0)=\phi\)</span> in <span class="math" data-tex="\(\mathcal H^{s-1}\)">\(\mathcal H^{s-1}\)</span>; the allowed finite-component spatial tests separate this Sobolev duality.</p>
+<p>For smooth time-dependent Schwartz data, do the same construction at order <span class="math" data-tex="\(s+2\)">\(s+2\)</span>. The resulting vector is <span class="math" data-tex="\(L^\infty\mathcal H^{s+2}\)">\(L^\infty\mathcal H^{s+2}\)</span> and has continuous representative in <span class="math" data-tex="\(\mathcal H^{s+1}\)">\(\mathcal H^{s+1}\)</span>. Its equation gives
+<span class="math" data-tex="\(u_t=f-Au\in C\mathcal H^s\)">\(u_t=f-Au\in C\mathcal H^s\)</span>. Thus it belongs to the domain
+<span class="math" data-tex="\(C^1\mathcal H^s\cap C\mathcal H^{s+1}\)">\(C^1\mathcal H^s\cap C\mathcal H^{s+1}\)</span> of the energy lemma, with the correct trace; (SY11) applies. This obtains the energy domain before using high-order uniqueness.</p>
+<p>Approximate arbitrary <span class="math" data-tex="\(\phi\)">\(\phi\)</span> in <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> in Bochner <span class="math" data-tex="\(L^1\mathcal H^s\)">\(L^1\mathcal H^s\)</span> by such data. Spatial Schwartz density, strongly measurable simple approximation and scalar smooth <span class="math" data-tex="\(L^1\)">\(L^1\)</span> approximation give this density. Applying the maximum estimate to differences makes the solutions Cauchy in <span class="math" data-tex="\(C\mathcal H^s\)">\(C\mathcal H^s\)</span>. Their limit has the trace. The integrated equation passes to the limit because <span class="math" data-tex="\(Au_j\to Au\)">\(Au_j\to Au\)</span> uniformly in <span class="math" data-tex="\(\mathcal H^{s-1}\)">\(\mathcal H^{s-1}\)</span> and <span class="math" data-tex="\(f_j\to f\)">\(f_j\to f\)</span> in <span class="math" data-tex="\(L^1\mathcal H^s\)">\(L^1\mathcal H^s\)</span>. Uniform convergence also passes every finite-<span class="math" data-tex="\(p\)">\(p\)</span> energy norm and the maximum norm to the limit, while <span class="math" data-tex="\(L^1\)">\(L^1\)</span> convergence passes its forcing term.</p>
+<p>If <span class="math" data-tex="\(u\)">\(u\)</span> is the difference of two continuous solutions, its homogeneous equation and (SY5) imply
+<span class="math" data-tex="\(u\in C^1\mathcal H^{s-1}\cap C\mathcal H^s\)">\(u\in C^1\mathcal H^{s-1}\cap C\mathcal H^s\)</span>. Its initial value is zero. The energy estimate at order <span class="math" data-tex="\(s-1\)">\(s-1\)</span>, now on its proven domain, gives <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. This proves existence, uniqueness, the trace, (SY13) and (SY11). ∎</p>
+<p>For homogeneous forcing and data in <span class="math" data-tex="\(\bigcap_s\mathcal H^s\)">\(\bigcap_s\mathcal H^s\)</span>, apply the theorem at each integer order, identify the solutions by uniqueness at a common lower order, and use the equation to obtain <span class="math" data-tex="\(C^1\)">\(C^1\)</span> time dependence at every spatial Sobolev order. If all time derivatives of the symbol are uniformly ordinary of order one on compact time intervals, differentiating the equation inductively gives higher time regularity. Integrable forcing alone gives the absolutely continuous statement (SY13).</p>
+<h2 id="4-ordered-evolution-forcing-and-reversible-systems">4. Ordered evolution, forcing and reversible systems</h2>
+<p>For <span class="math" data-tex="\(0\leq r\leq t\leq T\)">\(0\leq r\leq t\leq T\)</span>, let <span class="math" data-tex="\(U(t,r)\phi\)">\(U(t,r)\phi\)</span> be the unique homogeneous solution with value <span class="math" data-tex="\(\phi\)">\(\phi\)</span> at <span class="math" data-tex="\(r\)">\(r\)</span>. Translating the theorem's time origin proves uniform boundedness on each <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span>:
+<span class="math math-display" data-tex="\[
+ \|U(t,r)\|_{\mathcal H^s\to\mathcal H^s}
+       \leq e^{\lambda_s(t-r)},\qquad U(r,r)=I. \tag{SY18}
+\]">\[
+ \|U(t,r)\|_{\mathcal H^s\to\mathcal H^s}
+       \leq e^{\lambda_s(t-r)},\qquad U(r,r)=I. \tag{SY18}
+\]</span>
+Uniqueness, applied with the value at an intermediate time as data, proves the coefficient order
+<span class="math math-display" data-tex="\[
+ U(t,q)U(q,r)=U(t,r),\qquad r\leq q\leq t. \tag{SY19}
+\]">\[
+ U(t,q)U(q,r)=U(t,r),\qquad r\leq q\leq t. \tag{SY19}
+\]</span>
+The rightmost operator acts first. Differentiating in the final time gives
+<span class="math math-display" data-tex="\[
+ \partial_tU(t,r)\phi=-A(t)U(t,r)\phi
+       \quad\hbox{in }\mathcal H^{s-1},\qquad \phi\in\mathcal H^s. \tag{SY20}
+\]">\[
+ \partial_tU(t,r)\phi=-A(t)U(t,r)\phi
+       \quad\hbox{in }\mathcal H^{s-1},\qquad \phi\in\mathcal H^s. \tag{SY20}
+\]</span>
+This formula is a strong derivative one spatial order lower; it is not an operator-norm derivative on <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span>.</p>
+<p>We need joint strong continuity before integrating in the initial time. For <span class="math" data-tex="\(h\in\mathcal H^{s+1}\)">\(h\in\mathcal H^{s+1}\)</span>, the integrated equation and the uniform bound at order <span class="math" data-tex="\(s+1\)">\(s+1\)</span> show
+<span class="math math-display" data-tex="\[
+ \|U(r,r&#x27;)h-h\|_s\leq
+       C_s|r-r&#x27;|\|h\|_{s+1}\qquad(r&#x27;\leq r). \tag{SY21}
+\]">\[
+ \|U(r,r&#x27;)h-h\|_s\leq
+       C_s|r-r&#x27;|\|h\|_{s+1}\qquad(r&#x27;\leq r). \tag{SY21}
+\]</span>
+Schwartz density and the uniform <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span> bound extend convergence to every fixed <span class="math" data-tex="\(h\in\mathcal H^s\)">\(h\in\mathcal H^s\)</span>, uniformly as the two times meet. When both initial times precede <span class="math" data-tex="\(t\)">\(t\)</span>, (SY19) and (SY21) control their difference; interchange their roles if their order is reversed. For varying final time, the integrated equation gives the same estimate for smooth <span class="math" data-tex="\(h\)">\(h\)</span>, uniformly in the initial time, and density gives continuity for arbitrary <span class="math" data-tex="\(h\)">\(h\)</span>. If a varying initial time crosses a fixed final time near the diagonal, both factors tend strongly to <span class="math" data-tex="\(I\)">\(I\)</span> by (SY21) and its final-time version. These arguments prove joint strong continuity of <span class="math" data-tex="\(U(t,r)h\)">\(U(t,r)h\)</span> on the closed time triangle.</p>
+<p>For <span class="math" data-tex="\(f\in L^1\mathcal H^s\)">\(f\in L^1\mathcal H^s\)</span>, the forcing formula is
+<span class="math math-display" data-tex="\[
+ u(t)=U(t,0)\phi+\int_0^t U(t,r)f(r)\,dr. \tag{SY22}
+\]">\[
+ u(t)=U(t,0)\phi+\int_0^t U(t,r)f(r)\,dr. \tag{SY22}
+\]</span>
+The integral is Bochner in <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span>. Joint strong continuity applied first to simple approximants of <span class="math" data-tex="\(f\)">\(f\)</span>, followed by the uniform bound, proves strong measurability of its integrand. Dominated convergence on a common interval and absolute continuity of the integral over the intervening short interval prove continuity in <span class="math" data-tex="\(t\)">\(t\)</span>. To verify its equation, use the integrated version of (SY20),
+<span class="math math-display" data-tex="\[
+ U(t,r)h=h-\int_r^t A(\tau)U(\tau,r)h\,d\tau
+       \quad\hbox{in }\mathcal H^{s-1}. \tag{SY23}
+\]">\[
+ U(t,r)h=h-\int_r^t A(\tau)U(\tau,r)h\,d\tau
+       \quad\hbox{in }\mathcal H^{s-1}. \tag{SY23}
+\]</span>
+The double-integral norm is bounded by a constant times <span class="math" data-tex="\(T\|f\|_{L^1\mathcal H^s}\)">\(T\|f\|_{L^1\mathcal H^s}\)</span>. Bochner Fubini therefore gives for the forced integral <span class="math" data-tex="\(w\)">\(w\)</span>
+<span class="math math-display" data-tex="\[
+ w(t)=\int_0^t f(r)\,dr-\int_0^t A(\tau)w(\tau)\,d\tau. \tag{SY24}
+\]">\[
+ w(t)=\int_0^t f(r)\,dr-\int_0^t A(\tau)w(\tau)\,d\tau. \tag{SY24}
+\]</span>
+It has zero initial value and derivative <span class="math" data-tex="\(f-Aw\)">\(f-Aw\)</span> one order lower. Adding the homogeneous part and invoking uniqueness proves (SY22).</p>
+<p>Forward accretivity does not supply reverse evolution of the original equation. For reverse time the coefficient is <span class="math" data-tex="\(-A\)">\(-A\)</span>, whereas the duality construction used <span class="math" data-tex="\(A^*\)">\(A^*\)</span>. If both
+<span class="math math-display" data-tex="\[
+ -C I_K\leq\tfrac12(a+a^*)\leq C I_K, \tag{SY25}
+\]">\[
+ -C I_K\leq\tfrac12(a+a^*)\leq C I_K, \tag{SY25}
+\]</span>
+hold, the forward theorem applies to <span class="math" data-tex="\(-a(T-r)\)">\(-a(T-r)\)</span> too. Solving the final-value problem in reverse time defines <span class="math" data-tex="\(U(t,r)\)">\(U(t,r)\)</span> for all ordered pairs of times in the square. Forward and reverse uniqueness give
+<span class="math math-display" data-tex="\[
+ U(t,r)^{-1}=U(r,t),\qquad
+ U(t,q)U(q,r)=U(t,r)\quad(0\leq r,q,t\leq T). \tag{SY26}
+\]">\[
+ U(t,r)^{-1}=U(r,t),\qquad
+ U(t,q)U(q,r)=U(t,r)\quad(0\leq r,q,t\leq T). \tag{SY26}
+\]</span>
+The same bounds hold with <span class="math" data-tex="\(|t-r|\)">\(|t-r|\)</span> and an enlarged uniform threshold.</p>
+<p>A principal Hermitian system has this stronger property if
+<span class="math math-display" data-tex="\[
+ a(t,x,\xi)=i b_1(t,x,\xi)+c(t,x,\xi),\qquad
+ b_1=b_1^*\in S^1(K,K),\quad c\in S^0(K,K), \tag{SY27}
+\]">\[
+ a(t,x,\xi)=i b_1(t,x,\xi)+c(t,x,\xi),\qquad
+ b_1=b_1^*\in S^1(K,K),\quad c\in S^0(K,K), \tag{SY27}
+\]</span>
+with the same time hypotheses and uniform bounds. Its pointwise Hermitian real part is <span class="math" data-tex="\((c+c^*)/2\)">\((c+c^*)/2\)</span>, so (SY25) holds. This proves the two-sided energy evolution without choosing eigenvectors or differentiating spectral projections. A general such principal symbol may have several branches and crossings; a scalar wavefront-flow theorem is not a consequence of (SY27).</p>
+<p>A fixed positive symmetrizer also has a precise receiving statement for finite systems. Suppose a constant Hermitian matrix <span class="math" data-tex="\(S&gt;0\)">\(S&gt;0\)</span>, independent of <span class="math" data-tex="\(t,x,\xi\)">\(t,x,\xi\)</span>, obeys
+<span class="math math-display" data-tex="\[
+ \tfrac12(Sa+a^*S)\geq-C S. \tag{SY28}
+\]">\[
+ \tfrac12(Sa+a^*S)\geq-C S. \tag{SY28}
+\]</span>
+Let <span class="math" data-tex="\(R=S^{1/2}\)">\(R=S^{1/2}\)</span>, obtained by unitary diagonalization of the fixed positive matrix. With <span class="math" data-tex="\(v=Ru\)">\(v=Ru\)</span> the coefficient is <span class="math" data-tex="\(a_R=RaR^{-1}\)">\(a_R=RaR^{-1}\)</span>, and
+<span class="math math-display" data-tex="\[
+ \tfrac12(a_R+a_R^*)
+   =R^{-1}\tfrac12(Sa+a^*S)R^{-1}\geq-C I. \tag{SY29}
+\]">\[
+ \tfrac12(a_R+a_R^*)
+   =R^{-1}\tfrac12(Sa+a^*S)R^{-1}\geq-C I. \tag{SY29}
+\]</span>
+The global symbol and time hypotheses are preserved by these fixed bounded factors. Apply the theorem to <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(Rf\)">\(Rf\)</span>, then translate back to <span class="math" data-tex="\(u\)">\(u\)</span>. Its Sobolev energy is exactly <span class="math" data-tex="\(\|Ru\|_s\)">\(\|Ru\|_s\)</span>, equivalent to <span class="math" data-tex="\(\|u\|_s\)">\(\|u\|_s\)</span> with constants determined by the smallest and largest eigenvalues of <span class="math" data-tex="\(S\)">\(S\)</span>. A two-sided bound in (SY28) gives reversible evolution in this norm. No position-dependent or frequency-dependent symmetrizer is asserted by this constant-matrix argument.</p>
+<h2 id="5-three-systems-with-complete-solutions">5. Three systems with complete solutions</h2>
+<h3 id="5-1-an-accretive-system-that-cannot-be-uniformly-reversed">5.1. An accretive system that cannot be uniformly reversed</h3>
+<p><strong>Exercise (basic).</strong> In one space dimension put
+<span class="math math-display" data-tex="\[
+ P_0=\tfrac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},
+ \qquad B=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+ a(\xi)=\langle\xi\rangle P_0+i\xi B. \tag{SY30}
+\]">\[
+ P_0=\tfrac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},
+ \qquad B=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+ a(\xi)=\langle\xi\rangle P_0+i\xi B. \tag{SY30}
+\]</span>
+Check the forward hypotheses, decide whether the factors commute, and show that for every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> the inverse of the homogeneous evolution is unbounded on every <span class="math" data-tex="\(H^s(\mathbb R;\mathbb C^2)\)">\(H^s(\mathbb R;\mathbb C^2)\)</span>.</p>
+<p><strong>Solution.</strong> The matrix <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is the orthogonal projection onto <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>; hence the Hermitian real part is exactly <span class="math" data-tex="\(\langle\xi\rangle P_0\geq0\)">\(\langle\xi\rangle P_0\geq0\)</span>. The symbol is uniformly ordinary of order one, with constant time dependence. The forward theorem applies. The commutator is
+<span class="math math-display" data-tex="\[
+ P_0B-BP_0=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\ne0. \tag{SY31}
+\]">\[
+ P_0B-BP_0=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\ne0. \tag{SY31}
+\]</span>
+Thus the forward multiplier is <span class="math" data-tex="\(e^{-ta(\xi)}\)">\(e^{-ta(\xi)}\)</span>, rather than a product of the two exponentials in an arbitrary order. Differentiating the squared norm of a Fourier vector solving <span class="math" data-tex="\(w&#x27;=-a(\xi)w\)">\(w&#x27;=-a(\xi)w\)</span> gives
+<span class="math" data-tex="\(-2\langle\xi\rangle\|P_0w\|^2\leq0\)">\(-2\langle\xi\rangle\|P_0w\|^2\leq0\)</span>. The forward multiplier is contractive, at each frequency and therefore on every <span class="math" data-tex="\(H^s\)">\(H^s\)</span>.</p>
+<p>The inverse matrix at each frequency is <span class="math" data-tex="\(e^{ta(\xi)}\)">\(e^{ta(\xi)}\)</span>. Its determinant has modulus <span class="math" data-tex="\(e^{t\operatorname{Re}\operatorname{tr}a(\xi)}=e^{t\langle\xi\rangle}\)">\(e^{t\operatorname{Re}\operatorname{tr}a(\xi)}=e^{t\langle\xi\rangle}\)</span>. The determinant identity follows, for instance, by triangularizing the fixed complex matrix and exponentiating its diagonal entries. The product of its two singular values is that modulus, so
+<span class="math math-display" data-tex="\[
+ \|e^{ta(\xi)}\|\geq e^{t\langle\xi\rangle/2}. \tag{SY32}
+\]">\[
+ \|e^{ta(\xi)}\|\geq e^{t\langle\xi\rangle/2}. \tag{SY32}
+\]</span>
+For each large frequency choose a unit vector realizing the finite matrix norm there. Continuity in frequency makes the same fixed vector give at least half this lower bound on a small interval. Choose a smooth Fourier bump supported in that interval and normalize its <span class="math" data-tex="\(H^s\)">\(H^s\)</span> norm to one. Its inverse image then has <span class="math" data-tex="\(H^s\)">\(H^s\)</span> norm tending to infinity. If a bounded inverse of the forward evolution existed, it would agree with this pointwise inverse on these bumps, a contradiction. Thus a forward well-posed problem may have no bounded reverse solution operator. The duality proof remains valid because its reversed operator is <span class="math" data-tex="\(A^*\)">\(A^*\)</span>. ∎</p>
+<h3 id="5-2-a-fixed-symmetrizer-with-an-unbounded-euclidean-real-part">5.2. A fixed symmetrizer with an unbounded Euclidean real part</h3>
+<p><strong>Exercise (intermediate).</strong> Let
+<span class="math math-display" data-tex="\[
+ B=\begin{pmatrix}0&amp;1\\4&amp;0\end{pmatrix},\qquad
+ S=\begin{pmatrix}4&amp;0\\0&amp;1\end{pmatrix},\qquad a(\xi)=i\xi B. \tag{SY33}
+\]">\[
+ B=\begin{pmatrix}0&amp;1\\4&amp;0\end{pmatrix},\qquad
+ S=\begin{pmatrix}4&amp;0\\0&amp;1\end{pmatrix},\qquad a(\xi)=i\xi B. \tag{SY33}
+\]</span>
+Show that the Euclidean condition (SY3) fails, solve the problem using the fixed symmetrizer, and identify its two spatial speeds.</p>
+<p><strong>Solution.</strong> The Euclidean Hermitian real part is
+<span class="math math-display" data-tex="\[
+ \tfrac{i\xi}{2}(B-B^*)
+   =\tfrac{i\xi}{2}\begin{pmatrix}0&amp;-3\\3&amp;0\end{pmatrix}. \tag{SY34}
+\]">\[
+ \tfrac{i\xi}{2}(B-B^*)
+   =\tfrac{i\xi}{2}\begin{pmatrix}0&amp;-3\\3&amp;0\end{pmatrix}. \tag{SY34}
+\]</span>
+Its eigenvalues are <span class="math" data-tex="\(3|\xi|/2\)">\(3|\xi|/2\)</span> and <span class="math" data-tex="\(-3|\xi|/2\)">\(-3|\xi|/2\)</span>, so no frequency-independent lower bound exists. However
+<span class="math" data-tex="\(SB=\begin{pmatrix}0&amp;4\\4&amp;0\end{pmatrix}\)">\(SB=\begin{pmatrix}0&amp;4\\4&amp;0\end{pmatrix}\)</span> is Hermitian. Equation (SY28) holds with both bounds zero. For <span class="math" data-tex="\(R=\operatorname{diag}(2,1)\)">\(R=\operatorname{diag}(2,1)\)</span>,
+<span class="math math-display" data-tex="\[
+ B_R=RBR^{-1}=\begin{pmatrix}0&amp;2\\2&amp;0\end{pmatrix}=B_R^*,
+ \qquad U(t,r)=R^{-1}e^{-i(t-r)DB_R}R. \tag{SY35}
+\]">\[
+ B_R=RBR^{-1}=\begin{pmatrix}0&amp;2\\2&amp;0\end{pmatrix}=B_R^*,
+ \qquad U(t,r)=R^{-1}e^{-i(t-r)DB_R}R. \tag{SY35}
+\]</span>
+The Fourier multiplier in the middle is unitary. Thus <span class="math" data-tex="\(U(t,r)\)">\(U(t,r)\)</span> preserves <span class="math" data-tex="\(\|Ru\|_s\)">\(\|Ru\|_s\)</span>, and its Euclidean operator norm is at most
+<span class="math" data-tex="\(\|R^{-1}\|\|R\|=2\)">\(\|R^{-1}\|\|R\|=2\)</span> at every real Sobolev order, in either time direction.</p>
+<p>The vectors <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span> and <span class="math" data-tex="\((1,-2)\)">\((1,-2)\)</span> are eigenvectors of <span class="math" data-tex="\(B\)">\(B\)</span>, with eigenvalues <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(-2\)">\(-2\)</span>. Decompose the data in these fixed polarizations. Since <span class="math" data-tex="\(iD=\partial_x\)">\(iD=\partial_x\)</span>, the polarized equations are
+<span class="math" data-tex="\(\partial_tu_\pm\pm2\partial_xu_\pm=0\)">\(\partial_tu_\pm\pm2\partial_xu_\pm=0\)</span>. Their solutions are translated by
+<span class="math" data-tex="\(x=y\pm2(t-r)\)">\(x=y\pm2(t-r)\)</span>. The eigenvectors are not an orthonormal Euclidean basis; the fixed <span class="math" data-tex="\(S\)">\(S\)</span> energy supplies the correct uniform norm. ∎</p>
+<h3 id="5-3-lower-order-coupling-and-two-singular-fronts">5.3. Lower-order coupling and two singular fronts</h3>
+<p><strong>Exercise (advanced).</strong> Fix <span class="math" data-tex="\(\beta\in\mathbb C\setminus\{0\}\)">\(\beta\in\mathbb C\setminus\{0\}\)</span> and consider
+<span class="math math-display" data-tex="\[
+ \partial_tu+
+ \left[
+   iD\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}
+   +\beta\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}
+ \right]u=0,\qquad
+ u(0)=\begin{pmatrix}0\\\delta_0\end{pmatrix}. \tag{SY36}
+\]">\[
+ \partial_tu+
+ \left[
+   iD\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}
+   +\beta\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}
+ \right]u=0,\qquad
+ u(0)=\begin{pmatrix}0\\\delta_0\end{pmatrix}. \tag{SY36}
+\]</span>
+Compute the full Fourier evolution, its continuous value at <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, and the fixed-time singularities. Determine the exact Sobolev threshold of the first component for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>.</p>
+<p><strong>Solution.</strong> The principal coefficient is Hermitian before multiplication by <span class="math" data-tex="\(i\)">\(i\)</span>. The order-zero Hermitian real part has eigenvalues <span class="math" data-tex="\(\pm|\beta|/2\)">\(\pm|\beta|/2\)</span>, so both directions satisfy the theorem. At frequency <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, solve the triangular ordinary differential equation in its prescribed order:
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ \widehat u_2(t,\xi)&amp;=e^{it\xi}\widehat\phi_2(\xi),\\
+ \widehat u_1(t,\xi)&amp;=e^{-it\xi}\widehat\phi_1(\xi)
+        -\beta\frac{\sin(t\xi)}{\xi}\widehat\phi_2(\xi).
+ \end{split} \tag{SY37}
+\]">\[
+ \begin{split}
+ \widehat u_2(t,\xi)&amp;=e^{it\xi}\widehat\phi_2(\xi),\\
+ \widehat u_1(t,\xi)&amp;=e^{-it\xi}\widehat\phi_1(\xi)
+        -\beta\frac{\sin(t\xi)}{\xi}\widehat\phi_2(\xi).
+ \end{split} \tag{SY37}
+\]</span>
+Indeed multiplying the first equation by <span class="math" data-tex="\(e^{it\xi}\)">\(e^{it\xi}\)</span> gives
+<span class="math" data-tex="\(\partial_t(e^{it\xi}\widehat u_1)
+=-\beta e^{2it\xi}\widehat\phi_2\)">\(\partial_t(e^{it\xi}\widehat u_1)
+=-\beta e^{2it\xi}\widehat\phi_2\)</span>; integrate this identity and multiply back. The quotient has continuous value <span class="math" data-tex="\(t\)">\(t\)</span> at zero. Thus the evolution matrix is
+<span class="math math-display" data-tex="\[
+ U(t,0;\xi)=
+ \begin{pmatrix}
+ e^{-it\xi}&amp;-\beta\sin(t\xi)/\xi\\
+ 0&amp;e^{it\xi}
+ \end{pmatrix},\qquad U(t,0;0)=I-t\beta
+                    \begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}. \tag{SY38}
+\]">\[
+ U(t,0;\xi)=
+ \begin{pmatrix}
+ e^{-it\xi}&amp;-\beta\sin(t\xi)/\xi\\
+ 0&amp;e^{it\xi}
+ \end{pmatrix},\qquad U(t,0;0)=I-t\beta
+                    \begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}. \tag{SY38}
+\]</span>
+The sign and the zero-frequency value agree with the initial derivative <span class="math" data-tex="\(-a(\xi)\)">\(-a(\xi)\)</span>.</p>
+<p>With the displayed delta data, Fourier inversion gives the exact distributions
+<span class="math math-display" data-tex="\[
+ u_2(t,x)=\delta(x+t),\qquad
+ u_1(t,x)=-\frac{\beta}{2}\,1_{[-t,t]}(x)\quad(t&gt;0). \tag{SY39}
+\]">\[
+ u_2(t,x)=\delta(x+t),\qquad
+ u_1(t,x)=-\frac{\beta}{2}\,1_{[-t,t]}(x)\quad(t&gt;0). \tag{SY39}
+\]</span>
+The value assigned to the interval's endpoints does not affect its distribution. The identity
+<span class="math" data-tex="\(\int_{-t}^t e^{-ix\xi}dx=2\sin(t\xi)/\xi\)">\(\int_{-t}^t e^{-ix\xi}dx=2\sin(t\xi)/\xi\)</span> proves the formula with the stated Fourier constants. Distributionally,
+<span class="math" data-tex="\(\partial_t1_{[-t,t]}=\delta(x-t)+\delta(x+t)\)">\(\partial_t1_{[-t,t]}=\delta(x-t)+\delta(x+t)\)</span> and
+<span class="math" data-tex="\(\partial_x1_{[-t,t]}=\delta(x+t)-\delta(x-t)\)">\(\partial_x1_{[-t,t]}=\delta(x+t)-\delta(x-t)\)</span>.
+Consequently <span class="math" data-tex="\((\partial_t+\partial_x)u_1=-\beta\delta(x+t)\)">\((\partial_t+\partial_x)u_1=-\beta\delta(x+t)\)</span>, which is exactly canceled by the off-diagonal coefficient in (SY36). The second equation and the initial trace are immediate; the interval tends to zero in distributions as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>.</p>
+<p>The second component is singular only at <span class="math" data-tex="\(x=-t\)">\(x=-t\)</span>, in every nonzero cotangent direction. The first component is smooth in the interval's interior and exterior, with a nonzero jump at both endpoints. A localized jump has Fourier leading term equal to a nonzero multiple of <span class="math" data-tex="\((i\xi)^{-1}\)">\((i\xi)^{-1}\)</span>, plus a rapidly decreasing term, by one integration by parts after differentiating it to a delta plus a smooth function. This proves that each endpoint has both nonzero cotangent directions. Taking the union of the components' wavefront sets gives
+<span class="math math-display" data-tex="\[
+ \operatorname{WF}_x u(t)=
+    \{(t,\xi):\xi\ne0\}\ \cup\ \{(-t,\xi):\xi\ne0\},
+    \qquad t&gt;0. \tag{SY40}
+\]">\[
+ \operatorname{WF}_x u(t)=
+    \{(t,\xi):\xi\ne0\}\ \cup\ \{(-t,\xi):\xi\ne0\},
+    \qquad t&gt;0. \tag{SY40}
+\]</span>
+The polarization of the delta input belongs to the negative-speed branch, but the order-zero coupling creates a weaker singularity on the positive-speed front too.</p>
+<p>The first component belongs to <span class="math" data-tex="\(H^s(\mathbb R)\)">\(H^s(\mathbb R)\)</span> exactly when <span class="math" data-tex="\(s&lt;1/2\)">\(s&lt;1/2\)</span>. Its Fourier transform is bounded near zero and has magnitude bounded by <span class="math" data-tex="\(C|\xi|^{-1}\)">\(C|\xi|^{-1}\)</span> at infinity, proving sufficiency. For necessity, on a fixed positive fraction of each high-frequency period, <span class="math" data-tex="\(|\sin(t\xi)|\geq1/2\)">\(|\sin(t\xi)|\geq1/2\)</span>. There the weighted squared integrand is bounded below by a positive multiple of <span class="math" data-tex="\(|\xi|^{2s-2}\)">\(|\xi|^{2s-2}\)</span>; summing those comparable periodic pieces diverges precisely for <span class="math" data-tex="\(2s-2\geq-1\)">\(2s-2\geq-1\)</span>. Similarly the delta component has threshold <span class="math" data-tex="\(s&lt;-1/2\)">\(s&lt;-1/2\)</span>. The full initial datum and solution therefore lie in every <span class="math" data-tex="\(H^s(\mathbb R;\mathbb C^2)\)">\(H^s(\mathbb R;\mathbb C^2)\)</span> with <span class="math" data-tex="\(s&lt;-1/2\)">\(s&lt;-1/2\)</span>, as required for the energy theorem. The off-diagonal multiplier gains one Sobolev order for fixed <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>; that mapping claim does not declare it an ordinary pseudodifferential symbol, since its frequency derivatives retain the oscillating fronts. ∎</p>
+<figure><img src="figures/first-order-system-fronts.svg" alt="Two exact fronts and the region filled by lower-order coupling" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p>The figure shows (SY39) on <span class="math" data-tex="\(0\leq t\leq2\)">\(0\leq t\leq2\)</span>, with its exact fronts <span class="math" data-tex="\(x=t\)">\(x=t\)</span> and <span class="math" data-tex="\(x=-t\)">\(x=-t\)</span>. The shaded interior is the constant first component <span class="math" data-tex="\(-\beta/2\)">\(-\beta/2\)</span>; the negative-speed boundary also carries the delta in the second component. The cotangent section is <span class="math" data-tex="\(\xi=1\)">\(\xi=1\)</span>; (SY40) holds for every nonzero <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. This is a spacetime section of the explicit solution, not a claim about the canonical relation of every system.</p>
+<h2 id="6-what-the-energy-theorem-supplies-for-a-cauchy-parametrix">6. What the energy theorem supplies for a Cauchy parametrix</h2>
+<p>For a Hermitian principal system, (SY13), (SY22) and (SY26) supply the exact continuous solution and the correction of an integrable residual, at every real Sobolev order. They retain all ordinary complex order-zero coefficients and their ordering. This is the analytic correction mechanism needed after a system's oscillatory kernel has been constructed.</p>
+<p>The construction of that kernel still has mathematical content: branch separation or crossings, phase functions, transported polarizations, ordinary symbol remainders, parameter-uniform support and the resulting canonical relations must be proved under their own stated hypotheses. Sections 4–8 of the preceding lesson prove one scalar homogeneous Hamiltonian's transported tests, and are not silently applied to a general matrix principal symbol. The present lesson supplies the Hilbert and finite-system energy/existence/evolution extension; it leaves those broader systems and FIO Cauchy constructions visible as remaining work in the full course.</p>
+<p>Author: GPT-6.1 Sol (OpenAI), Ultra. Private teaching preparation; full author proof and rendered-reader checks are being recorded.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="global-signed-parametrices-from-local-delayed-errors.html">← Global signed parametrices from local delayed errors</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="oscillatory-cauchy-kernels-and-exact-evolution.html">Oscillatory Cauchy kernels and exact evolution →</a></span></nav>
+<p class="small source-link"><a href="src/first-order-systems-and-ordered-evolution.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AN-04">Repository</a></nav>
+</footer>
+</body>
+</html>

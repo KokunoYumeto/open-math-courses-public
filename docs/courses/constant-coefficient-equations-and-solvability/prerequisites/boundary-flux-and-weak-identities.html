@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Boundary flux and weak identities</title><link rel="stylesheet" href="../course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}</style></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a> · <a href="boundary-flux-and-weak-identities.html">Boundary flux</a> · <a href="green-reader-guide.html">Versions, downloads and terms</a></nav><aside class="reader-notice"><p>All six solutions in each version remain complete. The current source is GPT-6 Astra (OpenAI), Ultra; the earlier source is GPT-6.1 Sol (OpenAI), Ultra; their original exposition is CC0. The abstract dyadic defect is not a realized flux-field counterexample. This does not newly admit every lower foundation, the entire Cauchy or weak-elliptic provider, or the course. <a href="boundary-flux-and-weak-identities-earlier.html">Read the other complete proof</a>; <a href="green-reader-guide.html">exact downloads and component terms</a>.</p></aside><h1 id="boundary-flux-and-weak-identities">Boundary flux and weak identities</h1>
+<p><em>Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. The earlier edition was written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition and exercises: CC0. The separately credited programme prerequisites retain their own licences.</em></p>
+<p>An outward flux can be recovered from what a function does on the inside of a region. We first calculate that flux on a graph, use the calculation to construct a surface measure, and then pass to continuous fields with an integrable weak divergence. A separate finite-partition argument explains why an everywhere differentiable solution of a first-order equation also solves the weak equation even when its gradient is not integrable.</p>
+<p>Our integration convention is complex linear: a distribution acts on a test without conjugating it, and <span class="math" data-tex="\(\langle\partial_jT,\phi\rangle=-\langle T,\partial_j\phi\rangle\)">\(\langle\partial_jT,\phi\rangle=-\langle T,\partial_j\phi\rangle\)</span>. The elementary programme prerequisites are the mean value and fundamental theorems of calculus, finite-dimensional compactness, smooth compact cutoffs, Fubini–Tonelli, dominated convergence, and translation continuity in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Their exact proof locations are listed after the solutions. The graph lemma, the required partition of unity, the surface-measure compatibility, the flux identities and the finite tagged-partition lemma are proved here.</p>
+<h2 id="a-boundary-separates-two-local-sides">A boundary separates two local sides</h2>
+<p>Let <span class="math" data-tex="\(Y\subset X\subset\mathbb R^n\)">\(Y\subset X\subset\mathbb R^n\)</span> be open, with <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. All closures and boundaries below are relative to <span class="math" data-tex="\(X\)">\(X\)</span>. By a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> boundary we mean that every <span class="math" data-tex="\(p\in\partial_XY\)">\(p\in\partial_XY\)</span> has a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> and a real <span class="math" data-tex="\(r\in C^1(U)\)">\(r\in C^1(U)\)</span> satisfying</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{gathered}
+ Y\cap U=\{r&lt;0\},\\
+ \partial_XY\cap U=\{r=0\},\\
+ \nabla r\ne0\text{ on }\{r=0\}.
+ \end{gathered}
+ \tag{1.1}
+\]">\[
+ \begin{gathered}
+ Y\cap U=\{r&lt;0\},\\
+ \partial_XY\cap U=\{r=0\},\\
+ \nabla r\ne0\text{ on }\{r=0\}.
+ \end{gathered}
+ \tag{1.1}
+\]</span></p>
+<p><strong>Graph lemma.</strong> Near each such point, after permuting and possibly reversing one coordinate, there are a base box <span class="math" data-tex="\(V\subset\mathbb R^{n-1}\)">\(V\subset\mathbb R^{n-1}\)</span>, an interval <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, and a function <span class="math" data-tex="\(\gamma\in C^1(V)\)">\(\gamma\in C^1(V)\)</span> for which</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{gathered}
+ Y\cap(V\times(a,b))\\
+   =\{(x&#x27;,t):a&lt;t&lt;\gamma(x&#x27;)\},\\
+ r(x&#x27;,\gamma(x&#x27;))=0.
+ \end{gathered}
+ \tag{1.2}
+\]">\[
+ \begin{gathered}
+ Y\cap(V\times(a,b))\\
+   =\{(x&#x27;,t):a&lt;t&lt;\gamma(x&#x27;)\},\\
+ r(x&#x27;,\gamma(x&#x27;))=0.
+ \end{gathered}
+ \tag{1.2}
+\]</span></p>
+<p><strong>Proof.</strong> Choose the last coordinate so that <span class="math" data-tex="\(\partial_t r(p)&gt;0\)">\(\partial_t r(p)&gt;0\)</span>. On a smaller closed box it is at least some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Choose <span class="math" data-tex="\(a&lt;p_n&lt;b\)">\(a&lt;p_n&lt;b\)</span> so close to <span class="math" data-tex="\(p_n\)">\(p_n\)</span> that the vertical segment stays in that box. The mean value theorem gives <span class="math" data-tex="\(r(p&#x27;,a)&lt;0&lt;r(p&#x27;,b)\)">\(r(p&#x27;,a)&lt;0&lt;r(p&#x27;,b)\)</span>; continuity preserves these strict inequalities for <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span> in a sufficiently small base box. The intermediate value theorem gives a zero on each vertical segment, and <span class="math" data-tex="\(\partial_t r\ge c\)">\(\partial_t r\ge c\)</span> makes it unique. The same monotonicity gives the asserted negative side.</p>
+<p>On a still smaller box, bound <span class="math" data-tex="\(|\nabla_{x&#x27;}r|\)">\(|\nabla_{x&#x27;}r|\)</span> by <span class="math" data-tex="\(M\)">\(M\)</span>. Applying the mean value bound first on a horizontal segment and then on the vertical segment between the two zeros gives</p>
+<p><span class="math math-display" data-tex="\[
+ |\gamma(x&#x27;+h)-\gamma(x&#x27;)|\le (M/c)|h|.
+\]">\[
+ |\gamma(x&#x27;+h)-\gamma(x&#x27;)|\le (M/c)|h|.
+\]</span></p>
+<p>For <span class="math" data-tex="\(k=\gamma(x&#x27;+h)-\gamma(x&#x27;)=O(|h|)\)">\(k=\gamma(x&#x27;+h)-\gamma(x&#x27;)=O(|h|)\)</span>, differentiability of <span class="math" data-tex="\(r\)">\(r\)</span> at <span class="math" data-tex="\((x&#x27;,\gamma(x&#x27;))\)">\((x&#x27;,\gamma(x&#x27;))\)</span> gives</p>
+<p><span class="math math-display" data-tex="\[
+ 0=\nabla_{x&#x27;}r\cdot h+\partial_t r\,k+o(|h|).
+\]">\[
+ 0=\nabla_{x&#x27;}r\cdot h+\partial_t r\,k+o(|h|).
+\]</span></p>
+<p>Thus <span class="math" data-tex="\(D\gamma=-\nabla_{x&#x27;}r/\partial_t r\)">\(D\gamma=-\nabla_{x&#x27;}r/\partial_t r\)</span> evaluated on the graph. This expression is continuous, so <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is <span class="math" data-tex="\(C^1\)">\(C^1\)</span>. In dimension one the base is a point and the same proof gives a locally isolated boundary point. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The outward unit normal in these coordinates is</p>
+<p><span class="math math-display" data-tex="\[
+ \nu=\frac{(-\nabla\gamma,1)}{\sqrt{1+|\nabla\gamma|^2}}
+     =\frac{\nabla r}{|\nabla r|}.
+ \tag{1.3}
+\]">\[
+ \nu=\frac{(-\nabla\gamma,1)}{\sqrt{1+|\nabla\gamma|^2}}
+     =\frac{\nabla r}{|\nabla r|}.
+ \tag{1.3}
+\]</span></p>
+<p>This is independent of the defining function. Indeed, its tangent vectors are <span class="math" data-tex="\((v,D\gamma v)\)">\((v,D\gamma v)\)</span>, whose orthogonal complement is the line spanned by <span class="math" data-tex="\((-\nabla\gamma,1)\)">\((-\nabla\gamma,1)\)</span>. The sign is the one pointing to the side outside <span class="math" data-tex="\(Y\)">\(Y\)</span>. Any other defining function has that same zero tangent space and positive side, and therefore gives the same unit normal.</p>
+<p>We will need a partition with supports actually inside its charts, including when <span class="math" data-tex="\(X\)">\(X\)</span> is unbounded.</p>
+<p><strong>Partition lemma.</strong> Every open cover of an open subset <span class="math" data-tex="\(X\)">\(X\)</span> of Euclidean space has a countable smooth partition of unity whose supports are compact subsets of members of the cover and form a locally finite family in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Proof.</strong> Put</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{gathered}
+ K_m=\{x\in X:|x|\le m,\ d(x)\ge1/m\},\\
+ d(x)=\operatorname{dist}(x,\mathbb R^n\setminus X),\qquad m\ge1,
+ \end{gathered}
+\]">\[
+ \begin{gathered}
+ K_m=\{x\in X:|x|\le m,\ d(x)\ge1/m\},\\
+ d(x)=\operatorname{dist}(x,\mathbb R^n\setminus X),\qquad m\ge1,
+ \end{gathered}
+\]</span></p>
+<p>using infinite distance when <span class="math" data-tex="\(X=\mathbb R^n\)">\(X=\mathbb R^n\)</span>, and set <span class="math" data-tex="\(K_m=\varnothing\)">\(K_m=\varnothing\)</span> for <span class="math" data-tex="\(m\le0\)">\(m\le0\)</span>. Each <span class="math" data-tex="\(K_m\)">\(K_m\)</span> is compact, <span class="math" data-tex="\(K_m\subset\operatorname{int}K_{m+1}\)">\(K_m\subset\operatorname{int}K_{m+1}\)</span>, and their interiors exhaust <span class="math" data-tex="\(X\)">\(X\)</span>. Distance to a nonempty closed set is continuous because the triangle inequality gives <span class="math" data-tex="\(|d(x)-d(y)|\le|x-y|\)">\(|d(x)-d(y)|\le|x-y|\)</span>; this also justifies closedness in this formula.</p>
+<p>The compact layer <span class="math" data-tex="\(L_m=K_m\setminus\operatorname{int}K_{m-1}\)">\(L_m=K_m\setminus\operatorname{int}K_{m-1}\)</span> lies in the open set <span class="math" data-tex="\(\operatorname{int}K_{m+1}\setminus K_{m-2}\)">\(\operatorname{int}K_{m+1}\setminus K_{m-2}\)</span>. Around each of its points choose concentric balls <span class="math" data-tex="\(B\subset2B\)">\(B\subset2B\)</span> with <span class="math" data-tex="\(\overline{2B}\)">\(\overline{2B}\)</span> inside that open set and inside one member of the given cover. Finitely many of the smaller balls cover <span class="math" data-tex="\(L_m\)">\(L_m\)</span>. Take a smooth nonnegative bump equal to one on each smaller ball and supported in its corresponding larger ball; the exact radial bump construction is in the stated cutoff prerequisite.</p>
+<p>The resulting countable family of supports is locally finite. In fact a point has a neighbourhood inside some <span class="math" data-tex="\(\operatorname{int}K_N\)">\(\operatorname{int}K_N\)</span>, and every layer with <span class="math" data-tex="\(m\ge N+2\)">\(m\ge N+2\)</span> has its selected supports outside <span class="math" data-tex="\(K_{m-2}\supset K_N\)">\(K_{m-2}\supset K_N\)</span>; the finitely many earlier layers contribute only finitely many balls. At least one bump is positive at each point: choose the smallest <span class="math" data-tex="\(m\)">\(m\)</span> for which the point belongs to <span class="math" data-tex="\(K_m\)">\(K_m\)</span>, and use its layer. The locally finite sum <span class="math" data-tex="\(s\)">\(s\)</span> of all bumps is therefore positive and smooth. Dividing each bump by <span class="math" data-tex="\(s\)">\(s\)</span> gives the required partition, with its original support unchanged. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.1 (a global defining function).</strong> There is a real <span class="math" data-tex="\(\rho\in C^1(X)\)">\(\rho\in C^1(X)\)</span> such that</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{gathered}
+ Y=\{\rho&lt;0\},\qquad \partial_XY=\{\rho=0\},\\
+ \nabla\rho\ne0\text{ on }\partial_XY.
+ \end{gathered}
+ \tag{1.4}
+\]">\[
+ \begin{gathered}
+ Y=\{\rho&lt;0\},\qquad \partial_XY=\{\rho=0\},\\
+ \nabla\rho\ne0\text{ on }\partial_XY.
+ \end{gathered}
+ \tag{1.4}
+\]</span></p>
+<p><strong>Proof.</strong> Apply the partition lemma to the boundary charts together with <span class="math" data-tex="\(Y\)">\(Y\)</span> and <span class="math" data-tex="\(X\setminus\overline Y\)">\(X\setminus\overline Y\)</span>. To a boundary chart assign its defining function, and to the last two open sets assign respectively <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. Let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be the sum of these functions times their partition factors, each product extended by zero. Every product is <span class="math" data-tex="\(C^1\)">\(C^1\)</span> across the edge of its chart because its factor has compact support inside the chart; local finiteness proves that the sum is <span class="math" data-tex="\(C^1\)">\(C^1\)</span>.</p>
+<p>All active summands have the same strict sign at an interior or exterior point. At a boundary point their defining functions vanish. Differentiating there consequently gives</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \nabla\rho(p)&amp;=\sum_i\theta_i(p)\nabla r_i(p)\\
+       &amp;=\left(\sum_i\theta_i(p)|\nabla r_i(p)|\right)\nu(p).
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ \nabla\rho(p)&amp;=\sum_i\theta_i(p)\nabla r_i(p)\\
+       &amp;=\left(\sum_i\theta_i(p)|\nabla r_i(p)|\right)\nu(p).
+ \end{aligned}
+\]</span></p>
+<p>Only boundary charts can have nonzero factors at <span class="math" data-tex="\(p\)">\(p\)</span>; those factors sum to one. The scalar in parentheses is strictly positive. This proves every assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-derivative-of-a-region-is-its-oriented-surface-measure">The derivative of a region is its oriented surface measure</h2>
+<p>In a graph chart define the local positive measure</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;J_\gamma(x&#x27;)=\sqrt{1+|\nabla\gamma(x&#x27;)|^2},\\
+ &amp;\int h\,d\mu_\gamma\\
+ &amp;\qquad=\int_V h(x&#x27;,\gamma(x&#x27;))J_\gamma(x&#x27;)\,dx&#x27;.
+ \end{aligned}
+ \tag{2.1}
+\]">\[
+ \begin{aligned}
+ &amp;J_\gamma(x&#x27;)=\sqrt{1+|\nabla\gamma(x&#x27;)|^2},\\
+ &amp;\int h\,d\mu_\gamma\\
+ &amp;\qquad=\int_V h(x&#x27;,\gamma(x&#x27;))J_\gamma(x&#x27;)\,dx&#x27;.
+ \end{aligned}
+ \tag{2.1}
+\]</span></p>
+<p>The graph map sends the measure with this continuous density to a measure on the graph. It is finite on compact subcharts. The density is the Euclidean one: the Gram matrix of its tangent vectors is <span class="math" data-tex="\(I+vv^{\mathsf T}\)">\(I+vv^{\mathsf T}\)</span>, where <span class="math" data-tex="\(v=\nabla\gamma\)">\(v=\nabla\gamma\)</span>, and its determinant is <span class="math" data-tex="\(1+|v|^2\)">\(1+|v|^2\)</span>. To see the last identity directly, the map is the identity on <span class="math" data-tex="\(v^\perp\)">\(v^\perp\)</span> and multiplication by <span class="math" data-tex="\(1+|v|^2\)">\(1+|v|^2\)</span> on the span of <span class="math" data-tex="\(v\)">\(v\)</span>, with the case <span class="math" data-tex="\(v=0\)">\(v=0\)</span> immediate.</p>
+<p>Here is a construction of compatibility that does not assume a nonlinear change-of-variables theorem for surfaces.</p>
+<p><strong>Theorem 2.1 (surface measure and the boundary derivative).</strong> The graph measures (2.1) agree on overlaps and define a locally finite measure <span class="math" data-tex="\(dS\)">\(dS\)</span> on <span class="math" data-tex="\(\partial_XY\)">\(\partial_XY\)</span>. With the normal (1.3),</p>
+<p><span class="math math-display" data-tex="\[
+ \partial_j\chi_Y=-\nu_j\,dS\quad\text{in }\mathcal D&#x27;(X).
+ \tag{2.2}
+\]">\[
+ \partial_j\chi_Y=-\nu_j\,dS\quad\text{in }\mathcal D&#x27;(X).
+ \tag{2.2}
+\]</span></p>
+<p>Consequently, for every <span class="math" data-tex="\(A\in C_c^1(X;\mathbb C^n)\)">\(A\in C_c^1(X;\mathbb C^n)\)</span>,</p>
+<p><span class="math math-display" data-tex="\[
+ \int_Y\operatorname{div}A\,dx
+      =\int_{\partial_XY}A\cdot\nu\,dS.
+ \tag{2.3}
+\]">\[
+ \int_Y\operatorname{div}A\,dx
+      =\int_{\partial_XY}A\cdot\nu\,dS.
+ \tag{2.3}
+\]</span></p>
+<p>The total variation of the vector measure <span class="math" data-tex="\(\nabla\chi_Y\)">\(\nabla\chi_Y\)</span> is <span class="math" data-tex="\(dS\)">\(dS\)</span>, and its support and singular support are both <span class="math" data-tex="\(\partial_XY\)">\(\partial_XY\)</span>.</p>
+<p><strong>Proof.</strong> Take a <span class="math" data-tex="\(C_c^1\)">\(C_c^1\)</span> scalar test <span class="math" data-tex="\(h\)">\(h\)</span> supported in one graph cylinder. For the vertical derivative, Fubini and the one-dimensional fundamental theorem give</p>
+<p><span class="math math-display" data-tex="\[
+ \int_Y\partial_t h\,dx=\int_V h(x&#x27;,\gamma(x&#x27;))\,dx&#x27;.
+\]">\[
+ \int_Y\partial_t h\,dx=\int_V h(x&#x27;,\gamma(x&#x27;))\,dx&#x27;.
+\]</span></p>
+<p>For <span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span>, differentiation of <span class="math" data-tex="\(H(x&#x27;)=\int_a^{\gamma(x&#x27;)}h(x&#x27;,t)\,dt\)">\(H(x&#x27;)=\int_a^{\gamma(x&#x27;)}h(x&#x27;,t)\,dt\)</span> gives</p>
+<p><span class="math math-display" data-tex="\[
+ \partial_jH=\int_a^{\gamma(x&#x27;)}\partial_jh(x&#x27;,t)\,dt
+              +h(x&#x27;,\gamma(x&#x27;))\partial_j\gamma.
+\]">\[
+ \partial_jH=\int_a^{\gamma(x&#x27;)}\partial_jh(x&#x27;,t)\,dt
+              +h(x&#x27;,\gamma(x&#x27;))\partial_j\gamma.
+\]</span></p>
+<p>This differentiation follows by splitting the increment into an integral over the fixed interval and an integral between the two upper endpoints: the first quotient converges uniformly on compact subcharts by continuity of <span class="math" data-tex="\(\partial_jh\)">\(\partial_jh\)</span>, while the second converges to <span class="math" data-tex="\(h(x&#x27;,\gamma)\partial_j\gamma\)">\(h(x&#x27;,\gamma)\partial_j\gamma\)</span>. The function <span class="math" data-tex="\(H\)">\(H\)</span> has compact support in the base. Integrating its derivative gives zero by the fundamental theorem, so</p>
+<p><span class="math math-display" data-tex="\[
+ \int_Y\partial_jh\,dx=-\int_V h(x&#x27;,\gamma(x&#x27;))\partial_j\gamma(x&#x27;)\,dx&#x27;.
+\]">\[
+ \int_Y\partial_jh\,dx=-\int_V h(x&#x27;,\gamma(x&#x27;))\partial_j\gamma(x&#x27;)\,dx&#x27;.
+\]</span></p>
+<p>These identities are precisely <span class="math" data-tex="\(\int_Y\nabla h=\int h\nu\,d\mu_\gamma\)">\(\int_Y\nabla h=\int h\nu\,d\mu_\gamma\)</span>. Coordinate permutations and reflections preserve volume with absolute Jacobian one and transform the gradient and normal by the same orthogonal matrix; thus the identity also holds in the original coordinates.</p>
+<p>For two charts, apply that identity to tests supported in their overlap. Their vector measures <span class="math" data-tex="\(\nu\mu_\gamma\)">\(\nu\mu_\gamma\)</span> give the same values on all smooth compact tests. They then give the same values on continuous compact tests: convolution with a nonnegative smooth unit-mass bump uniformly approximates each such test, with supports in one fixed compact neighbourhood. Uniform continuity proves this approximation, and local finiteness bounds its integral error. Extend the normal continuously off the graph using its formula in the first chart. Test the <span class="math" data-tex="\(j\)">\(j\)</span>-th component equality with <span class="math" data-tex="\(h\nu_j\)">\(h\nu_j\)</span>, where <span class="math" data-tex="\(h\)">\(h\)</span> is continuous with compact support in the overlap, and sum over <span class="math" data-tex="\(j\)">\(j\)</span>. Since <span class="math" data-tex="\(\sum_j\nu_j^2=1\)">\(\sum_j\nu_j^2=1\)</span> on the graph, this gives <span class="math" data-tex="\(\int h\,d\mu_{\gamma_1}=\int h\,d\mu_{\gamma_2}\)">\(\int h\,d\mu_{\gamma_1}=\int h\,d\mu_{\gamma_2}\)</span>.</p>
+<p>Here is the needed measure-uniqueness step. For an open set <span class="math" data-tex="\(O\)">\(O\)</span> in the overlap, the continuous functions</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ h_k(x)&amp;=\min\{1,(k\operatorname{dist}(x,O^c)-1)_+\}\\
+       &amp;\qquad\cdot\min\{1,(k-|x|)_+\}
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ h_k(x)&amp;=\min\{1,(k\operatorname{dist}(x,O^c)-1)_+\}\\
+       &amp;\qquad\cdot\min\{1,(k-|x|)_+\}
+ \end{aligned}
+\]</span></p>
+<p>have compact support inside <span class="math" data-tex="\(O\)">\(O\)</span>, increase, and tend to <span class="math" data-tex="\(1_O\)">\(1_O\)</span>. For empty <span class="math" data-tex="\(O\)">\(O\)</span> take zero. Thus monotone convergence makes the two measures agree on every open set. On each relatively compact open neighbourhood <span class="math" data-tex="\(W\)">\(W\)</span> in the overlap they are finite. The subsets of <span class="math" data-tex="\(W\)">\(W\)</span> on which they agree form a Dynkin class: complements subtract from their common finite measure of <span class="math" data-tex="\(W\)">\(W\)</span>, and disjoint countable unions use countable additivity. Relatively open sets form an intersection-closed generating family. The Dynkin-class argument proved in the product-measure prerequisite therefore gives equality on all Borel subsets of <span class="math" data-tex="\(W\)">\(W\)</span>. A countable exhaustion of the overlap by such <span class="math" data-tex="\(W\)">\(W\)</span>'s proves <span class="math" data-tex="\(\mu_{\gamma_1}=\mu_{\gamma_2}\)">\(\mu_{\gamma_1}=\mu_{\gamma_2}\)</span> everywhere on the overlap.</p>
+<p>One may glue the measures by a countable chart partition: set <span class="math" data-tex="\(\int h\,dS=\sum_i\int\theta_i h\,d\mu_i\)">\(\int h\,dS=\sum_i\int\theta_i h\,d\mu_i\)</span>. On any chart the agreement just proved reduces this sum to its graph integral, so the construction is independent of the partition. Compact subsets meet only finitely many partition supports, proving local finiteness. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the graph formula assigns mass one to each locally isolated boundary point.</p>
+<p>Split a compact test by the partition from Section 1. The graph identities hold on boundary charts; on interior charts the integral of a compact derivative is zero; exterior charts contribute zero. In summing, the derivatives of the partition factors cancel because their sum is one near the support of the test. This proves (2.2), and the same argument applied to the components of a <span class="math" data-tex="\(C_c^1\)">\(C_c^1\)</span> field proves (2.3).</p>
+<p>For the variation assertion, on a compact portion of the boundary every Borel partition <span class="math" data-tex="\(E=\bigsqcup E_k\)">\(E=\bigsqcup E_k\)</span> satisfies</p>
+<p><span class="math math-display" data-tex="\[
+ \sum_k\left|\int_{E_k}\nu\,dS\right|\le S(E).
+\]">\[
+ \sum_k\left|\int_{E_k}\nu\,dS\right|\le S(E).
+\]</span></p>
+<p>Conversely, partition the unit sphere into finitely many Borel sets of diameter at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and split <span class="math" data-tex="\(E\)">\(E\)</span> according to the values of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. In each nonempty piece choose a unit vector <span class="math" data-tex="\(v_k\)">\(v_k\)</span> within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of its normals. Then</p>
+<p><span class="math math-display" data-tex="\[
+ \left|\int_{E_k}\nu\,dS\right|
+ \ge v_k\cdot\int_{E_k}\nu\,dS\ge(1-\varepsilon)S(E_k).
+\]">\[
+ \left|\int_{E_k}\nu\,dS\right|
+ \ge v_k\cdot\int_{E_k}\nu\,dS\ge(1-\varepsilon)S(E_k).
+\]</span></p>
+<p>Take the supremum over partitions and then let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> tend to zero. Exhaustion by compact neighbourhoods gives the locally finite statement.</p>
+<p>Every boundary neighbourhood has positive graph measure, since its projection contains a nonempty base ball and the density is at least one. Thus the support is exactly the boundary. Each graph has zero <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional volume by Fubini, and a countable chart cover makes the whole boundary null. If the vector distribution were smooth near a boundary point, its smooth density would vanish off that null set and hence, by continuity, everywhere in that neighbourhood. This contradicts its positive variation there. Its singular support is therefore also exactly the boundary. The indicator itself has the same singular support: it is constant off the boundary, while a continuous representative near a boundary point would have to take both the inside value one and the outside value zero at that point. Both sides approach the point by the graph description, so that is impossible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.2 (cutting off a differentiable amplitude).</strong> For <span class="math" data-tex="\(u\in C^1(X)\)">\(u\in C^1(X)\)</span>,</p>
+<p><span class="math math-display" data-tex="\[
+ \partial_j(u\chi_Y)=(\partial_ju)\chi_Y-u\nu_j\,dS.
+ \tag{2.4}
+\]">\[
+ \partial_j(u\chi_Y)=(\partial_ju)\chi_Y-u\nu_j\,dS.
+ \tag{2.4}
+\]</span></p>
+<p><strong>Proof.</strong> Use (2.3) on the field having <span class="math" data-tex="\(u\phi\)">\(u\phi\)</span> in its <span class="math" data-tex="\(j\)">\(j\)</span>-th component and zero in the others. Expand <span class="math" data-tex="\(\partial_j(u\phi)\)">\(\partial_j(u\phi)\)</span>, then rearrange. Every term is integrable on the compact support of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and the resulting identity is exactly the distributional pairing in (2.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.3 (the planar complex sign).</strong> For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, write <span class="math" data-tex="\(z=x+iy\)">\(z=x+iy\)</span> and <span class="math" data-tex="\(\partial_{\bar z}=(\partial_x+i\partial_y)/2\)">\(\partial_{\bar z}=(\partial_x+i\partial_y)/2\)</span>. Orient the boundary by the tangent <span class="math" data-tex="\(\tau=(-\nu_y,\nu_x)\)">\(\tau=(-\nu_y,\nu_x)\)</span>, so that the region is on the left. For <span class="math" data-tex="\(\phi\in C_c^1(X)\)">\(\phi\in C_c^1(X)\)</span>,</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ 2\int_Y\partial_{\bar z}\phi\,dx\,dy&amp;=-i\int_{\partial_XY}\phi\,dz,\\
+ \langle\partial_{\bar z}\chi_Y,\phi\rangle
+          &amp;=\frac i2\int_{\partial_XY}\phi\,dz.
+ \end{aligned}
+ \tag{2.5}
+\]">\[
+ \begin{aligned}
+ 2\int_Y\partial_{\bar z}\phi\,dx\,dy&amp;=-i\int_{\partial_XY}\phi\,dz,\\
+ \langle\partial_{\bar z}\chi_Y,\phi\rangle
+          &amp;=\frac i2\int_{\partial_XY}\phi\,dz.
+ \end{aligned}
+ \tag{2.5}
+\]</span></p>
+<p><strong>Proof.</strong> Formula (2.3), applied to <span class="math" data-tex="\((\phi,i\phi)\)">\((\phi,i\phi)\)</span>, gives the boundary factor <span class="math" data-tex="\(\nu_x+i\nu_y\)">\(\nu_x+i\nu_y\)</span>. But <span class="math" data-tex="\(dz=(\tau_x+i\tau_y)dS=i(\nu_x+i\nu_y)dS\)">\(dz=(\tau_x+i\tau_y)dS=i(\nu_x+i\nu_y)dS\)</span>. Substitution proves both identities, including their signs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-2-4-finitely-many-planar-corners">Corollary 2.4 (finitely many planar corners)</h3>
+<p>Let <span class="math" data-tex="\(Y\Subset X\subset\mathbb R^2\)">\(Y\Subset X\subset\mathbb R^2\)</span> be open. Suppose its boundary is the union of finitely many regular <span class="math" data-tex="\(C^1\)">\(C^1\)</span> arcs, each parametrized injectively on a compact interval, with intersections only at endpoints. Let <span class="math" data-tex="\(E\)">\(E\)</span> be the finite set of those endpoints. Assume the boundary is <span class="math" data-tex="\(C^1\)">\(C^1\)</span> and locally one-sided at every point outside <span class="math" data-tex="\(E\)">\(E\)</span>. Then (2.3) and (2.5) remain valid, with the outward normal on the open arcs and with line integrals oriented so that <span class="math" data-tex="\(Y\)">\(Y\)</span> lies to the left. No normal or point mass is assigned to a corner. In particular the formulas apply to a half-disk and to a rectangle. For any <span class="math" data-tex="\(a\in Y\)">\(a\in Y\)</span>, they also give</p>
+<p><span class="math math-display" data-tex="\[
+ \int_{\partial Y}\frac{dz}{z-a}=2\pi i.
+\]">\[
+ \int_{\partial Y}\frac{dz}{z-a}=2\pi i.
+\]</span></p>
+<p><strong>Proof.</strong> On a regular arc <span class="math" data-tex="\(\alpha:[a,b]\to\mathbb R^2\)">\(\alpha:[a,b]\to\mathbb R^2\)</span>, a coordinate direction <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(e\cdot\alpha&#x27;(t_0)\ne0\)">\(e\cdot\alpha&#x27;(t_0)\ne0\)</span> has the same strict derivative sign on a small parameter interval. The mean value theorem makes its coordinate strictly monotone there, and the graph lemma identifies that part of the arc with a graph. The one-variable substitution formula and the chain rule give</p>
+<p><span class="math math-display" data-tex="\[
+ \sqrt{1+|\gamma&#x27;(x)|^2}\,|dx|
+       =|\alpha&#x27;(t)|\,dt.
+\]">\[
+ \sqrt{1+|\gamma&#x27;(x)|^2}\,|dx|
+       =|\alpha&#x27;(t)|\,dt.
+\]</span></p>
+<p>Compactness gives finitely many such parameter intervals. Additivity of their integrals, or a partition in the parameter, proves that the graph surface integral on the arc is its ordinary arclength integral. In particular its total length is finite.</p>
+<p>There is also a uniform <span class="math" data-tex="\(O(r)\)">\(O(r)\)</span> length bound near any endpoint <span class="math" data-tex="\(p=\alpha(a)\)">\(p=\alpha(a)\)</span>. Choose a unit vector <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(e\cdot\alpha&#x27;(a)&gt;0\)">\(e\cdot\alpha&#x27;(a)&gt;0\)</span>. On a small right interval, <span class="math" data-tex="\(e\cdot\alpha&#x27;(t)\ge c&gt;0\)">\(e\cdot\alpha&#x27;(t)\ge c&gt;0\)</span> and <span class="math" data-tex="\(|\alpha&#x27;(t)|\le M\)">\(|\alpha&#x27;(t)|\le M\)</span>. Hence</p>
+<p><span class="math math-display" data-tex="\[
+ |\alpha(t)-p|\ge e\cdot(\alpha(t)-p)\ge c(t-a).
+\]">\[
+ |\alpha(t)-p|\ge e\cdot(\alpha(t)-p)\ge c(t-a).
+\]</span></p>
+<p>The part of that interval inside <span class="math" data-tex="\(B(p,r)\)">\(B(p,r)\)</span> has length at most <span class="math" data-tex="\(Mr/c\)">\(Mr/c\)</span>. The remaining compact part of the injective arc stays a positive distance from <span class="math" data-tex="\(p\)">\(p\)</span>. At the other endpoint the same argument runs with the parameter reversed. Other arcs not incident to <span class="math" data-tex="\(p\)">\(p\)</span> stay a positive distance away. A simple closed regular curve can be split into arcs with distinct endpoints. Thus, for small <span class="math" data-tex="\(r\)">\(r\)</span>, the length of <span class="math" data-tex="\(\partial Y\cap B(p,r)\)">\(\partial Y\cap B(p,r)\)</span> is at most <span class="math" data-tex="\(C_pr\)">\(C_pr\)</span>.</p>
+<p>For each <span class="math" data-tex="\(p\in E\)">\(p\in E\)</span>, take a smooth radial function <span class="math" data-tex="\(\zeta_{p,\epsilon}\)">\(\zeta_{p,\epsilon}\)</span> which is zero on <span class="math" data-tex="\(B(p,\epsilon)\)">\(B(p,\epsilon)\)</span>, one outside <span class="math" data-tex="\(B(p,2\epsilon)\)">\(B(p,2\epsilon)\)</span>, lies between zero and one, and has <span class="math" data-tex="\(|\nabla\zeta_{p,\epsilon}|\le C/\epsilon\)">\(|\nabla\zeta_{p,\epsilon}|\le C/\epsilon\)</span>. It is obtained by scaling the fixed bump from the cutoff prerequisite. Put <span class="math" data-tex="\(\zeta_\epsilon=\prod_{p\in E}\zeta_{p,\epsilon}\)">\(\zeta_\epsilon=\prod_{p\in E}\zeta_{p,\epsilon}\)</span>; if <span class="math" data-tex="\(E\)">\(E\)</span> is empty put <span class="math" data-tex="\(\zeta_\epsilon=1\)">\(\zeta_\epsilon=1\)</span>. Its gradient is supported in the union of these finitely many radius-<span class="math" data-tex="\(2\epsilon\)">\(2\epsilon\)</span> balls and has bound <span class="math" data-tex="\(C|E|/\epsilon\)">\(C|E|/\epsilon\)</span>.</p>
+<p>For <span class="math" data-tex="\(A\in C_c^1(X;\mathbb C^2)\)">\(A\in C_c^1(X;\mathbb C^2)\)</span>, the field <span class="math" data-tex="\(\zeta_\epsilon A\)">\(\zeta_\epsilon A\)</span> vanishes near every corner. The graph proof of Theorem 2.1 can therefore be localized on its support and gives</p>
+<p><span class="math math-display" data-tex="\[
+ \int_Y\bigl(\zeta_\epsilon\operatorname{div}A
+                   +A\cdot\nabla\zeta_\epsilon\bigr)\,dx
+       =\int_{\partial Y}\zeta_\epsilon A\cdot\nu\,dS.
+\]">\[
+ \int_Y\bigl(\zeta_\epsilon\operatorname{div}A
+                   +A\cdot\nabla\zeta_\epsilon\bigr)\,dx
+       =\int_{\partial Y}\zeta_\epsilon A\cdot\nu\,dS.
+\]</span></p>
+<p>The second volume term tends to zero: a radius-<span class="math" data-tex="\(2\epsilon\)">\(2\epsilon\)</span> ball lies in a square of area <span class="math" data-tex="\(16\epsilon^2\)">\(16\epsilon^2\)</span>, so its absolute value is bounded by a fixed constant times <span class="math" data-tex="\(\|A\|_\infty\epsilon\)">\(\|A\|_\infty\epsilon\)</span>. The first volume term tends to <span class="math" data-tex="\(\int_Y\operatorname{div}A\)">\(\int_Y\operatorname{div}A\)</span> by dominated convergence. The boundary term tends to <span class="math" data-tex="\(\int_{\partial Y}A\cdot\nu\,dS\)">\(\int_{\partial Y}A\cdot\nu\,dS\)</span>; the omitted portions have total length <span class="math" data-tex="\(O(\epsilon)\)">\(O(\epsilon)\)</span> by the endpoint estimate. This proves (2.3). Substitution of <span class="math" data-tex="\(A=(\phi,i\phi)\)">\(A=(\phi,i\phi)\)</span> and the same tangent computation as in Corollary 2.3 proves (2.5), including the distributional indicator identity. A half-disk has one regular semicircular arc and one segment, and a rectangle has four segments; their only exceptional points are their finitely many vertices.</p>
+<p>For the last identity choose <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> with <span class="math" data-tex="\(\overline{B(a,\rho)}\subset Y\)">\(\overline{B(a,\rho)}\subset Y\)</span>. Apply the established complex Green formula to <span class="math" data-tex="\(Y\setminus\overline{B(a,\rho)}\)">\(Y\setminus\overline{B(a,\rho)}\)</span> and to <span class="math" data-tex="\(1/(z-a)\)">\(1/(z-a)\)</span>, multiplied by a smooth compact cutoff equal to one near this closed punctured region and supported away from <span class="math" data-tex="\(a\)">\(a\)</span>. Its <span class="math" data-tex="\(\partial_{\bar z}\)">\(\partial_{\bar z}\)</span> derivative is zero on the punctured region, by the ordinary quotient rule. The inner boundary circle is clockwise, so the integral over <span class="math" data-tex="\(\partial Y\)">\(\partial Y\)</span> equals the counterclockwise integral over that circle. Parametrizing it by <span class="math" data-tex="\(z=a+\rho(\cos t+i\sin t)\)">\(z=a+\rho(\cos t+i\sin t)\)</span>, <span class="math" data-tex="\(0\le t\le2\pi\)">\(0\le t\le2\pi\)</span>, makes <span class="math" data-tex="\(dz/(z-a)=i\,dt\)">\(dz/(z-a)=i\,dt\)</span>, with integral <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="integration-by-parts-with-an-integrable-weak-divergence">Integration by parts with an integrable weak divergence</h2>
+<p><strong>Theorem 3.1 (continuous boundary values and weak divergence).</strong> Suppose <span class="math" data-tex="\(F\in C_c(X;\mathbb C^n)\)">\(F\in C_c(X;\mathbb C^n)\)</span>, and its distributional divergence on <span class="math" data-tex="\(Y\)">\(Y\)</span> is a function <span class="math" data-tex="\(g\in L^1(Y)\)">\(g\in L^1(Y)\)</span>. No divergence assumption is made outside <span class="math" data-tex="\(Y\)">\(Y\)</span>. Then, for every <span class="math" data-tex="\(\phi\in C_c^1(X)\)">\(\phi\in C_c^1(X)\)</span>,</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;\int_Y(g\phi+F\cdot\nabla\phi)\,dx\\
+ &amp;\qquad=\int_{\partial_XY}\phi F\cdot\nu\,dS.
+ \end{aligned}
+ \tag{3.1}
+\]">\[
+ \begin{aligned}
+ &amp;\int_Y(g\phi+F\cdot\nabla\phi)\,dx\\
+ &amp;\qquad=\int_{\partial_XY}\phi F\cdot\nu\,dS.
+ \end{aligned}
+ \tag{3.1}
+\]</span></p>
+<p>In particular,</p>
+<p><span class="math math-display" data-tex="\[
+ \int_Yg\,dx=\int_{\partial_XY}F\cdot\nu\,dS.
+ \tag{3.2}
+\]">\[
+ \int_Yg\,dx=\int_{\partial_XY}F\cdot\nu\,dS.
+ \tag{3.2}
+\]</span></p>
+<p><strong>Proof.</strong> The weak divergence identity extends to <span class="math" data-tex="\(C_c^1(Y)\)">\(C_c^1(Y)\)</span> tests. Extend such a test by zero, mollify it with a smooth compact unit-mass kernel, and use uniform convergence of the test and all its first derivatives. Their supports lie in a common compact subset of <span class="math" data-tex="\(Y\)">\(Y\)</span> for sufficiently small scales. The integrals against <span class="math" data-tex="\(g\)">\(g\)</span> and the continuous <span class="math" data-tex="\(F\)">\(F\)</span> therefore converge. Expanding the product derivative then shows</p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{div}(\psi F)=\psi g+F\cdot\nabla\psi
+ \quad\text{on }Y
+ \tag{3.3}
+\]">\[
+ \operatorname{div}(\psi F)=\psi g+F\cdot\nabla\psi
+ \quad\text{on }Y
+ \tag{3.3}
+\]</span></p>
+<p>for every compact <span class="math" data-tex="\(C^1\)">\(C^1\)</span> multiplier <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<p>Use the partition lemma to split <span class="math" data-tex="\(\phi\)">\(\phi\)</span> into finitely many <span class="math" data-tex="\(C_c^1\)">\(C_c^1\)</span> functions supported in boundary, interior or exterior charts. It suffices to prove (3.1) for each part. An exterior part is zero on both sides. For an interior part, its left side is zero by the definition of divergence extended to <span class="math" data-tex="\(C_c^1\)">\(C_c^1\)</span> tests, and it has zero boundary values.</p>
+<p>For a boundary part, put <span class="math" data-tex="\(B=\phi F\)">\(B=\phi F\)</span> and <span class="math" data-tex="\(G=\phi g+F\cdot\nabla\phi\)">\(G=\phi g+F\cdot\nabla\phi\)</span> inside <span class="math" data-tex="\(Y\)">\(Y\)</span>. Their supports are contained in one fixed compact subset of the graph cylinder. Extend <span class="math" data-tex="\(B\)">\(B\)</span> by zero to <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>; it remains continuous and compactly supported. Extend <span class="math" data-tex="\(G\)">\(G\)</span> by zero outside <span class="math" data-tex="\(Y\)">\(Y\)</span>, writing the resulting <span class="math" data-tex="\(L^1(\mathbb R^n)\)">\(L^1(\mathbb R^n)\)</span> function as <span class="math" data-tex="\(G_0\)">\(G_0\)</span>. Let <span class="math" data-tex="\(\eta\ge0\)">\(\eta\ge0\)</span> be a smooth kernel supported in the unit ball with integral one, and let <span class="math" data-tex="\(\eta_\varepsilon(z)=\varepsilon^{-n}\eta(z/\varepsilon)\)">\(\eta_\varepsilon(z)=\varepsilon^{-n}\eta(z/\varepsilon)\)</span>. Such a kernel is obtained by normalizing a nonzero bump from the cutoff prerequisite.</p>
+<p>Bound <span class="math" data-tex="\(|\nabla\gamma|\)">\(|\nabla\gamma|\)</span> by <span class="math" data-tex="\(L\)">\(L\)</span> on a compact base neighbourhood of the supports. For small <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, choose <span class="math" data-tex="\(0&lt;\varepsilon&lt;h/[2(1+L)]\)">\(0&lt;\varepsilon&lt;h/[2(1+L)]\)</span> and define</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;B_{h,\varepsilon}(x)\\
+ &amp;\qquad=\int\eta_\varepsilon(z)B(x-he_n-z)\,dz.
+ \end{aligned}
+ \tag{3.4}
+\]">\[
+ \begin{aligned}
+ &amp;B_{h,\varepsilon}(x)\\
+ &amp;\qquad=\int\eta_\varepsilon(z)B(x-he_n-z)\,dz.
+ \end{aligned}
+ \tag{3.4}
+\]</span></p>
+<p>These fields are smooth and have supports in one fixed compact subset of the original cylinder. If <span class="math" data-tex="\(x=(x&#x27;,t)\in Y\)">\(x=(x&#x27;,t)\in Y\)</span> in that cylinder and <span class="math" data-tex="\(|z|\le\varepsilon\)">\(|z|\le\varepsilon\)</span>, then</p>
+<p><span class="math math-display" data-tex="\[
+ t-h-z_n&lt;\gamma(x&#x27;)-h+\varepsilon
+       &lt;\gamma(x&#x27;-z&#x27;)
+\]">\[
+ t-h-z_n&lt;\gamma(x&#x27;)-h+\varepsilon
+       &lt;\gamma(x&#x27;-z&#x27;)
+\]</span></p>
+<p>because <span class="math" data-tex="\(|\gamma(x&#x27;-z&#x27;)-\gamma(x&#x27;)|\le L\varepsilon\)">\(|\gamma(x&#x27;-z&#x27;)-\gamma(x&#x27;)|\le L\varepsilon\)</span>. At every point where the convolution can be nonzero, its kernel thus tests only the interior of <span class="math" data-tex="\(Y\)">\(Y\)</span>. All kernel points also stay in the chart by the fixed support margin and smallness of <span class="math" data-tex="\(h+\varepsilon\)">\(h+\varepsilon\)</span>. The distributional identity (3.3), tested against the translated kernel, now gives</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \operatorname{div}B_{h,\varepsilon}(x)
+       =(\eta_\varepsilon*G_0)(x-he_n),\\
+ x\in Y.
+ \end{gathered}
+ \tag{3.5}
+\]">\[
+ \begin{gathered}
+ \operatorname{div}B_{h,\varepsilon}(x)
+       =(\eta_\varepsilon*G_0)(x-he_n),\\
+ x\in Y.
+ \end{gathered}
+ \tag{3.5}
+\]</span></p>
+<p>Outside the same compact chart neighbourhood both sides vanish. One can check the sign directly: the negative derivative in the input variable of <span class="math" data-tex="\(\eta_\varepsilon(x-he_n-y)\)">\(\eta_\varepsilon(x-he_n-y)\)</span> is its positive derivative in <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>Apply (2.3) to the smooth field (3.4). Its boundary values converge uniformly to those of <span class="math" data-tex="\(B\)">\(B\)</span>: the integration points are within <span class="math" data-tex="\(h+\varepsilon\)">\(h+\varepsilon\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, and a continuous compactly supported function is uniformly continuous. Their boundary integrals converge, since the common compact support meets a finite amount of surface measure. On the other hand, translation continuity and the approximate-identity theorem in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> give</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;\|\tau_{he_n}(\eta_\varepsilon*G_0)-G_0\|_1\\
+ &amp;\quad\le\|\eta_\varepsilon*G_0-G_0\|_1
+        +\|\tau_{he_n}G_0-G_0\|_1\\
+ &amp;\quad\longrightarrow0.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ &amp;\|\tau_{he_n}(\eta_\varepsilon*G_0)-G_0\|_1\\
+ &amp;\quad\le\|\eta_\varepsilon*G_0-G_0\|_1
+        +\|\tau_{he_n}G_0-G_0\|_1\\
+ &amp;\quad\longrightarrow0.
+ \end{aligned}
+\]</span></p>
+<p>Hence the volume integral in (2.3) tends to <span class="math" data-tex="\(\int_YG\)">\(\int_YG\)</span>, and the surface integral tends to <span class="math" data-tex="\(\int_{\partial_XY}B\cdot\nu\)">\(\int_{\partial_XY}B\cdot\nu\)</span>. This proves (3.1) in the chart. Summing the partition pieces proves it globally; the derivatives of their factors sum to zero.</p>
+<p>Finally choose <span class="math" data-tex="\(\phi=1\)">\(\phi=1\)</span> on a neighbourhood of <span class="math" data-tex="\(\operatorname{supp}F\)">\(\operatorname{supp}F\)</span>, with compact support in <span class="math" data-tex="\(X\)">\(X\)</span>. The term <span class="math" data-tex="\(F\cdot\nabla\phi\)">\(F\cdot\nabla\phi\)</span> vanishes. Also <span class="math" data-tex="\(g=0\)">\(g=0\)</span> almost everywhere in <span class="math" data-tex="\(Y\setminus\operatorname{supp}F\)">\(Y\setminus\operatorname{supp}F\)</span>: its distribution is zero there, and uniqueness of a locally integrable distribution gives this conclusion. That uniqueness follows by convolution with the same kernels and their <span class="math" data-tex="\(L^1_{\rm loc}\)">\(L^1_{\rm loc}\)</span> convergence. Thus <span class="math" data-tex="\(g\phi=g\)">\(g\phi=g\)</span> almost everywhere, proving (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="cubes-and-a-pointwise-equation-with-a-rough-gradient">Cubes and a pointwise equation with a rough gradient</h2>
+<p>A cube has corners, so we establish the formula needed here directly. For a closed coordinate cube <span class="math" data-tex="\(Q\)">\(Q\)</span> and a continuous field <span class="math" data-tex="\(A\)">\(A\)</span> on its faces, write</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \Phi_Q(A)&amp;=\sum_{j=1}^n\int_{x_j=b_j}A_j\,dx_{\widehat j}\\
+          &amp;\qquad-\sum_{j=1}^n\int_{x_j=a_j}A_j\,dx_{\widehat j}.
+ \end{aligned}
+ \tag{4.1}
+\]">\[
+ \begin{aligned}
+ \Phi_Q(A)&amp;=\sum_{j=1}^n\int_{x_j=b_j}A_j\,dx_{\widehat j}\\
+          &amp;\qquad-\sum_{j=1}^n\int_{x_j=a_j}A_j\,dx_{\widehat j}.
+ \end{aligned}
+ \tag{4.1}
+\]</span></p>
+<p>For an affine field <span class="math" data-tex="\(A(y)=v+M(y-x)\)">\(A(y)=v+M(y-x)\)</span>, integration of each opposing pair gives <span class="math" data-tex="\(\Phi_Q(A)=\operatorname{tr}(M)|Q|\)">\(\Phi_Q(A)=\operatorname{tr}(M)|Q|\)</span>. The constant terms and all off-diagonal terms cancel; the diagonal term is <span class="math" data-tex="\(M_{jj}(b_j-a_j)\)">\(M_{jj}(b_j-a_j)\)</span> times the area of that face. The same formula for a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> field follows by Fubini and the one-dimensional fundamental theorem. These statements include <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, where a face integral is its endpoint value.</p>
+<p><strong>Finite tagged-partition lemma.</strong> If <span class="math" data-tex="\(Q\)">\(Q\)</span> is a closed cube and <span class="math" data-tex="\(\delta:Q\to(0,\infty)\)">\(\delta:Q\to(0,\infty)\)</span> is any function, there is a finite subdivision of <span class="math" data-tex="\(Q\)">\(Q\)</span> into closed dyadic cubes with disjoint interiors, with one tag <span class="math" data-tex="\(x_R\in R\)">\(x_R\in R\)</span> per cube, such that <span class="math" data-tex="\(R\subset B(x_R,\delta(x_R))\)">\(R\subset B(x_R,\delta(x_R))\)</span>.</p>
+<p><strong>Proof.</strong> Call a dyadic cube good if it admits such a finite partition. If all its <span class="math" data-tex="\(2^n\)">\(2^n\)</span> children are good, their finitely many partitions combine to make it good. If <span class="math" data-tex="\(Q\)">\(Q\)</span> were bad, choose a bad child, then a bad child of that child, indefinitely. The resulting nested closed cubes have side lengths tending to zero. For each coordinate their nested intervals have a unique common point, obtained as the supremum of the left endpoints; it is no larger than every right endpoint, and their lengths tending to zero give uniqueness. Thus the cubes have a common point <span class="math" data-tex="\(x\)">\(x\)</span>. A sufficiently small member has diameter less than <span class="math" data-tex="\(\delta(x)\)">\(\delta(x)\)</span> and contains <span class="math" data-tex="\(x\)">\(x\)</span>, so its one-cube partition with tag <span class="math" data-tex="\(x\)">\(x\)</span> is good. This contradiction proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the finite-partition principle used in Kudryashov's freely accessible proof of the divergence theorem. For the continuous-divergence case needed below, no theory of generalized integration is required.</p>
+<p><strong>Cube flux lemma.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be real Fréchet differentiable at every point of a neighbourhood of <span class="math" data-tex="\(Q\)">\(Q\)</span>, with values in <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. Suppose <span class="math" data-tex="\(q=\sum_j\partial_jA_j\)">\(q=\sum_j\partial_jA_j\)</span> is continuous there. Individual entries of <span class="math" data-tex="\(DA\)">\(DA\)</span> need not be continuous or integrable. Then</p>
+<p><span class="math math-display" data-tex="\[
+ \Phi_Q(A)=\int_Qq(x)\,dx.
+ \tag{4.2}
+\]">\[
+ \Phi_Q(A)=\int_Qq(x)\,dx.
+ \tag{4.2}
+\]</span></p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>. At every <span class="math" data-tex="\(x\in Q\)">\(x\in Q\)</span> choose <span class="math" data-tex="\(\delta(x)&gt;0\)">\(\delta(x)&gt;0\)</span> small enough that, for <span class="math" data-tex="\(y\in Q\)">\(y\in Q\)</span> with <span class="math" data-tex="\(|y-x|&lt;\delta(x)\)">\(|y-x|&lt;\delta(x)\)</span>,</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{gathered}
+ |A(y)-A(x)-DA(x)(y-x)|\le\epsilon|y-x|,\\
+ |q(y)-q(x)|\le\epsilon.
+ \end{gathered}
+\]">\[
+ \begin{gathered}
+ |A(y)-A(x)-DA(x)(y-x)|\le\epsilon|y-x|,\\
+ |q(y)-q(x)|\le\epsilon.
+ \end{gathered}
+\]</span></p>
+<p>Apply the finite tagged-partition lemma. For a cube <span class="math" data-tex="\(R\)">\(R\)</span> of side <span class="math" data-tex="\(s\)">\(s\)</span> with tag <span class="math" data-tex="\(x_R\)">\(x_R\)</span>, its affine approximation has flux <span class="math" data-tex="\(q(x_R)|R|\)">\(q(x_R)|R|\)</span>. On each of its <span class="math" data-tex="\(2n\)">\(2n\)</span> faces the error is at most <span class="math" data-tex="\(\epsilon\sqrt n\,s\)">\(\epsilon\sqrt n\,s\)</span>; the face area is <span class="math" data-tex="\(s^{n-1}\)">\(s^{n-1}\)</span>. Consequently</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ |\Phi_R(A)-q(x_R)|R||&amp;\le2n\sqrt n\,\epsilon|R|,\\
+ \left|\int_Rq-q(x_R)|R|\right|&amp;\le\epsilon|R|.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ |\Phi_R(A)-q(x_R)|R||&amp;\le2n\sqrt n\,\epsilon|R|,\\
+ \left|\int_Rq-q(x_R)|R|\right|&amp;\le\epsilon|R|.
+ \end{aligned}
+\]</span></p>
+<p>Sum over the finite partition. Interior face contributions cancel with their opposite normals. When faces have different sizes, subdivide all faces to the finest dyadic level occurring in this finite partition; their coordinate integrals are additive on that common refinement. Face edges have zero face measure, and in dimension one each shared endpoint cancels once with each sign. Volume integrals also add, since cube boundaries are null. We obtain</p>
+<p><span class="math math-display" data-tex="\[
+ \left|\Phi_Q(A)-\int_Qq\right|
+      \le(2n\sqrt n+1)\epsilon|Q|.
+\]">\[
+ \left|\Phi_Q(A)-\int_Qq\right|
+      \le(2n\sqrt n+1)\epsilon|Q|.
+\]</span></p>
+<p>Let <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> tend to zero. All integrals used in this proof are of continuous functions on cubes or their faces. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.1 (pointwise first-order equations imply weak equations).</strong> Let</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{gathered}
+ P=\sum_{j=1}^na_j(x)\partial_j+b(x),\\
+ a_j\in C^1(X;\mathbb C),\quad b\in C(X;\mathbb C).
+ \end{gathered}
+\]">\[
+ \begin{gathered}
+ P=\sum_{j=1}^na_j(x)\partial_j+b(x),\\
+ a_j\in C^1(X;\mathbb C),\quad b\in C(X;\mathbb C).
+ \end{gathered}
+\]</span></p>
+<p>Suppose <span class="math" data-tex="\(u:X\to\mathbb C\)">\(u:X\to\mathbb C\)</span> is real Fréchet differentiable at every point and its pointwise value <span class="math" data-tex="\(Pu=f\)">\(Pu=f\)</span> is continuous. Then</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{gathered}
+ -\int_Xu\sum_j\partial_j(a_j\phi)\,dx
+          +\int_Xbu\phi\,dx\\
+ \qquad=\int_Xf\phi\,dx,
+ \qquad\phi\in C_c^\infty(X).
+ \end{gathered}
+ \tag{4.3}
+\]">\[
+ \begin{gathered}
+ -\int_Xu\sum_j\partial_j(a_j\phi)\,dx
+          +\int_Xbu\phi\,dx\\
+ \qquad=\int_Xf\phi\,dx,
+ \qquad\phi\in C_c^\infty(X).
+ \end{gathered}
+ \tag{4.3}
+\]</span></p>
+<p>This is the distributional equation with the given <span class="math" data-tex="\(C^1\)">\(C^1\)</span> coefficients; it does not assert that the pointwise derivatives of <span class="math" data-tex="\(u\)">\(u\)</span> define locally integrable functions.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is supported in the interior of a closed cube <span class="math" data-tex="\(Q\Subset X\)">\(Q\Subset X\)</span>. Define the everywhere differentiable field <span class="math" data-tex="\(A=\phi u(a_1,\ldots,a_n)\)">\(A=\phi u(a_1,\ldots,a_n)\)</span>. The finite-dimensional product rule gives the pointwise identity</p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{div}A
+   =\phi(f-bu)+u\sum_j\partial_j(a_j\phi).
+ \tag{4.4}
+\]">\[
+ \operatorname{div}A
+   =\phi(f-bu)+u\sum_j\partial_j(a_j\phi).
+ \tag{4.4}
+\]</span></p>
+<p>Its right side is continuous: differentiability makes <span class="math" data-tex="\(u\)">\(u\)</span> continuous, and all the other displayed factors are continuous by hypothesis. The cube flux lemma therefore applies. Since <span class="math" data-tex="\(A=0\)">\(A=0\)</span> near the boundary of <span class="math" data-tex="\(Q\)">\(Q\)</span>, its flux is zero. Integrating (4.4) and rearranging proves (4.3).</p>
+<p>For a general compact test, use the partition lemma with cube interiors compactly contained in <span class="math" data-tex="\(X\)">\(X\)</span>. Only finitely many partition factors meet its support. Apply the proved identity to those finitely many tests and sum; their sum and the sums of their derivatives are exactly the original test and its derivatives. Finally, the left side of (4.3) is a continuous distributional functional: on any fixed compact test support it is bounded by a constant times <span class="math" data-tex="\(\sup|\phi|+\sup|\nabla\phi|\)">\(\sup|\phi|+\sup|\nabla\phi|\)</span>. Thus (4.3) has the asserted distributional meaning even though the coefficients need be only <span class="math" data-tex="\(C^1\)">\(C^1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>An affine interface and its density — foundation.</strong> Let <span class="math" data-tex="\(v\in\mathbb R^{n-1}\)">\(v\in\mathbb R^{n-1}\)</span>, <span class="math" data-tex="\(c\in\mathbb R\)">\(c\in\mathbb R\)</span>, and <span class="math" data-tex="\(Y=\{(x&#x27;,t):t&lt;v\cdot x&#x27;+c\}\)">\(Y=\{(x&#x27;,t):t&lt;v\cdot x&#x27;+c\}\)</span>. Define <span class="math" data-tex="\(M(h)=\int h(x&#x27;,v\cdot x&#x27;+c)\,dx&#x27;\)">\(M(h)=\int h(x&#x27;,v\cdot x&#x27;+c)\,dx&#x27;\)</span>. Compute <span class="math" data-tex="\(\nabla\chi_Y\)">\(\nabla\chi_Y\)</span>, <span class="math" data-tex="\(dS\)">\(dS\)</span>, and <span class="math" data-tex="\(\nabla(w\chi_Y)\)">\(\nabla(w\chi_Y)\)</span> for any <span class="math" data-tex="\(w\in C^1(\mathbb R^n)\)">\(w\in C^1(\mathbb R^n)\)</span>. Specialize to <span class="math" data-tex="\(n=2,v=2,c=0,w=1+x^2\)">\(n=2,v=2,c=0,w=1+x^2\)</span>.</li>
+<li><strong>The two sides of a shell — intermediate.</strong> For <span class="math" data-tex="\(0&lt;a&lt;b\)">\(0&lt;a&lt;b\)</span> and <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, use <span class="math" data-tex="\(\rho=(|x|^2-a^2)(|x|^2-b^2)\)">\(\rho=(|x|^2-a^2)(|x|^2-b^2)\)</span> to determine the two outward normals of <span class="math" data-tex="\(Y=\{a&lt;|x|&lt;b\}\)">\(Y=\{a&lt;|x|&lt;b\}\)</span>. Find <span class="math" data-tex="\(\nabla\chi_Y\)">\(\nabla\chi_Y\)</span>. Prove that the two fluxes of <span class="math" data-tex="\(x/|x|^n\)">\(x/|x|^n\)</span> have equal magnitudes and opposite signs, including the surface-scaling calculation.</li>
+<li><strong>A rough tangential dependence — intermediate.</strong> Let <span class="math" data-tex="\(Y=\{(x,y):y&lt;x^2\}\)">\(Y=\{(x,y):y&lt;x^2\}\)</span>, let <span class="math" data-tex="\(h:\mathbb R\to\mathbb C\)">\(h:\mathbb R\to\mathbb C\)</span> be any continuous function, and let <span class="math" data-tex="\(\eta\in C_c^\infty(\mathbb R^2)\)">\(\eta\in C_c^\infty(\mathbb R^2)\)</span>. For <span class="math" data-tex="\(F=(0,h(x)\eta(x,y))\)">\(F=(0,h(x)\eta(x,y))\)</span>, calculate the weak divergence and the two sides of (3.2). Take <span class="math" data-tex="\(h(x)=|x|^{1/2}\)">\(h(x)=|x|^{1/2}\)</span> to exhibit failure of an ordinary partial derivative that is not needed by the formula.</li>
+<li><strong>An exceptional point cannot simply be discarded — advanced.</strong> Choose <span class="math" data-tex="\(p\in(0,1)^n\)">\(p\in(0,1)^n\)</span> with no dyadic-rational coordinate. On dyadic subcubes put <span class="math" data-tex="\(D(R)=1\)">\(D(R)=1\)</span> if <span class="math" data-tex="\(p\in R\)">\(p\in R\)</span>, and <span class="math" data-tex="\(D(R)=0\)">\(D(R)=0\)</span> otherwise. Prove finite dyadic additivity, and prove that <span class="math" data-tex="\(D(R)/|R|\)">\(D(R)/|R|\)</span> tends to zero along shrinking cubes containing any fixed <span class="math" data-tex="\(x\ne p\)">\(x\ne p\)</span>. Explain why almost-everywhere local error control cannot replace the everywhere control used when choosing the gauge in the cube flux lemma.</li>
+<li><strong>A continuous equation with a nonintegrable derivative — advanced.</strong> Set <span class="math" data-tex="\(u(0)=0\)">\(u(0)=0\)</span> and <span class="math" data-tex="\(u(x)=x^3\sin(x^{-4})\)">\(u(x)=x^3\sin(x^{-4})\)</span> for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>. Prove that <span class="math" data-tex="\(u\)">\(u\)</span> is everywhere differentiable but <span class="math" data-tex="\(u&#x27;\notin L^1_{\rm loc}\)">\(u&#x27;\notin L^1_{\rm loc}\)</span>. Compute the continuous function <span class="math" data-tex="\(f=x^3u&#x27;\)">\(f=x^3u&#x27;\)</span> and write the exact weak equation on a test. Also give the corresponding calculation for <span class="math" data-tex="\(v(0)=0,v(x)=x^2\sin(x^{-2})\)">\(v(0)=0,v(x)=x^2\sin(x^{-2})\)</span> and the coefficient <span class="math" data-tex="\(x^2\)">\(x^2\)</span>.</li>
+<li><strong>Orientation in the complex plane — foundation.</strong> Let <span class="math" data-tex="\(Y=\{|z|&lt;R\}\)">\(Y=\{|z|&lt;R\}\)</span>. Choose <span class="math" data-tex="\(\phi\in C_c^\infty(\mathbb C)\)">\(\phi\in C_c^\infty(\mathbb C)\)</span> equal to <span class="math" data-tex="\(\bar z\)">\(\bar z\)</span> near <span class="math" data-tex="\(\overline Y\)">\(\overline Y\)</span>. Evaluate <span class="math" data-tex="\(\langle\partial_{\bar z}\chi_Y,\phi\rangle\)">\(\langle\partial_{\bar z}\chi_Y,\phi\rangle\)</span> from the volume definition and from the counterclockwise boundary integral. Then perform the same comparison for the annulus <span class="math" data-tex="\(a&lt;|z|&lt;b\)">\(a&lt;|z|&lt;b\)</span>, recording the orientation on both circles.</li>
+</ol>
+<h2 id="complete-solutions">Complete solutions</h2>
+<p><strong>Solution 1.</strong> The normal is <span class="math" data-tex="\((-v,1)/\sqrt{1+|v|^2}\)">\((-v,1)/\sqrt{1+|v|^2}\)</span> and <span class="math" data-tex="\(dS=\sqrt{1+|v|^2}\,M\)">\(dS=\sqrt{1+|v|^2}\,M\)</span>. Equations (2.2) and (2.4) give</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \nabla\chi_Y&amp;=(v,-1)M,\\
+ \nabla(w\chi_Y)&amp;=\chi_Y\nabla w+w(v,-1)M.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ \nabla\chi_Y&amp;=(v,-1)M,\\
+ \nabla(w\chi_Y)&amp;=\chi_Y\nabla w+w(v,-1)M.
+ \end{aligned}
+\]</span></p>
+<p>Values multiplying <span class="math" data-tex="\(M\)">\(M\)</span> are restricted to the graph. In the stated planar case this reads</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \partial_x\chi_Y=2M,\qquad\partial_y\chi_Y=-M,\\
+ \partial_x[(1+x^2)\chi_Y]=2x\chi_Y+2(1+x^2)M,\\
+ \partial_y[(1+x^2)\chi_Y]=-(1+x^2)M.
+ \end{gathered}
+\]">\[
+ \begin{gathered}
+ \partial_x\chi_Y=2M,\qquad\partial_y\chi_Y=-M,\\
+ \partial_x[(1+x^2)\chi_Y]=2x\chi_Y+2(1+x^2)M,\\
+ \partial_y[(1+x^2)\chi_Y]=-(1+x^2)M.
+ \end{gathered}
+\]</span></p>
+<p>Thus the parameter measure <span class="math" data-tex="\(M\)">\(M\)</span> is not Euclidean arclength; the latter is <span class="math" data-tex="\(\sqrt5 M\)">\(\sqrt5 M\)</span>.</p>
+<p><strong>Solution 2.</strong> The function <span class="math" data-tex="\(\rho\)">\(\rho\)</span> has the required signs, and</p>
+<p><span class="math math-display" data-tex="\[
+ \nabla\rho=2x(2|x|^2-a^2-b^2).
+\]">\[
+ \nabla\rho=2x(2|x|^2-a^2-b^2).
+\]</span></p>
+<p>At radius <span class="math" data-tex="\(a\)">\(a\)</span> this points as <span class="math" data-tex="\(-x\)">\(-x\)</span>, and at radius <span class="math" data-tex="\(b\)">\(b\)</span> it points as <span class="math" data-tex="\(x\)">\(x\)</span>; neither value is zero. Hence the normals are <span class="math" data-tex="\(-x/a\)">\(-x/a\)</span> and <span class="math" data-tex="\(x/b\)">\(x/b\)</span>, and</p>
+<p><span class="math math-display" data-tex="\[
+ \nabla\chi_Y=(x/a)dS_a-(x/b)dS_b.
+\]">\[
+ \nabla\chi_Y=(x/a)dS_a-(x/b)dS_b.
+\]</span></p>
+<p>For a sphere graph <span class="math" data-tex="\(t=\gamma(x&#x27;)\)">\(t=\gamma(x&#x27;)\)</span>, dilation by <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> produces <span class="math" data-tex="\(t=r\gamma(x&#x27;/r)\)">\(t=r\gamma(x&#x27;/r)\)</span>. Its graph density is <span class="math" data-tex="\(\sqrt{1+|\nabla\gamma(x&#x27;/r)|^2}\)">\(\sqrt{1+|\nabla\gamma(x&#x27;/r)|^2}\)</span>, while the base substitution has Jacobian <span class="math" data-tex="\(r^{n-1}\)">\(r^{n-1}\)</span>. A finite partition on the compact unit sphere proves <span class="math" data-tex="\(S(S_r^{n-1})=r^{n-1}\omega_n\)">\(S(S_r^{n-1})=r^{n-1}\omega_n\)</span>, where <span class="math" data-tex="\(\omega_n=S(S^{n-1})\)">\(\omega_n=S(S^{n-1})\)</span>. The field <span class="math" data-tex="\(V=x/|x|^n\)">\(V=x/|x|^n\)</span> has normal components <span class="math" data-tex="\(-a^{1-n}\)">\(-a^{1-n}\)</span> and <span class="math" data-tex="\(b^{1-n}\)">\(b^{1-n}\)</span> on the two boundaries. Its fluxes are therefore <span class="math" data-tex="\(-\omega_n\)">\(-\omega_n\)</span> and <span class="math" data-tex="\(\omega_n\)">\(\omega_n\)</span>.</p>
+<p>Direct differentiation gives <span class="math" data-tex="\(\operatorname{div}V=n|x|^{-n}-n|x|^{-n-2}|x|^2=0\)">\(\operatorname{div}V=n|x|^{-n}-n|x|^{-n-2}|x|^2=0\)</span> away from zero. Multiplying by a smooth cutoff supported away from zero and equal to one near the closed shell puts the field within (2.3) without changing either flux or its divergence on <span class="math" data-tex="\(Y\)">\(Y\)</span>. The flux cancellation agrees with that formula.</p>
+<p><strong>Solution 3.</strong> Fubini and integration by parts in <span class="math" data-tex="\(y\)">\(y\)</span> give</p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{div}F=h(x)\partial_y\eta(x,y).
+\]">\[
+ \operatorname{div}F=h(x)\partial_y\eta(x,y).
+\]</span></p>
+<p>It is continuous and compactly supported. Integrating from <span class="math" data-tex="\(y=-\infty\)">\(y=-\infty\)</span> to <span class="math" data-tex="\(y=x^2\)">\(y=x^2\)</span> yields</p>
+<p><span class="math math-display" data-tex="\[
+ \int_Y\operatorname{div}F\,dx\,dy
+       =\int_{\mathbb R}h(x)\eta(x,x^2)\,dx.
+\]">\[
+ \int_Y\operatorname{div}F\,dx\,dy
+       =\int_{\mathbb R}h(x)\eta(x,x^2)\,dx.
+\]</span></p>
+<p>The boundary normal times its graph measure is <span class="math" data-tex="\((-2x,1)\,dx\)">\((-2x,1)\,dx\)</span>, so the surface flux is the same integral. For <span class="math" data-tex="\(h(x)=|x|^{1/2}\)">\(h(x)=|x|^{1/2}\)</span>, wherever <span class="math" data-tex="\(\eta(0,y)\ne0\)">\(\eta(0,y)\ne0\)</span> the <span class="math" data-tex="\(x\)">\(x\)</span>-difference quotient of the second component has unbounded magnitude as <span class="math" data-tex="\(x\to0\)">\(x\to0\)</span>. This derivative is not part of divergence, and the continuous boundary values already specify the flux.</p>
+<p><strong>Solution 4.</strong> A parent containing <span class="math" data-tex="\(p\)">\(p\)</span> has exactly one child containing <span class="math" data-tex="\(p\)">\(p\)</span>, since <span class="math" data-tex="\(p\)">\(p\)</span> lies on no dyadic face. A parent not containing <span class="math" data-tex="\(p\)">\(p\)</span> has none. Thus the child values sum to the parent value; repeating proves finite dyadic additivity. For fixed <span class="math" data-tex="\(x\ne p\)">\(x\ne p\)</span>, every cube containing <span class="math" data-tex="\(x\)">\(x\)</span> with diameter less than <span class="math" data-tex="\(|x-p|\)">\(|x-p|\)</span> misses <span class="math" data-tex="\(p\)">\(p\)</span>, so its density is zero. The nested cubes containing <span class="math" data-tex="\(p\)">\(p\)</span>, however, have density <span class="math" data-tex="\(1/|R|\)">\(1/|R|\)</span>, tending to infinity, and the original cube has value one.</p>
+<p>The flux proof must choose a positive gauge at every possible tag, including this point. The exceptional set consisting of <span class="math" data-tex="\(p\)">\(p\)</span> is null, but it can carry the entire additive defect. Discarding it would leave the gauge estimate unjustified on cubes tagged there. This example concerns the proof's needed hypothesis; it does not assert that <span class="math" data-tex="\(D\)">\(D\)</span> comes from an everywhere differentiable field.</p>
+<p><strong>Solution 5.</strong> The quotient <span class="math" data-tex="\(u(x)/x=x^2\sin(x^{-4})\)">\(u(x)/x=x^2\sin(x^{-4})\)</span> tends to zero, so <span class="math" data-tex="\(u&#x27;(0)=0\)">\(u&#x27;(0)=0\)</span>. For <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>,</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ u&#x27;(x)&amp;=3x^2\sin(x^{-4})-4x^{-2}\cos(x^{-4}),\\
+ f(x)&amp;=3x^5\sin(x^{-4})-4x\cos(x^{-4}).
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ u&#x27;(x)&amp;=3x^2\sin(x^{-4})-4x^{-2}\cos(x^{-4}),\\
+ f(x)&amp;=3x^5\sin(x^{-4})-4x\cos(x^{-4}).
+ \end{aligned}
+\]</span></p>
+<p>The first term of <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span> is absolutely integrable near zero. In the other term, the substitution <span class="math" data-tex="\(s=x^{-4}\)">\(s=x^{-4}\)</span> on positive compact intervals, followed by monotone convergence, gives</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;\int_0^\epsilon4x^{-2}|\cos(x^{-4})|\,dx\\
+ &amp;\qquad=\int_{\epsilon^{-4}}^\infty s^{-3/4}|\cos s|\,ds=\infty.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ &amp;\int_0^\epsilon4x^{-2}|\cos(x^{-4})|\,dx\\
+ &amp;\qquad=\int_{\epsilon^{-4}}^\infty s^{-3/4}|\cos s|\,ds=\infty.
+ \end{aligned}
+\]</span></p>
+<p>Indeed, in each sufficiently large period choose a fixed-length interval where <span class="math" data-tex="\(|\cos s|\ge1/2\)">\(|\cos s|\ge1/2\)</span>. Its contribution is bounded below by a positive constant times <span class="math" data-tex="\(k^{-3/4}\)">\(k^{-3/4}\)</span>. These terms diverge: the terms with <span class="math" data-tex="\(2^m\le k&lt;2^{m+1}\)">\(2^m\le k&lt;2^{m+1}\)</span> have sum at least <span class="math" data-tex="\(2^m(2^{m+1})^{-3/4}\)">\(2^m(2^{m+1})^{-3/4}\)</span>. The integrable first term cannot cancel this failure of absolute integrability, by the triangle inequality. Both terms of <span class="math" data-tex="\(f\)">\(f\)</span> tend to zero, agreeing with <span class="math" data-tex="\(x^3u&#x27;(x)\)">\(x^3u&#x27;(x)\)</span> at zero. Theorem 4.1 gives</p>
+<p><span class="math math-display" data-tex="\[
+ -\int u(x)[x^3\phi(x)]&#x27;\,dx=\int f(x)\phi(x)\,dx.
+\]">\[
+ -\int u(x)[x^3\phi(x)]&#x27;\,dx=\int f(x)\phi(x)\,dx.
+\]</span></p>
+<p>For the second function, <span class="math" data-tex="\(v&#x27;(0)=0\)">\(v&#x27;(0)=0\)</span> because <span class="math" data-tex="\(v(x)/x=x\sin(x^{-2})\to0\)">\(v(x)/x=x\sin(x^{-2})\to0\)</span>, while</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ v&#x27;&amp;=2x\sin(x^{-2})-2x^{-1}\cos(x^{-2}),\\
+ x^2v&#x27;&amp;=2x^3\sin(x^{-2})-2x\cos(x^{-2})=:g(x).
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ v&#x27;&amp;=2x\sin(x^{-2})-2x^{-1}\cos(x^{-2}),\\
+ x^2v&#x27;&amp;=2x^3\sin(x^{-2})-2x\cos(x^{-2})=:g(x).
+ \end{aligned}
+\]</span></p>
+<p>Now the absolute integral of the second derivative term is <span class="math" data-tex="\(\int_{\epsilon^{-2}}^\infty |\cos s|s^{-1}\,ds\)">\(\int_{\epsilon^{-2}}^\infty |\cos s|s^{-1}\,ds\)</span>, which diverges by the same fixed subinterval argument and dyadic grouping of <span class="math" data-tex="\(\sum k^{-1}\)">\(\sum k^{-1}\)</span>. The continuous extension has <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, and the weak identity is <span class="math" data-tex="\(-\int v(x)[x^2\phi(x)]&#x27;\,dx=\int g(x)\phi(x)\,dx\)">\(-\int v(x)[x^2\phi(x)]&#x27;\,dx=\int g(x)\phi(x)\,dx\)</span>. These are integrals of continuous compactly tested functions, never integrals of the nonintegrable pointwise derivatives.</p>
+<p><strong>Solution 6.</strong> Since <span class="math" data-tex="\(\partial_{\bar z}\bar z=1\)">\(\partial_{\bar z}\bar z=1\)</span>, the volume pairing on the disk is <span class="math" data-tex="\(-\pi R^2\)">\(-\pi R^2\)</span>. On its counterclockwise boundary, <span class="math" data-tex="\(z=Re^{it}\)">\(z=Re^{it}\)</span> gives <span class="math" data-tex="\(\bar z\,dz=iR^2dt\)">\(\bar z\,dz=iR^2dt\)</span>. The boundary expression is</p>
+<p><span class="math math-display" data-tex="\[
+ \frac i2\int_0^{2\pi}iR^2\,dt=-\pi R^2.
+\]">\[
+ \frac i2\int_0^{2\pi}iR^2\,dt=-\pi R^2.
+\]</span></p>
+<p>For the annulus the outer circle is counterclockwise and the inner circle clockwise. The two contributions to <span class="math" data-tex="\((i/2)\int\bar z\,dz\)">\((i/2)\int\bar z\,dz\)</span> are respectively <span class="math" data-tex="\(-\pi b^2\)">\(-\pi b^2\)</span> and <span class="math" data-tex="\(+\pi a^2\)">\(+\pi a^2\)</span>. Their sum is <span class="math" data-tex="\(-\pi(b^2-a^2)\)">\(-\pi(b^2-a^2)\)</span>, the negative area of the annulus, as required by the volume pairing.</p>
+<h2 id="programme-proof-locations-and-freely-accessible-sources">Programme proof locations and freely accessible sources</h2>
+<p>The exact programme entries needed for this lesson are:</p>
+<ul>
+<li><strong>Scalar calculus and Euclidean topology</strong>, selected from programme lesson AN03-P003: <a href="prerequisites/U011-free-foundations/metric-foundation-bridges.html#12-real-numbers-and-finite-dimensional-topology">Sections 12.1–12.3, the real field</a>; <a href="prerequisites/U011-free-foundations/metric-foundation-bridges.html#12-4-square-roots-and-the-full-euclidean-distance">12.4–12.9, Euclidean topology and finite norms</a>; <a href="prerequisites/U011-free-foundations/metric-foundation-bridges.html#13-1-limits-with-all-original-scalar-and-coordinate-factors">13.1–13.5, limits, mean values and calculus</a>; <a href="prerequisites/U011-free-foundations/metric-foundation-bridges.html#13-7-uniform-limits-and-differentiation-of-the-actual-series">13.7–13.9, series, exponential and trigonometric functions</a>; and <a href="prerequisites/U011-free-foundations/metric-foundation-bridges.html#13-10-the-actual-smooth-cutoff-with-all-endpoint-constants">13.10, smooth cutoffs</a>.</li>
+<li><strong>Complex scalars and finite algebra</strong>, selected from programme lesson AN03-P002: <a href="prerequisites/U011-free-foundations/stable-prerequisite-bridges.html#10-full-finite-linear-algebra-foundations">Sections 10.1–10.6</a> supply the complex arithmetic, finite bases and norm comparisons used in the scalar and measure prerequisites.</li>
+<li><strong>Lebesgue integration and smoothing</strong>, selected from programme lesson AN03-P004: <a href="prerequisites/U011-free-foundations/banach-foundation-bridges.html#15-0-constructing-the-measure-without-importing-a-convergence-theorem">Sections 15.0–15.2, measure, convergence, Fubini and integral estimates</a>; <a href="prerequisites/U011-free-foundations/banach-foundation-bridges.html#15-3-completeness-and-compact-smooth-density">15.3–15.4, translation continuity and mollification</a>; <a href="prerequisites/U011-free-foundations/banach-foundation-bridges.html#15-6-the-full-polar-formula-on-the-original-plane">15.6 through the sector-area calculation, disk area</a>; and <a href="prerequisites/U011-free-foundations/banach-foundation-bridges.html#16-1-measures-completions-measurable-limits-and-the-full-nonnegative-integral">16.1–16.2, measurable functions and measure uniqueness</a>. Only scalar <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and finite-dimensional cases are needed here.</li>
+</ul>
+<p>The linked selections include the proof text and retain their GFDL 1.2 licence notices. The real-field construction starts from natural-number arithmetic with induction, ordinary set theory and countable choice; the selected algebra, topology, calculus and integration sections build on it. The following freely accessible publications informed the proofs written in this lesson:</p>
+<ul>
+<li>Michael Kunzinger, <em>Theory of Distributions</em>, University of Vienna, 2019, Section 3.3, Theorem 3.3.1 and Corollary 3.3.2. <a href="https://www.mat.univie.ac.at/~mike/teaching/ss19/distributions.pdf">Author's free lecture notes</a>. Those notes give the multidimensional jump formula; the proof above constructs the <span class="math" data-tex="\(C^1\)">\(C^1\)</span> graph measure and flux identity directly.</li>
+<li>Yury Kudryashov, <em>Formalizing the Divergence Theorem and the Cauchy Integral Formula in Lean</em>, ITP 2022, Sections 4.4 and 4.9. <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ITP.2022.23">Free paper and source metadata</a>, <a href="https://github.com/urkud/divthm-paper">author's source</a>. The paper is distributed under CC BY 4.0. Its finite tagged partitions and affine face estimates inform the complete continuous-divergence specialization proved here; the broader generalized-integral theorem is not assumed.</li>
+<li>Gui-Qiang G. Chen and Monica Torres, <em>Divergence-Measure Fields: Gauss-Green Formulas and Normal Traces</em>, 2021 author version. <a href="https://arxiv.org/html/2005.10949v3">Free arXiv text</a>. It explains one-sided normal-trace approximation. Theorem 3.1 above supplies a direct proof in the continuous-field, <span class="math" data-tex="\(C^1\)">\(C^1\)</span>-boundary case, with integrable divergence required only on the inside.</li>
+</ul>
+<p><a href="src/boundary-flux-and-weak-identities.md" download="boundary-flux-and-weak-identities.md" download="boundary-flux-and-weak-identities.md">Download the exact complete current source</a> · <a href="boundary-flux-and-weak-identities-earlier.html">Complete earlier alternative</a> · <a href="green-reader-guide.html">Every original source, context, credits and terms</a>.</p></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

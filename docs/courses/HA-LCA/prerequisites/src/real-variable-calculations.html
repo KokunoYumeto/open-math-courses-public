@@ -1,0 +1,330 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="966bfe9626f8698b5e50b4b3f11448534db3ab8e24a78c7492a51288ad73086c"><title>Real-variable calculations for the Fourier examples</title><link rel="stylesheet" href="../../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="real-variable-calculations.md">Editable source</a> · <a href="../../LICENCES.html">Licences</a></nav><article><h1 id="real-variable-calculations-for-the-fourier-examples">Real-variable calculations for the Fourier examples</h1>
+<p><strong>Programme reading HA-LCA-PRE-REAL.</strong> This reading follows HA-LCA-02 and precedes HA-LCA-03. It supplies the calculus and normalization used in the explicit Fourier and Bochner calculations. Self-checked by the writing AI.</p>
+<p>We use the complete proofs of <a href="banach-spectrum.html">elementary calculus and the exponential</a>, <a href="integration-and-l1.html">Lebesgue integration and convergence</a>, and <a href="../../src/characters-and-the-dual-group.html">the circle parametrization and Lebesgue normalization in HA-LCA-02</a>. Thus <span class="math" data-tex="\(dx\)">\(dx\)</span> denotes the completed Lebesgue measure constructed in that lesson's Lemma 3.3, and <span class="math" data-tex="\(e^{it}\)">\(e^{it}\)</span>, <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and <span class="math" data-tex="\(E(t)=e^{2\pi it}\)">\(E(t)=e^{2\pi it}\)</span> have the meanings proved there.</p>
+<p>Freely accessible sources for comparison are Jiří Lebl, <a href="https://www.jirka.org/ra/html/sec_ftc.html"><em>Basic Analysis</em>, §5.3, Theorems 5.3.1, 5.3.3 and 5.3.5</a>, read in the author's online version on 4 October 2026, and D. H. Fremlin, <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt283.tex"><em>Measure Theory</em>, §283N and Exercise 283Y(c), version of 31 March 2013</a>, in the 2016 source collection. The source Gaussian transform uses another normalization; all constants below are derived with <span class="math" data-tex="\(e^{2\pi iux}\)">\(e^{2\pi iux}\)</span>. We give the Gaussian normalization by one-dimensional substitutions and positive Fubini.</p>
+<p>Adaptation and additional proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. The combined reading is under the <a href="../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">Design Science License</a>. Fremlin's copyright 1994 and notices are retained in the <span class="unlinked">unchanged original source package</span>. Lebl's mathematical statements are compared; his prose and figures are not reproduced.</p>
+<h2 id="1-calculus-with-the-constructed-lebesgue-measure">1. Calculus with the constructed Lebesgue measure</h2>
+<a id="ha-lca-pre-real-lemma-1-1"></a>
+<h3 id="lemma-1-1-continuous-and-monotone-riemann-integrals">Lemma 1.1. Continuous and monotone Riemann integrals</h3>
+<p>A continuous complex function on a compact real interval has equal Riemann and Lebesgue integrals. A bounded monotone real function on that interval is Borel measurable, Riemann integrable, and has the same integral in both senses. For a monotone function, the difference between its endpoint upper and lower sums on a partition of mesh at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span> times its total change.</p>
+<p><strong>Proof.</strong> For a continuous function <span class="math" data-tex="\(f:[a,b]\to\mathbb C\)">\(f:[a,b]\to\mathbb C\)</span>, let <span class="math" data-tex="\(P\)">\(P\)</span> be a partition and select one tagged value on each half-open subinterval, defining a simple function <span class="math" data-tex="\(s_P\)">\(s_P\)</span>. Give it any bounded endpoint value at <span class="math" data-tex="\(a\)">\(a\)</span>. If the mesh is at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, uniform continuity from the Banach reading, Lemma 1.1, gives
+<span class="math math-display" data-tex="\[
+ |s_P(x)-f(x)|\le\omega_f(\delta)
+ \quad(x\ne a),\qquad \omega_f(\delta)\longrightarrow0 .
+\]">\[
+ |s_P(x)-f(x)|\le\omega_f(\delta)
+ \quad(x\ne a),\qquad \omega_f(\delta)\longrightarrow0 .
+\]</span>
+The Lebesgue integral of <span class="math" data-tex="\(s_P\)">\(s_P\)</span> is its tagged Riemann sum, because intervals have their length as measure and endpoints have measure zero by HA-LCA-02, Lemma 3.3. Therefore its difference from <span class="math" data-tex="\(\int f\,dx\)">\(\int f\,dx\)</span> is at most
+<span class="math" data-tex="\((b-a)\omega_f(\delta)\)">\((b-a)\omega_f(\delta)\)</span>.
+The Riemann sums converge to the integral proved in the Banach reading, Lemma 1.2, so the two values agree.</p>
+<p>For increasing real <span class="math" data-tex="\(f\)">\(f\)</span>, each strict upper or lower level set is an interval, possibly with an endpoint included, and hence is Borel. On a partition <span class="math" data-tex="\(a=x_0&lt;\cdots&lt;x_n=b\)">\(a=x_0&lt;\cdots&lt;x_n=b\)</span>, define the left- and right-endpoint step functions on <span class="math" data-tex="\((x_{j-1},x_j]\)">\((x_{j-1},x_j]\)</span>. Except at finitely many endpoints, they bound <span class="math" data-tex="\(f\)">\(f\)</span> below and above. Their integrals are
+<span class="math math-display" data-tex="\[
+ L_P=\sum_j f(x_{j-1})(x_j-x_{j-1}),\qquad
+ U_P=\sum_j f(x_j)(x_j-x_{j-1}).
+\]">\[
+ L_P=\sum_j f(x_{j-1})(x_j-x_{j-1}),\qquad
+ U_P=\sum_j f(x_j)(x_j-x_{j-1}).
+\]</span>
+Monotonicity gives
+<span class="math math-display" data-tex="\[
+ 0\le U_P-L_P
+ \le\delta\sum_j(f(x_j)-f(x_{j-1}))
+ =\delta(f(b)-f(a)).
+\]">\[
+ 0\le U_P-L_P
+ \le\delta\sum_j(f(x_j)-f(x_{j-1}))
+ =\delta(f(b)-f(a)).
+\]</span>
+Both the Lebesgue integral and every tagged sum lie between these endpoint sums. Taking partitions of mesh tending to zero proves all the assertions, including the existence and value of the Riemann integral. Apply the result to <span class="math" data-tex="\(-f\)">\(-f\)</span> for decreasing functions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-real-lemma-1-2"></a>
+<h3 id="lemma-1-2-exponentials-powers-and-the-arctangent-integral">Lemma 1.2. Exponentials, powers and the arctangent integral</h3>
+<p>The exponential constructed by its power series satisfies
+<span class="math math-display" data-tex="\[
+ \frac{d}{dt}e^{zt}=ze^{zt}\quad(z\in\mathbb C).
+\]">\[
+ \frac{d}{dt}e^{zt}=ze^{zt}\quad(z\in\mathbb C).
+\]</span>
+The real exponential is a strictly increasing bijection from <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> to <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Its inverse <span class="math" data-tex="\(\log\)">\(\log\)</span> is differentiable with derivative <span class="math" data-tex="\(1/x\)">\(1/x\)</span>. Consequently, for real <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, <span class="math" data-tex="\(x^a=e^{a\log x}\)">\(x^a=e^{a\log x}\)</span> satisfies
+<span class="math" data-tex="\((x^a)&#x27;=ax^{a-1}\)">\((x^a)&#x27;=ax^{a-1}\)</span>. Also
+<span class="math math-display" data-tex="\[
+ \lim_{t\to0}\frac{1-\cos t}{t^2}=\frac12,\qquad
+ \int_0^\infty\frac{dt}{1+t^2}=\frac\pi2,\qquad
+ \int_{\mathbb R}\frac{dt}{1+t^2}=\pi.                 \tag{1.1}
+\]">\[
+ \lim_{t\to0}\frac{1-\cos t}{t^2}=\frac12,\qquad
+ \int_0^\infty\frac{dt}{1+t^2}=\frac\pi2,\qquad
+ \int_{\mathbb R}\frac{dt}{1+t^2}=\pi.                 \tag{1.1}
+\]</span></p>
+<p><strong>Proof.</strong> On every bounded <span class="math" data-tex="\(t\)">\(t\)</span>-interval, the exponential series and the series of its derivatives have uniform summable majorants, as in the Banach reading, Lemma 1.3: beyond a fixed index the ratios of consecutive majorants are at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Its Lemma 1.2 permits termwise differentiation, giving the first identity. The already proved multiplication law gives <span class="math" data-tex="\(e^t e^{-t}=1\)">\(e^t e^{-t}=1\)</span>, while <span class="math" data-tex="\(e^t=(e^{t/2})^2&gt;0\)">\(e^t=(e^{t/2})^2&gt;0\)</span> for real <span class="math" data-tex="\(t\)">\(t\)</span>. The fundamental theorem then makes <span class="math" data-tex="\(e^t\)">\(e^t\)</span> strictly increasing. For <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, its series gives <span class="math" data-tex="\(e^t\ge1+t\)">\(e^t\ge1+t\)</span>, so <span class="math" data-tex="\(e^t\to\infty\)">\(e^t\to\infty\)</span> as <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>; the reciprocal identity gives limit zero at <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>. Continuity and the intermediate-value theorem prove bijectivity.</p>
+<p>A continuous strictly increasing bijection between intervals has continuous inverse: the images of two points on either side of a given point enclose an open neighbourhood of its image. If its derivative at that point is nonzero, the inverse difference quotient is the reciprocal of the original difference quotient, using inverse continuity to pass to the limit. Apply this to <span class="math" data-tex="\(e^t\)">\(e^t\)</span> to obtain <span class="math" data-tex="\((\log x)&#x27;=1/x\)">\((\log x)&#x27;=1/x\)</span>. The product and chain rules, proved in the Banach reading, Lemma 1.2, give the power derivative. In particular <span class="math" data-tex="\(x^a\)">\(x^a\)</span> has limit zero at <span class="math" data-tex="\(0+\)">\(0+\)</span> when <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, because <span class="math" data-tex="\(\log x\to-\infty\)">\(\log x\to-\infty\)</span> and the real exponential tends to zero there.</p>
+<p>The exponential series gives
+<span class="math" data-tex="\(\cos t=1-t^2/2+R(t)\)">\(\cos t=1-t^2/2+R(t)\)</span>, where <span class="math" data-tex="\(|R(t)|\le C|t|^4\)">\(|R(t)|\le C|t|^4\)</span> for <span class="math" data-tex="\(|t|\le1\)">\(|t|\le1\)</span>: bound the remaining even-power series by <span class="math" data-tex="\(|t|^4\sum_{n\ge2}1/(2n)!\)">\(|t|^4\sum_{n\ge2}1/(2n)!\)</span>. Division by <span class="math" data-tex="\(t^2\)">\(t^2\)</span> proves the first limit in (1.1).</p>
+<p>For the integral, put <span class="math" data-tex="\(c(\theta)=\cos\theta\)">\(c(\theta)=\cos\theta\)</span>, <span class="math" data-tex="\(s(\theta)=\sin\theta\)">\(s(\theta)=\sin\theta\)</span> as the real and imaginary parts of <span class="math" data-tex="\(e^{i\theta}\)">\(e^{i\theta}\)</span>. The circle construction in HA-LCA-02, Lemma 1.3, gives <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> on <span class="math" data-tex="\((-\pi/2,\pi/2)\)">\((-\pi/2,\pi/2)\)</span>, with endpoint limits <span class="math" data-tex="\(s\to\pm1\)">\(s\to\pm1\)</span> and <span class="math" data-tex="\(c\to0+\)">\(c\to0+\)</span>. On this interval the function
+<span class="math" data-tex="\(T(\theta)=s(\theta)/c(\theta)\)">\(T(\theta)=s(\theta)/c(\theta)\)</span>
+has derivative
+<span class="math math-display" data-tex="\[
+ T&#x27;(\theta)=\frac{c(\theta)^2+s(\theta)^2}{c(\theta)^2}
+           =\frac1{c(\theta)^2}&gt;0 .
+\]">\[
+ T&#x27;(\theta)=\frac{c(\theta)^2+s(\theta)^2}{c(\theta)^2}
+           =\frac1{c(\theta)^2}&gt;0 .
+\]</span>
+It is therefore a continuous strictly increasing bijection onto <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Its inverse <span class="math" data-tex="\(A(t)\)">\(A(t)\)</span>, called the arctangent, has derivative
+<span class="math" data-tex="\(A&#x27;(t)=c(A(t))^2=1/(1+t^2)\)">\(A&#x27;(t)=c(A(t))^2=1/(1+t^2)\)</span>
+by the inverse difference-quotient argument above. Also <span class="math" data-tex="\(A(0)=0\)">\(A(0)=0\)</span> and <span class="math" data-tex="\(A(t)\to\pi/2\)">\(A(t)\to\pi/2\)</span> as <span class="math" data-tex="\(t\to+\infty\)">\(t\to+\infty\)</span>. The fundamental theorem on <span class="math" data-tex="\([0,R]\)">\([0,R]\)</span>, followed by monotone convergence and Lemma 1.1, gives the half-line integral in (1.1). Evenness gives the whole-line integral. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-real-lemma-1-3"></a>
+<h3 id="lemma-1-3-integration-by-parts-and-substitution">Lemma 1.3. Integration by parts and substitution</h3>
+<p>For complex <span class="math" data-tex="\(C^1\)">\(C^1\)</span> functions <span class="math" data-tex="\(u,v\)">\(u,v\)</span> on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>,
+<span class="math math-display" data-tex="\[
+ \int_a^b u&#x27;v\,dx=u(b)v(b)-u(a)v(a)-\int_a^b uv&#x27;\,dx.  \tag{1.2}
+\]">\[
+ \int_a^b u&#x27;v\,dx=u(b)v(b)-u(a)v(a)-\int_a^b uv&#x27;\,dx.  \tag{1.2}
+\]</span>
+For a real <span class="math" data-tex="\(C^1\)">\(C^1\)</span> map <span class="math" data-tex="\(\phi:[a,b]\to\mathbb R\)">\(\phi:[a,b]\to\mathbb R\)</span> and a continuous complex <span class="math" data-tex="\(f\)">\(f\)</span> on an interval containing its image,
+<span class="math math-display" data-tex="\[
+ \int_a^b f(\phi(x))\phi&#x27;(x)\,dx
+       =\int_{\phi(a)}^{\phi(b)}f(t)\,dt.               \tag{1.3}
+\]">\[
+ \int_a^b f(\phi(x))\phi&#x27;(x)\,dx
+       =\int_{\phi(a)}^{\phi(b)}f(t)\,dt.               \tag{1.3}
+\]</span>
+Integrals with reversed endpoints have the usual negative orientation. These identities extend to open or unbounded interval endpoints whenever the integrals involved are absolutely convergent and the boundary values in (1.2) have limits. For nonnegative integrands on increasing intervals, finite-interval identities may instead be passed to the limit by monotone convergence.</p>
+<p><strong>Proof.</strong> The product rule gives <span class="math" data-tex="\((uv)&#x27;=u&#x27;v+uv&#x27;\)">\((uv)&#x27;=u&#x27;v+uv&#x27;\)</span>. Integrate this identity using the fundamental theorem in the Banach reading, Lemma 1.2, and use Lemma 1.1 to identify its continuous Riemann integrals with Lebesgue integrals. Rearranging proves (1.2).</p>
+<p>For (1.3), define <span class="math" data-tex="\(F(t)=\int_{t_0}^t f(s)\,ds\)">\(F(t)=\int_{t_0}^t f(s)\,ds\)</span>, with any base point <span class="math" data-tex="\(t_0\)">\(t_0\)</span> in the target interval. The same fundamental theorem gives <span class="math" data-tex="\(F&#x27;=f\)">\(F&#x27;=f\)</span>. The chain rule yields
+<span class="math" data-tex="\((F\circ\phi)&#x27;=(f\circ\phi)\phi&#x27;\)">\((F\circ\phi)&#x27;=(f\circ\phi)\phi&#x27;\)</span>.
+Integrating gives <span class="math" data-tex="\(F(\phi(b))-F(\phi(a))\)">\(F(\phi(b))-F(\phi(a))\)</span>, which is the oriented integral on the right. Applying the argument to real and imaginary parts justifies complex <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>For the endpoint statements, choose finite closed subintervals increasing to the desired interval. On each one the already proved identity holds. Dominated convergence with the absolute value of each integrable integrand passes its integral to the limit; the assumed boundary limits handle the remaining terms. Nonnegative integrands use monotone convergence instead. These are the earlier integration reading, Theorems 1.2 and 2.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-real-lemma-1-4"></a>
+<h3 id="lemma-1-4-differentiation-with-an-integrable-bound">Lemma 1.4. Differentiation with an integrable bound</h3>
+<p>Let <span class="math" data-tex="\((X,\Sigma,\mu)\)">\((X,\Sigma,\mu)\)</span> be any measure space and <span class="math" data-tex="\(J\)">\(J\)</span> an open real interval. Suppose <span class="math" data-tex="\(F(t,\cdot)\)">\(F(t,\cdot)\)</span> is measurable for every <span class="math" data-tex="\(t\in J\)">\(t\in J\)</span>, <span class="math" data-tex="\(F(t_0,\cdot)\)">\(F(t_0,\cdot)\)</span> is integrable at some <span class="math" data-tex="\(t_0\in J\)">\(t_0\in J\)</span>, and outside one fixed null set the function <span class="math" data-tex="\(t\mapsto F(t,x)\)">\(t\mapsto F(t,x)\)</span> is differentiable on <span class="math" data-tex="\(J\)">\(J\)</span>. Suppose there is <span class="math" data-tex="\(M\in L^1(\mu)\)">\(M\in L^1(\mu)\)</span>, <span class="math" data-tex="\(M\ge0\)">\(M\ge0\)</span>, such that
+<span class="math math-display" data-tex="\[
+ |\partial_tF(t,x)|\le M(x)\quad(t\in J)
+\]">\[
+ |\partial_tF(t,x)|\le M(x)\quad(t\in J)
+\]</span>
+outside that fixed null set. Then <span class="math" data-tex="\(F(t,\cdot)\)">\(F(t,\cdot)\)</span> is integrable for every <span class="math" data-tex="\(t\in J\)">\(t\in J\)</span>, and
+<span class="math math-display" data-tex="\[
+ \frac{d}{dt}\int_XF(t,x)\,d\mu(x)
+      =\int_X\partial_tF(t,x)\,d\mu(x).                 \tag{1.4}
+\]">\[
+ \frac{d}{dt}\int_XF(t,x)\,d\mu(x)
+      =\int_X\partial_tF(t,x)\,d\mu(x).                 \tag{1.4}
+\]</span>
+Local bounds on neighbourhoods of each parameter point suffice for the corresponding local conclusion.</p>
+<p><strong>Proof.</strong> Enlarge the fixed null set to include the null set where <span class="math" data-tex="\(M\)">\(M\)</span> is infinite, and change <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> to zero there. The norm-valued derivative estimate proved in the Banach reading, Lemma 1.2, gives
+<span class="math math-display" data-tex="\[
+ |F(t,x)-F(s,x)|\le |t-s|M(x).
+\]">\[
+ |F(t,x)-F(s,x)|\le |t-s|M(x).
+\]</span>
+Together with integrability at <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, this proves integrability at all <span class="math" data-tex="\(t\)">\(t\)</span>. For fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the derivative is measurable as a pointwise limit of measurable difference quotients along a sequence tending to zero within <span class="math" data-tex="\(J-t\)">\(J-t\)</span>. It is dominated by <span class="math" data-tex="\(M\)">\(M\)</span>, so is integrable.</p>
+<p>Every sufficiently small nonzero <span class="math" data-tex="\(h\)">\(h\)</span> has
+<span class="math math-display" data-tex="\[
+ \left|\frac{F(t+h,x)-F(t,x)}h\right|\le M(x).
+\]">\[
+ \left|\frac{F(t+h,x)-F(t,x)}h\right|\le M(x).
+\]</span>
+The quotient tends pointwise to <span class="math" data-tex="\(\partial_tF(t,x)\)">\(\partial_tF(t,x)\)</span>. Along any sequence of such <span class="math" data-tex="\(h\)">\(h\)</span> tending to zero, dominated convergence from the integration reading, Theorem 2.2, therefore permits passage under the integral. This proves the full real-parameter derivative limit: if it failed, one could choose a sequence with <span class="math" data-tex="\(0&lt;|h_n|&lt;1/n\)">\(0&lt;|h_n|&lt;1/n\)</span> on which the error exceeded a fixed positive number, contradicting the sequence result. Linearity of the integral identifies the integrated quotient with the difference quotient of the integral. This proves (1.4), with no assumption of sigma-finiteness. Restricting <span class="math" data-tex="\(J\)">\(J\)</span> proves the local version. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-gaussian-integral-and-transform">2. The Gaussian integral and transform</h2>
+<a id="ha-lca-pre-real-theorem-2-1"></a>
+<h3 id="theorem-2-1-gaussian-normalization-transform-and-second-moment">Theorem 2.1. Gaussian normalization, transform and second moment</h3>
+<p>With <span class="math" data-tex="\(g(x)=e^{-\pi x^2}\)">\(g(x)=e^{-\pi x^2}\)</span>,
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}g(x)\,dx=1,\qquad
+ \int_{\mathbb R}g(x)e^{2\pi iux}\,dx=e^{-\pi u^2},     \tag{2.1}
+\]">\[
+ \int_{\mathbb R}g(x)\,dx=1,\qquad
+ \int_{\mathbb R}g(x)e^{2\pi iux}\,dx=e^{-\pi u^2},     \tag{2.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}xg(x)\,dx=0,\qquad
+ \int_{\mathbb R}x^2g(x)\,dx=\frac1{2\pi}.              \tag{2.2}
+\]">\[
+ \int_{\mathbb R}xg(x)\,dx=0,\qquad
+ \int_{\mathbb R}x^2g(x)\,dx=\frac1{2\pi}.              \tag{2.2}
+\]</span>
+For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(b\in\mathbb R\)">\(b\in\mathbb R\)</span>, the density
+<span class="math" data-tex="\(p_{a,b}(x)=a^{-1/2}e^{-\pi(x-b)^2/a}\)">\(p_{a,b}(x)=a^{-1/2}e^{-\pi(x-b)^2/a}\)</span>
+has mass one, mean <span class="math" data-tex="\(b\)">\(b\)</span>, variance <span class="math" data-tex="\(a/(2\pi)\)">\(a/(2\pi)\)</span>, and
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}p_{a,b}(x)e^{2\pi iux}\,dx
+       =e^{2\pi ibu}e^{-\pi a u^2}.                   \tag{2.3}
+\]">\[
+ \int_{\mathbb R}p_{a,b}(x)e^{2\pi iux}\,dx
+       =e^{2\pi ibu}e^{-\pi a u^2}.                   \tag{2.3}
+\]</span>
+All these integrals are absolutely convergent.</p>
+<p><strong>Proof.</strong> Lemmas 1.2–1.3 give
+<span class="math" data-tex="\(\int_0^\infty e^{-cx}\,dx=1/c\)">\(\int_0^\infty e^{-cx}\,dx=1/c\)</span> for <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.
+For <span class="math" data-tex="\(|x|\ge1\)">\(|x|\ge1\)</span>, <span class="math" data-tex="\(e^{-cx^2}\le e^{-c|x|}\)">\(e^{-cx^2}\le e^{-c|x|}\)</span>, so a Gaussian is integrable. Every polynomial times a Gaussian is integrable and tends to zero at infinity. Indeed, choose an integer <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(2k&gt;m\)">\(2k&gt;m\)</span>. The positive exponential series gives, for <span class="math" data-tex="\(|x|\ge1\)">\(|x|\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+ e^{cx^2/2}\ge\frac{(cx^2/2)^k}{k!},\qquad
+ |x|^m e^{-cx^2}\le k!(2/c)^k e^{-cx^2/2}.
+\]">\[
+ e^{cx^2/2}\ge\frac{(cx^2/2)^k}{k!},\qquad
+ |x|^m e^{-cx^2}\le k!(2/c)^k e^{-cx^2/2}.
+\]</span>
+The last bound is integrable and tends to zero by comparison with <span class="math" data-tex="\(e^{-c|x|/2}\)">\(e^{-c|x|/2}\)</span>; bounded compact intervals cause no problem.</p>
+<p>Put <span class="math" data-tex="\(A=\int_0^\infty e^{-x^2}\,dx&gt;0\)">\(A=\int_0^\infty e^{-x^2}\,dx&gt;0\)</span>. Positive Fubini for Lebesgue measure is proved in the integration reading, Theorem 4.4, using finite interval restrictions. For fixed <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, the affine substitution <span class="math" data-tex="\(y=xt\)">\(y=xt\)</span> from HA-LCA-02, Lemma 3.3, gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ A^2
+ &amp;=\int_0^\infty\int_0^\infty e^{-x^2-y^2}\,dy\,dx\\
+ &amp;=\int_0^\infty\int_0^\infty
+       x e^{-(1+t^2)x^2}\,dt\,dx\\
+ &amp;=\int_0^\infty\left(\int_0^\infty
+       x e^{-(1+t^2)x^2}\,dx\right)dt.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ A^2
+ &amp;=\int_0^\infty\int_0^\infty e^{-x^2-y^2}\,dy\,dx\\
+ &amp;=\int_0^\infty\int_0^\infty
+       x e^{-(1+t^2)x^2}\,dt\,dx\\
+ &amp;=\int_0^\infty\left(\int_0^\infty
+       x e^{-(1+t^2)x^2}\,dx\right)dt.
+ \end{aligned}
+\]</span>
+All integrands are nonnegative Borel functions, so positive Fubini justifies the interchanges before their integral is evaluated. Since
+<span class="math" data-tex="\((e^{-(1+t^2)x^2})&#x27;=-2(1+t^2)x e^{-(1+t^2)x^2}\)">\((e^{-(1+t^2)x^2})&#x27;=-2(1+t^2)x e^{-(1+t^2)x^2}\)</span>,
+Lemma 1.3 evaluates the inner integral as <span class="math" data-tex="\(1/(2(1+t^2))\)">\(1/(2(1+t^2))\)</span>. Lemma 1.2 gives <span class="math" data-tex="\(A^2=\pi/4\)">\(A^2=\pi/4\)</span>, hence
+<span class="math" data-tex="\(\int_{\mathbb R}e^{-x^2}\,dx=2A=\sqrt\pi\)">\(\int_{\mathbb R}e^{-x^2}\,dx=2A=\sqrt\pi\)</span>.
+The affine substitution <span class="math" data-tex="\(x=\sqrt\pi\,y\)">\(x=\sqrt\pi\,y\)</span> proves the first equality in (2.1).</p>
+<p>Set <span class="math" data-tex="\(J(u)=\int g(x)e^{2\pi iux}\,dx\)">\(J(u)=\int g(x)e^{2\pi iux}\,dx\)</span>. The parameter derivative is bounded by the integrable function <span class="math" data-tex="\(2\pi|x|g(x)\)">\(2\pi|x|g(x)\)</span>. Lemma 1.4 yields
+<span class="math math-display" data-tex="\[
+ J&#x27;(u)=2\pi i\int xg(x)e^{2\pi iux}\,dx
+      =-i\int g&#x27;(x)e^{2\pi iux}\,dx.
+\]">\[
+ J&#x27;(u)=2\pi i\int xg(x)e^{2\pi iux}\,dx
+      =-i\int g&#x27;(x)e^{2\pi iux}\,dx.
+\]</span>
+Integration by parts from Lemma 1.3 applies first on finite intervals and then on the whole line: the boundary values of <span class="math" data-tex="\(g(x)e^{2\pi iux}\)">\(g(x)e^{2\pi iux}\)</span> tend to zero, and both resulting integrands are absolutely integrable. Therefore
+<span class="math math-display" data-tex="\[
+ \int g&#x27;(x)e^{2\pi iux}\,dx=-2\pi iuJ(u),\qquad
+ J&#x27;(u)=-2\pi uJ(u).
+\]">\[
+ \int g&#x27;(x)e^{2\pi iux}\,dx=-2\pi iuJ(u),\qquad
+ J&#x27;(u)=-2\pi uJ(u).
+\]</span>
+The derivative of <span class="math" data-tex="\(e^{\pi u^2}J(u)\)">\(e^{\pi u^2}J(u)\)</span> is zero. The zero-derivative result in the Banach reading, Lemma 1.2, makes it constant, with value <span class="math" data-tex="\(J(0)=1\)">\(J(0)=1\)</span>. This proves the transform formula.</p>
+<p>Oddness and <span class="math" data-tex="\(x\mapsto-x\)">\(x\mapsto-x\)</span> prove <span class="math" data-tex="\(\int xg(x)\,dx=0\)">\(\int xg(x)\,dx=0\)</span>. Integrating
+<span class="math" data-tex="\((xg(x))&#x27;=g(x)-2\pi x^2g(x)\)">\((xg(x))&#x27;=g(x)-2\pi x^2g(x)\)</span>, with zero boundary values and the established absolute integrability, gives the second moment in (2.2).</p>
+<p>Finally substitute <span class="math" data-tex="\(x=b+\sqrt a\,y\)">\(x=b+\sqrt a\,y\)</span>. Mass one follows from (2.1), and that same formula at frequency <span class="math" data-tex="\(\sqrt a\,u\)">\(\sqrt a\,u\)</span> gives (2.3). The centered first and second moments become
+<span class="math" data-tex="\(\sqrt a\int yg(y)\,dy=0\)">\(\sqrt a\int yg(y)\,dy=0\)</span> and
+<span class="math" data-tex="\(a\int y^2g(y)\,dy=a/(2\pi)\)">\(a\int y^2g(y)\,dy=a/(2\pi)\)</span>.
+This proves the mean and variance assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-convex-functions-and-triangular-mixtures">3. Convex functions and triangular mixtures</h2>
+<a id="ha-lca-pre-real-lemma-3-1"></a>
+<h3 id="lemma-3-1-right-derivatives-of-a-convex-function">Lemma 3.1. Right derivatives of a convex function</h3>
+<p>Let <span class="math" data-tex="\(h\)">\(h\)</span> be continuous and convex on an open real interval <span class="math" data-tex="\(I\)">\(I\)</span>. Its right derivative exists and is finite at each <span class="math" data-tex="\(r\in I\)">\(r\in I\)</span>, and equals
+<span class="math math-display" data-tex="\[
+ d(r)=\inf_{\substack{s\in I\\s&gt;r}}
+              \frac{h(s)-h(r)}{s-r}.
+\]">\[
+ d(r)=\inf_{\substack{s\in I\\s&gt;r}}
+              \frac{h(s)-h(r)}{s-r}.
+\]</span>
+It is increasing and right-continuous. For <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span> in <span class="math" data-tex="\(I\)">\(I\)</span>,
+<span class="math math-display" data-tex="\[
+ d(a)\le\frac{h(b)-h(a)}{b-a}\le d(b),\qquad
+h(b)-h(a)=\int_a^b d(r)\,dr.                           \tag{3.1}
+\]">\[
+ d(a)\le\frac{h(b)-h(a)}{b-a}\le d(b),\qquad
+h(b)-h(a)=\int_a^b d(r)\,dr.                           \tag{3.1}
+\]</span></p>
+<p>Conversely, a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> function with increasing derivative is convex. In particular a <span class="math" data-tex="\(C^2\)">\(C^2\)</span> function with nonnegative second derivative is convex.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(u&lt;v&lt;w\)">\(u&lt;v&lt;w\)</span>, write <span class="math" data-tex="\(v\)">\(v\)</span> as the convex combination
+<span class="math" data-tex="\(((w-v)u+(v-u)w)/(w-u)\)">\(((w-v)u+(v-u)w)/(w-u)\)</span>.
+The convex inequality rearranges to
+<span class="math math-display" data-tex="\[
+ \frac{h(v)-h(u)}{v-u}
+ \le\frac{h(w)-h(u)}{w-u}
+ \le\frac{h(w)-h(v)}{w-v}.                             \tag{3.2}
+\]">\[
+ \frac{h(v)-h(u)}{v-u}
+ \le\frac{h(w)-h(u)}{w-u}
+ \le\frac{h(w)-h(v)}{w-v}.                             \tag{3.2}
+\]</span>
+For fixed <span class="math" data-tex="\(r\)">\(r\)</span>, slopes to points on its right decrease as those points decrease to <span class="math" data-tex="\(r\)">\(r\)</span>. They are bounded below by the slope from any fixed point on its left to <span class="math" data-tex="\(r\)">\(r\)</span>, and bounded above, near <span class="math" data-tex="\(r\)">\(r\)</span>, by the slope to any fixed point on its right. Thus the infimum is finite and is the right derivative. Formula (3.2), with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> as its first two points and any point beyond <span class="math" data-tex="\(b\)">\(b\)</span> as its third, gives the two inequalities in (3.1) after taking infima. These also give <span class="math" data-tex="\(d(a)\le d(b)\)">\(d(a)\le d(b)\)</span>.</p>
+<p>If <span class="math" data-tex="\(r_n\downarrow r\)">\(r_n\downarrow r\)</span>, monotonicity gives a limit <span class="math" data-tex="\(\ell\ge d(r)\)">\(\ell\ge d(r)\)</span>. For fixed <span class="math" data-tex="\(s&gt;r\)">\(s&gt;r\)</span> and all large <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math" data-tex="\(d(r_n)\le(h(s)-h(r_n))/(s-r_n)\)">\(d(r_n)\le(h(s)-h(r_n))/(s-r_n)\)</span>.
+Continuity of <span class="math" data-tex="\(h\)">\(h\)</span> gives <span class="math" data-tex="\(\ell\le(h(s)-h(r))/(s-r)\)">\(\ell\le(h(s)-h(r))/(s-r)\)</span>. Taking the infimum over <span class="math" data-tex="\(s&gt;r\)">\(s&gt;r\)</span> shows <span class="math" data-tex="\(\ell\le d(r)\)">\(\ell\le d(r)\)</span>. Monotonicity then proves right continuity for the full right-hand limit.</p>
+<p>On a partition <span class="math" data-tex="\(a=x_0&lt;\cdots&lt;x_n=b\)">\(a=x_0&lt;\cdots&lt;x_n=b\)</span>, the chord bounds give
+<span class="math math-display" data-tex="\[
+ \sum_j d(x_{j-1})(x_j-x_{j-1})
+ \le h(b)-h(a)
+ \le\sum_j d(x_j)(x_j-x_{j-1}).
+\]">\[
+ \sum_j d(x_{j-1})(x_j-x_{j-1})
+ \le h(b)-h(a)
+ \le\sum_j d(x_j)(x_j-x_{j-1}).
+\]</span>
+The bounded monotone function <span class="math" data-tex="\(d\)">\(d\)</span> has both endpoint sums tending to its integral by Lemma 1.1. This proves (3.1).</p>
+<p>For the converse, let <span class="math" data-tex="\(u&lt;v&lt;w\)">\(u&lt;v&lt;w\)</span>. The fundamental theorem expresses the slopes on <span class="math" data-tex="\([u,v]\)">\([u,v]\)</span> and <span class="math" data-tex="\([v,w]\)">\([v,w]\)</span> as averages of the derivative on those intervals. An increasing derivative has every value on the first interval at most every value on the second; hence the first average is at most the second. Multiplying by the positive interval lengths and rearranging gives
+<span class="math math-display" data-tex="\[
+ h(v)\le\frac{w-v}{w-u}h(u)+\frac{v-u}{w-u}h(w),
+\]">\[
+ h(v)\le\frac{w-v}{w-u}h(u)+\frac{v-u}{w-u}h(w),
+\]</span>
+which is the convex inequality. If <span class="math" data-tex="\(h&#x27;&#x27;\ge0\)">\(h&#x27;&#x27;\ge0\)</span> and is continuous, the fundamental theorem applied to <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> makes <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> increasing, proving the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-real-proposition-3-2"></a>
+<h3 id="proposition-3-2-constructing-a-triangular-mixing-measure">Proposition 3.2. Constructing a triangular mixing measure</h3>
+<p>Let <span class="math" data-tex="\(q:(0,\infty)\to[0,\infty)\)">\(q:(0,\infty)\to[0,\infty)\)</span> be finite-valued, decreasing and right-continuous, with <span class="math" data-tex="\(\int_0^\infty q(s)\,ds=1\)">\(\int_0^\infty q(s)\,ds=1\)</span>. There is a probability measure <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on the Borel sets of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> such that
+<span class="math math-display" data-tex="\[
+ \int_r^\infty q(s)\,ds
+ =\int_{(0,\infty)}\left(1-\frac rt\right)_+d\rho(t)
+ \quad(r\ge0).                                       \tag{3.3}
+\]">\[
+ \int_r^\infty q(s)\,ds
+ =\int_{(0,\infty)}\left(1-\frac rt\right)_+d\rho(t)
+ \quad(r\ge0).                                       \tag{3.3}
+\]</span>
+No bound on <span class="math" data-tex="\(q\)">\(q\)</span> near zero is assumed.</p>
+<p><strong>Proof.</strong> Monotonicity and integrability imply <span class="math" data-tex="\(q(s)\to0\)">\(q(s)\to0\)</span> at infinity, since a positive limiting value would give an infinite integral. For <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>, define
+<span class="math" data-tex="\(\tau(u)=\sup\{s&gt;0:q(s)&gt;u\}\)">\(\tau(u)=\sup\{s&gt;0:q(s)&gt;u\}\)</span>, with empty supremum zero. This is finite. For <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+ \{u&gt;0:\tau(u)&gt;s\}=(0,q(s)).                           \tag{3.4}
+\]">\[
+ \{u&gt;0:\tau(u)&gt;s\}=(0,q(s)).                           \tag{3.4}
+\]</span>
+Indeed <span class="math" data-tex="\(\tau(u)&gt;s\)">\(\tau(u)&gt;s\)</span> gives a <span class="math" data-tex="\(t&gt;s\)">\(t&gt;s\)</span> with <span class="math" data-tex="\(q(t)&gt;u\)">\(q(t)&gt;u\)</span>, hence <span class="math" data-tex="\(q(s)&gt;u\)">\(q(s)&gt;u\)</span>. Conversely, <span class="math" data-tex="\(u&lt;q(s)\)">\(u&lt;q(s)\)</span> and right continuity give a <span class="math" data-tex="\(t&gt;s\)">\(t&gt;s\)</span> with <span class="math" data-tex="\(q(t)&gt;u\)">\(q(t)&gt;u\)</span>. Thus <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is Borel measurable. So is <span class="math" data-tex="\(D=\{\tau&gt;0\}=\bigcup_n\{\tau&gt;1/n\}\)">\(D=\{\tau&gt;0\}=\bigcup_n\{\tau&gt;1/n\}\)</span>.</p>
+<p>Define a Borel measure on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> by
+<span class="math math-display" data-tex="\[
+ \nu(B)=\lambda\{u\in D:\tau(u)\in B\}.
+\]">\[
+ \nu(B)=\lambda\{u\in D:\tau(u)\in B\}.
+\]</span>
+Disjoint inverse images prove countable additivity. Equation (3.4) gives
+<span class="math" data-tex="\(\nu((s,\infty))=q(s)\)">\(\nu((s,\infty))=q(s)\)</span>; in particular <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is sigma-finite, since it is finite on each <span class="math" data-tex="\((1/n,\infty)\)">\((1/n,\infty)\)</span>. For every nonnegative Borel <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+ \int v(t)\,d\nu(t)=\int_D v(\tau(u))\,du.              \tag{3.5}
+\]">\[
+ \int v(t)\,d\nu(t)=\int_D v(\tau(u))\,du.              \tag{3.5}
+\]</span>
+This is the definition for indicators, follows by addition for simple functions, and extends by monotone convergence.</p>
+<p>Positive Fubini for the two Lebesgue variables gives, for <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_D(\tau(u)-r)_+\,du
+ &amp;=\int_0^\infty\int_r^\infty
+           \mathbf1_{\{s&lt;\tau(u)\}}\,ds\,du\\
+ &amp;=\int_r^\infty\lambda\{u:\tau(u)&gt;s\}\,ds
+  =\int_r^\infty q(s)\,ds. 
+ \end{aligned}                                      \tag{3.6}
+\]">\[
+ \begin{aligned}
+ \int_D(\tau(u)-r)_+\,du
+ &amp;=\int_0^\infty\int_r^\infty
+           \mathbf1_{\{s&lt;\tau(u)\}}\,ds\,du\\
+ &amp;=\int_r^\infty\lambda\{u:\tau(u)&gt;s\}\,ds
+  =\int_r^\infty q(s)\,ds. 
+ \end{aligned}                                      \tag{3.6}
+\]</span>
+The integrand is Borel, and the half-lines have the sigma-finite Radon restrictions required by the integration reading, Theorem 4.4. This calculation uses only Lebesgue variables; it assumes no unproved regularity or product theorem for <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>At <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, (3.5)–(3.6) give <span class="math" data-tex="\(\int t\,d\nu(t)=1\)">\(\int t\,d\nu(t)=1\)</span>. Put
+<span class="math" data-tex="\(\rho(B)=\int_Bt\,d\nu(t)\)">\(\rho(B)=\int_Bt\,d\nu(t)\)</span>.
+Monotone convergence proves countable additivity and the mass is one. Again indicator approximation gives
+<span class="math" data-tex="\(\int w\,d\rho=\int wt\,d\nu\)">\(\int w\,d\rho=\int wt\,d\nu\)</span>
+for every nonnegative Borel <span class="math" data-tex="\(w\)">\(w\)</span>. Apply this with <span class="math" data-tex="\(w(t)=(1-r/t)_+\)">\(w(t)=(1-r/t)_+\)</span>, and use (3.5)–(3.6), to obtain (3.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

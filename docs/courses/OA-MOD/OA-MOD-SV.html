@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spectral tails, singular values and trace order · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-SV.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 62 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="spectral-tails-singular-values-and-trace-order">Spectral tails, singular values and trace order</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A spectral tail counts how much trace lies above a height. A singular value asks how low the operator norm can be made by discarding a prescribed amount of trace. These descriptions are exact inverses, including at spectral atoms. We use that fact to integrate positive operators, transport scalar functions and compare operators whose spectral projections need not commute.</p>
+<p>Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> have a faithful normal semifinite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, and write <span class="math" data-tex="\(S(M,\tau)\)">\(S(M,\tau)\)</span> for the closed measurable operators constructed in <a href="OA-MOD-MT.html#oa-mod-mt-08">MT08–12</a>. Neither the algebra nor its representation is assumed sigma-finite or separable. All trace integrals may be infinite. We preserve the exact cutoff argument already proved in <a href="OA-MOD-TI.html#oa-mod-ti-02">TI02</a>, make its endpoint and domain reasoning explicit, and extend it to the scalar functional calculus and order comparisons.</p>
+<p>This treats all four parts of Takesaki, <em>Theory of Operator Algebras II</em>, Chapter IX, §2, Exercise 7, p. 184, in the approved receipt-backed edition. The formula for a continuous increasing function with a positive value at zero requires a finite-total-trace correction, proved and illustrated in SV03. Here “increasing” permits nondecreasing functions and plateaus.</p>
+<h2 id="the-exact-cutoff-height">The exact cutoff height</h2>
+<p>For <span class="math" data-tex="\(T\in S(M,\tau)\)">\(T\in S(M,\tau)\)</span>, let <span class="math" data-tex="\(h=|T|\)">\(h=|T|\)</span>. For <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \lambda_a(T)\\
+=\tau(1_{(a,\infty)}(h)). \end{gathered}
+\tag{SV.1}
+\]">\[
+\begin{gathered} \lambda_a(T)\\
+=\tau(1_{(a,\infty)}(h)). \end{gathered}
+\tag{SV.1}
+\]</span>
+<p>For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, let <span class="math" data-tex="\(\mu_t(T)\)">\(\mu_t(T)\)</span> be the infimum of <span class="math" data-tex="\(\|Te\|\)">\(\|Te\|\)</span> over projections <span class="math" data-tex="\(e\in M\)">\(e\in M\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+eH\subseteq D(T),\\
+\tau(1-e)\leq t.
+\end{gathered}
+\tag{SV.2}
+\]">\[
+\begin{gathered}
+eH\subseteq D(T),\\
+\tau(1-e)\leq t.
+\end{gathered}
+\tag{SV.2}
+\]</span>
+<p>The composition <span class="math" data-tex="\(Te:H\to H\)">\(Te:H\to H\)</span> is literally bounded by <a href="OA-MOD-CG.html#oa-mod-cg-03">CG03</a>. The admissible set is nonempty and has finite norm values by the spectral-tail characterization <a href="OA-MOD-MT.html#oa-mod-mt-11">MT11</a>. Thus <span class="math" data-tex="\(\mu_t(T)\)">\(\mu_t(T)\)</span> is a finite nonnegative number.</p>
+<p><strong>Cutoff theorem.</strong> Put <span class="math" data-tex="\(m=\mu_t(T)\)">\(m=\mu_t(T)\)</span>, and let <span class="math" data-tex="\(F_t\)">\(F_t\)</span> be the set of all real <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> with <span class="math" data-tex="\(\lambda_a(T)\leq t\)">\(\lambda_a(T)\leq t\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} m=\inf F_t,\\
+\lambda_m(T)\leq t. \end{gathered}
+\tag{SV.3}
+\]">\[
+\begin{gathered} m=\inf F_t,\\
+\lambda_m(T)\leq t. \end{gathered}
+\tag{SV.3}
+\]</span>
+<p>The projection <span class="math" data-tex="\(e_m=1_{[0,m]}(h)\)">\(e_m=1_{[0,m]}(h)\)</span> attains the infimum. Equivalently, for every <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \mu_t(T)\leq a\\
+\Longleftrightarrow\\
+\lambda_a(T)\leq t. \end{gathered}
+\tag{SV.4}
+\]">\[
+\begin{gathered} \mu_t(T)\leq a\\
+\Longleftrightarrow\\
+\lambda_a(T)\leq t. \end{gathered}
+\tag{SV.4}
+\]</span>
+<p><strong>Proof.</strong> The function <span class="math" data-tex="\(a\mapsto\lambda_a(T)\)">\(a\mapsto\lambda_a(T)\)</span> is decreasing and right-continuous in the extended sense. Indeed, if <span class="math" data-tex="\(a_j\downarrow a\)">\(a_j\downarrow a\)</span>, the spectral projections for <span class="math" data-tex="\((a_j,\infty)\)">\((a_j,\infty)\)</span> increase to the projection for <span class="math" data-tex="\((a,\infty)\)">\((a,\infty)\)</span>, by <a href="OA-MOD-SK.html#oa-mod-sk-04">SK04–05</a>. Normality gives <span class="math" data-tex="\(\lambda_{a_j}(T)\uparrow\lambda_a(T)\)">\(\lambda_{a_j}(T)\uparrow\lambda_a(T)\)</span>, also when the limit is infinite.</p>
+<p>If <span class="math" data-tex="\(e\)">\(e\)</span> is admissible and <span class="math" data-tex="\(b=\|Te\|\)">\(b=\|Te\|\)</span>, put <span class="math" data-tex="\(q=1_{(b,\infty)}(h)\)">\(q=1_{(b,\infty)}(h)\)</span>. A nonzero <span class="math" data-tex="\(\xi\in eH\cap qH\)">\(\xi\in eH\cap qH\)</span> belongs to <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span>. Its scalar spectral measure is supported strictly above <span class="math" data-tex="\(b\)">\(b\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \|T\xi\|^2\\
+&gt;b^2\|\xi\|^2. \end{gathered}
+\tag{SV.5}
+\]">\[
+\begin{gathered} \|T\xi\|^2\\
+&gt;b^2\|\xi\|^2. \end{gathered}
+\tag{SV.5}
+\]</span>
+<p>This contradicts the cutoff norm bound. The strict inequality follows by integrating the strictly positive function <span class="math" data-tex="\(s^2-b^2\)">\(s^2-b^2\)</span> against the nonzero finite vector spectral measure; the integral is finite since <span class="math" data-tex="\(\xi\in D(T)\)">\(\xi\in D(T)\)</span>. This uses <span class="math" data-tex="\(\|T\xi\|^2\)">\(\|T\xi\|^2\)</span>, not an expression <span class="math" data-tex="\(\langle T^*T\xi,\xi\rangle\)">\(\langle T^*T\xi,\xi\rangle\)</span> requiring the additional domain <span class="math" data-tex="\(D(T^*T)\)">\(D(T^*T)\)</span>.</p>
+<p>Thus <span class="math" data-tex="\(e\wedge q=0\)">\(e\wedge q=0\)</span>. The projection comparison <a href="OA-MOD-MT.html#oa-mod-mt-02">MT02</a> implies <span class="math" data-tex="\(q\precsim1-e\)">\(q\precsim1-e\)</span> and hence <span class="math" data-tex="\(\lambda_b(T)\leq t\)">\(\lambda_b(T)\leq t\)</span>. Conversely, whenever <span class="math" data-tex="\(\lambda_a(T)\leq t\)">\(\lambda_a(T)\leq t\)</span>, the spectral projection <span class="math" data-tex="\(e_a=1_{[0,a]}(h)\)">\(e_a=1_{[0,a]}(h)\)</span> is admissible and <span class="math" data-tex="\(\|Te_a\|\leq a\)">\(\|Te_a\|\leq a\)</span>. The polar spectral calculus includes both the range inclusion in <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> and that norm estimate. These two directions prove equality of the infima in (SV.3).</p>
+<p>The scalar set defining that infimum is a nonempty upper set. Therefore <span class="math" data-tex="\(\lambda_{m+1/j}(T)\leq t\)">\(\lambda_{m+1/j}(T)\leq t\)</span> for each positive integer <span class="math" data-tex="\(j\)">\(j\)</span>. Right continuity gives <span class="math" data-tex="\(\lambda_m(T)\leq t\)">\(\lambda_m(T)\leq t\)</span>. Its spectral cutoff has norm at most <span class="math" data-tex="\(m\)">\(m\)</span>; by definition of the infimum it has norm exactly <span class="math" data-tex="\(m\)">\(m\)</span>. This proves attainment and (SV.4). It also proves the source's strict approximate-cutoff argument: if <span class="math" data-tex="\(\|Te\|&lt;b\)">\(\|Te\|&lt;b\)</span>, the projection for <span class="math" data-tex="\((b,\infty)\)">\((b,\infty)\)</span> has zero intersection with <span class="math" data-tex="\(e\)">\(e\)</span> and trace at most its defect. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument remains valid at <span class="math" data-tex="\(m=0\)">\(m=0\)</span> and at atoms of the spectral measure. It does not require a minimizing sequence of projections to converge.</p>
+<h2 id="integrating-heights-or-discarded-trace">Integrating heights or discarded trace</h2>
+<p>For a positive measurable <span class="math" data-tex="\(T\)">\(T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \tau(T)\\
+=\int_0^\infty\lambda_a(T)\,da\\
+=\int_0^\infty\mu_t(T)\,dt. \end{gathered}
+\tag{SV.6}
+\]">\[
+\begin{gathered} \tau(T)\\
+=\int_0^\infty\lambda_a(T)\,da\\
+=\int_0^\infty\mu_t(T)\,dt. \end{gathered}
+\tag{SV.6}
+\]</span>
+<p>These are equalities in <span class="math" data-tex="\([0,\infty]\)">\([0,\infty]\)</span>, not assertions that either integral is finite.</p>
+<p><strong>Proof.</strong> Normality makes <span class="math" data-tex="\(\nu(B)=\tau(E_T(B))\)">\(\nu(B)=\tau(E_T(B))\)</span> a countably additive measure on the Borel subsets of <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. For disjoint sets, spectral projections of the finite unions increase to the projection of their union, so finite additivity followed by normality proves this assertion. The positive spectral trace formula <a href="OA-MOD-MT.html#oa-mod-mt-13">MT13</a> gives <span class="math" data-tex="\(\tau(T)=\int s\,d\nu(s)\)">\(\tau(T)=\int s\,d\nu(s)\)</span>.</p>
+<p>For any measure <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and nonnegative measurable <span class="math" data-tex="\(g\)">\(g\)</span>, the layer formula is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \int g\,d\nu\\
+=\int_0^\infty\nu\{g&gt;a\}\,da. \end{gathered}
+\tag{SV.7}
+\]">\[
+\begin{gathered} \int g\,d\nu\\
+=\int_0^\infty\nu\{g&gt;a\}\,da. \end{gathered}
+\tag{SV.7}
+\]</span>
+<p>Here is its proof without a sigma-finiteness hypothesis. If <span class="math" data-tex="\(g\)">\(g\)</span> is a nonnegative simple function with finitely many disjoint level sets, integrate the indicators of the intervals below its finitely many positive values. Finite addition gives exactly the sum defining its integral, including infinite terms. For general <span class="math" data-tex="\(g\)">\(g\)</span>, choose increasing such simple functions <span class="math" data-tex="\(g_j\uparrow g\)">\(g_j\uparrow g\)</span>. For every <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>, the sets <span class="math" data-tex="\(\{g_j&gt;a\}\)">\(\{g_j&gt;a\}\)</span> increase to <span class="math" data-tex="\(\{g&gt;a\}\)">\(\{g&gt;a\}\)</span>. Monotone convergence for <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, and then for Lebesgue measure in <span class="math" data-tex="\(a\)">\(a\)</span>, proves (SV.7). All scalar integration and simple approximation facts used here are proved in <a href="notes/analytic-programme/scalar-integration-programme.html">the scalar integration programme, Sections 0–2</a>.</p>
+<p>Apply (SV.7) to <span class="math" data-tex="\(g(s)=s\)">\(g(s)=s\)</span> and the spectral measure <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. This gives the first equality in (SV.6). For the second, (SV.4) says, for each <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \mu_t(T)&gt;a\\
+\Longleftrightarrow\\
+t&lt;\lambda_a(T). \end{gathered}
+\tag{SV.8}
+\]">\[
+\begin{gathered} \mu_t(T)&gt;a\\
+\Longleftrightarrow\\
+t&lt;\lambda_a(T). \end{gathered}
+\tag{SV.8}
+\]</span>
+<p>Thus the superlevel set is exactly <span class="math" data-tex="\((0,\lambda_a(T))\)">\((0,\lambda_a(T))\)</span>. This interval has Lebesgue measure <span class="math" data-tex="\(\lambda_a(T)\)">\(\lambda_a(T)\)</span>, allowing infinity. The decreasing function <span class="math" data-tex="\(t\mapsto\mu_t(T)\)">\(t\mapsto\mu_t(T)\)</span> is measurable; this also follows from its explicitly described superlevel sets. Apply (SV.7) to that function on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Its integral is the first integral in (SV.6), as required. Infinite spectral mass at zero contributes zero, so no finite-total-trace condition has entered. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the <span class="math" data-tex="\(p=1\)">\(p=1\)</span> case of the complete positive-power identity in TI02. We retain that earlier proof and its norm, adjoint and cutoff estimates.</p>
+<h2 id="scalar-functional-calculus-and-the-finite-trace-endpoint">Scalar functional calculus and the finite-trace endpoint</h2>
+<p>Let <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span> be measurable, and let <span class="math" data-tex="\(f:[0,\infty)\to[0,\infty)\)">\(f:[0,\infty)\to[0,\infty)\)</span> be finite-valued, continuous and nondecreasing. Put <span class="math" data-tex="\(L=\tau(1)\)">\(L=\tau(1)\)</span>, allowing <span class="math" data-tex="\(L=\infty\)">\(L=\infty\)</span>. Then <span class="math" data-tex="\(f(T)\)">\(f(T)\)</span> is a positive measurable operator. For <span class="math" data-tex="\(0&lt;t&lt;L\)">\(0&lt;t&lt;L\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \mu_t(f(T))\\
+=f(\mu_t(T)). \end{gathered}
+\tag{SV.9}
+\]">\[
+\begin{gathered} \mu_t(f(T))\\
+=f(\mu_t(T)). \end{gathered}
+\tag{SV.9}
+\]</span>
+<p>If <span class="math" data-tex="\(L&lt;\infty\)">\(L&lt;\infty\)</span>, the remaining values are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \mu_t(f(T))=0\\
+(t\geq L,\ t&gt;0). \end{gathered}
+\tag{SV.10}
+\]">\[
+\begin{gathered} \mu_t(f(T))=0\\
+(t\geq L,\ t&gt;0). \end{gathered}
+\tag{SV.10}
+\]</span>
+<p>Consequently (SV.9) holds for <strong>all</strong> <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> if either <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span> or <span class="math" data-tex="\(L=\infty\)">\(L=\infty\)</span>. These statements include functions with flat portions.</p>
+<p><strong>Measurability.</strong> The spectral calculus constructs <span class="math" data-tex="\(f(T)\)">\(f(T)\)</span> as a positive closed affiliated operator with its maximal spectral-integral domain. On <span class="math" data-tex="\(e_R=1_{[0,R]}(T)\)">\(e_R=1_{[0,R]}(T)\)</span>, its range is in that domain and <span class="math" data-tex="\(\|f(T)e_R\|\leq f(R)\)">\(\|f(T)e_R\|\leq f(R)\)</span>. Since <span class="math" data-tex="\(\tau(1-e_R)\to0\)">\(\tau(1-e_R)\to0\)</span>, MT11 proves measurability. This avoids any unjustified claim that unbounded continuous functions preserve measurable operators automatically.</p>
+<p><strong>Upper bound.</strong> Fix <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, and write <span class="math" data-tex="\(m=\mu_t(T)\)">\(m=\mu_t(T)\)</span>. The attained cutoff <span class="math" data-tex="\(e_m\)">\(e_m\)</span> from SV01 has defect at most <span class="math" data-tex="\(t\)">\(t\)</span> and
+<span class="math" data-tex="\(\|f(T)e_m\|\leq f(m)\)">\(\|f(T)e_m\|\leq f(m)\)</span>. Thus <span class="math" data-tex="\(\mu_t(f(T))\leq f(m)\)">\(\mu_t(f(T))\leq f(m)\)</span>.</p>
+<p><strong>Lower bound before the endpoint.</strong> Suppose <span class="math" data-tex="\(t&lt;L\)">\(t&lt;L\)</span>. If <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> and <span class="math" data-tex="\(0\leq c&lt;f(m)\)">\(0\leq c&lt;f(m)\)</span>, continuity from the left supplies <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(0\leq b&lt;m\)">\(0\leq b&lt;m\)</span> and <span class="math" data-tex="\(f(b)&gt;c\)">\(f(b)&gt;c\)</span>. By (SV.4), <span class="math" data-tex="\(\lambda_b(T)&gt;t\)">\(\lambda_b(T)&gt;t\)</span>. Monotonicity of <span class="math" data-tex="\(f\)">\(f\)</span> and the spectral composition rule give the projection inclusion</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} E_T((b,\infty))\\
+\leq E_{f(T)}((c,\infty)). \end{gathered}
+\tag{SV.11}
+\]">\[
+\begin{gathered} E_T((b,\infty))\\
+\leq E_{f(T)}((c,\infty)). \end{gathered}
+\tag{SV.11}
+\]</span>
+<p>Hence <span class="math" data-tex="\(\lambda_c(f(T))&gt;t\)">\(\lambda_c(f(T))&gt;t\)</span>, and another use of (SV.4) gives <span class="math" data-tex="\(\mu_t(f(T))&gt;c\)">\(\mu_t(f(T))&gt;c\)</span>. Letting <span class="math" data-tex="\(c\uparrow f(m)\)">\(c\uparrow f(m)\)</span> proves the lower bound. If <span class="math" data-tex="\(f(m)=0\)">\(f(m)=0\)</span>, it is immediate from nonnegativity.</p>
+<p>If <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, then <span class="math" data-tex="\(f(T)\geq f(0)1\)">\(f(T)\geq f(0)1\)</span> by the scalar spectral calculus. For <span class="math" data-tex="\(0\leq c&lt;f(0)\)">\(0\leq c&lt;f(0)\)</span>, its spectral projection above <span class="math" data-tex="\(c\)">\(c\)</span> is the identity and has trace <span class="math" data-tex="\(L&gt;t\)">\(L&gt;t\)</span>. Again (SV.4) gives <span class="math" data-tex="\(\mu_t(f(T))&gt;c\)">\(\mu_t(f(T))&gt;c\)</span>. Let <span class="math" data-tex="\(c\uparrow f(0)\)">\(c\uparrow f(0)\)</span>; when <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, nonnegativity suffices. This proves (SV.9) in every case.</p>
+<p><strong>At and beyond finite total trace.</strong> When <span class="math" data-tex="\(t\geq L\)">\(t\geq L\)</span>, the zero projection is an admissible cutoff for every measurable operator. Its product norm is zero, proving (SV.10) and also <span class="math" data-tex="\(\mu_t(T)=0\)">\(\mu_t(T)=0\)</span>. If <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, both sides of (SV.9) are then zero. Otherwise they need not agree.</p>
+<p>For an explicit counterexample to the unrestricted formula printed in Exercise 7(d), take <span class="math" data-tex="\(M=\mathbb C\)">\(M=\mathbb C\)</span> on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, the trace <span class="math" data-tex="\(\tau(a)=a\)">\(\tau(a)=a\)</span> for <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>, <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, and <span class="math" data-tex="\(f(s)=1+s\)">\(f(s)=1+s\)</span>. This is a faithful normal finite trace: the positive scalar order makes every defining property immediate, and its entire algebra is the finite trace ideal. For <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \mu_t(f(T))\\
+=\mu_t(1)=0,\\
+f(\mu_t(T))\\
+=f(0)=1. \end{gathered}
+\tag{SV.12}
+\]">\[
+\begin{gathered} \mu_t(f(T))\\
+=\mu_t(1)=0,\\
+f(\mu_t(T))\\
+=f(0)=1. \end{gathered}
+\tag{SV.12}
+\]</span>
+<p>All the printed hypotheses hold. The finite-total-trace range cannot be omitted.</p>
+<p>Combining SV02 with (SV.9)–(SV.10) yields the full corrected trace formula</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \tau(f(T))\\
+=\int_0^L f(\mu_t(T))\,dt. \end{gathered}
+\tag{SV.13}
+\]">\[
+\begin{gathered} \tau(f(T))\\
+=\int_0^L f(\mu_t(T))\,dt. \end{gathered}
+\tag{SV.13}
+\]</span>
+<p>If <span class="math" data-tex="\(L=0\)">\(L=0\)</span>, faithfulness makes the algebra zero, and the integral over the empty interval is zero. If <span class="math" data-tex="\(L=\infty\)">\(L=\infty\)</span>, the interval is <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Endpoints of finite intervals have Lebesgue measure zero. All quantities are nonnegative, so this identity never subtracts infinities. In particular, <span class="math" data-tex="\(f(s)=s^p\)">\(f(s)=s^p\)</span>, <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, gives the global singular-value identity for positive powers, consistently with TI02.</p>
+<h2 id="order-comparison-without-commuting-spectral-projections">Order comparison without commuting spectral projections</h2>
+<p>Let <span class="math" data-tex="\(T,S\)">\(T,S\)</span> be positive measurable operators and suppose <span class="math" data-tex="\(0\leq T\leq S\)">\(0\leq T\leq S\)</span> in the ordered measurable algebra of <a href="OA-MOD-MT.html#oa-mod-mt-12">MT12</a>. This means that the closed difference <span class="math" data-tex="\(C=\overline{S-T}\)">\(C=\overline{S-T}\)</span> is positive. Then for every <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda_a(T)\leq\lambda_a(S),\\
+\mu_t(T)\leq\mu_t(S).
+\end{gathered}
+\tag{SV.14}
+\]">\[
+\begin{gathered}
+\lambda_a(T)\leq\lambda_a(S),\\
+\mu_t(T)\leq\mu_t(S).
+\end{gathered}
+\tag{SV.14}
+\]</span>
+<p>For every <span class="math" data-tex="\(f\)">\(f\)</span> as in SV03, it follows that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \tau(f(T))\\
+\leq\tau(f(S)). \end{gathered}
+\tag{SV.15}
+\]">\[
+\begin{gathered} \tau(f(T))\\
+\leq\tau(f(S)). \end{gathered}
+\tag{SV.15}
+\]</span>
+<p>No commutation between <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> is required.</p>
+<p><strong>Proof of the spectral comparison.</strong> Put
+<span class="math" data-tex="\(q=1_{(a,\infty)}(T)\)">\(q=1_{(a,\infty)}(T)\)</span>, <span class="math" data-tex="\(e=1_{[0,a]}(S)\)">\(e=1_{[0,a]}(S)\)</span>, and <span class="math" data-tex="\(r=q\wedge e\)">\(r=q\wedge e\)</span>. We prove <span class="math" data-tex="\(r=0\)">\(r=0\)</span> while respecting the unbounded domains.</p>
+<p>For any <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, choose a projection <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(\tau(1-p)&lt;d\)">\(\tau(1-p)&lt;d\)</span> and
+<span class="math" data-tex="\(pH\subseteq D(T)\cap D(S)\)">\(pH\subseteq D(T)\cap D(S)\)</span>. Such projections exist by MT11 and the countable intersection theorem <a href="OA-MOD-MM.html#oa-mod-mm-05">MM05</a>. On this intersection, the closed difference <span class="math" data-tex="\(C\)">\(C\)</span> agrees with the ordinary difference by <a href="OA-MOD-MT.html#oa-mod-mt-09">MT09</a>. Positivity therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \langle T\xi,\xi\rangle\\
+\leq\langle S\xi,\xi\rangle\\
+(\xi\in pH). \end{gathered}
+\tag{SV.16}
+\]">\[
+\begin{gathered} \langle T\xi,\xi\rangle\\
+\leq\langle S\xi,\xi\rangle\\
+(\xi\in pH). \end{gathered}
+\tag{SV.16}
+\]</span>
+<p>If a nonzero <span class="math" data-tex="\(\xi\)">\(\xi\)</span> belonged to <span class="math" data-tex="\((r\wedge p)H\)">\((r\wedge p)H\)</span>, its membership in <span class="math" data-tex="\(qH\cap D(T)\)">\(qH\cap D(T)\)</span> and the positive spectral calculus would imply
+<span class="math" data-tex="\(\langle T\xi,\xi\rangle&gt;a\|\xi\|^2\)">\(\langle T\xi,\xi\rangle&gt;a\|\xi\|^2\)</span>. Its membership in <span class="math" data-tex="\(eH\)">\(eH\)</span> gives
+<span class="math" data-tex="\(\langle S\xi,\xi\rangle\leq a\|\xi\|^2\)">\(\langle S\xi,\xi\rangle\leq a\|\xi\|^2\)</span>. This contradicts (SV.16). Thus <span class="math" data-tex="\(r\wedge p=0\)">\(r\wedge p=0\)</span>, and MT02 implies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \tau(r)\leq\tau(1-p)\\
+&lt;d. \end{gathered}
+\tag{SV.17}
+\]">\[
+\begin{gathered} \tau(r)\leq\tau(1-p)\\
+&lt;d. \end{gathered}
+\tag{SV.17}
+\]</span>
+<p>Since <span class="math" data-tex="\(r\)">\(r\)</span> is fixed and <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> arbitrary, faithfulness gives <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Apply MT02 once more to <span class="math" data-tex="\(q\wedge e=0\)">\(q\wedge e=0\)</span>. It gives <span class="math" data-tex="\(q\precsim1-e\)">\(q\precsim1-e\)</span>, and hence
+<span class="math" data-tex="\(\lambda_a(T)\leq\lambda_a(S)\)">\(\lambda_a(T)\leq\lambda_a(S)\)</span>. Notice that the intersection with <span class="math" data-tex="\(p\)">\(p\)</span> supplied the actual domains; a vector in <span class="math" data-tex="\(qH\)">\(qH\)</span> alone need not lie in <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span>.</p>
+<p>The singular-value comparison now follows from (SV.3): every height admissible for <span class="math" data-tex="\(S\)">\(S\)</span> is admissible for <span class="math" data-tex="\(T\)">\(T\)</span>. Finally, scalar monotonicity gives
+<span class="math" data-tex="\(f(\mu_t(T))\leq f(\mu_t(S))\)">\(f(\mu_t(T))\leq f(\mu_t(S))\)</span>. Integrate on <span class="math" data-tex="\((0,L)\)">\((0,L)\)</span>, using (SV.13) for the same ambient total trace <span class="math" data-tex="\(L=\tau(1)\)">\(L=\tau(1)\)</span>, to obtain (SV.15), including infinite values. Scalar monotonicity is sufficient for this trace comparison; no operator-monotonicity assertion about <span class="math" data-tex="\(f\)">\(f\)</span> is used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="source-clauses-and-boundary-checks">Source clauses and boundary checks</h2>
+<p>Parts (a)–(c) of Exercise 7 are proved by SV01: right continuity, the attained spectral cutoff, zero intersection for an approximate cutoff, and the resulting projection trace bound. The proof retains the strict spectral tail <span class="math" data-tex="\((a,\infty)\)">\((a,\infty)\)</span>, the non-strict allowed trace defect, and the case <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. It also replaces the hint's potentially undefined <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span>-pairing by the exact squared norm on <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span>.</p>
+<p>All four assertions in part (d) are addressed: SV02 proves the integral of singular values; SV03 proves the functional-calculus rule with its necessary finite-total-trace correction and a counterexample to the unqualified formula; SV04 proves both singular-value monotonicity and the trace comparison for every continuous nondecreasing nonnegative <span class="math" data-tex="\(f\)">\(f\)</span>. The proofs preserve the arbitrary semifinite algebra and do not introduce a countable finite-trace exhaustion or a hidden assumption <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>.</p>
+<p>As a direct atom check, for a projection <span class="math" data-tex="\(p\)">\(p\)</span> of finite trace <span class="math" data-tex="\(d\)">\(d\)</span>, the definition gives <span class="math" data-tex="\(\lambda_a(p)=d\)">\(\lambda_a(p)=d\)</span> when <span class="math" data-tex="\(0\leq a&lt;1\)">\(0\leq a&lt;1\)</span>, and zero when <span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span>. Equation (SV.4) then gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered} \mu_t(p)\\
+=\begin{cases}1,&amp;0&lt;t&lt;d,\\0,&amp;t\geq d.\end{cases} \end{gathered}
+\tag{SV.18}
+\]">\[
+\begin{gathered} \mu_t(p)\\
+=\begin{cases}1,&amp;0&lt;t&lt;d,\\0,&amp;t\geq d.\end{cases} \end{gathered}
+\tag{SV.18}
+\]</span>
+<p>The value at <span class="math" data-tex="\(t=d\)">\(t=d\)</span> is zero because the defect inequality permits discarding the entire support. Its integral is <span class="math" data-tex="\(d=\tau(p)\)">\(d=\tau(p)\)</span>, which checks the spectral and trace endpoints simultaneously. When <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, faithfulness makes <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, and the zero branch applies for every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-NE.html">← Convergence on large domains</a></span><a href="./">Course contents</a><span class="pager-next"><span class="unlinked">Measurable operators between representations →</span></span></nav>
+<p class="small source-link"><a href="src/singular-values-and-trace-order.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

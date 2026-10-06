@@ -1,0 +1,534 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Additive characters, self-dual measures and Poisson summation on the adèles</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/course.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="index.html">Course contents</a> · Lesson 5 of 12</nav><aside class="notice"><p>Author-self-checked draft. Independent programme review is pending.</p><p>Lessons 1 and 4, as revised adaptations: CC BY-NC-SA 4.0; their previously original CC0 components retain that dedication. Other original course text: CC0. The marked edge-stabilizer adaptation in lesson 11: CC BY 4.0. Source credits and changes appear in the lessons. Prerequisite snapshots retain their edition-specific notices. MathJax and font licences are retained in the assets folder.</p><p>The five separate prerequisites <a href="prerequisites/HA-LCA-02.md">HA-LCA-02</a>, <a href="prerequisites/HA-LCA-03.md">HA-LCA-03</a>, <a href="prerequisites/HA-LCA-09.md">HA-LCA-09</a>, <a href="prerequisites/HA-LCA-10.md">HA-LCA-10</a>, <a href="prerequisites/HA-LCA-11.md">HA-LCA-11</a> are Design Science License adaptations of D. H. Fremlin. Their exact editable lessons retain all human-source credits, copyright, adaptation, change and warranty notices. Their <a href="prerequisites/assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">full licence</a> and <span class="unlinked">unchanged author source package</span> are bundled. The archive retains all auxiliary notices. These separate components retain their own terms; independent NT-ADL lesson licences remain as stated.</p></aside><article class="lesson"><h1 id="additive-characters-self-dual-measures-and-poisson-summation-on-the-adèles">Additive characters, self-dual measures and Poisson summation on the adèles</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Fourier analysis on the adèles works because one pairing simultaneously identifies every local field with its character group and the diagonal number field with its own annihilator. The normalization of that pairing determines the measures. At a ramified finite place the integral ring generally has mass less than one; the different supplies exactly the correction needed to make the global additive quotient have volume one.</p>
+<p>We use the restricted-product duality theorem from <a href="NT-ADL-01.html">Restricted products and profinite completions</a> and the additive topology, approximation, and covolume from <a href="NT-ADL-02.html">The adèle ring of a number field</a>. The general closed-quotient duality and Poisson formula are the harmonic-analysis inputs stated precisely under <em>Prerequisites and further directions</em>. The number-field proofs and all constants in their application are given here. Our convention agrees with [Getz–Hahn draft, Appendix B] and [Poonen, §4.4]: the basic real character has negative exponent, and the Fourier kernel evaluates that character at the product of its arguments.</p>
+<h2 id="characters-and-their-local-parameters">Characters and their local parameters</h2>
+<p>For <span class="math" data-tex="\(x\in\mathbb Q_p\)">\(x\in\mathbb Q_p\)</span>, choose its finite negative-power part <span class="math" data-tex="\(\{x\}_p\in\mathbb Z[1/p]\cap[0,1)\)">\(\{x\}_p\in\mathbb Z[1/p]\cap[0,1)\)</span>, so that <span class="math" data-tex="\(x-\{x\}_p\in\mathbb Z_p\)">\(x-\{x\}_p\in\mathbb Z_p\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\psi_{\mathbb R}(x)=e^{-2\pi ix},
+\qquad \psi_{\mathbb Q_p}(x)=e^{2\pi i\{x\}_p},
+\qquad \psi_{\mathbb C}(z)=e^{-2\pi i(z+\overline z)}.
+\tag{1}
+\]">\[
+\psi_{\mathbb R}(x)=e^{-2\pi ix},
+\qquad \psi_{\mathbb Q_p}(x)=e^{2\pi i\{x\}_p},
+\qquad \psi_{\mathbb C}(z)=e^{-2\pi i(z+\overline z)}.
+\tag{1}
+\]</span>
+<p>For a finite completion <span class="math" data-tex="\(F=K_v\)">\(F=K_v\)</span> above <span class="math" data-tex="\(p\)">\(p\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\psi_F(x)=\psi_{\mathbb Q_p}\bigl(\operatorname{Tr}_{F/\mathbb Q_p}(x)\bigr).
+\tag{2}
+\]">\[
+\psi_F(x)=\psi_{\mathbb Q_p}\bigl(\operatorname{Tr}_{F/\mathbb Q_p}(x)\bigr).
+\tag{2}
+\]</span>
+<p>A character here means a continuous homomorphism from an additive group to the unit circle. Write <span class="math" data-tex="\(\widehat F\)">\(\widehat F\)</span> for its character group with the compact-open topology. The local inverse different is the trace-dual fractional ideal</p>
+<span class="math math-display" data-tex="\[
+\mathfrak D_F^{-1}
+=\{a\in F:\operatorname{Tr}_{F/\mathbb Q_p}(a\mathcal O_F)\subset\mathbb Z_p\}.
+\tag{3}
+\]">\[
+\mathfrak D_F^{-1}
+=\{a\in F:\operatorname{Tr}_{F/\mathbb Q_p}(a\mathcal O_F)\subset\mathbb Z_p\}.
+\tag{3}
+\]</span>
+<p>Its inverse <span class="math" data-tex="\(\mathfrak D_F\)">\(\mathfrak D_F\)</span> is an integral ideal, and we write <span class="math" data-tex="\(\mathfrak D_F=\varpi^d\mathcal O_F\)">\(\mathfrak D_F=\varpi^d\mathcal O_F\)</span>, <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>. The definition and integrality follow from Proposition 14.1 of <a href="prerequisites/NT-ANT-14.html">The different and the discriminant</a>; [Sutherland 12, Definition 12.2] is the scholarly reference. For <span class="math" data-tex="\(q=\#(\mathcal O_F/\varpi\mathcal O_F)\)">\(q=\#(\mathcal O_F/\varpi\mathcal O_F)\)</span>, put <span class="math" data-tex="\(N(\mathfrak D_F)=q^d\)">\(N(\mathfrak D_F)=q^d\)</span>.</p>
+<p><strong>Proposition 5.1 (local self-duality).</strong> For every completion of a number field, the map</p>
+<span class="math math-display" data-tex="\[
+\Phi_F:F\longrightarrow\widehat F,
+\qquad a\longmapsto\bigl(x\longmapsto\psi_F(ax)\bigr)
+\tag{4}
+\]">\[
+\Phi_F:F\longrightarrow\widehat F,
+\qquad a\longmapsto\bigl(x\longmapsto\psi_F(ax)\bigr)
+\tag{4}
+\]</span>
+<p>is a topological group isomorphism. At a finite place,</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_F^\perp=\mathfrak D_F^{-1},
+\qquad (b\mathcal O_F)^\perp=b^{-1}\mathfrak D_F^{-1}\quad(b\in F^\times).
+\tag{5}
+\]">\[
+\mathcal O_F^\perp=\mathfrak D_F^{-1},
+\qquad (b\mathcal O_F)^\perp=b^{-1}\mathfrak D_F^{-1}\quad(b\in F^\times).
+\tag{5}
+\]</span>
+<p>The largest fractional ideal on which <span class="math" data-tex="\(\psi_F\)">\(\psi_F\)</span> is trivial is <span class="math" data-tex="\(\mathfrak D_F^{-1}\)">\(\mathfrak D_F^{-1}\)</span>.</p>
+<p><strong>Proof.</strong> The negative-power part is additive modulo <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>: its difference from the negative-power part of a sum belongs to both <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> and <span class="math" data-tex="\(\mathbb Z[1/p]\)">\(\mathbb Z[1/p]\)</span>, whose intersection is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Therefore <span class="math" data-tex="\(\psi_{\mathbb Q_p}\)">\(\psi_{\mathbb Q_p}\)</span> is a homomorphism. Its kernel is exactly <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>, since the chosen negative-power part is in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> and its exponential is one only when it is zero. This open kernel also proves continuity.</p>
+<p>We classify every character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>. Choose a small circle arc containing no nontrivial subgroup. Continuity gives <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span> such that <span class="math" data-tex="\(\chi(p^m\mathbb Z_p)\)">\(\chi(p^m\mathbb Z_p)\)</span> lies in that arc. This image is a subgroup, so <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is trivial on <span class="math" data-tex="\(p^m\mathbb Z_p\)">\(p^m\mathbb Z_p\)</span>. For <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, choose</p>
+<span class="math math-display" data-tex="\[
+b_n\in\mathbb Z/p^{m+n}\mathbb Z,
+\qquad
+\chi(p^{-n})=\exp\left(2\pi i\frac{b_n}{p^{m+n}}\right).
+\]">\[
+b_n\in\mathbb Z/p^{m+n}\mathbb Z,
+\qquad
+\chi(p^{-n})=\exp\left(2\pi i\frac{b_n}{p^{m+n}}\right).
+\]</span>
+<p>The relation <span class="math" data-tex="\(p\cdot p^{-n-1}=p^{-n}\)">\(p\cdot p^{-n-1}=p^{-n}\)</span> gives <span class="math" data-tex="\(b_{n+1}\equiv b_n\pmod{p^{m+n}}\)">\(b_{n+1}\equiv b_n\pmod{p^{m+n}}\)</span>. These compatible residues specify <span class="math" data-tex="\(b\in\mathbb Z_p\)">\(b\in\mathbb Z_p\)</span>. Set <span class="math" data-tex="\(a=p^{-m}b\)">\(a=p^{-m}b\)</span>. On <span class="math" data-tex="\(p^{-n}\mathbb Z_p/p^m\mathbb Z_p\)">\(p^{-n}\mathbb Z_p/p^m\mathbb Z_p\)</span>, a cyclic group generated by <span class="math" data-tex="\(p^{-n}\)">\(p^{-n}\)</span>, the character <span class="math" data-tex="\(\psi_{\mathbb Q_p}(a\,\cdot)\)">\(\psi_{\mathbb Q_p}(a\,\cdot)\)</span> has the same value as <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on that generator. Thus they agree on <span class="math" data-tex="\(p^{-n}\mathbb Z_p\)">\(p^{-n}\mathbb Z_p\)</span>, and these subgroups cover <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>. If <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, take <span class="math" data-tex="\(x=a^{-1}/p\)">\(x=a^{-1}/p\)</span>; then <span class="math" data-tex="\(\psi_{\mathbb Q_p}(ax)\ne1\)">\(\psi_{\mathbb Q_p}(ax)\ne1\)</span>. This proves uniqueness.</p>
+<p>For topology, a compact subset of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> lies in some <span class="math" data-tex="\(p^{-r}\mathbb Z_p\)">\(p^{-r}\mathbb Z_p\)</span>. Parameters differing by an element of <span class="math" data-tex="\(p^r\mathbb Z_p\)">\(p^r\mathbb Z_p\)</span> therefore give identical character values on that compact set, proving continuity of (4). Conversely, for every integer <span class="math" data-tex="\(s\)">\(s\)</span>, the image of <span class="math" data-tex="\(p^s\mathbb Z_p\)">\(p^s\mathbb Z_p\)</span> is the annihilator of the compact subgroup <span class="math" data-tex="\(p^{-s}\mathbb Z_p\)">\(p^{-s}\mathbb Z_p\)</span>. This annihilator is open in the character group: requiring the image of the compact subgroup to lie in a circle arc with no nontrivial subgroup requires it to be trivial. Hence (4) is open and is a topological isomorphism.</p>
+<p>For a finite extension <span class="math" data-tex="\(F/\mathbb Q_p\)">\(F/\mathbb Q_p\)</span>, choose a basis <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span>. Its coordinate map is a topological linear isomorphism <span class="math" data-tex="\(\mathbb Q_p^n\simeq F\)">\(\mathbb Q_p^n\simeq F\)</span>. A character of this finite product is a product of characters on its axes, and therefore has the form</p>
+<span class="math math-display" data-tex="\[
+\chi\left(\sum_i x_ie_i\right)
+=\psi_{\mathbb Q_p}\left(\sum_i c_ix_i\right),
+\qquad c_i\in\mathbb Q_p.
+\tag{6}
+\]">\[
+\chi\left(\sum_i x_ie_i\right)
+=\psi_{\mathbb Q_p}\left(\sum_i c_ix_i\right),
+\qquad c_i\in\mathbb Q_p.
+\tag{6}
+\]</span>
+<p>The trace pairing is nondegenerate because the extension is separable. Consequently there is a unique <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span> with <span class="math" data-tex="\(\operatorname{Tr}(ae_i)=c_i\)">\(\operatorname{Tr}(ae_i)=c_i\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. Equation (6) is then <span class="math" data-tex="\(\psi_F(ax)\)">\(\psi_F(ax)\)</span>. This parameter change is an invertible <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>-linear map. Finite-product character identification is topological: restriction to each axis is continuous for the compact-open topology, and continuity of the product construction follows by projecting compact sets onto those finitely many axes. The already proved <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> case therefore proves the topological assertion for <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>For <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, a continuous character has the form <span class="math" data-tex="\(e^{2\pi i c x}\)">\(e^{2\pi i c x}\)</span>. To verify the classification, lift its values near zero to a continuous real argument of absolute value less than <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. On a sufficiently small interval that argument is locally additive, since the difference of arguments is an integer of absolute value less than one. Continuous local additivity gives a linear argument there, by the rational approximation proof of the continuous Cauchy equation; subdividing any real number into pieces in that interval proves the formula globally. Our negative sign in (1) merely replaces the parameter <span class="math" data-tex="\(c\)">\(c\)</span> by <span class="math" data-tex="\(-c\)">\(-c\)</span>. Uniform convergence on compact intervals follows from convergence of parameters. In the other direction, if <span class="math" data-tex="\(|a|\geq\varepsilon\)">\(|a|\geq\varepsilon\)</span>, its character takes the value <span class="math" data-tex="\(-1\)">\(-1\)</span> at <span class="math" data-tex="\(x=1/(2a)\)">\(x=1/(2a)\)</span> in the fixed compact interval <span class="math" data-tex="\([-1/(2\varepsilon),1/(2\varepsilon)]\)">\([-1/(2\varepsilon),1/(2\varepsilon)]\)</span>. A compact-open neighborhood excluding that value forces <span class="math" data-tex="\(|a|&lt;\varepsilon\)">\(|a|&lt;\varepsilon\)</span>. Thus the parameter identification is topological.</p>
+<p>For <span class="math" data-tex="\(\mathbb C\simeq\mathbb R^2\)">\(\mathbb C\simeq\mathbb R^2\)</span>, write <span class="math" data-tex="\(a=\alpha+i\beta\)">\(a=\alpha+i\beta\)</span>, <span class="math" data-tex="\(x=u+iv\)">\(x=u+iv\)</span>. The pairing in (4) is</p>
+<span class="math math-display" data-tex="\[
+\psi_{\mathbb C}(ax)=e^{-4\pi i(\alpha u-\beta v)}.
+\tag{7}
+\]">\[
+\psi_{\mathbb C}(ax)=e^{-4\pi i(\alpha u-\beta v)}.
+\tag{7}
+\]</span>
+<p>The coefficient map <span class="math" data-tex="\((\alpha,\beta)\mapsto(-2\alpha,2\beta)\)">\((\alpha,\beta)\mapsto(-2\alpha,2\beta)\)</span> is an invertible real linear map, so the finite-product real argument proves the complex case.</p>
+<p>Finally, (2) and the exact kernel <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> prove (5) directly from (3). The ideal <span class="math" data-tex="\(\mathfrak D_F^{-1}\)">\(\mathfrak D_F^{-1}\)</span> is contained in <span class="math" data-tex="\(\ker\psi_F\)">\(\ker\psi_F\)</span>. If a fractional ideal <span class="math" data-tex="\(I\)">\(I\)</span> is contained in that kernel, then <span class="math" data-tex="\(a\mathcal O_F\subset I\)">\(a\mathcal O_F\subset I\)</span> for each <span class="math" data-tex="\(a\in I\)">\(a\in I\)</span>; hence <span class="math" data-tex="\(a\)">\(a\)</span> satisfies (3). Thus <span class="math" data-tex="\(I\subset\mathfrak D_F^{-1}\)">\(I\subset\mathfrak D_F^{-1}\)</span>, proving maximality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an extension of degree greater than one, the entire kernel of <span class="math" data-tex="\(\psi_F\)">\(\psi_F\)</span> can be larger than its conductor ideal: every trace-zero element lies in the kernel. Equation (3) describes the elements that annihilate the whole integral ring, which is the condition Fourier transforms of its indicator require.</p>
+<h2 id="measures-fixed-by-inversion">Measures fixed by inversion</h2>
+<p>Use the Fourier transform</p>
+<span class="math math-display" data-tex="\[
+\widehat f(y)=\int_F f(x)\psi_F(xy)\,dx.
+\tag{8}
+\]">\[
+\widehat f(y)=\int_F f(x)\psi_F(xy)\,dx.
+\tag{8}
+\]</span>
+<p>A Haar measure is <strong>self-dual</strong> when <span class="math" data-tex="\(\widehat{\widehat f}(x)=f(-x)\)">\(\widehat{\widehat f}(x)=f(-x)\)</span> for Schwartz–Bruhat functions. At a finite place these are locally constant compactly supported functions; at real or complex places they are the usual Schwartz functions on the underlying real vector space.</p>
+<p><strong>Proposition 5.2 (self-dual measures and basic transforms).</strong> The self-dual measures for (1)–(2) are <span class="math" data-tex="\(dx\)">\(dx\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, <span class="math" data-tex="\(2\,du\,dv\)">\(2\,du\,dv\)</span> on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and at a finite place the measure satisfying</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(\mathcal O_F)=N(\mathfrak D_F)^{-1/2}=q^{-d/2}.
+\tag{9}
+\]">\[
+\operatorname{vol}(\mathcal O_F)=N(\mathfrak D_F)^{-1/2}=q^{-d/2}.
+\tag{9}
+\]</span>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+\widehat{\mathbf1_{\mathcal O_F}}
+=q^{-d/2}\mathbf1_{\mathfrak D_F^{-1}},
+\qquad
+\widehat{e^{-\pi x^2}}=e^{-\pi y^2},
+\qquad
+\widehat{e^{-2\pi|z|^2}}=e^{-2\pi|w|^2}.
+\tag{10}
+\]">\[
+\widehat{\mathbf1_{\mathcal O_F}}
+=q^{-d/2}\mathbf1_{\mathfrak D_F^{-1}},
+\qquad
+\widehat{e^{-\pi x^2}}=e^{-\pi y^2},
+\qquad
+\widehat{e^{-2\pi|z|^2}}=e^{-2\pi|w|^2}.
+\tag{10}
+\]</span>
+<p>More generally, for a finite place and <span class="math" data-tex="\(H=b\mathcal O_F\)">\(H=b\mathcal O_F\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\widehat{\mathbf1_{a+H}}(y)
+=\operatorname{vol}(H)\psi_F(ay)\mathbf1_{H^\perp}(y).
+\tag{11}
+\]">\[
+\widehat{\mathbf1_{a+H}}(y)
+=\operatorname{vol}(H)\psi_F(ay)\mathbf1_{H^\perp}(y).
+\tag{11}
+\]</span>
+<p><strong>Proof.</strong> Integrating a character over a compact group gives its volume if the character is trivial, and zero otherwise. In the second case translate by an element on which the character is not one; invariance makes the integral equal to that nonunit scalar times itself, so it must vanish. Apply this to <span class="math" data-tex="\(H\)">\(H\)</span> and use translation by <span class="math" data-tex="\(a\)">\(a\)</span>, obtaining (11).</p>
+<p>Write <span class="math" data-tex="\(c=\operatorname{vol}(\mathcal O_F)\)">\(c=\operatorname{vol}(\mathcal O_F)\)</span>. Haar scaling gives <span class="math" data-tex="\(\operatorname{vol}(\mathfrak D_F^{-1})=q^d c\)">\(\operatorname{vol}(\mathfrak D_F^{-1})=q^d c\)</span>. Applying the transform twice to <span class="math" data-tex="\(\mathbf1_{\mathcal O_F}\)">\(\mathbf1_{\mathcal O_F}\)</span> gives <span class="math" data-tex="\(q^d c^2\mathbf1_{\mathcal O_F}\)">\(q^d c^2\mathbf1_{\mathcal O_F}\)</span>, so self-duality requires <span class="math" data-tex="\(c=q^{-d/2}\)">\(c=q^{-d/2}\)</span>. This normalization is sufficient as well. For <span class="math" data-tex="\(H=b\mathcal O_F\)">\(H=b\mathcal O_F\)</span>, (5) gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(H)\operatorname{vol}(H^\perp)
+=|b|_F c\,|b|_F^{-1}q^dc=1.
+\tag{12}
+\]">\[
+\operatorname{vol}(H)\operatorname{vol}(H^\perp)
+=|b|_F c\,|b|_F^{-1}q^dc=1.
+\tag{12}
+\]</span>
+<p>The annihilator of <span class="math" data-tex="\(H^\perp=b^{-1}\mathfrak D_F^{-1}\)">\(H^\perp=b^{-1}\mathfrak D_F^{-1}\)</span> is <span class="math" data-tex="\(H\)">\(H\)</span>, by (5). Applying (11) twice therefore gives <span class="math" data-tex="\(\mathbf1_{-a+H}(x)=\mathbf1_{a+H}(-x)\)">\(\mathbf1_{-a+H}(x)=\mathbf1_{a+H}(-x)\)</span>. Every locally constant compactly supported function is a finite linear combination of such coset indicators: compactness gives one sufficiently small common open subgroup on which it is invariant, and its support meets only finitely many cosets. Thus inversion holds for every such function. Formula (11) also shows that the transform remains locally constant and compactly supported.</p>
+<p>The full real and complex inversion statements follow from the whole-space proof below, with its dimension equal to one or two. That proof uses only the Gaussian transform we establish next, so it does not assume inversion in deriving that transform. Its real normalization is Lebesgue measure; its complex coefficient matrix is <span class="math" data-tex="\(\operatorname{diag}(2,-2)\)">\(\operatorname{diag}(2,-2)\)</span>, and the measure factor is <span class="math" data-tex="\(2\)">\(2\)</span>. Their determinant relation <span class="math" data-tex="\(2^2/4=1\)">\(2^2/4=1\)</span> gives complex self-duality. A positive scalar multiple <span class="math" data-tex="\(c\)">\(c\)</span> of either chosen measure multiplies the double transform by <span class="math" data-tex="\(c^2\)">\(c^2\)</span>, proving uniqueness.</p>
+<p>For the real Gaussian, its integral is one: the square of the integral is the polar-coordinate integral of <span class="math" data-tex="\(e^{-\pi(u^2+v^2)}\)">\(e^{-\pi(u^2+v^2)}\)</span>, which equals one. Differentiating its Fourier transform under the integral and integrating by parts gives <span class="math" data-tex="\(F&#x27;(y)=-2\pi yF(y)\)">\(F&#x27;(y)=-2\pi yF(y)\)</span>. The boundary term vanishes by Gaussian decay and <span class="math" data-tex="\(F(0)=1\)">\(F(0)=1\)</span>, so <span class="math" data-tex="\(F(y)=e^{-\pi y^2}\)">\(F(y)=e^{-\pi y^2}\)</span>. Scaling gives the transform of <span class="math" data-tex="\(e^{-\pi a x^2}\)">\(e^{-\pi a x^2}\)</span> as <span class="math" data-tex="\(a^{-1/2}e^{-\pi y^2/a}\)">\(a^{-1/2}e^{-\pi y^2/a}\)</span> for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. For the complex Gaussian, (7) separates the integral into two real Gaussian transforms with <span class="math" data-tex="\(a=2\)">\(a=2\)</span> and frequencies <span class="math" data-tex="\(2\operatorname{Re}w\)">\(2\operatorname{Re}w\)</span>, <span class="math" data-tex="\(-2\operatorname{Im}w\)">\(-2\operatorname{Im}w\)</span>. Their constants multiply to <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, canceled by the factor <span class="math" data-tex="\(2\)">\(2\)</span> in the measure. Their exponents give <span class="math" data-tex="\(-2\pi|w|^2\)">\(-2\pi|w|^2\)</span>, proving (10). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(F=\mathbb Q_2(i)\)">\(F=\mathbb Q_2(i)\)</span>, the integral ring is <span class="math" data-tex="\(\mathbb Z_2[i]\)">\(\mathbb Z_2[i]\)</span>, by the integral completion identity in Proposition 2.1 and the calculation of <span class="math" data-tex="\(\mathcal O_{\mathbb Q(i)}\)">\(\mathcal O_{\mathbb Q(i)}\)</span> in lesson 2. Write <span class="math" data-tex="\(x=r+si\)">\(x=r+si\)</span>. The trace conditions against <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(i\)">\(i\)</span> are <span class="math" data-tex="\(2r,2s\in\mathbb Z_2\)">\(2r,2s\in\mathbb Z_2\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\mathfrak D_F^{-1}=\tfrac12\mathcal O_F,
+\qquad \mathfrak D_F=(2)=(1+i)^2,
+\qquad q=2,
+\qquad \operatorname{vol}(\mathcal O_F)=\tfrac12.
+\tag{13}
+\]">\[
+\mathfrak D_F^{-1}=\tfrac12\mathcal O_F,
+\qquad \mathfrak D_F=(2)=(1+i)^2,
+\qquad q=2,
+\qquad \operatorname{vol}(\mathcal O_F)=\tfrac12.
+\tag{13}
+\]</span>
+<p>The ideal identity uses <span class="math" data-tex="\((1+i)^2=2i\)">\((1+i)^2=2i\)</span>. This also follows from the derivative <span class="math" data-tex="\(2i\)">\(2i\)</span> of the monic polynomial <span class="math" data-tex="\(X^2+1\)">\(X^2+1\)</span>, in the monogenic different formula [Sutherland 12, Proposition 12.24].</p>
+<h2 id="one-character-on-the-whole-adèle-ring">One character on the whole adèle ring</h2>
+<p>For <span class="math" data-tex="\(x\in\mathbb A_K\)">\(x\in\mathbb A_K\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\psi_K(x)=\prod_v\psi_{K_v}(x_v).
+\tag{14}
+\]">\[
+\psi_K(x)=\prod_v\psi_{K_v}(x_v).
+\tag{14}
+\]</span>
+<p>At every finite place <span class="math" data-tex="\(\psi_{K_v}\)">\(\psi_{K_v}\)</span> is trivial on <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span>, since traces of integral elements are integral. All but finitely many factors in (14) are therefore one. On any open restricted-product stage the integral tail is trivial and only finitely many local characters remain, so this is a continuous character.</p>
+<p><strong>Proposition 5.3 (the diagonal is annihilated).</strong> The character (14) is trivial on <span class="math" data-tex="\(K\)">\(K\)</span>. It satisfies</p>
+<span class="math math-display" data-tex="\[
+\psi_K=\psi_{\mathbb Q}\circ\operatorname{Tr}_{\mathbb A_K/\mathbb A_{\mathbb Q}}.
+\tag{15}
+\]">\[
+\psi_K=\psi_{\mathbb Q}\circ\operatorname{Tr}_{\mathbb A_K/\mathbb A_{\mathbb Q}}.
+\tag{15}
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(r\in\mathbb Q\)">\(r\in\mathbb Q\)</span>, only finitely many <span class="math" data-tex="\(\{r\}_p\)">\(\{r\}_p\)</span> are nonzero. The rational number</p>
+<span class="math math-display" data-tex="\[
+r-\sum_p\{r\}_p
+\]">\[
+r-\sum_p\{r\}_p
+\]</span>
+<p>belongs to every <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>: its difference at a selected <span class="math" data-tex="\(p\)">\(p\)</span> is integral there, and the other negative-power parts have denominators prime to <span class="math" data-tex="\(p\)">\(p\)</span>. A rational number integral at every prime is an integer. Thus</p>
+<span class="math math-display" data-tex="\[
+e^{-2\pi ir}\prod_p e^{2\pi i\{r\}_p}=1,
+\tag{16}
+\]">\[
+e^{-2\pi ir}\prod_p e^{2\pi i\{r\}_p}=1,
+\tag{16}
+\]</span>
+<p>which proves the rational case. At a rational finite prime, the trace on <span class="math" data-tex="\(K\otimes\mathbb Q_p\simeq\prod_{v\mid p}K_v\)">\(K\otimes\mathbb Q_p\simeq\prod_{v\mid p}K_v\)</span> is the sum of the local traces. At infinity it is the sum of the real components and of <span class="math" data-tex="\(z+\overline z\)">\(z+\overline z\)</span> over complex components. Therefore (1)–(2) imply (15). For diagonal <span class="math" data-tex="\(a\in K\)">\(a\in K\)</span>, that trace is the diagonal rational number <span class="math" data-tex="\(\operatorname{Tr}_{K/\mathbb Q}(a)\)">\(\operatorname{Tr}_{K/\mathbb Q}(a)\)</span>. Apply (16). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-field-is-exactly-its-annihilator">The field is exactly its annihilator</h2>
+<p><strong>Theorem 5.4 (global self-duality and covolume).</strong> The pairing</p>
+<span class="math math-display" data-tex="\[
+(x,y)\longmapsto\psi_K(xy)
+\tag{17}
+\]">\[
+(x,y)\longmapsto\psi_K(xy)
+\tag{17}
+\]</span>
+<p>induces a topological isomorphism <span class="math" data-tex="\(\mathbb A_K\simeq\widehat{\mathbb A_K}\)">\(\mathbb A_K\simeq\widehat{\mathbb A_K}\)</span>. Under this identification,</p>
+<span class="math math-display" data-tex="\[
+K^\perp=K,
+\qquad \widehat{\mathbb A_K/K}\simeq K.
+\tag{18}
+\]">\[
+K^\perp=K,
+\qquad \widehat{\mathbb A_K/K}\simeq K.
+\tag{18}
+\]</span>
+<p>The restricted product of the local measures of Proposition 5.2 is self-dual, and, with counting measure on <span class="math" data-tex="\(K\)">\(K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(\mathbb A_K/K)=1.
+\tag{19}
+\]">\[
+\operatorname{vol}(\mathbb A_K/K)=1.
+\tag{19}
+\]</span>
+<p><strong>Proof.</strong> Proposition 5.1 identifies the local dual of <span class="math" data-tex="\(K_v\)">\(K_v\)</span> with <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. At a finite place the annihilator of the distinguished subgroup <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> is <span class="math" data-tex="\(\mathfrak D_v^{-1}\)">\(\mathfrak D_v^{-1}\)</span>. Theorem 1.3 identifies the global dual with the restricted product for those local annihilators, including its compact-open topology. Only finitely many local differents are nontrivial: the local/global identity is Proposition 4.1 of <a href="prerequisites/NT-LOC-09.html">Ramification groups and the different of a local extension</a>, and the ramification criterion is Theorem 14.4 of <a href="prerequisites/NT-ANT-14.html">The different and the discriminant</a>. The scholarly locators are [Sutherland 12, Proposition 12.4 and Theorem 12.19]. Changing distinguished compact open subgroups at finitely many places changes neither restricted-product set nor topology. Thus that dual is <span class="math" data-tex="\(\mathbb A_K\)">\(\mathbb A_K\)</span>, with the pairing (17).</p>
+<p>We prove the annihilator assertion first over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Suppose <span class="math" data-tex="\(y\in\mathbb A_{\mathbb Q}\)">\(y\in\mathbb A_{\mathbb Q}\)</span> satisfies <span class="math" data-tex="\(\psi_{\mathbb Q}(ry)=1\)">\(\psi_{\mathbb Q}(ry)=1\)</span> for every <span class="math" data-tex="\(r\in\mathbb Q\)">\(r\in\mathbb Q\)</span>. Subtract a diagonal rational number to put <span class="math" data-tex="\(y\)">\(y\)</span> in the fundamental domain <span class="math" data-tex="\([0,1)\times\widehat{\mathbb Z}\)">\([0,1)\times\widehat{\mathbb Z}\)</span> from Theorem 2.2. Subtraction preserves the hypothesis by Proposition 5.3. Testing <span class="math" data-tex="\(r=1\)">\(r=1\)</span> gives <span class="math" data-tex="\(e^{-2\pi iy_\infty}=1\)">\(e^{-2\pi iy_\infty}=1\)</span>, so <span class="math" data-tex="\(y_\infty=0\)">\(y_\infty=0\)</span>. For a prime <span class="math" data-tex="\(p\)">\(p\)</span>, test <span class="math" data-tex="\(r=p^{-n}\)">\(r=p^{-n}\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. At every other finite prime this multiplier is integral, so all those local factors are one. The remaining equation is <span class="math" data-tex="\(\psi_{\mathbb Q_p}(p^{-n}y_p)=1\)">\(\psi_{\mathbb Q_p}(p^{-n}y_p)=1\)</span>, which says <span class="math" data-tex="\(y_p\in p^n\mathbb Z_p\)">\(y_p\in p^n\mathbb Z_p\)</span>. For every <span class="math" data-tex="\(n\)">\(n\)</span> this forces <span class="math" data-tex="\(y_p=0\)">\(y_p=0\)</span>. Hence the reduced <span class="math" data-tex="\(y\)">\(y\)</span> is zero, proving <span class="math" data-tex="\(\mathbb Q^\perp=\mathbb Q\)">\(\mathbb Q^\perp=\mathbb Q\)</span>.</p>
+<p>For general <span class="math" data-tex="\(K\)">\(K\)</span>, choose a rational basis <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span> and its trace-dual basis <span class="math" data-tex="\(e_1^*,\ldots,e_n^*\)">\(e_1^*,\ldots,e_n^*\)</span>, with <span class="math" data-tex="\(\operatorname{Tr}(e_i e_j^*)=\delta_{ij}\)">\(\operatorname{Tr}(e_i e_j^*)=\delta_{ij}\)</span>. The adelic tensor identification of Proposition 2.1 writes</p>
+<span class="math math-display" data-tex="\[
+y=\sum_i e_i b_i,\qquad b_i\in\mathbb A_{\mathbb Q}.
+\tag{20}
+\]">\[
+y=\sum_i e_i b_i,\qquad b_i\in\mathbb A_{\mathbb Q}.
+\tag{20}
+\]</span>
+<p>If <span class="math" data-tex="\(y\in K^\perp\)">\(y\in K^\perp\)</span>, test (17) against <span class="math" data-tex="\(r e_j^*\in K\)">\(r e_j^*\in K\)</span> for every <span class="math" data-tex="\(r\in\mathbb Q\)">\(r\in\mathbb Q\)</span>. By (15), the result is <span class="math" data-tex="\(\psi_{\mathbb Q}(r b_j)=1\)">\(\psi_{\mathbb Q}(r b_j)=1\)</span>. The rational case gives <span class="math" data-tex="\(b_j\in\mathbb Q\)">\(b_j\in\mathbb Q\)</span>, so (20) lies in <span class="math" data-tex="\(K\)">\(K\)</span>. Conversely <span class="math" data-tex="\(K\subset K^\perp\)">\(K\subset K^\perp\)</span> by Proposition 5.3. This proves (18)'s first equality. Since <span class="math" data-tex="\(K\)">\(K\)</span> is closed, the dual of the quotient <span class="math" data-tex="\(\mathbb A_K/K\)">\(\mathbb A_K/K\)</span> identifies topologically with this annihilator by Theorem 2.1 of <a href="prerequisites/HA-LCA-10.html">Subgroups, quotients and annihilators</a>. It is the discrete subgroup <span class="math" data-tex="\(K\)">\(K\)</span>, proving the second assertion.</p>
+<p>Let <span class="math" data-tex="\(d_K\)">\(d_K\)</span> be the discriminant of <span class="math" data-tex="\(K\)">\(K\)</span>. The norm-discriminant identity and the local factorization of the different give</p>
+<span class="math math-display" data-tex="\[
+\prod_{v&lt;\infty}N(\mathfrak D_v)=|d_K|.
+\tag{21}
+\]">\[
+\prod_{v&lt;\infty}N(\mathfrak D_v)=|d_K|.
+\tag{21}
+\]</span>
+<p>The norm identity is Theorem 14.3 of <a href="prerequisites/NT-ANT-14.html">The different and the discriminant</a>, and completion of the trace dual is Proposition 4.1 of <a href="prerequisites/NT-LOC-09.html">Ramification groups and the different of a local extension</a>. The scholarly locators are [Sutherland 12, Propositions 12.4 and 12.16 and Theorem 12.17]. The product of our local measures exists by Proposition 1.2, since its integral-ring masses are one outside a finite set. It differs from the measure of Proposition 2.4 by the scalar <span class="math" data-tex="\(|d_K|^{-1/2}\)">\(|d_K|^{-1/2}\)</span>: the infinite measures are unchanged and (9), (21) supply the finite scalar. Since Proposition 2.4 gave additive covolume <span class="math" data-tex="\(\sqrt{|d_K|}\)">\(\sqrt{|d_K|}\)</span>, the new covolume is one.</p>
+<p>The remaining Fourier-inversion assertion, for the full adelic test space rather than only products over individual infinite places, is proved in the next section. Together with this covolume calculation it completes the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="fourier-inversion-on-the-whole-archimedean-space">Fourier inversion on the whole archimedean space</h2>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\mathcal S(\mathbb A_K)
+=\mathcal S(K_\infty)\otimes_{\mathbb C}C_c^\infty(\mathbb A_{K,f}),
+\tag{22}
+\]">\[
+\mathcal S(\mathbb A_K)
+=\mathcal S(K_\infty)\otimes_{\mathbb C}C_c^\infty(\mathbb A_{K,f}),
+\tag{22}
+\]</span>
+<p>where <span class="math" data-tex="\(K_\infty\simeq\mathbb R^{r_1}\times\mathbb C^{r_2}\)">\(K_\infty\simeq\mathbb R^{r_1}\times\mathbb C^{r_2}\)</span>, the first space is the usual Schwartz space on the entire underlying real vector space of dimension <span class="math" data-tex="\(d=r_1+2r_2\)">\(d=r_1+2r_2\)</span>, and <span class="math" data-tex="\(C_c^\infty\)">\(C_c^\infty\)</span> here means locally constant compactly supported functions. The tensor product in (22) is algebraic: its elements are finite sums <span class="math" data-tex="\(\phi(x_\infty)h(x_f)\)">\(\phi(x_\infty)h(x_f)\)</span>. This separates the whole infinite block from the finite block; it imposes no separation among the coordinates or places within <span class="math" data-tex="\(K_\infty\)">\(K_\infty\)</span>. A function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> belongs to <span class="math" data-tex="\(\mathcal S(\mathbb R^d)\)">\(\mathcal S(\mathbb R^d)\)</span> when it is smooth and every <span class="math" data-tex="\(x^\alpha\partial^\beta\phi(x)\)">\(x^\alpha\partial^\beta\phi(x)\)</span> is bounded, for all multi-indices <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>. The finite part is a finite linear combination of products of local coset indicators. Indeed, compact support lies in one restricted-product stage. Choose at each point of the support a product-form compact open subgroup on whose coset the function is constant, and pass to a finite subcover. Intersect those finitely many subgroups and, if necessary, shrink the finitely many exceptional local factors to fractional-ideal balls. This gives a common compact open subgroup of product form. The support is a finite union of its cosets; translating within this subgroup preserves that union and each constant value, so the function is invariant on the whole group, including its zero set. The coset indicators separate into local products with an integral tail. This is the same argument used for finite adèles in lesson 1.</p>
+<p>The distinction between a whole archimedean block and separated infinite-place tests is useful when comparing definitions. Getz–Hahn, Appendix B, §B.3, takes Schwartz functions on the whole real vector space at infinity and tensors that block with finite-place tests. Poonen, §5.4, describes the test space using tensor products over individual places. The inversion and periodization proved below apply to the full space (22), including functions whose infinite coordinates do not separate.</p>
+<p>For example, for <span class="math" data-tex="\(K=\mathbb Q(\sqrt2)\)">\(K=\mathbb Q(\sqrt2)\)</span>, the function</p>
+<span class="math math-display" data-tex="\[
+\phi(x,y)=e^{-\pi(x^2+y^2)}e^{ixy}
+\]">\[
+\phi(x,y)=e^{-\pi(x^2+y^2)}e^{ixy}
+\]</span>
+<p>is Schwartz: each derivative is a polynomial times this function, and Gaussian decay bounds every further polynomial weight. It is not a finite sum of products <span class="math" data-tex="\(u_j(x)v_j(y)\)">\(u_j(x)v_j(y)\)</span>. Indeed, for any distinct <span class="math" data-tex="\(y_1,\ldots,y_m\)">\(y_1,\ldots,y_m\)</span>, its slices in the <span class="math" data-tex="\(x\)">\(x\)</span>-variable are linearly independent. Dividing a putative slice relation by <span class="math" data-tex="\(e^{-\pi x^2}\)">\(e^{-\pi x^2}\)</span>, and differentiating at zero through orders <span class="math" data-tex="\(0,\ldots,m-1\)">\(0,\ldots,m-1\)</span>, gives the invertible Vandermonde matrix <span class="math" data-tex="\(((iy_j)^k)_{k,j}\)">\(((iy_j)^k)_{k,j}\)</span>; the factors <span class="math" data-tex="\(e^{-\pi y_j^2}\)">\(e^{-\pi y_j^2}\)</span> are nonzero. A sum of <span class="math" data-tex="\(r\)">\(r\)</span> separated products could have slice span of dimension at most <span class="math" data-tex="\(r\)">\(r\)</span>, contradicting this for <span class="math" data-tex="\(m=r+1\)">\(m=r+1\)</span>. Thus whole-space inversion is needed even for elementary adelic tests.</p>
+<p><strong>Lemma 5.4A (whole-space Fourier inversion).</strong> Identify <span class="math" data-tex="\(K_\infty\)">\(K_\infty\)</span> with <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, using the real coordinate at each real place and the real and imaginary coordinates at each complex place. Put</p>
+<span class="math math-display" data-tex="\[
+B=\operatorname{diag}(\underbrace{1,\ldots,1}_{r_1},
+\underbrace{2,-2,\ldots,2,-2}_{r_2\text{ pairs}}),
+\qquad c=2^{r_2}.
+\]">\[
+B=\operatorname{diag}(\underbrace{1,\ldots,1}_{r_1},
+\underbrace{2,-2,\ldots,2,-2}_{r_2\text{ pairs}}),
+\qquad c=2^{r_2}.
+\]</span>
+<p>The product character has kernel <span class="math" data-tex="\(e^{-2\pi i x^{\mathsf T}By}\)">\(e^{-2\pi i x^{\mathsf T}By}\)</span>, and the product infinite measure is <span class="math" data-tex="\(c\,dx\)">\(c\,dx\)</span>, where <span class="math" data-tex="\(dx\)">\(dx\)</span> is ordinary <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional Lebesgue measure. For every <span class="math" data-tex="\(\phi\in\mathcal S(\mathbb R^d)\)">\(\phi\in\mathcal S(\mathbb R^d)\)</span>, the transform</p>
+<span class="math math-display" data-tex="\[
+T\phi(y)=c\int_{\mathbb R^d}\phi(x)e^{-2\pi i x^{\mathsf T}By}\,dx
+\]">\[
+T\phi(y)=c\int_{\mathbb R^d}\phi(x)e^{-2\pi i x^{\mathsf T}By}\,dx
+\]</span>
+<p>is Schwartz and satisfies <span class="math" data-tex="\(T^2\phi(x)=\phi(-x)\)">\(T^2\phi(x)=\phi(-x)\)</span>.</p>
+<p><strong>Proof.</strong> First prove ordinary Euclidean Fourier inversion, writing</p>
+<span class="math math-display" data-tex="\[
+\mathcal F\phi(\xi)=\int_{\mathbb R^d}\phi(x)e^{-2\pi i x\cdot\xi}\,dx.
+\]">\[
+\mathcal F\phi(\xi)=\int_{\mathbb R^d}\phi(x)e^{-2\pi i x\cdot\xi}\,dx.
+\]</span>
+<p>Schwartz decay makes every polynomial-weighted derivative of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> integrable. Differentiation under the integral expresses <span class="math" data-tex="\(\partial_\xi^\beta\mathcal F\phi\)">\(\partial_\xi^\beta\mathcal F\phi\)</span> as the transform of <span class="math" data-tex="\((-2\pi i x)^\beta\phi\)">\((-2\pi i x)^\beta\phi\)</span>. Multiplication by a monomial <span class="math" data-tex="\(\xi^\alpha\)">\(\xi^\alpha\)</span> can then be transferred, by repeated integration by parts, to derivatives of this polynomial-weighted function. Boundary terms vanish by rapid decay. The resulting integral is bounded by a constant times its integrand's <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-norm, uniformly in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Thus every Schwartz seminorm of <span class="math" data-tex="\(\mathcal F\phi\)">\(\mathcal F\phi\)</span> is finite; in particular <span class="math" data-tex="\(\mathcal F\phi\)">\(\mathcal F\phi\)</span> is Schwartz and integrable.</p>
+<p>For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the Gaussian calculation in Proposition 5.2, scaling and finite-dimensional Fubini give</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^d} e^{-\pi\varepsilon|\xi|^2}
+e^{2\pi i u\cdot\xi}\,d\xi
+=k_\varepsilon(u),\qquad
+k_\varepsilon(u)=\varepsilon^{-d/2}e^{-\pi|u|^2/\varepsilon}.
+\]">\[
+\int_{\mathbb R^d} e^{-\pi\varepsilon|\xi|^2}
+e^{2\pi i u\cdot\xi}\,d\xi
+=k_\varepsilon(u),\qquad
+k_\varepsilon(u)=\varepsilon^{-d/2}e^{-\pi|u|^2/\varepsilon}.
+\]</span>
+<p>Both <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and this frequency Gaussian are integrable. Absolute Fubini therefore gives</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^d}\mathcal F\phi(\xi)e^{2\pi i x\cdot\xi}
+e^{-\pi\varepsilon|\xi|^2}\,d\xi
+=\int_{\mathbb R^d}\phi(t)k_\varepsilon(x-t)\,dt.
+\]">\[
+\int_{\mathbb R^d}\mathcal F\phi(\xi)e^{2\pi i x\cdot\xi}
+e^{-\pi\varepsilon|\xi|^2}\,d\xi
+=\int_{\mathbb R^d}\phi(t)k_\varepsilon(x-t)\,dt.
+\]</span>
+<p>The kernels <span class="math" data-tex="\(k_\varepsilon\)">\(k_\varepsilon\)</span> are nonnegative and have integral one. Their mass outside any fixed ball of radius <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> tends to zero, by substituting <span class="math" data-tex="\(u=\sqrt\varepsilon z\)">\(u=\sqrt\varepsilon z\)</span> and taking a Gaussian tail. Continuity of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> controls its difference from <span class="math" data-tex="\(\phi(x)\)">\(\phi(x)\)</span> inside that ball; boundedness of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> controls the vanishing tail. Hence the right side tends to <span class="math" data-tex="\(\phi(x)\)">\(\phi(x)\)</span>. On the left, integrability of <span class="math" data-tex="\(\mathcal F\phi\)">\(\mathcal F\phi\)</span> permits dominated convergence. We obtain ordinary inversion and therefore</p>
+<span class="math math-display" data-tex="\[
+\mathcal F^2\phi(x)=\phi(-x).
+\]">\[
+\mathcal F^2\phi(x)=\phi(-x).
+\]</span>
+<p>For the number-field pairing, symmetry of <span class="math" data-tex="\(B\)">\(B\)</span> gives <span class="math" data-tex="\(T\phi=c(\mathcal F\phi)\circ B\)">\(T\phi=c(\mathcal F\phi)\circ B\)</span>. Composition with an invertible linear map preserves all Schwartz seminorms, so <span class="math" data-tex="\(T\phi\)">\(T\phi\)</span> is Schwartz. The change of variables <span class="math" data-tex="\(u=By\)">\(u=By\)</span>, for any Schwartz function <span class="math" data-tex="\(h\)">\(h\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal F(h\circ B)(z)
+=|\det B|^{-1}(\mathcal Fh)(B^{-\mathsf T}z).
+\]">\[
+\mathcal F(h\circ B)(z)
+=|\det B|^{-1}(\mathcal Fh)(B^{-\mathsf T}z).
+\]</span>
+<p>Since <span class="math" data-tex="\(B^{-\mathsf T}B=I_d\)">\(B^{-\mathsf T}B=I_d\)</span> and <span class="math" data-tex="\(|\det B|=4^{r_2}=c^2\)">\(|\det B|=4^{r_2}=c^2\)</span>, ordinary inversion yields</p>
+<span class="math math-display" data-tex="\[
+T^2\phi(x)
+=\frac{c^2}{|\det B|}\mathcal F^2\phi(B^{-\mathsf T}Bx)
+=\phi(-x).
+\]">\[
+T^2\phi(x)
+=\frac{c^2}{|\det B|}\mathcal F^2\phi(B^{-\mathsf T}Bx)
+=\phi(-x).
+\]</span>
+<p>This proves inversion for arbitrary whole-space Schwartz functions, including the nonseparated example above. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="applying-poisson-to-every-adelic-test-function">Applying Poisson to every adelic test function</h2>
+<p>With the product measure, define</p>
+<span class="math math-display" data-tex="\[
+\widehat f(y)=\int_{\mathbb A_K}f(x)\psi_K(xy)\,dx.
+\tag{23}
+\]">\[
+\widehat f(y)=\int_{\mathbb A_K}f(x)\psi_K(xy)\,dx.
+\tag{23}
+\]</span>
+<p>Take first <span class="math" data-tex="\(f=\phi\otimes h\)">\(f=\phi\otimes h\)</span> in (22), with <span class="math" data-tex="\(\phi\)">\(\phi\)</span> arbitrary on the whole infinite block. Decompose <span class="math" data-tex="\(h\)">\(h\)</span> into the finite coset products described above, choosing a common exceptional finite set containing all ramified places. The remaining local factors are <span class="math" data-tex="\(\mathbf1_{\mathcal O_v}\)">\(\mathbf1_{\mathcal O_v}\)</span>, each with mass one and unchanged transform by (9)–(10). On the exceptional factors Proposition 5.2 proves inversion and preservation of the local test space; every ramified mass <span class="math" data-tex="\(q_v^{-d_v/2}\)">\(q_v^{-d_v/2}\)</span> is retained. The infinite transform is <span class="math" data-tex="\(T\phi\)">\(T\phi\)</span> from Lemma 5.4A. All factors are integrable, so absolute Fubini on a restricted-product stage factors (23) into this whole-block transform and the finite transforms. Applying it twice reflects both blocks. Finite linearity now proves that (23) preserves the entire space (22) and satisfies <span class="math" data-tex="\(\widehat{\widehat f}(x)=f(-x)\)">\(\widehat{\widehat f}(x)=f(-x)\)</span> there. This completes Theorem 5.4's self-dual-measure assertion in its full stated scope.</p>
+<p><strong>Theorem 5.5 (Poisson summation and adelic Riemann–Roch).</strong> For <span class="math" data-tex="\(f\in\mathcal S(\mathbb A_K)\)">\(f\in\mathcal S(\mathbb A_K)\)</span>, the following sums converge absolutely and satisfy</p>
+<span class="math math-display" data-tex="\[
+\sum_{x\in K}f(x)=\sum_{x\in K}\widehat f(x).
+\tag{24}
+\]">\[
+\sum_{x\in K}f(x)=\sum_{x\in K}\widehat f(x).
+\tag{24}
+\]</span>
+<p>For any idèle <span class="math" data-tex="\(a\in J_K\)">\(a\in J_K\)</span>, writing <span class="math" data-tex="\(|a|=\prod_v|a_v|_v\)">\(|a|=\prod_v|a_v|_v\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{x\in K}f(ax)
+=|a|^{-1}\sum_{x\in K}\widehat f(x/a).
+\tag{25}
+\]">\[
+\sum_{x\in K}f(ax)
+=|a|^{-1}\sum_{x\in K}\widehat f(x/a).
+\tag{25}
+\]</span>
+<p><strong>Proof.</strong> We verify the hypotheses of the general Poisson formula for the discrete cocompact subgroup <span class="math" data-tex="\(K\subset\mathbb A_K\)">\(K\subset\mathbb A_K\)</span>. Both <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> are integrable, because each is a finite sum of Schwartz functions times compactly supported bounded finite functions. First take <span class="math" data-tex="\(f(x)=\phi(x_\infty)h(x_f)\)">\(f(x)=\phi(x_\infty)h(x_f)\)</span> in (22). Its finite support is contained in a compact set <span class="math" data-tex="\(B\subset\mathbb A_{K,f}\)">\(B\subset\mathbb A_{K,f}\)</span>. Every compact set of finite adèles is contained in <span class="math" data-tex="\(N^{-1}\widehat{\mathcal O}_K\)">\(N^{-1}\widehat{\mathcal O}_K\)</span> for some positive rational integer <span class="math" data-tex="\(N\)">\(N\)</span>: finitely many charts cover the set, only finitely many local denominators occur there, and an integer clears all of them. Thus the <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span> contributing to the sum lie in <span class="math" data-tex="\(N^{-1}\mathcal O_K\)">\(N^{-1}\mathcal O_K\)</span>.</p>
+<p>The archimedean image of <span class="math" data-tex="\(N^{-1}\mathcal O_K\)">\(N^{-1}\mathcal O_K\)</span> is a full lattice in the real space of dimension <span class="math" data-tex="\(n=[K:\mathbb Q]\)">\(n=[K:\mathbb Q]\)</span>. Its lattice-point count in a ball of radius <span class="math" data-tex="\(R\)">\(R\)</span> is <span class="math" data-tex="\(O((1+R)^n)\)">\(O((1+R)^n)\)</span>: a lattice basis identifies it with <span class="math" data-tex="\(\mathbb Z^n\)">\(\mathbb Z^n\)</span>, and an invertible linear map compares its norm with the coordinate maximum. For any <span class="math" data-tex="\(A&gt;n\)">\(A&gt;n\)</span>, Schwartz decay gives <span class="math" data-tex="\(|\phi(z)|\leq C_A(1+\|z\|)^{-A}\)">\(|\phi(z)|\leq C_A(1+\|z\|)^{-A}\)</span>. Summing over dyadic annuli gives convergence, since their contributions are bounded by a geometric series with ratio <span class="math" data-tex="\(2^{n-A}&lt;1\)">\(2^{n-A}&lt;1\)</span>. The finite factor <span class="math" data-tex="\(h\)">\(h\)</span> is bounded. Hence <span class="math" data-tex="\(\sum_{k\in K}|f(k)|&lt;\infty\)">\(\sum_{k\in K}|f(k)|&lt;\infty\)</span>.</p>
+<p>These estimates also give uniform convergence of periodization over a compact set of additive representatives. Such a set exists by Theorem 2.2. Its finite projection is compact, so the differences between that projection and <span class="math" data-tex="\(B\)">\(B\)</span> are contained in one denominator lattice as above. Its infinite projection is bounded, and bounded translates of a Schwartz function have the same rapid-decay bound with a uniform constant. The dyadic estimates therefore apply uniformly to <span class="math" data-tex="\(\sum_k f(y+k)\)">\(\sum_k f(y+k)\)</span> on that representative set. Since <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> is again in (22), the same argument proves absolute convergence of its lattice sum and the corresponding uniform periodization. Finite sums of tensors retain every asserted convergence property.</p>
+<p>Theorem 1.1 of <a href="prerequisites/HA-LCA-11.html">The Poisson summation formula</a> now applies, with annihilator <span class="math" data-tex="\(K^\perp=K\)">\(K^\perp=K\)</span> and covolume one by Theorem 5.4. The provider defines its Fourier transform with the conjugate character. Under our identification <span class="math" data-tex="\(y\mapsto[x\mapsto\psi(xy)]\)">\(y\mapsto[x\mapsto\psi(xy)]\)</span>, its transform at <span class="math" data-tex="\(y\)">\(y\)</span> is our <span class="math" data-tex="\(\widehat f(-y)\)">\(\widehat f(-y)\)</span>. The absolutely convergent sum over <span class="math" data-tex="\(K\)">\(K\)</span> is unchanged by <span class="math" data-tex="\(y\mapsto-y\)">\(y\mapsto-y\)</span>, so the theorem gives (24) with our convention. This is the precise point where the general harmonic-analysis theorem is used; the adelic hypotheses and both sums have been checked.</p>
+<p>Multiplication by an idèle preserves (22): locally it is an invertible linear scaling; at almost all finite places it preserves the integral indicator. Haar scaling on open restricted-product stages gives <span class="math" data-tex="\(d(ax)=|a|\,dx\)">\(d(ax)=|a|\,dx\)</span>. A change of variables in (23) therefore gives</p>
+<span class="math math-display" data-tex="\[
+\widehat{(f(a\,\cdot))}(y)=|a|^{-1}\widehat f(y/a).
+\tag{26}
+\]">\[
+\widehat{(f(a\,\cdot))}(y)=|a|^{-1}\widehat f(y/a).
+\tag{26}
+\]</span>
+<p>Apply (24) to <span class="math" data-tex="\(f(a\,\cdot)\)">\(f(a\,\cdot)\)</span> to obtain (25), including absolute convergence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-gaussian-integers-and-the-different-s-factor">The Gaussian integers and the different's factor</h2>
+<p>Let <span class="math" data-tex="\(K=\mathbb Q(i)\)">\(K=\mathbb Q(i)\)</span>, so <span class="math" data-tex="\(\mathcal O_K=\mathbb Z[i]\)">\(\mathcal O_K=\mathbb Z[i]\)</span> and <span class="math" data-tex="\(|d_K|=4\)">\(|d_K|=4\)</span>. The trace calculation in (13), now applied globally, gives <span class="math" data-tex="\(\mathfrak D_K=(2)\)">\(\mathfrak D_K=(2)\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\widehat{\mathbf1_{\widehat{\mathcal O}_K}}
+=\tfrac12\mathbf1_{\frac12\widehat{\mathcal O}_K}.
+\tag{27}
+\]">\[
+\widehat{\mathbf1_{\widehat{\mathcal O}_K}}
+=\tfrac12\mathbf1_{\frac12\widehat{\mathcal O}_K}.
+\tag{27}
+\]</span>
+<p>For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, take the adelic function</p>
+<span class="math math-display" data-tex="\[
+f_t(z,x_f)=e^{-\pi t|z|^2}\mathbf1_{\widehat{\mathcal O}_K}(x_f).
+\]">\[
+f_t(z,x_f)=e^{-\pi t|z|^2}\mathbf1_{\widehat{\mathcal O}_K}(x_f).
+\]</span>
+<p>This is obtained from the basic Gaussian <span class="math" data-tex="\(e^{-2\pi|z|^2}\)">\(e^{-2\pi|z|^2}\)</span> by multiplying the infinite coordinate by <span class="math" data-tex="\(\sqrt{t/2}\)">\(\sqrt{t/2}\)</span>, leaving the finite coordinates fixed; hence (25) applies to it. The complex Gaussian calculation with measure <span class="math" data-tex="\(2\,du\,dv\)">\(2\,du\,dv\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\widehat{e^{-\pi t|z|^2}}(w)
+=\frac2t e^{-4\pi|w|^2/t}.
+\tag{28}
+\]">\[
+\widehat{e^{-\pi t|z|^2}}(w)
+=\frac2t e^{-4\pi|w|^2/t}.
+\tag{28}
+\]</span>
+<p>Its factor <span class="math" data-tex="\(2/t\)">\(2/t\)</span> combines with the finite factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> in (27). The left side of (24) is</p>
+<span class="math math-display" data-tex="\[
+\theta_{\mathbb Z[i]}(t)
+=\sum_{\alpha\in\mathbb Z[i]}e^{-\pi t|\alpha|^2}.
+\]">\[
+\theta_{\mathbb Z[i]}(t)
+=\sum_{\alpha\in\mathbb Z[i]}e^{-\pi t|\alpha|^2}.
+\]</span>
+<p>On the right side, the finite support restricts the summation to <span class="math" data-tex="\(\frac12\mathbb Z[i]\)">\(\frac12\mathbb Z[i]\)</span>. Substitute <span class="math" data-tex="\(\alpha/2\)">\(\alpha/2\)</span> for its points to get</p>
+<span class="math math-display" data-tex="\[
+\theta_{\mathbb Z[i]}(t)
+=\frac1t\sum_{\alpha\in\mathbb Z[i]}e^{-\pi|\alpha|^2/t}
+=\frac1t\theta_{\mathbb Z[i]}(1/t).
+\tag{29}
+\]">\[
+\theta_{\mathbb Z[i]}(t)
+=\frac1t\sum_{\alpha\in\mathbb Z[i]}e^{-\pi|\alpha|^2/t}
+=\frac1t\theta_{\mathbb Z[i]}(1/t).
+\tag{29}
+\]</span>
+<p>Equivalently <span class="math" data-tex="\(\theta_{\mathbb Z[i]}(1/t)=t\theta_{\mathbb Z[i]}(t)\)">\(\theta_{\mathbb Z[i]}(1/t)=t\theta_{\mathbb Z[i]}(t)\)</span>. Absolute convergence permits separation of the sum over <span class="math" data-tex="\(\alpha=m+ni\)">\(\alpha=m+ni\)</span>; hence <span class="math" data-tex="\(\theta_{\mathbb Z[i]}(t)=\theta_{\mathbb Z}(t)^2\)">\(\theta_{\mathbb Z[i]}(t)=\theta_{\mathbb Z}(t)^2\)</span>. Squaring the classical identity <span class="math" data-tex="\(\theta_{\mathbb Z}(1/t)=\sqrt t\,\theta_{\mathbb Z}(t)\)">\(\theta_{\mathbb Z}(1/t)=\sqrt t\,\theta_{\mathbb Z}(t)\)</span> gives exactly (29). The factor supplied by the different is essential in matching these normalizations.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Prove directly that <span class="math" data-tex="\(\psi_{\mathbb Q_p}\)">\(\psi_{\mathbb Q_p}\)</span> is a continuous character whose kernel is exactly <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>. Explain why a choice of a different negative-power representative does not change the exponential.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Compute the inverse different, the self-dual mass of the integral ring, and the transform of its indicator for <span class="math" data-tex="\(\mathbb Q_3(\sqrt3)\)">\(\mathbb Q_3(\sqrt3)\)</span> and <span class="math" data-tex="\(\mathbb Q_2(\sqrt2)\)">\(\mathbb Q_2(\sqrt2)\)</span>. Include a verification of their integral rings.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Verify both Gaussian transforms in (10), including the factor <span class="math" data-tex="\(2\)">\(2\)</span> in the complex Haar measure.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Prove <span class="math" data-tex="\(K^\perp=K\)">\(K^\perp=K\)</span> in <span class="math" data-tex="\(\mathbb A_K\)">\(\mathbb A_K\)</span>, starting with the rational fundamental domain and then using a trace-dual rational basis. Identify exactly where discreteness, approximation and separability enter.</p>
+</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> Two representatives in <span class="math" data-tex="\(\mathbb Z[1/p]\)">\(\mathbb Z[1/p]\)</span> whose difference from <span class="math" data-tex="\(x\)">\(x\)</span> is integral differ by an element of <span class="math" data-tex="\(\mathbb Z[1/p]\cap\mathbb Z_p=\mathbb Z\)">\(\mathbb Z[1/p]\cap\mathbb Z_p=\mathbb Z\)</span>; their exponentials therefore agree. The representatives of <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span>, and <span class="math" data-tex="\(x+y\)">\(x+y\)</span> satisfy <span class="math" data-tex="\(\{x\}_p+\{y\}_p-\{x+y\}_p\in\mathbb Z\)">\(\{x\}_p+\{y\}_p-\{x+y\}_p\in\mathbb Z\)</span>. Exponentiating proves the homomorphism property. With the representative in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, its exponential is one precisely when the representative is zero, equivalently <span class="math" data-tex="\(x\in\mathbb Z_p\)">\(x\in\mathbb Z_p\)</span>. The open kernel proves local constancy and continuity. For example, <span class="math" data-tex="\(\psi_{\mathbb Q_p}(p^{-1})=e^{2\pi i/p}\ne1\)">\(\psi_{\mathbb Q_p}(p^{-1})=e^{2\pi i/p}\ne1\)</span>, verifying nontriviality.</p>
+<p><strong>Solution 2.</strong> Let <span class="math" data-tex="\(p=3\)">\(p=3\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>, and set <span class="math" data-tex="\(F=\mathbb Q_p(\pi)\)">\(F=\mathbb Q_p(\pi)\)</span>, <span class="math" data-tex="\(\pi^2=p\)">\(\pi^2=p\)</span>. The polynomial is irreducible because a square in <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> has even valuation, so <span class="math" data-tex="\([F:\mathbb Q_p]=2\)">\([F:\mathbb Q_p]=2\)</span>. If <span class="math" data-tex="\(e\)">\(e\)</span> is the ramification index, then <span class="math" data-tex="\(2\operatorname{ord}_F(\pi)=e\)">\(2\operatorname{ord}_F(\pi)=e\)</span>. Since <span class="math" data-tex="\(1\leq e\leq2\)">\(1\leq e\leq2\)</span>, it follows that <span class="math" data-tex="\(e=2\)">\(e=2\)</span> and <span class="math" data-tex="\(\operatorname{ord}_F(\pi)=1\)">\(\operatorname{ord}_F(\pi)=1\)</span>. The residue degree is one, so <span class="math" data-tex="\(q=p\)">\(q=p\)</span>. For <span class="math" data-tex="\(a,b\in\mathbb Q_p\)">\(a,b\in\mathbb Q_p\)</span>, the two terms of <span class="math" data-tex="\(a+b\pi\)">\(a+b\pi\)</span> have valuations <span class="math" data-tex="\(2\operatorname{ord}_p(a)\)">\(2\operatorname{ord}_p(a)\)</span> and <span class="math" data-tex="\(2\operatorname{ord}_p(b)+1\)">\(2\operatorname{ord}_p(b)+1\)</span>. Whenever both are nonzero these valuations have opposite parity and cannot cancel; the sum has their minimum. Consequently <span class="math" data-tex="\(a+b\pi\)">\(a+b\pi\)</span> is integral exactly when <span class="math" data-tex="\(a,b\in\mathbb Z_p\)">\(a,b\in\mathbb Z_p\)</span>. Hence <span class="math" data-tex="\(\mathcal O_F=\mathbb Z_p[\pi]\)">\(\mathcal O_F=\mathbb Z_p[\pi]\)</span>.</p>
+<p>For <span class="math" data-tex="\(x=r+s\pi\)">\(x=r+s\pi\)</span>, the trace pairing against its integral basis gives <span class="math" data-tex="\(\operatorname{Tr}(x)=2r\)">\(\operatorname{Tr}(x)=2r\)</span>, <span class="math" data-tex="\(\operatorname{Tr}(x\pi)=2ps\)">\(\operatorname{Tr}(x\pi)=2ps\)</span>. Thus the trace-dual integral module is</p>
+<span class="math math-display" data-tex="\[
+\mathfrak D_F^{-1}
+=\tfrac12\mathbb Z_p+\tfrac{\pi}{2p}\mathbb Z_p
+=(2\pi)^{-1}\mathcal O_F.
+\tag{30}
+\]">\[
+\mathfrak D_F^{-1}
+=\tfrac12\mathbb Z_p+\tfrac{\pi}{2p}\mathbb Z_p
+=(2\pi)^{-1}\mathcal O_F.
+\tag{30}
+\]</span>
+<p>For <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, <span class="math" data-tex="\(2\)">\(2\)</span> is a unit, so <span class="math" data-tex="\(\mathfrak D_F=(\pi)\)">\(\mathfrak D_F=(\pi)\)</span>, <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(\mathcal O_F)=3^{-1/2},
+\qquad
+\widehat{\mathbf1_{\mathcal O_F}}
+=3^{-1/2}\mathbf1_{\pi^{-1}\mathcal O_F}.
+\tag{31}
+\]">\[
+\operatorname{vol}(\mathcal O_F)=3^{-1/2},
+\qquad
+\widehat{\mathbf1_{\mathcal O_F}}
+=3^{-1/2}\mathbf1_{\pi^{-1}\mathcal O_F}.
+\tag{31}
+\]</span>
+<p>For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(\operatorname{ord}_F(2)=2\)">\(\operatorname{ord}_F(2)=2\)</span>, so <span class="math" data-tex="\(\operatorname{ord}_F(2\pi)=3\)">\(\operatorname{ord}_F(2\pi)=3\)</span>, <span class="math" data-tex="\(d=3\)">\(d=3\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(\mathcal O_F)=2^{-3/2},
+\qquad
+\widehat{\mathbf1_{\mathcal O_F}}
+=2^{-3/2}\mathbf1_{(2\sqrt2)^{-1}\mathcal O_F}.
+\tag{32}
+\]">\[
+\operatorname{vol}(\mathcal O_F)=2^{-3/2},
+\qquad
+\widehat{\mathbf1_{\mathcal O_F}}
+=2^{-3/2}\mathbf1_{(2\sqrt2)^{-1}\mathcal O_F}.
+\tag{32}
+\]</span>
+<p>These follow from (9)–(10). The monogenic derivative formula also gives the different <span class="math" data-tex="\((2\pi)\)">\((2\pi)\)</span>, agreeing with the direct trace computation. The usual local degree formula <span class="math" data-tex="\([F:\mathbb Q_p]=ef\)">\([F:\mathbb Q_p]=ef\)</span> and the valuation criterion for integrality are the local-field prerequisites; no unramified measure normalization was used at these ramified places.</p>
+<p><strong>Solution 3.</strong> Put <span class="math" data-tex="\(g(x)=e^{-\pi x^2}\)">\(g(x)=e^{-\pi x^2}\)</span> and <span class="math" data-tex="\(F(y)=\int g(x)e^{-2\pi ixy}\,dx\)">\(F(y)=\int g(x)e^{-2\pi ixy}\,dx\)</span>. Its integral at <span class="math" data-tex="\(y=0\)">\(y=0\)</span> is one by the polar-coordinate calculation of the square of the Gaussian integral. Since <span class="math" data-tex="\(g&#x27;(x)=-2\pi xg(x)\)">\(g&#x27;(x)=-2\pi xg(x)\)</span>, differentiation and integration by parts give</p>
+<span class="math math-display" data-tex="\[
+F&#x27;(y)=-2\pi i\int xg(x)e^{-2\pi ixy}\,dx
+=i\int g&#x27;(x)e^{-2\pi ixy}\,dx
+=-2\pi yF(y).
+\]">\[
+F&#x27;(y)=-2\pi i\int xg(x)e^{-2\pi ixy}\,dx
+=i\int g&#x27;(x)e^{-2\pi ixy}\,dx
+=-2\pi yF(y).
+\]</span>
+<p>Every interchange is justified by Gaussian integrability, including its polynomial multiples. Solve this first-order equation with <span class="math" data-tex="\(F(0)=1\)">\(F(0)=1\)</span> to get <span class="math" data-tex="\(F(y)=e^{-\pi y^2}\)">\(F(y)=e^{-\pi y^2}\)</span>. Substitution <span class="math" data-tex="\(u=\sqrt2x\)">\(u=\sqrt2x\)</span> then gives <span class="math" data-tex="\(\int e^{-2\pi x^2}e^{-2\pi isx}\,dx=2^{-1/2}e^{-\pi s^2/2}\)">\(\int e^{-2\pi x^2}e^{-2\pi isx}\,dx=2^{-1/2}e^{-\pi s^2/2}\)</span>.</p>
+<p>For <span class="math" data-tex="\(z=u+iv\)">\(z=u+iv\)</span>, <span class="math" data-tex="\(w=\xi+i\eta\)">\(w=\xi+i\eta\)</span>, the trace is <span class="math" data-tex="\(zw+\overline{zw}=2(u\xi-v\eta)\)">\(zw+\overline{zw}=2(u\xi-v\eta)\)</span>. Hence the complex transform is</p>
+<span class="math math-display" data-tex="\[
+2\left(\int_{\mathbb R}e^{-2\pi u^2}e^{-4\pi iu\xi}\,du\right)
+\left(\int_{\mathbb R}e^{-2\pi v^2}e^{4\pi iv\eta}\,dv\right)
+=2\cdot2^{-1/2}e^{-2\pi\xi^2}\cdot2^{-1/2}e^{-2\pi\eta^2}
+=e^{-2\pi|w|^2}.
+\]">\[
+2\left(\int_{\mathbb R}e^{-2\pi u^2}e^{-4\pi iu\xi}\,du\right)
+\left(\int_{\mathbb R}e^{-2\pi v^2}e^{4\pi iv\eta}\,dv\right)
+=2\cdot2^{-1/2}e^{-2\pi\xi^2}\cdot2^{-1/2}e^{-2\pi\eta^2}
+=e^{-2\pi|w|^2}.
+\]</span>
+<p>Ordinary complex multiplication, rather than a Hermitian pairing, accounts for the sign in the second factor; the even Gaussian gives the same value for either frequency sign.</p>
+<p><strong>Solution 4.</strong> Proposition 5.3 gives <span class="math" data-tex="\(K\subset K^\perp\)">\(K\subset K^\perp\)</span>. Over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, choose a diagonal rational <span class="math" data-tex="\(r\)">\(r\)</span> so that <span class="math" data-tex="\(y-r\in[0,1)\times\widehat{\mathbb Z}\)">\(y-r\in[0,1)\times\widehat{\mathbb Z}\)</span>, using Theorem 2.2. If <span class="math" data-tex="\(y\)">\(y\)</span> annihilates <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, so does <span class="math" data-tex="\(y-r\)">\(y-r\)</span>, by (16). Testing against <span class="math" data-tex="\(1\)">\(1\)</span> makes its real component the integer in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, namely zero. Testing against <span class="math" data-tex="\(p^{-n}\)">\(p^{-n}\)</span> then makes its <span class="math" data-tex="\(p\)">\(p\)</span>-component divisible by <span class="math" data-tex="\(p^n\)">\(p^n\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. All components vanish. Thus <span class="math" data-tex="\(y=r\)">\(y=r\)</span> is diagonal rational.</p>
+<p>For general <span class="math" data-tex="\(K\)">\(K\)</span>, separability makes the trace pairing invertible, providing the dual basis <span class="math" data-tex="\(e_j^*\)">\(e_j^*\)</span>. The adelic tensor isomorphism writes <span class="math" data-tex="\(y=\sum_i e_i b_i\)">\(y=\sum_i e_i b_i\)</span>. Testing against <span class="math" data-tex="\(r e_j^*\)">\(r e_j^*\)</span>, for every rational <span class="math" data-tex="\(r\)">\(r\)</span>, shows that <span class="math" data-tex="\(b_j\)">\(b_j\)</span> annihilates <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, so every <span class="math" data-tex="\(b_j\)">\(b_j\)</span> is rational by the first step. Hence <span class="math" data-tex="\(y\in K\)">\(y\in K\)</span>. The rational principal-part approximation is used to obtain its fundamental-domain representative; the general-field tensor identification transfers that argument. Discreteness and closedness of <span class="math" data-tex="\(K\)">\(K\)</span> are needed for the later topological quotient-dual and Poisson applications, but this algebraic annihilator equality itself uses the fundamental-domain construction and trace nondegeneracy, not a new discreteness argument.</p>
+<h2 id="what-this-lesson-does-not-prove">Prerequisites and further directions</h2>
+<ul>
+<li>The restricted-product topological duality theorem: the dual is the restricted product of the local duals with respect to annihilators of the compact open subgroups. This is Theorem 1.3 of <a href="NT-ADL-01.html">Restricted products and profinite completions</a>.</li>
+<li>Additive adelic tensor identification, closed discreteness of <span class="math" data-tex="\(K\)">\(K\)</span>, its compact quotient and the covolume <span class="math" data-tex="\(\sqrt{|d_K|}\)">\(\sqrt{|d_K|}\)</span> for integral finite-ring masses one. These are Proposition 2.1, Theorem 2.2 and Proposition 2.4 of <a href="NT-ADL-02.html">The adèle ring of a number field</a>.</li>
+<li>Different theory is proved in <a href="prerequisites/NT-ANT-14.html">The different and the discriminant</a>, Propositions 14.1–14.2 and Theorems 14.3–14.4, and <a href="prerequisites/NT-LOC-09.html">Ramification groups and the different of a local extension</a>, Proposition 4.1. These give trace-dual integrality, completion, the norm identity, and the monogenic formula when the full integral ring is a power basis. Scholarly locators are [Sutherland 12, Definition 12.2, Propositions 12.4, 12.16 and 12.24 and Theorem 12.17]. The trace computations in the examples are given here independently.</li>
+<li>For a closed subgroup <span class="math" data-tex="\(H\)">\(H\)</span> of an LCA group <span class="math" data-tex="\(G\)">\(G\)</span>, pullback identifies <span class="math" data-tex="\(\widehat{G/H}\)">\(\widehat{G/H}\)</span> with <span class="math" data-tex="\(H^\perp\)">\(H^\perp\)</span> topologically. This is Theorem 2.1 in <a href="prerequisites/HA-LCA-10.html">Subgroups, quotients and annihilators</a>. Its hypotheses and topological conclusion are the ones used in Theorem 5.4.</li>
+<li>The general LCA Poisson formula from <a href="prerequisites/HA-LCA-11.html">The Poisson summation formula</a>, Theorem 1.1: for a discrete cocompact subgroup <span class="math" data-tex="\(\Lambda\subset G\)">\(\Lambda\subset G\)</span>, self-dual measures, and an integrable test function with continuous uniformly convergent periodization and an absolutely summable dual-lattice transform, <span class="math" data-tex="\(\sum_{\lambda\in\Lambda}f(\lambda)=\operatorname{vol}(G/\Lambda)^{-1}\sum_{\eta\in\Lambda^\perp}\widehat f(\eta)\)">\(\sum_{\lambda\in\Lambda}f(\lambda)=\operatorname{vol}(G/\Lambda)^{-1}\sum_{\eta\in\Lambda^\perp}\widehat f(\eta)\)</span>. Theorem 5.5 verifies all these conditions on the adèles. [Getz–Hahn draft, Theorem B.3.2] records the resulting adelic formula.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Getz–Hahn draft]</strong> J. R. Getz and H. Hahn, <em>An Introduction to Automorphic Representations: With a View toward Trace Formulae</em>, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf">author-hosted draft dated April 22, 2022</a>, §3.5 and Appendix B, §§B.1–B.3, PDF pages 91–92 and 501–505. The published book appeared in 2024; the locators here refer to the draft.</li>
+<li><strong>[Sutherland 12]</strong> A. V. Sutherland, <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes12.pdf"><em>The different and the discriminant</em></a>, MIT 18.785 Number Theory I lecture notes, Fall 2021, Lecture 12, Definition 12.2, Propositions 12.4, 12.16 and 12.24, and Theorems 12.17 and 12.19: the different, the discriminant, their localization and completion, and the ramification criterion.</li>
+<li>H. Jacquet and R. P. Langlands, <a href="https://publications.ias.edu/sites/default/files/automorphic-forms-on-gl2_rpl.pdf"><em>Automorphic Forms on GL(2)</em>, IAS retyped edition</a>, 1970, Chapter I, §1, printed pages 1–2: trace pairing and self-dual Haar measure. Its Weil-representation constructions are further directions.</li>
+<li>A. Connes and M. Marcolli, <a href="https://alainconnes.org/wp-content/uploads/bookwebfinal-2.pdf"><em>Noncommutative Geometry, Quantum Fields and Motives</em>, author version</a>, Chapter 2, §4.1, Definition 2.8 and Proposition 2.9, and §8.3, (2.297)–(2.300), PDF pages 335–337 and 366–367. The first normalization gives norm-one mass one on a multiplicative modulated group. Our additive self-dual measure is determined by (8); the two normalizations have different purposes.</li>
+<li><strong>[Poonen]</strong> Bjorn Poonen, <a href="https://math.mit.edu/~poonen/786/notes.pdf"><em>Tate’s Thesis</em>, MIT 18.786, Spring 2015</a>, §§4.4–4.5, Proposition 4.8, and §§5.4–5.5, Lemma 5.6 and Theorem 5.7: local character, measure and periodization comparisons. The proof here retains the whole archimedean Schwartz space of (22).</li>
+</ul>
+</article><nav class="pager"><a rel="prev" href="NT-ADL-04.html">Previous lesson</a><a href="index.html">Course contents</a><a rel="next" href="NT-ADL-06.html">Next lesson</a></nav><p><a href="src/NT-ADL-05.md">Markdown source</a></p></main></body></html>

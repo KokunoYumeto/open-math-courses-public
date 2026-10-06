@@ -1,0 +1,11 @@
+# Read and reproduce this private prerequisite
+
+Open `index.html` through an ordinary local HTTP server. The packet contains its own MathJax runtime and fonts; it does not fetch a mathematical proof at runtime. The main learner is `projective-exhaustion-and-the-finite-chain-tube-receiver.html`, with the exact Markdown beside it. Complete supporting readings are under `providers/`, and exact Markdown downloads under `sources/`. The duality/tubular download explicitly contains selected complete sections, as its reader notice explains.
+
+The new learner is a partial prerequisite. It gives full elementary proofs, the actual written normal Thom/tubular construction, complete examples and solutions, and a tube-injection deduction conditional on the declared ordinary Morse handle input H. It does not close H, general rational-form spanning, the actual affine/projective C8 comparison or component constancy. Provider source author-check notices and component terms remain visible.
+
+The figures are generated independently by the included CC0 `make_figures.py` using Python, NumPy and Matplotlib. Run `python make_figures.py --out fresh-figures` in this packet's directory to produce both PNG/SVG pairs and `geometry.json`. Every coordinate and constant is specified in the renderer, geometry and learner captions. Figure1 is an exact radial section of the projective exhaustion; Figure2 is the phase-square parameterization of the worked product tube and its dimension ledger. Select a figure in the learner to open its native PNG. The SVGs permit magnification without changing their mathematical content.
+
+The delivery verification reruns the renderer into a fresh local output, compares exact figure/geometry bytes and PNG RGBA, checks all source downloads and ordered prose/math, and exercises the actual browser at widths1100 and390. Any wider expression has a focusable horizontal scroll control; use the left/right keys after focusing it. The exact source TeX remains in the HTML.
+
+New prose, diagrams and renderer are CC0-1.0; source author/component credits remain with every reading. MathJax and figure font licenses are included separately. No source-book scan, book prose, private mailbox or runtime filesystem path is included in the candidate payload.

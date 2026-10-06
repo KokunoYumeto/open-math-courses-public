@@ -1,0 +1,1348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deligne&#x27;s construction in higher weight and the Ramanujan–Petersson bound · Galois representations</title>
+<meta name="description" content="A lesson of the course Galois representations. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/deligne-construction-in-higher-weight.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Galois representations</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="deligne-s-construction-in-higher-weight-and-the-ramanujan-petersson-bound">Deligne's construction in higher weight and the Ramanujan–Petersson bound</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A weight-two cusp form contributes to the first cohomology of a modular curve. Higher weight requires a coefficient system: the symmetric power of the first cohomology of the universal elliptic curve. Its parabolic cohomology retains the cusp forms and removes the contribution of the boundary. Deligne's construction turns a two-dimensional Hecke constituent of this cohomology into a Galois representation. The Weil theorem then controls its Frobenius eigenvalues.</p>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be a <strong>normalized primitive cuspidal eigenform of exact level <span class="math" data-tex="\(N\)">\(N\)</span>, weight <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, and Dirichlet character <span class="math" data-tex="\(\chi\)">\(\chi\)</span></strong>:</p>
+<span class="math math-display" data-tex="\[
+f=\sum_{n\geq1}a_nq^n,\qquad a_1=1,\qquad
+K=\mathbf Q(a_n,\chi(d):n\geq1,\ (d,N)=1).
+\tag{1}
+\]">\[
+f=\sum_{n\geq1}a_nq^n,\qquad a_1=1,\qquad
+K=\mathbf Q(a_n,\chi(d):n\geq1,\ (d,N)=1).
+\tag{1}
+\]</span>
+<p>Proposition 2.2 proves the number-field assertion under its stated geometric and comparison premises. Applying the modular law to <span class="math" data-tex="\(-I\)">\(-I\)</span> gives <span class="math" data-tex="\(f=\chi(-1)(-1)^kf\)">\(f=\chi(-1)(-1)^kf\)</span>; since <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>, this proves <span class="math" data-tex="\(\chi(-1)=(-1)^k\)">\(\chi(-1)=(-1)^k\)</span>. Definition (1) explicitly includes the character values. It agrees with the coefficient field defined using all the <span class="math" data-tex="\(a_n\)">\(a_n\)</span>: the good-prime Hecke relation
+<span class="math math-display" data-tex="\[
+a_{p^2}=a_p^2-\chi(p)p^{k-1}
+\tag{2}
+\]">\[
+a_{p^2}=a_p^2-\chi(p)p^{k-1}
+\tag{2}
+\]</span>
+recovers <span class="math" data-tex="\(\chi(p)\)">\(\chi(p)\)</span>, and primes in every invertible residue class recover all character values.</p>
+<p>Fix a finite place <span class="math" data-tex="\(\lambda\mid\ell\)">\(\lambda\mid\ell\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>. We use <strong>arithmetic Frobenius</strong> <span class="math" data-tex="\(\operatorname{Fr}_p\)">\(\operatorname{Fr}_p\)</span>, so the cyclotomic character satisfies <span class="math" data-tex="\(\chi_\ell(\operatorname{Fr}_p)=p\)">\(\chi_\ell(\operatorname{Fr}_p)=p\)</span> for <span class="math" data-tex="\(p\ne\ell\)">\(p\ne\ell\)</span>. Geometric Frobenius is its inverse. Local reciprocity sends a uniformizer to geometric Frobenius; our Weil–Deligne convention is still <span class="math" data-tex="\(r(w)Nr(w)^{-1}=|w|N\)">\(r(w)Nr(w)^{-1}=|w|N\)</span>. The present lesson concerns good primes and does not use local–global compatibility at primes dividing <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<h2 id="1-the-representation-theorem">1. The representation theorem</h2>
+<p><strong>Theorem 1.1 (Deligne; construction stated).</strong> There is a continuous representation</p>
+<span class="math math-display" data-tex="\[
+\rho_{f,\lambda}:G_{\mathbf Q}\longrightarrow
+\operatorname{GL}_2(K_\lambda)
+\tag{3}
+\]">\[
+\rho_{f,\lambda}:G_{\mathbf Q}\longrightarrow
+\operatorname{GL}_2(K_\lambda)
+\tag{3}
+\]</span>
+<p>unramified outside <span class="math" data-tex="\(N\ell\)">\(N\ell\)</span>, such that for every prime <span class="math" data-tex="\(p\nmid N\ell\)">\(p\nmid N\ell\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\det(X-\rho_{f,\lambda}(\operatorname{Fr}_p))
+=X^2-a_pX+\chi(p)p^{k-1}.
+\tag{4}
+\]">\[
+\det(X-\rho_{f,\lambda}(\operatorname{Fr}_p))
+=X^2-a_pX+\chi(p)p^{k-1}.
+\tag{4}
+\]</span>
+<p>It is irreducible over <span class="math" data-tex="\(K_\lambda\)">\(K_\lambda\)</span>. Its isomorphism class is determined by these good-prime polynomials.</p>
+<p>We retain the full theorem, including its arbitrary character, coefficient field and irreducibility. The proof below constructs its coefficient space, supplies the cusp-product resolution and the passage through parabolic cohomology, and proves the ensuing algebraic deductions. Section 7 records the remaining proof obligations in the arithmetic moduli, congruence, comparison and irreducibility steps. Thus Theorem 1.1 is still a theorem whose complete proof is required in this edition; its freely accessible original source is evidence for its statement, not a replacement for those steps. Uniqueness, once existence and irreducibility are established, follows from the Frobenius-density and character proof in <em>Frobenius elements and determination by traces</em>.</p>
+<p>The theorem is not restricted to a rational coefficient field or a trivial character. For general <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, complex conjugation of the modular form changes the character to <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span>. Consequently the polarization argument for the totally real field in the previous lesson cannot simply be repeated without keeping track of these different constituents.</p>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+P_p(X)=X^2-a_pX+C_p,\qquad C_p=\chi(p)p^{k-1}.
+\tag{5}
+\]">\[
+P_p(X)=X^2-a_pX+C_p,\qquad C_p=\chi(p)p^{k-1}.
+\tag{5}
+\]</span>
+<p>Then the good Euler factor in the convention of <em>Compatible systems and global L-functions</em> is</p>
+<span class="math math-display" data-tex="\[
+\det(1-\rho_{f,\lambda}(\operatorname{Fr}_p)T)^{-1}
+=(1-a_pT+C_pT^2)^{-1}.
+\tag{6}
+\]">\[
+\det(1-\rho_{f,\lambda}(\operatorname{Fr}_p)T)^{-1}
+=(1-a_pT+C_pT^2)^{-1}.
+\tag{6}
+\]</span>
+<p>The polynomial belongs to <span class="math" data-tex="\(K[X]\)">\(K[X]\)</span>, independently of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. This is the good-prime compatibility assertion. It does not by itself describe the Euler factors at the finitely many bad primes.</p>
+<h2 id="2-the-coefficient-system-and-its-two-dimensional-constituent">2. The coefficient system and its two-dimensional constituent</h2>
+<p>For the geometric description suppose first that <span class="math" data-tex="\(N\geq5\)">\(N\geq5\)</span>. The fine modular curve <span class="math" data-tex="\(Y=Y_1(N)\)">\(Y=Y_1(N)\)</span> has a universal elliptic curve</p>
+<span class="math math-display" data-tex="\[
+\pi:\mathcal E\longrightarrow Y.
+\]">\[
+\pi:\mathcal E\longrightarrow Y.
+\]</span>
+<p>Its compactification <span class="math" data-tex="\(X=X_1(N)\)">\(X=X_1(N)\)</span> has a finite nonempty cusp divisor <span class="math" data-tex="\(D=X\setminus Y\)">\(D=X\setminus Y\)</span>. Set <span class="math" data-tex="\(m=k-2\)">\(m=k-2\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\mathcal F_\ell=R^1\pi_*\mathbf Q_\ell,\qquad
+\mathcal L_m=\operatorname{Sym}^{m}\mathcal F_\ell.
+\tag{7}
+\]">\[
+\mathcal F_\ell=R^1\pi_*\mathbf Q_\ell,\qquad
+\mathcal L_m=\operatorname{Sym}^{m}\mathcal F_\ell.
+\tag{7}
+\]</span>
+<p>The first sheaf is lisse of rank two; the second has rank <span class="math" data-tex="\(m+1=k-1\)">\(m+1=k-1\)</span>. Smooth proper base change identifies its fibers with
+<span class="math math-display" data-tex="\[
+(\mathcal F_\ell)_{\bar y}=H^1(\mathcal E_{\bar y},\mathbf Q_\ell).
+\tag{8}
+\]">\[
+(\mathcal F_\ell)_{\bar y}=H^1(\mathcal E_{\bar y},\mathbf Q_\ell).
+\tag{8}
+\]</span>
+These are cohomology groups, rather than covariant Tate modules.</p>
+<p>The relevant space is</p>
+<span class="math math-display" data-tex="\[
+W_\ell=
+H^1_{\mathrm{par}}(Y_{\overline{\mathbf Q}},\mathcal L_m)
+:=\operatorname{im}\left(
+H^1_c(Y_{\overline{\mathbf Q}},\mathcal L_m)
+\longrightarrow H^1(Y_{\overline{\mathbf Q}},\mathcal L_m)\right).
+\tag{9}
+\]">\[
+W_\ell=
+H^1_{\mathrm{par}}(Y_{\overline{\mathbf Q}},\mathcal L_m)
+:=\operatorname{im}\left(
+H^1_c(Y_{\overline{\mathbf Q}},\mathcal L_m)
+\longrightarrow H^1(Y_{\overline{\mathbf Q}},\mathcal L_m)\right).
+\tag{9}
+\]</span>
+<p>This definition is essential. Cohomology with compact support alone can retain boundary eigenvalues of lower weight. For example, with constant coefficients on <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>, the localization sequence for <span class="math" data-tex="\(\mathbf P^1\setminus\{0,\infty\}\)">\(\mathbf P^1\setminus\{0,\infty\}\)</span> gives
+<span class="math math-display" data-tex="\[
+H^1_c(\mathbf G_m,\mathbf Q_\ell)
+\simeq\operatorname{coker}\bigl(\mathbf Q_\ell
+\longrightarrow\mathbf Q_\ell^2\bigr)\simeq\mathbf Q_\ell.
+\]">\[
+H^1_c(\mathbf G_m,\mathbf Q_\ell)
+\simeq\operatorname{coker}\bigl(\mathbf Q_\ell
+\longrightarrow\mathbf Q_\ell^2\bigr)\simeq\mathbf Q_\ell.
+\]</span>
+Geometric Frobenius acts as <span class="math" data-tex="\(1\)">\(1\)</span> on this space. The map to ordinary first cohomology is zero, so its parabolic image is zero. Purity of weight one cannot be asserted for that compactly supported group.</p>
+<p>A related boundary calculation occurs for the Legendre family over
+<span class="math" data-tex="\(U=\mathbf P^1_{\mathbf F_q}\setminus\{0,1,\infty\}\)">\(U=\mathbf P^1_{\mathbf F_q}\setminus\{0,1,\infty\}\)</span>, with <span class="math" data-tex="\(q\)">\(q\)</span> odd and coefficient sheaf <span class="math" data-tex="\(R^1\pi_*\mathbf Q_\ell\)">\(R^1\pi_*\mathbf Q_\ell\)</span>, <span class="math" data-tex="\(\ell\nmid q\)">\(\ell\nmid q\)</span>. With <span class="math" data-tex="\(\varepsilon=(-1)^{(q-1)/2}\)">\(\varepsilon=(-1)^{(q-1)/2}\)</span>, the calculation is
+<span class="math math-display" data-tex="\[
+\#\mathcal E(\mathbf F_{q^n})=q^{2n}-q^n-1+\varepsilon^n,\qquad
+\operatorname{tr}(F^n\mid H^1_c(U_{\overline{\mathbf F}_q},R^1\pi_*\mathbf Q_\ell))
+=1+\varepsilon^n.
+\]">\[
+\#\mathcal E(\mathbf F_{q^n})=q^{2n}-q^n-1+\varepsilon^n,\qquad
+\operatorname{tr}(F^n\mid H^1_c(U_{\overline{\mathbf F}_q},R^1\pi_*\mathbf Q_\ell))
+=1+\varepsilon^n.
+\]</span>
+Here <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> means the total family, including the zero section. The second equality for every <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> determines its compact-support Euler polynomial: the identity
+<span class="math" data-tex="\(\log\det(1-FT)=-\sum_{n\geq1}\operatorname{tr}(F^n)T^n/n\)">\(\log\det(1-FT)=-\sum_{n\geq1}\operatorname{tr}(F^n)T^n/n\)</span>
+gives <span class="math" data-tex="\((1-T)(1-\varepsilon T)\)">\((1-T)(1-\varepsilon T)\)</span>. Thus the two eigenvalues are <span class="math" data-tex="\(1,\varepsilon\)">\(1,\varepsilon\)</span>. The sign is determined in the <strong>base field</strong>. For <span class="math" data-tex="\(q=3\)">\(q=3\)</span>, the first two total-family counts are <span class="math" data-tex="\(4,72\)">\(4,72\)</span>, the traces are <span class="math" data-tex="\(0,2\)">\(0,2\)</span>, and the eigenvalues are <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>, even though <span class="math" data-tex="\(-1\)">\(-1\)</span> becomes a square over <span class="math" data-tex="\(\mathbf F_9\)">\(\mathbf F_9\)</span>. Testing whether it is a square in one extension would not determine the base-field eigenvalues.</p>
+<p>Here is the count itself. Put <span class="math" data-tex="\(Q=q^n\)">\(Q=q^n\)</span>, and extend the quadratic character <span class="math" data-tex="\(\eta\)">\(\eta\)</span> of <span class="math" data-tex="\(\mathbf F_Q^\times\)">\(\mathbf F_Q^\times\)</span> by <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>. Each fiber has
+<span class="math" data-tex="\(Q+1+\sum_x\eta(x(x-1)(x-t))\)">\(Q+1+\sum_x\eta(x(x-1)(x-t))\)</span> points. Since <span class="math" data-tex="\(\sum_t\eta(x-t)=0\)">\(\sum_t\eta(x-t)=0\)</span>, summing over <span class="math" data-tex="\(t\ne0,1\)">\(t\ne0,1\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{t\ne0,1}\sum_x\eta(x(x-1)(x-t))
+&amp;=-\sum_{x\ne0,1}\bigl(\eta(x-1)+\eta(x)\bigr)\\
+&amp;=\eta(-1)+1.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{t\ne0,1}\sum_x\eta(x(x-1)(x-t))
+&amp;=-\sum_{x\ne0,1}\bigl(\eta(x-1)+\eta(x)\bigr)\\
+&amp;=\eta(-1)+1.
+\end{aligned}
+\]</span>
+Thus the total is <span class="math" data-tex="\((Q-2)(Q+1)+1+\eta(-1)=Q^2-Q-1+\varepsilon^n\)">\((Q-2)(Q+1)+1+\eta(-1)=Q^2-Q-1+\varepsilon^n\)</span>. To identify the trace with a single compact-support group, put <span class="math" data-tex="\(s=1/t\)">\(s=1/t\)</span>, <span class="math" data-tex="\(x=u/s\)">\(x=u/s\)</span>, <span class="math" data-tex="\(y=v/s^2\)">\(y=v/s^2\)</span>. The family at infinity becomes
+<span class="math math-display" data-tex="\[
+v^2=s\,u(u-s)(u-1).
+\]">\[
+v^2=s\,u(u-s)(u-1).
+\]</span>
+It is the quadratic twist by <span class="math" data-tex="\(s\)">\(s\)</span> of the parameter-<span class="math" data-tex="\(s\)">\(s\)</span> Legendre curve. That curve has <span class="math" data-tex="\(\Delta=16s^2(1-s)^2\)">\(\Delta=16s^2(1-s)^2\)</span> and <span class="math" data-tex="\(c_4=16(s^2-s+1)\)">\(c_4=16(s^2-s+1)\)</span>, and over the geometric local field its node is split. The Tate uniformization and Kummer proof in <em>Elliptic curves over local fields</em>, Lemma 3.0 and Theorem 3.1, make its inertia unipotent. Since the characteristic is odd, adjoining <span class="math" data-tex="\(\sqrt s\)">\(\sqrt s\)</span> is a ramified quadratic extension; an inertia element with quadratic value <span class="math" data-tex="\(-1\)">\(-1\)</span> has, on the twist, the negative of a unipotent matrix. Its two eigenvalues are <span class="math" data-tex="\(-1\)">\(-1\)</span>, so it has no fixed vector in characteristic zero. There are consequently no global invariant vectors. Curve duality gives <span class="math" data-tex="\(H_c^2(U,R^1\pi_*\mathbf Q_\ell)=0\)">\(H_c^2(U,R^1\pi_*\mathbf Q_\ell)=0\)</span>, and <span class="math" data-tex="\(H_c^0=0\)">\(H_c^0=0\)</span> because a lisse section on this connected nonproper curve cannot have proper support. The curve trace formula therefore identifies the negative of the sum of fiber traces with <span class="math" data-tex="\(\operatorname{Tr}(F^n\mid H_c^1)\)">\(\operatorname{Tr}(F^n\mid H_c^1)\)</span>; the point count just proved makes it <span class="math" data-tex="\(1+\varepsilon^n\)">\(1+\varepsilon^n\)</span>. The determinant logarithm proves the displayed degree-two polynomial, without a tame Euler-characteristic formula. The actual finite-coefficient curve trace proof is <em>The trace formula for curves</em>, Theorem 1.1 and §§2–5; the adic passage is <em>The trace formula in all dimensions</em>, Theorem 5.1. Its finite-cover and compact-support prerequisites retain their recorded scope. The free primary <a href="https://stacks.math.columbia.edu/tag/03VA">Stacks calculation</a> is material for this example, not its vanishing proof.</p>
+<p>The comparison and Eichler–Shimura theorems identify the corresponding complex parabolic cohomology with</p>
+<span class="math math-display" data-tex="\[
+S_k(\Gamma_1(N))\oplus\overline{S_k(\Gamma_1(N))},
+\qquad
+\dim_{\mathbf Q_\ell}W_\ell=2\dim_{\mathbf C}S_k(\Gamma_1(N)).
+\tag{10}
+\]">\[
+S_k(\Gamma_1(N))\oplus\overline{S_k(\Gamma_1(N))},
+\qquad
+\dim_{\mathbf Q_\ell}W_\ell=2\dim_{\mathbf C}S_k(\Gamma_1(N)).
+\tag{10}
+\]</span>
+<p>Here the bar denotes the conjugate contribution under the compatible Hecke normalization, not an assertion that <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is real. We prove the complex period map below. Lemma 2.4 reduces its comparison with the étale coefficient group to the preceding lesson's actual curve proofs, including the finite-cover argument. Exercise 8.4 computes the complex total dimension and keeps the remaining analytic Riemann–Roch foundations visible.</p>
+<p>Hecke correspondences act on <span class="math" data-tex="\(W_\ell\)">\(W_\ell\)</span> and commute with Galois. On the constituent associated with <span class="math" data-tex="\(f\)">\(f\)</span>, the good operators act by <span class="math" data-tex="\(a_p\)">\(a_p\)</span>, and the normalized diamond action contributes <span class="math" data-tex="\(\chi(p)\)">\(\chi(p)\)</span>. Proposition 2.2 below proves the two-dimensionality and coefficient descent using <strong>all</strong> Hecke operators, including the bad operators, once the compatible arithmetic correspondences and comparison exist. A form viewed at a larger level can occur several times for the good operators alone: the whole oldform eigenspace must not be declared two-dimensional.</p>
+<p>With this cohomological convention the arithmetic Galois representation in (3) is realized on</p>
+<span class="math math-display" data-tex="\[
+V_{f,\lambda}=W_{f,\lambda}^{\vee}.
+\tag{11}
+\]">\[
+V_{f,\lambda}=W_{f,\lambda}^{\vee}.
+\tag{11}
+\]</span>
+<p>Indeed, if <span class="math" data-tex="\(A\)">\(A\)</span> is arithmetic Frobenius on <span class="math" data-tex="\(W_{f,\lambda}\)">\(W_{f,\lambda}\)</span>, then geometric Frobenius on it is <span class="math" data-tex="\(A^{-1}\)">\(A^{-1}\)</span>, while arithmetic Frobenius on its dual is <span class="math" data-tex="\((A^{-1})^{\mathsf t}\)">\((A^{-1})^{\mathsf t}\)</span>. Thus these last two operators have the same characteristic polynomial. In particular, geometric Frobenius on the cohomological constituent and arithmetic Frobenius on (3) have the eigenvalues in (4).</p>
+<p>No extra Tate twist is inserted into (11). There is a different, canonical two-dimensional identity</p>
+<span class="math math-display" data-tex="\[
+V^\vee\simeq V\otimes(\det V)^{-1}.
+\tag{12}
+\]">\[
+V^\vee\simeq V\otimes(\det V)^{-1}.
+\tag{12}
+\]</span>
+<p>The map sends <span class="math" data-tex="\(v\)">\(v\)</span> to the functional <span class="math" data-tex="\(w\mapsto v\wedge w\)">\(w\mapsto v\wedge w\)</span>, with values in <span class="math" data-tex="\(\det V\)">\(\det V\)</span>, and is an isomorphism in any basis. After §5 identifies the determinant, (12) involves both <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span> and <span class="math" data-tex="\(\chi_\ell^{1-k}\)">\(\chi_\ell^{1-k}\)</span>. Omitting the nebentypus in a self-duality assertion would change the representation.</p>
+<p>At levels below five one uses a fine auxiliary cover and descent. The handling of its level action and the unramified assertion at primes not dividing <span class="math" data-tex="\(N\ell\)">\(N\ell\)</span> belong to Theorem 1.1. The outline through a convenient cover does not supply these descent proofs.</p>
+<h3 id="2-1-the-period-map-in-every-weight-on-a-fine-curve">2.1. The period map in every weight on a fine curve</h3>
+<p><strong>Lemma 2.1 (complex Eichler–Shimura mechanism).</strong> Suppose <span class="math" data-tex="\(N\ge5\)">\(N\ge5\)</span>. For the rank-<span class="math" data-tex="\(m+1\)">\(m+1\)</span> local system <span class="math" data-tex="\(V_m=\mathbf C[X,Y]_m\)">\(V_m=\mathbf C[X,Y]_m\)</span>, with
+<span class="math" data-tex="\(\rho(\gamma)P(v)=P(\gamma^{-1}v)\)">\(\rho(\gamma)P(v)=P(\gamma^{-1}v)\)</span>, the maps
+<span class="math math-display" data-tex="\[
+f\longmapsto f(z)(X-zY)^m\,dz,
+\qquad
+\bar g\longmapsto \overline{g(z)}(X-\bar zY)^m\,d\bar z
+\]">\[
+f\longmapsto f(z)(X-zY)^m\,dz,
+\qquad
+\bar g\longmapsto \overline{g(z)}(X-\bar zY)^m\,d\bar z
+\]</span>
+give an injective map from <span class="math" data-tex="\(S_k\oplus\overline{S_k}\)">\(S_k\oplus\overline{S_k}\)</span> to complex parabolic cohomology. If the line-bundle dimension calculation in Exercise 8.4 is available, this map is an isomorphism. This includes odd <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><em>Proof.</em> The elementary identity
+<span class="math" data-tex="\(\rho(\gamma)(X-zY)^m=(cz+d)^m(X-\gamma zY)^m\)">\(\rho(\gamma)(X-zY)^m=(cz+d)^m(X-\gamma zY)^m\)</span>, combined with <span class="math" data-tex="\(d(\gamma z)=(cz+d)^{-2}dz\)">\(d(\gamma z)=(cz+d)^{-2}dz\)</span>, makes these closed forms covariant. On the half-plane a closed coefficient form has a primitive: integrate first horizontally and then vertically, and differentiate, using <span class="math" data-tex="\(\partial_yP=\partial_xQ\)">\(\partial_yP=\partial_xQ\)</span>. Its period from <span class="math" data-tex="\(z_0\)">\(z_0\)</span> to <span class="math" data-tex="\(\gamma z_0\)">\(\gamma z_0\)</span> is therefore a cocycle. Changing <span class="math" data-tex="\(z_0\)">\(z_0\)</span> changes it by a coboundary.</p>
+<p>At a cusp the Fourier expansion of a cusp form is bounded by <span class="math" data-tex="\(Ce^{-ay}\)">\(Ce^{-ay}\)</span>; its polynomial coefficient adds at most <span class="math" data-tex="\(C&#x27;(1+y)^m\)">\(C&#x27;(1+y)^m\)</span>. Integration to the cusp consequently converges. If <span class="math" data-tex="\(b_P\)">\(b_P\)</span> is that integral, a stabilizer element has period <span class="math" data-tex="\(b_P-\rho(\gamma)b_P\)">\(b_P-\rho(\gamma)b_P\)</span>; hence the class is parabolic. A primitive with limiting value zero is covariant in the cusp strip. Subtract the differential of that primitive times a height cutoff. The resulting form has compact support and the same period class.</p>
+<p>On the basis <span class="math" data-tex="\(e_r=X^{m-r}Y^r\)">\(e_r=X^{m-r}Y^r\)</span>, use the coefficient pairing
+<span class="math math-display" data-tex="\[
+B(e_r,e_s)=0\ (r+s\ne m),\qquad
+B(e_r,e_{m-r})=(-1)^r\binom mr^{-1}.
+\]">\[
+B(e_r,e_s)=0\ (r+s\ne m),\qquad
+B(e_r,e_{m-r})=(-1)^r\binom mr^{-1}.
+\]</span>
+Expansion gives <span class="math" data-tex="\(B((aX+bY)^m,(cX+dY)^m)=(ad-bc)^m\)">\(B((aX+bY)^m,(cX+dY)^m)=(ad-bc)^m\)</span>. Pure powers span, by the Vandermonde determinant, so <span class="math" data-tex="\(B\)">\(B\)</span> is invariant under <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span> and is nondegenerate in every parity. Integrate <span class="math" data-tex="\(B\)">\(B\)</span> of the wedge of compact representatives. If a period class is zero, its closed form has a covariant primitive: subtract the constant giving its cocycle coboundary. The integral against a compact closed representative is then the integral of a differential and is zero. Green–Stokes here follows on rectangles from the fundamental theorem of calculus; paired sides of a truncated domain cancel, and the cusp boundary tends to zero by the preceding exponential estimate. Thus this pairing depends only on the classes.</p>
+<p>Since <span class="math" data-tex="\(B((X-zY)^m,(X-\bar zY)^m)=(2iy)^m\)">\(B((X-zY)^m,(X-\bar zY)^m)=(2iy)^m\)</span> and <span class="math" data-tex="\(dz\wedge d\bar z=-2i\,dx\wedge dy\)">\(dz\wedge d\bar z=-2i\,dx\wedge dy\)</span>, the mixed pairing is
+<span class="math math-display" data-tex="\[
+-(2i)^{m+1}\int f(z)\overline{g(z)}y^m\,dx\,dy.
+\]">\[
+-(2i)^{m+1}\int f(z)\overline{g(z)}y^m\,dx\,dy.
+\]</span>
+The two same-type pairings vanish. The integral of <span class="math" data-tex="\(|f|^2y^m\)">\(|f|^2y^m\)</span> is finite by the cusp estimate and positive for <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>, since a continuous nonzero function is nonzero on a small disk. Pairing a vanishing class <span class="math" data-tex="\([f+\bar g]\)">\([f+\bar g]\)</span> first against <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span>, then against <span class="math" data-tex="\(g\)">\(g\)</span>, proves <span class="math" data-tex="\(f=g=0\)">\(f=g=0\)</span>. No parity assumption occurred. Exercise 8.4 gives equal dimensions for domain and codomain, proving surjectivity when its Riemann–Roch premises are established. The actual earlier LG-MF period proof proves this cup argument, but its final theorem restricts odd weights; the argument above supplies the regular-cusp extension needed here. ∎</p>
+<h3 id="2-2-a-full-hecke-eigenspace-and-its-coefficient-field">2.2. A full Hecke eigenspace and its coefficient field</h3>
+<p><strong>Proposition 2.2.</strong> Assume that the fine modular curve and its universal family exist, that their rational Betti and étale parabolic cohomologies compare compatibly with all normalized Hecke and diamond correspondences, and that Lemma 2.1's dimension input is proved. The simultaneous eigenspace for the full system <span class="math" data-tex="\((a_n,\chi(d))\)">\((a_n,\chi(d))\)</span> has dimension two over <span class="math" data-tex="\(K\)">\(K\)</span>, and hence over each <span class="math" data-tex="\(K_\lambda\)">\(K_\lambda\)</span>. The field <span class="math" data-tex="\(K\)">\(K\)</span> is a number field. These claims do not require good-Hecke multiplicity one on the whole old space.</p>
+<p><em>Proof.</em> The coefficient formula from the earlier congruence-level Hecke lesson is
+<span class="math math-display" data-tex="\[
+a_r(T_nh)=\sum_{d\mid(r,n)}\chi_h(d)d^{k-1}a_{rn/d^2}(h),
+\qquad a_1(T_nh)=a_n(h).
+\]">\[
+a_r(T_nh)=\sum_{d\mid(r,n)}\chi_h(d)d^{k-1}a_{rn/d^2}(h),
+\qquad a_1(T_nh)=a_n(h).
+\]</span>
+For a simultaneous eigenvector with eigenvalues <span class="math" data-tex="\(a_n\)">\(a_n\)</span>, it implies <span class="math" data-tex="\(a_n(h)=a_n a_1(h)\)">\(a_n(h)=a_n a_1(h)\)</span>. If <span class="math" data-tex="\(a_1(h)=0\)">\(a_1(h)=0\)</span>, every Fourier coefficient is zero, so <span class="math" data-tex="\(h=0\)">\(h=0\)</span>; otherwise <span class="math" data-tex="\(h=a_1(h)f\)">\(h=a_1(h)f\)</span>. Thus its holomorphic eigenspace is exactly one-dimensional, including at the bad operators.</p>
+<p>Define <span class="math" data-tex="\(f^*(z)=\overline{f(-\bar z)}\)">\(f^*(z)=\overline{f(-\bar z)}\)</span>. The matrix <span class="math" data-tex="\(J=\operatorname{diag}(-1,1)\)">\(J=\operatorname{diag}(-1,1)\)</span> conjugates <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span> to itself. Applying the modular law to <span class="math" data-tex="\(J\gamma J\)">\(J\gamma J\)</span> proves that <span class="math" data-tex="\(f^*\)">\(f^*\)</span> is a cusp form of character <span class="math" data-tex="\(\bar\chi=\chi^{-1}\)">\(\bar\chi=\chi^{-1}\)</span>, with Fourier coefficients <span class="math" data-tex="\(\bar a_n\)">\(\bar a_n\)</span>. The same conclusion holds at every cusp, because reflection takes rational cusps and their vanishing expansions to rational cusps and vanishing expansions. The rational double-coset sets are stable under <span class="math" data-tex="\(\delta\mapsto J\delta J\)">\(\delta\mapsto J\delta J\)</span>; equivalently the displayed coefficient formula conjugates. Therefore the antiholomorphic class associated with <span class="math" data-tex="\(f^*\)">\(f^*\)</span> has eigenvalues <span class="math" data-tex="\(a_n,\chi(d)\)">\(a_n,\chi(d)\)</span>, and its eigenspace is also one-dimensional. Lemma 2.1 gives dimension two.</p>
+<p>There is a rational coefficient structure: integral polynomials with the integral <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span>-action define a local system on a finite surface cell complex; parabolic cohomology is the image of its relative-to-absolute cochain map. Tensoring that finite integral complex with <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> gives its rational structure. On a rational correspondence <span class="math" data-tex="\(\delta\)">\(\delta\)</span> of determinant <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, the coefficient map <span class="math" data-tex="\(\rho(\delta)^{-1}\)">\(\rho(\delta)^{-1}\)</span> is substitution by the integral matrix <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Pullback followed by the finite-cover sum therefore preserves the integral cohomology image modulo torsion. On a holomorphic period form the formula is
+<span class="math math-display" data-tex="\[
+\rho(\delta)^{-1}\delta^*\bigl(h(z)(X-zY)^m dz\bigr)
+=n^{k-1}(cz+d)^{-k}h(\delta z)(X-zY)^m dz.
+\]">\[
+\rho(\delta)^{-1}\delta^*\bigl(h(z)(X-zY)^m dz\bigr)
+=n^{k-1}(cz+d)^{-k}h(\delta z)(X-zY)^m dz.
+\]</span>
+This is exactly <span class="math" data-tex="\(n^{k/2-1}h\Vert_k\delta\)">\(n^{k/2-1}h\Vert_k\delta\)</span> on the form coefficient. It verifies the normalization as well as rationality; no square root of <span class="math" data-tex="\(n\)">\(n\)</span> enters the cohomological matrix.</p>
+<p>The commuting operators generate a finite-dimensional commutative <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-algebra <span class="math" data-tex="\(A\subset\operatorname{End}_{\mathbf Q}(W_B)\)">\(A\subset\operatorname{End}_{\mathbf Q}(W_B)\)</span>. Their eigenvalue system is a homomorphism <span class="math" data-tex="\(A\to\mathbf C\)">\(A\to\mathbf C\)</span>. Its image is a finite-dimensional domain over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, hence a field: multiplication by a nonzero element is an injective endomorphism of that finite vector space, and is surjective. The image is exactly <span class="math" data-tex="\(K\)">\(K\)</span>, since it contains all <span class="math" data-tex="\(a_n\)">\(a_n\)</span> and the diamond values and is generated by them. The corresponding eigenspace is the intersection of kernels of matrices with entries in <span class="math" data-tex="\(K\)">\(K\)</span>; a finite collection suffices because dimensions can decrease only finitely often. Matrix rank is unchanged by extending a field. Its complex dimension two is thus its dimension over <span class="math" data-tex="\(K\)">\(K\)</span>, and compatible comparison gives the same dimension over <span class="math" data-tex="\(K_\lambda\)">\(K_\lambda\)</span>. Galois commutes with the arithmetic correspondences, so preserves those kernels. ∎</p>
+<p>This proposition proves the coefficient and multiplicity steps under its specified geometric premises. It does not prove that the resulting Galois action is irreducible, nor its determinant or unramifiedness. Those are separate assertions of Theorem 1.1. For the character-field equality after (2), apply the earlier Frobenius-density theorem to the cyclotomic extension: the automorphism <span class="math" data-tex="\(\zeta_N\mapsto\zeta_N^d\)">\(\zeta_N\mapsto\zeta_N^d\)</span> occurs at a prime away from <span class="math" data-tex="\(N\)">\(N\)</span>, and reduction of roots of unity identifies its arithmetic Frobenius with <span class="math" data-tex="\(p\bmod N\)">\(p\bmod N\)</span>. Thus (2) recovers every <span class="math" data-tex="\(\chi(d)\)">\(\chi(d)\)</span> without assuming an additional prime-in-progression theorem.</p>
+<p><strong>Lemma 2.3 (finite-cover descent).</strong> Let <span class="math" data-tex="\(Z\to Y\)">\(Z\to Y\)</span> be a finite étale Galois cover with finite group <span class="math" data-tex="\(G\)">\(G\)</span>, and <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> a characteristic-zero coefficient local system on <span class="math" data-tex="\(Y\)">\(Y\)</span>. Pullback identifies its ordinary, compact and parabolic cohomologies with the <span class="math" data-tex="\(G\)">\(G\)</span>-invariants of the corresponding cohomologies of the pulled-back system on <span class="math" data-tex="\(Z\)">\(Z\)</span>. These identifications respect commuting Galois and correspondence actions.</p>
+<p><em>Proof.</em> On a geometric stalk, the pushforward of the pulled-back system is a direct sum indexed by the finite fiber. Its <span class="math" data-tex="\(G\)">\(G\)</span>-invariant vectors are the diagonal copy of the original stalk. Averaging <span class="math" data-tex="\(e=|G|^{-1}\sum_{g\in G}g\)">\(e=|G|^{-1}\sum_{g\in G}g\)</span> is an idempotent with that image. There are no higher direct images on a finite étale fiber, which is a finite set of separably closed points; finite proper base change gives the same assertion as sheaves. Ordinary and compact-support composition therefore compute upstairs cohomology as the cohomology of this pushforward. Splitting the sheaf by <span class="math" data-tex="\(e\)">\(e\)</span> splits its derived global sections, so its invariant cohomology is exactly downstairs cohomology. The compact-to-ordinary map commutes with <span class="math" data-tex="\(e\)">\(e\)</span>; taking its image proves the parabolic assertion. All constructions use natural maps and the finite sum, hence commute with any compatible additional action. ∎</p>
+<p>The lemma proves the averaging step of auxiliary-level descent. It requires an actual finite étale cover with descended coefficient system. The moduli at levels with stabilizers and their integral models are still required to realize that premise for every <span class="math" data-tex="\(N\)">\(N\)</span>; an abstract finite group does not construct the auxiliary modular cover.</p>
+<p><strong>Lemma 2.4 (reducing coefficient comparison to curve comparison).</strong> Once the fine curve and elliptic family are constructed, degree-one ordinary, compact and parabolic comparison for <span class="math" data-tex="\(\mathcal L_m\)">\(\mathcal L_m\)</span> reduces to constant-coefficient comparison for smooth projective curves and their finite correspondences. In particular it uses no higher-dimensional comparison theorem for the total elliptic surface. The actual curve comparison proofs are Lemmas 1.2 and 1.4 of <em>Modular curves and the Eichler–Shimura congruence</em>: the latter includes algebraically closed field extension, while the former retains its analytic Riemann–Roch foundations.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(A=\mathbf Z/\ell^r\)">\(A=\mathbf Z/\ell^r\)</span>. Elliptic Kummer identifies <span class="math" data-tex="\(R^1\pi_*A\)">\(R^1\pi_*A\)</span> with the dual of the finite locally free torsion system; this is the natural degree-one identification in the earlier elliptic lesson. The torsion-basis cover is finite étale, by the relative multiplication proof and the basis-locus construction in the earlier modular lesson, Lemma 1.0. The full torsion-basis cover <span class="math" data-tex="\(Z\to Y\)">\(Z\to Y\)</span> is a torsor for the finite group <span class="math" data-tex="\(G=\operatorname{GL}_2(A)\)">\(G=\operatorname{GL}_2(A)\)</span>: changes of basis act freely and transitively on every fiber. It may be disconnected. On it the symmetric-power coefficient system is the constant free <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, with descent action of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>Normalize the projective completion of <span class="math" data-tex="\(Y\)">\(Y\)</span> in each component function field of <span class="math" data-tex="\(Z\)">\(Z\)</span>. It is finite by the trace-dual-lattice normalization proof in the modular lesson, Lemma 1.2; in characteristic zero its normal curve is smooth. Thus <span class="math" data-tex="\(Z=\bar Z\setminus B\)">\(Z=\bar Z\setminus B\)</span>, with <span class="math" data-tex="\(\bar Z\)">\(\bar Z\)</span> smooth projective and <span class="math" data-tex="\(B\)">\(B\)</span> finite. The closed–open and curve Gysin sequences determine its constant-coefficient groups in degrees zero and one from those of <span class="math" data-tex="\(\bar Z\)">\(\bar Z\)</span>, the point modules of <span class="math" data-tex="\(B\)">\(B\)</span>, and their degree maps. Constant comparison on <span class="math" data-tex="\(\bar Z\)">\(\bar Z\)</span>, with trace and cup normalization, preserves all these maps. It consequently compares ordinary and compact degree-one groups on <span class="math" data-tex="\(Z\)">\(Z\)</span> as well. This applies both to algebraically closed field extension and to complex analytification; on the analytic side the same boundary maps are the oriented small-circle maps.</p>
+<p>Here is descent with finite coefficients, where dividing by <span class="math" data-tex="\(|G|\)">\(|G|\)</span> would be invalid. The augmented Čech complex for the cover is exact on every geometric stalk: choose one lift of that stalk and insert it as first coordinate to obtain the contracting homotopy. Its <span class="math" data-tex="\(p\)">\(p\)</span>-fold intersections are disjoint copies of <span class="math" data-tex="\(Z\)">\(Z\)</span> indexed by <span class="math" data-tex="\(G^p\)">\(G^p\)</span>. Apply ordinary cohomology to this resolution. The resulting double complex is the group-bar complex of the cohomology complex of <span class="math" data-tex="\(Z\)">\(Z\)</span>, tensored with <span class="math" data-tex="\(M\)">\(M\)</span>. Tensoring is exact because <span class="math" data-tex="\(M\)">\(M\)</span> is free over <span class="math" data-tex="\(A\)">\(A\)</span>. Filtering gives
+<span class="math math-display" data-tex="\[
+H^p\bigl(G,H^q(Z,A)\otimes_A M\bigr)
+\Longrightarrow H^{p+q}(Y,\mathcal L_{m,A}).
+\]">\[
+H^p\bigl(G,H^q(Z,A)\otimes_A M\bigr)
+\Longrightarrow H^{p+q}(Y,\mathcal L_{m,A}).
+\]</span>
+The comparison maps identify the rows <span class="math" data-tex="\(q=0,1\)">\(q=0,1\)</span>. In total degree one the only other datum is the differential from <span class="math" data-tex="\(H^0(G,H^1)\)">\(H^0(G,H^1)\)</span> to <span class="math" data-tex="\(H^2(G,H^0)\)">\(H^2(G,H^0)\)</span>; the same bar double-complex map preserves it. Its kernel and the group <span class="math" data-tex="\(H^1(G,H^0)\)">\(H^1(G,H^0)\)</span> therefore identify the two degree-one abutments. With compact support the cover is finite proper, so the identical Čech argument applies to compact cohomology. Here <span class="math" data-tex="\(H_c^0(Z,A)=0\)">\(H_c^0(Z,A)=0\)</span>, and degree one is simply <span class="math" data-tex="\((H_c^1(Z,A)\otimes_A M)^G\)">\((H_c^1(Z,A)\otimes_A M)^G\)</span>. The compact-to-ordinary maps commute with the comparison, proving the parabolic assertion.</p>
+<p>The finite-coefficient cohomology groups are finite by the earlier curve finiteness proof. Their inverse systems are Mittag–Leffler: at each fixed finite group the descending sequence of images stabilizes. Compatible inverse limits therefore have no extra degree-one <span class="math" data-tex="\(\varprojlim^1\)">\(\varprojlim^1\)</span> term; after tensoring with <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span> they give the stated coefficient comparison. The finite Betti cell complexes give the same limit. Pullback and trace are natural throughout. For a coefficient correspondence take a common torsion-basis cover on its parameter curve; there its coefficient map is a constant module map and its geometric maps are finite curve maps. The earlier curve comparison preserves those maps and their traces, so the descended comparison preserves the normalized Hecke and diamond actions whenever those correspondences have actually been constructed. On the uniformizing half-plane, the elliptic fibers are <span class="math" data-tex="\(\mathbf C/(\mathbf Z+z\mathbf Z)\)">\(\mathbf C/(\mathbf Z+z\mathbf Z)\)</span>; their torsion coordinates identify this compared system with the polynomial local system of Lemma 2.1. This proves the reduction, with its geometric and analytic foundations still explicit. ∎</p>
+<h2 id="3-what-the-congruence-relation-does-imply">3. What the congruence relation does imply</h2>
+<p>On the properly normalized <span class="math" data-tex="\(f\)">\(f\)</span>-constituent, the higher-weight congruence relation has the form</p>
+<span class="math math-display" data-tex="\[
+F+C_pF^{-1}=a_pI,
+\qquad
+F^2-a_pF+C_pI=0.
+\tag{13}
+\]">\[
+F+C_pF^{-1}=a_pI,
+\qquad
+F^2-a_pF+C_pI=0.
+\tag{13}
+\]</span>
+<p>For cohomology, <span class="math" data-tex="\(F\)">\(F\)</span> means geometric Frobenius; on the dual representation it means arithmetic Frobenius. The construction supplies the appropriate Hecke and diamond normalization. See [Deligne 1969, Proposition 4.8 and Theorem 4.9]. Formula (13) is an <strong>annihilating relation</strong>. Its conversion to a characteristic polynomial requires retaining more information.</p>
+<p><strong>Proposition 3.1 (corrected characteristic-polynomial deduction).</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be two-dimensional over a field <span class="math" data-tex="\(E\)">\(E\)</span> of characteristic zero. Let <span class="math" data-tex="\(F\in\operatorname{GL}(V)\)">\(F\in\operatorname{GL}(V)\)</span>, <span class="math" data-tex="\(a\in E\)">\(a\in E\)</span>, and <span class="math" data-tex="\(C\in E^\times\)">\(C\in E^\times\)</span>. Suppose</p>
+<span class="math math-display" data-tex="\[
+F+CF^{-1}=aI,\qquad \det F=C.
+\tag{14}
+\]">\[
+F+CF^{-1}=aI,\qquad \det F=C.
+\tag{14}
+\]</span>
+<p>Then
+<span class="math math-display" data-tex="\[
+\det(X-F)=X^2-aX+C.
+\tag{15}
+\]">\[
+\det(X-F)=X^2-aX+C.
+\tag{15}
+\]</span>
+Alternatively, the first assumption alone suffices if <span class="math" data-tex="\(F\)">\(F\)</span> is not scalar.</p>
+<p><em>Proof.</em> Multiplication by <span class="math" data-tex="\(F\)">\(F\)</span> gives <span class="math" data-tex="\(F^2-aF+CI=0\)">\(F^2-aF+CI=0\)</span>. Cayley–Hamilton, with <span class="math" data-tex="\(t=\operatorname{tr}F\)">\(t=\operatorname{tr}F\)</span>, gives <span class="math" data-tex="\(F^2-tF+CI=0\)">\(F^2-tF+CI=0\)</span> under the determinant assumption. Subtraction gives <span class="math" data-tex="\((t-a)F=0\)">\((t-a)F=0\)</span>. Since <span class="math" data-tex="\(F\)">\(F\)</span> is invertible, <span class="math" data-tex="\(t=a\)">\(t=a\)</span>, proving (15), including when <span class="math" data-tex="\(F\)">\(F\)</span> is scalar.</p>
+<p>Without the determinant assumption, suppose <span class="math" data-tex="\(F\)">\(F\)</span> is nonscalar. Its minimal polynomial cannot have degree one. It therefore has degree two and equals its monic degree-two characteristic polynomial. The displayed monic annihilating polynomial must equal that minimal polynomial. This proves the alternative. ∎</p>
+<p>Both the dimension and the missing determinant matter. For a concrete counterexample to the deduction without that determinant, take</p>
+<span class="math math-display" data-tex="\[
+F=2I_2,\qquad a=1,\qquad C=-2.
+\tag{16}
+\]">\[
+F=2I_2,\qquad a=1,\qquad C=-2.
+\tag{16}
+\]</span>
+<p>Then <span class="math" data-tex="\(F+CF^{-1}=I_2\)">\(F+CF^{-1}=I_2\)</span>, but
+<span class="math math-display" data-tex="\[
+\det(X-F)=(X-2)^2\ne X^2-X-2.
+\]">\[
+\det(X-F)=(X-2)^2\ne X^2-X-2.
+\]</span>
+This relation has the modular size and sign <span class="math" data-tex="\(C=\chi(2)2^{k-1}\)">\(C=\chi(2)2^{k-1}\)</span> when <span class="math" data-tex="\(k=2\)">\(k=2\)</span> and <span class="math" data-tex="\(\chi(2)=-1\)">\(\chi(2)=-1\)</span>, although the example is only a linear-algebra example, not a claimed modular constituent.</p>
+<p>For the actual representation, the local determinant <span class="math" data-tex="\(C_p\)">\(C_p\)</span> is a separate part of the construction. Proposition 3.1 proves the algebraic passage once it is available. The arbitrary-character determinant proof is still required: a cup pairing pairs a <span class="math" data-tex="\(\chi\)">\(\chi\)</span>-constituent with a <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span>-constituent, so the trivial-character weight-two pairing does not prove it. In particular, neither the relation (13) nor two-dimensionality alone fills that gap.</p>
+<p><strong>Lemma 3.2 (Fricke covariance and its determinant consequence).</strong> Suppose the fine arithmetic family and its cyclic-isogeny correspondences have been constructed. Fix <span class="math" data-tex="\(\zeta_N\)">\(\zeta_N\)</span>, a primitive <span class="math" data-tex="\(N\)">\(N\)</span>-th root of unity, over <span class="math" data-tex="\(\mathbf Q(\zeta_N)\)">\(\mathbf Q(\zeta_N)\)</span>. The Fricke correspondence takes <span class="math" data-tex="\((E,P)\)">\((E,P)\)</span> to <span class="math" data-tex="\((E/\langle P\rangle,\phi Q)\)">\((E/\langle P\rangle,\phi Q)\)</span>, where <span class="math" data-tex="\(e_N(P,Q)=\zeta_N\)">\(e_N(P,Q)=\zeta_N\)</span>. Its coefficient pullback gives an invertible operator <span class="math" data-tex="\(w\)">\(w\)</span> on parabolic cohomology. Write <span class="math" data-tex="\(B\)">\(B\)</span> for the cup pairing from the symmetric-power Weil pairing, valued in <span class="math" data-tex="\(\mathbf Q_\ell(1-k)\)">\(\mathbf Q_\ell(1-k)\)</span>. Then
+<span class="math math-display" data-tex="\[
+w^2=(-N)^m,\qquad B(wx,wy)=N^mB(x,y),\qquad
+\Psi(x,y):=B(x,wy)
+\]">\[
+w^2=(-N)^m,\qquad B(wx,wy)=N^mB(x,y),\qquad
+\Psi(x,y):=B(x,wy)
+\]</span>
+defines a nondegenerate alternating pairing on the full parabolic space. If its restriction to the two-dimensional <span class="math" data-tex="\(f\)">\(f\)</span>-space is nondegenerate, then
+<span class="math math-display" data-tex="\[
+\det W_{f,\lambda}=\chi_G^{-1}\chi_\ell^{1-k},
+\qquad
+\det V_{f,\lambda}=\chi_G\chi_\ell^{k-1}.
+\]">\[
+\det W_{f,\lambda}=\chi_G^{-1}\chi_\ell^{1-k},
+\qquad
+\det V_{f,\lambda}=\chi_G\chi_\ell^{k-1}.
+\]</span>
+The nondegeneracy of that <strong>restricted</strong> pairing is a separate primitive-factor assertion.</p>
+<p><em>Proof.</em> The point <span class="math" data-tex="\(\phi Q\)">\(\phi Q\)</span> is independent of the choice of <span class="math" data-tex="\(Q\)">\(Q\)</span>: the choices differ by multiples of <span class="math" data-tex="\(P\)">\(P\)</span>. It has exact order <span class="math" data-tex="\(N\)">\(N\)</span>, since <span class="math" data-tex="\((P,Q)\)">\((P,Q)\)</span> is a basis of <span class="math" data-tex="\(E[N]\)">\(E[N]\)</span>. The dual isogeny has kernel generated by <span class="math" data-tex="\(\phi Q\)">\(\phi Q\)</span>. To compute the second Fricke point, take <span class="math" data-tex="\(R\in E[N^2]\)">\(R\in E[N^2]\)</span> with <span class="math" data-tex="\([N]R=P\)">\([N]R=P\)</span>. Then <span class="math" data-tex="\(\phi R\in E&#x27;[N]\)">\(\phi R\in E&#x27;[N]\)</span>, and the pairing-adjoint identity proved in the elliptic Tate-module lesson gives
+<span class="math math-display" data-tex="\[
+e_N^{E&#x27;}(\phi Q,\phi R)=e_N^E(Q,\widehat\phi\phi R)
+=e_N^E(Q,P)=\zeta_N^{-1}.
+\]">\[
+e_N^{E&#x27;}(\phi Q,\phi R)=e_N^E(Q,\widehat\phi\phi R)
+=e_N^E(Q,P)=\zeta_N^{-1}.
+\]</span>
+The next chosen point is therefore <span class="math" data-tex="\(-\phi R\)">\(-\phi R\)</span>, whose image under <span class="math" data-tex="\(\widehat\phi\)">\(\widehat\phi\)</span> is <span class="math" data-tex="\(-P\)">\(-P\)</span>. Identifying the resulting marked curve with <span class="math" data-tex="\((E,P)\)">\((E,P)\)</span> uses <span class="math" data-tex="\([-1]\)">\([-1]\)</span>; the composite universal isogeny is <span class="math" data-tex="\([-N]\)">\([-N]\)</span>. On the symmetric-power coefficients it acts as <span class="math" data-tex="\((-N)^m\)">\((-N)^m\)</span>, proving the first identity. This works for composite <span class="math" data-tex="\(N\)">\(N\)</span> as well as prime <span class="math" data-tex="\(N\)">\(N\)</span>, since all torsion here is in characteristic zero.</p>
+<p>An isogeny of degree <span class="math" data-tex="\(N\)">\(N\)</span> multiplies the rank-two cohomological alternating pairing by <span class="math" data-tex="\(N\)">\(N\)</span>, by the Weil-pairing adjoint formula. Its <span class="math" data-tex="\(m\)">\(m\)</span>-th symmetric-power coefficient pairing is therefore multiplied by <span class="math" data-tex="\(N^m\)">\(N^m\)</span>. The base Fricke map is an isomorphism of the smooth curve, so preserves its degree-two trace. This proves the second identity on the parabolic cup pairing. The parity of <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\((-1)^{m+1}\)">\((-1)^{m+1}\)</span>: the coefficient pairing has parity <span class="math" data-tex="\((-1)^m\)">\((-1)^m\)</span> and exchanging two degree-one classes adds a minus sign. The adjoint of <span class="math" data-tex="\(w\)">\(w\)</span> is
+<span class="math" data-tex="\(w^\dagger=N^m w^{-1}=(-1)^m w\)">\(w^\dagger=N^m w^{-1}=(-1)^m w\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\Psi(y,x)=(-1)^{m+1}B(wx,y)
+=(-1)^{m+1}B(x,w^\dagger y)=-\Psi(x,y).
+\]">\[
+\Psi(y,x)=(-1)^{m+1}B(wx,y)
+=(-1)^{m+1}B(x,w^\dagger y)=-\Psi(x,y).
+\]</span>
+In characteristic zero skew symmetry implies alternation. Perfectness of <span class="math" data-tex="\(B\)">\(B\)</span> and invertibility of <span class="math" data-tex="\(w\)">\(w\)</span> prove perfectness of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> on the full space.</p>
+<p>If <span class="math" data-tex="\(\sigma(\zeta_N)=\zeta_N^u\)">\(\sigma(\zeta_N)=\zeta_N^u\)</span>, transport of the defining point condition gives
+<span class="math" data-tex="\(\sigma w_N\sigma^{-1}=\langle u\rangle w_N\)">\(\sigma w_N\sigma^{-1}=\langle u\rangle w_N\)</span>. Indeed <span class="math" data-tex="\(\sigma Q\)">\(\sigma Q\)</span> pairs to <span class="math" data-tex="\(\zeta_N^u\)">\(\zeta_N^u\)</span>; after choosing a point pairing to <span class="math" data-tex="\(\zeta_N\)">\(\zeta_N\)</span>, its image in the quotient is <span class="math" data-tex="\(u\)">\(u\)</span> times that point. Also <span class="math" data-tex="\(w_N\langle d\rangle=\langle d^{-1}\rangle w_N\)">\(w_N\langle d\rangle=\langle d^{-1}\rangle w_N\)</span>, directly from replacing <span class="math" data-tex="\(P\)">\(P\)</span> by <span class="math" data-tex="\(dP\)">\(dP\)</span>. On cohomology pullback reverses composition, so the covariance is <span class="math" data-tex="\(\sigma w\sigma^{-1}=w\langle u\rangle^*\)">\(\sigma w\sigma^{-1}=w\langle u\rangle^*\)</span>. On the <span class="math" data-tex="\(\chi\)">\(\chi\)</span>-eigenspace this gives
+<span class="math math-display" data-tex="\[
+\Psi(\sigma x,\sigma y)
+=\chi(u)^{-1}\chi_\ell(\sigma)^{1-k}\Psi(x,y).
+\]">\[
+\Psi(\sigma x,\sigma y)
+=\chi(u)^{-1}\chi_\ell(\sigma)^{1-k}\Psi(x,y).
+\]</span>
+For a nondegenerate alternating form on a two-dimensional space, the multiplier of a matrix is its determinant: expand <span class="math" data-tex="\(B(Ae_1,Ae_2)\)">\(B(Ae_1,Ae_2)\)</span> in a basis. This proves the two determinant formulas, the second by dualizing. No restriction of a globally perfect form to an arbitrary eigenspace is automatically perfect; a commuting algebra with a nilpotent operator can have an isotropic eigenline. That is why the primitive-factor premise has been retained. ∎</p>
+<h2 id="4-why-the-frobenius-eigenvalues-have-the-right-size">4. Why the Frobenius eigenvalues have the right size</h2>
+<p>For a smooth projective variety over <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>, the full Weil assertion is that every eigenvalue of geometric Frobenius on <span class="math" data-tex="\(H^n\)">\(H^n\)</span> is algebraic and has absolute value <span class="math" data-tex="\(p^{n/2}\)">\(p^{n/2}\)</span> under every complex embedding. The original proof is freely accessible in <a href="https://www.numdam.org/item/PMIHES_1974__43__273_0/">Deligne, <em>La conjecture de Weil I</em></a>, §§3–7. The following argument proves its tensor estimate and removes two auxiliary proof inputs from the earlier trace-formula exposition. The full projective assertion still requires the geometric pencil and vanishing-cycle steps identified after Lemma 4.0C. We retain its full scope rather than treating the theorem statement as an earlier proof.</p>
+<h3 id="4-0-the-tensor-estimate-and-the-remaining-projective-step">4.0. The tensor estimate and the remaining projective step</h3>
+<p><strong>Lemma 4.0A (similitudes on tensor coinvariants).</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be a nonzero symplectic space over a characteristic-zero <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic field. Let <span class="math" data-tex="\(G\)">\(G\)</span> be an open subgroup of <span class="math" data-tex="\(\operatorname{Sp}(V)\)">\(\operatorname{Sp}(V)\)</span>, and let <span class="math" data-tex="\(A\)">\(A\)</span> be a symplectic similitude of multiplier <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. On the coinvariants of <span class="math" data-tex="\(V^{\otimes2h}\)">\(V^{\otimes2h}\)</span> under <span class="math" data-tex="\(G\)">\(G\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span>, when it normalizes <span class="math" data-tex="\(G\)">\(G\)</span>, acts by the scalar <span class="math" data-tex="\(\mu^h\)">\(\mu^h\)</span>.</p>
+<p><em>Proof.</em> An open subgroup is Zariski dense in <span class="math" data-tex="\(\operatorname{Sp}(V)\)">\(\operatorname{Sp}(V)\)</span>. Here is the needed density check. In a symplectic basis the open cell with invertible upper-left block has coordinates
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}I&amp;0\\C&amp;I\end{pmatrix}
+\begin{pmatrix}B&amp;0\\0&amp;B^{-\mathsf t}\end{pmatrix}
+\begin{pmatrix}I&amp;D\\0&amp;I\end{pmatrix},
+\qquad B\in\operatorname{GL}_r,\quad C=C^{\mathsf t},\ D=D^{\mathsf t}.
+\]">\[
+\begin{pmatrix}I&amp;0\\C&amp;I\end{pmatrix}
+\begin{pmatrix}B&amp;0\\0&amp;B^{-\mathsf t}\end{pmatrix}
+\begin{pmatrix}I&amp;D\\0&amp;I\end{pmatrix},
+\qquad B\in\operatorname{GL}_r,\quad C=C^{\mathsf t},\ D=D^{\mathsf t}.
+\]</span>
+Its entries and inverse coordinates are rational functions with denominators powers of <span class="math" data-tex="\(\det B\)">\(\det B\)</span>. A polynomial vanishing on an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic ball in these coordinates is zero: vary one coordinate through infinitely many values, and induct on the number of coordinates. This cell is dense in the symplectic group. To check this last fact without a component assumption, the group acts transitively on symplectic bases by the successive choices of a nonzero vector, a vector pairing to one with it, and a symplectic basis of their complement. These parameter spaces are irreducible open vector spaces or affine bundles; induction gives irreducibility. Thus any open subgroup meeting the identity cell is dense. Invariant linear forms on the tensor space consequently have the same invariants under <span class="math" data-tex="\(G\)">\(G\)</span> and the full symplectic group; dualizing gives the same coinvariants.</p>
+<p>Extend scalars to contain <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c^2=\mu\)">\(c^2=\mu\)</span>. Then <span class="math" data-tex="\(c^{-1}A\)">\(c^{-1}A\)</span> is symplectic and acts identically on those coinvariants. The scalar <span class="math" data-tex="\(c\)">\(c\)</span> acts on the <span class="math" data-tex="\(2h\)">\(2h\)</span>-fold tensor by <span class="math" data-tex="\(c^{2h}=\mu^h\)">\(c^{2h}=\mu^h\)</span>. Descend the equality of linear maps to the original field. This uses no assertion about a basis of invariant contractions. ∎</p>
+<p><strong>Lemma 4.0B (fundamental estimate).</strong> Let <span class="math" data-tex="\(U_0\)">\(U_0\)</span> be a nonempty open of <span class="math" data-tex="\(\mathbf P^1_{\mathbf F_q}\)">\(\mathbf P^1_{\mathbf F_q}\)</span>, and <span class="math" data-tex="\(\mathcal V_0\)">\(\mathcal V_0\)</span> a lisse <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>-sheaf, <span class="math" data-tex="\(\ell\nmid q\)">\(\ell\nmid q\)</span>. Suppose it has a perfect alternating pairing into <span class="math" data-tex="\(\mathbf Q_\ell(-b)\)">\(\mathbf Q_\ell(-b)\)</span>, open geometric symplectic monodromy, and rational local characteristic polynomials. Then every local eigenvalue is algebraic and every complex conjugate at a closed point <span class="math" data-tex="\(x\)">\(x\)</span> has modulus <span class="math" data-tex="\(q_x^{b/2}\)">\(q_x^{b/2}\)</span>.</p>
+<p><em>Proof.</em> Fix the point being tested. Removing a different point makes <span class="math" data-tex="\(U_0\)">\(U_0\)</span> affine, and preserves geometric monodromy: a connected cover stays connected on a dense open. Write <span class="math" data-tex="\(d_x=[\kappa(x):\mathbf F_q]\)">\(d_x=[\kappa(x):\mathbf F_q]\)</span>. Rational characteristic polynomials and Newton's identities give rational traces <span class="math" data-tex="\(s_{x,n}=\operatorname{Tr}(F_x^n\mid\mathcal V_{0,x})\)">\(s_{x,n}=\operatorname{Tr}(F_x^n\mid\mathcal V_{0,x})\)</span>. On <span class="math" data-tex="\(\mathcal T_h=\mathcal V_0^{\otimes2h}\)">\(\mathcal T_h=\mathcal V_0^{\otimes2h}\)</span> the trace is <span class="math" data-tex="\(s_{x,n}^{2h}\ge0\)">\(s_{x,n}^{2h}\ge0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+f_{x,h}(t)=\det(1-F_xt^{d_x}\mid\mathcal T_{h,x})^{-1}
+=\exp\left(\sum_{n\ge1}\frac{s_{x,n}^{2h}}n t^{nd_x}\right)
+\]">\[
+f_{x,h}(t)=\det(1-F_xt^{d_x}\mid\mathcal T_{h,x})^{-1}
+=\exp\left(\sum_{n\ge1}\frac{s_{x,n}^{2h}}n t^{nd_x}\right)
+\]</span>
+has nonnegative rational Taylor coefficients. There are finitely many points of bounded degree, so <span class="math" data-tex="\(L_h=\prod_x f_{x,h}\)">\(L_h=\prod_x f_{x,h}\)</span> is a defined formal series with the same property, and the coefficient of any single factor is at most that of <span class="math" data-tex="\(L_h\)">\(L_h\)</span>.</p>
+<p>The curve trace formula expresses
+<span class="math math-display" data-tex="\[
+L_h(t)=\frac{\det(1-Ft\mid H_c^1(U,\mathcal T_h))}
+{\det(1-Ft\mid H_c^2(U,\mathcal T_h))}.
+\]">\[
+L_h(t)=\frac{\det(1-Ft\mid H_c^1(U,\mathcal T_h))}
+{\det(1-Ft\mid H_c^2(U,\mathcal T_h))}.
+\]</span>
+There is no <span class="math" data-tex="\(H_c^0\)">\(H_c^0\)</span>: a nonzero locally constant section on a connected affine curve has support the whole nonproper curve. Curve duality gives
+<span class="math" data-tex="\(H_c^2(U,\mathcal T_h)=(\mathcal T_{h,u})_{\pi_1(U)}(-1)\)">\(H_c^2(U,\mathcal T_h)=(\mathcal T_{h,u})_{\pi_1(U)}(-1)\)</span>. A linear geometric Frobenius operator on the coefficient space has multiplier <span class="math" data-tex="\(q^b\)">\(q^b\)</span>. Lemma 4.0A therefore makes its top-degree action the scalar <span class="math" data-tex="\(q^{bh+1}\)">\(q^{bh+1}\)</span>. The only possible poles of <span class="math" data-tex="\(L_h\)">\(L_h\)</span> are at <span class="math" data-tex="\(t=q^{-bh-1}\)">\(t=q^{-bh-1}\)</span>. Its numerator is rational: multiply the rational formal series <span class="math" data-tex="\(L_h\)">\(L_h\)</span> by the rational denominator; the result is a polynomial with those rational Taylor coefficients. Thus we may take its complex Taylor radius, which is at least <span class="math" data-tex="\(q^{-bh-1}\)">\(q^{-bh-1}\)</span>.</p>
+<p>Nonnegative coefficient domination implies that every <span class="math" data-tex="\(f_{x,h}\)">\(f_{x,h}\)</span> has radius at least this value. If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is an eigenvalue of <span class="math" data-tex="\(F_x\)">\(F_x\)</span>, then <span class="math" data-tex="\(\alpha^{2h}\)">\(\alpha^{2h}\)</span> is an eigenvalue on <span class="math" data-tex="\(\mathcal T_{h,x}\)">\(\mathcal T_{h,x}\)</span>, so that local factor has a pole of modulus <span class="math" data-tex="\(|\alpha|^{-2h/d_x}\)">\(|\alpha|^{-2h/d_x}\)</span>. Its numerator is one and no such pole cancels. Consequently
+<span class="math math-display" data-tex="\[
+|\alpha|\le q_x^{b/2+1/(2h)}.
+\]">\[
+|\alpha|\le q_x^{b/2+1/(2h)}.
+\]</span>
+The local polynomials are rational, so the argument applies to every conjugate of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Let <span class="math" data-tex="\(h\to\infty\)">\(h\to\infty\)</span>. The pairing makes <span class="math" data-tex="\(q_x^b/\alpha\)">\(q_x^b/\alpha\)</span> another eigenvalue: in a matrix, <span class="math" data-tex="\(A^{\mathsf t}\Psi A=q_x^b\Psi\)">\(A^{\mathsf t}\Psi A=q_x^b\Psi\)</span>, so <span class="math" data-tex="\(A\)">\(A\)</span> is similar to <span class="math" data-tex="\(q_x^b A^{-\mathsf t}\)">\(q_x^b A^{-\mathsf t}\)</span>. Applying the upper bound to this eigenvalue gives the matching lower bound. This proves the lemma. ∎</p>
+<p><strong>Lemma 4.0C (parabolic bound and power removal).</strong> Under Lemma 4.0B, an eigenvalue <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on parabolic <span class="math" data-tex="\(H^1(U,\mathcal V)\)">\(H^1(U,\mathcal V)\)</span> is algebraic and satisfies
+<span class="math math-display" data-tex="\[
+q^{b/2}\le |\alpha|\le q^{b/2+1}
+\]">\[
+q^{b/2}\le |\alpha|\le q^{b/2+1}
+\]</span>
+under every complex embedding. Moreover, suppose the even-dimensional middle-cohomology estimate
+<span class="math math-display" data-tex="\[
+q^{d/2-1/2}\le |\alpha|\le q^{d/2+1/2}
+\tag{4.0}
+\]">\[
+q^{d/2-1/2}\le |\alpha|\le q^{d/2+1/2}
+\tag{4.0}
+\]</span>
+has been proved for every smooth projective geometrically irreducible variety of even dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Then the full Weil assertion follows in every dimension and degree.</p>
+<p><em>Proof.</em> The symplectic representation has no fixed vectors, since the full symplectic group contains <span class="math" data-tex="\(-I\)">\(-I\)</span> and the coefficient characteristic is zero. Thus <span class="math" data-tex="\(H_c^2(U,\mathcal V)=0\)">\(H_c^2(U,\mathcal V)=0\)</span>. The trace formula gives <span class="math" data-tex="\(L(U_0,\mathcal V_0,t)=\det(1-Ft\mid H_c^1)\)">\(L(U_0,\mathcal V_0,t)=\det(1-Ft\mid H_c^1)\)</span>, a rational polynomial. Its Euler product converges absolutely and is nonzero for <span class="math" data-tex="\(|t|&lt;q^{-b/2-1}\)">\(|t|&lt;q^{-b/2-1}\)</span>: there are at most <span class="math" data-tex="\(q^d+1\)">\(q^d+1\)</span> closed points of degree <span class="math" data-tex="\(d\)">\(d\)</span>, each local eigenvalue has modulus <span class="math" data-tex="\(q^{db/2}\)">\(q^{db/2}\)</span>, and the resulting geometric series converges. Its roots consequently yield the upper bound on <span class="math" data-tex="\(H_c^1\)">\(H_c^1\)</span>, and hence on its parabolic image.</p>
+<p>For the lower bound we need only ordinary curve duality, not a separately stated <span class="math" data-tex="\(j_*\)">\(j_*\)</span>-duality theorem. It pairs <span class="math" data-tex="\(H_c^1(U,\mathcal V)\)">\(H_c^1(U,\mathcal V)\)</span> with <span class="math" data-tex="\(H^1(U,\mathcal V)\)">\(H^1(U,\mathcal V)\)</span>, with target <span class="math" data-tex="\(\mathbf Q_\ell(-b-1)\)">\(\mathbf Q_\ell(-b-1)\)</span>. The map <span class="math" data-tex="\(J:H_c^1\to H^1\)">\(J:H_c^1\to H^1\)</span> is self-adjoint up to the coefficient and degree signs, by the cup product. Therefore <span class="math" data-tex="\(\ker J\)">\(\ker J\)</span> is the annihilator of <span class="math" data-tex="\(\operatorname{im}J\)">\(\operatorname{im}J\)</span>: pair against all compact classes and use perfect duality. The induced pairing on its image is perfect. Frobenius eigenvalues on that image occur in pairs <span class="math" data-tex="\(\alpha,q^{b+1}/\alpha\)">\(\alpha,q^{b+1}/\alpha\)</span>. The upper bound for the latter gives the lower bound for the former. Equivalently this image is <span class="math" data-tex="\(H^1(\mathbf P^1,j_*\mathcal V)\)">\(H^1(\mathbf P^1,j_*\mathcal V)\)</span>: the quotient <span class="math" data-tex="\(j_*\mathcal V/j_!\mathcal V\)">\(j_*\mathcal V/j_!\mathcal V\)</span> is punctual, so compact <span class="math" data-tex="\(H^1\)">\(H^1\)</span> surjects onto it, while the degree-one edge map <span class="math" data-tex="\(H^1(j_*\mathcal V)\to H^1(U,\mathcal V)\)">\(H^1(j_*\mathcal V)\to H^1(U,\mathcal V)\)</span> is injective.</p>
+<p>Now let <span class="math" data-tex="\(X\)">\(X\)</span> have any dimension <span class="math" data-tex="\(d\)">\(d\)</span>, and let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> act on its middle cohomology. For every positive even integer <span class="math" data-tex="\(h\)">\(h\)</span>, Künneth puts <span class="math" data-tex="\(\alpha^h\)">\(\alpha^h\)</span> in the middle cohomology of <span class="math" data-tex="\(X^h\)">\(X^h\)</span>, of even dimension <span class="math" data-tex="\(hd\)">\(hd\)</span>. The algebraicity of <span class="math" data-tex="\(\alpha^h\)">\(\alpha^h\)</span> implies that of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, by the equation <span class="math" data-tex="\(Z^h-\alpha^h=0\)">\(Z^h-\alpha^h=0\)</span>. Applying (4.0), taking <span class="math" data-tex="\(h\)">\(h\)</span>-th roots and then letting <span class="math" data-tex="\(h\to\infty\)">\(h\to\infty\)</span> gives <span class="math" data-tex="\(|\alpha|=q^{d/2}\)">\(|\alpha|=q^{d/2}\)</span> under all embeddings. Finite extension of the base field replaces <span class="math" data-tex="\(q,\alpha\)">\(q,\alpha\)</span> by <span class="math" data-tex="\(q^a,\alpha^a\)">\(q^a,\alpha^a\)</span>, so the conclusion descends. Components can be made geometrically irreducible after such an extension; Frobenius before extension permutes them and its powers give the same modulus.</p>
+<p>Finally weak Lefschetz reduces degree <span class="math" data-tex="\(i&lt;d\)">\(i&lt;d\)</span> to a smooth projective section of dimension <span class="math" data-tex="\(i\)">\(i\)</span>, by successive injections (and isomorphisms until the last section). Duality reduces <span class="math" data-tex="\(i&gt;d\)">\(i&gt;d\)</span> to <span class="math" data-tex="\(2d-i&lt;d\)">\(2d-i&lt;d\)</span>. The needed weak Lefschetz range has an actual proof in the earlier smooth-duality lesson, Solution 5: the hyperplane complement is affine, affine vanishing and duality give <span class="math" data-tex="\(H_c^r=0\)">\(H_c^r=0\)</span> for <span class="math" data-tex="\(r&lt;d\)">\(r&lt;d\)</span>, and the closed–open sequence gives the stated injections. These steps prove every degree once (4.0) is proved. ∎</p>
+<p>The unresolved portion is <strong>(4.0)</strong>. The actual earlier trace-formula lesson, <em>The Riemann hypothesis over finite fields</em>, §§2–6, proves its rationality and three-term Leray reduction from a Lefschetz pencil, including the case where the nonzero vanishing cycles all lie in the radical. Its pencil lesson explicitly imports three geometric inputs: existence of the pencil, the general étale Picard–Lefschetz sequence, and the global assertions that the local inertia images generate monodromy and that the signed vanishing cycles are conjugate. Those are geometric proof obligations, not supplied by the tensor argument above. Rationality also uses the curve bound for covering curves and their twists, which Lemma 4.0D supplies below. The nodal resolution proved below supplies the Kuga–Sato compactification; it does not supply these arbitrary-dimensional pencil inputs.</p>
+<p>The constant-coefficient curve trace identity required below is constructed in §§4.0C.1–6. We use the actual earlier curve duality, proper base change and proper-factor Künneth proofs. The product trace is constructed from the curve traces; the normal-coordinate calculation supplies the required divisor orientation. Higher cohomological continuity, which the earlier direct-image lesson imports, remains an explicit foundational proof obligation. The argument below records each use of it.</p>
+<h3 id="4-0c-1-constant-curve-cohomology-and-its-proof-interfaces">4.0C.1. Constant curve cohomology and its proof interfaces</h3>
+<p>Let <span class="math" data-tex="\(C_0/\mathbf F_q\)">\(C_0/\mathbf F_q\)</span> be a smooth geometrically connected projective curve of genus <span class="math" data-tex="\(g\)">\(g\)</span>, let <span class="math" data-tex="\(k=\overline{\mathbf F}_q\)">\(k=\overline{\mathbf F}_q\)</span>, and put <span class="math" data-tex="\(C=C_0\times k\)">\(C=C_0\times k\)</span>. Fix <span class="math" data-tex="\(\ell\nmid q\)">\(\ell\nmid q\)</span>. We first work with <span class="math" data-tex="\(A=\mathbf Z/\ell^r\)">\(A=\mathbf Z/\ell^r\)</span>, <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, and write <span class="math" data-tex="\(A(1)=\mu_{\ell^r}\)">\(A(1)=\mu_{\ell^r}\)</span>. Twists will be retained until a compatible system of roots is chosen for a finite linear-algebra calculation.</p>
+<p>Here are the actual earlier interfaces used in this fragment.</p>
+<ol>
+<li><em>Pushforward, pullback and finite morphisms</em>, Lemma 6.1 and Theorem 6.2, proves topological invariance by its strictly henselian ring and stalk argument. Its Sections 2 and 5 supply the strict-local and closed-immersion functors. Localization with support is constructed from an injective resolution and sections supported on the closed set.</li>
+<li><em>The proper base change theorem</em>, Theorem 1.1, Sections 10--11 and Corollary 11.3, proves the canonical geometric-fibre comparison. No smooth-base-change theorem is an input. The pro-etale comparison needed below is proved directly by etale localization and the explicitly retained continuity prerequisite of <em>Pushforward, pullback and finite morphisms</em>, Section 2.</li>
+<li><em>Cohomological dimension and the Kunneth formula</em>, Lemma 8.4, Proposition 8.5 and Theorem 9.1, proves the tensor and proper-product comparisons with their actual external cup-product maps. We use one proper curve factor and a second curve factor, so the needed finite dimension bounds are the earlier curve bounds. Its Lemma 10.1 proves detection for bounded-below complexes supported on closed points. <em>Constructible sheaves</em>, Theorem 5.1 and Proposition 7.1, supplies the actually written Noetherian constructible-subobject proof used in that detection. The general open-product comparison of Theorem 10.2 is not imported: its field-extension input passes through smooth base change. The special coordinate comparison is proved below directly.</li>
+<li><em>Poincare duality for curves</em>, Section 2, Lemmas 4.1--4.2, Sections 8--11 and Section 12, proves the degree-normalized curve trace, point orientation and perfect curve cup pairing. Its degree-one proof uses the explicit finite-constant embeddings and effacement of Section 9 and the diagram chase of Section 10. Its separately stated comparison with a chosen Weil-pairing sign is not an input here.</li>
+<li><em>The Picard functor and the Picard scheme of a curve</em>, Theorem 2.1, Sections 4--6, Proposition 7.1 and Theorem 7.2, constructs the normalized Picard functor, its charts and the genus-<span class="math" data-tex="\(g\)">\(g\)</span> Jacobian. Over the algebraically closed <span class="math" data-tex="\(k\)">\(k\)</span>, the chosen point of <span class="math" data-tex="\(C\)">\(C\)</span> permits the rigidification proof of Section 2; the section-free topology-comparison assertion of Section 3 is unnecessary. <em>Abelian varieties</em>, Theorems 6.1--6.2 and 7.1--7.2, proves multiplication, the prime-to-characteristic torsion ranks and their surjective transition maps.</li>
+<li><em>Brauer groups and Tsen's theorem</em>, Theorem 5.1, its following finite-coefficient-field paragraph and Corollary 6.1, proves the <span class="math" data-tex="\(C_1\)">\(C_1\)</span> and cohomological-dimension assertions for every transcendence-degree-one extension of the algebraically closed <span class="math" data-tex="\(k\)">\(k\)</span>. <em>The multiplicative group on a curve</em>, Sections 4--6, proves the rational-units vanishing, divisor cocycles and Kummer degree calculation. The point calculation below can consequently use <span class="math" data-tex="\(C_1\)">\(C_1\)</span> directly.</li>
+</ol>
+<p>Thus Kummer, the divisor degree sequence and those multiplication proofs give
+<span class="math math-display" data-tex="\[
+ H^0(C,A)=A,\qquad H^1(C,A)\simeq A^{2g},\qquad
+ H^2(C,A(1))\xrightarrow[\deg]{\sim}A,
+ \qquad H^i(C,A)=0\ (i&gt;2).
+ \tag{CT1}
+\]">\[
+ H^0(C,A)=A,\qquad H^1(C,A)\simeq A^{2g},\qquad
+ H^2(C,A(1))\xrightarrow[\deg]{\sim}A,
+ \qquad H^i(C,A)=0\ (i&gt;2).
+ \tag{CT1}
+\]</span>
+For precision, Kummer identifies <span class="math" data-tex="\(H^1(C,A(1))\)">\(H^1(C,A(1))\)</span> with <span class="math" data-tex="\(J[\ell^r](k)\)">\(J[\ell^r](k)\)</span>, because constants have <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span>-th roots and a torsion line bundle has degree zero. The proved multiplication theorem makes this group free of rank <span class="math" data-tex="\(2g\)">\(2g\)</span>. In degree two the earlier valuation-sequence and rational-units calculation identifies <span class="math" data-tex="\(H^2(C,A(1))\)">\(H^2(C,A(1))\)</span> with <span class="math" data-tex="\(\operatorname{Pic}(C)/\ell^r\)">\(\operatorname{Pic}(C)/\ell^r\)</span>. Multiplication on <span class="math" data-tex="\(J(k)\)">\(J(k)\)</span> is surjective, so the degree map identifies this quotient with <span class="math" data-tex="\(A\)">\(A\)</span>. A point has degree one and hence trace one. These explanations bind the stated Picard input of the older curve-cohomology exposition to the actual written Picard and multiplication proofs.</p>
+<p>Kummer is available on the product as well: an <span class="math" data-tex="\(n\)">\(n\)</span>-th root of a unit is obtained on the finite etale cover defined by <span class="math" data-tex="\(Z^n-u\)">\(Z^n-u\)</span>, whose derivative is a unit when <span class="math" data-tex="\(n\)">\(n\)</span> is invertible. Its connecting map therefore defines the first Chern class of every line bundle used below. Cup products come from the coefficient multiplication and the derived tensor product. Exchanging homogeneous tensor factors of degrees <span class="math" data-tex="\(a,b\)">\(a,b\)</span> multiplies them by <span class="math" data-tex="\((-1)^{ab}\)">\((-1)^{ab}\)</span>; invariance of coefficient multiplication under that symmetry gives the graded commutativity used in the proof.</p>
+<p>The curve pairing
+<span class="math math-display" data-tex="\[
+ H^i(C,A)\times H^{2-i}(C,A(1))
+ \longrightarrow A,\qquad (a,b)\longmapsto\operatorname{tr}_C(a\cup b)
+ \tag{CT2}
+\]">\[
+ H^i(C,A)\times H^{2-i}(C,A(1))
+ \longrightarrow A,\qquad (a,b)\longmapsto\operatorname{tr}_C(a\cup b)
+ \tag{CT2}
+\]</span>
+is perfect by the inspected curve duality proof. All its groups are free. Consequently finite-coefficient Kunneth has no Tor terms for <span class="math" data-tex="\(C\times C\)">\(C\times C\)</span>. This assertion can also be checked directly: a bounded complex with free cohomology is quasi-isomorphic to the sum of its cohomology groups in their degrees, by lifting a basis of each group to cycles.</p>
+<h3 id="4-0c-2-the-smooth-divisor-orientation-on-the-product">4.0C.2. The smooth-divisor orientation on the product</h3>
+<p><strong>Lemma 4.0C.2.</strong> Let <span class="math" data-tex="\(X/k\)">\(X/k\)</span> be a smooth surface, let <span class="math" data-tex="\(D\subset X\)">\(D\subset X\)</span> be a smooth effective Cartier divisor, and write <span class="math" data-tex="\(i:D\hookrightarrow X\)">\(i:D\hookrightarrow X\)</span>, <span class="math" data-tex="\(j:X-D\hookrightarrow X\)">\(j:X-D\hookrightarrow X\)</span>. Curve orientation, etale excision and the coordinate calculation below give
+<span class="math math-display" data-tex="\[
+ Ri^!A=A_D(-1)[-2].
+ \tag{CT3}
+\]">\[
+ Ri^!A=A_D(-1)[-2].
+ \tag{CT3}
+\]</span>
+The oriented map <span class="math" data-tex="\(i_*A_D\longrightarrow A_X(1)[2]\)">\(i_*A_D\longrightarrow A_X(1)[2]\)</span> sends <span class="math" data-tex="\(1\)">\(1\)</span> to the Kummer class <span class="math" data-tex="\(c_1(\mathcal O_X(D))\)">\(c_1(\mathcal O_X(D))\)</span>. It gives maps
+<span class="math math-display" data-tex="\[
+ i_*:H^a(D,A(b))\longrightarrow H^{a+2}(X,A(b+1))
+ \tag{CT4}
+\]">\[
+ i_*:H^a(D,A(b))\longrightarrow H^{a+2}(X,A(b+1))
+ \tag{CT4}
+\]</span>
+satisfying
+<span class="math math-display" data-tex="\[
+ i_*(u\cup i^*v)=i_*u\cup v.
+ \tag{CT5}
+\]">\[
+ i_*(u\cup i^*v)=i_*u\cup v.
+ \tag{CT5}
+\]</span></p>
+<p><em>Proof.</em> We first give the point calculation, then the product calculation and its etale excision. The result applies to the smooth surface <span class="math" data-tex="\(C\times C\)">\(C\times C\)</span> and all its graph and diagonal divisors, for every curve in the stated scope.</p>
+<p>Let <span class="math" data-tex="\(i_0:\{0\}\hookrightarrow\mathbf A^1\)">\(i_0:\{0\}\hookrightarrow\mathbf A^1\)</span> and <span class="math" data-tex="\(j_0:\mathbf G_m\hookrightarrow\mathbf A^1\)">\(j_0:\mathbf G_m\hookrightarrow\mathbf A^1\)</span>. The earlier point proof gives
+<span class="math math-display" data-tex="\[
+ Ri_0^!A=A(-1)[-2].
+ \tag{CT6}
+\]">\[
+ Ri_0^!A=A(-1)[-2].
+ \tag{CT6}
+\]</span>
+Here is also a direct proof of that curve-trait calculation from the inspected <span class="math" data-tex="\(C_1\)">\(C_1\)</span> input. The strict henselization of a smooth curve local ring is a henselian DVR with residue field <span class="math" data-tex="\(k\)">\(k\)</span>. Its fraction field <span class="math" data-tex="\(L\)">\(L\)</span> is algebraic over the curve function field, since its pointed etale neighbourhoods have finite separable generic extensions. Thus <span class="math" data-tex="\(\operatorname{trdeg}_kL=1\)">\(\operatorname{trdeg}_kL=1\)</span>. The proved Tsen/cohomological-dimension result gives <span class="math" data-tex="\(H^a(L,A)=0\)">\(H^a(L,A)=0\)</span> for <span class="math" data-tex="\(a&gt;1\)">\(a&gt;1\)</span>. Every unit of the henselian DVR has an <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span>-th root: first take its residue root in <span class="math" data-tex="\(k\)">\(k\)</span>, then lift the simple root of <span class="math" data-tex="\(Z^{\ell^r}-u\)">\(Z^{\ell^r}-u\)</span>, whose derivative is a unit. Kummer therefore identifies
+<span class="math math-display" data-tex="\[
+ H^1(L,A(1))=L^\times/L^{\times\ell^r}
+ \xrightarrow[\operatorname{val}]{\sim} A.
+\]">\[
+ H^1(L,A(1))=L^\times/L^{\times\ell^r}
+ \xrightarrow[\operatorname{val}]{\sim} A.
+\]</span>
+With its twist restored, <span class="math" data-tex="\(H^1(L,A)=A(-1)\)">\(H^1(L,A)=A(-1)\)</span>. The punctured-trait direct image has exactly these groups on its closed stalk; this follows from the actual strict-local higher-image formula. The localization triangle has middle term <span class="math" data-tex="\(A\)">\(A\)</span>, and its map to the degree-zero group of that direct image is the identity. Its supported cone therefore has exactly <span class="math" data-tex="\(A(-1)\)">\(A(-1)\)</span> in degree two. Orient its Kummer boundary by valuation <span class="math" data-tex="\(+1\)">\(+1\)</span>. Changing a uniformizer by a unit leaves this class fixed. This proves (CT6) from curve and henselian calculations alone, with the same local conclusion as the earlier Lemma 4.2.</p>
+<p>The same calculation proves the following <em>specific</em> field comparison. For an extension <span class="math" data-tex="\(L/k\)">\(L/k\)</span> of separably closed fields, the canonical comparison for <span class="math" data-tex="\(j_0:\mathbf G_m\hookrightarrow\mathbf A^1\)">\(j_0:\mathbf G_m\hookrightarrow\mathbf A^1\)</span>, with constant coefficient <span class="math" data-tex="\(A\)">\(A\)</span>, is an isomorphism after base change to <span class="math" data-tex="\(L\)">\(L\)</span>. Away from zero it is the identity. At zero its degree-zero map is the identity on <span class="math" data-tex="\(A\)">\(A\)</span>, its degree-one map takes the Kummer generator <span class="math" data-tex="\(t\)">\(t\)</span> to the same valuation-one generator, and all higher groups vanish. If <span class="math" data-tex="\(L\)">\(L\)</span> is imperfect, pass to its algebraic closure: the extension is purely inseparable, so the actually proved topological invariance applies to both affine schemes and the canonical comparison. Over that algebraically closed field the preceding strict-trait and <span class="math" data-tex="\(C_1\)">\(C_1\)</span> calculation applies. Thus this special comparison is proved by stalks without a general field-extension base-change theorem.</p>
+<p>Consider now <span class="math" data-tex="\(B=\mathbf P^1\times\mathbf A^1\)">\(B=\mathbf P^1\times\mathbf A^1\)</span>, with projection <span class="math" data-tex="\(q:B\to\mathbf A^1\)">\(q:B\to\mathbf A^1\)</span>, and the open immersion <span class="math" data-tex="\(h:\mathbf P^1\times\mathbf G_m\hookrightarrow B\)">\(h:\mathbf P^1\times\mathbf G_m\hookrightarrow B\)</span>. Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be the cone of the canonical map
+<span class="math math-display" data-tex="\[
+ q^{-1}Rj_{0,*}A\longrightarrow Rh_*A.
+ \tag{CT6a}
+\]">\[
+ q^{-1}Rj_{0,*}A\longrightarrow Rh_*A.
+ \tag{CT6a}
+\]</span>
+Off <span class="math" data-tex="\(\mathbf P^1\times\{0\}\)">\(\mathbf P^1\times\{0\}\)</span> this map is the identity. It is also an isomorphism at the points over the generic point <span class="math" data-tex="\(\eta\)">\(\eta\)</span> of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>. Indeed its strict localization there is <span class="math" data-tex="\(\operatorname{Spec}L\)">\(\operatorname{Spec}L\)</span>, where <span class="math" data-tex="\(L=k(u)^{\mathrm{sep}}\)">\(L=k(u)^{\mathrm{sep}}\)</span>. Restrict along this pro-etale map. At each pointed etale neighbourhood, higher images commute with that restriction by slice adjunction and the geometric-stalk formula (2.2) of the direct-image lesson. Passing to the affine limit uses precisely its cohomological-continuity prerequisite (2.3). The resulting comparison is the special <span class="math" data-tex="\(j_0\)">\(j_0\)</span> field comparison over <span class="math" data-tex="\(L\)">\(L\)</span>, which was just proved. The exact inverse-image stalk formula detects every original stalk over <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Consequently every cohomology sheaf of <span class="math" data-tex="\(Q\)">\(Q\)</span> is supported on closed points of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Here is the closed-point detection used at this step. On a Noetherian scheme a torsion sheaf supported on closed points is the filtered union of constructible subsheaves, by the actual subobject and approximation proofs of <em>Constructible sheaves</em>, Theorem 5.1 and Proposition 7.1. Each such subsheaf has finite support: a constructible set of closed points contains the generic points of its finitely many closure components; those components must therefore be points. It is exact closed pushforward from that finite set. Over the algebraically closed <span class="math" data-tex="\(k\)">\(k\)</span>, sections on each of these points are exact and supply its stalk. Each finite-support subsheaf thus has zero higher cohomology and is generated by global sections. Qcqs cohomological continuity for filtered sheaves extends both assertions to their union. A bounded-below complex with such cohomology sheaves has hypercohomology spectral sequence with only column zero. Every total-degree diagonal is finite, and hence its global cohomology in degree <span class="math" data-tex="\(a\)">\(a\)</span> is <span class="math" data-tex="\(\Gamma(B,H^a(Q))\)">\(\Gamma(B,H^a(Q))\)</span>. If these groups all vanish, global generation makes every cohomology sheaf zero. This is the proof at the needed bounded-below scope of the inspected Lemma 10.1; it requires no higher-dimensional trace or smooth base change.</p>
+<p>The canonical proper-factor Kunneth maps compute the two global-section complexes in (CT6a) as
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ R\Gamma(B,q^{-1}Rj_{0,*}A)
+ &amp;\simeq R\Gamma(\mathbf P^1,A)\otimes_A^L
+             R\Gamma(\mathbf A^1,Rj_{0,*}A),\\
+ R\Gamma(\mathbf P^1\times\mathbf G_m,A)
+ &amp;\simeq R\Gamma(\mathbf P^1,A)\otimes_A^L
+             R\Gamma(\mathbf G_m,A).
+ \end{aligned}
+ \tag{CT6b}
+\]">\[
+ \begin{aligned}
+ R\Gamma(B,q^{-1}Rj_{0,*}A)
+ &amp;\simeq R\Gamma(\mathbf P^1,A)\otimes_A^L
+             R\Gamma(\mathbf A^1,Rj_{0,*}A),\\
+ R\Gamma(\mathbf P^1\times\mathbf G_m,A)
+ &amp;\simeq R\Gamma(\mathbf P^1,A)\otimes_A^L
+             R\Gamma(\mathbf G_m,A).
+ \end{aligned}
+ \tag{CT6b}
+\]</span>
+These are exactly Theorem 9.1 with one proper curve factor; its tensor argument uses only the known finite cohomological dimensions of the curves here. Derived composition identifies <span class="math" data-tex="\(R\Gamma(\mathbf A^1,Rj_{0,*}A)\)">\(R\Gamma(\mathbf A^1,Rj_{0,*}A)\)</span> with <span class="math" data-tex="\(R\Gamma(\mathbf G_m,A)\)">\(R\Gamma(\mathbf G_m,A)\)</span>. The counits defining the external products show that (CT6a) induces the identity under these identifications. Thus <span class="math" data-tex="\(R\Gamma(B,Q)=0\)">\(R\Gamma(B,Q)=0\)</span>, and the preceding detection gives <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>.</p>
+<p>Restrict this comparison to the affine open <span class="math" data-tex="\(\mathbf A^1\times\mathbf A^1\)">\(\mathbf A^1\times\mathbf A^1\)</span>. The localization triangle for <span class="math" data-tex="\(\{0\}\subset\mathbf A^1\)">\(\{0\}\subset\mathbf A^1\)</span>, pulled back by its coordinate projection, now identifies the supported complex for the coordinate line with <span class="math" data-tex="\(A_{\mathbf A^1}(-1)[-2]\)">\(A_{\mathbf A^1}(-1)[-2]\)</span>. Its orientation is the Kummer boundary of the first coordinate. This proves the coordinate-divisor calculation from the point calculation and proper-factor Kunneth.</p>
+<p>Finally, locally near a point of <span class="math" data-tex="\(D\)">\(D\)</span>, choose an equation <span class="math" data-tex="\(t\)">\(t\)</span> for it and a second function <span class="math" data-tex="\(u\)">\(u\)</span> whose differential is nonzero along <span class="math" data-tex="\(D\)">\(D\)</span>. The smooth-coordinate criterion makes <span class="math" data-tex="\((t,u):X\to\mathbf A^2\)">\((t,u):X\to\mathbf A^2\)</span> etale on a neighbourhood: their two differentials give an invertible minor in a standard smooth presentation. This is the criterion actually proved in <em>Formally smooth, unramified and etale ring maps</em>, Theorems 3.1, 4.1 and 5.1, and <em>Smooth algebras over a field and the Jacobian criterion</em>, Theorem 2.1. Such neighbourhoods around closed points cover <span class="math" data-tex="\(D\)">\(D\)</span>; any nonempty omitted locus of this finite-type curve would contain a closed point.</p>
+<p>Etale excision identifies the pulled-back coordinate localization triangle with that for <span class="math" data-tex="\(D\)">\(D\)</span>. This particular base change is formal: the pointed etale neighbourhoods of an etale <span class="math" data-tex="\(V\to Z\)">\(V\to Z\)</span> at <span class="math" data-tex="\(\bar v\)">\(\bar v\)</span> and those of <span class="math" data-tex="\(Z\)">\(Z\)</span> at its image have cofinal common refinements, obtained by their fibre products with <span class="math" data-tex="\(V\)">\(V\)</span> and the chosen lift. Their strict localizations are canonically isomorphic, and so are the complements of the pulled-back divisor. Equivalently, apply the direct-image presheaf/stalk formula (2.2) to these cofinal categories; slice restriction preserves acyclicity. This proves the canonical etale comparison for the open direct images, and closed direct image commutes by its stalk formula. It proves (CT3). The orientation is the boundary of the pulled-back normal coordinate. If <span class="math" data-tex="\(t&#x27;=vt\)">\(t&#x27;=vt\)</span> is another equation, the Kummer difference is the class of a unit extending across <span class="math" data-tex="\(D\)">\(D\)</span>, so its localization boundary is zero. The local rank-one orientations consequently glue.</p>
+<p>Here is the sign of the supported Kummer class explicitly. Use the divisor-cocycle convention of <em>The multiplicative group on a curve</em>, Section 5: local rational lifts of a divisor have transition <span class="math" data-tex="\(f_j/f_i\)">\(f_j/f_i\)</span>, so the divisor connecting map is <span class="math" data-tex="\(D\mapsto[\mathcal O_X(-D)]\)">\(D\mapsto[\mathcal O_X(-D)]\)</span>. If <span class="math" data-tex="\(b(t)\in H^1_D(X,\mathbf G_m)\)">\(b(t)\in H^1_D(X,\mathbf G_m)\)</span> is the localization boundary of the normal parameter, its image therefore represents <span class="math" data-tex="\(\mathcal O_X(-D)\)">\(\mathcal O_X(-D)\)</span>. The framed bundle <span class="math" data-tex="\((\mathcal O_X(D),1)\)">\((\mathcal O_X(D),1)\)</span> gives the supported class <span class="math" data-tex="\(-b(t)\)">\(-b(t)\)</span>: its local frame is <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span>.</p>
+<p>The Kummer and localization connecting maps anticommute. This follows on their double complex: the second differential on a row of cohomological degree <span class="math" data-tex="\(a\)">\(a\)</span> is multiplied by <span class="math" data-tex="\((-1)^a\)">\((-1)^a\)</span>, so exchanging the two degree-one boundaries contributes <span class="math" data-tex="\(-1\)">\(-1\)</span>. If <span class="math" data-tex="\(\kappa(t)\in H^1(X-D,A(1))\)">\(\kappa(t)\in H^1(X-D,A(1))\)</span> is the Kummer class of the normal parameter, the supported Kummer class of <span class="math" data-tex="\((\mathcal O_X(D),1)\)">\((\mathcal O_X(D),1)\)</span> is consequently
+<span class="math math-display" data-tex="\[
+ \partial_{\mathrm{Kum},D}(-b(t))
+ =-\partial_{\mathrm{Kum},D}\partial_{\mathrm{loc},\mathbf G_m}(t)
+ =\partial_{\mathrm{loc},A(1)}\kappa(t).
+ \tag{CT3a}
+\]">\[
+ \partial_{\mathrm{Kum},D}(-b(t))
+ =-\partial_{\mathrm{Kum},D}\partial_{\mathrm{loc},\mathbf G_m}(t)
+ =\partial_{\mathrm{loc},A(1)}\kappa(t).
+ \tag{CT3a}
+\]</span>
+The last class is the valuation-<span class="math" data-tex="\(+1\)">\(+1\)</span> orientation above. Forgetting support gives <span class="math" data-tex="\(c_1(\mathcal O_X(D))\)">\(c_1(\mathcal O_X(D))\)</span>. This proves the positive sign with the actual divisor-cocycle convention. In particular it supplies the required normalization without adopting the inaccurate intermediate sentence in the older point proof that calls its divisor connecting map <span class="math" data-tex="\(D\mapsto\mathcal O_X(D)\)">\(D\mapsto\mathcal O_X(D)\)</span>. Naturality of the cochains under the smooth normal-coordinate map and their unit invariance prove the same identification on all overlaps.</p>
+<p>Transposing the oriented identification (CT3) under the closed-immersion adjunction supplies the map in (CT4). The closed projection formula is particularly elementary: on a stalk in <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(i_*M\otimes N\)">\(i_*M\otimes N\)</span> is <span class="math" data-tex="\(M\otimes i^*N\)">\(M\otimes i^*N\)</span>; outside <span class="math" data-tex="\(D\)">\(D\)</span> both sides are zero. Applying this identity to flat resolutions gives its derived version. Cup with the oriented supported class then gives (CT5), or equivalently the same equality follows by adjunction and associativity of evaluation. This proves all assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The coordinate argument uses the earlier proper-factor Kunneth proof and the written Noetherian constructible-subobject proof. It supplies the needed codimension-one orientation without using the general smooth-base-change theorem.</p>
+<h3 id="4-0c-3-a-product-trace-and-the-graph-normalization">4.0C.3. A product trace and the graph normalization</h3>
+<p>Put <span class="math" data-tex="\(S=C\times C\)">\(S=C\times C\)</span>, with projections <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span>. Kunneth gives
+<span class="math math-display" data-tex="\[
+ H^4(S,A(2))=H^2(C,A(1))\otimes_A H^2(C,A(1)).
+\]">\[
+ H^4(S,A(2))=H^2(C,A(1))\otimes_A H^2(C,A(1)).
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+ \operatorname{tr}_S=\operatorname{tr}_C\otimes\operatorname{tr}_C.
+ \tag{CT7}
+\]">\[
+ \operatorname{tr}_S=\operatorname{tr}_C\otimes\operatorname{tr}_C.
+ \tag{CT7}
+\]</span>
+The perfect pairings (CT2) and Kunneth also make the corresponding product pairings perfect; their tensor multiplication has the usual graded sign. This defines all product normalizations used below directly from curves.</p>
+<p><strong>Lemma 4.0C.3.</strong> For every section <span class="math" data-tex="\(s:C\to S\)">\(s:C\to S\)</span> of <span class="math" data-tex="\(p_1\)">\(p_1\)</span>, its oriented map from Lemma 4.0C.2 satisfies
+<span class="math math-display" data-tex="\[
+ \operatorname{tr}_S(s_*w)=\operatorname{tr}_C(w)
+ \quad(w\in H^2(C,A(1))).
+ \tag{CT8}
+\]">\[
+ \operatorname{tr}_S(s_*w)=\operatorname{tr}_C(w)
+ \quad(w\in H^2(C,A(1))).
+ \tag{CT8}
+\]</span>
+In particular, if <span class="math" data-tex="\(D=s(C)\)">\(D=s(C)\)</span>, then
+<span class="math math-display" data-tex="\[
+ \operatorname{tr}_S\bigl(c_1(\mathcal O_S(D))\cup v\bigr)
+ =\operatorname{tr}_C(s^*v)
+ \quad(v\in H^2(S,A(1))).
+ \tag{CT9}
+\]">\[
+ \operatorname{tr}_S\bigl(c_1(\mathcal O_S(D))\cup v\bigr)
+ =\operatorname{tr}_C(s^*v)
+ \quad(v\in H^2(S,A(1))).
+ \tag{CT9}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(K=R\Gamma(C,A)\)">\(K=R\Gamma(C,A)\)</span>. Canonical proper base change for the product identifies
+<span class="math" data-tex="\(Rp_{1,*}A_S\)">\(Rp_{1,*}A_S\)</span> with the constant complex <span class="math" data-tex="\(\underline K\)">\(\underline K\)</span>. The curve trace on <span class="math" data-tex="\(R\Gamma(C,A(1))[2]\)">\(R\Gamma(C,A(1))[2]\)</span> therefore supplies an actual morphism
+<span class="math math-display" data-tex="\[
+ T_{p_1}:Rp_{1,*}A_S(1)[2]\longrightarrow A_C.
+ \tag{CT10}
+\]">\[
+ T_{p_1}:Rp_{1,*}A_S(1)[2]\longrightarrow A_C.
+ \tag{CT10}
+\]</span>
+It is the constant curve trace on the second factor. Its composite with the trace on the first factor is exactly (CT7), by the external-product construction of Kunneth.</p>
+<p>Since <span class="math" data-tex="\(p_1s=\mathrm{id}\)">\(p_1s=\mathrm{id}\)</span>, push the oriented map of the section along <span class="math" data-tex="\(p_1\)">\(p_1\)</span> and compose with (CT10). This gives a morphism
+<span class="math math-display" data-tex="\[
+ A_C\longrightarrow Rp_{1,*}A_S(1)[2]
+ \xrightarrow{T_{p_1}}A_C.
+ \tag{CT11}
+\]">\[
+ A_C\longrightarrow Rp_{1,*}A_S(1)[2]
+ \xrightarrow{T_{p_1}}A_C.
+ \tag{CT11}
+\]</span>
+It is the identity. To check this, use the canonical geometric-stalk proper-base-change comparison. On the fibre over <span class="math" data-tex="\(x\)">\(x\)</span>, the section cuts out one reduced point of <span class="math" data-tex="\(C\)">\(C\)</span>. The image of <span class="math" data-tex="\(1\)">\(1\)</span> is the Kummer class of that point, which has degree and trace one by (CT1). The composite (CT11) is a map between degree-zero sheaves, so its identity on every stalk proves its identity as a morphism. This argument checks an actual map, not only equality of the dimensions of its source and target.</p>
+<p>Taking degree-two cohomology of (CT11) after a twist and using the trace on the base gives (CT8). Lemma 4.0C.2 gives <span class="math" data-tex="\(c_1(\mathcal O_S(D))=s_*1\)">\(c_1(\mathcal O_S(D))=s_*1\)</span> and the projection formula. Apply (CT8) to <span class="math" data-tex="\(w=s^*v\)">\(w=s^*v\)</span> to obtain (CT9). Both the diagonal and every graph <span class="math" data-tex="\((\mathrm{id},h)\)">\((\mathrm{id},h)\)</span> are such sections. A graph meets a vertical fibre transversely, even when <span class="math" data-tex="\(h\)">\(h\)</span> is inseparable: its first projection is the identity and its normal equation has derivative one in the fibre direction. Thus the degree-one fibre calculation used in (CT11) includes every Frobenius graph. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="4-0c-4-the-signed-diagonal-and-the-fixed-point-formula">4.0C.4. The signed diagonal and the fixed-point formula</h3>
+<p>Choose compatible primitive roots only to write the twists as copies of <span class="math" data-tex="\(A\)">\(A\)</span> during the following calculation. Let <span class="math" data-tex="\(e_{i,j}\)">\(e_{i,j}\)</span> be a basis of <span class="math" data-tex="\(H^i(C,A)\)">\(H^i(C,A)\)</span>, and let <span class="math" data-tex="\(e_{i,j}^{\vee}\)">\(e_{i,j}^{\vee}\)</span> be its <strong>right</strong> dual for (CT2):
+<span class="math math-display" data-tex="\[
+ \operatorname{tr}_C(e_{i,j}\cup e_{i,j&#x27;}^{\vee})=\delta_{jj&#x27;}.
+\]">\[
+ \operatorname{tr}_C(e_{i,j}\cup e_{i,j&#x27;}^{\vee})=\delta_{jj&#x27;}.
+\]</span>
+For the diagonal <span class="math" data-tex="\(\delta:C\hookrightarrow S\)">\(\delta:C\hookrightarrow S\)</span>, put <span class="math" data-tex="\(d=c_1(\mathcal O_S(\Delta))\)">\(d=c_1(\mathcal O_S(\Delta))\)</span>. We claim
+<span class="math math-display" data-tex="\[
+ d=\sum_{i=0}^2\sum_j(-1)^i e_{i,j}\otimes e_{i,j}^{\vee}.
+ \tag{CT12}
+\]">\[
+ d=\sum_{i=0}^2\sum_j(-1)^i e_{i,j}\otimes e_{i,j}^{\vee}.
+ \tag{CT12}
+\]</span>
+Here <span class="math" data-tex="\(a\otimes b\)">\(a\otimes b\)</span> denotes <span class="math" data-tex="\(p_1^*a\cup p_2^*b\)">\(p_1^*a\cup p_2^*b\)</span>.</p>
+<p>To prove it, Lemma 4.0C.3 gives, whenever <span class="math" data-tex="\(\deg a+\deg b=2\)">\(\deg a+\deg b=2\)</span>,
+<span class="math math-display" data-tex="\[
+ \operatorname{tr}_S(d\cup(a\otimes b))
+ =\operatorname{tr}_C(a\cup b).
+ \tag{CT13}
+\]">\[
+ \operatorname{tr}_S(d\cup(a\otimes b))
+ =\operatorname{tr}_C(a\cup b).
+ \tag{CT13}
+\]</span>
+Expand the component of <span class="math" data-tex="\(d\)">\(d\)</span> of bidegree <span class="math" data-tex="\((i,2-i)\)">\((i,2-i)\)</span> as <span class="math" data-tex="\(\sum_j e_{i,j}\otimes d_j\)">\(\sum_j e_{i,j}\otimes d_j\)</span>. In tensor multiplication, crossing the second factor of degree <span class="math" data-tex="\(2-i\)">\(2-i\)</span> past <span class="math" data-tex="\(a\)">\(a\)</span> of degree <span class="math" data-tex="\(2-i\)">\(2-i\)</span> contributes <span class="math" data-tex="\((-1)^i\)">\((-1)^i\)</span>. Reversing <span class="math" data-tex="\(e_{i,j}\cup a\)">\(e_{i,j}\cup a\)</span> contributes the same sign. Their product is one, so the left side of (CT13) in this component is
+<span class="math math-display" data-tex="\[
+ \sum_j\operatorname{tr}_C(a\cup e_{i,j})
+              \operatorname{tr}_C(d_j\cup b).
+\]">\[
+ \sum_j\operatorname{tr}_C(a\cup e_{i,j})
+              \operatorname{tr}_C(d_j\cup b).
+\]</span>
+Take <span class="math" data-tex="\(a=(-1)^i e_{i,j_0}^{\vee}\)">\(a=(-1)^i e_{i,j_0}^{\vee}\)</span>. Its first pairing is <span class="math" data-tex="\(\delta_{j_0j}\)">\(\delta_{j_0j}\)</span>, by graded commutativity. The right side of (CT13) is the pairing of <span class="math" data-tex="\((-1)^i e_{i,j_0}^{\vee}\)">\((-1)^i e_{i,j_0}^{\vee}\)</span> with <span class="math" data-tex="\(b\)">\(b\)</span>. Perfection forces <span class="math" data-tex="\(d_{j_0}=(-1)^i e_{i,j_0}^{\vee}\)">\(d_{j_0}=(-1)^i e_{i,j_0}^{\vee}\)</span>. This proves (CT12). This sign check agrees with <a href="https://stacks.math.columbia.edu/tag/0FGZ">Stacks, Lemma 45.7.7</a>; the normalization needed to apply it to our product has been proved in Lemmas 4.0C.2–3.</p>
+<p>Let <span class="math" data-tex="\(h:C\to C\)">\(h:C\to C\)</span> be a morphism and <span class="math" data-tex="\(\gamma_h=(\mathrm{id},h)\)">\(\gamma_h=(\mathrm{id},h)\)</span>. Pull back (CT12) to the graph and take the curve trace. The result is
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \deg\bigl(\gamma_h^*\mathcal O_S(\Delta)\bigr)
+ &amp;=\operatorname{tr}_C(\gamma_h^*d)\\
+ &amp;=\sum_{i,j}(-1)^i
+        \operatorname{tr}_C(e_{i,j}\cup h^*e_{i,j}^{\vee})\\
+ &amp;=\sum_{i=0}^2(-1)^i
+        \operatorname{Tr}(h^*\mid H^i(C,A))\quad\text{in }A.
+ \end{aligned}
+ \tag{CT14}
+\]">\[
+ \begin{aligned}
+ \deg\bigl(\gamma_h^*\mathcal O_S(\Delta)\bigr)
+ &amp;=\operatorname{tr}_C(\gamma_h^*d)\\
+ &amp;=\sum_{i,j}(-1)^i
+        \operatorname{tr}_C(e_{i,j}\cup h^*e_{i,j}^{\vee})\\
+ &amp;=\sum_{i=0}^2(-1)^i
+        \operatorname{Tr}(h^*\mid H^i(C,A))\quad\text{in }A.
+ \end{aligned}
+ \tag{CT14}
+\]</span>
+For the last equality, write <span class="math" data-tex="\(h^*\)">\(h^*\)</span> in the dual basis of degree <span class="math" data-tex="\(2-i\)">\(2-i\)</span>. The displayed pairings are its diagonal matrix entries. Replacing <span class="math" data-tex="\(2-i\)">\(2-i\)</span> by <span class="math" data-tex="\(i\)">\(i\)</span> preserves parity. The degree equality in the first line is the curve Kummer normalization, not a surface intersection theorem.</p>
+<p>If <span class="math" data-tex="\(h\ne\mathrm{id}\)">\(h\ne\mathrm{id}\)</span>, the section defining <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> pulls back to a nonzero section on <span class="math" data-tex="\(C\)">\(C\)</span>. Its zero divisor is the fixed-point scheme. This scheme is finite: a positive-dimensional equalizer in the integral curve would contain its generic point, and separatedness and reducedness would make <span class="math" data-tex="\(h\)">\(h\)</span> the identity. At a fixed point with parameter <span class="math" data-tex="\(z\)">\(z\)</span>, its length is
+<span class="math math-display" data-tex="\[
+ \operatorname{length}_k k[[z]]/(z-h^\#z).
+ \tag{CT15}
+\]">\[
+ \operatorname{length}_k k[[z]]/(z-h^\#z).
+ \tag{CT15}
+\]</span>
+The degree on the left of (CT14) is the sum of these lengths. Completion preserves finite module length. Thus (CT14) is the fixed-point formula modulo every <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span>, including inseparable maps and multiple fixed points.</p>
+<p>The free curve groups, their perfect pairing, their trace and the Kummer maps are compatible with coefficient reduction. In degree one this compatibility is the multiplication-by-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> transition on Jacobian torsion; the inspected earlier multiplication proof makes it surjective. Degree zero and degree two have ordinary reduction transitions. These finite systems have no degree-one derived-limit correction: their <span class="math" data-tex="\(H^0\)">\(H^0\)</span> transitions are surjective, and the map defining <span class="math" data-tex="\(\varprojlim^1\)">\(\varprojlim^1\)</span> on their products is surjective by recursively choosing lifts. Passing to <span class="math" data-tex="\(\mathbf Z_\ell\)">\(\mathbf Z_\ell\)</span>, then <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, therefore gives the exact identity
+<span class="math math-display" data-tex="\[
+ \deg\bigl(\gamma_h^*\mathcal O_S(\Delta)\bigr)
+ =\sum_{i=0}^2(-1)^i
+        \operatorname{Tr}(h^*\mid H^i(C,\mathbf Q_\ell)).
+ \tag{CT16}
+\]">\[
+ \deg\bigl(\gamma_h^*\mathcal O_S(\Delta)\bigr)
+ =\sum_{i=0}^2(-1)^i
+        \operatorname{Tr}(h^*\mid H^i(C,\mathbf Q_\ell)).
+ \tag{CT16}
+\]</span>
+Equality modulo all <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span> implies equality in <span class="math" data-tex="\(\mathbf Z_\ell\)">\(\mathbf Z_\ell\)</span>, because the intersection of its ideals <span class="math" data-tex="\(\ell^r\mathbf Z_\ell\)">\(\ell^r\mathbf Z_\ell\)</span> is zero.</p>
+<h3 id="4-0c-5-frobenius-over-every-finite-extension">4.0C.5. Frobenius over every finite extension</h3>
+<p>Let <span class="math" data-tex="\(\Phi:C\to C\)">\(\Phi:C\to C\)</span> be the base extension of the <span class="math" data-tex="\(q\)">\(q\)</span>-power Frobenius of <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, viewed as a <span class="math" data-tex="\(k\)">\(k\)</span>-morphism. Its degree is <span class="math" data-tex="\(q\)">\(q\)</span>. More generally <span class="math" data-tex="\(\deg\Phi^a=q^a\)">\(\deg\Phi^a=q^a\)</span>: if <span class="math" data-tex="\(K=k(C)\)">\(K=k(C)\)</span> is finite of degree <span class="math" data-tex="\(d\)">\(d\)</span> over <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span>, Frobenius identifies the degree-<span class="math" data-tex="\(d\)">\(d\)</span> extensions <span class="math" data-tex="\(K/k(t)\)">\(K/k(t)\)</span> and <span class="math" data-tex="\(K^{q^a}/k(t^{q^a})\)">\(K^{q^a}/k(t^{q^a})\)</span>. The tower formula over <span class="math" data-tex="\(k(t^{q^a})\)">\(k(t^{q^a})\)</span> gives
+<span class="math math-display" data-tex="\[
+ [K:K^{q^a}]=q^a.
+\]">\[
+ [K:K^{q^a}]=q^a.
+\]</span>
+Here <span class="math" data-tex="\(k\)">\(k\)</span> is perfect, so its coefficient field stays <span class="math" data-tex="\(k\)">\(k\)</span> under every power. A nonconstant morphism between projective smooth curves is finite: its fibres are zero-dimensional, and proper quasi-finite morphisms are finite. This identifies the function-field degree with the morphism degree.</p>
+<p>The fixed geometric points of <span class="math" data-tex="\(\Phi^a\)">\(\Phi^a\)</span> are exactly <span class="math" data-tex="\(C_0(\mathbf F_{q^a})\)">\(C_0(\mathbf F_{q^a})\)</span>. On an affine chart defined over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, being fixed says that all coordinates satisfy <span class="math" data-tex="\(x^{q^a}=x\)">\(x^{q^a}=x\)</span>, whose roots in <span class="math" data-tex="\(k\)">\(k\)</span> are exactly <span class="math" data-tex="\(\mathbf F_{q^a}\)">\(\mathbf F_{q^a}\)</span>. These charts cover the curve. The differential of <span class="math" data-tex="\(\Phi^a\)">\(\Phi^a\)</span> is zero. The fixed-point equation in (CT15) consequently has nonzero linear term and length one at every fixed point. Hence
+<span class="math math-display" data-tex="\[
+ \deg\bigl(\gamma_{\Phi^a}^*\mathcal O_S(\Delta)\bigr)
+ =\#C_0(\mathbf F_{q^a}).
+ \tag{CT17}
+\]">\[
+ \deg\bigl(\gamma_{\Phi^a}^*\mathcal O_S(\Delta)\bigr)
+ =\#C_0(\mathbf F_{q^a}).
+ \tag{CT17}
+\]</span>
+The operator on <span class="math" data-tex="\(H^0\)">\(H^0\)</span> is one. On <span class="math" data-tex="\(H^2\)">\(H^2\)</span> it is <span class="math" data-tex="\(q^a\)">\(q^a\)</span>: a degree-one line bundle has a Kummer class of trace one, and pullback multiplies its divisor degree by <span class="math" data-tex="\(\deg\Phi^a\)">\(\deg\Phi^a\)</span>. Twists may be trivialized for this <span class="math" data-tex="\(k\)">\(k\)</span>-linear morphism using the already chosen roots. Applying (CT16) gives
+<span class="math math-display" data-tex="\[
+ \#C_0(\mathbf F_{q^a})
+ =1+q^a-\operatorname{Tr}(F^a\mid H^1(C,\mathbf Q_\ell)),
+ \qquad F=\Phi^*,\quad a\geq1.
+ \tag{CT18}
+\]">\[
+ \#C_0(\mathbf F_{q^a})
+ =1+q^a-\operatorname{Tr}(F^a\mid H^1(C,\mathbf Q_\ell)),
+ \qquad F=\Phi^*,\quad a\geq1.
+ \tag{CT18}
+\]</span></p>
+<p>This <span class="math" data-tex="\(F\)">\(F\)</span> is geometric Frobenius on the untwisted cohomology. To check the convention, let <span class="math" data-tex="\(\sigma_q\)">\(\sigma_q\)</span> act on <span class="math" data-tex="\(k\)">\(k\)</span> by <span class="math" data-tex="\(a\mapsto a^q\)">\(a\mapsto a^q\)</span>, and let <span class="math" data-tex="\(\rho_{\sigma_q}\)">\(\rho_{\sigma_q}\)</span> be the resulting semilinear coefficient automorphism of <span class="math" data-tex="\(C\)">\(C\)</span>. On an affine algebra <span class="math" data-tex="\(R\otimes_{\mathbf F_q}k\)">\(R\otimes_{\mathbf F_q}k\)</span>, the absolute <span class="math" data-tex="\(q\)">\(q\)</span>-power Frobenius is the composite of
+<span class="math math-display" data-tex="\[
+ r\otimes a\longmapsto r^q\otimes a,
+ \qquad r\otimes a\longmapsto r\otimes a^q.
+ \tag{CT19}
+\]">\[
+ r\otimes a\longmapsto r^q\otimes a,
+ \qquad r\otimes a\longmapsto r\otimes a^q.
+ \tag{CT19}
+\]</span>
+Its pullback on constant-coefficient etale cohomology is canonically the identity. Here is the needed categorical check. For an affine etale <span class="math" data-tex="\(U=\operatorname{Spec}B\to X=\operatorname{Spec}R\)">\(U=\operatorname{Spec}B\to X=\operatorname{Spec}R\)</span>, relative Frobenius has the ring map
+<span class="math math-display" data-tex="\[
+ B\otimes_{R,F_R}R\longrightarrow B,
+ \qquad b\otimes r\longmapsto b^q r.
+ \tag{CT19a}
+\]">\[
+ B\otimes_{R,F_R}R\longrightarrow B,
+ \qquad b\otimes r\longmapsto b^q r.
+ \tag{CT19a}
+\]</span>
+It is integral, since every <span class="math" data-tex="\(b\)">\(b\)</span> satisfies its monic equation <span class="math" data-tex="\(Z^q-b^q\)">\(Z^q-b^q\)</span> over the image. Given a map from its source algebra to an algebraically closed field, its unique lift to <span class="math" data-tex="\(B\)">\(B\)</span> sends <span class="math" data-tex="\(b\)">\(b\)</span> to the unique <span class="math" data-tex="\(q\)">\(q\)</span>-th root of the image of <span class="math" data-tex="\(b\otimes1\)">\(b\otimes1\)</span>. The tensor relations make that lift agree with the specified map on <span class="math" data-tex="\(R\)">\(R\)</span>. This proves radiciality and surjectivity on geometric points.</p>
+<p>Both schemes of (CT19a) are etale over <span class="math" data-tex="\(X\)">\(X\)</span>, so their map is etale by the lifting proof of <em>Formally smooth, unramified and etale ring maps</em>, Proposition 7.4. Here is an affine check that it is an isomorphism. Its diagonal is a flat finitely presented quotient: it is a map between etale schemes over <span class="math" data-tex="\(U\)">\(U\)</span>, so the same proposition applies. Lemma 7.5 of that lesson proves the kernel of such a quotient is generated by an idempotent. Radiciality makes the diagonal surjective on underlying points; hence that idempotent is zero. Thus the diagonal is an isomorphism. The map (CT19a) is faithfully flat because it is etale and surjective. Faithful-flat descent now makes it an isomorphism: for a faithfully flat map <span class="math" data-tex="\(A&#x27;\to B\)">\(A&#x27;\to B\)</span>, the equalizer of <span class="math" data-tex="\(B\rightrightarrows B\otimes_{A&#x27;}B\)">\(B\rightrightarrows B\otimes_{A&#x27;}B\)</span> is <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>; this is checked after tensoring with <span class="math" data-tex="\(B\)">\(B\)</span>, where insertion of the unit contracts the augmented complex. Faithful flatness detects exactness. When the diagonal is an isomorphism the two arrows agree, so the equalizer is all of <span class="math" data-tex="\(B\)">\(B\)</span>, proving <span class="math" data-tex="\(A&#x27;=B\)">\(A&#x27;=B\)</span>.</p>
+<p>The relative Frobenius isomorphisms are natural in the affine etale objects, which form a basis for the site. They identify the inverse-image functor of absolute Frobenius with the identity on the small etale site. They fix the constant sheaf <span class="math" data-tex="\(A\)">\(A\)</span> and therefore its injective cohomology functor as well. This is also consistent with the inspected topological-invariance proof.</p>
+<p>Pullback by the second map in (CT19) is the usual arithmetic Galois action: on finite etale equations and their descent data it applies <span class="math" data-tex="\(\sigma_q\)">\(\sigma_q\)</span> to coefficients. The two maps commute, and their composite has identity pullback. Thus <span class="math" data-tex="\(\Phi^*\)">\(\Phi^*\)</span> is the inverse of arithmetic Frobenius, which is geometric Frobenius. This argument concerns the untwisted constant coefficients; a root trivialization of a Tate twist is not claimed to be Galois equivariant.</p>
+<h3 id="4-0c-6-the-determinant-logarithm-and-euler-product-identity">4.0C.6. The determinant, logarithm and Euler product identity</h3>
+<p><strong>Theorem 4.0C.6.</strong> Put
+<span class="math math-display" data-tex="\[
+ P_{C_0}(CT)=\det\bigl(1-TF\mid H^1(C,\mathbf Q_\ell)\bigr).
+\]">\[
+ P_{C_0}(CT)=\det\bigl(1-TF\mid H^1(C,\mathbf Q_\ell)\bigr).
+\]</span>
+Then, in <span class="math" data-tex="\(\mathbf Q_\ell[[T]]\)">\(\mathbf Q_\ell[[T]]\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ Z(C_0,T)
+ &amp;:=\exp\left(\sum_{a\geq1}
+       \#C_0(\mathbf F_{q^a})\frac{T^a}{a}\right)\\
+ &amp;=\prod_{x\in|C_0|}(1-T^{\deg x})^{-1}\\
+ &amp;=\frac{P_{C_0}(CT)}{(1-T)(1-qT)}.
+ \end{aligned}
+ \tag{CT20}
+\]">\[
+ \begin{aligned}
+ Z(C_0,T)
+ &amp;:=\exp\left(\sum_{a\geq1}
+       \#C_0(\mathbf F_{q^a})\frac{T^a}{a}\right)\\
+ &amp;=\prod_{x\in|C_0|}(1-T^{\deg x})^{-1}\\
+ &amp;=\frac{P_{C_0}(CT)}{(1-T)(1-qT)}.
+ \end{aligned}
+ \tag{CT20}
+\]</span>
+The polynomial lies in <span class="math" data-tex="\(\mathbf Z[T]\)">\(\mathbf Z[T]\)</span>, has degree <span class="math" data-tex="\(2g\)">\(2g\)</span>, and is independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. For every <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span>, the same identities over <span class="math" data-tex="\(\mathbf F_{q^b}\)">\(\mathbf F_{q^b}\)</span> have <span class="math" data-tex="\(q^b\)">\(q^b\)</span> and <span class="math" data-tex="\(F^b\)">\(F^b\)</span> in place of <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><em>Proof.</em> For a finite matrix <span class="math" data-tex="\(B\)">\(B\)</span> over a characteristic-zero field, differentiating its determinant by the adjugate formula gives
+<span class="math math-display" data-tex="\[
+ \frac{d}{dT}\log\det(1-TB)
+ =-\operatorname{Tr}\bigl(B(1-TB)^{-1}\bigr)
+ =-\sum_{a\geq1}\operatorname{Tr}(B^a)T^{a-1}.
+\]">\[
+ \frac{d}{dT}\log\det(1-TB)
+ =-\operatorname{Tr}\bigl(B(1-TB)^{-1}\bigr)
+ =-\sum_{a\geq1}\operatorname{Tr}(B^a)T^{a-1}.
+\]</span>
+Its constant term is one, so integrating formally yields
+<span class="math math-display" data-tex="\[
+ \log\det(1-TB)
+ =-\sum_{a\geq1}\operatorname{Tr}(B^a)\frac{T^a}{a}.
+ \tag{CT21}
+\]">\[
+ \log\det(1-TB)
+ =-\sum_{a\geq1}\operatorname{Tr}(B^a)\frac{T^a}{a}.
+ \tag{CT21}
+\]</span>
+Apply this to (CT18). The constant and degree-two terms give <span class="math" data-tex="\(-\log(1-T)\)">\(-\log(1-T)\)</span> and <span class="math" data-tex="\(-\log(1-qT)\)">\(-\log(1-qT)\)</span>; the degree-one term gives <span class="math" data-tex="\(\log P_{C_0}(CT)\)">\(\log P_{C_0}(CT)\)</span>. Exponentiation proves the last equality of (CT20), as a formal identity without an analytic convergence premise.</p>
+<p>A closed point of degree <span class="math" data-tex="\(d\)">\(d\)</span> contributes <span class="math" data-tex="\(d\)">\(d\)</span> geometric points over <span class="math" data-tex="\(\mathbf F_{q^a}\)">\(\mathbf F_{q^a}\)</span> precisely when <span class="math" data-tex="\(d\mid a\)">\(d\mid a\)</span>. Indeed its residue field is <span class="math" data-tex="\(\mathbf F_{q^d}\)">\(\mathbf F_{q^d}\)</span>; it has <span class="math" data-tex="\(d\)">\(d\)</span> embeddings into <span class="math" data-tex="\(\mathbf F_{q^a}\)">\(\mathbf F_{q^a}\)</span> in that case and none otherwise. Thus, if <span class="math" data-tex="\(b_d\)">\(b_d\)</span> counts closed points of degree <span class="math" data-tex="\(d\)">\(d\)</span>,
+<span class="math math-display" data-tex="\[
+ \#C_0(\mathbf F_{q^a})=\sum_{d\mid a}db_d.
+\]">\[
+ \#C_0(\mathbf F_{q^a})=\sum_{d\mid a}db_d.
+\]</span>
+There are only finitely many closed points of bounded degree, since the curve has finite type over a finite field. Expanding the logarithm of the Euler product now gives the first expression in (CT20) coefficient by coefficient.</p>
+<p>Each Euler-product factor has integer coefficients, so <span class="math" data-tex="\(Z(C_0,T)\in\mathbf Z[[T]]\)">\(Z(C_0,T)\in\mathbf Z[[T]]\)</span>. Multiplying it by <span class="math" data-tex="\((1-T)(1-qT)\)">\((1-T)(1-qT)\)</span> gives an integer series. Its image in <span class="math" data-tex="\(\mathbf Q_\ell[[T]]\)">\(\mathbf Q_\ell[[T]]\)</span> is the finite polynomial <span class="math" data-tex="\(P_{C_0}(CT)\)">\(P_{C_0}(CT)\)</span>, so every coefficient beyond its degree is zero already in <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. This proves integrality and makes the polynomial independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. The rank in (CT1) is <span class="math" data-tex="\(2g\)">\(2g\)</span>. Frobenius is an etale-topos equivalence, so <span class="math" data-tex="\(F\)">\(F\)</span> is invertible and the determinant polynomial has that exact degree. Finally (CT18) already holds for every power: applying it with powers <span class="math" data-tex="\(ba\)">\(ba\)</span> proves the assertion for every finite base-field extension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The normal-coordinate construction proves the constant curve trace mechanism using the stated earlier interfaces. It uses neither the general smooth-base-change theorem nor the general smooth-variety trace theorem. Higher cohomological continuity in <em>Pushforward, pullback and finite morphisms</em>, §2, equation (2.3), is still required in the strict-trait calculation, the pro-étale generic restriction and the filtered-sheaf closed-point detection. That earlier lesson proves its degree-zero finite-data argument and imports the higher-cohomology assertion. Its proof, together with the recorded recursive foundations of curve duality, proper base change and the Picard construction, remains required by the proof rule. This precise scope is included in §7.</p>
+<p><strong>Lemma 4.0D (the curve bound needed for Chebotarev).</strong> For every smooth projective geometrically integral curve <span class="math" data-tex="\(C_0/\mathbf F_q\)">\(C_0/\mathbf F_q\)</span> of genus <span class="math" data-tex="\(g\)">\(g\)</span>,
+<span class="math math-display" data-tex="\[
+\bigl|\#C_0(\mathbf F_{q^a})-q^a-1\bigr|\le2gq^{a/2}
+\qquad(a\ge1).
+\]">\[
+\bigl|\#C_0(\mathbf F_{q^a})-q^a-1\bigr|\le2gq^{a/2}
+\qquad(a\ge1).
+\]</span>
+Every geometric-Frobenius eigenvalue on its first cohomology is algebraic and has absolute value <span class="math" data-tex="\(q^{1/2}\)">\(q^{1/2}\)</span> under every embedding. The same statements apply to any smooth projective twist of the curve.</p>
+<p><em>Proof.</em> We supply the product-surface positivity, so that this step requires no unproved Hodge-index theorem. The actual earlier inputs are the coherent Euler-polynomial proof, <em>Euler characteristics and Hilbert polynomials</em>, Theorems 2.1 and 4.2; projective duality, <em>Dualizing sheaves and Serre duality for projective schemes</em>, Theorems 4.1–4.2; and curve Riemann–Roch and differential duality, <em>Abelian varieties</em>, Lemma 9.11. Work first over an algebraic closure, put <span class="math" data-tex="\(S=C\times C\)">\(S=C\times C\)</span>, and choose a point <span class="math" data-tex="\(P\)">\(P\)</span>. Write <span class="math" data-tex="\(V=\{P\}\times C\)">\(V=\{P\}\times C\)</span> and <span class="math" data-tex="\(W=C\times\{P\}\)">\(W=C\times\{P\}\)</span>.</p>
+<p>Here is the numerical construction we use on <span class="math" data-tex="\(S\)">\(S\)</span>. On the group generated by coherent sheaves with their exact-sequence relations, let <span class="math" data-tex="\(\delta_L[F]=[F\otimes L]-[F]\)">\(\delta_L[F]=[F\otimes L]-[F]\)</span>. It lowers support dimension by one. Indeed the coherent filtration from the Euler-polynomial proof reduces to an ideal on an integral closed subscheme. A generic trivialization of <span class="math" data-tex="\(L\)">\(L\)</span>, extended after multiplying by an ideal of the complement, injects the same ideal lattice into that sheaf and its twist; the difference of their classes is a difference of cokernels on proper closed subsets. Repeat this argument on those subsets. Three such operators therefore annihilate Euler characteristic on a surface. The finite-difference identities, integrated using <span class="math" data-tex="\(\binom{n+1}{j+1}-\binom n{j+1}=\binom nj\)">\(\binom{n+1}{j+1}-\binom n{j+1}=\binom nj\)</span>, make
+<span class="math" data-tex="\(\chi(L^nM^t)\)">\(\chi(L^nM^t)\)</span> a polynomial of total degree at most two, for all integers <span class="math" data-tex="\(n,t\)">\(n,t\)</span>. The recurrences prove negative as well as positive indices. Define
+<span class="math math-display" data-tex="\[
+I(L,M)=\chi(LM)-\chi(L)-\chi(M)+\chi(\mathcal O_S).
+\]">\[
+I(L,M)=\chi(LM)-\chi(L)-\chi(M)+\chi(\mathcal O_S).
+\]</span>
+It is symmetric. The identity
+<span class="math" data-tex="\(\delta_{L_1L_2}=\delta_{L_1}+\delta_{L_2}+\delta_{L_1}\delta_{L_2}\)">\(\delta_{L_1L_2}=\delta_{L_1}+\delta_{L_2}+\delta_{L_1}\delta_{L_2}\)</span>
+and the vanishing of third differences make it additive in each argument. Also <span class="math" data-tex="\(I(L,L)/2\)">\(I(L,L)/2\)</span> is the quadratic coefficient of <span class="math" data-tex="\(\chi(L^n)\)">\(\chi(L^n)\)</span>. This agrees with the numerical-intersection definition in <a href="https://stacks.math.columbia.edu/tag/0BEP">Stacks, Tag 0BEP</a>; the argument just given proves the required properties locally here.</p>
+<p>For a smooth Cartier curve <span class="math" data-tex="\(E\subset S\)">\(E\subset S\)</span>, its multiplication exact sequence and curve Riemann–Roch give
+<span class="math math-display" data-tex="\[
+I(L,\mathcal O(E))
+=\chi(E,L(E)|_E)-\chi(E,\mathcal O(E)|_E)
+=\deg(L|_E).
+\]">\[
+I(L,\mathcal O(E))
+=\chi(E,L(E)|_E)-\chi(E,\mathcal O(E)|_E)
+=\deg(L|_E).
+\]</span>
+In particular <span class="math" data-tex="\(I(V,V)=I(W,W)=0\)">\(I(V,V)=I(W,W)=0\)</span> and <span class="math" data-tex="\(I(V,W)=1\)">\(I(V,W)=1\)</span>. The restriction degrees along either family of fibers are constant: the line bundle is flat in that projective family, so the proved constancy of its Euler characteristic, and curve Riemann–Roch, give constant degree.</p>
+<p>Suppose a line bundle <span class="math" data-tex="\(D\)">\(D\)</span> has degree zero on both fiber families. Then <span class="math" data-tex="\(h^0(D^n)\le1\)">\(h^0(D^n)\le1\)</span> for every integer <span class="math" data-tex="\(n\)">\(n\)</span>. A nonzero section with a nonempty zero divisor would have a component dominating at least one factor; its restriction to a general opposite fiber would have positive degree. That contradicts degree zero. Thus any nonzero section is nowhere zero and trivializes the bundle, whose section space then consists of constants.</p>
+<p>We also bound <span class="math" data-tex="\(h^2(D^n)\)">\(h^2(D^n)\)</span> uniformly in <span class="math" data-tex="\(n\)">\(n\)</span>. The dualizing sheaf of the smooth surface is <span class="math" data-tex="\(K_S=p_1^*\Omega_C^1\otimes p_2^*\Omega_C^1\)">\(K_S=p_1^*\Omega_C^1\otimes p_2^*\Omega_C^1\)</span>: the regular-immersion Koszul calculation used in Lemma 9.11, with codimension <span class="math" data-tex="\(N-2\)">\(N-2\)</span>, identifies the projective dualizing sheaf with <span class="math" data-tex="\(\det\Omega_S^1\)">\(\det\Omega_S^1\)</span>, and the two projection differentials give this formula. Duality makes <span class="math" data-tex="\(h^2(D^n)=h^0(K_S D^{-n})\)">\(h^2(D^n)=h^0(K_S D^{-n})\)</span>. Let <span class="math" data-tex="\(H=V+W\)">\(H=V+W\)</span>. The bundle <span class="math" data-tex="\(K_S D^{-n}(-jH)\)">\(K_S D^{-n}(-jH)\)</span> has degree <span class="math" data-tex="\(2g-2-j\)">\(2g-2-j\)</span> on either fiber. Its restriction to the reduced union <span class="math" data-tex="\(H\)">\(H\)</span> injects into the sum of the restrictions to <span class="math" data-tex="\(V,W\)">\(V,W\)</span>, since sections agreeing at their intersection glue. A line bundle of degree <span class="math" data-tex="\(e\)">\(e\)</span> on a smooth curve has at most <span class="math" data-tex="\(\max(e+1,0)\)">\(\max(e+1,0)\)</span> sections: subtract <span class="math" data-tex="\(e+1\)">\(e+1\)</span> distinct points successively when <span class="math" data-tex="\(e\ge0\)">\(e\ge0\)</span>, and use the absence of a section of negative degree. Hence the restriction space has dimension at most <span class="math" data-tex="\(2\max(2g-1-j,0)\)">\(2\max(2g-1-j,0)\)</span>, independently of <span class="math" data-tex="\(n\)">\(n\)</span>. For <span class="math" data-tex="\(A&gt;\max(2g-2,0)\)">\(A&gt;\max(2g-2,0)\)</span>, the bundle <span class="math" data-tex="\(K_S D^{-n}(-AH)\)">\(K_S D^{-n}(-AH)\)</span> has negative degree on a general fiber and has no section. The restriction exact sequences for <span class="math" data-tex="\(j=0,\ldots,A-1\)">\(j=0,\ldots,A-1\)</span> bound <span class="math" data-tex="\(h^0(K_SD^{-n})\)">\(h^0(K_SD^{-n})\)</span> by the finite sum of these constants. Therefore
+<span class="math math-display" data-tex="\[
+\chi(D^n)=h^0(D^n)-h^1(D^n)+h^2(D^n)
+\]">\[
+\chi(D^n)=h^0(D^n)-h^1(D^n)+h^2(D^n)
+\]</span>
+is bounded above for positive <span class="math" data-tex="\(n\)">\(n\)</span>. Its quadratic coefficient cannot be positive. We have proved <span class="math" data-tex="\(I(D,D)\le0\)">\(I(D,D)\le0\)</span>.</p>
+<p>For an arbitrary <span class="math" data-tex="\(L\)">\(L\)</span>, put <span class="math" data-tex="\(d_1(L)=I(L,V)\)">\(d_1(L)=I(L,V)\)</span>, <span class="math" data-tex="\(d_2(L)=I(L,W)\)">\(d_2(L)=I(L,W)\)</span>, and
+<span class="math" data-tex="\(D=L-d_2(L)V-d_1(L)W\)">\(D=L-d_2(L)V-d_1(L)W\)</span>, using additive notation for line bundles. Then both fiber degrees of <span class="math" data-tex="\(D\)">\(D\)</span> are zero and
+<span class="math math-display" data-tex="\[
+I(L,L)\le2d_1(L)d_2(L).
+\]">\[
+I(L,L)\le2d_1(L)d_2(L).
+\]</span>
+Consequently the symmetric bilinear form
+<span class="math math-display" data-tex="\[
+\langle L,M\rangle=d_1(L)d_2(M)+d_2(L)d_1(M)-I(L,M)
+\]">\[
+\langle L,M\rangle=d_1(L)d_2(M)+d_2(L)d_1(M)-I(L,M)
+\]</span>
+is positive semidefinite. Applying its positivity to <span class="math" data-tex="\(nL+tM\)">\(nL+tM\)</span> for integers <span class="math" data-tex="\(n,t\)">\(n,t\)</span>, then to rationals by homogeneity and reals by continuity, proves
+<span class="math" data-tex="\(\langle L,M\rangle^2\le\langle L,L\rangle\langle M,M\rangle\)">\(\langle L,M\rangle^2\le\langle L,L\rangle\langle M,M\rangle\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> be the diagonal and <span class="math" data-tex="\(\Gamma_a\)">\(\Gamma_a\)</span> the graph of <span class="math" data-tex="\(q^a\)">\(q^a\)</span>-Frobenius. Their fiber degrees are <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> and <span class="math" data-tex="\((1,q^a)\)">\((1,q^a)\)</span>. Frobenius has degree <span class="math" data-tex="\(q^a\)">\(q^a\)</span>: for a transcendence element <span class="math" data-tex="\(t\)">\(t\)</span>, the curve function field <span class="math" data-tex="\(K\)">\(K\)</span> is finite over <span class="math" data-tex="\(\bar k(t)\)">\(\bar k(t)\)</span>. Frobenius identifies <span class="math" data-tex="\(K/\bar k(t)\)">\(K/\bar k(t)\)</span> with <span class="math" data-tex="\(K^{q^a}/\bar k(t^{q^a})\)">\(K^{q^a}/\bar k(t^{q^a})\)</span>, so the tower formula and <span class="math" data-tex="\([\bar k(t):\bar k(t^{q^a})]=q^a\)">\([\bar k(t):\bar k(t^{q^a})]=q^a\)</span> give <span class="math" data-tex="\([K:K^{q^a}]=q^a\)">\([K:K^{q^a}]=q^a\)</span>. The normal bundle of a graph <span class="math" data-tex="\((\mathrm{id},f)\)">\((\mathrm{id},f)\)</span> is <span class="math" data-tex="\(f^*T_C\)">\(f^*T_C\)</span>, by <span class="math" data-tex="\((v,w)\mapsto w-df(v)\)">\((v,w)\mapsto w-df(v)\)</span>. Thus
+<span class="math math-display" data-tex="\[
+I(\Delta,\Delta)=2-2g,\qquad
+I(\Gamma_a,\Gamma_a)=q^a(2-2g).
+\]">\[
+I(\Delta,\Delta)=2-2g,\qquad
+I(\Gamma_a,\Gamma_a)=q^a(2-2g).
+\]</span>
+Its intersection with <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> consists of the <span class="math" data-tex="\(\mathbf F_{q^a}\)">\(\mathbf F_{q^a}\)</span>-points, each of length one: the fixed-point equation has differential the identity because Frobenius has differential zero. Hence
+<span class="math math-display" data-tex="\[
+\langle\Delta,\Gamma_a\rangle=1+q^a-\#C_0(\mathbf F_{q^a}),\qquad
+\langle\Delta,\Delta\rangle=2g,\quad
+\langle\Gamma_a,\Gamma_a\rangle=2gq^a.
+\]">\[
+\langle\Delta,\Gamma_a\rangle=1+q^a-\#C_0(\mathbf F_{q^a}),\qquad
+\langle\Delta,\Delta\rangle=2g,\quad
+\langle\Gamma_a,\Gamma_a\rangle=2gq^a.
+\]</span>
+Cauchy–Schwarz proves the displayed count bound.</p>
+<p>For the cohomological conclusion, Theorem 4.0C.6 constructs the constant curve trace identity from its precise earlier curve interfaces. Its imported higher cohomological-continuity foundation remains to be proved, as recorded there. The intersection argument above proves the point-count bound in every extension field independently of that cohomological foundation. With that remaining foundation, the trace identity writes the point counts as
+<span class="math" data-tex="\(1+q^a-\sum_i\alpha_i^a\)">\(1+q^a-\sum_i\alpha_i^a\)</span>. Its determinant polynomial on <span class="math" data-tex="\(H^1\)">\(H^1\)</span> has rational coefficients, because its logarithm is recovered from these rational integer counts and the rational factors for <span class="math" data-tex="\(H^0,H^2\)">\(H^0,H^2\)</span>. The eigenvalues are therefore algebraic. For any complex embedding, the series <span class="math" data-tex="\(\sum_{a\ge1}(\sum_i\alpha_i^a)z^a\)">\(\sum_{a\ge1}(\sum_i\alpha_i^a)z^a\)</span> converges for <span class="math" data-tex="\(|z|&lt;q^{-1/2}\)">\(|z|&lt;q^{-1/2}\)</span>, by the count bound. It is the rational function <span class="math" data-tex="\(\sum_i\alpha_i z/(1-\alpha_i z)\)">\(\sum_i\alpha_i z/(1-\alpha_i z)\)</span>; a pole for a distinct nonzero <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> cannot cancel, since its multiplicity is a positive integer. Thus <span class="math" data-tex="\(|\alpha_i|\le q^{1/2}\)">\(|\alpha_i|\le q^{1/2}\)</span>. Curve duality pairs <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> with <span class="math" data-tex="\(q/\alpha_i\)">\(q/\alpha_i\)</span>, giving the opposite bound and equality. A twist is another smooth projective curve with the same geometric genus, so the proved argument applies to it directly. The point-count bound is proved. The trace mechanism is now written in §§4.0C.1–6; its higher-continuity and recursive earlier-foundation obligations remain explicit for the cohomological assertion. ∎</p>
+<p><strong>Lemma 4.1 (splitting by fiberwise multiplication).</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be smooth of finite type over <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>, let <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, and let <span class="math" data-tex="\(f:A\to S\)">\(f:A\to S\)</span> be an abelian scheme. Suppose the ordinary and compactly supported Leray spectral sequences exist and are compatible with their natural comparison map. Suppose multiplication by an integer <span class="math" data-tex="\(t&gt;1\)">\(t&gt;1\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> acts on <span class="math" data-tex="\(R^jf_*\mathbf Q_\ell\)">\(R^jf_*\mathbf Q_\ell\)</span> as <span class="math" data-tex="\(t^j\)">\(t^j\)</span>. Then both spectral sequences degenerate at their second pages. In total degree <span class="math" data-tex="\(n\)">\(n\)</span>, their <span class="math" data-tex="\(j\)">\(j\)</span>-th terms identify with the <span class="math" data-tex="\(t^j\)">\(t^j\)</span>-eigenspaces of multiplication on the respective abutments. Write <span class="math" data-tex="\(H^i_{\mathrm{par}}=\operatorname{im}(H^i_c\to H^i)\)">\(H^i_{\mathrm{par}}=\operatorname{im}(H^i_c\to H^i)\)</span> in every degree. Consequently</p>
+<span class="math math-display" data-tex="\[
+H^i_{\mathrm{par}}(S,R^jf_*\mathbf Q_\ell)
+\quad\text{is the }t^j\text{-eigenspace of }\quad
+H^{i+j}_{\mathrm{par}}(A,\mathbf Q_\ell).
+\tag{17}
+\]">\[
+H^i_{\mathrm{par}}(S,R^jf_*\mathbf Q_\ell)
+\quad\text{is the }t^j\text{-eigenspace of }\quad
+H^{i+j}_{\mathrm{par}}(A,\mathbf Q_\ell).
+\tag{17}
+\]</span>
+<p><em>Proof.</em> The second pages are <span class="math" data-tex="\(H^i(S,R^jf_*\mathbf Q_\ell)\)">\(H^i(S,R^jf_*\mathbf Q_\ell)\)</span> and <span class="math" data-tex="\(H^i_c(S,R^jf_*\mathbf Q_\ell)\)">\(H^i_c(S,R^jf_*\mathbf Q_\ell)\)</span>. Multiplication acts on each as the scalar <span class="math" data-tex="\(t^j\)">\(t^j\)</span>. A differential
+<span class="math math-display" data-tex="\[
+d_r:E_r^{i,j}\longrightarrow E_r^{i+r,j-r+1},
+\qquad r\geq2,
+\]">\[
+d_r:E_r^{i,j}\longrightarrow E_r^{i+r,j-r+1},
+\qquad r\geq2,
+\]</span>
+commutes with multiplication. Its source and target have the different scalars <span class="math" data-tex="\(t^j\)">\(t^j\)</span> and <span class="math" data-tex="\(t^{j-r+1}\)">\(t^{j-r+1}\)</span>; hence <span class="math" data-tex="\((t^j-t^{j-r+1})d_r=0\)">\((t^j-t^{j-r+1})d_r=0\)</span>, and <span class="math" data-tex="\(d_r=0\)">\(d_r=0\)</span>. Induction proves this at every page and in both sequences.</p>
+<p>Degeneration alone usually gives a filtration, rather than a canonical direct sum. Here the filtration is split by multiplication. In total degree <span class="math" data-tex="\(n\)">\(n\)</span>, each graded piece has its own scalar <span class="math" data-tex="\(t^j\)">\(t^j\)</span>. Applying the factors <span class="math" data-tex="\(M-t^j\)">\(M-t^j\)</span>, in filtration order, shows that their product annihilates the multiplication operator <span class="math" data-tex="\(M\)">\(M\)</span> on the abutment. Its roots are distinct in <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, so <span class="math" data-tex="\(M\)">\(M\)</span> is semisimple. The polynomial projectors
+<span class="math math-display" data-tex="\[
+\prod_{j&#x27;\ne j}\frac{M-t^{j&#x27;}}{t^j-t^{j&#x27;}}
+\tag{18}
+\]">\[
+\prod_{j&#x27;\ne j}\frac{M-t^{j&#x27;}}{t^j-t^{j&#x27;}}
+\tag{18}
+\]</span>
+split the filtration and identify its graded pieces with the stated eigenspaces. Only the indices occurring in that total degree enter the product.</p>
+<p>The map from compact support to ordinary cohomology commutes with <span class="math" data-tex="\(M\)">\(M\)</span> and with Frobenius. Its image on each eigenspace is the corresponding eigenspace of its full image. This proves (17), including the Frobenius equivariance. ∎</p>
+<p>For a product of elliptic curves, the multiplication hypothesis follows from Künneth: multiplication acts on their <span class="math" data-tex="\(H^0,H^1,H^2\)">\(H^0,H^1,H^2\)</span> by <span class="math" data-tex="\(1,t,t^2\)">\(1,t,t^2\)</span>, respectively, and a tensor of total degree <span class="math" data-tex="\(j\)">\(j\)</span> has multiplier <span class="math" data-tex="\(t^j\)">\(t^j\)</span>. The degree-one assertion follows from the Kummer identification of elliptic first cohomology with the dual Tate module proved in the earlier elliptic lesson, while the degree-two assertion follows from the degree <span class="math" data-tex="\(t^2\)">\(t^2\)</span> of multiplication on an elliptic curve.</p>
+<p><strong>Proposition 4.2 (parabolic purity, conditional on compactification).</strong> In Lemma 4.1, suppose in addition that <span class="math" data-tex="\(A\)">\(A\)</span> embeds as an open in a smooth projective <span class="math" data-tex="\(A^*\)">\(A^*\)</span> over the same finite field. Then geometric Frobenius on <span class="math" data-tex="\(H^i_{\mathrm{par}}(S,R^jf_*\mathbf Q_\ell)\)">\(H^i_{\mathrm{par}}(S,R^jf_*\mathbf Q_\ell)\)</span> has eigenvalues of absolute value <span class="math" data-tex="\(p^{(i+j)/2}\)">\(p^{(i+j)/2}\)</span> under every complex embedding.</p>
+<p><em>Proof.</em> Extension of supports and restriction give a factorization
+<span class="math math-display" data-tex="\[
+H^{i+j}_c(A,\mathbf Q_\ell)
+\longrightarrow H^{i+j}(A^*,\mathbf Q_\ell)
+\longrightarrow H^{i+j}(A,\mathbf Q_\ell).
+\tag{19}
+\]">\[
+H^{i+j}_c(A,\mathbf Q_\ell)
+\longrightarrow H^{i+j}(A^*,\mathbf Q_\ell)
+\longrightarrow H^{i+j}(A,\mathbf Q_\ell).
+\tag{19}
+\]</span>
+Its image is therefore a Frobenius-stable subquotient of the middle group. Eigenvalues on a stable subspace and its quotient occur among those of the original operator: choose a basis adapted to the subspace and factor the characteristic polynomial of the resulting block triangular matrix. The Weil theorem gives the claimed absolute value on that middle group. Lemma 4.1 identifies the parabolic coefficient group with a stable summand of the image, so the same value holds there. ∎</p>
+<p>Apply this mechanism to the <span class="math" data-tex="\(m\)">\(m\)</span>-fold fiber product <span class="math" data-tex="\(\mathcal E^m\)">\(\mathcal E^m\)</span> over a fine modular curve. Künneth selects <span class="math" data-tex="\(\mathcal F_\ell^{\otimes m}\)">\(\mathcal F_\ell^{\otimes m}\)</span> inside <span class="math" data-tex="\(R^m f_*\mathbf Q_\ell\)">\(R^m f_*\mathbf Q_\ell\)</span>. The symmetric-power projector
+<span class="math math-display" data-tex="\[
+\frac1{m!}\sum_{\sigma\in\mathfrak S_m}\sigma
+\tag{20}
+\]">\[
+\frac1{m!}\sum_{\sigma\in\mathfrak S_m}\sigma
+\tag{20}
+\]</span>
+then selects <span class="math" data-tex="\(\mathcal L_m\)">\(\mathcal L_m\)</span> in that tensor product. This is the usual permutation action on the tensor factors. When expressed using geometric permutations on degree-one cohomology, the Koszul signs must be compensated; an unadjusted geometric symmetrizer would select the wrong symmetry. The denominator is allowed because coefficients are in <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, even if <span class="math" data-tex="\(\ell\mid m!\)">\(\ell\mid m!\)</span>. Thus the relevant parabolic group occurs in total degree</p>
+<span class="math math-display" data-tex="\[
+1+m=k-1.
+\tag{21}
+\]">\[
+1+m=k-1.
+\tag{21}
+\]</span>
+<p>The needed compactification is supplied by the following explicit resolution. Its proof works in every characteristic; it uses the nodal semistable local model, rather than general resolution of singularities in positive characteristic.</p>
+<p><strong>Lemma 4.2A (resolution of a nodal fiber product).</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be a smooth projective curve over a field. Suppose <span class="math" data-tex="\(\mathcal E^*\to C\)">\(\mathcal E^*\to C\)</span> is a projective semistable curve with smooth total surface, and that its only nonsmooth fiber points are ordinary nodes with étale local equations <span class="math" data-tex="\(xy=t\)">\(xy=t\)</span>, where <span class="math" data-tex="\(t\)">\(t\)</span> is a parameter on <span class="math" data-tex="\(C\)">\(C\)</span>. Every iterated fiber product of <span class="math" data-tex="\(\mathcal E^*\)">\(\mathcal E^*\)</span> has a projective resolution smooth over the field, which is an isomorphism over its smooth locus. In particular the product of its smooth elliptic-family open is an open in a smooth projective variety.</p>
+<p><em>Proof.</em> At a point with <span class="math" data-tex="\(r+1\)">\(r+1\)</span> nodal factors, and any number <span class="math" data-tex="\(s\)">\(s\)</span> of additional smooth coordinates, the étale local ring has the model
+<span class="math math-display" data-tex="\[
+A=\kappa[X_0,Y_0,\ldots,X_r,Y_r,T_1,\ldots,T_s]/
+(X_iY_i-X_0Y_0:1\le i\le r).
+\]">\[
+A=\kappa[X_0,Y_0,\ldots,X_r,Y_r,T_1,\ldots,T_s]/
+(X_iY_i-X_0Y_0:1\le i\le r).
+\]</span>
+The case <span class="math" data-tex="\(r=0\)">\(r=0\)</span> is already smooth. For <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, let <span class="math" data-tex="\(I\)">\(I\)</span> be generated by every monomial <span class="math" data-tex="\(\prod_{i=0}^r Z_i^{a_i}\)">\(\prod_{i=0}^r Z_i^{a_i}\)</span>, where <span class="math" data-tex="\((a_i)\)">\((a_i)\)</span> is a permutation of <span class="math" data-tex="\(0,1,\ldots,r\)">\(0,1,\ldots,r\)</span>, and each <span class="math" data-tex="\(Z_i\)">\(Z_i\)</span> is either <span class="math" data-tex="\(X_i\)">\(X_i\)</span> or <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span>. These choices are symmetric under permuting pairs or exchanging their branches. The ring is a domain. Adjoin <span class="math" data-tex="\(t=X_0Y_0\)">\(t=X_0Y_0\)</span> and write all its relations as <span class="math" data-tex="\(X_iY_i=t\)">\(X_iY_i=t\)</span>. Replacing these disjoint products by <span class="math" data-tex="\(t\)">\(t\)</span> gives a normal form <span class="math" data-tex="\(t^a\prod X_i^{b_i}Y_i^{c_i}\)">\(t^a\prod X_i^{b_i}Y_i^{c_i}\)</span>, with <span class="math" data-tex="\(b_ic_i=0\)">\(b_ic_i=0\)</span>. In the Laurent ring <span class="math" data-tex="\(\kappa[t,X_0^{\pm1},\ldots,X_r^{\pm1}]\)">\(\kappa[t,X_0^{\pm1},\ldots,X_r^{\pm1}]\)</span>, its image has exponents <span class="math" data-tex="\(b_i-c_i\)">\(b_i-c_i\)</span> on <span class="math" data-tex="\(X_i\)">\(X_i\)</span> and <span class="math" data-tex="\(a+\sum c_i\)">\(a+\sum c_i\)</span> on <span class="math" data-tex="\(t\)">\(t\)</span>. These recover all the normal-form exponents uniquely. Thus these monomials are independent and the proposed map to that domain is injective.</p>
+<p>Consider the blow-up chart for <span class="math" data-tex="\(M=\prod X_i^i\)">\(M=\prod X_i^i\)</span>; its ring is <span class="math" data-tex="\(A[I/M]\)">\(A[I/M]\)</span> inside the fraction field. It contains
+<span class="math math-display" data-tex="\[
+u=Y_0/X_1,\qquad v_i=X_i/X_{i+1}\ (0\le i&lt;r),\qquad v_r=X_r.
+\]">\[
+u=Y_0/X_1,\qquad v_i=X_i/X_{i+1}\ (0\le i&lt;r),\qquad v_r=X_r.
+\]</span>
+The first ratio comes from exchanging exponents zero and one and choosing <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>; each other ratio comes from exchanging two adjacent exponents. Conversely every original coordinate is a polynomial in these variables:
+<span class="math math-display" data-tex="\[
+X_i=v_r\prod_{j=i}^{r-1}v_j,\qquad
+Y_0=uX_1,\qquad Y_i=uX_0X_1/X_i\ (i\ge1).
+\]">\[
+X_i=v_r\prod_{j=i}^{r-1}v_j,\qquad
+Y_0=uX_1,\qquad Y_i=uX_0X_1/X_i\ (i\ge1).
+\]</span>
+The last expression is polynomial, since the exponents of every <span class="math" data-tex="\(v_j\)">\(v_j\)</span> in its numerator dominate those in its denominator. The empty product is one.</p>
+<p>We must also check every generator ratio, not just these coordinates. In <span class="math" data-tex="\(\prod X_i^i\)">\(\prod X_i^i\)</span>, the exponent of <span class="math" data-tex="\(v_j\)">\(v_j\)</span> is <span class="math" data-tex="\(j(j+1)/2\)">\(j(j+1)/2\)</span> for <span class="math" data-tex="\(j&lt;r\)">\(j&lt;r\)</span>, and that of <span class="math" data-tex="\(v_r\)">\(v_r\)</span> is <span class="math" data-tex="\(r(r+1)/2\)">\(r(r+1)/2\)</span>. In an arbitrary generator, its <span class="math" data-tex="\(v_r\)">\(v_r\)</span>-exponent is the same. For <span class="math" data-tex="\(1\le j&lt;r\)">\(1\le j&lt;r\)</span>, its <span class="math" data-tex="\(v_j\)">\(v_j\)</span>-exponent is at least <span class="math" data-tex="\(\sum_{i\le j}a_i\)">\(\sum_{i\le j}a_i\)</span>, whose minimum is <span class="math" data-tex="\(0+1+\cdots+j\)">\(0+1+\cdots+j\)</span>; choosing a <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> with <span class="math" data-tex="\(i&gt;j\)">\(i&gt;j\)</span> only adds a nonnegative exponent. The <span class="math" data-tex="\(v_0\)">\(v_0\)</span>-exponent and the <span class="math" data-tex="\(u\)">\(u\)</span>-exponent are nonnegative, and the denominator has exponent zero in both. Hence every generator divided by <span class="math" data-tex="\(M\)">\(M\)</span> is polynomial. We have proved
+<span class="math math-display" data-tex="\[
+A[I/M]=\kappa[u,v_0,\ldots,v_r,T_1,\ldots,T_s].
+\]">\[
+A[I/M]=\kappa[u,v_0,\ldots,v_r,T_1,\ldots,T_s].
+\]</span>
+There are no relations among these variables: the inverse expressions give a birational parametrization of the dense open where the indicated ratios are defined. Every other blow-up chart is obtained by the permitted pair permutations and branch exchanges, so has the same polynomial description. Thus the blow-up is smooth in every characteristic.</p>
+<p>Its exceptional locus lies over exactly the singular locus. The Jacobian of the equations has full rank unless at least two pairs have both coordinates zero. With at most one such pair, choose exponent zero there and a unit branch in every other pair; the corresponding generator is a unit, so the blow-up is an isomorphism there. With at least two such pairs, every generator has a positive exponent at one of them. No point over such a singular point can have an isomorphic local ring under the blow-up, since every local ring of the resolved space is regular whereas the original local ring is singular. Thus every singular point lies in the image of the exceptional locus, and no smooth point does.</p>
+<p>For completeness the ideals glue. At a node the two branch ideals in the special fiber have generators <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, determined up to units and exchange; the equation is <span class="math" data-tex="\(xy=t\)">\(xy=t\)</span> up to a unit. Their pullbacks to the product give the coordinates above. Replacing their generators by units, permuting the factors, or exchanging branches leaves the generated ideal unchanged. If one factor becomes smooth, one of its chosen coordinates is a unit. Assigning the largest exponent to that unit gives precisely the ideal for the remaining nodal factors; any other assignment gives a multiple of one of its generators, since the sorted remaining exponents are at least <span class="math" data-tex="\(0,\ldots,r-1\)">\(0,\ldots,r-1\)</span>. This proves agreement on overlaps where the number of nodal factors changes. The intrinsic branch ideals and their symmetric expression therefore descend from the étale charts, including nonsplit nodes. Blow-up commutes with étale base change, so its local smoothness descends as well. A blow-up of a coherent ideal is projective; the original product is projective over projective <span class="math" data-tex="\(C\)">\(C\)</span>, and hence so is the resolution. This proves all claims. ∎</p>
+<p>For the modular family, the remaining premise of this lemma is the existence of its projective semistable model over the fine compact modular curve. The earlier local elliptic lesson proves the node models for a Tate degeneration; the arbitrary-level arithmetic modular model in lesson 10 is still a separate construction obligation. Once that premise is established, Lemma 4.2A proves the entire product resolution. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, one needs only the compact modular curve.</p>
+<p>With these inputs, Proposition 4.2 supplies purity of weight <span class="math" data-tex="\(k-1\)">\(k-1\)</span> for the required parabolic constituent at good primes. The passage through auxiliary levels and all characters is part of Deligne's construction. Its complete arithmetic conclusion is [Deligne 1974, Theorem (8.2)]: for each primitive cuspidal form as in (1), the two roots <span class="math" data-tex="\(\alpha_p,\beta_p\)">\(\alpha_p,\beta_p\)</span> of <span class="math" data-tex="\(P_p\)">\(P_p\)</span>, for <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>, satisfy</p>
+<span class="math math-display" data-tex="\[
+|\sigma(\alpha_p)|=|\sigma(\beta_p)|
+=p^{(k-1)/2}
+\tag{22}
+\]">\[
+|\sigma(\alpha_p)|=|\sigma(\beta_p)|
+=p^{(k-1)/2}
+\tag{22}
+\]</span>
+<p>for every complex embedding of their number field. This also covers a prime <span class="math" data-tex="\(p=\ell\)">\(p=\ell\)</span> for a separately chosen <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>: the complex assertion about <span class="math" data-tex="\(P_p\)">\(P_p\)</span> is independent of that choice. A good-prime Frobenius operator on (3) is only being asserted when <span class="math" data-tex="\(p\nmid N\ell\)">\(p\nmid N\ell\)</span>.</p>
+<p><strong>Theorem 4.3 (Weil implies the Ramanujan–Petersson bound).</strong> Under the purity assertion (22),</p>
+<span class="math math-display" data-tex="\[
+|\sigma(a_p)|\leq2p^{(k-1)/2}
+\qquad(p\nmid N)
+\tag{23}
+\]">\[
+|\sigma(a_p)|\leq2p^{(k-1)/2}
+\qquad(p\nmid N)
+\tag{23}
+\]</span>
+<p>for every embedding <span class="math" data-tex="\(\sigma:K\hookrightarrow\mathbf C\)">\(\sigma:K\hookrightarrow\mathbf C\)</span>.</p>
+<p><em>Proof.</em> Extend <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> to a splitting field of <span class="math" data-tex="\(P_p\)">\(P_p\)</span>. By its coefficient of <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(\sigma(a_p)=\sigma(\alpha_p)+\sigma(\beta_p)\)">\(\sigma(a_p)=\sigma(\alpha_p)+\sigma(\beta_p)\)</span>. The triangle inequality and (22) give
+<span class="math math-display" data-tex="\[
+|\sigma(a_p)|
+\leq|\sigma(\alpha_p)|+|\sigma(\beta_p)|
+=2p^{(k-1)/2}.
+\]">\[
+|\sigma(a_p)|
+\leq|\sigma(\alpha_p)|+|\sigma(\beta_p)|
+=2p^{(k-1)/2}.
+\]</span>
+Every extension has the same two absolute values, so the conclusion holds for the original <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. ∎</p>
+<p>In weight two this gives <span class="math" data-tex="\(2\sqrt p\)">\(2\sqrt p\)</span>, the scale of Hasse's bound. In weight twelve it gives <span class="math" data-tex="\(2p^{11/2}\)">\(2p^{11/2}\)</span>. The change of exponent records the degree of the cohomology carrying the form.</p>
+<h2 id="5-the-global-determinant-and-oddness">5. The global determinant and oddness</h2>
+<p>View the Dirichlet character as a Galois character by the action on <span class="math" data-tex="\(N\)">\(N\)</span>-th roots of unity:</p>
+<span class="math math-display" data-tex="\[
+\chi_G:G_{\mathbf Q}\longrightarrow
+(\mathbf Z/N\mathbf Z)^\times
+\xrightarrow{\chi}K^\times\longrightarrow K_\lambda^\times.
+\tag{24}
+\]">\[
+\chi_G:G_{\mathbf Q}\longrightarrow
+(\mathbf Z/N\mathbf Z)^\times
+\xrightarrow{\chi}K^\times\longrightarrow K_\lambda^\times.
+\tag{24}
+\]</span>
+<p>It is unramified outside <span class="math" data-tex="\(N\)">\(N\)</span> and takes <span class="math" data-tex="\(\operatorname{Fr}_p\)">\(\operatorname{Fr}_p\)</span> to <span class="math" data-tex="\(\chi(p)\)">\(\chi(p)\)</span> when <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>.</p>
+<p><strong>Theorem 5.1.</strong> The representation in Theorem 1.1 satisfies</p>
+<span class="math math-display" data-tex="\[
+\det\rho_{f,\lambda}=\chi_G\chi_\ell^{\,k-1}.
+\tag{25}
+\]">\[
+\det\rho_{f,\lambda}=\chi_G\chi_\ell^{\,k-1}.
+\tag{25}
+\]</span>
+<p><em>Proof.</em> Both sides are continuous one-dimensional characters of <span class="math" data-tex="\(G_{\mathbf Q}\)">\(G_{\mathbf Q}\)</span>. At every <span class="math" data-tex="\(p\nmid N\ell\)">\(p\nmid N\ell\)</span>, (4) identifies their values as <span class="math" data-tex="\(\chi(p)p^{k-1}\)">\(\chi(p)p^{k-1}\)</span>. Their quotient <span class="math" data-tex="\(\eta\)">\(\eta\)</span> therefore equals <span class="math" data-tex="\(1\)">\(1\)</span> on all these Frobenius classes. It remains to justify the use of density for a possibly infinite image.</p>
+<p>If <span class="math" data-tex="\(\eta(g)\ne1\)">\(\eta(g)\ne1\)</span>, continuity and the Hausdorff topology give an open neighborhood of <span class="math" data-tex="\(g\)">\(g\)</span> on which <span class="math" data-tex="\(\eta\ne1\)">\(\eta\ne1\)</span>. It contains a coset <span class="math" data-tex="\(gU\)">\(gU\)</span> of an open normal subgroup <span class="math" data-tex="\(U\)">\(U\)</span>. Because <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a character, the union of the conjugates of this coset still has <span class="math" data-tex="\(\eta\ne1\)">\(\eta\ne1\)</span>. Chebotarev for the finite Galois quotient <span class="math" data-tex="\(G_{\mathbf Q}/U\)">\(G_{\mathbf Q}/U\)</span> supplies a prime outside the finite set dividing <span class="math" data-tex="\(N\ell\)">\(N\ell\)</span> whose Frobenius lies in that conjugacy class. Its character value must be <span class="math" data-tex="\(1\)">\(1\)</span>, a contradiction. Hence <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span>. ∎</p>
+<p>This proves a global equality, including on inertia and at complex conjugation. It uses the good-prime determinant provided by construction; it does not recover that local determinant from (13) alone.</p>
+<p><strong>Corollary 5.2 (oddness).</strong> For complex conjugation <span class="math" data-tex="\(c\)">\(c\)</span>,
+<span class="math math-display" data-tex="\[
+\det\rho_{f,\lambda}(c)=-1,\qquad
+\rho_{f,\lambda}(c)\sim
+\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\tag{26}
+\]">\[
+\det\rho_{f,\lambda}(c)=-1,\qquad
+\rho_{f,\lambda}(c)\sim
+\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\tag{26}
+\]</span></p>
+<p><em>Proof.</em> We have <span class="math" data-tex="\(\chi_G(c)=\chi(-1)=(-1)^k\)">\(\chi_G(c)=\chi(-1)=(-1)^k\)</span> and <span class="math" data-tex="\(\chi_\ell(c)=-1\)">\(\chi_\ell(c)=-1\)</span>. Their product in (25) is <span class="math" data-tex="\((-1)^k(-1)^{k-1}=-1\)">\((-1)^k(-1)^{k-1}=-1\)</span>. Since <span class="math" data-tex="\(c^2=1\)">\(c^2=1\)</span>, its eigenvalues lie in <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>; characteristic zero makes this operator diagonalizable. Its determinant forces one of each. ∎</p>
+<p><strong>Corollary 5.3 (absolute irreducibility).</strong> The irreducibility input in Theorem 1.1 and Corollary 5.2 imply that <span class="math" data-tex="\(\rho_{f,\lambda}\)">\(\rho_{f,\lambda}\)</span> is absolutely irreducible.</p>
+<p><em>Proof.</em> A reducible two-dimensional representation over an algebraic closure has an invariant line. That line is invariant under <span class="math" data-tex="\(c\)">\(c\)</span>, so it is one of the two one-dimensional eigenspaces in (26), extended from <span class="math" data-tex="\(K_\lambda\)">\(K_\lambda\)</span>. If an element of <span class="math" data-tex="\(G_{\mathbf Q}\)">\(G_{\mathbf Q}\)</span> preserves the extended eigenspace, its matrix entry taking the original eigenspace into the other one is zero already over <span class="math" data-tex="\(K_\lambda\)">\(K_\lambda\)</span>. Thus the original eigenspace is Galois invariant, contrary to irreducibility over <span class="math" data-tex="\(K_\lambda\)">\(K_\lambda\)</span>. ∎</p>
+<p>The cusp-form hypothesis matters. The direct sum <span class="math" data-tex="\(1\oplus\chi_G\chi_\ell^{k-1}\)">\(1\oplus\chi_G\chi_\ell^{k-1}\)</span>, for example, has good trace <span class="math" data-tex="\(1+\chi(p)p^{k-1}\)">\(1+\chi(p)p^{k-1}\)</span> and determinant <span class="math" data-tex="\(\chi(p)p^{k-1}\)">\(\chi(p)p^{k-1}\)</span>, and is reducible. Thus the determinant and oddness deductions cannot prove cuspidal irreducibility by themselves.</p>
+<h2 id="6-the-discriminant-form-and-the-weight-two-specialization">6. The discriminant form and the weight-two specialization</h2>
+<p>For the level-one weight-twelve discriminant form, the modular-forms prerequisite gives</p>
+<span class="math math-display" data-tex="\[
+\Delta=q\prod_{n\geq1}(1-q^n)^{24}
+=\sum_{n\geq1}\tau(n)q^n.
+\tag{27}
+\]">\[
+\Delta=q\prod_{n\geq1}(1-q^n)^{24}
+=\sum_{n\geq1}\tau(n)q^n.
+\tag{27}
+\]</span>
+<p>The initial coefficients can be computed formally, without any analytic approximation. To find them through <span class="math" data-tex="\(q^7\)">\(q^7\)</span>, keep factors with <span class="math" data-tex="\(n\leq6\)">\(n\leq6\)</span>, expand each by the binomial theorem, and discard degree above six in the product after removing the leading <span class="math" data-tex="\(q\)">\(q\)</span>. The result is</p>
+<span class="math math-display" data-tex="\[
+\Delta=q-24q^2+252q^3-1472q^4
++4830q^5-6048q^6-16744q^7+O(q^8).
+\tag{28}
+\]">\[
+\Delta=q-24q^2+252q^3-1472q^4
++4830q^5-6048q^6-16744q^7+O(q^8).
+\tag{28}
+\]</span>
+<p>Thus <span class="math" data-tex="\(K=\mathbf Q\)">\(K=\mathbf Q\)</span>, the character is trivial, and
+<span class="math math-display" data-tex="\[
+\rho_{\Delta,\ell}:G_{\mathbf Q}\longrightarrow
+\operatorname{GL}_2(\mathbf Q_\ell),\qquad
+\det\rho_{\Delta,\ell}=\chi_\ell^{11}.
+\tag{29}
+\]">\[
+\rho_{\Delta,\ell}:G_{\mathbf Q}\longrightarrow
+\operatorname{GL}_2(\mathbf Q_\ell),\qquad
+\det\rho_{\Delta,\ell}=\chi_\ell^{11}.
+\tag{29}
+\]</span>
+It is unramified outside <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. At <span class="math" data-tex="\(p=2,3\)">\(p=2,3\)</span>, provided <span class="math" data-tex="\(p\ne\ell\)">\(p\ne\ell\)</span>, the complete good-prime polynomials are</p>
+<span class="math math-display" data-tex="\[
+P_2(X)=X^2+24X+2048,\qquad
+P_3(X)=X^2-252X+177147.
+\tag{30}
+\]">\[
+P_2(X)=X^2+24X+2048,\qquad
+P_3(X)=X^2-252X+177147.
+\tag{30}
+\]</span>
+<p>Their discriminants and roots make the bound visible:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c|c}
+p&amp;\operatorname{disc}(P_p)&amp;\text{roots}&amp;\text{squared root modulus}\\ \hline
+2&amp;-7616&amp;-12\pm4i\sqrt{119}&amp;144+16\cdot119=2048\\
+3&amp;-645084&amp;126\pm i\sqrt{161271}&amp;15876+161271=177147
+\end{array}
+\tag{31}
+\]">\[
+\begin{array}{c|c|c|c}
+p&amp;\operatorname{disc}(P_p)&amp;\text{roots}&amp;\text{squared root modulus}\\ \hline
+2&amp;-7616&amp;-12\pm4i\sqrt{119}&amp;144+16\cdot119=2048\\
+3&amp;-645084&amp;126\pm i\sqrt{161271}&amp;15876+161271=177147
+\end{array}
+\tag{31}
+\]</span>
+<p>The squared coefficient bounds are <span class="math" data-tex="\(24^2=576\leq4\cdot2048=8192\)">\(24^2=576\leq4\cdot2048=8192\)</span> and <span class="math" data-tex="\(252^2=63504\leq4\cdot177147=708588\)">\(252^2=63504\leq4\cdot177147=708588\)</span>. Also the coefficient at <span class="math" data-tex="\(q^4\)">\(q^4\)</span> checks (2) exactly:
+<span class="math math-display" data-tex="\[
+\tau(4)=\tau(2)^2-2^{11}=576-2048=-1472.
+\]">\[
+\tau(4)=\tau(2)^2-2^{11}=576-2048=-1472.
+\]</span></p>
+<p>For <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, <span class="math" data-tex="\(\mathcal L_0=\mathbf Q_\ell\)">\(\mathcal L_0=\mathbf Q_\ell\)</span>, and the parabolic group is <span class="math" data-tex="\(H^1(X_1(N)_{\overline{\mathbf Q}},\mathbf Q_\ell)\)">\(H^1(X_1(N)_{\overline{\mathbf Q}},\mathbf Q_\ell)\)</span>. Its dual is the rational Tate module of the Jacobian. If the character is trivial, the primitive quotient constructed in <em>Galois representations of weight-two newforms</em> has the same good-prime polynomials as (3). Once the irreducibility assertion in Theorem 1.1 has been proved, the trace theorem of lesson 2 identifies its semisimplification with <span class="math" data-tex="\(\rho_{f,\lambda}\)">\(\rho_{f,\lambda}\)</span>. Since that semisimplification is irreducible of the same dimension, the original representation has no proper composition factor and is itself irreducible. This identifies the actual representations under the stated irreducibility premise, which remains a separate obligation in this edition. Matching finitely many coefficients proves no such identification.</p>
+<h2 id="7-proof-scope-and-remaining-obligations">7. Proof scope and remaining obligations</h2>
+<p>The original full construction, purity and irreducibility statements are retained in Theorem 1.1 and (22). Their complete proof chain is still required. The preceding sections now supply the period/cup injection in every regular-cusp weight, the full-Hecke multiplicity and rational coefficient descent under their geometric premises, the all-characteristic nodal product resolution, the symplectic tensor estimate, the parabolic duality bound, and the tensor-power removal of an even-dimensional error. Propositions 3.1 and 4.2 and Theorems 4.3 and 5.1 prove the stated algebraic deductions. Successful formula rendering would certify none of the remaining mathematics.</p>
+<p>The exact outstanding core steps are these:</p>
+<ul>
+<li><strong>Arithmetic modular geometry at arbitrary level.</strong> Construct the fine auxiliary modular curves over every required <span class="math" data-tex="\(\mathbf Z[1/NM]\)">\(\mathbf Z[1/NM]\)</span>, the universal elliptic family, smooth compactification with semistable cusp model, and its descent at levels below five. The actual lesson 10 proves the interior level functors conditional on a family, ordinary subgroup computations and an integral modular-polynomial relation. Its §7 expressly retains the arbitrary-level models and supersingular compact correspondence as gaps. They are needed here before unramifiedness and the congruence relation can be asserted as proved.</li>
+<li><strong>Comparison and dimension foundations.</strong> The actual earlier LG-MF period proof supplies its cup injection, but its final theorem excludes odd weights without <span class="math" data-tex="\(-I\)">\(-I\)</span>. Lemma 2.1 extends that injection to the fine curves here. Surjectivity uses Exercise 8.4 and the analytic Riemann–Roch proof in the dimension lesson, Appendix A; that appendix still requires its recorded real-analysis and Hilbert-space foundations. The current earlier modular lesson, Lemmas 1.2 and 1.4, writes complex curve comparison and algebraically closed field extension. Lemma 2.4 reduces the coefficient-system degree-one comparison to those actual curve proofs, without a higher-dimensional comparison import. The complex curve proof still uses the analytic Riemann–Roch foundations, and the arithmetic family and correspondences must exist before this reduction applies.</li>
+<li><strong>Higher-weight congruence and general-character determinant.</strong> Prove the special-fiber correspondence, including supersingular points and the coefficient trace, giving (13). Lemma 3.2 proves the Fricke covariance and the global alternating pairing once the arithmetic cyclic-isogeny correspondence exists. Its restriction to the primitive full-Hecke eigenspace still requires a proof of nondegeneracy. The weight-two trivial-character argument in the earlier lesson does not cover arbitrary <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. The relation alone leaves the scalar defect of (16).</li>
+<li><strong>Cuspidal irreducibility.</strong> Prove irreducibility over every <span class="math" data-tex="\(K_\lambda\)">\(K_\lambda\)</span>, including arbitrary nebentypus. Proposition 2.2 constructs a two-dimensional eigenspace under the comparison premises; it proves neither irreducibility nor the required primitive Fricke pairing. Corollary 5.3 proves absolute irreducibility only after irreducibility and the determinant have been established.</li>
+<li><strong>General smooth-projective purity.</strong> The actual earlier trace-formula proof writes rationality, the even-dimensional Leray estimate, its radical alternative and the all-degree power argument. Its pencil lesson expressly states Veronese-pencil existence, the general étale Picard–Lefschetz sequence, and the global monodromy generation and cycle-conjugacy inputs without proof. Lemma 4.0D proves the all-extension point-count bound for curves, covers and twists from the inspected coherent prerequisites. Sections 4.0C.1–6 now construct the constant curve trace, its product and graph normalizations, and its determinant/Euler-product identity in every finite extension. They replace the previously imported general surface trace input. The higher cohomological-continuity assertion used in the strict-trait, generic-point and filtered-support arguments is still imported in the earlier direct-image lesson, §2, equation (2.3); its actual proof and the recorded recursive earlier foundations remain required. The constant-coefficient construction does not by itself prove the general lisse-sheaf trace formula used elsewhere in this lesson. Lemmas 4.0A–C remove the need for an imported symplectic invariant-basis theorem or an imported <span class="math" data-tex="\(j_*\)">\(j_*\)</span>-duality theorem, but these geometric pencil inputs remain. Thus general purity and consequently the full modular root assertion (22) are not yet fully proved in this edition. Lemma 4.2A closes the nodal-product resolution once the semistable family exists; it supplies no arbitrary-dimensional singular-fiber cohomology theorem.</li>
+</ul>
+<p>The inspected earlier cohomological proofs used here have precise scopes: smooth duality, Gysin normalization, Künneth and weak Lefschetz occur in the smooth-duality lesson, Theorem 10.1, Proposition 12.1, Lemma 13.2 and Solution 5; the finite-coefficient curve trace formula is Theorem 1.1 and §§2–5 of <em>The trace formula for curves</em>, and its adic passage is <em>The trace formula in all dimensions</em>, Theorem 5.1. Their own recorded geometric and finiteness prerequisites remain part of the transitive proof requirement. The local elliptic torsion, Tate uniformization and twist calculations used in the Legendre example occur in the earlier lessons of this course, including Lemma 3.0, Theorem 3.1 and Lemma 4.0 of <em>Elliptic curves over local fields</em>.</p>
+<p>All source links below lead to freely accessible primary material. They locate the geometry and statements checked during this rewrite. They are never counted as proofs supplied by the programme.</p>
+<h2 id="8-exercises-and-complete-solutions">8. Exercises and complete solutions</h2>
+<p><strong>Exercise 8.1 (easy: determinant of the discriminant form).</strong> Prove that <span class="math" data-tex="\(\det\rho_{\Delta,\ell}=\chi_\ell^{11}\)">\(\det\rho_{\Delta,\ell}=\chi_\ell^{11}\)</span> on all of <span class="math" data-tex="\(G_{\mathbf Q}\)">\(G_{\mathbf Q}\)</span>, not just on good Frobenius elements.</p>
+<p><em>Solution.</em> Weight twelve gives <span class="math" data-tex="\(k-1=11\)">\(k-1=11\)</span> and level one gives the trivial character. For <span class="math" data-tex="\(p\ne\ell\)">\(p\ne\ell\)</span>, (4) gives determinant <span class="math" data-tex="\(p^{11}\)">\(p^{11}\)</span>, equal to <span class="math" data-tex="\(\chi_\ell^{11}(\operatorname{Fr}_p)\)">\(\chi_\ell^{11}(\operatorname{Fr}_p)\)</span>. The quotient character is continuous and equals one on every such Frobenius class. The finite-quotient Chebotarev argument in Theorem 5.1 proves it equals one everywhere. In particular, at complex conjugation its value is <span class="math" data-tex="\((-1)^{11}=-1\)">\((-1)^{11}=-1\)</span>, as required by oddness. ∎</p>
+<p><strong>Exercise 8.2 (medium: congruence and the scalar case).</strong> A two-dimensional invertible operator satisfies <span class="math" data-tex="\(F+CF^{-1}=aI\)">\(F+CF^{-1}=aI\)</span>. Supply the missing hypothesis needed to conclude (15), prove the corrected statement, and describe what happens if <span class="math" data-tex="\(F\)">\(F\)</span> is scalar.</p>
+<p><em>Solution.</em> One sufficient hypothesis is <span class="math" data-tex="\(\det F=C\)">\(\det F=C\)</span>. Multiply the relation by <span class="math" data-tex="\(F\)">\(F\)</span>, and subtract the Cayley–Hamilton relation with that determinant. This gives <span class="math" data-tex="\((\operatorname{tr}F-a)F=0\)">\((\operatorname{tr}F-a)F=0\)</span>; invertibility yields <span class="math" data-tex="\(\operatorname{tr}F=a\)">\(\operatorname{tr}F=a\)</span>, so both coefficients are as claimed.</p>
+<p>If <span class="math" data-tex="\(F=uI\)">\(F=uI\)</span>, the given relation says <span class="math" data-tex="\(a=u+C/u\)">\(a=u+C/u\)</span>. Its characteristic polynomial is always <span class="math" data-tex="\((X-u)^2\)">\((X-u)^2\)</span>, irrespective of that relation. It equals <span class="math" data-tex="\(X^2-aX+C\)">\(X^2-aX+C\)</span> precisely when <span class="math" data-tex="\(C=u^2\)">\(C=u^2\)</span>, which is precisely the added determinant hypothesis. Then <span class="math" data-tex="\(a=2u\)">\(a=2u\)</span>. For a nonscalar <span class="math" data-tex="\(F\)">\(F\)</span>, its degree-two minimal polynomial instead gives the conclusion without the additional hypothesis. Example (16) exhibits the failure when the scalar case is left unrestricted. ∎</p>
+<p><strong>Exercise 8.3 (medium: the Petersson estimate).</strong> Derive an estimate of order <span class="math" data-tex="\(p^{k/2}\)">\(p^{k/2}\)</span> using the Petersson norm and compare it with (23).</p>
+<p><em>Solution.</em> Normalize the weight-<span class="math" data-tex="\(k\)">\(k\)</span> slash action of a positive-determinant real matrix by its determinant to the <span class="math" data-tex="\(k/2\)">\(k/2\)</span> power. This action preserves the Petersson density
+<span class="math math-display" data-tex="\[
+|h(z)|^2(\operatorname{Im}z)^k
+\frac{dx\,dy}{(\operatorname{Im}z)^2}.
+\]">\[
+|h(z)|^2(\operatorname{Im}z)^k
+\frac{dx\,dy}{(\operatorname{Im}z)^2}.
+\]</span>
+Indeed, for <span class="math" data-tex="\(\delta=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)">\(\delta=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span> of determinant <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, subtraction of <span class="math" data-tex="\(\delta z\)">\(\delta z\)</span> and its conjugate gives <span class="math" data-tex="\(\operatorname{Im}(\delta z)=ny/|cz+d|^2\)">\(\operatorname{Im}(\delta z)=ny/|cz+d|^2\)</span>, and differentiation gives <span class="math" data-tex="\(d(\delta z)=n(cz+d)^{-2}dz\)">\(d(\delta z)=n(cz+d)^{-2}dz\)</span>. The slash factor <span class="math" data-tex="\(n^{k/2}(cz+d)^{-k}\)">\(n^{k/2}(cz+d)^{-k}\)</span> cancels the first change in the weight, while the second preserves <span class="math" data-tex="\(dx\,dy/y^2\)">\(dx\,dy/y^2\)</span>. Change of variables therefore proves the stated density identity.
+For the <span class="math" data-tex="\(p+1\)">\(p+1\)</span> cosets defining a good Hecke operator, the standard normalization is
+<span class="math math-display" data-tex="\[
+T_p=p^{\,k/2-1}\sum_{i=1}^{p+1}U_i,
+\tag{32}
+\]">\[
+T_p=p^{\,k/2-1}\sum_{i=1}^{p+1}U_i,
+\tag{32}
+\]</span>
+where each <span class="math" data-tex="\(U_i\)">\(U_i\)</span> is such a slash action, with a character factor of modulus one when needed.</p>
+<p>To compare norms, choose a finite-index subgroup contained in all the conjugated modular groups involved. On its common cover, use the Petersson norm divided by the index of the cover. Change of variables in the invariant density shows <span class="math" data-tex="\(\|U_i h\|=\|h\|\)">\(\|U_i h\|=\|h\|\)</span> with these normalized norms. The triangle inequality therefore gives
+<span class="math math-display" data-tex="\[
+|a_p|\|f\|=\|T_pf\|
+\leq(p+1)p^{k/2-1}\|f\|.
+\]">\[
+|a_p|\|f\|=\|T_pf\|
+\leq(p+1)p^{k/2-1}\|f\|.
+\]</span>
+The cusp form is nonzero, so its finite positive norm can be cancelled:
+<span class="math math-display" data-tex="\[
+|a_p|\leq(p+1)p^{k/2-1}
+=p^{k/2}(1+p^{-1})=O(p^{k/2}).
+\tag{33}
+\]">\[
+|a_p|\leq(p+1)p^{k/2-1}
+=p^{k/2}(1+p^{-1})=O(p^{k/2}).
+\tag{33}
+\]</span>
+The same proof applies to a conjugate normalized eigenform. Deligne gives <span class="math" data-tex="\(2p^{(k-1)/2}\)">\(2p^{(k-1)/2}\)</span>, reducing the exponent by one half. The ratio of the two displayed upper bounds is <span class="math" data-tex="\((p+1)/(2\sqrt p)\)">\((p+1)/(2\sqrt p)\)</span>, which grows with <span class="math" data-tex="\(p\)">\(p\)</span>. The norm argument supplies a weaker estimate; it does not imply the Ramanujan–Petersson exponent. ∎</p>
+<p><strong>Exercise 8.4 (hard: Euler–Poincaré and the dimension).</strong> Let <span class="math" data-tex="\(N\geq5\)">\(N\geq5\)</span>, let <span class="math" data-tex="\(g\)">\(g\)</span> be the genus of <span class="math" data-tex="\(X_1(N)\)">\(X_1(N)\)</span>, and let <span class="math" data-tex="\(c\)">\(c\)</span> be its number of cusps. Compute
+<span class="math" data-tex="\(\dim H^1_{\mathrm{par}}(Y_1(N)_{\overline{\mathbf Q}},\mathcal L_{k-2})\)">\(\dim H^1_{\mathrm{par}}(Y_1(N)_{\overline{\mathbf Q}},\mathcal L_{k-2})\)</span>
+from Euler–Poincaré, and compare it with twice the dimension of <span class="math" data-tex="\(S_k(\Gamma_1(N))\)">\(S_k(\Gamma_1(N))\)</span>. Include weight two.</p>
+<p><em>Solution.</em> By comparison we can work on the punctured complex curve <span class="math" data-tex="\(U=X_1(N)(\mathbf C)\setminus D\)">\(U=X_1(N)(\mathbf C)\setminus D\)</span>. Put <span class="math" data-tex="\(m=k-2\)">\(m=k-2\)</span> and <span class="math" data-tex="\(r=m+1=k-1\)">\(r=m+1=k-1\)</span>. The group <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span> has no elliptic stabilizers: a noncentral finite-order matrix in <span class="math" data-tex="\(\operatorname{SL}_2(\mathbf Z)\)">\(\operatorname{SL}_2(\mathbf Z)\)</span> has trace <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>, whereas a matrix in <span class="math" data-tex="\(\Gamma_1(N)\)">\(\Gamma_1(N)\)</span> has trace congruent to <span class="math" data-tex="\(2\)">\(2\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>. Also <span class="math" data-tex="\(-I\notin\Gamma_1(N)\)">\(-I\notin\Gamma_1(N)\)</span>. For <span class="math" data-tex="\(N\geq5\)">\(N\geq5\)</span>, no cusp stabilizer has the negative of a unipotent matrix, since its trace would be <span class="math" data-tex="\(-2\)">\(-2\)</span>, again incompatible with that congruence.</p>
+<p>At each cusp the rank-two uniformizing local system consequently has nontrivial positive unipotent monodromy, conjugate to
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}1&amp;w\\0&amp;1\end{pmatrix},
+\qquad w\ne0.
+\]">\[
+\begin{pmatrix}1&amp;w\\0&amp;1\end{pmatrix},
+\qquad w\ne0.
+\]</span>
+On <span class="math" data-tex="\(\operatorname{Sym}^m\)">\(\operatorname{Sym}^m\)</span>, choose variables <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> with <span class="math" data-tex="\(e_1\)">\(e_1\)</span> fixed and <span class="math" data-tex="\(e_2\mapsto e_2+we_1\)">\(e_2\mapsto e_2+we_1\)</span>. In characteristic zero, the logarithm acts as <span class="math" data-tex="\(w e_1\partial/\partial e_2\)">\(w e_1\partial/\partial e_2\)</span>; its kernel on homogeneous degree <span class="math" data-tex="\(m\)">\(m\)</span> polynomials is the line spanned by <span class="math" data-tex="\(e_1^m\)">\(e_1^m\)</span>. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span> it is the entire one-dimensional space. Since a unipotent matrix and its logarithm have the same fixed vectors, the invariant dimension at each cusp is one. The coinvariant dimension is also one, by rank–nullity for the monodromy minus identity.</p>
+<p>The global invariant dimension is
+<span class="math math-display" data-tex="\[
+s=\begin{cases}1&amp;m=0,\\0&amp;m&gt;0.\end{cases}
+\tag{34}
+\]">\[
+s=\begin{cases}1&amp;m=0,\\0&amp;m&gt;0.\end{cases}
+\tag{34}
+\]</span>
+Here is a direct verification. The group contains nontrivial upper and lower unipotents, for example <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(\begin{pmatrix}1&amp;0\\N&amp;1\end{pmatrix}\)">\(\begin{pmatrix}1&amp;0\\N&amp;1\end{pmatrix}\)</span>. A vector fixed by either is killed by its logarithm. Thus a globally invariant homogeneous polynomial is killed by both <span class="math" data-tex="\(e_1\partial/\partial e_2\)">\(e_1\partial/\partial e_2\)</span> and <span class="math" data-tex="\(e_2\partial/\partial e_1\)">\(e_2\partial/\partial e_1\)</span>. The first makes it a multiple of <span class="math" data-tex="\(e_1^m\)">\(e_1^m\)</span>; the second then makes that multiple zero if <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>. The dual symmetric-power system has the same invariant dimensions, since the determinant-one rank-two system is self-dual as a geometric local system.</p>
+<p>Remove small open cusp disks to obtain a compact oriented surface <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(c\)">\(c\)</span> boundary circles. Pushing the radial coordinate in each punctured disk to its boundary gives a deformation retraction of <span class="math" data-tex="\(U\)">\(U\)</span> onto <span class="math" data-tex="\(M\)">\(M\)</span>; compact support is computed by the relative cochains of <span class="math" data-tex="\((M,\partial M)\)">\((M,\partial M)\)</span>. The finite polygon and cusp-cut constructions in the earlier modular-curves and period lessons give a finite cell decomposition of this pair. A rank-<span class="math" data-tex="\(r\)">\(r\)</span> local system contributes a vector space of dimension <span class="math" data-tex="\(r\)">\(r\)</span> to each relative cell cochain, independently of the attaching maps. Therefore the Euler characteristic of its cochain complex is <span class="math" data-tex="\(r\)">\(r\)</span> times that of the pair. Boundary circles have Euler characteristic zero, so
+<span class="math math-display" data-tex="\[
+\chi_c(U,\mathcal L_m)=r(2-2g-c).
+\tag{35}
+\]">\[
+\chi_c(U,\mathcal L_m)=r(2-2g-c).
+\tag{35}
+\]</span>
+This proves the required Euler–Poincaré value directly in characteristic zero.</p>
+<p>We have <span class="math" data-tex="\(H^0_c(U,\mathcal L_m)=0\)">\(H^0_c(U,\mathcal L_m)=0\)</span>: a locally constant section on connected <span class="math" data-tex="\(U\)">\(U\)</span> that vanishes near the boundary vanishes everywhere. The duality needed here has a finite-cell proof. Subdivide the oriented surface into triangles and form the transverse dual cells. A primal cell of dimension <span class="math" data-tex="\(i\)">\(i\)</span> meets its relative dual cell of dimension <span class="math" data-tex="\(2-i\)">\(2-i\)</span> once, positively after fixing its orientation; the boundary cells are omitted in the relative complex. Pair the two coefficient fibers by parallel transport to that intersection and evaluation in the dual local system. This identifies one finite cochain complex with the dual of the other. Boundary incidences are transposes with the orientation sign: both follow the same edge with reversed transverse orientation, and the coefficient transport is inverted. Thus the coboundaries are adjoints up to that sign. Finite-dimensional linear algebra gives perfect pairings on cohomology. In particular top relative cohomology is the dual of the global invariant space of the dual system. The coefficient pairing identifies its dimension with (34), so <span class="math" data-tex="\(\dim H^2_c(U,\mathcal L_m)=s\)">\(\dim H^2_c(U,\mathcal L_m)=s\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\dim H^1_c(U,\mathcal L_m)=r(2g-2+c)+s.
+\tag{36}
+\]">\[
+\dim H^1_c(U,\mathcal L_m)=r(2g-2+c)+s.
+\tag{36}
+\]</span>
+The long exact sequence of <span class="math" data-tex="\((M,\partial M)\)">\((M,\partial M)\)</span> contains
+<span class="math math-display" data-tex="\[
+0\longrightarrow H^0(U,\mathcal L_m)
+\longrightarrow\bigoplus_{d\in D}\mathcal L_m^{I_d}
+\longrightarrow H^1_c(U,\mathcal L_m)
+\longrightarrow H^1(U,\mathcal L_m)
+\longrightarrow\bigoplus_{d\in D}(\mathcal L_m)_{I_d}
+\longrightarrow H^2_c(U,\mathcal L_m)\longrightarrow0.
+\tag{37}
+\]">\[
+0\longrightarrow H^0(U,\mathcal L_m)
+\longrightarrow\bigoplus_{d\in D}\mathcal L_m^{I_d}
+\longrightarrow H^1_c(U,\mathcal L_m)
+\longrightarrow H^1(U,\mathcal L_m)
+\longrightarrow\bigoplus_{d\in D}(\mathcal L_m)_{I_d}
+\longrightarrow H^2_c(U,\mathcal L_m)\longrightarrow0.
+\tag{37}
+\]</span>
+Ordinary <span class="math" data-tex="\(H^2(U,\mathcal L_m)\)">\(H^2(U,\mathcal L_m)\)</span> vanishes, since a surface with nonempty boundary retracts onto a graph. The first map is injective by the vanishing of <span class="math" data-tex="\(H^0_c\)">\(H^0_c\)</span>. Consequently the kernel of <span class="math" data-tex="\(H^1_c\to H^1\)">\(H^1_c\to H^1\)</span> has dimension <span class="math" data-tex="\(c-s\)">\(c-s\)</span>. Subtracting it from (36) gives
+<span class="math math-display" data-tex="\[
+\dim H^1_{\mathrm{par}}
+=r(2g-2+c)-c+2s
+=\begin{cases}
+2g,&amp;k=2,\\
+2(k-1)(g-1)+(k-2)c,&amp;k\geq3.
+\end{cases}
+\tag{38}
+\]">\[
+\dim H^1_{\mathrm{par}}
+=r(2g-2+c)-c+2s
+=\begin{cases}
+2g,&amp;k=2,\\
+2(k-1)(g-1)+(k-2)c,&amp;k\geq3.
+\end{cases}
+\tag{38}
+\]</span></p>
+<p>To compare with cusp forms, let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be the Hodge line bundle on the compact modular curve. Its square is the logarithmic cotangent bundle:
+<span class="math math-display" data-tex="\[
+\omega^2\simeq\Omega_X^1(D),\qquad
+\deg\omega=g-1+\frac c2.
+\tag{39}
+\]">\[
+\omega^2\simeq\Omega_X^1(D),\qquad
+\deg\omega=g-1+\frac c2.
+\tag{39}
+\]</span>
+One can see this normalization directly on the uniformizing half-plane. An invariant differential on the elliptic fiber transforms by <span class="math" data-tex="\((cz+d)^{-1}\)">\((cz+d)^{-1}\)</span>, and <span class="math" data-tex="\(dz\)">\(dz\)</span> transforms by <span class="math" data-tex="\((cz+d)^{-2}\)">\((cz+d)^{-2}\)</span>; their squares give the same transition functions. At a cusp with parameter <span class="math" data-tex="\(q=\exp(2\pi iz/w)\)">\(q=\exp(2\pi iz/w)\)</span>, <span class="math" data-tex="\(dz=(w/2\pi i)dq/q\)">\(dz=(w/2\pi i)dq/q\)</span>, so the isomorphism extends to the logarithmic cotangent line. There are no elliptic points or negative cusp stabilizers requiring corrections in our range of <span class="math" data-tex="\(N\)">\(N\)</span>. A weight-<span class="math" data-tex="\(k\)">\(k\)</span> cusp form is a section of <span class="math" data-tex="\(\omega^k(-D)\)">\(\omega^k(-D)\)</span>, because its expansion has zero constant term at each cusp.</p>
+<p>The degree in (39) is positive without a Gauss–Bonnet input. The earlier level-one valence lesson, Theorem 2.1, proves that <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> has no zero on the half-plane and a simple zero at its cusp. Pulling it back gives a section of <span class="math" data-tex="\(\omega^{12}\)">\(\omega^{12}\)</span> whose cusp orders are the positive cusp widths. Hence <span class="math" data-tex="\(12\deg\omega=\sum_d w_d&gt;0\)">\(12\deg\omega=\sum_d w_d&gt;0\)</span>. The dimension lesson's analytic Riemann–Roch and duality calculation, with the foundation scope recorded in §7, now gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h^0(\omega^k(-D))-h^0(\omega^{2-k})
+&amp;=\deg(\omega^k(-D))+1-g\\
+&amp;=(k-1)(g-1)+\frac{k-2}{2}c.
+\end{aligned}
+\tag{40}
+\]">\[
+\begin{aligned}
+h^0(\omega^k(-D))-h^0(\omega^{2-k})
+&amp;=\deg(\omega^k(-D))+1-g\\
+&amp;=(k-1)(g-1)+\frac{k-2}{2}c.
+\end{aligned}
+\tag{40}
+\]</span>
+Indeed, the dual term is <span class="math" data-tex="\(\Omega_X^1\otimes\omega^{-k}(D)=\omega^{2-k}\)">\(\Omega_X^1\otimes\omega^{-k}(D)=\omega^{2-k}\)</span>, by (39). For <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span> it has negative degree and hence no nonzero section; a section would have an effective divisor of that negative degree. For <span class="math" data-tex="\(k=2\)">\(k=2\)</span> it is the trivial bundle, with its one-dimensional constant sections. Thus
+<span class="math math-display" data-tex="\[
+\dim S_k(\Gamma_1(N))=
+\begin{cases}
+g,&amp;k=2,\\
+(k-1)(g-1)+(k-2)c/2,&amp;k\geq3.
+\end{cases}
+\tag{41}
+\]">\[
+\dim S_k(\Gamma_1(N))=
+\begin{cases}
+g,&amp;k=2,\\
+(k-1)(g-1)+(k-2)c/2,&amp;k\geq3.
+\end{cases}
+\tag{41}
+\]</span>
+Doubling (41) gives (38) exactly. In particular, retaining the <span class="math" data-tex="\(s\)">\(s\)</span>-term is necessary in weight two.</p>
+<p>For a numerical check, <span class="math" data-tex="\(X_1(5)\)">\(X_1(5)\)</span> has genus zero and four cusps. These values can be checked directly. Reduction gives <span class="math" data-tex="\(|\operatorname{SL}_2(\mathbf F_5)|=5(5^2-1)=120\)">\(|\operatorname{SL}_2(\mathbf F_5)|=5(5^2-1)=120\)</span>: choose a nonzero first column in <span class="math" data-tex="\(24\)">\(24\)</span> ways and a second column with determinant one in <span class="math" data-tex="\(5\)">\(5\)</span> ways. The upper-unipotent image of <span class="math" data-tex="\(\Gamma_1(5)\)">\(\Gamma_1(5)\)</span> has order <span class="math" data-tex="\(5\)">\(5\)</span>, so the projective index is <span class="math" data-tex="\(120/(2\cdot5)=12\)">\(120/(2\cdot5)=12\)</span>. Cusps are the upper-unipotent orbits of nonzero first columns <span class="math" data-tex="\((a,c)\)">\((a,c)\)</span>, up to simultaneous sign. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, the two classes of <span class="math" data-tex="\(a\in\mathbf F_5^\times/\{\pm1\}\)">\(a\in\mathbf F_5^\times/\{\pm1\}\)</span> give two cusps. If <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, the translation is transitive on <span class="math" data-tex="\(a\)">\(a\)</span>, and the two classes of <span class="math" data-tex="\(c\)">\(c\)</span> give two more. The local cusp stabilizer calculation gives width one in the first case and width five in the second. These finite-column identifications follow by completing a primitive column to a determinant-one matrix and using surjective integral reduction; right translation changes only the second column.</p>
+<p>To count the genus, triangulate the base modular sphere with vertices its cusp and its two elliptic points; it has three edges and two faces. Upstairs there are <span class="math" data-tex="\(12/2=6\)">\(12/2=6\)</span> vertices above the order-two point, <span class="math" data-tex="\(12/3=4\)">\(12/3=4\)</span> above the order-three point, and four cusp vertices. Open edges and faces are unramified and have twelve lifts. Hence the compact surface has Euler number <span class="math" data-tex="\(6+4+4-3\cdot12+2\cdot12=2\)">\(6+4+4-3\cdot12+2\cdot12=2\)</span>; its genus is zero. Thus <span class="math" data-tex="\(\deg\omega=1\)">\(\deg\omega=1\)</span>, <span class="math" data-tex="\(\dim S_4=-3+4=1\)">\(\dim S_4=-3+4=1\)</span>, and (38) gives parabolic dimension <span class="math" data-tex="\(-6+8=2\)">\(-6+8=2\)</span>. At weight two both dimensions are zero. This means that no weight-two cusp form exists at this level. ∎</p>
+<h2 id="references">References</h2>
+<ul>
+<li>P. Deligne, <em>Formes modulaires et représentations <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adiques</em>, freely accessible original, §§2–5, particularly Theorem 2.10, Proposition 4.8, Theorem 4.9 and Lemmas 5.4–5.5. <a href="https://www.numdam.org/item/SB_1968-1969__11__139_0/">Original text</a>.</li>
+<li>P. Deligne, <em>La conjecture de Weil I</em>, freely accessible original, §§3–7 and Theorem 8.2. <a href="https://www.numdam.org/item/PMIHES_1974__43__273_0/">Original article</a>.</li>
+<li>The Stacks project authors, <a href="https://stacks.math.columbia.edu/tag/03VA">the Legendre family, Tag 03VA</a>. Section 2 writes the all-extension count and the vanishing argument used here; the source's trace formula is bound to the earlier programme proof with its own prerequisite scope.</li>
+</ul>
+<p>The earlier programme proof locators and the exact versions inspected are recorded in the accompanying rewrite receipt. The sources retain their own rights; this independently written exposition retains the public-domain declaration above.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="galois-representations-of-weight-two-newforms.html">← Galois representations of weight-two newforms</a></span><a href="./">Course contents</a><span class="pager-next"><span class="unlinked">Weight one: the theorem of Deligne and Serre →</span></span></nav>
+<p class="small source-link"><a href="src/deligne-construction-in-higher-weight.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GAL">Repository</a></nav>
+</footer>
+</body>
+</html>

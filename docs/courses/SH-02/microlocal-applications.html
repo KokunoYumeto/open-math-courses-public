@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SH02-MA — Continuing coefficients and transporting local morphisms · Microlocal sheaves</title>
+<meta name="description" content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/microlocal-applications.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <span class="unlinked">Microlocal sheaves</span> <span aria-hidden="true">›</span> <span>SH02-MA — Continuing coefficients and transporting local morphisms</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by AI in Codex.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="sh02-ma-continuing-coefficients-and-transporting-local-morphisms">SH02-MA — Continuing coefficients and transporting local morphisms</h1>
+<p>Local unit: <code>SH02-MA</code>. License: GFDL-1.2-or-later, with no invariant sections or cover texts. Formalization and translation are absent.</p>
+<p>This lesson connects three uses of a directional estimate: continuing an ordinary section, transporting an internal Hom, and choosing a representative in a localized category. The last use requires a fraction calculation. A sheaf of microlocal morphisms on an open set does not by itself compute the morphisms of the quotient category attached to that set.</p>
+<p>Throughout, <span class="math" data-tex="$k$">$k$</span> is a commutative unital ring of finite global dimension. Manifolds are finite-dimensional real smooth Hausdorff second-countable manifolds. Every complex belongs to the bounded derived category of <strong>all</strong> sheaves of <span class="math" data-tex="$k$">$k$</span>-modules. No field, constructibility, finite-rank, orientability or compact-support hypothesis is implicit. A constant complex <span class="math" data-tex="$M_Z$">$M_Z$</span> on a locally closed set means extension by zero to the stated ambient space. Supports are closed supports. For a closed convex cone <span class="math" data-tex="$C$">$C$</span> in a real vector space, <span class="math" data-tex="$C^\circ$">$C^\circ$</span> is its nonnegative polar and <span class="math" data-tex="$C^{\circ a}=-C^\circ$">$C^{\circ a}=-C^\circ$</span>. A proper cone contains no line. The operation <span class="math" data-tex="$A\widehat+B$">$A\widehat+B$</span> is the asymptotic sum, including its escaping sequences, from <a href="../sheaf-proof-readings/SH02-asymptotic-estimates.html">asymptotic estimates</a>.</p>
+<p>The proof inputs are the <a href="../sheaf-proof-readings/SH02-cone-topology.html">cone topology and its projector</a>, the <a href="../sheaf-proof-readings/SH02-microsupport-tests.html">cone continuation and microsupport tests</a>, the <a href="../sheaf-proof-readings/SH02-characteristic-estimates.html">characteristic estimates</a>, <a href="involutivity.html">involutivity</a>, <a href="../sheaf-proof-readings/SH02-microlocal-categories.html">localized categories</a>, and <a href="../sheaf-proof-readings/SH02-microlocal-hom.html">microlocal Hom</a>. Each use below names the needed statement. The applications of microsupport localization go back to M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), Chapter 6.</p>
+<h2 id="sh02-ma-local-continuation-cone-continuation-inside-a-chart">SH02-MA-LOCAL-CONTINUATION — Cone continuation inside a chart</h2>
+<p>Let <span class="math" data-tex="$E$">$E$</span> be a finite-dimensional real vector space, <span class="math" data-tex="$B\subset E$">$B\subset E$</span> a bounded open convex set, and <span class="math" data-tex="$C\subset E$">$C\subset E$</span> a closed convex cone. Suppose</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(F)\subset B\times C^{\circ a}.
+\tag{MA1}
+$$">$$
+\operatorname{SS}(F)\subset B\times C^{\circ a}.
+\tag{MA1}
+$$</span>
+<p>If <span class="math" data-tex="$O\subset B$">$O\subset B$</span> is nonempty, open and convex, restriction induces</p>
+<span class="math math-display" data-tex="$$
+R\Gamma((O+C)\cap B;F)\xrightarrow{\sim}R\Gamma(O;F).
+\tag{MA2}
+$$">$$
+R\Gamma((O+C)\cap B;F)\xrightarrow{\sim}R\Gamma(O;F).
+\tag{MA2}
+$$</span>
+<p>The empty case has both sides zero. This is a local version of cone continuation: no extension of (MA1) across the boundary of <span class="math" data-tex="$B$">$B$</span> is assumed.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="$W=(O+C)\cap B$">$W=(O+C)\cap B$</span>. We spell out why the proof of <code>SH02-MST-CUTOFF-CONVERSE</code> works with this domain. Among open convex sets <span class="math" data-tex="$V$">$V$</span> with <span class="math" data-tex="$O\subset V\subset W$">$O\subset V\subset W$</span>, take those for which restriction to <span class="math" data-tex="$O$">$O$</span> is a cohomological isomorphism. A chain has its union as an upper bound. Indeed a countable subchain covers that union, by second countability; degreewise sections of an injective resolution form a surjective inverse system. The product difference sequence and its Milnor exact sequence identify cohomology on the union with the constant system <span class="math" data-tex="$H^*(O;F)$">$H^*(O;F)$</span>. This argument is bounded below and does not assume exactness of arbitrary inverse limits. Zorn's lemma gives a maximal <span class="math" data-tex="$V$">$V$</span>.</p>
+<p>If <span class="math" data-tex="$V\ne W$">$V\ne W$</span>, take <span class="math" data-tex="$z\in W\setminus\overline V$">$z\in W\setminus\overline V$</span> and put <span class="math" data-tex="$D=\overline{\operatorname{pos}(V-z)}$">$D=\overline{\operatorname{pos}(V-z)}$</span>. Because <span class="math" data-tex="$V$">$V$</span> is bounded and its closed convex closure is a positive distance from <span class="math" data-tex="$z$">$z$</span>, the closest-point inequality gives a linear functional strictly positive on <span class="math" data-tex="$D\setminus0$">$D\setminus0$</span>. Thus <span class="math" data-tex="$D$">$D$</span> is proper. Write <span class="math" data-tex="$z=o+c$">$z=o+c$</span> with <span class="math" data-tex="$o\in O$">$o\in O$</span> and <span class="math" data-tex="$c\in C$">$c\in C$</span>. The vector <span class="math" data-tex="$o-z=-c$">$o-z=-c$</span> is interior to <span class="math" data-tex="$D$">$D$</span>. Every nonzero covector in <span class="math" data-tex="$D^{\circ a}$">$D^{\circ a}$</span> is strictly negative on this vector, whereas a covector in <span class="math" data-tex="$C^{\circ a}$">$C^{\circ a}$</span> is nonnegative on it. Consequently</p>
+<span class="math math-display" data-tex="$$
+D^{\circ a}\cap C^{\circ a}=\{0\}.
+$$">$$
+D^{\circ a}\cap C^{\circ a}=\{0\}.
+$$</span>
+<p>The convex geometry lemma <code>SH02-MST-CONVEX-GEOMETRY</code> gives <span class="math" data-tex="$D$">$D$</span>-open sets <span class="math" data-tex="$V_3\subset V_2$">$V_3\subset V_2$</span> such that</p>
+<span class="math math-display" data-tex="$$
+V_2\setminus V_3=V_1\setminus V,
+\qquad V_1=\operatorname{Int}\operatorname{conv}(V\cup\{z\}),
+\qquad V_2=V_1\cup V_3,
+\quad V=V_1\cap V_3.
+$$">$$
+V_2\setminus V_3=V_1\setminus V,
+\qquad V_1=\operatorname{Int}\operatorname{conv}(V\cup\{z\}),
+\qquad V_2=V_1\cup V_3,
+\quad V=V_1\cap V_3.
+$$</span>
+<p>For each <span class="math" data-tex="$w\in V_2$">$w\in V_2$</span>, the set <span class="math" data-tex="$(w+D)\setminus V_3$">$(w+D)\setminus V_3$</span> is closed, bounded, and contained in <span class="math" data-tex="$V_1\subset W\subset B$">$V_1\subset W\subset B$</span>. It is therefore compact inside the domain where <span class="math" data-tex="$F$">$F$</span> is defined. Cone propagation, with ambient domain <span class="math" data-tex="$B$">$B$</span>, applies to <span class="math" data-tex="$V_3\subset V_2$">$V_3\subset V_2$</span>: the only support difference lies in <span class="math" data-tex="$B$">$B$</span>, and its required covectors are excluded by (MA1) and the displayed polar intersection. It gives <span class="math" data-tex="$R\Gamma(V_2\cap B;F)\simeq R\Gamma(V_3\cap B;F)$">$R\Gamma(V_2\cap B;F)\simeq R\Gamma(V_3\cap B;F)$</span>. Mayer–Vietoris for <span class="math" data-tex="$V_2\cap B=V_1\cup(V_3\cap B)$">$V_2\cap B=V_1\cup(V_3\cap B)$</span> now gives <span class="math" data-tex="$R\Gamma(V_1;F)\simeq R\Gamma(V;F)$">$R\Gamma(V_1;F)\simeq R\Gamma(V;F)$</span>. This strictly enlarges <span class="math" data-tex="$V$">$V$</span> within <span class="math" data-tex="$W$">$W$</span>, a contradiction. Therefore <span class="math" data-tex="$V=W$">$V=W$</span>, proving (MA2). The compact sets just checked, rather than an estimate on an artificially extended sheaf, justify the localization to <span class="math" data-tex="$B$">$B$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-ma-cone-model-a-local-directional-model-and-its-cohomology-sheaves">SH02-MA-CONE-MODEL — A local directional model and its cohomology sheaves</h2>
+<p>Let <span class="math" data-tex="$X\subset E$">$X\subset E$</span> be open and let <span class="math" data-tex="$C\subset E$">$C\subset E$</span> be a proper closed convex cone. Suppose <span class="math" data-tex="$F\in D^b(k_X)$">$F\in D^b(k_X)$</span> satisfies <span class="math" data-tex="$\operatorname{SS}(F)\subset X\times C^{\circ a}$">$\operatorname{SS}(F)\subset X\times C^{\circ a}$</span>. For each <span class="math" data-tex="$x\in X$">$x\in X$</span> there is an ordinary neighborhood <span class="math" data-tex="$B$">$B$</span> of <span class="math" data-tex="$x$">$x$</span> and a bounded complex <span class="math" data-tex="$A$">$A$</span> of sheaves on the directional space <span class="math" data-tex="$E_C$">$E_C$</span> such that</p>
+<span class="math math-display" data-tex="$$
+F|_B\simeq (\phi_C^{-1}A)|_B.
+\tag{MA3}
+$$">$$
+F|_B\simeq (\phi_C^{-1}A)|_B.
+\tag{MA3}
+$$</span>
+<p>Moreover, for every integer <span class="math" data-tex="$j$">$j$</span>,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(\mathcal H^j(F))\subset X\times C^{\circ a}.
+\tag{MA4}
+$$">$$
+\operatorname{SS}(\mathcal H^j(F))\subset X\times C^{\circ a}.
+\tag{MA4}
+$$</span>
+<p>Here <span class="math" data-tex="$E_C$">$E_C$</span> has the ordinary open sets stable under addition by <span class="math" data-tex="$C$">$C$</span>, and <span class="math" data-tex="$\phi_C:E\to E_C$">$\phi_C:E\to E_C$</span> is the identity of underlying sets. The cone may have empty interior or equal <span class="math" data-tex="$\{0\}$">$\{0\}$</span>.</p>
+<p><strong>Proof.</strong> Choose a bounded open convex <span class="math" data-tex="$B$">$B$</span> containing <span class="math" data-tex="$x$">$x$</span> with <span class="math" data-tex="$\overline B\subset X$">$\overline B\subset X$</span>. Let <span class="math" data-tex="$j:B\hookrightarrow E$">$j:B\hookrightarrow E$</span> and set</p>
+<span class="math math-display" data-tex="$$
+A=R\phi_{C*}Rj_*(F|_B)=R(\phi_Cj)_*(F|_B).
+$$">$$
+A=R\phi_{C*}Rj_*(F|_B)=R(\phi_Cj)_*(F|_B).
+$$</span>
+<p>This complex is bounded. To check that assertion on the possibly non-Hausdorff target, use its convex neighborhood basis <span class="math" data-tex="$B_\epsilon(z)+C$">$B_\epsilon(z)+C$</span>. Each inverse image in <span class="math" data-tex="$B$">$B$</span> is an ordinary open subset of a finite-dimensional manifold. The uniform finite cohomological-dimension bound for sections on such open subsets bounds all the higher direct-image stalks, independently of <span class="math" data-tex="$z$">$z$</span> and <span class="math" data-tex="$\epsilon$">$\epsilon$</span>. The lower bound is preserved by right derived direct image. No locally compact six-operation theorem on <span class="math" data-tex="$E_C$">$E_C$</span> is being used.</p>
+<p>The two adjunction counits give <span class="math" data-tex="$(\phi_C^{-1}A)|_B\to F|_B$">$(\phi_C^{-1}A)|_B\to F|_B$</span>. For <span class="math" data-tex="$z\in B$">$z\in B$</span> and sufficiently small <span class="math" data-tex="$\epsilon$">$\epsilon$</span>, its stalk is the filtered colimit of the restriction maps</p>
+<span class="math math-display" data-tex="$$
+R\Gamma((B_\epsilon(z)+C)\cap B;F)
+\longrightarrow R\Gamma(B_\epsilon(z);F).
+$$">$$
+R\Gamma((B_\epsilon(z)+C)\cap B;F)
+\longrightarrow R\Gamma(B_\epsilon(z);F).
+$$</span>
+<p>Each map is an isomorphism by (MA2), and the right-hand colimit computes <span class="math" data-tex="$F_z$">$F_z$</span>. Filtered colimits of modules are exact, so the counit is an isomorphism on every cohomology stalk. This proves (MA3).</p>
+<p>Inverse image of sheaves is exact. Hence <span class="math" data-tex="$\mathcal H^j(F)|_B\simeq (\phi_C^{-1}\mathcal H^j(A))|_B$">$\mathcal H^j(F)|_B\simeq (\phi_C^{-1}\mathcal H^j(A))|_B$</span>. The forward cone-projector theorem says that the inverse image of any sheaf on <span class="math" data-tex="$E_C$">$E_C$</span> has microsupport in <span class="math" data-tex="$E\times C^{\circ a}$">$E\times C^{\circ a}$</span>; it follows by applying the projector identity to that inverse image and using its polar bound. This theorem permits arbitrary modules and closed convex cones. Applying it locally at every <span class="math" data-tex="$x$">$x$</span> proves (MA4). When <span class="math" data-tex="$C=\{0\}$">$C=\{0\}$</span>, <span class="math" data-tex="$\phi_C$">$\phi_C$</span> is the ordinary identity and the assertion reduces to the unconstrained local model. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-ma-section-a-section-cannot-terminate-across-an-allowed-cone">SH02-MA-SECTION — A section cannot terminate across an allowed cone</h2>
+<p>Suppose <span class="math" data-tex="$F\in D^b(k_X)$">$F\in D^b(k_X)$</span> has <span class="math" data-tex="$\mathcal H^j(F)=0$">$\mathcal H^j(F)=0$</span> for <span class="math" data-tex="$j&lt;0$">$j&lt;0$</span>, and let</p>
+<span class="math math-display" data-tex="$$
+u\in H^0R\Gamma(X;F)=\Gamma(X;\mathcal H^0(F)).
+$$">$$
+u\in H^0R\Gamma(X;F)=\Gamma(X;\mathcal H^0(F)).
+$$</span>
+<p>Let <span class="math" data-tex="$Z=\operatorname{supp}(u)$">$Z=\operatorname{supp}(u)$</span>, let <span class="math" data-tex="$x\in X$">$x\in X$</span>, and let <span class="math" data-tex="$C\subset T_xX$">$C\subset T_xX$</span> be a <strong>nonzero</strong> proper closed convex cone. Write <span class="math" data-tex="$C_x(Z)$">$C_x(Z)$</span> for the ordinary tangent cone obtained by moving a point of <span class="math" data-tex="$Z$">$Z$</span> towards the fixed point <span class="math" data-tex="$x$">$x$</span>. If</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(F)_x\cap C^{\circ a}\subset\{0\},
+\qquad C_x(Z)\cap C\subset\{0\},
+\tag{MA5}
+$$">$$
+\operatorname{SS}(F)_x\cap C^{\circ a}\subset\{0\},
+\qquad C_x(Z)\cap C\subset\{0\},
+\tag{MA5}
+$$</span>
+<p>then <span class="math" data-tex="$x\notin Z$">$x\notin Z$</span>.</p>
+<p><strong>Proof.</strong> Work in a chart centered at <span class="math" data-tex="$x=0$">$x=0$</span>. Suppose <span class="math" data-tex="$x\in Z$">$x\in Z$</span>. Compactness of unit directions, properness of <span class="math" data-tex="$C$">$C$</span>, and the second condition in (MA5) allow two slightly larger proper closed convex cones <span class="math" data-tex="$C_1,C_2$">$C_1,C_2$</span> with</p>
+<span class="math math-display" data-tex="$$
+C\setminus0\subset\operatorname{Int}C_1,
+\quad C_1\setminus0\subset\operatorname{Int}C_2,
+\quad C_x(Z)\cap C_2=\{0\}.
+$$">$$
+C\setminus0\subset\operatorname{Int}C_1,
+\quad C_1\setminus0\subset\operatorname{Int}C_2,
+\quad C_x(Z)\cap C_2=\{0\}.
+$$</span>
+<p>One concrete construction chooses a linear functional strictly positive on <span class="math" data-tex="$C\setminus0$">$C\setminus0$</span>, thickens its compact convex unit section twice by sufficiently small balls in that affine hyperplane, and then takes positive hulls. The forbidden tangent directions and the opposite halfspace stay a positive distance from these sections. These choices also give a nonzero <span class="math" data-tex="$v\in\operatorname{Int}C_1$">$v\in\operatorname{Int}C_1$</span>.</p>
+<p>After shrinking the chart <span class="math" data-tex="$W$">$W$</span>, tangent-cone avoidance implies <span class="math" data-tex="$Z\cap(W\cap C_2)=\{0\}$">$Z\cap(W\cap C_2)=\{0\}$</span>. Otherwise points of <span class="math" data-tex="$Z\cap C_2\setminus0$">$Z\cap C_2\setminus0$</span> tending to zero, normalized to unit length, would give a forbidden tangent vector. Also <span class="math" data-tex="$C_1^{\circ a}\subset C^{\circ a}$">$C_1^{\circ a}\subset C^{\circ a}$</span>, so the first condition of (MA5), closedness and conicity of microsupport give</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(F)\cap
+\bigl(W\times(C_1^{\circ a}\setminus0)\bigr)=\varnothing.
+$$">$$
+\operatorname{SS}(F)\cap
+\bigl(W\times(C_1^{\circ a}\setminus0)\bigr)=\varnothing.
+$$</span>
+<p>Set <span class="math" data-tex="$O_0=\operatorname{Int}C_2$">$O_0=\operatorname{Int}C_2$</span> and</p>
+<span class="math math-display" data-tex="$$
+O_\epsilon=O_0\cup(-\epsilon v+\operatorname{Int}C_1).
+$$">$$
+O_\epsilon=O_0\cup(-\epsilon v+\operatorname{Int}C_1).
+$$</span>
+<p>These are <span class="math" data-tex="$C_1$">$C_1$</span>-open, and <span class="math" data-tex="$0\in O_\epsilon$">$0\in O_\epsilon$</span>. Their added cap has diameter <span class="math" data-tex="$O(\epsilon)$">$O(\epsilon)$</span>. Indeed strict containment of the unit directions of <span class="math" data-tex="$C_1$">$C_1$</span> in <span class="math" data-tex="$\operatorname{Int}C_2$">$\operatorname{Int}C_2$</span> gives <span class="math" data-tex="$\operatorname{dist}(c,E\setminus\operatorname{Int}C_2)\ge a|c|$">$\operatorname{dist}(c,E\setminus\operatorname{Int}C_2)\ge a|c|$</span> for <span class="math" data-tex="$c\in C_1$">$c\in C_1$</span>, with some <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>. If <span class="math" data-tex="$c-\epsilon v\notin\operatorname{Int}C_2$">$c-\epsilon v\notin\operatorname{Int}C_2$</span>, then <span class="math" data-tex="$a|c|\le\epsilon|v|$">$a|c|\le\epsilon|v|$</span>. This bounds both <span class="math" data-tex="$c$">$c$</span> and <span class="math" data-tex="$c-\epsilon v$">$c-\epsilon v$</span> by constants times <span class="math" data-tex="$\epsilon$">$\epsilon$</span>. For every <span class="math" data-tex="$w\in O_\epsilon$">$w\in O_\epsilon$</span>, the set <span class="math" data-tex="$(w+C_1)\setminus O_0$">$(w+C_1)\setminus O_0$</span> is closed and lies in that bounded cap, hence is compact and lies in <span class="math" data-tex="$W$">$W$</span> for small <span class="math" data-tex="$\epsilon$">$\epsilon$</span>.</p>
+<p>Cone propagation therefore makes restriction <span class="math" data-tex="$R\Gamma(O_\epsilon\cap W;F)\to R\Gamma(O_0\cap W;F)$">$R\Gamma(O_\epsilon\cap W;F)\to R\Gamma(O_0\cap W;F)$</span> an isomorphism. The section <span class="math" data-tex="$u$">$u$</span> is zero on <span class="math" data-tex="$O_0\cap W$">$O_0\cap W$</span>, since this set misses <span class="math" data-tex="$Z$">$Z$</span>. The nonnegative cohomological bound identifies degree-zero hypercohomology on both opens with sections of <span class="math" data-tex="$\mathcal H^0(F)$">$\mathcal H^0(F)$</span>. Thus <span class="math" data-tex="$u$">$u$</span> is zero on <span class="math" data-tex="$O_\epsilon\cap W$">$O_\epsilon\cap W$</span>, a neighborhood of <span class="math" data-tex="$0$">$0$</span>, contrary to <span class="math" data-tex="$0\in Z$">$0\in Z$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The nonzero-cone hypothesis is essential. If <span class="math" data-tex="$C=\{0\}$">$C=\{0\}$</span>, a nonzero constant section of <span class="math" data-tex="$k_X$">$k_X$</span> satisfies both inclusions in (MA5), but its support is all of <span class="math" data-tex="$X$">$X$</span>. The argument concerns the support of the particular section; it never assumes that the entire complex vanishes on <span class="math" data-tex="$O_0$">$O_0$</span>.</p>
+<h2 id="sh02-ma-trace-exchange-pulling-back-hom-and-tensor-under-one-combined-test">SH02-MA-TRACE-EXCHANGE — Pulling back Hom and tensor under one combined test</h2>
+<p>Let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be smooth, put <span class="math" data-tex="$A_i=\operatorname{SS}(F_i)$">$A_i=\operatorname{SS}(F_i)$</span>, and let <span class="math" data-tex="$\omega_f=f^!k_X$">$\omega_f=f^!k_X$</span> be the invertible relative orientation complex, with shift <span class="math" data-tex="$[\dim Y-\dim X]$">$[\dim Y-\dim X]$</span>. Noncharacteristicness for a closed conic set <span class="math" data-tex="$A$">$A$</span> means that <span class="math" data-tex="$df_y^t\xi=0$">$df_y^t\xi=0$</span> and <span class="math" data-tex="$(f(y),\xi)\in A$">$(f(y),\xi)\in A$</span> imply <span class="math" data-tex="$\xi=0$">$\xi=0$</span>.</p>
+<p>If <span class="math" data-tex="$f$">$f$</span> is noncharacteristic for <span class="math" data-tex="$A_1\widehat+A_2^a$">$A_1\widehat+A_2^a$</span>, then the natural morphism is an isomorphism:</p>
+<span class="math math-display" data-tex="$$
+f^{-1}R\mathcal Hom(F_2,F_1)
+\xrightarrow{\sim}
+R\mathcal Hom(f^{-1}F_2,f^{-1}F_1).
+\tag{MA6}
+$$">$$
+f^{-1}R\mathcal Hom(F_2,F_1)
+\xrightarrow{\sim}
+R\mathcal Hom(f^{-1}F_2,f^{-1}F_1).
+\tag{MA6}
+$$</span>
+<p>If <span class="math" data-tex="$f$">$f$</span> is noncharacteristic for <span class="math" data-tex="$A_1\widehat+A_2$">$A_1\widehat+A_2$</span>, the natural tensor/exceptional-image morphism is an isomorphism:</p>
+<span class="math math-display" data-tex="$$
+f^{-1}F_1\otimes^L f^!F_2
+\xrightarrow{\sim}f^!(F_1\otimes^L F_2).
+\tag{MA7}
+$$">$$
+f^{-1}F_1\otimes^L f^!F_2
+\xrightarrow{\sim}f^!(F_1\otimes^L F_2).
+\tag{MA7}
+$$</span>
+<p>The ordinary sum cannot replace the asymptotic sum in these hypotheses without a further assumption.</p>
+<p><strong>Proof.</strong> First consider a point <span class="math" data-tex="$y$">$y$</span> whose image belongs to both closed supports. The zero covector belongs to each <span class="math" data-tex="$A_i$">$A_i$</span> there. Hence each <span class="math" data-tex="$A_i$">$A_i$</span> at that point is contained in the relevant combined set, with its indicated sign. The combined noncharacteristic condition therefore makes each <span class="math" data-tex="$F_i$">$F_i$</span> noncharacteristic at that point. This pointwise assertion persists on a neighborhood: normalize any hypothetical sequence of characteristic covectors at nearby basepoints to unit length and use compactness of the unit sphere and closedness of microsupport. We may use the noncharacteristic relative-trace isomorphism there.</p>
+<p>Set <span class="math" data-tex="$H=R\mathcal Hom(F_2,F_1)$">$H=R\mathcal Hom(F_2,F_1)$</span>. The characteristic Hom estimate <code>SH02-CHE-006</code> gives <span class="math" data-tex="$\operatorname{SS}(H)\subset A_1\widehat+A_2^a$">$\operatorname{SS}(H)\subset A_1\widehat+A_2^a$</span>, so the same trace theorem applies to <span class="math" data-tex="$H$">$H$</span>. Extraordinary internal-Hom adjunction, valid without a finite-rank or dualizability hypothesis on <span class="math" data-tex="$F_2$">$F_2$</span>, gives</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\omega_f\otimes f^{-1}H
+&amp;\xrightarrow{\sim}f^!H\\
+&amp;\simeq R\mathcal Hom(f^{-1}F_2,f^!F_1)\\
+&amp;\simeq R\mathcal Hom(f^{-1}F_2,\omega_f\otimes f^{-1}F_1)\\
+&amp;\simeq\omega_f\otimes R\mathcal Hom(f^{-1}F_2,f^{-1}F_1).
+\end{aligned}
+\tag{MA8}
+$$">$$
+\begin{aligned}
+\omega_f\otimes f^{-1}H
+&amp;\xrightarrow{\sim}f^!H\\
+&amp;\simeq R\mathcal Hom(f^{-1}F_2,f^!F_1)\\
+&amp;\simeq R\mathcal Hom(f^{-1}F_2,\omega_f\otimes f^{-1}F_1)\\
+&amp;\simeq\omega_f\otimes R\mathcal Hom(f^{-1}F_2,f^{-1}F_1).
+\end{aligned}
+\tag{MA8}
+$$</span>
+<p>The last step uses only that <span class="math" data-tex="$\omega_f$">$\omega_f$</span> is an invertible locally constant complex. Cancel it. Naturality of the evaluation map and the defining counit of relative trace identify the resulting arrow with (MA6): tensor the ordinary Hom pullback/evaluation square by <span class="math" data-tex="$\omega_f$">$\omega_f$</span>, and its two vertical arrows are exactly the two trace maps in (MA8).</p>
+<p>For tensor, put <span class="math" data-tex="$K=F_1\otimes^L F_2$">$K=F_1\otimes^L F_2$</span>. Its characteristic estimate is <span class="math" data-tex="$\operatorname{SS}(K)\subset A_1\widehat+A_2$">$\operatorname{SS}(K)\subset A_1\widehat+A_2$</span>. Replace <span class="math" data-tex="$f^!F_2$">$f^!F_2$</span> by <span class="math" data-tex="$\omega_f\otimes f^{-1}F_2$">$\omega_f\otimes f^{-1}F_2$</span>, commute the invertible line past the first factor using the symmetric monoidal constraint, and then apply trace for <span class="math" data-tex="$K$">$K$</span>. This gives (MA7). The trace is defined as the adjoint of projection formula followed by <span class="math" data-tex="$Rf_!f^!\to\mathrm{id}$">$Rf_!f^!\to\mathrm{id}$</span>, so this composite is precisely the canonical tensor/exceptional-image comparison. This fixes its shifts and symmetry signs.</p>
+<p>Finally, if <span class="math" data-tex="$f(y)$">$f(y)$</span> is outside either closed support, the corresponding complex vanishes on a neighborhood. Every term in (MA6) or (MA7) then vanishes there; exceptional inverse image is local on the base as well. These cases cover the points where the intermediate individual noncharacteristic argument is unavailable. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-ma-covering-kernel-a-covering-of-a-complement-as-a-hom-kernel">SH02-MA-COVERING-KERNEL — A covering of a complement as a Hom kernel</h2>
+<p>Let <span class="math" data-tex="$M\subset X$">$M\subset X$</span> be a closed submanifold, let <span class="math" data-tex="$j:X\setminus M\hookrightarrow X$">$j:X\setminus M\hookrightarrow X$</span>, and let <span class="math" data-tex="$p:\widetilde X\to X\setminus M$">$p:\widetilde X\to X\setminus M$</span> be a covering, with an arbitrary number of sheets. The bases retain the manifold conventions above; the covering space is locally compact Hausdorff and need not be second countable. Write <span class="math" data-tex="$\rho=jp$">$\rho=jp$</span> and define</p>
+<span class="math math-display" data-tex="$$
+K_\rho=R\rho_!k_{\widetilde X},
+\qquad \mathcal R_M(F)=R\rho_*\rho^{-1}F.
+$$">$$
+K_\rho=R\rho_!k_{\widetilde X},
+\qquad \mathcal R_M(F)=R\rho_*\rho^{-1}F.
+$$</span>
+<p>There is a canonical identification</p>
+<span class="math math-display" data-tex="$$
+\mathcal R_M(F)\simeq R\mathcal Hom(K_\rho,F).
+\tag{MA9}
+$$">$$
+\mathcal R_M(F)\simeq R\mathcal Hom(K_\rho,F).
+\tag{MA9}
+$$</span>
+<p>Both sides are bounded under the conventions of this lesson. Furthermore,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(\mathcal R_M(F))
+\subset\operatorname{SS}(F)\cup
+\bigl(\operatorname{SS}(F)\widehat+T_M^*X\bigr).
+\tag{MA10}
+$$">$$
+\operatorname{SS}(\mathcal R_M(F))
+\subset\operatorname{SS}(F)\cup
+\bigl(\operatorname{SS}(F)\widehat+T_M^*X\bigr).
+\tag{MA10}
+$$</span>
+<p><strong>Proof of the kernel and its bound.</strong> A covering is a local diffeomorphism. Its proper-support direct image is exact: locally on an evenly covered open set it is the direct sum over the sheets, and direct sums of modules are exact. Thus <span class="math" data-tex="$K_\rho=j_!L$">$K_\rho=j_!L$</span>, where <span class="math" data-tex="$L=p_!k_{\widetilde X}$">$L=p_!k_{\widetilde X}$</span> is the local system with fibre the free module <span class="math" data-tex="$k^{(S)}$">$k^{(S)}$</span> on the set of sheets. This is a direct sum, even for an infinite covering. No finite-rank replacement has occurred.</p>
+<p>The map <span class="math" data-tex="$\rho$">$\rho$</span> is also a local diffeomorphism onto the open complement. Its relative orientation is canonically <span class="math" data-tex="$k$">$k$</span> in degree zero, so <span class="math" data-tex="$\rho^!=\rho^{-1}$">$\rho^!=\rho^{-1}$</span>. Internal-Hom/direct-image adjunction now gives</p>
+<span class="math math-display" data-tex="$$
+R\mathcal Hom(R\rho_!k,F)
+\simeq R\rho_*R\mathcal Hom(k,\rho^!F)
+\simeq R\rho_*\rho^{-1}F,
+$$">$$
+R\mathcal Hom(R\rho_!k,F)
+\simeq R\rho_*R\mathcal Hom(k,\rho^!F)
+\simeq R\rho_*\rho^{-1}F,
+$$</span>
+<p>including the canonical map in (MA9). This adjunction is used in the locally compact Hausdorff six-operation range of <a href="../sheaf-proof-readings/SH02-exceptional-operations.html">exceptional operations</a>: <span class="math" data-tex="$\rho_!$">$\rho_!$</span> is exact, so its required finite cohomological dimension is zero. To prove boundedness without imposing countability on the covering space, use the identification with <span class="math" data-tex="$R\mathcal Hom(K_\rho,F)$">$R\mathcal Hom(K_\rho,F)$</span> on the original second-countable base <span class="math" data-tex="$X$">$X$</span>. The uniform bounded-Hom theorem <code>SH02-MD-BOUNDED-HOM</code> applies there to the degree-zero sheaf <span class="math" data-tex="$K_\rho$">$K_\rho$</span> and the bounded complex <span class="math" data-tex="$F$">$F$</span>. Thus no cohomological-dimension theorem requiring a second-countable covering manifold has been invoked.</p>
+<p>Away from <span class="math" data-tex="$M$">$M$</span>, <span class="math" data-tex="$K_\rho$">$K_\rho$</span> is locally constant, so its microsupport is contained in the zero section. Near <span class="math" data-tex="$M$">$M$</span>, choose a product chart <span class="math" data-tex="$B\times D$">$B\times D$</span> with <span class="math" data-tex="$M=B\times\{0\}$">$M=B\times\{0\}$</span> and <span class="math" data-tex="$B$">$B$</span> contractible. A covering of <span class="math" data-tex="$B\times(D\setminus0)$">$B\times(D\setminus0)$</span> is pulled back from a covering of <span class="math" data-tex="$D\setminus0$">$D\setminus0$</span>: lift the contraction of <span class="math" data-tex="$B$">$B$</span> by the unique path-lifting property, separately on every sheet. The lift and its inverse depend continuously on points by the evenly covered neighborhoods, and give an isomorphism of coverings. Consequently <span class="math" data-tex="$j_!L$">$j_!L$</span> is constant in the <span class="math" data-tex="$B$">$B$</span> direction. The product/submersion microsupport estimate, with no restriction on the normal factor, gives</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(K_\rho)
+\subset T_X^*X\cup T_M^*X.
+\tag{MA11}
+$$">$$
+\operatorname{SS}(K_\rho)
+\subset T_X^*X\cup T_M^*X.
+\tag{MA11}
+$$</span>
+<p>If the codimension is zero, the complement is locally empty at points of <span class="math" data-tex="$M$">$M$</span>, and this conclusion holds directly. The right side of (MA11) is antipodally invariant. The characteristic Hom estimate applied to (MA9) yields (MA10): asymptotic sum distributes over a finite union by taking a subsequence, and asymptotic sum with the zero section is the original closed conic set. For the latter assertion the second covectors are zero, so convergence of the sum bounds the first covectors; closedness then gives exactly the original set. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-ma-covering-basechange-transporting-the-covering-construction">SH02-MA-COVERING-BASECHANGE — Transporting the covering construction</h2>
+<p>Let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be transverse to <span class="math" data-tex="$M$">$M$</span>, set <span class="math" data-tex="$N=f^{-1}M$">$N=f^{-1}M$</span>, and use the pulled-back covering <span class="math" data-tex="$\widetilde Y=\widetilde X\times_XY\to Y\setminus N$">$\widetilde Y=\widetilde X\times_XY\to Y\setminus N$</span> to define <span class="math" data-tex="$\mathcal R_N$">$\mathcal R_N$</span>. Suppose <span class="math" data-tex="$f$">$f$</span> is noncharacteristic for both</p>
+<span class="math math-display" data-tex="$$
+A=\operatorname{SS}(F)
+\quad\hbox{and}\quad A\widehat+T_M^*X.
+$$">$$
+A=\operatorname{SS}(F)
+\quad\hbox{and}\quad A\widehat+T_M^*X.
+$$</span>
+<p>Then the ordinary base-change arrow is an isomorphism</p>
+<span class="math math-display" data-tex="$$
+f^{-1}\mathcal R_M(F)
+\xrightarrow{\sim}\mathcal R_N(f^{-1}F).
+\tag{MA12}
+$$">$$
+f^{-1}\mathcal R_M(F)
+\xrightarrow{\sim}\mathcal R_N(f^{-1}F).
+\tag{MA12}
+$$</span>
+<p><strong>Proof.</strong> Transversality makes <span class="math" data-tex="$N$">$N$</span> a closed submanifold and supplies the asserted complement covering. Proper-support base change for the Cartesian square gives <span class="math" data-tex="$f^{-1}K_\rho\simeq K_{\rho_Y}$">$f^{-1}K_\rho\simeq K_{\rho_Y}$</span>. Alternatively, on evenly covered opens this is the identity on the same direct sum of copies of <span class="math" data-tex="$k$">$k$</span>, and extension by zero commutes with inverse image; this direct calculation works for every cardinality of the sheet set.</p>
+<p>By (MA11), <span class="math" data-tex="$A\widehat+\operatorname{SS}(K_\rho)^a$">$A\widehat+\operatorname{SS}(K_\rho)^a$</span> lies in the union of the two sets for which noncharacteristicness was assumed. Apply (MA6) with <span class="math" data-tex="$F_1=F$">$F_1=F$</span> and <span class="math" data-tex="$F_2=K_\rho$">$F_2=K_\rho$</span>, then use (MA9) on both sides. This proves (MA12). The identification of arrows can be checked before deriving: restricting an evaluation pairing from an evenly covered open set pulls back the same sections on each sheet. Adjunction and the proper-support base-change identity extend that square to resolutions. Its mate is the usual <span class="math" data-tex="$f^{-1}R\rho_*\to R\rho_{Y*}f&#x27;^{-1}$">$f^{-1}R\rho_*\to R\rho_{Y*}f&#x27;^{-1}$</span> arrow. Thus the proof establishes the specified base-change morphism, without invoking ordinary base change for an arbitrary nonproper map. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-ma-null-directions-involutivity-can-make-a-removed-set-invisible">SH02-MA-NULL-DIRECTIONS — Involutivity can make a removed set invisible</h2>
+<p>On <span class="math" data-tex="$X=\mathbb R^2$">$X=\mathbb R^2$</span>, use coordinates <span class="math" data-tex="$(x,y;\xi,\eta)$">$(x,y;\xi,\eta)$</span> and put</p>
+<span class="math math-display" data-tex="$$
+\Omega=\{\eta&gt;0\},
+\qquad
+\Omega&#x27;=\Omega\setminus\{x\le0,\ \xi=0\}.
+\tag{MA13}
+$$">$$
+\Omega=\{\eta&gt;0\},
+\qquad
+\Omega&#x27;=\Omega\setminus\{x\le0,\ \xi=0\}.
+\tag{MA13}
+$$</span>
+<p>For every bounded <span class="math" data-tex="$F$">$F$</span>,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(F)\cap\Omega&#x27;=\varnothing
+\quad\Longleftrightarrow\quad
+\operatorname{SS}(F)\cap\Omega=\varnothing.
+\tag{MA14}
+$$">$$
+\operatorname{SS}(F)\cap\Omega&#x27;=\varnothing
+\quad\Longleftrightarrow\quad
+\operatorname{SS}(F)\cap\Omega=\varnothing.
+\tag{MA14}
+$$</span>
+<p>It follows that the restriction localization <span class="math" data-tex="$\mathcal D_X(\Omega)\to\mathcal D_X(\Omega&#x27;)$">$\mathcal D_X(\Omega)\to\mathcal D_X(\Omega&#x27;)$</span> is the identity quotient by the same thick null subcategory. In particular it induces an isomorphism on every Hom group.</p>
+<p><strong>Proof.</strong> Only the forward implication needs proof. The closed subset <span class="math" data-tex="$S=\operatorname{SS}(F)\cap\Omega$">$S=\operatorname{SS}(F)\cap\Omega$</span> of <span class="math" data-tex="$\Omega$">$\Omega$</span> is involutive and is contained in <span class="math" data-tex="$\{x\le0,\xi=0\}$">$\{x\le0,\xi=0\}$</span>. The smooth function <span class="math" data-tex="$\xi$">$\xi$</span> vanishes on <span class="math" data-tex="$S$">$S$</span>. Hamiltonian invariance <code>SH02-INV-DEFINITION</code>, deduced from involutivity and the two-sided tangent-flow theorem, makes <span class="math" data-tex="$S$">$S$</span> invariant under the full local trajectories of its Hamiltonian vector field. These trajectories translate <span class="math" data-tex="$x$">$x$</span>, with both time directions allowed, while fixing <span class="math" data-tex="$y,\xi,\eta$">$y,\xi,\eta$</span>. They remain in <span class="math" data-tex="$\Omega$">$\Omega$</span> for every finite time. A point with <span class="math" data-tex="$x\le0$">$x\le0$</span> therefore flows to one with <span class="math" data-tex="$x&gt;0$">$x&gt;0$</span>, contradicting the containment of <span class="math" data-tex="$S$">$S$</span>. Thus <span class="math" data-tex="$S$">$S$</span> is empty. The quotient assertion follows from the definition <code>SH02-MC-LOCAL</code>, with no assumption that either quotient is a sheaf of categories. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-ma-fractions-one-endomorphism-group-and-two-independent-sectors">SH02-MA-FRACTIONS — One endomorphism group and two independent sectors</h2>
+<p>Take <span class="math" data-tex="$F=k_{\{(0,0)\}}$">$F=k_{\{(0,0)\}}$</span>. For the regions in (MA13),</p>
+<span class="math math-display" data-tex="$$
+H^0R\Gamma(\Omega&#x27;;\mu hom(F,F))\simeq k\oplus k,
+\qquad
+\operatorname{Hom}_{\mathcal D_X(\Omega&#x27;)}(F,F)\simeq k.
+\tag{MA15}
+$$">$$
+H^0R\Gamma(\Omega&#x27;;\mu hom(F,F))\simeq k\oplus k,
+\qquad
+\operatorname{Hom}_{\mathcal D_X(\Omega&#x27;)}(F,F)\simeq k.
+\tag{MA15}
+$$</span>
+<p>Under these identifications the canonical comparison from localized morphisms to microlocal Hom sections is the diagonal map <span class="math" data-tex="$k\to k\oplus k$">$k\to k\oplus k$</span>.</p>
+<p><strong>Proof of the sheaf calculation.</strong> The submanifold-Hom identity identifies <span class="math" data-tex="$\mu hom(k_{\{0\}},k_{\{0\}})$">$\mu hom(k_{\{0\}},k_{\{0\}})$</span> with <span class="math" data-tex="$\mu_{\{0\}}k_{\{0\}}$">$\mu_{\{0\}}k_{\{0\}}$</span>. Specialization leaves the vertex sheaf on the normal vector space, and its Fourier–Sato transform is the constant sheaf on the dual fibre, in degree zero. Thus</p>
+<span class="math math-display" data-tex="$$
+\mu hom(F,F)\simeq k_{T_0^*X}.
+$$">$$
+\mu hom(F,F)\simeq k_{T_0^*X}.
+$$</span>
+<p>The fibre <span class="math" data-tex="$T_0^*X$">$T_0^*X$</span> meets <span class="math" data-tex="$\Omega&#x27;$">$\Omega&#x27;$</span> in two components, <span class="math" data-tex="$\{\eta&gt;0,\xi&gt;0\}$">$\{\eta&gt;0,\xi&gt;0\}$</span> and <span class="math" data-tex="$\{\eta&gt;0,\xi&lt;0\}$">$\{\eta&gt;0,\xi&lt;0\}$</span>. Both are convex and contractible. Ordinary degree-zero sections are an independent copy of <span class="math" data-tex="$k$">$k$</span> on each, proving the first part of (MA15), including when <span class="math" data-tex="$k=0$">$k=0$</span>.</p>
+<p><strong>Proof in the quotient.</strong> Put <span class="math" data-tex="$L=\{x=0\}$">$L=\{x=0\}$</span> and <span class="math" data-tex="$P=k_{\{x=0,y\ge0\}}$">$P=k_{\{x=0,y\ge0\}}$</span>. The restriction map <span class="math" data-tex="$P\to F$">$P\to F$</span> has cone <span class="math" data-tex="$k_{\{x=0,y&gt;0\}}[1]$">$k_{\{x=0,y&gt;0\}}[1]$</span>. Along the open ray its microsupport has <span class="math" data-tex="$\eta=0$">$\eta=0$</span>; at the endpoint its open-half-line sign is <span class="math" data-tex="$\eta\le0$">$\eta\le0$</span>. Hence this cone is invisible on <span class="math" data-tex="$\Omega$">$\Omega$</span>, and <span class="math" data-tex="$P\to F$">$P\to F$</span> is an <span class="math" data-tex="$\Omega$">$\Omega$</span>-denominator.</p>
+<p>We claim <span class="math" data-tex="$P$">$P$</span> is left orthogonal, in every degree, to the null category <span class="math" data-tex="$\mathcal N_\Omega$">$\mathcal N_\Omega$</span>. Let <span class="math" data-tex="$C\in\mathcal N_\Omega$">$C\in\mathcal N_\Omega$</span>, so <span class="math" data-tex="$\operatorname{SS}(C)\subset\{\eta\le0\}$">$\operatorname{SS}(C)\subset\{\eta\le0\}$</span>, and let <span class="math" data-tex="$i:L\hookrightarrow X$">$i:L\hookrightarrow X$</span>. The characteristic exceptional-inverse-image estimate gives <span class="math" data-tex="$\operatorname{SS}(i^!C)\subset\{\eta\le0\}$">$\operatorname{SS}(i^!C)\subset\{\eta\le0\}$</span> on the line. To verify this even in the presence of unbounded normal covectors, use the sequence formula for <span class="math" data-tex="$i^\#$">$i^\#$</span>: its output is the limit of the <span class="math" data-tex="$dy$">$dy$</span> components of the input covectors, every one of which is nonpositive. The escaping normal <span class="math" data-tex="$dx$">$dx$</span> components cannot change this inequality.</p>
+<p>Cone continuation on <span class="math" data-tex="$L=\mathbb R_y$">$L=\mathbb R_y$</span>, with the cone <span class="math" data-tex="$[0,\infty)$">$[0,\infty)$</span> and the convex open set <span class="math" data-tex="$(-\infty,0)$">$(-\infty,0)$</span>, gives</p>
+<span class="math math-display" data-tex="$$
+R\Gamma(\mathbb R;i^!C)\xrightarrow{\sim}
+R\Gamma(( -\infty,0);i^!C).
+$$">$$
+R\Gamma(\mathbb R;i^!C)\xrightarrow{\sim}
+R\Gamma(( -\infty,0);i^!C).
+$$</span>
+<p>Its localization triangle says <span class="math" data-tex="$R\Gamma_{[0,\infty)}(\mathbb R;i^!C)=0$">$R\Gamma_{[0,\infty)}(\mathbb R;i^!C)=0$</span>. Therefore exceptional adjunction yields</p>
+<span class="math math-display" data-tex="$$
+R\operatorname{Hom}_X(P,C)
+\simeq R\operatorname{Hom}_L(k_{[0,\infty)},i^!C)=0.
+\tag{MA16}
+$$">$$
+R\operatorname{Hom}_X(P,C)
+\simeq R\operatorname{Hom}_L(k_{[0,\infty)},i^!C)=0.
+\tag{MA16}
+$$</span>
+<p>Now use the outgoing-fraction formula <code>SH02-MC-LOCAL</code>. Each denominator <span class="math" data-tex="$F\to F&#x27;$">$F\to F&#x27;$</span> has cone in <span class="math" data-tex="$\mathcal N_\Omega$">$\mathcal N_\Omega$</span>, so (MA16) makes <span class="math" data-tex="$\operatorname{Hom}(P,F)\to\operatorname{Hom}(P,F&#x27;)$">$\operatorname{Hom}(P,F)\to\operatorname{Hom}(P,F&#x27;)$</span> an isomorphism. Taking its filtered colimit proves</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Hom}_{\mathcal D_X(\Omega)}(F,F)
+\simeq\operatorname{Hom}_{\mathcal D_X(\Omega)}(P,F)
+\simeq\operatorname{Hom}_{D^b(k_X)}(P,F)
+\simeq k.
+$$">$$
+\operatorname{Hom}_{\mathcal D_X(\Omega)}(F,F)
+\simeq\operatorname{Hom}_{\mathcal D_X(\Omega)}(P,F)
+\simeq\operatorname{Hom}_{D^b(k_X)}(P,F)
+\simeq k.
+$$</span>
+<p>The last step is ordinary inverse-image/closed-direct-image adjunction at the point: the stalk of <span class="math" data-tex="$P$">$P$</span> there is the free rank-one module <span class="math" data-tex="$k$">$k$</span> in degree zero. Equation (MA14) gives the same group for <span class="math" data-tex="$\Omega&#x27;$">$\Omega&#x27;$</span>. Scalar multiples of the identity induce that scalar on both microlocal sectors. This proves the final statement and explicitly establishes the fraction calculation which a point-stalk theorem alone would not supply. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-ma-bent-line-a-coefficient-model-across-a-corner">SH02-MA-BENT-LINE — A coefficient model across a corner</h2>
+<p>Let</p>
+<span class="math math-display" data-tex="$$
+Z=\{(x,0):x\ge0\}\cup\{(0,y):y\ge0\}\subset\mathbb R^2.
+$$">$$
+Z=\{(x,0):x\ge0\}\cup\{(0,y):y\ge0\}\subset\mathbb R^2.
+$$</span>
+<p>If <span class="math" data-tex="$\operatorname{SS}(F)\subset\operatorname{SS}(k_Z)$">$\operatorname{SS}(F)\subset\operatorname{SS}(k_Z)$</span>, then there is an arbitrary bounded complex of <span class="math" data-tex="$k$">$k$</span>-modules <span class="math" data-tex="$M$">$M$</span> with</p>
+<span class="math math-display" data-tex="$$
+F\simeq M_Z\quad\hbox{in }D^b(k_{\mathbb R^2}).
+\tag{MA17}
+$$">$$
+F\simeq M_Z\quad\hbox{in }D^b(k_{\mathbb R^2}).
+\tag{MA17}
+$$</span>
+<p>The conclusion is an ordinary derived isomorphism on the whole plane, although the support has a corner.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="$h(x,y)=x-y$">$h(x,y)=x-y$</span>. Its restriction <span class="math" data-tex="$h_Z:Z\to\mathbb R$">$h_Z:Z\to\mathbb R$</span> is a proper homeomorphism, with inverse <span class="math" data-tex="$t\mapsto(\max(t,0),\max(-t,0))$">$t\mapsto(\max(t,0),\max(-t,0))$</span>. The two covectors <span class="math" data-tex="$\pm dh=\pm(dx-dy)$">$\pm dh=\pm(dx-dy)$</span> are absent from <span class="math" data-tex="$\operatorname{SS}(k_Z)$">$\operatorname{SS}(k_Z)$</span> at every point of <span class="math" data-tex="$Z$">$Z$</span>. Away from the corner this follows from the usual conormal formula for a straight line. At the corner, a <span class="math" data-tex="$C^1$">$C^1$</span> function whose differential has positive <span class="math" data-tex="$dx$">$dx$</span> and negative <span class="math" data-tex="$dy$">$dy$</span> is strictly increasing on one short arm and strictly decreasing on the other. Its strict sublevel set on <span class="math" data-tex="$Z$">$Z$</span> is one half-interval. The support-test triangle has the restriction <span class="math" data-tex="$k\to k$">$k\to k$</span> as its middle map and therefore has zero supported cohomology. The inequalities remain strict in a neighborhood of the chosen covector, which proves absence from microsupport. Reversing both signs interchanges the arms and proves the assertion for the opposite covector as well.</p>
+<p>The zero-section support criterion puts <span class="math" data-tex="$\operatorname{supp}(F)\subset Z$">$\operatorname{supp}(F)\subset Z$</span>. Thus <span class="math" data-tex="$h$">$h$</span> is proper on that support. The proper direct-image estimate gives</p>
+<span class="math math-display" data-tex="$$
+\operatorname{SS}(Rh_*F)\subset T_{\mathbb R}^*\mathbb R,
+$$">$$
+\operatorname{SS}(Rh_*F)\subset T_{\mathbb R}^*\mathbb R,
+$$</span>
+<p>because a nonzero output covector <span class="math" data-tex="$\tau\,dt$">$\tau\,dt$</span> would have to lift to <span class="math" data-tex="$\tau(dx-dy)$">$\tau(dx-dy)$</span> in <span class="math" data-tex="$\operatorname{SS}(F)$">$\operatorname{SS}(F)$</span>, which was excluded. A complex on the line with zero-section microsupport is globally constant: cone continuation for the cone <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span> identifies its cone projector with itself, while that projector is the constant complex of its global cohomology. Equivalently, continuation on increasing intervals gives the evaluation isomorphism at every stalk. Put <span class="math" data-tex="$M=R\Gamma(\mathbb R;Rh_*F)\in D^b(k)$">$M=R\Gamma(\mathbb R;Rh_*F)\in D^b(k)$</span>.</p>
+<p>Finally let <span class="math" data-tex="$i:Z\hookrightarrow\mathbb R^2$">$i:Z\hookrightarrow\mathbb R^2$</span>. Closed-support equivalence gives <span class="math" data-tex="$F\simeq i_*i^{-1}F$">$F\simeq i_*i^{-1}F$</span>, and</p>
+<span class="math math-display" data-tex="$$
+Rh_*F\simeq R(h_Z)_*i^{-1}F.
+$$">$$
+Rh_*F\simeq R(h_Z)_*i^{-1}F.
+$$</span>
+<p>The homeomorphism <span class="math" data-tex="$h_Z$">$h_Z$</span> has exact inverse image and direct image. Pulling its constant complex back gives <span class="math" data-tex="$i^{-1}F\simeq M_Z$">$i^{-1}F\simeq M_Z$</span> as a sheaf on <span class="math" data-tex="$Z$">$Z$</span>, and extending by zero proves (MA17). No finite-generation, orientability or constructibility input entered this argument. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-ma-graph-stalk-formal-adjunctions-have-a-graph-relative-stalk">SH02-MA-GRAPH-STALK — Formal adjunctions have a graph-relative stalk</h2>
+<p>Let <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> be arbitrary and smooth. In its cotangent correspondence set</p>
+<span class="math math-display" data-tex="$$
+E_f=Y\times_XT^*X,
+\quad p=(y_0;\xi_0),\quad x_0=f(y_0),
+\quad p_X=(x_0;\xi_0),\quad p_Y=(y_0;df_{y_0}^t\xi_0).
+$$">$$
+E_f=Y\times_XT^*X,
+\quad p=(y_0;\xi_0),\quad x_0=f(y_0),
+\quad p_X=(x_0;\xi_0),\quad p_Y=(y_0;df_{y_0}^t\xi_0).
+$$</span>
+<p>Write <span class="math" data-tex="$a:X\times Y\to X$">$a:X\times Y\to X$</span> and <span class="math" data-tex="$q:X\times Y\to Y$">$q:X\times Y\to Y$</span> for the projections. The graph is identified on conormals by</p>
+<span class="math math-display" data-tex="$$
+(y;\xi)\longmapsto(f(y),y;\xi,-df_y^t\xi).
+$$">$$
+(y;\xi)\longmapsto(f(y),y;\xi,-df_y^t\xi).
+$$</span>
+<p>The two graph-relative Hom complexes, both written on <span class="math" data-tex="$E_f$">$E_f$</span>, are</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\mathcal H_f^+(G,F)&amp;=\mu_{\Gamma_f}R\mathcal Hom(q^{-1}G,a^!F),\\
+\mathcal H_f^-(F,G)&amp;=\alpha^{-1}\mu_{\Gamma_f}R\mathcal Hom(a^{-1}F,q^!G),
+\end{aligned}
+\tag{MA18}
+$$">$$
+\begin{aligned}
+\mathcal H_f^+(G,F)&amp;=\mu_{\Gamma_f}R\mathcal Hom(q^{-1}G,a^!F),\\
+\mathcal H_f^-(F,G)&amp;=\alpha^{-1}\mu_{\Gamma_f}R\mathcal Hom(a^{-1}F,q^!G),
+\end{aligned}
+\tag{MA18}
+$$</span>
+<p>where <span class="math" data-tex="$\alpha(y;\xi)=(y;-\xi)$">$\alpha(y;\xi)=(y;-\xi)$</span>. For the formal microlocal operations of <code>SH02-MC-FOUR</code>, there are canonical isomorphisms</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\operatorname{Hom}(f_{!,p}^{\mu}G,F)
+&amp;\simeq\operatorname{Hom}(G,f_{\mu,p}^!F)
+\simeq H^0(\mathcal H_f^+(G,F))_p,\\
+\operatorname{Hom}(F,f_{*,p}^{\mu}G)
+&amp;\simeq\operatorname{Hom}(f_{\mu,p}^{-1}F,G)
+\simeq H^0(\mathcal H_f^-(F,G))_p.
+\end{aligned}
+\tag{MA19}
+$$">$$
+\begin{aligned}
+\operatorname{Hom}(f_{!,p}^{\mu}G,F)
+&amp;\simeq\operatorname{Hom}(G,f_{\mu,p}^!F)
+\simeq H^0(\mathcal H_f^+(G,F))_p,\\
+\operatorname{Hom}(F,f_{*,p}^{\mu}G)
+&amp;\simeq\operatorname{Hom}(f_{\mu,p}^{-1}F,G)
+\simeq H^0(\mathcal H_f^-(F,G))_p.
+\end{aligned}
+\tag{MA19}
+$$</span>
+<p>The Hom groups use the localized categories at <span class="math" data-tex="$p_X,p_Y$">$p_X,p_Y$</span> and their formal pro/ind conventions. No representability, properness, finite-rank or noncharacteristic hypothesis is imposed. The degree-zero cohomology symbol is necessary: the objects in (MA18) are derived sheaves. Shifting an input gives the corresponding graded identities.</p>
+<p><strong>The map to be proved invertible.</strong> The external-Hom estimate and the support estimate for microlocalization give</p>
+<span class="math math-display" data-tex="$$
+\operatorname{supp}\mathcal H_f^\pm
+\subset f_\pi^{-1}\operatorname{SS}(F)
+\cap f_d^{-1}\operatorname{SS}(G).
+\tag{MA20}
+$$">$$
+\operatorname{supp}\mathcal H_f^\pm
+\subset f_\pi^{-1}\operatorname{SS}(F)
+\cap f_d^{-1}\operatorname{SS}(G).
+\tag{MA20}
+$$</span>
+<p>For the positive kernel the ambient covectors lie in <span class="math" data-tex="$\operatorname{SS}(F)\times\operatorname{SS}(G)^a$">$\operatorname{SS}(F)\times\operatorname{SS}(G)^a$</span>; graph conormal restriction gives (MA20). For the negative kernel they lie in <span class="math" data-tex="$\operatorname{SS}(F)^a\times\operatorname{SS}(G)$">$\operatorname{SS}(F)^a\times\operatorname{SS}(G)$</span>, and the antipode in (MA18) changes the signs back. Exactness and this bound show that the stalk at <span class="math" data-tex="$p$">$p$</span> inverts a denominator in either input.</p>
+<p>Graph recovery and ordinary adjunction define maps</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\operatorname{Hom}(Rf_!G,F)&amp;\longrightarrow H^0(\mathcal H_f^+(G,F))_p,\\
+\operatorname{Hom}(f^{-1}F,G)&amp;\longrightarrow H^0(\mathcal H_f^-(F,G))_p.
+\end{aligned}
+\tag{MA21}
+$$">$$
+\begin{aligned}
+\operatorname{Hom}(Rf_!G,F)&amp;\longrightarrow H^0(\mathcal H_f^+(G,F))_p,\\
+\operatorname{Hom}(f^{-1}F,G)&amp;\longrightarrow H^0(\mathcal H_f^-(F,G))_p.
+\end{aligned}
+\tag{MA21}
+$$</span>
+<p>They take a local-cohomology class supported on the graph to its class on larger admissible supports in the microlocalization stalk formula. Since (MA20) inverts denominators, these maps extend to</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+L_+(G,F)&amp;=\operatorname*{colim}_{G&#x27;\to G}
+\operatorname*{colim}_{F\to F&#x27;}\operatorname{Hom}(Rf_!G&#x27;,F&#x27;),\\
+L_-(F,G)&amp;=\operatorname*{colim}_{F&#x27;\to F}
+\operatorname*{colim}_{G\to G&#x27;}\operatorname{Hom}(f^{-1}F&#x27;,G&#x27;).
+\end{aligned}
+\tag{MA22}
+$$">$$
+\begin{aligned}
+L_+(G,F)&amp;=\operatorname*{colim}_{G&#x27;\to G}
+\operatorname*{colim}_{F\to F&#x27;}\operatorname{Hom}(Rf_!G&#x27;,F&#x27;),\\
+L_-(F,G)&amp;=\operatorname*{colim}_{F&#x27;\to F}
+\operatorname*{colim}_{G\to G&#x27;}\operatorname{Hom}(f^{-1}F&#x27;,G&#x27;).
+\end{aligned}
+\tag{MA22}
+$$</span>
+<p>Every indexing arrow is a denominator at its specified point. Expansion of the formal operations identifies (MA22) with the first two terms of (MA19); ordinary adjunction and interchange of the two filtered colimits give their mutual identification. It remains to prove bijectivity with the graph stalk. The following two sections supply both existence and the zero criterion.</p>
+<h2 id="sh02-ma-graph-cones-the-two-opposite-wedge-calculations">SH02-MA-GRAPH-CONES — The two opposite wedge calculations</h2>
+<p>Work in base charts, extending restricted inputs by zero when necessary; restriction to each chart is a denominator. Graph coordinates</p>
+<span class="math math-display" data-tex="$$
+(x,y)\longmapsto(z,y)=(x-f(y),y)
+$$">$$
+(x,y)\longmapsto(z,y)=(x-f(y),y)
+$$</span>
+<p>straighten the graph for every <span class="math" data-tex="$f$">$f$</span>, regardless of its rank. Choose relatively compact neighborhoods <span class="math" data-tex="$U\ni x_0$">$U\ni x_0$</span>, <span class="math" data-tex="$V\ni y_0$">$V\ni y_0$</span>, with <span class="math" data-tex="$U$">$U$</span> convex and <span class="math" data-tex="$f(\overline V)\subset U$">$f(\overline V)\subset U$</span>. Such pairs are cofinal among product neighborhoods. Let <span class="math" data-tex="$\gamma$">$\gamma$</span> be a closed proper convex cone in the target chart with</p>
+<span class="math math-display" data-tex="$$
+\gamma\subset\{z:\langle z,\xi_0\rangle&lt;0\}\cup\{0\}.
+\tag{MA23}
+$$">$$
+\gamma\subset\{z:\langle z,\xi_0\rangle&lt;0\}\cup\{0\}.
+\tag{MA23}
+$$</span>
+<p>Use the wedges</p>
+<span class="math math-display" data-tex="$$
+Z_\gamma^+=\{(x,y):f(y)-x\in\gamma\},
+\qquad Z_\gamma^-=\{(x,y):x-f(y)\in\gamma\}.
+\tag{MA24}
+$$">$$
+Z_\gamma^+=\{(x,y):f(y)-x\in\gamma\},
+\qquad Z_\gamma^-=\{(x,y):x-f(y)\in\gamma\}.
+\tag{MA24}
+$$</span>
+<p>The first wedge has its nonzero normal directions strictly positive against <span class="math" data-tex="$p$">$p$</span>; the second has them strictly positive against <span class="math" data-tex="$-p$">$-p$</span>. This is exactly the antipodal distinction in (MA18).</p>
+<p>These wedges are cofinal for the microlocalization support-stalk formula <code>SH02-MH-TESTS</code>. Indeed the unit directions of an admissible normal cone at the basepoint are compact and lie in the required strict halfspace. Enlarge them slightly to a closed convex cone still in that halfspace. After shrinking the base neighborhoods, the admissible support lies in its wedge: otherwise normalized offending graph-normal secants would converge to a forbidden normal vector. Conversely each wedge is admissible. The center point used for each secant is <span class="math" data-tex="$(0,y)$">$(0,y)$</span> in graph coordinates, so this argument uses the actual graph and does not replace <span class="math" data-tex="$f$">$f$</span> by its derivative. Common cone enlargements and neighborhood shrinkings give a filtered system. If <span class="math" data-tex="$\xi_0=0$">$\xi_0=0$</span>, the normal cone must have no nonzero direction. The same normalized-secant argument then forces the support into the graph near the point. The zero cone <span class="math" data-tex="$\gamma=\{0\}$">$\gamma=\{0\}$</span> is cofinal in that case.</p>
+<p>Let <span class="math" data-tex="$D_\gamma=\phi_\gamma^{-1}R\phi_{\gamma*}$">$D_\gamma=\phi_\gamma^{-1}R\phi_{\gamma*}$</span> be the ordinary cone projector. The elementary cutoff gives a denominator</p>
+<span class="math math-display" data-tex="$$
+A_{U,\gamma}(H):=(D_\gamma H_U)_U\longrightarrow H
+\quad\hbox{at }p_X.
+\tag{MA25}
+$$">$$
+A_{U,\gamma}(H):=(D_\gamma H_U)_U\longrightarrow H
+\quad\hbox{at }p_X.
+\tag{MA25}
+$$</span>
+<p>For <span class="math" data-tex="$\xi_0\ne0$">$\xi_0\ne0$</span>, (MA23) places <span class="math" data-tex="$\xi_0$">$\xi_0$</span> in the interior of <span class="math" data-tex="$\gamma^{\circ a}$">$\gamma^{\circ a}$</span>; for the zero cone (MA25) is ordinary neighborhood restriction.</p>
+<p>For the positive graph complex, put <span class="math" data-tex="$H_V=Rf_!(G_V)$">$H_V=Rf_!(G_V)$</span>. Its closed support is contained in the compact set <span class="math" data-tex="$f(\overline V)\subset U$">$f(\overline V)\subset U$</span>. The support-stalk formula and <span class="math" data-tex="$Ra_!\dashv a^!$">$Ra_!\dashv a^!$</span> give</p>
+<span class="math math-display" data-tex="$$
+H^0(\mathcal H_f^+(G,F))_p
+\simeq\operatorname*{colim}_{U,V,\gamma}
+\operatorname{Hom}((D_\gamma H_V)_U,F).
+\tag{MA26}
+$$">$$
+H^0(\mathcal H_f^+(G,F))_p
+\simeq\operatorname*{colim}_{U,V,\gamma}
+\operatorname{Hom}((D_\gamma H_V)_U,F).
+\tag{MA26}
+$$</span>
+<p>Here is the precise kernel verification. Moving the support <span class="math" data-tex="$Z_\gamma^+$">$Z_\gamma^+$</span> into the first Hom argument changes the local-cohomology group on <span class="math" data-tex="$U\times V$">$U\times V$</span> into the Hom out of</p>
+<span class="math math-display" data-tex="$$
+Ra_!\bigl((q^{-1}G_V)_{Z_\gamma^+}\bigr)|_U.
+$$">$$
+Ra_!\bigl((q^{-1}G_V)_{Z_\gamma^+}\bigr)|_U.
+$$</span>
+<p>The closed support is contained in <span class="math" data-tex="$X\times\overline V$">$X\times\overline V$</span>, so <span class="math" data-tex="$a$">$a$</span> is proper on it. Hence ordinary and proper-support direct image agree on this kernel. The cone-projector kernel is <span class="math" data-tex="$\{(x&#x27;,x):x&#x27;-x\in\gamma\}$">$\{(x&#x27;,x):x&#x27;-x\in\gamma\}$</span>. Composing it with <span class="math" data-tex="$Rf_!G_V$">$Rf_!G_V$</span> substitutes <span class="math" data-tex="$x&#x27;=f(y)$">$x&#x27;=f(y)$</span>, by proper-support base change and projection formula, and gives exactly <span class="math" data-tex="$Z_\gamma^+$">$Z_\gamma^+$</span>. This proves (MA26). Because <span class="math" data-tex="$H_V$">$H_V$</span> is supported in <span class="math" data-tex="$U$">$U$</span>, its first argument is the actual cutoff <span class="math" data-tex="$A_{U,\gamma}(H_V)$">$A_{U,\gamma}(H_V)$</span> in (MA25). Restriction of the wedge to the graph is that cutoff map, followed when needed by <span class="math" data-tex="$Rf_!G_V\to Rf_!G$">$Rf_!G_V\to Rf_!G$</span>.</p>
+<p>For the negative graph complex the other adjunction, <span class="math" data-tex="$Rq_!\dashv q^!$">$Rq_!\dashv q^!$</span>, gives</p>
+<span class="math math-display" data-tex="$$
+H^0(\mathcal H_f^-(F,G))_p
+\simeq\operatorname*{colim}_{U,V,\gamma}
+\operatorname{Hom}((f^{-1}D_\gamma F_U)_V,G).
+\tag{MA27}
+$$">$$
+H^0(\mathcal H_f^-(F,G))_p
+\simeq\operatorname*{colim}_{U,V,\gamma}
+\operatorname{Hom}((f^{-1}D_\gamma F_U)_V,G).
+\tag{MA27}
+$$</span>
+<p>This time the integrated variable is <span class="math" data-tex="$x$">$x$</span>. Its closed support lies in <span class="math" data-tex="$\overline U\times Y$">$\overline U\times Y$</span>, so the projection <span class="math" data-tex="$q$">$q$</span> is proper on that support. Pulling back the target cone kernel <span class="math" data-tex="$\{x-x&#x27;\in\gamma\}$">$\{x-x&#x27;\in\gamma\}$</span> along <span class="math" data-tex="$x&#x27;=f(y)$">$x&#x27;=f(y)$</span> gives exactly <span class="math" data-tex="$Z_\gamma^-$">$Z_\gamma^-$</span>. Ordinary proper base change therefore identifies the integrated kernel with <span class="math" data-tex="$f^{-1}D_\gamma F_U$">$f^{-1}D_\gamma F_U$</span>. This argument works for characteristic maps as well, because the specific kernel projection just proved proper is the one to which base change is applied. The orientation present in <span class="math" data-tex="$q^!G$">$q^!G$</span> is used in that adjunction and leaves no additional shift in (MA27).</p>
+<p>Since <span class="math" data-tex="$f(V)\subset U$">$f(V)\subset U$</span>, the first argument of (MA27) is also <span class="math" data-tex="$(f^{-1}A_{U,\gamma}(F))_V$">$(f^{-1}A_{U,\gamma}(F))_V$</span>. The map induced by restriction from the wedge to the graph is</p>
+<span class="math math-display" data-tex="$$
+(f^{-1}A_{U,\gamma}(F))_V
+\longrightarrow f^{-1}A_{U,\gamma}(F)
+\longrightarrow f^{-1}F.
+\tag{MA28}
+$$">$$
+(f^{-1}A_{U,\gamma}(F))_V
+\longrightarrow f^{-1}A_{U,\gamma}(F)
+\longrightarrow f^{-1}F.
+\tag{MA28}
+$$</span>
+<p>Only its first arrow is being asserted to be a <span class="math" data-tex="$p_Y$">$p_Y$</span>-denominator automatically. Its second arrow is the inverse image of a <span class="math" data-tex="$p_X$">$p_X$</span>-denominator; no assertion that arbitrary inverse image preserves denominators is used. These kernel-restriction descriptions identify (MA26) and (MA27) with the canonical maps (MA21), including their signs.</p>
+<h2 id="sh02-ma-graph-fractions-surjectivity-and-denominator-clearing">SH02-MA-GRAPH-FRACTIONS — Surjectivity and denominator clearing</h2>
+<p><strong>The positive graph stalk.</strong> A class in (MA26) is an ordinary arrow <span class="math" data-tex="$(D_\gamma H_V)_U\to F$">$(D_\gamma H_V)_U\to F$</span>. Invert the cutoff denominator to get a localized arrow <span class="math" data-tex="$H_V\to F$">$H_V\to F$</span> at <span class="math" data-tex="$p_X$">$p_X$</span>. The neighborhood restriction <span class="math" data-tex="$G_V\to G$">$G_V\to G$</span> is a denominator at <span class="math" data-tex="$p_Y$">$p_Y$</span>, so this arrow defines an element of <span class="math" data-tex="$L_+(G,F)$">$L_+(G,F)$</span>. If an ordinary double-fraction representative as in (MA22) is desired, use the outgoing fraction calculus for its target. Kernel restriction in (MA26) shows that its graph-stalk image is the original class. This proves surjectivity.</p>
+<p>For injectivity take a class represented by <span class="math" data-tex="$b:Rf_!G&#x27;\to F&#x27;$">$b:Rf_!G&#x27;\to F&#x27;$</span> in (MA22). If its graph-stalk image vanishes, (MA20) lets us test vanishing using the pair <span class="math" data-tex="$(G&#x27;,F&#x27;)$">$(G&#x27;,F&#x27;)$</span> itself. The filtered-colimit zero criterion in (MA26) gives <span class="math" data-tex="$U,V,\gamma$">$U,V,\gamma$</span> such that</p>
+<span class="math math-display" data-tex="$$
+(D_\gamma Rf_!G&#x27;_V)_U\longrightarrow Rf_!G&#x27;_V
+\longrightarrow Rf_!G&#x27;\xrightarrow{b}F&#x27;
+$$">$$
+(D_\gamma Rf_!G&#x27;_V)_U\longrightarrow Rf_!G&#x27;_V
+\longrightarrow Rf_!G&#x27;\xrightarrow{b}F&#x27;
+$$</span>
+<p>is zero. The first arrow is a <span class="math" data-tex="$p_X$">$p_X$</span>-denominator, so the last two arrows already compose to zero in the localized target category. Refining the original incoming denominator by <span class="math" data-tex="$G&#x27;_V\to G&#x27;$">$G&#x27;_V\to G&#x27;$</span> kills the original element in the formal colimit. This proves injectivity without asserting that base neighborhoods alone are cofinal among all microlocal denominators.</p>
+<p><strong>The negative graph stalk.</strong> A representative of (MA27) is an ordinary arrow <span class="math" data-tex="$(f^{-1}A_{U,\gamma}(F))_V\to G$">$(f^{-1}A_{U,\gamma}(F))_V\to G$</span>. Invert its neighborhood restriction to get a localized arrow <span class="math" data-tex="$f^{-1}A_{U,\gamma}(F)\to G$">$f^{-1}A_{U,\gamma}(F)\to G$</span> at <span class="math" data-tex="$p_Y$">$p_Y$</span>. The incoming denominator <span class="math" data-tex="$A_{U,\gamma}(F)\to F$">$A_{U,\gamma}(F)\to F$</span> at <span class="math" data-tex="$p_X$">$p_X$</span> now makes this an element of <span class="math" data-tex="$L_-(F,G)$">$L_-(F,G)$</span>. Formula (MA28) identifies its graph-stalk image with the original representative, proving surjectivity.</p>
+<p>If a double-fraction representative <span class="math" data-tex="$b:f^{-1}F&#x27;\to G&#x27;$">$b:f^{-1}F&#x27;\to G&#x27;$</span> has zero graph-stalk image, first use (MA20) to pass to <span class="math" data-tex="$(F&#x27;,G&#x27;)$">$(F&#x27;,G&#x27;)$</span>. The zero criterion in (MA27) supplies <span class="math" data-tex="$U,V,\gamma$">$U,V,\gamma$</span> for which</p>
+<span class="math math-display" data-tex="$$
+(f^{-1}A_{U,\gamma}(F&#x27;))_V
+\longrightarrow f^{-1}A_{U,\gamma}(F&#x27;)
+\longrightarrow f^{-1}F&#x27;\xrightarrow b G&#x27;
+$$">$$
+(f^{-1}A_{U,\gamma}(F&#x27;))_V
+\longrightarrow f^{-1}A_{U,\gamma}(F&#x27;)
+\longrightarrow f^{-1}F&#x27;\xrightarrow b G&#x27;
+$$</span>
+<p>is zero. The first arrow is a <span class="math" data-tex="$p_Y$">$p_Y$</span>-denominator; hence the remaining composite is zero in the localized category on <span class="math" data-tex="$Y$">$Y$</span>. Refining the incoming denominator by <span class="math" data-tex="$A_{U,\gamma}(F&#x27;)\to F&#x27;$">$A_{U,\gamma}(F&#x27;)\to F&#x27;$</span> kills the original element in <span class="math" data-tex="$L_-(F,G)$">$L_-(F,G)$</span>. This proves injectivity. Both isomorphisms in (MA19) are established for their canonical maps. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For a check involving a nontrivial dimension shift, take <span class="math" data-tex="$f:\mathbb R\to\{*\}$">$f:\mathbb R\to\{*\}$</span>, <span class="math" data-tex="$G=k_{\mathbb R}$">$G=k_{\mathbb R}$</span> and <span class="math" data-tex="$F=k$">$F=k$</span>. The positive graph object is <span class="math" data-tex="$k_{\mathbb R}[1]$">$k_{\mathbb R}[1]$</span>, and its degree-zero stalk is zero. The negative one is <span class="math" data-tex="$k_{\mathbb R}$">$k_{\mathbb R}$</span>, with stalk <span class="math" data-tex="$k$">$k$</span>. The formal neighborhood calculations give <span class="math" data-tex="$R\Gamma_c(V;k)=k[-1]$">$R\Gamma_c(V;k)=k[-1]$</span> for the positive direct image and <span class="math" data-tex="$R\Gamma(V;k)=k$">$R\Gamma(V;k)=k$</span> for the negative one. Their Hom groups are respectively zero and <span class="math" data-tex="$k$">$k$</span>, agreeing with (MA19). For <span class="math" data-tex="$f=\mathrm{id}$">$f=\mathrm{id}$</span>, the formulas reduce to the ordinary single-covector microlocal Hom theorem.</p>
+<h2 id="sh02-ma-one-sided-curvature-a-flat-arm-can-create-a-full-limiting-fibre">SH02-MA-ONE-SIDED-CURVATURE — A flat arm can create a full limiting fibre</h2>
+<p>For <span class="math" data-tex="$1&lt;r&lt;2$">$1&lt;r&lt;2$</span>, set <span class="math" data-tex="$g(t)=0$">$g(t)=0$</span> for <span class="math" data-tex="$t\le0$">$t\le0$</span> and <span class="math" data-tex="$g(t)=t^r$">$g(t)=t^r$</span> for <span class="math" data-tex="$t\ge0$">$t\ge0$</span>. Its graph <span class="math" data-tex="$Z\subset\mathbb R^2$">$Z\subset\mathbb R^2$</span> is a <span class="math" data-tex="$C^1$">$C^1$</span> submanifold, and its conormal bundle is the closed conic set</p>
+<span class="math math-display" data-tex="$$
+A=\{(t,g(t);-g&#x27;(t)\lambda,\lambda):t,\lambda\in\mathbb R\}.
+$$">$$
+A=\{(t,g(t);-g&#x27;(t)\lambda,\lambda):t,\lambda\in\mathbb R\}.
+$$</span>
+<p>In the given smooth coordinates its asymptotic self-sum is</p>
+<span class="math math-display" data-tex="$$
+A\widehat+A=A\cup T_0^*\mathbb R^2.
+\tag{MA29}
+$$">$$
+A\widehat+A=A\cup T_0^*\mathbb R^2.
+\tag{MA29}
+$$</span>
+<p>This is the version with one flat arm. The symmetric two-curved-arm example and the resulting failure of <span class="math" data-tex="$C^1$">$C^1$</span> coordinate invariance are proved in <code>SH02-CHE-REGULARITY</code>; that different graph is not substituted for this one.</p>
+<p><strong>Proof.</strong> For any prescribed fibre covector <span class="math" data-tex="$(c,d)$">$(c,d)$</span> at the origin, choose <span class="math" data-tex="$t_n&gt;0$">$t_n&gt;0$</span> tending to zero and put <span class="math" data-tex="$a_n=rt_n^{r-1}$">$a_n=rt_n^{r-1}$</span>, <span class="math" data-tex="$\lambda_n=-c/a_n$">$\lambda_n=-c/a_n$</span>, <span class="math" data-tex="$\mu_n=d-\lambda_n$">$\mu_n=d-\lambda_n$</span>. Take the conormal covectors with these respective normal coefficients at the graph points <span class="math" data-tex="$(t_n,g(t_n))$">$(t_n,g(t_n))$</span> and <span class="math" data-tex="$(0,0)$">$(0,0)$</span>. Their sum is exactly <span class="math" data-tex="$(c,d)$">$(c,d)$</span>. The distance between the two basepoints is <span class="math" data-tex="$O(t_n)$">$O(t_n)$</span>, while the first covector has norm <span class="math" data-tex="$O(t_n^{1-r})$">$O(t_n^{1-r})$</span> when <span class="math" data-tex="$c\ne0$">$c\ne0$</span>. Thus their weighted separation is <span class="math" data-tex="$O(t_n^{2-r})\to0$">$O(t_n^{2-r})\to0$</span>. For <span class="math" data-tex="$c=0$">$c=0$</span> the first covector is zero and the condition holds directly. This proves <span class="math" data-tex="$T_0^*\mathbb R^2\subset A\widehat+A$">$T_0^*\mathbb R^2\subset A\widehat+A$</span>.</p>
+<p>No limiting covector can have its base off the closed graph. At any nonzero graph parameter <span class="math" data-tex="$t_0$">$t_0$</span>, the derivative <span class="math" data-tex="$g&#x27;$">$g&#x27;$</span> is locally Lipschitz. Suppose two conormal covectors at <span class="math" data-tex="$u_n,v_n\to t_0$">$u_n,v_n\to t_0$</span>, with coefficients <span class="math" data-tex="$\lambda_n,\mu_n$">$\lambda_n,\mu_n$</span>, have a convergent sum with second component <span class="math" data-tex="$d$">$d$</span>. Their first component is</p>
+<span class="math math-display" data-tex="$$
+-g&#x27;(v_n)(\lambda_n+\mu_n)
++(g&#x27;(v_n)-g&#x27;(u_n))\lambda_n.
+$$">$$
+-g&#x27;(v_n)(\lambda_n+\mu_n)
++(g&#x27;(v_n)-g&#x27;(u_n))\lambda_n.
+$$</span>
+<p>The second term tends to zero by the Lipschitz bound and the weighted-separation condition. The first tends to <span class="math" data-tex="$-g&#x27;(t_0)d$">$-g&#x27;(t_0)d$</span>, so the limit is conormal. Finally <span class="math" data-tex="$A\subset A\widehat+A$">$A\subset A\widehat+A$</span> by using the same basepoint twice and taking zero as one input. These inclusions prove (MA29). At <span class="math" data-tex="$r=2$">$r=2$</span>, the derivative is locally Lipschitz even at zero, and the exclusion argument applies there too: the self-sum is then just <span class="math" data-tex="$A$">$A$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-ma-application-problems-further-calculations-with-solutions">SH02-MA-APPLICATION-PROBLEMS — Further calculations with solutions</h2>
+<p><strong>Problem 1: change the angle.</strong> Let <span class="math" data-tex="$v,w\in\mathbb R^2$">$v,w\in\mathbb R^2$</span> be linearly independent, and let <span class="math" data-tex="$Z_{v,w}=\mathbb R_{\ge0}v\cup\mathbb R_{\ge0}w$">$Z_{v,w}=\mathbb R_{\ge0}v\cup\mathbb R_{\ge0}w$</span>. Prove the counterpart of (MA17) for a bounded complex whose microsupport lies in that of <span class="math" data-tex="$k_{Z_{v,w}}$">$k_{Z_{v,w}}$</span>.</p>
+<p><em>Solution.</em> Choose a linear functional <span class="math" data-tex="$\ell$">$\ell$</span> with <span class="math" data-tex="$\ell(v)=1$">$\ell(v)=1$</span> and <span class="math" data-tex="$\ell(w)=-1$">$\ell(w)=-1$</span>. It is proper and a homeomorphism from <span class="math" data-tex="$Z_{v,w}$">$Z_{v,w}$</span> to the line. At the vertex, a covector near <span class="math" data-tex="$d\ell$">$d\ell$</span> has opposite strict signs on the two arms; its support test again has one contractible strict sublevel arm and restriction <span class="math" data-tex="$k\to k$">$k\to k$</span>. The same holds near <span class="math" data-tex="$-d\ell$">$-d\ell$</span>. The proper direct-image argument in <code>SH02-MA-BENT-LINE</code> therefore gives a constant complex on the line and then a constant coefficient complex on <span class="math" data-tex="$Z_{v,w}$">$Z_{v,w}$</span>. This includes, for example, <span class="math" data-tex="$v=(2,1)$">$v=(2,1)$</span> and <span class="math" data-tex="$w=(-1,3)$">$w=(-1,3)$</span>, with no preferred Euclidean angle.</p>
+<p><strong>Problem 2: infinitely many sheets.</strong> Let <span class="math" data-tex="$U\subset X\setminus M$">$U\subset X\setminus M$</span> be an evenly covered contractible open set, with sheet set <span class="math" data-tex="$S$">$S$</span>. For a constant coefficient complex <span class="math" data-tex="$Q$">$Q$</span> on <span class="math" data-tex="$U$">$U$</span>, compute <span class="math" data-tex="$K_\rho|_U$">$K_\rho|_U$</span> and <span class="math" data-tex="$\mathcal R_M(Q)|_U$">$\mathcal R_M(Q)|_U$</span>. Explain why the two coefficient operations are different.</p>
+<p><em>Solution.</em> The proper-support kernel is <span class="math" data-tex="$(k^{(S)})_U$">$(k^{(S)})_U$</span>. Its Hom into <span class="math" data-tex="$Q_U$">$Q_U$</span> is <span class="math" data-tex="$(\prod_{s\in S}Q)_U$">$(\prod_{s\in S}Q)_U$</span> on this trivializing domain: a map from a free direct sum is an independently specified value on every basis vector. The same result follows by taking the covering direct image of the pullback of <span class="math" data-tex="$Q$">$Q$</span>. The proper-support construction sums over sheets, while its right-adjoint Hom construction takes products. Since products of modules are exact, a termwise product of a bounded representative computes this particular constant-coefficient example. The distinction persists when <span class="math" data-tex="$S$">$S$</span> is countably infinite.</p>
+<p><strong>Problem 3: the missing scalar comparison.</strong> In (MA15), which microlocal section is not induced by any localized endomorphism when <span class="math" data-tex="$k\ne0$">$k\ne0$</span>?</p>
+<p><em>Solution.</em> The section which is <span class="math" data-tex="$1$">$1$</span> on the sector <span class="math" data-tex="$\xi&gt;0$">$\xi&gt;0$</span> and <span class="math" data-tex="$0$">$0$</span> on <span class="math" data-tex="$\xi&lt;0$">$\xi&lt;0$</span> is not diagonal. Every localized endomorphism is a scalar by the half-ray fraction calculation, and its restrictions to both sectors are that same scalar. The section is therefore absent from the image. This is a failure of surjectivity for the comparison on the open set, even though the comparison at each individual covector is an isomorphism.</p>
+<p><strong>Problem 4: why combined noncharacteristicness is local to common support.</strong> Suppose <span class="math" data-tex="$F_1$">$F_1$</span> is zero near <span class="math" data-tex="$f(y)$">$f(y)$</span>, while <span class="math" data-tex="$F_2$">$F_2$</span> is characteristic there. Does (MA6) require a separate noncharacteristic assumption on <span class="math" data-tex="$F_2$">$F_2$</span> at <span class="math" data-tex="$y$">$y$</span>?</p>
+<p><em>Solution.</em> No. Both internal Hom complexes vanish near <span class="math" data-tex="$y$">$y$</span>, since their second argument is zero. The proof of (MA6) invokes individual noncharacteristicness only at points of the common closed support, where the zero covectors of both factors put each relevant individual microsupport inside the combined set. Requiring individual conditions everywhere would add an unnecessary restriction.</p>
+<h2 id="sh02-ma-boundary-dependencies-and-further-directions">SH02-MA-BOUNDARY — Dependencies and further directions</h2>
+<p>The proofs above are complete relative to the named cone-continuation, six-operation, characteristic-estimate, microlocal-Hom and involutivity contracts. The calculations distinguish ordinary neighborhoods, directions in a cotangent fibre, and quotient-category denominators; each controls a different limit or localization.</p>
+<p>The graph-relative calculation includes the actual cone-stalk formulas and denominator-clearing arguments, separately from the formal adjunction identities. The quadratic tangent-cone counterexample is the <span class="math" data-tex="$m=1$">$m=1$</span> member of the full even-power family proved in <code>SH02-INV-POINT-TANGENT-FAILURE</code>, so its calculation is not duplicated here. The flat-arm asymptotic-sum calculation above supplies the exact geometry complementary to <code>SH02-CHE-REGULARITY</code>.</p>
+<p>A next research calculation is to replace the two deleted sectors in (MA13) by several components and determine which compatibility conditions are imposed by involutivity before computing any quotient morphisms. Another is to replace the proper bent-line projection by a curve whose projection has a noncompact fibre: the proof then exposes exactly where a new properness or support hypothesis is needed.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><span class="unlinked">Course contents</span><span></span></nav>
+<p class="small source-link"><a href="src/microlocal-applications.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-02">Repository</a></nav>
+</footer>
+</body>
+</html>

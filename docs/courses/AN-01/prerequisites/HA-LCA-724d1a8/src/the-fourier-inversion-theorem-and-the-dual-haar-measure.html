@@ -1,0 +1,476 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="69b747ad7396e65bb21174a1005d3f58a3893f201ea529ee5bc1c0636c1c938a"><title>The Fourier inversion theorem and the dual Haar measure</title><link rel="stylesheet" href="../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="the-fourier-inversion-theorem-and-the-dual-haar-measure.md">Editable source</a> · <a href="../LICENCES.html">Licences</a></nav><article><h1 id="the-fourier-inversion-theorem-and-the-dual-haar-measure">The Fourier inversion theorem and the dual Haar measure</h1>
+<p><strong>Lesson HA-LCA-07.</strong> Self-checked by the writing AI.</p>
+<p>Fix a locally compact Hausdorff abelian group <span class="math" data-tex="\(G\)">\(G\)</span> and a Haar measure <span class="math" data-tex="\(dx\)">\(dx\)</span> on its complete locally determined domain. No countability assumption is made. Its dual <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span> is locally compact by <a href="characters-and-the-dual-group.html#ha-lca-02-theorem-5-2">HA-LCA-02, Theorem 5.2</a>. We write <span class="math" data-tex="\(G\)">\(G\)</span> additively and multiply characters in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Our conventions are
+<span class="math math-display" data-tex="\[
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx,
+ \qquad T\mu(x)=\int_\Gamma\gamma(x)\,d\mu(\gamma).
+ \tag{1}
+\]">\[
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx,
+ \qquad T\mu(x)=\int_\Gamma\gamma(x)\,d\mu(\gamma).
+ \tag{1}
+\]</span>
+By <a href="bochners-theorem.html#ha-lca-06-proposition-4-1">HA-LCA-06, Proposition 4.1</a>, every <span class="math" data-tex="\(f\in B(G)\)">\(f\in B(G)\)</span> has a unique finite complex Radon measure <span class="math" data-tex="\(\mu_f\)">\(\mu_f\)</span> with <span class="math" data-tex="\(f=T\mu_f\)">\(f=T\mu_f\)</span>, and
+<span class="math" data-tex="\(\|f\|_{B(G)}=\|\mu_f\|\)">\(\|f\|_{B(G)}=\|\mu_f\|\)</span>. Put <span class="math" data-tex="\(B^1(G)=B(G)\cap L^1(G,dx)\)">\(B^1(G)=B(G)\cap L^1(G,dx)\)</span>. Members of <span class="math" data-tex="\(B(G)\)">\(B(G)\)</span> are actual bounded continuous functions. If such functions are equal almost everywhere, they agree everywhere: a nonzero continuous difference is bounded away from zero on some nonempty open set, which has positive Haar measure.</p>
+<p>The freely accessible source for the construction is D. H. Fremlin, <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex"><em>Measure Theory</em>, §445P–Q, version of 20 March 2008</a>. We give the measure-representation step on arbitrary groups and extend the argument from integrable positive-type functions to all of <span class="math" data-tex="\(B^1(G)\)">\(B^1(G)\)</span>. The sign in (1) determines every formula below.</p>
+<p>Adaptation and additional proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. This combined lesson is under the <a href="../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">Design Science License</a>. Fremlin's copyright 1998 and original notices are retained in the <span class="unlinked">unchanged original source package</span>.</p>
+<p>The exact earlier proof tools are these:</p>
+<ul>
+<li><a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-theorem-3-1">HA-LCA-03, Theorem 3.1</a> gives the transform, translation, modulation, convolution and involution laws; its <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-corollary-2-2">Corollary 2.2</a> gives <span class="math" data-tex="\(\widehat f\in C_0(\Gamma)\)">\(\widehat f\in C_0(\Gamma)\)</span>, and its <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-lemma-4-1">Lemma 4.1</a> identifies the Radon measure and variation of an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> density.</li>
+<li><a href="functions-of-positive-type.html#ha-lca-04-proposition-2-2">HA-LCA-04, Proposition 2.2</a> proves positivity of autocorrelations. Its <a href="functions-of-positive-type.html#ha-lca-04-exercise-7-1">Exercise 7.1</a> proves that products of positive-type functions have positive type. <a href="bochners-theorem.html#ha-lca-06-theorem-2-1">HA-LCA-06, Theorem 2.1</a> is Bochner's theorem, including the mass formula <span class="math" data-tex="\(\mu_f(\Gamma)=f(0)\)">\(\mu_f(\Gamma)=f(0)\)</span> for positive-type <span class="math" data-tex="\(f\)">\(f\)</span>; its <a href="bochners-theorem.html#ha-lca-06-proposition-1-1">Proposition 1.1</a> proves injectivity of <span class="math" data-tex="\(T\)">\(T\)</span>.</li>
+<li><a href="../prerequisites/src/haar-measure.html#ha-lca-pre-haar-theorem-3-1">The Haar reading, Theorem 3.1</a> proves positive <span class="math" data-tex="\(C_c\)">\(C_c\)</span> representation on every sigma-compact locally compact Hausdorff space. <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-1-1">The general Haar reading, Lemma 1.1 and Theorems 3.1–3.3</a> proves the open sigma-compact subgroup construction, full-domain Haar existence, uniqueness and uniqueness from <span class="math" data-tex="\(C_c\)">\(C_c\)</span> integrals. Its <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-5-1">Lemma 5.1</a> proves <span class="math" data-tex="\(C_c\)">\(C_c\)</span>-density in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>.</li>
+<li><a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-3">The finite-Radon reading, Lemmas 1.3 and 1.6</a> supplies cutoffs and compact-product continuity. Its <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-theorem-4-3">Theorem 4.3</a> includes finite complex Radon uniqueness. <a href="../prerequisites/src/finite-radon-products.html#ha-lca-pre-product-corollary-2-3">The product reading, Corollary 2.3</a> proves Fubini after restricting both variables to compact sets; its <a href="../prerequisites/src/finite-radon-products.html#ha-lca-pre-product-proposition-3-1">Proposition 3.1</a> proves pushforward and substitution. <a href="../prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-1-2">The integration reading, Theorem 1.2 and Lemma 2.1</a> proves monotone convergence and the complex integral estimates.</li>
+</ul>
+<h2 id="1-local-denominators-and-compatible-measures">1. Local denominators and compatible measures</h2>
+<p>We first supply the representation step that will turn an invariant integral into a Haar measure without requiring the whole group to be sigma-compact.</p>
+<p><a id="ha-lca-07-lemma-1-0"></a>
+<strong>Lemma 1.0 — An invariant positive integral.</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be a locally compact Hausdorff group. Every nonzero positive complex-linear functional <span class="math" data-tex="\(J:C_c(S)\to\mathbb C\)">\(J:C_c(S)\to\mathbb C\)</span> invariant under left translation is integration against a unique Haar measure on the full complete locally determined domain.</p>
+<p><strong>Proof.</strong> Positivity means <span class="math" data-tex="\(Jv\ge0\)">\(Jv\ge0\)</span> for real <span class="math" data-tex="\(v\ge0\)">\(v\ge0\)</span>. It implies that <span class="math" data-tex="\(J\)">\(J\)</span> is real on real functions, by their positive and negative parts. If <span class="math" data-tex="\(K\)">\(K\)</span> is compact, choose a cutoff <span class="math" data-tex="\(w\ge0\)">\(w\ge0\)</span> equal to one on <span class="math" data-tex="\(K\)">\(K\)</span>. For <span class="math" data-tex="\(v\)">\(v\)</span> supported in <span class="math" data-tex="\(K\)">\(K\)</span>, choose a complex scalar <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> of modulus one with <span class="math" data-tex="\(\zeta Jv=|Jv|\)">\(\zeta Jv=|Jv|\)</span>, unless <span class="math" data-tex="\(Jv=0\)">\(Jv=0\)</span>, when no estimate is needed. Pointwise,
+<span class="math" data-tex="\(\operatorname{Re}(\zeta v)\le\|v\|_\infty w\)">\(\operatorname{Re}(\zeta v)\le\|v\|_\infty w\)</span>, and hence
+<span class="math math-display" data-tex="\[
+ |Jv|\le J(w)\|v\|_\infty.
+\]">\[
+ |Jv|\le J(w)\|v\|_\infty.
+\]</span>
+Thus the restriction to each fixed compact support is bounded.</p>
+<p>Choose an open, closed, sigma-compact subgroup <span class="math" data-tex="\(H\)">\(H\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span>, as in the general Haar reading, Lemma 1.1. Extend <span class="math" data-tex="\(C_c(H)\)">\(C_c(H)\)</span> by zero and restrict <span class="math" data-tex="\(J\)">\(J\)</span> to obtain <span class="math" data-tex="\(J_H\)">\(J_H\)</span>. Every compact set in <span class="math" data-tex="\(S\)">\(S\)</span> meets only finitely many left cosets <span class="math" data-tex="\(rH\)">\(rH\)</span>, since these cosets form a disjoint open cover. Consequently every <span class="math" data-tex="\(v\in C_c(S)\)">\(v\in C_c(S)\)</span> is a finite sum of the translates of functions <span class="math" data-tex="\(v_r(h)=v(rh)\)">\(v_r(h)=v(rh)\)</span> in <span class="math" data-tex="\(C_c(H)\)">\(C_c(H)\)</span>. Left invariance gives
+<span class="math math-display" data-tex="\[
+ Jv=\sum_r J_H(v_r).
+\]">\[
+ Jv=\sum_r J_H(v_r).
+\]</span>
+Since <span class="math" data-tex="\(J\ne0\)">\(J\ne0\)</span>, the functional <span class="math" data-tex="\(J_H\)">\(J_H\)</span> is nonzero.</p>
+<p>The proved sigma-compact representation theorem supplies a nonzero positive Borel measure <span class="math" data-tex="\(\nu_H\)">\(\nu_H\)</span>, finite on compact sets and regular, with <span class="math" data-tex="\(J_Hv=\int_Hv\,d\nu_H\)">\(J_Hv=\int_Hv\,d\nu_H\)</span>. Its uniqueness shows that <span class="math" data-tex="\(\nu_H\)">\(\nu_H\)</span> is left invariant: translation of the representing measure has the same <span class="math" data-tex="\(C_c\)">\(C_c\)</span> integrals. Complete this measure. Fix any full-domain Haar measure <span class="math" data-tex="\(\nu_0\)">\(\nu_0\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, whose existence was proved in the general Haar reading. Its restriction to <span class="math" data-tex="\(H\)">\(H\)</span> is a nonzero Haar measure; uniqueness on <span class="math" data-tex="\(H\)">\(H\)</span> gives
+<span class="math" data-tex="\(\nu_H=c\,\nu_0|_H\)">\(\nu_H=c\,\nu_0|_H\)</span>, with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Both completions on <span class="math" data-tex="\(H\)">\(H\)</span> are the ordinary Borel completion, as proved in that reading, Lemma 5.1.</p>
+<p>The finite coset decomposition now gives <span class="math" data-tex="\(Jv=c\int_Sv\,d\nu_0\)">\(Jv=c\int_Sv\,d\nu_0\)</span> for every <span class="math" data-tex="\(v\in C_c(S)\)">\(v\in C_c(S)\)</span>. Thus the full-domain measure <span class="math" data-tex="\(c\nu_0\)">\(c\nu_0\)</span> represents <span class="math" data-tex="\(J\)">\(J\)</span>. Haar uniqueness on <span class="math" data-tex="\(S\)">\(S\)</span>, followed by evaluation on one nonnegative <span class="math" data-tex="\(C_c\)">\(C_c\)</span> function of positive integral, gives uniqueness. This argument constructs the required full-domain measure from the already proved Haar measure; it assumes no global <span class="math" data-tex="\(C_c\)">\(C_c\)</span> representation theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(\widetilde g(x)=\overline{g(-x)}\)">\(\widetilde g(x)=\overline{g(-x)}\)</span>, and let <span class="math" data-tex="\(P(G)\)">\(P(G)\)</span> denote the continuous functions of positive type.</p>
+<p><a id="ha-lca-07-lemma-1-1"></a>
+<strong>Lemma 1.1.</strong> For every compact <span class="math" data-tex="\(K\subseteq\Gamma\)">\(K\subseteq\Gamma\)</span>, there is <span class="math" data-tex="\(h\in C_c(G)\cap P(G)\)">\(h\in C_c(G)\cap P(G)\)</span> such that <span class="math" data-tex="\(\widehat h\ge0\)">\(\widehat h\ge0\)</span> everywhere and <span class="math" data-tex="\(\widehat h&gt;0\)">\(\widehat h&gt;0\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. One can arrange <span class="math" data-tex="\(h(0)&gt;0\)">\(h(0)&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> Choose a nonzero nonnegative <span class="math" data-tex="\(u\in C_c(G)\)">\(u\in C_c(G)\)</span>, using a cutoff at the identity. Haar positivity on nonempty open sets gives <span class="math" data-tex="\(\int u&gt;0\)">\(\int u&gt;0\)</span>. For each <span class="math" data-tex="\(\gamma_0\in K\cup\{1\}\)">\(\gamma_0\in K\cup\{1\}\)</span>, put <span class="math" data-tex="\(g_{\gamma_0}=\gamma_0 u\)">\(g_{\gamma_0}=\gamma_0 u\)</span>. Then
+<span class="math" data-tex="\(\widehat {g_{\gamma_0}}(\gamma_0)=\int u&gt;0\)">\(\widehat {g_{\gamma_0}}(\gamma_0)=\int u&gt;0\)</span>.
+Continuity of its transform gives a neighbourhood <span class="math" data-tex="\(W_{\gamma_0}\)">\(W_{\gamma_0}\)</span> on which that transform is nonzero. Choose finitely many of these neighbourhoods covering <span class="math" data-tex="\(K\cup\{1\}\)">\(K\cup\{1\}\)</span>, and let <span class="math" data-tex="\(g_1,\ldots,g_m\)">\(g_1,\ldots,g_m\)</span> be the corresponding functions. Set
+<span class="math math-display" data-tex="\[
+ h=\sum_{j=1}^m g_j*\widetilde g_j.
+ \tag{2}
+\]">\[
+ h=\sum_{j=1}^m g_j*\widetilde g_j.
+ \tag{2}
+\]</span>
+Each summand is continuous, has support in the compact set
+<span class="math" data-tex="\(\operatorname{supp}g_j-\operatorname{supp}g_j\)">\(\operatorname{supp}g_j-\operatorname{supp}g_j\)</span>, and has positive type by the autocorrelation proposition. A finite sum has positive type by addition of its defining nonnegative quadratic forms. The transform laws give
+<span class="math math-display" data-tex="\[
+ \widehat h=\sum_{j=1}^m|\widehat g_j|^2.
+\]">\[
+ \widehat h=\sum_{j=1}^m|\widehat g_j|^2.
+\]</span>
+At least one term is positive at each point of <span class="math" data-tex="\(K\)">\(K\)</span>. Finally,
+<span class="math" data-tex="\(h(0)=\sum_j\int|g_j|^2&gt;0\)">\(h(0)=\sum_j\int|g_j|^2&gt;0\)</span>. Including the trivial character in the cover also handles <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>. Only compactness of <span class="math" data-tex="\(K\)">\(K\)</span>, not sigma-compactness of <span class="math" data-tex="\(G\)">\(G\)</span>, has been used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-07-lemma-1-2"></a>
+<strong>Lemma 1.2.</strong> For <span class="math" data-tex="\(f,g\in B^1(G)\)">\(f,g\in B^1(G)\)</span>, the following finite complex Radon measures on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> are equal:
+<span class="math math-display" data-tex="\[
+ \widehat f\,\mu_g=\widehat g\,\mu_f.
+ \tag{3}
+\]">\[
+ \widehat f\,\mu_g=\widehat g\,\mu_f.
+ \tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> Bounded continuous weights times finite complex Radon measures are finite complex Radon measures. Indeed their total variations are dominated by a constant times the original variation, and the finite-product reading, Lemma 1.2, proves that the resulting positive parts are Radon.</p>
+<p>For <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>, <span class="math" data-tex="\(g=T\mu_g\in B(G)\)">\(g=T\mu_g\in B(G)\)</span>, and every <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span>, direct integration gives
+<span class="math math-display" data-tex="\[
+ T(\widehat f\,\mu_g)(x)
+ =\int_G f(y)\int_\Gamma\gamma(x-y)\,d\mu_g(\gamma)\,dy
+ =\int_Gf(y)g(x-y)\,dy.
+ \tag{4}
+\]">\[
+ T(\widehat f\,\mu_g)(x)
+ =\int_G f(y)\int_\Gamma\gamma(x-y)\,d\mu_g(\gamma)\,dy
+ =\int_Gf(y)g(x-y)\,dy.
+ \tag{4}
+\]</span>
+Here is a justification that does not impose sigma-finiteness. First take <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span> and restrict <span class="math" data-tex="\(\mu_g\)">\(\mu_g\)</span> to a compact set. The pairing kernel is continuous by HA-LCA-02, Proposition 1.4, and compact-localized Radon Fubini proves the identity. Remove the measure restriction using the bound
+<span class="math" data-tex="\(\|f\|_1|\mu_g|(\Gamma\setminus C)\)">\(\|f\|_1|\mu_g|(\Gamma\setminus C)\)</span>, which tends to zero along compact tails. Then approximate an arbitrary <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function by <span class="math" data-tex="\(C_c\)">\(C_c\)</span> functions. On either side the error is at most <span class="math" data-tex="\(\|f-f_j\|_1\|\mu_g\|\)">\(\|f-f_j\|_1\|\mu_g\|\)</span>. The same estimates show that all fixed-<span class="math" data-tex="\(x\)">\(x\)</span> integrals are absolutely convergent and independent of the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> representative.</p>
+<p>For <span class="math" data-tex="\(f,g\in B^1(G)\)">\(f,g\in B^1(G)\)</span>, both functions are bounded and integrable. Substitution <span class="math" data-tex="\(y\mapsto x-y\)">\(y\mapsto x-y\)</span>, which preserves Haar measure by the earlier inversion and translation theorem, interchanges their convolution integrals at every <span class="math" data-tex="\(x\)">\(x\)</span>. Thus (4) gives
+<span class="math" data-tex="\(T(\widehat f\,\mu_g)=T(\widehat g\,\mu_f)\)">\(T(\widehat f\,\mu_g)=T(\widehat g\,\mu_f)\)</span>.
+Injectivity of <span class="math" data-tex="\(T\)">\(T\)</span> proves (3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-constructing-the-dual-haar-integral">2. Constructing the dual Haar integral</h2>
+<p><a id="ha-lca-07-theorem-2-1"></a>
+<strong>Theorem 2.1 — Fourier inversion on <span class="math" data-tex="\(B^1(G)\)">\(B^1(G)\)</span>.</strong> There is a unique Haar measure <span class="math" data-tex="\(d\xi\)">\(d\xi\)</span> on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> for which every <span class="math" data-tex="\(f\in B^1(G)\)">\(f\in B^1(G)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \widehat f\in L^1(\Gamma,d\xi),\qquad
+ \mu_f=\widehat f\,d\xi,\qquad
+ f(x)=\int_\Gamma\widehat f(\gamma)\gamma(x)\,d\xi(\gamma)
+ \quad(x\in G).
+ \tag{5}
+\]">\[
+ \widehat f\in L^1(\Gamma,d\xi),\qquad
+ \mu_f=\widehat f\,d\xi,\qquad
+ f(x)=\int_\Gamma\widehat f(\gamma)\gamma(x)\,d\xi(\gamma)
+ \quad(x\in G).
+ \tag{5}
+\]</span>
+In particular <span class="math" data-tex="\(\int_\Gamma|\widehat f|\,d\xi=\|f\|_{B(G)}\)">\(\int_\Gamma|\widehat f|\,d\xi=\|f\|_{B(G)}\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(q\in C_c(\Gamma)\)">\(q\in C_c(\Gamma)\)</span>, choose <span class="math" data-tex="\(h\)">\(h\)</span> from Lemma 1.1 with <span class="math" data-tex="\(\widehat h&gt;0\)">\(\widehat h&gt;0\)</span> on <span class="math" data-tex="\(\operatorname{supp}q\)">\(\operatorname{supp}q\)</span>, and define
+<span class="math math-display" data-tex="\[
+ I(q)=\int_\Gamma\frac{q}{\widehat h}\,d\mu_h.
+ \tag{6}
+\]">\[
+ I(q)=\int_\Gamma\frac{q}{\widehat h}\,d\mu_h.
+ \tag{6}
+\]</span>
+The quotient is set to zero off <span class="math" data-tex="\(\operatorname{supp}q\)">\(\operatorname{supp}q\)</span>. It is continuous and compactly supported: the denominator is positive on a neighbourhood of this compact support and has a positive lower bound there after shrinking that neighbourhood, while the numerator vanishes off its support. Bochner makes <span class="math" data-tex="\(\mu_h\)">\(\mu_h\)</span> positive.</p>
+<p>If <span class="math" data-tex="\(k\)">\(k\)</span> is another such choice, the compactly supported continuous function
+<span class="math" data-tex="\(q/(\widehat h\,\widehat k)\)">\(q/(\widehat h\,\widehat k)\)</span> and (3) give
+<span class="math math-display" data-tex="\[
+ \int\frac q{\widehat h}\,d\mu_h
+ =\int\frac q{\widehat h\,\widehat k}\widehat k\,d\mu_h
+ =\int\frac q{\widehat h\,\widehat k}\widehat h\,d\mu_k
+ =\int\frac q{\widehat k}\,d\mu_k.
+ \tag{7}
+\]">\[
+ \int\frac q{\widehat h}\,d\mu_h
+ =\int\frac q{\widehat h\,\widehat k}\widehat k\,d\mu_h
+ =\int\frac q{\widehat h\,\widehat k}\widehat h\,d\mu_k
+ =\int\frac q{\widehat k}\,d\mu_k.
+ \tag{7}
+\]</span>
+Thus <span class="math" data-tex="\(I\)">\(I\)</span> is well defined. Choosing one denominator for the union of two compact supports proves additivity; the same choice proves complex homogeneity. For <span class="math" data-tex="\(q\ge0\)">\(q\ge0\)</span>, (6) is nonnegative.</p>
+<p>We prove that <span class="math" data-tex="\(I\)">\(I\)</span> is nonzero before using any full-support property of its representing measure. Choose <span class="math" data-tex="\(a\in C_c(G)\cap P(G)\)">\(a\in C_c(G)\cap P(G)\)</span> as in Lemma 1.1, so <span class="math" data-tex="\(\mu_a(\Gamma)=a(0)&gt;0\)">\(\mu_a(\Gamma)=a(0)&gt;0\)</span>. Finite Radon inner regularity supplies a compact set <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(\mu_a(C)&gt;0\)">\(\mu_a(C)&gt;0\)</span>, and a nonnegative cutoff <span class="math" data-tex="\(q\)">\(q\)</span> equal to one there has <span class="math" data-tex="\(\int q\,d\mu_a&gt;0\)">\(\int q\,d\mu_a&gt;0\)</span>. Choose <span class="math" data-tex="\(h\)">\(h\)</span> positive on <span class="math" data-tex="\(\operatorname{supp}q\)">\(\operatorname{supp}q\)</span>. The compatibility identity gives
+<span class="math math-display" data-tex="\[
+ I(q\widehat a)
+ =\int\frac{q\widehat a}{\widehat h}\,d\mu_h
+ =\int q\,d\mu_a&gt;0.
+ \tag{8}
+\]">\[
+ I(q\widehat a)
+ =\int\frac{q\widehat a}{\widehat h}\,d\mu_h
+ =\int q\,d\mu_a&gt;0.
+ \tag{8}
+\]</span></p>
+<p>For <span class="math" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span>, put <span class="math" data-tex="\(h_\eta(x)=\eta(x)h(x)\)">\(h_\eta(x)=\eta(x)h(x)\)</span>. Multiplication by a character preserves positive type: in the defining quadratic form replace each coefficient <span class="math" data-tex="\(c_j\)">\(c_j\)</span> by <span class="math" data-tex="\(c_j\eta(x_j)\)">\(c_j\eta(x_j)\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+ \widehat {h_\eta}(\gamma)=\widehat h(\eta^{-1}\gamma),
+ \qquad \mu_{h_\eta}=(\gamma\mapsto\eta\gamma)_*\mu_h.
+ \tag{9}
+\]">\[
+ \widehat {h_\eta}(\gamma)=\widehat h(\eta^{-1}\gamma),
+ \qquad \mu_{h_\eta}=(\gamma\mapsto\eta\gamma)_*\mu_h.
+ \tag{9}
+\]</span>
+The first identity is the modulation law. For the second, applying <span class="math" data-tex="\(T\)">\(T\)</span> to the displayed pushforward gives <span class="math" data-tex="\(\eta h\)">\(\eta h\)</span>; pushforward is Radon and <span class="math" data-tex="\(T\)">\(T\)</span> is injective. If <span class="math" data-tex="\(q_\eta(\gamma)=q(\eta^{-1}\gamma)\)">\(q_\eta(\gamma)=q(\eta^{-1}\gamma)\)</span>, then <span class="math" data-tex="\(h_\eta\)">\(h_\eta\)</span> is a permissible denominator for <span class="math" data-tex="\(q_\eta\)">\(q_\eta\)</span>. Substitution in (6) gives <span class="math" data-tex="\(I(q_\eta)=I(q)\)">\(I(q_\eta)=I(q)\)</span>. Lemma 1.0 now provides a nonzero full-domain Haar measure <span class="math" data-tex="\(d\xi\)">\(d\xi\)</span> representing <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>Fix an arbitrary, possibly complex, <span class="math" data-tex="\(f\in B^1(G)\)">\(f\in B^1(G)\)</span>. Given <span class="math" data-tex="\(q\in C_c(\Gamma)\)">\(q\in C_c(\Gamma)\)</span>, choose a denominator positive on <span class="math" data-tex="\(\operatorname{supp}q\)">\(\operatorname{supp}q\)</span>. Equations (3) and (6) yield
+<span class="math math-display" data-tex="\[
+ \int_\Gamma q\widehat f\,d\xi
+ =I(q\widehat f)
+ =\int_\Gamma\frac{q\widehat f}{\widehat h}\,d\mu_h
+ =\int_\Gamma q\,d\mu_f.
+ \tag{10}
+\]">\[
+ \int_\Gamma q\widehat f\,d\xi
+ =I(q\widehat f)
+ =\int_\Gamma\frac{q\widehat f}{\widehat h}\,d\mu_h
+ =\int_\Gamma q\,d\mu_f.
+ \tag{10}
+\]</span>
+We must prove <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> integrable before identifying its measure. Given compact <span class="math" data-tex="\(K\subseteq\Gamma\)">\(K\subseteq\Gamma\)</span>, choose <span class="math" data-tex="\(v\in C_c(\Gamma)\)">\(v\in C_c(\Gamma)\)</span> with <span class="math" data-tex="\(0\le v\le1\)">\(0\le v\le1\)</span> and <span class="math" data-tex="\(v=1\)">\(v=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, use
+<span class="math math-display" data-tex="\[
+ q_\varepsilon
+ =v\,\frac{\overline{\widehat f}}{|\widehat f|+\varepsilon}
+ \quad\text{in (10).}
+\]">\[
+ q_\varepsilon
+ =v\,\frac{\overline{\widehat f}}{|\widehat f|+\varepsilon}
+ \quad\text{in (10).}
+\]</span>
+This is a compactly supported continuous function of modulus at most one, so
+<span class="math math-display" data-tex="\[
+ 0\le\int v\,\frac{|\widehat f|^2}{|\widehat f|+\varepsilon}\,d\xi
+ =\int q_\varepsilon\,d\mu_f\le\|\mu_f\|.
+ \tag{11}
+\]">\[
+ 0\le\int v\,\frac{|\widehat f|^2}{|\widehat f|+\varepsilon}\,d\xi
+ =\int q_\varepsilon\,d\mu_f\le\|\mu_f\|.
+ \tag{11}
+\]</span>
+The middle integral is real and nonnegative because it equals the first one; the final inequality follows from its absolute-value bound. Letting <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to zero and applying monotone convergence gives
+<span class="math" data-tex="\(\int_K|\widehat f|\,d\xi\le\|\mu_f\|\)">\(\int_K|\widehat f|\,d\xi\le\|\mu_f\|\)</span>.
+Since <span class="math" data-tex="\(\widehat f\in C_0(\Gamma)\)">\(\widehat f\in C_0(\Gamma)\)</span>, the sets
+<span class="math" data-tex="\(K_n=\{|\widehat f|\ge1/n\}\)">\(K_n=\{|\widehat f|\ge1/n\}\)</span> are compact and increase to the set where <span class="math" data-tex="\(\widehat f\ne0\)">\(\widehat f\ne0\)</span>. A second monotone convergence argument gives
+<span class="math" data-tex="\(\int_\Gamma|\widehat f|\,d\xi\le\|\mu_f\|&lt;\infty\)">\(\int_\Gamma|\widehat f|\,d\xi\le\|\mu_f\|&lt;\infty\)</span>.</p>
+<p>Apply the already proved <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-density measure theorem, HA-LCA-03, Lemma 4.1, to the LCA group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> with Haar measure <span class="math" data-tex="\(d\xi\)">\(d\xi\)</span>. It makes <span class="math" data-tex="\(\widehat f\,d\xi\)">\(\widehat f\,d\xi\)</span> a finite complex Radon measure whose variation norm is <span class="math" data-tex="\(\int|\widehat f|\,d\xi\)">\(\int|\widehat f|\,d\xi\)</span>. Identity (10) and uniqueness of finite Radon measures from <span class="math" data-tex="\(C_c\)">\(C_c\)</span> integrals imply
+<span class="math" data-tex="\(\mu_f=\widehat f\,d\xi\)">\(\mu_f=\widehat f\,d\xi\)</span>.
+Here <span class="math" data-tex="\(C_c\)">\(C_c\)</span> tests suffice because they are uniformly dense in <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. Applying <span class="math" data-tex="\(T\)">\(T\)</span> proves (5) at every point, and equality of variation norms proves the norm assertion.</p>
+<p>Finally any other Haar measure on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is <span class="math" data-tex="\(b\,d\xi\)">\(b\,d\xi\)</span> for some <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. Choose the nonzero <span class="math" data-tex="\(a\)">\(a\)</span> used in (8). Inversion at zero gives
+<span class="math" data-tex="\(a(0)=\int\widehat a\,d\xi&gt;0\)">\(a(0)=\int\widehat a\,d\xi&gt;0\)</span>;
+if inversion also holds for <span class="math" data-tex="\(b\,d\xi\)">\(b\,d\xi\)</span>, it forces <span class="math" data-tex="\(b=1\)">\(b=1\)</span>. This proves uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We call <span class="math" data-tex="\(d\xi\)">\(d\xi\)</span> the <strong>dual Haar measure</strong> of <span class="math" data-tex="\(dx\)">\(dx\)</span>. The complex argument (10)–(11) is needed: being a linear combination of positive-type functions does not by itself show that the individual positive-type summands are integrable.</p>
+<h2 id="3-products-scaling-and-classical-normalizations">3. Products, scaling and classical normalizations</h2>
+<p><a id="ha-lca-07-lemma-3-0"></a>
+<strong>Lemma 3.0 — Products on the full Haar domain.</strong> Let <span class="math" data-tex="\(G_1,G_2\)">\(G_1,G_2\)</span> be LCA groups with Haar measures <span class="math" data-tex="\(dx_1,dx_2\)">\(dx_1,dx_2\)</span>. There is a unique full-domain Haar measure <span class="math" data-tex="\(dx_1\otimes dx_2\)">\(dx_1\otimes dx_2\)</span> such that every <span class="math" data-tex="\(v\in C_c(G_1\times G_2)\)">\(v\in C_c(G_1\times G_2)\)</span> has integral equal to either iterated integral. If <span class="math" data-tex="\(d\xi_j\)">\(d\xi_j\)</span> is dual to <span class="math" data-tex="\(dx_j\)">\(dx_j\)</span>, then <span class="math" data-tex="\(d\xi_1\otimes d\xi_2\)">\(d\xi_1\otimes d\xi_2\)</span> is dual to <span class="math" data-tex="\(dx_1\otimes dx_2\)">\(dx_1\otimes dx_2\)</span>, under the product identification of the duals.</p>
+<p><strong>Proof.</strong> The product group is Hausdorff and locally compact: products of compact neighbourhoods are compact neighbourhoods, by the finite-product compactness theorem in the finite-Radon reading, Lemma 1.6. For <span class="math" data-tex="\(v\in C_c(G_1\times G_2)\)">\(v\in C_c(G_1\times G_2)\)</span>, compact localization makes the two iterated integrals finite and equal. The inner integral is continuous with compact support: restrict to the compact support projections and use continuity of integration of a continuous kernel against a finite Radon measure, proved in the product reading, Lemma 1.1. The resulting functional of <span class="math" data-tex="\(v\)">\(v\)</span> is complex linear and positive. Translating either variable leaves it invariant. It is nonzero, since a product of two nonzero nonnegative <span class="math" data-tex="\(C_c\)">\(C_c\)</span> functions has integral the product of two positive numbers. Lemma 1.0 supplies its unique full-domain Haar measure. This is the meaning of the product notation here.</p>
+<p>We also need the factor integral for nonnegative <span class="math" data-tex="\(a\in C_0(G_1)\)">\(a\in C_0(G_1)\)</span>, <span class="math" data-tex="\(b\in C_0(G_2)\)">\(b\in C_0(G_2)\)</span> with finite integrals. Choose <span class="math" data-tex="\(u_n\in C_c(G_1)\)">\(u_n\in C_c(G_1)\)</span>, <span class="math" data-tex="\(0\le u_n\le1\)">\(0\le u_n\le1\)</span>, equal to one on <span class="math" data-tex="\(\{a\ge1/n\}\)">\(\{a\ge1/n\}\)</span>; when this set is empty one may choose zero. Replace <span class="math" data-tex="\(u_n\)">\(u_n\)</span> by <span class="math" data-tex="\(\max_{j\le n}u_j\)">\(\max_{j\le n}u_j\)</span>. Then <span class="math" data-tex="\(a_n=au_n\)">\(a_n=au_n\)</span> is an increasing sequence of nonnegative <span class="math" data-tex="\(C_c\)">\(C_c\)</span> functions converging to <span class="math" data-tex="\(a\)">\(a\)</span>. Construct <span class="math" data-tex="\(b_n\)">\(b_n\)</span> in the same way. Their products increase to <span class="math" data-tex="\(a(x_1)b(x_2)\)">\(a(x_1)b(x_2)\)</span>. The <span class="math" data-tex="\(C_c\)">\(C_c\)</span> formula and monotone convergence in each space give
+<span class="math math-display" data-tex="\[
+ \int a(x_1)b(x_2)\,d(dx_1\otimes dx_2)
+ =\left(\int a\,dx_1\right)\left(\int b\,dx_2\right).
+ \tag{12}
+\]">\[
+ \int a(x_1)b(x_2)\,d(dx_1\otimes dx_2)
+ =\left(\int a\,dx_1\right)\left(\int b\,dx_2\right).
+ \tag{12}
+\]</span>
+No assertion about a product sigma-algebra is needed for this argument.</p>
+<p>The topological identification
+<span class="math" data-tex="\(\widehat{G_1\times G_2}=\widehat G_1\times\widehat G_2\)">\(\widehat{G_1\times G_2}=\widehat G_1\times\widehat G_2\)</span>, with pairing
+<span class="math" data-tex="\((\gamma_1,\gamma_2)(x_1,x_2)=\gamma_1(x_1)\gamma_2(x_2)\)">\((\gamma_1,\gamma_2)(x_1,x_2)=\gamma_1(x_1)\gamma_2(x_2)\)</span>,
+was proved in <a href="characters-and-the-dual-group.html#ha-lca-02-proposition-4-1">HA-LCA-02, Proposition 4.1</a>.
+Construct <span class="math" data-tex="\(d\xi_1\otimes d\xi_2\)">\(d\xi_1\otimes d\xi_2\)</span> by the first part of the proof on these dual groups. By Haar uniqueness, the actual dual of <span class="math" data-tex="\(dx_1\otimes dx_2\)">\(dx_1\otimes dx_2\)</span> is <span class="math" data-tex="\(c(d\xi_1\otimes d\xi_2)\)">\(c(d\xi_1\otimes d\xi_2)\)</span> for some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.</p>
+<p>Choose nonzero positive autocorrelations <span class="math" data-tex="\(h_j\in C_c(G_j)\)">\(h_j\in C_c(G_j)\)</span> as in Lemma 1.1. The product
+<span class="math" data-tex="\(h(x_1,x_2)=h_1(x_1)h_2(x_2)\)">\(h(x_1,x_2)=h_1(x_1)h_2(x_2)\)</span> has positive type: pulling back a positive-type function along a homomorphism preserves each defining nonnegative quadratic form, and products preserve positive type. Thus <span class="math" data-tex="\(h\in B^1(G_1\times G_2)\)">\(h\in B^1(G_1\times G_2)\)</span>. Compact-localized integration gives
+<span class="math math-display" data-tex="\[
+ \widehat h(\gamma_1,\gamma_2)
+ =\widehat h_1(\gamma_1)\widehat h_2(\gamma_2).
+\]">\[
+ \widehat h(\gamma_1,\gamma_2)
+ =\widehat h_1(\gamma_1)\widehat h_2(\gamma_2).
+\]</span>
+Each factor is nonnegative, belongs to <span class="math" data-tex="\(C_0\cap L^1\)">\(C_0\cap L^1\)</span>, and has integral <span class="math" data-tex="\(h_j(0)&gt;0\)">\(h_j(0)&gt;0\)</span>, by Lemma 1.1 and Theorem 2.1. Equation (12), applied on the duals, now gives
+<span class="math math-display" data-tex="\[
+ \int\widehat h\,d(\xi_1\otimes\xi_2)=h_1(0)h_2(0)=h(0)&gt;0.
+\]">\[
+ \int\widehat h\,d(\xi_1\otimes\xi_2)=h_1(0)h_2(0)=h(0)&gt;0.
+\]</span>
+Inversion for <span class="math" data-tex="\(h\)">\(h\)</span> with the actual dual measure forces <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Iterating proves the corresponding assertions for any finite product. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-07-proposition-3-1"></a>
+<strong>Proposition 3.1 — Scaling.</strong> If <span class="math" data-tex="\(dx\)">\(dx\)</span> is replaced by <span class="math" data-tex="\(c\,dx\)">\(c\,dx\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, then the dual Haar measure is <span class="math" data-tex="\(c^{-1}d\xi\)">\(c^{-1}d\xi\)</span>.</p>
+<p><strong>Proof.</strong> The integrable classes and <span class="math" data-tex="\(B(G)\)">\(B(G)\)</span> are unchanged, and the new transform is <span class="math" data-tex="\(\widehat f_c=c\widehat f\)">\(\widehat f_c=c\widehat f\)</span>. Thus <span class="math" data-tex="\(\widehat f_c\)">\(\widehat f_c\)</span> is integrable against <span class="math" data-tex="\(c^{-1}d\xi\)">\(c^{-1}d\xi\)</span> and
+<span class="math math-display" data-tex="\[
+ \int_\Gamma \widehat f_c(\gamma)\gamma(x)c^{-1}\,d\xi(\gamma)=f(x)
+ \quad(f\in B^1(G)).
+\]">\[
+ \int_\Gamma \widehat f_c(\gamma)\gamma(x)c^{-1}\,d\xi(\gamma)=f(x)
+ \quad(f\in B^1(G)).
+\]</span>
+The uniqueness clause of Theorem 2.1 proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-07-proposition-3-2"></a>
+<strong>Proposition 3.2 — Euclidean constants.</strong> Ordinary Lebesgue measure on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> is self-dual for the pairing <span class="math" data-tex="\(e^{2\pi i x\cdot\xi}\)">\(e^{2\pi i x\cdot\xi}\)</span>. For the pairing <span class="math" data-tex="\(e^{i x\cdot s}\)">\(e^{i x\cdot s}\)</span>, its dual measure is <span class="math" data-tex="\((2\pi)^{-n}ds\)">\((2\pi)^{-n}ds\)</span>.</p>
+<p><strong>Proof.</strong> The real-dual homeomorphism was proved in <a href="characters-and-the-dual-group.html#ha-lca-02-theorem-3-1">HA-LCA-02, Theorem 3.1</a>, and its Lemma 3.3 constructed Lebesgue Haar measure and affine substitution. Therefore in dimension one the dual is <span class="math" data-tex="\(a\,d\xi\)">\(a\,d\xi\)</span> for some <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>.</p>
+<p>The function <span class="math" data-tex="\(h(x)=e^{-\pi x^2}\)">\(h(x)=e^{-\pi x^2}\)</span> is positive type: the positive Gaussian <span class="math" data-tex="\(e^{-t^2}\)">\(e^{-t^2}\)</span> of <a href="functions-of-positive-type.html#ha-lca-04-example-6-1">HA-LCA-04, Example 6.1</a> is pulled back under <span class="math" data-tex="\(x\mapsto\sqrt\pi x\)">\(x\mapsto\sqrt\pi x\)</span>, which preserves its defining quadratic forms. The full Gaussian calculation in <a href="../prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-theorem-2-1">the real-variable reading, Theorem 2.1</a> gives
+<span class="math math-display" data-tex="\[
+ \widehat h(\xi)=e^{-\pi\xi^2},
+ \qquad \int_{\mathbb R}e^{-\pi\xi^2}\,d\xi=1.
+\]">\[
+ \widehat h(\xi)=e^{-\pi\xi^2},
+ \qquad \int_{\mathbb R}e^{-\pi\xi^2}\,d\xi=1.
+\]</span>
+Inversion at zero gives <span class="math" data-tex="\(1=h(0)=a\)">\(1=h(0)=a\)</span>, fixing the dual constant.</p>
+<p>The product measure of <span class="math" data-tex="\(n\)">\(n\)</span> copies of one-dimensional Lebesgue measure is ordinary Lebesgue measure on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>: its iterated integral gives the volume of rectangular boxes, and the sigma-finite Radon product construction in <a href="../prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-4-4">the integration reading, Theorem 4.4</a> gives precisely this Borel measure. The theorem gives inner regularity on finite-measure Borel sets. Intersecting any Borel set with the increasing compact boxes <span class="math" data-tex="\([-k,k]^n\)">\([-k,k]^n\)</span> and using measure continuity extends this to all Borel sets. Its <span class="math" data-tex="\(C_c\)">\(C_c\)</span> integrals agree with the product Haar measure constructed in Lemma 3.0, so uniqueness from <span class="math" data-tex="\(C_c\)">\(C_c\)</span> identifies their ordinary completions. Equivalently, this supplies the construction of <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional Lebesgue measure from the one-dimensional one. Lemma 3.0 proves self-duality in dimension <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(e^{i x\cdot s}=e^{2\pi i x\cdot(s/(2\pi))}\)">\(e^{i x\cdot s}=e^{2\pi i x\cdot(s/(2\pi))}\)</span>. In each coordinate, affine substitution gives <span class="math" data-tex="\(d\xi=ds/(2\pi)\)">\(d\xi=ds/(2\pi)\)</span>; applying the product integral yields the factor <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>. Thus the conversion, with primal measure always <span class="math" data-tex="\(dx\)">\(dx\)</span>, is</p>
+<table>
+<thead>
+<tr>
+<th>Pairing</th>
+<th>Forward transform</th>
+<th>Dual Haar measure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(e^{2\pi i x\cdot\xi}\)">\(e^{2\pi i x\cdot\xi}\)</span></td>
+<td><span class="math" data-tex="\(\int f(x)e^{-2\pi i x\cdot\xi}\,dx\)">\(\int f(x)e^{-2\pi i x\cdot\xi}\,dx\)</span></td>
+<td><span class="math" data-tex="\(d\xi\)">\(d\xi\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(e^{i x\cdot s}\)">\(e^{i x\cdot s}\)</span></td>
+<td><span class="math" data-tex="\(\int f(x)e^{-i x\cdot s}\,dx\)">\(\int f(x)e^{-i x\cdot s}\,dx\)</span></td>
+<td><span class="math" data-tex="\(ds/(2\pi)^n\)">\(ds/(2\pi)^n\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These are coordinate descriptions of the same character pairing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-07-proposition-3-3"></a>
+<strong>Proposition 3.3 — Compact, discrete and finite groups.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is compact and <span class="math" data-tex="\(dx(G)=1\)">\(dx(G)=1\)</span>, its dual measure is counting measure on the discrete group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. If <span class="math" data-tex="\(G\)">\(G\)</span> is discrete with counting measure, its dual is Haar probability measure on the compact group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. In particular, if <span class="math" data-tex="\(G\)">\(G\)</span> is finite of order <span class="math" data-tex="\(N\)">\(N\)</span> with counting measure, every dual point has mass <span class="math" data-tex="\(1/N\)">\(1/N\)</span>.</p>
+<p><strong>Proof.</strong> The compact/discrete assertions about the dual topology are <a href="characters-and-the-dual-group.html#ha-lca-02-theorem-2-1">HA-LCA-02, Theorem 2.1</a>. Suppose first that <span class="math" data-tex="\(G\)">\(G\)</span> is compact with mass one. For any nontrivial character <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, choose <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(\omega(a)\ne1\)">\(\omega(a)\ne1\)</span>. Translation invariance gives
+<span class="math" data-tex="\(\int_G\omega=\omega(a)\int_G\omega\)">\(\int_G\omega=\omega(a)\int_G\omega\)</span>, so its integral is zero. The trivial character has integral one. For any <span class="math" data-tex="\(\chi\in\Gamma\)">\(\chi\in\Gamma\)</span>, the function <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has positive type, is integrable, and satisfies
+<span class="math math-display" data-tex="\[
+ \widehat\chi(\gamma)
+ =\int_G\chi(x)\overline{\gamma(x)}\,dx
+ =1_{\{\chi\}}(\gamma).
+\]">\[
+ \widehat\chi(\gamma)
+ =\int_G\chi(x)\overline{\gamma(x)}\,dx
+ =1_{\{\chi\}}(\gamma).
+\]</span>
+Inversion at zero now gives <span class="math" data-tex="\(\xi(\{\chi\})=1\)">\(\xi(\{\chi\})=1\)</span>. Compact sets in a discrete group are finite, so inner regularity gives counting measure on all sets, including uncountable ones with infinite measure.</p>
+<p>For discrete <span class="math" data-tex="\(G\)">\(G\)</span>, <span class="math" data-tex="\(\delta_0=1_{\{0\}}\)">\(\delta_0=1_{\{0\}}\)</span> is a compactly supported function of positive type; this follows from <a href="functions-of-positive-type.html#ha-lca-04-example-6-3">HA-LCA-04, Example 6.3</a> with the open subgroup <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. With counting measure its transform is the constant one. Inversion at zero gives
+<span class="math" data-tex="\(1=\int_\Gamma1\,d\xi\)">\(1=\int_\Gamma1\,d\xi\)</span>.
+Thus the dual is Haar probability measure. On a finite group, translation invariance gives equal mass to each dual point and <a href="fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-theorem-1-1">HA-LCA-01, Theorem 1.1</a> gives <span class="math" data-tex="\(|\Gamma|=N\)">\(|\Gamma|=N\)</span>; hence each mass is <span class="math" data-tex="\(1/N\)">\(1/N\)</span>.</p>
+<p>More generally compact primal mass <span class="math" data-tex="\(m\)">\(m\)</span> gives <span class="math" data-tex="\(m^{-1}\)">\(m^{-1}\)</span> times counting measure, by Proposition 3.1. Normalized counting measure on a finite primal group gives counting measure on its dual. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-positivity-fourier-series-and-the-angular-convention">4. Positivity, Fourier series and the angular convention</h2>
+<p><a id="ha-lca-07-corollary-4-1"></a>
+<strong>Corollary 4.1.</strong> If a class <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span> is of positive type, its unique continuous positive-type representative has <span class="math" data-tex="\(\widehat f\ge0\)">\(\widehat f\ge0\)</span> everywhere and
+<span class="math" data-tex="\(\int_\Gamma\widehat f\,d\xi=f(0)\)">\(\int_\Gamma\widehat f\,d\xi=f(0)\)</span>.
+If <span class="math" data-tex="\(f\in B^1(G)\)">\(f\in B^1(G)\)</span> and <span class="math" data-tex="\(\widehat f=0\)">\(\widehat f=0\)</span>, then <span class="math" data-tex="\(f=0\)">\(f=0\)</span>.</p>
+<p><strong>Proof.</strong> The continuous representative exists and is unique by <a href="functions-of-positive-type.html#ha-lca-04-corollary-3-2">HA-LCA-04, Corollary 3.2</a>. Its transform is unchanged by an almost-everywhere modification. Bochner makes <span class="math" data-tex="\(\mu_f\)">\(\mu_f\)</span> positive, and Theorem 2.1 identifies it with <span class="math" data-tex="\(\widehat f\,d\xi\)">\(\widehat f\,d\xi\)</span>. To see pointwise nonnegativity, identity (10) gives a nonnegative real number whenever <span class="math" data-tex="\(q\in C_c(\Gamma)\)">\(q\in C_c(\Gamma)\)</span> is nonnegative. If the imaginary part of the continuous function <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> were nonzero somewhere, it would have a fixed strict sign on an open neighbourhood. A nonzero nonnegative cutoff supported there, whose integral is positive by full support of Haar measure, would give a nonreal value in (10), a contradiction. Hence <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> is real. If it were negative somewhere, the same cutoff argument would give a negative value. Thus <span class="math" data-tex="\(\widehat f\ge0\)">\(\widehat f\ge0\)</span>. Inversion at zero gives its integral. The last assertion follows immediately from (5) for any <span class="math" data-tex="\(B^1\)">\(B^1\)</span> function. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-07-example-4-2"></a>
+<strong>Example 4.2 — The integers and the circle.</strong> Write <span class="math" data-tex="\(\mathbb T=\{z:|z|=1\}\)">\(\mathbb T=\{z:|z|=1\}\)</span>, with Haar probability measure <span class="math" data-tex="\(dm(z)\)">\(dm(z)\)</span> and pairing <span class="math" data-tex="\(z^n\)">\(z^n\)</span> with <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>. Then <span class="math" data-tex="\(B^1(\mathbb Z)=\ell^1(\mathbb Z)\)">\(B^1(\mathbb Z)=\ell^1(\mathbb Z)\)</span>, and
+<span class="math math-display" data-tex="\[
+ \widehat f(z)=\sum_{n\in\mathbb Z}f(n)z^{-n},
+ \qquad f(n)=\int_{\mathbb T}\widehat f(z)z^n\,dm(z).
+ \tag{13}
+\]">\[
+ \widehat f(z)=\sum_{n\in\mathbb Z}f(n)z^{-n},
+ \qquad f(n)=\int_{\mathbb T}\widehat f(z)z^n\,dm(z).
+ \tag{13}
+\]</span>
+On <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, <span class="math" data-tex="\(B^1(\mathbb T)=B(\mathbb T)\)">\(B^1(\mathbb T)=B(\mathbb T)\)</span>. Its members are exactly the functions with an absolutely convergent Fourier series
+<span class="math math-display" data-tex="\[
+ f(z)=\sum_{n\in\mathbb Z}\widehat f(n)z^n,
+ \qquad \widehat f(n)=\int_{\mathbb T}f(z)z^{-n}\,dm(z).
+ \tag{14}
+\]">\[
+ f(z)=\sum_{n\in\mathbb Z}\widehat f(n)z^n,
+ \qquad \widehat f(n)=\int_{\mathbb T}f(z)z^{-n}\,dm(z).
+ \tag{14}
+\]</span></p>
+<p><strong>Proof.</strong> The topological dual identifications are HA-LCA-02, Corollary 3.2; the Haar measures and circle orthogonality were proved in HA-LCA-03, Lemma 5.1. If <span class="math" data-tex="\(f\in\ell^1(\mathbb Z)\)">\(f\in\ell^1(\mathbb Z)\)</span>, the first series in (13) converges uniformly, since its uniform tails are at most the corresponding <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> tails. It defines a continuous function <span class="math" data-tex="\(h\)">\(h\)</span> on the circle, and termwise integration against <span class="math" data-tex="\(z^n\)">\(z^n\)</span>, justified by uniform convergence, gives <span class="math" data-tex="\(\int h(z)z^n\,dm=f(n)\)">\(\int h(z)z^n\,dm=f(n)\)</span>. Hence <span class="math" data-tex="\(f=T(h\,dm)\in B(\mathbb Z)\)">\(f=T(h\,dm)\in B(\mathbb Z)\)</span>, because <span class="math" data-tex="\(h\,dm\)">\(h\,dm\)</span> is a finite Radon measure. It is already integrable for counting measure, proving the claimed equality of spaces. Proposition 3.3 and Theorem 2.1 also give (13).</p>
+<p>On the compact circle every bounded continuous function is integrable, so <span class="math" data-tex="\(B^1=B\)">\(B^1=B\)</span>. Its dual measure is counting measure. Equation (5) says that the coefficients of a <span class="math" data-tex="\(B\)">\(B\)</span> function belong to <span class="math" data-tex="\(\ell^1(\mathbb Z)\)">\(\ell^1(\mathbb Z)\)</span> and gives (14). The series is uniformly absolutely convergent by its <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> bound. Conversely every <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> family <span class="math" data-tex="\((a_n)\)">\((a_n)\)</span> defines a finite complex Radon measure <span class="math" data-tex="\(\sum_n a_n\delta_n\)">\(\sum_n a_n\delta_n\)</span> on the discrete dual: countable additivity follows from absolute convergence, finite partial sums approximate its variation on every set, and finite sets are compact. Its transform is the uniformly convergent series <span class="math" data-tex="\(\sum_na_nz^n\)">\(\sum_na_nz^n\)</span>, which therefore belongs to <span class="math" data-tex="\(B(\mathbb T)\)">\(B(\mathbb T)\)</span>. Termwise orthogonality gives <span class="math" data-tex="\(\widehat f(n)=a_n\)">\(\widehat f(n)=a_n\)</span>. This assertion concerns <span class="math" data-tex="\(B(\mathbb T)\)">\(B(\mathbb T)\)</span>; no absolute-convergence assertion for arbitrary continuous functions is required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-07-example-4-3"></a>
+<strong>Example 4.3 — Finite groups.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is finite of order <span class="math" data-tex="\(N\)">\(N\)</span> and the primal measure is counting measure, then
+<span class="math math-display" data-tex="\[
+ \widehat f(\gamma)=\sum_{x\in G}f(x)\overline{\gamma(x)},\qquad
+ f(x)=\frac1N\sum_{\gamma\in\Gamma}\widehat f(\gamma)\gamma(x).
+ \tag{15}
+\]">\[
+ \widehat f(\gamma)=\sum_{x\in G}f(x)\overline{\gamma(x)},\qquad
+ f(x)=\frac1N\sum_{\gamma\in\Gamma}\widehat f(\gamma)\gamma(x).
+ \tag{15}
+\]</span>
+With normalized counting measure on <span class="math" data-tex="\(G\)">\(G\)</span>, the forward sum has factor <span class="math" data-tex="\(1/N\)">\(1/N\)</span> and the inverse sum has no factor.</p>
+<p><strong>Proof.</strong> Every function on <span class="math" data-tex="\(G\)">\(G\)</span> belongs to <span class="math" data-tex="\(B^1(G)\)">\(B^1(G)\)</span>. Indeed the character basis and inversion proved in HA-LCA-01, Theorem 2.1 and Theorem 2.2, express it as a finite linear combination of characters, each the transform of a point mass on the dual. Proposition 3.3 gives the factor <span class="math" data-tex="\(1/N\)">\(1/N\)</span> in (5). Scaling by <span class="math" data-tex="\(1/N\)">\(1/N\)</span> on the primal side and Proposition 3.1 give the second convention. Thus (15) agrees with the earlier finite-dimensional calculation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-07-example-4-4"></a>
+<strong>Example 4.4 — The angular-frequency convention.</strong> With primal measure <span class="math" data-tex="\(dt\)">\(dt\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and characters <span class="math" data-tex="\(t\mapsto e^{ist}\)">\(t\mapsto e^{ist}\)</span>, the formulas are
+<span class="math math-display" data-tex="\[
+ \widehat f(s)=\int_{\mathbb R}f(t)e^{-ist}\,dt,
+ \qquad
+ f(t)=\frac1{2\pi}\int_{\mathbb R}\widehat f(s)e^{ist}\,ds
+ \quad(f\in B^1(\mathbb R)).
+ \tag{16}
+\]">\[
+ \widehat f(s)=\int_{\mathbb R}f(t)e^{-ist}\,dt,
+ \qquad
+ f(t)=\frac1{2\pi}\int_{\mathbb R}\widehat f(s)e^{ist}\,ds
+ \quad(f\in B^1(\mathbb R)).
+ \tag{16}
+\]</span></p>
+<p><strong>Proof.</strong> Proposition 3.2 gives dual measure <span class="math" data-tex="\(ds/(2\pi)\)">\(ds/(2\pi)\)</span>; substitution in Theorem 2.1 gives (16). As a direct check, the Gaussian computation gives
+<span class="math" data-tex="\(\widehat {e^{-t^2}}(s)=\sqrt\pi\,e^{-s^2/4}\)">\(\widehat {e^{-t^2}}(s)=\sqrt\pi\,e^{-s^2/4}\)</span>.
+Its integral against <span class="math" data-tex="\(ds/(2\pi)\)">\(ds/(2\pi)\)</span> is
+<span class="math" data-tex="\((\sqrt\pi/(2\pi))\,2\sqrt\pi=1\)">\((\sqrt\pi/(2\pi))\,2\sqrt\pi=1\)</span>, as required by its value at zero. In calculations that use these characters, the measure in a dual integral is therefore <span class="math" data-tex="\(ds/(2\pi)\)">\(ds/(2\pi)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-exercises-with-complete-solutions">5. Exercises with complete solutions</h2>
+<p><a id="ha-lca-07-exercise-5-1"></a>
+<strong>Exercise 5.1 — Direct integer normalization.</strong> Starting from counting measure on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, show directly that its dual is normalized Haar measure on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>.</p>
+<p><strong>Solution.</strong> For any <span class="math" data-tex="\(f\in\ell^1(\mathbb Z)\)">\(f\in\ell^1(\mathbb Z)\)</span>, uniform convergence and circle orthogonality give
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb T}\left(\sum_k f(k)z^{-k}\right)z^n\,dm(z)
+ =\sum_k f(k)\int_{\mathbb T}z^{n-k}\,dm(z)=f(n).
+\]">\[
+ \int_{\mathbb T}\left(\sum_k f(k)z^{-k}\right)z^n\,dm(z)
+ =\sum_k f(k)\int_{\mathbb T}z^{n-k}\,dm(z)=f(n).
+\]</span>
+The transform is continuous and hence <span class="math" data-tex="\(m\)">\(m\)</span>-integrable. Example 4.2 proves <span class="math" data-tex="\(B^1(\mathbb Z)=\ell^1(\mathbb Z)\)">\(B^1(\mathbb Z)=\ell^1(\mathbb Z)\)</span>, so <span class="math" data-tex="\(m\)">\(m\)</span> has exactly the inversion property that defines the dual Haar measure. Theorem 2.1 gives uniqueness. Already <span class="math" data-tex="\(f=\delta_0\)">\(f=\delta_0\)</span> forces total dual mass one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-07-exercise-5-2"></a>
+<strong>Exercise 5.2 — Finite products.</strong> If <span class="math" data-tex="\(dx_j\)">\(dx_j\)</span> and <span class="math" data-tex="\(d\xi_j\)">\(d\xi_j\)</span> are dual pairs, prove that the product dual measure is the dual of the product primal measure, without a sigma-finiteness assumption.</p>
+<p><strong>Solution.</strong> Use the full-domain product Haar measures constructed from compactly supported iterated integrals in Lemma 3.0. The dual group identification is a homeomorphism, so Haar uniqueness makes the unknown dual measure <span class="math" data-tex="\(c(d\xi_1\otimes d\xi_2)\)">\(c(d\xi_1\otimes d\xi_2)\)</span>. Choose nonzero <span class="math" data-tex="\(h_j\in C_c(G_j)\cap P(G_j)\)">\(h_j\in C_c(G_j)\cap P(G_j)\)</span> by Lemma 1.1. The product <span class="math" data-tex="\(h=h_1h_2\)">\(h=h_1h_2\)</span>, with separate variables, belongs to <span class="math" data-tex="\(B^1(G_1\times G_2)\)">\(B^1(G_1\times G_2)\)</span>, has transform <span class="math" data-tex="\(\widehat h_1\widehat h_2\)">\(\widehat h_1\widehat h_2\)</span>, and <span class="math" data-tex="\(h(0)=h_1(0)h_2(0)&gt;0\)">\(h(0)=h_1(0)h_2(0)&gt;0\)</span>. Each transform is nonnegative and integrable. The increasing compact-cutoff calculation (12) yields
+<span class="math math-display" data-tex="\[
+ \int\widehat h\,d(\xi_1\otimes\xi_2)
+ =\left(\int\widehat h_1\,d\xi_1\right)
+  \left(\int\widehat h_2\,d\xi_2\right)=h(0).
+\]">\[
+ \int\widehat h\,d(\xi_1\otimes\xi_2)
+ =\left(\int\widehat h_1\,d\xi_1\right)
+  \left(\int\widehat h_2\,d\xi_2\right)=h(0).
+\]</span>
+Inversion with the unknown dual measure reads <span class="math" data-tex="\(h(0)=c h(0)\)">\(h(0)=c h(0)\)</span>, forcing <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Induction proves the result for any finite number of factors. The argument uses compact localization and monotone convergence for <span class="math" data-tex="\(C_0\)">\(C_0\)</span> functions; it does not apply a sigma-finite product theorem to the whole groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-07-exercise-5-3"></a>
+<strong>Exercise 5.3 — The multiplicative real group.</strong> Compute the dual Haar measure of <span class="math" data-tex="\(dx/|x|\)">\(dx/|x|\)</span> on <span class="math" data-tex="\(\mathbb R^\times\)">\(\mathbb R^\times\)</span>.</p>
+<p><strong>Solution.</strong> The map
+<span class="math math-display" data-tex="\[
+ \Phi:\mathbb R^\times\longrightarrow\{1,-1\}\times\mathbb R,
+ \qquad x\longmapsto(\operatorname{sgn}x,\log|x|)
+\]">\[
+ \Phi:\mathbb R^\times\longrightarrow\{1,-1\}\times\mathbb R,
+ \qquad x\longmapsto(\operatorname{sgn}x,\log|x|)
+\]</span>
+is a group isomorphism with continuous inverse <span class="math" data-tex="\((\epsilon,t)\mapsto\epsilon e^t\)">\((\epsilon,t)\mapsto\epsilon e^t\)</span>. These assertions follow from the proved exponential and logarithm identities in the real-variable reading, Lemma 1.2. On each of the two rays, its substitution theorem, Lemma 1.3, gives for <span class="math" data-tex="\(v\in C_c(\mathbb R^\times)\)">\(v\in C_c(\mathbb R^\times)\)</span>
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R^\times}v(x)\frac{dx}{|x|}
+ =\int_{\mathbb R}\bigl(v(e^t)+v(-e^t)\bigr)\,dt.
+ \tag{17}
+\]">\[
+ \int_{\mathbb R^\times}v(x)\frac{dx}{|x|}
+ =\int_{\mathbb R}\bigl(v(e^t)+v(-e^t)\bigr)\,dt.
+ \tag{17}
+\]</span>
+Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> sends the given measure to counting measure on the two-element group times <span class="math" data-tex="\(dt\)">\(dt\)</span>. To identify the measures fully, <span class="math" data-tex="\(dx/|x|\)">\(dx/|x|\)</span> is locally finite and inner regular on <span class="math" data-tex="\(\mathbb R^\times\)">\(\mathbb R^\times\)</span>: exhaust by the compact sets <span class="math" data-tex="\(\{1/n\le|x|\le n\}\)">\(\{1/n\le|x|\le n\}\)</span>, on which the continuous density is bounded, and apply finite Radon regularity and monotone convergence. Equality on <span class="math" data-tex="\(C_c\)">\(C_c\)</span> in (17) identifies the Borel measures, and both full Haar domains here are their ordinary completions because the groups are sigma-compact.</p>
+<p>The two characters of <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span> are <span class="math" data-tex="\(\epsilon\mapsto\epsilon^m\)">\(\epsilon\mapsto\epsilon^m\)</span>, <span class="math" data-tex="\(m=0,1\)">\(m=0,1\)</span>, by the finite character calculation. All characters of the product, and their topology, are given by HA-LCA-02, Proposition 4.1. Pullback by <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is a bijection on continuous characters; it and its inverse preserve uniform convergence on compact sets because <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> and <span class="math" data-tex="\(\Phi^{-1}\)">\(\Phi^{-1}\)</span> take compact sets to compact sets. Consequently the dual can be written as <span class="math" data-tex="\(\{0,1\}\times\mathbb R\)">\(\{0,1\}\times\mathbb R\)</span> with pairing
+<span class="math math-display" data-tex="\[
+ \chi_{m,\xi}(x)=\operatorname{sgn}(x)^m e^{2\pi i\xi\log|x|}.
+\]">\[
+ \chi_{m,\xi}(x)=\operatorname{sgn}(x)^m e^{2\pi i\xi\log|x|}.
+\]</span>
+Propositions 3.2–3.3 and the product result give
+<span class="math math-display" data-tex="\[
+ d\widehat x=\frac12\sum_{m=0}^1\delta_m\otimes d\xi.
+ \tag{18}
+\]">\[
+ d\widehat x=\frac12\sum_{m=0}^1\delta_m\otimes d\xi.
+ \tag{18}
+\]</span>
+Explicitly, if <span class="math" data-tex="\(f\in B^1(\mathbb R^\times)\)">\(f\in B^1(\mathbb R^\times)\)</span>, then
+<span class="math math-display" data-tex="\[
+ \widehat f(m,\xi)=\int_{\mathbb R^\times}
+ f(x)\operatorname{sgn}(x)^m e^{-2\pi i\xi\log|x|}\frac{dx}{|x|},
+ \qquad
+ f(x)=\frac12\sum_{m=0}^1\int_{\mathbb R}
+ \widehat f(m,\xi)\operatorname{sgn}(x)^m
+ e^{2\pi i\xi\log|x|}\,d\xi.
+\]">\[
+ \widehat f(m,\xi)=\int_{\mathbb R^\times}
+ f(x)\operatorname{sgn}(x)^m e^{-2\pi i\xi\log|x|}\frac{dx}{|x|},
+ \qquad
+ f(x)=\frac12\sum_{m=0}^1\int_{\mathbb R}
+ \widehat f(m,\xi)\operatorname{sgn}(x)^m
+ e^{2\pi i\xi\log|x|}\,d\xi.
+\]</span>
+For characters <span class="math" data-tex="\(\operatorname{sgn}(x)^m e^{is\log|x|}\)">\(\operatorname{sgn}(x)^m e^{is\log|x|}\)</span>, the change <span class="math" data-tex="\(s=2\pi\xi\)">\(s=2\pi\xi\)</span> makes the dual measure
+<span class="math" data-tex="\((4\pi)^{-1}\sum_{m=0}^1\delta_m\otimes ds\)">\((4\pi)^{-1}\sum_{m=0}^1\delta_m\otimes ds\)</span>.
+The factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> comes from counting measure on the sign group, and the factor <span class="math" data-tex="\(1/(2\pi)\)">\(1/(2\pi)\)</span> from the angular real pairing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-07-exercise-5-4"></a>
+<strong>Exercise 5.4 — Compact support without sigma-compactness.</strong> Give the denominator construction for a non-sigma-compact <span class="math" data-tex="\(G\)">\(G\)</span>, and verify that the choice in (6) is immaterial.</p>
+<p><strong>Solution.</strong> A single relatively compact identity neighbourhood supplies a nonzero nonnegative <span class="math" data-tex="\(u\in C_c(G)\)">\(u\in C_c(G)\)</span>. Its integral and squared norm are finite and positive. For each <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> in the prescribed compact <span class="math" data-tex="\(K\subseteq\Gamma\)">\(K\subseteq\Gamma\)</span>, the function <span class="math" data-tex="\(g_\gamma=\gamma u\)">\(g_\gamma=\gamma u\)</span> satisfies
+<span class="math" data-tex="\(\widehat {g_\gamma}(\gamma)=\int u&gt;0\)">\(\widehat {g_\gamma}(\gamma)=\int u&gt;0\)</span>. Continuity provides an open set on which that transform stays nonzero. A finite subcover of <span class="math" data-tex="\(K\cup\{1\}\)">\(K\cup\{1\}\)</span> gives <span class="math" data-tex="\(g_1,\ldots,g_m\)">\(g_1,\ldots,g_m\)</span>; hence
+<span class="math math-display" data-tex="\[
+ h=\sum_jg_j*\widetilde g_j\in C_c(G)\cap P(G),\qquad
+ \widehat h=\sum_j|\widehat g_j|^2&gt;0\text{ on }K.
+\]">\[
+ h=\sum_jg_j*\widetilde g_j\in C_c(G)\cap P(G),\qquad
+ \widehat h=\sum_j|\widehat g_j|^2&gt;0\text{ on }K.
+\]</span>
+Its support lies in a finite union of compact difference sets. No covering of the whole group and no countable family of identity neighbourhoods has entered this construction.</p>
+<p>For two permissible choices <span class="math" data-tex="\(h,k\)">\(h,k\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> supported in <span class="math" data-tex="\(K\)">\(K\)</span>, the function
+<span class="math" data-tex="\(p=q/(\widehat h\,\widehat k)\)">\(p=q/(\widehat h\,\widehat k)\)</span>, extended by zero, is in <span class="math" data-tex="\(C_c(\Gamma)\)">\(C_c(\Gamma)\)</span>. The finite-measure identity (3) gives
+<span class="math math-display" data-tex="\[
+ \int q/\widehat h\,d\mu_h
+ =\int p\,\widehat k\,d\mu_h
+ =\int p\,\widehat h\,d\mu_k
+ =\int q/\widehat k\,d\mu_k.
+\]">\[
+ \int q/\widehat h\,d\mu_h
+ =\int p\,\widehat k\,d\mu_h
+ =\int p\,\widehat h\,d\mu_k
+ =\int q/\widehat k\,d\mu_k.
+\]</span>
+All measures in this computation are finite Radon measures. The passage from the resulting invariant integral to a Haar measure on the entire dual was separately proved in Lemma 1.0 using an open sigma-compact subgroup and finite coset decompositions of compact supports. This also covers a non-sigma-compact dual. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="scope-and-further-reading">Scope and further reading</h2>
+<p>The source construction is Fremlin's freely accessible <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex">§445P, parts (a)–(h), and §445Q</a>. The local denominator and compatible-measure arguments above use the negative-sign transform convention (1). Lemma 1.0 supplies the representation step from earlier proved Haar results; (10)–(11) proves the full complex <span class="math" data-tex="\(B^1\)">\(B^1\)</span> extension. Every normalization and all four exercises have been proved here using the exact earlier results identified above.</p>
+<p>The lesson proves inversion on <span class="math" data-tex="\(B(G)\cap L^1(G)\)">\(B(G)\cap L^1(G)\)</span>. General <span class="math" data-tex="\(L^1\)">\(L^1\)</span> inversion, general uniqueness for <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and finite measures on <span class="math" data-tex="\(G\)">\(G\)</span>, and surjectivity of <span class="math" data-tex="\(G\to\widehat{\widehat G}\)">\(G\to\widehat{\widehat G}\)</span> remain later results. None is used in constructing the dual Haar measure.</p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

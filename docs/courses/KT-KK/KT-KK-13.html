@@ -1,0 +1,1165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thom isomorphisms and K-orientations in KK · Kasparov’s KK-theory</title>
+<meta name="description" content="A lesson of the course Kasparov&#x27;s KK-theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Kasparov&#x27;s KK-theory</a> <span aria-hidden="true">›</span> <span>Lesson 13 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson"><p><strong>Draft.</strong> Self-checked by the writing AI. English · CC0 1.0.</p></aside>
+
+<article class="lesson">
+<h1 id="thom-isomorphisms-and-k-orientations-in-kk">Thom isomorphisms and K-orientations in KK</h1>
+<p><em>Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A Euclidean vector bundle has a Bott operator in every fibre. Orthogonal changes of frame preserve its Clifford formula, so these operators form a global cycle. The fibrewise Dirac operators form its inverse. A spinor bundle then removes the Clifford coefficient algebra and gives the Thom isomorphism. We prove the two inverse identities before making that Morita reduction; this separates the analytic theorem from the choice of K-orientation.</p>
+<p>We use the preceding bounded connection, technical-partition and associativity proofs, and the Clifford and Morita conventions in <em>Graded C*-algebras, Clifford algebras and graded Hilbert modules</em>. Section 0 proves the bounded-transform and unbounded-product arguments needed here. Sections 2–4 then prove the oscillator and simultaneous-rotation inverse identities for the actual bundle cycles. The relative-bundle description used below is proved in the earlier <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-difference">Relative difference bundles, radial pairs and the planar normalization, Theorems RK.3–RK.4</a>. <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-planar-bott">RK.6–RK.6a</a> prove the actual planar projection and its complex-orientation sign. The exact even relative character, splitting injection and ordinary cohomological Thom inputs used in Section 8 are proved in <a href="supporting/cohomological-foundations/cohomological-foundations.html#cf-thom">Cohomological foundations for the complex Thom comparison, CF.1–CF.6</a>.</p>
+<p>For compact groups, the Haar probability measure used below is proved in <a href="supporting/representations-of-compact-groups/compact-foundations.html#cpt-f-005">Foundations for compact-group averaging and coefficient approximation, CPT-F-005</a>. Its <a href="supporting/representations-of-compact-groups/compact-foundations.html#cpt-f-010">CPT-F-010</a> constructs continuous vector integrals, strict operator averages and source-localized compact integrals on arbitrary Hilbert modules.</p>
+<h2 id="0-the-analytic-product-criterion-used-below">0. The analytic product criterion used below</h2>
+<p>We prove the analytic recognition argument here. Lemma 0.0 proves the required resolvent, continuous functional-calculus and tensor-extension foundations locally. The bounded product, technical partition and essential-replacement proofs are the preceding programme lessons <em>Kasparov's technical theorem</em> and <em>Connections and the existence of the Kasparov product</em>. The following argument also treats a nonessential first representation.</p>
+<p><strong>Lemma 0.0 (resolvents, continuous calculus and tensor extension).</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a Hilbert <span class="math" data-tex="\(B\)">\(B\)</span>-module, and let <span class="math" data-tex="\(D=D^*\)">\(D=D^*\)</span> be a closed densely defined operator for which <span class="math" data-tex="\(1+D^2\)">\(1+D^2\)</span> has dense range. Then <span class="math" data-tex="\(D\pm i\)">\(D\pm i\)</span> are bijective from <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span> to <span class="math" data-tex="\(E\)">\(E\)</span>, with mutually adjoint inverse resolvents of norm at most one. There is a nondegenerate continuous functional calculus <span class="math" data-tex="\(C_0(\mathbb R)\to\mathcal L(E)\)">\(C_0(\mathbb R)\to\mathcal L(E)\)</span>; it extends to bounded continuous functions, and
+<span class="math math-display" data-tex="\[
+\|(D-z)^{-1}\|\leq |\operatorname{Im}z|^{-1}
+\quad(\operatorname{Im}z\ne0).
+\]">\[
+\|(D-z)^{-1}\|\leq |\operatorname{Im}z|^{-1}
+\quad(\operatorname{Im}z\ne0).
+\]</span>
+If <span class="math" data-tex="\(Y\)">\(Y\)</span> is any <span class="math" data-tex="\(B\)">\(B\)</span>-<span class="math" data-tex="\(C\)">\(C\)</span> correspondence, the closure of <span class="math" data-tex="\(D\otimes1\)">\(D\otimes1\)</span> on <span class="math" data-tex="\(\operatorname{Dom}D\odot_B Y\)">\(\operatorname{Dom}D\odot_B Y\)</span> is self-adjoint regular on <span class="math" data-tex="\(E\otimes_B Y\)">\(E\otimes_B Y\)</span>, and its bounded continuous functional calculus is <span class="math" data-tex="\(f(D)\otimes1\)">\(f(D)\otimes1\)</span>. No separability or essentiality of the left action on <span class="math" data-tex="\(Y\)">\(Y\)</span> is assumed.</p>
+<p><strong>Proof: resolvents.</strong> Symmetry cancels the mixed terms in
+<span class="math math-display" data-tex="\[
+\langle(D\pm i)x,(D\pm i)x\rangle
+=\langle Dx,Dx\rangle+\langle x,x\rangle.
+\]">\[
+\langle(D\pm i)x,(D\pm i)x\rangle
+=\langle Dx,Dx\rangle+\langle x,x\rangle.
+\]</span>
+Thus these operators are bounded below by one. Their ranges are closed: a convergent sequence of images makes the preimages Cauchy, and closedness of <span class="math" data-tex="\(D\)">\(D\)</span> then gives a preimage of the limit. The range of each contains the dense range of <span class="math" data-tex="\(1+D^2\)">\(1+D^2\)</span>, since on <span class="math" data-tex="\(\operatorname{Dom}D^2\)">\(\operatorname{Dom}D^2\)</span> this is the product <span class="math" data-tex="\((D+i)(D-i)\)">\((D+i)(D-i)\)</span> in either order. Their ranges are therefore all of <span class="math" data-tex="\(E\)">\(E\)</span>. Write <span class="math" data-tex="\(R_\pm=(D\pm i)^{-1}\)">\(R_\pm=(D\pm i)^{-1}\)</span>. For <span class="math" data-tex="\(a,b\in E\)">\(a,b\in E\)</span>, symmetry gives
+<span class="math math-display" data-tex="\[
+\langle R_+a,b\rangle
+=\langle R_+a,(D-i)R_-b\rangle
+=\langle a,R_-b\rangle.
+\]">\[
+\langle R_+a,b\rangle
+=\langle R_+a,(D-i)R_-b\rangle
+=\langle a,R_-b\rangle.
+\]</span>
+Hence <span class="math" data-tex="\(R_+^*=R_-\)">\(R_+^*=R_-\)</span>. The identities <span class="math" data-tex="\(DR_\pm=1\mp iR_\pm\)">\(DR_\pm=1\mp iR_\pm\)</span>, first on their ranges, give
+<span class="math math-display" data-tex="\[
+R_+-R_-=-2iR_+R_-=-2iR_-R_+.
+\]">\[
+R_+-R_-=-2iR_+R_-=-2iR_-R_+.
+\]</span>
+In particular they commute. Put <span class="math" data-tex="\(U=1-2iR_+\)">\(U=1-2iR_+\)</span>. The preceding identities give <span class="math" data-tex="\(UU^*=U^*U=1\)">\(UU^*=U^*U=1\)</span>, and <span class="math" data-tex="\(1-U=2iR_+\)">\(1-U=2iR_+\)</span> has dense range <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span>.</p>
+<p><strong>Proof: functional calculus.</strong> We first prove the continuous calculus of a unitary locally. For a Laurent polynomial <span class="math" data-tex="\(p(z)=\sum_{j=-m}^m a_jz^j\)">\(p(z)=\sum_{j=-m}^m a_jz^j\)</span>, put <span class="math" data-tex="\(M=\sup_{|z|=1}|p(z)|\)">\(M=\sup_{|z|=1}|p(z)|\)</span>. Given <span class="math" data-tex="\(\xi\in E\)">\(\xi\in E\)</span> and <span class="math" data-tex="\(N&gt;2m\)">\(N&gt;2m\)</span>, the continuous <span class="math" data-tex="\(E\)">\(E\)</span>-valued polynomial
+<span class="math math-display" data-tex="\[
+w_N(z)=N^{-1/2}\sum_{k=0}^{N-1}z^kU^{-k}\xi
+\]">\[
+w_N(z)=N^{-1/2}\sum_{k=0}^{N-1}z^kU^{-k}\xi
+\]</span>
+has
+<span class="math" data-tex="\(\int_{\mathbb T}\langle w_N,w_N\rangle\,d\theta/(2\pi)=\langle\xi,\xi\rangle\)">\(\int_{\mathbb T}\langle w_N,w_N\rangle\,d\theta/(2\pi)=\langle\xi,\xi\rangle\)</span>.
+For <span class="math" data-tex="\(m\leq l\leq N-1-m\)">\(m\leq l\leq N-1-m\)</span>, the coefficient of <span class="math" data-tex="\(z^l\)">\(z^l\)</span> in <span class="math" data-tex="\(p(z)w_N(z)\)">\(p(z)w_N(z)\)</span> is <span class="math" data-tex="\(N^{-1/2}U^{-l}p(U)\xi\)">\(N^{-1/2}U^{-l}p(U)\xi\)</span>. Integrating the inner product cancels distinct monomials, and every omitted coefficient contributes a positive element. Since pointwise <span class="math" data-tex="\(|p(z)|^2\leq M^2\)">\(|p(z)|^2\leq M^2\)</span>, this gives the positive-order inequality
+<span class="math math-display" data-tex="\[
+\frac{N-2m}{N}\langle p(U)\xi,p(U)\xi\rangle
+\leq \int_{\mathbb T}\langle p w_N,p w_N\rangle\,\frac{d\theta}{2\pi}
+\leq M^2\langle\xi,\xi\rangle.
+\]">\[
+\frac{N-2m}{N}\langle p(U)\xi,p(U)\xi\rangle
+\leq \int_{\mathbb T}\langle p w_N,p w_N\rangle\,\frac{d\theta}{2\pi}
+\leq M^2\langle\xi,\xi\rangle.
+\]</span>
+Take norms and then <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span>. Thus <span class="math" data-tex="\(\|p(U)\|\leq\|p\|_\infty\)">\(\|p(U)\|\leq\|p\|_\infty\)</span>, for every Laurent polynomial, on a Hilbert module as well as a Hilbert space.</p>
+<p>Laurent polynomials are uniformly dense in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. Indeed the kernels
+<span class="math" data-tex="\(K_N(\theta)=N^{-1}|\sum_{k=0}^{N-1}e^{ik\theta}|^2\)">\(K_N(\theta)=N^{-1}|\sum_{k=0}^{N-1}e^{ik\theta}|^2\)</span>
+are positive with normalized integral one. The geometric-series formula bounds their integral outside any fixed neighborhood of zero by a constant times <span class="math" data-tex="\(N^{-1}\)">\(N^{-1}\)</span>. Uniform continuity then makes convolution with <span class="math" data-tex="\(K_N\)">\(K_N\)</span> converge uniformly to a continuous circle function; each convolution is a Laurent polynomial. The polynomial norm bound therefore extends evaluation at <span class="math" data-tex="\(U\)">\(U\)</span> to a unital contractive *-homomorphism <span class="math" data-tex="\(C(\mathbb T)\to\mathcal L(E)\)">\(C(\mathbb T)\to\mathcal L(E)\)</span>. Multiplication and adjoints pass through uniform polynomial approximation. No earlier normal-calculus or spectral-representation assertion is needed for this construction. The map
+<span class="math math-display" data-tex="\[
+u(t)=(t-i)/(t+i)
+\]">\[
+u(t)=(t-i)/(t+i)
+\]</span>
+identifies <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with the circle minus <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(f\in C_0(\mathbb R)\)">\(f\in C_0(\mathbb R)\)</span>, its transported function extends by zero at <span class="math" data-tex="\(1\)">\(1\)</span>; evaluate it at <span class="math" data-tex="\(U\)">\(U\)</span> to define <span class="math" data-tex="\(f(D)\)">\(f(D)\)</span>. This is a contractive *-homomorphism. It is nondegenerate because the function <span class="math" data-tex="\(1-u(t)=2i/(t+i)\)">\(1-u(t)=2i/(t+i)\)</span> has operator value <span class="math" data-tex="\(1-U\)">\(1-U\)</span>, whose range is dense.</p>
+<p>For completeness, its extension to <span class="math" data-tex="\(C_b(\mathbb R)\)">\(C_b(\mathbb R)\)</span> is also constructive. Let <span class="math" data-tex="\(e_n\in C_c(\mathbb R)\)">\(e_n\in C_c(\mathbb R)\)</span> be positive cutoffs tending uniformly to one on compact sets, with <span class="math" data-tex="\(0\leq e_n\leq1\)">\(0\leq e_n\leq1\)</span>. For bounded continuous <span class="math" data-tex="\(h\)">\(h\)</span>, the uniformly bounded operators <span class="math" data-tex="\((he_n)(D)\)">\((he_n)(D)\)</span> converge on every vector <span class="math" data-tex="\(f(D)\xi\)">\(f(D)\xi\)</span>, because <span class="math" data-tex="\(he_nf\to hf\)">\(he_nf\to hf\)</span> uniformly. Such vectors have dense span, so the operators converge on every vector to a bounded operator <span class="math" data-tex="\(h(D)\)">\(h(D)\)</span>. The same argument for <span class="math" data-tex="\(\overline h\)">\(\overline h\)</span> gives its adjoint. Products and adjoints pass to these uniformly bounded vector limits, proving the extended *-homomorphism. Its value does not depend on the chosen cutoffs, by the same dense-span argument.</p>
+<p>The identity <span class="math" data-tex="\(D=i(1+U)(1-U)^{-1}\)">\(D=i(1+U)(1-U)^{-1}\)</span> holds on the dense domain <span class="math" data-tex="\(\operatorname{ran}(1-U)\)">\(\operatorname{ran}(1-U)\)</span>. For nonreal <span class="math" data-tex="\(z\)">\(z\)</span>, the bounded scalar function <span class="math" data-tex="\((t+i)/(t-z)\)">\((t+i)/(t-z)\)</span> therefore shows that the value of <span class="math" data-tex="\((t-z)^{-1}\)">\((t-z)^{-1}\)</span> has range in <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span> and is a two-sided inverse of <span class="math" data-tex="\(D-z\)">\(D-z\)</span>. Its norm is bounded by the scalar supremum <span class="math" data-tex="\(|\operatorname{Im}z|^{-1}\)">\(|\operatorname{Im}z|^{-1}\)</span>. Polynomial identities on <span class="math" data-tex="\(U\)">\(U\)</span> and their uniform limits show that this calculus agrees with the two original resolvents and with the usual products of their functions. In particular the value of <span class="math" data-tex="\((1+t^2)^{-1}\)">\((1+t^2)^{-1}\)</span> is <span class="math" data-tex="\((1+D^2)^{-1}=R_+R_-\)">\((1+D^2)^{-1}=R_+R_-\)</span>.</p>
+<p>We also need the converse Cayley construction. If <span class="math" data-tex="\(V\)">\(V\)</span> is unitary and <span class="math" data-tex="\(1-V\)">\(1-V\)</span> has dense range, then it is injective: its kernel equals the kernel of <span class="math" data-tex="\(1-V^*\)">\(1-V^*\)</span>, which is orthogonal to that dense range. On <span class="math" data-tex="\(\operatorname{ran}(1-V)\)">\(\operatorname{ran}(1-V)\)</span> define
+<span class="math math-display" data-tex="\[
+S((1-V)x)=i(1+V)x.
+\]">\[
+S((1-V)x)=i(1+V)x.
+\]</span>
+Expanding both inner products and using <span class="math" data-tex="\(V^*V=1\)">\(V^*V=1\)</span> proves symmetry. The operators <span class="math" data-tex="\(S+i\)">\(S+i\)</span> and <span class="math" data-tex="\(S-i\)">\(S-i\)</span> have bounded, everywhere-defined, mutually adjoint inverses
+<span class="math math-display" data-tex="\[
+Q_+=(1-V)/(2i),\qquad Q_-=(V^*-1)/(2i).
+\]">\[
+Q_+=(1-V)/(2i),\qquad Q_-=(V^*-1)/(2i).
+\]</span>
+These formulas prove that <span class="math" data-tex="\(S\)">\(S\)</span> is closed, since the inverse of an injective bounded operator is closed on its range. If <span class="math" data-tex="\(y\in\operatorname{Dom}S^*\)">\(y\in\operatorname{Dom}S^*\)</span>, choose <span class="math" data-tex="\(x\in\operatorname{Dom}S\)">\(x\in\operatorname{Dom}S\)</span> with <span class="math" data-tex="\((S-i)x=(S^*-i)y\)">\((S-i)x=(S^*-i)y\)</span>. Then <span class="math" data-tex="\(y-x\in\ker(S^*-i)\)">\(y-x\in\ker(S^*-i)\)</span>, which is orthogonal to the surjective range of <span class="math" data-tex="\(S+i\)">\(S+i\)</span>. Hence <span class="math" data-tex="\(y=x\)">\(y=x\)</span>, proving <span class="math" data-tex="\(S=S^*\)">\(S=S^*\)</span>. The commuting product <span class="math" data-tex="\(Q_+Q_-\)">\(Q_+Q_-\)</span> has range in <span class="math" data-tex="\(\operatorname{Dom}S^2\)">\(\operatorname{Dom}S^2\)</span> and is the inverse of <span class="math" data-tex="\(1+S^2\)">\(1+S^2\)</span>, by the two resolvent identities. Thus <span class="math" data-tex="\(S\)">\(S\)</span> is regular. This proves the converse without a graph-complement theorem.</p>
+<p><strong>Proof: tensor extension.</strong> Lemma 6.0a of Lesson 05 supplies the unital *-homomorphism <span class="math" data-tex="\(T\mapsto T\otimes1\)">\(T\mapsto T\otimes1\)</span> on adjointable operators. Thus <span class="math" data-tex="\(V=U\otimes1\)">\(V=U\otimes1\)</span> is unitary. The range of <span class="math" data-tex="\(1-V\)">\(1-V\)</span> is dense: the algebraic tensors with first vector in <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span> are dense, and every such vector is in that range. Apply the converse Cayley construction to <span class="math" data-tex="\(V\)">\(V\)</span>, obtaining a self-adjoint regular <span class="math" data-tex="\(S\)">\(S\)</span>. The formulas for <span class="math" data-tex="\(Q_\pm\)">\(Q_\pm\)</span> show that <span class="math" data-tex="\(S(x\otimes y)=Dx\otimes y\)">\(S(x\otimes y)=Dx\otimes y\)</span> on the algebraic domain. This domain is a graph core: its image under <span class="math" data-tex="\(S+i\)">\(S+i\)</span> contains all elementary tensors and is dense, while <span class="math" data-tex="\(S+i\)">\(S+i\)</span>, with its bounded inverse and <span class="math" data-tex="\(S Q_+=1-iQ_+\)">\(S Q_+=1-iQ_+\)</span>, identifies its graph norm with an equivalent complete norm on <span class="math" data-tex="\(E\otimes_B Y\)">\(E\otimes_B Y\)</span>. Consequently <span class="math" data-tex="\(S\)">\(S\)</span> is precisely the closure of the algebraic tensor operator. Continuous circle calculus commutes with <span class="math" data-tex="\(T\mapsto T\otimes1\)">\(T\mapsto T\otimes1\)</span>. The bounded-function extension does too, since uniformly bounded vector convergence on <span class="math" data-tex="\(E\)">\(E\)</span> gives vector convergence on elementary tensors and hence on their dense span. This proves the claimed calculus identity. If <span class="math" data-tex="\(D\)">\(D\)</span> is odd, its grading sends <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(U^*\)">\(U^*\)</span>, and the same formulas give <span class="math" data-tex="\(f(D)\mapsto f(-D)\)">\(f(D)\mapsto f(-D)\)</span> and oddness of the tensor extension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The free <a href="https://www.math.uni-bonn.de/people/lesch/dl/pap/2011-KaaLes-ArXiv-v2.pdf">Kaad–Lesch author preprint, Section 2.3 and Proposition 4.1</a> supplies the regular-operator formulation used here. Its references are not imported as proof premises: the resolvent, Cayley, functional-calculus and tensor assertions needed below have just been proved.</p>
+<p>An unbounded module <span class="math" data-tex="\((E,\phi,D)\)">\((E,\phi,D)\)</span> means a countably generated graded Hilbert module, a graded representation, and an odd self-adjoint regular operator. We require <span class="math" data-tex="\((1+D^2)^{-1}\phi(a)\)">\((1+D^2)^{-1}\phi(a)\)</span> compact for every source element. A dense graded <span class="math" data-tex="\(*\)">\(*\)</span>-subalgebra preserves <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span> and has bounded adjointable graded commutators with <span class="math" data-tex="\(D\)">\(D\)</span>. The representation need not be essential.</p>
+<p><strong>Lemma 0.1 (bounded transformation with local compactness).</strong> For an unbounded module, <span class="math" data-tex="\(F_D=D(1+D^2)^{-1/2}\)">\(F_D=D(1+D^2)^{-1/2}\)</span> is a Kasparov-cycle operator.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(q(t)=(1+t^2)^{-1}\)">\(q(t)=(1+t^2)^{-1}\)</span>. Cutoffs <span class="math" data-tex="\(e_n\)">\(e_n\)</span> on <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>, zero near zero and eventually one on every compact subinterval, make <span class="math" data-tex="\(e_n(q)/q\)">\(e_n(q)/q\)</span> bounded. Hence <span class="math" data-tex="\(e_n(q(D))\phi(a)\)">\(e_n(q(D))\phi(a)\)</span> is compact. For <span class="math" data-tex="\(f\in C_0(\mathbb R)\)">\(f\in C_0(\mathbb R)\)</span>, the functions <span class="math" data-tex="\(fe_n(q)\)">\(fe_n(q)\)</span> converge uniformly to <span class="math" data-tex="\(f\)">\(f\)</span>; therefore <span class="math" data-tex="\(f(D)\phi(a)\)">\(f(D)\phi(a)\)</span> is compact. Adjointing gives compactness on the other side.</p>
+<p>For a homogeneous smooth source element write <span class="math" data-tex="\(\epsilon=(-1)^{|a|}\)">\(\epsilon=(-1)^{|a|}\)</span>, <span class="math" data-tex="\(c=[D,\phi(a)]_{\rm gr}\)">\(c=[D,\phi(a)]_{\rm gr}\)</span>, and <span class="math" data-tex="\(R_z=(D-z)^{-1}\)">\(R_z=(D-z)^{-1}\)</span>. Domain preservation, followed by multiplication by inverse resolvents, gives
+<span class="math math-display" data-tex="\[
+R_z\phi(a)-\epsilon\phi(a)R_{\epsilon z}
+=-\epsilon R_zcR_{\epsilon z},\qquad z=\pm i\rho.
+\tag{0.1}
+\]">\[
+R_z\phi(a)-\epsilon\phi(a)R_{\epsilon z}
+=-\epsilon R_zcR_{\epsilon z},\qquad z=\pm i\rho.
+\tag{0.1}
+\]</span>
+For <span class="math" data-tex="\(Q_\rho=D(D^2+\rho^2)^{-1}=(R_{i\rho}+R_{-i\rho})/2\)">\(Q_\rho=D(D^2+\rho^2)^{-1}=(R_{i\rho}+R_{-i\rho})/2\)</span>, it follows that
+<span class="math" data-tex="\(\|[Q_\rho,\phi(a)]_{\rm gr}\|\leq\|c\|\rho^{-2}\)">\(\|[Q_\rho,\phi(a)]_{\rm gr}\|\leq\|c\|\rho^{-2}\)</span>.
+The commutator becomes compact after source multiplication on either side, since the corresponding end resolvent is locally compact.</p>
+<p>Functional calculus gives the vector integral
+<span class="math math-display" data-tex="\[
+F_D\xi=\frac2\pi\int_0^\infty
+D(1+D^2+t^2)^{-1}\xi\,dt.
+\tag{0.2}
+\]">\[
+F_D\xi=\frac2\pi\int_0^\infty
+D(1+D^2+t^2)^{-1}\xi\,dt.
+\tag{0.2}
+\]</span>
+Indeed its partial-integral scalar functions are bounded by one, converge uniformly on compact subsets of the real line, and converge pointwise to <span class="math" data-tex="\(x/\sqrt{1+x^2}\)">\(x/\sqrt{1+x^2}\)</span>. Apply them first to the dense set of vectors <span class="math" data-tex="\(f(D)\eta\)">\(f(D)\eta\)</span>, <span class="math" data-tex="\(f\in C_0(\mathbb R)\)">\(f\in C_0(\mathbb R)\)</span>, and then use the uniform bound. The uncommuted integral need not converge in operator norm. Its commutator does: (0.1) bounds its integrand by <span class="math" data-tex="\(\|c\|/(1+t^2)\)">\(\|c\|/(1+t^2)\)</span>. Thus both source-localized commutators of <span class="math" data-tex="\(F_D\)">\(F_D\)</span> are compact. For homogeneous smooth <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, the identity
+<span class="math math-display" data-tex="\[
+[F_D,\phi(ab)]_{\rm gr}
+=[F_D,\phi(a)]_{\rm gr}\phi(b)
+ +(-1)^{|a|}\phi(a)[F_D,\phi(b)]_{\rm gr}
+\]">\[
+[F_D,\phi(ab)]_{\rm gr}
+=[F_D,\phi(a)]_{\rm gr}\phi(b)
+ +(-1)^{|a|}\phi(a)[F_D,\phi(b)]_{\rm gr}
+\]</span>
+makes the unlocalized commutator for <span class="math" data-tex="\(ab\)">\(ab\)</span> compact. Products from the dense smooth algebra linearly span a dense subset of the source: approximate an algebra approximate identity and the given element by smooth elements and multiply. Since the commutator is bounded by <span class="math" data-tex="\(2\|a\|\)">\(2\|a\|\)</span> on each parity subspace, density proves compactness for every source element. Finally <span class="math" data-tex="\(F_D\)">\(F_D\)</span> is odd and self-adjoint, and <span class="math" data-tex="\(F_D^2-1=-(1+D^2)^{-1}\)">\(F_D^2-1=-(1+D^2)^{-1}\)</span>. These are all cycle conditions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(E=E_1\widehat\otimes_B E_2\)">\(E=E_1\widehat\otimes_B E_2\)</span>, <span class="math" data-tex="\(\phi=\phi_1\widehat\otimes1\)">\(\phi=\phi_1\widehat\otimes1\)</span>, and <span class="math" data-tex="\(E_1^0=\overline{\phi_1(A)E_1}\)">\(E_1^0=\overline{\phi_1(A)E_1}\)</span>. For a homogeneous vector <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(T_x\eta=x\widehat\otimes\eta\)">\(T_x\eta=x\widehat\otimes\eta\)</span> is the creation operator.</p>
+<p><strong>Lemma 0.2 (the connection estimate).</strong> Suppose a homogeneous linear subspace <span class="math" data-tex="\(\mathcal X\subset\operatorname{Dom}D_1\)">\(\mathcal X\subset\operatorname{Dom}D_1\)</span>, dense in <span class="math" data-tex="\(E_1^0\)">\(E_1^0\)</span>, satisfies the creation and adjoint domain inclusions and has bounded adjointable errors
+<span class="math math-display" data-tex="\[
+DT_x-(-1)^{|x|}T_xD_2,\qquad
+T_x^*D-(-1)^{|x|}D_2T_x^*.
+\tag{0.3}
+\]">\[
+DT_x-(-1)^{|x|}T_xD_2,\qquad
+T_x^*D-(-1)^{|x|}D_2T_x^*.
+\tag{0.3}
+\]</span>
+Then <span class="math" data-tex="\(F_D\)">\(F_D\)</span> satisfies both <span class="math" data-tex="\(F_{D_2}\)">\(F_{D_2}\)</span>-connection conditions for every <span class="math" data-tex="\(x\in E_1^0\)">\(x\in E_1^0\)</span>.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(E\oplus E_2\)">\(E\oplus E_2\)</span>, the two creations are the off-diagonal blocks of a homogeneous adjointable operator. Their domain inclusions and (0.3) give a bounded graded commutator with <span class="math" data-tex="\(D\oplus D_2\)">\(D\oplus D_2\)</span>. The inverse-resolvent identity (0.1) applies to this operator too. Multiply its bounded-transform commutator on the right by <span class="math" data-tex="\(\operatorname{diag}(0,\phi_2(b))\)">\(\operatorname{diag}(0,\phi_2(b))\)</span>, for a homogeneous smooth second-source element <span class="math" data-tex="\(b\)">\(b\)</span>. The localized end resolvent is compact, and the bound <span class="math" data-tex="\(C/(1+t^2)\)">\(C/(1+t^2)\)</span> in (0.2) is integrable. The top-right block proves
+<span class="math math-display" data-tex="\[
+\bigl(F_DT_x-(-1)^{|x|}T_xF_{D_2}\bigr)\phi_2(b)
+\]">\[
+\bigl(F_DT_x-(-1)^{|x|}T_xF_{D_2}\bigr)\phi_2(b)
+\]</span>
+compact. Since <span class="math" data-tex="\(T_{xb}=T_x\phi_2(b)\)">\(T_{xb}=T_x\phi_2(b)\)</span>, moving <span class="math" data-tex="\(F_{D_2}\)">\(F_{D_2}\)</span> past <span class="math" data-tex="\(\phi_2(b)\)">\(\phi_2(b)\)</span> adds only the compact commutator proved in Lemma 0.1. Thus the creation error for <span class="math" data-tex="\(xb\)">\(xb\)</span> is compact; adjointing gives its second condition. The linear span of these vectors is dense in <span class="math" data-tex="\(E_1^0\)">\(E_1^0\)</span>, by nondegeneracy of its right coefficient action, density of <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>, and density of the smooth coefficient algebra. The inequality <span class="math" data-tex="\(\|T_x\|\leq\|x\|\)">\(\|T_x\|\leq\|x\|\)</span> extends both assertions to every vector of <span class="math" data-tex="\(E_1^0\)">\(E_1^0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 0.3 (bounded alignment, including essential connections).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be separable and the intermediate algebra be <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. Suppose <span class="math" data-tex="\(F_1\)">\(F_1\)</span> is a normalized first-cycle operator and <span class="math" data-tex="\(G\)">\(G\)</span> is a self-adjoint contraction cycle on <span class="math" data-tex="\(E\)">\(E\)</span>, with the <span class="math" data-tex="\(F_2\)">\(F_2\)</span>-connection conditions on <span class="math" data-tex="\(E_1^0\)">\(E_1^0\)</span>. If, for a fixed <span class="math" data-tex="\(0\leq\kappa&lt;2\)">\(0\leq\kappa&lt;2\)</span>,
+<span class="math math-display" data-tex="\[
+\phi(a)[F_1\widehat\otimes1,G]_{\rm gr}\phi(a)^*
+\geq-\kappa\phi(aa^*)\pmod{\mathcal K(E)}
+\qquad(a\in A),
+\tag{0.4}
+\]">\[
+\phi(a)[F_1\widehat\otimes1,G]_{\rm gr}\phi(a)^*
+\geq-\kappa\phi(aa^*)\pmod{\mathcal K(E)}
+\qquad(a\in A),
+\tag{0.4}
+\]</span>
+then <span class="math" data-tex="\(G\)">\(G\)</span> represents the Kasparov product.</p>
+<p><strong>Proof.</strong> First assume a full connection. The product-existence proof, using this connection and its technical partition <span class="math" data-tex="\(M+N=1\)">\(M+N=1\)</span>, gives a product operator
+<span class="math" data-tex="\(H=M^{1/4}SM^{1/4}+N^{1/4}GN^{1/4}\)">\(H=M^{1/4}SM^{1/4}+N^{1/4}GN^{1/4}\)</span>, <span class="math" data-tex="\(S=F_1\widehat\otimes1\)">\(S=F_1\widehat\otimes1\)</span>.
+The same root commutation and defect annihilation used there give, after a source sandwich,
+<span class="math math-display" data-tex="\[
+[G,H]_{\rm gr}
+\equiv M^{1/2}[G,S]_{\rm gr}+2N^{1/2}
+\pmod{\text{source-localized compacts}}.
+\]">\[
+[G,H]_{\rm gr}
+\equiv M^{1/2}[G,S]_{\rm gr}+2N^{1/2}
+\pmod{\text{source-localized compacts}}.
+\]</span>
+Consequently (0.4), <span class="math" data-tex="\(0\leq M^{1/2}\leq1\)">\(0\leq M^{1/2}\leq1\)</span>, and positivity of the second term bound this sandwich below by <span class="math" data-tex="\(-\kappa\phi(aa^*)\)">\(-\kappa\phi(aa^*)\)</span>.</p>
+<p>Here are the quotient and homotopy details of that conclusion. Let <span class="math" data-tex="\(\mathcal D_\phi\)">\(\mathcal D_\phi\)</span> be the graded algebra of bounded operators whose graded source commutators are compact, and let <span class="math" data-tex="\(\mathcal C_\phi\)">\(\mathcal C_\phi\)</span> be its ideal of two-sided source-locally compact operators. Closure under products and adjoints follows from the graded Leibniz identity. For an even self-adjoint <span class="math" data-tex="\(Z\in\mathcal D_\phi\)">\(Z\in\mathcal D_\phi\)</span>, positivity of every source sandwich modulo compacts implies <span class="math" data-tex="\(Z_-\in\mathcal C_\phi\)">\(Z_-\in\mathcal C_\phi\)</span>. To see this, work modulo <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>, where <span class="math" data-tex="\(Z\)">\(Z\)</span> commutes with the represented source. The negative part of <span class="math" data-tex="\(\phi(aa^*)Z\)">\(\phi(aa^*)Z\)</span> is <span class="math" data-tex="\(\phi(aa^*)Z_-\)">\(\phi(aa^*)Z_-\)</span>; it is zero. Hence <span class="math" data-tex="\(Z_-\phi(a)\)">\(Z_-\phi(a)\)</span> has zero product with its adjoint in this quotient and is compact. Adjointing gives the other side. Continuous functional calculus is legitimate because it follows by polynomial approximation in the unital algebra generated by <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p>Apply this to <span class="math" data-tex="\(Z=[G,H]_{\rm gr}+\kappa\)">\(Z=[G,H]_{\rm gr}+\kappa\)</span>. In <span class="math" data-tex="\(\mathcal D_\phi/\mathcal C_\phi\)">\(\mathcal D_\phi/\mathcal C_\phi\)</span>, the cycle operators <span class="math" data-tex="\(G,H\)">\(G,H\)</span> are self-adjoint unitaries and their anticommutator is at least <span class="math" data-tex="\(-\kappa\)">\(-\kappa\)</span>. For <span class="math" data-tex="\(L_t=(1-t)G+tH\)">\(L_t=(1-t)G+tH\)</span> this gives
+<span class="math math-display" data-tex="\[
+L_t^2\geq (1-t)^2+t^2-\kappa t(1-t)
+\geq(2-\kappa)/4.
+\]">\[
+L_t^2\geq (1-t)^2+t^2-\kappa t(1-t)
+\geq(2-\kappa)/4.
+\]</span>
+Choose <span class="math" data-tex="\(0&lt;\delta&lt;(2-\kappa)/4\)">\(0&lt;\delta&lt;(2-\kappa)/4\)</span> and normalize by
+<span class="math" data-tex="\(L_t\bigl(\max(L_t^2,\delta)\bigr)^{-1/2}\)">\(L_t\bigl(\max(L_t^2,\delta)\bigr)^{-1/2}\)</span>.
+This is a norm-continuous path of cycles: it is an odd self-adjoint unitary in the defect quotient, and its source commutators are compact by functional calculus. At its endpoints normalization changes the original cycle only by a two-sided locally compact operator. The straight interpolation for such a change is a cycle, as follows by expanding its square and source commutator. Thus <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span> have the same class.</p>
+<p>We now remove the full-connection assumption. Put <span class="math" data-tex="\(E^0=\overline{\phi(A)E}\)">\(E^0=\overline{\phi(A)E}\)</span>; the balancing rule identifies it with <span class="math" data-tex="\(E_1^0\widehat\otimes_B E_2\)">\(E_1^0\widehat\otimes_B E_2\)</span>. Proposition 5.1 of the product lesson supplies essential replacement cycles <span class="math" data-tex="\(F_1^0,G^0\)">\(F_1^0,G^0\)</span> on these modules in the original classes. Its connection relations for multiplication maps <span class="math" data-tex="\(A_a^1:E_1\to E_1^0\)">\(A_a^1:E_1\to E_1^0\)</span>, <span class="math" data-tex="\(A_a:E\to E^0\)">\(A_a:E\to E^0\)</span> are
+<span class="math math-display" data-tex="\[
+F_1^0A_a^1-(-1)^{|a|}A_a^1F_1\in\mathcal K(E_1,E_1^0),\qquad
+G^0A_a-(-1)^{|a|}A_aG\in\mathcal K(E,E^0).
+\tag{0.5}
+\]">\[
+F_1^0A_a^1-(-1)^{|a|}A_a^1F_1\in\mathcal K(E_1,E_1^0),\qquad
+G^0A_a-(-1)^{|a|}A_aG\in\mathcal K(E,E^0).
+\tag{0.5}
+\]</span>
+These maps are adjointable: their adjoints are multiplication by <span class="math" data-tex="\(a^*\)">\(a^*\)</span> followed by inclusion. Normalizing the replacement cycles preserves (0.5).</p>
+<p>The operator <span class="math" data-tex="\(G^0\)">\(G^0\)</span> is a full connection on <span class="math" data-tex="\(E_1^0\)">\(E_1^0\)</span>. Indeed <span class="math" data-tex="\(T_{ax}=A_aT_x\)">\(T_{ax}=A_aT_x\)</span>. Expanding its error with (0.5) leaves a compact term and the source-localized creation error of <span class="math" data-tex="\(G\)">\(G\)</span>. That latter term is compact after inclusion in <span class="math" data-tex="\(E\)">\(E\)</span>, because the connection error for <span class="math" data-tex="\(ax\in E_1^0\)">\(ax\in E_1^0\)</span> is compact and the source commutator of <span class="math" data-tex="\(G\)">\(G\)</span> is compact. It is compact with target <span class="math" data-tex="\(E^0\)">\(E^0\)</span> as well: for an adjointable map <span class="math" data-tex="\(R\)">\(R\)</span>, compactness of <span class="math" data-tex="\(R^*R\)">\(R^*R\)</span> implies compactness of <span class="math" data-tex="\(R\)">\(R\)</span>. In fact, with <span class="math" data-tex="\(q_\varepsilon(t)=t/(t+\varepsilon)\)">\(q_\varepsilon(t)=t/(t+\varepsilon)\)</span>, the maps <span class="math" data-tex="\(Rq_\varepsilon(R^*R)\)">\(Rq_\varepsilon(R^*R)\)</span> are compact and converge in norm to <span class="math" data-tex="\(R\)">\(R\)</span>, since <span class="math" data-tex="\(\sup_{t\geq0}\sqrt t\,\varepsilon/(t+\varepsilon)\to0\)">\(\sup_{t\geq0}\sqrt t\,\varepsilon/(t+\varepsilon)\to0\)</span>. Taking adjoints and using density of the vectors <span class="math" data-tex="\(ax\)">\(ax\)</span> proves both full connection conditions.</p>
+<p>For <span class="math" data-tex="\(k\in\mathcal K(E_1)\)">\(k\in\mathcal K(E_1)\)</span>, the weak connection also gives
+<span class="math math-display" data-tex="\[
+\phi(a)[G,k\widehat\otimes1]_{\rm gr}\phi(b)\in\mathcal K(E).
+\tag{0.6}
+\]">\[
+\phi(a)[G,k\widehat\otimes1]_{\rm gr}\phi(b)\in\mathcal K(E).
+\tag{0.6}
+\]</span>
+Indeed <span class="math" data-tex="\(\phi_1(a)k\phi_1(b)\)">\(\phi_1(a)k\phi_1(b)\)</span> is a norm limit of rank-one operators with both vectors in <span class="math" data-tex="\(E_1^0\)">\(E_1^0\)</span>. Their tensor images are <span class="math" data-tex="\(T_xT_y^*\)">\(T_xT_y^*\)</span>; the connection identities cancel the two <span class="math" data-tex="\(F_2\)">\(F_2\)</span> terms in their commutator. Expanding the commutator with the two outer source factors adds only compact source commutators of <span class="math" data-tex="\(G\)">\(G\)</span>. This proves (0.6).</p>
+<p>Take even <span class="math" data-tex="\(c\in A\)">\(c\in A\)</span>. By (0.5),
+<span class="math" data-tex="\(R_c=(A_c^1)^*F_1^0A_c^1-\phi_1(c)^*F_1\phi_1(c)\)">\(R_c=(A_c^1)^*F_1^0A_c^1-\phi_1(c)^*F_1\phi_1(c)\)</span>
+is compact. Put <span class="math" data-tex="\(S^0=F_1^0\widehat\otimes1\)">\(S^0=F_1^0\widehat\otimes1\)</span>. Moving <span class="math" data-tex="\(G^0\)">\(G^0\)</span> past <span class="math" data-tex="\(A_c\)">\(A_c\)</span>, then sandwiching by <span class="math" data-tex="\(\phi(d)\)">\(\phi(d)\)</span>, gives
+<span class="math math-display" data-tex="\[
+\phi(d)^*A_c^*[S^0,G^0]_{\rm gr}A_c\phi(d)
+\equiv\phi(cd)^*[S,G]_{\rm gr}\phi(cd)
+\pmod{\mathcal K(E)}.
+\tag{0.7}
+\]">\[
+\phi(d)^*A_c^*[S^0,G^0]_{\rm gr}A_c\phi(d)
+\equiv\phi(cd)^*[S,G]_{\rm gr}\phi(cd)
+\pmod{\mathcal K(E)}.
+\tag{0.7}
+\]</span>
+The extra bracket of <span class="math" data-tex="\(R_c\widehat\otimes1\)">\(R_c\widehat\otimes1\)</span> is compact by (0.6); the remaining errors are (0.5) and compact source commutators. Equation (0.4), applied with <span class="math" data-tex="\(a=(cd)^*\)">\(a=(cd)^*\)</span>, transfers its lower bound through (0.7).</p>
+<p>This transfer holds on <span class="math" data-tex="\(E^0\)">\(E^0\)</span>, not only after inclusion into <span class="math" data-tex="\(E\)">\(E\)</span>. A compact operator on <span class="math" data-tex="\(E\)">\(E\)</span> whose range and adjoint range lie in <span class="math" data-tex="\(E^0\)">\(E^0\)</span> belongs to <span class="math" data-tex="\(\mathcal K(E^0)\)">\(\mathcal K(E^0)\)</span>. For a proof, first regard it as an adjointable map <span class="math" data-tex="\(E\to E^0\)">\(E\to E^0\)</span>; the compactness test just proved makes that map compact. An approximate identity <span class="math" data-tex="\(u_\lambda\)">\(u_\lambda\)</span> of <span class="math" data-tex="\(\mathcal K(E^0)\)">\(\mathcal K(E^0)\)</span> then has <span class="math" data-tex="\(u_\lambda T\to T\)">\(u_\lambda T\to T\)</span> in norm, by finite rank approximation with target vectors in <span class="math" data-tex="\(E^0\)">\(E^0\)</span>. Apply the same argument to <span class="math" data-tex="\(T^*\)">\(T^*\)</span> to obtain <span class="math" data-tex="\(Tu_\lambda\to T\)">\(Tu_\lambda\to T\)</span>. The sandwiches <span class="math" data-tex="\(u_\lambda T u_\lambda\)">\(u_\lambda T u_\lambda\)</span> lie in <span class="math" data-tex="\(\mathcal K(E^0)\)">\(\mathcal K(E^0)\)</span> and converge to <span class="math" data-tex="\(T\)">\(T\)</span>. For the source sandwich in (0.7), its negative part has the same range property, since its continuous defining function vanishes at zero. Thus its compact negative part restricts compactly to <span class="math" data-tex="\(E^0\)">\(E^0\)</span>. Positive even approximate identities <span class="math" data-tex="\(c\)">\(c\)</span> give <span class="math" data-tex="\(cd\to d\)">\(cd\to d\)</span>, proving (0.4) for all sources on the essential module. The full-connection case applies there. Essential replacement and homotopy invariance of products return the assertion to the original modules. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 0.4 (integrated positivity).</strong> Let <span class="math" data-tex="\(D,S\)">\(D,S\)</span> be odd self-adjoint regular operators with <span class="math" data-tex="\(\operatorname{Dom}D\subset\operatorname{Dom}S\)">\(\operatorname{Dom}D\subset\operatorname{Dom}S\)</span>. If
+<span class="math math-display" data-tex="\[
+Q(\xi):=2\operatorname{Re}\langle D\xi,S\xi\rangle
+\geq-c\langle\xi,\xi\rangle\quad(\xi\in\operatorname{Dom}D),
+\tag{0.8}
+\]">\[
+Q(\xi):=2\operatorname{Re}\langle D\xi,S\xi\rangle
+\geq-c\langle\xi,\xi\rangle\quad(\xi\in\operatorname{Dom}D),
+\tag{0.8}
+\]</span>
+for <span class="math" data-tex="\(c\geq0\)">\(c\geq0\)</span>, then <span class="math" data-tex="\([F_D,F_S]_{\rm gr}\geq-c\)">\([F_D,F_S]_{\rm gr}\geq-c\)</span>. Replacing <span class="math" data-tex="\(S\)">\(S\)</span> by <span class="math" data-tex="\(\alpha S\)">\(\alpha S\)</span>, <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, replaces this bound by <span class="math" data-tex="\(-\alpha c\)">\(-\alpha c\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\lambda=1+u^2\)">\(\lambda=1+u^2\)</span>, <span class="math" data-tex="\(\mu=1+v^2\)">\(\mu=1+v^2\)</span>, set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r_D=(D^2+\lambda)^{-1},\quad h_D=Dr_D,\quad k_D=\sqrt\lambda r_D,\\
+r_S=(S^2+\mu)^{-1},\quad h_S=Sr_S,\quad k_S=\sqrt\mu r_S.
+\end{gathered}
+\]">\[
+\begin{gathered}
+r_D=(D^2+\lambda)^{-1},\quad h_D=Dr_D,\quad k_D=\sqrt\lambda r_D,\\
+r_S=(S^2+\mu)^{-1},\quad h_S=Sr_S,\quad k_S=\sqrt\mu r_S.
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(\eta\in\operatorname{Dom}S\)">\(\eta\in\operatorname{Dom}S\)</span>, expanding <span class="math" data-tex="\(Dh_D=1-\lambda r_D\)">\(Dh_D=1-\lambda r_D\)</span>, <span class="math" data-tex="\(Dk_D=\sqrt\lambda h_D\)">\(Dk_D=\sqrt\lambda h_D\)</span> gives
+<span class="math math-display" data-tex="\[
+Q(h_D\eta)+Q(k_D\eta)=2\operatorname{Re}\langle S\eta,h_D\eta\rangle.
+\]">\[
+Q(h_D\eta)+Q(k_D\eta)=2\operatorname{Re}\langle S\eta,h_D\eta\rangle.
+\]</span>
+The cancelling difference is
+<span class="math" data-tex="\(2\lambda\operatorname{Re}(\langle h_D\eta,Sr_D\eta\rangle-\langle r_D\eta,Sh_D\eta\rangle)\)">\(2\lambda\operatorname{Re}(\langle h_D\eta,Sr_D\eta\rangle-\langle r_D\eta,Sh_D\eta\rangle)\)</span>, zero by symmetry of <span class="math" data-tex="\(S\)">\(S\)</span>. All these vectors are in the indicated domains by the domain inclusion. Apply the identity to <span class="math" data-tex="\(h_S\psi,k_S\psi\)">\(h_S\psi,k_S\psi\)</span>. Using <span class="math" data-tex="\(Sh_S=1-\mu r_S\)">\(Sh_S=1-\mu r_S\)</span>, <span class="math" data-tex="\(Sk_S=\sqrt\mu h_S\)">\(Sk_S=\sqrt\mu h_S\)</span>, the remaining two terms cancel by self-adjointness of <span class="math" data-tex="\(h_D\)">\(h_D\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\sum_{w\in\{h_Dh_S,k_Dh_S,h_Dk_S,k_Dk_S\}}Q(w\psi)
+=2\operatorname{Re}\langle\psi,h_Dh_S\psi\rangle.
+\tag{0.9}
+\]">\[
+\sum_{w\in\{h_Dh_S,k_Dh_S,h_Dk_S,k_Dk_S\}}Q(w\psi)
+=2\operatorname{Re}\langle\psi,h_Dh_S\psi\rangle.
+\tag{0.9}
+\]</span>
+Integrate first over finite rectangles <span class="math" data-tex="\(0\leq u,v\leq R\)">\(0\leq u,v\leq R\)</span>, with factor <span class="math" data-tex="\(4/\pi^2\)">\(4/\pi^2\)</span>. Formula (0.2) makes the right side converge to the quadratic form of the bounded anticommutator. The lower bound (0.8) bounds the left side below by minus <span class="math" data-tex="\(c\)">\(c\)</span> times the sum of the four positive forms <span class="math" data-tex="\(\langle w\psi,w\psi\rangle\)">\(\langle w\psi,w\psi\rangle\)</span>. Their total integral is at most <span class="math" data-tex="\(\langle\psi,\psi\rangle\)">\(\langle\psi,\psi\rangle\)</span>: first use
+<span class="math math-display" data-tex="\[
+h_D^2+k_D^2=r_D,\qquad
+\frac2\pi\int_0^\infty r_D\,du=(1+D^2)^{-1/2}\leq1,
+\]">\[
+h_D^2+k_D^2=r_D,\qquad
+\frac2\pi\int_0^\infty r_D\,du=(1+D^2)^{-1/2}\leq1,
+\]</span>
+then bound the two remaining sandwiches by <span class="math" data-tex="\(h_S^2+k_S^2=r_S\)">\(h_S^2+k_S^2=r_S\)</span> and integrate once more. These increasing positive integrals also justify passage to the rectangle limit without asserting absolute integrability of the unsplit anticommutator integrand. The inequality holds for every <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, hence as an operator inequality. Scaling <span class="math" data-tex="\(S\)">\(S\)</span> scales (0.8) by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 0.5 (the unbounded product criterion).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be separable and <span class="math" data-tex="\(B\)">\(B\)</span> be <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. Suppose <span class="math" data-tex="\((E_1,\phi_1,D_1)\)">\((E_1,\phi_1,D_1)\)</span>, <span class="math" data-tex="\((E_2,\phi_2,D_2)\)">\((E_2,\phi_2,D_2)\)</span>, and <span class="math" data-tex="\((E_1\widehat\otimes_B E_2,\phi_1\widehat\otimes1,D)\)">\((E_1\widehat\otimes_B E_2,\phi_1\widehat\otimes1,D)\)</span> are unbounded modules. Suppose (0.3) holds on a homogeneous subspace of <span class="math" data-tex="\(\operatorname{Dom}D_1\)">\(\operatorname{Dom}D_1\)</span> dense in <span class="math" data-tex="\(\overline{\phi_1(A)E_1}\)">\(\overline{\phi_1(A)E_1}\)</span>, with both creation domain inclusions. Suppose <span class="math" data-tex="\(\operatorname{Dom}D\subset\operatorname{Dom}(D_1\widehat\otimes1)\)">\(\operatorname{Dom}D\subset\operatorname{Dom}(D_1\widehat\otimes1)\)</span>, and (0.8) holds with <span class="math" data-tex="\(S=D_1\widehat\otimes1\)">\(S=D_1\widehat\otimes1\)</span>. Then the bounded-transform class of <span class="math" data-tex="\(D\)">\(D\)</span> is the Kasparov product of the classes of <span class="math" data-tex="\(D_1,D_2\)">\(D_1,D_2\)</span>. The first representation may be nonessential.</p>
+<p><strong>Proof.</strong> Lemma 0.1 supplies the cycles and Lemma 0.2 their essential-source connection. Choose <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span> with <span class="math" data-tex="\(\alpha c&lt;2\)">\(\alpha c&lt;2\)</span>. Lemma 0.4 gives (0.4) for <span class="math" data-tex="\(F_D\)">\(F_D\)</span> and <span class="math" data-tex="\(F_{\alpha D_1}\widehat\otimes1\)">\(F_{\alpha D_1}\widehat\otimes1\)</span>; functional calculus commutes with the tensor representation. Lemma 0.3 identifies their product. Finally positive rescaling preserves the class of the first operator: on a compact positive interval of parameters, <span class="math" data-tex="\(tx/\sqrt{1+t^2x^2}\)">\(tx/\sqrt{1+t^2x^2}\)</span> varies uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>, continuously in <span class="math" data-tex="\(t\)">\(t\)</span>. Its transforms form a norm-continuous path of cycles by Lemma 0.1. Domains and bounded commutators are unchanged by this positive scaling, and local compactness follows from the vanishing-functions argument in its proof. Thus <span class="math" data-tex="\([\alpha D_1]=[D_1]\)">\([\alpha D_1]=[D_1]\)</span>, proving the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The freely readable <a href="https://arxiv.org/pdf/2006.10616v2">van den Dungen preprint, Sections 2.4 and 3.1</a>, printed pp. 11–16, provides the comparison account for connection estimates and integrated positivity. The proof used here is the complete local argument above. In particular its nonessential representation step does not rely on the preprint's reference to an external original proof.</p>
+<h2 id="1-central-coefficients-and-compact-bases">1. Central coefficients and compact bases</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be compact Hausdorff and put <span class="math" data-tex="\(R=C(X)\)">\(R=C(X)\)</span>, trivially graded. An <span class="math" data-tex="\(R\)">\(R\)</span>-algebra is a graded C*-algebra with a specified even central action of <span class="math" data-tex="\(R\)">\(R\)</span>. An <span class="math" data-tex="\(R\)">\(R\)</span>-linear cycle has the property that the left and right actions of <span class="math" data-tex="\(R\)">\(R\)</span> on its module agree. Write <span class="math" data-tex="\(KK_R(A,B)\)">\(KK_R(A,B)\)</span> for its homotopy classes. Forgetting this agreement gives a usual KK class.</p>
+<p>The tensor products of modules below are balanced over their displayed coefficient algebra. External products over <span class="math" data-tex="\(R\)">\(R\)</span> use the balanced algebra tensor product over <span class="math" data-tex="\(R\)">\(R\)</span>. Thus both factors refer to the same point of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Lemma 1.1 (the central coefficient argument).</strong> Suppose the closed <span class="math" data-tex="\(R\)">\(R\)</span>-linear *-algebra generated by countably many elements is <span class="math" data-tex="\(A\)">\(A\)</span>, and all coefficient and intermediate algebras under consideration are <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. For <span class="math" data-tex="\(R\)">\(R\)</span>-linear countably generated cycles, the product-existence, uniqueness, associativity and unbounded product-recognition arguments used earlier apply with this hypothesis in place of separability of <span class="math" data-tex="\(A\)">\(A\)</span>. These operations preserve <span class="math" data-tex="\(R\)">\(R\)</span>-linearity.</p>
+<p><strong>Proof.</strong> We specify the modification, since <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> need not be separable. Every adjointable right-module operator commutes with the right action of the central algebra <span class="math" data-tex="\(R\)">\(R\)</span>, hence with its left action in an <span class="math" data-tex="\(R\)">\(R\)</span>-linear cycle. This includes all compact operators, connection operators, technical partitions and their functional calculi.</p>
+<p>In the technical theorem, take as the derivating space the separable space generated by the countable noncentral source generators, the required cycle and connection operators, and their adjoints. Include countably many words in the source generators. All the ideals used in the product proof remain <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital: the compact ideal of a countably generated module is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital, its represented images are <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital, and the proof uses only sums of these images and finitely or countably many added operators. The technical theorem supplies the same partition. Its commutators with the omitted elements of <span class="math" data-tex="\(R\)">\(R\)</span> are exactly zero.</p>
+<p>The source conditions extend from the selected words to products with elements of <span class="math" data-tex="\(R\)">\(R\)</span>, since the latter commute with every operator in the argument. Finite sums of these products are dense in <span class="math" data-tex="\(A\)">\(A\)</span>. Norm continuity then gives the cycle, connection and localized positivity conditions for every source element. This proves existence and the uniqueness comparison by the same convex-path and normalization argument as before.</p>
+<p>For associativity, use precisely the two compact images and the localized negative-part ideal in Theorem 4.1 of <em>Homotopy, associativity, the index pairing and KK-equivalence</em>. The extra derivating operators there are again countable; central coefficients commute with them and with the partition. Both positivity terms in that proof are retained. This gives associativity whenever the displayed binary products exist. The argument for balanced external products is the identical argument on the canonically associated module tensor products.</p>
+<p>Finally the creation-operator resolvent identities and the integrated positivity estimate in the unbounded product criterion require no separable source. Separability enters its product comparison only through the technical partition just described. Thus its domain, connection and lower-bound hypotheses give product recognition here as well. All operators constructed are right-module operators, so remain <span class="math" data-tex="\(R\)">\(R\)</span>-linear. The same construction on interval modules proves compatibility with homotopies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This lemma concerns central module actions. It makes no assertion about an arbitrary representation of a nonseparable source algebra.</p>
+<p>Let <span class="math" data-tex="\(V\to X\)">\(V\to X\)</span> be a rank-<span class="math" data-tex="\(n\)">\(n\)</span> Euclidean real vector bundle. Write
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C&amp;=\Gamma(\operatorname{Cl}(V)),\\
+B&amp;=C_0(V),\\
+A&amp;=B\widehat\otimes_R C.
+\end{aligned}
+\tag{1.1}
+\]">\[
+\begin{aligned}
+C&amp;=\Gamma(\operatorname{Cl}(V)),\\
+B&amp;=C_0(V),\\
+A&amp;=B\widehat\otimes_R C.
+\end{aligned}
+\tag{1.1}
+\]</span>
+The complex Clifford convention is <span class="math" data-tex="\(vw+wv=2(v,w)\)">\(vw+wv=2(v,w)\)</span>. The Clifford algebra is graded; <span class="math" data-tex="\(B\)">\(B\)</span> is not.</p>
+<p>The algebra <span class="math" data-tex="\(C\)">\(C\)</span> is unital. The radial functions of <span class="math" data-tex="\(\|v\|\)">\(\|v\|\)</span>, equal to one on expanding balls, give a countable approximate identity of <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span>. All three are generated over <span class="math" data-tex="\(R\)">\(R\)</span> by countably many elements. For <span class="math" data-tex="\(C\)">\(C\)</span>, take finitely many bundle sections spanning each fibre, obtained from a finite trivializing cover and a partition of unity. For <span class="math" data-tex="\(B\)">\(B\)</span>, embed <span class="math" data-tex="\(V\)">\(V\)</span> isometrically in a finite trivial bundle and use its coordinate functions multiplied by countably many radial cutoffs. Polynomials in these coordinates approximate continuous functions on bounded fibre balls; a finite bundle cover and a partition of unity make the approximation uniform over <span class="math" data-tex="\(X\)">\(X\)</span>. Cut off at larger radii to approximate <span class="math" data-tex="\(C_0(V)\)">\(C_0(V)\)</span>. The same argument with the finite Clifford sections proves the assertion for <span class="math" data-tex="\(A\)">\(A\)</span>. Thus Lemma 1.1 applies without a metrizability hypothesis on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Rank may be locally constant rather than constant. A finite-rank bundle on a compact base has only finitely many ranks; their inverse images are clopen. Apply the constructions separately and take the finite direct sum. We write constant rank to simplify the formulas.</p>
+<h2 id="2-the-fibrewise-position-and-dirac-cycles">2. The fibrewise position and Dirac cycles</h2>
+<p>On the standard right <span class="math" data-tex="\(A\)">\(A\)</span>-module let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X_V(v)=v\in\operatorname{Cl}(V_{\pi(v)}),\\
+F_V(v)=\frac{v}{\sqrt{1+\|v\|^2}}.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+X_V(v)=v\in\operatorname{Cl}(V_{\pi(v)}),\\
+F_V(v)=\frac{v}{\sqrt{1+\|v\|^2}}.
+\end{gathered}
+\tag{2.1}
+\]</span>
+The source <span class="math" data-tex="\(R\)">\(R\)</span> acts by pullback along <span class="math" data-tex="\(\pi:V\to X\)">\(\pi:V\to X\)</span>.</p>
+<p><strong>Proposition 2.1 (the position class).</strong> Formula (2.1) defines
+<span class="math math-display" data-tex="\[
+b_V\in KK_R(R,A).
+\tag{2.2}
+\]">\[
+b_V\in KK_R(R,A).
+\tag{2.2}
+\]</span></p>
+<p><strong>Proof.</strong> It is odd and self-adjoint, its source commutators vanish, and
+<span class="math math-display" data-tex="\[
+F_V^2-1=-\frac1{1+\|v\|^2}\in A.
+\tag{2.3}
+\]">\[
+F_V^2-1=-\frac1{1+\|v\|^2}\in A.
+\tag{2.3}
+\]</span>
+This is a function vanishing at infinity because the base is compact and the norm-bounded ball bundles are compact. Multiplication by it is compact on the standard module. The module is countably generated by the radial approximate identity. These verify every cycle condition. The unbounded multiplier also has the explicit inverse resolvents
+<span class="math math-display" data-tex="\[
+(X_V\pm i)^{-1}=\frac{X_V\mp i}{1+\|v\|^2};
+\]">\[
+(X_V\pm i)^{-1}=\frac{X_V\mp i}{1+\|v\|^2};
+\]</span>
+their dense ranges contain the compactly supported continuous sections. Thus it is self-adjoint and regular. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Over <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> put
+<span class="math math-display" data-tex="\[
+\mathcal H_x=L^2(V_x)\otimes\Lambda^*(V_x\otimes_{\mathbb R}\mathbb C).
+\tag{2.4}
+\]">\[
+\mathcal H_x=L^2(V_x)\otimes\Lambda^*(V_x\otimes_{\mathbb R}\mathbb C).
+\tag{2.4}
+\]</span>
+Orthogonal frame changes act by their unitary change of variable on <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and their exterior action on forms. These give a continuous Hilbert bundle: its transition operators are strongly continuous, which suffices for continuity of its sections. Let <span class="math" data-tex="\(H_V\)">\(H_V\)</span> be the Hilbert <span class="math" data-tex="\(R\)">\(R\)</span>-module of continuous sections. Its inner product is the fibre integral.</p>
+<p>In an orthonormal frame set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_j=\varepsilon_j+\iota_j,\\
+\widehat c_j=\varepsilon_j-\iota_j,\\
+D_V=\sum_j\widehat c_j\partial_j.
+\end{gathered}
+\tag{2.5}
+\]">\[
+\begin{gathered}
+c_j=\varepsilon_j+\iota_j,\\
+\widehat c_j=\varepsilon_j-\iota_j,\\
+D_V=\sum_j\widehat c_j\partial_j.
+\end{gathered}
+\tag{2.5}
+\]</span>
+Both Clifford families transform with the frame, so the operator and the representation of <span class="math" data-tex="\(A\)">\(A\)</span> by multiplication and <span class="math" data-tex="\(c_j\)">\(c_j\)</span> are globally defined. Grade <span class="math" data-tex="\(H_V\)">\(H_V\)</span> by form parity.</p>
+<p><strong>Proposition 2.2 (the vertical Dirac class).</strong> The fibre operator (2.5) defines an odd self-adjoint regular operator on <span class="math" data-tex="\(H_V\)">\(H_V\)</span>. Its domain is the continuous field of first Sobolev domains with the graph norm. Its bounded transform gives
+<span class="math math-display" data-tex="\[
+a_V\in KK_R(A,R).
+\tag{2.6}
+\]">\[
+a_V\in KK_R(A,R).
+\tag{2.6}
+\]</span></p>
+<p><strong>Proof.</strong> In a bundle chart this is the fixed Euclidean operator from Lemma 3.1 of the Bott lesson. Its inverse resolvents are uniformly bounded, and are carried into one another by the frame-transition unitaries. They therefore give adjointable global operators, with adjoints the opposite resolvents. Their ranges contain sections locally given by compactly supported smooth fibre vectors, times continuous base functions; finite partitions of unity show that such sections are dense. The resolvent identities, symmetry and dense range prove self-adjointness and regularity on the stated graph domain.</p>
+<p>Countable generation also follows from a finite cover. Choose partitions with supports in bundle charts and a countable dense family of smooth fibre vectors in each chart. Multiplying these by the partition functions gives countably many global sections; their <span class="math" data-tex="\(R\)">\(R\)</span>-linear span is dense. Strong continuity of the transition unitaries is enough for this assertion.</p>
+<p>For local compactness take a section of <span class="math" data-tex="\(A\)">\(A\)</span> supported in one chart and compactly supported in its fibre variable. Approximate it uniformly by finite sums of a continuous base coefficient times a compactly supported fibre function and a Clifford matrix. The localized Euclidean inverse resolvent is compact by the frequency-cutoff and square-integrable-kernel proof in the Bott lesson. Multiplying its finite rank approximations on each side by chart partition functions gives finite rank operators on <span class="math" data-tex="\(H_V\)">\(H_V\)</span>. Summing finitely many chart pieces and taking norm limits proves local compactness for every element of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>There is a dense graded *-algebra of sections continuous in the base and smooth with compact support in the fibre in each chart. On it the graded commutator is Clifford multiplication by the fibre derivative, a bounded multiplier. Domain preservation is the fibre Sobolev product rule. The bounded-transform theorem now applies. All operators commute with <span class="math" data-tex="\(R\)">\(R\)</span>, so the cycle is <span class="math" data-tex="\(R\)">\(R\)</span>-linear. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-two-inverse-identities">3. The two inverse identities</h2>
+<p><strong>Theorem 3.1 (the parametrized Bott theorem).</strong> The classes above satisfy
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b_V\widehat\otimes_A a_V&amp;=1_R,\\
+a_V\widehat\otimes_R b_V&amp;=1_A.
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+b_V\widehat\otimes_A a_V&amp;=1_R,\\
+a_V\widehat\otimes_R b_V&amp;=1_A.
+\end{aligned}
+\tag{3.1}
+\]</span></p>
+<p><strong>Proof of the first identity.</strong> Identify the tensor module <span class="math" data-tex="\(A\widehat\otimes_A H_V\)">\(A\widehat\otimes_A H_V\)</span> with <span class="math" data-tex="\(H_V\)">\(H_V\)</span>. The candidate product is the bounded transform of
+<span class="math math-display" data-tex="\[
+Q_V=D_V+\sum_jv_jc_j.
+\tag{3.2}
+\]">\[
+Q_V=D_V+\sum_jv_jc_j.
+\tag{3.2}
+\]</span>
+Its graph domain is the field of weighted Sobolev spaces
+<span class="math math-display" data-tex="\[
+\{u:\partial_j u,\ v_j u\in L^2\text{ for every }j\}.
+\tag{3.3}
+\]">\[
+\{u:\partial_j u,\ v_j u\in L^2\text{ for every }j\}.
+\tag{3.3}
+\]</span>
+The earlier local oscillator proof in <em>Bott periodicity in KK: the Bott and Dirac elements</em>, Lemma 4.0, proves the Euclidean self-adjoint closure, compact graph inclusion, even Gaussian kernel and zero odd kernel on this domain. Its Lemma 0.0a proves the Euclidean Fourier unitarity used in Proposition 2.2. These are frame-invariant statements. The chart resolvents glue as in Proposition 2.2.</p>
+<p>Here the inverse resolvent is globally compact on the Hilbert <span class="math" data-tex="\(R\)">\(R\)</span>-module. Indeed the Euclidean oscillator inverse resolvent is compact, so its conjugation by the strongly continuous frame unitaries is norm continuous. This follows first for rank-one operators, then for compact operators by uniform finite rank approximation. In finitely many charts approximate this field in norm by finite rank operators, multiply by partition functions on both sides, and sum. The resulting operators are finite sums of global rank-one operators.</p>
+<p>The creation operator associated to a smooth compactly supported Clifford section <span class="math" data-tex="\(d\)">\(d\)</span> is multiplication by <span class="math" data-tex="\(d\)">\(d\)</span>. Its graded error relative to <span class="math" data-tex="\(D_V\)">\(D_V\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q_V M_d-(-1)^{|d|}M_dD_V\\
+ =[D_V,M_d]_{\rm gr}+X_VM_d,
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+Q_V M_d-(-1)^{|d|}M_dD_V\\
+ =[D_V,M_d]_{\rm gr}+X_VM_d,
+\end{gathered}
+\tag{3.4}
+\]</span>
+which is bounded. Its adjoint satisfies the corresponding domain and error conditions. The domain (3.3) is contained in that of <span class="math" data-tex="\(X_V\)">\(X_V\)</span>, and on its smooth core
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\{Q_V,X_V\}\\
+=2\|v\|^2+2N-n\geq -n.
+\end{gathered}
+\tag{3.5}
+\]">\[
+\begin{gathered}
+\{Q_V,X_V\}\\
+=2\|v\|^2+2N-n\geq -n.
+\end{gathered}
+\tag{3.5}
+\]</span>
+Here <span class="math" data-tex="\(N\)">\(N\)</span> is form degree. The inequality extends to the graph domain. The unbounded product criterion, with the central coefficient argument of Lemma 1.1, identifies (3.2) as the product.</p>
+<p>The normalized Gaussian
+<span class="math math-display" data-tex="\[
+g_x(v)=\pi^{-n/4}e^{-\|v\|^2/2}
+\tag{3.6}
+\]">\[
+g_x(v)=\pi^{-n/4}e^{-\|v\|^2/2}
+\tag{3.6}
+\]</span>
+is a global even unit section of the kernel, so that kernel is the module <span class="math" data-tex="\(R\)">\(R\)</span>. The complementary operator is invertible, with a uniform spectral gap: every fibre is unitarily the same Euclidean oscillator with its kernel removed. Deform its bounded transform to its sign, leaving the kernel at zero. This is a norm-continuous functional-calculus homotopy; its defects are compact and its source commutators are zero. The complementary summand becomes degenerate. The kernel summand is <span class="math" data-tex="\((R,1,0)\)">\((R,1,0)\)</span>, proving the first identity.</p>
+<p><strong>Proof of the reverse identity.</strong> Work on <span class="math" data-tex="\(V\oplus V\)">\(V\oplus V\)</span>, with vectors <span class="math" data-tex="\(v,w\)">\(v,w\)</span> in the same fibre and Clifford families <span class="math" data-tex="\(e_j,f_j\)">\(e_j,f_j\)</span>. For <span class="math" data-tex="\(0\leq\theta\leq\pi/2\)">\(0\leq\theta\leq\pi/2\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u&amp;=\cos\theta\,v+\sin\theta\,w,\\
+t&amp;=-\sin\theta\,v+\cos\theta\,w,\\
+e_j^\theta&amp;=\cos\theta\,e_j+\sin\theta\,f_j,\\
+f_j^\theta&amp;=-\sin\theta\,e_j+\cos\theta\,f_j .
+\end{aligned}
+\tag{3.7}
+\]">\[
+\begin{aligned}
+u&amp;=\cos\theta\,v+\sin\theta\,w,\\
+t&amp;=-\sin\theta\,v+\cos\theta\,w,\\
+e_j^\theta&amp;=\cos\theta\,e_j+\sin\theta\,f_j,\\
+f_j^\theta&amp;=-\sin\theta\,e_j+\cos\theta\,f_j .
+\end{aligned}
+\tag{3.7}
+\]</span>
+These formulas commute with every orthogonal change of frame, so define global data. Use the interval standard module over <span class="math" data-tex="\(A\widehat\otimes_R A\)">\(A\widehat\otimes_R A\)</span>, source <span class="math" data-tex="\(A\)">\(A\)</span> represented by its functions in <span class="math" data-tex="\(t\)">\(t\)</span> and its Clifford generators <span class="math" data-tex="\(f_j^\theta\)">\(f_j^\theta\)</span>, and operator
+<span class="math math-display" data-tex="\[
+\frac{\sum_ju_je_j^\theta}{\sqrt{1+\|u\|^2}}.
+\tag{3.8}
+\]">\[
+\frac{\sum_ju_je_j^\theta}{\sqrt{1+\|u\|^2}}.
+\tag{3.8}
+\]</span>
+The graded source commutators vanish. Its localized square defect vanishes uniformly at infinity: <span class="math" data-tex="\(\|u\|^2+\|t\|^2=\|v\|^2+\|w\|^2\)">\(\|u\|^2+\|t\|^2=\|v\|^2+\|w\|^2\)</span>, so either the inverse quadratic factor is small or the source function is small. Joint continuity gives strict multiplier continuity and an actual interval cycle. Operator-norm continuity of the multiplier is unnecessary.</p>
+<p>The endpoints prove
+<span class="math math-display" data-tex="\[
+b_V\boxtimes_R1_A=[\rho]\boxtimes_R b_V,
+\tag{3.9}
+\]">\[
+b_V\boxtimes_R1_A=[\rho]\boxtimes_R b_V,
+\tag{3.9}
+\]</span>
+where <span class="math" data-tex="\(\rho\)">\(\rho\)</span> reflects both the fibre coordinate and the Clifford vector. Compose with <span class="math" data-tex="\(1_A\boxtimes_R a_V\)">\(1_A\boxtimes_R a_V\)</span>. The left side is <span class="math" data-tex="\(a_Vb_V\)">\(a_Vb_V\)</span>; the right side is <span class="math" data-tex="\([\rho]\)">\([\rho]\)</span>, by the first identity. Thus <span class="math" data-tex="\(p=a_Vb_V\)">\(p=a_Vb_V\)</span> is invertible, since <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is an automorphism. It is also idempotent:
+<span class="math math-display" data-tex="\[
+p^2=a_V(b_Va_V)b_V=p.
+\tag{3.10}
+\]">\[
+p^2=a_V(b_Va_V)b_V=p.
+\tag{3.10}
+\]</span>
+An invertible idempotent is the identity, proving the second equation of (3.1). Every product and homotopy is <span class="math" data-tex="\(R\)">\(R\)</span>-linear; Lemma 1.1 justifies the displayed associativity even for nonmetrizable <span class="math" data-tex="\(X\)">\(X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-removing-the-doubled-clifford-algebra">4. Removing the doubled Clifford algebra</h2>
+<p>There is a useful version with the Clifford algebra in the source rather than the coefficient:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x_V\in KK_R(C,B),\\
+y_V\in KK_R(B,C).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+x_V\in KK_R(C,B),\\
+y_V\in KK_R(B,C).
+\end{gathered}
+\tag{4.1}
+\]</span>
+We describe its Morita correspondence, including its grading.</p>
+<p>Let <span class="math" data-tex="\(M=\Gamma(\Lambda^*V_{\mathbb C})\)">\(M=\Gamma(\Lambda^*V_{\mathbb C})\)</span> as a finite Hilbert <span class="math" data-tex="\(R\)">\(R\)</span>-module. Represent the first copy of <span class="math" data-tex="\(C\)">\(C\)</span> by <span class="math" data-tex="\(c_j\)">\(c_j\)</span>, and the second by <span class="math" data-tex="\(i\widehat c_j\)">\(i\widehat c_j\)</span>. These are odd self-adjoint anticommuting Clifford families. Give <span class="math" data-tex="\(M\)">\(M\)</span> the grading
+<span class="math math-display" data-tex="\[
+\Gamma_M=(-1)^{n(n-1)/2}(-1)^N.
+\tag{4.2}
+\]">\[
+\Gamma_M=(-1)^{n(n-1)/2}(-1)^N.
+\tag{4.2}
+\]</span>
+It is the chirality for the ordered doubled frame, first all <span class="math" data-tex="\(e_j\)">\(e_j\)</span>, then all <span class="math" data-tex="\(f_j\)">\(f_j\)</span>. To check the sign, the chirality for the interleaved frame is <span class="math" data-tex="\(\prod_j(-i c_j\,i\widehat c_j)=(-1)^N\)">\(\prod_j(-i c_j\,i\widehat c_j)=(-1)^N\)</span>; sorting that frame takes <span class="math" data-tex="\(n(n-1)/2\)">\(n(n-1)/2\)</span> exchanges of odd generators.</p>
+<p><strong>Lemma 4.1 (double Clifford Morita correspondence).</strong> The representation gives a graded isomorphism
+<span class="math math-display" data-tex="\[
+C\widehat\otimes_R C\cong\operatorname{End}_R(M).
+\tag{4.3}
+\]">\[
+C\widehat\otimes_R C\cong\operatorname{End}_R(M).
+\tag{4.3}
+\]</span>
+Thus <span class="math" data-tex="\(M\)">\(M\)</span> is a graded Morita correspondence to <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><strong>Proof.</strong> In a fibre, the two Clifford families recover exterior multiplication and contraction by
+<span class="math math-display" data-tex="\[
+\varepsilon_j=(c_j-i f_j)/2,\qquad
+\iota_j=(c_j+i f_j)/2.
+\]">\[
+\varepsilon_j=(c_j-i f_j)/2,\qquad
+\iota_j=(c_j+i f_j)/2.
+\]</span>
+The product <span class="math" data-tex="\(\prod_j\iota_j\varepsilon_j\)">\(\prod_j\iota_j\varepsilon_j\)</span> is the vacuum projection. Multiplication on the left and right by exterior creations and contractions gives every matrix unit in the exterior basis. The representation is onto. Both sides have dimension <span class="math" data-tex="\(2^{2n}\)">\(2^{2n}\)</span>, so it is injective. The construction respects frame changes and (4.2), proving the bundle and section assertion.</p>
+<p>The usual left inner product is the rank-one operator <span class="math" data-tex="\(\theta_{\xi,\eta}\)">\(\theta_{\xi,\eta}\)</span>, identified through (4.3), and the right inner product is the Hermitian fibre inner product. Their compatibility is the rank-one formula. Finite partitions of unity and local frames make the module finitely generated projective. Its inner products span both coefficient algebras; the right span contains the constant one through the vacuum section. Its dual is the inverse Morita correspondence by evaluation of these inner products. All left actions are compact, so the zero operators give the two Morita cycles and their explicit inverse products. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Extend <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span>, denoting that correspondence by <span class="math" data-tex="\(M_B\)">\(M_B\)</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+x_V&amp;=(b_V\boxtimes_R1_C)
+       \widehat\otimes_{B\widehat\otimes_R C\widehat\otimes_R C}M_B,\\
+y_V&amp;=M_B^*
+       \widehat\otimes_{B\widehat\otimes_R C\widehat\otimes_R C}
+          (a_V\boxtimes_R1_C).
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+x_V&amp;=(b_V\boxtimes_R1_C)
+       \widehat\otimes_{B\widehat\otimes_R C\widehat\otimes_R C}M_B,\\
+y_V&amp;=M_B^*
+       \widehat\otimes_{B\widehat\otimes_R C\widehat\otimes_R C}
+          (a_V\boxtimes_R1_C).
+\end{aligned}
+\tag{4.4}
+\]</span>
+The first Clifford copy is the position copy in <span class="math" data-tex="\(b_V\)">\(b_V\)</span>; the source <span class="math" data-tex="\(C\)">\(C\)</span> is the second copy. This order matters.</p>
+<p><strong>Theorem 4.2 (Clifford Thom equivalence).</strong> For every compact Hausdorff base,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+x_V\widehat\otimes_B y_V&amp;=1_C,\\
+y_V\widehat\otimes_C x_V&amp;=1_B.
+\end{aligned}
+\tag{4.5}
+\]">\[
+\begin{aligned}
+x_V\widehat\otimes_B y_V&amp;=1_C,\\
+y_V\widehat\otimes_C x_V&amp;=1_B.
+\end{aligned}
+\tag{4.5}
+\]</span></p>
+<p><strong>Proof.</strong> In the first product cancel <span class="math" data-tex="\(M_B\widehat\otimes_BM_B^*\)">\(M_B\widehat\otimes_BM_B^*\)</span> to the identity correspondence, and then use
+<span class="math" data-tex="\((b_Va_V)\boxtimes_R1_C=1_C\)">\((b_Va_V)\boxtimes_R1_C=1_C\)</span>. In the second use
+<span class="math" data-tex="\((a_Vb_V)\boxtimes_R1_C=1_{B\widehat\otimes_R C\widehat\otimes_R C}\)">\((a_Vb_V)\boxtimes_R1_C=1_{B\widehat\otimes_R C\widehat\otimes_R C}\)</span>, and cancel the dual Morita pair. These are the explicit evaluation tensor unitaries from Lemma 4.1 and the two equations of Theorem 3.1. Associativity is supplied by Lemma 1.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, <span class="math" data-tex="\(x_V\)">\(x_V\)</span> has the concrete module <span class="math" data-tex="\(C_0(V,\pi^*\Lambda^*V_{\mathbb C})\)">\(C_0(V,\pi^*\Lambda^*V_{\mathbb C})\)</span>, source Clifford action <span class="math" data-tex="\(i\widehat c\)">\(i\widehat c\)</span>, grading (4.2), and position operator <span class="math" data-tex="\(c(v)/\sqrt{1+\|v\|^2}\)">\(c(v)/\sqrt{1+\|v\|^2}\)</span>. Formula (4.4) supplies its Dirac inverse.</p>
+<h2 id="5-spinors-and-the-positive-thom-class">5. Spinors and the positive Thom class</h2>
+<p>For an oriented Euclidean bundle, a spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure is a lift of its oriented orthonormal frame bundle to
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Spin}^{c}(n)\\
+ =(\operatorname{Spin}(n)\times U(1))/\{\pm(1,1)\}.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\operatorname{Spin}^{c}(n)\\
+ =(\operatorname{Spin}(n)\times U(1))/\{\pm(1,1)\}.
+\end{gathered}
+\tag{5.1}
+\]</span>
+The spin group acts on its usual complex spin representation and <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span> acts by scalars. The determinant line <span class="math" data-tex="\(L\)">\(L\)</span> is the associated line for the character <span class="math" data-tex="\([s,\lambda]\mapsto\lambda^2\)">\([s,\lambda]\mapsto\lambda^2\)</span>.</p>
+<p>In even rank <span class="math" data-tex="\(n=2r\)">\(n=2r\)</span>, the associated spinor bundle <span class="math" data-tex="\(S=S^+\oplus S^-\)">\(S=S^+\oplus S^-\)</span> has rank <span class="math" data-tex="\(2^r\)">\(2^r\)</span>, and Clifford multiplication is odd and self-adjoint. Its grading is the chirality
+<span class="math math-display" data-tex="\[
+\Gamma_S=(-i)^r c(e_1)\cdots c(e_{2r})
+\tag{5.2}
+\]">\[
+\Gamma_S=(-i)^r c(e_1)\cdots c(e_{2r})
+\tag{5.2}
+\]</span>
+in a positively oriented orthonormal frame. This is the convention established by the Pauli-matrix model in the Clifford lesson.</p>
+<p><strong>Proposition 5.1 (spinor Morita equivalence).</strong> In even rank the spinor action identifies
+<span class="math math-display" data-tex="\[
+\Gamma(\operatorname{Cl}(V))
+ \cong\operatorname{End}_{C(X)}\Gamma(S).
+\tag{5.3}
+\]">\[
+\Gamma(\operatorname{Cl}(V))
+ \cong\operatorname{End}_{C(X)}\Gamma(S).
+\tag{5.3}
+\]</span>
+Thus <span class="math" data-tex="\(\Gamma(S)\)">\(\Gamma(S)\)</span>, and also <span class="math" data-tex="\(\Gamma(S\otimes L^{-1})\)">\(\Gamma(S\otimes L^{-1})\)</span>, are graded Morita correspondences from <span class="math" data-tex="\(C\)">\(C\)</span> to <span class="math" data-tex="\(R\)">\(R\)</span>. In odd rank, a spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure gives a graded Morita correspondence from <span class="math" data-tex="\(C\)">\(C\)</span> to <span class="math" data-tex="\(R\widehat\otimes C_1\)">\(R\widehat\otimes C_1\)</span>.</p>
+<p><strong>Proof.</strong> The even-rank assertion is the fibre matrix-algebra isomorphism from the Clifford lesson, conjugated by the spinor transition maps. It gives an isomorphism of algebra bundles and hence of section algebras. The spinor section module is finitely generated projective, by finite local frames and a partition of unity. Its compact operators are all its endomorphisms. The inner-product evaluation unitaries prove the two Morita identities as in Lemma 4.1. Twisting by a line bundle does not change the endomorphism algebra or fullness.</p>
+<p>For rank <span class="math" data-tex="\(2r+1\)">\(2r+1\)</span>, let <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> be the ungraded irreducible spinor bundle of rank <span class="math" data-tex="\(2^r\)">\(2^r\)</span>, in the Clifford branch fixed by the orientation. On <span class="math" data-tex="\(\Delta\otimes C_1\)">\(\Delta\otimes C_1\)</span>, regarded as a right <span class="math" data-tex="\(R\otimes C_1\)">\(R\otimes C_1\)</span>-module, represent a real vector <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(c_\Delta(v)\otimes\epsilon\)">\(c_\Delta(v)\otimes\epsilon\)</span>, where <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> is the odd generator of <span class="math" data-tex="\(C_1\)">\(C_1\)</span>; grade only the <span class="math" data-tex="\(C_1\)">\(C_1\)</span> factor. These operators are odd self-adjoint Clifford operators. Even Clifford words give all endomorphisms of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> times <span class="math" data-tex="\(1\)">\(1\)</span>, and odd words give all endomorphisms times <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. The fibre map onto <span class="math" data-tex="\(\operatorname{End}(\Delta)\widehat\otimes C_1\)">\(\operatorname{End}(\Delta)\widehat\otimes C_1\)</span> is therefore an isomorphism by the equal dimensions. Spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> transition maps intertwine it. Finite generation, fullness and the evaluation identities follow exactly as in even rank. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A choice of spinor convention is needed to turn (4.5) into a particular Thom class. We choose the outward spinor symbol. In even rank it is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal E_V=C_0(V,\pi^*S),\\
+F_S(v)=\frac{c_S(v)}{\sqrt{1+\|v\|^2}},\\
+\tau_V=[(\mathcal E_V,\pi^*,F_S)]\\
+\in KK_R(R,B).
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+\mathcal E_V=C_0(V,\pi^*S),\\
+F_S(v)=\frac{c_S(v)}{\sqrt{1+\|v\|^2}},\\
+\tau_V=[(\mathcal E_V,\pi^*,F_S)]\\
+\in KK_R(R,B).
+\end{gathered}
+\tag{5.4}
+\]</span>
+Its cycle axioms follow directly from <span class="math" data-tex="\(c_S(v)^2=\|v\|^2\)">\(c_S(v)^2=\|v\|^2\)</span>, finite rank, and compactness of the base. The following sign and line-bundle check identifies the correct Morita reduction.</p>
+<p><strong>Lemma 5.2 (spinor reduction of the Clifford Thom cycle).</strong> Let <span class="math" data-tex="\(N=\Gamma(S\otimes L^{-1})\)">\(N=\Gamma(S\otimes L^{-1})\)</span>, with its <span class="math" data-tex="\(C\)">\(C\)</span>-<span class="math" data-tex="\(R\)">\(R\)</span> Morita structure. Then
+<span class="math math-display" data-tex="\[
+\tau_V=[N^*]\widehat\otimes_C x_V.
+\tag{5.5}
+\]">\[
+\tau_V=[N^*]\widehat\otimes_C x_V.
+\tag{5.5}
+\]</span></p>
+<p><strong>Proof.</strong> Work first in an oriented orthonormal fibre. The doubled module of Lemma 4.1 decomposes under the second Clifford action as a spinor for that action tensored with a multiplicity space. Its graded decomposition has
+<span class="math" data-tex="\(\Gamma_M=\Gamma_c\Gamma_f\)">\(\Gamma_M=\Gamma_c\Gamma_f\)</span>, by the sorted chirality in (4.2). After removing the source spinor, the remaining position Clifford action therefore has grading <span class="math" data-tex="\(\Gamma_c\)">\(\Gamma_c\)</span>. It is the positive irreducible spinor representation, rather than its grading reverse. The matrix-algebra classification from the Clifford lesson supplies an even unitary identifying it with <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>We check transition maps, which is necessary for a bundle statement. A spin lift acts on the doubled module by the product of its actions in the two Clifford copies. Indeed it conjugates both vector families by the same orthogonal map; on exterior forms this is precisely the exterior action. One can check this on a plane rotation: the infinitesimal generator is
+<span class="math" data-tex="\((c_jc_k-\widehat c_j\widehat c_k)/2\)">\((c_jc_k-\widehat c_j\widehat c_k)/2\)</span>, the generator of the exterior rotation. Plane rotations generate the spin group, and the central <span class="math" data-tex="\(-1\)">\(-1\)</span> acts twice, hence trivially, on the doubled module.</p>
+<p>The doubled module is associated to the orthogonal frame bundle, so the scalar <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> in (5.1) acts trivially on it. The source module <span class="math" data-tex="\(N=S\otimes L^{-1}\)">\(N=S\otimes L^{-1}\)</span> has scalar action <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>. Removing it leaves scalar action <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, exactly the action on <span class="math" data-tex="\(S\)">\(S\)</span>. The remaining spin action is the position spin representation already identified above. Thus the fibre unitary intertwines the full spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> transition maps and is a global even bundle unitary. Under the graded tensor evaluation it sends the position operator to <span class="math" data-tex="\(c_S(v)\)">\(c_S(v)\)</span> and the source action to pullback of <span class="math" data-tex="\(R\)">\(R\)</span>. It therefore identifies the cycles in (5.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The determinant twist in (5.5) fixes which spinor symbol is used. Using <span class="math" data-tex="\(S\)">\(S\)</span> instead of <span class="math" data-tex="\(S\otimes L^{-1}\)">\(S\otimes L^{-1}\)</span> for the source Morita correspondence would give the outward symbol twisted by <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span>.</p>
+<p><strong>Theorem 5.3 (the spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> Thom isomorphism).</strong> A spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> rank-<span class="math" data-tex="\(n\)">\(n\)</span> bundle over a compact Hausdorff base has an invertible class
+<span class="math math-display" data-tex="\[
+\tau_V\in KK_R^n(R,B).
+\tag{5.6}
+\]">\[
+\tau_V\in KK_R^n(R,B).
+\tag{5.6}
+\]</span>
+Consequently, in both degrees modulo two,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_i(C(X))\xrightarrow{\ \cong\ }K_{i+n}(C_0(V)),\\
+a\longmapsto a\widehat\otimes_R\tau_V.
+\end{gathered}
+\tag{5.7}
+\]">\[
+\begin{gathered}
+K_i(C(X))\xrightarrow{\ \cong\ }K_{i+n}(C_0(V)),\\
+a\longmapsto a\widehat\otimes_R\tau_V.
+\end{gathered}
+\tag{5.7}
+\]</span>
+On an oriented trivial fibre this is <span class="math" data-tex="\((-1)^{n(n-1)/2}\)">\((-1)^{n(n-1)/2}\)</span> times the ordered product of the positive one-dimensional Bott classes; in a complex line its even symbol is <span class="math" data-tex="\(z\)">\(z\)</span> from even to odd spinors.</p>
+<p><strong>Proof.</strong> For even <span class="math" data-tex="\(n\)">\(n\)</span>, combine (5.5), Proposition 5.1 and Theorem 4.2. An explicit inverse is
+<span class="math math-display" data-tex="\[
+\eta_V=y_V\widehat\otimes_C[N].
+\tag{5.8}
+\]">\[
+\eta_V=y_V\widehat\otimes_C[N].
+\tag{5.8}
+\]</span>
+The two Morita evaluation identities and (4.5) give
+<span class="math" data-tex="\(\tau_V\eta_V=1_R\)">\(\tau_V\eta_V=1_R\)</span> and <span class="math" data-tex="\(\eta_V\tau_V=1_B\)">\(\eta_V\tau_V=1_B\)</span>.</p>
+<p>For odd rank take the ungraded spinor bundle <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> in the positive-volume branch, so that <span class="math" data-tex="\((-i)^{(n-1)/2}\prod_jc_\Delta(e_j)=1\)">\((-i)^{(n-1)/2}\prod_jc_\Delta(e_j)=1\)</span>. The right odd cycle has module <span class="math" data-tex="\(C_0(V,\pi^*\Delta)\widehat\otimes C_1\)">\(C_0(V,\pi^*\Delta)\widehat\otimes C_1\)</span>, graded by the last factor, and operator <span class="math" data-tex="\(c_\Delta(v)\otimes\epsilon/\sqrt{1+\|v\|^2}\)">\(c_\Delta(v)\otimes\epsilon/\sqrt{1+\|v\|^2}\)</span>. Its compact defect and source commutator are exactly those of the even position cycle. This defines the outward class <span class="math" data-tex="\(\tau_V\)">\(\tau_V\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be a positive trivial real line. Proposition 7.2 below proves directly from the position operators, without using invertibility, that <span class="math" data-tex="\(\tau_V\boxtimes_R\tau_\ell=-\tau_{V\oplus\ell}\)">\(\tau_V\boxtimes_R\tau_\ell=-\tau_{V\oplus\ell}\)</span>. Put <span class="math" data-tex="\(u=1_B\boxtimes\tau_{\mathbb R}\)">\(u=1_B\boxtimes\tau_{\mathbb R}\)</span> and <span class="math" data-tex="\(v=1_B\boxtimes\eta_{\mathbb R}\)">\(v=1_B\boxtimes\eta_{\mathbb R}\)</span>, with <span class="math" data-tex="\(uv=1_B\)">\(uv=1_B\)</span> and <span class="math" data-tex="\(vu=1_{C_0(V\oplus\ell)}\)">\(vu=1_{C_0(V\oplus\ell)}\)</span>. The even case gives the inverse <span class="math" data-tex="\(\eta_{V\oplus\ell}\)">\(\eta_{V\oplus\ell}\)</span>. Consequently <span class="math" data-tex="\(\tau_V=-\tau_{V\oplus\ell}v\)">\(\tau_V=-\tau_{V\oplus\ell}v\)</span> and <span class="math" data-tex="\(\eta_V=-u\eta_{V\oplus\ell}\)">\(\eta_V=-u\eta_{V\oplus\ell}\)</span> are inverse classes. Associating these two displayed products proves both inverse identities. This is the ordered addition and removal of a last line, including its required sign.</p>
+<p>Here is the orientation check in those maps. For one real line the doubled model has source <span class="math" data-tex="\(i\widehat c=\sigma_2\)">\(i\widehat c=\sigma_2\)</span>, operator <span class="math" data-tex="\(h(v)\sigma_1\)">\(h(v)\sigma_1\)</span>, and grading <span class="math" data-tex="\(\sigma_3\)">\(\sigma_3\)</span>, where <span class="math" data-tex="\(h(v)=v/\sqrt{1+v^2}\)">\(h(v)=v/\sqrt{1+v^2}\)</span>. The even unitary <span class="math" data-tex="\(\exp(i\pi\sigma_3/4)\)">\(\exp(i\pi\sigma_3/4)\)</span> sends it to source <span class="math" data-tex="\(\sigma_1\)">\(\sigma_1\)</span> and operator <span class="math" data-tex="\(-h(v)\sigma_2\)">\(-h(v)\sigma_2\)</span>. Proposition 7.1 of the Bott lesson identifies precisely this left-Clifford cycle with the positive cone class. The right odd transfer therefore gives the positive one-dimensional class. When several odd classes are multiplied, the course's right-Clifford product orders the second cycle's original generator before the first cycle's auxiliary generator. Proposition 7.2 below computes the resulting sign: on a positively oriented <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, the outward spinor class is <span class="math" data-tex="\((-1)^{n(n-1)/2}\)">\((-1)^{n(n-1)/2}\)</span> times the ordered exterior product of the positive one-dimensional classes. Adding and removing a last line uses this same sign. The graded Clifford equivalence before scalar transfer has no such scalar-degree conversion.</p>
+<p>In a complex line the spinor model is <span class="math" data-tex="\(S^+=\mathbb C\)">\(S^+=\mathbb C\)</span>, <span class="math" data-tex="\(S^-=\mathbb C\)">\(S^-=\mathbb C\)</span>, with
+<span class="math math-display" data-tex="\[
+c_S(x+iy)=
+\begin{pmatrix}0&amp;x-iy\\x+iy&amp;0\end{pmatrix}.
+\tag{5.9}
+\]">\[
+c_S(x+iy)=
+\begin{pmatrix}0&amp;x-iy\\x+iy&amp;0\end{pmatrix}.
+\tag{5.9}
+\]</span>
+Its lower-left symbol is <span class="math" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>. The explicit self-adjoint disc lift in <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-planar-bott">Theorem RK.6</a> therefore gives exactly the positive planar class <span class="math" data-tex="\([q]-[\operatorname{diag}(0,1)]\)">\([q]-[\operatorname{diag}(0,1)]\)</span> in that comparison convention. Graded tensor products of these models prove the complex higher-rank assertion.</p>
+<p>Finally multiply K-theory classes by the inverse pair. The associativity proof applies by Lemma 1.1; for scalar-source cycles one can adjoin the central right <span class="math" data-tex="\(R\)">\(R\)</span>-action on the essential scalar summand. Clifford dilation gives the same argument in odd degree. This proves bijectivity in (5.7). For a vector bundle <span class="math" data-tex="\(E\)">\(E\)</span> representing <span class="math" data-tex="\(a\in K^0(X)\)">\(a\in K^0(X)\)</span>, the tensor module is <span class="math" data-tex="\(\pi^*E\otimes\pi^*S\)">\(\pi^*E\otimes\pi^*S\)</span> and its operator is <span class="math" data-tex="\(1_E\otimes c_S(v)/\sqrt{1+\|v\|^2}\)">\(1_E\otimes c_S(v)/\sqrt{1+\|v\|^2}\)</span>. Thus the formula is the usual <span class="math" data-tex="\(\pi^*a\)">\(\pi^*a\)</span> times the Thom symbol, including bundle differences. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-complex-bundles-and-relative-symbols">6. Complex bundles and relative symbols</h2>
+<p><strong>Proposition 6.1 (the complex spinor bundle).</strong> A Hermitian complex rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle <span class="math" data-tex="\(E\)">\(E\)</span>, viewed as a real rank-<span class="math" data-tex="\(2r\)">\(2r\)</span> bundle, has a spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S=\Lambda^*E,\quad L=\det E,\\
+c(v)=\varepsilon_v+\iota_v.
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+S=\Lambda^*E,\quad L=\det E,\\
+c(v)=\varepsilon_v+\iota_v.
+\end{gathered}
+\tag{6.1}
+\]</span>
+Its Thom class is the relative triple
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\left(\pi^*\Lambda^{\rm even}E,\pi^*\Lambda^{\rm odd}E,\sigma\right),\\
+\sigma=c(v)^+\big|_{S(E)}.
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+\left(\pi^*\Lambda^{\rm even}E,\pi^*\Lambda^{\rm odd}E,\sigma\right),\\
+\sigma=c(v)^+\big|_{S(E)}.
+\end{gathered}
+\tag{6.2}
+\]</span>
+The comparison on the sphere is unitary. At the zero section <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+s^*\tau_E=\lambda_{-1}(E)\\
+=\sum_{j=0}^r(-1)^j[\Lambda^jE].
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+s^*\tau_E=\lambda_{-1}(E)\\
+=\sum_{j=0}^r(-1)^j[\Lambda^jE].
+\end{gathered}
+\tag{6.3}
+\]</span></p>
+<p><strong>Proof.</strong> Exterior multiplication and its Hermitian adjoint give
+<span class="math" data-tex="\(\{c(v),c(w)\}=2\operatorname{Re}\langle v,w\rangle\)">\(\{c(v),c(w)\}=2\operatorname{Re}\langle v,w\rangle\)</span>. In a unitary frame with ordered real basis <span class="math" data-tex="\(e_1,ie_1,\ldots,e_r,ie_r\)">\(e_1,ie_1,\ldots,e_r,ie_r\)</span>, these are the tensor Pauli generators. They generate every endomorphism of <span class="math" data-tex="\(\Lambda^*E\)">\(\Lambda^*E\)</span>, and their chirality is its form parity. Hence this is an irreducible graded Clifford module.</p>
+<p>For completeness, this supplies an actual spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> lift. The group of pairs <span class="math" data-tex="\((g,u)\)">\((g,u)\)</span>, with <span class="math" data-tex="\(g\in SO(2r)\)">\(g\in SO(2r)\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> an even unitary implementing <span class="math" data-tex="\(c(gv)\)">\(c(gv)\)</span>, is <span class="math" data-tex="\(\operatorname{Spin}^{c}(2r)\)">\(\operatorname{Spin}^{c}(2r)\)</span>. A spin lift supplies one such unitary for every <span class="math" data-tex="\(g\)">\(g\)</span>; two implementers differ by a scalar because the Clifford matrices generate the full endomorphism algebra. The map from <span class="math" data-tex="\(\operatorname{Spin}(2r)\times U(1)\)">\(\operatorname{Spin}(2r)\times U(1)\)</span> consequently has precisely the kernel <span class="math" data-tex="\(\{(1,1),(-1,-1)\}\)">\(\{(1,1),(-1,-1)\}\)</span>. The unitary group <span class="math" data-tex="\(U(r)\)">\(U(r)\)</span> maps continuously to this implementer group by <span class="math" data-tex="\(g\mapsto(g,\Lambda^*g)\)">\(g\mapsto(g,\Lambda^*g)\)</span>. Applying it to the unitary frame transitions gives the required lift.</p>
+<p>Its determinant character is <span class="math" data-tex="\(\det g\)">\(\det g\)</span>. On a diagonal unitary rotation of angles <span class="math" data-tex="\(\theta_j\)">\(\theta_j\)</span>, the exterior representation differs from the spin representation by the scalar <span class="math" data-tex="\(\exp(i\sum_j\theta_j/2)\)">\(\exp(i\sum_j\theta_j/2)\)</span>, whose square is <span class="math" data-tex="\(\det g\)">\(\det g\)</span>. Every unitary is unitarily diagonalizable; conjugation preserves both characters, proving the equality for all <span class="math" data-tex="\(g\)">\(g\)</span>. This proves <span class="math" data-tex="\(L=\det E\)">\(L=\det E\)</span>.</p>
+<p>The compact Hausdorff ball/sphere identification and both inverse relative-bundle maps in <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-difference">Theorems RK.3–RK.4</a> turn the outward symbol (5.4) into (6.2). <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-symbol-rules">Corollary RK.4a</a> proves the symbol and zero-section rules for these actual comparisons. On the unit sphere <span class="math" data-tex="\(c(v)^2=1\)">\(c(v)^2=1\)</span>, so its even-to-odd block is unitary. Restriction to the zero section forgets that boundary comparison and gives the difference of the two bundles, namely (6.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a line bundle the triple is simply
+<span class="math math-display" data-tex="\[
+(\mathbf1,\pi^*E,\ \lambda\mapsto\lambda v).
+\tag{6.4}
+\]">\[
+(\mathbf1,\pi^*E,\ \lambda\mapsto\lambda v).
+\tag{6.4}
+\]</span>
+This formula keeps track of the actual bundle and comparison, rather than just the fibre winding.</p>
+<h2 id="7-pullback-and-direct-sums">7. Pullback and direct sums</h2>
+<p><strong>Theorem 7.1 (naturality).</strong> Let <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span> be a continuous map of compact Hausdorff spaces. Give <span class="math" data-tex="\(f^*V\)">\(f^*V\)</span> the pulled-back metric and spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure. Its total-space map <span class="math" data-tex="\(\widetilde f:f^*V\to V\)">\(\widetilde f:f^*V\to V\)</span> is proper, and
+<span class="math math-display" data-tex="\[
+\widetilde f^*(\tau_V)=\tau_{f^*V}
+\tag{7.1}
+\]">\[
+\widetilde f^*(\tau_V)=\tau_{f^*V}
+\tag{7.1}
+\]</span>
+as Thom symbols. In K-theory,
+<span class="math math-display" data-tex="\[
+\widetilde f^*\bigl(\pi^*a\,\tau_V\bigr)
+ =\pi_Y^*f^*a\,\tau_{f^*V}.
+\tag{7.2}
+\]">\[
+\widetilde f^*\bigl(\pi^*a\,\tau_V\bigr)
+ =\pi_Y^*f^*a\,\tau_{f^*V}.
+\tag{7.2}
+\]</span>
+The Clifford equivalence and its inverse pull back as well.</p>
+<p><strong>Proof.</strong> A compact subset of <span class="math" data-tex="\(V\)">\(V\)</span> is norm bounded. Its inverse image under <span class="math" data-tex="\(\widetilde f\)">\(\widetilde f\)</span> is closed in a norm-bounded ball bundle over the compact base <span class="math" data-tex="\(Y\)">\(Y\)</span>, hence compact. This proves properness and gives the pullback homomorphism on <span class="math" data-tex="\(C_0\)">\(C_0\)</span>-algebras.</p>
+<p>Pulling back the position module gives the module of sections of the pulled-back spinor bundle, and its operator is still <span class="math" data-tex="\(c(v)/\sqrt{1+\|v\|^2}\)">\(c(v)/\sqrt{1+\|v\|^2}\)</span>. The fibre isometry in the definition of <span class="math" data-tex="\(f^*V\)">\(f^*V\)</span> preserves <span class="math" data-tex="\(v\)">\(v\)</span>, its norm, and both Clifford actions. Thus the cycle identification proves (7.1), including in the odd model with the additional last line.</p>
+<p>More explicitly, the position module scalar-extension map sends <span class="math" data-tex="\(\xi\otimes b\)">\(\xi\otimes b\)</span> to <span class="math" data-tex="\((\xi\circ\widetilde f)b\)">\((\xi\circ\widetilde f)b\)</span>. Its inner-product formula is that for scalar extension. Its range is dense by local frames and finite partitions, so it is the claimed module unitary. The same argument for the finite Morita modules preserves (4.2).</p>
+<p>For the inverse, scalar extension of the vertical <span class="math" data-tex="\(L^2\)">\(L^2\)</span> module has the pulled-back Hilbert field. Local smooth fibre sections are dense in both modules; on them the fibre-integral inner products, Dirac operators and inverse resolvents agree. This proves the inverse-cycle identification and its graph-domain compatibility. Every homotopy in Theorem 3.1 has these same frame-invariant formulas, so the inverse identities also pull back.</p>
+<p>For a bundle representative of <span class="math" data-tex="\(a\)">\(a\)</span>, tensor its pullback with the pulled-back spinor symbol. This gives (7.2) directly; differences and Clifford suspension give both degrees. Equivalently, the Clifford statement is the KK equality
+<span class="math math-display" data-tex="\[
+[C_f]\widehat\otimes_{C_{f^*V}}x_{f^*V}
+ =x_V\widehat\otimes_B[B_f],
+\tag{7.3}
+\]">\[
+[C_f]\widehat\otimes_{C_{f^*V}}x_{f^*V}
+ =x_V\widehat\otimes_B[B_f],
+\tag{7.3}
+\]</span>
+where <span class="math" data-tex="\(C_f\)">\(C_f\)</span> and <span class="math" data-tex="\(B_f\)">\(B_f\)</span> are the Clifford and total-space pullback homomorphisms. Both sides have the same position cycle just identified. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Metric choices cause no ambiguity. Join two metrics through their convex interpolation, and transport Clifford vectors by the positive fibrewise isometry between them. The same formulas give a cycle on the compact base cylinder. Endpoint evaluation proves metric independence with the given spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure.</p>
+<p><strong>Proposition 7.2 (ordered direct sums).</strong> For spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> bundles <span class="math" data-tex="\(V,W\)">\(V,W\)</span> of ranks <span class="math" data-tex="\(r,s\)">\(r,s\)</span> over <span class="math" data-tex="\(X\)">\(X\)</span>, using the ordinary oriented direct-sum spinor convention with <span class="math" data-tex="\(V\)">\(V\)</span> first and the course's right-Clifford degree products,
+<span class="math math-display" data-tex="\[
+\tau_{V\oplus W}=(-1)^{rs}\tau_V\boxtimes_R\tau_W.
+\tag{7.4}
+\]">\[
+\tau_{V\oplus W}=(-1)^{rs}\tau_V\boxtimes_R\tau_W.
+\tag{7.4}
+\]</span>
+For a trivial bundle this is <span class="math" data-tex="\(1_X\boxtimes\tau_{\mathbb R^n}\)">\(1_X\boxtimes\tau_{\mathbb R^n}\)</span>.</p>
+<p><strong>Proof.</strong> In even rank the spinor module is the graded tensor product, and the unbounded symbol is
+<span class="math math-display" data-tex="\[
+c_V(v)\widehat\otimes1+1\widehat\otimes c_W(w).
+\tag{7.5}
+\]">\[
+c_V(v)\widehat\otimes1+1\widehat\otimes c_W(w).
+\tag{7.5}
+\]</span>
+Its square is <span class="math" data-tex="\(\|v\|^2+\|w\|^2\)">\(\|v\|^2+\|w\|^2\)</span>, since the two odd summands anticommute. Its explicit inverse resolvents prove regularity. The domain is contained in each summand's domain. Creations from compactly supported smooth first-factor spinors have bounded error, namely creation by <span class="math" data-tex="\(c_V(v)\xi\)">\(c_V(v)\xi\)</span>, and the positivity form for the first summand is <span class="math" data-tex="\(2\|v\|^2\geq0\)">\(2\|v\|^2\geq0\)</span>. Its inverse resolvent is locally compact on the finite-rank symbol module. The product criterion identifies its bounded transform with the external product. It is exactly the direct-sum symbol. The central argument applies over any compact <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>We spell out the odd transfer. If just one rank is odd, the scalar odd operator is the usual direct-sum spinor position operator: for an even first factor it is <span class="math" data-tex="\(c_V(v)\otimes1+\Gamma_V\otimes c_W(w)\)">\(c_V(v)\otimes1+\Gamma_V\otimes c_W(w)\)</span>; for an even second factor it is <span class="math" data-tex="\(c_V(v)\otimes\Gamma_W+1\otimes c_W(w)\)">\(c_V(v)\otimes\Gamma_W+1\otimes c_W(w)\)</span>. Ordered volume multiplication gives the positive odd spinor convention. Their squares, creation errors and first-factor positivity are the same ones checked above, in the right odd Clifford module. There is no sign in these two cases.</p>
+<p>If both ranks are odd, use the ungraded positive-volume spinor bundles <span class="math" data-tex="\(S_V,S_W\)">\(S_V,S_W\)</span>. The ordinary oriented direct sum has bundle <span class="math" data-tex="\(S_V\otimes S_W\otimes\mathbb C^2\)">\(S_V\otimes S_W\otimes\mathbb C^2\)</span>, grading <span class="math" data-tex="\(\sigma_3\)">\(\sigma_3\)</span>, and position operator
+<span class="math math-display" data-tex="\[
+Q_+=c_V(v)\otimes\sigma_1+c_W(w)\otimes\sigma_2.
+\tag{7.6}
+\]">\[
+Q_+=c_V(v)\otimes\sigma_1+c_W(w)\otimes\sigma_2.
+\tag{7.6}
+\]</span>
+The omitted tensor identities act on the other spinor factor. Write <span class="math" data-tex="\(r=2a+1,s=2b+1\)">\(r=2a+1,s=2b+1\)</span>. The positive odd volumes satisfy <span class="math" data-tex="\(\prod c_V=i^a\)">\(\prod c_V=i^a\)</span>, <span class="math" data-tex="\(\prod c_W=i^b\)">\(\prod c_W=i^b\)</span>; multiplying the ordered total volume gives <span class="math" data-tex="\((-i)^{a+b+1}i^{a+b}\sigma_1\sigma_2=\sigma_3\)">\((-i)^{a+b+1}i^{a+b}\sigma_1\sigma_2=\sigma_3\)</span>. This verifies the stated direct-sum grading globally. Spin transitions act on their own two spinor factors, so this calculation is a bundle identification.</p>
+<p>In the product, however, the original second Clifford generator comes first and the auxiliary first generator second. Their matrices are <span class="math" data-tex="\(-\sigma_2,\sigma_1\)">\(-\sigma_2,\sigma_1\)</span>, exactly as in Proposition 8.1 of <em>Connections and the existence of the Kasparov product</em>. Consequently its position operator is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q_-=c_V(v)\otimes\sigma_1-c_W(w)\otimes\sigma_2,\\
+\Gamma=\sigma_3.
+\end{gathered}
+\tag{7.7}
+\]">\[
+\begin{gathered}
+Q_-=c_V(v)\otimes\sigma_1-c_W(w)\otimes\sigma_2,\\
+\Gamma=\sigma_3.
+\end{gathered}
+\tag{7.7}
+\]</span>
+Its square is again <span class="math" data-tex="\(\|v\|^2+\|w\|^2\)">\(\|v\|^2+\|w\|^2\)</span>. Dense compactly supported creating sections have the fixed first position error; the Clifford anticommutation gives their creation sign and the adjoint error. The first-operator domain inclusion and positivity form <span class="math" data-tex="\(2\|v\|^2\)">\(2\|v\|^2\)</span> hold as before. The product criterion therefore gives this actual cycle. Conjugation by <span class="math" data-tex="\(1\otimes\sigma_1\)">\(1\otimes\sigma_1\)</span> sends <span class="math" data-tex="\(Q_-\)">\(Q_-\)</span> to <span class="math" data-tex="\(Q_+\)">\(Q_+\)</span> and sends its grading to <span class="math" data-tex="\(-\sigma_3\)">\(-\sigma_3\)</span>. Thus its class is the additive inverse of the ordinary direct-sum Thom class. This proves the minus sign when both ranks are odd and hence (7.4) in every parity.</p>
+<p>For two positive lines this is the elementary distinction between the symbols <span class="math" data-tex="\(x-iy\)">\(x-iy\)</span> and <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span>. Iteration gives the factor <span class="math" data-tex="\((-1)^{n(n-1)/2}\)">\((-1)^{n(n-1)/2}\)</span> stated in Theorem 5.3. For a trivial bundle all modules are the corresponding exterior scalar extensions of the actual fibre module, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-7-3-translating-an-ordered-coordinate-normalization">Corollary 7.3. Translating an ordered-coordinate normalization</h3>
+<p>Set <span class="math" data-tex="\(\epsilon_n=(-1)^{n(n-1)/2}\)">\(\epsilon_n=(-1)^{n(n-1)/2}\)</span>. In the right-Clifford product convention of this course, the rank-normalized symbols
+<span class="math math-display" data-tex="\[
+\widehat\tau_V=\epsilon_r\tau_V,
+\qquad r=\operatorname{rank}V,
+\]">\[
+\widehat\tau_V=\epsilon_r\tau_V,
+\qquad r=\operatorname{rank}V,
+\]</span>
+satisfy
+<span class="math math-display" data-tex="\[
+\widehat\tau_{V\oplus W}
+=\widehat\tau_V\boxtimes_R\widehat\tau_W.
+\tag{7.8}
+\]">\[
+\widehat\tau_{V\oplus W}
+=\widehat\tau_V\boxtimes_R\widehat\tau_W.
+\tag{7.8}
+\]</span>
+For an oriented trivial bundle, <span class="math" data-tex="\(\widehat\tau_{\mathbb R^n}\)">\(\widehat\tau_{\mathbb R^n}\)</span> is the ordered right-Clifford external product of its positive one-dimensional symbols. Equivalently, one may retain the outward symbols <span class="math" data-tex="\(\tau_V\)">\(\tau_V\)</span> and use the degree product
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x\boxtimes_{\mathrm{out}}y
+=(-1)^{rs}x\boxtimes_R y,\\
+|x|=r,\qquad |y|=s.
+\end{gathered}
+\tag{7.9}
+\]">\[
+\begin{gathered}
+x\boxtimes_{\mathrm{out}}y
+=(-1)^{rs}x\boxtimes_R y,\\
+|x|=r,\qquad |y|=s.
+\end{gathered}
+\tag{7.9}
+\]</span>
+Then the outward direct-sum symbols multiply without an additional sign.</p>
+<p><strong>Proof.</strong> The integer identity
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{(r+s)(r+s-1)}2
+&amp;=\frac{r(r-1)}2\\
+&amp;\quad+\frac{s(s-1)}2+rs.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{(r+s)(r+s-1)}2
+&amp;=\frac{r(r-1)}2\\
+&amp;\quad+\frac{s(s-1)}2+rs.
+\end{aligned}
+\]</span>
+gives <span class="math" data-tex="\(\epsilon_{r+s}=\epsilon_r\epsilon_s(-1)^{rs}\)">\(\epsilon_{r+s}=\epsilon_r\epsilon_s(-1)^{rs}\)</span>. Substitute Proposition 7.2 into <span class="math" data-tex="\(\epsilon_{r+s}\tau_{V\oplus W}\)">\(\epsilon_{r+s}\tau_{V\oplus W}\)</span>; the two factors <span class="math" data-tex="\((-1)^{rs}\)">\((-1)^{rs}\)</span> cancel. This proves (7.8). Starting with <span class="math" data-tex="\(\epsilon_1=1\)">\(\epsilon_1=1\)</span> and applying it successively to ordered trivial lines proves the coordinate assertion. Formula (7.9) and Proposition 7.2 give the second formulation directly. The product in (7.9) is associative: the signs for three degrees on its two sides are <span class="math" data-tex="\((-1)^{rs+(r+s)t}\)">\((-1)^{rs+(r+s)t}\)</span> and <span class="math" data-tex="\((-1)^{st+r(s+t)}\)">\((-1)^{st+r(s+t)}\)</span>, which agree. It has the same naturality and bilinearity as the original product.</p>
+<p>The degreewise conversion is explicit: multiplication by <span class="math" data-tex="\(\epsilon_n\)">\(\epsilon_n\)</span> takes the right-Clifford product to (7.9), since
+<span class="math math-display" data-tex="\[
+\epsilon_{r+s}(x\boxtimes_R y)
+=(\epsilon_r x)\boxtimes_{\mathrm{out}}(\epsilon_s y).
+\]">\[
+\epsilon_{r+s}(x\boxtimes_R y)
+=(\epsilon_r x)\boxtimes_{\mathrm{out}}(\epsilon_s y).
+\]</span>
+One must retain the integer degree while making this conversion. Although KK is two-periodic, <span class="math" data-tex="\(\epsilon_{n+2}=-\epsilon_n\)">\(\epsilon_{n+2}=-\epsilon_n\)</span>; changing the convention therefore changes the chosen degree-two periodicity identification as well. A sign cannot be discarded merely by replacing a rank with its parity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In rank two the distinction is visible before any Chern-character calculation. Two positive lines give the right-product operator <span class="math" data-tex="\(x\sigma_1-y\sigma_2\)">\(x\sigma_1-y\sigma_2\)</span>, while the outward plane has <span class="math" data-tex="\(x\sigma_1+y\sigma_2\)">\(x\sigma_1+y\sigma_2\)</span>, with grading <span class="math" data-tex="\(\sigma_3\)">\(\sigma_3\)</span>. Proposition 7.2 proves their classes are opposite by an explicit grading-reversing conjugation. Thus <span class="math" data-tex="\(\epsilon_2=-1\)">\(\epsilon_2=-1\)</span>. The next values are <span class="math" data-tex="\(\epsilon_3=-1\)">\(\epsilon_3=-1\)</span>, <span class="math" data-tex="\(\epsilon_4=1\)">\(\epsilon_4=1\)</span>. These comparisons specify the actual product and periodicity conventions, rather than using the word “positive” alone to identify them.</p>
+<h2 id="8-the-chern-character-and-the-todd-factor">8. The Chern character and the Todd factor</h2>
+<p>The following comparison uses rational cohomology on a finite CW base, or on a compact base of finite CW homotopy type. The KK Thom theorem above requires neither assumption. Let <span class="math" data-tex="\(U_E\)">\(U_E\)</span> be the ordinary cohomological Thom class for the complex orientation, normalized to integrate to <span class="math" data-tex="\(+1\)">\(+1\)</span> on each real <span class="math" data-tex="\(2r\)">\(2r\)</span>-dimensional fibre. We identify its group <span class="math" data-tex="\(H^*(E,E\setminus s(X))\)">\(H^*(E,E\setminus s(X))\)</span> with <span class="math" data-tex="\(H^*(D(E),S(E))\)">\(H^*(D(E),S(E))\)</span>: the disc bundle is homotopy equivalent to <span class="math" data-tex="\(E\)">\(E\)</span>, and the sphere bundle is homotopy equivalent to the punctured bundle, so their pair sequences give the identification.</p>
+<p>We use the complete local proofs in <a href="supporting/cohomological-foundations/cohomological-foundations.html">Cohomological foundations for the complex Thom comparison</a>: <a href="supporting/cohomological-foundations/cohomological-foundations.html#cf-thom">CF.1b–CF.1c</a> prove the ordinary Thom isomorphism, its naturality and its ordered product; <a href="supporting/cohomological-foundations/cohomological-foundations.html#cf-splitting">CF.4a</a> proves the splitting pullback injection; and <a href="supporting/cohomological-foundations/cohomological-foundations.html#cf-character">CF.5a–CF.5b</a> construct the even relative Chern character and prove its products and bundle action. Its normalization is <span class="math" data-tex="\(\operatorname{ch}(L)=e^{c_1(L)}\)">\(\operatorname{ch}(L)=e^{c_1(L)}\)</span>; <a href="supporting/cohomological-foundations/cohomological-foundations.html#cf-projective-space">CF.3a and CF.5b</a> prove that the positive planar Bott projection has Chern value <span class="math" data-tex="\(-1\)">\(-1\)</span>. Only this natural even character is needed; no rational comparison isomorphism on arbitrary compact Hausdorff spaces is used.</p>
+<p>Define the Todd class by its line factors
+<span class="math math-display" data-tex="\[
+\operatorname{Td}(E)=\prod_j\frac{x_j}{1-e^{-x_j}},
+\tag{8.1}
+\]">\[
+\operatorname{Td}(E)=\prod_j\frac{x_j}{1-e^{-x_j}},
+\tag{8.1}
+\]</span>
+where <span class="math" data-tex="\(x_j\)">\(x_j\)</span> are the Chern roots after the splitting pullback. The factors are power series with constant one; positive-degree classes are nilpotent, so only finitely many terms contribute.</p>
+<p><strong>Proposition 8.1 (the factor in the fixed convention).</strong> For the complex spinor symbol (6.2),
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{ch}_c(\tau_E)\\
+ =(-1)^r\,\pi^*g_E\smile U_E,\\
+g_E=e^{c_1(E)}\operatorname{Td}(E)^{-1}.
+\end{gathered}
+\tag{8.2}
+\]">\[
+\begin{gathered}
+\operatorname{ch}_c(\tau_E)\\
+ =(-1)^r\,\pi^*g_E\smile U_E,\\
+g_E=e^{c_1(E)}\operatorname{Td}(E)^{-1}.
+\end{gathered}
+\tag{8.2}
+\]</span></p>
+<p><strong>Proof.</strong> First take a line <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(x=c_1(L)\)">\(x=c_1(L)\)</span>. The cohomological Thom isomorphism writes its compactly supported character uniquely as <span class="math" data-tex="\(\pi^*g(x)U_L\)">\(\pi^*g(x)U_L\)</span>, with an even-degree coefficient on the base. By (6.3), pulling back to the zero section gives
+<span class="math math-display" data-tex="\[
+x\,g(x)=1-e^x.
+\tag{8.3}
+\]">\[
+x\,g(x)=1-e^x.
+\tag{8.3}
+\]</span>
+We justify determination of the coefficient instead of dividing a possibly zero-divisor in a particular base. On the tautological line over <span class="math" data-tex="\(\mathbb{CP}^N\)">\(\mathbb{CP}^N\)</span>, the ring calculation in <a href="supporting/cohomological-foundations/cohomological-foundations.html#cf-projective-space">CF.3a</a> makes all coefficients polynomials in <span class="math" data-tex="\(x=-h\)">\(x=-h\)</span>. Equation (8.3) determines their terms below the top degree. Pull back the identical construction over <span class="math" data-tex="\(\mathbb{CP}^{N+1}\)">\(\mathbb{CP}^{N+1}\)</span>; its next relation determines that last term as well. Naturality of the relative Chern character in CF.5b and of the ordinary Thom class in CF.1c makes these coefficients compatible. A line bundle over a finite CW base is pulled back from a finite projective space by the finite isometric embedding proved in <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-line-classification">Lemma RK.7a</a>. Thus all line bundles have the coefficient
+<span class="math math-display" data-tex="\[
+g(x)=\frac{1-e^x}{x}
+ =-e^x\frac{1-e^{-x}}{x}.
+\tag{8.4}
+\]">\[
+g(x)=\frac{1-e^x}{x}
+ =-e^x\frac{1-e^{-x}}{x}.
+\tag{8.4}
+\]</span>
+The expression at <span class="math" data-tex="\(x=0\)">\(x=0\)</span> means its power-series value <span class="math" data-tex="\(-1\)">\(-1\)</span>. This also agrees with the actual planar projection's Chern number.</p>
+<p>The relative Chern character preserves these actual symbol products by <a href="supporting/cohomological-foundations/cohomological-foundations.html#cf-relative-character">CF.5b</a>. Its proof constructs the graded tensor comparison, verifies the neighborhood deformation needed at the quotient wedge, and proves injectivity of the smash-quotient pullback from the pair sequence. Ordinary bundle-character multiplicativity then gives the relative product, and base-diagonal pullback gives the balanced symbol product. These are the disc/sphere pairs covered by that proof.</p>
+<p>Now apply the splitting pullback proved in <a href="supporting/cohomological-foundations/cohomological-foundations.html#cf-splitting">CF.4a</a>. It is injective on base cohomology; the two ordinary Thom isomorphisms imply that it is injective on the corresponding relative bundle cohomology too. On this base <span class="math" data-tex="\(E\)">\(E\)</span> is a sum of lines. Proposition 7.2 multiplies their K-symbols, and the ordinary Thom classes multiply in the same ordered complex orientation. Multiplying (8.4) gives
+<span class="math math-display" data-tex="\[
+\prod_j\frac{1-e^{x_j}}{x_j}
+ =(-1)^r e^{\sum_jx_j}\operatorname{Td}(E)^{-1}.
+\]">\[
+\prod_j\frac{1-e^{x_j}}{x_j}
+ =(-1)^r e^{\sum_jx_j}\operatorname{Td}(E)^{-1}.
+\]</span>
+Injectivity brings this equality back to the original base and proves (8.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If one instead uses the dual Koszul symbol with zero-section class <span class="math" data-tex="\(\lambda_{-1}(E^*)\)">\(\lambda_{-1}(E^*)\)</span>, the same line calculation gives <span class="math" data-tex="\((1-e^{-x})/x\)">\((1-e^{-x})/x\)</span>. Multiplication after the splitting pullback gives its factor <span class="math" data-tex="\(\operatorname{Td}(E)^{-1}\)">\(\operatorname{Td}(E)^{-1}\)</span>, with fibre Chern value <span class="math" data-tex="\(+1\)">\(+1\)</span>. Formula (8.2) records both changes for our outward symbol: its zero-section class is <span class="math" data-tex="\(\lambda_{-1}(E)\)">\(\lambda_{-1}(E)\)</span>, and its ordered positive fibre class has Chern value <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span>.</p>
+<h2 id="9-compact-group-actions">9. Compact group actions</h2>
+<p>We supply the compact equivariant operations needed here before using them. Thus the inverse identities in this section depend only on preceding programme proofs and the following averaging argument.</p>
+<p>For a second-countable compact group <span class="math" data-tex="\(G\)">\(G\)</span>, a graded equivariant Hilbert <span class="math" data-tex="\(B\)">\(B\)</span>-module has an even strongly continuous action <span class="math" data-tex="\(U_g\)">\(U_g\)</span> with
+<span class="math" data-tex="\(U_g(\xi b)=U_g\xi\,\beta_g(b)\)">\(U_g(\xi b)=U_g\xi\,\beta_g(b)\)</span> and
+<span class="math" data-tex="\(\langle U_g\xi,U_g\eta\rangle=\beta_g\langle\xi,\eta\rangle\)">\(\langle U_g\xi,U_g\eta\rangle=\beta_g\langle\xi,\eta\rangle\)</span>.
+An equivariant cycle is an ordinary graded Kasparov cycle with equivariant representation <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, norm-continuous orbit <span class="math" data-tex="\(g\mapsto U_gFU_g^{-1}\)">\(g\mapsto U_gFU_g^{-1}\)</span>, and extra localized defect
+<span class="math" data-tex="\((U_gFU_g^{-1}-F)\phi(a)\in\mathcal K(E)\)">\((U_gFU_g^{-1}-F)\phi(a)\in\mathcal K(E)\)</span>.
+Equivariant homotopies are cycles over the interval coefficient algebra, with trivial action on the interval. Their homotopy classes, with direct sum, define <span class="math" data-tex="\(KK^G\)">\(KK^G\)</span>. The opposite-grading and rotation proofs of the preceding cycle lesson give additive inverses: their scalar matrices commute with the group action, and a degenerate cycle contracts by the C_0-path construction of Proposition 2.3 of Lesson 06, with diagonal action. Auxiliary Clifford factors have trivial action.</p>
+<p><strong>Lemma 9.0 (compact equivariant products).</strong> For separable graded G-algebras and countably generated equivariant modules, the connection and localized positivity criterion of <em>Connections and the existence of the Kasparov product</em> defines a bilinear equivariant product. It is associative and has equivariant homomorphism cycles as identities. The exterior extensions and signed flips of <em>Homotopy, associativity, the index pairing and KK-equivalence</em> are equivariant. An invariant unbounded candidate satisfying the local Theorem 0.5 represents this product.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(g\cdot T=U_gTU_g^{-1}\)">\(g\cdot T=U_gTU_g^{-1}\)</span>. Rank-one operators satisfy
+<span class="math" data-tex="\(g\cdot\theta_{\xi,\eta}=\theta_{U_g\xi,U_g\eta}\)">\(g\cdot\theta_{\xi,\eta}=\theta_{U_g\xi,U_g\eta}\)</span>, so compact operators have norm-continuous orbits. The orbit of an adjointable operator is continuous on every vector, as is its adjoint orbit: this follows by inserting <span class="math" data-tex="\(U_g^{-1}\xi\)">\(U_g^{-1}\xi\)</span> and using strong continuity and the uniform operator bound. A bounded such field has a strict integral, obtained by integrating its action and its adjoint action on vectors; these actions respect the right module and the adjoint identity. Haar translation makes its average invariant.</p>
+<p>First make an input operator self-adjoint and contractive by the preceding cycle normalization, whose scalar functional calculus preserves the equivariance defect. Its Haar average <span class="math" data-tex="\(\bar F\)">\(\bar F\)</span> is invariant, self-adjoint and contractive. For each <span class="math" data-tex="\(a\)">\(a\)</span>,
+<span class="math math-display" data-tex="\[
+(\bar F-F)\phi(a)=\int_G(g\cdot F-F)\phi(a)\,dg
+\]">\[
+(\bar F-F)\phi(a)=\int_G(g\cdot F-F)\phi(a)\,dg
+\]</span>
+is compact: the integrand is a norm-continuous compact field. The adjoint formula supplies <span class="math" data-tex="\(\phi(a)(\bar F-F)\in\mathcal K(E)\)">\(\phi(a)(\bar F-F)\in\mathcal K(E)\)</span>. Expanding the commutator and square shows that <span class="math" data-tex="\((1-t)F+t\bar F\)">\((1-t)F+t\bar F\)</span> is an equivariant cycle for every <span class="math" data-tex="\(t\)">\(t\)</span>. Its localized equivariance error is <span class="math" data-tex="\((1-t)(g\cdot F-F)\)">\((1-t)(g\cdot F-F)\)</span>. Its orbit is norm continuous. This also works on interval modules, so classes and homotopies can be represented invariantly.</p>
+<p>For two invariant inputs, choose an ordinary self-adjoint odd connection <span class="math" data-tex="\(G_0\)">\(G_0\)</span> by Theorem 1.3 of the product lesson and average it strictly. For homogeneous <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, conjugation sends the creation operator <span class="math" data-tex="\(T_\xi\)">\(T_\xi\)</span> to <span class="math" data-tex="\(T_{U_g\xi}\)">\(T_{U_g\xi}\)</span>. The creation error of <span class="math" data-tex="\(g\cdot G_0\)">\(g\cdot G_0\)</span> is therefore the conjugate of the error of <span class="math" data-tex="\(G_0\)">\(G_0\)</span> for <span class="math" data-tex="\(U_g^{-1}\xi\)">\(U_g^{-1}\xi\)</span>. It varies norm continuously with <span class="math" data-tex="\(g\)">\(g\)</span>: creation operators are norm continuous in their vectors, and conjugation is norm continuous on compact operators. Both creation errors have compact integrals. The averaged <span class="math" data-tex="\(G\)">\(G\)</span> is consequently an invariant self-adjoint odd connection.</p>
+<p>The only further change to the ordinary existence proof is an invariant technical partition. Suppose its separation data <span class="math" data-tex="\(J,A_1,A_2,\Delta\)">\(J,A_1,A_2,\Delta\)</span> are invariant and consist of norm-continuous orbit elements. Apply Theorem 3.1 of <em>Kasparov's technical theorem</em>, then strictly average its even positive contractions <span class="math" data-tex="\(M_0,N_0\)">\(M_0,N_0\)</span>. For <span class="math" data-tex="\(a\in A_1\)">\(a\in A_1\)</span> and <span class="math" data-tex="\(d\in\Delta\)">\(d\in\Delta\)</span>, the identities
+<span class="math math-display" data-tex="\[
+(g\cdot M_0)a=g\cdot\bigl(M_0(g^{-1}\cdot a)\bigr),\qquad
+[g\cdot M_0,d]=g\cdot[M_0,g^{-1}\cdot d]
+\]">\[
+(g\cdot M_0)a=g\cdot\bigl(M_0(g^{-1}\cdot a)\bigr),\qquad
+[g\cdot M_0,d]=g\cdot[M_0,g^{-1}\cdot d]
+\]</span>
+give norm-continuous <span class="math" data-tex="\(J\)">\(J\)</span>-valued fields. Their integrals prove <span class="math" data-tex="\(MA_1\subset J\)">\(MA_1\subset J\)</span>, <span class="math" data-tex="\([M,\Delta]\subset J\)">\([M,\Delta]\subset J\)</span>; the identical calculation proves <span class="math" data-tex="\(NA_2\subset J\)">\(NA_2\subset J\)</span>. Positivity, parity, <span class="math" data-tex="\(M+N=1\)">\(M+N=1\)</span>, and invariance are preserved. Corollary 3.2 of that lesson supplies the required root properties by functional calculus in the quotient.</p>
+<p>Use exactly the separation data in Theorem 3.1 of the product lesson: with <span class="math" data-tex="\(S=F_1\widehat\otimes1\)">\(S=F_1\widehat\otimes1\)</span>, they are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J&amp;=\mathcal K(E_1\widehat\otimes_D E_2),\qquad
+I=\mathcal K(E_1)\widehat\otimes1,\\
+A_1&amp;=C^*(J,I),\\
+A_2&amp;=C^*(J,G^2-1,[S,G]_{\mathrm{gr}},
+ [G,\phi(A)]_{\mathrm{gr}}),\\
+\Delta&amp;=\overline{\operatorname{span}}
+ \{S,G,\phi(A),S^*,G^*,\phi(A)^*\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+J&amp;=\mathcal K(E_1\widehat\otimes_D E_2),\qquad
+I=\mathcal K(E_1)\widehat\otimes1,\\
+A_1&amp;=C^*(J,I),\\
+A_2&amp;=C^*(J,G^2-1,[S,G]_{\mathrm{gr}},
+ [G,\phi(A)]_{\mathrm{gr}}),\\
+\Delta&amp;=\overline{\operatorname{span}}
+ \{S,G,\phi(A),S^*,G^*,\phi(A)^*\}.
+\end{aligned}
+\]</span>
+Invariance of <span class="math" data-tex="\(S,G\)">\(S,G\)</span>, equivariance of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and invariance of the compact images make these data invariant. Their orbit continuity follows from their displayed generators. The countability, separation and derivation conditions are proved in that theorem before its partition step; none uses a group action. The averaged partition therefore gives the invariant candidate
+<span class="math" data-tex="\(F=M^{1/4}SM^{1/4}+N^{1/4}GN^{1/4}\)">\(F=M^{1/4}SM^{1/4}+N^{1/4}GN^{1/4}\)</span>.
+Equations (3.5)–(3.7) of that proof verify its cycle defects, connection errors and localized positivity. Its additional equivariance defect is zero.</p>
+<p>For invariant product candidates <span class="math" data-tex="\(F,F&#x27;\)">\(F,F&#x27;\)</span>, use the comparison algebra
+<span class="math" data-tex="\(C^*(J,[S,F]_{\mathrm{gr}},[S,F&#x27;]_{\mathrm{gr}},F-F&#x27;)\)">\(C^*(J,[S,F]_{\mathrm{gr}},[S,F&#x27;]_{\mathrm{gr}},F-F&#x27;)\)</span>
+and include <span class="math" data-tex="\(S,F,F&#x27;,\phi(A)\)">\(S,F,F&#x27;,\phi(A)\)</span> and their adjoints in the derivating space. These are invariant separation data by the zero-connection calculation in Theorem 4.1 of the product lesson. The averaged partition gives the invariant comparison operator of its equation (4.3); its positive-anticommutator normalization paths are invariant functional calculus. This proves invariant uniqueness. A possibly noninvariant equivariant product can first be averaged: its connection errors integrate as above, its localized positivity integrates to a positive element of the compact-operator quotient, and the two-sided locally compact straight homotopy just proved identifies its class with the average. Thus uniqueness holds among all equivariant products.</p>
+<p>Construct a product over an interval module to prove homotopy invariance in either variable; evaluation gives the endpoint products by their same creation and positivity equations. Block sums prove bilinearity. For an equivariant homomorphism, the essential-replacement interval ideal of Proposition 5.1 of the product lesson is invariant. Choose its connection by averaging. Its endpoint tensor maps are equivariant, so Theorem 5.2 of that lesson gives both identity laws even for degenerate representations.</p>
+<p>For three inputs use the proof of Theorem 4.1 of the homotopy-and-associativity lesson, with invariant intermediate product operators. The compact images, bracket connections and negative parts in that proof are invariant. Replace its technical partition by its Haar average. The two terms of its positivity equation (4.3) remain positive: one uses the first intermediate product's positive lift and annihilation of its compact error, and the other uses annihilation of the final bracket's negative part. The simultaneous candidate is now invariant, so uniqueness proves associativity. The exterior tensor and flip unitaries are equivariant for diagonal actions; the same uniqueness comparison proves the signed exterior laws. Finally the resolvent connection and integrated positivity estimates of the unbounded criterion are equations on these same modules. For an invariant candidate its resolvents, bounded transform and normalization homotopies are invariant; the estimates verify the two product conditions just proved sufficient. This proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 9.1 (equivariant linear Thom theorem).</strong> Let a compact group <span class="math" data-tex="\(G\)">\(G\)</span> act continuously and linearly on a finite-dimensional real vector space <span class="math" data-tex="\(W\)">\(W\)</span>. Then there are inverse classes
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x_W\in KK^G(\operatorname{Cl}(W),C_0(W)),\\
+y_W\in KK^G(C_0(W),\operatorname{Cl}(W)).
+\end{gathered}
+\tag{9.1}
+\]">\[
+\begin{gathered}
+x_W\in KK^G(\operatorname{Cl}(W),C_0(W)),\\
+y_W\in KK^G(C_0(W),\operatorname{Cl}(W)).
+\end{gathered}
+\tag{9.1}
+\]</span>
+If the action has a spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> lift, it gives a degree-<span class="math" data-tex="\(\dim W\)">\(\dim W\)</span> equivariant Thom equivalence with the scalar algebra. In particular <span class="math" data-tex="\(C_0(W)\)">\(C_0(W)\)</span> with this action is equivariantly KK-equivalent to <span class="math" data-tex="\(C_0(W)\)">\(C_0(W)\)</span> with the trivial action. A complex linear action has the required lift.</p>
+<p><strong>Proof.</strong> Average an inner product over normalized Haar measure, making the action orthogonal. Give <span class="math" data-tex="\(L^2(W)\otimes\Lambda W_{\mathbb C}\)">\(L^2(W)\otimes\Lambda W_{\mathbb C}\)</span> its change-of-variable and exterior representation. Position Clifford multiplication and the vertical Dirac operator intertwine this action exactly. Their inverse resolvents and bounded transforms are invariant. Thus the cycles of Sections 2–4 are equivariant, with zero equivariance defect.</p>
+<p>The oscillator product is equivariant. The Gaussian kernel is the trivial one-dimensional representation, because its norm is radial and its form degree is zero. The complementary sign homotopy is invariant functional calculus. Hence the first product is the equivariant identity. The simultaneous coordinate and Clifford rotation commutes with the diagonal orthogonal action on <span class="math" data-tex="\(W\oplus W\)">\(W\oplus W\)</span>, at every parameter. Its uniform compactness estimate is unchanged. The invertible-idempotent argument consequently proves the reverse equivariant product. The doubled Clifford Morita correspondence has the exterior action and the invariant grading (4.2), so its two evaluation tensor maps are equivariant. This proves (9.1).</p>
+<p>A spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> lift gives the equivariant spinor and determinant-line correspondences of Section 5; every transition-map computation there is an intertwining computation. They supply the degree-shifted scalar equivalence. The trivial linear action has the same degree-shifted scalar equivalence, so composing one with the inverse of the other gives the asserted equivalence between the two function algebras. For a complex linear action average a Hermitian metric and use the homomorphism <span class="math" data-tex="\(U(r)\to\operatorname{Spin}^{c}(2r)\)">\(U(r)\to\operatorname{Spin}^{c}(2r)\)</span> constructed in Proposition 6.1.</p>
+<p>There is no hidden second-countability restriction on the compact group in this linear assertion. Its action factors through a closed subgroup of the finite-dimensional orthogonal group, hence through a compact metrizable group. In the spinor case include its finite-dimensional spinor representation in that quotient. The equivariant products just used can be taken in this second-countable quotient, where Lemma 9.0 applies, and pulled back along <span class="math" data-tex="\(G\)">\(G\)</span>'s quotient homomorphism. Pullback leaves each creation equation, positivity sandwich and homotopy unchanged and supplies a continuous action by composition. Their explicit cycles and homotopies are still equivariant for <span class="math" data-tex="\(G\)">\(G\)</span>, and their inverse identities remain the same identities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="10-examples">10. Examples</h2>
+<p>For <span class="math" data-tex="\(X\times\mathbb C^r\)">\(X\times\mathbb C^r\)</span>, take <span class="math" data-tex="\(S=X\times\Lambda^*\mathbb C^r\)">\(S=X\times\Lambda^*\mathbb C^r\)</span>. The symbol is the graded sum of the coordinate symbols (5.9), so Theorem 5.3 is external product with the fixed positive Bott class. In degree zero its inverse sends that class back to the trivial line on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Let <span class="math" data-tex="\(E_k\to S^2\)">\(E_k\to S^2\)</span> be a complex line with <span class="math" data-tex="\(c_1(E_k)=k h\)">\(c_1(E_k)=k h\)</span>, where <span class="math" data-tex="\(h\)">\(h\)</span> evaluates to one on the complex-oriented sphere. Its Thom triple is <span class="math" data-tex="\((\mathbf1,\pi^*E_k,v)\)">\((\mathbf1,\pi^*E_k,v)\)</span>. Its zero-section class is <span class="math" data-tex="\(1-[E_k]\)">\(1-[E_k]\)</span>; the comparison map contains the tautological fibre vector, so is invertible off the zero section. Formula (8.2) gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{ch}_c(\tau_{E_k})\\
+ =-\left(1+\frac{k}{2}\pi^*h\right)U_{E_k}.
+\end{gathered}
+\tag{10.1}
+\]">\[
+\begin{gathered}
+\operatorname{ch}_c(\tau_{E_k})\\
+ =-\left(1+\frac{k}{2}\pi^*h\right)U_{E_k}.
+\end{gathered}
+\tag{10.1}
+\]</span>
+Here <span class="math" data-tex="\(h^2=0\)">\(h^2=0\)</span>. The Thom group is free of rank two, because <span class="math" data-tex="\(K^0(S^2)\cong\mathbb Z^2\)">\(K^0(S^2)\cong\mathbb Z^2\)</span>, and its odd group is zero. The symbol generates it as a <span class="math" data-tex="\(K^0(S^2)\)">\(K^0(S^2)\)</span>-module, which is stronger than saying its restriction generates each fibre group.</p>
+<p>For a smooth embedding <span class="math" data-tex="\(i:M\hookrightarrow N\)">\(i:M\hookrightarrow N\)</span> with compact <span class="math" data-tex="\(M\)">\(M\)</span>, a spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> normal bundle <span class="math" data-tex="\(\nu\)">\(\nu\)</span> gives the first part of the wrong-way construction:
+<span class="math math-display" data-tex="\[
+K^*(M)\xrightarrow{\ \tau_\nu\ }
+K_c^{*+\operatorname{rank}\nu}(\nu).
+\tag{10.2}
+\]">\[
+K^*(M)\xrightarrow{\ \tau_\nu\ }
+K_c^{*+\operatorname{rank}\nu}(\nu).
+\tag{10.2}
+\]</span>
+A tubular neighborhood identifies this compact-support group with that of the neighborhood in <span class="math" data-tex="\(N\)">\(N\)</span>, and extension by zero gives a class in <span class="math" data-tex="\(K^{*+\operatorname{rank}\nu}(N)\)">\(K^{*+\operatorname{rank}\nu}(N)\)</span>. The composition and independence questions for general wrong-way maps are proved in the lesson <em>Wrong-way maps for K-oriented maps</em>. The Thom step (10.2), including its inverse and orientation, is established here.</p>
+<h2 id="11-exercises">11. Exercises</h2>
+<p><strong>11.1. A trivial bundle.</strong> Write the Clifford Thom cycle and the spinor Thom cycle for <span class="math" data-tex="\(X\times\mathbb R^n\)">\(X\times\mathbb R^n\)</span>. Prove that they are the external scalar extensions of the corresponding fibre cycles.</p>
+<p><strong>11.2. Complex spinors.</strong> For a Hermitian rank-<span class="math" data-tex="\(r\)">\(r\)</span> complex bundle <span class="math" data-tex="\(E\)">\(E\)</span>, construct its Clifford spinor module, prove the Morita equivalence, and compute its determinant line and zero-section Thom class.</p>
+<p><strong>11.3. Pullback.</strong> Prove the naturality formula (7.2), including properness of the total-space pullback map. Explain why the same proof identifies the inverse Dirac cycle.</p>
+<p><strong>11.4. The tautological line.</strong> Let <span class="math" data-tex="\(L\to\mathbb{CP}^1\)">\(L\to\mathbb{CP}^1\)</span> be the tautological line and put <span class="math" data-tex="\(u=1-[L]\)">\(u=1-[L]\)</span>. Give its Thom class as an actual relative difference-bundle triple, compute the two compactly supported K-groups of its total space with generators, and compute zero-section restriction on those generators. Compare the fibre sign with the relative-bundle convention.</p>
+<h2 id="12-solutions">12. Solutions</h2>
+<p><strong>Solution to 11.1.</strong> All frame transitions are identity. The Clifford cycle has module <span class="math" data-tex="\(C_0(X\times\mathbb R^n,\Lambda^*\mathbb C^n)\)">\(C_0(X\times\mathbb R^n,\Lambda^*\mathbb C^n)\)</span>, source <span class="math" data-tex="\(C(X)\widehat\otimes C_n\)">\(C(X)\widehat\otimes C_n\)</span> acting by the scalar base function and <span class="math" data-tex="\(i\widehat c\)">\(i\widehat c\)</span>, operator <span class="math" data-tex="\(c(v)/\sqrt{1+\|v\|^2}\)">\(c(v)/\sqrt{1+\|v\|^2}\)</span>, and grading (4.2). These are precisely the fibre cycle's scalar extensions. Its inverse is the module <span class="math" data-tex="\(C(X,L^2(\mathbb R^n)\otimes\Lambda^*\mathbb C^n)\)">\(C(X,L^2(\mathbb R^n)\otimes\Lambda^*\mathbb C^n)\)</span>, followed by the finite Clifford Morita map in (4.4); its inverse resolvents are the constant fibre resolvents. With the trivial positive spinor bundle, the spinor cycle is <span class="math" data-tex="\(C_0(X\times\mathbb R^n,S_n)\)">\(C_0(X\times\mathbb R^n,S_n)\)</span> with outward Clifford symbol. The scalar-extension tensor maps preserve inner products and have dense range by finite sums of base functions times fibre sections. Hence they are module unitaries identifying the cycles. Proposition 7.2 and its ordered one-dimensional check give <span class="math" data-tex="\(1_X\boxtimes\tau_{\mathbb R^n}\)">\(1_X\boxtimes\tau_{\mathbb R^n}\)</span>.</p>
+<p><strong>Solution to 11.2.</strong> Set <span class="math" data-tex="\(S=\Lambda^*E\)">\(S=\Lambda^*E\)</span>, grade by degree, and use <span class="math" data-tex="\(c(v)=\varepsilon_v+\varepsilon_v^*\)">\(c(v)=\varepsilon_v+\varepsilon_v^*\)</span>. The exterior relations give its self-adjoint Clifford relations for the underlying real Euclidean metric. In a unitary frame, the real pair <span class="math" data-tex="\(e_j,ie_j\)">\(e_j,ie_j\)</span> gives <span class="math" data-tex="\(\varepsilon_j+\iota_j\)">\(\varepsilon_j+\iota_j\)</span> and <span class="math" data-tex="\(i(\varepsilon_j-\iota_j)\)">\(i(\varepsilon_j-\iota_j)\)</span>. Recovering <span class="math" data-tex="\(\varepsilon_j,\iota_j\)">\(\varepsilon_j,\iota_j\)</span> and using the vacuum projection gives every matrix unit, so <span class="math" data-tex="\(\operatorname{Cl}(E_{\mathbb R})\cong\operatorname{End}(S)\)">\(\operatorname{Cl}(E_{\mathbb R})\cong\operatorname{End}(S)\)</span>. Finite frames and partitions make <span class="math" data-tex="\(\Gamma(S)\)">\(\Gamma(S)\)</span> finitely generated projective and full; its dual and inner-product evaluation give the inverse Morita correspondence. The implementer lift is <span class="math" data-tex="\(g\mapsto(g,\Lambda^*g)\)">\(g\mapsto(g,\Lambda^*g)\)</span>. Its scalar-square character is <span class="math" data-tex="\(\det g\)">\(\det g\)</span>, as checked on diagonal unitary rotations in Proposition 6.1, so the determinant line is <span class="math" data-tex="\(\det E\)">\(\det E\)</span>. The sphere comparison is <span class="math" data-tex="\(c(v)^+\)">\(c(v)^+\)</span>, and the zero-section difference is <span class="math" data-tex="\(\sum_j(-1)^j[\Lambda^jE]\)">\(\sum_j(-1)^j[\Lambda^jE]\)</span>.</p>
+<p><strong>Solution to 11.3.</strong> The pulled-back metric has <span class="math" data-tex="\(\|v\|=\|\widetilde f(v)\|\)">\(\|v\|=\|\widetilde f(v)\|\)</span>. The inverse image of a compact set is closed and bounded in a ball bundle over compact <span class="math" data-tex="\(Y\)">\(Y\)</span>, so is compact. Pullback therefore acts on the function algebras. The pulled-back spinor module and position symbol are exactly those of <span class="math" data-tex="\(f^*V\)">\(f^*V\)</span>; local frames prove the scalar-extension map is an onto isometry. Pulling back a bundle representative of <span class="math" data-tex="\(a\)">\(a\)</span> identifies the tensor symbol with <span class="math" data-tex="\(\pi_Y^*f^*a\)">\(\pi_Y^*f^*a\)</span> times this same symbol, proving (7.2). For the Dirac inverse, the fibre integral, smooth fibre core, Clifford multiplication and inverse resolvents agree on pulled-back local sections. Those sections are dense, so the module unitary also intertwines the closures and bounded transforms. This proves the inverse identification, rather than inferring it only from a fibrewise K-group calculation.</p>
+<p><strong>Solution to 11.4.</strong> On the closed ball and sphere bundle the triple is
+<span class="math math-display" data-tex="\[
+\xi=(\mathbf1,\pi^*L,\
+\sigma_{(\ell,v)}:\lambda\mapsto\lambda v).
+\tag{12.1}
+\]">\[
+\xi=(\mathbf1,\pi^*L,\
+\sigma_{(\ell,v)}:\lambda\mapsto\lambda v).
+\tag{12.1}
+\]</span>
+For <span class="math" data-tex="\(\|v\|=1\)">\(\|v\|=1\)</span> it is a unitary isomorphism from the trivial line to the pulled-back tautological line. This is the specified comparison in the difference-bundle theorem; the bundles alone would not specify the compact-support class.</p>
+<p>The integral clutching calculation in <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-sphere-ring">Theorem RK.7</a> gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K^0(\mathbb{CP}^1)=\mathbb Z[1]\oplus\mathbb Z u,\\
+K^1(\mathbb{CP}^1)=0,\quad u^2=0.
+\end{gathered}
+\tag{12.2}
+\]">\[
+\begin{gathered}
+K^0(\mathbb{CP}^1)=\mathbb Z[1]\oplus\mathbb Z u,\\
+K^1(\mathbb{CP}^1)=0,\quad u^2=0.
+\end{gathered}
+\tag{12.2}
+\]</span>
+For the last relation, the rotation path in <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-sphere-ring">Theorem RK.7</a> joins the clutching matrices <span class="math" data-tex="\(\operatorname{diag}(z,z)\)">\(\operatorname{diag}(z,z)\)</span> and <span class="math" data-tex="\(\operatorname{diag}(z^2,1)\)">\(\operatorname{diag}(z^2,1)\)</span>. It gives the actual bundle isomorphism <span class="math" data-tex="\(L\oplus L\cong L^{\otimes2}\oplus\mathbf1\)">\(L\oplus L\cong L^{\otimes2}\oplus\mathbf1\)</span>. Hence <span class="math" data-tex="\(u^2=(1-[L])^2=0\)">\(u^2=(1-[L])^2=0\)</span> integrally. The Thom isomorphism now gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_c^0(L)&amp;=\mathbb Z\xi\oplus\mathbb Z(\pi^*u\,\xi),\\
+K_c^1(L)&amp;=0.
+\end{aligned}
+\tag{12.3}
+\]">\[
+\begin{aligned}
+K_c^0(L)&amp;=\mathbb Z\xi\oplus\mathbb Z(\pi^*u\,\xi),\\
+K_c^1(L)&amp;=0.
+\end{aligned}
+\tag{12.3}
+\]</span>
+Zero-section restriction sends <span class="math" data-tex="\(\xi\)">\(\xi\)</span> to <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(\pi^*u\,\xi\)">\(\pi^*u\,\xi\)</span> to <span class="math" data-tex="\(u^2=0\)">\(u^2=0\)</span>. In a unitary fibre frame, (12.1) has comparison <span class="math" data-tex="\(z\)">\(z\)</span>; <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-planar-bott">Theorem RK.6 and Lemma RK.6a</a> prove its positive planar class and first Chern value <span class="math" data-tex="\(-1\)">\(-1\)</span> on that compactified fibre. The zero-section comparison rules are <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-symbol-rules">Corollary RK.4a</a>. Globally
+<span class="math math-display" data-tex="\[
+\operatorname{ch}_c(\xi)
+ =-\left(1-\frac12\pi^*h\right)U_L
+\tag{12.4}
+\]">\[
+\operatorname{ch}_c(\xi)
+ =-\left(1-\frac12\pi^*h\right)U_L
+\tag{12.4}
+\]</span>
+by Proposition 8.1. Thus the clutching sign, the zero-section difference, and the Todd factor agree.</p>
+<h2 id="what-this-lesson-uses">What this lesson uses</h2>
+<p>The Euclidean Fourier theorem and oscillator domain, compact graph inclusion and kernel calculation are the exact earlier local results in <em>Bott periodicity in KK: the Bott and Dirac elements</em>, Lemmas 0.0a and 4.0. That lesson proves its criterion locally and does not use the present lesson, so this dependency has no cycle. The analytic bounded-transform and product-recognition arguments are proved locally in Lemmas 0.1–0.4 and Theorem 0.5, including local compactness and a nonessential first representation. The central extension of the product argument is proved in Lemma 1.1 above.</p>
+<p>The bundle/projection and relative-triple correspondence, radial identification, actual symbol rules and integral sphere groups are proved in the earlier <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-bundle-projection">Relative difference bundles, radial pairs and the planar normalization, RK.1–RK.7</a>. The exact cohomological inputs used in Section 8 are proved in <a href="supporting/cohomological-foundations/cohomological-foundations.html#cf-thom">Cohomological foundations for the complex Thom comparison</a>: CF.0 supplies chains, products and coefficients; CF.1b–CF.1c prove the ordinary Thom theorem on every Hausdorff base and its orientation and product rules; CF.2 proves the quotient and radial comparisons; CF.3–CF.4 prove the projective ring, first-Chern normalization, projective-bundle formula and splitting injection; CF.5a–CF.5b prove the natural even relative character, its bundle action and its actual symbol products; and CF.6 gives the complete outward-symbol Todd calculation. No full odd-character or rational-isomorphism theorem is needed in Section 8, and no singular-cohomology comparison isomorphism on all compact Hausdorff spaces is asserted.</p>
+<p>Lemma 9.0 proves the compact equivariant product and associativity needed in Theorem 9.1 from the preceding non-equivariant connection, partition and associativity proofs. The later lesson <em>Equivariant KK-theory and the Green–Julg theorem</em> develops stabilization, crossed-product comparison and induction; none of those results is needed here. The later lesson <em>Wrong-way maps for K-oriented maps</em> treats the further composition and independence assertions in the embedding example.</p>
+<p>The inward-to-outward vector comparison in <em>A fundamental class for an action on a manifold</em>, in <em>Cyclic cohomology, connections and transverse geometry</em>, Lemma 8.12, uses the same geometric Clifford symbol. Its antipodal sign <span class="math" data-tex="\((-1)^N\)">\((-1)^N\)</span> is the parity sign of reversing all fibre coordinates. It is separate from the product conversion <span class="math" data-tex="\((-1)^{rs}\)">\((-1)^{rs}\)</span> in Proposition 7.2. When an outward coordinate class is normalized as an ordered product of positive line classes, translate that statement into this course using Corollary 7.3: with <span class="math" data-tex="\(\boxtimes_R\)">\(\boxtimes_R\)</span> the class is <span class="math" data-tex="\(\epsilon_N\tau\)">\(\epsilon_N\tau\)</span>, while retaining <span class="math" data-tex="\(\tau\)">\(\tau\)</span> uses <span class="math" data-tex="\(\boxtimes_{\mathrm{out}}\)">\(\boxtimes_{\mathrm{out}}\)</span>. The planar projection in that lesson is constant-unitarily conjugate to the planar projection used here; that agreement of ordinary projection classes does not identify the odd-odd product or its degree-two Morita convention. These formulas provide the conversion needed before combining the two constructions in an index argument.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>B. Blackadar, <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf"><em>K-Theory for Operator Algebras</em>, author-posted corrected second edition</a>. The <a href="https://www.bruceblackadar.com/mathpubs.html">author identifies this freely downloadable version</a> as a slightly corrected second edition. The source retains its author copyright and the usage terms stated on that page. Sections 19.9.3–19.9.4 and 20.3.2, printed pp. 201–202 and 208, describe the Clifford, parametrized Thom and compact-equivariant constructions. Those passages include exercises and statements rather than complete proofs of all inverse identities. Sections 2–9 above prove the needed domain, product, sign, bundle and inverse assertions, using the exact earlier oscillator proof and the local analytic capsule in Section 0. Lemma 9.0 supplies the compact equivariant foundation before Theorem 9.1 uses it.</p>
+</li>
+<li>
+<p>K. van den Dungen, <a href="https://arxiv.org/pdf/2006.10616v2"><em>Localisations of half-closed modules and the unbounded Kasparov product</em>, arXiv version 2</a>, 28 March 2022. The freely readable Sections 2.4 and 3.1, printed pp. 11–16, supply the source comparison for creation estimates and integrated positivity. Section 0 above proves the complete criterion needed in this lesson, including its nonessential representation case. No open adaptation licence is inferred from free access.</p>
+</li>
+</ul>
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="KT-KK-12.html">← Bott periodicity in KK: the Bott and Dirac elements</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="KT-KK-14.html">Exact sequences in KK and the universal coefficient theorem →</a></span></nav>
+<p class="small source-link"><a href="KT-KK-13.tex">Complete LaTeX source of this lesson</a> · <span class="unlinked">Editable source package</span></p>
+<p class="small source-link"><span class="unlinked">Complete available text as a PDF</span> · <a href="sources.html">Sources and component terms</a></p>
+</main>
+<footer class="site-footer"><p>Course text, solutions and original figures: CC0 1.0.</p></footer>
+</body>
+</html>

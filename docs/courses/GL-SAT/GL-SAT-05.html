@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semi-infinite orbits and weight functors · The affine Grassmannian and geometric Satake</title>
+<meta name="description" content="A lesson of the course The affine Grassmannian and geometric Satake. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-SAT/GL-SAT-05.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The affine Grassmannian and geometric Satake</a> <span aria-hidden="true">›</span> <span>Lesson 5</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> This lesson is a draft.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="semi-infinite-orbits-and-weight-functors">Semi-infinite orbits and weight functors</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).</em></p>
+<p>A Schubert variety is finite dimensional, while an orbit of a unipotent loop group extends through infinitely many lattice bounds. Their intersection has a precise dimension. This dimension determines the degree in which a perverse sheaf contributes a weight. We will prove the dimension formula using ordinary lattice determinants, prove classical hyperbolic restriction, and construct the resulting decomposition of cohomology.</p>
+<p>For the geometry, let <span class="math">\(k\)</span> be algebraically closed in any characteristic, <span class="math">\(O=k[[t]]\)</span>, <span class="math">\(F=k((t))\)</span>, and <span class="math">\(G\)</span> connected reductive. Fix <span class="math">\(T\subset B\)</span>, let <span class="math">\(N\)</span> be the unipotent radical of <span class="math">\(B\)</span>, and let positive roots be those of <span class="math">\(N\)</span>. Put <span class="math">\(\rho=\frac12\sum_{\alpha&gt;0}\alpha\)</span>. Dominant coweights have nonnegative positive-root pairings. Schubert and semi-infinite orbit closures in this lesson have their reduced structures.</p>
+<p>The sheaf-theoretic theorems below are proved for <span class="math">\(k=\mathbb C\)</span>, classical constructible sheaves, and a characteristic-zero coefficient field <span class="math">\(\Lambda\)</span>. Write <span class="math">\(IC_\lambda\)</span> with the perverse normalization: its restriction to the open Schubert orbit is <span class="math">\(\Lambda[\langle2\rho,\lambda\rangle]\)</span>. The geometric proofs do not restrict the characteristic of <span class="math">\(k\)</span>. The rational-adic extension over other algebraically closed fields is a separate unfinished assertion specified in §21; it is not an input to the classical proofs.</p>
+<p>The construction of the Grassmannian is proved in <a href="GL-SAT-02.html">Loop groups and the affine Grassmannian</a>, Theorem 7.1. Orbit dimensions, projective reduced Schubert closures, and their component class are proved in <a href="GL-SAT-04.html">Orbits and Schubert varieties in the affine Grassmannian</a>, Theorems 2.3 and 3.5 and §5. Root coordinates and rank-one identities are proved in <a href="../AG-RG/AG-RG-03.html">Roots and reductive groups of rank one</a>, Theorem 7.1, and <a href="../AG-RG/AG-RG-04.html">Root data, Weyl chambers and the Bruhat decomposition</a>, §5. We use these exact earlier proofs.</p>
+<h2 id="1-statements-conventions-and-exact-earlier-inputs">1. Statements, conventions, and exact earlier inputs</h2>
+<p>Put <span class="math">\(O=k[[t]]\)</span>, <span class="math">\(F=k((t))\)</span>, <span class="math">\(K=G(O)\)</span>, and let <span class="math">\(N\)</span> be the unipotent radical of the chosen positive Borel <span class="math">\(B\)</span>. Write</p>
+<p><span class="math math-display">\[
+S_\nu=N(F)t^\nu K/K,\qquad
+\eta\le\nu\Longleftrightarrow
+\nu-\eta\in\sum_i\mathbb Z_{\ge0}\alpha_i^\vee.
+\]</span></p>
+<p>Closures and locally closed orbit loci in this lesson have their <strong>reduced</strong> structures. The hyperplane assertions identify underlying supports and their reduced closed subschemes. The lattice embeddings and cutoff operators themselves are constructed on arbitrary coefficient rings and retain their nilpotents. This distinction is necessary: for a torus, <span class="math">\(N=1\)</span>, but the full Grassmannian contains <span class="math">\(1+\epsilon t^{-1}\)</span>, <span class="math">\(\epsilon^2=0\)</span>, whereas its reduced semi-infinite orbit is a point. A closed weight-subspace condition must not be claimed to identify that point's full nilpotent functor.</p>
+<p>The earlier orbit is irreducible: its acting finite jet group is smooth and connected, hence irreducible, so its image and reduced closure are irreducible. The hyperplane argument below uses the principal ideal theorem from <a href="../AG-CA/dimension-theory-of-noetherian-local-rings.html">Dimension theory of Noetherian local rings</a>, Theorem 3.1, and the finite-type height formula from <a href="../AG-CA/krull-dimension-and-noether-normalization.html">Krull dimension and Noether normalization</a>, Theorems 4.2–4.3. Their complete algebraic proofs are given there.</p>
+<p>The results proved here are</p>
+<p><span class="math math-display">\[
+\overline{S_\nu}=\bigcup_{\eta\le\nu}S_\eta,
+\qquad
+\overline{S_\nu}\setminus S_\nu
+=\overline{S_\nu}\cap H_\nu
+\tag{1.1}
+\]</span></p>
+<p>for a compatible hyperplane in an ordinary lattice Plücker ind-projective embedding, and, for dominant <span class="math">\(\lambda\)</span>,</p>
+<p><span class="math math-display">\[
+S_\nu\cap\overline{\operatorname{Gr}^{\lambda}}
+\text{ is empty unless }t^\nu\in\overline{\operatorname{Gr}^{\lambda}},
+\quad
+\dim C=\langle\rho,\lambda+\nu\rangle
+\tag{1.2}
+\]</span></p>
+<p>for every irreducible component <span class="math">\(C\)</span> of a nonempty intersection. The same nonemptiness criterion and pure dimension hold for <span class="math">\(S_\nu\cap\operatorname{Gr}^{\lambda}\)</span>. No dual-group weight multiplicity statement is used.</p>
+<h2 id="2-an-ordinary-exterior-power-ind-space">2. An ordinary exterior-power ind-space</h2>
+<p>Choose a <span class="math">\(T\)</span>-weight basis <span class="math">\(e_1,\ldots,e_d\)</span> of <span class="math">\(V\)</span>, with weights <span class="math">\(\gamma_1,\ldots,\gamma_d\)</span>, counted with multiplicity. Fix a determinant-index component <span class="math">\(e\)</span> of <span class="math">\(\operatorname{Gr}_{GL(V)}\)</span>. For sufficiently large <span class="math">\(N\)</span>, put</p>
+<p><span class="math math-display">\[
+Q_N=t^{-N}V_O/t^NV_O,\quad r_N=dN-e,
+\quad
+\mathcal F_N^e=\bigwedge^{r_N}Q_N\otimes(\det V)^{-N}.
+\tag{2.1}
+\]</span></p>
+<p>A bounded lattice <span class="math">\(\Lambda\)</span>, <span class="math">\(t^NV_O\subset\Lambda\subset t^{-N}V_O\)</span>, gives the line</p>
+<p><span class="math math-display">\[
+\ell_\Lambda=
+\det(\Lambda/t^NV_O)\otimes(\det V)^{-N}
+\subset\mathcal F_N^e.
+\tag{2.2}
+\]</span></p>
+<p>This is the ordinary finite Grassmannian Plücker map, restricted to the lattice stage. Increasing the cutoff inserts the standard occupied vectors <span class="math">\(t^Ne_i\)</span>, <span class="math">\(1\le i\le d\)</span>, and the corresponding determinant inverse. More generally, the transition to <span class="math">\(M&gt;N\)</span> wedges with the standard tail <span class="math">\(t^NV_O/t^MV_O\)</span>, whose determinant is canonically <span class="math">\((\det V)^{M-N}\)</span>. It is a linear injective map <span class="math">\(\mathcal F_N^e\to\mathcal F_M^e\)</span>. Exact-sequence determinant conventions give compatible transitions and identify the lattice line (2.2) at the two cutoffs. Equivalently, fix the weight basis and the increasing-level order of occupied vectors; normalize tail determinants so the standard tail has coefficient one. This fixes every exterior sign consistently.</p>
+<p>Thus <span class="math">\(\mathcal F^e=\varinjlim_N\mathcal F_N^e\)</span> has a basis of finite excitations of the standard occupied tail, and the full lattice ind-scheme embeds into <span class="math">\(\mathbb P(\mathcal F^e)\)</span>. Every construction restricts to an ordinary finite projective embedding on a bounded stage. No representation of an affine Lie algebra is involved.</p>
+<p>For <span class="math">\(\Lambda_\nu=t^\nu V_O\)</span>, let <span class="math">\(a_i=\langle\gamma_i,\nu\rangle\)</span>. Its Plücker vector <span class="math">\(v_\nu\)</span> has occupied vectors <span class="math">\(t^me_i\)</span>, <span class="math">\(a_i\le m&lt;N\)</span>, and weight</p>
+<p><span class="math math-display">\[
+\chi_\nu
+=\sum_i(N-a_i)\gamma_i-N\sum_i\gamma_i
+=-\sum_i\langle\gamma_i,\nu\rangle\gamma_i
+=-B\nu.
+\tag{2.3}
+\]</span></p>
+<p>Here <span class="math">\(B:X_*(T)\to X^*(T)\)</span> denotes the trace pairing defined by those weights. Since determinant characters annihilate coroots, <span class="math">\(e=\sum_i a_i\)</span> is constant on each <span class="math">\(G\)</span>-component. The normalization in (2.1) is therefore compatible with its entire component, not merely with a single torus point.</p>
+<h2 id="3-the-finite-cutoff-lift-of-triangular-loops">3. The finite-cutoff lift of triangular loops</h2>
+<p>Order the distinct weights by a linear extension of the positive-root order, with higher weights first. Their sums give a flag of <span class="math">\(V\)</span> preserved by <span class="math">\(N\)</span>. The action of <span class="math">\(N\)</span> on each associated graded weight space is the identity: the matrix coefficients of <span class="math">\(u_\alpha(z)\)</span> are polynomials, and torus equivariance says that a coefficient from weight <span class="math">\(\gamma\)</span> to weight <span class="math">\(\gamma'\)</span> is a multiple of <span class="math">\(z^q\)</span> with <span class="math">\(\gamma'-\gamma=q\alpha\)</span>, <span class="math">\(q\ge0\)</span>; its constant term is the identity. Ordered root products give the assertion for <span class="math">\(N\)</span>.</p>
+<p>Let <span class="math">\(R\)</span> be any <span class="math">\(k\)</span>-algebra and <span class="math">\(n\in N(R[[t]][1/t])\)</span>. Given <span class="math">\(N\)</span>, choose <span class="math">\(M\)</span> so large that</p>
+<p><span class="math math-display">\[
+n(t^{-N}V_{O_R})\subset t^{-M}V_{O_R},
+\qquad
+t^MV_{O_R}\subset n(t^NV_{O_R}).
+\tag{3.1}
+\]</span></p>
+<p>Both conditions follow from common pole bounds for the finitely many entries of <span class="math">\(n\)</span> and <span class="math">\(n^{-1}\)</span>. Define finite modules</p>
+<p><span class="math math-display">\[
+A=n(t^{-N}V_{O_R})/t^MV_{O_R},\qquad
+U=n(t^NV_{O_R})/t^MV_{O_R}.
+\tag{3.2}
+\]</span></p>
+<p>There are an inclusion <span class="math">\(A\subset Q_M\otimes R\)</span> and an exact sequence</p>
+<p><span class="math math-display">\[
+0\longrightarrow U\longrightarrow A
+\longrightarrow Q_N\otimes R\longrightarrow0,
+\tag{3.3}
+\]</span></p>
+<p>where the last identification is induced by <span class="math">\(n^{-1}\)</span>.</p>
+<p>These are finite locally free modules with locally free quotients, including over rings with nilpotents. To see this directly, intersect with the weight flag. Since <span class="math">\(n\)</span> and <span class="math">\(n^{-1}\)</span> preserve it, the intersection of <span class="math">\(n(t^aV_{O_R})\)</span> with a flag term is <span class="math">\(n\)</span> applied to the corresponding flag term of <span class="math">\(t^aV_{O_R}\)</span>. Its graded image is the standard <span class="math">\(t^a\)</span> weight lattice because <span class="math">\(n\)</span> is the identity on the weight graded pieces. Condition (3.1) makes all the quotient filtrations strict. Their graded pieces are the free modules with levels <span class="math">\(-N,\ldots,M-1\)</span>, or <span class="math">\(N,\ldots,M-1\)</span>, in the appropriate weight space. The complementary quotient <span class="math">\((Q_M\otimes R)/A\)</span> has levels <span class="math">\(-M,\ldots,-N-1\)</span>. Successive extensions by free modules split over <span class="math">\(R\)</span>. This proves the asserted module properties without assuming flatness of an unspecified intersection.</p>
+<p>The weight filtration gives a canonical determinant identification</p>
+<p><span class="math math-display">\[
+\det U\simeq(\det V)^{M-N}\otimes R.
+\tag{3.4}
+\]</span></p>
+<p>It uses the identity action on each graded weight space, not a chosen basis of <span class="math">\(n(t^NV_O)\)</span>. The determinant of a filtered module is the tensor product of the determinants of its graded pieces: lift local graded bases and wedge them; changing a lift adds an earlier filtration vector and leaves the wedge unchanged. This elementary construction also proves functoriality and transitivity of (3.4). Normalize it by the standard tail as in Section 2.</p>
+<p>There is an explicit polynomial formula for the normalized tail vector. The classes of <span class="math">\(n(t^qe_i)\)</span>, <span class="math">\(N\le q&lt;M\)</span>, give a basis of <span class="math">\(U\)</span>: in the weight filtration their graded classes are precisely the standard basis vectors <span class="math">\(t^qe_i\)</span>. Lifting a graded basis generates the filtered module and is independent by induction on the flag. Vectors with <span class="math">\(q\ge M\)</span> project into earlier, higher-weight filtration terms and are already generated there, by that same induction. Wedge these basis vectors in the fixed standard order; (3.4) sends their determinant to the standard tail determinant. Likewise, the classes with <span class="math">\(-N\le q&lt;M\)</span> give a basis of <span class="math">\(A\)</span>. Thus (3.5) is computed by taking the transported occupied basis vectors with <span class="math">\(-N\le q&lt;N\)</span>, adjoining the transported tail with <span class="math">\(N\le q&lt;M\)</span>, and taking their ordinary finite wedge modulo <span class="math">\(t^M\)</span>. Only finitely many coefficients of the matrix <span class="math">\(n\)</span> occur. This formula proves polynomial dependence without an unspecified choice of splitting or an inversion of a parameter.</p>
+<p>For an exterior vector in <span class="math">\(\bigwedge^{r_N}Q_N\)</span>, transport it through (3.3), choose any lifts in <span class="math">\(A\)</span>, and wedge them with the determinant of <span class="math">\(U\)</span>. Changing a lift by an element of <span class="math">\(U\)</span> gives a wedge with too many <span class="math">\(U\)</span>-vectors and is zero. Cancelling the determinant factors through (3.4) gives a well-defined linear injection</p>
+<p><span class="math math-display">\[
+\widehat n_{N,M}:\mathcal F_N^e\otimes R
+\longrightarrow\mathcal F_M^e\otimes R.
+\tag{3.5}
+\]</span></p>
+<p>For a lattice <span class="math">\(\Lambda\)</span> bounded by <span class="math">\(N\)</span>, (3.3) restricted to its quotient is precisely</p>
+<p><span class="math math-display">\[
+0\to U\to n\Lambda/t^MV_{O_R}
+\to\Lambda/t^NV_{O_R}\to0.
+\]</span></p>
+<p>Therefore (3.5) carries <span class="math">\(\ell_\Lambda\)</span> to <span class="math">\(\ell_{n\Lambda}\)</span>. In particular it is valid when <span class="math">\(n\)</span> has poles; truncating just the transformed generators at the original cutoff would omit <span class="math">\(U\)</span> and would not give this map.</p>
+<p>Enlarging <span class="math">\(M\)</span> adds its standard tail and gives the same map in the direct limit. Enlarging <span class="math">\(N\)</span> commutes with inserting its tail. The group law is also exact. For consecutive loops <span class="math">\(m,n\)</span>, choose intermediate and final cutoffs <span class="math">\(P,Q\)</span>. The combined tail has the exact sequence</p>
+<p><span class="math math-display">\[
+0\to n(t^PV_O)/t^QV_O
+\to nm(t^NV_O)/t^QV_O
+\to m(t^NV_O)/t^PV_O\to0.
+\tag{3.6}
+\]</span></p>
+<p>The last quotient is identified using <span class="math">\(n^{-1}\)</span>. Use the fixed order of transported occupied vectors followed by the transported tail vectors. Applying <span class="math">\(m\)</span> and then <span class="math">\(n\)</span> produces exactly those same vectors as applying <span class="math">\(nm\)</span>, with that same order. Any temporary choice of quotient lifts differs by tail vectors and disappears on wedging. The weight-filtered transition determinants are one. This checks the determinant signs as well as the vectors, without changing from a kernel-first to a quotient-first convention midway. Hence <span class="math">\(\widehat n\widehat m=\widehat{nm}\)</span>. The identity loop gives the standard transition; applying this to <span class="math">\(n^{-1}\)</span> gives the inverse. We have constructed the canonical lift of <span class="math">\(LN\)</span> to <span class="math">\(\mathcal F^e\)</span> using finite exterior powers only.</p>
+<p>The added tail retains the transported high-level vectors that can move below the original cutoff. It is part of the determinant construction before any exterior expansion is taken.</p>
+<p>For a concrete rank-one check, take the standard <span class="math">\(SL_2\)</span>-module, <span class="math">\(\nu=0\)</span>, <span class="math">\(n=u_\alpha(ct^{-1})\)</span>, <span class="math">\(N=1\)</span>, <span class="math">\(M=2\)</span>. The normalized image of the vacuum is the finite wedge</p>
+<p><span class="math math-display">\[
+e_1\wedge(e_2+ct^{-1}e_1)\wedge te_1
+\wedge(te_2+ce_1)
+=e_1\wedge e_2\wedge te_1\wedge te_2
+-c\,t^{-1}e_1\wedge e_1\wedge te_1\wedge te_2.
+\tag{3.7}
+\]</span></p>
+<p>The other tail correction vanishes because <span class="math">\(e_1\)</span> is already occupied. The first term has weight zero and coefficient one; the second has weight <span class="math">\(\alpha\)</span>. Its point at <span class="math">\(c=\infty\)</span> is the occupied lattice <span class="math">\(t^{-1}Oe_1\oplus tOe_2\)</span>, namely <span class="math">\(t^{-\alpha^\vee}\)</span>. Thus the finite wedge exhibits both the increasing-weight mechanism and the sign of the lower specialization in Section 6. The displayed formula and its interpretation remain valid in characteristic two.</p>
+<h2 id="4-increasing-weights-and-the-trace-form">4. Increasing weights, and the trace form</h2>
+<p>For a root loop <span class="math">\(u_\alpha(f)\)</span>, give the Laurent coefficients of <span class="math">\(f\)</span> the character <span class="math">\(\alpha\)</span>. Choose a common bound for its poles and for its inverse. At any fixed input and output cutoffs, the explicit finite wedge formula after (3.4) makes (3.5) polynomial in finitely many of those coefficients, with no parameter denominators. Torus conjugation is compatible with the normalized tails. Thus each operator coefficient carrying weight <span class="math">\(\chi\)</span> to <span class="math">\(\chi'\)</span> has character <span class="math">\(\chi'-\chi\)</span> and is a polynomial of degree <span class="math">\(q\ge0\)</span> in variables of character <span class="math">\(\alpha\)</span>. It is zero unless <span class="math">\(\chi'-\chi=q\alpha\)</span>. Its degree-zero part is the identity, obtained by setting <span class="math">\(f=0\)</span>.</p>
+<p>For arbitrary <span class="math">\(n\in N(F)\)</span>, apply the finite ordered positive-root factorization. It follows that</p>
+<p><span class="math math-display">\[
+\widehat n v=v+\text{weights strictly above the weight of }v
+\tag{4.1}
+\]</span></p>
+<p>for every weight vector <span class="math">\(v\)</span>; above means addition of a nonzero nonnegative integral combination of simple roots. This also follows directly by exterior expansion of the weight-triangular matrix and the normalized tail. The finite cutoff gives only finitely many resulting exterior basis terms. Replacements of occupied vectors high in the tail do not require an infinite exterior product: they are included in <span class="math">\(U\)</span> and its determinant before the finite wedge is taken.</p>
+<p>The bilinear form on the real cocharacter space associated to (2.3) is</p>
+<p><span class="math math-display">\[
+B(x,y)=\sum_i\langle\gamma_i,x\rangle\langle\gamma_i,y\rangle.
+\]</span></p>
+<p>It is positive definite because the weights generate the character lattice. It is Weyl invariant because a normalizer representative permutes the weight spaces with multiplicity. Reflection invariance gives</p>
+<p><span class="math math-display">\[
+B(\alpha_i^\vee)
+=c_i\alpha_i,\qquad
+c_i=\tfrac12 B(\alpha_i^\vee,\alpha_i^\vee)&gt;0.
+\tag{4.2}
+\]</span></p>
+<p>Indeed the reflection negates <span class="math">\(\alpha_i^\vee\)</span>, while its action on a character <span class="math">\(\chi\)</span> is <span class="math">\(\chi-\langle\chi,\alpha_i^\vee\rangle\alpha_i\)</span>; comparison gives (4.2). These are rational numbers computed from an integral lattice pairing. No Lie-algebra trace form in the field's characteristic is being used; positivity is a statement over <span class="math">\(\mathbb R\)</span>, so bad characteristic cannot make it degenerate.</p>
+<p>If <span class="math">\(\kappa(\eta)=\kappa(\nu)\)</span>, write <span class="math">\(\nu-\eta=\sum m_i\alpha_i^\vee\)</span>, <span class="math">\(m_i\in\mathbb Z\)</span>. The simple roots are linearly independent, and (4.2) shows</p>
+<p><span class="math math-display">\[
+\chi_\eta\ge\chi_\nu
+\Longleftrightarrow m_i\ge0\text{ for all }i
+\Longleftrightarrow\eta\le\nu.
+\tag{4.3}
+\]</span></p>
+<p>Here the left inequality uses the nonnegative integral root cone. If it holds, its real coefficients <span class="math">\(m_ic_i\)</span> are nonnegative, so the integral <span class="math">\(m_i\)</span> are nonnegative. Conversely <span class="math">\(B(\alpha_i^\vee)=c_i\alpha_i\)</span> is an integral character and lies in the integral root lattice in this situation: explicitly <span class="math">\(c_i=\sum_{q&gt;0}q^2\dim V_{q,i}\)</span> after grouping the <span class="math">\(SL_2\)</span>-torus weights <span class="math">\(q\)</span> and <span class="math">\(-q\)</span>; hence <span class="math">\(c_i\)</span> is an integer. This proves the converse in the integral cone too. The component condition is indispensable; positivity of the trace form alone does not recover an integral coroot difference.</p>
+<h2 id="5-the-orbit-partition-and-the-closed-weight-condition">5. The orbit partition and the closed weight condition</h2>
+<p>The proof of GL-SAT-01, Lemma 4.0, extends from its stated finite field to algebraically closed <span class="math">\(k\)</span> without any change. For clarity: extend <span class="math">\(g^{-1}B\in(G/B)(F)\)</span> to an <span class="math">\(O\)</span>-point using the projective embedding and a common homogeneous-coordinate valuation. The special fibre has a lift in <span class="math">\(G(k)\)</span> by the flag cells. Smoothness of the affine <span class="math">\(B\)</span>-torsor lifts it successively modulo <span class="math">\(t^m\)</span>; finite presentation and completeness give a lift <span class="math">\(h\in G(O)\)</span>. Thus <span class="math">\(g=b h^{-1}\)</span>, and <span class="math">\(B=N\rtimes T\)</span>, together with torus coordinate valuations, gives <span class="math">\(g=n t^\nu K\)</span>. If two such expressions have indices <span class="math">\(\eta,\nu\)</span>, their ratio lies in <span class="math">\(B(F)\cap G(O)=B(O)\)</span>, since <span class="math">\(B\)</span> is closed and <span class="math">\(O\hookrightarrow F\)</span>. Projection to <span class="math">\(T\)</span> forces every valuation of <span class="math">\(t^{\nu-\eta}\)</span> to vanish, hence <span class="math">\(\eta=\nu\)</span>. This proves the partition over every algebraically closed extension field of <span class="math">\(k\)</span>.</p>
+<p>Let <span class="math">\(\mathcal F_{\ge\chi}\)</span> be the sum of weight spaces whose weights differ from <span class="math">\(\chi\)</span> by a nonnegative integral combination of simple roots, and define <span class="math">\(\mathcal F_{&gt;\chi}\)</span> similarly with nonzero difference. Equation (4.1) says that the Plücker line of every point of <span class="math">\(S_\eta\)</span> has a nonzero <span class="math">\(\chi_\eta\)</span> component proportional to <span class="math">\(v_\eta\)</span>, with all its other components strictly greater. In the normalization (3.5) that coefficient is one; changing a vector representative of the line multiplies it by a nonzero scalar.</p>
+<p>Restrict to the component <span class="math">\(\kappa(\nu)\)</span>. By the partition and (4.3), the underlying support of</p>
+<p><span class="math math-display">\[
+\operatorname{Gr}_{G,\kappa(\nu)}
+\cap\mathbb P(\mathcal F_{\ge\chi_\nu})
+\tag{5.1}
+\]</span></p>
+<p>is exactly <span class="math">\(\bigcup_{\eta\le\nu}S_\eta\)</span>. Its condition is closed on every bounded stage: intersect the fixed weight subspace with <span class="math">\(\mathcal F_N^e\)</span> and impose ordinary linear equations on its Plücker line. The component is open and closed by GL-SAT-04. These conditions commute with increasing cutoffs. Therefore the union is closed as a support in the reduced ind-variety. The analogous strict-weight condition has support <span class="math">\(\bigcup_{\eta&lt;\nu}S_\eta\)</span>.</p>
+<h2 id="6-rank-one-lower-specializations-and-the-boundary-equation">6. Rank-one lower specializations and the boundary equation</h2>
+<p>For a positive simple root <span class="math">\(\alpha\)</span>, put <span class="math">\(m=\langle\alpha,\nu\rangle\)</span>. The explicit scaled map is
+<span class="math math-display">\[
+\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}
+\longmapsto\varphi_\alpha
+\begin{pmatrix}a&amp;t^{m-1}b\\t^{1-m}c&amp;d\end{pmatrix}.
+\]</span>
+The inner matrix map is conjugation by <span class="math">\(\operatorname{diag}(t^{m-1},1)\)</span> in <span class="math">\(GL_2(F)\)</span>, so preserves <span class="math">\(SL_2\)</span> and its multiplication. Its upper root is <span class="math">\(u_\alpha(c t^{m-1})\)</span>, its lower root is <span class="math">\(u_{-\alpha}(c t^{1-m})\)</span>, and its Weyl representative is <span class="math">\(t^{(m-1)\alpha^\vee}n_{s_\alpha}\)</span>. The central kernel of <span class="math">\(\varphi_\alpha\)</span> is retained in the stabilizer.</p>
+<p>The lower root and constant torus stabilize <span class="math">\(t^\nu K\)</span>: conjugating by <span class="math">\(t^{-\nu}\)</span> makes the lower root parameter <span class="math">\(ct\)</span>. The scaled <span class="math">\(SL_2\)</span>-orbit therefore gives a morphism</p>
+<p><span class="math math-display">\[
+SL_2/B^-\simeq\mathbb P^1\longrightarrow\operatorname{Gr}_G.
+\tag{6.1}
+\]</span></p>
+<p>Its affine upper-root chart is <span class="math">\(c\mapsto u_\alpha(c t^{m-1})t^\nu K\)</span>, wholly contained in <span class="math">\(S_\nu\)</span>. The root intersection with the stabilizer is zero, because after conjugation the upper parameter is <span class="math">\(ct^{-1}\)</span>, integral precisely for <span class="math">\(c=0\)</span>. On the other chart the Weyl representative sends the torus point to</p>
+<p><span class="math math-display">\[
+t^{(m-1)\alpha^\vee}n_{s_\alpha}t^\nu K
+=t^{\nu-\alpha^\vee}K.
+\tag{6.2}
+\]</span></p>
+<p>This fixes the sign directly, without identifying a loop translation with a differently signed apartment action. The chart transition is the usual upper/lower triangular <span class="math">\(SL_2\)</span> transition, and its stabilizing factors give a regular map at infinity. It works when <span class="math">\(m\)</span> is negative or zero as well. Since the source is quasi-compact, its lattice representatives on the two charts have a common finite bound, so (6.1) is an actual finite-stage specialization. Consequently <span class="math">\(t^{\nu-\alpha^\vee}\in\overline{S_\nu}\)</span>. The closure is <span class="math">\(N(F)\)</span>-stable, so it contains the entire lower orbit. Iterating these simple-coroot curves proves all lower inclusions. Combining them with (5.1) proves the closure equality in (1.1), with reduced structures.</p>
+<p>Choose the exterior-basis coordinate functional <span class="math">\(f_\nu\)</span> that equals one on <span class="math">\(v_\nu\)</span>, vanishes on the other basis vectors of its weight, and vanishes on all other weights. The compatible finite-excitation basis defines it on the direct limit, so its restrictions are compatible finite-stage linear forms. Let <span class="math">\(H_\nu=\{f_\nu=0\}\)</span>. On <span class="math">\(S_\nu\)</span>, (4.1) gives <span class="math">\(f_\nu\ne0\)</span>. On <span class="math">\(S_\eta\)</span>, <span class="math">\(\eta&lt;\nu\)</span>, the leading weight is strictly above <span class="math">\(\chi_\nu\)</span>, and every other weight is higher still, so <span class="math">\(f_\nu=0\)</span>. This proves the boundary equality in (1.1). It also makes <span class="math">\(S_\nu\)</span> a locally closed reduced locus in every bounded stage: it is the complement of this hyperplane in its closed semi-infinite closure support.</p>
+<h2 id="7-finite-orbit-indices-attraction-and-hyperplane-dimension">7. Finite orbit indices, attraction, and hyperplane dimension</h2>
+<p>Write <span class="math">\(Z_\lambda=\overline{\operatorname{Gr}^{\lambda}}\)</span> for the reduced projective Schubert variety. It is integral of dimension <span class="math">\(D=\langle2\rho,\lambda\rangle\)</span>.</p>
+<p>Choose a strictly dominant integral cocharacter <span class="math">\(\xi\)</span>, for instance the sum of positive coroots. For <span class="math">\(n=\prod_{\alpha&gt;0}u_\alpha(f_\alpha)\)</span>, conjugation by <span class="math">\(\xi(s)\)</span> replaces each parameter by <span class="math">\(s^{\langle\alpha,\xi\rangle}f_\alpha\)</span>. This is a loop over <span class="math">\(k[s]\)</span> with a uniform pole bound and extends to the identity at <span class="math">\(s=0\)</span>. Hence every <span class="math">\(x\in S_\eta\)</span> has an actual finite-stage curve with</p>
+<p><span class="math math-display">\[
+\lim_{s\to0}\xi(s)x=t^\eta.
+\tag{7.1}
+\]</span></p>
+<p>If <span class="math">\(x\in Z_\lambda\)</span>, its whole curve lies there by torus stability and closedness. Thus <span class="math">\(t^\eta\in Z_\lambda\)</span>. Conversely that torus point itself lies in <span class="math">\(S_\eta\cap Z_\lambda\)</span>.</p>
+<p>The earlier Cartan closure theorem makes this equivalent to <span class="math">\(\eta^+\le\lambda\)</span>, where <span class="math">\(\eta^+\)</span> is the dominant Weyl translate. For every such <span class="math">\(\eta\)</span>,</p>
+<p><span class="math math-display">\[
+w_0\lambda\le\eta\le\lambda.
+\tag{7.2}
+\]</span></p>
+<p>Indeed a dominant coweight minus any Weyl translate is a nonnegative integral sum of simple coroots: apply a reduced Weyl word and use its positive inversion roots and the nonnegative dominant pairings. Combine this with <span class="math">\(\lambda-\eta^+\in Q^\vee_+\)</span>; apply <span class="math">\(w_0\)</span> for the other inequality. There are finitely many possible <span class="math">\(\eta\)</span>. Alternatively, the bounded lattice realization of <span class="math">\(Z_\lambda\)</span>, applied to <span class="math">\(t^\eta\)</span>, bounds every <span class="math">\(\langle\gamma_i,\eta\rangle\)</span>; the weights generate the character lattice, so this integral box is finite. Therefore <span class="math">\(Z_\lambda\)</span> has a finite partition into the locally closed loci <span class="math">\(S_\eta\cap Z_\lambda\)</span>.</p>
+<p>By (7.2), <span class="math">\(Z_\lambda\subset\overline{S_\lambda}\)</span>. Since it contains <span class="math">\(t^\lambda\notin H_\lambda\)</span>,</p>
+<p><span class="math math-display">\[
+A_0=S_\lambda\cap Z_\lambda
+=Z_\lambda\setminus H_\lambda
+\tag{7.3}
+\]</span></p>
+<p>is a nonempty dense open irreducible locus of dimension <span class="math">\(D\)</span>. This proves the needed top extreme without importing a negative-loop orbit-intersection theorem.</p>
+<p>Here is the hyperplane fact used in both dimension chains. If <span class="math">\(Y\)</span> is an integral projective variety of dimension <span class="math">\(d&gt;0\)</span> in a finite projective space, and a hyperplane does not contain <span class="math">\(Y\)</span>, then its section is nonempty and every irreducible component has dimension <span class="math">\(d-1\)</span>. Its homogeneous coordinate ring <span class="math">\(A\)</span> is a finitely generated standard graded domain of dimension <span class="math">\(d+1\)</span>. The hyperplane form is nonzero. Every prime minimal over it has height one by the earlier principal ideal theorem: height zero is impossible in a domain. The earlier finite-type domain height formula gives <span class="math">\(\dim A/\mathfrak p=d\)</span>. These primes are homogeneous: for a prime minimal over a graded ideal, the ideal generated by its homogeneous elements still contains the given ideal and is prime. Indeed the prime test holds for homogeneous elements by the original prime test; taking lowest nonzero graded terms makes its quotient a domain. Minimality makes this homogeneous prime the original prime. They cannot be the irrelevant maximal ideal when <span class="math">\(d&gt;0\)</span>, since that ideal has height <span class="math">\(d+1\)</span>. Taking Proj gives nonempty components of dimension <span class="math">\(d-1\)</span>. The dimension calculation is elementary on a degree-one chart: <span class="math">\(A_f=(A_f)_0[f,f^{-1}]\)</span>, where different powers of <span class="math">\(f\)</span> have different degrees, so this is a Laurent polynomial algebra over the degree-zero chart algebra. Nonempty opens of a finite-type field domain have its dimension, by the earlier height formula at closed points. Thus the chart dimension is one less than the cone dimension. These charts cover all nonirrelevant homogeneous primes. This proves the fact with the stated earlier algebra rather than treating a hyperplane citation as a proof.</p>
+<p>Finally, an irreducible closed subvariety <span class="math">\(Y\subset Z_\lambda\)</span> has a unique dense orbit locus in this finite partition: its generic point belongs to some <span class="math">\(S_\mu\)</span>, whose intersection with <span class="math">\(Y\)</span> is locally closed and contains the generic point, hence contains a dense open. In fact <span class="math">\(Y\subset\overline{S_\mu}\)</span>, and the boundary hyperplane makes <span class="math">\(Y\cap S_\mu=Y\setminus H_\mu\)</span>, a dense open irreducible subset. This identifies the required generic index without assuming that it is a whole component of a different intersection.</p>
+<h2 id="8-the-downward-dimension-chain">8. The downward dimension chain</h2>
+<p>Let <span class="math">\(C\)</span> be an irreducible component of <span class="math">\(S_\nu\cap Z_\lambda\)</span>, and let <span class="math">\(d=\dim C\)</span>. Its closure <span class="math">\(Y_0=\overline C\)</span> is integral projective of dimension <span class="math">\(d\)</span>, contained in <span class="math">\(\overline{S_\nu}\)</span>, and its dense open is <span class="math">\(C\)</span>. If <span class="math">\(d&gt;0\)</span>, the hyperplane <span class="math">\(H_\nu\)</span> is nonzero on that open, so choose an irreducible component <span class="math">\(Y_1\)</span> of <span class="math">\(Y_0\cap H_\nu\)</span>. It is nonempty of dimension <span class="math">\(d-1\)</span>. Its dense orbit locus has an index <span class="math">\(\nu_1&lt;\nu\)</span>. Repeat on <span class="math">\(Y_1\)</span>, using <span class="math">\(H_{\nu_1}\)</span>, until the dimension is zero. At each positive dimension, projectivity and the hyperplane fact guarantee the next nonempty section. No assertion that an intermediate locus is a component of <span class="math">\(S_{\nu_j}\cap Z_\lambda\)</span> is needed.</p>
+<p>This gives <span class="math">\(d\)</span> strict drops</p>
+<p><span class="math math-display">\[
+\nu=\nu_0&gt;\nu_1&gt;\cdots&gt;\nu_d\ge w_0\lambda.
+\]</span></p>
+<p>Since <span class="math">\(\langle\rho,\alpha_i^\vee\rangle=1\)</span>, every nonzero integral positive-coroot drop has <span class="math">\(\rho\)</span>-height at least one. Therefore</p>
+<p><span class="math math-display">\[
+d\le\langle\rho,\nu-\nu_d\rangle
+\le\langle\rho,\nu-w_0\lambda\rangle.
+\tag{8.1}
+\]</span></p>
+<p>The endpoint need not equal <span class="math">\(w_0\lambda\)</span>. Its lower bound is enough. In particular this argument proves that the bottom intersection has dimension zero, rather than assuming an unproved bottom extreme.</p>
+<h2 id="9-the-chain-containing-the-chosen-component">9. The chain containing the chosen component</h2>
+<p>This chain begins with <span class="math">\(Y^0=Z_\lambda\)</span>, generic index <span class="math">\(\mu_0=\lambda\)</span>, and keeps the fixed closed irreducible subvariety <span class="math">\(\overline C\)</span> inside every chosen <span class="math">\(Y^j\)</span>. Suppose <span class="math">\(Y^j\)</span> has generic index <span class="math">\(\mu_j\)</span>. Then <span class="math">\(Y^j\subset\overline{S_{\mu_j}}\)</span>, so <span class="math">\(C\subset Y^j\cap S_\nu\)</span> forces <span class="math">\(\nu\le\mu_j\)</span>.</p>
+<p>If <span class="math">\(\mu_j=\nu\)</span>, the dense open irreducible set <span class="math">\(Y^j\cap S_\nu\)</span> contains <span class="math">\(C\)</span>. It is closed inside <span class="math">\(S_\nu\cap Z_\lambda\)</span>, because <span class="math">\(Y^j\)</span> is closed in <span class="math">\(Z_\lambda\)</span>. The maximality of the irreducible component <span class="math">\(C\)</span> therefore gives <span class="math">\(Y^j\cap S_\nu=C\)</span>, and <span class="math">\(\dim Y^j=\dim C\)</span>. This is the stopping rule.</p>
+<p>If <span class="math">\(\mu_j&gt;\nu\)</span>, the boundary equation puts <span class="math">\(\overline C\)</span> in <span class="math">\(Y^j\cap H_{\mu_j}\)</span>. It is nonempty, while <span class="math">\(H_{\mu_j}\)</span> does not contain the dense generic orbit locus of <span class="math">\(Y^j\)</span>. Choose an irreducible component <span class="math">\(Y^{j+1}\)</span> of that section containing <span class="math">\(\overline C\)</span>. It has dimension exactly one less. Its generic index satisfies</p>
+<p><span class="math math-display">\[
+\nu\le\mu_{j+1}&lt;\mu_j.
+\]</span></p>
+<p>The process must stop: the integer height <span class="math">\(\langle\rho,\mu_j-\nu\rangle\)</span> strictly decreases and remains nonnegative. It cannot terminate at a different index in dimension zero, because a zero-dimensional integral variety is a point and cannot contain the nonempty locus <span class="math">\(C\subset S_\nu\)</span> while its generic point belongs to a different orbit. Thus it stops at <span class="math">\(\mu_e=\nu\)</span>, with</p>
+<p><span class="math math-display">\[
+\dim C=D-e,
+\qquad e\le\langle\rho,\lambda-\nu\rangle.
+\tag{9.1}
+\]</span></p>
+<p>Combining (8.1) and (9.1), and using <span class="math">\(\rho\circ w_0=-\rho\)</span>, gives</p>
+<p><span class="math math-display">\[
+\langle\rho,\lambda+\nu\rangle
+=D-\langle\rho,\lambda-\nu\rangle
+\le\dim C
+\le\langle\rho,\nu-w_0\lambda\rangle
+=\langle\rho,\lambda+\nu\rangle.
+\]</span></p>
+<p>Equality holds throughout. Every component has the required dimension, so the closed-Schubert intersection is equidimensional. The fixed component is retained throughout the upward chain, so the stopping argument applies to each of its components.</p>
+<h2 id="10-the-open-schubert-orbit-and-the-opposite-statement">10. The open Schubert orbit and the opposite statement</h2>
+<p>The nonempty closed-Schubert intersection has pure dimension <span class="math">\(d=\langle\rho,\lambda+\nu\rangle\)</span>. Its complement inside the open Schubert orbit is contained in the finite union of <span class="math">\(S_\nu\cap Z_\tau\)</span>, where <span class="math">\(\tau&lt;\lambda\)</span> is dominant in the same component. Apply the already established closed-intersection formula to each <span class="math">\(\tau\)</span>. Every nonempty such intersection has dimension</p>
+<p><span class="math math-display">\[
+\langle\rho,\tau+\nu\rangle
+&lt;\langle\rho,\lambda+\nu\rangle,
+\]</span></p>
+<p>because <span class="math">\(\lambda-\tau\)</span> is a nonzero integral positive-coroot sum. A finite union of these smaller-dimensional closed subsets cannot contain any component <span class="math">\(C\)</span>. Thus each component meets <span class="math">\(\operatorname{Gr}^{\lambda}\)</span> in a nonempty dense open. Their intersections give precisely the components of <span class="math">\(S_\nu\cap\operatorname{Gr}^{\lambda}\)</span>, with the same pure dimension. This proves both the open-orbit nonemptiness criterion and dimension, including the case <span class="math">\(d=0\)</span>, when the smaller-dimensional intersections are necessarily empty.</p>
+<p>For <span class="math">\(T_\nu=N^-(F)t^\nu K/K\)</span>, act by a representative of <span class="math">\(w_0\)</span>. It identifies this locus with <span class="math">\(S_{w_0\nu}\)</span>, preserves the Schubert variety indexed by the dominant representative, and reverses <span class="math">\(\rho\)</span>. If the Schubert index <span class="math">\(\lambda\)</span> is written antidominantly, its dominant representative is <span class="math">\(w_0\lambda\)</span>, giving</p>
+<p><span class="math math-display">\[
+\dim(T_\nu\cap\overline{\operatorname{Gr}^{\lambda}})
+=\dim(T_\nu\cap\operatorname{Gr}^{\lambda})
+=-\langle\rho,\lambda+\nu\rangle
+\]</span></p>
+<p>when nonempty, with the same torus-point criterion and pure-dimensional interpretation.</p>
+<h2 id="11-classical-sheaf-operations-and-finite-stage-attractors">11. Classical sheaf operations and finite-stage attractors</h2>
+<p>We use the actual classical proofs in <span class="unlinked">Constructible complexes on algebraic varieties</span>: F.1–F.2 for compact-support cohomological dimension; H.1–H.6 for proper-support base change, adjunction, projection and dual exchanges; and J–K for constructible biduality and finiteness. The product calculation in <a href="../GL-PERV/equivariant-perverse-sheaves-and-perverse-sheaves-on-stacks.html">Equivariant perverse sheaves and perverse sheaves on stacks</a>, Lemma B.5, proves that projection from a product with a contractible manifold is acyclic on inverse images of arbitrary base sheaves. The bounded perverse t-structure and finite length are proved in <a href="../GL-PERV/the-perverse-t-structure.html">The perverse t-structure</a>, Theorem 2.1 and §5. Intermediate extension and its strict boundary bounds are proved in <a href="../GL-PERV/intermediate-extensions-and-intersection-complexes.html">Intermediate extensions and intersection complexes</a>, §1. These are earlier programme proofs, rather than external theorem citations.</p>
+<p>Here is the product comparison used with an ordinary, possibly nonproper, map <span class="math">\(f:Y\to S\)</span>. For a contractible disc <span class="math">\(D\)</span>, the natural map
+<span class="math math-display">\[
+\operatorname{pr}_S^*Rf_*K\longrightarrow
+R(1_D\times f)_*\operatorname{pr}_Y^*K
+\]</span>
+is an isomorphism. On a product open <span class="math">\(D'\times U\)</span>, Lemma B.5 identifies both sides with <span class="math">\(R\Gamma(f^{-1}U,K)\)</span>. Such product opens form a basis. The identifications are induced by the adjunction unit, so they glue and preserve the natural comparison maps. The same argument applies to the contractible slit regions used below.</p>
+<p>Let <span class="math">\(Y\)</span> be a finite union of projective Schubert varieties and choose a lattice bound containing it. The exterior-power embedding of §2 is <span class="math">\(T\)</span>-equivariant, so a dominant cocharacter acts through a finite weight representation on that stage. Choose <span class="math">\(\xi=2\rho^\vee\)</span>, the sum of positive coroots. It pairs positively with every positive root. Formula (7.1) proves that the attracting point set of <span class="math">\(t^\nu\)</span> is <span class="math">\(S_\nu\cap Y\)</span>: every point belongs to exactly one <span class="math">\(S_\eta\)</span>, and its limit is exactly <span class="math">\(t^\eta\)</span>. Separatedness makes that limit unique. Replacing <span class="math">\(\xi\)</span> by <span class="math">\(-\xi\)</span> gives the repeller <span class="math">\(T_\nu\cap Y\)</span>. The fixed point set is therefore the finite set of torus points occurring in <span class="math">\(Y\)</span>.</p>
+<p>The graded-coordinate charts in §12 construct the actual finite-type attractor and repeller schemes. Their underlying reduced loci are these semi-infinite intersections. We do not identify their full nilpotent functors with reduced orbit loci. For classical sheaves, nilpotent scheme structure has no effect on the analytic space or its sheaves. Thus hyperbolic restriction at each fixed point computes precisely the compact-support and extraordinary-restriction functors used below. When <span class="math">\(G\)</span> is a torus, <span class="math">\(\xi=0\)</span>; the reduced Schubert stages are finite sets of points and the same statement holds.</p>
+<h2 id="12-classical-coefficient-and-geometry-hypotheses">12. Classical coefficient and geometry hypotheses</h2>
+<p>Let <span class="math">\(\Lambda\)</span> be a field of any characteristic. Work with bounded algebraically constructible complexes of finite-dimensional <span class="math">\(\Lambda\)</span>-vector spaces on complex algebraic varieties, using their analytic topologies. Write <span class="math">\(D_X\)</span> for the classical Verdier dual. The earlier proofs listed in §11 show that these operations preserve bounded constructibility.</p>
+<p>For a <span class="math">\(\mathbb C^*\)</span>-action <span class="math">\(a\)</span>, call <span class="math">\(F\)</span> weakly equivariant if
+<span class="math math-display">\[
+ a^*F\simeq L\boxtimes F                                   \tag{WE}
+\]</span>
+for a finite-rank local system <span class="math">\(L\)</span> on <span class="math">\(\mathbb C^*\)</span>; no claim of coherent equivariance is built into this definition. Naive equivariance is the case <span class="math">\(L=\Lambda\)</span>. If <span class="math">\(F\ne0\)</span>, finite-dimensional stalks already force <span class="math">\(\operatorname{rank}L=1\)</span>, but the circle calculation below works for every finite-rank <span class="math">\(L\)</span>.</p>
+<p>Equivariant inverse images, direct images, proper-support images and exceptional inverse images preserve (WE). For <span class="math">\(f_*\)</span>, use the product comparison proved above on contractible discs in <span class="math">\(\mathbb C^*\)</span>, and trivialize <span class="math">\(L\)</span> there; it yields <span class="math">\(Rf_*(L\boxtimes F)=L\boxtimes Rf_*F\)</span>. The equivariant action square is a product square after an isomorphism of its upper corner. For <span class="math">\(f_!\)</span>, use actual proper-support base change and the local projection formula. Duality sends (WE) to the corresponding statement with <span class="math">\(L^\vee\)</span>: action and projection are both smooth of relative dimension one, so their common orientation shift <span class="math">\([2]\)</span> cancels. The proved identity <span class="math">\(f^!=D f^*D\)</span> then proves preservation by <span class="math">\(f^!\)</span>. Open extension by zero and closed direct image are included. Replacing the action by its inverse replaces <span class="math">\(L\)</span> by inversion-pullback. A natural isomorphism proved for these objects also holds on their finite extension/cone closure, by the exact triangle axiom.</p>
+<p>We require either a specified equivariant closed embedding <span class="math">\(X\hookrightarrow\mathbb P(W)\)</span>, with <span class="math">\(W\)</span> a finite-dimensional weight representation, or specified invariant affine charts with finite homogeneous coordinate generators. No local-linearization theorem is invoked to obtain these data.</p>
+<p>Denote by <span class="math">\(X^0,X^+,X^-\)</span> the fixed, attracting and repelling spaces, with evaluation maps
+<span class="math math-display">\[
+ X^0\xrightarrow{i^\pm}X^\pm\xrightarrow{p^\pm}X,
+ \qquad q^\pm:X^\pm\to X^0,\quad q^\pm i^\pm=1.
+\]</span>
+For an affine scheme with graded coordinate ring, these spaces are obtained by setting the coordinates of the prohibited weight signs to zero, and <span class="math">\(q^\pm\)</span> sets the remaining nonzero weights to zero. A finite homogeneous generating set gives an equivariant closed embedding into a weight vector space. The description is schematic: a homogeneous function on an equivariant <span class="math">\(\mathbb A^1_R\)</span> is its value at 1 times the appropriate nonnegative power of the parameter, while a prohibited negative power must have zero coefficient.</p>
+<p>For <span class="math">\(X\subset\mathbb P(W)\)</span>, attractors and repellers are disjoint unions indexed by the finitely many weights of their limits. On eigen-coordinate charts the preceding affine descriptions represent them and glue. In the projective weight decomposition, a nonzero point's attracting limit is its lowest nonzero weight and its repelling limit its highest. The same description is schematic on each homogeneous-coordinate chart. The diagonal
+<span class="math math-display">\[
+ e:X^0\longrightarrow X^+\times_X X^-
+\]</span>
+is open and closed: the summands with equal limit weights are exactly the fixed locus, by the affine coordinate description; the pairs of limit weights index open-and-closed summands of the fiber product. Nilpotent coefficients are included in the coordinate ideals, not discarded by a pointwise assertion.</p>
+<h2 id="13-the-relative-affine-line-calculation">13. The relative affine-line calculation</h2>
+<p>Let <span class="math">\(q:\mathbb C\times S\to S\)</span>, let <span class="math">\(j:\mathbb C^*\times S\hookrightarrow\mathbb C\times S\)</span>, and let <span class="math">\(z:S\hookrightarrow\mathbb C\times S\)</span> be the zero section. For <span class="math">\(B\in D_c^b(S,\Lambda)\)</span>,
+<span class="math math-display">\[
+ Rq_*q^*B\simeq B,\qquad
+ Rq_*j_!(L\boxtimes B)=0.                                 \tag{A1}
+\]</span>
+The first isomorphism is the adjunction unit, and its inverse is restriction to any constant section. It follows from the contractible-product calculation of the product calculation in §11, applied termwise to the finite ordinary cohomology tower.</p>
+<p>Here is a proof of the second assertion which retains a nontrivial <span class="math">\(L\)</span>. Cover <span class="math">\(\mathbb C^*\)</span> by two angular slit regions. Each region is contractible, and their intersection consists of two contractible regions. Trivialize <span class="math">\(L\)</span> on the slit regions; the transition on one overlap can be made the identity, and on the other it is the monodromy <span class="math">\(T\)</span>. The two-term Čech complex has differential <span class="math">\((v,w)\mapsto(v-w,v-Tw)\)</span>. Canceling one identity summand reduces it to
+<span class="math math-display">\[
+ [V\xrightarrow{T-1}V],\qquad V=L_1,
+\]</span>
+in degrees 0 and 1. The identical slit cover on every punctured disc about 0 gives the same complex. Restriction from <span class="math">\(\mathbb C^*\)</span> to a punctured disc induces its identity, compatibly with smaller radii. This is the actual cochain comparison, not merely equality of cohomology ranks.</p>
+<p>On products with <span class="math">\(S\)</span>, each slit-region projection is universally acyclic by the already proved arbitrary-base-sheaf lemma. Thus the same computation has <span class="math">\(V\otimes B\)</span> in place of <span class="math">\(V\)</span>. It computes both
+<span class="math math-display">\[
+ Rq_*Rj_*(L\boxtimes B),\qquad z^*Rj_*(L\boxtimes B),
+\]</span>
+and their restriction map is an isomorphism. Apply <span class="math">\(Rq_*\)</span> to the boundary triangle
+<span class="math math-display">\[
+ j_!(L\boxtimes B)\to Rj_*(L\boxtimes B)
+ \to z_*z^*Rj_*(L\boxtimes B)\to.
+\]</span>
+Since <span class="math">\(qz=1\)</span>, the second arrow becomes precisely the isomorphism just computed. This proves (A1).</p>
+<p>Consequently, if <span class="math">\(K\in D_c^b(\mathbb C\times S)\)</span> has <span class="math">\(j^*K\simeq L\boxtimes B\)</span>, then the <strong>restriction</strong> map
+<span class="math math-display">\[
+ Rq_*K\longrightarrow z^*K                                \tag{A2}
+\]</span>
+is an isomorphism. Apply <span class="math">\(Rq_*\)</span> to <span class="math">\(j_!j^*K\to K\to z_*z^*K\)</span>. This deduction is important: it does not assert ordinary base change at 0 for an arbitrary nonproper projection.</p>
+<p>Finally, an endomorphism <span class="math">\(u:q^*B\to q^*B\)</span> which is zero at 0 and invertible at 1 forces <span class="math">\(B=0\)</span>. The natural restriction maps <span class="math">\(Rq_*q^*B\to B\)</span> at both sections are isomorphisms by (A1); naturality makes <span class="math">\(Rq_*u\)</span> simultaneously zero and invertible.</p>
+<h2 id="14-projective-contraction-with-the-graph-argument-written-out">14. Projective contraction, with the graph argument written out</h2>
+<p>Let <span class="math">\(A,B\)</span> be weight vector bundles over a complex variety <span class="math">\(S\)</span> on which the torus acts trivially. Suppose every weight of <span class="math">\(A\)</span> is strictly greater than every weight of <span class="math">\(B\)</span>. Put
+<span class="math math-display">\[
+ Y=\mathbb P(A\oplus B)\setminus\mathbb P(A),\quad
+ Z=\mathbb P(B),\quad i:Z\hookrightarrow Y,
+\]</span>
+and let <span class="math">\(\pi:Y\to Z\)</span> be projection to the <span class="math">\(B\)</span>-line. Write <span class="math">\(\tau:Z\to S\)</span>, which is proper, and <span class="math">\(f=\tau\pi\)</span>. For a weakly equivariant <span class="math">\(F\)</span>, the natural restriction and counit maps are isomorphisms
+<span class="math math-display">\[
+ Rf_*F\longrightarrow R\tau_*i^*F,
+ \qquad R\tau_!i^!F\longrightarrow Rf_!F.                  \tag{PC}
+\]</span>
+The pushforward to <span class="math">\(S\)</span> in this statement is essential: the action on <span class="math">\(Z\)</span> need not be trivial, and no false local assertion <span class="math">\(R\pi_*F=i^*F\)</span> is being used.</p>
+<p>It suffices for the first assertion to prove <span class="math">\(Rf_*F_U=0\)</span>, where <span class="math">\(U=Y\setminus Z\)</span>, <span class="math">\(\sigma:U\hookrightarrow Y\)</span>, and <span class="math">\(F_U=\sigma_!\sigma^*F\)</span>. Form the closure <span class="math">\(\Gamma\)</span> of the action graph in
+<span class="math">\(\mathbb C\times Y\times\mathbb P(A\oplus B)\)</span>, with projections <span class="math">\(r_1,r_2\)</span> to the first coordinate and respectively the first and second projective points. Both are isomorphisms over <span class="math">\(\mathbb C^*\)</span>. The following coordinates prove the required properness and zero-fiber claim.</p>
+<p>Choose weight coordinates <span class="math">\(y_i,z_i\)</span> in <span class="math">\(A\)</span> of weights <span class="math">\(a_i\)</span> and <span class="math">\(y_j,z_j\)</span> in <span class="math">\(B\)</span> of weights <span class="math">\(b_j\)</span>. On the graph,
+<span class="math math-display">\[
+ y_jz_i=t^{a_i-b_j}y_i z_j.                                \tag{G}
+\]</span>
+These are regular equations since <span class="math">\(a_i-b_j&gt;0\)</span>, so they hold on its closure. At <span class="math">\(t=0\)</span>, some <span class="math">\(B\)</span>-coordinate of the first point is invertible on an appropriate projective chart because the first point lies in <span class="math">\(Y\)</span>. Equations (G) force every <span class="math">\(A\)</span>-coordinate of the second point to vanish. The second point therefore lies in <span class="math">\(Z\)</span>. For <span class="math">\(t\ne0\)</span>, it already lies in <span class="math">\(Y\)</span>. Thus the entire closure lies in <span class="math">\(\mathbb C\times Y\times Y\)</span>; its projection <span class="math">\(r_1\)</span> is proper, being closed in the projective bundle over <span class="math">\(\mathbb C\times Y\)</span>. Moreover
+<span class="math math-display">\[
+ r_2^{-1}(\mathbb C\times U)=\mathbb C^*\times U,
+\]</span>
+on which <span class="math">\(r_1\)</span> identifies the restriction of <span class="math">\(r_2\)</span> with the action. All these claims are local in a weight frame and hence glue. The equations establish the same schematic open containment over rings as well; no division by a weight integer occurs.</p>
+<p>Let <span class="math">\(Q=1_{\mathbb C}\times f\)</span>, <span class="math">\(p_Y:\mathbb C\times Y\to Y\)</span>, and
+<span class="math math-display">\[
+ C=Rf_*F_U,\qquad
+ D=RQ_*Rr_{2*}r_2^*p_Y^*F_U.
+\]</span>
+Since <span class="math">\(fr_1=fr_2\)</span>, composition, the properness of <span class="math">\(r_1\)</span>, and proper-support base change for extension by zero give
+<span class="math math-display">\[
+ D\simeq RQ_*(j\times\sigma)_!a^*\sigma^*F
+   \simeq RQ_*j_!(L\boxtimes F_U).                         \tag{D}
+\]</span>
+On <span class="math">\(\mathbb C^*\times S\)</span>, the isomorphism <span class="math">\(r_2\)</span> and product comparison give <span class="math">\(D|_{\mathbb C^*\times S}\simeq q^*C\)</span>, where now <span class="math">\(q:\mathbb C\times S\to S\)</span>. By (A2), <span class="math">\(z^*D\simeq Rq_*D\)</span>. On the other hand, push (D) to <span class="math">\(S\)</span> and compose in the other order:
+<span class="math math-display">\[
+ Rq_*D\simeq Rf_*R(p_Y)_*j_!(L\boxtimes F_U)=0
+\]</span>
+by (A1) with base <span class="math">\(Y\)</span>. Thus <span class="math">\(z^*D=0\)</span>, and localization identifies <span class="math">\(D\)</span> with <span class="math">\(j_!j^*q^*C\)</span>.</p>
+<p>The unit for <span class="math">\(r_2^*\dashv Rr_{2*}\)</span>, followed by <span class="math">\(RQ_*\)</span>, gives <span class="math">\(q^*C\to D\)</span>. At 1 it is an isomorphism. Compose it with the extension-by-zero map
+<span class="math">\(D=j_!j^*q^*C\to q^*C\)</span>. This is an endomorphism of <span class="math">\(q^*C\)</span>, invertible at 1 and zero at 0. The last conclusion of §13 gives <span class="math">\(C=0\)</span>. The localization triangle for <span class="math">\(U\subset Y\)</span> proves the first map in (PC). Apply that assertion to <span class="math">\(D_YF\)</span>, use constructible biduality and both proved dual exchanges, and dualize; this gives exactly the second map in (PC), with its counit direction. This completes the contraction proof.</p>
+<h2 id="15-the-canonical-map-and-the-linear-space-proof">15. The canonical map and the linear-space proof</h2>
+<p>For the fiber product <span class="math">\(W=X^+\times_X X^-\)</span>, denote its projections by <span class="math">\(r:W\to X^-\)</span>, <span class="math">\(s:W\to X^+\)</span>. Proper-support base change, by adjunction, gives the extraordinary/ordinary exchange
+<span class="math math-display">\[
+ p^{-!}Rp^+_*\simeq Rr_*s^!.
+\]</span>
+One can check its direction by pairing both sides against a test complex and applying the already proved <span class="math">\(*\)</span>-<span class="math">\(!\)</span> base-change isomorphism. The unit <span class="math">\(F\to Rp^+_*p^{+*}F\)</span>, this exchange, and projection to the open-and-closed summand <span class="math">\(e:X^0\hookrightarrow W\)</span>, give
+<span class="math math-display">\[
+ i^{-*}p^{-!}F\longrightarrow i^{+!}p^{+*}F.                \tag{B}
+\]</span>
+More explicitly the middle step is
+<span class="math">\(i^{-*}Rr_*s^!p^{+*}F\to i^{-*}Rr_*e_*e^!s^!p^{+*}F\)</span>;
+since <span class="math">\(re=i^-\)</span>, <span class="math">\(se=i^+\)</span>, it ends at <span class="math">\(i^{+!}p^{+*}F\)</span>. Precompose the restriction <span class="math">\(Rq^-_*\to i^{-*}\)</span>, and postcompose the counit <span class="math">\(i^{+!}\to Rq^+_!\)</span>. This defines (HL), functorially in <span class="math">\(F\)</span>, before asserting it is invertible.</p>
+<p>First suppose <span class="math">\(X=V=A\oplus B\oplus V_0\)</span>, with positive, negative and zero weights respectively. Regard <span class="math">\(V_0\)</span> as the base <span class="math">\(S\)</span>. The attracting and repelling spaces are <span class="math">\(A\times S\)</span> and <span class="math">\(B\times S\)</span>, and their intersection is <span class="math">\(S\)</span>. Applying (PC) to <span class="math">\(\mathbb P(E\oplus\mathcal O_S)\setminus\mathbb P(E)\)</span>, with the action inverted if needed, proves vector contraction:
+<span class="math math-display">\[
+ Rq^-_*K\simeq i^{-*}K,\qquad
+ i^{+!}K\simeq Rq^+_!K                                   \tag{VC}
+\]</span>
+for the appropriate weakly equivariant complexes. The second map is the dual version of the first. These are the actual restriction and counit maps used above.</p>
+<p>Let <span class="math">\(j:V\setminus A\hookrightarrow V\)</span> and <span class="math">\(F_0=j_!j^*F\)</span>. The localization triangle
+<span class="math">\(F_0\to F\to p^+_*p^{+*}F\to\)</span>, after <span class="math">\(i^{-*}p^{-!}\)</span>, identifies (B) with its second arrow: the square <span class="math">\(A\cap B=S\)</span> is Cartesian, so proper closed base change makes its last term <span class="math">\(i^{+!}p^{+*}F\)</span>. It remains to show
+<span class="math math-display">\[
+ Rq^-_*p^{-!}F_0=0.                                      \tag{V0}
+\]</span></p>
+<p>Set
+<span class="math math-display">\[
+ Y=\mathbb P(A\oplus B\oplus\mathcal O_S)\setminus\mathbb P(B),
+ \quad Z=\mathbb P(A\oplus\mathcal O_S),
+\]</span>
+and let <span class="math">\(\rho:V\hookrightarrow Y\)</span> be the chart where the last coordinate is nonzero. The composite <span class="math">\(i'=\rho p^-:B\hookrightarrow Y\)</span> is closed: it is cut out by all <span class="math">\(A\)</span>-coordinates; excluding <span class="math">\(\mathbb P(B)\)</span> forces the last coordinate to be nonzero. Let <span class="math">\(j':Y\setminus B\hookrightarrow Y\)</span>, and put <span class="math">\(\bar F=\rho_!F_0\)</span>. Push the triangle
+<span class="math math-display">\[
+ i'_*i'^!\bar F\to\bar F\to Rj'_*j'^*\bar F\to
+\]</span>
+along <span class="math">\(f:Y\to S\)</span>.</p>
+<p>Its first term is <span class="math">\(Rq^-_*p^{-!}F_0\)</span>, since <span class="math">\(\rho^!\rho_!=1\)</span> for the open chart. Its second term vanishes by (PC) for the inverse action: all weights of <span class="math">\(B\)</span> are greater, for that action, than the weights of <span class="math">\(A\oplus\mathcal O_S\)</span>, and <span class="math">\(i_Z^*\bar F=0\)</span> because <span class="math">\(F_0\)</span> vanishes on <span class="math">\(A\)</span>.</p>
+<p>The open complement of <span class="math">\(B\)</span> in <span class="math">\(Y\)</span> is
+<span class="math math-display">\[
+ Y'=\mathbb P(A\oplus B\oplus\mathcal O_S)
+           \setminus\mathbb P(B\oplus\mathcal O_S).
+\]</span>
+Again use the inverse action. Here the high-weight bundle is <span class="math">\(B\oplus\mathcal O_S\)</span>, the low-weight bundle is <span class="math">\(A\)</span>, and (PC) contracts after pushforward to <span class="math">\(\mathbb P(A)\)</span>. The restriction of <span class="math">\(j'^*\bar F\)</span> to <span class="math">\(\mathbb P(A)\)</span> is zero: it is extension by zero from the chart with last coordinate nonzero. Hence its pushforward to <span class="math">\(S\)</span> is zero. By composition this is the third term <span class="math">\(Rf_*Rj'_*j'^*\bar F\)</span>. The triangle now proves (V0). Combining it with (VC) proves (HL) for <span class="math">\(V\)</span>. If <span class="math">\(A=0\)</span> or <span class="math">\(B=0\)</span>, (VC) gives the assertion directly, so empty projective bundles need not be introduced.</p>
+<h2 id="16-closed-affine-subvarieties-and-projective-charts">16. Closed affine subvarieties and projective charts</h2>
+<p>Let <span class="math">\(b:X\hookrightarrow V\)</span> be an equivariant closed immersion into a weight vector space. Its ideal is homogeneous, and the schematic coordinate description of §12 proves
+<span class="math math-display">\[
+ X^\pm=X\times_V V^\pm,
+ \qquad X^0=X\times_V V^0.
+\]</span>
+Indeed each homogeneous equation restricts along an equivariant affine-line map to its value at 1 times a permitted power; vanishing at 1 therefore forces the whole map to lie in <span class="math">\(X\)</span>. Equations of prohibited weight already vanish in <span class="math">\(V^\pm\)</span>. Thus the closed base-change squares are actual schematic squares. Proper closed base change and composition identify
+<span class="math math-display">\[
+ L_V^\pm b_*F\simeq b^0_*L_X^\pm F,
+ \quad L^-=Rq^-_*p^{-!},\quad L^+=Rq^+_!p^{+*}.
+\]</span>
+The unit, exchange and counit descriptions in §15 commute with these identifications: the relevant adjunction composites pull back the same section/support, and proper-support base change is compatible with pasting by Appendix H.2 of the constructible-complexes lesson. Hence the image of (HL) for <span class="math">\(X\)</span> is the map for <span class="math">\(V\)</span> applied to <span class="math">\(b_*F\)</span>. Closed direct image is conservative on stalks, so the vector-space result proves (HL) for <span class="math">\(X\)</span>. Any finite homogeneous coordinate generators provide this embedding for an affine <span class="math">\(X\)</span>.</p>
+<p>Now suppose <span class="math">\(X\hookrightarrow\mathbb P(W)\)</span> is specified. Eigen-coordinate opens <span class="math">\(D(\ell)\)</span> are invariant affine opens. Each is an affine space with linear weights given by differences from the weight of <span class="math">\(\ell\)</span>, and <span class="math">\(X\cap D(\ell)\)</span> is a closed affine subvariety. They cover <span class="math">\(X^0\)</span>, since a fixed line belongs to an individual weight space and has some nonzero eigen-coordinate.</p>
+<p>For an invariant open <span class="math">\(U\subset X\)</span>,
+<span class="math math-display">\[
+ U^\pm=X^\pm\times_{X^0}U^0.                             \tag{O}
+\]</span>
+To prove this, an orbit whose limit belongs to <span class="math">\(U\)</span> cannot meet the invariant closed complement: its closed orbit closure would then put its limit in that complement. This argument on geometric points gives precisely the required open containment over all base rings; the affine-coordinate description identifies the resulting attractor functors. An orbit lying in <span class="math">\(U\)</span> may have its limit outside <span class="math">\(U\)</span>; (O) does not assert the false identity <span class="math">\(U^\pm=(p^\pm)^{-1}U\)</span>.</p>
+<p>Restriction of ordinary direct image to a target open is base change, by restricting injective resolutions; proper-support image has actual arbitrary base change. Exceptional inverse image is local on both its source and target, by composition with open immersions. Therefore restricting (HL) to <span class="math">\(U^0\)</span> gives its construction for <span class="math">\(F|_U\)</span>. All fixed eigen-coordinate charts satisfy the affine theorem, and restriction to their cover is conservative. This proves (HL) on <span class="math">\(X\)</span>, with its canonical map and weak equivariance.</p>
+<p>The exterior-power embedding in §2 and the finite-stage reduction in §11 supply exactly these charts for the Grassmannian. Every supported complex in what follows is treated on an actual finite projective stage.</p>
+<h2 id="17-concentration-and-exactness-of-weight-functors">17. Concentration and exactness of weight functors</h2>
+<p>Let <span class="math">\(P\)</span> be an <span class="math">\(L^+G\)</span>-equivariant perverse sheaf supported on a finite projective Schubert union <span class="math">\(Y\)</span>. A sufficiently high jet quotient of <span class="math">\(L^+G\)</span> acts on this support. Coherent equivariance along a transitive smooth orbit implies that each ordinary cohomology sheaf is locally constant there: pull it back along the smooth orbit map, use the equivariance isomorphism to make it constant, then use local sections to descend lissity. Restriction along <span class="math">\(\xi\)</span> gives the naive equivariance required for hyperbolic restriction.</p>
+<p>Write <span class="math">\(O_\lambda=\operatorname{Gr}^{\lambda}\)</span>, <span class="math">\(d_\lambda=\langle2\rho,\lambda\rangle\)</span>, and <span class="math">\(h_\nu=\langle2\rho,\nu\rangle\)</span>. The intrinsic perverse support condition, together with this lissity, gives
+<span class="math math-display">\[
+\mathcal H^b(P|_{O_\lambda})=0\quad(b&gt;-d_\lambda).
+\]</span>
+Indeed a nonzero lisse sheaf on the orbit has support of its full dimension <span class="math">\(d_\lambda\)</span>, so the support inequality forces this bound.</p>
+<p>For a complex algebraic variety <span class="math">\(Z\)</span> of dimension at most <span class="math">\(d\)</span>, every constructible sheaf <span class="math">\(A\)</span> has <span class="math">\(H_c^a(Z,A)=0\)</span> for <span class="math">\(a&gt;2d\)</span>. To prove it, take a finite smooth stratification adapted to <span class="math">\(A\)</span>, using Appendix K of the earlier constructible-complexes lesson. A stratum of complex dimension <span class="math">\(e\)</span> has real coordinate charts of dimension <span class="math">\(2e\)</span>, so Appendix F.2 bounds its compact-support cohomological dimension by <span class="math">\(2e\)</span>. A closed-open filtration and its localization sequences prove the assertion by finite induction. The bound is <span class="math">\(2d\)</span>; a Čech cover does not add a degree to it.</p>
+<p>By the dimension theorem of §§8–10, a cohomology sheaf on <span class="math">\(S_\nu\cap O_\lambda\)</span>, occurring in degree <span class="math">\(b\)</span>, contributes only in total degrees
+<span class="math math-display">\[
+i\le 2\dim(S_\nu\cap O_\lambda)+b
+ \le\langle\rho,2\lambda+2\nu\rangle-d_\lambda=h_\nu.
+\]</span>
+Use its finite ordinary cohomology tower and then the finite orbit filtration. This proves
+<span class="math math-display">\[
+H_c^i(S_\nu\cap Y,P)=0\quad(i&gt;h_\nu).
+\tag{17.1}
+\]</span>
+For the opposite orbit the dominant-index dimension formula is <span class="math">\(\dim(T_\nu\cap O_\lambda)=\langle\rho,\lambda-\nu\rangle\)</span>. Apply the same argument to the perverse dual <span class="math">\(D_YP\)</span>. It gives compact cohomology on <span class="math">\(T_\nu\)</span> only in degrees at most <span class="math">\(-h_\nu\)</span>. Constructible biduality and the proved dual exchanges identify its dual with
+<span class="math math-display">\[
+R\Gamma(T_\nu\cap Y,p^{-!}P),
+\]</span>
+whose cohomology therefore vanishes below <span class="math">\(h_\nu\)</span>. The canonical hyperbolic isomorphism (HL) of §§14–16 transfers this lower bound to (17.1). Consequently
+<span class="math math-display">\[
+H_c^i(S_\nu\cap Y,P)=0\quad(i\ne h_\nu).
+\tag{17.2}
+\]</span></p>
+<p><strong>Theorem 17.1.</strong> The functor
+<span class="math math-display">\[
+F_\nu(P)=H_c^{h_\nu}(S_\nu\cap Y,P)
+\]</span>
+is finite dimensional and exact on the equivariant perverse heart.</p>
+<p><strong>Proof.</strong> Constructible finiteness gives finite dimension. Apply compact cohomology to the triangle associated to a short exact sequence in the heart. The groups in the two adjacent degrees vanish for all three terms by (17.2), leaving a short exact sequence in degree <span class="math">\(h_\nu\)</span>. A larger support stage gives the same functor: the complex is extension by zero from its closed support, and closed base change and composition identify the compact cohomology maps. Thus the definition is independent of the chosen stage. <span class="math">\(\square\)</span></p>
+<h2 id="18-the-canonical-decomposition-of-global-cohomology">18. The canonical decomposition of global cohomology</h2>
+<p>Fix one component class <span class="math">\(\kappa\)</span>. For all its orbit indices, <span class="math">\(h_\nu\)</span> has the same parity: their differences are coroot sums, and <span class="math">\(\langle2\rho,\alpha_i^\vee\rangle=2\)</span>. There are only finitely many indices on <span class="math">\(Y\)</span>.</p>
+<p>Put
+<span class="math math-display">\[
+Y_{\le h}=\bigcup_{h_\eta\le h}(S_\eta\cap Y),\qquad
+U_{\ge h}=Y\setminus Y_{&lt;h},\qquad
+Y_h=\bigcup_{h_\eta=h}(S_\eta\cap Y).
+\]</span>
+The first union is closed: it is the finite union of the semi-infinite closure supports with indices of height at most <span class="math">\(h\)</span>. Formula (1.1) shows that taking any such closure only adds lower heights. Hence <span class="math">\(U_{\ge h}\)</span> is open and <span class="math">\(Y_h\)</span> is closed in it. Each individual slice is open and closed in <span class="math">\(Y_h\)</span>, because its closure adds no other index of equal height. Thus
+<span class="math math-display">\[
+H_c^h(Y_h,P)=\bigoplus_{h_\nu=h}F_\nu(P).
+\tag{18.1}
+\]</span></p>
+<p>A finite closed-open induction using (17.2) says that a union of height strata has compact cohomology only in their heights. In particular <span class="math">\(U_{&gt;h}\)</span> has no cohomology in degrees <span class="math">\(h\)</span> or <span class="math">\(h+1\)</span>: its heights in this component are at least <span class="math">\(h+2\)</span>. The localization triangle for <span class="math">\(U_{&gt;h}\subset U_{\ge h}\)</span> therefore makes the restriction
+<span class="math math-display">\[
+H_c^h(U_{\ge h},P)\longrightarrow H_c^h(Y_h,P)
+\tag{18.2}
+\]</span>
+an isomorphism. Likewise <span class="math">\(Y_{&lt;h}\)</span> has no cohomology in degrees <span class="math">\(h-1\)</span> or <span class="math">\(h\)</span>. The localization triangle for <span class="math">\(U_{\ge h}\subset Y\)</span> makes extension by zero
+<span class="math math-display">\[
+H_c^h(U_{\ge h},P)\longrightarrow H^h(Y,P)
+\tag{18.3}
+\]</span>
+an isomorphism; <span class="math">\(Y\)</span> is proper, so compact and ordinary cohomology coincide.</p>
+<p>Compose the inverse of (18.2) with (18.3), and use (18.1). These are canonical natural maps. Repeating over all heights and the finitely many open-and-closed component classes gives
+<span class="math math-display">\[
+H^*(\operatorname{Gr}_G,P)
+ =\bigoplus_{\nu\in X_*(T)}F_\nu(P),
+\quad F_\nu(P)\text{ lies in degree }\langle2\rho,\nu\rangle.
+\tag{18.4}
+\]</span>
+Only finitely many summands are nonzero. This constructs the splitting itself; degeneration and an equality of dimensions would not supply these maps. The closed-support comparisons used in Theorem 17.1 commute with the two localization triangles, so the splitting is also independent of stage. Exactness of all <span class="math">\(F_\nu\)</span> proves that total cohomology is exact on this perverse heart.</p>
+<h2 id="19-rank-two-slices-and-their-weights">19. Rank-two slices and their weights</h2>
+<p>Let <span class="math">\(G=GL_2\)</span>, <span class="math">\(\lambda=(a,b)\)</span>, <span class="math">\(a\ge b\)</span>, and <span class="math">\(r=a-b\)</span>. In the determinant component <span class="math">\(a+b\)</span>, put <span class="math">\(\nu_i=(a-i,b+i)\)</span>. A point of <span class="math">\(S_{\nu_i}\)</span> has a representative
+<span class="math math-display">\[
+\begin{pmatrix}1&amp;f\\0&amp;1\end{pmatrix}t^{\nu_i},
+\qquad f\in F/t^{r-2i}O.
+\]</span>
+The equality of representatives follows by conjugating their difference into <span class="math">\(GL_2(O)\)</span>: the upper parameter is integral exactly when <span class="math">\(f-f'\in t^{r-2i}O\)</span>.</p>
+<p>The determinant and Smith-factor proof of Lesson4 says that the closed Schubert variety is exactly the reduced locus of lattices
+<span class="math">\(t^aO^2\subset\Lambda\subset t^bO^2\)</span> with determinant valuation <span class="math">\(a+b\)</span>. The displayed two generators impose
+<span class="math math-display">\[
+0\le i\le r,\qquad v(f)\ge-i.
+\]</span>
+For example, containing <span class="math">\(t^ae_2\)</span> requires subtracting <span class="math">\(ft^ae_1\)</span>; its first-generator coefficient is <span class="math">\(ft^i\)</span>, giving precisely the same bound. Hence
+<span class="math math-display">\[
+S_{\nu_i}\cap\overline{\operatorname{Gr}^{\lambda}}
+ =t^{-i}O/t^{r-2i}O\simeq\mathbb A^{r-i},
+\quad0\le i\le r.
+\tag{19.1}
+\]</span>
+The coefficients of powers <span class="math">\(-i,-i+1,\ldots,r-2i-1\)</span> are affine coordinates. These are the only nonempty slices, since all other torus indices fail the lattice bounds. Their dimensions equal <span class="math">\(\langle\rho,\lambda+\nu_i\rangle=r-i\)</span>.</p>
+<p>For <span class="math">\(0&lt;i&lt;r\)</span>, the open orbit condition is that the coefficient of <span class="math">\(t^{-i}\)</span> be nonzero, so its slice is <span class="math">\(\mathbb G_m\times\mathbb A^{r-i-1}\)</span>. The two extreme slices are <span class="math">\(\mathbb A^r\)</span> and a point. This follows by checking which generator entry has valuation exactly <span class="math">\(b\)</span>, rather than using a dual representation's weights.</p>
+<p>For <span class="math">\(\lambda=(1,0)\)</span>, the Schubert variety is <span class="math">\(\mathbb P^1\)</span> by the line description in Lesson4. Its two slices are <span class="math">\(\mathbb A^1\)</span> at <span class="math">\((1,0)\)</span> and a point at <span class="math">\((0,1)\)</span>. With <span class="math">\(IC_\lambda=\Lambda[1]\)</span>, their compact cohomology contributes one copy of <span class="math">\(\Lambda\)</span> in degrees1 and−1 respectively. Complex orientation identifies <span class="math">\(H_c^2(\mathbb A^1,\Lambda)=\Lambda\)</span>, and all other compact cohomology vanishes: one-point compactification is the oriented sphere <span class="math">\(S^2\)</span>, whose two-cell cochain calculation gives this assertion. Thus (18.4) recovers <span class="math">\(H^*(\mathbb P^1,\Lambda[1])\)</span> with the stated shifts.</p>
+<p>For <span class="math">\(\lambda=(2,0)\)</span>, the three closed slices are <span class="math">\(\mathbb A^2,\mathbb A^1,\mathrm{pt}\)</span>, with indices <span class="math">\((2,0),(1,1),(0,2)\)</span> and cohomological weights2,0,−2. Lesson4's rank-two chart identifies the only singularity with <span class="math">\(xz=y^2\)</span>. We verify its intersection complex for our characteristic-zero coefficients. The map
+<span class="math">\((s,t)\mapsto(s^2,st,t^2)\)</span> identifies the cone with <span class="math">\(\mathbb C^2/\{\pm1\}\)</span>: its invariant monomials are generated by those three degree-two monomials, with the single displayed relation, and away from zero its fibers are the two sign translates. A radial link is homeomorphic to <span class="math">\(S^3/\{\pm1\}=\mathbb{RP}^3\)</span>, by normalizing the image of each unit vector. This is a continuous bijection between compact Hausdorff spaces. The cellular cochain complex of <span class="math">\(\mathbb{RP}^3\)</span> has one cell in each degree0–3, with alternating boundary maps0,2,0. Since2 is invertible in <span class="math">\(\Lambda\)</span>, its cohomology is <span class="math">\(\Lambda\)</span> in degrees0 and3 only.</p>
+<p>For completeness, the cell boundary follows from the hemisphere model of <span class="math">\(\mathbb{RP}^n\)</span>: its one <span class="math">\(n\)</span>-cell attaches by identifying antipodal points of the boundary sphere. Above a generic point of the preceding cell there are two sheets. Their local orientation signs sum to <span class="math">\(1+(-1)^n\)</span>, because the antipodal map on <span class="math">\(S^{n-1}\)</span> reverses each of its <span class="math">\(n\)</span> ambient coordinates and has degree <span class="math">\((-1)^n\)</span>. Thus the boundaries in dimensions1,2,3 are respectively0,2,0, proving the asserted cochain calculation.</p>
+<p>The punctured cone therefore has the same local cohomology as that link. For its smooth open inclusion <span class="math">\(j\)</span>, the stalk of <span class="math">\(Rj_*\Lambda[2]\)</span> at the vertex has degrees−2 and1. The middle-extension truncation from the earlier IC lesson removes degree1 and retains degree−2. The natural constant-sheaf map is an isomorphism on this truncation and on the smooth locus. The vertex costalk of <span class="math">\(\Lambda[2]\)</span> has its only cohomology in degree2, from the relative cone/link sequence. These strict stalk and costalk bounds exclude a point-supported quotient or subobject. Consequently <span class="math">\(IC_{(2,0)}=\Lambda[2]\)</span>. Its three weight functors are each <span class="math">\(\Lambda\)</span>, in degrees2,0,−2, as computed directly from (19.1).</p>
+<p><img src="assets/mv-gl2-slices.svg" alt="Three rank-two slices and their cohomological weights" /></p>
+<p><em>For the Schubert surface of <span class="math">\(GL_2\)</span> with index <span class="math">\((2,0)\)</span>, the closed semi-infinite slices have complex dimensions2,1,0. The normalization <span class="math">\(IC=\Lambda[2]\)</span> puts their top compact cohomology in degrees2,0,−2. Formula (19.1) gives their coordinates; the cone/link calculation gives the IC normalization.</em></p>
+<p>Translating by the central coweight <span class="math">\((-1,-1)\)</span> gives the <span class="math">\(SL_2\)</span> surface indexed by <span class="math">\(\alpha^\vee=(1,-1)\)</span>. Its slice indices are <span class="math">\(\alpha^\vee,0,-\alpha^\vee\)</span>, with the same dimensions and degrees. The coefficient restriction matters: the link calculation uses invertibility of2 and is not a characteristic-two coefficient calculation.</p>
+<h2 id="20-mv-cycles-and-top-compact-cohomology">20. MV cycles and top compact cohomology</h2>
+<p>An <strong>MV cycle of indices <span class="math">\((\lambda,\nu)\)</span></strong> is the reduced closure of an irreducible component of <span class="math">\(S_\nu\cap\operatorname{Gr}^{\lambda}\)</span>. The dimension theorem proves that all these components have dimension <span class="math">\(d=\langle\rho,\lambda+\nu\rangle\)</span>. Their closures are the top-dimensional components of the closed-Schubert slice, by §10.</p>
+<p>For any pure <span class="math">\(d\)</span>-dimensional complex algebraic variety <span class="math">\(Z\)</span>,
+<span class="math math-display">\[
+H_c^{2d}(Z,\Lambda)=\bigoplus_{C\in\operatorname{Irr}(Z)}\Lambda[C].
+\tag{20.1}
+\]</span>
+Here <span class="math">\([C]\)</span> means the orientation generator on a smooth dense open of <span class="math">\(C\)</span>, extended in top compact cohomology. Choose disjoint smooth dense opens of the finitely many components, removing their intersections and singular loci. Their complement has dimension at most <span class="math">\(d-1\)</span>, so both its degrees2d−1 and2d vanish by the compact-support bound in §17. Localization identifies top compact cohomology with that of the smooth opens. Each such open is analytically connected by <a href="../riemann-existence-theorem/connectedness-and-full-faithfulness.html">Connectedness and full faithfulness</a>, Theorem 2.1. Complex coordinate changes preserve real orientation. <a href="../poincare-duality-on-manifolds/poincare-duality.html">Poincaré duality</a>, Theorem 1.1 and Corollary 2.5, identifies the top compact cohomology of each connected oriented smooth open with <span class="math">\(\Lambda\)</span>, compatibly with restriction to smaller opens. This proves (20.1) and its canonical generators.</p>
+<p>Thus the MV cycles give a canonical basis of the <strong>top compact cohomology of the open slice with constant coefficients</strong>. The minuscule and rank-two examples in §19 also identify that space with the corresponding <span class="math">\(F_\nu(IC_\lambda)\)</span>.</p>
+<p>For the open inclusion <span class="math">\(j:O_\lambda\hookrightarrow Z_\lambda\)</span>, put <span class="math">\(\Delta_\lambda={}^pH^0j_!\Lambda[d_\lambda]\)</span>, the standard object. The adjunction proved in <span class="unlinked">Gluing t-structures</span>, Theorem 2.1, makes <span class="math">\(j_!\)</span> right t-exact: it is left adjoint to the t-exact restriction. Hence <span class="math">\(A=j_!\Lambda[d_\lambda]\)</span> belongs to <span class="math">\({}^pD^{\le0}\)</span>. With <span class="math">\(K={}^p\tau_{\le-1}A\)</span>, its truncation triangle is <span class="math">\(K\to A\to\Delta_\lambda\to K[1]\)</span>. On a boundary orbit <span class="math">\(i_\mu\)</span>, we have <span class="math">\(i_\mu^*A=0\)</span>, so
+<span class="math math-display">\[
+i_\mu^*\Delta_\lambda\simeq i_\mu^*K[1]
+\in D^{\le-d_\mu-2}.
+\tag{20.2}
+\]</span>
+Indeed the ordinary support characterization for <span class="math">\(K\in{}^pD^{\le-1}\)</span>, together with lissity of its cohomology on the orbit, gives upper ordinary degree <span class="math">\(-d_\mu-1\)</span>; the shift by1 lowers it by one more.</p>
+<p>Combine this with the slice dimensions as in §17. On the boundary of <span class="math">\(S_\nu\cap Z_\lambda\)</span>, compact cohomology of <span class="math">\(\Delta_\lambda\)</span> occurs only in degrees at most <span class="math">\(h_\nu-2\)</span>. Both degrees <span class="math">\(h_\nu-1\)</span> and <span class="math">\(h_\nu\)</span> vanish, so localization identifies the open-slice group with <span class="math">\(F_\nu(\Delta_\lambda)\)</span>. Its open restriction is <span class="math">\(\Lambda[d_\lambda]\)</span>, and <span class="math">\(h_\nu+d_\lambda=2d\)</span>. Thus we have proved the general standard-object cycle basis
+<span class="math math-display">\[
+F_\nu(\Delta_\lambda)
+ =H_c^{2d}(S_\nu\cap O_\lambda,\Lambda)
+ =\bigoplus_C\Lambda[C].
+\tag{20.3}
+\]</span>
+This two-degree boundary margin eliminates the connecting map without an IC parity assumption.</p>
+<p>The general identification
+<span class="math math-display">\[
+F_\nu(IC_\lambda)\stackrel{?}{\simeq}
+H_c^{2d}(S_\nu\cap\operatorname{Gr}^{\lambda},\Lambda)
+\tag{20.4}
+\]</span>
+has not been proved in this lesson and is not used as an input. Strict IC boundary stalk bounds alone give degree at most <span class="math">\(h_\nu-1\)</span> on the boundary; they do not eliminate the connecting map from that degree into the top open-slice cohomology. A complete proof must supply the additional argument, rather than treating a cycle citation as an identification. Formula (20.1), the standard-object basis(20.3), the general dimension theorem, and the explicitly computed examples do not have that gap. The canonical surjection <span class="math">\(\Delta_\lambda\twoheadrightarrow IC_\lambda\)</span> gives, by exactness, a quotient of the cycle space; identifying it with the entire space requires proving that the kernel has zero weight functors.</p>
+<h2 id="21-coefficient-scope">21. Coefficient scope</h2>
+<p>The geometry of §§1–10 and(19.1) is proved over every algebraically closed field. The classical hyperbolic and weight-functor theorems in §§12–18 are proved over <span class="math">\(\mathbb C\)</span> with the classical operations specified in §11.</p>
+<p>For an algebraically closed field <span class="math">\(k\)</span>, <span class="math">\(\ell\ne\operatorname{char}k\)</span>, and rational <span class="math">\(\ell\)</span>-adic coefficients, the analogous hyperbolic map has the same geometric diagram. Its proof additionally requires a complete constructible rational-adic six-operation theory, including nonproper direct and proper-support images, exceptional inverse image, compatible units and counits, and the exchanges used in §§14–16. The current earlier lesson <a href="../AG-LTF/the-pro-etale-site-and-l-adic-complexes.html">The pro-étale site and l-adic complexes</a> proves derived-completion and proper-base-change results but explicitly leaves that full theory open. Reduction modulo <span class="math">\(\ell^r\)</span> and a limiting assertion do not prove those nonproper comparisons. The rational-adic versions of(17.2) and(18.4) therefore remain unproved here. They are not asserted as consequences of the classical proof. No future lesson or external theorem is used to discharge this obligation.</p>
+<h2 id="22-exercises-with-solutions">22. Exercises with solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> For <span class="math">\(GL_2\)</span>, <span class="math">\(\lambda=(3,0)\)</span>, give every nonempty closed slice, its Laurent coordinates, its dimension, and its weight degree.</p>
+<p><strong>Solution.</strong> Formula (19.1) gives indices <span class="math">\((3,0),(2,1),(1,2),(0,3)\)</span>. The coordinates are respectively powers0,1,2; powers−1,0; power−2; and no powers. Thus the slices are <span class="math">\(\mathbb A^3,\mathbb A^2,\mathbb A^1,\mathrm{pt}\)</span>, with dimensions3,2,1,0. Since <span class="math">\(2\rho=(1,-1)\)</span>, their degrees are3,1,−1,−3. For the two intermediate indices the open-orbit slices require the first listed coefficient to be nonzero; the extreme slices already lie in the open orbit. These calculations concern geometry and do not assume a formula for the general intersection complex.</p>
+<p><strong>Exercise 2 (easy).</strong> Compute the two weight functors and shifted cohomology for <span class="math">\(IC_{(1,0)}\)</span> of <span class="math">\(GL_2\)</span>.</p>
+<p><strong>Solution.</strong> The closed variety is <span class="math">\(\mathbb P^1\)</span>, with <span class="math">\(IC=\Lambda[1]\)</span>. The attracting slices are <span class="math">\(\mathbb A^1\)</span> and a point. The first has compact cohomology <span class="math">\(\Lambda\)</span> in degree2; after the shift it contributes <span class="math">\(F_{(1,0)}=\Lambda\)</span> in degree1. The point after the shift contributes <span class="math">\(F_{(0,1)}=\Lambda\)</span> in degree−1. The sphere cell calculation gives <span class="math">\(H^0(\mathbb P^1,\Lambda)=H^2(\mathbb P^1,\Lambda)=\Lambda\)</span>, so its shifted cohomology has exactly those two degrees. The maps in §18 identify these copies canonically.</p>
+<p><strong>Exercise 3 (medium).</strong> Compute all weight functors for the <span class="math">\(SL_2\)</span> Schubert surface of index <span class="math">\(\alpha^\vee\)</span>, and explain the coefficient restriction in the cone proof.</p>
+<p><strong>Solution.</strong> Its three slices are <span class="math">\(\mathbb A^2,\mathbb A^1,\mathrm{pt}\)</span> at <span class="math">\(\alpha^\vee,0,-\alpha^\vee\)</span>. Section19 proves <span class="math">\(IC=\Lambda[2]\)</span>. The one-point compactifications of <span class="math">\(\mathbb C^2\)</span> and <span class="math">\(\mathbb C\)</span> are oriented spheres <span class="math">\(S^4\)</span> and <span class="math">\(S^2\)</span>, so their only compact cohomology is <span class="math">\(\Lambda\)</span> in degrees4 and2. After shifting by2, these give <span class="math">\(\Lambda\)</span> in degrees2 and0; the point gives <span class="math">\(\Lambda\)</span> in degree−2. The link is <span class="math">\(\mathbb{RP}^3\)</span>. Its boundary map2 is invertible over characteristic-zero <span class="math">\(\Lambda\)</span>, but vanishes over <span class="math">\(\mathbb F_2\)</span>, producing additional local cohomology. Therefore this proof cannot claim the same constant intersection complex with characteristic-two coefficients.</p>
+<p><strong>Exercise 4 (medium).</strong> Explain why dimensions and perversity give only one half of weight concentration. Supply the other half and deduce exactness.</p>
+<p><strong>Solution.</strong> On <span class="math">\(O_\lambda\)</span>, perversity and equivariant lissity give ordinary degree <span class="math">\(b\le-d_\lambda\)</span>. The slice dimension gives compact degree at most <span class="math">\(2\rho(\lambda+\nu)\)</span>. Adding yields total degree at most <span class="math">\(h_\nu\)</span>, which proves only upper vanishing. Apply this estimate to the perverse dual on the opposite slice; its bound is <span class="math">\(-h_\nu\)</span>. Point duality converts it to lower vanishing below <span class="math">\(h_\nu\)</span> for <span class="math">\(R\Gamma(T_\nu,p^{-!}P)\)</span>. The proved canonical hyperbolic map identifies this complex with compact cohomology of <span class="math">\(S_\nu\)</span>, giving both vanishings. A short exact sequence in the heart gives a triangle; the compact cohomology groups in the adjacent degrees vanish, so its degree-<span class="math">\(h_\nu\)</span> sequence is short exact.</p>
+<p><strong>Exercise 5 (hard).</strong> Construct the direct-sum cohomology isomorphism, including its maps. Explain why an arbitrary splitting of a filtration is unnecessary.</p>
+<p><strong>Solution.</strong> In one component all heights have the same parity. The finite union <span class="math">\(Y_{\le h}\)</span> is closed by the semi-infinite closure theorem, and <span class="math">\(U_{\ge h}\)</span> is its complementary upper open. The open <span class="math">\(U_{&gt;h}\)</span> has no compact cohomology in degrees <span class="math">\(h,h+1\)</span>; localization therefore makes restriction from <span class="math">\(U_{\ge h}\)</span> to <span class="math">\(Y_h\)</span> an isomorphism in degree <span class="math">\(h\)</span>. The closed lower union <span class="math">\(Y_{&lt;h}\)</span> has no degrees <span class="math">\(h-1,h\)</span>, so extension by zero from <span class="math">\(U_{\ge h}\)</span> to proper <span class="math">\(Y\)</span> is also an isomorphism in that degree. Invert the first and compose with the second. The height stratum is the disjoint open-and-closed union of the slices of height <span class="math">\(h\)</span>, so its compact cohomology is their direct sum. Repeat in every height and component. Every arrow was a restriction or extension map in a localization triangle, so the resulting isomorphism is natural and canonical, with no choice of filtration splitting.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>I. Mirković and K. Vilonen, <a href="https://arxiv.org/abs/math/0401222"><em>Geometric Langlands duality and representations of algebraic groups over commutative rings</em></a>, freely accessible arXiv text, §§3–4 for semi-infinite geometry and weight functors.</li>
+<li>T. Braden, <a href="https://arxiv.org/abs/math/0202251"><em>Hyperbolic localization of intersection cohomology</em></a>, freely accessible arXiv text, Theorem 1 and §6.</li>
+<li>T. Richarz, <a href="https://arxiv.org/abs/1611.01669"><em>Spaces with <span class="math">\(\mathbb G_m\)</span>-action, hyperbolic localization and nearby cycles</em></a>, freely accessible arXiv text, §2 for the contraction and localization diagrams.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/GL-SAT-05.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-SAT">Repository</a></nav>
+</footer>
+</body>
+</html>

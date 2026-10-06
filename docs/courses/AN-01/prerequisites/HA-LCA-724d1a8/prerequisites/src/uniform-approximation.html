@@ -1,0 +1,174 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="300884a9ff1e9afde332c49627163ec8d58a828bba89e5476d8b19c15adf833d"><title>Uniform approximation on locally compact spaces</title><link rel="stylesheet" href="../../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="uniform-approximation.md">Editable source</a> · <a href="../../LICENCES.html">Licences</a></nav><article><h1 id="uniform-approximation-on-locally-compact-spaces">Uniform approximation on locally compact spaces</h1>
+<p><strong>Programme reading HA-LCA-PRE-APPROX.</strong> The result needed for Fourier analysis is uniform density in <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>, with no countability assumption on the locally compact Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span>. We prove it from a polynomial estimate, and include the compactification argument.</p>
+<p>The earlier proofs used here are <a href="banach-spectrum.html#ha-lca-pre-banach-lemma-1-1">Lemma 1.1 of the Banach-algebra reading</a>, for compact intervals and uniform continuity, and <a href="finite-radon-representation.html">Lemmas 1.1 and 1.5 of the finite-Radon reading</a>, for compact closed sets and the uniform function spaces. In particular, uniform limits are continuous and <span class="math" data-tex="\(C_0\)">\(C_0\)</span> is complete; those statements were proved in the earlier reading.</p>
+<p>The free sources are the faculty-hosted <a href="https://web.math.utk.edu/~freire/teaching/m561f22/Stone_Weierstrass_proof.pdf"><em>The Weierstrass and Stone Approximation Theorems</em></a>, pages 1–5 through the complex-valued reduction, and D. H. Fremlin's <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt4a6.tex"><em>Measure Theory</em>, Volume 4, 4A6B</a>, the 8 December 2010 version in the 2013 collection, for the <span class="math" data-tex="\(C_0\)">\(C_0\)</span> reduction. The source's invoked compact approximation theorem is proved below.</p>
+<p>Adaptation and additional proofs: GPT-6 Astra (OpenAI), Ultra, 4 October 2026. This combined reading is under the <a href="../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">Design Science License</a>, including its warranty disclaimer. The <span class="unlinked">unchanged Fremlin source package</span> preserves the original copyright and source.</p>
+<h2 id="1-polynomial-approximation-and-lattice-operations">1. Polynomial approximation and lattice operations</h2>
+<p><a id="ha-lca-pre-approx-lemma-1-1"></a>
+<strong>Lemma 1.1 (polynomial approximation).</strong> Every continuous real function on a compact interval is a uniform limit of real polynomials.</p>
+<p><strong>Proof.</strong> First work on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> put
+<span class="math math-display" data-tex="\[
+w_{n,k}(x)=\binom nk x^k(1-x)^{n-k},\qquad
+B_nf(x)=\sum_{k=0}^n f(k/n)w_{n,k}(x).
+\]">\[
+w_{n,k}(x)=\binom nk x^k(1-x)^{n-k},\qquad
+B_nf(x)=\sum_{k=0}^n f(k/n)w_{n,k}(x).
+\]</span>
+Powers with exponent zero are one, including at the endpoints, so these are polynomials defined on the closed interval. The finite binomial expansion gives
+<span class="math" data-tex="\(\sum_k w_{n,k}(x)=1\)">\(\sum_k w_{n,k}(x)=1\)</span>. For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+k\binom nk=n\binom{n-1}{k-1},
+\]">\[
+k\binom nk=n\binom{n-1}{k-1},
+\]</span>
+so summing after taking out <span class="math" data-tex="\(nx\)">\(nx\)</span> gives
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^n k\,w_{n,k}(x)=nx.
+\]">\[
+\sum_{k=0}^n k\,w_{n,k}(x)=nx.
+\]</span>
+For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, the identity
+<span class="math" data-tex="\(k(k-1)\binom nk=n(n-1)\binom{n-2}{k-2}\)">\(k(k-1)\binom nk=n(n-1)\binom{n-2}{k-2}\)</span>
+similarly gives
+<span class="math" data-tex="\(\sum_k k(k-1)w_{n,k}(x)=n(n-1)x^2\)">\(\sum_k k(k-1)w_{n,k}(x)=n(n-1)x^2\)</span>.
+For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> both sides of this last identity are zero. Adding the first-moment identity and expanding the square now gives
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^n(k/n-x)^2w_{n,k}(x)
+=\frac{x(1-x)}n\le\frac1{4n}.                         \tag{1}
+\]">\[
+\sum_{k=0}^n(k/n-x)^2w_{n,k}(x)
+=\frac{x(1-x)}n\le\frac1{4n}.                         \tag{1}
+\]</span>
+All these are finite algebraic identities; no probability limit theorem is used.</p>
+<p>Let <span class="math" data-tex="\(M=\|f\|_\infty\)">\(M=\|f\|_\infty\)</span>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, uniform continuity supplies <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that
+<span class="math" data-tex="\(|f(s)-f(t)|&lt;\varepsilon\)">\(|f(s)-f(t)|&lt;\varepsilon\)</span> whenever <span class="math" data-tex="\(|s-t|&lt;\delta\)">\(|s-t|&lt;\delta\)</span>.
+The part of
+<span class="math math-display" data-tex="\[
+|B_nf(x)-f(x)|\le\sum_{k=0}^n|f(k/n)-f(x)|w_{n,k}(x)
+\]">\[
+|B_nf(x)-f(x)|\le\sum_{k=0}^n|f(k/n)-f(x)|w_{n,k}(x)
+\]</span>
+with <span class="math" data-tex="\(|k/n-x|&lt;\delta\)">\(|k/n-x|&lt;\delta\)</span> is at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, because the weights are nonnegative and sum to one. On the remaining indices,
+<span class="math math-display" data-tex="\[
+\sum_{|k/n-x|\ge\delta}w_{n,k}(x)
+\le\delta^{-2}\sum_k(k/n-x)^2w_{n,k}(x)
+\le\frac1{4n\delta^2}.
+\]">\[
+\sum_{|k/n-x|\ge\delta}w_{n,k}(x)
+\le\delta^{-2}\sum_k(k/n-x)^2w_{n,k}(x)
+\le\frac1{4n\delta^2}.
+\]</span>
+Their contribution is at most <span class="math" data-tex="\(M/(2n\delta^2)\)">\(M/(2n\delta^2)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\|B_nf-f\|_\infty\le\varepsilon+\frac{M}{2n\delta^2},
+\]">\[
+\|B_nf-f\|_\infty\le\varepsilon+\frac{M}{2n\delta^2},
+\]</span>
+which tends to at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>. As <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is arbitrary, uniform convergence follows.</p>
+<p>For a nondegenerate interval <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, apply the result to <span class="math" data-tex="\(f(a+(b-a)x)\)">\(f(a+(b-a)x)\)</span> and replace <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\((t-a)/(b-a)\)">\((t-a)/(b-a)\)</span> in the approximating polynomials. On a one-point interval a constant polynomial suffices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-approx-lemma-1-2"></a>
+<strong>Lemma 1.2 (closed algebras are lattices).</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be compact Hausdorff and <span class="math" data-tex="\(A\)">\(A\)</span> a real subalgebra of <span class="math" data-tex="\(C(K;\mathbb R)\)">\(C(K;\mathbb R)\)</span> containing the constant functions. Its uniform closure <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span> is again an algebra containing constants. It is closed under absolute values, maxima and minima of finitely many functions.</p>
+<p><strong>Proof.</strong> Addition and scalar multiplication pass to uniform limits. If <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span> and <span class="math" data-tex="\(g_n\to g\)">\(g_n\to g\)</span> uniformly, then
+<span class="math math-display" data-tex="\[
+\|f_ng_n-fg\|_\infty
+\le\|f_n-f\|_\infty\|g_n\|_\infty
+   +\|f\|_\infty\|g_n-g\|_\infty\longrightarrow0,
+\]">\[
+\|f_ng_n-fg\|_\infty
+\le\|f_n-f\|_\infty\|g_n\|_\infty
+   +\|f\|_\infty\|g_n-g\|_\infty\longrightarrow0,
+\]</span>
+since a uniformly convergent sequence is uniformly bounded. This proves the algebra assertion.</p>
+<p>For <span class="math" data-tex="\(f\in\overline A\)">\(f\in\overline A\)</span>, take <span class="math" data-tex="\(M&gt;\|f\|_\infty\)">\(M&gt;\|f\|_\infty\)</span>. Lemma 1.1 supplies polynomials <span class="math" data-tex="\(p_n\)">\(p_n\)</span> converging to <span class="math" data-tex="\(|t|\)">\(|t|\)</span> uniformly on <span class="math" data-tex="\([-M,M]\)">\([-M,M]\)</span>. Since <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span> is an algebra containing constants, <span class="math" data-tex="\(p_n(f)\in\overline A\)">\(p_n(f)\in\overline A\)</span>, and
+<span class="math math-display" data-tex="\[
+\|p_n(f)-|f|\|_\infty
+\le\sup_{|t|\le M}|p_n(t)-|t||\longrightarrow0.
+\]">\[
+\|p_n(f)-|f|\|_\infty
+\le\sup_{|t|\le M}|p_n(t)-|t||\longrightarrow0.
+\]</span>
+Thus <span class="math" data-tex="\(|f|\in\overline A\)">\(|f|\in\overline A\)</span>. The identities
+<span class="math math-display" data-tex="\[
+\max(f,g)=\frac{f+g+|f-g|}{2},\qquad
+\min(f,g)=\frac{f+g-|f-g|}{2}
+\]">\[
+\max(f,g)=\frac{f+g+|f-g|}{2},\qquad
+\min(f,g)=\frac{f+g-|f-g|}{2}
+\]</span>
+prove closure under two-function maxima and minima, and induction gives any finite number. Here a closure is closed in the uniform metric: if a limit of its elements were outside it, a positive-radius ball about that limit disjoint from <span class="math" data-tex="\(A\)">\(A\)</span> would also exclude all sufficiently close elements, a contradiction. This also justifies the limit passages within <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-approximation-on-a-compact-space">2. Approximation on a compact space</h2>
+<p><a id="ha-lca-pre-approx-theorem-2-1"></a>
+<strong>Theorem 2.1 (real compact approximation).</strong> If a real subalgebra <span class="math" data-tex="\(A\subseteq C(K;\mathbb R)\)">\(A\subseteq C(K;\mathbb R)\)</span> contains constants and separates points of the compact Hausdorff space <span class="math" data-tex="\(K\)">\(K\)</span>, then it is uniformly dense in <span class="math" data-tex="\(C(K;\mathbb R)\)">\(C(K;\mathbb R)\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(K\)">\(K\)</span> is empty there is only the zero function and the assertion is immediate. Put <span class="math" data-tex="\(B=\overline A\)">\(B=\overline A\)</span>. It is a lattice by Lemma 1.2. Fix <span class="math" data-tex="\(h\in C(K;\mathbb R)\)">\(h\in C(K;\mathbb R)\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>.</p>
+<p>For distinct <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, choose <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> with <span class="math" data-tex="\(a(x)\ne a(y)\)">\(a(x)\ne a(y)\)</span>. The function
+<span class="math math-display" data-tex="\[
+a_{x,y}(z)=h(x)+
+ \frac{h(y)-h(x)}{a(y)-a(x)}\bigl(a(z)-a(x)\bigr)
+\]">\[
+a_{x,y}(z)=h(x)+
+ \frac{h(y)-h(x)}{a(y)-a(x)}\bigl(a(z)-a(x)\bigr)
+\]</span>
+belongs to <span class="math" data-tex="\(A\)">\(A\)</span> and equals <span class="math" data-tex="\(h\)">\(h\)</span> at <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. For <span class="math" data-tex="\(y=x\)">\(y=x\)</span>, use the constant function <span class="math" data-tex="\(h(x)\)">\(h(x)\)</span>.</p>
+<p>Hold <span class="math" data-tex="\(x\)">\(x\)</span> fixed. The open sets
+<span class="math" data-tex="\(\{z:a_{x,y}(z)&gt;h(z)-\varepsilon\}\)">\(\{z:a_{x,y}(z)&gt;h(z)-\varepsilon\}\)</span>, as <span class="math" data-tex="\(y\)">\(y\)</span> varies, cover <span class="math" data-tex="\(K\)">\(K\)</span>, because the set indexed by <span class="math" data-tex="\(y\)">\(y\)</span> contains <span class="math" data-tex="\(y\)">\(y\)</span>. Choose finitely many covering indices and take the maximum of their functions, calling it <span class="math" data-tex="\(b_x\in B\)">\(b_x\in B\)</span>. It satisfies
+<span class="math math-display" data-tex="\[
+b_x(z)&gt;h(z)-\varepsilon\quad(z\in K),\qquad b_x(x)=h(x).
+\]">\[
+b_x(z)&gt;h(z)-\varepsilon\quad(z\in K),\qquad b_x(x)=h(x).
+\]</span>
+The sets <span class="math" data-tex="\(\{z:b_x(z)&lt;h(z)+\varepsilon\}\)">\(\{z:b_x(z)&lt;h(z)+\varepsilon\}\)</span>, as <span class="math" data-tex="\(x\)">\(x\)</span> varies, also form an open cover. Choose a finite subcover and let <span class="math" data-tex="\(b\)">\(b\)</span> be the minimum of its <span class="math" data-tex="\(b_x\)">\(b_x\)</span>'s. Then <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> and
+<span class="math math-display" data-tex="\[
+h(z)-\varepsilon&lt;b(z)&lt;h(z)+\varepsilon\quad(z\in K).
+\]">\[
+h(z)-\varepsilon&lt;b(z)&lt;h(z)+\varepsilon\quad(z\in K).
+\]</span>
+In particular <span class="math" data-tex="\(\|b-h\|_\infty\le\varepsilon\)">\(\|b-h\|_\infty\le\varepsilon\)</span>. Repeating with <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> puts <span class="math" data-tex="\(h\)">\(h\)</span> in the closed set <span class="math" data-tex="\(B\)">\(B\)</span>. This is exactly the uniform density of <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-approx-corollary-2-2"></a>
+<strong>Corollary 2.2 (complex compact approximation).</strong> A complex subalgebra <span class="math" data-tex="\(A\subseteq C(K;\mathbb C)\)">\(A\subseteq C(K;\mathbb C)\)</span> is uniformly dense if it contains constants, separates points and contains <span class="math" data-tex="\(\overline f\)">\(\overline f\)</span> whenever it contains <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>Proof.</strong> Its real-valued members form a real algebra <span class="math" data-tex="\(A_{\mathbb R}\)">\(A_{\mathbb R}\)</span> containing real constants. If <span class="math" data-tex="\(f\in A\)">\(f\in A\)</span>, then
+<span class="math math-display" data-tex="\[
+\operatorname{Re}f=\tfrac12(f+\overline f),\qquad
+\operatorname{Im}f=\tfrac1{2i}(f-\overline f)
+\]">\[
+\operatorname{Re}f=\tfrac12(f+\overline f),\qquad
+\operatorname{Im}f=\tfrac1{2i}(f-\overline f)
+\]</span>
+belong to <span class="math" data-tex="\(A_{\mathbb R}\)">\(A_{\mathbb R}\)</span>. When <span class="math" data-tex="\(f(x)\ne f(y)\)">\(f(x)\ne f(y)\)</span>, at least one of these two real functions differs at <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, so <span class="math" data-tex="\(A_{\mathbb R}\)">\(A_{\mathbb R}\)</span> separates points. Apply Theorem 2.1 to the real and imaginary parts of any continuous <span class="math" data-tex="\(h\)">\(h\)</span>. If their uniform approximation errors are less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>, the sum of the two approximants, with the second multiplied by <span class="math" data-tex="\(i\)">\(i\)</span>, lies in <span class="math" data-tex="\(A\)">\(A\)</span> and approximates <span class="math" data-tex="\(h\)">\(h\)</span> within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-version-for-functions-vanishing-at-infinity">3. The version for functions vanishing at infinity</h2>
+<p><a id="ha-lca-pre-approx-lemma-3-1"></a>
+<strong>Lemma 3.1 (adjoining a point at infinity).</strong> For a locally compact Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span>, adjoin a new point <span class="math" data-tex="\(\infty\)">\(\infty\)</span>. On <span class="math" data-tex="\(X^\infty=X\cup\{\infty\}\)">\(X^\infty=X\cup\{\infty\}\)</span>, take as a basis the open subsets of <span class="math" data-tex="\(X\)">\(X\)</span> and the sets
+<span class="math math-display" data-tex="\[
+N_K=\{\infty\}\cup(X\setminus K),\qquad K\subseteq X\ \text{compact}.
+\]">\[
+N_K=\{\infty\}\cup(X\setminus K),\qquad K\subseteq X\ \text{compact}.
+\]</span>
+This gives a compact Hausdorff space in which <span class="math" data-tex="\(X\)">\(X\)</span> is an open subspace with its original topology. A function <span class="math" data-tex="\(f:X\to\mathbb C\)">\(f:X\to\mathbb C\)</span> lies in <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> if and only if its extension <span class="math" data-tex="\(f^\infty\)">\(f^\infty\)</span>, defined to be zero at <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, is continuous on <span class="math" data-tex="\(X^\infty\)">\(X^\infty\)</span>.</p>
+<p><strong>Proof.</strong> Compact subsets of <span class="math" data-tex="\(X\)">\(X\)</span> are closed, by the earlier finite-Radon Lemma 1.1. Thus an intersection of an open subset of <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(N_K\)">\(N_K\)</span> is open in <span class="math" data-tex="\(X\)">\(X\)</span>, and
+<span class="math" data-tex="\(N_K\cap N_L=N_{K\cup L}\)">\(N_K\cap N_L=N_{K\cup L}\)</span>, where a finite union of compact sets is compact by taking finite subcovers for each member. These facts verify the basis intersection condition and the subspace assertion.</p>
+<p>For compactness, any open cover has a member containing <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, hence containing some <span class="math" data-tex="\(N_K\)">\(N_K\)</span>. Finitely many further members cover the compact remainder <span class="math" data-tex="\(K\)">\(K\)</span>. Two points of <span class="math" data-tex="\(X\)">\(X\)</span> are separated as before. To separate <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> from <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, choose a compact neighbourhood <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>; its interior at <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(N_K\)">\(N_K\)</span> are disjoint neighbourhoods. This proves the Hausdorff assertion. The construction also works when <span class="math" data-tex="\(X\)">\(X\)</span> is compact: then <span class="math" data-tex="\(\infty\)">\(\infty\)</span> is isolated.</p>
+<p>If <span class="math" data-tex="\(f\in C_0(X)\)">\(f\in C_0(X)\)</span>, the compact set <span class="math" data-tex="\(\{|f|\ge\varepsilon\}\)">\(\{|f|\ge\varepsilon\}\)</span> shows that <span class="math" data-tex="\(|f^\infty|&lt;\varepsilon\)">\(|f^\infty|&lt;\varepsilon\)</span> on a neighbourhood <span class="math" data-tex="\(N_K\)">\(N_K\)</span> of <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Thus the extension is continuous there, and it is already continuous on <span class="math" data-tex="\(X\)">\(X\)</span>. Conversely, continuity at <span class="math" data-tex="\(\infty\)">\(\infty\)</span> supplies a compact <span class="math" data-tex="\(K\)">\(K\)</span> outside which <span class="math" data-tex="\(|f|&lt;\varepsilon\)">\(|f|&lt;\varepsilon\)</span>. The level set <span class="math" data-tex="\(\{|f|\ge\varepsilon\}\)">\(\{|f|\ge\varepsilon\}\)</span> is closed in <span class="math" data-tex="\(X\)">\(X\)</span> and contained in <span class="math" data-tex="\(K\)">\(K\)</span>, so it is compact by the earlier finite-Radon Lemma 1.1. Continuity on <span class="math" data-tex="\(X\)">\(X\)</span> is inherited from the extension. These are exactly the defining properties of <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-pre-approx-theorem-3-2"></a>
+<strong>Theorem 3.2 (locally compact Stone–Weierstrass).</strong> Suppose <span class="math" data-tex="\(A\subseteq C_0(X;\mathbb C)\)">\(A\subseteq C_0(X;\mathbb C)\)</span> is a complex linear subspace satisfying:</p>
+<ol>
+<li><span class="math" data-tex="\(fg\in A\)">\(fg\in A\)</span> and <span class="math" data-tex="\(\overline f\in A\)">\(\overline f\in A\)</span> for <span class="math" data-tex="\(f,g\in A\)">\(f,g\in A\)</span>;</li>
+<li>for each <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, some <span class="math" data-tex="\(f\in A\)">\(f\in A\)</span> has <span class="math" data-tex="\(f(x)\ne0\)">\(f(x)\ne0\)</span>;</li>
+<li>for distinct <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, some <span class="math" data-tex="\(f\in A\)">\(f\in A\)</span> has <span class="math" data-tex="\(f(x)\ne f(y)\)">\(f(x)\ne f(y)\)</span>.</li>
+</ol>
+<p>Then <span class="math" data-tex="\(A\)">\(A\)</span> is uniformly dense in <span class="math" data-tex="\(C_0(X;\mathbb C)\)">\(C_0(X;\mathbb C)\)</span>.</p>
+<p><strong>Proof.</strong> On the compact space <span class="math" data-tex="\(X^\infty\)">\(X^\infty\)</span> of Lemma 3.1, consider
+<span class="math math-display" data-tex="\[
+\widetilde A=\{f^\infty+c:f\in A,\ c\in\mathbb C\}.
+\]">\[
+\widetilde A=\{f^\infty+c:f\in A,\ c\in\mathbb C\}.
+\]</span>
+It is a complex subalgebra containing constants and conjugates: expanding a product gives <span class="math" data-tex="\((fg+df+cg)^\infty+cd\)">\((fg+df+cg)^\infty+cd\)</span>. It separates points of <span class="math" data-tex="\(X\)">\(X\)</span> by condition 3. It separates <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> from <span class="math" data-tex="\(\infty\)">\(\infty\)</span> by condition 2, because <span class="math" data-tex="\(f^\infty(\infty)=0\)">\(f^\infty(\infty)=0\)</span>. Corollary 2.2 makes <span class="math" data-tex="\(\widetilde A\)">\(\widetilde A\)</span> dense in <span class="math" data-tex="\(C(X^\infty;\mathbb C)\)">\(C(X^\infty;\mathbb C)\)</span>.</p>
+<p>Given <span class="math" data-tex="\(h\in C_0(X)\)">\(h\in C_0(X)\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(f^\infty+c\)">\(f^\infty+c\)</span> within <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> of <span class="math" data-tex="\(h^\infty\)">\(h^\infty\)</span>. At <span class="math" data-tex="\(\infty\)">\(\infty\)</span> this gives <span class="math" data-tex="\(|c|&lt;\varepsilon/2\)">\(|c|&lt;\varepsilon/2\)</span>, so on <span class="math" data-tex="\(X\)">\(X\)</span>
+<span class="math math-display" data-tex="\[
+\|f-h\|_\infty
+\le\|f^\infty+c-h^\infty\|_\infty+|c|&lt;\varepsilon.
+\]">\[
+\|f-h\|_\infty
+\le\|f^\infty+c-h^\infty\|_\infty+|c|&lt;\varepsilon.
+\]</span>
+This proves density. No constant function on a noncompact <span class="math" data-tex="\(X\)">\(X\)</span> has been inserted into <span class="math" data-tex="\(A\)">\(A\)</span>; constants are used only on the compact space. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

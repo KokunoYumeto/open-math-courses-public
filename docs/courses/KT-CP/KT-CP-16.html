@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="0CCD03C17CDA8704CA50752629AE04BC2A97E4C8263F7813A175B88B801227CE">
+<title>C*-algebras of foliations and their Morita equivalences — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Course contents</a><span aria-hidden="true"> / </span><span>KT-CP-16</span></nav>
+<article id="lesson" class="lesson"><h1 id="c--algebras-of-foliations-and-their-morita-equivalences">C*-algebras of foliations and their Morita equivalences</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A transversal records the transport between plaques, while the foliation algebra also contains the integral kernels along them. Groupoid equivalence explains precisely how these descriptions retain the same operator-module and K-theoretic information. We apply it to submersions, orbit foliations and suspensions, keeping track of which groupoid is actually the holonomy groupoid.</p>
+<p>We use the groupoid equivalence theorem proved in <a href="KT-CP-15.html">Lesson 15</a>, the transformation-groupoid identifications of <a href="KT-CP-14.html">Lesson 14</a>, and the Thom and PV results of <a href="KT-CP-11.html">Lesson 11</a>. Throughout, manifolds are second countable and Hausdorff; foliations are smooth and have constant rank. Arrow spaces may be locally Hausdorff without being Hausdorff. In that case compactly supported kernels mean finite sums of kernels supported in Hausdorff charts, as in Lessons 13–15.</p>
+<h2 id="the-recalled-construction-and-its-scalar-form">The recalled construction and its scalar form</h2>
+<p>Let <span class="math" data-tex="\(F\subset TV\)">\(F\subset TV\)</span> have rank <span class="math" data-tex="\(p\)">\(p\)</span>, and let <span class="math" data-tex="\(G=\operatorname{Hol}(V,F)\)">\(G=\operatorname{Hol}(V,F)\)</span>. An arrow is a leafwise path modulo equality of endpoints and holonomy germ. We recall the construction from <a href="prerequisites/NCG-FOLIATIONS/the-c-star-algebra-of-a-foliation.html"><em>The C*-algebra of a foliation</em>, Lemma 1.1, Lemma 2.1 and Theorem 2.2</a>: its local arrow coordinates are</p>
+<span id="equation-16-1"></span><span class="math math-display" data-tex="\[
+(t&#x27;,t,u),\qquad
+s(t&#x27;,t,u)=(t,u),\quad r(t&#x27;,t,u)=(t&#x27;,h(u)).
+\tag{16.1}
+\]">\[
+(t&#x27;,t,u),\qquad
+s(t&#x27;,t,u)=(t,u),\quad r(t&#x27;,t,u)=(t&#x27;,h(u)).
+\tag{16.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(t,t&#x27;\)">\(t,t&#x27;\)</span> are plaque coordinates and <span class="math" data-tex="\(h\)">\(h\)</span> is the transverse transport of the chosen path. The arrow manifold has dimension <span class="math" data-tex="\(2p+q\)">\(2p+q\)</span>, where <span class="math" data-tex="\(q=\dim V-p\)">\(q=\dim V-p\)</span>. Its source fibres are Hausdorff holonomy coverings of leaves, and <span class="math" data-tex="\(r:G_x\to L_x\)">\(r:G_x\to L_x\)</span> is their covering map. Its orbits are the connected leaves. We use these construction results rather than reconstructing the atlas.</p>
+<p>The same lesson, §3 and Definition 4.1, defines kernels with values in</p>
+<span id="equation-16-2"></span><span class="math math-display" data-tex="\[
+\Omega_\gamma^{1/2}
+=D_{r\gamma}^{1/2}\otimes D_{s\gamma}^{1/2},
+\qquad D_x^{1/2}=|\Lambda^p F_x^*|^{1/2}.
+\tag{16.2}
+\]">\[
+\Omega_\gamma^{1/2}
+=D_{r\gamma}^{1/2}\otimes D_{s\gamma}^{1/2},
+\qquad D_x^{1/2}=|\Lambda^p F_x^*|^{1/2}.
+\tag{16.2}
+\]</span>
+<p>Convolution contracts the two half-densities at the intermediate endpoint; involution conjugates and exchanges endpoints. The <strong>foliation algebra</strong> in this lesson is the reduced completion of these kernels:</p>
+<span id="equation-16-3"></span><span class="math math-display" data-tex="\[
+\mathcal A_F=C_r^*(V,F).
+\tag{16.3}
+\]">\[
+\mathcal A_F=C_r^*(V,F).
+\tag{16.3}
+\]</span>
+<p>The full groupoid algebra will always be written <span class="math" data-tex="\(C^*(G)\)">\(C^*(G)\)</span>. Using the same symbol for the two completions would obscure the orbit examples.</p>
+<p><span id="lemma-16-1"></span><strong>Lemma 16.1.</strong> A smooth positive leaf density <span class="math" data-tex="\(\rho\)">\(\rho\)</span> identifies the half-density completion with <span class="math" data-tex="\(C_r^*(G,\lambda_\rho)\)">\(C_r^*(G,\lambda_\rho)\)</span>, with the conventions of Lesson 14.</p>
+<p><strong>Proof.</strong> Such a density exists by choosing a metric on <span class="math" data-tex="\(F\)">\(F\)</span>. On <span class="math" data-tex="\(G_x\)">\(G_x\)</span>, lift <span class="math" data-tex="\(\rho\)">\(\rho\)</span> along its local diffeomorphism <span class="math" data-tex="\(r:G_x\to L_x\)">\(r:G_x\to L_x\)</span>, obtaining <span class="math" data-tex="\(\nu_x=r^*\rho\)">\(\nu_x=r^*\rho\)</span>. Right multiplication preserves <span class="math" data-tex="\(r\)">\(r\)</span>, so these source-fibre measures are right invariant. Inversion gives a left Haar system <span class="math" data-tex="\(\lambda_\rho^x\)">\(\lambda_\rho^x\)</span>. It has full support. Integration in the coordinates (16.1), followed by a finite chart partition for each compact kernel, proves continuity of its integrals.</p>
+<p>Every half-density kernel has the unique scalar expression</p>
+<span id="equation-16-4"></span><span class="math math-display" data-tex="\[
+k(\gamma)=f(\gamma)\rho_{r\gamma}^{1/2}\otimes\rho_{s\gamma}^{1/2}.
+\tag{16.4}
+\]">\[
+k(\gamma)=f(\gamma)\rho_{r\gamma}^{1/2}\otimes\rho_{s\gamma}^{1/2}.
+\tag{16.4}
+\]</span>
+<p>The intermediate factors in a product give <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; integration over factorizations of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is therefore exactly</p>
+<span id="equation-16-5"></span><span class="math math-display" data-tex="\[
+(f*g)(\gamma)=\int_{G^{r\gamma}}
+f(\eta)g(\eta^{-1}\gamma)\,d\lambda_\rho^{r\gamma}(\eta),
+\qquad f^*(\gamma)=\overline{f(\gamma^{-1})}.
+\tag{16.5}
+\]">\[
+(f*g)(\gamma)=\int_{G^{r\gamma}}
+f(\eta)g(\eta^{-1}\gamma)\,d\lambda_\rho^{r\gamma}(\eta),
+\qquad f^*(\gamma)=\overline{f(\gamma^{-1})}.
+\tag{16.5}
+\]</span>
+<p>For the regular representation at <span class="math" data-tex="\(x\)">\(x\)</span>, write a source-fibre half-density as <span class="math" data-tex="\(\xi(\gamma)\nu_x(\gamma)^{1/2}\)">\(\xi(\gamma)\nu_x(\gamma)^{1/2}\)</span>. This is a unitary identification with <span class="math" data-tex="\(L^2(G_x,\nu_x)\)">\(L^2(G_x,\nu_x)\)</span>. Contracting its density factor against (16.4) gives</p>
+<span id="equation-16-6"></span><span class="math math-display" data-tex="\[
+(\Lambda_x(f)\xi)(\gamma)
+=\int_{G_x}f(\gamma\zeta^{-1})\xi(\zeta)\,d\nu_x(\zeta).
+\tag{16.6}
+\]">\[
+(\Lambda_x(f)\xi)(\gamma)
+=\int_{G_x}f(\gamma\zeta^{-1})\xi(\zeta)\,d\nu_x(\zeta).
+\tag{16.6}
+\]</span>
+<p>Thus each regular norm, and their supremum, agrees with Lesson 14's scalar norm. Smooth compact kernels and continuous compact kernels have the same completion: approximate each chart-supported scalar function uniformly by smooth functions in a fixed compact chart neighbourhood. A positive compact bump dominating that neighbourhood has bounded range and source Haar integrals, so the uniform error tends to zero in the <span class="math" data-tex="\(I\)">\(I\)</span>-norm and hence in the reduced norm. Finite sums handle all kernels. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For completeness, the scalar change under <span class="math" data-tex="\(\rho&#x27;=b\rho\)">\(\rho&#x27;=b\rho\)</span>, <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, is</p>
+<span id="equation-16-7"></span><span class="math math-display" data-tex="\[
+f&#x27;(\gamma)=b(r\gamma)^{-1/2}f(\gamma)b(s\gamma)^{-1/2}.
+\tag{16.7}
+\]">\[
+f&#x27;(\gamma)=b(r\gamma)^{-1/2}f(\gamma)b(s\gamma)^{-1/2}.
+\tag{16.7}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\nu&#x27;_x=b\circ r\,\nu_x\)">\(\nu&#x27;_x=b\circ r\,\nu_x\)</span>, and <span class="math" data-tex="\(\xi\mapsto(b\circ r)^{-1/2}\xi\)">\(\xi\mapsto(b\circ r)^{-1/2}\xi\)</span> is a unitary between the two scalar <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-spaces. Substitution in (16.6) intertwines their kernels. On any fixed compact support the two weights and their inverses are bounded. The formula consequently extends to the completions. This explicit identification is the density independence needed below.</p>
+<h2 id="a-complete-transversal">A complete transversal</h2>
+<p>A complete transversal is a second countable <span class="math" data-tex="\(q\)">\(q\)</span>-manifold <span class="math" data-tex="\(N\)">\(N\)</span> with a transverse immersion <span class="math" data-tex="\(j:N\to V\)">\(j:N\to V\)</span>, meeting every leaf. It may be a countable disjoint union of small slices. Transversality says</p>
+<span id="equation-16-8"></span><span class="math math-display" data-tex="\[
+dj(T_nN)\oplus F_{j(n)}=T_{j(n)}V.
+\tag{16.8}
+\]">\[
+dj(T_nN)\oplus F_{j(n)}=T_{j(n)}V.
+\tag{16.8}
+\]</span>
+<p>An embedded transversal is a special case. For an immersion, remembering the point of <span class="math" data-tex="\(N\)">\(N\)</span> distinguishes overlapping slices. Define</p>
+<span id="equation-16-9"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+H&amp;=\{(n&#x27;,\gamma,n):r\gamma=j(n&#x27;),\ s\gamma=j(n)\},\\
+Z&amp;=\{(\gamma,n):s\gamma=j(n)\},\\
+r_Z(\gamma,n)&amp;=r\gamma,\qquad s_Z(\gamma,n)=n.
+\end{aligned}
+\tag{16.9}
+\]">\[
+\begin{aligned}
+H&amp;=\{(n&#x27;,\gamma,n):r\gamma=j(n&#x27;),\ s\gamma=j(n)\},\\
+Z&amp;=\{(\gamma,n):s\gamma=j(n)\},\\
+r_Z(\gamma,n)&amp;=r\gamma,\qquad s_Z(\gamma,n)=n.
+\end{aligned}
+\tag{16.9}
+\]</span>
+<p>The topology is the corresponding fibre-product topology. The units of <span class="math" data-tex="\(H\)">\(H\)</span> are <span class="math" data-tex="\(N\)">\(N\)</span>, with source <span class="math" data-tex="\(n\)">\(n\)</span> and range <span class="math" data-tex="\(n&#x27;\)">\(n&#x27;\)</span>.</p>
+<p><span id="theorem-16-2"></span><strong>Theorem 16.2.</strong> The groupoid <span class="math" data-tex="\(H\)">\(H\)</span> is étale and has its counting Haar system. The space <span class="math" data-tex="\(Z\)">\(Z\)</span> is a <span class="math" data-tex="\(G\)">\(G\)</span>-<span class="math" data-tex="\(H\)">\(H\)</span> equivalence. In particular</p>
+<span id="equation-16-10"></span><span class="math math-display" data-tex="\[
+\mathcal A_F\sim_M C_r^*(H).
+\tag{16.10}
+\]">\[
+\mathcal A_F\sim_M C_r^*(H).
+\tag{16.10}
+\]</span>
+<p>The analogous Morita equivalence <span class="math" data-tex="\(C^*(G)\sim_M C^*(H)\)">\(C^*(G)\sim_M C^*(H)\)</span> holds for the full scalar algebras.</p>
+<p><strong>Proof.</strong> Work in (16.1) near an arrow whose source belongs to a chosen transverse slice. Transversality makes its transverse coordinate a local coordinate on that slice; its plaque coordinate is a smooth function of it. Restricting the source to <span class="math" data-tex="\(j(N)\)">\(j(N)\)</span> leaves the coordinates <span class="math" data-tex="\((t&#x27;,u)\)">\((t&#x27;,u)\)</span>. The range map is <span class="math" data-tex="\((t&#x27;,u)\mapsto(t&#x27;,h(u))\)">\((t&#x27;,u)\mapsto(t&#x27;,h(u))\)</span>, a local diffeomorphism. Hence <span class="math" data-tex="\(r_Z\)">\(r_Z\)</span> is open. It is onto because the transversal meets every leaf and any two points on a leaf are joined by a leafwise path. The map <span class="math" data-tex="\(s_Z\)">\(s_Z\)</span> is locally the projection <span class="math" data-tex="\((t&#x27;,u)\mapsto n(u)\)">\((t&#x27;,u)\mapsto n(u)\)</span>, so it too is open and onto.</p>
+<p>Restrict the range to another transverse slice. Its plaque coordinate is again determined by its transverse coordinate, leaving only <span class="math" data-tex="\(u\)">\(u\)</span>. Both <span class="math" data-tex="\(s_H\)">\(s_H\)</span> and <span class="math" data-tex="\(r_H\)">\(r_H\)</span> are local diffeomorphisms. This proves étaleness, including the topology rather than just a count of dimensions. The resulting arrow space is second countable and locally Hausdorff; its source and range fibres are discrete and Hausdorff. Counting measures have full support, are left invariant by the bijections of fibres, and integrate a compact chart function continuously. They are the required Haar system. Restricting the ambient leaf measures to <span class="math" data-tex="\(N\)">\(N\)</span> would usually give zero and is not this construction.</p>
+<p>The actions are</p>
+<span id="equation-16-11"></span><span class="math math-display" data-tex="\[
+\eta\cdot(\gamma,n)=(\eta\gamma,n),\qquad
+(\gamma,n&#x27;)\cdot(n&#x27;,\delta,n)=(\gamma\delta,n).
+\tag{16.11}
+\]">\[
+\eta\cdot(\gamma,n)=(\eta\gamma,n),\qquad
+(\gamma,n&#x27;)\cdot(n&#x27;,\delta,n)=(\gamma\delta,n).
+\tag{16.11}
+\]</span>
+<p>They preserve the opposite anchors and commute by associativity. For two points with the same <span class="math" data-tex="\(s_Z\)">\(s_Z\)</span>, the unique left division is <span class="math" data-tex="\(\gamma_1\gamma_2^{-1}\)">\(\gamma_1\gamma_2^{-1}\)</span>. For two points with the same <span class="math" data-tex="\(r_Z\)">\(r_Z\)</span>, the unique right division is</p>
+<span id="equation-16-12"></span><span class="math math-display" data-tex="\[
+(n_1,\gamma_1^{-1}\gamma_2,n_2).
+\tag{16.12}
+\]">\[
+(n_1,\gamma_1^{-1}\gamma_2,n_2).
+\tag{16.12}
+\]</span>
+<p>Multiplication and inversion make both division maps continuous. Thus each action-relation map is a homeomorphism onto the corresponding equal-anchor fibre product. Those fibre products are closed, since <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> are Hausdorff. Inclusion of a closed subspace is universally closed, so both actions are proper in the convention of Lesson 15. Uniqueness of division proves freeness. Division also says that left orbits are exactly the fibres of <span class="math" data-tex="\(s_Z\)">\(s_Z\)</span>, and right orbits the fibres of <span class="math" data-tex="\(r_Z\)">\(r_Z\)</span>. The two open surjections give exactly the quotient topologies. All equivalence conditions are now checked.</p>
+<p>Lemma 16.1 supplies the Haar system on <span class="math" data-tex="\(G\)">\(G\)</span>, and counting supplies it on <span class="math" data-tex="\(H\)">\(H\)</span>. Apply Theorem 15.3 to obtain both Morita equivalences. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof also explains why an arbitrary subset meeting all leaves is insufficient. The local transverse coordinates establish open anchors. The counterexample to a mere closed full reduction in Lesson 13 does not satisfy this condition.</p>
+<h2 id="submersions-and-compact-kernels">Submersions and compact kernels</h2>
+<p>Let <span class="math" data-tex="\(p:V\to B\)">\(p:V\to B\)</span> be a smooth surjective submersion with connected fibres. Give <span class="math" data-tex="\(V\)">\(V\)</span> the foliation <span class="math" data-tex="\(F=\ker dp\)">\(F=\ker dp\)</span>.</p>
+<p><span id="proposition-16-3"></span><strong>Proposition 16.3.</strong> Its holonomy groupoid is the fibre-pair groupoid</p>
+<span id="equation-16-13"></span><span class="math math-display" data-tex="\[
+G=V\times_B V,\qquad
+(v_2,v_1):v_1\longrightarrow v_2.
+\tag{16.13}
+\]">\[
+G=V\times_B V,\qquad
+(v_2,v_1):v_1\longrightarrow v_2.
+\tag{16.13}
+\]</span>
+<p>Both its full and reduced algebras are Morita equivalent to <span class="math" data-tex="\(C_0(B)\)">\(C_0(B)\)</span>.</p>
+<p><strong>Proof.</strong> A leaf is one fibre: a connected manifold is path connected, and the distribution <span class="math" data-tex="\(\ker dp\)">\(\ker dp\)</span> has exactly its fibre components as integral leaves. In submersion boxes the transverse coordinate is the value of <span class="math" data-tex="\(p\)">\(p\)</span>. Transport along any path in a fibre keeps that coordinate fixed. All its loops have trivial holonomy, so paths with the same endpoints define the same arrow. Every pair in (16.13) is joined by a path. The arrow charts (16.1) become <span class="math" data-tex="\((t&#x27;,t,b)\)">\((t&#x27;,t,b)\)</span>, precisely the local fibre-product charts. The bijection is therefore a smooth groupoid isomorphism.</p>
+<p>Use <span class="math" data-tex="\(Z=V\)">\(Z=V\)</span> between <span class="math" data-tex="\(G\)">\(G\)</span> and the unit groupoid <span class="math" data-tex="\(B\)">\(B\)</span>, with anchors <span class="math" data-tex="\(\operatorname{id}_V,p\)">\(\operatorname{id}_V,p\)</span>. Both are open surjections. The left action is <span class="math" data-tex="\((v_2,v_1)v_1=v_2\)">\((v_2,v_1)v_1=v_2\)</span>; the right unit action fixes points. The left relation map is the identity identification with the closed relation <span class="math" data-tex="\(p(v_2)=p(v_1)\)">\(p(v_2)=p(v_1)\)</span>, and the right relation map is the closed diagonal. They are proper and free. The left quotient is <span class="math" data-tex="\(B\)">\(B\)</span> by the open map <span class="math" data-tex="\(p\)">\(p\)</span>, and the right quotient is <span class="math" data-tex="\(V\)">\(V\)</span>. Smooth fibre densities give a full Haar system on <span class="math" data-tex="\(G\)">\(G\)</span>; the unit system on <span class="math" data-tex="\(B\)">\(B\)</span> is counting. Theorem 15.3 gives the assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is an explicit module behind this equivalence. Choose a smooth positive density <span class="math" data-tex="\(\rho_b\)">\(\rho_b\)</span> on <span class="math" data-tex="\(V_b=p^{-1}(b)\)">\(V_b=p^{-1}(b)\)</span>, and complete <span class="math" data-tex="\(C_c^\infty(V)\)">\(C_c^\infty(V)\)</span> for</p>
+<span id="equation-16-14"></span><span class="math math-display" data-tex="\[
+(\xi a)(v)=\xi(v)a(p(v)),\qquad
+\langle\xi,\eta\rangle(b)=
+\int_{V_b}\overline{\xi(v)}\eta(v)\,d\rho_b(v).
+\tag{16.14}
+\]">\[
+(\xi a)(v)=\xi(v)a(p(v)),\qquad
+\langle\xi,\eta\rangle(b)=
+\int_{V_b}\overline{\xi(v)}\eta(v)\,d\rho_b(v).
+\tag{16.14}
+\]</span>
+<p>Denote the resulting Hilbert <span class="math" data-tex="\(C_0(B)\)">\(C_0(B)\)</span>-module by <span class="math" data-tex="\(E_p\)">\(E_p\)</span>. Fibre integration in finitely many submersion boxes makes the inner product continuous; it is zero outside the compact image of the two supports. Positivity is pointwise, and a nonzero function has positive squared integral on some fibre. The completion is therefore a Hilbert module. For each <span class="math" data-tex="\(b\)">\(b\)</span>, a bump nonzero at a point of <span class="math" data-tex="\(V_b\)">\(V_b\)</span> gives <span class="math" data-tex="\(\langle\xi,\xi\rangle(b)&gt;0\)">\(\langle\xi,\xi\rangle(b)&gt;0\)</span>. These inner products generate an ideal with no common zero, hence all of <span class="math" data-tex="\(C_0(B)\)">\(C_0(B)\)</span>. The module is full.</p>
+<p>Its fibre at <span class="math" data-tex="\(b\)">\(b\)</span> is <span class="math" data-tex="\(L^2(V_b,\rho_b)\)">\(L^2(V_b,\rho_b)\)</span>. Restrictions of smooth compact functions are dense there: a compact smooth function on <span class="math" data-tex="\(V_b\)">\(V_b\)</span> extends through finitely many submersion boxes and a partition of unity to a compact smooth function on <span class="math" data-tex="\(V\)">\(V\)</span>. The inner-product formula then identifies the fibre norm with its <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-norm.</p>
+<p><span id="proposition-16-4"></span><strong>Proposition 16.4.</strong> Under this module description,</p>
+<span id="equation-16-15"></span><span class="math math-display" data-tex="\[
+C^*(V\times_B V)\cong C_r^*(V\times_B V)
+\cong\mathcal K(E_p),\qquad
+k_{\xi,\eta}(v,w)=\xi(v)\overline{\eta(w)}
+\longmapsto\Theta_{\xi,\eta}.
+\tag{16.15}
+\]">\[
+C^*(V\times_B V)\cong C_r^*(V\times_B V)
+\cong\mathcal K(E_p),\qquad
+k_{\xi,\eta}(v,w)=\xi(v)\overline{\eta(w)}
+\longmapsto\Theta_{\xi,\eta}.
+\tag{16.15}
+\]</span>
+<p><strong>Proof.</strong> The module in Proposition 16.3 is exactly (16.14): substituting the unit-groupoid right side in (15.10) integrates over a fibre of <span class="math" data-tex="\(p\)">\(p\)</span>. Its left form is <span class="math" data-tex="\(k_{\xi,\eta}\)">\(k_{\xi,\eta}\)</span>, and its left action is fibrewise integration. The reduced equivalence theorem identifies the left algebra with the compact operators on that module; this is the complementary-full-corner identification used in Theorem 15.3. The full module has the same right algebra <span class="math" data-tex="\(C_0(B)\)">\(C_0(B)\)</span> and the same inner-product norm on its dense core. It is therefore the same completed module. The full equivalence similarly identifies its left algebra with <span class="math" data-tex="\(\mathcal K(E_p)\)">\(\mathcal K(E_p)\)</span>. Both identifications carry a rank kernel to the displayed rank operator, so the full-to-reduced map becomes the identity on a dense family and is an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A literal tensor-product description requires a specified global module trivialization. If</p>
+<span id="equation-16-16"></span><span class="math math-display" data-tex="\[
+E_p\cong C_0(B)\otimes\mathcal H
+\quad\text{as Hilbert }C_0(B)\text{-modules},
+\tag{16.16}
+\]">\[
+E_p\cong C_0(B)\otimes\mathcal H
+\quad\text{as Hilbert }C_0(B)\text{-modules},
+\tag{16.16}
+\]</span>
+<p>then rank operators identify (16.15) with <span class="math" data-tex="\(C_0(B)\otimes\mathcal K(\mathcal H)\)">\(C_0(B)\otimes\mathcal K(\mathcal H)\)</span>. This means a trivialization compatible with the continuous sections and module structure, not just individual isomorphisms between fibre Hilbert spaces.</p>
+<p>For <span class="math" data-tex="\(V=B\times P\)">\(V=B\times P\)</span> with connected <span class="math" data-tex="\(P\)">\(P\)</span> and a fixed smooth positive density on <span class="math" data-tex="\(P\)">\(P\)</span>, (16.16) is explicit with <span class="math" data-tex="\(\mathcal H=L^2(P)\)">\(\mathcal H=L^2(P)\)</span>. Finite sums <span class="math" data-tex="\(a(b)\xi(y)\)">\(a(b)\xi(y)\)</span> are dense in <span class="math" data-tex="\(E_p\)">\(E_p\)</span>: approximate a compact smooth function on <span class="math" data-tex="\(B\times P\)">\(B\times P\)</span> uniformly on a fixed compact support by such sums, and bound the module error by that compact set's finite <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-measure. Hence</p>
+<span id="equation-16-17"></span><span class="math math-display" data-tex="\[
+\mathcal A_F\cong C_0(B)\otimes\mathcal K(L^2(P)).
+\tag{16.17}
+\]">\[
+\mathcal A_F\cong C_0(B)\otimes\mathcal K(L^2(P)).
+\tag{16.17}
+\]</span>
+<p>When <span class="math" data-tex="\(\dim P&gt;0\)">\(\dim P&gt;0\)</span>, this is an infinite-dimensional separable Hilbert space. When connected <span class="math" data-tex="\(P\)">\(P\)</span> has dimension zero, <span class="math" data-tex="\(P\)">\(P\)</span> is one point and the compact-operator factor is <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Connectedness in Proposition 16.3 cannot be suppressed: for <span class="math" data-tex="\(V=B\times\{0,1\}\)">\(V=B\times\{0,1\}\)</span>, leaves are points, the holonomy algebra is <span class="math" data-tex="\(C_0(B)\oplus C_0(B)\)">\(C_0(B)\oplus C_0(B)\)</span>, whereas the full fibre-pair algebra would be <span class="math" data-tex="\(M_2(C_0(B))\)">\(M_2(C_0(B))\)</span>.</p>
+<p>Morita invariance of K-theory now gives, without assuming (16.16),</p>
+<span id="equation-16-18"></span><span class="math math-display" data-tex="\[
+K_i(\mathcal A_{\ker dp})\cong K_i(C_0(B)).
+\tag{16.18}
+\]">\[
+K_i(\mathcal A_{\ker dp})\cong K_i(C_0(B)).
+\tag{16.18}
+\]</span>
+<p>Here and below Morita invariance uses the written programme proof in <a href="prerequisites/hilbert-c-star-modules-and-morita-equivalence/morita-invariance-of-k-theory-and-correspondence-maps.html"><em>Morita invariance of K-theory and maps induced by correspondences</em></a>, Corollary 2.2 and Theorem 5.1. The second countable foliation groupoids and transversals have separable C*-algebras, so its sigma-unital hypotheses hold.</p>
+<h2 id="orbit-foliations-which-arrows-survive">Orbit foliations: which arrows survive?</h2>
+<p>Suppose a connected Lie group <span class="math" data-tex="\(H\)">\(H\)</span> acts smoothly on <span class="math" data-tex="\(V\)">\(V\)</span>, with constant-dimensional orbits defining <span class="math" data-tex="\(F\)">\(F\)</span>. Assume specifically that the holonomy groupoid is isomorphic, over <span class="math" data-tex="\(V\)">\(V\)</span>, to the transformation groupoid <span class="math" data-tex="\(V\rtimes H\)">\(V\rtimes H\)</span>, including its smooth topology. For a free action this is the relevant transformation-groupoid hypothesis; the hypothesis also specifies the groupoid in cases where freeness is not imposed.</p>
+<p><span id="proposition-16-5"></span><strong>Proposition 16.5.</strong> Under that groupoid identification,</p>
+<span id="equation-16-19"></span><span class="math math-display" data-tex="\[
+\mathcal A_F\cong C_0(V)\rtimes_r H.
+\tag{16.19}
+\]">\[
+\mathcal A_F\cong C_0(V)\rtimes_r H.
+\tag{16.19}
+\]</span>
+<p>If <span class="math" data-tex="\(H\)">\(H\)</span> is amenable, this also equals the full crossed product.</p>
+<p><strong>Proof.</strong> Identify the leaf tangent bundle with the Lie algebroid of <span class="math" data-tex="\(V\rtimes H\)">\(V\rtimes H\)</span>. Choose its density at the units from the fixed Haar density of <span class="math" data-tex="\(H\)">\(H\)</span>, and right translate it on source fibres. For a holonomy groupoid its anchor is an isomorphism onto <span class="math" data-tex="\(F\)">\(F\)</span>; right translation followed by <span class="math" data-tex="\(dr\)">\(dr\)</span> is this anchor at the range point. Thus this density is the lifted leaf density used in Lemma 16.1. Inversion gives the usual left Haar system on the transformation groupoid. Lemma 16.1 and Theorem 14.3 give the reduced isomorphism. In target coordinates, the scalar convolution conversion is</p>
+<span id="equation-16-20"></span><span class="math math-display" data-tex="\[
+a(h)(v)=\Delta_H(h)^{-1/2}f(v,h).
+\tag{16.20}
+\]">\[
+a(h)(v)=\Delta_H(h)^{-1/2}f(v,h).
+\tag{16.20}
+\]</span>
+<p>This is the modular correction already verified in Lesson 14. Amenability gives full equals reduced by Lesson 4. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Local freeness only says that stabilizers are discrete. Holonomy instead identifies loops with the same transverse germ, so it can discard such stabilizers. Take the action of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> on <span class="math" data-tex="\(\mathbb T=\mathbb R/\mathbb Z\)">\(\mathbb T=\mathbb R/\mathbb Z\)</span> by translations. It is locally free, with stabilizer <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and its orbit foliation has one leaf. With a zero-dimensional transversal every loop has trivial holonomy. Its holonomy groupoid is <span class="math" data-tex="\(\mathbb T\times\mathbb T\)">\(\mathbb T\times\mathbb T\)</span>, and Lesson 14's pair-groupoid calculation gives</p>
+<span id="equation-16-21"></span><span class="math math-display" data-tex="\[
+\mathcal A_F=\mathcal K(L^2(\mathbb T)),\qquad
+K_0(\mathcal A_F)=\mathbb Z,\quad K_1(\mathcal A_F)=0.
+\tag{16.21}
+\]">\[
+\mathcal A_F=\mathcal K(L^2(\mathbb T)),\qquad
+K_0(\mathcal A_F)=\mathbb Z,\quad K_1(\mathcal A_F)=0.
+\tag{16.21}
+\]</span>
+<p>The action groupoid retains isotropy <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Green's theorem, with <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span> and subgroup <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, gives</p>
+<span id="equation-16-22"></span><span class="math math-display" data-tex="\[
+C(\mathbb T)\rtimes\mathbb R\sim_M C^*(\mathbb Z)=C(\mathbb T).
+\tag{16.22}
+\]">\[
+C(\mathbb T)\rtimes\mathbb R\sim_M C^*(\mathbb Z)=C(\mathbb T).
+\tag{16.22}
+\]</span>
+<p>Its two K-groups are both <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The real group is amenable, so the full and reduced action algebras agree, but neither is Morita equivalent to (16.21).</p>
+<p>For an <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>-orbit foliation satisfying the groupoid hypothesis of Proposition 16.5, the proved Thom theorem gives</p>
+<span id="equation-16-23"></span><span class="math math-display" data-tex="\[
+K_i(\mathcal A_F)\cong K_{i-n}(C_0(V)),\qquad i\in\mathbb Z/2.
+\tag{16.23}
+\]">\[
+K_i(\mathcal A_F)\cong K_{i-n}(C_0(V)),\qquad i\in\mathbb Z/2.
+\tag{16.23}
+\]</span>
+<p>Indeed identify its algebra with the crossed product, use amenability to pass to the full convention of Lesson 11, and apply that lesson's iterated Thom isomorphism. Its coordinate order and signs are those of (11.28)–(11.29); the displayed statement only records parity. For a connected simply connected solvable Lie group of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, under the same holonomy hypothesis, Proposition 11.4 and its Lie-group induction give <span class="math" data-tex="\(K_i(\mathcal A_F)\cong K_{i-d}(C_0(V))\)">\(K_i(\mathcal A_F)\cong K_{i-d}(C_0(V))\)</span>. Such groups are amenable as successive extensions by real groups, using Lesson 4. None of these conclusions follows just from local freeness.</p>
+<h2 id="suspensions-and-the-groupoid-of-germs">Suspensions and the groupoid of germs</h2>
+<p>Let <span class="math" data-tex="\(B\)">\(B\)</span> be a connected smooth manifold, <span class="math" data-tex="\(\widetilde B\)">\(\widetilde B\)</span> its universal cover, and <span class="math" data-tex="\(\Gamma=\pi_1(B)\)">\(\Gamma=\pi_1(B)\)</span>. Let <span class="math" data-tex="\(P\)">\(P\)</span> be a smooth manifold and <span class="math" data-tex="\(\rho:\Gamma\to\operatorname{Diff}(P)\)">\(\rho:\Gamma\to\operatorname{Diff}(P)\)</span> an action. Form</p>
+<span id="equation-16-24"></span><span class="math math-display" data-tex="\[
+M=(\widetilde B\times P)/\Gamma,\qquad
+\gamma(b,x)=(\gamma b,\rho(\gamma)x).
+\tag{16.24}
+\]">\[
+M=(\widetilde B\times P)/\Gamma,\qquad
+\gamma(b,x)=(\gamma b,\rho(\gamma)x).
+\tag{16.24}
+\]</span>
+<p>The diagonal action is free and proper, since its projection to the covering space is the deck action. More explicitly, for two compact subsets of the product only finitely many deck transformations can move the first base projection into the second, and each such transformation has a closed graph. Covering boxes give the quotient smooth charts. The images of <span class="math" data-tex="\(\widetilde B\times\{x\}\)">\(\widetilde B\times\{x\}\)</span> define the horizontal foliation.</p>
+<p>Fix a lift <span class="math" data-tex="\(b_0\)">\(b_0\)</span> of a point of <span class="math" data-tex="\(B\)">\(B\)</span>. The map <span class="math" data-tex="\(j(x)=[b_0,x]\)">\(j(x)=[b_0,x]\)</span> is an embedded complete transversal: deck freeness proves injectivity, a covering box gives the transverse charts, and a path in <span class="math" data-tex="\(\widetilde B\)">\(\widetilde B\)</span> joins any base point to <span class="math" data-tex="\(b_0\)">\(b_0\)</span>. Write <span class="math" data-tex="\(\operatorname{Germ}(\Gamma,P)\)">\(\operatorname{Germ}(\Gamma,P)\)</span> for the groupoid of germs of the action, with arrows</p>
+<span id="equation-16-25"></span><span class="math math-display" data-tex="\[
+[\gamma,x]:x\longrightarrow\rho(\gamma)x.
+\tag{16.25}
+\]">\[
+[\gamma,x]:x\longrightarrow\rho(\gamma)x.
+\tag{16.25}
+\]</span>
+<p>Two labels with the same source represent one arrow exactly when their action maps have the same germ there. A chart consists of <span class="math" data-tex="\([\gamma,x]\)">\([\gamma,x]\)</span> for <span class="math" data-tex="\(x\)">\(x\)</span> in an open subset of <span class="math" data-tex="\(P\)">\(P\)</span>. Products compose the germs.</p>
+<p><span id="proposition-16-6"></span><strong>Proposition 16.6.</strong> The transversal reduction of <span class="math" data-tex="\(\operatorname{Hol}(M,F)\)">\(\operatorname{Hol}(M,F)\)</span> is <span class="math" data-tex="\(\operatorname{Germ}(\Gamma,P)\)">\(\operatorname{Germ}(\Gamma,P)\)</span>. Consequently</p>
+<span id="equation-16-26"></span><span class="math math-display" data-tex="\[
+\mathcal A_F\sim_M C_r^*(\operatorname{Germ}(\Gamma,P)).
+\tag{16.26}
+\]">\[
+\mathcal A_F\sim_M C_r^*(\operatorname{Germ}(\Gamma,P)).
+\tag{16.26}
+\]</span>
+<p>If the action satisfies</p>
+<span id="equation-16-27"></span><span class="math math-display" data-tex="\[
+\text{the germ of }\rho(\gamma)\text{ at }x\text{ is the identity}
+\quad\Longrightarrow\quad\gamma=e,
+\tag{16.27}
+\]">\[
+\text{the germ of }\rho(\gamma)\text{ at }x\text{ is the identity}
+\quad\Longrightarrow\quad\gamma=e,
+\tag{16.27}
+\]</span>
+<p>for every <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span>, then</p>
+<span id="equation-16-28"></span><span class="math math-display" data-tex="\[
+\mathcal A_F\sim_M C_0(P)\rtimes_r\Gamma.
+\tag{16.28}
+\]">\[
+\mathcal A_F\sim_M C_0(P)\rtimes_r\Gamma.
+\tag{16.28}
+\]</span>
+<p>For amenable <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, the right side may also be written as the full crossed product.</p>
+<p><strong>Proof.</strong> A horizontal leafwise path lifts to a path in <span class="math" data-tex="\(\widetilde B\times\{x\}\)">\(\widetilde B\times\{x\}\)</span>. If both endpoints lie in <span class="math" data-tex="\(j(P)\)">\(j(P)\)</span>, its lifted endpoint has the form <span class="math" data-tex="\((\gamma^{-1}b_0,x)\)">\((\gamma^{-1}b_0,x)\)</span> for a unique deck label. Applying <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> identifies that endpoint with <span class="math" data-tex="\((b_0,\rho(\gamma)x)\)">\((b_0,\rho(\gamma)x)\)</span>. The transverse transport is precisely <span class="math" data-tex="\(\rho(\gamma)\)">\(\rho(\gamma)\)</span> near <span class="math" data-tex="\(x\)">\(x\)</span>. Every <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> occurs, because the universal cover is path connected. Paths with the same endpoints are holonomy equivalent exactly when these transverse germs agree. Thus the reduction has exactly the arrows (16.25), with the stated multiplication.</p>
+<p>For topology, a fixed path is covered by a finite chain of covering boxes. Nearby horizontal paths in that chain carry the same deck label, and their transverse transports vary on an open domain of <span class="math" data-tex="\(P\)">\(P\)</span>. This is the germ chart just described. Conversely every such germ chart can be obtained by shrinking the transverse domain along the fixed path. The bijection is therefore an isomorphism of étale groupoids. Apply Theorem 16.2 to get (16.26).</p>
+<p>The transformation groupoid maps onto the germ groupoid by sending a labelled arrow to its germ. Its charts map homeomorphically to germ charts. If two labels <span class="math" data-tex="\(\gamma,\delta\)">\(\gamma,\delta\)</span> have the same germ at <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(\rho(\delta^{-1}\gamma)\)">\(\rho(\delta^{-1}\gamma)\)</span> has identity germ at <span class="math" data-tex="\(x\)">\(x\)</span>; (16.27) makes the labels equal. The map is thus a bijective local homeomorphism and a groupoid isomorphism. The discrete case of Theorem 14.3 identifies its reduced algebra with the reduced crossed product, giving (16.28). Lesson 4 proves the amenable assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Condition (16.27) allows nontrivial stabilizers with nontrivial germs. It is stronger than a globally faithful action: a nonidentity smooth diffeomorphism can be the identity on an open set. For example, take the time-one map of a nonzero smooth vector field supported in a proper interval of the circle. It has infinite order, since a point where the field is nonzero moves strictly monotonically until it approaches an endpoint. Its powers give a faithful <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-action, but every power has identity germ outside that interval. Such arrows collapse in the holonomy reduction. Even more directly, a trivial action gives <span class="math" data-tex="\(M=B\times P\)">\(M=B\times P\)</span>, so the connected-fibre result gives <span class="math" data-tex="\(\mathcal A_F\sim_M C_0(P)\)">\(\mathcal A_F\sim_M C_0(P)\)</span>, rather than the generally larger algebra <span class="math" data-tex="\(C_0(P)\rtimes\Gamma\)">\(C_0(P)\rtimes\Gamma\)</span>.</p>
+<p>For a circle diffeomorphism <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, the suspension convention is</p>
+<span id="equation-16-29"></span><span class="math math-display" data-tex="\[
+\Sigma_\varphi=(\mathbb R\times\mathbb T)/
+\bigl((t+1,x)\sim(t,\varphi x)\bigr).
+\tag{16.29}
+\]">\[
+\Sigma_\varphi=(\mathbb R\times\mathbb T)/
+\bigl((t+1,x)\sim(t,\varphi x)\bigr).
+\tag{16.29}
+\]</span>
+<p>Its return action is <span class="math" data-tex="\(n:x\mapsto\varphi^n x\)">\(n:x\mapsto\varphi^n x\)</span>. The condition for (16.28) is that no nonzero iterate is the identity on any neighbourhood of any point. When it holds, let <span class="math" data-tex="\(A=C(\mathbb T)\)">\(A=C(\mathbb T)\)</span> and <span class="math" data-tex="\(\alpha(a)=a\circ\varphi^{-1}\)">\(\alpha(a)=a\circ\varphi^{-1}\)</span>. The two PV cycles of (15.39) imply</p>
+<span id="equation-16-30"></span><span class="math math-display" data-tex="\[
+0\longrightarrow
+\operatorname{coker}(1-\alpha_*|K_i(A))
+\longrightarrow K_i(\mathcal A_F)
+\longrightarrow
+\ker(1-\alpha_*|K_{i-1}(A))
+\longrightarrow0.
+\tag{16.30}
+\]">\[
+0\longrightarrow
+\operatorname{coker}(1-\alpha_*|K_i(A))
+\longrightarrow K_i(\mathcal A_F)
+\longrightarrow
+\ker(1-\alpha_*|K_{i-1}(A))
+\longrightarrow0.
+\tag{16.30}
+\]</span>
+<p>This follows by exactness at the crossed-product group in that cycle and the Morita isomorphism, so no splitting has been assumed. On <span class="math" data-tex="\(K_0(C(\mathbb T))=\mathbb Z[1]\)">\(K_0(C(\mathbb T))=\mathbb Z[1]\)</span>, <span class="math" data-tex="\(\alpha_*\)">\(\alpha_*\)</span> is the identity. On <span class="math" data-tex="\(K_1(C(\mathbb T))=\mathbb Z[v]\)">\(K_1(C(\mathbb T))=\mathbb Z[v]\)</span>, it is multiplication by <span class="math" data-tex="\(\deg\varphi\)">\(\deg\varphi\)</span>: the composed unitary has that winding number, with inverse degree equal to the same sign. Hence an orientation preserving diffeomorphism satisfying the germ condition gives</p>
+<span id="equation-16-31"></span><span class="math math-display" data-tex="\[
+K_0(\mathcal A_F)\cong\mathbb Z^2,\qquad
+K_1(\mathcal A_F)\cong\mathbb Z^2.
+\tag{16.31}
+\]">\[
+K_0(\mathcal A_F)\cong\mathbb Z^2,\qquad
+K_1(\mathcal A_F)\cong\mathbb Z^2.
+\tag{16.31}
+\]</span>
+<p>Each short exact sequence splits because its quotient is free: lift a generator and extend by integer multiples. An orientation reversing diffeomorphism satisfying the same germ condition instead gives</p>
+<span id="equation-16-32"></span><span class="math math-display" data-tex="\[
+K_0(\mathcal A_F)\cong\mathbb Z,\qquad
+K_1(\mathcal A_F)\cong\mathbb Z\oplus\mathbb Z/2.
+\tag{16.32}
+\]">\[
+K_0(\mathcal A_F)\cong\mathbb Z,\qquad
+K_1(\mathcal A_F)\cong\mathbb Z\oplus\mathbb Z/2.
+\tag{16.32}
+\]</span>
+<p>For (16.32), the maps on <span class="math" data-tex="\(K_0,K_1\)">\(K_0,K_1\)</span> are respectively zero and multiplication by two. The even sequence has cokernel <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and kernel zero; the odd sequence has cokernel <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> and quotient <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, which splits. An involution such as reflection fails the germ condition, since its square is the identity. Formula (16.32) still computes its action algebra, but cannot be assigned to its foliation algebra through (16.28).</p>
+<h2 id="the-kronecker-foliation">The Kronecker foliation</h2>
+<p>Take <span class="math" data-tex="\(\varphi(x)=x+\theta\)">\(\varphi(x)=x+\theta\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, with irrational <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. The homeomorphism, in fact diffeomorphism,</p>
+<span id="equation-16-33"></span><span class="math math-display" data-tex="\[
+[t,x]\longmapsto(t\bmod1,\ x+\theta t\bmod1)
+\tag{16.33}
+\]">\[
+[t,x]\longmapsto(t\bmod1,\ x+\theta t\bmod1)
+\tag{16.33}
+\]</span>
+<p>identifies its suspension with the torus carrying the flow</p>
+<span id="equation-16-34"></span><span class="math math-display" data-tex="\[
+s\cdot(a,b)=(a+s,b+\theta s).
+\tag{16.34}
+\]">\[
+s\cdot(a,b)=(a+s,b+\theta s).
+\tag{16.34}
+\]</span>
+<p>The formula descends because <span class="math" data-tex="\([t+1,x]=[t,x+\theta]\)">\([t+1,x]=[t,x+\theta]\)</span>. Its inverse is obtained locally by lifting the first circle coordinate; changing that lift changes <span class="math" data-tex="\(x\)">\(x\)</span> by exactly the suspension relation.</p>
+<p>Irrationality makes the flow free: a return requires <span class="math" data-tex="\(s\in\mathbb Z\)">\(s\in\mathbb Z\)</span> and <span class="math" data-tex="\(\theta s\in\mathbb Z\)">\(\theta s\in\mathbb Z\)</span>, hence <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. Every leaf is an injectively immersed copy of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and has trivial holonomy. Between two points of a leaf there is exactly one flow parameter and one holonomy arrow. Locally their coordinates agree with the flow-box arrow charts, so this bijection is a smooth groupoid isomorphism <span class="math" data-tex="\(G\cong\mathbb T^2\rtimes\mathbb R\)">\(G\cong\mathbb T^2\rtimes\mathbb R\)</span>.</p>
+<p>The transversal <span class="math" data-tex="\(\{0\}\times\mathbb T\)">\(\{0\}\times\mathbb T\)</span> has integer returns, acting by <span class="math" data-tex="\(x\mapsto x+n\theta\)">\(x\mapsto x+n\theta\)</span>. Every nonzero such rotation has no fixed point, so (16.27) holds. Theorem 16.2, or the explicit equivalence in Lesson 15, therefore gives</p>
+<span id="equation-16-35"></span><span class="math math-display" data-tex="\[
+\mathcal A_{F_\theta}
+\cong C(\mathbb T^2)\rtimes\mathbb R
+\sim_M A_\theta,\qquad
+A_\theta=C(\mathbb T)\rtimes_\alpha\mathbb Z.
+\tag{16.35}
+\]">\[
+\mathcal A_{F_\theta}
+\cong C(\mathbb T^2)\rtimes\mathbb R
+\sim_M A_\theta,\qquad
+A_\theta=C(\mathbb T)\rtimes_\alpha\mathbb Z.
+\tag{16.35}
+\]</span>
+<p>Both acting groups are amenable, so full and reduced crossed products coincide. With <span class="math" data-tex="\(v(x)=e^{2\pi ix}\)">\(v(x)=e^{2\pi ix}\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> implementing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, our conventions are</p>
+<span id="equation-16-36"></span><span class="math math-display" data-tex="\[
+uvu^*=e^{-2\pi i\theta}v,
+\qquad vu=e^{2\pi i\theta}uv.
+\tag{16.36}
+\]">\[
+uvu^*=e^{-2\pi i\theta}v,
+\qquad vu=e^{2\pi i\theta}uv.
+\tag{16.36}
+\]</span>
+<p>Rotation is homotopic to the identity by <span class="math" data-tex="\(x\mapsto x+s\theta\)">\(x\mapsto x+s\theta\)</span>. Both PV maps <span class="math" data-tex="\(1-\alpha_*\)">\(1-\alpha_*\)</span> vanish, and (16.30) proves, in each parity,</p>
+<span id="equation-16-37"></span><span class="math math-display" data-tex="\[
+K_0(\mathcal A_{F_\theta})\cong K_0(A_\theta)\cong\mathbb Z^2,
+\qquad
+K_1(\mathcal A_{F_\theta})\cong K_1(A_\theta)\cong\mathbb Z^2.
+\tag{16.37}
+\]">\[
+K_0(\mathcal A_{F_\theta})\cong K_0(A_\theta)\cong\mathbb Z^2,
+\qquad
+K_1(\mathcal A_{F_\theta})\cong K_1(A_\theta)\cong\mathbb Z^2.
+\tag{16.37}
+\]</span>
+<p>This proves the K-groups without importing a computation of the rotation algebra. It agrees with the Thom calculation in Lesson 11: split circle evaluation and Bott periodicity give <span class="math" data-tex="\(K_0(C(\mathbb T^2))=K_1(C(\mathbb T^2))=\mathbb Z^2\)">\(K_0(C(\mathbb T^2))=K_1(C(\mathbb T^2))=\mathbb Z^2\)</span>, and the flow shifts parity once.</p>
+<p>For contrast, let <span class="math" data-tex="\(\theta=m/n\)">\(\theta=m/n\)</span> in lowest terms, <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>. The primitive character</p>
+<span id="equation-16-38"></span><span class="math math-display" data-tex="\[
+(a,b)\longmapsto nb-ma\bmod1
+\tag{16.38}
+\]">\[
+(a,b)\longmapsto nb-ma\bmod1
+\tag{16.38}
+\]</span>
+<p>is a submersion onto the circle with connected circle fibres, which are the leaves. Proposition 16.3 gives the foliation algebra Morita equivalent to <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>, so each K-group is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The flow has period <span class="math" data-tex="\(n\)">\(n\)</span>, and its transformation groupoid retains this isotropy. Its algebra still has both K-groups <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span> by Thom, or by Lesson 15's suspension equivalence. Thus (16.35), with the flow identified as the holonomy groupoid, genuinely needs the irrationality assumption. Lesson 15's equivalence of <strong>transformation</strong> groupoids works for all <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.</p>
+<h2 id="the-reeb-foliation-of-the-three-sphere">The Reeb foliation of the three-sphere</h2>
+<p>We compute this example by an extension, rather than assuming an assembly comparison. First fix the usual two-component Reeb model. In a solid torus <span class="math" data-tex="\(D^2\times\mathbb T\)">\(D^2\times\mathbb T\)</span>, use polar disk coordinates <span class="math" data-tex="\((r,\phi)\)">\((r,\phi)\)</span> and longitudinal angle <span class="math" data-tex="\(\theta\in\mathbb R/2\pi\mathbb Z\)">\(\theta\in\mathbb R/2\pi\mathbb Z\)</span>. In its interior the leaves are</p>
+<span id="equation-16a-1"></span><span class="math math-display" data-tex="\[
+\theta=H(r)+c\pmod{2\pi},
+\tag{16A.1}
+\]">\[
+\theta=H(r)+c\pmod{2\pi},
+\tag{16A.1}
+\]</span>
+<p>where <span class="math" data-tex="\(H(r)=r^2\)">\(H(r)=r^2\)</span> near zero, is strictly increasing for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, and tends to infinity as <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span>. Choose <span class="math" data-tex="\(1/H&#x27;(r)\)">\(1/H&#x27;(r)\)</span> smooth and flat at the boundary. The defining form <span class="math" data-tex="\(d\theta-dH\)">\(d\theta-dH\)</span> is smooth at the disk centre; near the boundary its equivalent form <span class="math" data-tex="\(dr-(1/H&#x27;)d\theta\)">\(dr-(1/H&#x27;)d\theta\)</span> extends smoothly and is nonzero there. The boundary torus is a leaf. Each interior leaf is parametrized by the open disk through (16A.1), so is a plane.</p>
+<p>Glue two such solid tori by the usual three-sphere Heegaard gluing, which interchanges meridian and longitude, reversing one orientation. The flat boundary terms make the foliations fit smoothly. A short transverse arc across the common torus is complete: for every <span class="math" data-tex="\(c\)">\(c\)</span>, the equation <span class="math" data-tex="\(H(r)=\theta_0-c+2\pi k\)">\(H(r)=\theta_0-c+2\pi k\)</span> gives intersections arbitrarily close to the boundary. On one side, a longitudinal return contracts that arc, and a meridional return is the identity germ. On the other side the roles interchange. The torus leaf's two generators therefore have independent one-sided holonomy. Each nonzero pair of powers changes at least one side, so its holonomy representation is injective and its holonomy cover is <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>. The other leaves have trivial holonomy and plane covers.</p>
+<p>More explicitly, the return replaces <span class="math" data-tex="\(H(r)\)">\(H(r)\)</span> by <span class="math" data-tex="\(H(r)+2\pi\)">\(H(r)+2\pi\)</span>. A transverse coordinate proportional to <span class="math" data-tex="\(\exp(-H(r)\log2/(2\pi))\)">\(\exp(-H(r)\log2/(2\pi))\)</span> conjugates it to multiplication by <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Use that coordinate on each side, with opposite signs. Thus the holonomy pseudogroup on the arc is the restriction of the pseudogroup on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> generated by</p>
+<span id="equation-16a-2"></span><span class="math math-display" data-tex="\[
+h_+(x)=\begin{cases}x/2&amp;x&gt;0,\\x&amp;x\leq0,\end{cases}
+\qquad
+h_-(x)=\begin{cases}x&amp;x\geq0,\\x/2&amp;x&lt;0.\end{cases}
+\tag{16A.2}
+\]">\[
+h_+(x)=\begin{cases}x/2&amp;x&gt;0,\\x&amp;x\leq0,\end{cases}
+\qquad
+h_-(x)=\begin{cases}x&amp;x\geq0,\\x/2&amp;x&lt;0.\end{cases}
+\tag{16A.2}
+\]</span>
+<p>These are homeomorphisms; the transverse conjugacy need not be smooth. It preserves the topological germ groupoid and its counting convolution algebra. At positive points the germ of <span class="math" data-tex="\(h_-\)">\(h_-\)</span> is identity, at negative points that of <span class="math" data-tex="\(h_+\)">\(h_+\)</span> is identity, and at zero no nontrivial pair of powers has identity germ. The description is exhaustive: on an interior plane any two endpoint paths have the same holonomy, and its successive intersections with the arc are exactly the integer returns above; on the torus, loops are precisely its meridian and longitude powers. Plaque-path neighborhoods give the corresponding germ charts.</p>
+<p>Let <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> be this germ groupoid on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. The small arc is an open full reduction, since every nonzero contraction orbit meets it. The transversal equivalence of Proposition 16.2 and the open-full reduction of Lesson 15 identify the reduced Reeb algebra up to Morita equivalence with <span class="math" data-tex="\(C_r^*(\mathcal H)\)">\(C_r^*(\mathcal H)\)</span>. Both groupoids have their explicit smooth or counting Haar systems; no Hausdorff claim for the arrow space is needed.</p>
+<p>We now identify both norms and the required extension. Let</p>
+<span id="equation-16a-3"></span><span class="math math-display" data-tex="\[
+B=C_0(\mathbb R)\rtimes\mathbb Z^2,
+\tag{16A.3}
+\]">\[
+B=C_0(\mathbb R)\rtimes\mathbb Z^2,
+\tag{16A.3}
+\]</span>
+<p>for the commuting actions (16A.2), and denote its canonical multiplier unitaries by <span class="math" data-tex="\(U_+,U_-\)">\(U_+,U_-\)</span>. Let <span class="math" data-tex="\(J\)">\(J\)</span> be the closed ideal generated by</p>
+<span id="equation-16a-4"></span><span class="math math-display" data-tex="\[
+a(U_--1)\ (a\in C_0(\mathbb R_+)),\qquad
+b(U_+-1)\ (b\in C_0(\mathbb R_-)).
+\tag{16A.4}
+\]">\[
+a(U_--1)\ (a\in C_0(\mathbb R_+)),\qquad
+b(U_+-1)\ (b\in C_0(\mathbb R_-)).
+\tag{16A.4}
+\]</span>
+<p>The quotient <span class="math" data-tex="\(A=B/J\)">\(A=B/J\)</span> is the full algebra of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. Here is a verification of that assertion and its norm, including the non-Hausdorff issue. A finite crossed-product kernel maps to the sum of its germ-bisection kernels. At <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, coefficients with equal <span class="math" data-tex="\(U_+\)">\(U_+\)</span>-power are added; at <span class="math" data-tex="\(x&lt;0\)">\(x&lt;0\)</span>, coefficients with equal <span class="math" data-tex="\(U_-\)">\(U_-\)</span>-power are added; at zero all pairs of powers remain distinct. These are exactly the germ relations. Every compact patch kernel is a finite sum of such kernels, so this map is onto the patch algebra. Its nullspace is generated by (16A.4), after approximation: coefficients vanishing at zero can be cut off near zero in the crossed-product norm, and on each remaining half-line a finite sum with zero sum in the inactive power is a sum of multiples of <span class="math" data-tex="\(U_\mp-1\)">\(U_\mp-1\)</span>.</p>
+<p>Passing from action kernels to germ kernels decreases the <span class="math" data-tex="\(I\)">\(I\)</span>-norm, by adding coefficients and applying the triangle inequality. Consequently every full germ representation pulls back to a representation of <span class="math" data-tex="\(B\)">\(B\)</span> vanishing on <span class="math" data-tex="\(J\)">\(J\)</span>. Conversely a representation of <span class="math" data-tex="\(A\)">\(A\)</span> splits into the reducing essential subspaces of its two orthogonal open-half-line ideals and their orthogonal complement. On the positive subspace <span class="math" data-tex="\(U_-=1\)">\(U_-=1\)</span>; the algebra is the crossed product for the free proper <span class="math" data-tex="\(h_+\)">\(h_+\)</span>-action. Its full equals reduced norm, by amenability of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and its regular kernel uses the summed positive germ coefficients, so the Schur bound is the germ <span class="math" data-tex="\(I\)">\(I\)</span>-norm. Compact half-line cutoffs prove the same bound for kernels reaching zero, by strong convergence in this essential subspace. The negative subspace has the identical argument. On the remaining subspace the representation factors through <span class="math" data-tex="\(C^*(\mathbb Z^2)\)">\(C^*(\mathbb Z^2)\)</span>; its norm is bounded by the sum of the absolute coefficients at zero, again the germ <span class="math" data-tex="\(I\)">\(I\)</span>-norm. This proves the reverse universal bound and hence <span class="math" data-tex="\(A=C^*(\mathcal H)\)">\(A=C^*(\mathcal H)\)</span>.</p>
+<p>Full crossed-product exactness and the relations give the exact sequence</p>
+<span id="equation-16a-5"></span><span class="math math-display" data-tex="\[
+0\longrightarrow I_+\oplus I_-\longrightarrow A
+\longrightarrow C^*(\mathbb Z^2)=C(\mathbb T^2)\longrightarrow0,
+\quad I_\pm=C_0(\mathbb R_\pm)\rtimes\mathbb Z.
+\tag{16A.5}
+\]">\[
+0\longrightarrow I_+\oplus I_-\longrightarrow A
+\longrightarrow C^*(\mathbb Z^2)=C(\mathbb T^2)\longrightarrow0,
+\quad I_\pm=C_0(\mathbb R_\pm)\rtimes\mathbb Z.
+\tag{16A.5}
+\]</span>
+<p>Indeed the unit-zero quotient of <span class="math" data-tex="\(B\)">\(B\)</span> is the group algebra, and every generator of <span class="math" data-tex="\(J\)">\(J\)</span> lies in an open-half-line ideal. Within the positive ideal, imposing <span class="math" data-tex="\(U_-=1\)">\(U_-=1\)</span> gives exactly the single-generator crossed product by its universal relations, and similarly on the negative side. The half-line ideals remain orthogonal.</p>
+<p>This full algebra also equals its reduced algebra. The zero regular representation is the left regular representation of <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>, faithful on <span class="math" data-tex="\(C^*(\mathbb Z^2)\)">\(C^*(\mathbb Z^2)\)</span> by abelian amenability. If an element has zero reduced norm, its quotient in (16A.5) is therefore zero, so it lies in <span class="math" data-tex="\(I_+\oplus I_-\)">\(I_+\oplus I_-\)</span>. The positive and negative regular representations are faithful on these ideals, again by <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-amenability. The element is zero. This proves injectivity of the full-to-reduced map without assuming general reduced invariant-ideal exactness.</p>
+<p>The logarithmic coordinate changes each half-line action to integer translation on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Its quotient is a circle, so the proper-action equivalence of Lesson 15 and written Morita K-invariance give</p>
+<span id="equation-16a-6"></span><span class="math math-display" data-tex="\[
+K_0(I_\pm)=\mathbb Z,\qquad K_1(I_\pm)=\mathbb Z.
+\tag{16A.6}
+\]">\[
+K_0(I_\pm)=\mathbb Z,\qquad K_1(I_\pm)=\mathbb Z.
+\tag{16A.6}
+\]</span>
+<p>It remains to compute the two boundary maps; knowing only the ideal and quotient groups would not determine the answer.</p>
+<p>Consider the one-sided extension</p>
+<span id="equation-16a-7"></span><span class="math math-display" data-tex="\[
+0\to I_+\to E_+=C_0([0,\infty))\rtimes_{h_+}\mathbb Z
+\to C(\mathbb T)\to0.
+\tag{16A.7}
+\]">\[
+0\to I_+\to E_+=C_0([0,\infty))\rtimes_{h_+}\mathbb Z
+\to C(\mathbb T)\to0.
+\tag{16A.7}
+\]</span>
+<p>The coefficient algebra is a cone: <span class="math" data-tex="\(x\mapsto e^{-x}\)">\(x\mapsto e^{-x}\)</span> identifies it with <span class="math" data-tex="\(C_0((0,1])\)">\(C_0((0,1])\)</span>. Extend a cone function by zero at zero; <span class="math" data-tex="\((H_sF)(y)=F(sy)\)">\((H_sF)(y)=F(sy)\)</span>, for <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>, contracts identity to zero, with point-norm continuity by uniform continuity on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Its two K-groups therefore vanish. The PV cycle makes both K-groups of <span class="math" data-tex="\(E_+\)">\(E_+\)</span> vanish. Exactness of (16A.7) now says that both boundary maps are isomorphisms. Thus the unit in <span class="math" data-tex="\(K_0(C(\mathbb T))\)">\(K_0(C(\mathbb T))\)</span> maps to a generator of <span class="math" data-tex="\(K_1(I_+)\)">\(K_1(I_+)\)</span>, and the coordinate unitary in <span class="math" data-tex="\(K_1(C(\mathbb T))\)">\(K_1(C(\mathbb T))\)</span> maps to a generator of <span class="math" data-tex="\(K_0(I_+)\)">\(K_0(I_+)\)</span>. Choose those images as the generators, avoiding any implicit orientation sign. The negative half-line has the same conclusion for <span class="math" data-tex="\(E_-\)">\(E_-\)</span>.</p>
+<p>Collapse <span class="math" data-tex="\(U_-\)">\(U_-\)</span> to one and restrict coefficients to <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. This gives a map from (16A.5) to (16A.7), identity on <span class="math" data-tex="\(I_+\)">\(I_+\)</span>, zero on <span class="math" data-tex="\(I_-\)">\(I_-\)</span>, and evaluation of the second torus coordinate at one on the quotient. It is well defined because it kills both families (16A.4). There is the corresponding map to <span class="math" data-tex="\(E_-\)">\(E_-\)</span>, evaluating the first coordinate at one. Naturality of the six-term cycle consequently determines the two components of each boundary map.</p>
+<p>Use the written circle-with-coefficients decomposition <a href="prerequisites/KT-OPK/KT-OPK-12.html">Topological K-theory of spaces, pairs and vector bundles, Theorem 5.1 and Corollary 5.2</a>. The quotient groups have bases</p>
+<span id="equation-16a-8"></span><span class="math math-display" data-tex="\[
+K_0(C(\mathbb T^2))=\mathbb Z[1]\oplus\mathbb Z\beta,
+\qquad K_1(C(\mathbb T^2))=\mathbb Z[u_+]\oplus\mathbb Z[u_-].
+\tag{16A.8}
+\]">\[
+K_0(C(\mathbb T^2))=\mathbb Z[1]\oplus\mathbb Z\beta,
+\qquad K_1(C(\mathbb T^2))=\mathbb Z[u_+]\oplus\mathbb Z[u_-].
+\tag{16A.8}
+\]</span>
+<p>Here <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is the reduced two-circle Bott class. Either coordinate evaluation kills <span class="math" data-tex="\(\beta\)">\(\beta\)</span>; it keeps its corresponding coordinate unitary and kills the other. In the generators just chosen, naturality gives</p>
+<span id="equation-16a-9"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_0(a[1]+b\beta)&amp;=(a,a),\\
+\partial_1(c[u_+]+d[u_-])&amp;=(c,d).
+\end{aligned}
+\tag{16A.9}
+\]">\[
+\begin{aligned}
+\partial_0(a[1]+b\beta)&amp;=(a,a),\\
+\partial_1(c[u_+]+d[u_-])&amp;=(c,d).
+\end{aligned}
+\tag{16A.9}
+\]</span>
+<p>An inverse choice of a geometric circle generator changes its row sign; neither kernel nor cokernel changes. The second map is an isomorphism. Thus exactness identifies <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> with <span class="math" data-tex="\(\ker\partial_0=\mathbb Z\beta\)">\(\ker\partial_0=\mathbb Z\beta\)</span>, and <span class="math" data-tex="\(K_1(A)\)">\(K_1(A)\)</span> with <span class="math" data-tex="\(\operatorname{coker}\partial_0=\mathbb Z^2/\mathbb Z(1,1)\)">\(\operatorname{coker}\partial_0=\mathbb Z^2/\mathbb Z(1,1)\)</span>. Both groups are <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Morita invariance and the proved equality of norms give</p>
+<span id="equation-16-39"></span><span class="math math-display" data-tex="\[
+K_0(\mathcal A_{\mathrm{Reeb}})\cong\mathbb Z,\qquad
+K_1(\mathcal A_{\mathrm{Reeb}})\cong\mathbb Z.
+\tag{16.39}
+\]">\[
+K_0(\mathcal A_{\mathrm{Reeb}})\cong\mathbb Z,\qquad
+K_1(\mathcal A_{\mathrm{Reeb}})\cong\mathbb Z.
+\tag{16.39}
+\]</span>
+<p>The extension approach is due to Torpe [1985]. The geometric facts agree with [Kordyukov, Examples 2.6 and 2.14]; [Macho-Stadler, §8, p. 646, item (3)] describes the related assembly comparison. The computation here supplies the germ model, its quotient relations, equality of norms and both boundary maps, and uses no assembly isomorphism.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1.</strong> Determine the holonomy groupoid and reduced algebra of the product foliation on <span class="math" data-tex="\(B\times P\)">\(B\times P\)</span>, first for connected <span class="math" data-tex="\(P\)">\(P\)</span>, then for arbitrary <span class="math" data-tex="\(P\)">\(P\)</span>. Identify the K-groups.</p>
+<p><strong>Solution.</strong> Leaves are <span class="math" data-tex="\(\{b\}\times P_j\)">\(\{b\}\times P_j\)</span>, where the <span class="math" data-tex="\(P_j\)">\(P_j\)</span> are the connected components of <span class="math" data-tex="\(P\)">\(P\)</span>. In a product chart the transverse coordinate is <span class="math" data-tex="\(b\)">\(b\)</span>, so every leafwise loop has trivial holonomy. Hence there is one arrow between two points precisely when they have the same <span class="math" data-tex="\(b\)">\(b\)</span> and belong to the same component. The topology is the product fibre-pair topology from the arrow charts.</p>
+<p>For connected <span class="math" data-tex="\(P\)">\(P\)</span>, Proposition 16.4 with the fixed product density identifies the algebra with <span class="math" data-tex="\(C_0(B)\otimes\mathcal K(L^2(P))\)">\(C_0(B)\otimes\mathcal K(L^2(P))\)</span>. Its K-groups are <span class="math" data-tex="\(K_i(C_0(B))\)">\(K_i(C_0(B))\)</span> by Morita invariance, even when <span class="math" data-tex="\(P\)">\(P\)</span> is a point.</p>
+<p>In general, a manifold's components are open and, by second countability, at most countably many. The groupoid is the disjoint union</p>
+<span id="equation-16-40"></span><span class="math math-display" data-tex="\[
+\coprod_j B\times(P_j\times P_j).
+\tag{16.40}
+\]">\[
+\coprod_j B\times(P_j\times P_j).
+\tag{16.40}
+\]</span>
+<p>A compact subset of this disjoint union meets only finitely many components, since the components form an open cover. The convolution core is therefore the algebraic direct sum of the component cores. Its reduced norm is the supremum of their norms: every source fibre lies in just one component. Completion gives the <span class="math" data-tex="\(c_0\)">\(c_0\)</span>-direct sum of their algebras. K-theory continuity on increasing finite sums gives <span class="math" data-tex="\(\bigoplus_j K_i(C_0(B))\)">\(\bigoplus_j K_i(C_0(B))\)</span>. This also proves directly why replacing all components by the single fibre-pair groupoid changes the answer.</p>
+<p><strong>Exercise 2.</strong> Prove the submersion Morita equivalence using its module, and explain precisely what is needed for an isomorphism with <span class="math" data-tex="\(C_0(B)\otimes\mathcal K\)">\(C_0(B)\otimes\mathcal K\)</span>.</p>
+<p><strong>Solution.</strong> Take the full module <span class="math" data-tex="\(E_p\)">\(E_p\)</span> of (16.14). Inner products are continuous and vanish at infinity by submersion coordinates and compact support. For every <span class="math" data-tex="\(b\)">\(b\)</span> a bump on <span class="math" data-tex="\(V_b\)">\(V_b\)</span> has positive squared integral, so its inner-product ideal is <span class="math" data-tex="\(C_0(B)\)">\(C_0(B)\)</span>. The completed left action of the fibre-pair groupoid has the rank kernels (16.15) acting as rank operators. Proposition 16.4 identifies its algebra with all of <span class="math" data-tex="\(\mathcal K(E_p)\)">\(\mathcal K(E_p)\)</span>, and not merely with a subalgebra of adjointable operators.</p>
+<p>Thus <span class="math" data-tex="\(E_p\)">\(E_p\)</span>, with its left inner product supplied by the rank kernels, is an imprimitivity module. Indeed the identity
+<span class="math" data-tex="\(\Theta_{\xi,\eta}\zeta=\xi\langle\eta,\zeta\rangle\)">\(\Theta_{\xi,\eta}\zeta=\xi\langle\eta,\zeta\rangle\)</span>
+is its compatibility identity, adjoints exchange <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>, and rank operators span the compact operators. It gives the Morita equivalence. A global Hilbert <span class="math" data-tex="\(C_0(B)\)">\(C_0(B)\)</span>-module unitary <span class="math" data-tex="\(E_p\cong C_0(B)\otimes\ell^2\)">\(E_p\cong C_0(B)\otimes\ell^2\)</span> carries each rank operator to the corresponding rank operator on the trivial module, and therefore yields the requested tensor isomorphism. Without that extra identification the proved conclusion remains <span class="math" data-tex="\(\mathcal K(E_p)\)">\(\mathcal K(E_p)\)</span> and Morita equivalence. If the trivialized fibre Hilbert space is finite dimensional, use its actual matrix algebra instead of <span class="math" data-tex="\(\mathcal K(\ell^2)\)">\(\mathcal K(\ell^2)\)</span>.</p>
+<p><strong>Exercise 3.</strong> Compute both K-groups for the horizontal foliation of the suspension of an irrational rotation, checking the transversal and the rotation convention.</p>
+<p><strong>Solution.</strong> Use (16.29) with <span class="math" data-tex="\(\varphi(x)=x+\theta\)">\(\varphi(x)=x+\theta\)</span>, <span class="math" data-tex="\(\theta\notin\mathbb Q\)">\(\theta\notin\mathbb Q\)</span>. Every leaf meets <span class="math" data-tex="\([0,\mathbb T]\)">\([0,\mathbb T]\)</span>: move horizontally from <span class="math" data-tex="\([t,x]\)">\([t,x]\)</span> by <span class="math" data-tex="\(-t\)">\(-t\)</span>. Its return arrows have integer times <span class="math" data-tex="\(n\)">\(n\)</span>, giving <span class="math" data-tex="\(x\mapsto x+n\theta\)">\(x\mapsto x+n\theta\)</span>. Since such a rotation has no fixed point for <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, none has identity germ. Proposition 16.6 and Theorem 16.2 give Morita equivalence with <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span>. The coefficient action sends <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(e^{-2\pi i\theta}v\)">\(e^{-2\pi i\theta}v\)</span>; covariance gives (16.36).</p>
+<p>The circle has <span class="math" data-tex="\(K_0=\mathbb Z[1]\)">\(K_0=\mathbb Z[1]\)</span> and <span class="math" data-tex="\(K_1=\mathbb Z[v]\)">\(K_1=\mathbb Z[v]\)</span>, and rotation induces the identity on both by its explicit rotation homotopy. Each PV sequence is <span class="math" data-tex="\(0\to\mathbb Z\to K_i(A_\theta)\to\mathbb Z\to0\)">\(0\to\mathbb Z\to K_i(A_\theta)\to\mathbb Z\to0\)</span>. Choose a lift of the quotient generator; its integer multiples split the quotient, proving <span class="math" data-tex="\(K_i(A_\theta)\cong\mathbb Z^2\)">\(K_i(A_\theta)\cong\mathbb Z^2\)</span>. Morita invariance gives this group for the foliation algebra separately at <span class="math" data-tex="\(i=0,1\)">\(i=0,1\)</span>.</p>
+<p><strong>Exercise 4.</strong> Give a locally free action whose transformation groupoid differs from the orbit foliation's holonomy groupoid. Compare their algebras and K-groups, and decide whether full versus reduced completion explains the difference.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> rotate <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> at unit speed. Its stabilizer at each point is the discrete subgroup <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, so the action is locally free. The foliation has a single connected leaf, whose holonomy is trivial: its transversal is a point, so every loop has the identity germ. Its holonomy groupoid is the pair groupoid and its algebra is <span class="math" data-tex="\(\mathcal K(L^2(\mathbb T))\)">\(\mathcal K(L^2(\mathbb T))\)</span>, with K-groups <span class="math" data-tex="\(\mathbb Z,0\)">\(\mathbb Z,0\)</span>. The action groupoid instead has isotropy <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. By Green's theorem its algebra is Morita equivalent to <span class="math" data-tex="\(C^*(\mathbb Z)=C(\mathbb T)\)">\(C^*(\mathbb Z)=C(\mathbb T)\)</span>, with K-groups <span class="math" data-tex="\(\mathbb Z,\mathbb Z\)">\(\mathbb Z,\mathbb Z\)</span>. These algebras cannot be Morita equivalent since their odd K-groups differ. The real group is amenable, so the action's two completions agree. The pair groupoid's completions also agree by Proposition 16.4 with base a point. The difference is therefore already in which arrows are retained.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The holonomy construction, its chart and covering theorem, and its intrinsic half-density kernels are recalled from <a href="prerequisites/NCG-FOLIATIONS/the-c-star-algebra-of-a-foliation.html"><em>The C*-algebra of a foliation</em>, Lemma 1.1, Lemma 2.1, Theorem 2.2, §3 and Definition 4.1</a>. They are also described in [Connes]. Lemma 16.1 proves the scalar Haar and regular-norm comparison needed to apply this course's equivalence theorem. The analytic theorem and its Hilbert-module corner prerequisites are proved or exactly imported in Lesson 15.</p>
+<p>Morita invariance uses the exact written programme lesson linked above. Ordinary Bott periodicity and the circle K-groups are the written operator K-theory prerequisites identified in Lesson 11. We use that lesson's proved Thom isomorphisms and the PV cycle from Lesson 15, whose canonical coefficient maps are proved in <a href="prerequisites/KT-OPK/KT-OPK-18.html"><em>The Pimsner–Voiculescu exact sequence</em></a>, Lemma 2.1 and equation (2.9). No stable-isomorphism theorem is needed to deduce a tensor-product description from a Morita equivalence.</p>
+<p>The Reeb example is proved by its complete transversal, the germ quotient of the two-contraction crossed product, and the exact one-sided boundary calculations. It uses the written torus generators in <a href="prerequisites/KT-OPK/KT-OPK-12.html"><em>Topological K-theory of spaces, pairs and vector bundles</em>, Theorem 5.1 and Corollary 5.2</a>, together with the natural six-term cycle. No assembly comparison enters this calculation.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p><a href="prerequisites/NCG-FOLIATIONS/the-c-star-algebra-of-a-foliation.html"><em>The C*-algebra of a foliation</em></a>, in <em>Foliations and their operator algebras</em>, §§1–4.</p>
+</li>
+<li>
+<p>A. Connes, <em>A survey of foliations and operator algebras</em>, Proceedings of Symposia in Pure Mathematics 38, Part I, 1982, pp. 521–628, §§5–6, 8–10. These sections give the reduced algebra, non-Hausdorff kernels, transversal modules and the geometric/index viewpoint.</p>
+</li>
+<li>
+<p>A. Connes, <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf"><em>Noncommutative Geometry</em></a>, 1994, Chapter II, §8, pp. 123–128.</p>
+</li>
+<li>
+<p>Y. Li, <a href="https://ncg-leiden.github.io/groupoid2022/groupoid_notes.pdf"><em>Groupoid C*-algebras</em></a>, version 7 February 2024, §5.1.1, p. 23. For the Kronecker example, the precise equivalence and integer returns are proved in Lesson 15 and used here.</p>
+</li>
+<li>
+<p>B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, 1998, Exercise 10.11.6 and its remark, pp. 87–88, for crossed products and the foliation application. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's second edition</a>.</p>
+</li>
+<li>
+<p>Y. A. Kordyukov, <a href="https://arxiv.org/pdf/math/0504095"><em>Noncommutative geometry of foliations</em></a>, arXiv:math/0504095v2, 2006, Examples 2.6 and 2.14, pp. 5–6 and 10.</p>
+</li>
+<li>
+<p>M. Macho-Stadler, <a href="https://www.ehu.eus/~mtwmastm/JMS.pdf"><em>Foliations, groupoids and Baum–Connes conjecture</em></a>, Journal of Mathematical Sciences 113, 2003, pp. 637–646, §8, p. 646. It records the classifying and Reeb assembly comparison for context; the calculation here uses the explicit extension.</p>
+</li>
+<li>
+<p>A. M. Torpe, <a href="https://doi.org/10.1016/0022-1236(85)90038-2"><em>K-theory for the leaf space of foliations by Reeb components</em></a>, Journal of Functional Analysis 61, 1985, pp. 15–71. Original source for the Reeb extension calculation; the model and both boundary maps are proved here.</p>
+</li>
+<li>
+<p>J. Rosenberg, <em>Examples and applications of noncommutative geometry and K-theory</em>, in <em>Topics in Noncommutative Geometry</em>, 2012, §§1.1–1.3 and §2.5, pp. 94–99 and 108; exact general K-theory prerequisites as in Lessons 11 and 15. <a href="https://www.claymath.org/wp-content/uploads/2022/03/cmip016c.pdf">Electronic volume</a>.</p>
+</li>
+<li>
+<p><a href="prerequisites/KT-OPK/KT-OPK-12.html"><em>Topological K-theory of spaces, pairs and vector bundles</em></a>, Theorem 5.1 and Corollary 5.2, including the two-torus generators and their coordinate evaluations.</p>
+</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="pager-prev" rel="prev" href="KT-CP-15.html">← Previous lesson</a> <a href="index.html">Course contents</a> <a class="pager-next" rel="next" href="KT-CP-17.html">Next lesson →</a></nav>
+<p class="source-link"><a href="src/KT-CP-16.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

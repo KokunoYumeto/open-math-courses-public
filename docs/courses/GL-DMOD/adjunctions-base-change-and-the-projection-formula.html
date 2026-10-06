@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adjunctions, base change and the projection formula · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/adjunctions-base-change-and-the-projection-formula.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 10</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="adjunctions-base-change-and-the-projection-formula">Adjunctions, base change and the projection formula</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Direct image integrates differential equations along a map. Extraordinary inverse image asks what remains along another map, including the normal directions and their cohomological degrees. Base change says these operations fit together in a cartesian square. The projection formula then follows by putting a graph opposite a diagonal.</p>
+<p>The field has characteristic zero. Varieties are smooth and separated; complexes have bounded, quasi-coherent cohomology over the structure sheaf. Write <span class="math" data-tex="$d_X=\dim X$">$d_X=\dim X$</span>, and retain the conventions
+<span class="math math-display" data-tex="\[
+f^!N=L f_{\mathcal O}^*N[d_X-d_Y],
+\qquad
+f_*M=R f_{\mathrm{sh},*}
+ \bigl(\mathcal D_{Y\leftarrow X}\otimes_{\mathcal D_X}^L M\bigr).
+\tag{0.1}
+\]">\[
+f^!N=L f_{\mathcal O}^*N[d_X-d_Y],
+\qquad
+f_*M=R f_{\mathrm{sh},*}
+ \bigl(\mathcal D_{Y\leftarrow X}\otimes_{\mathcal D_X}^L M\bigr).
+\tag{0.1}
+\]</span>
+The subscript <span class="math" data-tex="$\mathrm{sh}$">$\mathrm{sh}$</span> distinguishes sheaf direct image from differential-operator direct image. Ordinary derived pullback in (0.1) carries the chain-rule action established in Inverse images. The transfer conventions, composition isomorphisms and relative Spencer complex come from Direct images and the relative de Rham complex. We also use the equivalence proved in <a href="kashiwaras-equivalence-and-singular-spaces.html">Kashiwara's equivalence and D-modules on singular spaces</a>.</p>
+<p>The symbol <span class="math" data-tex="$f^*$">$f^*$</span> introduced in Section 5 denotes the duality-defined functor on holonomic complexes. It must be distinguished from <span class="math" data-tex="$L f_{\mathcal O}^*$">$L f_{\mathcal O}^*$</span>.</p>
+<h2 id="1-localization-and-the-supported-part">1. Localization and the supported part</h2>
+<p>Let <span class="math" data-tex="$i:Z\hookrightarrow X$">$i:Z\hookrightarrow X$</span> be a smooth closed subvariety of codimension <span class="math" data-tex="$c$">$c$</span>, with open complement <span class="math" data-tex="$j:U\hookrightarrow X$">$j:U\hookrightarrow X$</span>.</p>
+<p><strong>Lemma 1.1.</strong> There are natural identifications
+<span class="math math-display" data-tex="\[
+i^!j_*N=0,\qquad
+R\Gamma_Z M\simeq i_*i^!M,
+\tag{1.1}
+\]">\[
+i^!j_*N=0,\qquad
+R\Gamma_Z M\simeq i_*i^!M,
+\tag{1.1}
+\]</span>
+and a distinguished triangle
+<span class="math math-display" data-tex="\[
+i_*i^!M\longrightarrow M\longrightarrow j_*j^!M
+ \longrightarrow i_*i^!M[1].
+\tag{1.2}
+\]">\[
+i_*i^!M\longrightarrow M\longrightarrow j_*j^!M
+ \longrightarrow i_*i^!M[1].
+\tag{1.2}
+\]</span>
+Here <span class="math" data-tex="$R\Gamma_Z$">$R\Gamma_Z$</span> is algebraic local cohomology of the underlying structure-sheaf complex, with its induced differential-operator action.</p>
+<p><strong>Proof.</strong> Locally choose generators <span class="math" data-tex="$t_1,\ldots,t_c$">$t_1,\ldots,t_c$</span> of the ideal of <span class="math" data-tex="$Z$">$Z$</span>. The complement is covered by the principal opens <span class="math" data-tex="$X_{t_a}$">$X_{t_a}$</span>. Its direct image is computed by the finite alternating Čech complex of the localizations <span class="math" data-tex="$M_{t_{a_1}\cdots t_{a_s}}$">$M_{t_{a_1}\cdots t_{a_s}}$</span>. On each term at least one <span class="math" data-tex="$t_a$">$t_a$</span> is invertible. The Koszul complex computing <span class="math" data-tex="$L i_{\mathcal O}^*$">$L i_{\mathcal O}^*$</span> is then contractible: exterior multiplication or contraction in that direction, multiplied by <span class="math" data-tex="$t_a^{-1}$">$t_a^{-1}$</span>, gives the contracting homotopy. Consequently <span class="math" data-tex="$i^!j_*N=0$">$i^!j_*N=0$</span>, including higher sheaf direct images.</p>
+<p>The augmented localization complex defines the usual triangle
+<span class="math math-display" data-tex="\[
+R\Gamma_ZM\longrightarrow M\longrightarrow j_*j^!M.
+\tag{1.3}
+\]">\[
+R\Gamma_ZM\longrightarrow M\longrightarrow j_*j^!M.
+\tag{1.3}
+\]</span>
+Its cohomology is quasi-coherent and supported on <span class="math" data-tex="$Z$">$Z$</span>. These cohomology modules are locally annihilated by powers of its ideal. Thus Kashiwara's equivalence applies to them. On supported modules <span class="math" data-tex="$i^!$">$i^!$</span> is exact and concentrated in degree zero; the bounded cohomology spectral sequence extends the equivalence to the supported derived category. Apply <span class="math" data-tex="$i^!$">$i^!$</span> to (1.3). Its last term vanishes, so <span class="math" data-tex="$i^!R\Gamma_ZM\simeq i^!M$">$i^!R\Gamma_ZM\simeq i^!M$</span>. Recovering the supported object by <span class="math" data-tex="$i_*$">$i_*$</span> gives (1.1) and (1.2). All maps arise from the localization augmentation and the canonical Kashiwara evaluation, so the construction glues. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We will also need the adjunction behind the first arrow.</p>
+<p><strong>Lemma 1.2.</strong> For a smooth closed embedding,
+<span class="math math-display" data-tex="\[
+R\operatorname{Hom}_{\mathcal D_X}(i_*A,M)
+ \simeq
+R\operatorname{Hom}_{\mathcal D_Z}(A,i^!M),
+\tag{1.4}
+\]">\[
+R\operatorname{Hom}_{\mathcal D_X}(i_*A,M)
+ \simeq
+R\operatorname{Hom}_{\mathcal D_Z}(A,i^!M),
+\tag{1.4}
+\]</span>
+where these are global derived Hom complexes.</p>
+<p><strong>Proof.</strong> The backward transfer is a left <span class="math" data-tex="$i^{-1}\mathcal D_X$">$i^{-1}\mathcal D_X$</span>, right <span class="math" data-tex="$\mathcal D_Z$">$\mathcal D_Z$</span> bimodule <span class="math" data-tex="$B$">$B$</span>. Closed direct image is <span class="math" data-tex="$i_{\mathrm{sh},*}(B\otimes_{\mathcal D_Z}A)$">$i_{\mathrm{sh},*}(B\otimes_{\mathcal D_Z}A)$</span>, and <span class="math" data-tex="$B$">$B$</span> is flat on the right. Tensor–Hom adjunction therefore reduces (1.4) to identifying the right adjoint coefficient complex <span class="math" data-tex="$R\mathcal Hom_{i^{-1}\mathcal D_X}(B,i^{-1}M)$">$R\mathcal Hom_{i^{-1}\mathcal D_X}(B,i^{-1}M)$</span>.</p>
+<p>In normal coordinates, <span class="math" data-tex="$B$">$B$</span> is the quotient by the right multiplications <span class="math" data-tex="$t_a$">$t_a$</span>, with the density factor <span class="math" data-tex="$\omega_Z\otimes i^*\omega_X^{-1}$">$\omega_Z\otimes i^*\omega_X^{-1}$</span>. Its Koszul resolution is exact: the order-associated graded calculation is the regular sequence <span class="math" data-tex="$t_1,\ldots,t_c$">$t_1,\ldots,t_c$</span> in <span class="math" data-tex="$\mathcal O_X[\xi]$">$\mathcal O_X[\xi]$</span>. Applying Hom gives the cochain Koszul complex of the operators <span class="math" data-tex="$t_a$">$t_a$</span> on <span class="math" data-tex="$M$">$M$</span>, in degrees <span class="math" data-tex="$0,\ldots,c$">$0,\ldots,c$</span>. The density factor turns this into
+<span class="math math-display" data-tex="\[
+L i_{\mathcal O}^*M[-c]=i^!M.
+\tag{1.5}
+\]">\[
+L i_{\mathcal O}^*M[-c]=i^!M.
+\tag{1.5}
+\]</span>
+In degree zero on a supported module the intrinsic result is
+<span class="math" data-tex="$\det(\mathcal I/\mathcal I^2)\otimes\operatorname{ann}_{\mathcal I}M$">$\det(\mathcal I/\mathcal I^2)\otimes\operatorname{ann}_{\mathcal I}M$</span>,
+as in the preceding lesson. Thus this calculation retains the determinant line, rather than identifying the inverse globally with an untwisted kernel. Derived tensor–Hom adjunction, followed by sheaf cohomology, proves (1.4). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For example, on the line, <span class="math" data-tex="$i^!M$">$i^!M$</span> is the two-term complex <span class="math" data-tex="$M\xrightarrow{x}M$">$M\xrightarrow{x}M$</span> in degrees <span class="math" data-tex="$0,1$">$0,1$</span>. It follows that <span class="math" data-tex="$i^!\mathcal O_{\mathbb A^1}=k[-1]$">$i^!\mathcal O_{\mathbb A^1}=k[-1]$</span>, whereas <span class="math" data-tex="$i^!\delta_0=k$">$i^!\delta_0=k$</span>. Support and ordinary restriction have different effects on the degree.</p>
+<h2 id="2-base-change">2. Base change</h2>
+<p>Consider a cartesian square
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+X&#x27;&amp;\xrightarrow{g&#x27;}&amp;X\\
+{\scriptstyle f&#x27;}\downarrow&amp;&amp;\downarrow{\scriptstyle f}\\
+Y&#x27;&amp;\xrightarrow{g}&amp;Y .
+\end{array}
+\tag{2.1}
+\]">\[
+\begin{array}{ccc}
+X&#x27;&amp;\xrightarrow{g&#x27;}&amp;X\\
+{\scriptstyle f&#x27;}\downarrow&amp;&amp;\downarrow{\scriptstyle f}\\
+Y&#x27;&amp;\xrightarrow{g}&amp;Y .
+\end{array}
+\tag{2.1}
+\]</span>
+Assume that all four varieties are smooth. In particular, a singular fiber product has not been silently assigned the smooth transfer formula.</p>
+<p><strong>Theorem 2.1.</strong> There is a natural isomorphism
+<span class="math math-display" data-tex="\[
+g^!f_*M\simeq f&#x27;_*g&#x27;^!M
+\tag{2.2}
+\]">\[
+g^!f_*M\simeq f&#x27;_*g&#x27;^!M
+\tag{2.2}
+\]</span>
+on bounded quasi-coherent differential-operator complexes. Properness and transversality are not required.</p>
+<p><strong>Proof, product case.</strong> First let <span class="math" data-tex="$Y&#x27;=T\times Y$">$Y&#x27;=T\times Y$</span> and let <span class="math" data-tex="$g$">$g$</span> be the projection. Set <span class="math" data-tex="$r=\dim T$">$r=\dim T$</span>. Then <span class="math" data-tex="$X&#x27;=T\times X$">$X&#x27;=T\times X$</span>, and
+<span class="math math-display" data-tex="\[
+g^!N=(\mathcal O_T\boxtimes N)[r],
+\qquad
+g&#x27;^!M=(\mathcal O_T\boxtimes M)[r].
+\tag{2.3}
+\]">\[
+g^!N=(\mathcal O_T\boxtimes N)[r],
+\qquad
+g&#x27;^!M=(\mathcal O_T\boxtimes M)[r].
+\tag{2.3}
+\]</span>
+External products commute with direct image in this situation:
+<span class="math math-display" data-tex="\[
+(\mathrm{id}_T\times f)_*(A\boxtimes M)
+ \simeq A\boxtimes f_*M.
+\tag{2.4}
+\]">\[
+(\mathrm{id}_T\times f)_*(A\boxtimes M)
+ \simeq A\boxtimes f_*M.
+\tag{2.4}
+\]</span>
+To check this, factor <span class="math" data-tex="$f$">$f$</span> into its closed graph and a product projection. For the graph, the transfer and its normal derivative basis extend by external product. For the projection, use the relative Spencer complex. Its differentials act in the <span class="math" data-tex="$X$">$X$</span> directions and commute with the <span class="math" data-tex="$T$">$T$</span> action. On affine opens in <span class="math" data-tex="$T$">$T$</span> and <span class="math" data-tex="$Y$">$Y$</span>, a finite affine Čech cover in <span class="math" data-tex="$X$">$X$</span> computes sheaf direct image. Its complex is tensored over the field with the complex representing <span class="math" data-tex="$A$">$A$</span>. Tensor over a field is exact, and the two finite totalizations agree with their Koszul signs. This proves (2.4) for bounded complexes and proves compatibility on overlaps. Applying it to <span class="math" data-tex="$A=\mathcal O_T$">$A=\mathcal O_T$</span> proves (2.2), with the same shift <span class="math" data-tex="$[r]$">$[r]$</span> on both sides.</p>
+<p><strong>Proof, closed case.</strong> Now let <span class="math" data-tex="$g=i:Y&#x27;\hookrightarrow Y$">$g=i:Y&#x27;\hookrightarrow Y$</span> be closed; then <span class="math" data-tex="$g&#x27;=i&#x27;:X&#x27;\hookrightarrow X$">$g&#x27;=i&#x27;:X&#x27;\hookrightarrow X$</span> is closed. Write <span class="math" data-tex="$j:V=Y\setminus Y&#x27;\hookrightarrow Y$">$j:V=Y\setminus Y&#x27;\hookrightarrow Y$</span> and <span class="math" data-tex="$j&#x27;:V&#x27;=X\setminus X&#x27;\hookrightarrow X$">$j&#x27;:V&#x27;=X\setminus X&#x27;\hookrightarrow X$</span>. The restriction of <span class="math" data-tex="$f$">$f$</span> gives <span class="math" data-tex="$h:V&#x27;\to V$">$h:V&#x27;\to V$</span>, with <span class="math" data-tex="$f j&#x27;=j h$">$f j&#x27;=j h$</span>.</p>
+<p>Apply <span class="math" data-tex="$i^!f_*$">$i^!f_*$</span> to the localization triangle on <span class="math" data-tex="$X$">$X$</span>. By composition and Lemma 1.1,
+<span class="math math-display" data-tex="\[
+i^!f_*j&#x27;_*j&#x27;^!M
+ \simeq i^!j_*h_*j&#x27;^!M=0.
+\tag{2.5}
+\]">\[
+i^!f_*j&#x27;_*j&#x27;^!M
+ \simeq i^!j_*h_*j&#x27;^!M=0.
+\tag{2.5}
+\]</span>
+It follows that the natural map
+<span class="math" data-tex="$i^!f_*i&#x27;_*i&#x27;^!M\to i^!f_*M$">$i^!f_*i&#x27;_*i&#x27;^!M\to i^!f_*M$</span> is an isomorphism. On its source, composition and Kashiwara give
+<span class="math math-display" data-tex="\[
+i^!f_*i&#x27;_*i&#x27;^!M
+ \simeq i^!i_*f&#x27;_*i&#x27;^!M
+ \simeq f&#x27;_*i&#x27;^!M.
+\tag{2.6}
+\]">\[
+i^!f_*i&#x27;_*i&#x27;^!M
+ \simeq i^!i_*f&#x27;_*i&#x27;^!M
+ \simeq f&#x27;_*i&#x27;^!M.
+\tag{2.6}
+\]</span>
+Together these prove (2.2). Notice that the codimensions of <span class="math" data-tex="$i$">$i$</span> and <span class="math" data-tex="$i&#x27;$">$i&#x27;$</span> need not agree. Their shifts are already built into (1.5) and the Kashiwara counit.</p>
+<p><strong>Proof, arbitrary map.</strong> Factor <span class="math" data-tex="$g$">$g$</span> as its closed graph <span class="math" data-tex="$Y&#x27;\hookrightarrow Y&#x27;\times Y$">$Y&#x27;\hookrightarrow Y&#x27;\times Y$</span>, followed by projection to <span class="math" data-tex="$Y$">$Y$</span>. The intermediate pullback of <span class="math" data-tex="$X$">$X$</span> is <span class="math" data-tex="$Y&#x27;\times X$">$Y&#x27;\times X$</span>, which is smooth. The final pullback is the given smooth <span class="math" data-tex="$X&#x27;$">$X&#x27;$</span>. Apply the product and closed cases successively, then the composition isomorphisms for inverse and direct image.</p>
+<p>The maps in the closed case are the localization map and the Kashiwara counit; in the product case they are the tensor and Čech comparison maps. Refinement of a cover gives the same augmentation. For successive projections the tensor totalization is associative; for successive closed embeddings the Koszul evaluation and Kashiwara counits compose. These observations identify the constructed maps on successive squares and on overlaps. They establish naturality and the usual compatibility of (2.2) with composition. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is the algebraic base change theorem stated in Etingof, Proposition 3.1. Miličić's <em>Lectures on Algebraic Theory of D-Modules</em>, Chapter IV, §10, proves it for smooth varieties with smooth fiber product by the same reduction to a product projection and a closed embedding. The proof above includes the localization calculation needed for the closed case.</p>
+<p><strong>A nontransverse check.</strong> Take <span class="math" data-tex="$f=i:\mathrm{pt}\hookrightarrow\mathbb A^1$">$f=i:\mathrm{pt}\hookrightarrow\mathbb A^1$</span> and <span class="math" data-tex="$g=i$">$g=i$</span> at the same point. The fiber product is a point and both upper maps are identities. Formula (2.2) becomes <span class="math" data-tex="$i^!i_*k=k$">$i^!i_*k=k$</span>. The delta module has all normal derivatives; the operator <span class="math" data-tex="$x$">$x$</span> is surjective on it with kernel <span class="math" data-tex="$k\delta$">$k\delta$</span>. Its Koszul complex has only degree-zero cohomology after the shift in <span class="math" data-tex="$i^!$">$i^!$</span>. Replacing <span class="math" data-tex="$i^!$">$i^!$</span> by an unshifted structure-sheaf fiber would give the wrong degree.</p>
+<p><strong>A family check.</strong> For <span class="math" data-tex="$p:\mathbb A^1_x\times\mathbb A^1_t\to\mathbb A^1_t$">$p:\mathbb A^1_x\times\mathbb A^1_t\to\mathbb A^1_t$</span>,
+<span class="math" data-tex="$p_*\mathcal O=\mathcal O_{\mathbb A^1_t}[1]$">$p_*\mathcal O=\mathcal O_{\mathbb A^1_t}[1]$</span>. Pulling back extraordinarily along <span class="math" data-tex="$i:\mathrm{pt}\hookrightarrow\mathbb A^1_t$">$i:\mathrm{pt}\hookrightarrow\mathbb A^1_t$</span> gives <span class="math" data-tex="$k$">$k$</span>. On the other side, <span class="math" data-tex="$i&#x27;^!\mathcal O=\mathcal O_{\mathbb A^1_x}[-1]$">$i&#x27;^!\mathcal O=\mathcal O_{\mathbb A^1_x}[-1]$</span>, and its direct image to a point is again <span class="math" data-tex="$k$">$k$</span>. These two canceled shifts are part of base change.</p>
+<h2 id="3-the-projection-formula-and-its-shift">3. The projection formula and its shift</h2>
+<p>Define
+<span class="math math-display" data-tex="\[
+M\otimes^!N=\Delta_X^!(M\boxtimes N).
+\tag{3.1}
+\]">\[
+M\otimes^!N=\Delta_X^!(M\boxtimes N).
+\tag{3.1}
+\]</span>
+The derived diagonal Koszul calculation gives
+<span class="math math-display" data-tex="\[
+M\otimes^!N
+ \simeq (M\otimes_{\mathcal O_X}^L N)[-d_X].
+\tag{3.2}
+\]">\[
+M\otimes^!N
+ \simeq (M\otimes_{\mathcal O_X}^L N)[-d_X].
+\tag{3.2}
+\]</span>
+Indeed, on an affine chart the diagonal is resolved by the differences of the two coordinate systems. Tensoring that resolution with the external product is the usual resolution computing the derived tensor product over the coordinate ring. The diagonal has codimension <span class="math" data-tex="$d_X$">$d_X$</span>, accounting for <span class="math" data-tex="$[-d_X]$">$[-d_X]$</span>. Its tangent action is the Leibniz action. This description is intrinsic and glues.</p>
+<p><strong>Theorem 3.1.</strong> For <span class="math" data-tex="$M$">$M$</span> on <span class="math" data-tex="$X$">$X$</span> and <span class="math" data-tex="$N$">$N$</span> on <span class="math" data-tex="$Y$">$Y$</span>,
+<span class="math math-display" data-tex="\[
+f_*(M\otimes^!f^!N)
+ \simeq f_*M\otimes^!N.
+\tag{3.3}
+\]">\[
+f_*(M\otimes^!f^!N)
+ \simeq f_*M\otimes^!N.
+\tag{3.3}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="$h=f\times\mathrm{id}_Y:X\times Y\to Y\times Y$">$h=f\times\mathrm{id}_Y:X\times Y\to Y\times Y$</span>. The pullback of the diagonal <span class="math" data-tex="$\Delta_Y$">$\Delta_Y$</span> along <span class="math" data-tex="$h$">$h$</span> is the graph <span class="math" data-tex="$\gamma_f:X\to X\times Y$">$\gamma_f:X\to X\times Y$</span>. Base change and (2.4) identify
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_*\gamma_f^!(M\boxtimes N)
+&amp;\simeq \Delta_Y^!h_*(M\boxtimes N)\\
+&amp;\simeq \Delta_Y^!(f_*M\boxtimes N).
+\end{aligned}
+\tag{3.4}
+\]">\[
+\begin{aligned}
+f_*\gamma_f^!(M\boxtimes N)
+&amp;\simeq \Delta_Y^!h_*(M\boxtimes N)\\
+&amp;\simeq \Delta_Y^!(f_*M\boxtimes N).
+\end{aligned}
+\tag{3.4}
+\]</span>
+The graph has codimension <span class="math" data-tex="$d_Y$">$d_Y$</span>, so its derived inverse image is
+<span class="math math-display" data-tex="\[
+\gamma_f^!(M\boxtimes N)
+ \simeq(M\otimes_{\mathcal O_X}^L Lf_{\mathcal O}^*N)[-d_Y]
+ \simeq M\otimes^!f^!N.
+\tag{3.5}
+\]">\[
+\gamma_f^!(M\boxtimes N)
+ \simeq(M\otimes_{\mathcal O_X}^L Lf_{\mathcal O}^*N)[-d_Y]
+ \simeq M\otimes^!f^!N.
+\tag{3.5}
+\]</span>
+The last equality uses <span class="math" data-tex="$[d_X-d_Y]$">$[d_X-d_Y]$</span> from <span class="math" data-tex="$f^!$">$f^!$</span> and <span class="math" data-tex="$[-d_X]$">$[-d_X]$</span> from <span class="math" data-tex="$\otimes^!$">$\otimes^!$</span>. Substitution gives (3.3). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Equivalently, canceling <span class="math" data-tex="$[-d_Y]$">$[-d_Y]$</span> on both sides gives
+<span class="math math-display" data-tex="\[
+f_*(M\otimes_{\mathcal O_X}^L Lf_{\mathcal O}^*N)
+ \simeq f_*M\otimes_{\mathcal O_Y}^L N.
+\tag{3.6}
+\]">\[
+f_*(M\otimes_{\mathcal O_X}^L Lf_{\mathcal O}^*N)
+ \simeq f_*M\otimes_{\mathcal O_Y}^L N.
+\tag{3.6}
+\]</span>
+The complexes remain derived unless flatness is known. In particular, a flat bundle <span class="math" data-tex="$N$">$N$</span> permits ordinary tensor product. The unit for <span class="math" data-tex="$\otimes^!$">$\otimes^!$</span> is <span class="math" data-tex="$\mathcal O_X[d_X]$">$\mathcal O_X[d_X]$</span>. Using <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span> as the unit would lose a shift at every tensor operation.</p>
+<h2 id="4-proper-duality-the-two-explicit-calculations">4. Proper duality: the two explicit calculations</h2>
+<p>Recall the holonomic dual from Holonomic D-modules and duality:
+<span class="math math-display" data-tex="\[
+\mathbb D_XM=
+\omega_X^{-1}\otimes_{\mathcal O_X}
+ R\mathcal Hom_{\mathcal D_X}(M,\mathcal D_X)[d_X].
+\tag{4.1}
+\]">\[
+\mathbb D_XM=
+\omega_X^{-1}\otimes_{\mathcal O_X}
+ R\mathcal Hom_{\mathcal D_X}(M,\mathcal D_X)[d_X].
+\tag{4.1}
+\]</span>
+The Hom is initially a right module. The density line in (4.1) changes sides.</p>
+<p>The general proper-duality theorem says
+<span class="math math-display" data-tex="\[
+f_*\mathbb D_XM\simeq\mathbb D_Yf_*M
+\tag{4.2}
+\]">\[
+f_*\mathbb D_XM\simeq\mathbb D_Yf_*M
+\tag{4.2}
+\]</span>
+for a proper map and a bounded complex with coherent differential-operator cohomology. Etingof's notes state it in this generality, in their appendix on the six functors, and Bernstein's <em>Algebraic theory of D-modules</em> proves it for proper morphisms of quasi-projective varieties, in the section “The duality theorem for a proper morphism”. We now prove the closed-embedding and projective-product cases. A general proper morphism under our separated-variety convention need not admit a closed embedding into <span class="math" data-tex="$\mathbb P^n\times Y$">$\mathbb P^n\times Y$</span>; that factorization is projective.</p>
+<p><strong>Closed embeddings.</strong> Lemma 1.2 has the sheaf form
+<span class="math" data-tex="$R\mathcal Hom_{\mathcal D_X}(i_*A,M)
+=i_{\mathrm{sh},*}R\mathcal Hom_{\mathcal D_Z}(A,i^!M)$">$R\mathcal Hom_{\mathcal D_X}(i_*A,M)
+=i_{\mathrm{sh},*}R\mathcal Hom_{\mathcal D_Z}(A,i^!M)$</span>.
+The counit applied to <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span> gives the trace
+<span class="math" data-tex="$i_*\mathcal O_Z[d_Z]\to\mathcal O_X[d_X]$">$i_*\mathcal O_Z[d_Z]\to\mathcal O_X[d_X]$</span>.
+Apply direct image to an evaluation map, then this trace, to compare
+<span class="math" data-tex="$i_{\mathrm{sh},*}R\mathcal Hom_{\mathcal D_Z}(A,T_i)[d_Z]$">$i_{\mathrm{sh},*}R\mathcal Hom_{\mathcal D_Z}(A,T_i)[d_Z]$</span>
+with <span class="math" data-tex="$R\mathcal Hom_{\mathcal D_X}(i_*A,\mathcal D_X)[d_X]$">$R\mathcal Hom_{\mathcal D_X}(i_*A,\mathcal D_X)[d_X]$</span>.
+After the same side-changing line, these are <span class="math" data-tex="$i_*\mathbb D_ZA$">$i_*\mathbb D_ZA$</span> and
+<span class="math" data-tex="$\mathbb D_Xi_*A$">$\mathbb D_Xi_*A$</span>.</p>
+<p>For <span class="math" data-tex="$A=\mathcal D_Z$">$A=\mathcal D_Z$</span>, the first expression is
+<span class="math" data-tex="$i_{\mathrm{sh},*}T_i[d_Z]$">$i_{\mathrm{sh},*}T_i[d_Z]$</span>.
+The sheaf adjunction computes the second as
+<span class="math" data-tex="$i_{\mathrm{sh},*}i^!\mathcal D_X[d_X]$">$i_{\mathrm{sh},*}i^!\mathcal D_X[d_X]$</span>.
+Since <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span> is flat over <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>,
+<span class="math" data-tex="$i^!\mathcal D_X=T_i[-c]$">$i^!\mathcal D_X=T_i[-c]$</span>.
+Thus the second is also <span class="math" data-tex="$i_{\mathrm{sh},*}T_i[d_Z]$">$i_{\mathrm{sh},*}T_i[d_Z]$</span>.
+The counit comparison is the identity under adjunction. This gives an isomorphism on finite free source modules.</p>
+<p>Over an affine target the source is affine. Quasi-coherence and coherence give finite free source surjections and coherent successive kernels. The finite-amplitude dévissage detailed in (4.10) below extends the comparison from free modules to coherent modules: closed direct image is exact and preserves coherence, and both duals have a fixed local Ext bound. Bounded truncation triangles then handle complexes. The counit and its evaluation are intrinsic, so they glue, proving
+<span class="math math-display" data-tex="\[
+\mathbb D_X i_*M\simeq i_*\mathbb D_ZM.
+\tag{4.3}
+\]">\[
+\mathbb D_X i_*M\simeq i_*\mathbb D_ZM.
+\tag{4.3}
+\]</span>
+The calculation also explains why a delta module at a point is self-dual.</p>
+<p>For the projective calculation we give the generation step as well as the trace step.</p>
+<p><strong>Lemma 4.1.</strong> If <span class="math" data-tex="$Y$">$Y$</span> is smooth affine, quasi-coherent <span class="math" data-tex="$\mathcal D_{\mathbb P^n\times Y}$">$\mathcal D_{\mathbb P^n\times Y}$</span>-modules have exact global sections and are generated by their global sections. A coherent such module therefore admits a surjection from a finite-rank free differential-operator module, and this can be repeated for its coherent kernels.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$V=\mathbb A^{n+1}\setminus\{0\}$">$V=\mathbb A^{n+1}\setminus\{0\}$</span>, and pull a module <span class="math" data-tex="$M$">$M$</span> back, without a dimension shift, along the scalar torsor
+<span class="math" data-tex="$q:V\times Y\to\mathbb P^n\times Y$">$q:V\times Y\to\mathbb P^n\times Y$</span>.
+The pullback has its natural scalar equivariance. The Euler field
+<span class="math" data-tex="$\theta=\sum z_a\partial_{z_a}$">$\theta=\sum z_a\partial_{z_a}$</span> acts on weight-<span class="math" data-tex="$m$">$m$</span> sections by <span class="math" data-tex="$m$">$m$</span>.
+Since <span class="math" data-tex="$q$">$q$</span> is affine, descent identifies <span class="math" data-tex="$H^r(\mathbb P^n\times Y,M)$">$H^r(\mathbb P^n\times Y,M)$</span> with the weight-zero part of <span class="math" data-tex="$H^r(V\times Y,q_{\mathcal O}^*M)$">$H^r(V\times Y,q_{\mathcal O}^*M)$</span>. Taking a weight is exact for a graded vector space.</p>
+<p>Embed <span class="math" data-tex="$V\times Y$">$V\times Y$</span> openly in the affine <span class="math" data-tex="$\mathbb A^{n+1}\times Y$">$\mathbb A^{n+1}\times Y$</span>. All higher direct-image cohomology is supported on <span class="math" data-tex="$\{0\}\times Y$">$\{0\}\times Y$</span>, and is a quasi-coherent differential-operator module. Kashiwara's normal polynomial description says that the Euler eigenvalues of every such module are
+<span class="math" data-tex="$-(n+1),-(n+2),\ldots$">$-(n+1),-(n+2),\ldots$</span>, even if the tangential coefficient module is infinite. Affine quasi-coherent acyclicity now gives zero weight-zero cohomology in every positive degree. This proves exactness of global sections.</p>
+<p>For faithfulness, suppose <span class="math" data-tex="$M\ne0$">$M\ne0$</span>. Its pullback has a nonzero global section: it is quasi-coherent on the quasi-affine <span class="math" data-tex="$V\times Y$">$V\times Y$</span>, and its open direct image is quasi-coherent on an affine scheme. Take a nonzero homogeneous section <span class="math" data-tex="$v$">$v$</span> of weight <span class="math" data-tex="$m$">$m$</span>. If <span class="math" data-tex="$m&lt;0$">$m&lt;0$</span>, some <span class="math" data-tex="$z_av$">$z_av$</span> is nonzero; otherwise the section is supported at the deleted zero locus and must vanish. Repeat to reach weight zero. If <span class="math" data-tex="$m&gt;0$">$m&gt;0$</span>, the equality
+<span class="math" data-tex="$mv=\sum z_a\partial_{z_a}v$">$mv=\sum z_a\partial_{z_a}v$</span> implies some derivative is nonzero. Repeat to reach weight zero. Hence <span class="math" data-tex="$\Gamma(M)\ne0$">$\Gamma(M)\ne0$</span>.</p>
+<p>Let <span class="math" data-tex="$M_0$">$M_0$</span> be the differential-operator subsheaf generated by all global sections of <span class="math" data-tex="$M$">$M$</span>. Exactness gives <span class="math" data-tex="$\Gamma(M/M_0)=0$">$\Gamma(M/M_0)=0$</span>, so faithfulness gives <span class="math" data-tex="$M=M_0$">$M=M_0$</span>. Coherence and quasi-compactness select finitely many of these generators. Kernels of the resulting finite free surjections are coherent by Noetherianity. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 4.2.</strong> Formula (4.2) holds for <span class="math" data-tex="$p:\mathbb P^n\times Y\to Y$">$p:\mathbb P^n\times Y\to Y$</span> and every bounded coherent differential-operator complex.</p>
+<p><strong>Proof.</strong> Work on an affine open in <span class="math" data-tex="$Y$">$Y$</span> and write <span class="math" data-tex="$X=\mathbb P^n\times Y$">$X=\mathbb P^n\times Y$</span>. The relative Spencer complex identifies
+<span class="math" data-tex="$p_*\mathcal O_X[n]$">$p_*\mathcal O_X[n]$</span> with <span class="math" data-tex="$Rp_{\mathrm{sh},*}\Omega^\bullet_{X/Y}[2n]$">$Rp_{\mathrm{sh},*}\Omega^\bullet_{X/Y}[2n]$</span>.
+On the standard projective cover, define its trace by the coefficient
+<span class="math math-display" data-tex="\[
+\operatorname{res}
+\left(\frac{dz_1\wedge\cdots\wedge dz_n}{z_1\cdots z_n}\right)=1
+\tag{4.4}
+\]">\[
+\operatorname{res}
+\left(\frac{dz_1\wedge\cdots\wedge dz_n}{z_1\cdots z_n}\right)=1
+\tag{4.4}
+\]</span>
+in Čech degree <span class="math" data-tex="$n$">$n$</span> and form degree <span class="math" data-tex="$n$">$n$</span>. All other total degrees map to zero. This annihilates Čech boundaries. It also annihilates exterior derivatives: a Laurent derivative cannot produce an exponent <span class="math" data-tex="$-1$">$-1$</span> in its differentiated variable, since the only possible original exponent is zero and its derivative has coefficient zero. Thus this is a cochain trace
+<span class="math math-display" data-tex="\[
+p_*\mathcal O_X[n]\longrightarrow\mathcal O_Y.
+\tag{4.5}
+\]">\[
+p_*\mathcal O_X[n]\longrightarrow\mathcal O_Y.
+\tag{4.5}
+\]</span>
+The residue is the standard projective trace and is compatible with base coefficients and the horizontal differential-operator action.</p>
+<p>We record its two required cohomology calculations. For <span class="math" data-tex="$\mathcal O_{\mathbb P^n}(m)$">$\mathcal O_{\mathbb P^n}(m)$</span>, split the homogeneous Čech complex by Laurent monomial exponents <span class="math" data-tex="$e_0,\ldots,e_n$">$e_0,\ldots,e_n$</span> of sum <span class="math" data-tex="$m$">$m$</span>. A monomial occurs exactly on intersections whose index set contains every index with negative exponent. If there are some but not all negative exponents, inserting an index with nonnegative exponent contracts that subcomplex. If none are negative, its only cohomology is in degree zero. If all are negative, its only term surviving cohomology is in degree <span class="math" data-tex="$n$">$n$</span>. Consequently
+<span class="math math-display" data-tex="\[
+R\Gamma(\mathbb P^n,\mathcal O)=k,\qquad
+R\Gamma(\mathbb P^n,\omega_{\mathbb P^n})=k[-n],
+\tag{4.6}
+\]">\[
+R\Gamma(\mathbb P^n,\mathcal O)=k,\qquad
+R\Gamma(\mathbb P^n,\omega_{\mathbb P^n})=k[-n],
+\tag{4.6}
+\]</span>
+with the latter generator and trace normalized by (4.4).</p>
+<p>Put <span class="math" data-tex="$T_p=\mathcal D_{X\to Y}$">$T_p=\mathcal D_{X\to Y}$</span>. A coherent differential-operator complex is locally perfect, so tensor–Hom evaluation rewrites the right module underlying <span class="math" data-tex="$p_*\mathbb D_XM$">$p_*\mathbb D_XM$</span> as
+<span class="math math-display" data-tex="\[
+F(M)=Rp_{\mathrm{sh},*}
+ R\mathcal Hom_{\mathcal D_X}(M,T_p)[d_X].
+\tag{4.7}
+\]">\[
+F(M)=Rp_{\mathrm{sh},*}
+ R\mathcal Hom_{\mathcal D_X}(M,T_p)[d_X].
+\tag{4.7}
+\]</span>
+The corresponding right module underlying <span class="math" data-tex="$\mathbb D_Yp_*M$">$\mathbb D_Yp_*M$</span> is
+<span class="math math-display" data-tex="\[
+G(M)=R\mathcal Hom_{\mathcal D_Y}(p_*M,\mathcal D_Y)[d_Y].
+\tag{4.8}
+\]">\[
+G(M)=R\mathcal Hom_{\mathcal D_Y}(p_*M,\mathcal D_Y)[d_Y].
+\tag{4.8}
+\]</span>
+Both expressions subsequently have the same side-changing factor <span class="math" data-tex="$\omega_Y^{-1}$">$\omega_Y^{-1}$</span>.</p>
+<p>Apply <span class="math" data-tex="$p_*$">$p_*$</span> to a Hom map <span class="math" data-tex="$M\to T_p$">$M\to T_p$</span>, then compose with the trace. More explicitly, transfer tensoring first gives a map between the transferred complexes; sheaf direct image gives the Hom comparison; finally (3.6) and (4.5) give
+<span class="math" data-tex="$p_*T_p[d_X]\to\mathcal D_Y[d_Y]$">$p_*T_p[d_X]\to\mathcal D_Y[d_Y]$</span>.
+This constructs a natural comparison <span class="math" data-tex="$F(M)\to G(M)$">$F(M)\to G(M)$</span>.</p>
+<p>For <span class="math" data-tex="$M=\mathcal D_X$">$M=\mathcal D_X$</span>, (4.6) computes both sides:
+<span class="math math-display" data-tex="\[
+F(\mathcal D_X)=\mathcal D_Y[d_Y+n],
+\qquad
+p_*\mathcal D_X=\mathcal D_Y[-n],
+\qquad
+G(\mathcal D_X)=\mathcal D_Y[d_Y+n].
+\tag{4.9}
+\]">\[
+F(\mathcal D_X)=\mathcal D_Y[d_Y+n],
+\qquad
+p_*\mathcal D_X=\mathcal D_Y[-n],
+\qquad
+G(\mathcal D_X)=\mathcal D_Y[d_Y+n].
+\tag{4.9}
+\]</span>
+Here the second formula follows immediately by tensoring the backward transfer with <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>: its fiber coefficient is <span class="math" data-tex="$\omega_{\mathbb P^n}$">$\omega_{\mathbb P^n}$</span>. The comparison evaluates a constant against the top Čech density and then applies (4.4). It is the identity with this normalization. Thus it is an isomorphism on every finite free module.</p>
+<p>To extend this calculation, Lemma 4.1 gives, for a coherent module <span class="math" data-tex="$M$">$M$</span>, exact sequences
+<span class="math" data-tex="$0\to K_1\to\mathcal D_X^{r_0}\to M\to0$">$0\to K_1\to\mathcal D_X^{r_0}\to M\to0$</span> and their iterates. Let <span class="math" data-tex="$C(M)$">$C(M)$</span> denote the comparison cone. Since the comparison is an isomorphism on the free middle term, the contravariant exact triangles give
+<span class="math math-display" data-tex="\[
+C(M)\simeq C(K_N)[-N]
+\tag{4.10}
+\]">\[
+C(M)\simeq C(K_N)[-N]
+\tag{4.10}
+\]</span>
+after <span class="math" data-tex="$N$">$N$</span> steps. There is a bound on the cohomological degrees of all these cones, independent of the coherent input module. For (4.7), use the local differential-operator homological-dimension bound <span class="math" data-tex="$2d_X$">$2d_X$</span>, the shift <span class="math" data-tex="$[d_X]$">$[d_X]$</span>, and finite sheaf cohomological dimension. For (4.8), the relative Spencer–Čech complex gives <span class="math" data-tex="$p_*K_N$">$p_*K_N$</span> degrees between <span class="math" data-tex="$-n$">$-n$</span> and <span class="math" data-tex="$n$">$n$</span>; proper coherence and the analogous bound <span class="math" data-tex="$2d_Y$">$2d_Y$</span> then bound its dual. Proper coherence used here is Schnell, Theorem 18.1.</p>
+<p>Choose a fixed sufficiently large bound <span class="math" data-tex="$B$">$B$</span> for these degrees. For any fixed <span class="math" data-tex="$a$">$a$</span>, taking <span class="math" data-tex="$N&gt;a+B$">$N&gt;a+B$</span> in (4.10) proves <span class="math" data-tex="$H^aC(M)=0$">$H^aC(M)=0$</span>. Thus the comparison is an isomorphism for modules. Bounded truncation triangles prove it for coherent complexes. This argument does not assume the existence of a globally bounded free resolution. Restoring the common side-changing line proves (4.2) for <span class="math" data-tex="$p$">$p$</span>. The residue trace is intrinsic, so the construction glues over <span class="math" data-tex="$Y$">$Y$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The two cases also prove (4.2) for projective morphisms between smooth varieties, by factoring such a morphism as a closed embedding followed by a projective-product projection and composing the two isomorphisms. The full nonprojective proper case remains the stated theorem.</p>
+<h2 id="5-adjunctions-on-holonomic-complexes">5. Adjunctions on holonomic complexes</h2>
+<p>Write <span class="math" data-tex="$D_h^b(X)$">$D_h^b(X)$</span> for bounded complexes with holonomic cohomology. To define the next functors we use the holonomicity-preservation theorem: <span class="math" data-tex="$f_*$">$f_*$</span> and <span class="math" data-tex="$f^!$">$f^!$</span> preserve these categories. Its exact locator is Schnell, Theorem 18.5; its proof belongs to the next lesson, <em>Preservation of holonomicity and minimal extensions</em>. Duality and its biduality isomorphism have already been established in the duality lesson. External products preserve holonomicity: the external good filtration has characteristic support equal to the product, whose dimension is the sum of the two holonomic dimensions.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+f_!=\mathbb D_Y f_*\mathbb D_X,
+\qquad
+f^*=\mathbb D_X f^!\mathbb D_Y.
+\tag{5.1}
+\]">\[
+f_!=\mathbb D_Y f_*\mathbb D_X,
+\qquad
+f^*=\mathbb D_X f^!\mathbb D_Y.
+\tag{5.1}
+\]</span></p>
+<p><strong>Theorem 5.1.</strong> On these categories,
+<span class="math math-display" data-tex="\[
+f_!\dashv f^!,\qquad f^*\dashv f_*.
+\tag{5.2}
+\]">\[
+f_!\dashv f^!,\qquad f^*\dashv f_*.
+\tag{5.2}
+\]</span>
+For a proper <span class="math" data-tex="$f$">$f$</span>, (4.2) identifies <span class="math" data-tex="$f_!=f_*$">$f_!=f_*$</span>, and hence <span class="math" data-tex="$f_*\dashv f^!$">$f_*\dashv f^!$</span>.</p>
+<p><strong>Proof.</strong> For a coherent <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>-complex <span class="math" data-tex="$A$">$A$</span> and any coefficient complex <span class="math" data-tex="$B$">$B$</span>, local finite projective resolutions give the evaluation identity
+<span class="math math-display" data-tex="\[
+R\mathcal Hom_{\mathcal D_X}(A,B)
+ \simeq (\omega_X\otimes\mathbb D_XA)
+       \otimes_{\mathcal D_X}^L B[-d_X].
+\tag{5.3}
+\]">\[
+R\mathcal Hom_{\mathcal D_X}(A,B)
+ \simeq (\omega_X\otimes\mathbb D_XA)
+       \otimes_{\mathcal D_X}^L B[-d_X].
+\tag{5.3}
+\]</span>
+Let <span class="math" data-tex="$T_f=\mathcal D_{X\to Y}$">$T_f=\mathcal D_{X\to Y}$</span>. Insert
+<span class="math" data-tex="$f^!N=T_f\otimes_{f^{-1}\mathcal D_Y}^L f^{-1}N[d_X-d_Y]$">$f^!N=T_f\otimes_{f^{-1}\mathcal D_Y}^L f^{-1}N[d_X-d_Y]$</span>
+in (5.3). Associativity gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Rf_{\mathrm{sh},*}R\mathcal Hom_{\mathcal D_X}(M,f^!N)
+&amp;\simeq
+ \left[f_*^r(\omega_X\otimes\mathbb D_XM)\right]
+          \otimes_{\mathcal D_Y}^L N[-d_Y]\\
+&amp;\simeq
+ (\omega_Y\otimes f_*\mathbb D_XM)
+          \otimes_{\mathcal D_Y}^L N[-d_Y]\\
+&amp;\simeq R\mathcal Hom_{\mathcal D_Y}(f_!M,N).
+\end{aligned}
+\tag{5.4}
+\]">\[
+\begin{aligned}
+Rf_{\mathrm{sh},*}R\mathcal Hom_{\mathcal D_X}(M,f^!N)
+&amp;\simeq
+ \left[f_*^r(\omega_X\otimes\mathbb D_XM)\right]
+          \otimes_{\mathcal D_Y}^L N[-d_Y]\\
+&amp;\simeq
+ (\omega_Y\otimes f_*\mathbb D_XM)
+          \otimes_{\mathcal D_Y}^L N[-d_Y]\\
+&amp;\simeq R\mathcal Hom_{\mathcal D_Y}(f_!M,N).
+\end{aligned}
+\tag{5.4}
+\]</span>
+The tensor–pushforward interchange in the first line is the transfer comparison proved in the composition lesson. Locally on the base it uses a finite affine Čech model and a bounded projective resolution over the differential-operator ring; projective summands and the finite totalizations preserve that comparison. Thus it applies to the complexes here. The second line is side-changing compatibility of direct image; the third is (5.3) and biduality.</p>
+<p>Taking global cohomology in degree zero gives <span class="math" data-tex="$f_!\dashv f^!$">$f_!\dashv f^!$</span>, including its natural unit and counit. Duality reverses morphisms and gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_X(f^*N,M)
+&amp;\simeq\operatorname{Hom}_X(\mathbb D_XM,f^!\mathbb D_YN)\\
+&amp;\simeq\operatorname{Hom}_Y(f_!\mathbb D_XM,\mathbb D_YN)\\
+&amp;\simeq\operatorname{Hom}_Y(N,f_*M).
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_X(f^*N,M)
+&amp;\simeq\operatorname{Hom}_X(\mathbb D_XM,f^!\mathbb D_YN)\\
+&amp;\simeq\operatorname{Hom}_Y(f_!\mathbb D_XM,\mathbb D_YN)\\
+&amp;\simeq\operatorname{Hom}_Y(N,f_*M).
+\end{aligned}
+\tag{5.5}
+\]</span>
+This is the second adjunction. For proper <span class="math" data-tex="$f$">$f$</span>, apply (4.2) to <span class="math" data-tex="$\mathbb D_XM$">$\mathbb D_XM$</span> in (5.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For an open embedding <span class="math" data-tex="$j$">$j$</span>, both <span class="math" data-tex="$j^*$">$j^*$</span> and <span class="math" data-tex="$j^!$">$j^!$</span> are restriction: duality commutes with restriction. Also <span class="math" data-tex="$j_*$">$j_*$</span> is derived sheaf direct image with its local differential-operator action. Ordinary sheaf restriction–direct-image adjunction, applied to modules and resolutions, gives
+<span class="math math-display" data-tex="\[
+j^*=j^!\dashv j_*.
+\tag{5.6}
+\]">\[
+j^*=j^!\dashv j_*.
+\tag{5.6}
+\]</span>
+This statement holds on quasi-coherent complexes before imposing holonomicity. Dualizing it gives <span class="math" data-tex="$j_!\dashv j^!$">$j_!\dashv j^!$</span> on holonomic complexes.</p>
+<p>The proper and open cases agree with the usual reduction by compactification. If a smooth completion <span class="math" data-tex="$\overline X$">$\overline X$</span> is chosen, the graph followed by
+<span class="math" data-tex="$X\times Y\hookrightarrow\overline X\times Y\to Y$">$X\times Y\hookrightarrow\overline X\times Y\to Y$</span>
+factors a morphism into a proper closed graph, an open embedding and a proper projection. Smooth completion is an algebraic-geometric input, not needed for the direct proof (5.4). Composing the known adjunctions in these cases reproduces (5.2).</p>
+<p><strong>Why properness matters.</strong> For <span class="math" data-tex="$p:\mathbb A^1\to\mathrm{pt}$">$p:\mathbb A^1\to\mathrm{pt}$</span>,
+<span class="math" data-tex="$p_*\mathcal O=k[1]$">$p_*\mathcal O=k[1]$</span>, <span class="math" data-tex="$p^!k=\mathcal O[1]$">$p^!k=\mathcal O[1]$</span>, and
+<span class="math" data-tex="$p_!\mathcal O=k[-1]$">$p_!\mathcal O=k[-1]$</span>. In particular,
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(p_*\mathcal O,k[1])=k,\qquad
+\operatorname{Hom}(\mathcal O,p^!k[1])
+ =\operatorname{Ext}^2_{\mathcal D_{\mathbb A^1}}
+        (\mathcal O,\mathcal O)=0.
+\tag{5.7}
+\]">\[
+\operatorname{Hom}(p_*\mathcal O,k[1])=k,\qquad
+\operatorname{Hom}(\mathcal O,p^!k[1])
+ =\operatorname{Ext}^2_{\mathcal D_{\mathbb A^1}}
+        (\mathcal O,\mathcal O)=0.
+\tag{5.7}
+\]</span>
+The last equality follows from the one-dimensional Spencer resolution and affine de Rham calculation. Thus <span class="math" data-tex="$p_*\dashv p^!$">$p_*\dashv p^!$</span> fails, although both adjunctions (5.2) hold.</p>
+<h2 id="6-boundary-extensions-and-the-six-operations">6. Boundary extensions and the six operations</h2>
+<p>Let <span class="math" data-tex="$j:\mathbb G_m\hookrightarrow\mathbb A^1$">$j:\mathbb G_m\hookrightarrow\mathbb A^1$</span>, and put
+<span class="math" data-tex="$A=k\langle x,\partial\rangle/(\partial x-x\partial-1)$">$A=k\langle x,\partial\rangle/(\partial x-x\partial-1)$</span>.
+The duality lesson computed
+<span class="math math-display" data-tex="\[
+L=j_*\mathcal O_{\mathbb G_m}
+ \simeq A/A(\partial x)=k[x,x^{-1}],
+\qquad
+J=j_!\mathcal O_{\mathbb G_m}\simeq A/A(x\partial).
+\tag{6.1}
+\]">\[
+L=j_*\mathcal O_{\mathbb G_m}
+ \simeq A/A(\partial x)=k[x,x^{-1}],
+\qquad
+J=j_!\mathcal O_{\mathbb G_m}\simeq A/A(x\partial).
+\tag{6.1}
+\]</span>
+Indeed, a generator <span class="math" data-tex="$x^{-1}$">$x^{-1}$</span> of <span class="math" data-tex="$L$">$L$</span> satisfies <span class="math" data-tex="$(\partial x)x^{-1}=0$">$(\partial x)x^{-1}=0$</span>.
+The formal adjoint of <span class="math" data-tex="$\partial x$">$\partial x$</span> is <span class="math" data-tex="$-x\partial$">$-x\partial$</span>, and the dual of the cyclic resolution gives <span class="math" data-tex="$J$">$J$</span>.</p>
+<p>There are nonsplit exact sequences
+<span class="math math-display" data-tex="\[
+0\to\mathcal O_{\mathbb A^1}\to L\to\delta_0\to0,
+\qquad
+0\to\delta_0\to J\to\mathcal O_{\mathbb A^1}\to0.
+\tag{6.2}
+\]">\[
+0\to\mathcal O_{\mathbb A^1}\to L\to\delta_0\to0,
+\qquad
+0\to\delta_0\to J\to\mathcal O_{\mathbb A^1}\to0.
+\tag{6.2}
+\]</span>
+For the second, if <span class="math" data-tex="$v$">$v$</span> is the cyclic generator of <span class="math" data-tex="$J$">$J$</span>, then <span class="math" data-tex="$\partial v$">$\partial v$</span> generates the delta submodule since <span class="math" data-tex="$x\partial v=0$">$x\partial v=0$</span>. Quotienting it out leaves <span class="math" data-tex="$Av/A\partial v=\mathcal O$">$Av/A\partial v=\mathcal O$</span>. Nonsplitting and the nonzero normal derivative basis were proved in the duality lesson. This is a differential-operator extension, with its boundary derivatives.</p>
+<p>For <span class="math" data-tex="$p:\mathbb P^1\to\mathrm{pt}$">$p:\mathbb P^1\to\mathrm{pt}$</span> the earlier Čech computation gives
+<span class="math math-display" data-tex="\[
+p_*\mathcal O_{\mathbb P^1}\simeq k[1]\oplus k[-1].
+\tag{6.3}
+\]">\[
+p_*\mathcal O_{\mathbb P^1}\simeq k[1]\oplus k[-1].
+\tag{6.3}
+\]</span>
+The dual exchanges the two degrees. In the de Rham presentation, the degree-zero class <span class="math" data-tex="$1$">$1$</span> pairs with the top Čech class <span class="math" data-tex="$[dx/x]$">$[dx/x]$</span> by residue <span class="math" data-tex="$1$">$1$</span>. Each cohomology pairing is perfect. This proves self-duality, compatible with the trace in Theorem 4.2; the displayed splitting is not a preferred splitting of complexes.</p>
+<p>The principal operations can be arranged as follows. All rows restrict to holonomic complexes; the tensor row is derived.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Construction or convention</th>
+<th>Relation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="$f_*$">$f_*$</span></td>
+<td>Transfer tensor and sheaf direct image</td>
+<td>Right adjoint to <span class="math" data-tex="$f^*$">$f^*$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$f^!$">$f^!$</span></td>
+<td><span class="math" data-tex="$Lf_{\mathcal O}^*[d_X-d_Y]$">$Lf_{\mathcal O}^*[d_X-d_Y]$</span></td>
+<td>Right adjoint to <span class="math" data-tex="$f_!$">$f_!$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$f_!$">$f_!$</span></td>
+<td><span class="math" data-tex="$\mathbb D_Yf_*\mathbb D_X$">$\mathbb D_Yf_*\mathbb D_X$</span></td>
+<td>Equals <span class="math" data-tex="$f_*$">$f_*$</span> for proper <span class="math" data-tex="$f$">$f$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$f^*$">$f^*$</span></td>
+<td><span class="math" data-tex="$\mathbb D_Xf^!\mathbb D_Y$">$\mathbb D_Xf^!\mathbb D_Y$</span></td>
+<td>Restriction for an open embedding</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$\otimes^!$">$\otimes^!$</span></td>
+<td><span class="math" data-tex="$\Delta^!(-\boxtimes-)$">$\Delta^!(-\boxtimes-)$</span></td>
+<td>Unit <span class="math" data-tex="$\mathcal O_X[d_X]$">$\mathcal O_X[d_X]$</span>; formula (3.3)</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$\mathbb D_X$">$\mathbb D_X$</span></td>
+<td>(4.1)</td>
+<td>Contravariant biduality; reverses the adjunctions</td>
+</tr>
+</tbody>
+</table>
+<p>The phrase “six operations” also commonly lists ordinary tensor and internal Hom instead of external tensor and duality. The essential four map functors are the first four rows; specifying the tensor convention makes the remaining terminology unambiguous here.</p>
+<p>Over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, the regular-holonomic Riemann–Hilbert theorem identifies the covariant de Rham functor with constructible complexes and matches these four map functors and duality. We state this comparison, rather than using it to prove the algebraic results above: Bhatt–Blickle–Lyubeznik–Singh–Zhang, Section 2, Theorem 2.1, part (1), and Main Theorem C in the lecture “Riemann–Hilbert correspondence” of Bernstein's <em>Algebraic theory of D-modules</em>. A flat bundle <span class="math" data-tex="$E$">$E$</span> corresponds to its horizontal local system shifted by <span class="math" data-tex="$d_X$">$d_X$</span>. In particular <span class="math" data-tex="$\mathcal O_X[d_X]$">$\mathcal O_X[d_X]$</span> corresponds to the sheaf dualizing complex <span class="math" data-tex="$\mathbb C_X[2d_X]$">$\mathbb C_X[2d_X]$</span>. The operation <span class="math" data-tex="$\otimes^!$">$\otimes^!$</span> corresponds to <span class="math" data-tex="$\Delta^!$">$\Delta^!$</span> of an external product, with that dualizing complex as unit. This explains the connection with the extraordinary tensor convention for sheaves in <span class="unlinked">Six operations for sheaves on manifolds</span>.</p>
+<p>For a smooth map of relative dimension <span class="math" data-tex="$r$">$r$</span>, one furthermore has <span class="math" data-tex="$f^!=f^*[2r]$">$f^!=f^*[2r]$</span> on holonomic complexes. Locally the smooth pullback is a product followed by an étale map. The dual of the trivial relative connection is itself: its relative Spencer resolution is the regular Koszul sequence of the vertical derivative symbols, whose dual reverses the <span class="math" data-tex="$r$">$r$</span> terms and is canceled by the relative density and dimension shift. Thus duality commutes with unshifted smooth pullback; dualizing its shift <span class="math" data-tex="$[r]$">$[r]$</span> gives <span class="math" data-tex="$[-r]$">$[-r]$</span> and the claimed difference <span class="math" data-tex="$2r$">$2r$</span>. For a closed embedding of codimension <span class="math" data-tex="$c$">$c$</span>, in contrast,
+<span class="math" data-tex="$i^!\mathcal O_X=\mathcal O_Z[-c]$">$i^!\mathcal O_X=\mathcal O_Z[-c]$</span> and
+<span class="math" data-tex="$i^*\mathcal O_X=\mathcal O_Z[c]$">$i^*\mathcal O_X=\mathcal O_Z[c]$</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 10.1 (easy).</strong> Verify base change for <span class="math" data-tex="$p:\mathbb A^1\to\mathrm{pt}$">$p:\mathbb A^1\to\mathrm{pt}$</span> and the identity inclusion <span class="math" data-tex="$\mathrm{pt}\to\mathrm{pt}$">$\mathrm{pt}\to\mathrm{pt}$</span>, on both <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span> and <span class="math" data-tex="$\delta_0$">$\delta_0$</span>. Then check the family square at the end of Section 2.</p>
+<p><strong>Exercise 10.2 (easy).</strong> Prove restriction is left adjoint to <span class="math" data-tex="$j_*$">$j_*$</span> for an arbitrary open embedding. Explain why a nonaffine open embedding requires derived direct image.</p>
+<p><strong>Exercise 10.3 (medium).</strong> Compute <span class="math" data-tex="$j_!\mathcal O_{\mathbb G_m}$">$j_!\mathcal O_{\mathbb G_m}$</span>. For an arbitrary holonomic <span class="math" data-tex="$A$">$A$</span>-module <span class="math" data-tex="$M$">$M$</span>, identify both sides of
+<span class="math" data-tex="$\operatorname{Hom}(J,M)=\operatorname{Hom}(\mathcal O_{\mathbb G_m},j^!M)$">$\operatorname{Hom}(J,M)=\operatorname{Hom}(\mathcal O_{\mathbb G_m},j^!M)$</span>
+explicitly and give the inverse to restriction.</p>
+<p><strong>Exercise 10.4 (medium).</strong> Check the self-duality of <span class="math" data-tex="$p_*\mathcal O_{\mathbb P^1}$">$p_*\mathcal O_{\mathbb P^1}$</span> by a Čech calculation, including the trace.</p>
+<p><strong>Exercise 10.5 (hard).</strong> Prove proper duality for
+<span class="math" data-tex="$p:\mathbb P^1\times Y\to Y$">$p:\mathbb P^1\times Y\to Y$</span> on every bounded coherent differential-operator complex. Explain the reduction from <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span> to an arbitrary coherent module.</p>
+<p><strong>Exercise 10.6 (medium).</strong> Let <span class="math" data-tex="$i:\mathrm{pt}\hookrightarrow\mathbb A^1$">$i:\mathrm{pt}\hookrightarrow\mathbb A^1$</span> and <span class="math" data-tex="$\delta=i_*k$">$\delta=i_*k$</span>. Compute <span class="math" data-tex="$\delta\otimes^!\delta$">$\delta\otimes^!\delta$</span>. Check the projection formula for <span class="math" data-tex="$i$">$i$</span> with <span class="math" data-tex="$M=k$">$M=k$</span>, <span class="math" data-tex="$N=\delta$">$N=\delta$</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 10.1.</strong> The base-change map is the identity because both base maps are identities with dimension difference zero. The polynomial de Rham complex
+<span class="math" data-tex="$k[x]\xrightarrow{\partial}k[x]dx$">$k[x]\xrightarrow{\partial}k[x]dx$</span> has kernel <span class="math" data-tex="$k$">$k$</span> and zero cokernel, so <span class="math" data-tex="$p_*\mathcal O=k[1]$">$p_*\mathcal O=k[1]$</span> on both sides. For <span class="math" data-tex="$\delta=k[\partial]\delta_0$">$\delta=k[\partial]\delta_0$</span>, differentiation is multiplication by <span class="math" data-tex="$\partial$">$\partial$</span>, which is injective with cokernel <span class="math" data-tex="$k\delta_0dx$">$k\delta_0dx$</span>. Thus <span class="math" data-tex="$p_*\delta=k$">$p_*\delta=k$</span> on both sides. In the nontrivial family square, <span class="math" data-tex="$p_*\mathcal O=\mathcal O_t[1]$">$p_*\mathcal O=\mathcal O_t[1]$</span>; <span class="math" data-tex="$i^!\mathcal O_t=k[-1]$">$i^!\mathcal O_t=k[-1]$</span>; therefore the first side is <span class="math" data-tex="$k$">$k$</span>. The pulled-back object is <span class="math" data-tex="$\mathcal O_x[-1]$">$\mathcal O_x[-1]$</span>, whose pushforward is again <span class="math" data-tex="$k$">$k$</span>.</p>
+<p><strong>Solution 10.2.</strong> At the module level, a map <span class="math" data-tex="$M|_U\to N$">$M|_U\to N$</span> gives the sheaf map <span class="math" data-tex="$M\to j_{\mathrm{sh},*}N$">$M\to j_{\mathrm{sh},*}N$</span> by restriction on each open subset and the given map on its intersection with <span class="math" data-tex="$U$">$U$</span>. This is inverse to restricting a map on <span class="math" data-tex="$X$">$X$</span>. It respects differential operators because the action is local and restricts with their coefficients. Restriction is exact. Its right adjoint consequently preserves injectives, so applying this adjunction to injective resolutions proves the derived adjunction. The direct-image complex is quasi-coherent by a finite affine Čech calculation. A nonaffine open embedding can have nonzero higher direct images: for the punctured plane, <span class="math" data-tex="$R^1j_*\mathcal O$">$R^1j_*\mathcal O$</span> is the quotient
+<span class="math" data-tex="$k[x^{\pm1},y^{\pm1}]/(k[x^{\pm1},y]+k[x,y^{\pm1}])$">$k[x^{\pm1},y^{\pm1}]/(k[x^{\pm1},y]+k[x,y^{\pm1}])$</span>.
+It contains <span class="math" data-tex="$x^{-1}y^{-1}$">$x^{-1}y^{-1}$</span>. Keeping only degree-zero direct image would omit part of the right adjoint.</p>
+<p><strong>Solution 10.3.</strong> Since <span class="math" data-tex="$\mathbb D\mathcal O_{\mathbb G_m}=\mathcal O_{\mathbb G_m}$">$\mathbb D\mathcal O_{\mathbb G_m}=\mathcal O_{\mathbb G_m}$</span>, dualizing <span class="math" data-tex="$A/A(\partial x)$">$A/A(\partial x)$</span> gives <span class="math" data-tex="$J=A/A(x\partial)$">$J=A/A(x\partial)$</span> by the formal-adjoint calculation. If <span class="math" data-tex="$v$">$v$</span> is its cyclic generator, a homomorphism is specified by
+<span class="math math-display" data-tex="\[
+m=\phi(v)\in M,\qquad x\partial m=0.
+\tag{8.1}
+\]">\[
+m=\phi(v)\in M,\qquad x\partial m=0.
+\tag{8.1}
+\]</span>
+On the other side a homomorphism from the trivial connection is a horizontal vector in <span class="math" data-tex="$M_x$">$M_x$</span>:
+<span class="math math-display" data-tex="\[
+n\in M_x,\qquad\partial n=0.
+\tag{8.2}
+\]">\[
+n\in M_x,\qquad\partial n=0.
+\tag{8.2}
+\]</span>
+Restriction sends <span class="math" data-tex="$m$">$m$</span> to <span class="math" data-tex="$m/1$">$m/1$</span>. We construct its inverse.</p>
+<p>Write a horizontal <span class="math" data-tex="$n=a/x^s$">$n=a/x^s$</span> with <span class="math" data-tex="$s\ge0$">$s\ge0$</span>. Let <span class="math" data-tex="$T=\ker(M\to M_x)$">$T=\ker(M\to M_x)$</span>, the point-supported submodule, and <span class="math" data-tex="$\theta=x\partial$">$\theta=x\partial$</span>. The vector
+<span class="math" data-tex="$b=(\theta-s)a$">$b=(\theta-s)a$</span> lies in <span class="math" data-tex="$T$">$T$</span>. Kashiwara's polynomial normal form makes <span class="math" data-tex="$\theta$">$\theta$</span> diagonal on <span class="math" data-tex="$T$">$T$</span> with eigenvalues <span class="math" data-tex="$-1,-2,\ldots$">$-1,-2,\ldots$</span>; every individual vector is a finite sum of eigenvectors. Hence <span class="math" data-tex="$\theta-s$">$\theta-s$</span> has an inverse on <span class="math" data-tex="$T$">$T$</span>. Put
+<span class="math math-display" data-tex="\[
+a&#x27;=a-(\theta-s)^{-1}b,\qquad
+m=\frac{\partial^s a&#x27;}{s!}.
+\tag{8.3}
+\]">\[
+a&#x27;=a-(\theta-s)^{-1}b,\qquad
+m=\frac{\partial^s a&#x27;}{s!}.
+\tag{8.3}
+\]</span>
+Then <span class="math" data-tex="$\theta a&#x27;=sa&#x27;$">$\theta a&#x27;=sa&#x27;$</span>. Since <span class="math" data-tex="$[\theta,\partial]=-\partial$">$[\theta,\partial]=-\partial$</span>, (8.3) satisfies <span class="math" data-tex="$\theta m=0$">$\theta m=0$</span>. In the localization, <span class="math" data-tex="$a&#x27;=x^s n$">$a&#x27;=x^s n$</span> and <span class="math" data-tex="$\partial n=0$">$\partial n=0$</span>, so <span class="math" data-tex="$\partial^s a&#x27;/s!=n$">$\partial^s a&#x27;/s!=n$</span>. If a vector in (8.1) restricts to zero, it is in <span class="math" data-tex="$T$">$T$</span>, whose negative Euler spectrum has no zero eigenspace; it is therefore zero. This proves existence, uniqueness and independence of the chosen fraction. For <span class="math" data-tex="$M=\delta$">$M=\delta$</span> both Hom spaces vanish; for <span class="math" data-tex="$M=\mathcal O$">$M=\mathcal O$</span> both are <span class="math" data-tex="$k$">$k$</span>. The construction even works for arbitrary quasi-coherent <span class="math" data-tex="$A$">$A$</span>-modules.</p>
+<p><strong>Solution 10.4.</strong> Cover <span class="math" data-tex="$\mathbb P^1$">$\mathbb P^1$</span> by the <span class="math" data-tex="$x$">$x$</span> and <span class="math" data-tex="$x^{-1}$">$x^{-1}$</span> charts. For <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>, the Čech quotient of Laurent polynomials by polynomials in either coordinate is zero, and the intersection of the two polynomial subrings is <span class="math" data-tex="$k$">$k$</span>. For <span class="math" data-tex="$\Omega^1$">$\Omega^1$</span>, the quotient leaves exactly <span class="math" data-tex="$k[dx/x]$">$k[dx/x]$</span>; a regular global form would have to be both polynomial times <span class="math" data-tex="$dx$">$dx$</span> and a polynomial times <span class="math" data-tex="$-x^{-2}dx$">$-x^{-2}dx$</span>, so it is zero. The hypercohomology of <span class="math" data-tex="$\mathcal O\to\Omega^1$">$\mathcal O\to\Omega^1$</span> is therefore <span class="math" data-tex="$k$">$k$</span> in degrees <span class="math" data-tex="$0,2$">$0,2$</span>. After <span class="math" data-tex="$[1]$">$[1]$</span>, the direct image has degrees <span class="math" data-tex="$-1,1$">$-1,1$</span>. The trace takes the coefficient of <span class="math" data-tex="$x^{-1}dx$">$x^{-1}dx$</span> and kills both Čech coboundaries and derivatives, since <span class="math" data-tex="$\operatorname{res}d(x^m)=0$">$\operatorname{res}d(x^m)=0$</span> for every integer <span class="math" data-tex="$m$">$m$</span>. The classes <span class="math" data-tex="$1$">$1$</span> and <span class="math" data-tex="$[dx/x]$">$[dx/x]$</span> pair to <span class="math" data-tex="$1$">$1$</span>. This gives perfect pairings in opposite degrees and the desired duality isomorphism.</p>
+<p><strong>Solution 10.5.</strong> Work with <span class="math" data-tex="$Y$">$Y$</span> affine. The relative Spencer complex is
+<span class="math" data-tex="$[M\to\Omega^1_{X/Y}\otimes M][1]$">$[M\to\Omega^1_{X/Y}\otimes M][1]$</span>, and the two-chart Čech complex computes its direct image. Its trace is exactly the residue from Solution 10.4, tensored with the base; thus it is <span class="math" data-tex="$\mathcal D_Y$">$\mathcal D_Y$</span>-linear.</p>
+<p>Use the comparison (4.7)–(4.8). For <span class="math" data-tex="$M=\mathcal D_X$">$M=\mathcal D_X$</span>, its first side is
+<span class="math" data-tex="$Rp_{\mathrm{sh},*}T_p[d_Y+1]=\mathcal D_Y[d_Y+1]$">$Rp_{\mathrm{sh},*}T_p[d_Y+1]=\mathcal D_Y[d_Y+1]$</span>.
+Tensoring the backward transfer with <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span> gives
+<span class="math" data-tex="$p_*\mathcal D_X=Rp_{\mathrm{sh},*}(\omega_{\mathbb P^1}\boxtimes\mathcal D_Y)
+=\mathcal D_Y[-1]$">$p_*\mathcal D_X=Rp_{\mathrm{sh},*}(\omega_{\mathbb P^1}\boxtimes\mathcal D_Y)
+=\mathcal D_Y[-1]$</span>.
+Hence its second side is also <span class="math" data-tex="$\mathcal D_Y[d_Y+1]$">$\mathcal D_Y[d_Y+1]$</span>. The comparison sends the constant <span class="math" data-tex="$1$">$1$</span> to the functional taking <span class="math" data-tex="$[dx/x]$">$[dx/x]$</span> to <span class="math" data-tex="$1$">$1$</span>, so it is an isomorphism.</p>
+<p>Lemma 4.1, for the scalar torsor
+<span class="math" data-tex="$(\mathbb A^2\setminus0)\times Y\to\mathbb P^1\times Y$">$(\mathbb A^2\setminus0)\times Y\to\mathbb P^1\times Y$</span>,
+provides finite free surjections for a coherent module and each successive kernel. The comparison cones satisfy <span class="math" data-tex="$C(M)=C(K_N)[-N]$">$C(M)=C(K_N)[-N]$</span>. Their degrees have a bound independent of <span class="math" data-tex="$K_N$">$K_N$</span>: the direct-image Spencer–Čech degrees are <span class="math" data-tex="$-1,0,1$">$-1,0,1$</span>; differential-operator Ext has the fixed local dimension bound; and proper coherence permits the bounded dual on the base. Thus any fixed cohomology degree of <span class="math" data-tex="$C(M)$">$C(M)$</span> vanishes by taking <span class="math" data-tex="$N$">$N$</span> sufficiently large. Truncation triangles extend the result to bounded coherent complexes. Finally side-change by <span class="math" data-tex="$\omega_Y^{-1}$">$\omega_Y^{-1}$</span> on both sides. This proves <span class="math" data-tex="$\mathbb D_Yp_*M=p_*\mathbb D_XM$">$\mathbb D_Yp_*M=p_*\mathbb D_XM$</span> for the entire assigned class, and the intrinsic trace glues over affine opens in <span class="math" data-tex="$Y$">$Y$</span>.</p>
+<p><strong>Solution 10.6.</strong> Compute the structure-sheaf derived tensor using the resolution
+<span class="math" data-tex="$[\mathcal O\xrightarrow{x}\mathcal O]$">$[\mathcal O\xrightarrow{x}\mathcal O]$</span> of the residue field, or equivalently apply the point pullback and its normal Koszul model to <span class="math" data-tex="$\delta$">$\delta$</span>. Multiplication by <span class="math" data-tex="$x$">$x$</span> on <span class="math" data-tex="$\delta=k[\partial]\delta_0$">$\delta=k[\partial]\delta_0$</span> is <span class="math" data-tex="$-d/d\partial$">$-d/d\partial$</span>, surjective with kernel <span class="math" data-tex="$k\delta_0$">$k\delta_0$</span>. Hence
+<span class="math" data-tex="$L i_{\mathcal O}^*\delta=k[1]$">$L i_{\mathcal O}^*\delta=k[1]$</span> and <span class="math" data-tex="$i^!\delta=k$">$i^!\delta=k$</span>.
+The projection formula gives
+<span class="math math-display" data-tex="\[
+i_*(k\otimes^!i^!\delta)=i_*k=\delta.
+\tag{8.4}
+\]">\[
+i_*(k\otimes^!i^!\delta)=i_*k=\delta.
+\tag{8.4}
+\]</span>
+For a direct calculation of its other side, <span class="math" data-tex="$\delta$">$\delta$</span> is locally <span class="math" data-tex="$x$">$x$</span>-power torsion and its normal polynomial decomposition gives
+<span class="math" data-tex="$\operatorname{Tor}^{\mathcal O}_0(\delta,\delta)=0$">$\operatorname{Tor}^{\mathcal O}_0(\delta,\delta)=0$</span> and
+<span class="math" data-tex="$\operatorname{Tor}^{\mathcal O}_1(\delta,\delta)\simeq\delta$">$\operatorname{Tor}^{\mathcal O}_1(\delta,\delta)\simeq\delta$</span>.
+Indeed <span class="math" data-tex="$\delta$">$\delta$</span> as an <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-module is <span class="math" data-tex="$k[x,x^{-1}]/k[x]$">$k[x,x^{-1}]/k[x]$</span> (with the factorial normal-basis identification). Tensor its flat resolution
+<span class="math" data-tex="$[\mathcal O\to\mathcal O_x]$">$[\mathcal O\to\mathcal O_x]$</span> with <span class="math" data-tex="$\delta$">$\delta$</span>; the localization term is zero and the remaining term is <span class="math" data-tex="$\delta$">$\delta$</span> in degree <span class="math" data-tex="$-1$">$-1$</span>. Therefore
+<span class="math" data-tex="$\delta\otimes_{\mathcal O}^L\delta=\delta[1]$">$\delta\otimes_{\mathcal O}^L\delta=\delta[1]$</span>.
+The diagonal shift <span class="math" data-tex="$[-1]$">$[-1]$</span> gives
+<span class="math" data-tex="$\delta\otimes^!\delta=\delta$">$\delta\otimes^!\delta=\delta$</span>, agreeing with (8.4). This uses the induced differential-operator action, which is also fixed by the graph–diagonal proof of (3.3).</p>
+<h2 id="9-what-this-lesson-does-not-prove">9. What this lesson does not prove</h2>
+<p>The full proper-duality theorem for smooth separated varieties, beyond the closed and projective cases proved here, is stated in Etingof's notes; Bernstein's notes prove it for proper morphisms of quasi-projective varieties. The proper-coherence theorem used in Theorem 4.2 is Schnell, Theorem 18.1. Holonomicity preservation needed to close the categories in (5.1) is Schnell, Theorem 18.5; the next lesson supplies its proof. The optional reduction by smooth completion uses compactification and resolution of singularities as algebraic-geometric inputs. Finally, the regular-holonomic comparison with constructible sheaves is stated with the Section 6 locators; its correspondence theorem is treated later in the course.</p>
+<p>These inputs are distinct from the results proved here: localization, closed adjunction, base change, the projection formula with its shift, closed and projective-product duality, both holonomic adjunctions, and every displayed boundary and degree calculation.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>A. Beilinson and V. Drinfeld, <a href="https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf"><em>Quantization of Hitchin's integrable system and Hecke eigensheaves</em></a>, Sections 7.2.8–7.2.11: transfer and de Rham direct-image conventions. These sections provide the construction, rather than the base-change or proper-duality proofs.</li>
+<li>J. Bernstein, <a href="https://www.math.columbia.edu/~khovanov/resources/Bernstein-dmod.pdf"><em>Algebraic theory of D-modules</em></a>, lecture notes: base change, the duality theorem for a proper morphism together with the projection formula and the holonomic adjunctions, and the Riemann–Hilbert correspondence (Main Theorem C).</li>
+<li>D. Miličić, <a href="https://www.math.utah.edu/~milicic/Eprints/dmodules.pdf"><em>Lectures on Algebraic Theory of D-Modules</em></a>, Chapter IV, §10: base change for smooth varieties with smooth fiber product.</li>
+<li>P. Etingof, <a href="https://math.mit.edu/~etingof/dmodwien.pdf"><em>Introduction to algebraic D-modules</em></a>, Propositions 3.1, 3.3 and 3.5, pages 11–13, and the appendix on the formalism of six functors: base change, proper adjunction, localization and proper-duality statements.</li>
+<li>C. Schnell, <a href="https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf"><em>Algebraic D-modules</em></a>, Theorems 18.1 and 18.5: proper coherence and holonomicity preservation.</li>
+<li>B. Bhatt, M. Blickle, G. Lyubeznik, A. K. Singh and W. Zhang, <a href="https://arxiv.org/abs/2308.03155"><em>Applications of perverse sheaves in commutative algebra</em></a>, Section 2, Theorem 2.1, part (1): the regular-holonomic comparison with sheaf functors.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="kashiwaras-equivalence-and-singular-spaces.html">← Kashiwara&#x27;s equivalence and D-modules on singular spaces</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="preservation-of-holonomicity-and-minimal-extensions.html">Preservation of holonomicity and minimal extensions →</a></span></nav>
+<p class="small source-link"><a href="src/adjunctions-base-change-and-the-projection-formula.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

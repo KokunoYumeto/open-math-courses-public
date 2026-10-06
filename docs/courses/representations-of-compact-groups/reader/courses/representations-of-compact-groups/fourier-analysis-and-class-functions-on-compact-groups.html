@@ -1,0 +1,453 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fourier analysis and class functions on compact groups</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Representations of compact groups</a><a href="matrix-coefficients-and-the-peter-weyl-theorem.html">Previous lesson</a><a href="su-2-so-3-and-spherical-harmonics.html">Next lesson</a></nav></header><main id="main"><article class="math"><h1 id="fourier-analysis-and-class-functions-on-compact-groups">Fourier analysis and class functions on compact groups</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. No separate AI review of this revision is recorded. Public domain (CC0). Revised and self-checked on 3 October 2026 by GPT-6.1 Sol (OpenAI), Ultra effort.</em></p>
+<p>Suppose a signal space contains several copies of several irreducible representations. A symmetry-respecting filter should select a representation type without selecting a basis inside its multiplicity space. Characters provide exactly those filters. On the function space of the group, the same operators become convolution, and their eigenvalues become scalar or matrix-valued Fourier data.</p>
+<p>We begin with type selection and a concrete finite random walk. Then we package the complete coefficient expansion into Fourier matrices, distinguish conjugation-invariant data from arbitrary data, and study approximation by localized filters. Finally we ask a different reconstruction question: do all representations, together with their sum, tensor and dual operations, determine the group itself? The compact Tannaka theorem answers it with a full proof.</p>
+<p>We use the full compact Hausdorff decomposition from <a href="representations-of-compact-groups-unitarity-complete-reducibility-and-finite-dimension.html">the first lesson</a> and coefficient orthogonality and completeness from <a href="matrix-coefficients-and-the-peter-weyl-theorem.html">Peter–Weyl</a>. Haar measure has mass one, inner products are linear in the first variable, and all sums have their Hilbert meaning without countability assumptions.</p>
+<h2 id="selecting-a-type-without-selecting-a-basis"><span id="spectral-functionals-and-representation-projections"></span>Selecting a type without selecting a basis</h2>
+<p id="result-theorem-4-3"><strong>Theorem 4.3 (isotypic projections and character tests).</strong> For any continuous unitary representation <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on a Hilbert space,</p>
+<span class="math math-display" data-tex="\[
+P_\pi=d_\pi\int_G\overline{\chi_\pi(g)}\,\rho(g)\,dg
+\tag{4.4}
+\]">\[
+P_\pi=d_\pi\int_G\overline{\chi_\pi(g)}\,\rho(g)\,dg
+\tag{4.4}
+\]</span>
+<p>is the orthogonal projection onto its <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-isotypic component. The integral is strong, applied to each vector; no operator-norm continuity is required. Finite-dimensional characters determine representations up to equivalence, and a nonzero finite-dimensional representation is irreducible if and only if <span class="math" data-tex="\(\int_G|\chi_\rho|^2=1\)">\(\int_G|\chi_\rho|^2=1\)</span>.</p>
+<p><strong>Proof.</strong> On an irreducible summand <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, centrality of the integrand's scalar coefficient makes the integral commute with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, so Schur makes it <span class="math" data-tex="\(cI\)">\(cI\)</span>. Taking its trace gives</p>
+<span class="math math-display" data-tex="\[
+c\,d_\sigma
+=d_\pi\int_G\overline{\chi_\pi(g)}\chi_\sigma(g)\,dg
+=d_\pi\delta_{\pi\sigma}.
+\]">\[
+c\,d_\sigma
+=d_\pi\int_G\overline{\chi_\pi(g)}\chi_\sigma(g)\,dg
+=d_\pi\delta_{\pi\sigma}.
+\]</span>
+<p>Thus it is identity on a <span class="math" data-tex="\(\pi\)">\(\pi\)</span> summand and zero on every other irreducible. The strong integral defines a bounded operator, of norm at most <span class="math" data-tex="\(d_\pi\|\chi_\pi\|_1\)">\(d_\pi\|\chi_\pi\|_1\)</span>. Agreement on finite sums in the full Hilbert decomposition extends by density to the isotypic orthogonal projection.</p>
+<p>In finite dimension, write <span class="math" data-tex="\(\rho\simeq\bigoplus_\pi m_\pi\pi\)">\(\rho\simeq\bigoplus_\pi m_\pi\pi\)</span>. Then <span class="math" data-tex="\(\chi_\rho=\sum m_\pi\chi_\pi\)">\(\chi_\rho=\sum m_\pi\chi_\pi\)</span>, and orthogonality recovers <span class="math" data-tex="\(m_\pi=\langle\chi_\rho,\chi_\pi\rangle\)">\(m_\pi=\langle\chi_\rho,\chi_\pi\rangle\)</span>. This determines the representation. Moreover, <span class="math" data-tex="\(\|\chi_\rho\|_2^2=\sum m_\pi^2\)">\(\|\chi_\rho\|_2^2=\sum m_\pi^2\)</span>, which equals one exactly when a single multiplicity is one and all others are zero. Finite-dimensional continuous representations can first be unitarized by the first lesson. Orthogonality of (4.4) refers to that invariant inner product. ∎</p>
+<h2 id="a-finite-filter-that-removes-a-whole-representation">A finite filter that removes a whole representation</h2>
+<p>In <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, normalize counting measure to give each element mass <span class="math" data-tex="\(1/6\)">\(1/6\)</span>. Let <span class="math" data-tex="\(p\)">\(p\)</span> be <span class="math" data-tex="\(2\)">\(2\)</span> on the three transpositions and zero elsewhere. Thus <span class="math" data-tex="\(\int p=1\)">\(\int p=1\)</span>: the operation <span class="math" data-tex="\((p*f)(x)=\frac13\sum_{s\text{ transposition}}f(s^{-1}x)\)">\((p*f)(x)=\frac13\sum_{s\text{ transposition}}f(s^{-1}x)\)</span> averages over one transposition step. The trivial, sign and standard characters have class values <span class="math" data-tex="\((1,1,1),(1,-1,1),(2,0,-1)\)">\((1,1,1),(1,-1,1),(2,0,-1)\)</span> on identity, transpositions and three-cycles, respectively, as constructed in the preceding lesson. Hence
+<span class="math math-display" data-tex="\[
+p=\chi_{\mathrm{triv}}-\chi_{\mathrm{sgn}}.
+\]">\[
+p=\chi_{\mathrm{triv}}-\chi_{\mathrm{sgn}}.
+\]</span>
+The two scalar representations respond by <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>, whereas the two-dimensional standard representation responds by zero. To check the last assertion directly, <span class="math" data-tex="\(\frac13\sum_{s\text{ transposition}}\pi(s)\)">\(\frac13\sum_{s\text{ transposition}}\pi(s)\)</span> commutes with the standard representation because the set of transpositions is a conjugacy class. Schur makes it scalar; its trace is the class character value zero, so the scalar is zero. A single averaging step erases that entire type, not just one coordinate in it. Two steps have scalar responses <span class="math" data-tex="\(1,1,0\)">\(1,1,0\)</span>. The sign change records alternation between even and odd permutations.</p>
+<p>This example suggests three separate questions: how to select a type, how to record the response within a type of dimension greater than one, and how much information a central filter can retain. The character projectors answer the first; Fourier matrices answer the second. A central filter always gives a scalar response, which explains the third.</p>
+<h2 id="matrix-valued-frequencies">Matrix-valued frequencies</h2>
+<p>For <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span> and an irreducible unitary <span class="math" data-tex="\(\pi\)">\(\pi\)</span> on <span class="math" data-tex="\(V_\pi\)">\(V_\pi\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\widehat f(\pi)=\int_G f(g)\pi(g)^*\,dg.
+\tag{1.1}
+\]">\[
+\widehat f(\pi)=\int_G f(g)\pi(g)^*\,dg.
+\tag{1.1}
+\]</span>
+<p>This finite-dimensional integral satisfies <span class="math" data-tex="\(\|\widehat f(\pi)\|_{\mathrm{op}}\leq\|f\|_1\)">\(\|\widehat f(\pi)\|_{\mathrm{op}}\leq\|f\|_1\)</span>. Replacing <span class="math" data-tex="\(\pi\)">\(\pi\)</span> by <span class="math" data-tex="\(U\pi U^{-1}\)">\(U\pi U^{-1}\)</span> replaces its Fourier matrix by <span class="math" data-tex="\(U\widehat f(\pi)U^{-1}\)">\(U\widehat f(\pi)U^{-1}\)</span>. Thus the construction does not depend on a chosen basis. The convolution convention is</p>
+<span class="math math-display" data-tex="\[
+(f*h)(x)=\int_G f(y)h(y^{-1}x)\,dy.
+\tag{1.2}
+\]">\[
+(f*h)(x)=\int_G f(y)h(y^{-1}x)\,dy.
+\tag{1.2}
+\]</span>
+<p>Fubini and the substitution <span class="math" data-tex="\(x=yz\)">\(x=yz\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat{f*h}(\pi)
+&amp;=\int_{G\times G}f(y)h(z)\pi(yz)^*\,dy\,dz\\
+&amp;=\widehat h(\pi)\widehat f(\pi).
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+\widehat{f*h}(\pi)
+&amp;=\int_{G\times G}f(y)h(z)\pi(yz)^*\,dy\,dz\\
+&amp;=\widehat h(\pi)\widehat f(\pi).
+\end{aligned}
+\tag{1.3}
+\]</span>
+<p>The reversed order follows from <span class="math" data-tex="\(\pi(yz)^*=\pi(z)^*\pi(y)^*\)">\(\pi(yz)^*=\pi(z)^*\pi(y)^*\)</span>. The same substitution gives</p>
+<span class="math math-display" data-tex="\[
+\widehat{L_xf}(\pi)=\widehat f(\pi)\pi(x)^*,
+\qquad
+\widehat{R_xf}(\pi)=\pi(x)\widehat f(\pi).
+\tag{1.4}
+\]">\[
+\widehat{L_xf}(\pi)=\widehat f(\pi)\pi(x)^*,
+\qquad
+\widehat{R_xf}(\pi)=\pi(x)\widehat f(\pi).
+\tag{1.4}
+\]</span>
+<p>For <span class="math" data-tex="\(f^*(g)=\overline{f(g^{-1})}\)">\(f^*(g)=\overline{f(g^{-1})}\)</span>, inversion invariance of compact Haar measure gives <span class="math" data-tex="\(\widehat{f^*}(\pi)=\widehat f(\pi)^*\)">\(\widehat{f^*}(\pi)=\widehat f(\pi)^*\)</span>.</p>
+<p>The Fourier transform is injective on <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>. If all its matrices vanish, <span class="math" data-tex="\(f\,dg\)">\(f\,dg\)</span> integrates every conjugate matrix coefficient to zero. Their algebra is conjugation-closed and uniformly dense in <span class="math" data-tex="\(C(G)\)">\(C(G)\)</span>, so <span class="math" data-tex="\(\int fq=0\)">\(\int fq=0\)</span> for every continuous <span class="math" data-tex="\(q\)">\(q\)</span>. The finite measure <span class="math" data-tex="\(|f|\,dg\)">\(|f|\,dg\)</span> is regular: truncate <span class="math" data-tex="\(|f|\)">\(|f|\)</span> at a large constant <span class="math" data-tex="\(M\)">\(M\)</span>, make the tail integral small, and use Haar regularity with set error smaller than <span class="math" data-tex="\(\varepsilon/M\)">\(\varepsilon/M\)</span>. The Urysohn and simple-function approximation argument of the preceding lesson therefore applies to this weighted measure. Approximate the bounded function <span class="math" data-tex="\(s=\bar f/|f|\)">\(s=\bar f/|f|\)</span>, set to zero where <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, by continuous <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(L^1(|f|\,dg)\)">\(L^1(|f|\,dg)\)</span>. Then <span class="math" data-tex="\(\int fq\to\int fs=\int|f|\)">\(\int fq\to\int fs=\int|f|\)</span>. The left side is always zero, proving <span class="math" data-tex="\(f=0\)">\(f=0\)</span> almost everywhere.</p>
+<p>There is also a compact-group Riemann–Lebesgue statement: <span class="math" data-tex="\(\|\widehat f(\pi)\|_{\mathrm{op}}\)">\(\|\widehat f(\pi)\|_{\mathrm{op}}\)</span> tends to zero outside finite sets of irreducible classes. Finite coefficient sums have finitely supported Fourier transforms by Schur orthogonality. They are dense in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, since they uniformly approximate continuous functions and continuous functions are <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-dense. If <span class="math" data-tex="\(p\)">\(p\)</span> is such a sum with <span class="math" data-tex="\(\|f-p\|_1&lt;\varepsilon\)">\(\|f-p\|_1&lt;\varepsilon\)</span>, (1.1) bounds every Fourier-matrix error by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>; outside the finite support of <span class="math" data-tex="\(\widehat p\)">\(\widehat p\)</span>, this bounds <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> itself. Thus only finitely many classes exceed any fixed positive norm threshold.</p>
+<p id="result-theorem-1-5"><strong>Theorem 1.5 (Plancherel and inversion).</strong> For <span class="math" data-tex="\(f\in L^2(G)\)">\(f\in L^2(G)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|f\|_2^2=\sum_{[\pi]\in\widehat G}
+d_\pi\|\widehat f(\pi)\|_{\mathrm{HS}}^2,
+\qquad
+f=\sum_{[\pi]\in\widehat G}
+d_\pi\operatorname{tr}\bigl(\widehat f(\pi)\pi(\,\cdot\,)\bigr)
+\quad\text{in }L^2.
+\tag{1.6}
+\]">\[
+\|f\|_2^2=\sum_{[\pi]\in\widehat G}
+d_\pi\|\widehat f(\pi)\|_{\mathrm{HS}}^2,
+\qquad
+f=\sum_{[\pi]\in\widehat G}
+d_\pi\operatorname{tr}\bigl(\widehat f(\pi)\pi(\,\cdot\,)\bigr)
+\quad\text{in }L^2.
+\tag{1.6}
+\]</span>
+<p>The map <span class="math" data-tex="\(f\mapsto(\sqrt{d_\pi}\widehat f(\pi))_\pi\)">\(f\mapsto(\sqrt{d_\pi}\widehat f(\pi))_\pi\)</span> is a unitary isomorphism onto the Hilbert direct sum of the finite matrix spaces with their Hilbert–Schmidt inner products.</p>
+<p>If <span class="math" data-tex="\(f=h*k\)">\(f=h*k\)</span>, with <span class="math" data-tex="\(h,k\in L^2(G)\)">\(h,k\in L^2(G)\)</span>, it has a continuous representative, and its <strong>trace-block series</strong> in (1.6) converges absolutely and uniformly:</p>
+<span class="math math-display" data-tex="\[
+\sum_\pi
+\left\|d_\pi\operatorname{tr}
+\bigl(\widehat f(\pi)\pi(\,\cdot\,)\bigr)\right\|_\infty
+\leq\|h\|_2\|k\|_2.
+\tag{1.7}
+\]">\[
+\sum_\pi
+\left\|d_\pi\operatorname{tr}
+\bigl(\widehat f(\pi)\pi(\,\cdot\,)\bigr)\right\|_\infty
+\leq\|h\|_2\|k\|_2.
+\tag{1.7}
+\]</span>
+<p>Here each summand is the complete trace for one irreducible class. We do not assert an absolute bound after splitting those traces into every individual matrix entry.</p>
+<p><strong>Proof.</strong> With <span class="math" data-tex="\(\pi_{ij}(g)=\langle\pi(g)e_j,e_i\rangle\)">\(\pi_{ij}(g)=\langle\pi(g)e_j,e_i\rangle\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\widehat f(\pi)_{ji}
+=\int_G f(g)\overline{\pi_{ij}(g)}\,dg.
+\]">\[
+\widehat f(\pi)_{ji}
+=\int_G f(g)\overline{\pi_{ij}(g)}\,dg.
+\]</span>
+<p>The orthonormal basis <span class="math" data-tex="\(\sqrt{d_\pi}\pi_{ij}\)">\(\sqrt{d_\pi}\pi_{ij}\)</span> gives Parseval with summands <span class="math" data-tex="\(d_\pi|\widehat f(\pi)_{ji}|^2\)">\(d_\pi|\widehat f(\pi)_{ji}|^2\)</span>. Summing the entries proves the norm formula. The coefficient expansion has terms <span class="math" data-tex="\(d_\pi\widehat f(\pi)_{ji}\pi_{ij}\)">\(d_\pi\widehat f(\pi)_{ji}\pi_{ij}\)</span>; collecting a finite block gives the trace in (1.6). Conversely, any square-summable family of these matrix entries defines a vector by that complete Hilbert basis, proving surjectivity and the unitary assertion.</p>
+<p>For <span class="math" data-tex="\(h,k\in L^2\)">\(h,k\in L^2\)</span>, Cauchy–Schwarz in (1.2) gives <span class="math" data-tex="\(|h*k(x)|\leq\|h\|_2\|k\|_2\)">\(|h*k(x)|\leq\|h\|_2\|k\|_2\)</span>. If <span class="math" data-tex="\(x&#x27;=xa\)">\(x&#x27;=xa\)</span>, the difference is bounded by <span class="math" data-tex="\(\|h\|_2\|R_ak-k\|_2\)">\(\|h\|_2\|R_ak-k\|_2\)</span>, after the invariant change of variable <span class="math" data-tex="\(z=y^{-1}x\)">\(z=y^{-1}x\)</span>. Strong translation continuity therefore makes this representative continuous.</p>
+<p>For finite matrices <span class="math" data-tex="\(A,B\)">\(A,B\)</span> and unitary <span class="math" data-tex="\(U\)">\(U\)</span>, the Hilbert–Schmidt Cauchy–Schwarz inequality gives <span class="math" data-tex="\(|\operatorname{tr}(BAU)|\leq\|B\|_{\mathrm{HS}}\|A\|_{\mathrm{HS}}\)">\(|\operatorname{tr}(BAU)|\leq\|B\|_{\mathrm{HS}}\|A\|_{\mathrm{HS}}\)</span>, since <span class="math" data-tex="\(\|AU\|_{\mathrm{HS}}=\|A\|_{\mathrm{HS}}\)">\(\|AU\|_{\mathrm{HS}}=\|A\|_{\mathrm{HS}}\)</span>. By (1.3),</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_\pi d_\pi
+\left|\operatorname{tr}
+\bigl(\widehat k(\pi)\widehat h(\pi)\pi(x)\bigr)\right|
+&amp;\leq
+\sum_\pi
+\bigl(\sqrt{d_\pi}\|\widehat k(\pi)\|_{\mathrm{HS}}\bigr)
+\bigl(\sqrt{d_\pi}\|\widehat h(\pi)\|_{\mathrm{HS}}\bigr)\\
+&amp;\leq\|k\|_2\|h\|_2.
+\end{aligned}
+\tag{1.8}
+\]">\[
+\begin{aligned}
+\sum_\pi d_\pi
+\left|\operatorname{tr}
+\bigl(\widehat k(\pi)\widehat h(\pi)\pi(x)\bigr)\right|
+&amp;\leq
+\sum_\pi
+\bigl(\sqrt{d_\pi}\|\widehat k(\pi)\|_{\mathrm{HS}}\bigr)
+\bigl(\sqrt{d_\pi}\|\widehat h(\pi)\|_{\mathrm{HS}}\bigr)\\
+&amp;\leq\|k\|_2\|h\|_2.
+\end{aligned}
+\tag{1.8}
+\]</span>
+<p>The estimate holds for the supremum norm of each block as well. The summable bound gives uniform convergence of finite partial sums. Its sum equals <span class="math" data-tex="\(h*k\)">\(h*k\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by (1.6); both functions are continuous, so equality holds everywhere. All sums mean suprema over finite subsets; square-summability leaves only countably many nonzero blocks for any particular function. ∎</p>
+<h2 id="conjugation-makes-the-fourier-matrix-scalar">Conjugation makes the Fourier matrix scalar</h2>
+<p>Call <span class="math" data-tex="\(f\in L^p(G)\)">\(f\in L^p(G)\)</span> <strong>central</strong> if <span class="math" data-tex="\(f(a^{-1}(\,\cdot\,)a)=f\)">\(f(a^{-1}(\,\cdot\,)a)=f\)</span> as an <span class="math" data-tex="\(L^p\)">\(L^p\)</span> equivalence class for every <span class="math" data-tex="\(a\in G\)">\(a\in G\)</span>. For continuous functions this is precisely constancy on conjugacy classes. This definition specifies a norm-class identity for each <span class="math" data-tex="\(a\)">\(a\)</span>; it does not choose simultaneous pointwise representatives of all <span class="math" data-tex="\(L^p\)">\(L^p\)</span> functions.</p>
+<p id="result-lemma-2-1"><strong>Lemma 2.1.</strong> A function <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span> is central if and only if</p>
+<span class="math math-display" data-tex="\[
+\widehat f(\pi)=a_\pi(f)I,\qquad
+a_\pi(f)=\frac1{d_\pi}\int_G f(g)\overline{\chi_\pi(g)}\,dg
+\tag{2.2}
+\]">\[
+\widehat f(\pi)=a_\pi(f)I,\qquad
+a_\pi(f)=\frac1{d_\pi}\int_G f(g)\overline{\chi_\pi(g)}\,dg
+\tag{2.2}
+\]</span>
+<p>for every irreducible <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p><strong>Proof.</strong> Conjugating the variable in (1.1) makes its Fourier matrix conjugate by <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span>. Invariance of <span class="math" data-tex="\(f\)">\(f\)</span> thus makes <span class="math" data-tex="\(\widehat f(\pi)\)">\(\widehat f(\pi)\)</span> commute with every <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span>. Schur's lemma makes it scalar; its trace determines that scalar as (2.2). Conversely, scalar matrices do not change under this conjugation. The Fourier transforms of <span class="math" data-tex="\(f(a^{-1}(\,\cdot\,)a)\)">\(f(a^{-1}(\,\cdot\,)a)\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> agree, so injectivity on <span class="math" data-tex="\(L^1\)">\(L^1\)</span> makes their classes equal. ∎</p>
+<p>Convolution makes <span class="math" data-tex="\(L^p(G)\)">\(L^p(G)\)</span>, <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>, a Banach algebra: Young's inequality gives <span class="math" data-tex="\(\|f*h\|_p\leq\|f\|_1\|h\|_p\leq\|f\|_p\|h\|_p\)">\(\|f*h\|_p\leq\|f\|_1\|h\|_p\leq\|f\|_p\|h\|_p\)</span>. The same estimate with the supremum norm applies to <span class="math" data-tex="\(C(G)\)">\(C(G)\)</span>; convolution of continuous functions is continuous. Associativity follows by Fubini on the absolutely integrable triple product.</p>
+<p>Its centre is exactly the central functions. A central Fourier matrix commutes with every Fourier matrix, so (1.3) and injectivity prove that a central function commutes with every convolution factor. Conversely, if <span class="math" data-tex="\(f\)">\(f\)</span> commutes with every factor in the algebra, test it against the matrix coefficients. At <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, their Fourier matrices are all matrix units divided by <span class="math" data-tex="\(d_\pi\)">\(d_\pi\)</span>, by Schur orthogonality. Thus <span class="math" data-tex="\(\widehat f(\pi)\)">\(\widehat f(\pi)\)</span> commutes with every matrix, hence is scalar. Lemma 2.1 proves centrality. This also works for <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, since all functions involved lie in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> on our probability space.</p>
+<p id="result-theorem-2-3"><strong>Theorem 2.3 (character completeness).</strong> The irreducible characters are an orthonormal Hilbert basis of <span class="math" data-tex="\(ZL^2(G)\)">\(ZL^2(G)\)</span>, and their span is uniformly dense in <span class="math" data-tex="\(ZC(G)\)">\(ZC(G)\)</span>. For central <span class="math" data-tex="\(f\in L^2\)">\(f\in L^2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f=\sum_\pi\langle f,\chi_\pi\rangle\chi_\pi,\qquad
+\|f\|_2^2=\sum_\pi|\langle f,\chi_\pi\rangle|^2.
+\tag{2.4}
+\]">\[
+f=\sum_\pi\langle f,\chi_\pi\rangle\chi_\pi,\qquad
+\|f\|_2^2=\sum_\pi|\langle f,\chi_\pi\rangle|^2.
+\tag{2.4}
+\]</span>
+<p><strong>Proof.</strong> Schur orthogonality gives <span class="math" data-tex="\(\langle\chi_\pi,\chi_\sigma\rangle=\delta_{\pi\sigma}\)">\(\langle\chi_\pi,\chi_\sigma\rangle=\delta_{\pi\sigma}\)</span>. By Lemma 2.1, the block of a central <span class="math" data-tex="\(f\)">\(f\)</span> in (1.6) is</p>
+<span class="math math-display" data-tex="\[
+d_\pi\operatorname{tr}\bigl(a_\pi(f)I\pi(g)\bigr)
+=\langle f,\chi_\pi\rangle\chi_\pi(g).
+\]">\[
+d_\pi\operatorname{tr}\bigl(a_\pi(f)I\pi(g)\bigr)
+=\langle f,\chi_\pi\rangle\chi_\pi(g).
+\]</span>
+<p>Plancherel proves both identities in (2.4), so no central orthogonal remainder exists.</p>
+<p>For the uniform claim, average a continuous function over conjugation:</p>
+<span class="math math-display" data-tex="\[
+(\mathcal Cf)(g)=\int_Gf(a^{-1}ga)\,da.
+\tag{2.5}
+\]">\[
+(\mathcal Cf)(g)=\int_Gf(a^{-1}ga)\,da.
+\tag{2.5}
+\]</span>
+<p>This continuous central function satisfies <span class="math" data-tex="\(\|\mathcal Cf\|_\infty\leq\|f\|_\infty\)">\(\|\mathcal Cf\|_\infty\leq\|f\|_\infty\)</span>, and <span class="math" data-tex="\(\mathcal Cf=f\)">\(\mathcal Cf=f\)</span> when <span class="math" data-tex="\(f\)">\(f\)</span> is central. Averaging the matrices <span class="math" data-tex="\(\pi(a)^{-1}\pi(g)\pi(a)\)">\(\pi(a)^{-1}\pi(g)\pi(a)\)</span> and applying Schur and trace gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal C\pi_{ij}=\frac{\delta_{ij}}{d_\pi}\chi_\pi.
+\tag{2.6}
+\]">\[
+\mathcal C\pi_{ij}=\frac{\delta_{ij}}{d_\pi}\chi_\pi.
+\tag{2.6}
+\]</span>
+<p>Uniformly approximate a central continuous <span class="math" data-tex="\(f\)">\(f\)</span> by a finite coefficient sum, using Peter–Weyl, and apply the contraction <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Equation (2.6) converts it into a finite character sum without increasing the error. ∎</p>
+<p>For arbitrary <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span>, trace and (1.1) also give the block identity</p>
+<span class="math math-display" data-tex="\[
+d_\pi(f*\chi_\pi)(x)
+=d_\pi\operatorname{tr}\bigl(\widehat f(\pi)\pi(x)\bigr).
+\tag{2.7}
+\]">\[
+d_\pi(f*\chi_\pi)(x)
+=d_\pi\operatorname{tr}\bigl(\widehat f(\pi)\pi(x)\bigr).
+\tag{2.7}
+\]</span>
+<p>For central <span class="math" data-tex="\(f\)">\(f\)</span>, this becomes</p>
+<span class="math math-display" data-tex="\[
+d_\pi f*\chi_\pi
+=\left(\int_Gf\,\overline{\chi_\pi}\right)\chi_\pi.
+\tag{2.8}
+\]">\[
+d_\pi f*\chi_\pi
+=\left(\int_Gf\,\overline{\chi_\pi}\right)\chi_\pi.
+\tag{2.8}
+\]</span>
+<p>The conjugate in the integral and the dimension in the denominator of (2.2) are both required.</p>
+<p>Character sums are dense in <span class="math" data-tex="\(ZL^1(G)\)">\(ZL^1(G)\)</span> as well. To see this without a convergence prescription, approximate a central <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by continuous functions <span class="math" data-tex="\(q\)">\(q\)</span>. Translation continuity in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> follows from this density and the translation isometries, by the same approximation argument used for <span class="math" data-tex="\(L^2\)">\(L^2\)</span> in lesson 2. Conjugation averaging <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> contraction by the integral triangle inequality and invariance of Haar measure; on <span class="math" data-tex="\(L^1\)">\(L^1\)</span> it is the vector integral of the strongly continuous conjugation orbit. It fixes central classes. Thus <span class="math" data-tex="\(\mathcal Cq\)">\(\mathcal Cq\)</span> are continuous central approximants to <span class="math" data-tex="\(f\)">\(f\)</span>. The uniform character density just proved approximates each of them in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, since the measure has mass one. This proves the density used in the next spectral theorem independently of the localized approximate identities below.</p>
+<h2 id="converting-a-finite-class-table-into-filter-responses">Converting a finite class table into filter responses</h2>
+<p>For a finite group, no convergence issue remains. Class indicators form a basis of central functions, while Theorem 2.3 gives a basis of irreducible characters. Hence the number of irreducible classes equals the number of conjugacy classes. The identity <span class="math" data-tex="\(|G|=\sum d_\pi^2\)">\(|G|=\sum d_\pi^2\)</span> was proved in the preceding lesson.</p>
+<p>For <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, list the classes as identity, transpositions and three-cycles, of sizes <span class="math" data-tex="\(1,3,2\)">\(1,3,2\)</span>. The characters constructed in the preceding lesson have values</p>
+<span class="math math-display" data-tex="\[
+\chi_{\mathrm{triv}}=(1,1,1),\qquad
+\chi_{\mathrm{sgn}}=(1,-1,1),\qquad
+\chi_{\mathrm{std}}=(2,0,-1).
+\]">\[
+\chi_{\mathrm{triv}}=(1,1,1),\qquad
+\chi_{\mathrm{sgn}}=(1,-1,1),\qquad
+\chi_{\mathrm{std}}=(2,0,-1).
+\]</span>
+<p>For a central function with values <span class="math" data-tex="\((u,v,w)\)">\((u,v,w)\)</span>, its three character coefficients are</p>
+<span class="math math-display" data-tex="\[
+\alpha_{\mathrm{triv}}=\frac{u+3v+2w}{6},\qquad
+\alpha_{\mathrm{sgn}}=\frac{u-3v+2w}{6},\qquad
+\alpha_{\mathrm{std}}=\frac{u-w}{3}.
+\tag{5.3}
+\]">\[
+\alpha_{\mathrm{triv}}=\frac{u+3v+2w}{6},\qquad
+\alpha_{\mathrm{sgn}}=\frac{u-3v+2w}{6},\qquad
+\alpha_{\mathrm{std}}=\frac{u-w}{3}.
+\tag{5.3}
+\]</span>
+<p>The scalar Fourier blocks are the first two coefficients and <span class="math" data-tex="\(\alpha_{\mathrm{std}}/2\)">\(\alpha_{\mathrm{std}}/2\)</span>. This division by two is what makes convolution become multiplication of the scalars. For example, the indicator of the identity is <span class="math" data-tex="\((\chi_{\mathrm{triv}}+\chi_{\mathrm{sgn}}+2\chi_{\mathrm{std}})/6\)">\((\chi_{\mathrm{triv}}+\chi_{\mathrm{sgn}}+2\chi_{\mathrm{std}})/6\)</span>. The convolution unit for normalized counting measure is six times that indicator.</p>
+<h2 id="the-responses-of-all-central-filters">The responses of all central filters</h2>
+<p id="result-theorem-4-1"><strong>Theorem 4.1.</strong> The Gelfand spectrum of the commutative convolution algebra <span class="math" data-tex="\(ZL^1(G)\)">\(ZL^1(G)\)</span> is the discrete set <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>, through the functionals <span class="math" data-tex="\(a_\pi\)">\(a_\pi\)</span> in (2.2).</p>
+<p><strong>Proof.</strong> Each <span class="math" data-tex="\(a_\pi\)">\(a_\pi\)</span> is bounded by the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm and multiplicative by (1.3), since its Fourier block is scalar. Orthogonality and injectivity give</p>
+<span class="math math-display" data-tex="\[
+\chi_\pi*\chi_\sigma
+=\delta_{\pi\sigma}\frac{\chi_\pi}{d_\pi}.
+\tag{4.2}
+\]">\[
+\chi_\pi*\chi_\sigma
+=\delta_{\pi\sigma}\frac{\chi_\pi}{d_\pi}.
+\tag{4.2}
+\]</span>
+<p>Hence <span class="math" data-tex="\(e_\pi=d_\pi\chi_\pi\)">\(e_\pi=d_\pi\chi_\pi\)</span> are pairwise orthogonal convolution idempotents. If a nonzero continuous multiplicative functional <span class="math" data-tex="\(b\)">\(b\)</span> vanished on all of them, character-span density in <span class="math" data-tex="\(ZL^1\)">\(ZL^1\)</span> would force <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Thus <span class="math" data-tex="\(b(e_\pi)\ne0\)">\(b(e_\pi)\ne0\)</span> for some <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and idempotence forces <span class="math" data-tex="\(b(e_\pi)=1\)">\(b(e_\pi)=1\)</span>. Equation (2.8) says <span class="math" data-tex="\(f*e_\pi=a_\pi(f)e_\pi\)">\(f*e_\pi=a_\pi(f)e_\pi\)</span>. Applying <span class="math" data-tex="\(b\)">\(b\)</span> gives <span class="math" data-tex="\(b(f)=a_\pi(f)\)">\(b(f)=a_\pi(f)\)</span> for every central <span class="math" data-tex="\(f\)">\(f\)</span>. Orthogonality of the idempotents makes the index unique. Finally evaluation at <span class="math" data-tex="\(e_\pi\)">\(e_\pi\)</span> is continuous on the spectrum in its weak topology, and the condition <span class="math" data-tex="\(|b(e_\pi)-1|&lt;1/2\)">\(|b(e_\pi)-1|&lt;1/2\)</span> isolates <span class="math" data-tex="\(a_\pi\)">\(a_\pi\)</span>. Every point is open. ∎</p>
+<p>For an irreducible of dimension two, the wrong candidate <span class="math" data-tex="\(f\mapsto2\int f\overline{\chi_\pi}\)">\(f\mapsto2\int f\overline{\chi_\pi}\)</span> takes the value four on the idempotent <span class="math" data-tex="\(2\chi_\pi\)">\(2\chi_\pi\)</span>. It cannot be multiplicative, because a multiplicative functional takes only zero or one on an idempotent. Formula (2.2) instead takes value one, as required.</p>
+<h2 id="central-approximate-identities">Central approximate identities</h2>
+<p>Compactness makes conjugation-invariant identity neighborhoods a neighborhood basis. Indeed, given <span class="math" data-tex="\(U\)">\(U\)</span>, joint continuity of <span class="math" data-tex="\((a,x)\mapsto axa^{-1}\)">\((a,x)\mapsto axa^{-1}\)</span> gives, for each <span class="math" data-tex="\(a\)">\(a\)</span>, neighborhoods <span class="math" data-tex="\(V_a\)">\(V_a\)</span> of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(W_a\)">\(W_a\)</span> of <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(bW_ab^{-1}\subset U\)">\(bW_ab^{-1}\subset U\)</span> for <span class="math" data-tex="\(b\in V_a\)">\(b\in V_a\)</span>. A finite subcover of the <span class="math" data-tex="\(V_a\)">\(V_a\)</span> gives <span class="math" data-tex="\(W=\bigcap W_a\)">\(W=\bigcap W_a\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+V=\bigcup_{b\in G}bWb^{-1}\subset U
+\tag{3.1}
+\]">\[
+V=\bigcup_{b\in G}bWb^{-1}\subset U
+\tag{3.1}
+\]</span>
+<p>is an open invariant identity neighborhood. Shrinking <span class="math" data-tex="\(W\)">\(W\)</span> symmetrically also makes <span class="math" data-tex="\(V\)">\(V\)</span> symmetric.</p>
+<p>Take a continuous nonnegative symmetric function of integral one supported in such a <span class="math" data-tex="\(V\)">\(V\)</span>, as in the preceding lesson, and average it by (2.5). The resulting <span class="math" data-tex="\(\mu_V\)">\(\mu_V\)</span> is central, nonnegative, symmetric, has integral one, and is still supported in <span class="math" data-tex="\(V\)">\(V\)</span>. The conjugates of its compact support form a compact subset of <span class="math" data-tex="\(V\)">\(V\)</span>, so there is no support problem in this averaging.</p>
+<p>As <span class="math" data-tex="\(V\)">\(V\)</span> shrinks, <span class="math" data-tex="\(f*\mu_V\to f\)">\(f*\mu_V\to f\)</span> uniformly for <span class="math" data-tex="\(f\in C(G)\)">\(f\in C(G)\)</span> and in <span class="math" data-tex="\(L^p\)">\(L^p\)</span> for <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>. For example,</p>
+<span class="math math-display" data-tex="\[
+\|f*\mu_V-f\|_p
+\leq\sup_{y\in V}\|R_{y^{-1}}f-f\|_p.
+\tag{3.2}
+\]">\[
+\|f*\mu_V-f\|_p
+\leq\sup_{y\in V}\|R_{y^{-1}}f-f\|_p.
+\tag{3.2}
+\]</span>
+<p>Use the equivalent convolution formula <span class="math" data-tex="\((f*\mu_V)(x)=\int\mu_V(y)f(xy^{-1})\,dy\)">\((f*\mu_V)(x)=\int\mu_V(y)f(xy^{-1})\,dy\)</span>. Strong <span class="math" data-tex="\(L^p\)">\(L^p\)</span> continuity follows from continuous-function density and isometry of translations, just as for <span class="math" data-tex="\(p=2\)">\(p=2\)</span> in the preceding lesson. The uniform case follows directly from uniform continuity.</p>
+<p>The scalar Fourier multiplier <span class="math" data-tex="\(a_\pi(\mu_V)\)">\(a_\pi(\mu_V)\)</span> tends to one for each fixed <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, because <span class="math" data-tex="\(\pi(y)^*\)">\(\pi(y)^*\)</span> tends uniformly to <span class="math" data-tex="\(I\)">\(I\)</span> on shrinking identity neighborhoods. It has absolute value at most one. Its exact Plancherel normalization is</p>
+<span class="math math-display" data-tex="\[
+\|\mu_V\|_2^2
+=\sum_\pi d_\pi^2|a_\pi(\mu_V)|^2.
+\tag{3.3}
+\]">\[
+\|\mu_V\|_2^2
+=\sum_\pi d_\pi^2|a_\pi(\mu_V)|^2.
+\tag{3.3}
+\]</span>
+<p>For <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span>, set <span class="math" data-tex="\(\zeta_V=\mu_V*\mu_V\)">\(\zeta_V=\mu_V*\mu_V\)</span>. Then <span class="math" data-tex="\(f*\mu_V\in L^2\)">\(f*\mu_V\in L^2\)</span> by Young, so Theorem 1.5 gives an absolutely uniformly convergent trace-block series for <span class="math" data-tex="\((f*\mu_V)*\mu_V=f*\zeta_V\)">\((f*\mu_V)*\mu_V=f*\zeta_V\)</span>. These <span class="math" data-tex="\(\zeta_V\)">\(\zeta_V\)</span> are also nonnegative central functions of mass one, supported in <span class="math" data-tex="\(V^2\)">\(V^2\)</span>; their supports shrink to <span class="math" data-tex="\(e\)">\(e\)</span>. Thus they give uniform Fourier summation after smoothing, even for <span class="math" data-tex="\(L^1\)">\(L^1\)</span> input, and <span class="math" data-tex="\(f*\zeta_V\to f\)">\(f*\zeta_V\to f\)</span> in <span class="math" data-tex="\(L^p\)">\(L^p\)</span>, <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span>, or uniformly for continuous input. For central input all the trace blocks are scalar multiples of characters. This proves character-span density in <span class="math" data-tex="\(ZL^p(G)\)">\(ZL^p(G)\)</span>, <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span>, as well.</p>
+<h2 id="a-positive-summation-rule-on-the-circle"><span id="circle-summation-and-finite-character-tables"></span>A positive summation rule on the circle</h2>
+<p>For the circle, write <span class="math" data-tex="\(g=e^{it}\)">\(g=e^{it}\)</span>, <span class="math" data-tex="\(dt/(2\pi)\)">\(dt/(2\pi)\)</span>, and <span class="math" data-tex="\(\chi_n(g)=e^{int}\)">\(\chi_n(g)=e^{int}\)</span>. Then (1.1) is the ordinary convention</p>
+<span class="math math-display" data-tex="\[
+\widehat f(n)=\frac1{2\pi}\int_0^{2\pi}f(e^{it})e^{-int}\,dt.
+\tag{5.1}
+\]">\[
+\widehat f(n)=\frac1{2\pi}\int_0^{2\pi}f(e^{it})e^{-int}\,dt.
+\tag{5.1}
+\]</span>
+<p>For a compact abelian group every irreducible has dimension one, by Schur's lemma in the first lesson, so the matrix formulas become these scalar character formulas. If another convention labels a frequency by <span class="math" data-tex="\(\int f\chi\)">\(\int f\chi\)</span>, its label is <span class="math" data-tex="\(\bar\chi\)">\(\bar\chi\)</span> in (1.1); on the circle this replaces <span class="math" data-tex="\(n\)">\(n\)</span> by <span class="math" data-tex="\(-n\)">\(-n\)</span>.</p>
+<p>An explicit central approximate identity on the circle is the Fejér kernel</p>
+<span class="math math-display" data-tex="\[
+F_N(t)=\frac1{N+1}\left|\sum_{j=0}^N e^{ijt}\right|^2
+=\sum_{|n|\leq N}\left(1-\frac{|n|}{N+1}\right)e^{int}.
+\tag{5.2}
+\]">\[
+F_N(t)=\frac1{N+1}\left|\sum_{j=0}^N e^{ijt}\right|^2
+=\sum_{|n|\leq N}\left(1-\frac{|n|}{N+1}\right)e^{int}.
+\tag{5.2}
+\]</span>
+<p>Expanding the square counts <span class="math" data-tex="\(N+1-|n|\)">\(N+1-|n|\)</span> pairs with difference <span class="math" data-tex="\(n\)">\(n\)</span>, proving the second equality. The first proves nonnegativity, and the constant Fourier coefficient proves integral one. Outside the angular neighborhood <span class="math" data-tex="\(|t|&lt;\delta\)">\(|t|&lt;\delta\)</span> modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, the geometric sum gives</p>
+<span class="math math-display" data-tex="\[
+F_N(t)\leq\frac1{(N+1)\sin^2(\delta/2)}.
+\]">\[
+F_N(t)\leq\frac1{(N+1)\sin^2(\delta/2)}.
+\]</span>
+<p>Thus its mass away from the identity tends to zero. In the norm of <span class="math" data-tex="\(C(G)\)">\(C(G)\)</span> or <span class="math" data-tex="\(L^p\)">\(L^p\)</span>, <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span>, split the integral of the translation difference into this tail and its complement. The tail is bounded by twice the function's norm times the tail mass, and translation continuity makes the complement small. Consequently <span class="math" data-tex="\(f*F_N\to f\)">\(f*F_N\to f\)</span> in the respective norm. These are the Fejér means of its Fourier series. For <span class="math" data-tex="\(f(e^{it})=1+\cos t\)">\(f(e^{it})=1+\cos t\)</span>, the <span class="math" data-tex="\(N\)">\(N\)</span>-th mean, <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>, is <span class="math" data-tex="\(1+\frac{N}{N+1}\cos t\)">\(1+\frac{N}{N+1}\cos t\)</span>.</p>
+<h2 id="reconstructing-the-compact-group">Reconstructing the compact group</h2>
+<p>Choose a set of finite-dimensional Hilbert spaces containing every <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> and closed under finite direct sums, tensor products and duals. Include all continuous unitary representations of <span class="math" data-tex="\(G\)">\(G\)</span> on those spaces; this makes the indexing collection an actual set. Let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> consist of unitary families <span class="math" data-tex="\(A=(A_\pi)_\pi\)">\(A=(A_\pi)_\pi\)</span> compatible with unitary equivalences, direct sums, tensor products and duals. On the dual space the operator is <span class="math" data-tex="\(A_\pi^{-t}\)">\(A_\pi^{-t}\)</span>, the inverse transpose. Use pointwise multiplication and the topology determined by all scalar coefficients of <span class="math" data-tex="\(A_\pi\)">\(A_\pi\)</span>.</p>
+<p id="result-theorem-7-1"><strong>Theorem 7.1 (compact Tannaka duality).</strong> The group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is compact, and</p>
+<span class="math math-display" data-tex="\[
+G\longrightarrow\{A\},\qquad g\longmapsto(\pi(g))_\pi
+\]">\[
+G\longrightarrow\{A\},\qquad g\longmapsto(\pi(g))_\pi
+\]</span>
+<p>is an isomorphism of topological groups.</p>
+<p><em>Proof.</em> The families form a closed subset of the compact product <span class="math" data-tex="\(\prod_\pi U(V_\pi)\)">\(\prod_\pi U(V_\pi)\)</span>: each compatibility condition is a closed matrix equality, including the continuous inverse-transpose condition. Products and inverses preserve all conditions, so this is a compact Hausdorff topological group. Evaluation at <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> gives a continuous homomorphism. Matrix coefficients separate points by lesson two, hence this homomorphism is injective.</p>
+<p>First note two consequences of compatibility. On the one-dimensional trivial representation, tensor compatibility gives <span class="math" data-tex="\(A_1=A_1^2\)">\(A_1=A_1^2\)</span>; unitarity forces <span class="math" data-tex="\(A_1=1\)">\(A_1=1\)</span>. Direct sums then give the identity on every trivial representation. Moreover the family respects every intertwiner <span class="math" data-tex="\(T:V_\pi\to V_\sigma\)">\(T:V_\pi\to V_\sigma\)</span>, not only unitary equivalences. The graph of <span class="math" data-tex="\(T\)">\(T\)</span> and its orthogonal complement are invariant subspaces of <span class="math" data-tex="\(V_\pi\oplus V_\sigma\)">\(V_\pi\oplus V_\sigma\)</span>. Choose unitary coordinates on them. The representations in those coordinates are among the indexed representations, and sum compatibility plus unitary-equivalence compatibility makes <span class="math" data-tex="\(A_\pi\oplus A_\sigma\)">\(A_\pi\oplus A_\sigma\)</span> preserve the graph. Thus
+<span class="math math-display" data-tex="\[
+A_\sigma T=TA_\pi.
+\]">\[
+A_\sigma T=TA_\pi.
+\]</span>
+In particular <span class="math" data-tex="\(A_\tau\)">\(A_\tau\)</span> fixes every <span class="math" data-tex="\(G\)">\(G\)</span>-fixed vector in any representation <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. On a conjugate unitary representation, dual compatibility gives <span class="math" data-tex="\(\overline{A_\pi}\)">\(\overline{A_\pi}\)</span>, since inverse transpose equals complex conjugation for a unitary matrix.</p>
+<p>Fix one finite-dimensional representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and put <span class="math" data-tex="\(H=\pi(G)\)">\(H=\pi(G)\)</span>, a closed subgroup of <span class="math" data-tex="\(U(V_\pi)\)">\(U(V_\pi)\)</span>. We show <span class="math" data-tex="\(A_\pi\in H\)">\(A_\pi\in H\)</span>. Suppose otherwise. The function
+<span class="math math-display" data-tex="\[
+f(u)=\operatorname{dist}(u,H)
+\]">\[
+f(u)=\operatorname{dist}(u,H)
+\]</span>
+for the Hilbert–Schmidt matrix distance is continuous and right-<span class="math" data-tex="\(H\)">\(H\)</span>-invariant, with <span class="math" data-tex="\(f(1)=0\)">\(f(1)=0\)</span> and <span class="math" data-tex="\(f(A_\pi)=d&gt;0\)">\(f(A_\pi)=d&gt;0\)</span>. Polynomials in the matrix entries of <span class="math" data-tex="\(u\)">\(u\)</span> and their conjugates are uniformly dense in <span class="math" data-tex="\(C(U(V_\pi))\)">\(C(U(V_\pi))\)</span>: they contain constants, are closed under conjugation and separate matrices, so the complex Stone–Weierstrass theorem applies. Choose such a polynomial <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(\|p-f\|_\infty&lt;d/3\)">\(\|p-f\|_\infty&lt;d/3\)</span>, and average on the right:
+<span class="math math-display" data-tex="\[
+q(u)=\int_H p(uh)\,dh.
+\]">\[
+q(u)=\int_H p(uh)\,dh.
+\]</span>
+Then <span class="math" data-tex="\(\|q-f\|_\infty&lt;d/3\)">\(\|q-f\|_\infty&lt;d/3\)</span>.</p>
+<p>Each monomial of <span class="math" data-tex="\(p\)">\(p\)</span> is a matrix coefficient of a tensor representation
+<span class="math math-display" data-tex="\[
+r(u)=u^{\otimes a}\otimes\overline u^{\otimes b}.
+\]">\[
+r(u)=u^{\otimes a}\otimes\overline u^{\otimes b}.
+\]</span>
+Averaging a coefficient <span class="math" data-tex="\(\phi(r(u)v)\)">\(\phi(r(u)v)\)</span> replaces <span class="math" data-tex="\(v\)">\(v\)</span> by
+<span class="math" data-tex="\(v_H=\int_H r(h)v\,dh\)">\(v_H=\int_H r(h)v\,dh\)</span>, an <span class="math" data-tex="\(H\)">\(H\)</span>-fixed vector. Pull <span class="math" data-tex="\(r\)">\(r\)</span> back through <span class="math" data-tex="\(\pi\)">\(\pi\)</span>; it becomes a tensor-and-dual representation <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>. Tensor compatibility gives <span class="math" data-tex="\(A_\tau=r(A_\pi)\)">\(A_\tau=r(A_\pi)\)</span>, and the preceding intertwiner argument gives <span class="math" data-tex="\(r(A_\pi)v_H=v_H\)">\(r(A_\pi)v_H=v_H\)</span>. Consequently each averaged coefficient has the same value at <span class="math" data-tex="\(A_\pi\)">\(A_\pi\)</span> and at <span class="math" data-tex="\(1\)">\(1\)</span>, so
+<span class="math math-display" data-tex="\[
+q(A_\pi)=q(1).
+\]">\[
+q(A_\pi)=q(1).
+\]</span>
+This contradicts <span class="math" data-tex="\(f(A_\pi)-f(1)=d\)">\(f(A_\pi)-f(1)=d\)</span> and the approximation error smaller than <span class="math" data-tex="\(2d/3\)">\(2d/3\)</span>. Thus <span class="math" data-tex="\(A_\pi\in\pi(G)\)">\(A_\pi\in\pi(G)\)</span>.</p>
+<p>Apply this argument to the direct sum of any finite collection of representations. It produces one <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> with all their matrices equal to the prescribed <span class="math" data-tex="\(A_\pi\)">\(A_\pi\)</span>'s simultaneously. The closed sets
+<span class="math math-display" data-tex="\[
+\{g\in G:\pi(g)=A_\pi\}
+\]">\[
+\{g\in G:\pi(g)=A_\pi\}
+\]</span>
+therefore have the finite intersection property. Compactness of <span class="math" data-tex="\(G\)">\(G\)</span> supplies a point in their intersection over all <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. This proves surjectivity without a countability assumption. A continuous bijection from compact <span class="math" data-tex="\(G\)">\(G\)</span> to Hausdorff <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is a homeomorphism, proving the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof here uses the earlier coefficient-separation theorem, compact Haar averaging and Stone–Weierstrass; it does not assume a duality theorem for abelian groups or a finite-group reconstruction theorem.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — character convolution (easy).</strong> Prove (4.2), including its dimension factor.</p>
+<p><strong>Solution.</strong> The <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> entry of <span class="math" data-tex="\(\widehat{\chi_\pi}(\sigma)\)">\(\widehat{\chi_\pi}(\sigma)\)</span> is the sum over the diagonal entries of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of their inner products with <span class="math" data-tex="\(\sigma_{ji}\)">\(\sigma_{ji}\)</span>. Schur orthogonality makes it zero for <span class="math" data-tex="\(\sigma\not\simeq\pi\)">\(\sigma\not\simeq\pi\)</span>, and <span class="math" data-tex="\(\delta_{ij}/d_\pi\)">\(\delta_{ij}/d_\pi\)</span> for <span class="math" data-tex="\(\sigma=\pi\)">\(\sigma=\pi\)</span>. Thus the Fourier transform of <span class="math" data-tex="\(\chi_\pi*\chi_\tau\)">\(\chi_\pi*\chi_\tau\)</span> is zero at every class unless <span class="math" data-tex="\(\pi=\tau\)">\(\pi=\tau\)</span>; in that case its only nonzero matrix is <span class="math" data-tex="\(I/d_\pi^2\)">\(I/d_\pi^2\)</span> at <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. This is exactly the transform of <span class="math" data-tex="\(\chi_\pi/d_\pi\)">\(\chi_\pi/d_\pi\)</span>. Injectivity proves the identity. The factor is also forced by idempotence of <span class="math" data-tex="\(d_\pi\chi_\pi\)">\(d_\pi\chi_\pi\)</span>.</p>
+<p><strong>Exercise 2 — isotypic projection (medium).</strong> Verify (4.4) for an arbitrary unitary Hilbert representation, including infinite multiplicities. Explain why it need not be an orthogonal projection for a nonunitary representation in its original inner product.</p>
+<p><strong>Solution.</strong> On any irreducible summand <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, conjugation invariance of <span class="math" data-tex="\(\overline{\chi_\pi}\)">\(\overline{\chi_\pi}\)</span> makes the averaged operator scalar. Trace gives scalar <span class="math" data-tex="\(d_\pi\delta_{\pi\sigma}/d_\sigma\)">\(d_\pi\delta_{\pi\sigma}/d_\sigma\)</span>, hence one for <span class="math" data-tex="\(\sigma=\pi\)">\(\sigma=\pi\)</span> and zero otherwise. Finite sums of summand vectors are dense in the Hilbert direct sum. Since the integral has the bound <span class="math" data-tex="\(d_\pi\|\chi_\pi\|_1\)">\(d_\pi\|\chi_\pi\|_1\)</span>, its action extends from these sums to the whole space. It selects every copy of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, irrespective of how many copies there are. Its range is therefore the canonical isotypic subspace, and its kernel is the orthogonal sum of the other types.</p>
+<p>For the second assertion, let <span class="math" data-tex="\(z\in S^1\)">\(z\in S^1\)</span> and</p>
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},\qquad
+\rho(z)=A\begin{pmatrix}z&amp;0\\0&amp;1\end{pmatrix}A^{-1}
+=\begin{pmatrix}z&amp;1-z\\0&amp;1\end{pmatrix}.
+\]">\[
+A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},\qquad
+\rho(z)=A\begin{pmatrix}z&amp;0\\0&amp;1\end{pmatrix}A^{-1}
+=\begin{pmatrix}z&amp;1-z\\0&amp;1\end{pmatrix}.
+\]</span>
+<p>Using the character <span class="math" data-tex="\(\chi_1(z)=z\)">\(\chi_1(z)=z\)</span>, the integral in (4.4) is</p>
+<span class="math math-display" data-tex="\[
+P_{\chi_1}=\begin{pmatrix}1&amp;-1\\0&amp;0\end{pmatrix}.
+\]">\[
+P_{\chi_1}=\begin{pmatrix}1&amp;-1\\0&amp;0\end{pmatrix}.
+\]</span>
+<p>Its square is itself, but its adjoint is different. Thus it is an isotypic projection and is not orthogonal in the Euclidean inner product. The averaged invariant inner product makes the two invariant lines orthogonal and restores the orthogonal-projection statement.</p>
+<p><strong>Exercise 3 — a sufficient uniform character bound (medium).</strong> If <span class="math" data-tex="\(f\in ZC(G)\)">\(f\in ZC(G)\)</span> and <span class="math" data-tex="\(\sum_\pi d_\pi|\langle f,\chi_\pi\rangle|&lt;\infty\)">\(\sum_\pi d_\pi|\langle f,\chi_\pi\rangle|&lt;\infty\)</span>, prove that its character expansion converges uniformly to <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>Solution.</strong> Every eigenvalue of a unitary <span class="math" data-tex="\(\pi(g)\)">\(\pi(g)\)</span> has modulus one, so <span class="math" data-tex="\(|\chi_\pi(g)|\leq d_\pi\)">\(|\chi_\pi(g)|\leq d_\pi\)</span>. The hypothesis therefore bounds the sum of the supremum norms of the character terms. Finite partial sums converge uniformly to a continuous function <span class="math" data-tex="\(u\)">\(u\)</span>. By (2.4), the same sums converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to <span class="math" data-tex="\(f\)">\(f\)</span>; uniform convergence also implies <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence to <span class="math" data-tex="\(u\)">\(u\)</span>. Thus <span class="math" data-tex="\(u=f\)">\(u=f\)</span> almost everywhere. The full support of Haar measure makes equal continuous representatives equal everywhere. This proves the claim for arbitrary compact <span class="math" data-tex="\(G\)">\(G\)</span>, with finite-subset sums if its dual is uncountable.</p>
+<p><strong>Exercise 4 — uniform convolution expansion (hard).</strong> Prove the absolute uniform convergence part of Theorem 1.5 and give an explicit tail bound.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(B_\pi(x)=d_\pi\operatorname{tr}(\widehat k(\pi)\widehat h(\pi)\pi(x))\)">\(B_\pi(x)=d_\pi\operatorname{tr}(\widehat k(\pi)\widehat h(\pi)\pi(x))\)</span>. Finite-dimensional Hilbert–Schmidt Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+\|B_\pi\|_\infty
+\leq d_\pi\|\widehat k(\pi)\|_{\mathrm{HS}}
+\|\widehat h(\pi)\|_{\mathrm{HS}}.
+\]">\[
+\|B_\pi\|_\infty
+\leq d_\pi\|\widehat k(\pi)\|_{\mathrm{HS}}
+\|\widehat h(\pi)\|_{\mathrm{HS}}.
+\]</span>
+<p>Weighted Cauchy–Schwarz and Plancherel bound its sum by <span class="math" data-tex="\(\|k\|_2\|h\|_2\)">\(\|k\|_2\|h\|_2\)</span>. For any finite set <span class="math" data-tex="\(F\subset\widehat G\)">\(F\subset\widehat G\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left\|\sum_{\pi\notin F}B_\pi\right\|_\infty
+\leq
+\left(\sum_{\pi\notin F}
+d_\pi\|\widehat h(\pi)\|_{\mathrm{HS}}^2\right)^{1/2}
+\|k\|_2.
+\tag{6.1}
+\]">\[
+\left\|\sum_{\pi\notin F}B_\pi\right\|_\infty
+\leq
+\left(\sum_{\pi\notin F}
+d_\pi\|\widehat h(\pi)\|_{\mathrm{HS}}^2\right)^{1/2}
+\|k\|_2.
+\tag{6.1}
+\]</span>
+<p>The right side tends to zero as <span class="math" data-tex="\(F\)">\(F\)</span> increases, by summability. Its bound also applies to every finite tail before the sum is defined, so it proves uniform Cauchy convergence without assuming a pre-existing enumeration. The limit agrees with the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> expansion of <span class="math" data-tex="\(h*k\)">\(h*k\)</span>; the convolution is continuous by the translation estimate in Theorem 1.5. Equal continuous functions with equal <span class="math" data-tex="\(L^2\)">\(L^2\)</span> classes agree everywhere. This establishes both the convergence and its identification with convolution, rather than just convergence to an unspecified function.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The Haar, Schur and Peter–Weyl prerequisites are imported from the two preceding lessons, in their stated compact Hausdorff forms. Scalar Fubini, regularity, simple-function approximation, Stone–Weierstrass and compact product topology are the ordinary measure and topology prerequisites. The convolution estimate used above follows directly from normalized Haar measure: translations are isometries and the integral triangle inequality gives
+<span class="math math-display" data-tex="\[
+\|f*h\|_p
+\leq\int_G |f(y)|\,\|h(y^{-1}\,\cdot)\|_p\,dy
+=\|f\|_1\|h\|_p,\qquad 1\leq p&lt;\infty.
+\]">\[
+\|f*h\|_p
+\leq\int_G |f(y)|\,\|h(y^{-1}\,\cdot)\|_p\,dy
+=\|f\|_1\|h\|_p,\qquad 1\leq p&lt;\infty.
+\]</span>
+For <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, the essential bound under Haar-preserving translations and Fubini give the same result directly for measurable functions. For finite <span class="math" data-tex="\(p\)">\(p\)</span>, continuous-function density and this estimate extend the result to <span class="math" data-tex="\(L^p\)">\(L^p\)</span> classes. The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> continuity and uniform estimates required for convolution were proved explicitly above.</p>
+<h2 id="references">References</h2>
+<ul>
+
+<li>C. Gruson and V. Serganova, <em>A Journey Through Representation Theory</em> (2018), Chapter 3, §2, Corollaries 2.7 and 2.9, for coefficient spaces and central functions.</li>
+</ul>
+<p>For compact abelian groups, <a href="../HA-LCA/HA-LCA-08.html#section-1"><strong>HA-LCA-08</strong>, Theorem 1.1</a> is the general LCA Plancherel counterpart. It uses the same conjugate-character transform and inner products linear in the first variable. Its arbitrary locally compact statement is stronger in the abelian direction; the present matrix formulas and compact reconstruction are proved here and do not follow from that scalar theorem alone.</p>
+<h2 id="accessible-source-notes">Accessible source notes</h2>
+<p>Pavel Etingof, <a href="https://arxiv.org/abs/2201.09397v5"><em>Lie Groups and Lie Algebras</em>, arXiv:2201.09397v5</a>, 23 May 2026 (accessed 3 October 2026), §§35–37. Its orthogonality and Peter–Weyl treatment provide compact coefficient context. They are not used as a proof of the tensor reconstruction theorem; the full arbitrary-compact reconstruction argument is supplied here.</p>
+</article></main><footer>Original lesson text and solutions: CC0 1.0. Mathematical sources are credited in each lesson. <a href="../../assets/mathjax/LICENSE">MathJax licence</a> · <a href="../../assets/mathjax/FONT-LICENSES.txt">Font licences</a> · <a href="src/RT-CPT-03.provenance.json">Source and result records</a></footer></body></html>

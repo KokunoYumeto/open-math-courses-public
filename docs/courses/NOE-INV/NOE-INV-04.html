@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polarization and invariants of many vectors · Invariants and finiteness</title>
+<meta name="description" content="A lesson of the course Invariants and finiteness. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-INV/NOE-INV-04.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Invariants and finiteness</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 5</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="polarization-and-invariants-of-many-vectors">Polarization and invariants of many vectors</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Original exposition and proofs are CC0. This evolving lesson is being checked by its writing AI; no independent review is recorded.</em></p>
+<p>Adding copies of a representation creates more invariants, but their essential patterns are already visible on a bounded number of copies. Polarization moves those patterns between the copies. We will prove the bound for an arbitrary subgroup of the general linear group, then obtain determinant generation for the special linear group.</p>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> have characteristic zero, let <span class="math" data-tex="\(V=k^n\)">\(V=k^n\)</span>, and identify <span class="math" data-tex="\(V^m\)">\(V^m\)</span> with rows <span class="math" data-tex="\(v_i=(x_{i1},\ldots,x_{in})\)">\(v_i=(x_{i1},\ldots,x_{in})\)</span>. The row convention is the transpose of the usual matrix of vector columns. The diagonal action on <span class="math" data-tex="\(V\)">\(V\)</span> commutes with substitutions among the <span class="math" data-tex="\(m\)">\(m\)</span> copies. Polynomial invariants mean polynomials fixed by every element of the specified subgroup; the subgroup need not be reductive or closed.</p>
+<p>The lesson <a href="NOE-INV-02.html">Forms in several variables and Hilbert finiteness</a>, Theorem 2.3, supplies complete reducibility for polynomial representations of <span class="math" data-tex="\(\operatorname{SL}_r(\mathbb C)\)">\(\operatorname{SL}_r(\mathbb C)\)</span>. We will explain exactly how it supplies the row-substitution decompositions used here over an arbitrary characteristic-zero field.</p>
+<h2 id="1-polarizing-and-putting-the-variables-back-together">1. Polarizing and putting the variables back together</h2>
+<p>Define
+<span class="math math-display" data-tex="\[
+D_{ij}=\sum_{a=1}^n x_{ia}\partial_{x_{ja}}\qquad(1\leq i,j\leq m).
+\tag{1}
+\]">\[
+D_{ij}=\sum_{a=1}^n x_{ia}\partial_{x_{ja}}\qquad(1\leq i,j\leq m).
+\tag{1}
+\]</span>
+If <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, Taylor's formula gives
+<span class="math math-display" data-tex="\[
+F(\ldots,v_j+tv_i,\ldots)
+=\sum_{r\geq0}\frac{t^r}{r!}D_{ij}^rF.
+\tag{2}
+\]">\[
+F(\ldots,v_j+tv_i,\ldots)
+=\sum_{r\geq0}\frac{t^r}{r!}D_{ij}^rF.
+\tag{2}
+\]</span>
+The sum is finite for each polynomial. For <span class="math" data-tex="\(i=j\)">\(i=j\)</span>, <span class="math" data-tex="\(D_{ii}\)">\(D_{ii}\)</span> is instead the Euler operator measuring degree in row <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><strong>Proposition 1.1 (commutation).</strong> The <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> commute with simultaneous linear substitution on <span class="math" data-tex="\(V\)">\(V\)</span>, and
+<span class="math math-display" data-tex="\[
+[D_{ij},D_{kl}]=\delta_{jk}D_{il}-\delta_{li}D_{kj}.
+\tag{3}
+\]">\[
+[D_{ij},D_{kl}]=\delta_{jk}D_{il}-\delta_{li}D_{kj}.
+\tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> Replacing the rows by <span class="math" data-tex="\(gv_i\)">\(gv_i\)</span> and applying the chain rule contracts the derivative with the same vector <span class="math" data-tex="\(v_i\)">\(v_i\)</span>; the matrix and its inverse cancel. This proves commutation with the diagonal action, hence preservation of invariants. For (3), apply the product rule. The terms with two derivatives cancel in the difference. Differentiating the multiplier <span class="math" data-tex="\(x_{ka}\)">\(x_{ka}\)</span> gives <span class="math" data-tex="\(\delta_{jk}x_{ia}\partial_{x_{la}}\)">\(\delta_{jk}x_{ia}\partial_{x_{la}}\)</span>; differentiating <span class="math" data-tex="\(x_{ia}\)">\(x_{ia}\)</span> in the opposite product gives <span class="math" data-tex="\(-\delta_{li}x_{ka}\partial_{x_{ja}}\)">\(-\delta_{li}x_{ka}\partial_{x_{ja}}\)</span>. Sum over <span class="math" data-tex="\(a\)">\(a\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A polynomial homogeneous of degree <span class="math" data-tex="\(d\)">\(d\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> has <strong>full polarization</strong>
+<span class="math math-display" data-tex="\[
+\mathcal PF(v_1,\ldots,v_d)
+=\frac1{d!}[t_1\cdots t_d]\,
+F(t_1v_1+\cdots+t_dv_d).
+\tag{4}
+\]">\[
+\mathcal PF(v_1,\ldots,v_d)
+=\frac1{d!}[t_1\cdots t_d]\,
+F(t_1v_1+\cdots+t_dv_d).
+\tag{4}
+\]</span>
+It is symmetric and multilinear. <strong>Restitution</strong>, putting <span class="math" data-tex="\(v_1=\cdots=v_d=v\)">\(v_1=\cdots=v_d=v\)</span>, recovers <span class="math" data-tex="\(F(v)\)">\(F(v)\)</span>: the coefficient of <span class="math" data-tex="\(t_1\cdots t_d\)">\(t_1\cdots t_d\)</span> in <span class="math" data-tex="\((t_1+\cdots+t_d)^d\)">\((t_1+\cdots+t_d)^d\)</span> is <span class="math" data-tex="\(d!\)">\(d!\)</span>. Conversely, a symmetric multilinear form is determined by that diagonal polynomial, since coefficient extraction in its diagonal expansion recovers <span class="math" data-tex="\(d!\)">\(d!\)</span> times the form. For a multihomogeneous polynomial, perform (4) separately in each row. All these operations commute with the diagonal group action. Division by <span class="math" data-tex="\(d!\)">\(d!\)</span> is the characteristic-zero step.</p>
+<h2 id="2-the-shifted-determinant-in-capelli-s-identity">2. The shifted determinant in Capelli's identity</h2>
+<p>Noncommuting entries require an order. For an <span class="math" data-tex="\(r\times r\)">\(r\times r\)</span> operator matrix <span class="math" data-tex="\(M\)">\(M\)</span>, put
+<span class="math math-display" data-tex="\[
+\operatorname{cdet}M
+=\sum_{\sigma\in S_r}\operatorname{sgn}(\sigma)
+M_{\sigma(1),1}\cdots M_{\sigma(r),r}.
+\]">\[
+\operatorname{cdet}M
+=\sum_{\sigma\in S_r}\operatorname{sgn}(\sigma)
+M_{\sigma(1),1}\cdots M_{\sigma(r),r}.
+\]</span>
+The rightmost operator acts first.</p>
+<p><strong>Theorem 2.1 (Capelli).</strong> If <span class="math" data-tex="\(m=n\)">\(m=n\)</span> and <span class="math" data-tex="\(X=(x_{ia})\)">\(X=(x_{ia})\)</span>, then
+<span class="math math-display" data-tex="\[
+\operatorname{cdet}\bigl(D_{ij}+(n-j)\delta_{ij}\bigr)
+=\det(X)\det(\partial_{x_{ia}}).
+\tag{5}
+\]">\[
+\operatorname{cdet}\bigl(D_{ij}+(n-j)\delta_{ij}\bigr)
+=\det(X)\det(\partial_{x_{ia}}).
+\tag{5}
+\]</span>
+The shift can equally be written <span class="math" data-tex="\(n-i\)">\(n-i\)</span> on the diagonal. The stated column order is essential.</p>
+<p><strong>Proof.</strong> Introduce anticommuting symbols <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span>, with <span class="math" data-tex="\(e_i^2=0\)">\(e_i^2=0\)</span>, commuting with the ordinary variables and differential operators. Put
+<span class="math math-display" data-tex="\[
+\xi_a=\sum_i e_ix_{ia},\qquad
+\eta_j=\sum_i e_iD_{ij}=\sum_a\xi_a\partial_{x_{ja}}.
+\]">\[
+\xi_a=\sum_i e_ix_{ia},\qquad
+\eta_j=\sum_i e_iD_{ij}=\sum_a\xi_a\partial_{x_{ja}}.
+\]</span>
+For distinct row indices <span class="math" data-tex="\(j_1,\ldots,j_r\)">\(j_1,\ldots,j_r\)</span>, let
+<span class="math math-display" data-tex="\[
+N_{j_1,\ldots,j_r}
+=\sum_{a_1,\ldots,a_r}
+\xi_{a_1}\cdots\xi_{a_r}
+\partial_{x_{j_1a_1}}\cdots\partial_{x_{j_ra_r}};
+\qquad N_\varnothing=1.
+\]">\[
+N_{j_1,\ldots,j_r}
+=\sum_{a_1,\ldots,a_r}
+\xi_{a_1}\cdots\xi_{a_r}
+\partial_{x_{j_1a_1}}\cdots\partial_{x_{j_ra_r}};
+\qquad N_\varnothing=1.
+\]</span>
+The derivatives in <span class="math" data-tex="\(N\)">\(N\)</span> stand to the right of all multipliers. The product rule and
+<span class="math" data-tex="\(\partial_{x_{ja}}\xi_b=\delta_{ab}e_j\)">\(\partial_{x_{ja}}\xi_b=\delta_{ab}e_j\)</span>
+give
+<span class="math math-display" data-tex="\[
+\eta_jN_{j_1,\ldots,j_r}
+=N_{j,j_1,\ldots,j_r}-r e_jN_{j_1,\ldots,j_r}.
+\tag{6}
+\]">\[
+\eta_jN_{j_1,\ldots,j_r}
+=N_{j,j_1,\ldots,j_r}-r e_jN_{j_1,\ldots,j_r}.
+\tag{6}
+\]</span>
+To check the sign, when the derivative hits the <span class="math" data-tex="\(l\)">\(l\)</span>-th multiplier <span class="math" data-tex="\(\xi_{a_l}\)">\(\xi_{a_l}\)</span>, it yields
+<span class="math" data-tex="\(\xi_{a_l}\xi_{a_1}\cdots\xi_{a_{l-1}}e_j
+\xi_{a_{l+1}}\cdots\xi_{a_r}\)">\(\xi_{a_l}\xi_{a_1}\cdots\xi_{a_{l-1}}e_j
+\xi_{a_{l+1}}\cdots\xi_{a_r}\)</span>.
+Moving <span class="math" data-tex="\(e_j\)">\(e_j\)</span> to the front gives sign <span class="math" data-tex="\((-1)^l\)">\((-1)^l\)</span>; moving <span class="math" data-tex="\(\xi_{a_l}\)">\(\xi_{a_l}\)</span> to its original position gives <span class="math" data-tex="\((-1)^{l-1}\)">\((-1)^{l-1}\)</span>. Their product is <span class="math" data-tex="\(-1\)">\(-1\)</span>. Each of the <span class="math" data-tex="\(r\)">\(r\)</span> terms therefore contributes <span class="math" data-tex="\(-e_jN\)">\(-e_jN\)</span>.</p>
+<p>Starting from the right and using (6),
+<span class="math math-display" data-tex="\[
+(\eta_1+(n-1)e_1)(\eta_2+(n-2)e_2)\cdots\eta_n
+=N_{1,\ldots,n}.
+\tag{7}
+\]">\[
+(\eta_1+(n-1)e_1)(\eta_2+(n-2)e_2)\cdots\eta_n
+=N_{1,\ldots,n}.
+\tag{7}
+\]</span>
+The coefficient of <span class="math" data-tex="\(e_1\cdots e_n\)">\(e_1\cdots e_n\)</span> on the left is the column determinant in (5). On the right,
+<span class="math math-display" data-tex="\[
+\xi_{a_1}\cdots\xi_{a_n}
+=e_1\cdots e_n\det(x_{i,a_j})_{i,j}.
+\]">\[
+\xi_{a_1}\cdots\xi_{a_n}
+=e_1\cdots e_n\det(x_{i,a_j})_{i,j}.
+\]</span>
+Only tuples that permute <span class="math" data-tex="\(1,\ldots,n\)">\(1,\ldots,n\)</span> remain nonzero. Their signed derivative sum is <span class="math" data-tex="\(\det(\partial_{x_{ia}})\)">\(\det(\partial_{x_{ia}})\)</span>; their common multiplier is <span class="math" data-tex="\(\det X\)">\(\det X\)</span>. Taking the coefficient proves (5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For two rows, the identity reads
+<span class="math math-display" data-tex="\[
+(D_{11}+1)D_{22}-D_{21}D_{12}
+=(x_{11}x_{22}-x_{12}x_{21})
+(\partial_{11}\partial_{22}-\partial_{12}\partial_{21}).
+\tag{8}
+\]">\[
+(D_{11}+1)D_{22}-D_{21}D_{12}
+=(x_{11}x_{22}-x_{12}x_{21})
+(\partial_{11}\partial_{22}-\partial_{12}\partial_{21}).
+\tag{8}
+\]</span>
+The added <span class="math" data-tex="\(D_{22}\)">\(D_{22}\)</span> cancels the term created when a derivative in <span class="math" data-tex="\(D_{21}\)">\(D_{21}\)</span> hits a multiplier in <span class="math" data-tex="\(D_{12}\)">\(D_{12}\)</span>. Formula (6) is that same cancellation for all sizes.</p>
+<h2 id="3-a-row-bound-without-an-unproved-highest-weight-theorem">3. A row bound without an unproved highest-weight theorem</h2>
+<p>Write <span class="math" data-tex="\(H_d=k[V^m]_d\)">\(H_d=k[V^m]_d\)</span>. A subspace stable under row substitutions is stable under all <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span>. Conversely, stability under all <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> implies stability under row substitutions. For off-diagonal elementary matrices this follows from (2). For diagonal substitutions, the commuting <span class="math" data-tex="\(D_{ii}\)">\(D_{ii}\)</span> have nonnegative integer eigenvalues; projections onto their eigenspaces are interpolation polynomials in them. Thus a stable subspace is multihomogeneous and stable under row scalings. Elementary matrices and diagonal matrices generate <span class="math" data-tex="\(\operatorname{GL}_m(k)\)">\(\operatorname{GL}_m(k)\)</span>.</p>
+<p><strong>Lemma 3.1 (complete reducibility for row substitutions).</strong> Every <span class="math" data-tex="\(\operatorname{GL}_m(k)\)">\(\operatorname{GL}_m(k)\)</span>-stable subspace of <span class="math" data-tex="\(H_d\)">\(H_d\)</span> has a <span class="math" data-tex="\(\operatorname{GL}_m(k)\)">\(\operatorname{GL}_m(k)\)</span>-stable complement.</p>
+<p><strong>Proof.</strong> Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, apply complete reducibility for <span class="math" data-tex="\(\operatorname{SL}_m\)">\(\operatorname{SL}_m\)</span> from the previous lesson. Scalar matrices act on <span class="math" data-tex="\(H_d\)">\(H_d\)</span> by scalars. Every complex general-linear matrix is a scalar times a special-linear matrix, so that complement is general-linear stable.</p>
+<p>For arbitrary <span class="math" data-tex="\(k\)">\(k\)</span>, let <span class="math" data-tex="\(M\subset H_d\)">\(M\subset H_d\)</span> be stable and choose a <span class="math" data-tex="\(k\)">\(k\)</span>-basis. Its finitely many entries in the monomial basis lie in a finitely generated field <span class="math" data-tex="\(L\subset k\)">\(L\subset k\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The matrices of <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> in the monomial basis are rational. Coordinates expressing <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> of a chosen basis vector in the chosen basis can be computed using one nonzero maximal basis minor, so belong to <span class="math" data-tex="\(L\)">\(L\)</span>. Hence the <span class="math" data-tex="\(L\)">\(L\)</span>-span <span class="math" data-tex="\(M_L\)">\(M_L\)</span> is stable.</p>
+<p>Embed <span class="math" data-tex="\(L\)">\(L\)</span> into <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>: choose algebraically independent complex values for a transcendence basis and then extend over the finite algebraic extension into the algebraically closed field <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Complex complete reducibility gives a projection <span class="math" data-tex="\(p:H_d\otimes_L\mathbb C\to M_L\otimes_L\mathbb C\)">\(p:H_d\otimes_L\mathbb C\to M_L\otimes_L\mathbb C\)</span>, commuting with every <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> and equal to the identity on <span class="math" data-tex="\(M_L\)">\(M_L\)</span>. Those properties are a finite system of linear equations for the entries of <span class="math" data-tex="\(p\)">\(p\)</span>, with coefficients in <span class="math" data-tex="\(L\)">\(L\)</span>. Gaussian elimination shows that a system consistent over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> is consistent over <span class="math" data-tex="\(L\)">\(L\)</span>. Extend an <span class="math" data-tex="\(L\)">\(L\)</span>-solution to <span class="math" data-tex="\(k\)">\(k\)</span>. Its kernel is a <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span>-stable, hence <span class="math" data-tex="\(\operatorname{GL}_m(k)\)">\(\operatorname{GL}_m(k)\)</span>-stable, complement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2 (a highest row weight uses at most <span class="math" data-tex="\(n\)">\(n\)</span> rows).</strong> A nonzero finite-dimensional <span class="math" data-tex="\(\operatorname{GL}_m(k)\)">\(\operatorname{GL}_m(k)\)</span>-stable subspace of <span class="math" data-tex="\(H_d\)">\(H_d\)</span> contains a nonzero multihomogeneous polynomial <span class="math" data-tex="\(F\)">\(F\)</span> killed by every <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> with <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>. If <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>, every such <span class="math" data-tex="\(F\)">\(F\)</span> depends only on its first <span class="math" data-tex="\(n\)">\(n\)</span> rows.</p>
+<p><strong>Proof.</strong> Decompose into row multidegrees <span class="math" data-tex="\(\lambda=(\lambda_1,\ldots,\lambda_m)\)">\(\lambda=(\lambda_1,\ldots,\lambda_m)\)</span>, using the interpolation projectors just described. Choose the lexicographically largest weight with a nonzero vector <span class="math" data-tex="\(F\)">\(F\)</span>. For <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> changes that weight to <span class="math" data-tex="\(\lambda+e_i-e_j\)">\(\lambda+e_i-e_j\)</span>, a larger weight, or gives zero. Maximality therefore forces zero.</p>
+<p>For <span class="math" data-tex="\(j&gt;n\)">\(j&gt;n\)</span>, the equations <span class="math" data-tex="\(D_{ij}F=0\)">\(D_{ij}F=0\)</span>, <span class="math" data-tex="\(1\leq i\leq n\)">\(1\leq i\leq n\)</span>, are
+<span class="math math-display" data-tex="\[
+\sum_{a=1}^n x_{ia}\partial_{x_{ja}}F=0.
+\]">\[
+\sum_{a=1}^n x_{ia}\partial_{x_{ja}}F=0.
+\]</span>
+In the fraction field of the polynomial ring the first <span class="math" data-tex="\(n\)">\(n\)</span>-row matrix is invertible. Thus every <span class="math" data-tex="\(\partial_{x_{ja}}F=0\)">\(\partial_{x_{ja}}F=0\)</span>. These derivatives are polynomial and hence zero before localization. In characteristic zero, zero derivative means independence of that variable. This holds for every <span class="math" data-tex="\(j&gt;n\)">\(j&gt;n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The phrase “highest weight” here means precisely the maximal multidegree and its annihilation conditions. No classification of irreducible representations was used.</p>
+<p><strong>Theorem 3.3 (Weyl's polarization theorem).</strong> For every subgroup <span class="math" data-tex="\(G\subset\operatorname{GL}(V)\)">\(G\subset\operatorname{GL}(V)\)</span> and <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>,
+<span class="math math-display" data-tex="\[
+k[V^m]^G
+=\operatorname{span}_k\{\text{row substitutions of }F:
+F\in k[V^n]^G\}.
+\tag{9}
+\]">\[
+k[V^m]^G
+=\operatorname{span}_k\{\text{row substitutions of }F:
+F\in k[V^n]^G\}.
+\tag{9}
+\]</span>
+If a set generates the smaller invariant ring as an algebra, its polarizations generate the larger invariant ring.</p>
+<p><strong>Proof.</strong> In each total degree the invariant subspace <span class="math" data-tex="\(M=H_d^G\)">\(M=H_d^G\)</span> is stable under <span class="math" data-tex="\(\operatorname{GL}_m\)">\(\operatorname{GL}_m\)</span>, by Proposition 1.1. Split it into simple submodules using Lemma 3.1. Every nonzero simple summand contains a highest-row-weight vector by Lemma 3.2. That vector is invariant and belongs to <span class="math" data-tex="\(k[V^n]\)">\(k[V^n]\)</span>. Its orbit spans the simple summand, since its span is a nonzero stable subspace. Summing proves (9).</p>
+<p>Equation (2), coefficient interpolation in <span class="math" data-tex="\(t\)">\(t\)</span>, and the diagonal interpolation projectors show that orbit span and the span of all iterated <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> agree. If <span class="math" data-tex="\(S\)">\(S\)</span> generates <span class="math" data-tex="\(k[V^n]^G\)">\(k[V^n]^G\)</span>, the algebra generated by its row translates contains all translates of every polynomial in <span class="math" data-tex="\(S\)">\(S\)</span>, because row substitution is an algebra homomorphism. It therefore contains the space in (9). Equivalently, the Leibniz rule shows that all polarizations of those polynomials belong to the algebra generated by polarizations of <span class="math" data-tex="\(S\)">\(S\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(m&lt;n\)">\(m&lt;n\)</span>, restrict the invariant ring on <span class="math" data-tex="\(n\)">\(n\)</span> copies by setting the extra rows to zero. Inclusion followed by restriction is the identity on the smaller invariant ring, so restrictions of its generators suffice.</p>
+<h2 id="4-brackets-generate-the-special-linear-invariants">4. Brackets generate the special-linear invariants</h2>
+<p><strong>Theorem 4.1 (first fundamental theorem for vectors).</strong> For any <span class="math" data-tex="\(m\)">\(m\)</span>, the invariant ring <span class="math" data-tex="\(k[V^m]^{\operatorname{SL}_n}\)">\(k[V^m]^{\operatorname{SL}_n}\)</span> is generated by the <span class="math" data-tex="\(n\)">\(n\)</span>-row brackets
+<span class="math math-display" data-tex="\[
+[i_1\cdots i_n]=\det(v_{i_1},\ldots,v_{i_n}).
+\]">\[
+[i_1\cdots i_n]=\det(v_{i_1},\ldots,v_{i_n}).
+\]</span>
+When <span class="math" data-tex="\(m&lt;n\)">\(m&lt;n\)</span>, this ring is <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Proof.</strong> The direct matrix-orbit proof in the preceding lesson gives
+<span class="math" data-tex="\(k[V^n]^{\operatorname{SL}_n}=k[\det(v_1,\ldots,v_n)]\)">\(k[V^n]^{\operatorname{SL}_n}=k[\det(v_1,\ldots,v_n)]\)</span>.
+That proof works over any infinite field: invertible matrices of a specified determinant form a single special-linear orbit, and a polynomial equality on the open invertible locus is global.</p>
+<p>Apply Theorem 3.3. A row substitution replaces the determinant by the determinant of <span class="math" data-tex="\(n\)">\(n\)</span> linear combinations of the rows. By multilinearity and alternation it is a linear combination of <span class="math" data-tex="\(n\)">\(n\)</span>-row brackets. A translate of a polynomial in the determinant is therefore a polynomial in these brackets, proving generation. If <span class="math" data-tex="\(m&lt;n\)">\(m&lt;n\)</span>, the restrictions of all such brackets are zero; the restriction argument after Theorem 3.3 leaves only constants. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For three binary vectors, there are three brackets <span class="math" data-tex="\([12],[13],[23]\)">\([12],[13],[23]\)</span> and no relation. On the open set <span class="math" data-tex="\([12]=p\ne0\)">\([12]=p\ne0\)</span>, choose
+<span class="math math-display" data-tex="\[
+v_1=(1,0),\quad v_2=(0,p),\quad
+v_3=(-r/p,q).
+\]">\[
+v_1=(1,0),\quad v_2=(0,p),\quad
+v_3=(-r/p,q).
+\]</span>
+Then the three brackets are <span class="math" data-tex="\(p,q,r\)">\(p,q,r\)</span>. Their values fill a dense open set of affine three-space; thus a polynomial relation between them is zero.</p>
+<p>For four binary vectors, expansion gives
+<span class="math math-display" data-tex="\[
+[12][34]-[13][24]+[14][23]=0.
+\tag{10}
+\]">\[
+[12][34]-[13][24]+[14][23]=0.
+\tag{10}
+\]</span>
+It is the only relation. In the abstract ring on six bracket variables modulo (10), the relation is primitive and linear in <span class="math" data-tex="\([34]\)">\([34]\)</span>; its leading coefficient <span class="math" data-tex="\([12]\)">\([12]\)</span> is coprime to its constant coefficient. Gauss's lemma makes that quotient a domain. After inverting <span class="math" data-tex="\([12]\)">\([12]\)</span>, the remaining five brackets are independent: use the displayed coordinates for <span class="math" data-tex="\(v_3\)">\(v_3\)</span> and the corresponding pair of free coordinates for <span class="math" data-tex="\(v_4\)">\(v_4\)</span>. The map from the abstract quotient to the actual invariant ring is therefore injective after localization, and hence injective before localization because the quotient is a domain. Theorem 4.1 gives surjectivity.</p>
+<h3 id="all-bracket-relations-with-integer-coefficients">All bracket relations, with integer coefficients</h3>
+<p>Generation and relations are different questions. We now give a presentation of the bracket algebra that also keeps track of its integral coefficient lattice. In this subsection <span class="math" data-tex="\(R\)">\(R\)</span> can be any commutative ring. Use an <span class="math" data-tex="\(n\)">\(n\)</span> by <span class="math" data-tex="\(m\)">\(m\)</span> matrix of independent variables <span class="math" data-tex="\(z_{ai}\)">\(z_{ai}\)</span>; its <span class="math" data-tex="\(i\)">\(i\)</span>-th column represents the vector previously written as row <span class="math" data-tex="\(v_i\)">\(v_i\)</span>.</p>
+<p>For every strictly increasing <span class="math" data-tex="\(n\)">\(n\)</span>-tuple <span class="math" data-tex="\(I\)">\(I\)</span> introduce an indeterminate <span class="math" data-tex="\(p_I\)">\(p_I\)</span>. Extend the notation to an ordered tuple by alternation, with a repeated index giving zero. A product
+<span class="math" data-tex="\(p_{I_1}\cdots p_{I_s}\)">\(p_{I_1}\cdots p_{I_s}\)</span> is <strong>standard</strong> if
+<span class="math math-display" data-tex="\[
+(I_j)_a\leq (I_{j+1})_a
+\quad\text{for every }a=1,\ldots,n,\ j=1,\ldots,s-1.
+\]">\[
+(I_j)_a\leq (I_{j+1})_a
+\quad\text{for every }a=1,\ldots,n,\ j=1,\ldots,s-1.
+\]</span>
+Thus its columns increase strictly downward and its rows increase weakly to the right. The empty product is standard.</p>
+<p>Here are the quadratic Grassmann–Plücker shuffle relations. Take ordered lists <span class="math" data-tex="\(H,T,S\)">\(H,T,S\)</span> of respective lengths <span class="math" data-tex="\(t-1,n-t,n+1\)">\(t-1,n-t,n+1\)</span>, with <span class="math" data-tex="\(1\leq t\leq n\)">\(1\leq t\leq n\)</span>, and set
+<span class="math math-display" data-tex="\[
+\sum_{\substack{C\subset\{1,\ldots,n+1\}\\|C|=n-t+1}}
+\epsilon(C)\,p_{H,S_C}\,p_{S_{C^c},T}=0.
+\tag{21}
+\]">\[
+\sum_{\substack{C\subset\{1,\ldots,n+1\}\\|C|=n-t+1}}
+\epsilon(C)\,p_{H,S_C}\,p_{S_{C^c},T}=0.
+\tag{21}
+\]</span>
+The sublists retain their order in <span class="math" data-tex="\(S\)">\(S\)</span>, and <span class="math" data-tex="\(\epsilon(C)\)">\(\epsilon(C)\)</span> is the sign of the permutation listing <span class="math" data-tex="\(C\)">\(C\)</span> first and <span class="math" data-tex="\(C^c\)">\(C^c\)</span> second. Signed tuples in (21) are interpreted by the alternating convention. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> the nonzero relations are exactly (10), with arbitrary four distinct indices.</p>
+<p><strong>Theorem 4.2 (integral second fundamental theorem).</strong> The homomorphism
+<span class="math math-display" data-tex="\[
+R[p_I]\longrightarrow R[z_{ai}],\qquad
+p_I\longmapsto \det(z_{a,i_b})_{a,b=1}^n
+\]">\[
+R[p_I]\longrightarrow R[z_{ai}],\qquad
+p_I\longmapsto \det(z_{a,i_b})_{a,b=1}^n
+\]</span>
+has kernel generated by (21). Its image is a free <span class="math" data-tex="\(R\)">\(R\)</span>-module with the standard bracket products as a basis. In particular the presentation and the basis remain valid modulo every prime, and no additional relation appears there.</p>
+<p><strong>Proof.</strong> First, (21) vanishes on actual determinants. Its left side is an alternating multilinear function of the <span class="math" data-tex="\(n+1\)">\(n+1\)</span> columns listed in <span class="math" data-tex="\(S\)">\(S\)</span>. Indeed, an exchange within a chosen sublist changes its determinant sign; an exchange between the two sublists pairs the corresponding subset terms with opposite signs. It is zero when two columns coincide, including in characteristic two. Expand all columns in the <span class="math" data-tex="\(n\)">\(n\)</span> coordinate basis vectors. Every term has two equal basis columns, so the alternating function is zero. This argument is integral and uses no division.</p>
+<p>Next we straighten a nonstandard product. Order its increasing column tuples lexicographically. If the product is not standard, two consecutive columns <span class="math" data-tex="\(A=(a_1,\ldots,a_n)\)">\(A=(a_1,\ldots,a_n)\)</span>, <span class="math" data-tex="\(B=(b_1,\ldots,b_n)\)">\(B=(b_1,\ldots,b_n)\)</span> have <span class="math" data-tex="\(a_t&gt;b_t\)">\(a_t&gt;b_t\)</span> for some position <span class="math" data-tex="\(t\)">\(t\)</span>; take the first such position. Put
+<span class="math math-display" data-tex="\[
+H=(a_1,\ldots,a_{t-1}),\quad
+T=(b_{t+1},\ldots,b_n),\quad
+S=(a_t,\ldots,a_n,b_1,\ldots,b_t).
+\]">\[
+H=(a_1,\ldots,a_{t-1}),\quad
+T=(b_{t+1},\ldots,b_n),\quad
+S=(a_t,\ldots,a_n,b_1,\ldots,b_t).
+\]</span>
+The first <span class="math" data-tex="\(n-t+1\)">\(n-t+1\)</span> entries of <span class="math" data-tex="\(S\)">\(S\)</span> are all larger than its last <span class="math" data-tex="\(t\)">\(t\)</span> entries, because <span class="math" data-tex="\(a_t&gt;b_t\)">\(a_t&gt;b_t\)</span>. The term choosing those first entries in (21) is <span class="math" data-tex="\(p_Ap_B\)">\(p_Ap_B\)</span>, with coefficient one. Every other nonzero term chooses at least one <span class="math" data-tex="\(b_i\leq b_t&lt;a_t\)">\(b_i\leq b_t&lt;a_t\)</span> for its first determinant. After sorting that determinant, its tuple is lexicographically smaller than <span class="math" data-tex="\(A\)">\(A\)</span>: the fixed initial entries <span class="math" data-tex="\(H\)">\(H\)</span> are retained, and at least one of the larger tail entries has been replaced by a smaller entry.</p>
+<p>No other term is the original product with its factors reversed. To see this, <span class="math" data-tex="\(A&lt;B\)">\(A&lt;B\)</span> lexicographically, since equal columns cannot violate componentwise order. Their first unequal position occurs before or at <span class="math" data-tex="\(t\)">\(t\)</span>, and cannot be <span class="math" data-tex="\(t\)">\(t\)</span>, where <span class="math" data-tex="\(a_t&gt;b_t\)">\(a_t&gt;b_t\)</span>. Its entry in <span class="math" data-tex="\(A\)">\(A\)</span> is smaller than the corresponding entry in <span class="math" data-tex="\(B\)">\(B\)</span>, and is not an entry of <span class="math" data-tex="\(B\)">\(B\)</span>: all earlier entries agree and all later entries of <span class="math" data-tex="\(B\)">\(B\)</span> are larger. That entry belongs to <span class="math" data-tex="\(H\)">\(H\)</span>, so the first determinant in another term cannot be <span class="math" data-tex="\(p_B\)">\(p_B\)</span>.</p>
+<p>Consequently (21) expresses the original product as an integer linear combination of products whose sorted list of column tuples is lexicographically smaller. Other factors do not affect this conclusion: inserting the smaller new column before the former column <span class="math" data-tex="\(A\)">\(A\)</span> strictly decreases the sorted list. The number of columns and the multiset of all their indices are preserved. There are only finitely many such lists, so repeated straightening terminates in standard products. This proves that standard products span the quotient by the shuffle relations over <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>They are independent after substitution. Order the matrix variables lexicographically, row by row:
+<span class="math math-display" data-tex="\[
+z_{11}&gt;z_{12}&gt;\cdots&gt;z_{1m}&gt;
+z_{21}&gt;\cdots&gt;z_{nm}.
+\]">\[
+z_{11}&gt;z_{12}&gt;\cdots&gt;z_{1m}&gt;
+z_{21}&gt;\cdots&gt;z_{nm}.
+\]</span>
+The leading monomial of an increasing minor is its diagonal monomial
+<span class="math" data-tex="\(\prod_a z_{a,i_a}\)">\(\prod_a z_{a,i_a}\)</span>, with coefficient one: the determinant term using the smallest column in row one is largest, then the same argument applies to subsequent rows. Thus a standard product has leading monomial
+<span class="math math-display" data-tex="\[
+\prod_{j=1}^s\prod_{a=1}^n z_{a,(I_j)_a}.
+\]">\[
+\prod_{j=1}^s\prod_{a=1}^n z_{a,(I_j)_a}.
+\]</span>
+This monomial determines the standard product. For each coordinate row <span class="math" data-tex="\(a\)">\(a\)</span>, it records the multiset of entries in row <span class="math" data-tex="\(a\)">\(a\)</span> of the tableau; weak increase puts that multiset in its unique order, recovering every column. Distinct standard products therefore have distinct leading monomials.</p>
+<p>In a nonzero finite <span class="math" data-tex="\(R\)">\(R\)</span>-linear combination of their images, choose the largest leading monomial among terms with nonzero coefficients. Smaller-leading polynomials cannot contribute to it, and its coefficient is the chosen nonzero coefficient times one. The combination is nonzero, even when <span class="math" data-tex="\(R\)">\(R\)</span> has zero divisors. Independence follows. Spanning and independence identify the kernel exactly with the shuffle ideal and establish all assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Combining Theorems 4.1 and 4.2 gives the full presentation of the vector invariant ring in characteristic zero. The relation theorem itself has no characteristic restriction. It also shows why a computation after inverting one bracket alone would not suffice: the standard basis controls the entire polynomial algebra, including its specializations at that bracket's zero set.</p>
+<p><strong>Corollary 4.3 (integral vector invariants).</strong> A polynomial with integer coefficients, universally invariant under <span class="math" data-tex="\(\operatorname{SL}_n\)">\(\operatorname{SL}_n\)</span> on any number of vector columns, is an integer polynomial in their brackets.</p>
+<p><strong>Proof.</strong> Over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, Theorem 4.1 expresses it in brackets. Theorem 4.2 straightens that expression into a rational linear combination of standard products. Clear denominators with the least positive integer <span class="math" data-tex="\(N\)">\(N\)</span>, obtaining
+<span class="math math-display" data-tex="\[
+NF=\sum_T c_T p_T,\qquad c_T\in\mathbb Z.
+\]">\[
+NF=\sum_T c_T p_T,\qquad c_T\in\mathbb Z.
+\]</span>
+If a prime <span class="math" data-tex="\(p\)">\(p\)</span> divides <span class="math" data-tex="\(N\)">\(N\)</span>, reduction modulo <span class="math" data-tex="\(p\)">\(p\)</span> makes the left side zero. Independence of standard products over <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> makes every <span class="math" data-tex="\(c_T\)">\(c_T\)</span> divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. Dividing the integral identity by <span class="math" data-tex="\(p\)">\(p\)</span> contradicts minimality of <span class="math" data-tex="\(N\)">\(N\)</span>. Hence <span class="math" data-tex="\(N=1\)">\(N=1\)</span>. Conversely determinants are universally special-linear invariant, so all integer polynomials in them are invariant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Noether's 1919 paper, Section 3, proves precisely the binary integral statement by normalizing bracket products and controlling relations modulo each prime. The tableau argument here supplies the same integral control in every dimension. Its binary step is particularly concrete:
+<span class="math math-display" data-tex="\[
+p_{14}p_{23}=p_{13}p_{24}-p_{12}p_{34}.
+\]">\[
+p_{14}p_{23}=p_{13}p_{24}-p_{12}p_{34}.
+\]</span>
+The nested pair on the left is replaced by the two standard pairings on the right. Leading diagonal monomials then certify that the standard expressions are unique.</p>
+<figure><img src="figures/bracket-straightening.png" alt="Three pairings of four vector indices. The nested product of brackets 14 and 23 equals the product 13 and 24 minus the product 12 and 34. The two resulting products have componentwise ordered columns." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p>The arcs record which indices belong to each bracket; they do not represent a geometric configuration of the vectors. The signs are those of (10). This is the <span class="math" data-tex="\(n=2\)">\(n=2\)</span> straightening step in Theorem 4.2, with no denominator introduced. Editable diagram.</p>
+<h2 id="5-repeated-kinds-of-ground-forms">5. Repeated kinds of ground forms</h2>
+<p>Let <span class="math" data-tex="\(U\)">\(U\)</span> be a representation of dimension <span class="math" data-tex="\(D\)">\(D\)</span>, and let <span class="math" data-tex="\(Z\)">\(Z\)</span> be another representation containing all the other ground forms. A kind of form occurring <span class="math" data-tex="\(N\)">\(N\)</span> times has coefficient space <span class="math" data-tex="\(U^N\)">\(U^N\)</span>. The group acts diagonally on those copies and on <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p><strong>Theorem 5.1 (Noether's reduction for repeated kinds).</strong> In characteristic zero,
+<span class="math math-display" data-tex="\[
+k[Z\oplus U^N]^G
+\]">\[
+k[Z\oplus U^N]^G
+\]</span>
+is generated by polarizations, among the <span class="math" data-tex="\(U\)">\(U\)</span>-copies, of the invariants on <span class="math" data-tex="\(Z\oplus U^{\min(N,D)}\)">\(Z\oplus U^{\min(N,D)}\)</span>. The operators do not act on the other kinds of ground forms.</p>
+<p><strong>Proof.</strong> Repeat Lemmas 3.1–3.2 in a component of fixed total <span class="math" data-tex="\(U\)">\(U\)</span>-degree and fixed <span class="math" data-tex="\(Z\)">\(Z\)</span>-degree. It is the tensor product of <span class="math" data-tex="\(k[U^N]_d\)">\(k[U^N]_d\)</span> with the finite-dimensional space <span class="math" data-tex="\(k[Z]_e\)">\(k[Z]_e\)</span>, on which the row-substitution group acts trivially. The same complete-reducibility proof applies. For a highest-row-weight invariant, the derivative equations in a row <span class="math" data-tex="\(j&gt;D\)">\(j&gt;D\)</span> are a <span class="math" data-tex="\(D\times D\)">\(D\times D\)</span> system with the first <span class="math" data-tex="\(D\)">\(D\)</span> coefficient vectors as its matrix. In their fraction field that matrix is invertible, so the polynomial is independent of every later <span class="math" data-tex="\(U\)">\(U\)</span>-row. The orbit-span argument proves the assertion for <span class="math" data-tex="\(N\geq D\)">\(N\geq D\)</span>. If <span class="math" data-tex="\(N&lt;D\)">\(N&lt;D\)</span>, there is no reduction to perform. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For binary quadratics <span class="math" data-tex="\(D=3\)">\(D=3\)</span>, not two. Noether's 1916 paper credits the underlying reduction of repeated vector rows to Capelli, Mertens and Deruyts. Her answer to Hilbert applies that reduction to coefficient vectors of repeated ground forms. The number of copies is bounded by the dimension of the coefficient representation, not by the number of original polynomial variables.</p>
+<h2 id="6-vectors-and-dual-vectors">6. Vectors and dual vectors</h2>
+<p>The symbolic method also needs invariants involving both vectors and covectors. We give the tensor argument rather than assume a mixed version of the vector theorem.</p>
+<p><strong>Lemma 6.1 (a tensor commutant).</strong> The endomorphisms of <span class="math" data-tex="\(V^{\otimes r}\)">\(V^{\otimes r}\)</span> commuting with every <span class="math" data-tex="\(g^{\otimes r}\)">\(g^{\otimes r}\)</span>, <span class="math" data-tex="\(g\in\operatorname{GL}(V)\)">\(g\in\operatorname{GL}(V)\)</span>, are spanned by permutations of the <span class="math" data-tex="\(r\)">\(r\)</span> tensor factors.</p>
+<p><strong>Proof.</strong> First work over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Let <span class="math" data-tex="\(E=\operatorname{End}(V)\)">\(E=\operatorname{End}(V)\)</span>. Under
+<span class="math" data-tex="\(\operatorname{End}(V^{\otimes r})=E^{\otimes r}\)">\(\operatorname{End}(V^{\otimes r})=E^{\otimes r}\)</span>,
+conjugation by a factor permutation permutes the <span class="math" data-tex="\(r\)">\(r\)</span> factors. Its fixed subspace is the symmetric tensors, spanned by <span class="math" data-tex="\(T^{\otimes r}\)">\(T^{\otimes r}\)</span> with <span class="math" data-tex="\(T\in E\)">\(T\in E\)</span>. To verify the spanning assertion, polarize the power <span class="math" data-tex="\((t_1T_1+\cdots+t_rT_r)^{\otimes r}\)">\((t_1T_1+\cdots+t_rT_r)^{\otimes r}\)</span>; its <span class="math" data-tex="\(t_1\cdots t_r\)">\(t_1\cdots t_r\)</span> coefficient is the sum over factor permutations. Averaging factor permutations spans the fixed subspace in characteristic zero. Invertible <span class="math" data-tex="\(T\)">\(T\)</span> suffice: a linear functional vanishing on all their powers gives a polynomial on <span class="math" data-tex="\(E\)">\(E\)</span> vanishing on the dense invertible open set, and is therefore zero on every power.</p>
+<p>Thus the linear span of <span class="math" data-tex="\(g^{\otimes r}\)">\(g^{\otimes r}\)</span> is the commutant of the permutation algebra <span class="math" data-tex="\(P\)">\(P\)</span>. We need that the double commutant of <span class="math" data-tex="\(P\)">\(P\)</span> is <span class="math" data-tex="\(P\)">\(P\)</span>. Here is the finite-dimensional argument. Averaging over the finite group <span class="math" data-tex="\(S_r\)">\(S_r\)</span> makes every submodule split: average any linear projection onto the submodule, and its kernel is an invariant complement. Decompose <span class="math" data-tex="\(V^{\otimes r}\)">\(V^{\otimes r}\)</span> into copies of pairwise nonisomorphic simple <span class="math" data-tex="\(P\)">\(P\)</span>-modules <span class="math" data-tex="\(U_a\)">\(U_a\)</span>. An endomorphism of a simple module is scalar: over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> it has an eigenvalue, and the kernel of the corresponding difference from a scalar is a nonzero submodule, hence the whole module. A map between distinct simples is zero, by its kernel and image.</p>
+<p>The image of <span class="math" data-tex="\(P\)">\(P\)</span> is the full product of matrix algebras on the <span class="math" data-tex="\(U_a\)">\(U_a\)</span>. To prove this assertion, choose a basis <span class="math" data-tex="\(u_{a,1},\ldots,u_{a,d_a}\)">\(u_{a,1},\ldots,u_{a,d_a}\)</span> of each <span class="math" data-tex="\(U_a\)">\(U_a\)</span>, and consider the image
+<span class="math math-display" data-tex="\[
+M=\{(pu_{a,j})_{a,j}:p\in P\}
+\subset\bigoplus_aU_a^{d_a}.
+\]">\[
+M=\{(pu_{a,j})_{a,j}:p\in P\}
+\subset\bigoplus_aU_a^{d_a}.
+\]</span>
+If it were proper, its split quotient would admit a nonzero map to some <span class="math" data-tex="\(U_b\)">\(U_b\)</span>. Composing with the quotient gives a nonzero <span class="math" data-tex="\(P\)">\(P\)</span>-linear map annihilating <span class="math" data-tex="\(M\)">\(M\)</span>. The preceding simple-module facts make that map <span class="math" data-tex="\(\sum_jc_j\)">\(\sum_jc_j\)</span> times the coordinate identity on the copies of <span class="math" data-tex="\(U_b\)">\(U_b\)</span>, and zero on other types. Evaluating at <span class="math" data-tex="\(p=1\)">\(p=1\)</span> yields
+<span class="math" data-tex="\(\sum_jc_ju_{b,j}=0\)">\(\sum_jc_ju_{b,j}=0\)</span>, contradicting basis independence. Hence <span class="math" data-tex="\(M\)">\(M\)</span> is the whole direct sum. Specifying arbitrary images of those bases proves the assertion.</p>
+<p>Writing the original space as <span class="math" data-tex="\(\bigoplus_a U_a\otimes\mathbb C^{m_a}\)">\(\bigoplus_a U_a\otimes\mathbb C^{m_a}\)</span>, its commutant is therefore
+<span class="math" data-tex="\(\bigoplus_a I_{U_a}\otimes\operatorname{End}(\mathbb C^{m_a})\)">\(\bigoplus_a I_{U_a}\otimes\operatorname{End}(\mathbb C^{m_a})\)</span>.
+The commutant of this algebra is
+<span class="math" data-tex="\(\bigoplus_a\operatorname{End}(U_a)\otimes I\)">\(\bigoplus_a\operatorname{End}(U_a)\otimes I\)</span>, precisely the image of <span class="math" data-tex="\(P\)">\(P\)</span>. This proves the double-commutant assertion and the lemma over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p>Over any characteristic-zero <span class="math" data-tex="\(k\)">\(k\)</span>, commuting with all <span class="math" data-tex="\(g^{\otimes r}\)">\(g^{\otimes r}\)</span> is a system of rational linear equations: expand the commutator as a polynomial in the entries of a generic matrix. Vanishing for invertible matrices over the infinite field is equivalent to vanishing of all coefficients. The permutation operators have rational entries, and Gaussian elimination shows that equality of the two solution spaces over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> implies equality over <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2 (mixed first fundamental theorem).</strong> The special-linear invariant ring on any number of vectors <span class="math" data-tex="\(v_i\)">\(v_i\)</span> and dual vectors <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> is generated by their pairings <span class="math" data-tex="\(\alpha_j(v_i)\)">\(\alpha_j(v_i)\)</span>, vector determinants and dual-vector determinants.</p>
+<p><strong>Proof.</strong> Full polarization from (4) reduces generation to multilinear invariants in <span class="math" data-tex="\(r\)">\(r\)</span> vector slots and <span class="math" data-tex="\(s\)">\(s\)</span> dual slots. First consider the general linear group. Scalar matrices make such an invariant zero unless <span class="math" data-tex="\(r=s\)">\(r=s\)</span>. When <span class="math" data-tex="\(r=s\)">\(r=s\)</span>, it corresponds to an endomorphism of <span class="math" data-tex="\(V^{\otimes r}\)">\(V^{\otimes r}\)</span>; invariance says that endomorphism commutes with all <span class="math" data-tex="\(g^{\otimes r}\)">\(g^{\otimes r}\)</span>. Lemma 6.1 expresses it as a sum of factor permutations. Each corresponding multilinear polynomial is
+<span class="math" data-tex="\(\prod_j\alpha_j(v_{\sigma(j)})\)">\(\prod_j\alpha_j(v_{\sigma(j)})\)</span>.
+This proves the mixed general-linear theorem.</p>
+<p>For the special linear group, first work over an algebraic closure. The central matrices <span class="math" data-tex="\(\zeta I\)">\(\zeta I\)</span>, <span class="math" data-tex="\(\zeta^n=1\)">\(\zeta^n=1\)</span>, show that <span class="math" data-tex="\(r-s=qn\)">\(r-s=qn\)</span> for an integer <span class="math" data-tex="\(q\)">\(q\)</span>, unless the invariant is zero. A nonzero multilinear invariant <span class="math" data-tex="\(F\)">\(F\)</span> has general-linear determinant character <span class="math" data-tex="\(q\)">\(q\)</span>: write <span class="math" data-tex="\(g=\lambda h\)">\(g=\lambda h\)</span>, <span class="math" data-tex="\(\lambda^n=\det g\)">\(\lambda^n=\det g\)</span>, <span class="math" data-tex="\(h\in\operatorname{SL}_n\)">\(h\in\operatorname{SL}_n\)</span>, and use multilinearity to get <span class="math" data-tex="\(F(gv,\alpha g^{-1})=\det(g)^qF(v,\alpha)\)">\(F(gv,\alpha g^{-1})=\det(g)^qF(v,\alpha)\)</span>.</p>
+<p>If <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>, introduce <span class="math" data-tex="\(q\)">\(q\)</span> blocks of <span class="math" data-tex="\(n\)">\(n\)</span> auxiliary dual vectors <span class="math" data-tex="\(\beta_{\ell,1},\ldots,\beta_{\ell,n}\)">\(\beta_{\ell,1},\ldots,\beta_{\ell,n}\)</span>. The product
+<span class="math math-display" data-tex="\[
+F\prod_{\ell=1}^q\det(\beta_{\ell,1},\ldots,\beta_{\ell,n})
+\]">\[
+F\prod_{\ell=1}^q\det(\beta_{\ell,1},\ldots,\beta_{\ell,n})
+\]</span>
+is general-linear invariant and multilinear in all its slots. The general-linear theorem writes it as a sum of products of pairings. Antisymmetrize in each auxiliary block, dividing by <span class="math" data-tex="\(n!\)">\(n!\)</span>. The left side is unchanged. On the right, the <span class="math" data-tex="\(n\)">\(n\)</span> pairings using one block become
+<span class="math math-display" data-tex="\[
+\frac1{n!}\det(\beta_{\ell,1},\ldots,\beta_{\ell,n})
+\det(v_{i_1},\ldots,v_{i_n}).
+\]">\[
+\frac1{n!}\det(\beta_{\ell,1},\ldots,\beta_{\ell,n})
+\det(v_{i_1},\ldots,v_{i_n}).
+\]</span>
+If a vector slot repeats there, its determinant is zero. Cancel the product of auxiliary determinants in the polynomial domain. The result expresses <span class="math" data-tex="\(F\)">\(F\)</span> in vector determinants and the original pairings. If <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>, use auxiliary vector blocks instead and obtain dual determinants and pairings.</p>
+<p>Finally restitute the polarized slots. Descent to <span class="math" data-tex="\(k\)">\(k\)</span> is again a finite rational linear-algebra assertion in each degree: invariance is the kernel of the coefficient equations for elementary unipotent substitutions, and the proposed spanning polynomials have integer coefficients. Gaussian elimination descends their spanning equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the exact mixed theorem used for symbolic completeness in the first lesson.</p>
+<h3 id="two-commuting-substitution-groups">Two commuting substitution groups</h3>
+<p>The same commutant argument explains the duality viewpoint on matrix polynomials. We state it over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, so simple finite-group modules and their multiplicity spaces can be used without a splitting-field qualification. Let <span class="math" data-tex="\(U=\mathbb C^m\)">\(U=\mathbb C^m\)</span>, <span class="math" data-tex="\(V=\mathbb C^n\)">\(V=\mathbb C^n\)</span>. Homogeneous degree-<span class="math" data-tex="\(d\)">\(d\)</span> polynomials in a matrix have the representation
+<span class="math" data-tex="\(\operatorname{Sym}^d(U\otimes V)\)">\(\operatorname{Sym}^d(U\otimes V)\)</span>, with duals inserted if the inverse action on coordinate functions is chosen. Row and column substitutions commute.</p>
+<p><strong>Proposition 6.3 (matrix duality).</strong> On each degree piece, the linear spans of the two general-linear substitution groups are mutual commutants. The joint representation is a direct sum of pairwise inequivalent simple tensor-product representations, each occurring once.</p>
+<p><strong>Proof.</strong> Averaging over <span class="math" data-tex="\(S_d\)">\(S_d\)</span> identifies the symmetric power with
+<span class="math math-display" data-tex="\[
+\bigl(U^{\otimes d}\otimes V^{\otimes d}\bigr)^{S_d},
+\]">\[
+\bigl(U^{\otimes d}\otimes V^{\otimes d}\bigr)^{S_d},
+\]</span>
+where the same permutation acts on both tensor powers. Reorder the tensor factors to obtain this identification from <span class="math" data-tex="\((U\otimes V)^{\otimes d}\)">\((U\otimes V)^{\otimes d}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(S_a\)">\(S_a\)</span> range over the simple complex <span class="math" data-tex="\(S_d\)">\(S_d\)</span>-modules. The finite-group splitting and simple-module arguments proved in Lemma 6.1 give
+<span class="math math-display" data-tex="\[
+U^{\otimes d}=\bigoplus_a M_a(U)\otimes S_a,\qquad
+V^{\otimes d}=\bigoplus_b M_b(V)\otimes S_b,
+\]">\[
+U^{\otimes d}=\bigoplus_a M_a(U)\otimes S_a,\qquad
+V^{\otimes d}=\bigoplus_b M_b(V)\otimes S_b,
+\]</span>
+where a multiplicity space can be defined as
+<span class="math" data-tex="\(M_a(U)=\operatorname{Hom}_{S_d}(S_a,U^{\otimes d})\)">\(M_a(U)=\operatorname{Hom}_{S_d}(S_a,U^{\otimes d})\)</span>.
+Absent types have zero multiplicity space. That lemma also proves that the span of <span class="math" data-tex="\(\operatorname{GL}(U)\)">\(\operatorname{GL}(U)\)</span> on its tensor power is the full commutant of the permutation algebra. Hence its action on the nonzero <span class="math" data-tex="\(M_a(U)\)">\(M_a(U)\)</span> has image
+<span class="math" data-tex="\(\prod_a\operatorname{End}(M_a(U))\)">\(\prod_a\operatorname{End}(M_a(U))\)</span>; the analogous statement holds for <span class="math" data-tex="\(V\)">\(V\)</span>. Thus these are simple, pairwise inequivalent general-linear modules. Simplicity follows from the full matrix image, and inequivalence from the ability to act independently on distinct factors.</p>
+<p>Now
+<span class="math math-display" data-tex="\[
+(S_a\otimes S_b)^{S_d}
+\cong\operatorname{Hom}_{S_d}(S_a^*,S_b).
+\]">\[
+(S_a\otimes S_b)^{S_d}
+\cong\operatorname{Hom}_{S_d}(S_a^*,S_b).
+\]</span>
+Duals of simple finite-group modules are simple: the annihilator of a proper dual submodule would be an invariant subspace of the original module. Schur's lemma, proved in Lemma 6.1, makes the displayed space zero unless <span class="math" data-tex="\(S_b\cong S_a^*\)">\(S_b\cong S_a^*\)</span>, when it is one-dimensional. If <span class="math" data-tex="\(a^*\)">\(a^*\)</span> denotes that dual type, the degree piece is therefore
+<span class="math math-display" data-tex="\[
+\bigoplus_a M_a(U)\otimes M_{a^*}(V),
+\]">\[
+\bigoplus_a M_a(U)\otimes M_{a^*}(V),
+\]</span>
+omitting zero terms.</p>
+<p>The two group spans on this direct sum are respectively
+<span class="math" data-tex="\(\prod_a\operatorname{End}(M_a(U))\otimes I\)">\(\prod_a\operatorname{End}(M_a(U))\otimes I\)</span> and
+<span class="math" data-tex="\(\prod_a I\otimes\operatorname{End}(M_{a^*}(V))\)">\(\prod_a I\otimes\operatorname{End}(M_{a^*}(V))\)</span>.
+Their commutants are each other, by the same matrix-block computation used in Lemma 6.1. Each joint tensor summand is simple because the joint algebra contains its full endomorphism algebra, and different summands are inequivalent because their first factors are. Each occurs once in the displayed decomposition. This proves the proposition without an unproved classification of highest weights. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the polynomial matrix duality associated with the modern viewpoint of Howe; see his <a href="https://doi.org/10.1090/S0002-9947-1989-0986027-X">Remarks on classical invariant theory</a>, especially its introduction on the relation between polynomial and tensor invariants. A partition description of the multiplicity spaces gives more names for the summands, but is not needed for the polarization bound or for the mutual-commutant assertion proved here.</p>
+<h2 id="7-the-binary-clebsch-gordan-expansion">7. The binary Clebsch–Gordan expansion</h2>
+<p>Use two binary pairs <span class="math" data-tex="\(x=(x_1,x_2)\)">\(x=(x_1,x_2)\)</span>, <span class="math" data-tex="\(y=(y_1,y_2)\)">\(y=(y_1,y_2)\)</span>. Put
+<span class="math math-display" data-tex="\[
+B=[xy]=x_1y_2-x_2y_1,\qquad
+\Omega=\partial_{x_1}\partial_{y_2}
+-\partial_{x_2}\partial_{y_1}.
+\]">\[
+B=[xy]=x_1y_2-x_2y_1,\qquad
+\Omega=\partial_{x_1}\partial_{y_2}
+-\partial_{x_2}\partial_{y_1}.
+\]</span>
+For a binary form <span class="math" data-tex="\(h(z)\)">\(h(z)\)</span> of degree <span class="math" data-tex="\(a+b\)">\(a+b\)</span>, define its normalized <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>-polar by
+<span class="math math-display" data-tex="\[
+\mathcal P_{a,b}h(x,y)
+=\frac1{\binom{a+b}{b}}[t^b]h(x+ty).
+\tag{11}
+\]">\[
+\mathcal P_{a,b}h(x,y)
+=\frac1{\binom{a+b}{b}}[t^b]h(x+ty).
+\tag{11}
+\]</span>
+It has bidegree <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, equals <span class="math" data-tex="\(h(x)\)">\(h(x)\)</span> on <span class="math" data-tex="\(y=x\)">\(y=x\)</span>, and is killed by <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. The last assertion follows by expanding the derivatives of <span class="math" data-tex="\(h\)">\(h\)</span>: its second derivatives are symmetric, so the alternating contraction is zero.</p>
+<p><strong>Theorem 7.1 (binary series, with coefficients).</strong> If <span class="math" data-tex="\(F(x,y)\)">\(F(x,y)\)</span> has bidegree <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span>, let
+<span class="math math-display" data-tex="\[
+h_k(z)=\left.\Omega^kF(x,y)\right|_{x=y=z},
+\quad 0\leq k\leq\min(p,q).
+\]">\[
+h_k(z)=\left.\Omega^kF(x,y)\right|_{x=y=z},
+\quad 0\leq k\leq\min(p,q).
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+F(x,y)=\sum_{k=0}^{\min(p,q)}
+\frac{(p+q-2k+1)!}{k!(p+q-k+1)!}
+B^k\,\mathcal P_{p-k,q-k}h_k(x,y).
+\tag{12}
+\]">\[
+F(x,y)=\sum_{k=0}^{\min(p,q)}
+\frac{(p+q-2k+1)!}{k!(p+q-k+1)!}
+B^k\,\mathcal P_{p-k,q-k}h_k(x,y).
+\tag{12}
+\]</span>
+All operators here are equivariant for <span class="math" data-tex="\(\operatorname{SL}_2\)">\(\operatorname{SL}_2\)</span>; the expansion also applies with other coefficient variables held fixed.</p>
+<p><strong>Proof.</strong> The product rule gives, for a bihomogeneous <span class="math" data-tex="\(L\)">\(L\)</span> of total degree <span class="math" data-tex="\(N\)">\(N\)</span>,
+<span class="math math-display" data-tex="\[
+\Omega(BL)=B\Omega L+(N+2)L.
+\]">\[
+\Omega(BL)=B\Omega L+(N+2)L.
+\]</span>
+If <span class="math" data-tex="\(\Omega L=0\)">\(\Omega L=0\)</span>, induction therefore gives
+<span class="math math-display" data-tex="\[
+\Omega(B^kL)=k(N+k+1)B^{k-1}L.
+\]">\[
+\Omega(B^kL)=k(N+k+1)B^{k-1}L.
+\]</span>
+Apply this <span class="math" data-tex="\(k\)">\(k\)</span> times:
+<span class="math math-display" data-tex="\[
+\left.\Omega^k(B^kL)\right|_{y=x}
+=k!\frac{(N+k+1)!}{(N+1)!}L(x,x).
+\tag{13}
+\]">\[
+\left.\Omega^k(B^kL)\right|_{y=x}
+=k!\frac{(N+k+1)!}{(N+1)!}L(x,x).
+\tag{13}
+\]</span>
+Fewer than <span class="math" data-tex="\(k\)">\(k\)</span> contractions leave a factor <span class="math" data-tex="\(B\)">\(B\)</span>, which is zero on the diagonal. More than <span class="math" data-tex="\(k\)">\(k\)</span> contractions kill the remaining harmonic <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>The maps <span class="math" data-tex="\(h\mapsto B^k\mathcal P_{p-k,q-k}h\)">\(h\mapsto B^k\mathcal P_{p-k,q-k}h\)</span>, with <span class="math" data-tex="\(h\)">\(h\)</span> of degree <span class="math" data-tex="\(p+q-2k\)">\(p+q-2k\)</span>, have linearly independent images: apply <span class="math" data-tex="\(\Omega^k\)">\(\Omega^k\)</span> and then diagonal restriction, which isolates that summand by (13). The sum of their dimensions is
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^{\min(p,q)}(p+q-2k+1)=(p+1)(q+1),
+\]">\[
+\sum_{k=0}^{\min(p,q)}(p+q-2k+1)=(p+1)(q+1),
+\]</span>
+the dimension of all bidegree-<span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> polynomials. Hence these images are a direct-sum decomposition of that space. Equation (13), with <span class="math" data-tex="\(N=p+q-2k\)">\(N=p+q-2k\)</span>, then determines every coefficient of the decomposition and yields (12). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(p=q=1\)">\(p=q=1\)</span>, formula (12) decomposes <span class="math" data-tex="\(x_1y_2\)">\(x_1y_2\)</span> into
+<span class="math math-display" data-tex="\[
+\tfrac12(x_1y_2+x_2y_1)+\tfrac12[xy].
+\]">\[
+\tfrac12(x_1y_2+x_2y_1)+\tfrac12[xy].
+\]</span>
+For <span class="math" data-tex="\(F=f(x)g(y)\)">\(F=f(x)g(y)\)</span> of orders <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, the first lesson's transvectant normalization gives
+<span class="math math-display" data-tex="\[
+h_k=\frac{p!q!}{(p-k)!(q-k)!}(f,g)_k.
+\]">\[
+h_k=\frac{p!q!}{(p-k)!(q-k)!}(f,g)_k.
+\]</span>
+Substitution into (12) fixes the constants of the usual transvectant series.</p>
+<p>For any number of binary pairs, repeatedly apply (12) to two pairs, treating the other pairs as coefficient variables. Their diagonal form introduces one pair <span class="math" data-tex="\(z\)">\(z\)</span>; expand that pair with the next one and continue. At every stage (11) and the displayed factorial coefficient specify the polar and contraction explicitly. The number of stages and the number of terms at each stage are finite. This gives a complete expansion for several binary series of variables, rather than only an existence assertion.</p>
+<h2 id="8-a-general-polarized-series-with-finite-matrix-coefficients">8. A general polarized series with finite matrix coefficients</h2>
+<p>The decomposition into a few-variable polynomial and polarization operators also has an explicit finite form in arbitrary dimension. The following construction gives coefficients by rational matrix operations; it does not require a classification of irreducible representations.</p>
+<p>On <span class="math" data-tex="\(H_d\)">\(H_d\)</span>, use the Fischer inner product over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>:
+<span class="math math-display" data-tex="\[
+\langle x^\alpha,x^\beta\rangle=\delta_{\alpha\beta}\alpha!.
+\]">\[
+\langle x^\alpha,x^\beta\rangle=\delta_{\alpha\beta}\alpha!.
+\]</span>
+Multiplication by a variable is adjoint to its derivative, so <span class="math" data-tex="\(D_{ij}^*=D_{ji}\)">\(D_{ij}^*=D_{ji}\)</span>. A <strong>primary polynomial</strong> will mean one killed by all <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span>, <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>. By Lemma 3.2 every primary polynomial uses at most the first <span class="math" data-tex="\(n\)">\(n\)</span> rows.</p>
+<p><strong>Theorem 8.1 (finite general series).</strong> For fixed <span class="math" data-tex="\(n,m,d\)">\(n,m,d\)</span>, there are explicit rational operators <span class="math" data-tex="\(R_W\)">\(R_W\)</span>, all built from the <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span>, such that
+<span class="math math-display" data-tex="\[
+F=\sum_W Wf_W,\qquad f_W=R_WF,
+\tag{14}
+\]">\[
+F=\sum_W Wf_W,\qquad f_W=R_WF,
+\tag{14}
+\]</span>
+where every <span class="math" data-tex="\(f_W\)">\(f_W\)</span> is primary and <span class="math" data-tex="\(W\)">\(W\)</span> is a word in polarization operators. If <span class="math" data-tex="\(F\)">\(F\)</span> is invariant under any diagonal group, every <span class="math" data-tex="\(f_W\)">\(f_W\)</span> is invariant. The construction is valid over every characteristic-zero field.</p>
+<p><strong>Proof and construction.</strong> In the monomial basis of <span class="math" data-tex="\(H_d\)">\(H_d\)</span>, form the rational matrix
+<span class="math math-display" data-tex="\[
+Q=\sum_{i&lt;j}D_{ji}D_{ij}.
+\]">\[
+Q=\sum_{i&lt;j}D_{ji}D_{ij}.
+\]</span>
+It is positive semidefinite, since
+<span class="math" data-tex="\(\langle QF,F\rangle=\sum_{i&lt;j}\|D_{ij}F\|^2\)">\(\langle QF,F\rangle=\sum_{i&lt;j}\|D_{ij}F\|^2\)</span>.
+Its kernel is exactly the primary subspace. Write its characteristic polynomial as <span class="math" data-tex="\(t^s h(t)\)">\(t^s h(t)\)</span> with <span class="math" data-tex="\(h(0)\ne0\)">\(h(0)\ne0\)</span>. The spectral theorem makes
+<span class="math math-display" data-tex="\[
+P=h(Q)/h(0)
+\]">\[
+P=h(Q)/h(0)
+\]</span>
+the orthogonal projection onto that kernel: it is one on the zero eigenspace and zero on every nonzero eigenspace. If <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>, take <span class="math" data-tex="\(P=I\)">\(P=I\)</span>. This describes <span class="math" data-tex="\(P\)">\(P\)</span> by rational matrix entries.</p>
+<p>Let <span class="math" data-tex="\(a=\dim H_d\)">\(a=\dim H_d\)</span>, and take all words <span class="math" data-tex="\(W\)">\(W\)</span> of length at most <span class="math" data-tex="\(a\)">\(a\)</span> in the <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span>, including the empty word. Their images of <span class="math" data-tex="\(\operatorname{im}P\)">\(\operatorname{im}P\)</span> span <span class="math" data-tex="\(H_d\)">\(H_d\)</span>. Indeed, successive word spans form an ascending chain; once a step stops increasing, the span is stable under every <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span>. It then contains the orbit span of every primary vector. Complete reducibility and Lemma 3.2 make that orbit span the whole space. Before stabilization there can be at most <span class="math" data-tex="\(a\)">\(a\)</span> strict increases.</p>
+<p>Form
+<span class="math math-display" data-tex="\[
+T=\sum_W WPW^*.
+\]">\[
+T=\sum_W WPW^*.
+\]</span>
+It is positive definite: if <span class="math" data-tex="\(\langle TF,F\rangle=0\)">\(\langle TF,F\rangle=0\)</span>, then <span class="math" data-tex="\(PW^*F=0\)">\(PW^*F=0\)</span> for every <span class="math" data-tex="\(W\)">\(W\)</span>, making <span class="math" data-tex="\(F\)">\(F\)</span> orthogonal to all <span class="math" data-tex="\(W\operatorname{im}P\)">\(W\operatorname{im}P\)</span>, which span the space. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is invertible. Compute <span class="math" data-tex="\(T^{-1}\)">\(T^{-1}\)</span> by its adjugate divided by its nonzero determinant, and set
+<span class="math math-display" data-tex="\[
+R_W=PW^*T^{-1}.
+\]">\[
+R_W=PW^*T^{-1}.
+\]</span>
+Now <span class="math" data-tex="\(\sum_WWR_W=TT^{-1}=I\)">\(\sum_WWR_W=TT^{-1}=I\)</span>, proving (14), and <span class="math" data-tex="\(R_WF\in\operatorname{im}P\)">\(R_WF\in\operatorname{im}P\)</span>. Every operator used commutes with a diagonal group by Proposition 1.1; inverses of invertible commuting operators also commute. This proves the invariance assertion.</p>
+<p>All entries and identities are rational. Their verification over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> therefore proves the same identities over every characteristic-zero field. The derivative argument in Lemma 3.2 proves that the primary images there also use only the first <span class="math" data-tex="\(n\)">\(n\)</span> rows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is a matrix form of the general series principle behind the Capelli–Mertens–Deruyts reduction: a polynomial is a finite sum of polars of primary polynomials, with invariant operations extracting the primary coefficients. It is less economical computationally than the specialized classical formulas, but gives a full finite construction and exact coefficients for any number of series. Theorem 5.1 applies it separately to each repeated kind of coefficient vector. The binary formula (12) is much shorter because its primary pieces can be indexed by a single contraction number.</p>
+<h3 id="determinant-powers-and-their-generalization">Determinant powers and their generalization</h3>
+<p>There is a more structured version for <span class="math" data-tex="\(r\leq n\)">\(r\leq n\)</span> rows of <span class="math" data-tex="\(n\)">\(n\)</span> variables. For a coordinate subset <span class="math" data-tex="\(I\subset\{1,\ldots,n\}\)">\(I\subset\{1,\ldots,n\}\)</span>, <span class="math" data-tex="\(|I|=r\)">\(|I|=r\)</span>, put
+<span class="math math-display" data-tex="\[
+\Delta_I=\det(x_{ia})_{1\leq i\leq r,\ a\in I},
+\qquad
+\Omega_I=\det(\partial_{x_{ia}})_{1\leq i\leq r,\ a\in I},
+\]">\[
+\Delta_I=\det(x_{ia})_{1\leq i\leq r,\ a\in I},
+\qquad
+\Omega_I=\det(\partial_{x_{ia}})_{1\leq i\leq r,\ a\in I},
+\]</span>
+in increasing coordinate order. A polynomial is <strong>determinant-harmonic</strong> if every <span class="math" data-tex="\(\Omega_I\)">\(\Omega_I\)</span> kills it.</p>
+<p><strong>Theorem 8.2 (general determinant series).</strong> Every homogeneous polynomial in <span class="math" data-tex="\(r\leq n\)">\(r\leq n\)</span> rows is a finite sum of products of their <span class="math" data-tex="\(r\)">\(r\)</span>-row determinants times determinant-harmonic polynomials. Each harmonic coefficient is a finite sum of polars of polynomials in only <span class="math" data-tex="\(r-1\)">\(r-1\)</span> rows. All extraction coefficients can be computed by rational finite matrices. For <span class="math" data-tex="\(r=n\)">\(r=n\)</span> the expansion has the unique form
+<span class="math math-display" data-tex="\[
+F=\Phi_0+\Delta\Phi_1+\cdots+\Delta^\mu\Phi_\mu,
+\qquad \Omega\Phi_i=0.
+\tag{17}
+\]">\[
+F=\Phi_0+\Delta\Phi_1+\cdots+\Delta^\mu\Phi_\mu,
+\qquad \Omega\Phi_i=0.
+\tag{17}
+\]</span>
+For <span class="math" data-tex="\(r&gt;n\)">\(r&gt;n\)</span>, Theorem 8.1 first reduces to <span class="math" data-tex="\(n\)">\(n\)</span> rows; thus these constructions give the series for every number of rows.</p>
+<p><strong>Proof.</strong> On each degree piece the adjoint of multiplication by <span class="math" data-tex="\(\Delta_I\)">\(\Delta_I\)</span>, in the Fischer inner product, is <span class="math" data-tex="\(\Omega_I\)">\(\Omega_I\)</span>. Hence
+<span class="math math-display" data-tex="\[
+H_d=\bigcap_I\ker\Omega_I\ \oplus\
+\sum_I\Delta_I H_{d-r}
+\tag{18}
+\]">\[
+H_d=\bigcap_I\ker\Omega_I\ \oplus\
+\sum_I\Delta_I H_{d-r}
+\tag{18}
+\]</span>
+as an orthogonal direct sum of the indicated harmonic space and the sum of determinant multiples. The second sum can have internal relations; (18) does not assert its summands are independent.</p>
+<p>Here is a rational computation of the decomposition. The matrix
+<span class="math math-display" data-tex="\[
+K_d=\sum_I \Delta_I\Omega_I:H_d\to H_d
+\]">\[
+K_d=\sum_I \Delta_I\Omega_I:H_d\to H_d
+\]</span>
+is positive semidefinite, and its kernel is the harmonic space. If its characteristic polynomial is <span class="math" data-tex="\(t^s h(t)\)">\(t^s h(t)\)</span>, <span class="math" data-tex="\(h(0)\ne0\)">\(h(0)\ne0\)</span>, put <span class="math" data-tex="\(P_0=h(K_d)/h(0)\)">\(P_0=h(K_d)/h(0)\)</span>. As before, this is the harmonic projector; if <span class="math" data-tex="\(K_d=0\)">\(K_d=0\)</span>, take <span class="math" data-tex="\(P_0=I\)">\(P_0=I\)</span>. Choose a rational polynomial <span class="math" data-tex="\(q(t)\)">\(q(t)\)</span> such that <span class="math" data-tex="\(q(0)=0\)">\(q(0)=0\)</span> and <span class="math" data-tex="\(tq(t)\equiv1\pmod{h(t)}\)">\(tq(t)\equiv1\pmod{h(t)}\)</span>; the Euclidean algorithm gives an inverse of <span class="math" data-tex="\(t\)">\(t\)</span> modulo <span class="math" data-tex="\(h\)">\(h\)</span>, and adding a multiple of <span class="math" data-tex="\(h\)">\(h\)</span> arranges <span class="math" data-tex="\(q(0)=0\)">\(q(0)=0\)</span>. Put <span class="math" data-tex="\(K_d^+=q(K_d)\)">\(K_d^+=q(K_d)\)</span>. On nonzero eigenspaces it is the inverse of <span class="math" data-tex="\(K_d\)">\(K_d\)</span>, and on its kernel it is zero. Therefore
+<span class="math math-display" data-tex="\[
+F=P_0F+\sum_I\Delta_I F_I,\qquad
+F_I=\Omega_I K_d^+F.
+\tag{19}
+\]">\[
+F=P_0F+\sum_I\Delta_I F_I,\qquad
+F_I=\Omega_I K_d^+F.
+\tag{19}
+\]</span>
+Every <span class="math" data-tex="\(F_I\)">\(F_I\)</span> has degree <span class="math" data-tex="\(d-r\)">\(d-r\)</span>. Reapply (19) to each of them. Degree decreases at every step, so the procedure terminates in products of minors times harmonic coefficients. It uses only rational matrices and rational inverses.</p>
+<p>It remains to justify the claimed polars of <span class="math" data-tex="\(r-1\)">\(r-1\)</span> rows. The exterior proof of Capelli's identity works unchanged when the number <span class="math" data-tex="\(n\)">\(n\)</span> of coordinate columns exceeds the number <span class="math" data-tex="\(r\)">\(r\)</span> of rows: extract <span class="math" data-tex="\(e_1\cdots e_r\)">\(e_1\cdots e_r\)</span> from (7), retaining all coordinate subsets. It gives the rectangular identity
+<span class="math math-display" data-tex="\[
+\operatorname{cdet}(D_{ij}+(r-j)\delta_{ij})_{1\leq i,j\leq r}
+=\sum_{|I|=r}\Delta_I\Omega_I.
+\tag{20}
+\]">\[
+\operatorname{cdet}(D_{ij}+(r-j)\delta_{ij})_{1\leq i,j\leq r}
+=\sum_{|I|=r}\Delta_I\Omega_I.
+\tag{20}
+\]</span>
+The harmonic space is stable under row substitutions. Indeed, row multiplication transforms each differential determinant by its determinant character, so its zero condition is preserved. Split it into simple row modules by Lemma 3.1. In each summand choose a maximal row weight <span class="math" data-tex="\(F\)">\(F\)</span>, as in Lemma 3.2. Write that weight as <span class="math" data-tex="\((\lambda_1,\ldots,\lambda_r)\)">\((\lambda_1,\ldots,\lambda_r)\)</span>. In the column determinant on the left of (20), every nonidentity permutation term kills <span class="math" data-tex="\(F\)">\(F\)</span>: take its largest moved column <span class="math" data-tex="\(j\)">\(j\)</span>. Its selected row is less than <span class="math" data-tex="\(j\)">\(j\)</span>, so the factor <span class="math" data-tex="\(D_{\sigma(j),j}\)">\(D_{\sigma(j),j}\)</span> is a raising operator; all factors to its right are diagonal and act by scalars. The identity term acts by
+<span class="math math-display" data-tex="\[
+\prod_{j=1}^r(\lambda_j+r-j).
+\]">\[
+\prod_{j=1}^r(\lambda_j+r-j).
+\]</span>
+The right side kills a harmonic <span class="math" data-tex="\(F\)">\(F\)</span>, so this product is zero. The first <span class="math" data-tex="\(r-1\)">\(r-1\)</span> factors are positive integers; characteristic zero makes them nonzero. Hence <span class="math" data-tex="\(\lambda_r=0\)">\(\lambda_r=0\)</span>, and <span class="math" data-tex="\(F\)">\(F\)</span> is independent of its last row. Its orbit generates the summand. Thus every harmonic polynomial is a sum of polars of polynomials on <span class="math" data-tex="\(r-1\)">\(r-1\)</span> rows.</p>
+<p>The coefficient extraction can be made explicit by the <span class="math" data-tex="\(P,W,T^{-1}\)">\(P,W,T^{-1}\)</span> construction of Theorem 8.1 on the same degree space. All of its operators are polynomials in the <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span>, or inverses of invertible such matrices, so they preserve the harmonic subspace. Its extracted primary coefficients are therefore harmonic; the argument with (20) makes each independent of row <span class="math" data-tex="\(r\)">\(r\)</span>. This supplies the promised finite rational coefficients.</p>
+<p>When <span class="math" data-tex="\(r=n\)">\(r=n\)</span>, there is only one minor <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. Multiplication by it is injective in the polynomial ring. Equation (18) then gives a unique harmonic coefficient and a unique quotient, at every degree step, proving uniqueness of (17). The proof by Fischer positivity establishes rational operator identities; those identities descend unchanged to any characteristic-zero field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Noether's <em>On series expansion in form theory</em> (1920), the addendum to Part III of her 1916 paper, explicitly corrects the earlier use of
+<span class="math" data-tex="\(\Omega(\Delta\psi)=c_1\psi+c_2\Delta\Omega\psi\)">\(\Omega(\Delta\psi)=c_1\psi+c_2\Delta\Omega\psi\)</span>
+as a general identity. It is valid for binary rows but not for arbitrary dimension. Equations (18)–(20) supply the necessary general projection and the quotient separately, so this proof does not make that assumption. In dimension two, (17) specializes to the explicitly normalized binary series in Section 7.</p>
+<h2 id="9-orthogonal-vectors-and-quadratic-ground-forms">9. Orthogonal vectors and quadratic ground forms</h2>
+<h3 id="orthogonal-invariants-in-dimension-two">Orthogonal invariants in dimension two</h3>
+<p>Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, write a vector as <span class="math" data-tex="\((x_i,y_i)\)">\((x_i,y_i)\)</span>, and put <span class="math" data-tex="\(u_i=x_i+iy_i,\ v_i=x_i-iy_i\)">\(u_i=x_i+iy_i,\ v_i=x_i-iy_i\)</span>. The special orthogonal group acts by
+<span class="math" data-tex="\(u_i\mapsto tu_i,\ v_i\mapsto t^{-1}v_i\)">\(u_i\mapsto tu_i,\ v_i\mapsto t^{-1}v_i\)</span>.
+Indeed these substitutions preserve <span class="math" data-tex="\(x_i^2+y_i^2=u_iv_i\)">\(x_i^2+y_i^2=u_iv_i\)</span>, and every determinant-one isometry has this form in the isotropic basis. A reflection interchanges <span class="math" data-tex="\(u_i,v_i\)">\(u_i,v_i\)</span>, and these two components give the whole orthogonal group.</p>
+<p>Torus-invariant monomials have equal total <span class="math" data-tex="\(u\)">\(u\)</span>- and <span class="math" data-tex="\(v\)">\(v\)</span>-degrees, so they are products of <span class="math" data-tex="\(u_iv_j\)">\(u_iv_j\)</span>. Put
+<span class="math math-display" data-tex="\[
+q_{ij}=u_iv_j+v_iu_j,\qquad r_{ij}=u_iv_j-v_iu_j.
+\]">\[
+q_{ij}=u_iv_j+v_iu_j,\qquad r_{ij}=u_iv_j-v_iu_j.
+\]</span>
+The torus ring is generated by the <span class="math" data-tex="\(q_{ij},r_{ij}\)">\(q_{ij},r_{ij}\)</span>, since <span class="math" data-tex="\(2\)">\(2\)</span> is invertible. The reflection fixes the <span class="math" data-tex="\(q\)">\(q\)</span>'s and negates the <span class="math" data-tex="\(r\)">\(r\)</span>'s. Averaging a polynomial expression with its reflected expression leaves only monomials with an even number of <span class="math" data-tex="\(r\)">\(r\)</span>-factors. Expansion gives
+<span class="math math-display" data-tex="\[
+r_{ij}r_{kl}=q_{il}q_{jk}-q_{ik}q_{jl}.
+\]">\[
+r_{ij}r_{kl}=q_{il}q_{jk}-q_{ik}q_{jl}.
+\]</span>
+Pairing up those factors expresses every invariant in the <span class="math" data-tex="\(q\)">\(q\)</span>'s. Since
+<span class="math" data-tex="\(q_{ij}=2(x_ix_j+y_iy_j)\)">\(q_{ij}=2(x_ix_j+y_iy_j)\)</span>, the orthogonal invariant ring is generated by the pairwise inner products.</p>
+<h3 id="binary-quadratics-retain-orientation">Binary quadratics retain orientation</h3>
+<p>For quadratics
+<span class="math math-display" data-tex="\[
+f_i=a_ix^2+2b_ixy+c_iy^2
+\]">\[
+f_i=a_ix^2+2b_ixy+c_iy^2
+\]</span>
+define
+<span class="math math-display" data-tex="\[
+h_i=a_ic_i-b_i^2,\quad
+M_{ij}=a_ic_j+c_ia_j-2b_ib_j,\quad
+\tau_{ijk}=\det\begin{pmatrix}
+a_i&amp;b_i&amp;c_i\\a_j&amp;b_j&amp;c_j\\a_k&amp;b_k&amp;c_k
+\end{pmatrix}.
+\tag{15}
+\]">\[
+h_i=a_ic_i-b_i^2,\quad
+M_{ij}=a_ic_j+c_ia_j-2b_ib_j,\quad
+\tau_{ijk}=\det\begin{pmatrix}
+a_i&amp;b_i&amp;c_i\\a_j&amp;b_j&amp;c_j\\a_k&amp;b_k&amp;c_k
+\end{pmatrix}.
+\tag{15}
+\]</span>
+The first two are the discriminants and their polarizations:
+the coefficient of <span class="math" data-tex="\(t\)">\(t\)</span> in <span class="math" data-tex="\(h(f_i+tf_j)\)">\(h(f_i+tf_j)\)</span> is <span class="math" data-tex="\(M_{ij}\)">\(M_{ij}\)</span>.
+The determinant is also special-linear invariant. In fact the determinant of the coefficient representation <span class="math" data-tex="\(\operatorname{Sym}^2(g^{-1})\)">\(\operatorname{Sym}^2(g^{-1})\)</span> is <span class="math" data-tex="\(\det(g)^{-3}\)">\(\det(g)^{-3}\)</span>. One can check it on diagonal matrices, where its three eigenvalues multiply to that expression, and then on every matrix by polynomial density.</p>
+<p><strong>Theorem 9.1 (joint quadratic invariants).</strong> In characteristic zero, the invariants of any number of binary quadratics are generated by the <span class="math" data-tex="\(h_i,M_{ij},\tau_{ijk}\)">\(h_i,M_{ij},\tau_{ijk}\)</span>. For two quadratics the three generators <span class="math" data-tex="\(h_1,h_2,M_{12}\)">\(h_1,h_2,M_{12}\)</span> suffice.</p>
+<p><strong>Proof.</strong> Polarize any invariant in the coefficients into separate quadratic slots. The symbolic completeness proved by Theorem 6.2 and umbral evaluation expresses it as a sum of bracket monomials with degree two in each symbol letter. Such a monomial is a graph: its vertices are letters, its bracket factors are edges, and every vertex has degree two. A loop is zero. Every remaining component is a cycle, with a doubled edge allowed as a cycle of length two.</p>
+<p>For a symbol column <span class="math" data-tex="\(a\)">\(a\)</span>, let
+<span class="math math-display" data-tex="\[
+J=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\qquad
+N_a=aa^{\mathsf t}J.
+\]">\[
+J=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\qquad
+N_a=aa^{\mathsf t}J.
+\]</span>
+The product of brackets around a cycle is
+<span class="math math-display" data-tex="\[
+[a_1a_2]\cdots[a_ra_1]
+=\operatorname{tr}(N_{a_1}\cdots N_{a_r}).
+\]">\[
+[a_1a_2]\cdots[a_ra_1]
+=\operatorname{tr}(N_{a_1}\cdots N_{a_r}).
+\]</span>
+This follows by multiplying the rank-one matrices: every intervening scalar is <span class="math" data-tex="\(a_i^{\mathsf t}Ja_{i+1}\)">\(a_i^{\mathsf t}Ja_{i+1}\)</span>, and the trace supplies the last bracket. Umbral evaluation in a quadratic slot gives the traceless matrix
+<span class="math math-display" data-tex="\[
+N(f_i)=\begin{pmatrix}-b_i&amp;a_i\\-c_i&amp;b_i\end{pmatrix}.
+\]">\[
+N(f_i)=\begin{pmatrix}-b_i&amp;a_i\\-c_i&amp;b_i\end{pmatrix}.
+\]</span>
+Thus the cycle evaluates to the trace of a word in those matrices, with a possible sign when an edge orientation is reversed.</p>
+<p>For any traceless <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, direct multiplication gives
+<span class="math math-display" data-tex="\[
+AB+BA=\operatorname{tr}(AB)I.
+\tag{16}
+\]">\[
+AB+BA=\operatorname{tr}(AB)I.
+\tag{16}
+\]</span>
+We claim that all word traces are polynomials in traces of lengths two and three. For a word of length <span class="math" data-tex="\(r\geq4\)">\(r\geq4\)</span>, exchanging adjacent letters using (16) changes its trace to the negative trace of the exchanged word plus a product of a length-two trace and a length-<span class="math" data-tex="\((r-2)\)">\((r-2)\)</span> trace. Repeating adjacent exchanges expresses its trace, modulo sums of such shorter products, as an alternating multilinear function of its <span class="math" data-tex="\(r\)">\(r\)</span> matrix arguments: antisymmetrize over all <span class="math" data-tex="\(r!\)">\(r!\)</span> permutations and divide by <span class="math" data-tex="\(r!\)">\(r!\)</span>. The alternating part is zero, because the vector space of traceless <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrices has dimension three and an alternating <span class="math" data-tex="\(r\)">\(r\)</span>-linear function on that space is zero for <span class="math" data-tex="\(r&gt;3\)">\(r&gt;3\)</span>. This proves the claim by induction, with length-one traces zero.</p>
+<p>Multiplication gives
+<span class="math" data-tex="\(\operatorname{tr}(N(f_i)N(f_j))=-M_{ij}\)">\(\operatorname{tr}(N(f_i)N(f_j))=-M_{ij}\)</span>, including <span class="math" data-tex="\(M_{ii}=2h_i\)">\(M_{ii}=2h_i\)</span>.
+Equation (16) makes the length-three trace alternating, so it is a scalar multiple of the determinant of the three coefficient rows. On the rows <span class="math" data-tex="\((1,0,0),(0,1,0),(0,0,1)\)">\((1,0,0),(0,1,0),(0,0,1)\)</span>, the trace is <span class="math" data-tex="\(-1\)">\(-1\)</span>; hence it is <span class="math" data-tex="\(-\tau_{ijk}\)">\(-\tau_{ijk}\)</span>. Consequently every cycle evaluation is in the algebra generated by (15). Products of cycles and restitution prove generation for the original invariant. With only two quadratic kinds, every alternating triple has repeated rows and is zero, leaving the three stated generators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The triple determinant is necessary as soon as there are three quadratics. The two ordered triples
+<span class="math math-display" data-tex="\[
+(x^2,\,2xy,\,y^2),\qquad(y^2,\,2xy,\,x^2)
+\]">\[
+(x^2,\,2xy,\,y^2),\qquad(y^2,\,2xy,\,x^2)
+\]</span>
+have identical self-discriminants and all pairwise <span class="math" data-tex="\(M_{ij}\)">\(M_{ij}\)</span>, but their <span class="math" data-tex="\(\tau_{123}\)">\(\tau_{123}\)</span> are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus a polynomial in the pairwise data cannot equal <span class="math" data-tex="\(\tau_{123}\)">\(\tau_{123}\)</span>. The coefficient reflection <span class="math" data-tex="\((a,b,c)\mapsto(c,b,a)\)">\((a,b,c)\mapsto(c,b,a)\)</span> preserves the bilinear discriminant form and reverses orientation. Special-linear substitutions on the binary variables preserve that orientation.</p>
+<h2 id="exercises-and-solutions">Exercises and solutions</h2>
+<p><strong>Exercise 1 — The row Lie algebra.</strong> Verify (3) by applying both sides to a coordinate function, then explain why this suffices.</p>
+<p><strong>Solution.</strong> We have <span class="math" data-tex="\(D_{ij}x_{ra}=\delta_{jr}x_{ia}\)">\(D_{ij}x_{ra}=\delta_{jr}x_{ia}\)</span>, so
+<span class="math math-display" data-tex="\[
+[D_{ij},D_{kl}]x_{ra}
+=\delta_{lr}\delta_{jk}x_{ia}
+-\delta_{jr}\delta_{li}x_{ka}.
+\]">\[
+[D_{ij},D_{kl}]x_{ra}
+=\delta_{lr}\delta_{jk}x_{ia}
+-\delta_{jr}\delta_{li}x_{ka}.
+\]</span>
+This equals <span class="math" data-tex="\((\delta_{jk}D_{il}-\delta_{li}D_{kj})x_{ra}\)">\((\delta_{jk}D_{il}-\delta_{li}D_{kj})x_{ra}\)</span>. The commutator of two derivations is a derivation, as expansion of the two product rules shows. A derivation on a polynomial ring is determined by its values on its coordinate generators, proving the identity.</p>
+<p><strong>Exercise 2 — Capelli on determinant powers.</strong> Check (8) on <span class="math" data-tex="\(\Delta^s\)">\(\Delta^s\)</span>, where <span class="math" data-tex="\(\Delta=x_{11}x_{22}-x_{12}x_{21}\)">\(\Delta=x_{11}x_{22}-x_{12}x_{21}\)</span> and <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>.</p>
+<p><strong>Solution.</strong> Each row Euler operator gives <span class="math" data-tex="\(D_{ii}\Delta^s=s\Delta^s\)">\(D_{ii}\Delta^s=s\Delta^s\)</span>, and <span class="math" data-tex="\(D_{12}\Delta^s=0\)">\(D_{12}\Delta^s=0\)</span>: replacing row two by row one in the determinant gives zero. Thus the left side is <span class="math" data-tex="\(s(s+1)\Delta^s\)">\(s(s+1)\Delta^s\)</span>. For the right side, differentiate:
+<span class="math math-display" data-tex="\[
+\partial_{11}\partial_{22}\Delta^s
+=s\Delta^{s-1}+s(s-1)x_{11}x_{22}\Delta^{s-2},
+\]">\[
+\partial_{11}\partial_{22}\Delta^s
+=s\Delta^{s-1}+s(s-1)x_{11}x_{22}\Delta^{s-2},
+\]</span>
+<span class="math math-display" data-tex="\[
+\partial_{12}\partial_{21}\Delta^s
+=-s\Delta^{s-1}+s(s-1)x_{12}x_{21}\Delta^{s-2}.
+\]">\[
+\partial_{12}\partial_{21}\Delta^s
+=-s\Delta^{s-1}+s(s-1)x_{12}x_{21}\Delta^{s-2}.
+\]</span>
+Their difference is
+<span class="math" data-tex="\(s(s+1)\Delta^{s-1}\)">\(s(s+1)\Delta^{s-1}\)</span>. Multiplication by <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> agrees with the left side. For <span class="math" data-tex="\(s=1\)">\(s=1\)</span> the terms multiplied by <span class="math" data-tex="\(s(s-1)\)">\(s(s-1)\)</span> are zero and the derivative difference is <span class="math" data-tex="\(2\)">\(2\)</span>. This verifies the assigned test functions; Theorem 2.1 proves the operator equality on every polynomial.</p>
+<p><strong>Exercise 3 — Two quadratic kinds.</strong> Prove that the invariants of two binary quadratics are generated by their discriminants and polarized discriminant.</p>
+<p><strong>Solution.</strong> Theorem 9.1 expresses every invariant as a polynomial in <span class="math" data-tex="\(h_1,h_2,M_{12}\)">\(h_1,h_2,M_{12}\)</span> and triple determinants. A triple drawn from two kinds repeats a coefficient row, so its determinant is zero. The remaining three are invariant by (15), proving equality. They are also algebraically independent: on <span class="math" data-tex="\(f_1=2bxy\)">\(f_1=2bxy\)</span>, their values are
+<span class="math" data-tex="\(-b^2,\ \alpha\gamma-\beta^2,\ -2b\beta\)">\(-b^2,\ \alpha\gamma-\beta^2,\ -2b\beta\)</span>.
+When <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, these three quantities can be prescribed freely on a dense open set over the algebraic closure, by choosing <span class="math" data-tex="\(b,\beta\)">\(b,\beta\)</span> and then <span class="math" data-tex="\(\alpha,\gamma\)">\(\alpha,\gamma\)</span>. A polynomial relation therefore vanishes identically.</p>
+<p><strong>Exercise 4 — A direct binary vector proof.</strong> Prove bracket generation for binary vectors without Capelli, and organize the argument as induction in the number of rows.</p>
+<p><strong>Solution.</strong> For one row, special-linear transitivity on nonzero vectors gives only constants. For two rows, the determinant-orbit argument gives <span class="math" data-tex="\(k[[12]]\)">\(k[[12]]\)</span>. For <span class="math" data-tex="\(m&gt;2\)">\(m&gt;2\)</span>, apply the row-maximal-weight proof in Section 3 with <span class="math" data-tex="\(n=2\)">\(n=2\)</span>: any simple row-substitution component of the invariant space contains a vector killed by <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span>, <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>; the equations <span class="math" data-tex="\(D_{1j}F=D_{2j}F=0\)">\(D_{1j}F=D_{2j}F=0\)</span> and invertibility of the first two rows force independence of every later row. Its orbit generates that component from a polynomial in <span class="math" data-tex="\([12]\)">\([12]\)</span>. A row translate of <span class="math" data-tex="\([12]\)">\([12]\)</span> is a linear combination of brackets <span class="math" data-tex="\([ij]\)">\([ij]\)</span>, so each component, and then the entire invariant space, is in their algebra. This proves the induction step for every new row at once, using the two-row base case. It uses complete reducibility and row derivatives, with no Capelli identity. The determinant proof in Section 4 is its <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional version.</p>
+<p><strong>Exercise 5 — More quadratic kinds and the missing generator.</strong> Determine whether Weyl's theorem reduces an arbitrary number of binary quadratics to two quadratics. Give the correct bound and generating patterns.</p>
+<p><strong>Solution.</strong> The coefficient representation has dimension three, so the bound is three. The triples displayed after Theorem 9.1 give a counterexample to generation solely by self- and pairwise discriminants: all those values agree, while <span class="math" data-tex="\(\tau_{123}\)">\(\tau_{123}\)</span> changes sign. Theorem 9.1 proves the corrected generating patterns are <span class="math" data-tex="\(h_i,M_{ij},\tau_{ijk}\)">\(h_i,M_{ij},\tau_{ijk}\)</span>. These are precisely the polarizations of the corresponding invariants on three copies. The pair and triple generators have coefficient degrees two and three, respectively. This corrects the proposed two-copy deduction without weakening the actual polarization theorem.</p>
+<h2 id="sources-and-current-check-scope">Sources and current check scope</h2>
+<p>Vector generation, all bracket relations, integral straightening, the mixed vector theorem and both the binary and general series have complete proofs above. Noether's 1916 reduction paper and its 1920 addendum provide the historical comparison; the latter corrects the general determinant differential identity discussed after Theorem 8.2. Her 1919 paper, Section 3, supplies the original integral bracket argument. Kraft and Procesi's <em>Classical Invariant Theory: A Primer</em>, Sections 7.1–7.4, is a further comparison for polarization and vector invariants. These references receive credit without replacing the course proofs.</p>
+<p>The false pairwise-only assertion for arbitrary binary quadratics has been replaced by the proved pair and triple generators. Exact finite tests check the binary expansion in 25 bidegrees, the Capelli operator order on 14 polynomials in dimensions one through four, and the quartic umbral normalization. These tests support the written arguments; they do not establish general theorems by sampling. The line-by-line self-check, original diagram and reading-format check are being completed.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NOE-INV-03.html">← Invariants of finite groups and Noether&#x27;s degree bound</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NOE-INV-05.html">Finiteness for finite groups in every characteristic →</a></span></nav>
+<p class="small source-link"><a href="src/NOE-INV-04.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-INV">Repository</a></nav>
+</footer>
+</body>
+</html>

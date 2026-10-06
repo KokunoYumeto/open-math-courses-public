@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Satake category · The affine Grassmannian and geometric Satake</title>
+<meta name="description" content="A lesson of the course The affine Grassmannian and geometric Satake. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-SAT/GL-SAT-06.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The affine Grassmannian and geometric Satake</a> <span aria-hidden="true">›</span> <span>Lesson 6</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> This lesson is a draft.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-satake-category">The Satake category</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).</em></p>
+<p>The objects of the Satake category are perverse sheaves on the affine Grassmannian whose equivariance records the integral loop-group action. Each object has support in finitely many Schubert varieties. This makes the definition a finite-dimensional question, despite the infinite-dimensional notation. We construct that category, prove independence of the jet level, classify its simple objects, and establish duality and the exact faithful cohomology functor. We also prove the precise implication from IC parity to semisimplicity. General IC parity remains an unfinished assertion in this lesson; it is not used in the other constructions.</p>
+<p>We work with a connected reductive group <span class="math">\(G/\mathbb C\)</span>, a maximal torus <span class="math">\(T\subset B\)</span>, and a coefficient field <span class="math">\(\Lambda\)</span>. The category and finite-jet arguments work over every coefficient field. Statements conditional on characteristic-zero IC parity are identified explicitly. Put <span class="math">\(O=\mathbb C[[t]]\)</span>, <span class="math">\(K=\mathbb C((t))\)</span>,
+<span class="math math-display">\[
+K^+=L^+G,\qquad O_\lambda=\operatorname{Gr}^{\lambda},\qquad
+Z_\lambda=\overline{O_\lambda},\qquad
+d_\lambda=\langle2\rho,\lambda\rangle.
+\]</span>
+The closures are reduced. Their underlying complex analytic spaces determine the classical constructible sheaves used here; the nonreduced test-ring directions of the full Grassmannian do not change that space.</p>
+<p>The geometric inputs are <a href="GL-SAT-02.html">Loop groups and the affine Grassmannian</a>, Theorem 7.1, and <a href="GL-SAT-04.html">Orbits and Schubert varieties</a>, §§2–5. The perverse heart, finite length, localization and intermediate extension are proved in <a href="../GL-PERV/the-perverse-t-structure.html">The perverse t-structure</a>, Theorems 2.1 and 5.2; <span class="unlinked">Gluing t-structures</span>, §3 and Appendix A.3; and <a href="../GL-PERV/intermediate-extensions-and-intersection-complexes.html">Intermediate extensions and intersection complexes</a>, §§1–2. We use the classical operations constructed in <span class="unlinked">Constructible complexes on algebraic varieties</span>, Appendices C–K, in the exact finite-stage scope explained in <a href="GL-SAT-05.html">Semi-infinite orbits and weight functors</a>, §11. No étale or rational-adic comparison is asserted here.</p>
+<h2 id="1-a-bounded-support-has-a-finite-jet-action">1. A bounded support has a finite jet action</h2>
+<p>Choose a faithful closed representation <span class="math">\(G\hookrightarrow\operatorname{GL}(V)\)</span>. The full closed Grassmannian immersion is proved in the loop-group lesson, Theorem 7.1. On a bounded lattice stage there is an integer <span class="math">\(A\ge0\)</span> such that, over every parameter algebra <span class="math">\(R\)</span>,
+<span class="math math-display">\[
+t^AV_R[[t]]\subset L\subset t^{-A}V_R[[t]].                 \tag{1.1}
+\]</span>
+Define
+<span class="math math-display">\[
+J_mG(R)=G(R[t]/t^m),\qquad K_m=\ker(K^+\to J_mG),\qquad m\ge1.
+\]</span>
+If <span class="math">\(m\ge2A\)</span> and <span class="math">\(h\in K_m(R)\)</span>, then
+<span class="math math-display">\[
+(h-1)L\subset t^{m-A}V_R[[t]]\subset t^AV_R[[t]]\subset L.
+\]</span>
+The same holds for <span class="math">\(h^{-1}\)</span>, so <span class="math">\(hL=L\)</span>. This is an equality for arbitrary <span class="math">\(R\)</span>, including nilpotents. Since the Grassmannian immersion is a monomorphism, <span class="math">\(K_m\)</span> also acts trivially on the corresponding <span class="math">\(G\)</span>-stage. Thus the action on every finite closed union <span class="math">\(Y\)</span> of Schubert varieties factors through <span class="math">\(J_mG\)</span> for all sufficiently large <span class="math">\(m\)</span>. The bounds in the Schubert lesson place any finite collection of such supports in a common stage (1.1).</p>
+<p><strong>Lemma 1.1.</strong> The group <span class="math">\(J_mG\)</span> is smooth, connected and affine. For <span class="math">\(n\ge m\)</span>, the kernel of <span class="math">\(J_nG\to J_mG\)</span> has a finite normal filtration with additive vector-group quotients.</p>
+<p><em>Proof.</em> Affineness and finite presentation follow by inserting truncated polynomial coordinates in the affine equations for <span class="math">\(G\)</span>. The map <span class="math">\(J_{a+1}G\to J_aG\)</span> is surjective by smooth lifting across the square-zero ideal <span class="math">\((t^a)/(t^{a+1})\)</span>. Its kernel consists of tangent vectors at the identity, with group law addition:
+<span class="math math-display">\[
+\ker(J_{a+1}G\to J_aG)=\operatorname{Lie}(G)\otimes t^a\mathbb C.
+\]</span>
+The matrix multiplication calculation is <span class="math">\((1+t^aX)(1+t^aY)=1+t^a(X+Y)\)</span> modulo <span class="math">\(t^{a+1}\)</span>. Smooth lifting also makes the morphism smooth: in étale coordinates the new coefficient is a freely chosen tangent vector. Starting from connected smooth <span class="math">\(G\)</span>, these successive torsors under connected affine spaces give smooth connected <span class="math">\(J_mG\)</span>. For the larger kernel use the successive congruence subgroups. The same coefficient calculation gives its vector quotients; conjugation preserves each congruence subgroup. <span class="math">\(\square\)</span></p>
+<p>The projection <span class="math">\(q:J_nG\to J_mG\)</span> is a torsor under this kernel. Its underlying morphism is a locally trivial affine-space bundle; in fact it has a section over the affine <span class="math">\(J_mG\)</span>. To justify this last fact, apply the additive torsor argument of the gluing lesson, §7.3, successively to the congruence filtration. Each vector-group torsor on an affine scheme has zero first cohomology by the explicitly contracted faithfully flat Amitsur complex. Remove one quotient at a time. The resulting kernel torsor is trivial. The same filtration makes the kernel variety an affine space. The chosen section is used only to prove the bundle statement; the comparison of categories below is canonical and does not depend on it.</p>
+<h2 id="2-equivariant-structures-in-the-perverse-heart">2. Equivariant structures in the perverse heart</h2>
+<p>Let a smooth connected algebraic group <span class="math">\(H\)</span> act on <span class="math">\(Y\)</span>. Write <span class="math">\(p,a:H\times Y\to Y\)</span> for projection and action. An equivariant structure on <span class="math">\(P\in\operatorname{Perv}(Y,\Lambda)\)</span> is an isomorphism
+<span class="math math-display">\[
+\alpha:p^*P\xrightarrow{\sim}a^*P                              \tag{2.1}
+\]</span>
+whose restriction at <span class="math">\(1\in H\)</span> is the identity and whose two transports on <span class="math">\(H\times H\times Y\)</span> agree with transport by multiplication. Both maps are smooth: the change of coordinates <span class="math">\((h,y)\mapsto(h,hy)\)</span> identifies the action map with projection. Their pullbacks shifted by <span class="math">\(\dim H\)</span> are perverse.</p>
+<p>The connected-group theorem in <a href="../GL-PERV/equivariant-perverse-sheaves-and-perverse-sheaves-on-stacks.html">Equivariant perverse sheaves and perverse sheaves on stacks</a>, Theorem 1.1, proves
+<span class="math math-display">\[
+\operatorname{Hom}(P,Q)
+ \xrightarrow{\sim}
+\operatorname{Hom}(p^*P[\dim H],p^*Q[\dim H]).                 \tag{2.2}
+\]</span>
+Restriction at the identity is its inverse. Here is how it supplies precisely the coherence we need. Any isomorphism in (2.1) can be normalized by composing with the inverse of its restriction at the identity. Two normalized isomorphisms differ by an automorphism of <span class="math">\(p^*P\)</span> restricting to the identity; (2.2) makes it the identity. On <span class="math">\(H^2\times Y\)</span> the two cocycle composites are normalized isomorphisms, so the same argument makes them equal. A morphism <span class="math">\(P\to Q\)</span> is equivariant: after conjugation by the structures, its pullback again restricts to that morphism at the identity, and uniqueness gives compatibility.</p>
+<p>Consequently forgetting equivariance is fully faithful on this heart and each object admits at most one structure. This assertion concerns morphisms and structures in the heart. It does not identify derived equivariant Hom groups with ordinary derived Hom groups.</p>
+<p><strong>Proposition 2.1.</strong> If the action on <span class="math">\(Y\)</span> factors through <span class="math">\(J_mG\)</span>, inflation along <span class="math">\(J_nG\to J_mG\)</span> is an equivalence
+<span class="math math-display">\[
+\operatorname{Perv}_{J_mG}(Y,\Lambda)
+ \simeq\operatorname{Perv}_{J_nG}(Y,\Lambda),\qquad n\ge m.     \tag{2.3}
+\]</span></p>
+<p><em>Proof.</em> The map <span class="math">\(q\times1_Y\)</span> is a locally trivial bundle with contractible affine-space fibre. Lemma B.5 of the equivariant lesson proves, for arbitrary base sheaves and in every finite degree, that its adjunction unit
+<span class="math math-display">\[
+F\longrightarrow R(q\times1)_*(q\times1)^*F
+\]</span>
+is an isomorphism. Its proof uses the cochain resolution and dimension shifting, so this does not follow merely from a calculation of fibres of an arbitrary nonproper map. Bounded complexes inherit the identity by ordinary truncations. Adjunction therefore makes the pullback fully faithful.</p>
+<p>The two complexes <span class="math">\(p_n^*P\)</span> and <span class="math">\(a_n^*P\)</span> are the pullbacks of <span class="math">\(p_m^*P\)</span> and <span class="math">\(a_m^*P\)</span>. Full faithfulness descends a <span class="math">\(J_nG\)</span>-structure uniquely to an isomorphism between the latter. It descends its inverse as well. Normalization follows by restriction at the identity. The cocycle follows after the fully faithful pullback along <span class="math">\(q\times q\times1\)</span>. Thus the descended map is a <span class="math">\(J_mG\)</span>-structure. Inflation reverses the construction on structures and morphisms. <span class="math">\(\square\)</span></p>
+<h3 id="22-existence-for-orbit-constructible-objects">2.2. Existence for orbit-constructible objects</h3>
+<p><strong>Theorem 2.2.</strong> If <span class="math">\(\Lambda\)</span> has characteristic zero, every orbit-constructible perverse sheaf on a finite closed union of Grassmannian orbits has unique equivariance for every sufficiently large jet group. Thus forgetting equivariance identifies the two perverse hearts.</p>
+<p><em>Proof.</em> We give the extra existence argument, since connected stabilizers alone only classify equivariant orbit systems.</p>
+<p>First let <span class="math">\(B_0\)</span> be a contractible analytic coordinate ball and let <span class="math">\(\mathcal S\)</span> be a finite stratification of a space <span class="math">\(X\)</span>. Projection gives an equivalence
+<span class="math math-display">\[
+p^*:D^b_{\mathcal S}(X)\xrightarrow{\sim}
+D^b_{B_0\times\mathcal S}(B_0\times X).                       \tag{2.4}
+\]</span>
+Its full faithfulness is the arbitrary-base-sheaf acyclicity of the equivariant lesson, Lemma B.5, followed by bounded truncations, as in (2.3). On a single stratum, a local system on the product descends by transport along the contractible ball: subdividing a path and an endpoint-fixed homotopy into coordinate rectangles proves path independence. The path and homotopy construction is given in the first sheaf lesson, Appendix A.4. Ordinary truncation triangles then descend each bounded complex with locally constant cohomology, since their attaching maps descend by full faithfulness.</p>
+<p>For several strata use an open union of maximal strata <span class="math">\(j\)</span> and its closed complement <span class="math">\(i\)</span>. The two outer objects of
+<span class="math math-display">\[
+j_!j^*F\longrightarrow F\longrightarrow i_*i^*F\xrightarrow{+1}
+\]</span>
+descend by induction. Open extension by zero and closed pushforward commute with product pullback on stalks. The connecting map descends by full faithfulness, and its cone supplies a descended object isomorphic to <span class="math">\(F\)</span>. This is the finite assembly by triangles of the first sheaf lesson, Proposition 2.2 and Appendix B.2. It proves (2.4) without a nonproper direct-image constructibility assumption.</p>
+<p>Suppose a connected complex algebraic group <span class="math">\(H\)</span>, with simply connected analytic space, preserves every stratum. The action family <span class="math">\(a^*P\)</span> is constructible on the product strata: inverse image is exact and pulls back each stratum local system. By (2.4), on a coordinate ball in <span class="math">\(H\)</span> it is pulled back from one fibre <span class="math">\(h^*P\)</span>, a perverse sheaf. These identifications give transport among its fibres. Morphisms between the locally pulled-back perverse sheaves are constant in a connected parameter ball, by smooth connected-fibre full faithfulness, equation (2.2). Transport around a rectangle inside such a ball is therefore the identity. Subdivide any endpoint-fixed homotopy square into those rectangles; the internal edge transports cancel. Simple connectedness gives path-independent transport from the identity fibre <span class="math">\(P\)</span> to every other fibre. The resulting normalized local isomorphisms glue by the perverse open-descent proof in the perverse-t-structure lesson, Proposition 4.1. They produce <span class="math">\(p^*P\simeq a^*P\)</span>. Equation (2.2) supplies uniqueness and the cocycle.</p>
+<p>We verify the topological hypothesis for a semisimple simply connected algebraic group <span class="math">\(D\)</span>. Choose its opposite big cell through <span class="math">\(1B_D\)</span>; it is a dense Bruhat cell <span class="math">\(\mathbb C^d\)</span>. Its algebraic complement can be decomposed into finitely many smooth locally closed pieces, by removing singular loci successively; each has real codimension at least two. Every loop in the smooth flag manifold can be moved into that cell. Here is the needed avoidance argument. Cover the loop by finitely many real coordinate balls, subdivide it, and replace its subarcs by straight coordinate segments with nearby vertices. For a smooth piece of codimension at least two, the evaluation of an interior segment point is a submersion in its endpoint parameters. The incidence set of segments meeting that piece has dimension at most the endpoint-parameter dimension minus one: the extra segment parameter contributes one dimension, while meeting the piece removes at least two. Also include the incidence sets in which a movable vertex lies in a complementary smooth piece; these have codimension at least two in the vertex-parameter space. Keep the fixed base vertex <span class="math">\(1B_D\)</span> in the chosen big cell. Cover these incidence manifolds by countably many compact coordinate pieces. Each projected piece has empty interior: on a bounded coordinate piece the smooth parametrization is Lipschitz, so the image of a <span class="math">\(q\)</span>-dimensional box in <span class="math">\(\mathbb R^n\)</span>, <span class="math">\(q&lt;n\)</span>, is covered by at most <span class="math">\(O(\varepsilon^{-q})\)</span> boxes of side <span class="math">\(O(\varepsilon)\)</span>; their total volume tends to zero and cannot cover a fixed positive-volume box. Each compact image is also closed. To avoid their countable union in any small parameter ball, choose successively nested closed balls disjoint from the first, second, and subsequent compact images, with radii tending to zero and each contained in the preceding ball's interior. Their centres converge to a point in every ball, which avoids every image. This proves simultaneous arbitrarily small choices of vertices avoiding all pieces and segments; fix the base vertex outside the complement. The original and perturbed loop are homotopic in their coordinate balls. The new loop contracts in <span class="math">\(\mathbb C^d\)</span>. Thus the flag manifold is simply connected.</p>
+<p>The locally trivial <span class="math">\(B_D\)</span>-bundle <span class="math">\(D\to D/B_D\)</span> gives
+<span class="math math-display">\[
+\pi_2(D/B_D)\longrightarrow\pi_1(B_D)
+ \longrightarrow\pi_1(D)\longrightarrow0.                    \tag{2.5}
+\]</span>
+The segment follows directly by lifting paths and homotopy squares through local product charts: a nullhomotopy of a projected loop leaves a loop in the fibre, and a lifted sphere contributes its clutching loop. Root coordinates identify the unipotent part of <span class="math">\(B_D\)</span> with a contractible affine space, so <span class="math">\(\pi_1(B_D)=X_*(T_D)\)</span>. For the torus calculation, retract each <span class="math">\(\mathbb C^*\)</span> radially to its circle. A subdivided circle loop lifts its angle uniquely to <span class="math">\(\mathbb R\)</span>, with endpoint difference <span class="math">\(2\pi n\)</span>; homotopy rectangles preserve <span class="math">\(n\)</span>, and a lift with <span class="math">\(n=0\)</span> contracts. This proves the lattice assertion.</p>
+<p>Each rank-one <span class="math">\(\operatorname{SL}_2\)</span> map gives a sphere in the flag manifold. Its two sections are
+<span class="math math-display">\[
+s_0(z)=\begin{pmatrix}1&amp;0\\z&amp;1\end{pmatrix},\qquad
+s_\infty(w)=\begin{pmatrix}w&amp;-1\\1&amp;0\end{pmatrix}.
+\]</span>
+Their transition is
+<span class="math math-display">\[
+s_0(z)^{-1}s_\infty(1/z)=
+\begin{pmatrix}z^{-1}&amp;-1\\0&amp;z\end{pmatrix}.
+\]</span>
+Its torus loop is the negative simple coroot. These coroots are a basis of <span class="math">\(X_*(T_D)\)</span>, by the simply connected root datum. The first map of (2.5) is therefore surjective, and <span class="math">\(\pi_1(D)=0\)</span>.</p>
+<p>Evaluation and the constant section identify <span class="math">\(J_mD\)</span> with <span class="math">\(D\times U_m\)</span> as varieties. Every jet in <span class="math">\(U_m\)</span> has identity constant term, so it lies in the big cell. Its root coordinates have zero constant coefficients and its torus coordinates have constant coefficient one; their remaining truncated coefficients are free. Thus <span class="math">\(U_m\)</span> is an affine space. The analytic group <span class="math">\(J_mD\)</span> is simply connected, and the preceding transport argument supplies equivariance on every orbit-constructible object for its action.</p>
+<p>For the original reductive <span class="math">\(G\)</span>, the central root-datum construction in <a href="../AG-RG/AG-RG-05.html">Pinnings and the classification of split reductive groups</a>, Theorem 10.1, gives
+<span class="math math-display">\[
+G=(D\times C)/Z,
+\]</span>
+where <span class="math">\(D\)</span> is semisimple simply connected, <span class="math">\(C\)</span> is a central torus and <span class="math">\(Z\)</span> is finite central. Over <span class="math">\(\mathbb C\)</span>, this is a finite étale cover. Unique lifting over the nilpotent thickening of the constant term gives
+<span class="math math-display">\[
+J_m(D\times C)=(D\times C)\times_G J_mG.
+\]</span>
+Hence <span class="math">\(J_mD\times J_mC\to J_mG\)</span> is a finite étale <span class="math">\(Z\)</span>-torsor. Positive central loops act trivially on the Grassmannian: they commute past any Laurent loop to become its integral right factor. Give <span class="math">\(J_mC\)</span> the identity structure and combine it with the <span class="math">\(J_mD\)</span>-structure.</p>
+<p>We must check descent through <span class="math">\(Z\)</span>, including possible extension automorphisms. The covering-group stabilizer at <span class="math">\(t^\lambda\)</span> is connected. In <span class="math">\(D\)</span> its root coordinates satisfy exactly
+<span class="math math-display">\[
+z_\alpha\in t^{\max(0,\langle\alpha,\lambda\rangle)}O;
+\]</span>
+its evaluation quotient is a connected parabolic, and its congruence kernel has the connected affine root and torus coordinates of the orbit lesson's §2. This argument only uses the integral root pairings of <span class="math">\(\lambda\)</span>; it does not require <span class="math">\(\lambda\)</span> to lift to a cocharacter of <span class="math">\(D\)</span>. The central jet torus acts trivially, and the covering group is transitive on the same orbit. The check applies to every orbit in the finite support, after enlarging <span class="math">\(m\)</span>.</p>
+<p>For <span class="math">\(z\in Z\)</span>, its induced automorphism <span class="math">\(b_z\)</span> of <span class="math">\(P\)</span> acts as the identity on all stalk cohomology groups. Indeed it fixes every point and lies in its connected covering-group stabilizer; transport on that stabilizer is locally constant and normalized at the identity. This does not alone exclude a nontrivial extension automorphism. If <span class="math">\(z\)</span> has order <span class="math">\(r\)</span>, characteristic zero permits the idempotent
+<span class="math math-display">\[
+e=\frac1r\sum_{a=0}^{r-1}b_z^a.
+\]</span>
+The complementary direct summand has zero stalk cohomology everywhere, hence is zero as a constructible complex. Thus <span class="math">\(e=1\)</span>, and <span class="math">\(b_ze=e\)</span> forces <span class="math">\(b_z=1\)</span>. The covering equivariance is therefore invariant under the finite deck group. Effective finite étale descent of perverse morphisms descends the isomorphism, its inverse, normalization and cocycle to <span class="math">\(J_mG\)</span>. Proposition 2.1 removes the jet-level choice. Equation (2.2) supplies full faithfulness and uniqueness. <span class="math">\(\square\)</span></p>
+<h2 id="3-the-finite-support-category-and-its-simple-objects">3. The finite-support category and its simple objects</h2>
+<p><strong>Definition 3.1.</strong> The underlying Satake heart <span class="math">\(\operatorname{Sat}_G(\Lambda)\)</span> consists of <span class="math">\(J_mG\)</span>-equivariant perverse sheaves supported on finite closed unions of Schubert varieties, for any sufficiently large <span class="math">\(m\)</span>. The objects are identified by (2.3) and by closed extension to larger supports. Its morphisms are morphisms of the underlying perverse sheaves.</p>
+<p>A closed extension is fully faithful and perverse t-exact. This follows directly from the stratum tests: the added strata have zero restrictions. Adjunction identifies its morphisms. Given two objects, take a common finite closed support and a common jet level. Their kernel and cokernel acquire structures by the exactness of smooth normalized pullback; the identity and cocycle are inherited. They remain supported in that common support. Hence this is an abelian category, and its inclusion into the ordinary perverse heart is exact and fully faithful. Every ascending or descending subobject chain stops, since forgetting it gives such a chain in a finite-length perverse sheaf. Each object has finite length. No infinite-support objects or infinite direct sums are included.</p>
+<p>For the locally closed inclusion <span class="math">\(j_\lambda:O_\lambda\hookrightarrow Z_\lambda\)</span>, set
+<span class="math math-display">\[
+IC_\lambda=j_{\lambda!*}\underline\Lambda[d_\lambda].         \tag{3.1}
+\]</span>
+Closed extension places it in any larger support. The constant system on the orbit has its tautological equivariance. Smooth pullback commutes with intermediate extension, by its characterization as the extension with neither boundary subobjects nor boundary quotients, proved in the intermediate-extension lesson. The two pulled-back ICs therefore extend the same open equivariance. Its identity and cocycle follow by uniqueness. Thus (3.1) is an equivariant object.</p>
+<p><strong>Theorem 3.2.</strong> The simple objects are exactly <span class="math">\(IC_\lambda\)</span>, for dominant coweights <span class="math">\(\lambda\)</span>, and
+<span class="math math-display">\[
+\operatorname{End}(IC_\lambda)=\Lambda,\qquad
+\operatorname{Hom}(IC_\lambda,IC_\mu)=0\quad(\lambda\ne\mu).
+                                                                    \tag{3.2}
+\]</span></p>
+<p><em>Proof.</em> The stabilizer in a sufficiently large jet quotient is smooth connected by the orbit lesson, Theorem 2.3. An equivariant local system on a transitive orbit is determined by descent along the orbit torsor. Pulling it back to the acting group gives the constant system with fibre its value at the chosen point. Descent on the stabilizer is a locally constant representation of that stabilizer on the fibre. Connectedness makes this representation trivial. This is also the explicit orbit descent calculation in the equivariant lesson, §3, equation (3.1). Thus equivariant orbit systems are constant.</p>
+<p>Take a simple equivariant perverse sheaf. Its support is a finite union of orbit closures. On a dense open orbit of a support component its restriction is a nonzero constant system shifted by that orbit's dimension. The image of the map from its perverse !-extension generated by a line in that constant fibre is a nonzero equivariant subobject. Simplicity makes this image the whole object. The no-boundary-subobject and no-boundary-quotient characterization then identifies it with the intermediate extension of that line. In particular the open fibre has rank one and the object is (3.1). Conversely the intermediate extension of a rank-one constant system is simple: a nonzero proper subobject or quotient either changes its rank-one open restriction or is supported on the boundary, and both possibilities are excluded by that characterization.</p>
+<p>A morphism between simples is zero or an isomorphism. Distinct supports or distinct open orbit indices prevent the latter. An endomorphism restricts to a scalar on the rank-one open system. Its difference from that scalar has boundary image, which the IC forbids. This proves (3.2). <span class="math">\(\square\)</span></p>
+<p>Finite length and (3.2) also show that all Hom spaces in this heart are finite dimensional. Apply left exactness of Hom to a composition-series step in either argument, and induct: its dimension is bounded by the sum of the dimensions for its simple factors. Neither this conclusion nor simple classification requires semisimplicity.</p>
+<h2 id="4-duality-and-orbit-cohomology">4. Duality and orbit cohomology</h2>
+<p>Classical field Verdier duality is perverse t-exact and exchanges !- and *-restriction. The complex orientation on a smooth orbit gives
+<span class="math math-display">\[
+D(\underline\Lambda[d_\lambda])=
+ \underline\Lambda[d_\lambda].
+\]</span>
+Duality exchanges the two boundary conditions defining intermediate extension. Hence
+<span class="math math-display">\[
+DIC_\lambda=IC_\lambda.                                      \tag{4.1}
+\]</span>
+It preserves the whole Satake heart. Indeed dualizing (2.1) produces the structure on <span class="math">\(DP\)</span>, with the equal smooth orientation shifts on its two sides cancelled. Normalization and cocycle dualize too. This is an exact contravariant equivalence; it exchanges subobjects and quotients.</p>
+<p>We shall also need the following ordinary-cohomology calculation:
+<span class="math math-display">\[
+H^{2r+1}(O_\mu,\Lambda)=0\qquad(r\in\mathbb Z).                \tag{4.2}
+\]</span>
+The evaluation projection <span class="math">\(O_\mu\to G/P_\mu^-\)</span> is a locally trivial affine-space fibration by the orbit lesson, §2. The arbitrary-base-coefficient product argument of the equivariant lesson, Lemma B.5, proves that its ordinary constant-sheaf direct image is the constant sheaf, with no higher direct images. Thus its cohomology is the flag variety's cohomology.</p>
+<p>The root-coordinate Bruhat cells in <a href="../AG-RG/AG-RG-06.html">Automorphisms, forms and parabolic subgroups</a>, Theorem 7.1, give a finite affine paving of that flag variety. To see that they form the needed closed filtration, the closure of any Borel orbit is stable and therefore is a union of the finitely many such orbits. Its boundary has smaller dimension. Ordering the cells by increasing dimension makes every initial union closed: it contains the closure of every cell in it. A successive complement is <span class="math">\(\mathbb C^e\)</span>, whose compact cohomology is <span class="math">\(\Lambda\)</span> in degree <span class="math">\(2e\)</span> and zero elsewhere, by the oriented one-point-compactification cochain calculation. Compact-support localization along this finite filtration kills every odd degree. The flag variety is proper, so ordinary and compact cohomology agree. This proves (4.2).</p>
+<p>Every ordinary cohomology sheaf of an IC restricted to an orbit is constant. Its smooth equivariance restricts to equivariance of that local system, so the connected-stabilizer calculation in §3 applies. The same holds for costalk cohomology, by (4.1).</p>
+<h2 id="5-what-ic-parity-would-imply">5. What IC parity would imply</h2>
+<p>Orbit dimensions have a common parity inside each connected component. The component theorem in the orbit lesson, §5, identifies a component with a coroot class, and
+<span class="math math-display">\[
+\langle2\rho,\alpha_i^\vee\rangle=2.
+\]</span>
+Thus <span class="math">\(d_\lambda\equiv d_\mu\pmod2\)</span> for two orbit indices in that component. Individual components can have odd orbit dimensions.</p>
+<p>Here is the precise parity hypothesis:
+<span class="math math-display">\[
+\mathcal H^q(j_\mu^*IC_\lambda)=0
+\quad\text{unless }q\equiv d_\lambda\pmod2,
+\qquad O_\mu\subset Z_\lambda.                               \tag{P}
+\]</span>
+General (P) is not proved here. The next two propositions are implications with this explicit hypothesis, rather than uses of (P) as an available theorem.</p>
+<p>Put
+<span class="math math-display">\[
+\Delta_\lambda={}^pH^0(j_{\lambda!}\underline\Lambda[d_\lambda]),
+\qquad
+\nabla_\lambda={}^pH^0(Rj_{\lambda*}\underline\Lambda[d_\lambda]).
+\]</span></p>
+<p><strong>Proposition 5.1.</strong> If (P) holds for <span class="math">\(IC_\lambda\)</span>, then the canonical maps are isomorphisms
+<span class="math math-display">\[
+\Delta_\lambda\xrightarrow{\sim}IC_\lambda
+ \xrightarrow{\sim}\nabla_\lambda.                            \tag{5.1}
+\]</span></p>
+<p><em>Proof.</em> On a boundary orbit the strict IC bound is ordinary degree <span class="math">\(q\le-d_\mu-1\)</span>. The last possible degree has the wrong parity under (P), so
+<span class="math math-display">\[
+j_\mu^*IC_\lambda\in D^{\le-d_\mu-2},\qquad
+j_\mu^!IC_\lambda\in D^{\ge-d_\mu+2}.                         \tag{5.2}
+\]</span>
+For the second bound dualize the first: duality on the smooth orbit sends a constant cohomology term in degree <span class="math">\(q\)</span> to degree <span class="math">\(-q-2d_\mu\)</span>. If <span class="math">\(i\)</span> is the boundary inclusion, the stratum tests make (5.2) say <span class="math">\(i^*IC_\lambda\in{}^pD^{\le-2}\)</span>. The localization triangle
+<span class="math math-display">\[
+j_{\lambda!}\underline\Lambda[d_\lambda]\longrightarrow
+IC_\lambda\longrightarrow i_*i^*IC_\lambda\xrightarrow{+1}
+\]</span>
+then has zero boundary perverse cohomology in degrees <span class="math">\(-1\)</span> and <span class="math">\(0\)</span>. Its heart long exact sequence gives the first isomorphism of (5.1), normalized to the identity on the open orbit. Duality gives the second. <span class="math">\(\square\)</span></p>
+<p><strong>Proposition 5.2.</strong> If (P) holds for all dominant coweights, then <span class="math">\(\operatorname{Sat}_G(\Lambda)\)</span> is semisimple.</p>
+<p><em>Proof.</em> First consider one orbit <span class="math">\(O\)</span>, with the even cohomology (4.2). If complexes <span class="math">\(A,B\)</span> have constant ordinary cohomology sheaves in degrees of the same parity, then
+<span class="math math-display">\[
+\operatorname{Hom}(A,B[n])=0\quad(n\text{ odd}).                \tag{5.3}
+\]</span>
+For single cohomology terms <span class="math">\(\underline U[-a]\)</span> and <span class="math">\(\underline V[-b]\)</span>, this Hom is
+<span class="math math-display">\[
+H^{n+a-b}(O,\underline{\operatorname{Hom}_\Lambda(U,V)}),
+\]</span>
+which is zero since <span class="math">\(a-b\)</span> is even. Negative cohomology is zero as well. Finite ordinary truncation triangles build each complex from its cohomology terms. Their Hom long exact sequences inductively give (5.3); no splitting of those truncations is assumed.</p>
+<p>On a finite union of orbits, suppose the stalk cohomology of <span class="math">\(A\)</span> and the costalk cohomology of <span class="math">\(B\)</span> are constant in the same parity. Choose an open union of maximal orbits <span class="math">\(j:U\hookrightarrow Y\)</span>, with closed complement <span class="math">\(i:Z\hookrightarrow Y\)</span>. Localization bounds <span class="math">\(\operatorname{Hom}_Y(A,B[n])\)</span> between
+<span class="math math-display">\[
+\operatorname{Hom}_Z(i^*A,i^!B[n]),\qquad
+\operatorname{Hom}_U(j^*A,j^*B[n]).
+\]</span>
+The second vanishes by (5.3); the first vanishes by induction on the number of strata, since its iterated stalks and costalks are the original ones. This proves odd Hom vanishing on <span class="math">\(Y\)</span>.</p>
+<p>Apply this with <span class="math">\(A=IC_\lambda\)</span> and <span class="math">\(B=IC_\mu\)</span> in the same component. Hypothesis (P), (4.1), and the component parity give the required common parity for stalks and costalks. Thus
+<span class="math math-display">\[
+\operatorname{Hom}(IC_\lambda,IC_\mu[1])=0.                   \tag{5.4}
+\]</span>
+For different components all Hom groups are zero by their disjoint open-and-closed supports.</p>
+<p>A short exact sequence <span class="math">\(0\to IC_\mu\to E\to IC_\lambda\to0\)</span> in the heart gives a triangle; this is the categorical proof in the gluing lesson, Appendix A.3. Its connecting morphism is zero by (5.4). Applying Hom from <span class="math">\(IC_\lambda\)</span> lifts its identity to a section of the quotient map. That section is a heart morphism, and is equivariant by (2.2). The sequence splits. The same argument applies to a finite direct sum as its subobject. Induction on the finite composition length established in §3 splits every object into a finite sum of ICs. <span class="math">\(\square\)</span></p>
+<h3 id="53-even-fibres-of-rootwise-resolutions">5.3. Even fibres of rootwise resolutions</h3>
+<p>The rootwise projective-line constructions give more geometry without assuming (P). We prove that every Schubert variety has a smooth projective birational source whose reduced fibres have affine pavings. This alone will not identify its IC summand.</p>
+<p>Let <span class="math">\(I\subset K^+\)</span> be the Iwahori subgroup, the inverse image of a Borel under evaluation. For an affine simple reflection <span class="math">\(s\)</span>, let <span class="math">\(P_s\)</span> be the corresponding rank-one parahoric. The loop-group lesson, Lemmas 7.8–7.9, constructs <span class="math">\(P_s/I\simeq\mathbb P^1\)</span> and the smooth projective contracted products
+<span class="math math-display">\[
+Z_{\mathbf s}=P_{s_1}\times^I\cdots\times^I P_{s_r}/I.
+\]</span>
+Their local torsor charts, ordered affine root coordinates and endpoint maps are part of those constructions. The Iwahori normal form in the first lesson, Theorem 2.C, decomposes a Schubert variety into finitely many Iwahori cells. Choose the dense cell of <span class="math">\(Z_\lambda\)</span>, indexed by the minimal right finite-Weyl representative <span class="math">\(w_\lambda\)</span>. Its length is <span class="math">\(d_\lambda\)</span>: its affine root coordinates are the dense cell coordinates of the <span class="math">\(d_\lambda\)</span>-dimensional spherical orbit.</p>
+<p>Write <span class="math">\(w_\lambda=\omega s_1\cdots s_r\)</span>, where the word is reduced and <span class="math">\(\omega\)</span> has length zero. The normalizer representative <span class="math">\(\omega\)</span> preserves <span class="math">\(I\)</span>. Start the contracted product with the right torsor <span class="math">\(E_0=n_\omega I\)</span>, with actual left multiplication by <span class="math">\(I\)</span>. In the displayed ordinary <span class="math">\(Z_{\mathbf s}\)</span> coordinates this action is <span class="math">\(i\star z=(n_\omega^{-1}in_\omega)\cdot z\)</span>, and the endpoint is <span class="math">\(n_\omega m(z)\)</span>. This makes the translated endpoint <span class="math">\(I\)</span>-equivariant in every component. Its endpoint map is
+<span class="math math-display">\[
+f_\lambda:Z_{\mathbf s}\longrightarrow Z_\lambda,
+\qquad r=d_\lambda.                                           \tag{5.5}
+\]</span>
+The open root-coordinate chart maps isomorphically onto the dense cell, by uniqueness of the affine normal form. Minimality of the right coset representative means that its image of every positive finite root is a positive affine root; thus the flag-cell coordinates introduce no further quotient direction in passing to the Grassmannian. The complement of this chart is <span class="math">\(I\)</span>-stable and has dimension less than <span class="math">\(d_\lambda\)</span>. Its proper image cannot meet the dense <span class="math">\(I\)</span>-orbit: an invariant set meeting that orbit contains the whole orbit of dimension <span class="math">\(d_\lambda\)</span>. Therefore (5.5) is an isomorphism over that cell. Its source is smooth projective of dimension <span class="math">\(d_\lambda\)</span>; its image is closed and contains the dense cell, so is <span class="math">\(Z_\lambda\)</span>.</p>
+<p>We first compute endpoint fibres in the auxiliary affine flag space. No infinite-dimensional representability is required: over a bounded Grassmannian stage, reduce its universal formal-disc torsor modulo <span class="math">\(t\)</span> and form its Borel-reduction scheme. The smooth projective Borel scheme of the corresponding inner form is constructed in <a href="../AG-RG/AG-RG-06.html">Automorphisms, forms and parabolic subgroups</a>, Theorem 2.1. On local torsor charts this flag space is <span class="math">\(LG/I\)</span>, with flag fibre <span class="math">\(G/B\)</span>. All endpoint maps below land in this finite-stage flag scheme.</p>
+<p>For a partial word of length <span class="math">\(a\)</span>, write <span class="math">\(F_a(y)\)</span> for its flag endpoint fibre at <span class="math">\(yI\)</span>. Forgetting the last factor identifies it with the inverse image of the wall line <span class="math">\(yP_{s_a}/I\)</span> under the preceding endpoint map. Once the preceding endpoint is specified on that line, the final coset is uniquely fixed by the target <span class="math">\(yI\)</span>; this gives the identification on each local torsor chart and its inverse.</p>
+<p>By <span class="math">\(I\)</span>-equivariance take <span class="math">\(y\)</span> to be a normalizer representative. Let <span class="math">\(v\)</span> be the shorter of <span class="math">\(y\)</span> and <span class="math">\(ys_a\)</span>. The wall line has closed point <span class="math">\(vI\)</span> and open affine chart
+<span class="math math-display">\[
+c\longmapsto x_{v(a_{s_a})}(c)\,vs_aI.
+\]</span>
+The root <span class="math">\(v(a_{s_a})\)</span> is positive because the reflected element is longer, so this root group lies in <span class="math">\(I\)</span>. Its left action explicitly trivializes the inverse image of the open chart. Hence <span class="math">\(F_a(y)\)</span> has closed part <span class="math">\(F_{a-1}(v)\)</span> and open part
+<span class="math math-display">\[
+\mathbb A^1\times F_{a-1}(vs_a).                              \tag{5.6}
+\]</span>
+At length zero the fibre is a point or empty, with the initial point <span class="math">\(\omega I\)</span>. Inductively pave the two smaller fibres; the product cells in (5.6) are affine spaces. To combine the filtrations, first use the closed-part filtration, then add its whole closed part to each initial closed subset of the open-part filtration. Those unions are closed in the whole fibre, since their complements are open in its open part. Thus this is a closed affine paving of every reduced flag fibre.</p>
+<p>Now fix a Grassmannian endpoint. The affine normal form makes it <span class="math">\(I\)</span>-conjugate to <span class="math">\(t^\nu K^+\)</span>. Its flag fibre is <span class="math">\(G/B\)</span>. Choose the positive root system
+<span class="math math-display">\[
+\Phi_\nu^+=\{\alpha:\langle\alpha,\nu\rangle&gt;0\}
+ \cup\{\alpha&gt;0:\langle\alpha,\nu\rangle=0\}.
+\]</span>
+It is the system defined by <span class="math">\(\nu+\varepsilon\gamma\)</span>, where <span class="math">\(\gamma\)</span> is strictly dominant and <span class="math">\(\varepsilon&gt;0\)</span> is sufficiently small. Let <span class="math">\(B_\nu\)</span> be its Borel. For its selected roots,
+<span class="math math-display">\[
+\langle\alpha,\nu\rangle\ge r_I(\alpha),\qquad
+r_I(\alpha)=0\ (\alpha&gt;0),\quad r_I(\alpha)=1\ (\alpha&lt;0).
+\]</span>
+Indeed a selected negative root has strictly positive integral pairing, and a zero-pairing selected root is positive. Rootwise conjugation consequently gives
+<span class="math">\(t^\nu B_\nu t^{-\nu}\subset I\)</span>.</p>
+<p>The finite flag cells relative to <span class="math">\(B_\nu\)</span> have explicit sections
+<span class="math math-display">\[
+c\longmapsto\sigma_v(c)n_vB,\qquad
+c\in\mathbb A^{e_v},\quad\sigma_v(c)\in B_\nu,
+\]</span>
+by the root coordinates of the parabolic lesson, Theorem 7.1. To apply that theorem with its original Borel, choose a normalizer representative <span class="math">\(n_u\)</span> with <span class="math">\(B_\nu=n_uBn_u^{-1}\)</span>, conjugate the root coordinates, and identify the two flag quotients by right multiplication with <span class="math">\(n_u\)</span>. This gives exactly the displayed sections for <span class="math">\(G/B\)</span>. The group element
+<span class="math math-display">\[
+i_v(c)=t^\nu\sigma_v(c)t^{-\nu}\in I
+\]</span>
+preserves the spherical endpoint. Its left action trivializes the resolution fibre over this flag cell as
+<span class="math math-display">\[
+\mathbb A^{e_v}\times F_r(t^\nu n_vI),                         \tag{5.7}
+\]</span>
+with inverse given by <span class="math">\(i_v(c)^{-1}\)</span>. Pull back the flag's finite closed cell filtration and insert the product pavings of (5.7). The same closed-union argument used for (5.6) produces an affine paving of every reduced Grassmannian fibre of (5.5). Compact-support localization along the paving gives only even cohomology. Fibres are proper, so we have proved
+<span class="math math-display">\[
+H^{2q+1}(f_\lambda^{-1}(x),\Lambda)=0
+\quad\text{for all }x\in Z_\lambda.                           \tag{5.8}
+\]</span>
+This holds for every classical coefficient field. It asserts parity of the resolution pushforward, not of IC itself.</p>
+<p>The geometric issue that remains is the IC inclusion and retraction. To deduce (P) from (5.8), one needs proved maps
+<span class="math math-display">\[
+IC_\lambda\xrightarrow{u}Rf_*\underline\Lambda[d_\lambda]
+ \xrightarrow{v}IC_\lambda,\qquad vu=1.                       \tag{5.9}
+\]</span>
+The obstruction can be specified precisely. Put <span class="math">\(K_\lambda=Rf_{\lambda*}\underline\Lambda[d_\lambda]\)</span>, let <span class="math">\(j\)</span> be the dense cell on which (5.5) is an isomorphism, and let <span class="math">\(i\)</span> be its complement. The canonical identity extension <span class="math">\(\eta:IC_\lambda\to Rj_*\underline\Lambda[d_\lambda]\)</span> has a lift to <span class="math">\(K_\lambda\)</span> exactly when its composite with the connecting map in
+<span class="math math-display">\[
+i_*i^!K_\lambda\longrightarrow K_\lambda
+ \longrightarrow Rj_*\underline\Lambda[d_\lambda]
+ \xrightarrow{\partial}i_*i^!K_\lambda[1]
+\]</span>
+vanishes. Thus the remaining assertion is <span class="math">\(\partial\eta=0\)</span>. If it is proved, a lift <span class="math">\(u\)</span> restricts to the identity on that dense open. Proper smooth-source duality makes <span class="math">\(K_\lambda\)</span> self-dual; dualizing <span class="math">\(u\)</span> gives <span class="math">\(v\)</span> with identity open restriction. Equation (3.2) then forces <span class="math">\(vu=1\)</span>. Proper base change and (5.8) make the stalks of IC a direct summand in the correct parity, establishing (P). The vanishing of <span class="math">\(\partial\eta\)</span> is unfinished here. The conditional deductions above do not assume it.</p>
+<h2 id="6-exact-and-faithful-total-cohomology">6. Exact and faithful total cohomology</h2>
+<p>In this section <span class="math">\(\Lambda\)</span> has characteristic zero, as in the classical weight-functor theorem of the preceding lesson.</p>
+<p>The weight-functor lesson, Theorem 17.1 and §18, proves for every Satake-heart object
+<span class="math math-display">\[
+H^*(\operatorname{Gr}_G,P)=\bigoplus_{\nu}F_\nu(P),\qquad
+F_\nu(P)=H_c^{\langle2\rho,\nu\rangle}(S_\nu,P),              \tag{6.1}
+\]</span>
+with canonical maps and only finitely many nonzero summands. Each <span class="math">\(F_\nu\)</span> is exact, so total cohomology is exact. This conclusion does not use (P).</p>
+<p>It is also faithful. We supply the detection argument. Fix <span class="math">\(\lambda\)</span>, and put <span class="math">\(\nu=w_0\lambda\)</span>. The dimension theorem in that lesson, §10, gives
+<span class="math math-display">\[
+\dim(S_\nu\cap Z_\lambda)=\langle\rho,\lambda+w_0\lambda\rangle=0.
+\]</span>
+The intersection contains <span class="math">\(t^\nu\)</span>, a point of the open orbit <span class="math">\(O_\lambda\)</span>. Its reduced finite set has no other point: the regular dominant cocharacter contracts <span class="math">\(S_\nu\)</span> to <span class="math">\(t^\nu\)</span> and preserves <span class="math">\(Z_\lambda\)</span>. Its connected <span class="math">\(\mathbb G_m\)</span>-orbit on a finite set is constant, so every point is fixed and equals its indicated limit. Thus the underlying intersection is the single point <span class="math">\(t^\nu\)</span>. Its IC restriction is <span class="math">\(\Lambda[d_\lambda]\)</span>, and
+<span class="math math-display">\[
+F_{w_0\lambda}(IC_\lambda)=\Lambda,
+\qquad\langle2\rho,w_0\lambda\rangle=-d_\lambda.             \tag{6.2}
+\]</span></p>
+<p>Every nonzero object has a simple subobject by finite length. Exactness and (6.2) inject a nonzero cohomology space into its total cohomology. For a nonzero morphism, its image is a nonzero object and exactness identifies that object's cohomology with the image of the induced cohomology map. The map cannot be zero. This proves faithfulness, without assuming semisimplicity or a general IC cycle-basis theorem. Each cohomology space is finite dimensional by the finite-stage constructible finiteness proved in the first sheaf lesson.</p>
+<p>Convolution and its compatibility with (6.1) are further constructions. At this point we have an exact faithful linear functor from the abelian Satake heart to finite-dimensional vector spaces; no tensor compatibility is being inferred from exactness alone.</p>
+<h2 id="7-the-torus-and-the-first-rank-one-examples">7. The torus and the first rank-one examples</h2>
+<p>For a split torus, the reduced Grassmannian is the discrete set <span class="math">\(X_*(T)\)</span>. The positive loop action is trivial. A bounded-support perverse sheaf is a finitely supported family of vector spaces, each in ordinary degree zero. The acting jet group is connected, so its unique equivariance is the trivial one. Therefore the category is
+<span class="math math-display">\[
+\{(V_\nu)_{\nu\in X_*(T)}:\ V_\nu\text{ finite dimensional,
+ with finite support}\}.
+\]</span>
+It is semisimple over every field. Its simples are the point sheaves, duality is fibrewise linear duality, and (6.1) is the direct sum of those vector spaces. The infinitesimal loop directions discussed in the loop-group lesson do not create extra points or local systems on this analytic space.</p>
+<p>For <span class="math">\(G=\operatorname{GL}_2\)</span> and <span class="math">\(\lambda=(1,0)\)</span>, the orbit is the closed <span class="math">\(\mathbb P^1\)</span> constructed by lattice lines. It is smooth of dimension one, and
+<span class="math math-display">\[
+IC_{(1,0)}=\underline\Lambda_{\mathbb P^1}[1],\qquad
+H^q(\mathbb P^1,IC_{(1,0)})=
+\begin{cases}\Lambda,&amp;q=-1,1,\\0,&amp;\text{otherwise.}\end{cases} \tag{7.1}
+\]</span>
+The two-cell cochain complex of <span class="math">\(\mathbb P^1=S^2\)</span> proves this calculation. The IC stalk is <span class="math">\(\Lambda\)</span> in degree <span class="math">\(-1\)</span>, not degree zero. This is an odd-dimensional component example of (P).</p>
+<p>For the quasi-minuscule <span class="math">\(\operatorname{SL}_2\)</span> Schubert surface, the orbit lesson, §4, constructs the quadratic-cone chart
+<span class="math math-display">\[
+XZ=Y^2
+\]</span>
+at its unique closed point and its resolution <span class="math">\(\mathbb F_2\to Z_{\alpha^\vee}\)</span>. The weight-functor lesson, §19, identifies its link with <span class="math">\(\mathbb{RP}^3\)</span>: the map <span class="math">\((u,v)\mapsto(u^2,uv,v^2)\)</span> has exactly the sign pair as its fibres off zero. The hemisphere cellular calculation gives integral boundary maps <span class="math">\(0,2,0\)</span>. When <span class="math">\(2\)</span> is invertible in <span class="math">\(\Lambda\)</span>, the link is a <span class="math">\(\Lambda\)</span>-homology three-sphere. The intermediate-extension truncation on a complex surface therefore has only its degree <span class="math">\(-2\)</span> constant stalk at the vertex, just as on the open orbit. The same link calculation gives the corresponding local orientation costalk. Thus
+<span class="math math-display">\[
+IC_{\alpha^\vee}=\underline\Lambda_{Z_{\alpha^\vee}}[2]
+\quad(2\in\Lambda^\times).                                   \tag{7.2}
+\]</span>
+This is the rational smoothness assertion, with its coefficient hypothesis. Its stalks satisfy (P) by this direct calculation, rather than by general decomposition.</p>
+<p>For <span class="math">\(\operatorname{PGL}_2\)</span>, choose the positive primitive coweight <span class="math">\(\omega^\vee\)</span>. Its coroot is <span class="math">\(2\omega^\vee\)</span>, so the component invariant is the coweight modulo two. The smallest even orbit is the unit point; the smallest odd orbit is the minuscule closed <span class="math">\(\mathbb P^1\)</span>. Their ICs are the point sheaf and <span class="math">\(\Lambda[1]\)</span>, with the stalk and duality calculations just given. The component theorem separates their supports, so extensions between them are zero. This computes the first object in each component. It does not establish parity for every larger rank-one Schubert variety.</p>
+<p>For these next calculations let <span class="math">\(X_n\)</span> be the reduced <span class="math">\(\operatorname{PGL}_2\)</span> Schubert closure of dominant type <span class="math">\(n\)</span>, where <span class="math">\(\dim X_n=n\)</span>. Its orbit types are <span class="math">\(n,n-2,\ldots\)</span>. The <span class="math">\(\operatorname{SL}_2\)</span> type <span class="math">\(r\alpha^\vee\)</span> has <span class="math">\(n=2r\)</span>. We now prove characteristic-zero parity through type three, including the first boundary in the odd component.</p>
+<h3 id="73-cyclic-normal-charts-along-the-immediate-boundary">7.3. Cyclic normal charts along the immediate boundary</h3>
+<p><strong>Proposition.</strong> Put <span class="math">\(m=n-2\ge0\)</span>. A graph-chart neighbourhood of <span class="math">\(t^{(m,0)}\)</span> in the <span class="math">\(GL_2\)</span> closure of type <span class="math">\((m+1,-1)\)</span>, with its reduced structure, is
+<span class="math math-display">\[
+ \mathbb A^m\times Y_{m+2},\qquad
+ Y_d=\{(x,y,z)\in\mathbb A^3:xy=z^d\}.
+ \tag{7.3}
+\]</span>
+The type-<span class="math">\((m,0)\)</span> orbit is <span class="math">\(\mathbb A^m\times\{0\}\)</span>. Translating lattices by the central type <span class="math">\((1,1)\)</span> gives the immediate-boundary chart for <span class="math">\(X_n\)</span>.</p>
+<p>Here is a direct proof. Use the bounded quotient
+<span class="math math-display">\[
+ V=t^{-1}O^2/t^{m+1}O^2,\quad
+ W_0=\langle t^me_1,e_2,te_2,\ldots,t^me_2\rangle,
+\]</span>
+with complement spanned by <span class="math">\(t^{-1}e_1,e_1,\ldots,t^{m-1}e_1,t^{-1}e_2\)</span>. In the graph chart of the ordinary Grassmannian, a lattice <span class="math">\(L\)</span> has its uniquely normalized vectors
+<span class="math math-display">\[
+ v_1=(t^m+a(t),\,c/t),\qquad
+ v_2=(b(t),\,1+d/t),
+\]</span>
+where both Laurent polynomials <span class="math">\(a,b\)</span> have levels <span class="math">\(-1,\ldots,m-1\)</span>. Its determinant index is <span class="math">\(m\)</span>. The determinant of these two vectors has highest term <span class="math">\(t^m\)</span>, with coefficient one. Since <span class="math">\(Ov_1+Ov_2\subset L\)</span>, its determinant belongs to <span class="math">\(t^mO\)</span>. All its lower coefficients must consequently vanish:
+<span class="math math-display">\[
+ \det(v_1,v_2)=t^m.
+ \tag{7.4}
+\]</span>
+This also proves that the two vectors generate <span class="math">\(L\)</span>. Indeed their entries have poles at most one, and
+<span class="math math-display">\[
+ t^{m+1}(v_1,v_2)^{-1}=t\,\operatorname{adj}(v_1,v_2)
+\]</span>
+is integral. Thus their lattice contains the lower bound <span class="math">\(t^{m+1}O^2\)</span>. Modulo that bound the projections of <span class="math">\(v_1,v_2,tv_2,\ldots,t^mv_2\)</span> to <span class="math">\(W_0\)</span> have determinant one: the second-coordinate block is triangular with diagonal one. They span the same graph as <span class="math">\(L\)</span>.</p>
+<p>Now multiply on the left by the upper-root matrix <span class="math">\(u(p(t))\)</span>, where <span class="math">\(p\)</span> has levels <span class="math">\(0,\ldots,m-1\)</span>. There is a unique such polynomial which makes the nonnegative part of
+<span class="math math-display">\[
+ b(t)+p(t)(1+d/t)
+\]</span>
+zero. Solve its coefficients downwards: <span class="math">\(p_{m-1}=-b_{m-1}\)</span> and <span class="math">\(p_i+d p_{i+1}=-b_i\)</span>. This is a polynomial operation in the graph coordinates and gives the <span class="math">\(\mathbb A^m\)</span> factor.</p>
+<p>After this operation write <span class="math">\(b(t)=b/t\)</span>. Equation (7.4) recursively forces the first coordinate of <span class="math">\(v_1\)</span> to be
+<span class="math math-display">\[
+ A_m(t)=\sum_{j=0}^{m+1}(-d)^jt^{m-j}.
+\]</span>
+Its remaining determinant equation is
+<span class="math math-display">\[
+ bc=(-1)^{m+1}d^{m+2}.
+ \tag{7.5}
+\]</span>
+Conversely these vectors, for every solution of (7.5), have determinant <span class="math">\(t^m\)</span>, meet both lattice bounds by the inverse calculation, and have the required graph projection. Applying <span class="math">\(u(-p)\)</span> recovers the original coordinates. These polynomial inverse constructions identify the reduced graph chart, not just its set of points. With <span class="math">\(x=b,\ y=(-1)^{m+1}c,\ z=d\)</span>, (7.5) is (7.3).</p>
+<p>If <span class="math">\(b=c=d=0\)</span>, the lattice has type <span class="math">\((m,0)\)</span>. Otherwise at least one displayed vector has a <span class="math">\(t^{-1}\)</span> coefficient, so its smaller Smith exponent is <span class="math">\(-1\)</span>; its type is <span class="math">\((m+1,-1)\)</span>. Smaller orbit types cannot occur in this chart. Translating it by the loop-group action covers the whole immediate-boundary orbit.</p>
+<p>We transfer this chart to the classical <span class="math">\(\operatorname{PGL}_2\)</span> Schubert variety without assuming lifts over singular parameter spaces. Projecting the étale-local vector-lattice frames and their integral transition matrices constructs the forward Grassmannian map from <span class="math">\(\operatorname{GL}_2\)</span> to <span class="math">\(\operatorname{PGL}_2\)</span>. The source closure of type <span class="math">\((m+1,-1)\)</span> is projective by the orbit lesson. Its frame entries have valuation at least <span class="math">\(-1\)</span>, and inverse entries at least <span class="math">\(-(m+1)\)</span>. Pull back the finitely many matrix coordinates of a faithful projective-group representation: they are polynomials in those frame and inverse entries. Thus the map lands in a finite separated target stage.</p>
+<p>On complex points the map is a bijection onto <span class="math">\(X_n\)</span>. A projective matrix over <span class="math">\(\mathbb C((t))\)</span>, or over <span class="math">\(\mathbb C[[t]]\)</span>, lifts to an invertible matrix: the central <span class="math">\(\mathbb G_m\)</span>-torsor is an invertible module over a field or local ring, hence free. Two vector lattices with the same projective point differ by a scalar <span class="math">\(t^a u\)</span>, with <span class="math">\(u\in O^\times\)</span>. This changes determinant index by <span class="math">\(2a\)</span>, while the unit fixes the lattice. Each projective class in this component consequently has exactly one representative of index <span class="math">\(m\)</span>. Its Smith types are <span class="math">\((m+1-j,-1+j)\)</span>, exactly the source orbit types corresponding to projective types <span class="math">\(n-2j\)</span>. This proves the bijection, preserving every orbit stratum.</p>
+<p>It is a homeomorphism of analytic spaces. The projective source is compact: a projective embedding makes it a closed subset of complex projective space, itself the quotient of a compact unit sphere. The finite separated target stage is Hausdorff; its closed diagonal gives disjoint product neighbourhoods for distinct points. A continuous bijection from compact to Hausdorff has continuous inverse, since images of closed subsets are compact and hence closed. Therefore the polynomial graph chart just proved supplies the required analytic chart of <span class="math">\(X_n\)</span>, with boundary <span class="math">\(\mathbb A^{n-2}\times\{0\}\)</span>. This topological identification, preserving the known complex stratum dimensions, is precisely what the classical IC and costalk calculations require. For the <span class="math">\(\operatorname{SL}_2\)</span> even types, determinant-zero representatives admit determinant-one frames by multiplying one basis vector by its determinant unit, giving the same homothety identification after central translation.</p>
+<h3 id="74-ics-through-type-three">7.4. ICs through type three</h3>
+<p>There is an explicit quotient presentation
+<span class="math math-display">\[
+ Y_d=\mathbb C^2/\mu_d,\qquad
+ (s,u)\longmapsto(s^d,u^d,su),
+ \quad \zeta(s,u)=(\zeta s,\zeta^{-1}u).
+ \tag{7.6}
+\]</span>
+An invariant monomial has exponent difference divisible by <span class="math">\(d\)</span>. Removing equal powers expresses it in <span class="math">\(s^d,u^d,su\)</span>. The relation is <span class="math">\(xy=z^d\)</span>; after reducing mixed powers of <span class="math">\(x,y\)</span>, the remaining monomials are distinct upstairs, proving that there is no further relation.</p>
+<p>The action is free away from the origin. The quotient of the unit sphere is a link
+<span class="math math-display">\[
+ M_d=S^3/\mu_d.
+\]</span>
+Radial normalization upstairs identifies the punctured quotient with <span class="math">\(M_d\times\mathbb R_{&gt;0}\)</span>, with weighted scalar action of weights <span class="math">\(d,d,2\)</span> on <span class="math">\(x,y,z\)</span>. Hence it computes the punctured-neighbourhood cochains.</p>
+<p>For characteristic-zero <span class="math">\(\Lambda\)</span>, the finite-cover calculation has its own short proof. A singular simplex downstairs lifts to the sphere, with exactly <span class="math">\(d\)</span> translates; pullback identifies its cochains with invariant cochains upstairs. Averaging <span class="math">\(d^{-1}\sum_{\zeta\in\mu_d}\zeta\)</span> makes taking invariants exact, so the link cohomology is the invariant part of <span class="math">\(H^*(S^3,\Lambda)\)</span>. Each deck transformation is complex linear and preserves real orientation. The two sphere groups in degrees <span class="math">\(0,3\)</span> therefore survive, and there are no others. Relative cone/puncture cohomology is reduced link cohomology shifted up by one, so the only vertex relative group is in degree <span class="math">\(4\)</span>. Thus
+<span class="math math-display">\[
+ IC(Y_d,\Lambda)=\Lambda_{Y_d}[2].
+ \tag{7.7}
+\]</span>
+Indeed its vertex stalk is in degree <span class="math">\(-2\)</span>, its costalk in degree <span class="math">\(2\)</span>, and these strict boundary bounds identify the intermediate extension.</p>
+<p>The local pair for a product with a complex <span class="math">\(m\)</span>-disc has its degree shifted by <span class="math">\(2m\)</span>. Excision identifies the quotient pair with the smash product of its cone pair and the sphere <span class="math">\(S^{2m}\)</span>. The reduced cohomology of a suspension shifts by one: cover the suspension by its two contractible cones and apply the relative Mayer–Vietoris sequence. Iterating this argument <span class="math">\(2m\)</span> times proves the asserted shift. Therefore (7.3) is a <span class="math">\(\Lambda\)</span>-cohomology manifold of real dimension <span class="math">\(2m+4=2n\)</span>. Its shifted constant complex has point stalk degree <span class="math">\(-n\)</span>, point costalk degree <span class="math">\(n\)</span>, and restriction to the immediate-boundary orbit has extraordinary degree <span class="math">\(4-n\)</span>. All have parity <span class="math">\(n\)</span>.</p>
+<p>For <span class="math">\(n=2\)</span>, the boundary is just its vertex, so this proves globally
+<span class="math math-display">\[
+ IC(X_2,\Lambda)=\Lambda_{X_2}[2].
+\]</span>
+This is exactly the quasi-minuscule <span class="math">\(SL_2\)</span> surface of Lesson 04: the projective cone over the Veronese conic. Its three slices are <span class="math">\(\mathbb A^2,\mathbb A^1,\mathrm{pt}\)</span>; their shifted compact degrees are <span class="math">\(2,0,-2\)</span>.</p>
+<p>For <span class="math">\(n=3\)</span>, the only boundary orbit has type one. Its chart is <span class="math">\(\mathbb A^1\times Y_3\)</span>. The open orbit is smooth and every boundary point is a translate of this chart. The strict intermediate-extension bounds consequently give
+<span class="math math-display">\[
+ IC(X_3,\Lambda)=\Lambda_{X_3}[3].
+ \tag{7.8}
+\]</span>
+This proves type-three parity without a decomposition theorem. For <span class="math">\(n\ge4\)</span>, (7.3) treats the immediate boundary but does not treat the deeper orbits.</p>
+<h3 id="75-semisimplicity-on-the-two-smallest-nontrivial-closures">7.5. Semisimplicity on the two smallest nontrivial closures</h3>
+<p>With characteristic-zero coefficients, every Satake-heart object supported on <span class="math">\(X_2\)</span> or on <span class="math">\(X_3\)</span> is semisimple. The simple objects on <span class="math">\(X_2\)</span> are <span class="math">\(\delta\)</span> and <span class="math">\(I_2=\Lambda_{X_2}[2]\)</span>; on <span class="math">\(X_3\)</span> they are <span class="math">\(I_1=i_*\Lambda_{X_1}[1]\)</span> and <span class="math">\(I_3=\Lambda_{X_3}[3]\)</span>, where <span class="math">\(i:X_1\hookrightarrow X_3\)</span> is the boundary inclusion. This follows from §3 and the computed ICs.</p>
+<p>We calculate every possible degree-one derived Hom. Formula (19.1) of the weight-functor lesson gives the affine semi-infinite slices of dimensions <span class="math">\(n,n-1,\ldots,0\)</span>, and its §18 supplies the closed filtration by increasing heights. Each cell has compact cohomology only in its even degree <span class="math">\(2d\)</span>, by the one-point compactification sphere. Localization along that closed filtration therefore gives zero odd compact cohomology. The closures are projective, so
+<span class="math math-display">\[
+H^1(X_n,\Lambda)=0\qquad(n=1,2,3).                         \tag{7.9}
+\]</span>
+Hom out of the constant sheaf is global sections; applying an injective resolution gives
+<span class="math">\(\operatorname{Hom}(I_n,I_n[1])=H^1(X_n,\Lambda)=0\)</span>.
+Closed pushforward is fully faithful, and the point sheaf has zero self-extension as well.</p>
+<p>At the vertex of <span class="math">\(X_2\)</span>, the link calculation gives <span class="math">\(i^*I_2=\Lambda[2]\)</span> and <span class="math">\(i^!I_2=\Lambda[-2]\)</span>. Adjunction yields
+<span class="math math-display">\[
+\operatorname{Hom}(I_2,\delta[1])=\operatorname{Hom}(\Lambda[2],\Lambda[1])=0,
+\qquad
+\operatorname{Hom}(\delta,I_2[1])=\operatorname{Hom}(\Lambda,\Lambda[-1])=0.
+\]</span>
+On <span class="math">\(X_3\)</span> the transverse charts give
+<span class="math">\(i^*I_3=\Lambda_{X_1}[3]\)</span> and <span class="math">\(i^!I_3=\Lambda_{X_1}[-1]\)</span>.
+The latter system is constant because its transverse classes are complex orientation classes; equivalently its equivariance and the connected boundary stabilizer give the constant system by §3. In this rank-one case the finite-jet stabilizer is analytically connected: its constant quotient is a triangular connected group, and its successive congruence coordinates are affine spaces. Transport on that stabilizer is locally constant and equals the identity at its identity, so descent leaves the trivial rank-one system. Thus
+<span class="math math-display">\[
+\operatorname{Hom}(I_3,I_1[1])
+ =\operatorname{Hom}(\Lambda_{X_1}[3],\Lambda_{X_1}[2])=0,
+\qquad
+\operatorname{Hom}(I_1,I_3[1])
+ =\operatorname{Hom}(\Lambda_{X_1}[1],\Lambda_{X_1}[0])=0.
+\]</span>
+Both are negative-degree ordinary Hom groups. A heart extension gives a distinguished triangle. When its connecting map is zero, the exact Hom sequence lifts the quotient's identity to a section. The displayed vanishings split extensions between the simples and between their finite direct sums. Finite-length induction now splits every object: choose a simple quotient, split its kernel by induction, and then split the extension. Equation (2.2) makes the resulting section equivariant. This proves the bounded assertion without a general decomposition theorem. Deeper boundaries in <span class="math">\(X_n\)</span>, <span class="math">\(n\ge4\)</span>, remain untreated.</p>
+<h2 id="8-a-characteristic-two-failure-of-semisimplicity">8. A characteristic-two failure of semisimplicity</h2>
+<p>The general classical constructible operations used above have characteristic-zero scope. The following examples over <span class="math">\(\mathbb F_2\)</span> use the explicit two-stratum finite-cochain model instead. Its boundary complex is the finite cellular cochain complex of <span class="math">\(\mathbb{RP}^3\)</span>. Restriction and localization come from the kernel of restriction on an injective resolution; the point-stratum truncations and the open–closed perverse-gluing proof are linear over every field. On the open stratum the objects below are constant, and at the vertex their displayed complexes are finite. The required support tests and intermediate extensions are therefore constructed by those same finite truncations. The particular resolution cochains and local disc-bundle pairings are computed explicitly below.</p>
+<h3 id="81-the-resolution-pushforward">8.1. The resolution pushforward</h3>
+<p>Keep the geometric group <span class="math">\(\operatorname{SL}_2/\mathbb C\)</span>, and now take coefficients in a field <span class="math">\(\Lambda\)</span> of characteristic two. Let
+<span class="math math-display">\[
+\pi:\mathbb F_2\longrightarrow Z_{\alpha^\vee},\qquad
+Q=R\pi_*\underline\Lambda[2],\qquad
+\delta=i_*\Lambda,
+\]</span>
+where <span class="math">\(i\)</span> is the closed vertex. For clarity, its global incidence model consists of a cone point <span class="math">\([x:y:z:w]\)</span> and a direction <span class="math">\([u:v]\)</span> with <span class="math">\(xv=yu\)</span> and <span class="math">\(yv=zu\)</span>. Over that direction its points are <span class="math">\([b u^2:buv:bv^2:w]\)</span>, a projective line. The two direction charts make this a smooth projective-line bundle over <span class="math">\(\mathbb P^1\)</span>. Off the vertex the conic direction is unique, so projection is an isomorphism. On the affine cone chart, the direction <span class="math">\([1:a:a^2]\)</span> gives <span class="math">\((X,Y,Z)=(z,az,a^2z)\)</span>; on the other chart use the reciprocal direction. These are the blowup charts of the vertex ideal: substitution in the domain Rees algebra gives <span class="math">\(Z/X=(Y/X)^2\)</span> on the <span class="math">\(X\)</span>-chart, with the analogous <span class="math">\(Z\)</span>-chart, and those charts cover its conic directions. Thus this is the blowup resolution. Its exceptional parameter is <span class="math">\(z=0\)</span>, and on the other direction chart it becomes <span class="math">\(z'=a^2z\)</span>. The exceptional curve <span class="math">\(E\)</span> therefore has normal line <span class="math">\(\mathcal O_{\mathbb P^1}(-2)\)</span>. This incidence surface is the compactification <span class="math">\(\mathbb F_2\)</span> in §7.</p>
+<p>We verify both perversity and equivariance by the particular finite cochains. Write <span class="math">\(L=\mathcal O_{\mathbb P^1}(-2)\)</span>. The displayed blowup charts identify the resolution of the affine cone with the total space of <span class="math">\(L\)</span>, its zero section being <span class="math">\(E\)</span>. The inverse images of small cone-norm neighbourhoods are disc bundles: in <span class="math">\((X,Y,Z)=(z,az,a^2z)\)</span>, the cone norm is a positive direction-dependent multiple of <span class="math">\(|z|\)</span>. Shrinking these neighbourhoods gives a cofinal system at the vertex.</p>
+<p>By the cochain-resolution definitions of direct image and cohomology with support,
+<span class="math math-display">\[
+i^*Q\simeq C^*(D(L),\Lambda)[2],\qquad
+i^!Q\simeq C^*(D(L),D(L)\setminus E;\Lambda)[2].
+\]</span>
+For the second identity take the fibre of restriction from neighbourhood cochains to deleted-neighbourhood cochains. Filtered colimits of vector spaces are exact, so passage to these stalk limits preserves that fibre. The disc bundle retracts onto <span class="math">\(E=S^2\)</span>, with cellular generators in degrees <span class="math">\(0,2\)</span>. The relative disc/sphere complex has relative cells in degrees <span class="math">\(2,4\)</span>: each base cell gains the oriented fibre-disc dimension two, and the complex transition preserves that orientation. There are no adjacent-dimensional cells, so all differentials vanish over every field. After shifting, the vertex stalk has degrees <span class="math">\(-2,0\)</span> and its costalk has degrees <span class="math">\(0,2\)</span>. On the open orbit <span class="math">\(Q=\Lambda[2]\)</span>. These are exactly the perverse support and cosupport tests.</p>
+<p>The invariant vertex ideal makes its blowup functorial for the finite jet group <span class="math">\(H\)</span>. To construct the pushforward action, set <span class="math">\(\Pi=1_H\times\pi\)</span>. The canonical product comparison
+<span class="math math-display">\[
+\operatorname{pr}_X^*R\pi_*\underline\Lambda
+ \longrightarrow R\Pi_*\underline\Lambda
+\]</span>
+is an isomorphism. On product neighbourhoods <span class="math">\(W\times B_\varepsilon\)</span>, where <span class="math">\(W\)</span> is a contractible parameter ball, it is the cochain pullback from the disc bundle to its product with <span class="math">\(W\)</span>. Contraction of <span class="math">\(W\)</span> and the prism homotopy give inverse cochain homotopy equivalences. The same argument on ordinary coordinate discs applies off the vertex, so the comparison is an isomorphism on every stalk. The two homeomorphisms <span class="math">\((h,x)\mapsto(h,hx)\)</span> on the cone and <span class="math">\((h,y)\mapsto(h,hy)\)</span> on its blowup commute with <span class="math">\(\Pi\)</span>. They transport this comparison to the action isomorphism on <span class="math">\(Q\)</span>. Composition of the lifted actions proves its normalization and cocycle. The fibre Thom class and the orientation functional on <span class="math">\(H^2(E)\)</span> are preserved by this complex action, so the two maps below are equivariant as well. This constructs the particular Satake-heart object without a general modular proper-base-change or duality theorem.</p>
+<p>The two adjunction groups are one dimensional:
+<span class="math math-display">\[
+\operatorname{Hom}(\delta,Q)=H^0(i^!Q)=\Lambda,
+\qquad
+\operatorname{Hom}(Q,\delta)=\operatorname{Hom}(H^0(i^*Q),\Lambda)=\Lambda.
+                                                               \tag{8.1}
+\]</span>
+For chosen orientation generators their composite is multiplication by the normal Euler number:
+<span class="math math-display">\[
+\delta\xrightarrow{u}Q\xrightarrow{v}\delta,
+\qquad vu=-2.                                                \tag{8.2}
+\]</span>
+Here is a direct topological calculation of this scalar. A small tubular neighbourhood of <span class="math">\(E\)</span> is its complex normal disc bundle. The degree-two cohomology with support on the zero section is generated by the oriented fibre-disc relative class; local product pairs and Mayer–Vietoris identify it with <span class="math">\(H^0(E,\Lambda)\)</span>. Its image in <span class="math">\(H^2(E,\Lambda)\)</span> counts the winding of the normal line's clutching function. Cover <span class="math">\(\mathbb P^1\)</span> by its two coordinate discs. The coordinate change <span class="math">\(z'=a^2z\)</span> makes its frames satisfy <span class="math">\(e_\infty=a^{-2}e_0\)</span>. On their equator the transition of <span class="math">\(\mathcal O(-2)\)</span> is <span class="math">\(e^{-2i\theta}\)</span>; the obstruction to extending a nonzero fibre vector over the second disc is its winding <span class="math">\(-2\)</span>. Equivalently, the boundary of the two oriented fibre-disc trivializations evaluates <span class="math">\(-2\)</span> times on the oriented base two-cell. This computes the restriction of the relative class as <span class="math">\(-2\)</span> times the base class. The natural costalk-to-stalk map is precisely this restriction, by the definition of cohomology with support. Adjunction identifies its induced degree-zero pairing with the composite in (8.2).</p>
+<p>In characteristic two (8.2) is zero for every choice of the nonzero maps. If <span class="math">\(Q\)</span> were semisimple, its only possible simple constituents would be <span class="math">\(IC_{\alpha^\vee}\)</span> and <span class="math">\(\delta\)</span>, by §3. Formula (8.1), and the absence of maps between distinct simples, would make <span class="math">\(\delta\)</span> occur exactly once. The nonzero maps from and to that single direct summand would then have nonzero composite. This contradicts (8.2). Thus the coefficient-characteristic-two Satake heart is not semisimple. No decomposition theorem was used to obtain this counterexample.</p>
+<h3 id="82-the-standard-object-has-a-point-subobject">8.2. The standard object has a point subobject</h3>
+<p>Let <span class="math">\(X=X_2\)</span>, let <span class="math">\(i:\{p\}\hookrightarrow X\)</span> be its vertex, and let <span class="math">\(j:U=X-\{p\}\hookrightarrow X\)</span>. Set <span class="math">\(\kappa=\mathbb F_2\)</span>, <span class="math">\(P=\kappa_X[2]\)</span>, and <span class="math">\(\delta=i_*\kappa\)</span>.</p>
+<p>The isolated-point intermediate extension is the finite boundary cut
+<span class="math math-display">\[
+i^*IC=\tau^{\le-1}i^*Rj_*\kappa_U[2],\qquad
+i^!IC=(\tau^{\ge0}i^*Rj_*\kappa_U[2])[-1].                   \tag{8.3}
+\]</span>
+This is the isolated-point construction of <a href="../GL-PERV/intermediate-extensions-and-intersection-complexes.html">Intermediate extensions and intersection complexes</a>, §1. To see the formulas, remove the nonnegative point cohomology from <span class="math">\(Rj_*\kappa_U[2]\)</span>. The resulting object has the same open restriction, strictly negative point stalk, and strictly positive point costalk by localization, since <span class="math">\(i^!Rj_*=0\)</span>. These are exactly the no-point-subobject and no-point-quotient conditions of intermediate extension. They identify the object uniquely by the gluing proof. Here <span class="math">\(M_2=\mathbb{RP}^3\)</span>. Its integral cellular chain complex has one cell in each degree <span class="math">\(0,1,2,3\)</span>, with <span class="math">\(d_3=0,d_2=2,d_1=0\)</span>. The attaching boundary of a <span class="math">\(q\)</span>-cell has the two hemisphere degrees <span class="math">\(1\)</span> and <span class="math">\((-1)^q\)</span>, which proves this formula without transfer. Over <span class="math">\(\kappa\)</span>, all three differentials vanish. Thus the link has one copy of <span class="math">\(\kappa\)</span> in every degree <span class="math">\(0,1,2,3\)</span>.</p>
+<p>The entire calculation, including its degree cuts, is
+<span class="math math-display">\[
+\begin{array}{c|rrrr}
+\text{link degree}&amp;0&amp;1&amp;2&amp;3\\ \hline
+\text{cellular boundary over }\mathbb Z&amp; &amp;0&amp;2&amp;0\\
+\text{degree in }i^*Rj_*\kappa[2]&amp;-2&amp;-1&amp;0&amp;1\\
+\text{retained in }i^*IC&amp;\kappa&amp;\kappa&amp;0&amp;0\\
+\text{retained then shifted in }i^!IC&amp;0&amp;0&amp;\kappa\text{ in }1&amp;\kappa\text{ in }2
+\end{array}
+ \tag{8.4}
+\]</span>
+The last line is the truncation/shift in (8.3), rather than an assumed parity theorem.</p>
+<p>Local cone/puncture cohomology gives the following complete table. Every listed group is one-dimensional and unlisted groups vanish.
+<span class="math math-display">\[
+\begin{array}{c|c|c}
+\text{object}&amp;q\text{ with }H^q(i^*(-))\ne0&amp;
+q\text{ with }H^q(i^!(-))\ne0\\ \hline
+P=\kappa_X[2]&amp;-2&amp;0,1,2\\
+IC=j_{!*}\kappa_U[2]&amp;-2,-1&amp;1,2\\
+\nabla={}^pH^0Rj_*\kappa_U[2]&amp;-2,-1,0&amp;2
+\end{array}
+ \tag{8.5}
+\]</span>
+In particular <span class="math">\(IC\)</span> has odd stalk and costalk groups, although both orbit dimensions are even.</p>
+<p>The constant <span class="math">\(P\)</span> is perverse: its open restriction is <span class="math">\(\kappa_U[2]\)</span>, its point stalk satisfies the upper test, and its point costalk has no negative degree. The localization triangle
+<span class="math math-display">\[
+ j_!\kappa_U[2]\longrightarrow P\longrightarrow\delta[2]\longrightarrow
+\]</span>
+has <span class="math">\({}^pH^{-1}(\delta[2])={}^pH^0(\delta[2])=0\)</span>. Taking perverse cohomology shows
+<span class="math math-display">\[
+ \Delta={}^pH^0j_!\kappa_U[2]=P.
+ \tag{8.6}
+\]</span></p>
+<p>The constant restriction map <span class="math">\(P\to Rj_*\kappa_U[2]\)</span> factors canonically through <span class="math">\(IC=\tau^{\le-1}Rj_*\kappa_U[2]\)</span>. At the vertex it is the identity in degree <span class="math">\(-2\)</span>. Its cone is supported at <span class="math">\(p\)</span> and has just <span class="math">\(\kappa\)</span> in degree <span class="math">\(-1\)</span>, so that cone is <span class="math">\(\delta[1]\)</span>. The resulting perverse exact sequence is
+<span class="math math-display">\[
+ 0\longrightarrow\delta\xrightarrow{u}\Delta
+ \xrightarrow{v}IC\longrightarrow0.
+ \tag{8.7}
+\]</span>
+These maps are explicit. By adjunction <span class="math">\(u\)</span> corresponds to the generator
+<span class="math math-display">\[
+ H^0(i^!\Delta)
+   =\widetilde H^1(\mathbb{RP}^3,\kappa).
+\]</span>
+It is represented by value one on the one-cell. The stalk connecting map of (8.7) is the isomorphism
+<span class="math math-display">\[
+ H^{-1}(i^*IC)\xrightarrow{\sim}H^0(i^*\delta)=\kappa.
+ \tag{8.8}
+\]</span>
+It cannot be zero. The extension cannot split, since a split <span class="math">\(\Delta=IC\oplus\delta\)</span> would have nonzero degree-zero vertex stalk, whereas <span class="math">\(\Delta\)</span> has only degree <span class="math">\(-2\)</span>.</p>
+<p>For completeness the costandard object is obtained by cutting off the degree-one point group from <span class="math">\(Rj_*\kappa_U[2]\)</span>. Thus <span class="math">\(\nabla=\tau^{\le0}Rj_*\kappa_U[2]\)</span>; localization gives <span class="math">\(i^!\nabla=\kappa[-2]\)</span>, proving (8.5). It contains <span class="math">\(IC\)</span>, with point quotient <span class="math">\(\delta\)</span>. Its exact sequence
+<span class="math math-display">\[
+ 0\longrightarrow IC\longrightarrow\nabla\longrightarrow\delta
+ \longrightarrow0
+ \tag{8.9}
+\]</span>
+also fails to split, by its costalk table. The canonical standard-to-costandard map therefore has
+<span class="math math-display">\[
+ 0\longrightarrow\delta\longrightarrow\Delta\longrightarrow\nabla
+ \longrightarrow\delta\longrightarrow0,\qquad
+ \operatorname{im}(\Delta\to\nabla)=IC.
+ \tag{8.10}
+\]</span></p>
+<p>The constant complex, its natural equivariance, the truncations and every displayed map are preserved by the loop-group action; the vertex is fixed. Hence (8.7) is an equivariant extension. The open constant rank-one system is irreducible, so <span class="math">\(IC\)</span> is simple by the checked intermediate-extension proof; <span class="math">\(\delta\)</span> is simple as a point object. This is an actual nonsemisimplicity example for the equivariant perverse category with characteristic-two coefficients.</p>
+<h3 id="83-the-central-slice-connecting-map">8.3. The central slice connecting map</h3>
+<p>Lesson 05, §19, identifies the middle closed semi-infinite slice with a ruling
+<span class="math math-display">\[
+ S_0\cap X=\mathbb A^1,\qquad
+ S_0\cap U=\mathbb C^*.
+\]</span>
+In the affine cone chart it is <span class="math">\(y=z=0\)</span> in (7.6). Its circle link is <span class="math">\(\mathbb{RP}^1\subset\mathbb{RP}^3\)</span>, the standard one-skeleton, since upstairs it is the unit circle in the first complex coordinate.</p>
+<p>The restriction
+<span class="math math-display">\[
+ H^1(\mathbb{RP}^3,\kappa)\longrightarrow
+ H^1(\mathbb{RP}^1,\kappa)
+\]</span>
+is the identity on the one-cell generator. Naturality of the relative cone/puncture restriction therefore makes <span class="math">\(u\)</span> on this ruling the nonzero local orientation class
+<span class="math math-display">\[
+ \delta\longrightarrow\kappa_{\mathbb A^1}[2].
+\]</span>
+Its map on compact cohomology in degree zero is an isomorphism: the local disc relative class extends to the generator of <span class="math">\(H_c^2(\mathbb A^1,\kappa)\)</span>, as is seen on its oriented one-point compactification <span class="math">\(S^2\)</span>. Applying compact cohomology to (8.7) restricted to the ruling consequently gives
+<span class="math math-display">\[
+ R\Gamma_c(S_0\cap X,IC)=0.
+ \tag{8.11}
+\]</span></p>
+<p>Equivalently, for the open ruling <span class="math">\(\mathbb C^*\)</span> and its boundary point the localization connecting map is
+<span class="math math-display">\[
+ H_c^{-1}(\{p\},IC)=\kappa
+   \xrightarrow{\sim}
+ H_c^0(\mathbb C^*,\kappa[2])=H_c^2(\mathbb C^*,\kappa)=\kappa.
+ \tag{8.12}
+\]</span>
+The open top cycle space is one-dimensional, and the connecting map removes it completely. This supplies the actual obstruction discussed in Lesson 05, §20, with its map, rather than just a dimension comparison.</p>
+<p>The other two slices lie in the smooth orbit: <span class="math">\(\mathbb A^2\)</span> has shifted compact group <span class="math">\(\kappa\)</span> in degree <span class="math">\(2\)</span>, and the point slice has <span class="math">\(\kappa\)</span> in degree <span class="math">\(-2\)</span>. No modular extension of the general weight-functor theorem is needed for these direct computations.</p>
+<h2 id="9-exercises-with-solutions">9. Exercises with solutions</h2>
+<p><strong>Exercise 9.1 (easy).</strong> Compute the stalks, total cohomology, and Verdier dual of the minuscule <span class="math">\(\operatorname{GL}_2\)</span> IC.</p>
+<p><em>Solution.</em> Its support is the smooth closed <span class="math">\(\mathbb P^1\)</span>, so intermediate extension from that whole support is <span class="math">\(\Lambda[1]\)</span>. Every stalk has its single group <span class="math">\(\Lambda\)</span> in degree <span class="math">\(-1\)</span>. The two cells of <span class="math">\(S^2\)</span> put ordinary constant cohomology in degrees <span class="math">\(0,2\)</span>; shifting by one gives degrees <span class="math">\(-1,1\)</span>. Its real orientation dimension is two, so duality sends <span class="math">\(\Lambda\)</span> to <span class="math">\(\Lambda[2]\)</span> and sends <span class="math">\(\Lambda[1]\)</span> back to itself. This proves all three assertions over every field. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 9.2 (easy).</strong> Prove that an extension between ICs in distinct Grassmannian components splits, without using parity.</p>
+<p><em>Solution.</em> In a common finite support its intersection with each component is open and closed. The two complementary restrictions and their closed extensions decompose any perverse sheaf as their direct sum, by localization with an empty overlap. In an extension of the two indicated ICs, its restriction to one component is the corresponding IC and to the other is the other IC. The direct-sum decomposition therefore gives a section and splits the extension. Connected-group full faithfulness makes the section equivariant. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 9.3 (medium).</strong> Prove characteristic-zero semisimplicity on the type-three <span class="math">\(\operatorname{PGL}_2\)</span> closure by computing all degree-one Hom groups.</p>
+<p><em>Solution.</em> Its boundary chart is <span class="math">\(\mathbb A^1\times\{xy=z^3\}\)</span>. The finite cyclic-cover calculation of §7.4 makes this a rational cohomology manifold, giving <span class="math">\(I_3=\Lambda_{X_3}[3]\)</span> and boundary IC <span class="math">\(I_1=i_*\Lambda_{\mathbb P^1}[1]\)</span>. The affine-cell filtration gives <span class="math">\(H^1(X_3,\Lambda)=H^1(\mathbb P^1,\Lambda)=0\)</span>, so both self-Hom groups in degree one vanish. At the boundary <span class="math">\(i^*I_3=\Lambda[3]\)</span> and <span class="math">\(i^!I_3=\Lambda[-1]\)</span>. Adjunction makes the two cross groups <span class="math">\(\operatorname{Hom}(\Lambda[3],\Lambda[2])\)</span> and <span class="math">\(\operatorname{Hom}(\Lambda[1],\Lambda[0])\)</span>, both zero by negative-degree orthogonality. A short exact heart sequence has its connecting map in such a degree-one group; vanishing gives a section. Finite-length induction splits every object, and connected-group full faithfulness makes each section equivariant. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 9.4 (medium).</strong> Compute the quasi-minuscule <span class="math">\(\operatorname{SL}_2\)</span> IC when <span class="math">\(2\)</span> is invertible, and identify the obstruction when coefficients have characteristic two.</p>
+<p><em>Solution.</em> Its vertex chart is the sign quotient of <span class="math">\(\mathbb C^2\)</span>. The link is <span class="math">\(\mathbb{RP}^3\)</span>, with one cell in each degree <span class="math">\(0,1,2,3\)</span> and boundaries <span class="math">\(0,2,0\)</span>. When two is invertible its positive reduced cohomology below degree three vanishes. The surface intermediate-extension truncation retains only the constant degree <span class="math">\(-2\)</span> stalk at the vertex; the relative cone/puncture calculation puts its orientation costalk in degree two. Thus (7.2) holds. In characteristic two all cellular differentials vanish, so link cohomology occurs also in degrees one and two. In particular the intermediate-extension truncation retains an additional vertex group in degree <span class="math">\(-1\)</span>, coming from link degree one. The constant shifted sheaf cannot be this IC, and the stronger parity bound used in Proposition 5.1 fails here. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 9.5 (hard).</strong> Prove directly that the quasi-minuscule resolution pushforward is not semisimple with characteristic-two coefficients.</p>
+<p><em>Solution.</em> Near the vertex the resolution is the disc bundle of <span class="math">\(\mathcal O_{\mathbb P^1}(-2)\)</span>. Its ordinary cochains retract onto <span class="math">\(S^2\)</span>, with degrees <span class="math">\(0,2\)</span>, and its relative cochains with support on the zero section have degrees <span class="math">\(2,4\)</span>. After shifting by two, the stalk degrees are <span class="math">\(-2,0\)</span> and the costalk degrees are <span class="math">\(0,2\)</span>. Thus the pushforward is perverse; the product cochain comparison and lifted action of §8.1 give equivariance. Adjunction makes the Hom groups from and to the vertex sheaf one dimensional. The forget-support map sends the fibre Thom class to the normal Euler class. Its clutching function has winding <span class="math">\(-2\)</span>, so the composite of the two maps is multiplication by <span class="math">\(-2=0\)</span> over characteristic-two coefficients. A semisimple object with these one-dimensional Hom groups would have exactly one vertex summand, whose inclusion followed by projection has nonzero composite. This is a contradiction. Every operation used here is the displayed finite disc-bundle or relative cochain calculation. <span class="math">\(\square\)</span></p>
+<h2 id="10-remaining-general-assertions">10. Remaining general assertions</h2>
+<p>The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, torus case, minuscule case, cyclic immediate-boundary charts, characteristic-zero type-three IC and bounded semisimplicity, quasi-minuscule surface calculation, and characteristic-two nonsplit extensions and slice connecting maps are proved above. The remaining general geometric assertion is the IC lift obstruction <span class="math">\(\partial\eta=0\)</span>, which would give characteristic-zero IC parity (P) and unconditional semisimplicity. Convolution, tensor duals and the commutativity constraint require their separate constructions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>I. Mirković and K. Vilonen, <a href="https://arxiv.org/abs/math/0401222v5"><em>Geometric Langlands duality and representations of algebraic groups over commutative rings</em></a>, freely accessible corrected preprint, §2, §7 and Appendix A, for reading alongside the finite-support category and the equivariance question.</li>
+<li>X. Zhu, <a href="https://arxiv.org/abs/1603.05593v2"><em>An introduction to affine Grassmannians and the geometric Satake equivalence</em></a>, freely accessible lecture notes, §5.1 and Appendix A, for the geometric Satake category and finite-dimensional equivariant conventions.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/GL-SAT-06.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-SAT">Repository</a></nav>
+</footer>
+</body>
+</html>

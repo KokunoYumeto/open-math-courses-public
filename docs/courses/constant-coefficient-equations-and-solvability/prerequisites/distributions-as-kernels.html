@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Distributions as kernels of continuous operators</title><link rel="stylesheet" href="../course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}</style></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a> · <a href="complete-distribution-foundations.html">Complete distribution foundations</a></nav><h1 id="distributions-as-kernels-of-continuous-operators">Distributions as kernels of continuous operators</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>An integral kernel records how an operator transfers information from an input point to an output point. A function kernel cannot describe evaluation or differentiation. A distribution on the product space can describe both. This lesson proves Laurent Schwartz's kernel theorem and explains precisely which continuity assumptions it needs. The local theorem has no growth condition at infinity. Its tempered counterpart has a global polynomial bound.</p>
+<p>We assume multivariable differentiation, integration by parts, compact smooth cutoffs, locally finite smooth partitions of unity, and Baire's theorem for complete metric spaces. The periodic Fourier fact needed in the proof is established below; no Sobolev embedding or spectral theorem is needed. Definitions of test spaces and distributions are recalled below. For the related Fourier-transform conventions, see <a href="prerequisite-bridges.html">Exact prerequisite interfaces for quadratic multiplier estimates</a>.</p>
+<p>Basic references are [Dyatlov 2026], [Melrose 2016] and [Schwartz 1952]. The argument here uses localized periodic expansions, first on bounded rectangles and then on a spatial lattice. It also proves the bounded-set facts needed to pass from weak continuity to strong continuity.</p>
+<h2 id="what-continuity-means">What continuity means</h2>
+<p>Let <span class="math" data-tex="\(U\subset\mathbb R^m\)">\(U\subset\mathbb R^m\)</span> and <span class="math" data-tex="\(V\subset\mathbb R^n\)">\(V\subset\mathbb R^n\)</span> be open. For a compact set <span class="math" data-tex="\(L\subset U\)">\(L\subset U\)</span>, write
+<span class="math math-display" data-tex="\[
+\mathcal D_L(U)=\{\psi\in C^\infty(U):\operatorname{supp}\psi\subset L\},
+\qquad
+p_{L,r}(\psi)=\max_{|\alpha|\le r}\sup_U|\partial^\alpha\psi|.
+\]">\[
+\mathcal D_L(U)=\{\psi\in C^\infty(U):\operatorname{supp}\psi\subset L\},
+\qquad
+p_{L,r}(\psi)=\max_{|\alpha|\le r}\sup_U|\partial^\alpha\psi|.
+\]</span>
+These increasing seminorms give <span class="math" data-tex="\(\mathcal D_L(U)\)">\(\mathcal D_L(U)\)</span> its Fréchet topology. Completeness follows by taking uniform limits of every derivative and using the fundamental theorem of calculus to identify successive derivatives. The limit still vanishes outside <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>The test space <span class="math" data-tex="\(\mathcal D(U)=C_c^\infty(U)\)">\(\mathcal D(U)=C_c^\infty(U)\)</span> has the locally convex inductive-limit topology over an exhaustion by compact sets with nested interiors. Equivalently, a linear map from <span class="math" data-tex="\(\mathcal D(U)\)">\(\mathcal D(U)\)</span> into a locally convex space is continuous exactly when its restriction to every <span class="math" data-tex="\(\mathcal D_L(U)\)">\(\mathcal D_L(U)\)</span> is continuous. A distribution is a continuous complex-linear functional on this space. We use the bilinear convention <span class="math" data-tex="\(\langle u,\psi\rangle\)">\(\langle u,\psi\rangle\)</span>, with no conjugation of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<p>Thus <span class="math" data-tex="\(u\in\mathcal D&#x27;(U)\)">\(u\in\mathcal D&#x27;(U)\)</span> exactly when, for every <span class="math" data-tex="\(L\)">\(L\)</span>, there are <span class="math" data-tex="\(C_L\)">\(C_L\)</span> and <span class="math" data-tex="\(r_L\)">\(r_L\)</span> such that
+<span class="math math-display" data-tex="\[
+|\langle u,\psi\rangle|\le C_Lp_{L,r_L}(\psi)
+\quad(\psi\in\mathcal D_L(U)).
+\]">\[
+|\langle u,\psi\rangle|\le C_Lp_{L,r_L}(\psi)
+\quad(\psi\in\mathcal D_L(U)).
+\]</span>
+The order and constant may vary with <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>The weak dual topology on <span class="math" data-tex="\(\mathcal D&#x27;(U)\)">\(\mathcal D&#x27;(U)\)</span> tests each fixed <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The strong dual topology uses
+<span class="math math-display" data-tex="\[
+q_B(u)=\sup_{\psi\in B}|\langle u,\psi\rangle|,
+\]">\[
+q_B(u)=\sup_{\psi\in B}|\langle u,\psi\rangle|,
+\]</span>
+where <span class="math" data-tex="\(B\)">\(B\)</span> runs over bounded subsets of <span class="math" data-tex="\(\mathcal D(U)\)">\(\mathcal D(U)\)</span>. A subset of a locally convex space is bounded when every continuous seminorm is bounded on it.</p>
+<p>These are different definitions of topology. The continuity equivalence proved below concerns this particular class of operators; it does not assert equality of the two dual topologies.</p>
+<p><strong>Lemma 1.1 (bounded test families).</strong> A subset <span class="math" data-tex="\(B\subset\mathcal D(U)\)">\(B\subset\mathcal D(U)\)</span> is bounded if and only if all its elements are supported in one compact set and every derivative seminorm is uniformly bounded on <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(B\)">\(B\)</span> has no common compact support. For a compact exhaustion <span class="math" data-tex="\(L_j\)">\(L_j\)</span>, choose <span class="math" data-tex="\(\psi_j\in B\)">\(\psi_j\in B\)</span> and <span class="math" data-tex="\(x_j\notin L_j\)">\(x_j\notin L_j\)</span> with <span class="math" data-tex="\(\psi_j(x_j)\ne0\)">\(\psi_j(x_j)\ne0\)</span>. Enlarging the exhaustion along the construction, we can make <span class="math" data-tex="\(x_j\)">\(x_j\)</span> escape every compact subset of <span class="math" data-tex="\(U\)">\(U\)</span>. Choose positive <span class="math" data-tex="\(a_j\)">\(a_j\)</span> with <span class="math" data-tex="\(a_j|\psi_j(x_j)|\ge j\)">\(a_j|\psi_j(x_j)|\ge j\)</span>. Then
+<span class="math math-display" data-tex="\[
+p(\psi)=\sup_j a_j|\psi(x_j)|
+\]">\[
+p(\psi)=\sup_j a_j|\psi(x_j)|
+\]</span>
+is finite on every test function. On each fixed support space it is the maximum of finitely many continuous evaluations, so it is a continuous seminorm on the inductive limit. It is unbounded on <span class="math" data-tex="\(B\)">\(B\)</span>, a contradiction.</p>
+<p>For every <span class="math" data-tex="\(r\)">\(r\)</span>, the seminorm <span class="math" data-tex="\(\max_{|\alpha|\le r}\sup_U|\partial^\alpha\psi|\)">\(\max_{|\alpha|\le r}\sup_U|\partial^\alpha\psi|\)</span> is continuous on every support space and hence on <span class="math" data-tex="\(\mathcal D(U)\)">\(\mathcal D(U)\)</span>. Boundedness therefore gives uniform derivative bounds. Conversely, if <span class="math" data-tex="\(B\)">\(B\)</span> has a common compact support and uniform derivative bounds, every continuous seminorm restricted to that Fréchet support space is bounded by a constant times one of its increasing derivative seminorms. It is bounded on <span class="math" data-tex="\(B\)">\(B\)</span>. This proves the converse. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a linear map <span class="math" data-tex="\(T:\mathcal D(V)\to\mathcal D&#x27;(U)\)">\(T:\mathcal D(V)\to\mathcal D&#x27;(U)\)</span>, weak continuity means that
+<span class="math math-display" data-tex="\[
+\phi\longmapsto\langle T\phi,\psi\rangle
+\]">\[
+\phi\longmapsto\langle T\phi,\psi\rangle
+\]</span>
+is continuous for every fixed <span class="math" data-tex="\(\psi\in\mathcal D(U)\)">\(\psi\in\mathcal D(U)\)</span>. It does not initially require a uniform estimate as <span class="math" data-tex="\(\psi\)">\(\psi\)</span> varies. The next lemma supplies that estimate on fixed supports.</p>
+<h2 id="two-continuous-variables-give-one-estimate">Two continuous variables give one estimate</h2>
+<p><strong>Lemma 2.1 (the Baire estimate).</strong> Let <span class="math" data-tex="\(E,F\)">\(E,F\)</span> be Fréchet spaces with increasing seminorms <span class="math" data-tex="\(p_j,q_j\)">\(p_j,q_j\)</span>. If <span class="math" data-tex="\(b:E\times F\to\mathbb C\)">\(b:E\times F\to\mathbb C\)</span> is a separately continuous bilinear form, there are indices <span class="math" data-tex="\(r,s\)">\(r,s\)</span> and a constant <span class="math" data-tex="\(C\)">\(C\)</span> such that
+<span class="math math-display" data-tex="\[
+|b(e,f)|\le Cp_r(e)q_s(f).
+\tag{2.1}
+\]">\[
+|b(e,f)|\le Cp_r(e)q_s(f).
+\tag{2.1}
+\]</span></p>
+<p><strong>Proof.</strong> For positive integers <span class="math" data-tex="\(s,k\)">\(s,k\)</span>, put
+<span class="math math-display" data-tex="\[
+A_{s,k}=\{e:|b(e,f)|\le kq_s(f)\text{ for every }f\in F\}.
+\]">\[
+A_{s,k}=\{e:|b(e,f)|\le kq_s(f)\text{ for every }f\in F\}.
+\]</span>
+Each set is closed because <span class="math" data-tex="\(e\mapsto b(e,f)\)">\(e\mapsto b(e,f)\)</span> is continuous. Continuity in <span class="math" data-tex="\(f\)">\(f\)</span>, for each fixed <span class="math" data-tex="\(e\)">\(e\)</span>, shows that these countably many sets cover <span class="math" data-tex="\(E\)">\(E\)</span>. Baire's theorem gives one <span class="math" data-tex="\(A_{s,k}\)">\(A_{s,k}\)</span> with nonempty interior. Choose <span class="math" data-tex="\(e_0\)">\(e_0\)</span> and a neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of zero such that <span class="math" data-tex="\(e_0+W\subset A_{s,k}\)">\(e_0+W\subset A_{s,k}\)</span> and <span class="math" data-tex="\(e_0\in A_{s,k}\)">\(e_0\in A_{s,k}\)</span>. Subtraction gives
+<span class="math math-display" data-tex="\[
+|b(e,f)|\le2kq_s(f)\quad(e\in W).
+\]">\[
+|b(e,f)|\le2kq_s(f)\quad(e\in W).
+\]</span>
+There are <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> with <span class="math" data-tex="\(\{p_r&lt;\varepsilon\}\subset W\)">\(\{p_r&lt;\varepsilon\}\subset W\)</span>. For <span class="math" data-tex="\(p_r(e)&gt;0\)">\(p_r(e)&gt;0\)</span>, apply the preceding bound to <span class="math" data-tex="\(\varepsilon e/(2p_r(e))\)">\(\varepsilon e/(2p_r(e))\)</span>. For <span class="math" data-tex="\(p_r(e)=0\)">\(p_r(e)=0\)</span>, every positive multiple of <span class="math" data-tex="\(e\)">\(e\)</span> belongs to that seminorm ball; letting the multiple increase gives <span class="math" data-tex="\(b(e,f)=0\)">\(b(e,f)=0\)</span>. This proves (2.1), with <span class="math" data-tex="\(C=4k/\varepsilon\)">\(C=4k/\varepsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a weakly continuous <span class="math" data-tex="\(T\)">\(T\)</span>, apply the lemma to
+<span class="math math-display" data-tex="\[
+b(\psi,\phi)=\langle T\phi,\psi\rangle
+\]">\[
+b(\psi,\phi)=\langle T\phi,\psi\rangle
+\]</span>
+on <span class="math" data-tex="\(\mathcal D_L(U)\times\mathcal D_M(V)\)">\(\mathcal D_L(U)\times\mathcal D_M(V)\)</span>. Separate continuity in <span class="math" data-tex="\(\psi\)">\(\psi\)</span> follows because each <span class="math" data-tex="\(T\phi\)">\(T\phi\)</span> is a distribution. We obtain
+<span class="math math-display" data-tex="\[
+|\langle T\phi,\psi\rangle|
+\le C_{L,M}p_{L,r}(\psi)p_{M,s}(\phi).
+\tag{2.2}
+\]">\[
+|\langle T\phi,\psi\rangle|
+\le C_{L,M}p_{L,r}(\psi)p_{M,s}(\phi).
+\tag{2.2}
+\]</span>
+The indices depend on both compact sets. No global order bound has appeared.</p>
+<h2 id="breaking-a-test-function-into-products">Breaking a test function into products</h2>
+<p>Choose rectangles <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> whose closures lie in <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>. Choose larger rectangles <span class="math" data-tex="\(Q_U\Subset U\)">\(Q_U\Subset U\)</span>, <span class="math" data-tex="\(Q_V\Subset V\)">\(Q_V\Subset V\)</span>, containing those closures, and cutoffs <span class="math" data-tex="\(\chi\in\mathcal D(Q_U)\)">\(\chi\in\mathcal D(Q_U)\)</span>, <span class="math" data-tex="\(\eta\in\mathcal D(Q_V)\)">\(\eta\in\mathcal D(Q_V)\)</span> equal to one near <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span>, <span class="math" data-tex="\(\overline B\)">\(\overline B\)</span>. Regard the larger rectangles as fundamental cells of tori. Let <span class="math" data-tex="\(e_p(x)\)">\(e_p(x)\)</span>, <span class="math" data-tex="\(f_q(y)\)">\(f_q(y)\)</span> be their exponential Fourier modes. The frequencies include the scale factors determined by the side lengths of the rectangles.</p>
+<p>For <span class="math" data-tex="\(H\in\mathcal D(A\times B)\)">\(H\in\mathcal D(A\times B)\)</span>, extend <span class="math" data-tex="\(H\)">\(H\)</span> by zero to the larger cells and then periodically. If <span class="math" data-tex="\(c_{pq}(H)\)">\(c_{pq}(H)\)</span> denotes its normalized Fourier coefficient, then
+<span class="math math-display" data-tex="\[
+H(x,y)=\sum_{p\in\mathbb Z^m,\ q\in\mathbb Z^n}
+c_{pq}(H)\chi(x)e_p(x)\eta(y)f_q(y).
+\tag{3.1}
+\]">\[
+H(x,y)=\sum_{p\in\mathbb Z^m,\ q\in\mathbb Z^n}
+c_{pq}(H)\chi(x)e_p(x)\eta(y)f_q(y).
+\tag{3.1}
+\]</span>
+The series converges with every derivative, with support in one fixed compact product.</p>
+<p>Integration by parts using powers of the periodic Laplacian gives
+<span class="math math-display" data-tex="\[
+|c_{pq}(H)|\le C_N
+(1+|p|^2+|q|^2)^{-N}\|H\|_{C^{2N}}
+\quad(N\ge0).
+\tag{3.2}
+\]">\[
+|c_{pq}(H)|\le C_N
+(1+|p|^2+|q|^2)^{-N}\|H\|_{C^{2N}}
+\quad(N\ge0).
+\tag{3.2}
+\]</span>
+The eigenvalues of that Laplacian are comparable to <span class="math" data-tex="\(|p|^2+|q|^2\)">\(|p|^2+|q|^2\)</span>, with constants depending on the cells. A derivative of order at most <span class="math" data-tex="\(a\)">\(a\)</span> of a term in (3.1) costs at most <span class="math" data-tex="\(C_a(1+|p|+|q|)^a\)">\(C_a(1+|p|+|q|)^a\)</span>. Choose <span class="math" data-tex="\(2N&gt;a+m+n\)">\(2N&gt;a+m+n\)</span>; the lattice sum of these bounds is finite. Thus the periodic series converges absolutely with every derivative.</p>
+<p>Here is why its value is the original periodic function. On the circle of length <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, the Fejér kernels are
+<span class="math math-display" data-tex="\[
+F_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{ijt}\right|^2.
+\]">\[
+F_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{ijt}\right|^2.
+\]</span>
+They are nonnegative and have integral one for the normalized measure <span class="math" data-tex="\(dt/(2\pi)\)">\(dt/(2\pi)\)</span>, by orthogonality of the exponential modes. Outside a fixed neighborhood of zero their values are <span class="math" data-tex="\(O(1/N)\)">\(O(1/N)\)</span>, from the geometric-sum identity. Their products in several variables therefore form an approximate identity: split the convolution into a small neighborhood of zero, controlled by uniform continuity, and its complement, whose mass tends to zero. Consequently Fejér means converge uniformly to every continuous periodic function. For the absolutely convergent Fourier series above, its Fejér means also converge uniformly to its sum, because their coefficients are bounded by one and tend to one at every fixed frequency. Both limits agree. Multiplying by <span class="math" data-tex="\(\chi\eta\)">\(\chi\eta\)</span>, which equals one on the support of <span class="math" data-tex="\(H\)">\(H\)</span>, proves (3.1). Rectangles of other side lengths follow by rescaling.</p>
+<p><strong>Lemma 3.1 (product tests detect distributions).</strong> Finite sums of tests <span class="math" data-tex="\(\psi(x)\phi(y)\)">\(\psi(x)\phi(y)\)</span> are dense in <span class="math" data-tex="\(\mathcal D(U\times V)\)">\(\mathcal D(U\times V)\)</span>. A distribution on the product that vanishes on every such product is zero.</p>
+<p><strong>Proof.</strong> On a relatively compact product rectangle, (3.1) is precisely an approximation by finite sums of products, converging in one support space. For a general compactly supported <span class="math" data-tex="\(H\)">\(H\)</span>, choose smooth partitions of unity on <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> subordinate to relatively compact rectangles. Only finitely many products of partition functions meet <span class="math" data-tex="\(\operatorname{supp}H\)">\(\operatorname{supp}H\)</span>. Apply (3.1) to each resulting piece. The sum of these finite approximations converges in one compact support space. Continuity of a distribution proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-local-kernel-theorem">The local kernel theorem</h2>
+<p><strong>Theorem 4.1 (Schwartz's kernel theorem on open sets).</strong> For arbitrary open <span class="math" data-tex="\(U\subset\mathbb R^m\)">\(U\subset\mathbb R^m\)</span>, <span class="math" data-tex="\(V\subset\mathbb R^n\)">\(V\subset\mathbb R^n\)</span>, the following data are equivalent:</p>
+<ol>
+<li>A distribution <span class="math" data-tex="\(K\in\mathcal D&#x27;(U\times V)\)">\(K\in\mathcal D&#x27;(U\times V)\)</span>.</li>
+<li>A weakly continuous linear map <span class="math" data-tex="\(T:\mathcal D(V)\to\mathcal D&#x27;(U)\)">\(T:\mathcal D(V)\to\mathcal D&#x27;(U)\)</span>.</li>
+<li>A linear map <span class="math" data-tex="\(T:\mathcal D(V)\to\mathcal D&#x27;(U)\)">\(T:\mathcal D(V)\to\mathcal D&#x27;(U)\)</span> continuous into the strong dual topology.</li>
+<li>A bilinear form on <span class="math" data-tex="\(\mathcal D(U)\times\mathcal D(V)\)">\(\mathcal D(U)\times\mathcal D(V)\)</span> separately continuous in each test variable.</li>
+</ol>
+<p>The correspondence is
+<span class="math math-display" data-tex="\[
+\langle T\phi,\psi\rangle
+=\langle K,\psi(x)\phi(y)\rangle.
+\tag{4.1}
+\]">\[
+\langle T\phi,\psi\rangle
+=\langle K,\psi(x)\phi(y)\rangle.
+\tag{4.1}
+\]</span>
+The kernel is unique. In particular, continuity of each scalar pairing is enough; no estimate uniform over all supports is required.</p>
+<p>The same class of operators is obtained if weak continuity is specified only using convergent test sequences. On a fixed support space, every scalar pairing is then a sequentially continuous linear functional on a metrizable Fréchet space, hence is continuous. To see the last implication, failure of continuity would give vectors tending to zero in the metric with functional values bounded away from zero. The inductive-limit property then gives continuity on all of <span class="math" data-tex="\(\mathcal D(V)\)">\(\mathcal D(V)\)</span>. Conversely a continuous scalar pairing preserves every convergent test sequence.</p>
+<p><strong>Proof.</strong> Start with <span class="math" data-tex="\(K\)">\(K\)</span>. On fixed compact supports <span class="math" data-tex="\(L,M\)">\(L,M\)</span>, its distribution estimate and the product rule give
+<span class="math math-display" data-tex="\[
+|\langle K,\psi\otimes\phi\rangle|
+\le C p_{L,a}(\psi)p_{M,a}(\phi)
+\tag{4.2}
+\]">\[
+|\langle K,\psi\otimes\phi\rangle|
+\le C p_{L,a}(\psi)p_{M,a}(\phi)
+\tag{4.2}
+\]</span>
+for some <span class="math" data-tex="\(C,a\)">\(C,a\)</span>. For fixed <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, this defines a distribution <span class="math" data-tex="\(T\phi\)">\(T\phi\)</span>. For fixed <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, it defines a continuous functional of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Thus it supplies both weak continuity and separate continuity.</p>
+<p>To prove strong continuity, let <span class="math" data-tex="\(B\subset\mathcal D(U)\)">\(B\subset\mathcal D(U)\)</span> be bounded. Lemma 1.1 puts its elements in one <span class="math" data-tex="\(\mathcal D_L(U)\)">\(\mathcal D_L(U)\)</span>, with <span class="math" data-tex="\(\sup_{\psi\in B}p_{L,a}(\psi)&lt;\infty\)">\(\sup_{\psi\in B}p_{L,a}(\psi)&lt;\infty\)</span>. Formula (4.2) implies
+<span class="math math-display" data-tex="\[
+q_B(T\phi)\le C\Big(\sup_{\psi\in B}p_{L,a}(\psi)\Big)p_{M,a}(\phi).
+\]">\[
+q_B(T\phi)\le C\Big(\sup_{\psi\in B}p_{L,a}(\psi)\Big)p_{M,a}(\phi).
+\]</span>
+The restriction of <span class="math" data-tex="\(T\)">\(T\)</span> to every support space is therefore continuous into the strong dual. The inductive-limit property proves global strong continuity. Strong continuity implies weak continuity because a singleton test family is bounded.</p>
+<p>Conversely, start with a separately continuous bilinear form <span class="math" data-tex="\(b\)">\(b\)</span>. It gives a weakly continuous map by <span class="math" data-tex="\(\langle T\phi,\psi\rangle=b(\psi,\phi)\)">\(\langle T\phi,\psi\rangle=b(\psi,\phi)\)</span>. Use the rectangles, cutoffs and modes of Section 3. Define, for <span class="math" data-tex="\(H\in\mathcal D(A\times B)\)">\(H\in\mathcal D(A\times B)\)</span>,
+<span class="math math-display" data-tex="\[
+K_{A,B}(H)=\sum_{p,q}c_{pq}(H)b(\chi e_p,\eta f_q).
+\tag{4.3}
+\]">\[
+K_{A,B}(H)=\sum_{p,q}c_{pq}(H)b(\chi e_p,\eta f_q).
+\tag{4.3}
+\]</span>
+Lemma 2.1 on the supports of <span class="math" data-tex="\(\chi,\eta\)">\(\chi,\eta\)</span> bounds the second factor by
+<span class="math math-display" data-tex="\[
+|b(\chi e_p,\eta f_q)|\le C(1+|p|)^r(1+|q|)^s.
+\]">\[
+|b(\chi e_p,\eta f_q)|\le C(1+|p|)^r(1+|q|)^s.
+\]</span>
+With <span class="math" data-tex="\(2N&gt;r+s+m+n\)">\(2N&gt;r+s+m+n\)</span>, (3.2) shows that (4.3) converges absolutely and is bounded by <span class="math" data-tex="\(C&#x27;\|H\|_{C^{2N}}\)">\(C&#x27;\|H\|_{C^{2N}}\)</span>. It is a distribution on <span class="math" data-tex="\(A\times B\)">\(A\times B\)</span>.</p>
+<p>If <span class="math" data-tex="\(H=\psi\otimes\phi\)">\(H=\psi\otimes\phi\)</span>, its Fourier coefficients factor into the coefficients of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Their cutoff expansions converge in the two fixed support spaces. The joint estimate (2.2) then gives
+<span class="math math-display" data-tex="\[
+K_{A,B}(\psi\otimes\phi)=b(\psi,\phi).
+\]">\[
+K_{A,B}(\psi\otimes\phi)=b(\psi,\phi).
+\]</span>
+Lemma 3.1 implies uniqueness on that rectangle. In particular the construction is independent of the larger cells and cutoffs.</p>
+<p>On overlaps of two product rectangles, cover the overlap by smaller product rectangles. The two distributions agree on product tests in each smaller rectangle and hence agree there by Lemma 3.1. They therefore glue. Explicitly, choose a locally finite partition subordinate to the product-rectangle cover and define the value on a global test by the finite sum of the corresponding localized values. Agreement on overlaps makes this definition independent of the partition. On each compact support only finitely many distribution estimates are needed, so the result is continuous. This gives <span class="math" data-tex="\(K\in\mathcal D&#x27;(U\times V)\)">\(K\in\mathcal D&#x27;(U\times V)\)</span>, satisfying (4.1). Lemma 3.1 gives global uniqueness. All four correspondences are inverse. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="polynomial-control-on-the-whole-space">Polynomial control on the whole space</h2>
+<p>For <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, let <span class="math" data-tex="\(\mathcal S(\mathbb R^d)\)">\(\mathcal S(\mathbb R^d)\)</span> be the Schwartz space, with increasing seminorms
+<span class="math math-display" data-tex="\[
+P_a(f)=\max_{|\alpha|\le a}\sup_z
+\langle z\rangle^a|\partial^\alpha f(z)|,
+\qquad \langle z\rangle=(1+|z|^2)^{1/2}.
+\]">\[
+P_a(f)=\max_{|\alpha|\le a}\sup_z
+\langle z\rangle^a|\partial^\alpha f(z)|,
+\qquad \langle z\rangle=(1+|z|^2)^{1/2}.
+\]</span>
+Its continuous dual is <span class="math" data-tex="\(\mathcal S&#x27;(\mathbb R^d)\)">\(\mathcal S&#x27;(\mathbb R^d)\)</span>, the tempered distributions. The weak and strong dual topologies are defined by fixed tests and bounded test families, respectively. A family in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> is bounded exactly when every <span class="math" data-tex="\(P_a\)">\(P_a\)</span> is uniformly bounded on it.</p>
+<p><strong>Lemma 5.1 (a spatial and frequency expansion).</strong> There are compactly supported smooth functions <span class="math" data-tex="\(\theta,\eta\)">\(\theta,\eta\)</span> on <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, supported in <span class="math" data-tex="\((-\pi,\pi)^d\)">\((-\pi,\pi)^d\)</span>, with <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span> on <span class="math" data-tex="\(\operatorname{supp}\theta\)">\(\operatorname{supp}\theta\)</span> and
+<span class="math math-display" data-tex="\[
+\sum_{j\in\mathbb Z^d}\theta(z-j)=1.
+\]">\[
+\sum_{j\in\mathbb Z^d}\theta(z-j)=1.
+\]</span>
+For such functions in dimensions <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, every <span class="math" data-tex="\(H\in\mathcal S(\mathbb R^{m+n})\)">\(H\in\mathcal S(\mathbb R^{m+n})\)</span> has an expansion
+<span class="math math-display" data-tex="\[
+H(x,y)=\sum_{j,k,p,q}c_{jk,pq}(H)
+\eta_U(x-j)e^{ip\cdot(x-j)}
+\eta_V(y-k)e^{iq\cdot(y-k)}.
+\tag{5.1}
+\]">\[
+H(x,y)=\sum_{j,k,p,q}c_{jk,pq}(H)
+\eta_U(x-j)e^{ip\cdot(x-j)}
+\eta_V(y-k)e^{iq\cdot(y-k)}.
+\tag{5.1}
+\]</span>
+Here <span class="math" data-tex="\(j,p\in\mathbb Z^m\)">\(j,p\in\mathbb Z^m\)</span>, <span class="math" data-tex="\(k,q\in\mathbb Z^n\)">\(k,q\in\mathbb Z^n\)</span>. The series converges absolutely in every Schwartz seminorm, and, for all integers <span class="math" data-tex="\(M,N\ge0\)">\(M,N\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+|c_{jk,pq}(H)|\le C_{M,N}
+\langle(j,k)\rangle^{-M}\langle(p,q)\rangle^{-2N}
+\max_{|\alpha|\le2N}\sup_z
+\langle z\rangle^M|\partial^\alpha H(z)|.
+\tag{5.2}
+\]">\[
+|c_{jk,pq}(H)|\le C_{M,N}
+\langle(j,k)\rangle^{-M}\langle(p,q)\rangle^{-2N}
+\max_{|\alpha|\le2N}\sup_z
+\langle z\rangle^M|\partial^\alpha H(z)|.
+\tag{5.2}
+\]</span></p>
+<p><strong>Proof.</strong> Choose a nonnegative bump <span class="math" data-tex="\(\theta_0\)">\(\theta_0\)</span>, supported in <span class="math" data-tex="\((-1,1)^d\)">\((-1,1)^d\)</span>, positive on <span class="math" data-tex="\([-1/2,1/2]^d\)">\([-1/2,1/2]^d\)</span>. Its integer translates have a positive smooth periodic sum <span class="math" data-tex="\(a(z)\)">\(a(z)\)</span>. Put <span class="math" data-tex="\(\theta=\theta_0/a\)">\(\theta=\theta_0/a\)</span>, and choose <span class="math" data-tex="\(\eta\)">\(\eta\)</span> supported in <span class="math" data-tex="\((-\pi,\pi)^d\)">\((-\pi,\pi)^d\)</span>, equal to one on a neighborhood of <span class="math" data-tex="\([-1,1]^d\)">\([-1,1]^d\)</span>. This gives the required partition.</p>
+<p>Let <span class="math" data-tex="\(c_{jk,pq}(H)\)">\(c_{jk,pq}(H)\)</span> be the normalized Fourier coefficient on the <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>-periodic product cell of
+<span class="math math-display" data-tex="\[
+(s,t)\longmapsto\theta_U(s)\theta_V(t)H(j+s,k+t).
+\]">\[
+(s,t)\longmapsto\theta_U(s)\theta_V(t)H(j+s,k+t).
+\]</span>
+This function is supported away from the boundary of the cell. Integration by parts with <span class="math" data-tex="\((1-\Delta_s-\Delta_t)^N\)">\((1-\Delta_s-\Delta_t)^N\)</span> gives the frequency factor in (5.2). On its fixed support, <span class="math" data-tex="\(\langle(j+s,k+t)\rangle\)">\(\langle(j+s,k+t)\rangle\)</span> is comparable to <span class="math" data-tex="\(\langle(j,k)\rangle\)">\(\langle(j,k)\rangle\)</span>, uniformly in the lattice points. The product rule gives the spatial factor and the displayed derivative bound.</p>
+<p>For any integer <span class="math" data-tex="\(a\)">\(a\)</span>, the Schwartz seminorm <span class="math" data-tex="\(P_a\)">\(P_a\)</span> of an atom in (5.1) is at most
+<span class="math math-display" data-tex="\[
+C_a\langle(j,k)\rangle^a\langle(p,q)\rangle^a.
+\]">\[
+C_a\langle(j,k)\rangle^a\langle(p,q)\rangle^a.
+\]</span>
+Choose <span class="math" data-tex="\(M&gt;a+m+n\)">\(M&gt;a+m+n\)</span> and <span class="math" data-tex="\(2N&gt;a+m+n\)">\(2N&gt;a+m+n\)</span> in (5.2). Summation over the two lattices is then finite, proving absolute convergence in <span class="math" data-tex="\(P_a\)">\(P_a\)</span>. For a fixed <span class="math" data-tex="\(j,k\)">\(j,k\)</span>, Fourier reconstruction gives the localized function because <span class="math" data-tex="\(\eta_U\eta_V=1\)">\(\eta_U\eta_V=1\)</span> on its support. Summing those functions gives <span class="math" data-tex="\(H\)">\(H\)</span> by the spatial partition. The convergence just proved also justifies this equality in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (the tempered kernel theorem).</strong> Distributions
+<span class="math math-display" data-tex="\[
+K\in\mathcal S&#x27;(\mathbb R^{m+n})
+\]">\[
+K\in\mathcal S&#x27;(\mathbb R^{m+n})
+\]</span>
+correspond uniquely, by (4.1), to weakly continuous linear maps
+<span class="math math-display" data-tex="\[
+T:\mathcal S(\mathbb R^n)\longrightarrow\mathcal S&#x27;(\mathbb R^m).
+\]">\[
+T:\mathcal S(\mathbb R^n)\longrightarrow\mathcal S&#x27;(\mathbb R^m).
+\]</span>
+Every such map is also continuous into the strong dual topology. Equivalently, kernels correspond to separately continuous bilinear forms on the two Schwartz spaces.</p>
+<p><strong>Proof.</strong> A tempered kernel satisfies <span class="math" data-tex="\(|K(H)|\le CP_a(H)\)">\(|K(H)|\le CP_a(H)\)</span>. The product rule and
+<span class="math" data-tex="\(\langle(x,y)\rangle\le\langle x\rangle\langle y\rangle\)">\(\langle(x,y)\rangle\le\langle x\rangle\langle y\rangle\)</span> give
+<span class="math math-display" data-tex="\[
+|K(\psi\otimes\phi)|\le C&#x27;P_a(\psi)P_a(\phi).
+\]">\[
+|K(\psi\otimes\phi)|\le C&#x27;P_a(\psi)P_a(\phi).
+\]</span>
+This defines a weakly continuous map. Taking the supremum over a bounded family of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>'s proves strong continuity.</p>
+<p>Conversely, the Baire estimate gives
+<span class="math math-display" data-tex="\[
+|b(\psi,\phi)|\le CP_r(\psi)P_s(\phi).
+\]">\[
+|b(\psi,\phi)|\le CP_r(\psi)P_s(\phi).
+\]</span>
+For the atoms in Lemma 5.1, the value of <span class="math" data-tex="\(b\)">\(b\)</span> is at most
+<span class="math math-display" data-tex="\[
+C&#x27;\langle(j,k)\rangle^{r+s}\langle(p,q)\rangle^{r+s}.
+\]">\[
+C&#x27;\langle(j,k)\rangle^{r+s}\langle(p,q)\rangle^{r+s}.
+\]</span>
+Define <span class="math" data-tex="\(K(H)\)">\(K(H)\)</span> by replacing each atom in (5.1) by this bilinear value and summing with its coefficient. Choose <span class="math" data-tex="\(M&gt;r+s+m+n\)">\(M&gt;r+s+m+n\)</span> and <span class="math" data-tex="\(2N&gt;r+s+m+n\)">\(2N&gt;r+s+m+n\)</span> in (5.2). The sum converges absolutely and is bounded by a fixed Schwartz seminorm of <span class="math" data-tex="\(H\)">\(H\)</span>; hence <span class="math" data-tex="\(K\)">\(K\)</span> is tempered.</p>
+<p>For <span class="math" data-tex="\(H=\psi\otimes\phi\)">\(H=\psi\otimes\phi\)</span>, the coefficients factor into the corresponding one-variable spatial and frequency coefficients. Lemma 5.1 in each dimension, followed by joint continuity of <span class="math" data-tex="\(b\)">\(b\)</span>, gives <span class="math" data-tex="\(K(\psi\otimes\phi)=b(\psi,\phi)\)">\(K(\psi\otimes\phi)=b(\psi,\phi)\)</span>. Finite sums of Schwartz products are dense by (5.1), so <span class="math" data-tex="\(K\)">\(K\)</span> is unique. Strong continuity and its converse to weak continuity follow as above. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If one dimension is zero, its test space is <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and the result is the ordinary continuous-dual identification. If an open set is empty, all corresponding test and distribution spaces are zero. These cases need no Fourier construction.</p>
+<h2 id="three-ways-to-see-an-operator">Three ways to see an operator</h2>
+<p><strong>Example 6.1 (a singular output with one input measurement).</strong> On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, let <span class="math" data-tex="\(a=\operatorname{pv}(1/x)\)">\(a=\operatorname{pv}(1/x)\)</span>, defined by
+<span class="math math-display" data-tex="\[
+\langle a,\psi\rangle
+=\int_0^\infty\frac{\psi(x)-\psi(-x)}{x}\,dx.
+\]">\[
+\langle a,\psi\rangle
+=\int_0^\infty\frac{\psi(x)-\psi(-x)}{x}\,dx.
+\]</span>
+The difference in the numerator is <span class="math" data-tex="\(O(x)\)">\(O(x)\)</span> near zero. At infinity, Schwartz decay makes the integral absolutely convergent. Its absolute value is bounded by a fixed Schwartz seminorm, so <span class="math" data-tex="\(a\)">\(a\)</span> is tempered. Put
+<span class="math math-display" data-tex="\[
+T\phi=a\int_{\mathbb R}e^{-y^2}\phi(y)\,dy.
+\]">\[
+T\phi=a\int_{\mathbb R}e^{-y^2}\phi(y)\,dy.
+\]</span>
+The kernel theorem supplies a tempered kernel. On a general Schwartz test it is explicitly
+<span class="math math-display" data-tex="\[
+K(H)=\left\langle a,
+x\longmapsto\int e^{-y^2}H(x,y)\,dy\right\rangle.
+\]">\[
+K(H)=\left\langle a,
+x\longmapsto\int e^{-y^2}H(x,y)\,dy\right\rangle.
+\]</span>
+Differentiating under the integral and using Schwartz bounds verifies that the inner function is Schwartz and depends continuously on <span class="math" data-tex="\(H\)">\(H\)</span>. The kernel has a singularity in its output variable although its input dependence is smooth.</p>
+<p><strong>Example 6.2 (a curved evaluation relation).</strong> Define <span class="math" data-tex="\(T\phi(x)=(1+x^2)\phi(x^2)\)">\(T\phi(x)=(1+x^2)\phi(x^2)\)</span> for compactly supported smooth <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Its local distribution kernel is
+<span class="math math-display" data-tex="\[
+K(H)=\int_{\mathbb R}(1+x^2)H(x,x^2)\,dx.
+\]">\[
+K(H)=\int_{\mathbb R}(1+x^2)H(x,x^2)\,dx.
+\]</span>
+For each compact support of <span class="math" data-tex="\(H\)">\(H\)</span>, the integration occurs over a bounded interval. A supremum bound proves continuity. Pairing with <span class="math" data-tex="\(\psi(x)\phi(y)\)">\(\psi(x)\phi(y)\)</span> gives the stated operator. The kernel is supported exactly on the parabola <span class="math" data-tex="\(y=x^2\)">\(y=x^2\)</span>: it vanishes off it, while every neighborhood of a point of the parabola contains a nonnegative test whose pairing is positive. This kernel is a measure, although it has no density with respect to planar Lebesgue measure.</p>
+<p><strong>Example 6.3 (a local kernel with excessive growth).</strong> The formula
+<span class="math math-display" data-tex="\[
+K(H)=\int e^{x^2}H(x,0)\,dx
+\]">\[
+K(H)=\int e^{x^2}H(x,0)\,dx
+\]</span>
+defines a distribution on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, and its operator is <span class="math" data-tex="\(T\phi(x)=\phi(0)e^{x^2}\)">\(T\phi(x)=\phi(0)e^{x^2}\)</span>. It satisfies the local theorem. It does not define a tempered kernel. To see this, choose nonnegative bumps <span class="math" data-tex="\(\psi,\phi\)">\(\psi,\phi\)</span>, with <span class="math" data-tex="\(\psi\)">\(\psi\)</span> supported in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, <span class="math" data-tex="\(\int\psi&gt;0\)">\(\int\psi&gt;0\)</span>, and <span class="math" data-tex="\(\phi(0)=1\)">\(\phi(0)=1\)</span>. The Schwartz seminorms of <span class="math" data-tex="\(H_R(x,y)=\psi(x-R)\phi(y)\)">\(H_R(x,y)=\psi(x-R)\phi(y)\)</span> grow at most polynomially in <span class="math" data-tex="\(R\)">\(R\)</span>, whereas
+<span class="math math-display" data-tex="\[
+K(H_R)\ge e^{R^2}\int\psi
+\quad(R&gt;0).
+\]">\[
+K(H_R)\ge e^{R^2}\int\psi
+\quad(R&gt;0).
+\]</span>
+No fixed Schwartz seminorm can bound these values. The global growth distinction cannot be removed from the tempered theorem.</p>
+<p><strong>Proposition 6.4 (graphs of continuous maps).</strong> Let <span class="math" data-tex="\(f:U\to V\)">\(f:U\to V\)</span> be continuous. The operator <span class="math" data-tex="\(T\phi=\phi\circ f\)">\(T\phi=\phi\circ f\)</span>, viewed as a locally integrable function on <span class="math" data-tex="\(U\)">\(U\)</span>, has kernel
+<span class="math math-display" data-tex="\[
+K_f(H)=\int_U H(x,f(x))\,dx.
+\]">\[
+K_f(H)=\int_U H(x,f(x))\,dx.
+\]</span>
+Its support is exactly the graph of <span class="math" data-tex="\(f\)">\(f\)</span>. Smoothness and injectivity of <span class="math" data-tex="\(f\)">\(f\)</span> are unnecessary.</p>
+<p><strong>Proof.</strong> For a test supported in a compact product, its restriction to the graph is continuous and supported in the compact projection onto <span class="math" data-tex="\(U\)">\(U\)</span>. Its integral is bounded by the measure of a compact neighborhood of that projection times the supremum of the test. Thus <span class="math" data-tex="\(K_f\)">\(K_f\)</span> is a distribution of order zero. Its pairing with a product test is <span class="math" data-tex="\(\int\psi(x)\phi(f(x))\,dx\)">\(\int\psi(x)\phi(f(x))\,dx\)</span>, giving the asserted operator. The graph is relatively closed by continuity of <span class="math" data-tex="\(f\)">\(f\)</span>, and a test supported off it has zero pairing. At a graph point, choose a nonnegative test positive on a small product neighborhood of that point. Continuity of <span class="math" data-tex="\(f\)">\(f\)</span> gives a nonempty open set of input points whose graph lies in that positive neighborhood. The pairing is positive, so every graph point is in the support. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 6.5 (the support relation of a kernel).</strong> For every local distribution kernel and every <span class="math" data-tex="\(\phi\in\mathcal D(V)\)">\(\phi\in\mathcal D(V)\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{supp}T\phi\subset
+\{x\in U:\text{there is }y\in\operatorname{supp}\phi
+\text{ with }(x,y)\in\operatorname{supp}K\}.
+\tag{6.1}
+\]">\[
+\operatorname{supp}T\phi\subset
+\{x\in U:\text{there is }y\in\operatorname{supp}\phi
+\text{ with }(x,y)\in\operatorname{supp}K\}.
+\tag{6.1}
+\]</span>
+No properness of the kernel projections is required for this test-input assertion.</p>
+<p><strong>Proof.</strong> The set on the right is closed in <span class="math" data-tex="\(U\)">\(U\)</span>: from a convergent sequence of its output points, compactness of <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span> gives a convergent subsequence of their corresponding input points, and closedness of <span class="math" data-tex="\(\operatorname{supp}K\)">\(\operatorname{supp}K\)</span> gives the limiting pair. On an output neighborhood disjoint from that closed set, every product test <span class="math" data-tex="\(\psi\otimes\phi\)">\(\psi\otimes\phi\)</span> has support disjoint from <span class="math" data-tex="\(\operatorname{supp}K\)">\(\operatorname{supp}K\)</span>, so its kernel pairing is zero. Hence <span class="math" data-tex="\(T\phi\)">\(T\phi\)</span> vanishes on that neighborhood. This proves the containment. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (basic: locating an averaging kernel).</strong> For <span class="math" data-tex="\(\rho\in\mathcal D(\mathbb R)\)">\(\rho\in\mathcal D(\mathbb R)\)</span>, define
+<span class="math math-display" data-tex="\[
+T\phi(x)=\int_{-2}^{1}\rho(t)\phi(x+3t)\,dt.
+\]">\[
+T\phi(x)=\int_{-2}^{1}\rho(t)\phi(x+3t)\,dt.
+\]</span>
+Find its kernel as a locally integrable function. Account for the Jacobian and determine its support, allowing <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to vanish on part of <span class="math" data-tex="\([-2,1]\)">\([-2,1]\)</span>.</p>
+<p><strong>Exercise 2 (intermediate: which variable is differentiated?).</strong> If <span class="math" data-tex="\(K\)">\(K\)</span> is the kernel of <span class="math" data-tex="\(T\)">\(T\)</span>, find the kernels of <span class="math" data-tex="\(\partial_{x_j}T\)">\(\partial_{x_j}T\)</span> and <span class="math" data-tex="\(T\partial_{y_k}\)">\(T\partial_{y_k}\)</span>. Find the kernel of the bilinear transpose <span class="math" data-tex="\(T^t\)">\(T^t\)</span>, characterized by <span class="math" data-tex="\(\langle T^t\psi,\phi\rangle=\langle T\phi,\psi\rangle\)">\(\langle T^t\psi,\phi\rangle=\langle T\phi,\psi\rangle\)</span>. Give a one-dimensional check using <span class="math" data-tex="\(T\phi(x)=\phi(2x)\)">\(T\phi(x)=\phi(2x)\)</span>.</p>
+<p><strong>Exercise 3 (intermediate: a lattice of measurements).</strong> Let <span class="math" data-tex="\((a_j)_{j\in\mathbb Z}\)">\((a_j)_{j\in\mathbb Z}\)</span> have polynomial growth. Show that
+<span class="math math-display" data-tex="\[
+K(H)=\sum_{j\in\mathbb Z}a_jH(j,j+1)
+\]">\[
+K(H)=\sum_{j\in\mathbb Z}a_jH(j,j+1)
+\]</span>
+is tempered. Describe its operator on Schwartz functions. Prove that if all <span class="math" data-tex="\(a_j\ne0\)">\(a_j\ne0\)</span>, its support is precisely <span class="math" data-tex="\(\{(j,j+1):j\in\mathbb Z\}\)">\(\{(j,j+1):j\in\mathbb Z\}\)</span>.</p>
+<p><strong>Exercise 4 (advanced: continuity of a whole family).</strong> Suppose <span class="math" data-tex="\(T_\ell:\mathcal D(V)\to\mathcal D&#x27;(U)\)">\(T_\ell:\mathcal D(V)\to\mathcal D&#x27;(U)\)</span> are weakly continuous and, for each pair of fixed compact supports <span class="math" data-tex="\(L,M\)">\(L,M\)</span>, there are <span class="math" data-tex="\(C,r,s\)">\(C,r,s\)</span> independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> such that
+<span class="math math-display" data-tex="\[
+|\langle T_\ell\phi,\psi\rangle|
+\le Cp_{L,r}(\psi)p_{M,s}(\phi).
+\]">\[
+|\langle T_\ell\phi,\psi\rangle|
+\le Cp_{L,r}(\psi)p_{M,s}(\phi).
+\]</span>
+Suppose all product-test pairings converge to those of a weakly continuous <span class="math" data-tex="\(T\)">\(T\)</span>. Prove that their kernels converge to the kernel of <span class="math" data-tex="\(T\)">\(T\)</span> on every test in <span class="math" data-tex="\(\mathcal D(U\times V)\)">\(\mathcal D(U\times V)\)</span>. Identify the extra ingredient beyond density that makes this implication valid.</p>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> Set <span class="math" data-tex="\(y=x+3t\)">\(y=x+3t\)</span>, so <span class="math" data-tex="\(dt=dy/3\)">\(dt=dy/3\)</span>. A kernel is
+<span class="math math-display" data-tex="\[
+k(x,y)=\frac13\rho\big((y-x)/3\big)
+\mathbf1_{[-2,1]}\big((y-x)/3\big).
+\]">\[
+k(x,y)=\frac13\rho\big((y-x)/3\big)
+\mathbf1_{[-2,1]}\big((y-x)/3\big).
+\]</span>
+Values at the two endpoints do not matter for this locally integrable function. Let <span class="math" data-tex="\(S\)">\(S\)</span> be the support, on the real line, of <span class="math" data-tex="\(t\mapsto\rho(t)\mathbf1_{[-2,1]}(t)\)">\(t\mapsto\rho(t)\mathbf1_{[-2,1]}(t)\)</span>, as a distribution. Then <span class="math" data-tex="\(\operatorname{supp}k=\{(x,y):(y-x)/3\in S\}\)">\(\operatorname{supp}k=\{(x,y):(y-x)/3\in S\}\)</span>. Indeed change of variables <span class="math" data-tex="\((x,t)\mapsto(x,x+3t)\)">\((x,t)\mapsto(x,x+3t)\)</span> is a diffeomorphism, and the product of the constant function in <span class="math" data-tex="\(x\)">\(x\)</span> with that nonzero one-variable function has support <span class="math" data-tex="\(\mathbb R\times S\)">\(\mathbb R\times S\)</span>. This also handles an identically zero <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on the integration interval, when the support is empty.</p>
+<p><strong>Solution 2.</strong> Distributional differentiation in the output gives
+<span class="math math-display" data-tex="\[
+\langle\partial_{x_j}T\phi,\psi\rangle
+=-K((\partial_{x_j}\psi)\otimes\phi)
+=(\partial_{x_j}K)(\psi\otimes\phi).
+\]">\[
+\langle\partial_{x_j}T\phi,\psi\rangle
+=-K((\partial_{x_j}\psi)\otimes\phi)
+=(\partial_{x_j}K)(\psi\otimes\phi).
+\]</span>
+Differentiation of the input gives
+<span class="math math-display" data-tex="\[
+\langle T\partial_{y_k}\phi,\psi\rangle
+=K(\psi\otimes\partial_{y_k}\phi)
+=(-\partial_{y_k}K)(\psi\otimes\phi).
+\]">\[
+\langle T\partial_{y_k}\phi,\psi\rangle
+=K(\psi\otimes\partial_{y_k}\phi)
+=(-\partial_{y_k}K)(\psi\otimes\phi).
+\]</span>
+Thus the two kernels are <span class="math" data-tex="\(\partial_{x_j}K\)">\(\partial_{x_j}K\)</span> and <span class="math" data-tex="\(-\partial_{y_k}K\)">\(-\partial_{y_k}K\)</span>. The transpose kernel on <span class="math" data-tex="\(V\times U\)">\(V\times U\)</span> is <span class="math" data-tex="\(K^t(G)=K(G(y,x))\)">\(K^t(G)=K(G(y,x))\)</span>. Separate continuity makes this a continuous transpose operator, and uniqueness proves <span class="math" data-tex="\((T^t)^t=T\)">\((T^t)^t=T\)</span>.</p>
+<p>For <span class="math" data-tex="\(T\phi(x)=\phi(2x)\)">\(T\phi(x)=\phi(2x)\)</span>, the kernel is <span class="math" data-tex="\(K(H)=\int H(x,2x)\,dx\)">\(K(H)=\int H(x,2x)\,dx\)</span>. Direct differentiation gives <span class="math" data-tex="\(\partial_xT\phi=2T\partial_y\phi\)">\(\partial_xT\phi=2T\partial_y\phi\)</span>. Accordingly <span class="math" data-tex="\(\partial_xK=-2\partial_yK\)">\(\partial_xK=-2\partial_yK\)</span>, as can also be checked by integrating the total derivative of <span class="math" data-tex="\(x\mapsto H(x,2x)\)">\(x\mapsto H(x,2x)\)</span>.</p>
+<p><strong>Solution 3.</strong> If <span class="math" data-tex="\(|a_j|\le C\langle j\rangle^b\)">\(|a_j|\le C\langle j\rangle^b\)</span>, choose an integer <span class="math" data-tex="\(M&gt;b+1\)">\(M&gt;b+1\)</span>. Since <span class="math" data-tex="\(\langle(j,j+1)\rangle\)">\(\langle(j,j+1)\rangle\)</span> is comparable to <span class="math" data-tex="\(\langle j\rangle\)">\(\langle j\rangle\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_j|a_jH(j,j+1)|\le C&#x27;P_M(H)\sum_j\langle j\rangle^{b-M}&lt;\infty.
+\]">\[
+\sum_j|a_jH(j,j+1)|\le C&#x27;P_M(H)\sum_j\langle j\rangle^{b-M}&lt;\infty.
+\]</span>
+This proves tempered continuity. The operator is
+<span class="math math-display" data-tex="\[
+T\phi=\sum_j a_j\phi(j+1)\delta_j.
+\]">\[
+T\phi=\sum_j a_j\phi(j+1)\delta_j.
+\]</span>
+The displayed lattice is closed and discrete. The kernel vanishes on its complement. A test supported in a sufficiently small neighborhood of a single lattice point pairs to <span class="math" data-tex="\(a_j\)">\(a_j\)</span> times its value there; if <span class="math" data-tex="\(a_j\ne0\)">\(a_j\ne0\)</span>, an appropriate test detects that point. Thus the support is exactly the stated set.</p>
+<p><strong>Solution 4.</strong> Work first in a product rectangle with the cutoffs of Section 3. The uniform bilinear estimate bounds every kernel in the family by the same finite derivative seminorm there: choose <span class="math" data-tex="\(2N&gt;r+s+m+n\)">\(2N&gt;r+s+m+n\)</span> in (4.3). The limiting operator obeys the same bilinear estimate by passage to the limit on products, so its kernel has that bound too. Approximate a fixed <span class="math" data-tex="\(H\)">\(H\)</span> by a finite sum <span class="math" data-tex="\(H_0\)">\(H_0\)</span> of product tests in the <span class="math" data-tex="\(C^{2N}\)">\(C^{2N}\)</span> seminorm, using (3.1). Then
+<span class="math math-display" data-tex="\[
+|(K_\ell-K)(H)|
+\le |(K_\ell-K)(H_0)|+2C&#x27;\|H-H_0\|_{C^{2N}}.
+\]">\[
+|(K_\ell-K)(H)|
+\le |(K_\ell-K)(H_0)|+2C&#x27;\|H-H_0\|_{C^{2N}}.
+\]</span>
+For fixed <span class="math" data-tex="\(H_0\)">\(H_0\)</span>, the first term tends to zero by the hypothesis. The second can be made arbitrarily small uniformly in <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. A finite product-rectangle partition handles a general compactly supported <span class="math" data-tex="\(H\)">\(H\)</span>. The necessary extra ingredient is uniform continuity in a common seminorm. Density alone supplies approximations but gives no uniform bound on their errors under a varying family of functionals.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, MIT, 2026. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Open notes</a>.</li>
+<li>[Melrose 2016] Richard Melrose, <em>18.155 Lecture 15: Schwartz's kernel theorem</em>, MIT, 2016. <a href="https://math.mit.edu/~rbm/18.155-F16/L15.pdf">Open lecture</a>.</li>
+<li>[Schwartz 1952] Laurent Schwartz, <em>Théorie des noyaux</em>, Proceedings of the International Congress of Mathematicians, Cambridge, Massachusetts, 1950, volume I, American Mathematical Society, 1952. <a href="https://www.mathunion.org/icm/proceedings">Proceedings archive</a>.</li>
+</ul>
+<p><a href="src/distributions-as-kernels.md">Download the complete original CC0 source</a>.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>
